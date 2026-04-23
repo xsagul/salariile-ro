@@ -1,5 +1,7 @@
 // ── app/layout.tsx ──────────────────────────────────────────────────────────
 // Pune acest fișier în app/layout.tsx (Next.js 14+ App Router)
+import { SpeedInsights } from "@vercel/speed-insights/next";
+
 import "./globals.css";
 
 import type { Metadata } from "next";
@@ -74,7 +76,10 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <SpeedInsights />
+      </body>
     </html>
   );
 }
