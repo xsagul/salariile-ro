@@ -14,8 +14,11 @@
   --shadow: 0 1px 3px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.04);
 }
 body {
-  font-family: Georgia, 'Times New Roman', serif;
-  font-display: optional; /* adaugă asta */
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 .page { min-height: 100vh; }
 /* Container */
