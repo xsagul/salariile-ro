@@ -167,11 +167,13 @@ function Toggle({
 }
 
 function Select({
+  id,
   label,
   value,
   options,
   onChange,
 }: {
+  id: string;
   label: string;
   value: number;
   options: { v: number; l: string }[];
@@ -179,8 +181,8 @@ function Select({
 }) {
   return (
     <div className="field">
-      <label>{label}</label>
-      <select value={value} onChange={(e) => onChange(Number(e.target.value))}>
+      <label htmlFor={id}>{label}</label>
+      <select id={id} value={value} onChange={(e) => onChange(Number(e.target.value))}>
         {options.map((o) => (
           <option key={o.v} value={o.v}>
             {o.l}
@@ -353,6 +355,7 @@ export default function CalculatorSalariu() {
             />
 
             <Select
+              id="persoane-intretinere"
               label="Persoane în întreținere"
               value={input.persoanePretretinere}
               options={[0, 1, 2, 3, 4].map((n) => ({
@@ -363,6 +366,7 @@ export default function CalculatorSalariu() {
             />
 
             <Select
+              id="copii-scolari"
               label="Copii minori școlari"
               value={input.copiiScolarizati}
               options={[0, 1, 2, 3, 4, 5].map((n) => ({
