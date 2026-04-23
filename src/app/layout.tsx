@@ -1,5 +1,6 @@
 // ── app/layout.tsx ──────────────────────────────────────────────────────────
 // Pune acest fișier în app/layout.tsx (Next.js 14+ App Router)
+import "./globals.css";
 
 import type { Metadata } from "next";
 
