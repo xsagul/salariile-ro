@@ -405,12 +405,12 @@ select:focus { border-color: var(--accent); }
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: rgba(255,255,255,.4);
+  color: rgba(255,255,255,.7);
   margin-bottom: 0.75rem;
 }
 .footer-links a {
   display: block;
-  color: rgba(255,255,255,.65);
+  color: rgba(255,255,255,.9);
   text-decoration: none;
   font-size: 0.875rem;
   font-family: system-ui, sans-serif;
@@ -421,7 +421,7 @@ select:focus { border-color: var(--accent); }
 .footer-bottom p {
   font-size: 0.8125rem;
   font-family: system-ui, sans-serif;
-  color: rgba(255,255,255,.35);
+  color: rgba(255,255,255,.6);
   text-align: center;
 }
 @media (max-width: 640px) {
