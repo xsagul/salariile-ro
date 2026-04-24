@@ -64,37 +64,100 @@ function calculeaza(input: InputState): Rezultat | null {
   const tichete = parseFloat(input.tichete) || 0;
   const { functieDeBAza, persoanePretretinere, varstaSub26, copiiScolarizati, scutitImpozit, sectiune } = input;
 
-  // Facilitatea de 300 lei la salariul minim
-  const cas = Math.round(brut * CAS_PROCENT);
-  const cass = Math.round(brut * CASS_PROCENT);
+  const SALARIU_MINIM_CURENT = 4050; // Pentru actualizare în iulie, vei modifica doar această constantă
 
-  const venItImpozabil = brut - cas - cass;
+  // 1. FACILITATEA DE 300 LEI
+  // Conform legii, se aplică STRICT dacă brutul este exact salariul minim pe economie
+  // Dacă pui 4051 lei brut, facilitatea devine 0 automat.
+  const facilitate = (functieDeBAza && brut === SALARIU_MINIM_CURENT) ? 300 : 0;
 
+  // 2. BAZA PENTRU CAS & CASS
+  const bazaCasCassSalariu = Math.max(0, brut - facilitate);
+
+  // 3. CALCUL CAS (Pensie)
+  let cas = 0;
+  if (sectiune === "constructii") {
+    // În construcții, cota de 20.25% se aplică DOAR pentru primii 10.000 lei. Ce depășește se taxează cu 25% normal.
+    if (brut <= 10000) {
+      cas = Math.round(bazaCasCassSalariu * 0.2025);
+    } else {
+      const bazaPanaLa10k = 10000 - facilitate;
+      const bazaPeste10k = brut - 10000;
+      cas = Math.round(bazaPanaLa10k * 0.2025) + Math.round(bazaPeste10k * 0.25);
+    }
+  } else {
+    cas = Math.round(bazaCasCassSalariu * 0.25);
+  }
+
+  // 4. CALCUL CASS (Sănătate)
+  // Atenție: În 2026 tichetele de masă se taxează cu 10% CASS indiferent de domeniu.
+  const cassSalariu = Math.round(bazaCasCassSalariu * 0.10);
+  const cassTichete = Math.round(tichete * 0.10);
+  const cassTotal = cassSalariu + cassTichete;
+
+  // 5. DEDUCEREA PERSONALĂ
+  // Funcția ta calculeazaDeducerePersonala va întoarce 0 dacă brutul depășește 6050 lei.
   let deducere = 0;
   if (functieDeBAza) {
     deducere = calculeazaDeducerePersonala(brut, persoanePretretinere, copiiScolarizati);
-    if (varstaSub26) deducere += Math.round(0.15 * SALARIU_MINIM);
+    if (varstaSub26) deducere += Math.round(0.15 * SALARIU_MINIM_CURENT);
     deducere += copiiScolarizati * 100;
   }
 
-  const bazaImpozit = Math.max(0, venItImpozabil - deducere);
-  const impozit = scutitImpozit || sectiune === "it"
-    ? 0
-    : Math.round(bazaImpozit * IMPOZIT_PROCENT);
+  // 6. CALCUL BAZĂ IMPOZITARE ȘI IMPOZIT PE VENIT
+  let impozit = 0;
+  const bazaImpozitTichete = Math.max(0, tichete - cassTichete); // Tichete nete de CASS
 
-  const net = brut - cas - cass - impozit + tichete;
-  const cam = Math.round(brut * CAM_PROCENT);
-  const costTotal = brut + cam;
+  if (!scutitImpozit) {
+    if (sectiune === "it" || sectiune === "constructii") {
+      // Pentru IT/Construcții: scutirea de impozit funcționează doar PÂNĂ LA 10.000 lei inclusiv.
+      if (brut > 10000) {
+        const brutTaxabil = brut - 10000;
+        const casAferent = sectiune === "constructii" ? Math.round(brutTaxabil * 0.25) : Math.round(brutTaxabil * 0.25);
+        const cassAferent = Math.round(brutTaxabil * 0.10);
+        
+        // Peste 10.000 lei nu mai există deduceri personale.
+        const bazaImpozitPeste10k = brutTaxabil - casAferent - cassAferent;
+        
+        // Tichetele de masă nu beneficiază de scutire fiscală la impozit nici măcar în IT, conform ANAF (se aplică pe salariu).
+        impozit = Math.round(Math.max(0, bazaImpozitPeste10k) * 0.10) + Math.round(bazaImpozitTichete * 0.10);
+      } else {
+        // Dacă brutul e sub 10.000, salariul e scutit, dar tichetele sunt supuse la 10% impozit.
+        impozit = Math.round(bazaImpozitTichete * 0.10);
+      }
+    } else {
+      // Angajați standard
+      const bazaImpozitSalariu = Math.max(0, brut - cas - cassSalariu - deducere);
+      const bazaImpozitTotala = bazaImpozitSalariu + bazaImpozitTichete;
+      impozit = Math.round(bazaImpozitTotala * 0.10);
+    }
+  }
+
+  // 7. SEPARAREA NETULUI PENTRU AFIȘARE EXACTĂ
+  // Cât reprezintă impozitul doar din tichete (dacă nu avem scutiri generale)
+  const impozitTichete = scutitImpozit ? 0 : Math.round(bazaImpozitTichete * 0.10);
+  
+  // Banii care intră efectiv pe cardul de salariu:
+  const impozitSalariu = Math.max(0, impozit - impozitTichete);
+  const netBaniMunciti = brut - cas - cassSalariu - impozitSalariu;
+
+  // Banii care intră efectiv pe cardul de tichete:
+  const netTicheteEfectiv = tichete - cassTichete - impozitTichete;
+  
+  // În vechiul tău cod le adunai la final. Dacă UI-ul afișează un singur NET (Bani + Tichete), le cumulăm.
+  const netCumulat = netBaniMunciti + netTicheteEfectiv;
+
+  const cam = Math.round(brut * 0.0225);
 
   return {
-    net: Math.round(net),
-    cas: Math.round(cas),
-    cass: Math.round(cass),
-    impozit: Math.round(impozit),
+    net: Math.round(netCumulat), 
+    cas,
+    cass: cassTotal,
+    impozit,
     deducerePersonala: Math.round(deducere),
-    cam: Math.round(cam),
-    costTotal: Math.round(costTotal),
-    brutNet: brut > 0 ? Math.round((net / brut) * 100) : 0,
+    cam,
+    costTotal: brut + cam,
+    brutNet: brut > 0 ? Math.round((netBaniMunciti / brut) * 100) : 0, // Randamentul se calculează pe banii din brut
   };
 }
 
