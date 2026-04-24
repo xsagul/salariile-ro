@@ -506,7 +506,7 @@ export default function CalculatorSalariu() {
                   <div className="net-label">Salariu net în mână</div>
                   <div className="net-value">{fmt(rez.net)}</div>
                   <div className="net-sub">
-                    din {fmt(parseFloat(input.brut))} brut —{" "}
+                    din {fmt(parseFloat(brutEfectiv))} brut —{" "}
                     <strong>{rez.brutNet}%</strong> din brut
                   </div>
                 </div>
