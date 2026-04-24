@@ -47,12 +47,12 @@ function calculeazaDeducerePersonala(brut: number, persoane: number, copii: numb
   const procent = totalPersoane >= 4 ? 0.45 : procente[totalPersoane] || 0.20;
   
   // Deducerea se rotunjește la 10 lei conform legii
-  const baza = Math.round((procent * SALARIU_MINIM) / 10) * 10; 
+  const baza = Math.floor((procent * SALARIU_MINIM) / 10) * 10; 
 
   if (brut <= SALARIU_MINIM) return baza;
 
   const coeficient = 1 - (brut - SALARIU_MINIM) / 2000;
-  return Math.max(0, Math.round((baza * coeficient) / 10) * 10);
+  return Math.max(0, Math.floor((baza * coeficient) / 10) * 10);
 }
 
 function calculeaza(input: InputState): Rezultat | null {
