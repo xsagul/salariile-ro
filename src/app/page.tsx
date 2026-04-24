@@ -103,25 +103,29 @@ function calculeaza(input: InputState): Rezultat | null {
   }
 
   // 6. CALCUL BAZĂ IMPOZITARE ȘI IMPOZIT PE VENIT
-  let impozit = 0;
-  const bazaImpozitTichete = Math.max(0, tichete - cassTichete); // Tichete nete de CASS
+// ... restul codului ramane la fel pana la punctul 6
 
+// 6. CALCUL BAZĂ IMPOZITARE ȘI IMPOZIT PE VENIT
+  let impozit = 0;
+  const bazaImpozitTichete = Math.max(0, tichete - cassTichete); 
+  
   if (!scutitImpozit) {
     if (sectiune === "it" || sectiune === "constructii") {
-      // Pentru IT/Construcții: scutirea de impozit funcționează doar PÂNĂ LA 10.000 lei inclusiv.
+      // Scutirea se aplică DOAR pentru brut <= 10.000 lei
       if (brut > 10000) {
-        const brutTaxabil = brut - 10000;
-        const casAferent = sectiune === "constructii" ? Math.round(brutTaxabil * CAS_PROCENT) : Math.round(brutTaxabil * CAS_PROCENT);
-        const cassAferent = Math.round(brutTaxabil * CASS_PROCENT);
+        const parteTaxabilaBrut = brut - 10000;
         
-        // Peste 10.000 lei nu mai există deduceri personale.
-        const bazaImpozitPeste10k = brutTaxabil - casAferent - cassAferent;
+        // Calculăm contribuțiile aferente DOAR părții ce depășește 10.000
+        const casAferentPeste10k = Math.round(parteTaxabilaBrut * CAS_PROCENT);
+        const cassAferentPeste10k = Math.round(parteTaxabilaBrut * CASS_PROCENT);
         
-        // Tichetele de masă nu beneficiază de scutire fiscală la impozit nici măcar în IT, conform ANAF (se aplică pe salariu).
-        impozit = Math.round(Math.max(0, bazaImpozitPeste10k) * CASS_PROCENT) + Math.round(bazaImpozitTichete * CASS_PROCENT);
+        const bazaImpozitSalariuPeste10k = parteTaxabilaBrut - casAferentPeste10k - cassAferentPeste10k;
+        
+        // CORECȚIE: Folosim IMPOZIT_PROCENT aici
+        impozit = Math.round(bazaImpozitSalariuPeste10k * IMPOZIT_PROCENT) + Math.round(bazaImpozitTichete * IMPOZIT_PROCENT);
       } else {
-        // Dacă brutul e sub 10.000, salariul e scutit, dar tichetele sunt supuse la 10% impozit.
-        impozit = Math.round(bazaImpozitTichete * CASS_PROCENT);
+        // Salariul sub 10k este scutit, dar tichetele NU sunt scutite niciodată
+        impozit = Math.round(bazaImpozitTichete * IMPOZIT_PROCENT);
       }
     } else {
       // Angajați standard
