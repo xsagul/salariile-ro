@@ -65,13 +65,8 @@ function calculeaza(input: InputState): Rezultat | null {
   const { functieDeBAza, persoanePretretinere, varstaSub26, copiiScolarizati, scutitImpozit, sectiune } = input;
 
   // Facilitatea de 300 lei la salariul minim
-  const bazaCAS =
-    brut <= SALARIU_MINIM && brut + tichete <= 4000
-      ? Math.max(0, brut - DEDUCERE_MINIM)
-      : brut;
-
-  const cas = sectiune === "constructii" ? 0 : Math.round(bazaCAS * CAS_PROCENT);
-  const cass = Math.round((bazaCAS + tichete) * CASS_PROCENT);
+  const cas = Math.round(brut * CAS_PROCENT);
+  const cass = Math.round(brut * CASS_PROCENT);
 
   const venItImpozabil = brut - cas - cass;
 
