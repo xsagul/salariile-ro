@@ -166,6 +166,21 @@ function calculeaza(input: InputState): Rezultat | null {
   };
 }
 
+function calculeazaBrutDinNet(
+  net: number,
+  input: Omit<InputState, "brut">
+): number {
+  let lo = net;
+  let hi = net * 3;
+  for (let i = 0; i < 60; i++) {
+    const mid = (lo + hi) / 2;
+    const rez = calculeaza({ ...input, brut: String(mid) });
+    if (!rez) { lo = mid; continue; }
+    if (rez.net < net) lo = mid;
+    else hi = mid;
+  }
+  return Math.round((lo + hi) / 2);
+}
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
 const fmt = (n: number) =>
@@ -287,6 +302,7 @@ function BarRow({
 // ─── Pagina principală ────────────────────────────────────────────────────────
 
 export default function CalculatorSalariu() {
+  const [mod, setMod] = useState<"brut" | "net">("brut");
   const [input, setInput] = useState<InputState>({
     brut: "",
     tichete: "",
@@ -304,7 +320,11 @@ export default function CalculatorSalariu() {
     []
   );
 
-  const rez = calculeaza(input);
+  const brutEfectiv =
+    mod === "net"
+      ? String(calculeazaBrutDinNet(parseFloat(input.brut) || 0, input))
+      : input.brut;
+  const rez = calculeaza({ ...input, brut: brutEfectiv });
 
   const sectiuni = [
     { id: "standard", label: "Standard" },
@@ -329,7 +349,7 @@ export default function CalculatorSalariu() {
             "publisher": {
               "@type": "Organization",
               "name": "Salariile.ro",
-              "url": "https://salariile.ro",
+              "url": "https://salariile.ro"
             },
           }),
         }}
@@ -377,7 +397,23 @@ export default function CalculatorSalariu() {
           {/* Form */}
           <div className="card form-card">
             <div className="card-head">
-              <h2>Date salariale</h2>
+              <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "4px" }}>
+                <h2 style={{ margin: 0 }}>Date salariale</h2>
+                <div className="mod-pills">
+                  <button
+                    className={mod === "brut" ? "pill active" : "pill"}
+                    onClick={() => setMod("brut")}
+                  >
+                    Brut
+                  </button>
+                  <button
+                    className={mod === "net" ? "pill active" : "pill"}
+                    onClick={() => setMod("net")}
+                  >
+                    Net
+                  </button>
+                </div>
+              </div>
               <p>Completează câmpurile de mai jos</p>
             </div>
 
@@ -395,13 +431,12 @@ export default function CalculatorSalariu() {
               ))}
             </div>
 
-            <InputNumber
-              label="Salariu brut"
-              value={input.brut}
-              onChange={(v) => set("brut", v)}
-              placeholder={String(SALARIU_MINIM)}
-              hint="Suma din contractul de muncă"
-            />
+          <InputNumber
+            label={mod === "brut" ? "Salariu brut" : "Salariu net"}
+            hint={mod === "brut" ? "Suma din contractul de muncă" : "Suma primită în mână"}
+            value={input.brut}
+            onChange={(v) => set("brut", v)}
+          />
 
             <InputNumber
               label="Tichete de masă"

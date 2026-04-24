@@ -429,6 +429,31 @@ select:focus { border-color: var(--accent); }
   .footer-links { grid-template-columns: 1fr 1fr; }
   nav { display: none; }
 }
+/* ── Mod pills (Brut / Net) ── */
+.mod-pills {
+  display: flex;
+  background: var(--bg);
+  border-radius: 8px;
+  padding: 3px;
+  gap: 2px;
+}
+.pill {
+  padding: 4px 14px;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.8125rem;
+  font-family: system-ui, sans-serif;
+  font-weight: 500;
+  color: var(--muted);
+  transition: all .15s;
+}
+.pill.active {
+  background: var(--surface);
+  color: var(--accent);
+  box-shadow: 0 1px 3px rgba(0,0,0,.08);
+}
 /* Print */
 @media print {
   .site-header, .hero .badges, .site-footer, .info-section { display: none; }
