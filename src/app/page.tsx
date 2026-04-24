@@ -149,7 +149,10 @@ function calculeaza(input: InputState): Rezultat | null {
   // În vechiul tău cod le adunai la final. Dacă UI-ul afișează un singur NET (Bani + Tichete), le cumulăm.
   const netCumulat = netBaniMunciti + netTicheteEfectiv;
 
-  const cam = Math.round(brut * CAM_PROCENT);
+  // 8. CALCUL CAM (Contribuția Asiguratorie pentru Muncă)
+  // Corecție: Baza pentru CAM este brutul din care se scade facilitatea de 300 lei
+  const bazaCAM = Math.max(0, brut - facilitate); 
+  const cam = Math.round(bazaCAM * CAM_PROCENT);
 
   return {
     net: Math.round(netCumulat), 
