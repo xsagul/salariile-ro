@@ -122,7 +122,7 @@ function calculeaza(input: InputState): Rezultat | null {
         const bazaImpozitSalariuPeste10k = parteTaxabilaBrut - casAferentPeste10k - cassAferentPeste10k;
         
         // CORECȚIE: Folosim IMPOZIT_PROCENT aici
-        impozit = Math.round(bazaImpozitSalariuPeste10k * IMPOZIT_PROCENT) + Math.round(bazaImpozitTichete * IMPOZIT_PROCENT);
+        impozit = Math.round((bazaImpozitSalariuPeste10k + bazaImpozitTichete) * IMPOZIT_PROCENT);
       } else {
         // Salariul sub 10k este scutit, dar tichetele NU sunt scutite niciodată
         impozit = Math.round(bazaImpozitTichete * IMPOZIT_PROCENT);
@@ -151,7 +151,7 @@ function calculeaza(input: InputState): Rezultat | null {
 
   // 8. CALCUL CAM (Contribuția Asiguratorie pentru Muncă)
   // Corecție: Baza pentru CAM este brutul din care se scade facilitatea de 300 lei
-  const bazaCAM = brut; 
+  const bazaCAM = brut - facilitate; 
   const cam = Math.round(bazaCAM * CAM_PROCENT);
 
   return {
