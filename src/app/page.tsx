@@ -36,25 +36,23 @@ const IMPOZIT_PROCENT = 0.10;
 const CAM_PROCENT = 0.0225;
 const DEDUCERE_MINIM = 300; // OUG 156/2024
 
-function calculeazaDeducerePersonala(
-  brut: number,
-  persoane: number,
-  copii: number
-): number {
+function calculeazaDeducerePersonala(brut: number, persoane: number, copii: number): number {
   const totalPersoane = persoane + copii;
-  const limita = SALARIU_MINIM + 2000; // 6050 lei
+  const limita = 6050; // SALARIU_MINIM + 2000
 
   if (brut > limita) return 0;
 
-  const procente = [0.45, 0.55, 0.65, 0.75, 0.85];
-  const procent = totalPersoane >= 4 ? 0.85 : procente[totalPersoane] || 0.45;
-  const baza = Math.round(procent * SALARIU_MINIM / 50) * 50;
+  // Procentele LEGALE corecte (20% pentru 0 persoane, 25% pentru o persoană, etc.)
+  const procente = [0.20, 0.25, 0.30, 0.35, 0.45];
+  const procent = totalPersoane >= 4 ? 0.45 : procente[totalPersoane] || 0.20;
+  
+  // Deducerea se rotunjește la 10 lei conform legii
+  const baza = Math.round((procent * 4050) / 10) * 10; 
 
-  if (brut <= SALARIU_MINIM) return baza;
+  if (brut <= 4050) return baza;
 
-  // reducere liniară
-  const reducere = Math.round((baza * (brut - SALARIU_MINIM) / 2000) / 50) * 50;
-  return Math.max(0, baza - reducere);
+  const coeficient = 1 - (brut - 4050) / 2000;
+  return Math.max(0, Math.round((baza * coeficient) / 10) * 10);
 }
 
 function calculeaza(input: InputState): Rezultat | null {
@@ -127,7 +125,7 @@ function calculeaza(input: InputState): Rezultat | null {
       }
     } else {
       // Angajați standard
-      const bazaImpozitSalariu = Math.max(0, brut - cas - cassSalariu - deducere);
+      const bazaImpozitSalariu = Math.max(0, brut - cas - cassSalariu - facilitate - deducere);
       const bazaImpozitTotala = bazaImpozitSalariu + bazaImpozitTichete;
       impozit = Math.round(bazaImpozitTotala * 0.10);
     }
