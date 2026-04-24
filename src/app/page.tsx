@@ -151,7 +151,7 @@ function calculeaza(input: InputState): Rezultat | null {
 
   // 8. CALCUL CAM (Contribuția Asiguratorie pentru Muncă)
   // Corecție: Baza pentru CAM este brutul din care se scade facilitatea de 300 lei
-  const bazaCAM = Math.max(0, brut - facilitate); 
+  const bazaCAM = brut; 
   const cam = Math.round(bazaCAM * CAM_PROCENT);
 
   return {
