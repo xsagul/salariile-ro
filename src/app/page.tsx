@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 // ─── Tipuri ──────────────────────────────────────────────────────────────────
 
@@ -309,7 +309,7 @@ function BarRow({
 
 // ─── Pagina principală ────────────────────────────────────────────────────────
 
-export default function CalculatorSalariu() {
+function CalculatorSalariuInner() {
   const [mod, setMod] = useState<"brut" | "net">("brut");
   const [avansat, setAvansat] = useState(false);
   const searchParams = useSearchParams();
@@ -342,7 +342,7 @@ export default function CalculatorSalariu() {
       setMod("net");
     }
   }, []);
-  
+
   // Actualizează URL-ul când se schimbă inputul
   useEffect(() => {
     if (!input.brut) return;
@@ -764,5 +764,12 @@ export default function CalculatorSalariu() {
 
 
     </>
+  );
+}
+export default function CalculatorSalariu() {
+  return (
+    <Suspense>
+      <CalculatorSalariuInner />
+    </Suspense>
   );
 }
