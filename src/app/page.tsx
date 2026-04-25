@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useCallback } from "react";
-
+import { useState, useCallback, useEffect } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 // ─── Tipuri ──────────────────────────────────────────────────────────────────
 
 interface InputState {
@@ -312,6 +312,8 @@ function BarRow({
 export default function CalculatorSalariu() {
   const [mod, setMod] = useState<"brut" | "net">("brut");
   const [avansat, setAvansat] = useState(false);
+  const searchParams = useSearchParams();
+  const router = useRouter();
   const [input, setInput] = useState<InputState>({
     brut: "",
     tichete: "",
@@ -328,7 +330,25 @@ export default function CalculatorSalariu() {
       setInput((p) => ({ ...p, [k]: v })),
     []
   );
-
+  // Citește params din URL la încărcare
+  useEffect(() => {
+    const brut = searchParams.get("brut");
+    const net = searchParams.get("net");
+    if (brut) {
+      set("brut", brut);
+      setMod("brut");
+    } else if (net) {
+      set("brut", net);
+      setMod("net");
+    }
+  }, []);
+  
+  // Actualizează URL-ul când se schimbă inputul
+  useEffect(() => {
+    if (!input.brut) return;
+    const param = mod === "brut" ? "brut" : "net";
+    router.replace(`/calculator?${param}=${input.brut}`, { scroll: false });
+  }, [input.brut, mod]);
   const brutEfectiv =
     mod === "net"
       ? String(calculeazaBrutDinNet(parseFloat(input.brut) || 0, input))
