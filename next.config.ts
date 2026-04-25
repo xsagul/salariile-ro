@@ -43,6 +43,17 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       // Redirect-uri noi către pagina de INFO (ca să eviți penalizarea Google)
+      // Adaugă astea în lista de redirecturi din next.config.ts
+      {
+        source: '/politica-confidentialitate',
+        destination: '/info',
+        permanent: false,
+      },
+      {
+        source: '/termeni',
+        destination: '/info',
+        permanent: false,
+      },
       {
         source: "/calculator-pfa",
         destination: "/info",

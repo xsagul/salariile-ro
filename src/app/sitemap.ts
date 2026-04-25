@@ -13,6 +13,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     // Adăugăm pagina de Info ca să o indexeze și să vadă că e "curată" (nu 404)
     {
+      url: `${baseUrl}/politica-confidentialitate`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/termeni`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.3,
+    },
+    {
       url: `${baseUrl}/info`,
       lastModified,
       changeFrequency: "monthly",
