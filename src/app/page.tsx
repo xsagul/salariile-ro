@@ -409,30 +409,34 @@ export default function CalculatorSalariu() {
                 <h2 style={{ margin: 0 }}>Date salariale</h2>
                 <div className="mod-pills">
                 <button
-                  className={mod === "brut" ? "pill active" : "pill"}
-                  onClick={() => {
-                    if (mod === "net") {
-                      const netVal = parseFloat(input.brut) || 0;
-                      const brutCalculat = calculeazaBrutDinNet(netVal, input);
-                      const rezTemp = calculeaza({ ...input, brut: String(brutCalculat) });
-                      if (rezTemp) set("brut", String(rezTemp.net));
-                    }
-                    setMod("brut");
-                  }}
-                >
-                  Brut
+                    className={mod === "brut" ? "pill active" : "pill"}
+                    onClick={() => {
+                      if (mod === "net") {
+                        // 1. Luăm valoarea netă care se află acum în input
+                        const netVal = parseFloat(input.brut) || 0;
+                        // 2. Aflăm cât ar fi brutul pentru acest net
+                        const brutCalculat = calculeazaBrutDinNet(netVal, input);
+                        // 3. ACTUALIZARE: Punem valoarea BRUTĂ în input
+                        set("brut", String(brutCalculat));
+                      }
+                      setMod("brut");
+                    }}
+                  >
+                    Brut
                 </button>
                 <button
-                  className={mod === "net" ? "pill active" : "pill"}
-                  onClick={() => {
-                    if (mod === "brut") {
-                      const rezTemp = calculeaza(input);
-                      if (rezTemp) set("brut", String(rezTemp.net));
-                    }
-                    setMod("net");
-                  }}
-                >
-                  Net
+                    className={mod === "net" ? "pill active" : "pill"}
+                    onClick={() => {
+                      if (mod === "brut") {
+                        // 1. Luăm valoarea brută din input
+                        const rezTemp = calculeaza(input);
+                        // 2. Punem valoarea NETĂ rezultată în input
+                        if (rezTemp) set("brut", String(rezTemp.net));
+                      }
+                      setMod("net");
+                    }}
+                  >
+                    Net
                 </button>
                 </div>
               </div>
