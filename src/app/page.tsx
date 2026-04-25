@@ -170,6 +170,14 @@ function calculeazaBrutDinNet(
   net: number,
   input: Omit<InputState, "brut">
 ): number {
+  // Verifică mai întâi valorile speciale cu facilitate
+  const valoriSpeciale = [SALARIU_MINIM];
+  for (const v of valoriSpeciale) {
+    const rez = calculeaza({ ...input, brut: String(v) });
+    if (rez && rez.net === net) return v;
+  }
+
+  // Binary search pentru restul cazurilor
   let lo = net;
   let hi = net * 3;
   for (let i = 0; i < 60; i++) {
