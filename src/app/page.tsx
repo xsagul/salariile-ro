@@ -536,10 +536,12 @@ export default function CalculatorSalariu() {
                     {mod === "net" ? fmt(parseFloat(brutEfectiv)) : fmt(rez.net)}
                   </div>
                   <div className="net-sub">
-                    {mod === "net"
-                      ? <>net în mână: <strong>{fmt(rez.net)}</strong> — <strong>{rez.brutNet}%</strong> din brut</>
-                      : <>din {fmt(parseFloat(brutEfectiv))} brut — <strong>{rez.brutNet}%</strong> din brut</>
-                    }
+                    {rez && (
+                      <>
+                        <strong>{rez.brutNet}%</strong> Angajat —{" "}
+                        <strong>{100 - rez.brutNet}%</strong> Stat
+                      </>
+                    )}
                   </div>
                 </div>
 
