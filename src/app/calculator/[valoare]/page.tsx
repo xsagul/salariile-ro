@@ -346,33 +346,26 @@ function CalculatorSalariuInner() {
   // Actualizează URL-ul când se schimbă inputul
 // Actualizează URL-ul când se schimbă inputul
 useEffect(() => {
-    // 1. Dacă nu e nimic scris la brut, nu facem nimic
+    // 1. Nu facem nimic dacă nu avem o valoare introdusă
     if (!input.brut || input.brut === "0") return;
 
-    // 2. Calculăm rezultatele complete
-    const rezultate = calculeaza(input);
-    if (!rezultate) return;
-
-    // 3. Stabilim ce scriem în URL
-    // Dacă utilizatorul a selectat tab-ul "net", înseamnă că:
-    // - Vrem să vadă "calcul-salariu-brut" (pentru că asta "află" el acum)
-    // - Cifra din link trebuie să fie Net-ul pe care l-a introdus (sau cel calculat)
-    
+    // 2. Logică SEO: Tinta vs Sursa
     const sursa = mod; // "brut" sau "net"
     const tinta = mod === "brut" ? "net" : "brut";
     
-    // ATENȚIE AICI: Verifică în consola ta dacă proprietatea se numește .net sau .salariuNet
-    // Folosim o logică sigură pentru a lua cifra corectă:
-    const cifraCorecta = mod === "brut" ? input.brut : rezultate.net;
+    // 3. SOLUȚIA: Luăm valoarea brută din input.
+    // Deoarece în state-ul tău "input.brut" se actualizează și când scrii la NET
+    // (prin conversie), aceasta este cea mai sigură cifră.
+    const cifraDeAfisat = input.brut;
 
     const timer = setTimeout(() => {
-      // Aceasta este structura finală care elimină eroarea 1587
-      const urlPath = `/calculator/calcul-salariu-${tinta}-${cifraCorecta}-${sursa}`;
+      // Generăm URL-ul cu cifra care este acum în căsuța activă
+      const urlPath = `/calculator/calcul-salariu-${tinta}-${cifraDeAfisat}-${sursa}`;
       window.history.replaceState(null, "", urlPath);
     }, 500);
 
     return () => clearTimeout(timer);
-  }, [input.brut, mod, calculeaza]);
+  }, [input.brut, mod]);
   const brutEfectiv =
     mod === "net"
       ? String(calculeazaBrutDinNet(parseFloat(input.brut) || 0, input))

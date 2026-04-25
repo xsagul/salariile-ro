@@ -344,36 +344,27 @@ function CalculatorSalariuInner() {
   }, []);
 
   // Actualizează URL-ul când se schimbă inputul
-// Actualizează URL-ul când se schimbă inputul
-// Actualizează URL-ul când se schimbă inputul
-  useEffect(() => {
-    // 1. Siguranță: nu facem nimic dacă nu avem cifre
+useEffect(() => {
+    // 1. Nu facem nimic dacă nu avem o valoare introdusă
     if (!input.brut || input.brut === "0") return;
 
-    // 2. Calculăm totul (ca să avem Net-ul corect pentru URL)
-    const rezultate = calculeaza(input);
-    
-    if (!rezultate) return;
-
-    // 3. LOGICA SEO CORECTĂ (Fără inversări):
-    // sursa = ce scrie userul acum (mod-ul curent)
-    // tinta = ce vrea sa afle (opusul mod-ului)
+    // 2. Logică SEO: Tinta vs Sursa
     const sursa = mod; // "brut" sau "net"
     const tinta = mod === "brut" ? "net" : "brut";
     
-    // Cifra de pus în URL: 
-    // Dacă scrie la Brut, punem valoarea de Brut.
-    // Dacă scrie la Net, punem valoarea calculată de Net (2574, nu 1587).
-    const valoareAfisata = mod === "brut" ? input.brut : rezultate.net;
+    // 3. SOLUȚIA: Luăm valoarea brută din input.
+    // Deoarece în state-ul tău "input.brut" se actualizează și când scrii la NET
+    // (prin conversie), aceasta este cea mai sigură cifră.
+    const cifraDeAfisat = input.brut;
 
     const timer = setTimeout(() => {
-      // Structura: /calculator/calcul-salariu-tinta-valoare-sursa
-      const urlPath = `/calculator/calcul-salariu-${tinta}-${valoareAfisata}-${sursa}`;
+      // Generăm URL-ul cu cifra care este acum în căsuța activă
+      const urlPath = `/calculator/calcul-salariu-${tinta}-${cifraDeAfisat}-${sursa}`;
       window.history.replaceState(null, "", urlPath);
     }, 500);
 
     return () => clearTimeout(timer);
-  }, [input.brut, mod, calculeaza]); // Am adăugat calculeaza în dependențe pentru siguranță
+  }, [input.brut, mod]); // Am adăugat calculeaza în dependențe pentru siguranță
   const brutEfectiv =
     mod === "net"
       ? String(calculeazaBrutDinNet(parseFloat(input.brut) || 0, input))
