@@ -454,6 +454,23 @@ select:focus { border-color: var(--accent); }
   color: var(--accent);
   box-shadow: 0 1px 3px rgba(0,0,0,.08);
 }
+.avansat-toggle {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1.5px dashed var(--border);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.8125rem;
+  font-family: system-ui, sans-serif;
+  cursor: pointer;
+  transition: all .15s;
+  margin-bottom: 1rem;
+}
+.avansat-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
 /* Print */
 @media print {
   .site-header, .hero .badges, .site-footer, .info-section { display: none; }

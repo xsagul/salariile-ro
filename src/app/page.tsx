@@ -311,6 +311,7 @@ function BarRow({
 
 export default function CalculatorSalariu() {
   const [mod, setMod] = useState<"brut" | "net">("brut");
+  const [avansat, setAvansat] = useState(false);
   const [input, setInput] = useState<InputState>({
     brut: "",
     tichete: "",
@@ -463,65 +464,85 @@ export default function CalculatorSalariu() {
             value={input.brut}
             onChange={(v) => set("brut", v)}
           />
+            <button
+              className="avansat-toggle"
+              onClick={() => {
+                if (avansat) {
+                  set("tichete", "");
+                  set("functieDeBAza", true);
+                  set("persoanePretretinere", 0);
+                  set("varstaSub26", false);
+                  set("copiiScolarizati", 0);
+                  set("scutitImpozit", false);
+                }
+                setAvansat(!avansat);
+              }}
+            >
+              {avansat ? "▲ Ascunde opțiuni avansate" : "▼ Calculator avansat"}
+            </button>
+            
+            {avansat && (
+              <>
+                <InputNumber
+                  label="Tichete de masă"
+                  value={input.tichete}
+                  onChange={(v) => set("tichete", v)}
+                  placeholder="0"
+                  hint="Valoare lunară totală"
+                />
 
-            <InputNumber
-              label="Tichete de masă"
-              value={input.tichete}
-              onChange={(v) => set("tichete", v)}
-              placeholder="0"
-              hint="Valoare lunară totală"
-            />
+                <Toggle
+                  label="Funcție de bază"
+                  checked={input.functieDeBAza}
+                  onChange={(v) => set("functieDeBAza", v)}
+                />
 
-            <Toggle
-              label="Funcție de bază"
-              checked={input.functieDeBAza}
-              onChange={(v) => set("functieDeBAza", v)}
-            />
+                <Select
+                  id="persoane-intretinere"
+                  label="Persoane în întreținere"
+                  value={input.persoanePretretinere}
+                  options={[0, 1, 2, 3, 4].map((n) => ({
+                    v: n,
+                    l: n === 0 ? "Niciuna" : `${n} ${n === 1 ? "persoană" : "persoane"}`,
+                  }))}
+                  onChange={(v) => set("persoanePretretinere", v)}
+                />
 
-            <Select
-              id="persoane-intretinere"
-              label="Persoane în întreținere"
-              value={input.persoanePretretinere}
-              options={[0, 1, 2, 3, 4].map((n) => ({
-                v: n,
-                l: n === 0 ? "Niciuna" : `${n} ${n === 1 ? "persoană" : "persoane"}`,
-              }))}
-              onChange={(v) => set("persoanePretretinere", v)}
-            />
+                <Select
+                  id="copii-scolari"
+                  label="Copii minori școlari"
+                  value={input.copiiScolarizati}
+                  options={[0, 1, 2, 3, 4, 5].map((n) => ({
+                    v: n,
+                    l: n === 0 ? "Niciunul" : `${n} ${n === 1 ? "copil" : "copii"}`,
+                  }))}
+                  onChange={(v) => set("copiiScolarizati", v)}
+                />
 
-            <Select
-              id="copii-scolari"
-              label="Copii minori școlari"
-              value={input.copiiScolarizati}
-              options={[0, 1, 2, 3, 4, 5].map((n) => ({
-                v: n,
-                l: n === 0 ? "Niciunul" : `${n} ${n === 1 ? "copil" : "copii"}`,
-              }))}
-              onChange={(v) => set("copiiScolarizati", v)}
-            />
+                <Toggle
+                  label="Vârstă sub 26 ani"
+                  checked={input.varstaSub26 as boolean}
+                  onChange={(v) => set("varstaSub26" as keyof InputState, v)}
+                />
 
-            <Toggle
-              label="Vârstă sub 26 ani"
-              checked={input.varstaSub26 as boolean}
-              onChange={(v) => set("varstaSub26" as keyof InputState, v)}
-            />
+                {input.sectiune === "standard" && (
+                  <Toggle
+                    label="Scutit de impozit (handicap etc.)"
+                    checked={input.scutitImpozit}
+                    onChange={(v) => set("scutitImpozit", v)}
+                  />
+                )}
 
-            {input.sectiune === "standard" && (
-              <Toggle
-                label="Scutit de impozit (handicap etc.)"
-                checked={input.scutitImpozit}
-                onChange={(v) => set("scutitImpozit", v)}
-              />
+                {/* Info box */}
+                {parseFloat(input.brut) === SALARIU_MINIM && (
+                  <div className="info-box">
+                    <strong>Facilitate aplicată:</strong> deducere de 300 lei din
+                    baza de calcul pentru salariul minim (OUG 156/2024).
+                  </div>
+                )}
+              </>
             )}
-
-            {/* Info box */}
-            {parseFloat(input.brut) === SALARIU_MINIM && (
-              <div className="info-box">
-                <strong>Facilitate aplicată:</strong> deducere de 300 lei din
-                baza de calcul pentru salariul minim (OUG 156/2024).
-              </div>
-            )}
-          </div>
+            </div>
 
           {/* Rezultate */}
           <div className="results-col">
