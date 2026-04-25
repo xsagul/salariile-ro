@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   experimental: {
-  optimizeCss: true,
+    optimizeCss: true,
   },
   // Compresie automată
   compress: true,
@@ -28,19 +28,51 @@ const nextConfig: NextConfig = {
     ];
   },
 
-  // Redirecturi utile
+  // Redirecturi utile pentru a evita 404
   async redirects() {
     return [
+      // Redirect-urile tale vechi
       {
         source: "/calculator-salariu",
-        destination: "/calculator",
+        destination: "/",
         permanent: true,
       },
       {
         source: "/calcul-salariu-net",
-        destination: "/calculator",
+        destination: "/",
         permanent: true,
       },
+      // Redirect-uri noi către pagina de INFO (ca să eviți penalizarea Google)
+      {
+        source: "/calculator-pfa",
+        destination: "/info",
+        permanent: false,
+      },
+      {
+        source: "/calculator-concediu",
+        destination: "/info",
+        permanent: false,
+      },
+      {
+        source: "/salariu-minim",
+        destination: "/info",
+        permanent: false,
+      },
+      {
+        source: "/salariu-mediu",
+        destination: "/info",
+        permanent: false,
+      },
+      {
+        source: "/noutati",
+        destination: "/info",
+        permanent: false,
+      },
+      {
+        source: "/calculator",
+        destination: "/",
+        permanent: true,
+      }
     ];
   },
 };
