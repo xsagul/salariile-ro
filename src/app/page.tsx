@@ -410,13 +410,21 @@ export default function CalculatorSalariu() {
                 <div className="mod-pills">
                   <button
                     className={mod === "brut" ? "pill active" : "pill"}
-                    onClick={() => setMod("brut")}
+                    onClick={() => {
+                      // când treci din Net → Brut, pune netul calculat în input
+                      if (mod === "net" && rez) set("brut", String(rez.net));
+                      setMod("brut");
+                    }}
                   >
                     Brut
                   </button>
                   <button
                     className={mod === "net" ? "pill active" : "pill"}
-                    onClick={() => setMod("net")}
+                    onClick={() => {
+                      // când treci din Brut → Net, pune brutul calculat în input
+                      if (mod === "brut" && rez) set("brut", String(parseFloat(brutEfectiv)));
+                      setMod("net");
+                    }}
                   >
                     Net
                   </button>
