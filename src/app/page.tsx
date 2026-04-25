@@ -348,7 +348,7 @@ function CalculatorSalariuInner() {
     if (!input.brut) return;
     const param = mod === "brut" ? "brut" : "net";
     const timer = setTimeout(() => {
-      window.history.replaceState(null, "", `/calculator?${param}=${input.brut}`);
+      window.history.replaceState(null, "", `/?${param}=${input.brut}`);
     }, 500);
     return () => clearTimeout(timer);
   }, [input.brut, mod]);

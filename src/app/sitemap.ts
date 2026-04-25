@@ -41,13 +41,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.1,
     },
     ...([4050,4500,5000,5500,6000,6500,7000,7500,8000,9000,10000,12000,15000,20000].map(v => ({
-      url: `https://salariile.ro/calculator?brut=${v}`,
+      url: `https://salariile.ro/?brut=${v}`,
       lastModified,
       changeFrequency: "monthly" as const,
       priority: 0.7,
     }))),
     ...([2500,2700,3000,3200,3500,4000,4500,5000,6000,7000].map(v => ({
-      url: `https://salariile.ro/calculator?net=${v}`,
+      url: `https://salariile.ro/?net=${v}`,
       lastModified,
       changeFrequency: "monthly" as const,
       priority: 0.7,
