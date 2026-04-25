@@ -345,23 +345,30 @@ function CalculatorSalariuInner() {
 
   // Actualizează URL-ul când se schimbă inputul
 // Actualizează URL-ul când se schimbă inputul
+// Actualizează URL-ul când se schimbă inputul
   useEffect(() => {
-    // 1. Verificăm dacă avem valoare ca să nu rulăm degeaba
+    // 1. Siguranță: nu facem nimic dacă nu avem cifre
     if (!input.brut || input.brut === "0") return;
 
-    // 2. Trimitem tot obiectul "input" către funcție (repară eroarea de la Ln 351)
+    // 2. Calculăm totul (ca să avem Net-ul corect pentru URL)
     const rezultate = calculeaza(input);
-
-    // 3. Verificăm dacă rezultate există (repară eroarea de la Ln 352)
+    
     if (!rezultate) return;
 
-    const valoareCurenta = mod === "brut" ? input.brut : rezultate.net;
+    // 3. LOGICA SEO CORECTĂ (Fără inversări):
+    // sursa = ce scrie userul acum (mod-ul curent)
+    // tinta = ce vrea sa afle (opusul mod-ului)
+    const sursa = mod; // "brut" sau "net"
     const tinta = mod === "brut" ? "net" : "brut";
-    const sursa = mod;
+    
+    // Cifra de pus în URL: 
+    // Dacă scrie la Brut, punem valoarea de Brut.
+    // Dacă scrie la Net, punem valoarea calculată de Net (2574, nu 1587).
+    const valoareAfisata = mod === "brut" ? input.brut : rezultate.net;
 
     const timer = setTimeout(() => {
-      // Format: /calculator/calcul-salariu-net-4050-brut
-      const urlPath = `/calculator/calcul-salariu-${tinta}-${valoareCurenta}-${sursa}`;
+      // Structura: /calculator/calcul-salariu-tinta-valoare-sursa
+      const urlPath = `/calculator/calcul-salariu-${tinta}-${valoareAfisata}-${sursa}`;
       window.history.replaceState(null, "", urlPath);
     }, 500);
 

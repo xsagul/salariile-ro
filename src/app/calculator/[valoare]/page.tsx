@@ -345,20 +345,29 @@ function CalculatorSalariuInner() {
 
   // Actualizează URL-ul când se schimbă inputul
 // Actualizează URL-ul când se schimbă inputul
-  useEffect(() => {
+useEffect(() => {
+    // 1. Dacă nu e nimic scris la brut, nu facem nimic
     if (!input.brut || input.brut === "0") return;
 
-    // Calculăm rezultatele ca să avem și valoarea de Net dacă suntem în acel mod
+    // 2. Calculăm rezultatele complete
     const rezultate = calculeaza(input);
     if (!rezultate) return;
 
-    const tinta = mod === "brut" ? "net" : "brut";
+    // 3. Stabilim ce scriem în URL
+    // Dacă utilizatorul a selectat tab-ul "net", înseamnă că:
+    // - Vrem să vadă "calcul-salariu-brut" (pentru că asta "află" el acum)
+    // - Cifra din link trebuie să fie Net-ul pe care l-a introdus (sau cel calculat)
+    
     const sursa = mod; // "brut" sau "net"
-    const valoareAfisata = mod === "brut" ? input.brut : rezultate.net;
+    const tinta = mod === "brut" ? "net" : "brut";
+    
+    // ATENȚIE AICI: Verifică în consola ta dacă proprietatea se numește .net sau .salariuNet
+    // Folosim o logică sigură pentru a lua cifra corectă:
+    const cifraCorecta = mod === "brut" ? input.brut : rezultate.net;
 
     const timer = setTimeout(() => {
-      // Format nou: /calculator/calcul-salariu-net-4050-brut
-      const urlPath = `/calculator/calcul-salariu-${tinta}-${valoareAfisata}-${sursa}`;
+      // Aceasta este structura finală care elimină eroarea 1587
+      const urlPath = `/calculator/calcul-salariu-${tinta}-${cifraCorecta}-${sursa}`;
       window.history.replaceState(null, "", urlPath);
     }, 500);
 
