@@ -511,11 +511,17 @@ export default function CalculatorSalariu() {
               <>
                 {/* Net highlight */}
                 <div className="card net-card">
-                  <div className="net-label">Salariu net în mână</div>
-                  <div className="net-value">{fmt(rez.net)}</div>
+                  <div className="net-label">
+    {mod === "net" ? "Salariu brut corespunzător" : "Salariu net în mână"}
+                  </div>
+                  <div className="net-value">
+                    {mod === "net" ? fmt(parseFloat(brutEfectiv)) : fmt(rez.net)}
+                  </div>
                   <div className="net-sub">
-                    din {fmt(parseFloat(brutEfectiv))} brut —{" "}
-                    <strong>{rez.brutNet}%</strong> din brut
+                    {mod === "net"
+                      ? <>net în mână: <strong>{fmt(rez.net)}</strong> — <strong>{rez.brutNet}%</strong> din brut</>
+                      : <>din {fmt(parseFloat(brutEfectiv))} brut — <strong>{rez.brutNet}%</strong> din brut</>
+                    }
                   </div>
                 </div>
 
