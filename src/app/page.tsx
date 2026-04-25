@@ -344,11 +344,14 @@ function CalculatorSalariuInner() {
   }, []);
 
   // Actualizează URL-ul când se schimbă inputul
-  useEffect(() => {
-    if (!input.brut) return;
-    const param = mod === "brut" ? "brut" : "net";
+useEffect(() => {
+  if (!input.brut) return;
+  const param = mod === "brut" ? "brut" : "net";
+  const timer = setTimeout(() => {
     router.replace(`/calculator?${param}=${input.brut}`, { scroll: false });
-  }, [input.brut, mod]);
+  }, 500);
+  return () => clearTimeout(timer);
+}, [input.brut, mod]);
   const brutEfectiv =
     mod === "net"
       ? String(calculeazaBrutDinNet(parseFloat(input.brut) || 0, input))
