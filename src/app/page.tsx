@@ -572,9 +572,11 @@ export default function CalculatorSalariu() {
                 <div className="card details-card">
                   <h3>Cost angajator</h3>
                   <div className="detail-rows">
+                    {/* Modifică în cardul Cost angajator */}
                     <div className="detail-row">
                       <span>Salariu brut</span>
-                      <strong>{fmt(parseFloat(input.brut))}</strong>
+                      {/* Schimbă input.brut cu brutEfectiv aici: */}
+                      <strong>{fmt(parseFloat(brutEfectiv))}</strong> 
                     </div>
                     <div className="detail-row">
                       <span>CAM (2.25%)</span>
@@ -594,25 +596,25 @@ export default function CalculatorSalariu() {
                     <BarRow
                       label="Salariu net"
                       value={rez.net}
-                      total={parseFloat(input.brut)}
+                      total={parseFloat(brutEfectiv)}
                       color="#16a34a"
                     />
                     <BarRow
                       label="CAS angajat"
                       value={rez.cas}
-                      total={parseFloat(input.brut)}
+                      total={parseFloat(brutEfectiv)}
                       color="#f59e0b"
                     />
                     <BarRow
                       label="CASS angajat"
                       value={rez.cass}
-                      total={parseFloat(input.brut)}
+                      total={parseFloat(brutEfectiv)}
                       color="#f97316"
                     />
                     <BarRow
                       label="Impozit venit"
                       value={rez.impozit}
-                      total={parseFloat(input.brut)}
+                      total={parseFloat(brutEfectiv)}
                       color="#ef4444"
                     />
                   </div>
