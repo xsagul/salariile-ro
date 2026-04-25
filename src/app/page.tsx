@@ -344,14 +344,29 @@ function CalculatorSalariuInner() {
   }, []);
 
   // Actualizează URL-ul când se schimbă inputul
+// Actualizează URL-ul când se schimbă inputul
   useEffect(() => {
-    if (!input.brut) return;
-    const param = mod === "brut" ? "brut" : "net";
+    // 1. Verificăm dacă avem valoare ca să nu rulăm degeaba
+    if (!input.brut || input.brut === "0") return;
+
+    // 2. Trimitem tot obiectul "input" către funcție (repară eroarea de la Ln 351)
+    const rezultate = calculeaza(input);
+
+    // 3. Verificăm dacă rezultate există (repară eroarea de la Ln 352)
+    if (!rezultate) return;
+
+    const valoareCurenta = mod === "brut" ? input.brut : rezultate.net;
+    const tinta = mod === "brut" ? "net" : "brut";
+    const sursa = mod;
+
     const timer = setTimeout(() => {
-      window.history.replaceState(null, "", `/calculator/${input.brut}-lei-${param}-in-${param === "brut" ? "net" : "brut"}`);
+      // Format: /calculator/calcul-salariu-net-4050-brut
+      const urlPath = `/calculator/calcul-salariu-${tinta}-${valoareCurenta}-${sursa}`;
+      window.history.replaceState(null, "", urlPath);
     }, 500);
+
     return () => clearTimeout(timer);
-  }, [input.brut, mod]);
+  }, [input.brut, mod, calculeaza]); // Am adăugat calculeaza în dependențe pentru siguranță
   const brutEfectiv =
     mod === "net"
       ? String(calculeazaBrutDinNet(parseFloat(input.brut) || 0, input))

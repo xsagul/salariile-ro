@@ -329,24 +329,41 @@ function CalculatorSalariuInner() {
     []
   );
     // Citește valoarea din path la încărcare
-    useEffect(() => {
-      const path = window.location.pathname;
-      const match = path.match(/\/calculator\/(\d+)-lei-(brut|net)/);
-      if (match) {
-        set("brut", match[1]);
-        setMod(match[2] as "brut" | "net");
-      }
-    }, []);
+    // Citește valoarea din path la încărcare
+      useEffect(() => {
+        const path = window.location.pathname;
+        // Noul Regex pentru: calcul-salariu-{tinta}-{valoare}-{sursa}
+        const match = path.match(/\/calculator\/calcul-salariu-(brut|net)-(\d+)-(brut|net)/);
+
+        if (match) {
+          // match[2] este cifra (ex: 4050)
+          // match[3] este sursa (ex: "brut")
+          set("brut", match[2]);
+          setMod(match[3] as "brut" | "net");
+        }
+      }, []);
 
   // Actualizează URL-ul când se schimbă inputul
+// Actualizează URL-ul când se schimbă inputul
   useEffect(() => {
-    if (!input.brut) return;
-    const param = mod === "brut" ? "brut" : "net";
+    if (!input.brut || input.brut === "0") return;
+
+    // Calculăm rezultatele ca să avem și valoarea de Net dacă suntem în acel mod
+    const rezultate = calculeaza(input);
+    if (!rezultate) return;
+
+    const tinta = mod === "brut" ? "net" : "brut";
+    const sursa = mod; // "brut" sau "net"
+    const valoareAfisata = mod === "brut" ? input.brut : rezultate.net;
+
     const timer = setTimeout(() => {
-      window.history.replaceState(null, "", `/calculator/${input.brut}-lei-${param}-in-${param === "brut" ? "net" : "brut"}`);
+      // Format nou: /calculator/calcul-salariu-net-4050-brut
+      const urlPath = `/calculator/calcul-salariu-${tinta}-${valoareAfisata}-${sursa}`;
+      window.history.replaceState(null, "", urlPath);
     }, 500);
+
     return () => clearTimeout(timer);
-  }, [input.brut, mod]);
+  }, [input.brut, mod, calculeaza]);
   const brutEfectiv =
     mod === "net"
       ? String(calculeazaBrutDinNet(parseFloat(input.brut) || 0, input))
