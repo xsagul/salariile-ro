@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback, useEffect, Suspense } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 // ─── Tipuri ──────────────────────────────────────────────────────────────────
 
 interface InputState {
@@ -313,7 +313,7 @@ function CalculatorSalariuInner() {
   const [mod, setMod] = useState<"brut" | "net">("brut");
   const [avansat, setAvansat] = useState(false);
   const searchParams = useSearchParams();
-  const router = useRouter();
+
   const [input, setInput] = useState<InputState>({
     brut: "",
     tichete: "",
@@ -344,14 +344,14 @@ function CalculatorSalariuInner() {
   }, []);
 
   // Actualizează URL-ul când se schimbă inputul
-useEffect(() => {
-  if (!input.brut) return;
-  const param = mod === "brut" ? "brut" : "net";
-  const timer = setTimeout(() => {
-    router.replace(`/calculator?${param}=${input.brut}`, { scroll: false });
-  }, 500);
-  return () => clearTimeout(timer);
-}, [input.brut, mod]);
+  useEffect(() => {
+    if (!input.brut) return;
+    const param = mod === "brut" ? "brut" : "net";
+    const timer = setTimeout(() => {
+      window.history.replaceState(null, "", `/calculator?${param}=${input.brut}`);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, [input.brut, mod]);
   const brutEfectiv =
     mod === "net"
       ? String(calculeazaBrutDinNet(parseFloat(input.brut) || 0, input))
