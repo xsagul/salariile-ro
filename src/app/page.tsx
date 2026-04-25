@@ -408,26 +408,32 @@ export default function CalculatorSalariu() {
               <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "4px" }}>
                 <h2 style={{ margin: 0 }}>Date salariale</h2>
                 <div className="mod-pills">
-                  <button
-                    className={mod === "brut" ? "pill active" : "pill"}
-                    onClick={() => {
-                      // când treci din Net → Brut, pune netul calculat în input
-                      if (mod === "net" && rez) set("brut", String(rez.net));
-                      setMod("brut");
-                    }}
-                  >
-                    Brut
-                  </button>
-                  <button
-                    className={mod === "net" ? "pill active" : "pill"}
-                    onClick={() => {
-                      // când treci din Brut → Net, pune brutul calculat în input
-                      if (mod === "brut" && rez) set("brut", String(parseFloat(brutEfectiv)));
-                      setMod("net");
-                    }}
-                  >
-                    Net
-                  </button>
+                <button
+                  className={mod === "brut" ? "pill active" : "pill"}
+                  onClick={() => {
+                    if (mod === "net") {
+                      const netVal = parseFloat(input.brut) || 0;
+                      const brutCalculat = calculeazaBrutDinNet(netVal, input);
+                      const rezTemp = calculeaza({ ...input, brut: String(brutCalculat) });
+                      if (rezTemp) set("brut", String(rezTemp.net));
+                    }
+                    setMod("brut");
+                  }}
+                >
+                  Brut
+                </button>
+                <button
+                  className={mod === "net" ? "pill active" : "pill"}
+                  onClick={() => {
+                    if (mod === "brut") {
+                      const rezTemp = calculeaza(input);
+                      if (rezTemp) set("brut", String(rezTemp.net));
+                    }
+                    setMod("net");
+                  }}
+                >
+                  Net
+                </button>
                 </div>
               </div>
               <p>Completează câmpurile de mai jos</p>
