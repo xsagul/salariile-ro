@@ -82,7 +82,7 @@ const nextConfig: NextConfig = {
       {
         source: "/calculator",
         destination: "/",
-        permanent: true,
+        permanent: false,
       }
     ];
   },
