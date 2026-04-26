@@ -5,14 +5,17 @@
 import type { Metadata } from "next";
 import CalculatorSalariu from "@/app/components/CalculatorSalariu";
 
+// 1. Props devine Promise
 interface Props {
-  params: { valoare: string };
+  params: Promise<{ valoare: string }>;
 }
 
 // ─── Meta tags dinamice per pagină ───────────────────────────────────────────
 
-export function generateMetadata({ params }: Props): Metadata {
-  const { valoare, mod, cifra } = parseSlug(params.valoare);
+// 2. generateMetadata devine async
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { valoare } = await params;  // ← await
+  const { mod, cifra } = parseSlug(valoare);
 
   if (mod === "net-din-brut") {
     return {
@@ -74,10 +77,8 @@ function parseSlug(slug: string): {
 
 // ─── Pagina ───────────────────────────────────────────────────────────────────
 
-export default function CalculatorDinamic({ params }: Props) {
-  const { brutInitial, modInitial } = parseSlug(params.valoare);
-
-  // Next.js randează CalculatorSalariu pe SERVER cu valorile pre-completate
-  // Google primește HTML cu rezultatul deja calculat ✅
+export default async function CalculatorDinamic({ params }: Props) {
+  const { valoare } = await params;  // ← await
+  const { brutInitial, modInitial } = parseSlug(valoare);
   return <CalculatorSalariu brutInitial={brutInitial} modInitial={modInitial} />;
 }
