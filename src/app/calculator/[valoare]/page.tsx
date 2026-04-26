@@ -22,6 +22,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: `Salariu net pentru ${cifra} lei brut în 2026`,
       description: `Calculează instant salariul net pentru ${cifra} lei brut. Află cât reții după CAS, CASS și impozit pe venit.`,
       alternates: { canonical: `https://salariile.ro/calculator/${valoare}` },
+      openGraph: {                                          // ← adaugă de aici
+        title: `Salariu net pentru ${cifra} lei brut în 2026`,
+        description: `Calculează instant salariul net pentru ${cifra} lei brut.`,
+        url: `https://salariile.ro/calculator/${valoare}`,
+      },                                                    // ← până aici
     };
   }
 
@@ -30,6 +35,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: `Salariu brut pentru ${cifra} lei net în 2026`,
       description: `Calculează instant salariul brut corespunzător unui net de ${cifra} lei. Formula inversă CAS, CASS, impozit.`,
       alternates: { canonical: `https://salariile.ro/calculator/${valoare}` },
+      openGraph: {                                          // ← adaugă de aici
+        title: `Salariu brut pentru ${cifra} lei net în 2026`,
+        description: `Calculează instant salariul brut corespunzător unui net de ${cifra} lei.`,
+        url: `https://salariile.ro/calculator/${valoare}`,
+      },                                                    // ← până aici
     };
   }
 
