@@ -11,30 +11,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 1,
     },
-    // Adăugăm pagina de Info ca să o indexeze și să vadă că e "curată" (nu 404)
-    {
-      url: `${baseUrl}/politica-confidentialitate`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/termeni`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.3,
-    },
     {
       url: `${baseUrl}/salariu-minim`,
       lastModified,
       changeFrequency: "monthly",
       priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/info`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.8,
     },
 
     // 1. Pentru cei care caută NET pornind de la BRUT

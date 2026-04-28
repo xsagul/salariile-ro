@@ -28,10 +28,9 @@ const nextConfig: NextConfig = {
     ];
   },
 
-  // Redirecturi utile pentru a evita 404
   async redirects() {
     return [
-      // Redirect-urile tale vechi
+      // ─── Redirect-uri permanente pentru URL-uri vechi (păstrează SEO juice) ───
       {
         source: "/calculator-salariu",
         destination: "/",
@@ -42,8 +41,15 @@ const nextConfig: NextConfig = {
         destination: "/",
         permanent: true,
       },
-      // Redirect-uri noi către pagina de INFO (ca să eviți penalizarea Google)
-      // Adaugă astea în lista de redirecturi din next.config.ts
+      {
+        source: "/calculator",
+        destination: "/",
+        permanent: true,
+      },
+
+      // ─── Redirect-uri TEMPORARE către /info pentru pagini neimplementate ────
+      // ATENȚIE: Pe măsură ce construim paginile reale, ștergem entry-urile
+      // corespunzătoare de aici (ca am făcut deja cu /salariu-minim).
       {
         source: '/politica-confidentialitate',
         destination: '/info',
@@ -64,7 +70,6 @@ const nextConfig: NextConfig = {
         destination: "/info",
         permanent: false,
       },
-
       {
         source: "/salariu-mediu",
         destination: "/info",
@@ -75,11 +80,6 @@ const nextConfig: NextConfig = {
         destination: "/info",
         permanent: false,
       },
-      {
-        source: "/calculator",
-        destination: "/",
-        permanent: false,
-      }
     ];
   },
 };
