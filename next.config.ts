@@ -64,11 +64,7 @@ const nextConfig: NextConfig = {
         destination: "/info",
         permanent: false,
       },
-      {
-        source: "/salariu-minim",
-        destination: "/info",
-        permanent: false,
-      },
+
       {
         source: "/salariu-mediu",
         destination: "/info",
