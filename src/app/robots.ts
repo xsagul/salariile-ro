@@ -6,7 +6,8 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: "/api/",
+        // /info e thin content, nu vrem să fie crawlat
+        disallow: ["/api/", "/info"],
       },
     ],
     sitemap: "https://salariile.ro/sitemap.xml",

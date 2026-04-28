@@ -263,26 +263,13 @@ export default function CalculatorSalariu({
     { id: "constructii", label: "Construcții" },
   ] as const;
 
+  // NOTĂ: Schema JSON-LD a fost mutată la nivel de pagină (page.tsx pentru
+  // homepage, [valoare]/page.tsx pentru paginile dinamice) ca să fie corectă
+  // per URL. Calculatorul în sine nu mai injectează schema globală.
+
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebApplication",
-            "name": "Calculator Salariu Net 2026",
-            "url": "https://salariile.ro/",
-            "description": "Calculator salariu net din brut pentru România, actualizat 2026.",
-            "applicationCategory": "FinanceApplication",
-            "operatingSystem": "All",
-            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "RON" },
-            "publisher": { "@type": "Organization", "name": "Salariile.ro", "url": "https://salariile.ro" },
-          }),
-        }}
-      />
-
-
+    
       {/* ── Hero ── */}
       <section className="hero">
         <div className="container">

@@ -1,9 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  experimental: {
-    optimizeCss: true,
-  },
+
   // Compresie automată
   compress: true,
 
@@ -51,13 +49,13 @@ const nextConfig: NextConfig = {
       // ATENȚIE: Pe măsură ce construim paginile reale, ștergem entry-urile
       // corespunzătoare de aici (ca am făcut deja cu /salariu-minim).
       {
-        source: '/politica-confidentialitate',
-        destination: '/info',
+        source: "/politica-confidentialitate",
+        destination: "/info",
         permanent: false,
       },
       {
-        source: '/termeni',
-        destination: '/info',
+        source: "/termeni",
+        destination: "/info",
         permanent: false,
       },
       {

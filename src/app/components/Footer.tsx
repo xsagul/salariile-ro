@@ -1,10 +1,58 @@
 // src/app/components/Footer.tsx
-// Footer global. Server Component pur (zero JS la client)
-// pentru că e static și nu are nevoie de interactivitate.
+// Footer global. Server Component pur (zero JS la client).
+// Afișează doar linkuri către pagini IMPLEMENTATE.
+// Adaugă o pagină în IMPLEMENTED_PAGES când e gata și apare automat.
 
 import Link from "next/link";
 
+// Set centralizat: aici adăugăm rutele pe măsură ce le construim
+const IMPLEMENTED_PAGES = new Set<string>([
+  "/",
+  "/salariu-minim",
+  // Adaugă pe măsură ce construiești:
+  // "/salariu-mediu",
+  // "/calculator-pfa",
+  // "/calculator-concediu",
+  // "/noutati",
+  // "/politica-confidentialitate",
+  // "/termeni",
+]);
+
+type FooterLink = { href: string; label: string };
+
+const FOOTER_GROUPS: Array<{ title: string; links: FooterLink[] }> = [
+  {
+    title: "Calculatoare",
+    links: [
+      { href: "/", label: "Calculator salariu net" },
+      { href: "/calculator-pfa", label: "Calculator PFA" },
+      { href: "/calculator-concediu", label: "Calculator concediu medical" },
+    ],
+  },
+  {
+    title: "Informații",
+    links: [
+      { href: "/salariu-minim", label: "Salariu minim 2026" },
+      { href: "/salariu-mediu", label: "Salariu mediu 2026" },
+      { href: "/noutati", label: "Noutăți legislative" },
+    ],
+  },
+  {
+    title: "Legal",
+    links: [
+      { href: "/politica-confidentialitate", label: "Politică confidențialitate" },
+      { href: "/termeni", label: "Termeni și condiții" },
+    ],
+  },
+];
+
 export default function Footer() {
+  // Filtrăm doar grupurile care au cel puțin un link implementat
+  const visibleGroups = FOOTER_GROUPS.map((group) => ({
+    ...group,
+    links: group.links.filter((l) => IMPLEMENTED_PAGES.has(l.href)),
+  })).filter((group) => group.links.length > 0);
+
   return (
     <footer className="site-footer">
       <div className="container">
@@ -20,25 +68,20 @@ export default function Footer() {
           </p>
         </div>
 
-        <div className="footer-links">
-          <div>
-            <h4>Calculatoare</h4>
-            <Link href="/">Calculator salariu net</Link>
-            <Link href="/calculator-pfa">Calculator PFA</Link>
-            <Link href="/calculator-concediu">Calculator concediu medical</Link>
+        {visibleGroups.length > 0 && (
+          <div className="footer-links">
+            {visibleGroups.map((group) => (
+              <div key={group.title}>
+                <h4>{group.title}</h4>
+                {group.links.map((link) => (
+                  <Link key={link.href} href={link.href}>
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            ))}
           </div>
-          <div>
-            <h4>Informații</h4>
-            <Link href="/salariu-minim">Salariu minim 2026</Link>
-            <Link href="/salariu-mediu">Salariu mediu 2026</Link>
-            <Link href="/noutati">Noutăți legislative</Link>
-          </div>
-          <div>
-            <h4>Legal</h4>
-            <Link href="/politica-confidentialitate">Politică confidențialitate</Link>
-            <Link href="/termeni">Termeni și condiții</Link>
-          </div>
-        </div>
+        )}
 
         <div className="footer-bottom">
           <p>
