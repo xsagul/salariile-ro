@@ -69,6 +69,8 @@ h3 {
   letter-spacing: -0.01em;
   margin-bottom: 0.75rem;
 }
+h3.accent { color: var(--accent); }
+h3.warn { color: var(--warn); }
 
 p {
   color: var(--muted);
@@ -642,6 +644,10 @@ select:focus { border-color: var(--accent); }
 .cost-box .total.warn { color: var(--warn); }
 
 /* ─── Tabel data (CAS, CASS, etc.) ──────────────────────────────────────── */
+/* ─── Tabel data (CAS, CASS, etc.) ──────────────────────────────────────── */
+.table-scroll {
+  overflow-x: auto;
+}
 .data-table {
   width: 100%;
   border-collapse: collapse;
@@ -687,6 +693,8 @@ select:focus { border-color: var(--accent); }
   border: none;
 }
 .calc-row.total > strong { color: var(--accent); font-size: 1.0625rem; }
+.calc-row.total.warn { background: var(--warn-light); }
+.calc-row.total.warn > strong { color: var(--warn); }
 
 /* ─── FAQ accordion (folosește <details>) ───────────────────────────────── */
 .faq-list {
