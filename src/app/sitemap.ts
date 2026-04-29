@@ -17,7 +17,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.9,
     },
-
+    {
+      url: `${baseUrl}/salariu-mediu`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
     // 1. Pentru cei care caută NET pornind de la BRUT
     ...([4050, 4500, 5000, 5500, 6000, 6500, 7000, 7500, 8000, 9000, 10000, 12000, 15000, 20000].map(v => ({
       url: `${baseUrl}/calculator/calcul-salariu-net-${v}-brut`,

@@ -10,7 +10,7 @@ const IMPLEMENTED_PAGES = new Set<string>([
   "/",
   "/salariu-minim",
   // Adaugă pe măsură ce construiești:
-  // "/salariu-mediu",
+  "/salariu-mediu",
   // "/calculator-pfa",
   // "/calculator-concediu",
   // "/noutati",
