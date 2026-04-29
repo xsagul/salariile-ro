@@ -69,11 +69,6 @@ const nextConfig: NextConfig = {
         permanent: false,
       },
       {
-        source: "/salariu-mediu",
-        destination: "/info",
-        permanent: false,
-      },
-      {
         source: "/noutati",
         destination: "/info",
         permanent: false,
