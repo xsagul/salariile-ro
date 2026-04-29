@@ -1,7 +1,4 @@
 // app/salariu-minim/page.tsx
-// Server Component pur — zero JavaScript la client = SSR maxim, SEO maxim
-// Stiluri migrate 100% în globals.css
-
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -14,7 +11,42 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://salariile.ro/salariu-minim" },
 };
 
-// ─── Date factuale ───────────────────────────────────────────────────────────
+// ─── Datele FAQ (Sursa unică de adevăr pentru SEO și UI) ─────────────────────
+
+const faqSalariuMinim = [
+  {
+    q: "Cât este salariul minim brut în România în 2026?",
+    a: "Salariul minim brut în România în 2026 are două valori: 4.050 lei lunar pentru perioada 1 ianuarie - 30 iunie 2026 (conform HG 1506/2024) și 4.325 lei lunar începând cu 1 iulie 2026 (conform HG 146/2026)."
+  },
+  {
+    q: "Cât rămâne net la salariul minim în 2026?",
+    a: "În semestrul I 2026 (ian-iun), salariul minim net este 2.574 lei, cu aplicarea facilității fiscale de 300 lei. Din 1 iulie 2026, la un brut de 4.325 lei și facilitate redusă la 200 lei, salariul net devine aproximativ 2.699 lei."
+  },
+  {
+    q: "Când crește salariul minim în 2026 și cu cât?",
+    a: "Salariul minim brut crește de la 4.050 lei la 4.325 lei începând cu 1 iulie 2026, conform Hotărârii de Guvern nr. 146/2026. Creșterea brută este de 275 lei (+6,8%)."
+  },
+  {
+    q: "Cât plătește total angajatorul pentru un salariu minim în 2026?",
+    a: "Costul total al angajatorului pentru un salariu minim este de 4.134 lei pe lună în semestrul I 2026 și de aproximativ 4.418 lei începând cu 1 iulie 2026 (4.325 brut + CAM 2,25%)."
+  },
+  {
+    q: "Care este salariul minim în construcții în 2026?",
+    a: "Salariul minim brut în sectorul construcțiilor rămâne 4.582 lei în 2026, conform OUG 156/2024. Această valoare nu este afectată de creșterea generală a salariului minim din iulie 2026."
+  },
+  {
+    q: "Ce este facilitatea fiscală de 300/200 lei pentru salariul minim?",
+    a: "Facilitatea fiscală reglementată de OUG 89/2025 scutește de taxe o sumă fixă din salariul minim: 300 lei/lună în perioada 1 ianuarie - 30 iunie 2026 și 200 lei/lună în perioada 1 iulie - 31 decembrie 2026."
+  },
+  {
+    q: "Pot fi angajat legal sub salariul minim pe economie?",
+    a: "Nu. Conform Codului Muncii, angajatorul are obligația legală de a plăti minimum salariul minim brut pe țară pentru un program de muncă cu normă întreagă."
+  },
+  {
+    q: "Salariul minim influențează plafoanele PFA în 2026?",
+    a: "Pentru calculul plafoanelor CAS și CASS la veniturile din PFA în anul 2026 se folosește salariul minim brut în vigoare la 1 ianuarie 2026, respectiv 4.050 lei."
+  }
+];
 
 const ISTORIC_SALARIU_MINIM = [
   { perioada: "2019", brut: 2080, net: 1263, hg: "HG 937/2018" },
@@ -30,7 +62,7 @@ const ISTORIC_SALARIU_MINIM = [
 
 const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(n);
 
-// ─── Date structurate (JSON-LD) ─────────────────────────────────────────────
+// ─── JSON-LD ─────────────────────────────────────────────────────────────────
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -47,25 +79,20 @@ const jsonLd = {
       headline: "Salariu Minim 2026 în România: 4.050 → 4.325 lei. Calcul Complet, Net și Legislație",
       author: { "@type": "Organization", name: "Salariile.ro", url: "https://salariile.ro" },
       mainEntityOfPage: "https://salariile.ro/salariu-minim",
+      dateModified: new Date().toISOString()
     },
     {
       "@type": "FAQPage",
-      mainEntity: [
-        {
-            "@type": "Question",
-            name: "Cât este salariul minim brut în România în 2026?",
-            acceptedAnswer: {
-                "@type": "Answer",
-                text: "Salariul minim brut în România în 2026 are două valori: 4.050 lei lunar (ian-iun) și 4.325 lei lunar (din 1 iulie) conform HG 146/2026."
-            }
-        }
-        // ... restul de FAQ rămâne neschimbat în script
-      ]
+      mainEntity: faqSalariuMinim.map(item => ({
+        "@type": "Question",
+        name: item.q,
+        acceptedAnswer: { "@type": "Answer", text: item.a }
+      }))
     }
   ]
 };
 
-// ─── Componenta paginii ─────────────────────────────────────────────────────
+// ─── Pagina ──────────────────────────────────────────────────────────────────
 
 export default function SalariuMinimPage() {
   return (
@@ -74,15 +101,9 @@ export default function SalariuMinimPage() {
 
       <section className="hero">
         <div className="container">
-          <nav className="breadcrumb">
-            <Link href="/">Acasă</Link>
-            <span>/</span>
-            <span>Salariu minim 2026</span>
-          </nav>
+          <nav className="breadcrumb"><Link href="/">Acasă</Link><span>/</span><span>Salariu minim 2026</span></nav>
           <h1>Salariu Minim <em>2026</em></h1>
-          <p className="subtitle">
-            Salariul minim brut în România 2026 are două valori: <strong>4.050 lei</strong> până în 30 iunie și <strong>4.325 lei</strong> din 1 iulie (HG 146/2026).
-          </p>
+          <p className="subtitle">Salariul minim brut în România 2026 are două valori: <strong>4.050 lei</strong> până în 30 iunie și <strong>4.325 lei</strong> din 1 iulie (HG 146/2026).</p>
           <div className="badges">
             <span className="badge">Ian–Iun: 4.050 lei brut</span>
             <span className="badge">Iul–Dec: 4.325 lei brut</span>
@@ -95,28 +116,22 @@ export default function SalariuMinimPage() {
         <section className="section-surface">
           <div className="container">
             <div className="grid-auto">
-              {/* Semestrul I */}
+              {/* S1 */}
               <article className="card card-accent">
                 <div className="eyebrow">1 Ianuarie – 30 Iunie 2026</div>
                 <div className="stat-rows">
                   <StatRow label="Salariu brut" value={`${fmt(4050)} lei`} lg />
-                  <StatRow label="Salariu net" value={`${fmt(2574)} lei`} xl accent />
+                  <StatRow label="Salariu net" value={`${fmt(2574)} lei`} xl accent bold />
                   <div className="stat-divider" />
                   <StatRow label="Cost angajator" value={`${fmt(4134)} lei`} sm />
                   <StatRow label="Facilitate fiscală" value="300 lei netaxabili" sm accent bold />
                   <StatRow label="Tarif orar" value="24,496 lei/oră" sm />
                 </div>
-                <Link href="/calculator/calcul-salariu-net-4050-brut" className="chip">
-                  Calculează detaliat 4.050 lei →
-                </Link>
+                <Link href="/calculator/calcul-salariu-net-4050-brut" className="chip">Calculează detaliat 4.050 lei →</Link>
               </article>
-
-              {/* Semestrul II */}
+              {/* S2 */}
               <article className="card card-warn">
-                <div className="card-head-row">
-                  <div className="eyebrow" style={{marginBottom: 0}}>1 Iulie – 31 Decembrie 2026</div>
-                  <span className="tag">NOU</span>
-                </div>
+                <div className="card-head-row"><div className="eyebrow">1 Iulie – 31 Decembrie 2026</div><span className="tag">NOU</span></div>
                 <div className="stat-rows">
                   <StatRow label="Salariu brut" value={`${fmt(4325)} lei`} lg />
                   <StatRow label="Salariu net" value={`${fmt(2699)} lei`} xl warn bold />
@@ -125,14 +140,10 @@ export default function SalariuMinimPage() {
                   <StatRow label="Facilitate fiscală" value="200 lei netaxabili" sm warn bold />
                   <StatRow label="Tarif orar" value="25,949 lei/oră" sm />
                 </div>
-                <Link href="/calculator/calcul-salariu-net-4325-brut" className="chip chip-warn">
-                  Calculează detaliat 4.325 lei →
-                </Link>
+                <Link href="/calculator/calcul-salariu-net-4325-brut" className="chip chip-warn">Calculează detaliat 4.325 lei →</Link>
               </article>
             </div>
-            <p className="source-note text-center">
-              Sursa: HG 146/2026 (Monitorul Oficial nr. 196/13 martie 2026), OUG 89/2025
-            </p>
+            <p className="source-note text-center">Sursa: HG 146/2026, OUG 89/2025</p>
           </div>
         </section>
 
@@ -141,13 +152,10 @@ export default function SalariuMinimPage() {
             <article className="article">
               <h2>Ce este salariul minim brut pe economie</h2>
               <p>Salariul minim brut pe țară este suma minimă pe care un angajator are obligația legală să o plătească unui salariat cu normă întreagă.</p>
-              <p>În 2026, salariul minim are două valori distincte: <strong>4.050 lei brut</strong> (S1) și <strong>4.325 lei brut</strong> (S2).</p>
             </article>
 
             <article className="article">
-              <h2>Cum se calculează salariul minim net în 2026</h2>
-              <p>Particularitatea anului 2026 este facilitatea fiscală: o sumă fixă din salariul minim este scutită de impozit și contribuții.</p>
-
+              <h2>Calculul salariului minim net în 2026</h2>
               <div className="card mb-2">
                 <h3 className="accent">Semestrul I: 4.050 lei brut → 2.574 lei net</h3>
                 <div className="stat-rows">
@@ -159,39 +167,17 @@ export default function SalariuMinimPage() {
                   <CalcRow label="Salariu net (în mână)" value="2.574,00 lei" total />
                 </div>
               </div>
-
-              <div className="card">
-                <h3 className="warn">Semestrul II: 4.325 lei brut → ~2.699 lei net</h3>
-                <div className="stat-rows">
-                  <CalcRow label="Salariu brut" value="4.325,00 lei" bold />
-                  <CalcRow label="Facilitate fiscală (OUG 89/2025)" value="−200,00 lei" warn />
-                  <CalcRow label="CAS — pensie (25%)" value="−1.031,25 lei" danger />
-                  <CalcRow label="CASS — sănătate (10%)" value="−412,50 lei" danger />
-                  <CalcRow label="Impozit pe venit (10%)" value="−268,13 lei" danger />
-                  <CalcRow label="Salariu net (în mână)" value="~2.699,00 lei" total warn />
-                </div>
-              </div>
             </article>
 
             <article className="article">
-              <h2>Evoluția salariului minim în România</h2>
+              <h2>Istoric Salariu Minim</h2>
               <div style={{ overflowX: "auto" }}>
                 <table className="data-table">
-                  <thead>
-                    <tr>
-                      <th>Perioadă</th>
-                      <th className="right">Brut (lei)</th>
-                      <th className="right">Net (lei)</th>
-                      <th>Bază legală</th>
-                    </tr>
-                  </thead>
+                  <thead><tr><th>Perioadă</th><th className="right">Brut (lei)</th><th className="right">Net (lei)</th><th>Bază legală</th></tr></thead>
                   <tbody>
                     {ISTORIC_SALARIU_MINIM.map((row) => (
                       <tr key={row.perioada} className={row.highlight ? "highlight" : ""}>
-                        <td>{row.perioada}</td>
-                        <td className="right">{fmt(row.brut)}</td>
-                        <td className="right">{fmt(row.net)}</td>
-                        <td className="muted text-xs">{row.hg}</td>
+                        <td>{row.perioada}</td><td className="right">{fmt(row.brut)}</td><td className="right">{fmt(row.net)}</td><td className="muted text-xs">{row.hg}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -199,18 +185,23 @@ export default function SalariuMinimPage() {
               </div>
             </article>
 
+            {/* SECȚIUNEA FAQ — RESTAURATĂ COMPLET ȘI CURĂȚATĂ */}
+            <article className="article">
+              <h2>Întrebări frecvente despre salariul minim 2026</h2>
+              <div className="faq-list">
+                {faqSalariuMinim.map((item, index) => (
+                  <details key={index} className="faq-item">
+                    <summary>{item.q}</summary>
+                    <p className="faq-answer">{item.a}</p>
+                  </details>
+                ))}
+              </div>
+            </article>
+
             <div className="cta-card">
               <h2>Calculează orice salariu cu instrumentul nostru</h2>
-              <p>Calculatorul nostru îți arată salariul net pentru orice sumă brută, cu opțiuni avansate.</p>
+              <p>Calculatorul nostru îți arată salariul net pentru orice sumă brută, conform legii 2026.</p>
               <Link href="/" className="btn-cta">Mergi la Calculator →</Link>
-            </div>
-
-            <div className="card">
-              <h3>Citește și</h3>
-              <ul className="link-list">
-                <li><Link href="/salariu-mediu">Salariul mediu în România 2026 →</Link></li>
-                <li><Link href="/">Calculator general salariu net/brut →</Link></li>
-              </ul>
             </div>
           </div>
         </section>
@@ -222,31 +213,21 @@ export default function SalariuMinimPage() {
 // ─── Helpers UI ──────────────────────────────────────────────────────────────
 
 function StatRow({ label, value, lg, xl, accent, warn, sm, bold }: any) {
-  let classes = "stat-row";
-  if (lg) classes += " lg";
-  if (xl) classes += " xl";
-  if (sm) classes += " sm";
+  let cls = "stat-row";
+  if (lg) cls += " lg"; if (xl) cls += " xl"; if (sm) cls += " sm";
   return (
-    <div className={classes}>
+    <div className={cls}>
       <span>{label}</span>
-      <strong className={`${accent ? "accent" : ""} ${warn ? "warn" : ""} ${bold ? "bold" : ""}`}>
-        {value}
-      </strong>
+      <strong className={`${accent ? "accent" : ""} ${warn ? "warn" : ""} ${bold ? "bold" : ""}`}>{value}</strong>
     </div>
   );
 }
 
 function CalcRow({ label, value, bold, danger, accent, warn, total }: any) {
-  let classes = "calc-row";
-  if (bold) classes += " bold";
-  if (danger) classes += " danger";
-  if (accent) classes += " accent";
-  if (warn) classes += " warn";
-  if (total) classes += " total";
+  let cls = "calc-row";
+  if (bold) cls += " bold"; if (danger) cls += " danger";
+  if (accent) cls += " accent"; if (warn) cls += " warn"; if (total) cls += " total";
   return (
-    <div className={classes}>
-      <span>{label}</span>
-      <strong>{value}</strong>
-    </div>
+    <div className={cls}><span>{label}</span><strong>{value}</strong></div>
   );
 }
