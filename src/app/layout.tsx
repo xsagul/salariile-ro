@@ -27,15 +27,7 @@ export const metadata: Metadata = {
   },
   description:
     "Calculator salariu net din brut 2026, salariu minim, salariu mediu și noutăți legislative. Totul despre salariile din România.",
-  keywords: [
-    "calculator salariu",
-    "calculator salariu net",
-    "calcul salariu net",
-    "salariu net brut",
-    "salariu minim 2026",
-    "salariu mediu Romania",
-    "calculator salarii",
-  ],
+
   authors: [{ name: "Salariile.ro" }],
   creator: "Salariile.ro",
   openGraph: {

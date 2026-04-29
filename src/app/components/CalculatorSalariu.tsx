@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 
 // ─── Tipuri ──────────────────────────────────────────────────────────────────
 
@@ -152,84 +152,65 @@ const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(n) + " lei";
 
 // ─── Componente UI ────────────────────────────────────────────────────────────
 
-function InputNumber({
-  label, value, onChange, placeholder, hint,
-}: {
-  label: string; value: string; onChange: (v: string) => void; placeholder?: string; hint?: string;
-}) {
+function InputNumber({ label, value, onChange, placeholder, hint }: any) {
   return (
     <div className="field">
       <label>{label}</label>
       {hint && <span className="hint">{hint}</span>}
       <div className="input-wrap">
-        <input
-          type="number"
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          placeholder={placeholder || "0"}
-          min="0"
-        />
+        <input type="number" value={value} onChange={(e) => onChange(e.target.value)} placeholder={placeholder || "0"} min="0" />
         <span className="suffix">LEI / lună</span>
       </div>
     </div>
   );
 }
 
-function Toggle({ label, checked, onChange }: { label: string; checked: boolean; onChange: (v: boolean) => void; }) {
+function Toggle({ label, checked, onChange }: any) {
   return (
     <label className="toggle-row">
       <span>{label}</span>
-      <button
-        role="switch"
-        aria-checked={checked}
-        className={`toggle ${checked ? "on" : ""}`}
-        onClick={() => onChange(!checked)}
-        type="button"
-      >
+      <button role="switch" aria-checked={checked} className={`toggle ${checked ? "on" : ""}`} onClick={() => onChange(!checked)} type="button">
         <span className="thumb" />
       </button>
     </label>
   );
 }
 
-function Select({ id, label, value, options, onChange }: {
-  id: string; label: string; value: number; options: { v: number; l: string }[]; onChange: (v: number) => void;
-}) {
+function Select({ id, label, value, options, onChange }: any) {
   return (
     <div className="field">
       <label htmlFor={id}>{label}</label>
       <select id={id} value={value} onChange={(e) => onChange(Number(e.target.value))}>
-        {options.map((o) => (
-          <option key={o.v} value={o.v}>{o.l}</option>
-        ))}
+        {options.map((o: any) => (<option key={o.v} value={o.v}>{o.l}</option>))}
       </select>
     </div>
   );
 }
 
-function BarRow({ label, value, total, color }: { label: string; value: number; total: number; color: string; }) {
+function BarRow({ label, value, total, color }: any) {
   const pct = total > 0 ? (value / total) * 100 : 0;
   return (
     <div className="bar-row">
-      <div className="bar-label">
-        <span>{label}</span>
-        <span className="bar-val">{fmt(value)}</span>
-      </div>
-      <div className="bar-track">
-        <div className="bar-fill" style={{ width: `${pct}%`, background: color }} />
-      </div>
+      <div className="bar-label"><span>{label}</span><span className="bar-val">{fmt(value)}</span></div>
+      <div className="bar-track"><div className="bar-fill" style={{ width: `${pct}%`, background: color }} /></div>
     </div>
   );
 }
 
-// ─── Componenta principală ────────────────────────────────────────────────────
+// ─── Componenta principală (ACUM ACCEPTĂ PROPS DINAMICE) ──────────────────────
 
 export default function CalculatorSalariu({
   brutInitial = "",
   modInitial = "brut",
+  titluCustom,
+  subtitluCustom,
+  ascundeInfoFiscale = false,
 }: {
   brutInitial?: string;
   modInitial?: "brut" | "net";
+  titluCustom?: React.ReactNode;
+  subtitluCustom?: React.ReactNode;
+  ascundeInfoFiscale?: boolean;
 }) {
   const [mod, setMod] = useState<"brut" | "net">(modInitial);
   const [avansat, setAvansat] = useState(false);
@@ -251,10 +232,7 @@ export default function CalculatorSalariu({
     []
   );
   
-  const brutEfectiv =
-    mod === "net"
-      ? String(calculeazaBrutDinNet(parseFloat(input.brut) || 0, input))
-      : input.brut;
+  const brutEfectiv = mod === "net" ? String(calculeazaBrutDinNet(parseFloat(input.brut) || 0, input)) : input.brut;
   const rez = calculeaza({ ...input, brut: brutEfectiv });
 
   const sectiuni = [
@@ -263,14 +241,9 @@ export default function CalculatorSalariu({
     { id: "constructii", label: "Construcții" },
   ] as const;
 
-  // NOTĂ: Schema JSON-LD a fost mutată la nivel de pagină (page.tsx pentru
-  // homepage, [valoare]/page.tsx pentru paginile dinamice) ca să fie corectă
-  // per URL. Calculatorul în sine nu mai injectează schema globală.
-
   return (
     <>
-    
-      {/* ── Hero ── */}
+      {/* ── Hero (Acum afișează titluri dinamice dacă sunt trimise) ── */}
       <section className="hero">
         <div className="container">
           <div className="breadcrumb">
@@ -278,12 +251,17 @@ export default function CalculatorSalariu({
             <span>/</span>
             <span>Calculator salariu</span>
           </div>
-          <h1>Calculator Salariu Net <em>2026</em></h1>
+          
+          {/* Titlul Dinamic */}
+          <h1>
+            {titluCustom || <>Calculator Salariu Net <em>2026</em></>}
+          </h1>
+          
+          {/* Subtitlul Dinamic */}
           <p className="subtitle">
-            Calculează instantaneu salariul net din brut, CAS, CASS,
-            impozit și costul total al angajatorului — actualizat cu
-            legislația fiscală în vigoare.
+            {subtitluCustom || "Calculează instantaneu salariul net din brut, CAS, CASS, impozit și costul total al angajatorului — actualizat cu legislația fiscală în vigoare."}
           </p>
+          
           <div className="badges">
             <span className="badge">Actualizat 2026</span>
             <span className="badge">Salariu minim 4.050 lei</span>
@@ -300,124 +278,52 @@ export default function CalculatorSalariu({
             <div className="card-head-row">
               <h2>Date salariale</h2>
               <div className="mod-pills">
-                <button
-                  className={mod === "brut" ? "pill active" : "pill"}
-                  onClick={() => {
-                    if (mod === "net") {
-                      const netVal = parseFloat(input.brut) || 0;
-                      const brutCalculat = calculeazaBrutDinNet(netVal, input);
-                      set("brut", String(brutCalculat));
-                    }
-                    setMod("brut");
-                  }}
-                >
-                  Brut
-                </button>
-                <button
-                  className={mod === "net" ? "pill active" : "pill"}
-                  onClick={() => {
-                    if (mod === "brut") {
-                      const rezTemp = calculeaza(input);
-                      if (rezTemp) set("brut", String(rezTemp.net));
-                    }
-                    setMod("net");
-                  }}
-                >
-                  Net
-                </button>
+                <button className={mod === "brut" ? "pill active" : "pill"} onClick={() => {
+                  if (mod === "net") {
+                    const netVal = parseFloat(input.brut) || 0;
+                    set("brut", String(calculeazaBrutDinNet(netVal, input)));
+                  }
+                  setMod("brut");
+                }}>Brut</button>
+                <button className={mod === "net" ? "pill active" : "pill"} onClick={() => {
+                  if (mod === "brut") {
+                    const rezTemp = calculeaza(input);
+                    if (rezTemp) set("brut", String(rezTemp.net));
+                  }
+                  setMod("net");
+                }}>Net</button>
               </div>
             </div>
             <p>Completează câmpurile de mai jos</p>
           </div>
 
-          {/* Tabs sectiune */}
           <div className="tab-group">
             {sectiuni.map((s) => (
-              <button
-                key={s.id}
-                className={`tab ${input.sectiune === s.id ? "active" : ""}`}
-                onClick={() => set("sectiune", s.id)}
-                type="button"
-              >
+              <button key={s.id} className={`tab ${input.sectiune === s.id ? "active" : ""}`} onClick={() => set("sectiune", s.id)} type="button">
                 {s.label}
               </button>
             ))}
           </div>
 
-          <InputNumber
-            label={mod === "brut" ? "Salariu brut" : "Salariu net"}
-            hint={mod === "brut" ? "Suma din contractul de muncă" : "Suma primită în mână"}
-            value={input.brut}
-            onChange={(v) => set("brut", v)}
-          />
-          <button
-            className="avansat-toggle"
-            onClick={() => {
-              if (avansat) {
-                set("tichete", "");
-                set("functieDeBAza", true);
-                set("persoanePretretinere", 0);
-                set("varstaSub26", false);
-                set("copiiScolarizati", 0);
-                set("scutitImpozit", false);
-              }
-              setAvansat(!avansat);
-            }}
-          >
+          <InputNumber label={mod === "brut" ? "Salariu brut" : "Salariu net"} hint={mod === "brut" ? "Suma din contractul de muncă" : "Suma primită în mână"} value={input.brut} onChange={(v: any) => set("brut", v)} />
+          
+          <button className="avansat-toggle" onClick={() => {
+            if (avansat) { set("tichete", ""); set("functieDeBAza", true); set("persoanePretretinere", 0); set("varstaSub26", false); set("copiiScolarizati", 0); set("scutitImpozit", false); }
+            setAvansat(!avansat);
+          }}>
             {avansat ? "▲ Ascunde opțiuni avansate" : "▼ Calculator avansat"}
           </button>
 
           {avansat && (
             <>
-              <InputNumber
-                label="Tichete de masă"
-                value={input.tichete}
-                onChange={(v) => set("tichete", v)}
-                placeholder="0"
-                hint="Valoare lunară totală"
-              />
-              <Toggle
-                label="Funcție de bază"
-                checked={input.functieDeBAza}
-                onChange={(v) => set("functieDeBAza", v)}
-              />
-              <Select
-                id="persoane-intretinere"
-                label="Persoane în întreținere"
-                value={input.persoanePretretinere}
-                options={[0, 1, 2, 3, 4].map((n) => ({
-                  v: n,
-                  l: n === 0 ? "Niciuna" : `${n} ${n === 1 ? "persoană" : "persoane"}`,
-                }))}
-                onChange={(v) => set("persoanePretretinere", v)}
-              />
-              <Select
-                id="copii-scolari"
-                label="Copii minori școlari"
-                value={input.copiiScolarizati}
-                options={[0, 1, 2, 3, 4, 5].map((n) => ({
-                  v: n,
-                  l: n === 0 ? "Niciunul" : `${n} ${n === 1 ? "copil" : "copii"}`,
-                }))}
-                onChange={(v) => set("copiiScolarizati", v)}
-              />
-              <Toggle
-                label="Vârstă sub 26 ani"
-                checked={input.varstaSub26}
-                onChange={(v) => set("varstaSub26", v)}
-              />
-              {input.sectiune === "standard" && (
-                <Toggle
-                  label="Scutit de impozit (handicap etc.)"
-                  checked={input.scutitImpozit}
-                  onChange={(v) => set("scutitImpozit", v)}
-                />
-              )}
+              <InputNumber label="Tichete de masă" value={input.tichete} onChange={(v: any) => set("tichete", v)} placeholder="0" hint="Valoare lunară totală" />
+              <Toggle label="Funcție de bază" checked={input.functieDeBAza} onChange={(v: any) => set("functieDeBAza", v)} />
+              <Select id="persoane-intretinere" label="Persoane în întreținere" value={input.persoanePretretinere} options={[0, 1, 2, 3, 4].map((n) => ({ v: n, l: n === 0 ? "Niciuna" : `${n} ${n === 1 ? "persoană" : "persoane"}` }))} onChange={(v: any) => set("persoanePretretinere", v)} />
+              <Select id="copii-scolari" label="Copii minori școlari" value={input.copiiScolarizati} options={[0, 1, 2, 3, 4, 5].map((n) => ({ v: n, l: n === 0 ? "Niciunul" : `${n} ${n === 1 ? "copil" : "copii"}` }))} onChange={(v: any) => set("copiiScolarizati", v)} />
+              <Toggle label="Vârstă sub 26 ani" checked={input.varstaSub26} onChange={(v: any) => set("varstaSub26", v)} />
+              {input.sectiune === "standard" && <Toggle label="Scutit de impozit (handicap etc.)" checked={input.scutitImpozit} onChange={(v: any) => set("scutitImpozit", v)} />}
               {parseFloat(input.brut) === SALARIU_MINIM && (
-                <div className="info-box">
-                  <strong>Facilitate aplicată:</strong> deducere de 300 lei din
-                  baza de calcul pentru salariul minim (OUG 89/2025).
-                </div>
+                <div className="info-box"><strong>Facilitate aplicată:</strong> deducere de 300 lei din baza de calcul pentru salariul minim (OUG 89/2025).</div>
               )}
             </>
           )}
@@ -428,57 +334,27 @@ export default function CalculatorSalariu({
           {rez ? (
             <>
               <div className="card net-card">
-                <div className="net-label">
-                  {mod === "net" ? "Salariu brut corespunzător" : "Salariu net în mână"}
-                </div>
-                <div className="net-value">
-                  {mod === "net" ? fmt(parseFloat(brutEfectiv)) : fmt(rez.net)}
-                </div>
-                <div className="net-sub">
-                  <strong>{rez.brutNet}%</strong> Angajat —{" "}
-                  <strong>{100 - rez.brutNet}%</strong> Stat
-                </div>
+                <div className="net-label">{mod === "net" ? "Salariu brut corespunzător" : "Salariu net în mână"}</div>
+                <div className="net-value">{mod === "net" ? fmt(parseFloat(brutEfectiv)) : fmt(rez.net)}</div>
+                <div className="net-sub"><strong>{rez.brutNet}%</strong> Angajat — <strong>{100 - rez.brutNet}%</strong> Stat</div>
               </div>
 
               <div className="card details-card">
                 <h3>Deduceri angajat</h3>
                 <div className="detail-rows">
-                  <div className="detail-row">
-                    <span>CAS (pensie 25%)</span>
-                    <strong>−{fmt(rez.cas)}</strong>
-                  </div>
-                  <div className="detail-row">
-                    <span>CASS (sănătate 10%)</span>
-                    <strong>−{fmt(rez.cass)}</strong>
-                  </div>
-                  {rez.deducerePersonala > 0 && (
-                    <div className="detail-row green">
-                      <span>Deducere personală</span>
-                      <strong>+{fmt(rez.deducerePersonala)}</strong>
-                    </div>
-                  )}
-                  <div className="detail-row">
-                    <span>Impozit venit (10%)</span>
-                    <strong>−{fmt(rez.impozit)}</strong>
-                  </div>
+                  <div className="detail-row"><span>CAS (pensie 25%)</span><strong>−{fmt(rez.cas)}</strong></div>
+                  <div className="detail-row"><span>CASS (sănătate 10%)</span><strong>−{fmt(rez.cass)}</strong></div>
+                  {rez.deducerePersonala > 0 && <div className="detail-row green"><span>Deducere personală</span><strong>+{fmt(rez.deducerePersonala)}</strong></div>}
+                  <div className="detail-row"><span>Impozit venit (10%)</span><strong>−{fmt(rez.impozit)}</strong></div>
                 </div>
               </div>
 
               <div className="card details-card">
                 <h3>Cost angajator</h3>
                 <div className="detail-rows">
-                  <div className="detail-row">
-                    <span>Salariu brut</span>
-                    <strong>{fmt(parseFloat(brutEfectiv))}</strong>
-                  </div>
-                  <div className="detail-row">
-                    <span>CAM (2.25%)</span>
-                    <strong>+{fmt(rez.cam)}</strong>
-                  </div>
-                  <div className="detail-row total-row">
-                    <span>Cost total</span>
-                    <strong>{fmt(rez.costTotal)}</strong>
-                  </div>
+                  <div className="detail-row"><span>Salariu brut</span><strong>{fmt(parseFloat(brutEfectiv))}</strong></div>
+                  <div className="detail-row"><span>CAM (2.25%)</span><strong>+{fmt(rez.cam)}</strong></div>
+                  <div className="detail-row total-row"><span>Cost total</span><strong>{fmt(rez.costTotal)}</strong></div>
                 </div>
               </div>
 
@@ -495,9 +371,7 @@ export default function CalculatorSalariu({
           ) : (
             <div className="card empty-card">
               <div className="empty-icon">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <path d="M9 7H6a2 2 0 00-2 2v9a2 2 0 002 2h9a2 2 0 002-2v-3M9 12h6m-3-3v6M16 3h5v5M21 3l-7 7" />
-                </svg>
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M9 7H6a2 2 0 00-2 2v9a2 2 0 002 2h9a2 2 0 002-2v-3M9 12h6m-3-3v6M16 3h5v5M21 3l-7 7" /></svg>
               </div>
               <p>Introdu salariul brut pentru a vedea calculul</p>
               <span className="empty-hint">Salariu minim 2026: {fmt(SALARIU_MINIM)}</span>
@@ -506,48 +380,31 @@ export default function CalculatorSalariu({
         </div>
       </div>
 
-      {/* ── Informații SEO ── */}
-      <section className="info-section">
-        <div className="container">
-          <div className="info-grid">
-            <div className="info-card">
-              <h3>Cum se calculează salariul net?</h3>
-              <p>
-                Din salariul brut se deduc contribuțiile obligatorii: CAS
-                (25%), CASS (10%) și impozitul pe venit (10%). Formula de
-                calcul ține cont de deducerile personale și facilitățile
-                fiscale aplicabile.
-              </p>
-            </div>
-            <div className="info-card">
-              <h3>Salariul minim în 2026</h3>
-              <p>
-                Salariul minim brut în 2026 este de{" "}
-                <strong>4.050 lei</strong>, rezultând un net de aproximativ{" "}
-                <strong>2.574 lei</strong> cu aplicarea facilității de 300
-                lei (OUG 89/2025).
-              </p>
-            </div>
-            <div className="info-card">
-              <h3>Ce este deducerea personală?</h3>
-              <p>
-                Angajații cu venituri până la 6.050 lei brut beneficiază de
-                o deducere din baza de calcul a impozitului pe venit. Suma
-                depinde de venitul brut și numărul de persoane în întreținere.
-              </p>
-            </div>
-            <div className="info-card">
-              <h3>Facilități IT și construcții</h3>
-              <p>
-                Angajații din IT și construcții beneficiază de scutire de
-                impozit pe venit pentru venituri brute de până la{" "}
-                <strong>10.000 lei</strong>. Selectează secțiunea
-                corespunzătoare din calculator.
-              </p>
+      {/* ── Informații SEO (Sunt ASCUNSE automat pe paginile dinamice) ── */}
+      {!ascundeInfoFiscale && (
+        <section className="info-section">
+          <div className="container">
+            <div className="info-grid">
+              <div className="info-card">
+                <h3>Cum se calculează salariul net?</h3>
+                <p>Din salariul brut se deduc contribuțiile obligatorii: CAS (25%), CASS (10%) și impozitul pe venit (10%). Formula ține cont de deducerile personale și facilitățile fiscale.</p>
+              </div>
+              <div className="info-card">
+                <h3>Salariul minim în 2026</h3>
+                <p>Salariul minim brut în 2026 este de <strong>4.050 lei</strong>, rezultând un net de aproximativ <strong>2.574 lei</strong> cu aplicarea facilității de 300 lei (OUG 89/2025).</p>
+              </div>
+              <div className="info-card">
+                <h3>Ce este deducerea personală?</h3>
+                <p>Angajații cu venituri până la 6.050 lei brut beneficiază de o deducere din baza de calcul a impozitului pe venit. Suma depinde de brut și numărul de persoane în întreținere.</p>
+              </div>
+              <div className="info-card">
+                <h3>Facilități IT și construcții</h3>
+                <p>Angajații din IT și construcții beneficiază de scutire de impozit pe venit pentru salarii brute de până la <strong>10.000 lei</strong>.</p>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
     </>
   );
 }

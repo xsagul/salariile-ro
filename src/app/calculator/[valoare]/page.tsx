@@ -1,24 +1,19 @@
+// app/calculator/[valoare]/page.tsx
 // Server Component — FĂRĂ "use client"
-// Next.js calculează brutInitial și modInitial pe SERVER
-// → rezultatul apare în HTML → Google îl vede ✅
 
+import React from "react";
 import type { Metadata } from "next";
-import { notFound } from "next/navigation"; // 1. Importă funcția nativă
+import { notFound } from "next/navigation";
 import CalculatorSalariu from "@/app/components/CalculatorSalariu";
 
-// 1. Props devine Promise
 interface Props {
   params: Promise<{ valoare: string }>;
 }
 
-// ─── Meta tags dinamice per pagină ───────────────────────────────────────────
-
-// 2. generateMetadata devine async
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { valoare } = await params;  // ← await
+  const { valoare } = await params;
   const { mod, cifra } = parseSlug(valoare);
 
-// Oprește execuția INSTANT și pentru metadata dacă URL-ul e greșit
   if (mod === "necunoscut") {
     notFound();
   }
@@ -28,11 +23,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: `Salariu net pentru ${cifra} lei brut în 2026`,
       description: `Calculează instant salariul net pentru ${cifra} lei brut. Află cât reții după CAS, CASS și impozit pe venit.`,
       alternates: { canonical: `https://salariile.ro/calculator/${valoare}` },
-      openGraph: {                                          // ← adaugă de aici
+      openGraph: {
         title: `Salariu net pentru ${cifra} lei brut în 2026`,
         description: `Calculează instant salariul net pentru ${cifra} lei brut.`,
         url: `https://salariile.ro/calculator/${valoare}`,
-      },                                                    // ← până aici
+      },
     };
   }
 
@@ -41,11 +36,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: `Salariu brut pentru ${cifra} lei net în 2026`,
       description: `Calculează instant salariul brut corespunzător unui net de ${cifra} lei. Formula inversă CAS, CASS, impozit.`,
       alternates: { canonical: `https://salariile.ro/calculator/${valoare}` },
-      openGraph: {                                          // ← adaugă de aici
+      openGraph: {
         title: `Salariu brut pentru ${cifra} lei net în 2026`,
         description: `Calculează instant salariul brut corespunzător unui net de ${cifra} lei.`,
         url: `https://salariile.ro/calculator/${valoare}`,
-      },                                                    // ← până aici
+      },
     };
   }
 
@@ -55,8 +50,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-// ─── Parser slug ─────────────────────────────────────────────────────────────
-
 function parseSlug(slug: string): {
   valoare: string;
   mod: "net-din-brut" | "brut-din-net" | "necunoscut";
@@ -64,44 +57,63 @@ function parseSlug(slug: string): {
   brutInitial: string;
   modInitial: "brut" | "net";
 } {
-  // Format: calcul-salariu-net-4050-brut  → arată net pornind de la brut
   const matchNetDinBrut = slug?.match(/^calcul-salariu-net-(\d+)-brut$/);
   if (matchNetDinBrut) {
-    return {
-      valoare: slug,
-      mod: "net-din-brut",
-      cifra: matchNetDinBrut[1],
-      brutInitial: matchNetDinBrut[1],
-      modInitial: "brut",
-    };
+    return { valoare: slug, mod: "net-din-brut", cifra: matchNetDinBrut[1], brutInitial: matchNetDinBrut[1], modInitial: "brut" };
   }
 
-  // Format: calcul-salariu-brut-2574-net  → arată brut pornind de la net
   const matchBrutDinNet = slug?.match(/^calcul-salariu-brut-(\d+)-net$/);
   if (matchBrutDinNet) {
-    return {
-      valoare: slug,
-      mod: "brut-din-net",
-      cifra: matchBrutDinNet[1],
-      brutInitial: matchBrutDinNet[1],
-      modInitial: "net",
-    };
+    return { valoare: slug, mod: "brut-din-net", cifra: matchBrutDinNet[1], brutInitial: matchBrutDinNet[1], modInitial: "net" };
   }
 
   return { valoare: slug, mod: "necunoscut", cifra: "", brutInitial: "", modInitial: "brut" };
 }
 
-// ─── Pagina ───────────────────────────────────────────────────────────────────
-
 export default async function CalculatorDinamic({ params }: Props) {
-  const { valoare } = await params;  // ← await
-  const { brutInitial, modInitial, mod } = parseSlug(valoare);
+  const { valoare } = await params;
+  const { brutInitial, modInitial, mod, cifra } = parseSlug(valoare);
 
-  // 2. Varianta corectă SEO: blochează indexarea aruncând un 404 curat
   if (mod === "necunoscut") {
     notFound(); 
   }
 
-  // 3. Dacă totul e ok, randează calculatorul normal (200 OK)
-  return <CalculatorSalariu brutInitial={brutInitial} modInitial={modInitial} />;
+  const isNetDinBrut = mod === "net-din-brut";
+  
+  // 1. Creăm Titlurile și Subtitlurile specifice acestei pagini (H1 Unic)
+  const titluDinamic = isNetDinBrut
+    ? <>Salariu net pentru <em>{cifra} lei brut</em></>
+    : <>Salariu brut pentru <em>{cifra} lei net</em></>;
+
+  const subtitluDinamic = isNetDinBrut
+    ? `Află exact cât reprezintă salariul net pentru suma de ${cifra} lei brut în 2026. Vezi deducerile de CAS, CASS, impozitul pe venit și costul total pentru angajator.`
+    : `Află ce salariu brut trebuie să negociezi pentru a primi ${cifra} lei net în mână în 2026. Vezi distribuția exactă a taxelor la stat.`;
+
+  // 2. Creăm schema de navigare Breadcrumb pentru vizibilitate Google
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Acasă", item: "https://salariile.ro" },
+          { "@type": "ListItem", position: 2, name: "Calculator", item: "https://salariile.ro/" },
+          { "@type": "ListItem", position: 3, name: `${cifra} lei ${isNetDinBrut ? 'brut' : 'net'}`, item: `https://salariile.ro/calculator/${valoare}` }
+        ]
+      }
+    ]
+  };
+
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      <CalculatorSalariu 
+        brutInitial={brutInitial} 
+        modInitial={modInitial}
+        titluCustom={titluDinamic}
+        subtitluCustom={subtitluDinamic}
+        ascundeInfoFiscale={true}
+      />
+    </>
+  );
 }
