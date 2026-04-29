@@ -3,6 +3,7 @@
 // → rezultatul apare în HTML → Google îl vede ✅
 
 import type { Metadata } from "next";
+import { notFound } from "next/navigation"; // 1. Importă funcția nativă
 import CalculatorSalariu from "@/app/components/CalculatorSalariu";
 
 // 1. Props devine Promise
@@ -17,6 +18,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { valoare } = await params;  // ← await
   const { mod, cifra } = parseSlug(valoare);
 
+// Oprește execuția INSTANT și pentru metadata dacă URL-ul e greșit
+  if (mod === "necunoscut") {
+    notFound();
+  }
+  
   if (mod === "net-din-brut") {
     return {
       title: `Salariu net pentru ${cifra} lei brut în 2026`,
@@ -89,6 +95,13 @@ function parseSlug(slug: string): {
 
 export default async function CalculatorDinamic({ params }: Props) {
   const { valoare } = await params;  // ← await
-  const { brutInitial, modInitial } = parseSlug(valoare);
+  const { brutInitial, modInitial, mod } = parseSlug(valoare);
+
+  // 2. Varianta corectă SEO: blochează indexarea aruncând un 404 curat
+  if (mod === "necunoscut") {
+    notFound(); 
+  }
+
+  // 3. Dacă totul e ok, randează calculatorul normal (200 OK)
   return <CalculatorSalariu brutInitial={brutInitial} modInitial={modInitial} />;
 }
