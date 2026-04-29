@@ -297,8 +297,8 @@ export default function CalculatorSalariu({
         {/* Form */}
         <div className="card form-card">
           <div className="card-head">
-            <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "4px" }}>
-              <h2 style={{ margin: 0 }}>Date salariale</h2>
+            <div className="card-head-row">
+              <h2>Date salariale</h2>
               <div className="mod-pills">
                 <button
                   className={mod === "brut" ? "pill active" : "pill"}
