@@ -14,11 +14,12 @@
   --shadow: 0 1px 3px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.04);
 }
 body {
-  font-family: 'Georgia', 'Times New Roman', serif;
+  font-family: var(--font-figtree), system-ui, -apple-system, sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 .page { min-height: 100vh; }
 /* Container */
@@ -52,7 +53,6 @@ nav a {
   font-size: 0.875rem;
   padding: 0.5rem 0.875rem;
   border-radius: 6px;
-  font-family: system-ui, sans-serif;
   transition: color .15s, background .15s;
 }
 nav a:hover { color: var(--text); background: var(--bg); }
@@ -68,7 +68,6 @@ nav a.active { color: var(--accent); font-weight: 500; }
   gap: 0.5rem;
   font-size: 0.8125rem;
   color: var(--muted);
-  font-family: system-ui, sans-serif;
   margin-bottom: 1rem;
 }
 .breadcrumb a { color: var(--muted); text-decoration: none; }
@@ -94,7 +93,6 @@ h1 em { font-style: normal; color: var(--accent); }
   color: var(--accent);
   font-size: 0.75rem;
   font-weight: 600;
-  font-family: system-ui, sans-serif;
   padding: 3px 10px;
   border-radius: 20px;
 }
@@ -125,7 +123,7 @@ h1 em { font-style: normal; color: var(--accent); }
   letter-spacing: -0.02em;
   margin-bottom: 2px;
 }
-.card-head p { font-size: 0.8125rem; color: var(--muted); font-family: system-ui, sans-serif; }
+.card-head p { font-size: 0.8125rem; color: var(--muted); }
 /* ── Tabs ── */
 .tab-group {
   display: flex;
@@ -142,7 +140,6 @@ h1 em { font-style: normal; color: var(--accent); }
   background: transparent;
   border-radius: 6px;
   font-size: 0.8125rem;
-  font-family: system-ui, sans-serif;
   color: var(--muted);
   cursor: pointer;
   transition: all .15s;
@@ -160,7 +157,6 @@ h1 em { font-style: normal; color: var(--accent); }
   display: block;
   font-size: 0.875rem;
   font-weight: 500;
-  font-family: system-ui, sans-serif;
   margin-bottom: 4px;
   color: var(--text);
 }
@@ -168,7 +164,6 @@ h1 em { font-style: normal; color: var(--accent); }
   display: block;
   font-size: 0.75rem;
   color: var(--muted);
-  font-family: system-ui, sans-serif;
   margin-bottom: 4px;
 }
 .input-wrap {
@@ -185,7 +180,6 @@ h1 em { font-style: normal; color: var(--accent); }
   outline: none;
   padding: 0.625rem 0.875rem;
   font-size: 1rem;
-  font-family: system-ui, sans-serif;
   background: transparent;
   color: var(--text);
 }
@@ -193,7 +187,6 @@ h1 em { font-style: normal; color: var(--accent); }
   padding: 0 0.75rem;
   background: var(--bg);
   font-size: 0.75rem;
-  font-family: system-ui, sans-serif;
   color: var(--muted);
   display: flex;
   align-items: center;
@@ -206,7 +199,6 @@ select {
   border-radius: 8px;
   padding: 0.625rem 0.875rem;
   font-size: 0.9375rem;
-  font-family: system-ui, sans-serif;
   background: var(--surface);
   color: var(--text);
   outline: none;
@@ -222,7 +214,6 @@ select:focus { border-color: var(--accent); }
   padding: 0.625rem 0;
   cursor: pointer;
   font-size: 0.875rem;
-  font-family: system-ui, sans-serif;
   font-weight: 500;
   border-bottom: 1px solid var(--border);
   margin-bottom: 1rem;
@@ -258,7 +249,6 @@ select:focus { border-color: var(--accent); }
   border-radius: 8px;
   padding: 0.75rem 1rem;
   font-size: 0.8125rem;
-  font-family: system-ui, sans-serif;
   color: var(--accent);
   margin-top: 1rem;
 }
@@ -272,7 +262,6 @@ select:focus { border-color: var(--accent); }
 }
 .net-label {
   font-size: 0.875rem;
-  font-family: system-ui, sans-serif;
   opacity: 0.85;
   margin-bottom: 0.5rem;
 }
@@ -284,7 +273,6 @@ select:focus { border-color: var(--accent); }
 }
 .net-sub {
   font-size: 0.875rem;
-  font-family: system-ui, sans-serif;
   opacity: 0.8;
 }
 .net-sub strong { opacity: 1; }
@@ -302,7 +290,6 @@ select:focus { border-color: var(--accent); }
   padding: 0.5rem 0;
   border-bottom: 1px solid var(--border);
   font-size: 0.9rem;
-  font-family: system-ui, sans-serif;
 }
 .detail-row:last-child { border-bottom: none; }
 .detail-row span { color: var(--muted); }
@@ -318,7 +305,6 @@ select:focus { border-color: var(--accent); }
   display: flex;
   justify-content: space-between;
   font-size: 0.8125rem;
-  font-family: system-ui, sans-serif;
   margin-bottom: 4px;
 }
 .bar-label span { color: var(--muted); }
@@ -342,7 +328,7 @@ select:focus { border-color: var(--accent); }
 }
 .empty-icon { margin-bottom: 1rem; opacity: 0.4; }
 .empty-card p { font-size: 1rem; margin-bottom: 0.5rem; }
-.empty-hint { font-size: 0.8125rem; font-family: system-ui, sans-serif; color: var(--accent); }
+.empty-hint { font-size: 0.8125rem; color: var(--accent); }
 /* ── Info section ── */
 .info-section {
   background: var(--surface);
@@ -364,7 +350,6 @@ select:focus { border-color: var(--accent); }
 .info-card p {
   font-size: 0.875rem;
   color: var(--muted);
-  font-family: system-ui, sans-serif;
   line-height: 1.65;
 }
 .info-card strong { color: var(--text); }
@@ -385,7 +370,6 @@ select:focus { border-color: var(--accent); }
 }
 .footer-top p {
   font-size: 0.875rem;
-  font-family: system-ui, sans-serif;
   line-height: 1.6;
   max-width: 400px;
 }
@@ -401,7 +385,6 @@ select:focus { border-color: var(--accent); }
 }
 .footer-links h4 {
   font-size: 0.75rem;
-  font-family: system-ui, sans-serif;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -413,14 +396,12 @@ select:focus { border-color: var(--accent); }
   color: rgba(255,255,255,.9);
   text-decoration: none;
   font-size: 0.875rem;
-  font-family: system-ui, sans-serif;
   margin-bottom: 0.4rem;
   transition: color .15s;
 }
 .footer-links a:hover { color: white; }
 .footer-bottom p {
   font-size: 0.8125rem;
-  font-family: system-ui, sans-serif;
   color: rgba(255,255,255,.6);
   text-align: center;
 }
@@ -444,7 +425,6 @@ select:focus { border-color: var(--accent); }
   background: transparent;
   cursor: pointer;
   font-size: 0.8125rem;
-  font-family: system-ui, sans-serif;
   font-weight: 500;
   color: var(--muted);
   transition: all .15s;
@@ -462,7 +442,6 @@ select:focus { border-color: var(--accent); }
   background: transparent;
   color: var(--muted);
   font-size: 0.8125rem;
-  font-family: system-ui, sans-serif;
   cursor: pointer;
   transition: all .15s;
   margin-bottom: 1rem;

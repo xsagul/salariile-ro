@@ -244,7 +244,6 @@ export default function SalariuMinimPage() {
                 <div
                   style={{
                     fontSize: "0.75rem",
-                    fontFamily: "system-ui, sans-serif",
                     fontWeight: 600,
                     textTransform: "uppercase",
                     letterSpacing: "0.08em",
@@ -274,7 +273,6 @@ export default function SalariuMinimPage() {
                     textAlign: "center",
                     textDecoration: "none",
                     fontSize: "0.8125rem",
-                    fontFamily: "system-ui, sans-serif",
                     fontWeight: 600,
                   }}
                 >
@@ -295,7 +293,6 @@ export default function SalariuMinimPage() {
                   <div
                     style={{
                       fontSize: "0.75rem",
-                      fontFamily: "system-ui, sans-serif",
                       fontWeight: 600,
                       textTransform: "uppercase",
                       letterSpacing: "0.08em",
@@ -309,7 +306,6 @@ export default function SalariuMinimPage() {
                       background: "#fef3c7",
                       color: "#92400e",
                       fontSize: "0.6875rem",
-                      fontFamily: "system-ui, sans-serif",
                       fontWeight: 700,
                       padding: "2px 8px",
                       borderRadius: "20px",
@@ -338,7 +334,6 @@ export default function SalariuMinimPage() {
                     textAlign: "center",
                     textDecoration: "none",
                     fontSize: "0.8125rem",
-                    fontFamily: "system-ui, sans-serif",
                     fontWeight: 600,
                   }}
                 >
@@ -351,7 +346,6 @@ export default function SalariuMinimPage() {
               style={{
                 fontSize: "0.8125rem",
                 color: "var(--muted)",
-                fontFamily: "system-ui, sans-serif",
                 textAlign: "center",
                 marginTop: "1rem",
               }}
@@ -379,7 +373,6 @@ export default function SalariuMinimPage() {
               <p
                 style={{
                   marginBottom: "1rem",
-                  fontFamily: "system-ui, sans-serif",
                   color: "var(--muted)",
                   lineHeight: 1.7,
                 }}
@@ -392,7 +385,6 @@ export default function SalariuMinimPage() {
               </p>
               <p
                 style={{
-                  fontFamily: "system-ui, sans-serif",
                   color: "var(--muted)",
                   lineHeight: 1.7,
                 }}
@@ -421,7 +413,6 @@ export default function SalariuMinimPage() {
               <p
                 style={{
                   marginBottom: "1.25rem",
-                  fontFamily: "system-ui, sans-serif",
                   color: "var(--muted)",
                   lineHeight: 1.7,
                 }}
@@ -521,7 +512,6 @@ export default function SalariuMinimPage() {
                 style={{
                   fontSize: "0.8125rem",
                   color: "var(--muted)",
-                  fontFamily: "system-ui, sans-serif",
                   marginTop: "1rem",
                   fontStyle: "italic",
                 }}
@@ -546,7 +536,6 @@ export default function SalariuMinimPage() {
               <p
                 style={{
                   marginBottom: "1rem",
-                  fontFamily: "system-ui, sans-serif",
                   color: "var(--muted)",
                   lineHeight: 1.7,
                 }}
@@ -570,7 +559,6 @@ export default function SalariuMinimPage() {
                     background: "var(--bg)",
                     padding: "1rem 1.25rem",
                     borderRadius: "8px",
-                    fontFamily: "system-ui, sans-serif",
                   }}
                 >
                   <div
@@ -601,7 +589,6 @@ export default function SalariuMinimPage() {
                     background: "#fef9e7",
                     padding: "1rem 1.25rem",
                     borderRadius: "8px",
-                    fontFamily: "system-ui, sans-serif",
                   }}
                 >
                   <div
@@ -630,7 +617,6 @@ export default function SalariuMinimPage() {
 
               <p
                 style={{
-                  fontFamily: "system-ui, sans-serif",
                   color: "var(--muted)",
                   fontSize: "0.875rem",
                   lineHeight: 1.7,
@@ -657,7 +643,6 @@ export default function SalariuMinimPage() {
               <p
                 style={{
                   marginBottom: "1rem",
-                  fontFamily: "system-ui, sans-serif",
                   color: "var(--muted)",
                   lineHeight: 1.7,
                 }}
@@ -670,7 +655,6 @@ export default function SalariuMinimPage() {
               </p>
               <p
                 style={{
-                  fontFamily: "system-ui, sans-serif",
                   color: "var(--muted)",
                   lineHeight: 1.7,
                 }}
@@ -700,7 +684,6 @@ export default function SalariuMinimPage() {
                   style={{
                     width: "100%",
                     borderCollapse: "collapse",
-                    fontFamily: "system-ui, sans-serif",
                     fontSize: "0.9375rem",
                   }}
                 >
@@ -800,7 +783,6 @@ export default function SalariuMinimPage() {
                   fontSize: "0.8125rem",
                   color: "var(--muted)",
                   marginTop: "1rem",
-                  fontFamily: "system-ui, sans-serif",
                 }}
               >
                 Sursa: Hotărâri de Guvern publicate în Monitorul Oficial. Valorile nete sunt
@@ -824,7 +806,6 @@ export default function SalariuMinimPage() {
               <p
                 style={{
                   marginBottom: "1rem",
-                  fontFamily: "system-ui, sans-serif",
                   color: "var(--muted)",
                   lineHeight: 1.7,
                 }}
@@ -836,7 +817,6 @@ export default function SalariuMinimPage() {
               </p>
               <p
                 style={{
-                  fontFamily: "system-ui, sans-serif",
                   color: "var(--muted)",
                   lineHeight: 1.7,
                 }}
@@ -942,7 +922,6 @@ export default function SalariuMinimPage() {
               <p
                 style={{
                   fontSize: "0.9375rem",
-                  fontFamily: "system-ui, sans-serif",
                   opacity: 0.9,
                   marginBottom: "1.25rem",
                   maxWidth: "500px",
@@ -961,7 +940,6 @@ export default function SalariuMinimPage() {
                   padding: "0.625rem 1.5rem",
                   borderRadius: "8px",
                   textDecoration: "none",
-                  fontFamily: "system-ui, sans-serif",
                   fontSize: "0.9375rem",
                   fontWeight: 600,
                 }}
@@ -984,7 +962,6 @@ export default function SalariuMinimPage() {
               <ul
                 style={{
                   listStyle: "none",
-                  fontFamily: "system-ui, sans-serif",
                   fontSize: "0.9375rem",
                   margin: 0,
                   padding: 0,
@@ -1113,7 +1090,6 @@ function Row({
       <span
         style={{
           fontSize: small ? "0.8125rem" : "0.875rem",
-          fontFamily: "system-ui, sans-serif",
           color: "var(--muted)",
         }}
       >
@@ -1122,7 +1098,6 @@ function Row({
       <strong
         style={{
           fontSize: valueSize || (small ? "0.8125rem" : "1rem"),
-          fontFamily: "system-ui, sans-serif",
           color: valueColor || "var(--text)",
           fontWeight: valueBold ? 700 : 600,
         }}
@@ -1152,7 +1127,6 @@ function CalculRows({
         display: "flex",
         flexDirection: "column",
         gap: "0.5rem",
-        fontFamily: "system-ui, sans-serif",
         fontSize: "0.875rem",
       }}
     >
@@ -1206,7 +1180,6 @@ function FaqItem({
     >
       <summary
         style={{
-          fontFamily: "system-ui, sans-serif",
           fontSize: "0.9375rem",
           fontWeight: 500,
           color: "var(--text)",
@@ -1223,7 +1196,6 @@ function FaqItem({
           style={{
             color: "var(--accent)",
             fontSize: "1.125rem",
-            fontFamily: "system-ui, sans-serif",
             flexShrink: 0,
           }}
         >
@@ -1233,7 +1205,6 @@ function FaqItem({
       <div
         style={{
           marginTop: "0.75rem",
-          fontFamily: "system-ui, sans-serif",
           fontSize: "0.9375rem",
           color: "var(--muted)",
           lineHeight: 1.7,

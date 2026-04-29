@@ -1,13 +1,23 @@
 // src/app/layout.tsx
-// Root layout — include Header și Footer pentru toate paginile.
-// Wrapper-ul .page asigură flexbox pentru sticky footer.
+// Root layout — încarcă Figtree o singură dată, aplică pe tot site-ul.
 
+import { Figtree } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+
+// Figtree — font modern, sans-serif, cu suport pentru diacritice românești.
+// `display: "swap"` = textul apare imediat cu fallback, apoi Figtree.
+// `variable: "--font-figtree"` = expune fontul ca CSS custom property.
+const figtree = Figtree({
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-figtree",
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://salariile.ro"),
@@ -73,7 +83,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ro">
+    <html lang="ro" className={figtree.variable}>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
