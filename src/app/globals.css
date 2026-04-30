@@ -69,8 +69,6 @@ h3 {
   letter-spacing: -0.01em;
   margin-bottom: 0.75rem;
 }
-h3.accent { color: var(--accent); }
-h3.warn { color: var(--warn); }
 
 p {
   color: var(--muted);
@@ -116,16 +114,64 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
   letter-spacing: -0.02em;
 }
 .logo span { color: var(--accent); }
-nav { display: flex; gap: 0; margin-left: auto; }
-nav a {
+
+/* Desktop nav (>768px) */
+.nav-desktop { display: flex; gap: 0; margin-left: auto; }
+.nav-desktop a,
+.nav-mobile a {
   color: var(--muted);
   font-size: 0.875rem;
   padding: 0.5rem 0.875rem;
   border-radius: 6px;
   transition: color .15s, background .15s;
+  text-decoration: none;
 }
-nav a:hover { color: var(--text); background: var(--bg); }
-nav a.active { color: var(--accent); font-weight: 500; }
+.nav-desktop a:hover,
+.nav-mobile a:hover { color: var(--text); background: var(--bg); }
+.nav-desktop a.active,
+.nav-mobile a.active { color: var(--accent); font-weight: 500; }
+
+/* Hamburger button (ascuns pe desktop) */
+.hamburger {
+  display: none;
+  background: transparent;
+  border: none;
+  width: 40px;
+  height: 40px;
+  margin-left: auto;
+  cursor: pointer;
+  padding: 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.hamburger-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: transform .25s, opacity .25s;
+}
+.hamburger-bar.open:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger-bar.open:nth-child(2) { opacity: 0; }
+.hamburger-bar.open:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile dropdown nav (ascuns pe desktop) */
+.nav-mobile {
+  display: none;
+  flex-direction: column;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0.5rem 1.5rem 1rem;
+  gap: 2px;
+}
+.nav-mobile.open { display: flex; }
+.nav-mobile a {
+  padding: 0.75rem 0.875rem;
+  font-size: 0.9375rem;
+}
 
 /* ─── Hero ───────────────────────────────────────────────────────────────── */
 .hero {
@@ -475,10 +521,13 @@ select:focus { border-color: var(--accent); }
   color: rgba(255, 255, 255, .6);
   text-align: center;
 }
+@media (max-width: 768px) {
+  .nav-desktop { display: none; }
+  .hamburger { display: flex; }
+}
 @media (max-width: 640px) {
   .footer-top { flex-direction: column; }
   .footer-links { grid-template-columns: 1fr 1fr; }
-  nav { display: none; }
 }
 
 /* ─── Mod pills (Brut / Net) ─────────────────────────────────────────────── */
@@ -644,10 +693,6 @@ select:focus { border-color: var(--accent); }
 .cost-box .total.warn { color: var(--warn); }
 
 /* ─── Tabel data (CAS, CASS, etc.) ──────────────────────────────────────── */
-/* ─── Tabel data (CAS, CASS, etc.) ──────────────────────────────────────── */
-.table-scroll {
-  overflow-x: auto;
-}
 .data-table {
   width: 100%;
   border-collapse: collapse;
@@ -693,8 +738,6 @@ select:focus { border-color: var(--accent); }
   border: none;
 }
 .calc-row.total > strong { color: var(--accent); font-size: 1.0625rem; }
-.calc-row.total.warn { background: var(--warn-light); }
-.calc-row.total.warn > strong { color: var(--warn); }
 
 /* ─── FAQ accordion (folosește <details>) ───────────────────────────────── */
 .faq-list {
