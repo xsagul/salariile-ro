@@ -29,6 +29,7 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       // ─── Redirect-uri permanente pentru URL-uri vechi (păstrează SEO juice) ───
+      // Acestea au intent clar: utilizatorul caută calculator → îl ducem pe homepage.
       {
         source: "/calculator-salariu",
         destination: "/",
@@ -45,34 +46,19 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
 
-      // ─── Redirect-uri TEMPORARE către /info pentru pagini neimplementate ────
-      // ATENȚIE: Pe măsură ce construim paginile reale, ștergem entry-urile
-      // corespunzătoare de aici (ca am făcut deja cu /salariu-minim).
-      {
-        source: "/politica-confidentialitate",
-        destination: "/info",
-        permanent: false,
-      },
-      {
-        source: "/termeni",
-        destination: "/info",
-        permanent: false,
-      },
-      {
-        source: "/calculator-pfa",
-        destination: "/info",
-        permanent: false,
-      },
-      {
-        source: "/calculator-concediu",
-        destination: "/info",
-        permanent: false,
-      },
-      {
-        source: "/noutati",
-        destination: "/info",
-        permanent: false,
-      },
+      // ─── Redirectele către /info au fost ELIMINATE (30 aprilie 2026) ─────────
+      // Motivul: /info e noindex, deci Google marca lanțul "redirect → pagină
+      // neindexabilă", afectând crawl budget și generând mesaje GSC.
+      //
+      // URL-urile afectate (acum returnează 404 natural):
+      //   /politica-confidentialitate
+      //   /termeni
+      //   /calculator-pfa
+      //   /calculator-concediu
+      //   /noutati
+      //
+      // Pe măsură ce construim aceste pagini real, le adăugăm ca rute Next.js,
+      // nu ca redirecte. Google va re-indexa automat cu conținut real.
     ];
   },
 };
