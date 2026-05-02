@@ -1,14 +1,11 @@
 /* ═══════════════════════════════════════════════════════════════════════════
-   salariile.ro — globals.css
-   Organizare: tokens → reset → typography → layout → componente → utilities
-   Filosofie: minim. Selectoare semantice peste clase. Clase doar pentru
-   pattern-uri repetate de 3+ ori. Inline styles permise doar pentru valori
-   unice (un singur element în tot site-ul).
+   salariile.ro — globals.css (editorial mode)
+   Curățat: doar clase folosite în JSX-urile actuale
    ═══════════════════════════════════════════════════════════════════════════ */
 
 /* ─── Design tokens ──────────────────────────────────────────────────────── */
 :root {
-  /* Palette — Editorial mode (alb pur + accent #111) */
+  /* Palette — Editorial */
   --bg: #ffffff;
   --surface: #ffffff;
   --surface-alt: #fafaf7;
@@ -46,8 +43,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ─── Typography (semantic defaults) ─────────────────────────────────────── */
-
+/* ─── Typography ─────────────────────────────────────────────────────────── */
 h1 {
   font-size: clamp(1.75rem, 4vw, 2.5rem);
   font-weight: 700;
@@ -72,6 +68,8 @@ h3 {
   letter-spacing: -0.01em;
   margin-bottom: 0.75rem;
 }
+h3.accent { color: var(--accent); }
+h3.warn { color: var(--warn); }
 
 p {
   color: var(--muted);
@@ -87,7 +85,7 @@ a {
 }
 a:hover { color: var(--accent-mid); }
 
-/* Editorial: link-uri în paragrafe, FAQ, source-note → underline subtle */
+/* Editorial: link-uri în paragrafe + FAQ + source-note → underline subtle */
 p a,
 .faq-answer a,
 .source-note a,
@@ -108,7 +106,6 @@ strong { color: var(--text); font-weight: 600; }
 code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.875em; }
 
 /* ─── Layout ─────────────────────────────────────────────────────────────── */
-.page { min-height: 100vh; }
 .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
 .container-narrow { max-width: 860px; margin: 0 auto; padding: 0 1.5rem; }
 
@@ -151,7 +148,7 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
 .nav-desktop a.active,
 .nav-mobile a.active { color: var(--accent); font-weight: 500; }
 
-/* Hamburger button (ascuns pe desktop) */
+/* Hamburger */
 .hamburger {
   display: none;
   background: transparent;
@@ -178,7 +175,6 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
 .hamburger-bar.open:nth-child(2) { opacity: 0; }
 .hamburger-bar.open:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* Mobile dropdown nav (ascuns pe desktop) */
 .nav-mobile {
   display: none;
   flex-direction: column;
@@ -224,6 +220,36 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
   border-radius: 20px;
 }
 
+/* ─── Cards ──────────────────────────────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+}
+.card-head { margin-bottom: 1.25rem; }
+.card-head h2 { font-size: 1.125rem; margin-bottom: 2px; }
+.card-head p { font-size: 0.8125rem; color: var(--muted); }
+.card-head-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+.card-head-row h2 { margin: 0; }
+
+/* ─── Eyebrow + dist-label (etichete mici uppercase) ───────────────────── */
+.eyebrow,
+.dist-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted-soft);
+  margin-bottom: 0.75rem;
+}
+
 /* ─── Calculator layout ──────────────────────────────────────────────────── */
 .calc-layout {
   display: grid;
@@ -235,63 +261,13 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
 }
 @media (max-width: 768px) {
   .calc-layout { grid-template-columns: 1fr; }
+  .nav-desktop { display: none; }
+  .hamburger { display: flex; }
 }
 
-/* ─── Cards ──────────────────────────────────────────────────────────────── */
-.card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.5rem;
-  box-shadow: var(--shadow);
-}
-.card-head { margin-bottom: 1.25rem; }
-.card-head h2 {
-  font-size: 1.125rem;
-  margin-bottom: 2px;
-}
-.card-head p { font-size: 0.8125rem; color: var(--muted); }
-.card-head-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 4px;
-}
-.card-head-row h2 { margin: 0; }
+/* ─── Form (calculator) ──────────────────────────────────────────────────── */
+.form-card { /* alias for .card; styled by .card */ }
 
-/* Variante de carduri (folosite pe /salariu-minim) */
-.card-accent { /* fără border-top colorat în editorial mode */ }
-.card-warn { /* fără border-top colorat în editorial mode */ }
-
-/* ─── Tabs ───────────────────────────────────────────────────────────────── */
-.tab-group {
-  display: flex;
-  background: var(--bg);
-  border-radius: 8px;
-  padding: 3px;
-  gap: 2px;
-  margin-bottom: 1.25rem;
-}
-.tab {
-  flex: 1;
-  padding: 0.375rem 0.5rem;
-  border: none;
-  background: transparent;
-  border-radius: 6px;
-  font-size: 0.8125rem;
-  color: var(--muted);
-  cursor: pointer;
-  transition: all .15s;
-  white-space: nowrap;
-}
-.tab.active {
-  background: var(--surface);
-  color: var(--text);
-  font-weight: 500;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, .08);
-}
-
-/* ─── Form fields ────────────────────────────────────────────────────────── */
 .field { margin-bottom: 1.125rem; }
 .field label {
   display: block;
@@ -325,7 +301,7 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
 }
 .suffix {
   padding: 0 0.75rem;
-  background: var(--bg);
+  background: var(--surface-alt);
   font-size: 0.75rem;
   color: var(--muted);
   display: flex;
@@ -347,7 +323,76 @@ select {
 }
 select:focus { border-color: var(--accent); }
 
-/* ─── Toggle ─────────────────────────────────────────────────────────────── */
+/* ─── Tabs (Standard / IT / Construcții) ────────────────────────────────── */
+.tab-group {
+  display: flex;
+  background: var(--surface-alt);
+  border-radius: 8px;
+  padding: 3px;
+  gap: 2px;
+  margin-bottom: 1.25rem;
+}
+.tab {
+  flex: 1;
+  padding: 0.375rem 0.5rem;
+  border: none;
+  background: transparent;
+  border-radius: 6px;
+  font-size: 0.8125rem;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all .15s;
+  white-space: nowrap;
+}
+.tab.active {
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 500;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .08);
+}
+
+/* ─── Mod pills (Brut / Net) ─────────────────────────────────────────────── */
+.mod-pills {
+  display: flex;
+  background: var(--surface-alt);
+  border-radius: 8px;
+  padding: 3px;
+  gap: 2px;
+}
+.pill {
+  padding: 4px 14px;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--muted);
+  transition: all .15s;
+}
+.pill.active {
+  background: var(--surface);
+  color: var(--accent);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .08);
+}
+.avansat-toggle {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1.5px dashed var(--border);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.8125rem;
+  cursor: pointer;
+  transition: all .15s;
+  margin-bottom: 1rem;
+}
+.avansat-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ─── Toggle (switch on/off) ────────────────────────────────────────────── */
 .toggle-row {
   display: flex;
   align-items: center;
@@ -384,26 +429,25 @@ select:focus { border-color: var(--accent); }
 }
 .toggle.on .thumb { transform: translateX(20px); }
 
-/* ─── Info box ───────────────────────────────────────────────────────────── */
+/* ─── Info box (în card-uri, mesaj informativ) ──────────────────────────── */
 .info-box {
   background: var(--accent-light);
-  border: 1px solid #bbf7d0;
+  border: 1px solid var(--border-strong);
   border-radius: 8px;
   padding: 0.75rem 1rem;
   font-size: 0.8125rem;
-  color: var(--accent);
+  color: var(--text);
   margin-top: 1rem;
 }
 
-/* ─── Calculator results ─────────────────────────────────────────────────── */
+/* ─── Calculator results — tabel fluturas editorial ─────────────────────── */
 .results-col { display: flex; flex-direction: column; gap: 1rem; }
-.net-card {
-  background: var(--surface-alt);
-  color: var(--text);
-  text-align: left;
-  padding: 1.5rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
+.results-card { padding: 1.75rem; }
+
+.net-hero {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.25rem;
 }
 .net-label {
   font-size: 0.6875rem;
@@ -424,59 +468,6 @@ select:focus { border-color: var(--accent); }
 .net-sub { font-size: 0.8125rem; color: var(--muted); }
 .net-sub strong { color: var(--text); font-weight: 600; }
 
-.details-card h3 {
-  font-size: 0.9375rem;
-  margin-bottom: 1rem;
-}
-.detail-rows { display: flex; flex-direction: column; gap: 2px; }
-.detail-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem 0;
-  border-bottom: 1px solid var(--border);
-  font-size: 0.9rem;
-}
-.detail-row:last-child { border-bottom: none; }
-.detail-row span { color: var(--muted); }
-.detail-row strong { color: var(--text); font-weight: 600; }
-.detail-row.green strong { color: var(--accent-mid); }
-.detail-row.total-row { border-top: 2px solid var(--border); margin-top: 4px; }
-.detail-row.total-row span,
-.detail-row.total-row strong { font-weight: 700; color: var(--text); }
-
-/* ─── Distribution bars ──────────────────────────────────────────────────── */
-.bars { display: flex; flex-direction: column; gap: 12px; }
-.bar-label {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.8125rem;
-  margin-bottom: 4px;
-}
-.bar-label span { color: var(--muted); }
-.bar-val { font-weight: 600; color: var(--text); }
-.bar-track {
-  height: 8px;
-  background: var(--bg);
-  border-radius: 4px;
-  overflow: hidden;
-}
-.bar-fill {
-  height: 100%;
-  border-radius: 4px;
-  transition: width .4s ease;
-}
-
-/* ─── Empty state ────────────────────────────────────────────────────────── */
-/* ─── Editorial results — tabel fluturas ─────────────────────────────────── */
-.results-card {
-  padding: 1.75rem;
-}
-.net-hero {
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 1.25rem;
-  margin-bottom: 1.25rem;
-}
 .payslip-table {
   width: 100%;
   font-size: 0.875rem;
@@ -501,9 +492,7 @@ select:focus { border-color: var(--accent); }
   font-weight: 600;
   font-size: 0.9375rem;
 }
-.payslip-table tr.total td:last-child {
-  font-size: 1.0625rem;
-}
+.payslip-table tr.total td:last-child { font-size: 1.0625rem; }
 .payslip-table tr.employer td {
   color: var(--muted-soft);
   font-size: 0.8125rem;
@@ -520,22 +509,37 @@ select:focus { border-color: var(--accent); }
   font-weight: 600;
   font-size: 0.875rem;
 }
-.payslip-table tr.cost td:last-child {
-  font-size: 0.9375rem;
-}
+.payslip-table tr.cost td:last-child { font-size: 0.9375rem; }
+
 .distribution {
   border-top: 1px solid var(--border);
   padding-top: 1.25rem;
 }
-.dist-label {
-  font-size: 0.6875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--muted-soft);
-  font-weight: 600;
-  margin-bottom: 0.875rem;
+
+/* Distribution bars */
+.bars { display: flex; flex-direction: column; gap: 12px; }
+.bar-row { /* wrapper pentru fiecare bară */ }
+.bar-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8125rem;
+  margin-bottom: 4px;
+}
+.bar-label span { color: var(--muted); }
+.bar-val { font-weight: 600; color: var(--text); }
+.bar-track {
+  height: 8px;
+  background: var(--surface-alt);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width .4s ease;
 }
 
+/* ─── Empty state ────────────────────────────────────────────────────────── */
 .empty-card {
   text-align: center;
   padding: 3rem 1.5rem;
@@ -545,25 +549,23 @@ select:focus { border-color: var(--accent); }
 .empty-card p { font-size: 1rem; margin-bottom: 0.5rem; color: var(--muted); }
 .empty-hint { font-size: 0.8125rem; color: var(--accent); }
 
-/* ─── Info section (homepage) ────────────────────────────────────────────── */
-.info-section {
+/* ─── Section surfaces (între hero și content) ───────────────────────────── */
+.section-surface {
   background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 2rem 0;
+}
+
+/* Article-section: pagini de conținut (/salariu-minim, /salariu-mediu) */
+.article-section { padding: 3rem 0 1rem; }
+.article { margin-bottom: 3rem; }
+.article > p { margin-bottom: 1rem; }
+
+/* Info section (FAQ pe homepage) */
+.info-section {
+  background: var(--surface-alt);
   border-top: 1px solid var(--border);
   padding: 3rem 0;
-}
-.info-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.5rem;
-}
-.info-card h3 {
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-}
-.info-card p {
-  font-size: 0.875rem;
-  color: var(--muted);
-  line-height: 1.65;
 }
 
 /* ─── Footer ─────────────────────────────────────────────────────────────── */
@@ -616,123 +618,32 @@ select:focus { border-color: var(--accent); }
   color: rgba(255, 255, 255, .6);
   text-align: center;
 }
-@media (max-width: 768px) {
-  .nav-desktop { display: none; }
-  .hamburger { display: flex; }
-}
 @media (max-width: 640px) {
   .footer-top { flex-direction: column; }
   .footer-links { grid-template-columns: 1fr 1fr; }
 }
 
-/* ─── Mod pills (Brut / Net) ─────────────────────────────────────────────── */
-.mod-pills {
-  display: flex;
-  background: var(--bg);
-  border-radius: 8px;
-  padding: 3px;
-  gap: 2px;
-}
-.pill {
-  padding: 4px 14px;
-  border-radius: 6px;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: var(--muted);
-  transition: all .15s;
-}
-.pill.active {
-  background: var(--surface);
-  color: var(--accent);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, .08);
-}
-.avansat-toggle {
-  width: 100%;
-  padding: 0.5rem;
-  border: 1.5px dashed var(--border);
-  border-radius: 8px;
-  background: transparent;
-  color: var(--muted);
-  font-size: 0.8125rem;
-  cursor: pointer;
-  transition: all .15s;
-  margin-bottom: 1rem;
-}
-.avansat-toggle:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-}
-
 /* ═══════════════════════════════════════════════════════════════════════════
-   Componente specifice paginilor de conținut (/salariu-minim, /info, etc.)
+   COMPONENTE PAGINI DE CONȚINUT (/salariu-minim, /salariu-mediu)
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/* ─── Article — secțiune de text pe pagini de conținut ──────────────────── */
-.article-section {
-  padding: 3rem 0 1rem;
-}
-.article {
-  margin-bottom: 3rem;
-}
-.article > p {
-  margin-bottom: 1rem;
-}
-
-/* ─── Eyebrow — text mic deasupra unui titlu de secțiune ────────────────── */
-.eyebrow {
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--muted);
-  margin-bottom: 0.75rem;
-}
-
-/* ─── Page section cu fundal alb (între hero și content) ────────────────── */
-.section-surface {
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-  padding: 2rem 0;
-}
-
-/* ─── Card grid auto-fit ─────────────────────────────────────────────────── */
+/* Grid auto-fit pentru carduri (S1/S2 pe /salariu-minim) */
 .grid-auto {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.25rem;
 }
-.grid-auto-sm {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1rem;
-}
 
-/* ─── Stat row (Salariu Brut / Net / Cost angajator pe carduri) ────────── */
-.stat-rows {
-  display: flex;
-  flex-direction: column;
-  gap: 0.625rem;
-}
+/* Stat rows (Brut / Net / Cost angajator pe carduri) */
+.stat-rows { display: flex; flex-direction: column; gap: 0.625rem; }
 .stat-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.stat-row > span {
-  font-size: 0.875rem;
-  color: var(--muted);
-}
-.stat-row > strong {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--text);
-}
-.stat-row.lg > strong {
-  font-size: 1.25rem;
-}
+.stat-row > span { font-size: 0.875rem; color: var(--muted); }
+.stat-row > strong { font-size: 1rem; font-weight: 600; color: var(--text); }
+.stat-row.lg > strong { font-size: 1.25rem; }
 .stat-row.xl > strong {
   font-size: 1.5rem;
   font-weight: 700;
@@ -746,7 +657,7 @@ select:focus { border-color: var(--accent); }
   margin: 0.25rem 0;
 }
 
-/* ─── Chip — link text simplu (editorial) ──────────────────────────────── */
+/* Chip — link text editorial */
 .chip {
   display: inline-block;
   margin-top: 1rem;
@@ -761,42 +672,14 @@ select:focus { border-color: var(--accent); }
   text-underline-offset: 4px;
   text-decoration-thickness: 1px;
 }
-.chip-warn {
-  background: transparent;
-  color: var(--text);
-}
 
-/* ─── Mini-badge "NOU" sau alte etichete inline ─────────────────────────── */
-.tag {
-  display: inline-block;
-  background: var(--warn-badge-bg);
-  color: var(--warn-badge-text);
-  font-size: 0.6875rem;
-  font-weight: 700;
-  padding: 2px 8px;
-  border-radius: 20px;
-}
-
-/* ─── Cost-box (semestru / cost firma) ──────────────────────────────────── */
-.cost-box {
-  padding: 1rem 1.25rem;
-  border-radius: 8px;
-  font-size: 0.9375rem;
-  line-height: 1.9;
-}
-.cost-box.muted-bg { background: var(--bg); }
-.cost-box.warn-bg { background: var(--warn-light); }
-.cost-box .total { font-weight: 700; }
-.cost-box .total.accent { color: var(--accent); }
-.cost-box .total.warn { color: var(--warn); }
-
-/* ─── Tabel data (CAS, CASS, etc.) ──────────────────────────────────────── */
+/* Tabel data (istoric salariu minim) */
 .data-table {
   width: 100%;
   border-collapse: collapse;
   font-size: 0.9375rem;
 }
-.data-table thead tr { background: var(--bg); }
+.data-table thead tr { background: var(--surface-alt); }
 .data-table th {
   padding: 0.625rem 0.75rem;
   border-bottom: 2px solid var(--border);
@@ -811,10 +694,8 @@ select:focus { border-color: var(--accent); }
 .data-table td.right { text-align: right; }
 .data-table tr.highlight { background: var(--accent-light); }
 .data-table tr.highlight td { font-weight: 700; }
-.data-table tr.total-row { background: var(--accent-light); }
-.data-table tr.total-row td { padding: 0.875rem 0.75rem; font-weight: 700; }
 
-/* Calcul row (CAS/CASS/Impozit pe pagina de calcul detaliat) */
+/* Calc row (CAS/CASS/Impozit pe pagina de calcul detaliat /salariu-minim) */
 .calc-row {
   display: flex;
   justify-content: space-between;
@@ -831,17 +712,14 @@ select:focus { border-color: var(--accent); }
 .calc-row.total {
   margin-top: 0.5rem;
   padding: 0.875rem 0.75rem;
-  background: var(--accent-light);
+  background: var(--surface-alt);
   border-radius: 6px;
   border: none;
 }
-.calc-row.total > strong { color: var(--accent); font-size: 1.0625rem; }
+.calc-row.total > strong { color: var(--text); font-size: 1.0625rem; }
 
-/* ─── FAQ accordion (folosește <details>) ───────────────────────────────── */
-.faq-list {
-  display: flex;
-  flex-direction: column;
-}
+/* FAQ accordion */
+.faq-list { display: flex; flex-direction: column; }
 .faq-item {
   border-bottom: 1px solid var(--border);
   padding: 0.875rem 0;
@@ -872,7 +750,7 @@ select:focus { border-color: var(--accent); }
   line-height: 1.7;
 }
 
-/* ─── CTA card (editorial — fără background colorat) ───────────────────── */
+/* CTA card (editorial — fără background colorat) */
 .cta-card {
   background: transparent;
   color: var(--text);
@@ -900,7 +778,6 @@ select:focus { border-color: var(--accent); }
   background: transparent;
   color: var(--text);
   padding: 0;
-  border-radius: 0;
   text-decoration: underline;
   text-underline-offset: 4px;
   text-decoration-thickness: 1px;
@@ -908,79 +785,7 @@ select:focus { border-color: var(--accent); }
   font-weight: 500;
 }
 
-/* ─── Internal links list (Citește și / Calcule pentru sume apropiate) ──── */
-.link-list {
-  list-style: none;
-  font-size: 0.9375rem;
-}
-.link-list li {
-  padding: 0.5rem 0;
-  border-bottom: 1px solid var(--border);
-}
-.link-list li:last-child { border-bottom: none; }
-.link-list a { color: var(--accent); }
-
-/* ─── /info page ─────────────────────────────────────────────────────────── */
-.info-page {
-  padding: 60px 20px;
-  max-width: 800px;
-  margin: 0 auto;
-  min-height: 70vh;
-  line-height: 1.8;
-}
-.info-page header {
-  text-align: center;
-  margin-bottom: 40px;
-}
-.info-page h1 { color: var(--accent); margin-bottom: 20px; }
-.info-page .lead { font-size: 1.2rem; color: #444; }
-.info-page .panel {
-  display: grid;
-  gap: 30px;
-  background: var(--surface);
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: var(--shadow-soft);
-  border: 1px solid var(--border);
-}
-.info-page .panel h2 {
-  color: var(--accent);
-  font-size: 1.4rem;
-}
-.info-page .footer-cta {
-  text-align: center;
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid #eee;
-}
-.info-page .footer-cta p {
-  margin-bottom: 20px;
-  font-weight: 500;
-  color: var(--text);
-}
-.btn-primary {
-  display: inline-block;
-  background: var(--accent);
-  color: white;
-  padding: 14px 28px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   Utilities (clase mici, folosite punctual)
-   ═══════════════════════════════════════════════════════════════════════════ */
-.muted { color: var(--muted); }
-.text-sm { font-size: 0.875rem; }
-.text-xs { font-size: 0.8125rem; }
-.text-italic { font-style: italic; }
-.text-center { text-align: center; }
-.mt-1 { margin-top: 1rem; }
-.mb-1 { margin-bottom: 1rem; }
-.mb-2 { margin-bottom: 1.25rem; }
-
-/* Note la sfârșit de articol (Sursa: ..., italic, mic) */
+/* Source note (Sursa: ..., italic, mic) */
 .source-note {
   font-size: 0.8125rem;
   color: var(--muted);
@@ -988,8 +793,15 @@ select:focus { border-color: var(--accent); }
   font-style: italic;
 }
 
+/* ─── Utilities (folosite punctual) ──────────────────────────────────────── */
+.muted { color: var(--muted); }
+.text-xs { font-size: 0.8125rem; }
+.text-center { text-align: center; }
+.mb-2 { margin-bottom: 1.25rem; }
+.right { text-align: right; }
+
 /* ─── Print ──────────────────────────────────────────────────────────────── */
 @media print {
-  .site-header, .hero .badges, .site-footer, .info-section { display: none; }
+  .site-header, .site-footer, .info-section { display: none; }
   .calc-layout { grid-template-columns: 1fr; }
 }
