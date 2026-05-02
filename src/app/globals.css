@@ -45,12 +45,12 @@ body {
 
 /* ─── Typography ─────────────────────────────────────────────────────────── */
 h1 {
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-size: clamp(1.875rem, 4.2vw, 2.625rem);
   font-weight: 700;
   letter-spacing: -0.03em;
-  line-height: 1.15;
+  line-height: 1.05;
   color: var(--text);
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
 }
 h1 em { font-style: normal; color: var(--text); font-weight: inherit; }
 
@@ -205,11 +205,35 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
 .breadcrumb a { color: var(--muted); }
 .breadcrumb a:hover { color: var(--accent); }
 .subtitle {
-  font-size: 1rem;
+  font-size: 1.0625rem;
+  line-height: 1.55;
   color: var(--muted);
-  max-width: 580px;
-  margin-bottom: 1.25rem;
+  max-width: 620px;
+  margin-bottom: 0;
 }
+.subtitle a {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--border-strong);
+}
+.subtitle a:hover { text-decoration-color: var(--text); }
+
+.dateline {
+  font-size: 0.75rem;
+  color: var(--muted-soft);
+  padding-top: 0.875rem;
+  margin-top: 1rem;
+  border-top: 0.5px solid var(--border);
+  max-width: 620px;
+}
+.dateline a {
+  color: var(--muted-soft);
+  text-decoration: underline;
+}
+.dateline a:hover { color: var(--text); }
+
 .badges { display: flex; gap: 8px; flex-wrap: wrap; }
 .badge {
   background: var(--accent-light);

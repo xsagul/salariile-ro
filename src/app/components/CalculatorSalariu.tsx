@@ -254,19 +254,26 @@ export default function CalculatorSalariu({
           
           {/* Titlul Dinamic */}
           <h1>
-            {titluCustom || <>Calculator Salariu Net <em>2026</em></>}
+            {titluCustom || <>Calculator salariu net 2026</>}
           </h1>
           
           {/* Subtitlul Dinamic */}
           <p className="subtitle">
-            {subtitluCustom || "Calculează instantaneu salariul net din brut, CAS, CASS, impozit și costul total al angajatorului — actualizat cu legislația fiscală în vigoare."}
+            {subtitluCustom || (
+              <>
+                Calculează salariul net din brut. CAS, CASS, impozit și cost angajator — actualizat conform{" "}
+                <a href="https://legislatie.just.ro" target="_blank" rel="noopener noreferrer">HG 146/2026</a>
+                {" "}și{" "}
+                <a href="https://legislatie.just.ro" target="_blank" rel="noopener noreferrer">OUG 89/2025</a>.
+              </>
+            )}
           </p>
           
-          <div className="badges">
-            <span className="badge">Actualizat 2026</span>
-            <span className="badge">Salariu minim 4.050 lei</span>
-            <span className="badge">Gratuit</span>
-          </div>
+          {!titluCustom && (
+            <div className="dateline">
+              Ultima actualizare: 30 aprilie 2026 · Surse: <a href="https://monitoruloficial.ro" target="_blank" rel="noopener noreferrer">Monitorul Oficial 196/2026</a>
+            </div>
+          )}
         </div>
       </section>
 
