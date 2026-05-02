@@ -8,15 +8,18 @@
 
 /* ─── Design tokens ──────────────────────────────────────────────────────── */
 :root {
-  /* Palette */
-  --bg: #f8f7f4;
+  /* Palette — Editorial mode (alb pur + accent #111) */
+  --bg: #ffffff;
   --surface: #ffffff;
+  --surface-alt: #fafaf7;
   --border: #e5e3dd;
-  --text: #1a1916;
-  --muted: #6b6860;
-  --accent: #1a6b3c;
-  --accent-light: #e8f5ee;
-  --accent-mid: #16a34a;
+  --border-strong: #d4d2cb;
+  --text: #111111;
+  --muted: #555555;
+  --muted-soft: #888888;
+  --accent: #111111;
+  --accent-light: #f5f3ee;
+  --accent-mid: #404040;
   --warn: #f59e0b;
   --warn-light: #fef9e7;
   --warn-badge-bg: #fef3c7;
@@ -24,11 +27,11 @@
   --danger: #ef4444;
 
   /* Surface */
-  --radius: 12px;
-  --radius-sm: 8px;
-  --radius-xs: 6px;
-  --shadow: 0 1px 3px rgba(0, 0, 0, .06), 0 4px 16px rgba(0, 0, 0, .04);
-  --shadow-soft: 0 4px 20px rgba(0, 0, 0, .05);
+  --radius: 8px;
+  --radius-sm: 6px;
+  --radius-xs: 4px;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .04);
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, .04);
 }
 
 /* ─── Reset ──────────────────────────────────────────────────────────────── */
@@ -53,7 +56,7 @@ h1 {
   color: var(--text);
   margin-bottom: 0.75rem;
 }
-h1 em { font-style: normal; color: var(--accent); }
+h1 em { font-style: italic; color: var(--text); font-weight: inherit; }
 
 h2 {
   font-size: 1.5rem;
@@ -83,6 +86,23 @@ a {
   transition: color .15s;
 }
 a:hover { color: var(--accent-mid); }
+
+/* Editorial: link-uri în paragrafe, FAQ, source-note → underline subtle */
+p a,
+.faq-answer a,
+.source-note a,
+.article a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--border-strong);
+}
+p a:hover,
+.faq-answer a:hover,
+.source-note a:hover,
+.article a:hover {
+  text-decoration-color: var(--text);
+}
 
 strong { color: var(--text); font-weight: 600; }
 code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.875em; }
@@ -114,64 +134,16 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
   letter-spacing: -0.02em;
 }
 .logo span { color: var(--accent); }
-
-/* Desktop nav (>768px) */
-.nav-desktop { display: flex; gap: 0; margin-left: auto; }
-.nav-desktop a,
-.nav-mobile a {
+nav { display: flex; gap: 0; margin-left: auto; }
+nav a {
   color: var(--muted);
   font-size: 0.875rem;
   padding: 0.5rem 0.875rem;
   border-radius: 6px;
   transition: color .15s, background .15s;
-  text-decoration: none;
 }
-.nav-desktop a:hover,
-.nav-mobile a:hover { color: var(--text); background: var(--bg); }
-.nav-desktop a.active,
-.nav-mobile a.active { color: var(--accent); font-weight: 500; }
-
-/* Hamburger button (ascuns pe desktop) */
-.hamburger {
-  display: none;
-  background: transparent;
-  border: none;
-  width: 40px;
-  height: 40px;
-  margin-left: auto;
-  cursor: pointer;
-  padding: 0;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-}
-.hamburger-bar {
-  display: block;
-  width: 22px;
-  height: 2px;
-  background: var(--text);
-  border-radius: 2px;
-  transition: transform .25s, opacity .25s;
-}
-.hamburger-bar.open:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.hamburger-bar.open:nth-child(2) { opacity: 0; }
-.hamburger-bar.open:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-/* Mobile dropdown nav (ascuns pe desktop) */
-.nav-mobile {
-  display: none;
-  flex-direction: column;
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-  padding: 0.5rem 1.5rem 1rem;
-  gap: 2px;
-}
-.nav-mobile.open { display: flex; }
-.nav-mobile a {
-  padding: 0.75rem 0.875rem;
-  font-size: 0.9375rem;
-}
+nav a:hover { color: var(--text); background: var(--bg); }
+nav a.active { color: var(--accent); font-weight: 500; }
 
 /* ─── Hero ───────────────────────────────────────────────────────────────── */
 .hero {
@@ -240,8 +212,8 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
 .card-head-row h2 { margin: 0; }
 
 /* Variante de carduri (folosite pe /salariu-minim) */
-.card-accent { border-top: 3px solid var(--accent); }
-.card-warn { border-top: 3px solid var(--warn); }
+.card-accent { /* fără border-top colorat în editorial mode */ }
+.card-warn { /* fără border-top colorat în editorial mode */ }
 
 /* ─── Tabs ───────────────────────────────────────────────────────────────── */
 .tab-group {
@@ -378,24 +350,31 @@ select:focus { border-color: var(--accent); }
 /* ─── Calculator results ─────────────────────────────────────────────────── */
 .results-col { display: flex; flex-direction: column; gap: 1rem; }
 .net-card {
-  background: var(--accent);
-  color: white;
-  text-align: center;
-  padding: 2rem 1.5rem;
+  background: var(--surface-alt);
+  color: var(--text);
+  text-align: left;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
 }
 .net-label {
-  font-size: 0.875rem;
-  opacity: 0.85;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted-soft);
+  font-weight: 600;
   margin-bottom: 0.5rem;
 }
 .net-value {
-  font-size: clamp(2rem, 5vw, 2.75rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  margin-bottom: 0.5rem;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1;
+  margin-bottom: 0.4rem;
+  color: var(--text);
 }
-.net-sub { font-size: 0.875rem; opacity: 0.8; }
-.net-sub strong { opacity: 1; color: inherit; }
+.net-sub { font-size: 0.8125rem; color: var(--muted); }
+.net-sub strong { color: var(--text); font-weight: 600; }
 
 .details-card h3 {
   font-size: 0.9375rem;
@@ -441,6 +420,74 @@ select:focus { border-color: var(--accent); }
 }
 
 /* ─── Empty state ────────────────────────────────────────────────────────── */
+/* ─── Editorial results — tabel fluturas ─────────────────────────────────── */
+.results-card {
+  padding: 1.75rem;
+}
+.net-hero {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+.payslip-table {
+  width: 100%;
+  font-size: 0.875rem;
+  color: var(--muted);
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+}
+.payslip-table td {
+  padding: 0.4rem 0;
+  border: none;
+}
+.payslip-table td:last-child {
+  text-align: right;
+  color: var(--text);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.payslip-table tr.total td {
+  border-top: 1px solid var(--text);
+  padding: 0.875rem 0 0.4rem;
+  color: var(--text);
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+.payslip-table tr.total td:last-child {
+  font-size: 1.0625rem;
+}
+.payslip-table tr.employer td {
+  color: var(--muted-soft);
+  font-size: 0.8125rem;
+  padding: 0.3rem 0;
+}
+.payslip-table tr.employer td:last-child {
+  color: var(--muted-soft);
+  font-weight: 400;
+}
+.payslip-table tr.cost td {
+  border-top: 1px solid var(--border);
+  padding: 0.625rem 0 0;
+  color: var(--text);
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+.payslip-table tr.cost td:last-child {
+  font-size: 0.9375rem;
+}
+.distribution {
+  border-top: 1px solid var(--border);
+  padding-top: 1.25rem;
+}
+.dist-label {
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted-soft);
+  font-weight: 600;
+  margin-bottom: 0.875rem;
+}
+
 .empty-card {
   text-align: center;
   padding: 3rem 1.5rem;
@@ -492,7 +539,7 @@ select:focus { border-color: var(--accent); }
   color: rgba(255, 255, 255, .7);
 }
 .site-footer .logo { color: white; }
-.site-footer .logo span { color: #4ade80; }
+.site-footer .logo span { color: rgba(255, 255, 255, .6); }
 .footer-links {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -521,13 +568,10 @@ select:focus { border-color: var(--accent); }
   color: rgba(255, 255, 255, .6);
   text-align: center;
 }
-@media (max-width: 768px) {
-  .nav-desktop { display: none; }
-  .hamburger { display: flex; }
-}
 @media (max-width: 640px) {
   .footer-top { flex-direction: column; }
   .footer-links { grid-template-columns: 1fr 1fr; }
+  nav { display: none; }
 }
 
 /* ─── Mod pills (Brut / Net) ─────────────────────────────────────────────── */
@@ -651,21 +695,24 @@ select:focus { border-color: var(--accent); }
   margin: 0.25rem 0;
 }
 
-/* ─── Chip — link cu fundal colorat (CTA secundar pe card) ──────────────── */
+/* ─── Chip — link text simplu (editorial) ──────────────────────────────── */
 .chip {
-  display: block;
+  display: inline-block;
   margin-top: 1rem;
-  padding: 0.5rem;
-  background: var(--accent-light);
-  color: var(--accent);
-  border-radius: 6px;
-  text-align: center;
-  font-size: 0.8125rem;
-  font-weight: 600;
+  padding: 0;
+  background: transparent;
+  color: var(--text);
+  border-radius: 0;
+  text-align: left;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
 }
 .chip-warn {
-  background: var(--warn-badge-bg);
-  color: var(--warn-badge-text);
+  background: transparent;
+  color: var(--text);
 }
 
 /* ─── Mini-badge "NOU" sau alte etichete inline ─────────────────────────── */
@@ -774,36 +821,40 @@ select:focus { border-color: var(--accent); }
   line-height: 1.7;
 }
 
-/* ─── CTA card (verde, cu buton alb pe el) ──────────────────────────────── */
+/* ─── CTA card (editorial — fără background colorat) ───────────────────── */
 .cta-card {
-  background: var(--accent);
-  color: white;
-  border-radius: var(--radius);
-  padding: 2rem 1.5rem;
-  text-align: center;
+  background: transparent;
+  color: var(--text);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
+  padding: 2rem 0;
+  text-align: left;
   margin-bottom: 2rem;
 }
 .cta-card h2 {
-  font-size: 1.375rem;
-  color: white;
-  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
 }
 .cta-card p {
   font-size: 0.9375rem;
-  opacity: 0.9;
-  color: white;
-  margin: 0 auto 1.25rem;
-  max-width: 500px;
+  color: var(--muted);
+  margin: 0 0 1rem;
+  max-width: 580px;
 }
 .btn-cta {
   display: inline-block;
-  background: white;
-  color: var(--accent);
-  padding: 0.625rem 1.5rem;
-  border-radius: 8px;
-  text-decoration: none;
+  background: transparent;
+  color: var(--text);
+  padding: 0;
+  border-radius: 0;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
   font-size: 0.9375rem;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 /* ─── Internal links list (Citește și / Calcule pentru sume apropiate) ──── */

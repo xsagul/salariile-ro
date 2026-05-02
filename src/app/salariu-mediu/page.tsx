@@ -110,7 +110,7 @@ export default function SalariuMediuPage() {
           <div className="container">
             <div className="grid-auto">
               {/* Anul 2025 (Referința anterioară) */}
-              <article className="card card-accent">
+              <article className="card">
                 <div className="eyebrow">Anul 2025 (Referință legală)</div>
                 <div className="stat-rows">
                   <StatRow label="Salariu mediu brut" value={`${fmt(8597)} lei`} lg />
@@ -122,15 +122,15 @@ export default function SalariuMediuPage() {
               </article>
 
               {/* Anul 2026 (Prognoza) */}
-              <article className="card card-warn">
-                <div className="card-head-row"><div className="eyebrow">Anul 2026 (Prognoză)</div><span className="tag">ESTIMAT</span></div>
+              <article className="card">
+                <div className="eyebrow">Anul 2026 (Prognoză)</div>
                 <div className="stat-rows">
                   <StatRow label="Salariu mediu brut" value={`${fmt(9195)} lei`} lg />
-                  <StatRow label="Salariu net (aprox.)" value={`${fmt(5378)} lei`} xl warn bold />
+                  <StatRow label="Salariu net (aprox.)" value={`${fmt(5378)} lei`} xl accent bold />
                   <div className="stat-divider" />
-                  <StatRow label="Creștere față de 2025" value="+598 lei brut" sm warn bold />
+                  <StatRow label="Creștere față de 2025" value="+598 lei brut" sm accent bold />
                 </div>
-                <Link href="/calculator/calcul-salariu-net-9195-brut" className="chip chip-warn">Calculează detaliat 9.195 lei →</Link>
+                <Link href="/calculator/calcul-salariu-net-9195-brut" className="chip">Calculează detaliat 9.195 lei →</Link>
               </article>
             </div>
             <p className="source-note text-center">Sursa datelor 2026: Comisia Națională de Strategie și Prognoză (CNSP), Prognoza 2024-2028.</p>
@@ -150,13 +150,13 @@ export default function SalariuMediuPage() {
               <h2>Calculul salariului mediu net (9.195 lei brut)</h2>
               <p>Pentru anul 2026, la valoarea prognozată de 9.195 lei, calculul standard al taxelor se prezintă astfel (fără deduceri personale sau scutiri specifice domeniilor IT/Construcții):</p>
               <div className="card mb-2">
-                <h3 className="warn">Câștig mediu estimat 2026</h3>
+                <h3 className="accent">Câștig mediu estimat 2026</h3>
                 <div className="stat-rows">
                   <CalcRow label="Salariu brut" value="9.195,00 lei" bold />
                   <CalcRow label="CAS — pensie (25%)" value="−2.298,75 lei" danger />
                   <CalcRow label="CASS — sănătate (10%)" value="−919,50 lei" danger />
                   <CalcRow label="Impozit pe venit (10%)" value="−597,68 lei" danger />
-                  <CalcRow label="Salariu net (în mână)" value="~5.378,00 lei" total warn />
+                  <CalcRow label="Salariu net (în mână)" value="~5.378,00 lei" total />
                 </div>
               </div>
             </article>
