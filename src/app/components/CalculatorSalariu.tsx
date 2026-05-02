@@ -404,32 +404,6 @@ export default function CalculatorSalariu({
           )}
         </div>
       </div>
-
-      {/* ── Informații SEO (Sunt ASCUNSE automat pe paginile dinamice) ── */}
-      {!ascundeInfoFiscale && (
-        <section className="info-section">
-          <div className="container">
-            <div className="info-grid">
-              <div className="info-card">
-                <h3>Cum se calculează salariul net?</h3>
-                <p>Din salariul brut se deduc contribuțiile obligatorii: CAS (25%), CASS (10%) și impozitul pe venit (10%). Formula ține cont de deducerile personale și facilitățile fiscale.</p>
-              </div>
-              <div className="info-card">
-                <h3>Salariul minim în 2026</h3>
-                <p>Salariul minim brut în 2026 este de <strong>4.050 lei</strong>, rezultând un net de aproximativ <strong>2.574 lei</strong> cu aplicarea facilității de 300 lei (OUG 89/2025).</p>
-              </div>
-              <div className="info-card">
-                <h3>Ce este deducerea personală?</h3>
-                <p>Angajații cu venituri până la 6.050 lei brut beneficiază de o deducere din baza de calcul a impozitului pe venit. Suma depinde de brut și numărul de persoane în întreținere.</p>
-              </div>
-              <div className="info-card">
-                <h3>Facilități IT și construcții</h3>
-                <p>Angajații din IT și construcții beneficiază de scutire de impozit pe venit pentru salarii brute de până la <strong>10.000 lei</strong>.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
     </>
   );
 }
