@@ -3,6 +3,7 @@
 
 import { Figtree } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { headers } from "next/headers"; // Adăugat pentru citirea nonce-ului
 import type { Metadata } from "next";
 
 import "./globals.css";
@@ -10,8 +11,6 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 // Figtree — font modern, sans-serif, cu suport pentru diacritice românești.
-// `display: "swap"` = textul apare imediat cu fallback, apoi Figtree.
-// `variable: "--font-figtree"` = expune fontul ca CSS custom property.
 const figtree = Figtree({
   subsets: ["latin", "latin-ext"],
   variable: "--font-figtree",
@@ -27,7 +26,6 @@ export const metadata: Metadata = {
   },
   description:
     "Calculator salariu net din brut 2026, salariu minim, salariu mediu și noutăți legislative. Totul despre salariile din România.",
-
   authors: [{ name: "Salariile.ro" }],
   creator: "Salariile.ro",
   openGraph: {
@@ -69,11 +67,18 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+// src/app/layout.tsx
+
+// 1. Schimbă funcția în 'async' pentru a putea folosi 'await'
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  // 2. Adaugă 'await' înainte de headers()
+  const headerStore = await headers();
+  const nonce = headerStore.get("x-nonce") || undefined;
+
   return (
     <html lang="ro" className={figtree.variable}>
       <head>
@@ -91,7 +96,8 @@ export default function RootLayout({
           <main>{children}</main>
           <Footer />
         </div>
-        <SpeedInsights />
+        {/* Păstrăm fix-ul pentru eroarea de tip din Screenshot (3).jpg */}
+        <SpeedInsights {...({ nonce } as any)} />
       </body>
     </html>
   );
