@@ -13,7 +13,7 @@
   --border-strong: #d4d2cb;
   --text: #111111;
   --muted: #555555;
-  --muted-soft: #888888;
+  --muted-soft: #757575;
   --accent: #111111;
   --accent-light: #f5f3ee;
   --accent-mid: #404040;
@@ -636,7 +636,7 @@ select:focus { border-color: var(--accent); }
   padding-bottom: 2rem;
   border-bottom: 1px solid rgba(255, 255, 255, .1);
 }
-.footer-links h4 {
+.footer-links .footer-title {
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;

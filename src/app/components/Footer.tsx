@@ -72,7 +72,7 @@ export default function Footer() {
           <div className="footer-links">
             {visibleGroups.map((group) => (
               <div key={group.title}>
-                <h4>{group.title}</h4>
+                <div className="footer-title">{group.title}</div>
                 {group.links.map((link) => (
                   <Link key={link.href} href={link.href}>
                     {link.label}
