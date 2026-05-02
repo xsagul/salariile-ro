@@ -336,9 +336,9 @@ export default function CalculatorSalariu({
               {/* Hero — net mare */}
               <div className="net-hero">
                 <div className="net-label">{mod === "net" ? "Salariu brut corespunzător" : "Salariu net în mână"}</div>
-                <div className="net-value">{mod === "net" ? fmt(parseFloat(brutEfectiv)) : fmt(rez.net)} lei</div>
+                <div className="net-value">{mod === "net" ? fmt(parseFloat(brutEfectiv)) : fmt(rez.net)}</div>
                 <div className="net-sub">
-                  {mod === "net" ? `pentru ${fmt(rez.net)} lei net` : `din ${fmt(parseFloat(brutEfectiv))} lei brut`} · cost firmă {fmt(rez.costTotal)} lei
+                  {mod === "net" ? `pentru ${fmt(rez.net)} net` : `din ${fmt(parseFloat(brutEfectiv))} brut`} · cost firmă {fmt(rez.costTotal)}
                 </div>
               </div>
 
@@ -347,37 +347,37 @@ export default function CalculatorSalariu({
                 <tbody>
                   <tr>
                     <td>Salariu brut</td>
-                    <td>{fmt(parseFloat(brutEfectiv))} lei</td>
+                    <td>{fmt(parseFloat(brutEfectiv))}</td>
                   </tr>
                   <tr>
                     <td>CAS — pensie (25%)</td>
-                    <td>−{fmt(rez.cas)} lei</td>
+                    <td>−{fmt(rez.cas)}</td>
                   </tr>
                   <tr>
                     <td>CASS — sănătate (10%)</td>
-                    <td>−{fmt(rez.cass)} lei</td>
+                    <td>−{fmt(rez.cass)}</td>
                   </tr>
                   {rez.deducerePersonala > 0 && (
                     <tr>
                       <td>Deducere personală</td>
-                      <td>+{fmt(rez.deducerePersonala)} lei</td>
+                      <td>+{fmt(rez.deducerePersonala)}</td>
                     </tr>
                   )}
                   <tr>
                     <td>Impozit pe venit (10%)</td>
-                    <td>−{fmt(rez.impozit)} lei</td>
+                    <td>−{fmt(rez.impozit)}</td>
                   </tr>
                   <tr className="total">
                     <td>Salariu net</td>
-                    <td>{fmt(rez.net)} lei</td>
+                    <td>{fmt(rez.net)}</td>
                   </tr>
                   <tr className="employer">
                     <td>CAM angajator (2,25%)</td>
-                    <td>+{fmt(rez.cam)} lei</td>
+                    <td>+{fmt(rez.cam)}</td>
                   </tr>
                   <tr className="cost">
                     <td>Cost total firmă</td>
-                    <td>{fmt(rez.costTotal)} lei</td>
+                    <td>{fmt(rez.costTotal)}</td>
                   </tr>
                 </tbody>
               </table>
