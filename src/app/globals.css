@@ -133,7 +133,7 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
 .logo span { color: var(--accent); }
 
 /* Desktop nav (>768px) */
-.nav-desktop { display: flex; gap: 0; margin-left: auto; }
+.nav-desktop { display: flex; gap: 0; margin-left: auto; height: 100%; align-items: center; }
 .nav-desktop a,
 .nav-mobile a {
   color: var(--muted);
@@ -145,8 +145,22 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
 }
 .nav-desktop a:hover,
 .nav-mobile a:hover { color: var(--text); background: var(--surface-alt); }
-.nav-desktop a.active,
-.nav-mobile a.active { color: var(--accent); font-weight: 500; }
+
+/* Active state: pe desktop subliniere editorial sub link, pe mobile doar bold */
+.nav-desktop a.active {
+  color: var(--text);
+  font-weight: 500;
+  background: transparent;
+  border-radius: 0;
+  border-bottom: 1.5px solid var(--text);
+  padding-bottom: calc(0.5rem - 1.5px);
+}
+.nav-desktop a.active:hover { background: transparent; }
+
+.nav-mobile a.active {
+  color: var(--text);
+  font-weight: 500;
+}
 
 /* Hamburger */
 .hamburger {
