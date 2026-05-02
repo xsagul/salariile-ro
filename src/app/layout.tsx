@@ -75,20 +75,13 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // 2. Adaugă 'await' înainte de headers()
   const headerStore = await headers();
   const nonce = headerStore.get("x-nonce") || undefined;
 
   return (
     <html lang="ro" className={figtree.variable}>
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <meta
-          name="google-site-verification"
-          content="Ix4lU_YUiGCjX5B6z_v2gKpdpQ5VRsfp0uqzg8MMU_c"
-        />
+        {/* Next.js va folosi automat nonce-ul pentru scripturile sale de sistem */}
       </head>
       <body>
         <div className="page">
@@ -96,7 +89,7 @@ export default async function RootLayout({
           <main>{children}</main>
           <Footer />
         </div>
-        {/* Păstrăm fix-ul pentru eroarea de tip din Screenshot (3).jpg */}
+        {/* Passam nonce-ul către SpeedInsights pentru a nu fi blocat */}
         <SpeedInsights {...({ nonce } as any)} />
       </body>
     </html>

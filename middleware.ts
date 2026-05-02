@@ -5,7 +5,6 @@ import type { NextRequest } from "next/server";
 export function middleware(request: NextRequest) {
   const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
   
-  // Am adăugat 'unsafe-hashes' pentru a permite scripturile mici de sistem
   const cspHeader = `
     default-src 'self';
     script-src 'self' 'nonce-${nonce}' 'strict-dynamic' 'unsafe-hashes';
@@ -31,7 +30,6 @@ export function middleware(request: NextRequest) {
 
   response.headers.set('Content-Security-Policy', cspHeader);
 
-  // Logica ta de host
   const host = request.headers.get("host") || "";
   if (host.endsWith(".vercel.app")) {
     response.headers.set("X-Robots-Tag", "noindex, nofollow, noarchive");
