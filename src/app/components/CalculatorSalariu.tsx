@@ -276,8 +276,10 @@ export default function CalculatorSalariu({
         {/* Form */}
         <div className="card form-card">
           <div className="card-head">
-            <div className="card-head-row">
-              <h2>Date salariale</h2>
+            <h3 className="results-header">DATE DE INTRARE</h3>
+            
+            <div className="field direction-field">
+              <label className="tech-label">DIRECȚIE DE CALCUL:</label>
               <div className="mod-pills">
                 <button className={mod === "brut" ? "pill active" : "pill"} onClick={() => {
                   if (mod === "net") {
@@ -285,26 +287,25 @@ export default function CalculatorSalariu({
                     set("brut", String(calculeazaBrutDinNet(netVal, input)));
                   }
                   setMod("brut");
-                }}>Brut</button>
+                }}>Din brut în net</button>
                 <button className={mod === "net" ? "pill active" : "pill"} onClick={() => {
                   if (mod === "brut") {
                     const rezTemp = calculeaza(input);
                     if (rezTemp) set("brut", String(rezTemp.net));
                   }
                   setMod("net");
-                }}>Net</button>
+                }}>Din net în brut</button>
               </div>
             </div>
-            <p>Completează câmpurile de mai jos</p>
           </div>
 
-          <InputNumber label={mod === "brut" ? "Salariu brut" : "Salariu net"} hint={mod === "brut" ? "Suma din contractul de muncă" : "Suma primită în mână"} value={input.brut} onChange={(v: any) => set("brut", v)} />
+          <InputNumber label={mod === "brut" ? "SALARIU BRUT:" : "SALARIU NET:"} value={input.brut} onChange={(v: any) => set("brut", v)} />
           
           <button className="avansat-toggle" onClick={() => {
             if (avansat) { set("tichete", ""); set("functieDeBAza", true); set("persoanePretretinere", 0); set("varstaSub26", false); set("copiiScolarizati", 0); set("scutitImpozit", false); }
             setAvansat(!avansat);
           }}>
-            {avansat ? "▲ Ascunde opțiuni avansate" : "▼ Calculator avansat"}
+            {avansat ? "[-] ASCUNDE DATE SUPLIMENTARE" : "[+] DATE SUPLIMENTARE (OPȚIONAL)"}
           </button>
 
           {avansat && (
