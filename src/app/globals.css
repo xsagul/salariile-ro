@@ -291,12 +291,12 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
 /* ─── Calculator layout ──────────────────────────────────────────────────── */
 .calc-layout {
   display: grid;
-  grid-template-columns: 360px 1fr;
-  gap: 3rem;
+  grid-template-columns: 1fr 1fr; /* Ambele coloane ocupă fracții egale */
+  gap: 3rem; 
   padding-top: 2rem;
   padding-bottom: 3rem;
-  border-bottom: 1px solid var(--border); /* Linia orizontală de la final */
-  position: relative; /* Necesar pentru linia verticală */
+  border-bottom: 1px solid var(--border); 
+  position: relative; 
 }
 /* Linia verticală care se va întinde perfect de sus până jos */
 .calc-layout::before {
@@ -304,7 +304,7 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
   position: absolute;
   top: 2rem;
   bottom: 3rem;
-  left: calc(360px + 1.5rem); /* Se pune fix la jumătatea distanței dintre coloane */
+  left: calc(50% - 0.5px); /* Acum linia este așezată exact la mijlocul containerului de 50% */
   width: 1px;
   background: var(--border);
 }
