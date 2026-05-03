@@ -237,9 +237,9 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
 .dateline {
   font-size: 0.75rem;
   color: var(--muted-soft);
-  padding-top: 0.875rem;
+  padding-top: 0; /* Opțional: poți pune 0 aici ca să nu mai aibă spațiu gol deasupra */
   margin-top: 1rem;
-  border-top: 0.5px solid var(--border);
+  /* border-top: 0.5px solid var(--border);  <-- ȘTERGE ACEST RÂND */
   max-width: 620px;
 }
 .dateline a {
