@@ -291,15 +291,32 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
 /* ─── Calculator layout ──────────────────────────────────────────────────── */
 .calc-layout {
   display: grid;
-  grid-template-columns: 360px 1fr; /* 360px e de obicei suficient pentru zona de input */
-  gap: 3rem; /* Crește distanța între formular și tabelul din dreapta */
+  grid-template-columns: 360px 1fr;
+  gap: 3rem;
   padding-top: 2rem;
-  padding-bottom: 2rem;
-  align-items: start;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--border); /* Linia orizontală de la final */
+  position: relative; /* Necesar pentru linia verticală */
+}
+/* Linia verticală care se va întinde perfect de sus până jos */
+.calc-layout::before {
+  content: "";
+  position: absolute;
+  top: 2rem;
+  bottom: 3rem;
+  left: calc(360px + 1.5rem); /* Se pune fix la jumătatea distanței dintre coloane */
+  width: 1px;
+  background: var(--border);
 }
 
 @media (max-width: 768px) {
-  .calc-layout { grid-template-columns: 1fr; }
+  .calc-layout::before {
+    display: none;
+  }
+  .calc-layout { 
+    grid-template-columns: 1fr; 
+    border-bottom: none;
+  }
   .nav-desktop { display: none; }
   .hamburger { display: flex; }
   
@@ -318,9 +335,8 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
   border: none;
   box-shadow: none;
   border-radius: 0;
-  border-right: 1px solid var(--border);
-  padding-right: 2rem; /* Spațiu până la linia despărțitoare */
-  padding-top: 0; /* Elimină padding-ul de sus dacă există */
+  padding-right: 2rem; 
+  padding-top: 0;
 }
 
 .field { 
@@ -473,9 +489,9 @@ select:focus { border-color: var(--accent); }
 
 /* ─── Info box (în card-uri, mesaj informativ) ──────────────────────────── */
 .info-box {
-  background: var(--accent-light);
-  border: 1px solid var(--border-strong);
-  border-radius: 8px;
+  background: transparent;
+  border: 1px dashed var(--border-strong);
+  border-radius: 0;
   padding: 0.75rem 1rem;
   font-size: 0.8125rem;
   color: var(--text);
