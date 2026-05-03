@@ -603,6 +603,31 @@ select:focus { border-color: var(--accent); }
   margin-top: 1rem;
 }
 
+/* Buton Descarcă PDF — stil discret editorial */
+.pdf-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+  padding: 0.625rem 1rem;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: inherit;
+}
+.pdf-button:hover {
+  background: var(--surface-alt);
+  border-color: var(--text);
+}
+.pdf-button:active {
+  transform: translateY(1px);
+}
+
 /* Butoanele de acțiune de jos */
 .action-buttons {
   display: flex;

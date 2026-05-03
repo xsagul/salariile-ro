@@ -175,6 +175,156 @@ function BarRow({ label, value, total, color }: any) {
   );
 }
 
+// ─── Generare PDF Fluturaș (format SAGA C) ───────────────────────────────────
+
+async function generarePDFFluturas(
+  brut: number,
+  rez: any,
+  esteSalariuMinim: boolean,
+  facilitate: number
+): Promise<void> {
+  // Import dinamic — biblioteca se încarcă doar când utilizatorul apasă butonul
+  const { jsPDF } = await import("jspdf");
+
+  const doc = new jsPDF({ unit: "mm", format: "a4" });
+
+  // Dimensiuni pagină
+  const pageWidth = 210;
+  const margin = 20;
+  const colRight = pageWidth - margin; // 190 mm
+
+  // Helper pentru linii
+  const linie = (y: number) => {
+    doc.setLineWidth(0.2);
+    doc.line(margin, y, colRight, y);
+  };
+
+  // Helper pentru linie text + valoare (stânga + dreapta)
+  const rand = (y: number, label: string, valoare: string, bold = false) => {
+    doc.setFont("helvetica", bold ? "bold" : "normal");
+    doc.text(label, margin, y);
+    doc.text(valoare, colRight, y, { align: "right" });
+  };
+
+  let y = margin;
+
+  // ─── Header firmă ─────────────────────────────────────
+  doc.setFontSize(9);
+  doc.setFont("helvetica", "bold");
+  doc.text("Calculator generat de salariile.ro", margin, y);
+  y += 5;
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(8);
+  doc.text("Salariu calculat conform legislației fiscale 2026", margin, y);
+  doc.text("HG 146/2026 · OUG 89/2025", colRight, y, { align: "right" });
+  y += 8;
+
+  linie(y);
+  y += 6;
+
+  // ─── Titlu document ─────────────────────────────────────
+  doc.setFontSize(13);
+  doc.setFont("helvetica", "bold");
+  doc.text("FLUTURAȘ SALARIU", pageWidth / 2, y, { align: "center" });
+  y += 6;
+  doc.setFontSize(10);
+  doc.setFont("helvetica", "normal");
+  const luna = new Date().toLocaleDateString("ro-RO", { month: "long", year: "numeric" });
+  doc.text(luna.charAt(0).toUpperCase() + luna.slice(1), pageWidth / 2, y, { align: "center" });
+  y += 10;
+
+  linie(y);
+  y += 8;
+
+  // ─── Linii de calcul ─────────────────────────────────────
+  doc.setFontSize(10);
+
+  // Salariu brut
+  rand(y, "Salariu brut:", `${brut.toLocaleString("ro-RO")} lei`);
+  y += 7;
+
+  // Facilitate (doar dacă se aplică)
+  if (esteSalariuMinim && facilitate > 0) {
+    rand(y, "Facilitate fiscală (OUG 89/2025, neimpozabilă):", `${facilitate} lei`);
+    y += 7;
+  }
+
+  y += 2;
+  linie(y);
+  y += 6;
+
+  // ─── Rețineri (header secțiune) ─────────────────────────────────────
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(9);
+  doc.text("REȚINERI", margin, y);
+  y += 6;
+
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(10);
+
+  // CAS
+  rand(y, "   CAS (Asigurări Sociale - 25%):", `- ${rez.cas.toLocaleString("ro-RO")} lei`);
+  y += 6;
+
+  // CASS
+  rand(y, "   CASS (Asigurări Sănătate - 10%):", `- ${rez.cass.toLocaleString("ro-RO")} lei`);
+  y += 6;
+
+  // Deducere personală (informativ)
+  if (rez.deducerePersonala > 0) {
+    rand(y, "   Deducere personală:", `${rez.deducerePersonala.toLocaleString("ro-RO")} lei`);
+    y += 6;
+  }
+
+  // Bază calcul impozit
+  rand(y, "   Bază calcul impozit:", `${rez.bazaCalculImpozit.toLocaleString("ro-RO")} lei`);
+  y += 6;
+
+  // Impozit
+  rand(y, "   Impozit pe venit (10%):", `- ${rez.impozit.toLocaleString("ro-RO")} lei`);
+  y += 8;
+
+  linie(y);
+  y += 6;
+
+  // Total rețineri
+  rand(y, "Total rețineri:", `${(rez.cas + rez.cass + rez.impozit).toLocaleString("ro-RO")} lei`, true);
+  y += 8;
+
+  // Salariu net
+  doc.setFontSize(12);
+  rand(y, "SALARIU NET:", `${rez.net.toLocaleString("ro-RO")} lei`, true);
+  y += 8;
+
+  linie(y);
+  y += 8;
+
+  // ─── Cost angajator ─────────────────────────────────────
+  doc.setFontSize(9);
+  doc.setFont("helvetica", "bold");
+  doc.text("COST ANGAJATOR", margin, y);
+  y += 6;
+
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(10);
+  rand(y, "   CAM (Contribuție Asiguratorie Muncă - 2,25%):", `${rez.cam.toLocaleString("ro-RO")} lei`);
+  y += 6;
+  rand(y, "Cost total firmă:", `${rez.costTotal.toLocaleString("ro-RO")} lei`, true);
+  y += 12;
+
+  // ─── Footer ─────────────────────────────────────
+  doc.setFontSize(7);
+  doc.setFont("helvetica", "italic");
+  doc.setTextColor(120);
+  doc.text("Document generat de salariile.ro · Calcul informativ, conform legislației fiscale în vigoare", pageWidth / 2, y, { align: "center" });
+  y += 4;
+  doc.text(`Generat la ${new Date().toLocaleString("ro-RO")}`, pageWidth / 2, y, { align: "center" });
+
+  // Salvare
+  const numefisier = `fluturas-salariu-${brut}-lei.pdf`;
+  doc.save(numefisier);
+}
+
 // ─── Componenta principală (ACUM ACCEPTĂ PROPS DINAMICE) ──────────────────────
 
 export default function CalculatorSalariu({
@@ -370,6 +520,19 @@ export default function CalculatorSalariu({
                   </tr>
                 </tbody>
               </table>
+
+              <button
+                type="button"
+                className="pdf-button"
+                onClick={() => generarePDFFluturas(
+                  parseFloat(brutEfectiv),
+                  rez,
+                  parseFloat(brutEfectiv) === SALARIU_MINIM && input.functieDeBAza,
+                  DEDUCERE_MINIM
+                )}
+              >
+                ↓ Descarcă fluturaș PDF
+              </button>
 
             </div>
           ) : (
