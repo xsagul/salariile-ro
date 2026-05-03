@@ -325,65 +325,65 @@ export default function CalculatorSalariu({
         {/* Rezultate — editorial: 1 card cu tabel-fluturas */}
         <div className="results-col">
           {rez ? (
-            <div className="card results-card">
-              {/* Hero — net mare */}
-              <div className="net-hero">
-                <div className="net-label">{mod === "net" ? "Salariu brut corespunzător" : "Salariu net în mână"}</div>
-                <div className="net-value">{mod === "net" ? fmt(parseFloat(brutEfectiv)) : fmt(rez.net)}</div>
-                <div className="net-sub">
-                  {mod === "net" ? `pentru ${fmt(rez.net)} net` : `din ${fmt(parseFloat(brutEfectiv))} brut`} · cost firmă {fmt(rez.costTotal)}
-                </div>
-              </div>
-
-              {/* Tabel fluturas detaliat */}
-              <table className="payslip-table">
+            <div className="results-wrapper">
+              <h3 className="results-header">REZULTAT CALCUL</h3>
+              
+              <table className="payslip-table flat-table">
+                <thead>
+                  <tr>
+                    <th>ELEMENT</th>
+                    <th>SUMĂ (LEI)</th>
+                  </tr>
+                </thead>
                 <tbody>
                   <tr>
                     <td>Salariu brut</td>
                     <td>{fmt(parseFloat(brutEfectiv))}</td>
                   </tr>
                   <tr>
-                    <td>CAS — pensie (25%)</td>
-                    <td>−{fmt(rez.cas)}</td>
+                    <td>CAS (Asigurări Sociale - 25%)</td>
+                    <td>− {fmt(rez.cas)}</td>
                   </tr>
                   <tr>
-                    <td>CASS — sănătate (10%)</td>
-                    <td>−{fmt(rez.cass)}</td>
+                    <td>CASS (Asigurări Sănătate - 10%)</td>
+                    <td>− {fmt(rez.cass)}</td>
                   </tr>
-                  {rez.deducerePersonala > 0 && (
-                    <tr>
-                      <td>Deducere personală</td>
-                      <td>+{fmt(rez.deducerePersonala)}</td>
-                    </tr>
-                  )}
+                  <tr className="bold-row">
+                    <td>Bază impozabilă</td>
+                    <td>{fmt(parseFloat(brutEfectiv) - rez.cas - rez.cass)}</td>
+                  </tr>
+                  <tr>
+                    <td>Deducere personală</td>
+                    <td>{fmt(rez.deducerePersonala)}</td>
+                  </tr>
                   <tr>
                     <td>Impozit pe venit (10%)</td>
-                    <td>−{fmt(rez.impozit)}</td>
+                    <td>− {fmt(rez.impozit)}</td>
                   </tr>
-                  <tr className="total">
-                    <td>Salariu net</td>
+                  <tr className="total-net">
+                    <td>SALARIU NET</td>
                     <td>{fmt(rez.net)}</td>
                   </tr>
-                  <tr className="employer">
-                    <td>CAM angajator (2,25%)</td>
-                    <td>+{fmt(rez.cam)}</td>
+                </tbody>
+              </table>
+
+              <table className="payslip-table flat-table mt-table">
+                <tbody>
+                  <tr>
+                    <td>CAM (Contribuție Muncă - 2.25%)</td>
+                    <td>{fmt(rez.cam)}</td>
                   </tr>
-                  <tr className="cost">
-                    <td>Cost total firmă</td>
+                  <tr className="total-cost">
+                    <td>COST TOTAL ANGAJATOR</td>
                     <td>{fmt(rez.costTotal)}</td>
                   </tr>
                 </tbody>
               </table>
 
-              {/* Distribuție subtilă — păstrată dar minimă */}
-              <div className="distribution">
-                <div className="dist-label">Distribuția salariului brut</div>
-                <div className="bars">
-                  <BarRow label="Salariu net" value={rez.net} total={parseFloat(brutEfectiv)} color="#111111" />
-                  <BarRow label="CAS angajat" value={rez.cas} total={parseFloat(brutEfectiv)} color="#666666" />
-                  <BarRow label="CASS angajat" value={rez.cass} total={parseFloat(brutEfectiv)} color="#888888" />
-                  <BarRow label="Impozit venit" value={rez.impozit} total={parseFloat(brutEfectiv)} color="#aaaaaa" />
-                </div>
+              <div className="action-buttons">
+                <button type="button">COPIAZĂ TABEL</button>
+                <button type="button">DESCARCĂ PDF</button>
+                <button type="button">TRIMITE PE EMAIL</button>
               </div>
             </div>
           ) : (
