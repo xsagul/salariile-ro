@@ -12,7 +12,6 @@ interface InputState {
   varstaSub26: boolean;
   copiiScolarizati: number;
   scutitImpozit: boolean;
-  sectiune: "standard" | "constructii" | "it";
 }
 
 interface Rezultat {
@@ -56,23 +55,12 @@ function calculeaza(input: InputState): Rezultat | null {
   if (!brut || brut <= 0) return null;
 
   const tichete = parseFloat(input.tichete) || 0;
-  const { functieDeBAza, persoanePretretinere, varstaSub26, copiiScolarizati, scutitImpozit, sectiune } = input;
+  const { functieDeBAza, persoanePretretinere, varstaSub26, copiiScolarizati, scutitImpozit } = input;
 
   const facilitate = (functieDeBAza && brut === SALARIU_MINIM) ? DEDUCERE_MINIM : 0;
   const bazaCasCassSalariu = Math.max(0, brut - facilitate);
 
-  let cas = 0;
-  if (sectiune === "constructii") {
-    if (brut <= 10000) {
-      cas = Math.round(bazaCasCassSalariu * 0.2025);
-    } else {
-      const bazaPanaLa10k = 10000 - facilitate;
-      const bazaPeste10k = brut - 10000;
-      cas = Math.round(bazaPanaLa10k * 0.2025) + Math.round(bazaPeste10k * CAS_PROCENT);
-    }
-  } else {
-    cas = Math.round(bazaCasCassSalariu * CAS_PROCENT);
-  }
+  const cas = Math.round(bazaCasCassSalariu * CAS_PROCENT);
 
   const cassSalariu = Math.round(bazaCasCassSalariu * CASS_PROCENT);
   const cassTichete = Math.round(tichete * CASS_PROCENT);
@@ -89,21 +77,9 @@ function calculeaza(input: InputState): Rezultat | null {
   const bazaImpozitTichete = Math.max(0, tichete - cassTichete);
 
   if (!scutitImpozit) {
-    if (sectiune === "it" || sectiune === "constructii") {
-      if (brut > 10000) {
-        const parteTaxabilaBrut = brut - 10000;
-        const casAferentPeste10k = Math.round(parteTaxabilaBrut * CAS_PROCENT);
-        const cassAferentPeste10k = Math.round(parteTaxabilaBrut * CASS_PROCENT);
-        const bazaImpozitSalariuPeste10k = parteTaxabilaBrut - casAferentPeste10k - cassAferentPeste10k;
-        impozit = Math.round((bazaImpozitSalariuPeste10k + bazaImpozitTichete) * IMPOZIT_PROCENT);
-      } else {
-        impozit = Math.round(bazaImpozitTichete * IMPOZIT_PROCENT);
-      }
-    } else {
-      const bazaImpozitSalariu = Math.max(0, brut - cas - cassSalariu - facilitate - deducere);
-      const bazaImpozitTotala = bazaImpozitSalariu + bazaImpozitTichete;
-      impozit = Math.round(bazaImpozitTotala * IMPOZIT_PROCENT);
-    }
+    const bazaImpozitSalariu = Math.max(0, brut - cas - cassSalariu - facilitate - deducere);
+    const bazaImpozitTotala = bazaImpozitSalariu + bazaImpozitTichete;
+    impozit = Math.round(bazaImpozitTotala * IMPOZIT_PROCENT);
   }
 
   const impozitTichete = scutitImpozit ? 0 : Math.round(bazaImpozitTichete * IMPOZIT_PROCENT);
@@ -223,7 +199,6 @@ export default function CalculatorSalariu({
     varstaSub26: false,
     copiiScolarizati: 0,
     scutitImpozit: false,
-    sectiune: "standard",
   });
 
   const set = useCallback(
@@ -315,10 +290,7 @@ export default function CalculatorSalariu({
               <Select id="persoane-intretinere" label="Persoane în întreținere" value={input.persoanePretretinere} options={[0, 1, 2, 3, 4].map((n) => ({ v: n, l: n === 0 ? "Niciuna" : `${n} ${n === 1 ? "persoană" : "persoane"}` }))} onChange={(v: any) => set("persoanePretretinere", v)} />
               <Select id="copii-scolari" label="Copii minori școlari" value={input.copiiScolarizati} options={[0, 1, 2, 3, 4, 5].map((n) => ({ v: n, l: n === 0 ? "Niciunul" : `${n} ${n === 1 ? "copil" : "copii"}` }))} onChange={(v: any) => set("copiiScolarizati", v)} />
               <Toggle label="Vârstă sub 26 ani" checked={input.varstaSub26} onChange={(v: any) => set("varstaSub26", v)} />
-              {input.sectiune === "standard" && <Toggle label="Scutit de impozit (handicap etc.)" checked={input.scutitImpozit} onChange={(v: any) => set("scutitImpozit", v)} />}
-              {parseFloat(input.brut) === SALARIU_MINIM && (
-                <div className="info-box"><strong>Facilitate aplicată:</strong> deducere de 300 lei din baza de calcul pentru salariul minim (OUG 89/2025).</div>
-              )}
+              <Toggle label="Scutit de impozit (handicap etc.)" checked={input.scutitImpozit} onChange={(v: any) => set("scutitImpozit", v)} />
             </>
           )}
         </div>
@@ -342,6 +314,12 @@ export default function CalculatorSalariu({
                     <td>Salariu brut</td>
                     <td>{fmt(parseFloat(brutEfectiv))}</td>
                   </tr>
+                  {parseFloat(brutEfectiv) === SALARIU_MINIM && input.functieDeBAza && (
+                    <tr className="sub-row">
+                      <td>Facilitate fiscală <span className="muted">(OUG 89/2025)</span></td>
+                      <td>− {fmt(DEDUCERE_MINIM)}</td>
+                    </tr>
+                  )}
                   <tr className="sub-row">
                     <td>CAS <span className="muted">(Asigurări Sociale - 25%)</span></td>
                     <td>− {fmt(rez.cas)}</td>
@@ -350,14 +328,12 @@ export default function CalculatorSalariu({
                     <td>CASS <span className="muted">(Asigurări Sănătate - 10%)</span></td>
                     <td>− {fmt(rez.cass)}</td>
                   </tr>
-                  <tr className="bold-row">
-                    <td>Bază impozabilă</td>
-                    <td>{fmt(parseFloat(brutEfectiv) - rez.cas - rez.cass)}</td>
-                  </tr>
-                  <tr className="sub-row">
-                    <td>Deducere personală</td>
-                    <td>{fmt(rez.deducerePersonala)}</td>
-                  </tr>
+                  {rez.deducerePersonala > 0 && (
+                    <tr className="sub-row">
+                      <td>Deducere personală</td>
+                      <td>+ {fmt(rez.deducerePersonala)}</td>
+                    </tr>
+                  )}
                   <tr className="sub-row">
                     <td>Impozit pe venit <span className="muted">(10%)</span></td>
                     <td>− {fmt(rez.impozit)}</td>
@@ -382,11 +358,6 @@ export default function CalculatorSalariu({
                 </tbody>
               </table>
 
-              <div className="action-buttons">
-                <button type="button">COPIAZĂ TABEL</button>
-                <button type="button">DESCARCĂ PDF</button>
-                <button type="button">TRIMITE PE EMAIL</button>
-              </div>
             </div>
           ) : (
             <div className="empty-card">
