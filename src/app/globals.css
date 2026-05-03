@@ -596,10 +596,10 @@ select:focus { border-color: var(--accent); }
   text-align: center;
   padding: 4rem 2rem;
   color: var(--muted);
-  border: 1px dashed var(--border-strong); /* O margine întreruptă, tehnică */
-  border-radius: 0; /* Colțuri perfect drepte */
+  border: 1px dashed var(--border-strong);
+  border-radius: 0;
   background: transparent;
-  margin-top: 2rem;
+  /* margin-top: 2rem; <-- Șterge această linie! */
 }
 
 .empty-icon { 
