@@ -235,12 +235,6 @@ export default function CalculatorSalariu({
   const brutEfectiv = mod === "net" ? String(calculeazaBrutDinNet(parseFloat(input.brut) || 0, input)) : input.brut;
   const rez = calculeaza({ ...input, brut: brutEfectiv });
 
-  const sectiuni = [
-    { id: "standard", label: "Standard" },
-    { id: "it", label: "IT (scutit impozit)" },
-    { id: "constructii", label: "Construcții" },
-  ] as const;
-
   return (
     <>
       {/* ── Hero (Acum afișează titluri dinamice dacă sunt trimise) ── */}
@@ -302,14 +296,6 @@ export default function CalculatorSalariu({
               </div>
             </div>
             <p>Completează câmpurile de mai jos</p>
-          </div>
-
-          <div className="tab-group">
-            {sectiuni.map((s) => (
-              <button key={s.id} className={`tab ${input.sectiune === s.id ? "active" : ""}`} onClick={() => set("sectiune", s.id)} type="button">
-                {s.label}
-              </button>
-            ))}
           </div>
 
           <InputNumber label={mod === "brut" ? "Salariu brut" : "Salariu net"} hint={mod === "brut" ? "Suma din contractul de muncă" : "Suma primită în mână"} value={input.brut} onChange={(v: any) => set("brut", v)} />
