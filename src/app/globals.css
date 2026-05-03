@@ -297,14 +297,33 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
   padding-bottom: 2rem;
   align-items: start;
 }
+
 @media (max-width: 768px) {
   .calc-layout { grid-template-columns: 1fr; }
   .nav-desktop { display: none; }
   .hamburger { display: flex; }
+  
+  /* Pe mobil, linia se mută jos, sub formular */
+  .form-card {
+    border-right: none;
+    padding-right: 0;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2rem;
+  }
 }
 
 /* ─── Form (calculator) ──────────────────────────────────────────────────── */
-.form-card { /* alias for .card; styled by .card */ }
+.form-card {
+  /* Eliminăm aspectul de "cutie" standard */
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  
+  /* Adăugăm linia despărțitoare în dreapta și puțin spațiu */
+  border-right: 1px solid var(--border);
+  padding-right: 2.5rem;
+}
 
 .field { margin-bottom: 1.125rem; }
 .field label {
