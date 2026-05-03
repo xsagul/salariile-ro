@@ -325,9 +325,10 @@ export default function CalculatorSalariu({
 
         {/* Rezultate — editorial: 1 card cu tabel-fluturas */}
         <div className="results-col">
+          <h3 className="results-header">REZULTAT CALCUL</h3>
+          
           {rez ? (
             <div className="results-wrapper">
-              <h3 className="results-header">REZULTAT CALCUL</h3>
               
               <table className="payslip-table flat-table">
                 <thead>
