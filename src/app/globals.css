@@ -560,16 +560,36 @@ select:focus { border-color: var(--accent); }
   background: var(--surface-alt);
 }
 
-/* ─── Empty state ────────────────────────────────────────────────────────── */
+/* ─── Empty state (Design Plat) ──────────────────────────────────────────── */
 .empty-card {
   text-align: center;
-  padding: 3rem 1.5rem;
+  padding: 4rem 2rem;
   color: var(--muted);
+  border: 1px dashed var(--border-strong); /* O margine întreruptă, tehnică */
+  border-radius: 0; /* Colțuri perfect drepte */
+  background: transparent;
+  margin-top: 2rem;
 }
-.empty-icon { margin-bottom: 1rem; opacity: 0.4; }
-.empty-card p { font-size: 1rem; margin-bottom: 0.5rem; color: var(--muted); }
-.empty-hint { font-size: 0.8125rem; color: var(--accent); }
 
+.empty-icon { 
+  margin-bottom: 1.25rem; 
+  opacity: 0.6; 
+  color: var(--muted-soft);
+}
+
+.empty-card p { 
+  font-size: 0.875rem; 
+  font-weight: 600; 
+  margin-bottom: 0.5rem; 
+  color: var(--text); 
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.empty-hint { 
+  font-size: 0.8125rem; 
+  color: var(--muted); 
+}
 /* ─── Section surfaces (între hero și content) ───────────────────────────── */
 .section-surface {
   background: var(--surface);

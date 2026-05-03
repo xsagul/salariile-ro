@@ -387,7 +387,7 @@ export default function CalculatorSalariu({
               </div>
             </div>
           ) : (
-            <div className="card empty-card">
+            <div className="empty-card">
               <div className="empty-icon">
                 <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M9 7H6a2 2 0 00-2 2v9a2 2 0 002 2h9a2 2 0 002-2v-3M9 12h6m-3-3v6M16 3h5v5M21 3l-7 7" /></svg>
               </div>
