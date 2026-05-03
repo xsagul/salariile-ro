@@ -291,8 +291,8 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
 /* ─── Calculator layout ──────────────────────────────────────────────────── */
 .calc-layout {
   display: grid;
-  grid-template-columns: 420px 1fr;
-  gap: 1.5rem;
+  grid-template-columns: 360px 1fr; /* 360px e de obicei suficient pentru zona de input */
+  gap: 3rem; /* Crește distanța între formular și tabelul din dreapta */
   padding-top: 2rem;
   padding-bottom: 2rem;
   align-items: start;
@@ -314,18 +314,18 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
 
 /* ─── Form (calculator) ──────────────────────────────────────────────────── */
 .form-card {
-  /* Eliminăm aspectul de "cutie" standard */
   background: transparent;
   border: none;
   box-shadow: none;
   border-radius: 0;
-  
-  /* Adăugăm linia despărțitoare în dreapta și puțin spațiu */
   border-right: 1px solid var(--border);
-  padding-right: 2.5rem;
+  padding-right: 2rem; /* Spațiu până la linia despărțitoare */
+  padding-top: 0; /* Elimină padding-ul de sus dacă există */
 }
 
-.field { margin-bottom: 1.125rem; }
+.field { 
+  margin-bottom: 1.5rem; /* Crește spațiul dintre direcția de calcul și salariu brut */
+}
 .field label, .tech-label {
   display: block;
   font-size: 0.75rem;
@@ -347,6 +347,7 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
   border-radius: 0;
   overflow: hidden;
   transition: border-color .15s;
+  width: 100%; /* Asigură-te că ocupă tot spațiul disponibil */
 }
 .input-wrap:focus-within { border-color: var(--accent); }
 .input-wrap input {
