@@ -570,6 +570,28 @@ select:focus { border-color: var(--accent); }
   padding-left: 2.5rem; /* Împinge textul spre dreapta */
 }
 
+/* Header secțiune (ex: "Rețineri:") — doar text, fără valoare */
+.flat-table tr.section-header td {
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  padding-top: 0.875rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Total rețineri — sumarizator după secțiunea de rețineri */
+.flat-table tr.total-retineri td {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--text);
+  border-top: 1px solid var(--border);
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+}
+
 /* Spațierea dintre cele două tabele */
 .mt-table {
   margin-top: 1rem;

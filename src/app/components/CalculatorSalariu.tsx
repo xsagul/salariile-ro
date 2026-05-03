@@ -20,6 +20,7 @@ interface Rezultat {
   cass: number;
   impozit: number;
   deducerePersonala: number;
+  bazaCalculImpozit: number;
   cam: number;
   costTotal: number;
   brutNet: number;
@@ -97,6 +98,7 @@ function calculeaza(input: InputState): Rezultat | null {
     cass: cassTotal,
     impozit,
     deducerePersonala: Math.round(deducere),
+    bazaCalculImpozit: Math.max(0, brut - cas - cassSalariu - facilitate - deducere),
     cam,
     costTotal: brut + cam,
     brutNet: brut > 0 ? Math.round((netBaniMunciti / brut) * 100) : 0,
@@ -316,27 +318,38 @@ export default function CalculatorSalariu({
                   </tr>
                   {parseFloat(brutEfectiv) === SALARIU_MINIM && input.functieDeBAza && (
                     <tr className="sub-row">
-                      <td>Facilitate fiscală <span className="muted">(OUG 89/2025)</span></td>
-                      <td>− {fmt(DEDUCERE_MINIM)}</td>
+                      <td>Facilitate fiscală <span className="muted">(OUG 89/2025, neimpozabilă)</span></td>
+                      <td>{fmt(DEDUCERE_MINIM)}</td>
                     </tr>
                   )}
-                  <tr className="sub-row">
+                  <tr className="section-header">
+                    <td colSpan={2}>Rețineri</td>
+                  </tr>
+                  <tr className="sub-row indent">
                     <td>CAS <span className="muted">(Asigurări Sociale - 25%)</span></td>
                     <td>− {fmt(rez.cas)}</td>
                   </tr>
-                  <tr className="sub-row">
+                  <tr className="sub-row indent">
                     <td>CASS <span className="muted">(Asigurări Sănătate - 10%)</span></td>
                     <td>− {fmt(rez.cass)}</td>
                   </tr>
                   {rez.deducerePersonala > 0 && (
-                    <tr className="sub-row">
+                    <tr className="sub-row indent">
                       <td>Deducere personală</td>
-                      <td>+ {fmt(rez.deducerePersonala)}</td>
+                      <td>{fmt(rez.deducerePersonala)}</td>
                     </tr>
                   )}
-                  <tr className="sub-row">
+                  <tr className="sub-row indent">
+                    <td>Bază calcul impozit</td>
+                    <td>{fmt(rez.bazaCalculImpozit)}</td>
+                  </tr>
+                  <tr className="sub-row indent">
                     <td>Impozit pe venit <span className="muted">(10%)</span></td>
                     <td>− {fmt(rez.impozit)}</td>
+                  </tr>
+                  <tr className="total-retineri">
+                    <td>Total rețineri</td>
+                    <td>{fmt(rez.cas + rez.cass + rez.impozit)}</td>
                   </tr>
                   <tr className="total-net">
                     <td>SALARIU NET</td>
