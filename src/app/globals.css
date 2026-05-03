@@ -206,8 +206,8 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
 /* ─── Hero ───────────────────────────────────────────────────────────────── */
 .hero {
   background: var(--surface);
-  border-bottom: 1px solid var(--border);
-  padding: 2.5rem 0 2rem;
+  /* border-bottom: 1px solid var(--border); <-- ȘTERGE ACEST RÂND */
+  padding: 2.5rem 0 2rem; 
 }
 .breadcrumb {
   display: flex;
@@ -291,12 +291,14 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
 /* ─── Calculator layout ──────────────────────────────────────────────────── */
 .calc-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Ambele coloane ocupă fracții egale */
-  gap: 3rem; 
-  padding-top: 2rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  padding-top: 3rem; /* Lasă spațiu între linia de sus și conținut */
   padding-bottom: 3rem;
-  border-bottom: 1px solid var(--border); 
-  position: relative; 
+  
+  border-top: 1px solid var(--border); /* <-- ADAUGĂ ASTA (linia de sus, scurtă) */
+  border-bottom: 1px solid var(--border); /* Asta e linia de jos pe care o aveam deja */
+  position: relative;
 }
 /* Linia verticală care se va întinde perfect de sus până jos */
 .calc-layout::before {
