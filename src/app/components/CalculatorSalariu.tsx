@@ -177,6 +177,19 @@ function BarRow({ label, value, total, color }: any) {
 
 // ─── Generare PDF Fluturaș (format SAGA C) ───────────────────────────────────
 
+// Helper: înlocuiește diacriticele românești cu echivalente fără diacritice
+// (necesar pentru că fontul Helvetica default din jsPDF nu suportă Unicode complet)
+function fixDiacritice(text: string): string {
+  return text
+    .replace(/ă/g, "a").replace(/Ă/g, "A")
+    .replace(/â/g, "a").replace(/Â/g, "A")
+    .replace(/î/g, "i").replace(/Î/g, "I")
+    .replace(/ș/g, "s").replace(/Ș/g, "S")
+    .replace(/ş/g, "s").replace(/Ş/g, "S")
+    .replace(/ț/g, "t").replace(/Ț/g, "T")
+    .replace(/ţ/g, "t").replace(/Ţ/g, "T");
+}
+
 async function generarePDFFluturas(
   brut: number,
   rez: any,
@@ -193,17 +206,22 @@ async function generarePDFFluturas(
   const margin = 20;
   const colRight = pageWidth - margin; // 190 mm
 
-  // Helper pentru linii
-  const linie = (y: number) => {
-    doc.setLineWidth(0.2);
+  // Helper: scrie text (cu fix diacritice automat)
+  const T = (text: string, x: number, y: number, opts?: any) => {
+    doc.text(fixDiacritice(text), x, y, opts);
+  };
+
+  // Helper pentru linii orizontale
+  const linie = (y: number, gros = 0.2) => {
+    doc.setLineWidth(gros);
     doc.line(margin, y, colRight, y);
   };
 
-  // Helper pentru linie text + valoare (stânga + dreapta)
-  const rand = (y: number, label: string, valoare: string, bold = false) => {
+  // Helper pentru rând (label stânga + valoare dreapta)
+  const rand = (y: number, label: string, valoare: string, bold = false, indent = 0) => {
     doc.setFont("helvetica", bold ? "bold" : "normal");
-    doc.text(label, margin, y);
-    doc.text(valoare, colRight, y, { align: "right" });
+    T(label, margin + indent, y);
+    T(valoare, colRight, y, { align: "right" });
   };
 
   let y = margin;
@@ -211,32 +229,33 @@ async function generarePDFFluturas(
   // ─── Header firmă ─────────────────────────────────────
   doc.setFontSize(9);
   doc.setFont("helvetica", "bold");
-  doc.text("Calculator generat de salariile.ro", margin, y);
-  y += 5;
+  T("Calculator generat de salariile.ro", margin, y);
   doc.setFont("helvetica", "normal");
   doc.setFontSize(8);
-  doc.text("Salariu calculat conform legislației fiscale 2026", margin, y);
-  doc.text("HG 146/2026 · OUG 89/2025", colRight, y, { align: "right" });
+  T("HG 146/2026 · OUG 89/2025", colRight, y, { align: "right" });
+  y += 5;
+  doc.setFontSize(8);
+  T("Salariu calculat conform legislatiei fiscale 2026", margin, y);
   y += 8;
 
-  linie(y);
-  y += 6;
+  linie(y, 0.5);
+  y += 8;
 
   // ─── Titlu document ─────────────────────────────────────
-  doc.setFontSize(13);
+  doc.setFontSize(14);
   doc.setFont("helvetica", "bold");
-  doc.text("FLUTURAȘ SALARIU", pageWidth / 2, y, { align: "center" });
+  T("FLUTURAS SALARIU", pageWidth / 2, y, { align: "center" });
   y += 6;
   doc.setFontSize(10);
   doc.setFont("helvetica", "normal");
   const luna = new Date().toLocaleDateString("ro-RO", { month: "long", year: "numeric" });
-  doc.text(luna.charAt(0).toUpperCase() + luna.slice(1), pageWidth / 2, y, { align: "center" });
+  T(`Luna: ${luna.charAt(0).toUpperCase() + luna.slice(1)}`, pageWidth / 2, y, { align: "center" });
   y += 10;
 
   linie(y);
   y += 8;
 
-  // ─── Linii de calcul ─────────────────────────────────────
+  // ─── Linii de calcul (Venituri) ─────────────────────────────────────
   doc.setFontSize(10);
 
   // Salariu brut
@@ -245,80 +264,90 @@ async function generarePDFFluturas(
 
   // Facilitate (doar dacă se aplică)
   if (esteSalariuMinim && facilitate > 0) {
-    rand(y, "Facilitate fiscală (OUG 89/2025, neimpozabilă):", `${facilitate} lei`);
+    doc.setTextColor(80);
+    rand(y, "Facilitate fiscala (neimpozabila):", `${facilitate} lei`);
+    doc.setTextColor(0);
     y += 7;
   }
 
   y += 2;
   linie(y);
-  y += 6;
+  y += 8;
 
   // ─── Rețineri (header secțiune) ─────────────────────────────────────
   doc.setFont("helvetica", "bold");
-  doc.setFontSize(9);
-  doc.text("REȚINERI", margin, y);
-  y += 6;
+  doc.setFontSize(10);
+  T("RETINERI", margin, y);
+  y += 7;
 
   doc.setFont("helvetica", "normal");
   doc.setFontSize(10);
 
   // CAS
-  rand(y, "   CAS (Asigurări Sociale - 25%):", `- ${rez.cas.toLocaleString("ro-RO")} lei`);
+  rand(y, "C.A.S. (Asigurari Sociale - 25%)", `- ${rez.cas.toLocaleString("ro-RO")} lei`, false, 5);
   y += 6;
 
   // CASS
-  rand(y, "   CASS (Asigurări Sănătate - 10%):", `- ${rez.cass.toLocaleString("ro-RO")} lei`);
+  rand(y, "C.A.S.S. (Asigurari Sanatate - 10%)", `- ${rez.cass.toLocaleString("ro-RO")} lei`, false, 5);
   y += 6;
 
-  // Deducere personală (informativ)
+  // Deducere personală (informativ — text gri)
   if (rez.deducerePersonala > 0) {
-    rand(y, "   Deducere personală:", `${rez.deducerePersonala.toLocaleString("ro-RO")} lei`);
+    doc.setTextColor(100);
+    rand(y, "Deducere personala", `${rez.deducerePersonala.toLocaleString("ro-RO")} lei`, false, 5);
+    doc.setTextColor(0);
     y += 6;
   }
 
-  // Bază calcul impozit
-  rand(y, "   Bază calcul impozit:", `${rez.bazaCalculImpozit.toLocaleString("ro-RO")} lei`);
+  // Bază calcul impozit (informativ — text gri)
+  doc.setTextColor(100);
+  rand(y, "Baza calcul impozit", `${rez.bazaCalculImpozit.toLocaleString("ro-RO")} lei`, false, 5);
+  doc.setTextColor(0);
   y += 6;
 
   // Impozit
-  rand(y, "   Impozit pe venit (10%):", `- ${rez.impozit.toLocaleString("ro-RO")} lei`);
+  rand(y, "Impozit pe venit (10%)", `- ${rez.impozit.toLocaleString("ro-RO")} lei`, false, 5);
   y += 8;
 
   linie(y);
-  y += 6;
+  y += 7;
 
   // Total rețineri
-  rand(y, "Total rețineri:", `${(rez.cas + rez.cass + rez.impozit).toLocaleString("ro-RO")} lei`, true);
-  y += 8;
+  doc.setFontSize(10);
+  rand(y, "Total retineri:", `${(rez.cas + rez.cass + rez.impozit).toLocaleString("ro-RO")} lei`, true);
+  y += 9;
 
-  // Salariu net
-  doc.setFontSize(12);
+  // Salariu net (mare)
+  doc.setFontSize(13);
   rand(y, "SALARIU NET:", `${rez.net.toLocaleString("ro-RO")} lei`, true);
   y += 8;
 
-  linie(y);
-  y += 8;
+  linie(y, 0.5);
+  y += 10;
 
   // ─── Cost angajator ─────────────────────────────────────
-  doc.setFontSize(9);
+  doc.setFontSize(10);
   doc.setFont("helvetica", "bold");
-  doc.text("COST ANGAJATOR", margin, y);
-  y += 6;
+  T("COST ANGAJATOR", margin, y);
+  y += 7;
 
   doc.setFont("helvetica", "normal");
   doc.setFontSize(10);
-  rand(y, "   CAM (Contribuție Asiguratorie Muncă - 2,25%):", `${rez.cam.toLocaleString("ro-RO")} lei`);
+  rand(y, "C.A.M. (Contributie Munca - 2,25%)", `${rez.cam.toLocaleString("ro-RO")} lei`, false, 5);
   y += 6;
-  rand(y, "Cost total firmă:", `${rez.costTotal.toLocaleString("ro-RO")} lei`, true);
-  y += 12;
+  rand(y, "Cost total firma:", `${rez.costTotal.toLocaleString("ro-RO")} lei`, true);
+  y += 14;
+
+  linie(y, 0.2);
+  y += 5;
 
   // ─── Footer ─────────────────────────────────────
   doc.setFontSize(7);
   doc.setFont("helvetica", "italic");
   doc.setTextColor(120);
-  doc.text("Document generat de salariile.ro · Calcul informativ, conform legislației fiscale în vigoare", pageWidth / 2, y, { align: "center" });
+  T("Document generat de salariile.ro · Calcul informativ, conform legislatiei fiscale in vigoare", pageWidth / 2, y, { align: "center" });
   y += 4;
-  doc.text(`Generat la ${new Date().toLocaleString("ro-RO")}`, pageWidth / 2, y, { align: "center" });
+  T(`Generat la ${new Date().toLocaleString("ro-RO")}`, pageWidth / 2, y, { align: "center" });
 
   // Salvare
   const numefisier = `fluturas-salariu-${brut}-lei.pdf`;
