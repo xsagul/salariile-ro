@@ -565,6 +565,10 @@ select:focus { border-color: var(--accent); }
   background-color: var(--surface-alt); /* Aceasta dă culoarea diferită casetei (gri deschis) */
   color: var(--text); /* Asigură un negru intens pentru text */
 }
+/* Rânduri indentate pentru sub-calcule (taxe, deduceri) */
+.flat-table tr.sub-row td:first-child {
+  padding-left: 2.5rem; /* Împinge textul spre dreapta */
+}
 
 /* Spațierea dintre cele două tabele */
 .mt-table {

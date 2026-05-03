@@ -326,14 +326,14 @@ export default function CalculatorSalariu({
         {/* Rezultate — editorial: 1 card cu tabel-fluturas */}
         <div className="results-col">
           <h3 className="results-header">REZULTAT CALCUL</h3>
-          
+
           {rez ? (
             <div className="results-wrapper">
               
               <table className="payslip-table flat-table">
                 <thead>
                   <tr>
-                    <th>ELEMENT</th>
+                    <th>ANGAJAT</th>
                     <th>SUMĂ (LEI)</th>
                   </tr>
                 </thead>
@@ -342,24 +342,24 @@ export default function CalculatorSalariu({
                     <td>Salariu brut</td>
                     <td>{fmt(parseFloat(brutEfectiv))}</td>
                   </tr>
-                  <tr>
-                    <td>CAS (Asigurări Sociale - 25%)</td>
+                  <tr className="sub-row">
+                    <td>CAS <span className="muted">(Asigurări Sociale - 25%)</span></td>
                     <td>− {fmt(rez.cas)}</td>
                   </tr>
-                  <tr>
-                    <td>CASS (Asigurări Sănătate - 10%)</td>
+                  <tr className="sub-row">
+                    <td>CASS <span className="muted">(Asigurări Sănătate - 10%)</span></td>
                     <td>− {fmt(rez.cass)}</td>
                   </tr>
                   <tr className="bold-row">
                     <td>Bază impozabilă</td>
                     <td>{fmt(parseFloat(brutEfectiv) - rez.cas - rez.cass)}</td>
                   </tr>
-                  <tr>
+                  <tr className="sub-row">
                     <td>Deducere personală</td>
                     <td>{fmt(rez.deducerePersonala)}</td>
                   </tr>
-                  <tr>
-                    <td>Impozit pe venit (10%)</td>
+                  <tr className="sub-row">
+                    <td>Impozit pe venit <span className="muted">(10%)</span></td>
                     <td>− {fmt(rez.impozit)}</td>
                   </tr>
                   <tr className="total-net">
