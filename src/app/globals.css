@@ -507,12 +507,12 @@ select:focus { border-color: var(--accent); }
 
 .results-header {
   font-size: 0.9375rem; /* Am mărit fontul */
-  font-weight: 700; /* L-am făcut vizibil mai gros (bold) */
+  font-weight: 600; /* L-am făcut vizibil mai gros (bold) */
   color: var(--text); /* L-am făcut negru, în loc de gri */
   text-transform: uppercase;
   letter-spacing: 0.02em; /* Spațiere puțin mai strânsă ca să arate mai bine bold */
-  margin-bottom: 1.25rem;
-  padding-bottom: 0.75rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.25rem;
   border-bottom: 1px solid var(--border);
   width: 100%;
 }
