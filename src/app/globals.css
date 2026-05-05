@@ -531,7 +531,7 @@ select:focus { border-color: var(--accent); }
   font-weight: 600;
   font-size: 0.75rem;
   text-transform: uppercase;
-  padding: 0.875rem 1rem;
+  padding: 0.75rem;
   border: 1px solid var(--border);
   text-align: left;
 }
@@ -542,7 +542,7 @@ select:focus { border-color: var(--accent); }
 
 /* Celulele tabelului */
 .flat-table td {
-  padding: 0.875rem 1rem;
+  padding: 0.75rem;
   border: 1px solid var(--border);
   text-align: left;
 }
@@ -567,7 +567,7 @@ select:focus { border-color: var(--accent); }
 }
 /* Rânduri indentate pentru sub-calcule (taxe, deduceri) */
 .flat-table tr.sub-row td:first-child {
-  padding-left: 2.5rem; /* Împinge textul spre dreapta */
+  padding-left: 1.5rem; /* Împinge textul spre dreapta */
 }
 
 /* Header secțiune (ex: "Rețineri:") — apare ca etichetă de grup, nu rând de tabel */
