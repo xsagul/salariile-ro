@@ -292,7 +292,7 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
 .calc-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  gap: 4rem;
   padding-top: 3rem; /* Lasă spațiu între linia de sus și conținut */
   padding-bottom: 3rem;
   
@@ -306,7 +306,8 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
   position: absolute;
   top: 2rem;
   bottom: 3rem;
-  left: calc(50% - 0.5px); /* Acum linia este așezată exact la mijlocul containerului de 50% */
+  left: 50%; /* Fix la jumătate */
+  transform: translateX(-50%); /* Centrare perfectă indiferent de grosime */
   width: 1px;
   background: var(--border);
 }
