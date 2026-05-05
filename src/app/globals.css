@@ -578,9 +578,9 @@ select:focus { border-color: var(--accent); }
   letter-spacing: 0.1em;
   color: var(--muted);
   text-align: left !important;
-  padding-top: 1.25rem;
+  padding-top: 1rem;
   padding-bottom: 0.5rem;
-  padding-left: 1rem;
+  padding-left: 0.75rem;
   border-left: none;
   border-right: none;
   border-top: none;
