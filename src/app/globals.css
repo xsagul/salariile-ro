@@ -206,7 +206,6 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
 /* ─── Hero ───────────────────────────────────────────────────────────────── */
 .hero {
   background: var(--surface);
-  /* border-bottom: 1px solid var(--border); <-- ȘTERGE ACEST RÂND */
   padding: 2.5rem 0 2rem; 
 }
 .breadcrumb {
@@ -265,7 +264,10 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
   border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
-.card-head { margin-bottom: 1.25rem; }
+.card-head { 
+  margin-bottom: 1.25rem; 
+  padding-left: 0 !important; /* ADAUGĂ ACEASTĂ LINIE */
+}
 .card-head h2 { font-size: 1.125rem; margin-bottom: 2px; }
 .card-head p { font-size: 0.8125rem; color: var(--muted); }
 .card-head-row {
@@ -338,19 +340,21 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
   box-shadow: none;
   border-radius: 0;
   padding-right: 0 !important; 
+  padding-left: 0 !important; /* ADAUGĂ ACEASTĂ LINIE */
   padding-top: 0;
 }
 
 .field { 
-  margin-bottom: 1.5rem; /* Crește spațiul dintre direcția de calcul și salariu brut */
+  margin-bottom: 1.5rem; 
+  padding-left: 0 !important; /* ADAUGĂ ACEASTĂ LINIE */
 }
 .field label, .tech-label {
   display: block;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 700; /* <- Modificat din 600 în 700 pentru a se potrivi cu header-ul din tabel */
   color: var(--muted);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em; /* <- Modificat din 0.05em în 0.1em */
   margin-bottom: 0.5rem;
 }
 .hint {
@@ -391,8 +395,8 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
 }
 select {
   width: 100%;
-  border: 1.5px solid var(--border);
-  border-radius: 8px;
+  border: 1px solid var(--border-strong); /* <- Modificat din 1.5px solid var(--border) pentru a se potrivi cu input-ul de text */
+  border-radius: 0; /* <- Modificat din 8px pentru consistență */
   padding: 0.625rem 0.875rem;
   font-size: 0.9375rem;
   background: var(--surface);
