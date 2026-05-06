@@ -495,7 +495,7 @@ export default function CalculatorSalariu({
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr className="row-bright">
                     <td>Salariu brut</td>
                     <td>{fmt(parseFloat(brutEfectiv))}</td>
                   </tr>
@@ -522,7 +522,7 @@ export default function CalculatorSalariu({
                       <td>{fmt(rez.deducerePersonala)}</td>
                     </tr>
                   )}
-                  <tr className="sub-row indent">
+                  <tr className="row-base">
                     <td>Bază calcul impozit</td>
                     <td>{fmt(rez.bazaCalculImpozit)}</td>
                   </tr>

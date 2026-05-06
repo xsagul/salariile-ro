@@ -8,7 +8,9 @@
   /* Palette — Editorial */
   --bg: #ffffff;
   --surface: #ffffff;
-  --surface-alt: #fafaf7;
+  --surface-alt: #f6f3f2;
+  --surface-container-low: #f6f3f2;
+  --surface-bright: #fcf9f8;
   --border: #e5e3dd;
   --border-strong: #d4d2cb;
   --text: #111111;
@@ -527,18 +529,58 @@ select:focus { border-color: var(--accent); }
   font-size: 0.875rem;
   color: var(--text);
 }
+.flat-table tr.milestone-row td {
+  background-color: var(--surface-alt); /* Folosim același gri oficial */
+  font-weight: 600; /* Le facem un pic mai vizibile decât taxele */
+}
 
 /* Header-ul tabelului (ELEMENT / SUMĂ) */
+/* 1. Header-ul tabelului */
 .flat-table th {
-  background: var(--surface-alt); /* Fundalul gri deschis din imagine */
+  background: var(--surface-container-low); /* Nuanța #f6f3f2 din documentație */
   color: var(--muted);
-  font-weight: 700; /* <- Modificat din 600 în 700 */
+  font-weight: 700;
   font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em; /* <- ADAUGĂ această linie pentru a se potrivi cu restul etichetelor */
+  letter-spacing: 0.1em;
   padding: 0.75rem;
   border: 1px solid var(--border);
+  border-bottom: 2px solid var(--border); /* Designul are 2px sub header */
   text-align: left;
+}
+
+/* 2. Rândurile "off-white" (Brut) */
+.flat-table tr.row-bright td {
+  background-color: var(--surface-bright); /* Nuanța #fcf9f8 */
+}
+
+/* 3. Baza impozabilă (Albă, dar îngroșată) */
+.flat-table tr.row-base td {
+  background-color: var(--bg); /* Alb pur */
+  font-weight: 500;
+}
+
+/* 4. SALARIU NET (Off-white, Text Mare, Linie de 2px sus) */
+.flat-table tr.total-net td {
+  background-color: var(--surface-bright);
+  font-weight: 700;
+  border-top: 2px solid var(--text); /* Linia groasă de final */
+}
+.flat-table tr.total-net td:first-child {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.flat-table tr.total-net td:last-child {
+  font-size: 1rem; /* 16px - mai mare conform designului */
+}
+
+/* 5. COST TOTAL (Off-white, Linie normală de 1px) */
+.flat-table tr.total-cost td {
+  background-color: var(--surface-bright);
+  font-weight: 700;
+  border-top: 1px solid var(--border); /* Aici e linie subțire, nu groasă! */
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .flat-table th:last-child {
@@ -557,19 +599,7 @@ select:focus { border-color: var(--accent); }
   font-variant-numeric: tabular-nums;
 }
 
-/* Rândurile îngroșate (Bază impozabilă, Net, Cost) */
-.flat-table tr.bold-row td {
-  font-weight: 600;
-}
 
-.flat-table tr.total-net td,
-.flat-table tr.total-cost td {
-  font-weight: 700;
-  font-size: 0.9375rem;
-  border-top: 2px solid var(--text);
-  background-color: var(--surface-alt); /* Aceasta dă culoarea diferită casetei (gri deschis) */
-  color: var(--text); /* Asigură un negru intens pentru text */
-}
 /* Rânduri indentate pentru sub-calcule (taxe, deduceri) */
 .flat-table tr.sub-row td:first-child {
   padding-left: 1.5rem; /* Împinge textul spre dreapta */
@@ -601,11 +631,6 @@ select:focus { border-color: var(--accent); }
   border-top: 1px solid var(--border);
   padding-top: 0.625rem;
   padding-bottom: 0.625rem;
-}
-
-/* Spațierea dintre cele două tabele */
-.mt-table {
-  margin-top: 1rem;
 }
 
 /* Buton Descarcă PDF — stil discret editorial */
