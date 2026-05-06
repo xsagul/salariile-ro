@@ -139,7 +139,7 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
   color: var(--muted);
   font-size: 0.875rem;
   padding: 0.5rem 0.875rem;
-  border-radius: 6px;
+  border-radius: 0; /* <- Modificat din 6px în 0 */
   transition: color .15s, background .15s;
   text-decoration: none;
 }
@@ -532,9 +532,10 @@ select:focus { border-color: var(--accent); }
 .flat-table th {
   background: var(--surface-alt); /* Fundalul gri deschis din imagine */
   color: var(--muted);
-  font-weight: 600;
+  font-weight: 700; /* <- Modificat din 600 în 700 */
   font-size: 0.75rem;
   text-transform: uppercase;
+  letter-spacing: 0.1em; /* <- ADAUGĂ această linie pentru a se potrivi cu restul etichetelor */
   padding: 0.75rem;
   border: 1px solid var(--border);
   text-align: left;
@@ -851,7 +852,7 @@ select:focus { border-color: var(--accent); }
   margin-top: 0.5rem;
   padding: 0.875rem 0.75rem;
   background: var(--surface-alt);
-  border-radius: 6px;
+  border-radius: 0; /* <- Modificat din 6px în 0 */
   border: none;
 }
 .calc-row.total > strong { color: var(--text); font-size: 1.0625rem; }
