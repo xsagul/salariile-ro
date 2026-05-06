@@ -411,8 +411,7 @@ select:focus { border-color: var(--accent); }
 
 /* ─── Mod pills (Brut / Net) ─────────────────────────────────────────────── */
 .mod-pills {
-  display: flex; /* Schimbat din inline-flex */
-  width: 100%;   /* Adăugat pentru a ocupa tot rândul */
+  display: inline-flex;
   background: transparent;
   border: 1px solid var(--border-strong);
   border-radius: 0;
@@ -420,8 +419,6 @@ select:focus { border-color: var(--accent); }
   gap: 0;
 }
 .pill {
-  flex: 1;              /* Nou: forțează butonul să ocupe exact 50% din lățime */
-  text-align: center;   /* Nou: centrează textul în buton */
   padding: 0.625rem 1rem;
   border-radius: 0;
   border: none;
@@ -576,7 +573,18 @@ select:focus { border-color: var(--accent); }
 .flat-table tr.total-net td:last-child {
   font-size: 1rem; /* 16px - mai mare conform designului */
 }
-
+/* --- ADAUGĂ CODUL NOU AICI --- */
+/* Spațiere între Salariu Net și Cost Angajator */
+.flat-table tr.spacer-row td {
+  height: 2rem;
+  padding: 0;
+  border-top: none;
+  border-bottom: none;
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  background: var(--bg);
+}
+/* ----------------------------- */
 /* 5. COST TOTAL (Off-white, Linie normală de 1px) */
 .flat-table tr.total-cost td {
   background-color: var(--surface-bright);
@@ -589,11 +597,7 @@ select:focus { border-color: var(--accent); }
 .flat-table th:last-child {
   text-align: right;
 }
-/* --- Spațiere semantică între secțiunile tabelului --- */
-.flat-table .cost-angajator-sectiune tr:first-child td {
-  /* Folosim un border gros cu culoarea de fundal pentru a crea distanța vizuală */
-  border-top: 2rem solid var(--bg); 
-}
+
 /* Celulele tabelului */
 .flat-table td {
   padding: 0.75rem;
