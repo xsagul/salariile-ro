@@ -111,57 +111,101 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
 .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
 .container-narrow { max-width: 860px; margin: 0 auto; padding: 0 1.5rem; }
 
-/* ─── Header ─────────────────────────────────────────────────────────────── */
+/* ─── Topbar (Autoritate) ────────────────────────────────────────────────── */
+.topbar {
+  background-color: var(--text);
+  color: #ffffff;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--text);
+}
+
+.topbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 32px;
+}
+
+.topbar-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.topbar-status::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .topbar .container {
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    height: auto;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+}
+
+/* ─── Header Principal ───────────────────────────────────────────────────── */
 .site-header {
   background: var(--surface);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--text); /* Linie neagră tăioasă */
   position: sticky;
   top: 0;
   z-index: 100;
 }
+
 .site-header .container {
   display: flex;
   align-items: center;
-  gap: 2rem;
-  height: 60px;
+  height: 64px; /* Fixat la 64px conform grilei de 8px */
 }
+
+/* Logo sever și strâns */
 .logo {
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: 22px;
+  font-weight: 800; /* ExtraBold pentru impact */
   color: var(--text);
   text-decoration: none;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.04em; /* Strâns pentru aspect de brand puternic */
+  margin-right: auto;
 }
-.logo span { color: var(--accent); }
 
-/* Desktop nav (>768px) */
-.nav-desktop { display: flex; gap: 0; margin-left: auto; height: 100%; align-items: center; }
-.nav-desktop a,
-.nav-mobile a {
-  color: var(--muted);
-  font-size: 0.875rem;
-  padding: 0.5rem 0.875rem;
-  border-radius: 0; /* <- Modificat din 6px în 0 */
-  transition: color .15s, background .15s;
+/* Desktop nav */
+.nav-desktop { 
+  display: flex; 
+  height: 100%; 
+}
+
+.nav-desktop a {
+  display: flex;
+  align-items: center;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0 16px;
+  border-bottom: 2px solid transparent;
+  transition: background-color .1s;
   text-decoration: none;
 }
-.nav-desktop a:hover,
-.nav-mobile a:hover { color: var(--text); background: var(--surface-alt); }
 
-/* Active state: pe desktop subliniere editorial sub link, pe mobile doar bold */
+/* Hover "Dur", fără opacități moi */
+.nav-desktop a:hover { 
+  background-color: var(--border); 
+}
+
+/* Stare activă: lipită perfect de border-bottom-ul headerului */
 .nav-desktop a.active {
-  color: var(--text);
-  font-weight: 500;
-  background: transparent;
-  border-radius: 0;
-  border-bottom: 1.5px solid var(--text);
-  padding-bottom: calc(0.5rem - 1.5px);
-}
-.nav-desktop a.active:hover { background: transparent; }
-
-.nav-mobile a.active {
-  color: var(--text);
-  font-weight: 500;
+  font-weight: 700;
+  border-bottom: 2px solid var(--text);
 }
 
 /* Hamburger */
@@ -169,8 +213,8 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
   display: none;
   background: transparent;
   border: none;
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   margin-left: auto;
   cursor: pointer;
   padding: 0;
@@ -181,28 +225,37 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
 }
 .hamburger-bar {
   display: block;
-  width: 22px;
+  width: 20px;
   height: 2px;
   background: var(--text);
-  border-radius: 2px;
   transition: transform .25s, opacity .25s;
 }
 .hamburger-bar.open:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .hamburger-bar.open:nth-child(2) { opacity: 0; }
 .hamburger-bar.open:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+/* Meniu Mobile Dropdown */
 .nav-mobile {
   display: none;
   flex-direction: column;
   background: var(--surface);
-  border-bottom: 1px solid var(--border);
-  padding: 0.5rem 1.5rem 1rem;
-  gap: 2px;
+  border-bottom: 1px solid var(--text); /* Linie de terminare dură */
+  padding: 0;
 }
 .nav-mobile.open { display: flex; }
 .nav-mobile a {
-  padding: 0.75rem 0.875rem;
-  font-size: 0.9375rem;
+  padding: 16px 24px;
+  font-size: 16px;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+}
+.nav-mobile a:last-child { border-bottom: none; }
+.nav-mobile a.active { font-weight: 700; background-color: var(--surface-alt); }
+
+@media (max-width: 768px) {
+  .nav-desktop { display: none; }
+  .hamburger { display: flex; }
 }
 
 /* ─── Hero ───────────────────────────────────────────────────────────────── */
