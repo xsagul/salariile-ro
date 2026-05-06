@@ -578,11 +578,8 @@ select:focus { border-color: var(--accent); }
 .flat-table tr.spacer-row td {
   height: 2rem;
   padding: 0;
-  border-top: none;
-  border-bottom: none;
-  border-left: 1px solid var(--border);
-  border-right: 1px solid var(--border);
-  background: var(--bg);
+  border: none;
+  background: transparent;
 }
 /* ----------------------------- */
 /* 5. COST TOTAL (Off-white, Linie normală de 1px) */
