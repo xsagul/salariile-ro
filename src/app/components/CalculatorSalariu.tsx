@@ -130,13 +130,14 @@ const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(n) + " lei";
 
 // ─── Componente UI ────────────────────────────────────────────────────────────
 
-function InputNumber({ label, value, onChange, placeholder, hint }: any) {
+// Am adăugat 'id' în paranteze și am legat label-ul de input
+function InputNumber({ id, label, value, onChange, placeholder, hint }: any) {
   return (
     <div className="field">
-      <label>{label}</label>
+      <label htmlFor={id}>{label}</label>
       {hint && <span className="hint">{hint}</span>}
       <div className="input-wrap">
-        <input type="number" value={value} onChange={(e) => onChange(e.target.value)} placeholder={placeholder || "0"} min="0" />
+        <input id={id} name={id} type="number" value={value} onChange={(e) => onChange(e.target.value)} placeholder={placeholder || "0"} min="0" />
         <span className="suffix">LEI / lună</span>
       </div>
     </div>
@@ -432,7 +433,7 @@ export default function CalculatorSalariu({
         {/* Coloana Stângă */}
       <div className="form-column"> 
       {/* Titlul stă acum AFARĂ, la fel ca în dreapta */}
-        <h3 className="results-header">DATE DE INTRARE</h3>
+        <h2 className="results-header">DATE SALARIALE</h2>
         {/* Form */}
         <div className="card form-card">
           <div className="card-head">
@@ -458,7 +459,7 @@ export default function CalculatorSalariu({
             </div>
           </div>
 
-          <InputNumber label={mod === "brut" ? "SALARIU BRUT:" : "SALARIU NET:"} value={input.brut} onChange={(v: any) => set("brut", v)} />
+          <InputNumber id="salariu-input" label={mod === "brut" ? "SALARIU BRUT:" : "SALARIU NET:"} value={input.brut} onChange={(v: any) => set("brut", v)} />
           
           <button className="avansat-toggle" onClick={() => {
             if (avansat) { set("tichete", ""); set("functieDeBAza", true); set("persoanePretretinere", 0); set("varstaSub26", false); set("copiiScolarizati", 0); set("scutitImpozit", false); }
@@ -469,7 +470,7 @@ export default function CalculatorSalariu({
 
           {avansat && (
             <>
-              <InputNumber label="Tichete de masă" value={input.tichete} onChange={(v: any) => set("tichete", v)} placeholder="0" hint="Valoare lunară totală" />
+              <InputNumber id="tichete-input" label="Tichete de masă" value={input.tichete} onChange={(v: any) => set("tichete", v)} placeholder="0" hint="Valoare lunară totală" />
               <Toggle label="Funcție de bază" checked={input.functieDeBAza} onChange={(v: any) => set("functieDeBAza", v)} />
               <Select id="persoane-intretinere" label="Persoane în întreținere" value={input.persoanePretretinere} options={[0, 1, 2, 3, 4].map((n) => ({ v: n, l: n === 0 ? "Niciuna" : `${n} ${n === 1 ? "persoană" : "persoane"}` }))} onChange={(v: any) => set("persoanePretretinere", v)} />
               <Select id="copii-scolari" label="Copii minori școlari" value={input.copiiScolarizati} options={[0, 1, 2, 3, 4, 5].map((n) => ({ v: n, l: n === 0 ? "Niciunul" : `${n} ${n === 1 ? "copil" : "copii"}` }))} onChange={(v: any) => set("copiiScolarizati", v)} />
@@ -482,7 +483,7 @@ export default function CalculatorSalariu({
 
         {/* Rezultate — editorial: 1 card cu tabel-fluturas */}
         <div className="results-col">
-          <h3 className="results-header">REZULTAT CALCUL</h3>
+          <h2 className="results-header">REZULTAT CALCUL</h2>
 
           {rez ? (
             <div className="results-wrapper">
