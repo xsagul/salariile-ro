@@ -411,7 +411,8 @@ select:focus { border-color: var(--accent); }
 
 /* ─── Mod pills (Brut / Net) ─────────────────────────────────────────────── */
 .mod-pills {
-  display: inline-flex;
+  display: flex; /* Schimbat din inline-flex */
+  width: 100%;   /* Adăugat pentru a ocupa tot rândul */
   background: transparent;
   border: 1px solid var(--border-strong);
   border-radius: 0;
@@ -419,6 +420,8 @@ select:focus { border-color: var(--accent); }
   gap: 0;
 }
 .pill {
+  flex: 1;              /* Nou: forțează butonul să ocupe exact 50% din lățime */
+  text-align: center;   /* Nou: centrează textul în buton */
   padding: 0.625rem 1rem;
   border-radius: 0;
   border: none;
@@ -586,7 +589,11 @@ select:focus { border-color: var(--accent); }
 .flat-table th:last-child {
   text-align: right;
 }
-
+/* --- Spațiere semantică între secțiunile tabelului --- */
+.flat-table .cost-angajator-sectiune tr:first-child td {
+  /* Folosim un border gros cu culoarea de fundal pentru a crea distanța vizuală */
+  border-top: 2rem solid var(--bg); 
+}
 /* Celulele tabelului */
 .flat-table td {
   padding: 0.75rem;

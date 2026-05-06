@@ -441,20 +441,33 @@ export default function CalculatorSalariu({
             <div className="field direction-field">
               <label className="tech-label">DIRECȚIE DE CALCUL:</label>
               <div className="mod-pills">
-                <button className={mod === "brut" ? "pill active" : "pill"} onClick={() => {
-                  if (mod === "net") {
-                    const netVal = parseFloat(input.brut) || 0;
-                    set("brut", String(calculeazaBrutDinNet(netVal, input)));
-                  }
-                  setMod("brut");
-                }}>Din brut în net</button>
-                <button className={mod === "net" ? "pill active" : "pill"} onClick={() => {
-                  if (mod === "brut") {
-                    const rezTemp = calculeaza(input);
-                    if (rezTemp) set("brut", String(rezTemp.net));
-                  }
-                  setMod("net");
-                }}>Din net în brut</button>
+                <button 
+                  className={mod === "brut" ? "pill active" : "pill"} 
+                  aria-pressed={mod === "brut"}
+                  onClick={() => {
+                    if (mod === "net") {
+                      const netVal = parseFloat(input.brut) || 0;
+                      set("brut", String(calculeazaBrutDinNet(netVal, input)));
+                    }
+                    setMod("brut");
+                  }}
+                >
+                  Din brut în net
+                </button>
+                
+                <button 
+                  className={mod === "net" ? "pill active" : "pill"} 
+                  aria-pressed={mod === "net"}
+                  onClick={() => {
+                    if (mod === "brut") {
+                      const rezTemp = calculeaza(input);
+                      if (rezTemp) set("brut", String(rezTemp.net));
+                    }
+                    setMod("net");
+                  }}
+                >
+                  Din net în brut
+                </button>
               </div>
             </div>
           </div>
@@ -540,15 +553,8 @@ export default function CalculatorSalariu({
                     <td>{fmt(rez.net)}</td>
                   </tr>
                 </tbody>
-                {/* --- RÂND INVIZIBIL PENTRU SPAȚIERE (înlocuiește mt-table) --- */}
-                <tbody>
-                  <tr>
-                    <td colSpan={2} style={{ border: 'none', padding: '0.5rem' }}></td>
-                  </tr>
-                </tbody>
-
                 {/* --- PARTEA 2: COST ANGAJATOR --- */}
-                <tbody>
+                <tbody className="cost-angajator-sectiune">
                   <tr>
                     <td>CAM (Contribuție Muncă - 2.25%)</td>
                     <td>{fmt(rez.cam)}</td>
