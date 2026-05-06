@@ -539,9 +539,14 @@ export default function CalculatorSalariu({
                     <td>{fmt(rez.net)}</td>
                   </tr>
                 </tbody>
-              </table>
+                {/* --- RÂND INVIZIBIL PENTRU SPAȚIERE (înlocuiește mt-table) --- */}
+                <tbody>
+                  <tr>
+                    <td colSpan={2} style={{ border: 'none', padding: '0.5rem' }}></td>
+                  </tr>
+                </tbody>
 
-              <table className="payslip-table flat-table mt-table">
+                {/* --- PARTEA 2: COST ANGAJATOR --- */}
                 <tbody>
                   <tr>
                     <td>CAM (Contribuție Muncă - 2.25%)</td>
