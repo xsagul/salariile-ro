@@ -258,26 +258,48 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
   .hamburger { display: flex; }
 }
 
-/* ─── Hero ───────────────────────────────────────────────────────────────── */
+/* ─── Hero Minimalist ────────────────────────────────────────────────────── */
 .hero {
-  background: var(--surface);
-  padding: 2.5rem 0 2rem; 
+  /* Padding redus drastic pentru a aduce calculatorul vizibil imediat */
+  padding: 2rem 0 1rem; 
+  background: var(--bg);
 }
+
 .breadcrumb {
   display: flex;
   gap: 0.5rem;
-  font-size: 0.8125rem;
-  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted-soft);
   margin-bottom: 1rem;
 }
-.breadcrumb a { color: var(--muted); }
-.breadcrumb a:hover { color: var(--accent); }
+.breadcrumb a { 
+  color: inherit; 
+  text-decoration: none; 
+  transition: color 0.1s; 
+}
+.breadcrumb a:hover { 
+  color: var(--text); 
+  text-decoration: underline; 
+}
+
+.hero h1 {
+  font-size: clamp(28px, 4vw, 40px); /* Mai rafinat și proporțional */
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
 .subtitle {
-  font-size: 1.0625rem;
-  line-height: 1.55;
+  font-size: 16px;
+  line-height: 1.6;
   color: var(--muted);
-  max-width: 620px;
-  margin-bottom: 0;
+  max-width: 640px;
+  margin-bottom: 1rem;
 }
 .subtitle a {
   color: var(--text);
@@ -286,30 +308,17 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
   text-decoration-thickness: 1px;
   text-decoration-color: var(--border-strong);
 }
-.subtitle a:hover { text-decoration-color: var(--text); }
+.subtitle a:hover { 
+  text-decoration-color: var(--text); 
+}
 
 .dateline {
-  font-size: 0.75rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 11px;
   color: var(--muted-soft);
-  padding-top: 0; /* Opțional: poți pune 0 aici ca să nu mai aibă spațiu gol deasupra */
-  margin-top: 1rem;
-  /* border-top: 0.5px solid var(--border);  <-- ȘTERGE ACEST RÂND */
-  max-width: 620px;
-}
-.dateline a {
-  color: var(--muted-soft);
-  text-decoration: underline;
-}
-.dateline a:hover { color: var(--text); }
-
-.badges { display: flex; gap: 8px; flex-wrap: wrap; }
-.badge {
-  background: var(--accent-light);
-  color: var(--accent);
-  font-size: 0.75rem;
-  font-weight: 600;
-  padding: 3px 10px;
-  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0;
 }
 
 /* ─── Cards ──────────────────────────────────────────────────────────────── */

@@ -394,14 +394,15 @@ export default function CalculatorSalariu({
 
   return (
     <>
-      {/* ── Hero (Acum afișează titluri dinamice dacă sunt trimise) ── */}
+{/* ── Hero Minimalist ── */}
       <section className="hero">
         <div className="container">
-          <div className="breadcrumb">
+          {/* Breadcrumb cu rol semantic */}
+          <nav className="breadcrumb" aria-label="Breadcrumb">
             <a href="/">Acasă</a>
             <span>/</span>
-            <span>Calculator salariu</span>
-          </div>
+            <span aria-current="page">Calculator salariu</span>
+          </nav>
           
           {/* Titlul Dinamic */}
           <h1>
@@ -420,9 +421,10 @@ export default function CalculatorSalariu({
             )}
           </p>
           
+          {/* Dateline tehnic, scurt și curat */}
           {!titluCustom && (
             <div className="dateline">
-              Ultima actualizare: 30 aprilie 2026 · Surse: <a href="https://monitoruloficial.ro" target="_blank" rel="noopener noreferrer">Monitorul Oficial 196/2026</a>
+              Ultima actualizare: 30 aprilie 2026 · Validat ANAF D-112
             </div>
           )}
         </div>
