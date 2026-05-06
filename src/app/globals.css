@@ -342,8 +342,12 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
   box-shadow: none;
   border-radius: 0;
   padding-right: 0 !important; 
-  padding-left: 0 !important; /* ADAUGĂ ACEASTĂ LINIE */
+  padding-left: 0 !important;
   padding-top: 0;
+  
+  /* --- ADAUGĂ ACESTE DOUĂ LINII --- */
+  width: 100%;
+  max-width: 420px; 
 }
 
 .field { 
