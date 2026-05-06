@@ -429,10 +429,13 @@ export default function CalculatorSalariu({
 
       {/* ── Calculator ── */}
       <div className="container calc-layout">
+        {/* Coloana Stângă */}
+      <div className="form-column"> 
+      {/* Titlul stă acum AFARĂ, la fel ca în dreapta */}
+        <h3 className="results-header">DATE DE INTRARE</h3>
         {/* Form */}
         <div className="card form-card">
           <div className="card-head">
-            <h3 className="results-header">DATE DE INTRARE</h3>
             
             <div className="field direction-field">
               <label className="tech-label">DIRECȚIE DE CALCUL:</label>
@@ -474,7 +477,8 @@ export default function CalculatorSalariu({
               <Toggle label="Scutit de impozit (handicap etc.)" checked={input.scutitImpozit} onChange={(v: any) => set("scutitImpozit", v)} />
             </>
           )}
-        </div>
+        </div> {/* <--- AICI SE ÎNCHIDE DIV-UL NOU CREAT */}
+      </div>
 
         {/* Rezultate — editorial: 1 card cu tabel-fluturas */}
         <div className="results-col">
