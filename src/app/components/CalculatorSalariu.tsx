@@ -465,7 +465,7 @@ export default function CalculatorSalariu({
             if (avansat) { set("tichete", ""); set("functieDeBAza", true); set("persoanePretretinere", 0); set("varstaSub26", false); set("copiiScolarizati", 0); set("scutitImpozit", false); }
             setAvansat(!avansat);
           }}>
-            {avansat ? "[-] ASCUNDE DATE SUPLIMENTARE" : "[+] DATE SUPLIMENTARE (OPȚIONAL)"}
+            {avansat ? "▲ Ascunde opțiuni avansate" : "▼ Calculator avansat"}
           </button>
 
           {avansat && (
