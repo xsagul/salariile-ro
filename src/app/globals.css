@@ -626,12 +626,12 @@ select:focus { border-color: var(--accent); }
   font-weight: 500;
 }
 
-/* 4. SALARIU NET (Off-white, Text Mare, Linie de 2px sus) */
+/* 4. SALARIU NET*/
 .flat-table tr.total-net td {
   background-color: var(--text); /* Folosim variabila pentru negru (#111111) */
   color: var(--bg); /* Folosim variabila pentru alb (#ffffff) */
   font-weight: 700;
-  border-top: 2px solid var(--text); /* Linia groasă de final */
+  border: 1px solid var(--text); /* Facem marginile exterioare negre pentru a elimina efectul de "lipit" */
 }
 .flat-table tr.total-net td:first-child {
   text-transform: uppercase;
