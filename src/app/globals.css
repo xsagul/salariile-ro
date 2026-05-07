@@ -145,12 +145,20 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
 
 @media (max-width: 768px) {
   .topbar .container {
-    flex-direction: column;
-    justify-content: center;
-    gap: 4px;
-    height: auto;
-    padding-top: 8px;
-    padding-bottom: 8px;
+    /* 1. Forțăm așezarea pe un singur rând, nu coloană */
+    flex-direction: row; 
+    
+    /* 2. Centrăm elementul care rămâne vizibil */
+    justify-content: center; 
+    
+    /* 3. Menținem înălțimea originală subțire */
+    height: 32px; 
+    padding: 0;
+  }
+
+  /* 4. Regula care ascunde al doilea mesaj (Sistem validat...) */
+  .topbar .container span:nth-child(2) {
+    display: none;
   }
 }
 

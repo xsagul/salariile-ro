@@ -41,7 +41,7 @@ export default function Header() {
       <div className="topbar">
         <div className="container">
           <span className="topbar-status">Date oficiale · Sincronizat cu Monitorul Oficial 196/2026</span>
-          <span>Sistem validat · ANAF D-112</span>
+          <span className="topbar-info">Sistem validat · ANAF D-112</span>
         </div>
       </div>
 
