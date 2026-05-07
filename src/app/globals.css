@@ -516,7 +516,6 @@ select:focus { border-color: var(--accent); }
   letter-spacing: 0.05em;
   cursor: pointer;
   transition: all .15s;
-  margin-top: 1rem;
   margin-bottom: 1rem;
 }
 .avansat-toggle:hover {
@@ -578,13 +577,13 @@ select:focus { border-color: var(--accent); }
 }
 
 .results-header {
-  font-size: 0.9375rem; /* Am mărit fontul */
-  font-weight: 600; /* L-am făcut vizibil mai gros (bold) */
-  color: var(--text); /* L-am făcut negru, în loc de gri */
+  font-size: 0.875rem; /* Am mărit fontul */
+  font-weight: 700; /* L-am făcut vizibil mai gros (bold) */
+  color: var(--muted); /* L-am făcut negru, în loc de gri */
   text-transform: uppercase;
-  letter-spacing: 0.02em; /* Spațiere puțin mai strânsă ca să arate mai bine bold */
-  margin-bottom: 1rem;
-  padding-bottom: 0.25rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--border);
   width: 100%;
 }
@@ -748,8 +747,7 @@ select:focus { border-color: var(--accent); }
   color: var(--muted);
   border: 1px dashed var(--border-strong);
   border-radius: 0;
-  background: transparent;
-  /* margin-top: 2rem; <-- Șterge această linie! */
+  background: var(--surface-bright);
 }
 
 .empty-icon { 
@@ -763,8 +761,7 @@ select:focus { border-color: var(--accent); }
   font-weight: 600; 
   margin-bottom: 0.5rem; 
   color: var(--text); 
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.01em;
 }
 
 .empty-hint { 
