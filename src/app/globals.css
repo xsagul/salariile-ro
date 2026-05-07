@@ -108,8 +108,8 @@ strong { color: var(--text); font-weight: 600; }
 code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.875em; }
 
 /* ─── Layout ─────────────────────────────────────────────────────────────── */
-.container { max-width: 1100px; margin: 0 auto; }
-.container-narrow { max-width: 860px; margin: 0 auto; padding: 0 1.5rem; }
+.container { max-width: 1180px; margin: 0 auto; padding: 0 1.5rem; }
+.container-narrow { max-width: 760px; margin: 0 auto; padding: 0 1.5rem; }
 
 /* ─── Topbar (Autoritate) ────────────────────────────────────────────────── */
 .topbar {
