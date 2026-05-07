@@ -145,25 +145,35 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
 
 @media (max-width: 768px) {
   .topbar {
-    height: 32px !important; /* Menținem înălțimea fixă, subțire */
-    overflow: hidden; /* Ne asigurăm că nimic nu "curge" în afară */
+    height: 32px !important;
+    overflow: hidden !important; /* Taie orice text care ar vrea să iasă afară */
   }
 
   .topbar .container {
-    flex-direction: row !important; /* Rămâne linie, nu coloană */
-    justify-content: center !important; /* Centrare perfectă a textului rămas */
-    gap: 0 !important; /* Eliminăm spațiul dintre elemente */
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    height: 32px !important;
+    padding: 0 16px !important;
   }
 
-  /* IMPORTANT: Ascundem al doilea span (cel cu ANAF) pe mobil */
+  /* ELIMINĂ al doilea mesaj pe mobil */
   .topbar .container span:nth-child(2) {
     display: none !important;
   }
 
-  /* Ajustăm mărimea fontului pe telefoane foarte mici dacă e nevoie */
+  /* AJUSTEAZĂ primul mesaj să nu se mai rupă */
   .topbar .container span:first-child {
-    white-space: nowrap; /* Împiedicăm textul să sară pe rândul 2 */
-    font-size: 10px; /* Reducem ușor fontul pentru a încăpea tot */
+    white-space: nowrap !important; /* Forțează textul pe un singur rând */
+    font-size: 10px !important; /* Micșorează fontul doar pe mobil pentru siguranță */
+    letter-spacing: 0.03em !important;
+  }
+  
+  /* Opțional: micșorăm pătrățelul alb pe mobil să nu ocupe loc mult */
+  .topbar-status::before {
+    width: 4px !important;
+    height: 4px !important;
+    margin-right: 6px !important;
   }
 }
 

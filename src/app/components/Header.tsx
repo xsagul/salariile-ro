@@ -40,8 +40,10 @@ export default function Header() {
       {/* ─── NOU: TOPBAR DE AUTORITATE ─── */}
       <div className="topbar">
         <div className="container">
+          {/* Acest span are clasa topbar-status care adaugă pătrățelul alb */}
           <span className="topbar-status">Date oficiale · Sincronizat cu Monitorul Oficial 196/2026</span>
-          <span className="topbar-info">Sistem validat · ANAF D-112</span>
+          {/* Acest span va fi eliminat complet pe mobil prin CSS */}
+          <span>Sistem validat · ANAF D-112</span>
         </div>
       </div>
 
