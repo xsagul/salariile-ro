@@ -358,8 +358,8 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
-  padding-top: 3rem; /* Lasă spațiu între linia de sus și conținut */
-  padding-bottom: 3rem;
+  padding-top: 2rem; /* Lasă spațiu între linia de sus și conținut */
+  padding-bottom: 2rem;
   
   border-top: 1px solid var(--border); /* <-- ADAUGĂ ASTA (linia de sus, scurtă) */
   border-bottom: 1px solid var(--border); /* Asta e linia de jos pe care o aveam deja */
@@ -370,7 +370,7 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
   content: "";
   position: absolute;
   top: 2rem;
-  bottom: 3rem;
+  bottom: 2rem;
   left: 50%; /* Fix la jumătate */
   transform: translateX(-50%); /* Centrare perfectă indiferent de grosime */
   width: 1px;
