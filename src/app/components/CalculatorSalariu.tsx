@@ -493,8 +493,8 @@ export default function CalculatorSalariu({
               <table className="payslip-table flat-table">
                 <thead>
                   <tr>
-                    <th>ANGAJAT</th>
-                    <th>SUMĂ (LEI)</th>
+                    <th>Indicator Fiscal</th>
+                    <th>Sumă</th>
                   </tr>
                 </thead>
                 <tbody>
