@@ -315,7 +315,7 @@ async function generarePDFFluturas(
 
   // Total rețineri
   doc.setFontSize(10);
-  rand(y, "Total retineri:", `${(rez.cas + rez.cass + rez.impozit).toLocaleString("ro-RO")} lei`, true);
+  rand(y, "Total Retineri Angajat:", `${(rez.cas + rez.cass + rez.impozit).toLocaleString("ro-RO")} lei`, true);
   y += 9;
 
   // Salariu net (mare)
@@ -499,29 +499,26 @@ export default function CalculatorSalariu({
                 </thead>
                 <tbody>
                   <tr className="row-bright">
-                    <td>Salariu brut</td>
+                    <td>Salariu de încadrare (Brut)</td>
                     <td>{fmt(parseFloat(brutEfectiv))}</td>
                   </tr>
                   {parseFloat(brutEfectiv) === SALARIU_MINIM && input.functieDeBAza && (
                     <tr className="sub-row">
-                      <td>Facilitate fiscală <span className="muted">(OUG 89/2025, neimpozabilă)</span></td>
+                      <td><span className="muted">Facilitate fiscală (neimpozabilă)</span></td>
                       <td>{fmt(DEDUCERE_MINIM)}</td>
                     </tr>
                   )}
-                  <tr className="section-header">
-                    <td colSpan={2}>Rețineri</td>
-                  </tr>
                   <tr className="sub-row indent">
-                    <td>CAS <span className="muted">(Asigurări Sociale - 25%)</span></td>
+                    <td><span className="muted">CAS (Pensii - 25%)</span></td>
                     <td>− {fmt(rez.cas)}</td>
                   </tr>
                   <tr className="sub-row indent">
-                    <td>CASS <span className="muted">(Asigurări Sănătate - 10%)</span></td>
+                    <td><span className="muted">CASS (Sănătate - 10%)</span></td>
                     <td>− {fmt(rez.cass)}</td>
                   </tr>
                   {rez.deducerePersonala > 0 && (
                     <tr className="sub-row indent">
-                      <td>Deducere personală</td>
+                      <td><span className="muted">Deducere personală (aplicată)</span></td>
                       <td>{fmt(rez.deducerePersonala)}</td>
                     </tr>
                   )}
@@ -530,11 +527,11 @@ export default function CalculatorSalariu({
                     <td>{fmt(rez.bazaCalculImpozit)}</td>
                   </tr>
                   <tr className="sub-row indent">
-                    <td>Impozit pe venit <span className="muted">(10%)</span></td>
+                    <td><span className="muted">Impozit pe venit (10%)</span></td>
                     <td>− {fmt(rez.impozit)}</td>
                   </tr>
                   <tr className="total-retineri">
-                    <td>Total rețineri</td>
+                    <td>Total Rețineri Angajat</td>
                     <td>{fmt(rez.cas + rez.cass + rez.impozit)}</td>
                   </tr>
                   <tr className="total-net">

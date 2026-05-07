@@ -628,7 +628,8 @@ select:focus { border-color: var(--accent); }
 
 /* 4. SALARIU NET (Off-white, Text Mare, Linie de 2px sus) */
 .flat-table tr.total-net td {
-  background-color: var(--surface-bright);
+  background-color: var(--text); /* Folosim variabila pentru negru (#111111) */
+  color: var(--bg); /* Folosim variabila pentru alb (#ffffff) */
   font-weight: 700;
   border-top: 2px solid var(--text); /* Linia groasă de final */
 }
@@ -679,29 +680,12 @@ select:focus { border-color: var(--accent); }
   padding-left: 1.5rem; /* Împinge textul spre dreapta */
 }
 
-/* Header secțiune (ex: "Rețineri:") — apare ca etichetă de grup, nu rând de tabel */
-.flat-table tr.section-header td {
-  font-weight: 700;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--muted);
-  text-align: left !important;
-  padding-top: 1rem;
-  padding-bottom: 0.5rem;
-  padding-left: 0.75rem;
-  border-left: none;
-  border-right: none;
-  border-top: none;
-  border-bottom: 1px solid var(--border);
-  background: transparent;
-}
-
 /* Total rețineri — sumarizator după secțiunea de rețineri */
 .flat-table tr.total-retineri td {
   font-weight: 600;
   font-size: 0.875rem;
-  color: var(--text);
+  background-color: var(--surface-bright); /* Fundalul deschis (off-white) */
+  color: var(--text); /* Textul rămâne negru */
   border-top: 1px solid var(--border);
   padding-top: 0.625rem;
   padding-bottom: 0.625rem;
