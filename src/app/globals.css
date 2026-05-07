@@ -465,7 +465,7 @@ select {
   width: 100%;
   border: 1px solid var(--border-strong); /* <- Modificat din 1.5px solid var(--border) pentru a se potrivi cu input-ul de text */
   border-radius: 0; /* <- Modificat din 8px pentru consistență */
-  padding: 0.625rem 0.875rem;
+  padding: 0.75rem;
   font-size: 0.9375rem;
   background: var(--surface);
   color: var(--text);
