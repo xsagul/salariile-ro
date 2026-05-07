@@ -144,21 +144,26 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
 }
 
 @media (max-width: 768px) {
-  .topbar .container {
-    /* 1. Forțăm așezarea pe un singur rând, nu coloană */
-    flex-direction: row; 
-    
-    /* 2. Centrăm elementul care rămâne vizibil */
-    justify-content: center; 
-    
-    /* 3. Menținem înălțimea originală subțire */
-    height: 32px; 
-    padding: 0;
+  .topbar {
+    height: 32px !important; /* Menținem înălțimea fixă, subțire */
+    overflow: hidden; /* Ne asigurăm că nimic nu "curge" în afară */
   }
 
-  /* 4. Regula care ascunde al doilea mesaj (Sistem validat...) */
+  .topbar .container {
+    flex-direction: row !important; /* Rămâne linie, nu coloană */
+    justify-content: center !important; /* Centrare perfectă a textului rămas */
+    gap: 0 !important; /* Eliminăm spațiul dintre elemente */
+  }
+
+  /* IMPORTANT: Ascundem al doilea span (cel cu ANAF) pe mobil */
   .topbar .container span:nth-child(2) {
-    display: none;
+    display: none !important;
+  }
+
+  /* Ajustăm mărimea fontului pe telefoane foarte mici dacă e nevoie */
+  .topbar .container span:first-child {
+    white-space: nowrap; /* Împiedicăm textul să sară pe rândul 2 */
+    font-size: 10px; /* Reducem ușor fontul pentru a încăpea tot */
   }
 }
 
