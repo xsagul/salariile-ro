@@ -48,7 +48,7 @@ body {
 /* ─── Typography ─────────────────────────────────────────────────────────── */
 h1 {
   font-size: clamp(1.875rem, 4.2vw, 2.625rem);
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1.1;
   color: var(--text);
@@ -754,11 +754,7 @@ select:focus { border-color: var(--accent); }
   border-top: 1px solid var(--border);
 }
 .article-section h2 {
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
   margin-bottom: 1.5rem;
-  line-height: 1.2;
 }
 .article { margin-bottom: 3rem; }
 .article > p { margin-bottom: 1rem; }
@@ -770,10 +766,6 @@ select:focus { border-color: var(--accent); }
   padding: 4rem 0;
 }
 .info-section h2 {
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
   margin-bottom: 1.5rem;
 }
 

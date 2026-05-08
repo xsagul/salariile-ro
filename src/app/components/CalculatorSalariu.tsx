@@ -396,7 +396,7 @@ export default function CalculatorSalariu({
     <>
 {/* ── Hero Minimalist ── */}
       <section className="hero">
-        <div className="container container-narrow">
+        <div className="container">
           {/* Breadcrumb cu rol semantic */}
           <nav className="breadcrumb" aria-label="Breadcrumb">
             <a href="/">Acasă</a>
