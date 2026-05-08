@@ -597,13 +597,13 @@ select:focus { border-color: var(--accent); }
 }
 
 .results-header {
-  font-size: 0.875rem; /* Am mărit fontul */
-  font-weight: 700; /* L-am făcut vizibil mai gros (bold) */
-  color: var(--muted); /* L-am făcut negru, în loc de gri */
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+  color: var(--muted);
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.5rem;
+  letter-spacing: var(--ls-wide);
+  margin-bottom: var(--s-6);
+  padding-bottom: var(--s-2);
   border-bottom: 1px solid var(--border);
   width: 100%;
 }
@@ -611,66 +611,65 @@ select:focus { border-color: var(--accent); }
 .flat-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.875rem;
+  font-size: var(--fs-sm);
   color: var(--text);
 }
 
-/* Header-ul tabelului (ELEMENT / SUMĂ) */
-/* 1. Header-ul tabelului */
+/* Header tabel (ANGAJAT / SUMĂ) */
 .flat-table th {
-  background: var(--surface-container-low); /* Nuanța #f6f3f2 din documentație */
+  background: var(--surface-container-low);
   color: var(--muted);
-  font-weight: 700;
-  font-size:  0.6875rem;
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-xs);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 0.75rem;
+  letter-spacing: var(--ls-wide);
+  padding: var(--s-3);
   border: 1px solid var(--border);
-  border-bottom: 2px solid var(--border); /* Designul are 2px sub header */
+  border-bottom: 2px solid var(--border);
   text-align: left;
 }
 
-/* 2. Rândurile "off-white" (Brut) */
+/* Rânduri off-white (Salariu brut) */
 .flat-table tr.row-bright td {
-  background-color: var(--surface-bright); /* Nuanța #fcf9f8 */
+  background-color: var(--surface-bright);
 }
 
-/* 3. Baza impozabilă (Albă, dar îngroșată) */
+/* Bază impozabilă (alb, îngroșată) */
 .flat-table tr.row-base td {
-  background-color: var(--bg); /* Alb pur */
-  font-weight: 500;
+  background-color: var(--bg);
+  font-weight: var(--fw-normal);
 }
 
-/* 4. SALARIU NET*/
+/* SALARIU NET — invertit negru pe alb */
 .flat-table tr.total-net td {
-  background-color: var(--text); /* Folosim variabila pentru negru (#111111) */
-  color: var(--bg); /* Folosim variabila pentru alb (#ffffff) */
-  font-weight: 700;
-  border: 1px solid var(--text); /* Facem marginile exterioare negre pentru a elimina efectul de "lipit" */
+  background-color: var(--text);
+  color: var(--bg);
+  font-weight: var(--fw-bold);
+  border: 1px solid var(--text);
 }
 .flat-table tr.total-net td:first-child {
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--ls-wide);
 }
 .flat-table tr.total-net td:last-child {
-  font-size: 1rem; /* 16px - mai mare conform designului */
+  font-size: var(--fs-base);
 }
-/* --- ADAUGĂ CODUL NOU AICI --- */
-/* Spațiere între Salariu Net și Cost Angajator */
+
+/* Spacer între Net și Cost Angajator */
 .flat-table tr.spacer-row td {
-  height: 2rem;
+  height: var(--s-8);
   padding: 0;
   border: none;
   background: transparent;
 }
-/* ----------------------------- */
-/* 5. COST TOTAL (Off-white, Linie normală de 1px) */
+
+/* COST TOTAL — uppercase, off-white */
 .flat-table tr.total-cost td {
   background-color: var(--surface-bright);
-  font-weight: 700;
-  border-top: 1px solid var(--border); /* Aici e linie subțire, nu groasă! */
+  font-weight: var(--fw-bold);
+  border-top: 1px solid var(--border);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--ls-wide);
 }
 
 .flat-table th:last-child {
@@ -679,7 +678,7 @@ select:focus { border-color: var(--accent); }
 
 /* Celulele tabelului */
 .flat-table td {
-  padding: 0.75rem;
+  padding: var(--s-3);
   border: 1px solid var(--border);
   text-align: left;
 }
@@ -689,21 +688,20 @@ select:focus { border-color: var(--accent); }
   font-variant-numeric: tabular-nums;
 }
 
-
-/* Rânduri indentate pentru sub-calcule (taxe, deduceri) */
+/* Rânduri indentate pentru sub-calcule */
 .flat-table tr.sub-row td:first-child {
-  padding-left: 1.5rem; /* Împinge textul spre dreapta */
+  padding-left: var(--s-6);
 }
 
 /* Total rețineri — sumarizator după secțiunea de rețineri */
 .flat-table tr.total-retineri td {
-  font-weight: 600;
-  font-size: 0.875rem;
-  background-color: var(--surface-bright); /* Fundalul deschis (off-white) */
-  color: var(--text); /* Textul rămâne negru */
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-sm);
+  background-color: var(--surface-bright);
+  color: var(--text);
   border-top: 1px solid var(--border);
-  padding-top: 0.625rem;
-  padding-bottom: 0.625rem;
+  padding-top: var(--s-3);
+  padding-bottom: var(--s-3);
 }
 
 /* Buton Descarcă PDF — stil aliniat la document fiscal */
