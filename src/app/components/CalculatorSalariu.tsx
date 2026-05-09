@@ -431,7 +431,8 @@ export default function CalculatorSalariu({
       </section>
 
       {/* ── Calculator ── */}
-      <div className="container calc-layout">
+      <section className="calc-section">
+        <div className="container calc-layout">
         {/* Coloana Stângă */}
       <div className="form-column"> 
       {/* Titlul stă acum AFARĂ, la fel ca în dreapta */}
@@ -583,6 +584,7 @@ export default function CalculatorSalariu({
           )}
         </div>
       </div>
+      </section>
     </>
   );
 }
