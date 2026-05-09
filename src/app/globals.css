@@ -608,6 +608,33 @@ select:focus { border-color: var(--accent); }
   width: 100%;
 }
 
+/* ─── Distribution bar (folosit opțional în Calculator) ──────────────────── */
+.bar-row {
+  margin-bottom: var(--s-3);
+}
+.bar-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--fs-xs);
+  color: var(--muted);
+  margin-bottom: var(--s-1);
+}
+.bar-val {
+  font-weight: var(--fw-medium);
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+.bar-track {
+  height: var(--s-2);
+  background: var(--border);
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  background: var(--text);
+  transition: width 0.3s ease;
+}
+
 .flat-table {
   width: 100%;
   border-collapse: collapse;
@@ -1019,6 +1046,24 @@ select:focus { border-color: var(--accent); }
 .text-center { text-align: center; }
 .mb-2 { margin-bottom: var(--s-4); }
 .right { text-align: right; }
+
+/* Wrapper scrollabil pentru tabele pe mobile */
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Listă în articole (cu indent și culoare muted) */
+.article-list {
+  padding-left: var(--s-6);
+  margin-bottom: var(--s-6);
+  color: var(--muted);
+  list-style: disc;
+}
+.article-list li {
+  margin-bottom: var(--s-2);
+  line-height: var(--lh-base);
+}
 
 /* ─── Print ──────────────────────────────────────────────────────────────── */
 @media print {

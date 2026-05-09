@@ -164,7 +164,7 @@ export default function SalariuMediuPage() {
             <article className="article">
               <h2>La ce folosește acest indicator?</h2>
               <p>Valoarea oficială a salariului mediu brut pe economie are un impact direct în următoarele situații legale:</p>
-              <ul style={{ paddingLeft: "1.5rem", marginBottom: "1.5rem", color: "var(--muted)" }}>
+              <ul className="article-list">
                 <li><strong>Ajutorul de deces:</strong> Cuantumul ajutorului de deces acordat în cazul decesului asiguratului sau pensionarului este egal cu câștigul salarial mediu brut utilizat la fundamentarea bugetului asigurărilor sociale de stat (ex: 8.597 lei în 2025).</li>
                 <li><strong>Concedii medicale:</strong> Baza maximă de calcul lunară pentru indemnizațiile de maternitate sau risc maternal nu poate depăși 12 salarii minime brute, însă în trecut și pentru anumite deduceri se făcea raportarea la salariul mediu.</li>
               </ul>
@@ -172,7 +172,7 @@ export default function SalariuMediuPage() {
 
             <article className="article">
               <h2>Evoluția salariului mediu brut (2020 – 2026)</h2>
-              <div style={{ overflowX: "auto" }}>
+              <div className="table-scroll">
                 <table className="data-table">
                   <thead><tr><th>Anul</th><th className="right">Valoare Brută (lei)</th><th>Bază legală</th></tr></thead>
                   <tbody>

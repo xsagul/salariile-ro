@@ -171,7 +171,7 @@ export default function SalariuMinimPage() {
 
             <article className="article">
               <h2>Istoric Salariu Minim</h2>
-              <div style={{ overflowX: "auto" }}>
+              <div className="table-scroll">
                 <table className="data-table">
                   <thead><tr><th>Perioadă</th><th className="right">Brut (lei)</th><th className="right">Net (lei)</th><th>Bază legală</th></tr></thead>
                   <tbody>
