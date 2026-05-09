@@ -397,12 +397,14 @@ export default function CalculatorSalariu({
 {/* ── Hero Minimalist ── */}
       <section className="hero">
         <div className="container">
-          {/* Breadcrumb cu rol semantic */}
-          <nav className="breadcrumb" aria-label="Breadcrumb">
-            <a href="/">Acasă</a>
-            <span>/</span>
-            <span aria-current="page">Calculator salariu</span>
-          </nav>
+          {/* Breadcrumb doar pe pagini dinamice, nu pe homepage */}
+          {titluCustom && (
+            <nav className="breadcrumb" aria-label="Breadcrumb">
+              <a href="/">Acasă</a>
+              <span>/</span>
+              <span aria-current="page">Calculator salariu</span>
+            </nav>
+          )}
           
           {/* Titlul Dinamic */}
           <h1>
