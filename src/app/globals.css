@@ -367,49 +367,44 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
   margin-bottom: var(--s-3);
 }
 
-/* ─── Calculator section (background cremos pe toată lățimea) ──────────── */
-.calc-section {
-  background: var(--surface-alt);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: var(--s-12) 0;
-}
-
 /* ─── Calculator layout ──────────────────────────────────────────────────── */
 .calc-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--s-8);
+  gap: var(--s-16);
+  padding-top: var(--s-8);
+  padding-bottom: var(--s-8);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
   position: relative;
 }
-
-/* Coloanele formular și rezultate — carduri albe pe fundal cremos */
-.form-column,
-.results-wrapper {
-  background: var(--bg);
-  padding: var(--s-8);
+.calc-layout::before {
+  content: "";
+  position: absolute;
+  top: var(--s-8);
+  bottom: var(--s-8);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  background: var(--border);
 }
 
 @media (max-width: 768px) {
+  .calc-layout::before {
+    display: none;
+  }
   .calc-layout { 
-    grid-template-columns: 1fr;
-    gap: var(--s-4);
+    grid-template-columns: 1fr; 
+    border-bottom: none;
   }
   .nav-desktop { display: none; }
   .hamburger { display: flex; }
   
-  .form-column,
-  .results-wrapper {
-    padding: var(--s-6);
-  }
-  
   .form-card {
     border-right: none;
     padding-right: 0;
-  }
-
-  .calc-section {
-    padding: var(--s-8) 0;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: var(--s-8);
   }
 }
 
