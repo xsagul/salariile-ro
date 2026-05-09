@@ -179,30 +179,7 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
 
 @media (max-width: 768px) {
   .topbar {
-    height: var(--s-8);
-    overflow: hidden;
-  }
-
-  .topbar .container {
-    justify-content: center;
-    height: var(--s-8);
-    padding: 0 var(--s-4);
-  }
-
-  .topbar .container span:nth-child(2) {
     display: none;
-  }
-
-  .topbar .container span:first-child {
-    white-space: nowrap;
-    font-size: var(--fs-xs);
-    letter-spacing: var(--ls-wide);
-  }
-
-  .topbar-status::before {
-    width: 4px;
-    height: 4px;
-    margin-right: var(--s-2);
   }
 }
 
