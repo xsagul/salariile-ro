@@ -1,6 +1,7 @@
 # salariile.ro — Design System
 
-**Versiune:** 1.0  
+**Versiune:** 2.0  
+**Data:** 9 mai 2026  
 **Stil:** Editorial fiscal · Document oficial sobru  
 **Inspirație:** NYT, Stripe Press, ANAF modernizat
 
@@ -22,112 +23,109 @@ Site-ul nu e produs SaaS. E **document fiscal serios** — autoritate prin acura
 ## 2. Tokens (în `:root`)
 
 ### Spacing (4pt grid)
-```
---s-1: 4px
---s-2: 8px
---s-3: 12px
---s-4: 16px
---s-6: 24px
---s-8: 32px
---s-12: 48px
---s-16: 64px
+```css
+--s-1: 4px;
+--s-2: 8px;
+--s-3: 12px;
+--s-4: 16px;
+--s-6: 24px;
+--s-8: 32px;
+--s-12: 48px;
+--s-16: 64px;
 ```
 
 ### Font sizes (6 mărimi)
-```
---fs-xs: 12px    (labels, dateline, breadcrumb)
---fs-sm: 14px    (navbar, body small, table content)
---fs-base: 16px  (body, subtitle, input)
---fs-md: 18px    (h3, card heading)
---fs-lg: 24px    (h2)
---fs-xl: 32px    (h1 desktop)
+```css
+--fs-xs: 12px;
+--fs-sm: 14px;
+--fs-base: 16px;
+--fs-md: 18px;
+--fs-lg: 24px;
+--fs-xl: 32px;
 ```
 
-Cazuri speciale:
-- Logo: `22px` (intenționat, între md și lg)
-- H1 mobile: `clamp(28px, 4vw, 32px)` — scalează responsive
+**Cazuri speciale (intenționale):**
+- Logo: `22px` (între md și lg)
+- H1: `clamp(28px, 4vw, var(--fs-xl))` — scalare responsive
 
 ### Font weights (3 valori)
-```
---fw-normal: 500   (body, navbar default)
---fw-medium: 600   (pills, suffix, accent text)
---fw-bold: 700     (h1, h2, labels, total-net)
+```css
+--fw-normal: 500;
+--fw-medium: 600;
+--fw-bold: 700;
 ```
 
-Caz special: Logo `800` (singurul element ExtraBold).
+**Caz special:** Logo `800` — singurul ExtraBold.
 
 ### Letter-spacing
-```
---ls-tight: -0.03em    (h1, logo)
---ls-tighter: -0.02em  (h2)
---ls-normal: 0         (body)
---ls-wide: 0.05em      (uppercase mic)
---ls-wider: 0.1em      (labels uppercase)
+```css
+--ls-tight: -0.03em;
+--ls-tighter: -0.02em;
+--ls-normal: 0;
+--ls-wide: 0.05em;
+--ls-wider: 0.1em;
 ```
 
 ### Line heights
-```
---lh-tight: 1.1   (h1, h2)
---lh-snug: 1.25   (h3)
---lh-base: 1.6    (body, FAQ)
+```css
+--lh-tight: 1.1;
+--lh-snug: 1.25;
+--lh-base: 1.6;
 ```
 
 ### Culori
-```
---text: #111111         (text principal, accent)
---bg: #ffffff           (background)
---surface-alt: #f6f3f2  (FAQ, header tabel)
---surface-bright: #fcf9f8 (off-white subtil)
---border: #e5e3dd       (separatori)
---border-strong: #d4d2cb (borders inputs)
---muted: #555555        (text secundar)
---muted-soft: #757575   (eyebrow, dateline)
+```css
+--text: #111111;
+--bg: #ffffff;
+--surface-alt: #f6f3f2;
+--surface-bright: #fcf9f8;
+--border: #e5e3dd;
+--border-strong: #d4d2cb;
+--muted: #555555;
+--muted-soft: #757575;
 ```
 
 ---
 
-## 3. Componente
+## 3. Componente cheie
 
 ### Topbar
 - Background `--text` (negru), text alb
-- Înălțime 32px desktop, **ascuns pe mobile**
+- Înălțime `--s-8` desktop, **ascuns pe mobile**
 - Monospace + uppercase + `--fs-xs`
-- Conține: status oficial + validare ANAF
 
 ### Header
-- Înălțime 64px, alb, border-bottom 1px negru tăios
+- Înălțime 64px, alb, border-bottom 1px negru
 - Logo: 22px weight 800
-- Nav links: 14px weight 500, active = weight 700 + border-bottom 2px
+- Nav: `--fs-sm` weight 500/700
 
 ### Hero
-- Padding 32px sus, 16px jos
-- Container 1180px (NU narrow)
-- H1: clamp(28px-32px), weight 700
-- Subtitle: 16px, line-height 1.6, max-width 640px
-- Dateline: monospace 12px
+- Padding `--s-8` sus, `--s-4` jos
+- Container 1180px
+- H1: clamp(28px, 4vw, 32px), weight 700
+- Subtitle: `--fs-base`, max-width 640px
+- **Breadcrumb apare doar pe pagini dinamice**
 
-### Calculator (calc-layout)
-- Grid 2 coloane 1fr 1fr cu gap 64px desktop
-- Border-top + border-bottom subtile
-- Linie verticală centrală (1px gri)
-- Pe mobile: stack vertical, fără linie
+### Calculator
+- Grid 2 coloane 1fr 1fr cu gap `--s-16`
+- Padding `--s-8` sus/jos
+- Linie verticală centrală
+- Mobile: stack vertical
 
 ### Tabel rezultate
-- Header `--surface-container-low`, uppercase, 12px
-- Total Net invertit (negru cu text alb)
+- Header `--surface-container-low`, uppercase, `--fs-xs`
+- Total Net invertit (negru)
 - Cost Total cu `--surface-bright`, uppercase
-- Sub-rows indentate cu `--s-6`
+- Sub-rows indentate `--s-6`
 
-### Form
-- Background transparent, fără border (decizie editorială minimalistă)
-- Label-uri uppercase 12px weight 700
-- Input cu border `--border-strong`
-- Pills active = negru cu text alb
+### PDF Button
+- Uppercase, `--fs-xs`, weight 600
+- Hover: invertire (alb pe negru)
 
 ### FAQ section
-- Background `--surface-alt` (cremos)
-- Padding 48px vertical
-- Accordion cu +/- la dreapta
+- Background `--surface-alt`
+- Padding `--s-12` vertical
+- Items cu padding `--s-4`
 
 ### Footer
 - Background negru, text alb cu opacity
@@ -137,49 +135,45 @@ Caz special: Logo `800` (singurul element ExtraBold).
 
 ## 4. Touch targets pe mobile
 
-Toate elementele interactive **min 44×44px efectiv** (Apple HIG):
-- Hamburger 44×44px
-- Pills cu padding 14px → ~44px
-- Toggle switch 52×32px
-- FAQ summary, nav links — natural mari
+Toate elementele interactive **min 44×44px** (Apple HIG):
+- Hamburger: 44×44px
+- Pills, toggle, inputs, select, PDF button: min-height 44px
 
 ---
 
 ## 5. Reguli de combinare
 
-### Când folosești ce font?
-- **Monospace:** date tehnice, validări (topbar, breadcrumb, dateline)
-- **Figtree (sans-serif):** absolut tot restul
+**Fonturi:**
+- Monospace = date tehnice (topbar, breadcrumb, dateline)
+- Figtree = absolut tot restul
 
-### Când folosești ce greutate?
-- **500:** body, navbar inactive
-- **600:** pills, suffix, footer-title
-- **700:** h1, h2, labels uppercase, total-net
-- **800:** doar logo
+**Greutăți:**
+- 500: body
+- 600: pills, suffix, footer-title
+- 700: titluri, labels
+- 800: doar logo
 
-### Când folosești ce mărime?
-Folosește mereu `var(--fs-xx)`. **Nu inventa mărimi noi.**
+**Mărimi:** folosește mereu `var(--fs-xx)`
 
-### Când folosești ce padding?
-- Padding interior componentă: `--s-3` sau `--s-4`
-- Padding secțiune verticală: `--s-12`
-- Gap între componente related: `--s-2` la `--s-4`
-- Gap între secțiuni majore: `--s-8` la `--s-16`
+**Padding:**
+- Interior componentă: `--s-3` sau `--s-4`
+- Secțiune verticală: `--s-12`
+- Între componente: `--s-2` la `--s-4`
+- Între secțiuni mari: `--s-8` la `--s-16`
 
 ---
 
 ## 6. Lista de "NU"
 
 - ❌ Border-radius non-zero (cu excepția toggle/thumb)
-- ❌ Gradient-uri
-- ❌ Shadow-uri colorate sau dramatice
-- ❌ Mărimi de font în afara scării (ex: 13px, 19px, 0.6875rem)
+- ❌ Gradient-uri sau shadow-uri colorate
+- ❌ Mărimi font în afara scării
 - ❌ Padding/margin în afara scării 4pt
-- ❌ Greutăți font în afara: 500/600/700/800-doar-logo
+- ❌ Greutăți în afara: 500/600/700/800-doar-logo
 - ❌ Culori noi
-- ❌ Animații complexe sau parallax
-- ❌ Inline styles în JSX
-- ❌ `!important` (cu excepție pe utility classes deliberate)
+- ❌ Inline styles statice în JSX
+- ❌ `!important`
+- ❌ Fonturi noi
 
 ---
 
@@ -188,48 +182,82 @@ Folosește mereu `var(--fs-xx)`. **Nu inventa mărimi noi.**
 - ✅ Linii subtile pentru separare
 - ✅ Tipografie ca element decorativ principal
 - ✅ Spațiu negativ generos
-- ✅ Borders negre pure pentru elemente cu importanță maximă
 - ✅ Monospace pentru date tehnice
-- ✅ Total-net invertit (negru pe alb → alb pe negru)
-- ✅ Hover-uri "invertit" (PDF button)
+- ✅ Total-net invertit
+- ✅ Hover-uri "invertit"
+- ✅ Touch targets min 44×44 pe mobile
 
 ---
 
-## 8. Probleme cleanup în repo
+## 8. Utility classes
 
-Următoarele fișiere reziduale se pot șterge:
-- `src/app/salariu-minim/salariu-minim.tsx` (duplicat al `page.tsx`)
-- `src/app/salariu-mediu/salariu-mediu.tsx` (duplicat)
-- `src/app/info/info.tsx` (duplicat)
+| Class | Efect |
+|-------|-------|
+| `.muted` | `color: var(--muted)` |
+| `.text-xs` | `font-size: var(--fs-xs)` |
+| `.text-center` | `text-align: center` |
+| `.mb-2` | `margin-bottom: var(--s-4)` |
+| `.right` | `text-align: right` |
+| `.table-scroll` | wrapper cu `overflow-x: auto` |
+| `.article-list` | listă `<ul>` cu indent + muted |
 
 ---
 
-## 9. Cum să verifici că sistemul e respectat
+## 9. Verificare automată
 
 ```bash
-# Caută inline styles (ar trebui zero)
-grep -rn "style={" src/app/
+# Inline styles statice (ar trebui zero)
+grep -rn "style={" src/app/ | grep -v 'width: \`'
 
-# Caută !important (ar trebui zero)
+# !important (ar trebui zero)
 grep -n "!important" src/app/globals.css
 
-# Caută valori font în afara scării (ar trebui zero)
-grep -nE "[0-9]+\.[0-9]+rem" src/app/globals.css | grep -v "var(--"
+# Font-sizes în afara scării
+grep -nE "font-size:[^;]*[0-9]+\.?[0-9]*(rem|px)" src/app/globals.css | grep -v "var(--"
+
+# Spacing în afara scării
+grep -nE "(padding|margin|gap):[^;]*[0-9]+\.[0-9]+rem" src/app/globals.css | grep -v "var(--"
 ```
 
 ---
 
-## 10. Modificări viitoare
+## 10. Cleanup repo
 
-Când introduci o componentă nouă:
-1. Verifică dacă deja există ceva similar și extinde-o
-2. Folosește DOAR tokens definite
-3. Dacă ai nevoie de un token nou, adaugă-l în `:root` și documentează-l aici
+Fișiere reziduale (duplicate `page.tsx`):
+- `src/app/salariu-minim/salariu-minim.tsx`
+- `src/app/salariu-mediu/salariu-mediu.tsx`
+- `src/app/info/info.tsx`
+
+Verificare: `md5sum` confirmă identice cu `page.tsx`-urile.
+
+---
+
+## 11. Statistici sistem (post-refactor)
+
+| Metric | Înainte | După |
+|--------|:--:|:--:|
+| Tokens în `:root` | 5 | **30+** |
+| `!important` | 18 | **0** |
+| Inline styles statice | 7 | **0** |
+| Font-sizes folosite | 19 | **6** (+ logo + h1 clamp) |
+| Spacing values | 13+ | **8** (4pt grid) |
+| Font-weights | 4 mixt | **3** (+ 800 logo) |
+| Touch targets sub 44px (mobile) | 3 | **0** |
+
+---
+
+## 12. Modificări viitoare
+
+Când introduci ceva nou:
+1. Verifică dacă există ceva similar
+2. Folosește DOAR tokens
+3. Dacă ai nevoie de token nou, adaugă-l aici și în `:root`
 4. Testează pe mobile la 768px și 640px
-5. Asigură-te că touch targets sunt min 44×44px pe mobile
-6. **NU folosi inline styles** — adaugă o clasă în CSS
+5. Touch targets min 44×44px pe mobile
+6. **NU folosi inline styles statice**
+7. **NU folosi `!important`**
 
 ---
 
 **Ultima actualizare:** 9 mai 2026  
-**Maintainer:** Sorin (proprietar salariile.ro)
+**Versiune:** 2.0 (refactor sistematic complet)

@@ -82,36 +82,36 @@ body {
 
 /* ─── Typography ─────────────────────────────────────────────────────────── */
 h1 {
-  font-size: clamp(1.875rem, 4.2vw, 2.625rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.05;
+  font-size: clamp(28px, 4vw, var(--fs-xl));
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-tight);
+  line-height: var(--lh-tight);
   color: var(--text);
-  margin-bottom: 1rem;
+  margin-bottom: var(--s-4);
 }
 h1 em { font-style: normal; color: var(--text); font-weight: inherit; }
 
 h2 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.25;
-  margin-bottom: 1rem;
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-tighter);
+  line-height: var(--lh-snug);
+  margin-bottom: var(--s-4);
 }
 
 h3 {
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: var(--fs-base);
+  font-weight: var(--fw-medium);
   letter-spacing: -0.01em;
-  margin-bottom: 0.75rem;
+  margin-bottom: var(--s-3);
 }
 h3.accent { color: var(--accent); }
 h3.warn { color: var(--warn); }
 
 p {
   color: var(--muted);
-  line-height: 1.7;
-  margin-bottom: 1rem;
+  line-height: var(--lh-base);
+  margin-bottom: var(--s-4);
 }
 p:last-child { margin-bottom: 0; }
 
@@ -143,31 +143,30 @@ strong { color: var(--text); font-weight: 600; }
 code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.875em; }
 
 /* ─── Layout ─────────────────────────────────────────────────────────────── */
-.container { max-width: 1180px; margin: 0 auto; padding: 0 1.5rem; }
-.container-narrow { max-width: 760px; margin: 0 auto; padding: 0 1.5rem; }
+.container { max-width: 1180px; margin: 0 auto; padding: 0 var(--s-6); }
+.container-narrow { max-width: 760px; margin: 0 auto; padding: 0 var(--s-6); }
 
 /* ─── Topbar (Autoritate) ────────────────────────────────────────────────── */
 .topbar {
   background-color: var(--text);
   color: #ffffff;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 11px;
+  font-size: var(--fs-xs);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  border-bottom: 1px solid var(--text);
+  letter-spacing: var(--ls-wide);
 }
 
 .topbar .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 32px;
+  height: var(--s-8);
 }
 
 .topbar-status {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--s-2);
 }
 
 .topbar-status::before {
@@ -187,7 +186,7 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
 /* ─── Header Principal ───────────────────────────────────────────────────── */
 .site-header {
   background: var(--surface);
-  border-bottom: 1px solid var(--text); /* Linie neagră tăioasă */
+  border-bottom: 1px solid var(--text);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -196,16 +195,16 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
 .site-header .container {
   display: flex;
   align-items: center;
-  height: 64px; /* Fixat la 64px conform grilei de 8px */
+  height: 64px;
 }
 
-/* Logo sever și strâns */
+/* Logo */
 .logo {
   font-size: 22px;
-  font-weight: 800; /* ExtraBold pentru impact */
+  font-weight: 800;
   color: var(--text);
   text-decoration: none;
-  letter-spacing: -0.04em; /* Strâns pentru aspect de brand puternic */
+  letter-spacing: -0.04em;
   margin-right: auto;
 }
 
@@ -219,22 +218,20 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
   display: flex;
   align-items: center;
   color: var(--text);
-  font-size: 14px;
-  font-weight: 500;
-  padding: 0 16px;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-normal);
+  padding: 0 var(--s-4);
   border-bottom: 2px solid transparent;
   transition: background-color .1s;
   text-decoration: none;
 }
 
-/* Hover "Dur", fără opacități moi */
 .nav-desktop a:hover { 
   background-color: var(--border); 
 }
 
-/* Stare activă: lipită perfect de border-bottom-ul headerului */
 .nav-desktop a.active {
-  font-weight: 700;
+  font-weight: var(--fw-bold);
   border-bottom: 2px solid var(--text);
 }
 
@@ -243,8 +240,8 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
   display: none;
   background: transparent;
   border: none;
-  width: 32px;
-  height: 32px;
+  width: var(--s-8);
+  height: var(--s-8);
   margin-left: auto;
   cursor: pointer;
   padding: 0;
@@ -269,19 +266,19 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
   display: none;
   flex-direction: column;
   background: var(--surface);
-  border-bottom: 1px solid var(--text); /* Linie de terminare dură */
+  border-bottom: 1px solid var(--text);
   padding: 0;
 }
 .nav-mobile.open { display: flex; }
 .nav-mobile a {
-  padding: 16px 24px;
-  font-size: 16px;
+  padding: var(--s-4) var(--s-6);
+  font-size: var(--fs-base);
   color: var(--text);
   border-bottom: 1px solid var(--border);
   text-decoration: none;
 }
 .nav-mobile a:last-child { border-bottom: none; }
-.nav-mobile a.active { font-weight: 700; background-color: var(--surface-alt); }
+.nav-mobile a.active { font-weight: var(--fw-bold); background-color: var(--surface-alt); }
 
 @media (max-width: 768px) {
   .nav-desktop { display: none; }
@@ -290,20 +287,19 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
 
 /* ─── Hero Minimalist ────────────────────────────────────────────────────── */
 .hero {
-  /* Padding redus drastic pentru a aduce calculatorul vizibil imediat */
-  padding: 2rem 0 1rem; 
+  padding: var(--s-8) 0 var(--s-4); 
   background: var(--bg);
 }
 
 .breadcrumb {
   display: flex;
-  gap: 0.5rem;
+  gap: var(--s-2);
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 11px;
+  font-size: var(--fs-xs);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--ls-wide);
   color: var(--muted-soft);
-  margin-bottom: 1rem;
+  margin-bottom: var(--s-4);
 }
 .breadcrumb a { 
   color: inherit; 
@@ -316,20 +312,15 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
 }
 
 .hero h1 {
-  font-size: clamp(28px, 4vw, 40px); /* Mai rafinat și proporțional */
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
-  color: var(--text);
-  margin-bottom: 1rem;
+  margin-bottom: var(--s-4);
 }
 
 .subtitle {
-  font-size: 16px;
-  line-height: 1.6;
+  font-size: var(--fs-base);
+  line-height: var(--lh-base);
   color: var(--muted);
   max-width: 640px;
-  margin-bottom: 1rem;
+  margin-bottom: var(--s-4);
 }
 .subtitle a {
   color: var(--text);
@@ -344,10 +335,10 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
 
 .dateline {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 11px;
+  font-size: var(--fs-xs);
   color: var(--muted-soft);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--ls-wide);
   margin-top: 0;
 }
 
@@ -359,50 +350,41 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
   box-shadow: var(--shadow);
 }
 .card-head { 
-  margin-bottom: 1.25rem; 
+  margin-bottom: var(--s-4); 
   padding-left: 0;
 }
-.card-head h2 { font-size: 1.125rem; margin-bottom: 2px; }
-.card-head p { font-size: 0.8125rem; color: var(--muted); }
-.card-head-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 4px;
-}
-.card-head-row h2 { margin: 0; }
+.card-head h2 { font-size: var(--fs-md); margin-bottom: 2px; }
+.card-head p { font-size: var(--fs-sm); color: var(--muted); }
 
 /* ─── Eyebrow + dist-label (etichete mici uppercase) ───────────────────── */
 .eyebrow,
 .dist-label {
-  font-size: 0.6875rem;
-  font-weight: 600;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: var(--ls-wider);
   color: var(--muted-soft);
-  margin-bottom: 0.75rem;
+  margin-bottom: var(--s-3);
 }
 
 /* ─── Calculator layout ──────────────────────────────────────────────────── */
 .calc-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  padding-top: 2rem; /* Lasă spațiu între linia de sus și conținut */
-  padding-bottom: 2rem;
-  
-  border-top: 1px solid var(--border); /* <-- ADAUGĂ ASTA (linia de sus, scurtă) */
-  border-bottom: 1px solid var(--border); /* Asta e linia de jos pe care o aveam deja */
+  gap: var(--s-16);
+  padding-top: var(--s-8);
+  padding-bottom: var(--s-8);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
   position: relative;
 }
-/* Linia verticală care se va întinde perfect de sus până jos */
 .calc-layout::before {
   content: "";
   position: absolute;
-  top: 2rem;
-  bottom: 2rem;
-  left: 50%; /* Fix la jumătate */
-  transform: translateX(-50%); /* Centrare perfectă indiferent de grosime */
+  top: var(--s-8);
+  bottom: var(--s-8);
+  left: 50%;
+  transform: translateX(-50%);
   width: 1px;
   background: var(--border);
 }
@@ -423,7 +405,7 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
     border-right: none;
     padding-right: 0;
     border-bottom: 1px solid var(--border);
-    padding-bottom: 2rem;
+    padding-bottom: var(--s-8);
   }
   
   /* ─── Touch targets pe mobile (min 44×44 conform Apple HIG) ─── */
@@ -433,18 +415,18 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
   }
   
   .pill {
-    padding: 0.875rem 1rem;  /* înălțime efectivă ~44px */
+    padding: var(--s-4) var(--s-4);
     min-height: 44px;
   }
   
   .toggle {
     width: 52px;
-    height: 32px;
+    height: var(--s-8);
     border-radius: 16px;
   }
   .toggle .thumb {
-    width: 24px;
-    height: 24px;
+    width: var(--s-6);
+    height: var(--s-6);
     top: 4px;
     left: 4px;
   }
@@ -453,32 +435,32 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
   }
   
   .toggle-row {
-    padding: 0.875rem 0;  /* min-height ~44px cu toggle 32px */
+    padding: var(--s-4) 0;
     min-height: 44px;
   }
   
   .avansat-toggle {
-    padding: 0.875rem;
+    padding: var(--s-4);
     min-height: 44px;
   }
   
   .pdf-button {
-    padding: 0.875rem 1rem;
+    padding: var(--s-4) var(--s-4);
     min-height: 44px;
   }
   
   .nav-mobile a {
-    padding: 1rem 1.5rem;  /* deja generos */
+    padding: var(--s-4) var(--s-6);
     min-height: 48px;
   }
   
   .input-wrap input {
-    padding: 0.875rem;  /* tap target mai mare */
+    padding: var(--s-4);
     min-height: 44px;
   }
   
   select {
-    padding: 0.875rem;
+    padding: var(--s-4);
     min-height: 44px;
   }
 }
@@ -498,23 +480,23 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
 }
 
 .field { 
-  margin-bottom: 1.5rem; 
+  margin-bottom: var(--s-6); 
   padding-left: 0;
 }
 .field label, .tech-label {
   display: block;
-  font-size: 0.75rem;
-  font-weight: 700; /* <- Modificat din 600 în 700 pentru a se potrivi cu header-ul din tabel */
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
   color: var(--muted);
   text-transform: uppercase;
-  letter-spacing: 0.1em; /* <- Modificat din 0.05em în 0.1em */
-  margin-bottom: 0.5rem;
+  letter-spacing: var(--ls-wider);
+  margin-bottom: var(--s-2);
 }
 .hint {
   display: block;
-  font-size: 0.75rem;
+  font-size: var(--fs-xs);
   color: var(--muted);
-  margin-bottom: 4px;
+  margin-bottom: var(--s-1);
 }
 .input-wrap {
   display: flex;
@@ -522,36 +504,36 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
   border-radius: 0;
   overflow: hidden;
   transition: border-color .15s;
-  width: 100%; /* Asigură-te că ocupă tot spațiul disponibil */
+  width: 100%;
 }
 .input-wrap:focus-within { border-color: var(--accent); }
 .input-wrap input {
   flex: 1;
   border: none;
   outline: none;
-  padding: 0.625rem 0.875rem;
-  font-size: 1rem;
+  padding: var(--s-3) var(--s-3);
+  font-size: var(--fs-base);
   background: transparent;
   color: var(--text);
 }
 .suffix {
-  padding: 0 0.75rem;
+  padding: 0 var(--s-3);
   background: transparent;
-  font-size: 0.75rem;
+  font-size: var(--fs-xs);
   color: var(--muted);
   display: flex;
   align-items: center;
   border-left: 1px solid var(--border-strong);
-  font-weight: 600;
+  font-weight: var(--fw-medium);
   text-transform: uppercase;
   white-space: nowrap;
 }
 select {
   width: 100%;
-  border: 1px solid var(--border-strong); /* <- Modificat din 1.5px solid var(--border) pentru a se potrivi cu input-ul de text */
-  border-radius: 0; /* <- Modificat din 8px pentru consistență */
-  padding: 0.75rem;
-  font-size: 0.9375rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 0;
+  padding: var(--s-3);
+  font-size: var(--fs-sm);
   background: var(--surface);
   color: var(--text);
   outline: none;
@@ -570,14 +552,14 @@ select:focus { border-color: var(--accent); }
   gap: 0;
 }
 .pill {
-  padding: 0.625rem 1rem;
+  padding: var(--s-3) var(--s-4);
   border-radius: 0;
   border: none;
   border-right: 1px solid var(--border-strong);
   background: transparent;
   cursor: pointer;
-  font-size: 0.8125rem;
-  font-weight: 600;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
   color: var(--muted);
   transition: all .15s;
 }
@@ -591,17 +573,17 @@ select:focus { border-color: var(--accent); }
 }
 .avansat-toggle {
   width: 100%;
-  padding: 0.75rem 0.5rem;
+  padding: var(--s-3) var(--s-2);
   border: 1px dashed var(--border-strong);
   border-radius: 0;
   background: transparent;
   color: var(--muted);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-wide);
   cursor: pointer;
   transition: all .15s;
-  margin-bottom: 1rem;
+  margin-bottom: var(--s-4);
 }
 .avansat-toggle:hover {
   border-color: var(--text);
@@ -613,17 +595,17 @@ select:focus { border-color: var(--accent); }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.625rem 0;
+  padding: var(--s-3) 0;
   cursor: pointer;
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-normal);
   border-bottom: 1px solid var(--border);
-  margin-bottom: 1rem;
+  margin-bottom: var(--s-4);
 }
 .toggle-row:last-of-type { border-bottom: none; margin-bottom: 0; }
 .toggle {
   width: 44px;
-  height: 24px;
+  height: var(--s-6);
   border-radius: 12px;
   background: var(--border);
   border: none;
@@ -645,30 +627,19 @@ select:focus { border-color: var(--accent); }
 }
 .toggle.on .thumb { transform: translateX(20px); }
 
-/* ─── Info box (în card-uri, mesaj informativ) ──────────────────────────── */
-.info-box {
-  background: transparent;
-  border: 1px dashed var(--border-strong);
-  border-radius: 0;
-  padding: 0.75rem 1rem;
-  font-size: 0.8125rem;
-  color: var(--text);
-  margin-top: 1rem;
-}
-
 /* ─── Rezultate Design Plat (ca în imagine) ──────────────────────────────── */
 .results-wrapper {
   width: 100%;
 }
 
 .results-header {
-  font-size: 0.875rem; /* Am mărit fontul */
-  font-weight: 700; /* L-am făcut vizibil mai gros (bold) */
-  color: var(--muted); /* L-am făcut negru, în loc de gri */
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+  color: var(--muted);
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.5rem;
+  letter-spacing: var(--ls-wide);
+  margin-bottom: var(--s-6);
+  padding-bottom: var(--s-2);
   border-bottom: 1px solid var(--border);
   width: 100%;
 }
@@ -676,70 +647,65 @@ select:focus { border-color: var(--accent); }
 .flat-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.875rem;
+  font-size: var(--fs-sm);
   color: var(--text);
 }
-.flat-table tr.milestone-row td {
-  background-color: var(--surface-alt); /* Folosim același gri oficial */
-  font-weight: 600; /* Le facem un pic mai vizibile decât taxele */
-}
 
-/* Header-ul tabelului (ELEMENT / SUMĂ) */
-/* 1. Header-ul tabelului */
+/* Header tabel (ANGAJAT / SUMĂ) */
 .flat-table th {
-  background: var(--surface-container-low); /* Nuanța #f6f3f2 din documentație */
+  background: var(--surface-container-low);
   color: var(--muted);
-  font-weight: 700;
-  font-size:  0.6875rem;
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-xs);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 0.75rem;
+  letter-spacing: var(--ls-wide);
+  padding: var(--s-3);
   border: 1px solid var(--border);
-  border-bottom: 2px solid var(--border); /* Designul are 2px sub header */
+  border-bottom: 2px solid var(--border);
   text-align: left;
 }
 
-/* 2. Rândurile "off-white" (Brut) */
+/* Rânduri off-white (Salariu brut) */
 .flat-table tr.row-bright td {
-  background-color: var(--surface-bright); /* Nuanța #fcf9f8 */
+  background-color: var(--surface-bright);
 }
 
-/* 3. Baza impozabilă (Albă, dar îngroșată) */
+/* Bază impozabilă (alb, îngroșată) */
 .flat-table tr.row-base td {
-  background-color: var(--bg); /* Alb pur */
-  font-weight: 500;
+  background-color: var(--bg);
+  font-weight: var(--fw-normal);
 }
 
-/* 4. SALARIU NET*/
+/* SALARIU NET — invertit negru pe alb */
 .flat-table tr.total-net td {
-  background-color: var(--text); /* Folosim variabila pentru negru (#111111) */
-  color: var(--bg); /* Folosim variabila pentru alb (#ffffff) */
-  font-weight: 700;
-  border: 1px solid var(--text); /* Facem marginile exterioare negre pentru a elimina efectul de "lipit" */
+  background-color: var(--text);
+  color: var(--bg);
+  font-weight: var(--fw-bold);
+  border: 1px solid var(--text);
 }
 .flat-table tr.total-net td:first-child {
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--ls-wide);
 }
 .flat-table tr.total-net td:last-child {
-  font-size: 1rem; /* 16px - mai mare conform designului */
+  font-size: var(--fs-base);
 }
-/* --- ADAUGĂ CODUL NOU AICI --- */
-/* Spațiere între Salariu Net și Cost Angajator */
+
+/* Spacer între Net și Cost Angajator */
 .flat-table tr.spacer-row td {
-  height: 2rem;
+  height: var(--s-8);
   padding: 0;
   border: none;
   background: transparent;
 }
-/* ----------------------------- */
-/* 5. COST TOTAL (Off-white, Linie normală de 1px) */
+
+/* COST TOTAL — uppercase, off-white */
 .flat-table tr.total-cost td {
   background-color: var(--surface-bright);
-  font-weight: 700;
-  border-top: 1px solid var(--border); /* Aici e linie subțire, nu groasă! */
+  font-weight: var(--fw-bold);
+  border-top: 1px solid var(--border);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--ls-wide);
 }
 
 .flat-table th:last-child {
@@ -748,7 +714,7 @@ select:focus { border-color: var(--accent); }
 
 /* Celulele tabelului */
 .flat-table td {
-  padding: 0.75rem;
+  padding: var(--s-3);
   border: 1px solid var(--border);
   text-align: left;
 }
@@ -758,77 +724,53 @@ select:focus { border-color: var(--accent); }
   font-variant-numeric: tabular-nums;
 }
 
-
-/* Rânduri indentate pentru sub-calcule (taxe, deduceri) */
+/* Rânduri indentate pentru sub-calcule */
 .flat-table tr.sub-row td:first-child {
-  padding-left: 1.5rem; /* Împinge textul spre dreapta */
+  padding-left: var(--s-6);
 }
 
 /* Total rețineri — sumarizator după secțiunea de rețineri */
 .flat-table tr.total-retineri td {
-  font-weight: 600;
-  font-size: 0.875rem;
-  background-color: var(--surface-bright); /* Fundalul deschis (off-white) */
-  color: var(--text); /* Textul rămâne negru */
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-sm);
+  background-color: var(--surface-bright);
+  color: var(--text);
   border-top: 1px solid var(--border);
-  padding-top: 0.625rem;
-  padding-bottom: 0.625rem;
+  padding-top: var(--s-3);
+  padding-bottom: var(--s-3);
 }
 
-/* Buton Descarcă PDF — stil discret editorial */
+/* Buton Descarcă PDF — stil aliniat la document fiscal */
 .pdf-button {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-top: 1.25rem;
-  padding: 0.625rem 1rem;
-  border: 1px solid var(--border);
+  gap: var(--s-2);
+  margin-top: var(--s-6);
+  padding: var(--s-3) var(--s-4);
+  border: 1px solid var(--border-strong);
   background: transparent;
   color: var(--text);
-  font-size: 0.8125rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-wide);
   cursor: pointer;
   transition: all 0.15s ease;
   font-family: inherit;
 }
 .pdf-button:hover {
-  background: var(--surface-alt);
+  background: var(--text);
+  color: var(--bg);
   border-color: var(--text);
 }
 .pdf-button:active {
   transform: translateY(1px);
 }
 
-/* Butoanele de acțiune de jos */
-.action-buttons {
-  display: flex;
-  gap: 0.75rem;
-  margin-top: 1.5rem;
-}
-
-.action-buttons button {
-  padding: 0.625rem 1rem;
-  background: transparent;
-  border: 1px solid var(--border-strong);
-  border-radius: 0; /* Aici ne asigurăm că au colțuri perfect drepte */
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--text);
-  cursor: pointer;
-  text-transform: uppercase;
-  transition: all 0.2s ease;
-}
-
-.action-buttons button:hover {
-  border-color: var(--text);
-  background: var(--surface-alt);
-}
-
 /* ─── Empty state (Design Plat) ──────────────────────────────────────────── */
 .empty-card {
   text-align: center;
-  padding: 4rem 2rem;
+  padding: var(--s-16) var(--s-8);
   color: var(--muted);
   border: 1px dashed var(--border-strong);
   border-radius: 0;
@@ -836,63 +778,63 @@ select:focus { border-color: var(--accent); }
 }
 
 .empty-icon { 
-  margin-bottom: 1.25rem; 
+  margin-bottom: var(--s-4); 
   opacity: 0.6; 
   color: var(--muted-soft);
 }
 
 .empty-card p { 
-  font-size: 0.875rem; 
-  font-weight: 600; 
-  margin-bottom: 0.5rem; 
+  font-size: var(--fs-sm); 
+  font-weight: var(--fw-medium); 
+  margin-bottom: var(--s-2); 
   color: var(--text); 
-  letter-spacing: 0.01em;
 }
 
 .empty-hint { 
-  font-size: 0.8125rem; 
+  font-size: var(--fs-xs); 
   color: var(--muted); 
 }
-/* ─── Section surfaces (între hero și content) ───────────────────────────── */
+
+/* ─── Section surfaces ───────────────────────────────────────────────────── */
 .section-surface {
   background: var(--surface);
   border-bottom: 1px solid var(--border);
-  padding: 2rem 0;
+  padding: var(--s-8) 0;
 }
 
 /* Article-section: pagini de conținut (/salariu-minim, /salariu-mediu) */
 .article-section { 
-  padding: 4rem 0 2rem; 
+  padding: var(--s-12) 0 var(--s-8); 
   border-top: 1px solid var(--border);
   background: var(--bg);
 }
-.article { margin-bottom: 3rem; }
-.article > p { margin-bottom: 1rem; }
+.article { margin-bottom: var(--s-12); }
+.article > p { margin-bottom: var(--s-4); }
 
 /* Info section (FAQ pe homepage) */
 .info-section {
   background: var(--surface-alt);
   border-top: 1px solid var(--border);
-  padding: 3rem 0;
+  padding: var(--s-12) 0;
 }
 
 /* ─── Footer ─────────────────────────────────────────────────────────────── */
 .site-footer {
   background: var(--text);
   color: rgba(255, 255, 255, .7);
-  padding: 3rem 0 1.5rem;
+  padding: var(--s-12) 0 var(--s-6);
 }
 .footer-top {
   display: flex;
-  gap: 2rem;
+  gap: var(--s-8);
   align-items: flex-start;
-  margin-bottom: 2rem;
-  padding-bottom: 2rem;
+  margin-bottom: var(--s-8);
+  padding-bottom: var(--s-8);
   border-bottom: 1px solid rgba(255, 255, 255, .1);
 }
 .footer-top p {
-  font-size: 0.875rem;
-  line-height: 1.6;
+  font-size: var(--fs-sm);
+  line-height: var(--lh-base);
   max-width: 400px;
   color: rgba(255, 255, 255, .7);
 }
@@ -901,28 +843,28 @@ select:focus { border-color: var(--accent); }
 .footer-links {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  margin-bottom: 2rem;
-  padding-bottom: 2rem;
+  gap: var(--s-8);
+  margin-bottom: var(--s-8);
+  padding-bottom: var(--s-8);
   border-bottom: 1px solid rgba(255, 255, 255, .1);
 }
 .footer-links .footer-title {
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: var(--ls-wide);
   color: rgba(255, 255, 255, .7);
-  margin-bottom: 0.75rem;
+  margin-bottom: var(--s-3);
 }
 .footer-links a {
   display: block;
   color: rgba(255, 255, 255, .9);
-  font-size: 0.875rem;
-  margin-bottom: 0.4rem;
+  font-size: var(--fs-sm);
+  margin-bottom: var(--s-2);
 }
 .footer-links a:hover { color: white; }
 .footer-bottom p {
-  font-size: 0.8125rem;
+  font-size: var(--fs-xs);
   color: rgba(255, 255, 255, .6);
   text-align: center;
 }
@@ -939,43 +881,43 @@ select:focus { border-color: var(--accent); }
 .grid-auto {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.25rem;
+  gap: var(--s-4);
 }
 
 /* Stat rows (Brut / Net / Cost angajator pe carduri) */
-.stat-rows { display: flex; flex-direction: column; gap: 0.625rem; }
+.stat-rows { display: flex; flex-direction: column; gap: var(--s-3); }
 .stat-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.stat-row > span { font-size: 0.875rem; color: var(--muted); }
-.stat-row > strong { font-size: 1rem; font-weight: 600; color: var(--text); }
-.stat-row.lg > strong { font-size: 1.25rem; }
+.stat-row > span { font-size: var(--fs-sm); color: var(--muted); }
+.stat-row > strong { font-size: var(--fs-base); font-weight: var(--fw-medium); color: var(--text); }
+.stat-row.lg > strong { font-size: var(--fs-md); }
 .stat-row.xl > strong {
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
   color: var(--accent);
 }
 .stat-row.sm > span,
-.stat-row.sm > strong { font-size: 0.8125rem; }
+.stat-row.sm > strong { font-size: var(--fs-xs); }
 .stat-divider {
   height: 1px;
   background: var(--border);
-  margin: 0.25rem 0;
+  margin: var(--s-1) 0;
 }
 
 /* Chip — link text editorial */
 .chip {
   display: inline-block;
-  margin-top: 1rem;
+  margin-top: var(--s-4);
   padding: 0;
   background: transparent;
   color: var(--text);
   border-radius: 0;
   text-align: left;
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-normal);
   text-decoration: underline;
   text-underline-offset: 4px;
   text-decoration-thickness: 1px;
@@ -985,77 +927,77 @@ select:focus { border-color: var(--accent); }
 .data-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.9375rem;
+  font-size: var(--fs-sm);
 }
 .data-table thead tr { background: var(--surface-alt); }
 .data-table th {
-  padding: 0.625rem 0.75rem;
+  padding: var(--s-3);
   border-bottom: 2px solid var(--border);
   text-align: left;
-  font-weight: 600;
+  font-weight: var(--fw-medium);
 }
 .data-table th.right { text-align: right; }
 .data-table td {
-  padding: 0.625rem 0.75rem;
+  padding: var(--s-3);
   border-bottom: 1px solid var(--border);
 }
 .data-table td.right { text-align: right; }
 .data-table tr.highlight { background: var(--accent-light); }
-.data-table tr.highlight td { font-weight: 700; }
+.data-table tr.highlight td { font-weight: var(--fw-bold); }
 
-/* Calc row (CAS/CASS/Impozit pe pagina de calcul detaliat /salariu-minim) */
+/* Calc row (CAS/CASS/Impozit pe pagina /salariu-minim) */
 .calc-row {
   display: flex;
   justify-content: space-between;
-  padding: 0.5rem 0;
+  padding: var(--s-2) 0;
   border-bottom: 1px solid var(--border);
-  font-size: 0.875rem;
+  font-size: var(--fs-sm);
 }
 .calc-row > span { color: var(--muted); }
-.calc-row > strong { color: var(--text); font-weight: 600; }
-.calc-row.bold > strong { font-weight: 700; }
+.calc-row > strong { color: var(--text); font-weight: var(--fw-medium); }
+.calc-row.bold > strong { font-weight: var(--fw-bold); }
 .calc-row.danger > strong { color: var(--danger); }
 .calc-row.accent > strong { color: var(--accent); }
 .calc-row.warn > strong { color: var(--warn); }
 .calc-row.total {
-  margin-top: 0.5rem;
-  padding: 0.875rem 0.75rem;
+  margin-top: var(--s-2);
+  padding: var(--s-3);
   background: var(--surface-alt);
-  border-radius: 0; /* <- Modificat din 6px în 0 */
+  border-radius: 0;
   border: none;
 }
-.calc-row.total > strong { color: var(--text); font-size: 1.0625rem; }
+.calc-row.total > strong { color: var(--text); font-size: var(--fs-base); }
 
 /* FAQ accordion */
 .faq-list { display: flex; flex-direction: column; }
 .faq-item {
   border-bottom: 1px solid var(--border);
-  padding: 0.875rem 0;
+  padding: var(--s-4) 0;
 }
 .faq-item summary {
-  font-size: 0.9375rem;
-  font-weight: 500;
+  font-size: var(--fs-base);
+  font-weight: var(--fw-normal);
   color: var(--text);
   cursor: pointer;
   list-style: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  gap: var(--s-4);
 }
 .faq-item summary::-webkit-details-marker { display: none; }
 .faq-item summary::after {
   content: "+";
   color: var(--accent);
-  font-size: 1.125rem;
+  font-size: var(--fs-md);
   flex-shrink: 0;
 }
 .faq-item[open] summary::after { content: "−"; }
 .faq-item .faq-answer {
-  margin-top: 0.75rem;
-  font-size: 0.9375rem;
+  margin-top: var(--s-3);
+  font-size: var(--fs-base);
   color: var(--muted);
-  line-height: 1.7;
+  line-height: var(--lh-base);
 }
 
 /* CTA card (editorial — fără background colorat) */
@@ -1065,20 +1007,20 @@ select:focus { border-color: var(--accent); }
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   border-radius: 0;
-  padding: 2rem 0;
+  padding: var(--s-8) 0;
   text-align: left;
-  margin-bottom: 2rem;
+  margin-bottom: var(--s-8);
 }
 .cta-card h2 {
-  font-size: 1.25rem;
+  font-size: var(--fs-md);
   color: var(--text);
-  margin-bottom: 0.5rem;
-  font-weight: 600;
+  margin-bottom: var(--s-2);
+  font-weight: var(--fw-medium);
 }
 .cta-card p {
-  font-size: 0.9375rem;
+  font-size: var(--fs-sm);
   color: var(--muted);
-  margin: 0 0 1rem;
+  margin: 0 0 var(--s-4);
   max-width: 580px;
 }
 .btn-cta {
@@ -1089,23 +1031,23 @@ select:focus { border-color: var(--accent); }
   text-decoration: underline;
   text-underline-offset: 4px;
   text-decoration-thickness: 1px;
-  font-size: 0.9375rem;
-  font-weight: 500;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-normal);
 }
 
 /* Source note (Sursa: ..., italic, mic) */
 .source-note {
-  font-size: 0.8125rem;
+  font-size: var(--fs-xs);
   color: var(--muted);
-  margin-top: 1rem;
+  margin-top: var(--s-4);
   font-style: italic;
 }
 
-/* ─── Utilities (folosite punctual) ──────────────────────────────────────── */
+/* ─── Utilities ──────────────────────────────────────────────────────────── */
 .muted { color: var(--muted); }
-.text-xs { font-size: 0.8125rem; }
+.text-xs { font-size: var(--fs-xs); }
 .text-center { text-align: center; }
-.mb-2 { margin-bottom: 1.25rem; }
+.mb-2 { margin-bottom: var(--s-4); }
 .right { text-align: right; }
 
 /* Wrapper scrollabil pentru tabele pe mobile */
@@ -1116,34 +1058,34 @@ select:focus { border-color: var(--accent); }
 
 /* Listă în articole (cu indent și culoare muted) */
 .article-list {
-  padding-left: 1.5rem;
-  margin-bottom: 1.5rem;
+  padding-left: var(--s-6);
+  margin-bottom: var(--s-6);
   color: var(--muted);
   list-style: disc;
 }
 .article-list li {
-  margin-bottom: 0.5rem;
-  line-height: 1.6;
+  margin-bottom: var(--s-2);
+  line-height: var(--lh-base);
 }
 
 /* Distribution bar (folosit opțional în Calculator) */
 .bar-row {
-  margin-bottom: 0.75rem;
+  margin-bottom: var(--s-3);
 }
 .bar-label {
   display: flex;
   justify-content: space-between;
-  font-size: 0.75rem;
+  font-size: var(--fs-xs);
   color: var(--muted);
-  margin-bottom: 0.25rem;
+  margin-bottom: var(--s-1);
 }
 .bar-val {
-  font-weight: 600;
+  font-weight: var(--fw-medium);
   color: var(--text);
   font-variant-numeric: tabular-nums;
 }
 .bar-track {
-  height: 0.5rem;
+  height: var(--s-2);
   background: var(--border);
   overflow: hidden;
 }
