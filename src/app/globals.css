@@ -71,6 +71,12 @@
 /* ─── Reset ──────────────────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+html {
+  /* compensează site-header sticky (64px) când se face scroll-into-view
+     sau navigare la #ancore; fără asta, target-ul e tăiat de bară */
+  scroll-padding-top: 64px;
+}
+
 body {
   font-family: var(--font-figtree), system-ui, -apple-system, sans-serif;
   background: var(--bg);
