@@ -435,9 +435,9 @@ export default function CalculatorSalariu({
       {/* ── Calculator ── */}
       <div className="container calc-layout">
         {/* Coloana Stângă */}
-      <div className="form-column"> 
+      <div className="calc-column form-column"> 
       {/* Titlul stă acum AFARĂ, la fel ca în dreapta */}
-        <h2 className="results-header">DATE SALARIALE</h2>
+        <h2 className="calc-column-header">Date salariale</h2>
         {/* Form */}
         <div className="card form-card">
           <div className="card-head">
@@ -486,8 +486,8 @@ export default function CalculatorSalariu({
       </div>
 
         {/* Rezultate — editorial: 1 card cu tabel-fluturas */}
-        <div className="results-col">
-          <h2 className="results-header">REZULTAT CALCUL</h2>
+        <div className="calc-column results-col">
+          <h2 className="calc-column-header">Rezultat calcul</h2>
 
           {rez ? (
             <div className="results-wrapper">

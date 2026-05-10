@@ -367,45 +367,47 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
   margin-bottom: var(--s-3);
 }
 
-/* ─── Calculator layout ──────────────────────────────────────────────────── */
+/* ─── Calculator layout (pattern Stitch: border în jur + simetrie 2 coloane) */
 .calc-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--s-16);
-  padding-top: var(--s-8);
-  padding-bottom: var(--s-8);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  position: relative;
+  gap: 0;
+  border: 1px solid var(--border);
+  margin: var(--s-8) 0;
 }
-.calc-layout::before {
-  content: "";
-  position: absolute;
-  top: var(--s-8);
-  bottom: var(--s-8);
-  left: 50%;
-  transform: translateX(-50%);
-  width: 1px;
-  background: var(--border);
+
+.calc-column {
+  padding: var(--s-6);
+}
+
+.calc-column + .calc-column {
+  border-left: 1px solid var(--border);
+}
+
+.calc-column-header {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-medium);
+  color: var(--text);
+  letter-spacing: var(--ls-tighter);
+  margin-bottom: var(--s-4);
+  padding-bottom: var(--s-2);
+  border-bottom: 1px solid var(--border);
 }
 
 @media (max-width: 768px) {
-  .calc-layout::before {
-    display: none;
-  }
   .calc-layout { 
-    grid-template-columns: 1fr; 
-    border-bottom: none;
+    grid-template-columns: 1fr;
+  }
+  .calc-column + .calc-column {
+    border-left: none;
+    border-top: 1px solid var(--border);
   }
   .nav-desktop { display: none; }
   .hamburger { display: flex; }
   
-  /* Pe mobil, linia se mută jos, sub formular */
   .form-card {
     border-right: none;
     padding-right: 0;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: var(--s-8);
   }
   
   /* ─── Touch targets pe mobile (min 44×44 conform Apple HIG) ─── */
@@ -471,12 +473,8 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
   border: none;
   box-shadow: none;
   border-radius: 0;
-  padding-right: 0;
-  padding-left: 0;
-  padding-top: 0;
-  
+  padding: 0;
   width: 100%;
-  max-width: 420px; 
 }
 
 .field { 
