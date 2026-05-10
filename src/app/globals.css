@@ -457,6 +457,11 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
     min-height: 44px;
   }
   
+  .btn-calculeaza {
+    padding: var(--s-4);
+    min-height: 48px;
+  }
+  
   .nav-mobile a {
     padding: var(--s-4) var(--s-6);
     min-height: 48px;
@@ -769,6 +774,35 @@ select:focus { border-color: var(--accent); }
 }
 .pdf-button:active {
   transform: translateY(1px);
+}
+
+/* ─── Buton Calculează (CTA primar — invertit față de PDF) ─────────────── */
+.btn-calculeaza {
+  display: block;
+  width: 100%;
+  margin-top: var(--s-6);
+  padding: var(--s-3) var(--s-4);
+  border: 1px solid var(--text);
+  background: var(--text);
+  color: var(--bg);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: inherit;
+}
+.btn-calculeaza:hover {
+  background: var(--bg);
+  color: var(--text);
+}
+.btn-calculeaza:active {
+  transform: translateY(1px);
+}
+.btn-calculeaza:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 2px;
 }
 
 /* ─── Empty state (skeleton — schelet de tabel cu valori muted) ─────────── */

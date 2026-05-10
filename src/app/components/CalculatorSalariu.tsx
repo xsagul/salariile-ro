@@ -482,11 +482,24 @@ export default function CalculatorSalariu({
               <Toggle label="Scutit de impozit (handicap etc.)" checked={input.scutitImpozit} onChange={(v: any) => set("scutitImpozit", v)} />
             </>
           )}
+
+          <button
+            type="button"
+            className="btn-calculeaza"
+            onClick={() => {
+              if (typeof document !== "undefined") {
+                document.getElementById("rezultat-calcul")?.scrollIntoView({ behavior: "smooth", block: "start" });
+              }
+            }}
+            aria-label="Calculează salariul și navighează la rezultat"
+          >
+            Calculează
+          </button>
         </div> {/* <--- AICI SE ÎNCHIDE DIV-UL NOU CREAT */}
       </div>
 
         {/* Rezultate — editorial: 1 card cu tabel-fluturas */}
-        <div className="calc-column results-col">
+        <div className="calc-column results-col" id="rezultat-calcul">
           <h2 className="calc-column-header">Rezultat calcul</h2>
 
           {rez ? (
