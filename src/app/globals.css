@@ -387,6 +387,7 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
 .calc-column {
   padding: var(--s-6);
   min-width: 0;
+  border: 1px solid var(--border-strong);
 }
 
 .calc-column > * {
@@ -412,11 +413,10 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
     grid-template-columns: 1fr;
   }
   .calc-column {
-    /* mobile: padding orizontal mic — separă conținutul de outer border
-       ca să se vadă casetele (form + tabel) ca două zone distincte.
+    /* mobile: scoatem padding-ul orizontal — strângea tabelul.
        sus/jos rămâne --s-6 ca pe desktop. */
-    padding-left: var(--s-3);
-    padding-right: var(--s-3);
+    padding-left: 0;
+    padding-right: 0;
   }
   .calc-column + .calc-column {
     border-left: none;
