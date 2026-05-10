@@ -128,6 +128,22 @@ function calculeazaBrutDinNet(net: number, input: Omit<InputState, "brut">): num
 
 const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(n) + " lei";
 
+// Construiește rezultatul afișat dintr-un snapshot de input + mod.
+// Calculul se face O DATĂ, la momentul click pe Calculează — nu la fiecare render.
+// Conține tot ce e nevoie să randeze tabelul + payload-ul PDF.
+function buildResult(snapshotInput: InputState, snapshotMod: "brut" | "net") {
+  const brutEfectiv = snapshotMod === "net"
+    ? String(calculeazaBrutDinNet(parseFloat(snapshotInput.brut) || 0, snapshotInput))
+    : snapshotInput.brut;
+  const rez = calculeaza({ ...snapshotInput, brut: brutEfectiv });
+  if (!rez) return null;
+  return {
+    rez,
+    brutEfectiv,
+    functieDeBAza: snapshotInput.functieDeBAza,
+  };
+}
+
 // ─── Componente UI ────────────────────────────────────────────────────────────
 
 // Am adăugat 'id' în paranteze și am legat label-ul de input
@@ -373,7 +389,7 @@ export default function CalculatorSalariu({
   const [mod, setMod] = useState<"brut" | "net">(modInitial);
   const [avansat, setAvansat] = useState(false);
 
-  const [input, setInput] = useState<InputState>({
+  const initialInput: InputState = {
     brut: brutInitial,
     tichete: "",
     functieDeBAza: true,
@@ -381,16 +397,23 @@ export default function CalculatorSalariu({
     varstaSub26: false,
     copiiScolarizati: 0,
     scutitImpozit: false,
-  });
+  };
+
+  const [input, setInput] = useState<InputState>(initialInput);
+
+  // Rezultatul afișat — calculat O DATĂ la click pe Calculează, stocat ca obiect.
+  // Nu se schimbă la tastare/toggle, doar la click. La mount, dacă brutInitial
+  // e prezent (pagini dinamice tip /4050-brut-...), pre-calculează (auto-commit
+  // pentru SEO/SSR — Google vede tabelul completat la randare).
+  const [rezAfisat, setRezAfisat] = useState<ReturnType<typeof buildResult>>(
+    brutInitial && parseFloat(brutInitial) > 0 ? buildResult(initialInput, modInitial) : null
+  );
 
   const set = useCallback(
     <K extends keyof InputState>(k: K, v: InputState[K]) =>
       setInput((p) => ({ ...p, [k]: v })),
     []
   );
-  
-  const brutEfectiv = mod === "net" ? String(calculeazaBrutDinNet(parseFloat(input.brut) || 0, input)) : input.brut;
-  const rez = calculeaza({ ...input, brut: brutEfectiv });
 
   return (
     <>
@@ -487,6 +510,9 @@ export default function CalculatorSalariu({
             type="button"
             className="btn-calculeaza"
             onClick={() => {
+              // 1) Calculează O DATĂ și stochează direct rezultatul.
+              setRezAfisat(buildResult(input, mod));
+              // 2) Scroll la zona corectă (mobile: results-col; desktop: calc-layout).
               if (typeof window === "undefined") return;
               const isMobile = window.matchMedia("(max-width: 768px)").matches;
               const targetId = isMobile ? "rezultat-calcul" : "calc-layout";
@@ -503,7 +529,7 @@ export default function CalculatorSalariu({
         <div className="calc-column results-col" id="rezultat-calcul">
           <h2 className="calc-column-header">Rezultat calcul</h2>
 
-          {rez ? (
+          {rezAfisat ? (
             <div className="results-wrapper">
               
               <table className="payslip-table flat-table">
@@ -516,9 +542,9 @@ export default function CalculatorSalariu({
                 <tbody>
                   <tr className="row-bright">
                     <td>Salariu de încadrare (Brut)</td>
-                    <td>{fmt(parseFloat(brutEfectiv))}</td>
+                    <td>{fmt(parseFloat(rezAfisat.brutEfectiv))}</td>
                   </tr>
-                  {parseFloat(brutEfectiv) === SALARIU_MINIM && input.functieDeBAza && (
+                  {parseFloat(rezAfisat.brutEfectiv) === SALARIU_MINIM && rezAfisat.functieDeBAza && (
                     <tr className="sub-row">
                       <td><span className="muted">Facilitate fiscală (neimpozabilă)</span></td>
                       <td>{fmt(DEDUCERE_MINIM)}</td>
@@ -526,33 +552,33 @@ export default function CalculatorSalariu({
                   )}
                   <tr className="sub-row indent">
                     <td><span className="muted">CAS (Pensii - 25%)</span></td>
-                    <td>− {fmt(rez.cas)}</td>
+                    <td>− {fmt(rezAfisat.rez.cas)}</td>
                   </tr>
                   <tr className="sub-row indent">
                     <td><span className="muted">CASS (Sănătate - 10%)</span></td>
-                    <td>− {fmt(rez.cass)}</td>
+                    <td>− {fmt(rezAfisat.rez.cass)}</td>
                   </tr>
-                  {rez.deducerePersonala > 0 && (
+                  {rezAfisat.rez.deducerePersonala > 0 && (
                     <tr className="sub-row indent">
                       <td><span className="muted">Deducere personală (aplicată)</span></td>
-                      <td>{fmt(rez.deducerePersonala)}</td>
+                      <td>{fmt(rezAfisat.rez.deducerePersonala)}</td>
                     </tr>
                   )}
                   <tr className="row-base">
                     <td>Bază calcul impozit</td>
-                    <td>{fmt(rez.bazaCalculImpozit)}</td>
+                    <td>{fmt(rezAfisat.rez.bazaCalculImpozit)}</td>
                   </tr>
                   <tr className="sub-row indent">
                     <td><span className="muted">Impozit pe venit (10%)</span></td>
-                    <td>− {fmt(rez.impozit)}</td>
+                    <td>− {fmt(rezAfisat.rez.impozit)}</td>
                   </tr>
                   <tr className="total-retineri">
                     <td>Total Rețineri Angajat</td>
-                    <td>{fmt(rez.cas + rez.cass + rez.impozit)}</td>
+                    <td>{fmt(rezAfisat.rez.cas + rezAfisat.rez.cass + rezAfisat.rez.impozit)}</td>
                   </tr>
                   <tr className="total-net">
                     <td>SALARIU NET</td>
-                    <td>{fmt(rez.net)}</td>
+                    <td>{fmt(rezAfisat.rez.net)}</td>
                   </tr>
                 </tbody>
                 {/* --- RÂND PENTRU SPAȚIERE (Accesibil + Linii corecte) --- */}
@@ -565,11 +591,11 @@ export default function CalculatorSalariu({
                 <tbody>
                   <tr>
                     <td>CAM (Contribuție Muncă - 2.25%)</td>
-                    <td>{fmt(rez.cam)}</td>
+                    <td>{fmt(rezAfisat.rez.cam)}</td>
                   </tr>
                   <tr className="total-cost">
                     <td>COST TOTAL ANGAJATOR</td>
-                    <td>{fmt(rez.costTotal)}</td>
+                    <td>{fmt(rezAfisat.rez.costTotal)}</td>
                   </tr>
                 </tbody>
               </table>
@@ -578,9 +604,9 @@ export default function CalculatorSalariu({
                 type="button"
                 className="pdf-button"
                 onClick={() => generarePDFFluturas(
-                  parseFloat(brutEfectiv),
-                  rez,
-                  parseFloat(brutEfectiv) === SALARIU_MINIM && input.functieDeBAza,
+                  parseFloat(rezAfisat.brutEfectiv),
+                  rezAfisat.rez,
+                  parseFloat(rezAfisat.brutEfectiv) === SALARIU_MINIM && rezAfisat.functieDeBAza,
                   DEDUCERE_MINIM
                 )}
               >
