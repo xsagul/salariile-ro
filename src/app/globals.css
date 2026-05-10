@@ -295,6 +295,7 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
 .hero {
   padding: var(--s-8) 0 var(--s-4); 
   background: var(--bg);
+  border-bottom: 1px solid var(--border-strong);
 }
 
 .breadcrumb {
@@ -861,7 +862,7 @@ select:focus { border-color: var(--accent); }
 /* Article-section: pagini de conținut (/salariu-minim, /salariu-mediu) */
 .article-section { 
   padding: var(--s-12) 0 var(--s-8); 
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--border-strong);
   background: var(--bg);
 }
 .article { margin-bottom: var(--s-12); }
@@ -982,7 +983,7 @@ select:focus { border-color: var(--accent); }
 /* Info section (FAQ pe homepage) */
 .info-section {
   background: var(--surface-alt);
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--border-strong);
   padding: var(--s-12) 0;
 }
 
