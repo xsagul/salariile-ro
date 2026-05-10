@@ -433,7 +433,7 @@ export default function CalculatorSalariu({
       </section>
 
       {/* ── Calculator ── */}
-      <div className="container calc-layout">
+      <div className="container calc-layout" id="calc-layout">
         {/* Coloana Stângă */}
       <div className="calc-column form-column"> 
       {/* Titlul stă acum AFARĂ, la fel ca în dreapta */}
@@ -487,9 +487,10 @@ export default function CalculatorSalariu({
             type="button"
             className="btn-calculeaza"
             onClick={() => {
-              if (typeof document !== "undefined") {
-                document.getElementById("rezultat-calcul")?.scrollIntoView({ behavior: "smooth", block: "start" });
-              }
+              if (typeof window === "undefined") return;
+              const isMobile = window.matchMedia("(max-width: 768px)").matches;
+              const targetId = isMobile ? "rezultat-calcul" : "calc-layout";
+              document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth", block: "start" });
             }}
             aria-label="Calculează salariul și navighează la rezultat"
           >
