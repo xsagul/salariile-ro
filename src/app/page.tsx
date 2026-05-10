@@ -90,90 +90,28 @@ export default function Page() {
 
       <CalculatorSalariu />
 
-      {/* Secțiune editorial: cum funcționează calculul + sidebar (glosar + surse) */}
+      {/* Secțiune editorial: cum funcționează calculul */}
       <section className="article-section">
         <div className="container">
-          <div className="editorial-grid">
-            <div className="editorial-text">
-              <h2>Cum funcționează calculul</h2>
-              <p>
-                Din salariul brut se rețin trei contribuții obligatorii: <strong>CAS</strong> (25% pentru pensie), <strong>CASS</strong> (10% pentru sănătate) și <strong>impozitul pe venit</strong> (10%). Pentru salariile sub 6.050 lei brut se aplică o deducere personală care reduce baza de calcul a impozitului.
-              </p>
-              <p>
-                În plus, pentru salariații plătiți la nivelul salariului minim (4.050 lei brut în prima jumătate a anului 2026, 4.325 lei din 1 iulie), o sumă fixă din salariu este scutită de contribuții — 300 lei până în iunie, apoi 200 lei (OUG 89/2025).
-              </p>
-              <p>
-                Pe lângă salariul brut, angajatorul mai plătește o contribuție de 2,25% (<strong>CAM</strong> — Contribuția Asiguratorie pentru Muncă), care nu afectează salariul net al angajatului dar crește costul total al firmei.
-              </p>
-              <p className="source-note">Ultima actualizare: 30 aprilie 2026.</p>
-            </div>
-
-            <aside className="editorial-side" aria-label="Glosar și surse oficiale">
-              <div className="side-block">
-                <p className="side-eyebrow">Glosar</p>
-                <div className="glosar-list">
-                  <div className="glosar-item">
-                    <div className="glosar-term">
-                      <span className="glosar-term-name">CAS</span>
-                      <span className="glosar-term-pct">25%</span>
-                    </div>
-                    <p className="glosar-def">Contribuție pentru sistemul public de pensii.</p>
-                  </div>
-                  <div className="glosar-item">
-                    <div className="glosar-term">
-                      <span className="glosar-term-name">CASS</span>
-                      <span className="glosar-term-pct">10%</span>
-                    </div>
-                    <p className="glosar-def">Contribuție pentru sistemul de sănătate.</p>
-                  </div>
-                  <div className="glosar-item">
-                    <div className="glosar-term">
-                      <span className="glosar-term-name">Impozit pe venit</span>
-                      <span className="glosar-term-pct">10%</span>
-                    </div>
-                    <p className="glosar-def">Aplicat pe ce rămâne din brut după CAS, CASS și deduceri.</p>
-                  </div>
-                  <div className="glosar-item">
-                    <div className="glosar-term">
-                      <span className="glosar-term-name">Deducere personală</span>
-                    </div>
-                    <p className="glosar-def">Sumă scutită de impozit pentru salarii sub 6.050 lei brut.</p>
-                  </div>
-                  <div className="glosar-item">
-                    <div className="glosar-term">
-                      <span className="glosar-term-name">CAM</span>
-                      <span className="glosar-term-pct">2,25%</span>
-                    </div>
-                    <p className="glosar-def">Plătită de angajator. Nu reduce salariul tău net.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="side-block">
-                <p className="side-eyebrow">Surse oficiale</p>
-                <ul className="surse-list">
-                  <li className="surse-item">
-                    <a href="https://legislatie.just.ro" target="_blank" rel="noopener">Monitorul Oficial</a>
-                    <span className="surse-meta">HG 146/2026 · OUG 89/2025</span>
-                  </li>
-                  <li className="surse-item">
-                    <a href="https://legislatie.just.ro" target="_blank" rel="noopener">Codul Fiscal art. 77</a>
-                    <span className="surse-meta">Deducere personală · Legea 227/2015</span>
-                  </li>
-                  <li className="surse-item">
-                    <a href="https://www.anaf.ro" target="_blank" rel="noopener">ANAF Declarația 112</a>
-                    <span className="surse-meta">Sincronizat fiscal</span>
-                  </li>
-                </ul>
-              </div>
-            </aside>
-          </div>
+          <h2>Cum funcționează calculul</h2>
+          <p>
+            Din salariul brut se rețin trei contribuții obligatorii: <strong>CAS</strong> (25% pentru pensie), <strong>CASS</strong> (10% pentru sănătate) și <strong>impozitul pe venit</strong> (10%). Pentru salariile sub 6.050 lei brut se aplică o deducere personală care reduce baza de calcul a impozitului.
+          </p>
+          <p>
+            În plus, pentru salariații plătiți la nivelul salariului minim (4.050 lei brut în prima jumătate a anului 2026, 4.325 lei din 1 iulie), o sumă fixă din salariu este scutită de contribuții — 300 lei până în iunie, apoi 200 lei (OUG 89/2025).
+          </p>
+          <p>
+            Pe lângă salariul brut, angajatorul mai plătește o contribuție de 2,25% (CAM — Contribuția Asiguratorie pentru Muncă), care nu afectează salariul net al angajatului dar crește costul total al firmei.
+          </p>
+          <p className="source-note">
+            Surse: <a href="https://legislatie.just.ro" target="_blank" rel="noopener">Monitorul Oficial</a> (HG 146/2026, OUG 89/2025), Codul Fiscal art. 77, ANAF Declarația 112. Ultima actualizare: 30 aprilie 2026.
+          </p>
         </div>
       </section>
 
       {/* Secțiunea FAQ vizibilă pentru utilizatori */}
       <section className="info-section">
-        <div className="container container-narrow">
+        <div className="container">
           <h2 className="mb-2">Întrebări frecvente</h2>
           <div className="faq-list">
             {faqData.map((faq, index) => (
