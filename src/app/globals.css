@@ -373,11 +373,17 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
   grid-template-columns: 1fr 1fr;
   gap: 0;
   border: 1px solid var(--border);
-  margin: var(--s-8) 0;
+  margin-top: var(--s-8);
+  margin-bottom: var(--s-8);
 }
 
 .calc-column {
   padding: var(--s-6);
+  min-width: 0;
+}
+
+.calc-column > * {
+  width: 100%;
 }
 
 .calc-column + .calc-column {
