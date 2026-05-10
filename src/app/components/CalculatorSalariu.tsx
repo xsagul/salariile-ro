@@ -575,12 +575,63 @@ export default function CalculatorSalariu({
 
             </div>
           ) : (
-            <div className="empty-card">
-              <div className="empty-icon">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M9 7H6a2 2 0 00-2 2v9a2 2 0 002 2h9a2 2 0 002-2v-3M9 12h6m-3-3v6M16 3h5v5M21 3l-7 7" /></svg>
-              </div>
-              <p>Completează salariul pentru a genera fluturașul</p>
-              <span className="empty-hint">Actualizat la grila fiscală 2026 (Minim: 4.050 lei)</span>
+            <div className="results-wrapper skeleton" aria-label="Schelet fluturaș, neinițializat">
+              <table className="payslip-table flat-table">
+                <thead>
+                  <tr>
+                    <th>Indicator Fiscal</th>
+                    <th>Sumă</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="row-bright">
+                    <td>Salariu de încadrare (Brut)</td>
+                    <td aria-hidden="true">—</td>
+                  </tr>
+                  <tr className="sub-row indent">
+                    <td><span className="muted">CAS (Pensii - 25%)</span></td>
+                    <td aria-hidden="true">—</td>
+                  </tr>
+                  <tr className="sub-row indent">
+                    <td><span className="muted">CASS (Sănătate - 10%)</span></td>
+                    <td aria-hidden="true">—</td>
+                  </tr>
+                  <tr className="row-base">
+                    <td>Bază calcul impozit</td>
+                    <td aria-hidden="true">—</td>
+                  </tr>
+                  <tr className="sub-row indent">
+                    <td><span className="muted">Impozit pe venit (10%)</span></td>
+                    <td aria-hidden="true">—</td>
+                  </tr>
+                  <tr className="total-retineri">
+                    <td>Total Rețineri Angajat</td>
+                    <td aria-hidden="true">—</td>
+                  </tr>
+                  <tr className="total-net">
+                    <td>SALARIU NET</td>
+                    <td aria-hidden="true">—</td>
+                  </tr>
+                </tbody>
+                <tbody>
+                  <tr className="spacer-row" aria-hidden="true">
+                    <td colSpan={2}></td>
+                  </tr>
+                </tbody>
+                <tbody>
+                  <tr>
+                    <td>CAM (Contribuție Muncă - 2.25%)</td>
+                    <td aria-hidden="true">—</td>
+                  </tr>
+                  <tr className="total-cost">
+                    <td>COST TOTAL ANGAJATOR</td>
+                    <td aria-hidden="true">—</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p className="skeleton-hint">
+                Completează salariul brut pentru a genera fluturașul · Grila fiscală 2026 (minim: 4.050 lei)
+              </p>
             </div>
           )}
         </div>

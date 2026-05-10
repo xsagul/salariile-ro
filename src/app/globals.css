@@ -771,32 +771,38 @@ select:focus { border-color: var(--accent); }
   transform: translateY(1px);
 }
 
-/* ─── Empty state (Design Plat) ──────────────────────────────────────────── */
-.empty-card {
-  text-align: center;
-  padding: var(--s-16) var(--s-8);
-  color: var(--muted);
-  border: 1px dashed var(--border-strong);
-  border-radius: 0;
-  background: var(--surface-bright);
+/* ─── Empty state (skeleton — schelet de tabel cu valori muted) ─────────── */
+.results-wrapper.skeleton .flat-table td {
+  color: var(--muted-soft);
 }
-
-.empty-icon { 
-  margin-bottom: var(--s-4); 
-  opacity: 0.6; 
+.results-wrapper.skeleton .flat-table tr.row-bright td,
+.results-wrapper.skeleton .flat-table tr.row-base td {
+  color: var(--muted-soft);
+  font-weight: var(--fw-normal);
+}
+.results-wrapper.skeleton .flat-table tr.total-retineri td,
+.results-wrapper.skeleton .flat-table tr.total-cost td {
+  color: var(--muted-soft);
+  font-weight: var(--fw-normal);
+}
+.results-wrapper.skeleton .flat-table tr.total-net td {
+  background-color: var(--surface-alt);
+  color: var(--muted-soft);
+  border-color: var(--border);
+}
+/* override .muted spans inside skeleton — altfel ar fi mai închise decât celulele bare */
+.results-wrapper.skeleton .flat-table .muted {
   color: var(--muted-soft);
 }
 
-.empty-card p { 
-  font-size: var(--fs-sm); 
-  font-weight: var(--fw-medium); 
-  margin-bottom: var(--s-2); 
-  color: var(--text); 
-}
-
-.empty-hint { 
-  font-size: var(--fs-xs); 
-  color: var(--muted); 
+.skeleton-hint {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: var(--fs-xs);
+  color: var(--muted-soft);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-wide);
+  margin-top: var(--s-4);
+  line-height: var(--lh-base);
 }
 
 /* ─── Section surfaces ───────────────────────────────────────────────────── */
