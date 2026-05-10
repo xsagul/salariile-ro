@@ -393,8 +393,11 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
   width: 100%;
 }
 
-.calc-column + .calc-column {
-  border-left: 1px solid var(--border);
+/* Vertical divider între cele 2 coloane lipite — DOAR pe desktop */
+@media (min-width: 769px) {
+  .calc-column + .calc-column {
+    border-left: 1px solid var(--border);
+  }
 }
 
 .calc-column-header {
@@ -410,16 +413,13 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
 @media (max-width: 768px) {
   .calc-layout { 
     grid-template-columns: 1fr;
+    gap: var(--s-4);                              /* spațiu între casete */
+    border: none;                                  /* scoatem outer border — îl preluăm pe casete */
   }
   .calc-column {
-    /* mobile: scoatem padding-ul orizontal — strângea tabelul.
-       sus/jos rămâne --s-6 ca pe desktop. */
-    padding-left: 0;
-    padding-right: 0;
-  }
-  .calc-column + .calc-column {
-    border-left: none;
-    border-top: 1px solid var(--border);
+    /* mobile: fiecare coloană e o casetă independentă cu border propriu */
+    padding: var(--s-4);
+    border: 1px solid var(--border-strong);
   }
   .nav-desktop { display: none; }
   .hamburger { display: flex; }
