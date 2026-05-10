@@ -387,7 +387,6 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
 .calc-column {
   padding: var(--s-6);
   min-width: 0;
-  border: 1px solid var(--border-strong);
 }
 
 .calc-column > * {
