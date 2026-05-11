@@ -9,13 +9,17 @@ import Link from "next/link";
 const IMPLEMENTED_PAGES = new Set<string>([
   "/",
   "/salariu-minim",
-  // Adaugă pe măsură ce construiești:
   "/salariu-mediu",
+  "/despre",
+  "/metodologie",
+  "/contact",
+  "/politica-confidentialitate",
+  "/cookies",
+  "/termeni",
+  // Adaugă pe măsură ce construiești:
   // "/calculator-pfa",
   // "/calculator-concediu",
   // "/noutati",
-  // "/politica-confidentialitate",
-  // "/termeni",
 ]);
 
 type FooterLink = { href: string; label: string };
@@ -38,9 +42,18 @@ const FOOTER_GROUPS: Array<{ title: string; links: FooterLink[] }> = [
     ],
   },
   {
+    title: "Despre",
+    links: [
+      { href: "/despre", label: "Despre proiect" },
+      { href: "/metodologie", label: "Metodologie de calcul" },
+      { href: "/contact", label: "Contact" },
+    ],
+  },
+  {
     title: "Legal",
     links: [
-      { href: "/politica-confidentialitate", label: "Politică confidențialitate" },
+      { href: "/politica-confidentialitate", label: "Politica de confidențialitate" },
+      { href: "/cookies", label: "Politica cookies" },
       { href: "/termeni", label: "Termeni și condiții" },
     ],
   },
