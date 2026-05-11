@@ -418,9 +418,12 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
   }
   .calc-column {
     /* mobile: fiecare coloană e o casetă independentă cu border propriu */
-    padding: var(--s-4);
+    padding: var(--s-3);
     border: 1px solid var(--border-strong);
   }
+  /* mobile: padding container redus la --s-3 (12px) — câștigă spațiu pentru tabel */
+  .container { padding: 0 var(--s-3); }
+  .container-narrow { padding: 0 var(--s-3); }
   .nav-desktop { display: none; }
   .hamburger { display: flex; }
   
