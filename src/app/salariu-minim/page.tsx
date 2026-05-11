@@ -8,9 +8,9 @@ import Link from "next/link";
 // ─── Metadata SEO ────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "Salariul minim brut 2026: 4.050 → 4.325 lei | Calcul net, cost angajator, surse oficiale",
+  title: "Salariul minim 2026: cât e net și cât plătește angajatorul",
   description:
-    "Salariul minim brut pe țară în 2026: 4.050 lei până la 30 iunie, 4.325 lei din 1 iulie 2026 (HG 146/2026). Net 2.574 / 2.699 lei, cost angajator 4.134 / 4.418 lei, plafoane fiscale și obligații pentru angajatori.",
+    "Salariul minim brut e 4.050 lei până la 30 iunie și 4.325 lei după (HG 146/2026). Vezi cât rămâne net (2.574 → 2.699 lei) și cât plătește total angajatorul.",
   keywords: [
     "salariu minim 2026",
     "salariu minim brut 2026",
