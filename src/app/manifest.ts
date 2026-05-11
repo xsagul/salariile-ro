@@ -1,20 +1,24 @@
-import { MetadataRoute } from 'next'
+// src/app/manifest.ts
+// Next.js file convention — generează /manifest.webmanifest automat la build.
+// Înregistrat ca <link rel="manifest"> în <head> fără configurare suplimentară.
+
+import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Salariile.ro - Calculator Salariu 2026',
-    short_name: 'Salariile.ro',
-    description: 'Calculator salarii conform legislației 2026',
-    start_url: '/',
-    display: 'standalone',
-    background_color: '#ffffff',
-    theme_color: '#22c55e',
+    name: "Salariile.ro — Calculator salariu net 2026",
+    short_name: "salariile.ro",
+    description:
+      "Calculator salariu net din brut 2026, salariu minim, salariu mediu, informații fiscale România.",
+    start_url: "/",
+    display: "standalone",
+    background_color: "#ffffff",
+    theme_color: "#111111",
+    lang: "ro-RO",
     icons: [
-      {
-        src: '/favicon.ico',
-        sizes: 'any',
-        type: 'image/x-icon',
-      },
+      { src: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { src: "/icon-512.png", sizes: "512x512", type: "image/png" },
+      { src: "/icon-maskable-512.png", sizes: "512x512", type: "image/png", purpose: "maskable" },
     ],
-  }
+  };
 }
