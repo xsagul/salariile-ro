@@ -11,11 +11,53 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://salariile.ro/metodologie" },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Acasă", item: "https://salariile.ro" },
+        { "@type": "ListItem", position: 2, name: "Metodologie", item: "https://salariile.ro/metodologie" },
+      ],
+    },
+    {
+      "@type": "TechArticle",
+      headline: "Metodologie de calcul salariu net 2026",
+      description:
+        "Formulele complete și sursele legislative folosite de calculatorul salariile.ro: CAS 25%, CASS 10%, impozit 10%, CAM 2,25%, deducere personală art. 77 Cod Fiscal, facilitate OUG 89/2025.",
+      url: "https://salariile.ro/metodologie",
+      inLanguage: "ro-RO",
+      author: {
+        "@type": "Person",
+        name: "Știuriuc Sorin-Marian",
+        jobTitle: "Dezvoltator front-end",
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "Salariile.ro",
+        url: "https://salariile.ro",
+      },
+      dateModified: "2026-04-30",
+      proficiencyLevel: "Expert",
+      about: [
+        { "@type": "Thing", name: "Codul Fiscal Legea 227/2015" },
+        { "@type": "Thing", name: "Codul Muncii Legea 53/2003" },
+        { "@type": "Thing", name: "HG 146/2026" },
+        { "@type": "Thing", name: "OUG 89/2025" },
+      ],
+      mainEntityOfPage: "https://salariile.ro/metodologie",
+    },
+  ],
+};
+
 const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(n);
 
 export default function MetodologiePage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+
       <section className="hero">
         <div className="container">
           <nav className="breadcrumb">

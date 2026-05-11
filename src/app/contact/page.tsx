@@ -11,9 +11,38 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://salariile.ro/contact" },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Acasă", item: "https://salariile.ro" },
+        { "@type": "ListItem", position: 2, name: "Contact", item: "https://salariile.ro/contact" },
+      ],
+    },
+    {
+      "@type": "ContactPage",
+      name: "Contact Salariile.ro",
+      description:
+        "Pagina de contact pentru salariile.ro — email, subiecte potrivite și limitări declarate.",
+      url: "https://salariile.ro/contact",
+      inLanguage: "ro-RO",
+      mainEntity: {
+        "@type": "Person",
+        name: "Știuriuc Sorin-Marian",
+        email: "contact@salariile.ro",
+        jobTitle: "Întreține salariile.ro",
+      },
+    },
+  ],
+};
+
 export default function ContactPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+
       <section className="hero">
         <div className="container">
           <nav className="breadcrumb">

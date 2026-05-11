@@ -11,9 +11,43 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://salariile.ro/termeni" },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Acasă", item: "https://salariile.ro" },
+        { "@type": "ListItem", position: 2, name: "Termeni și condiții", item: "https://salariile.ro/termeni" },
+      ],
+    },
+    {
+      "@type": "WebPage",
+      name: "Termeni și condiții salariile.ro",
+      description:
+        "Termenii de utilizare a salariile.ro: caracter informativ al conținutului, limitări de răspundere, drepturi de autor, soluționare litigii.",
+      url: "https://salariile.ro/termeni",
+      inLanguage: "ro-RO",
+      lastReviewed: "2026-05-11",
+      reviewedBy: {
+        "@type": "Person",
+        name: "Știuriuc Sorin-Marian",
+      },
+      isPartOf: {
+        "@type": "WebSite",
+        name: "Salariile.ro",
+        url: "https://salariile.ro",
+      },
+      specialty: "Terms of Service",
+    },
+  ],
+};
+
 export default function TermeniPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+
       <section className="hero">
         <div className="container">
           <nav className="breadcrumb">

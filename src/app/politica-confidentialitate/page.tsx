@@ -12,9 +12,48 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Acasă", item: "https://salariile.ro" },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Politica de confidențialitate",
+          item: "https://salariile.ro/politica-confidentialitate",
+        },
+      ],
+    },
+    {
+      "@type": "WebPage",
+      name: "Politica de confidențialitate salariile.ro",
+      description:
+        "Politica GDPR a salariile.ro: date colectate (logs server, analytics anonime Vercel), bază legală interes legitim, drepturile vizitatorilor, autoritate ANSPDCP.",
+      url: "https://salariile.ro/politica-confidentialitate",
+      inLanguage: "ro-RO",
+      lastReviewed: "2026-05-11",
+      reviewedBy: {
+        "@type": "Person",
+        name: "Știuriuc Sorin-Marian",
+      },
+      isPartOf: {
+        "@type": "WebSite",
+        name: "Salariile.ro",
+        url: "https://salariile.ro",
+      },
+      specialty: "Privacy Policy",
+    },
+  ],
+};
+
 export default function PoliticaConfidentialitatePage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+
       <section className="hero">
         <div className="container">
           <nav className="breadcrumb">
@@ -37,7 +76,7 @@ export default function PoliticaConfidentialitatePage() {
           <div className="container">
             <h2>1. Operatorul de date</h2>
             <p>
-              Acest site este întreținut individual ca proiect personal de către Sorin, persoană fizică din România. Pentru orice cerere privind datele tale personale, poți folosi adresa de email de pe pagina de <Link href="/contact">contact</Link>.
+              Acest site este întreținut individual ca proiect personal de către Știuriuc Sorin-Marian, persoană fizică din România. Pentru orice cerere privind datele tale personale, poți folosi adresa de email de pe pagina de <Link href="/contact">contact</Link>.
             </p>
             <p>
               Nu există companie, PFA sau SRL în spatele site-ului. Operatorul de date este persoana fizică ce întreține site-ul.

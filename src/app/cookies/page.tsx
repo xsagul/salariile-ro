@@ -11,9 +11,43 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://salariile.ro/cookies" },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Acasă", item: "https://salariile.ro" },
+        { "@type": "ListItem", position: 2, name: "Politica cookies", item: "https://salariile.ro/cookies" },
+      ],
+    },
+    {
+      "@type": "WebPage",
+      name: "Politica cookies salariile.ro",
+      description:
+        "Salariile.ro este cookieless prin design — fără cookies de tracking, analiză comportamentală sau publicitate.",
+      url: "https://salariile.ro/cookies",
+      inLanguage: "ro-RO",
+      lastReviewed: "2026-05-11",
+      reviewedBy: {
+        "@type": "Person",
+        name: "Știuriuc Sorin-Marian",
+      },
+      isPartOf: {
+        "@type": "WebSite",
+        name: "Salariile.ro",
+        url: "https://salariile.ro",
+      },
+      specialty: "Cookies Policy",
+    },
+  ],
+};
+
 export default function CookiesPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+
       <section className="hero">
         <div className="container">
           <nav className="breadcrumb">

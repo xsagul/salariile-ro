@@ -11,9 +11,44 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://salariile.ro/despre" },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Acasă", item: "https://salariile.ro" },
+        { "@type": "ListItem", position: 2, name: "Despre", item: "https://salariile.ro/despre" },
+      ],
+    },
+    {
+      "@type": "AboutPage",
+      name: "Despre salariile.ro",
+      description:
+        "Pagina Despre a salariile.ro: cine întreține proiectul, motivația, metodologia de menținere a acurateței.",
+      url: "https://salariile.ro/despre",
+      inLanguage: "ro-RO",
+      mainEntity: {
+        "@type": "Person",
+        name: "Știuriuc Sorin-Marian",
+        jobTitle: "Dezvoltator front-end",
+        description:
+          "Întreține salariile.ro ca proiect personal independent de transparență fiscală pentru România.",
+      },
+      isPartOf: {
+        "@type": "WebSite",
+        name: "Salariile.ro",
+        url: "https://salariile.ro",
+      },
+    },
+  ],
+};
+
 export default function DesprePage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+
       <section className="hero">
         <div className="container">
           <nav className="breadcrumb">
@@ -36,7 +71,7 @@ export default function DesprePage() {
           <div className="container">
             <h2>Cine întreține site-ul</h2>
             <p>
-              Mă numesc Sorin și sunt dezvoltator front-end. Construiesc și mențin singur salariile.ro ca proiect personal — nu există echipă, agenție sau firmă în spate.
+              Mă numesc Știuriuc Sorin-Marian și sunt dezvoltator front-end. Construiesc și mențin singur salariile.ro ca proiect personal — nu există echipă, agenție sau firmă în spate.
             </p>
             <p>
               Nu sunt contabil sau consultant fiscal. Sunt programator care a citit Codul Fiscal și a implementat formulele publice de calcul al salariului net. Diferența contează — informațiile de pe acest site sunt acurate fiscal pentru cazul standard, dar pentru situații individuale complexe (sporuri specifice, beneficii nesalariale, scutiri sectoriale, contracte cu clauze speciale) calculatorul nu poate înlocui un contabil sau un expert fiscal.
