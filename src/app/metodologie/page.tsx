@@ -31,7 +31,7 @@ const jsonLd = {
       author: {
         "@type": "Person",
         name: "Știuriuc Sorin-Marian",
-        jobTitle: "Dezvoltator front-end",
+        jobTitle: "Dezvoltator full-stack",
       },
       publisher: {
         "@type": "Organization",

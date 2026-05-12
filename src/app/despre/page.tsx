@@ -31,7 +31,7 @@ const jsonLd = {
       mainEntity: {
         "@type": "Person",
         name: "Știuriuc Sorin-Marian",
-        jobTitle: "Dezvoltator front-end",
+        jobTitle: "Dezvoltator full-stack",
         description:
           "Întreține salariile.ro ca proiect personal independent de transparență fiscală pentru România.",
       },
@@ -71,7 +71,7 @@ export default function DesprePage() {
           <div className="container">
             <h2>Cine întreține site-ul</h2>
             <p>
-              Mă numesc Știuriuc Sorin-Marian și sunt dezvoltator front-end. Construiesc și mențin singur salariile.ro ca proiect personal — nu există echipă, agenție sau firmă în spate.
+              Mă numesc Știuriuc Sorin-Marian și sunt dezvoltator full-stack. Construiesc și mențin singur salariile.ro ca proiect personal — nu există echipă, agenție sau firmă în spate.
             </p>
             <p>
               Nu sunt contabil sau consultant fiscal. Sunt programator care a citit Codul Fiscal și a implementat formulele publice de calcul al salariului net. Diferența contează — informațiile de pe acest site sunt acurate fiscal pentru cazul standard, dar pentru situații individuale complexe (sporuri specifice, beneficii nesalariale, scutiri sectoriale, contracte cu clauze speciale) calculatorul nu poate înlocui un contabil sau un expert fiscal.
