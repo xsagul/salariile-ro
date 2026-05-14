@@ -105,7 +105,7 @@ export default function MetodologiePage() {
             <p>
               Pentru un salariu brut B, deducere personală D (calculată conform regulilor) și o eventuală sumă netaxabilă F (facilitate OUG 89/2025 aplicabilă doar salariului minim):
             </p>
-            <table className="flat-table">
+            <div className="table-scroll"><table className="flat-table">
               <thead>
                 <tr>
                   <th>Pas</th>
@@ -147,7 +147,7 @@ export default function MetodologiePage() {
                   <td>Cost = B + CAM</td>
                 </tr>
               </tbody>
-            </table>
+            </table></div>
             <p className="source-note">
               Suma netaxabilă F este 0 pentru salarii peste nivelul minim. Pentru salariul minim brut în 2026 se aplică OUG 89/2025: 300 lei (ianuarie – iunie), 200 lei (iulie – decembrie).
             </p>
@@ -157,7 +157,7 @@ export default function MetodologiePage() {
         <section className="article-section">
           <div className="container">
             <h2>Sursele normative pentru fiecare componentă</h2>
-            <table className="flat-table">
+            <div className="table-scroll"><table className="flat-table">
               <thead>
                 <tr>
                   <th>Componentă</th>
@@ -207,7 +207,7 @@ export default function MetodologiePage() {
                   <td>HG 146/2026 (MO 196/13.03.2026)</td>
                 </tr>
               </tbody>
-            </table>
+            </table></div>
           </div>
         </section>
 

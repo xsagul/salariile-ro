@@ -1227,6 +1227,13 @@ select:focus { border-color: var(--accent); }
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
+/* Pe mobil: celulele nu se mai îmbârligă — tabelul scrollează orizontal curat */
+@media (max-width: 768px) {
+  .table-scroll .flat-table td,
+  .table-scroll .flat-table th {
+    white-space: nowrap;
+  }
+}
 
 /* Listă în articole (cu indent și culoare muted) */
 .article-list {

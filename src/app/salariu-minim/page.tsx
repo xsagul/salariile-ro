@@ -141,7 +141,7 @@ export default function SalariuMinimPage() {
         <section className="article-section">
           <div className="container">
             <h2>Cifre esențiale 2026</h2>
-            <table className="flat-table">
+            <div className="table-scroll"><table className="flat-table">
               <thead>
                 <tr>
                   <th>Indicator</th>
@@ -181,7 +181,7 @@ export default function SalariuMinimPage() {
                   <td>{fmt(4418)} lei</td>
                 </tr>
               </tbody>
-            </table>
+            </table></div>
             <p className="source-note">
               Surse: <a href="https://legislatie.just.ro" target="_blank" rel="noopener">HG 1506/2024</a> (S1), <a href="https://legislatie.just.ro" target="_blank" rel="noopener">HG 146/2026</a> (S2), OUG 89/2025.
             </p>
@@ -225,7 +225,7 @@ export default function SalariuMinimPage() {
             <p>
               Din salariul brut se rețin trei contribuții obligatorii: CAS 25% (pensie), CASS 10% (sănătate) și impozit pe venit 10%. Pentru salariații la nivelul salariului minim, cu funcția de bază și normă întreagă, o sumă fixă este scutită de taxe — facilitatea OUG 89/2025.
             </p>
-            <table className="flat-table">
+            <div className="table-scroll"><table className="flat-table">
               <thead>
                 <tr>
                   <th>Etapă calcul</th>
@@ -296,7 +296,7 @@ export default function SalariuMinimPage() {
                   <td>4.418,00 lei</td>
                 </tr>
               </tbody>
-            </table>
+            </table></div>
             <p className="source-note">
               Rotunjirile finale sunt la nivelul leului. Calculatorul aplică formulele complete conform Codului Fiscal (Legea 227/2015) și sincronizat cu Declarația 112 ANAF. Vezi <Link href="/calculator/calcul-salariu-net-4050-brut">calculul detaliat pentru 4.050 lei brut</Link> sau folosește <Link href="/">calculatorul principal</Link> pentru orice altă sumă.
             </p>
@@ -310,7 +310,7 @@ export default function SalariuMinimPage() {
             <p>
               Pe lângă salariul minim general, sectorul construcțiilor are propriul salariu minim sectorial, stabilit la un nivel superior pentru a reflecta specificul activităților:
             </p>
-            <table className="flat-table">
+            <div className="table-scroll"><table className="flat-table">
               <thead>
                 <tr>
                   <th>Sector</th>
@@ -330,7 +330,7 @@ export default function SalariuMinimPage() {
                   <td>Legea 50/1991, OUG 114/2018</td>
                 </tr>
               </tbody>
-            </table>
+            </table></div>
             <p>
               HG 146/2026 menționează explicit că nu modifică salariile minime sectoriale. Valoarea de 4.582 lei pentru construcții rămâne în vigoare pe tot parcursul anului 2026.
             </p>
@@ -374,7 +374,7 @@ export default function SalariuMinimPage() {
             <p>
               Multe limite din legislația fiscală sunt definite ca multipli ai salariului minim brut. Pentru anul fiscal 2026, se aplică salariul minim în vigoare la <strong>1 ianuarie 2026 — 4.050 lei</strong>. Majorarea la 4.325 lei din 1 iulie 2026 nu afectează plafoanele anuale pentru veniturile din 2026.
             </p>
-            <table className="flat-table">
+            <div className="table-scroll"><table className="flat-table">
               <thead>
                 <tr>
                   <th>Plafon</th>
@@ -419,7 +419,7 @@ export default function SalariuMinimPage() {
                   <td>2.163 lei lunar</td>
                 </tr>
               </tbody>
-            </table>
+            </table></div>
             <p className="source-note">
               Plafonul deducerii personale la salarii folosește salariul minim al lunii în care se calculează venitul (6.050 lei până în iunie, 6.325 lei din iulie). Restul plafoanelor anuale rămân ancorate la valoarea de 1 ianuarie.
             </p>
@@ -430,7 +430,7 @@ export default function SalariuMinimPage() {
         <section className="article-section">
           <div className="container">
             <h2>Evoluția salariului minim 2019 – 2026</h2>
-            <table className="flat-table">
+            <div className="table-scroll"><table className="flat-table">
               <thead>
                 <tr>
                   <th>Perioadă</th>
@@ -453,7 +453,7 @@ export default function SalariuMinimPage() {
                   </tr>
                 ))}
               </tbody>
-            </table>
+            </table></div>
             <p className="source-note">
               Valorile nete sunt calculate fără facilitatea fiscală de 300/200 lei (introdusă în 2024 și menținută pentru salariul minim). Cu facilitate, netul efectiv este mai mare cu aproximativ 100–150 lei pe perioada de aplicare.
             </p>

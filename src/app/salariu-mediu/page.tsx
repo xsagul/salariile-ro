@@ -141,7 +141,7 @@ export default function SalariuMediuPage() {
         <section className="article-section">
           <div className="container">
             <h2>Cifre esențiale 2026</h2>
-            <table className="flat-table">
+            <div className="table-scroll"><table className="flat-table">
               <thead>
                 <tr>
                   <th>Indicator</th>
@@ -181,7 +181,7 @@ export default function SalariuMediuPage() {
                   <td>Față de Legea 313/2024</td>
                 </tr>
               </tbody>
-            </table>
+            </table></div>
             <p className="source-note">
               Legea 44/2026 a fost publicată în Monitorul Oficial pe 27 martie 2026 și a intrat în vigoare începând cu 30 martie 2026. Până la acea dată, în primele luni ale anului 2026, s-a aplicat valoarea anterioară (8.620 lei).
             </p>
@@ -237,7 +237,7 @@ export default function SalariuMediuPage() {
             <p>
               Pentru un salariu brut egal cu salariul mediu pe economie, deducerea personală nu se aplică (plafonul este 6.325 lei brut în S2 2026). Toate contribuțiile se calculează la nivelul integral al brutului.
             </p>
-            <table className="flat-table">
+            <div className="table-scroll"><table className="flat-table">
               <thead>
                 <tr>
                   <th>Etapă calcul</th>
@@ -287,7 +287,7 @@ export default function SalariuMediuPage() {
                   <td>~9.399 lei</td>
                 </tr>
               </tbody>
-            </table>
+            </table></div>
             <p className="source-note">
               Calcul standard fără sporuri, fără tichete de masă și fără alte beneficii. Pentru salarii la nivelul mediei, scutirea pentru personal cu copii sau alte deduceri specifice pot ajusta netul. Vezi <Link href="/calculator/calcul-salariu-net-9000-brut">calculul detaliat pentru 9.000 lei brut</Link> sau <Link href="/calculator/calcul-salariu-net-10000-brut">10.000 lei brut</Link>.
             </p>
@@ -322,7 +322,7 @@ export default function SalariuMediuPage() {
         <section className="article-section">
           <div className="container">
             <h2>Evoluția salariului mediu 2020 – 2026</h2>
-            <table className="flat-table">
+            <div className="table-scroll"><table className="flat-table">
               <thead>
                 <tr>
                   <th>Anul</th>
@@ -341,7 +341,7 @@ export default function SalariuMediuPage() {
                   </tr>
                 ))}
               </tbody>
-            </table>
+            </table></div>
             <p className="source-note">
               Valoarea pentru 2021 a fost mai mică decât 2020 din cauza ajustărilor metodologice impuse de pandemia COVID-19. Începând cu 2022, creșterea a fost stabilă, în corelație cu inflația și politica salarială.
             </p>
@@ -355,7 +355,7 @@ export default function SalariuMediuPage() {
             <p>
               Conform variantei de toamnă 2025 a Prognozei Comisiei Naționale de Strategie și Prognoză, evoluția estimată pentru perioada 2027 – 2028 este:
             </p>
-            <table className="flat-table">
+            <div className="table-scroll"><table className="flat-table">
               <thead>
                 <tr>
                   <th>Anul</th>
@@ -374,7 +374,7 @@ export default function SalariuMediuPage() {
                   </tr>
                 ))}
               </tbody>
-            </table>
+            </table></div>
             <p className="source-note">
               Acestea sunt estimări CNSP, nu valori oficiale legale. Valoarea oficială pentru fiecare an se stabilește prin legea bugetului asigurărilor sociale aprobată anual.
             </p>
