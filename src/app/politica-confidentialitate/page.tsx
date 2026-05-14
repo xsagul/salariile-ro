@@ -34,17 +34,12 @@ const jsonLd = {
         "Politica GDPR a salariile.ro: date colectate (logs server, analytics anonime Vercel), bază legală interes legitim, drepturile vizitatorilor, autoritate ANSPDCP.",
       url: "https://salariile.ro/politica-confidentialitate",
       inLanguage: "ro-RO",
-      lastReviewed: "2026-05-11",
-      reviewedBy: {
-        "@type": "Person",
-        name: "Știuriuc Sorin-Marian",
-      },
+      dateModified: "2026-05-11",
       isPartOf: {
         "@type": "WebSite",
         name: "Salariile.ro",
         url: "https://salariile.ro",
       },
-      specialty: "Privacy Policy",
     },
   ],
 };
@@ -96,7 +91,7 @@ export default function PoliticaConfidentialitatePage() {
                 <strong>Adresa IP, user agent, URL accesat, data și ora vizitei</strong> — colectate automat de către infrastructura de hosting (Vercel) pentru fiecare cerere HTTP. Folosite pentru securitate (detectare abuz, atacuri automate) și debugging. Păstrate maximum 30 de zile.
               </li>
               <li>
-                <strong>Metrici de performanță anonime</strong> — prin Vercel Speed Insights se înregistrează indicatori tehnici (timp de încărcare, Core Web Vitals) pentru îmbunătățirea site-ului. Datele sunt agregate și nu pot identifica un vizitator individual.
+                <strong>Metrici de performanță anonime</strong> — prin Vercel Speed Insights se înregistrează indicatori tehnici (timp de încărcare, Core Web Vitals) pentru îmbunătățirea site-ului. Speed Insights este cookieless (folosește <code>sendBeacon</code> pentru transmisia anonimă a metricilor), datele sunt agregate și nu pot identifica un vizitator individual.
               </li>
               <li>
                 <strong>Statistici de vizitare anonime</strong> — prin Vercel Web Analytics se contorizează numărul de vizite, paginile cele mai accesate și țara de origine (la nivel general). Nu se folosesc cookies pentru această analiză, datele sunt complet anonime și nu se transferă către terți.

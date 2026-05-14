@@ -28,17 +28,12 @@ const jsonLd = {
         "Salariile.ro este cookieless prin design — fără cookies de tracking, analiză comportamentală sau publicitate.",
       url: "https://salariile.ro/cookies",
       inLanguage: "ro-RO",
-      lastReviewed: "2026-05-11",
-      reviewedBy: {
-        "@type": "Person",
-        name: "Știuriuc Sorin-Marian",
-      },
+      dateModified: "2026-05-11",
       isPartOf: {
         "@type": "WebSite",
         name: "Salariile.ro",
         url: "https://salariile.ro",
       },
-      specialty: "Cookies Policy",
     },
   ],
 };
