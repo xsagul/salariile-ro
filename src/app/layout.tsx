@@ -21,11 +21,11 @@ const figtree = Figtree({
 export const metadata: Metadata = {
   metadataBase: new URL("https://salariile.ro"),
   title: {
-    default: "Salariile.ro — Calculator Salariu Net, Informații Salariale România",
+    default: "Calculator Salariu Net 2026 — Brut în Net | Salariile.ro",
     template: "%s | Salariile.ro",
   },
   description:
-    "Calculator salariu net din brut 2026, salariu minim, salariu mediu și noutăți legislative. Totul despre salariile din România.",
+    "Calculează salariul net din brut în 2026: CAS, CASS, impozit și cost angajator. Actualizat conform HG 146/2026. Rapid, gratuit, fără cont.",
   authors: [{ name: "Salariile.ro" }],
   creator: "Salariile.ro",
   openGraph: {
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     locale: "ro_RO",
     url: "https://salariile.ro",
     siteName: "Salariile.ro",
-    title: "Salariile.ro — Calculator Salariu Net 2026",
+    title: "Calculator Salariu Net 2026 — Salariile.ro",
     description:
       "Calculator salariu net, informații despre salariul minim și mediu în România.",
     images: [
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Salariile.ro — Calculator Salariu Net 2026",
+    title: "Calculator Salariu Net 2026 — Salariile.ro",
     description: "Calculează salariul net din brut în câteva secunde.",
     images: ["/og-image.png"],
   },

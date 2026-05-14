@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Politica cookies: salariile.ro nu folosește cookies de tracking",
+  title: "Politica de cookies — fără tracking",
   description:
     "Salariile.ro este conceput cookieless. Nu folosim cookies pentru analiză, publicitate sau tracking. Detalii complete despre poziția noastră.",
   alternates: { canonical: "https://salariile.ro/cookies" },

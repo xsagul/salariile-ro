@@ -8,9 +8,9 @@ import Link from "next/link";
 // ─── Metadata SEO ────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "Salariul mediu pe economie 2026: cât e brut și net",
+  title: "Salariul mediu pe economie 2026: brut și net",
   description:
-    "Câștigul salarial mediu brut pe economie în 2026 este 9.192 lei (~5.377 lei net), conform Legii 44/2026. Vezi pentru ce se folosește și evoluția istorică.",
+    "Salariul mediu brut pe economie în 2026 este 9.192 lei (~5.377 lei net), conform Legii 44/2026. Vezi evoluția istorică și la ce se folosește.",
   keywords: [
     "salariu mediu 2026",
     "salariu mediu brut 2026",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://salariile.ro/salariu-mediu" },
   openGraph: {
-    title: "Salariul mediu pe economie 2026: cât e brut și net",
+    title: "Salariul mediu pe economie 2026: brut și net",
     description: "Valoarea oficială a salariului mediu brut pentru 2026 conform Legii 44/2026: 9.192 lei brut, ~5.377 lei net.",
     url: "https://salariile.ro/salariu-mediu",
   },

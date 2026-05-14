@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Despre proiect: cine întreține salariile.ro",
+  title: "Despre proiect: cine întreține site-ul",
   description:
     "Salariile.ro e un proiect independent de transparență fiscală pentru România. Aici găsești cine îl întreține, de ce a apărut și cum se mențin calculele actualizate.",
   alternates: { canonical: "https://salariile.ro/despre" },

@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Contact: cum să raportezi erori sau să sugerezi pagini noi",
+  title: "Contact — raportează erori sau sugestii",
   description:
     "Pagina de contact pentru salariile.ro. Folosește email-ul de mai jos pentru a raporta erori de calcul, a sugera funcționalități noi sau pentru cereri privind datele personale.",
   alternates: { canonical: "https://salariile.ro/contact" },

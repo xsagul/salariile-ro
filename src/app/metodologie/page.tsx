@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Metodologie de calcul: cum funcționează calculatorul salariile.ro",
+  title: "Metodologie de calcul salariu net 2026",
   description:
     "Documentația completă a formulelor și surselor folosite de calculatorul salariile.ro pentru anul 2026: CAS, CASS, impozit, deducere personală, CAM, facilitate OUG 89/2025.",
   alternates: { canonical: "https://salariile.ro/metodologie" },
