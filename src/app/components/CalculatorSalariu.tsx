@@ -28,6 +28,10 @@ interface Rezultat {
 
 // ─── Logică fiscală 2026 ──────────────────────────────────────────────────────
 
+// ⚠️ DE SCHIMBAT MANUAL LA 1 IULIE 2026 (trecere S1 → S2, conform HG 146/2026 + OUG 89/2025):
+//   SALARIU_MINIM:   4050 → 4325
+//   DEDUCERE_MINIM:   300 → 200
+//   Plafonul deducerii personale (SALARIU_MINIM + 2000) se ajustează automat: 6050 → 6325.
 const SALARIU_MINIM = 4050;
 const CAS_PROCENT = 0.25;
 const CASS_PROCENT = 0.10;

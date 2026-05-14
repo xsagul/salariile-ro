@@ -149,7 +149,7 @@ function getContextNet(v: number): Context {
     return {
       pozitie: <>Netul de <strong>{fmt(v)} lei</strong> corespunde aproximativ <Link href="/salariu-minim">salariului minim pe economie</Link>: în 2026, minimul net este 2.574 lei (S1) și 2.699 lei (S2). Acest nivel reprezintă pragul legal minim pe care îl poate primi în mână un angajat cu normă întreagă.</>,
       sectoare: ["Comerț cu amănuntul", "HoReCa entry-level", "Curățenie, mentenanță", "Producție necalificată", "Agricultură", "Securitate, pază"],
-      comparatie: <>Pentru a primi {fmt(v)} lei net în mână, brutul aferent este aproximativ {fmt(aproxBrut)} lei. La nivelul salariului minim, se aplică facilitatea fiscală OUG 89/2025 (300/200 lei netaxabili), care crește netul față de calculul standard. Costul total pentru angajator este aproximativ {fmt(Math.round(aproxBrut * 1.0225))} lei.</>,
+      comparatie: <>Brutul aferent este la nivelul salariului minim — <strong>4.050 lei</strong> în prima jumătate a anului 2026 (net 2.574 lei) sau <strong>4.325 lei</strong> din 1 iulie (net 2.699 lei). Vezi cifra exactă în calculatorul de mai sus. La salariul minim se aplică facilitatea fiscală OUG 89/2025 (300/200 lei netaxabili), care crește netul față de calculul standard. Costul total pentru angajator este 4.134 lei (S1), respectiv 4.418 lei (S2).</>,
       insight: <>Dacă ai un net sub 2.574 lei lucrând cu normă întreagă, există o problemă — fie nu primești corect facilitatea de 300 lei, fie angajatorul nu aplică deducerea personală. Verifică fluturașul și solicită clarificări. Vezi și <Link href="/salariu-minim">drepturile complete asociate salariului minim</Link>.</>,
     };
   }
