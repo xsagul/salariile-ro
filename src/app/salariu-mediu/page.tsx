@@ -97,7 +97,8 @@ const jsonLd = {
       author: { "@type": "Organization", name: "Salariile.ro", url: "https://salariile.ro" },
       publisher: { "@type": "Organization", name: "Salariile.ro" },
       mainEntityOfPage: "https://salariile.ro/salariu-mediu",
-      dateModified: new Date().toISOString(),
+      datePublished: "2026-03-30",
+      dateModified: "2026-04-30",
     },
     {
       "@type": "FAQPage",
@@ -205,7 +206,7 @@ export default function SalariuMediuPage() {
               <li>Indicator macroeconomic pentru analize și raportări către UE</li>
             </ul>
             <p>
-              <strong>Diferența cheie:</strong> salariul minim brut (4.050 → 4.325 lei în 2026) este pragul legal pe care orice angajator trebuie să-l respecte. Salariul mediu brut (9.192 lei în 2026) este o medie statistică — angajatorii nu sunt obligați să ofere această sumă, dar valoarea ei dictează ajutoare și plafoane sociale.
+              <strong>Diferența cheie:</strong> <Link href="/salariu-minim">salariul minim brut</Link> (4.050 → 4.325 lei în 2026) este pragul legal pe care orice angajator trebuie să-l respecte. Salariul mediu brut (9.192 lei în 2026) este o medie statistică — angajatorii nu sunt obligați să ofere această sumă, dar valoarea ei dictează ajutoare și plafoane sociale.
             </p>
           </div>
         </section>
@@ -288,7 +289,7 @@ export default function SalariuMediuPage() {
               </tbody>
             </table>
             <p className="source-note">
-              Calcul standard fără sporuri, fără tichete de masă și fără alte beneficii. Pentru salarii la nivelul mediei, scutirea pentru personal cu copii sau alte deduceri specifice pot ajusta netul.
+              Calcul standard fără sporuri, fără tichete de masă și fără alte beneficii. Pentru salarii la nivelul mediei, scutirea pentru personal cu copii sau alte deduceri specifice pot ajusta netul. Vezi <Link href="/calculator/calcul-salariu-net-9000-brut">calculul detaliat pentru 9.000 lei brut</Link> sau <Link href="/calculator/calcul-salariu-net-10000-brut">10.000 lei brut</Link>.
             </p>
           </div>
         </section>

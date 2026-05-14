@@ -6,8 +6,9 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        // /info e thin content, nu vrem să fie crawlat
-        disallow: ["/api/", "/info"],
+        // /info are noindex on-page (metadata.robots) — îl lăsăm crawlabil ca
+        // Google să citească directiva. Disallow l-ar bloca înainte de citire.
+        disallow: ["/api/"],
       },
     ],
     sitemap: "https://salariile.ro/sitemap.xml",

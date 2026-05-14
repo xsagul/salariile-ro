@@ -1,4 +1,5 @@
 // src/app/page.tsx
+import Link from "next/link";
 import CalculatorSalariu from "@/app/components/CalculatorSalariu";
 
 // 1. Extragem datele pentru a le folosi și în schema ascunsă, și pe ecran
@@ -98,7 +99,7 @@ export default function Page() {
             Din salariul brut se rețin trei contribuții obligatorii: <strong>CAS</strong> (25% pentru pensie), <strong>CASS</strong> (10% pentru sănătate) și <strong>impozitul pe venit</strong> (10%). Pentru salariile sub 6.050 lei brut se aplică o deducere personală care reduce baza de calcul a impozitului.
           </p>
           <p>
-            În plus, pentru salariații plătiți la nivelul salariului minim (4.050 lei brut în prima jumătate a anului 2026, 4.325 lei din 1 iulie), o sumă fixă din salariu este scutită de contribuții — 300 lei până în iunie, apoi 200 lei (OUG 89/2025).
+            În plus, pentru salariații plătiți la nivelul <Link href="/salariu-minim">salariului minim</Link> (4.050 lei brut în prima jumătate a anului 2026, 4.325 lei din 1 iulie), o sumă fixă din salariu este scutită de contribuții — 300 lei până în iunie, apoi 200 lei (OUG 89/2025). Pentru referință statistică, <Link href="/salariu-mediu">salariul mediu brut pe economie</Link> în 2026 este 9.192 lei.
           </p>
           <p>
             Pe lângă salariul brut, angajatorul mai plătește o contribuție de 2,25% (CAM — Contribuția Asiguratorie pentru Muncă), care nu afectează salariul net al angajatului dar crește costul total al firmei.

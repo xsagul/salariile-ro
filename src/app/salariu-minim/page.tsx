@@ -97,7 +97,8 @@ const jsonLd = {
       author: { "@type": "Organization", name: "Salariile.ro", url: "https://salariile.ro" },
       publisher: { "@type": "Organization", name: "Salariile.ro" },
       mainEntityOfPage: "https://salariile.ro/salariu-minim",
-      dateModified: new Date().toISOString(),
+      datePublished: "2026-03-15",
+      dateModified: "2026-04-30",
     },
     {
       "@type": "FAQPage",
@@ -212,7 +213,7 @@ export default function SalariuMinimPage() {
               </li>
             </ul>
             <p>
-              Salariul minim brut este obligatoriu pentru toți angajatorii din sectorul privat și public, indiferent de domeniul de activitate, cu excepția sectoarelor cu salarii minime sectoriale (construcții).
+              Salariul minim brut este obligatoriu pentru toți angajatorii din sectorul privat și public, indiferent de domeniul de activitate, cu excepția sectoarelor cu salarii minime sectoriale (construcții). Pentru context macroeconomic, vezi și <Link href="/salariu-mediu">salariul mediu brut pe economie</Link>, indicatorul statistic folosit pentru ajutoare sociale și plafoane.
             </p>
           </div>
         </section>
@@ -297,7 +298,7 @@ export default function SalariuMinimPage() {
               </tbody>
             </table>
             <p className="source-note">
-              Rotunjirile finale sunt la nivelul leului. Calculatorul aplică formulele complete conform Codului Fiscal (Legea 227/2015) și sincronizat cu Declarația 112 ANAF.
+              Rotunjirile finale sunt la nivelul leului. Calculatorul aplică formulele complete conform Codului Fiscal (Legea 227/2015) și sincronizat cu Declarația 112 ANAF. Vezi <Link href="/calculator/calcul-salariu-net-4050-brut">calculul detaliat pentru 4.050 lei brut</Link> sau folosește <Link href="/">calculatorul principal</Link> pentru orice altă sumă.
             </p>
           </div>
         </section>
