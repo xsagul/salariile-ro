@@ -68,7 +68,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
 
     // ─── Pagini dinamice — calcul net pornind de la BRUT ────────────────────
-    ...([4050, 4500, 5000, 5500, 6000, 6500, 7000, 7500, 8000, 9000, 10000, 12000, 15000, 20000].map(v => ({
+    // Selecție data-backed (Google Keyword Planner + Ahrefs + GSC propriu, mai 2026):
+    // - 4050, 4325 = salariul minim S1/S2 (legislativ + Ahrefs >100/lună)
+    // - 5000, 6000, 6500, 7000, 8000, 10000 = numere rotunde cu cerere confirmată
+    // - 7350 = descoperit prin cross-check (Ahrefs >100/lună, distribuit pe variații)
+    // Numere TĂIATE (zero/slab semnal): 4500, 5500, 7500, 9000, 12000, 15000, 20000.
+    ...([4050, 4325, 5000, 6000, 6500, 7000, 7350, 8000, 10000].map(v => ({
       url: `${baseUrl}/calculator/calcul-salariu-net-${v}-brut`,
       lastModified,
       changeFrequency: "monthly" as const,
@@ -76,7 +81,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))),
 
     // ─── Pagini dinamice — calcul brut pornind de la NET ────────────────────
-    ...([2500, 2574, 2700, 3000, 3200, 3500, 4000, 4500, 5000, 6000, 7000].map(v => ({
+    // Net→brut e direcție de nișă (Ahrefs <100/lună pentru toate).
+    // Păstrăm doar 3000 și 5000 = singurele cu vreun semnal în Google data.
+    // Tăiate: 2500, 2574, 2700, 3200, 3500, 4000, 4500, 6000, 7000.
+    ...([3000, 5000].map(v => ({
       url: `${baseUrl}/calculator/calcul-salariu-brut-${v}-net`,
       lastModified,
       changeFrequency: "monthly" as const,
