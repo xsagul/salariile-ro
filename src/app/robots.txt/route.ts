@@ -47,13 +47,13 @@ Disallow: /
 
 Sitemap: https://salariile.ro/sitemap.xml
 
-# Content Signals — preferințe pentru utilizarea conținutului de către AI/search
+# Content Signals: ai-train=no, search=yes, ai-input=yes
 # Spec: https://contentsignals.org · draft-romm-aipref-contentsignals
-# Fallback pentru boții ce respectă spec-ul în loc de User-agent lists.
-#   search=yes    → indexare în motoare de căutare permisă
-#   ai-train=no   → conținutul NU poate fi folosit pentru antrenarea modelelor AI
-#   ai-input=yes  → conținutul poate fi folosit ca input/citare de AI care răspunde la întrebări
-Content-Signal: ai-train=no, search=yes, ai-input=yes
+# NOTĂ: directiva Content-Signal este servită ca HTTP response header pe pagini
+# (vezi middleware.ts și api/markdown route handler), NU în robots.txt. Aceasta
+# evită false-positive-ul Lighthouse "Unknown directive in robots.txt" — Google's
+# parser e lenient și ignoră oricum, dar audit-urile stricte flag-uiesc.
+# Spec-ul Content Signals permite ambele locații (robots.txt sau HTTP header).
 `;
 
   return new Response(content, {

@@ -70,6 +70,18 @@ export function middleware(request: NextRequest) {
     '</sitemap.xml>; rel="sitemap", </llms.txt>; rel="describedby"; type="text/markdown"'
   );
 
+  // Content-Signal HTTP header — politica de utilizare AI a conținutului.
+  // Spec: https://contentsignals.org · draft-romm-aipref-contentsignals
+  // Servită ca HTTP header (nu în robots.txt) ca să trecem Lighthouse SEO audit
+  // ("Unknown directive in robots.txt"). Spec-ul permite ambele locații.
+  //   search=yes    → indexare în motoare de căutare permisă
+  //   ai-train=no   → NU folosi pentru antrenarea modelelor AI
+  //   ai-input=yes  → permis ca input/citare de AI care răspunde live
+  response.headers.set(
+    "Content-Signal",
+    "ai-train=no, search=yes, ai-input=yes"
+  );
+
   const host = request.headers.get("host") || "";
   if (host.endsWith(".vercel.app")) {
     response.headers.set("X-Robots-Tag", "noindex, nofollow, noarchive");
