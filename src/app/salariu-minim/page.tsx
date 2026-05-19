@@ -183,7 +183,7 @@ export default function SalariuMinimPage() {
               </tbody>
             </table></div>
             <p className="source-note">
-              Surse: <a href="https://legislatie.just.ro" target="_blank" rel="noopener">HG 1506/2024</a> (S1), <a href="https://legislatie.just.ro" target="_blank" rel="noopener">HG 146/2026</a> (S2), OUG 89/2025.
+              Surse: <a href="https://legislatie.just.ro/Public/DetaliiDocument/291450" target="_blank" rel="noopener">HG 1506/2024</a> (S1), <a href="https://legislatie.just.ro/Public/DetaliiDocument/308231" target="_blank" rel="noopener">HG 146/2026</a> (S2), <a href="https://legislatie.just.ro/Public/DetaliiDocument/305817" target="_blank" rel="noopener">OUG 89/2025</a>.
             </p>
           </div>
         </section>
@@ -480,13 +480,13 @@ export default function SalariuMinimPage() {
           <div className="container">
             <h2>Surse oficiale</h2>
             <ul className="article-list">
-              <li>Monitorul Oficial nr. 196 din 13 martie 2026 — <strong>HG 146/2026</strong> privind salariul minim de la 1 iulie 2026</li>
-              <li>Monitorul Oficial nr. 1185 din 28 noiembrie 2024 — <strong>HG 1506/2024</strong> privind salariul minim de la 1 ianuarie 2025</li>
-              <li><strong>OUG 89/2025</strong> — facilitatea fiscală 300/200 lei pentru salariul minim</li>
-              <li><strong>OUG 156/2024</strong> — eliminarea scutirilor fiscale IT, construcții, agroalimentar</li>
-              <li><strong>HG 35/2025</strong> — mecanismul tehnic de stabilire a salariului minim (Directiva UE 2022/2041)</li>
-              <li>Legea 53/2003 — Codul Muncii, art. 164 alin. (1) și art. 164^2</li>
-              <li>Legea 227/2015 — Codul Fiscal, art. 77 (deducere personală)</li>
+              <li>Monitorul Oficial nr. 196 din 13 martie 2026 — <a href="https://legislatie.just.ro/Public/DetaliiDocument/308231" target="_blank" rel="noopener"><strong>HG 146/2026</strong></a> privind salariul minim de la 1 iulie 2026</li>
+              <li>Monitorul Oficial nr. 1185 din 28 noiembrie 2024 — <a href="https://legislatie.just.ro/Public/DetaliiDocument/291450" target="_blank" rel="noopener"><strong>HG 1506/2024</strong></a> privind salariul minim de la 1 ianuarie 2025</li>
+              <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/305817" target="_blank" rel="noopener"><strong>OUG 89/2025</strong></a> — facilitatea fiscală 300/200 lei pentru salariul minim</li>
+              <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/293109" target="_blank" rel="noopener"><strong>OUG 156/2024</strong></a> — eliminarea scutirilor fiscale IT, construcții, agroalimentar</li>
+              <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/294600" target="_blank" rel="noopener"><strong>HG 35/2025</strong></a> — mecanismul tehnic de stabilire a salariului minim (Directiva UE 2022/2041)</li>
+              <li><a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/128646" target="_blank" rel="noopener">Legea 53/2003 — Codul Muncii</a>, art. 164 alin. (1) și art. 164^2</li>
+              <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/257144" target="_blank" rel="noopener">Legea 227/2015 — Codul Fiscal</a>, art. 77 (deducere personală)</li>
               <li>
                 <a href="https://mmuncii.gov.ro" target="_blank" rel="noopener">Ministerul Muncii și Solidarității Sociale</a> · <a href="https://www.anaf.ro" target="_blank" rel="noopener">ANAF</a>
               </li>

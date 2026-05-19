@@ -322,17 +322,17 @@ export default function MetodologiePage() {
           <div className="container">
             <h2>Surse oficiale folosite</h2>
             <ul className="article-list">
-              <li><strong>Codul Fiscal</strong> — Legea 227/2015, cu modificările ulterioare</li>
-              <li><strong>Codul Muncii</strong> — Legea 53/2003, cu modificările ulterioare</li>
-              <li><strong>HG 146/2026</strong> — salariu minim de la 1 iulie 2026 (MO nr. 196 din 13 martie 2026)</li>
-              <li><strong>HG 1506/2024</strong> — salariu minim de la 1 ianuarie 2025 (MO nr. 1185 din 28 noiembrie 2024)</li>
-              <li><strong>OUG 89/2025</strong> — facilitate fiscală 300/200 lei pentru salariul minim</li>
-              <li><strong>OUG 156/2024</strong> — eliminarea scutirilor sectoriale IT, construcții, agroalimentar</li>
-              <li><strong>HG 35/2025</strong> — mecanismul tehnic de stabilire a salariului minim</li>
-              <li><strong>Legea 44/2026</strong> — bugetul asigurărilor sociale, valoarea salariului mediu</li>
+              <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/257144" target="_blank" rel="noopener"><strong>Codul Fiscal</strong> — Legea 227/2015</a>, cu modificările ulterioare</li>
+              <li><a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/128646" target="_blank" rel="noopener"><strong>Codul Muncii</strong> — Legea 53/2003</a>, cu modificările ulterioare</li>
+              <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/308231" target="_blank" rel="noopener"><strong>HG 146/2026</strong></a> — salariu minim de la 1 iulie 2026 (MO nr. 196 din 13 martie 2026)</li>
+              <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/291450" target="_blank" rel="noopener"><strong>HG 1506/2024</strong></a> — salariu minim de la 1 ianuarie 2025 (MO nr. 1185 din 28 noiembrie 2024)</li>
+              <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/305817" target="_blank" rel="noopener"><strong>OUG 89/2025</strong></a> — facilitate fiscală 300/200 lei pentru salariul minim</li>
+              <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/293109" target="_blank" rel="noopener"><strong>OUG 156/2024</strong></a> — eliminarea scutirilor sectoriale IT, construcții, agroalimentar</li>
+              <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/294600" target="_blank" rel="noopener"><strong>HG 35/2025</strong></a> — mecanismul tehnic de stabilire a salariului minim</li>
+              <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/308863" target="_blank" rel="noopener"><strong>Legea 44/2026</strong></a> — bugetul asigurărilor sociale, valoarea salariului mediu</li>
               <li><strong>Ministerul Muncii</strong> — <a href="https://mmuncii.gov.ro" target="_blank" rel="noopener">mmuncii.gov.ro</a></li>
               <li><strong>ANAF</strong> — <a href="https://www.anaf.ro" target="_blank" rel="noopener">anaf.ro</a> (template Declarația 112)</li>
-              <li><strong>Monitorul Oficial</strong> — <a href="https://legislatie.just.ro" target="_blank" rel="noopener">legislatie.just.ro</a></li>
+              <li><strong>Monitorul Oficial</strong> — <a href="https://legislatie.just.ro" target="_blank" rel="noopener">legislatie.just.ro</a> (portal căutare generală)</li>
               <li><strong>Institutul Național de Statistică</strong> — <a href="https://insse.ro" target="_blank" rel="noopener">insse.ro</a></li>
             </ul>
             <p className="source-note">Pagină actualizată: 30 aprilie 2026.</p>

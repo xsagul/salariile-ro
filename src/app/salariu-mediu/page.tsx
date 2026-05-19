@@ -401,9 +401,9 @@ export default function SalariuMediuPage() {
           <div className="container">
             <h2>Surse oficiale</h2>
             <ul className="article-list">
-              <li><strong>Legea 44/2026</strong> privind bugetul asigurărilor sociale de stat pe anul 2026 — publicată în Monitorul Oficial pe 27 martie 2026</li>
+              <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/308863" target="_blank" rel="noopener"><strong>Legea 44/2026</strong></a> privind bugetul asigurărilor sociale de stat pe anul 2026 — publicată în Monitorul Oficial pe 27 martie 2026</li>
               <li><strong>Legea 313/2024</strong> — bugetul asigurărilor sociale pentru 2025 (referință valori anterioare)</li>
-              <li><strong>Legea 263/2010</strong> privind sistemul unitar de pensii publice — art. 112 și următoarele (ajutor de deces)</li>
+              <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/182597" target="_blank" rel="noopener"><strong>Legea 263/2010</strong></a> privind sistemul unitar de pensii publice — art. 112 și următoarele (ajutor de deces)</li>
               <li><strong>Prognoza CNSP, varianta de toamnă 2025</strong> — proiecții 2026 – 2028</li>
               <li><strong>Date statistice INS</strong> — raportul lunar privind câștigul salarial mediu brut și net</li>
               <li>

@@ -324,9 +324,9 @@ export default function CalculatorSalariu({
             {subtitluCustom || (
               <>
                 Calculează salariul net din brut. CAS, CASS, impozit și cost angajator — actualizat conform{" "}
-                <a href="https://legislatie.just.ro" target="_blank" rel="noopener noreferrer">HG 146/2026</a>
+                <a href="https://legislatie.just.ro/Public/DetaliiDocument/308231" target="_blank" rel="noopener noreferrer">HG 146/2026</a>
                 {" "}și{" "}
-                <a href="https://legislatie.just.ro" target="_blank" rel="noopener noreferrer">OUG 89/2025</a>.
+                <a href="https://legislatie.just.ro/Public/DetaliiDocument/305817" target="_blank" rel="noopener noreferrer">OUG 89/2025</a>.
               </>
             )}
           </p>

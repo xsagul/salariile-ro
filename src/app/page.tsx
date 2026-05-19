@@ -105,7 +105,7 @@ export default function Page() {
             Pe lângă salariul brut, angajatorul mai plătește o contribuție de 2,25% (CAM — Contribuția Asiguratorie pentru Muncă), care nu afectează salariul net al angajatului dar crește costul total al firmei.
           </p>
           <p className="source-note">
-            Surse: <a href="https://legislatie.just.ro" target="_blank" rel="noopener">Monitorul Oficial</a> (HG 146/2026, OUG 89/2025), Codul Fiscal art. 77, ANAF Declarația 112. Ultima actualizare: 30 aprilie 2026.
+            Surse: <a href="https://legislatie.just.ro/Public/DetaliiDocument/308231" target="_blank" rel="noopener">HG 146/2026</a>, <a href="https://legislatie.just.ro/Public/DetaliiDocument/305817" target="_blank" rel="noopener">OUG 89/2025</a>, <a href="https://legislatie.just.ro/Public/DetaliiDocument/257144" target="_blank" rel="noopener">Codul Fiscal art. 77</a>, ANAF Declarația 112. Ultima actualizare: 30 aprilie 2026.
           </p>
         </div>
       </section>
