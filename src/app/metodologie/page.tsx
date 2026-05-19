@@ -37,7 +37,10 @@ const jsonLd = {
         "@type": "Organization",
         name: "Salariile.ro",
         url: "https://salariile.ro",
+        logo: { "@type": "ImageObject", url: "https://salariile.ro/og-image.png", width: 1200, height: 630 },
       },
+      image: { "@type": "ImageObject", url: "https://salariile.ro/og-image.png", width: 1200, height: 630 },
+      datePublished: "2026-04-01",
       dateModified: "2026-04-30",
       proficiencyLevel: "Expert",
       about: [

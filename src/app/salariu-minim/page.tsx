@@ -95,7 +95,12 @@ const jsonLd = {
       description:
         "Analiză completă a salariului minim brut pe țară în 2026: cadrul legal (HG 146/2026, OUG 89/2025), calcul net detaliat, sectoare specifice (construcții 4.582 lei), plafoane fiscale și obligații pentru angajatori.",
       author: { "@type": "Organization", name: "Salariile.ro", url: "https://salariile.ro" },
-      publisher: { "@type": "Organization", name: "Salariile.ro" },
+      publisher: {
+        "@type": "Organization",
+        name: "Salariile.ro",
+        logo: { "@type": "ImageObject", url: "https://salariile.ro/og-image.png", width: 1200, height: 630 },
+      },
+      image: { "@type": "ImageObject", url: "https://salariile.ro/og-image.png", width: 1200, height: 630 },
       mainEntityOfPage: "https://salariile.ro/salariu-minim",
       datePublished: "2026-03-15",
       dateModified: "2026-04-30",
@@ -492,6 +497,28 @@ export default function SalariuMinimPage() {
               </li>
             </ul>
             <p className="source-note">Pagină actualizată: 30 aprilie 2026.</p>
+          </div>
+        </section>
+
+        {/* Calculatoare pentru sume specifice — internal linking spre paginile dinamice */}
+        <section className="article-section">
+          <div className="container">
+            <h2>Calculatoare pentru sume specifice</h2>
+            <p>Calcule rapide pentru cele mai căutate valori salariale în 2026:</p>
+            <ul className="article-list">
+              <li><Link href="/calculator/calcul-salariu-net-4050-brut">Salariu net pentru 4.050 lei brut</Link> — minimul ianuarie-iunie 2026</li>
+              <li><Link href="/calculator/calcul-salariu-net-4325-brut">Salariu net pentru 4.325 lei brut</Link> — minimul iulie-decembrie 2026</li>
+              <li><Link href="/calculator/calcul-salariu-net-5000-brut">Salariu net pentru 5.000 lei brut</Link></li>
+              <li><Link href="/calculator/calcul-salariu-net-6000-brut">Salariu net pentru 6.000 lei brut</Link></li>
+              <li><Link href="/calculator/calcul-salariu-net-6500-brut">Salariu net pentru 6.500 lei brut</Link></li>
+              <li><Link href="/calculator/calcul-salariu-net-7000-brut">Salariu net pentru 7.000 lei brut</Link></li>
+              <li><Link href="/calculator/calcul-salariu-net-7350-brut">Salariu net pentru 7.350 lei brut</Link></li>
+              <li><Link href="/calculator/calcul-salariu-net-8000-brut">Salariu net pentru 8.000 lei brut</Link></li>
+              <li><Link href="/calculator/calcul-salariu-net-10000-brut">Salariu net pentru 10.000 lei brut</Link></li>
+            </ul>
+            <p className="source-note">
+              Calcul invers (din net în brut): <Link href="/calculator/calcul-salariu-brut-3000-net">3.000 lei net</Link> · <Link href="/calculator/calcul-salariu-brut-5000-net">5.000 lei net</Link>. Pentru orice altă sumă, folosește <Link href="/">calculatorul principal</Link>.
+            </p>
           </div>
         </section>
 

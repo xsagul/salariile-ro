@@ -95,7 +95,12 @@ const jsonLd = {
       description:
         "Analiză completă a salariului mediu brut pe economie pentru 2026: cadrul legal (Legea 44/2026), calcul net, ajutor de deces, plafoane sociale, date reale INS și prognoze CNSP.",
       author: { "@type": "Organization", name: "Salariile.ro", url: "https://salariile.ro" },
-      publisher: { "@type": "Organization", name: "Salariile.ro" },
+      publisher: {
+        "@type": "Organization",
+        name: "Salariile.ro",
+        logo: { "@type": "ImageObject", url: "https://salariile.ro/og-image.png", width: 1200, height: 630 },
+      },
+      image: { "@type": "ImageObject", url: "https://salariile.ro/og-image.png", width: 1200, height: 630 },
       mainEntityOfPage: "https://salariile.ro/salariu-mediu",
       datePublished: "2026-03-30",
       dateModified: "2026-04-30",
@@ -289,7 +294,7 @@ export default function SalariuMediuPage() {
               </tbody>
             </table></div>
             <p className="source-note">
-              Calcul standard fără sporuri, fără tichete de masă și fără alte beneficii. Pentru salarii la nivelul mediei, scutirea pentru personal cu copii sau alte deduceri specifice pot ajusta netul. Vezi <Link href="/calculator/calcul-salariu-net-9000-brut">calculul detaliat pentru 9.000 lei brut</Link> sau <Link href="/calculator/calcul-salariu-net-10000-brut">10.000 lei brut</Link>.
+              Calcul standard fără sporuri, fără tichete de masă și fără alte beneficii. Pentru salarii la nivelul mediei, scutirea pentru personal cu copii sau alte deduceri specifice pot ajusta netul. Vezi <Link href="/calculator/calcul-salariu-net-8000-brut">calculul detaliat pentru 8.000 lei brut</Link> sau <Link href="/calculator/calcul-salariu-net-10000-brut">10.000 lei brut</Link>.
             </p>
           </div>
         </section>
@@ -411,6 +416,28 @@ export default function SalariuMediuPage() {
               </li>
             </ul>
             <p className="source-note">Pagină actualizată: 30 aprilie 2026.</p>
+          </div>
+        </section>
+
+        {/* Calculatoare pentru sume specifice — internal linking spre paginile dinamice */}
+        <section className="article-section">
+          <div className="container">
+            <h2>Calculatoare pentru sume apropiate de salariul mediu</h2>
+            <p>Calcule rapide pentru valori salariale comune în 2026, în jurul și deasupra mediei (9.192 lei brut):</p>
+            <ul className="article-list">
+              <li><Link href="/calculator/calcul-salariu-net-6000-brut">Salariu net pentru 6.000 lei brut</Link></li>
+              <li><Link href="/calculator/calcul-salariu-net-6500-brut">Salariu net pentru 6.500 lei brut</Link></li>
+              <li><Link href="/calculator/calcul-salariu-net-7000-brut">Salariu net pentru 7.000 lei brut</Link></li>
+              <li><Link href="/calculator/calcul-salariu-net-7350-brut">Salariu net pentru 7.350 lei brut</Link></li>
+              <li><Link href="/calculator/calcul-salariu-net-8000-brut">Salariu net pentru 8.000 lei brut</Link></li>
+              <li><Link href="/calculator/calcul-salariu-net-10000-brut">Salariu net pentru 10.000 lei brut</Link></li>
+              <li><Link href="/calculator/calcul-salariu-net-5000-brut">Salariu net pentru 5.000 lei brut</Link> — sub mediană</li>
+              <li><Link href="/calculator/calcul-salariu-net-4325-brut">Salariu net pentru 4.325 lei brut</Link> — minim S2</li>
+              <li><Link href="/calculator/calcul-salariu-net-4050-brut">Salariu net pentru 4.050 lei brut</Link> — minim S1</li>
+            </ul>
+            <p className="source-note">
+              Calcul invers (din net în brut): <Link href="/calculator/calcul-salariu-brut-3000-net">3.000 lei net</Link> · <Link href="/calculator/calcul-salariu-brut-5000-net">5.000 lei net</Link>. Pentru orice altă sumă, folosește <Link href="/">calculatorul principal</Link>.
+            </p>
           </div>
         </section>
 
