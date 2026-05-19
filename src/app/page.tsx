@@ -56,7 +56,11 @@ const homepageJsonLd = {
         "Calculator salariu net din brut pentru România. Actualizat conform legislației fiscale în vigoare: HG 146/2026, OUG 89/2025.",
       applicationCategory: "FinanceApplication",
       operatingSystem: "All",
-      offers: { "@type": "Offer", price: "0", priceCurrency: "RON" },
+      // isAccessibleForFree în loc de offers — evităm cerința Google pentru
+      // aggregateRating/review pe SoftwareApplication cu offers (Semrush flag).
+      // Spec Schema.org: isAccessibleForFree=true semnalează clar că e gratuit
+      // fără să declanșeze validarea de "produs comercial".
+      isAccessibleForFree: true,
       publisher: { "@id": "https://salariile.ro/#organization" },
       featureList: [
         "Calcul net din brut",
