@@ -407,7 +407,7 @@ export default function SalariuMediuPage() {
               <li><strong>Prognoza CNSP, varianta de toamnă 2025</strong> — proiecții 2026 – 2028</li>
               <li><strong>Date statistice INS</strong> — raportul lunar privind câștigul salarial mediu brut și net</li>
               <li>
-                <a href="https://insse.ro" target="_blank" rel="noopener">Institutul Național de Statistică</a> · <a href="https://cnsp.gov.ro" target="_blank" rel="noopener">CNSP</a> · <a href="https://cnpp.ro" target="_blank" rel="noopener">Casa Națională de Pensii Publice</a>
+                <a href="https://insse.ro" target="_blank" rel="noopener">Institutul Național de Statistică</a> · <a href="https://cnp.ro" target="_blank" rel="noopener">CNSP</a> · <a href="https://cnpp.ro" target="_blank" rel="noopener">Casa Națională de Pensii Publice</a>
               </li>
             </ul>
             <p className="source-note">Pagină actualizată: 30 aprilie 2026.</p>
