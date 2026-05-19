@@ -154,8 +154,6 @@ export async function GET(
     headers: {
       "Content-Type": "text/markdown; charset=utf-8",
       "x-markdown-tokens": String(tokenEstimate),
-      // Content-Signal mirror la cel din robots.txt
-      "Content-Signal": "ai-train=no, search=yes, ai-input=yes",
       "Cache-Control": "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400",
       // Vary: Accept — esențial pentru CDN să separe cache-ul HTML vs markdown
       // (altfel risc de cache poisoning: browser primește markdown când vrea HTML)
