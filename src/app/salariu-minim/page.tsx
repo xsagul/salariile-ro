@@ -426,7 +426,7 @@ export default function SalariuMinimPage() {
               </tbody>
             </table></div>
             <p className="source-note">
-              Plafonul deducerii personale la salarii folosește salariul minim al lunii în care se calculează venitul (6.050 lei până în iunie, 6.325 lei din iulie). Restul plafoanelor anuale rămân ancorate la valoarea de 1 ianuarie.
+              Plafonul deducerii personale la salarii folosește salariul minim al lunii în care se calculează venitul (6.050 lei până în iunie, 6.325 lei din iulie). Restul plafoanelor anuale rămân ancorate la valoarea de 1 ianuarie. Pentru tariful orar și distribuția zilelor lucrătoare pe lună, vezi <Link href="/zile-libere-2026">calendarul zilelor libere și lucrătoare 2026</Link>.
             </p>
           </div>
         </section>

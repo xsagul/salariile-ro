@@ -7,6 +7,7 @@
 - [Calculator salariu net 2026](https://salariile.ro/): tool interactiv pentru calcul brut → net (și invers), cu defalcare CAS 25%, CASS 10%, impozit pe venit 10%, deducere personală și cost total angajator (CAM 2,25%)
 - [Salariul minim brut 2026](https://salariile.ro/salariu-minim): valorile semestriale (4.050 lei până la 30 iunie / 4.325 lei din 1 iulie), calculul net detaliat (2.574 / 2.699 lei), facilitatea fiscală OUG 89/2025, plafoanele pentru deducere personală, sectorul construcții (4.582 lei), evoluția istorică 2019-2026
 - [Salariul mediu pe economie 2026](https://salariile.ro/salariu-mediu): 9.192 lei brut (~5.377 lei net) conform Legii 44/2026, ajutorul de deces, plafoanele sociale dependente de salariul mediu, prognoze CNSP
+- [Zile libere 2026](https://salariile.ro/zile-libere-2026): calendar complet cu 17 sărbători legale (Codul Muncii art. 139), zile lucrătoare per lună (total 249), ore lucrătoare (1.992), punți recomandate pentru weekend-uri prelungite
 
 ## Metodologie și transparență
 

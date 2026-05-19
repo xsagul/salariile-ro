@@ -34,6 +34,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.6,
     },
+
+    // ─── Pagini specializate (cluster nou per topic) ──────────────────────
+    {
+      url: `${baseUrl}/zile-libere-2026`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
     {
       url: `${baseUrl}/despre`,
       lastModified,
