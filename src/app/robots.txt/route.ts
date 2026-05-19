@@ -2,18 +2,16 @@
 // Route handler pentru robots.txt — permite directive custom (Content-Signal)
 // peste ce permite Next.js MetadataRoute.Robots.
 //
-// Trick subtil: pentru Lighthouse (Chrome-Lighthouse UA) servim versiune curată
-// fără Content-Signal (Lighthouse îl flag-uiește ca "Unknown directive" → SEO 92).
-// Pentru toți ceilalți (Googlebot, isitagentready.com, AI bots, oameni) servim
-// versiunea completă cu Content-Signal — exact ce cere agent-readiness spec.
-// Spec-ul Content Signals permite ambele locații (robots.txt sau HTTP header),
-// deci versiunea Lighthouse rămâne valid funcțional (signal-ul e și pe HTTP header).
+// Servim EXACT același conținut tuturor — bots, audit tools, oameni.
+// Lighthouse va flag-ui Content-Signal ca "Unknown directive" (SEO score scade
+// de la 100 la 92). Asta e un false positive cosmetic: directiva e validă per
+// spec-ul Content Signals (contentsignals.org), iar Google's robots.txt parser
+// ignoră tăcut directivele necunoscute (documentat — parser lenient). Real impact
+// pe ranking: zero. Preferăm transparența completă în loc să mascăm directiva
+// pentru un audit tool.
 
-export function GET(req: Request) {
-  const ua = req.headers.get("user-agent") || "";
-  const isLighthouse = ua.includes("Chrome-Lighthouse");
-
-  const baseContent = `User-agent: *
+export function GET() {
+  const content = `User-agent: *
 Allow: /
 Disallow: /api/
 
@@ -56,28 +54,20 @@ User-agent: FacebookBot
 Disallow: /
 
 Sitemap: https://salariile.ro/sitemap.xml
-`;
 
-  // Versiunea cu Content-Signal — servită tuturor în afară de Lighthouse.
-  // Spec: https://contentsignals.org · draft-romm-aipref-contentsignals
-  //   search=yes    → indexare în motoare de căutare permisă
-  //   ai-train=no   → NU folosi pentru antrenarea modelelor AI
-  //   ai-input=yes  → permis ca input/citare de AI care răspunde la întrebări
-  const contentSignalBlock = `
 # Content Signals — preferințe pentru utilizarea conținutului de către AI/search
 # Spec: https://contentsignals.org · draft-romm-aipref-contentsignals
 # Servit și ca HTTP response header (vezi middleware.ts + api/markdown route).
+#   search=yes    → indexare în motoare de căutare permisă
+#   ai-train=no   → NU folosi pentru antrenarea modelelor AI
+#   ai-input=yes  → permis ca input/citare de AI care răspunde la întrebări
 Content-Signal: ai-train=no, search=yes, ai-input=yes
 `;
-
-  const content = isLighthouse ? baseContent : baseContent + contentSignalBlock;
 
   return new Response(content, {
     headers: {
       "Content-Type": "text/plain; charset=utf-8",
-      // Cache scurt + Vary: User-Agent ca CDN să separe versiunile Lighthouse vs altele
-      "Cache-Control": "public, max-age=60, s-maxage=60",
-      Vary: "User-Agent",
+      "Cache-Control": "public, max-age=3600, s-maxage=3600",
     },
   });
 }
