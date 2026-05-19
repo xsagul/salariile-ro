@@ -46,7 +46,6 @@ User-agent: FacebookBot
 Disallow: /
 
 Sitemap: https://salariile.ro/sitemap.xml
-Host: https://salariile.ro
 
 # Content Signals — preferințe pentru utilizarea conținutului de către AI/search
 # Spec: https://contentsignals.org · draft-romm-aipref-contentsignals

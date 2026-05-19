@@ -822,27 +822,35 @@ select:focus { border-color: var(--accent); }
 }
 
 /* ─── Empty state (skeleton — schelet de tabel cu valori muted) ─────────── */
+/* Folosim --muted (#555555) în loc de --muted-soft (#757575) ca să trecem
+   contrastul WCAG AA (4.5:1) pe background-urile slab tintate ale tabelului
+   (--surface-bright #fcf9f8, --surface-alt #f6f3f2). PSI mobile flag-uia:
+   - tr.row-bright > td        (Salariu de încadrare)
+   - tr.total-retineri > td    (Total Rețineri Angajat)
+   - tr.total-net > td         (SALARIU NET în skeleton)
+   - tr.total-cost > td        (COST TOTAL ANGAJATOR)
+   Contrast verificat: #555555 vs #fcf9f8 = 7.46:1, vs #f6f3f2 = 7.27:1. */
 .results-wrapper.skeleton .flat-table td {
-  color: var(--muted-soft);
+  color: var(--muted);
 }
 .results-wrapper.skeleton .flat-table tr.row-bright td,
 .results-wrapper.skeleton .flat-table tr.row-base td {
-  color: var(--muted-soft);
+  color: var(--muted);
   font-weight: var(--fw-normal);
 }
 .results-wrapper.skeleton .flat-table tr.total-retineri td,
 .results-wrapper.skeleton .flat-table tr.total-cost td {
-  color: var(--muted-soft);
+  color: var(--muted);
   font-weight: var(--fw-normal);
 }
 .results-wrapper.skeleton .flat-table tr.total-net td {
   background-color: var(--surface-alt);
-  color: var(--muted-soft);
+  color: var(--muted);
   border-color: var(--border);
 }
 /* override .muted spans inside skeleton — altfel ar fi mai închise decât celulele bare */
 .results-wrapper.skeleton .flat-table .muted {
-  color: var(--muted-soft);
+  color: var(--muted);
 }
 
 .skeleton-hint {
