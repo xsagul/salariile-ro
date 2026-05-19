@@ -56,10 +56,13 @@ export async function GET(
   const $ = cheerio.load(html);
 
   // ─── Frontmatter din <meta> tags ───────────────────────────────────────────
+  // Prioritate: <title> element și meta[name="description"] sunt sursele
+  // canonice page-specific. OG tags sunt fallback (pot fi moștenite din layout
+  // și pot reflecta default-ul site-ului, nu pagina curentă).
   const title =
+    $("title").text().trim() ||
     $('meta[name="title"]').attr("content") ||
     $('meta[property="og:title"]').attr("content") ||
-    $("title").text() ||
     "";
   const description =
     $('meta[name="description"]').attr("content") ||
