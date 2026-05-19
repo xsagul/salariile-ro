@@ -449,12 +449,15 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
     border-radius: 16px;
   }
   .toggle .thumb {
-    width: var(--s-6);
-    height: var(--s-6);
+    /* 20px într-un pill de 32px = margin 6px top/bottom (vs 4px cu thumb 24px)
+       → vizibilă "casetă" gri în jurul thumb-ului, nu se mai suprapune cu marginea. */
+    width: 20px;
+    height: 20px;
     /* top: 50% + translateY(-50%) moștenite din regula globală .thumb */
-    left: 4px;
+    left: 6px;
   }
   .toggle.on .thumb {
+    /* OFF: left 6 → ON: left 26 (= 52 - 20 - 6) → translateX = 20px */
     transform: translateX(20px) translateY(-50%);
   }
   
@@ -652,6 +655,9 @@ select:focus { border-color: var(--accent); }
      de eventuale rendering-quirks pe iOS/Android. translateX comută on/off. */
   transform: translateY(-50%);
   transition: transform .2s;
+  /* Shadow subtil pentru efect "elevated" — ca toggle-urile iOS native.
+     Face thumb-ul vizibil distinct de fundalul pill-ului. */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15), 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 .toggle.on .thumb { transform: translateX(20px) translateY(-50%); }
 
