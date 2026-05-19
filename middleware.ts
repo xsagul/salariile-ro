@@ -51,6 +51,25 @@ export function middleware(request: NextRequest) {
 
   response.headers.set('Content-Security-Policy', cspHeader);
 
+  // Vary: Accept — semnalează la CDN că răspunsul depinde de header-ul Accept
+  // (HTML pentru browser, markdown pentru agenți). Previne cache poisoning.
+  // Append la Vary-ul existent (Next adaugă deja rsc, next-router-* etc.).
+  const existingVary = response.headers.get("Vary");
+  response.headers.set(
+    "Vary",
+    existingVary ? `${existingVary}, Accept` : "Accept"
+  );
+
+  // Link headers (RFC 8288) pentru descoperire agenți AI:
+  // - sitemap      → unde sunt toate URL-urile indexabile
+  // - describedby  → llms.txt (overview markdown al site-ului)
+  // Adăugat aici (în middleware) ca să se aplice doar pe pagini HTML/dynamic,
+  // nu pe asseturi statice (middleware-ul oricum nu rulează pe /_next/static/*).
+  response.headers.set(
+    "Link",
+    '</sitemap.xml>; rel="sitemap", </llms.txt>; rel="describedby"; type="text/markdown"'
+  );
+
   const host = request.headers.get("host") || "";
   if (host.endsWith(".vercel.app")) {
     response.headers.set("X-Robots-Tag", "noindex, nofollow, noarchive");

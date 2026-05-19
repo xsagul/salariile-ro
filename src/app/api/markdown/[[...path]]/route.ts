@@ -85,9 +85,20 @@ export async function GET(
     }
   });
 
-  // ─── Strip chrome (nav, header, footer, scripts, styles) ──────────────────
+  // ─── Strip chrome (nav, header, footer, scripts, styles, UI interactiv) ──
+  // Pe homepage și paginile dinamice, calculatorul are formulare interactive +
+  // un tabel skeleton gol — agentul nu poate interacționa cu ele, doar rezultă
+  // text confuz în markdown. Le scoatem:
+  //   - .form-column           = coloana stângă cu input form (DIRECȚIE, BRUT, butoane)
+  //   - .results-wrapper.skeleton = tabelul gol cu „—" pe homepage (fără date)
+  //   - .pdf-button            = buton de download PDF, fără sens în markdown
+  // Pe paginile dinamice (/calculator/X-brut), .results-wrapper (fără skeleton)
+  // rămâne — conține tabelul real cu valori calculate.
   $(
-    "header, footer, nav, script, style, noscript, .site-header, .site-footer, .topbar, .nav-mobile, .nav-desktop, .breadcrumb, .hamburger, .cta-card"
+    "header, footer, nav, script, style, noscript, " +
+    ".site-header, .site-footer, .topbar, .nav-mobile, .nav-desktop, " +
+    ".breadcrumb, .hamburger, .cta-card, " +
+    ".form-column, .results-wrapper.skeleton, .pdf-button"
   ).remove();
 
   // Conținutul principal: încercăm <main>, apoi <body>
@@ -146,8 +157,14 @@ export async function GET(
       // Content-Signal mirror la cel din robots.txt
       "Content-Signal": "ai-train=no, search=yes, ai-input=yes",
       "Cache-Control": "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400",
+      // Vary: Accept — esențial pentru CDN să separe cache-ul HTML vs markdown
+      // (altfel risc de cache poisoning: browser primește markdown când vrea HTML)
+      Vary: "Accept",
       // Indică canonical URL-ul HTML pentru claritate
       Link: `<${targetUrl}>; rel="canonical"`,
+      // Markdown e doar pentru agenți — nu vrem să apară ca pagină separată în SERP.
+      // Robots.txt deja disallow /api/* dar X-Robots-Tag e garanție suplimentară.
+      "X-Robots-Tag": "noindex, nofollow",
     },
   });
 }
