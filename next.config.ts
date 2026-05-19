@@ -16,7 +16,11 @@ const nextConfig: NextConfig = {
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
           // Headere noi adăugate pentru securitate maximă (Lighthouse):
           { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
-          { key: "Cross-Origin-Opener-Policy", value: "same-origin" }
+          { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
+          // Link headers (RFC 8288) pentru descoperire de către AI agents:
+          // - sitemap   → unde sunt toate URL-urile indexabile
+          // - describedby → llms.txt (overview markdown al site-ului, standard llmstxt.org)
+          { key: "Link", value: '</sitemap.xml>; rel="sitemap", </llms.txt>; rel="describedby"; type="text/markdown"' }
         ],
       },
       {

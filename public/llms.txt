@@ -1,0 +1,49 @@
+# Salariile.ro
+
+> Calculator gratuit salariu net pentru România, conform legislației fiscale 2026. Site informativ independent care explică contribuțiile (CAS, CASS, impozit), deducerile personale și plafoanele salariale. Toate calculele sunt sincronizate cu Codul Fiscal (Legea 227/2015), HG 146/2026 și OUG 89/2025.
+
+## Pagini principale
+
+- [Calculator salariu net 2026](https://salariile.ro/): tool interactiv pentru calcul brut → net (și invers), cu defalcare CAS 25%, CASS 10%, impozit pe venit 10%, deducere personală și cost total angajator (CAM 2,25%)
+- [Salariul minim brut 2026](https://salariile.ro/salariu-minim): valorile semestriale (4.050 lei până la 30 iunie / 4.325 lei din 1 iulie), calculul net detaliat (2.574 / 2.699 lei), facilitatea fiscală OUG 89/2025, plafoanele pentru deducere personală, sectorul construcții (4.582 lei), evoluția istorică 2019-2026
+- [Salariul mediu pe economie 2026](https://salariile.ro/salariu-mediu): 9.192 lei brut (~5.377 lei net) conform Legii 44/2026, ajutorul de deces, plafoanele sociale dependente de salariul mediu, prognoze CNSP
+
+## Metodologie și transparență
+
+- [Metodologie de calcul](https://salariile.ro/metodologie): formulele complete (brut → bază CAS/CASS → impozit → net), sursele legislative articol cu articol, sincronizarea cu Declarația 112 ANAF, limitările declarate
+- [Despre proiect](https://salariile.ro/despre): cine întreține site-ul (proiect personal, dezvoltator full-stack), motivația, cum se mențin calculele actualizate
+- [Contact](https://salariile.ro/contact): adresă email pentru raportarea erorilor
+
+## Calculatoare pentru sume specifice
+
+- [Salariu net pentru 4.050 lei brut (minim S1)](https://salariile.ro/calculator/calcul-salariu-net-4050-brut)
+- [Salariu net pentru 4.325 lei brut (minim S2)](https://salariile.ro/calculator/calcul-salariu-net-4325-brut)
+- [Salariu net pentru 5.000 lei brut](https://salariile.ro/calculator/calcul-salariu-net-5000-brut)
+- [Salariu net pentru 6.000 lei brut](https://salariile.ro/calculator/calcul-salariu-net-6000-brut)
+- [Salariu net pentru 6.500 lei brut](https://salariile.ro/calculator/calcul-salariu-net-6500-brut)
+- [Salariu net pentru 7.000 lei brut](https://salariile.ro/calculator/calcul-salariu-net-7000-brut)
+- [Salariu net pentru 7.350 lei brut](https://salariile.ro/calculator/calcul-salariu-net-7350-brut)
+- [Salariu net pentru 8.000 lei brut](https://salariile.ro/calculator/calcul-salariu-net-8000-brut)
+- [Salariu net pentru 10.000 lei brut](https://salariile.ro/calculator/calcul-salariu-net-10000-brut)
+
+## Legal
+
+- [Termeni și condiții](https://salariile.ro/termeni)
+- [Politica de confidențialitate (GDPR)](https://salariile.ro/politica-confidentialitate)
+- [Politica cookies (cookieless prin design)](https://salariile.ro/cookies)
+
+## Date factuale 2026 — context fiscal
+
+- Salariu minim brut: 4.050 lei (S1) → 4.325 lei (S2), HG 146/2026
+- Salariu minim net: 2.574 lei (S1) → 2.699 lei (S2), cu facilitate OUG 89/2025 de 300/200 lei netaxabili
+- Salariu mediu brut pe economie: 9.192 lei (Legea 44/2026, valoare bugetară)
+- Contribuții angajat: CAS 25%, CASS 10%, impozit pe venit 10%
+- Contribuție angajator: CAM 2,25%
+- Plafon deducere personală: salariu minim + 2.000 lei (6.050 S1 / 6.325 S2)
+- Eliminate prin OUG 156/2024: scutirile fiscale IT, construcții, agroalimentar (din ianuarie 2025)
+
+## Tehnic
+
+- Site static Next.js, SSR pe paginile de conținut, calcul fiscal client-side fără tracking
+- Conținut și calcule actualizate la 30 aprilie 2026
+- Operator: Știuriuc Sorin-Marian (persoană fizică, proiect personal)
