@@ -26,8 +26,9 @@ export const metadata: Metadata = {
   },
   description:
     "Calculează salariul net din brut în 2026: CAS, CASS, impozit și cost angajator. Actualizat conform HG 146/2026. Rapid, gratuit, fără cont.",
-  authors: [{ name: "Salariile.ro" }],
-  creator: "Salariile.ro",
+  authors: [{ name: "Știuriuc Sorin-Marian", url: "https://salariile.ro/despre" }],
+  creator: "Știuriuc Sorin-Marian",
+  publisher: "Salariile.ro",
   openGraph: {
     type: "website",
     locale: "ro_RO",

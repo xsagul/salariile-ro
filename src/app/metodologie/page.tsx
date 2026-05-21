@@ -3,6 +3,7 @@
 
 import type { Metadata } from "next";
 import Link from "next/link";
+import { personSchema } from "@/lib/person";
 
 export const metadata: Metadata = {
   title: "Metodologie de calcul salariu net 2026",
@@ -28,11 +29,7 @@ const jsonLd = {
         "Formulele complete și sursele legislative folosite de calculatorul salariile.ro: CAS 25%, CASS 10%, impozit 10%, CAM 2,25%, deducere personală art. 77 Cod Fiscal, facilitate OUG 89/2025.",
       url: "https://salariile.ro/metodologie",
       inLanguage: "ro-RO",
-      author: {
-        "@type": "Person",
-        name: "Știuriuc Sorin-Marian",
-        jobTitle: "Dezvoltator full-stack",
-      },
+      author: personSchema,
       publisher: {
         "@type": "Organization",
         name: "Salariile.ro",
@@ -69,11 +66,14 @@ export default function MetodologiePage() {
             <span>Metodologie</span>
           </nav>
           <h1>Metodologie de calcul</h1>
+          <p className="article-byline">
+            Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Publicat 1 aprilie 2026 · Actualizat 30 aprilie 2026
+          </p>
           <p className="subtitle">
             Documentația completă a formulelor folosite de calculator. Fiecare componentă este însoțită de articolul exact din Codul Fiscal sau actul normativ aplicabil în 2026.
           </p>
           <p className="skeleton-hint">
-            ULTIMA REVIZUIRE: 30 APRILIE 2026 · SINCRONIZAT CU DECLARAȚIA 112 ANAF
+            SINCRONIZAT CU DECLARAȚIA 112 ANAF
           </p>
         </div>
       </section>

@@ -43,7 +43,7 @@ export default function Header() {
           {/* Acest span are clasa topbar-status care adaugă pătrățelul alb */}
           <span className="topbar-status">Date oficiale · Sincronizat cu Monitorul Oficial 196/2026</span>
           {/* Acest span va fi eliminat complet pe mobil prin CSS */}
-          <span>Sistem validat · ANAF D-112</span>
+          <span>Aliniat cu Declarația 112 ANAF</span>
         </div>
       </div>
 

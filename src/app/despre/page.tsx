@@ -3,6 +3,7 @@
 
 import type { Metadata } from "next";
 import Link from "next/link";
+import { personSchema } from "@/lib/person";
 
 export const metadata: Metadata = {
   title: "Despre proiect: cine întreține site-ul",
@@ -28,13 +29,7 @@ const jsonLd = {
         "Pagina Despre a salariile.ro: cine întreține proiectul, motivația, metodologia de menținere a acurateței.",
       url: "https://salariile.ro/despre",
       inLanguage: "ro-RO",
-      mainEntity: {
-        "@type": "Person",
-        name: "Știuriuc Sorin-Marian",
-        jobTitle: "Dezvoltator full-stack",
-        description:
-          "Întreține salariile.ro ca proiect personal independent de transparență fiscală pentru România.",
-      },
+      mainEntity: personSchema,
       isPartOf: {
         "@type": "WebSite",
         name: "Salariile.ro",

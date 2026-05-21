@@ -4,6 +4,7 @@
 
 import type { Metadata } from "next";
 import Link from "next/link";
+import { personSchema } from "@/lib/person";
 
 // ─── Metadata SEO ────────────────────────────────────────────────────────────
 
@@ -153,7 +154,7 @@ const jsonLd = {
       headline: "Zile libere 2026 în România: calendar complet sărbători legale",
       description:
         "Calendar oficial cu 17 sărbători legale 2026 (Codul Muncii art. 139), distribuția lunară a zilelor lucrătoare (total 249), ore lucrătoare (1.992) și punți recomandate pentru weekend-uri prelungite.",
-      author: { "@type": "Organization", name: "Salariile.ro", url: "https://salariile.ro" },
+      author: personSchema,
       publisher: {
         "@type": "Organization",
         name: "Salariile.ro",
@@ -191,11 +192,14 @@ export default function ZileLibere2026Page() {
             <span>Zile libere 2026</span>
           </nav>
           <h1>Zile libere 2026 în România</h1>
+          <p className="article-byline">
+            Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Publicat 19 mai 2026 · Actualizat 19 mai 2026
+          </p>
           <p className="subtitle">
             Calendar complet cu <strong>17 sărbători legale</strong> conform Codului Muncii art. 139, distribuția lunară a celor <strong>249 zile lucrătoare</strong> și a celor <strong>1.992 ore lucrătoare</strong>, plus punți recomandate pentru weekend-uri prelungite.
           </p>
           <p className="skeleton-hint">
-            ULTIMA ACTUALIZARE: 19 MAI 2026 · SURSA: CODUL MUNCII ART. 139 (LEGEA 53/2003)
+            SURSA: CODUL MUNCII ART. 139 (LEGEA 53/2003)
           </p>
         </div>
       </section>

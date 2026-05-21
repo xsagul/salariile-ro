@@ -4,6 +4,7 @@
 
 import type { Metadata } from "next";
 import Link from "next/link";
+import { personSchema } from "@/lib/person";
 
 // ─── Metadata SEO ────────────────────────────────────────────────────────────
 
@@ -94,7 +95,7 @@ const jsonLd = {
       headline: "Salariul minim brut 2026 în România: 4.050 → 4.325 lei",
       description:
         "Analiză completă a salariului minim brut pe țară în 2026: cadrul legal (HG 146/2026, OUG 89/2025), calcul net detaliat, sectoare specifice (construcții 4.582 lei), plafoane fiscale și obligații pentru angajatori.",
-      author: { "@type": "Organization", name: "Salariile.ro", url: "https://salariile.ro" },
+      author: personSchema,
       publisher: {
         "@type": "Organization",
         name: "Salariile.ro",
@@ -132,11 +133,14 @@ export default function SalariuMinimPage() {
             <span>Salariul minim 2026</span>
           </nav>
           <h1>Salariul minim brut 2026</h1>
+          <p className="article-byline">
+            Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Publicat 15 martie 2026 · Actualizat 30 aprilie 2026
+          </p>
           <p className="subtitle">
             Pentru anul 2026, salariul minim brut pe țară garantat în plată are două valori: <strong>4.050 lei</strong> până la 30 iunie și <strong>4.325 lei</strong> începând cu 1 iulie (HG 146/2026, publicat în Monitorul Oficial nr. 196 din 13 martie 2026).
           </p>
           <p className="skeleton-hint">
-            ULTIMA ACTUALIZARE: 30 APRILIE 2026 · SURSE: MONITORUL OFICIAL, ANAF, MMUNCII
+            SURSE: MONITORUL OFICIAL, ANAF, MMUNCII
           </p>
         </div>
       </section>

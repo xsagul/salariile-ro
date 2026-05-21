@@ -1,6 +1,7 @@
 // src/app/page.tsx
 import Link from "next/link";
 import CalculatorSalariu from "@/app/components/CalculatorSalariu";
+import { personSchema } from "@/lib/person";
 
 // 1. Extragem datele pentru a le folosi și în schema ascunsă, și pe ecran
 const faqData = [
@@ -46,7 +47,9 @@ const homepageJsonLd = {
         "@type": "ImageObject",
         url: "https://salariile.ro/og-image.png",
       },
+      founder: { "@id": "https://salariile.ro/#person" },
     },
+    personSchema,
     {
       "@type": "WebApplication",
       "@id": "https://salariile.ro/#calculator",

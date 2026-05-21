@@ -4,6 +4,7 @@
 
 import type { Metadata } from "next";
 import Link from "next/link";
+import { personSchema } from "@/lib/person";
 
 // ─── Metadata SEO ────────────────────────────────────────────────────────────
 
@@ -94,7 +95,7 @@ const jsonLd = {
       headline: "Salariul mediu brut pe economie 2026: 9.192 lei",
       description:
         "Analiză completă a salariului mediu brut pe economie pentru 2026: cadrul legal (Legea 44/2026), calcul net, ajutor de deces, plafoane sociale, date reale INS și prognoze CNSP.",
-      author: { "@type": "Organization", name: "Salariile.ro", url: "https://salariile.ro" },
+      author: personSchema,
       publisher: {
         "@type": "Organization",
         name: "Salariile.ro",
@@ -132,11 +133,14 @@ export default function SalariuMediuPage() {
             <span>Salariul mediu 2026</span>
           </nav>
           <h1>Salariul mediu brut pe economie 2026</h1>
+          <p className="article-byline">
+            Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Publicat 30 martie 2026 · Actualizat 30 aprilie 2026
+          </p>
           <p className="subtitle">
             Câștigul salarial mediu brut utilizat la fundamentarea bugetului asigurărilor sociale pentru 2026 este <strong>9.192 lei</strong> lunar, stabilit prin Legea 44/2026, în vigoare din 30 martie 2026.
           </p>
           <p className="skeleton-hint">
-            ULTIMA ACTUALIZARE: 30 APRILIE 2026 · SURSE: LEGEA 44/2026, CNSP, INS
+            SURSE: LEGEA 44/2026, CNSP, INS
           </p>
         </div>
       </section>

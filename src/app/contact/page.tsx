@@ -3,6 +3,7 @@
 
 import type { Metadata } from "next";
 import Link from "next/link";
+import { personSchema } from "@/lib/person";
 
 export const metadata: Metadata = {
   title: "Contact — raportează erori sau sugestii",
@@ -29,10 +30,8 @@ const jsonLd = {
       url: "https://salariile.ro/contact",
       inLanguage: "ro-RO",
       mainEntity: {
-        "@type": "Person",
-        name: "Știuriuc Sorin-Marian",
+        ...personSchema,
         email: "contact@salariile.ro",
-        jobTitle: "Întreține salariile.ro",
       },
     },
   ],

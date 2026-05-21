@@ -872,6 +872,26 @@ select:focus { border-color: var(--accent); }
   line-height: var(--lh-base);
 }
 
+/* Author byline — semnal vizibil E-E-A-T pe paginile editoriale (Article schema).
+   Apare imediat sub H1, înainte de subtitle. Quality Rater Guidelines Google
+   cer ca pe pagini YMYL autorul să fie identificabil vizual, nu doar în JSON-LD. */
+.article-byline {
+  font-size: var(--fs-sm);
+  color: var(--muted-strong, var(--muted));
+  margin-top: var(--s-3);
+  margin-bottom: var(--s-3);
+  line-height: var(--lh-base);
+}
+.article-byline a {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--muted-soft);
+  text-underline-offset: 3px;
+}
+.article-byline a:hover {
+  text-decoration-color: var(--text);
+}
+
 /* ─── Section surfaces ───────────────────────────────────────────────────── */
 .section-surface {
   background: var(--surface);
@@ -1052,14 +1072,51 @@ select:focus { border-color: var(--accent); }
   margin-bottom: var(--s-2);
 }
 .footer-links a:hover { color: white; }
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-4);
+  flex-wrap: wrap;
+}
 .footer-bottom p {
   font-size: var(--fs-xs);
   color: rgba(255, 255, 255, .6);
-  text-align: center;
+  margin: 0;
+}
+/* Profiluri publice — iconițe minimaliste alb-negru.
+   Semnal E-E-A-T vizibil pentru Quality Raters Google.
+   Hover → opacitate mai mare (semnal de interactivitate, fără culoare nouă). */
+.footer-social {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+}
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  color: rgba(255, 255, 255, .6);
+  transition: color .15s ease, background-color .15s ease;
+}
+.footer-social a:hover,
+.footer-social a:focus-visible {
+  color: white;
+  background: rgba(255, 255, 255, .08);
+}
+.footer-social svg {
+  display: block;
 }
 @media (max-width: 640px) {
   .footer-top { flex-direction: column; }
   .footer-links { grid-template-columns: 1fr 1fr; }
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
