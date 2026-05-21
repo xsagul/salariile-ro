@@ -334,7 +334,7 @@ export default function CalculatorSalariu({
           {/* Dateline tehnic, scurt și curat */}
           {!titluCustom && (
             <div className="dateline">
-              Ultima actualizare: 30 aprilie 2026 · Validat ANAF D-112
+              Ultima actualizare: 30 aprilie 2026 · Sincronizat cu Declarația 112 ANAF
             </div>
           )}
         </div>
