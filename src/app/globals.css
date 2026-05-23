@@ -17,20 +17,11 @@
   --muted: #555555;
   --muted-soft: #757575;
   --accent: #111111;
-  --accent-light: #f5f3ee;
   --accent-mid: #404040;
-  --warn: #f59e0b;
-  --warn-light: #fef9e7;
-  --warn-badge-bg: #fef3c7;
-  --warn-badge-text: #92400e;
-  --danger: #ef4444;
 
   /* Surface */
   --radius: 0px;
-  --radius-sm: 0px;
-  --radius-xs: 0px;
   --shadow: 0 1px 2px rgba(0, 0, 0, .04);
-  --shadow-soft: 0 4px 20px rgba(0, 0, 0, .04);
 
   /* ─── Spacing scale (4pt grid) ───────────────────────── */
   --s-1: 4px;
@@ -40,7 +31,6 @@
   --s-6: 24px;
   --s-8: 32px;
   --s-12: 48px;
-  --s-16: 64px;
 
   /* ─── Font size scale (6 mărimi) ────────────────────── */
   --fs-xs: 12px;
@@ -58,7 +48,6 @@
   /* ─── Letter-spacing scale ─────────────────────────── */
   --ls-tight: -0.03em;
   --ls-tighter: -0.02em;
-  --ls-normal: 0;
   --ls-wide: 0.05em;
   --ls-wider: 0.1em;
 
@@ -111,8 +100,6 @@ h3 {
   letter-spacing: -0.01em;
   margin-bottom: var(--s-3);
 }
-h3.accent { color: var(--accent); }
-h3.warn { color: var(--warn); }
 
 p {
   color: var(--muted);
@@ -131,8 +118,7 @@ a:hover { color: var(--accent-mid); }
 /* Editorial: link-uri în paragrafe + FAQ + source-note → underline subtle */
 p a,
 .faq-answer a,
-.source-note a,
-.article a {
+.source-note a {
   text-decoration: underline;
   text-underline-offset: 3px;
   text-decoration-thickness: 1px;
@@ -140,8 +126,7 @@ p a,
 }
 p a:hover,
 .faq-answer a:hover,
-.source-note a:hover,
-.article a:hover {
+.source-note a:hover {
   text-decoration-color: var(--text);
 }
 
@@ -150,7 +135,6 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
 
 /* ─── Layout ─────────────────────────────────────────────────────────────── */
 .container { max-width: 1180px; margin: 0 auto; padding: 0 var(--s-6); }
-.container-narrow { max-width: 760px; margin: 0 auto; padding: 0 var(--s-6); }
 
 /* ─── Topbar (Autoritate) ────────────────────────────────────────────────── */
 .topbar {
@@ -363,17 +347,6 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
 .card-head h2 { font-size: var(--fs-md); margin-bottom: 2px; }
 .card-head p { font-size: var(--fs-sm); color: var(--muted); }
 
-/* ─── Eyebrow + dist-label (etichete mici uppercase) ───────────────────── */
-.eyebrow,
-.dist-label {
-  font-size: var(--fs-xs);
-  font-weight: var(--fw-medium);
-  text-transform: uppercase;
-  letter-spacing: var(--ls-wider);
-  color: var(--muted-soft);
-  margin-bottom: var(--s-3);
-}
-
 /* ─── Calculator layout (pattern Stitch: border în jur + simetrie 2 coloane) */
 .calc-layout {
   display: grid;
@@ -423,7 +396,6 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
   }
   /* mobile: padding container redus la --s-3 (12px) — câștigă spațiu pentru tabel */
   .container { padding: 0 var(--s-3); }
-  .container-narrow { padding: 0 var(--s-3); }
   .nav-desktop { display: none; }
   .hamburger { display: flex; }
   
@@ -666,18 +638,6 @@ select:focus { border-color: var(--accent); }
   width: 100%;
 }
 
-.results-header {
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-bold);
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: var(--ls-wide);
-  margin-bottom: var(--s-6);
-  padding-bottom: var(--s-2);
-  border-bottom: 1px solid var(--border);
-  width: 100%;
-}
-
 .flat-table {
   width: 100%;
   border-collapse: collapse;
@@ -892,132 +852,11 @@ select:focus { border-color: var(--accent); }
   text-decoration-color: var(--text);
 }
 
-/* ─── Section surfaces ───────────────────────────────────────────────────── */
-.section-surface {
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-  padding: var(--s-8) 0;
-}
-
 /* Article-section: pagini de conținut (/salariu-minim, /salariu-mediu) */
-.article-section { 
-  padding: var(--s-12) 0 var(--s-8); 
+.article-section {
+  padding: var(--s-12) 0 var(--s-8);
   border-top: 1px solid var(--border-strong);
   background: var(--bg);
-}
-.article { margin-bottom: var(--s-12); }
-.article > p { margin-bottom: var(--s-4); }
-
-/* ─── Editorial Layout (text + sidebar) ──────────────────────────────────
-   Pattern NYT/Stripe Press: text principal la lățime ergonomică (~720px),
-   sidebar lateral cu metadata (glosar, surse). Pe mobile stack vertical. */
-.editorial-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.85fr) minmax(0, 1fr);
-  gap: var(--s-12);
-}
-
-.editorial-text { min-width: 0; }
-.editorial-text > h2:first-child { margin-top: 0; }
-
-.editorial-side {
-  min-width: 0;
-  border-left: 1px solid var(--border);
-  padding-left: var(--s-8);
-}
-
-.side-block { margin-bottom: var(--s-8); }
-.side-block:last-child { margin-bottom: 0; }
-
-.side-eyebrow {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: var(--fs-xs);
-  font-weight: var(--fw-bold);
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: var(--ls-wider);
-  margin: 0 0 var(--s-3);
-  padding-bottom: var(--s-2);
-  border-bottom: 1px solid var(--border);
-}
-
-/* Glosar — termen + procent + definiție scurtă */
-.glosar-list { display: flex; flex-direction: column; }
-.glosar-item {
-  padding: var(--s-3) 0;
-  border-bottom: 1px solid var(--border);
-}
-.glosar-item:first-child { padding-top: 0; }
-.glosar-item:last-child { border-bottom: none; padding-bottom: 0; }
-.glosar-term {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: var(--s-2);
-  margin-bottom: var(--s-1);
-}
-.glosar-term-name {
-  font-weight: var(--fw-medium);
-  font-size: var(--fs-sm);
-  color: var(--text);
-}
-.glosar-term-pct {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: var(--fs-xs);
-  color: var(--muted);
-  font-variant-numeric: tabular-nums;
-  font-weight: var(--fw-medium);
-}
-.glosar-def {
-  font-size: var(--fs-xs);
-  color: var(--muted);
-  line-height: var(--lh-base);
-  margin: 0;
-}
-
-/* Surse oficiale — listă cu link-uri + meta */
-.surse-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.surse-item {
-  padding: var(--s-3) 0;
-  border-bottom: 1px solid var(--border);
-  font-size: var(--fs-sm);
-}
-.surse-item:first-child { padding-top: 0; }
-.surse-item:last-child { border-bottom: none; padding-bottom: 0; }
-.surse-item a {
-  color: var(--text);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  text-decoration-thickness: 1px;
-  font-weight: var(--fw-medium);
-}
-.surse-item a:hover { background: var(--surface-bright); }
-.surse-meta {
-  display: block;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: var(--fs-xs);
-  color: var(--muted-soft);
-  text-transform: uppercase;
-  letter-spacing: var(--ls-wide);
-  margin-top: var(--s-1);
-}
-
-/* Mobile: stack vertical, sidebar dedesubt cu border-top în loc de border-left */
-@media (max-width: 768px) {
-  .editorial-grid {
-    grid-template-columns: 1fr;
-    gap: var(--s-8);
-  }
-  .editorial-side {
-    border-left: none;
-    border-top: 1px solid var(--border);
-    padding-left: 0;
-    padding-top: var(--s-8);
-  }
 }
 
 /* Info section (FAQ pe homepage) */
@@ -1123,97 +962,6 @@ select:focus { border-color: var(--accent); }
    COMPONENTE PAGINI DE CONȚINUT (/salariu-minim, /salariu-mediu)
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/* Grid auto-fit pentru carduri (S1/S2 pe /salariu-minim) */
-.grid-auto {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--s-4);
-}
-
-/* Stat rows (Brut / Net / Cost angajator pe carduri) */
-.stat-rows { display: flex; flex-direction: column; gap: var(--s-3); }
-.stat-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.stat-row > span { font-size: var(--fs-sm); color: var(--muted); }
-.stat-row > strong { font-size: var(--fs-base); font-weight: var(--fw-medium); color: var(--text); }
-.stat-row.lg > strong { font-size: var(--fs-md); }
-.stat-row.xl > strong {
-  font-size: var(--fs-lg);
-  font-weight: var(--fw-bold);
-  color: var(--accent);
-}
-.stat-row.sm > span,
-.stat-row.sm > strong { font-size: var(--fs-xs); }
-.stat-divider {
-  height: 1px;
-  background: var(--border);
-  margin: var(--s-1) 0;
-}
-
-/* Chip — link text editorial */
-.chip {
-  display: inline-block;
-  margin-top: var(--s-4);
-  padding: 0;
-  background: transparent;
-  color: var(--text);
-  border-radius: 0;
-  text-align: left;
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-normal);
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  text-decoration-thickness: 1px;
-}
-
-/* Tabel data (istoric salariu minim) */
-.data-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: var(--fs-sm);
-}
-.data-table thead tr { background: var(--surface-alt); }
-.data-table th {
-  padding: var(--s-3);
-  border-bottom: 2px solid var(--border);
-  text-align: left;
-  font-weight: var(--fw-medium);
-}
-.data-table th.right { text-align: right; }
-.data-table td {
-  padding: var(--s-3);
-  border-bottom: 1px solid var(--border);
-}
-.data-table td.right { text-align: right; }
-.data-table tr.highlight { background: var(--accent-light); }
-.data-table tr.highlight td { font-weight: var(--fw-bold); }
-
-/* Calc row (CAS/CASS/Impozit pe pagina /salariu-minim) */
-.calc-row {
-  display: flex;
-  justify-content: space-between;
-  padding: var(--s-2) 0;
-  border-bottom: 1px solid var(--border);
-  font-size: var(--fs-sm);
-}
-.calc-row > span { color: var(--muted); }
-.calc-row > strong { color: var(--text); font-weight: var(--fw-medium); }
-.calc-row.bold > strong { font-weight: var(--fw-bold); }
-.calc-row.danger > strong { color: var(--danger); }
-.calc-row.accent > strong { color: var(--accent); }
-.calc-row.warn > strong { color: var(--warn); }
-.calc-row.total {
-  margin-top: var(--s-2);
-  padding: var(--s-3);
-  background: var(--surface-alt);
-  border-radius: 0;
-  border: none;
-}
-.calc-row.total > strong { color: var(--text); font-size: var(--fs-base); }
-
 /* FAQ accordion */
 .faq-list { display: flex; flex-direction: column; }
 .faq-item {
@@ -1291,10 +1039,7 @@ select:focus { border-color: var(--accent); }
 
 /* ─── Utilities ──────────────────────────────────────────────────────────── */
 .muted { color: var(--muted); }
-.text-xs { font-size: var(--fs-xs); }
-.text-center { text-align: center; }
 .mb-2 { margin-bottom: var(--s-4); }
-.right { text-align: right; }
 
 /* Wrapper scrollabil pentru tabele pe mobile */
 .table-scroll {
