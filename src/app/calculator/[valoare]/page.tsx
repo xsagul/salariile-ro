@@ -107,7 +107,7 @@ function getContextBrut(v: number): Context {
     return {
       pozitie: <>Brutul de <strong>{fmt(v)} lei</strong> se situează în zona mediană a salariilor din economia României. La acest nivel se găsesc majoritatea posturilor administrative, comerciale și operaționale cu 2–5 ani experiență. O parte importantă dintre salariații cu studii superioare sunt remunerați în această bandă.</>,
       sectoare: ["Specialist marketing, comunicare", "Contabil cu experiență", "Reprezentant vânzări B2B", "Inginer junior (non-IT)", "Coordonator proiect", "Specialist HR, recrutare"],
-      insight: <>La acest nivel salarial, negocierea pe net e mai relevantă decât pe brut. Folosește <Link href="/">calculatorul în mod „din net în brut"</Link> pentru a afla exact ce brut îți garantează netul dorit, ținând cont de toate variabilele fiscale (funcție de bază, copii, vârstă sub 26 ani).</>,
+      insight: <>La acest nivel salarial, negocierea pe net e mai relevantă decât pe brut. Folosește <Link href="/">calculatorul în mod „din net în brut”</Link> pentru a afla exact ce brut îți garantează netul dorit, ținând cont de toate variabilele fiscale (funcție de bază, copii, vârstă sub 26 ani).</>,
     };
   }
 
@@ -115,7 +115,7 @@ function getContextBrut(v: number): Context {
     return {
       pozitie: <>Brutul de <strong>{fmt(v)} lei</strong> se apropie sau se egalează cu <Link href="/salariu-mediu">salariul mediu brut pe economie</Link> (9.192 lei în 2026, conform Legii 44/2026). Reprezintă nivelul tipic pentru specialiști cu studii superioare și 3–5 ani experiență, middle management în firme medii sau roluri tehnice intermediare în industrie.</>,
       sectoare: ["Specialist IT junior, QA", "Inginer cu 3–5 ani experiență", "Team lead (echipe mici)", "Specialist financiar-contabil", "Project Manager junior", "Specialist juridic, fiscal"],
-      insight: <>În această tranșă, beneficiile extrasalariale (tichete de masă, asigurare medicală privată, bonusuri de performanță) pot adăuga 10–15% la valoarea netă efectivă. Folosește câmpul „tichete de masă" din calculator pentru a vedea impactul real, ținând cont că tichetele sunt supuse CASS și impozit pe venit din 2024.</>,
+      insight: <>În această tranșă, beneficiile extrasalariale (tichete de masă, asigurare medicală privată, bonusuri de performanță) pot adăuga 10–15% la valoarea netă efectivă. Folosește câmpul „tichete de masă” din calculator pentru a vedea impactul real, ținând cont că tichetele sunt supuse CASS și impozit pe venit din 2024.</>,
     };
   }
 
@@ -164,7 +164,7 @@ function getContextNet(v: number): Context {
     return {
       pozitie: <>Netul de <strong>{fmt(v)} lei</strong> se apropie de <Link href="/salariu-mediu">salariul mediu net pe economie</Link> (~5.377 lei în 2026). Este nivelul tipic pentru specialiști cu experiență, middle management în firme medii sau roluri tehnice intermediare.</>,
       sectoare: ["IT specialist junior-mid", "Inginer cu 3–5 ani experiență", "Team lead echipe mici", "Specialist financiar-contabil senior", "Project Manager junior", "Specialist juridic, fiscal"],
-      insight: <>În această tranșă, beneficiile suplimentare (tichete de masă, asigurare privată, bonusuri) pot reprezenta 10–15% din pachetul total. Tichetele de masă sunt supuse CASS și impozit pe venit din 2024 — folosește calculatorul cu câmpul „tichete" pentru cifra reală.</>,
+      insight: <>În această tranșă, beneficiile suplimentare (tichete de masă, asigurare privată, bonusuri) pot reprezenta 10–15% din pachetul total. Tichetele de masă sunt supuse CASS și impozit pe venit din 2024 — folosește calculatorul cu câmpul „tichete” pentru cifra reală.</>,
     };
   }
 
@@ -192,13 +192,13 @@ function DefalcareFiscala({ brut, rez }: { brut: number; rez: Rezultat }) {
       <strong>impozit pe venit</strong> (10%) — {fmt(rez.impozit)} lei.{" "}
       {rez.deducerePersonala > 0 ? (
         <>
-          Se aplică o deducere personală de {fmt(rez.deducerePersonala)} lei, care reduce baza
-          impozabilă la {fmt(rez.bazaCalculImpozit)} lei.{" "}
+          Se aplică o deducere personală de {fmt(rez.deducerePersonala)} lei, care reduce
+          impozitul datorat.{" "}
         </>
       ) : (
         <>
-          La acest nivel deducerea personală nu se aplică (brutul depășește plafonul de 6.050 lei),
-          deci baza impozabilă este {fmt(rez.bazaCalculImpozit)} lei.{" "}
+          La acest nivel deducerea personală nu se aplică, deoarece brutul depășește plafonul
+          de 6.050 lei.{" "}
         </>
       )}
       Rezultă un salariu <strong>net de {fmt(rez.net)} lei</strong> — adică {rez.brutNet}% din brut.
@@ -259,7 +259,6 @@ export default async function CalculatorDinamic({ params }: Props) {
         modInitial={modInitial}
         titluCustom={titluDinamic}
         subtitluCustom={subtitluDinamic}
-        ascundeInfoFiscale={true}
       />
 
       {/* Conținut editorial — poziție (categorie) + defalcare reală (unică) */}

@@ -3,25 +3,83 @@
    Curățat: doar clase folosite în JSX-urile actuale
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/* ─── Design tokens ──────────────────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════
+   NIVEL 1: Primitivi — nu folosi direct în UI
+   ═══════════════════════════════════════════════════════ */
 :root {
-  /* Palette — Editorial */
-  --bg: #ffffff;
-  --surface: #ffffff;
-  --surface-alt: #f6f3f2;
-  --surface-container-low: #f6f3f2;
-  --surface-bright: #fcf9f8;
-  --border: #e5e3dd;
-  --border-strong: #d4d2cb;
-  --text: #111111;
-  --muted: #555555;
-  --muted-soft: #757575;
-  --accent: #111111;
-  --accent-mid: #404040;
+  /* ── Scara neutră ── */
+  --n-0:                 oklch(0.994 0.0024 80);   /* --bg-paper · anchor */
+  --n-1:                 oklch(0.98 0.008 80);     /* --bg · anchor */
+  --n-2:                 oklch(0.9 0.00736 79.9);  /* --bg-elevated · Lc 15 */
+  --n-3:                 oklch(0.855 0.007 79.9);  /* --surface · Lc 23 */
+  --n-4:                 oklch(0.814 0.00666 79.8);/* --surface-2 · Lc 30 */
+  --n-5:                 oklch(0.771 0.00632 79.8);/* --surface-active · Lc 37.1 */
+  --n-6:                 oklch(0.88 0.0072 79.9);  /* --border-subtle · Lc 18.6 */
+  --n-7:                 oklch(0.79 0.00647 79.8); /* --border · Lc 34 */
+  --n-8:                 oklch(0.242 0.00187 83.9);/* --button-bg · WCAG 15.44:1 */
+  --n-9:                 oklch(0.316 0.00247 82.5);/* --button-bg-hover · WCAG 12.15:1 */
+  --n-10:                oklch(0.386 0.00307 81.5);/* --text-muted · WCAG 9.22:1 */
+  --n-11:                oklch(0.258 0.00199 83.5);/* --text · WCAG 14.75:1 */
 
-  /* Surface */
+  /* ── Scara accent ── */
+  --a-50:                oklch(0.863 0.01319 260);  /* --accent-subtle */
+  --a-200:               oklch(0.58 0.00889 260);   /* --accent-border */
+  --a-600:               oklch(0.541 0.00831 259.9);/* --accent-text · WCAG 4.76:1 */
+  --a-900:               oklch(0.354 0.00552 259.7);/* --accent-btn · WCAG 10.5:1 */
+  --a-910:               oklch(0.316 0.00495 259.7);/* --accent-btn-hover · WCAG 12.15:1 */
+}
+
+/* ═══════════════════════════════════════════════════════
+   NIVEL 2: Semantic aliases — folosește acestea în UI
+   ═══════════════════════════════════════════════════════ */
+:root {
+  /* ── Paleta neutră ── */
+  --bg-paper:              var(--n-0);
+  --bg:                    var(--n-1);
+  --bg-elevated:           var(--n-2);
+  --surface:               var(--n-3);
+  --surface-2:             var(--n-4);
+  --surface-active:        var(--n-5);
+  --border-subtle:         var(--n-6);
+  --border:                var(--n-7);
+  --button-bg:             var(--n-8);
+  --button-bg-hover:       var(--n-9);
+  --text-muted:            var(--n-10);
+  --text:                  var(--n-11);
+  --button-text:           var(--n-1);
+  --button-text-hover:     var(--n-1);
+
+  /* ── Accent ── */
+  --accent-subtle:         var(--a-50);
+  --accent-border:         var(--a-200);
+  --accent-text:           var(--a-600);
+  --accent-btn:            var(--a-900);
+  --accent-btn-hover:      var(--a-910);
+
+  /* ── Semantic ── */
+  /* Error */
+  --error-bg:              oklch(0.856 0.01309 22);
+  --error-border:          oklch(0.794 0.01215 22);
+  --error-text:            oklch(0.426 0.00656 22);
+  /* Warning */
+  --warning-bg:            oklch(0.855 0.01308 72);
+  --warning-border:        oklch(0.793 0.01213 72);
+  --warning-text:          oklch(0.426 0.00656 72.1);
+  /* Success */
+  --success-bg:            oklch(0.853 0.01131 145);
+  --success-border:        oklch(0.792 0.01049 145);
+  --success-text:          oklch(0.425 0.00569 145.2);
+  /* Info */
+  --info-bg:               oklch(0.854 0.01131 232);
+  --info-border:           oklch(0.792 0.01049 232);
+  --info-text:             oklch(0.425 0.0057 231.9);
+
+  /* ── Shadows ── */
+  --shadow-sm:             0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --shadow-md:             0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.05);
+
+  /* ── Surface (păstrate pentru compat) ── */
   --radius: 0px;
-  --shadow: 0 1px 2px rgba(0, 0, 0, .04);
 
   /* ─── Spacing scale (4pt grid) ───────────────────────── */
   --s-1: 4px;
@@ -61,18 +119,25 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
-  /* compensează site-header sticky (64px) când se face scroll-into-view
-     sau navigare la #ancore; fără asta, target-ul e tăiat de bară */
-  scroll-padding-top: 64px;
+  /* Header e non-sticky (parte din hero), deci nu mai e necesar scroll-padding. */
+  scroll-padding-top: 0;
 }
 
 body {
-  font-family: var(--font-figtree), system-ui, -apple-system, sans-serif;
+  font-family: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* Linear-style font features: cv11 (curved 1 → straighter 1),
+     ss01 (open digits), ss03 (curved IL ambiguities) — face Inter să arate
+     polished, mai aproape de Inter Display.
+     tabular-nums asigură că toate cifrele au aceeași lățime (esențial pentru
+     tabele fiscale, dateline-uri, sume bani). */
+  font-feature-settings: "cv11", "ss01", "ss03";
+  font-variant-numeric: tabular-nums;
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 /* ─── Typography ─────────────────────────────────────────────────────────── */
@@ -102,18 +167,18 @@ h3 {
 }
 
 p {
-  color: var(--muted);
+  color: var(--text-muted);
   line-height: var(--lh-base);
   margin-bottom: var(--s-4);
 }
 p:last-child { margin-bottom: 0; }
 
 a {
-  color: var(--accent);
+  color: var(--text);
   text-decoration: none;
   transition: color .15s;
 }
-a:hover { color: var(--accent-mid); }
+a:hover { color: var(--button-bg-hover); }
 
 /* Editorial: link-uri în paragrafe + FAQ + source-note → underline subtle */
 p a,
@@ -122,7 +187,7 @@ p a,
   text-decoration: underline;
   text-underline-offset: 3px;
   text-decoration-thickness: 1px;
-  text-decoration-color: var(--border-strong);
+  text-decoration-color: var(--border);
 }
 p a:hover,
 .faq-answer a:hover,
@@ -131,55 +196,20 @@ p a:hover,
 }
 
 strong { color: var(--text); font-weight: 600; }
-code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.875em; }
+code { font-family: inherit; font-size: 0.875em; font-feature-settings: "tnum"; }
 
 /* ─── Layout ─────────────────────────────────────────────────────────────── */
 .container { max-width: 1180px; margin: 0 auto; padding: 0 var(--s-6); }
 
 /* ─── Topbar (Autoritate) ────────────────────────────────────────────────── */
-.topbar {
-  background-color: var(--text);
-  color: #ffffff;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: var(--fs-xs);
-  text-transform: uppercase;
-  letter-spacing: var(--ls-wide);
-}
-
-.topbar .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: var(--s-8);
-}
-
-.topbar-status {
-  display: flex;
-  align-items: center;
-  gap: var(--s-2);
-}
-
-.topbar-status::before {
-  content: "";
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  background-color: #ffffff;
-}
-
-@media (max-width: 768px) {
-  .topbar {
-    display: none;
-  }
-}
-
-/* ─── Header Principal ───────────────────────────────────────────────────── */
+/* ─── Header Principal — Maggie Appleton / Linear pattern ─────────────────
+   Transparent, NEsticky, embedded în hero. Scroll-uiește natural cu pagina.
+   Fără background, fără border-bottom — nav-ul "plutește" peste hero bg. */
 .site-header {
-  background: var(--surface);
-  border-bottom: 1px solid var(--text);
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  background: transparent;
+  border-bottom: none;
+  position: relative;
+  z-index: 10;
 }
 
 .site-header .container {
@@ -217,7 +247,7 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
 }
 
 .nav-desktop a:hover { 
-  background-color: var(--border); 
+  background-color: var(--border-subtle); 
 }
 
 .nav-desktop a.active {
@@ -255,7 +285,7 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
 .nav-mobile {
   display: none;
   flex-direction: column;
-  background: var(--surface);
+  background: var(--bg-paper);
   border-bottom: 1px solid var(--text);
   padding: 0;
 }
@@ -264,11 +294,11 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
   padding: var(--s-4) var(--s-6);
   font-size: var(--fs-base);
   color: var(--text);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border-subtle);
   text-decoration: none;
 }
 .nav-mobile a:last-child { border-bottom: none; }
-.nav-mobile a.active { font-weight: var(--fw-bold); background-color: var(--surface-alt); }
+.nav-mobile a.active { font-weight: var(--fw-bold); background-color: var(--surface-2); }
 
 @media (max-width: 768px) {
   .nav-desktop { display: none; }
@@ -279,17 +309,16 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
 .hero {
   padding: var(--s-8) 0 var(--s-4); 
   background: var(--bg);
-  border-bottom: 1px solid var(--border-strong);
+  border-bottom: 1px solid var(--border);
 }
 
 .breadcrumb {
   display: flex;
   gap: var(--s-2);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: var(--fs-xs);
   text-transform: uppercase;
   letter-spacing: var(--ls-wide);
-  color: var(--muted-soft);
+  color: var(--text-muted);
   margin-bottom: var(--s-4);
 }
 .breadcrumb a { 
@@ -309,7 +338,7 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
 .subtitle {
   font-size: var(--fs-base);
   line-height: var(--lh-base);
-  color: var(--muted);
+  color: var(--text-muted);
   max-width: 640px;
   margin-bottom: var(--s-4);
 }
@@ -318,41 +347,46 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
   text-decoration: underline;
   text-underline-offset: 3px;
   text-decoration-thickness: 1px;
-  text-decoration-color: var(--border-strong);
+  text-decoration-color: var(--border);
 }
 .subtitle a:hover { 
   text-decoration-color: var(--text); 
 }
 
 .dateline {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: var(--fs-xs);
-  color: var(--muted-soft);
+  color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: var(--ls-wide);
   margin-top: 0;
 }
 
 /* ─── Cards ──────────────────────────────────────────────────────────────── */
+/* Card surface = bg-paper (cea mai deschisă culoare, ~alb pur)
+   Contrast subtil față de --bg (cream) — pattern editorial premium */
 .card {
-  background: var(--surface);
-  border: 1px solid var(--border);
+  background: var(--bg-paper);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-sm);
 }
 .card-head { 
   margin-bottom: var(--s-4); 
   padding-left: 0;
 }
 .card-head h2 { font-size: var(--fs-md); margin-bottom: 2px; }
-.card-head p { font-size: var(--fs-sm); color: var(--muted); }
+.card-head p { font-size: var(--fs-sm); color: var(--text-muted); }
 
-/* ─── Calculator layout (pattern Stitch: border în jur + simetrie 2 coloane) */
+/* ─── Calculator layout (pattern industry: 2 carduri separate 40/60) ──────
+   Form (compact) 40% / Results (table 6-10 rânduri) 60%.
+   Pattern dominant în finance calculators: Stripe, TurboTax, Bankrate.
+   Pe mobile stack vertical 100% (deja gestionat în media query). */
 .calc-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-  border: 1px solid var(--border-strong);
+  grid-template-columns: 2fr 3fr;
+  gap: var(--s-6);
+  background: transparent;
+  border: none;
   margin-top: var(--s-8);
   margin-bottom: var(--s-8);
 }
@@ -360,17 +394,13 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
 .calc-column {
   padding: var(--s-6);
   min-width: 0;
+  background: var(--bg-paper);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
 }
 
 .calc-column > * {
   width: 100%;
-}
-
-/* Vertical divider între cele 2 coloane lipite — DOAR pe desktop */
-@media (min-width: 769px) {
-  .calc-column + .calc-column {
-    border-left: 1px solid var(--border);
-  }
 }
 
 .calc-column-header {
@@ -380,7 +410,7 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
   letter-spacing: var(--ls-tighter);
   margin-bottom: var(--s-4);
   padding-bottom: var(--s-2);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 @media (max-width: 768px) {
@@ -390,9 +420,8 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
     border: none;                                  /* scoatem outer border — îl preluăm pe casete */
   }
   .calc-column {
-    /* mobile: fiecare coloană e o casetă independentă cu border propriu */
-    padding: var(--s-3);
-    border: 1px solid var(--border-strong);
+    /* mobile: padding mai mic, border și bg deja moștenite din regula desktop */
+    padding: var(--s-4);
   }
   /* mobile: padding container redus la --s-3 (12px) — câștigă spațiu pentru tabel */
   .container { padding: 0 var(--s-3); }
@@ -487,7 +516,7 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
   display: block;
   font-size: var(--fs-xs);
   font-weight: var(--fw-bold);
-  color: var(--muted);
+  color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: var(--ls-wider);
   margin-bottom: var(--s-2);
@@ -495,18 +524,18 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
 .hint {
   display: block;
   font-size: var(--fs-xs);
-  color: var(--muted);
+  color: var(--text-muted);
   margin-bottom: var(--s-1);
 }
 .input-wrap {
   display: flex;
-  border: 1px solid var(--border-strong);
+  border: 1px solid var(--border);
   border-radius: 0;
   overflow: hidden;
   transition: border-color .15s;
   width: 100%;
 }
-.input-wrap:focus-within { border-color: var(--accent); }
+.input-wrap:focus-within { border-color: var(--accent-border); }
 .input-wrap input {
   flex: 1;
   border: none;
@@ -520,33 +549,33 @@ code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8
   padding: 0 var(--s-3);
   background: transparent;
   font-size: var(--fs-xs);
-  color: var(--muted);
+  color: var(--text-muted);
   display: flex;
   align-items: center;
-  border-left: 1px solid var(--border-strong);
+  border-left: 1px solid var(--border);
   font-weight: var(--fw-medium);
   text-transform: uppercase;
   white-space: nowrap;
 }
 select {
   width: 100%;
-  border: 1px solid var(--border-strong);
+  border: 1px solid var(--border);
   border-radius: 0;
   padding: var(--s-3);
   font-size: var(--fs-sm);
-  background: var(--surface);
+  background: var(--bg-paper);
   color: var(--text);
   outline: none;
   cursor: pointer;
   transition: border-color .15s;
 }
-select:focus { border-color: var(--accent); }
+select:focus { border-color: var(--accent-border); }
 
 /* ─── Mod pills (Brut / Net) ─────────────────────────────────────────────── */
 .mod-pills {
   display: inline-flex;
   background: transparent;
-  border: 1px solid var(--border-strong);
+  border: 1px solid var(--border);
   border-radius: 0;
   padding: 0;
   gap: 0;
@@ -555,12 +584,12 @@ select:focus { border-color: var(--accent); }
   padding: var(--s-3) var(--s-4);
   border-radius: 0;
   border: none;
-  border-right: 1px solid var(--border-strong);
+  border-right: 1px solid var(--border);
   background: transparent;
   cursor: pointer;
   font-size: var(--fs-sm);
   font-weight: var(--fw-medium);
-  color: var(--muted);
+  color: var(--text-muted);
   transition: all .15s;
 }
 .pill:last-child {
@@ -574,10 +603,10 @@ select:focus { border-color: var(--accent); }
 .avansat-toggle {
   width: 100%;
   padding: var(--s-3) var(--s-2);
-  border: 1px dashed var(--border-strong);
+  border: 1px dashed var(--border);
   border-radius: 0;
   background: transparent;
-  color: var(--muted);
+  color: var(--text-muted);
   font-size: var(--fs-xs);
   font-weight: var(--fw-medium);
   letter-spacing: var(--ls-wide);
@@ -599,7 +628,7 @@ select:focus { border-color: var(--accent); }
   cursor: pointer;
   font-size: var(--fs-sm);
   font-weight: var(--fw-normal);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border-subtle);
   margin-bottom: var(--s-4);
 }
 .toggle-row:last-of-type { border-bottom: none; margin-bottom: 0; }
@@ -607,14 +636,14 @@ select:focus { border-color: var(--accent); }
   width: 44px;
   height: var(--s-6);
   border-radius: 12px;
-  background: var(--border);
+  background: var(--border-subtle);
   border: none;
   cursor: pointer;
   transition: background .2s;
   position: relative;
   flex-shrink: 0;
 }
-.toggle.on { background: var(--accent); }
+.toggle.on { background: var(--accent-btn); }
 .thumb {
   position: absolute;
   top: 50%;
@@ -647,21 +676,21 @@ select:focus { border-color: var(--accent); }
 
 /* Header tabel (ANGAJAT / SUMĂ) */
 .flat-table th {
-  background: var(--surface-container-low);
-  color: var(--muted);
+  background: var(--surface-2);
+  color: var(--text-muted);
   font-weight: var(--fw-bold);
   font-size: var(--fs-xs);
   text-transform: uppercase;
   letter-spacing: var(--ls-wide);
   padding: var(--s-3);
-  border: 1px solid var(--border);
-  border-bottom: 2px solid var(--border);
+  border: 1px solid var(--border-subtle);
+  border-bottom: 2px solid var(--border-subtle);
   text-align: left;
 }
 
 /* Rânduri off-white (Salariu brut) */
 .flat-table tr.row-bright td {
-  background-color: var(--surface-bright);
+  background-color: var(--bg-paper);
 }
 
 /* Bază impozabilă (alb, îngroșată) */
@@ -695,9 +724,9 @@ select:focus { border-color: var(--accent); }
 
 /* COST TOTAL — uppercase, off-white */
 .flat-table tr.total-cost td {
-  background-color: var(--surface-bright);
+  background-color: var(--bg-paper);
   font-weight: var(--fw-bold);
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--border-subtle);
   text-transform: uppercase;
   letter-spacing: var(--ls-wide);
 }
@@ -709,7 +738,7 @@ select:focus { border-color: var(--accent); }
 /* Celulele tabelului */
 .flat-table td {
   padding: var(--s-3);
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-subtle);
   text-align: left;
 }
 
@@ -727,9 +756,9 @@ select:focus { border-color: var(--accent); }
 .flat-table tr.total-retineri td {
   font-weight: var(--fw-medium);
   font-size: var(--fs-sm);
-  background-color: var(--surface-bright);
+  background-color: var(--bg-paper);
   color: var(--text);
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--border-subtle);
   padding-top: var(--s-3);
   padding-bottom: var(--s-3);
 }
@@ -741,7 +770,7 @@ select:focus { border-color: var(--accent); }
   gap: var(--s-2);
   margin-top: var(--s-6);
   padding: var(--s-3) var(--s-4);
-  border: 1px solid var(--border-strong);
+  border: 1px solid var(--border);
   background: transparent;
   color: var(--text);
   font-size: var(--fs-xs);
@@ -800,32 +829,35 @@ select:focus { border-color: var(--accent); }
    - tr.total-cost > td        (COST TOTAL ANGAJATOR)
    Contrast verificat: #555555 vs #fcf9f8 = 7.46:1, vs #f6f3f2 = 7.27:1. */
 .results-wrapper.skeleton .flat-table td {
-  color: var(--muted);
+  color: var(--text-muted);
 }
 .results-wrapper.skeleton .flat-table tr.row-bright td,
 .results-wrapper.skeleton .flat-table tr.row-base td {
-  color: var(--muted);
+  color: var(--text-muted);
   font-weight: var(--fw-normal);
 }
 .results-wrapper.skeleton .flat-table tr.total-retineri td,
 .results-wrapper.skeleton .flat-table tr.total-cost td {
-  color: var(--muted);
+  color: var(--text-muted);
   font-weight: var(--fw-normal);
 }
+/* SALARIU NET — întotdeauna întunecat, identic cu butonul Calculează.
+   Vizual: "valoarea principală" e marcată consecvent, chiar și înainte de
+   calcul. Em-dash "—" e cream pe negru, semnal de "valoare lipsă încă". */
 .results-wrapper.skeleton .flat-table tr.total-net td {
-  background-color: var(--surface-alt);
-  color: var(--muted);
-  border-color: var(--border);
+  background-color: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
+  font-weight: var(--fw-bold);
 }
 /* override .muted spans inside skeleton — altfel ar fi mai închise decât celulele bare */
 .results-wrapper.skeleton .flat-table .muted {
-  color: var(--muted);
+  color: var(--text-muted);
 }
 
 .skeleton-hint {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: var(--fs-xs);
-  color: var(--muted-soft);
+  color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: var(--ls-wide);
   margin-top: var(--s-4);
@@ -837,7 +869,7 @@ select:focus { border-color: var(--accent); }
    cer ca pe pagini YMYL autorul să fie identificabil vizual, nu doar în JSON-LD. */
 .article-byline {
   font-size: var(--fs-sm);
-  color: var(--muted-strong, var(--muted));
+  color: var(--text-muted);
   margin-top: var(--s-3);
   margin-bottom: var(--s-3);
   line-height: var(--lh-base);
@@ -845,7 +877,7 @@ select:focus { border-color: var(--accent); }
 .article-byline a {
   color: var(--text);
   text-decoration: underline;
-  text-decoration-color: var(--muted-soft);
+  text-decoration-color: var(--text-muted);
   text-underline-offset: 3px;
 }
 .article-byline a:hover {
@@ -855,22 +887,25 @@ select:focus { border-color: var(--accent); }
 /* Article-section: pagini de conținut (/salariu-minim, /salariu-mediu) */
 .article-section {
   padding: var(--s-12) 0 var(--s-8);
-  border-top: 1px solid var(--border-strong);
+  border-top: 1px solid var(--border);
   background: var(--bg);
 }
 
 /* Info section (FAQ pe homepage) */
 .info-section {
-  background: var(--surface-alt);
-  border-top: 1px solid var(--border-strong);
+  background: var(--bg);
+  border-top: 1px solid var(--border);
   padding: var(--s-12) 0;
 }
 
 /* ─── Footer ─────────────────────────────────────────────────────────────── */
+/* Pattern editorial: footer pe același bg ca restul site-ului,
+   delimitare doar prin border-top. Text dark, fără contrast inversat. */
 .site-footer {
-  background: var(--text);
-  color: rgba(255, 255, 255, .7);
+  background: var(--bg);
+  color: var(--text-muted);
   padding: var(--s-12) 0 var(--s-6);
+  border-top: 1px solid var(--border);
 }
 .footer-top {
   display: flex;
@@ -878,39 +913,39 @@ select:focus { border-color: var(--accent); }
   align-items: flex-start;
   margin-bottom: var(--s-8);
   padding-bottom: var(--s-8);
-  border-bottom: 1px solid rgba(255, 255, 255, .1);
+  border-bottom: 1px solid var(--border-subtle);
 }
 .footer-top p {
   font-size: var(--fs-sm);
   line-height: var(--lh-base);
   max-width: 400px;
-  color: rgba(255, 255, 255, .7);
+  color: var(--text-muted);
 }
-.site-footer .logo { color: white; }
-.site-footer .logo span { color: rgba(255, 255, 255, .6); }
+.site-footer .logo { color: var(--text); }
+.site-footer .logo span { color: var(--text-muted); }
 .footer-links {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--s-8);
   margin-bottom: var(--s-8);
   padding-bottom: var(--s-8);
-  border-bottom: 1px solid rgba(255, 255, 255, .1);
+  border-bottom: 1px solid var(--border-subtle);
 }
 .footer-links .footer-title {
   font-size: var(--fs-xs);
   font-weight: var(--fw-medium);
   text-transform: uppercase;
   letter-spacing: var(--ls-wide);
-  color: rgba(255, 255, 255, .7);
+  color: var(--text-muted);
   margin-bottom: var(--s-3);
 }
 .footer-links a {
   display: block;
-  color: rgba(255, 255, 255, .9);
+  color: var(--text);
   font-size: var(--fs-sm);
   margin-bottom: var(--s-2);
 }
-.footer-links a:hover { color: white; }
+.footer-links a:hover { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
 .footer-bottom {
   display: flex;
   align-items: center;
@@ -920,12 +955,11 @@ select:focus { border-color: var(--accent); }
 }
 .footer-bottom p {
   font-size: var(--fs-xs);
-  color: rgba(255, 255, 255, .6);
+  color: var(--text-muted);
   margin: 0;
 }
-/* Profiluri publice — iconițe minimaliste alb-negru.
-   Semnal E-E-A-T vizibil pentru Quality Raters Google.
-   Hover → opacitate mai mare (semnal de interactivitate, fără culoare nouă). */
+/* Profiluri publice — iconițe minimaliste pe bg cream.
+   Semnal E-E-A-T vizibil pentru Quality Raters Google. */
 .footer-social {
   display: inline-flex;
   align-items: center;
@@ -938,13 +972,13 @@ select:focus { border-color: var(--accent); }
   width: 32px;
   height: 32px;
   border-radius: 6px;
-  color: rgba(255, 255, 255, .6);
+  color: var(--text-muted);
   transition: color .15s ease, background-color .15s ease;
 }
 .footer-social a:hover,
 .footer-social a:focus-visible {
-  color: white;
-  background: rgba(255, 255, 255, .08);
+  color: var(--text);
+  background: var(--surface-2);
 }
 .footer-social svg {
   display: block;
@@ -965,7 +999,7 @@ select:focus { border-color: var(--accent); }
 /* FAQ accordion */
 .faq-list { display: flex; flex-direction: column; }
 .faq-item {
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border-subtle);
   padding: var(--s-4) 0;
 }
 .faq-item summary {
@@ -982,7 +1016,7 @@ select:focus { border-color: var(--accent); }
 .faq-item summary::-webkit-details-marker { display: none; }
 .faq-item summary::after {
   content: "+";
-  color: var(--accent);
+  color: var(--text);
   font-size: var(--fs-md);
   flex-shrink: 0;
 }
@@ -990,7 +1024,7 @@ select:focus { border-color: var(--accent); }
 .faq-item .faq-answer {
   margin-top: var(--s-3);
   font-size: var(--fs-base);
-  color: var(--muted);
+  color: var(--text-muted);
   line-height: var(--lh-base);
 }
 
@@ -998,8 +1032,8 @@ select:focus { border-color: var(--accent); }
 .cta-card {
   background: transparent;
   color: var(--text);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
   border-radius: 0;
   padding: var(--s-8) 0;
   text-align: left;
@@ -1013,7 +1047,7 @@ select:focus { border-color: var(--accent); }
 }
 .cta-card p {
   font-size: var(--fs-sm);
-  color: var(--muted);
+  color: var(--text-muted);
   margin: 0 0 var(--s-4);
   max-width: 580px;
 }
@@ -1032,13 +1066,13 @@ select:focus { border-color: var(--accent); }
 /* Source note (Sursa: ..., italic, mic) */
 .source-note {
   font-size: var(--fs-xs);
-  color: var(--muted);
+  color: var(--text-muted);
   margin-top: var(--s-4);
   font-style: italic;
 }
 
 /* ─── Utilities ──────────────────────────────────────────────────────────── */
-.muted { color: var(--muted); }
+.muted { color: var(--text-muted); }
 .mb-2 { margin-bottom: var(--s-4); }
 
 /* Wrapper scrollabil pentru tabele pe mobile */
@@ -1058,7 +1092,7 @@ select:focus { border-color: var(--accent); }
 .article-list {
   padding-left: var(--s-6);
   margin-bottom: var(--s-6);
-  color: var(--muted);
+  color: var(--text-muted);
   list-style: disc;
 }
 .article-list li {
@@ -1074,7 +1108,7 @@ select:focus { border-color: var(--accent); }
   display: flex;
   justify-content: space-between;
   font-size: var(--fs-xs);
-  color: var(--muted);
+  color: var(--text-muted);
   margin-bottom: var(--s-1);
 }
 .bar-val {
@@ -1084,7 +1118,7 @@ select:focus { border-color: var(--accent); }
 }
 .bar-track {
   height: var(--s-2);
-  background: var(--border);
+  background: var(--border-subtle);
   overflow: hidden;
 }
 .bar-fill {

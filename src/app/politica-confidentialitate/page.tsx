@@ -165,7 +165,7 @@ export default function PoliticaConfidentialitatePage() {
             <ul className="article-list">
               <li>Dreptul de acces — să afli ce date avem despre tine</li>
               <li>Dreptul la rectificare — să corectezi date inexacte</li>
-              <li>Dreptul la ștergere („dreptul de a fi uitat")</li>
+              <li>Dreptul la ștergere („dreptul de a fi uitat”)</li>
               <li>Dreptul la restricționarea prelucrării</li>
               <li>Dreptul la portabilitatea datelor</li>
               <li>Dreptul de opoziție la prelucrare</li>

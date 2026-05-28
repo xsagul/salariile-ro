@@ -87,7 +87,7 @@ export default function CookiesPage() {
             </p>
             <ul className="article-list">
               <li>
-                <strong>Cookies strict necesare</strong> — site-ul nu setează cookies funcționale de tipul „preferințe limbă" sau „mod întunecat", pentru că aceste funcționalități nu există în versiunea curentă. Dacă vor fi adăugate, această pagină va fi actualizată.
+                <strong>Cookies strict necesare</strong> — site-ul nu setează cookies funcționale de tipul „preferințe limbă” sau „mod întunecat”, pentru că aceste funcționalități nu există în versiunea curentă. Dacă vor fi adăugate, această pagină va fi actualizată.
               </li>
               <li>
                 <strong>Cookies de analiză</strong> — folosim Vercel Web Analytics, care este conceput <strong>cookieless</strong>. Vercel nu setează cookies pentru analiză și nu identifică vizitatori individuali. Datele agregate (număr de vizite, pagini populare) se calculează server-side pe baza request-urilor anonime.
@@ -106,7 +106,7 @@ export default function CookiesPage() {
           <div className="container">
             <h2>De ce nu există consent banner</h2>
             <p>
-              Cele mai multe site-uri afișează un banner „Acceptă cookies" pentru că setează cookies care necesită consimțământ — cookies Google Analytics, Facebook Pixel, programe de afiliere etc.
+              Cele mai multe site-uri afișează un banner „Acceptă cookies” pentru că setează cookies care necesită consimțământ — cookies Google Analytics, Facebook Pixel, programe de afiliere etc.
             </p>
             <p>
               Salariile.ro nu setează astfel de cookies, deci nu are obligația legală să ceară consimțământ și nu afișează banner. Acest aspect este menit să facă experiența mai curată, nu să eludeze obligațiile GDPR — pur și simplu nu există date pentru care să se ceară consimțământ.
@@ -123,8 +123,8 @@ export default function CookiesPage() {
             <ul className="article-list">
               <li>Deschide salariile.ro</li>
               <li>Apasă F12 pentru a deschide instrumentele de dezvoltator</li>
-              <li>Mergi la tab-ul „Application" (Chrome/Brave) sau „Storage" (Firefox)</li>
-              <li>Caută secțiunea „Cookies" → lista pentru salariile.ro</li>
+              <li>Mergi la tab-ul „Application” (Chrome/Brave) sau „Storage” (Firefox)</li>
+              <li>Caută secțiunea „Cookies” → lista pentru salariile.ro</li>
             </ul>
             <p>
               Lista trebuie să fie goală sau să conțină eventual cookies tehnice setate de Vercel pentru rutare/securitate (nu de tracking).

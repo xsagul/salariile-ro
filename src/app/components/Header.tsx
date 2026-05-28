@@ -14,15 +14,17 @@ const NAV_LINKS = [
 export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [prevPathname, setPrevPathname] = useState(pathname);
+
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname);
+    if (open) setOpen(false);
+  }
 
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
     return pathname.startsWith(href);
   };
-
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
 
   useEffect(() => {
     if (open) {
@@ -37,17 +39,9 @@ export default function Header() {
 
   return (
     <>
-      {/* ─── NOU: TOPBAR DE AUTORITATE ─── */}
-      <div className="topbar">
-        <div className="container">
-          {/* Acest span are clasa topbar-status care adaugă pătrățelul alb */}
-          <span className="topbar-status">Date oficiale · Sincronizat cu Monitorul Oficial 196/2026</span>
-          {/* Acest span va fi eliminat complet pe mobil prin CSS */}
-          <span>Sincronizat cu Declarația 112 ANAF</span>
-        </div>
-      </div>
-
-      {/* ─── HEADER PRINCIPAL ─── */}
+      {/* HEADER PRINCIPAL — pattern Maggie Appleton / Linear:
+          transparent, NEsticky, parte din hero. Scroll-uiește natural cu pagina.
+          Trust signals (Sincronizat D-112) rămân în dateline-ul din hero. */}
       <header className="site-header">
         <div className="container">
           <Link href="/" className="logo">

@@ -1,7 +1,10 @@
 // src/app/layout.tsx
-// Root layout — încarcă Figtree o singură dată, aplică pe tot site-ul.
+// Root layout — încarcă Inter Variable o singură dată, aplică pe tot site-ul.
+// Pattern Linear.app: Inter pentru ABSOLUT TOT (UI, body, tabele, cifre),
+// fără monospace separat. Cifrele folosesc font-variant-numeric: tabular-nums
+// nativ în Inter. Font-feature-settings cv11/ss01/ss03 pentru polished feel.
 
-import { Figtree } from "next/font/google";
+import { Inter } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { headers } from "next/headers"; // Adăugat pentru citirea nonce-ului
 import type { Metadata } from "next";
@@ -10,11 +13,11 @@ import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-// Figtree — font modern, sans-serif, cu suport pentru diacritice românești.
-const figtree = Figtree({
+// Inter Variable — font unic pentru tot site-ul (stilul Linear).
+// Fără weight specific → variable font version, ~30 KB optimizat.
+const inter = Inter({
   subsets: ["latin", "latin-ext"],
-  variable: "--font-figtree",
-  weight: ["400", "500", "600", "700"],
+  variable: "--font-inter",
   display: "swap",
 });
 
@@ -80,7 +83,7 @@ export default async function RootLayout({
   const nonce = headerStore.get("x-nonce") || undefined;
 
   return (
-    <html lang="ro" className={figtree.variable}>
+    <html lang="ro" className={inter.variable}>
       <head>
         {/* Next.js va folosi automat nonce-ul pentru scripturile sale de sistem */}
       </head>
@@ -90,8 +93,9 @@ export default async function RootLayout({
           <main>{children}</main>
           <Footer />
         </div>
-        {/* Passam nonce-ul către SpeedInsights pentru a nu fi blocat */}
-        <SpeedInsights {...({ nonce } as any)} />
+        {/* nonce necesar pentru CSP; prop lipsește din tipurile @vercel/speed-insights */}
+        {/* @ts-expect-error SpeedInsights acceptă nonce la runtime */}
+        <SpeedInsights nonce={nonce} />
       </body>
     </html>
   );

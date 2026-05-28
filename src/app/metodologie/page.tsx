@@ -51,8 +51,6 @@ const jsonLd = {
   ],
 };
 
-const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(n);
-
 export default function MetodologiePage() {
   return (
     <>
@@ -86,7 +84,7 @@ export default function MetodologiePage() {
               Calculul salariului net pornește de la salariul brut (de încadrare, conform contractului individual de muncă) și aplică, în ordine, contribuțiile obligatorii reținute la sursă:
             </p>
             <ul className="article-list">
-              <li><strong>CAS</strong> (Contribuția de Asigurări Sociale, „pensie"): 25% din baza de calcul</li>
+              <li><strong>CAS</strong> (Contribuția de Asigurări Sociale, „pensie”): 25% din baza de calcul</li>
               <li><strong>CASS</strong> (Contribuția de Asigurări Sociale de Sănătate): 10% din baza de calcul</li>
               <li><strong>Impozit pe venit</strong>: 10% din baza impozabilă</li>
             </ul>
@@ -232,7 +230,7 @@ export default function MetodologiePage() {
               </li>
             </ul>
             <p>
-              Calculatorul aplică deducerea conform tabelelor publicate în anexa la Codul Fiscal, ținând cont de numărul de persoane în întreținere selectate în secțiunea „Calculator avansat".
+              Calculatorul aplică deducerea conform tabelelor publicate în anexa la Codul Fiscal, ținând cont de numărul de persoane în întreținere selectate în secțiunea „Calculator avansat”.
             </p>
             <p>
               Pentru veniturile peste plafonul de 6.050/6.325 lei, deducerea de bază nu se aplică — toată suma după contribuții se impozitează cu 10%.

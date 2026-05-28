@@ -1,13 +1,40 @@
 "use client";
 
 import React, { useState, useCallback } from "react";
+import Link from "next/link";
 import {
   calculeaza,
   calculeazaBrutDinNet,
   SALARIU_MINIM,
   DEDUCERE_MINIM,
   type InputState,
+  type Rezultat,
 } from "@/lib/fiscal";
+
+type SelectOption = { v: number; l: string };
+
+type InputNumberProps = {
+  id: string;
+  label: string;
+  value: string;
+  onChange: (v: string) => void;
+  placeholder?: string;
+  hint?: string;
+};
+
+type ToggleProps = {
+  label: string;
+  checked: boolean;
+  onChange: (v: boolean) => void;
+};
+
+type SelectProps = {
+  id: string;
+  label: string;
+  value: number;
+  options: SelectOption[];
+  onChange: (v: number) => void;
+};
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
@@ -32,7 +59,7 @@ function buildResult(snapshotInput: InputState, snapshotMod: "brut" | "net") {
 // ─── Componente UI ────────────────────────────────────────────────────────────
 
 // Am adăugat 'id' în paranteze și am legat label-ul de input
-function InputNumber({ id, label, value, onChange, placeholder, hint }: any) {
+function InputNumber({ id, label, value, onChange, placeholder, hint }: InputNumberProps) {
   return (
     <div className="field">
       <label htmlFor={id}>{label}</label>
@@ -45,7 +72,7 @@ function InputNumber({ id, label, value, onChange, placeholder, hint }: any) {
   );
 }
 
-function Toggle({ label, checked, onChange }: any) {
+function Toggle({ label, checked, onChange }: ToggleProps) {
   return (
     <label className="toggle-row">
       <span>{label}</span>
@@ -56,23 +83,13 @@ function Toggle({ label, checked, onChange }: any) {
   );
 }
 
-function Select({ id, label, value, options, onChange }: any) {
+function Select({ id, label, value, options, onChange }: SelectProps) {
   return (
     <div className="field">
       <label htmlFor={id}>{label}</label>
       <select id={id} value={value} onChange={(e) => onChange(Number(e.target.value))}>
-        {options.map((o: any) => (<option key={o.v} value={o.v}>{o.l}</option>))}
+        {options.map((o) => (<option key={o.v} value={o.v}>{o.l}</option>))}
       </select>
-    </div>
-  );
-}
-
-function BarRow({ label, value, total, color }: any) {
-  const pct = total > 0 ? (value / total) * 100 : 0;
-  return (
-    <div className="bar-row">
-      <div className="bar-label"><span>{label}</span><span className="bar-val">{fmt(value)}</span></div>
-      <div className="bar-track"><div className="bar-fill" style={{ width: `${pct}%`, background: color }} /></div>
     </div>
   );
 }
@@ -94,7 +111,7 @@ function fixDiacritice(text: string): string {
 
 async function generarePDFFluturas(
   brut: number,
-  rez: any,
+  rez: Rezultat,
   esteSalariuMinim: boolean,
   facilitate: number
 ): Promise<void> {
@@ -109,7 +126,12 @@ async function generarePDFFluturas(
   const colRight = pageWidth - margin; // 190 mm
 
   // Helper: scrie text (cu fix diacritice automat)
-  const T = (text: string, x: number, y: number, opts?: any) => {
+  const T = (
+    text: string,
+    x: number,
+    y: number,
+    opts?: { align?: "left" | "center" | "right" | "justify" }
+  ) => {
     doc.text(fixDiacritice(text), x, y, opts);
   };
 
@@ -201,12 +223,6 @@ async function generarePDFFluturas(
     y += 6;
   }
 
-  // Bază calcul impozit (informativ — text gri)
-  doc.setTextColor(100);
-  rand(y, "Baza calcul impozit", `${rez.bazaCalculImpozit.toLocaleString("ro-RO")} lei`, false, 5);
-  doc.setTextColor(0);
-  y += 6;
-
   // Impozit
   rand(y, "Impozit pe venit (10%)", `- ${rez.impozit.toLocaleString("ro-RO")} lei`, false, 5);
   y += 8;
@@ -263,13 +279,11 @@ export default function CalculatorSalariu({
   modInitial = "brut",
   titluCustom,
   subtitluCustom,
-  ascundeInfoFiscale = false,
 }: {
   brutInitial?: string;
   modInitial?: "brut" | "net";
   titluCustom?: React.ReactNode;
   subtitluCustom?: React.ReactNode;
-  ascundeInfoFiscale?: boolean;
 }) {
   const [mod, setMod] = useState<"brut" | "net">(modInitial);
   const [avansat, setAvansat] = useState(false);
@@ -308,7 +322,7 @@ export default function CalculatorSalariu({
           {/* Breadcrumb doar pe pagini dinamice, nu pe homepage */}
           {titluCustom && (
             <nav className="breadcrumb" aria-label="Breadcrumb">
-              <a href="/">Acasă</a>
+              <Link href="/">Acasă</Link>
               <span>/</span>
               <span aria-current="page">Calculator salariu</span>
             </nav>
@@ -371,7 +385,7 @@ export default function CalculatorSalariu({
             </div>
           </div>
 
-          <InputNumber id="salariu-input" label={mod === "brut" ? "SALARIU BRUT:" : "SALARIU NET:"} value={input.brut} onChange={(v: any) => set("brut", v)} />
+          <InputNumber id="salariu-input" label={mod === "brut" ? "SALARIU BRUT:" : "SALARIU NET:"} value={input.brut} onChange={(v) => set("brut", v)} />
           
           <button className="avansat-toggle" onClick={() => {
             if (avansat) { set("tichete", ""); set("functieDeBAza", true); set("persoanePretretinere", 0); set("varstaSub26", false); set("copiiScolarizati", 0); set("scutitImpozit", false); }
@@ -382,12 +396,12 @@ export default function CalculatorSalariu({
 
           {avansat && (
             <>
-              <InputNumber id="tichete-input" label="Tichete de masă" value={input.tichete} onChange={(v: any) => set("tichete", v)} placeholder="0" hint="Valoare lunară totală" />
-              <Toggle label="Funcție de bază" checked={input.functieDeBAza} onChange={(v: any) => set("functieDeBAza", v)} />
-              <Select id="persoane-intretinere" label="Persoane în întreținere" value={input.persoanePretretinere} options={[0, 1, 2, 3, 4].map((n) => ({ v: n, l: n === 0 ? "Niciuna" : `${n} ${n === 1 ? "persoană" : "persoane"}` }))} onChange={(v: any) => set("persoanePretretinere", v)} />
-              <Select id="copii-scolari" label="Copii minori școlari" value={input.copiiScolarizati} options={[0, 1, 2, 3, 4, 5].map((n) => ({ v: n, l: n === 0 ? "Niciunul" : `${n} ${n === 1 ? "copil" : "copii"}` }))} onChange={(v: any) => set("copiiScolarizati", v)} />
-              <Toggle label="Vârstă sub 26 ani" checked={input.varstaSub26} onChange={(v: any) => set("varstaSub26", v)} />
-              <Toggle label="Scutit de impozit (handicap etc.)" checked={input.scutitImpozit} onChange={(v: any) => set("scutitImpozit", v)} />
+              <InputNumber id="tichete-input" label="Tichete de masă" value={input.tichete} onChange={(v) => set("tichete", v)} placeholder="0" hint="Valoare lunară totală" />
+              <Toggle label="Funcție de bază" checked={input.functieDeBAza} onChange={(v) => set("functieDeBAza", v)} />
+              <Select id="persoane-intretinere" label="Persoane în întreținere" value={input.persoanePretretinere} options={[0, 1, 2, 3, 4].map((n) => ({ v: n, l: n === 0 ? "Niciuna" : `${n} ${n === 1 ? "persoană" : "persoane"}` }))} onChange={(v) => set("persoanePretretinere", v)} />
+              <Select id="copii-scolari" label="Copii minori școlari" value={input.copiiScolarizati} options={[0, 1, 2, 3, 4, 5].map((n) => ({ v: n, l: n === 0 ? "Niciunul" : `${n} ${n === 1 ? "copil" : "copii"}` }))} onChange={(v) => set("copiiScolarizati", v)} />
+              <Toggle label="Vârstă sub 26 ani" checked={input.varstaSub26} onChange={(v) => set("varstaSub26", v)} />
+              <Toggle label="Scutit de impozit (handicap etc.)" checked={input.scutitImpozit} onChange={(v) => set("scutitImpozit", v)} />
             </>
           )}
 
@@ -450,11 +464,7 @@ export default function CalculatorSalariu({
                     </tr>
                   )}
                   <tr className="row-base">
-                    <td>Bază calcul impozit</td>
-                    <td>{fmt(rezAfisat.rez.bazaCalculImpozit)}</td>
-                  </tr>
-                  <tr className="sub-row indent">
-                    <td><span className="muted">Impozit pe venit (10%)</span></td>
+                    <td>Impozit pe venit (10%)</td>
                     <td>− {fmt(rezAfisat.rez.impozit)}</td>
                   </tr>
                   <tr className="total-retineri">
@@ -522,11 +532,7 @@ export default function CalculatorSalariu({
                     <td aria-hidden="true">—</td>
                   </tr>
                   <tr className="row-base">
-                    <td>Bază calcul impozit</td>
-                    <td aria-hidden="true">—</td>
-                  </tr>
-                  <tr className="sub-row indent">
-                    <td><span className="muted">Impozit pe venit (10%)</span></td>
+                    <td>Impozit pe venit (10%)</td>
                     <td aria-hidden="true">—</td>
                   </tr>
                   <tr className="total-retineri">
