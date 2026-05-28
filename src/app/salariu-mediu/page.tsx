@@ -12,14 +12,6 @@ export const metadata: Metadata = {
   title: "Salariul mediu pe economie 2026: brut și net",
   description:
     "Salariul mediu brut pe economie în 2026 este 9.192 lei (~5.377 lei net), conform Legii 44/2026. Vezi evoluția istorică și la ce se folosește.",
-  keywords: [
-    "salariu mediu 2026",
-    "salariu mediu brut 2026",
-    "salariu mediu net 2026",
-    "Legea 44/2026",
-    "ajutor de deces 2026",
-    "salariu mediu economie",
-  ],
   alternates: { canonical: "https://salariile.ro/salariu-mediu" },
   openGraph: {
     title: "Salariul mediu pe economie 2026: brut și net",

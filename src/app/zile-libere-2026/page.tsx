@@ -12,16 +12,6 @@ export const metadata: Metadata = {
   title: "Zile libere 2026: calendar sărbători legale și zile lucrătoare",
   description:
     "Calendar complet 2026: 17 sărbători legale (Codul Muncii art. 139), zile lucrătoare per lună (total 249), ore lucrătoare, punți recomandate. Date oficiale.",
-  keywords: [
-    "zile libere 2026",
-    "sărbători legale 2026",
-    "calendar zile libere 2026",
-    "zile lucrătoare 2026",
-    "ore lucrătoare 2026",
-    "punți 2026",
-    "calendar lucrător 2026",
-    "Codul Muncii art. 139",
-  ],
   alternates: { canonical: "https://salariile.ro/zile-libere-2026" },
   openGraph: {
     title: "Zile libere 2026: calendar sărbători legale și zile lucrătoare",

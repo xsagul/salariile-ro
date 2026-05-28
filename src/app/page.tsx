@@ -68,9 +68,9 @@ const homepageJsonLd = {
       featureList: [
         "Calcul net din brut",
         "Calcul brut din net",
-        "Sectoare: Standard, IT, Construcții",
         "Deducere personală automată",
-        "Cost total angajator",
+        "Facilitate salariu minim (OUG 89/2025)",
+        "Cost total angajator (CAM 2,25%)",
         "Tichete de masă",
       ],
     },

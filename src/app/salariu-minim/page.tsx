@@ -12,15 +12,13 @@ export const metadata: Metadata = {
   title: "Salariul minim 2026: brut, net, cost angajator",
   description:
     "Salariul minim brut 2026: 4.050 lei (ian–iun) și 4.325 lei (iul–dec). Vezi netul — 2.574 / 2.699 lei — și costul total pentru angajator.",
-  keywords: [
-    "salariu minim 2026",
-    "salariu minim brut 2026",
-    "salariu minim net 2026",
-    "HG 146/2026",
-    "OUG 89/2025",
-    "cost angajator salariu minim",
-  ],
   alternates: { canonical: "https://salariile.ro/salariu-minim" },
+  openGraph: {
+    title: "Salariul minim 2026: brut, net, cost angajator",
+    description:
+      "Salariul minim brut 2026: 4.050 lei (ian–iun) și 4.325 lei (iul–dec). Net 2.574 / 2.699 lei și cost angajator.",
+    url: "https://salariile.ro/salariu-minim",
+  },
 };
 
 // ─── Date factuale 2026 (verificate prin acte normative) ─────────────────────

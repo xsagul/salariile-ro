@@ -7,9 +7,14 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import CalculatorSalariu from "@/app/components/CalculatorSalariu";
 import { calculStandard, brutDinNetStandard, type Rezultat } from "@/lib/fiscal";
+import { allCalculatorSlugs } from "@/lib/seo";
 
 interface Props {
   params: Promise<{ valoare: string }>;
+}
+
+export function generateStaticParams() {
+  return allCalculatorSlugs().map((valoare) => ({ valoare }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

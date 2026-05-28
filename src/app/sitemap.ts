@@ -1,102 +1,54 @@
 import type { MetadataRoute } from "next";
+import {
+  SITE_URL,
+  PAGE_LAST_MODIFIED,
+  CALCULATOR_BRUT_VALUES,
+  CALCULATOR_NET_VALUES,
+  calculatorSlugBrut,
+  calculatorSlugNet,
+  LAST_FISCAL_CONTENT_UPDATE,
+} from "@/lib/seo";
+
+const STATIC_ENTRIES: {
+  path: keyof typeof PAGE_LAST_MODIFIED;
+  priority: number;
+  changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"];
+}[] = [
+  { path: "/", priority: 1, changeFrequency: "monthly" },
+  { path: "/salariu-minim", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/salariu-mediu", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/zile-libere-2026", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/metodologie", priority: 0.6, changeFrequency: "monthly" },
+  { path: "/despre", priority: 0.5, changeFrequency: "yearly" },
+  { path: "/contact", priority: 0.4, changeFrequency: "yearly" },
+  { path: "/politica-confidentialitate", priority: 0.3, changeFrequency: "yearly" },
+  { path: "/cookies", priority: 0.3, changeFrequency: "yearly" },
+  { path: "/termeni", priority: 0.3, changeFrequency: "yearly" },
+];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
-  const baseUrl = "https://salariile.ro";
+  const baseUrl = SITE_URL;
 
   return [
-    // ─── Pagina principală ──────────────────────────────────────────────────
-    {
-      url: baseUrl,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 1,
-    },
+    ...STATIC_ENTRIES.map(({ path, priority, changeFrequency }) => ({
+      url: path === "/" ? baseUrl : `${baseUrl}${path}`,
+      lastModified: PAGE_LAST_MODIFIED[path],
+      changeFrequency,
+      priority,
+    })),
 
-    // ─── Pagini de conținut (high priority pentru SEO) ──────────────────────
-    {
-      url: `${baseUrl}/salariu-minim`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/salariu-mediu`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-
-    // ─── Pagini de încredere / E-E-A-T ──────────────────────────────────────
-    {
-      url: `${baseUrl}/metodologie`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-
-    // ─── Pagini specializate (cluster nou per topic) ──────────────────────
-    {
-      url: `${baseUrl}/zile-libere-2026`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/despre`,
-      lastModified,
-      changeFrequency: "yearly",
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified,
-      changeFrequency: "yearly",
-      priority: 0.4,
-    },
-
-    // ─── Pagini legale (priority mică, dar prezente) ────────────────────────
-    {
-      url: `${baseUrl}/politica-confidentialitate`,
-      lastModified,
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/cookies`,
-      lastModified,
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/termeni`,
-      lastModified,
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-
-    // ─── Pagini dinamice — calcul net pornind de la BRUT ────────────────────
-    // Selecție data-backed (Google Keyword Planner + Ahrefs + GSC propriu, mai 2026):
-    // - 4050, 4325 = salariul minim S1/S2 (legislativ + Ahrefs >100/lună)
-    // - 5000, 6000, 6500, 7000, 8000, 10000 = numere rotunde cu cerere confirmată
-    // - 7350 = descoperit prin cross-check (Ahrefs >100/lună, distribuit pe variații)
-    // Numere TĂIATE (zero/slab semnal): 4500, 5500, 7500, 9000, 12000, 15000, 20000.
-    ...([4050, 4325, 5000, 6000, 6500, 7000, 7350, 8000, 10000].map(v => ({
-      url: `${baseUrl}/calculator/calcul-salariu-net-${v}-brut`,
-      lastModified,
+    ...CALCULATOR_BRUT_VALUES.map((v) => ({
+      url: `${baseUrl}/calculator/${calculatorSlugBrut(v)}`,
+      lastModified: LAST_FISCAL_CONTENT_UPDATE,
       changeFrequency: "monthly" as const,
       priority: 0.7,
-    }))),
+    })),
 
-    // ─── Pagini dinamice — calcul brut pornind de la NET ────────────────────
-    // Net→brut e direcție de nișă (Ahrefs <100/lună pentru toate).
-    // Păstrăm doar 3000 și 5000 = singurele cu vreun semnal în Google data.
-    // Tăiate: 2500, 2574, 2700, 3200, 3500, 4000, 4500, 6000, 7000.
-    ...([3000, 5000].map(v => ({
-      url: `${baseUrl}/calculator/calcul-salariu-brut-${v}-net`,
-      lastModified,
+    ...CALCULATOR_NET_VALUES.map((v) => ({
+      url: `${baseUrl}/calculator/${calculatorSlugNet(v)}`,
+      lastModified: LAST_FISCAL_CONTENT_UPDATE,
       changeFrequency: "monthly" as const,
       priority: 0.7,
-    }))),
+    })),
   ];
 }
