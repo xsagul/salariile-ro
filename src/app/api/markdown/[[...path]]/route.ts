@@ -88,18 +88,14 @@ export async function GET(
   // ─── Strip chrome (nav, header, footer, scripts, styles, UI interactiv) ──
   // Pe homepage și paginile dinamice, calculatorul are formulare interactive +
   // un tabel skeleton gol — agentul nu poate interacționa cu ele, doar rezultă
-  // text confuz în markdown. Le scoatem:
-  //   - .form-column           = coloana stângă cu input form (DIRECȚIE, BRUT, butoane)
-  //   - .results-wrapper.skeleton = tabelul gol cu „—" pe homepage (fără date)
-  //   - .pdf-button            = buton de download PDF, fără sens în markdown
-  // Pe paginile dinamice (/calculator/X-brut), .results-wrapper (fără skeleton)
-  // rămâne — conține tabelul real cu valori calculate.
-  $(
-    "header, footer, nav, script, style, noscript, " +
-    ".site-header, .site-footer, .topbar, .nav-mobile, .nav-desktop, " +
-    ".breadcrumb, .hamburger, .cta-card, " +
-    ".form-column, .results-wrapper.skeleton, .pdf-button"
-  ).remove();
+  // text confuz în markdown. Componentele Tailwind v4 marchează aceste elemente
+  // cu atributul `data-md-strip`:
+  //   - coloana stângă cu input form (DIRECȚIE, BRUT, butoane)
+  //   - tabelul skeleton gol cu „—" (afișat înainte de calcul / pe homepage)
+  //   - butonul de download PDF + hintul „completează salariul brut"
+  // Pe paginile dinamice (/calculator/X-brut), tabelul real cu valori calculate
+  // NU are `data-md-strip` și rămâne în markdown.
+  $("header, footer, nav, script, style, noscript, [data-md-strip]").remove();
 
   // Conținutul principal: încercăm <main>, apoi <body>
   const mainHtml = $("main").html() || $("body").html() || "";

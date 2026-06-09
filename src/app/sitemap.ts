@@ -8,6 +8,7 @@ import {
   calculatorSlugNet,
   LAST_FISCAL_CONTENT_UPDATE,
 } from "@/lib/seo";
+import { getAllArticles } from "@/lib/noutati";
 
 const STATIC_ENTRIES: {
   path: keyof typeof PAGE_LAST_MODIFIED;
@@ -16,8 +17,10 @@ const STATIC_ENTRIES: {
 }[] = [
   { path: "/", priority: 1, changeFrequency: "monthly" },
   { path: "/salariu-minim", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/calculator-pfa", priority: 0.8, changeFrequency: "monthly" },
   { path: "/salariu-mediu", priority: 0.9, changeFrequency: "monthly" },
   { path: "/zile-libere-2026", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/noutati", priority: 0.7, changeFrequency: "weekly" },
   { path: "/metodologie", priority: 0.6, changeFrequency: "monthly" },
   { path: "/despre", priority: 0.5, changeFrequency: "yearly" },
   { path: "/contact", priority: 0.4, changeFrequency: "yearly" },
@@ -49,6 +52,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: LAST_FISCAL_CONTENT_UPDATE,
       changeFrequency: "monthly" as const,
       priority: 0.7,
+    })),
+
+    ...getAllArticles().map((a) => ({
+      url: `${baseUrl}/noutati/${a.slug}`,
+      lastModified: a.date ? new Date(a.date) : LAST_FISCAL_CONTENT_UPDATE,
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
     })),
   ];
 }

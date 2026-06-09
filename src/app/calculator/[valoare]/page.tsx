@@ -6,7 +6,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import CalculatorSalariu from "@/app/components/CalculatorSalariu";
-import { calculStandard, brutDinNetStandard, type Rezultat } from "@/lib/fiscal";
+import { Section } from "@/app/components/ui";
+import { calculStandard, brutDinNetStandard, SALARIU_MINIM, type Rezultat } from "@/lib/fiscal";
 import { allCalculatorSlugs } from "@/lib/seo";
 
 interface Props {
@@ -92,17 +93,25 @@ type Context = {
 };
 
 function getContextBrut(v: number): Context {
+  if (v === 4325) {
+    return {
+      pozitie: <>Brutul de <strong>4.325 lei</strong> este exact <Link href="/salariu-minim">salariul minim brut pe economie</Link> în vigoare din 1 iulie 2026, conform HG 146/2026. Conform datelor INS, peste 1,2 milioane de salariați din România sunt plătiți la acest nivel — aproximativ 25% din totalul forței de muncă salariate.</>,
+      sectoare: ["Comerț cu amănuntul (vânzători, casieri)", "HoReCa (ospătari, bucătari ajutor)", "Curățenie și mentenanță", "Producție necalificată", "Agricultură și industria alimentară", "Securitate și pază"],
+      insight: <>Dacă ești plătit la salariul minim, verifică pe fluturaș dacă angajatorul aplică corect facilitatea OUG 89/2025 de 200 lei netaxabili. Mulți angajatori o omit, ceea ce rezultă în net mai mic cu ~80–100 lei lunar. Vezi <Link href="/salariu-minim">analiza completă a salariului minim</Link> pentru toate plafoanele și obligațiile aplicabile.</>,
+    };
+  }
+
   if (v === 4050) {
     return {
-      pozitie: <>Brutul de <strong>4.050 lei</strong> este exact <Link href="/salariu-minim">salariul minim brut pe economie</Link> aplicabil în prima jumătate a anului 2026, conform HG 1506/2024. Conform datelor INS, peste 1,2 milioane de salariați din România sunt plătiți la acest nivel — aproximativ 25% din totalul forței de muncă salariate.</>,
+      pozitie: <>Brutul de <strong>4.050 lei</strong> a fost <Link href="/salariu-minim">salariul minim brut pe economie</Link> în prima jumătate a anului 2026, conform HG 1506/2024. Din 1 iulie 2026, minimul a crescut la 4.325 lei (HG 146/2026). Conform datelor INS, peste 1,2 milioane de salariați din România au fost plătiți la acest nivel — aproximativ 25% din totalul forței de muncă salariate.</>,
       sectoare: ["Comerț cu amănuntul (vânzători, casieri)", "HoReCa (ospătari, bucătari ajutor)", "Curățenie și mentenanță", "Producție necalificată", "Agricultură și industria alimentară", "Securitate și pază"],
-      insight: <>Dacă ești plătit la salariul minim, verifică pe fluturaș dacă angajatorul aplică corect facilitatea OUG 89/2025 de 300/200 lei netaxabili. Mulți angajatori o omit, ceea ce rezultă în net mai mic cu ~100–150 lei lunar. Vezi <Link href="/salariu-minim">analiza completă a salariului minim</Link> pentru toate plafoanele și obligațiile aplicabile.</>,
+      insight: <>Dacă ești plătit la salariul minim din iulie 2026, brutul corect este 4.325 lei (nu 4.050). Verifică pe fluturaș facilitatea OUG 89/2025 de 200 lei netaxabili. Vezi <Link href="/salariu-minim">analiza completă a salariului minim</Link> pentru toate plafoanele și obligațiile aplicabile.</>,
     };
   }
 
   if (v >= 4051 && v <= 5500) {
     return {
-      pozitie: <>Brutul de <strong>{fmt(v)} lei</strong> se situează <em>imediat deasupra <Link href="/salariu-minim">salariului minim</Link></em> (4.050 lei S1 / 4.325 lei S2) și sub mediana salariilor din economia României, estimată la aproximativ 5.500–6.000 lei brut. Este un nivel întâlnit la posturi de început în sectorul privat, personal calificat fără experiență sau roluri operaționale standard.</>,
+      pozitie: <>Brutul de <strong>{fmt(v)} lei</strong> se situează <em>imediat deasupra <Link href="/salariu-minim">salariului minim</Link></em> (4.325 lei din iulie 2026) și sub mediana salariilor din economia României, estimată la aproximativ 5.500–6.000 lei brut. Este un nivel întâlnit la posturi de început în sectorul privat, personal calificat fără experiență sau roluri operaționale standard.</>,
       sectoare: ["Asistent administrativ, secretariat", "Casier-vânzător cu experiență", "Operator producție calificat", "Personal medical auxiliar", "Recepționer, agent contact center", "Coordonator de tură în retail"],
       insight: <>Pentru această tranșă, salariații cu copii minori școlari sau persoane în întreținere beneficiază de deduceri suplimentare semnificative (până la 30–45% din salariul minim). Folosește opțiunile avansate ale calculatorului pentru a vedea netul corect ținând cont de situația ta familială.</>,
     };
@@ -143,15 +152,15 @@ function getContextBrut(v: number): Context {
 function getContextNet(v: number): Context {
   if (v >= 2500 && v <= 2750) {
     return {
-      pozitie: <>Netul de <strong>{fmt(v)} lei</strong> corespunde aproximativ <Link href="/salariu-minim">salariului minim pe economie</Link>: în 2026, minimul net este 2.574 lei (S1) și 2.699 lei (S2). Acest nivel reprezintă pragul legal minim pe care îl poate primi în mână un angajat cu normă întreagă.</>,
+      pozitie: <>Netul de <strong>{fmt(v)} lei</strong> corespunde aproximativ <Link href="/salariu-minim">salariului minim pe economie</Link>: din iulie 2026, minimul net este 2.699 lei (la un brut de 4.325 lei). Acest nivel reprezintă pragul legal minim pe care îl poate primi în mână un angajat cu normă întreagă.</>,
       sectoare: ["Comerț cu amănuntul", "HoReCa entry-level", "Curățenie, mentenanță", "Producție necalificată", "Agricultură", "Securitate, pază"],
-      insight: <>Dacă ai un net sub 2.574 lei lucrând cu normă întreagă, există o problemă — fie nu primești corect facilitatea de 300 lei, fie angajatorul nu aplică deducerea personală. Verifică fluturașul și solicită clarificări. Vezi și <Link href="/salariu-minim">drepturile complete asociate salariului minim</Link>.</>,
+      insight: <>Dacă ai un net sub 2.699 lei lucrând cu normă întreagă, există o problemă — fie nu primești corect facilitatea de 200 lei (OUG 89/2025), fie angajatorul nu aplică deducerea personală. Verifică fluturașul și solicită clarificări. Vezi și <Link href="/salariu-minim">drepturile complete asociate salariului minim</Link>.</>,
     };
   }
 
   if (v >= 2751 && v <= 3500) {
     return {
-      pozitie: <>Netul de <strong>{fmt(v)} lei</strong> se situează imediat deasupra <Link href="/salariu-minim">salariului minim net</Link> (2.574 → 2.699 lei în 2026). Este nivelul tipic pentru posturi entry-level peste salariul minim, lucrători calificați cu puțină experiență sau personal auxiliar cu sporuri.</>,
+      pozitie: <>Netul de <strong>{fmt(v)} lei</strong> se situează imediat deasupra <Link href="/salariu-minim">salariului minim net</Link> (2.699 lei din iulie 2026). Este nivelul tipic pentru posturi entry-level peste salariul minim, lucrători calificați cu puțină experiență sau personal auxiliar cu sporuri.</>,
       sectoare: ["Vânzător-casier cu experiență", "Asistent administrativ", "Operator producție calificat", "Recepționer", "Asistent medical debutant", "Personal HoReCa cu experiență"],
       insight: <>Negocierea pe net este recomandată: în 2026, schimbările legislative (OUG 156/2024 pentru IT/construcții, modificări la facilități) au făcut ca același brut să producă neturi diferite de la o lună la alta. Verifică pe <Link href="/">calculator</Link> netul exact pentru orice ofertă primită.</>,
     };
@@ -186,7 +195,7 @@ function getContextNet(v: number): Context {
 // numere complet diferite (CAS, CASS, impozit, net, CAM, cost) → conținut unic.
 
 function DefalcareFiscala({ brut, rez }: { brut: number; rez: Rezultat }) {
-  const fataDeMinimNet = (rez.net / 2574).toFixed(1);
+  const fataDeMinimNet = (rez.net / 2699).toFixed(1);
   const fataDeMediuNet = Math.round((rez.net / 5377) * 100);
 
   return (
@@ -203,13 +212,13 @@ function DefalcareFiscala({ brut, rez }: { brut: number; rez: Rezultat }) {
       ) : (
         <>
           La acest nivel deducerea personală nu se aplică, deoarece brutul depășește plafonul
-          de 6.050 lei.{" "}
+          de 6.325 lei.{" "}
         </>
       )}
       Rezultă un salariu <strong>net de {fmt(rez.net)} lei</strong> — adică {rez.brutNet}% din brut.
       În plus, angajatorul plătește contribuția CAM de 2,25% ({fmt(rez.cam)} lei), deci{" "}
       <strong>costul total al firmei</strong> pentru acest post este {fmt(rez.costTotal)} lei lunar.
-      Față de salariul minim net (2.574 lei) acest venit este de {fataDeMinimNet}× mai mare și
+      Față de salariul minim net (2.699 lei) acest venit este de {fataDeMinimNet}× mai mare și
       reprezintă {fataDeMediuNet}% din <Link href="/salariu-mediu">salariul mediu net pe economie</Link>.
     </p>
   );
@@ -242,6 +251,32 @@ export default async function CalculatorDinamic({ params }: Props) {
 
   const ctx = isNetDinBrut ? getContextBrut(cifraNum) : getContextNet(cifraNum);
 
+  // Frază introductivă generată din cifrele REALE ale acestei valori — diferită de la
+  // o pagină la alta (procent din salariul mediu brut + procent peste salariul minim).
+  // Totul rămâne în aceeași unitate (brut lunar) ca restul paginii, ca să nu deruteze.
+  // Rolul ei e să ancoreze fiecare pagină în date proprii, astfel încât paginile din
+  // aceeași bandă de venit (care împart contextul de categorie) să rămână unice.
+  const SALARIU_MEDIU_BRUT = 9192;
+  const pctDinMediuBrut = Math.round((brutEfectiv / SALARIU_MEDIU_BRUT) * 100);
+  const pctPesteMinim = Math.round((brutEfectiv / SALARIU_MINIM - 1) * 100);
+  const fataDeMinim = pctPesteMinim <= 0
+    ? <>se situează la nivelul <Link href="/salariu-minim">salariului minim brut</Link> ({fmt(SALARIU_MINIM)} lei)</>
+    : <>este cu <strong>{pctPesteMinim}%</strong> peste <Link href="/salariu-minim">salariul minim brut</Link> ({fmt(SALARIU_MINIM)} lei)</>;
+
+  const leadPozitie = isNetDinBrut ? (
+    <>
+      Un salariu brut de <strong>{fmt(cifraNum)} lei</strong> reprezintă aproximativ{" "}
+      <strong>{pctDinMediuBrut}%</strong> din{" "}
+      <Link href="/salariu-mediu">salariul mediu brut pe economie</Link> ({fmt(SALARIU_MEDIU_BRUT)} lei) și {fataDeMinim}.
+    </>
+  ) : (
+    <>
+      Pentru a primi <strong>{fmt(cifraNum)} lei</strong> net pe lună, salariul brut negociat trebuie să fie
+      aproximativ <strong>{fmt(brutEfectiv)} lei</strong> — adică circa <strong>{pctDinMediuBrut}%</strong> din{" "}
+      <Link href="/salariu-mediu">salariul mediu brut pe economie</Link> ({fmt(SALARIU_MEDIU_BRUT)} lei). Acest brut {fataDeMinim}.
+    </>
+  );
+
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -259,25 +294,25 @@ export default async function CalculatorDinamic({ params }: Props) {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
-      <CalculatorSalariu
-        brutInitial={brutInitial}
-        modInitial={modInitial}
-        titluCustom={titluDinamic}
-        subtitluCustom={subtitluDinamic}
-      />
+      <div className="bg-canvas">
+        <CalculatorSalariu
+          brutInitial={brutInitial}
+          modInitial={modInitial}
+          titluCustom={titluDinamic}
+          subtitluCustom={subtitluDinamic}
+        />
+      </div>
 
       {/* Conținut editorial — poziție (categorie) + defalcare reală (unică) */}
-      <section className="article-section">
-        <div className="container">
+      <Section>
           <h2>Cine câștigă {cifra} lei {isNetDinBrut ? "brut" : "net"}?</h2>
+          <p>{leadPozitie}</p>
           <p>{ctx.pozitie}</p>
-        </div>
-      </section>
+      </Section>
 
       {/* Defalcarea fiscală cu cifre reale — unică pentru fiecare valoare */}
       {rez && (
-        <section className="article-section">
-          <div className="container">
+        <Section>
             <h2>
               Defalcarea fiscală pentru {isNetDinBrut ? `${cifra} lei brut` : `un net de ${cifra} lei`}
             </h2>
@@ -293,30 +328,25 @@ export default async function CalculatorDinamic({ params }: Props) {
               tabelul interactiv de mai sus pentru scenarii personalizate. Conform Codului Fiscal
               (Legea 227/2015), HG 146/2026 și OUG 89/2025.
             </p>
-          </div>
-        </section>
+        </Section>
       )}
 
-      <section className="article-section">
-        <div className="container">
+      <Section>
           <h2>Sectoare și roluri tipice</h2>
           <p>La nivelul de {cifra} lei {isNetDinBrut ? "brut" : "net"}, posturile întâlnite frecvent pe piața muncii din România includ:</p>
-          <ul className="article-list">
+          <ul>
             {ctx.sectoare.map((s, i) => <li key={i}>{s}</li>)}
           </ul>
           <p className="source-note">Lista este indicativă, pe baza datelor INS privind distribuția salarială pe sectoare CAEN și a rapoartelor publice ale firmelor de recrutare (Hipo, eJobs) pentru anul 2026.</p>
-        </div>
-      </section>
+      </Section>
 
-      <section className="article-section">
-        <div className="container">
+      <Section>
           <h2>Ce trebuie să știi</h2>
           <p>{ctx.insight}</p>
           <p className="source-note">
-            Pentru context legislativ complet, consultă <Link href="/salariu-minim">analiza salariului minim 2026</Link> și <Link href="/salariu-mediu">salariul mediu pe economie</Link>. Calculul de pe această pagină respectă HG 146/2026, OUG 89/2025 și Codul Fiscal (Legea 227/2015) — ultima actualizare: 30 aprilie 2026.
+            Pentru context legislativ complet, consultă <Link href="/salariu-minim">analiza salariului minim 2026</Link> și <Link href="/salariu-mediu">salariul mediu pe economie</Link>. Calculul de pe această pagină respectă HG 146/2026, OUG 89/2025 și Codul Fiscal (Legea 227/2015) — ultima actualizare: 8 iunie 2026.
           </p>
-        </div>
-      </section>
+      </Section>
     </>
   );
 }

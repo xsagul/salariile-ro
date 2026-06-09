@@ -51,6 +51,14 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
 
+      // Consolidare: pagina „net" a fost absorbită în pilonul /salariu-minim
+      // (secțiunea #net). Redirect permanent ca să nu pierdem autoritatea URL-ului.
+      {
+        source: "/salariu-minim/net",
+        destination: "/salariu-minim",
+        permanent: true,
+      },
+
       // ─── Redirectele către /info au fost ELIMINATE (30 aprilie 2026) ─────────
       // Motivul: /info e noindex, deci Google marca lanțul "redirect → pagină
       // neindexabilă", afectând crawl budget și generând mesaje GSC.

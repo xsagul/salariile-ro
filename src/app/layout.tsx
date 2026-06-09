@@ -1,8 +1,6 @@
 // src/app/layout.tsx
-// Root layout — încarcă Inter Variable o singură dată, aplică pe tot site-ul.
-// Pattern Linear.app: Inter pentru ABSOLUT TOT (UI, body, tabele, cifre),
-// fără monospace separat. Cifrele folosesc font-variant-numeric: tabular-nums
-// nativ în Inter. Font-feature-settings cv11/ss01/ss03 pentru polished feel.
+// Root layout — design modern & simplu, font unic Inter (UI + body + cifre).
+// Cifrele folosesc font-variant-numeric: tabular-nums (setat în globals.css).
 
 import { Inter } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -13,7 +11,7 @@ import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-// Inter Variable — font unic pentru tot site-ul (stilul Linear).
+// Inter Variable — font unic pentru tot site-ul (UI, body, tabele, cifre).
 // Fără weight specific → variable font version, ~30 KB optimizat.
 const inter = Inter({
   subsets: ["latin", "latin-ext"],
@@ -87,15 +85,19 @@ export default async function RootLayout({
       <head>
         {/* Next.js va folosi automat nonce-ul pentru scripturile sale de sistem */}
       </head>
-      <body>
-        <div className="page">
+      <body className="min-h-screen overflow-x-hidden bg-white font-sans text-stone-700 antialiased">
+        <div className="relative flex min-h-screen flex-col">
           <Header />
-          <main>{children}</main>
+          <main className="flex-1">{children}</main>
           <Footer />
         </div>
-        {/* nonce necesar pentru CSP; prop lipsește din tipurile @vercel/speed-insights */}
-        {/* @ts-expect-error SpeedInsights acceptă nonce la runtime */}
-        <SpeedInsights nonce={nonce} />
+        {/* Speed Insights doar pe Vercel — pe localhost scriptul /_vercel/speed-insights/script.js
+            dă 404 și loghează eroare în consolă (scade Best Practices). VERCEL_ENV e setat doar pe Vercel.
+            nonce necesar pentru CSP; prop lipsește din tipurile @vercel/speed-insights. */}
+        {process.env.VERCEL_ENV && (
+          // @ts-expect-error SpeedInsights acceptă nonce la runtime
+          <SpeedInsights nonce={nonce} />
+        )}
       </body>
     </html>
   );

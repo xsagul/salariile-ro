@@ -4,6 +4,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { personSchema } from "@/lib/person";
+import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow } from "@/app/components/ui";
 
 export const metadata: Metadata = {
   title: "Metodologie de calcul salariu net 2026",
@@ -56,34 +57,25 @@ export default function MetodologiePage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      <section className="hero">
-        <div className="container">
-          <nav className="breadcrumb">
-            <Link href="/">Acasă</Link>
-            <span>/</span>
-            <span>Metodologie</span>
-          </nav>
-          <h1>Metodologie de calcul</h1>
-          <p className="article-byline">
-            Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Publicat 1 aprilie 2026 · Actualizat 30 aprilie 2026
-          </p>
-          <p className="subtitle">
-            Documentația completă a formulelor folosite de calculator. Fiecare componentă este însoțită de articolul exact din Codul Fiscal sau actul normativ aplicabil în 2026.
-          </p>
-          <p className="skeleton-hint">
-            SINCRONIZAT CU DECLARAȚIA 112 ANAF
-          </p>
-        </div>
-      </section>
+      <Hero>
+        <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Metodologie" }]} />
+        <H1>Metodologie de calcul</H1>
+        <p className="mt-3 text-sm text-stone-500 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2">
+          Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Publicat 1 aprilie 2026 · Actualizat 8 iunie 2026
+        </p>
+        <Lead>
+          Documentația completă a formulelor folosite de calculator. Fiecare componentă este însoțită de articolul exact din Codul Fiscal sau actul normativ aplicabil în 2026.
+        </Lead>
+        <Eyebrow>SINCRONIZAT CU DECLARAȚIA 112 ANAF</Eyebrow>
+      </Hero>
 
       <main>
-        <section className="article-section">
-          <div className="container">
+        <Section>
             <h2>Principiul general</h2>
             <p>
               Calculul salariului net pornește de la salariul brut (de încadrare, conform contractului individual de muncă) și aplică, în ordine, contribuțiile obligatorii reținute la sursă:
             </p>
-            <ul className="article-list">
+            <ul>
               <li><strong>CAS</strong> (Contribuția de Asigurări Sociale, „pensie”): 25% din baza de calcul</li>
               <li><strong>CASS</strong> (Contribuția de Asigurări Sociale de Sănătate): 10% din baza de calcul</li>
               <li><strong>Impozit pe venit</strong>: 10% din baza impozabilă</li>
@@ -91,22 +83,20 @@ export default function MetodologiePage() {
             <p>
               Pe lângă reținerile angajatului, angajatorul mai plătește:
             </p>
-            <ul className="article-list">
+            <ul>
               <li><strong>CAM</strong> (Contribuția Asiguratorie pentru Muncă): 2,25% din salariul brut</li>
             </ul>
             <p>
               CAM nu reduce salariul net al angajatului, dar crește costul total suportat de angajator.
             </p>
-          </div>
-        </section>
+        </Section>
 
-        <section className="article-section">
-          <div className="container">
+        <Section>
             <h2>Formula completă brut → net</h2>
             <p>
               Pentru un salariu brut B, deducere personală D (calculată conform regulilor) și o eventuală sumă netaxabilă F (facilitate OUG 89/2025 aplicabilă doar salariului minim):
             </p>
-            <div className="table-scroll"><table className="flat-table">
+            <div className="overflow-x-auto"><table>
               <thead>
                 <tr>
                   <th>Pas</th>
@@ -114,36 +104,36 @@ export default function MetodologiePage() {
                 </tr>
               </thead>
               <tbody>
-                <tr className="row-base">
+                <tr>
                   <td>1. Bază pentru CAS și CASS</td>
                   <td>Bază = B − F</td>
                 </tr>
-                <tr className="row-base">
+                <tr>
                   <td>2. CAS (25%)</td>
                   <td>CAS = Bază × 0,25</td>
                 </tr>
-                <tr className="row-base">
+                <tr>
                   <td>3. CASS (10%)</td>
                   <td>CASS = Bază × 0,10</td>
                 </tr>
-                <tr className="row-base">
+                <tr>
                   <td>4. Bază impozabilă</td>
                   <td>Bază_imp = B − F − CAS − CASS − D</td>
                 </tr>
-                <tr className="row-base">
+                <tr>
                   <td>5. Impozit pe venit (10%)</td>
                   <td>Impozit = max(0, Bază_imp × 0,10)</td>
                 </tr>
-                <tr className="total-net">
+                <tr className="font-semibold [&_td]:text-stone-900">
                   <td>6. Salariu net</td>
                   <td>Net = B − CAS − CASS − Impozit</td>
                 </tr>
-                <tr className="spacer-row"><td colSpan={2}></td></tr>
-                <tr className="row-base">
+                <tr aria-hidden="true"><td colSpan={2} className="h-3 border-0 p-0"></td></tr>
+                <tr>
                   <td>7. CAM angajator (2,25%)</td>
                   <td>CAM = B × 0,0225</td>
                 </tr>
-                <tr className="total-cost">
+                <tr className="font-semibold [&_td]:text-stone-900">
                   <td>8. Cost total angajator</td>
                   <td>Cost = B + CAM</td>
                 </tr>
@@ -152,13 +142,11 @@ export default function MetodologiePage() {
             <p className="source-note">
               Suma netaxabilă F este 0 pentru salarii peste nivelul minim. Pentru salariul minim brut în 2026 se aplică OUG 89/2025: 300 lei (ianuarie – iunie), 200 lei (iulie – decembrie).
             </p>
-          </div>
-        </section>
+        </Section>
 
-        <section className="article-section">
-          <div className="container">
+        <Section>
             <h2>Sursele normative pentru fiecare componentă</h2>
-            <div className="table-scroll"><table className="flat-table">
+            <div className="overflow-x-auto"><table>
               <thead>
                 <tr>
                   <th>Componentă</th>
@@ -167,53 +155,51 @@ export default function MetodologiePage() {
                 </tr>
               </thead>
               <tbody>
-                <tr className="row-base">
+                <tr>
                   <td>CAS (pensie)</td>
                   <td>25%</td>
                   <td>Codul Fiscal art. 138 lit. a)</td>
                 </tr>
-                <tr className="row-base">
+                <tr>
                   <td>CASS (sănătate)</td>
                   <td>10%</td>
                   <td>Codul Fiscal art. 156</td>
                 </tr>
-                <tr className="row-base">
+                <tr>
                   <td>Impozit pe venit</td>
                   <td>10%</td>
                   <td>Codul Fiscal art. 64 alin. (1)</td>
                 </tr>
-                <tr className="row-base">
+                <tr>
                   <td>Deducere personală</td>
                   <td>variabilă</td>
                   <td>Codul Fiscal art. 77</td>
                 </tr>
-                <tr className="row-base">
+                <tr>
                   <td>CAM (angajator)</td>
                   <td>2,25%</td>
                   <td>Codul Fiscal art. 220^3</td>
                 </tr>
-                <tr className="row-base">
+                <tr>
                   <td>Sumă netaxabilă (salariu minim)</td>
                   <td>300 / 200 lei</td>
                   <td>OUG 89/2025</td>
                 </tr>
-                <tr className="row-base">
+                <tr>
                   <td>Salariu minim brut 2026 — S1</td>
                   <td>4.050 lei</td>
                   <td>HG 1506/2024</td>
                 </tr>
-                <tr className="row-base">
+                <tr>
                   <td>Salariu minim brut 2026 — S2</td>
                   <td>4.325 lei</td>
                   <td>HG 146/2026 (MO 196/13.03.2026)</td>
                 </tr>
               </tbody>
             </table></div>
-          </div>
-        </section>
+        </Section>
 
-        <section className="article-section">
-          <div className="container">
+        <Section>
             <h2>Deducerea personală — detalii</h2>
             <p>
               Deducerea personală este o sumă scăzută din baza impozabilă, conform Codului Fiscal art. 77. Se aplică numai pentru venituri din salarii la locul unde se află funcția de bază.
@@ -221,7 +207,7 @@ export default function MetodologiePage() {
             <p>
               Pentru 2026, deducerea personală are două componente:
             </p>
-            <ul className="article-list">
+            <ul>
               <li>
                 <strong>Deducerea personală de bază</strong> — depinde de salariul brut lunar, de numărul de persoane aflate în întreținere și de plafonul calculat ca <em>salariul minim brut + 2.000 lei</em>. Pentru 2026: plafon = 6.050 lei (S1) sau 6.325 lei (S2). Peste acest plafon, deducerea de bază este 0.
               </li>
@@ -235,16 +221,14 @@ export default function MetodologiePage() {
             <p>
               Pentru veniturile peste plafonul de 6.050/6.325 lei, deducerea de bază nu se aplică — toată suma după contribuții se impozitează cu 10%.
             </p>
-          </div>
-        </section>
+        </Section>
 
-        <section className="article-section">
-          <div className="container">
+        <Section>
             <h2>Facilitatea fiscală pentru salariul minim (OUG 89/2025)</h2>
             <p>
               Pentru salariații încadrați la nivelul salariului minim brut, cu funcția de bază și normă întreagă, o sumă fixă este scutită de impozit și contribuții sociale:
             </p>
-            <ul className="article-list">
+            <ul>
               <li>1 ianuarie – 30 iunie 2026: 300 lei lunar netaxabili</li>
               <li>1 iulie – 31 decembrie 2026: 200 lei lunar netaxabili</li>
             </ul>
@@ -254,23 +238,19 @@ export default function MetodologiePage() {
             <p>
               Facilitatea nu se aplică pentru salarii peste nivelul minim brut, nici pentru programe parțiale, nici pentru cumul de funcții (când postul nu este funcția de bază).
             </p>
-          </div>
-        </section>
+        </Section>
 
-        <section className="article-section">
-          <div className="container">
+        <Section>
             <h2>Tratamentul rotunjirilor</h2>
             <p>
               Calculul intern se face cu precizie de două zecimale (la nivel de bani), pentru a coincide cu valorile transmise în Declarația 112 ANAF. La afișare, sumele sunt rotunjite la cel mai apropiat leu pentru lizibilitate, dar valorile intermediare nu se rotunjesc.
             </p>
             <p>
-              Exemple: pentru un brut de 4.050 lei (salariu minim S1), CAS = 937,50 lei, CASS = 375 lei. Suma se păstrează exactă în calcul, iar afișajul final pentru salariul net rotunjește la 2.574 lei.
+              Exemple: pentru un brut de 4.325 lei (salariu minim din iulie 2026), CAS = 1.031,25 lei, CASS = 412,50 lei. Suma se păstrează exactă în calcul, iar afișajul final pentru salariul net rotunjește la 2.699 lei.
             </p>
-          </div>
-        </section>
+        </Section>
 
-        <section className="article-section">
-          <div className="container">
+        <Section>
             <h2>Sincronizarea cu Declarația 112 ANAF</h2>
             <p>
               Declarația 112 este declarația lunară pe care orice angajator o transmite la ANAF, conținând impozitele și contribuțiile reținute pentru toți salariații. Calculatorul folosește aceleași formule și aceeași logică de încadrare pe care le aplică ANAF în validarea declarațiilor 112.
@@ -278,16 +258,14 @@ export default function MetodologiePage() {
             <p>
               Pentru un salariu standard (brut fix, fără sporuri speciale, fără concedii, fără tichete personalizate), sumele calculate aici sunt aceleași pe care angajatorul tău le declară lunar la ANAF.
             </p>
-          </div>
-        </section>
+        </Section>
 
-        <section className="article-section">
-          <div className="container">
+        <Section>
             <h2>Limitări declarate</h2>
             <p>
               Calculatorul reproduce formula standard pentru un salariu lunar tipic, dar <strong>nu poate înlocui</strong> un calcul personalizat făcut de un contabil pentru cazuri speciale. În particular, calculatorul:
             </p>
-            <ul className="article-list">
+            <ul>
               <li><strong>Nu integrează sporuri și beneficii nesalariale</strong> tratate diferențiat (tichete de masă peste plafon, tichete cadou, prime ocazionale, indemnizații de delegare etc.)</li>
               <li><strong>Nu calculează concediile medicale</strong> (alt tratament fiscal, indemnizație din FAAMBP sau de la angajator)</li>
               <li><strong>Nu acoperă cazurile de cumul de funcții</strong> (mai multe contracte simultane, funcție de bază vs locuri suplimentare de muncă)</li>
@@ -298,16 +276,14 @@ export default function MetodologiePage() {
             <p>
               Pentru aceste situații, recomand consultarea unui contabil autorizat sau a unui expert fiscal. Calculatorul este util pentru a obține o estimare rapidă și acurată pentru cazul standard.
             </p>
-          </div>
-        </section>
+        </Section>
 
-        <section className="article-section">
-          <div className="container">
+        <Section>
             <h2>Cum se actualizează calculatorul</h2>
             <p>
               Modificările legislative privind salariile sunt urmărite lunar prin Monitorul Oficial și comunicările Ministerului Finanțelor, ANAF și Ministerului Muncii. La fiecare modificare semnificativă (publicare HG, OUG, lege nouă) actualizez:
             </p>
-            <ul className="article-list">
+            <ul>
               <li>Formulele calculatorului — dacă se modifică o cotă sau o regulă de aplicare</li>
               <li>Valorile de referință folosite (salariu minim, plafon deducere) — la fiecare actualizare anunțată oficial</li>
               <li>Paginile editoriale aferente (<Link href="/salariu-minim">salariu minim</Link>, <Link href="/salariu-mediu">salariu mediu</Link>) — cu noile cifre și surse</li>
@@ -316,13 +292,11 @@ export default function MetodologiePage() {
             <p>
               În antetul fiecărei pagini este afișată data ultimei revizuiri. Dacă observi o discrepanță între ce afișează calculatorul și o sursă oficială pe care o ai, scrie-mi la adresa de pe pagina de <Link href="/contact">contact</Link>.
             </p>
-          </div>
-        </section>
+        </Section>
 
-        <section className="article-section">
-          <div className="container">
+        <Section>
             <h2>Surse oficiale folosite</h2>
-            <ul className="article-list">
+            <ul>
               <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/257144" target="_blank" rel="noopener"><strong>Codul Fiscal</strong> — Legea 227/2015</a>, cu modificările ulterioare</li>
               <li><a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/128646" target="_blank" rel="noopener"><strong>Codul Muncii</strong> — Legea 53/2003</a>, cu modificările ulterioare</li>
               <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/308231" target="_blank" rel="noopener"><strong>HG 146/2026</strong></a> — salariu minim de la 1 iulie 2026 (MO nr. 196 din 13 martie 2026)</li>
@@ -336,9 +310,8 @@ export default function MetodologiePage() {
               <li><strong>Monitorul Oficial</strong> — <a href="https://legislatie.just.ro" target="_blank" rel="noopener">legislatie.just.ro</a> (portal căutare generală)</li>
               <li><strong>Institutul Național de Statistică</strong> — <a href="https://insse.ro" target="_blank" rel="noopener">insse.ro</a></li>
             </ul>
-            <p className="source-note">Pagină actualizată: 30 aprilie 2026.</p>
-          </div>
-        </section>
+            <p className="source-note">Pagină actualizată: 8 iunie 2026.</p>
+        </Section>
       </main>
     </>
   );

@@ -4,15 +4,17 @@
 export const SITE_URL = "https://salariile.ro";
 
 /** Ultima modificare de conținut fiscal / editorial (nu la fiecare deploy). */
-export const LAST_FISCAL_CONTENT_UPDATE = new Date("2026-04-30T00:00:00.000Z");
+export const LAST_FISCAL_CONTENT_UPDATE = new Date("2026-06-08T00:00:00.000Z");
 
 /** Pagini statice cu date de publicare cunoscute. */
 export const PAGE_LAST_MODIFIED: Record<string, Date> = {
   "/": LAST_FISCAL_CONTENT_UPDATE,
-  "/salariu-minim": new Date("2026-04-30T00:00:00.000Z"),
-  "/salariu-mediu": new Date("2026-04-30T00:00:00.000Z"),
+  "/salariu-minim": new Date("2026-06-08T00:00:00.000Z"),
+  "/calculator-pfa": new Date("2026-06-08T00:00:00.000Z"),
+  "/salariu-mediu": new Date("2026-06-08T00:00:00.000Z"),
   "/metodologie": new Date("2026-04-30T00:00:00.000Z"),
-  "/zile-libere-2026": new Date("2026-04-15T00:00:00.000Z"),
+  "/zile-libere-2026": new Date("2026-06-08T00:00:00.000Z"),
+  "/noutati": new Date("2026-06-08T00:00:00.000Z"),
   "/despre": new Date("2026-04-01T00:00:00.000Z"),
   "/contact": new Date("2026-04-01T00:00:00.000Z"),
   "/politica-confidentialitate": new Date("2026-04-01T00:00:00.000Z"),

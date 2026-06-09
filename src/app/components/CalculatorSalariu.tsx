@@ -20,6 +20,10 @@ type InputNumberProps = {
   onChange: (v: string) => void;
   placeholder?: string;
   hint?: string;
+  onEnter?: () => void;
+  tall?: boolean;
+  error?: string;
+  unit?: string;
 };
 
 type ToggleProps = {
@@ -34,14 +38,24 @@ type SelectProps = {
   value: number;
   options: SelectOption[];
   onChange: (v: number) => void;
+  disabled?: boolean;
 };
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
 const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(n) + " lei";
 
+// Inputurile monetare stochează DOAR cifre în state (ex: "4050"), dar se afișează
+// grupate cu separator de mii (ex: "4.050"). Astfel calculul primește mereu un
+// întreg corect, iar utilizatorul nu poate strica valoarea tastând un punct.
+const doarCifre = (s: string) => s.replace(/\D/g, "");
+const grupeazaMii = (raw: string) => {
+  const n = Number(raw);
+  return raw && Number.isFinite(n) ? new Intl.NumberFormat("ro-RO").format(n) : "";
+};
+
 // Construiește rezultatul afișat dintr-un snapshot de input + mod.
-// Calculul se face O DATĂ, la momentul click pe Calculează — nu la fiecare render.
+// Calculul se face O DATĂ, la momentul click pe Calculează – nu la fiecare render.
 // Conține tot ce e nevoie să randeze tabelul + payload-ul PDF.
 function buildResult(snapshotInput: InputState, snapshotMod: "brut" | "net") {
   const brutEfectiv = snapshotMod === "net"
@@ -56,40 +70,108 @@ function buildResult(snapshotInput: InputState, snapshotMod: "brut" | "net") {
   };
 }
 
+// Cheie de snapshot a inputului + mod. Folosită pentru a detecta dacă datele
+// s-au schimbat față de ultimul calcul → semnalul „rezultat învechit"
+// (închide Gulful Evaluării – Norman, DOET cap. 2 & 5).
+function inputKey(inp: InputState, m: "brut" | "net") {
+  return JSON.stringify([
+    m, inp.brut, inp.tichete, inp.functieDeBAza,
+    inp.persoanePretretinere, inp.varstaSub26, inp.copiiScolarizati, inp.scutitImpozit,
+  ]);
+}
+
+// Exemple pentru placeholder – derivate din fiscal.ts (NU hardcodate).
+const EX_PLACEHOLDER_BRUT = String(SALARIU_MINIM); // 4050
+const EX_PLACEHOLDER_NET = String(
+  calculeaza({
+    brut: String(SALARIU_MINIM),
+    tichete: "",
+    functieDeBAza: true,
+    persoanePretretinere: 0,
+    varstaSub26: false,
+    copiiScolarizati: 0,
+    scutitImpozit: false,
+  })?.net ?? ""
+); // = 2699 (salariul minim net, caz standard, din 1 iulie 2026)
+
 // ─── Componente UI ────────────────────────────────────────────────────────────
 
+// ─── Clase utilitare reutilizate (design tokens „în linie") ──────────────────
+const fieldLabel =
+  "mb-2 block text-xs font-medium text-stone-500";
+// text-base sm:text-sm → 16px pe mobil împiedică zoom-ul automat iOS la focus; 14px pe desktop.
+const controlBox =
+  "w-full rounded border border-stone-300 bg-surface px-3 py-2 text-base sm:text-sm text-stone-900 outline-none transition focus:border-stone-400 focus:shadow-[0_0_6px_rgba(28,25,23,0.12)]";
+
+// Celule tabel-fluturaș
+const cellL = "border-b border-r border-stone-300 px-3 py-3 text-left";
+const cellR = "border-b border-stone-300 px-3 py-3 text-right tabular-nums whitespace-nowrap";
+const colHeader =
+  "mb-4 border-b border-stone-200 pb-2 text-lg font-medium text-stone-900";
+
 // Am adăugat 'id' în paranteze și am legat label-ul de input
-function InputNumber({ id, label, value, onChange, placeholder, hint }: InputNumberProps) {
+function InputNumber({ id, label, value, onChange, placeholder, hint, onEnter, tall, error, unit = "lei / lună" }: InputNumberProps) {
   return (
-    <div className="field">
-      <label htmlFor={id}>{label}</label>
-      {hint && <span className="hint">{hint}</span>}
-      <div className="input-wrap">
-        <input id={id} name={id} type="number" value={value} onChange={(e) => onChange(e.target.value)} placeholder={placeholder || "0"} min="0" />
-        <span className="suffix">LEI / lună</span>
+    <div className="mb-5">
+      <label htmlFor={id} className={fieldLabel}>{label}</label>
+      {hint && <span className="mb-2 block text-xs text-stone-500">{hint}</span>}
+      <div className={`flex w-full overflow-hidden rounded border transition focus-within:border-stone-400 focus-within:shadow-[0_0_6px_rgba(28,25,23,0.12)] ${error ? "border-stone-500" : "border-stone-300"}`}>
+        <input
+          id={id}
+          name={id}
+          type="text"
+          inputMode="numeric"
+          value={grupeazaMii(value)}
+          onChange={(e) => onChange(doarCifre(e.target.value))}
+          onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); onEnter?.(); } }}
+          placeholder={placeholder || "0"}
+          aria-invalid={error ? true : undefined}
+          aria-describedby={error ? `${id}-error` : undefined}
+          className={`min-w-0 flex-1 bg-transparent px-3 py-2 text-base text-stone-900 outline-none${tall ? " leading-7" : ""}`}
+        />
+        {unit && <span className="flex items-center whitespace-nowrap border-l border-stone-200 px-3 text-xs font-medium text-stone-500">{unit}</span>}
       </div>
+      {error && <span id={`${id}-error`} role="alert" className="mt-2 block text-xs font-medium text-stone-900">{error}</span>}
     </div>
   );
 }
 
 function Toggle({ label, checked, onChange }: ToggleProps) {
   return (
-    <label className="toggle-row">
+    <label className="flex min-h-11 cursor-pointer items-center justify-between border-b border-stone-100 py-3 text-sm text-stone-700 last:border-b-0">
       <span>{label}</span>
-      <button role="switch" aria-checked={checked} className={`toggle ${checked ? "on" : ""}`} onClick={() => onChange(!checked)} type="button">
-        <span className="thumb" />
+      <button
+        role="switch"
+        aria-checked={checked}
+        onClick={() => onChange(!checked)}
+        type="button"
+        className={`relative h-6 w-11 flex-shrink-0 rounded-full transition-colors ${
+          checked ? "bg-stone-900" : "bg-stone-300"
+        }`}
+      >
+        <span
+          className={`absolute top-0.5 left-0.5 h-5 w-5 rounded-full bg-surface shadow-soft transition-transform ${
+            checked ? "translate-x-5" : ""
+          }`}
+        />
       </button>
     </label>
   );
 }
 
-function Select({ id, label, value, options, onChange }: SelectProps) {
+function Select({ id, label, value, options, onChange, disabled = false }: SelectProps) {
   return (
-    <div className="field">
-      <label htmlFor={id}>{label}</label>
-      <select id={id} value={value} onChange={(e) => onChange(Number(e.target.value))}>
-        {options.map((o) => (<option key={o.v} value={o.v}>{o.l}</option>))}
-      </select>
+    <div className="mb-5">
+      <label htmlFor={id} className={`${fieldLabel} ${disabled ? "opacity-40" : ""}`}>{label}</label>
+      <div className="relative">
+        <select id={id} value={value} disabled={disabled} onChange={(e) => onChange(Number(e.target.value))} className={`${controlBox} appearance-none pr-9 ${disabled ? "cursor-not-allowed opacity-40" : "cursor-pointer"}`}>
+          {options.map((o) => (<option key={o.v} value={o.v}>{o.l}</option>))}
+        </select>
+        {/* Chevron custom – aliniat la right-3 (12px), oglindă cu px-3 din stânga */}
+        <svg className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-stone-500" viewBox="0 0 20 20" fill="none" stroke="currentColor" aria-hidden="true">
+          <path d="M5 7.5l5 5 5-5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </div>
     </div>
   );
 }
@@ -115,7 +197,7 @@ async function generarePDFFluturas(
   esteSalariuMinim: boolean,
   facilitate: number
 ): Promise<void> {
-  // Import dinamic — biblioteca se încarcă doar când utilizatorul apasă butonul
+  // Import dinamic – biblioteca se încarcă doar când utilizatorul apasă butonul
   const { jsPDF } = await import("jspdf");
 
   const doc = new jsPDF({ unit: "mm", format: "a4" });
@@ -215,7 +297,7 @@ async function generarePDFFluturas(
   rand(y, "C.A.S.S. (Asigurari Sanatate - 10%)", `- ${rez.cass.toLocaleString("ro-RO")} lei`, false, 5);
   y += 6;
 
-  // Deducere personală (informativ — text gri)
+  // Deducere personală (informativ – text gri)
   if (rez.deducerePersonala > 0) {
     doc.setTextColor(100);
     rand(y, "Deducere personala", `${rez.deducerePersonala.toLocaleString("ro-RO")} lei`, false, 5);
@@ -279,14 +361,22 @@ export default function CalculatorSalariu({
   modInitial = "brut",
   titluCustom,
   subtitluCustom,
+  wide = false,
 }: {
   brutInitial?: string;
   modInitial?: "brut" | "net";
   titluCustom?: React.ReactNode;
   subtitluCustom?: React.ReactNode;
+  wide?: boolean;
 }) {
+  const wrap = wide ? "max-w-7xl" : "max-w-6xl";
   const [mod, setMod] = useState<"brut" | "net">(modInitial);
   const [avansat, setAvansat] = useState(false);
+  // Avertisment scurt când se apasă Calculează fără un salariu valid (Nielsen h1/h9).
+  const [emptyWarn, setEmptyWarn] = useState(false);
+  // Tichete: nr. × valoare/tichet → total stocat în input.tichete (calculul folosește totalul).
+  const [nrTichete, setNrTichete] = useState("");
+  const [valoareTichet, setValoareTichet] = useState("");
 
   const initialInput: InputState = {
     brut: brutInitial,
@@ -300,12 +390,17 @@ export default function CalculatorSalariu({
 
   const [input, setInput] = useState<InputState>(initialInput);
 
-  // Rezultatul afișat — calculat O DATĂ la click pe Calculează, stocat ca obiect.
+  // Rezultatul afișat – calculat O DATĂ la click pe Calculează, stocat ca obiect.
   // Nu se schimbă la tastare/toggle, doar la click. La mount, dacă brutInitial
   // e prezent (pagini dinamice tip /4050-brut-...), pre-calculează (auto-commit
-  // pentru SEO/SSR — Google vede tabelul completat la randare).
+  // pentru SEO/SSR – Google vede tabelul completat la randare).
   const [rezAfisat, setRezAfisat] = useState<ReturnType<typeof buildResult>>(
     brutInitial && parseFloat(brutInitial) > 0 ? buildResult(initialInput, modInitial) : null
+  );
+
+  // Cheia inputului care a produs rezultatul afișat (pentru detectarea „învechirii").
+  const [rezKey, setRezKey] = useState<string>(
+    brutInitial && parseFloat(brutInitial) > 0 ? inputKey(initialInput, modInitial) : ""
   );
 
   const set = useCallback(
@@ -314,256 +409,344 @@ export default function CalculatorSalariu({
     []
   );
 
+  // Calculează O DATĂ + derulează la rezultat. Folosit de butonul „Calculează"
+  // ȘI de tasta Enter din câmpul de salariu.
+  const handleCalculeaza = useCallback(() => {
+    // Câmp gol / invalid → nu calcula; semnalează și pune focus pe input.
+    if (!((parseFloat(input.brut) || 0) > 0)) {
+      setEmptyWarn(true);
+      if (typeof window !== "undefined") document.getElementById("salariu-input")?.focus();
+      return;
+    }
+    setEmptyWarn(false);
+    setRezAfisat(buildResult(input, mod));
+    setRezKey(inputKey(input, mod));
+    if (typeof window === "undefined") return;
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    const targetId = isMobile ? "rezultat-calcul" : "calc-layout";
+    document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [input, mod]);
+
+  // Rezultatul afișat e „învechit" dacă datele curente diferă de cele de la ultimul calcul.
+  const stale = rezAfisat !== null && rezKey !== inputKey(input, mod);
+
   return (
     <>
-{/* ── Hero Minimalist ── */}
-      <section className="hero">
-        <div className="container">
+      {/* ── Hero ── */}
+      <section className="border-b border-stone-200 bg-canvas">
+        <div className={`mx-auto ${wrap} px-4 py-8 sm:px-6 sm:py-12`}>
+          {/* Hero pe aceeași grilă (col-span-3) = exact lățimea cardului „Rezultat calcul", la orice viewport. */}
+          <div className="md:grid md:grid-cols-5 md:gap-6">
+            <div className="md:col-span-3">
           {/* Breadcrumb doar pe pagini dinamice, nu pe homepage */}
           {titluCustom && (
-            <nav className="breadcrumb" aria-label="Breadcrumb">
-              <Link href="/">Acasă</Link>
+            <nav className="mb-4 flex gap-2 text-xs text-stone-500" aria-label="Breadcrumb">
+              <Link href="/" className="hover:text-stone-700">Acasă</Link>
               <span>/</span>
               <span aria-current="page">Calculator salariu</span>
             </nav>
           )}
-          
+
           {/* Titlul Dinamic */}
-          <h1>
+          <h1 className="mb-3 text-3xl font-bold tracking-[-0.02em] text-stone-900 sm:text-4xl">
             {titluCustom || <>Calculator salariu net 2026</>}
           </h1>
-          
+
           {/* Subtitlul Dinamic */}
-          <p className="subtitle">
+          <p className="max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600 [&_a]:font-medium [&_a]:text-stone-700 [&_a]:underline [&_a]:underline-offset-2 hover:[&_a]:text-stone-900">
             {subtitluCustom || (
               <>
-                Calculează salariul net din brut. CAS, CASS, impozit și cost angajator — actualizat conform{" "}
+                Calculează salariul net din brut. CAS, CASS, impozit și cost angajator – actualizat conform{" "}
                 <a href="https://legislatie.just.ro/Public/DetaliiDocument/308231" target="_blank" rel="noopener noreferrer">HG 146/2026</a>
                 {" "}și{" "}
                 <a href="https://legislatie.just.ro/Public/DetaliiDocument/305817" target="_blank" rel="noopener noreferrer">OUG 89/2025</a>.
               </>
             )}
           </p>
-          
+
           {/* Dateline tehnic, scurt și curat */}
           {!titluCustom && (
-            <div className="dateline">
-              Ultima actualizare: 30 aprilie 2026 · Sincronizat cu Declarația 112 ANAF
+            <div className="mt-4 text-xs text-stone-600">
+              Ultima actualizare: 8 iunie 2026
             </div>
           )}
+            </div>
+          </div>
         </div>
       </section>
 
       {/* ── Calculator ── */}
-      <div className="container calc-layout" id="calc-layout">
-        {/* Coloana Stângă */}
-      <div className="calc-column form-column"> 
-      {/* Titlul stă acum AFARĂ, la fel ca în dreapta */}
-        <h2 className="calc-column-header">Date salariale</h2>
-        {/* Form */}
-        <div className="card form-card">
-          <div className="card-head">
-            
-            <div className="field direction-field">
-              <label className="tech-label">DIRECȚIE DE CALCUL:</label>
-              <div className="mod-pills">
-                <button className={mod === "brut" ? "pill active" : "pill"} onClick={() => {
+      <div className={`mx-auto grid ${wrap} gap-6 px-4 py-8 sm:px-6 sm:py-12 md:grid-cols-5`} id="calc-layout">
+        {/* Coloana Stângă – formular */}
+        <div className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-2" data-md-strip>
+          <h2 className={colHeader}>Date salariale</h2>
+
+          <div className="mb-5">
+            <span className={fieldLabel}>Direcție de calcul</span>
+            <div className="flex w-full overflow-hidden rounded border border-stone-300">
+              <button
+                type="button"
+                className={`flex-1 inline-flex min-h-11 items-center justify-center px-4 text-sm font-medium transition-colors ${mod === "brut" ? "bg-stone-900 text-white" : "text-stone-500 hover:bg-canvas"}`}
+                onClick={() => {
                   if (mod === "net") {
-                    const netVal = parseFloat(input.brut) || 0;
-                    set("brut", String(calculeazaBrutDinNet(netVal, input)));
+                    const netVal = parseFloat(input.brut);
+                    if (netVal > 0) set("brut", String(calculeazaBrutDinNet(netVal, input)));
                   }
                   setMod("brut");
-                }}>Din brut în net</button>
-                <button className={mod === "net" ? "pill active" : "pill"} onClick={() => {
+                }}
+              >
+                Din brut în net
+              </button>
+              <button
+                type="button"
+                className={`border-l border-stone-300 flex-1 inline-flex min-h-11 items-center justify-center px-4 text-sm font-medium transition-colors ${mod === "net" ? "bg-stone-900 text-white" : "text-stone-500 hover:bg-canvas"}`}
+                onClick={() => {
                   if (mod === "brut") {
-                    const rezTemp = calculeaza(input);
-                    if (rezTemp) set("brut", String(rezTemp.net));
+                    const brutVal = parseFloat(input.brut);
+                    if (brutVal > 0) {
+                      const rezTemp = calculeaza(input);
+                      if (rezTemp) set("brut", String(rezTemp.net));
+                    }
                   }
                   setMod("net");
-                }}>Din net în brut</button>
-              </div>
+                }}
+              >
+                Din net în brut
+              </button>
             </div>
           </div>
 
-          <InputNumber id="salariu-input" label={mod === "brut" ? "SALARIU BRUT:" : "SALARIU NET:"} value={input.brut} onChange={(v) => set("brut", v)} />
-          
-          <button className="avansat-toggle" onClick={() => {
-            if (avansat) { set("tichete", ""); set("functieDeBAza", true); set("persoanePretretinere", 0); set("varstaSub26", false); set("copiiScolarizati", 0); set("scutitImpozit", false); }
-            setAvansat(!avansat);
-          }}>
+          <InputNumber id="salariu-input" label={mod === "brut" ? "Salariu brut" : "Salariu net"} value={input.brut} onChange={(v) => { set("brut", v); if (emptyWarn) setEmptyWarn(false); }} placeholder={mod === "brut" ? `ex: ${grupeazaMii(EX_PLACEHOLDER_BRUT)}` : `ex: ${grupeazaMii(EX_PLACEHOLDER_NET)}`} onEnter={handleCalculeaza} error={emptyWarn ? "Introdu un salariu mai întâi." : undefined} tall />
+
+          <button
+            type="button"
+            className="mb-5 flex min-h-11 w-full items-center justify-center rounded border border-dashed border-stone-300 px-4 text-xs font-medium text-stone-500 transition-colors hover:border-stone-400 hover:text-stone-700"
+            onClick={() => {
+              if (avansat) { set("tichete", ""); setNrTichete(""); setValoareTichet(""); set("functieDeBAza", true); set("persoanePretretinere", 0); set("varstaSub26", false); set("copiiScolarizati", 0); set("scutitImpozit", false); }
+              setAvansat(!avansat);
+            }}
+          >
             {avansat ? "▲ Ascunde opțiuni avansate" : "▼ Calculator avansat"}
           </button>
 
           {avansat && (
             <>
-              <InputNumber id="tichete-input" label="Tichete de masă" value={input.tichete} onChange={(v) => set("tichete", v)} placeholder="0" hint="Valoare lunară totală" />
-              <Toggle label="Funcție de bază" checked={input.functieDeBAza} onChange={(v) => set("functieDeBAza", v)} />
-              <Select id="persoane-intretinere" label="Persoane în întreținere" value={input.persoanePretretinere} options={[0, 1, 2, 3, 4].map((n) => ({ v: n, l: n === 0 ? "Niciuna" : `${n} ${n === 1 ? "persoană" : "persoane"}` }))} onChange={(v) => set("persoanePretretinere", v)} />
-              <Select id="copii-scolari" label="Copii minori școlari" value={input.copiiScolarizati} options={[0, 1, 2, 3, 4, 5].map((n) => ({ v: n, l: n === 0 ? "Niciunul" : `${n} ${n === 1 ? "copil" : "copii"}` }))} onChange={(v) => set("copiiScolarizati", v)} />
-              <Toggle label="Vârstă sub 26 ani" checked={input.varstaSub26} onChange={(v) => set("varstaSub26", v)} />
-              <Toggle label="Scutit de impozit (handicap etc.)" checked={input.scutitImpozit} onChange={(v) => set("scutitImpozit", v)} />
+              {/* Câmpuri-valoare (cât / câți) – ritm de câmp, mb-5 fiecare */}
+              {/* Tichete de masă: nr. × valoare/tichet, înmulțite automat în total */}
+              <div className="grid grid-cols-2 gap-3">
+                <InputNumber id="nr-tichete" label="Tichete / lună" unit="" value={nrTichete} placeholder="ex: 21"
+                  onChange={(v) => { setNrTichete(v); const t = (parseInt(v) || 0) * (parseInt(valoareTichet) || 0); set("tichete", t ? String(t) : ""); }} />
+                <InputNumber id="valoare-tichet" label="Valoare / tichet" unit="lei" value={valoareTichet} placeholder="ex: 40"
+                  onChange={(v) => { setValoareTichet(v); const t = (parseInt(nrTichete) || 0) * (parseInt(v) || 0); set("tichete", t ? String(t) : ""); }} />
+              </div>
+              {(parseInt(input.tichete) || 0) > 0 && (
+                <p className="-mt-3 mb-5 text-xs text-stone-500">Total tichete: <span className="font-medium text-stone-700">{fmt(parseInt(input.tichete))}</span> / lună</p>
+              )}
+              <Select id="persoane-intretinere" label="Persoane în întreținere" value={input.persoanePretretinere} options={[0, 1, 2, 3, 4, 5].map((n) => ({ v: n, l: n === 0 ? "Niciuna" : `${n} ${n === 1 ? "persoană" : "persoane"}` }))} onChange={(v) => { set("persoanePretretinere", v); if (input.copiiScolarizati > v) set("copiiScolarizati", v); }} />
+              <Select id="copii-scolari" label="Dintre care, copii minori școlari" value={input.copiiScolarizati} disabled={input.persoanePretretinere === 0} options={Array.from({ length: input.persoanePretretinere + 1 }, (_, n) => ({ v: n, l: n === 0 ? "Niciunul" : `${n} ${n === 1 ? "copil" : "copii"}` }))} onChange={(v) => set("copiiScolarizati", v)} />
+              {/* Switch-uri (da/nu) – listă contiguă cu hairline-uri interne; last:border-b-0 prinde pe Scutit */}
+              <div>
+                <Toggle label="Funcție de bază (jobul principal)" checked={input.functieDeBAza} onChange={(v) => set("functieDeBAza", v)} />
+                <Toggle label="Vârstă sub 26 ani" checked={input.varstaSub26} onChange={(v) => set("varstaSub26", v)} />
+                <Toggle label="Scutit de impozit (de exemplu, handicap)" checked={input.scutitImpozit} onChange={(v) => set("scutitImpozit", v)} />
+              </div>
             </>
           )}
 
           <button
             type="button"
-            className="btn-calculeaza"
-            onClick={() => {
-              // 1) Calculează O DATĂ și stochează direct rezultatul.
-              setRezAfisat(buildResult(input, mod));
-              // 2) Scroll la zona corectă (mobile: results-col; desktop: calc-layout).
-              if (typeof window === "undefined") return;
-              const isMobile = window.matchMedia("(max-width: 768px)").matches;
-              const targetId = isMobile ? "rezultat-calcul" : "calc-layout";
-              document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth", block: "start" });
-            }}
+            className={`${avansat ? "mt-5 " : ""}block min-h-12 w-full rounded bg-stone-900 px-4 py-3 text-sm font-medium text-white shadow-soft transition-colors hover:bg-stone-800 active:translate-y-px`}
+            onClick={handleCalculeaza}
             aria-label="Calculează salariul și navighează la rezultat"
           >
             Calculează
           </button>
-        </div> {/* <--- AICI SE ÎNCHIDE DIV-UL NOU CREAT */}
-      </div>
+        </div>
 
-        {/* Rezultate — editorial: 1 card cu tabel-fluturas */}
-        <div className="calc-column results-col" id="rezultat-calcul">
-          <h2 className="calc-column-header">Rezultat calcul</h2>
+        {/* Coloana Dreaptă – rezultate */}
+        <div className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-3" id="rezultat-calcul">
+          <h2 className={colHeader}>Rezultat calcul</h2>
+
+          {stale && (
+            <p className="mb-4 rounded border border-stone-300 bg-canvas px-3 py-2 text-xs text-stone-600" role="status">
+              Ai modificat datele – apasă{" "}
+              <strong className="font-medium text-stone-900">Calculează</strong> pentru a actualiza rezultatul.
+            </p>
+          )}
 
           {rezAfisat ? (
-            <div className="results-wrapper">
-              
-              <table className="payslip-table flat-table">
+            <div className={stale ? "opacity-50 transition-opacity" : "transition-opacity"}>
+            <div className="overflow-hidden rounded border border-stone-300">
+              <table className="w-full table-auto border-collapse [&_td]:align-middle [&_th]:align-middle sm:table-fixed text-sm text-stone-700">
+                <colgroup><col /><col className="w-28 sm:w-36" /></colgroup>
                 <thead>
                   <tr>
-                    <th>Indicator Fiscal</th>
-                    <th>Sumă</th>
+                    <th className="border-b border-b-stone-300 border-r border-r-stone-300 bg-canvas px-3 py-3 text-left text-sm font-medium text-stone-700">Indicator fiscal</th>
+                    <th className="border-b border-stone-300 bg-canvas px-3 py-3 text-right text-sm font-medium text-stone-700">Sumă</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="row-bright">
-                    <td>Salariu de încadrare (Brut)</td>
-                    <td>{fmt(parseFloat(rezAfisat.brutEfectiv))}</td>
+                  <tr>
+                    <td className={`${cellL} font-medium text-stone-900`}>Salariu de încadrare (Brut)</td>
+                    <td className={`${cellR} font-medium text-stone-900`}>{fmt(parseFloat(rezAfisat.brutEfectiv))}</td>
                   </tr>
                   {parseFloat(rezAfisat.brutEfectiv) === SALARIU_MINIM && rezAfisat.functieDeBAza && (
-                    <tr className="sub-row">
-                      <td><span className="muted">Facilitate fiscală (neimpozabilă)</span></td>
-                      <td>{fmt(DEDUCERE_MINIM)}</td>
+                    <tr>
+                      <td className={`${cellL} pl-4 sm:pl-8`}>Facilitate fiscală (neimpozabilă)</td>
+                      <td className={cellR}>{fmt(DEDUCERE_MINIM)}</td>
                     </tr>
                   )}
-                  <tr className="sub-row indent">
-                    <td><span className="muted">CAS (Pensii - 25%)</span></td>
-                    <td>− {fmt(rezAfisat.rez.cas)}</td>
+                  <tr>
+                    <td className={`${cellL} pl-4 sm:pl-8`}>CAS (Pensii – 25%)</td>
+                    <td className={cellR}>− {fmt(rezAfisat.rez.cas)}</td>
                   </tr>
-                  <tr className="sub-row indent">
-                    <td><span className="muted">CASS (Sănătate - 10%)</span></td>
-                    <td>− {fmt(rezAfisat.rez.cass)}</td>
+                  <tr>
+                    <td className={`${cellL} pl-4 sm:pl-8`}>CASS (Sănătate – 10%)</td>
+                    <td className={cellR}>− {fmt(rezAfisat.rez.cass)}</td>
                   </tr>
                   {rezAfisat.rez.deducerePersonala > 0 && (
-                    <tr className="sub-row indent">
-                      <td><span className="muted">Deducere personală (aplicată)</span></td>
-                      <td>{fmt(rezAfisat.rez.deducerePersonala)}</td>
+                    <tr>
+                      <td className={`${cellL} pl-4 sm:pl-8`}>Deducere personală (aplicată)</td>
+                      <td className={cellR}>{fmt(rezAfisat.rez.deducerePersonala)}</td>
                     </tr>
                   )}
-                  <tr className="row-base">
-                    <td>Impozit pe venit (10%)</td>
-                    <td>− {fmt(rezAfisat.rez.impozit)}</td>
-                  </tr>
-                  <tr className="total-retineri">
-                    <td>Total Rețineri Angajat</td>
-                    <td>{fmt(rezAfisat.rez.cas + rezAfisat.rez.cass + rezAfisat.rez.impozit)}</td>
-                  </tr>
-                  <tr className="total-net">
-                    <td>SALARIU NET</td>
-                    <td>{fmt(rezAfisat.rez.net)}</td>
-                  </tr>
-                </tbody>
-                {/* --- RÂND PENTRU SPAȚIERE (Accesibil + Linii corecte) --- */}
-                <tbody>
-                  <tr className="spacer-row" aria-hidden="true">
-                    <td colSpan={2}></td>
-                  </tr>
-                </tbody>
-                {/* --- PARTEA 2: COST ANGAJATOR --- */}
-                <tbody>
                   <tr>
-                    <td>CAM (Contribuție Muncă - 2.25%)</td>
-                    <td>{fmt(rezAfisat.rez.cam)}</td>
+                    <td className={cellL}>Impozit pe venit (10%)</td>
+                    <td className={cellR}>− {fmt(rezAfisat.rez.impozit)}</td>
                   </tr>
-                  <tr className="total-cost">
-                    <td>COST TOTAL ANGAJATOR</td>
-                    <td>{fmt(rezAfisat.rez.costTotal)}</td>
+                  <tr className="bg-canvas">
+                    <td className={`${cellL} font-bold text-stone-900`}>Total rețineri angajat</td>
+                    <td className={`${cellR} font-bold text-stone-900`}>{fmt(rezAfisat.rez.cas + rezAfisat.rez.cass + rezAfisat.rez.impozit)}</td>
+                  </tr>
+                  <tr className="bg-stone-900">
+                    <td className="border-r border-r-stone-600 px-3 py-3 text-left text-sm font-bold text-white">Salariu net</td>
+                    <td className="px-3 py-3 text-right text-sm font-bold tabular-nums whitespace-nowrap text-white">{fmt(rezAfisat.rez.net)}</td>
                   </tr>
                 </tbody>
               </table>
+            </div>
+            <div className="mt-3 overflow-hidden rounded border border-stone-300">
+              <table className="w-full table-auto border-collapse [&_td]:align-middle [&_th]:align-middle sm:table-fixed text-sm text-stone-700">
+                <colgroup><col /><col className="w-28 sm:w-36" /></colgroup>
+                <tbody>
+                  <tr>
+                    <td className={cellL}>CAM (angajator – 2,25%)</td>
+                    <td className={cellR}>{fmt(rezAfisat.rez.cam)}</td>
+                  </tr>
+                  {rezAfisat.rez.costTotal - parseFloat(rezAfisat.brutEfectiv) - rezAfisat.rez.cam > 0 && (
+                    <tr>
+                      <td className={cellL}>Tichete de masă</td>
+                      <td className={cellR}>{fmt(rezAfisat.rez.costTotal - parseFloat(rezAfisat.brutEfectiv) - rezAfisat.rez.cam)}</td>
+                    </tr>
+                  )}
+                  <tr className="bg-canvas">
+                    <td className="border-r border-stone-300 px-3 py-3 text-left text-sm font-bold text-stone-700">Cost total angajator</td>
+                    <td className="px-3 py-3 text-right text-sm font-bold tabular-nums whitespace-nowrap text-stone-900">{fmt(rezAfisat.rez.costTotal)}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
-              <button
-                type="button"
-                className="pdf-button"
-                onClick={() => generarePDFFluturas(
-                  parseFloat(rezAfisat.brutEfectiv),
-                  rezAfisat.rez,
-                  parseFloat(rezAfisat.brutEfectiv) === SALARIU_MINIM && rezAfisat.functieDeBAza,
-                  DEDUCERE_MINIM
-                )}
-              >
-                ↓ Descarcă fluturaș PDF
-              </button>
-
+            {/* Bară de proporție monocromă: din costul total, cât ajunge la angajat (net) vs la stat */}
+            {(() => {
+              const r = rezAfisat.rez;
+              const total = r.net + r.cas + r.cass + r.impozit + r.cam;
+              const ang = total > 0 ? Math.round((r.net / total) * 100) : 0;
+              const stat = 100 - ang;
+              return (
+                <div className="mt-3">
+                  <div
+                    className="flex h-10 w-full overflow-hidden rounded border border-dashed border-stone-300 text-xs font-medium"
+                    role="img"
+                    aria-label={`Din costul total al firmei, ${ang}% ajunge la angajat (salariu net) și ${stat}% la stat (CAS, CASS, impozit, CAM).`}
+                  >
+                    <div className="flex min-w-0 items-center justify-start overflow-hidden whitespace-nowrap bg-stone-900 px-3 text-white" style={{ flexGrow: ang, flexBasis: 0 }}>Angajat {ang}%</div>
+                    <div className="flex min-w-0 items-center justify-end overflow-hidden whitespace-nowrap border-l border-dashed border-stone-300 bg-canvas px-3 text-stone-700" style={{ flexGrow: stat, flexBasis: 0 }}>Stat {stat}%</div>
+                  </div>
+                  <p className="mt-2 text-xs text-stone-500">Din costul total al firmei: cât ajunge la tine (net) și cât la stat (CAS, CASS, impozit, CAM).</p>
+                </div>
+              );
+            })()}
             </div>
           ) : (
-            <div className="results-wrapper skeleton" aria-label="Schelet fluturaș, neinițializat">
-              <table className="payslip-table flat-table">
+            <>
+            <div className="overflow-hidden rounded border border-stone-300 text-stone-600" aria-hidden="true" data-md-strip>
+              <table className="w-full table-auto border-collapse [&_td]:align-middle [&_th]:align-middle sm:table-fixed text-sm">
+                <colgroup><col /><col className="w-28 sm:w-36" /></colgroup>
                 <thead>
                   <tr>
-                    <th>Indicator Fiscal</th>
-                    <th>Sumă</th>
+                    <th className="border-b border-b-stone-300 border-r border-r-stone-300 bg-canvas px-3 py-3 text-left text-sm font-medium text-stone-700">Indicator fiscal</th>
+                    <th className="border-b border-stone-300 bg-canvas px-3 py-3 text-right text-sm font-medium text-stone-700">Sumă</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="row-bright">
-                    <td>Salariu de încadrare (Brut)</td>
-                    <td aria-hidden="true">—</td>
-                  </tr>
-                  <tr className="sub-row indent">
-                    <td><span className="muted">CAS (Pensii - 25%)</span></td>
-                    <td aria-hidden="true">—</td>
-                  </tr>
-                  <tr className="sub-row indent">
-                    <td><span className="muted">CASS (Sănătate - 10%)</span></td>
-                    <td aria-hidden="true">—</td>
-                  </tr>
-                  <tr className="row-base">
-                    <td>Impozit pe venit (10%)</td>
-                    <td aria-hidden="true">—</td>
-                  </tr>
-                  <tr className="total-retineri">
-                    <td>Total Rețineri Angajat</td>
-                    <td aria-hidden="true">—</td>
-                  </tr>
-                  <tr className="total-net">
-                    <td>SALARIU NET</td>
-                    <td aria-hidden="true">—</td>
-                  </tr>
-                </tbody>
-                <tbody>
-                  <tr className="spacer-row" aria-hidden="true">
-                    <td colSpan={2}></td>
-                  </tr>
-                </tbody>
-                <tbody>
                   <tr>
-                    <td>CAM (Contribuție Muncă - 2.25%)</td>
-                    <td aria-hidden="true">—</td>
+                    <td className={cellL}>Salariu de încadrare (Brut)</td>
+                    <td className={cellR} aria-hidden="true">–</td>
                   </tr>
-                  <tr className="total-cost">
-                    <td>COST TOTAL ANGAJATOR</td>
-                    <td aria-hidden="true">—</td>
+                  <tr>
+                    <td className={`${cellL} pl-4 sm:pl-8`}>CAS (Pensii – 25%)</td>
+                    <td className={cellR} aria-hidden="true">–</td>
+                  </tr>
+                  <tr>
+                    <td className={`${cellL} pl-4 sm:pl-8`}>CASS (Sănătate – 10%)</td>
+                    <td className={cellR} aria-hidden="true">–</td>
+                  </tr>
+                  <tr>
+                    <td className={cellL}>Impozit pe venit (10%)</td>
+                    <td className={cellR} aria-hidden="true">–</td>
+                  </tr>
+                  <tr className="bg-canvas">
+                    <td className={`${cellL} font-bold`}>Total rețineri angajat</td>
+                    <td className={cellR} aria-hidden="true">–</td>
+                  </tr>
+                  <tr className="bg-stone-900">
+                    <td className="border-r border-r-stone-600 px-3 py-3 text-left text-sm font-bold text-white">Salariu net</td>
+                    <td className="px-3 py-3 text-right text-sm font-bold text-white/80" aria-hidden="true">–</td>
                   </tr>
                 </tbody>
               </table>
-              <p className="skeleton-hint">
-                Completează salariul brut pentru a genera fluturașul · Grila fiscală 2026 (minim: 4.050 lei)
-              </p>
             </div>
+            <div className="mt-3 overflow-hidden rounded border border-stone-300 text-stone-600" aria-hidden="true">
+              <table className="w-full table-auto border-collapse [&_td]:align-middle [&_th]:align-middle sm:table-fixed text-sm">
+                <colgroup><col /><col className="w-28 sm:w-36" /></colgroup>
+                <tbody>
+                  <tr>
+                    <td className={cellL}>CAM (angajator – 2,25%)</td>
+                    <td className={cellR} aria-hidden="true">–</td>
+                  </tr>
+                  <tr className="bg-canvas">
+                    <td className="border-r border-stone-300 px-3 py-3 text-left text-sm font-bold text-stone-700">Cost total angajator</td>
+                    <td className="px-3 py-3 text-right text-sm font-bold" aria-hidden="true">–</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            </>
+          )}
+
+          {rezAfisat && (
+            <button
+              type="button"
+              data-md-strip
+              disabled={stale}
+              aria-disabled={stale}
+              className={`mt-5 inline-flex min-h-12 items-center gap-2 rounded border border-stone-300 px-4 py-3 text-xs font-medium text-stone-700 transition-colors ${stale ? "cursor-not-allowed opacity-50" : "hover:border-stone-900 hover:bg-stone-900 hover:text-white"}`}
+              onClick={() => generarePDFFluturas(
+                parseFloat(rezAfisat.brutEfectiv),
+                rezAfisat.rez,
+                parseFloat(rezAfisat.brutEfectiv) === SALARIU_MINIM && rezAfisat.functieDeBAza,
+                DEDUCERE_MINIM
+              )}
+            >
+              ↓ Descarcă fluturaș PDF
+            </button>
+          )}
+
+          {!rezAfisat && (
+            <p className="mt-4 text-xs leading-relaxed text-stone-500" data-md-strip>
+              Completează salariul brut pentru a genera fluturașul · Grila fiscală 2026 (minim: 4.325 lei)
+            </p>
           )}
         </div>
       </div>

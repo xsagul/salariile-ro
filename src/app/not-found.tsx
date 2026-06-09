@@ -4,6 +4,7 @@
 
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Hero, Section, H1, Lead, Eyebrow } from "@/app/components/ui";
 
 export const metadata: Metadata = {
   title: "Pagina nu există · salariile.ro",
@@ -13,21 +14,18 @@ export const metadata: Metadata = {
 export default function NotFound() {
   return (
     <>
-      <section className="hero">
-        <div className="container">
-          <p className="skeleton-hint">EROARE 404</p>
-          <h1>Pagina căutată nu există</h1>
-          <p className="subtitle">
-            Linkul pe care l-ai accesat este greșit, expirat sau pagina a fost mutată. Cele mai utile pagini ale site-ului sunt mai jos.
-          </p>
-        </div>
-      </section>
+      <Hero>
+        <Eyebrow>EROARE 404</Eyebrow>
+        <H1>Pagina căutată nu există</H1>
+        <Lead>
+          Linkul pe care l-ai accesat este greșit, expirat sau pagina a fost mutată. Cele mai utile pagini ale site-ului sunt mai jos.
+        </Lead>
+      </Hero>
 
       <main>
-        <section className="article-section">
-          <div className="container">
+        <Section>
             <h2>Pagini frecvent accesate</h2>
-            <ul className="article-list">
+            <ul>
               <li>
                 <Link href="/"><strong>Calculator salariu net</strong></Link> — calculează brut → net sau net → brut pentru orice sumă, conform legislației 2026.
               </li>
@@ -44,17 +42,14 @@ export default function NotFound() {
                 <Link href="/despre"><strong>Despre proiect</strong></Link> — cine întreține site-ul și de ce a apărut.
               </li>
             </ul>
-          </div>
-        </section>
+        </Section>
 
-        <section className="article-section">
-          <div className="container">
+        <Section>
             <h2>Dacă crezi că ai ajuns aici dintr-un link de pe acest site</h2>
             <p>
               Toate linkurile interne sunt verificate, dar pot apărea erori. Dacă ai ajuns la această pagină dintr-un link de pe salariile.ro (nu dintr-un link extern sau o căutare Google veche), te rog să-mi scrii la adresa de pe pagina de <Link href="/contact">contact</Link> cu URL-ul exact unde ai dat click — corectez problema rapid.
             </p>
-          </div>
-        </section>
+        </Section>
       </main>
     </>
   );

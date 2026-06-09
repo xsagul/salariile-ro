@@ -12,8 +12,8 @@ export default function manifest(): MetadataRoute.Manifest {
       "Calculator salariu net din brut 2026, salariu minim, salariu mediu, informații fiscale România.",
     start_url: "/",
     display: "standalone",
-    background_color: "#ffffff",
-    theme_color: "#111111",
+    background_color: "#faf8f5",
+    theme_color: "#52565f",
     lang: "ro-RO",
     icons: [
       { src: "/icon.svg", sizes: "any", type: "image/svg+xml" },

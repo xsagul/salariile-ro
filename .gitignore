@@ -42,3 +42,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# audit surse (cărți locale, sub copyright) + log server local
+/_books
+.serverlog-*.txt
+
+# Unealtă locală de validare D112 (nu se deployează)
+/_d112-local

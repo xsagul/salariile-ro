@@ -4,6 +4,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { personSchema } from "@/lib/person";
+import { Hero, Section, Breadcrumb, H1, Lead } from "@/app/components/ui";
 
 export const metadata: Metadata = {
   title: "Contact — raportează erori sau sugestii",
@@ -42,23 +43,16 @@ export default function ContactPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      <section className="hero">
-        <div className="container">
-          <nav className="breadcrumb">
-            <Link href="/">Acasă</Link>
-            <span>/</span>
-            <span>Contact</span>
-          </nav>
-          <h1>Contact</h1>
-          <p className="subtitle">
-            Salariile.ro este un proiect personal întreținut de un singur om. Cel mai bun mod de contact este prin email.
-          </p>
-        </div>
-      </section>
+      <Hero>
+        <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Contact" }]} />
+        <H1>Contact</H1>
+        <Lead>
+          Salariile.ro este un proiect personal întreținut de un singur om. Cel mai bun mod de contact este prin email.
+        </Lead>
+      </Hero>
 
       <main>
-        <section className="article-section">
-          <div className="container">
+        <Section>
             <h2>Adresă de email</h2>
             <p>
               Pentru orice subiect legat de site, scrie la:
@@ -69,13 +63,11 @@ export default function ContactPage() {
             <p>
               Răspund la toate mesajele primite, deși timpul de răspuns poate varia de la câteva ore la câteva zile, fiind un proiect personal întreținut în timpul liber. Mesajele primite în weekend sau în zile aglomerate la jobul principal pot avea răspuns mai târziu.
             </p>
-          </div>
-        </section>
+        </Section>
 
-        <section className="article-section">
-          <div className="container">
+        <Section>
             <h2>Ce subiecte sunt potrivite</h2>
-            <ul className="article-list">
+            <ul>
               <li>
                 <strong>Raportarea erorilor de calcul.</strong> Dacă observi o cifră care nu se potrivește cu fluturașul tău sau cu o sursă oficială, scrie-mi cu detalii (brutul folosit, cifra obținută pe site, cifra corectă, sursa pe care o ai). Erorile concrete au prioritate maximă — de regulă le corectez în aceeași zi.
               </li>
@@ -92,16 +84,14 @@ export default function ContactPage() {
                 <strong>Citarea sau utilizarea conținutului.</strong> Pentru publicații, articole sau resurse educaționale care vor să folosească extinse pasaje din site, scrie-mi pentru clarificarea drepturilor de utilizare.
               </li>
             </ul>
-          </div>
-        </section>
+        </Section>
 
-        <section className="article-section">
-          <div className="container">
+        <Section>
             <h2>Ce nu pot face</h2>
             <p>
               Pentru claritate, există subiecte la care nu pot răspunde util prin email:
             </p>
-            <ul className="article-list">
+            <ul>
               <li>
                 <strong>Consultanță fiscală individuală.</strong> Nu sunt contabil sau expert fiscal autorizat. Pentru calcule personalizate care țin cont de sporuri, beneficii, scutiri sau cumul de venituri, consultă un specialist autorizat — Camera Consultanților Fiscali sau Corpul Experților Contabili au directoare publice de profesioniști.
               </li>
@@ -112,11 +102,9 @@ export default function ContactPage() {
                 <strong>Verificarea individuală a unui fluturaș de plată.</strong> Pot explica de ce o formulă dă un anumit rezultat, dar nu pot verifica detaliat un fluturaș real fără să cunosc toate elementele (sporuri specifice, ore suplimentare, deduceri speciale etc.).
               </li>
             </ul>
-          </div>
-        </section>
+        </Section>
 
-        <section className="article-section">
-          <div className="container">
+        <Section>
             <h2>Mai multe informații</h2>
             <p>
               Despre cine întreține site-ul: <Link href="/despre">pagina Despre</Link>.<br />
@@ -124,8 +112,7 @@ export default function ContactPage() {
               Datele tale personale: <Link href="/politica-confidentialitate">politica de confidențialitate</Link>.<br />
               Termenii de utilizare: <Link href="/termeni">pagina Termeni</Link>.
             </p>
-          </div>
-        </section>
+        </Section>
       </main>
     </>
   );
