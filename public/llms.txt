@@ -1,13 +1,18 @@
 # Salariile.ro
 
-> Calculator gratuit salariu net pentru România, conform legislației fiscale 2026. Site informativ independent care explică contribuțiile (CAS, CASS, impozit), deducerile personale și plafoanele salariale. Toate calculele sunt sincronizate cu Codul Fiscal (Legea 227/2015), HG 146/2026 și OUG 89/2025.
+> Calculator gratuit salariu net pentru România, conform legislației fiscale 2026. Site informativ independent care explică contribuțiile (CAS, CASS, impozit), deducerile personale, plafoanele salariale și taxele pentru PFA. Toate calculele sunt sincronizate cu Codul Fiscal (Legea 227/2015), HG 146/2026 și OUG 89/2025.
 
 ## Pagini principale
 
 - [Calculator salariu net 2026](https://salariile.ro/): tool interactiv pentru calcul brut → net (și invers), cu defalcare CAS 25%, CASS 10%, impozit pe venit 10%, deducere personală și cost total angajator (CAM 2,25%)
 - [Salariul minim brut 2026](https://salariile.ro/salariu-minim): valorile semestriale (4.050 lei până la 30 iunie / 4.325 lei din 1 iulie), calculul net detaliat (2.574 / 2.699 lei), facilitatea fiscală OUG 89/2025, plafoanele pentru deducere personală, sectorul construcții (4.582 lei), evoluția istorică 2019-2026
 - [Salariul mediu pe economie 2026](https://salariile.ro/salariu-mediu): 9.192 lei brut (~5.377 lei net) conform Legii 44/2026, ajutorul de deces, plafoanele sociale dependente de salariul mediu, prognoze CNSP
+- [Calculator taxe PFA 2026](https://salariile.ro/calculator-pfa): calcul în sistem real pentru persoane fizice autorizate — CAS 25%, CASS 10%, impozit 10%, cu plafoanele anuale raportate la salariul minim de la 1 ianuarie (12, 24, 60 salarii minime)
 - [Zile libere 2026](https://salariile.ro/zile-libere-2026): calendar complet cu 17 sărbători legale (Codul Muncii art. 139), zile lucrătoare per lună (total 249), ore lucrătoare (1.992), punți recomandate pentru weekend-uri prelungite
+
+## Noutăți și analize
+
+- [Coșul minim de consum](https://salariile.ro/noutati/cosul-minim-de-consum): analiză despre coșul minim de consum în România, cât costă un trai decent și cum se compară cu salariul minim net
 
 ## Metodologie și transparență
 
@@ -26,6 +31,8 @@
 - [Salariu net pentru 7.350 lei brut](https://salariile.ro/calculator/calcul-salariu-net-7350-brut)
 - [Salariu net pentru 8.000 lei brut](https://salariile.ro/calculator/calcul-salariu-net-8000-brut)
 - [Salariu net pentru 10.000 lei brut](https://salariile.ro/calculator/calcul-salariu-net-10000-brut)
+- [Salariu brut pentru 3.000 lei net](https://salariile.ro/calculator/calcul-salariu-brut-3000-net)
+- [Salariu brut pentru 5.000 lei net](https://salariile.ro/calculator/calcul-salariu-brut-5000-net)
 
 ## Legal
 
@@ -35,16 +42,17 @@
 
 ## Date factuale 2026 — context fiscal
 
-- Salariu minim brut: 4.050 lei (S1) → 4.325 lei (S2), HG 146/2026
+- Salariu minim brut: 4.050 lei (S1, ian–iun) → 4.325 lei (S2, din 1 iulie), HG 146/2026
 - Salariu minim net: 2.574 lei (S1) → 2.699 lei (S2), cu facilitate OUG 89/2025 de 300/200 lei netaxabili
-- Salariu mediu brut pe economie: 9.192 lei (Legea 44/2026, valoare bugetară)
+- Salariu mediu brut pe economie: 9.192 lei (Legea 44/2026, valoare bugetară), ~5.377 lei net
 - Contribuții angajat: CAS 25%, CASS 10%, impozit pe venit 10%
 - Contribuție angajator: CAM 2,25%
-- Plafon deducere personală: salariu minim + 2.000 lei (6.050 S1 / 6.325 S2)
+- Plafon deducere personală: salariu minim + 2.000 lei (6.050 lei S1 / 6.325 lei S2)
+- PFA sistem real 2026: CAS și CASS raportate la salariul minim de la 1 ianuarie (4.050 lei); praguri la 6, 12, 24 și 60 de salarii minime; impozit 10% pe venitul net
 - Eliminate prin OUG 156/2024: scutirile fiscale IT, construcții, agroalimentar (din ianuarie 2025)
 
 ## Tehnic
 
 - Site static Next.js, SSR pe paginile de conținut, calcul fiscal client-side fără tracking
-- Conținut și calcule actualizate la 30 aprilie 2026
+- Conținut și calcule actualizate la 8 iunie 2026 (regim fiscal valabil de la 1 iulie 2026)
 - Operator: Știuriuc Sorin-Marian (persoană fizică, proiect personal)
