@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "gsc": "node scripts/gsc.mjs",
-    "psi": "node scripts/psi.mjs"
+    "psi": "node scripts/psi.mjs",
+    "bing": "node scripts/bing.mjs"
   },
   "dependencies": {
     "@vercel/speed-insights": "^2.0.0",
