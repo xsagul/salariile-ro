@@ -14,10 +14,9 @@ interface Props {
   params: Promise<{ valoare: string }>;
 }
 
-// Doar valorile din listă există ca pagini. Orice altă valoare (ex. band-uri vechi
-// 20000, 15000 sau valori arbitrare) → 404 curat, nu pagină subțire generată la cerere.
-export const dynamicParams = false;
-
+// Valorile din listă se generează static; orice altă valoare PLAUZIBILĂ (ex. 5550,
+// 6324 — căutări reale care nu-s în listă) se randează la cerere și poate prinde
+// trafic long-tail. Valorile absurde (0, sume uriașe) → 404 prin verificarea din parseSlug.
 export function generateStaticParams() {
   return allCalculatorSlugs().map((valoare) => ({ valoare }));
 }
@@ -69,13 +68,19 @@ function parseSlug(slug: string): {
   brutInitial: string;
   modInitial: "brut" | "net";
 } {
+  // Doar valori plauzibile de salariu (lunar, lei). Restul (0, 1, sume uriașe) → 404.
+  const plauzibil = (s: string) => {
+    const n = parseInt(s, 10);
+    return n >= 1000 && n <= 300000;
+  };
+
   const matchNetDinBrut = slug?.match(/^calcul-salariu-net-(\d+)-brut$/);
-  if (matchNetDinBrut) {
+  if (matchNetDinBrut && plauzibil(matchNetDinBrut[1])) {
     return { valoare: slug, mod: "net-din-brut", cifra: matchNetDinBrut[1], brutInitial: matchNetDinBrut[1], modInitial: "brut" };
   }
 
   const matchBrutDinNet = slug?.match(/^calcul-salariu-brut-(\d+)-net$/);
-  if (matchBrutDinNet) {
+  if (matchBrutDinNet && plauzibil(matchBrutDinNet[1])) {
     return { valoare: slug, mod: "brut-din-net", cifra: matchBrutDinNet[1], brutInitial: matchBrutDinNet[1], modInitial: "net" };
   }
 
