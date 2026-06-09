@@ -102,6 +102,14 @@ type Context = {
 };
 
 function getContextBrut(v: number): Context {
+  if (v < 4050) {
+    return {
+      pozitie: <>Brutul de <strong>{fmt(v)} lei</strong> este <em>sub <Link href="/salariu-minim">salariul minim brut pe economie</Link></em> (4.325 lei din iulie 2026). La normă întreagă, un angajator nu poate plăti legal sub acest nivel — o astfel de sumă apare de obicei la contracte cu <strong>normă redusă (part-time)</strong>, la zilieri sau în anumite forme de colaborare ocazională.</>,
+      sectoare: ["Contracte part-time (2–6 ore/zi)", "Joburi pentru studenți și elevi", "Activități sezoniere ocazionale", "Zilieri (Legea 52/2011)", "Internship-uri plătite parțial", "Colaborări cu timp parțial"],
+      insight: <>La normă întreagă, salariul minim brut legal este 4.325 lei din iulie 2026 — vezi <Link href="/salariu-minim">analiza completă a salariului minim</Link>. La un contract part-time, brutul și taxele se calculează proporțional cu orele lucrate, însă contribuțiile minime de CAS și CASS pot fi datorate la nivelul salariului minim, nu al sumei efective.</>,
+    };
+  }
+
   if (v === 4325) {
     return {
       pozitie: <>Brutul de <strong>4.325 lei</strong> este exact <Link href="/salariu-minim">salariul minim brut pe economie</Link> în vigoare din 1 iulie 2026, conform HG 146/2026. Conform datelor INS, peste 1,2 milioane de salariați din România sunt plătiți la acest nivel — aproximativ 25% din totalul forței de muncă salariate.</>,
@@ -159,6 +167,14 @@ function getContextBrut(v: number): Context {
 }
 
 function getContextNet(v: number): Context {
+  if (v < 2500) {
+    return {
+      pozitie: <>Netul de <strong>{fmt(v)} lei</strong> este <em>sub <Link href="/salariu-minim">salariul minim net pe economie</Link></em> (2.699 lei din iulie 2026). La normă întreagă, un angajat nu poate primi legal mai puțin — un net la acest nivel apare de obicei la contracte cu <strong>normă redusă (part-time)</strong> sau la activități ocazionale.</>,
+      sectoare: ["Contracte part-time (2–6 ore/zi)", "Joburi pentru studenți și elevi", "Activități sezoniere ocazionale", "Zilieri (Legea 52/2011)", "Internship-uri plătite parțial", "Colaborări cu timp parțial"],
+      insight: <>La normă întreagă, netul minim legal este 2.699 lei din iulie 2026 (la 4.325 lei brut) — vezi <Link href="/salariu-minim">analiza salariului minim</Link>. Dacă primești sub atât lucrând full-time, verifică fluturașul: posibil nu ți se aplică corect facilitatea fiscală sau deducerea personală.</>,
+    };
+  }
+
   if (v >= 2500 && v <= 2750) {
     return {
       pozitie: <>Netul de <strong>{fmt(v)} lei</strong> corespunde aproximativ <Link href="/salariu-minim">salariului minim pe economie</Link>: din iulie 2026, minimul net este 2.699 lei (la un brut de 4.325 lei). Acest nivel reprezintă pragul legal minim pe care îl poate primi în mână un angajat cu normă întreagă.</>,
@@ -204,8 +220,12 @@ function getContextNet(v: number): Context {
 // numere complet diferite (CAS, CASS, impozit, net, CAM, cost) → conținut unic.
 
 function DefalcareFiscala({ brut, rez }: { brut: number; rez: Rezultat }) {
-  const fataDeMinimNet = (rez.net / 2699).toFixed(1);
   const fataDeMediuNet = Math.round((rez.net / 5377) * 100);
+  const ratieMinimNet = rez.net / 2699;
+  const comparatieMinimNet =
+    ratieMinimNet >= 1
+      ? <>este de {ratieMinimNet.toFixed(1)}× mai mare decât salariul minim net (2.699 lei)</>
+      : <>este <strong>sub</strong> salariul minim net (2.699 lei), reprezentând {Math.round(ratieMinimNet * 100)}% din acesta</>;
 
   return (
     <p>
@@ -227,8 +247,8 @@ function DefalcareFiscala({ brut, rez }: { brut: number; rez: Rezultat }) {
       Rezultă un salariu <strong>net de {fmt(rez.net)} lei</strong> — adică {rez.brutNet}% din brut.
       În plus, angajatorul plătește contribuția CAM de 2,25% ({fmt(rez.cam)} lei), deci{" "}
       <strong>costul total al firmei</strong> pentru acest post este {fmt(rez.costTotal)} lei lunar.
-      Față de salariul minim net (2.699 lei) acest venit este de {fataDeMinimNet}× mai mare și
-      reprezintă {fataDeMediuNet}% din <Link href="/salariu-mediu">salariul mediu net pe economie</Link>.
+      Față de reperele oficiale, acest venit {comparatieMinimNet} și reprezintă{" "}
+      {fataDeMediuNet}% din <Link href="/salariu-mediu">salariul mediu net pe economie</Link>.
     </p>
   );
 }
@@ -268,8 +288,10 @@ export default async function CalculatorDinamic({ params }: Props) {
   const SALARIU_MEDIU_BRUT = 9192;
   const pctDinMediuBrut = Math.round((brutEfectiv / SALARIU_MEDIU_BRUT) * 100);
   const pctPesteMinim = Math.round((brutEfectiv / SALARIU_MINIM - 1) * 100);
-  const fataDeMinim = pctPesteMinim <= 0
-    ? <>se situează la nivelul <Link href="/salariu-minim">salariului minim brut</Link> ({fmt(SALARIU_MINIM)} lei)</>
+  const fataDeMinim = pctPesteMinim < 0
+    ? <>este <strong>sub</strong> <Link href="/salariu-minim">salariul minim brut</Link> ({fmt(SALARIU_MINIM)} lei), nivel întâlnit de regulă la contracte cu normă redusă (part-time)</>
+    : pctPesteMinim === 0
+    ? <>se situează exact la nivelul <Link href="/salariu-minim">salariului minim brut</Link> ({fmt(SALARIU_MINIM)} lei)</>
     : <>este cu <strong>{pctPesteMinim}%</strong> peste <Link href="/salariu-minim">salariul minim brut</Link> ({fmt(SALARIU_MINIM)} lei)</>;
 
   const leadPozitie = isNetDinBrut ? (
