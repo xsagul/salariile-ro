@@ -375,29 +375,29 @@ export default function SalariuMinimPage() {
                   <table className="w-full text-sm tabular-nums">
                     <thead>
                       <tr className="border-b border-stone-200 text-stone-500">
-                        <th className="pb-2 text-left text-xs font-medium"></th>
-                        <th className="pb-2 text-right text-xs font-medium uppercase tracking-wide">ian–iun</th>
-                        <th className="pb-2 text-right text-xs font-medium uppercase tracking-wide">iul–dec</th>
+                        <th scope="col" className="pb-2 text-left text-xs font-medium"></th>
+                        <th scope="col" className="pb-2 text-right text-xs font-medium uppercase tracking-wide">ian–iun</th>
+                        <th scope="col" className="pb-2 text-right text-xs font-medium uppercase tracking-wide">iul–dec</th>
                       </tr>
                     </thead>
-                    <tbody className="[&_td]:py-2">
+                    <tbody className="[&_td]:py-2 [&_th]:py-2">
                       <tr className="border-b border-stone-100">
-                        <td className="text-left text-stone-600">Brut</td>
+                        <th scope="row" className="text-left font-normal text-stone-600">Brut</th>
                         <td className="text-right font-medium text-stone-900">{fmt(4050)}</td>
                         <td className="text-right font-medium text-stone-900">{fmt(4325)}</td>
                       </tr>
                       <tr className="border-b border-stone-100">
-                        <td className="text-left text-stone-600">Net (în mână)</td>
+                        <th scope="row" className="text-left font-normal text-stone-600">Net (în mână)</th>
                         <td className="text-right font-bold text-stone-900">{fmt(2574)}</td>
                         <td className="text-right font-bold text-stone-900">{fmt(2699)}</td>
                       </tr>
                       <tr className="border-b border-stone-100">
-                        <td className="text-left text-stone-600">La stat</td>
+                        <th scope="row" className="text-left font-normal text-stone-600">La stat</th>
                         <td className="text-right text-stone-700">{fmt(1560)}</td>
                         <td className="text-right text-stone-700">{fmt(1719)}</td>
                       </tr>
                       <tr>
-                        <td className="text-left text-stone-600">Cost firmă</td>
+                        <th scope="row" className="text-left font-normal text-stone-600">Cost firmă</th>
                         <td className="text-right text-stone-700">{fmt(4134)}</td>
                         <td className="text-right text-stone-700">{fmt(4418)}</td>
                       </tr>
