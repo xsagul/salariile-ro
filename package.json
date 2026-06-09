@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "gsc": "node scripts/gsc.mjs",
+    "gsc-login": "node scripts/gsc-login.mjs",
     "psi": "node scripts/psi.mjs",
     "bing": "node scripts/bing.mjs",
     "indexnow": "node scripts/indexnow.mjs"

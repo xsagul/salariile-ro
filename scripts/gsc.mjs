@@ -117,6 +117,37 @@ async function getAccessToken(key) {
   return (await res.json()).access_token;
 }
 
+// OAuth (Plan B): dacă există .gsc/oauth-token.json, folosește refresh_token.
+async function getOAuthToken() {
+  let t;
+  try {
+    t = JSON.parse(fs.readFileSync("./.gsc/oauth-token.json", "utf8"));
+  } catch {
+    return null;
+  }
+  const res = await fetch("https://oauth2.googleapis.com/token", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({
+      client_id: t.client_id,
+      client_secret: t.client_secret,
+      refresh_token: t.refresh_token,
+      grant_type: "refresh_token",
+    }),
+  });
+  if (!res.ok) {
+    throw new Error(`Eroare refresh OAuth (${res.status}): ${await res.text()}`);
+  }
+  return (await res.json()).access_token;
+}
+
+// Preferă OAuth; altfel cade pe service account (JWT).
+async function resolveAccessToken() {
+  const oauth = await getOAuthToken();
+  if (oauth) return oauth;
+  return getAccessToken(loadKey());
+}
+
 // ── apel API ───────────────────────────────────────────────────────────────────
 async function searchAnalytics(token, body) {
   const url = `https://searchconsole.googleapis.com/webmasters/v3/sites/${encodeURIComponent(
@@ -227,8 +258,7 @@ function printCsv(rows, dimLabel) {
     // ── comandă: inspect (verificare indexare a unei pagini) ──
     if (cmd === "inspect") {
       const fullUrl = toFullUrl(positionals[1] || opt.url || "/");
-      const key = loadKey();
-      const token = await getAccessToken(key);
+      const token = await resolveAccessToken();
       const data = await inspectUrl(token, fullUrl);
 
       if (opt.json) {
@@ -260,8 +290,7 @@ function printCsv(rows, dimLabel) {
 
     // ── comandă: sitemaps (stare sitemap-uri trimise la Google) ──
     if (cmd === "sitemaps") {
-      const key = loadKey();
-      const token = await getAccessToken(key);
+      const token = await resolveAccessToken();
       const data = await listSitemaps(token);
       if (opt.json) {
         console.log(JSON.stringify(data, null, 2));
@@ -297,8 +326,7 @@ function printCsv(rows, dimLabel) {
       const minPos = Number(opt.min || 4);
       const maxPos = Number(opt.max || 20);
 
-      const key = loadKey();
-      const token = await getAccessToken(key);
+      const token = await resolveAccessToken();
       const result = await searchAnalytics(token, {
         startDate,
         endDate,
@@ -347,8 +375,7 @@ function printCsv(rows, dimLabel) {
     if (opt.query) filters.push({ dimension: "query", operator: "contains", expression: String(opt.query) });
     if (filters.length) body.dimensionFilterGroups = [{ filters }];
 
-    const key = loadKey();
-    const token = await getAccessToken(key);
+    const token = await resolveAccessToken();
     const result = await searchAnalytics(token, body);
     const rows = result.rows || [];
 
