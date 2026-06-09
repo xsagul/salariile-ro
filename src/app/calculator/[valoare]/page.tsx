@@ -14,6 +14,10 @@ interface Props {
   params: Promise<{ valoare: string }>;
 }
 
+// Doar valorile din listă există ca pagini. Orice altă valoare (ex. band-uri vechi
+// 20000, 15000 sau valori arbitrare) → 404 curat, nu pagină subțire generată la cerere.
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return allCalculatorSlugs().map((valoare) => ({ valoare }));
 }
