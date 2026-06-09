@@ -21,7 +21,7 @@ const PROSE = [
   "[&_tbody_td]:border-b [&_tbody_td]:border-stone-100 [&_tbody_td]:px-3 [&_tbody_td]:py-3 [&_tbody_td]:text-stone-700",
   "[&_tbody_tr:last-child_td]:border-b-0",
   // .source-note (specificitate 0,2,0) bate variantele de element 0,1,1
-  "[&_.source-note]:mt-4 [&_.source-note]:text-xs [&_.source-note]:leading-normal [&_.source-note]:text-stone-500",
+  "[&_.source-note]:mt-4 [&_.source-note]:text-xs [&_.source-note]:leading-normal [&_.source-note]:text-stone-600",
 ].join(" ");
 
 export function Prose({ children, className = "" }: { children: ReactNode; className?: string }) {
@@ -48,7 +48,7 @@ export function Section({ children, wide = false }: { children: ReactNode; wide?
 
 export function Breadcrumb({ items }: { items: { href?: string; label: string }[] }) {
   return (
-    <nav className="mb-4 flex flex-wrap gap-2 text-xs text-stone-500" aria-label="Breadcrumb">
+    <nav className="mb-4 flex flex-wrap gap-2 text-xs text-stone-600" aria-label="Breadcrumb">
       {items.map((it, i) => (
         <span key={i} className="flex gap-2">
           {it.href ? (
