@@ -440,7 +440,7 @@ export default function CalculatorSalariu({
             <div className="md:col-span-3">
           {/* Breadcrumb doar pe pagini dinamice, nu pe homepage */}
           {titluCustom && (
-            <nav className="mb-4 flex gap-2 text-xs text-stone-500" aria-label="Breadcrumb">
+            <nav className="mb-4 flex gap-2 text-xs text-stone-600" aria-label="Breadcrumb">
               <Link href="/" className="hover:text-stone-700">Acasă</Link>
               <span>/</span>
               <span aria-current="page">Calculator salariu</span>
