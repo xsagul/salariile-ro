@@ -1,0 +1,6 @@
+{
+  "//": "Tailwind CSS v4 folosește @theme și @utility — directive necunoscute validatorului CSS implicit din VS Code. Le ignorăm ca să nu apară warnings false (build-ul nu e afectat).",
+  "css.lint.unknownAtRules": "ignore",
+  "scss.lint.unknownAtRules": "ignore",
+  "less.lint.unknownAtRules": "ignore"
+}
