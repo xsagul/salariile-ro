@@ -24,7 +24,7 @@ export const PAGE_LAST_MODIFIED: Record<string, Date> = {
 
 /** Valori brute indexate (net din brut) — aliniat cu sitemap + Ahrefs/GSC. */
 export const CALCULATOR_BRUT_VALUES = [
-  4050, 4325, 5000, 6000, 6500, 7000, 7350, 8000, 10000,
+  4050, 4325, 5000, 5500, 6000, 6500, 7000, 7350, 7500, 8000, 10000,
 ] as const;
 
 /** Valori net indexate (brut din net) — doar cele cu semnal de căutare. */
