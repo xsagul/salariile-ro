@@ -9,7 +9,8 @@
     "lint": "eslint",
     "gsc": "node scripts/gsc.mjs",
     "psi": "node scripts/psi.mjs",
-    "bing": "node scripts/bing.mjs"
+    "bing": "node scripts/bing.mjs",
+    "indexnow": "node scripts/indexnow.mjs"
   },
   "dependencies": {
     "@vercel/speed-insights": "^2.0.0",
