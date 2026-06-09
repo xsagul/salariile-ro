@@ -49,3 +49,7 @@ next-env.d.ts
 
 # Unealtă locală de validare D112 (nu se deployează)
 /_d112-local
+
+# Cheie service account Google Search Console (NU se commit-ează)
+gsc-key.json
+/.gsc/

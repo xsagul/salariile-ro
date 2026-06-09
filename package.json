@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "gsc": "node scripts/gsc.mjs",
+    "psi": "node scripts/psi.mjs"
   },
   "dependencies": {
     "@vercel/speed-insights": "^2.0.0",

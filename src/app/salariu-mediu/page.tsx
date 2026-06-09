@@ -192,6 +192,7 @@ export default function SalariuMediuPage() {
                 width={1200}
                 height={896}
                 priority
+                sizes="(max-width: 768px) 100vw, 480px"
                 className="w-full rounded-md"
               />
             </div>
@@ -303,11 +304,11 @@ export default function SalariuMediuPage() {
                           <td className="font-medium text-stone-900">9.192</td>
                         </tr>
                         <tr className="border-b border-stone-100">
-                          <td className="text-stone-600">− CAS 25% <span className="text-stone-400">(pensie)</span></td>
+                          <td className="text-stone-600">− CAS 25% <span className="text-stone-600">(pensie)</span></td>
                           <td className="text-stone-700">2.298</td>
                         </tr>
                         <tr className="border-b border-stone-100">
-                          <td className="text-stone-600">− CASS 10% <span className="text-stone-400">(sănătate)</span></td>
+                          <td className="text-stone-600">− CASS 10% <span className="text-stone-600">(sănătate)</span></td>
                           <td className="text-stone-700">919</td>
                         </tr>
                         <tr className="border-b border-stone-100 bg-stone-50">
@@ -315,7 +316,7 @@ export default function SalariuMediuPage() {
                           <td className="font-medium text-stone-900">5.975</td>
                         </tr>
                         <tr className="border-b border-stone-100">
-                          <td className="text-stone-600">− Impozit 10% <span className="text-stone-400">(fără deducere)</span></td>
+                          <td className="text-stone-600">− Impozit 10% <span className="text-stone-600">(fără deducere)</span></td>
                           <td className="text-stone-700">598</td>
                         </tr>
                         <tr className="[&_td]:pt-3 [&_td]:font-bold [&_td]:text-stone-900">
@@ -439,6 +440,7 @@ export default function SalariuMediuPage() {
                             <div
                               key={i}
                               tabIndex={0}
+                              role="img"
                               className="group pointer-events-auto absolute inset-y-0 outline-none"
                               style={{ left: `${c.leftPct}%`, width: `${c.widthPct}%` }}
                               aria-label={`${c.an}: ${fmt(c.brut)} lei brut, ${fmt(c.net)} lei net`}

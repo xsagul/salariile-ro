@@ -211,6 +211,7 @@ export default function SalariuMinimPage() {
                 width={1200}
                 height={896}
                 priority
+                sizes="(max-width: 768px) 100vw, 480px"
                 className="w-full rounded-md"
               />
             </div>
@@ -264,54 +265,54 @@ export default function SalariuMinimPage() {
                     netul urcă cu doar 125 de lei deși brutul crește cu 275.
                   </p>
                   <div className="my-6 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
-                    <table className="w-full text-sm tabular-nums [&_td]:py-2.5 [&_th]:pb-2 [&_td:first-child]:pr-2 [&_th:first-child]:pr-2 [&_td:not(:first-child)]:whitespace-nowrap [&_td:not(:first-child)]:pl-3 [&_th:not(:first-child)]:pl-3 [&_td:not(:first-child)]:text-right [&_th:not(:first-child)]:text-right">
+                    <table className="w-full text-sm tabular-nums [&_td]:py-2.5 [&_thead_th]:pb-2 [&_tbody_th]:py-2.5 [&_tbody_th]:text-left [&_td:first-child]:pr-2 [&_th:first-child]:pr-2 [&_td:not(:first-child)]:whitespace-nowrap [&_td:not(:first-child)]:pl-3 [&_th:not(:first-child)]:pl-3 [&_td:not(:first-child)]:text-right [&_th:not(:first-child)]:text-right">
                       <thead>
                         <tr className="border-b border-stone-300 text-xs font-medium uppercase tracking-wide text-stone-500">
-                          <th className="text-left">Pas</th>
-                          <th>ian–iun</th>
-                          <th>iul–dec</th>
-                          <th className="hidden sm:table-cell">Dif.</th>
+                          <th scope="col" className="text-left">Pas</th>
+                          <th scope="col">ian–iun</th>
+                          <th scope="col">iul–dec</th>
+                          <th scope="col" className="hidden sm:table-cell">Dif.</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr className="border-b border-stone-100">
-                          <td className="text-stone-600">Salariu brut</td>
+                          <th scope="row" className="font-normal text-stone-600">Salariu brut</th>
                           <td className="font-medium text-stone-900">4.050</td>
                           <td className="font-medium text-stone-900">4.325</td>
                           <td className="hidden text-stone-500 sm:table-cell">+275</td>
                         </tr>
                         <tr className="border-b border-stone-100">
-                          <td className="text-stone-600">− Scutit de taxe</td>
+                          <th scope="row" className="font-normal text-stone-600">− Scutit de taxe</th>
                           <td className="text-stone-700">300</td>
                           <td className="text-stone-700">200</td>
                           <td className="hidden text-stone-500 sm:table-cell">−100</td>
                         </tr>
                         <tr className="border-b border-stone-100 bg-stone-50">
-                          <td className="font-medium text-stone-900">= Bază pentru taxe</td>
+                          <th scope="row" className="font-medium text-stone-900">= Bază pentru taxe</th>
                           <td className="font-medium text-stone-900">3.750</td>
                           <td className="font-medium text-stone-900">4.125</td>
                           <td className="hidden font-medium text-stone-900 sm:table-cell">+375</td>
                         </tr>
                         <tr className="border-b border-stone-100">
-                          <td className="text-stone-600">− CAS 25% <span className="text-stone-400">(pensie)</span></td>
+                          <th scope="row" className="font-normal text-stone-600">− CAS 25% <span className="text-stone-600">(pensie)</span></th>
                           <td className="text-stone-700">938</td>
                           <td className="text-stone-700">1.031</td>
                           <td className="hidden text-stone-500 sm:table-cell">+93</td>
                         </tr>
                         <tr className="border-b border-stone-100">
-                          <td className="text-stone-600">− CASS 10% <span className="text-stone-400">(sănătate)</span></td>
+                          <th scope="row" className="font-normal text-stone-600">− CASS 10% <span className="text-stone-600">(sănătate)</span></th>
                           <td className="text-stone-700">375</td>
                           <td className="text-stone-700">413</td>
                           <td className="hidden text-stone-500 sm:table-cell">+38</td>
                         </tr>
                         <tr className="border-b border-stone-100">
-                          <td className="text-stone-600">− Impozit 10%</td>
+                          <th scope="row" className="font-normal text-stone-600">− Impozit 10%</th>
                           <td className="text-stone-700">163</td>
                           <td className="text-stone-700">182</td>
                           <td className="hidden text-stone-500 sm:table-cell">+19</td>
                         </tr>
-                        <tr className="[&_td]:pt-3 [&_td]:font-bold [&_td]:text-stone-900">
-                          <td>= Net în mână</td>
+                        <tr className="[&_td]:pt-3 [&_td]:font-bold [&_td]:text-stone-900 [&_th]:pt-3 [&_th]:font-bold [&_th]:text-stone-900">
+                          <th scope="row">= Net în mână</th>
                           <td>2.574</td>
                           <td>2.699</td>
                           <td className="hidden sm:table-cell">+125</td>
@@ -361,7 +362,7 @@ export default function SalariuMinimPage() {
                     <div className="flex min-w-0 items-center justify-start overflow-hidden whitespace-nowrap bg-stone-900 px-3 text-white" style={{ flexGrow: 61, flexBasis: 0 }}>Angajat 61%</div>
                     <div className="flex min-w-0 items-center justify-end overflow-hidden whitespace-nowrap border-l border-stone-300 bg-canvas px-3 text-stone-700" style={{ flexGrow: 39, flexBasis: 0 }}>Stat 39%</div>
                   </div>
-                  <p className="mt-2 text-xs leading-normal text-stone-500">
+                  <p className="mt-2 text-xs leading-normal text-stone-600">
                     Din cei <strong className="font-medium text-stone-700">4.418 lei</strong> pe care îi plătește firma (din iulie),{" "}
                     <strong className="font-medium text-stone-700">2.699</strong> ajung la tine (net), iar{" "}
                     <strong className="font-medium text-stone-700">1.719</strong> la stat (CAS, CASS, impozit, CAM).
@@ -488,6 +489,7 @@ export default function SalariuMinimPage() {
                           <div
                             key={i}
                             tabIndex={0}
+                            role="img"
                             className="group pointer-events-auto absolute inset-y-0 outline-none"
                             style={{ left: `${c.leftPct}%`, width: `${c.widthPct}%` }}
                             aria-label={`${c.short}: brut ${fmt(c.brut)} lei, net ${fmt(c.net)} lei`}
