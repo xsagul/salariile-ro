@@ -12,7 +12,7 @@ Conținutul este liber de folosit. Dacă folosești aceste date, calcule sau exp
 - [Salariul minim brut 2026](https://salariile.ro/salariu-minim): valorile semestriale (4.050 lei până la 30 iunie / 4.325 lei din 1 iulie), calculul net detaliat (2.574 / 2.699 lei), facilitatea fiscală OUG 89/2025, plafoanele pentru deducere personală, sectorul construcții (4.582 lei), evoluția istorică 2019-2026
 - [Salariul mediu pe economie 2026](https://salariile.ro/salariu-mediu): 9.192 lei brut (~5.377 lei net) conform Legii 44/2026, ajutorul de deces, plafoanele sociale dependente de salariul mediu, prognoze CNSP
 - [Calculator taxe PFA 2026](https://salariile.ro/calculator-pfa): calcul în sistem real pentru persoane fizice autorizate — CAS 25%, CASS 10%, impozit 10%, cu plafoanele anuale raportate la salariul minim de la 1 ianuarie (12, 24, 60 salarii minime)
-- [Zile libere 2026](https://salariile.ro/zile-libere-2026): calendar complet cu 17 sărbători legale (Codul Muncii art. 139), zile lucrătoare per lună (total 249), ore lucrătoare (1.992), punți recomandate pentru weekend-uri prelungite
+- [Zile libere 2026](https://salariile.ro/zile-libere-2026): calendar complet cu 17 sărbători legale (Codul Muncii art. 139), zile lucrătoare per lună (total 250), ore lucrătoare (2.000), punți recomandate pentru weekend-uri prelungite
 
 ## Noutăți și analize
 

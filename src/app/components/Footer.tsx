@@ -8,9 +8,11 @@ import Link from "next/link";
 // Set centralizat: aici adăugăm rutele pe măsură ce le construim
 const IMPLEMENTED_PAGES = new Set<string>([
   "/",
+  "/calculator-pfa",
   "/salariu-minim",
   "/salariu-mediu",
   "/zile-libere-2026",
+  "/noutati",
   "/despre",
   "/metodologie",
   "/contact",
@@ -18,9 +20,7 @@ const IMPLEMENTED_PAGES = new Set<string>([
   "/cookies",
   "/termeni",
   // Adaugă pe măsură ce construiești:
-  // "/calculator-pfa",
   // "/calculator-concediu",
-  // "/noutati",
 ]);
 
 type FooterLink = { href: string; label: string };
