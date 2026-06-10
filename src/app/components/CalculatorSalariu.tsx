@@ -618,20 +618,32 @@ export default function CalculatorSalariu({
                     <td className={`${cellL} font-bold text-stone-900`}>Total rețineri angajat</td>
                     <td className={`${cellR} font-bold text-stone-900`}>{fmt(rezAfisat.rez.cas + rezAfisat.rez.cass + rezAfisat.rez.impozit)}</td>
                   </tr>
-                  <tr className="bg-stone-900">
-                    <td className="border-r border-r-stone-600 px-3 py-3 text-left text-sm font-bold text-white">Salariu net</td>
-                    <td className="px-3 py-3 text-right text-sm font-bold tabular-nums whitespace-nowrap text-white">{fmt(rezAfisat.rez.net)}</td>
-                  </tr>
+                  {/* Cu tichete: defalcare explicită bani vs card + total (feedback comunitate).
+                      Fără tichete: rândul unic „Salariu net", tabelul rămâne compact. */}
+                  {rezAfisat.rez.netTichete > 0 ? (
+                    <>
+                      <tr>
+                        <td className={cellL}>Net în cont (bani)</td>
+                        <td className={cellR}>{fmt(rezAfisat.rez.netBani)}</td>
+                      </tr>
+                      <tr>
+                        <td className={cellL}>Tichete de masă (net, pe card)</td>
+                        <td className={cellR}>{fmt(rezAfisat.rez.netTichete)}</td>
+                      </tr>
+                      <tr className="bg-stone-900">
+                        <td className="border-r border-r-stone-600 px-3 py-3 text-left text-sm font-bold text-white">Venit net total</td>
+                        <td className="px-3 py-3 text-right text-sm font-bold tabular-nums whitespace-nowrap text-white">{fmt(rezAfisat.rez.net)}</td>
+                      </tr>
+                    </>
+                  ) : (
+                    <tr className="bg-stone-900">
+                      <td className="border-r border-r-stone-600 px-3 py-3 text-left text-sm font-bold text-white">Salariu net</td>
+                      <td className="px-3 py-3 text-right text-sm font-bold tabular-nums whitespace-nowrap text-white">{fmt(rezAfisat.rez.net)}</td>
+                    </tr>
+                  )}
                 </tbody>
               </table>
             </div>
-            {/* Defalcare bani vs tichete — doar când există tichete (feedback comunitate) */}
-            {rezAfisat.rez.netTichete > 0 && (
-              <p className="mt-2 text-xs text-stone-600">
-                Din net: <span className="font-medium text-stone-900">{fmt(rezAfisat.rez.netBani)} lei</span> îți intră în contul de salariu, iar{" "}
-                <span className="font-medium text-stone-900">{fmt(rezAfisat.rez.netTichete)} lei</span> îi primești pe cardul de tichete.
-              </p>
-            )}
             <div className="mt-3 overflow-hidden rounded border border-stone-300">
               <table className="w-full table-auto border-collapse [&_td]:align-middle [&_th]:align-middle sm:table-fixed text-sm text-stone-700">
                 <colgroup><col /><col className="w-28 sm:w-36" /></colgroup>
