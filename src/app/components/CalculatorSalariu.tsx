@@ -618,27 +618,16 @@ export default function CalculatorSalariu({
                     <td className={`${cellL} font-bold text-stone-900`}>Total rețineri angajat</td>
                     <td className={`${cellR} font-bold text-stone-900`}>{fmt(rezAfisat.rez.cas + rezAfisat.rez.cass + rezAfisat.rez.impozit)}</td>
                   </tr>
-                  {/* Cu tichete: defalcare explicită bani vs card + total (feedback comunitate).
-                      Fără tichete: rândul unic „Salariu net", tabelul rămâne compact. */}
-                  {rezAfisat.rez.netTichete > 0 ? (
-                    <>
-                      <tr>
-                        <td className={cellL}>Net în cont (bani)</td>
-                        <td className={cellR}>{fmt(rezAfisat.rez.netBani)}</td>
-                      </tr>
-                      <tr>
-                        <td className={cellL}>Tichete de masă (net, pe card)</td>
-                        <td className={cellR}>{fmt(rezAfisat.rez.netTichete)}</td>
-                      </tr>
-                      <tr className="bg-stone-900">
-                        <td className="border-r border-r-stone-600 px-3 py-3 text-left text-sm font-bold text-white">Venit net total</td>
-                        <td className="px-3 py-3 text-right text-sm font-bold tabular-nums whitespace-nowrap text-white">{fmt(rezAfisat.rez.net)}</td>
-                      </tr>
-                    </>
-                  ) : (
-                    <tr className="bg-stone-900">
-                      <td className="border-r border-r-stone-600 px-3 py-3 text-left text-sm font-bold text-white">Salariu net</td>
-                      <td className="px-3 py-3 text-right text-sm font-bold tabular-nums whitespace-nowrap text-white">{fmt(rezAfisat.rez.net)}</td>
+                  {/* „Salariu net" = banii care intră în cont (vedeta tabelului). Tichetele,
+                      când există, apar separat sub el (feedback comunitate) — fără total cumulat. */}
+                  <tr className="bg-stone-900">
+                    <td className="border-r border-r-stone-600 px-3 py-3 text-left text-sm font-bold text-white">Salariu net</td>
+                    <td className="px-3 py-3 text-right text-sm font-bold tabular-nums whitespace-nowrap text-white">{fmt(rezAfisat.rez.netBani)}</td>
+                  </tr>
+                  {rezAfisat.rez.netTichete > 0 && (
+                    <tr>
+                      <td className={cellL}>Tichete de masă (net, pe card)</td>
+                      <td className={cellR}>+ {fmt(rezAfisat.rez.netTichete)}</td>
                     </tr>
                   )}
                 </tbody>

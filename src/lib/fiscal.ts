@@ -150,11 +150,13 @@ export function calculeaza(input: InputState): Rezultat | null {
 
 // ─── Calcul invers: brut din net ─────────────────────────────────────────────
 
+// Ținta este netul ÎN BANI (ce intră în cont) — „Salariu net" în UI. Tichetele se
+// adaugă separat peste; fără tichete, netBani === net, deci comportament identic.
 export function calculeazaBrutDinNet(net: number, input: Omit<InputState, "brut">): number {
   const valoriSpeciale = [SALARIU_MINIM];
   for (const v of valoriSpeciale) {
     const rez = calculeaza({ ...input, brut: String(v) });
-    if (rez && rez.net === net) return v;
+    if (rez && rez.netBani === net) return v;
   }
 
   let lo = net;
@@ -163,7 +165,7 @@ export function calculeazaBrutDinNet(net: number, input: Omit<InputState, "brut"
     const mid = (lo + hi) / 2;
     const rez = calculeaza({ ...input, brut: String(mid) });
     if (!rez) { lo = mid; continue; }
-    if (rez.net < net) lo = mid;
+    if (rez.netBani < net) lo = mid;
     else hi = mid;
   }
   return Math.round((lo + hi) / 2);
