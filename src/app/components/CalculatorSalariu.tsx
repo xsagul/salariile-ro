@@ -618,16 +618,17 @@ export default function CalculatorSalariu({
                     <td className={`${cellL} font-bold text-stone-900`}>Total rețineri angajat</td>
                     <td className={`${cellR} font-bold text-stone-900`}>{fmt(rezAfisat.rez.cas + rezAfisat.rez.cass + rezAfisat.rez.impozit)}</td>
                   </tr>
-                  {/* „Salariu net" = banii care intră în cont (vedeta tabelului). Tichetele,
-                      când există, apar separat sub el (feedback comunitate) — fără total cumulat. */}
+                  {/* „Salariu net" = banii care intră în cont, după toate reținerile (inclusiv
+                      taxele pe tichete, oprite din bani — ca pe fluturașul real). Tichetele
+                      intră integral pe card, la valoarea nominală, pe rând separat. */}
                   <tr className="bg-stone-900">
                     <td className="border-r border-r-stone-600 px-3 py-3 text-left text-sm font-bold text-white">Salariu net</td>
                     <td className="px-3 py-3 text-right text-sm font-bold tabular-nums whitespace-nowrap text-white">{fmt(rezAfisat.rez.netBani)}</td>
                   </tr>
-                  {rezAfisat.rez.netTichete > 0 && (
+                  {rezAfisat.rez.tichete > 0 && (
                     <tr>
-                      <td className={cellL}>Tichete de masă (net, pe card)</td>
-                      <td className={cellR}>+ {fmt(rezAfisat.rez.netTichete)}</td>
+                      <td className={cellL}>Tichete de masă</td>
+                      <td className={cellR}>+ {fmt(rezAfisat.rez.tichete)}</td>
                     </tr>
                   )}
                 </tbody>

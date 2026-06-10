@@ -50,9 +50,9 @@ export interface InputState {
 }
 
 export interface Rezultat {
-  net: number; //               salariu net încasat (bani + tichete nete)
-  netBani: number; //           partea din net care intră în contul de salariu
-  netTichete: number; //        partea din net primită pe cardul de tichete (după CASS + impozit)
+  net: number; //               total încasat (bani în cont + tichete pe card)
+  netBani: number; //           banii care intră în cont, după TOATE reținerile (inclusiv taxele pe tichete)
+  tichete: number; //           valoarea nominală a tichetelor — intră integral pe card
   cas: number; //               D112: A_14 · creanța 412 (CAS asigurat 25%)
   cass: number; //              D112: A_12 · creanța 432 (CASS asigurat 10%)
   impozit: number; //           D112: E3_15 / E1_7 · creanța 602 (impozit pe venit 10%)
@@ -123,20 +123,18 @@ export function calculeaza(input: InputState): Rezultat | null {
   const bazaImpozitTotala = (venitImpozabilSalariu - deducereAplicata) + bazaImpozitTichete;
   const impozit = scutitImpozit ? 0 : Math.round(bazaImpozitTotala * IMPOZIT_PROCENT);
 
-  const impozitTichete = scutitImpozit ? 0 : Math.round(bazaImpozitTichete * IMPOZIT_PROCENT);
-  const impozitSalariu = Math.max(0, impozit - impozitTichete);
-  const netBaniMunciti = brut - cas - cassSalariu - impozitSalariu;
-  const netTicheteEfectiv = tichete - cassTichete - impozitTichete;
-  const netCumulat = netBaniMunciti + netTicheteEfectiv;
+  // Pe fluturașul real, taxele aferente tichetelor (CASS + impozit) se rețin din
+  // SALARIUL ÎN BANI — cardul de tichete primește valoarea nominală integral.
+  const netBaniCont = brut - cas - cassTotal - impozit;
+  const netCumulat = netBaniCont + tichete;
 
   const bazaCAM = brut - facilitate;
   const cam = Math.round(bazaCAM * CAM_PROCENT);
 
   return {
     net: Math.round(netCumulat),
-    netBani: Math.round(netBaniMunciti),
-    // diferență (nu rotunjire separată), ca netBani + netTichete = net întotdeauna
-    netTichete: Math.round(netCumulat) - Math.round(netBaniMunciti),
+    netBani: Math.round(netBaniCont),
+    tichete: Math.round(tichete),
     cas,
     cass: cassTotal,
     impozit,
@@ -144,7 +142,7 @@ export function calculeaza(input: InputState): Rezultat | null {
     bazaCalculImpozit: bazaImpozitTotala,
     cam,
     costTotal: brut + cam + tichete,
-    brutNet: brut > 0 ? Math.round((netBaniMunciti / brut) * 100) : 0,
+    brutNet: brut > 0 ? Math.round((netBaniCont / brut) * 100) : 0,
   };
 }
 
