@@ -50,7 +50,9 @@ export interface InputState {
 }
 
 export interface Rezultat {
-  net: number; //               salariu net încasat
+  net: number; //               salariu net încasat (bani + tichete nete)
+  netBani: number; //           partea din net care intră în contul de salariu
+  netTichete: number; //        partea din net primită pe cardul de tichete (după CASS + impozit)
   cas: number; //               D112: A_14 · creanța 412 (CAS asigurat 25%)
   cass: number; //              D112: A_12 · creanța 432 (CASS asigurat 10%)
   impozit: number; //           D112: E3_15 / E1_7 · creanța 602 (impozit pe venit 10%)
@@ -132,6 +134,9 @@ export function calculeaza(input: InputState): Rezultat | null {
 
   return {
     net: Math.round(netCumulat),
+    netBani: Math.round(netBaniMunciti),
+    // diferență (nu rotunjire separată), ca netBani + netTichete = net întotdeauna
+    netTichete: Math.round(netCumulat) - Math.round(netBaniMunciti),
     cas,
     cass: cassTotal,
     impozit,

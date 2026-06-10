@@ -625,6 +625,13 @@ export default function CalculatorSalariu({
                 </tbody>
               </table>
             </div>
+            {/* Defalcare bani vs tichete — doar când există tichete (feedback comunitate) */}
+            {rezAfisat.rez.netTichete > 0 && (
+              <p className="mt-2 text-xs text-stone-600">
+                Din net: <span className="font-medium text-stone-900">{fmt(rezAfisat.rez.netBani)} lei</span> îți intră în contul de salariu, iar{" "}
+                <span className="font-medium text-stone-900">{fmt(rezAfisat.rez.netTichete)} lei</span> îi primești pe cardul de tichete.
+              </p>
+            )}
             <div className="mt-3 overflow-hidden rounded border border-stone-300">
               <table className="w-full table-auto border-collapse [&_td]:align-middle [&_th]:align-middle sm:table-fixed text-sm text-stone-700">
                 <colgroup><col /><col className="w-28 sm:w-36" /></colgroup>
