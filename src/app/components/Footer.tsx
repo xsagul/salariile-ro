@@ -23,7 +23,7 @@ const IMPLEMENTED_PAGES = new Set<string>([
   // "/calculator-concediu",
 ]);
 
-type FooterLink = { href: string; label: string };
+type FooterLink = { href: string; label: string; external?: boolean };
 
 const FOOTER_GROUPS: Array<{ title: string; links: FooterLink[] }> = [
   {
@@ -41,6 +41,8 @@ const FOOTER_GROUPS: Array<{ title: string; links: FooterLink[] }> = [
       { href: "/salariu-mediu", label: "Salariu mediu 2026" },
       { href: "/zile-libere-2026", label: "Zile libere 2026" },
       { href: "/noutati", label: "Noutăți legislative" },
+      // Parteneriat comunitate: subreddit-ul de muncă/salarii care găzduiește proiectul
+      { href: "https://www.reddit.com/r/RoMunca/", label: "Comunitatea r/RoMunca", external: true },
     ],
   },
   {
@@ -65,7 +67,7 @@ export default function Footer() {
   // Filtrăm doar grupurile care au cel puțin un link implementat
   const visibleGroups = FOOTER_GROUPS.map((group) => ({
     ...group,
-    links: group.links.filter((l) => IMPLEMENTED_PAGES.has(l.href)),
+    links: group.links.filter((l) => l.external || IMPLEMENTED_PAGES.has(l.href)),
   })).filter((group) => group.links.length > 0);
 
   return (
@@ -93,15 +95,27 @@ export default function Footer() {
                 <div className="mb-3 text-xs font-medium text-stone-600">
                   {group.title}
                 </div>
-                {group.links.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="mb-2 block text-sm text-stone-600 hover:text-stone-900"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
+                {group.links.map((link) =>
+                  link.external ? (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener"
+                      className="mb-2 block text-sm text-stone-600 hover:text-stone-900"
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="mb-2 block text-sm text-stone-600 hover:text-stone-900"
+                    >
+                      {link.label}
+                    </Link>
+                  )
+                )}
               </div>
             ))}
           </div>
