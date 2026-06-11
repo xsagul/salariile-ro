@@ -14,7 +14,8 @@ import http from "node:http";
 import crypto from "node:crypto";
 import { exec } from "node:child_process";
 
-const SCOPE = "https://www.googleapis.com/auth/webmasters.readonly";
+// Scope read/write: tot ce expune API-ul Search Console (date + inspecție + sitemap submit/delete).
+const SCOPE = "https://www.googleapis.com/auth/webmasters";
 
 let client;
 try {

@@ -32,7 +32,7 @@ import crypto from "node:crypto";
 import fs from "node:fs";
 
 const SITE = process.env.GSC_SITE || "https://salariile.ro/";
-const SCOPE = "https://www.googleapis.com/auth/webmasters.readonly";
+const SCOPE = "https://www.googleapis.com/auth/webmasters";
 
 const DIM = {
   queries: "query",
@@ -285,6 +285,19 @@ function printCsv(rows, dimLabel) {
       console.log(`Canonical decl. : ${idx.userCanonical || "—"}`);
       if (r.inspectionResultLink) console.log(`Detalii în GSC  : ${r.inspectionResultLink}`);
       console.log("");
+      return;
+    }
+
+    // ── comandă: submit (trimite/retrimite sitemap-ul la Google — cere scope read/write) ──
+    if (cmd === "submit") {
+      const feed = toFullUrl(positionals[1] || "/sitemap.xml");
+      const token = await resolveAccessToken();
+      const url = `https://searchconsole.googleapis.com/webmasters/v3/sites/${encodeURIComponent(
+        SITE,
+      )}/sitemaps/${encodeURIComponent(feed)}`;
+      const res = await fetch(url, { method: "PUT", headers: { Authorization: `Bearer ${token}` } });
+      if (!res.ok) throw new Error(`Eroare submit sitemap (${res.status}): ${await res.text()}`);
+      console.log(`\n✓ Sitemap trimis la Google: ${feed}\n`);
       return;
     }
 
