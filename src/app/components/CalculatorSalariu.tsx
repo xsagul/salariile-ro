@@ -637,15 +637,12 @@ export default function CalculatorSalariu({
                 </tbody>
               </table>
             </div>
-            {/* La salariu >= minim cu tichete, banii din cont pot coborî legal sub netul
-                standard al minimului (taxele pe tichete se opresc din bani) — explicăm,
-                ca cifra să nu pară o eroare de calcul. */}
-            {rezAfisat.rez.tichete > 0 &&
-              rezAfisat.rez.netBani < Number(EX_PLACEHOLDER_NET) &&
-              parseFloat(rezAfisat.brutEfectiv) >= SALARIU_MINIM && (
+            {/* Cu tichete, banii din cont coboară sub netul standard al salariului (taxele
+                pe tichete se opresc din bani) — explicăm, ca cifra să nu pară o eroare. */}
+            {rezAfisat.rez.tichete > 0 && (
               <p className="mt-2 text-xs text-stone-600">
-                E normal ca banii din cont să coboare sub netul standard al salariului minim ({fmt(Number(EX_PLACEHOLDER_NET))}):
-                taxele pe tichete (CASS + impozit) se opresc din salariul în bani, iar tichetele intră integral pe card. Așa apare și pe fluturaș.
+                E normal ca banii din cont să coboare sub netul standard al salariului: taxele pe tichete (CASS + impozit)
+                se opresc din salariul în bani, iar tichetele intră integral pe card. Așa apare și pe fluturaș.
               </p>
             )}
             <div className="mt-3 overflow-hidden rounded border border-stone-300">
@@ -656,12 +653,8 @@ export default function CalculatorSalariu({
                     <td className={cellL}>CAM (angajator – 2,25%)</td>
                     <td className={cellR}>{fmt(rezAfisat.rez.cam)}</td>
                   </tr>
-                  {rezAfisat.rez.costTotal - parseFloat(rezAfisat.brutEfectiv) - rezAfisat.rez.cam > 0 && (
-                    <tr>
-                      <td className={cellL}>Tichete de masă</td>
-                      <td className={cellR}>{fmt(rezAfisat.rez.costTotal - parseFloat(rezAfisat.brutEfectiv) - rezAfisat.rez.cam)}</td>
-                    </tr>
-                  )}
+                  {/* Tichetele nu se repetă aici — apar deja în tabelul de sus; costul total
+                      le include (brut + CAM + tichete). */}
                   <tr className="bg-canvas">
                     <td className="border-r border-stone-300 px-3 py-3 text-left text-sm font-bold text-stone-700">Cost total angajator</td>
                     <td className="px-3 py-3 text-right text-sm font-bold tabular-nums whitespace-nowrap text-stone-900">{fmt(rezAfisat.rez.costTotal)}</td>
