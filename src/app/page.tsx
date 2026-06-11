@@ -31,7 +31,7 @@ const faqData = [
   },
   {
     q: "Ce sunt tichetele de masă din punct de vedere fiscal?",
-    a: "Tichetele de masă sunt un beneficiu acordat de angajator în plus față de salariu. Începând cu 2024, tichetele sunt supuse contribuției CASS (10%) și impozitului pe venit (10%), dar NU sunt supuse CAS. Calculatorul nostru ține cont de aceste reguli și include tichetele în calculul net efectiv.",
+    a: "Tichetele de masă sunt un beneficiu extrasalarial: cel mult un tichet pe zi lucrată, cu valoare nominală de maximum 45 lei (Legea 201/2025). Pentru angajat, tichetele sunt supuse CASS (10%) și impozitului pe venit (10%), dar NU și CAS – iar aceste taxe se rețin din salariul în bani, cardul de tichete primind valoarea integrală. Angajatorul nu datorează contribuții pentru tichete (nici CAM); costul lui este valoarea nominală. De aceea, cu tichete, suma din cont poate coborî puțin sub netul standard – calculatorul le afișează separat, exact ca pe fluturaș.",
   },
 ];
 

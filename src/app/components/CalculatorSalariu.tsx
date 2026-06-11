@@ -539,9 +539,12 @@ export default function CalculatorSalariu({
                 <InputNumber id="valoare-tichet" label="Valoare / tichet" unit="lei" value={valoareTichet} placeholder="ex: 40"
                   onChange={(v) => { setValoareTichet(v); const t = (parseInt(nrTichete) || 0) * (parseInt(v) || 0); set("tichete", t ? String(t) : ""); }} />
               </div>
-              {(parseInt(input.tichete) || 0) > 0 && (
-                <p className="-mt-3 mb-5 text-xs text-stone-500">Total tichete: <span className="font-medium text-stone-700">{fmt(parseInt(input.tichete))}</span> / lună</p>
-              )}
+              <p className="-mt-3 mb-5 text-xs text-stone-500">
+                Cel mult un tichet pe zi lucrată · maxim legal 45 lei/tichet (Legea 201/2025).
+                {(parseInt(input.tichete) || 0) > 0 && (
+                  <> Total: <span className="font-medium text-stone-700">{fmt(parseInt(input.tichete))}</span> / lună.</>
+                )}
+              </p>
               <Select id="persoane-intretinere" label="Persoane în întreținere" value={input.persoanePretretinere} options={[0, 1, 2, 3, 4, 5].map((n) => ({ v: n, l: n === 0 ? "Niciuna" : `${n} ${n === 1 ? "persoană" : "persoane"}` }))} onChange={(v) => { set("persoanePretretinere", v); if (input.copiiScolarizati > v) set("copiiScolarizati", v); }} />
               <Select id="copii-scolari" label="Dintre care, copii minori școlari" value={input.copiiScolarizati} disabled={input.persoanePretretinere === 0} options={Array.from({ length: input.persoanePretretinere + 1 }, (_, n) => ({ v: n, l: n === 0 ? "Niciunul" : `${n} ${n === 1 ? "copil" : "copii"}` }))} onChange={(v) => set("copiiScolarizati", v)} />
               {/* Switch-uri (da/nu) – listă contiguă cu hairline-uri interne; last:border-b-0 prinde pe Scutit */}
@@ -634,6 +637,17 @@ export default function CalculatorSalariu({
                 </tbody>
               </table>
             </div>
+            {/* La salariu >= minim cu tichete, banii din cont pot coborî legal sub netul
+                standard al minimului (taxele pe tichete se opresc din bani) — explicăm,
+                ca cifra să nu pară o eroare de calcul. */}
+            {rezAfisat.rez.tichete > 0 &&
+              rezAfisat.rez.netBani < Number(EX_PLACEHOLDER_NET) &&
+              parseFloat(rezAfisat.brutEfectiv) >= SALARIU_MINIM && (
+              <p className="mt-2 text-xs text-stone-600">
+                E normal ca banii din cont să coboare sub netul standard al salariului minim ({fmt(Number(EX_PLACEHOLDER_NET))}):
+                taxele pe tichete (CASS + impozit) se opresc din salariul în bani, iar tichetele intră integral pe card. Așa apare și pe fluturaș.
+              </p>
+            )}
             <div className="mt-3 overflow-hidden rounded border border-stone-300">
               <table className="w-full table-auto border-collapse [&_td]:align-middle [&_th]:align-middle sm:table-fixed text-sm text-stone-700">
                 <colgroup><col /><col className="w-28 sm:w-36" /></colgroup>
