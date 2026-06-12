@@ -6,6 +6,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { personSchema } from "@/lib/person";
+import { SARBATORI_LEGALE_2026 as HOLIDAYS } from "@/lib/sarbatori";
 
 // ─── Metadata SEO ────────────────────────────────────────────────────────────
 
@@ -22,27 +23,8 @@ export const metadata: Metadata = {
   },
 };
 
-// ─── Sărbătorile legale 2026 (Cod Muncii art. 139) — singura dată introdusă ──
-// Cheia e "lună-zi" (lună 1–12). Restul calendarului se calculează din ele.
-
-const HOLIDAYS: Record<string, string> = {
-  "1-1": "Anul Nou",
-  "1-2": "A doua zi de Anul Nou",
-  "1-6": "Bobotează",
-  "1-7": "Sfântul Ioan Botezătorul",
-  "1-24": "Ziua Unirii Principatelor",
-  "4-10": "Vinerea Mare",
-  "4-12": "Paștele (ortodox)",
-  "4-13": "A doua zi de Paște",
-  "5-1": "Ziua Muncii",
-  "5-31": "Rusalii",
-  "6-1": "A doua zi de Rusalii / Ziua Copilului",
-  "8-15": "Adormirea Maicii Domnului",
-  "11-30": "Sfântul Andrei",
-  "12-1": "Ziua Națională",
-  "12-25": "Crăciunul",
-  "12-26": "A doua zi de Crăciun",
-};
+// Sărbătorile legale 2026 (Cod Muncii art. 139) sunt în src/lib/sarbatori.ts —
+// sursă unică, partajată cu fluturașul PDF (zile lucrătoare pe lună).
 
 const YEAR = 2026;
 const LUNI_NUME = ["Ianuarie", "Februarie", "Martie", "Aprilie", "Mai", "Iunie", "Iulie", "August", "Septembrie", "Octombrie", "Noiembrie", "Decembrie"];
