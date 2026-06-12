@@ -14,7 +14,7 @@ export const PAGE_LAST_MODIFIED: Record<string, Date> = {
   "/salariu-mediu": new Date("2026-06-08T00:00:00.000Z"),
   "/metodologie": new Date("2026-04-30T00:00:00.000Z"),
   "/zile-libere-2026": new Date("2026-06-08T00:00:00.000Z"),
-  "/noutati": new Date("2026-06-08T00:00:00.000Z"),
+  "/noutati": new Date("2026-06-12T00:00:00.000Z"),
   "/despre": new Date("2026-04-01T00:00:00.000Z"),
   "/contact": new Date("2026-04-01T00:00:00.000Z"),
   "/politica-confidentialitate": new Date("2026-04-01T00:00:00.000Z"),

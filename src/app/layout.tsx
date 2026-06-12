@@ -22,7 +22,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://salariile.ro"),
   title: {
-    default: "Calculator Salariu Net 2026 — Brut în Net | Salariile.ro",
+    default: "Calculator Salariu Net 2026: Brut în Net | Salariile.ro",
     template: "%s | Salariile.ro",
   },
   description:
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     locale: "ro_RO",
     url: "https://salariile.ro",
     siteName: "Salariile.ro",
-    title: "Calculator Salariu Net 2026 — Salariile.ro",
+    title: "Calculator Salariu Net 2026 | Salariile.ro",
     description:
       "Calculator salariu net, informații despre salariul minim și mediu în România.",
     images: [
@@ -43,13 +43,13 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Salariile.ro — Calculator Salariu",
+        alt: "Salariile.ro, calculator salariu net",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Calculator Salariu Net 2026 — Salariile.ro",
+    title: "Calculator Salariu Net 2026 | Salariile.ro",
     description: "Calculează salariul net din brut în câteva secunde.",
     images: ["/og-image.png"],
   },

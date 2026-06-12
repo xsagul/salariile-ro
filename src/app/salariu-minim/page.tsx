@@ -12,14 +12,14 @@ import { personSchema } from "@/lib/person";
 // ─── Metadata SEO ────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "Salariul minim pe economie 2026: net, brut, cost",
+  title: "Salariul minim pe economie 2026: cât rămâne net la tine",
   description:
-    "Salariul minim brut este 4.325 lei din 1 iulie 2026 (net 2.699 lei în mână). Vezi calculul pas cu pas, ce reține statul și cât costă angajatorul.",
+    "Din 1 iulie 2026, minimul brut e 4.325 lei. Vezi netul tău real cu facilitatea de 200 lei, când o pierzi, ce e cu tichetele și cât plătește firma de fapt.",
   alternates: { canonical: "https://salariile.ro/salariu-minim" },
   openGraph: {
-    title: "Salariul minim pe economie 2026: net, brut, cost",
+    title: "Salariul minim pe economie 2026: cât rămâne net la tine",
     description:
-      "Salariul minim brut este 4.325 lei din 1 iulie 2026 (net 2.699 lei). Calcul pas cu pas, ce reține statul și cât costă firma.",
+      "Din 1 iulie 2026, minimul brut e 4.325 lei. Netul real cu facilitatea de 200 lei, când o pierzi, tichetele și costul firmei.",
     url: "https://salariile.ro/salariu-minim",
   },
 };
