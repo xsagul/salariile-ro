@@ -2,6 +2,7 @@
 import Link from "next/link";
 import CalculatorSalariu from "@/app/components/CalculatorSalariu";
 import { personSchema } from "@/lib/person";
+import { LAST_FISCAL_CONTENT_UPDATE } from "@/lib/seo";
 
 // 1. Extragem datele pentru a le folosi și în schema ascunsă, și pe ecran
 const faqData = [
@@ -50,6 +51,17 @@ const homepageJsonLd = {
       founder: { "@id": "https://salariile.ro/#person" },
     },
     personSchema,
+    {
+      "@type": "WebPage",
+      "@id": "https://salariile.ro/#webpage",
+      url: "https://salariile.ro/",
+      name: "Calculator Salariu Net 2026: Brut în Net",
+      inLanguage: "ro",
+      // Aceeași dată ca lastModified din sitemap și ca „Ultima actualizare" vizibilă —
+      // consistența între bylineDate / sitemap / schema e un semnal de încredere.
+      dateModified: LAST_FISCAL_CONTENT_UPDATE.toISOString().slice(0, 10),
+      publisher: { "@id": "https://salariile.ro/#organization" },
+    },
     {
       "@type": "WebApplication",
       "@id": "https://salariile.ro/#calculator",

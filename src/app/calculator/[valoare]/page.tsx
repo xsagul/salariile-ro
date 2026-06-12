@@ -8,7 +8,7 @@ import { notFound } from "next/navigation";
 import CalculatorSalariu from "@/app/components/CalculatorSalariu";
 import { Section } from "@/app/components/ui";
 import { calculStandard, brutDinNetStandard, SALARIU_MINIM, type Rezultat } from "@/lib/fiscal";
-import { allCalculatorSlugs } from "@/lib/seo";
+import { allCalculatorSlugs, LAST_FISCAL_CONTENT_UPDATE } from "@/lib/seo";
 
 interface Props {
   params: Promise<{ valoare: string }>;
@@ -318,6 +318,14 @@ export default async function CalculatorDinamic({ params }: Props) {
           { "@type": "ListItem", position: 2, name: "Calculator", item: "https://salariile.ro/" },
           { "@type": "ListItem", position: 3, name: `${cifra} lei ${isNetDinBrut ? 'brut' : 'net'}`, item: `https://salariile.ro/calculator/${valoare}` }
         ]
+      },
+      {
+        "@type": "WebPage",
+        url: `https://salariile.ro/calculator/${valoare}`,
+        name: titluDinamic,
+        inLanguage: "ro",
+        // Aceeași dată ca lastModified din sitemap — consistența datelor contează
+        dateModified: LAST_FISCAL_CONTENT_UPDATE.toISOString().slice(0, 10),
       }
     ]
   };

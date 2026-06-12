@@ -150,8 +150,8 @@ const jsonLd = {
       },
       image: { "@type": "ImageObject", url: "https://salariile.ro/og-image.png", width: 1200, height: 630 },
       mainEntityOfPage: "https://salariile.ro/salariu-minim",
-      datePublished: "2026-06-20",
-      dateModified: "2026-06-20",
+      datePublished: "2026-04-27",
+      dateModified: "2026-06-08",
     },
     {
       "@type": "FAQPage",
