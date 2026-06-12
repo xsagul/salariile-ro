@@ -1,6 +1,6 @@
 # Salariile.ro
 
-> Calculator gratuit salariu net pentru România, conform legislației fiscale 2026. Site informativ independent care explică contribuțiile (CAS, CASS, impozit), deducerile personale, plafoanele salariale și taxele pentru PFA. Toate calculele sunt sincronizate cu Codul Fiscal (Legea 227/2015), HG 146/2026 și OUG 89/2025.
+> Calculator de salariu net pentru România, conform legislației fiscale 2026. Site informativ independent, fără reclame și fără conturi, care explică contribuțiile (CAS, CASS, impozit), deducerile personale, plafoanele salariale și taxele pentru PFA. Toate calculele sunt sincronizate cu Codul Fiscal (Legea 227/2015), HG 146/2026 și OUG 89/2025.
 
 ## Citare și atribuire
 

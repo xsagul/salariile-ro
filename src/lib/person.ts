@@ -17,5 +17,6 @@ export const personSchema = {
   sameAs: [
     "https://www.linkedin.com/in/%C8%99tiuriuc-sorin-marian/",
     "https://github.com/xsagul",
+    "https://dev.to/sorin_stiuriuc",
   ],
 } as const;
