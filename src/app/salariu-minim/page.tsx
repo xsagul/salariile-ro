@@ -49,7 +49,7 @@ const FAQ = [
   },
   {
     q: "Care este costul total al angajatorului?",
-    a: "Costul total pentru un salariu minim include brutul plus contribuția asiguratorie pentru muncă (CAM 2,25%). Rezultă 4.134 lei lunar în semestrul I 2026 și 4.418 lei începând cu 1 iulie 2026 — o creștere de 284 lei lunar.",
+    a: "Costul total pentru un salariu minim include brutul plus contribuția asiguratorie pentru muncă (CAM 2,25%). Rezultă 4.134 lei lunar în semestrul I 2026 și 4.418 lei începând cu 1 iulie 2026, o creștere de 284 lei lunar.",
   },
   {
     q: "Salariul minim sectorul construcții se schimbă?",
@@ -61,15 +61,15 @@ const FAQ = [
   },
   {
     q: "Se impozitează tichetele de masă la salariul minim?",
-    a: "Da. Tichetele de masă sunt supuse impozitului pe venit (10%) și CASS (10%), dar nu și CAS. Important: valoarea tichetelor nu se include în plafonul de 4.300/4.600 lei folosit pentru facilitatea fiscală — deci tichetele nu îți anulează scutirea de 300/200 lei.",
+    a: "Da. Tichetele de masă sunt supuse impozitului pe venit (10%) și CASS (10%), dar nu și CAS. Important: valoarea tichetelor nu se include în plafonul de 4.300/4.600 lei folosit pentru facilitatea fiscală, deci tichetele nu îți anulează scutirea de 300/200 lei.",
   },
   {
     q: "Care este salariul minim pe oră în 2026?",
-    a: "Tariful orar minim este 24,496 lei/oră în prima jumătate a anului (4.050 lei împărțit la 165,334 ore medii pe lună) și 25,949 lei/oră din 1 iulie (4.325 lei la 166,667 ore). Contează mai ales la normă parțială, unde plata se face proporțional cu orele lucrate — dar niciodată sub acest tarif.",
+    a: "Tariful orar minim este 24,496 lei/oră în prima jumătate a anului (4.050 lei împărțit la 165,334 ore medii pe lună) și 25,949 lei/oră din 1 iulie (4.325 lei la 166,667 ore). Contează mai ales la normă parțială, unde plata se face proporțional cu orele lucrate, dar niciodată sub acest tarif.",
   },
   {
     q: "Cât este salariul minim net part-time, la jumătate de normă?",
-    a: "Pentru tine, netul scade proporțional cu orele — la jumătate de normă, aproximativ jumătate din netul integral. Atenție însă: la un contract part-time sub salariul minim, CAS și CASS se datorează tot la baza salariului minim (3.750 lei în S1, 4.125 lei în S2), iar diferența o suportă angajatorul, nu se reține din netul tău. Excepție fac elevii și studenții sub 26 de ani, pensionarii, persoanele cu handicap și cei cu mai multe contracte care însumate ating minimul.",
+    a: "Pentru tine, netul scade proporțional cu orele: la jumătate de normă, aproximativ jumătate din netul integral. Atenție însă: la un contract part-time sub salariul minim, CAS și CASS se datorează tot la baza salariului minim (3.750 lei în S1, 4.125 lei în S2), iar diferența o suportă angajatorul, nu se reține din netul tău. Excepție fac elevii și studenții sub 26 de ani, pensionarii, persoanele cu handicap și cei cu mai multe contracte care însumate ating minimul.",
   },
   {
     q: "Cât este salariul minim net pe zi?",
@@ -199,7 +199,7 @@ export default function SalariuMinimPage() {
                 Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat 8 iunie 2026
               </p>
               <p className={`mt-5 max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600 ${strong}`}>
-                Din 1 iulie 2026, salariul minim brut este <strong>4.325 lei</strong> — adică <strong>2.699 lei</strong>{" "}
+                Din 1 iulie 2026, salariul minim brut este <strong>4.325 lei</strong>, adică <strong>2.699 lei</strong>{" "}
                 net, în mână. (Până la 1 iulie a fost 4.050 lei, cu 2.574 net.) Mai jos vezi ce reține statul, cât costă
                 firma și de ce netul a crescut mai puțin decât brutul.
               </p>
@@ -207,7 +207,7 @@ export default function SalariuMinimPage() {
             <div className={aside}>
               <Image
                 src="/hero-salariu-minim.png"
-                alt="Ilustrație: o mână deschisă care susține o căsuță și o siluetă mică — salariul minim ca o podea ce asigură un trai demn"
+                alt="Ilustrație: o mână deschisă care susține o căsuță și o siluetă mică, salariul minim ca o podea ce asigură un trai demn"
                 width={1200}
                 height={896}
                 priority
@@ -231,8 +231,8 @@ export default function SalariuMinimPage() {
                   </p>
                   <p>
                     Din brut nu iei tot. Se rețin trei lucruri: <strong>CAS 25%</strong> (pensie), <strong>CASS 10%</strong>{" "}
-                    (sănătate) și <strong>impozit 10%</strong>. La salariul minim — dacă e locul tău de muncă de bază, cu
-                    normă întreagă — o parte fixă e scutită complet de taxe: 200 de lei din iulie (300 până atunci),
+                    (sănătate) și <strong>impozit 10%</strong>. La salariul minim, dacă e locul tău de muncă de bază, cu
+                    normă întreagă, o parte fixă e scutită complet de taxe: 200 de lei din iulie (300 până atunci),
                     facilitatea din OUG 89/2025. Așa, în mână rămân <strong>2.699 lei</strong> (2.574 în prima parte a anului).
                   </p>
                 </div>
@@ -241,7 +241,7 @@ export default function SalariuMinimPage() {
                 <div className={`${card} ${links} ${strong}`}>
                   <h3 className="text-base font-bold tracking-[-0.01em] text-stone-900">Nu poți fi plătit sub minim</h3>
                   <p className="mt-2 text-sm leading-normal tracking-[-0.01em] text-stone-600">
-                    La normă întreagă, niciun angajator nu poate plăti legal sub salariul minim brut — indiferent ce scrie în
+                    La normă întreagă, niciun angajator nu poate plăti legal sub salariul minim brut, indiferent ce scrie în
                     contract sau ce ați convenit (<strong>Codul Muncii, art. 164</strong>). Dacă primești mai puțin, te poți
                     adresa <strong>Inspecției Muncii (ITM)</strong>. Nici pe oră nu poți coborî sub tariful orar minim:{" "}
                     <strong>25,95 lei/oră</strong> din iulie (24,50 până atunci). La normă parțială, plata e proporțională
@@ -331,11 +331,11 @@ export default function SalariuMinimPage() {
                 <div className={`${card} ${strong}`}>
                   <h3 className="text-base font-bold tracking-[-0.01em] text-stone-900">Cât păstrezi din brut</h3>
                   <p className="mt-2 text-sm leading-normal tracking-[-0.01em] text-stone-600">
-                    Din fiecare 100 de lei bruți, din iulie ajung la tine ~62 (<strong>62,4%</strong>) — restul merge la
+                    Din fiecare 100 de lei bruți, din iulie ajung la tine ~62 (<strong>62,4%</strong>), restul merge la
                     stat. Rata a scăzut puțin față de prima parte a anului (<strong>63,6%</strong>), pentru că partea scutită
                     de taxe s-a redus de la 300 la 200 de lei.
                   </p>
-                  <p className="mt-auto pt-4 text-xs text-stone-500">CAS și CASS se aplică pe „bază" (brut minus partea scutită), nu pe brutul întreg — de aceea îți rămâne peste 60%.</p>
+                  <p className="mt-auto pt-4 text-xs text-stone-500">CAS și CASS se aplică pe „bază" (brut minus partea scutită), nu pe brutul întreg, de aceea îți rămâne peste 60%.</p>
                 </div>
               </aside>
             </div>
@@ -352,7 +352,7 @@ export default function SalariuMinimPage() {
                   </p>
                   <p>
                     Atenție la o confuzie des întâlnită: doar CAM se adaugă peste brut; CAS, CASS și impozitul nu sunt costuri
-                    în plus pentru firmă, ci se rețin din salariul tău. Iar majorarea arată partea mai puțin spusă — din cei
+                    în plus pentru firmă, ci se rețin din salariul tău. Iar majorarea arată partea mai puțin spusă: din cei
                     284 de lei în plus pe care îi plătește firma, la tine ajung doar 125; restul de 159 sunt taxe în plus la stat.
                   </p>
                 </div>
@@ -419,7 +419,7 @@ export default function SalariuMinimPage() {
                     <strong>IT-ul, construcțiile și agroalimentarul</strong> au fost <strong>eliminate (OUG 156/2024)</strong>{" "}
                     din ianuarie 2025. Acum nu mai există niciun regim fiscal special pe sectoare.
                   </p>
-                  <p>Dacă ești angajator, majorarea din iulie nu se aplică de la sine — fiecare contract la minim cere pași concreți:</p>
+                  <p>Dacă ești angajator, majorarea din iulie nu se aplică de la sine, fiecare contract la minim cere pași concreți:</p>
                   <ul>
                     <li><strong>Act adițional</strong> semnat individual cu fiecare salariat (nu o decizie colectivă).</li>
                     <li><strong>REGES-Online</strong>: noul brut se raportează în maximum 20 de zile lucrătoare.</li>
@@ -432,7 +432,7 @@ export default function SalariuMinimPage() {
                   <h3 className="text-base font-bold tracking-[-0.01em] text-stone-900">Ești la minim de peste 2 ani?</h3>
                   <p className="mt-2 text-sm leading-normal tracking-[-0.01em] text-stone-600">
                     Dacă ai fost plătit la salariul minim mai mult de <strong>24 de luni</strong> la rând, angajatorul e
-                    obligat prin lege să-ți negocieze un salariu mai mare (Codul Muncii, art. 164²) — o protecție împotriva
+                    obligat prin lege să-ți negocieze un salariu mai mare (Codul Muncii, art. 164²), o protecție împotriva
                     blocării pe termen lung la nivelul minim.
                   </p>
                 </div>
@@ -444,7 +444,7 @@ export default function SalariuMinimPage() {
               <div className="md:col-span-3">
                 <div className={`max-w-prose ${articol}`}>
                   <h2>Cum a crescut în timp</h2>
-                  <p>În șapte ani, minimul brut s-a mai mult decât dublat — de la 2.080 lei în 2019 la 4.325 în 2026. Iată evoluția, cu netul din fiecare treaptă:</p>
+                  <p>În șapte ani, minimul brut s-a mai mult decât dublat, de la 2.080 lei în 2019 la 4.325 în 2026. Iată evoluția, cu netul din fiecare treaptă:</p>
                   <figure className="my-6 rounded-md border border-stone-200 bg-surface p-5 sm:p-6">
                     <figcaption className="mb-3 flex gap-5 text-xs font-medium text-stone-600">
                       <span className="flex items-center gap-2">
@@ -518,7 +518,7 @@ export default function SalariuMinimPage() {
                 <div className={`${card} ${strong}`}>
                   <h3 className="text-base font-bold tracking-[-0.01em] text-stone-900">Cât a crescut cu adevărat</h3>
                   <p className="mt-2 text-sm leading-normal tracking-[-0.01em] text-stone-600">
-                    Pe hârtie, minimul s-a mai mult decât dublat din 2019. Dar între timp au urcat și prețurile — cam{" "}
+                    Pe hârtie, minimul s-a mai mult decât dublat din 2019. Dar între timp au urcat și prețurile, cam{" "}
                     <strong>55%</strong>. După ce scazi scumpirea, puterea de cumpărare a crescut cu aproximativ{" "}
                     <strong>o treime</strong>, nu de două ori.
                   </p>
@@ -562,10 +562,10 @@ export default function SalariuMinimPage() {
                 <div className={card}>
                   <h3 className="mb-3 text-xs font-medium text-stone-500">Surse oficiale</h3>
                   <ul className={`flex flex-col gap-2 text-sm leading-normal text-stone-600 ${links}`}>
-                    <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/308231" target="_blank" rel="noopener">HG 146/2026</a> — salariul minim, 1 iulie 2026</li>
-                    <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/291450" target="_blank" rel="noopener">HG 1506/2024</a> — salariul minim, 1 ian. 2025</li>
-                    <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/305817" target="_blank" rel="noopener">OUG 89/2025</a> — facilitatea 300/200 lei</li>
-                    <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/293109" target="_blank" rel="noopener">OUG 156/2024</a> — eliminare scutiri sectoriale</li>
+                    <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/308231" target="_blank" rel="noopener">HG 146/2026</a>: salariul minim, 1 iulie 2026</li>
+                    <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/291450" target="_blank" rel="noopener">HG 1506/2024</a>: salariul minim, 1 ian. 2025</li>
+                    <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/305817" target="_blank" rel="noopener">OUG 89/2025</a>: facilitatea 300/200 lei</li>
+                    <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/293109" target="_blank" rel="noopener">OUG 156/2024</a>: eliminare scutiri sectoriale</li>
                     <li><a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/128646" target="_blank" rel="noopener">Codul Muncii</a> · <a href="https://legislatie.just.ro/Public/DetaliiDocument/257144" target="_blank" rel="noopener">Codul Fiscal</a></li>
                   </ul>
                   <h3 className="mb-3 mt-6 text-xs font-medium text-stone-500">Pagini conexe</h3>
@@ -584,7 +584,7 @@ export default function SalariuMinimPage() {
                 <div className={card}>
                   <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900">Calculează orice salariu</h2>
                   <p className="mt-2 text-base leading-normal tracking-[-0.01em] text-stone-600">
-                    Vezi ce primești în mână, ce reține statul și cât plătește firma — pentru orice sumă brută sau netă.
+                    Vezi ce primești în mână, ce reține statul și cât plătește firma, pentru orice sumă brută sau netă.
                   </p>
                   <Link
                     href="/"

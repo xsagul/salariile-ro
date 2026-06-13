@@ -186,12 +186,12 @@ export default function MetodologiePage() {
                   <td>OUG 89/2025</td>
                 </tr>
                 <tr>
-                  <td>Salariu minim brut 2026 — S1</td>
+                  <td>Salariu minim brut 2026 (S1)</td>
                   <td>4.050 lei</td>
                   <td>HG 1506/2024</td>
                 </tr>
                 <tr>
-                  <td>Salariu minim brut 2026 — S2</td>
+                  <td>Salariu minim brut 2026 (S2)</td>
                   <td>4.325 lei</td>
                   <td>HG 146/2026 (MO 196/13.03.2026)</td>
                 </tr>
@@ -200,7 +200,7 @@ export default function MetodologiePage() {
         </Section>
 
         <Section>
-            <h2>Deducerea personală — detalii</h2>
+            <h2>Deducerea personală, în detaliu</h2>
             <p>
               Deducerea personală este o sumă scăzută din baza impozabilă, conform Codului Fiscal art. 77. Se aplică numai pentru venituri din salarii la locul unde se află funcția de bază.
             </p>
@@ -209,17 +209,17 @@ export default function MetodologiePage() {
             </p>
             <ul>
               <li>
-                <strong>Deducerea personală de bază</strong> — depinde de salariul brut lunar, de numărul de persoane aflate în întreținere și de plafonul calculat ca <em>salariul minim brut + 2.000 lei</em>. Pentru 2026: plafon = 6.050 lei (S1) sau 6.325 lei (S2). Peste acest plafon, deducerea de bază este 0.
+                <strong>Deducerea personală de bază</strong>: depinde de salariul brut lunar, de numărul de persoane aflate în întreținere și de plafonul calculat ca <em>salariul minim brut + 2.000 lei</em>. Pentru 2026: plafon = 6.050 lei (S1) sau 6.325 lei (S2). Peste acest plafon, deducerea de bază este 0.
               </li>
               <li>
-                <strong>Deducerea personală suplimentară</strong> — pentru persoane cu vârsta sub 26 ani aflate la primul loc de muncă, sau pentru salariați cu copii minori în întreținere. Se cumulează cu deducerea de bază.
+                <strong>Deducerea personală suplimentară</strong>: pentru persoane cu vârsta sub 26 ani aflate la primul loc de muncă, sau pentru salariați cu copii minori în întreținere. Se cumulează cu deducerea de bază.
               </li>
             </ul>
             <p>
               Calculatorul aplică deducerea conform tabelelor publicate în anexa la Codul Fiscal, ținând cont de numărul de persoane în întreținere selectate în secțiunea „Calculator avansat”.
             </p>
             <p>
-              Pentru veniturile peste plafonul de 6.050/6.325 lei, deducerea de bază nu se aplică — toată suma după contribuții se impozitează cu 10%.
+              Pentru veniturile peste plafonul de 6.050/6.325 lei, deducerea de bază nu se aplică, deci toată suma după contribuții se impozitează cu 10%.
             </p>
         </Section>
 
@@ -269,9 +269,9 @@ export default function MetodologiePage() {
               <li><strong>Nu integrează sporuri și beneficii nesalariale</strong> tratate diferențiat (tichete de masă peste plafon, tichete cadou, prime ocazionale, indemnizații de delegare etc.)</li>
               <li><strong>Nu calculează concediile medicale</strong> (alt tratament fiscal, indemnizație din FAAMBP sau de la angajator)</li>
               <li><strong>Nu acoperă cazurile de cumul de funcții</strong> (mai multe contracte simultane, funcție de bază vs locuri suplimentare de muncă)</li>
-              <li><strong>Nu aplică scutirile sectoriale</strong> care erau în vigoare înainte de 2025 (IT, construcții, agroalimentar) — eliminate prin OUG 156/2024</li>
+              <li><strong>Nu aplică scutirile sectoriale</strong> care erau în vigoare înainte de 2025 (IT, construcții, agroalimentar), eliminate prin OUG 156/2024</li>
               <li><strong>Nu calculează contribuțiile angajatorilor speciali</strong> (entități non-profit, cooperative agricole etc.)</li>
-              <li><strong>Nu generează fluturașul oficial de plată</strong> — afișează doar componentele de bază; fluturașul oficial poate conține mai multe rânduri (ore lucrate, ore suplimentare, sporuri, deduceri specifice etc.)</li>
+              <li><strong>Nu generează fluturașul oficial de plată</strong>: afișează doar componentele de bază; fluturașul oficial poate conține mai multe rânduri (ore lucrate, ore suplimentare, sporuri, deduceri specifice etc.)</li>
             </ul>
             <p>
               Pentru aceste situații, recomand consultarea unui contabil autorizat sau a unui expert fiscal. Calculatorul este util pentru a obține o estimare rapidă și acurată pentru cazul standard.
@@ -284,10 +284,10 @@ export default function MetodologiePage() {
               Modificările legislative privind salariile sunt urmărite lunar prin Monitorul Oficial și comunicările Ministerului Finanțelor, ANAF și Ministerului Muncii. La fiecare modificare semnificativă (publicare HG, OUG, lege nouă) actualizez:
             </p>
             <ul>
-              <li>Formulele calculatorului — dacă se modifică o cotă sau o regulă de aplicare</li>
-              <li>Valorile de referință folosite (salariu minim, plafon deducere) — la fiecare actualizare anunțată oficial</li>
-              <li>Paginile editoriale aferente (<Link href="/salariu-minim">salariu minim</Link>, <Link href="/salariu-mediu">salariu mediu</Link>) — cu noile cifre și surse</li>
-              <li>Această pagină — pentru a reflecta noile articole din Codul Fiscal sau noile acte normative</li>
+              <li>Formulele calculatorului, dacă se modifică o cotă sau o regulă de aplicare</li>
+              <li>Valorile de referință folosite (salariu minim, plafon deducere), la fiecare actualizare anunțată oficial</li>
+              <li>Paginile editoriale aferente (<Link href="/salariu-minim">salariu minim</Link>, <Link href="/salariu-mediu">salariu mediu</Link>), cu noile cifre și surse</li>
+              <li>Această pagină, pentru a reflecta noile articole din Codul Fiscal sau noile acte normative</li>
             </ul>
             <p>
               În antetul fiecărei pagini este afișată data ultimei revizuiri. Dacă observi o discrepanță între ce afișează calculatorul și o sursă oficială pe care o ai, scrie-mi la adresa de pe pagina de <Link href="/contact">contact</Link>.
@@ -297,18 +297,18 @@ export default function MetodologiePage() {
         <Section>
             <h2>Surse oficiale folosite</h2>
             <ul>
-              <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/257144" target="_blank" rel="noopener"><strong>Codul Fiscal</strong> — Legea 227/2015</a>, cu modificările ulterioare</li>
-              <li><a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/128646" target="_blank" rel="noopener"><strong>Codul Muncii</strong> — Legea 53/2003</a>, cu modificările ulterioare</li>
-              <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/308231" target="_blank" rel="noopener"><strong>HG 146/2026</strong></a> — salariu minim de la 1 iulie 2026 (MO nr. 196 din 13 martie 2026)</li>
-              <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/291450" target="_blank" rel="noopener"><strong>HG 1506/2024</strong></a> — salariu minim de la 1 ianuarie 2025 (MO nr. 1185 din 28 noiembrie 2024)</li>
-              <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/305817" target="_blank" rel="noopener"><strong>OUG 89/2025</strong></a> — facilitate fiscală 300/200 lei pentru salariul minim</li>
-              <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/293109" target="_blank" rel="noopener"><strong>OUG 156/2024</strong></a> — eliminarea scutirilor sectoriale IT, construcții, agroalimentar</li>
-              <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/294600" target="_blank" rel="noopener"><strong>HG 35/2025</strong></a> — mecanismul tehnic de stabilire a salariului minim</li>
-              <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/308863" target="_blank" rel="noopener"><strong>Legea 44/2026</strong></a> — bugetul asigurărilor sociale, valoarea salariului mediu</li>
-              <li><strong>Ministerul Muncii</strong> — <a href="https://mmuncii.gov.ro" target="_blank" rel="noopener">mmuncii.gov.ro</a></li>
-              <li><strong>ANAF</strong> — <a href="https://www.anaf.ro" target="_blank" rel="noopener">anaf.ro</a> (template Declarația 112)</li>
-              <li><strong>Monitorul Oficial</strong> — <a href="https://legislatie.just.ro" target="_blank" rel="noopener">legislatie.just.ro</a> (portal căutare generală)</li>
-              <li><strong>Institutul Național de Statistică</strong> — <a href="https://insse.ro" target="_blank" rel="noopener">insse.ro</a></li>
+              <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/257144" target="_blank" rel="noopener"><strong>Codul Fiscal</strong>, Legea 227/2015</a>, cu modificările ulterioare</li>
+              <li><a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/128646" target="_blank" rel="noopener"><strong>Codul Muncii</strong>, Legea 53/2003</a>, cu modificările ulterioare</li>
+              <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/308231" target="_blank" rel="noopener"><strong>HG 146/2026</strong></a>: salariu minim de la 1 iulie 2026 (MO nr. 196 din 13 martie 2026)</li>
+              <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/291450" target="_blank" rel="noopener"><strong>HG 1506/2024</strong></a>: salariu minim de la 1 ianuarie 2025 (MO nr. 1185 din 28 noiembrie 2024)</li>
+              <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/305817" target="_blank" rel="noopener"><strong>OUG 89/2025</strong></a>: facilitate fiscală 300/200 lei pentru salariul minim</li>
+              <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/293109" target="_blank" rel="noopener"><strong>OUG 156/2024</strong></a>: eliminarea scutirilor sectoriale IT, construcții, agroalimentar</li>
+              <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/294600" target="_blank" rel="noopener"><strong>HG 35/2025</strong></a>: mecanismul tehnic de stabilire a salariului minim</li>
+              <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/308863" target="_blank" rel="noopener"><strong>Legea 44/2026</strong></a>: bugetul asigurărilor sociale, valoarea salariului mediu</li>
+              <li><strong>Ministerul Muncii</strong>: <a href="https://mmuncii.gov.ro" target="_blank" rel="noopener">mmuncii.gov.ro</a></li>
+              <li><strong>ANAF</strong>: <a href="https://www.anaf.ro" target="_blank" rel="noopener">anaf.ro</a> (template Declarația 112)</li>
+              <li><strong>Monitorul Oficial</strong>: <a href="https://legislatie.just.ro" target="_blank" rel="noopener">legislatie.just.ro</a> (portal căutare generală)</li>
+              <li><strong>Institutul Național de Statistică</strong>: <a href="https://insse.ro" target="_blank" rel="noopener">insse.ro</a></li>
             </ul>
             <p className="source-note">Pagină actualizată: 8 iunie 2026.</p>
         </Section>

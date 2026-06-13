@@ -78,13 +78,13 @@ export default function PoliticaConfidentialitatePage() {
             <h3>Date colectate automat</h3>
             <ul>
               <li>
-                <strong>Adresa IP, user agent, URL accesat, data și ora vizitei</strong> — colectate automat de către infrastructura de hosting (Vercel) pentru fiecare cerere HTTP. Folosite pentru securitate (detectare abuz, atacuri automate) și debugging. Păstrate maximum 30 de zile.
+                <strong>Adresa IP, user agent, URL accesat, data și ora vizitei</strong>: colectate automat de către infrastructura de hosting (Vercel) pentru fiecare cerere HTTP. Folosite pentru securitate (detectare abuz, atacuri automate) și debugging. Păstrate maximum 30 de zile.
               </li>
               <li>
-                <strong>Metrici de performanță anonime</strong> — prin Vercel Speed Insights se înregistrează indicatori tehnici (timp de încărcare, Core Web Vitals) pentru îmbunătățirea site-ului. Speed Insights este cookieless (folosește <code>sendBeacon</code> pentru transmisia anonimă a metricilor), datele sunt agregate și nu pot identifica un vizitator individual.
+                <strong>Metrici de performanță anonime</strong>: prin Vercel Speed Insights se înregistrează indicatori tehnici (timp de încărcare, Core Web Vitals) pentru îmbunătățirea site-ului. Speed Insights este cookieless (folosește <code>sendBeacon</code> pentru transmisia anonimă a metricilor), datele sunt agregate și nu pot identifica un vizitator individual.
               </li>
               <li>
-                <strong>Statistici de vizitare anonime</strong> — prin Vercel Web Analytics se contorizează numărul de vizite, paginile cele mai accesate și țara de origine (la nivel general). Nu se folosesc cookies pentru această analiză, datele sunt complet anonime și nu se transferă către terți.
+                <strong>Statistici de vizitare anonime</strong>: prin Vercel Web Analytics se contorizează numărul de vizite, paginile cele mai accesate și țara de origine (la nivel general). Nu se folosesc cookies pentru această analiză, datele sunt complet anonime și nu se transferă către terți.
               </li>
             </ul>
             <h3>Date pe care NU le colectăm</h3>
@@ -99,7 +99,7 @@ export default function PoliticaConfidentialitatePage() {
         <Section>
             <h2>3. Baza legală a prelucrării</h2>
             <p>
-              Datele colectate automat (logs de server, statistici anonime) se prelucrează în temeiul interesului legitim al operatorului (Art. 6 alin. 1 lit. f din GDPR) — asigurarea funcționării și securității site-ului. Interesul legitim este proporțional cu impactul minim asupra vizitatorilor, datele fiind agregate sau de scurtă durată.
+              Datele colectate automat (logs de server, statistici anonime) se prelucrează în temeiul interesului legitim al operatorului (Art. 6 alin. 1 lit. f din GDPR), adică asigurarea funcționării și securității site-ului. Interesul legitim este proporțional cu impactul minim asupra vizitatorilor, datele fiind agregate sau de scurtă durată.
             </p>
         </Section>
 
@@ -110,10 +110,10 @@ export default function PoliticaConfidentialitatePage() {
             </p>
             <ul>
               <li>
-                <strong>Vercel Inc.</strong> (SUA) — furnizor de hosting și CDN. Procesează automat fiecare cerere către site. Vercel este certificat conform mecanismului UE-SUA Data Privacy Framework. <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener">Politica Vercel</a>.
+                <strong>Vercel Inc.</strong> (SUA): furnizor de hosting și CDN. Procesează automat fiecare cerere către site. Vercel este certificat conform mecanismului UE-SUA Data Privacy Framework. <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener">Politica Vercel</a>.
               </li>
               <li>
-                <strong>Google LLC</strong> (SUA) — exclusiv prin Google Search Console pentru verificarea proprietății domeniului și monitorizarea performanței în rezultatele căutării. Search Console nu colectează date despre vizitatorii individuali — doar statistici agregate despre cum apare site-ul în rezultatele Google.
+                <strong>Google LLC</strong> (SUA): exclusiv prin Google Search Console pentru verificarea proprietății domeniului și monitorizarea performanței în rezultatele căutării. Search Console nu colectează date despre vizitatorii individuali, doar statistici agregate despre cum apare site-ul în rezultatele Google.
               </li>
             </ul>
             <p>
@@ -143,8 +143,8 @@ export default function PoliticaConfidentialitatePage() {
               Conform GDPR (Art. 12-22), ai următoarele drepturi cu privire la datele tale personale:
             </p>
             <ul>
-              <li>Dreptul de acces — să afli ce date avem despre tine</li>
-              <li>Dreptul la rectificare — să corectezi date inexacte</li>
+              <li>Dreptul de acces, să afli ce date avem despre tine</li>
+              <li>Dreptul la rectificare, să corectezi date inexacte</li>
               <li>Dreptul la ștergere („dreptul de a fi uitat”)</li>
               <li>Dreptul la restricționarea prelucrării</li>
               <li>Dreptul la portabilitatea datelor</li>

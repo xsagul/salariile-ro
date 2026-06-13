@@ -6,7 +6,7 @@ import Link from "next/link";
 import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow } from "@/app/components/ui";
 
 export const metadata: Metadata = {
-  title: "Politica de cookies — fără tracking",
+  title: "Politica de cookies, fără tracking",
   description:
     "Salariile.ro este conceput cookieless. Nu folosim cookies pentru analiză, publicitate sau tracking. Detalii complete despre poziția noastră.",
   alternates: { canonical: "https://salariile.ro/cookies" },
@@ -26,7 +26,7 @@ const jsonLd = {
       "@type": "WebPage",
       name: "Politica cookies salariile.ro",
       description:
-        "Salariile.ro este cookieless prin design — fără cookies de tracking, analiză comportamentală sau publicitate.",
+        "Salariile.ro este cookieless prin design, fără cookies de tracking, analiză comportamentală sau publicitate.",
       url: "https://salariile.ro/cookies",
       inLanguage: "ro-RO",
       dateModified: "2026-05-11",
@@ -70,23 +70,23 @@ export default function CookiesPage() {
               Pe scurt: <strong>niciunul pentru tracking sau publicitate</strong>.
             </p>
             <p>
-              Decizia de design este deliberată — calculatorul de salariu nu are nevoie să te urmărească pentru a funcționa. Toate calculele se execută local în browser, nu există conturi de utilizator, nu există formulare care să necesite păstrarea stării între pagini.
+              Decizia de design este deliberată: calculatorul de salariu nu are nevoie să te urmărească pentru a funcționa. Toate calculele se execută local în browser, nu există conturi de utilizator, nu există formulare care să necesite păstrarea stării între pagini.
             </p>
             <p>
               În detaliu, pe categorii standard:
             </p>
             <ul>
               <li>
-                <strong>Cookies strict necesare</strong> — site-ul nu setează cookies funcționale de tipul „preferințe limbă” sau „mod întunecat”, pentru că aceste funcționalități nu există în versiunea curentă. Dacă vor fi adăugate, această pagină va fi actualizată.
+                <strong>Cookies strict necesare</strong>: site-ul nu setează cookies funcționale de tipul „preferințe limbă” sau „mod întunecat”, pentru că aceste funcționalități nu există în versiunea curentă. Dacă vor fi adăugate, această pagină va fi actualizată.
               </li>
               <li>
-                <strong>Cookies de analiză</strong> — folosim Vercel Web Analytics, care este conceput <strong>cookieless</strong>. Vercel nu setează cookies pentru analiză și nu identifică vizitatori individuali. Datele agregate (număr de vizite, pagini populare) se calculează server-side pe baza request-urilor anonime.
+                <strong>Cookies de analiză</strong>: folosim Vercel Web Analytics, care este conceput <strong>cookieless</strong>. Vercel nu setează cookies pentru analiză și nu identifică vizitatori individuali. Datele agregate (număr de vizite, pagini populare) se calculează server-side pe baza request-urilor anonime.
               </li>
               <li>
-                <strong>Cookies de marketing/publicitate</strong> — niciunul. Salariile.ro nu afișează reclame, nu folosește remarketing, nu integrează platforme publicitare.
+                <strong>Cookies de marketing/publicitate</strong>: niciunul. Salariile.ro nu afișează reclame, nu folosește remarketing, nu integrează platforme publicitare.
               </li>
               <li>
-                <strong>Cookies de la rețele sociale</strong> — niciunul. Nu sunt integrate widget-uri Facebook, Twitter sau alte rețele.
+                <strong>Cookies de la rețele sociale</strong>: niciunul. Nu sunt integrate widget-uri Facebook, Twitter sau alte rețele.
               </li>
             </ul>
         </Section>
@@ -94,10 +94,10 @@ export default function CookiesPage() {
         <Section>
             <h2>De ce nu există consent banner</h2>
             <p>
-              Cele mai multe site-uri afișează un banner „Acceptă cookies” pentru că setează cookies care necesită consimțământ — cookies Google Analytics, Facebook Pixel, programe de afiliere etc.
+              Cele mai multe site-uri afișează un banner „Acceptă cookies” pentru că setează cookies care necesită consimțământ: cookies Google Analytics, Facebook Pixel, programe de afiliere etc.
             </p>
             <p>
-              Salariile.ro nu setează astfel de cookies, deci nu are obligația legală să ceară consimțământ și nu afișează banner. Acest aspect este menit să facă experiența mai curată, nu să eludeze obligațiile GDPR — pur și simplu nu există date pentru care să se ceară consimțământ.
+              Salariile.ro nu setează astfel de cookies, deci nu are obligația legală să ceară consimțământ și nu afișează banner. Acest aspect este menit să facă experiența mai curată, nu să eludeze obligațiile GDPR: pur și simplu nu există date pentru care să se ceară consimțământ.
             </p>
         </Section>
 

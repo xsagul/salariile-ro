@@ -27,19 +27,19 @@ export default function NotFound() {
             <h2>Pagini frecvent accesate</h2>
             <ul>
               <li>
-                <Link href="/"><strong>Calculator salariu net</strong></Link> — calculează brut → net sau net → brut pentru orice sumă, conform legislației 2026.
+                <Link href="/"><strong>Calculator salariu net</strong></Link>: calculează brut → net sau net → brut pentru orice sumă, conform legislației 2026.
               </li>
               <li>
-                <Link href="/salariu-minim"><strong>Salariul minim 2026</strong></Link> — valorile semestriale (4.050 → 4.325 lei), calcul net detaliat, plafoane fiscale.
+                <Link href="/salariu-minim"><strong>Salariul minim 2026</strong></Link>: valorile semestriale (4.050 → 4.325 lei), calcul net detaliat, plafoane fiscale.
               </li>
               <li>
-                <Link href="/salariu-mediu"><strong>Salariul mediu pe economie 2026</strong></Link> — valoarea oficială (9.192 lei) conform Legii 44/2026.
+                <Link href="/salariu-mediu"><strong>Salariul mediu pe economie 2026</strong></Link>: valoarea oficială (9.192 lei) conform Legii 44/2026.
               </li>
               <li>
-                <Link href="/metodologie"><strong>Metodologia de calcul</strong></Link> — formulele și sursele exacte din Codul Fiscal.
+                <Link href="/metodologie"><strong>Metodologia de calcul</strong></Link>: formulele și sursele exacte din Codul Fiscal.
               </li>
               <li>
-                <Link href="/despre"><strong>Despre proiect</strong></Link> — cine întreține site-ul și de ce a apărut.
+                <Link href="/despre"><strong>Despre proiect</strong></Link>: cine întreține site-ul și de ce a apărut.
               </li>
             </ul>
         </Section>
@@ -47,7 +47,7 @@ export default function NotFound() {
         <Section>
             <h2>Dacă crezi că ai ajuns aici dintr-un link de pe acest site</h2>
             <p>
-              Toate linkurile interne sunt verificate, dar pot apărea erori. Dacă ai ajuns la această pagină dintr-un link de pe salariile.ro (nu dintr-un link extern sau o căutare Google veche), te rog să-mi scrii la adresa de pe pagina de <Link href="/contact">contact</Link> cu URL-ul exact unde ai dat click — corectez problema rapid.
+              Toate linkurile interne sunt verificate, dar pot apărea erori. Dacă ai ajuns la această pagină dintr-un link de pe salariile.ro (nu dintr-un link extern sau o căutare Google veche), te rog să-mi scrii la adresa de pe pagina de <Link href="/contact">contact</Link> cu URL-ul exact unde ai dat click, iar eu corectez problema rapid.
             </p>
         </Section>
       </main>

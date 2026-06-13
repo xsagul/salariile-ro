@@ -67,10 +67,10 @@ export default function TermeniPage() {
               Toate informațiile, calculele și articolele publicate pe salariile.ro au <strong>caracter strict informativ</strong>. Nu constituie consultanță fiscală, juridică, financiară sau de altă natură profesională.
             </p>
             <p>
-              Site-ul este întreținut individual ca proiect personal — nu de către un contabil autorizat, expert fiscal sau jurist. Detalii despre cine întreține site-ul găsești pe pagina <Link href="/despre">Despre</Link>, iar metodologia de calcul este documentată pe pagina <Link href="/metodologie">Metodologie</Link>.
+              Site-ul este întreținut individual ca proiect personal, nu de către un contabil autorizat, expert fiscal sau jurist. Detalii despre cine întreține site-ul găsești pe pagina <Link href="/despre">Despre</Link>, iar metodologia de calcul este documentată pe pagina <Link href="/metodologie">Metodologie</Link>.
             </p>
             <p>
-              Pentru situații fiscale individuale complexe (cumul de venituri, scutiri speciale, beneficii nesalariale ample, contracte cu clauze atipice, situații PFA, micro-întreprinderi, dividende etc.) recomand consultarea unui specialist autorizat — contabil, expert contabil sau consultant fiscal.
+              Pentru situații fiscale individuale complexe (cumul de venituri, scutiri speciale, beneficii nesalariale ample, contracte cu clauze atipice, situații PFA, micro-întreprinderi, dividende etc.) recomand consultarea unui specialist autorizat: contabil, expert contabil sau consultant fiscal.
             </p>
         </Section>
 
@@ -112,7 +112,7 @@ export default function TermeniPage() {
               Utilizarea informațiilor publicate este permisă gratuit pentru uz personal (calcul propriu, informare, planificare individuală). Republicarea integrală a articolelor sau preluarea structurii editoriale fără permisiune nu este permisă. Pentru cereri de utilizare extinsă (citare în publicații, integrare educațională, reproducere în alte medii), scrie la adresa de pe pagina de <Link href="/contact">contact</Link>.
             </p>
             <p>
-              Cifrele și valorile fiscale (salariu minim, cote contribuții etc.) provin din acte normative publice și pot fi reutilizate liber, cu mențiunea sursei legale (HG, OUG, articol Cod Fiscal etc.) — nu este necesară citarea salariile.ro pentru aceste informații publice.
+              Cifrele și valorile fiscale (salariu minim, cote contribuții etc.) provin din acte normative publice și pot fi reutilizate liber, cu mențiunea sursei legale (HG, OUG, articol Cod Fiscal etc.). Nu este necesară citarea salariile.ro pentru aceste informații publice.
             </p>
         </Section>
 

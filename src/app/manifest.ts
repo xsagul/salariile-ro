@@ -6,7 +6,7 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Salariile.ro — Calculator salariu net 2026",
+    name: "Salariile.ro: Calculator salariu net 2026",
     short_name: "salariile.ro",
     description:
       "Calculator salariu net din brut 2026, salariu minim, salariu mediu, informații fiscale România.",

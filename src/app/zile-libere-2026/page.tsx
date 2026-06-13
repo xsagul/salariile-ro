@@ -93,7 +93,7 @@ const FAQ = [
   },
   {
     q: "Când este Paștele ortodox în 2026?",
-    a: "Paștele ortodox este duminică, 12 aprilie 2026. Vinerea Mare cade pe 10 aprilie, iar a doua zi de Paște pe 13 aprilie (luni). Rusaliile sunt pe 31 mai, iar a doua zi de Rusalii pe 1 iunie — aceeași zi cu Ziua Copilului.",
+    a: "Paștele ortodox este duminică, 12 aprilie 2026. Vinerea Mare cade pe 10 aprilie, iar a doua zi de Paște pe 13 aprilie (luni). Rusaliile sunt pe 31 mai, iar a doua zi de Rusalii pe 1 iunie, aceeași zi cu Ziua Copilului.",
   },
   {
     q: "Câte zile lucrătoare are anul 2026?",
@@ -101,7 +101,7 @@ const FAQ = [
   },
   {
     q: "Ce sărbători legale cad în weekend în 2026?",
-    a: "Cinci sărbători cad în weekend și nu aduc o zi liberă în plus: 24 ianuarie (sâmbătă), 12 aprilie — Paștele (duminică), 31 mai — Rusalii (duminică), 15 august (sâmbătă) și 26 decembrie (sâmbătă). Codul Muncii nu prevede recuperarea lor.",
+    a: "Cinci sărbători cad în weekend și nu aduc o zi liberă în plus: 24 ianuarie (sâmbătă), 12 aprilie, Paștele (duminică), 31 mai, Rusalii (duminică), 15 august (sâmbătă) și 26 decembrie (sâmbătă). Codul Muncii nu prevede recuperarea lor.",
   },
   {
     q: "Cum se plătește lucrul în zilele de sărbătoare?",
@@ -182,7 +182,7 @@ export default function ZileLibere2026Page() {
               Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat 8 iunie 2026
             </p>
             <p className="mt-5 text-base leading-normal tracking-[-0.01em] text-stone-600">
-              Calendarul complet al zilelor libere legale din România în 2026 — sărbătorile (Codul Muncii art. 139),
+              Calendarul complet al zilelor libere legale din România în 2026: sărbătorile (Codul Muncii art. 139),
               zilele lucrătoare lună de lună și punțile prin care îți faci minivacanțe.
             </p>
           </div>
@@ -238,7 +238,7 @@ export default function ZileLibere2026Page() {
                         <div
                           key={i}
                           tabIndex={0}
-                          aria-label={`${c.day} ${mo.nume} — ${c.name}`}
+                          aria-label={`${c.day} ${mo.nume}, ${c.name}`}
                           className="group relative flex h-7 items-center justify-center rounded bg-stone-900 text-xs font-semibold tabular-nums text-white outline-none"
                         >
                           {c.day}
@@ -318,8 +318,8 @@ export default function ZileLibere2026Page() {
               <div className={`flex h-full flex-col ${card}`}>
                 <h3 className="mb-3 text-xs font-medium text-stone-500">Surse oficiale</h3>
                 <ul className={`flex flex-col gap-2 text-sm leading-normal text-stone-600 ${links}`}>
-                  <li><a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/128646" target="_blank" rel="noopener">Codul Muncii (Legea 53/2003)</a> — art. 139 (sărbători) și 142 (compensare)</li>
-                  <li>Calendar ortodox 2026 — datele de Paște și Rusalii</li>
+                  <li><a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/128646" target="_blank" rel="noopener">Codul Muncii (Legea 53/2003)</a>: art. 139 (sărbători) și 142 (compensare)</li>
+                  <li>Calendar ortodox 2026: datele de Paște și Rusalii</li>
                 </ul>
                 <h3 className="mb-3 mt-6 text-xs font-medium text-stone-500">Pagini conexe</h3>
                 <ul className={`flex flex-col gap-2 text-sm ${links}`}>
@@ -337,7 +337,7 @@ export default function ZileLibere2026Page() {
             <div className={`max-w-prose ${card}`}>
               <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900">Calculează-ți salariul pe 2026</h2>
               <p className="mt-2 text-base leading-normal tracking-[-0.01em] text-stone-600">
-                Numărul zilelor lucrătoare nu-ți schimbă salariul lunar — dar vezi exact cât primești net, ce reține statul
+                Numărul zilelor lucrătoare nu-ți schimbă salariul lunar, dar vezi exact cât primești net, ce reține statul
                 și cât costă firma.
               </p>
               <Link

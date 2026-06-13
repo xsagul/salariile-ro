@@ -58,10 +58,10 @@ export default function DesprePage() {
         <Section>
             <h2>Cine întreține site-ul</h2>
             <p>
-              Mă numesc Știuriuc Sorin-Marian și sunt dezvoltator full-stack. Construiesc și mențin singur salariile.ro ca proiect personal — nu există echipă, agenție sau firmă în spate.
+              Mă numesc Știuriuc Sorin-Marian și sunt dezvoltator full-stack. Construiesc și mențin singur salariile.ro ca proiect personal, fără echipă, agenție sau firmă în spate.
             </p>
             <p>
-              Nu sunt contabil sau consultant fiscal. Sunt programator care a citit Codul Fiscal și a implementat formulele publice de calcul al salariului net. Diferența contează — informațiile de pe acest site sunt acurate fiscal pentru cazul standard, dar pentru situații individuale complexe (sporuri specifice, beneficii nesalariale, scutiri sectoriale, contracte cu clauze speciale) calculatorul nu poate înlocui un contabil sau un expert fiscal.
+              Nu sunt contabil sau consultant fiscal. Sunt programator care a citit Codul Fiscal și a implementat formulele publice de calcul al salariului net. Diferența contează: informațiile de pe acest site sunt acurate fiscal pentru cazul standard, dar pentru situații individuale complexe (sporuri specifice, beneficii nesalariale, scutiri sectoriale, contracte cu clauze speciale) calculatorul nu poate înlocui un contabil sau un expert fiscal.
             </p>
             <p>
               Acest lucru este declarat deschis pe pagina de <Link href="/termeni">termeni</Link>, iar pagina de <Link href="/metodologie">metodologie</Link> documentează exact ce formulă folosește calculatorul și ce nu acoperă.
@@ -74,14 +74,14 @@ export default function DesprePage() {
               În aprilie 2026, când am început să urmăresc mai atent calculul propriului meu venit, am descoperit că majoritatea calculatoarelor de salariu online din România erau fie depășite legislativ, fie afișau cifre fără să precizeze pe ce act normativ se bazează.
             </p>
             <p>
-              Un utilizator care vrea să verifice corectitudinea unui calcul trebuie să poată ajunge la sursa oficială — actul normativ, articolul exact, data intrării în vigoare. Asta lipsea practic peste tot. Am construit salariile.ro ca răspuns la această problemă: fiecare cifră afișată trebuie să fie trasabilă până la o sursă oficială din Monitorul Oficial.
+              Un utilizator care vrea să verifice corectitudinea unui calcul trebuie să poată ajunge la sursa oficială: actul normativ, articolul exact, data intrării în vigoare. Asta lipsea practic peste tot. Am construit salariile.ro ca răspuns la această problemă: fiecare cifră afișată trebuie să fie trasabilă până la o sursă oficială din Monitorul Oficial.
             </p>
         </Section>
 
         <Section>
             <h2>Cum se mențin calculele actualizate</h2>
             <p>
-              Legislația fiscală română se modifică frecvent — uneori prin ordonanțe de urgență publicate cu efect imediat. Pentru ca site-ul să rămână relevant, monitorizez lunar:
+              Legislația fiscală română se modifică frecvent, uneori prin ordonanțe de urgență publicate cu efect imediat. Pentru ca site-ul să rămână relevant, monitorizez lunar:
             </p>
             <ul>
               <li>Monitorul Oficial (versiunea online a publicației legislative.just.ro)</li>
@@ -93,7 +93,7 @@ export default function DesprePage() {
               La fiecare modificare semnificativă (de exemplu introducerea OUG 89/2025, publicarea HG 146/2026, intrarea în vigoare a Legii 44/2026 pentru salariul mediu) actualizez atât formulele calculatorului, cât și paginile editoriale aferente, și marchez în mod vizibil data ultimei actualizări.
             </p>
             <p>
-              Calculatorul în sine este sincronizat cu structura Declarației 112 ANAF — declarația lunară pe care orice angajator o transmite. Sumele calculate pentru CAS, CASS, impozit și CAM corespund cu ce ar transmite efectiv angajatorul către ANAF pentru un brut standard.
+              Calculatorul în sine este sincronizat cu structura Declarației 112 ANAF, declarația lunară pe care orice angajator o transmite. Sumele calculate pentru CAS, CASS, impozit și CAM corespund cu ce ar transmite efectiv angajatorul către ANAF pentru un brut standard.
             </p>
         </Section>
 
@@ -113,7 +113,7 @@ export default function DesprePage() {
               Dacă observi o eroare de calcul, o referință legislativă depășită sau ai sugestii pentru pagini noi (calculator PFA, calculator concediu medical etc.), poți scrie la adresa de pe pagina de <Link href="/contact">contact</Link>. Răspund la toate mesajele primite, deși timpul de răspuns poate fi de câteva zile, fiind un proiect personal întreținut în timpul liber.
             </p>
             <p>
-              Erorile concrete (de exemplu o cifră greșită într-un calcul detaliat) au prioritate maximă — le corectez de regulă în aceeași zi în care primesc raportarea.
+              Erorile concrete (de exemplu o cifră greșită într-un calcul detaliat) au prioritate maximă, le corectez de regulă în aceeași zi în care primesc raportarea.
             </p>
         </Section>
       </main>
