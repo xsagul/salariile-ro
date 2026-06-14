@@ -8,6 +8,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getArticle, getAllSlugs, formatDateRo } from "@/lib/noutati";
 import { personSchema } from "@/lib/person";
+import { OG_IMAGE } from "@/lib/seo";
 import { Prose } from "@/app/components/ui";
 
 export function generateStaticParams() {
@@ -19,19 +20,29 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const a = getArticle(slug);
   if (!a) return {};
   const url = `https://salariile.ro/noutati/${a.slug}`;
+  // Imaginea de share: hero-ul articolului dacă există, altfel imaginea de brand.
+  const image = a.hero ?? OG_IMAGE.url;
   return {
     title: a.title,
     description: a.description,
     alternates: { canonical: url },
     openGraph: {
       type: "article",
+      locale: "ro_RO",
+      siteName: "Salariile.ro",
       title: a.title,
       description: a.description,
       url,
       publishedTime: a.date,
       modifiedTime: a.date,
       authors: ["https://salariile.ro/despre"],
-      ...(a.hero ? { images: [a.hero] } : {}),
+      images: [image],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: a.title,
+      description: a.description,
+      images: [image],
     },
   };
 }

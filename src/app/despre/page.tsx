@@ -4,6 +4,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { personSchema } from "@/lib/person";
+import { ogPage, twPage } from "@/lib/seo";
 import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow } from "@/app/components/ui";
 
 export const metadata: Metadata = {
@@ -11,6 +12,17 @@ export const metadata: Metadata = {
   description:
     "Salariile.ro e un proiect independent de transparență fiscală pentru România. Aici găsești cine îl întreține, de ce a apărut și cum se mențin calculele actualizate.",
   alternates: { canonical: "https://salariile.ro/despre" },
+  openGraph: ogPage({
+    title: "Despre proiect: cine întreține site-ul",
+    description:
+      "Salariile.ro e un proiect independent de transparență fiscală pentru România. Cine îl întreține, de ce a apărut și cum se mențin calculele actualizate.",
+    path: "/despre",
+  }),
+  twitter: twPage({
+    title: "Despre proiect: cine întreține site-ul",
+    description:
+      "Proiect independent de transparență fiscală pentru România. Cine îl întreține și de ce a apărut.",
+  }),
 };
 
 const jsonLd = {

@@ -5,19 +5,20 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { personSchema } from "@/lib/person";
+import { ogPage, twPage } from "@/lib/seo";
 import CalculatorPFA from "@/app/components/CalculatorPFA";
 
+const PFA_TITLU = "Calculator taxe PFA 2026: CAS, CASS, impozit";
+const PFA_DESC =
+  "Calculează taxele de PFA în sistem real pentru 2026: CAS 25%, CASS 10%, impozit 10% și venitul rămas.";
+
 export const metadata: Metadata = {
-  title: "Calculator taxe PFA 2026: CAS, CASS, impozit",
+  title: PFA_TITLU,
   description:
     "Calculator PFA 2026 (sistem real): vezi CAS, CASS, impozitul de 10% și cât îți rămâne din venit. Plafoane raportate la salariul minim de 4.050 lei.",
   alternates: { canonical: "https://salariile.ro/calculator-pfa" },
-  openGraph: {
-    title: "Calculator taxe PFA 2026: CAS, CASS, impozit",
-    description:
-      "Calculează taxele de PFA în sistem real pentru 2026: CAS 25%, CASS 10%, impozit 10% și venitul rămas.",
-    url: "https://salariile.ro/calculator-pfa",
-  },
+  openGraph: ogPage({ title: PFA_TITLU, description: PFA_DESC, path: "/calculator-pfa" }),
+  twitter: twPage({ title: PFA_TITLU, description: PFA_DESC }),
 };
 
 const FAQ = [

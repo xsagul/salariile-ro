@@ -3,6 +3,7 @@
 
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ogPage, twPage } from "@/lib/seo";
 import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow } from "@/app/components/ui";
 
 export const metadata: Metadata = {
@@ -10,6 +11,17 @@ export const metadata: Metadata = {
   description:
     "Termenii și condițiile de utilizare a site-ului salariile.ro: caracter informativ, limitări de răspundere, drepturi de autor.",
   alternates: { canonical: "https://salariile.ro/termeni" },
+  openGraph: ogPage({
+    title: "Termeni și condiții de utilizare",
+    description:
+      "Termenii de utilizare a site-ului salariile.ro: caracter informativ, limitări de răspundere, drepturi de autor.",
+    path: "/termeni",
+  }),
+  twitter: twPage({
+    title: "Termeni și condiții de utilizare",
+    description:
+      "Termenii de utilizare a site-ului salariile.ro: caracter informativ, limitări de răspundere.",
+  }),
 };
 
 const jsonLd = {

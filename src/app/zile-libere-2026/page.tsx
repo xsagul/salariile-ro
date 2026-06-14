@@ -6,6 +6,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { personSchema } from "@/lib/person";
+import { ogPage, twPage } from "@/lib/seo";
 import { SARBATORI_LEGALE_2026 as HOLIDAYS } from "@/lib/sarbatori";
 
 // ─── Metadata SEO ────────────────────────────────────────────────────────────
@@ -15,12 +16,17 @@ export const metadata: Metadata = {
   description:
     "Calendar 2026 complet: 250 zile lucrătoare, 115 zile libere, sărbătorile legale (Cod Muncii art. 139) și punțile pentru minivacanțe. Paștele ortodox: 12 aprilie.",
   alternates: { canonical: "https://salariile.ro/zile-libere-2026" },
-  openGraph: {
+  openGraph: ogPage({
     title: "Zile libere 2026: calendar și sărbători legale",
     description:
       "Calendar 2026: 250 zile lucrătoare, 115 libere, toate sărbătorile legale și punțile pentru weekend-uri prelungite.",
-    url: "https://salariile.ro/zile-libere-2026",
-  },
+    path: "/zile-libere-2026",
+  }),
+  twitter: twPage({
+    title: "Zile libere 2026: calendar și sărbători legale",
+    description:
+      "Calendar 2026: 250 zile lucrătoare, 115 libere, toate sărbătorile legale și punțile pentru weekend-uri prelungite.",
+  }),
 };
 
 // Sărbătorile legale 2026 (Cod Muncii art. 139) sunt în src/lib/sarbatori.ts —

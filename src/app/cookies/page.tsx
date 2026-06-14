@@ -3,6 +3,7 @@
 
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ogPage, twPage } from "@/lib/seo";
 import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow } from "@/app/components/ui";
 
 export const metadata: Metadata = {
@@ -10,6 +11,17 @@ export const metadata: Metadata = {
   description:
     "Salariile.ro este conceput cookieless. Nu folosim cookies pentru analiză, publicitate sau tracking. Detalii complete despre poziția noastră.",
   alternates: { canonical: "https://salariile.ro/cookies" },
+  openGraph: ogPage({
+    title: "Politica de cookies, fără tracking",
+    description:
+      "Salariile.ro este cookieless: fără cookies de analiză, publicitate sau tracking.",
+    path: "/cookies",
+  }),
+  twitter: twPage({
+    title: "Politica de cookies, fără tracking",
+    description:
+      "Salariile.ro este cookieless: fără cookies de analiză, publicitate sau tracking.",
+  }),
 };
 
 const jsonLd = {

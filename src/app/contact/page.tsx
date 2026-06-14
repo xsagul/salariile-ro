@@ -4,6 +4,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { personSchema } from "@/lib/person";
+import { ogPage, twPage } from "@/lib/seo";
 import { Hero, Section, Breadcrumb, H1, Lead } from "@/app/components/ui";
 
 export const metadata: Metadata = {
@@ -11,6 +12,17 @@ export const metadata: Metadata = {
   description:
     "Pagina de contact pentru salariile.ro. Folosește email-ul de mai jos pentru a raporta erori de calcul, a sugera funcționalități noi sau pentru cereri privind datele personale.",
   alternates: { canonical: "https://salariile.ro/contact" },
+  openGraph: ogPage({
+    title: "Contact: raportează erori sau sugestii",
+    description:
+      "Scrie-mi pentru a raporta erori de calcul, a sugera funcționalități noi sau pentru cereri privind datele personale.",
+    path: "/contact",
+  }),
+  twitter: twPage({
+    title: "Contact: raportează erori sau sugestii",
+    description:
+      "Scrie-mi pentru a raporta erori de calcul, a sugera funcționalități noi sau cereri privind datele personale.",
+  }),
 };
 
 const jsonLd = {

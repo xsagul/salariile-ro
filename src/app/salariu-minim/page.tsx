@@ -8,6 +8,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { personSchema } from "@/lib/person";
+import { ogPage, twPage } from "@/lib/seo";
 
 // ─── Metadata SEO ────────────────────────────────────────────────────────────
 
@@ -16,12 +17,17 @@ export const metadata: Metadata = {
   description:
     "Din 1 iulie 2026, minimul brut e 4.325 lei. Vezi netul tău real cu facilitatea de 200 lei, când o pierzi, ce e cu tichetele și cât plătește firma de fapt.",
   alternates: { canonical: "https://salariile.ro/salariu-minim" },
-  openGraph: {
+  openGraph: ogPage({
     title: "Salariul minim pe economie 2026: cât rămâne net la tine",
     description:
       "Din 1 iulie 2026, minimul brut e 4.325 lei. Netul real cu facilitatea de 200 lei, când o pierzi, tichetele și costul firmei.",
-    url: "https://salariile.ro/salariu-minim",
-  },
+    path: "/salariu-minim",
+  }),
+  twitter: twPage({
+    title: "Salariul minim pe economie 2026: cât rămâne net la tine",
+    description:
+      "Din 1 iulie 2026, minimul brut e 4.325 lei. Netul real cu facilitatea de 200 lei, când o pierzi, tichetele și costul firmei.",
+  }),
 };
 
 // ─── Date factuale 2026 (verificate prin acte normative) ─────────────────────

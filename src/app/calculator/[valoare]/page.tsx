@@ -8,7 +8,7 @@ import { notFound } from "next/navigation";
 import CalculatorSalariu from "@/app/components/CalculatorSalariu";
 import { Section } from "@/app/components/ui";
 import { calculStandard, brutDinNetStandard, SALARIU_MINIM, type Rezultat } from "@/lib/fiscal";
-import { allCalculatorSlugs, LAST_FISCAL_CONTENT_UPDATE } from "@/lib/seo";
+import { allCalculatorSlugs, LAST_FISCAL_CONTENT_UPDATE, ogPage, twPage } from "@/lib/seo";
 
 interface Props {
   params: Promise<{ valoare: string }>;
@@ -34,11 +34,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: `Salariu net pentru ${cifra} lei brut în 2026`,
       description: `Calculează instant salariul net pentru ${cifra} lei brut. Află cât reții după CAS, CASS și impozit pe venit.`,
       alternates: { canonical: `https://salariile.ro/calculator/${valoare}` },
-      openGraph: {
+      openGraph: ogPage({
         title: `Salariu net pentru ${cifra} lei brut în 2026`,
         description: `Calculează instant salariul net pentru ${cifra} lei brut.`,
-        url: `https://salariile.ro/calculator/${valoare}`,
-      },
+        path: `/calculator/${valoare}`,
+      }),
+      twitter: twPage({
+        title: `Salariu net pentru ${cifra} lei brut în 2026`,
+        description: `Calculează instant salariul net pentru ${cifra} lei brut.`,
+      }),
     };
   }
 
@@ -47,11 +51,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: `Salariu brut pentru ${cifra} lei net în 2026`,
       description: `Calculează instant salariul brut corespunzător unui net de ${cifra} lei. Formula inversă CAS, CASS, impozit.`,
       alternates: { canonical: `https://salariile.ro/calculator/${valoare}` },
-      openGraph: {
+      openGraph: ogPage({
         title: `Salariu brut pentru ${cifra} lei net în 2026`,
         description: `Calculează instant salariul brut corespunzător unui net de ${cifra} lei.`,
-        url: `https://salariile.ro/calculator/${valoare}`,
-      },
+        path: `/calculator/${valoare}`,
+      }),
+      twitter: twPage({
+        title: `Salariu brut pentru ${cifra} lei net în 2026`,
+        description: `Calculează instant salariul brut corespunzător unui net de ${cifra} lei.`,
+      }),
     };
   }
 

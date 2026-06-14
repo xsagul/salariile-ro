@@ -3,6 +3,7 @@
 
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ogPage, twPage } from "@/lib/seo";
 import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow } from "@/app/components/ui";
 
 export const metadata: Metadata = {
@@ -11,6 +12,17 @@ export const metadata: Metadata = {
     "Politica de confidențialitate salariile.ro: ce date colectăm, în ce scop, baza legală GDPR și drepturile vizitatorilor.",
   alternates: { canonical: "https://salariile.ro/politica-confidentialitate" },
   robots: { index: true, follow: true },
+  openGraph: ogPage({
+    title: "Politica de confidențialitate",
+    description:
+      "Ce date colectăm, în ce scop, baza legală GDPR și drepturile vizitatorilor salariile.ro.",
+    path: "/politica-confidentialitate",
+  }),
+  twitter: twPage({
+    title: "Politica de confidențialitate",
+    description:
+      "Ce date colectăm, în ce scop, baza legală GDPR și drepturile vizitatorilor salariile.ro.",
+  }),
 };
 
 const jsonLd = {

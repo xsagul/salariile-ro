@@ -1,7 +1,55 @@
 // src/lib/seo.ts
 // Constante SEO partajate: sitemap, generateStaticParams, date lastModified reale.
 
+import type { Metadata } from "next";
+
 export const SITE_URL = "https://salariile.ro";
+
+/** Imaginea OG implicită (brand). Sursă unică, folosită când pagina nu are imagine proprie. */
+export const OG_IMAGE = {
+  url: "/og-image.png",
+  width: 1200,
+  height: 630,
+  alt: "Salariile.ro, calculator salariu net",
+} as const;
+
+type OgImage = { url: string; width: number; height: number; alt: string };
+
+/**
+ * OpenGraph COMPLET pentru o pagină: titlu/descriere/url specifice paginii, dar cu
+ * type, locale, siteName și imagine din brand. Sursă unică, ca nicio pagină să nu mai
+ * rămână cu OG incomplet (fără imagine) sau cu OG generic de homepage.
+ */
+export function ogPage(opts: {
+  title: string;
+  description: string;
+  path: string;
+  image?: OgImage;
+}): NonNullable<Metadata["openGraph"]> {
+  return {
+    type: "website",
+    locale: "ro_RO",
+    siteName: "Salariile.ro",
+    url: `${SITE_URL}${opts.path}`,
+    title: opts.title,
+    description: opts.description,
+    images: [opts.image ?? OG_IMAGE],
+  };
+}
+
+/** Twitter card complet, specific paginii (titlu/descriere/imagine). */
+export function twPage(opts: {
+  title: string;
+  description: string;
+  image?: OgImage;
+}): NonNullable<Metadata["twitter"]> {
+  return {
+    card: "summary_large_image",
+    title: opts.title,
+    description: opts.description,
+    images: [(opts.image ?? OG_IMAGE).url],
+  };
+}
 
 /** Ultima modificare de conținut fiscal / editorial (nu la fiecare deploy). */
 export const LAST_FISCAL_CONTENT_UPDATE = new Date("2026-06-08T00:00:00.000Z");

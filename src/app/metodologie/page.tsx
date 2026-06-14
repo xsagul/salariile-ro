@@ -4,6 +4,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { personSchema } from "@/lib/person";
+import { ogPage, twPage } from "@/lib/seo";
 import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow } from "@/app/components/ui";
 
 export const metadata: Metadata = {
@@ -11,6 +12,17 @@ export const metadata: Metadata = {
   description:
     "Documentația completă a formulelor și surselor folosite de calculatorul salariile.ro pentru anul 2026: CAS, CASS, impozit, deducere personală, CAM, facilitate OUG 89/2025.",
   alternates: { canonical: "https://salariile.ro/metodologie" },
+  openGraph: ogPage({
+    title: "Metodologie de calcul salariu net 2026",
+    description:
+      "Formulele și sursele folosite de calculatorul salariile.ro: CAS, CASS, impozit, deducere personală, CAM, facilitate OUG 89/2025.",
+    path: "/metodologie",
+  }),
+  twitter: twPage({
+    title: "Metodologie de calcul salariu net 2026",
+    description:
+      "Formulele și sursele folosite de calculatorul salariile.ro: CAS, CASS, impozit, deducere personală, CAM.",
+  }),
 };
 
 const jsonLd = {

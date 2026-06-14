@@ -7,18 +7,18 @@ import Link from "next/link";
 import Image from "next/image";
 import { getAllArticles, formatDateRo } from "@/lib/noutati";
 import { personSchema } from "@/lib/person";
+import { ogPage, twPage } from "@/lib/seo";
+
+const NOUTATI_TITLU = "Noutăți: articole despre salarii, taxe și bani în România";
+const NOUTATI_DESC =
+  "Articole scrise pe înțelesul tuturor despre salarii, taxe, costul vieții și curiozități fiscale din România.";
 
 export const metadata: Metadata = {
-  title: "Noutăți: articole despre salarii, taxe și bani în România",
-  description:
-    "Articole scrise pe înțelesul tuturor despre salarii, taxe, costul vieții și curiozități fiscale din România.",
+  title: NOUTATI_TITLU,
+  description: NOUTATI_DESC,
   alternates: { canonical: "https://salariile.ro/noutati" },
-  openGraph: {
-    title: "Noutăți · salariile.ro",
-    description:
-      "Articole pe înțelesul tuturor despre salarii, taxe și costul vieții în România.",
-    url: "https://salariile.ro/noutati",
-  },
+  openGraph: ogPage({ title: NOUTATI_TITLU, description: NOUTATI_DESC, path: "/noutati" }),
+  twitter: twPage({ title: NOUTATI_TITLU, description: NOUTATI_DESC }),
 };
 
 export default function NoutatiPage() {
