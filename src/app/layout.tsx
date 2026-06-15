@@ -4,6 +4,7 @@
 
 import { Inter } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 import { headers } from "next/headers"; // Adăugat pentru citirea nonce-ului
 import type { Metadata } from "next";
 
@@ -98,6 +99,10 @@ export default async function RootLayout({
           // @ts-expect-error SpeedInsights acceptă nonce la runtime
           <SpeedInsights nonce={nonce} />
         )}
+        {/* Web Analytics (Vercel, cookieless) — declarat în /cookies și /politica-confidentialitate.
+            Doar pe Vercel, ca Speed Insights. Nonce-ul CSP e aplicat automat de Next.js pe
+            scriptul next/script al componentei (CSP are 'strict-dynamic'). */}
+        {process.env.VERCEL_ENV && <Analytics />}
       </body>
     </html>
   );
