@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { getArticle, getAllSlugs, formatDateRo } from "@/lib/noutati";
+import { getArticle, getAllSlugs, getAllArticles, formatDateRo } from "@/lib/noutati";
 import { personSchema } from "@/lib/person";
 import { OG_IMAGE } from "@/lib/seo";
 import { Prose } from "@/app/components/ui";
@@ -51,6 +51,9 @@ export default async function ArticolPage({ params }: { params: Promise<{ slug: 
   const { slug } = await params;
   const a = getArticle(slug);
   if (!a) notFound();
+
+  // Articole conexe: cele mai recente, fără cel curent. Funnel intern + ține cititorul în cluster.
+  const related = getAllArticles().filter((x) => x.slug !== a.slug).slice(0, 3);
 
   const url = `https://salariile.ro/noutati/${a.slug}`;
   const jsonLd = {
@@ -113,6 +116,33 @@ export default async function ArticolPage({ params }: { params: Promise<{ slug: 
           <Prose className="mt-8">
             <div dangerouslySetInnerHTML={{ __html: a.html }} />
           </Prose>
+
+          {/* Articole conexe — funnel intern, ține cititorul în cluster */}
+          {related.length > 0 && (
+            <aside className="mt-12 border-t border-stone-200 pt-8" aria-label="Articole conexe">
+              <h2 className="mb-4 text-sm font-medium uppercase tracking-wide text-stone-500">Citește și</h2>
+              <ul className="grid gap-4 sm:grid-cols-2">
+                {related.map((r) => (
+                  <li key={r.slug}>
+                    <Link
+                      href={`/noutati/${r.slug}`}
+                      className="group flex h-full gap-4 overflow-hidden rounded-md border border-stone-200 bg-surface p-3 shadow-soft transition-colors hover:border-stone-300"
+                    >
+                      <div className="relative aspect-square w-20 flex-shrink-0 overflow-hidden rounded bg-stone-100">
+                        {r.hero ? (
+                          <Image src={r.hero} alt={r.heroAlt || r.title} fill className="object-cover" sizes="80px" />
+                        ) : null}
+                      </div>
+                      <div className="flex min-w-0 flex-col">
+                        <div className="mb-1 text-xs text-stone-500">{formatDateRo(r.date)} · {r.readingMin} min citire</div>
+                        <h3 className="text-sm font-bold leading-snug tracking-[-0.01em] text-stone-900 group-hover:text-stone-700">{r.title}</h3>
+                      </div>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </aside>
+          )}
 
           {/* Subsol */}
           <div className="mt-10 border-t border-stone-200 pt-6">

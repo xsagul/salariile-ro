@@ -93,6 +93,10 @@ const FAQ = [
     q: "Ce obligații are angajatorul de la 1 iulie 2026?",
     a: "Angajatorul trebuie să încheie un act adițional individual cu fiecare salariat plătit la nivelul minim, să transmită modificarea în REGES-Online în maximum 20 zile lucrătoare și să aplice noua valoare la calculul salariilor. Nu se emit decizii colective de majorare.",
   },
+  {
+    q: "Dacă sunt plătit peste salariul minim, îmi crește și mie salariul de la 1 iulie?",
+    a: "Nu automat. Majorarea minimului obligă angajatorul doar pentru cei plătiți chiar la nivelul minim; dacă ești deja peste 4.325 lei brut, legea nu îl obligă să îți mărească salariul. Atenție însă la un caz frecvent: cine era puțin peste vechiul minim (4.050 lei) ajunge acum la sau sub noul minim și trebuie adus cel puțin la 4.325 lei. Așa se restrânge diferența față de colegii la minim, fenomen numit tasarea grilei de salarizare. Singura protecție legală directă rămâne regula celor 2 ani (Codul Muncii, art. 164²): după 24 de luni la salariul minim la același angajator, acesta e obligat să îți negocieze un salariu mai mare.",
+  },
 ];
 
 const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(n);
@@ -157,7 +161,7 @@ const jsonLd = {
       image: { "@type": "ImageObject", url: "https://salariile.ro/og-image.png", width: 1200, height: 630 },
       mainEntityOfPage: "https://salariile.ro/salariu-minim",
       datePublished: "2026-04-27",
-      dateModified: "2026-06-08",
+      dateModified: "2026-06-15",
     },
     {
       "@type": "FAQPage",
@@ -202,7 +206,7 @@ export default function SalariuMinimPage() {
             <div className="md:col-span-3">
               <h1 className="text-3xl font-bold tracking-[-0.02em] text-stone-900 sm:text-4xl">Salariul minim în 2026</h1>
               <p className="mt-4 text-xs text-stone-600 [&_a]:font-medium [&_a]:text-stone-700 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-900">
-                Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat 8 iunie 2026
+                Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat 15 iunie 2026
               </p>
               <p className={`mt-5 max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600 ${strong}`}>
                 Din 1 iulie 2026, salariul minim brut este <strong>4.325 lei</strong>, adică <strong>2.699 lei</strong>{" "}
@@ -576,10 +580,12 @@ export default function SalariuMinimPage() {
                   </ul>
                   <h3 className="mb-3 mt-6 text-xs font-medium text-stone-500">Pagini conexe</h3>
                   <ul className={`flex flex-col gap-2 text-sm ${links}`}>
+                    <li><Link href="/noutati/salariul-minim-1-iulie-2026">Ce se schimbă de la 1 iulie 2026</Link></li>
+                    <li><Link href="/noutati/cosul-minim-de-consum">Salariul minim față de coșul minim de trai</Link></li>
                     <li><Link href="/salariu-mediu">Salariul mediu pe economie</Link></li>
                     <li><Link href="/zile-libere-2026">Zile libere și lucrătoare 2026</Link></li>
                   </ul>
-                  <p className="mt-auto pt-6 text-xs text-stone-500">Ultima actualizare: 8 iunie 2026.</p>
+                  <p className="mt-auto pt-6 text-xs text-stone-500">Ultima actualizare: 15 iunie 2026.</p>
                 </div>
               </aside>
             </div>
