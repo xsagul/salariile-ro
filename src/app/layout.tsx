@@ -68,6 +68,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://salariile.ro",
   },
+  verification: {
+    other: {
+      seobility: "341f6613f4c3739772cc254cbb6f6102",
+    },
+  },
 };
 
 // src/app/layout.tsx
