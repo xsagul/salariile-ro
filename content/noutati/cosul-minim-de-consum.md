@@ -33,7 +33,7 @@ Potrivit calculelor sindicatelor publicate de [Cartel Alfa](https://www.cartel-a
 
 Aici e partea care m-a pus pe gânduri. Din iulie 2026, [salariul minim net](/salariu-minim) este **2.699 lei**. Coșul de trai decent pentru **un singur adult** e undeva pe la **3.800 lei**.
 
-Cu alte cuvinte, un om plătit la salariul minim **nu acoperă singur un trai decent**: îi lipsesc câteva sute bune de lei în fiecare lună. Salariul minim acoperă cam zona de *subzistență*, nu de *trai decent*. De-aici și discuțiile politice din fiecare toamnă pe tema majorării.
+Cu alte cuvinte, un om plătit la salariul minim **nu acoperă singur un trai decent**: îi lipsesc câteva sute bune de lei în fiecare lună. Salariul minim acoperă cam zona de *subzistență*, nu de *trai decent*. De-aici și discuțiile politice din fiecare toamnă pe tema majorării, ultima fiind [creșterea de la 1 iulie 2026](/noutati/salariul-minim-1-iulie-2026), când minimul brut urcă la 4.325 lei.
 
 ## Ce „cântărește" cel mai mult în coș
 
