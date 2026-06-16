@@ -316,7 +316,7 @@ export default function MetodologiePage() {
               <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/305817" target="_blank" rel="noopener"><strong>OUG 89/2025</strong></a>: facilitate fiscală 300/200 lei pentru salariul minim</li>
               <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/293109" target="_blank" rel="noopener"><strong>OUG 156/2024</strong></a>: eliminarea scutirilor sectoriale IT, construcții, agroalimentar</li>
               <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/294600" target="_blank" rel="noopener"><strong>HG 35/2025</strong></a>: mecanismul tehnic de stabilire a salariului minim</li>
-              <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/308863" target="_blank" rel="noopener"><strong>Legea 44/2026</strong></a>: bugetul asigurărilor sociale, valoarea salariului mediu</li>
+              <li><strong>Legea 44/2026</strong>: bugetul asigurărilor sociale, valoarea salariului mediu</li>
               <li><strong>Ministerul Muncii</strong>: <a href="https://mmuncii.gov.ro" target="_blank" rel="noopener">mmuncii.gov.ro</a></li>
               <li><strong>ANAF</strong>: <a href="https://www.anaf.ro" target="_blank" rel="noopener">anaf.ro</a> (template Declarația 112)</li>
               <li><strong>Monitorul Oficial</strong>: <a href="https://legislatie.just.ro" target="_blank" rel="noopener">legislatie.just.ro</a> (portal căutare generală)</li>

@@ -504,7 +504,7 @@ export default function SalariuMediuPage() {
                 <div className={card}>
                   <h3 className="mb-3 text-xs font-medium text-stone-500">Surse oficiale</h3>
                   <ul className={`flex flex-col gap-2 text-sm leading-normal text-stone-600 ${links}`}>
-                    <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/308863" target="_blank" rel="noopener">Legea 44/2026</a>: bugetul asigurărilor sociale 2026</li>
+                    <li><strong className="font-medium text-stone-900">Legea 44/2026</strong>: bugetul asigurărilor sociale 2026</li>
                     <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/182597" target="_blank" rel="noopener">Legea 263/2010</a>: pensii publice (ajutor de deces)</li>
                     <li><a href="https://insse.ro" target="_blank" rel="noopener">INS</a>: câștigul salarial mediu lunar</li>
                     <li><a href="https://cnp.ro" target="_blank" rel="noopener">CNSP</a>: prognoze 2026–2028</li>
