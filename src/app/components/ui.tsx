@@ -7,7 +7,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 const PROSE = [
-  "[&_h2]:mt-10 [&_h2]:mb-4 [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:tracking-[-0.02em] [&_h2]:text-stone-900 sm:[&_h2]:text-3xl",
+  "[&_h2]:mt-10 [&_h2]:mb-4 [&_h2]:text-xl [&_h2]:font-bold [&_h2]:tracking-[-0.02em] [&_h2]:text-stone-900 sm:[&_h2]:text-2xl",
   "[&>h2:first-child]:mt-0",
   "[&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:tracking-[-0.01em] [&_h3]:text-stone-900",
   "[&_p]:mb-4 [&_p]:text-base [&_p]:leading-normal [&_p]:tracking-[-0.01em] [&_p]:text-stone-600",
