@@ -470,10 +470,10 @@ export default function CalculatorSalariu({
           <p className="max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600 [&_a]:font-medium [&_a]:text-stone-700 [&_a]:underline [&_a]:underline-offset-2 hover:[&_a]:text-stone-900">
             {subtitluCustom || (
               <>
-                Calculează salariul net din brut. CAS, CASS, impozit și cost angajator – actualizat conform{" "}
+                Calcul salariu net din brut: pune salariul brut și vezi netul, cu CAS, CASS, impozit și costul angajatorului, conform{" "}
                 <a href="https://legislatie.just.ro/Public/DetaliiDocument/308231" target="_blank" rel="noopener noreferrer">HG 146/2026</a>
                 {" "}și{" "}
-                <a href="https://legislatie.just.ro/Public/DetaliiDocument/305817" target="_blank" rel="noopener noreferrer">OUG 89/2025</a>.
+                <a href="https://legislatie.just.ro/Public/DetaliiDocument/305817" target="_blank" rel="noopener noreferrer">OUG 89/2025</a>. Funcționează și invers, din net în brut.
               </>
             )}
           </p>

@@ -1,8 +1,20 @@
 // src/app/page.tsx
+import type { Metadata } from "next";
 import Link from "next/link";
 import CalculatorSalariu from "@/app/components/CalculatorSalariu";
 import { personSchema } from "@/lib/person";
 import { LAST_FISCAL_CONTENT_UPDATE } from "@/lib/seo";
+
+// Metadata proprie homepage-ului (suprascrie default-ul global din layout, fără
+// să atingă celelalte pagini). Țintește termenul cu cel mai mare volum din nișă,
+// „calcul salariu net" (110K), plus head terms „salariu brut" / „brut în net".
+export const metadata: Metadata = {
+  title: {
+    absolute: "Calcul salariu net 2026: calculator brut în net | Salariile.ro",
+  },
+  description:
+    "Calcul salariu net din brut în 2026: pune salariul brut, vezi netul, cu CAS, CASS, impozit și costul angajatorului, conform HG 146/2026. Merge și invers, din net în brut. Fără reclame, fără cont.",
+};
 
 // 1. Extragem datele pentru a le folosi și în schema ascunsă, și pe ecran
 const faqData = [
@@ -55,7 +67,7 @@ const homepageJsonLd = {
       "@type": "WebPage",
       "@id": "https://salariile.ro/#webpage",
       url: "https://salariile.ro/",
-      name: "Calculator Salariu Net 2026: Brut în Net",
+      name: "Calcul salariu net 2026: calculator brut în net",
       inLanguage: "ro",
       // Aceeași dată ca lastModified din sitemap și ca „Ultima actualizare" vizibilă —
       // consistența între bylineDate / sitemap / schema e un semnal de încredere.
