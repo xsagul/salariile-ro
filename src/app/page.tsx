@@ -23,6 +23,10 @@ const faqData = [
     a: "Din salariul brut se rețin CAS (25% pentru pensie), CASS (10% pentru sănătate) și impozitul pe venit (10%). Pentru veniturile sub 6.325 lei brut se aplică și deducerea personală, care reduce baza impozitului. Pe scurt: Net = Brut − CAS − CASS − Impozit. Calculatorul face și operația inversă, din net în brut, utilă la negocierea salariului.",
   },
   {
+    q: "Cum folosesc calculatorul de salarii brut-net?",
+    a: "Pui salariul brut și calculatorul de salarii brut-net îți arată instant netul, reținerile (CAS 25%, CASS 10%, impozit 10%) și costul angajatorului. Funcționează și invers: dai cât vrei să rămână în mână și afli salariul brut necesar. Așa vezi salariul brut, netul și ce te costă, în ambele sensuri.",
+  },
+  {
     q: "Care este salariul minim brut în România în 2026?",
     a: "Salariul minim brut pe economie este 4.325 lei din 1 iulie 2026, conform HG 146/2026. Salariul net corespunzător este 2.699 lei, cu facilitatea fiscală de 200 lei (OUG 89/2025). În prima jumătate a anului a fost 4.050 lei brut (2.574 lei net, facilitate 300 lei).",
   },
@@ -124,7 +128,7 @@ const cumFunctioneazaBody = (
       Salariații plătiți la nivelul <Link href="/salariu-minim">salariului minim</Link> au o sumă fixă de 200 lei scutită de contribuții (OUG 89/2025). Salariul minim brut este <strong>4.325 lei din 1 iulie 2026</strong> (HG 146/2026). Pentru referință statistică, <Link href="/salariu-mediu">salariul mediu brut pe economie</Link> în 2026 este 9.192 lei.
     </p>
     <p className="mb-4 text-base leading-normal tracking-[-0.01em] text-stone-600">
-      Pe lângă salariul brut, angajatorul mai plătește o contribuție de 2,25% (CAM – Contribuția Asiguratorie pentru Muncă), care nu afectează salariul net al angajatului dar crește costul total al firmei.
+      Pe lângă salariul brut, angajatorul mai plătește o contribuție de 2,25% (CAM, Contribuția Asiguratorie pentru Muncă), care nu afectează salariul net al angajatului dar crește costul total al firmei.
     </p>
   </>
 );
