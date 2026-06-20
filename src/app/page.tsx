@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import CalculatorSalariu from "@/app/components/CalculatorSalariu";
 import { personSchema } from "@/lib/person";
-import { LAST_FISCAL_CONTENT_UPDATE } from "@/lib/seo";
+import { PAGE_LAST_MODIFIED } from "@/lib/seo";
 
 // Metadata proprie homepage-ului (suprascrie default-ul global din layout, fără
 // să atingă celelalte pagini). Țintește termenul cu cel mai mare volum din nișă,
@@ -75,7 +75,7 @@ const homepageJsonLd = {
       inLanguage: "ro",
       // Aceeași dată ca lastModified din sitemap și ca „Ultima actualizare" vizibilă —
       // consistența între bylineDate / sitemap / schema e un semnal de încredere.
-      dateModified: LAST_FISCAL_CONTENT_UPDATE.toISOString().slice(0, 10),
+      dateModified: PAGE_LAST_MODIFIED["/"].toISOString().slice(0, 10),
       publisher: { "@id": "https://salariile.ro/#organization" },
     },
     {
@@ -226,7 +226,7 @@ export default function Page() {
                     ))}
                   </ul>
 
-                  <p className="mt-6 text-xs text-stone-500">Ultima actualizare: 8 iunie 2026.</p>
+                  <p className="mt-6 text-xs text-stone-500">Ultima actualizare: 19 iunie 2026.</p>
                 </div>
               </aside>
             </div>

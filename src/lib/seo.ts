@@ -56,7 +56,10 @@ export const LAST_FISCAL_CONTENT_UPDATE = new Date("2026-06-08T00:00:00.000Z");
 
 /** Pagini statice cu date de publicare cunoscute. */
 export const PAGE_LAST_MODIFIED: Record<string, Date> = {
-  "/": LAST_FISCAL_CONTENT_UPDATE,
+  // Homepage (calculatorul) are dată proprie: optimizare on-page 19 iunie 2026
+  // (title/meta/FAQ pe head terms). Decuplată de constanta fiscală partajată ca
+  // să nu bumpeze și band pages, care nu s-au schimbat.
+  "/": new Date("2026-06-19T00:00:00.000Z"),
   "/salariu-minim": new Date("2026-06-08T00:00:00.000Z"),
   "/calculator-pfa": new Date("2026-06-08T00:00:00.000Z"),
   "/salariu-mediu": new Date("2026-06-08T00:00:00.000Z"),

@@ -481,7 +481,7 @@ export default function CalculatorSalariu({
           {/* Dateline tehnic, scurt și curat */}
           {!titluCustom && (
             <div className="mt-4 text-xs text-stone-600">
-              Ultima actualizare: 8 iunie 2026
+              Ultima actualizare: 19 iunie 2026
             </div>
           )}
             </div>
