@@ -82,6 +82,36 @@ const fullUrl = (arg) => {
       return;
     }
 
+    if (cmd === "feeds") {
+      const d = await call("GetFeeds", { siteUrl: SITE });
+      if (opt.json) return console.log(JSON.stringify(d, null, 2));
+      const feeds = d || [];
+      console.log(`\nSitemap-uri înregistrate la Bing pentru ${SITE}:`);
+      if (!feeds.length) {
+        console.log("  (niciunul — folosește `submit` ca să trimiți sitemap.xml)\n");
+        return;
+      }
+      for (const f of feeds) {
+        console.log(`  • ${f.Url}`);
+        console.log(`    status: ${f.Status ?? "—"} · trimis: ${f.Submitted ?? "—"} · URL-uri: ${f.UrlCount ?? "—"} · ultima crawl: ${f.LastCrawled ?? "—"}`);
+      }
+      console.log("");
+      return;
+    }
+
+    if (cmd === "submit") {
+      const feedUrl = fullUrl(positionals[1] || "/sitemap.xml");
+      const res = await fetch(`${BASE}/SubmitFeed?apikey=${KEY}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({ siteUrl: SITE, feedUrl }),
+      });
+      const text = await res.text();
+      if (!res.ok) throw new Error(`Eroare SubmitFeed (${res.status}): ${text.slice(0, 200)}`);
+      console.log(`\n✓ Sitemap trimis la Bing: ${feedUrl}\n`);
+      return;
+    }
+
     if (cmd === "links") {
       const target = fullUrl(positionals[1]);
       const d = await call("GetUrlLinks", { siteUrl: SITE, link: target, page: opt.page || 0 });
