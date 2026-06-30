@@ -41,7 +41,7 @@ const ISTORIC = [
   { perioada: "oct 2023", short: "oct. 2023", brut: 3300, net: 2079, crestere: "+10,0%" },
   { perioada: "iul 2024", short: "iul. 2024", brut: 3700, net: 2363, crestere: "+12,1%" },
   { perioada: "ian 2025 – iun 2026", short: "din ian. 2025", brut: 4050, net: 2574, crestere: "+9,5%" },
-  { perioada: "iul 2026 – dec 2026", short: "din iul. 2026", brut: 4325, net: 2699, crestere: "+6,8%", recent: true },
+  { perioada: "iul 2026 – dec 2026", short: "din iul. 2026", brut: 4325, net: 2699, crestere: "+6,8%" },
 ];
 
 const FAQ = [
@@ -161,7 +161,7 @@ const jsonLd = {
       image: { "@type": "ImageObject", url: "https://salariile.ro/og-image.png", width: 1200, height: 630 },
       mainEntityOfPage: "https://salariile.ro/salariu-minim",
       datePublished: "2026-04-27",
-      dateModified: "2026-06-15",
+      dateModified: "2026-07-01",
     },
     {
       "@type": "FAQPage",
@@ -206,7 +206,7 @@ export default function SalariuMinimPage() {
             <div className="md:col-span-3">
               <h1 className="text-3xl font-bold tracking-[-0.02em] text-stone-900 sm:text-4xl">Salariul minim în 2026</h1>
               <p className="mt-4 text-xs text-stone-600 [&_a]:font-medium [&_a]:text-stone-700 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-900">
-                Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat 15 iunie 2026
+                Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat 1 iulie 2026
               </p>
               <p className={`mt-5 max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600 ${strong}`}>
                 Din 1 iulie 2026, salariul minim brut este <strong>4.325 lei</strong>, adică <strong>2.699 lei</strong>{" "}
@@ -585,7 +585,7 @@ export default function SalariuMinimPage() {
                     <li><Link href="/salariu-mediu">Salariul mediu pe economie</Link></li>
                     <li><Link href="/zile-libere-2026">Zile libere și lucrătoare 2026</Link></li>
                   </ul>
-                  <p className="mt-auto pt-6 text-xs text-stone-500">Ultima actualizare: 15 iunie 2026.</p>
+                  <p className="mt-auto pt-6 text-xs text-stone-500">Ultima actualizare: 1 iulie 2026.</p>
                 </div>
               </aside>
             </div>

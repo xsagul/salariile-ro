@@ -83,7 +83,7 @@ function inputKey(inp: InputState, m: "brut" | "net") {
 }
 
 // Exemple pentru placeholder – derivate din fiscal.ts (NU hardcodate).
-const EX_PLACEHOLDER_BRUT = String(SALARIU_MINIM); // 4050
+const EX_PLACEHOLDER_BRUT = String(SALARIU_MINIM); // 4325
 const EX_PLACEHOLDER_NET = String(
   calculeaza({
     brut: String(SALARIU_MINIM),
@@ -481,7 +481,7 @@ export default function CalculatorSalariu({
           {/* Dateline tehnic, scurt și curat */}
           {!titluCustom && (
             <div className="mt-4 text-xs text-stone-600">
-              Ultima actualizare: 19 iunie 2026
+              Ultima actualizare: 1 iulie 2026
             </div>
           )}
             </div>

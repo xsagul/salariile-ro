@@ -226,7 +226,7 @@ export default function Page() {
                     ))}
                   </ul>
 
-                  <p className="mt-6 text-xs text-stone-500">Ultima actualizare: 19 iunie 2026.</p>
+                  <p className="mt-6 text-xs text-stone-500">Ultima actualizare: 1 iulie 2026.</p>
                 </div>
               </aside>
             </div>

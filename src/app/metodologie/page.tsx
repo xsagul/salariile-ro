@@ -51,7 +51,7 @@ const jsonLd = {
       },
       image: { "@type": "ImageObject", url: "https://salariile.ro/og-image.png", width: 1200, height: 630 },
       datePublished: "2026-04-01",
-      dateModified: "2026-04-30",
+      dateModified: "2026-07-01",
       proficiencyLevel: "Expert",
       about: [
         { "@type": "Thing", name: "Codul Fiscal Legea 227/2015" },
@@ -73,7 +73,7 @@ export default function MetodologiePage() {
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Metodologie" }]} />
         <H1>Metodologie de calcul</H1>
         <p className="mt-3 text-sm text-stone-500 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2">
-          Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Publicat 1 aprilie 2026 · Actualizat 8 iunie 2026
+          Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Publicat 1 aprilie 2026 · Actualizat 1 iulie 2026
         </p>
         <Lead>
           Documentația completă a formulelor folosite de calculator. Fiecare componentă este însoțită de articolul exact din Codul Fiscal sau actul normativ aplicabil în 2026.
@@ -322,7 +322,7 @@ export default function MetodologiePage() {
               <li><strong>Monitorul Oficial</strong>: <a href="https://legislatie.just.ro" target="_blank" rel="noopener">legislatie.just.ro</a> (portal căutare generală)</li>
               <li><strong>Institutul Național de Statistică</strong>: <a href="https://insse.ro" target="_blank" rel="noopener">insse.ro</a></li>
             </ul>
-            <p className="source-note">Pagină actualizată: 8 iunie 2026.</p>
+            <p className="source-note">Pagină actualizată: 1 iulie 2026.</p>
         </Section>
       </main>
     </>
