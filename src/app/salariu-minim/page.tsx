@@ -62,6 +62,10 @@ const FAQ = [
     a: "Nu. HG 146/2026 menționează explicit că nu modifică salariul minim brut pentru sectorul construcțiilor, care rămâne 4.582 lei lunar pe tot parcursul anului 2026.",
   },
   {
+    q: "Cât este salariul minim în agricultură și industria alimentară din 1 iulie 2026?",
+    a: "4.325 lei, la fel ca minimul general. De la 1 iulie 2026, sectorul agricol și industria alimentară nu mai au un salariu minim propriu: OUG 29/2026 a abrogat nivelul distinct (art. LXX din OUG 156/2024), tocmai ca aceste sectoare să nu rămână la 4.050 lei în urma majorării generale. Construcțiile rămân singurul sector cu prag propriu, 4.582 lei.",
+  },
+  {
     q: "Ce este facilitatea fiscală de 300/200 lei?",
     a: "OUG 89/2025 scutește o sumă fixă din salariul minim de impozit pe venit și contribuții sociale: 300 lei/lună în perioada 1 ianuarie – 30 iunie 2026, respectiv 200 lei/lună în perioada 1 iulie – 31 decembrie 2026. Se aplică doar la funcția de bază, cu normă întreagă, și doar dacă venitul brut din salarii (fără tichete) nu depășește 4.300 lei până în iunie, respectiv 4.600 lei din iulie. Dacă ai sporuri sau bonusuri care trec de acest plafon, pierzi scutirea și plătești taxe pe toată suma.",
   },
@@ -424,10 +428,13 @@ export default function SalariuMinimPage() {
                 <div className={`max-w-prose ${articol}`}>
                   <h2>Sectoare și obligațiile angajatorului</h2>
                   <p>
-                    Construcțiile au un salariu minim propriu, <strong>4.582 lei</strong>, neschimbat tot anul. Dar un
-                    muncitor în construcții plătește azi aceleași taxe ca oricine: scutirile pe care le aveau{" "}
-                    <strong>IT-ul, construcțiile și agroalimentarul</strong> au fost <strong>eliminate (OUG 156/2024)</strong>{" "}
-                    din ianuarie 2025. Acum nu mai există niciun regim fiscal special pe sectoare.
+                    Construcțiile au un salariu minim propriu, <strong>4.582 lei</strong>, neschimbat tot anul, și au rămas
+                    singurul sector cu prag distinct: de la 1 iulie 2026, <strong>agricultura și industria alimentară</strong>{" "}
+                    au trecut pe minimul general de 4.325 lei, după ce <strong>OUG 29/2026</strong> le-a abrogat nivelul
+                    separat (altfel ar fi rămas la 4.050 lei). Iar un muncitor în construcții plătește azi aceleași taxe ca
+                    oricine: scutirile pe care le aveau <strong>IT-ul, construcțiile și agroalimentarul</strong> au fost{" "}
+                    <strong>eliminate (OUG 156/2024)</strong> din ianuarie 2025. Acum nu mai există niciun regim fiscal
+                    special pe sectoare.
                   </p>
                   <p>Dacă ești angajator, majorarea din iulie nu se aplică de la sine, fiecare contract la minim cere pași concreți:</p>
                   <ul>
@@ -575,6 +582,7 @@ export default function SalariuMinimPage() {
                     <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/308231" target="_blank" rel="noopener">HG 146/2026</a>: salariul minim, 1 iulie 2026</li>
                     <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/291450" target="_blank" rel="noopener">HG 1506/2024</a>: salariul minim, 1 ian. 2025</li>
                     <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/305817" target="_blank" rel="noopener">OUG 89/2025</a>: facilitatea 300/200 lei</li>
+                    <li><a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/309674" target="_blank" rel="noopener">OUG 29/2026</a>: agroalimentarul, aliniat la minimul general</li>
                     <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/293109" target="_blank" rel="noopener">OUG 156/2024</a>: eliminare scutiri sectoriale</li>
                     <li><a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/128646" target="_blank" rel="noopener">Codul Muncii</a> · <a href="https://legislatie.just.ro/Public/DetaliiDocument/257144" target="_blank" rel="noopener">Codul Fiscal</a></li>
                   </ul>

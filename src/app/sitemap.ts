@@ -56,7 +56,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     ...getAllArticles().map((a) => ({
       url: `${baseUrl}/noutati/${a.slug}`,
-      lastModified: a.date ? new Date(a.date) : LAST_FISCAL_CONTENT_UPDATE,
+      lastModified: a.updated ? new Date(a.updated) : a.date ? new Date(a.date) : LAST_FISCAL_CONTENT_UPDATE,
       changeFrequency: "monthly" as const,
       priority: 0.6,
     })),

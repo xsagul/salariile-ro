@@ -2,11 +2,12 @@
 title: "Salariul minim crește la 4.325 lei de la 1 iulie 2026: cât primești net și ce se schimbă"
 description: "De la 1 iulie 2026, salariul minim brut urcă de la 4.050 la 4.325 lei. Netul ajunge la 2.699 lei, dar facilitatea fiscală scade la 200 de lei. Toate cifrele, pe scurt."
 date: "2026-06-12"
+updated: "2026-07-01"
 hero: "/noutati/salariu-minim-iulie.jpg"
 heroAlt: "Trei teancuri de monede aranjate crescător, de la mic la înalt, pe o masă de lemn lângă câteva bancnote, în lumină naturală, sugerând creșterea salariului minim."
 ---
 
-Mai sunt câteva săptămâni până la 1 iulie, iar întrebarea apare deja peste tot: cu cât crește, de fapt, salariul minim? Am pus aici toate cifrele verificate în acte normative, ca să nu le cauți prin zece articole diferite.
+De la 1 iulie, majorarea salariului minim este în vigoare. Am pus aici toate cifrele verificate în acte normative, ca să nu le cauți prin zece articole diferite: cât primești net, de ce mai puțin decât pare, și ce trebuie să facă angajatorii.
 
 ## Pe scurt, ce se întâmplă la 1 iulie 2026
 
@@ -40,15 +41,19 @@ Asta înseamnă că dacă ai salariul minim plus un spor sau un bonus care te du
 
 Condițiile complete: funcția de bază, normă întreagă. Detaliile, cu toate plafoanele și calculul pas cu pas, sunt pe pagina despre [salariul minim pe economie în 2026](/salariu-minim).
 
+## Agricultura și industria alimentară trec pe minimul general
+
+O schimbare intrată în vigoare tot la 1 iulie, mai puțin mediatizată: sectorul agricol și industria alimentară nu mai au salariu minim propriu. OUG 29/2026 (publicată în Monitorul Oficial nr. 313 din 20 aprilie 2026) a abrogat nivelul distinct reglementat prin OUG 156/2024, tocmai ca aceste sectoare să nu rămână blocate la 4.050 lei în timp ce minimul general urcă. Din iulie, un angajat din agricultură sau industria alimentară are același minim ca oricine: **4.325 lei brut**.
+
 ## Ce nu se schimbă la 1 iulie
 
-- **Sectorul construcțiilor.** HG 146/2026 spune explicit că minimul pentru construcții rămâne **4.582 lei** pe tot anul 2026.
+- **Sectorul construcțiilor.** HG 146/2026 spune explicit că minimul pentru construcții rămâne **4.582 lei** pe tot anul 2026. După alinierea agroalimentarului, construcțiile sunt singurul sector rămas cu prag propriu.
 - **Modul de calcul al taxelor.** Procentele CAS, CASS, impozit și CAM rămân aceleași; se schimbă doar baza și facilitatea.
 - **Regula celor 2 ani.** Dacă ai stat deja 2 ani pe salariul minim la același angajator, acesta este obligat să îți negocieze un salariu mai mare (Codul Muncii, art. 164²). Majorarea din iulie nu resetează acest termen.
 
 ## Dacă ești angajator: pașii concreți
 
-Majorarea nu se aplică singură. Pentru fiecare contract aflat la salariul minim trebuie act adițional cu noul brut, înregistrarea modificării în Revisal înainte de 1 iulie și salariile calculate pe noua bază începând cu luna iulie. Tariful orar minim de care se leagă contractele cu normă parțială urcă și el, de la 24,496 la **25,949 lei pe oră**.
+Majorarea nu se aplică singură. Pentru fiecare contract aflat la salariul minim trebuie act adițional individual cu noul brut, transmiterea modificării în REGES-Online în maximum 20 de zile lucrătoare și salariile calculate pe noua bază începând cu luna iulie. Tariful orar minim de care se leagă contractele cu normă parțială urcă și el, de la 24,496 la **25,949 lei pe oră**.
 
 Costul real pentru firmă crește cu **284 de lei pe lună** per angajat la minim (275 lei brut plus CAM aferent).
 

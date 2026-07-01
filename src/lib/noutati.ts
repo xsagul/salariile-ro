@@ -18,6 +18,7 @@ export type ArticleMeta = {
   title: string;
   description: string;
   date: string; // ISO „yyyy-mm-dd"
+  updated?: string; // ISO — doar dacă articolul a primit o actualizare reală de conținut
   hero?: string; // cale în /public, ex: /noutati/cos-minim.jpg
   heroAlt?: string;
   readingMin: number;
@@ -49,6 +50,7 @@ function metaFrom(slug: string, data: Record<string, unknown>, content: string):
     title: (data.title as string) ?? slug,
     description: (data.description as string) ?? "",
     date: toISO(data.date),
+    updated: toISO(data.updated) || undefined,
     hero: (data.hero as string) || undefined,
     heroAlt: (data.heroAlt as string) || undefined,
     readingMin: Math.max(1, Math.round(words / 200)),

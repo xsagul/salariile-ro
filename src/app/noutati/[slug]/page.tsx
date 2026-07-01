@@ -72,7 +72,7 @@ export default async function ArticolPage({ params }: { params: Promise<{ slug: 
         headline: a.title,
         description: a.description,
         datePublished: a.date,
-        dateModified: a.date,
+        dateModified: a.updated ?? a.date,
         url,
         mainEntityOfPage: url,
         ...(a.hero ? { image: `https://salariile.ro${a.hero}` } : {}),
@@ -96,7 +96,9 @@ export default async function ArticolPage({ params }: { params: Promise<{ slug: 
           </nav>
 
           <div className="mb-3 text-xs uppercase tracking-wide text-stone-500">
-            {formatDateRo(a.date)} · {a.readingMin} min citire
+            {formatDateRo(a.date)}
+            {a.updated && <> · Actualizat {formatDateRo(a.updated)}</>}
+            {" "}· {a.readingMin} min citire
           </div>
           <h1 className="text-3xl font-bold tracking-[-0.02em] text-stone-900 sm:text-4xl">{a.title}</h1>
           {a.description && (
