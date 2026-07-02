@@ -103,7 +103,6 @@ export default function FluturasSalariuPage() {
 
       <div className="bg-canvas">
         <CalculatorSalariu
-          brutInitial="4325"
           modInitial="brut"
           fluturas
           titluCustom={<>Generator fluturaș de salariu</>}
@@ -146,8 +145,8 @@ export default function FluturasSalariuPage() {
             mână, cu toate reținerile, înainte să semnezi.
           </li>
           <li>
-            <strong>Negociezi în cunoștință de cauză.</strong> Vezi cât te costă pe tine (și cât o costă pe firmă, prin
-            CAM) fiecare sută de lei negociată în plus.
+            <strong>Negociezi în cunoștință de cauză.</strong> Vezi exact unde se duce fiecare sută de lei negociată în
+            plus: cât ajunge în cont și cât se oprește la stat.
           </li>
         </ul>
       </Section>

@@ -379,10 +379,8 @@ async function generarePDFFluturas(opts: {
   rand("Retineri (avans, popriri)", lei(retineri));
   rand("REST DE PLATA", lei(rez.netBani - retineri), { bold: true });
 
-  // ─── Angajator (informativ) ───────────────────────────────────────────────
-  sectiune("ANGAJATOR (INFORMATIV)");
-  rand(`C.A.M. 2,25% (baza: ${lei(bazaCas)})`, lei(rez.cam));
-  rand(`COST TOTAL ANGAJATOR (brut + CAM${tichete > 0 ? " + tichete" : ""})`, lei(rez.costTotal), { bold: true });
+  // Fluturașul real e documentul ANGAJATULUI — costurile angajatorului (CAM,
+  // cost total) nu apar pe el, deci nu apar nici aici, nici în tabelul de pe pagină.
 
   // ─── Semnături ────────────────────────────────────────────────────────────
   sectiune();
@@ -524,11 +522,6 @@ export default function CalculatorSalariu({
   const stale = rezAfisat !== null && rezKey !== inputKey(pregatesteInput(input), mod);
   // Reținerile se aplică live pe net (scădere simplă, fără recalcul fiscal).
   const retineriNum = fluturas ? Math.max(0, parseInt(retineri) || 0) : 0;
-  // Luna fluturașului (documentul se emite mereu pentru luna curentă).
-  const lunaFluturas = fluturas
-    ? new Date().toLocaleDateString("ro-RO", { month: "long", year: "numeric" })
-    : "";
-
   // Rând de secțiune în tabelul-fluturaș (DREPTURI / REȚINERI / DE PLATĂ).
   const sectF = (titlu: string) => (
     <tr>
@@ -715,7 +708,7 @@ export default function CalculatorSalariu({
 
         {/* Coloana Dreaptă – rezultate */}
         <div className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-3" id="rezultat-calcul">
-          <h2 className={colHeader}>{fluturas ? <>Fluturaș de salariu · <span className="capitalize">{lunaFluturas}</span></> : "Rezultat calcul"}</h2>
+          <h2 className={colHeader}>{fluturas ? "Fluturaș de salariu" : "Rezultat calcul"}</h2>
 
           {stale && (
             <p className="mb-4 rounded border border-stone-300 bg-canvas px-3 py-2 text-xs text-stone-600" role="status">
@@ -808,17 +801,8 @@ export default function CalculatorSalariu({
                       <td className={cellR}>− {fmt(retineriNum)}</td>
                     </tr>
                     <tr className="bg-canvas">
-                      <td className={`${cellL} font-bold text-stone-900`}>Rest de plată</td>
-                      <td className={`${cellR} font-bold text-stone-900`}>{fmt(rezAfisat.rez.netBani - retineriNum)}</td>
-                    </tr>
-                    {sectF("Angajator (informativ)")}
-                    <tr>
-                      <td className={`${cellL} text-stone-500`}>CAM (2,25%)</td>
-                      <td className={`${cellR} text-stone-500`}>{fmt(rezAfisat.rez.cam)}</td>
-                    </tr>
-                    <tr>
-                      <td className={`${cellL} border-b-0 text-stone-500`}>Cost total angajator</td>
-                      <td className={`${cellR} border-b-0 text-stone-500`}>{fmt(rezAfisat.rez.costTotal)}</td>
+                      <td className={`${cellL} border-b-0 font-bold text-stone-900`}>Rest de plată</td>
+                      <td className={`${cellR} border-b-0 font-bold text-stone-900`}>{fmt(rezAfisat.rez.netBani - retineriNum)}</td>
                     </tr>
                   </tbody>
                 </table>
