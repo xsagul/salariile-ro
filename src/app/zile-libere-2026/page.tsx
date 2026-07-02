@@ -145,7 +145,7 @@ const jsonLd = {
       image: { "@type": "ImageObject", url: "https://salariile.ro/og-image.png", width: 1200, height: 630 },
       mainEntityOfPage: "https://salariile.ro/zile-libere-2026",
       datePublished: "2026-05-19",
-      dateModified: "2026-06-08",
+      dateModified: "2026-07-02",
     },
     {
       "@type": "FAQPage",
@@ -185,7 +185,7 @@ export default function ZileLibere2026Page() {
             <p className="text-xs font-medium uppercase tracking-wide text-stone-500">Calendar 2026</p>
             <h1 className="mt-2 text-3xl font-bold tracking-[-0.02em] text-stone-900 sm:text-4xl">Zile libere 2026</h1>
             <p className="mt-3 text-xs text-stone-600 [&_a]:font-medium [&_a]:text-stone-700 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-900">
-              Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat 8 iunie 2026
+              Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat 2 iulie 2026
             </p>
             <p className="mt-5 text-base leading-normal tracking-[-0.01em] text-stone-600">
               Calendarul complet al zilelor libere legale din România în 2026: sărbătorile (Codul Muncii art. 139),
@@ -257,6 +257,47 @@ export default function ZileLibere2026Page() {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+
+          {/* ZILE LUCRĂTOARE PE LUNI — tabel */}
+          <div className="mt-12 border-t border-stone-200 pt-10 sm:mt-16 sm:pt-14">
+            <h2 className="text-2xl font-bold tracking-[-0.02em] text-stone-900 sm:text-3xl">Zile lucrătoare 2026, lună de lună</h2>
+            <p className="mt-3 max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600">
+              Numărul de zile lucrătoare și ore de lucru (la program de 8 ore/zi) pentru fiecare lună din 2026. Util la
+              calculul tarifului orar, al contractelor part-time și al normelor de lucru.
+            </p>
+            <div className={`mt-6 ${card}`}>
+              <table className="w-full text-sm tabular-nums">
+                <thead>
+                  <tr className="border-b border-stone-300 text-xs font-medium uppercase tracking-wide text-stone-500">
+                    <th scope="col" className="pb-2 text-left">Luna</th>
+                    <th scope="col" className="pb-2 text-right">Zile lucrătoare</th>
+                    <th scope="col" className="pb-2 text-right">Ore de lucru</th>
+                    <th scope="col" className="pb-2 text-right">Zile libere</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {MONTHS.map((mo) => (
+                    <tr key={mo.nume} className="border-b border-stone-100 last:border-b-0">
+                      <th scope="row" className="py-2 text-left font-normal text-stone-700">{mo.nume}</th>
+                      <td className="py-2 text-right font-medium text-stone-900">{mo.lucr}</td>
+                      <td className="py-2 text-right text-stone-600">{mo.lucr * 8}</td>
+                      <td className="py-2 text-right text-stone-600">{mo.libere}</td>
+                    </tr>
+                  ))}
+                  <tr className="[&_td]:pt-3 [&_td]:font-bold [&_td]:text-stone-900 [&_th]:pt-3 [&_th]:font-bold [&_th]:text-stone-900">
+                    <th scope="row" className="text-left">Total 2026</th>
+                    <td className="text-right">{TOTAL_LUCR}</td>
+                    <td className="text-right">{TOTAL_ORE.toLocaleString("ro-RO")}</td>
+                    <td className="text-right">{TOTAL_LIBERE}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p className="mt-4 text-xs text-stone-500">
+                Zilele lucrătoare exclud weekendurile și sărbătorile legale care cad în zile lucrătoare. Iulie are cele mai
+                multe (23), ianuarie cele mai puține (18).
+              </p>
             </div>
           </div>
 
@@ -333,7 +374,7 @@ export default function ZileLibere2026Page() {
                   <li><Link href="/salariu-mediu">Salariul mediu pe economie</Link></li>
                   <li><Link href="/">Calculator salariu net</Link></li>
                 </ul>
-                <p className="mt-auto pt-6 text-xs text-stone-500">Ultima actualizare: 8 iunie 2026.</p>
+                <p className="mt-auto pt-6 text-xs text-stone-500">Ultima actualizare: 2 iulie 2026.</p>
               </div>
             </aside>
           </div>

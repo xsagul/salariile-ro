@@ -66,7 +66,8 @@ export const PAGE_LAST_MODIFIED: Record<string, Date> = {
   "/calculator-pfa": new Date("2026-06-08T00:00:00.000Z"),
   "/salariu-mediu": new Date("2026-06-08T00:00:00.000Z"),
   "/metodologie": new Date("2026-07-01T00:00:00.000Z"),
-  "/zile-libere-2026": new Date("2026-06-08T00:00:00.000Z"),
+  "/zile-libere-2026": new Date("2026-07-02T00:00:00.000Z"),
+  "/fluturas-salariu": new Date("2026-07-02T00:00:00.000Z"),
   "/noutati": new Date("2026-06-12T00:00:00.000Z"),
   "/despre": new Date("2026-04-01T00:00:00.000Z"),
   "/contact": new Date("2026-04-01T00:00:00.000Z"),
@@ -75,13 +76,18 @@ export const PAGE_LAST_MODIFIED: Record<string, Date> = {
   "/termeni": new Date("2026-04-01T00:00:00.000Z"),
 };
 
-/** Valori brute indexate (net din brut) — aliniat cu sitemap + Ahrefs/GSC. */
+/** Valori brute indexate (net din brut) — aliniat cu sitemap + Ahrefs/GSC.
+ *  Extins 2 iul 2026 pe baza studiului de keywords (GSC impressions + gap
+ *  Seobility): competitorul #1 acoperă intervalul din 100 în 100; noi doar
+ *  valorile cu semnal real de căutare, ca să nu riscăm thin content. */
 export const CALCULATOR_BRUT_VALUES = [
-  4050, 4325, 5000, 5500, 6000, 6500, 7000, 7350, 7500, 8000, 10000,
+  4050, 4325, 4400, 4500, 4600, 4700, 4800, 4900, 5000, 5200, 5500, 5800,
+  6000, 6200, 6500, 6800, 7000, 7200, 7350, 7500, 8000, 8500, 9000, 9500,
+  10000, 12000,
 ] as const;
 
 /** Valori net indexate (brut din net) — doar cele cu semnal de căutare. */
-export const CALCULATOR_NET_VALUES = [3000, 5000] as const;
+export const CALCULATOR_NET_VALUES = [2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000] as const;
 
 export function calculatorSlugBrut(v: number): string {
   return `calcul-salariu-net-${v}-brut`;
