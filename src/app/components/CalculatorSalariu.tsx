@@ -87,23 +87,37 @@ function inputKey(inp: InputState, m: "brut" | "net") {
 // Rulează ÎNAINTE de motorul fiscal: calculeaza() primește brutul compus plus
 // salariuDeBaza (pentru eligibilitatea facilității OUG 89/2025). Reținerile NU
 // intră aici — se scad din net, după taxe (popriri/avans, ca pe statul de plată).
-function compuneFluturas(inp: InputState, extra: { oreSupl: string; sporOre: string; sporuri: string }) {
+function compuneFluturas(
+  inp: InputState,
+  extra: { oreSupl: string; sporOre: string; sporuri: string; normaOre: string; oreLucrate: string }
+) {
   const baza = parseFloat(inp.brut) || 0;
   const ore = parseInt(extra.oreSupl) || 0;
   const sporProc = parseFloat(extra.sporOre) || 0;
   const fixe = parseInt(extra.sporuri) || 0;
   const azi = new Date();
-  const oreNorma = zileLucratoareLuna(azi.getFullYear(), azi.getMonth()) * 8;
-  const plataSupl = baza > 0 && ore > 0 && oreNorma > 0
+  const oreNormaLuna = zileLucratoareLuna(azi.getFullYear(), azi.getMonth()) * 8;
+  // Norma lunară: implicit norma reală a lunii curente (zile lucrătoare × 8),
+  // editabilă (unele firme folosesc norme medii). Orele lucrate: implicit norma
+  // întreagă; mai puține = lună parțială (angajare/plecare la mijloc de lună,
+  // concediu fără plată) → venitul de bază se plătește proporțional, iar taxele
+  // se aplică pe venitul realizat. Peste normă nu se poate — alea-s ore suplimentare.
+  const oreNorma = Math.max(1, parseInt(extra.normaOre) || oreNormaLuna);
+  const oreLucrateRaw = extra.oreLucrate === "" ? oreNorma : parseInt(extra.oreLucrate) || 0;
+  const oreLucrate = Math.min(oreNorma, Math.max(0, oreLucrateRaw));
+  const bazaRealizata = Math.round(baza * (oreLucrate / oreNorma));
+  const plataSupl = baza > 0 && ore > 0
     ? Math.round((baza / oreNorma) * ore * (1 + sporProc / 100))
     : 0;
-  const brutCompus = baza + plataSupl + fixe;
+  const brutCompus = bazaRealizata + plataSupl + fixe;
   return {
     input: { ...inp, brut: String(brutCompus), salariuDeBaza: String(baza) } as InputState,
     baza,
+    bazaRealizata,
     plataSupl,
     fixe,
     oreNorma,
+    oreLucrate,
   };
 }
 
@@ -231,7 +245,7 @@ async function generarePDFFluturas(opts: {
   /** Numele firmei, tipărit în antet (generatorul de fluturaș). */
   firma?: string;
   /** Defalcarea brutului compus: bază + ore suplimentare + sporuri (generatorul de fluturaș). */
-  detalii?: { baza: number; plataSupl: number; oreSupl: number; sporProc: number; fixe: number };
+  detalii?: { baza: number; bazaRealizata: number; plataSupl: number; oreSupl: number; sporProc: number; fixe: number; oreNorma: number; oreLucrate: number };
   /** Rețineri din net (avans, popriri) — scad din REST DE PLATĂ. */
   retineri?: number;
 }): Promise<void> {
@@ -328,22 +342,27 @@ async function generarePDFFluturas(opts: {
   // ─── Pontaj ───────────────────────────────────────────────────────────────
   sectiune();
   const oreSuplPontaj = detalii?.oreSupl || 0;
+  const oreNormaPontaj = detalii?.oreNorma ?? zileLucr * 8;
+  const oreLucratePontaj = detalii?.oreLucrate ?? oreNormaPontaj;
   rand2(
-    `Zile lucratoare: ${zileLucr}    Zile lucrate: ${zileLucr}    Ore lucrate: ${zileLucr * 8 + oreSuplPontaj}`,
+    `Zile lucratoare: ${zileLucr}    Ore norma: ${oreNormaPontaj}    Ore lucrate: ${oreLucratePontaj}${oreSuplPontaj > 0 ? ` + ${oreSuplPontaj} supl.` : ""}`,
     "Norma: 8 h/zi"
   );
 
   // ─── Drepturi ─────────────────────────────────────────────────────────────
   sectiune("DREPTURI SALARIALE");
-  // Tariful orar standard al lunii (informativ, ca pe statul de plată).
-  const oreNormaPdf = zileLucr * 8;
+  // Tariful orar standard (informativ, ca pe statul de plată) — bază ÷ normă.
   const bazaPdf = detalii?.baza ?? brut;
-  const tarifOrarPdf = oreNormaPdf > 0
-    ? (bazaPdf / oreNormaPdf).toLocaleString("ro-RO", { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+  const tarifOrarPdf = oreNormaPontaj > 0
+    ? (bazaPdf / oreNormaPontaj).toLocaleString("ro-RO", { minimumFractionDigits: 2, maximumFractionDigits: 2 })
     : "";
-  if (detalii && (detalii.plataSupl > 0 || detalii.fixe > 0)) {
+  const lunaPartiala = detalii ? detalii.oreLucrate < detalii.oreNorma : false;
+  if (detalii && (detalii.plataSupl > 0 || detalii.fixe > 0 || lunaPartiala)) {
     rand("Salariu de baza (incadrare)", lei(detalii.baza));
-    if (tarifOrarPdf) rand(`Ore standard (${oreNormaPdf} ore/luna)`, `${tarifOrarPdf} lei/ora`, { dim: true });
+    if (tarifOrarPdf) rand(`Ore standard (${oreNormaPontaj} ore/luna)`, `${tarifOrarPdf} lei/ora`, { dim: true });
+    if (lunaPartiala) {
+      rand(`Venit realizat (${detalii.oreLucrate} din ${detalii.oreNorma} ore)`, lei(detalii.bazaRealizata));
+    }
     if (detalii.plataSupl > 0) {
       rand(`Ore suplimentare (${detalii.oreSupl} ore, spor ${detalii.sporProc}%)`, lei(detalii.plataSupl));
     }
@@ -353,7 +372,7 @@ async function generarePDFFluturas(opts: {
     rand("Venit brut total", lei(brut), { bold: true });
   } else {
     rand("Salariu de baza (incadrare)", lei(brut));
-    if (tarifOrarPdf) rand(`Ore standard (${oreNormaPdf} ore/luna)`, `${tarifOrarPdf} lei/ora`, { dim: true });
+    if (tarifOrarPdf) rand(`Ore standard (${oreNormaPontaj} ore/luna)`, `${tarifOrarPdf} lei/ora`, { dim: true });
   }
   if (tichete > 0) {
     const nrT = parseInt(nrTichete) || 0;
@@ -457,6 +476,8 @@ export default function CalculatorSalariu({
   const [sporOre, setSporOre] = useState("75");
   const [sporuri, setSporuri] = useState("");
   const [retineri, setRetineri] = useState("");
+  const [normaOre, setNormaOre] = useState("");
+  const [oreLucrate, setOreLucrate] = useState("");
 
   const initialInput: InputState = {
     brut: brutInitial,
@@ -473,7 +494,7 @@ export default function CalculatorSalariu({
   // În modul fluturaș, inputul de calcul e brutul COMPUS (bază + suplimentare +
   // sporuri) cu salariuDeBaza atașat; altfel, inputul brut, neschimbat.
   const pregatesteInput = (inp: InputState): InputState =>
-    fluturas ? compuneFluturas(inp, { oreSupl, sporOre, sporuri }).input : inp;
+    fluturas ? compuneFluturas(inp, { oreSupl, sporOre, sporuri, normaOre, oreLucrate }).input : inp;
 
   // Rezultatul afișat – calculat O DATĂ la click pe Calculează, stocat ca obiect.
   // Nu se schimbă la tastare/toggle, doar la click. La mount, dacă brutInitial
@@ -484,9 +505,9 @@ export default function CalculatorSalariu({
   );
 
   // Defalcarea brutului compus la momentul ultimului calcul (doar mod fluturaș).
-  const [fluturasSnap, setFluturasSnap] = useState<{ baza: number; plataSupl: number; fixe: number; oreSupl: number; sporProc: number; oreNorma: number } | null>(
+  const [fluturasSnap, setFluturasSnap] = useState<{ baza: number; bazaRealizata: number; plataSupl: number; fixe: number; oreSupl: number; sporProc: number; oreNorma: number; oreLucrate: number } | null>(
     fluturas && brutInitial && parseFloat(brutInitial) > 0
-      ? (() => { const c = compuneFluturas(initialInput, { oreSupl: "", sporOre: "75", sporuri: "" }); return { baza: c.baza, plataSupl: c.plataSupl, fixe: c.fixe, oreSupl: 0, sporProc: 75, oreNorma: c.oreNorma }; })()
+      ? (() => { const c = compuneFluturas(initialInput, { oreSupl: "", sporOre: "75", sporuri: "", normaOre: "", oreLucrate: "" }); return { baza: c.baza, bazaRealizata: c.bazaRealizata, plataSupl: c.plataSupl, fixe: c.fixe, oreSupl: 0, sporProc: 75, oreNorma: c.oreNorma, oreLucrate: c.oreLucrate }; })()
       : null
   );
 
@@ -512,10 +533,10 @@ export default function CalculatorSalariu({
     }
     setEmptyWarn(false);
     if (fluturas) {
-      const c = compuneFluturas(input, { oreSupl, sporOre, sporuri });
+      const c = compuneFluturas(input, { oreSupl, sporOre, sporuri, normaOre, oreLucrate });
       setRezAfisat(buildResult(c.input, mod));
       setRezKey(inputKey(c.input, mod));
-      setFluturasSnap({ baza: c.baza, plataSupl: c.plataSupl, fixe: c.fixe, oreSupl: parseInt(oreSupl) || 0, sporProc: parseFloat(sporOre) || 0, oreNorma: c.oreNorma });
+      setFluturasSnap({ baza: c.baza, bazaRealizata: c.bazaRealizata, plataSupl: c.plataSupl, fixe: c.fixe, oreSupl: parseInt(oreSupl) || 0, sporProc: parseFloat(sporOre) || 0, oreNorma: c.oreNorma, oreLucrate: c.oreLucrate });
     } else {
       setRezAfisat(buildResult(input, mod));
       setRezKey(inputKey(input, mod));
@@ -524,7 +545,7 @@ export default function CalculatorSalariu({
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
     const targetId = isMobile ? "rezultat-calcul" : "calc-layout";
     document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth", block: "start" });
-  }, [input, mod, fluturas, oreSupl, sporOre, sporuri]);
+  }, [input, mod, fluturas, oreSupl, sporOre, sporuri, normaOre, oreLucrate]);
 
   // Rezultatul afișat e „învechit" dacă datele curente diferă de cele de la ultimul calcul.
   const stale = rezAfisat !== null && rezKey !== inputKey(pregatesteInput(input), mod);
@@ -562,7 +583,7 @@ export default function CalculatorSalariu({
             <nav className="mb-4 flex gap-2 text-xs text-stone-600" aria-label="Breadcrumb">
               <Link href="/" className="hover:text-stone-700">Acasă</Link>
               <span>/</span>
-              <span aria-current="page">Calculator salariu</span>
+              <span aria-current="page">{fluturas ? "Fluturaș de salariu" : "Calculator salariu"}</span>
             </nav>
           )}
 
@@ -645,7 +666,7 @@ export default function CalculatorSalariu({
             onClick={() => {
               if (avansat) {
                 set("tichete", ""); setNrTichete(""); setValoareTichet(""); set("functieDeBAza", true); set("persoanePretretinere", 0); set("varstaSub26", false); set("copiiScolarizati", 0); set("scutitImpozit", false);
-                if (fluturas) { setFirma(""); setOreSupl(""); setSporOre("75"); setSporuri(""); setRetineri(""); }
+                if (fluturas) { setFirma(""); setOreSupl(""); setSporOre("75"); setSporuri(""); setRetineri(""); setNormaOre(""); setOreLucrate(""); }
               }
               setAvansat(!avansat);
             }}
@@ -672,13 +693,22 @@ export default function CalculatorSalariu({
                     />
                   </div>
                   <div className="grid grid-cols-2 gap-3">
+                    <InputNumber id="norma-ore" label="Normă lunară" unit="ore" value={normaOre} placeholder={`ex: ${zileLucratoareLuna(new Date().getFullYear(), new Date().getMonth()) * 8}`}
+                      onChange={setNormaOre} />
+                    <InputNumber id="ore-lucrate" label="Ore lucrate" unit="ore" value={oreLucrate} placeholder="normă întreagă"
+                      onChange={setOreLucrate} />
+                  </div>
+                  <p className="-mt-3 mb-5 text-xs text-stone-500">
+                    Lasă gol pentru lună întreagă. Mai puține ore (angajare la mijloc de lună, concediu fără plată) plătesc salariul de bază proporțional.
+                  </p>
+                  <div className="grid grid-cols-2 gap-3">
                     <InputNumber id="ore-supl" label="Ore suplimentare" unit="ore" value={oreSupl} placeholder="ex: 8"
                       onChange={setOreSupl} />
                     <InputNumber id="spor-ore" label="Spor ore supl." unit="%" value={sporOre} placeholder="ex: 75"
                       onChange={setSporOre} />
                   </div>
                   <p className="-mt-3 mb-5 text-xs text-stone-500">
-                    Plata orelor suplimentare: tariful orar al lunii curente × ore × (100% + spor). Sporul legal minim e 75% (Codul Muncii art. 123).
+                    Plata orelor suplimentare: tariful orar (bază ÷ normă) × ore × (100% + spor). Sporul legal minim e 75% (Codul Muncii art. 123).
                   </p>
                   <div className="grid grid-cols-2 gap-3">
                     <InputNumber id="sporuri-fixe" label="Sporuri și prime (brute)" unit="lei" value={sporuri} placeholder="ex: 200"
@@ -757,6 +787,12 @@ export default function CalculatorSalariu({
                         <td className={`${cellR} text-stone-500`}>{(fluturasSnap.baza / fluturasSnap.oreNorma).toLocaleString("ro-RO", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} lei/oră</td>
                       </tr>
                     )}
+                    {fluturasSnap && fluturasSnap.oreLucrate < fluturasSnap.oreNorma && (
+                      <tr>
+                        <td className={`${cellL} pl-4 sm:pl-8`}>Venit realizat ({fluturasSnap.oreLucrate} din {fluturasSnap.oreNorma} ore)</td>
+                        <td className={cellR}>{fmt(fluturasSnap.bazaRealizata)}</td>
+                      </tr>
+                    )}
                     {fluturasSnap && fluturasSnap.plataSupl > 0 && (
                       <tr>
                         <td className={`${cellL} pl-4 sm:pl-8`}>Ore suplimentare ({fluturasSnap.oreSupl} ore, spor {fluturasSnap.sporProc}%)</td>
@@ -769,7 +805,7 @@ export default function CalculatorSalariu({
                         <td className={cellR}>+ {fmt(fluturasSnap.fixe)}</td>
                       </tr>
                     )}
-                    {fluturasSnap && (fluturasSnap.plataSupl > 0 || fluturasSnap.fixe > 0) && rezAfisat.rez.tichete > 0 && (
+                    {fluturasSnap && (fluturasSnap.plataSupl > 0 || fluturasSnap.fixe > 0 || fluturasSnap.oreLucrate < fluturasSnap.oreNorma) && rezAfisat.rez.tichete > 0 && (
                       <tr>
                         <td className={`${cellL} font-medium text-stone-900`}>Venit brut total</td>
                         <td className={`${cellR} font-medium text-stone-900`}>{fmt(parseFloat(rezAfisat.brutEfectiv))}</td>
