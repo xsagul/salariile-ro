@@ -46,8 +46,12 @@ const FAQ = [
     a: "Nu. Generatorul produce un fluturaș demonstrativ, calculat corect pe legislația 2026 (același calcul validat cu Declarația 112 ANAF), în formatul folosit de programele de salarizare. E util ca să verifici fluturașul primit de la angajator sau să înțelegi o ofertă salarială, dar nu înlocuiește documentul oficial emis de firmă.",
   },
   {
-    q: "De ce diferă fluturașul meu de calculul standard?",
-    a: "Cele mai frecvente cauze: sporuri sau ore suplimentare adăugate la brut, rețineri (popriri, avansuri, pensie facultativă), concediu medical în lună (indemnizația se calculează diferit), sau numărul de zile lucrate diferit de norma lunii. Generatorul de aici acoperă cazul standard: brut fix, lună întreagă lucrată.",
+    q: "Pot adăuga ore suplimentare, sporuri sau rețineri pe fluturaș?",
+    a: "Da. Generatorul acceptă ore suplimentare (plătite la tariful orar al lunii, cu sporul procentual ales, minim legal 75%), sporuri și prime brute, tichete de masă și rețineri (avans, popriri), plus numele firmei pe document. Un detaliu pe care multe softuri îl greșesc: dacă salariul de bază e minimul pe economie și sporurile nu duc venitul brut peste plafonul de 4.600 lei, facilitatea de 200 lei netaxabili (OUG 89/2025) se păstrează — calculatorul o aplică corect.",
+  },
+  {
+    q: "De ce ar putea diferi fluturașul meu de calculul de aici?",
+    a: "Cazurile neacoperite de generator: concediu medical în lună (indemnizația se calculează pe alte reguli), lună parțial lucrată (angajare sau plecare la mijloc de lună), cumul de funcții sau deduceri speciale negociate. Pentru acestea, fluturașul oficial al angajatorului rămâne referința.",
   },
 ];
 
@@ -101,12 +105,13 @@ export default function FluturasSalariuPage() {
         <CalculatorSalariu
           brutInitial="4325"
           modInitial="brut"
+          fluturas
           titluCustom={<>Generator fluturaș de salariu</>}
           subtitluCustom={
             <>
-              Pune salariul brut (și tichetele, dacă ai), apasă Calculează, apoi descarcă fluturașul în PDF cu
-              butonul de sub tabel. Calcul conform legislației 2026, în formatul programelor de salarizare. Gratuit,
-              fără cont.
+              Completează salariul de bază și, dacă e cazul, orele suplimentare, sporurile, tichetele și reținerile.
+              Apasă Calculează, apoi descarcă fluturașul în PDF cu butonul de sub tabel. Calcul conform legislației
+              2026, în formatul programelor de salarizare. Gratuit, fără cont.
             </>
           }
         />
@@ -116,10 +121,11 @@ export default function FluturasSalariuPage() {
         <h2>Ce conține fluturașul generat</h2>
         <p>
           PDF-ul reproduce structura fluturașului emis de programele de salarizare folosite de firmele din România:
-          salariul de încadrare, zilele lucrătoare ale lunii alese, reținerile individuale (CAS 25%, CASS 10%, impozit
-          10%), deducerea personală, tichetele de masă cu taxarea lor separată și netul plătit în cont. Fiecare cifră
-          vine din același modul de calcul folosit de <Link href="/">calculatorul de salariu</Link>, sincronizat cu
-          Declarația 112 ANAF.
+          numele firmei (dacă îl completezi), salariul de bază, orele suplimentare cu sporul lor, sporurile și primele,
+          zilele lucrătoare ale lunii curente, reținerile individuale (CAS 25%, CASS 10%, impozit 10%), deducerea
+          personală, tichetele de masă cu taxarea lor separată, reținerile din net (avans, popriri) și restul de plată.
+          Fiecare cifră vine din același modul de calcul folosit de <Link href="/">calculatorul de salariu</Link>,
+          sincronizat cu Declarația 112 ANAF.
         </p>
         <p className="source-note">
           Documentul este demonstrativ și nu înlocuiește fluturașul oficial emis de angajator, mențiunea apare și pe

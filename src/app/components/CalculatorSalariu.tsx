@@ -6,7 +6,6 @@ import {
   calculeaza,
   calculeazaBrutDinNet,
   SALARIU_MINIM,
-  DEDUCERE_MINIM,
   type InputState,
   type Rezultat,
 } from "@/lib/fiscal";
@@ -79,7 +78,33 @@ function inputKey(inp: InputState, m: "brut" | "net") {
   return JSON.stringify([
     m, inp.brut, inp.tichete, inp.functieDeBAza,
     inp.persoanePretretinere, inp.varstaSub26, inp.copiiScolarizati, inp.scutitImpozit,
+    inp.salariuDeBaza ?? null,
   ]);
+}
+
+// ─── Compunere brut pentru generatorul de fluturaș ────────────────────────────
+// Salariu de bază + ore suplimentare (tarif orar × ore × (1+spor%)) + sporuri fixe.
+// Rulează ÎNAINTE de motorul fiscal: calculeaza() primește brutul compus plus
+// salariuDeBaza (pentru eligibilitatea facilității OUG 89/2025). Reținerile NU
+// intră aici — se scad din net, după taxe (popriri/avans, ca pe statul de plată).
+function compuneFluturas(inp: InputState, extra: { oreSupl: string; sporOre: string; sporuri: string }) {
+  const baza = parseFloat(inp.brut) || 0;
+  const ore = parseInt(extra.oreSupl) || 0;
+  const sporProc = parseFloat(extra.sporOre) || 0;
+  const fixe = parseInt(extra.sporuri) || 0;
+  const azi = new Date();
+  const oreNorma = zileLucratoareLuna(azi.getFullYear(), azi.getMonth()) * 8;
+  const plataSupl = baza > 0 && ore > 0 && oreNorma > 0
+    ? Math.round((baza / oreNorma) * ore * (1 + sporProc / 100))
+    : 0;
+  const brutCompus = baza + plataSupl + fixe;
+  return {
+    input: { ...inp, brut: String(brutCompus), salariuDeBaza: String(baza) } as InputState,
+    baza,
+    plataSupl,
+    fixe,
+    oreNorma,
+  };
 }
 
 // Exemple pentru placeholder – derivate din fiscal.ts (NU hardcodate).
@@ -200,20 +225,26 @@ function fixDiacritice(text: string): string {
 async function generarePDFFluturas(opts: {
   brut: number;
   rez: Rezultat;
-  esteSalariuMinim: boolean;
-  facilitate: number;
   nrTichete: string;
   valoareTichet: string;
   scutitImpozit: boolean;
+  /** Numele firmei, tipărit în antet (generatorul de fluturaș). */
+  firma?: string;
+  /** Defalcarea brutului compus: bază + ore suplimentare + sporuri (generatorul de fluturaș). */
+  detalii?: { baza: number; plataSupl: number; oreSupl: number; sporProc: number; fixe: number };
+  /** Rețineri din net (avans, popriri) — scad din REST DE PLATĂ. */
+  retineri?: number;
 }): Promise<void> {
-  const { brut, rez, esteSalariuMinim, facilitate, nrTichete, valoareTichet, scutitImpozit } = opts;
+  const { brut, rez, nrTichete, valoareTichet, scutitImpozit, firma, detalii, retineri = 0 } = opts;
 
   // Import dinamic – biblioteca se încarcă doar când utilizatorul apasă butonul
   const { jsPDF } = await import("jspdf");
   const doc = new jsPDF({ unit: "mm", format: "a4" });
 
   // ─── Valori derivate (oglindesc exact fiscal.ts) ───────────────────────────
-  const facilitateEf = esteSalariuMinim ? facilitate : 0;
+  // Facilitatea vine direct din motorul fiscal (sursa unică de adevăr) — include
+  // și cazul bază minimă + sporuri sub plafonul OUG 89/2025.
+  const facilitateEf = rez.facilitate;
   const tichete = rez.tichete;
   const bazaCas = brut - facilitateEf; //                 D112: A_13
   const bazaCass = brut - facilitateEf + tichete; //      D112: A_11
@@ -286,20 +317,36 @@ async function generarePDFFluturas(opts: {
   const yBoxTop = y - 4;
 
   // ─── Antet unitate / angajat (câmpuri de completat, ca pe formularul real) ─
-  rand2(`Unitatea: ${"_".repeat(34)}`, `C.U.I.: ${"_".repeat(14)}`);
+  const numeFirma = (firma || "").trim();
+  rand2(
+    numeFirma ? `Unitatea: ${numeFirma.slice(0, 34)}` : `Unitatea: ${"_".repeat(34)}`,
+    `C.U.I.: ${"_".repeat(14)}`
+  );
   rand2(`Angajat:  ${"_".repeat(34)}`, `Marca:  ${"_".repeat(14)}`);
   rand2(`Functia:  ${"_".repeat(34)}`, `CNP:    ${"_".repeat(14)}`);
 
   // ─── Pontaj ───────────────────────────────────────────────────────────────
   sectiune();
+  const oreSuplPontaj = detalii?.oreSupl || 0;
   rand2(
-    `Zile lucratoare: ${zileLucr}    Zile lucrate: ${zileLucr}    Ore lucrate: ${zileLucr * 8}`,
+    `Zile lucratoare: ${zileLucr}    Zile lucrate: ${zileLucr}    Ore lucrate: ${zileLucr * 8 + oreSuplPontaj}`,
     "Norma: 8 h/zi"
   );
 
   // ─── Drepturi ─────────────────────────────────────────────────────────────
   sectiune("DREPTURI SALARIALE");
-  rand("Salariu de baza (incadrare)", lei(brut));
+  if (detalii && (detalii.plataSupl > 0 || detalii.fixe > 0)) {
+    rand("Salariu de baza (incadrare)", lei(detalii.baza));
+    if (detalii.plataSupl > 0) {
+      rand(`Ore suplimentare (${detalii.oreSupl} ore, spor ${detalii.sporProc}%)`, lei(detalii.plataSupl));
+    }
+    if (detalii.fixe > 0) {
+      rand("Sporuri si prime (brute)", lei(detalii.fixe));
+    }
+    rand("Venit brut total", lei(brut), { bold: true });
+  } else {
+    rand("Salariu de baza (incadrare)", lei(brut));
+  }
   if (tichete > 0) {
     const nrT = parseInt(nrTichete) || 0;
     const valT = parseInt(valoareTichet) || 0;
@@ -329,8 +376,8 @@ async function generarePDFFluturas(opts: {
     rand("Tichete de masa (pe card, valoare integrala)", lei(tichete));
     rand("TOTAL INCASAT (cont + card)", lei(rez.net), { bold: true });
   }
-  rand("Avans", "0 lei");
-  rand("REST DE PLATA", lei(rez.netBani), { bold: true });
+  rand("Retineri (avans, popriri)", lei(retineri));
+  rand("REST DE PLATA", lei(rez.netBani - retineri), { bold: true });
 
   // ─── Angajator (informativ) ───────────────────────────────────────────────
   sectiune("ANGAJATOR (INFORMATIV)");
@@ -376,12 +423,16 @@ export default function CalculatorSalariu({
   titluCustom,
   subtitluCustom,
   wide = false,
+  fluturas = false,
 }: {
   brutInitial?: string;
   modInitial?: "brut" | "net";
   titluCustom?: React.ReactNode;
   subtitluCustom?: React.ReactNode;
   wide?: boolean;
+  /** Mod generator de fluturaș: câmpuri de stat de plată (firmă, ore suplimentare,
+   *  sporuri, rețineri), direcția fixă brut→net. Folosit de /fluturas-salariu. */
+  fluturas?: boolean;
 }) {
   const wrap = wide ? "max-w-7xl" : "max-w-6xl";
   const [mod, setMod] = useState<"brut" | "net">(modInitial);
@@ -391,6 +442,15 @@ export default function CalculatorSalariu({
   // Tichete: nr. × valoare/tichet → total stocat în input.tichete (calculul folosește totalul).
   const [nrTichete, setNrTichete] = useState("");
   const [valoareTichet, setValoareTichet] = useState("");
+
+  // Câmpurile generatorului de fluturaș (folosite doar când fluturas=true).
+  // Firma și reținerile NU intră în calculul fiscal: firma apare doar pe PDF,
+  // reținerile se scad din net (aplicate „live", fără recalcul).
+  const [firma, setFirma] = useState("");
+  const [oreSupl, setOreSupl] = useState("");
+  const [sporOre, setSporOre] = useState("75");
+  const [sporuri, setSporuri] = useState("");
+  const [retineri, setRetineri] = useState("");
 
   const initialInput: InputState = {
     brut: brutInitial,
@@ -404,17 +464,29 @@ export default function CalculatorSalariu({
 
   const [input, setInput] = useState<InputState>(initialInput);
 
+  // În modul fluturaș, inputul de calcul e brutul COMPUS (bază + suplimentare +
+  // sporuri) cu salariuDeBaza atașat; altfel, inputul brut, neschimbat.
+  const pregatesteInput = (inp: InputState): InputState =>
+    fluturas ? compuneFluturas(inp, { oreSupl, sporOre, sporuri }).input : inp;
+
   // Rezultatul afișat – calculat O DATĂ la click pe Calculează, stocat ca obiect.
   // Nu se schimbă la tastare/toggle, doar la click. La mount, dacă brutInitial
   // e prezent (pagini dinamice tip /4050-brut-...), pre-calculează (auto-commit
   // pentru SEO/SSR – Google vede tabelul completat la randare).
   const [rezAfisat, setRezAfisat] = useState<ReturnType<typeof buildResult>>(
-    brutInitial && parseFloat(brutInitial) > 0 ? buildResult(initialInput, modInitial) : null
+    brutInitial && parseFloat(brutInitial) > 0 ? buildResult(pregatesteInput(initialInput), modInitial) : null
+  );
+
+  // Defalcarea brutului compus la momentul ultimului calcul (doar mod fluturaș).
+  const [fluturasSnap, setFluturasSnap] = useState<{ baza: number; plataSupl: number; fixe: number; oreSupl: number; sporProc: number } | null>(
+    fluturas && brutInitial && parseFloat(brutInitial) > 0
+      ? (() => { const c = compuneFluturas(initialInput, { oreSupl: "", sporOre: "75", sporuri: "" }); return { baza: c.baza, plataSupl: c.plataSupl, fixe: c.fixe, oreSupl: 0, sporProc: 75 }; })()
+      : null
   );
 
   // Cheia inputului care a produs rezultatul afișat (pentru detectarea „învechirii").
   const [rezKey, setRezKey] = useState<string>(
-    brutInitial && parseFloat(brutInitial) > 0 ? inputKey(initialInput, modInitial) : ""
+    brutInitial && parseFloat(brutInitial) > 0 ? inputKey(pregatesteInput(initialInput), modInitial) : ""
   );
 
   const set = useCallback(
@@ -433,16 +505,25 @@ export default function CalculatorSalariu({
       return;
     }
     setEmptyWarn(false);
-    setRezAfisat(buildResult(input, mod));
-    setRezKey(inputKey(input, mod));
+    if (fluturas) {
+      const c = compuneFluturas(input, { oreSupl, sporOre, sporuri });
+      setRezAfisat(buildResult(c.input, mod));
+      setRezKey(inputKey(c.input, mod));
+      setFluturasSnap({ baza: c.baza, plataSupl: c.plataSupl, fixe: c.fixe, oreSupl: parseInt(oreSupl) || 0, sporProc: parseFloat(sporOre) || 0 });
+    } else {
+      setRezAfisat(buildResult(input, mod));
+      setRezKey(inputKey(input, mod));
+    }
     if (typeof window === "undefined") return;
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
     const targetId = isMobile ? "rezultat-calcul" : "calc-layout";
     document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth", block: "start" });
-  }, [input, mod]);
+  }, [input, mod, fluturas, oreSupl, sporOre, sporuri]);
 
   // Rezultatul afișat e „învechit" dacă datele curente diferă de cele de la ultimul calcul.
-  const stale = rezAfisat !== null && rezKey !== inputKey(input, mod);
+  const stale = rezAfisat !== null && rezKey !== inputKey(pregatesteInput(input), mod);
+  // Reținerile se aplică live pe net (scădere simplă, fără recalcul fiscal).
+  const retineriNum = fluturas ? Math.max(0, parseInt(retineri) || 0) : 0;
 
   return (
     <>
@@ -495,6 +576,7 @@ export default function CalculatorSalariu({
         <div className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-2" data-md-strip>
           <h2 className={colHeader}>Date salariale</h2>
 
+          {!fluturas && (
           <div className="mb-5">
             <span className={fieldLabel}>Direcție de calcul</span>
             <div className="flex w-full overflow-hidden rounded border border-stone-300">
@@ -529,8 +611,46 @@ export default function CalculatorSalariu({
               </button>
             </div>
           </div>
+          )}
 
-          <InputNumber id="salariu-input" label={mod === "brut" ? "Salariu brut" : "Salariu net"} value={input.brut} onChange={(v) => { set("brut", v); if (emptyWarn) setEmptyWarn(false); }} placeholder={mod === "brut" ? `ex: ${grupeazaMii(EX_PLACEHOLDER_BRUT)}` : `ex: ${grupeazaMii(EX_PLACEHOLDER_NET)}`} onEnter={handleCalculeaza} error={emptyWarn ? "Introdu un salariu mai întâi." : undefined} tall />
+          <InputNumber id="salariu-input" label={fluturas ? "Salariu de bază (brut)" : mod === "brut" ? "Salariu brut" : "Salariu net"} value={input.brut} onChange={(v) => { set("brut", v); if (emptyWarn) setEmptyWarn(false); }} placeholder={mod === "brut" ? `ex: ${grupeazaMii(EX_PLACEHOLDER_BRUT)}` : `ex: ${grupeazaMii(EX_PLACEHOLDER_NET)}`} onEnter={handleCalculeaza} error={emptyWarn ? "Introdu un salariu mai întâi." : undefined} tall />
+
+          {fluturas && (
+            <>
+              {/* Câmpurile statului de plată — doar în generatorul de fluturaș */}
+              <div className="mb-5">
+                <label htmlFor="firma-input" className={fieldLabel}>Firma (opțional, apare pe PDF)</label>
+                <input
+                  id="firma-input"
+                  name="firma-input"
+                  type="text"
+                  value={firma}
+                  onChange={(e) => setFirma(e.target.value)}
+                  placeholder="ex: Exemplu SRL"
+                  maxLength={34}
+                  className={controlBox}
+                />
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                <InputNumber id="ore-supl" label="Ore suplimentare" unit="ore" value={oreSupl} placeholder="ex: 8"
+                  onChange={setOreSupl} />
+                <InputNumber id="spor-ore" label="Spor ore supl." unit="%" value={sporOre} placeholder="ex: 75"
+                  onChange={setSporOre} />
+              </div>
+              <p className="-mt-3 mb-5 text-xs text-stone-500">
+                Plata orelor suplimentare: tariful orar al lunii curente × ore × (100% + spor). Sporul legal minim e 75% (Codul Muncii art. 123).
+              </p>
+              <div className="grid grid-cols-2 gap-3">
+                <InputNumber id="sporuri-fixe" label="Sporuri și prime (brute)" unit="lei" value={sporuri} placeholder="ex: 200"
+                  onChange={setSporuri} />
+                <InputNumber id="retineri-input" label="Rețineri (avans, popriri)" unit="lei" value={retineri} placeholder="ex: 0"
+                  onChange={setRetineri} />
+              </div>
+              <p className="-mt-3 mb-5 text-xs text-stone-500">
+                Sporurile brute se taxează ca salariul. Reținerile se scad la final, din netul de plată.
+              </p>
+            </>
+          )}
 
           <button
             type="button"
@@ -603,14 +723,39 @@ export default function CalculatorSalariu({
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td className={`${cellL} font-medium text-stone-900`}>Salariu de încadrare (Brut)</td>
-                    <td className={`${cellR} font-medium text-stone-900`}>{fmt(parseFloat(rezAfisat.brutEfectiv))}</td>
-                  </tr>
-                  {parseFloat(rezAfisat.brutEfectiv) === SALARIU_MINIM && rezAfisat.functieDeBAza && (
+                  {fluturas && fluturasSnap && (fluturasSnap.plataSupl > 0 || fluturasSnap.fixe > 0) ? (
+                    <>
+                      <tr>
+                        <td className={cellL}>Salariu de bază (încadrare)</td>
+                        <td className={cellR}>{fmt(fluturasSnap.baza)}</td>
+                      </tr>
+                      {fluturasSnap.plataSupl > 0 && (
+                        <tr>
+                          <td className={`${cellL} pl-4 sm:pl-8`}>Ore suplimentare ({fluturasSnap.oreSupl} ore, spor {fluturasSnap.sporProc}%)</td>
+                          <td className={cellR}>+ {fmt(fluturasSnap.plataSupl)}</td>
+                        </tr>
+                      )}
+                      {fluturasSnap.fixe > 0 && (
+                        <tr>
+                          <td className={`${cellL} pl-4 sm:pl-8`}>Sporuri și prime (brute)</td>
+                          <td className={cellR}>+ {fmt(fluturasSnap.fixe)}</td>
+                        </tr>
+                      )}
+                      <tr>
+                        <td className={`${cellL} font-medium text-stone-900`}>Venit brut total</td>
+                        <td className={`${cellR} font-medium text-stone-900`}>{fmt(parseFloat(rezAfisat.brutEfectiv))}</td>
+                      </tr>
+                    </>
+                  ) : (
+                    <tr>
+                      <td className={`${cellL} font-medium text-stone-900`}>Salariu de încadrare (Brut)</td>
+                      <td className={`${cellR} font-medium text-stone-900`}>{fmt(parseFloat(rezAfisat.brutEfectiv))}</td>
+                    </tr>
+                  )}
+                  {rezAfisat.rez.facilitate > 0 && (
                     <tr>
                       <td className={`${cellL} pl-4 sm:pl-8`}>Facilitate fiscală (neimpozabilă)</td>
-                      <td className={cellR}>{fmt(DEDUCERE_MINIM)}</td>
+                      <td className={cellR}>{fmt(rezAfisat.rez.facilitate)}</td>
                     </tr>
                   )}
                   <tr>
@@ -647,6 +792,18 @@ export default function CalculatorSalariu({
                       <td className={cellL}>Tichete de masă</td>
                       <td className={cellR}>+ {fmt(rezAfisat.rez.tichete)}</td>
                     </tr>
+                  )}
+                  {retineriNum > 0 && (
+                    <>
+                      <tr>
+                        <td className={cellL}>Rețineri (avans, popriri)</td>
+                        <td className={cellR}>− {fmt(retineriNum)}</td>
+                      </tr>
+                      <tr className="bg-canvas">
+                        <td className={`${cellL} font-bold text-stone-900`}>Rest de plată</td>
+                        <td className={`${cellR} font-bold text-stone-900`}>{fmt(rezAfisat.rez.netBani - retineriNum)}</td>
+                      </tr>
+                    </>
                   )}
                 </tbody>
               </table>
@@ -765,13 +922,16 @@ export default function CalculatorSalariu({
               onClick={() => generarePDFFluturas({
                 brut: parseFloat(rezAfisat.brutEfectiv),
                 rez: rezAfisat.rez,
-                esteSalariuMinim: parseFloat(rezAfisat.brutEfectiv) === SALARIU_MINIM && rezAfisat.functieDeBAza,
-                facilitate: DEDUCERE_MINIM,
                 // Butonul e dezactivat când rezultatul e „învechit" (stale), deci
                 // nr/valoare tichete din state corespund snapshot-ului calculat.
                 nrTichete,
                 valoareTichet,
                 scutitImpozit: rezAfisat.scutitImpozit,
+                // Extra generatorului de fluturaș (firma și reținerile se aplică live,
+                // fără recalcul fiscal — nu intră în snapshot-ul de staleness).
+                firma: fluturas ? firma : undefined,
+                detalii: fluturas && fluturasSnap ? fluturasSnap : undefined,
+                retineri: retineriNum,
               })}
             >
               ↓ Descarcă fluturaș PDF

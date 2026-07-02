@@ -36,6 +36,10 @@ export const CASS_PROCENT = 0.10;
 export const IMPOZIT_PROCENT = 0.10;
 export const CAM_PROCENT = 0.0225;
 export const DEDUCERE_MINIM = 200;
+// Plafonul facilității (OUG 89/2025, S2 2026): facilitatea se acordă când salariul
+// DE BAZĂ este exact minimul, iar venitul brut lunar din salarii (FĂRĂ tichete)
+// nu depășește acest plafon. În S1 era 4.300; din 1 iulie, 4.600.
+export const PLAFON_FACILITATE = 4600;
 
 // ─── Tipuri ──────────────────────────────────────────────────────────────────
 
@@ -47,6 +51,10 @@ export interface InputState {
   varstaSub26: boolean;
   copiiScolarizati: number;
   scutitImpozit: boolean;
+  /** Salariul de bază (încadrare), când brutul e compus din bază + ore suplimentare
+   *  + sporuri (generatorul de fluturaș). Facilitatea OUG 89/2025 se decide pe bază
+   *  minimă + plafonul de venit brut, nu pe brutul compus. Absent → bază = brut. */
+  salariuDeBaza?: string;
 }
 
 export interface Rezultat {
@@ -61,6 +69,7 @@ export interface Rezultat {
   cam: number; //               D112: C4_ct · creanța 480 (CAM angajator 2,25%)
   costTotal: number; //         brut + CAM + tichete (cost total angajator)
   brutNet: number; //           % din brut care ajunge net (afișaj)
+  facilitate: number; //        suma netaxabilă OUG 89/2025 efectiv aplicată (0 sau DEDUCERE_MINIM)
 }
 
 // ─── Calcul deducere personală (Codul Fiscal art. 77) ────────────────────────
@@ -92,7 +101,15 @@ export function calculeaza(input: InputState): Rezultat | null {
   const tichete = parseFloat(input.tichete) || 0;
   const { functieDeBAza, persoanePretretinere, varstaSub26, copiiScolarizati, scutitImpozit } = input;
 
-  const facilitate = (functieDeBAza && brut === SALARIU_MINIM) ? DEDUCERE_MINIM : 0;
+  // Facilitatea OUG 89/2025: salariul DE BAZĂ = minimul, iar venitul brut din
+  // salarii (fără tichete) ≤ plafon. Când brutul e compus (bază + suplimentare +
+  // sporuri), eligibilitatea se decide pe bază; fără salariuDeBaza, bază = brut,
+  // deci comportamentul istoric (brut === minim) rămâne identic.
+  const salariuDeBaza = input.salariuDeBaza ? parseFloat(input.salariuDeBaza) : brut;
+  const facilitate =
+    (functieDeBAza && salariuDeBaza === SALARIU_MINIM && brut <= PLAFON_FACILITATE)
+      ? DEDUCERE_MINIM
+      : 0;
   const bazaCasCassSalariu = Math.max(0, brut - facilitate);
 
   const cas = Math.round(bazaCasCassSalariu * CAS_PROCENT);
@@ -143,6 +160,7 @@ export function calculeaza(input: InputState): Rezultat | null {
     cam,
     costTotal: brut + cam + tichete,
     brutNet: brut > 0 ? Math.round((netBaniCont / brut) * 100) : 0,
+    facilitate,
   };
 }
 
