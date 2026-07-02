@@ -335,8 +335,15 @@ async function generarePDFFluturas(opts: {
 
   // ─── Drepturi ─────────────────────────────────────────────────────────────
   sectiune("DREPTURI SALARIALE");
+  // Tariful orar standard al lunii (informativ, ca pe statul de plată).
+  const oreNormaPdf = zileLucr * 8;
+  const bazaPdf = detalii?.baza ?? brut;
+  const tarifOrarPdf = oreNormaPdf > 0
+    ? (bazaPdf / oreNormaPdf).toLocaleString("ro-RO", { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+    : "";
   if (detalii && (detalii.plataSupl > 0 || detalii.fixe > 0)) {
     rand("Salariu de baza (incadrare)", lei(detalii.baza));
+    if (tarifOrarPdf) rand(`Ore standard (${oreNormaPdf} ore/luna)`, `${tarifOrarPdf} lei/ora`, { dim: true });
     if (detalii.plataSupl > 0) {
       rand(`Ore suplimentare (${detalii.oreSupl} ore, spor ${detalii.sporProc}%)`, lei(detalii.plataSupl));
     }
@@ -346,6 +353,7 @@ async function generarePDFFluturas(opts: {
     rand("Venit brut total", lei(brut), { bold: true });
   } else {
     rand("Salariu de baza (incadrare)", lei(brut));
+    if (tarifOrarPdf) rand(`Ore standard (${oreNormaPdf} ore/luna)`, `${tarifOrarPdf} lei/ora`, { dim: true });
   }
   if (tichete > 0) {
     const nrT = parseInt(nrTichete) || 0;
@@ -476,9 +484,9 @@ export default function CalculatorSalariu({
   );
 
   // Defalcarea brutului compus la momentul ultimului calcul (doar mod fluturaș).
-  const [fluturasSnap, setFluturasSnap] = useState<{ baza: number; plataSupl: number; fixe: number; oreSupl: number; sporProc: number } | null>(
+  const [fluturasSnap, setFluturasSnap] = useState<{ baza: number; plataSupl: number; fixe: number; oreSupl: number; sporProc: number; oreNorma: number } | null>(
     fluturas && brutInitial && parseFloat(brutInitial) > 0
-      ? (() => { const c = compuneFluturas(initialInput, { oreSupl: "", sporOre: "75", sporuri: "" }); return { baza: c.baza, plataSupl: c.plataSupl, fixe: c.fixe, oreSupl: 0, sporProc: 75 }; })()
+      ? (() => { const c = compuneFluturas(initialInput, { oreSupl: "", sporOre: "75", sporuri: "" }); return { baza: c.baza, plataSupl: c.plataSupl, fixe: c.fixe, oreSupl: 0, sporProc: 75, oreNorma: c.oreNorma }; })()
       : null
   );
 
@@ -507,7 +515,7 @@ export default function CalculatorSalariu({
       const c = compuneFluturas(input, { oreSupl, sporOre, sporuri });
       setRezAfisat(buildResult(c.input, mod));
       setRezKey(inputKey(c.input, mod));
-      setFluturasSnap({ baza: c.baza, plataSupl: c.plataSupl, fixe: c.fixe, oreSupl: parseInt(oreSupl) || 0, sporProc: parseFloat(sporOre) || 0 });
+      setFluturasSnap({ baza: c.baza, plataSupl: c.plataSupl, fixe: c.fixe, oreSupl: parseInt(oreSupl) || 0, sporProc: parseFloat(sporOre) || 0, oreNorma: c.oreNorma });
     } else {
       setRezAfisat(buildResult(input, mod));
       setRezKey(inputKey(input, mod));
@@ -526,6 +534,18 @@ export default function CalculatorSalariu({
   const sectF = (titlu: string) => (
     <tr>
       <td colSpan={2} className="border-b border-stone-300 bg-canvas px-3 py-2 text-left text-xs font-semibold uppercase tracking-wide text-stone-500">{titlu}</td>
+    </tr>
+  );
+
+  // Antetul documentului-fluturaș: firma (live, din câmpul opțional) + luna curentă —
+  // ca pe fluturașul real. Luna stă AICI, pe document, nu în titlul panoului.
+  const lunaFluturas = fluturas
+    ? new Date().toLocaleDateString("ro-RO", { month: "long", year: "numeric" })
+    : "";
+  const antetF = (
+    <tr>
+      <td className={`${cellL} font-medium ${firma.trim() ? "text-stone-900" : "text-stone-400"}`}>{firma.trim() || "Unitatea: —"}</td>
+      <td className={`${cellR} font-medium capitalize text-stone-900`}>{lunaFluturas}</td>
     </tr>
   );
 
@@ -725,11 +745,18 @@ export default function CalculatorSalariu({
                 <table className="w-full table-auto border-collapse [&_td]:align-middle sm:table-fixed text-sm text-stone-700">
                   <colgroup><col /><col className="w-28 sm:w-36" /></colgroup>
                   <tbody>
+                    {antetF}
                     {sectF("Drepturi salariale")}
                     <tr>
                       <td className={cellL}>Salariu de bază (încadrare)</td>
                       <td className={cellR}>{fmt(fluturasSnap?.baza ?? parseFloat(rezAfisat.brutEfectiv))}</td>
                     </tr>
+                    {fluturasSnap && fluturasSnap.oreNorma > 0 && fluturasSnap.baza > 0 && (
+                      <tr>
+                        <td className={`${cellL} text-stone-500`}>Ore standard ({fluturasSnap.oreNorma} ore/lună)</td>
+                        <td className={`${cellR} text-stone-500`}>{(fluturasSnap.baza / fluturasSnap.oreNorma).toLocaleString("ro-RO", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} lei/oră</td>
+                      </tr>
+                    )}
                     {fluturasSnap && fluturasSnap.plataSupl > 0 && (
                       <tr>
                         <td className={`${cellL} pl-4 sm:pl-8`}>Ore suplimentare ({fluturasSnap.oreSupl} ore, spor {fluturasSnap.sporProc}%)</td>
@@ -742,7 +769,7 @@ export default function CalculatorSalariu({
                         <td className={cellR}>+ {fmt(fluturasSnap.fixe)}</td>
                       </tr>
                     )}
-                    {fluturasSnap && (fluturasSnap.plataSupl > 0 || fluturasSnap.fixe > 0) && (
+                    {fluturasSnap && (fluturasSnap.plataSupl > 0 || fluturasSnap.fixe > 0) && rezAfisat.rez.tichete > 0 && (
                       <tr>
                         <td className={`${cellL} font-medium text-stone-900`}>Venit brut total</td>
                         <td className={`${cellR} font-medium text-stone-900`}>{fmt(parseFloat(rezAfisat.brutEfectiv))}</td>
@@ -756,6 +783,10 @@ export default function CalculatorSalariu({
                         <td className={cellR}>+ {fmt(rezAfisat.rez.tichete)}</td>
                       </tr>
                     )}
+                    <tr>
+                      <td className={`${cellL} font-medium text-stone-900`}>Total drepturi</td>
+                      <td className={`${cellR} font-medium text-stone-900`}>{fmt(parseFloat(rezAfisat.brutEfectiv) + rezAfisat.rez.tichete)}</td>
+                    </tr>
                     {sectF("Rețineri")}
                     {rezAfisat.rez.facilitate > 0 && (
                       <tr>
@@ -927,6 +958,7 @@ export default function CalculatorSalariu({
               <table className="w-full table-auto border-collapse [&_td]:align-middle sm:table-fixed text-sm">
                 <colgroup><col /><col className="w-28 sm:w-36" /></colgroup>
                 <tbody>
+                  {antetF}
                   {sectF("Drepturi salariale")}
                   <tr>
                     <td className={cellL}>Salariu de bază (încadrare)</td>
