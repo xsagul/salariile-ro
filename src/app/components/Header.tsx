@@ -12,7 +12,7 @@ type Item = Leaf | Group;
 // Structură extensibilă: linkuri simple + grupuri (dropdown). Adaugi ușor
 // „Calculator PFA" sau „Noutăți" fie ca leaf, fie în grupul Ghiduri.
 const NAV: Item[] = [
-  { href: "/", label: "Calculator" },
+  { href: "/", label: "Calculator salariu" },
   { href: "/calculator-pfa", label: "Calculator PFA" },
   {
     label: "Ghiduri",

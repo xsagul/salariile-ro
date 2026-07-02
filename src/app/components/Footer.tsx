@@ -28,7 +28,7 @@ type FooterLink = { href: string; label: string; external?: boolean };
 
 const FOOTER_GROUPS: Array<{ title: string; links: FooterLink[] }> = [
   {
-    title: "Calculatoare",
+    title: "Instrumente",
     links: [
       { href: "/", label: "Calculator salariu net" },
       { href: "/calculator-pfa", label: "Calculator PFA" },

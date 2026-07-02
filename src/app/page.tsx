@@ -219,6 +219,7 @@ export default function Page() {
                       ["Salariul minim net", "/salariu-minim#net"],
                       ["Salariul mediu pe economie", "/salariu-mediu"],
                       ["Calculator taxe PFA", "/calculator-pfa"],
+                      ["Generator fluturaș de salariu", "/fluturas-salariu"],
                       ["Zile libere și lucrătoare 2026", "/zile-libere-2026"],
                     ] as const).map(([label, href]) => (
                       <li key={href}>
