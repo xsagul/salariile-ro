@@ -398,7 +398,9 @@ async function generarePDFFluturas(opts: {
 
   // ─── De plată ─────────────────────────────────────────────────────────────
   sectiune("DE PLATA");
-  rand("SALARIU NET (virat in cont)", lei(rez.netBani), { bold: true });
+  // „Salariu net" = după taxe; ce intră efectiv în cont e REST DE PLATA (după
+  // rețineri) — exact ca pe fluturașul real.
+  rand("SALARIU NET", lei(rez.netBani), { bold: true });
   if (tichete > 0) {
     rand("Tichete de masa (pe card, valoare integrala)", lei(tichete));
     rand("TOTAL INCASAT (cont + card)", lei(rez.net), { bold: true });
@@ -558,17 +560,8 @@ export default function CalculatorSalariu({
     </tr>
   );
 
-  // Antetul documentului-fluturaș: firma (live, din câmpul opțional) + luna curentă —
-  // ca pe fluturașul real. Luna stă AICI, pe document, nu în titlul panoului.
-  const lunaFluturas = fluturas
-    ? new Date().toLocaleDateString("ro-RO", { month: "long", year: "numeric" })
-    : "";
-  const antetF = (
-    <tr>
-      <td className={`${cellL} font-medium ${firma.trim() ? "text-stone-900" : "text-stone-400"}`}>{firma.trim() || "Unitatea: —"}</td>
-      <td className={`${cellR} font-medium capitalize text-stone-900`}>{lunaFluturas}</td>
-    </tr>
-  );
+  // Firma și luna NU apar în tabelul de pe ecran (ar aglomera UI-ul) — doar pe
+  // PDF, unde antetul documentului le are ca pe fluturașul real.
 
   return (
     <>
@@ -775,7 +768,6 @@ export default function CalculatorSalariu({
                 <table className="w-full table-auto border-collapse [&_td]:align-middle sm:table-fixed text-sm text-stone-700">
                   <colgroup><col /><col className="w-28 sm:w-36" /></colgroup>
                   <tbody>
-                    {antetF}
                     {sectF("Drepturi salariale")}
                     <tr>
                       <td className={cellL}>Salariu de bază (încadrare)</td>
@@ -854,7 +846,7 @@ export default function CalculatorSalariu({
                     </tr>
                     {sectF("De plată")}
                     <tr className="bg-stone-900">
-                      <td className="border-r border-r-stone-600 px-3 py-3 text-left text-sm font-bold text-white">Salariu net (virat în cont)</td>
+                      <td className="border-r border-r-stone-600 px-3 py-3 text-left text-sm font-bold text-white">Salariu net</td>
                       <td className="px-3 py-3 text-right text-sm font-bold tabular-nums whitespace-nowrap text-white">{fmt(rezAfisat.rez.netBani)}</td>
                     </tr>
                     {rezAfisat.rez.tichete > 0 && (
@@ -994,7 +986,6 @@ export default function CalculatorSalariu({
               <table className="w-full table-auto border-collapse [&_td]:align-middle sm:table-fixed text-sm">
                 <colgroup><col /><col className="w-28 sm:w-36" /></colgroup>
                 <tbody>
-                  {antetF}
                   {sectF("Drepturi salariale")}
                   <tr>
                     <td className={cellL}>Salariu de bază (încadrare)</td>
@@ -1019,7 +1010,7 @@ export default function CalculatorSalariu({
                   </tr>
                   {sectF("De plată")}
                   <tr className="bg-stone-900">
-                    <td className="border-r border-r-stone-600 px-3 py-3 text-left text-sm font-bold text-white">Salariu net (virat în cont)</td>
+                    <td className="border-r border-r-stone-600 px-3 py-3 text-left text-sm font-bold text-white">Salariu net</td>
                     <td className="px-3 py-3 text-right text-sm font-bold text-white/80">–</td>
                   </tr>
                   <tr>
