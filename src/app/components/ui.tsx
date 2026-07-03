@@ -17,6 +17,9 @@ const PROSE = [
   "[&_em]:not-italic [&_em]:font-medium [&_em]:text-stone-900",
   // Tabele: card boxat (border rotunjit + header pe bg-canvas), linii de rând, tabular-nums.
   "[&_table]:my-6 [&_table]:w-full [&_table]:overflow-hidden [&_table]:rounded-md [&_table]:border [&_table]:border-stone-200 [&_table]:bg-surface [&_table]:shadow-soft [&_table]:border-separate [&_table]:border-spacing-0 [&_table]:text-sm [&_table]:tabular-nums",
+  // .table-wrap (adăugat de noutati.ts în jurul tabelelor din markdown): scroll
+  // orizontal propriu pe ecrane înguste, ca tabelul lat să nu lărgească pagina.
+  "[&_.table-wrap]:my-6 [&_.table-wrap]:overflow-x-auto [&_.table-wrap>table]:my-0",
   "[&_thead_th]:border-b [&_thead_th]:border-stone-200 [&_thead_th]:bg-canvas [&_thead_th]:px-3 [&_thead_th]:py-3 [&_thead_th]:text-left [&_thead_th]:text-xs [&_thead_th]:font-medium [&_thead_th]:uppercase [&_thead_th]:tracking-wide [&_thead_th]:text-stone-600",
   "[&_tbody_td]:border-b [&_tbody_td]:border-stone-100 [&_tbody_td]:px-3 [&_tbody_td]:py-3 [&_tbody_td]:text-stone-700",
   "[&_tbody_tr:last-child_td]:border-b-0",

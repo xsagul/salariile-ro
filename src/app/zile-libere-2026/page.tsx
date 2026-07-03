@@ -268,6 +268,7 @@ export default function ZileLibere2026Page() {
               calculul tarifului orar, al contractelor part-time și al normelor de lucru.
             </p>
             <div className={`mt-6 ${card}`}>
+              <div className="overflow-x-auto">
               <table className="w-full text-sm tabular-nums">
                 <thead>
                   <tr className="border-b border-stone-300 text-xs font-medium uppercase tracking-wide text-stone-500">
@@ -294,6 +295,7 @@ export default function ZileLibere2026Page() {
                   </tr>
                 </tbody>
               </table>
+              </div>
               <p className="mt-4 text-xs text-stone-500">
                 Zilele lucrătoare exclud weekendurile și sărbătorile legale care cad în zile lucrătoare. Iulie are cele mai
                 multe (23), ianuarie cele mai puține (18).

@@ -71,8 +71,12 @@ export function getArticle(slug: string): Article | null {
   const { data, content } = matter(readRaw(slug));
   // marked emite align="..." (atribut legacy) pe th/td. Îl convertim în stil
   // inline ca să bată CSS-ul din <Prose> (altfel header-ul aliniat e suprascris).
+  // Tabelele primesc un wrapper cu scroll orizontal propriu: un tabel mai lat
+  // decât ecranul (mobil) nu mai lărgește pagina, ci derulează în interior.
   const html = (marked.parse(content, { async: false }) as string)
-    .replace(/ align="(left|center|right)"/g, ' style="text-align:$1"');
+    .replace(/ align="(left|center|right)"/g, ' style="text-align:$1"')
+    .replace(/<table>/g, '<div class="table-wrap"><table>')
+    .replace(/<\/table>/g, "</table></div>");
   return { ...metaFrom(slug, data, content), html };
 }
 
