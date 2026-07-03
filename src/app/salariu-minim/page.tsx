@@ -10,6 +10,14 @@ import Link from "next/link";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
 
+// Imaginea de share a paginii: crop 1200×630 din hero (nu brandul generic).
+const OG_SALARIU_MINIM = {
+  url: "/og-salariu-minim.jpg",
+  width: 1200,
+  height: 630,
+  alt: "Ilustrație: o mână deschisă care susține o căsuță și o siluetă mică, salariul minim ca o podea ce asigură un trai demn",
+} as const;
+
 // ─── Metadata SEO ────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
@@ -22,11 +30,13 @@ export const metadata: Metadata = {
     description:
       "Din 1 iulie 2026, minimul brut e 4.325 lei. Netul real cu facilitatea de 200 lei, când o pierzi, tichetele și costul firmei.",
     path: "/salariu-minim",
+    image: OG_SALARIU_MINIM,
   }),
   twitter: twPage({
     title: "Salariul minim pe economie 2026: cât rămâne net la tine",
     description:
       "Din 1 iulie 2026, minimul brut e 4.325 lei. Netul real cu facilitatea de 200 lei, când o pierzi, tichetele și costul firmei.",
+    image: OG_SALARIU_MINIM,
   }),
 };
 
@@ -162,7 +172,7 @@ const jsonLd = {
         name: "Salariile.ro",
         logo: { "@type": "ImageObject", url: "https://salariile.ro/og-image.png", width: 1200, height: 630 },
       },
-      image: { "@type": "ImageObject", url: "https://salariile.ro/og-image.png", width: 1200, height: 630 },
+      image: { "@type": "ImageObject", url: "https://salariile.ro/og-salariu-minim.jpg", width: 1200, height: 630 },
       mainEntityOfPage: "https://salariile.ro/salariu-minim",
       datePublished: "2026-04-27",
       dateModified: "2026-07-01",

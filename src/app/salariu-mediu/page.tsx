@@ -10,6 +10,14 @@ import Link from "next/link";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
 
+// Imaginea de share a paginii: crop 1200×630 din hero (nu brandul generic).
+const OG_SALARIU_MEDIU = {
+  url: "/og-salariu-mediu.jpg",
+  width: 1200,
+  height: 630,
+  alt: "Ilustrație: oameni de înălțimi diferite, ca un grafic, cu o linie a mediei, majoritatea sub linie, câțiva mari o trag în sus",
+} as const;
+
 // ─── Metadata SEO ────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
@@ -22,11 +30,13 @@ export const metadata: Metadata = {
     description:
       "Salariul mediu brut 2026 este 9.192 lei (~5.377 net), Legea 44/2026. Media e trasă în sus de salariile mari, vezi cât câștigă un angajat tipic.",
     path: "/salariu-mediu",
+    image: OG_SALARIU_MEDIU,
   }),
   twitter: twPage({
     title: "Salariul mediu pe economie 2026: brut, net, mediană",
     description:
       "Salariul mediu brut 2026 este 9.192 lei (~5.377 net), Legea 44/2026. Media e trasă în sus de salariile mari, vezi cât câștigă un angajat tipic.",
+    image: OG_SALARIU_MEDIU,
   }),
 };
 
@@ -135,7 +145,7 @@ const jsonLd = {
         name: "Salariile.ro",
         logo: { "@type": "ImageObject", url: "https://salariile.ro/og-image.png", width: 1200, height: 630 },
       },
-      image: { "@type": "ImageObject", url: "https://salariile.ro/og-image.png", width: 1200, height: 630 },
+      image: { "@type": "ImageObject", url: "https://salariile.ro/og-salariu-mediu.jpg", width: 1200, height: 630 },
       mainEntityOfPage: "https://salariile.ro/salariu-mediu",
       datePublished: "2026-03-30",
       dateModified: "2026-06-08",
