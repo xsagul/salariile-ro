@@ -13,6 +13,7 @@ Commituri relevante:
 - `9a3f698` - Document SEO audit progress
 - `db8e8ea` - Remove unused app archive artifact
 - `d9dfebd` - Add concise answers to key SEO pages
+- `fb79ac7` - Link new guides from main navigation
 
 Ce s-a facut:
 
@@ -37,6 +38,7 @@ Ce s-a facut:
   - `/calculator-pfa`
 - `/salariu-mediu` a fost actualizat cu date INS aprilie 2026: 9.740 lei brut si 5.843 lei net.
 - Sitemap Google/Bing si IndexNow au fost retrimise dupa aceste schimbari.
+- Paginile noi `/deducere-personala-2026` si `/zile-lucratoare-2026` au fost adaugate in dropdownul principal "Ghiduri".
 
 Rapoarte generate pe Desktop:
 
