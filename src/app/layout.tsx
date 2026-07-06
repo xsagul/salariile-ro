@@ -86,17 +86,25 @@ export default async function RootLayout({
   const headerStore = await headers();
   const nonce = headerStore.get("x-nonce") || undefined;
 
+  // /widget/frame rulează în <iframe> pe alte site-uri: fără Header/Footer,
+  // doar conținutul widgetului. Pathname-ul vine din middleware (x-pathname).
+  const isEmbeddableFrame = (headerStore.get("x-pathname") || "").startsWith("/widget/frame");
+
   return (
     <html lang="ro" className={inter.variable}>
       <head>
         {/* Next.js va folosi automat nonce-ul pentru scripturile sale de sistem */}
       </head>
       <body className="min-h-screen overflow-x-hidden bg-white font-sans text-stone-700 antialiased">
+        {isEmbeddableFrame ? (
+          children
+        ) : (
         <div className="relative flex min-h-screen flex-col">
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
         </div>
+        )}
         {/* Speed Insights doar pe Vercel — pe localhost scriptul /_vercel/speed-insights/script.js
             dă 404 și loghează eroare în consolă (scade Best Practices). VERCEL_ENV e setat doar pe Vercel.
             nonce necesar pentru CSP; prop lipsește din tipurile @vercel/speed-insights. */}

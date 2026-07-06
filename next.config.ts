@@ -9,7 +9,10 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: "/(.*)",
+        // Toate rutele, CU EXCEPȚIA /widget/frame (widgetul embeddabil, care
+        // trebuie să poată rula în <iframe> pe alte site-uri — acolo framing-ul
+        // e controlat prin CSP frame-ancestors din middleware, nu X-Frame-Options).
+        source: "/((?!widget/frame).*)",
         headers: [
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "X-Frame-Options", value: "DENY" },
@@ -20,6 +23,15 @@ const nextConfig: NextConfig = {
           // NOTE: Link header (RFC 8288) e setat din middleware ca să se aplice
           // DOAR pe răspunsurile HTML/dynamic (nu pe asseturi statice — nu are
           // sens să trimitem hint-uri de sitemap pe fiecare .png/.woff2/.svg).
+        ],
+      },
+      {
+        // Widgetul embeddabil: aceleași headere de securitate, fără X-Frame-Options.
+        source: "/widget/frame",
+        headers: [
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
         ],
       },
       {

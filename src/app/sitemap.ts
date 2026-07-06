@@ -21,6 +21,7 @@ const STATIC_ENTRIES: {
   { path: "/salariu-mediu", priority: 0.9, changeFrequency: "monthly" },
   { path: "/zile-libere-2026", priority: 0.8, changeFrequency: "monthly" },
   { path: "/fluturas-salariu", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/widget", priority: 0.6, changeFrequency: "monthly" },
   { path: "/noutati", priority: 0.7, changeFrequency: "weekly" },
   { path: "/metodologie", priority: 0.6, changeFrequency: "monthly" },
   { path: "/despre", priority: 0.5, changeFrequency: "yearly" },

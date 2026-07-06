@@ -25,7 +25,12 @@ export function middleware(request: NextRequest) {
 
   // ─── CSP cu nonce pentru răspunsurile HTML ─────────────────────────────────
   const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
-  
+
+  // /widget/frame e SINGURA rută gândită să ruleze în <iframe> pe alte site-uri
+  // (widgetul embeddabil). Pentru ea, frame-ancestors devine * — restul site-ului
+  // rămâne blocat la framing ('none').
+  const isEmbeddableFrame = path === "/widget/frame";
+
   const cspHeader = `
     default-src 'self';
     script-src 'self' 'nonce-${nonce}' 'strict-dynamic' 'unsafe-hashes';
@@ -35,12 +40,13 @@ export function middleware(request: NextRequest) {
     object-src 'none';
     base-uri 'self';
     form-action 'self';
-    frame-ancestors 'none';
+    frame-ancestors ${isEmbeddableFrame ? "*" : "'none'"};
     upgrade-insecure-requests;
   `.replace(/\s{2,}/g, ' ').trim();
 
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set('x-nonce', nonce);
+  requestHeaders.set('x-pathname', path);
   requestHeaders.set('Content-Security-Policy', cspHeader);
 
   const response = NextResponse.next({
