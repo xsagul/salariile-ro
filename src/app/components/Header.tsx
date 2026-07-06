@@ -19,7 +19,9 @@ const NAV: Item[] = [
     children: [
       { href: "/salariu-minim", label: "Salariu minim" },
       { href: "/salariu-mediu", label: "Salariu mediu" },
+      { href: "/deducere-personala-2026", label: "Deducere personală" },
       { href: "/zile-libere-2026", label: "Zile libere 2026" },
+      { href: "/zile-lucratoare-2026", label: "Zile lucrătoare 2026" },
     ],
   },
   { href: "/noutati", label: "Noutăți" },
