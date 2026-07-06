@@ -36,7 +36,7 @@
     iframe.setAttribute("scrolling", "no");
     iframe.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
     iframe.style.cssText =
-      "width:100%;max-width:420px;height:" + clampHeight(el.getAttribute("data-height") || 790) + "px;border:1px solid #e7e5e4;border-radius:8px;display:block;box-sizing:border-box";
+      "width:100%;max-width:420px;height:" + clampHeight(el.getAttribute("data-height") || 790) + "px;border:1px solid #e7e5e4;border-radius:8px;display:block;box-sizing:border-box;margin:0 auto";
     iframe.height = String(clampHeight(el.getAttribute("data-height") || 790));
 
     // Linkul de credit stă în DOM-ul GAZDEI (nu în iframe), ca să fie crawlabil.
@@ -53,7 +53,7 @@
       a.rel = "noopener";
       a.textContent = "Calculator de salarii oferit de salariile.ro";
       a.style.cssText =
-        "display:block;max-width:420px;margin-top:8px;font:14px/1.4 system-ui,sans-serif;color:#57534e";
+        "display:block;max-width:420px;margin:8px auto 0;font:14px/1.4 system-ui,sans-serif;color:#57534e";
       el.appendChild(a);
     }
   }
