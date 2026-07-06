@@ -7,6 +7,7 @@ import type { Metadata } from "next";
 import { ogPage, twPage } from "@/lib/seo";
 import { Hero, Breadcrumb, H1, Lead, Section, Faq } from "@/app/components/ui";
 import EmbedCode from "@/app/components/EmbedCode";
+import WidgetDemo from "@/app/components/WidgetDemo";
 
 const TITLU = "Widget calculator de salarii pentru site-ul tău";
 const DESC =
@@ -20,8 +21,16 @@ export const metadata: Metadata = {
   twitter: twPage({ title: TITLU, description: DESC }),
 };
 
-const EMBED_CODE = `<iframe src="https://salariile.ro/widget/frame"
-  width="100%" height="600" loading="lazy"
+// Metoda recomandată (hibrid, ca la Calendly/Typeform): un div placeholder + scriptul
+// nostru. Scriptul injectează iframe-ul, îl dimensionează automat (fără height fix,
+// se potrivește pe orice ecran) și adaugă linkul de credit în pagina ta.
+const EMBED_CODE = `<div class="salariile-widget"></div>
+<script src="https://salariile.ro/widget.js" async></script>`;
+
+// Alternativă simplă (iframe direct), pentru cine preferă zero JavaScript. Înălțimea
+// e fixă; ajusteaz-o din atributul height dacă e nevoie.
+const EMBED_CODE_IFRAME = `<iframe src="https://salariile.ro/widget/frame"
+  width="100%" height="560" loading="lazy" scrolling="no"
   style="border:1px solid #e7e5e4;border-radius:8px;max-width:420px"
   title="Calculator salariu net 2026"></iframe>
 <p style="font-size:14px;margin-top:8px">
@@ -43,8 +52,12 @@ const FAQ = [
     a: "Da, linkul de sub widget e în pagina ta și îl poți elimina. Îl oferim ca modalitate de creditare a sursei și ne ajută să ținem proiectul gratuit, dar rămâne alegerea ta.",
   },
   {
-    q: "Pot schimba dimensiunile?",
-    a: "Da, din atributele width și height ale iframe-ului. Recomandăm lățime de 320-420px (sau 100% într-o coloană) și înălțime de minim 560px, ca defalcarea taxelor să fie vizibilă fără scroll.",
+    q: "Trebuie să fixez înălțimea?",
+    a: "Nu, dacă folosești varianta recomandată (div + script): widgetul își comunică singur înălțimea paginii tale și se dimensionează automat, pe orice ecran. Doar la varianta cu iframe simplu înălțimea e fixă și o poți ajusta din atributul height.",
+  },
+  {
+    q: "Pot porni calculatorul cu o valoare anume?",
+    a: "Da. Adaugă data-brut pe div, de exemplu <div class=\"salariile-widget\" data-brut=\"5000\"></div>, iar widgetul se încarcă direct cu acel salariu brut calculat.",
   },
 ];
 
@@ -96,14 +109,7 @@ export default function WidgetPage() {
           Demo-ul de mai jos e chiar widgetul, exact cum va apărea pe site-ul tău. Introdu un brut și încearcă-l:
         </p>
         <div className="my-6">
-          <iframe
-            src="/widget/frame"
-            width="100%"
-            height={600}
-            loading="lazy"
-            style={{ border: "1px solid #e7e5e4", borderRadius: 8, maxWidth: 420 }}
-            title="Calculator salariu net 2026 (demo widget)"
-          />
+          <WidgetDemo />
         </div>
         <p>
           Aplică aceleași reguli ca site-ul: facilitatea de 200 de lei la salariul minim cu plafonul de 4.600 lei,
@@ -114,13 +120,26 @@ export default function WidgetPage() {
 
       <Section>
         <h2>Codul de integrare</h2>
-        <p>Copiază codul și lipește-l în pagina ta, unde vrei să apară calculatorul:</p>
+        <p>
+          Copiază codul și lipește-l în pagina ta, unde vrei să apară calculatorul. Această variantă se
+          dimensionează automat, se potrivește pe orice ecran și adaugă singură linkul de credit:
+        </p>
         <div className="my-6">
           <EmbedCode code={EMBED_CODE} />
         </div>
         <p>
-          Rândul cu creditul de sub iframe e opțional, dar ne ajută să ținem proiectul gratuit și fără reclame.
-          Pentru întrebări sau cerințe speciale (dimensiuni, integrare în CMS), scrie-ne la{" "}
+          Poți porni calculatorul cu o valoare din start adăugând <code>data-brut</code> pe div, de exemplu{" "}
+          <code>{`<div class="salariile-widget" data-brut="5000"></div>`}</code>.
+        </p>
+
+        <h3 className="mt-8">Preferi un iframe simplu, fără JavaScript?</h3>
+        <p>Merge și așa. Singura diferență: înălțimea e fixă (o ajustezi din atributul <code>height</code>):</p>
+        <div className="my-6">
+          <EmbedCode code={EMBED_CODE_IFRAME} />
+        </div>
+        <p>
+          Rândul cu creditul e opțional, dar ne ajută să ținem proiectul gratuit și fără reclame. Pentru
+          cerințe speciale (dimensiuni, integrare în CMS), scrie-ne la{" "}
           <a href="mailto:contact@salariile.ro">contact@salariile.ro</a>.
         </p>
       </Section>

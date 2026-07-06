@@ -5,20 +5,40 @@
 // Un singur input (brut), rezultatele esențiale, aceleași reguli fiscale din fiscal.ts
 // (facilitatea la minim, deducerea personală, plafoanele). Fără dependențe de layout.
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { calculStandard, SALARIU_MINIM } from "@/lib/fiscal";
 
 const fmt = (n: number) => n.toLocaleString("ro-RO");
 
-export default function WidgetCalculator() {
-  const [brut, setBrut] = useState(String(SALARIU_MINIM));
+export default function WidgetCalculator({ initialBrut }: { initialBrut?: string }) {
+  const [brut, setBrut] = useState(initialBrut || String(SALARIU_MINIM));
 
   const brutNum = parseFloat(brut) || 0;
   const r = brutNum > 0 ? calculStandard(brutNum) : null;
   const procentStat = r ? Math.round(((r.cas + r.cass + r.impozit) / brutNum) * 100) : 0;
 
+  // Auto-resize: trimite înălțimea reală a conținutului către pagina-gazdă, ca
+  // iframe-ul să se dimensioneze singur (fără height fix). ResizeObserver prinde
+  // orice schimbare de conținut (ex. rândurile apar/dispar la recalcul).
+  // targetOrigin '*': gazda e necunoscută (widget embedat oriunde); trimitem doar
+  // un număr (înălțime), nimic sensibil. Prefix de tip ca gazda să ne recunoască.
+  useEffect(() => {
+    const send = () => {
+      const height = Math.ceil(document.documentElement.getBoundingClientRect().height);
+      window.parent?.postMessage({ type: "salariile:height", height }, "*");
+    };
+    send();
+    const ro = new ResizeObserver(send);
+    ro.observe(document.body);
+    window.addEventListener("load", send);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("load", send);
+    };
+  }, []);
+
   return (
-    <div className="mx-auto flex min-h-screen max-w-md flex-col bg-canvas px-4 py-4">
+    <div className="mx-auto flex max-w-md flex-col bg-canvas px-4 py-4">
       <p className="text-sm font-bold tracking-[-0.01em] text-stone-900">
         Calculator salariu net 2026
       </p>
@@ -87,7 +107,7 @@ export default function WidgetCalculator() {
         <p className="mt-4 text-sm text-stone-500">Introdu salariul brut ca să vezi calculul.</p>
       )}
 
-      <p className="mt-auto pt-4 text-xs text-stone-500">
+      <p className="mt-4 text-xs text-stone-500">
         Actualizat cu legislația de la 1 iulie 2026 (HG 146/2026, OUG 89/2025) ·{" "}
         <a
           href="https://salariile.ro?utm_source=widget"

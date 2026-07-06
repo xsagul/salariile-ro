@@ -1,0 +1,77 @@
+/*!
+ * salariile.ro — script de integrare a widgetului (embed hibrid)
+ * Găsește <div class="salariile-widget">, injectează iframe-ul calculatorului,
+ * adaugă linkul de credit în DOM-ul paginii-gazdă (crawlable, contează pentru SEO)
+ * și dimensionează iframe-ul automat prin postMessage (fără height fix).
+ *
+ * Cod de integrare pentru gazdă:
+ *   <div class="salariile-widget"></div>
+ *   <script src="https://salariile.ro/widget.js" async></script>
+ *
+ * Opțional pe div: data-brut="5000" (valoare inițială), data-height="560" (fallback).
+ */
+(function () {
+  "use strict";
+  var ORIGIN = "https://salariile.ro";
+  var FRAME = ORIGIN + "/widget/frame";
+
+  function initOne(el) {
+    if (el.getAttribute("data-salariile-init")) return;
+    el.setAttribute("data-salariile-init", "1");
+
+    var iframe = document.createElement("iframe");
+    var brut = el.getAttribute("data-brut");
+    iframe.src = FRAME + (brut ? "?brut=" + encodeURIComponent(brut) : "");
+    iframe.title = "Calculator salariu net 2026";
+    iframe.loading = "lazy";
+    iframe.setAttribute("scrolling", "no");
+    iframe.style.cssText =
+      "width:100%;max-width:420px;border:1px solid #e7e5e4;border-radius:8px;display:block";
+    iframe.height = el.getAttribute("data-height") || "560";
+    el.appendChild(iframe);
+
+    // Linkul de credit stă în DOM-ul GAZDEI (nu în iframe), ca să fie crawlabil.
+    // Ancoră de brand, conform politicii Google anti widget-link-scheme.
+    if (!el.querySelector(".salariile-credit")) {
+      var a = document.createElement("a");
+      a.className = "salariile-credit";
+      a.href = ORIGIN + "?utm_source=widget";
+      a.target = "_blank";
+      a.rel = "noopener";
+      a.textContent = "Calculator de salarii oferit de salariile.ro";
+      a.style.cssText =
+        "display:block;max-width:420px;margin-top:8px;font:14px/1.4 system-ui,sans-serif;color:#57534e";
+      el.appendChild(a);
+    }
+  }
+
+  function scan() {
+    var nodes = document.querySelectorAll(".salariile-widget");
+    for (var i = 0; i < nodes.length; i++) initOne(nodes[i]);
+  }
+
+  // Auto-resize: ascultă înălțimea trimisă de fiecare iframe și o aplică.
+  // Verificăm originea (doar mesaje de la salariile.ro) și potrivim iframe-ul
+  // prin contentWindow, ca un mesaj să nu poată redimensiona alt iframe.
+  window.addEventListener("message", function (e) {
+    if (e.origin !== ORIGIN) return;
+    var d = e.data;
+    if (!d || d.type !== "salariile:height" || !d.height) return;
+    var frames = document.getElementsByTagName("iframe");
+    for (var i = 0; i < frames.length; i++) {
+      if (frames[i].contentWindow === e.source) {
+        frames[i].height = Math.ceil(d.height);
+        break;
+      }
+    }
+  });
+
+  // Expune init() pentru pagini care randează placeholderul după încărcarea scriptului
+  // (SPA-uri, React). Rulează automat acum și la DOMContentLoaded.
+  window.SalariileWidget = { init: scan };
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", scan);
+  } else {
+    scan();
+  }
+})();

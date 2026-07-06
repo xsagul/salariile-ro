@@ -13,6 +13,12 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://salariile.ro/widget" },
 };
 
-export default function WidgetFramePage() {
-  return <WidgetCalculator />;
+export default async function WidgetFramePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ brut?: string }>;
+}) {
+  const { brut } = await searchParams;
+  const initialBrut = brut && /^\d{3,6}$/.test(brut) ? brut : undefined;
+  return <WidgetCalculator initialBrut={initialBrut} />;
 }
