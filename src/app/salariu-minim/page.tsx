@@ -347,7 +347,7 @@ export default function SalariuMinimPage() {
                   <p>
                     Cheia e rândul „bază pentru taxe&quot;: urcă cu 375 de lei, nu cu 275, fiindcă partea scutită scade cu 100. O
                     felie mai mare devine impozabilă, așa că statul reține în plus exact cei 150 de lei (93 + 38 + 19) care
-                    „lipsesc&quot; din creșterea netă. Pentru orice altă sumă, ai <Link href="/">calculatorul</Link>.
+                    „lipsesc&quot; din creșterea netă. Dacă vrei tabelul complet pe plafoane, vezi <Link href="/deducere-personala-2026">deducerea personală 2026</Link>. Pentru orice altă sumă, ai <Link href="/">calculatorul</Link>.
                   </p>
                 </div>
               </div>

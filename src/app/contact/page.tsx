@@ -10,7 +10,7 @@ import { Hero, Section, Breadcrumb, H1, Lead } from "@/app/components/ui";
 export const metadata: Metadata = {
   title: "Contact: raportează erori sau sugestii",
   description:
-    "Pagina de contact pentru salariile.ro. Folosește email-ul de mai jos pentru a raporta erori de calcul, a sugera funcționalități noi sau pentru cereri privind datele personale.",
+    "Trimite corecturi, erori de calcul sau sugestii pentru salariile.ro. Verific formulele, sursele legislative și paginile unde apar date fiscale.",
   alternates: { canonical: "https://salariile.ro/contact" },
   openGraph: ogPage({
     title: "Contact: raportează erori sau sugestii",

@@ -1,6 +1,6 @@
 ---
-title: "Cum îți citești fluturașul de salariu: ce înseamnă fiecare rând"
-description: "Fluturașul pare un teanc de cifre fără sens. Îți explic pe rând brutul, CAS, CASS, impozitul, deducerea și tichetele, ca să înțelegi exact cum ajungi la suma din cont."
+title: "Cum citești fluturașul de salariu"
+description: "Explicăm fiecare rând din fluturașul de salariu: brut, CAS, CASS, impozit, deducere, tichete și cum se ajunge la suma din cont."
 date: "2026-06-15"
 hero: "/noutati/fluturas-salariu.jpg"
 heroAlt: "Un fluturaș de salariu pe o masă cu față de in, lângă câteva monede, un pix și o cană de cafea, în lumină naturală."

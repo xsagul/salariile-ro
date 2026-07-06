@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     absolute: "Calcul salariu net 2026: calculator brut în net | Salariile.ro",
   },
   description:
-    "Calcul salariu net din brut în 2026: pune salariul brut, vezi netul, cu CAS, CASS, impozit și costul angajatorului, conform HG 146/2026. Merge și invers, din net în brut. Fără reclame, fără cont.",
+    "Calculează salariul net din brut în 2026: vezi CAS, CASS, impozit, deducere personală și cost angajator. Merge și invers, din net în brut.",
 };
 
 // 1. Extragem datele pentru a le folosi și în schema ascunsă, și pe ecran

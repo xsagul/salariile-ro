@@ -1,6 +1,6 @@
 ---
-title: "Salariul minim a crescut la 4.325 lei de la 1 iulie 2026: cât primești net acum"
-description: "Majorarea e în vigoare: 4.325 lei brut, 2.699 lei net. De ce netul urcă cu doar 125 de lei, ce e plafonul de 4.600 lei care îți poate anula scutirea și ce fac angajatorii."
+title: "Salariul minim 4.325 lei: cât primești net"
+description: "Salariul minim este 4.325 lei brut și 2.699 lei net din 1 iulie 2026. Vezi calculul, de ce netul crește cu 125 lei și ce fac angajatorii."
 date: "2026-06-12"
 updated: "2026-07-02"
 hero: "/noutati/salariu-minim-iulie.jpg"

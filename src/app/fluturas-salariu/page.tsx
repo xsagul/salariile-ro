@@ -11,12 +11,12 @@ import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Fluturaș de salariu: generator PDF și model explicat 2026",
+  title: "Fluturaș de salariu: generator PDF 2026",
   description:
-    "Generează un fluturaș de salariu în format PDF: salariu de bază, ore suplimentare, sporuri, tichete, rețineri și toate taxele, pe legislația 2026. Plus ghid pentru fiecare rând.",
+    "Generează gratuit un fluturaș de salariu PDF: brut, net, CAS, CASS, impozit, deducere personală, tichete și cost angajator, actualizat 2026.",
   alternates: { canonical: "https://salariile.ro/fluturas-salariu" },
   openGraph: ogPage({
-    title: "Fluturaș de salariu: generator PDF și model explicat 2026",
+    title: "Fluturaș de salariu: generator PDF 2026",
     description:
       "Generează un fluturaș de salariu PDF cu ore suplimentare, sporuri, tichete și rețineri, calculat pe legislația 2026.",
     path: "/fluturas-salariu",

@@ -1,6 +1,6 @@
 ---
-title: "Cât costă, de fapt, o viață decentă în România? Coșul minim explicat"
-description: "Coșul minim de trai decent arată de câți bani are nevoie o familie ca să trăiască normal într-o lună, și de ce salariul minim net rămâne sub acest prag."
+title: "Coșul minim de consum: cât costă traiul decent"
+description: "Coșul minim de trai decent arată câți bani îi trebuie unei familii într-o lună și de ce salariul minim net rămâne sub acest prag."
 date: "2026-06-08"
 hero: "/noutati/cos-minim.jpg"
 heroAlt: "Coș de cumpărături cu produse de bază, pe fundal neutru."

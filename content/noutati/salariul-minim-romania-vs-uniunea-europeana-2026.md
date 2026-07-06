@@ -1,6 +1,6 @@
 ---
-title: "Unde se situează salariul minim din România în UE, chiar și după majorarea de la 1 iulie 2026"
-description: "După 1 iulie, salariul minim brut urcă la 4.325 lei, adică circa 825 de euro la cursul BNR. Din cauza deprecierii leului, poziția în clasamentul UE nu se schimbă: a treia cea mai mică. Comparația completă, cu cifrele Eurostat."
+title: "Salariul minim în România vs UE în 2026"
+description: "După 1 iulie, salariul minim brut este 4.325 lei, circa 825 euro. Vezi unde se află România în UE și de ce rămâne între cele mai mici niveluri."
 date: "2026-06-24"
 updated: "2026-07-03"
 hero: "/noutati/salariu-minim-ue.jpg"

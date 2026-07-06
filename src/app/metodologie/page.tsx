@@ -10,7 +10,7 @@ import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow } from "@/app/components/u
 export const metadata: Metadata = {
   title: "Metodologie de calcul salariu net 2026",
   description:
-    "Documentația completă a formulelor și surselor folosite de calculatorul salariile.ro pentru anul 2026: CAS, CASS, impozit, deducere personală, CAM, facilitate OUG 89/2025.",
+    "Formulele folosite de calculatorul salariu net 2026: CAS, CASS, impozit, deducere personală, facilitate salariu minim și surse legislative.",
   alternates: { canonical: "https://salariile.ro/metodologie" },
   openGraph: ogPage({
     title: "Metodologie de calcul salariu net 2026",
@@ -232,6 +232,9 @@ export default function MetodologiePage() {
             </p>
             <p>
               Pentru veniturile peste plafonul de 6.050/6.325 lei, deducerea de bază nu se aplică, deci toată suma după contribuții se impozitează cu 10%.
+            </p>
+            <p>
+              Pentru valori pe salariu brut și număr de persoane în întreținere, vezi și <Link href="/deducere-personala-2026">tabelul dedicat pentru deducerea personală 2026</Link>.
             </p>
         </Section>
 

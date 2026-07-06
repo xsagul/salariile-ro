@@ -1,6 +1,6 @@
 ---
-title: "Câte zile libere mai sunt în 2026 și ce minivacanțe mai poți construi din ele"
-description: "După 1 iulie au mai rămas 5 sărbători legale în 2026, dar doar 3 pică în zile lucrătoare. Unde merită să pui zile de concediu ca să le transformi în vacanțe adevărate."
+title: "Zile libere rămase în 2026 și minivacanțe"
+description: "După 1 iulie au rămas 5 sărbători legale în 2026, dar doar 3 cad în zile lucrătoare. Vezi unde poți lega concediul de minivacanțe."
 date: "2026-07-02"
 hero: "/noutati/zile-libere-minivacante.jpg"
 heroAlt: "Ilustrație editorială minimalistă, stil flat: o siluetă relaxată sprijinită de un palmier stilizat pe o plajă, în tonuri mate de salvie-gri și terracotta pe fundal ovăz, sugerând o minivacanță."

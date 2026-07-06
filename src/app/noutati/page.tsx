@@ -9,7 +9,7 @@ import { getAllArticles, formatDateRo } from "@/lib/noutati";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
 
-const NOUTATI_TITLU = "Noutăți: articole despre salarii, taxe și bani în România";
+const NOUTATI_TITLU = "Noutăți despre salarii și taxe în România";
 const NOUTATI_DESC =
   "Articole scrise pe înțelesul tuturor despre salarii, taxe, costul vieții și curiozități fiscale din România.";
 

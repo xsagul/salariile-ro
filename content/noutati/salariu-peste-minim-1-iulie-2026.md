@@ -1,6 +1,6 @@
 ---
-title: "Ești plătit puțin peste salariul minim? Ce se întâmplă cu salariul tău de la 1 iulie 2026"
-description: "Dacă ai salariul puțin peste minim, majorarea de la 1 iulie te poate prinde din urmă. Cine e obligat prin lege la mărire, ce este tasarea salarială și ce drepturi ai."
+title: "Salariu peste minim după 1 iulie 2026"
+description: "Dacă ai salariul puțin peste minim, majorarea de la 1 iulie te poate prinde din urmă. Cine primește mărire și ce înseamnă tasarea salarială."
 date: "2026-06-17"
 hero: "/noutati/salariu-peste-minim.jpg"
 heroAlt: "Ilustrație editorială minimalistă: două siluete pe trepte, treapta de jos împinsă în sus de o săgeată, ridicând silueta scundă aproape la nivelul celei de lângă ea, sugerând restrângerea diferenței dintre salarii."

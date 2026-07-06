@@ -12,9 +12,9 @@ import { SARBATORI_LEGALE_2026 as HOLIDAYS } from "@/lib/sarbatori";
 // ─── Metadata SEO ────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "Zile libere 2026: calendar, sărbători legale, zile lucrătoare",
+  title: "Zile libere 2026: calendar și zile lucrătoare",
   description:
-    "Calendar 2026 complet: 250 zile lucrătoare, 115 zile libere, sărbătorile legale (Cod Muncii art. 139) și punțile pentru minivacanțe. Paștele ortodox: 12 aprilie.",
+    "Calendar zile libere 2026 în România: sărbători legale, zile lucrătoare, ore de lucru, minivacanțe și punți utile pentru concediu.",
   alternates: { canonical: "https://salariile.ro/zile-libere-2026" },
   openGraph: ogPage({
     title: "Zile libere 2026: calendar și sărbători legale",
@@ -265,7 +265,8 @@ export default function ZileLibere2026Page() {
             <h2 className="text-2xl font-bold tracking-[-0.02em] text-stone-900 sm:text-3xl">Zile lucrătoare 2026, lună de lună</h2>
             <p className="mt-3 max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600">
               Numărul de zile lucrătoare și ore de lucru (la program de 8 ore/zi) pentru fiecare lună din 2026. Util la
-              calculul tarifului orar, al contractelor part-time și al normelor de lucru.
+              calculul tarifului orar, al contractelor part-time și al normelor de lucru. Pentru varianta strict tabelară,
+              vezi pagina dedicată pentru <Link href="/zile-lucratoare-2026" className="font-medium text-stone-900 underline underline-offset-2 hover:text-stone-600">zile lucrătoare 2026</Link>.
             </p>
             <div className={`mt-6 ${card}`}>
               <div className="overflow-x-auto">
