@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       description: a.description,
       url,
       publishedTime: a.date,
-      modifiedTime: a.date,
+      modifiedTime: a.updated ?? a.date,
       authors: ["https://salariile.ro/despre"],
       images: [image],
     },

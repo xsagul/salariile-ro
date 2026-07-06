@@ -52,15 +52,15 @@ export function twPage(opts: {
 }
 
 /** Ultima modificare de conținut fiscal / editorial (nu la fiecare deploy). */
-export const LAST_FISCAL_CONTENT_UPDATE = new Date("2026-06-08T00:00:00.000Z");
+export const LAST_FISCAL_CONTENT_UPDATE = new Date("2026-07-01T00:00:00.000Z");
 
 /** Pagini statice cu date de publicare cunoscute. */
 export const PAGE_LAST_MODIFIED: Record<string, Date> = {
   // Homepage (calculatorul) are dată proprie: 1 iulie 2026, ziua în care
   // salariul minim de 4.325 lei (HG 146/2026) chiar intră în vigoare — decizie
   // asumată să rămână FIXĂ la 1 iulie (nu "azi"), ca să nu necesite update
-  // zilnic. Decuplată de constanta fiscală partajată ca să nu bumpeze și band
-  // pages, care nu s-au schimbat.
+  // zilnic. Paginile de calculator folosesc aceeași dată fiscală, fiindcă
+  // rezultatele și textele lor se raportează la regimul intrat în vigoare atunci.
   "/": new Date("2026-07-01T00:00:00.000Z"),
   "/salariu-minim": new Date("2026-07-01T00:00:00.000Z"),
   "/calculator-pfa": new Date("2026-06-08T00:00:00.000Z"),

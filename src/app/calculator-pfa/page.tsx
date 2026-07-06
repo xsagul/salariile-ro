@@ -137,7 +137,7 @@ export default function CalculatorPfaPage() {
                     <li><strong>Impozit 10%</strong> – pe ce rămâne după ce scazi CAS și CASS (ambele sunt deductibile din 2024).</li>
                   </ul>
                   <p className={p}>
-                    Spre deosebire de un salariat, la PFA <strong>tu plătești tot</strong> – nu există „angajator" care să
+                    Spre deosebire de un salariat, la PFA <strong>tu plătești tot</strong> – nu există „angajator&quot; care să
                     adauge contribuții peste. Dar ai dreptul să scazi cheltuielile reale ale activității.
                   </p>
                 </div>

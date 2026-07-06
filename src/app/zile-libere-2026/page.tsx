@@ -331,7 +331,7 @@ export default function ZileLibere2026Page() {
             <h2 className="text-2xl font-bold tracking-[-0.02em] text-stone-900 sm:text-3xl">Minivacanțe și punți 2026</h2>
             <p className="mt-3 max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600">
               Combinații de sărbători și weekend care îți dau pauze mai lungi. Unele vin natural; la altele iei o zi din
-              concediu („punte") și transformi câteva zile într-o minivacanță.
+              concediu („punte&quot;) și transformi câteva zile într-o minivacanță.
             </p>
             <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {PUNTI.map((p) => (

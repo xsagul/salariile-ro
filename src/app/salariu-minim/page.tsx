@@ -285,7 +285,7 @@ export default function SalariuMinimPage() {
                   <h2 id="net" className="scroll-mt-24">Cât rămâne net, pas cu pas</h2>
                   <p>
                     Iată drumul de la brut la net, pe ambele perioade ale anului. Pornești de la brut, scazi partea scutită
-                    de taxe, iar pe ce rămâne („baza") se aplică cele trei rețineri. Tot aici se vede de ce, de la 1 iulie,
+                    de taxe, iar pe ce rămâne („baza&quot;) se aplică cele trei rețineri. Tot aici se vede de ce, de la 1 iulie,
                     netul urcă cu doar 125 de lei deși brutul crește cu 275.
                   </p>
                   <div className="my-6 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
@@ -345,9 +345,9 @@ export default function SalariuMinimPage() {
                     </table>
                   </div>
                   <p>
-                    Cheia e rândul „bază pentru taxe": urcă cu 375 de lei, nu cu 275, fiindcă partea scutită scade cu 100. O
+                    Cheia e rândul „bază pentru taxe&quot;: urcă cu 375 de lei, nu cu 275, fiindcă partea scutită scade cu 100. O
                     felie mai mare devine impozabilă, așa că statul reține în plus exact cei 150 de lei (93 + 38 + 19) care
-                    „lipsesc" din creșterea netă. Pentru orice altă sumă, ai <Link href="/">calculatorul</Link>.
+                    „lipsesc&quot; din creșterea netă. Pentru orice altă sumă, ai <Link href="/">calculatorul</Link>.
                   </p>
                 </div>
               </div>
@@ -359,7 +359,7 @@ export default function SalariuMinimPage() {
                     stat. Rata a scăzut puțin față de prima parte a anului (<strong>63,6%</strong>), pentru că partea scutită
                     de taxe s-a redus de la 300 la 200 de lei.
                   </p>
-                  <p className="mt-auto pt-4 text-xs text-stone-500">CAS și CASS se aplică pe „bază" (brut minus partea scutită), nu pe brutul întreg, de aceea îți rămâne peste 60%.</p>
+                  <p className="mt-auto pt-4 text-xs text-stone-500">CAS și CASS se aplică pe „bază&quot; (brut minus partea scutită), nu pe brutul întreg, de aceea îți rămâne peste 60%.</p>
                 </div>
               </aside>
             </div>

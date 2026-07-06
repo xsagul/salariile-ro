@@ -391,7 +391,7 @@ export default async function CalculatorDinamic({ params }: Props) {
           <h2>Ce trebuie să știi</h2>
           <p>{ctx.insight}</p>
           <p className="source-note">
-            Pentru context legislativ complet, consultă <Link href="/salariu-minim">analiza salariului minim 2026</Link> și <Link href="/salariu-mediu">salariul mediu pe economie</Link>. Calculul de pe această pagină respectă HG 146/2026, OUG 89/2025 și Codul Fiscal (Legea 227/2015). Ultima actualizare: 8 iunie 2026.
+            Pentru context legislativ complet, consultă <Link href="/salariu-minim">analiza salariului minim 2026</Link> și <Link href="/salariu-mediu">salariul mediu pe economie</Link>. Calculul de pe această pagină respectă HG 146/2026, OUG 89/2025 și Codul Fiscal (Legea 227/2015). Ultima actualizare: 1 iulie 2026.
           </p>
       </Section>
     </>

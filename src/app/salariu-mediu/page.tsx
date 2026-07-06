@@ -266,12 +266,12 @@ export default function SalariuMediuPage() {
                 <div className={`max-w-prose ${articol}`}>
                   <h2>Media nu e cât câștigi tu</h2>
                   <p>
-                    Aici e capcana cuvântului „mediu". Media se calculează adunând toate salariile și împărțind la numărul de
+                    Aici e capcana cuvântului „mediu&quot;. Media se calculează adunând toate salariile și împărțind la numărul de
                     angajați, așa că <strong>salariile foarte mari din IT, finanțe și management o trag în sus</strong>.
                     Rezultatul: cei mai mulți oameni câștigă sub această medie.
                   </p>
                   <p>
-                    Indicatorul corect pentru „un angajat obișnuit" e <strong>mediana</strong>, salariul de la mijloc, sub
+                    Indicatorul corect pentru „un angajat obișnuit&quot; e <strong>mediana</strong>, salariul de la mijloc, sub
                     care se află exact jumătate dintre angajați (vezi cifra alături). Pe scurt: dacă tu câștigi sub medie, nu
                     ești o excepție, ci ești în rândul majorității.
                   </p>
@@ -368,7 +368,7 @@ export default function SalariuMediuPage() {
                   <h2>La ce se folosește de fapt</h2>
                   <p>
                     Fiindcă e un indicator, nu un salariu, valoarea oficială (9.192 lei brut) e folosită ca reper în sistemul
-                    public, de aici și căutările „salariu mediu brut pentru calcul pensie":
+                    public, de aici și căutările „salariu mediu brut pentru calcul pensie&quot;:
                   </p>
                   <ul>
                     <li><strong>Calculul pensiei</strong>: punctajul se raportează la salariul mediu brut al anului (cât ai câștigat față de medie).</li>
