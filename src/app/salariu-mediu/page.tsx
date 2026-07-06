@@ -23,7 +23,7 @@ const OG_SALARIU_MEDIU = {
 export const metadata: Metadata = {
   title: "Salariul mediu pe economie 2026: brut, net, mediană",
   description:
-    "Salariul mediu pe economie 2026: 9.192 lei brut, net estimat, salariu median, ajutor de deces, pensii și plafoane calculate după valoarea oficială.",
+    "Salariul mediu 2026: 9.192 lei brut oficial; 9.740 lei brut și 5.843 lei net în aprilie INS. Mediana, ajutor de deces și plafoane.",
   alternates: { canonical: "https://salariile.ro/salariu-mediu" },
   openGraph: ogPage({
     title: "Salariul mediu pe economie 2026: brut, net, mediană",
@@ -55,7 +55,7 @@ const ISTORIC = [
 const FAQ = [
   {
     q: "Cât este salariul mediu pe economie în 2026 (net și brut)?",
-    a: "În 2026 circulă două cifre. Cea reală, măsurată lunar de INS: netul mediu e ~5.518 lei în ianuarie și ~5.938 lei în martie, la ~9.900 lei brut, în creștere. Cea oficială, fixată prin Legea 44/2026: 9.192 lei brut (din ea rezultă ~5.377 lei net prin calcul standard), folosită la pensii și ajutoare.",
+    a: "În 2026 circulă două cifre. Cea reală, măsurată lunar de INS: în aprilie 2026, câștigul salarial mediu net a fost 5.843 lei, la 9.740 lei brut. Cea oficială, fixată prin Legea 44/2026: 9.192 lei brut (din ea rezultă ~5.377 lei net prin calcul standard), folosită la pensii și ajutoare.",
   },
   {
     q: "De ce câștig mai puțin decât salariul mediu?",
@@ -136,9 +136,9 @@ const jsonLd = {
     },
     {
       "@type": "Article",
-      headline: "Salariul mediu pe economie 2026: 9.192 lei brut, 5.377 net",
+      headline: "Salariul mediu pe economie 2026: oficial și INS",
       description:
-        "Salariul mediu brut pe economie în 2026 (Legea 44/2026): 9.192 lei brut, ~5.377 lei net. Mediana, calcul net pas cu pas, la ce se folosește, ajutor de deces, evoluție și prognoze.",
+        "Salariul mediu brut oficial în 2026 (Legea 44/2026): 9.192 lei. Câștigul salarial mediu INS aprilie 2026: 9.740 lei brut și 5.843 lei net. Mediana, ajutor de deces și plafoane.",
       author: personSchema,
       publisher: {
         "@type": "Organization",
@@ -148,7 +148,7 @@ const jsonLd = {
       image: { "@type": "ImageObject", url: "https://salariile.ro/og-salariu-mediu.jpg", width: 1200, height: 630 },
       mainEntityOfPage: "https://salariile.ro/salariu-mediu",
       datePublished: "2026-03-30",
-      dateModified: "2026-06-08",
+      dateModified: "2026-07-06",
     },
     {
       "@type": "FAQPage",
@@ -192,14 +192,22 @@ export default function SalariuMediuPage() {
             <div className="md:col-span-3">
               <h1 className="text-3xl font-bold tracking-[-0.02em] text-stone-900 sm:text-4xl">Salariul mediu pe economie în 2026</h1>
               <p className="mt-4 text-xs text-stone-600 [&_a]:font-medium [&_a]:text-stone-700 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-900">
-                Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat 8 iunie 2026
+                Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat 6 iulie 2026
               </p>
               <p className={`mt-5 max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600 ${strong}`}>
-                În 2026, salariul mediu net pe economie e în jur de <strong>5.900 lei</strong> (~9.900 brut), după datele
-                INS, și crește lunar. Dar e o medie: <strong>jumătate</strong> dintre angajați câștigă sub ~<strong>6.000
+                În aprilie 2026, câștigul salarial mediu net pe economie a fost <strong>5.843 lei</strong> (<strong>9.740 lei</strong> brut), după datele
+                INS. Dar e o medie: <strong>jumătate</strong> dintre angajați câștigă sub ~<strong>6.000
                 lei brut</strong> (~3.500 net). Pentru pensii și ajutoare, statul folosește o valoare oficială fixă, mai
                 mică: 9.192 lei brut.
               </p>
+              <div className="mt-5 max-w-prose border-l-2 border-stone-900 pl-4 text-sm leading-normal tracking-[-0.01em] text-stone-700">
+                <p className="font-semibold text-stone-900">Răspuns scurt</p>
+                <p className="mt-1">
+                  Salariul mediu brut oficial pentru 2026 este <strong>9.192 lei</strong>, folosit la pensii și ajutoare.
+                  Câștigul salarial mediu real publicat de INS pentru aprilie 2026 este <strong>9.740 lei brut</strong> și{" "}
+                  <strong>5.843 lei net</strong>.
+                </p>
+              </div>
             </div>
             <div className={aside}>
               <Image
@@ -223,8 +231,8 @@ export default function SalariuMediuPage() {
                 <div className={`max-w-prose ${articol}`}>
                   <h2>Cât e salariul mediu și ce înseamnă</h2>
                   <p>
-                    Sunt, de fapt, două cifre. <strong>Cea reală</strong>, măsurată lunar de INS: în 2026 salariul mediu net e
-                    în jur de <strong>5.900 lei</strong> (~9.900 brut) și crește. <strong>Cea oficială</strong>, fixată prin
+                    Sunt, de fapt, două cifre. <strong>Cea reală</strong>, măsurată lunar de INS: în aprilie 2026 salariul mediu net a fost
+                    <strong> 5.843 lei</strong> (<strong>9.740 lei brut</strong>). <strong>Cea oficială</strong>, fixată prin
                     <strong> Legea 44/2026</strong> la 9.192 lei brut, e mai mică și nu se schimbă în cursul anului, iar pe ea o
                     folosește statul la pensii și ajutoare (până la 30 martie 2026 a fost 8.620 lei).
                   </p>
@@ -243,11 +251,11 @@ export default function SalariuMediuPage() {
                     <tbody className="[&_td]:py-2">
                       <tr className="border-b border-stone-100">
                         <td className="text-left text-stone-600">Net (real, INS)</td>
-                        <td className="text-right font-bold text-stone-900">~{fmt(5900)}</td>
+                        <td className="text-right font-bold text-stone-900">{fmt(5843)}</td>
                       </tr>
                       <tr className="border-b border-stone-100">
                         <td className="text-left text-stone-600">Brut (real, INS)</td>
-                        <td className="text-right font-medium text-stone-900">~{fmt(9900)}</td>
+                        <td className="text-right font-medium text-stone-900">{fmt(9740)}</td>
                       </tr>
                       <tr>
                         <td className="text-left text-stone-600">Brut oficial (la pensii)</td>
@@ -255,7 +263,7 @@ export default function SalariuMediuPage() {
                       </tr>
                     </tbody>
                   </table>
-                  <p className="mt-auto pt-4 text-xs text-stone-500">Real = ce măsoară INS lunar, în creștere (5.518 net în ian., 5.938 în martie). Oficial = valoare fixă (Legea 44/2026), folosită la pensii și ajutoare.</p>
+                  <p className="mt-auto pt-4 text-xs text-stone-500">Real = ce măsoară INS lunar (5.518 net în ian., 5.557 în feb., 5.938 în mar., 5.843 în apr.). Oficial = valoare fixă (Legea 44/2026), folosită la pensii și ajutoare.</p>
                 </div>
               </aside>
             </div>
@@ -525,7 +533,7 @@ export default function SalariuMediuPage() {
                     <li><Link href="/">Calculator salariu net</Link></li>
                     <li><Link href="/zile-libere-2026">Zile libere și lucrătoare 2026</Link></li>
                   </ul>
-                  <p className="mt-auto pt-6 text-xs text-stone-500">Ultima actualizare: 8 iunie 2026.</p>
+                  <p className="mt-auto pt-6 text-xs text-stone-500">Ultima actualizare: 6 iulie 2026.</p>
                 </div>
               </aside>
             </div>

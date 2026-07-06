@@ -109,7 +109,15 @@ export default function CalculatorPfaPage() {
                 Vezi cât plătești ca PFA în sistem real – CAS, CASS și impozit – și cât îți rămâne. Pune încasările și
                 cheltuielile, apasă Calculează.
               </p>
-              <div className="mt-4 text-xs text-stone-600">Actualizat 8 iunie 2026</div>
+              <div className="mt-5 max-w-prose border-l-2 border-stone-900 pl-4 text-sm leading-normal tracking-[-0.01em] text-stone-700">
+                <p className="font-semibold text-stone-900">Răspuns scurt</p>
+                <p className="mt-1">
+                  La PFA în sistem real, taxele pornesc de la venitul net anual: <strong>CASS 10%</strong>,{" "}
+                  <strong>CAS 25%</strong> dacă treci de plafonul de 12 salarii minime și <strong>impozit 10%</strong>{" "}
+                  după deducerea contribuțiilor.
+                </p>
+              </div>
+              <div className="mt-4 text-xs text-stone-600">Actualizat 6 iulie 2026</div>
             </div>
           </div>
         </div>

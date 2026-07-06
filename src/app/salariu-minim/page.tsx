@@ -175,7 +175,7 @@ const jsonLd = {
       image: { "@type": "ImageObject", url: "https://salariile.ro/og-salariu-minim.jpg", width: 1200, height: 630 },
       mainEntityOfPage: "https://salariile.ro/salariu-minim",
       datePublished: "2026-04-27",
-      dateModified: "2026-07-01",
+      dateModified: "2026-07-06",
     },
     {
       "@type": "FAQPage",
@@ -220,13 +220,20 @@ export default function SalariuMinimPage() {
             <div className="md:col-span-3">
               <h1 className="text-3xl font-bold tracking-[-0.02em] text-stone-900 sm:text-4xl">Salariul minim în 2026</h1>
               <p className="mt-4 text-xs text-stone-600 [&_a]:font-medium [&_a]:text-stone-700 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-900">
-                Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat 1 iulie 2026
+                Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat 6 iulie 2026
               </p>
               <p className={`mt-5 max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600 ${strong}`}>
                 Din 1 iulie 2026, salariul minim brut este <strong>4.325 lei</strong>, adică <strong>2.699 lei</strong>{" "}
                 net, în mână. (Până la 1 iulie a fost 4.050 lei, cu 2.574 net.) Mai jos vezi ce reține statul, cât costă
                 firma și de ce netul a crescut mai puțin decât brutul.
               </p>
+              <div className="mt-5 max-w-prose border-l-2 border-stone-900 pl-4 text-sm leading-normal tracking-[-0.01em] text-stone-700">
+                <p className="font-semibold text-stone-900">Răspuns scurt</p>
+                <p className="mt-1">
+                  Salariul minim brut este <strong>4.325 lei</strong> din 1 iulie 2026. Netul standard este{" "}
+                  <strong>2.699 lei</strong>, iar costul total al angajatorului este <strong>4.418 lei</strong> cu CAM 2,25%.
+                </p>
+              </div>
             </div>
             <div className={aside}>
               <Image

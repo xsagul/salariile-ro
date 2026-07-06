@@ -145,7 +145,7 @@ const jsonLd = {
       image: { "@type": "ImageObject", url: "https://salariile.ro/og-image.png", width: 1200, height: 630 },
       mainEntityOfPage: "https://salariile.ro/zile-libere-2026",
       datePublished: "2026-05-19",
-      dateModified: "2026-07-02",
+      dateModified: "2026-07-06",
     },
     {
       "@type": "FAQPage",
@@ -185,12 +185,19 @@ export default function ZileLibere2026Page() {
             <p className="text-xs font-medium uppercase tracking-wide text-stone-500">Calendar 2026</p>
             <h1 className="mt-2 text-3xl font-bold tracking-[-0.02em] text-stone-900 sm:text-4xl">Zile libere 2026</h1>
             <p className="mt-3 text-xs text-stone-600 [&_a]:font-medium [&_a]:text-stone-700 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-900">
-              Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat 2 iulie 2026
+              Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat 6 iulie 2026
             </p>
             <p className="mt-5 text-base leading-normal tracking-[-0.01em] text-stone-600">
               Calendarul complet al zilelor libere legale din România în 2026: sărbătorile (Codul Muncii art. 139),
               zilele lucrătoare lună de lună și punțile prin care îți faci minivacanțe.
             </p>
+            <div className="mt-5 border-l-2 border-stone-900 pl-4 text-sm leading-normal tracking-[-0.01em] text-stone-700">
+              <p className="font-semibold text-stone-900">Răspuns scurt</p>
+              <p className="mt-1">
+                În 2026 sunt <strong>250 zile lucrătoare</strong>, <strong>2.000 ore de lucru</strong> la normă standard și{" "}
+                <strong>17 sărbători legale</strong>, dintre care 11 pică în zile lucrătoare.
+              </p>
+            </div>
           </div>
 
           {/* STAT-CARDURI */}
