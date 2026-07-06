@@ -39,9 +39,17 @@ export function Hero({ children }: { children: ReactNode }) {
   );
 }
 
-export function Section({ children, wide = false }: { children: ReactNode; wide?: boolean }) {
+export function Section({
+  children,
+  wide = false,
+  noTopBorder = false,
+}: {
+  children: ReactNode;
+  wide?: boolean;
+  noTopBorder?: boolean;
+}) {
   return (
-    <section className="border-t border-stone-200 bg-canvas py-10 first:border-t-0 sm:py-12">
+    <section className={`${noTopBorder ? "border-t-0" : "border-t border-stone-200 first:border-t-0"} bg-canvas py-10 sm:py-12`}>
       <div className={`mx-auto px-4 sm:px-6 ${wide ? "max-w-6xl" : "max-w-3xl"}`}>
         <Prose>{children}</Prose>
       </div>

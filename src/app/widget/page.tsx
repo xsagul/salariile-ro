@@ -9,9 +9,9 @@ import { Hero, Breadcrumb, H1, Lead, Section, Faq } from "@/app/components/ui";
 import EmbedCode from "@/app/components/EmbedCode";
 import WidgetDemo from "@/app/components/WidgetDemo";
 
-const TITLU = "Widget calculator de salarii pentru site-ul tău";
+const TITLU = "Widget Calculator Salariu";
 const DESC =
-  "Integrează calculatorul de salariu net pe site-ul firmei tale cu un simplu copy-paste. Se actualizează automat la fiecare schimbare legislativă, fără mentenanță din partea ta.";
+  "Widget gratuit pentru calculator salariu net și brut. Îl adaugi pe site-ul tău cu un simplu copy-paste și se actualizează automat la schimbările legislative.";
 
 export const metadata: Metadata = {
   title: TITLU,
@@ -21,16 +21,17 @@ export const metadata: Metadata = {
   twitter: twPage({ title: TITLU, description: DESC }),
 };
 
-// Metoda recomandată (hibrid, ca la Calendly/Typeform): un div placeholder + scriptul
-// nostru. Scriptul injectează iframe-ul, îl dimensionează automat (fără height fix,
-// se potrivește pe orice ecran) și adaugă linkul de credit în pagina ta.
 const EMBED_CODE = `<div class="salariile-widget"></div>
-<script src="https://salariile.ro/widget.js" async></script>`;
+<script src="https://salariile.ro/widget.js" async></script>
+<p class="salariile-credit" style="font-size:14px;margin-top:8px;max-width:420px">
+  Calculator salariu oferit de
+  <a href="https://salariile.ro" target="_blank" rel="noopener">salariile.ro</a>
+</p>`;
 
 // Alternativă simplă (iframe direct), pentru cine preferă zero JavaScript. Înălțimea
 // e fixă; ajusteaz-o din atributul height dacă e nevoie.
 const EMBED_CODE_IFRAME = `<iframe src="https://salariile.ro/widget/frame"
-  width="100%" height="560" loading="lazy" scrolling="no"
+  width="100%" height="790" loading="lazy" scrolling="no"
   style="border:1px solid #e7e5e4;border-radius:8px;max-width:420px"
   title="Calculator salariu net 2026"></iframe>
 <p style="font-size:14px;margin-top:8px">
@@ -48,8 +49,8 @@ const FAQ = [
     a: "Widgetul folosește exact motorul de calcul al site-ului salariile.ro, care se actualizează la fiecare modificare legislativă (salariu minim, plafoane, deduceri). Site-ul tău afișează automat calculul corect, fără nicio intervenție.",
   },
   {
-    q: "Pot scoate linkul către salariile.ro?",
-    a: "Da, linkul de sub widget e în pagina ta și îl poți elimina. Îl oferim ca modalitate de creditare a sursei și ne ajută să ținem proiectul gratuit, dar rămâne alegerea ta.",
+    q: "Trebuie să păstrez linkul către salariile.ro?",
+    a: "Da. Linkul de credit trebuie păstrat când preiei widgetul. Este modul simplu prin care proiectul rămâne gratuit, fără cont și fără reclame.",
   },
   {
     q: "Trebuie să fixez înălțimea?",
@@ -57,7 +58,7 @@ const FAQ = [
   },
   {
     q: "Pot porni calculatorul cu o valoare anume?",
-    a: "Da. Adaugă data-brut pe div, de exemplu <div class=\"salariile-widget\" data-brut=\"5000\"></div>, iar widgetul se încarcă direct cu acel salariu brut calculat.",
+    a: "Da. Adaugă data-brut pe div, de exemplu <div class=\"salariile-widget\" data-brut=\"4325\"></div>, iar widgetul se încarcă direct cu acel salariu brut calculat.",
   },
 ];
 
@@ -95,15 +96,15 @@ export default function WidgetPage() {
 
       <Hero>
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Widget" }]} />
-        <H1>Calculatorul de salarii, pe site-ul tău</H1>
+        <H1>Widget Calculator Salariu</H1>
         <Lead>
-          Un copy-paste și vizitatorii tăi calculează salariul net direct la tine pe site, cu taxele defalcate
-          și procentul care pleacă la stat. Calculul rămâne mereu corect: la fiecare schimbare legislativă,
-          widgetul se actualizează singur.
+          Widget gratuit, adaugă calculatorul de salariu net și brut pe site-ul tău. Un copy-paste și vizitatorii
+          tăi calculează salariul direct la tine pe site, cu taxele defalcate și procentul care pleacă la stat.
+          Calculul rămâne mereu corect: la fiecare schimbare legislativă, widgetul se actualizează singur.
         </Lead>
       </Hero>
 
-      <Section>
+      <Section noTopBorder>
         <h2>Cum arată</h2>
         <p>
           Demo-ul de mai jos e chiar widgetul, exact cum va apărea pe site-ul tău. Introdu un brut și încearcă-l:
@@ -112,34 +113,38 @@ export default function WidgetPage() {
           <WidgetDemo />
         </div>
         <p>
-          Aplică aceleași reguli ca site-ul: facilitatea de 200 de lei la salariul minim cu plafonul de 4.600 lei,
-          deducerea personală cu rotunjirea actuală și contribuțiile la zi, conform HG 146/2026 și OUG 89/2025.
-          Formulele complete sunt publice pe <a href="/metodologie">pagina de metodologie</a>.
+          Aplică aceleași reguli ca site-ul, actualizat mereu cu legislația curentă aplicabilă. Formulele complete
+          sunt publice pe <a href="/metodologie">pagina de metodologie</a>.
         </p>
       </Section>
 
       <Section>
         <h2>Codul de integrare</h2>
+        <h3>Metoda 1: iframe simplu</h3>
         <p>
-          Copiază codul și lipește-l în pagina ta, unde vrei să apară calculatorul. Această variantă se
-          dimensionează automat, se potrivește pe orice ecran și adaugă singură linkul de credit:
+          Aceasta este varianta cea mai ușor de integrat. Copiază tot codul și lipește-l în pagina ta, unde vrei să
+          apară calculatorul. Înălțimea este fixă și se ajustează manual din atributul <code>height</code>:
+        </p>
+        <div className="my-6">
+          <EmbedCode code={EMBED_CODE_IFRAME} />
+        </div>
+        <p>
+          Păstrează rândul cu creditul când preiei widgetul. Ne ajută să ținem proiectul gratuit, fără cont și
+          fără reclame.
+        </p>
+
+        <h3 className="mt-8">Metoda 2: script cu dimensionare automată</h3>
+        <p>
+          Aceasta este varianta recomandată dacă site-ul tău permite scripturi externe. Scriptul injectează iframe-ul,
+          îl dimensionează automat și include explicit linkul de credit în codul de mai jos:
         </p>
         <div className="my-6">
           <EmbedCode code={EMBED_CODE} />
         </div>
         <p>
           Poți porni calculatorul cu o valoare din start adăugând <code>data-brut</code> pe div, de exemplu{" "}
-          <code>{`<div class="salariile-widget" data-brut="5000"></div>`}</code>.
-        </p>
-
-        <h3 className="mt-8">Preferi un iframe simplu, fără JavaScript?</h3>
-        <p>Merge și așa. Singura diferență: înălțimea e fixă (o ajustezi din atributul <code>height</code>):</p>
-        <div className="my-6">
-          <EmbedCode code={EMBED_CODE_IFRAME} />
-        </div>
-        <p>
-          Rândul cu creditul e opțional, dar ne ajută să ținem proiectul gratuit și fără reclame. Pentru
-          cerințe speciale (dimensiuni, integrare în CMS), scrie-ne la{" "}
+          <code>{`<div class="salariile-widget" data-brut="4325"></div>`}</code>. Pentru cerințe speciale
+          (dimensiuni, integrare în CMS), scrie-ne la{" "}
           <a href="mailto:contact@salariile.ro">contact@salariile.ro</a>.
         </p>
       </Section>
@@ -149,7 +154,7 @@ export default function WidgetPage() {
         <ul>
           <li><strong>Firme de contabilitate și salarizare</strong>: clienții calculează singuri scenariile simple, tu rămâi sursa pentru cele complicate.</li>
           <li><strong>Bloguri și site-uri de HR</strong>: articolele despre salarii primesc o unealtă interactivă, nu doar text.</li>
-          <li><strong>Portaluri de joburi</strong>: candidații văd „în mână" lângă ofertele afișate în brut.</li>
+          <li><strong>Portaluri de joburi</strong>: candidații văd „în mână&quot; lângă ofertele afișate în brut.</li>
         </ul>
       </Section>
 

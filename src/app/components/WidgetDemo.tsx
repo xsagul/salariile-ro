@@ -7,9 +7,12 @@
 
 import { useEffect, useRef, useState } from "react";
 
+const RESERVED_HEIGHT = 790;
+const clampHeight = (height: number) => Math.min(900, Math.max(RESERVED_HEIGHT, Math.ceil(height)));
+
 export default function WidgetDemo() {
   const ref = useRef<HTMLIFrameElement>(null);
-  const [height, setHeight] = useState(560);
+  const [height, setHeight] = useState(RESERVED_HEIGHT);
 
   useEffect(() => {
     const onMsg = (e: MessageEvent) => {
@@ -17,7 +20,7 @@ export default function WidgetDemo() {
       const d = e.data;
       if (!d || d.type !== "salariile:height" || !d.height) return;
       if (ref.current && e.source === ref.current.contentWindow) {
-        setHeight(Math.ceil(d.height));
+        setHeight(clampHeight(d.height));
       }
     };
     window.addEventListener("message", onMsg);
@@ -39,6 +42,7 @@ export default function WidgetDemo() {
           border: "1px solid #e7e5e4",
           borderRadius: 8,
           display: "block",
+          boxSizing: "border-box",
         }}
       />
       <a

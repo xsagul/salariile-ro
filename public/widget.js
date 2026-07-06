@@ -8,12 +8,21 @@
  *   <div class="salariile-widget"></div>
  *   <script src="https://salariile.ro/widget.js" async></script>
  *
- * Opțional pe div: data-brut="5000" (valoare inițială), data-height="560" (fallback).
+ * Opțional pe div: data-brut="4325" (valoare inițială), data-height="790" (fallback).
  */
 (function () {
   "use strict";
   var ORIGIN = "https://salariile.ro";
   var FRAME = ORIGIN + "/widget/frame";
+  var MIN_HEIGHT = 360;
+  var MAX_HEIGHT = 900;
+
+  function clampHeight(height) {
+    var n = Math.ceil(Number(height) || 0);
+    if (n < MIN_HEIGHT) return MIN_HEIGHT;
+    if (n > MAX_HEIGHT) return MAX_HEIGHT;
+    return n;
+  }
 
   function initOne(el) {
     if (el.getAttribute("data-salariile-init")) return;
@@ -25,9 +34,10 @@
     iframe.title = "Calculator salariu net 2026";
     iframe.loading = "lazy";
     iframe.setAttribute("scrolling", "no");
+    iframe.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
     iframe.style.cssText =
-      "width:100%;max-width:420px;border:1px solid #e7e5e4;border-radius:8px;display:block";
-    iframe.height = el.getAttribute("data-height") || "560";
+      "width:100%;max-width:420px;height:" + clampHeight(el.getAttribute("data-height") || 790) + "px;border:1px solid #e7e5e4;border-radius:8px;display:block;box-sizing:border-box";
+    iframe.height = String(clampHeight(el.getAttribute("data-height") || 790));
     el.appendChild(iframe);
 
     // Linkul de credit stă în DOM-ul GAZDEI (nu în iframe), ca să fie crawlabil.
@@ -57,10 +67,12 @@
     if (e.origin !== ORIGIN) return;
     var d = e.data;
     if (!d || d.type !== "salariile:height" || !d.height) return;
+    var height = clampHeight(d.height);
     var frames = document.getElementsByTagName("iframe");
     for (var i = 0; i < frames.length; i++) {
       if (frames[i].contentWindow === e.source) {
-        frames[i].height = Math.ceil(d.height);
+        frames[i].height = String(height);
+        frames[i].style.height = height + "px";
         break;
       }
     }
