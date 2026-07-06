@@ -33,7 +33,7 @@ export default function WidgetDemo() {
         ref={ref}
         src="/widget/frame"
         title="Calculator salariu net 2026 (demo widget)"
-        loading="lazy"
+        loading="eager"
         scrolling="no"
         style={{
           width: "100%",
