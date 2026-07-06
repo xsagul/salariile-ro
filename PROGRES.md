@@ -10,6 +10,9 @@ Commituri relevante:
 
 - `6cff079` - Fix SEO metadata freshness
 - `e395f18` - Add SEO pages for fiscal long-tail queries
+- `9a3f698` - Document SEO audit progress
+- `db8e8ea` - Remove unused app archive artifact
+- `d9dfebd` - Add concise answers to key SEO pages
 
 Ce s-a facut:
 
@@ -26,6 +29,14 @@ Ce s-a facut:
 - Sitemap trimis la Google si Bing.
 - IndexNow a acceptat 13 URL-uri.
 - Live verificat: paginile noi raspund 200.
+- A fost sters artefactul mort `src/app/components.zip`.
+- Au fost adaugate blocuri "Raspuns scurt" pe:
+  - `/salariu-minim`
+  - `/salariu-mediu`
+  - `/zile-libere-2026`
+  - `/calculator-pfa`
+- `/salariu-mediu` a fost actualizat cu date INS aprilie 2026: 9.740 lei brut si 5.843 lei net.
+- Sitemap Google/Bing si IndexNow au fost retrimise dupa aceste schimbari.
 
 Rapoarte generate pe Desktop:
 
@@ -57,4 +68,3 @@ Rapoarte generate pe Desktop:
 - Blocajul SEO principal nu este tehnic, ci autoritate externa + acoperire de intentii laterale.
 - `calculator-pfa` este cea mai mare oportunitate on-site ramasa.
 - Nu cumpara linkuri si nu folosi widgetul ca schema agresiva de linkuri.
-
