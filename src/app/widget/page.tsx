@@ -21,23 +21,24 @@ export const metadata: Metadata = {
   twitter: twPage({ title: TITLU, description: DESC }),
 };
 
-const EMBED_CODE = `<div class="salariile-widget"></div>
-<script src="https://salariile.ro/widget.js" async></script>
-<p class="salariile-credit" style="font-size:14px;margin-top:8px;max-width:420px">
-  Calculator salariu oferit de
-  <a href="https://salariile.ro" target="_blank" rel="noopener">salariile.ro</a>
-</p>`;
+const CREDIT_CODE = `<a class="salariile-credit" href="https://salariile.ro?utm_source=widget"
+  target="_blank" rel="noopener"
+  style="display:block;max-width:420px;margin-top:8px;font:14px/1.4 system-ui,sans-serif;color:#57534e">
+  Calculator de salarii oferit de salariile.ro
+</a>`;
+
+const EMBED_CODE = `<div class="salariile-widget">
+  ${CREDIT_CODE}
+</div>
+<script src="https://salariile.ro/widget.js" async></script>`;
 
 // Alternativă simplă (iframe direct), pentru cine preferă zero JavaScript. Înălțimea
 // e fixă; ajusteaz-o din atributul height dacă e nevoie.
 const EMBED_CODE_IFRAME = `<iframe src="https://salariile.ro/widget/frame"
   width="100%" height="790" loading="lazy" scrolling="no"
-  style="border:1px solid #e7e5e4;border-radius:8px;max-width:420px"
+  style="border:1px solid #e7e5e4;border-radius:8px;max-width:420px;display:block;box-sizing:border-box"
   title="Calculator salariu net 2026"></iframe>
-<p style="font-size:14px;margin-top:8px">
-  Calculator de salarii oferit de
-  <a href="https://salariile.ro" target="_blank" rel="noopener">salariile.ro</a>
-</p>`;
+${CREDIT_CODE}`;
 
 const FAQ = [
   {

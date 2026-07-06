@@ -38,11 +38,14 @@
     iframe.style.cssText =
       "width:100%;max-width:420px;height:" + clampHeight(el.getAttribute("data-height") || 790) + "px;border:1px solid #e7e5e4;border-radius:8px;display:block;box-sizing:border-box";
     iframe.height = String(clampHeight(el.getAttribute("data-height") || 790));
-    el.appendChild(iframe);
 
     // Linkul de credit stă în DOM-ul GAZDEI (nu în iframe), ca să fie crawlabil.
     // Ancoră de brand, conform politicii Google anti widget-link-scheme.
-    if (!el.querySelector(".salariile-credit")) {
+    var credit = el.querySelector(".salariile-credit");
+    if (credit) {
+      el.insertBefore(iframe, credit);
+    } else {
+      el.appendChild(iframe);
       var a = document.createElement("a");
       a.className = "salariile-credit";
       a.href = ORIGIN + "?utm_source=widget";
