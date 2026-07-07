@@ -1,6 +1,41 @@
 # Progres salariile.ro
 
-Ultima actualizare: 6 iulie 2026
+Ultima actualizare: 7 iulie 2026
+
+## Sprint SEO extern - 7 iulie 2026
+
+Status: lucru extern/off-site pornit, cu Seobility, SERP si backlinkuri competitoriale verificate.
+
+Ce s-a facut:
+
+- Verificat Seobility in browser pe proiectul salariile.ro:
+  - On-page score: 78%.
+  - Tech & Meta: 90%.
+  - Structure: 95%.
+  - Content: 48%.
+  - Backlinkuri detectate: calculatorulinflatiei.ro, dev.to/sorin_stiuriuc, fastfulfill.ro.
+  - Top pages cu backlinkuri: `/` si `/salariu-minim`.
+  - Link Building arata 294 oportunitati brute, dar multe sunt spam/toxice (`anomaly-seo`, `link-legion`, retele `.xyz`/`.space`).
+- Identificati competitori directi noi/activi:
+  - `calcultaxe.ro`
+  - `totulcalculat.ro`
+  - `portalx.ro`
+  - `netdinbrut.ro`
+  - `jobinfo.ro`
+  - plus competitorii mari: `calculator-salarii.ro`, `undelucram.ro`, `salaria.ro`, `paylab.ro`, `calculatorvenituri.sdworx.ro`, `accace.ro`.
+- Creat action board extern pe Desktop:
+  - `C:\Users\Sorin\Desktop\EXTERNAL-SEO-ACTIONBOARD-SALARIILERO-2026-07-07.md`
+- Rescris `README.md` ca asset public GitHub pentru proiect:
+  - linkuri spre calculator, widget, metodologie, salariu minim, salariu mediu, PFA, fluturas, zile libere.
+  - pozitionare clara: calculator salariu net/brut 2026 pentru Romania.
+
+Urmatorii pasi off-site:
+
+1. Adauga competitorii si keyword-urile prioritare in Seobility, daca se confirma salvarea setarilor.
+2. Verifica manual primele 20 oportunitati din Link Building si marcheaza spam/competitor/prospect real.
+3. Trimite, dupa confirmare, primele 5 outreach-uri catre HR/payroll/contabilitate/media.
+4. Pregateste si publica, dupa confirmare, postare LinkedIn + articol DEV despre widget.
+5. Submit, dupa confirmare, in RomanianStartups si eventual StartupBlink/alte directoare curate.
 
 ## Audit SEO si marketing
 
