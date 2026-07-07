@@ -175,3 +175,20 @@ Ce s-a facut:
 Raport complet pe Desktop:
 
 - `C:\Users\Sorin\Desktop\COMPETITOR-KEYWORD-UNIVERSE-SALARIILERO-2026-07-08.md`
+
+## Verificare volume keyword-uri in Seobility - 2026-07-08
+
+Status: metoda de verificare gasita si aplicata.
+
+Ce s-a verificat:
+
+- Metoda buna: `Seobility App > Tools > Keyword Research Tool > URL/Domain > Domain > Google.ro > Organic keywords`, sortat dupa `Volume`.
+- Pentru cele 19 keyword-uri deja adaugate, verificarea s-a facut si in `Rankings > Keywords`, prin coloana `S.V.`, pe `RO`.
+- Seobility public keyword tool era limitat (`0 checks left today`), dar aplicatia avea `50 checks` si a permis analiza.
+- Au fost verificate domeniile: `calculator-salarii.ro`, `salaria.ro`, `paylab.ro`, `calculatoare-salarizare.ro`, `undelucram.ro`, `eghiseul.ro`, `papervee.com`, `leaveboard.com`, `impozitsalariu.ro`, `brutnet.ro`, `salariu-net.ro`, `ghidsalariu.ro`, `calculatorvenituri.ro`, `netdinbrut.ro`, `jobinfo.ro`.
+- `calculatorvenituri.ro` nu a returnat rezultate organice in Seobility pe `Google.ro`.
+- Raportul AhrefsTop initial ramane sursa secundara; pentru decizii folosim Seobility, fiind acelasi ecosistem cu tracking-ul.
+
+Raport complet pe Desktop:
+
+- `C:\Users\Sorin\Desktop\SEOBILITY-KEYWORD-VOLUME-VERIFICATION-SALARIILERO-2026-07-08.md`
