@@ -33,6 +33,7 @@ Ce s-a facut:
 - Configurat Seobility Rankings:
   - adaugate 10 keyword-uri lipsa: `widget calculator salariu`, `calculator salariu minim 2026`, `4325 brut in net`, `4325 brut net`, `zile lucratoare 2026`, `zile lucratoare iulie 2026`, `calculator salarii iulie 2026`, `calculator salariu iulie 2026`, `calculator salariu net iulie 2026`, `calcul salariu net iulie 2026`.
   - dupa salvare, Seobility a afisat `Keywords with rankings 35 / 63 +10`.
+  - verificare ulterioara: unele keyword-uri noi apar in tabel cu tara `COM`, nu `RO`; cauza este default-ul `Country Google.com` din modalul `New keyword`. Trebuie re-adaugate pe `Google.ro` si apoi eliminate/ignorate variantele `COM`.
   - completati competitorii directi in Rankings/Competitors: `calculator-salarii.ro`, `salaria.ro`, `paylab.ro`, `undelucram.ro`, `ghidsalariu.ro` plus competitorii deja existenti (`calculatoare-salarizare.ro`, `eghiseul.ro`, `papervee.com`, `leaveboard.com`, `impozitsalariu.ro`, `brutnet.ro`, `salariu-net.ro`, `calculatorvenituri.ro`).
   - `netdinbrut.ro`/`jobinfo.ro` raman de re-verificat daca incap in limita de 20 competitori sau daca Seobility le normalizeaza diferit.
 - Triat primele 20 oportunitati din Seobility `Backlinks > Link Building`:
@@ -40,14 +41,19 @@ Ce s-a facut:
   - 18 sunt retele spam/toxice: `anomaly-seo`, `link-legion`, `bhs-links`, domenii `.xyz`/`.space` si footprint adult/spam. Decizie: nu se replica.
   - prospecte externe curate adaugate in action board: `aesynero.ro`, `timeoff.guru`, `24conta.ro`, cu outreach pregatit doar dupa confirmare.
   - competitori reali din randurile spam notati pentru analiza, nu outreach: `leaveboard.com`, `eghiseul.ro`, `impozitsalariu.ro`, `salaria.ro`, `paylab.ro`, `calculator-salarii.ro`, `calculatoare-salarizare.ro`.
+- Creat outreach pack pe Desktop:
+  - `C:\Users\Sorin\Desktop\OUTREACH-PACK-SALARIILERO-2026-07-07.md`
+  - include drafturi pentru Aesynero, TimeOff.Guru, 24Conta, LinkedIn, DEV.to si Reddit.
+  - status: nimic trimis/publicat fara confirmare.
 
 Urmatorii pasi off-site:
 
-1. Trimite, dupa confirmare, primele 3 outreach-uri catre Aesynero, TimeOff.Guru si 24Conta.
-2. Pregateste si publica, dupa confirmare, postare LinkedIn + articol DEV despre widget.
-3. Submit, dupa confirmare, in RomanianStartups si eventual StartupBlink/alte directoare curate.
-4. Verifica in Seobility daca competitorii noi pot include si `netdinbrut.ro` / `jobinfo.ro` fara sa depaseasca limita.
-5. Continua trierea Seobility Link Building paginile 2-3, dar doar pentru prospecte reale, nu retele de linkuri.
+1. Re-adauga in Seobility keyword-urile noi pe `Google.ro` si verifica sa apara cu tara `RO`.
+2. Trimite, dupa confirmare, primele 3 outreach-uri catre Aesynero, TimeOff.Guru si 24Conta.
+3. Publica, dupa confirmare, postare LinkedIn + articol DEV despre widget.
+4. Submit, dupa confirmare, in RomanianStartups si eventual StartupBlink/alte directoare curate.
+5. Verifica in Seobility daca competitorii noi pot include si `netdinbrut.ro` / `jobinfo.ro` fara sa depaseasca limita.
+6. Continua trierea Seobility Link Building paginile 2-3, dar doar pentru prospecte reale, nu retele de linkuri.
 
 ## Audit SEO si marketing
 
