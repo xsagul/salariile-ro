@@ -35,14 +35,19 @@ Ce s-a facut:
   - dupa salvare, Seobility a afisat `Keywords with rankings 35 / 63 +10`.
   - completati competitorii directi in Rankings/Competitors: `calculator-salarii.ro`, `salaria.ro`, `paylab.ro`, `undelucram.ro`, `ghidsalariu.ro` plus competitorii deja existenti (`calculatoare-salarizare.ro`, `eghiseul.ro`, `papervee.com`, `leaveboard.com`, `impozitsalariu.ro`, `brutnet.ro`, `salariu-net.ro`, `calculatorvenituri.ro`).
   - `netdinbrut.ro`/`jobinfo.ro` raman de re-verificat daca incap in limita de 20 competitori sau daca Seobility le normalizeaza diferit.
+- Triat primele 20 oportunitati din Seobility `Backlinks > Link Building`:
+  - 2 sunt prospecte reale/posibile: `aesynero.ro`, `catalin.francu.com/blog/`.
+  - 18 sunt retele spam/toxice: `anomaly-seo`, `link-legion`, `bhs-links`, domenii `.xyz`/`.space` si footprint adult/spam. Decizie: nu se replica.
+  - prospecte externe curate adaugate in action board: `aesynero.ro`, `timeoff.guru`, `24conta.ro`, cu outreach pregatit doar dupa confirmare.
+  - competitori reali din randurile spam notati pentru analiza, nu outreach: `leaveboard.com`, `eghiseul.ro`, `impozitsalariu.ro`, `salaria.ro`, `paylab.ro`, `calculator-salarii.ro`, `calculatoare-salarizare.ro`.
 
 Urmatorii pasi off-site:
 
-1. Verifica manual primele 20 oportunitati din Link Building si marcheaza spam/competitor/prospect real.
-2. Trimite, dupa confirmare, primele 5 outreach-uri catre HR/payroll/contabilitate/media.
-3. Pregateste si publica, dupa confirmare, postare LinkedIn + articol DEV despre widget.
-4. Submit, dupa confirmare, in RomanianStartups si eventual StartupBlink/alte directoare curate.
-5. Verifica in Seobility daca competitorii noi pot include si `netdinbrut.ro` / `jobinfo.ro` fara sa depaseasca limita.
+1. Trimite, dupa confirmare, primele 3 outreach-uri catre Aesynero, TimeOff.Guru si 24Conta.
+2. Pregateste si publica, dupa confirmare, postare LinkedIn + articol DEV despre widget.
+3. Submit, dupa confirmare, in RomanianStartups si eventual StartupBlink/alte directoare curate.
+4. Verifica in Seobility daca competitorii noi pot include si `netdinbrut.ro` / `jobinfo.ro` fara sa depaseasca limita.
+5. Continua trierea Seobility Link Building paginile 2-3, dar doar pentru prospecte reale, nu retele de linkuri.
 
 ## Audit SEO si marketing
 
