@@ -34,6 +34,8 @@ Ce s-a facut:
   - adaugate 10 keyword-uri lipsa: `widget calculator salariu`, `calculator salariu minim 2026`, `4325 brut in net`, `4325 brut net`, `zile lucratoare 2026`, `zile lucratoare iulie 2026`, `calculator salarii iulie 2026`, `calculator salariu iulie 2026`, `calculator salariu net iulie 2026`, `calcul salariu net iulie 2026`.
   - dupa salvare, Seobility a afisat `Keywords with rankings 35 / 63 +10`.
   - verificare ulterioara: unele keyword-uri noi apar in tabel cu tara `COM`, nu `RO`; cauza este default-ul `Country Google.com` din modalul `New keyword`. Trebuie re-adaugate pe `Google.ro` si apoi eliminate/ignorate variantele `COM`.
+  - remediat in browser: aceleasi 10 keyword-uri au fost re-adaugate cu `Country Google.ro`; verificare prin filtrul `widget calculator salariu` arata atat randul vechi `COM`, cat si randul nou `RO`, iar headerul Seobility arata `Keywords with rankings 37 / 73 +10`.
+  - variantele `COM` raman in cont, dar nu au fost sterse pentru ca stergerea ar elimina istoricul; se pot curata separat dupa confirmare.
   - completati competitorii directi in Rankings/Competitors: `calculator-salarii.ro`, `salaria.ro`, `paylab.ro`, `undelucram.ro`, `ghidsalariu.ro` plus competitorii deja existenti (`calculatoare-salarizare.ro`, `eghiseul.ro`, `papervee.com`, `leaveboard.com`, `impozitsalariu.ro`, `brutnet.ro`, `salariu-net.ro`, `calculatorvenituri.ro`).
   - `netdinbrut.ro`/`jobinfo.ro` raman de re-verificat daca incap in limita de 20 competitori sau daca Seobility le normalizeaza diferit.
 - Triat primele 20 oportunitati din Seobility `Backlinks > Link Building`:
@@ -50,6 +52,8 @@ Ce s-a facut:
 - Runda 2 cercetare off-site:
   - adaugata in action board o lista de directoare/startup databases: ROTSA, RomanianStartups, StartupBlink, EU-Startups, TrustMRR, Uneed, AlternativeTo, Startup Stash.
   - adaugate prospecte SERP din zona HR/contabilitate: GNConta, Statul de Plata, SITT, CalculatoareUsoare, Portal Codul Fiscal/Portal Codul Muncii.
+  - verificat contacte publice pentru runda 2: `office@gnconta.ro`, `office@statuldeplata.ro`, `contact@sitt.ro`.
+  - adaugate drafturi netrimise pentru GNConta, Statul de Plata si SITT in outreach pack.
   - concluzie: cele mai bune tinte raman paginile cu linkuri utile, articole care citeaza calculatoare vechi si site-uri HR/contabilitate fara calculator actualizat.
 - Rulat GSC local pentru maparea tintelor de link building:
   - pagini prioritare pentru linkuri externe: `/`, `/salariu-minim`, `/calculator/calcul-salariu-net-4325-brut`, `/metodologie`, `/noutati/cosul-minim-de-consum`.
@@ -58,9 +62,9 @@ Ce s-a facut:
 
 Urmatorii pasi off-site:
 
-1. Re-adauga in Seobility keyword-urile noi pe `Google.ro` si verifica sa apara cu tara `RO`.
+1. Decide daca stergem variantele `COM` din Seobility sau le lasam ca istoric separat.
 2. Trimite, dupa confirmare, primele 3 outreach-uri catre Aesynero, TimeOff.Guru si 24Conta.
-3. Pregateste un al doilea val de outreach pentru GNConta, Statul de Plata si SITT, dupa verificare manuala finala.
+3. Trimite, dupa confirmare, runda 2 catre GNConta, Statul de Plata si SITT.
 4. Publica, dupa confirmare, postare LinkedIn + articol DEV despre widget.
 5. Submit, dupa confirmare, in ROTSA si RomanianStartups; apoi StartupBlink/Uneed daca pozitionarea este potrivita.
 6. Verifica in Seobility daca competitorii noi pot include si `netdinbrut.ro` / `jobinfo.ro` fara sa depaseasca limita.
