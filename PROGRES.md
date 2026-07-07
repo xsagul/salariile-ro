@@ -28,14 +28,21 @@ Ce s-a facut:
 - Rescris `README.md` ca asset public GitHub pentru proiect:
   - linkuri spre calculator, widget, metodologie, salariu minim, salariu mediu, PFA, fluturas, zile libere.
   - pozitionare clara: calculator salariu net/brut 2026 pentru Romania.
+- Commit + push public pe GitHub:
+  - `4b81236` - Improve public project profile for external SEO
+- Configurat Seobility Rankings:
+  - adaugate 10 keyword-uri lipsa: `widget calculator salariu`, `calculator salariu minim 2026`, `4325 brut in net`, `4325 brut net`, `zile lucratoare 2026`, `zile lucratoare iulie 2026`, `calculator salarii iulie 2026`, `calculator salariu iulie 2026`, `calculator salariu net iulie 2026`, `calcul salariu net iulie 2026`.
+  - dupa salvare, Seobility a afisat `Keywords with rankings 35 / 63 +10`.
+  - completati competitorii directi in Rankings/Competitors: `calculator-salarii.ro`, `salaria.ro`, `paylab.ro`, `undelucram.ro`, `ghidsalariu.ro` plus competitorii deja existenti (`calculatoare-salarizare.ro`, `eghiseul.ro`, `papervee.com`, `leaveboard.com`, `impozitsalariu.ro`, `brutnet.ro`, `salariu-net.ro`, `calculatorvenituri.ro`).
+  - `netdinbrut.ro`/`jobinfo.ro` raman de re-verificat daca incap in limita de 20 competitori sau daca Seobility le normalizeaza diferit.
 
 Urmatorii pasi off-site:
 
-1. Adauga competitorii si keyword-urile prioritare in Seobility, daca se confirma salvarea setarilor.
-2. Verifica manual primele 20 oportunitati din Link Building si marcheaza spam/competitor/prospect real.
-3. Trimite, dupa confirmare, primele 5 outreach-uri catre HR/payroll/contabilitate/media.
-4. Pregateste si publica, dupa confirmare, postare LinkedIn + articol DEV despre widget.
-5. Submit, dupa confirmare, in RomanianStartups si eventual StartupBlink/alte directoare curate.
+1. Verifica manual primele 20 oportunitati din Link Building si marcheaza spam/competitor/prospect real.
+2. Trimite, dupa confirmare, primele 5 outreach-uri catre HR/payroll/contabilitate/media.
+3. Pregateste si publica, dupa confirmare, postare LinkedIn + articol DEV despre widget.
+4. Submit, dupa confirmare, in RomanianStartups si eventual StartupBlink/alte directoare curate.
+5. Verifica in Seobility daca competitorii noi pot include si `netdinbrut.ro` / `jobinfo.ro` fara sa depaseasca limita.
 
 ## Audit SEO si marketing
 
