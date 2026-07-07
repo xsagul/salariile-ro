@@ -43,7 +43,9 @@ Ce s-a facut:
   - competitori reali din randurile spam notati pentru analiza, nu outreach: `leaveboard.com`, `eghiseul.ro`, `impozitsalariu.ro`, `salaria.ro`, `paylab.ro`, `calculator-salarii.ro`, `calculatoare-salarizare.ro`.
 - Creat outreach pack pe Desktop:
   - `C:\Users\Sorin\Desktop\OUTREACH-PACK-SALARIILERO-2026-07-07.md`
+  - `C:\Users\Sorin\Desktop\DIRECTORY-SUBMISSION-PACK-SALARIILERO-2026-07-07.md`
   - include drafturi pentru Aesynero, TimeOff.Guru, 24Conta, LinkedIn, DEV.to si Reddit.
+  - include copy pentru ROTSA, RomanianStartups, StartupBlink, EU-Startups, Uneed, AlternativeTo si Startup Stash.
   - status: nimic trimis/publicat fara confirmare.
 - Runda 2 cercetare off-site:
   - adaugata in action board o lista de directoare/startup databases: ROTSA, RomanianStartups, StartupBlink, EU-Startups, TrustMRR, Uneed, AlternativeTo, Startup Stash.
