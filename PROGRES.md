@@ -51,6 +51,10 @@ Ce s-a facut:
   - adaugata in action board o lista de directoare/startup databases: ROTSA, RomanianStartups, StartupBlink, EU-Startups, TrustMRR, Uneed, AlternativeTo, Startup Stash.
   - adaugate prospecte SERP din zona HR/contabilitate: GNConta, Statul de Plata, SITT, CalculatoareUsoare, Portal Codul Fiscal/Portal Codul Muncii.
   - concluzie: cele mai bune tinte raman paginile cu linkuri utile, articole care citeaza calculatoare vechi si site-uri HR/contabilitate fara calculator actualizat.
+- Rulat GSC local pentru maparea tintelor de link building:
+  - pagini prioritare pentru linkuri externe: `/`, `/salariu-minim`, `/calculator/calcul-salariu-net-4325-brut`, `/metodologie`, `/noutati/cosul-minim-de-consum`.
+  - query-uri prioritare: `calculator salariu net 2026`, `calculator salarii 2026`, `salariu minim pe economie 2026 net`, `calculator salariu minim 2026`, `calculator salariu brut 2026`, `4325 brut in net`.
+  - `/calculator-pfa` are 1.545 impresii si pozitie 52,4; se recomanda consolidare on-site inainte de outreach.
 
 Urmatorii pasi off-site:
 
