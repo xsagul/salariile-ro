@@ -138,3 +138,40 @@ Rapoarte generate pe Desktop:
 - Blocajul SEO principal nu este tehnic, ci autoritate externa + acoperire de intentii laterale.
 - `calculator-pfa` este cea mai mare oportunitate on-site ramasa.
 - Nu cumpara linkuri si nu folosi widgetul ca schema agresiva de linkuri.
+
+## Seobility competitor keyword universe - 2026-07-08
+
+Status: completat peste lista existenta, fara stergeri.
+
+Ce s-a facut:
+
+- Au fost pastrate cele 73 keyword-uri existente in Seobility.
+- Au fost adaugate 19 keyword-uri noi pe `Google.ro`, extrase din topurile publice AhrefsTop pentru competitorii care aveau date disponibile:
+  - `undelucram`
+  - `totogaming`
+  - `sabroso`
+  - `flip ro`
+  - `salarii it`
+  - `salariu contabil`
+  - `salarii`
+  - `contabil salariu`
+  - `inginer mecanic salariu`
+  - `verificare rovinieta`
+  - `verificare rovinieta fara serie sasiu`
+  - `verificare rovinieta online`
+  - `rovinieta verificare`
+  - `numar cadastral`
+  - `calculator vechime`
+  - `calculator concediu medical`
+  - `calculator salarii 2023`
+  - `calculator indemnizatie crestere copil`
+  - `calculator concediu de odihna`
+- In modalul Seobility s-a vazut `Keyword limit: 92 / 300`, adica 73 existente + 19 noi.
+- Verificare post-save in Seobility: filtrul gaseste keyword-uri noi precum `calculator vechime` si `undelucram`.
+- Au fost verificate si topurile `calculator-salarii.ro`; termenii mari (`calculator salariu`, `calculator salariu net`, `salariu net`, `calculator salarii`, `calculator salariu brut`, `calcul salariu net`, `brut to net`) erau deja urmariti sau acoperiti, deci nu au fost duplicati.
+- `leaveboard.com` a fost verificat, dar topurile publice disponibile sunt United States (`federal holidays 2024`, etc.), nu Romania, deci nu au fost adaugate in proiectul `Google.ro`.
+- Nu exista pagina publica AhrefsTop/Semrush folosibila pentru: `impozitsalariu.ro`, `jobinfo.ro`, `brutnet.ro`, `netdinbrut.ro`, `ghidsalariu.ro`, `calculatorvenituri.ro`, `salaria.ro`.
+
+Raport complet pe Desktop:
+
+- `C:\Users\Sorin\Desktop\COMPETITOR-KEYWORD-UNIVERSE-SALARIILERO-2026-07-08.md`
