@@ -45,15 +45,20 @@ Ce s-a facut:
   - `C:\Users\Sorin\Desktop\OUTREACH-PACK-SALARIILERO-2026-07-07.md`
   - include drafturi pentru Aesynero, TimeOff.Guru, 24Conta, LinkedIn, DEV.to si Reddit.
   - status: nimic trimis/publicat fara confirmare.
+- Runda 2 cercetare off-site:
+  - adaugata in action board o lista de directoare/startup databases: ROTSA, RomanianStartups, StartupBlink, EU-Startups, TrustMRR, Uneed, AlternativeTo, Startup Stash.
+  - adaugate prospecte SERP din zona HR/contabilitate: GNConta, Statul de Plata, SITT, CalculatoareUsoare, Portal Codul Fiscal/Portal Codul Muncii.
+  - concluzie: cele mai bune tinte raman paginile cu linkuri utile, articole care citeaza calculatoare vechi si site-uri HR/contabilitate fara calculator actualizat.
 
 Urmatorii pasi off-site:
 
 1. Re-adauga in Seobility keyword-urile noi pe `Google.ro` si verifica sa apara cu tara `RO`.
 2. Trimite, dupa confirmare, primele 3 outreach-uri catre Aesynero, TimeOff.Guru si 24Conta.
-3. Publica, dupa confirmare, postare LinkedIn + articol DEV despre widget.
-4. Submit, dupa confirmare, in RomanianStartups si eventual StartupBlink/alte directoare curate.
-5. Verifica in Seobility daca competitorii noi pot include si `netdinbrut.ro` / `jobinfo.ro` fara sa depaseasca limita.
-6. Continua trierea Seobility Link Building paginile 2-3, dar doar pentru prospecte reale, nu retele de linkuri.
+3. Pregateste un al doilea val de outreach pentru GNConta, Statul de Plata si SITT, dupa verificare manuala finala.
+4. Publica, dupa confirmare, postare LinkedIn + articol DEV despre widget.
+5. Submit, dupa confirmare, in ROTSA si RomanianStartups; apoi StartupBlink/Uneed daca pozitionarea este potrivita.
+6. Verifica in Seobility daca competitorii noi pot include si `netdinbrut.ro` / `jobinfo.ro` fara sa depaseasca limita.
+7. Continua trierea Seobility Link Building paginile 2-3, dar doar pentru prospecte reale, nu retele de linkuri.
 
 ## Audit SEO si marketing
 
