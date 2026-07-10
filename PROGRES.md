@@ -23,6 +23,12 @@ APLICAT PE LIVE (10 iul, cu acordul userului): V1 rescris ca fisier de sine stat
 
 De urmarit dupa deploy: pozitiile GSC pe query-urile "net" si "constructii" (intentia #2, ~30% din afisari, inca subacoperita — pagina dedicata constructii ramane oportunitatea principala); featured snippet pe raspunsul-intai din lede.
 
+## /salariu-mediu restructurat pe aceeasi formula - 10 iulie 2026
+
+Aplicat si impins pe live cu acordul userului ("pagina de test, mana libera"). Audit: aceleasi boli ca la minim (repetitie tripla in primul ecran, mediana de 4 ori, FAQ 6/8 dubluri ale corpului, grafic fara tabel, "vezi cifra alaturi" directional). GSC 90 zile (597 afisari, volum mic cum stiam): intentia #1 = valoarea oficiala pt pensie ("salariu mediu brut 2026 pentru calcul pensie" 121 imp poz 11,6 + clusterul "castig salarial mediu brut utilizat la fundamentarea bugetului" ~32% din afisari); brut > net aici (invers ca la minim).
+
+Schimbari: lede canonic unic (caseta "Raspuns scurt" stearsa), sectiunea pensiei urcata pe locul 2 cu expresia legala EXACTA in corp (nu exista deloc; eram poz 10-11 pe cluster) + raspuns explicit la "ce salariu trebuie sa ai pentru un punct de pensie" (poz 1 deja), tabel istoric HTML nou (coloanele crestere + legea anului, existau in date nerandate), FAQ 8->4, card nou "Media fata de minim" (link bidirectional intre piloni). Cifrele verificate cu motorul (9.192 -> 5.377, CAM 207, cost 9.399 - toate corecte deja). INS mai 2026 NEpublicat inca (apare ~mijloc iulie) - aprilie ramane la zi; DE ACTUALIZAT cifra INS cand iese comunicatul (5.843/9.740 apr).
+
 ## Sprint SEO extern - 7 iulie 2026
 
 Status: lucru extern/off-site pornit, cu Seobility, SERP si backlinkuri competitoriale verificate.
