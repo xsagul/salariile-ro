@@ -1,6 +1,27 @@
 # Progres salariile.ro
 
-Ultima actualizare: 7 iulie 2026
+Ultima actualizare: 10 iulie 2026
+
+## Standard de content + drafturi /salariu-minim - 10 iulie 2026
+
+Status: studiu terminat, 4 variante draft construite local; NIMIC modificat pe pagina live, NIMIC comis.
+
+Ce s-a facut:
+
+- Userul a respins 3 propuneri de content la rand (repetitie nevazuta la review, hook in loc de raspuns, caseta "Raspuns scurt" golita de raspuns) si a cerut studiu serios inainte de orice modificare.
+- Citit integral ghidul de content Adobe Spectrum (9 pagini) si scris `STUDIU-SPECTRUM-CONTENT.md` (radacina repo): 6 lentile (utilitate, placere de citit, cine cauta, intentie, cum scrii, cum faci AI sa scrie bine) + protocol obligatoriu de scriere cu AI + audit /salariu-minim (pica: repetitia tripla din primul ecran, dublura barei angajat/stat, "mai jos" directional, date contradictorii 6 vs 1 iulie, grafic fara tabel HTML, FAQ part-time vag).
+- Memorie noua: `content_standards_spectrum.md` (regulile confirmate de user).
+- Construite 4 variante draft in `src/app/draft-sm/` (noindex, nu-s in sitemap, NU se comit fara acord): index + v1 "Lede canonic" (interventie minima), v2 "Caseta-raspuns", v3 "Ordinea intentiilor" (drepturi + norma partiala urcate in corp, FAQ redus), v4 "Intrebarile cititorului" (H2 intrebari + bloc raspuns marcat). Module comune in `draft-sm/comune.tsx`.
+- Cifre noi norma partiala calculate cu motorul fiscal (`scripts/calc-parttime.mts`): 2h brut 1.081 -> net 703; 4h 2.163 -> 1.352; 6h 3.244 -> 1.985; 8h 4.325 -> 2.699 (sanity check OK).
+- Verificat in browser pe dev server: toate 4 variantele randeaza, consola curata, fraza-raspuns apare o singura data in DOM per pagina.
+
+Userul a ales V1 si a iterat pe el: (1) separarea "Sectoare si obligatiile angajatorului" in doua sectiuni; (2) adaugarea sectiunilor din V3 "Drepturile tale la salariul minim" si "Pe ora, pe zi si la norma partiala" (cardurile SubMinim/2Ani si 6 FAQ-uri acoperite retrase, FAQ ramas la 8); (3) reechilibrare cu carduri ADITIVE noi in comune.tsx (variante nealese pastrate pe /draft-sm/carduri; cifre in scripts/calc-carduri.mts si calc-parttime.mts, toate din motorul fiscal).
+
+Maparea FINALA V1 (validata de user, 10 iul): Ce se retine din brut -> CardPentruCe; Netul pas cu pas -> CardPastrezi + CardCatiOameni (831.382 salariati, mmuncii); Angajat/firma -> CardCifre; Drepturile tale -> CardSalariuIntarziat (art. 166 + 81); Pe ora/zi/partial -> CardOreSuplimentare + CardPartTimeGri; Minimul pe sectoare -> CardSectoareNet (net constructii 2.754); Obligatiile angajatorului -> CardCostFirma (1.704/salariat S2); Cum a crescut -> CardPutereCumparare + CardUrmatoareaCrestere; FAQ -> CardSurse. Verificat in DOM: consola curata, cifrele-cheie o singura data.
+
+APLICAT PE LIVE (10 iul, cu acordul userului): V1 rescris ca fisier de sine statator in src/app/salariu-minim/page.tsx — metadata pastrata, JSON-LD actualizat (Article dateModified 2026-07-10 + FAQPage pe cele 8 intrebari ramase), date unificate pe 10 iulie, zero em dash-uri in text (em dash = amprenta AI, corectia userului; regula adaugata in standard). Verificat local: H2-uri in ordinea aprobata, FAQ 8=8, consola curata, npm run build trecut. Comis si impins pe main (deploy automat Vercel). NU s-au comis: draft-sm/ (raman locale), STUDIU-SPECTRUM-CONTENT.md si STUDIU-ADOBE-AI-WRITING.md (interne — contin discutia despre redactarea cu AI, iar userul a decis sa nu declare public; repo-ul e public). Cardul REGES retras (cerea verificare factuala); CardCatiOameni citeaza comunicatul mmuncii din iulie 2026.
+
+De urmarit dupa deploy: pozitiile GSC pe query-urile "net" si "constructii" (intentia #2, ~30% din afisari, inca subacoperita — pagina dedicata constructii ramane oportunitatea principala); featured snippet pe raspunsul-intai din lede.
 
 ## Sprint SEO extern - 7 iulie 2026
 
