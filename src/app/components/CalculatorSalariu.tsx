@@ -607,7 +607,14 @@ export default function CalculatorSalariu({
       {/* ── Calculator ── */}
       <div className={`mx-auto grid ${wrap} gap-6 px-4 py-8 sm:px-6 sm:py-12 md:grid-cols-5`} id="calc-layout">
         {/* Coloana Stângă – formular */}
-        <div className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-2" data-md-strip>
+        <form
+          className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-2"
+          data-md-strip
+          onSubmit={(event) => {
+            event.preventDefault();
+            handleCalculeaza();
+          }}
+        >
           <h2 className={colHeader}>Date salariale</h2>
 
           {!fluturas && (
@@ -730,14 +737,13 @@ export default function CalculatorSalariu({
           )}
 
           <button
-            type="button"
+            type="submit"
             className={`${avansat ? "mt-5 " : ""}block min-h-12 w-full rounded bg-stone-900 px-4 py-3 text-sm font-medium text-white shadow-soft transition-colors hover:bg-stone-800 active:translate-y-px`}
-            onClick={handleCalculeaza}
             aria-label="Calculează salariul și navighează la rezultat"
           >
             Calculează
           </button>
-        </div>
+        </form>
 
         {/* Coloana Dreaptă – rezultate */}
         <div className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-3" id="rezultat-calcul">

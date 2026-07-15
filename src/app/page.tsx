@@ -7,13 +7,14 @@ import { PAGE_LAST_MODIFIED } from "@/lib/seo";
 
 // Metadata proprie homepage-ului (suprascrie default-ul global din layout, fără
 // să atingă celelalte pagini). Țintește termenul cu cel mai mare volum din nișă,
-// „calcul salariu net" (110K), plus head terms „salariu brut" / „brut în net".
+// „calculator salariu net" (90.500/lună în snapshotul DataForSEO din 2026-07-15),
+// plus head terms „salariu brut" / „brut în net".
 export const metadata: Metadata = {
   title: {
-    absolute: "Calcul salariu net 2026: calculator brut în net | Salariile.ro",
+    absolute: "Calculator salariu net 2026: brut în net | Salariile.ro",
   },
   description:
-    "Calculează salariul net din brut în 2026: vezi CAS, CASS, impozit, deducere personală și cost angajator. Merge și invers, din net în brut.",
+    "Calculator salariu net 2026: calculează brut în net și net în brut. Vezi CAS, CASS, impozit, deducere personală și costul angajatorului.",
 };
 
 // 1. Extragem datele pentru a le folosi și în schema ascunsă, și pe ecran
@@ -71,7 +72,7 @@ const homepageJsonLd = {
       "@type": "WebPage",
       "@id": "https://salariile.ro/#webpage",
       url: "https://salariile.ro/",
-      name: "Calcul salariu net 2026: calculator brut în net",
+      name: "Calculator salariu net 2026: brut în net",
       inLanguage: "ro",
       // Aceeași dată ca lastModified din sitemap și ca „Ultima actualizare" vizibilă —
       // consistența între bylineDate / sitemap / schema e un semnal de încredere.
@@ -118,7 +119,7 @@ const homepageJsonLd = {
 
 // Conținutul „Cum funcționează calculul" – definit O SINGURĂ DATĂ și folosit
 // atât în layout-ul mobil (secțiune always-open), cât și ca primul tab pe desktop.
-const cumFunctioneazaTitlu = "Cum funcționează calculul";
+const cumFunctioneazaTitlu = "Calculator salariu net: cum funcționează calculul";
 const cumFunctioneazaBody = (
   <>
     <p className="mb-4 text-base leading-normal tracking-[-0.01em] text-stone-600">
@@ -228,7 +229,7 @@ export default function Page() {
                     ))}
                   </ul>
 
-                  <p className="mt-6 text-xs text-stone-500">Ultima actualizare: 1 iulie 2026.</p>
+                  <p className="mt-6 text-xs text-stone-500">Ultima actualizare: 15 iulie 2026.</p>
                 </div>
               </aside>
             </div>

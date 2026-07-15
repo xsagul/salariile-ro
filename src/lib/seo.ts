@@ -61,14 +61,14 @@ export const PAGE_LAST_MODIFIED: Record<string, Date> = {
   // asumată să rămână FIXĂ la 1 iulie (nu "azi"), ca să nu necesite update
   // zilnic. Paginile de calculator folosesc aceeași dată fiscală, fiindcă
   // rezultatele și textele lor se raportează la regimul intrat în vigoare atunci.
-  "/": new Date("2026-07-01T00:00:00.000Z"),
+  "/": new Date("2026-07-15T00:00:00.000Z"),
   "/salariu-minim": new Date("2026-07-06T00:00:00.000Z"),
   "/calculator-pfa": new Date("2026-07-06T00:00:00.000Z"),
-  "/salariu-mediu": new Date("2026-07-06T00:00:00.000Z"),
+  "/salariu-mediu": new Date("2026-07-15T00:00:00.000Z"),
   "/metodologie": new Date("2026-07-01T00:00:00.000Z"),
   "/deducere-personala-2026": new Date("2026-07-06T00:00:00.000Z"),
   "/zile-libere-2026": new Date("2026-07-06T00:00:00.000Z"),
-  "/zile-lucratoare-2026": new Date("2026-07-06T00:00:00.000Z"),
+  "/zile-lucratoare-2026": new Date("2026-07-15T00:00:00.000Z"),
   "/fluturas-salariu": new Date("2026-07-02T00:00:00.000Z"),
   "/widget": new Date("2026-07-05T00:00:00.000Z"),
   "/noutati": new Date("2026-06-12T00:00:00.000Z"),

@@ -135,7 +135,7 @@ const jsonLd = {
       image: { "@type": "ImageObject", url: "https://salariile.ro/og-salariu-mediu.jpg", width: 1200, height: 630 },
       mainEntityOfPage: "https://salariile.ro/salariu-mediu",
       datePublished: "2026-03-30",
-      dateModified: "2026-07-10",
+      dateModified: "2026-07-15",
     },
     {
       "@type": "FAQPage",
@@ -179,7 +179,7 @@ export default function SalariuMediuPage() {
           <div className="md:col-span-3">
             <h1 className="text-3xl font-bold tracking-[-0.02em] text-stone-900 sm:text-4xl">Salariul mediu pe economie în 2026</h1>
             <p className="mt-4 text-xs text-stone-600 [&_a]:font-medium [&_a]:text-stone-700 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-900">
-              Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat 10 iulie 2026
+              Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat 15 iulie 2026
             </p>
             <p className={`mt-5 max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600 ${strong}`}>
               Câștigul salarial mediu net a fost <strong>5.843 lei</strong> în aprilie 2026 (<strong>9.740 lei</strong>{" "}
@@ -249,7 +249,7 @@ export default function SalariuMediuPage() {
           <div className={row}>
             <div className="md:col-span-3">
               <div className={`max-w-prose ${articol}`}>
-                <h2>Valoarea oficială: pensia și plafoanele</h2>
+                <h2>Salariul mediu brut 2026 pentru calculul pensiei și plafoane</h2>
                 <p>
                   Numele complet al cifrei oficiale e <strong>câștigul salarial mediu brut utilizat la fundamentarea
                   bugetului asigurărilor sociale de stat</strong>: 9.192 lei pentru 2026. De ea se leagă:
@@ -550,7 +550,7 @@ export default function SalariuMediuPage() {
                   <li><Link href="/">Calculator salariu net</Link></li>
                   <li><Link href="/zile-libere-2026">Zile libere și lucrătoare 2026</Link></li>
                 </ul>
-                <p className="mt-auto pt-6 text-xs text-stone-500">Ultima actualizare: 10 iulie 2026.</p>
+                <p className="mt-auto pt-6 text-xs text-stone-500">Ultima actualizare: 15 iulie 2026.</p>
               </div>
             </aside>
           </div>

@@ -5,9 +5,9 @@ import { SARBATORI_LEGALE_2026, zileLucratoareLuna } from "@/lib/sarbatori";
 import { ogPage, twPage } from "@/lib/seo";
 import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow } from "@/app/components/ui";
 
-const TITLE = "Zile lucrătoare 2026: calendar lunar și ore de lucru";
+const TITLE = "Zile lucrătoare iulie 2026: 23 zile și 184 ore";
 const DESCRIPTION =
-  "Tabel zile lucrătoare 2026 în România: zile și ore de lucru pe fiecare lună, sărbători legale scăzute, total 250 zile lucrătoare și 2.000 ore.";
+  "Zile lucrătoare iulie 2026: 23 zile și 184 ore. Vezi tabelul complet pe toate lunile, cu sărbătorile legale scăzute și totalul anual.";
 const PATH = "/zile-lucratoare-2026";
 const YEAR = 2026;
 const MONTHS = [
@@ -102,7 +102,7 @@ const jsonLd = {
       },
       image: { "@type": "ImageObject", url: "https://salariile.ro/og-image.png", width: 1200, height: 630 },
       datePublished: "2026-07-06",
-      dateModified: "2026-07-06",
+      dateModified: "2026-07-15",
       mainEntityOfPage: `https://salariile.ro${PATH}`,
     },
     {
@@ -125,7 +125,7 @@ export default function ZileLucratoare2026Page() {
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Zile lucrătoare 2026" }]} />
         <H1>Zile lucrătoare 2026</H1>
         <p className="mt-3 text-sm text-stone-500 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2">
-          Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat 6 iulie 2026
+          Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat 15 iulie 2026
         </p>
         <Lead>
           În 2026 sunt <strong>{TOTAL_LUCRATOARE} zile lucrătoare</strong> și <strong>{TOTAL_ORE.toLocaleString("ro-RO")} ore de lucru</strong> la program standard de 8 ore pe zi.
@@ -134,6 +134,17 @@ export default function ZileLucratoare2026Page() {
       </Hero>
 
       <main>
+        <Section wide>
+          <div className="rounded-md border border-stone-300 bg-surface p-5 shadow-soft sm:p-6">
+            <p className="text-xs font-medium uppercase tracking-wide text-stone-500">Răspuns rapid pentru luna curentă</p>
+            <h2 id="iulie-2026" className="mt-2">Zile lucrătoare iulie 2026</h2>
+            <p className="mt-3 max-w-prose">
+              Iulie 2026 are <strong>23 de zile lucrătoare</strong> și <strong>184 de ore de lucru</strong> la program de 8 ore pe zi. Luna nu are nicio sărbătoare legală care să reducă norma de lucru.
+            </p>
+            <p className="source-note"><a href="#tabel-2026">Vezi toate lunile din 2026 în tabel</a>.</p>
+          </div>
+        </Section>
+
         <Section wide>
           <div className="grid gap-4 sm:grid-cols-3">
             <div className="rounded-md border border-stone-200 bg-surface p-5 shadow-soft">
@@ -152,6 +163,7 @@ export default function ZileLucratoare2026Page() {
         </Section>
 
         <Section>
+          <div id="tabel-2026" className="scroll-mt-24" />
           <h2>Tabel zile lucrătoare 2026</h2>
           <p>
             Tabelul scade weekendurile și sărbătorile legale care cad în zile de luni-vineri. Este util pentru pontaj, tarif orar, tichete de masă și contracte part-time.
@@ -219,14 +231,14 @@ export default function ZileLucratoare2026Page() {
         </Section>
 
         <Section>
-          <h2>De ce conteaza pentru salarii</h2>
+          <h2>De ce contează pentru salarii</h2>
           <p>
             Pentru un salariat cu salariu lunar fix, numărul de zile lucrătoare nu schimbă salariul brut sau net al lunii. Totuși, contează în calcule operaționale:
           </p>
           <ul>
             <li>tarif orar și normă lunară de lucru;</li>
             <li>contracte part-time și pontaj;</li>
-            <li>numar de tichete de masa acordate;</li>
+            <li>număr de tichete de masă acordate;</li>
             <li>comparații între luni cu 18 zile lucrătoare și luni cu 23 zile lucrătoare.</li>
           </ul>
           <p>
@@ -235,7 +247,7 @@ export default function ZileLucratoare2026Page() {
         </Section>
 
         <Section>
-          <h2>Intrebari frecvente</h2>
+          <h2>Întrebări frecvente</h2>
           {FAQ.map((item) => (
             <section key={item.q}>
               <h3>{item.q}</h3>
@@ -252,7 +264,7 @@ export default function ZileLucratoare2026Page() {
             <li><Link href="/salariu-minim">Salariul minim 2026</Link>, pentru normă și calcul net</li>
             <li><Link href="/fluturas-salariu">Generator fluturaș salariu</Link>, pentru fluturaș PDF orientativ</li>
           </ul>
-          <p className="source-note">Pagina actualizată: 6 iulie 2026.</p>
+          <p className="source-note">Pagina actualizată: 15 iulie 2026.</p>
         </Section>
       </main>
     </>
