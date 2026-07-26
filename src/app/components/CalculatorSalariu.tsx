@@ -4,9 +4,13 @@ import React, { useState, useCallback } from "react";
 import Link from "next/link";
 import {
   calculeaza,
-  calculeazaBrutDinNet,
+  calculeazaCuRegim,
+  calculeazaBrutDinNetCuRegim,
+  REGIM_FISCAL_CURENT,
+  REGIMURI_FISCALE_SALARIU,
   SALARIU_MINIM,
   type InputState,
+  type RegimFiscalSalariu,
   type Rezultat,
 } from "@/lib/fiscal";
 import { zileLucratoareLuna } from "@/lib/sarbatori";
@@ -57,11 +61,15 @@ const grupeazaMii = (raw: string) => {
 // Construiește rezultatul afișat dintr-un snapshot de input + mod.
 // Calculul se face O DATĂ, la momentul click pe Calculează – nu la fiecare render.
 // Conține tot ce e nevoie să randeze tabelul + payload-ul PDF.
-function buildResult(snapshotInput: InputState, snapshotMod: "brut" | "net") {
+function buildResult(
+  snapshotInput: InputState,
+  snapshotMod: "brut" | "net",
+  regimFiscal: RegimFiscalSalariu = REGIM_FISCAL_CURENT,
+) {
   const brutEfectiv = snapshotMod === "net"
-    ? String(calculeazaBrutDinNet(parseFloat(snapshotInput.brut) || 0, snapshotInput))
+    ? String(calculeazaBrutDinNetCuRegim(parseFloat(snapshotInput.brut) || 0, snapshotInput, regimFiscal))
     : snapshotInput.brut;
-  const rez = calculeaza({ ...snapshotInput, brut: brutEfectiv });
+  const rez = calculeazaCuRegim({ ...snapshotInput, brut: brutEfectiv }, regimFiscal);
   if (!rez) return null;
   return {
     rez,
@@ -451,6 +459,7 @@ export default function CalculatorSalariu({
   modInitial = "brut",
   titluCustom,
   subtitluCustom,
+  regimFiscal = REGIM_FISCAL_CURENT,
   wide = false,
   fluturas = false,
 }: {
@@ -458,6 +467,8 @@ export default function CalculatorSalariu({
   modInitial?: "brut" | "net";
   titluCustom?: React.ReactNode;
   subtitluCustom?: React.ReactNode;
+  /** Perioada fiscală păstrată explicit pe paginile istorice. Implicit: regimul curent. */
+  regimFiscal?: RegimFiscalSalariu;
   wide?: boolean;
   /** Mod generator de fluturaș: câmpuri de stat de plată (firmă, ore suplimentare,
    *  sporuri, rețineri), direcția fixă brut→net. Folosit de /fluturas-salariu. */
@@ -506,7 +517,7 @@ export default function CalculatorSalariu({
   // e prezent (pagini dinamice tip /4050-brut-...), pre-calculează (auto-commit
   // pentru SEO/SSR – Google vede tabelul completat la randare).
   const [rezAfisat, setRezAfisat] = useState<ReturnType<typeof buildResult>>(
-    brutInitial && parseFloat(brutInitial) > 0 ? buildResult(pregatesteInput(initialInput), modInitial) : null
+    brutInitial && parseFloat(brutInitial) > 0 ? buildResult(pregatesteInput(initialInput), modInitial, regimFiscal) : null
   );
 
   // Defalcarea brutului compus la momentul ultimului calcul (doar mod fluturaș).
@@ -539,18 +550,18 @@ export default function CalculatorSalariu({
     setEmptyWarn(false);
     if (fluturas) {
       const c = compuneFluturas(input, { sporOre, sporuri, normaOre, oreLucrate });
-      setRezAfisat(buildResult(c.input, mod));
+      setRezAfisat(buildResult(c.input, mod, regimFiscal));
       setRezKey(inputKey(c.input, mod));
       setFluturasSnap({ baza: c.baza, bazaRealizata: c.bazaRealizata, plataSupl: c.plataSupl, fixe: c.fixe, oreSupl: c.oreSupl, sporProc: parseFloat(sporOre) || 0, oreNorma: c.oreNorma, oreLucrate: c.oreLucrate });
     } else {
-      setRezAfisat(buildResult(input, mod));
+      setRezAfisat(buildResult(input, mod, regimFiscal));
       setRezKey(inputKey(input, mod));
     }
     if (typeof window === "undefined") return;
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
     const targetId = isMobile ? "rezultat-calcul" : "calc-layout";
     document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth", block: "start" });
-  }, [input, mod, fluturas, sporOre, sporuri, normaOre, oreLucrate]);
+  }, [input, mod, regimFiscal, fluturas, sporOre, sporuri, normaOre, oreLucrate]);
 
   // Rezultatul afișat e „învechit" dacă datele curente diferă de cele de la ultimul calcul.
   const stale = rezAfisat !== null && rezKey !== inputKey(pregatesteInput(input), mod);
@@ -596,7 +607,7 @@ export default function CalculatorSalariu({
           {/* Dateline tehnic, scurt și curat */}
           {!titluCustom && (
             <div className="mt-4 text-xs text-stone-600">
-              Ultima actualizare: 1 iulie 2026
+              Ultima actualizare: 26 iulie 2026
             </div>
           )}
             </div>
@@ -627,7 +638,7 @@ export default function CalculatorSalariu({
                 onClick={() => {
                   if (mod === "net") {
                     const netVal = parseFloat(input.brut);
-                    if (netVal > 0) set("brut", String(calculeazaBrutDinNet(netVal, input)));
+                    if (netVal > 0) set("brut", String(calculeazaBrutDinNetCuRegim(netVal, input, regimFiscal)));
                   }
                   setMod("brut");
                 }}
@@ -641,7 +652,7 @@ export default function CalculatorSalariu({
                   if (mod === "brut") {
                     const brutVal = parseFloat(input.brut);
                     if (brutVal > 0) {
-                      const rezTemp = calculeaza(input);
+                      const rezTemp = calculeazaCuRegim(input, regimFiscal);
                       if (rezTemp) set("brut", String(rezTemp.net));
                     }
                   }
@@ -1114,7 +1125,7 @@ export default function CalculatorSalariu({
             </>
           )}
 
-          {rezAfisat && (
+          {rezAfisat && regimFiscal === REGIM_FISCAL_CURENT && (
             <button
               type="button"
               data-md-strip
@@ -1140,9 +1151,16 @@ export default function CalculatorSalariu({
             </button>
           )}
 
+          {rezAfisat && regimFiscal !== REGIM_FISCAL_CURENT && (
+            <p className="mt-5 text-xs leading-relaxed text-stone-500" data-md-strip>
+              Calcul istoric pentru ianuarie–iunie 2026. Fluturașul PDF este disponibil numai pentru grila fiscală curentă.
+            </p>
+          )}
+
           {!rezAfisat && (
             <p className="mt-4 text-xs leading-relaxed text-stone-500" data-md-strip>
-              Completează salariul brut pentru a genera fluturașul · Grila fiscală 2026 (minim: 4.325 lei)
+              Completează salariul brut pentru a genera fluturașul · Grila fiscală 2026
+              (minim: {new Intl.NumberFormat("ro-RO").format(REGIMURI_FISCALE_SALARIU[regimFiscal].salariuMinim)} lei)
             </p>
           )}
         </div>

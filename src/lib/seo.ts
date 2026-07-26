@@ -52,24 +52,21 @@ export function twPage(opts: {
 }
 
 /** Ultima modificare de conținut fiscal / editorial (nu la fiecare deploy). */
-export const LAST_FISCAL_CONTENT_UPDATE = new Date("2026-07-01T00:00:00.000Z");
+export const LAST_FISCAL_CONTENT_UPDATE = new Date("2026-07-26T00:00:00.000Z");
 
 /** Pagini statice cu date de publicare cunoscute. */
 export const PAGE_LAST_MODIFIED: Record<string, Date> = {
-  // Homepage (calculatorul) are dată proprie: 1 iulie 2026, ziua în care
-  // salariul minim de 4.325 lei (HG 146/2026) chiar intră în vigoare — decizie
-  // asumată să rămână FIXĂ la 1 iulie (nu "azi"), ca să nu necesite update
-  // zilnic. Paginile de calculator folosesc aceeași dată fiscală, fiindcă
-  // rezultatele și textele lor se raportează la regimul intrat în vigoare atunci.
-  "/": new Date("2026-07-15T00:00:00.000Z"),
-  "/salariu-minim": new Date("2026-07-06T00:00:00.000Z"),
-  "/calculator-pfa": new Date("2026-07-06T00:00:00.000Z"),
-  "/salariu-mediu": new Date("2026-07-15T00:00:00.000Z"),
-  "/metodologie": new Date("2026-07-01T00:00:00.000Z"),
+  // Date editoriale reale, schimbate numai când conținutul paginii este revizuit.
+  // Data intrării în vigoare a unui regim fiscal rămâne descrisă separat în pagină.
+  "/": new Date("2026-07-26T00:00:00.000Z"),
+  "/salariu-minim": new Date("2026-07-26T00:00:00.000Z"),
+  "/calculator-pfa": new Date("2026-07-26T00:00:00.000Z"),
+  "/salariu-mediu": new Date("2026-07-26T00:00:00.000Z"),
+  "/metodologie": new Date("2026-07-26T00:00:00.000Z"),
   "/deducere-personala-2026": new Date("2026-07-06T00:00:00.000Z"),
   "/zile-libere-2026": new Date("2026-07-06T00:00:00.000Z"),
   "/zile-lucratoare-2026": new Date("2026-07-15T00:00:00.000Z"),
-  "/fluturas-salariu": new Date("2026-07-02T00:00:00.000Z"),
+  "/fluturas-salariu": new Date("2026-07-26T00:00:00.000Z"),
   "/widget": new Date("2026-07-05T00:00:00.000Z"),
   "/noutati": new Date("2026-06-12T00:00:00.000Z"),
   "/despre": new Date("2026-04-01T00:00:00.000Z"),

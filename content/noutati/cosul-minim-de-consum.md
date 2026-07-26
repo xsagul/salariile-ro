@@ -1,58 +1,50 @@
 ---
 title: "Coșul minim de consum: cât costă traiul decent"
-description: "Coșul minim de trai decent arată câți bani îi trebuie unei familii într-o lună și de ce salariul minim net rămâne sub acest prag."
+description: "Ultimele valori publicate ale coșului pentru un trai decent, din septembrie 2025, și comparația documentată cu salariul minim net din 2026."
 date: "2026-06-08"
+updated: "2026-07-26"
 hero: "/noutati/cos-minim.jpg"
 heroAlt: "Coș de cumpărături cu produse de bază, pe fundal neutru."
 ---
 
-Tot aud de „coșul minim" prin știri, mai ales când se discută salariul minim. M-am apucat să citesc cum se calculează și am rămas surprins de cât de mare e diferența dintre cât îți trebuie ca să trăiești decent și cât primești la salariul minim. Hai să-ți arăt ce am aflat.
+Tot auzim de „coșul minim" când se discută salariul minim. Ca să facem o comparație corectă, folosim mai jos **ultima actualizare publicată de Fundația Friedrich Ebert România și Syndex, din septembrie 2025**. Nu prezentăm aceste valori drept cifre pentru 2026 și nu le ajustăm din estimări proprii.
 
 ## Ce este, mai exact, coșul minim
 
 Coșul minim e o listă cu tot ce-i trebuie unei persoane (sau unei familii) într-o lună ca să trăiască: mâncare, chirie sau rată, întreținere, curent, transport, haine, sănătate, un pic de școală pentru copii și un strop de timp liber. Pui preț pe fiecare lucru de pe listă, le aduni, și-ți dă o sumă în lei.
 
-Dar sunt **două variante** ale acestui coș, și e important să nu le confunzi:
+În acest articol discutăm despre **coșul minim de consum pentru un trai decent**: un reper mai larg decât strictul necesar supraviețuirii. Include nevoi precum locuință, alimentație, îmbrăcăminte, sănătate, educație, transport, recreere și posibilitatea de a face față unor cheltuieli neprevăzute.
 
-- **Coșul de subzistență**: strictul necesar ca să supraviețuiești, adică mănânci, ai un acoperiș, plătești facturile. Fără vacanțe, fără economii, fără surprize.
-- **Coșul de trai decent**: cât îți trebuie ca să trăiești *normal*, nu doar să supraviețuiești: să-ți permiți haine noi din când în când, o ieșire în oraș, să pui un ban deoparte.
+## Ultimele valori publicate: septembrie 2025
 
-## Cifrele pe 2026
-
-Potrivit calculelor sindicatelor publicate de [Cartel Alfa](https://www.cartel-alfa.ro) împreună cu Fundația Friedrich Ebert, coșul de trai decent arată cam așa:
+Conform [actualizării FES România și Syndex din septembrie 2025](https://romania.fes.de/ro/e/comunicat-de-presa-actualizarea-cosului-minim-de-consum-pentru-un-trai-decent-2025.html), valorile lunare sunt:
 
 | Gospodărie | Coș de trai decent (net / lună) |
 | :--- | ---: |
-| O persoană adultă, singură | 3.800 – 4.500 lei |
-| Doi adulți | 6.200 – 7.000 lei |
-| Doi adulți + doi copii | 9.000 – 10.500 lei |
+| O persoană adultă, singură | 4.322 lei |
+| Doi adulți | 7.002 lei |
+| Doi adulți + un copil | 9.343 lei |
+| Doi adulți + doi copii | 11.370 lei |
 
-> Intervalele reflectă diferențele între localități (București vs. orașe mici) și actualizările anuale. Important e ordinul de mărime, nu leul exact.
+> Acestea sunt valorile studiului pentru septembrie 2025, nu o prognoză pentru 2026. Le vom actualiza când autorii publică următoarea ediție.
 
 ## De ce contează: salariul minim vs. coșul minim
 
-Aici e partea care m-a pus pe gânduri. Din iulie 2026, [salariul minim net](/salariu-minim) este **2.699 lei**. Coșul de trai decent pentru **un singur adult** e undeva pe la **3.800 lei**.
+Aici comparația trebuie citită cu datele lor exacte. Din iulie 2026, [salariul minim net standard](/salariu-minim) este de aproximativ **2.699 lei**, în condițiile facilității fiscale și ale funcției de bază. Ultimul coș publicat pentru **un singur adult** este **4.322 lei**, la nivelul prețurilor din septembrie 2025.
 
-Cu alte cuvinte, un om plătit la salariul minim **nu acoperă singur un trai decent**: îi lipsesc câteva sute bune de lei în fiecare lună. Salariul minim acoperă cam zona de *subzistență*, nu de *trai decent*. De-aici și discuțiile politice din fiecare toamnă pe tema majorării, ultima fiind [creșterea de la 1 iulie 2026](/noutati/salariul-minim-1-iulie-2026), când minimul brut urcă la 4.325 lei.
+Diferența nominală este de **1.623 lei**, iar netul standard acoperă aproximativ **62%** din acel reper. Comparația nu ajustează coșul din 2025 cu inflația ulterioară, deci nu pretinde că măsoară exact costul vieții din iulie 2026. Arată însă dimensiunea decalajului dintre salariul minim și ultimul reper publicat pentru un trai decent.
 
-## Ce „cântărește" cel mai mult în coș
+## Ce statut are coșul minim
 
-Dacă te uiți pe felii, coșul de trai decent se împarte cam așa:
+Coșul pentru un trai decent nu este doar o formulare jurnalistică. [Legea 174/2020](https://legislatie.just.ro/Public/DetaliiDocumentAfis/229146) i-a introdus structura în OUG 217/2000 și prevede actualizarea anuală și folosirea valorii sale la fundamentarea salariului minim și a politicilor sociale.
 
-| Categorie | Pondere aproximativă |
-| :--- | ---: |
-| Alimentație | ~30% |
-| Locuință + utilități | ~27% |
-| Transport | ~10% |
-| Sănătate | ~8% |
-| Îmbrăcăminte și igienă | ~7% |
-| Educație și timp liber | ~8% |
-| Economii (rezervă de urgență) | ~10% |
+Trebuie însă separate două lucruri:
 
-Economiile sunt incluse în coșul de **trai decent**, nu în cel de subzistență. Ideea e că o viață normală înseamnă și că poți pune deoparte ceva în fiecare lună, pentru o urgență medicală, o reparație, sau pur și simplu ca să nu fii la un pas de dezastru la primul necaz.
+- **cadrul și rolul indicatorului**, recunoscute prin lege;
+- **valorile concrete citate aici**, calculate și publicate de FES România și Syndex pentru septembrie 2025.
 
 ## De reținut
 
-Coșul minim nu e o cifră oficială bătută-n cuie de stat, ci o estimare făcută de specialiști ca să avem un reper: *de câți bani ai nevoie ca să trăiești decent?* Iar răspunsul, pentru 2026, e clar peste salariul minim, și asta nu e o nuanță, e o diferență de câteva sute de lei în fiecare lună, în fiecare an.
+Ultima valoare publicată nu trebuie redenumită „coșul pe 2026" și nici transformată într-un interval fără metodologie. Reperul verificabil este cel din septembrie 2025: **4.322 lei pentru un adult singur** și **11.370 lei pentru familia cu doi adulți și doi copii**.
 
-E greu să economisești, să te tratezi sau să-ți permiți ceva neprevăzut când venitul tău abia acoperă subzistența. De-aia discuția despre salariul minim nu ar trebui să fie despre procente și bugete, ci despre *cât costă, de fapt, o viață normală*.
+Raportat la el, salariul minim net standard din iulie 2026 rămâne considerabil mai mic. Vom înlocui comparația atunci când este publicată o actualizare nouă a coșului, fără să completăm lipsa datelor oficiale cu estimări proprii.

@@ -126,7 +126,7 @@ const cumFunctioneazaBody = (
       Din salariul brut se rețin trei contribuții obligatorii: <strong>CAS</strong> (25% pentru pensie), <strong>CASS</strong> (10% pentru sănătate) și <strong>impozitul pe venit</strong> (10%). Pentru salariile sub 6.325 lei brut se aplică o deducere personală care reduce baza de calcul a impozitului.
     </p>
     <p className="mb-4 text-base leading-normal tracking-[-0.01em] text-stone-600">
-      Salariații plătiți la nivelul <Link href="/salariu-minim">salariului minim</Link> au o sumă fixă de 200 lei scutită de contribuții (OUG 89/2025). Salariul minim brut este <strong>4.325 lei din 1 iulie 2026</strong> (HG 146/2026). Pentru referință statistică, <Link href="/salariu-mediu">salariul mediu brut pe economie</Link> în 2026 este 9.192 lei.
+      Salariații plătiți la nivelul <Link href="/salariu-minim">salariului minim</Link> au o sumă fixă de 200 lei scutită de contribuții (OUG 89/2025). Salariul minim brut este <strong>4.325 lei din 1 iulie 2026</strong> (HG 146/2026). Separat, indicatorul BASS pentru 2026 este 9.192 lei; vezi <Link href="/salariu-mediu">diferența față de câștigul salarial mediu lunar publicat de INS</Link>.
     </p>
     <p className="mb-4 text-base leading-normal tracking-[-0.01em] text-stone-600">
       Pe lângă salariul brut, angajatorul mai plătește o contribuție de 2,25% (CAM, Contribuția Asiguratorie pentru Muncă), care nu afectează salariul net al angajatului dar crește costul total al firmei.
@@ -165,7 +165,7 @@ export default function Page() {
                   <dl className="text-sm">
                     {([
                       ["Salariu minim net", "2.699 lei"],
-                      ["Salariu mediu net", "5.377 lei"],
+                      ["Net estimat din indicatorul BASS", "5.377 lei"],
                       ["Plafon deducere personală", "6.325 lei"],
                       ["CAS (pensie)", "25%"],
                       ["CASS (sănătate)", "10%"],
@@ -178,7 +178,7 @@ export default function Page() {
                       </div>
                     ))}
                   </dl>
-                  <p className="mt-3 text-xs text-stone-500">Net standard, funcție de bază. Brut: minim 4.325 lei (HG 146/2026), mediu 9.192 lei.</p>
+                  <p className="mt-3 text-xs text-stone-500">Net standard, funcție de bază. 9.192 lei este indicatorul brut fix din BASS 2026, nu câștigul salarial mediu lunar publicat de INS.</p>
                 </div>
               </aside>
             </div>
@@ -229,7 +229,7 @@ export default function Page() {
                     ))}
                   </ul>
 
-                  <p className="mt-6 text-xs text-stone-500">Ultima actualizare: 15 iulie 2026.</p>
+                  <p className="mt-6 text-xs text-stone-500">Ultima actualizare: 26 iulie 2026.</p>
                 </div>
               </aside>
             </div>

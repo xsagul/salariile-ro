@@ -18,12 +18,13 @@
 //     ├ sub-26 (15%×minim)   E1_421 / E3_1221
 //     └ copii (100 lei buc.) E1_422 / E3_1222   subset al persoanelor în întreținere (≤ E1_3)
 //   bazaCalculImpozit        E3_14 / E1_6
-//   facilitate (300 lei)     reduce A_13/A_11/A_5 (OUG 89/2025; derogare art.220⁴ ⇒ reduce ȘI CAM)
+//   facilitate (200 lei S2; 300 lei S1) reduce A_13/A_11/A_5 (OUG 89/2025; derogare art.220⁴ ⇒ reduce ȘI CAM)
 //   tichete                  excluse din baza CAS/CAM, INCLUSE în baza CASS
 //
 //   Rotunjiri (identice cu Soft A): CAS=round(bază×25%); CASS=round(bază×10%) O SINGURĂ dată;
 //   CAM=round(bază×2,25%); deducere de bază=round(procent×minim) LA LEU (nu la 10).
-//   Verificat contra motorului oficial: DUKIntegrator J26.0.3, schema 2026 (scripts/d112-gen.mts).
+//   Verificat separat prin formularul D112 și validatorul ANAF: DUKIntegrator J26.0.3,
+//   schema 2026 (instrumentele locale de validare sunt păstrate în _d112-local/).
 // ──────────────────────────────────────────────────────────────────────────────
 
 // Actualizat la 1 iulie 2026 (trecere S1 → S2, conform HG 146/2026 + OUG 89/2025):
@@ -40,6 +41,32 @@ export const DEDUCERE_MINIM = 200;
 // DE BAZĂ este exact minimul, iar venitul brut lunar din salarii (FĂRĂ tichete)
 // nu depășește acest plafon. În S1 era 4.300; din 1 iulie, 4.600.
 export const PLAFON_FACILITATE = 4600;
+
+/** Regimurile salariale care au fost efectiv aplicabile în 2026.
+ *
+ * API-ul public existent (`calculeaza`, `calculStandard`) rămâne pe regimul
+ * curent. Identificatorul explicit este folosit numai acolo unde perioada
+ * trebuie păstrată, de exemplu pagina istorică pentru 4.050 lei brut.
+ */
+export const REGIMURI_FISCALE_SALARIU = {
+  "2026-S1": {
+    validFrom: "2026-01-01",
+    validTo: "2026-06-30",
+    salariuMinim: 4050,
+    facilitate: 300,
+    plafonFacilitate: 4300,
+  },
+  "2026-S2": {
+    validFrom: "2026-07-01",
+    validTo: "2026-12-31",
+    salariuMinim: SALARIU_MINIM,
+    facilitate: DEDUCERE_MINIM,
+    plafonFacilitate: PLAFON_FACILITATE,
+  },
+} as const;
+
+export type RegimFiscalSalariu = keyof typeof REGIMURI_FISCALE_SALARIU;
+export const REGIM_FISCAL_CURENT: RegimFiscalSalariu = "2026-S2";
 
 // ─── Tipuri ──────────────────────────────────────────────────────────────────
 
@@ -74,8 +101,13 @@ export interface Rezultat {
 
 // ─── Calcul deducere personală (Codul Fiscal art. 77) ────────────────────────
 
-export function calculeazaDeducerePersonala(brut: number, persoane: number): number {
-  if (brut > SALARIU_MINIM + 2000) return 0;
+export function calculeazaDeducerePersonalaCuRegim(
+  brut: number,
+  persoane: number,
+  regimFiscal: RegimFiscalSalariu,
+): number {
+  const salariuMinim = REGIMURI_FISCALE_SALARIU[regimFiscal].salariuMinim;
+  if (brut > salariuMinim + 2000) return 0;
 
   // Procentul de bază după numărul TOTAL de persoane în întreținere (D112: câmpul E1_3).
   // Copiii minori sunt și ei persoane în întreținere (art. 77 alin. 7), deci se numără AICI;
@@ -84,22 +116,30 @@ export function calculeazaDeducerePersonala(brut: number, persoane: number): num
   const procentBaza = persoane >= 4 ? 0.45 : (procenteBaza[persoane] ?? 0.20);
 
   // Procentul scade cu 0,5 puncte (0,005) la fiecare tranșă de 50 lei peste salariul minim.
-  const transe = brut <= SALARIU_MINIM ? 0 : Math.ceil((brut - SALARIU_MINIM) / 50);
+  const transe = brut <= salariuMinim ? 0 : Math.ceil((brut - salariuMinim) / 50);
   const procent = Math.max(0, procentBaza - 0.005 * transe);
 
   // Rotunjire la leu. Art. 77 NU prevede rotunjirea la 10 (aceea era regula veche, pre-2023);
   // textul actual spune „se aplică suma rezultată din calcul" (ex. oficial ANAF: 0,195×4325=843,375).
-  return Math.round(procent * SALARIU_MINIM);
+  return Math.round(procent * salariuMinim);
+}
+
+export function calculeazaDeducerePersonala(brut: number, persoane: number): number {
+  return calculeazaDeducerePersonalaCuRegim(brut, persoane, REGIM_FISCAL_CURENT);
 }
 
 // ─── Calcul net din brut ─────────────────────────────────────────────────────
 
-export function calculeaza(input: InputState): Rezultat | null {
+export function calculeazaCuRegim(
+  input: InputState,
+  regimFiscal: RegimFiscalSalariu,
+): Rezultat | null {
   const brut = parseFloat(input.brut);
   if (!brut || brut <= 0) return null;
 
   const tichete = parseFloat(input.tichete) || 0;
   const { functieDeBAza, persoanePretretinere, varstaSub26, copiiScolarizati, scutitImpozit } = input;
+  const regim = REGIMURI_FISCALE_SALARIU[regimFiscal];
 
   // Facilitatea OUG 89/2025: salariul DE BAZĂ = minimul, iar venitul brut din
   // salarii (fără tichete) ≤ plafon. Când brutul e compus (bază + suplimentare +
@@ -107,8 +147,8 @@ export function calculeaza(input: InputState): Rezultat | null {
   // deci comportamentul istoric (brut === minim) rămâne identic.
   const salariuDeBaza = input.salariuDeBaza ? parseFloat(input.salariuDeBaza) : brut;
   const facilitate =
-    (functieDeBAza && salariuDeBaza === SALARIU_MINIM && brut <= PLAFON_FACILITATE)
-      ? DEDUCERE_MINIM
+    (functieDeBAza && salariuDeBaza === regim.salariuMinim && brut <= regim.plafonFacilitate)
+      ? regim.facilitate
       : 0;
   const bazaCasCassSalariu = Math.max(0, brut - facilitate);
 
@@ -124,9 +164,9 @@ export function calculeaza(input: InputState): Rezultat | null {
   let deducere = 0;
   if (functieDeBAza) {
     // Deducerea de bază (E1_41) — pe numărul TOTAL de persoane în întreținere (copiii incluși).
-    deducere = calculeazaDeducerePersonala(brut, persoanePretretinere);
+    deducere = calculeazaDeducerePersonalaCuRegim(brut, persoanePretretinere, regimFiscal);
     // Sub-26: 15% din minim, DOAR pentru venit brut ≤ salariul minim + 2000 (Cod Fiscal art. 77 alin. 10).
-    if (varstaSub26 && brut <= SALARIU_MINIM + 2000) deducere += Math.round(0.15 * SALARIU_MINIM);
+    if (varstaSub26 && brut <= regim.salariuMinim + 2000) deducere += Math.round(0.15 * regim.salariuMinim);
     // Supliment copii (E1_422): 100 lei/copil școlar, INDIFERENT de venit. Copiii sunt un
     // SUBSET al persoanelor în întreținere (copiiScolarizati ≤ persoanePretretinere).
     deducere += copiiScolarizati * 100;
@@ -164,14 +204,23 @@ export function calculeaza(input: InputState): Rezultat | null {
   };
 }
 
+/** Calcul în regimul fiscal curent (S2 2026). Păstrează API-ul folosit de site. */
+export function calculeaza(input: InputState): Rezultat | null {
+  return calculeazaCuRegim(input, REGIM_FISCAL_CURENT);
+}
+
 // ─── Calcul invers: brut din net ─────────────────────────────────────────────
 
 // Ținta este netul ÎN BANI (ce intră în cont) — „Salariu net" în UI. Tichetele se
 // adaugă separat peste; fără tichete, netBani === net, deci comportament identic.
-export function calculeazaBrutDinNet(net: number, input: Omit<InputState, "brut">): number {
-  const valoriSpeciale = [SALARIU_MINIM];
+export function calculeazaBrutDinNetCuRegim(
+  net: number,
+  input: Omit<InputState, "brut">,
+  regimFiscal: RegimFiscalSalariu,
+): number {
+  const valoriSpeciale = [REGIMURI_FISCALE_SALARIU[regimFiscal].salariuMinim];
   for (const v of valoriSpeciale) {
-    const rez = calculeaza({ ...input, brut: String(v) });
+    const rez = calculeazaCuRegim({ ...input, brut: String(v) }, regimFiscal);
     if (rez && rez.netBani === net) return v;
   }
 
@@ -179,12 +228,16 @@ export function calculeazaBrutDinNet(net: number, input: Omit<InputState, "brut"
   let hi = net * 3;
   for (let i = 0; i < 60; i++) {
     const mid = (lo + hi) / 2;
-    const rez = calculeaza({ ...input, brut: String(mid) });
+    const rez = calculeazaCuRegim({ ...input, brut: String(mid) }, regimFiscal);
     if (!rez) { lo = mid; continue; }
     if (rez.netBani < net) lo = mid;
     else hi = mid;
   }
   return Math.round((lo + hi) / 2);
+}
+
+export function calculeazaBrutDinNet(net: number, input: Omit<InputState, "brut">): number {
+  return calculeazaBrutDinNetCuRegim(net, input, REGIM_FISCAL_CURENT);
 }
 
 // ─── Helpers pentru calcul standard (funcție de bază, fără tichete/persoane) ──
@@ -204,7 +257,19 @@ export function calculStandard(brut: number): Rezultat | null {
   return calculeaza({ ...INPUT_STANDARD, brut: String(brut) });
 }
 
+/** Calcul standard pentru o perioadă fiscală explicită. */
+export function calculStandardCuRegim(
+  brut: number,
+  regimFiscal: RegimFiscalSalariu,
+): Rezultat | null {
+  return calculeazaCuRegim({ ...INPUT_STANDARD, brut: String(brut) }, regimFiscal);
+}
+
 /** Brutul standard corespunzător unui net dorit. */
 export function brutDinNetStandard(net: number): number {
   return calculeazaBrutDinNet(net, INPUT_STANDARD);
+}
+
+export function brutDinNetStandardCuRegim(net: number, regimFiscal: RegimFiscalSalariu): number {
+  return calculeazaBrutDinNetCuRegim(net, INPUT_STANDARD, regimFiscal);
 }

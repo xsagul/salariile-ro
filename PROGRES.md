@@ -1,6 +1,20 @@
 # Progres salariile.ro
 
-Ultima actualizare: 10 iulie 2026
+Ultima actualizare: 26 iulie 2026
+
+## P0 fiscal, PFA si continut - 26 iulie 2026
+
+Status: implementat si verificat local; pregatit pentru commit si deploy.
+
+- Motorul PFA a fost extras in `src/lib/pfa.ts` si acoperit cu teste pentru praguri, pensionari, venit zero/pierdere, exceptia salariala si calcul invers. Logica urmeaza ghidul ANAF 2026, inclusiv faptul ca diferenta CASS pana la plafonul minim nu este deductibila. Exemplul ANAF pentru venit net 57.000 lei este inclus ca test de regresie.
+- Regimurile salariale 2026 sunt separate explicit: S1 (4.050 lei, facilitate 300 lei) si S2 (4.325 lei, facilitate 200 lei). Pagina programatica pentru 4.050 brut foloseste acum integral S1, inclusiv calculatorul interactiv si calculul invers.
+- Validarea D112 ramane descrisa ferm si exact: formular completat separat de Sorin si verificat cu validatorul ANAF; campurile si sumele au coincis cu motorul site-ului.
+- Corectate paginile `/salariu-mediu`, `/salariu-minim`, `/metodologie`, `/fluturas-salariu`, homepage si articolele afectate. Ultimul castig salarial INS publicat este mai 2026 (9.483 lei brut, 5.684 lei net); indicatorul BASS de 9.192 lei este etichetat separat.
+- Articolul despre cosul minim foloseste ultima valoare publicata de FES/Syndex (septembrie 2025), fara intervale 2026 inventate.
+- Contextul permanent din `AGENTS.md` a fost corectat cu snapshotul GSC real si distinctia INS/BASS.
+- Verificare finala locala: `npm test` (inclusiv 22 asertiuni PFA), ESLint, TypeScript si build Next.js trecute. `npm run test:rendered` a verificat 56 de URL-uri din sitemap: HTTP 200, exact un H1, canonical corect si controalele P0 de continut/JSON-LD.
+
+Nota: sectiunile de mai jos sunt jurnal istoric si pot contine stari care au fost ulterior corectate.
 
 ## Standard de content + drafturi /salariu-minim - 10 iulie 2026
 

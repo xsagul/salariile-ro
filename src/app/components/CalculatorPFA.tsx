@@ -6,15 +6,16 @@
 // formular col-span-2 + rezultat col-span-3, tabel cu header, rând negru, bară.
 //
 // Reguli 2026 (reper salariu minim 4.050 lei, 1 ian):
-//   impozit 10% × (venit net − CAS − CASS);
-//   CAS 25% doar peste 12 salarii minime (bază 12 minime între 12–24, 24 minime peste);
-//   CASS 10% pe venitul net, prag 6 minime, plafon 72 minime;
+//   impozit 10% × (venit net − CAS − CASS deductibilă); diferența CASS
+//   până la minimul de 6 salarii nu este deductibilă;
+//   CAS 25% de la 12 salarii minime inclusiv (bază 12 minime între 12–24,
+//   respectiv 24 minime de la pragul de 24 inclusiv);
+//   CASS 10% pe venitul net, plafon 72 minime; sub 6 minime se poate datora
+//   diferența până la minim, cu excepțiile prevăzute de Codul fiscal;
 //   rotunjire Math.round (confirmat din codul ANAF al Declarației Unice).
 
 import { useState } from "react";
-
-const MINIM = 4050;
-const P6 = 6 * MINIM, P12 = 12 * MINIM, P24 = 24 * MINIM, P72 = 72 * MINIM;
+import { calculeazaPFA, venitNetPfaPentruRamas } from "@/lib/pfa";
 
 const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(Math.round(n));
 const doarCifre = (s: string) => s.replace(/\D/g, "");
@@ -23,36 +24,28 @@ const grupeazaMii = (raw: string) => {
   return raw && Number.isFinite(n) ? new Intl.NumberFormat("ro-RO").format(n) : "";
 };
 
-function calcPFA(venitNet: number, salariat: boolean, pensionar: boolean, luni = 12) {
-  venitNet = Math.max(0, venitNet);
-  const factor = Math.min(12, Math.max(1, luni)) / 12;
-  let cassBaza: number;
-  if (venitNet >= P6) cassBaza = Math.min(venitNet, P72);
-  else cassBaza = salariat ? venitNet : P6;
-  const cass = Math.round(cassBaza * 0.1);
-  let cas = 0;
-  if (!pensionar) {
-    const p12 = P12 * factor, p24 = P24 * factor;
-    if (venitNet >= p12) cas = Math.round((venitNet >= p24 ? p24 : p12) * 0.25);
-  }
-  const impozit = Math.round(Math.max(0, venitNet - cas - cass) * 0.1);
-  const totalTaxe = cas + cass + impozit;
-  return { venitNet, cas, cass, impozit, totalTaxe, ramas: venitNet - totalTaxe };
-}
-
-function venitNetDinRamas(targetAnual: number, salariat: boolean, pensionar: boolean, luni = 12) {
-  if (targetAnual <= 0) return 0;
-  let lo = 0, hi = targetAnual * 3 + 1_000_000;
-  for (let i = 0; i < 60; i++) {
-    const mid = (lo + hi) / 2;
-    if (calcPFA(mid, salariat, pensionar, luni).ramas < targetAnual) lo = mid; else hi = mid;
-  }
-  return Math.round((lo + hi) / 2);
-}
-
 type Mod = "venit" | "net";
-type Snap = { mod: Mod; incasari: string; cheltuieli: string; netDorit: string; salariat: boolean; pensionar: boolean; luni: number };
-const snapKey = (s: Snap) => JSON.stringify([s.mod, s.incasari, s.cheltuieli, s.netDorit, s.salariat, s.pensionar, s.luni]);
+type Snap = {
+  mod: Mod;
+  incasari: string;
+  cheltuieli: string;
+  netDorit: string;
+  salariatPestePlafonCASS: boolean;
+  pensionar: boolean;
+};
+const snapKey = (s: Snap) => JSON.stringify([
+  s.mod,
+  s.incasari,
+  s.cheltuieli,
+  s.netDorit,
+  s.salariatPestePlafonCASS,
+  s.pensionar,
+]);
+
+const optiuniDinSnap = (s: Snap) => ({
+  salariatPestePlafonCASS: s.salariatPestePlafonCASS,
+  pensionar: s.pensionar,
+});
 
 function buildResult(s: Snap) {
   let venitNet: number;
@@ -61,10 +54,10 @@ function buildResult(s: Snap) {
   } else {
     const lunar = Number(s.netDorit) || 0;
     if (lunar <= 0) return null;
-    venitNet = venitNetDinRamas(lunar * 12, s.salariat, s.pensionar, s.luni);
+    venitNet = venitNetPfaPentruRamas(lunar * 12, optiuniDinSnap(s));
   }
   if (venitNet <= 0) return null;
-  return calcPFA(venitNet, s.salariat, s.pensionar, s.luni);
+  return calculeazaPFA(venitNet, optiuniDinSnap(s));
 }
 
 // ─── Tokens ──────────────────────────────────────────────────────────────────
@@ -119,16 +112,15 @@ export default function CalculatorPFA() {
   const [incasari, setIncasari] = useState("");
   const [cheltuieli, setCheltuieli] = useState("");
   const [netDorit, setNetDorit] = useState("");
-  const [salariat, setSalariat] = useState(false);
+  const [salariatPestePlafonCASS, setSalariatPestePlafonCASS] = useState(false);
   const [pensionar, setPensionar] = useState(false);
-  const [luni, setLuni] = useState(12);
   const [avansat, setAvansat] = useState(false);
 
   const [rez, setRez] = useState<ReturnType<typeof buildResult>>(null);
   const [rezKey, setRezKey] = useState("");
   const [warn, setWarn] = useState(false);
 
-  const snap: Snap = { mod, incasari, cheltuieli, netDorit, salariat, pensionar, luni };
+  const snap: Snap = { mod, incasari, cheltuieli, netDorit, salariatPestePlafonCASS, pensionar };
   const stale = rez !== null && rezKey !== snapKey(snap);
 
   const handleCalc = () => {
@@ -150,10 +142,17 @@ export default function CalculatorPFA() {
     if (target === mod) return;
     if (target === "net") {
       const vn = Math.max(0, (Number(incasari) || 0) - (Number(cheltuieli) || 0));
-      if (vn > 0) { const lunar = Math.round(calcPFA(vn, salariat, pensionar, luni).ramas / 12); setNetDorit(lunar > 0 ? String(lunar) : ""); }
+      if (vn > 0) {
+        const lunar = Math.round(calculeazaPFA(vn, { salariatPestePlafonCASS, pensionar }).ramas / 12);
+        setNetDorit(lunar > 0 ? String(lunar) : "");
+      }
     } else {
       const lunar = Number(netDorit) || 0;
-      if (lunar > 0) { const vn = venitNetDinRamas(lunar * 12, salariat, pensionar, luni); setIncasari(vn > 0 ? String(vn) : ""); setCheltuieli(""); }
+      if (lunar > 0) {
+        const vn = venitNetPfaPentruRamas(lunar * 12, { salariatPestePlafonCASS, pensionar });
+        setIncasari(vn > 0 ? String(vn) : "");
+        setCheltuieli("");
+      }
     }
     setMod(target);
   };
@@ -188,26 +187,34 @@ export default function CalculatorPFA() {
 
         <button type="button"
           className="mb-5 flex min-h-11 w-full items-center justify-center rounded border border-dashed border-stone-300 px-4 text-xs font-medium text-stone-500 transition-colors hover:border-stone-400 hover:text-stone-700"
-          onClick={() => { if (avansat) { setSalariat(false); setPensionar(false); setLuni(12); } setAvansat(!avansat); }}>
+          onClick={() => {
+            if (avansat) {
+              setSalariatPestePlafonCASS(false);
+              setPensionar(false);
+            }
+            setAvansat(!avansat);
+          }}>
           {avansat ? "▲ Ascunde opțiuni avansate" : "▼ Calculator avansat"}
         </button>
 
         {avansat && (
-          <>
-            <div className="mb-5">
-              <label htmlFor="pfa-luni" className={fieldLabel}>Câte luni de activitate ai în an?</label>
-              <select id="pfa-luni" value={luni} onChange={(e) => setLuni(Number(e.target.value))}
-                className="w-full rounded border border-stone-300 bg-surface px-3 py-2 text-base text-stone-900 outline-none transition focus:border-stone-400 sm:text-sm">
-                {Array.from({ length: 12 }, (_, i) => 12 - i).map((n) => (
-                  <option key={n} value={n}>{n === 12 ? "12 (tot anul)" : `${n} ${n === 1 ? "lună" : "luni"}`}</option>
-                ))}
-              </select>
-            </div>
-            <div className="mb-5">
-              <Toggle label="Sunt și salariat (asigurat)" checked={salariat} onChange={setSalariat} />
-              <Toggle label="Sunt pensionar (scutit de CAS)" checked={pensionar} onChange={setPensionar} />
-            </div>
-          </>
+          <div className="mb-5">
+            <Toggle
+              label="Am venituri salariale de cel puțin 24.300 lei în 2026"
+              checked={salariatPestePlafonCASS}
+              onChange={setSalariatPestePlafonCASS}
+            />
+            <Toggle
+              label="Sunt pensionar"
+              checked={pensionar}
+              onChange={setPensionar}
+            />
+            <p className="mt-3 text-xs leading-normal text-stone-500">
+              Aceste situații elimină doar diferența CASS până la minim. Pensionarii nu datorează CAS, dar datorează
+              CASS de 10% pentru venitul PFA efectiv. Plafoanele sunt anuale și nu se reduc dacă activitatea începe,
+              se suspendă sau încetează în cursul anului.
+            </p>
+          </div>
         )}
 
         <button type="button" onClick={handleCalc}
@@ -243,6 +250,9 @@ export default function CalculatorPFA() {
                   <Row label={mod === "net" ? "Venit net necesar" : "Venit net (încasări − cheltuieli)"} value={fmt(rez.venitNet)} />
                   <Row label='CAS <span class="text-stone-400">(Pensii − 25%)</span>' value={fmt(rez.cas)} sub neg />
                   <Row label='CASS <span class="text-stone-400">(Sănătate − 10%)</span>' value={fmt(rez.cass)} sub neg />
+                  {rez.cassDiferentaMinima > 0 && (
+                    <Row label='din care diferență până la minimul CASS <span class="text-stone-400">(nedeductibilă)</span>' value={fmt(rez.cassDiferentaMinima)} sub />
+                  )}
                   <Row label="Impozit pe venit (10%)" value={fmt(rez.impozit)} sub neg />
                   <Row label="Total taxe la stat" value={fmt(rez.totalTaxe)} bold />
                   <tr className="bg-stone-900">
@@ -274,7 +284,9 @@ export default function CalculatorPFA() {
             </div>
 
             <p className="mt-4 text-xs leading-normal text-stone-500">
-              PFA în sistem real, an fiscal 2026 (reper salariu minim 4.050 lei). Tu plătești tot, dar sub 12 salarii minime (48.600 lei) nu datorezi CAS. Estimare orientativă – pentru situații speciale confirmă cu un contabil.
+              PFA în sistem real, an fiscal 2026 (reper salariu minim 4.050 lei). Sub 12 salarii minime (48.600 lei)
+              nu datorezi CAS obligatoriu. Calculul folosește baza CAS minimă a tranșei; poți alege o bază mai mare
+              în Declarația unică. Estimare orientativă – pentru situații speciale confirmă cu un contabil.
             </p>
           </div>
         ) : (

@@ -165,7 +165,7 @@ const jsonLd = {
       image: { "@type": "ImageObject", url: "https://salariile.ro/og-salariu-minim.jpg", width: 1200, height: 630 },
       mainEntityOfPage: "https://salariile.ro/salariu-minim",
       datePublished: "2026-04-27",
-      dateModified: "2026-07-10",
+      dateModified: "2026-07-26",
     },
     {
       "@type": "FAQPage",
@@ -626,6 +626,7 @@ function CardSurse() {
         <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/305817" target="_blank" rel="noopener">OUG 89/2025</a>: facilitatea 300/200 lei</li>
         <li><a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/309674" target="_blank" rel="noopener">OUG 29/2026</a>: agroalimentarul, aliniat la minimul general</li>
         <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/293109" target="_blank" rel="noopener">OUG 156/2024</a>: eliminare scutiri sectoriale</li>
+        <li><a href="https://www.inspectiamuncii.ro/documents/66402/268210/Comunicat%2B1%2Biulie.pdf/c0655b8a-b9d1-4ec7-b641-b470c7bab969" target="_blank" rel="noopener">Inspecția Muncii</a>: acte individuale și raportarea modificării în REGES</li>
         <li><a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/128646" target="_blank" rel="noopener">Codul Muncii</a> · <a href="https://legislatie.just.ro/Public/DetaliiDocument/257144" target="_blank" rel="noopener">Codul Fiscal</a></li>
       </ul>
       <h3 className="mb-3 mt-6 text-xs font-medium text-stone-500">Pagini conexe</h3>
@@ -635,7 +636,7 @@ function CardSurse() {
         <li><Link href="/salariu-mediu">Salariul mediu pe economie</Link></li>
         <li><Link href="/zile-libere-2026">Zile libere și lucrătoare 2026</Link></li>
       </ul>
-      <p className="mt-auto pt-6 text-xs text-stone-500">Ultima actualizare: 10 iulie 2026.</p>
+      <p className="mt-auto pt-6 text-xs text-stone-500">Ultima actualizare: 26 iulie 2026.</p>
     </div>
   );
 }
@@ -655,7 +656,7 @@ export default function SalariuMinimPage() {
             <div className="md:col-span-3">
               <h1 className="text-3xl font-bold tracking-[-0.02em] text-stone-900 sm:text-4xl">Salariul minim în 2026</h1>
               <p className="mt-4 text-xs text-stone-600 [&_a]:font-medium [&_a]:text-stone-700 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-900">
-                Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat 10 iulie 2026
+                Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat 26 iulie 2026
               </p>
               <p className={`mt-5 max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600 ${strong}`}>
                 Din 1 iulie 2026, salariul minim brut este <strong>4.325 lei</strong>, adică <strong>2.699 lei</strong>{" "}
@@ -760,8 +761,10 @@ export default function SalariuMinimPage() {
                     <strong>Inspecției Muncii (ITM)</strong>.
                   </p>
                   <p>
-                    După <strong>24 de luni</strong> la salariul minim la același angajator, legea îl obligă să îți
-                    negocieze un salariu mai mare (art. 164²). E protecția împotriva blocării pe termen lung la minim.
+                    Salariul de bază minim poate fi aplicat aceluiași salariat cel mult <strong>24 de luni</strong> de
+                    la încheierea contractului individual de muncă. După acest termen, salariul de bază plătit trebuie
+                    să fie <strong>efectiv superior</strong> minimului legal (Codul Muncii, art. 164 alin. (2¹)); nu este
+                    suficientă doar inițierea unei negocieri. O majorare națională a minimului nu resetează termenul.
                   </p>
                   <p>
                     Dacă ești plătit peste minim, majorarea din iulie nu te atinge automat: legea obligă doar aducerea la
@@ -809,11 +812,11 @@ export default function SalariuMinimPage() {
               <div className="md:col-span-3">
                 <div className={`max-w-prose ${articol}`}>
                   <h2>Obligațiile angajatorului</h2>
-                  <p>Dacă ești angajator, majorarea din iulie nu se aplică de la sine, fiecare contract la minim cere pași concreți:</p>
+                  <p>Pentru angajatori, majorarea este obligatorie din 1 iulie, iar fiecare contract aflat sub noul prag cere pași concreți:</p>
                   <ul>
-                    <li><strong>Act adițional</strong> semnat individual cu fiecare salariat (nu o decizie colectivă).</li>
-                    <li><strong>REGES-Online</strong>: noul brut se raportează în maximum 20 de zile lucrătoare.</li>
-                    <li><strong>Amenzi</strong>: 5.000–8.000 lei pentru raportarea întârziată; 3.000–5.000 lei pe salariat dacă plătești sub minim.</li>
+                    <li><strong>Document individual</strong>: modificarea se face prin act adițional la contract sau prin decizie individuală, în condițiile legii.</li>
+                    <li><strong>REGES</strong>: noul brut se transmite în Registrul General de Evidență a Salariaților în maximum 20 de zile lucrătoare de la data modificării.</li>
+                    <li><strong>Salariu sub minim</strong>: amenda este de 3.000–5.000 lei pentru fiecare salariat, fără a depăși cumulat 200.000 lei.</li>
                   </ul>
                 </div>
               </div>

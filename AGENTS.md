@@ -30,24 +30,26 @@ salariile.ro este un portal despre salarii și fiscalitate în România. Scop: c
 
 - Salariu minim brut: **4.325 lei din 1 iulie 2026** (HG 146/2026); 4.050 lei în prima jumătate a anului
 - Salariu minim net: 2.699 lei (facilitate fiscală 200 lei, OUG 89/2025)
-- Salariu mediu brut: 9.192 lei; net: 5.377 lei
+- Indicatorul BASS 2026: 9.192 lei brut; net standard estimat: 5.377 lei. Nu se etichetează drept ultimul salariu mediu INS.
+- Ultimul câștig salarial mediu publicat de INS (mai 2026): 9.483 lei brut; 5.684 lei net. Se actualizează lunar când INS publică o lună nouă.
 - CAS (pensie) 25%, CASS (sănătate) 10%, impozit venit 10%, CAM (angajator) 2,25%
 - Plafon deducere personală: 6.325 lei
 - Facilitățile IT/construcții ELIMINATE din 1 ian 2025 (OUG 156/2024)
 - Surse oficiale: legislatie.just.ro (HG 146/2026, OUG 89/2025, OUG 156/2024, Codul Fiscal, Codul Muncii)
 
-## Starea SEO (referință)
+## Starea SEO (referință verificată la 26 iulie 2026)
 
-- GSC: ~10.700 impresii, 98 clickuri
-- Poziția 1.0–1.1 pentru query-uri cu volum mare, dar CTR mic din cauza featured snippets Google
-- Paginile de calculator (tranzacționale) au CTR mai sănătos decât homepage-ul
+- GSC, ultimele 28 zile complete disponibile (27 iunie–24 iulie): 181.049 impresii, 2.204 clickuri, CTR 1,22%
+- Query-urile generice cu volum mare sunt în principal pe pozițiile 6–10, nu 1.0–1.1; aici sunt plafonul de autoritate și oportunitatea de CTR
+- Primele patru pagini concentrează ~84,5% din impresii; diversificarea clusterelor este prioritară
+- Paginile de calculator tranzacționale tind să aibă CTR mai sănătos decât paginile pur informative
 - Tehnic & on-page: nivel A/A+ conform tool-urilor de audit
 - Off-site (backlinkuri, autoritate de domeniu/DR): nivel F — zona cu cel mai mare potențial de creștere
-- GSC și Google Analytics sunt conectate și configurate
+- GSC este conectat și verificat. În cod există Vercel Analytics, nu Google Analytics; politica de confidențialitate spune explicit că GA nu este folosit
 
 ## Deadline critic
 
-**1 iulie 2026** — schimbarea salariului minim (4.050 → 4.325 lei). Fereastră SEO importantă. Conținutul relevant trebuie publicat, indexat și maturat cu 2-3 săptămâni înainte (deci înainte de ~15 iunie) ca să rankeze la timp.
+**1 iulie 2026** — schimbarea salariului minim (4.050 → 4.325 lei) a intrat în vigoare. Fereastra de vârf a produs creștere puternică; în perioada imediat următoare se evită migrarea grăbită a homepage-ului și se măsoară normalizarea pe clustere.
 
 ## Reguli de lucru
 
@@ -57,11 +59,11 @@ salariile.ro este un portal despre salarii și fiscalitate în România. Scop: c
 - **Backlinkuri:** prioritizează linkable assets pe site peste outreach manual. NU cumpăra linkuri, nu folosi tactici care riscă penalizare Google.
 - **Canale de distribuție existente (active):** dev.to (`dev.to/sorin_stiuriuc`), LinkedIn, Reddit (r/RoMunca), GitHub.
 
-## Direcție de arhitectură în plan (NU înainte de 1 iulie)
+## Direcție de arhitectură în plan (după stabilizarea valului din iulie)
 
 Există un plan de mutare a calculatorului de pe homepage într-o structură de hub cu pagini dedicate, homepage-ul devenind pagină editorială / vizualizare de date.
 
-**IMPORTANT — timing:** această migrare NU se face înainte de 1 iulie. Până atunci, calculatorul rămâne exact unde e (rankează pe poziția 1.0–1.1 pentru query-uri cu volum mare) și nu se atinge structura paginilor care rankează. O migrare de arhitectură chiar înainte de evenimentul de trafic din iulie ar declanșa reindexare și reevaluare Google, cu risc de pierdere temporară de poziții fix în fereastra critică — exact momentul pe care vreau să-l captez. Migrarea se planifică și se execută DUPĂ ce trece valul (iulie-august), când o fluctuație temporară nu mai costă. Până pe 1 iulie: zero schimbări structurale pe paginile care rankează; doar adăugări (articole noi, optimizări non-distructive) și pregătire.
+**IMPORTANT — timing:** calculatorul rămâne pe homepage în timpul sprintului P0 și până când normalizarea din iulie este măsurată. Homepage-ul este cea mai puternică pagină organică, chiar dacă query-urile generice nu sunt pe poziția 1. Migrarea se face numai cu hartă query → URL, redirecturi, canonice și criterii de rollback; între timp sunt permise adăugări și optimizări non-distructive.
 
 ## Verificare
 

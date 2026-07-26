@@ -33,7 +33,7 @@ export default function NotFound() {
                 <Link href="/salariu-minim"><strong>Salariul minim 2026</strong></Link>: valorile semestriale (4.050 → 4.325 lei), calcul net detaliat, plafoane fiscale.
               </li>
               <li>
-                <Link href="/salariu-mediu"><strong>Salariul mediu pe economie 2026</strong></Link>: valoarea oficială (9.192 lei) conform Legii 44/2026.
+                <Link href="/salariu-mediu"><strong>Salariul mediu pe economie 2026</strong></Link>: datele lunare INS și indicatorul BASS de 9.192 lei din Legea 44/2026.
               </li>
               <li>
                 <Link href="/metodologie"><strong>Metodologia de calcul</strong></Link>: formulele și sursele exacte din Codul Fiscal.

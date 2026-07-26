@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 const FAQ = [
   {
     q: "Ce taxe plătește un PFA în 2026?",
-    a: "În sistem real, un PFA plătește: impozit pe venit 10%, CAS (pensie) 25% – dar doar dacă venitul net depășește 12 salarii minime (48.600 lei/an) – și CASS (sănătate) 10% pe venitul net, între un prag de 6 salarii minime și un plafon de 72. Toate se raportează la venitul net (încasări minus cheltuieli deductibile).",
+    a: "În sistem real, un PFA plătește impozit pe venit 10%, CAS (pensie) 25% dacă venitul net anual atinge cel puțin 12 salarii minime (48.600 lei) și CASS (sănătate) 10% pe venitul net, cu plafon maxim de 72 de salarii minime. Dacă venitul net este sub 6 salarii minime, în mod obișnuit se datorează și diferența CASS până la contribuția minimă, cu excepțiile prevăzute de Codul fiscal.",
   },
   {
     q: "De la ce venit plătesc CAS ca PFA?",
@@ -32,11 +32,11 @@ const FAQ = [
   },
   {
     q: "Cât este CASS și are plafon?",
-    a: "CASS este 10% din venitul net, cu un prag de 6 salarii minime (24.300 lei) și un plafon de 72 de salarii minime (291.600 lei) în 2026. Astfel, CASS maximă pe care o poți plăti este 29.160 lei/an, oricât ai câștiga peste plafon. Sub 6 minime datorezi la prag, dacă nu ești asigurat și prin altă parte.",
+    a: "CASS este 10% din venitul net, până la plafonul de 72 de salarii minime (291.600 lei) în 2026, deci cel mult 29.160 lei. Dacă venitul net este sub 6 salarii minime (24.300 lei), se datorează de regulă diferența până la CASS minimă de 2.430 lei. Diferența nu se datorează, între altele, dacă ai venituri salariale de cel puțin 24.300 lei în anul fiscal sau venituri din pensii.",
   },
   {
     q: "Ce salariu minim se folosește la plafoanele PFA în 2026?",
-    a: "Se folosește salariul minim în vigoare la 1 ianuarie 2026 – 4.050 lei. Majorarea la 4.325 lei din iulie nu schimbă plafoanele anuale pentru anul fiscal 2026; valoarea se actualizează la depunerea Declarației Unice.",
+    a: "Se folosește salariul minim în vigoare la 1 ianuarie 2026 – 4.050 lei. Acesta rămâne reperul pentru întreg anul fiscal 2026, iar majorarea la 4.325 lei din iulie nu schimbă plafoanele anuale. Obligațiile pentru 2026 se definitivează și se declară prin D212 până la termenul legal din 2027.",
   },
   {
     q: "Care e diferența dintre sistem real și normă de venit?",
@@ -44,7 +44,15 @@ const FAQ = [
   },
   {
     q: "Sunt și salariat – mai plătesc CAS și CASS la PFA?",
-    a: "Da, impozitul de 10% și contribuțiile se aplică și pe venitul din PFA. Diferența: fiind deja asigurat la sănătate prin salariu, pragul de 6 salarii minime la CASS nu îți mai impune o plată minimă – CASS se calculează pe venitul efectiv. CAS rămâne datorat doar peste pragul de 12 minime.",
+    a: "Da. Salariul nu elimină CAS sau CASS aferente venitului PFA. Dacă veniturile salariale și asimilate cumulate în 2026 sunt de cel puțin 24.300 lei, nu mai datorezi doar diferența CASS până la minimul de 6 salarii; plătești în continuare 10% pe venitul PFA efectiv. CAS rămâne obligatoriu de la pragul anual de 12 salarii minime.",
+  },
+  {
+    q: "Ce taxe plătește un pensionar care are PFA?",
+    a: "Pensionarii nu datorează CAS pentru venitul PFA. Ei datorează însă CASS de 10% pe venitul net al activității, până la plafonul de 72 de salarii minime. Veniturile din pensii îi scutesc de diferența CASS până la minimul de 6 salarii, nu de CASS aferentă venitului PFA efectiv.",
+  },
+  {
+    q: "Plafoanele se reduc dacă deschid, suspend sau închid PFA în cursul anului?",
+    a: "Nu în situația obișnuită. Veniturile din activități independente obținute într-o fracțiune de an se consideră venit anual, iar simpla începere, suspendare sau încetare a activității nu proratează automat plafoanele CAS și CASS. Există reguli speciale pentru schimbarea în cursul anului a statutului de persoană exceptată de la CAS; calculatorul nu simulează aceste cazuri individuale.",
   },
 ];
 
@@ -113,11 +121,11 @@ export default function CalculatorPfaPage() {
                 <p className="font-semibold text-stone-900">Răspuns scurt</p>
                 <p className="mt-1">
                   La PFA în sistem real, taxele pornesc de la venitul net anual: <strong>CASS 10%</strong>,{" "}
-                  <strong>CAS 25%</strong> dacă treci de plafonul de 12 salarii minime și <strong>impozit 10%</strong>{" "}
+                  <strong>CAS 25%</strong> dacă atingi plafonul de 12 salarii minime și <strong>impozit 10%</strong>{" "}
                   după deducerea contribuțiilor.
                 </p>
               </div>
-              <div className="mt-4 text-xs text-stone-600">Actualizat 6 iulie 2026</div>
+              <div className="mt-4 text-xs text-stone-600">Actualizat 26 iulie 2026</div>
             </div>
           </div>
         </div>
@@ -140,9 +148,9 @@ export default function CalculatorPfaPage() {
                     deductibile dintr-un an. Pe el se aplică trei taxe:
                   </p>
                   <ul className="mb-4 list-disc pl-5 text-base leading-normal tracking-[-0.01em] text-stone-600 [&_li]:mb-2">
-                    <li><strong>CASS 10%</strong> (sănătate) – pe tot venitul net, dar nu sub 6 salarii minime și nu peste 72.</li>
-                    <li><strong>CAS 25%</strong> (pensie) – doar dacă venitul net trece de 12 salarii minime; altfel e opțional.</li>
-                    <li><strong>Impozit 10%</strong> – pe ce rămâne după ce scazi CAS și CASS (ambele sunt deductibile din 2024).</li>
+                    <li><strong>CASS 10%</strong> (sănătate) – pe venitul net, fără a depăși 72 de salarii minime. Sub 6 minime se poate datora diferența până la contribuția minimă.</li>
+                    <li><strong>CAS 25%</strong> (pensie) – dacă venitul net atinge 12 salarii minime; sub prag este opțional. Calculatorul folosește baza minimă permisă pentru fiecare tranșă.</li>
+                    <li><strong>Impozit 10%</strong> – după deducerea CAS și a CASS aferente venitului efectiv. Diferența CASS până la minimul de 6 salarii nu este deductibilă.</li>
                   </ul>
                   <p className={p}>
                     Spre deosebire de un salariat, la PFA <strong>tu plătești tot</strong> – nu există „angajator&quot; care să
@@ -190,7 +198,7 @@ export default function CalculatorPfaPage() {
                   <h3 className="mb-3 text-xs font-medium text-stone-500">Surse oficiale</h3>
                   <ul className="flex flex-col gap-2 text-sm leading-normal text-stone-600 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-600">
                     <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/257144" target="_blank" rel="noopener">Codul Fiscal (Legea 227/2015)</a> – contribuții și impozit pentru activități independente</li>
-                    <li>ANAF – Declarația Unică (D212), termen 25 mai pentru anul fiscal</li>
+                    <li><a href="https://static.anaf.ro/static/10/Cluj/cj_DU_activ_indep_22apr2026.pdf" target="_blank" rel="noopener">ANAF – ghid Declarația Unică 2026</a> – plafoane, excepții CAS/CASS și cazuri practice</li>
                   </ul>
                   <h3 className="mb-3 mt-6 text-xs font-medium text-stone-500">Pagini conexe</h3>
                   <ul className="flex flex-col gap-2 text-sm [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-600">

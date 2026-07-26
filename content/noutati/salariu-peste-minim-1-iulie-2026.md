@@ -2,6 +2,7 @@
 title: "Salariu peste minim după 1 iulie 2026"
 description: "Dacă ai salariul puțin peste minim, majorarea de la 1 iulie te poate prinde din urmă. Cine primește mărire și ce înseamnă tasarea salarială."
 date: "2026-06-17"
+updated: "2026-07-26"
 hero: "/noutati/salariu-peste-minim.jpg"
 heroAlt: "Ilustrație editorială minimalistă: două siluete pe trepte, treapta de jos împinsă în sus de o săgeată, ridicând silueta scundă aproape la nivelul celei de lângă ea, sugerând restrângerea diferenței dintre salarii."
 ---
@@ -29,9 +30,9 @@ Fenomenul ăsta se numește **tasarea grilei de salarizare**: când minimul urc�
 
 ## Ce se schimbă concret la net
 
-La salariul minim de 4.325 lei brut, netul de la 1 iulie este **2.699 lei**, fiindcă se aplică o facilitate fiscală specială (200 de lei scutiți de taxe, OUG 89/2025). Atenție însă: facilitatea asta funcționează **doar până la 4.600 lei brut pe lună**. Peste acest plafon, scutirea dispare complet.
+La salariul minim de 4.325 lei brut, netul de la 1 iulie este **2.699 lei**, fiindcă se aplică o facilitate fiscală specială (200 de lei scutiți de taxe, OUG 89/2025). Facilitatea cere ca salariul de bază să fie exact minimul și venitul brut din salarii al lunii să nu depășească **4.600 lei**. Un salariu de bază mai mare de 4.325 lei nu primește facilitatea, chiar dacă brutul total rămâne sub plafon.
 
-Practic, asta creează o zonă în care un brut mai mare nu se simte mereu în net pe cât te-ai aștepta, fiindcă pierderea facilității mănâncă o parte din diferență. De-aia, dacă ești în zona 4.325–4.600 lei brut, merită să verifici cifra ta exactă înainte de orice negociere, ca să știi despre ce sume vorbești în mână, nu în brut.
+Practic, un angajat încadrat la salariul de bază minim poate păstra facilitatea când are sporuri sau bonusuri, dar numai până la plafonul de 4.600 lei brut. La depășirea lui, pierderea facilității mănâncă o parte din diferență. Merită să verifici cifra exactă înainte de orice negociere, ca să știi despre ce sume vorbești în mână, nu în brut.
 
 ## Și la normă parțială?
 
@@ -41,9 +42,9 @@ Dacă lucrezi cu jumătate de normă sau cu ore variabile, contează tariful ora
 
 Câteva lucruri concrete, în ordinea în care le-aș face eu:
 
-1. **Verifică-ți noul brut în act adițional.** Orice modificare de salariu trebuie trecută în act adițional la contract și înregistrată în Revisal înainte de 1 iulie. Cere-l dacă nu ți l-a dat nimeni.
+1. **Verifică-ți noul brut în documentul individual.** Modificarea se poate face prin act adițional la contract sau prin decizie individuală, în condițiile legii. Noul brut trebuie transmis în REGES în cel mult 20 de zile lucrătoare de la data modificării.
 2. **Calculează diferența reală față de colegi și față de luna trecută.** Cu cifra în mână, discuția cu angajatorul e despre fapte, nu despre impresii.
-3. **Folosește regula celor 2 ani.** Dacă ai stat 24 de luni pe salariul minim la același angajator, el este obligat prin lege să îți negocieze un salariu mai mare (Codul Muncii, art. 164²). Majorarea din iulie nu resetează acest termen.
+3. **Folosește regula celor 2 ani.** Salariul de bază minim poate fi aplicat cel mult 24 de luni de la încheierea contractului individual de muncă. După termen, trebuie să fii plătit cu un salariu de bază efectiv superior minimului (Codul Muncii, art. 164 alin. (2¹)); o simplă invitație la negociere nu este suficientă. Majorarea din iulie nu resetează termenul.
 
 Niciuna dintre astea nu îți garantează o mărire peste minim, dar îți dau argumente solide într-o discuție pe care altfel mulți o evită.
 

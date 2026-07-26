@@ -51,7 +51,7 @@ const jsonLd = {
       },
       image: { "@type": "ImageObject", url: "https://salariile.ro/og-image.png", width: 1200, height: 630 },
       datePublished: "2026-04-01",
-      dateModified: "2026-07-01",
+      dateModified: "2026-07-26",
       proficiencyLevel: "Expert",
       about: [
         { "@type": "Thing", name: "Codul Fiscal Legea 227/2015" },
@@ -73,12 +73,12 @@ export default function MetodologiePage() {
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Metodologie" }]} />
         <H1>Metodologie de calcul</H1>
         <p className="mt-3 text-sm text-stone-500 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2">
-          Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Publicat 1 aprilie 2026 · Actualizat 1 iulie 2026
+          Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Publicat 1 aprilie 2026 · Actualizat 26 iulie 2026
         </p>
         <Lead>
           Documentația completă a formulelor folosite de calculator. Fiecare componentă este însoțită de articolul exact din Codul Fiscal sau actul normativ aplicabil în 2026.
         </Lead>
-        <Eyebrow>SINCRONIZAT CU DECLARAȚIA 112 ANAF</Eyebrow>
+        <Eyebrow>VERIFICAT SEPARAT PRIN FORMULARUL D112</Eyebrow>
       </Hero>
 
       <main>
@@ -96,7 +96,7 @@ export default function MetodologiePage() {
               Pe lângă reținerile angajatului, angajatorul mai plătește:
             </p>
             <ul>
-              <li><strong>CAM</strong> (Contribuția Asiguratorie pentru Muncă): 2,25% din salariul brut</li>
+              <li><strong>CAM</strong> (Contribuția Asiguratorie pentru Muncă): 2,25% din baza CAM; pentru salariul minim eligibil, suma netaxabilă se exclude și din această bază</li>
             </ul>
             <p>
               CAM nu reduce salariul net al angajatului, dar crește costul total suportat de angajator.
@@ -117,16 +117,16 @@ export default function MetodologiePage() {
               </thead>
               <tbody>
                 <tr>
-                  <td>1. Bază pentru CAS și CASS</td>
+                  <td>1. Bază pentru CAS, CASS și CAM</td>
                   <td>Bază = B − F</td>
                 </tr>
                 <tr>
                   <td>2. CAS (25%)</td>
-                  <td>CAS = Bază × 0,25</td>
+                  <td>CAS = rotund(Bază × 0,25)</td>
                 </tr>
                 <tr>
                   <td>3. CASS (10%)</td>
-                  <td>CASS = Bază × 0,10</td>
+                  <td>CASS = rotund(Bază × 0,10)</td>
                 </tr>
                 <tr>
                   <td>4. Bază impozabilă</td>
@@ -134,7 +134,7 @@ export default function MetodologiePage() {
                 </tr>
                 <tr>
                   <td>5. Impozit pe venit (10%)</td>
-                  <td>Impozit = max(0, Bază_imp × 0,10)</td>
+                  <td>Impozit = rotund(max(0, Bază_imp × 0,10))</td>
                 </tr>
                 <tr className="font-semibold [&_td]:text-stone-900">
                   <td>6. Salariu net</td>
@@ -143,7 +143,7 @@ export default function MetodologiePage() {
                 <tr aria-hidden="true"><td colSpan={2} className="h-3 border-0 p-0"></td></tr>
                 <tr>
                   <td>7. CAM angajator (2,25%)</td>
-                  <td>CAM = B × 0,0225</td>
+                  <td>CAM = rotund((B − F) × 0,0225)</td>
                 </tr>
                 <tr className="font-semibold [&_td]:text-stone-900">
                   <td>8. Cost total angajator</td>
@@ -152,7 +152,7 @@ export default function MetodologiePage() {
               </tbody>
             </table></div>
             <p className="source-note">
-              Suma netaxabilă F este 0 pentru salarii peste nivelul minim. Pentru salariul minim brut în 2026 se aplică OUG 89/2025: 300 lei (ianuarie – iunie), 200 lei (iulie – decembrie).
+              „rotund” înseamnă rotunjire la cel mai apropiat leu. Suma netaxabilă F este 0 când facilitatea nu se aplică. Pentru salariul minim brut eligibil în 2026, OUG 89/2025 stabilește 300 lei (ianuarie – iunie) și 200 lei (iulie – decembrie). Tabelul descrie cazul standard fără tichete; când există tichete, ele intră în baza CASS și a impozitului, dar nu în baza CAS sau CAM.
             </p>
         </Section>
 
@@ -258,20 +258,20 @@ export default function MetodologiePage() {
         <Section>
             <h2>Tratamentul rotunjirilor</h2>
             <p>
-              Calculul intern se face cu precizie de două zecimale (la nivel de bani), pentru a coincide cu valorile transmise în Declarația 112 ANAF. La afișare, sumele sunt rotunjite la cel mai apropiat leu pentru lizibilitate, dar valorile intermediare nu se rotunjesc.
+              Motorul rotunjește la cel mai apropiat leu fiecare obligație declarată: CAS, CASS, impozitul pe venit și CAM. Deducerea personală calculată procentual este, de asemenea, rotunjită la leu. Valorile astfel obținute sunt folosite în pașii următori; calculatorul nu păstrează contribuțiile intermediare la două zecimale.
             </p>
             <p>
-              Exemple: pentru un brut de 4.325 lei (salariu minim din iulie 2026), CAS = 1.031,25 lei, CASS = 412,50 lei. Suma se păstrează exactă în calcul, iar afișajul final pentru salariul net rotunjește la 2.699 lei.
+              Exemplu pentru 4.325 lei brut, cu facilitatea de 200 lei: baza este 4.125 lei; CAS = rotund(1.031,25) = 1.031 lei, CASS = rotund(412,50) = 413 lei, deducerea personală de bază = 865 lei, impozitul = rotund(181,60) = 182 lei, iar netul este 2.699 lei. CAM = rotund(92,8125) = 93 lei, deci costul total al angajatorului este 4.418 lei.
             </p>
         </Section>
 
         <Section>
-            <h2>Sincronizarea cu Declarația 112 ANAF</h2>
+            <h2>Validarea separată prin Declarația 112 ANAF</h2>
             <p>
-              Declarația 112 este declarația lunară pe care orice angajator o transmite la ANAF, conținând impozitele și contribuțiile reținute pentru toți salariații. Calculatorul folosește aceleași formule și aceeași logică de încadrare pe care le aplică ANAF în validarea declarațiilor 112.
+              Declarația 112 este declarația lunară prin care angajatorii raportează la ANAF impozitul și contribuțiile aferente salariaților. Motorul calculatorului mapează CAS, CASS, impozitul, deducerea personală și CAM la bazele și câmpurile corespunzătoare din formular.
             </p>
             <p>
-              Pentru un salariu standard (brut fix, fără sporuri speciale, fără concedii, fără tichete personalizate), sumele calculate aici sunt aceleași pe care angajatorul tău le declară lunar la ANAF.
+              Pentru cazul salarial standard, proprietarul proiectului a verificat separat calculul prin completarea formularului D112 și prin validatorul ANAF. Câmpurile și sumele validate au coincis cu rezultatele calculatorului. Cazurile speciale rămân supuse limitărilor declarate mai jos.
             </p>
         </Section>
 
@@ -325,7 +325,7 @@ export default function MetodologiePage() {
               <li><strong>Monitorul Oficial</strong>: <a href="https://legislatie.just.ro" target="_blank" rel="noopener">legislatie.just.ro</a> (portal căutare generală)</li>
               <li><strong>Institutul Național de Statistică</strong>: <a href="https://insse.ro" target="_blank" rel="noopener">insse.ro</a></li>
             </ul>
-            <p className="source-note">Pagină actualizată: 1 iulie 2026.</p>
+            <p className="source-note">Pagină actualizată: 26 iulie 2026.</p>
         </Section>
       </main>
     </>

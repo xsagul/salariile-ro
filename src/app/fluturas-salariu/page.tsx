@@ -39,7 +39,7 @@ const FAQ = [
   },
   {
     q: "Ce verific prima dată pe fluturaș?",
-    a: "Trei lucruri: brutul să fie cel din contract (sau actul adițional, după majorarea salariului minim din 1 iulie 2026), deducerea personală să fie aplicată dacă ai sub 6.325 lei brut pe funcția de bază, iar la salariul minim, facilitatea de 200 lei netaxabili (OUG 89/2025) să apară în calcul. Lipsa ei înseamnă un net mai mic cu circa 80-100 lei pe lună.",
+    a: "Trei lucruri: brutul să fie cel din contract sau din documentul individual de modificare (act adițional ori decizie individuală, în condițiile legii), deducerea personală să fie aplicată dacă ai sub 6.325 lei brut pe funcția de bază, iar la salariul minim, facilitatea de 200 lei netaxabili (OUG 89/2025) să apară în calcul. Lipsa ei înseamnă un net mai mic cu circa 80-100 lei pe lună.",
   },
   {
     q: "Fluturașul generat aici este valabil oficial?",
@@ -170,7 +170,7 @@ export default function FluturasSalariuPage() {
         </div>
         <p className="source-note">
           Surse: Codul Muncii (Legea 53/2003, art. 166-168), Codul Fiscal (Legea 227/2015), HG 146/2026, OUG 89/2025.
-          Ultima actualizare: 2 iulie 2026.
+          Ultima actualizare: 26 iulie 2026.
         </p>
       </Section>
     </>

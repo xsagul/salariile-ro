@@ -1,5 +1,8 @@
 // Test facilitate OUG 89/2025: regresie + regula noua (baza + plafon)
-import { calculeaza } from "../src/lib/fiscal";
+// Calea variabilă păstrează compatibilitatea între Node 24 (TypeScript direct)
+// și verificarea TypeScript din `next build`.
+const fiscalModulePath = "../src/lib/fiscal.ts";
+const { calculeaza } = await import(fiscalModulePath);
 
 const std = { tichete: "", functieDeBAza: true, persoanePretretinere: 0, varstaSub26: false, copiiScolarizati: 0, scutitImpozit: false };
 let fail = 0;

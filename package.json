@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "test": "node --no-warnings scripts/test-facilitate.mts && node --no-warnings scripts/test-fiscal-periods.mts && node --no-warnings scripts/test-pfa.mts",
+    "test:rendered": "node --no-warnings scripts/test-rendered.mts",
     "gsc": "node scripts/gsc.mjs",
     "gsc-login": "node scripts/gsc-login.mjs",
     "psi": "node scripts/psi.mjs",
