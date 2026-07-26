@@ -4,7 +4,7 @@ Ultima actualizare: 26 iulie 2026
 
 ## P0 fiscal, PFA si continut - 26 iulie 2026
 
-Status: implementat si verificat local; pregatit pentru commit si deploy.
+Status: implementat, verificat, comis in `d5d022d` si publicat pe site la 26 iulie 2026.
 
 - Motorul PFA a fost extras in `src/lib/pfa.ts` si acoperit cu teste pentru praguri, pensionari, venit zero/pierdere, exceptia salariala si calcul invers. Logica urmeaza ghidul ANAF 2026, inclusiv faptul ca diferenta CASS pana la plafonul minim nu este deductibila. Exemplul ANAF pentru venit net 57.000 lei este inclus ca test de regresie.
 - Regimurile salariale 2026 sunt separate explicit: S1 (4.050 lei, facilitate 300 lei) si S2 (4.325 lei, facilitate 200 lei). Pagina programatica pentru 4.050 brut foloseste acum integral S1, inclusiv calculatorul interactiv si calculul invers.
@@ -13,6 +13,7 @@ Status: implementat si verificat local; pregatit pentru commit si deploy.
 - Articolul despre cosul minim foloseste ultima valoare publicata de FES/Syndex (septembrie 2025), fara intervale 2026 inventate.
 - Contextul permanent din `AGENTS.md` a fost corectat cu snapshotul GSC real si distinctia INS/BASS.
 - Verificare finala locala: `npm test` (inclusiv 22 asertiuni PFA), ESLint, TypeScript si build Next.js trecute. `npm run test:rendered` a verificat 56 de URL-uri din sitemap: HTTP 200, exact un H1, canonical corect si controalele P0 de continut/JSON-LD.
+- Verificare dupa deploy: toate cele 56 de URL-uri live din sitemap au raspuns HTTP 200, cu exact un H1 si canonical corect; markerii P0 noi sunt activi pe productie.
 
 Nota: sectiunile de mai jos sunt jurnal istoric si pot contine stari care au fost ulterior corectate.
 
