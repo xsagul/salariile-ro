@@ -37,7 +37,9 @@ const nextConfig: NextConfig = {
       {
         source: "/(.*)\\.(ico|png|svg|jpg|jpeg|webp|woff2)",
         headers: [
-          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+          // Fișierele din public/ nu au hash în nume. Un TTL finit permite
+          // înlocuirea imaginilor OG/hero fără ca browserul să țină un an copia veche.
+          { key: "Cache-Control", value: "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800" },
         ],
       },
     ];

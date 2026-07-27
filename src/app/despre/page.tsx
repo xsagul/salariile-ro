@@ -66,7 +66,7 @@ export default function DesprePage() {
         <Eyebrow>PROIECT INDEPENDENT · LANSAT APRILIE 2026 · FĂRĂ PUBLICITATE</Eyebrow>
       </Hero>
 
-      <main>
+      <div>
         <Section>
             <h2>Cine întreține site-ul</h2>
             <p>
@@ -83,10 +83,10 @@ export default function DesprePage() {
         <Section>
             <h2>De ce a apărut site-ul</h2>
             <p>
-              În aprilie 2026, când am început să urmăresc mai atent calculul propriului meu venit, am descoperit că majoritatea calculatoarelor de salariu online din România erau fie depășite legislativ, fie afișau cifre fără să precizeze pe ce act normativ se bazează.
+              În aprilie 2026, când am început să urmăresc mai atent calculul propriului meu venit, am vrut să pot urmări ușor drumul de la rezultatul numeric la formulă, act normativ și data de la care regula se aplică.
             </p>
             <p>
-              Un utilizator care vrea să verifice corectitudinea unui calcul trebuie să poată ajunge la sursa oficială: actul normativ, articolul exact, data intrării în vigoare. Asta lipsea practic peste tot. Am construit salariile.ro ca răspuns la această problemă: fiecare cifră afișată trebuie să fie trasabilă până la o sursă oficială din Monitorul Oficial.
+              Am construit salariile.ro în jurul acestei idei: un utilizator care verifică un calcul trebuie să poată ajunge la sursa oficială, la articolul relevant și la perioada fiscală folosită. De aceea metodologia și legăturile spre actele normative fac parte din produs, nu sunt doar note de subsol.
             </p>
         </Section>
 
@@ -128,7 +128,7 @@ export default function DesprePage() {
               Erorile concrete (de exemplu o cifră greșită într-un calcul detaliat) au prioritate maximă, le corectez de regulă în aceeași zi în care primesc raportarea.
             </p>
         </Section>
-      </main>
+      </div>
     </>
   );
 }

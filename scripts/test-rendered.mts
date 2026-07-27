@@ -79,6 +79,7 @@ async function auditRenderedSite() {
 
   const failures: string[] = [];
   const rendered = new Map<string, string>();
+  let jsonLdBlockCount = 0;
 
   await Promise.all(
     locations.map(async (location) => {
@@ -86,21 +87,57 @@ async function auditRenderedSite() {
       try {
         const response = await fetch(localUrl);
         const html = await response.text();
-        rendered.set(new URL(location).pathname, html);
+        const pathname = new URL(location).pathname;
+        rendered.set(pathname, html);
 
         const h1Count = html.match(/<h1(?:\s[^>]*)?>/gi)?.length ?? 0;
+        const mainCount = html.match(/<main(?:\s[^>]*)?>/gi)?.length ?? 0;
         const canonical = canonicalFrom(html);
         if (response.status !== 200) failures.push(`${location}: HTTP ${response.status}`);
         if (h1Count !== 1) failures.push(`${location}: ${h1Count} elemente H1`);
+        if (mainCount !== 1) failures.push(`${location}: ${mainCount} elemente main`);
         if (canonical !== location) failures.push(`${location}: canonical ${canonical || "lipsa"}`);
+
+        try {
+          jsonLdBlockCount += jsonLdBlocks(html).length;
+        } catch (error) {
+          failures.push(
+            `${location}: JSON-LD invalid (${error instanceof Error ? error.message : String(error)})`,
+          );
+        }
+
+        if (pathname.startsWith("/calculator/")) {
+          const internalLinks = [
+            ...html.matchAll(/<a\b[^>]*href="(\/calculator\/[^"]+)"[^>]*>/gi),
+          ].map((match) => match[1]);
+          if (internalLinks.length < 2) {
+            failures.push(`${location}: link graph insuficient (${internalLinks.length} linkuri)`);
+          }
+        }
       } catch (error) {
         failures.push(`${location}: ${error instanceof Error ? error.message : String(error)}`);
       }
     }),
   );
 
+  const expectedGscCalculatorPaths = [
+    "/calculator/calcul-salariu-net-4582-brut",
+    "/calculator/calcul-salariu-net-20000-brut",
+    "/calculator/calcul-salariu-brut-2574-net",
+    "/calculator/calcul-salariu-brut-2700-net",
+    "/calculator/calcul-salariu-brut-3200-net",
+    "/calculator/calcul-salariu-brut-7000-net",
+  ] as const;
+
+  for (const pathname of expectedGscCalculatorPaths) {
+    if (!rendered.has(pathname)) failures.push(`${pathname}: valoarea GSC lipseste din sitemap`);
+  }
+
   const contentChecks = [
     ["/calculator/calcul-salariu-net-4050-brut", "2.574", "netul S1 pentru 4.050 brut"],
+    ["/calculator/calcul-salariu-brut-2574-net", "4.050", "brutul S1 pentru 2.574 net"],
+    ["/calculator/calcul-salariu-brut-2574-net", "facilitate de 300 lei", "regimul istoric S1 pentru 2.574 net"],
+    ["/calculator/calcul-salariu-net-4582-brut", "2.754", "netul curent pentru 4.582 brut"],
     ["/calculator-pfa", "24.300", "pragul salarial PFA"],
     ["/salariu-mediu", "9.483", "brutul INS din mai"],
     ["/salariu-mediu", "5.684", "netul INS din mai"],
@@ -113,6 +150,66 @@ async function auditRenderedSite() {
     if (!rendered.get(pathname)?.includes(expected)) failures.push(`${pathname}: lipseste ${label}`);
   }
 
+  const rejectedCalculatorPaths = [
+    "/calculator/calcul-salariu-net-5551-brut",
+    "/calculator/calcul-salariu-net-00004325-brut",
+  ] as const;
+
+  for (const pathname of rejectedCalculatorPaths) {
+    const response = await fetch(`${BASE_URL}${pathname}`);
+    if (response.status !== 404) {
+      failures.push(`${pathname}: trebuia HTTP 404, a raspuns ${response.status}`);
+    }
+  }
+
+  const calculatorPaths = [...rendered.keys()].filter((pathname) =>
+    pathname.startsWith("/calculator/"),
+  );
+  for (const targetPath of calculatorPaths) {
+    const hasInboundLink = [...rendered.entries()].some(
+      ([sourcePath, html]) =>
+        sourcePath !== targetPath &&
+        new RegExp(`<a\\b[^>]*href="${targetPath.replaceAll("/", "\\/")}"`, "i").test(html),
+    );
+    if (!hasInboundLink) failures.push(`${targetPath}: fara link intern de intrare`);
+  }
+
+  const markdownResponse = await fetch(`${BASE_URL}/salariu-minim`, {
+    headers: { Accept: "text/markdown" },
+  });
+  const markdownBody = await markdownResponse.text();
+  if (markdownResponse.status !== 200) {
+    failures.push(`/salariu-minim Accept markdown: HTTP ${markdownResponse.status}`);
+  }
+  if (!markdownResponse.headers.get("content-type")?.includes("text/markdown")) {
+    failures.push("/salariu-minim Accept markdown: Content-Type incorect");
+  }
+  if (!markdownBody.includes("# Salariul minim")) {
+    failures.push("/salariu-minim Accept markdown: continutul principal lipseste");
+  }
+
+  const rejectedMarkdownPaths = [
+    "/api/markdown/calculator/calcul-salariu-net-5551-brut",
+    "/api/markdown/api/markdown/salariu-minim",
+  ] as const;
+  for (const pathname of rejectedMarkdownPaths) {
+    const response = await fetch(`${BASE_URL}${pathname}`);
+    if (response.status !== 404) {
+      failures.push(`${pathname}: trebuia HTTP 404, a raspuns ${response.status}`);
+    }
+  }
+
+  const publicAssetResponse = await fetch(`${BASE_URL}/og-image.png`);
+  const assetCacheControl = publicAssetResponse.headers.get("cache-control") || "";
+  if (assetCacheControl.includes("immutable")) {
+    failures.push("/og-image.png: fisier public nehashuit servit immutable");
+  }
+  if (publicAssetResponse.headers.has("content-security-policy")) {
+    failures.push("/og-image.png: middleware-ul HTML ruleaza inutil pe asset static");
+  }
+
+  if (jsonLdBlockCount === 0) failures.push("Nu a fost gasit niciun bloc JSON-LD.");
+
   const salary4050 = rendered.get("/calculator/calcul-salariu-net-4050-brut") ?? "";
   const schemaNodes = jsonLdBlocks(salary4050).flatMap((block) =>
     Array.isArray(block["@graph"]) ? block["@graph"] : [block],
@@ -123,14 +220,16 @@ async function auditRenderedSite() {
   }
 
   console.log(`Rute din sitemap verificate: ${locations.length}`);
-  console.log(`Verificari P0 de continut: ${contentChecks.length + 1}`);
+  console.log(`Blocuri JSON-LD parsate: ${jsonLdBlockCount}`);
+  console.log(`Verificari P0/P1 de continut: ${contentChecks.length + 1}`);
 
   if (failures.length > 0) {
     throw new Error(`Auditul randat a esuat:\n- ${failures.join("\n- ")}`);
   }
 
-  console.log("OK: HTTP 200, un singur H1 si canonical corect pe toate rutele.");
-  console.log("OK: continutul P0 si JSON-LD-ul paginii 4.050 au trecut.");
+  console.log("OK: HTTP 200, un singur H1/main si canonical corect pe toate rutele.");
+  console.log("OK: JSON-LD valid, allowlist inchis, link graph si valorile GSC au trecut.");
+  console.log("OK: Markdown allowlist/negociere si headerele asseturilor au trecut.");
 }
 
 try {

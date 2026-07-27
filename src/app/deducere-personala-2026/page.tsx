@@ -100,7 +100,7 @@ export default function DeducerePersonalaPage() {
         <Eyebrow>Codul Fiscal art. 77 · regim valabil din 1 iulie 2026</Eyebrow>
       </Hero>
 
-      <main>
+      <div>
         <Section wide>
           <div className="grid gap-4 sm:grid-cols-3">
             <div className="rounded-md border border-stone-200 bg-surface p-5 shadow-soft">
@@ -204,7 +204,7 @@ export default function DeducerePersonalaPage() {
           </ul>
           <p className="source-note">Pagina actualizată: 6 iulie 2026.</p>
         </Section>
-      </main>
+      </div>
     </>
   );
 }

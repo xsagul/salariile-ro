@@ -10,7 +10,7 @@ Prima dată când m-am uitat cu atenție pe un fluturaș de salariu, am rămas b
 
 ## Ce e, de fapt, fluturașul
 
-Fluturașul de salariu (sau „statul de plată" în formă scurtă) e dovada pe hârtie a felului în care salariul tău brut se transformă în banii pe care îi primești efectiv. Pe scurt, are trei zone: **cât ai câștigat** (brutul), **ce se reține** (contribuții și impozit) și **ce rămâne** (netul, banii din cont).
+Fluturașul de salariu este extrasul individual prin care vezi cum s-a ajuns de la venitul brut la suma de plată. Nu este același document cu **statul de plată**: statul este evidența centralizată întocmită de angajator pentru salarizare, iar fluturașul prezintă salariatului propriile elemente de calcul. Pe scurt, fluturașul are trei zone: **cât ai câștigat** (brutul), **ce se reține** (contribuții și impozit) și **ce rămâne** (netul, banii din cont).
 
 ## 1. Venitul brut: de aici pleacă totul
 
@@ -64,10 +64,10 @@ O confuzie des întâlnită: oamenii cred că firma plătește 45% taxe „pe l�
 
 ## Cum verifici că totul e corect
 
-Cel mai simplu mod de a verifica fluturașul e să pui brutul tău în [calculatorul de salariu net](/), cu sporurile, tichetele și persoanele în întreținere pe care le ai. Îți arată exact aceleași rânduri ca pe fluturaș: cât e CAS, CASS, impozitul, deducerea și netul final. Dacă cifrele de pe hârtie bat cu cele din calculator, totul e în regulă. Iar dacă vrei varianta pe hârtie, poți [genera un fluturaș PDF](/fluturas-salariu) cu cifrele corecte pentru brutul tău și să le compari rând cu rând.
+Cel mai simplu mod de a verifica aritmetica fluturașului e să pui brutul tău în [calculatorul de salariu net](/), cu sporurile, tichetele și persoanele în întreținere pe care le ai. Îți arată aceleași componente fiscale de bază: CAS, CASS, impozit, deducere și net. Dacă sumele coincid, ai confirmat calculul pentru datele introduse, dar nu automat și corectitudinea tuturor datelor de intrare — de exemplu orele lucrate, concediile, sporurile, reținerile sau încadrarea din contract. Pentru situații atipice, verificarea finală o face departamentul de salarizare sau un specialist. Iar dacă vrei o variantă orientativă pe hârtie, poți [genera un fluturaș PDF](/fluturas-salariu) și compara rândurile acoperite de generator.
 
 ## De reținut
 
-Fluturașul nu e un cod secret. E doar drumul de la brut la net, scris pas cu pas: brut, minus CAS, minus CASS, minus impozit (calculat pe ce rămâne), egal net. Odată ce vezi logica, poți verifica în orice lună dacă ești plătit corect, și mai ales poți înțelege de ce o mărire de brut nu se simte niciodată integral în cont.
+Fluturașul nu e un cod secret. E drumul de la brut la net, scris pas cu pas: brut, minus CAS, minus CASS, minus impozit (calculat pe ce rămâne), egal net. Odată ce vezi logica, poți urmări aritmetica lunii și poți înțelege de ce o mărire de brut nu se simte integral în cont.
 
 > De la 1 iulie 2026 unele cifre se schimbă pentru salariul minim. Detaliile, în articolul despre [ce se schimbă la salariul minim din iulie](/noutati/salariul-minim-1-iulie-2026).

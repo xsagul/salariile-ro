@@ -12,6 +12,7 @@ const IMPLEMENTED_PAGES = new Set<string>([
   "/fluturas-salariu",
   "/widget",
   "/salariu-minim",
+  "/salariu-minim-constructii-2026",
   "/salariu-mediu",
   "/deducere-personala-2026",
   "/zile-libere-2026",
@@ -44,6 +45,7 @@ const FOOTER_GROUPS: Array<{ title: string; links: FooterLink[] }> = [
     title: "Informații",
     links: [
       { href: "/salariu-minim", label: "Salariu minim 2026" },
+      { href: "/salariu-minim-constructii-2026", label: "Salariu minim construcții" },
       { href: "/salariu-mediu", label: "Salariu mediu 2026" },
       { href: "/deducere-personala-2026", label: "Deducere personală 2026" },
       { href: "/zile-libere-2026", label: "Zile libere 2026" },

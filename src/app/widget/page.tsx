@@ -11,7 +11,7 @@ import WidgetDemo from "@/app/components/WidgetDemo";
 
 const TITLU = "Widget Calculator Salariu";
 const DESC =
-  "Widget gratuit pentru calculator salariu net și brut. Îl adaugi pe site-ul tău cu un simplu copy-paste și se actualizează automat la schimbările legislative.";
+  "Widget gratuit pentru calculator salariu net și brut. Îl adaugi prin copy-paste și folosește central versiunea curentă a motorului salariile.ro.";
 
 export const metadata: Metadata = {
   title: TITLU,
@@ -47,7 +47,7 @@ const FAQ = [
   },
   {
     q: "Ce se întâmplă când se schimbă legislația?",
-    a: "Widgetul folosește exact motorul de calcul al site-ului salariile.ro, care se actualizează la fiecare modificare legislativă (salariu minim, plafoane, deduceri). Site-ul tău afișează automat calculul corect, fără nicio intervenție.",
+    a: "Widgetul încarcă motorul de calcul direct de pe salariile.ro. Când actualizăm central regulile fiscale — salariul minim, plafoanele sau deducerile — integrarea ta preia versiunea publicată fără să fie nevoie să înlocuiești codul de embed.",
   },
   {
     q: "Trebuie să păstrez linkul către salariile.ro?",
@@ -101,7 +101,7 @@ export default function WidgetPage() {
         <Lead>
           Widget gratuit, adaugă calculatorul de salariu net și brut pe site-ul tău. Un copy-paste și vizitatorii
           tăi calculează salariul direct la tine pe site, cu taxele defalcate și procentul care pleacă la stat.
-          Calculul rămâne mereu corect: la fiecare schimbare legislativă, widgetul se actualizează singur.
+          Widgetul folosește motorul publicat central de salariile.ro, iar integrarea preia modificările când actualizăm motorul.
         </Lead>
       </Hero>
 
@@ -114,7 +114,7 @@ export default function WidgetPage() {
           <WidgetDemo />
         </div>
         <p>
-          Aplică aceleași reguli ca site-ul, actualizat mereu cu legislația curentă aplicabilă. Formulele complete
+          Aplică aceeași versiune a regulilor fiscale publicată pe site. Formulele complete
           sunt publice pe <a href="/metodologie">pagina de metodologie</a>.
         </p>
       </Section>

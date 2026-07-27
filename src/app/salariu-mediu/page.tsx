@@ -2,7 +2,7 @@
 // Server Component pur — SSR maxim, SEO maxim, zero JS la client.
 // Restructurat 10 iulie 2026 pe formula de la /salariu-minim (STUDIU-SPECTRUM-CONTENT.md):
 // lede canonic unic, secțiuni în ordinea intențiilor din GSC (două cifre → pensia și
-// valoarea oficială → net → mediana → istoric cu tabel HTML + grafic), FAQ redus la
+// valoarea oficială → net → diferența medie/mediană → istoric cu tabel HTML + grafic), FAQ redus la
 // întrebările neacoperite în corp, carduri aditive pe fiecare rând.
 
 import type { Metadata } from "next";
@@ -16,7 +16,7 @@ const OG_SALARIU_MEDIU = {
   url: "/og-salariu-mediu.jpg",
   width: 1200,
   height: 630,
-  alt: "Ilustrație: oameni de înălțimi diferite, ca un grafic, cu o linie a mediei, majoritatea sub linie, câțiva mari o trag în sus",
+  alt: "Ilustrație: siluete de înălțimi diferite lângă o linie orizontală, reprezentând diferența dintre valori individuale și medie",
 } as const;
 
 // ─── Metadata SEO ────────────────────────────────────────────────────────────
@@ -186,20 +186,23 @@ export default function SalariuMediuPage() {
               <strong>9.483 lei brut</strong>. Netul a scăzut cu <strong>2,7%</strong> față de aprilie. Valoarea bugetară
               pentru 2026, folosită la pensii și ajutoare, e alta:{" "}
               <strong>9.192 lei brut</strong> (Legea 44/2026). În continuare vezi de ce sunt două cifre, la ce se
-              folosește cea oficială, cât rămâne net și cât câștigă de fapt majoritatea.
+              folosește cea oficială, cât rămâne net și de ce media nu descrie venitul fiecărui angajat.
             </p>
           </div>
-          <div className={aside}>
+          <figure className={aside}>
             <Image
               src="/hero-salariu-mediu.png"
-              alt="Ilustrație: oameni de înălțimi diferite, ca un grafic, cu o linie a mediei, majoritatea sub linie, câțiva mari o trag în sus"
+              alt="Ilustrație: siluete de înălțimi diferite lângă o linie orizontală, reprezentând diferența dintre valori individuale și medie"
               width={1200}
               height={896}
               priority
               sizes="(max-width: 768px) 100vw, 480px"
               className="w-full rounded-md"
             />
-          </div>
+            <figcaption className="mt-2 text-xs text-stone-500">
+              Ilustrație conceptuală; nu reprezintă distribuția salarială măsurată de INS.
+            </figcaption>
+          </figure>
         </div>
 
         <div className="[&>div]:mt-10 [&>div]:border-t [&>div]:border-stone-200 [&>div]:pt-10 sm:[&>div]:mt-14 sm:[&>div]:pt-14">
@@ -361,20 +364,20 @@ export default function SalariuMediuPage() {
               <div className={`max-w-prose ${articol}`}>
                 <h2>Media nu e cât câștigi tu</h2>
                 <p>
-                  Aici e capcana cuvântului „mediu&quot;. Media se calculează adunând toate salariile și împărțind la numărul de
-                  angajați, așa că <strong>salariile foarte mari din IT, finanțe și management o trag în sus</strong>.
-                  Rezultatul: cei mai mulți oameni câștigă sub această medie.
+                  Aici e capcana cuvântului „mediu&quot;. Media se calculează adunând toate valorile și împărțind la numărul de
+                  salariați, astfel că un grup de salarii foarte mari poate influența rezultatul. Doar din valoarea mediei
+                  nu putem deduce câți angajați se află sub sau peste ea.
                 </p>
                 <p>
-                  Indicatorul corect pentru „un angajat obișnuit&quot; e <strong>mediana</strong>: salariul de la mijloc, sub
-                  care se află exact jumătate dintre angajați. Pe scurt: dacă tu câștigi sub medie, nu ești o excepție,
-                  ci ești în rândul majorității.
+                  <strong>Mediana</strong> este valoarea de la mijloc: jumătate dintre observații sunt sub ea și jumătate
+                  peste ea. Pentru o comparație corectă este nevoie însă de o mediană calculată pentru aceeași populație,
+                  aceeași perioadă și aceeași definiție a venitului ca seria INS folosită aici.
                 </p>
               </div>
             </div>
             <aside className={aside}>
               <div className={`${card} ${strong}`}>
-                <h3 className="text-base font-bold tracking-[-0.01em] text-stone-900">Cât câștigă, de fapt, majoritatea</h3>
+                <h3 className="text-base font-bold tracking-[-0.01em] text-stone-900">Ce arată mediana</h3>
                 <p className="mt-2 text-sm leading-normal tracking-[-0.01em] text-stone-600">
                   Mediana, adică salariul de la mijloc, arată pragul sub care se află jumătate dintre angajați. INS nu
                   publică o mediană salarială lunară în același comunicat cu media.
@@ -478,7 +481,7 @@ export default function SalariuMediuPage() {
                       })}
                     </div>
                   </div>
-                  <p className="mt-4 text-xs text-stone-500">Brut = valoarea oficială folosită la buget; net = estimat (~58% din brut). Scăderea din 2021 vine din ajustări de pandemie. Treci cu mouse-ul (sau atinge) un an pentru cifre.</p>
+                  <p className="mt-4 text-xs text-stone-500">Brut = valoarea oficială folosită la buget; net = estimat (~58% din brut). Treci cu mouse-ul (sau atinge) un an pentru cifre.</p>
                 </figure>
               </div>
             </div>

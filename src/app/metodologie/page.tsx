@@ -81,7 +81,7 @@ export default function MetodologiePage() {
         <Eyebrow>VERIFICAT SEPARAT PRIN FORMULARUL D112</Eyebrow>
       </Hero>
 
-      <main>
+      <div>
         <Section>
             <h2>Principiul general</h2>
             <p>
@@ -327,7 +327,7 @@ export default function MetodologiePage() {
             </ul>
             <p className="source-note">Pagină actualizată: 26 iulie 2026.</p>
         </Section>
-      </main>
+      </div>
     </>
   );
 }

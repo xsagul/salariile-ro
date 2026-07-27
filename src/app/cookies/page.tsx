@@ -65,7 +65,7 @@ export default function CookiesPage() {
         <Eyebrow>ZERO COOKIES DE TRACKING · ZERO PUBLICITATE · ÎN VIGOARE: 11 MAI 2026</Eyebrow>
       </Hero>
 
-      <main>
+      <div>
         <Section>
             <h2>Ce sunt cookies</h2>
             <p>
@@ -148,7 +148,7 @@ export default function CookiesPage() {
             </p>
             <p className="source-note">Ultima actualizare: 11 mai 2026.</p>
         </Section>
-      </main>
+      </div>
     </>
   );
 }

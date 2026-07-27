@@ -63,7 +63,7 @@ export default function ContactPage() {
         </Lead>
       </Hero>
 
-      <main>
+      <div>
         <Section>
             <h2>Adresă de email</h2>
             <p>
@@ -125,7 +125,7 @@ export default function ContactPage() {
               Termenii de utilizare: <Link href="/termeni">pagina Termeni</Link>.
             </p>
         </Section>
-      </main>
+      </div>
     </>
   );
 }

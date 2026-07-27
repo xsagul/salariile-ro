@@ -17,17 +17,38 @@ import {
   type RegimFiscalSalariu,
   type Rezultat,
 } from "@/lib/fiscal";
-import { allCalculatorSlugs, LAST_FISCAL_CONTENT_UPDATE, ogPage, twPage } from "@/lib/seo";
+import {
+  allCalculatorSlugs,
+  CALCULATOR_BRUT_VALUES,
+  CALCULATOR_NET_VALUES,
+  calculatorSlugBrut,
+  calculatorSlugNet,
+  LAST_FISCAL_CONTENT_UPDATE,
+  ogPage,
+  twPage,
+} from "@/lib/seo";
 
 interface Props {
   params: Promise<{ valoare: string }>;
 }
 
-// Valorile din listă se generează static; orice altă valoare PLAUZIBILĂ (ex. 5550,
-// 6324 — căutări reale care nu-s în listă) se randează la cerere și poate prinde
-// trafic long-tail. Valorile absurde (0, sume uriașe) → 404 prin verificarea din parseSlug.
+type CalculatorMode = "net-din-brut" | "brut-din-net" | "necunoscut";
+
+const CALCULATOR_SLUG_ALLOWLIST = new Set(allCalculatorSlugs());
+
+// Indexăm numai valorile validate prin date de căutare. Restul răspund 404, inclusiv
+// variantele cu zerouri la început, ca să nu generăm un spațiu infinit de pagini similare.
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return allCalculatorSlugs().map((valoare) => ({ valoare }));
+}
+
+function isCalculIstoricS1(mod: CalculatorMode, cifra: string) {
+  return (
+    (mod === "net-din-brut" && cifra === "4050") ||
+    (mod === "brut-din-net" && cifra === "2574")
+  );
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -38,25 +59,26 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     notFound();
   }
 
+  const esteCalculIstoricS1 = isCalculIstoricS1(mod, cifra);
+
   if (mod === "net-din-brut") {
-    const esteMinimIstoricS1 = cifra === "4050";
-    const perioada = esteMinimIstoricS1 ? " în ianuarie–iunie 2026" : " în 2026";
+    const perioada = esteCalculIstoricS1 ? " în ianuarie–iunie 2026" : " în 2026";
     return {
       title: `Salariu net pentru ${cifra} lei brut${perioada}`,
-      description: esteMinimIstoricS1
+      description: esteCalculIstoricS1
         ? "Calcul istoric pentru salariul minim brut de 4.050 lei, cu regimul fiscal aplicabil între 1 ianuarie și 30 iunie 2026."
         : `Calculează instant salariul net pentru ${cifra} lei brut. Află cât reții după CAS, CASS și impozit pe venit.`,
       alternates: { canonical: `https://salariile.ro/calculator/${valoare}` },
       openGraph: ogPage({
         title: `Salariu net pentru ${cifra} lei brut${perioada}`,
-        description: esteMinimIstoricS1
+        description: esteCalculIstoricS1
           ? "Calcul istoric pentru salariul minim din primul semestru al anului 2026."
           : `Calculează instant salariul net pentru ${cifra} lei brut.`,
         path: `/calculator/${valoare}`,
       }),
       twitter: twPage({
         title: `Salariu net pentru ${cifra} lei brut${perioada}`,
-        description: esteMinimIstoricS1
+        description: esteCalculIstoricS1
           ? "Calcul istoric pentru salariul minim din primul semestru al anului 2026."
           : `Calculează instant salariul net pentru ${cifra} lei brut.`,
       }),
@@ -64,18 +86,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   if (mod === "brut-din-net") {
+    const perioada = esteCalculIstoricS1 ? " în ianuarie–iunie 2026" : " în 2026";
+    const description = esteCalculIstoricS1
+      ? "Calcul istoric: află brutul de 4.050 lei corespunzător netului standard de 2.574 lei din primul semestru al anului 2026."
+      : `Calculează instant salariul brut corespunzător unui net de ${cifra} lei. Formula inversă CAS, CASS, impozit.`;
+
     return {
-      title: `Salariu brut pentru ${cifra} lei net în 2026`,
-      description: `Calculează instant salariul brut corespunzător unui net de ${cifra} lei. Formula inversă CAS, CASS, impozit.`,
+      title: `Salariu brut pentru ${cifra} lei net${perioada}`,
+      description,
       alternates: { canonical: `https://salariile.ro/calculator/${valoare}` },
       openGraph: ogPage({
-        title: `Salariu brut pentru ${cifra} lei net în 2026`,
-        description: `Calculează instant salariul brut corespunzător unui net de ${cifra} lei.`,
+        title: `Salariu brut pentru ${cifra} lei net${perioada}`,
+        description,
         path: `/calculator/${valoare}`,
       }),
       twitter: twPage({
-        title: `Salariu brut pentru ${cifra} lei net în 2026`,
-        description: `Calculează instant salariul brut corespunzător unui net de ${cifra} lei.`,
+        title: `Salariu brut pentru ${cifra} lei net${perioada}`,
+        description,
       }),
     };
   }
@@ -88,24 +115,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 function parseSlug(slug: string): {
   valoare: string;
-  mod: "net-din-brut" | "brut-din-net" | "necunoscut";
+  mod: CalculatorMode;
   cifra: string;
   brutInitial: string;
   modInitial: "brut" | "net";
 } {
-  // Doar valori plauzibile de salariu (lunar, lei). Restul (0, 1, sume uriașe) → 404.
-  const plauzibil = (s: string) => {
-    const n = parseInt(s, 10);
-    return n >= 1000 && n <= 300000;
-  };
+  if (!CALCULATOR_SLUG_ALLOWLIST.has(slug)) {
+    return { valoare: slug, mod: "necunoscut", cifra: "", brutInitial: "", modInitial: "brut" };
+  }
 
   const matchNetDinBrut = slug?.match(/^calcul-salariu-net-(\d+)-brut$/);
-  if (matchNetDinBrut && plauzibil(matchNetDinBrut[1])) {
+  if (matchNetDinBrut) {
     return { valoare: slug, mod: "net-din-brut", cifra: matchNetDinBrut[1], brutInitial: matchNetDinBrut[1], modInitial: "brut" };
   }
 
   const matchBrutDinNet = slug?.match(/^calcul-salariu-brut-(\d+)-net$/);
-  if (matchBrutDinNet && plauzibil(matchBrutDinNet[1])) {
+  if (matchBrutDinNet) {
     return { valoare: slug, mod: "brut-din-net", cifra: matchBrutDinNet[1], brutInitial: matchBrutDinNet[1], modInitial: "net" };
   }
 
@@ -113,6 +138,47 @@ function parseSlug(slug: string): {
 }
 
 const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(n);
+
+type ValidCalculatorMode = Exclude<CalculatorMode, "necunoscut">;
+
+type CalculatorLink = {
+  href: string;
+  label: string;
+};
+
+function calculatorLink(mod: ValidCalculatorMode, valoare: number): CalculatorLink {
+  const esteBrut = mod === "net-din-brut";
+  return {
+    href: `/calculator/${esteBrut ? calculatorSlugBrut(valoare) : calculatorSlugNet(valoare)}`,
+    label: esteBrut
+      ? `${fmt(valoare)} lei brut → net`
+      : `${fmt(valoare)} lei net → brut`,
+  };
+}
+
+function getCalculatorLinks(
+  mod: ValidCalculatorMode,
+  valoare: number,
+  valoareOpusa: number,
+): CalculatorLink[] {
+  const valoriCurente: readonly number[] =
+    mod === "net-din-brut" ? CALCULATOR_BRUT_VALUES : CALCULATOR_NET_VALUES;
+  const indexCurent = valoriCurente.indexOf(valoare);
+  const indiciVecini = [indexCurent - 2, indexCurent - 1, indexCurent + 1, indexCurent + 2];
+  const vecini = indiciVecini
+    .filter((index) => index >= 0 && index < valoriCurente.length)
+    .map((index) => calculatorLink(mod, valoriCurente[index]));
+
+  const modOpus: ValidCalculatorMode =
+    mod === "net-din-brut" ? "brut-din-net" : "net-din-brut";
+  const valoriOpuse: readonly number[] =
+    modOpus === "net-din-brut" ? CALCULATOR_BRUT_VALUES : CALCULATOR_NET_VALUES;
+  const ceaMaiApropiata = valoriOpuse.reduce((best, candidate) =>
+    Math.abs(candidate - valoareOpusa) < Math.abs(best - valoareOpusa) ? candidate : best,
+  );
+
+  return [...vecini, calculatorLink(modOpus, ceaMaiApropiata)];
+}
 
 // ─── Context editorial per tranșă salarială ──────────────────────────────────
 // Aceste 3 secțiuni (poziție, sectoare, insight) sunt informații de NIVEL DE
@@ -127,6 +193,7 @@ type Context = {
 
 const CASTIG_MEDIU_BRUT_BUGETAR_2026 = 9192;
 const REZULTAT_MINIM_S1_2026 = calculStandardCuRegim(4050, "2026-S1");
+const NET_MINIM_S1_2026 = REZULTAT_MINIM_S1_2026?.net ?? 2574;
 const REZULTAT_MINIM_CURENT = calculStandard(SALARIU_MINIM);
 
 function getContextBrut(v: number): Context {
@@ -173,6 +240,13 @@ function getContextBrut(v: number): Context {
 
 function getContextNet(v: number): Context {
   const netMinimStandard = REZULTAT_MINIM_CURENT?.net ?? 0;
+
+  if (v === NET_MINIM_S1_2026) {
+    return {
+      pozitie: <>Netul standard de <strong>{fmt(v)} lei</strong> corespunde brutului minim istoric de <strong>4.050 lei</strong>, aplicabil între 1 ianuarie și 30 iunie 2026.</>,
+      insight: <>Acesta este un calcul istoric în grila S1 2026: facilitate de 300 lei și deducere personală raportată la salariul minim de 4.050 lei. Pentru perioada de după 1 iulie se folosește regimul fiscal curent.</>,
+    };
+  }
 
   if (v < netMinimStandard) {
     return {
@@ -253,24 +327,31 @@ export default async function CalculatorDinamic({ params }: Props) {
 
   const isNetDinBrut = mod === "net-din-brut";
   const cifraNum = parseInt(cifra, 10);
-  const esteMinimIstoricS1 = isNetDinBrut && cifraNum === 4050;
-  const regimFiscal: RegimFiscalSalariu = esteMinimIstoricS1 ? "2026-S1" : REGIM_FISCAL_CURENT;
+  const esteCalculIstoricS1 = isCalculIstoricS1(mod, cifra);
+  const regimFiscal: RegimFiscalSalariu = esteCalculIstoricS1 ? "2026-S1" : REGIM_FISCAL_CURENT;
 
   // Calculul fiscal REAL pentru această valoare — sursa unicității conținutului.
   const brutEfectiv = isNetDinBrut
     ? cifraNum
     : brutDinNetStandardCuRegim(cifraNum, regimFiscal);
   const rez = calculStandardCuRegim(brutEfectiv, regimFiscal);
+  const linkuriCalculatoare = getCalculatorLinks(
+    mod,
+    cifraNum,
+    isNetDinBrut ? (rez?.net ?? cifraNum) : brutEfectiv,
+  );
 
   const titluDinamic = isNetDinBrut
     ? <>Salariu net pentru <em>{cifra} lei brut</em></>
     : <>Salariu brut pentru <em>{cifra} lei net</em></>;
   const titluText = isNetDinBrut
-    ? `Salariu net pentru ${cifra} lei brut${esteMinimIstoricS1 ? " în ianuarie–iunie 2026" : " în 2026"}`
-    : `Salariu brut pentru ${cifra} lei net în 2026`;
+    ? `Salariu net pentru ${cifra} lei brut${esteCalculIstoricS1 ? " în ianuarie–iunie 2026" : " în 2026"}`
+    : `Salariu brut pentru ${cifra} lei net${esteCalculIstoricS1 ? " în ianuarie–iunie 2026" : " în 2026"}`;
 
-  const subtitluDinamic = esteMinimIstoricS1
-    ? `Calcul istoric pentru salariul minim de 4.050 lei brut, folosind grila fiscală aplicabilă între 1 ianuarie și 30 iunie 2026: facilitate de 300 lei și deducere raportată la minimul de 4.050 lei.`
+  const subtitluDinamic = esteCalculIstoricS1
+    ? isNetDinBrut
+      ? `Calcul istoric pentru salariul minim de 4.050 lei brut, folosind grila fiscală aplicabilă între 1 ianuarie și 30 iunie 2026: facilitate de 300 lei și deducere raportată la minimul de 4.050 lei.`
+      : `Calcul istoric pentru netul standard de 2.574 lei din primul semestru al anului 2026. Brutul corespunzător este 4.050 lei, calculat cu facilitatea de 300 lei și grila fiscală S1.`
     : isNetDinBrut
     ? `Află exact cât reprezintă salariul net pentru suma de ${cifra} lei brut în 2026. Vezi deducerile de CAS, CASS, impozitul pe venit și costul total pentru angajator.`
     : `Află ce salariu brut trebuie să negociezi pentru a primi ${cifra} lei net în mână în 2026. Vezi distribuția exactă a taxelor la stat.`;
@@ -284,7 +365,7 @@ export default async function CalculatorDinamic({ params }: Props) {
   // aceeași bandă de venit (care împart contextul de categorie) să rămână unice.
   const pctDinIndicatorBugetar = Math.round((brutEfectiv / CASTIG_MEDIU_BRUT_BUGETAR_2026) * 100);
   const pctPesteMinim = Math.round((brutEfectiv / SALARIU_MINIM - 1) * 100);
-  const fataDeMinim = esteMinimIstoricS1
+  const fataDeMinim = esteCalculIstoricS1
     ? <>era exact <Link href="/salariu-minim">salariul minim brut</Link> aplicabil între 1 ianuarie și 30 iunie 2026</>
     : pctPesteMinim < 0
       ? <>este <strong>sub</strong> <Link href="/salariu-minim">salariul minim brut</Link> ({fmt(SALARIU_MINIM)} lei), nivel întâlnit de regulă la contracte cu normă redusă (part-time)</>
@@ -362,7 +443,7 @@ export default async function CalculatorDinamic({ params }: Props) {
             )}
             <DefalcareFiscala brut={brutEfectiv} rez={rez} regimFiscal={regimFiscal} />
             <p className="source-note">
-              {esteMinimIstoricS1
+              {esteCalculIstoricS1
                 ? <>Calcul istoric pentru funcția de bază, fără tichete sau persoane în întreținere, în regimul aplicabil între 1 ianuarie și 30 iunie 2026. Conform Codului Fiscal, HG 1506/2024 și OUG 89/2025.</>
                 : <>Calcul standard pentru funcția de bază, fără tichete sau persoane în întreținere. Vezi tabelul interactiv de mai sus pentru scenarii personalizate. Conform Codului Fiscal (Legea 227/2015), HG 146/2026 și OUG 89/2025.</>}
             </p>
@@ -370,10 +451,26 @@ export default async function CalculatorDinamic({ params }: Props) {
       )}
 
       <Section>
+          <h2>Calcule salariale apropiate</h2>
+          <p>
+            Compară această valoare cu alte salarii pentru care există semnal real de
+            căutare. Legăturile rămân în lista editorială verificată, fără pagini generate
+            automat pentru fiecare număr posibil.
+          </p>
+          <ul aria-label="Calcule salariale apropiate">
+            {linkuriCalculatoare.map((link) => (
+              <li key={link.href}>
+                <Link href={link.href}>{link.label}</Link>
+              </li>
+            ))}
+          </ul>
+      </Section>
+
+      <Section>
           <h2>Ce trebuie să știi</h2>
           <p>{ctx.insight}</p>
           <p className="source-note">
-            Pentru context legislativ complet, consultă <Link href="/salariu-minim">analiza salariului minim 2026</Link> și <Link href="/salariu-mediu">datele salariale medii</Link>. {esteMinimIstoricS1 ? "Această pagină păstrează regimul fiscal S1 2026." : "Calculul folosește regimul în vigoare din 1 iulie 2026."} Ultima actualizare: 26 iulie 2026.
+            Pentru context legislativ complet, consultă <Link href="/salariu-minim">analiza salariului minim 2026</Link> și <Link href="/salariu-mediu">datele salariale medii</Link>. {esteCalculIstoricS1 ? "Această pagină păstrează regimul fiscal S1 2026." : "Calculul folosește regimul în vigoare din 1 iulie 2026."} Ultima actualizare: 26 iulie 2026.
           </p>
       </Section>
     </>

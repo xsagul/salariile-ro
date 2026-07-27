@@ -83,7 +83,7 @@ const FAQ = [
   },
   {
     q: "Salariul minim sectorul construcții se schimbă?",
-    a: "Nu. HG 146/2026 menționează explicit că nu modifică salariul minim brut pentru sectorul construcțiilor, care rămâne 4.582 lei lunar pe tot parcursul anului 2026.",
+    a: "Nu. HG 146/2026 stabilește minimul general la 4.325 lei de la 1 iulie. Pragul sectorial de 4.582 lei rămâne reglementat distinct prin art. LXIX din OUG 156/2024.",
   },
   {
     q: "Cât este salariul minim în agricultură și industria alimentară din 1 iulie 2026?",
@@ -575,29 +575,17 @@ function CardSectoareNet() {
   );
 }
 
-function CardPutereCumparare() {
+function CardConstructii() {
   return (
-    <div className={`${card} ${strong}`}>
-      <h3 className="text-base font-bold tracking-[-0.01em] text-stone-900">Cât a crescut cu adevărat</h3>
+    <div className={`${card} ${strong} ${links}`}>
+      <h3 className="text-base font-bold tracking-[-0.01em] text-stone-900">Minimul din construcții</h3>
       <p className="mt-2 text-sm leading-normal tracking-[-0.01em] text-stone-600">
-        Pe hârtie, minimul s-a mai mult decât dublat din 2019. Dar între timp au urcat și prețurile, cam{" "}
-        <strong>55%</strong>. După ce scazi scumpirea, puterea de cumpărare a crescut cu aproximativ{" "}
-        <strong>o treime</strong>, nu de două ori.
+        Construcțiile au în 2026 un prag separat de <strong>4.582 lei brut</strong>, adică <strong>27,714 lei/oră</strong>.
+        La calculul standard, netul este 2.739 lei în semestrul I și 2.754 lei în semestrul al II-lea.
       </p>
-      <table className="mt-4 w-full text-sm tabular-nums">
-        <tbody className="[&_td]:py-2">
-          <tr className="border-b border-stone-100">
-            <td className="text-left text-stone-600">Pe hârtie (nominal)</td>
-            <td className="text-right font-medium text-stone-900">+108%</td>
-          </tr>
-          <tr>
-            <td className="text-left text-stone-600">În puterea de cumpărare</td>
-            <td className="text-right font-bold text-stone-900">≈ +35%</td>
-          </tr>
-        </tbody>
-      </table>
       <p className="mt-auto pt-4 text-xs text-stone-500">
-        Brut 2.080 → 4.325 lei. Inflație cumulată 2019–2026 ≈ 55%, estimată din ratele anuale INS.
+        Vezi <Link href="/salariu-minim-constructii-2026">calculul complet pentru salariul minim din construcții</Link>,
+        inclusiv taxele și comparația cu minimul general.
       </p>
     </div>
   );
@@ -831,7 +819,7 @@ export default function SalariuMinimPage() {
                 <div className={`max-w-prose ${articol}`}>
                   <h2>Minimul pe sectoare</h2>
                   <p>
-                    Construcțiile au un salariu minim propriu, <strong>4.582 lei</strong>, neschimbat tot anul, și au rămas
+                    <Link href="/salariu-minim-constructii-2026">Construcțiile au un salariu minim propriu</Link>, <strong>4.582 lei</strong>, neschimbat tot anul, și au rămas
                     singurul sector cu prag distinct: de la 1 iulie 2026, <strong>agricultura și industria alimentară</strong>{" "}
                     au trecut pe minimul general de 4.325 lei, după ce <strong>OUG 29/2026</strong> le-a abrogat nivelul
                     separat (altfel ar fi rămas la 4.050 lei). Iar un muncitor în construcții plătește azi aceleași taxe ca
@@ -858,7 +846,7 @@ export default function SalariuMinimPage() {
               </div>
               <aside className={aside}>
                 <div className="flex h-full flex-col gap-6">
-                  <CardPutereCumparare />
+                  <CardConstructii />
                   <CardUrmatoareaCrestere />
                 </div>
               </aside>

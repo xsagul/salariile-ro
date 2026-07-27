@@ -12,20 +12,20 @@ import { SARBATORI_LEGALE_2026 as HOLIDAYS } from "@/lib/sarbatori";
 // ─── Metadata SEO ────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "Zile libere 2026: calendar și zile lucrătoare",
+  title: "Zile libere 2026: calendarul sărbătorilor legale",
   description:
-    "Calendar zile libere 2026 în România: sărbători legale, zile lucrătoare, ore de lucru, minivacanțe și punți utile pentru concediu.",
+    "Calendar zile libere 2026 în România: datele sărbătorilor legale, weekenduri prelungite, minivacanțe și punți utile pentru concediu.",
   alternates: { canonical: "https://salariile.ro/zile-libere-2026" },
   openGraph: ogPage({
     title: "Zile libere 2026: calendar și sărbători legale",
     description:
-      "Calendar 2026: 250 zile lucrătoare, 115 libere, toate sărbătorile legale și punțile pentru weekend-uri prelungite.",
+      "Calendar 2026 cu datele sărbătorilor legale și punțile pentru weekenduri prelungite.",
     path: "/zile-libere-2026",
   }),
   twitter: twPage({
     title: "Zile libere 2026: calendar și sărbători legale",
     description:
-      "Calendar 2026: 250 zile lucrătoare, 115 libere, toate sărbătorile legale și punțile pentru weekend-uri prelungite.",
+      "Calendar 2026 cu datele sărbătorilor legale și punțile pentru weekenduri prelungite.",
   }),
 };
 
@@ -61,7 +61,6 @@ function buildMonth(m: number) {
 const MONTHS = Array.from({ length: 12 }, (_, m) => buildMonth(m));
 const TOTAL_LUCR = MONTHS.reduce((s, x) => s + x.lucr, 0); // 250
 const TOTAL_LIBERE = 365 - TOTAL_LUCR; // 115
-const TOTAL_ORE = TOTAL_LUCR * 8; // 2000
 
 // Numărări pentru stat-carduri.
 let WEEKEND_DAYS = 0;
@@ -135,7 +134,7 @@ const jsonLd = {
       "@type": "Article",
       headline: "Zile libere 2026 în România: calendar și sărbători legale",
       description:
-        "Calendar 2026: 250 zile lucrătoare, 115 zile libere, sărbătorile legale (Cod Muncii art. 139) și punțile pentru minivacanțe.",
+        "Calendar 2026 cu sărbătorile legale prevăzute de Codul Muncii art. 139 și punțile pentru minivacanțe.",
       author: personSchema,
       publisher: {
         "@type": "Organization",
@@ -189,7 +188,7 @@ export default function ZileLibere2026Page() {
             </p>
             <p className="mt-5 text-base leading-normal tracking-[-0.01em] text-stone-600">
               Calendarul complet al zilelor libere legale din România în 2026: sărbătorile (Codul Muncii art. 139),
-              zilele lucrătoare lună de lună și punțile prin care îți faci minivacanțe.
+              calendarul vizual al anului și punțile prin care îți faci minivacanțe.
             </p>
             <div className="mt-5 border-l-2 border-stone-900 pl-4 text-sm leading-normal tracking-[-0.01em] text-stone-700">
               <p className="font-semibold text-stone-900">Răspuns scurt</p>
@@ -267,47 +266,21 @@ export default function ZileLibere2026Page() {
             </div>
           </div>
 
-          {/* ZILE LUCRĂTOARE PE LUNI — tabel */}
+          {/* ZILE LUCRĂTOARE — trimitere spre pagina dedicată */}
           <div className="mt-12 border-t border-stone-200 pt-10 sm:mt-16 sm:pt-14">
-            <h2 className="text-2xl font-bold tracking-[-0.02em] text-stone-900 sm:text-3xl">Zile lucrătoare 2026, lună de lună</h2>
-            <p className="mt-3 max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600">
-              Numărul de zile lucrătoare și ore de lucru (la program de 8 ore/zi) pentru fiecare lună din 2026. Util la
-              calculul tarifului orar, al contractelor part-time și al normelor de lucru. Pentru varianta strict tabelară,
-              vezi pagina dedicată pentru <Link href="/zile-lucratoare-2026" className="font-medium text-stone-900 underline underline-offset-2 hover:text-stone-600">zile lucrătoare 2026</Link>.
-            </p>
-            <div className={`mt-6 ${card}`}>
-              <div className="overflow-x-auto">
-              <table className="w-full text-sm tabular-nums">
-                <thead>
-                  <tr className="border-b border-stone-300 text-xs font-medium uppercase tracking-wide text-stone-500">
-                    <th scope="col" className="pb-2 text-left">Luna</th>
-                    <th scope="col" className="pb-2 text-right">Zile lucrătoare</th>
-                    <th scope="col" className="pb-2 text-right">Ore de lucru</th>
-                    <th scope="col" className="pb-2 text-right">Zile libere</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {MONTHS.map((mo) => (
-                    <tr key={mo.nume} className="border-b border-stone-100 last:border-b-0">
-                      <th scope="row" className="py-2 text-left font-normal text-stone-700">{mo.nume}</th>
-                      <td className="py-2 text-right font-medium text-stone-900">{mo.lucr}</td>
-                      <td className="py-2 text-right text-stone-600">{mo.lucr * 8}</td>
-                      <td className="py-2 text-right text-stone-600">{mo.libere}</td>
-                    </tr>
-                  ))}
-                  <tr className="[&_td]:pt-3 [&_td]:font-bold [&_td]:text-stone-900 [&_th]:pt-3 [&_th]:font-bold [&_th]:text-stone-900">
-                    <th scope="row" className="text-left">Total 2026</th>
-                    <td className="text-right">{TOTAL_LUCR}</td>
-                    <td className="text-right">{TOTAL_ORE.toLocaleString("ro-RO")}</td>
-                    <td className="text-right">{TOTAL_LIBERE}</td>
-                  </tr>
-                </tbody>
-              </table>
-              </div>
-              <p className="mt-4 text-xs text-stone-500">
-                Zilele lucrătoare exclud weekendurile și sărbătorile legale care cad în zile lucrătoare. Iulie are cele mai
-                multe (23), ianuarie cele mai puține (18).
+            <div className={`${card} max-w-3xl`}>
+              <p className="text-xs font-medium uppercase tracking-wide text-stone-500">Tabel separat</p>
+              <h2 className="mt-2 text-2xl font-bold tracking-[-0.02em] text-stone-900">Ai nevoie de zilele și orele lucrătoare pe lună?</h2>
+              <p className="mt-3 max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600">
+                Pagina dedicată centralizează pentru fiecare lună numărul de zile lucrătoare și orele la norme de 8, 6 și 4 ore,
+                plus totalurile anuale. Aici păstrăm calendarul sărbătorilor și al minivacanțelor.
               </p>
+              <Link
+                href="/zile-lucratoare-2026"
+                className="mt-4 inline-flex min-h-11 items-center rounded border border-stone-900 bg-stone-900 px-5 text-sm font-medium text-white transition-colors hover:bg-stone-700"
+              >
+                Vezi tabelul zilelor lucrătoare 2026
+              </Link>
             </div>
           </div>
 
@@ -380,6 +353,7 @@ export default function ZileLibere2026Page() {
                 </ul>
                 <h3 className="mb-3 mt-6 text-xs font-medium text-stone-500">Pagini conexe</h3>
                 <ul className={`flex flex-col gap-2 text-sm ${links}`}>
+                  <li><Link href="/zile-lucratoare-2026">Zile și ore lucrătoare 2026</Link></li>
                   <li><Link href="/salariu-minim">Salariul minim 2026</Link></li>
                   <li><Link href="/salariu-mediu">Salariul mediu pe economie</Link></li>
                   <li><Link href="/">Calculator salariu net</Link></li>

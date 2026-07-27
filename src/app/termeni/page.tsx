@@ -65,7 +65,7 @@ export default function TermeniPage() {
         <Eyebrow>ÎN VIGOARE: 11 MAI 2026</Eyebrow>
       </Hero>
 
-      <main>
+      <div>
         <Section>
             <h2>1. Acceptarea termenilor</h2>
             <p>
@@ -159,7 +159,7 @@ export default function TermeniPage() {
             </p>
             <p className="source-note">Ultima actualizare: 11 mai 2026.</p>
         </Section>
-      </main>
+      </div>
     </>
   );
 }

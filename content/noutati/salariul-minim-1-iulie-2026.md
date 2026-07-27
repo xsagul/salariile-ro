@@ -28,7 +28,7 @@ Deci netul crește cu **125 de lei pe lună**. Mai puțin decât te-ai aștepta 
 
 Două motive, ambele matematice, nu politice:
 
-1. **Taxele se aplică pe un brut mai mare.** CAS (25%), CASS (10%) și impozitul (10%) se calculează la 4.325 lei, nu la 4.050 lei.
+1. **Taxele se aplică pe o bază mai mare.** Pentru salariatul eligibil, CAS și CASS se calculează din iulie la **4.125 lei** (4.325 lei brut minus suma netaxabilă de 200 lei), față de baza de 3.750 lei din prima jumătate a anului. Baza impozitului se determină apoi după scăderea contribuțiilor și a deducerii personale.
 2. **Facilitatea fiscală scade de la 300 la 200 de lei.** OUG 89/2025 scutește complet de taxe o sumă fixă din salariul minim, dar suma asta se micșorează la 1 iulie. Practic, statul îți dă o majorare cu o mână și retrage o parte din scutire cu cealaltă.
 
 Rezultatul: din cei 275 de lei brut în plus, la angajat ajung 125 de lei. Restul se duce în contribuții și impozit.
@@ -47,7 +47,7 @@ O schimbare intrată în vigoare tot la 1 iulie, mai puțin mediatizată: sector
 
 ## Ce nu se schimbă la 1 iulie
 
-- **Sectorul construcțiilor.** HG 146/2026 spune explicit că minimul pentru construcții rămâne **4.582 lei** pe tot anul 2026. După alinierea agroalimentarului, construcțiile sunt singurul sector rămas cu prag propriu.
+- **Sectorul construcțiilor.** HG 146/2026 stabilește noul minim general, iar pragul distinct din construcții rămâne prevăzut la art. LXIX din OUG 156/2024: **4.582 lei**. [Calculul complet pentru construcții](/salariu-minim-constructii-2026) arată taxele și netul în ambele semestre. După alinierea agroalimentarului, construcțiile sunt singurul sector rămas cu prag propriu.
 - **Modul de calcul al taxelor.** Procentele CAS, CASS, impozit și CAM rămân aceleași; se schimbă doar baza și facilitatea.
 - **Regula celor 2 ani.** Salariul de bază minim poate fi aplicat aceluiași salariat cel mult 24 de luni de la încheierea contractului. După termen, salariul de bază plătit trebuie să fie efectiv superior minimului (Codul Muncii, art. 164 alin. (2¹)); nu este suficientă doar inițierea unei negocieri. Majorarea din iulie nu resetează termenul.
 

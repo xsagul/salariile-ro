@@ -52,4 +52,35 @@ assert.ok(minimS2, "Calculul pentru minimul curent trebuie să producă rezultat
 assert.equal(minimS2.net, 2699, "API-ul curent trebuie să rămână pe grila S2");
 assert.equal(minimS2.facilitate, 200, "Facilitatea curentă trebuie să rămână 200 lei");
 
+const constructiiS1 = calculStandardCuRegim(4582, "2026-S1");
+const constructiiS2 = calculStandardCuRegim(4582, "2026-S2");
+assert.ok(constructiiS1 && constructiiS2, "Calculul minimului din construcții trebuie să producă rezultate");
+assert.deepEqual(
+  {
+    netS1: constructiiS1.net,
+    netS2: constructiiS2.net,
+    cas: constructiiS2.cas,
+    cass: constructiiS2.cass,
+    impozitS1: constructiiS1.impozit,
+    impozitS2: constructiiS2.impozit,
+    deducereS1: constructiiS1.deducerePersonala,
+    deducereS2: constructiiS2.deducerePersonala,
+    facilitateS1: constructiiS1.facilitate,
+    facilitateS2: constructiiS2.facilitate,
+  },
+  {
+    netS1: 2739,
+    netS2: 2754,
+    cas: 1146,
+    cass: 458,
+    impozitS1: 239,
+    impozitS2: 224,
+    deducereS1: 587,
+    deducereS2: 735,
+    facilitateS1: 0,
+    facilitateS2: 0,
+  },
+  "4.582 lei trebuie calculat fără facilitate generală, cu deducerea fiecărui semestru",
+);
+
 console.log("OK: regresii fiscale S1/S2 2026");

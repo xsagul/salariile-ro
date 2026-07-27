@@ -69,6 +69,15 @@ const homepageJsonLd = {
     },
     personSchema,
     {
+      "@type": "WebSite",
+      "@id": "https://salariile.ro/#website",
+      url: "https://salariile.ro/",
+      name: "Salariile.ro",
+      alternateName: "Calculator salariu net România",
+      inLanguage: "ro-RO",
+      publisher: { "@id": "https://salariile.ro/#organization" },
+    },
+    {
       "@type": "WebPage",
       "@id": "https://salariile.ro/#webpage",
       url: "https://salariile.ro/",
@@ -77,6 +86,7 @@ const homepageJsonLd = {
       // Aceeași dată ca lastModified din sitemap și ca „Ultima actualizare" vizibilă —
       // consistența între bylineDate / sitemap / schema e un semnal de încredere.
       dateModified: PAGE_LAST_MODIFIED["/"].toISOString().slice(0, 10),
+      isPartOf: { "@id": "https://salariile.ro/#website" },
       publisher: { "@id": "https://salariile.ro/#organization" },
     },
     {

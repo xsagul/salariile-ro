@@ -9,26 +9,91 @@
 // - Append JSON-LD ca code block la final
 // - Return cu Content-Type: text/markdown + x-markdown-tokens + Content-Signal
 //
-// Apelat intern de middleware când request-ul are Accept: text/markdown.
-// Nu se expune public (nu e linkat); rolul lui e content negotiation.
+// Apelat de middleware când request-ul are Accept: text/markdown. Endpointul
+// rămâne accesibil direct, dar acceptă strict allowlist-ul URL-urilor publice.
 
 import * as cheerio from "cheerio";
 import TurndownService from "turndown";
 // @ts-expect-error — turndown-plugin-gfm nu are tipuri oficiale
 import { gfm } from "turndown-plugin-gfm";
+import {
+  PAGE_LAST_MODIFIED,
+  SITE_URL,
+  allCalculatorSlugs,
+} from "@/lib/seo";
+import { getAllArticles } from "@/lib/noutati";
 
 export const dynamic = "force-dynamic";
 
 type Params = { path?: string[] };
+
+const MAX_HTML_BYTES = 2 * 1024 * 1024;
+const FETCH_TIMEOUT_MS = 8_000;
+
+const ALLOWED_MARKDOWN_PATHS = new Set([
+  ...Object.keys(PAGE_LAST_MODIFIED),
+  ...getAllArticles().map((article) => `/noutati/${article.slug}`),
+  ...allCalculatorSlugs().map((slug) => `/calculator/${slug}`),
+]);
+
+function sourceOrigin(requestUrl: URL): string {
+  const hostname = requestUrl.hostname.toLowerCase();
+  const isLocal = hostname === "localhost" || hostname === "127.0.0.1" || hostname === "::1";
+  const isVercelPreview = hostname.endsWith(".vercel.app");
+  return isLocal || isVercelPreview ? requestUrl.origin : SITE_URL;
+}
+
+async function readHtmlWithLimit(response: Response): Promise<string> {
+  const declaredLength = Number(response.headers.get("content-length") || 0);
+  if (declaredLength > MAX_HTML_BYTES) {
+    throw new Error("SOURCE_TOO_LARGE");
+  }
+
+  if (!response.body) return "";
+
+  const reader = response.body.getReader();
+  const chunks: Uint8Array[] = [];
+  let bytes = 0;
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    bytes += value.byteLength;
+    if (bytes > MAX_HTML_BYTES) {
+      await reader.cancel();
+      throw new Error("SOURCE_TOO_LARGE");
+    }
+    chunks.push(value);
+  }
+
+  const body = new Uint8Array(bytes);
+  let offset = 0;
+  for (const chunk of chunks) {
+    body.set(chunk, offset);
+    offset += chunk.byteLength;
+  }
+  return new TextDecoder().decode(body);
+}
 
 export async function GET(
   req: Request,
   { params }: { params: Promise<Params> }
 ) {
   const { path = [] } = await params;
-  const pathStr = path.join("/");
+  const pathname = path.length ? `/${path.join("/")}` : "/";
+
+  if (!ALLOWED_MARKDOWN_PATHS.has(pathname)) {
+    return new Response("Page not found", {
+      status: 404,
+      headers: {
+        "Content-Type": "text/plain; charset=utf-8",
+        "X-Robots-Tag": "noindex, nofollow",
+      },
+    });
+  }
+
   const url = new URL(req.url);
-  const targetUrl = `${url.protocol}//${url.host}/${pathStr}`;
+  const targetUrl = new URL(pathname, sourceOrigin(url)).toString();
 
   // Fetch HTML-ul propriu fără Accept: text/markdown → middleware nu rewrite-uiește,
   // evităm loop-ul infinit.
@@ -36,19 +101,28 @@ export async function GET(
   try {
     const res = await fetch(targetUrl, {
       headers: { Accept: "text/html" },
+      redirect: "error",
+      signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
       // Cache 1h în Next/Vercel CDN — pentru un site cu conținut rar schimbat e OK.
       next: { revalidate: 3600 },
     });
     if (!res.ok) {
-      return new Response(`Page not found: /${pathStr}`, {
-        status: res.status,
+        return new Response(`Page not found: ${pathname}`, {
+          status: res.status,
+          headers: { "Content-Type": "text/plain; charset=utf-8" },
+        });
+      }
+    const contentType = res.headers.get("content-type") || "";
+    if (!contentType.toLowerCase().includes("text/html")) {
+      return new Response("Source is not HTML", {
+        status: 415,
         headers: { "Content-Type": "text/plain; charset=utf-8" },
       });
     }
-    html = await res.text();
-  } catch (err) {
-    return new Response(`Failed to fetch source HTML: ${String(err)}`, {
-      status: 500,
+    html = await readHtmlWithLimit(res);
+  } catch {
+    return new Response("Failed to fetch source HTML", {
+      status: 502,
       headers: { "Content-Type": "text/plain; charset=utf-8" },
     });
   }

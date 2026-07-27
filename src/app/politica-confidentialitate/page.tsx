@@ -71,7 +71,7 @@ export default function PoliticaConfidentialitatePage() {
         <Eyebrow>ÎN VIGOARE: 11 MAI 2026 · ÎNTREȚINUT INDEPENDENT · ZERO ANUNȚURI</Eyebrow>
       </Hero>
 
-      <main>
+      <div>
         <Section>
             <h2>1. Operatorul de date</h2>
             <p>
@@ -191,7 +191,7 @@ export default function PoliticaConfidentialitatePage() {
             </p>
             <p className="source-note">Ultima actualizare: 11 mai 2026.</p>
         </Section>
-      </main>
+      </div>
     </>
   );
 }

@@ -18,6 +18,7 @@ const NAV: Item[] = [
     label: "Ghiduri",
     children: [
       { href: "/salariu-minim", label: "Salariu minim" },
+      { href: "/salariu-minim-constructii-2026", label: "Minim construcții" },
       { href: "/salariu-mediu", label: "Salariu mediu" },
       { href: "/deducere-personala-2026", label: "Deducere personală" },
       { href: "/zile-libere-2026", label: "Zile libere 2026" },

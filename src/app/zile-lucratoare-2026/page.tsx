@@ -133,7 +133,7 @@ export default function ZileLucratoare2026Page() {
         <Eyebrow>Calendar luni-vineri · sărbători legale scăzute</Eyebrow>
       </Hero>
 
-      <main>
+      <div>
         <Section wide>
           <div className="rounded-md border border-stone-300 bg-surface p-5 shadow-soft sm:p-6">
             <p className="text-xs font-medium uppercase tracking-wide text-stone-500">Răspuns rapid pentru luna curentă</p>
@@ -266,7 +266,7 @@ export default function ZileLucratoare2026Page() {
           </ul>
           <p className="source-note">Pagina actualizată: 15 iulie 2026.</p>
         </Section>
-      </main>
+      </div>
     </>
   );
 }

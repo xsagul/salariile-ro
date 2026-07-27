@@ -17,6 +17,7 @@ const STATIC_ENTRIES: {
 }[] = [
   { path: "/", priority: 1, changeFrequency: "monthly" },
   { path: "/salariu-minim", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/salariu-minim-constructii-2026", priority: 0.85, changeFrequency: "monthly" },
   { path: "/calculator-pfa", priority: 0.8, changeFrequency: "monthly" },
   { path: "/salariu-mediu", priority: 0.9, changeFrequency: "monthly" },
   { path: "/deducere-personala-2026", priority: 0.8, changeFrequency: "monthly" },

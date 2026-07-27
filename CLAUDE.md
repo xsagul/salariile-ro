@@ -4,7 +4,7 @@
 
 ## Despre proiect
 
-salariile.ro este un portal despre salarii și fiscalitate în România. Scop: calcul transparent salariu brut/net, informații fiscale actualizate, fără reclame, fără cont. Proiect independent, dezvoltat de Știuriuc Sorin-Marian, cu obiectiv de tranziție profesională către front-end.
+salariile.ro este un portal despre salarii și fiscalitate în România. Scop: calcul transparent salariu brut/net și informații fiscale actualizate, în prezent fără reclame și fără cont. Modelul planificat este trafic organic și, numai după pragurile de conformitate/performance, monetizare prin AdSense. Proiect independent, dezvoltat de Știuriuc Sorin-Marian, cu obiectiv de tranziție profesională către front-end.
 
 **Live:** https://salariile.ro
 **Repo:** https://github.com/xsagul/salariile-ro (public)
@@ -21,6 +21,7 @@ salariile.ro este un portal despre salarii și fiscalitate în România. Scop: c
 - Calculator salariu net/brut (homepage actual)
 - Calculator PFA — `/calculator-pfa`
 - Salariu minim — `/salariu-minim`
+- Salariu minim construcții — `/salariu-minim-constructii-2026`
 - Salariu mediu — `/salariu-mediu`
 - Zile libere 2026 — `/zile-libere-2026`
 - Noutăți (secțiune editorială, articole) — `/noutati`
@@ -30,24 +31,33 @@ salariile.ro este un portal despre salarii și fiscalitate în România. Scop: c
 
 - Salariu minim brut: **4.325 lei din 1 iulie 2026** (HG 146/2026); 4.050 lei în prima jumătate a anului
 - Salariu minim net: 2.699 lei (facilitate fiscală 200 lei, OUG 89/2025)
-- Salariu mediu brut: 9.192 lei; net: 5.377 lei
+- Indicatorul BASS 2026: 9.192 lei brut; net standard estimat: 5.377 lei. Nu se etichetează drept ultimul salariu mediu INS.
+- Ultimul câștig salarial mediu publicat de INS (mai 2026): 9.483 lei brut; 5.684 lei net. Se actualizează lunar.
 - CAS (pensie) 25%, CASS (sănătate) 10%, impozit venit 10%, CAM (angajator) 2,25%
 - Plafon deducere personală: 6.325 lei
 - Facilitățile IT/construcții ELIMINATE din 1 ian 2025 (OUG 156/2024)
 - Surse oficiale: legislatie.just.ro (HG 146/2026, OUG 89/2025, OUG 156/2024, Codul Fiscal, Codul Muncii)
 
-## Starea SEO (referință)
+## Starea SEO (referință verificată la 26 iulie 2026)
 
-- GSC: ~10.700 impresii, 98 clickuri
-- Poziția 1.0–1.1 pentru query-uri cu volum mare, dar CTR mic din cauza featured snippets Google
-- Paginile de calculator (tranzacționale) au CTR mai sănătos decât homepage-ul
+- GSC, ultimele 28 zile complete disponibile (27 iunie–24 iulie): 181.049 impresii, 2.204 clickuri, CTR 1,22%
+- Query-urile generice cu volum mare sunt în principal pe pozițiile 6–10, nu 1.0–1.1; plafonul actual este CTR-ul și autoritatea
+- P0 a fost publicat după ultima zi GSC disponibilă, deci efectul lui nu este încă măsurabil
+- Paginile de calculator tranzacționale tind să aibă CTR mai sănătos decât paginile pur informative
 - Tehnic & on-page: nivel A/A+ conform tool-urilor de audit
 - Off-site (backlinkuri, autoritate de domeniu/DR): nivel F — zona cu cel mai mare potențial de creștere
-- GSC și Google Analytics sunt conectate și configurate
+- GSC este conectat. Proiectul folosește Vercel Analytics, nu Google Analytics.
+
+## Roadmap activ
+
+- Planul verificat pe 90 de zile este în `ROADMAP-90-ZILE.md`; baseline-ul pre-P0 se termină la 24 iulie 2026
+- Snapshotul reproductibil se rulează cu `npm run gsc:weekly`; nu se atribuie efecte P0/P1 înainte de date post-deploy complete
+- Rutele `/calculator/[valoare]` sunt allowlist-only. O valoare nouă intră în `src/lib/seo.ts` numai cu cerere demonstrată sau rol fiscal distinct și trebuie acoperită de `scripts/test-rendered.mts`
+- Homepage-ul rămâne owner-ul calculatorului generic până la îndeplinirea gate-ului de migrare din roadmap
 
 ## Deadline critic
 
-**1 iulie 2026** — schimbarea salariului minim (4.050 → 4.325 lei). Fereastră SEO importantă. Conținutul relevant trebuie publicat, indexat și maturat cu 2-3 săptămâni înainte (deci înainte de ~15 iunie) ca să rankeze la timp.
+**1 iulie 2026** — schimbarea salariului minim (4.050 → 4.325 lei) a intrat în vigoare. Fereastra de vârf a produs creștere puternică; după P0 se măsoară normalizarea pe clustere și nu se atribuie rezultate înainte de 14–28 zile complete.
 
 ## Reguli de lucru
 
@@ -57,11 +67,11 @@ salariile.ro este un portal despre salarii și fiscalitate în România. Scop: c
 - **Backlinkuri:** prioritizează linkable assets pe site peste outreach manual. NU cumpăra linkuri, nu folosi tactici care riscă penalizare Google.
 - **Canale de distribuție existente (active):** dev.to (`dev.to/sorin_stiuriuc`), LinkedIn, Reddit (r/RoMunca), GitHub.
 
-## Direcție de arhitectură în plan (NU înainte de 1 iulie)
+## Direcție de arhitectură în plan (după stabilizarea valului din iulie)
 
 Există un plan de mutare a calculatorului de pe homepage într-o structură de hub cu pagini dedicate, homepage-ul devenind pagină editorială / vizualizare de date.
 
-**IMPORTANT — timing:** această migrare NU se face înainte de 1 iulie. Până atunci, calculatorul rămâne exact unde e (rankează pe poziția 1.0–1.1 pentru query-uri cu volum mare) și nu se atinge structura paginilor care rankează. O migrare de arhitectură chiar înainte de evenimentul de trafic din iulie ar declanșa reindexare și reevaluare Google, cu risc de pierdere temporară de poziții fix în fereastra critică — exact momentul pe care vreau să-l captez. Migrarea se planifică și se execută DUPĂ ce trece valul (iulie-august), când o fluctuație temporară nu mai costă. Până pe 1 iulie: zero schimbări structurale pe paginile care rankează; doar adăugări (articole noi, optimizări non-distructive) și pregătire.
+**IMPORTANT — timing:** calculatorul rămâne pe homepage până când există minimum două ferestre post-P0 comparabile de câte 28 zile. Migrarea cere hartă query → URL, redirecturi/canonice, măsurare separată și criterii de rollback; până atunci facem doar adăugări și optimizări non-distructive.
 
 ## Verificare
 

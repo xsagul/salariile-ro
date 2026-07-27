@@ -60,16 +60,17 @@ export const PAGE_LAST_MODIFIED: Record<string, Date> = {
   // Data intrării în vigoare a unui regim fiscal rămâne descrisă separat în pagină.
   "/": new Date("2026-07-26T00:00:00.000Z"),
   "/salariu-minim": new Date("2026-07-26T00:00:00.000Z"),
+  "/salariu-minim-constructii-2026": new Date("2026-07-26T00:00:00.000Z"),
   "/calculator-pfa": new Date("2026-07-26T00:00:00.000Z"),
   "/salariu-mediu": new Date("2026-07-26T00:00:00.000Z"),
   "/metodologie": new Date("2026-07-26T00:00:00.000Z"),
   "/deducere-personala-2026": new Date("2026-07-06T00:00:00.000Z"),
-  "/zile-libere-2026": new Date("2026-07-06T00:00:00.000Z"),
+  "/zile-libere-2026": new Date("2026-07-26T00:00:00.000Z"),
   "/zile-lucratoare-2026": new Date("2026-07-15T00:00:00.000Z"),
   "/fluturas-salariu": new Date("2026-07-26T00:00:00.000Z"),
-  "/widget": new Date("2026-07-05T00:00:00.000Z"),
-  "/noutati": new Date("2026-06-12T00:00:00.000Z"),
-  "/despre": new Date("2026-04-01T00:00:00.000Z"),
+  "/widget": new Date("2026-07-26T00:00:00.000Z"),
+  "/noutati": new Date("2026-07-26T00:00:00.000Z"),
+  "/despre": new Date("2026-07-26T00:00:00.000Z"),
   "/contact": new Date("2026-04-01T00:00:00.000Z"),
   "/politica-confidentialitate": new Date("2026-04-01T00:00:00.000Z"),
   "/cookies": new Date("2026-04-01T00:00:00.000Z"),
@@ -77,17 +78,19 @@ export const PAGE_LAST_MODIFIED: Record<string, Date> = {
 };
 
 /** Valori brute indexate (net din brut) — aliniat cu sitemap + Ahrefs/GSC.
- *  Extins 2 iul 2026 pe baza studiului de keywords (GSC impressions + gap
- *  Seobility): competitorul #1 acoperă intervalul din 100 în 100; noi doar
- *  valorile cu semnal real de căutare, ca să nu riscăm thin content. */
+ *  Extins la 26 iulie 2026 pe baza GSC. Păstrăm numai valorile cu semnal real
+ *  sau rol fiscal distinct, ca să evităm pagini subțiri și crawl-space infinit. */
 export const CALCULATOR_BRUT_VALUES = [
-  4050, 4325, 4400, 4500, 4600, 4700, 4800, 4900, 5000, 5200, 5500, 5800,
-  6000, 6200, 6500, 6800, 7000, 7200, 7350, 7500, 8000, 8500, 9000, 9500,
-  10000, 12000,
+  4050, 4325, 4400, 4500, 4582, 4600, 4700, 4800, 4900, 5000, 5200, 5500,
+  5800, 6000, 6200, 6500, 6800, 7000, 7200, 7350, 7500, 8000, 8500, 9000,
+  9500, 10000, 12000, 20000,
 ] as const;
 
-/** Valori net indexate (brut din net) — doar cele cu semnal de căutare. */
-export const CALCULATOR_NET_VALUES = [2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000] as const;
+/** Valori net indexate (brut din net) — doar cele cu semnal de căutare.
+ *  2.574 lei este netul standard istoric al minimului de 4.050 lei din S1 2026. */
+export const CALCULATOR_NET_VALUES = [
+  2500, 2574, 2700, 3000, 3200, 3500, 4000, 4500, 5000, 5500, 6000, 7000,
+] as const;
 
 export function calculatorSlugBrut(v: number): string {
   return `calcul-salariu-net-${v}-brut`;

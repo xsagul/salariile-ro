@@ -4,7 +4,7 @@
 
 ## Despre proiect
 
-salariile.ro este un portal despre salarii și fiscalitate în România. Scop: calcul transparent salariu brut/net, informații fiscale actualizate, fără reclame, fără cont. Proiect independent, dezvoltat de Știuriuc Sorin-Marian, cu obiectiv de tranziție profesională către front-end.
+salariile.ro este un portal despre salarii și fiscalitate în România. Scop: calcul transparent salariu brut/net și informații fiscale actualizate, în prezent fără reclame și fără cont. Modelul planificat este trafic organic și, numai după pragurile de conformitate/performance, monetizare prin AdSense. Proiect independent, dezvoltat de Știuriuc Sorin-Marian, cu obiectiv de tranziție profesională către front-end.
 
 **Live:** https://salariile.ro
 **Repo:** https://github.com/xsagul/salariile-ro (public)
@@ -21,6 +21,7 @@ salariile.ro este un portal despre salarii și fiscalitate în România. Scop: c
 - Calculator salariu net/brut (homepage actual)
 - Calculator PFA — `/calculator-pfa`
 - Salariu minim — `/salariu-minim`
+- Salariu minim construcții — `/salariu-minim-constructii-2026`
 - Salariu mediu — `/salariu-mediu`
 - Zile libere 2026 — `/zile-libere-2026`
 - Noutăți (secțiune editorială, articole) — `/noutati`
@@ -46,6 +47,13 @@ salariile.ro este un portal despre salarii și fiscalitate în România. Scop: c
 - Tehnic & on-page: nivel A/A+ conform tool-urilor de audit
 - Off-site (backlinkuri, autoritate de domeniu/DR): nivel F — zona cu cel mai mare potențial de creștere
 - GSC este conectat și verificat. În cod există Vercel Analytics, nu Google Analytics; politica de confidențialitate spune explicit că GA nu este folosit
+
+## Roadmap activ
+
+- Planul verificat pe 90 de zile este în `ROADMAP-90-ZILE.md`; baseline-ul pre-P0 se termină la 24 iulie 2026
+- Snapshotul reproductibil se rulează cu `npm run gsc:weekly`; nu se atribuie efecte P0/P1 înainte de date post-deploy complete
+- Rutele `/calculator/[valoare]` sunt allowlist-only. O valoare nouă intră în `src/lib/seo.ts` numai cu cerere demonstrată sau rol fiscal distinct și trebuie acoperită de `scripts/test-rendered.mts`
+- Homepage-ul rămâne owner-ul calculatorului generic până la îndeplinirea gate-ului de migrare din roadmap
 
 ## Deadline critic
 

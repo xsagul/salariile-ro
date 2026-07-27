@@ -22,7 +22,7 @@ export default function NotFound() {
         </Lead>
       </Hero>
 
-      <main>
+      <div>
         <Section>
             <h2>Pagini frecvent accesate</h2>
             <ul>
@@ -50,7 +50,7 @@ export default function NotFound() {
               Toate linkurile interne sunt verificate, dar pot apărea erori. Dacă ai ajuns la această pagină dintr-un link de pe salariile.ro (nu dintr-un link extern sau o căutare Google veche), te rog să-mi scrii la adresa de pe pagina de <Link href="/contact">contact</Link> cu URL-ul exact unde ai dat click, iar eu corectez problema rapid.
             </p>
         </Section>
-      </main>
+      </div>
     </>
   );
 }
