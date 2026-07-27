@@ -2,6 +2,22 @@
 
 Ultima actualizare: 26 iulie 2026
 
+## P1 SEO, securitate si plan 90 zile - 26 iulie 2026
+
+Status: implementat, verificat, comis in `e168372` si publicat pe site la 26 iulie 2026.
+
+- Baseline-ul GSC folosit pentru decizii este ultima fereastra completa, 27 iunie-24 iulie 2026: 2.204 clickuri, 181.049 impresii, CTR 1,22% si pozitie medie 7,77. Fata de cele 28 de zile anterioare, clickurile au crescut cu 403,2%, iar impresiile cu 397,3%; proiectul nu este in stagnare. Datele se opresc inaintea deploy-urilor P0/P1, deci efectul lor nu este inca masurabil.
+- Creat `ROADMAP-90-ZILE.md`, cu matrice intentie-competitor-URL, sprinturi, KPI base/stretch, praguri de rollback, calendar de masurare, gate pentru migrarea homepage-ului si gate separat pentru AdSense. Competitorii sunt folositi ca benchmark intern, nu introdusi artificial pe fiecare pagina.
+- Creat dashboard-ul reproductibil `npm run gsc:weekly -- --end=YYYY-MM-DD`; snapshoturile de control post-deploy sunt stabilite pentru 4 august si 25 august 2026.
+- Inchis spatiul programmatic la 40 de pagini salariale validate prin date de cautare. URL-urile arbitrare si variantele cu zerouri initiale raspund 404. Pagina `2.574 net` foloseste corect regimul istoric S1 si inverseaza la 4.050 lei brut; fiecare pagina valida are legaturi catre vecini si sensul opus de calcul.
+- Publicata pagina `/salariu-minim-constructii-2026`: 4.582 lei brut, 27,714 lei/ora, net standard 2.739 lei in S1 si 2.754 lei in S2, cu facilitate 0, comparatie cu minimul general, surse oficiale si JSON-LD Article/Breadcrumb/FAQ.
+- Corectate afirmatii editoriale neverificabile sau imprecise in paginile despre salariul minim, salariul mediu, fluturas, widget, zile libere si despre proiect. HG 146/2026 este descrisa exact ca act pentru minimul general; pragul din constructii are temei separat in OUG 156/2024, art. LXIX.
+- Intarit endpointul Markdown cu allowlist, origine controlata, redirect blocat, timeout, validare HTML si limita de 2 MB. Middleware-ul exclude API/assets, iar asset-urile publice fara hash nu mai primesc cache `immutable` de un an.
+- Actualizat Next.js la 16.2.12 si dependentele de productie; `npm audit --omit=dev` raporteaza 0 vulnerabilitati. Auditul complet mai semnaleaza numai lantul dev-only `brace-expansion` din pluginurile ESLint, fara o actualizare compatibila cu ESLint 9 in acest moment.
+- Verificare locala: ESLint, testele fiscale si PFA, TypeScript, build Next.js 16.2.12 si `npm run test:rendered` trecute. Testul rendered a verificat 63 de URL-uri, 63 de blocuri JSON-LD, un singur H1/main, canonical, allowlist, legaturi interne, Markdown si cache.
+- Verificare dupa deploy: crawl live 63/63 URL-uri cu HTTP 200, exact un H1, canonical corect si JSON-LD; pagina constructii si calculul istoric 2.574 net confirmate in browser fara erori de consola; URL-urile `5551 brut` si `00004325 brut` raspund 404; Markdown raspunde `text/markdown`; endpointul direct off-list raspunde 404.
+- Distribuire tehnica: sitemap-ul a fost retrimis si acceptat de Google Search Console; IndexNow a acceptat toate cele 63 de URL-uri cu HTTP 200.
+
 ## P0 fiscal, PFA si continut - 26 iulie 2026
 
 Status: implementat, verificat, comis in `d5d022d` si publicat pe site la 26 iulie 2026.
