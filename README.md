@@ -43,3 +43,9 @@ Sursele principale sunt actele publicate pe `legislatie.just.ro`, datele INS si 
 Proiect independent dezvoltat de Stiuriuc Sorin-Marian.
 
 Live: [https://salariile.ro](https://salariile.ro)
+
+## Licență
+
+Codul software original este open-source sub [Apache License 2.0](LICENSE). Licența este permisivă, include un grant explicit de brevete și nu acordă drepturi asupra numelui, domeniului, logo-ului sau identității `salariile.ro`.
+
+Textele editoriale, materialele vizuale și brandul nu sunt incluse automat în licența software. Delimitarea completă dintre cod, conținut, date și identitate este documentată în [LICENSING.md](LICENSING.md).

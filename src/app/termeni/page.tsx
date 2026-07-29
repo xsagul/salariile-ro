@@ -41,7 +41,7 @@ const jsonLd = {
         "Termenii de utilizare a salariile.ro: caracter informativ al conținutului, limitări de răspundere, drepturi de autor, soluționare litigii.",
       url: "https://salariile.ro/termeni",
       inLanguage: "ro-RO",
-      dateModified: "2026-05-11",
+      dateModified: "2026-07-29",
       isPartOf: {
         "@type": "WebSite",
         name: "Salariile.ro",
@@ -62,7 +62,7 @@ export default function TermeniPage() {
         <Lead>
           Prin accesarea și utilizarea salariile.ro accepți termenii de mai jos. Te rugăm să citești această pagină înainte de a folosi calculatorul sau informațiile publicate.
         </Lead>
-        <Eyebrow>ÎN VIGOARE: 11 MAI 2026</Eyebrow>
+        <Eyebrow>ÎN VIGOARE: 29 IULIE 2026</Eyebrow>
       </Hero>
 
       <div>
@@ -118,10 +118,13 @@ export default function TermeniPage() {
         <Section>
             <h2>5. Drepturi de autor</h2>
             <p>
-              Conținutul editorial al site-ului (textele explicative, structura informațiilor, designul, codul sursă) este proprietatea operatorului și este protejat de Legea 8/1996 privind dreptul de autor.
+              Conținutul editorial al site-ului (textele explicative, structura informațiilor și materialele vizuale originale) este proprietatea operatorului și este protejat de Legea 8/1996 privind dreptul de autor.
             </p>
             <p>
               Utilizarea informațiilor publicate este permisă gratuit pentru uz personal (calcul propriu, informare, planificare individuală). Republicarea integrală a articolelor sau preluarea structurii editoriale fără permisiune nu este permisă. Pentru cereri de utilizare extinsă (citare în publicații, integrare educațională, reproducere în alte medii), scrie la adresa de pe pagina de <Link href="/contact">contact</Link>.
+            </p>
+            <p>
+              Codul software original publicat în repository-ul GitHub al proiectului este disponibil separat sub Apache License 2.0, în limitele descrise în fișierul <code>LICENSING.md</code>. Licența software nu include automat textele editoriale, materialele vizuale, numele, domeniul, logo-ul sau identitatea salariile.ro.
             </p>
             <p>
               Cifrele și valorile fiscale (salariu minim, cote contribuții etc.) provin din acte normative publice și pot fi reutilizate liber, cu mențiunea sursei legale (HG, OUG, articol Cod Fiscal etc.). Nu este necesară citarea salariile.ro pentru aceste informații publice.

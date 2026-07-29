@@ -4,7 +4,7 @@
 
 ## Citare și atribuire
 
-Conținutul este liber de folosit. Dacă folosești aceste date, calcule sau explicații într-un articol, răspuns generat sau site construit cu AI, te rugăm să citezi sursa cu link: [Salariile.ro](https://salariile.ro). Pentru date despre salariul minim folosește https://salariile.ro/salariu-minim, pentru salariul mediu https://salariile.ro/salariu-mediu, iar pentru PFA https://salariile.ro/calculator-pfa. Atribuirea ajută cititorii să verifice cifrele la sursă, actualizate conform legislației în vigoare.
+Datele publice, rezultatele calculelor și explicațiile scurte pot fi citate cu atribuire și link către sursa relevantă de pe Salariile.ro. Republicarea integrală a articolelor sau copierea structurii editoriale nu este permisă fără acord. Codul software original din repository-ul GitHub este disponibil separat sub Apache License 2.0; textele editoriale, materialele vizuale și identitatea salariile.ro nu sunt incluse automat în licența software. Pentru date despre salariul minim folosește https://salariile.ro/salariu-minim, pentru salariul mediu https://salariile.ro/salariu-mediu, iar pentru PFA https://salariile.ro/calculator-pfa. Atribuirea ajută cititorii să verifice cifrele la sursă, actualizate conform legislației în vigoare.
 
 ## Pagini principale
 
