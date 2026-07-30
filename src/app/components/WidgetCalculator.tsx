@@ -41,6 +41,7 @@ export default function WidgetCalculator({ initialBrut }: { initialBrut?: string
   const [mod, setMod] = useState<"brut" | "net">("brut");
   const [valoare, setValoare] = useState(initialValue(initialBrut));
   const [emptyWarn, setEmptyWarn] = useState(false);
+  const [belowMinimumWarn, setBelowMinimumWarn] = useState(false);
   const [advancedOpen, setAdvancedOpen] = useState(false);
   const [lockedHeight, setLockedHeight] = useState<number | null>(null);
   const [scrollbar, setScrollbar] = useState({ visible: false, top: 0, height: 0 });
@@ -73,10 +74,12 @@ export default function WidgetCalculator({ initialBrut }: { initialBrut?: string
     const v = parseFloat(valoare) || 0;
     if (v <= 0) {
       setEmptyWarn(true);
+      setBelowMinimumWarn(false);
       return;
     }
     setEmptyWarn(false);
     const brutNum = mod === "brut" ? v : brutDinNet(v);
+    setBelowMinimumWarn(brutNum < SALARIU_MINIM);
     const nextRez = calcDinBrut(brutNum);
     setResultVisible(false);
     window.setTimeout(() => {
@@ -164,7 +167,7 @@ export default function WidgetCalculator({ initialBrut }: { initialBrut?: string
       ro?.disconnect();
       window.removeEventListener("load", send);
     };
-  }, [mod, rez, emptyWarn, advancedOpen, lockedHeight]);
+  }, [mod, rez, emptyWarn, belowMinimumWarn, advancedOpen, lockedHeight]);
 
   useEffect(() => {
     if (!advancedOpen) return;
@@ -216,6 +219,8 @@ export default function WidgetCalculator({ initialBrut }: { initialBrut?: string
                     setRez(calcDinBrut(brutNum));
                   }
                 }
+                setEmptyWarn(false);
+                setBelowMinimumWarn(false);
                 setMod("brut");
               }}
             >
@@ -234,6 +239,8 @@ export default function WidgetCalculator({ initialBrut }: { initialBrut?: string
                     setRez(r);
                   }
                 }
+                setEmptyWarn(false);
+                setBelowMinimumWarn(false);
                 setMod("net");
               }}
             >
@@ -255,7 +262,11 @@ export default function WidgetCalculator({ initialBrut }: { initialBrut?: string
               type="text"
               inputMode="numeric"
               value={grupeazaMii(valoare)}
-              onChange={(e) => { setValoare(doarCifre(e.target.value)); if (emptyWarn) setEmptyWarn(false); }}
+              onChange={(e) => {
+                setValoare(doarCifre(e.target.value));
+                if (emptyWarn) setEmptyWarn(false);
+                if (belowMinimumWarn) setBelowMinimumWarn(false);
+              }}
               onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); handleCalculeaza(); } }}
               placeholder={mod === "brut" ? `ex: ${grupeazaMii(String(EX_BRUT))}` : `ex: ${grupeazaMii(String(EX_NET))}`}
               className="min-w-0 flex-1 bg-transparent px-3 py-2 text-base text-stone-900 outline-none"
@@ -267,6 +278,13 @@ export default function WidgetCalculator({ initialBrut }: { initialBrut?: string
           {emptyWarn && (
             <span role="alert" className="mt-2 block text-xs font-medium text-stone-900">
               Introdu un salariu mai întâi.
+            </span>
+          )}
+          {belowMinimumWarn && (
+            <span role="status" className="mt-2 block text-xs leading-relaxed text-stone-600">
+              {mod === "net"
+                ? `Brut estimat sub ${fmt(SALARIU_MINIM)} lei. Posibil la part-time sau lună incompletă.`
+                : `Brut sub ${fmt(SALARIU_MINIM)} lei. Posibil la part-time sau lună incompletă.`}
             </span>
           )}
         </div>
@@ -292,12 +310,13 @@ export default function WidgetCalculator({ initialBrut }: { initialBrut?: string
             <div ref={advancedPanelRef} className="min-h-0 overflow-hidden">
               <div className="p-3">
                 <div className="grid grid-cols-2 gap-3">
-                  <label className="block text-xs font-medium text-stone-500">
-                    Persoane în întreținere
+                  <label className="flex h-full flex-col gap-1 text-xs font-medium text-stone-500">
+                    <span className="min-[360px]:hidden">Pers. în întreținere</span>
+                    <span className="hidden min-[360px]:inline">Persoane în întreținere</span>
                     <select
                       value={advanced.persoanePretretinere}
                       onChange={(e) => updateAdvanced("persoanePretretinere", Number(e.target.value))}
-                      className="mt-1 h-9 w-full rounded border border-stone-300 bg-white px-2 text-sm text-stone-900 outline-none focus:border-stone-400"
+                      className="mt-auto h-9 w-full rounded border border-stone-300 bg-white px-2 text-sm text-stone-900 outline-none focus:border-stone-400"
                     >
                       {[0, 1, 2, 3, 4, 5].map((n) => (
                         <option key={n} value={n}>{n === 0 ? "Niciuna" : n}</option>
@@ -305,13 +324,13 @@ export default function WidgetCalculator({ initialBrut }: { initialBrut?: string
                     </select>
                   </label>
 
-                  <label className="block text-xs font-medium text-stone-500">
-                    Copii școlari
+                  <label className="flex h-full flex-col gap-1 text-xs font-medium text-stone-500">
+                    <span>Copii școlari</span>
                     <select
                       value={advanced.copiiScolarizati}
                       disabled={advanced.persoanePretretinere === 0}
                       onChange={(e) => updateAdvanced("copiiScolarizati", Number(e.target.value))}
-                      className="mt-1 h-9 w-full rounded border border-stone-300 bg-white px-2 text-sm text-stone-900 outline-none disabled:bg-canvas disabled:text-stone-400 focus:border-stone-400"
+                      className="mt-auto h-9 w-full rounded border border-stone-300 bg-white px-2 text-sm text-stone-900 outline-none disabled:bg-canvas disabled:text-stone-400 focus:border-stone-400"
                     >
                       {Array.from({ length: advanced.persoanePretretinere + 1 }, (_, n) => (
                         <option key={n} value={n}>{n === 0 ? "Niciunul" : n}</option>

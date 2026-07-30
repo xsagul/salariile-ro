@@ -1,10 +1,11 @@
-// middleware.ts
+// src/proxy.ts
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const accept = request.headers.get("accept") || "";
   const path = request.nextUrl.pathname;
+  const isDevelopment = process.env.NODE_ENV === "development";
 
   // ─── Markdown for Agents (content negotiation) ─────────────────────────────
   // Dacă agentul cere Accept: text/markdown, rewrite la endpoint-ul care
@@ -33,7 +34,7 @@ export function middleware(request: NextRequest) {
 
   const cspHeader = `
     default-src 'self';
-    script-src 'self' 'nonce-${nonce}' 'strict-dynamic' 'unsafe-hashes';
+    script-src 'self' 'nonce-${nonce}' 'strict-dynamic' 'unsafe-hashes'${isDevelopment ? " 'unsafe-eval'" : ""};
     style-src 'self' 'unsafe-inline';
     img-src 'self' blob: data:;
     font-src 'self' data:;
@@ -69,8 +70,8 @@ export function middleware(request: NextRequest) {
   // Link headers (RFC 8288) pentru descoperire agenți AI:
   // - sitemap      → unde sunt toate URL-urile indexabile
   // - describedby  → llms.txt (overview markdown al site-ului)
-  // Adăugat aici (în middleware) ca să se aplice doar pe pagini HTML/dynamic,
-  // nu pe asseturi statice (middleware-ul oricum nu rulează pe /_next/static/*).
+  // Adăugat aici (în proxy) ca să se aplice doar pe pagini HTML/dynamic,
+  // nu pe asseturi statice (proxy-ul oricum nu rulează pe /_next/static/*).
   response.headers.set(
     "Link",
     '</sitemap.xml>; rel="sitemap", </llms.txt>; rel="describedby"; type="text/markdown"'

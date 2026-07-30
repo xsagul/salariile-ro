@@ -7,12 +7,14 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const RESERVED_HEIGHT = 790;
-const clampHeight = (height: number) => Math.min(900, Math.max(RESERVED_HEIGHT, Math.ceil(height)));
+const INITIAL_HEIGHT = 790;
+const MIN_HEIGHT = 360;
+const MAX_HEIGHT = 900;
+const clampHeight = (height: number) => Math.min(MAX_HEIGHT, Math.max(MIN_HEIGHT, Math.ceil(height)));
 
 export default function WidgetDemo() {
   const ref = useRef<HTMLIFrameElement>(null);
-  const [height, setHeight] = useState(RESERVED_HEIGHT);
+  const [height, setHeight] = useState(INITIAL_HEIGHT);
 
   useEffect(() => {
     const onMsg = (e: MessageEvent) => {

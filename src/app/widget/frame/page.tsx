@@ -20,5 +20,9 @@ export default async function WidgetFramePage({
 }) {
   const { brut } = await searchParams;
   const initialBrut = brut && /^\d{3,6}$/.test(brut) ? brut : undefined;
-  return <WidgetCalculator initialBrut={initialBrut} />;
+  return (
+    <main className="min-h-screen bg-canvas">
+      <WidgetCalculator initialBrut={initialBrut} />
+    </main>
+  );
 }

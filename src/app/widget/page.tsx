@@ -27,13 +27,8 @@ const CREDIT_CODE = `<a class="salariile-credit" href="https://salariile.ro?utm_
   Calculator de salarii oferit de salariile.ro
 </a>`;
 
-const EMBED_CODE = `<div class="salariile-widget">
-  ${CREDIT_CODE}
-</div>
-<script src="https://salariile.ro/widget.js" async></script>`;
-
-// Alternativă simplă (iframe direct), pentru cine preferă zero JavaScript. Înălțimea
-// e fixă; ajusteaz-o din atributul height dacă e nevoie.
+// Integrare directă prin iframe. Înălțimea este fixă și poate fi ajustată din
+// atributul height dacă este nevoie.
 const EMBED_CODE_IFRAME = `<iframe src="https://salariile.ro/widget/frame"
   width="100%" height="790" loading="lazy" scrolling="no"
   style="border:1px solid #e7e5e4;border-radius:8px;max-width:420px;display:block;box-sizing:border-box;margin:0 auto"
@@ -55,11 +50,7 @@ const FAQ = [
   },
   {
     q: "Trebuie să fixez înălțimea?",
-    a: "Nu, dacă folosești varianta recomandată (div + script): widgetul își comunică singur înălțimea paginii tale și se dimensionează automat, pe orice ecran. Doar la varianta cu iframe simplu înălțimea e fixă și o poți ajusta din atributul height.",
-  },
-  {
-    q: "Pot porni calculatorul cu o valoare anume?",
-    a: "Da. Adaugă data-brut pe div, de exemplu <div class=\"salariile-widget\" data-brut=\"4325\"></div>, iar widgetul se încarcă direct cu acel salariu brut calculat.",
+    a: "Da. Codul folosește o înălțime de 790 px, potrivită pentru afișarea completă a calculatorului. O poți ajusta din atributul height dacă designul paginii tale o cere.",
   },
 ];
 
@@ -121,9 +112,8 @@ export default function WidgetPage() {
 
       <Section>
         <h2>Codul de integrare</h2>
-        <h3>Metoda 1: iframe simplu</h3>
         <p>
-          Aceasta este varianta cea mai ușor de integrat. Copiază tot codul și lipește-l în pagina ta, unde vrei să
+          Copiază tot codul și lipește-l în pagina ta, unde vrei să
           apară calculatorul. Înălțimea este fixă și se ajustează manual din atributul <code>height</code>:
         </p>
         <div className="my-6">
@@ -133,19 +123,8 @@ export default function WidgetPage() {
           Păstrează rândul cu creditul când preiei widgetul. Ne ajută să ținem proiectul gratuit, fără cont și
           fără reclame.
         </p>
-
-        <h3 className="mt-8">Metoda 2: script cu dimensionare automată</h3>
         <p>
-          Aceasta este varianta recomandată dacă site-ul tău permite scripturi externe. Scriptul injectează iframe-ul,
-          îl dimensionează automat și include explicit linkul de credit în codul de mai jos:
-        </p>
-        <div className="my-6">
-          <EmbedCode code={EMBED_CODE} />
-        </div>
-        <p>
-          Poți porni calculatorul cu o valoare din start adăugând <code>data-brut</code> pe div, de exemplu{" "}
-          <code>{`<div class="salariile-widget" data-brut="4325"></div>`}</code>. Pentru cerințe speciale
-          (dimensiuni, integrare în CMS), scrie-ne la{" "}
+          Pentru cerințe speciale (dimensiuni sau integrare în CMS), scrie-ne la{" "}
           <a href="mailto:contact@salariile.ro">contact@salariile.ro</a>.
         </p>
       </Section>
