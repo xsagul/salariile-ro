@@ -340,3 +340,53 @@ fiscal, off-site, AI/GEO, forensic salariu-minim). Deployat commitul `1602341`.
   au venit prin API si scripturi locale.
 - Numarul de linkuri externe din GSC nu e expus prin API; ramane cifra din
   raportul UI (67/3 domenii), care oricum supraestimeaza (vezi mai sus).
+
+### Runda 2 — 31 iulie 2026, dupa conectarea extensiei Chrome
+
+Deployat: `7c68f9b` (raspunsul in title/description/lead), `73c508c`
+(titlu /salariu-minim sub pragul de trunchiere), plus commitul CC0.
+
+**Din GSC UI (date pe care API-ul nu le expune):**
+- Raport linkuri: exact **3 domenii**. reddit.com 61, facetotibanii.ro 3,
+  fastfulfill.ro 3 = 67 total. Cele de la facetotibanii sunt linkul deja
+  sters din pagina. Ramane practic **un singur domeniu editorial viu**.
+- Indexare: 62 indexate, 14 nu (4 redirect, 2 x 404, 7 crawled-not-indexed,
+  1 duplicate canonical).
+- `/date-salarii` era "URL is not on Google" -> cerut indexare, confirmat
+  in priority crawl queue.
+- `/zile-lucratoare-2026` -> cerut reindexare dupa schimbarea titlului.
+  GSC semnaleaza singur +165% impresii pe aceasta pagina.
+- Gmail: niciun mesaj relevant in 14 zile in afara de vercel[bot].
+  Nicio actiune manuala, nicio alerta.
+
+**Livrat pe CTR:**
+- 40 pagini /calculator/*: title de forma "5.000 lei brut in net = 2.981 lei
+  (2026)", descriere care incepe cu cifra, paragraf-raspuns de ~42 cuvinte
+  inainte de calculator. Rezultatul se calcula anterior abia in componenta;
+  a fost extras intr-o functie unica folosita si de generateMetadata.
+- /deducere-personala-2026: "Deducere personala 2026: 865-1.946 lei".
+- /salariu-minim: titlu 70 -> 54 caractere. Era pagina cu cea mai mare
+  rezerva de CTR (39.205 impresii, 0,66% la pozitia 7,74).
+- Raman peste 60 de caractere, acceptat deliberat: /salariu-mediu (66),
+  /zile-libere-2026 (63), /zile-lucratoare-2026 (61),
+  /noutati/cosul-minim-de-consum (61).
+
+**Licenta datasetului: CC0 1.0.**
+Decizie a proprietarului. Argument: valorile sunt fapte din acte normative
+si comunicate INS, asupra carora nu revendicam drepturi; o licenta cu
+atribuire obligatorie ar fi neexecutabila pe fapte. Citarea ramane ceruta
+ca norma, nu ca obligatie. Compromis acceptat constient: CC0 renunta la
+atribuire ca obligatie, exact intr-un moment cand blocajul e numarul de
+linkuri.
+
+**Blocat:**
+- Articol dev.to despre dataset scris si verificat afirmatie cu afirmatie
+  (`seo-assets/dev-open-dataset-2026-07-31.md`, gitignorat).
+  NEPUBLICAT: dev.to cere autentificare in browser, iar login-ul nu se face
+  de catre agent. Proprietarul trebuie sa se logheze, apoi se publica.
+- Reddit: 3 postari in ~2 saptamani deja; a patra a fost respinsa deliberat
+  ca risc de spam. De reluat la interval mai mare.
+
+**Backlog GEO ramas neatins:** llms.txt generat din cod, src/lib/organization.ts
+cu @id si sameAs, variableMeasured ca PropertyValue, byline vizibil pe
+homepage, normalizarea numelui autorului ("Sorin" vs "Stiuriuc Sorin-Marian").
