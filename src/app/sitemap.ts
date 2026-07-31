@@ -25,6 +25,7 @@ const STATIC_ENTRIES: {
   { path: "/zile-lucratoare-2026", priority: 0.8, changeFrequency: "monthly" },
   { path: "/fluturas-salariu", priority: 0.8, changeFrequency: "monthly" },
   { path: "/widget", priority: 0.6, changeFrequency: "monthly" },
+  { path: "/date-salarii", priority: 0.7, changeFrequency: "monthly" },
   { path: "/noutati", priority: 0.7, changeFrequency: "weekly" },
   { path: "/metodologie", priority: 0.6, changeFrequency: "monthly" },
   { path: "/despre", priority: 0.5, changeFrequency: "yearly" },

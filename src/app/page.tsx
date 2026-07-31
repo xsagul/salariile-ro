@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import CalculatorSalariu from "@/app/components/CalculatorSalariu";
 import { personSchema } from "@/lib/person";
-import { PAGE_LAST_MODIFIED } from "@/lib/seo";
+import { calculatorSlugBrut, PAGE_LAST_MODIFIED } from "@/lib/seo";
 
 // Metadata proprie homepage-ului (suprascrie default-ul global din layout, fără
 // să atingă celelalte pagini). Țintește termenul cu cel mai mare volum din nișă,
@@ -29,7 +29,7 @@ const faqData = [
   },
   {
     q: "Care este salariul minim brut în România în 2026?",
-    a: "Salariul minim brut pe economie este 4.325 lei din 1 iulie 2026, conform HG 146/2026. Salariul net corespunzător este 2.699 lei, cu facilitatea fiscală de 200 lei (OUG 89/2025). În prima jumătate a anului a fost 4.050 lei brut (2.574 lei net, facilitate 300 lei).",
+    a: "Salariul minim brut pe economie este 4.325 lei din 1 iulie 2026, conform HG 146/2026. În prima jumătate a anului a fost 4.050 lei brut. Calculul net complet, pe fiecare semestru, este explicat pe pagina dedicată salariului minim.",
   },
   {
     q: "Ce este deducerea personală și cui se aplică?",
@@ -130,6 +130,7 @@ const homepageJsonLd = {
 // Conținutul „Cum funcționează calculul" – definit O SINGURĂ DATĂ și folosit
 // atât în layout-ul mobil (secțiune always-open), cât și ca primul tab pe desktop.
 const cumFunctioneazaTitlu = "Calculator salariu net: cum funcționează calculul";
+const calculeBrutPopulare = [4325, 5000, 7000, 10000, 20000] as const;
 const cumFunctioneazaBody = (
   <>
     <p className="mb-4 text-base leading-normal tracking-[-0.01em] text-stone-600">
@@ -174,7 +175,7 @@ export default function Page() {
                   <h3 className="mb-3 text-xs font-medium text-stone-500">Repere fiscale · 2026</h3>
                   <dl className="text-sm">
                     {([
-                      ["Salariu minim net", "2.699 lei"],
+                      ["Net la salariul minim (4.325 brut)", "2.699 lei"],
                       ["Net estimat din indicatorul BASS", "5.377 lei"],
                       ["Plafon deducere personală", "6.325 lei"],
                       ["CAS (pensie)", "25%"],
@@ -227,7 +228,7 @@ export default function Page() {
                   <ul className="flex flex-col gap-2 text-sm">
                     {([
                       ["Calculator salariu minim", "/salariu-minim"],
-                      ["Salariul minim net", "/salariu-minim#net"],
+                      ["Salariul minim pe economie 2026", "/salariu-minim"],
                       ["Salariul mediu pe economie", "/salariu-mediu"],
                       ["Calculator taxe PFA", "/calculator-pfa"],
                       ["Generator fluturaș de salariu", "/fluturas-salariu"],
@@ -242,6 +243,28 @@ export default function Page() {
                   <p className="mt-6 text-xs text-stone-500">Ultima actualizare: 26 iulie 2026.</p>
                 </div>
               </aside>
+            </div>
+
+            <div className="border-t border-stone-200 pt-8">
+              <h2 className="mb-3 text-lg font-bold tracking-[-0.02em] text-stone-900">
+                Calcule salariale populare
+              </h2>
+              <p className="mb-4 max-w-prose text-sm leading-normal text-stone-600">
+                Repere brute validate prin cerere reală de căutare, cu defalcarea completă
+                pentru CAS, CASS, impozit, net și costul angajatorului.
+              </p>
+              <ul className="flex flex-wrap gap-2">
+                {calculeBrutPopulare.map((valoare) => (
+                  <li key={valoare}>
+                    <Link
+                      href={`/calculator/${calculatorSlugBrut(valoare)}`}
+                      className="inline-flex min-h-11 items-center rounded border border-stone-300 bg-surface px-4 text-sm font-medium text-stone-900 shadow-soft transition-colors hover:border-stone-400"
+                    >
+                      {new Intl.NumberFormat("ro-RO").format(valoare)} lei brut → net
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
 
           </div>

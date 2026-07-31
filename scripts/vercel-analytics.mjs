@@ -5,6 +5,7 @@
 //   npm run vercel:analytics
 //   npm run vercel:analytics -- --days=7 --limit=15
 //   npm run vercel:analytics -- --days=28 --json
+//   npm run vercel:snapshot
 
 import { execFile, execFileSync } from "node:child_process";
 import fs from "node:fs";
@@ -118,6 +119,8 @@ async function main() {
   const days = integerOption("days", 28, 1, 365);
   const limit = integerOption("limit", 10, 1, 100);
   const json = process.argv.includes("--json");
+  const snapshot = process.argv.includes("--snapshot");
+  const outputOption = option("output", "");
   const cli = findVercelCli();
   const project = readProject();
   const until = Date.now();
@@ -149,6 +152,7 @@ async function main() {
 
   const result = {
     project: project.projectName || project.projectId,
+    generatedAt: new Date(until).toISOString(),
     requestedDays: days,
     interval: count.query,
     totals: count.data,
@@ -156,6 +160,20 @@ async function main() {
       Object.entries(reports).map(([name, report]) => [name, report.data]),
     ),
   };
+
+  const outputRelative = outputOption || (snapshot
+    ? `seo-snapshots/vercel/${result.generatedAt.slice(0, 10)}.json`
+    : "");
+  if (outputRelative) {
+    const outputPath = path.resolve(ROOT, outputRelative);
+    const relativeToRoot = path.relative(ROOT, outputPath);
+    if (relativeToRoot.startsWith("..") || path.isAbsolute(relativeToRoot)) {
+      throw new Error("Fișierul de ieșire trebuie să rămână în proiect.");
+    }
+    fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+    fs.writeFileSync(outputPath, `${JSON.stringify(result, null, 2)}\n`, "utf8");
+    if (!json) console.log(`Snapshot salvat: ${relativeToRoot}`);
+  }
 
   if (json) {
     console.log(JSON.stringify(result, null, 2));

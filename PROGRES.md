@@ -1,6 +1,21 @@
 # Progres salariile.ro
 
-Ultima actualizare: 26 iulie 2026
+Ultima actualizare: 29 iulie 2026
+
+## Audit SEO complet și sprint de autoritate — 29 iulie 2026
+
+Status: audit terminat, modificări locale verificate și un material extern publicat; batchul auditului nu a fost comis, împins sau deployat. Separat, commitul operațional `4280154` (`Add Vercel analytics reporting`) a produs un deploy Production la 07:22:18 și conține numai scriptul local de raportare plus comanda din `package.json`. Raportul complet este în `SEO-AUDIT-DEPARTAMENT-2026-07-29.md`.
+
+- GSC 29 iunie–26 iulie versus 1–28 iunie: 2.237 vs. 495 clickuri (+351,9%), 184.388 vs. 41.281 impresii (+346,7%), CTR 1,21% vs. 1,20%, poziție 7,77 vs. 8,94. Ultimele 14 zile indică platou sănătos, nu declin.
+- Auditul tehnic a confirmat 63/63 URL-uri live cu 200, 61/63 indexate individual în GSC, canonical/H1/SSR/JSON-LD corecte și Core Web Vitals bune. Plafonul principal este autoritatea externă.
+- GSC Links raportează exact 67 linkuri externe din 3 domenii: Reddit 61, FaceToțiBanii 3 și FastFulfill 3. Indexurile terțe și referrerii Vercel sunt păstrate separat și nu se însumează.
+- Implementat local `/date-salarii` cu Dataset/DataDownload JSON-LD, CSV, JSON, 4 înregistrări, 5 surse oficiale și test de sincronizare.
+- Implementat local răspuns 410 pentru `/info`, semantică/contrast editorial îmbunătățite, adâncime maximă 3 clickuri pentru paginile calculator și snapshoturi Vercel persistente.
+- Publicat pe DEV articolul `Auditing a Next.js Salary Calculator After a 4.5x Search Visibility Spike`, cu link follow către salariile.ro. DEV era deja domeniu de referință; nu se raportează ca domeniu nou și efectul nu este încă măsurabil.
+- Pregătit forkul `xsagul/ro-open-source`, branch `add-salariile-ro`, commit `0dfb5d4`; PR-ul este blocat corect până la o decizie explicită privind licența codului.
+- Draftul LinkedIn este în `seo-assets/linkedin-audit-seo-2026-07-29.txt`; nu a fost publicat deoarece editorul LinkedIn nu a acceptat introducerea automată a textului.
+- Verificare finală: `npm test`, `npm run lint`, `npm run build`, `npm run test:rendered`, `git diff --check` și `npm run vercel:snapshot` au trecut.
+- Următorul snapshot curat rămâne 4 august; batchul local poate fi deployat controlat după această citire, cu verdict direcțional la 14 zile și verdict robust la 28 zile.
 
 ## P1 SEO, securitate si plan 90 zile - 26 iulie 2026
 

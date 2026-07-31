@@ -150,6 +150,14 @@ async function auditRenderedSite() {
     if (!rendered.get(pathname)?.includes(expected)) failures.push(`${pathname}: lipseste ${label}`);
   }
 
+  const editorialTable = rendered.get("/noutati/salariul-minim-1-iulie-2026") ?? "";
+  if (!/<th\b[^>]*scope="col"[^>]*>\s*Indicator\s*<\/th>/i.test(editorialTable)) {
+    failures.push("/noutati/salariul-minim-1-iulie-2026: antetul de coloană al tabelului nu are scope");
+  }
+  if (!/<th\b[^>]*scope="row"[^>]*>\s*Salariul minim brut\s*<\/th>/i.test(editorialTable)) {
+    failures.push("/noutati/salariul-minim-1-iulie-2026: primul câmp al rândului nu este antet semantic");
+  }
+
   const rejectedCalculatorPaths = [
     "/calculator/calcul-salariu-net-5551-brut",
     "/calculator/calcul-salariu-net-00004325-brut",
@@ -162,6 +170,14 @@ async function auditRenderedSite() {
     }
   }
 
+  const retiredInfoResponse = await fetch(`${BASE_URL}/info`);
+  if (retiredInfoResponse.status !== 410) {
+    failures.push(`/info: trebuia HTTP 410, a răspuns ${retiredInfoResponse.status}`);
+  }
+  if (!retiredInfoResponse.headers.get("x-robots-tag")?.includes("noindex")) {
+    failures.push("/info: lipsește X-Robots-Tag noindex");
+  }
+
   const calculatorPaths = [...rendered.keys()].filter((pathname) =>
     pathname.startsWith("/calculator/"),
   );
@@ -172,6 +188,41 @@ async function auditRenderedSite() {
         new RegExp(`<a\\b[^>]*href="${targetPath.replaceAll("/", "\\/")}"`, "i").test(html),
     );
     if (!hasInboundLink) failures.push(`${targetPath}: fara link intern de intrare`);
+  }
+
+  const depths = new Map<string, number>([["/", 0]]);
+  const queue = ["/"];
+  while (queue.length > 0) {
+    const sourcePath = queue.shift()!;
+    const sourceDepth = depths.get(sourcePath)!;
+    const sourceHtml = rendered.get(sourcePath) ?? "";
+    const hrefs = [...sourceHtml.matchAll(/<a\b[^>]*href="([^"]+)"[^>]*>/gi)]
+      .map((match) => {
+        try {
+          const url = new URL(match[1], "https://salariile.ro");
+          return url.origin === "https://salariile.ro" ? url.pathname : "";
+        } catch {
+          return "";
+        }
+      })
+      .filter((pathname) => rendered.has(pathname));
+
+    for (const targetPath of hrefs) {
+      if (depths.has(targetPath)) continue;
+      depths.set(targetPath, sourceDepth + 1);
+      queue.push(targetPath);
+    }
+  }
+
+  const deepCalculatorPaths = calculatorPaths
+    .map((pathname) => ({ pathname, depth: depths.get(pathname) ?? Number.POSITIVE_INFINITY }))
+    .filter(({ depth }) => depth > 3);
+  if (deepCalculatorPaths.length > 0) {
+    failures.push(
+      `calculator: adâncime peste 3 clickuri (${deepCalculatorPaths
+        .map(({ pathname, depth }) => `${pathname}=${depth}`)
+        .join(", ")})`,
+    );
   }
 
   const markdownResponse = await fetch(`${BASE_URL}/salariu-minim`, {

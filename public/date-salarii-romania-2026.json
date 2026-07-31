@@ -1,0 +1,104 @@
+{
+  "title": "Date salariale România 2026",
+  "description": "Selecție verificată de indicatori salariali pentru România: salariul minim, indicatorul BASS și câștigul salarial mediu publicat de INS.",
+  "version": "2026-07-29",
+  "reference_date": "2026-07-29",
+  "language": "ro",
+  "currency": "RON",
+  "unit": "lei/lună",
+  "landing_page": "https://salariile.ro/date-salarii",
+  "methodology_url": "https://salariile.ro/metodologie",
+  "publisher": {
+    "name": "Salariile.ro",
+    "url": "https://salariile.ro"
+  },
+  "usage_terms": "Valorile factuale din această selecție pot fi reutilizate, inclusiv comercial, cu indicarea surselor oficiale și a datei de referință. Un link către pagina setului este apreciat pentru trasabilitate, dar Salariile.ro nu revendică drepturi asupra datelor oficiale. Nota nu acordă drepturi asupra codului site-ului sau asupra documentelor și sistemelor-sursă.",
+  "sources": {
+    "hg_1506_2024": {
+      "name": "HG 1506/2024",
+      "institution": "Guvernul României",
+      "official_url": "https://legislatie.just.ro/Public/DetaliiDocument/291450"
+    },
+    "hg_146_2026": {
+      "name": "HG 146/2026",
+      "institution": "Guvernul României",
+      "official_url": "https://legislatie.just.ro/Public/DetaliiDocument/308231"
+    },
+    "oug_89_2025": {
+      "name": "OUG 89/2025",
+      "institution": "Guvernul României",
+      "official_url": "https://legislatie.just.ro/Public/DetaliiDocument/305817"
+    },
+    "legea_44_2026": {
+      "name": "Legea 44/2026, art. 19",
+      "institution": "Parlamentul României",
+      "official_url": "https://legislatie.just.ro/Public/DetaliiDocument/308863"
+    },
+    "ins_mai_2026": {
+      "name": "INS, câștigul salarial mediu — mai 2026",
+      "institution": "Institutul Național de Statistică",
+      "official_url": "https://insse.ro/cms/sites/default/files/com_presa/com_pdf/cs05r26.pdf"
+    }
+  },
+  "data_dictionary": {
+    "gross_lei": "Valoare brută lunară, exprimată în lei.",
+    "net_lei": "Valoare netă lunară, exprimată în lei; null înseamnă că valoarea nu este inclusă.",
+    "gross_value_type": "legal_threshold = prag legal; statutory_budget_indicator = indicator bugetar stabilit prin lege; observed_aggregate = statistică agregată observată.",
+    "net_value_type": "not_included = neinclus; standard_calculation = calcul standard; standard_estimate = estimare standard; observed_aggregate = statistică agregată observată.",
+    "source_ids": "Chei către obiectul sources."
+  },
+  "records": [
+    {
+      "id": "minimum_wage_h1_2026",
+      "indicator": "Salariul minim general — semestrul I 2026",
+      "period_label": "1 ianuarie–30 iunie 2026",
+      "period_start": "2026-01-01",
+      "period_end": "2026-06-30",
+      "gross_lei": 4050,
+      "net_lei": null,
+      "gross_value_type": "legal_threshold",
+      "net_value_type": "not_included",
+      "source_ids": ["hg_1506_2024"],
+      "methodology_note": "Prag legal brut lunar pentru normă întreagă; valoarea netă nu este inclusă în această versiune a setului."
+    },
+    {
+      "id": "minimum_wage_h2_2026",
+      "indicator": "Salariul minim general — semestrul II 2026",
+      "period_label": "1 iulie–31 decembrie 2026",
+      "period_start": "2026-07-01",
+      "period_end": "2026-12-31",
+      "gross_lei": 4325,
+      "net_lei": 2699,
+      "gross_value_type": "legal_threshold",
+      "net_value_type": "standard_calculation",
+      "source_ids": ["hg_146_2026", "oug_89_2025"],
+      "methodology_note": "Net standard calculat pentru funcția de bază, normă întreagă, fără tichete și fără persoane în întreținere, cu facilitatea de 200 lei."
+    },
+    {
+      "id": "bass_average_indicator_2026",
+      "indicator": "Indicatorul salarial brut BASS 2026",
+      "period_label": "anul 2026",
+      "period_start": "2026-01-01",
+      "period_end": "2026-12-31",
+      "gross_lei": 9192,
+      "net_lei": 5377,
+      "gross_value_type": "statutory_budget_indicator",
+      "net_value_type": "standard_estimate",
+      "source_ids": ["legea_44_2026"],
+      "methodology_note": "9.192 lei este indicatorul stabilit prin Legea 44/2026 pentru bugetul asigurărilor sociale; 5.377 lei este o estimare netă standard Salariile.ro, nu o statistică INS."
+    },
+    {
+      "id": "ins_average_earnings_may_2026",
+      "indicator": "Câștigul salarial mediu lunar INS — mai 2026",
+      "period_label": "mai 2026",
+      "period_start": "2026-05-01",
+      "period_end": "2026-05-31",
+      "gross_lei": 9483,
+      "net_lei": 5684,
+      "gross_value_type": "observed_aggregate",
+      "net_value_type": "observed_aggregate",
+      "source_ids": ["ins_mai_2026"],
+      "methodology_note": "Valori agregate publicate de INS pentru luna mai; netul agregat nu reprezintă conversia fiscală a unui salariu individual de 9.483 lei brut."
+    }
+  ]
+}

@@ -153,7 +153,7 @@ const jsonLd = {
     },
     {
       "@type": "Article",
-      headline: "Salariul minim brut 2026 în România: 4.050 → 4.325 lei",
+      headline: "Salariul minim pe economie 2026: cât rămâne net la tine",
       description:
         "Analiză a salariului minim brut pe țară în 2026: cadrul legal (HG 146/2026, OUG 89/2025), calcul net, ce câștigă angajatul și ce plătește firma, drepturi, normă parțială, sectoare (construcții 4.582 lei) și obligații.",
       author: personSchema,
@@ -642,7 +642,7 @@ export default function SalariuMinimPage() {
           {/* HERO — lede = răspunsul, o singură dată */}
           <div className={`${row} md:items-center`}>
             <div className="md:col-span-3">
-              <h1 className="text-3xl font-bold tracking-[-0.02em] text-stone-900 sm:text-4xl">Salariul minim în 2026</h1>
+              <h1 className="text-3xl font-bold tracking-[-0.02em] text-stone-900 sm:text-4xl">Salariul minim pe economie 2026: brut și net</h1>
               <p className="mt-4 text-xs text-stone-600 [&_a]:font-medium [&_a]:text-stone-700 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-900">
                 Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat 26 iulie 2026
               </p>

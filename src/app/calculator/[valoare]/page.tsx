@@ -139,6 +139,9 @@ function parseSlug(slug: string): {
 
 const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(n);
 
+const CALCULATOR_BRUT_REFERENCE_VALUES = [4325, 5000, 7000, 10000, 20000] as const;
+const CALCULATOR_NET_REFERENCE_VALUES = [2574, 3000, 5000, 7000] as const;
+
 type ValidCalculatorMode = Exclude<CalculatorMode, "necunoscut">;
 
 type CalculatorLink = {
@@ -177,7 +180,16 @@ function getCalculatorLinks(
     Math.abs(candidate - valoareOpusa) < Math.abs(best - valoareOpusa) ? candidate : best,
   );
 
-  return [...vecini, calculatorLink(modOpus, ceaMaiApropiata)];
+  const repere = (
+    mod === "net-din-brut"
+      ? CALCULATOR_BRUT_REFERENCE_VALUES
+      : CALCULATOR_NET_REFERENCE_VALUES
+  )
+    .filter((candidate) => candidate !== valoare)
+    .map((candidate) => calculatorLink(mod, candidate));
+
+  const linkuri = [...vecini, calculatorLink(modOpus, ceaMaiApropiata), ...repere];
+  return [...new Map(linkuri.map((link) => [link.href, link])).values()];
 }
 
 // ─── Context editorial per tranșă salarială ──────────────────────────────────
@@ -451,11 +463,11 @@ export default async function CalculatorDinamic({ params }: Props) {
       )}
 
       <Section>
-          <h2>Calcule salariale apropiate</h2>
+          <h2>Calcule salariale apropiate și repere populare</h2>
           <p>
-            Compară această valoare cu alte salarii pentru care există semnal real de
-            căutare. Legăturile rămân în lista editorială verificată, fără pagini generate
-            automat pentru fiecare număr posibil.
+            Compară această valoare cu salariile învecinate și cu repere pentru care există
+            semnal real de căutare. Legăturile rămân în lista editorială verificată, fără
+            pagini generate automat pentru fiecare număr posibil.
           </p>
           <ul aria-label="Calcule salariale apropiate">
             {linkuriCalculatoare.map((link) => (

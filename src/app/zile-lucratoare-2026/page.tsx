@@ -5,9 +5,6 @@ import { SARBATORI_LEGALE_2026, zileLucratoareLuna } from "@/lib/sarbatori";
 import { ogPage, twPage } from "@/lib/seo";
 import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow } from "@/app/components/ui";
 
-const TITLE = "Zile lucrătoare iulie 2026: 23 zile și 184 ore";
-const DESCRIPTION =
-  "Zile lucrătoare iulie 2026: 23 zile și 184 ore. Vezi tabelul complet pe toate lunile, cu sărbătorile legale scăzute și totalul anual.";
 const PATH = "/zile-lucratoare-2026";
 const YEAR = 2026;
 const MONTHS = [
@@ -51,7 +48,54 @@ const TOTAL_LUCRATOARE = rows.reduce((sum, row) => sum + row.lucratoare, 0);
 const TOTAL_ORE = TOTAL_LUCRATOARE * 8;
 const TOTAL_LIBERE = 365 - TOTAL_LUCRATOARE;
 
-const FAQ = [
+// Luna curentă în fusul orar al României. Titlul, blocul „Răspuns rapid" și una
+// dintre întrebările FAQ vizează luna în curs, pentru că acolo e cererea reală
+// („zile lucrătoare <lună> 2026"). Calculul se face la fiecare regenerare ISR,
+// nu la build: altfel pagina promite în SERP o lună deja încheiată.
+function lunaCurentaIndex(): number | null {
+  const acum = new Date(new Date().toLocaleString("en-US", { timeZone: "Europe/Bucharest" }));
+  return acum.getFullYear() === YEAR ? acum.getMonth() : null;
+}
+
+function metaLuna() {
+  const index = lunaCurentaIndex();
+  if (index === null) {
+    const title = `Zile lucrătoare ${YEAR}: ${TOTAL_LUCRATOARE} de zile și ${TOTAL_ORE.toLocaleString("ro-RO")} ore`;
+    return {
+      title,
+      description: `${title}. Tabel lunar cu zilele lucrătoare, sărbătorile legale scăzute din normă și totalul anual.`,
+    };
+  }
+  const row = rows[index];
+  const luna = row.name.toLowerCase();
+  const title = `Zile lucrătoare ${luna} ${YEAR}: ${row.lucratoare} zile și ${row.ore} ore`;
+  return {
+    title,
+    description: `${title}. Vezi tabelul complet pe toate lunile, cu sărbătorile legale scăzute și totalul anual.`,
+  };
+}
+
+function faqLuna() {
+  const index = lunaCurentaIndex();
+  if (index === null) {
+    return {
+      q: `Câte zile lucrătoare are fiecare lună din ${YEAR}?`,
+      a: `Tabelul lunar de mai jos arată zilele lucrătoare, orele de lucru și sărbătorile legale pentru fiecare dintre cele 12 luni ale anului ${YEAR}.`,
+    };
+  }
+  const row = rows[index];
+  const luna = row.name.toLowerCase();
+  const sarbatori = row.holidays.filter((h) => !h.weekend);
+  const nota = sarbatori.length
+    ? `Norma lunară este redusă de ${sarbatori.length === 1 ? "o sărbătoare legală" : `${sarbatori.length} sărbători legale`} care cad în zile lucrătoare.`
+    : "Luna nu are nicio sărbătoare legală care să reducă norma de lucru.";
+  return {
+    q: `Câte zile lucrătoare are luna ${luna} ${YEAR}?`,
+    a: `${row.name} ${YEAR} are ${row.lucratoare} de zile lucrătoare și ${row.ore} de ore de lucru la program de 8 ore pe zi. ${nota}`,
+  };
+}
+
+const faqList = () => [
   {
     q: "Câte zile lucrătoare are anul 2026?",
     a: "Anul 2026 are 250 de zile lucrătoare în România, calculat pentru program luni-vineri și cu sărbătorile legale scăzute.",
@@ -60,25 +104,28 @@ const FAQ = [
     q: "Câte ore lucrătoare sunt în 2026?",
     a: "La program standard de 8 ore pe zi, 2026 are 2.000 de ore lucrătoare.",
   },
-  {
-    q: "Câte zile lucrătoare are luna iulie 2026?",
-    a: "Iulie 2026 are 23 de zile lucrătoare și 184 de ore de lucru. Este una dintre lunile cu cele mai multe zile lucrătoare din an.",
-  },
+  faqLuna(),
   {
     q: "Zilele lucrătoare schimbă salariul lunar?",
     a: "Nu pentru un salariu lunar fix. Salariul brut negociat se plătește lunar, dar numărul de zile lucrătoare contează pentru tarif orar, pontaj, part-time și tichete.",
   },
 ];
 
-export const metadata: Metadata = {
-  title: TITLE,
-  description: DESCRIPTION,
-  alternates: { canonical: `https://salariile.ro${PATH}` },
-  openGraph: ogPage({ title: TITLE, description: DESCRIPTION, path: PATH }),
-  twitter: twPage({ title: TITLE, description: DESCRIPTION }),
-};
+// Regenerare la 12 ore, ca titlul lunar să treacă singur la luna următoare.
+export const revalidate = 43200;
 
-const jsonLd = {
+export function generateMetadata(): Metadata {
+  const { title, description } = metaLuna();
+  return {
+    title,
+    description,
+    alternates: { canonical: `https://salariile.ro${PATH}` },
+    openGraph: ogPage({ title, description, path: PATH }),
+    twitter: twPage({ title, description }),
+  };
+}
+
+const buildJsonLd = () => ({
   "@context": "https://schema.org",
   "@graph": [
     {
@@ -91,7 +138,7 @@ const jsonLd = {
     {
       "@type": "Article",
       headline: "Zile lucrătoare 2026 în România",
-      description: DESCRIPTION,
+      description: metaLuna().description,
       url: `https://salariile.ro${PATH}`,
       inLanguage: "ro-RO",
       author: personSchema,
@@ -107,19 +154,23 @@ const jsonLd = {
     },
     {
       "@type": "FAQPage",
-      mainEntity: FAQ.map((item) => ({
+      mainEntity: faqList().map((item) => ({
         "@type": "Question",
         name: item.q,
         acceptedAnswer: { "@type": "Answer", text: item.a },
       })),
     },
   ],
-};
+});
 
 export default function ZileLucratoare2026Page() {
+  const FAQ = faqList();
+  const lunaIndex = lunaCurentaIndex();
+  const lunaCurenta = lunaIndex === null ? null : rows[lunaIndex];
+
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(buildJsonLd()) }} />
 
       <Hero>
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Zile lucrătoare 2026" }]} />
@@ -137,9 +188,24 @@ export default function ZileLucratoare2026Page() {
         <Section wide>
           <div className="rounded-md border border-stone-300 bg-surface p-5 shadow-soft sm:p-6">
             <p className="text-xs font-medium uppercase tracking-wide text-stone-500">Răspuns rapid pentru luna curentă</p>
-            <h2 id="iulie-2026" className="mt-2">Zile lucrătoare iulie 2026</h2>
+            <h2 id="luna-curenta" className="mt-2">
+              {lunaCurenta ? `Zile lucrătoare ${lunaCurenta.name.toLowerCase()} ${YEAR}` : `Zile lucrătoare în ${YEAR}`}
+            </h2>
             <p className="mt-3 max-w-prose">
-              Iulie 2026 are <strong>23 de zile lucrătoare</strong> și <strong>184 de ore de lucru</strong> la program de 8 ore pe zi. Luna nu are nicio sărbătoare legală care să reducă norma de lucru.
+              {lunaCurenta ? (
+                <>
+                  {lunaCurenta.name} {YEAR} are <strong>{lunaCurenta.lucratoare} de zile lucrătoare</strong> și{" "}
+                  <strong>{lunaCurenta.ore} de ore de lucru</strong> la program de 8 ore pe zi.{" "}
+                  {lunaCurenta.holidays.filter((h) => !h.weekend).length === 0
+                    ? "Luna nu are nicio sărbătoare legală care să reducă norma de lucru."
+                    : `Norma lunară este redusă de ${lunaCurenta.holidays.filter((h) => !h.weekend).length === 1 ? "o sărbătoare legală care cade" : `${lunaCurenta.holidays.filter((h) => !h.weekend).length} sărbători legale care cad`} în zile lucrătoare.`}
+                </>
+              ) : (
+                <>
+                  Anul {YEAR} are <strong>{TOTAL_LUCRATOARE} de zile lucrătoare</strong> și{" "}
+                  <strong>{TOTAL_ORE.toLocaleString("ro-RO")} de ore de lucru</strong> la program de 8 ore pe zi.
+                </>
+              )}
             </p>
             <p className="source-note"><a href="#tabel-2026">Vezi toate lunile din 2026 în tabel</a>.</p>
           </div>

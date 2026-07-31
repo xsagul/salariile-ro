@@ -7,6 +7,20 @@ export function proxy(request: NextRequest) {
   const path = request.nextUrl.pathname;
   const isDevelopment = process.env.NODE_ENV === "development";
 
+  // Placeholder vechi, cu informații fiscale depășite. A fost deja scos din
+  // sitemap și din linkurile interne; 410 îi spune explicit motorului de
+  // căutare că URL-ul nu mai trebuie păstrat în index.
+  if (path === "/info") {
+    return new NextResponse("Această pagină nu mai este disponibilă.", {
+      status: 410,
+      headers: {
+        "Content-Type": "text/plain; charset=utf-8",
+        "X-Robots-Tag": "noindex, nofollow, noarchive",
+        "Cache-Control": "public, max-age=3600, s-maxage=86400",
+      },
+    });
+  }
+
   // ─── Markdown for Agents (content negotiation) ─────────────────────────────
   // Dacă agentul cere Accept: text/markdown, rewrite la endpoint-ul care
   // generează markdown din HTML-ul propriu (turndown + cheerio).

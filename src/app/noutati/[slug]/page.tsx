@@ -89,13 +89,13 @@ export default async function ArticolPage({ params }: { params: Promise<{ slug: 
       <article className="bg-canvas">
         <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6 sm:py-12">
           {/* Antet articol */}
-          <nav className="mb-4 flex flex-wrap gap-2 text-xs text-stone-500" aria-label="Breadcrumb">
+          <nav className="mb-4 flex flex-wrap gap-2 text-xs text-stone-600" aria-label="Breadcrumb">
             <Link href="/noutati" className="hover:text-stone-700">Noutăți</Link>
             <span aria-hidden="true">/</span>
             <span aria-current="page" className="text-stone-600">Articol</span>
           </nav>
 
-          <div className="mb-3 text-xs uppercase tracking-wide text-stone-500">
+          <div className="mb-3 text-xs uppercase tracking-wide text-stone-600">
             {formatDateRo(a.date)}
             {a.updated && <> · Actualizat {formatDateRo(a.updated)}</>}
             {" "}· {a.readingMin} min citire
@@ -122,7 +122,7 @@ export default async function ArticolPage({ params }: { params: Promise<{ slug: 
           {/* Articole conexe — funnel intern, ține cititorul în cluster */}
           {related.length > 0 && (
             <aside className="mt-12 border-t border-stone-200 pt-8" aria-label="Articole conexe">
-              <h2 className="mb-4 text-sm font-medium uppercase tracking-wide text-stone-500">Citește și</h2>
+              <h2 className="mb-4 text-sm font-medium uppercase tracking-wide text-stone-600">Citește și</h2>
               <ul className="grid gap-4 sm:grid-cols-2">
                 {related.map((r) => (
                   <li key={r.slug}>
@@ -136,7 +136,7 @@ export default async function ArticolPage({ params }: { params: Promise<{ slug: 
                         ) : null}
                       </div>
                       <div className="flex min-w-0 flex-col">
-                        <div className="mb-1 text-xs text-stone-500">{formatDateRo(r.date)} · {r.readingMin} min citire</div>
+                        <div className="mb-1 text-xs text-stone-600">{formatDateRo(r.date)} · {r.readingMin} min citire</div>
                         <h3 className="text-sm font-bold leading-snug tracking-[-0.01em] text-stone-900 group-hover:text-stone-700">{r.title}</h3>
                       </div>
                     </Link>

@@ -69,6 +69,7 @@ export const PAGE_LAST_MODIFIED: Record<string, Date> = {
   "/zile-lucratoare-2026": new Date("2026-07-15T00:00:00.000Z"),
   "/fluturas-salariu": new Date("2026-07-26T00:00:00.000Z"),
   "/widget": new Date("2026-07-26T00:00:00.000Z"),
+  "/date-salarii": new Date("2026-07-29T00:00:00.000Z"),
   "/noutati": new Date("2026-07-26T00:00:00.000Z"),
   "/despre": new Date("2026-07-26T00:00:00.000Z"),
   "/contact": new Date("2026-04-01T00:00:00.000Z"),

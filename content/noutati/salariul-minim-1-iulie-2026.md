@@ -15,7 +15,7 @@ Salariul minim brut pe economie crește de la **4.050 lei** la **4.325 lei**, co
 
 În bani primiți efectiv, lucrurile arată așa:
 
-| | Până la 30 iunie 2026 | De la 1 iulie 2026 |
+| Indicator | Până la 30 iunie 2026 | De la 1 iulie 2026 |
 | :--- | ---: | ---: |
 | Salariul minim brut | 4.050 lei | **4.325 lei** |
 | Salariul net (în mână) | 2.574 lei | **2.699 lei** |

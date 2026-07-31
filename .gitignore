@@ -53,3 +53,10 @@ next-env.d.ts
 # Cheie service account Google Search Console (NU se commit-ează)
 gsc-key.json
 /.gsc/
+
+# Snapshoturi de trafic + rapoarte de audit SEO.
+# Repo-ul este public: datele GSC/Vercel defalcate pe pagini și profilul de
+# backlinkuri rămân locale. Vezi PROGRES.md pentru concluziile publicabile.
+/seo-snapshots/
+/seo-assets/
+/SEO-AUDIT-*.md

@@ -22,7 +22,9 @@ const PROSE = [
   "[&_.table-wrap]:my-6 [&_.table-wrap]:overflow-x-auto [&_.table-wrap>table]:my-0",
   "[&_thead_th]:border-b [&_thead_th]:border-stone-200 [&_thead_th]:bg-canvas [&_thead_th]:px-3 [&_thead_th]:py-3 [&_thead_th]:text-left [&_thead_th]:text-xs [&_thead_th]:font-medium [&_thead_th]:uppercase [&_thead_th]:tracking-wide [&_thead_th]:text-stone-600",
   "[&_tbody_td]:border-b [&_tbody_td]:border-stone-100 [&_tbody_td]:px-3 [&_tbody_td]:py-3 [&_tbody_td]:text-stone-700",
+  "[&_tbody_th]:border-b [&_tbody_th]:border-stone-100 [&_tbody_th]:px-3 [&_tbody_th]:py-3 [&_tbody_th]:text-left [&_tbody_th]:font-medium [&_tbody_th]:text-stone-900",
   "[&_tbody_tr:last-child_td]:border-b-0",
+  "[&_tbody_tr:last-child_th]:border-b-0",
   // .source-note (specificitate 0,2,0) bate variantele de element 0,1,1
   "[&_.source-note]:mt-4 [&_.source-note]:text-xs [&_.source-note]:leading-normal [&_.source-note]:text-stone-600",
 ].join(" ");

@@ -75,6 +75,11 @@ export function getArticle(slug: string): Article | null {
   // decât ecranul (mobil) nu mai lărgește pagina, ci derulează în interior.
   const html = (marked.parse(content, { async: false }) as string)
     .replace(/ align="(left|center|right)"/g, ' style="text-align:$1"')
+    // Asociază semantic antetele cu celulele pentru cititoare de ecran.
+    // Marked emite <th> în thead, iar prima coloană din tabelele editoriale
+    // descrie rândul, deci devine antet de rând.
+    .replace(/<th(?=[ >])/g, '<th scope="col"')
+    .replace(/(<tr>\s*)<td([^>]*)>([\s\S]*?)<\/td>/g, '$1<th scope="row"$2>$3</th>')
     .replace(/<table>/g, '<div class="table-wrap"><table>')
     .replace(/<\/table>/g, "</table></div>");
   return { ...metaFrom(slug, data, content), html };

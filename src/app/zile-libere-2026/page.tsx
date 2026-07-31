@@ -194,7 +194,9 @@ export default function ZileLibere2026Page() {
               <p className="font-semibold text-stone-900">Răspuns scurt</p>
               <p className="mt-1">
                 În 2026 sunt <strong>250 zile lucrătoare</strong>, <strong>2.000 ore de lucru</strong> la normă standard și{" "}
-                <strong>17 sărbători legale</strong>, dintre care 11 pică în zile lucrătoare.
+                <strong>16 zile libere de sărbătoare legală</strong>, dintre care 11 pică în zile lucrătoare. Codul Muncii
+                enumeră 17 sărbători, dar în 2026 a doua zi de Rusalii cade chiar pe 1 iunie, Ziua Copilului, așa că se
+                suprapun într-o singură zi liberă.
               </p>
             </div>
           </div>
