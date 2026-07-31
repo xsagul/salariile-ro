@@ -1,46 +1,86 @@
 "use client";
 
-// src/app/components/WidgetDemo.tsx
-// Demo fidel al widgetului pe pagina /widget: iframe către /widget/frame care se
-// auto-dimensionează prin postMessage — exact ce primește un site care embedează.
-// Replică logica din widget.js (aici în React), ca demo-ul să nu depindă de script.
+// Demo fidel pentru cele trei iframe-uri prezentate pe /widget.
+// Varianta minimalistă își ajustează înălțimea în pagina noastră prin postMessage.
+// Variantele ample păstrează scrollul intern, deoarece formularele se stivuiesc pe mobil.
 
 import { useEffect, useRef, useState } from "react";
 
-const INITIAL_HEIGHT = 790;
+const MINIMAL_HEIGHT = 790;
+const COMPLETE_HEIGHT = 900;
+const PAYSLIP_HEIGHT = 1000;
 const MIN_HEIGHT = 360;
-const MAX_HEIGHT = 900;
-const clampHeight = (height: number) => Math.min(MAX_HEIGHT, Math.max(MIN_HEIGHT, Math.ceil(height)));
+const MAX_MINIMAL_HEIGHT = 900;
+const clampMinimalHeight = (height: number) =>
+  Math.min(MAX_MINIMAL_HEIGHT, Math.max(MIN_HEIGHT, Math.ceil(height)));
 
-export default function WidgetDemo() {
+type WidgetDemoProps = {
+  variant?: "minimal" | "complet" | "fluturas";
+};
+
+export default function WidgetDemo({ variant = "minimal" }: WidgetDemoProps) {
   const ref = useRef<HTMLIFrameElement>(null);
-  const [height, setHeight] = useState(INITIAL_HEIGHT);
+  const isMinimal = variant === "minimal";
+  const isComplete = variant === "complet";
+  const isPayslip = variant === "fluturas";
+  const initialHeight = isPayslip
+    ? PAYSLIP_HEIGHT
+    : isComplete
+      ? COMPLETE_HEIGHT
+      : MINIMAL_HEIGHT;
+  const [height, setHeight] = useState(initialHeight);
 
   useEffect(() => {
-    const onMsg = (e: MessageEvent) => {
-      if (e.origin !== window.location.origin) return;
-      const d = e.data;
-      if (!d || d.type !== "salariile:height" || !d.height) return;
-      if (ref.current && e.source === ref.current.contentWindow) {
-        setHeight(clampHeight(d.height));
+    if (!isMinimal) return;
+
+    const onMsg = (event: MessageEvent) => {
+      if (event.origin !== window.location.origin) return;
+      const data = event.data;
+      if (!data || data.type !== "salariile:height" || !data.height) return;
+      if (ref.current && event.source === ref.current.contentWindow) {
+        setHeight(clampMinimalHeight(data.height));
       }
     };
+
     window.addEventListener("message", onMsg);
     return () => window.removeEventListener("message", onMsg);
-  }, []);
+  }, [isMinimal]);
+
+  const maxWidth = isMinimal ? 420 : 1152;
+  const src = isPayslip
+    ? "/widget/frame/fluturas"
+    : isComplete
+      ? "/widget/frame?variant=complet"
+      : "/widget/frame";
+  const title = isPayslip
+    ? "Generator fluturaș de salariu 2026 (demo widget)"
+    : isComplete
+      ? "Calculator complet de salarii 2026 (demo widget)"
+      : "Calculator salariu net 2026 (demo widget)";
+  const href = isPayslip
+    ? "https://salariile.ro/fluturas-salariu?utm_source=widget-fluturas"
+    : isComplete
+      ? "https://salariile.ro?utm_source=widget-complet"
+      : "https://salariile.ro?utm_source=widget";
+  const credit = isPayslip
+    ? "Generator de fluturaș de salariu oferit de salariile.ro"
+    : isComplete
+      ? "Calculator complet de salarii oferit de salariile.ro"
+      : "Calculator de salarii oferit de salariile.ro";
 
   return (
     <div>
       <iframe
         ref={ref}
-        src="/widget/frame"
-        title="Calculator salariu net 2026 (demo widget)"
+        src={src}
+        title={title}
         loading="lazy"
-        scrolling="no"
+        scrolling={isMinimal ? "no" : undefined}
         style={{
           width: "100%",
-          maxWidth: 420,
+          maxWidth,
           height,
+          margin: "0 auto",
           border: "1px solid #e7e5e4",
           borderRadius: 8,
           display: "block",
@@ -48,18 +88,18 @@ export default function WidgetDemo() {
         }}
       />
       <a
-        href="https://salariile.ro?utm_source=widget"
+        href={href}
         target="_blank"
         rel="noopener"
         style={{
           display: "block",
-          maxWidth: 420,
-          marginTop: 8,
+          maxWidth,
+          margin: "8px auto 0",
           font: "14px/1.4 system-ui, sans-serif",
           color: "#57534e",
         }}
       >
-        Calculator de salarii oferit de salariile.ro
+        {credit}
       </a>
     </div>
   );

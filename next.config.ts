@@ -35,6 +35,15 @@ const nextConfig: NextConfig = {
         ],
       },
       {
+        // Generatorul de fluturaș are o pagină iframe dedicată, separată de landing.
+        source: "/widget/frame/fluturas",
+        headers: [
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
+        ],
+      },
+      {
         source: "/(.*)\\.(ico|png|svg|jpg|jpeg|webp|woff2)",
         headers: [
           // Fișierele din public/ nu au hash în nume. Un TTL finit permite

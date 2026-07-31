@@ -462,6 +462,7 @@ export default function CalculatorSalariu({
   regimFiscal = REGIM_FISCAL_CURENT,
   wide = false,
   fluturas = false,
+  embedded = false,
 }: {
   brutInitial?: string;
   modInitial?: "brut" | "net";
@@ -473,6 +474,8 @@ export default function CalculatorSalariu({
   /** Mod generator de fluturaș: câmpuri de stat de plată (firmă, ore suplimentare,
    *  sporuri, rețineri), direcția fixă brut→net. Folosit de /fluturas-salariu. */
   fluturas?: boolean;
+  /** Ascunde hero-ul când grila calculatorului este reutilizată într-un iframe. */
+  embedded?: boolean;
 }) {
   const wrap = wide ? "max-w-7xl" : "max-w-6xl";
   const [mod, setMod] = useState<"brut" | "net">(modInitial);
@@ -573,47 +576,49 @@ export default function CalculatorSalariu({
   return (
     <>
       {/* ── Hero ── */}
-      <section className="border-b border-stone-200 bg-canvas">
-        <div className={`mx-auto ${wrap} px-4 py-8 sm:px-6 sm:py-12`}>
-          {/* Hero pe aceeași grilă (col-span-3) = exact lățimea cardului „Rezultat calcul", la orice viewport. */}
-          <div className="md:grid md:grid-cols-5 md:gap-6">
-            <div className="md:col-span-3">
-          {/* Breadcrumb doar pe pagini dinamice, nu pe homepage */}
-          {titluCustom && (
-            <nav className="mb-4 flex gap-2 text-xs text-stone-600" aria-label="Breadcrumb">
-              <Link href="/" className="hover:text-stone-700">Acasă</Link>
-              <span>/</span>
-              <span aria-current="page">{fluturas ? "Fluturaș de salariu" : "Calculator salariu"}</span>
-            </nav>
-          )}
+      {!embedded && (
+        <section className="border-b border-stone-200 bg-canvas">
+          <div className={`mx-auto ${wrap} px-4 py-8 sm:px-6 sm:py-12`}>
+            {/* Hero pe aceeași grilă (col-span-3) = exact lățimea cardului „Rezultat calcul", la orice viewport. */}
+            <div className="md:grid md:grid-cols-5 md:gap-6">
+              <div className="md:col-span-3">
+                {/* Breadcrumb doar pe pagini dinamice, nu pe homepage */}
+                {titluCustom && (
+                  <nav className="mb-4 flex gap-2 text-xs text-stone-600" aria-label="Breadcrumb">
+                    <Link href="/" className="hover:text-stone-700">Acasă</Link>
+                    <span>/</span>
+                    <span aria-current="page">{fluturas ? "Fluturaș de salariu" : "Calculator salariu"}</span>
+                  </nav>
+                )}
 
-          {/* Titlul Dinamic */}
-          <h1 className="mb-3 text-3xl font-bold tracking-[-0.02em] text-stone-900 sm:text-4xl">
-            {titluCustom || <>Calculator salariu net 2026</>}
-          </h1>
+                {/* Titlul Dinamic */}
+                <h1 className="mb-3 text-3xl font-bold tracking-[-0.02em] text-stone-900 sm:text-4xl">
+                  {titluCustom || <>Calculator salariu net 2026</>}
+                </h1>
 
-          {/* Subtitlul Dinamic */}
-          <p className="max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600 [&_a]:font-medium [&_a]:text-stone-700 [&_a]:underline [&_a]:underline-offset-2 hover:[&_a]:text-stone-900">
-            {subtitluCustom || (
-              <>
-                Calcul salariu net din brut: pune salariul brut și vezi netul, cu CAS, CASS, impozit și costul angajatorului, conform{" "}
-                <a href="https://legislatie.just.ro/Public/DetaliiDocument/308231" target="_blank" rel="noopener noreferrer">HG 146/2026</a>
-                {" "}și{" "}
-                <a href="https://legislatie.just.ro/Public/DetaliiDocument/305817" target="_blank" rel="noopener noreferrer">OUG 89/2025</a>. Funcționează și invers, din net în brut.
-              </>
-            )}
-          </p>
+                {/* Subtitlul Dinamic */}
+                <p className="max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600 [&_a]:font-medium [&_a]:text-stone-700 [&_a]:underline [&_a]:underline-offset-2 hover:[&_a]:text-stone-900">
+                  {subtitluCustom || (
+                    <>
+                      Calcul salariu net din brut: pune salariul brut și vezi netul, cu CAS, CASS, impozit și costul angajatorului, conform{" "}
+                      <a href="https://legislatie.just.ro/Public/DetaliiDocument/308231" target="_blank" rel="noopener noreferrer">HG 146/2026</a>
+                      {" "}și{" "}
+                      <a href="https://legislatie.just.ro/Public/DetaliiDocument/305817" target="_blank" rel="noopener noreferrer">OUG 89/2025</a>. Funcționează și invers, din net în brut.
+                    </>
+                  )}
+                </p>
 
-          {/* Dateline tehnic, scurt și curat */}
-          {!titluCustom && (
-            <div className="mt-4 text-xs text-stone-600">
-              Ultima actualizare: 26 iulie 2026
-            </div>
-          )}
+                {/* Dateline tehnic, scurt și curat */}
+                {!titluCustom && (
+                  <div className="mt-4 text-xs text-stone-600">
+                    Ultima actualizare: 26 iulie 2026
+                  </div>
+                )}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* ── Calculator ── */}
       <div className={`mx-auto grid ${wrap} gap-6 px-4 py-8 sm:px-6 sm:py-12 md:grid-cols-5`} id="calc-layout">

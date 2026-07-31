@@ -58,6 +58,14 @@ function canonicalFrom(html: string) {
   return tag?.match(/\bhref="([^"]+)"/i)?.[1] ?? "";
 }
 
+function hasNoindex(html: string) {
+  return [...html.matchAll(/<meta\b[^>]*>/gi)].some(([tag]) => {
+    const name = tag.match(/\bname=["']([^"']+)["']/i)?.[1]?.toLowerCase();
+    const content = tag.match(/\bcontent=["']([^"']+)["']/i)?.[1]?.toLowerCase() ?? "";
+    return name === "robots" && content.split(/[\s,]+/).includes("noindex");
+  });
+}
+
 function jsonLdBlocks(html: string) {
   return [...html.matchAll(/<script\b[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi)]
     .map((match) => JSON.parse(match[1]));
@@ -156,6 +164,114 @@ async function auditRenderedSite() {
   }
   if (!/<th\b[^>]*scope="row"[^>]*>\s*Salariul minim brut\s*<\/th>/i.test(editorialTable)) {
     failures.push("/noutati/salariul-minim-1-iulie-2026: primul câmp al rândului nu este antet semantic");
+  }
+
+  const widgetPage = rendered.get("/widget") ?? "";
+  if (!widgetPage.includes("/widget/frame?variant=complet")) {
+    failures.push("/widget: lipseste codul de integrare pentru widgetul complet");
+  }
+  if (!widgetPage.includes("/widget/frame/fluturas")) {
+    failures.push("/widget: lipseste codul de integrare pentru widgetul fluturas");
+  }
+  if (/widget\.js/i.test(widgetPage)) {
+    failures.push("/widget: varianta widget.js nu trebuia sa mai fie publicata");
+  }
+
+  const minimalSnippetStart = widgetPage.indexOf("https://salariile.ro/widget/frame&quot;");
+  const completeSnippetStart = widgetPage.indexOf(
+    "https://salariile.ro/widget/frame?variant=complet&quot;",
+  );
+  const payslipSnippetStart = widgetPage.indexOf(
+    "https://salariile.ro/widget/frame/fluturas&quot;",
+  );
+  const minimalSnippet = minimalSnippetStart >= 0
+    ? widgetPage.slice(minimalSnippetStart, minimalSnippetStart + 500)
+    : "";
+  const completeSnippet = completeSnippetStart >= 0
+    ? widgetPage.slice(completeSnippetStart, completeSnippetStart + 500)
+    : "";
+  const payslipSnippet = payslipSnippetStart >= 0
+    ? widgetPage.slice(payslipSnippetStart, payslipSnippetStart + 500)
+    : "";
+  if (!minimalSnippet.includes("scrolling=&quot;no&quot;")) {
+    failures.push('/widget: snippetul minimalist trebuie sa pastreze scrolling="no"');
+  }
+  if (completeSnippet.includes("scrolling=&quot;no&quot;")) {
+    failures.push('/widget: snippetul complet nu trebuie sa blocheze scrollul intern');
+  }
+  if (payslipSnippet.includes("scrolling=&quot;no&quot;")) {
+    failures.push('/widget: snippetul fluturas nu trebuie sa blocheze scrollul intern');
+  }
+
+  const frameSitemapEntries = locations.filter(
+    (location) => new URL(location).pathname.startsWith("/widget/frame"),
+  );
+  if (frameSitemapEntries.length > 0) {
+    failures.push(`/widget/frame: iframe-ul nu trebuie sa apara in sitemap (${frameSitemapEntries.join(", ")})`);
+  }
+
+  const widgetFrames = [
+    {
+      pathname: "/widget/frame",
+      label: "minimal",
+      kind: "minimal",
+      canonical: "https://salariile.ro/widget",
+    },
+    {
+      pathname: "/widget/frame?variant=complet",
+      label: "complet",
+      kind: "complete",
+      canonical: "https://salariile.ro/widget",
+    },
+    {
+      pathname: "/widget/frame/fluturas",
+      label: "fluturas",
+      kind: "payslip",
+      canonical: "https://salariile.ro/fluturas-salariu",
+    },
+  ] as const;
+
+  for (const { pathname, label, kind, canonical: expectedCanonical } of widgetFrames) {
+    try {
+      const response = await fetch(`${BASE_URL}${pathname}`);
+      const html = await response.text();
+      const mainCount = html.match(/<main(?:\s[^>]*)?>/gi)?.length ?? 0;
+      const headerCount = html.match(/<header(?:\s[^>]*)?>/gi)?.length ?? 0;
+      const footerCount = html.match(/<footer(?:\s[^>]*)?>/gi)?.length ?? 0;
+      const canonical = canonicalFrom(html);
+      const csp = response.headers.get("content-security-policy") ?? "";
+
+      if (response.status !== 200) failures.push(`${pathname}: HTTP ${response.status}`);
+      if (!hasNoindex(html)) failures.push(`${pathname}: meta robots noindex lipseste`);
+      if (canonical !== expectedCanonical) {
+        failures.push(`${pathname}: canonical ${canonical || "lipsa"}`);
+      }
+      if (mainCount !== 1) failures.push(`${pathname}: ${mainCount} elemente main`);
+      if (headerCount !== 0) failures.push(`${pathname}: ${headerCount} elemente header`);
+      if (footerCount !== 0) failures.push(`${pathname}: ${footerCount} elemente footer`);
+      if (!/(?:^|;)\s*frame-ancestors\s+\*(?:\s*;|$)/i.test(csp)) {
+        failures.push(`${pathname}: CSP fara frame-ancestors *`);
+      }
+      if (response.headers.has("x-frame-options")) {
+        failures.push(`${pathname}: X-Frame-Options blocheaza integrarea externa`);
+      }
+      if (kind !== "minimal" && !html.includes("Date salariale")) {
+        failures.push(`${pathname}: lipseste sectiunea Date salariale`);
+      }
+      if (kind === "complete" && !html.includes("Rezultat calcul")) {
+        failures.push(`${pathname}: lipseste sectiunea Rezultat calcul`);
+      }
+      if (kind === "payslip" && !html.includes("Fluturaș de salariu")) {
+        failures.push(`${pathname}: lipseste rezultatul pentru fluturas`);
+      }
+      if (kind === "payslip" && !html.includes("Salariu de bază (brut)")) {
+        failures.push(`${pathname}: lipseste formularul generatorului de fluturas`);
+      }
+
+      console.log(`Widget ${label} verificat: ${pathname}`);
+    } catch (error) {
+      failures.push(`${pathname}: ${error instanceof Error ? error.message : String(error)}`);
+    }
   }
 
   const rejectedCalculatorPaths = [
@@ -281,6 +397,7 @@ async function auditRenderedSite() {
   console.log("OK: HTTP 200, un singur H1/main si canonical corect pe toate rutele.");
   console.log("OK: JSON-LD valid, allowlist inchis, link graph si valorile GSC au trecut.");
   console.log("OK: Markdown allowlist/negociere si headerele asseturilor au trecut.");
+  console.log("OK: toate cele trei iframe-uri sunt integrabile, noindex si absente din sitemap.");
 }
 
 try {

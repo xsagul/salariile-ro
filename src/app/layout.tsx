@@ -86,8 +86,8 @@ export default async function RootLayout({
   const headerStore = await headers();
   const nonce = headerStore.get("x-nonce") || undefined;
 
-  // /widget/frame rulează în <iframe> pe alte site-uri: fără Header/Footer,
-  // doar conținutul widgetului. Pathname-ul vine din middleware (x-pathname).
+  // /widget/frame și subrutele sale rulează în <iframe> pe alte site-uri: fără
+  // Header/Footer, doar conținutul widgetului. Pathname-ul vine din proxy.
   const isEmbeddableFrame = (headerStore.get("x-pathname") || "").startsWith("/widget/frame");
 
   return (

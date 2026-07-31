@@ -41,10 +41,10 @@ export function proxy(request: NextRequest) {
   // ─── CSP cu nonce pentru răspunsurile HTML ─────────────────────────────────
   const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
 
-  // /widget/frame e SINGURA rută gândită să ruleze în <iframe> pe alte site-uri
-  // (widgetul embeddabil). Pentru ea, frame-ancestors devine * — restul site-ului
-  // rămâne blocat la framing ('none').
-  const isEmbeddableFrame = path === "/widget/frame";
+  // Doar rutele iframe declarate explicit pot rula pe alte site-uri. Landingurile
+  // publice rămân protejate cu frame-ancestors 'none'.
+  const isEmbeddableFrame =
+    path === "/widget/frame" || path === "/widget/frame/fluturas";
 
   const cspHeader = `
     default-src 'self';
