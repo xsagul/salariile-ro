@@ -108,4 +108,4 @@ export const SALARY_DATA_2026 = [
 ] as const satisfies readonly SalaryDatasetRecord[];
 
 export const SALARY_DATASET_USAGE_TERMS =
-  "Valorile factuale din această selecție pot fi reutilizate, inclusiv comercial, cu indicarea surselor oficiale și a datei de referință. Un link către pagina setului este apreciat pentru trasabilitate, dar Salariile.ro nu revendică drepturi asupra datelor oficiale. Nota nu acordă drepturi asupra codului site-ului sau asupra documentelor și sistemelor-sursă.";
+  "Valorile factuale din această selecție sunt publicate sub CC0 1.0 (domeniu public): pot fi reutilizate liber, inclusiv comercial, fără obligația de a cere permisiunea. Sunt fapte preluate din acte normative și din comunicatele INS, iar Salariile.ro nu revendică drepturi asupra lor. Îți cerem totuși — ca normă de bună practică, nu ca obligație legală — să indici sursa oficială și data de referință, pentru ca cititorii tăi să poată verifica cifrele. CC0 acoperă strict aceste valori, nu codul site-ului, textele editoriale sau documentele-sursă.";

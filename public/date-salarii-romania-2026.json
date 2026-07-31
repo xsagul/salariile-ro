@@ -12,7 +12,7 @@
     "name": "Salariile.ro",
     "url": "https://salariile.ro"
   },
-  "usage_terms": "Valorile factuale din această selecție pot fi reutilizate, inclusiv comercial, cu indicarea surselor oficiale și a datei de referință. Un link către pagina setului este apreciat pentru trasabilitate, dar Salariile.ro nu revendică drepturi asupra datelor oficiale. Nota nu acordă drepturi asupra codului site-ului sau asupra documentelor și sistemelor-sursă.",
+  "usage_terms": "Valorile factuale din această selecție sunt publicate sub CC0 1.0 (domeniu public): pot fi reutilizate liber, inclusiv comercial, fără obligația de a cere permisiunea. Sunt fapte preluate din acte normative și din comunicatele INS, iar Salariile.ro nu revendică drepturi asupra lor. Îți cerem totuși — ca normă de bună practică, nu ca obligație legală — să indici sursa oficială și data de referință, pentru ca cititorii tăi să poată verifica cifrele. CC0 acoperă strict aceste valori, nu codul site-ului, textele editoriale sau documentele-sursă.",
   "sources": {
     "hg_1506_2024": {
       "name": "HG 1506/2024",

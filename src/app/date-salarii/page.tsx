@@ -81,7 +81,11 @@ const jsonLd = {
         },
       },
       mainEntityOfPage: SITE_URL + PAGE_PATH,
-      license: SITE_URL + PAGE_PATH + "#reutilizare",
+      // URI canonic, nu o ancoră proprie: un parser nu poate interpreta o
+      // secțiune de pagină. CC0 pentru că valorile sunt fapte din acte
+      // normative și comunicate INS, asupra cărora nu revendicăm drepturi;
+      // citarea rămâne cerută ca normă, explicată în secțiunea #reutilizare.
+      license: "https://creativecommons.org/publicdomain/zero/1.0/",
       keywords: [
         "salariu minim România 2026",
         "câștig salarial mediu INS",
