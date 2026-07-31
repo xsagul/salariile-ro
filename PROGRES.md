@@ -265,3 +265,78 @@ Ce s-a verificat:
 Raport complet pe Desktop:
 
 - `C:\Users\Sorin\Desktop\SEOBILITY-KEYWORD-VOLUME-VERIFICATION-SALARIILERO-2026-07-08.md`
+
+## Audit cap-coada pe departamente — 2026-07-31
+
+Status: 9 echipe paralele (tehnic/QA, date, continut, crawl live, SERP,
+fiscal, off-site, AI/GEO, forensic salariu-minim). Deployat commitul `1602341`.
+
+### Descoperiri care schimba prioritatile
+
+- **Al doilea val de trafic a inceput pe 27 iulie**, invizibil in auditul din
+  29 iulie (care se oprea pe 26). Media 20-26 iul: 6.987 impresii/zi;
+  27-28 iul: 18.532/zi (+142,8% pe aceleasi zile de saptamana). Confirmat
+  independent de Vercel, continua pe 29-30 iulie. **Cauza neatribuibila** —
+  deployul nostru a fost pe 29, dupa inceputul saltului.
+  Consecinta: masurarea de pe 4 august e contaminata (doua evenimente
+  suprapuse). Baseline nou de la 29 iulie.
+- **CTR-ul a scazut**, nu a stagnat: 1,31% -> 1,16% (28v28). Cresterea vine
+  din generice pe pozitiile 6-10.
+- **Intentia "salariu minim net" e zero-click.** Forensic pe sub-intentii,
+  comparat cu baseline PRE-eveniment (17-28 iun, nu cu varful din iulie):
+  CTR plat sub 1% indiferent de pozitie, inclusiv pe locul 1. Recuperarea
+  celor 2,5 pozitii pierdute valoreaza sub 20 clickuri/luna.
+  In schimb homepage-ul a urcat pe intentia de calculator (8,67 -> 5,38),
+  unde CTR-ul e 2-10%. **Decizie: nu urmarim rangul pe informational net;
+  consolidam pe calculator.**
+- **Autoritatea reala e ~4 domenii dofollow.** Din cele 67 linkuri GSC,
+  61 sunt Reddit nofollow. Backlinkul de pe facetotibanii.ro a fost STERS
+  (verificat in DOM live; GSC inca il raporteaza). Brand: 8 impresii la
+  210.945 servite.
+- **Clona locala era in urma cu 2 commituri**, iar `9220ac1` redenumise
+  `middleware.ts` -> `src/proxy.ts`. Batchul P2 modifica middleware.ts, deci
+  commitul direct ar fi pus handlerul 410 intr-un fisier ignorat de Next 16.
+  Rezolvat prin rebase (git a urmarit redenumirea si a fuzionat corect).
+
+### Livrat in productie (commit 1602341)
+
+- `/date-salarii` + CSV + JSON live (erau 404; toate unghiurile de PR
+  depindeau de ele). CSV se serveste ca `text/csv`.
+- `/info` -> 410 (era indexata; 1 click/90 zile, 0 linkuri interne).
+- `/zile-lucratoare-2026`: titlul/blocul "Raspuns rapid"/FAQ lunar se
+  calculeaza din luna curenta. Era hardcodat pe iulie si expira pe 1 august
+  pe o pagina cu 11.032 impresii, pozitia 5,11.
+- Dezambiguizare 16 zile libere vs 17 sarbatori denumite (a doua zi de
+  Rusalii cade pe 1 iunie in 2026). Site-ul se contrazicea singur.
+- Homepage nu mai revendica fraza informationala "Salariu minim net";
+  H1 + JSON-LD pe /salariu-minim aliniate cu title-ul.
+- `seo-snapshots/`, `seo-assets/`, `SEO-AUDIT-*.md` -> .gitignore
+  (repo public; decizie explicita a proprietarului).
+
+### Backlog urmator, in ordine
+
+1. **Meta descriptions rescrise de Google**: pe `/salariu-minim-constructii-2026`,
+   `/deducere-personala-2026` si 2 rute `/calculator/*`, Google afiseaza
+   meniul de navigatie ca snippet. De rescris descrierile ca sa raspunda
+   intentiei, nu ca sa fie call-to-action.
+2. **`/calculator/*` (40 pagini)**: raspunsul nu e in title, description sau
+   primele 40 de cuvinte. Titlu de forma "5.000 lei brut = 2.981 lei net in
+   2026". Cel mai mare deficit GEO identificat.
+3. **`llms.txt` generat din cod** (route handler ca robots.txt): azi listeaza
+   1 articol din 6 si 13 calculatoare din 40; divergenta e structurala.
+4. **`src/lib/organization.ts`**: entitatea Organization e definita inline in
+   ~9 locuri, fara `@id` si fara `sameAs`. Person e facut corect, Organization nu.
+5. **Valoarea INS in 6 locuri** — comunicatul pentru iunie se asteapta
+   ~12-14 august. De extras intr-o constanta unica inainte.
+6. **Recuperare linkuri**: facetotibanii.ro (sters) si contractorii.ro
+   (mentiune fara link). Drafturi pregatite, NETRIMISE.
+7. Hub PFA (pozitia 47, acoperire tematica incompleta) si test de title
+   izolat pe `/zile-libere-2026` (4 clickuri = risc zero), dupa fereastra curata.
+
+### Neverificat
+
+- Gmail, GSC UI, Vercel dashboard, Seobility: extensia Claude for Chrome nu
+  era conectata (`list_connected_browsers` -> lista goala). Datele GSC/Vercel
+  au venit prin API si scripturi locale.
+- Numarul de linkuri externe din GSC nu e expus prin API; ramane cifra din
+  raportul UI (67/3 domenii), care oricum supraestimeaza (vezi mai sus).
