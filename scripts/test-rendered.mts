@@ -58,6 +58,29 @@ function canonicalFrom(html: string) {
   return tag?.match(/\bhref="([^"]+)"/i)?.[1] ?? "";
 }
 
+function decodeHtml(value: string) {
+  return value
+    .replaceAll("&amp;", "&")
+    .replaceAll("&quot;", '"')
+    .replaceAll("&#x27;", "'")
+    .replaceAll("&#39;", "'")
+    .replaceAll("&apos;", "'")
+    .replaceAll("&lt;", "<")
+    .replaceAll("&gt;", ">")
+    .replaceAll("&#x2F;", "/");
+}
+
+function titleFrom(html: string) {
+  return decodeHtml(html.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1] ?? "").trim();
+}
+
+function metaDescriptionFrom(html: string) {
+  const tag = [...html.matchAll(/<meta\b[^>]*>/gi)]
+    .map(([match]) => match)
+    .find((match) => /\bname=["']description["']/i.test(match));
+  return decodeHtml(tag?.match(/\bcontent="([^"]*)"/i)?.[1] ?? "").trim();
+}
+
 function hasNoindex(html: string) {
   return [...html.matchAll(/<meta\b[^>]*>/gi)].some(([tag]) => {
     const name = tag.match(/\bname=["']([^"']+)["']/i)?.[1]?.toLowerCase();
@@ -156,6 +179,96 @@ async function auditRenderedSite() {
 
   for (const [pathname, expected, label] of contentChecks) {
     if (!rendered.get(pathname)?.includes(expected)) failures.push(`${pathname}: lipseste ${label}`);
+  }
+
+  // ── SERP: titlul si descrierea trebuie sa contina RASPUNSUL, nu intrebarea ──
+  // Titlu peste 60 de caractere se trunchiaza; descrierea care incepe cu un verb
+  // la imperativ (call-to-action) este ignorata de Google, care alege alt text
+  // din pagina — in trecut, meniul de navigatie.
+  const TITLE_MAX_LENGTH = 60;
+  const DESCRIPTION_MIN_LENGTH = 110;
+  const DESCRIPTION_MAX_LENGTH = 165;
+
+  const strictTitlePaths = new Set([
+    "/salariu-minim-constructii-2026",
+    "/deducere-personala-2026",
+  ]);
+  const titluriLungi: string[] = [];
+
+  for (const [pathname, html] of rendered) {
+    const title = titleFrom(html);
+    const description = metaDescriptionFrom(html);
+
+    if (title.length > TITLE_MAX_LENGTH) {
+      const raport = `${pathname} (${title.length}): ${title}`;
+      if (pathname.startsWith("/calculator/") || strictTitlePaths.has(pathname)) {
+        failures.push(`${raport} — title peste ${TITLE_MAX_LENGTH} caractere`);
+      } else {
+        titluriLungi.push(raport);
+      }
+    }
+    if (!description) {
+      failures.push(`${pathname}: meta description lipseste`);
+    }
+
+    if (!pathname.startsWith("/calculator/")) continue;
+
+    // Formatul de titlu-raspuns: "5.000 lei brut în net = 2.981 lei (2026)".
+    const titleMatch = title.match(
+      /^([\d.]+) lei (brut în net|net în brut) = ([\d.]+) lei \((?:2026|ian\.–iun\. 2026)\)/,
+    );
+    if (!titleMatch) {
+      failures.push(`${pathname}: titlul nu contine raspunsul ("${title}")`);
+      continue;
+    }
+
+    const [, intrare, , rezultat] = titleMatch;
+    const slugValue = pathname.match(/-(\d+)-(?:brut|net)$/)?.[1] ?? "";
+    if (intrare.replaceAll(".", "") !== slugValue) {
+      failures.push(`${pathname}: titlul foloseste alta valoare de intrare (${intrare})`);
+    }
+    if (!html.includes(rezultat)) {
+      failures.push(`${pathname}: cifra rezultat ${rezultat} din titlu lipseste din pagina`);
+    }
+    if (!description.startsWith(rezultat)) {
+      failures.push(`${pathname}: descrierea nu incepe cu cifra rezultat ("${description}")`);
+    }
+    if (!/CAS .*CASS .*impozit/.test(description)) {
+      failures.push(`${pathname}: descrierea nu contine defalcarea CAS/CASS/impozit`);
+    }
+    if (/^(Calculează|Află|Vezi|Descoperă)/i.test(description)) {
+      failures.push(`${pathname}: descrierea incepe cu un call-to-action`);
+    }
+    if (
+      description.length < DESCRIPTION_MIN_LENGTH ||
+      description.length > DESCRIPTION_MAX_LENGTH
+    ) {
+      failures.push(`${pathname}: descriere de ${description.length} caractere`);
+    }
+
+    // Paragraful-raspuns dinaintea calculatorului trebuie sa contina cifra si
+    // defalcarea, ca sa fie extractabil de LLM-uri si de featured snippets.
+    const leadStart = html.indexOf("</h1>");
+    const lead = leadStart >= 0 ? html.slice(leadStart, leadStart + 2500) : "";
+    for (const necesar of [rezultat, "CAS", "CASS", "impozit", "costul total al angajatorului"]) {
+      if (!lead.includes(necesar)) {
+        failures.push(`${pathname}: paragraful-raspuns nu contine "${necesar}"`);
+      }
+    }
+  }
+
+  // Descrierile rescrise dupa ce Google le-a inlocuit cu meniul de navigatie.
+  const descriptionAnswers = [
+    ["/salariu-minim-constructii-2026", "4.582 lei brut", "2.754 lei net"],
+    ["/deducere-personala-2026", "865 lei", "1.946 lei"],
+  ] as const;
+  for (const [pathname, ...asteptate] of descriptionAnswers) {
+    const description = metaDescriptionFrom(rendered.get(pathname) ?? "");
+    for (const asteptat of asteptate) {
+      if (!description.includes(asteptat)) {
+        failures.push(`${pathname}: descrierea nu contine "${asteptat}" ("${description}")`);
+      }
+    }
   }
 
   const editorialTable = rendered.get("/noutati/salariul-minim-1-iulie-2026") ?? "";
@@ -384,6 +497,11 @@ async function auditRenderedSite() {
   const webPage = schemaNodes.find((block) => block["@type"] === "WebPage");
   if (!webPage || typeof webPage.name !== "string") {
     failures.push("/calculator/calcul-salariu-net-4050-brut: WebPage.name nu este string");
+  }
+
+  if (titluriLungi.length > 0) {
+    console.log(`AVERTISMENT: ${titluriLungi.length} titluri peste ${TITLE_MAX_LENGTH} caractere in afara clusterelor verificate strict:`);
+    for (const raport of titluriLungi) console.log(`  - ${raport}`);
   }
 
   console.log(`Rute din sitemap verificate: ${locations.length}`);

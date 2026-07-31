@@ -5,9 +5,12 @@ import { calculStandardCuRegim } from "@/lib/fiscal";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
 
-const TITLE = "Salariu minim construcții 2026: 4.582 lei brut";
+// Titlul depășea 60 de caractere cu sufixul de brand, iar descrierea folosea jargon
+// („S1", „S2") plus meta-limbaj despre pagină („cu taxe și surse"), nu răspunsul la
+// întrebarea utilizatorului — motiv pentru care Google prefera meniul de navigație.
+const TITLE = "Salariu minim construcții 2026: 4.582 lei brut, 2.754 net";
 const DESCRIPTION =
-  "Salariul minim în construcții este 4.582 lei brut și 27,714 lei/oră în 2026. Calcul net: 2.739 lei în S1 și 2.754 lei în S2, cu taxe și surse.";
+  "Salariul minim în construcții este 4.582 lei brut pe lună în 2026, adică 27,714 lei pe oră și 2.754 lei net din iulie. Cost total angajator: 4.685 lei.";
 const PATH = "/salariu-minim-constructii-2026";
 const MINIM_CONSTRUCTII = 4582;
 const TARIF_ORAR = "27,714";
@@ -55,7 +58,9 @@ const FAQ = [
 ];
 
 export const metadata: Metadata = {
-  title: TITLE,
+  // Absolut: cu sufixul „| Salariile.ro" titlul ar trece de 60 de caractere și s-ar
+  // trunchia în SERP exact peste cifra de net.
+  title: { absolute: TITLE },
   description: DESCRIPTION,
   alternates: { canonical: `https://salariile.ro${PATH}` },
   openGraph: ogPage({ title: TITLE, description: DESCRIPTION, path: PATH }),

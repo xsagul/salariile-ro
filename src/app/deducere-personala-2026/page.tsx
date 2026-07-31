@@ -5,9 +5,13 @@ import { calculeazaDeducerePersonala, SALARIU_MINIM } from "@/lib/fiscal";
 import { ogPage, twPage } from "@/lib/seo";
 import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow } from "@/app/components/ui";
 
-const TITLE = "Deducere personală 2026: tabel și calcul pentru salariu";
+// Titlul vechi („tabel și calcul pentru salariu") depășea 60 de caractere cu brandul și
+// nu conținea niciun număr. Descrierea veche era o listă de cuvinte-cheie despre ce
+// CONȚINE pagina, nu răspunsul la „cât e deducerea personală" — de aceea Google o
+// ignora și afișa meniul de navigație în locul ei.
+const TITLE = "Deducere personală 2026: 865–1.946 lei";
 const DESCRIPTION =
-  "Tabel deducere personală 2026 pentru salarii, cu plafonul de 6.325 lei, persoane în întreținere, formula Cod Fiscal art. 77 și exemple de calcul net.";
+  "Deducerea personală 2026 este 865 lei fără persoane în întreținere și până la 1.946 lei cu 4+ persoane, la 4.325 lei brut. Peste 6.325 lei brut devine 0.";
 const PATH = "/deducere-personala-2026";
 const PLAFON = SALARIU_MINIM + 2000;
 const PERSOANE = [0, 1, 2, 3, 4] as const;
@@ -54,7 +58,7 @@ const jsonLd = {
     },
     {
       "@type": "Article",
-      headline: "Deducere personală 2026: tabel și calcul pentru salariu",
+      headline: "Deducere personală 2026: valori, plafon și tabel de calcul",
       description: DESCRIPTION,
       url: `https://salariile.ro${PATH}`,
       inLanguage: "ro-RO",
@@ -95,7 +99,10 @@ export default function DeducerePersonalaPage() {
           Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat 6 iulie 2026
         </p>
         <Lead>
-          Tabel rapid pentru deducerea personală din salariu în 2026: plafonul actual este <strong>{fmt(PLAFON)} lei brut</strong>, adică salariul minim brut de {fmt(SALARIU_MINIM)} lei plus 2.000 lei.
+          La salariul minim de {fmt(SALARIU_MINIM)} lei brut, deducerea personală de bază în 2026 este de{" "}
+          <strong>{fmt(maxFaraPersoane)} lei</strong> fără persoane în întreținere și urcă până la{" "}
+          <strong>{fmt(maxCuPatruPersoane)} lei</strong> cu 4 sau mai multe persoane. Peste plafonul de{" "}
+          <strong>{fmt(PLAFON)} lei brut</strong> (salariul minim plus 2.000 lei) deducerea devine 0.
         </Lead>
         <Eyebrow>Codul Fiscal art. 77 · regim valabil din 1 iulie 2026</Eyebrow>
       </Hero>

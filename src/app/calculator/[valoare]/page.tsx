@@ -51,6 +51,78 @@ function isCalculIstoricS1(mod: CalculatorMode, cifra: string) {
   );
 }
 
+const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(n);
+
+/** Sufixul de titlu adăugat automat de layout: `%s | Salariile.ro`. */
+const BRAND_SUFFIX_LENGTH = " | Salariile.ro".length;
+const TITLE_MAX_LENGTH = 60;
+
+/**
+ * Rezultatul fiscal REAL al paginii, calculat identic în generateMetadata și în
+ * componentă. Cifra rezultat trebuie să apară în title, în description și în
+ * paragraful-răspuns, altfel SERP-ul și LLM-urile nu au ce extrage.
+ */
+function calculPagina(mod: ValidCalculatorMode, cifra: string) {
+  const cifraNum = parseInt(cifra, 10);
+  const esteCalculIstoricS1 = isCalculIstoricS1(mod, cifra);
+  const regimFiscal: RegimFiscalSalariu = esteCalculIstoricS1 ? "2026-S1" : REGIM_FISCAL_CURENT;
+  const isNetDinBrut = mod === "net-din-brut";
+  const brutEfectiv = isNetDinBrut
+    ? cifraNum
+    : brutDinNetStandardCuRegim(cifraNum, regimFiscal);
+  const rez = calculStandardCuRegim(brutEfectiv, regimFiscal);
+
+  return { cifraNum, esteCalculIstoricS1, regimFiscal, isNetDinBrut, brutEfectiv, rez };
+}
+
+type CalculPagina = ReturnType<typeof calculPagina>;
+
+/**
+ * Titlu de tip răspuns: „5.000 lei brut în net = 2.981 lei (2026)".
+ * Cifra rezultat este în titlu, iar sintagma „brut în net" / „net în brut"
+ * acoperă tiparul real de căutare. Brandul rămâne acolo unde titlul complet
+ * încape sub 60 de caractere; altfel titlul devine absolut, fără sufix.
+ */
+function titluSeo(date: CalculPagina) {
+  const { cifraNum, isNetDinBrut, brutEfectiv, rez, esteCalculIstoricS1 } = date;
+  const rezultat = isNetDinBrut ? (rez?.net ?? 0) : brutEfectiv;
+  const directie = isNetDinBrut ? "lei brut în net" : "lei net în brut";
+  const perioada = esteCalculIstoricS1 ? "(ian.–iun. 2026)" : "(2026)";
+  return `${fmt(cifraNum)} ${directie} = ${fmt(rezultat)} lei ${perioada}`;
+}
+
+/** Titlul gata de pus în Metadata: cu brand prin template sau absolut dacă nu încape. */
+function metadataTitle(titlu: string): Metadata["title"] {
+  return titlu.length + BRAND_SUFFIX_LENGTH <= TITLE_MAX_LENGTH
+    ? titlu
+    : { absolute: titlu };
+}
+
+/**
+ * Descriere care începe cu cifra rezultat, nu cu un verb la imperativ, și care
+ * conține defalcarea. Un call-to-action nu răspunde intenției query-ului, deci
+ * Google îl înlocuiește cu altceva din pagină (în trecut, meniul de navigație).
+ */
+function descriereSeo(date: CalculPagina) {
+  const { cifraNum, isNetDinBrut, brutEfectiv, rez, esteCalculIstoricS1 } = date;
+  if (!rez) {
+    return `Calcul salariu ${isNetDinBrut ? "net din brut" : "brut din net"} pentru ${fmt(cifraNum)} lei, cu CAS, CASS și impozit pe venit, conform regimului fiscal 2026.`;
+  }
+
+  const taxe = `CAS ${fmt(rez.cas)} lei, CASS ${fmt(rez.cass)} lei și impozit ${fmt(rez.impozit)} lei`;
+
+  if (esteCalculIstoricS1) {
+    const perioada = "între 1 ianuarie și 30 iunie 2026";
+    return isNetDinBrut
+      ? `${fmt(rez.net)} lei net rezultau din ${fmt(brutEfectiv)} lei brut ${perioada}: ${taxe}. Cost total angajator: ${fmt(rez.costTotal)} lei.`
+      : `${fmt(brutEfectiv)} lei brut corespundeau unui net de ${fmt(cifraNum)} lei ${perioada}: ${taxe}. Cost total angajator: ${fmt(rez.costTotal)} lei.`;
+  }
+
+  return isNetDinBrut
+    ? `${fmt(rez.net)} lei net rămân din ${fmt(cifraNum)} lei brut în 2026, după ${taxe}. Cost total angajator: ${fmt(rez.costTotal)} lei pe lună.`
+    : `${fmt(brutEfectiv)} lei brut sunt necesari pentru ${fmt(cifraNum)} lei net în 2026, cu ${taxe}. Cost total angajator: ${fmt(rez.costTotal)} lei pe lună.`;
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { valoare } = await params;
   const { mod, cifra } = parseSlug(valoare);
@@ -59,57 +131,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     notFound();
   }
 
-  const esteCalculIstoricS1 = isCalculIstoricS1(mod, cifra);
-
-  if (mod === "net-din-brut") {
-    const perioada = esteCalculIstoricS1 ? " în ianuarie–iunie 2026" : " în 2026";
-    return {
-      title: `Salariu net pentru ${cifra} lei brut${perioada}`,
-      description: esteCalculIstoricS1
-        ? "Calcul istoric pentru salariul minim brut de 4.050 lei, cu regimul fiscal aplicabil între 1 ianuarie și 30 iunie 2026."
-        : `Calculează instant salariul net pentru ${cifra} lei brut. Află cât reții după CAS, CASS și impozit pe venit.`,
-      alternates: { canonical: `https://salariile.ro/calculator/${valoare}` },
-      openGraph: ogPage({
-        title: `Salariu net pentru ${cifra} lei brut${perioada}`,
-        description: esteCalculIstoricS1
-          ? "Calcul istoric pentru salariul minim din primul semestru al anului 2026."
-          : `Calculează instant salariul net pentru ${cifra} lei brut.`,
-        path: `/calculator/${valoare}`,
-      }),
-      twitter: twPage({
-        title: `Salariu net pentru ${cifra} lei brut${perioada}`,
-        description: esteCalculIstoricS1
-          ? "Calcul istoric pentru salariul minim din primul semestru al anului 2026."
-          : `Calculează instant salariul net pentru ${cifra} lei brut.`,
-      }),
-    };
-  }
-
-  if (mod === "brut-din-net") {
-    const perioada = esteCalculIstoricS1 ? " în ianuarie–iunie 2026" : " în 2026";
-    const description = esteCalculIstoricS1
-      ? "Calcul istoric: află brutul de 4.050 lei corespunzător netului standard de 2.574 lei din primul semestru al anului 2026."
-      : `Calculează instant salariul brut corespunzător unui net de ${cifra} lei. Formula inversă CAS, CASS, impozit.`;
-
-    return {
-      title: `Salariu brut pentru ${cifra} lei net${perioada}`,
-      description,
-      alternates: { canonical: `https://salariile.ro/calculator/${valoare}` },
-      openGraph: ogPage({
-        title: `Salariu brut pentru ${cifra} lei net${perioada}`,
-        description,
-        path: `/calculator/${valoare}`,
-      }),
-      twitter: twPage({
-        title: `Salariu brut pentru ${cifra} lei net${perioada}`,
-        description,
-      }),
-    };
-  }
+  const date = calculPagina(mod, cifra);
+  const titlu = titluSeo(date);
+  const description = descriereSeo(date);
 
   return {
-    title: "Calculator Salariu Net 2026",
-    description: "Calculator salariu net din brut pentru România, actualizat 2026.",
+    title: metadataTitle(titlu),
+    description,
+    alternates: { canonical: `https://salariile.ro/calculator/${valoare}` },
+    openGraph: ogPage({ title: titlu, description, path: `/calculator/${valoare}` }),
+    twitter: twPage({ title: titlu, description }),
   };
 }
 
@@ -136,8 +167,6 @@ function parseSlug(slug: string): {
 
   return { valoare: slug, mod: "necunoscut", cifra: "", brutInitial: "", modInitial: "brut" };
 }
-
-const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(n);
 
 const CALCULATOR_BRUT_REFERENCE_VALUES = [4325, 5000, 7000, 10000, 20000] as const;
 const CALCULATOR_NET_REFERENCE_VALUES = [2574, 3000, 5000, 7000] as const;
@@ -337,36 +366,47 @@ export default async function CalculatorDinamic({ params }: Props) {
     notFound();
   }
 
-  const isNetDinBrut = mod === "net-din-brut";
-  const cifraNum = parseInt(cifra, 10);
-  const esteCalculIstoricS1 = isCalculIstoricS1(mod, cifra);
-  const regimFiscal: RegimFiscalSalariu = esteCalculIstoricS1 ? "2026-S1" : REGIM_FISCAL_CURENT;
+  const date = calculPagina(mod, cifra);
+  const { cifraNum, esteCalculIstoricS1, regimFiscal, isNetDinBrut, brutEfectiv, rez } = date;
 
-  // Calculul fiscal REAL pentru această valoare — sursa unicității conținutului.
-  const brutEfectiv = isNetDinBrut
-    ? cifraNum
-    : brutDinNetStandardCuRegim(cifraNum, regimFiscal);
-  const rez = calculStandardCuRegim(brutEfectiv, regimFiscal);
   const linkuriCalculatoare = getCalculatorLinks(
     mod,
     cifraNum,
     isNetDinBrut ? (rez?.net ?? cifraNum) : brutEfectiv,
   );
 
+  // H1 și <title> spun acum același lucru: întrebarea ȘI răspunsul, cu cifra.
+  const titluText = titluSeo(date);
+  const rezultatH1 = isNetDinBrut ? (rez?.net ?? 0) : brutEfectiv;
   const titluDinamic = isNetDinBrut
-    ? <>Salariu net pentru <em>{cifra} lei brut</em></>
-    : <>Salariu brut pentru <em>{cifra} lei net</em></>;
-  const titluText = isNetDinBrut
-    ? `Salariu net pentru ${cifra} lei brut${esteCalculIstoricS1 ? " în ianuarie–iunie 2026" : " în 2026"}`
-    : `Salariu brut pentru ${cifra} lei net${esteCalculIstoricS1 ? " în ianuarie–iunie 2026" : " în 2026"}`;
+    ? <>{fmt(cifraNum)} lei brut în net = <em>{fmt(rezultatH1)} lei</em></>
+    : <>{fmt(cifraNum)} lei net în brut = <em>{fmt(rezultatH1)} lei</em></>;
 
-  const subtitluDinamic = esteCalculIstoricS1
-    ? isNetDinBrut
-      ? `Calcul istoric pentru salariul minim de 4.050 lei brut, folosind grila fiscală aplicabilă între 1 ianuarie și 30 iunie 2026: facilitate de 300 lei și deducere raportată la minimul de 4.050 lei.`
-      : `Calcul istoric pentru netul standard de 2.574 lei din primul semestru al anului 2026. Brutul corespunzător este 4.050 lei, calculat cu facilitatea de 300 lei și grila fiscală S1.`
-    : isNetDinBrut
-    ? `Află exact cât reprezintă salariul net pentru suma de ${cifra} lei brut în 2026. Vezi deducerile de CAS, CASS, impozitul pe venit și costul total pentru angajator.`
-    : `Află ce salariu brut trebuie să negociezi pentru a primi ${cifra} lei net în mână în 2026. Vezi distribuția exactă a taxelor la stat.`;
+  // Paragraf-răspuns (~40 de cuvinte) ÎNAINTE de calculator: cifra rezultat plus
+  // defalcarea completă, ca să existe un răspuns extractabil pentru featured
+  // snippets și pentru LLM-uri. Vechiul lead („Află exact cât reprezintă…") nu
+  // conținea nicio cifră, deci nu putea fi citat de nimeni.
+  const perioadaFraza = esteCalculIstoricS1 ? "între 1 ianuarie și 30 iunie 2026" : "în 2026";
+  const subtitluDinamic = rez ? (
+    isNetDinBrut ? (
+      <>
+        Un salariu brut de <strong>{fmt(cifraNum)} lei</strong> înseamnă{" "}
+        <strong>{fmt(rez.net)} lei net</strong> în mână {perioadaFraza}, adică {rez.brutNet}% din brut.
+        Se rețin CAS {fmt(rez.cas)} lei (25%), CASS {fmt(rez.cass)} lei (10%) și impozit{" "}
+        {fmt(rez.impozit)} lei (10%), iar costul total al angajatorului este{" "}
+        <strong>{fmt(rez.costTotal)} lei</strong> pe lună.
+      </>
+    ) : (
+      <>
+        <strong>{fmt(brutEfectiv)} lei brut</strong> pe lună sunt necesari pentru{" "}
+        <strong>{fmt(cifraNum)} lei net</strong> în mână {perioadaFraza}. Din acest brut se rețin CAS{" "}
+        {fmt(rez.cas)} lei (25%), CASS {fmt(rez.cass)} lei (10%) și impozit {fmt(rez.impozit)} lei (10%),
+        iar costul total al angajatorului ajunge la <strong>{fmt(rez.costTotal)} lei</strong>.
+      </>
+    )
+  ) : (
+    descriereSeo(date)
+  );
 
   const ctx = isNetDinBrut ? getContextBrut(cifraNum) : getContextNet(cifraNum);
 
@@ -407,7 +447,7 @@ export default async function CalculatorDinamic({ params }: Props) {
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Acasă", item: "https://salariile.ro" },
           { "@type": "ListItem", position: 2, name: "Calculator", item: "https://salariile.ro/" },
-          { "@type": "ListItem", position: 3, name: `${cifra} lei ${isNetDinBrut ? 'brut' : 'net'}`, item: `https://salariile.ro/calculator/${valoare}` }
+          { "@type": "ListItem", position: 3, name: `${fmt(cifraNum)} lei ${isNetDinBrut ? 'brut' : 'net'}`, item: `https://salariile.ro/calculator/${valoare}` }
         ]
       },
       {
@@ -436,7 +476,7 @@ export default async function CalculatorDinamic({ params }: Props) {
 
       {/* Conținut editorial — poziție (categorie) + defalcare reală (unică) */}
       <Section>
-          <h2>Ce înseamnă {cifra} lei {isNetDinBrut ? "brut" : "net"}?</h2>
+          <h2>Ce înseamnă {fmt(cifraNum)} lei {isNetDinBrut ? "brut" : "net"}?</h2>
           <p>{leadPozitie}</p>
           <p>{ctx.pozitie}</p>
       </Section>
@@ -445,11 +485,11 @@ export default async function CalculatorDinamic({ params }: Props) {
       {rez && (
         <Section>
             <h2>
-              Defalcarea fiscală pentru {isNetDinBrut ? `${cifra} lei brut` : `un net de ${cifra} lei`}
+              Defalcarea fiscală pentru {isNetDinBrut ? `${fmt(cifraNum)} lei brut` : `un net de ${fmt(cifraNum)} lei`}
             </h2>
             {!isNetDinBrut && (
               <p className="source-note">
-                Pentru un net de {cifra} lei, salariul brut necesar este aproximativ{" "}
+                Pentru un net de {fmt(cifraNum)} lei, salariul brut necesar este aproximativ{" "}
                 <strong>{fmt(brutEfectiv)} lei</strong>. Mai jos, defalcarea completă pornind de la acest brut.
               </p>
             )}
