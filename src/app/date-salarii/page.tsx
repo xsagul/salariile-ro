@@ -67,7 +67,19 @@ const jsonLd = {
       inLanguage: "ro-RO",
       isAccessibleForFree: true,
       temporalCoverage: "2026-01-01/2026-12-31",
-      spatialCoverage: { "@type": "Country", name: "România" },
+      // GSC a raportat pe 1 august 2026 „Invalid object type for field
+      // 'spatialCoverage'" pentru varianta cu `Country`. Deși Country e subtip
+      // de Place în schema.org, validatorul Google pentru Dataset acceptă doar
+      // Place sau text. Bounding box-ul e formatul din documentația lor:
+      // "latitudine_min longitudine_min latitudine_max longitudine_max".
+      spatialCoverage: {
+        "@type": "Place",
+        name: "România",
+        geo: {
+          "@type": "GeoShape",
+          box: "43.618 20.261 48.265 29.691",
+        },
+      },
       creator: personSchema,
       publisher: {
         "@type": "Organization",
