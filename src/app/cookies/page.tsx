@@ -109,7 +109,10 @@ export default function CookiesPage() {
               Până pe 31 iulie 2026 site-ul nu a avut banner, pentru că nu seta niciun cookie. Odată cu adăugarea Google Analytics 4 situația s-a schimbat, iar pagina aceasta a fost actualizată ca să spună exact ce se întâmplă.
             </p>
             <p>
-              Bannerul apare la prima vizită și are două butoane, <strong>Accept</strong> și <strong>Refuz</strong>, tratate egal — refuzul nu este ascuns după un al doilea ecran de setări. Nimic nu se încarcă înainte să alegi. Alegerea ta se salvează local, în <code>localStorage</code>, nu într-un cookie, și expiră după 6 luni, când te întrebăm din nou.
+              Bannerul apare la prima vizită și are două butoane, <strong>Da</strong> și <strong>Nu</strong>, ambele pe primul ecran și la un singur click. Refuzul nu este ascuns după un meniu de setări. Nimic nu se încarcă înainte să alegi.
+            </p>
+            <p>
+              Alegerea se salvează local, în spațiul de stocare al browserului, nu într-un cookie. Reținem cele două răspunsuri diferit, și preferăm să scriem asta explicit decât să o descoperi singur: dacă accepți, ținem minte <strong>6 luni</strong>; dacă refuzi, ținem minte <strong>doar pe durata vizitei</strong>, iar la următoarea accesare bannerul apare din nou. Refuzul rămâne valabil integral cât timp ești pe site și nu se încarcă nimic de la Google în acel timp.
             </p>
             <p>
               Dacă refuzi, ștergem și eventualele cookies <code>_ga</code> rămase de la o acceptare anterioară. Ca să îți schimbi alegerea, șterge datele site-ului din browser: bannerul reapare la următoarea încărcare.

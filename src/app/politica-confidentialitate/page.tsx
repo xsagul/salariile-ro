@@ -144,7 +144,7 @@ export default function PoliticaConfidentialitatePage() {
             <ul>
               <li>Logs de server: maximum 30 de zile, după care se șterg automat de către Vercel.</li>
               <li>Statistici Vercel Analytics: agregate, păstrate la nivel anonim conform politicii Vercel.</li>
-              <li>Statistici Google Analytics 4: păstrate conform setării de retenție a proprietății; alegerea ta privind consimțământul se salvează local în browser și expiră după 6 luni.</li>
+              <li>Statistici Google Analytics 4: păstrate conform setării de retenție a proprietății. Alegerea ta privind consimțământul se salvează local în browser: acceptul se reține 6 luni, refuzul se reține pe durata vizitei curente, iar la o vizită ulterioară te întrebăm din nou.</li>
               <li>Date Google Search Console: agregate, păstrate conform politicii Google (16 luni pentru istoricul detaliat).</li>
             </ul>
         </Section>
