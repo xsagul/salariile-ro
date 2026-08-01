@@ -77,42 +77,39 @@ gtag('config','${GA_MEASUREMENT_ID}',{'anonymize_ip':true});`}
       )}
 
       {stare === "nedecis" && (
+        // Bandă compactă jos: plasarea bottom-center are cea mai bună rată de
+        // interacțiune, iar înălțimea mică lasă conținutul vizibil.
         <div
           role="region"
-          aria-labelledby="consimtamant-titlu"
-          className="fixed inset-x-0 bottom-0 z-50 border-t border-stone-300 bg-surface p-4 shadow-soft sm:p-5"
+          aria-label="Consimțământ pentru măsurarea traficului"
+          className="fixed inset-x-0 bottom-0 z-50 border-t border-stone-300 bg-surface/95 px-4 py-2.5 backdrop-blur sm:py-3"
         >
-          <div className="mx-auto flex max-w-4xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <div className="max-w-prose text-sm leading-normal text-stone-700">
-              <p id="consimtamant-titlu" className="font-semibold text-stone-900">
-                Ne dai voie să măsurăm traficul?
-              </p>
-              <p className="mt-1">
-                Folosim Google Analytics ca să vedem ce pagini sunt utile. Pune cookies pe
-                dispozitivul tău. Calculatoarele și tot conținutul funcționează identic dacă refuzi.{" "}
-                <a
-                  href="/cookies"
-                  className="font-medium text-stone-900 underline underline-offset-2"
-                >
-                  Detalii în politica de cookies
-                </a>
-                .
-              </p>
-            </div>
+          <div className="mx-auto flex max-w-4xl flex-col gap-2.5 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+            <p className="text-[13px] leading-snug text-stone-700">
+              Măsurăm ce pagini sunt căutate, ca să știm ce să actualizăm întâi. Google Analytics
+              pune cookies.{" "}
+              <a href="/cookies" className="font-medium text-stone-900 underline underline-offset-2">
+                Detalii
+              </a>
+            </p>
+            {/* Cele două butoane sunt identice ca stil, dimensiune și contrast.
+                EDPB cere refuzului aceeași proeminență, iar instanța supremă din
+                Austria a decis în 2025 că un accept colorat lângă un refuz gri
+                încalcă cerința de paritate. */}
             <div className="flex shrink-0 gap-2">
               <button
                 type="button"
                 onClick={() => decide("denied")}
-                className="rounded-md border border-stone-300 px-4 py-2 text-sm font-medium text-stone-700 hover:bg-stone-100"
+                className="min-w-[76px] rounded-md border border-stone-400 px-4 py-1.5 text-sm font-medium text-stone-800 hover:bg-stone-100"
               >
-                Refuz
+                Nu
               </button>
               <button
                 type="button"
                 onClick={() => decide("granted")}
-                className="rounded-md bg-stone-900 px-4 py-2 text-sm font-medium text-white hover:bg-stone-700"
+                className="min-w-[76px] rounded-md border border-stone-400 px-4 py-1.5 text-sm font-medium text-stone-800 hover:bg-stone-100"
               >
-                Accept
+                Da
               </button>
             </div>
           </div>
