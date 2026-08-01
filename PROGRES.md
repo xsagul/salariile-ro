@@ -390,3 +390,68 @@ linkuri.
 **Backlog GEO ramas neatins:** llms.txt generat din cod, src/lib/organization.ts
 cu @id si sameAs, variableMeasured ca PropertyValue, byline vizibil pe
 homepage, normalizarea numelui autorului ("Sorin" vs "Stiuriuc Sorin-Marian").
+
+## Google Analytics 4 — 1 august 2026
+
+Proprietate `G-2L1J64H5H9`, stream `salariile.ro web`. Retentie 14 luni,
+Search Console legat. Prima zi de date: 2-3 august.
+
+**Consimtamant.** GA nu se incarca deloc inainte de accept (nu Consent Mode
+cu "denied", care descarca gtag.js oricum). Banner compact de 58px pe desktop,
+jos-centrat, refuz la un click pe primul strat.
+- Buton "Da" plin, "Nu" conturat — decizie asumata a proprietarului dupa ce
+  riscul a fost prezentat (EDPB cere paritate; CNIL a amendat Google 150 mil.
+  EUR pentru asimetrie). Daca apare sesizare ANSPDCP, primul lucru de facut
+  este revenirea la butoane identice — commit `872802c`.
+- Memorare asimetrica: accept 6 luni in localStorage, refuz doar pe durata
+  vizitei in sessionStorage. Tot decizie a proprietarului. Consecinta de
+  interpretare: rata de acceptare va fi umflata de oboseala, nu de acord.
+
+**Evenimente proprii** (GA4 nu urmareste automat butoane):
+- `calcul_salariu`, `calcul_pfa` — conversiile centrale, cu interval de suma,
+  NU suma exacta (venitul vizitatorului nu pleaca la Google).
+- `calcul_fara_valoare` — apasa butonul cu campul gol; semnal de UX.
+- `descarca_fluturas_pdf`, `copiaza_cod_widget` (cu varianta) — al doilea e
+  probabil cel mai valoros: fiecare copiere e un potential link contextual.
+- `scroll_adancime` 25/50/75/90, `click_link_intern`, `click_ancora`,
+  `click_contact`. Externele sunt sarite: le acopera Enhanced measurement.
+- `web_vital` — LCP/CLS/INP/FCP/TTFB. CLS se trimite x1000, altfel rotunjirea
+  il face mereu 0.
+- Parametri globali pe FIECARE eveniment, prin `gtag('set')`: `versiune_site`
+  (SHA-ul commitului) si `interval_viewport`. Fara `versiune_site`, intrebarea
+  "a scazut bounce rate dupa modificare?" nu e masurabila riguros.
+
+**Doua capcane rezolvate, de retinut:**
+1. `VERCEL_GIT_COMMIT_SHA` nu are prefix NEXT_PUBLIC_, deci Next nu il
+   inlineaza in bundle-ul de client. Promovat explicit din `next.config.ts`.
+2. Web Vitals se raporteaza inainte ca vizitatorul sa apese "Da", deci se
+   pierdeau complet pentru vizitatorii noi. Exista acum o coada in memorie
+   (plafon 40), golita cand gtag.js se incarca si aruncata integral la refuz.
+3. `requestAnimationFrame` nu ruleaza in taburi de fundal; prima versiune a
+   urmaririi de scroll ramanea blocata definitiv. Trecut pe throttle temporal.
+
+**CSP:** avea doar `default-src 'self'`, deci GA ar fi incarcat scriptul dar
+nu ar fi putut trimite niciun eveniment. Adaugate `connect-src` si `img-src`.
+
+**Pagini legale rescrise.** `/cookies` afirma "conceput cookieless" si explica
+"de ce nu folosim consent banner" — ambele deveneau false. Documenteaza acum
+cele doua cookies si asimetria de memorare. `/politica-confidentialitate` are
+GA4 cu baza legala consimtamant (art. 6(1)(a)), nu interes legitim.
+
+**Fix raportat de GSC:** `spatialCoverage` folosea `Country`, respins de
+validatorul Google pentru Dataset desi e valid schema.org. Inlocuit cu
+`Place` + `GeoShape`. Confirmat live de Rich Results Test: 1 valid item,
+zero avertizari. Notificarea a venit la o zi dupa publicarea paginii.
+
+### Decizie amanata: analytics cookieless propriu
+
+Nu se construieste acum. Se evalueaza dupa ce GA4 produce date reale.
+Criteriu de decizie: **cate dintre rapoartele pe care le folosesti efectiv
+depind de identificarea peste zile** (vizitatori care revin, retentie,
+atribuire multi-sesiune). Daca raspunsul e "niciunul" — si toata lista ceruta
+azi era de metrici in interiorul unei sesiuni — atunci o solutie cookieless
+ar acoperi nevoia si ar masura 100% din vizitatori, nu ~50%, eliminand si
+biasul de selectie care afecteaza orice experiment rulat pe GA4 cu banner.
+Alternativa rapida la constructie proprie: Umami self-hosted.
+Motivul valid pentru a construi totusi de la zero e portofoliul front-end,
+nu ROI-ul SEO.
