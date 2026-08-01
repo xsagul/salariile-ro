@@ -6,6 +6,7 @@ import { Inter } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 import ConsimtamantAnalytics from "@/app/components/ConsimtamantAnalytics";
+import UrmarireInteractiuni from "@/app/components/UrmarireInteractiuni";
 import { headers } from "next/headers"; // Adăugat pentru citirea nonce-ului
 import type { Metadata } from "next";
 
@@ -122,7 +123,13 @@ export default async function RootLayout({
             componenta afișează bannerul cât timp vizitatorul nu a decis.
             Nu se montează în iframe: widgetul rulează pe site-uri terțe, unde
             consimțământul e responsabilitatea gazdei, nu a noastră. */}
-        {!isEmbeddableFrame && <ConsimtamantAnalytics nonce={nonce} />}
+        {!isEmbeddableFrame && (
+          <>
+            <ConsimtamantAnalytics nonce={nonce} />
+            {/* Scroll și click-uri interne. Nu trimite nimic fără consimțământ. */}
+            <UrmarireInteractiuni />
+          </>
+        )}
       </body>
     </html>
   );
