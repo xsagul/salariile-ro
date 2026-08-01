@@ -92,22 +92,27 @@ gtag('config','${GA_MEASUREMENT_ID}',{'anonymize_ip':true});`}
                 Detalii
               </a>
             </p>
-            {/* Cele două butoane sunt identice ca stil, dimensiune și contrast.
-                EDPB cere refuzului aceeași proeminență, iar instanța supremă din
-                Austria a decis în 2025 că un accept colorat lângă un refuz gri
-                încalcă cerința de paritate. */}
+            {/* Accept plin, refuz conturat — decizie asumată a proprietarului.
+                EDPB (raportul Cookie Banner Taskforce, 2023) cere refuzului
+                aceeași proeminență, iar CNIL a amendat Google cu 150 mil. EUR
+                pentru asimetrie. Riscul e redus, nu eliminat, prin: aceeași
+                dimensiune, aceeași poziție, un singur click pentru refuz pe
+                primul strat, text stone-900 pe bordură stone-500 (contrast peste
+                pragul WCAG AA), fără culoare care să sugereze că refuzul e
+                dezactivat. Dacă apare o notificare ANSPDCP, prima schimbare de
+                făcut este să readuci butoanele la stil identic. */}
             <div className="flex shrink-0 gap-2">
               <button
                 type="button"
                 onClick={() => decide("denied")}
-                className="min-w-[76px] rounded-md border border-stone-400 px-4 py-1.5 text-sm font-medium text-stone-800 hover:bg-stone-100"
+                className="min-w-[76px] rounded-md border border-stone-500 px-4 py-1.5 text-sm font-medium text-stone-900 hover:bg-stone-100"
               >
                 Nu
               </button>
               <button
                 type="button"
                 onClick={() => decide("granted")}
-                className="min-w-[76px] rounded-md border border-stone-400 px-4 py-1.5 text-sm font-medium text-stone-800 hover:bg-stone-100"
+                className="min-w-[76px] rounded-md border border-stone-900 bg-stone-900 px-4 py-1.5 text-sm font-medium text-white hover:bg-stone-700"
               >
                 Da
               </button>
