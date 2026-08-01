@@ -78,6 +78,44 @@ export function storeConsent(choice: ConsentChoice): StoredConsent | null {
   return record;
 }
 
+type GtagParams = Record<string, string | number | boolean>;
+
+declare global {
+  interface Window {
+    gtag?: (command: string, eventName: string, params?: GtagParams) => void;
+  }
+}
+
+/**
+ * Trimite un eveniment către GA4. No-op dacă vizitatorul nu a acceptat: fără
+ * consimțământ `gtag` nici nu există în pagină, deci nu e nevoie de alt gard.
+ */
+export function trackEvent(name: string, params?: GtagParams) {
+  if (typeof window === "undefined") return;
+  if (typeof window.gtag !== "function") return;
+  window.gtag("event", name, params);
+}
+
+/**
+ * Grupează salariul în intervale înainte de a-l trimite la Google.
+ *
+ * Deliberat: nu trimitem valoarea exactă introdusă de vizitator. Este venitul
+ * lui, iar pe un site fiscal combinația „sumă exactă + oraș + dispozitiv" se
+ * apropie periculos de un dat cu caracter personal. Intervalul răspunde la
+ * întrebarea utilă — ce categorii de salarii se calculează — fără să expună
+ * cifra cuiva.
+ */
+export function intervalSalariu(valoare: number): string {
+  if (!Number.isFinite(valoare) || valoare <= 0) return "necunoscut";
+  const praguri = [2000, 3000, 4000, 5000, 6000, 8000, 10000, 15000, 20000];
+  for (let i = 0; i < praguri.length; i += 1) {
+    if (valoare < praguri[i]) {
+      return i === 0 ? `sub_${praguri[0]}` : `${praguri[i - 1]}_${praguri[i]}`;
+    }
+  }
+  return `peste_${praguri[praguri.length - 1]}`;
+}
+
 /**
  * Șterge cookie-urile puse de GA. Necesar la retragerea consimțământului: oprirea
  * scriptului nu elimină `_ga` și `_ga_<container>` deja scrise.
