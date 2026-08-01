@@ -1147,7 +1147,14 @@ export default function CalculatorSalariu({
               disabled={stale}
               aria-disabled={stale}
               className={`mt-5 inline-flex min-h-12 items-center gap-2 rounded border border-stone-300 px-4 py-3 text-xs font-medium text-stone-700 transition-colors ${stale ? "cursor-not-allowed opacity-50" : "hover:border-stone-900 hover:bg-stone-900 hover:text-white"}`}
-              onClick={() => generarePDFFluturas({
+              onClick={() => {
+                // Descărcarea PDF e cea mai puternică dovadă că vizitatorul a
+                // dus interacțiunea până la capăt, nu doar a citit o cifră.
+                trackEvent("descarca_fluturas_pdf", {
+                  interval_salariu: intervalSalariu(parseFloat(rezAfisat.brutEfectiv) || 0),
+                  mod_fluturas: Boolean(fluturas),
+                });
+                return generarePDFFluturas({
                 brut: parseFloat(rezAfisat.brutEfectiv),
                 rez: rezAfisat.rez,
                 // Butonul e dezactivat când rezultatul e „învechit" (stale), deci
@@ -1160,7 +1167,8 @@ export default function CalculatorSalariu({
                 firma: fluturas ? firma : undefined,
                 detalii: fluturas && fluturasSnap ? fluturasSnap : undefined,
                 retineri: retineriNum,
-              })}
+                });
+              }}
             >
               ↓ Descarcă fluturaș PDF
             </button>
