@@ -44,7 +44,7 @@ const jsonLd = {
       "@type": "WebPage",
       name: "Politica de confidențialitate salariile.ro",
       description:
-        "Politica GDPR a salariile.ro: date colectate (logs server, analytics anonime Vercel), bază legală interes legitim, drepturile vizitatorilor, autoritate ANSPDCP.",
+        "Politica GDPR a salariile.ro: date colectate (logs server, analytics anonime Vercel, Google Analytics doar cu consimțământ), baze legale, drepturile vizitatorilor, autoritate ANSPDCP.",
       url: "https://salariile.ro/politica-confidentialitate",
       inLanguage: "ro-RO",
       dateModified: "2026-05-11",
@@ -98,6 +98,9 @@ export default function PoliticaConfidentialitatePage() {
               <li>
                 <strong>Statistici de vizitare anonime</strong>: prin Vercel Web Analytics se contorizează numărul de vizite, paginile cele mai accesate și țara de origine (la nivel general). Nu se folosesc cookies pentru această analiză, datele sunt complet anonime și nu se transferă către terți.
               </li>
+              <li>
+                <strong>Statistici Google Analytics 4 — numai cu consimțământul tău</strong>: dacă apeși „Accept” în bannerul de cookies, se încarcă Google Analytics 4 (identificator de măsurare <code>G-2L1J64H5H9</code>), care setează cookies și înregistrează paginile vizitate, sursa vizitei, tipul de dispozitiv și localizarea aproximativă derivată din IP. Baza legală este <strong>consimțământul</strong> (art. 6 alin. 1 lit. a GDPR), nu interesul legitim, iar refuzul nu are nicio consecință asupra utilizării site-ului. Adresa IP este anonimizată, iar semnalele publicitare (<code>ad_storage</code>, <code>ad_user_data</code>, <code>ad_personalization</code>) sunt dezactivate explicit. Dacă nu accepți, scriptul Google nu este încărcat deloc.
+              </li>
             </ul>
             <h3>Date pe care NU le colectăm</h3>
             <ul>
@@ -122,6 +125,9 @@ export default function PoliticaConfidentialitatePage() {
             </p>
             <ul>
               <li>
+                <strong>Google Ireland Limited</strong> (Irlanda, cu transferuri către Google LLC în SUA): furnizor Google Analytics 4, activat exclusiv pe baza consimțământului tău. Google LLC este certificat conform mecanismului UE-SUA Data Privacy Framework. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Politica Google</a>.
+              </li>
+              <li>
                 <strong>Vercel Inc.</strong> (SUA): furnizor de hosting și CDN. Procesează automat fiecare cerere către site. Vercel este certificat conform mecanismului UE-SUA Data Privacy Framework. <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener">Politica Vercel</a>.
               </li>
               <li>
@@ -138,6 +144,7 @@ export default function PoliticaConfidentialitatePage() {
             <ul>
               <li>Logs de server: maximum 30 de zile, după care se șterg automat de către Vercel.</li>
               <li>Statistici Vercel Analytics: agregate, păstrate la nivel anonim conform politicii Vercel.</li>
+              <li>Statistici Google Analytics 4: păstrate conform setării de retenție a proprietății; alegerea ta privind consimțământul se salvează local în browser și expiră după 6 luni.</li>
               <li>Date Google Search Console: agregate, păstrate conform politicii Google (16 luni pentru istoricul detaliat).</li>
             </ul>
         </Section>
@@ -145,7 +152,7 @@ export default function PoliticaConfidentialitatePage() {
         <Section>
             <h2>6. Cookies</h2>
             <p>
-              Salariile.ro nu folosește cookies pentru tracking. Pentru detalii despre cookies tehnice strict necesare, vezi pagina dedicată <Link href="/cookies">cookies</Link>.
+              Salariile.ro nu folosește cookies de publicitate sau profilare. Cookies de analiză se setează doar dacă le accepți explicit. Pentru detalii, vezi pagina dedicată <Link href="/cookies">cookies</Link>.
             </p>
         </Section>
 
