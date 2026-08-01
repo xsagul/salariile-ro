@@ -78,6 +78,37 @@ export function storeConsent(choice: ConsentChoice): StoredConsent | null {
   return record;
 }
 
+/**
+ * Versiunea codului care a servit pagina. Fără ea, întrebarea „a scăzut rata
+ * de respingere după modificare?" e o comparație între intervale de date în
+ * care speri că nimic altceva nu s-a schimbat. Cu ea, poți segmenta exact
+ * vizitatorii care au văzut varianta veche față de cea nouă.
+ *
+ * Vercel expune SHA-ul commitului la build. Pe local rămâne „dev".
+ */
+export const VERSIUNE_SITE = (
+  process.env.NEXT_PUBLIC_VERSIUNE_SITE ||
+  process.env.VERCEL_GIT_COMMIT_SHA ||
+  "dev"
+).slice(0, 7);
+
+/**
+ * Lățimea ferestrei, grupată. GA4 raportează rezoluția ecranului, nu a
+ * ferestrei — cineva cu monitor de 1920 și fereastra la 800px se comportă ca
+ * pe tabletă. Pentru diagnosticarea problemelor de layout, viewportul e cel
+ * care contează.
+ */
+export function intervalViewport(latime: number): string {
+  if (latime < 360) return "sub_360";
+  if (latime < 480) return "360_480";
+  if (latime < 640) return "480_640";
+  if (latime < 768) return "640_768";
+  if (latime < 1024) return "768_1024";
+  if (latime < 1280) return "1024_1280";
+  if (latime < 1536) return "1280_1536";
+  return "peste_1536";
+}
+
 type GtagParams = Record<string, string | number | boolean>;
 
 declare global {
@@ -86,14 +117,38 @@ declare global {
   }
 }
 
+// Coadă pentru evenimentele produse înainte ca gtag să existe. Cazul real:
+// Core Web Vitals se raportează la începutul încărcării, cu mult înainte ca
+// vizitatorul să apese „Da", deci fără coadă nu am avea niciodată LCP sau CLS
+// pentru cineva aflat la prima vizită. Coada trăiește doar în memorie și se
+// aruncă la refuz — nu se scrie nimic pe dispozitiv înainte de consimțământ.
+const COADA_MAXIMA = 40;
+let coada: Array<[string, GtagParams | undefined]> = [];
+
 /**
- * Trimite un eveniment către GA4. No-op dacă vizitatorul nu a acceptat: fără
- * consimțământ `gtag` nici nu există în pagină, deci nu e nevoie de alt gard.
+ * Trimite un eveniment către GA4. Dacă vizitatorul nu a decis încă, evenimentul
+ * așteaptă în memorie. Dacă refuză, coada se golește fără să plece nimic.
  */
 export function trackEvent(name: string, params?: GtagParams) {
   if (typeof window === "undefined") return;
-  if (typeof window.gtag !== "function") return;
+  if (typeof window.gtag !== "function") {
+    if (coada.length < COADA_MAXIMA) coada.push([name, params]);
+    return;
+  }
   window.gtag("event", name, params);
+}
+
+/** Trimite evenimentele din coadă. Se apelează după ce gtag s-a încărcat. */
+export function flushEventQueue() {
+  if (typeof window === "undefined" || typeof window.gtag !== "function") return;
+  const deTrimis = coada;
+  coada = [];
+  for (const [name, params] of deTrimis) window.gtag("event", name, params);
+}
+
+/** Aruncă evenimentele nesosite. Se apelează la refuz. */
+export function discardEventQueue() {
+  coada = [];
 }
 
 /**

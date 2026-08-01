@@ -11,13 +11,30 @@
 // Fără consimțământ, `trackEvent` este no-op: gtag nici nu există în pagină.
 
 import { usePathname } from "next/navigation";
+import { useReportWebVitals } from "next/web-vitals";
 import { useEffect } from "react";
-import { trackEvent } from "@/lib/analytics";
+import { intervalViewport, trackEvent } from "@/lib/analytics";
 
 const PRAGURI = [25, 50, 75, 90] as const;
 
 export default function UrmarireInteractiuni() {
   const pathname = usePathname();
+
+  // Core Web Vitals în GA4. Le avem deja în Speed Insights, dar acolo sunt
+  // izolate: nu le poți încrucișa cu angajamentul. Aici poți răspunde la
+  // „cei care prind LCP prost pleacă mai repede?".
+  useReportWebVitals((metric) => {
+    // CLS e subunitar; rotunjit la întreg ar deveni 0 pentru orice valoare
+    // reală. Îl trimitem înmulțit cu 1000, ca în recomandarea web-vitals.
+    const valoare = metric.name === "CLS" ? metric.value * 1000 : metric.value;
+    trackEvent("web_vital", {
+      nume: metric.name,
+      valoare: Math.round(valoare),
+      rating: metric.rating ?? "necunoscut",
+      cale: pathname,
+      interval_viewport: intervalViewport(window.innerWidth),
+    });
+  });
 
   // Adâncime de scroll. Pragurile se resetează la fiecare schimbare de rută,
   // altfel o navigare client-side ar moșteni pragurile paginii anterioare.

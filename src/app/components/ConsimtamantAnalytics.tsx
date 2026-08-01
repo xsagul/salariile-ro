@@ -11,7 +11,11 @@ import Script from "next/script";
 import { useCallback, useSyncExternalStore } from "react";
 import {
   GA_MEASUREMENT_ID,
+  VERSIUNE_SITE,
   clearAnalyticsCookies,
+  discardEventQueue,
+  flushEventQueue,
+  intervalViewport,
   readStoredConsent,
   storeConsent,
   type ConsentChoice,
@@ -52,7 +56,11 @@ export default function ConsimtamantAnalytics({ nonce }: { nonce?: string }) {
 
   const decide = useCallback((alegere: ConsentChoice) => {
     storeConsent(alegere);
-    if (alegere === "denied") clearAnalyticsCookies();
+    if (alegere === "denied") {
+      clearAnalyticsCookies();
+      // Evenimentele adunate cât timp nu se decisese nu pleacă nicăieri.
+      discardEventQueue();
+    }
     notificaAbonatii();
   }, []);
 
@@ -65,12 +73,20 @@ export default function ConsimtamantAnalytics({ nonce }: { nonce?: string }) {
             nonce={nonce}
             strategy="afterInteractive"
             src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+            // gtag.js definește funcția globală; abia acum se poate goli coada
+            // cu evenimentele produse înainte de consimțământ (tipic: vitals).
+            onLoad={() => flushEventQueue()}
           />
+          {/* `gtag('set')` înainte de `config`: parametrii devin globali și se
+              atașează la FIECARE eveniment, inclusiv la cele native GA4
+              (page_view, scroll, user_engagement). Doar așa poți segmenta rata
+              de respingere sau timpul pe pagină după versiunea de cod. */}
           <Script id="ga-init" nonce={nonce} strategy="afterInteractive">
             {`window.dataLayer=window.dataLayer||[];
 function gtag(){dataLayer.push(arguments);}
 gtag('js',new Date());
 gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'granted'});
+gtag('set',{'versiune_site':'${VERSIUNE_SITE}','interval_viewport':${JSON.stringify(intervalViewport(typeof window === "undefined" ? 1280 : window.innerWidth))}});
 gtag('config','${GA_MEASUREMENT_ID}',{'anonymize_ip':true});`}
           </Script>
         </>
