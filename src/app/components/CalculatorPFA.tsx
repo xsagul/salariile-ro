@@ -16,7 +16,6 @@
 
 import { useState } from "react";
 import { calculeazaPFA, venitNetPfaPentruRamas } from "@/lib/pfa";
-import { intervalSalariu, trackEvent } from "@/lib/analytics";
 
 const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(Math.round(n));
 const doarCifre = (s: string) => s.replace(/\D/g, "");
@@ -128,19 +127,10 @@ export default function CalculatorPFA() {
     const r = buildResult(snap);
     if (!r) {
       setWarn(true);
-      trackEvent("calcul_fara_valoare", { mod: `pfa_${mod}`, mod_fluturas: false });
       if (typeof window !== "undefined") document.getElementById(mod === "venit" ? "pfa-incasari" : "pfa-netdorit")?.focus();
       return;
     }
     setWarn(false);
-    // Acelasi eveniment ca la calculatorul de salariu, cu mod distinct, ca sa
-    // poti compara intr-un singur raport cine foloseste ce instrument.
-    trackEvent("calcul_pfa", {
-      mod: mod === "venit" ? "din_venit_anual" : "din_net_lunar",
-      interval_venit: intervalSalariu(
-        parseFloat(String(mod === "venit" ? snap.incasari : snap.netDorit).replace(/[^\d.]/g, "")) || 0,
-      ),
-    });
     setRez(r); setRezKey(snapKey(snap));
     if (typeof window !== "undefined") {
       const isMobile = window.matchMedia("(max-width: 768px)").matches;

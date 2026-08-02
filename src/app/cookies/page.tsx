@@ -1,5 +1,5 @@
 // app/cookies/page.tsx
-// Server Component. Politica cookies — cookies de analiză doar cu consimțământ explicit.
+// Server Component. Politica cookies — salariile.ro nu folosește cookies non-essential.
 
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -7,20 +7,20 @@ import { ogPage, twPage } from "@/lib/seo";
 import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow } from "@/app/components/ui";
 
 export const metadata: Metadata = {
-  title: "Politica de cookies: analiză doar cu acordul tău",
+  title: "Politica de cookies, fără tracking",
   description:
-    "Salariile.ro nu setează cookies până nu accepți. Analiza traficului e opțională, publicitate nu există, iar site-ul funcționează integral dacă refuzi.",
+    "Salariile.ro este conceput cookieless. Nu folosim cookies pentru analiză, publicitate sau tracking. Detalii complete despre poziția noastră.",
   alternates: { canonical: "https://salariile.ro/cookies" },
   openGraph: ogPage({
-    title: "Politica de cookies: analiză doar cu acordul tău",
+    title: "Politica de cookies, fără tracking",
     description:
-      "Salariile.ro nu setează cookies până nu accepți. Analiza e opțională, publicitate nu există.",
+      "Salariile.ro este cookieless: fără cookies de analiză, publicitate sau tracking.",
     path: "/cookies",
   }),
   twitter: twPage({
-    title: "Politica de cookies: analiză doar cu acordul tău",
+    title: "Politica de cookies, fără tracking",
     description:
-      "Salariile.ro nu setează cookies până nu accepți. Analiza e opțională, publicitate nu există.",
+      "Salariile.ro este cookieless: fără cookies de analiză, publicitate sau tracking.",
   }),
 };
 
@@ -38,10 +38,10 @@ const jsonLd = {
       "@type": "WebPage",
       name: "Politica cookies salariile.ro",
       description:
-        "Salariile.ro nu setează cookies fără consimțământ. Analiza traficului este opțională și refuzabilă, fără cookies de publicitate sau profilare.",
+        "Salariile.ro este cookieless prin design, fără cookies de tracking, analiză comportamentală sau publicitate.",
       url: "https://salariile.ro/cookies",
       inLanguage: "ro-RO",
-      dateModified: "2026-07-31",
+      dateModified: "2026-05-11",
       isPartOf: {
         "@type": "WebSite",
         name: "Salariile.ro",
@@ -60,9 +60,9 @@ export default function CookiesPage() {
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Politica cookies" }]} />
         <H1>Politica cookies</H1>
         <Lead>
-          Salariile.ro nu setează niciun cookie până nu îți ceri acordul, iar site-ul funcționează integral dacă refuzi. Singurele cookies posibile sunt cele de analiză a traficului, pe care le poți accepta sau refuza din bannerul afișat la prima vizită. Publicitate nu există deloc.
+          Salariile.ro este conceput să funcționeze fără cookies pentru tracking, publicitate sau analiză comportamentală. Această pagină explică ce cookies tehnice există (dacă există) și de ce nu folosim consent banner.
         </Lead>
-        <Eyebrow>ZERO PUBLICITATE · ANALIZĂ DOAR CU ACORD · ACTUALIZAT: 31 IULIE 2026</Eyebrow>
+        <Eyebrow>ZERO COOKIES DE TRACKING · ZERO PUBLICITATE · ÎN VIGOARE: 11 MAI 2026</Eyebrow>
       </Hero>
 
       <div>
@@ -79,10 +79,10 @@ export default function CookiesPage() {
         <Section>
             <h2>Ce cookies folosește salariile.ro</h2>
             <p>
-              Pe scurt: <strong>niciunul pentru publicitate</strong>, iar cele de analiză doar dacă le accepți explicit.
+              Pe scurt: <strong>niciunul pentru tracking sau publicitate</strong>.
             </p>
             <p>
-              Calculatorul de salariu nu are nevoie să te urmărească pentru a funcționa. Toate calculele se execută local în browser, nu există conturi de utilizator, nu există formulare care să necesite păstrarea stării între pagini. Dacă refuzi analiza, nu pierzi absolut nicio funcționalitate.
+              Decizia de design este deliberată: calculatorul de salariu nu are nevoie să te urmărească pentru a funcționa. Toate calculele se execută local în browser, nu există conturi de utilizator, nu există formulare care să necesite păstrarea stării între pagini.
             </p>
             <p>
               În detaliu, pe categorii standard:
@@ -92,7 +92,7 @@ export default function CookiesPage() {
                 <strong>Cookies strict necesare</strong>: site-ul nu setează cookies funcționale de tipul „preferințe limbă” sau „mod întunecat”, pentru că aceste funcționalități nu există în versiunea curentă. Dacă vor fi adăugate, această pagină va fi actualizată.
               </li>
               <li>
-                <strong>Cookies de analiză</strong>: folosim două instrumente, cu regimuri diferite. <strong>Vercel Web Analytics</strong> este conceput <strong>cookieless</strong> — nu setează cookies, nu identifică vizitatori individuali, iar datele agregate se calculează server-side pe baza request-urilor anonime; de aceea rulează fără să-ți cerem acordul. <strong>Google Analytics 4</strong> setează cookies (<code>_ga</code> și <code>_ga_2L1J64H5H9</code>, valabile până la 2 ani) și <strong>se încarcă doar dacă apeși „Accept” în banner</strong>. Dacă refuzi, scriptul Google nu este descărcat deloc — nu îl încărcăm „în modul refuzat”, pur și simplu nu ajunge în pagină.
+                <strong>Cookies de analiză</strong>: folosim Vercel Web Analytics, care este conceput <strong>cookieless</strong>. Vercel nu setează cookies pentru analiză și nu identifică vizitatori individuali. Datele agregate (număr de vizite, pagini populare) se calculează server-side pe baza request-urilor anonime.
               </li>
               <li>
                 <strong>Cookies de marketing/publicitate</strong>: niciunul. Salariile.ro nu afișează reclame, nu folosește remarketing, nu integrează platforme publicitare.
@@ -104,23 +104,17 @@ export default function CookiesPage() {
         </Section>
 
         <Section>
-            <h2>Cum funcționează bannerul de consimțământ</h2>
+            <h2>De ce nu există consent banner</h2>
             <p>
-              Până pe 31 iulie 2026 site-ul nu a avut banner, pentru că nu seta niciun cookie. Odată cu adăugarea Google Analytics 4 situația s-a schimbat, iar pagina aceasta a fost actualizată ca să spună exact ce se întâmplă.
+              Cele mai multe site-uri afișează un banner „Acceptă cookies” pentru că setează cookies care necesită consimțământ: cookies Google Analytics, Facebook Pixel, programe de afiliere etc.
             </p>
             <p>
-              Bannerul apare la prima vizită și are două butoane, <strong>Da</strong> și <strong>Nu</strong>, ambele pe primul ecran și la un singur click. Refuzul nu este ascuns după un meniu de setări. Nimic nu se încarcă înainte să alegi.
-            </p>
-            <p>
-              Alegerea se salvează local, în spațiul de stocare al browserului, nu într-un cookie. Reținem cele două răspunsuri diferit, și preferăm să scriem asta explicit decât să o descoperi singur: dacă accepți, ținem minte <strong>6 luni</strong>; dacă refuzi, ținem minte <strong>doar pe durata vizitei</strong>, iar la următoarea accesare bannerul apare din nou. Refuzul rămâne valabil integral cât timp ești pe site și nu se încarcă nimic de la Google în acel timp.
-            </p>
-            <p>
-              Dacă refuzi, ștergem și eventualele cookies <code>_ga</code> rămase de la o acceptare anterioară. Ca să îți schimbi alegerea, șterge datele site-ului din browser: bannerul reapare la următoarea încărcare.
+              Salariile.ro nu setează astfel de cookies, deci nu are obligația legală să ceară consimțământ și nu afișează banner. Acest aspect este menit să facă experiența mai curată, nu să eludeze obligațiile GDPR: pur și simplu nu există date pentru care să se ceară consimțământ.
             </p>
         </Section>
 
         <Section>
-            <h2>Cum verifici ce cookies există</h2>
+            <h2>Cum verifici că nu există cookies</h2>
             <p>
               Poți verifica direct în browser. Pe orice browser modern (Chrome, Firefox, Brave, Safari):
             </p>
@@ -131,14 +125,14 @@ export default function CookiesPage() {
               <li>Caută secțiunea „Cookies” → lista pentru salariile.ro</li>
             </ul>
             <p>
-              Dacă ai refuzat sau încă nu ai ales, lista trebuie să fie goală sau să conțină cel mult cookies tehnice setate de Vercel pentru rutare și securitate. Dacă ai acceptat, vei vedea <code>_ga</code> și <code>_ga_2L1J64H5H9</code> — acelea sunt cele de la Google Analytics și dispar dacă ștergi datele site-ului și alegi „Refuz”.
+              Lista trebuie să fie goală sau să conțină eventual cookies tehnice setate de Vercel pentru rutare/securitate (nu de tracking).
             </p>
         </Section>
 
         <Section>
             <h2>Cum dezactivezi cookies (pentru orice site)</h2>
             <p>
-              Dacă vrei o barieră suplimentară față de alegerea din banner, orice browser modern permite blocarea cookies global sau per site:
+              Chiar dacă pe salariile.ro nu sunt relevante, orice browser modern permite blocarea cookies global sau per site:
             </p>
             <ul>
               <li><strong>Chrome / Brave / Edge:</strong> Setări → Confidențialitate și securitate → Cookies și alte date ale site-ului</li>

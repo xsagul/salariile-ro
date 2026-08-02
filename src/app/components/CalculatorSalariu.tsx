@@ -14,7 +14,6 @@ import {
   type Rezultat,
 } from "@/lib/fiscal";
 import { zileLucratoareLuna } from "@/lib/sarbatori";
-import { intervalSalariu, trackEvent } from "@/lib/analytics";
 
 type SelectOption = { v: number; l: string };
 
@@ -548,19 +547,10 @@ export default function CalculatorSalariu({
     // Câmp gol / invalid → nu calcula; semnalează și pune focus pe input.
     if (!((parseFloat(input.brut) || 0) > 0)) {
       setEmptyWarn(true);
-      // Semnal de UX: cineva a apăsat butonul fără să introducă o sumă. Dacă
-      // proporția e mare, problema e la formular, nu la utilizator.
-      trackEvent("calcul_fara_valoare", { mod, mod_fluturas: Boolean(fluturas) });
       if (typeof window !== "undefined") document.getElementById("salariu-input")?.focus();
       return;
     }
     setEmptyWarn(false);
-    // Interacțiunea centrală a site-ului. Trimitem intervalul, nu suma exactă.
-    trackEvent("calcul_salariu", {
-      mod: mod === "brut" ? "brut_in_net" : "net_in_brut",
-      interval_salariu: intervalSalariu(parseFloat(input.brut) || 0),
-      mod_fluturas: Boolean(fluturas),
-    });
     if (fluturas) {
       const c = compuneFluturas(input, { sporOre, sporuri, normaOre, oreLucrate });
       setRezAfisat(buildResult(c.input, mod, regimFiscal));
@@ -1147,14 +1137,7 @@ export default function CalculatorSalariu({
               disabled={stale}
               aria-disabled={stale}
               className={`mt-5 inline-flex min-h-12 items-center gap-2 rounded border border-stone-300 px-4 py-3 text-xs font-medium text-stone-700 transition-colors ${stale ? "cursor-not-allowed opacity-50" : "hover:border-stone-900 hover:bg-stone-900 hover:text-white"}`}
-              onClick={() => {
-                // Descărcarea PDF e cea mai puternică dovadă că vizitatorul a
-                // dus interacțiunea până la capăt, nu doar a citit o cifră.
-                trackEvent("descarca_fluturas_pdf", {
-                  interval_salariu: intervalSalariu(parseFloat(rezAfisat.brutEfectiv) || 0),
-                  mod_fluturas: Boolean(fluturas),
-                });
-                return generarePDFFluturas({
+              onClick={() => generarePDFFluturas({
                 brut: parseFloat(rezAfisat.brutEfectiv),
                 rez: rezAfisat.rez,
                 // Butonul e dezactivat când rezultatul e „învechit" (stale), deci
@@ -1167,8 +1150,7 @@ export default function CalculatorSalariu({
                 firma: fluturas ? firma : undefined,
                 detalii: fluturas && fluturasSnap ? fluturasSnap : undefined,
                 retineri: retineriNum,
-                });
-              }}
+              })}
             >
               ↓ Descarcă fluturaș PDF
             </button>

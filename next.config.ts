@@ -2,14 +2,6 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
 
-  // Marcajul de versiune trimis la GA4, ca să poți segmenta vizitatorii după
-  // varianta de cod pe care au văzut-o. VERCEL_GIT_COMMIT_SHA nu are prefix
-  // NEXT_PUBLIC_, deci Next nu îl inlinează singur în bundle-ul de client;
-  // aici îl promovăm explicit la build. Pe local rămâne "dev".
-  env: {
-    NEXT_PUBLIC_VERSIUNE_SITE: (process.env.VERCEL_GIT_COMMIT_SHA || "dev").slice(0, 7),
-  },
-
   // Compresie automată
   compress: true,
 

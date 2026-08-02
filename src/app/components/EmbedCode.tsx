@@ -4,7 +4,6 @@
 // Bloc de cod cu buton „Copiază" pentru pagina /widget (codul de embed al widgetului).
 
 import { useState } from "react";
-import { trackEvent } from "@/lib/analytics";
 
 export default function EmbedCode({ code }: { code: string }) {
   const [copied, setCopied] = useState(false);
@@ -13,16 +12,6 @@ export default function EmbedCode({ code }: { code: string }) {
     try {
       await navigator.clipboard.writeText(code);
       setCopied(true);
-      // Cel mai valoros eveniment de pe site: cineva ia codul ca să integreze
-      // widgetul la el. Fiecare instalare e un link contextual către noi, iar
-      // autoritatea externă e blocajul principal al proiectului.
-      trackEvent("copiaza_cod_widget", {
-        varianta: /variant=complet/.test(code)
-          ? "complet"
-          : /frame\/fluturas/.test(code)
-            ? "fluturas"
-            : "minimal",
-      });
       setTimeout(() => setCopied(false), 2000);
     } catch {
       // clipboard indisponibil (permisiuni) — utilizatorul poate selecta manual
