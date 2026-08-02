@@ -5,6 +5,7 @@
 import { Inter } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
+import Script from "next/script";
 import { headers } from "next/headers"; // Adăugat pentru citirea nonce-ului
 import type { Metadata } from "next";
 
@@ -116,6 +117,20 @@ export default async function RootLayout({
             Doar pe Vercel, ca Speed Insights. Nonce-ul CSP e aplicat automat de Next.js pe
             scriptul next/script al componentei (CSP are 'strict-dynamic'). */}
         {process.env.VERCEL_ENV && <Analytics />}
+        {/* Umami — instanță proprie, cookieless. Servit prin /stats.js de pe
+            domeniul propriu (rewrite în next.config.ts), ca să nu fie blocat.
+            Nu setează cookies, deci nu cere banner și nu contrazice /cookies.
+            Nonce necesar: CSP are 'strict-dynamic', care ignoră 'self'.
+            Nu se montează în iframe: widgetul rulează pe site-uri terțe, iar
+            vizitele lor nu sunt vizitele noastre. */}
+        {process.env.VERCEL_ENV && !isEmbeddableFrame && (
+          <Script
+            src="/stats.js"
+            nonce={nonce}
+            strategy="afterInteractive"
+            data-website-id="17dce2b5-ee24-4155-9ad9-a7ed937066fd"
+          />
+        )}
       </body>
     </html>
   );
