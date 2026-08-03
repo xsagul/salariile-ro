@@ -37,7 +37,7 @@ export default function TimpPePagina() {
     const intrare = Date.now();
     let trimis = false;
 
-    const trimite = (inapoi?: boolean) => {
+    const trimite = () => {
       // O singură dată per afișare: `pagehide` și `visibilitychange` se pot
       // declanșa amândouă pentru aceeași plecare.
       if (trimis) return;
@@ -49,17 +49,7 @@ export default function TimpPePagina() {
       if (secunde > 1800) return;
 
       trimis = true;
-      // `inapoi` marchează plecarea prin bfcache, tipică pentru butonul Back.
-      // Nu ne trebuie destinația: Back duce înapoi exact de unde a venit
-      // vizitatorul, iar sursa e deja înregistrată în `referrer_domain`. Deci
-      // „venit din Google + o singură pagină în vizită + plecat cu Back"
-      // înseamnă întoarcere în SERP, dedus logic, fără niciun API de destinație.
-      // Închiderea tabului dă `persisted = false`, deci se elimină singură.
-      window.umami?.track("timp-pagina", {
-        secunde,
-        cale: pathname,
-        inapoi: Boolean(inapoi),
-      });
+      window.umami?.track("timp-pagina", { secunde, cale: pathname });
     };
 
     // Ambele evenimente, deliberat:
@@ -68,20 +58,18 @@ export default function TimpPePagina() {
     //     `pagehide` nu se declanșează consecvent la închiderea tabului.
     // 36% din traficul nostru e mobil, deci al doilea nu e opțional.
     const laAscundere = () => {
-      if (document.visibilityState === "hidden") trimite(false);
+      if (document.visibilityState === "hidden") trimite();
     };
-    const laPagehide = (event: PageTransitionEvent) => trimite(event.persisted);
 
-    window.addEventListener("pagehide", laPagehide);
+    window.addEventListener("pagehide", trimite);
     document.addEventListener("visibilitychange", laAscundere);
 
     return () => {
       // Navigare client-side către altă rută: pagina curentă s-a încheiat,
       // deci o raportăm acum. Fără asta, o vizită cu mai multe pagini ar
-      // trimite un singur eveniment, la final. Nu e plecare de pe site, deci
-      // nu e Back către sursă.
-      trimite(false);
-      window.removeEventListener("pagehide", laPagehide);
+      // trimite un singur eveniment, la final.
+      trimite();
+      window.removeEventListener("pagehide", trimite);
       document.removeEventListener("visibilitychange", laAscundere);
     };
   }, [pathname]);
