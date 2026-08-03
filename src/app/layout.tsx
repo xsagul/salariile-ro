@@ -130,6 +130,12 @@ export default async function RootLayout({
             nonce={nonce}
             strategy="afterInteractive"
             data-website-id="17dce2b5-ee24-4155-9ad9-a7ed937066fd"
+            // Core Web Vitals. Colectarea e opt-in în tracker: fără atributul
+            // ăsta, `initPerformance()` nu se apelează deloc, iar coloanele
+            // lcp/cls/inp/fcp/ttfb din baza de date rămân goale — exact ce am
+            // constatat după prima zi. Metricile se trimit ca event_type 5,
+            // când pagina devine ascunsă.
+            data-performance="true"
           />
         )}
         {/* Eveniment de ieșire cu timpul petrecut. Fără el, o vizită de o
