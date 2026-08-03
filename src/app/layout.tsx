@@ -3,7 +3,6 @@
 // Cifrele folosesc font-variant-numeric: tabular-nums (setat în globals.css).
 
 import { Inter } from "next/font/google";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 import Script from "next/script";
 import TimpPePagina from "@/app/components/TimpPePagina";
@@ -107,15 +106,10 @@ export default async function RootLayout({
           <Footer />
         </div>
         )}
-        {/* Speed Insights doar pe Vercel — pe localhost scriptul /_vercel/speed-insights/script.js
-            dă 404 și loghează eroare în consolă (scade Best Practices). VERCEL_ENV e setat doar pe Vercel.
-            nonce necesar pentru CSP; prop lipsește din tipurile @vercel/speed-insights. */}
-        {process.env.VERCEL_ENV && (
-          // @ts-expect-error SpeedInsights acceptă nonce la runtime
-          <SpeedInsights nonce={nonce} />
-        )}
         {/* Web Analytics (Vercel, cookieless) — declarat în /cookies și /politica-confidentialitate.
-            Doar pe Vercel, ca Speed Insights. Nonce-ul CSP e aplicat automat de Next.js pe
+            Rămâne ca referință independentă față de Umami: două măsurători ale
+            aceluiași trafic, utile pentru validare încrucișată.
+            Doar pe Vercel. Nonce-ul CSP e aplicat automat de Next.js pe
             scriptul next/script al componentei (CSP are 'strict-dynamic'). */}
         {process.env.VERCEL_ENV && <Analytics />}
         {/* Umami — instanță proprie, cookieless. Servit prin /stats.js de pe
