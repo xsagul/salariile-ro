@@ -6,6 +6,7 @@ import { Inter } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 import Script from "next/script";
+import TimpPePagina from "@/app/components/TimpPePagina";
 import { headers } from "next/headers"; // Adăugat pentru citirea nonce-ului
 import type { Metadata } from "next";
 
@@ -131,6 +132,9 @@ export default async function RootLayout({
             data-website-id="17dce2b5-ee24-4155-9ad9-a7ed937066fd"
           />
         )}
+        {/* Eveniment de ieșire cu timpul petrecut. Fără el, o vizită de o
+            singură pagină are un singur timestamp și Umami raportează 0s. */}
+        {process.env.VERCEL_ENV && !isEmbeddableFrame && <TimpPePagina />}
       </body>
     </html>
   );
