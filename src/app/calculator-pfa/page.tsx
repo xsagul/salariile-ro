@@ -17,6 +17,7 @@ import {
   PLAFON_NORMA_VENIT_LEI,
   SALARIU_MINIM_PFA_2026,
 } from "@/lib/pfa";
+import { PLAFON_MICRO_LEI } from "@/lib/forme-juridice";
 
 // Titlul și descrierea urmează intenția reală din SERP, nu doar cuvântul-cheie.
 // Descrierea veche se termina cu „salariul minim de 4.050 lei" și arăta depășită
@@ -62,6 +63,18 @@ const FAQ = [
   {
     q: "Când sunt obligat să trec de la normă de venit la sistem real?",
     a: `Dacă în anul fiscal precedent ai încasat un venit brut mai mare decât echivalentul în lei a 25.000 de euro, începând cu anul următor ai obligația să determini venitul net în sistem real. La cursul mediu folosit în calculator, pragul înseamnă aproximativ ${new Intl.NumberFormat("ro-RO").format(PLAFON_NORMA_VENIT_LEI)} lei.`,
+  },
+  {
+    q: "PFA sau SRL: care iese mai bine în 2026?",
+    a: "Depinde de nivelul veniturilor și de cheltuielile reale, iar diferența este adesea mai mică decât se crede. La 200.000 lei încasări și 20.000 lei cheltuieli, PFA în sistem real și SRL microîntreprindere ies la câteva sute de lei distanță pe an – sub costul anual de contabilitate al unui SRL, deci în interiorul marjei de eroare. SRL cu impozit pe profit iese vizibil mai prost la acest nivel, dar devine singura variantă peste plafonul micro. Calculatorul de pe această pagină compară cele trei forme la aceleași cifre.",
+  },
+  {
+    q: "Cât este impozitul pe microîntreprindere în 2026?",
+    a: "1% pe venituri, o cotă unică. Tranșa de 3% și excepțiile pentru consultanță, IT și HoReCa au fost abrogate prin OUG 89/2025, cu efect de la 1 ianuarie 2026. Multe surse online încă afișează 1% și 3%. Impozitul se aplică pe cifra de afaceri, nu pe profit, deci se datorează și în pierdere. Microîntreprinderea trebuie să aibă cel puțin un salariat, condiție îndeplinită și de un contract de mandat remunerat cel puțin la nivelul salariului minim.",
+  },
+  {
+    q: "Cât este impozitul pe dividende în 2026?",
+    a: "16%, față de 10% anterior, potrivit Legii 141/2025. Se aplică dividendelor distribuite începând cu 1 ianuarie 2026 – contează data distribuirii, nu anul din care provine profitul. Dividendele distribuite pe baza situațiilor financiare interimare întocmite în cursul anului 2025 rămân impozitate cu 10%, fără recalculare. Peste impozit se adaugă CASS, datorată pe trepte de 6, 12 sau 24 de salarii minime, calculate la dividendul net.",
   },
   {
     q: "Sunt și salariat – mai plătesc CAS și CASS la PFA?",
@@ -420,9 +433,32 @@ export default function CalculatorPfaPage() {
                   >
                     100.000 de euro
                   </a>{" "}
-                  se trece la impozit pe profit, iar eligibilitatea depinde și de celelalte condiții legale. Comparația
-                  numerică între PFA și SRL cere ipoteze despre salariu, dividende și costuri de contabilitate, deci nu
-                  o simulăm aici cu o singură cifră.
+                  ({lei(PLAFON_MICRO_LEI)} lei la cursul de la 31 decembrie 2025) se trece la impozit pe profit, iar
+                  eligibilitatea depinde și de celelalte condiții legale.
+                </p>
+                <p className={p}>
+                  Trei lucruri s-au schimbat în 2026 și încă sunt raportate greșit în multe locuri:
+                </p>
+                <ul className="mb-4 list-disc pl-5 text-base leading-normal tracking-[-0.01em] text-stone-600 [&_li]:mb-2">
+                  <li>
+                    <strong>Cota micro este 1%, una singură.</strong> Tranșa de 3% și excepțiile pentru consultanță, IT
+                    și HoReCa au fost abrogate prin OUG 89/2025, de la 1 ianuarie 2026.
+                  </li>
+                  <li>
+                    <strong>Limita de 20% la veniturile din consultanță nu mai există.</strong> A fost abrogată prin
+                    OUG 156/2024, încă din 2025, dar e în continuare citată ca fiind în vigoare.
+                  </li>
+                  <li>
+                    <strong>Impozitul pe dividende este 16%</strong>, față de 10% înainte. Contează{" "}
+                    <strong>data distribuirii</strong>, nu anul din care provine profitul: se aplică dividendelor
+                    distribuite începând cu 1 ianuarie 2026.
+                  </li>
+                </ul>
+                <p className={p}>
+                  Comparația numerică cere ipoteze despre salariu, dividende și costuri de contabilitate, așa că nu o
+                  ascundem într-o singură cifră. Calculatorul de mai sus o face totuși: pune încasările și cheltuielile,
+                  apoi comută rezultatul pe <strong>SRL micro</strong> sau <strong>SRL profit</strong> și vezi cât ți-ar
+                  rămâne pe fiecare, cu ipotezele scrise sub tabel.
                 </p>
               </div>
 

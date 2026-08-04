@@ -25,6 +25,12 @@ import {
   venitNetPfaPentruRamas,
   PLAFON_NORMA_VENIT_LEI,
 } from "@/lib/pfa";
+import {
+  calculeazaSrl,
+  CONTABILITATE_SRL_IMPLICIT,
+  PLAFON_MICRO_LEI,
+  type RezultatSrl,
+} from "@/lib/forme-juridice";
 
 const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(Math.round(n));
 const doarCifre = (s: string) => s.replace(/\D/g, "");
@@ -35,6 +41,8 @@ const grupeazaMii = (raw: string) => {
 
 type Regim = "real" | "norma";
 type Mod = "venit" | "net";
+/** Forma juridică afișată în tabelul de rezultat. */
+type Forma = "pfa" | "micro" | "profit";
 type Snap = {
   regim: Regim;
   mod: Mod;
@@ -42,6 +50,7 @@ type Snap = {
   cheltuieli: string;
   norma: string;
   netDorit: string;
+  contabilitate: string;
   salariatPestePlafonCASS: boolean;
   pensionar: boolean;
 };
@@ -52,6 +61,7 @@ const snapKey = (s: Snap) => JSON.stringify([
   s.cheltuieli,
   s.norma,
   s.netDorit,
+  s.contabilitate,
   s.salariatPestePlafonCASS,
   s.pensionar,
 ]);
@@ -62,7 +72,14 @@ const optiuniDinSnap = (s: Snap) => ({
 });
 
 type Rezultat =
-  | { tip: "real"; r: ReturnType<typeof calculeazaPFA> }
+  | {
+      tip: "real";
+      r: ReturnType<typeof calculeazaPFA>;
+      /** Comparația cu SRL cere cifra de afaceri, pe care o avem doar în modul
+       *  „din venit anual"; la calculul invers nu știm cum se împarte în
+       *  încasări și cheltuieli, iar impozitul micro se aplică pe încasări. */
+      srl: { micro: RezultatSrl; profit: RezultatSrl; venituri: number } | null;
+    }
   | {
       tip: "norma";
       r: ReturnType<typeof calculeazaPfaNormaVenit>;
@@ -103,15 +120,32 @@ function buildResult(s: Snap): Rezultat | null {
   }
 
   let venitNet: number;
+  const venituri = Number(s.incasari) || 0;
+  const cheltuieli = Number(s.cheltuieli) || 0;
   if (s.mod === "venit") {
-    venitNet = Math.max(0, (Number(s.incasari) || 0) - (Number(s.cheltuieli) || 0));
+    venitNet = Math.max(0, venituri - cheltuieli);
   } else {
     const lunar = Number(s.netDorit) || 0;
     if (lunar <= 0) return null;
     venitNet = venitNetPfaPentruRamas(lunar * 12, optiuni);
   }
   if (venitNet <= 0) return null;
-  return { tip: "real", r: calculeazaPFA(venitNet, optiuni) };
+
+  const contabilitate = s.contabilitate === "" ? CONTABILITATE_SRL_IMPLICIT : Number(s.contabilitate) || 0;
+  const optiuniSrl = { cheltuialaContabilitate: contabilitate };
+
+  return {
+    tip: "real",
+    r: calculeazaPFA(venitNet, optiuni),
+    srl:
+      s.mod === "venit" && venituri > 0
+        ? {
+            venituri,
+            micro: calculeazaSrl(venituri, cheltuieli, { tip: "micro", ...optiuniSrl }),
+            profit: calculeazaSrl(venituri, cheltuieli, { tip: "profit", ...optiuniSrl }),
+          }
+        : null,
+  };
 }
 
 // ─── Tokens ──────────────────────────────────────────────────────────────────
@@ -168,6 +202,8 @@ export default function CalculatorPFA() {
   const [cheltuieli, setCheltuieli] = useState("");
   const [norma, setNorma] = useState("");
   const [netDorit, setNetDorit] = useState("");
+  const [contabilitate, setContabilitate] = useState("");
+  const [forma, setForma] = useState<Forma>("pfa");
   const [salariatPestePlafonCASS, setSalariatPestePlafonCASS] = useState(false);
   const [pensionar, setPensionar] = useState(false);
   const [avansat, setAvansat] = useState(false);
@@ -176,7 +212,7 @@ export default function CalculatorPFA() {
   const [rezKey, setRezKey] = useState("");
   const [warn, setWarn] = useState(false);
 
-  const snap: Snap = { regim, mod, incasari, cheltuieli, norma, netDorit, salariatPestePlafonCASS, pensionar };
+  const snap: Snap = { regim, mod, incasari, cheltuieli, norma, netDorit, contabilitate, salariatPestePlafonCASS, pensionar };
   const stale = rez !== null && rezKey !== snapKey(snap);
 
   // Câmpul pe care îl focalizăm când lipsește informația obligatorie.
@@ -219,9 +255,30 @@ export default function CalculatorPFA() {
   const tab = (active: boolean, extra = "") =>
     `${extra} flex-1 inline-flex min-h-11 items-center justify-center px-2 text-sm font-medium transition-colors ${active ? "bg-stone-900 text-white" : "text-stone-500 hover:bg-canvas"}`;
 
+  // Comparația între forme e disponibilă doar când avem cifra de afaceri.
+  const srl = rez !== null && rez.tip === "real" ? rez.srl : null;
+  // Dacă utilizatorul comută pe „din net lunar", tabelul revine la PFA.
+  const formaActiva: Forma = srl === null ? "pfa" : forma;
+  const rezultatSrl = srl === null ? null : formaActiva === "micro" ? srl.micro : formaActiva === "profit" ? srl.profit : null;
+
+  // Ce rămâne pe fiecare formă, la aceleași încasări și cheltuieli. Micro intră
+  // în clasament doar dacă e accesibilă: peste plafonul de 100.000 euro nu mai
+  // este o opțiune, deci a o recomanda ar fi un sfat greșit.
+  const microAccesibila = srl !== null && srl.venituri <= PLAFON_MICRO_LEI;
+  const clasament =
+    rez !== null && rez.tip === "real" && srl !== null
+      ? [
+          { forma: "pfa" as Forma, nume: "PFA în sistem real", ramas: rez.r.ramas },
+          ...(microAccesibila ? [{ forma: "micro" as Forma, nume: "SRL micro", ramas: srl.micro.ramas }] : []),
+          { forma: "profit" as Forma, nume: "SRL pe impozit pe profit", ramas: srl.profit.ramas },
+        ].sort((a, b) => b.ramas - a.ramas)
+      : null;
+
   // Baza barei: venitul net în sistem real, respectiv ce s-a încasat efectiv la normă.
+  // Pentru SRL folosim aceeași bază ca la PFA, ca procentele să fie comparabile.
   const bazaBara = rez === null ? 0 : rez.tip === "real" ? rez.r.venitNet : rez.baza;
-  const ramasBara = rez === null ? 0 : rez.tip === "real" ? rez.r.ramas : rez.ramas;
+  const ramasBara =
+    rez === null ? 0 : rez.tip === "real" ? (rezultatSrl ? rezultatSrl.ramas : rez.r.ramas) : rez.ramas;
   const ang = bazaBara > 0 ? Math.max(0, Math.min(100, Math.round((ramasBara / bazaBara) * 100))) : 0;
 
   return (
@@ -318,6 +375,20 @@ export default function CalculatorPFA() {
               CASS de 10% pentru venitul PFA efectiv. Plafoanele sunt anuale și nu se reduc dacă activitatea începe,
               se suspendă sau încetează în cursul anului.
             </p>
+
+            {regim === "real" && mod === "venit" && (
+              <div className="mt-5 border-t border-stone-200 pt-5">
+                <MoneyField
+                  id="pfa-contabilitate"
+                  label="Contabilitate SRL, în plus față de cheltuieli"
+                  hint={`Se adaugă doar la variantele SRL, care cer contabilitate în partidă dublă. Implicit ${fmt(CONTABILITATE_SRL_IMPLICIT)} lei/an. La venituri medii, această sumă e cât toată diferența dintre PFA și micro, deci schimbă verdictul.`}
+                  placeholder={fmt(CONTABILITATE_SRL_IMPLICIT)}
+                  value={contabilitate}
+                  onChange={setContabilitate}
+                  onEnter={handleCalc}
+                />
+              </div>
+            )}
           </div>
         )}
 
@@ -349,6 +420,41 @@ export default function CalculatorPFA() {
 
         {rez ? (
           <div className={stale ? "opacity-50 transition-opacity" : "transition-opacity"}>
+            {srl !== null && clasament !== null && (
+              <div className="mb-4">
+                <span className={fieldLabel}>Dacă alegeai altă formă juridică</span>
+                <div className="flex w-full overflow-hidden rounded border border-stone-300">
+                  <button type="button" className={tab(formaActiva === "pfa")} onClick={() => setForma("pfa")}>PFA</button>
+                  <button type="button" className={tab(formaActiva === "micro", "border-l border-stone-300")} onClick={() => setForma("micro")}>SRL micro</button>
+                  <button type="button" className={tab(formaActiva === "profit", "border-l border-stone-300")} onClick={() => setForma("profit")}>SRL profit</button>
+                </div>
+                <p className="mt-3 text-sm leading-normal text-stone-700">
+                  {clasament[0].ramas - clasament[1].ramas < 1_000 ? (
+                    <>
+                      La cifrele tale, <strong className="font-bold text-stone-900">{clasament[0].nume}</strong> și{" "}
+                      <strong className="font-bold text-stone-900">{clasament[1].nume}</strong> ies aproape la fel –
+                      diferența e de doar {fmt(clasament[0].ramas - clasament[1].ramas)} lei pe an, sub marja ipotezei
+                      de contabilitate.
+                    </>
+                  ) : (
+                    <>
+                      La cifrele tale ieși cel mai bine cu{" "}
+                      <strong className="font-bold text-stone-900">{clasament[0].nume}</strong>: îți rămân{" "}
+                      <strong className="font-bold text-stone-900">{fmt(clasament[0].ramas)} lei</strong>, cu{" "}
+                      {fmt(clasament[0].ramas - clasament[1].ramas)} lei peste {clasament[1].nume}.
+                    </>
+                  )}
+                </p>
+                {srl.venituri > PLAFON_MICRO_LEI && (
+                  <p role="status" className="mt-3 rounded border border-stone-900 bg-surface px-3 py-2 text-xs leading-normal text-stone-700">
+                    <strong className="font-bold text-stone-900">Peste plafonul micro.</strong> Cu {fmt(srl.venituri)} lei
+                    depășești {fmt(PLAFON_MICRO_LEI)} lei (100.000 euro), deci varianta microîntreprindere nu îți este
+                    accesibilă pentru anul următor.
+                  </p>
+                )}
+              </div>
+            )}
+
             <div className="overflow-hidden rounded border border-stone-300">
               <table className="w-full table-auto border-collapse text-sm text-stone-700 [&_td]:align-middle [&_th]:align-middle sm:table-fixed">
                 <colgroup><col /><col className="w-28 sm:w-36" /></colgroup>
@@ -359,39 +465,74 @@ export default function CalculatorPFA() {
                   </tr>
                 </thead>
                 <tbody>
-                  {rez.tip === "real" ? (
-                    <Row label={mod === "net" ? "Venit net necesar" : "Venit net (încasări − cheltuieli)"} value={fmt(rez.r.venitNet)} />
+                  {rezultatSrl ? (
+                    <>
+                      <Row label="Venituri (cifra de afaceri)" value={fmt(rezultatSrl.venituri)} />
+                      <Row label='Cheltuieli <span class="text-stone-400">(inclusiv contabilitate)</span>' value={fmt(rezultatSrl.cheltuieli)} sub neg />
+                      <Row
+                        label={'Cost salariu minim <span class="text-stone-400">' + (rezultatSrl.tip === "micro" ? "(obligatoriu la micro)" : "(opțional, dar reduce impozitul)") + "</span>"}
+                        value={fmt(rezultatSrl.costSalarial)}
+                        sub
+                        neg
+                      />
+                      <Row
+                        label={rezultatSrl.tip === "micro" ? 'Impozit micro <span class="text-stone-400">(1% pe venituri)</span>' : 'Impozit pe profit <span class="text-stone-400">(16%)</span>'}
+                        value={fmt(rezultatSrl.impozitFirma)}
+                        sub
+                        neg
+                      />
+                      <Row label="Dividende brute" value={fmt(rezultatSrl.dividendeBrute)} />
+                      <Row label='Impozit pe dividende <span class="text-stone-400">(16%)</span>' value={fmt(rezultatSrl.impozitDividende)} sub neg />
+                      <Row
+                        label={'CASS pe dividende <span class="text-stone-400">' + (rezultatSrl.cassDividende > 0 ? "(pe trepte, nu procent)" : "(sub 6 salarii minime)") + "</span>"}
+                        value={fmt(rezultatSrl.cassDividende)}
+                        sub
+                        neg
+                      />
+                      <Row label='Salariu net încasat <span class="text-stone-400">(se adaugă)</span>' value={fmt(rezultatSrl.salariuNet)} sub />
+                      <Row label="Total taxe la stat" value={fmt(rezultatSrl.totalTaxe)} bold />
+                      <tr className="bg-stone-900">
+                        <td className="border-r border-r-stone-600 px-3 py-3 text-left text-sm font-bold text-white">Rămâne la tine</td>
+                        <td className="px-3 py-3 text-right text-sm font-bold tabular-nums whitespace-nowrap text-white">{fmt(rezultatSrl.ramas)}</td>
+                      </tr>
+                    </>
                   ) : (
                     <>
-                      <Row label="Normă de venit (bază de calcul)" value={fmt(rez.r.norma)} />
-                      {rez.incasari > 0 && (
-                        <Row label='Încasări efective <span class="text-stone-400">(nu schimbă taxele)</span>' value={fmt(rez.incasari)} sub />
+                      {rez.tip === "real" ? (
+                        <Row label={mod === "net" ? "Venit net necesar" : "Venit net (încasări − cheltuieli)"} value={fmt(rez.r.venitNet)} />
+                      ) : (
+                        <>
+                          <Row label="Normă de venit (bază de calcul)" value={fmt(rez.r.norma)} />
+                          {rez.incasari > 0 && (
+                            <Row label='Încasări efective <span class="text-stone-400">(nu schimbă taxele)</span>' value={fmt(rez.incasari)} sub />
+                          )}
+                        </>
                       )}
+                      <Row label='CAS <span class="text-stone-400">(Pensii − 25%)</span>' value={fmt(rez.r.cas)} sub neg />
+                      <Row label='CASS <span class="text-stone-400">(Sănătate − 10%)</span>' value={fmt(rez.r.cass)} sub neg />
+                      {rez.r.cassDiferentaMinima > 0 && (
+                        <Row label='din care diferență până la minimul CASS <span class="text-stone-400">(nedeductibilă)</span>' value={fmt(rez.r.cassDiferentaMinima)} sub />
+                      )}
+                      <Row
+                        label={rez.tip === "real" ? "Impozit pe venit (10%)" : 'Impozit pe venit <span class="text-stone-400">(10% pe normă, fără deducerea contribuțiilor)</span>'}
+                        value={fmt(rez.r.impozit)}
+                        sub
+                        neg
+                      />
+                      <Row label="Total taxe la stat" value={fmt(rez.r.totalTaxe)} bold />
+                      <tr className="bg-stone-900">
+                        <td className="border-r border-r-stone-600 px-3 py-3 text-left text-sm font-bold text-white">
+                          Rămâne la tine
+                          {rez.tip === "norma" && rez.incasari === 0 && (
+                            <span className="block text-xs font-normal text-white/70">dacă încasezi exact cât norma</span>
+                          )}
+                        </td>
+                        <td className="px-3 py-3 text-right text-sm font-bold tabular-nums whitespace-nowrap text-white">
+                          {fmt(rez.tip === "real" ? rez.r.ramas : rez.ramas)}
+                        </td>
+                      </tr>
                     </>
                   )}
-                  <Row label='CAS <span class="text-stone-400">(Pensii − 25%)</span>' value={fmt(rez.r.cas)} sub neg />
-                  <Row label='CASS <span class="text-stone-400">(Sănătate − 10%)</span>' value={fmt(rez.r.cass)} sub neg />
-                  {rez.r.cassDiferentaMinima > 0 && (
-                    <Row label='din care diferență până la minimul CASS <span class="text-stone-400">(nedeductibilă)</span>' value={fmt(rez.r.cassDiferentaMinima)} sub />
-                  )}
-                  <Row
-                    label={rez.tip === "real" ? "Impozit pe venit (10%)" : 'Impozit pe venit <span class="text-stone-400">(10% pe normă, fără deducerea contribuțiilor)</span>'}
-                    value={fmt(rez.r.impozit)}
-                    sub
-                    neg
-                  />
-                  <Row label="Total taxe la stat" value={fmt(rez.r.totalTaxe)} bold />
-                  <tr className="bg-stone-900">
-                    <td className="border-r border-r-stone-600 px-3 py-3 text-left text-sm font-bold text-white">
-                      Rămâne la tine
-                      {rez.tip === "norma" && rez.incasari === 0 && (
-                        <span className="block text-xs font-normal text-white/70">dacă încasezi exact cât norma</span>
-                      )}
-                    </td>
-                    <td className="px-3 py-3 text-right text-sm font-bold tabular-nums whitespace-nowrap text-white">
-                      {fmt(rez.tip === "real" ? rez.r.ramas : rez.ramas)}
-                    </td>
-                  </tr>
                 </tbody>
               </table>
             </div>
@@ -403,7 +544,7 @@ export default function CalculatorPFA() {
                   <tr className="bg-canvas">
                     <td className="border-r border-stone-300 px-3 py-3 text-left text-sm font-bold text-stone-700">Rămâne pe lună (≈)</td>
                     <td className="px-3 py-3 text-right text-sm font-bold tabular-nums whitespace-nowrap text-stone-900">
-                      {fmt((rez.tip === "real" ? rez.r.ramas : rez.ramas) / 12)}
+                      {fmt(ramasBara / 12)}
                     </td>
                   </tr>
                 </tbody>
@@ -464,7 +605,16 @@ export default function CalculatorPFA() {
             </div>
 
             <p className="mt-4 text-xs leading-normal text-stone-500">
-              {rez.tip === "real" ? (
+              {rezultatSrl ? (
+                <>
+                  Estimare pentru {rezultatSrl.tip === "micro" ? "SRL microîntreprindere" : "SRL cu impozit pe profit"},
+                  an fiscal 2026, pe ipoteze explicite: proprietarul e și salariat la nivelul salariului minim, iar tot
+                  profitul se distribuie ca dividende în același an, după 1 ianuarie 2026, deci cu impozit de 16%.
+                  Cota micro este 1% pe venituri – tranșa de 3% a fost eliminată prin OUG 89/2025. CASS pe dividende se
+                  datorează pe trepte de 6, 12 și 24 de salarii minime, calculate pe dividendul net. Schimbă salariul,
+                  momentul distribuirii sau costul de contabilitate și rezultatul se mută – confirmă cu un contabil.
+                </>
+              ) : rez.tip === "real" ? (
                 <>
                   PFA în sistem real, an fiscal 2026 (reper salariu minim 4.050 lei). Sub 12 salarii minime (48.600 lei)
                   nu datorezi CAS obligatoriu. Calculul folosește baza CAS minimă a tranșei; poți alege o bază mai mare

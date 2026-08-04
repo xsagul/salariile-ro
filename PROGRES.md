@@ -2,6 +2,60 @@
 
 Ultima actualizare: 4 august 2026
 
+## Comparator PFA / SRL micro / SRL profit în calculator — 5 august 2026
+
+Status: implementat, testat, deployat. Cerut de proprietar: „tabelul de ieșire
+poate avea 3 butoane… și sub butoane să scrie într-o propoziție scurtă cu care
+ieșeai mai bine".
+
+- `src/lib/forme-juridice.ts` + 31 aserțiuni în `scripts/test-forme-juridice.mts`.
+- **Verificare fiscală pe Codul fiscal consolidat (în vigoare 1 iulie 2026).**
+  Descoperiri care contrazic majoritatea surselor online:
+  - **Cota micro este 1%, unică.** Tranșa de 3% și excepțiile
+    consultanță/IT/HoReCa au fost ABROGATE prin OUG 89/2025, de la 1 ian 2026.
+  - **Limita de 20% la consultanță nu mai există** (abrogată prin OUG 156/2024,
+    din 2025), deși e încă citată peste tot ca fiind în vigoare.
+  - **Impozit pe dividende 16%** (Legea 141/2025), declanșat de **data
+    distribuirii**, nu de anul profitului. Dividendele pe situații interimare
+    din 2025 rămân la 10%.
+  - **CASS pe dividende e pe trepte, nu procent**: 6/12/24 salarii minime →
+    0 / 2.430 / 4.860 / 9.720 lei, calculate pe dividendul NET, plafonat la
+    9.720. Salariul NU scutește (excepția art. 174 alin. (7) e doar pentru PFA).
+  - IMCA nu e abrogată pentru 2026: e 0,5% peste 50 mil. euro, cu sunset la
+    31.12.2026. Nu scrie nicăieri că a fost eliminată.
+- Constantele salariale nu sunt hardcodate: costul angajatorului (51.312) și
+  netul (31.638) pentru un salariu minim pe anul spart 2026 sunt derivate din
+  motorul fiscal al site-ului, iar testul verifică să nu diveargă.
+- Comparația e disponibilă doar în modul „din venit anual" — impozitul micro se
+  aplică pe cifra de afaceri, iar la calculul invers nu știm împărțirea.
+- Micro iese din clasament peste plafonul de 509.850 lei (100.000 euro la cursul
+  BNR de la 31.12.2025, 5,0985), fiindcă nu mai e o opțiune legală.
+- Verdictul NU declară câștigător când diferența e sub 1.000 lei: la 200.000 lei
+  încasări, PFA și micro sunt la 634 lei distanță, adică sub ipoteza de
+  contabilitate. Cheltuiala de contabilitate SRL e input editabil tocmai pentru
+  că schimbă câștigătorul.
+
+## Tabelele din articole erau nestilizate în producție — 5 august 2026
+
+Status: reparat și deployat în `d0cc400`. Semnalat de proprietar cu capturi de
+ecran: „zonele astea par rupte atât pc cât și telefon".
+
+- Cauza: tabelele din zonele editoriale erau scrise ca `<table>` fără nicio
+  clasă, iar `globals.css` **nu are nicio regulă pentru `table`** — fișierul
+  declară explicit „zero CSS de componente". Deci se aplica stilul implicit al
+  browserului: fără chenar, fără padding, coloane lipite.
+- Nu era doar pe `/calculator-pfa`: **9 tabele pe 5 pagini** aveau același bug
+  (`/date-salarii`, `/deducere-personala-2026`,
+  `/salariu-minim-constructii-2026`, `/zile-lucratoare-2026`).
+  Calculatoarele nu erau afectate — își poartă stilul inline.
+- Rezolvat cu `src/app/components/TabelArticol.tsx`, Server Component care
+  respectă convenția proiectului (stil în JSX, nu CSS de componente).
+- Verificat pe producție: 9/9 tabele stilizate, 0 `<table>` gol rămas. Pe
+  mobil pagina nu are overflow orizontal, iar tabelele late scrolează în
+  interiorul propriului container.
+- **De reținut ca tipar:** clasa `source-note` e folosită de 21 de ori și nu e
+  definită nicăieri — aceeași categorie de bug, încă nereparată.
+
 ## /calculator-pfa terminat: normă de venit, verificare fiscală, SERP — 4 august 2026
 
 Status: implementat, verificat și deployat. Batchul de imagini (icon-uri, OG,

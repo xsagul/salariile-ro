@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "node --no-warnings scripts/test-facilitate.mts && node --no-warnings scripts/test-fiscal-periods.mts && node --no-warnings scripts/test-pfa.mts && node --no-warnings scripts/test-date-salarii.mts",
+    "test": "node --no-warnings scripts/test-facilitate.mts && node --no-warnings scripts/test-fiscal-periods.mts && node --no-warnings scripts/test-pfa.mts && node --no-warnings scripts/test-forme-juridice.mts && node --no-warnings scripts/test-date-salarii.mts",
     "test:rendered": "node --no-warnings scripts/test-rendered.mts",
     "gsc": "node scripts/gsc.mjs",
     "gsc:weekly": "node scripts/gsc-dashboard.mjs",
