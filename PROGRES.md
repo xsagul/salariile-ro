@@ -1,6 +1,50 @@
 # Progres salariile.ro
 
-Ultima actualizare: 29 iulie 2026
+Ultima actualizare: 4 august 2026
+
+## /calculator-pfa terminat: normă de venit, verificare fiscală, SERP — 4 august 2026
+
+Status: implementat, verificat și deployat. Batchul de imagini (icon-uri, OG,
+`og-image.svg` cu marca „s." convertită în path vectorial) rămâne NECOMIS —
+e o schimbare de brand din altă sesiune, nu ține de PFA și cere decizia
+proprietarului.
+
+- Motorul `calculeazaPfaNormaVenit` exista din sesiunea anterioară, testat, dar
+  importat și nefolosit în UI (warning de lint). Acum e conectat: selector de
+  regim „Sistem real / Normă de venit" în calculator.
+- La normă: câmp pentru normă + încasări efective și cheltuieli reale
+  opționale. Taxele se calculează pe normă; „rămâne la tine" se calculează din
+  încasările reale când sunt completate. Comparație directă „la aceleași cifre,
+  în sistem real" și avertisment la depășirea pragului de 126.038 lei.
+- Verificare fiscală independentă pe Codul fiscal consolidat ANAF + BNR.
+  Regula critică (la normă impozitul e 10% pe normă, FĂRĂ deducerea CAS/CASS)
+  este CONFIRMATĂ, cu temei mai bun decât foloseam: **art. 69^2 alin. (1)**,
+  nu inferența din art. 118 alin. (2). Exemplul ANAF 2026 (normă 42.150 →
+  CASS 4.215 → impozit 4.215) e acum test de regresie. 39 aserțiuni PFA trec.
+- Corecții factuale aplicate: „Bază CAS maximă (24 minime)" era GREȘIT —
+  art. 148 alin. (2) definește 12/24 minime ca praguri sub care baza aleasă nu
+  poate coborî, nu ca plafon; redenumit „Prag CAS superior". Citări corectate:
+  art. 135^1 alin. (3) pentru reperul de 4.050 lei, art. 174 alin. (7)–(8)
+  pentru excepțiile CASS (nu art. 180 / art. 170 alin. (2)). Termen D212 pentru
+  2026: 25 mai 2027. Curs BNR 5,0415 recalculat din seria BNR 2025 și confirmat,
+  dar formularea acum spune explicit că se folosește cursul anului de venit.
+  Adăugat caveatul deducerii proporționale, art. 118 alin. (2^2)–(2^4).
+- Cercetare SERP: competitorii presupuși (SmartBill, Accace, Termene, Contzilla,
+  calculator-salarii.ro) NU concurează aici. Ocupanții reali: solo.ro și keez.ro
+  ca singurele branduri, restul site-uri mici SEO. 4 din 13 au cifre 2026
+  greșite sau expirate (plafonul CASS 60 vs 72 minime e linia de falie;
+  quickconta.ro folosește greșit 4.325 ca reper pentru 2026).
+- **Niciun competitor din 13 nu are calcul invers.** Noi îl aveam deja și nu
+  era comunicat nicăieri pe pagină — acum e în primul paragraf.
+- GSC: `/calculator-pfa` e indexată, dar ultimul crawl e 5 iulie, deci Google
+  NU a văzut încă extinderea din 005f181/6a043a1. „calculator pfa" = poziția
+  58,3 cu 103 afișări/90 zile. Long-tailul e la pozițiile 50–86.
+- Reparat eroarea React de chei duplicate de pe homepage: „Pagini conexe" avea
+  `/salariu-minim` de două ori.
+- Verificare: `npm test` (39 aserțiuni PFA), lint, `tsc --noEmit`, build și
+  `npm run test:rendered` (64 rute) trecute. Cele trei moduri ale
+  calculatorului verificate în browser cu cifre confirmate manual; fără
+  overflow orizontal pe mobil; toate controalele calculatorului ≥44px.
 
 ## Audit SEO complet și sprint de autoritate — 29 iulie 2026
 

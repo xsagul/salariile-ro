@@ -227,8 +227,8 @@ export default function Page() {
                   <h3 className="mb-3 mt-6 text-xs font-medium text-stone-500">Pagini conexe</h3>
                   <ul className="flex flex-col gap-2 text-sm">
                     {([
-                      ["Calculator salariu minim", "/salariu-minim"],
                       ["Salariul minim pe economie 2026", "/salariu-minim"],
+                      ["Salariul minim în construcții", "/salariu-minim-constructii-2026"],
                       ["Salariul mediu pe economie", "/salariu-mediu"],
                       ["Calculator taxe PFA", "/calculator-pfa"],
                       ["Generator fluturaș de salariu", "/fluturas-salariu"],

@@ -9,8 +9,11 @@ import { ogPage, twPage } from "@/lib/seo";
 import CalculatorPFA from "@/app/components/CalculatorPFA";
 import {
   calculeazaPFA,
+  calculeazaPfaNormaVenit,
+  CURS_MEDIU_EUR_2025,
   PLAFON_CAS_12_2026,
   PLAFON_CAS_24_2026,
+  PLAFON_NORMA_VENIT_LEI,
   SALARIU_MINIM_PFA_2026,
 } from "@/lib/pfa";
 
@@ -37,19 +40,27 @@ const FAQ = [
   },
   {
     q: "De la ce venit plătesc CAS ca PFA?",
-    a: "CAS se datorează doar dacă venitul net anual atinge 12 salarii minime, adică 48.600 lei în 2026. Între 12 și 24 de salarii minime, baza e 12 minime (CAS = 12.150 lei/an). Peste 24 de salarii minime (97.200 lei), baza e 24 de minime (CAS = 24.300 lei/an). Sub prag, CAS e opțional; pensionarii sunt scutiți.",
+    a: "CAS se datorează doar dacă venitul net anual atinge 12 salarii minime, adică 48.600 lei în 2026. Între 12 și 24 de salarii minime, baza minimă e 12 minime (CAS = 12.150 lei/an). De la 24 de salarii minime (97.200 lei) în sus, baza minimă e 24 de minime (CAS = 24.300 lei/an). Atenție: art. 148 alin. (2) din Codul fiscal spune că baza este venitul ales de contribuabil, care nu poate fi mai mic decât aceste praguri – deci 24.300 lei este CAS la baza minimă a tranșei superioare, nu un plafon maxim. Poți opta pentru o bază mai mare în Declarația unică. Sub prag, CAS e opțional; pensionarii sunt scutiți (art. 150).",
   },
   {
     q: "Cât este CASS și are plafon?",
-    a: "CASS este 10% din venitul net, până la plafonul de 72 de salarii minime (291.600 lei) în 2026, deci cel mult 29.160 lei. Dacă venitul net este sub 6 salarii minime (24.300 lei), se datorează de regulă diferența până la CASS minimă de 2.430 lei. Diferența nu se datorează, între altele, dacă ai venituri salariale de cel puțin 24.300 lei în anul fiscal sau venituri din pensii.",
+    a: "CASS este 10% din venitul net, până la plafonul de 72 de salarii minime (291.600 lei) în 2026, deci cel mult 29.160 lei (art. 170 alin. (1)). Dacă venitul net este sub 6 salarii minime (24.300 lei), se datorează de regulă diferența până la CASS minimă de 2.430 lei (art. 174 alin. (6)). Diferența nu se datorează, între altele, dacă ai venituri salariale de cel puțin 24.300 lei în anul fiscal sau venituri din pensii – excepțiile sunt enumerate la art. 174 alin. (7) și (8).",
   },
   {
     q: "Ce salariu minim se folosește la plafoanele PFA în 2026?",
-    a: "Se folosește salariul minim în vigoare la 1 ianuarie 2026 – 4.050 lei. Acesta rămâne reperul pentru întreg anul fiscal 2026, iar majorarea la 4.325 lei din iulie nu schimbă plafoanele anuale. Obligațiile pentru 2026 se definitivează și se declară prin D212 până la termenul legal din 2027.",
+    a: "Se folosește salariul minim în vigoare la 1 ianuarie 2026 – 4.050 lei. Regula este la art. 135^1 alin. (3) din Codul fiscal: se ia minimul de la 1 ianuarie al anului de venit, indiferent dacă în cursul aceluiași an se folosesc mai multe valori ale salariului minim. Majorarea la 4.325 lei din 1 iulie 2026 nu schimbă deci plafoanele anului 2026. Obligațiile pentru 2026 se declară și se plătesc prin Declarația unică până la 25 mai 2027 inclusiv (art. 122 alin. (3)).",
   },
   {
     q: "Care e diferența dintre sistem real și normă de venit?",
-    a: "În sistem real, taxele se calculează pe venitul net efectiv (încasări minus cheltuieli deductibile) – varianta acoperită de calculatorul de aici. La normă de venit, statul stabilește un venit fix pe tipul de activitate, iar taxele se aplică la acea normă, indiferent cât câștigi efectiv.",
+    a: "În sistem real, taxele se calculează pe venitul net efectiv, adică încasări minus cheltuieli deductibile. La normă de venit, direcția regională a finanțelor publice stabilește un venit fix pentru activitatea autorizată, iar taxele se aplică la acea normă, indiferent cât încasezi efectiv. Calculatorul de aici acoperă ambele regimuri, iar dacă introduci și încasările reale îți arată care dintre ele te costă mai puțin.",
+  },
+  {
+    q: "Cum se calculează impozitul la normă de venit?",
+    a: "Impozitul este 10% aplicat direct pe norma anuală ajustată, fără să scazi CAS și CASS, iar impozitul este final (art. 69^2 alin. (1) din Codul fiscal). Deducerea contribuțiilor prevăzută la art. 118 alin. (2) privește veniturile al căror venit net anual se determină în sistem real, pe baza datelor din contabilitate. Norma ține locul venitului net și la contribuții: ea este suma comparată cu plafoanele CAS și CASS (art. 148 alin. (3) și art. 170 alin. (1)), nu încasările efective.",
+  },
+  {
+    q: "Când sunt obligat să trec de la normă de venit la sistem real?",
+    a: `Dacă în anul fiscal precedent ai încasat un venit brut mai mare decât echivalentul în lei a 25.000 de euro, începând cu anul următor ai obligația să determini venitul net în sistem real. La cursul mediu folosit în calculator, pragul înseamnă aproximativ ${new Intl.NumberFormat("ro-RO").format(PLAFON_NORMA_VENIT_LEI)} lei.`,
   },
   {
     q: "Sunt și salariat – mai plătesc CAS și CASS la PFA?",
@@ -78,16 +89,24 @@ const TRANSE = [20_000, 30_000, 48_600, 60_000, 97_200, 150_000].map((venit) => 
   return { venit, ...r, rata: r.totalTaxe / venit };
 });
 
+// Exemplul care arată diferența invizibilă dintre regimuri: la aceeași sumă,
+// impozitul la normă e mai mare, fiindcă acolo contribuțiile nu se deduc.
+const NORMA_EXEMPLU = 60_000;
+const NORMA_EXEMPLU_REZULTAT = calculeazaPfaNormaVenit(NORMA_EXEMPLU, CAZ_STANDARD);
+const REAL_EXEMPLU = calculeazaPFA(NORMA_EXEMPLU, CAZ_STANDARD);
+
 // „Pragul care costă": trecerea peste 12 salarii minime declanșează CAS pe o bază
 // fixă, deci ultimii lei de sub prag valorează mai mult decât primii de peste el.
 const SUB_PRAG = calculeazaPFA(PLAFON_CAS_12_2026 - 100, CAZ_STANDARD);
 const PESTE_PRAG = calculeazaPFA(PLAFON_CAS_12_2026, CAZ_STANDARD);
 const PIERDERE_PRAG = SUB_PRAG.ramas - PESTE_PRAG.ramas;
 
+// „Bază CAS maximă" era greșit: art. 148 alin. (2) definește 12 și 24 de salarii
+// minime ca praguri sub care baza aleasă nu poate coborî, nu ca plafon superior.
 const PLAFOANE: [string, string][] = [
   ["Prag CASS (6 minime)", "24.300 lei"],
   ["Prag CAS (12 minime)", "48.600 lei"],
-  ["Bază CAS maximă (24 minime)", "97.200 lei"],
+  ["Prag CAS superior (24 minime)", "97.200 lei"],
   ["Plafon CASS (72 minime)", "291.600 lei"],
   ["CASS maximă / an", "29.160 lei"],
 ];
@@ -142,15 +161,20 @@ export default function CalculatorPfaPage() {
             <div className="md:col-span-3">
               <h1 className="mb-3 text-3xl font-bold tracking-[-0.02em] text-stone-900 sm:text-4xl">Calculator taxe PFA 2026</h1>
               <p className="max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600">
-                Vezi cât plătești ca PFA în sistem real – CAS, CASS și impozit – și cât îți rămâne. Pune încasările și
-                cheltuielile, apasă Calculează.
+                Vezi cât plătești ca PFA – CAS, CASS și impozit – și cât îți rămâne. Merge în ambele regimuri, sistem
+                real și normă de venit, și poate calcula și invers: îi spui cât vrei să-ți rămână pe lună și îți arată
+                ce venit îți trebuie.
               </p>
               <div className="mt-5 max-w-prose border-l-2 border-stone-900 pl-4 text-sm leading-normal tracking-[-0.01em] text-stone-700">
                 <p className="font-semibold text-stone-900">Răspuns scurt</p>
                 <p className="mt-1">
-                  La PFA în sistem real, taxele pornesc de la venitul net anual: <strong>CASS 10%</strong>,{" "}
-                  <strong>CAS 25%</strong> dacă atingi plafonul de 12 salarii minime și <strong>impozit 10%</strong>{" "}
-                  după deducerea contribuțiilor.
+                  La PFA, taxele pornesc de la venitul net anual: <strong>CASS 10%</strong>, <strong>CAS 25%</strong>{" "}
+                  dacă atingi plafonul de 12 salarii minime și <strong>impozit 10%</strong>.
+                </p>
+                <p className="mt-2">
+                  Plafoanele anului fiscal 2026 se raportează la salariul minim de la 1 ianuarie,{" "}
+                  <strong>{lei(SALARIU_MINIM_PFA_2026)} lei</strong>. Majorarea la 4.325 lei din 1 iulie 2026{" "}
+                  <strong>nu le schimbă</strong> – pentru 2027 va conta minimul aflat în vigoare la 1 ianuarie 2027.
                 </p>
               </div>
               <div className="mt-4 text-xs text-stone-600">Actualizat 4 august 2026</div>
@@ -180,6 +204,12 @@ export default function CalculatorPfaPage() {
                     <li><strong>CAS 25%</strong> (pensie) – dacă venitul net atinge 12 salarii minime; sub prag este opțional. Calculatorul folosește baza minimă permisă pentru fiecare tranșă.</li>
                     <li><strong>Impozit 10%</strong> – după deducerea CAS și a CASS aferente venitului efectiv. Diferența CASS până la minimul de 6 salarii nu este deductibilă.</li>
                   </ul>
+                  <p className={p}>
+                    Calculatorul deduce integral contribuțiile, ceea ce este corect dacă veniturile tale vin exclusiv
+                    din activitatea în sistem real. Dacă ai și venituri la normă de venit sau din drepturi de
+                    proprietate intelectuală, CAS și CASS deductibile se stabilesc proporțional, conform art. 118 alin.
+                    (2^2)–(2^4) din Codul fiscal.
+                  </p>
                   <p className={p}>
                     Spre deosebire de un salariat, la PFA <strong>tu plătești tot</strong> – nu există „angajator&quot; care să
                     adauge contribuții peste. Dar ai dreptul să scazi cheltuielile reale ale activității.
@@ -234,7 +264,7 @@ export default function CalculatorPfaPage() {
                           <td>{lei(t.cass)} lei</td>
                           <td>{lei(t.impozit)} lei</td>
                           <td><strong>{lei(t.ramas)} lei</strong></td>
-                          <td>{(t.rata * 100).toFixed(1)}%</td>
+                          <td>{(t.rata * 100).toLocaleString("ro-RO", { minimumFractionDigits: 1, maximumFractionDigits: 1 })}%</td>
                         </tr>
                       ))}
                     </tbody>
@@ -278,23 +308,36 @@ export default function CalculatorPfaPage() {
                 <ul className="mb-4 list-disc pl-5 text-base leading-normal tracking-[-0.01em] text-stone-600 [&_li]:mb-2">
                   <li>
                     <strong>Sistem real</strong> – taxele se aplică pe venitul net efectiv, adică încasări minus
-                    cheltuieli deductibile. Ai evidență contabilă, dar cheltuielile reale îți reduc baza. Acesta este
-                    regimul acoperit de calculatorul de mai sus.
+                    cheltuieli deductibile. Ai evidență contabilă, dar cheltuielile reale îți reduc baza.
                   </li>
                   <li>
-                    <strong>Normă de venit</strong> – statul stabilește anual o sumă fixă pentru fiecare activitate
-                    autorizată, iar impozitul de 10% se aplică la acea normă, <strong>indiferent cât încasezi</strong>.
-                    Cheltuielile reale nu reduc baza.
+                    <strong>Normă de venit</strong> – direcția regională a finanțelor publice stabilește anual o sumă
+                    fixă pentru fiecare activitate autorizată, iar impozitul de 10% se aplică la acea normă,{" "}
+                    <strong>indiferent cât încasezi</strong>. Cheltuielile reale nu reduc baza.
                   </li>
                 </ul>
                 <p className={p}>
-                  Pragul care decide: dacă în anul precedent ai depășit <strong>25.000 de euro</strong> încasări brute,
-                  din anul următor treci obligatoriu la sistem real. La cursul mediu din 2025 (5,0415 lei/euro), pragul
-                  înseamnă aproximativ <strong>126.038 lei</strong>.
+                  Diferența care se vede cel mai puțin: la normă, impozitul se calculează pe normă{" "}
+                  <strong>fără să scazi CAS și CASS</strong>. Deducerea contribuțiilor este prevăzută doar pentru
+                  veniturile stabilite în sistem real. La o normă de {lei(NORMA_EXEMPLU)} lei, impozitul este{" "}
+                  {lei(NORMA_EXEMPLU_REZULTAT.impozit)} lei, față de {lei(REAL_EXEMPLU.impozit)} lei la același venit
+                  net în sistem real.
+                </p>
+                <p className={p}>
+                  Pragul care decide: dacă în anul precedent ai depășit <strong>25.000 de euro</strong> venit brut, din
+                  anul următor treci obligatoriu la sistem real (art. 69 alin. (9)). Conversia se face cu{" "}
+                  <strong>cursul mediu anual BNR al anului în care ai realizat venitul</strong>, nu cu cursul de azi.
+                  Pentru veniturile din 2025, cursul mediu a fost{" "}
+                  {CURS_MEDIU_EUR_2025.toLocaleString("ro-RO", { minimumFractionDigits: 4 })} lei/euro, deci pragul a
+                  fost <strong>{lei(PLAFON_NORMA_VENIT_LEI)} lei</strong>, iar depășirea lui obligă la sistem real din
+                  2026. Pentru veniturile din 2026 se va folosi cursul mediu al anului 2026, comunicat de BNR la
+                  începutul lui 2027.
                 </p>
                 <p className={p}>
                   Regula simplă: norma de venit avantajează pe cine încasează mult peste normă și are cheltuieli mici;
-                  sistemul real avantajează pe cine are cheltuieli reale consistente.
+                  sistemul real avantajează pe cine are cheltuieli reale consistente. Comută calculatorul de mai sus pe{" "}
+                  <strong>Normă de venit</strong>, pune și încasările reale, și îți arată direct care variantă te costă
+                  mai puțin.
                 </p>
               </div>
 
@@ -394,12 +437,13 @@ export default function CalculatorPfaPage() {
                       <dt className="font-medium text-stone-900">Declarația unică (D212)</dt>
                       <dd className="text-stone-600">
                         se depune pentru veniturile anului încheiat și stabilește CAS, CASS și impozitul datorate.
+                        Pentru veniturile anului 2026, termenul este 25 mai 2027 inclusiv.
                       </dd>
                     </div>
                     <div className="border-b border-stone-100 py-2">
                       <dt className="font-medium text-stone-900">Plata contribuțiilor</dt>
                       <dd className="text-stone-600">
-                        la termenul din D212, pentru anul fiscal încheiat.
+                        la aceeași dată cu depunerea declarației, pentru anul fiscal încheiat.
                       </dd>
                     </div>
                     <div className="py-2">
@@ -448,7 +492,8 @@ export default function CalculatorPfaPage() {
                     <li><Link href="/salariu-mediu">Salariul mediu pe economie</Link></li>
                   </ul>
                   <p className="mt-auto pt-6 text-xs text-stone-500">
-                    Calculatorul acoperă sistemul real și cazurile uzuale. Pentru situații speciale, confirmă cu un contabil.
+                    Calculatorul acoperă sistemul real, norma de venit și cazurile uzuale. Pentru situații speciale,
+                    confirmă cu un contabil.
                   </p>
                 </div>
               </aside>

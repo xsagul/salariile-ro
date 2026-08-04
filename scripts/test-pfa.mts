@@ -5,6 +5,7 @@ import assert from "node:assert/strict";
 const pfaModulePath = "../src/lib/pfa.ts";
 const {
   calculeazaPFA,
+  calculeazaPfaNormaVenit,
   PLAFON_CAS_12_2026,
   PLAFON_CAS_24_2026,
   PLAFON_CASS_MAXIM_2026,
@@ -74,4 +75,46 @@ assert.equal(venitPentru35k, 43_210, "Calculul invers alege venitul minim înain
 assert.ok(calculeazaPFA(venitPentru35k, standard).ramas >= 35_000, "Calculul invers atinge suma dorită");
 assert.ok(calculeazaPFA(venitPentru35k - 1, standard).ramas < 35_000, "Calculul invers nu supraestimează venitul necesar");
 
-console.log("PFA 2026: 22 aserțiuni fiscale trecute.");
+// ─── Normă de venit ──────────────────────────────────────────────────────────
+// Regula care separă cele două regimuri: la normă, impozitul se aplică pe normă,
+// fără deducerea CAS și CASS (art. 118 alin. (2) rezervă deducerea sistemului real).
+
+const normaZero = calculeazaPfaNormaVenit(0, standard);
+assert.equal(normaZero.totalTaxe, 0, "Norma zero nu generează obligații");
+
+const norma60k = calculeazaPfaNormaVenit(60_000, standard);
+assert.equal(norma60k.cas, 12_150, "Norma de 60.000 depășește 12 salarii minime, deci CAS pe baza minimă");
+assert.equal(norma60k.cass, 6_000, "CASS 10% pe normă");
+assert.equal(norma60k.impozit, 6_000, "La normă, impozitul este 10% din normă, fără deducerea CAS/CASS");
+assert.equal(norma60k.totalTaxe, 24_150, "Total taxe la normă de 60.000");
+
+// Aceeași sumă în sistem real produce impozit mai mic, fiindcă acolo se deduc
+// contribuțiile. Diferența este exact regula pe care o testăm.
+const real60k = calculeazaPFA(60_000, standard);
+assert.equal(real60k.impozit, 4_185, "În sistem real impozitul se calculează după CAS și CASS");
+assert.ok(norma60k.impozit > real60k.impozit, "Impozitul la normă este mai mare la venit net egal");
+
+const normaMica = calculeazaPfaNormaVenit(20_000, standard);
+assert.equal(normaMica.cas, 0, "Sub 12 salarii minime norma nu declanșează CAS");
+assert.equal(normaMica.cass, 2_430, "Sub 6 salarii minime se datorează CASS minimă");
+assert.equal(normaMica.cassDiferentaMinima, 430, "Diferența până la CASS minimă rămâne identificabilă");
+assert.equal(normaMica.impozit, 2_000, "Impozitul rămâne 10% din normă și sub pragurile de contribuții");
+
+const normaPensionar = calculeazaPfaNormaVenit(100_000, pensionar);
+assert.equal(normaPensionar.cas, 0, "Pensionarul este exceptat de CAS și la normă de venit");
+assert.equal(normaPensionar.cass, 10_000, "Pensionarul datorează CASS pe normă");
+
+const normaMare = calculeazaPfaNormaVenit(400_000, standard);
+assert.equal(normaMare.cass, PLAFON_CASS_MAXIM_2026 * 0.1, "CASS se plafonează la 72 salarii minime și la normă");
+assert.equal(normaMare.cas, 24_300, "Baza CAS maximă se aplică și la normă");
+
+// Exemplul ANAF 2026 pentru normă de venit, folosit ca test de regresie:
+// normă ajustată 42.150 lei -> CASS 4.215 lei -> impozit 42.150 × 10% = 4.215 lei.
+// CASS nu se scade din bază, ceea ce fixează exact regula testată mai sus.
+const anafNorma = calculeazaPfaNormaVenit(42_150, standard);
+assert.equal(anafNorma.cass, 4_215, "ANAF: CASS 10% pe norma ajustată de 42.150 lei");
+assert.equal(anafNorma.cas, 0, "ANAF: norma sub 12 salarii minime nu declanșează CAS");
+assert.equal(anafNorma.impozit, 4_215, "ANAF: impozitul este 10% din normă, nu din normă minus CASS");
+assert.equal(anafNorma.totalTaxe, 8_430, "ANAF: total obligații pentru norma de 42.150 lei");
+
+console.log("PFA 2026: 39 aserțiuni fiscale trecute (sistem real + normă de venit).");
