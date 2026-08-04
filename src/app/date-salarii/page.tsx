@@ -10,6 +10,7 @@ import {
 } from "@/lib/date-salarii";
 import { personSchema } from "@/lib/person";
 import { ogPage, SITE_URL, twPage } from "@/lib/seo";
+import TabelArticol from "@/app/components/TabelArticol";
 
 const PAGE_PATH = "/date-salarii";
 const CSV_PATH = "/date-salarii-romania-2026.csv";
@@ -182,8 +183,7 @@ export default function DateSalariiPage() {
           <strong>statistica INS</strong> sunt etichetate separat tocmai pentru a nu fi citate în afara contextului.
         </p>
 
-        <div className="overflow-x-auto">
-          <table>
+        <TabelArticol>
             <thead>
               <tr>
                 <th scope="col">Indicator și perioadă</th>
@@ -227,8 +227,7 @@ export default function DateSalariiPage() {
                 </tr>
               ))}
             </tbody>
-          </table>
-        </div>
+        </TabelArticol>
         <p className="source-note">
           „—” înseamnă că valoarea nu este inclusă în această versiune, nu că ar fi zero. Fișierele descărcabile
           conțin și datele ISO ale perioadelor, tipul fiecărei valori și notele metodologice.
@@ -270,8 +269,7 @@ export default function DateSalariiPage() {
 
       <Section>
         <h2>Dicționar de date</h2>
-        <div className="overflow-x-auto">
-          <table>
+        <TabelArticol>
             <thead>
               <tr>
                 <th scope="col">Câmp</th>
@@ -286,8 +284,7 @@ export default function DateSalariiPage() {
               <tr><th scope="row"><code>period_start</code> / <code>period_end</code></th><td>Intervalul de referință în format ISO 8601.</td></tr>
               <tr><th scope="row"><code>source_ids</code></th><td>Chei către lista de surse oficiale din JSON; în CSV sunt separate prin caracterul <code>|</code>.</td></tr>
             </tbody>
-          </table>
-        </div>
+        </TabelArticol>
       </Section>
 
       <Section>

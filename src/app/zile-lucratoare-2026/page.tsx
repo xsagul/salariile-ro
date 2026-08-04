@@ -4,6 +4,7 @@ import { personSchema } from "@/lib/person";
 import { SARBATORI_LEGALE_2026, zileLucratoareLuna } from "@/lib/sarbatori";
 import { ogPage, twPage } from "@/lib/seo";
 import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow } from "@/app/components/ui";
+import TabelArticol from "@/app/components/TabelArticol";
 
 const PATH = "/zile-lucratoare-2026";
 const YEAR = 2026;
@@ -234,8 +235,7 @@ export default function ZileLucratoare2026Page() {
           <p>
             Tabelul scade weekendurile și sărbătorile legale care cad în zile de luni-vineri. Este util pentru pontaj, tarif orar, tichete de masă și contracte part-time.
           </p>
-          <div className="overflow-x-auto">
-            <table>
+          <TabelArticol>
               <thead>
                 <tr>
                   <th>Luna</th>
@@ -260,8 +260,7 @@ export default function ZileLucratoare2026Page() {
                   <td className="text-right font-bold tabular-nums text-stone-900">{TOTAL_LIBERE}</td>
                 </tr>
               </tbody>
-            </table>
-          </div>
+          </TabelArticol>
           <p className="source-note">
             Dacă ai nevoie de calendar vizual și minivacanțe, vezi pagina completă de <Link href="/zile-libere-2026">zile libere 2026</Link>.
           </p>
@@ -272,8 +271,7 @@ export default function ZileLucratoare2026Page() {
           <p>
             În 2026 sunt 16 sărbători legale în calendar, dar doar cele care cad în zile lucrătoare reduc norma de lucru lunară. Cele care cad sâmbăta sau duminica nu se recuperează automat.
           </p>
-          <div className="overflow-x-auto">
-            <table>
+          <TabelArticol>
               <thead>
                 <tr>
                   <th>Luna</th>
@@ -292,8 +290,7 @@ export default function ZileLucratoare2026Page() {
                   </tr>
                 ))}
               </tbody>
-            </table>
-          </div>
+          </TabelArticol>
         </Section>
 
         <Section>

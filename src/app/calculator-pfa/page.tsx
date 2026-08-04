@@ -7,6 +7,7 @@ import Link from "next/link";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
 import CalculatorPFA from "@/app/components/CalculatorPFA";
+import TabelArticol from "@/app/components/TabelArticol";
 import {
   calculeazaPFA,
   calculeazaPfaNormaVenit,
@@ -244,8 +245,7 @@ export default function CalculatorPfaPage() {
                   venituri și nepensionar. Rata efectivă <strong>nu crește constant</strong>: sare brusc la pragurile CAS
                   și scade după plafonarea CASS.
                 </p>
-                <div className="overflow-x-auto">
-                  <table>
+                <TabelArticol numeric>
                     <thead>
                       <tr>
                         <th scope="col">Venit net anual</th>
@@ -268,8 +268,7 @@ export default function CalculatorPfaPage() {
                         </tr>
                       ))}
                     </tbody>
-                  </table>
-                </div>
+                </TabelArticol>
                 <p className="mt-3 text-xs text-stone-500">
                   Valori orientative pentru anul fiscal 2026, la salariul minim de {lei(SALARIU_MINIM_PFA_2026)} lei
                   valabil la 1 ianuarie 2026.
@@ -371,8 +370,7 @@ export default function CalculatorPfaPage() {
                   administrative și juridice. Calculatorul de aici acoperă PFA; pentru SRL, cifrele depind de forma de
                   impozitare aleasă și de modul în care îți retragi banii.
                 </p>
-                <div className="overflow-x-auto">
-                  <table>
+                <TabelArticol>
                     <thead>
                       <tr>
                         <th scope="col">Criteriu</th>
@@ -412,8 +410,7 @@ export default function CalculatorPfaPage() {
                         <td>preferat de companii mari</td>
                       </tr>
                     </tbody>
-                  </table>
-                </div>
+                </TabelArticol>
                 <p className={p}>
                   Pe partea fiscală, regimul de microîntreprindere are propriul prag de venit: peste{" "}
                   <a

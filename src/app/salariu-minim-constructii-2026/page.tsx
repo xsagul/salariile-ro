@@ -4,6 +4,7 @@ import { Breadcrumb, CtaCard, Eyebrow, Faq, H1, Hero, Lead, Section } from "@/ap
 import { calculStandardCuRegim } from "@/lib/fiscal";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
+import TabelArticol from "@/app/components/TabelArticol";
 
 // Titlul depășea 60 de caractere cu sufixul de brand, iar descrierea folosea jargon
 // („S1", „S2") plus meta-limbaj despre pagină („cu taxe și surse"), nu răspunsul la
@@ -155,8 +156,7 @@ export default function SalariuMinimConstructii2026Page() {
             fără tichete, sporuri, prime sau alte rețineri. Contribuțiile și impozitul sunt rotunjite la leu, conform
             regulilor implementate în motorul fiscal și structurii Declarației 112.
           </p>
-          <div className="overflow-x-auto">
-            <table>
+          <TabelArticol>
               <thead>
                 <tr>
                   <th>Componentă</th>
@@ -211,8 +211,7 @@ export default function SalariuMinimConstructii2026Page() {
                   <td className="text-right"><strong>{fmt(CONSTRUCTII_S2.costTotal)} lei</strong></td>
                 </tr>
               </tbody>
-            </table>
-          </div>
+          </TabelArticol>
           <p className="source-note">
             Valoarea netă individuală poate diferi dacă există persoane în întreținere, deducere suplimentară pentru
             salariați sub 26 de ani sau copii școlarizați, tichete, sporuri ori alte elemente de salarizare.
@@ -239,8 +238,7 @@ export default function SalariuMinimConstructii2026Page() {
 
         <Section>
           <h2>Construcții față de minimul general</h2>
-          <div className="overflow-x-auto">
-            <table>
+          <TabelArticol>
               <thead>
                 <tr>
                   <th>Perioadă</th>
@@ -266,8 +264,7 @@ export default function SalariuMinimConstructii2026Page() {
                   <td className="text-right"><strong>{fmt(CONSTRUCTII_S2.netBani)} lei</strong></td>
                 </tr>
               </tbody>
-            </table>
-          </div>
+          </TabelArticol>
           <p>
             În semestrul al II-lea, diferența de brut față de minimul general este 257 lei, dar diferența de net standard
             este 55 lei. Explicația este fiscală: salariatul de la minimul general eligibil primește facilitatea de 200 lei,

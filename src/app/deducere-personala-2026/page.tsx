@@ -4,6 +4,7 @@ import { personSchema } from "@/lib/person";
 import { calculeazaDeducerePersonala, SALARIU_MINIM } from "@/lib/fiscal";
 import { ogPage, twPage } from "@/lib/seo";
 import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow } from "@/app/components/ui";
+import TabelArticol from "@/app/components/TabelArticol";
 
 // Titlul vechi („tabel și calcul pentru salariu") depășea 60 de caractere cu brandul și
 // nu conținea niciun număr. Descrierea veche era o listă de cuvinte-cheie despre ce
@@ -130,8 +131,7 @@ export default function DeducerePersonalaPage() {
           <p>
             Valorile de mai jos sunt calculate pentru regimul fiscal aplicabil din 1 iulie 2026. Peste {fmt(PLAFON)} lei brut, deducerea personală de bază devine 0.
           </p>
-          <div className="overflow-x-auto">
-            <table>
+          <TabelArticol>
               <thead>
                 <tr>
                   <th>Salariu brut</th>
@@ -150,8 +150,7 @@ export default function DeducerePersonalaPage() {
                   </tr>
                 ))}
               </tbody>
-            </table>
-          </div>
+          </TabelArticol>
           <p className="source-note">
             Tabelul folosește aceeași funcție fiscală ca <Link href="/">calculatorul de salariu net</Link>. Pentru copii școlari sau salariat sub 26 de ani, se adaugă deduceri suplimentare în calculatorul avansat.
           </p>
