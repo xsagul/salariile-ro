@@ -624,9 +624,10 @@ function CardSurse() {
         <li><Link href="/noutati/salariul-minim-1-iulie-2026">Ce se schimbă de la 1 iulie 2026</Link></li>
         <li><Link href="/noutati/cosul-minim-de-consum">Salariul minim față de coșul minim de trai</Link></li>
         <li><Link href="/salariu-mediu">Salariul mediu pe economie</Link></li>
+        <li><Link href="/calculator-pfa">Plafoanele PFA derivate din minim</Link></li>
         <li><Link href="/zile-libere-2026">Zile libere și lucrătoare 2026</Link></li>
       </ul>
-      <p className="mt-auto pt-6 text-xs text-stone-500">Ultima actualizare: 26 iulie 2026.</p>
+      <p className="mt-auto pt-6 text-xs text-stone-500">Ultima actualizare: 4 august 2026.</p>
     </div>
   );
 }
@@ -844,6 +845,22 @@ export default function SalariuMinimPage() {
                   <p>În șapte ani, minimul brut s-a mai mult decât dublat, de la 2.080 lei în 2019 la 4.325 în 2026. Întâi cifrele, apoi aceeași evoluție pe grafic:</p>
                   <TabelIstoric />
                   <GraficIstoric />
+
+                  <h2>Ce mai măsoară minimul, în afara salariilor</h2>
+                  <p>
+                    Salariul minim nu e doar un prag de plată. Codul fiscal îl folosește ca unitate de măsură pentru
+                    plafoanele contribuțiilor datorate de persoanele fizice care nu sunt salariate. Pentru un{" "}
+                    <strong>PFA</strong>, CASS se datorează raportat la 6 salarii minime, CAS pornește la 12 salarii
+                    minime, baza maximă de CAS este 24 de salarii minime, iar CASS se plafonează la 72.
+                  </p>
+                  <p>
+                    Detaliul care derutează cel mai des: la aceste plafoane se ia minimul{" "}
+                    <strong>în vigoare la 1 ianuarie</strong>, nu cel din timpul anului. Majorarea din 1 iulie 2026 la
+                    4.325 lei schimbă salariile, dar <strong>nu</strong> schimbă plafoanele PFA pentru anul fiscal
+                    2026 — acestea rămân calculate la 4.050 lei, adică 24.300, 48.600, 97.200 și 291.600 lei. Cifrele
+                    pe tranșe de venit sunt în{" "}
+                    <Link href="/calculator-pfa">calculatorul de taxe PFA</Link>.
+                  </p>
                 </div>
               </div>
               <aside className={aside}>

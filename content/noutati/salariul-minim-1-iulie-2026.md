@@ -2,7 +2,7 @@
 title: "Salariul minim 4.325 lei: cât primești net"
 description: "Salariul minim este 4.325 lei brut și 2.699 lei net din 1 iulie 2026. Vezi calculul, de ce netul crește cu 125 lei și ce fac angajatorii."
 date: "2026-06-12"
-updated: "2026-07-26"
+updated: "2026-08-04"
 hero: "/noutati/salariu-minim-iulie.jpg"
 heroAlt: "Trei teancuri de monede aranjate crescător, de la mic la înalt, pe o masă de lemn lângă câteva bancnote, în lumină naturală, sugerând creșterea salariului minim."
 ---
@@ -50,6 +50,7 @@ O schimbare intrată în vigoare tot la 1 iulie, mai puțin mediatizată: sector
 - **Sectorul construcțiilor.** HG 146/2026 stabilește noul minim general, iar pragul distinct din construcții rămâne prevăzut la art. LXIX din OUG 156/2024: **4.582 lei**. [Calculul complet pentru construcții](/salariu-minim-constructii-2026) arată taxele și netul în ambele semestre. După alinierea agroalimentarului, construcțiile sunt singurul sector rămas cu prag propriu.
 - **Modul de calcul al taxelor.** Procentele CAS, CASS, impozit și CAM rămân aceleași; se schimbă doar baza și facilitatea.
 - **Regula celor 2 ani.** Salariul de bază minim poate fi aplicat aceluiași salariat cel mult 24 de luni de la încheierea contractului. După termen, salariul de bază plătit trebuie să fie efectiv superior minimului (Codul Muncii, art. 164 alin. (2¹)); nu este suficientă doar inițierea unei negocieri. Majorarea din iulie nu resetează termenul.
+- **Plafoanele PFA.** Contribuțiile datorate de un PFA se raportează la salariul minim **în vigoare la 1 ianuarie**, nu la cel din cursul anului. Pentru anul fiscal 2026 reperul rămâne 4.050 lei, deci pragurile stau pe loc: 24.300 lei la CASS, 48.600 lei la CAS și 291.600 lei plafonul CASS. [Calculatorul de taxe PFA](/calculator-pfa) arată cât rămâne pe fiecare tranșă de venit.
 
 ## Dacă ești angajator: pașii concreți
 
