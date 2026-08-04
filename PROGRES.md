@@ -390,3 +390,74 @@ linkuri.
 **Backlog GEO ramas neatins:** llms.txt generat din cod, src/lib/organization.ts
 cu @id si sameAs, variableMeasured ca PropertyValue, byline vizibil pe
 homepage, normalizarea numelui autorului ("Sorin" vs "Stiuriuc Sorin-Marian").
+
+## Off-site — 3 august 2026
+
+### Backlink necunoscut, gasit prin verificare directa
+
+`timeoff.guru/blog/ro/calculator-salariu-romania` linkeaza catre
+`salariile.ro/salariu-minim`, ancora "1 iulie 2026", **fara rel, deci
+dofollow**, in articol editorial. NU apare in raportul GSC de linkuri.
+
+Ironia: timeoff.guru era pe lista de prospecti pentru outreach. Ne dadusera
+deja linkul.
+
+Concluzie de metoda: GSC subraporteaza si are intarzieri mari. Cei "3
+domenii" pe care i-am tratat ca adevar sunt un minim, nu o cifra exacta.
+Verificarea directa a paginii bate raportul.
+
+### Problema reala: linkurile merg in adancime, nu spre homepage
+
+Distributia: `/` are 64 linkuri (61 Reddit nofollow), `/salariu-minim` are
+3 dofollow editoriale. Toate linkurile bune gasite pana acum
+(timeoff.guru, dinpolitica.ro, fastfulfill.ro, calcul-salariu-brut.ro)
+merg catre `/salariu-minim`.
+
+Cauza e structurala: cine scrie despre salariul minim linkeaza pagina cu
+salariul minim. Linkurile editoriale nu vin niciodata spre homepage.
+
+Conteaza pentru `homepagePagerankNs`, unul dintre cele 7 atribute nebifate
+din STUDIU-GOOGLE-LEAK-2024.md.
+
+### Tinte pentru homepage (categoria care linkeaza homepage-uri)
+
+1. **PR #1 pe `gadgetisimo/ro-open-source`** — deschis din 29 iulie, fara
+   reactie. Descoperire noua: lista are si versiune de site
+   (`gadgetisimo.ro/en/romanian-open-source-projects/`), unde salariile.ro
+   NU apare inca. Deci PR-ul acceptat aduce DOUA linkuri, nu unul.
+2. **`IonicaBizau/made-in-romania`** — lista GitHub, link spre homepage.
+3. **`romania.github.io`** — colectie de baze de date deschise din Romania
+   (autogari, CFR, coduri postale, buget, petitii). `/date-salarii` sub CC0
+   se incadreaza exact. Cea mai buna potrivire gasita: contribui cu o baza
+   de date la o colectie de baze de date, nu ceri un link.
+
+### Prospect nou validat
+
+`cabinetexpert.ro` — blog de contabilitate care **linkeaza efectiv in afara**
+(nextup.ro, itsoftgroup.ro). Articolul lor de salarizare e din 2024 si inca
+trateaza 4.050 lei ca predictie. Unghi: corectie factuala, nu cerere de link.
+
+### Respinse, cu motiv
+
+- `portalcontabilitate.ro`, `portalcodulmuncii.ro` — au sectiuni "linkuri
+  utile" dar linkeaza EXCLUSIV intern, in propria familie de portaluri.
+  Zero linkuri externe pe homepage. Ecosisteme inchise.
+- `directorromania.wordpress.com`, `director-web.ro` — directoare web de tip
+  vechi cu "adauga site gratuit". Aceeasi categorie respinsa in iulie
+  (18 din 20 oportunitati Seobility erau retele toxice).
+- `folositor.ro` — nu e prospect, e COMPETITOR cu propriul calculator.
+
+### Context de algoritm, 3 august
+
+Volatilitate mare neconfirmata, 1-3 august, in crestere. Search Status
+Dashboard-ul oficial Google e curat pentru iulie si august; ultimul update
+confirmat e spam update-ul 14-26 iunie.
+
+Cronologie relevanta: 4 iulie, 11-12 iulie (varf 10,38/10), 18-19 iulie,
+**24 iulie**, 1-3 august. Al doilea val al site-ului a inceput pe 27 iulie,
+la trei zile dupa episodul din 24 iulie.
+
+**Consecinta pentru masurare:** cele trei interventii din 31 iulie nu mai
+pot fi atribuite curat. Se vor citi ca "nu au stricat nimic", nu ca "au adus
+cresterea". Iar cresterea actuala poate fi retrasa la urmatoarea rulare —
+nu se trateaza ca nivel nou stabilit pana nu tine 2-3 saptamani.
