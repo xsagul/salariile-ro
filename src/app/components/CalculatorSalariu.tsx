@@ -237,9 +237,9 @@ function fixDiacritice(text: string): string {
     .replace(/â/g, "a").replace(/Â/g, "A")
     .replace(/î/g, "i").replace(/Î/g, "I")
     .replace(/ș/g, "s").replace(/Ș/g, "S")
-    .replace(/ş/g, "s").replace(/Ş/g, "S")
+    .replace(/ș/g, "s").replace(/Ș/g, "S")
     .replace(/ț/g, "t").replace(/Ț/g, "T")
-    .replace(/ţ/g, "t").replace(/Ţ/g, "T");
+    .replace(/ț/g, "t").replace(/Ț/g, "T");
 }
 
 // Fluturașul imită formatul clasic emis de softurile de salarizare românești

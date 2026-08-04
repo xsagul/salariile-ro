@@ -7,15 +7,24 @@ import Link from "next/link";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
 import CalculatorPFA from "@/app/components/CalculatorPFA";
+import {
+  calculeazaPFA,
+  PLAFON_CAS_12_2026,
+  PLAFON_CAS_24_2026,
+  SALARIU_MINIM_PFA_2026,
+} from "@/lib/pfa";
 
-const PFA_TITLU = "Calculator taxe PFA 2026: CAS, CASS, impozit";
+// Titlul și descrierea urmează intenția reală din SERP, nu doar cuvântul-cheie.
+// Descrierea veche se termina cu „salariul minim de 4.050 lei" și arăta depășită
+// în rezultate, deși e corectă: plafoanele PFA folosesc minimul de la 1 ianuarie.
+const PFA_TITLU = "Calculator taxe PFA 2026: cât rămâne, pe tranșe de venit";
 const PFA_DESC =
-  "Calculează taxele de PFA în sistem real pentru 2026: CAS 25%, CASS 10%, impozit 10% și venitul rămas.";
+  "Vezi ce plătește un PFA în sistem real în 2026, pe tranșe de venit, și cât îi rămâne.";
 
 export const metadata: Metadata = {
-  title: PFA_TITLU,
+  title: { absolute: PFA_TITLU },
   description:
-    "Calculator PFA 2026 (sistem real): vezi CAS, CASS, impozitul de 10% și cât îți rămâne din venit. Plafoane raportate la salariul minim de 4.050 lei.",
+    "La 60.000 lei venit net, un PFA plătește 22.335 lei taxe și rămâne cu 37.665 lei. Tabel pe tranșe, pragul CAS care costă 10.854 lei și comparație PFA vs SRL.",
   alternates: { canonical: "https://salariile.ro/calculator-pfa" },
   openGraph: ogPage({ title: PFA_TITLU, description: PFA_DESC, path: "/calculator-pfa" }),
   twitter: twPage({ title: PFA_TITLU, description: PFA_DESC }),
@@ -55,6 +64,25 @@ const FAQ = [
     a: "Nu în situația obișnuită. Veniturile din activități independente obținute într-o fracțiune de an se consideră venit anual, iar simpla începere, suspendare sau încetare a activității nu proratează automat plafoanele CAS și CASS. Există reguli speciale pentru schimbarea în cursul anului a statutului de persoană exceptată de la CAS; calculatorul nu simulează aceste cazuri individuale.",
   },
 ];
+
+// Cazul de referință al tabelelor: PFA fără alte venituri, nepensionar.
+const CAZ_STANDARD = { salariatPestePlafonCASS: false, pensionar: false };
+
+const lei = (n: number) => new Intl.NumberFormat("ro-RO").format(Math.round(n));
+
+// Tabelul pe tranșe se derivă din același motor ca rezultatul calculatorului.
+// Dacă s-ar scrie de mână, cifrele ar diverge silențios la prima schimbare de
+// plafon — exact riscul semnalat pentru plafoanele hardcodate din FAQ.
+const TRANSE = [20_000, 30_000, 48_600, 60_000, 97_200, 150_000].map((venit) => {
+  const r = calculeazaPFA(venit, CAZ_STANDARD);
+  return { venit, ...r, rata: r.totalTaxe / venit };
+});
+
+// „Pragul care costă": trecerea peste 12 salarii minime declanșează CAS pe o bază
+// fixă, deci ultimii lei de sub prag valorează mai mult decât primii de peste el.
+const SUB_PRAG = calculeazaPFA(PLAFON_CAS_12_2026 - 100, CAZ_STANDARD);
+const PESTE_PRAG = calculeazaPFA(PLAFON_CAS_12_2026, CAZ_STANDARD);
+const PIERDERE_PRAG = SUB_PRAG.ramas - PESTE_PRAG.ramas;
 
 const PLAFOANE: [string, string][] = [
   ["Prag CASS (6 minime)", "24.300 lei"],
@@ -125,7 +153,7 @@ export default function CalculatorPfaPage() {
                   după deducerea contribuțiilor.
                 </p>
               </div>
-              <div className="mt-4 text-xs text-stone-600">Actualizat 26 iulie 2026</div>
+              <div className="mt-4 text-xs text-stone-600">Actualizat 4 august 2026</div>
             </div>
           </div>
         </div>
@@ -171,6 +199,219 @@ export default function CalculatorPfaPage() {
                     ))}
                   </dl>
                   <p className="mt-3 text-xs text-stone-500">Plafoane anuale pentru anul fiscal 2026.</p>
+                </div>
+              </aside>
+            </div>
+
+            {/* Rândul 1b — Tabel pe tranșe + cardul pragului */}
+            <div className="md:grid md:grid-cols-5 md:gap-6">
+              <div className={`md:col-span-3 ${proseLinks}`}>
+                <h2 className="mb-4 text-2xl font-bold tracking-[-0.02em] text-stone-900 sm:text-3xl">
+                  Cât plătește un PFA, pe tranșe de venit
+                </h2>
+                <p className={p}>
+                  Cifrele de mai jos sunt calculate cu același motor ca rezultatul de sus, pentru un PFA fără alte
+                  venituri și nepensionar. Rata efectivă <strong>nu crește constant</strong>: sare brusc la pragurile CAS
+                  și scade după plafonarea CASS.
+                </p>
+                <div className="overflow-x-auto">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th scope="col">Venit net anual</th>
+                        <th scope="col">CAS</th>
+                        <th scope="col">CASS</th>
+                        <th scope="col">Impozit</th>
+                        <th scope="col">Îți rămâne</th>
+                        <th scope="col">Rată efectivă</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {TRANSE.map((t) => (
+                        <tr key={t.venit}>
+                          <th scope="row">{lei(t.venit)} lei</th>
+                          <td>{t.cas ? `${lei(t.cas)} lei` : "—"}</td>
+                          <td>{lei(t.cass)} lei</td>
+                          <td>{lei(t.impozit)} lei</td>
+                          <td><strong>{lei(t.ramas)} lei</strong></td>
+                          <td>{(t.rata * 100).toFixed(1)}%</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <p className="mt-3 text-xs text-stone-500">
+                  Valori orientative pentru anul fiscal 2026, la salariul minim de {lei(SALARIU_MINIM_PFA_2026)} lei
+                  valabil la 1 ianuarie 2026.
+                </p>
+              </div>
+
+              <aside className="mt-8 md:col-span-2 md:mt-0">
+                <div className="flex h-full flex-col rounded-md border border-stone-300 bg-surface p-4 shadow-soft sm:p-6">
+                  <h3 className="mb-3 text-xs font-medium text-stone-500">Pragul care te costă</h3>
+                  <p className="text-sm leading-normal text-stone-700">
+                    Sub {lei(PLAFON_CAS_12_2026)} lei venit net nu datorezi CAS. La fix acest prag, CAS devine
+                    obligatoriu pe o bază fixă de 12 salarii minime.
+                  </p>
+                  <p className="mt-3 text-sm leading-normal text-stone-700">
+                    Practic, <strong>100 de lei în plus la încasări îți scad venitul rămas cu{" "}
+                    {lei(PIERDERE_PRAG)} lei</strong>. Același salt apare și la {lei(PLAFON_CAS_24_2026)} lei, unde baza
+                    CAS urcă la 24 de salarii minime.
+                  </p>
+                  <p className="mt-3 text-xs text-stone-500">
+                    Dacă ești aproape de prag la final de an, momentul încasării unei facturi poate conta mai mult decât
+                    valoarea ei.
+                  </p>
+                </div>
+              </aside>
+            </div>
+
+            {/* Rândul 1c — Sistem real vs normă de venit */}
+            <div className="md:grid md:grid-cols-5 md:gap-6">
+              <div className={`md:col-span-3 ${proseLinks}`}>
+                <h2 className="mb-4 text-2xl font-bold tracking-[-0.02em] text-stone-900 sm:text-3xl">
+                  Sistem real sau normă de venit
+                </h2>
+                <p className={p}>
+                  Sunt două regimuri diferite de impozitare, iar alegerea nu e liberă la orice nivel de venit.
+                </p>
+                <ul className="mb-4 list-disc pl-5 text-base leading-normal tracking-[-0.01em] text-stone-600 [&_li]:mb-2">
+                  <li>
+                    <strong>Sistem real</strong> – taxele se aplică pe venitul net efectiv, adică încasări minus
+                    cheltuieli deductibile. Ai evidență contabilă, dar cheltuielile reale îți reduc baza. Acesta este
+                    regimul acoperit de calculatorul de mai sus.
+                  </li>
+                  <li>
+                    <strong>Normă de venit</strong> – statul stabilește anual o sumă fixă pentru fiecare activitate
+                    autorizată, iar impozitul de 10% se aplică la acea normă, <strong>indiferent cât încasezi</strong>.
+                    Cheltuielile reale nu reduc baza.
+                  </li>
+                </ul>
+                <p className={p}>
+                  Pragul care decide: dacă în anul precedent ai depășit <strong>25.000 de euro</strong> încasări brute,
+                  din anul următor treci obligatoriu la sistem real. La cursul mediu din 2025 (5,0415 lei/euro), pragul
+                  înseamnă aproximativ <strong>126.038 lei</strong>.
+                </p>
+                <p className={p}>
+                  Regula simplă: norma de venit avantajează pe cine încasează mult peste normă și are cheltuieli mici;
+                  sistemul real avantajează pe cine are cheltuieli reale consistente.
+                </p>
+              </div>
+
+              <aside className="mt-8 md:col-span-2 md:mt-0">
+                <div className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
+                  <h3 className="mb-3 text-xs font-medium text-stone-500">Cheltuieli deductibile uzuale</h3>
+                  <ul className="list-disc pl-4 text-sm leading-normal text-stone-600 [&_li]:mb-1.5">
+                    <li>chirie și utilități pentru spațiul activității</li>
+                    <li>echipamente, software, abonamente profesionale</li>
+                    <li>transport și combustibil aferente activității</li>
+                    <li>servicii contabile și consultanță</li>
+                    <li>cursuri și materiale de specialitate</li>
+                    <li>comisioane bancare ale contului de activitate</li>
+                  </ul>
+                  <p className="mt-3 text-xs text-stone-500">
+                    Deductibilitatea depinde de legătura cu activitatea și de documentele justificative. Unele categorii
+                    au plafoane proprii în Codul fiscal.
+                  </p>
+                </div>
+              </aside>
+            </div>
+
+            {/* Rândul 1d — PFA sau SRL */}
+            <div className="md:grid md:grid-cols-5 md:gap-6">
+              <div className={`md:col-span-3 ${proseLinks}`}>
+                <h2 className="mb-4 text-2xl font-bold tracking-[-0.02em] text-stone-900 sm:text-3xl">
+                  PFA sau SRL: ce diferă, dincolo de taxe
+                </h2>
+                <p className={p}>
+                  Comparația se face de obicei doar pe taxe, dar diferențele care contează pe termen lung sunt
+                  administrative și juridice. Calculatorul de aici acoperă PFA; pentru SRL, cifrele depind de forma de
+                  impozitare aleasă și de modul în care îți retragi banii.
+                </p>
+                <div className="overflow-x-auto">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th scope="col">Criteriu</th>
+                        <th scope="col">PFA</th>
+                        <th scope="col">SRL</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">Răspundere</th>
+                        <td>cu patrimoniul personal</td>
+                        <td>limitată la capitalul social</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Acces la bani</th>
+                        <td>imediat, sunt banii tăi</td>
+                        <td>prin dividende sau salariu</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Administrare</th>
+                        <td>simplă, contabilitate în partidă simplă</td>
+                        <td>contabilitate în partidă dublă</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Angajați</th>
+                        <td>posibil, dar limitat ca practică</td>
+                        <td>fără restricții de model</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Obiect de activitate</th>
+                        <td>legat de calificarea ta</td>
+                        <td>liber, în limita codurilor CAEN</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Percepția clienților</th>
+                        <td>uzual pentru freelanceri</td>
+                        <td>preferat de companii mari</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p className={p}>
+                  Pe partea fiscală, regimul de microîntreprindere are propriul prag de venit: peste{" "}
+                  <a
+                    href="https://legislatie.just.ro/Public/DetaliiDocument/307580"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    100.000 de euro
+                  </a>{" "}
+                  se trece la impozit pe profit, iar eligibilitatea depinde și de celelalte condiții legale. Comparația
+                  numerică între PFA și SRL cere ipoteze despre salariu, dividende și costuri de contabilitate, deci nu
+                  o simulăm aici cu o singură cifră.
+                </p>
+              </div>
+
+              <aside className="mt-8 md:col-span-2 md:mt-0">
+                <div className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
+                  <h3 className="mb-3 text-xs font-medium text-stone-500">Calendarul unui PFA</h3>
+                  <dl className="text-sm">
+                    <div className="border-b border-stone-100 py-2">
+                      <dt className="font-medium text-stone-900">Declarația unică (D212)</dt>
+                      <dd className="text-stone-600">
+                        se depune pentru veniturile anului încheiat și stabilește CAS, CASS și impozitul datorate.
+                      </dd>
+                    </div>
+                    <div className="border-b border-stone-100 py-2">
+                      <dt className="font-medium text-stone-900">Plata contribuțiilor</dt>
+                      <dd className="text-stone-600">
+                        la termenul din D212, pentru anul fiscal încheiat.
+                      </dd>
+                    </div>
+                    <div className="py-2">
+                      <dt className="font-medium text-stone-900">Registrul de încasări și plăți</dt>
+                      <dd className="text-stone-600">
+                        se ține pe tot parcursul anului; el susține cheltuielile deduse.
+                      </dd>
+                    </div>
+                  </dl>
+                  <p className="mt-3 text-xs text-stone-500">
+                    Termenele exacte se verifică anual pe anaf.ro, pentru că se pot modifica prin ordin.
+                  </p>
                 </div>
               </aside>
             </div>
