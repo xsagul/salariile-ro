@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     siteName: "Salariile.ro",
     title: "Calculator Salariu Net 2026 | Salariile.ro",
     description:
-      "Calculator salariu net, informații despre salariul minim și mediu în România.",
+      "Calculează salariul net din brut sau brutul din net, cu regulile fiscale 2026. Fără reclame, fără cont.",
     images: [
       {
         url: "/og-image.png",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Calculator Salariu Net 2026 | Salariile.ro",
-    description: "Calculează salariul net din brut în câteva secunde.",
+    description: "Calculează salariul net din brut sau brutul din net, cu regulile fiscale 2026.",
     images: ["/og-image.png"],
   },
   robots: {
