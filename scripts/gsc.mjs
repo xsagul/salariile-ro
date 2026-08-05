@@ -10,6 +10,8 @@
 //   node scripts/gsc.mjs devices
 //   node scripts/gsc.mjs dates                   # evoluție pe zile
 //   node scripts/gsc.mjs queries --page=/calculator-pfa   # interogări pentru o pagină
+//   node scripts/gsc.mjs queries --page=/ --exact         # DOAR homepage-ul
+//        (fără --exact, filtrul e „conține", iar „/" se potrivește cu tot site-ul)
 //   node scripts/gsc.mjs pages   --query=salariu minim    # pagini pentru o interogare
 //   node scripts/gsc.mjs queries --start=2026-05-01 --end=2026-05-31
 //   node scripts/gsc.mjs queries --json          # JSON brut (pentru pipe/analiză)
@@ -384,8 +386,24 @@ function printCsv(rows, dimLabel) {
 
     const filters = [];
     if (opt.country) filters.push({ dimension: "country", expression: String(opt.country) });
-    if (opt.page) filters.push({ dimension: "page", operator: "contains", expression: String(opt.page) });
-    if (opt.query) filters.push({ dimension: "query", operator: "contains", expression: String(opt.query) });
+    // `contains` e util pentru grupuri de pagini, dar nu poate izola homepage-ul:
+    // filtrul „conține /" se potrivește cu absolut orice URL de pe site și
+    // returnează în tăcere totalul, care arată ca un rezultat valid.
+    // Cu --exact se trece pe equals, iar pentru pagini se acceptă și calea scurtă.
+    const exact = Boolean(opt.exact);
+    const pageExpr = (v) => (exact && v.startsWith("/") ? `${SITE.replace(/\/$/, "")}${v}` : v);
+    if (opt.page)
+      filters.push({
+        dimension: "page",
+        operator: exact ? "equals" : "contains",
+        expression: pageExpr(String(opt.page)),
+      });
+    if (opt.query)
+      filters.push({
+        dimension: "query",
+        operator: exact ? "equals" : "contains",
+        expression: String(opt.query),
+      });
     if (filters.length) body.dimensionFilterGroups = [{ filters }];
 
     const token = await resolveAccessToken();
