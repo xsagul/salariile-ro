@@ -2,6 +2,50 @@
 
 Ultima actualizare: 4 august 2026
 
+## Trei articole noi + imaginile de brand refăcute — 5 august 2026
+
+Primul livrabil al scriitorului de content. Calitate bună: nicio afirmație
+factual FALSĂ în cele trei articole. Dar a cerut corecturi reale de precizie,
+verificate pe textele consolidate (Cod fiscal și OUG 158/2005 la consolidarea
+01.07.2026).
+
+**Integrare — de reținut pentru livrările următoare:**
+- Frontmatterul folosea `image:` / `imageAlt:`. Motorul citește `hero:` /
+  `heroAlt:` (`src/lib/noutati.ts`), deci imaginile NU s-ar fi randat deloc.
+- `updated:` era egal cu `date:` pe articole noi; motorul cere `updated` doar
+  la o actualizare reală, altfel apare „Actualizat" inutil.
+- Toate cele trei titluri depășeau 60 de caractere cu sufixul de brand
+  (transparența ajungea la 87). Scurtate.
+- **Nu e nevoie de nicio configurare:** articolele sunt descoperite automat din
+  `content/noutati/*.md`, intră singure în sitemap prin `getAllArticles()`.
+  Rutele au trecut de la 64 la 67.
+
+**Corecturi de fond aplicate:**
+- *Tichete:* plafonul facilității e 4.300 lei în S1 și 4.600 în S2, nu doar
+  4.600; voucherele de vacanță lipseau din excluderi; cei ~19% sunt valabili
+  doar dacă deducerea personală nu se schimbă; lista zilelor nelucrate e în
+  HG 1.045/2018 și era incompletă.
+- *Concediu medical:* excepțiile de la diminuarea cu o zi erau 2 din 5, iar
+  îngrijirea copilului bolnav NU e exceptată; zilele 2–6 sunt derogare
+  temporară (art. 12 din OUG 158/2005, cu zilele 1–5, revine din 2028);
+  regula „o singură zi pe episod" e din Legea 64/2026, în vigoare 18 mai 2026,
+  nu din februarie; procentele 55/65/75 sunt din 1 august 2025, nu 2026;
+  exemplul de 442 lei vine din Ordinul 506/1.030/2026 (MO 507/19.06.2026).
+- *Transparență salarială:* evaluarea comună e obligatorie, nu „poate deveni
+  necesară", cu trei condiții cumulative și termen de 6 luni; directiva spune
+  „sau, în alt mod", deci nu impune salariul în anunț; adăugat calendarul exact
+  de raportare (250+/150–249 → 7 iunie 2027; 100–149 → 7 iunie 2031).
+- Înlocuite 3 linkuri-placeholder care duceau la rădăcina senat.ro și
+  legislatie.just.ro. Toate URL-urile noi verificate cu HTTP 200.
+
+**De reverificat pe 1 și 15 septembrie 2026:** articolul despre transparență
+depinde de un proiect în Parlament, cu termene pe 2 și 8 septembrie și regulă
+de adoptare tacită. Formularea „în lucru, la comisiile permanente ale
+Senatului" va deveni falsă în toamnă.
+
+Separat, imaginile de brand (iconuri, favicon, OG, hero de articol) au fost
+refăcute de proprietar la calitate mai bună și deployate.
+
 ## Comparator PFA / SRL micro / SRL profit în calculator — 5 august 2026
 
 Status: implementat, testat, deployat. Cerut de proprietar: „tabelul de ieșire
