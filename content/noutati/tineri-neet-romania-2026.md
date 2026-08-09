@@ -2,8 +2,9 @@
 title: "Tinerii din România, tot mai departe de școală și piața muncii"
 description: "Aproape unul din cinci tineri din România nu e nici la școală, nici la muncă. Suntem primii în Europa, și de ani buni nu se mișcă nimic."
 date: "2026-08-09"
+tip: "opinie"
 hero: "/noutati/tineri-neet-romania.webp"
-heroAlt: "Ilustrație editorială: un tânăr stă la o bifurcație de drum, cu o școală și o carte deschisă pe o parte, o clădire de birouri și o servietă pe cealaltă, în tonuri de terracotta și salvie pe fundal nisipiu."
+heroAlt: "Ilustrație editorială: un tânăr stă nehotărât la o bifurcație de drum, cu mâna la bărbie. Pe o parte, o școală și o carte deschisă; pe cealaltă, o clădire de birouri și o servietă. Tonuri de terracotta și salvie pe fundal nisipiu."
 ---
 
 Azi aș vrea să vorbim despre tinerii din România. De ce?

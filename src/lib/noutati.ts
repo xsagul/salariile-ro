@@ -22,6 +22,13 @@ export type ArticleMeta = {
   hero?: string; // cale în /public, ex: /noutati/cos-minim.jpg
   heroAlt?: string;
   readingMin: number;
+  /**
+   * „opinie" marchează textele în care autorul susține o poziție, nu doar
+   * descrie o regulă. Restul site-ului sunt referințe pe baza cărora oamenii
+   * iau decizii cu bani, deci cititorul trebuie să știe din prima în ce
+   * registru a intrat. Absent = articol de referință.
+   */
+  tip?: "opinie";
 };
 
 export type Article = ArticleMeta & { html: string };
@@ -54,6 +61,7 @@ function metaFrom(slug: string, data: Record<string, unknown>, content: string):
     hero: (data.hero as string) || undefined,
     heroAlt: (data.heroAlt as string) || undefined,
     readingMin: Math.max(1, Math.round(words / 200)),
+    tip: data.tip === "opinie" ? "opinie" : undefined,
   };
 }
 

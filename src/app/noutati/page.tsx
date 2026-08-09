@@ -85,7 +85,12 @@ export default function NoutatiPage() {
                         )}
                       </div>
                       <div className="flex flex-1 flex-col p-5">
-                        <div className="mb-2 text-xs text-stone-500">{formatDateRo(a.date)} · {a.readingMin} min citire</div>
+                        <div className="mb-2 flex flex-wrap items-center gap-2 text-xs text-stone-500">
+                          {a.tip === "opinie" && (
+                            <span className="rounded border border-stone-300 px-1.5 py-0.5 font-medium uppercase tracking-wide text-stone-700">Opinie</span>
+                          )}
+                          <span>{formatDateRo(a.date)} · {a.readingMin} min citire</span>
+                        </div>
                         <h2 className="mb-2 text-lg font-bold leading-snug tracking-[-0.01em] text-stone-900 group-hover:text-stone-700">{a.title}</h2>
                         <p className="text-sm leading-normal text-stone-600">{a.description}</p>
                         <span className="mt-4 text-sm font-medium text-stone-900 underline underline-offset-2">Citește →</span>

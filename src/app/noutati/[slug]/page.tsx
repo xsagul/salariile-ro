@@ -76,6 +76,8 @@ export default async function ArticolPage({ params }: { params: Promise<{ slug: 
         url,
         mainEntityOfPage: url,
         ...(a.hero ? { image: `https://salariile.ro${a.hero}` } : {}),
+        // Distincția opinie/referință, citibilă și de mașină, nu doar de om.
+        ...(a.tip === "opinie" ? { genre: "Opinie" } : {}),
         author: personSchema,
         publisher: { "@type": "Organization", name: "salariile.ro", url: "https://salariile.ro" },
       },
@@ -95,6 +97,14 @@ export default async function ArticolPage({ params }: { params: Promise<{ slug: 
             <span aria-current="page" className="text-stone-600">Articol</span>
           </nav>
 
+          {/* Marcarea opiniei nu e decor: restul site-ului sunt texte factuale
+              pe baza cărora oamenii iau decizii cu bani. Cine intră din Google
+              trebuie să vadă din prima că aici autorul susține o poziție. */}
+          {a.tip === "opinie" && (
+            <p className="mb-3 inline-flex items-center rounded border border-stone-300 bg-surface px-2 py-1 text-xs font-medium uppercase tracking-wide text-stone-700">
+              Opinie
+            </p>
+          )}
           <div className="mb-3 text-xs uppercase tracking-wide text-stone-600">
             {formatDateRo(a.date)}
             {a.updated && <> · Actualizat {formatDateRo(a.updated)}</>}
