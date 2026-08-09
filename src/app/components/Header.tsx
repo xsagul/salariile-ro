@@ -11,9 +11,17 @@ type Item = Leaf | Group;
 
 // Structură extensibilă: linkuri simple + grupuri (dropdown). Adaugi ușor
 // „Calculator PFA" sau „Noutăți" fie ca leaf, fie în grupul Ghiduri.
+// Locul doi din bară se dă pe merit, nu pe vechime. La 10 august 2026,
+// /fluturas-salariu avea 46 de clicuri din Google în 28 de zile de pe poziția
+// 7,6 (CTR 4,3%), iar /calculator-pfa avea 3 clicuri de pe poziția 48 (CTR
+// 0,2%) — de 15 ori mai puține clicuri, de pe mai multe impresii. Umami arăta
+// că din 37 de vizualizări ale paginii PFA într-o săptămână, UNA venise din
+// Google: restul erau salariați care dădeau clic aici din curiozitate și
+// plecau în 19 secunde. /calculator-pfa rămâne linkată din footer și
+// contextual din /salariu-minim, deci nu e orfană.
 const NAV: Item[] = [
   { href: "/", label: "Calculator salariu" },
-  { href: "/calculator-pfa", label: "Calculator PFA" },
+  { href: "/fluturas-salariu", label: "Fluturaș salariu" },
   {
     label: "Ghiduri",
     children: [
