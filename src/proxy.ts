@@ -62,9 +62,14 @@ export function proxy(request: NextRequest) {
   //
   // Nu se aplică pe rutele de widget: alea rulează în iframe pe site-uri
   // terțe, unde nu servim reclame și nu vrem CSP slăbit.
-  const adsScriptSrc = "https://pagead2.googlesyndication.com https://partner.googleadservices.com https://tpc.googlesyndication.com https://www.googletagservices.com";
-  const adsFrameSrc = "https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com";
-  const adsConnectSrc = "https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://csi.gstatic.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google";
+  // `fundingchoicesmessages.google.com` este platforma de consimțământ (CMP).
+  // Lipsea din connect-src la primul deploy, iar efectul a fost exact cel
+  // descris mai sus: AdSense se încărca, dar bannerul de consimțământ era
+  // blocat — adică starea cea mai proastă posibilă, reclame fără acord.
+  // Nu se scoate de aici fără să se scoată și AdSense.
+  const adsScriptSrc = "https://pagead2.googlesyndication.com https://partner.googleadservices.com https://tpc.googlesyndication.com https://www.googletagservices.com https://fundingchoicesmessages.google.com";
+  const adsFrameSrc = "https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com https://fundingchoicesmessages.google.com";
+  const adsConnectSrc = "https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://csi.gstatic.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://fundingchoicesmessages.google.com";
 
   const adsEnabled = !isEmbeddableFrame;
 

@@ -119,15 +119,18 @@ export default function CookiesPage() {
               Înainte de a publica această pagină am pornit site-ul cu scriptul AdSense activ și am verificat direct ce face, în loc să ne bazăm pe descrieri generale. Rezultatul, pe o pagină fără nicio unitate de reclamă afișată:
             </p>
             <ul>
-              <li><strong>Cookies setate: niciunul.</strong> Scriptul AdSense nu a setat cookies în acest test.</li>
-              <li><strong>Stocare locală</strong>: o singură cheie, <code>google_auto_fc_cmp_setting</code>, folosită pentru a reține ce ai ales în bannerul de consimțământ.</li>
-              <li><strong>Cereri către Google</strong>: o cerere de reclamă către <code>pagead2.googlesyndication.com</code> și încărcarea sistemului antifraudă de pe <code>adtrafficquality.google</code>.</li>
               <li>
-                <strong>Date trimise în acea cerere</strong>: tipul și versiunea browserului, sistemul de operare, rezoluția ecranului, fusul orar, adresa paginii vizitate și numărul de intrări din istoricul tabului curent. Adresa ta IP ajunge la Google, ca la orice resursă încărcată de pe serverele lor.
+                <strong>Un cookie</strong>: <code>FCCDCF</code>, setat de platforma de consimțământ a Google. Reține ce ai ales în banner, ca să nu fii întrebat la fiecare pagină. Nu conține date despre tine, ci alegerea ta și momentul ei.
+              </li>
+              <li>
+                <strong>Cereri către Google</strong>: platforma de consimțământ de pe <code>fundingchoicesmessages.google.com</code>, o cerere de reclamă către <code>pagead2.googlesyndication.com</code> și sistemul antifraudă de pe <code>adtrafficquality.google</code>.
+              </li>
+              <li>
+                <strong>Date trimise în cererea de reclamă</strong>: tipul și versiunea browserului, sistemul de operare, rezoluția ecranului, fusul orar, adresa paginii vizitate și numărul de intrări din istoricul tabului curent. Adresa ta IP ajunge la Google, ca la orice resursă încărcată de pe serverele lor.
               </li>
             </ul>
             <p>
-              Concluzia onestă: chiar dacă nu se setează cookies, se stochează informații pe dispozitivul tău și se transmit date care pot contribui la identificarea browserului tău. De aceea AdSense se încarcă numai cu consimțământ, nu „pentru că oricum nu sunt cookies”.
+              Concluzia onestă: se stochează informații pe dispozitivul tău și se transmit date care pot contribui la identificarea browserului tău. De aceea AdSense se încarcă numai cu consimțământ — și de aceea am renunțat la afirmația „site cookieless” pe care o făceam până în august 2026. Ar fi fost mai comod s-o păstrăm; nu ar mai fi fost adevărată.
             </p>
         </Section>
 

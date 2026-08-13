@@ -105,7 +105,7 @@ export default function PoliticaConfidentialitatePage() {
             </p>
             <ul>
               <li>
-                <strong>Stocare pe dispozitiv</strong>: o cheie în <code>localStorage</code> (<code>google_auto_fc_cmp_setting</code>), care reține alegerea ta din banner ca să nu fii întrebat la fiecare pagină.
+                <strong>Stocare pe dispozitiv</strong>: un cookie, <code>FCCDCF</code>, setat de platforma de consimțământ a Google. Reține alegerea ta din banner ca să nu fii întrebat la fiecare pagină.
               </li>
               <li>
                 <strong>Date transmise către Google</strong>: adresa IP, tipul și versiunea browserului, sistemul de operare, rezoluția ecranului, fusul orar, adresa paginii vizitate și numărul de intrări din istoricul tabului curent. Google le folosește pentru selecția reclamelor, măsurarea afișărilor și prevenirea fraudei publicitare.
@@ -167,14 +167,14 @@ export default function PoliticaConfidentialitatePage() {
               <li>Statistici Vercel Analytics: agregate, păstrate la nivel anonim conform politicii Vercel.</li>
               <li>Date Google Search Console: agregate, păstrate conform politicii Google (16 luni pentru istoricul detaliat).</li>
               <li>Date publicitare Google AdSense: păstrate conform politicilor Google de retenție a datelor publicitare. Nu avem control asupra duratei și nu deținem copii ale acestor date.</li>
-              <li>Alegerea ta din bannerul de consimțământ: stocată local în browserul tău până când o modifici sau ștergi datele site-ului.</li>
+              <li>Alegerea ta din bannerul de consimțământ: stocată în cookie-ul <code>FCCDCF</code> din browserul tău, până când o modifici sau ștergi datele site-ului.</li>
             </ul>
         </Section>
 
         <Section>
             <h2>6. Cookies</h2>
             <p>
-              Măsurarea traficului rămâne cookieless. Publicitatea Google AdSense se încarcă numai cu consimțământ și stochează o cheie în <code>localStorage</code> pentru a reține alegerea ta. Pagina dedicată <Link href="/cookies">cookies</Link> descrie exact ce am măsurat și cum poți verifica singur, în browser.
+              Măsurarea traficului rămâne cookieless. Publicitatea Google AdSense se încarcă numai cu consimțământ și setează cookie-ul <code>FCCDCF</code> pentru a reține alegerea ta. Pagina dedicată <Link href="/cookies">cookies</Link> descrie exact ce am măsurat și cum poți verifica singur, în browser.
             </p>
         </Section>
 
