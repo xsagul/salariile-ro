@@ -135,6 +135,24 @@ export default async function RootLayout({
         {/* Eveniment de ieșire cu timpul petrecut. Fără el, o vizită de o
             singură pagină are un singur timestamp și Umami raportează 0s. */}
         {process.env.VERCEL_ENV && !isEmbeddableFrame && <TimpPePagina />}
+        {/* Google AdSense — ca-pub-5894290637571256.
+            Deocamdată NU afișează reclame: nu există nicio unitate de anunț pe
+            site. Scriptul e prezent doar pentru ca Google să poată verifica
+            proprietatea și să treacă site-ul prin recenzie.
+            Nonce necesar: CSP are 'strict-dynamic', care ignoră 'self'; fără
+            el scriptul e blocat, iar eșecul e silențios (nimic în AdSense,
+            doar erori de consolă). Domeniile de ads sunt deschise în CSP din
+            src/proxy.ts.
+            Nu se montează în iframe: widgetul rulează pe site-uri terțe și nu
+            monetizăm afișările lor. */}
+        {process.env.VERCEL_ENV && !isEmbeddableFrame && (
+          <Script
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5894290637571256"
+            nonce={nonce}
+            strategy="afterInteractive"
+            crossOrigin="anonymous"
+          />
+        )}
       </body>
     </html>
   );

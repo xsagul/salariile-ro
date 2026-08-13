@@ -47,7 +47,7 @@ const jsonLd = {
         "Politica GDPR a salariile.ro: date colectate (logs server, analytics anonime Vercel), bază legală interes legitim, drepturile vizitatorilor, autoritate ANSPDCP.",
       url: "https://salariile.ro/politica-confidentialitate",
       inLanguage: "ro-RO",
-      dateModified: "2026-05-11",
+      dateModified: "2026-08-13",
       isPartOf: {
         "@type": "WebSite",
         name: "Salariile.ro",
@@ -68,7 +68,7 @@ export default function PoliticaConfidentialitatePage() {
         <Lead>
           Salariile.ro respectă Regulamentul UE 2016/679 privind protecția datelor cu caracter personal (GDPR) și Legea 190/2018. Această politică explică ce date prelucrăm, în ce scop și ce drepturi ai ca vizitator.
         </Lead>
-        <Eyebrow>ÎN VIGOARE: 11 MAI 2026 · ÎNTREȚINUT INDEPENDENT · ZERO ANUNȚURI</Eyebrow>
+        <Eyebrow>ÎN VIGOARE: 13 AUGUST 2026 · ÎNTREȚINUT INDEPENDENT · PUBLICITATE DOAR CU CONSIMȚĂMÂNT</Eyebrow>
       </Hero>
 
       <div>
@@ -99,19 +99,40 @@ export default function PoliticaConfidentialitatePage() {
                 <strong>Statistici de vizitare anonime</strong>: prin Vercel Web Analytics se contorizează numărul de vizite, paginile cele mai accesate și țara de origine (la nivel general). Nu se folosesc cookies pentru această analiză, datele sunt complet anonime și nu se transferă către terți.
               </li>
             </ul>
+            <h3>Date prelucrate pentru publicitate, numai cu consimțământul tău</h3>
+            <p>
+              Din 13 august 2026, site-ul afișează reclame prin Google AdSense. Scriptul AdSense se încarcă <strong>numai după</strong> ce îți exprimi acordul în bannerul de consimțământ. Până atunci nu se transmite nimic către Google în scop publicitar.
+            </p>
+            <ul>
+              <li>
+                <strong>Stocare pe dispozitiv</strong>: o cheie în <code>localStorage</code> (<code>google_auto_fc_cmp_setting</code>), care reține alegerea ta din banner ca să nu fii întrebat la fiecare pagină.
+              </li>
+              <li>
+                <strong>Date transmise către Google</strong>: adresa IP, tipul și versiunea browserului, sistemul de operare, rezoluția ecranului, fusul orar, adresa paginii vizitate și numărul de intrări din istoricul tabului curent. Google le folosește pentru selecția reclamelor, măsurarea afișărilor și prevenirea fraudei publicitare.
+              </li>
+              <li>
+                <strong>Reclame personalizate</strong>: dacă îți dai acordul, Google poate folosi aceste date pentru a-ți afișa reclame adaptate profilului tău. Dacă refuzi, vei vedea reclame necontextualizate sau nicio reclamă, iar site-ul funcționează identic.
+              </li>
+            </ul>
+            <p>
+              Aceste informații nu provin din documentația Google, ci dintr-o verificare proprie a integrării. Detalii și instrucțiuni de verificare independentă pe pagina <Link href="/cookies">cookies</Link>.
+            </p>
             <h3>Date pe care NU le colectăm</h3>
             <ul>
               <li>Nu există formulare de înregistrare, conturi de utilizator sau newsletter.</li>
-              <li>Sumele brut/net pe care le introduci în calculator se procesează exclusiv în browser-ul tău și nu sunt transmise sau stocate pe server.</li>
-              <li>Nu folosim Google Analytics, Facebook Pixel, programe de afiliere sau alte instrumente de tracking comportamental.</li>
-              <li>Nu vindem și nu transferăm date către terți în scopuri comerciale.</li>
+              <li>Sumele brut/net pe care le introduci în calculator se procesează exclusiv în browser-ul tău și nu sunt transmise sau stocate pe server. Nu ajung la Google și nu sunt folosite pentru selecția reclamelor.</li>
+              <li>Nu folosim Google Analytics, Facebook Pixel sau programe de afiliere.</li>
+              <li>Nu vindem date către terți.</li>
             </ul>
         </Section>
 
         <Section>
             <h2>3. Baza legală a prelucrării</h2>
             <p>
-              Datele colectate automat (logs de server, statistici anonime) se prelucrează în temeiul interesului legitim al operatorului (Art. 6 alin. 1 lit. f din GDPR), adică asigurarea funcționării și securității site-ului. Interesul legitim este proporțional cu impactul minim asupra vizitatorilor, datele fiind agregate sau de scurtă durată.
+              Datele colectate automat (logs de server, statistici anonime) se prelucrează în temeiul <strong>interesului legitim</strong> al operatorului (Art. 6 alin. 1 lit. f din GDPR), adică asigurarea funcționării și securității site-ului. Interesul legitim este proporțional cu impactul minim asupra vizitatorilor, datele fiind agregate sau de scurtă durată.
+            </p>
+            <p>
+              Datele prelucrate pentru publicitate se bazează exclusiv pe <strong>consimțământ</strong> (Art. 6 alin. 1 lit. a din GDPR), coroborat cu cerințele Directivei ePrivacy privind stocarea de informații pe echipamentul terminal. Consimțământul se colectează printr-o platformă certificată de Google, este liber exprimat și poate fi retras oricând, fără consecințe asupra funcționării site-ului.
             </p>
         </Section>
 
@@ -125,11 +146,17 @@ export default function PoliticaConfidentialitatePage() {
                 <strong>Vercel Inc.</strong> (SUA): furnizor de hosting și CDN. Procesează automat fiecare cerere către site. Vercel este certificat conform mecanismului UE-SUA Data Privacy Framework. <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener">Politica Vercel</a>.
               </li>
               <li>
-                <strong>Google LLC</strong> (SUA): exclusiv prin Google Search Console pentru verificarea proprietății domeniului și monitorizarea performanței în rezultatele căutării. Search Console nu colectează date despre vizitatorii individuali, doar statistici agregate despre cum apare site-ul în rezultatele Google.
+                <strong>Google LLC</strong> (SUA) — <strong>Search Console</strong>: pentru verificarea proprietății domeniului și monitorizarea performanței în rezultatele căutării. Nu colectează date despre vizitatorii individuali, doar statistici agregate despre cum apare site-ul în rezultatele Google.
+              </li>
+              <li>
+                <strong>Google Ireland Limited / Google LLC</strong> — <strong>AdSense</strong>: afișarea reclamelor, măsurarea afișărilor și prevenirea fraudei publicitare. Activ numai după consimțământ. Google acționează ca operator independent pentru datele publicitare, nu ca simplu împuternicit. <a href="https://business.safety.google/privacy/" target="_blank" rel="noopener">Politica Google pentru parteneri publicitari</a> · <a href="https://support.google.com/adsense/answer/13554116" target="_blank" rel="noopener">Cum folosește Google datele</a>.
+              </li>
+              <li>
+                <strong>Umami (instanță proprie)</strong>: statistici de vizitare cookieless, găzduite pe infrastructura noastră. Datele nu părăsesc controlul nostru și nu se transferă către terți.
               </li>
             </ul>
             <p>
-              Nu folosim alți subprocesatori. Lista se actualizează aici dacă apar modificări.
+              Transferurile către SUA se realizează în temeiul mecanismului UE-SUA Data Privacy Framework, la care Google și Vercel sunt certificate. Nu folosim alți subprocesatori. Lista se actualizează aici dacă apar modificări.
             </p>
         </Section>
 
@@ -139,13 +166,15 @@ export default function PoliticaConfidentialitatePage() {
               <li>Logs de server: maximum 30 de zile, după care se șterg automat de către Vercel.</li>
               <li>Statistici Vercel Analytics: agregate, păstrate la nivel anonim conform politicii Vercel.</li>
               <li>Date Google Search Console: agregate, păstrate conform politicii Google (16 luni pentru istoricul detaliat).</li>
+              <li>Date publicitare Google AdSense: păstrate conform politicilor Google de retenție a datelor publicitare. Nu avem control asupra duratei și nu deținem copii ale acestor date.</li>
+              <li>Alegerea ta din bannerul de consimțământ: stocată local în browserul tău până când o modifici sau ștergi datele site-ului.</li>
             </ul>
         </Section>
 
         <Section>
             <h2>6. Cookies</h2>
             <p>
-              Salariile.ro nu folosește cookies pentru tracking. Pentru detalii despre cookies tehnice strict necesare, vezi pagina dedicată <Link href="/cookies">cookies</Link>.
+              Măsurarea traficului rămâne cookieless. Publicitatea Google AdSense se încarcă numai cu consimțământ și stochează o cheie în <code>localStorage</code> pentru a reține alegerea ta. Pagina dedicată <Link href="/cookies">cookies</Link> descrie exact ce am măsurat și cum poți verifica singur, în browser.
             </p>
         </Section>
 
@@ -189,7 +218,7 @@ export default function PoliticaConfidentialitatePage() {
             <p>
               Această politică poate fi actualizată periodic, în special dacă se modifică stack-ul tehnic al site-ului sau apar cerințe legale noi. Versiunea curentă este menționată în antetul paginii cu data intrării în vigoare. Modificările semnificative vor fi anunțate vizibil pe homepage înainte de a intra în vigoare.
             </p>
-            <p className="source-note">Ultima actualizare: 11 mai 2026.</p>
+            <p className="source-note">Ultima actualizare: 13 august 2026 — integrarea Google AdSense și consimțământul pentru publicitate. Versiunea anterioară, în vigoare între 11 mai și 13 august 2026, descria un site fără publicitate.</p>
         </Section>
       </div>
     </>

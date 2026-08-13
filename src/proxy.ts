@@ -46,12 +46,36 @@ export function proxy(request: NextRequest) {
   const isEmbeddableFrame =
     path === "/widget/frame" || path === "/widget/frame/fluturas";
 
+  // ─── AdSense ───────────────────────────────────────────────────────────────
+  // Reclamele au nevoie de trei directive pe care CSP-ul nostru nu le avea
+  // deloc: `frame-src` (creativele rulează în iframe-uri Google), `connect-src`
+  // (licitația și raportarea) și imagini de pe domenii pe care nu le putem
+  // enumera — creativele vin de la orice advertiser.
+  //
+  // Fără ele reclamele NU se încarcă și eșecul e silențios: nimic în interfața
+  // AdSense, doar erori de consolă. `script-src` nu are nevoie de adăugiri,
+  // pentru că `strict-dynamic` lasă scriptul cu nonce să-și încarce copiii.
+  //
+  // Compromis asumat: `img-src https:` și lista de domenii de mai jos slăbesc
+  // real politica față de ce aveam. E prețul reclamelor, nu o scăpare — dacă
+  // renunțăm la AdSense, se șterge blocul ăsta și CSP-ul revine strict.
+  //
+  // Nu se aplică pe rutele de widget: alea rulează în iframe pe site-uri
+  // terțe, unde nu servim reclame și nu vrem CSP slăbit.
+  const adsScriptSrc = "https://pagead2.googlesyndication.com https://partner.googleadservices.com https://tpc.googlesyndication.com https://www.googletagservices.com";
+  const adsFrameSrc = "https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com";
+  const adsConnectSrc = "https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://csi.gstatic.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google";
+
+  const adsEnabled = !isEmbeddableFrame;
+
   const cspHeader = `
     default-src 'self';
-    script-src 'self' 'nonce-${nonce}' 'strict-dynamic' 'unsafe-hashes'${isDevelopment ? " 'unsafe-eval'" : ""};
+    script-src 'self' 'nonce-${nonce}' 'strict-dynamic' 'unsafe-hashes'${isDevelopment ? " 'unsafe-eval'" : ""}${adsEnabled ? ` ${adsScriptSrc}` : ""};
     style-src 'self' 'unsafe-inline';
-    img-src 'self' blob: data:;
+    img-src 'self' blob: data:${adsEnabled ? " https:" : ""};
     font-src 'self' data:;
+    ${adsEnabled ? `frame-src 'self' ${adsFrameSrc};` : ""}
+    ${adsEnabled ? `connect-src 'self' ${adsConnectSrc};` : ""}
     object-src 'none';
     base-uri 'self';
     form-action 'self';
