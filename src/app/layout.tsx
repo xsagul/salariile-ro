@@ -1,17 +1,28 @@
 // src/app/layout.tsx
-// Root layout — design modern & simplu, font unic Inter (UI + body + cifre).
-// Cifrele folosesc font-variant-numeric: tabular-nums (setat în globals.css).
+// Root layout — doar <html>/<body>, fontul și metadata implicită.
+//
+// Deliberat MINIMAL și complet static. Header, Footer și analytics stau în
+// src/app/(site)/layout.tsx, iar rutele de widget în src/app/(embed)/.
+//
+// De ce: până pe 15 august 2026 acest fișier citea `headers()` ca să afle
+// nonce-ul CSP și pathname-ul (pentru a decide dacă randează Header/Footer).
+// `await headers()` într-un server component scoate din render static tot ce
+// e sub el — iar fiind în root layout, „tot ce e sub el” însemna ÎNTREGUL
+// site. Rezultatul măsurat: 26 de rute dinamice, `Cache-Control: no-store` și
+// `X-Vercel-Cache: MISS` pe absolut fiecare cerere, inclusiv la fiecare
+// trecere de bot. `export const revalidate` din zile-lucratoare-2026 era cod
+// mort din același motiv.
+//
+// După separarea în route groups: 28 de rute statice/prerandate, 3 dinamice
+// (API-ul de markdown și cele două rute de widget, care citesc searchParams).
+//
+// Nu adăuga aici `headers()`, `cookies()` sau alt API dinamic. Dacă ai nevoie
+// de ele, pune-le în layout-ul grupului care le cere, nu în rădăcină.
 
 import { Inter } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next";
-import Script from "next/script";
-import TimpPePagina from "@/app/components/TimpPePagina";
-import { headers } from "next/headers"; // Adăugat pentru citirea nonce-ului
 import type { Metadata } from "next";
 
 import "./globals.css";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
 
 // Inter Variable — font unic pentru tot site-ul (UI, body, tabele, cifre).
 // Fără weight specific → variable font version, ~30 KB optimizat.
@@ -76,75 +87,15 @@ export const metadata: Metadata = {
   },
 };
 
-// src/app/layout.tsx
-
-// 1. Schimbă funcția în 'async' pentru a putea folosi 'await'
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const headerStore = await headers();
-  const nonce = headerStore.get("x-nonce") || undefined;
-
-  // /widget/frame și subrutele sale rulează în <iframe> pe alte site-uri: fără
-  // Header/Footer, doar conținutul widgetului. Pathname-ul vine din proxy.
-  const isEmbeddableFrame = (headerStore.get("x-pathname") || "").startsWith("/widget/frame");
-
   return (
     <html lang="ro" className={inter.variable}>
-      <head>
-        {/* Next.js va folosi automat nonce-ul pentru scripturile sale de sistem */}
-      </head>
       <body className="min-h-screen overflow-x-hidden bg-white font-sans text-stone-700 antialiased">
-        {isEmbeddableFrame ? (
-          children
-        ) : (
-        <div className="relative flex min-h-screen flex-col">
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </div>
-        )}
-        {/* Web Analytics (Vercel, cookieless) — declarat în /cookies și /politica-confidentialitate.
-            Rămâne ca referință independentă față de Umami: două măsurători ale
-            aceluiași trafic, utile pentru validare încrucișată.
-            Doar pe Vercel. Nonce-ul CSP e aplicat automat de Next.js pe
-            scriptul next/script al componentei (CSP are 'strict-dynamic'). */}
-        {process.env.VERCEL_ENV && <Analytics />}
-        {/* Umami — instanță proprie, cookieless. Servit prin /stats.js de pe
-            domeniul propriu (rewrite în next.config.ts), ca să nu fie blocat.
-            Nu setează cookies, deci nu cere banner și nu contrazice /cookies.
-            Nonce necesar: CSP are 'strict-dynamic', care ignoră 'self'.
-            Nu se montează în iframe: widgetul rulează pe site-uri terțe, iar
-            vizitele lor nu sunt vizitele noastre. */}
-        {process.env.VERCEL_ENV && !isEmbeddableFrame && (
-          <Script
-            src="/stats.js"
-            nonce={nonce}
-            strategy="afterInteractive"
-            data-website-id="17dce2b5-ee24-4155-9ad9-a7ed937066fd"
-            // Core Web Vitals. Colectarea e opt-in în tracker: fără atributul
-            // ăsta, `initPerformance()` nu se apelează deloc, iar coloanele
-            // lcp/cls/inp/fcp/ttfb din baza de date rămân goale — exact ce am
-            // constatat după prima zi. Metricile se trimit ca event_type 5,
-            // când pagina devine ascunsă.
-            data-performance="true"
-          />
-        )}
-        {/* Eveniment de ieșire cu timpul petrecut. Fără el, o vizită de o
-            singură pagină are un singur timestamp și Umami raportează 0s. */}
-        {process.env.VERCEL_ENV && !isEmbeddableFrame && <TimpPePagina />}
-        {/* AdSense a fost integrat pe 13 august 2026 și scos pe 14 august 2026.
-            Contul rămâne aprobat (ca-pub-5894290637571256, site „Ready”), iar
-            Google cere recenzie nouă abia după 5 luni fără reclame — deci
-            repunerea costă zece minute.
-            De ce l-am scos: cu scriptul activ și ZERO unități de anunț,
-            măsurătorile pe utilizatori reali au arătat LCP median 760 -> 884 ms
-            (+16%) și INP 64 -> 80 ms (+25%), iar timpul median pe pagină a
-            căzut la 22s față de un baseline de 27-37s. Plăteam tot costul
-            pentru zero venit. Dacă se repune, se repun și domeniile din CSP
-            (src/proxy.ts) și public/ads.txt. */}
+        {children}
       </body>
     </html>
   );

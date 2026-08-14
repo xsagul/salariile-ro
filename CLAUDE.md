@@ -14,7 +14,8 @@ salariile.ro este un portal despre salarii și fiscalitate în România. Scop: c
 - Next.js + TypeScript (~87%) + Tailwind / CSS
 - Deploy pe Vercel
 - Arhitectură SSR (problemele de client-side rendering care stricau indexarea sunt rezolvate)
-- Fișiere cheie: `middleware.ts`, `next.config.ts`, `src/`, `public/`
+- Fișiere cheie: `src/proxy.ts` (fostul `middleware.ts`, redenumit în Next 16), `next.config.ts`, `src/`, `public/`
+- Rutare: `src/app/(site)/` = paginile publice (Header/Footer/analytics), `src/app/(embed)/` = rutele de widget care rulează în iframe pe site-uri terțe. Grupurile nu apar în URL. Root layout-ul e minimal și trebuie să rămână static — nu adăuga `headers()` sau `cookies()` acolo, scoate tot site-ul din cache.
 
 ## Secțiunile site-ului
 
