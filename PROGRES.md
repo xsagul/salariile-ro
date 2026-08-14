@@ -603,3 +603,87 @@ la trei zile dupa episodul din 24 iulie.
 pot fi atribuite curat. Se vor citi ca "nu au stricat nimic", nu ca "au adus
 cresterea". Iar cresterea actuala poate fi retrasa la urmatoarea rulare —
 nu se trateaza ca nivel nou stabilit pana nu tine 2-3 saptamani.
+
+## AdSense — test de 24 de ore si retragere, 13-14 august 2026
+
+### Ce s-a intamplat
+
+Cont creat de proprietar (`ca-pub-5894290637571256`), aprobat rapid; site
+"Ready", ads.txt "Authorised". Integrat pe 13 aug (`4f084d0`), reparat CSP pe
+14 aug (`6b5b151`), scos complet pe 14 aug (`de84c09`).
+
+### Bug-ul care merita retinut
+
+CSP-ul avea `default-src 'self'` si NICIUN `frame-src` sau `connect-src`.
+La primul deploy lipsea `fundingchoicesmessages.google.com` din connect-src,
+deci AdSense se incarca normal dar bannerul de consimtamant era BLOCAT — adica
+reclame fara acord, exact starea de evitat. **Nimic din interfata AdSense nu
+semnala asta**; s-a vazut doar in consola browserului, la verificarea de dupa
+deploy. Daca se repune AdSense, comentariile din `src/proxy.ts` si
+`src/app/layout.tsx` listeaza tot ce trebuie repus.
+
+### Masuratoarea care a decis retragerea
+
+Cu scriptul activ si ZERO unitati de anunt, pe utilizatori reali (Umami):
+
+| metrica | inainte | dupa | delta |
+|---|---|---|---|
+| LCP median | 760 ms | 884 ms | +16% |
+| INP median | 64 ms | 80 ms | +25% |
+| CLS median | 0,007 | 0,007 | 0 |
+| timp median pe pagina | 27-37 s | **22 s** | minim al seriei de 12 zile |
+
+Traficul a ramas in plaja de zgomot (262 -> 280 sesiuni in primele 20h, fata
+de un baseline de 300-340 in zile lucratoare). Frica initiala de scadere de
+trafic NU s-a confirmat; semnalul real a fost pe timpul pe pagina si CWV.
+
+Venit estimat la trafic actual: **~66 lei/luna** (7.227 afisari/luna, 1,38-1,55
+pagini/vizita, RPM RO ~2 $). Pentru 100 $/luna ar trebui ~7x traficul.
+Concluzie: platam intreg costul pentru zero venit, fiindca nu existau unitati
+de anunt. Proprietarul a ales retragerea completa.
+
+### Ce ramane castigat
+
+Aprobarea de cont NU se pierde. Google cere recenzie noua abia dupa **5 luni**
+fara reclame afisate. Mesajul CMP ramane publicat (inactiv fara script).
+Repunerea = ~10 minute.
+
+Nota de conformitate: paginile legale au fost rescrise de doua ori si NU
+pretind ca testul nu a existat. `/cookies` pastreaza o sectiune cu ce s-a
+masurat si de ce s-a renuntat.
+
+Reziduu cunoscut: vizitatorii din fereastra de 24h raman cu un cookie `FCCDCF`
+orfan pana expira. Nimic nu il mai citeste. Vizitatorii noi: zero cookies,
+zero localStorage, zero domenii externe (verificat in productie).
+
+### UMAMI DEBLOCAT — cel mai valoros rezultat al zilei
+
+Nu e nevoie de share URL si nu exista chei de API in self-hosted 3.2.0.
+Exista o clona locala la `~/Desktop/umami` cu `DATABASE_URL` catre Neon.
+`pg` e instalat acolo, deci scripturile trebuie rulate DIN acel folder.
+Website id: `17dce2b5-ee24-4155-9ad9-a7ed937066fd`.
+Coloanele CWV (lcp/cls/inp/fcp/ttfb) sunt direct pe `website_event`.
+Evenimentul `timp-pagina` are proprietatile in `event_data` (`cale`, `secunde`).
+
+Prima observatie din date — timp median pe pagina:
+
+| pagina | timp median |
+|---|---|
+| /noutati/concediu-medical-2026 | 63 s |
+| /deducere-personala-2026 | 47 s |
+| /salariu-mediu | 35 s |
+| / | 31 s |
+| /zile-lucratoare-2026 | 20 s |
+| /noutati | 8 s |
+
+Continutul explicativ retine de 3x mai mult decat calculatorul. Relevant
+indiferent de modelul de business ales.
+
+### Decizie deschisa
+
+Proprietarul se consulta saptamana viitoare pe directie: reclame vs produse
+software (salarizare, facturare, plati). Pasul care dezamorseaza intrebarea e
+instrumentarea (`calcul`, `calcul-pfa`, `descarca-fluturas`, `copiaza-embed`) —
+ar arata in 2-3 saptamani cati vizitatori sunt angajati care verifica un
+salariu vs angajatori/PFA care ar plati. Momentan exista UN SINGUR eveniment
+custom in tot codul (`TimpPePagina.tsx:52`).
