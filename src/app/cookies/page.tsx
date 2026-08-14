@@ -1,14 +1,17 @@
 // app/cookies/page.tsx
 // Server Component. Politica cookies.
 //
-// Pagina a fost rescrisă pe 13 august 2026, când site-ul a integrat Google
-// AdSense. Până atunci afirma „zero publicitate, zero cookies de tracking” și
-// explica de ce nu există consent banner — afirmații care au încetat să fie
-// adevărate în momentul în care scriptul AdSense a ajuns în producție.
+// Istoric, ca să nu se piardă contextul:
+//   - până la 13 aug 2026: site fără publicitate, pagina afirma „zero cookies
+//     de tracking, zero publicitate” și explica de ce nu există consent banner;
+//   - 13 aug 2026: integrat Google AdSense, pagina rescrisă;
+//   - 14 aug 2026: AdSense scos, pagina rescrisă din nou.
 //
-// Cifrele din secțiunea „Ce am măsurat” nu sunt preluate din documentația
-// Google, ci dintr-o măsurătoare proprie pe build-ul de producție. Dacă se
-// schimbă integrarea, se remăsoară înainte de a modifica textul.
+// Secțiunea „Ce am măsurat” se păstrează deliberat, deși reclamele nu mai sunt
+// active: e o măsurătoare reală pe utilizatorii noștri, e utilă publicului și
+// documentează de ce am renunțat. Dacă AdSense se repune, se remăsoară înainte
+// de a modifica textul — măsurătoarea inițială, făcută pe localhost cu CMP-ul
+// nepublicat, a dat alt rezultat decât producția.
 
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -16,20 +19,20 @@ import { ogPage, twPage } from "@/lib/seo";
 import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow } from "@/app/components/ui";
 
 export const metadata: Metadata = {
-  title: "Politica de cookies",
+  title: "Politica de cookies, fără tracking",
   description:
-    "Ce stochează salariile.ro în browserul tău: nimic pentru analiză, iar pentru publicitate doar după consimțământul tău explicit. Măsurat, nu declarat.",
+    "Salariile.ro este cookieless. Nu folosim cookies pentru analiză, publicitate sau tracking. Inclusiv ce am măsurat în cele 24 de ore în care am testat reclame.",
   alternates: { canonical: "https://salariile.ro/cookies" },
   openGraph: ogPage({
-    title: "Politica de cookies",
+    title: "Politica de cookies, fără tracking",
     description:
-      "Analiza rămâne cookieless. Publicitatea (Google AdSense) rulează doar cu consimțământ.",
+      "Salariile.ro este cookieless: fără cookies de analiză, publicitate sau tracking.",
     path: "/cookies",
   }),
   twitter: twPage({
-    title: "Politica de cookies",
+    title: "Politica de cookies, fără tracking",
     description:
-      "Analiza rămâne cookieless. Publicitatea (Google AdSense) rulează doar cu consimțământ.",
+      "Salariile.ro este cookieless: fără cookies de analiză, publicitate sau tracking.",
   }),
 };
 
@@ -47,10 +50,10 @@ const jsonLd = {
       "@type": "WebPage",
       name: "Politica cookies salariile.ro",
       description:
-        "Analiza de trafic rămâne cookieless. Publicitatea Google AdSense se încarcă numai după consimțământ explicit.",
+        "Salariile.ro este cookieless prin design, fără cookies de tracking, analiză comportamentală sau publicitate.",
       url: "https://salariile.ro/cookies",
       inLanguage: "ro-RO",
-      dateModified: "2026-08-13",
+      dateModified: "2026-08-14",
       isPartOf: {
         "@type": "WebSite",
         name: "Salariile.ro",
@@ -69,22 +72,12 @@ export default function CookiesPage() {
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Politica cookies" }]} />
         <H1>Politica cookies</H1>
         <Lead>
-          Măsurarea traficului rămâne cookieless, ca până acum. Ce s-a schimbat este că site-ul afișează reclame Google AdSense — iar acelea nu se încarcă până nu îți dai acordul. Pagina explică exact ce se stochează, ce se trimite și cum îți retragi consimțământul.
+          Salariile.ro funcționează fără cookies pentru tracking, publicitate sau analiză comportamentală. Pagina explică ce există efectiv, de ce nu folosim consent banner și ce am aflat în cele 24 de ore în care am testat reclame.
         </Lead>
-        <Eyebrow>ANALIZĂ FĂRĂ COOKIES · PUBLICITATE DOAR CU CONSIMȚĂMÂNT · ÎN VIGOARE: 13 AUGUST 2026</Eyebrow>
+        <Eyebrow>ZERO COOKIES DE TRACKING · ZERO PUBLICITATE · ÎN VIGOARE: 14 AUGUST 2026</Eyebrow>
       </Hero>
 
       <div>
-        <Section>
-            <h2>Ce s-a schimbat în august 2026</h2>
-            <p>
-              Până în august 2026, salariile.ro nu afișa nicio reclamă, iar această pagină explica de ce nu era nevoie de un banner de consimțământ. Din 13 august 2026, site-ul este înscris în Google AdSense.
-            </p>
-            <p>
-              Nu ascundem schimbarea și nu o îmbrăcăm în limbaj juridic: site-ul a trecut de la „nu avem ce să te întrebăm” la „trebuie să te întrebăm”. Restul paginii spune exact ce se întâmplă cu datele tale, verificat de noi, nu copiat din documentația Google.
-            </p>
-        </Section>
-
         <Section>
             <h2>Ce sunt cookies</h2>
             <p>
@@ -96,16 +89,22 @@ export default function CookiesPage() {
         </Section>
 
         <Section>
-            <h2>Ce folosește salariile.ro, pe categorii</h2>
+            <h2>Ce folosește salariile.ro</h2>
+            <p>
+              Pe scurt: <strong>niciun cookie pentru tracking sau publicitate</strong>.
+            </p>
+            <p>
+              Decizia de design este deliberată: calculatorul de salariu nu are nevoie să te urmărească pentru a funcționa. Toate calculele se execută local în browser, nu există conturi de utilizator, nu există formulare care să necesite păstrarea stării între pagini.
+            </p>
             <ul>
               <li>
-                <strong>Cookies strict necesare</strong>: site-ul nu setează cookies funcționale de tipul „preferințe limbă” sau „mod întunecat”, pentru că aceste funcționalități nu există în versiunea curentă. Dacă vor fi adăugate, această pagină va fi actualizată.
+                <strong>Cookies strict necesare</strong>: site-ul nu setează cookies funcționale de tipul „preferințe limbă” sau „mod întunecat”, pentru că aceste funcționalități nu există în versiunea curentă.
               </li>
               <li>
-                <strong>Analiză</strong>: folosim Vercel Web Analytics și o instanță proprie de Umami, ambele <strong>cookieless</strong>. Nu setează cookies, nu identifică vizitatori individuali și nu au fost afectate de trecerea la AdSense. Datele sunt agregate: număr de vizite, pagini populare, timp petrecut pe pagină.
+                <strong>Analiză</strong>: folosim Vercel Web Analytics și o instanță proprie de Umami, ambele <strong>cookieless</strong>. Nu setează cookies și nu identifică vizitatori individuali. Datele sunt agregate: număr de vizite, pagini populare, timp petrecut pe pagină.
               </li>
               <li>
-                <strong>Publicitate</strong>: Google AdSense. Se încarcă <strong>numai după ce îți dai consimțământul</strong> prin bannerul afișat la prima vizită. Dacă refuzi, scriptul nu rulează.
+                <strong>Publicitate</strong>: niciuna. Site-ul nu afișează reclame, nu folosește remarketing și nu integrează platforme publicitare.
               </li>
               <li>
                 <strong>Rețele sociale</strong>: niciunul. Nu sunt integrate widget-uri Facebook, X sau alte rețele.
@@ -114,39 +113,39 @@ export default function CookiesPage() {
         </Section>
 
         <Section>
-            <h2>Ce am măsurat efectiv la AdSense</h2>
+            <h2>De ce nu există consent banner</h2>
             <p>
-              Înainte de a publica această pagină am pornit site-ul cu scriptul AdSense activ și am verificat direct ce face, în loc să ne bazăm pe descrieri generale. Rezultatul, pe o pagină fără nicio unitate de reclamă afișată:
+              Cele mai multe site-uri afișează un banner „Acceptă cookies” pentru că setează cookies care necesită consimțământ: Google Analytics, Facebook Pixel, programe de afiliere, rețele publicitare.
             </p>
-            <ul>
-              <li>
-                <strong>Un cookie</strong>: <code>FCCDCF</code>, setat de platforma de consimțământ a Google. Reține ce ai ales în banner, ca să nu fii întrebat la fiecare pagină. Nu conține date despre tine, ci alegerea ta și momentul ei.
-              </li>
-              <li>
-                <strong>Cereri către Google</strong>: platforma de consimțământ de pe <code>fundingchoicesmessages.google.com</code>, o cerere de reclamă către <code>pagead2.googlesyndication.com</code> și sistemul antifraudă de pe <code>adtrafficquality.google</code>.
-              </li>
-              <li>
-                <strong>Date trimise în cererea de reclamă</strong>: tipul și versiunea browserului, sistemul de operare, rezoluția ecranului, fusul orar, adresa paginii vizitate și numărul de intrări din istoricul tabului curent. Adresa ta IP ajunge la Google, ca la orice resursă încărcată de pe serverele lor.
-              </li>
-            </ul>
             <p>
-              Concluzia onestă: se stochează informații pe dispozitivul tău și se transmit date care pot contribui la identificarea browserului tău. De aceea AdSense se încarcă numai cu consimțământ — și de aceea am renunțat la afirmația „site cookieless” pe care o făceam până în august 2026. Ar fi fost mai comod s-o păstrăm; nu ar mai fi fost adevărată.
+              Salariile.ro nu setează astfel de cookies, deci nu are obligația legală să ceară consimțământ. Nu e o portiță: pur și simplu nu există date pentru care să se ceară acordul.
             </p>
         </Section>
 
         <Section>
-            <h2>Bannerul de consimțământ</h2>
+            <h2>Testul de publicitate din 13–14 august 2026</h2>
             <p>
-              La prima vizită din Spațiul Economic European, Regatul Unit sau Elveția vezi un banner care îți cere acordul pentru publicitate. Este platforma de consimțământ certificată de Google, obligatorie contractual pentru orice site care afișează AdSense.
+              Timp de aproximativ 24 de ore, site-ul a avut integrat Google AdSense, cu banner de consimțământ. L-am scos. Păstrăm aici ce am măsurat, pentru că e o informație pe care rar o publică cineva și pentru că explică decizia.
             </p>
             <p>
-              Bannerul are două butoane: <strong>„Consimt”</strong> și <strong>„Gestionează opțiunile”</strong>. Nu există un buton de refuz direct în primul ecran — ca să refuzi, intri în „Gestionează opțiunile” și dezactivezi scopurile de acolo. Preferăm să scriem asta explicit decât să lăsăm impresia că refuzul e la fel de rapid ca acceptul: nu este.
+              Cu scriptul AdSense activ și <strong>zero reclame afișate efectiv</strong>, măsurat pe propriii vizitatori:
             </p>
+            <ul>
+              <li>
+                <strong>Un cookie</strong>: <code>FCCDCF</code>, setat de platforma de consimțământ a Google pentru a reține alegerea din banner.
+              </li>
+              <li>
+                <strong>Cereri către Google</strong>: platforma de consimțământ, o cerere de reclamă către <code>pagead2.googlesyndication.com</code> și sistemul antifraudă de pe <code>adtrafficquality.google</code>.
+              </li>
+              <li>
+                <strong>Date transmise</strong>: adresa IP, tipul și versiunea browserului, sistemul de operare, rezoluția ecranului, fusul orar, adresa paginii vizitate și numărul de intrări din istoricul tabului curent.
+              </li>
+              <li>
+                <strong>Cost de performanță</strong>: timpul median de încărcare a crescut de la 760 ms la 884 ms, iar timpul median de răspuns la interacțiune de la 64 ms la 80 ms. Fără nicio reclamă afișată.
+              </li>
+            </ul>
             <p>
-              Refuzul rămâne însă complet posibil și fără costuri pentru tine. Dacă refuzi, vei vedea reclame necontextualizate sau nicio reclamă, iar calculatorul funcționează identic — nicio funcție a site-ului nu depinde de acceptul tău și nu îți restricționăm accesul.
-            </p>
-            <p>
-              Îți poți schimba oricând alegerea din linkul de gestionare a consimțământului afișat de banner. Ștergerea datelor site-ului din browser resetează de asemenea alegerea, iar bannerul va apărea din nou.
+              Am considerat că nu merită: vizitatorii ar fi plătit cu date personale și cu un site mai lent, pentru un venit estimat sub 100 de lei pe lună. Contul AdSense rămâne aprobat și e posibil să reluăm testul în viitor — dacă o facem, această pagină va fi actualizată <em>înainte</em>, nu după.
             </p>
         </Section>
 
@@ -160,7 +159,7 @@ export default function CookiesPage() {
               <li>Apasă F12 pentru a deschide instrumentele de dezvoltator</li>
               <li>Mergi la tab-ul „Application” (Chrome/Brave) sau „Storage” (Firefox)</li>
               <li>Verifică secțiunile „Cookies” și „Local storage” pentru salariile.ro</li>
-              <li>În tab-ul „Network” vezi toate cererile făcute de pagină, inclusiv cele către Google</li>
+              <li>În tab-ul „Network” vezi toate cererile făcute de pagină</li>
             </ul>
             <p>
               Dacă găsești ceva ce nu este descris aici, <Link href="/contact">scrie-ne</Link> — pagina se corectează, nu se apără.
@@ -168,18 +167,15 @@ export default function CookiesPage() {
         </Section>
 
         <Section>
-            <h2>Cum blochezi cookies și reclame</h2>
+            <h2>Cum dezactivezi cookies (pentru orice site)</h2>
             <p>
-              Orice browser modern permite blocarea cookies global sau per site:
+              Chiar dacă pe salariile.ro nu sunt relevante, orice browser modern permite blocarea cookies global sau per site:
             </p>
             <ul>
               <li><strong>Chrome / Brave / Edge:</strong> Setări → Confidențialitate și securitate → Cookies și alte date ale site-ului</li>
               <li><strong>Firefox:</strong> Setări → Confidențialitate și securitate → Cookies și date ale site-ului</li>
               <li><strong>Safari:</strong> Preferințe → Confidențialitate</li>
             </ul>
-            <p>
-              Poți folosi și o extensie de blocare a reclamelor. Nu o vom detecta și nu îți vom restricționa accesul din acest motiv.
-            </p>
         </Section>
 
         <Section>
@@ -187,7 +183,7 @@ export default function CookiesPage() {
             <p>
               Pentru detalii despre toate datele prelucrate (inclusiv logs de server, statistici anonime și temeiul juridic), vezi <Link href="/politica-confidentialitate">politica de confidențialitate</Link>.
             </p>
-            <p className="source-note">Ultima actualizare: 13 august 2026. Versiunea anterioară, în vigoare între 11 mai și 13 august 2026, descria un site fără publicitate.</p>
+            <p className="source-note">Ultima actualizare: 14 august 2026. Între 13 și 14 august 2026 site-ul a afișat un banner de consimțământ și a avut integrat Google AdSense; ambele au fost eliminate.</p>
         </Section>
       </div>
     </>

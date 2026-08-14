@@ -46,41 +46,23 @@ export function proxy(request: NextRequest) {
   const isEmbeddableFrame =
     path === "/widget/frame" || path === "/widget/frame/fluturas";
 
-  // ─── AdSense ───────────────────────────────────────────────────────────────
-  // Reclamele au nevoie de trei directive pe care CSP-ul nostru nu le avea
-  // deloc: `frame-src` (creativele rulează în iframe-uri Google), `connect-src`
-  // (licitația și raportarea) și imagini de pe domenii pe care nu le putem
-  // enumera — creativele vin de la orice advertiser.
+  // CSP strict, fără excepții pentru rețele publicitare.
   //
-  // Fără ele reclamele NU se încarcă și eșecul e silențios: nimic în interfața
-  // AdSense, doar erori de consolă. `script-src` nu are nevoie de adăugiri,
-  // pentru că `strict-dynamic` lasă scriptul cu nonce să-și încarce copiii.
+  // Între 13 și 14 august 2026 aici au existat directive suplimentare pentru
+  // AdSense: `frame-src` și `connect-src` (care lipseau complet — `default-src`
+  // le acoperea) plus `img-src https:`. Au fost scoase odată cu scriptul.
   //
-  // Compromis asumat: `img-src https:` și lista de domenii de mai jos slăbesc
-  // real politica față de ce aveam. E prețul reclamelor, nu o scăpare — dacă
-  // renunțăm la AdSense, se șterge blocul ăsta și CSP-ul revine strict.
-  //
-  // Nu se aplică pe rutele de widget: alea rulează în iframe pe site-uri
-  // terțe, unde nu servim reclame și nu vrem CSP slăbit.
-  // `fundingchoicesmessages.google.com` este platforma de consimțământ (CMP).
-  // Lipsea din connect-src la primul deploy, iar efectul a fost exact cel
-  // descris mai sus: AdSense se încărca, dar bannerul de consimțământ era
-  // blocat — adică starea cea mai proastă posibilă, reclame fără acord.
-  // Nu se scoate de aici fără să se scoată și AdSense.
-  const adsScriptSrc = "https://pagead2.googlesyndication.com https://partner.googleadservices.com https://tpc.googlesyndication.com https://www.googletagservices.com https://fundingchoicesmessages.google.com";
-  const adsFrameSrc = "https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com https://fundingchoicesmessages.google.com";
-  const adsConnectSrc = "https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://csi.gstatic.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://fundingchoicesmessages.google.com";
-
-  const adsEnabled = !isEmbeddableFrame;
-
+  // Dacă se repune AdSense, trebuie repuse TOATE, inclusiv
+  // `fundingchoicesmessages.google.com` în connect-src. Omiterea lui a lăsat
+  // site-ul o zi cu scriptul activ și bannerul de consimțământ blocat, fără
+  // niciun semnal în interfața AdSense — doar în consola browserului.
+  // Vezi commit-urile 4f084d0 și 6b5b151.
   const cspHeader = `
     default-src 'self';
-    script-src 'self' 'nonce-${nonce}' 'strict-dynamic' 'unsafe-hashes'${isDevelopment ? " 'unsafe-eval'" : ""}${adsEnabled ? ` ${adsScriptSrc}` : ""};
+    script-src 'self' 'nonce-${nonce}' 'strict-dynamic' 'unsafe-hashes'${isDevelopment ? " 'unsafe-eval'" : ""};
     style-src 'self' 'unsafe-inline';
-    img-src 'self' blob: data:${adsEnabled ? " https:" : ""};
+    img-src 'self' blob: data:;
     font-src 'self' data:;
-    ${adsEnabled ? `frame-src 'self' ${adsFrameSrc};` : ""}
-    ${adsEnabled ? `connect-src 'self' ${adsConnectSrc};` : ""}
     object-src 'none';
     base-uri 'self';
     form-action 'self';
