@@ -687,3 +687,42 @@ instrumentarea (`calcul`, `calcul-pfa`, `descarca-fluturas`, `copiaza-embed`) �
 ar arata in 2-3 saptamani cati vizitatori sunt angajati care verifica un
 salariu vs angajatori/PFA care ar plati. Momentan exista UN SINGUR eveniment
 custom in tot codul (`TimpPePagina.tsx:52`).
+
+## Caching: site scos din render dinamic, 15 august 2026
+
+Commit `d9d0619`. Cauza unica era `await headers()` in root layout (nonce CSP +
+`x-pathname`). Un API dinamic in root layout scoate INTREGUL site din static.
+
+**Rezultat masurat in productie:**
+
+| | inainte | dupa |
+|---|---|---|
+| rute dinamice / statice | 26 / 6 | **3 / 28** |
+| X-Vercel-Cache | MISS pe tot | **HIT** |
+| Cache-Control | `private, no-cache, no-store` | `public, max-age=0, must-revalidate` |
+| ISR zile-lucratoare-2026 | cod mort | **12h, activ** |
+
+Structura: route groups `(site)` si `(embed)` in loc de citit headere.
+URL-urile sunt neschimbate (grupurile nu apar in URL), git a inregistrat totul
+ca redenumiri.
+
+CSP diferentiat: pagini publice `script-src 'self' 'unsafe-inline'`, rute de
+widget `'self' 'nonce-...' 'strict-dynamic'`. Justificare: paginile publice nu
+primesc niciun input de utilizator, widgetul e singurul care citeste `?brut=`
+si ramane dinamic oricum. `unsafe-hashes` scos (niciun handler inline in src/).
+
+**DE VERIFICAT peste cateva zile:** TTFB-ul de teren din Umami
+(`website_event.ttfb`). Inainte: 395-465 ms mediana. curl de pe masina arata
+~190 ms, dar nu e comparabil — se compara doar date de teren cu date de teren.
+
+### Doua capcane de proces, ambele au produs rezultate false
+
+1. `.next` retine tipuri generate pe vechile cai dupa mutarea fisierelor.
+   `rm -rf .next` inainte de build, altfel typecheck-ul esueaza aiurea.
+2. **Am raportat un deploy care nu existase.** Eram pe ramura
+   `curatenie-caching`, iar `git push origin main` impingea `main`-ul
+   nemodificat — "Everything up-to-date", exit 0. In plus, verificarea de
+   propagare cauta `unsafe-inline`, sir care exista deja in `style-src`, deci
+   a dat fals pozitiv. Doua greseli care s-au acoperit una pe alta.
+   Regula: verifica `git branch --show-current` inainte de push, si alege
+   pentru propagare un sir care exista DOAR in build-ul nou.
