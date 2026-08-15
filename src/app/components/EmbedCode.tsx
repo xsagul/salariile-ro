@@ -4,13 +4,15 @@
 // Bloc de cod cu buton „Copiază" pentru pagina /widget (codul de embed al widgetului).
 
 import { useState } from "react";
+import { trackUmami } from "@/lib/umami";
 
-export default function EmbedCode({ code }: { code: string }) {
+export default function EmbedCode({ code, variant }: { code: string; variant: "minimal" | "complet" | "fluturas" }) {
   const [copied, setCopied] = useState(false);
 
   const copy = async () => {
     try {
       await navigator.clipboard.writeText(code);
+      trackUmami({ name: "copiaza-embed", data: { varianta: variant } });
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {

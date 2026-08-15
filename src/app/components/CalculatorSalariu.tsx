@@ -14,6 +14,8 @@ import {
   type Rezultat,
 } from "@/lib/fiscal";
 import { zileLucratoareLuna } from "@/lib/sarbatori";
+import FeedbackContextual from "@/app/components/FeedbackContextual";
+import { trackUmami } from "@/lib/umami";
 
 type SelectOption = { v: number; l: string };
 
@@ -482,6 +484,7 @@ export default function CalculatorSalariu({
   const [avansat, setAvansat] = useState(false);
   // Avertisment scurt când se apasă Calculează fără un salariu valid (Nielsen h1/h9).
   const [emptyWarn, setEmptyWarn] = useState(false);
+  const [pdfStatus, setPdfStatus] = useState<"idle" | "generating" | "success" | "error">("idle");
   // Tichete: nr. × valoare/tichet → total stocat în input.tichete (calculul folosește totalul).
   const [nrTichete, setNrTichete] = useState("");
   const [valoareTichet, setValoareTichet] = useState("");
@@ -560,6 +563,10 @@ export default function CalculatorSalariu({
       setRezAfisat(buildResult(input, mod, regimFiscal));
       setRezKey(inputKey(input, mod));
     }
+    trackUmami({
+      name: "calcul-finalizat",
+      data: { mod: mod === "brut" ? "brut-net" : "net-brut", context: fluturas ? "fluturas" : "principal" },
+    });
     if (typeof window === "undefined") return;
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
     const targetId = isMobile ? "rezultat-calcul" : "calc-layout";
@@ -570,6 +577,21 @@ export default function CalculatorSalariu({
   const stale = rezAfisat !== null && rezKey !== inputKey(pregatesteInput(input), mod);
   // Reținerile se aplică live pe net (scădere simplă, fără recalcul fiscal).
   const retineriNum = fluturas ? Math.max(0, parseInt(retineri) || 0) : 0;
+  const handleDescarcaPdf = async () => {
+    if (!rezAfisat || stale) return;
+    setPdfStatus("generating");
+    try {
+      await generarePDFFluturas({
+        brut: parseFloat(rezAfisat.brutEfectiv), rez: rezAfisat.rez, nrTichete, valoareTichet,
+        scutitImpozit: rezAfisat.scutitImpozit, firma: fluturas ? firma : undefined,
+        detalii: fluturas && fluturasSnap ? fluturasSnap : undefined, retineri: retineriNum,
+      });
+      setPdfStatus("success");
+      trackUmami({ name: "descarca-fluturas", data: { context: fluturas ? "pagina-fluturas" : "calculator" } });
+    } catch {
+      setPdfStatus("error");
+    }
+  };
   // Firma și luna NU apar în tabelul de pe ecran (ar aglomera UI-ul) — doar pe
   // PDF, unde antetul documentului le are ca pe fluturașul real.
 
@@ -641,11 +663,13 @@ export default function CalculatorSalariu({
                 type="button"
                 className={`flex-1 inline-flex min-h-11 items-center justify-center px-4 text-sm font-medium transition-colors ${mod === "brut" ? "bg-stone-900 text-white" : "text-stone-500 hover:bg-canvas"}`}
                 onClick={() => {
+                  if (mod === "brut") return;
                   if (mod === "net") {
                     const netVal = parseFloat(input.brut);
                     if (netVal > 0) set("brut", String(calculeazaBrutDinNetCuRegim(netVal, input, regimFiscal)));
                   }
                   setMod("brut");
+                  trackUmami({ name: "mod-calcul", data: { mod: "brut-net" } });
                 }}
               >
                 Din brut în net
@@ -654,6 +678,7 @@ export default function CalculatorSalariu({
                 type="button"
                 className={`border-l border-stone-300 flex-1 inline-flex min-h-11 items-center justify-center px-4 text-sm font-medium transition-colors ${mod === "net" ? "bg-stone-900 text-white" : "text-stone-500 hover:bg-canvas"}`}
                 onClick={() => {
+                  if (mod === "net") return;
                   if (mod === "brut") {
                     const brutVal = parseFloat(input.brut);
                     if (brutVal > 0) {
@@ -662,6 +687,7 @@ export default function CalculatorSalariu({
                     }
                   }
                   setMod("net");
+                  trackUmami({ name: "mod-calcul", data: { mod: "net-brut" } });
                 }}
               >
                 Din net în brut
@@ -1134,26 +1160,21 @@ export default function CalculatorSalariu({
             <button
               type="button"
               data-md-strip
-              disabled={stale}
-              aria-disabled={stale}
-              className={`mt-5 inline-flex min-h-12 items-center gap-2 rounded border border-stone-300 px-4 py-3 text-xs font-medium text-stone-700 transition-colors ${stale ? "cursor-not-allowed opacity-50" : "hover:border-stone-900 hover:bg-stone-900 hover:text-white"}`}
-              onClick={() => generarePDFFluturas({
-                brut: parseFloat(rezAfisat.brutEfectiv),
-                rez: rezAfisat.rez,
-                // Butonul e dezactivat când rezultatul e „învechit" (stale), deci
-                // nr/valoare tichete din state corespund snapshot-ului calculat.
-                nrTichete,
-                valoareTichet,
-                scutitImpozit: rezAfisat.scutitImpozit,
-                // Extra generatorului de fluturaș (firma și reținerile se aplică live,
-                // fără recalcul fiscal — nu intră în snapshot-ul de staleness).
-                firma: fluturas ? firma : undefined,
-                detalii: fluturas && fluturasSnap ? fluturasSnap : undefined,
-                retineri: retineriNum,
-              })}
+              disabled={stale || pdfStatus === "generating"}
+              aria-disabled={stale || pdfStatus === "generating"}
+              className={`mt-5 inline-flex min-h-12 items-center gap-2 rounded border border-stone-300 px-4 py-3 text-xs font-medium text-stone-700 transition-colors ${stale || pdfStatus === "generating" ? "cursor-not-allowed opacity-50" : "hover:border-stone-900 hover:bg-stone-900 hover:text-white"}`}
+              onClick={handleDescarcaPdf}
             >
-              ↓ Descarcă fluturaș PDF
+              {pdfStatus === "generating" ? "Se generează…" : "↓ Descarcă fluturaș PDF"}
             </button>
+          )}
+
+          {rezAfisat && regimFiscal === REGIM_FISCAL_CURENT && (
+            <>
+              {pdfStatus === "success" && <p className="mt-3 text-xs text-stone-600" role="status">PDF descărcat.</p>}
+              {pdfStatus === "error" && <p className="mt-3 text-xs font-medium text-stone-900" role="alert">PDF-ul nu a putut fi generat. Încearcă din nou.</p>}
+              <FeedbackContextual context={pdfStatus === "error" ? "pdf" : "calcul"} />
+            </>
           )}
 
           {rezAfisat && regimFiscal !== REGIM_FISCAL_CURENT && (

@@ -1,5 +1,8 @@
 "use client";
 
+import FeedbackContextual from "@/app/components/FeedbackContextual";
+import { trackUmami } from "@/lib/umami";
+
 // src/app/components/CalculatorPFA.tsx
 // Calculator PFA 2026 — sistem real și normă de venit.
 // Tipar identic cu CalculatorSalariu: calcul O DATĂ la „Calculează"/Enter,
@@ -176,13 +179,18 @@ function MoneyField({ id, label, hint, value, placeholder, unit = "lei / an", on
 
 function Toggle({ label, checked, onChange }: { label: string; checked: boolean; onChange: (v: boolean) => void }) {
   return (
-    <label className="flex min-h-11 cursor-pointer items-center justify-between border-b border-stone-100 py-3 text-sm text-stone-700 last:border-b-0">
+    <button
+      type="button"
+      role="switch"
+      aria-checked={checked}
+      onClick={() => onChange(!checked)}
+      className="flex min-h-11 w-full cursor-pointer items-center justify-between border-b border-stone-100 py-3 text-left text-sm text-stone-700 last:border-b-0"
+    >
       <span>{label}</span>
-      <button role="switch" aria-checked={checked} onClick={() => onChange(!checked)} type="button"
-        className={`relative h-6 w-11 flex-shrink-0 rounded-full transition-colors ${checked ? "bg-stone-900" : "bg-stone-300"}`}>
+      <span aria-hidden="true" className={`relative h-6 w-11 flex-shrink-0 rounded-full transition-colors ${checked ? "bg-stone-900" : "bg-stone-300"}`}>
         <span className={`absolute top-0.5 left-0.5 h-5 w-5 rounded-full bg-surface shadow-soft transition-transform ${checked ? "translate-x-5" : ""}`} />
-      </button>
-    </label>
+      </span>
+    </button>
   );
 }
 
@@ -227,6 +235,10 @@ export default function CalculatorPFA() {
     }
     setWarn(false);
     setRez(r); setRezKey(snapKey(snap));
+    trackUmami({
+      name: "calcul-pfa",
+      data: { regim, mod: mod === "venit" ? "venit-anual" : "net-lunar" },
+    });
     if (typeof window !== "undefined") {
       const isMobile = window.matchMedia("(max-width: 768px)").matches;
       document.getElementById(isMobile ? "pfa-rezultat" : "pfa-layout")?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -658,6 +670,7 @@ export default function CalculatorPFA() {
             </p>
           </>
         )}
+        {rez && <FeedbackContextual />}
       </div>
     </div>
   );

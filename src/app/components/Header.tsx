@@ -3,7 +3,7 @@
 // src/app/components/Header.tsx
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 type Leaf = { href: string; label: string };
 type Group = { label: string; children: Leaf[] };
@@ -41,6 +41,9 @@ const isGroup = (i: Item): i is Group => "children" in i;
 export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [desktopOpen, setDesktopOpen] = useState(false);
+  const desktopMenuRef = useRef<HTMLDivElement>(null);
+  const desktopTriggerRef = useRef<HTMLButtonElement>(null);
 
   const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
   const groupActive = (g: Group) => g.children.some((c) => isActive(c.href));
@@ -50,11 +53,26 @@ export default function Header() {
     NAV.some((i) => isGroup(i) && i.children.some((c) => pathname.startsWith(c.href)))
   );
 
-  const [prevPathname, setPrevPathname] = useState(pathname);
-  if (pathname !== prevPathname) {
-    setPrevPathname(pathname);
-    if (open) setOpen(false);
-  }
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => {
+      setOpen(false);
+      setDesktopOpen(false);
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [pathname]);
+
+  useEffect(() => {
+    const onPointerDown = (event: MouseEvent) => {
+      if (!desktopMenuRef.current?.contains(event.target as Node)) setDesktopOpen(false);
+    };
+    document.addEventListener("mousedown", onPointerDown);
+    return () => document.removeEventListener("mousedown", onPointerDown);
+  }, []);
+
+  const closeDesktopMenu = (restoreFocus = false) => {
+    setDesktopOpen(false);
+    if (restoreFocus) desktopTriggerRef.current?.focus();
+  };
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -100,16 +118,47 @@ export default function Header() {
         <nav className="hidden h-full items-center gap-6 md:flex">
           {NAV.map((item) =>
             isGroup(item) ? (
-              <div key={item.label} className="group relative flex h-full items-center">
-                <button className={`${desktopLink(groupActive(item))} gap-1 outline-none`} aria-haspopup="menu">
+              <div
+                key={item.label}
+                ref={desktopMenuRef}
+                className="relative flex h-full items-center"
+                onKeyDown={(event) => {
+                  if (event.key === "Escape") {
+                    event.preventDefault();
+                    closeDesktopMenu(true);
+                  }
+                }}
+              >
+                <button
+                  ref={desktopTriggerRef}
+                  className={`${desktopLink(groupActive(item))} gap-1 outline-none`}
+                  aria-haspopup="menu"
+                  aria-expanded={desktopOpen}
+                  aria-controls="desktop-ghiduri-menu"
+                  onClick={() => setDesktopOpen((value) => !value)}
+                  onKeyDown={(event) => {
+                    if (event.key === "ArrowDown") {
+                      event.preventDefault();
+                      setDesktopOpen(true);
+                      requestAnimationFrame(() => desktopMenuRef.current?.querySelector<HTMLAnchorElement>("[role=menuitem]")?.focus());
+                    }
+                  }}
+                >
                   {item.label}
                   {chevron}
                 </button>
-                <div className="invisible absolute left-1/2 top-full z-50 min-w-48 -translate-x-1/2 rounded-md border border-stone-200 bg-canvas py-1 opacity-0 shadow-soft transition-opacity duration-100 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                <div
+                  id="desktop-ghiduri-menu"
+                  role="menu"
+                  className={`${desktopOpen ? "visible opacity-100" : "invisible opacity-0"} absolute left-1/2 top-full z-50 min-w-48 -translate-x-1/2 rounded-md border border-stone-200 bg-canvas py-1 shadow-soft transition-opacity duration-100`}
+                >
                   {item.children.map((c) => (
                     <Link
                       key={c.href}
                       href={c.href}
+                      role="menuitem"
+                      tabIndex={desktopOpen ? 0 : -1}
+                      onClick={() => closeDesktopMenu()}
                       className={`block px-4 py-2 text-sm ${
                         isActive(c.href) ? "bg-stone-100 font-medium text-stone-900" : "text-stone-600 hover:bg-stone-100 hover:text-stone-900"
                       }`}

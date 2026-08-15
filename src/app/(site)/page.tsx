@@ -11,7 +11,7 @@ import { calculatorSlugBrut, PAGE_LAST_MODIFIED } from "@/lib/seo";
 // plus head terms „salariu brut" / „brut în net".
 export const metadata: Metadata = {
   title: {
-    absolute: "Calculator salariu net 2026: brut în net | Salariile.ro",
+    absolute: "Calculator salariu net 2026: net, taxe și cost angajator",
   },
   description:
     "Calculează salariul net din brut sau brutul din net, cu regulile fiscale 2026. Vezi CAS, CASS, impozitul, deducerea personală și costul pentru angajator.",
