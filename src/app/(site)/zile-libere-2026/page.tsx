@@ -12,7 +12,7 @@ import { SARBATORI_LEGALE_2026 as HOLIDAYS } from "@/lib/sarbatori";
 // ─── Metadata SEO ────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "Zile libere 2026: calendarul sărbătorilor legale",
+  title: { absolute: "Zile libere 2026: calendarul sărbătorilor legale" },
   description:
     "Calendar zile libere 2026 în România: datele sărbătorilor legale, weekenduri prelungite, minivacanțe și punți utile pentru concediu.",
   alternates: { canonical: "https://salariile.ro/zile-libere-2026" },

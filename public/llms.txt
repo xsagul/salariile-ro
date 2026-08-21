@@ -22,7 +22,16 @@ Datele publice, rezultatele calculelor și explicațiile scurte pot fi citate cu
 
 ## Noutăți și analize
 
-- [Coșul minim de consum](https://salariile.ro/noutati/cosul-minim-de-consum): analiză despre coșul minim de consum în România, cât costă un trai decent și cum se compară cu salariul minim net
+- [Tinerii din România, tot mai departe de școală și piața muncii](https://salariile.ro/noutati/tineri-neet-romania-2026): aproape unul din cinci tineri din România nu e nici la școală, nici la muncă; primii în Europa, fără mișcare de ani buni
+- [Concediu medical 2026: cât se plătește](https://salariile.ro/noutati/concediu-medical-2026): prima zi poate fi neplătită, iar boala obișnuită se plătește cu 55%, 65% sau 75%; calculul și excepțiile
+- [Tichete de masă 2026: taxe și cât rămâne net](https://salariile.ro/noutati/tichete-de-masa-2026): până la 45 lei/zi până în septembrie 2026, cu CASS, impozit, calcul net și efectul asupra salariului minim
+- [Transparența salarială 2026: ce e obligatoriu](https://salariile.ro/noutati/transparenta-salariala-2026): stadiul proiectului L445/2026, ce drepturi vor avea angajații și ce NU este încă obligatoriu în România
+- [Zile libere rămase în 2026 și minivacanțe](https://salariile.ro/noutati/zile-libere-ramase-2026-minivacante): după 1 iulie au rămas 5 sărbători legale, dintre care 3 în zile lucrătoare; unde se poate lega concediul
+- [Salariul minim în România vs UE în 2026](https://salariile.ro/noutati/salariul-minim-romania-vs-uniunea-europeana-2026): 4.325 lei brut, circa 825 euro, și poziția României între cele mai mici niveluri din Uniune
+- [Salariu peste minim după 1 iulie 2026](https://salariile.ro/noutati/salariu-peste-minim-1-iulie-2026): cine primește mărire la majorarea minimului și ce înseamnă tasarea salarială
+- [Cum citești fluturașul de salariu](https://salariile.ro/noutati/cum-citesti-fluturasul-de-salariu): fiecare rând explicat — brut, CAS, CASS, impozit, deducere, tichete și cum se ajunge la suma din cont
+- [Salariul minim 4.325 lei: cât primești net](https://salariile.ro/noutati/salariul-minim-1-iulie-2026): 4.325 lei brut și 2.699 lei net din 1 iulie 2026, de ce netul crește cu 125 lei și ce fac angajatorii
+- [Coșul minim de consum: cât costă traiul decent](https://salariile.ro/noutati/cosul-minim-de-consum): ultimele valori publicate ale coșului pentru un trai decent și comparația documentată cu salariul minim net
 
 ## Metodologie și transparență
 

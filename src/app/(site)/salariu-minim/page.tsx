@@ -625,7 +625,7 @@ function CardSurse() {
         <li><Link href="/noutati/cosul-minim-de-consum">Salariul minim față de coșul minim de trai</Link></li>
         <li><Link href="/salariu-mediu">Salariul mediu pe economie</Link></li>
         <li><Link href="/calculator-pfa">Plafoanele PFA derivate din minim</Link></li>
-        <li><Link href="/zile-libere-2026">Zile libere și lucrătoare 2026</Link></li>
+        <li><Link href="/zile-libere-2026">Zile libere 2026</Link></li>
       </ul>
       <p className="mt-auto pt-6 text-xs text-stone-500">Ultima actualizare: 4 august 2026.</p>
     </div>

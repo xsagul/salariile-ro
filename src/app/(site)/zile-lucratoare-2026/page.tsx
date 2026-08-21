@@ -58,21 +58,28 @@ function lunaCurentaIndex(): number | null {
   return acum.getFullYear() === YEAR ? acum.getMonth() : null;
 }
 
+// Titlul ramane ANUAL tot anul; luna curenta traieste in descriere.
+// Masurat in GSC pe 21 august 2026: potrivirea titlului cu luna NU ridica
+// CTR-ul pe interogarile lunare. In iulie, cu titlul pe "iulie",
+// "zile lucratoare iulie 2026" a facut 0,2% (15 clicuri / 6.290 impresii).
+// In august, cu titlul pe "august", "zile lucratoare august 2026" face tot
+// 0,2% (9 / 3.603). Clusterul e zero-click: Google si competitorii afiseaza
+// numarul direct in SERP. In schimb interogarea ANUALA e cea mai mare a
+// paginii (14.979 impresii, pozitia 4,2) si primea un titlu care promitea o
+// luna diferita de ce se cautase.
 function metaLuna() {
   const index = lunaCurentaIndex();
+  const title = `Zile lucrătoare ${YEAR}: ${TOTAL_LUCRATOARE} de zile și ${TOTAL_ORE.toLocaleString("ro-RO")} ore`;
   if (index === null) {
-    const title = `Zile lucrătoare ${YEAR}: ${TOTAL_LUCRATOARE} de zile și ${TOTAL_ORE.toLocaleString("ro-RO")} ore`;
     return {
       title,
       description: `${title}. Tabel lunar cu zilele lucrătoare, sărbătorile legale scăzute din normă și totalul anual.`,
     };
   }
   const row = rows[index];
-  const luna = row.name.toLowerCase();
-  const title = `Zile lucrătoare ${luna} ${YEAR}: ${row.lucratoare} zile și ${row.ore} ore`;
   return {
     title,
-    description: `${title}. Vezi tabelul complet pe toate lunile, cu sărbătorile legale scăzute și totalul anual.`,
+    description: `${title}. ${row.name}: ${row.lucratoare} de zile și ${row.ore} de ore. Tabel complet pe toate lunile, cu sărbătorile legale scăzute din normă.`,
   };
 }
 
@@ -118,7 +125,7 @@ export const revalidate = 43200;
 export function generateMetadata(): Metadata {
   const { title, description } = metaLuna();
   return {
-    title,
+    title: { absolute: title },
     description,
     alternates: { canonical: `https://salariile.ro${PATH}` },
     openGraph: ogPage({ title, description, path: PATH }),

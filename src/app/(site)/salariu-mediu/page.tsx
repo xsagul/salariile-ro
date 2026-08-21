@@ -22,7 +22,7 @@ const OG_SALARIU_MEDIU = {
 // ─── Metadata SEO ────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "Salariul mediu pe economie 2026: brut, net, mediană",
+  title: { absolute: "Salariul mediu pe economie 2026: brut, net, mediană" },
   description:
     "Salariul mediu 2026: 9.483 lei brut și 5.684 lei net în mai, conform INS; indicatorul bugetar este 9.192 lei. Date, explicații și surse.",
   alternates: { canonical: "https://salariile.ro/salariu-mediu" },
@@ -540,7 +540,7 @@ export default function SalariuMediuPage() {
                 <ul className={`flex flex-col gap-2 text-sm ${links}`}>
                   <li><Link href="/salariu-minim">Salariul minim 2026</Link></li>
                   <li><Link href="/">Calculator salariu net</Link></li>
-                  <li><Link href="/zile-libere-2026">Zile libere și lucrătoare 2026</Link></li>
+                  <li><Link href="/zile-libere-2026">Zile libere 2026</Link></li>
                 </ul>
                 <p className="mt-auto pt-6 text-xs text-stone-500">Ultima actualizare: 26 iulie 2026.</p>
               </div>

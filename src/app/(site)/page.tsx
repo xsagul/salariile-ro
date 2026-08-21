@@ -237,7 +237,8 @@ export default function Page() {
                       ["Salariul mediu pe economie", "/salariu-mediu"],
                       ["Calculator taxe PFA", "/calculator-pfa"],
                       ["Generator fluturaș de salariu", "/fluturas-salariu"],
-                      ["Zile libere și lucrătoare 2026", "/zile-libere-2026"],
+                      ["Zile libere 2026", "/zile-libere-2026"],
+                      ["Zile lucrătoare 2026", "/zile-lucratoare-2026"],
                     ] as const).map(([label, href]) => (
                       <li key={href}>
                         <Link href={href} className="font-medium text-stone-900 underline underline-offset-2 hover:text-stone-600">{label}</Link>
