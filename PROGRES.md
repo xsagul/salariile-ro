@@ -28,9 +28,39 @@ Ultima actualizare: 21 august 2026
    bucata de denumire. Pentru date salariale asta e mai periculos decat un esec.
 
 De aceea exista `calitateText` si de aceea **nu s-a publicat nicio cifra de
-salarizare publica pe site**. Urmatorul pas tehnic e citirea CMap-urilor ToUnicode
-din PDF; pana atunci, orice fisier care nu trece poarta se refuza, nu se publica
-partial.
+salarizare publica pe site**.
+
+### Ce a fost rezolvat de atunci (commits 2dad703, e7e8d06, 9bf055a)
+
+- **Siruri hexazecimale.** Listele ISJ scriu tot textul in hexa, iar extractorul
+  citea doar siruri literale. Pagina iesea aproape goala.
+- **CMap-uri ToUnicode.** Dupa hexa, „inspector" iesea „LQVSHFWRU" — subfontina
+  isi numeroteaza glifele cum vrea. Acum parcurgem lantul resurse `/Font` →
+  obiect font → `/ToUnicode` → CMap, inclusiv `begincodespacerange`.
+- **Matrici de transformare.** Urmaream doar translatia, nu si scalarea, si
+  ignoram `cm`. Coordonatele urcau la 24.615 pe unele fisiere.
+- **Pagini rotite** 90 de grade, unde un „rand" inseamna X constant.
+- **Segmentare pe coloane**, ca tabelele exportate din Excel sa nu iasa lipite.
+
+### Sonda de fezabilitate, si de ce conteaza mai mult decat codul
+
+Pe **7 liste reale** de la institutii diferite: **3 sunt utilizabile** (Primaria
+Sector 1, ISJ Galati, Spital Judetean Targu-Jiu). Celelalte patru pica din motive
+diferite — fonturi fara ToUnicode (Spital Sibiu: 52.305 din 60.962 fragmente
+nedecodabile), randuri intregi scrise ca un singur sir (Miercurea-Ciuc: 27% din
+fragmente), zero strat de text (Spital Mures), sau pagina fara link de PDF.
+
+Doua lectii care schimba planul:
+
+1. **Rata de reusita e ~43%, nu ~100%.** Un set de date national din listele
+   art. 33 e un proiect de saptamani, cu tratare per generator de PDF, nu o
+   sarcina de o noapte. Ce se poate face onest e un set **curat dar rar**, in
+   care fiecare cifra trimite la documentul ei.
+2. **Text lizibil nu inseamna tabel extractibil.** Lista Spitalului Targu-Jiu
+   trece verificarea de text — 207.860 de fragmente, zero suspecte — dar
+   continutul e imprastiat in 661 de fluxuri. De aceea exista acum si
+   `structuraTabel`: un colector care s-ar lua doar dupa calitatea textului ar
+   raporta „citit cu succes" pe zero randuri.
 
 ## Studiu competitiv: paylab.ro si undelucram.ro — 21 august 2026
 

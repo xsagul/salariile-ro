@@ -518,7 +518,9 @@ export function coloane(fragmente, toleranta = 3) {
   }
   // O coloana adevarata are mai multe randuri. Cele cu o singura aparitie sunt
   // de obicei titluri sau note, si ar sparge tabelul in coloane inexistente.
-  const prag = Math.max(2, Math.round(fragmente.length / 200));
+  // Pragul se plafoneaza: pe un document de 200.000 de fragmente, un prag
+  // proportional ar cere mii de aparitii si ar sterge toate coloanele.
+  const prag = Math.min(50, Math.max(2, Math.round(fragmente.length / 200)));
   return ciorchini.filter((c) => c.cate >= prag).map((c) => c.prima);
 }
 
@@ -588,8 +590,35 @@ export function calitateText(buffer) {
     proportieLipite,
     /** Fara niciun fragment cu litere, fisierul e scanat sau necitibil. */
     areText: cuLitere.length > 0,
-    /** Singurul verdict pe care are voie sa se bazeze un colector de date. */
+    /** Text lizibil — necesar, dar NU suficient pentru a extrage un tabel. */
     sePoateFolosi: cuLitere.length > 0 && suspecte.length === 0 && proportieLipite <= 0.02,
+  };
+}
+
+/**
+ * Are documentul o pagina din care chiar se poate scoate un tabel?
+ *
+ * `calitateText` spune doar daca textul e lizibil. Lista Spitalului Judetean
+ * Targu-Jiu trece verificarea aceea — 207.860 de fragmente, zero suspecte — dar
+ * continutul e imprastiat in 661 de fluxuri cu una-trei bucati fiecare, deci nu
+ * exista nicio pagina cu tabel. Un colector care s-ar lua dupa calitatea
+ * textului ar raporta „citit cu succes" si ar produce zero randuri, sau, mai
+ * rau, cateva randuri rupte care par valide.
+ */
+export function structuraTabel(buffer, minimColoane = 3, minimRanduri = 5) {
+  const paginile = pagini(buffer);
+  let ceaMaiBuna = { pagina: -1, coloane: 0, randuri: 0 };
+  paginile.forEach((fragmente, index) => {
+    const cate = coloane(fragmente).length;
+    const cateRanduri = benzi(fragmente).length;
+    if (cate > ceaMaiBuna.coloane || (cate === ceaMaiBuna.coloane && cateRanduri > ceaMaiBuna.randuri)) {
+      ceaMaiBuna = { pagina: index, coloane: cate, randuri: cateRanduri };
+    }
+  });
+  return {
+    pagini: paginile.length,
+    ...ceaMaiBuna,
+    areTabel: ceaMaiBuna.coloane >= minimColoane && ceaMaiBuna.randuri >= minimRanduri,
   };
 }
 

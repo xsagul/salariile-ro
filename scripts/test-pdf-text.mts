@@ -9,7 +9,7 @@
 
 import assert from "node:assert/strict";
 import zlib from "node:zlib";
-import { benzi, calitateText, coloane, hartiFonturi, pagini, randuri, tabel } from "./lib/pdf-text.mjs";
+import { benzi, calitateText, coloane, hartiFonturi, pagini, randuri, structuraTabel, tabel } from "./lib/pdf-text.mjs";
 
 /** Un PDF de o pagina, cu content stream-ul dat. */
 function pdfCu(continut: string, comprimat: boolean): Buffer {
@@ -159,9 +159,19 @@ assert.equal(calitate.sePoateFolosi, true, "un tabel curat poate fi folosit ca s
 
 // Un rand de tabel scris ca un singur sir de cifre nu se poate imparti pe
 // coloane. Fisierul trebuie refuzat, nu interpretat.
+// Text lizibil nu inseamna tabel extractibil. Un document poate avea sute de
+// mii de fragmente curate, imprastiate in mii de fluxuri de cate una-doua
+// bucati — asa arata lista Spitalului Targu-Jiu. Colectorul trebuie sa ceara
+// amandoua verificarile, altfel raporteaza „citit cu succes" pe zero randuri.
+const structuraBuna = structuraTabel(pdfCu(TABEL, true), 3, 2);
+assert.equal(structuraBuna.areTabel, true, "un tabel de 3 coloane si 2 randuri trebuie recunoscut");
+assert.equal(structuraBuna.coloane, 3, "structura raporteaza coloanele paginii celei mai bune");
+const UN_SINGUR_RAND = ["BT", "1 0 0 1 72 700 Tm (SINGUR) Tj", "ET"].join("\n");
+assert.equal(structuraTabel(pdfCu(UN_SINGUR_RAND, true)).areTabel, false, "un fragment razlet nu e tabel");
+
 const CIFRE_LIPITE = ["BT", "1 0 0 1 72 700 Tm (517592144300000000100) Tj", "ET"].join("\n");
 const calitateLipita = calitateText(pdfCu(CIFRE_LIPITE, true));
 assert.equal(calitateLipita.cifreLipite, 1, "sirul lung de cifre trebuie semnalat");
 assert.equal(calitateLipita.sePoateFolosi, false, "fisier cu celule lipite: nefolosibil ca sursa de date");
 
-console.log("OK: extractorul PDF reconstruieste randurile din fragmente (18 cazuri).");
+console.log("OK: extractorul PDF reconstruieste randurile din fragmente (21 de cazuri).");
