@@ -161,8 +161,20 @@ export default function SalariiPage() {
 
           {categorii.map(({ categorie, meserii }) => (
             <section key={categorie.slug} id={categorie.slug} className="mt-12 scroll-mt-20">
-              <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">{categorie.nume}</h2>
-              <p className="mt-1 text-sm text-stone-600">{categorie.descriere}</p>
+              <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">
+                <Link href={`/salarii/domeniu/${categorie.slug}`} className="hover:underline hover:underline-offset-4">
+                  {categorie.nume}
+                </Link>
+              </h2>
+              <p className="mt-1 text-sm text-stone-600">
+                {categorie.descriere}{" "}
+                <Link
+                  href={`/salarii/domeniu/${categorie.slug}`}
+                  className="font-medium text-stone-900 underline underline-offset-2"
+                >
+                  Vezi domeniul
+                </Link>
+              </p>
               <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {meserii.map(({ meserie, date }) => (
                   <LinkCard

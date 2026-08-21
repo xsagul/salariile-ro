@@ -9,7 +9,7 @@ import {
   LAST_FISCAL_CONTENT_UPDATE,
 } from "@/lib/seo";
 import { getAllArticles } from "@/lib/noutati";
-import { COMPARATII, MESERII } from "@/lib/meserii";
+import { CATEGORII, COMPARATII, MESERII } from "@/lib/meserii";
 import { INS_GENERAT_LA } from "@/lib/ins-date";
 
 const STATIC_ENTRIES: {
@@ -66,6 +66,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     // Paginile de meserii si comparatii se reimprospateaza cand se reruleaza
     // `npm run ins:tempo`, deci lastModified vine din data setului INS.
+    ...CATEGORII.map((categorie) => ({
+      url: `${baseUrl}/salarii/domeniu/${categorie.slug}`,
+      lastModified: new Date(INS_GENERAT_LA),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
+
     ...MESERII.map((meserie) => ({
       url: `${baseUrl}/salarii/${meserie.slug}`,
       lastModified: new Date(INS_GENERAT_LA),
