@@ -303,6 +303,59 @@ export const MESERII: Meserie[] = [
     ceFace: "Organizează colecțiile și accesul publicului într-o bibliotecă sau într-un centru de documentare." },
   { slug: "antrenor-sportiv", nume: "Antrenor sportiv", de: "antrenor sportiv", categorie: "servicii", caen3: "93", caen2: "R", isco: "specialisti", cor: "342201",
     ceFace: "Pregătește sportivi sau grupe de amatori și planifică antrenamentele și competițiile." },
+
+  // ─── Meserii adăugate pe activități CAEN încă nefolosite ───────────────────
+  // Regula de extindere: o meserie nouă intră numai dacă activitatea ei CAEN nu
+  // e deja luată de alta. Altfel pagina nouă ar repeta o cifră existentă, iar
+  // catalogul ar crește fără să spună nimic în plus — exact greșeala pe care i-o
+  // reproșăm concurenței. Cele de mai jos au fiecare cifra ei, din date INS.
+  // Codul COR lipsește deliberat: nu îl trecem decât unde e verificat.
+
+  { slug: "asistent-social", nume: "Asistent social", de: "asistent social", categorie: "medical", caen3: "88", caen2: "Q", isco: "specialisti",
+    ceFace: "Evaluează situația persoanelor vulnerabile și le conectează la servicii de sprijin, în primării, DGASPC-uri sau ONG-uri." },
+  { slug: "operator-cnc", nume: "Operator CNC", de: "operator CNC", categorie: "industrie", caen3: "28", caen2: "28", isco: "operatori",
+    ceFace: "Programează și supraveghează mașini-unelte cu comandă numerică, verificând cotele pieselor rezultate." },
+  { slug: "electromecanic", nume: "Electromecanic", de: "electromecanic", categorie: "industrie", caen3: "27", caen2: "27", isco: "muncitori",
+    ceFace: "Asamblează, reglează și repară echipamente electrice și componentele lor mecanice." },
+  { slug: "operator-chimist", nume: "Operator chimist", de: "operator chimist", categorie: "industrie", caen3: "20", caen2: "20", isco: "operatori",
+    ceFace: "Conduce instalații de reacție și dozare dintr-o fabrică de substanțe chimice și urmărește parametrii de proces." },
+  { slug: "operator-mase-plastice", nume: "Operator mase plastice", de: "operator mase plastice", categorie: "industrie", caen3: "22", caen2: "22", isco: "operatori",
+    ceFace: "Deservește prese de injecție și linii de extrudare pentru piese din cauciuc și plastic." },
+  { slug: "operator-rafinarie", nume: "Operator rafinărie", de: "operator rafinărie", categorie: "industrie", caen3: "19", caen2: "19", isco: "operatori",
+    ceFace: "Supraveghează coloanele de distilare și instalațiile de prelucrare a țițeiului, din camera de comandă și din teren." },
+  { slug: "sondor", nume: "Sondor", de: "sondor", categorie: "industrie", caen3: "09", caen2: "09", isco: "operatori",
+    ceFace: "Lucrează la forajul și intervențiile pe sondele de petrol și gaze, în echipe care se schimbă pe ture." },
+  { slug: "sticlar", nume: "Sticlar", de: "sticlar", categorie: "industrie", caen3: "23", caen2: "23", isco: "muncitori",
+    ceFace: "Prelucrează sticla la cald sau la rece, în producție de serie sau la comandă.",
+    nota: "Activitatea acoperă toate produsele din minerale nemetalice — ciment, beton, ceramică, sticlă — deci media include și fabricile de materiale de construcții." },
+  { slug: "tesator", nume: "Țesător", de: "țesător", categorie: "industrie", caen3: "13", caen2: "13", isco: "operatori",
+    ceFace: "Deservește războaie de țesut și mașini de filat și verifică defectele de material." },
+  { slug: "cizmar", nume: "Cizmar", de: "cizmar", categorie: "industrie", caen3: "15", caen2: "15", isco: "muncitori",
+    ceFace: "Confecționează și repară încălțăminte și articole din piele, în atelier propriu sau în producție." },
+  { slug: "tapiter", nume: "Tapițer", de: "tapițer", categorie: "industrie", caen3: "31", caen2: "31", isco: "muncitori",
+    ceFace: "Îmbracă și recondiționează mobilierul: croiește materialul, montează arcurile și spuma, finisează cusăturile." },
+  { slug: "bijutier", nume: "Bijutier", de: "bijutier", categorie: "servicii", caen3: "32", caen2: "32", isco: "muncitori",
+    ceFace: "Execută și repară bijuterii din metale prețioase, de la modelare și lipire până la montarea pietrelor." },
+  { slug: "tipograf", nume: "Tipograf", de: "tipograf", categorie: "media", caen3: "18", caen2: "18", isco: "muncitori",
+    ceFace: "Pregătește fișierele pentru tipar, reglează mașina de tipărit și urmărește calitatea culorii pe tiraj." },
+  { slug: "constructor-drumuri", nume: "Constructor de drumuri", de: "constructor de drumuri", categorie: "constructii", caen3: "42", caen2: "F", isco: "muncitori",
+    ceFace: "Execută lucrări de terasamente, fundații și asfaltare pe șantiere de drumuri, poduri și rețele edilitare." },
+  { slug: "marinar", nume: "Marinar", de: "marinar", categorie: "transport", caen3: "50", caen2: "50", isco: "operatori",
+    ceFace: "Face parte din echipajul unei nave de transport fluvial sau maritim și răspunde de manevre, punte și încărcătură." },
+  { slug: "inginer-aeronautic", nume: "Inginer aeronautic", de: "inginer aeronautic", categorie: "inginerie", caen3: "30", caen2: "30", isco: "specialisti",
+    ceFace: "Proiectează, testează sau întreține aeronave și subansambluri, în fabrici sau în organizații de mentenanță.",
+    nota: "Activitatea cuprinde toate celelalte mijloace de transport — nave, material rulant feroviar, aeronave — nu doar aviația." },
+  { slug: "operator-epurare", nume: "Operator stație de epurare", de: "operator de stație de epurare", categorie: "utilitati", caen3: "37", caen2: "37", isco: "operatori",
+    ceFace: "Conduce treptele de epurare a apelor uzate și urmărește indicatorii de calitate la evacuare." },
+  { slug: "crupier", nume: "Crupier", de: "crupier", categorie: "servicii", caen3: "92", caen2: "R", isco: "servicii",
+    ceFace: "Conduce jocurile la masă într-un cazinou, plătește câștigurile și veghează la respectarea regulilor." },
+  { slug: "tehnician-calculatoare", nume: "Tehnician reparații calculatoare", de: "tehnician de reparații calculatoare", categorie: "it", caen3: "95", caen2: "S", isco: "tehnicieni",
+    ceFace: "Diagnostichează și repară calculatoare, laptopuri și periferice, într-un service independent sau de rețea." },
+  { slug: "consultant-management", nume: "Consultant în management", de: "consultant în management", categorie: "servicii", caen3: "70", caen2: "M", isco: "specialisti",
+    ceFace: "Analizează organizarea unei companii și propune schimbări de proces, structură sau strategie.",
+    nota: "Activitatea include și sediile centrale ale grupurilor de firme, unde salariile de conducere ridică mult media." },
+  { slug: "pescar", nume: "Pescar", de: "pescar", categorie: "agricultura", caen3: "03", caen2: "02-03", isco: "agricultura",
+    ceFace: "Practică pescuitul comercial sau lucrează într-o fermă de acvacultură, la creșterea și recoltarea peștelui." },
 ];
 
 const INDEX_MESERII = new Map(MESERII.map((m) => [m.slug, m]));
