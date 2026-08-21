@@ -9,7 +9,7 @@
 
 import assert from "node:assert/strict";
 import zlib from "node:zlib";
-import { benzi, calitateText, hartiFonturi, pagini, randuri } from "./lib/pdf-text.mjs";
+import { benzi, calitateText, coloane, hartiFonturi, pagini, randuri, tabel } from "./lib/pdf-text.mjs";
 
 /** Un PDF de o pagina, cu content stream-ul dat. */
 function pdfCu(continut: string, comprimat: boolean): Buffer {
@@ -122,6 +122,32 @@ assert.equal(fonturi.harti.size, 1, "resursa /F1 trebuie legata de CMap-ul fontu
 assert.equal(fonturi.harti.get("F1")?.cmap.latime, 2, "codespacerange <0000><FFFF> inseamna coduri pe doi octeti");
 assert.deepEqual(randuri(cuFont), ["ABC"], "codurile trebuie traduse prin CMap, nu citite ca octeti");
 
+// Segmentarea pe coloane. Intr-un tabel exportat din Excel celulele se ating,
+// deci separarea nu se poate face din text — numai din pozitie.
+const TABEL = [
+  "BT",
+  "/F1 10 Tf",
+  "1 0 0 1 72 700 Tm (MEDIC PRIMAR) Tj",
+  "1 0 0 1 200 700 Tm (SUPERIOARE) Tj",
+  "1 0 0 1 300 700 Tm (17592) Tj",
+  "1 0 0 1 72 680 Tm (ASISTENT MEDICAL) Tj",
+  "1 0 0 1 200 680 Tm (POSTLICEALE) Tj",
+  "1 0 0 1 300 680 Tm (4665) Tj",
+  "ET",
+].join("\n");
+
+const fragmenteTabel = pagini(pdfCu(TABEL, true))[0];
+assert.deepEqual(coloane(fragmenteTabel), [72, 200, 300], "marginile din stanga care se repeta sunt coloane");
+const randuriTabel = tabel(fragmenteTabel);
+assert.deepEqual(
+  randuriTabel.map((r: { celule: string[] }) => r.celule),
+  [
+    ["MEDIC PRIMAR", "SUPERIOARE", "17592"],
+    ["ASISTENT MEDICAL", "POSTLICEALE", "4665"],
+  ],
+  "fiecare fragment trebuie sa cada in coloana lui",
+);
+
 // Poarta de calitate: un fisier fara strat de text nu trebuie sa treaca drept
 // citit cu succes. E singurul lucru care opreste publicarea unei extrageri
 // partiale ca si cum ar fi completa.
@@ -130,4 +156,4 @@ const calitate = calitateText(pdfCu(CONTINUT, true));
 assert.equal(calitate.areText, true, "fisier cu text: areText true");
 assert.equal(calitate.suspecte, 0, "text romanesc curat: zero fragmente suspecte");
 
-console.log("OK: extractorul PDF reconstruieste randurile din fragmente (13 cazuri).");
+console.log("OK: extractorul PDF reconstruieste randurile din fragmente (15 cazuri).");

@@ -436,6 +436,53 @@ export function randuri(buffer) {
 }
 
 /**
+ * Coloanele unei pagini, deduse din marginile din stanga ale fragmentelor.
+ *
+ * Intr-un tabel exportat din Excel, celulele vecine se ating: lipite ca text
+ * dau „517592144300000000100", din care nu mai stii unde se termina salariul de
+ * baza si unde incepe sporul. Singura separare reala e pozitia. Marginile din
+ * stanga se repeta de la rand la rand, deci se aduna in ciorchini — fiecare
+ * ciorchine e o coloana.
+ */
+export function coloane(fragmente, toleranta = 3) {
+  const margini = fragmente.map((f) => f.x).sort((a, b) => a - b);
+  const ciorchini = [];
+  for (const margine of margini) {
+    const ultimul = ciorchini[ciorchini.length - 1];
+    if (ultimul && margine - ultimul.ultima <= toleranta) {
+      ultimul.ultima = margine;
+      ultimul.cate += 1;
+    } else {
+      ciorchini.push({ prima: margine, ultima: margine, cate: 1 });
+    }
+  }
+  // O coloana adevarata are mai multe randuri. Cele cu o singura aparitie sunt
+  // de obicei titluri sau note, si ar sparge tabelul in coloane inexistente.
+  const prag = Math.max(2, Math.round(fragmente.length / 200));
+  return ciorchini.filter((c) => c.cate >= prag).map((c) => c.prima);
+}
+
+/**
+ * Pagina ca tabel: fiecare banda devine un rand, fiecare fragment cade in
+ * coloana a carei margine din stanga o depaseste ultima.
+ */
+export function tabel(fragmente, optiuni = {}) {
+  const margini = optiuni.coloane ?? coloane(fragmente, optiuni.toleranta ?? 3);
+  if (margini.length === 0) return [];
+  return benzi(fragmente, optiuni.tolerantaRand ?? 2).map((banda) => {
+    const celule = new Array(margini.length).fill("");
+    for (const bucata of banda.bucati) {
+      let index = 0;
+      for (let i = 0; i < margini.length; i++) {
+        if (bucata.x >= margini[i] - 1) index = i;
+      }
+      celule[index] = celule[index] ? `${celule[index]} ${bucata.text}` : bucata.text;
+    }
+    return { y: banda.y, celule: celule.map((c) => c.replace(/\s+/g, " ").trim()) };
+  });
+}
+
+/**
  * Cat de mult din stratul de text s-a putut decoda.
  *
  * De ce exista asta: pe lista ISJ Galati din martie 2026, cuvantul „Inspector"
