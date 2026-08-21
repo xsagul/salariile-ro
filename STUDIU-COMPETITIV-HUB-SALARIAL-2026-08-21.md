@@ -356,6 +356,70 @@ lucru care ne diferențiază de presa care domină azi nișa.
 
 ---
 
+## 8bis. Raport de acoperire — 21 august 2026, după sesiunea autonomă
+
+### Ce s-a construit
+
+| | Înainte | După |
+|---|---|---|
+| Meserii | 102 | **123** |
+| Comparații | 25 | **37** |
+| Pagini de domeniu | 0 | **16** |
+| Clasament | 0 | **1** |
+| Rute în sitemap | 197 | **247** |
+| Chei CAEN folosite | 57 | **78** din 102 |
+| Meserii fără cifră proprie | 67% | **55%** |
+
+Module noi pe fiecare pagină de meserie: poziția activității în clasament (cu
+numărul de meserii aflate la egalitate declarat explicit), intervalul real pe
+județe cu județele numite, și două întrebări noi în FAQ pe tiparele care câștigă
+featured snippet.
+
+### Acoperirea față de paylab.ro
+
+**Acoperit acum:**
+- structura de hub → domeniu → meserie, cu pagini de domeniu de ~1.079 de cuvinte
+  și 58 de linkuri interne fiecare (activul lor intern cel mai puternic);
+- clasamentul complet, echivalentul `/salarii-top/clasament`;
+- interval salarial (al nostru e măsurat pe județe, al lor e decilă din sondaj);
+- poziția în clasament, fișa postului, FAQ per pagină;
+- date structurate complete — ei au **zero JSON-LD** pe tot site-ul.
+
+**Neacoperit, și de ce:**
+- **767 de poziții față de 123.** Diferența nu se închide clonând lista: gate-ul
+  spune că o meserie nouă intră doar cu o cifră care îi aparține, iar datele INS
+  au 102 activități CAEN, din care folosim deja 78. Plafonul structural e în jur
+  de **95–100 de meserii diferențiate**, nu 767. Peste el nu se trece fără o
+  sursă de date nouă.
+- **Calea de carieră** (graful de progresie între poziții) — nu avem date de
+  tranziție între ocupații.
+- **% femei în funcție și vârsta medie a respondentului** — vin din sondajul lor;
+  INS nu publică defalcare pe gen la nivel de activitate în seria lunară.
+- **Salariul după N ani de experiență, pe ocupație** — avem progresia pe vârste,
+  dar pe grupă majoră ISCO-08, nu pe ocupație individuală.
+
+### Acoperirea față de undelucram.ro
+
+**Acoperit:** nimic din ce contează la ei, și asta e intenționat.
+
+**Neacoperit, deliberat:** recenziile de angajator, interviurile, forumul și cele
+400.000 de salarii declarate sunt conținut generat de comunitate. Nu se replică
+fără comunitate, iar concurența frontală acolo ar fi bani și timp aruncați.
+Poziționarea rămâne cea din §4: îi ocolim pe datele obiective.
+
+**Neverificat:** structura lor exactă de URL-uri și câte funcții au pagină proprie
+— ne blochează crawlerul. Vezi §9.
+
+### Ce mai lipsește, în ordinea valorii
+
+1. **Diferențierea celor 68 de meserii care încă împart o cifră.** Nerezolvată.
+   Singura cale reală rămâne Faza 2 sau date proprii.
+2. **Faza 2 e tehnic posibilă, dar rară.** Extractorul PDF e complet și testat
+   (21 de cazuri), însă pe 7 liste reale doar 3 sunt utilizabile — ~43%. Nicio
+   cifră de salarizare publică nu a fost publicată, pentru că niciuna nu a fost
+   validată cap-coadă.
+3. **Pagini pe județe** (`salariu mediu în Cluj`) — datele există, formatul nu.
+
 ## 9. Ce rămâne de verificat manual (îmi trebuie ochii tăi)
 
 undelucram.ro și ghidsalariu.ro ne blochează crawlerul. Deschide-le normal în

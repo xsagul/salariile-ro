@@ -10,9 +10,22 @@ Ultima actualizare: 21 august 2026
   doua cifra pe cardurile din /salarii. Perechi de cifre distincte pe hub: 57 → 70
   din 102. Medic si Asistent medical se despart; cele cinci meserii IT nu, pentru
   ca impart si CAEN 62, si grupa ISCO „specialisti".
-- **Extractor PDF zero-dependente** (commit 16e45f9): `scripts/lib/pdf-text.mjs`,
-  cu test propriu care isi genereaza fixture-ul. API: `randuri`, `pagini`, `benzi`,
-  `calitateText`.
+- **21 de meserii noi** (commit caec42c), fiecare pe o activitate CAEN inca
+  nefolosita: 102 → 123 de meserii, 57 → 78 de chei CAEN. Ponderea meseriilor
+  fara cifra proprie scade de la 67% la 55%.
+- **12 comparatii noi** (commit 5271767): 25 → 37.
+- **16 pagini de domeniu** (commit c4c055e), `/salarii/domeniu/{slug}` — ~1.079
+  de cuvinte si 58 de linkuri interne fiecare. Echivalentul hub-ului de categorie
+  de la paylab, activul lor intern cel mai puternic.
+- **Clasamentul complet** (commit d1c6c98), `/salarii/clasament` — toate cele 123
+  de meserii, pe query-ul „cele mai bine platite meserii din Romania".
+- **Extractor PDF zero-dependente** (commits 16e45f9 → a9ab9bf):
+  `scripts/lib/pdf-text.mjs`, cu test propriu care isi genereaza fixture-ul.
+  API: `randuri`, `pagini`, `benzi`, `coloane`, `tabel`, `calitateText`,
+  `structuraTabel`, `hartiFonturi`.
+
+**Sitemap: 197 → 247 de rute.** Raportul de acoperire fata de cei doi competitori
+e in §8bis din STUDIU-COMPETITIV-HUB-SALARIAL-2026-08-21.md.
 
 ### Ce am aflat despre sursele art. 33, si de ce conteaza
 
