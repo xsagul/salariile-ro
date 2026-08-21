@@ -2,6 +2,32 @@
 
 Ultima actualizare: 21 august 2026
 
+## Studiu competitiv: paylab.ro si undelucram.ro — 21 august 2026
+
+Scopul proiectului s-a largit: de la "acoperim calculator-salarii.ro" la "devenim
+hub-ul salarial #1 din Romania". Studiul cap-coada e in
+`STUDIU-COMPETITIV-HUB-SALARIAL-2026-08-21.md`. Trei lucruri de retinut fara sa-l
+deschizi:
+
+1. **Nisa ocupationala nu e aparata de paylab sau undelucram.** Pe "salariu
+   asistent medical 2026" primele rezultate sunt jurnalul.ro, cancan.ro, bzi.ro,
+   playtech.ro, gandul.ro. Adversarul real e presa generalista cu cifre fara sursa.
+2. **Blocaj inainte de orice extindere:** 68 din 102 meserii (67%) afiseaza
+   aceeasi cifra ca alta meserie, pentru ca toate mostenesc media sectorului CAEN.
+   Avocat = Notar = Contabil = Auditor = Consilier juridic. Noi etichetam corect
+   (spunem ca e media activitatii), dar la 767 de pagini tiparul devine thin
+   content. Gate: nicio meserie noua fara o cifra proprie.
+3. **Arma pe care n-o are nimeni:** Legea 153/2017 art. 33 obliga institutiile
+   publice sa publice lista functiilor cu salariul de baza si valoarea bruta.
+   Acopera exact ocupatiile unde domina presa (profesor, medic, asistent, politist,
+   militar, functionar). Urmatoarea publicare: 30 septembrie 2026.
+
+undelucram.ro si ghidsalariu.ro blocheaza ClaudeBot in robots.txt, deci nu au fost
+crawl-uite. Ce lipseste si trebuie vazut manual e listat in §9 al studiului.
+
+Date brute salvate: `research/paylab-pozitii-2026-08-21.csv` (767 pozitii),
+`research/salariucalculator-urls-2026-08-21.txt` (92 URL-uri).
+
 ## Cluster nou: /salarii si /compara, pe date INS proprii — 21 august 2026
 
 Pornit de la ghidsalariu.ro/salarii si /compara. Structura e aceeasi (hub de
