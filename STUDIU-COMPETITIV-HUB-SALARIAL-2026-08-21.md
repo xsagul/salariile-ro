@@ -366,7 +366,8 @@ lucru care ne diferențiază de presa care domină azi nișa.
 | Comparații | 25 | **37** |
 | Pagini de domeniu | 0 | **16** |
 | Clasament | 0 | **1** |
-| Rute în sitemap | 197 | **247** |
+| Pagini de județ | 0 | **42 + hub** |
+| Rute în sitemap | 197 | **290** |
 | Chei CAEN folosite | 57 | **78** din 102 |
 | Meserii fără cifră proprie | 67% | **55%** |
 
@@ -418,7 +419,21 @@ Poziționarea rămâne cea din §4: îi ocolim pe datele obiective.
    (21 de cazuri), însă pe 7 liste reale doar 3 sunt utilizabile — ~43%. Nicio
    cifră de salarizare publică nu a fost publicată, pentru că niciuna nu a fost
    validată cap-coadă.
-3. **Pagini pe județe** (`salariu mediu în Cluj`) — datele există, formatul nu.
+3. ~~Pagini pe județe~~ — **construite**: 42 de pagini plus hub, cu comparația
+   făcută față de media națională a *aceleiași* activități, nu față de media
+   generală. E o familie de query-uri pe care n-o are nici paylab.
+
+### O decizie care e a ta, nu a mea
+
+Studiul a găsit la paylab lucruri care ar face un articol editorial bun și un
+linkable asset real: un placeholder de template în textul vizibil, același
+interval etichetat și „net" și „brut" în aceeași pagină, și zero date
+structurate pe tot site-ul. Un material de tipul „am verificat cifrele de pe
+site-urile de salarii față de datele INS" ar atrage exact genul de citări care
+ne lipsesc.
+
+**Nu l-am scris și nu l-am publicat.** A critica public un competitor numit e o
+decizie de poziționare și de reputație, nu una tehnică, iar tu ești cel care o ia.
 
 ## 9. Ce rămâne de verificat manual (îmi trebuie ochii tăi)
 

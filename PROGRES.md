@@ -17,6 +17,10 @@ Ultima actualizare: 21 august 2026
 - **16 pagini de domeniu** (commit c4c055e), `/salarii/domeniu/{slug}` — ~1.079
   de cuvinte si 58 de linkuri interne fiecare. Echivalentul hub-ului de categorie
   de la paylab, activul lor intern cel mai puternic.
+- **42 de pagini de judet plus hub** (commit f8eba37), /salarii/judet/{slug} si
+  /salarii/judete — familia de query-uri „salariu mediu in Cluj", pe care nu o are
+  nici paylab. Comparatia se face fata de media nationala a ACELEIASI activitati,
+  nu fata de media generala.
 - **Clasamentul complet** (commit d1c6c98), `/salarii/clasament` — toate cele 123
   de meserii, pe query-ul „cele mai bine platite meserii din Romania".
 - **Extractor PDF zero-dependente** (commits 16e45f9 → a9ab9bf):
@@ -24,7 +28,7 @@ Ultima actualizare: 21 august 2026
   API: `randuri`, `pagini`, `benzi`, `coloane`, `tabel`, `calitateText`,
   `structuraTabel`, `hartiFonturi`.
 
-**Sitemap: 197 → 247 de rute.** Raportul de acoperire fata de cei doi competitori
+**Sitemap: 197 → 290 de rute.** Raportul de acoperire fata de cei doi competitori
 e in §8bis din STUDIU-COMPETITIV-HUB-SALARIAL-2026-08-21.md.
 
 ### Ce am aflat despre sursele art. 33, si de ce conteaza
