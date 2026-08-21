@@ -71,6 +71,16 @@ comparatii (`/compara/[pereche]`), doua hub-uri. Rutele au trecut de la 70 la
   Cifrele raman in FAQ si pe fiecare pagina de meserie.
 - Titlurile din cluster sunt verificate STRICT la 60 de caractere in
   `test-rendered.mts`, ca cele de calculator.
+- 21 august, dupa lansare: „Fluturas salariu” a iesit din bara de sus si a
+  fost inlocuit cu grupul „Meserii” (Salarii pe meserii + Compara doua
+  meserii), dropdown ca „Ghiduri”. Header.tsx era scris pentru UN singur grup
+  — `desktopOpen` boolean, refs unice, `id="desktop-ghiduri-menu"` hardcodat.
+  Cu doua grupuri s-ar fi deschis amandoua odata si s-ar fi duplicat id-ul.
+  Starea e acum pe grup (`desktopOpen: string | null`, refs pe eticheta,
+  `groupsOpen` pe grup), iar test-ui-contracts.mts pazeste invariantul.
+  Atentie: e un pariu, nu o masuratoare. Fluturasul aducea 46 de clicuri in 28
+  de zile de pe pozitia 7,6; clusterul de meserii nu are inca niciun istoric.
+  De reevaluat in GSC dupa 28 de zile complete.
 
 **Verificare:** `npm run test:ci` trece integral — 197 rute cu HTTP 200, un
 singur H1/main, canonical corect, 197 blocuri JSON-LD valide, 19 verificari de

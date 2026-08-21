@@ -9,19 +9,28 @@ type Leaf = { href: string; label: string };
 type Group = { label: string; children: Leaf[] };
 type Item = Leaf | Group;
 
-// Structură extensibilă: linkuri simple + grupuri (dropdown). Adaugi ușor
-// „Calculator PFA" sau „Noutăți" fie ca leaf, fie în grupul Ghiduri.
-// Locul doi din bară se dă pe merit, nu pe vechime. La 10 august 2026,
-// /fluturas-salariu avea 46 de clicuri din Google în 28 de zile de pe poziția
-// 7,6 (CTR 4,3%), iar /calculator-pfa avea 3 clicuri de pe poziția 48 (CTR
-// 0,2%) — de 15 ori mai puține clicuri, de pe mai multe impresii. Umami arăta
-// că din 37 de vizualizări ale paginii PFA într-o săptămână, UNA venise din
-// Google: restul erau salariați care dădeau clic aici din curiozitate și
-// plecau în 19 secunde. /calculator-pfa rămâne linkată din footer și
-// contextual din /salariu-minim, deci nu e orfană.
+// Structură extensibilă: linkuri simple + grupuri (dropdown). Starea meniurilor
+// e ținută PE GRUP, nu global, ca să poată exista oricâte dropdownuri.
+//
+// Locul doi din bară se dă pe merit, nu pe vechime. Istoric: /fluturas-salariu
+// l-a luat de la /calculator-pfa pe 10 august 2026, cu 46 de clicuri din Google
+// în 28 de zile de pe poziția 7,6, față de 3 clicuri de pe poziția 48. Pe 21
+// august l-a cedat grupului „Meserii" — clusterul /salarii + /compara, 127 de
+// pagini noi care n-au încă niciun istoric în GSC și au nevoie de un drum
+// intern ca să fie descoperite. E un pariu, nu o măsurătoare: fluturașul aducea
+// trafic real, meseriile încă nu aduc niciunul.
+//
+// Nici /fluturas-salariu, nici /calculator-pfa nu rămân orfane: ambele sunt
+// linkate din footer, iar PFA și contextual din /salariu-minim.
 const NAV: Item[] = [
   { href: "/", label: "Calculator salariu" },
-  { href: "/fluturas-salariu", label: "Fluturaș salariu" },
+  {
+    label: "Meserii",
+    children: [
+      { href: "/salarii", label: "Salarii pe meserii" },
+      { href: "/compara", label: "Compară două meserii" },
+    ],
+  },
   {
     label: "Ghiduri",
     children: [
@@ -38,40 +47,54 @@ const NAV: Item[] = [
 
 const isGroup = (i: Item): i is Group => "children" in i;
 
+/** Identificator stabil pentru `id`/`aria-controls`, derivat din etichetă.
+ *  Diacriticele devin cratime — nu contează cum arată, contează să fie unic și
+ *  să nu se schimbe între server și client. */
+const idGrup = (label: string) =>
+  `desktop-menu-${label.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
+
 export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [desktopOpen, setDesktopOpen] = useState(false);
-  const desktopMenuRef = useRef<HTMLDivElement>(null);
-  const desktopTriggerRef = useRef<HTMLButtonElement>(null);
+  // Eticheta grupului deschis pe desktop, sau null. Un singur meniu deschis
+  // odată, dar oricare dintre ele.
+  const [desktopOpen, setDesktopOpen] = useState<string | null>(null);
+  const desktopMenuRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const desktopTriggerRefs = useRef<Record<string, HTMLButtonElement | null>>({});
 
   const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
   const groupActive = (g: Group) => g.children.some((c) => isActive(c.href));
 
-  // Accordeon mobil: deschis implicit dacă ești pe o pagină din grup.
-  const [groupOpen, setGroupOpen] = useState(() =>
-    NAV.some((i) => isGroup(i) && i.children.some((c) => pathname.startsWith(c.href)))
+  // Accordeon mobil: deschis implicit doar grupul din care face parte pagina
+  // curentă, nu toate deodată.
+  const [groupsOpen, setGroupsOpen] = useState<Record<string, boolean>>(() =>
+    Object.fromEntries(
+      NAV.filter(isGroup).map((g) => [g.label, g.children.some((c) => pathname.startsWith(c.href))]),
+    )
   );
 
   useEffect(() => {
     const frame = requestAnimationFrame(() => {
       setOpen(false);
-      setDesktopOpen(false);
+      setDesktopOpen(null);
     });
     return () => cancelAnimationFrame(frame);
   }, [pathname]);
 
   useEffect(() => {
     const onPointerDown = (event: MouseEvent) => {
-      if (!desktopMenuRef.current?.contains(event.target as Node)) setDesktopOpen(false);
+      const inauntru = Object.values(desktopMenuRefs.current).some((node) =>
+        node?.contains(event.target as Node),
+      );
+      if (!inauntru) setDesktopOpen(null);
     };
     document.addEventListener("mousedown", onPointerDown);
     return () => document.removeEventListener("mousedown", onPointerDown);
   }, []);
 
-  const closeDesktopMenu = (restoreFocus = false) => {
-    setDesktopOpen(false);
-    if (restoreFocus) desktopTriggerRef.current?.focus();
+  const closeDesktopMenu = (label?: string) => {
+    setDesktopOpen(null);
+    if (label) desktopTriggerRefs.current[label]?.focus();
   };
 
   useEffect(() => {
@@ -120,27 +143,35 @@ export default function Header() {
             isGroup(item) ? (
               <div
                 key={item.label}
-                ref={desktopMenuRef}
+                ref={(node) => {
+                  desktopMenuRefs.current[item.label] = node;
+                }}
                 className="relative flex h-full items-center"
                 onKeyDown={(event) => {
                   if (event.key === "Escape") {
                     event.preventDefault();
-                    closeDesktopMenu(true);
+                    closeDesktopMenu(item.label);
                   }
                 }}
               >
                 <button
-                  ref={desktopTriggerRef}
+                  ref={(node) => {
+                    desktopTriggerRefs.current[item.label] = node;
+                  }}
                   className={`${desktopLink(groupActive(item))} gap-1 outline-none`}
                   aria-haspopup="menu"
-                  aria-expanded={desktopOpen}
-                  aria-controls="desktop-ghiduri-menu"
-                  onClick={() => setDesktopOpen((value) => !value)}
+                  aria-expanded={desktopOpen === item.label}
+                  aria-controls={idGrup(item.label)}
+                  onClick={() => setDesktopOpen((value) => (value === item.label ? null : item.label))}
                   onKeyDown={(event) => {
                     if (event.key === "ArrowDown") {
                       event.preventDefault();
-                      setDesktopOpen(true);
-                      requestAnimationFrame(() => desktopMenuRef.current?.querySelector<HTMLAnchorElement>("[role=menuitem]")?.focus());
+                      setDesktopOpen(item.label);
+                      requestAnimationFrame(() =>
+                        desktopMenuRefs.current[item.label]
+                          ?.querySelector<HTMLAnchorElement>("[role=menuitem]")
+                          ?.focus(),
+                      );
                     }
                   }}
                 >
@@ -148,18 +179,18 @@ export default function Header() {
                   {chevron}
                 </button>
                 <div
-                  id="desktop-ghiduri-menu"
+                  id={idGrup(item.label)}
                   role="menu"
-                  className={`${desktopOpen ? "visible opacity-100" : "invisible opacity-0"} absolute left-1/2 top-full z-50 min-w-48 -translate-x-1/2 rounded-md border border-stone-200 bg-canvas py-1 shadow-soft transition-opacity duration-100`}
+                  className={`${desktopOpen === item.label ? "visible opacity-100" : "invisible opacity-0"} absolute left-1/2 top-full z-50 min-w-48 -translate-x-1/2 rounded-md border border-stone-200 bg-canvas py-1 shadow-soft transition-opacity duration-100`}
                 >
                   {item.children.map((c) => (
                     <Link
                       key={c.href}
                       href={c.href}
                       role="menuitem"
-                      tabIndex={desktopOpen ? 0 : -1}
+                      tabIndex={desktopOpen === item.label ? 0 : -1}
                       onClick={() => closeDesktopMenu()}
-                      className={`block px-4 py-2 text-sm ${
+                      className={`block whitespace-nowrap px-4 py-2 text-sm ${
                         isActive(c.href) ? "bg-stone-100 font-medium text-stone-900" : "text-stone-600 hover:bg-stone-100 hover:text-stone-900"
                       }`}
                     >
@@ -196,13 +227,17 @@ export default function Header() {
             <div key={item.label} className="border-b border-stone-200">
               <button
                 className="flex min-h-12 w-full items-center justify-between px-4 py-3 text-base text-stone-700"
-                aria-expanded={groupOpen}
-                onClick={() => setGroupOpen((v) => !v)}
+                aria-expanded={Boolean(groupsOpen[item.label])}
+                onClick={() =>
+                  setGroupsOpen((v) => ({ ...v, [item.label]: !v[item.label] }))
+                }
               >
                 {item.label}
-                <span className={`transition-transform duration-200 ${groupOpen ? "rotate-180" : ""}`}>{chevron}</span>
+                <span className={`transition-transform duration-200 ${groupsOpen[item.label] ? "rotate-180" : ""}`}>
+                  {chevron}
+                </span>
               </button>
-              {groupOpen && (
+              {groupsOpen[item.label] && (
                 <div className="bg-stone-50">
                   {item.children.map((c) => (
                     <Link

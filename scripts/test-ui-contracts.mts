@@ -20,7 +20,13 @@ for (const forbidden of ["salariu", "suma", "firma", "venituri", "incasari", "em
 assert.match(salary, /await generarePDFFluturas[\s\S]*trackUmami\(\{ name: "descarca-fluturas"/, "PDF-ul se măsoară după generare");
 assert.match(pfa, /<button[\s\S]*role="switch"[\s\S]*aria-checked=/, "Switch-ul PFA trebuie să fie un singur buton semantic");
 assert.doesNotMatch(pfa, /<label[^>]*>[\s\S]{0,500}<button[^>]*role="switch"/, "Switch-ul nu poate fi imbricat într-un label");
-assert.match(header, /aria-expanded=\{desktopOpen\}/);
+// Bara de sus are mai multe dropdownuri („Meserii", „Ghiduri"). Starea trebuie
+// tinuta PE GRUP: cu un singur boolean partajat se deschideau toate odata, iar
+// un `id` hardcodat ar fi duplicat `aria-controls` intre meniuri.
+assert.match(header, /aria-expanded=\{desktopOpen === item\.label\}/, "Starea dropdownului trebuie sa fie per grup");
+assert.match(header, /aria-controls=\{idGrup\(item\.label\)\}/, "aria-controls trebuie derivat din eticheta grupului");
+assert.doesNotMatch(header, /id="desktop-[a-z-]+-menu"/, "Meniurile nu pot avea id hardcodat");
+assert.match(header, /groupsOpen\[item\.label\]/, "Accordeonul mobil trebuie sa fie per grup");
 assert.match(header, /event\.key === "Escape"/);
 assert.doesNotMatch(embedLayout, /stats\.js|umami/i, "Layout-ul embed nu trebuie să activeze analytics");
 assert.match(home, /Calculator salariu net 2026: net, taxe și cost angajator/);
