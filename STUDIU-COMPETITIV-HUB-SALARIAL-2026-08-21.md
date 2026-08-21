@@ -197,7 +197,23 @@ amândouă în SERP, iar al doilea e apărabil de un singur om.
 
 ---
 
-## 4. Cine deține de fapt query-urile ocupaționale (surpriza studiului)
+## 4. Cine deține query-urile ocupaționale — ⚠️ SECȚIUNE GREȘITĂ, VEZI MAI JOS
+
+> **CORECTAT pe 21 august 2026.** Concluzia din această secțiune este falsă. Ea
+> vine din căutare web ancorată în SUA, care nu reflectă google.ro. Pe date reale
+> de ranking (Seobility, Google.ro), paylab are **81 de cuvinte în top 3** și
+> deține query-urile ocupaționale: locul 2 la „salariu asistent medical",
+> „salariu militar", „salariu avocat", „operator cnc salariu".
+>
+> Mai important: traficul lor real nu vine din paginile de ocupații, ci din
+> query-urile de calculator — „calcul" (volum 450.000) aduce singur jumătate din
+> vizibilitatea lor.
+>
+> Teardown-ul pe date: `PAYLAB-TEARDOWN-2026-08-21.md`.
+> **Regula care rezultă:** nicio afirmație despre poziții pe google.ro fără
+> verificare în Seobility.
+
+
 
 Pentru „salariu asistent medical 2026", rezultatele sunt dominate de presă
 generalistă: jurnalul.ro, cancan.ro, bzi.ro, playtech.ro, gandul.ro, csid.ro,
