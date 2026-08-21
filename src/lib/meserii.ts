@@ -336,13 +336,75 @@ export type DateMeserie = {
   /** Valoarea nationala a aceleiasi serii anuale — baza fata de care se
    *  raporteaza abaterea fiecarui judet. */
   mediaJudete: number | null;
+  /** Intervalul geografic real al sectorului: judetul cel mai bine si cel mai
+   *  prost platit din aceeasi serie anuala. */
+  interval: IntervalJudete | null;
+  /** Locul sectorului in clasamentul celor MESERII.length meserii urmarite. */
+  clasament: LocClasament | null;
 };
+
+/** Capetele intervalului pe judete — masuratoare reala, nu decile estimate. */
+export type IntervalJudete = {
+  minim: ValoareJudet;
+  maxim: ValoareJudet;
+  /** De cate ori e mai mare capatul de sus fata de cel de jos. */
+  raport: number;
+};
+
+export type LocClasament = {
+  /** Locul 1 = cea mai bine platita activitate din catalog. */
+  loc: number;
+  total: number;
+  /** Cate meserii impart exact acelasi loc, pentru ca impart sectorul CAEN. */
+  laEgalitate: number;
+};
+
+function intervalDinJudete(judete: ValoareJudet[]): IntervalJudete | null {
+  if (judete.length < 2) return null;
+  // `judetePentru` intoarce deja sortat descrescator.
+  const maxim = judete[0];
+  const minim = judete[judete.length - 1];
+  if (minim.brut <= 0) return null;
+  return { minim, maxim, raport: maxim.brut / minim.brut };
+}
+
+// Clasamentul se construieste o singura data, peste toate meseriile din
+// catalog. Meseriile care impart acelasi CAEN impart si locul — nu le
+// despartim artificial, pentru ca nu avem nicio masuratoare care sa le
+// desparta. Numarul de meserii aflate la egalitate se afiseaza in pagina, ca
+// cititorul sa stie ca locul e al sectorului, nu al ocupatiei.
+const CLASAMENT: Map<string, LocClasament> = (() => {
+  const brutPeCaen = new Map<string, number>();
+  for (const meserie of MESERII) {
+    if (brutPeCaen.has(meserie.caen3)) continue;
+    const sector = activitate(meserie.caen3);
+    if (sector) brutPeCaen.set(meserie.caen3, sector.brutCurent);
+  }
+  const ordonate = [...brutPeCaen.entries()].sort((a, b) => b[1] - a[1]);
+  const locPeCaen = new Map(ordonate.map(([caen], index) => [caen, index + 1]));
+  const cateMeseriiPeCaen = new Map<string, number>();
+  for (const meserie of MESERII) {
+    cateMeseriiPeCaen.set(meserie.caen3, (cateMeseriiPeCaen.get(meserie.caen3) ?? 0) + 1);
+  }
+  const rezultat = new Map<string, LocClasament>();
+  for (const meserie of MESERII) {
+    const loc = locPeCaen.get(meserie.caen3);
+    if (!loc) continue;
+    rezultat.set(meserie.slug, {
+      loc,
+      total: ordonate.length,
+      laEgalitate: (cateMeseriiPeCaen.get(meserie.caen3) ?? 1) - 1,
+    });
+  }
+  return rezultat;
+})();
 
 export function dateMeserie(meserie: Meserie): DateMeserie | null {
   const sector = activitate(meserie.caen3);
   const categorie = getCategorie(meserie.categorie);
   if (!sector || !categorie) return null;
   const rezultat = calculStandard(sector.brutCurent);
+  const judete = judetePentru(meserie.caen2);
   return {
     meserie,
     categorie,
@@ -350,8 +412,10 @@ export function dateMeserie(meserie: Meserie): DateMeserie | null {
     netStandard: rezultat?.net ?? 0,
     netObservat: sector.netCurent,
     isco: grupaIsco(meserie.isco),
-    judete: judetePentru(meserie.caen2),
+    judete,
     mediaJudete: nationalJudete(meserie.caen2),
+    interval: intervalDinJudete(judete),
+    clasament: CLASAMENT.get(meserie.slug) ?? null,
   };
 }
 

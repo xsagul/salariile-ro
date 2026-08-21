@@ -148,6 +148,17 @@ export default function SalariiPage() {
             ))}
           </nav>
 
+          {/* Legenda celor doua cifre de pe card. Fara ea, cifra a doua ar
+              parea un al doilea salariu al aceleiasi meserii, cand de fapt e
+              alta masuratoare, din alta ancheta si alt an. */}
+          <p className="mt-6 rounded-md border border-stone-200 bg-surface p-4 text-sm leading-normal text-stone-600 shadow-soft">
+            Fiecare card arată două măsurători diferite, nu două variante ale aceleiași cifre. Sus, în bold, este{" "}
+            <strong className="font-semibold text-stone-900">media lunară a activității CAEN</strong> unde lucrează
+            majoritatea ({LUNA}); dedesubt, <strong className="font-semibold text-stone-900">venitul brut realizat
+            al grupei de ocupații</strong> din ancheta INS din octombrie {AN_OCUPATII.replace("Anul ", "")}. Prima e
+            proaspătă dar largă, a doua e mai veche dar ancorată în ocupație.
+          </p>
+
           {categorii.map(({ categorie, meserii }) => (
             <section key={categorie.slug} id={categorie.slug} className="mt-12 scroll-mt-20">
               <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">{categorie.nume}</h2>
@@ -160,6 +171,7 @@ export default function SalariiPage() {
                     titlu={meserie.nume}
                     detaliu={`CAEN ${date!.sector.cheie} · ${denumireScurtaCaen(date!.sector.cheie, date!.sector.denumire)}`}
                     valoare={`${lei(date!.sector.brutCurent)} lei`}
+                    subvaloare={date!.isco ? `grupă ${lei(date!.isco.venitBrutTotal)}` : undefined}
                   />
                 ))}
               </div>

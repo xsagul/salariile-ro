@@ -89,7 +89,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 function faqPentru(date: DateMeserie) {
-  const { meserie, sector, isco, judete } = date;
+  const { meserie, sector, isco, judete, interval, clasament } = date;
   const numeMic = meserie.nume.toLocaleLowerCase("ro-RO");
   const primele = judete.slice(0, 3).map((j) => j.judet).join(", ");
   const intrebari = [
@@ -107,6 +107,20 @@ function faqPentru(date: DateMeserie) {
     intrebari.push({
       q: `În ce județe se câștigă cel mai bine ca ${numeMic}?`,
       a: `În ${AN_JUDETE_SCURT}, cele mai mari câștiguri medii brute din sectorul asociat meseriei au fost în ${primele}. Vârful a fost ${lei(judete[0].brut)} lei brut în ${judete[0].judet}, iar valoarea cea mai mică ${lei(judete[judete.length - 1].brut)} lei, în ${judete[judete.length - 1].judet}. Datele sunt pe județ, nu pe oraș.`,
+    });
+  }
+
+  if (interval) {
+    intrebari.push({
+      q: `Care sunt cele mai mari salarii pentru un ${numeMic}?`,
+      a: `În defalcarea INS pe județe din ${AN_JUDETE_SCURT}, câștigul mediu brut din sectorul asociat meseriei a variat între ${lei(interval.minim.brut)} lei în ${interval.minim.judet} și ${lei(interval.maxim.brut)} lei în ${interval.maxim.judet} — de ${interval.raport.toLocaleString("ro-RO", { minimumFractionDigits: 1, maximumFractionDigits: 1 })} ori mai mult. Sunt medii pe județ, nu maxime individuale: un ${numeMic} cu experiență poate depăși capătul de sus, iar un debutant poate fi sub cel de jos.`,
+    });
+  }
+
+  if (clasament) {
+    intrebari.push({
+      q: `Este ${numeMic} o meserie bine plătită?`,
+      a: `Raportat la celelalte activități urmărite pe site, sectorul în care lucrează un ${numeMic} este pe locul ${clasament.loc} din ${clasament.total}, după câștigul mediu brut din ${LUNA}.${clasament.laEgalitate > 0 ? ` Locul este al activității, nu al ocupației: încă ${clasament.laEgalitate} ${clasament.laEgalitate === 1 ? "meserie din catalog împarte" : "meserii din catalog împart"} aceeași poziție, pentru că împart aceeași activitate CAEN.` : ""} Comparația corectă se face între sectoare, nu între persoane.`,
     });
   }
 
@@ -137,7 +151,7 @@ export default async function MeseriePage({ params }: Props) {
   if (!meserie) notFound();
 
   const date = dateMeserieSauEroare(meserie);
-  const { sector, isco, judete, categorie } = date;
+  const { sector, isco, judete, categorie, interval, clasament } = date;
   const numeMic = meserie.nume.toLocaleLowerCase("ro-RO");
   const variatie = variatieAnuala(sector.brut);
   const fataDeEconomie = (sector.brutCurent - TOTAL_ECONOMIE.brutCurent) / TOTAL_ECONOMIE.brutCurent;
@@ -236,6 +250,52 @@ export default async function MeseriePage({ params }: Props) {
             <p className="mt-4 rounded-md border border-stone-300 bg-surface p-4 text-sm leading-normal text-stone-700 shadow-soft">
               <strong className="font-semibold text-stone-900">De reținut:</strong> {meserie.nota}
             </p>
+          )}
+
+          {/* Poziționarea și intervalul geografic. Amândouă sunt măsurători, nu
+              estimări: locul vine din clasarea activităților din catalog, iar
+              capetele intervalului sunt județe reale din aceeași serie anuală.
+              Egalitatea de loc se declară explicit — locul e al activității, nu
+              al ocupației, iar cititorul trebuie să știe asta. */}
+          {(clasament || interval) && (
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              {clasament && (
+                <div className="rounded-md border border-stone-200 bg-surface p-5 shadow-soft">
+                  <div className="text-xs font-medium uppercase tracking-wide text-stone-500">
+                    Poziția pe piața muncii
+                  </div>
+                  <p className="mt-2 text-base leading-normal text-stone-700">
+                    Activitatea este pe{" "}
+                    <strong className="font-semibold text-stone-900">
+                      locul {clasament.loc} din {clasament.total}
+                    </strong>{" "}
+                    dintre cele urmărite pe site, după câștigul mediu brut din {LUNA}.
+                    {clasament.laEgalitate > 0 && (
+                      <>
+                        {" "}
+                        Alte {clasament.laEgalitate}{" "}
+                        {clasament.laEgalitate === 1 ? "meserie împarte" : "meserii împart"} același loc, pentru că
+                        împart aceeași activitate CAEN. Locul este al activității, nu al ocupației.
+                      </>
+                    )}
+                  </p>
+                </div>
+              )}
+              {interval && (
+                <div className="rounded-md border border-stone-200 bg-surface p-5 shadow-soft">
+                  <div className="text-xs font-medium uppercase tracking-wide text-stone-500">
+                    Interval pe județe, {AN_JUDETE_SCURT}
+                  </div>
+                  <p className="mt-2 text-base leading-normal text-stone-700">
+                    <strong className="font-semibold text-stone-900">
+                      {lei(interval.minim.brut)} – {lei(interval.maxim.brut)} lei
+                    </strong>{" "}
+                    brut, de la {interval.minim.judet} la {interval.maxim.judet}. Nu e o decilă estimată dintr-un
+                    sondaj: sunt capetele reale ale defalcării INS pe județe.
+                  </p>
+                </div>
+              )}
+            </div>
           )}
 
           <div className="mt-12 grid gap-10 lg:grid-cols-3">
@@ -356,7 +416,7 @@ export default async function MeseriePage({ params }: Props) {
                     apare ca „{etichetaSectorJudete}”. În {AN_JUDETE_SCURT}, primul județ din tabel a avut un câștig
                     mediu brut de{" "}
                     <strong>
-                      {(judete[0].brut / judete[judete.length - 1].brut).toLocaleString("ro-RO", {
+                      {(interval?.raport ?? judete[0].brut / judete[judete.length - 1].brut).toLocaleString("ro-RO", {
                         minimumFractionDigits: 1,
                         maximumFractionDigits: 1,
                       })}{" "}

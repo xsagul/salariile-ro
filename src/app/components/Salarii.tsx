@@ -224,11 +224,15 @@ export function LinkCard({
   titlu,
   detaliu,
   valoare,
+  subvaloare,
 }: {
   href: string;
   titlu: string;
   detaliu?: string;
   valoare?: string;
+  /** A doua cifra, ancorata in ocupatie. Fara ea, toate meseriile dintr-un
+   *  sector arata identic in listing. */
+  subvaloare?: string;
 }) {
   return (
     <Link
@@ -239,7 +243,12 @@ export function LinkCard({
         <span className="block truncate text-sm font-medium text-stone-900">{titlu}</span>
         {detaliu && <span className="block truncate text-xs text-stone-500">{detaliu}</span>}
       </span>
-      {valoare && <span className="shrink-0 text-sm font-semibold tabular-nums text-stone-700">{valoare}</span>}
+      {valoare && (
+        <span className="shrink-0 text-right">
+          <span className="block text-sm font-semibold tabular-nums text-stone-700">{valoare}</span>
+          {subvaloare && <span className="block text-xs tabular-nums text-stone-500">{subvaloare}</span>}
+        </span>
+      )}
     </Link>
   );
 }
