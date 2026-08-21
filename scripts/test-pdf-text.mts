@@ -9,7 +9,7 @@
 
 import assert from "node:assert/strict";
 import zlib from "node:zlib";
-import { benzi, calitateText, pagini, randuri } from "./lib/pdf-text.mjs";
+import { benzi, calitateText, hartiFonturi, pagini, randuri } from "./lib/pdf-text.mjs";
 
 /** Un PDF de o pagina, cu content stream-ul dat. */
 function pdfCu(continut: string, comprimat: boolean): Buffer {
@@ -70,11 +70,57 @@ const paginiTest = pagini(pdfCu(CONTINUT, true));
 assert.equal(paginiTest.length, 1, "un singur content stream inseamna o singura pagina");
 const benziTest = benzi(paginiTest[0]);
 assert.equal(benziTest.length, 2, "doua benzi orizontale");
+// `pdf-text.mjs` e JavaScript simplu, deci fragmentele vin netipate aici.
 assert.deepEqual(
-  benziTest[0].bucati.map((b) => b.x),
+  benziTest[0].bucati.map((bucata: { x: number }) => bucata.x),
   [72, 300],
   "bucatile unei benzi pastreaza X-ul si vin de la stanga la dreapta",
 );
+
+// Siruri hexazecimale. Multe generatoare scriu tot textul asa; pana la suportul
+// pentru ele, listele ISJ ieseau goale.
+const CU_HEXA = ["BT", "1 0 0 1 72 700 Tm <53414C4152495520> Tj", "ET"].join("\n");
+assert.deepEqual(randuri(pdfCu(CU_HEXA, true)), ["SALARIU"], "sirurile hexa trebuie decodate");
+
+// Fonturi cu encoding propriu: fara CMap-ul ToUnicode, „AB" scris cu codurile
+// 0x0003 si 0x0004 iese ca gunoi. Fixture-ul are un font, o resursa si un CMap.
+function pdfCuFont(): Buffer {
+  const cmap = [
+    "/CIDInit /ProcSet findresource begin",
+    "begincmap",
+    "1 begincodespacerange",
+    "<0000> <FFFF>",
+    "endcodespacerange",
+    "1 beginbfchar",
+    "<0003> <0041>",
+    "endbfchar",
+    "1 beginbfrange",
+    "<0004> <0005> <0042>",
+    "endbfrange",
+    "endcmap",
+  ].join("\n");
+  const continut = ["BT", "/F1 9 Tf", "1 0 0 1 72 700 Tm <000300040005> Tj", "ET"].join("\n");
+  const fluxContinut = zlib.deflateSync(Buffer.from(continut, "latin1"));
+  const fluxCMap = zlib.deflateSync(Buffer.from(cmap, "latin1"));
+  const parti = [
+    Buffer.from("%PDF-1.7\n", "latin1"),
+    Buffer.from("7 0 obj\n<</Type/Font/BaseFont/AAAAAA+Test/ToUnicode 9 0 R>>\nendobj\n", "latin1"),
+    Buffer.from("8 0 obj\n<</Font<</F1 7 0 R>>>>\nendobj\n", "latin1"),
+    Buffer.from(`9 0 obj\n<</Filter/FlateDecode/Length ${fluxCMap.length}>>\nstream\n`, "latin1"),
+    fluxCMap,
+    Buffer.from("\nendstream\nendobj\n", "latin1"),
+    Buffer.from(`10 0 obj\n<</Filter/FlateDecode/Length ${fluxContinut.length}>>\nstream\n`, "latin1"),
+    fluxContinut,
+    Buffer.from("\nendstream\nendobj\n%%EOF\n", "latin1"),
+  ];
+  return Buffer.concat(parti);
+}
+
+const cuFont = pdfCuFont();
+const fonturi = hartiFonturi(cuFont);
+assert.equal(fonturi.harti.size, 1, "resursa /F1 trebuie legata de CMap-ul fontului");
+assert.equal(fonturi.harti.get("F1")?.cmap.latime, 2, "codespacerange <0000><FFFF> inseamna coduri pe doi octeti");
+assert.deepEqual(randuri(cuFont), ["ABC"], "codurile trebuie traduse prin CMap, nu citite ca octeti");
 
 // Poarta de calitate: un fisier fara strat de text nu trebuie sa treaca drept
 // citit cu succes. E singurul lucru care opreste publicarea unei extrageri
@@ -84,4 +130,4 @@ const calitate = calitateText(pdfCu(CONTINUT, true));
 assert.equal(calitate.areText, true, "fisier cu text: areText true");
 assert.equal(calitate.suspecte, 0, "text romanesc curat: zero fragmente suspecte");
 
-console.log("OK: extractorul PDF reconstruieste randurile din fragmente (9 cazuri).");
+console.log("OK: extractorul PDF reconstruieste randurile din fragmente (13 cazuri).");

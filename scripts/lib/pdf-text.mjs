@@ -60,17 +60,185 @@ function decodeazaSir(brut) {
     .replace(ESCAPE_SIMPLU, "$1");
 }
 
-// Siruri literale intre paranteze, cu escapari inauntru.
-const REGEX_SIR = new RegExp("\\((?:\\\\.|[^\\\\()])*\\)", "g");
+// Siruri literale intre paranteze, cu escapari inauntru, SAU siruri
+// hexazecimale intre <>. Multe generatoare (inclusiv cel folosit de ISJ Galati)
+// scriu tot textul in hexa, deci fara varianta asta pagina iese goala.
+const REGEX_SIR = new RegExp("\\((?:\\\\.|[^\\\\()])*\\)|<[0-9A-Fa-f\\s]*>", "g");
+
+/** `<48656C6F>` → „Helo". Octetii impari se completeaza cu zero, ca in spec. */
+function decodeazaHexa(brut) {
+  const cifre = brut.slice(1, -1).replace(/\s+/g, "");
+  const perechi = cifre.length % 2 === 0 ? cifre : cifre + "0";
+  let text = "";
+  for (let i = 0; i < perechi.length; i += 2) {
+    text += String.fromCharCode(parseInt(perechi.slice(i, i + 2), 16));
+  }
+  return text;
+}
+
+/** Un sir PDF, in oricare din cele doua notatii. */
+function decodeazaOriceSir(brut) {
+  return brut.startsWith("<") ? decodeazaHexa(brut) : decodeazaSir(brut.slice(1, -1));
+}
+
+/**
+ * Un sir, trecut prin CMap-ul fontului activ daca acesta are unul.
+ *
+ * Fara CMap, un sir hexa dintr-o subfontina da litere decalate: „inspector"
+ * devine „LQVSHFWRU". Cu CMap, codurile se traduc in caracterele reale.
+ */
+function decodeazaCuFont(brut, cmap) {
+  if (!cmap) return decodeazaOriceSir(brut);
+  const octeti = brut.startsWith("<")
+    ? decodeazaHexa(brut)
+    : decodeazaSir(brut.slice(1, -1));
+  const latime = cmap.latime ?? 1;
+  let text = "";
+  for (let i = 0; i < octeti.length; i += latime) {
+    let cod = 0;
+    for (let j = 0; j < latime && i + j < octeti.length; j++) {
+      cod = (cod << 8) | (octeti.charCodeAt(i + j) & 0xff);
+    }
+    const caracter = cmap.get(cod);
+    // Codul nemapat se pastreaza ca atare: mai bine un caracter ciudat vizibil
+    // decat un gol tacut care face randul sa para complet.
+    text += caracter !== undefined ? caracter : octeti.slice(i, i + latime);
+  }
+  return text;
+}
+
+// ─── Fonturi cu encoding propriu (ToUnicode) ─────────────────────────────────
+//
+// O subfontina isi numeroteaza glifele cum vrea. Pe lista ISJ Galati,
+// „inspector" iese ca „LQVSHFWRU" — fiecare cod e litera reala minus 29. Fara
+// CMap-ul ToUnicode al fontului, textul arata ca text, dar e altceva. Asa ceva
+// nu se ghiceste; se citeste din fisier.
+
+/** Pozitia fiecarui obiect indirect: numar → offset in fisier. */
+function indexObiecte(brut) {
+  const index = new Map();
+  const regex = /(\d+)\s+0\s+obj\b/g;
+  let potrivire;
+  while ((potrivire = regex.exec(brut)) !== null) {
+    index.set(Number(potrivire[1]), potrivire.index);
+  }
+  return index;
+}
+
+/** Continutul dezarhivat al stream-ului unui obiect. */
+function streamObiectului(buf, brut, offset) {
+  const start = brut.indexOf("stream", offset);
+  if (start === -1) return null;
+  const sfarsit = brut.indexOf("endstream", start);
+  if (sfarsit === -1) return null;
+  const antet = brut.slice(offset, start);
+  let dateStart = start + "stream".length;
+  if (buf[dateStart] === 0x0d) dateStart++;
+  if (buf[dateStart] === 0x0a) dateStart++;
+  const desfacut = dezarhiveaza(antet, buf.subarray(dateStart, sfarsit));
+  return desfacut ? desfacut.toString("latin1") : null;
+}
+
+/** `<0029> <002A> <0046>` si `<0003> <0020>` → harta cod → caracter. */
+function parseazaCMap(text) {
+  // Cati octeti are un cod: `<0000> <FFFF>` inseamna doi. Fara asta am taia
+  // sirul hexa in bucati gresite si am cauta coduri care nu exista.
+  const codespace = text.match(/begincodespacerange\s*<([0-9A-Fa-f]+)>/);
+  const latime = codespace ? Math.max(1, Math.round(codespace[1].length / 2)) : 1;
+  const harta = new Map();
+  harta.latime = latime;
+  for (const bloc of text.match(/beginbfchar[\s\S]*?endbfchar/g) ?? []) {
+    for (const pereche of bloc.match(/<([0-9A-Fa-f]+)>\s*<([0-9A-Fa-f]+)>/g) ?? []) {
+      const [cod, unicode] = pereche.match(/<([0-9A-Fa-f]+)>/g).map((h) => h.slice(1, -1));
+      harta.set(parseInt(cod, 16), unicodeDinHexa(unicode));
+    }
+  }
+  for (const bloc of text.match(/beginbfrange[\s\S]*?endbfrange/g) ?? []) {
+    // Forma cu destinatie unica: <de la> <pana la> <primul unicode>
+    for (const rand of bloc.match(/<([0-9A-Fa-f]+)>\s*<([0-9A-Fa-f]+)>\s*<([0-9A-Fa-f]+)>/g) ?? []) {
+      const [dela, panaLa, primul] = rand.match(/<([0-9A-Fa-f]+)>/g).map((h) => h.slice(1, -1));
+      const start = parseInt(dela, 16);
+      const stop = parseInt(panaLa, 16);
+      const baza = parseInt(primul, 16);
+      // Un interval absurd de mare inseamna ca am citit gresit; nu-l umflam.
+      if (stop < start || stop - start > 0xffff) continue;
+      for (let i = 0; i <= stop - start; i++) harta.set(start + i, String.fromCodePoint(baza + i));
+    }
+    // Forma cu tablou: <de la> <pana la> [<u1> <u2> ...]
+    for (const rand of bloc.match(/<([0-9A-Fa-f]+)>\s*<([0-9A-Fa-f]+)>\s*\[[^\]]*\]/g) ?? []) {
+      const capete = rand.match(/^<([0-9A-Fa-f]+)>\s*<([0-9A-Fa-f]+)>/);
+      if (!capete) continue;
+      const start = parseInt(capete[1], 16);
+      const tinte = (rand.match(/\[([\s\S]*)\]/)?.[1].match(/<([0-9A-Fa-f]+)>/g) ?? []).map((h) => h.slice(1, -1));
+      tinte.forEach((tinta, i) => harta.set(start + i, unicodeDinHexa(tinta)));
+    }
+  }
+  return harta;
+}
+
+/** Un cod unicode scris hexa, posibil pe mai multe unitati UTF-16. */
+function unicodeDinHexa(hexa) {
+  let text = "";
+  for (let i = 0; i + 4 <= hexa.length; i += 4) {
+    text += String.fromCharCode(parseInt(hexa.slice(i, i + 4), 16));
+  }
+  return text || String.fromCharCode(parseInt(hexa, 16));
+}
+
+/**
+ * Harta „nume de font din pagina" → CMap, pentru tot documentul.
+ *
+ * Numele (`/F3`) sunt locale paginii, dar in practica acelasi nume trimite la
+ * acelasi obiect font in tot fisierul. Cand nu e asa, pastram prima potrivire
+ * si semnalam conflictul, ca sa nu decodam tacut cu fontul gresit.
+ */
+export function hartiFonturi(buffer) {
+  const brut = buffer.toString("latin1");
+  const index = indexObiecte(brut);
+  const cmapCache = new Map();
+  const harti = new Map();
+  const conflicte = new Set();
+
+  for (const resurse of brut.match(/\/Font\s*<<[^>]*>>/g) ?? []) {
+    for (const intrare of resurse.match(/\/([A-Za-z0-9]+)\s+(\d+)\s+0\s+R/g) ?? []) {
+      const potrivire = intrare.match(/\/([A-Za-z0-9]+)\s+(\d+)/);
+      if (!potrivire) continue;
+      const [, nume, numarFont] = potrivire;
+      const offsetFont = index.get(Number(numarFont));
+      if (offsetFont === undefined) continue;
+      // Dictionarul fontului, pana la primul „endobj".
+      const sfarsitObiect = brut.indexOf("endobj", offsetFont);
+      const dict = brut.slice(offsetFont, sfarsitObiect === -1 ? offsetFont + 2000 : sfarsitObiect);
+      const refToUnicode = dict.match(/\/ToUnicode\s+(\d+)\s+0\s+R/);
+      if (!refToUnicode) continue;
+      const numarCMap = Number(refToUnicode[1]);
+      if (!cmapCache.has(numarCMap)) {
+        const offsetCMap = index.get(numarCMap);
+        const text = offsetCMap === undefined ? null : streamObiectului(buffer, brut, offsetCMap);
+        cmapCache.set(numarCMap, text ? parseazaCMap(text) : null);
+      }
+      const cmap = cmapCache.get(numarCMap);
+      if (!cmap || cmap.size === 0) continue;
+      const existent = harti.get(nume);
+      if (existent && existent.numar !== numarCMap) {
+        conflicte.add(nume);
+        continue;
+      }
+      if (!existent) harti.set(nume, { numar: numarCMap, cmap });
+    }
+  }
+  return { harti, conflicte };
+}
 
 // Un operator PDF si operanzii lui numerici sau siruri. Scanam secvential,
 // pentru ca pozitia textului conteaza: intr-un tabel, celulele de pe acelasi
 // rand sunt fragmente separate, emise fiecare cu propriul Tj.
 const REGEX_TOKEN = new RegExp(
   "(\\[(?:[^\\[\\]\\\\]|\\\\.)*\\])|" + // tabloul de la TJ
-    "(\\((?:\\\\.|[^\\\\()])*\\))|" + // sir literal
+    "(\\((?:\\\\.|[^\\\\()])*\\)|<[0-9A-Fa-f\\s]*>)|" + // sir literal sau hexa
     "(-?\\d+(?:\\.\\d+)?)|" + // numar
-    "(Tm|Td|TD|T\\*|TJ|Tj|TL|BT|ET|'|\")", // operatorii care ne intereseaza
+    "(/[A-Za-z0-9+.-]+)|" + // nume de resursa, pentru Tf
+    "(Tm|Td|TD|T\\*|TJ|Tj|Tf|TL|BT|ET|'|\")", // operatorii care ne intereseaza
   "g",
 );
 
@@ -81,18 +249,24 @@ const REGEX_TOKEN = new RegExp(
  * coordonate. Reconstruim randurile grupand dupa Y si sortand dupa X, altfel
  * o data ca „31.03.2026" iese bucatita in „3", „1", „.0", „3", „.202", „6".
  */
-function fragmenteDinContinut(continut) {
+function fragmenteDinContinut(continut, harti = new Map()) {
   const fragmente = [];
   let x = 0;
   let y = 0;
   let leading = 0;
+  let marime = 10;
+  let cmapActiv = null;
   const numere = [];
   let token;
   REGEX_TOKEN.lastIndex = 0;
   while ((token = REGEX_TOKEN.exec(continut)) !== null) {
-    const [, tablou, sir, numar, operator] = token;
+    const [, tablou, sir, numar, nume, operator] = token;
     if (numar !== undefined) {
       numere.push(parseFloat(numar));
+      continue;
+    }
+    if (nume !== undefined) {
+      numere.push({ nume: nume.slice(1) });
       continue;
     }
     if (tablou !== undefined || sir !== undefined) {
@@ -103,8 +277,16 @@ function fragmenteDinContinut(continut) {
     if (operator === undefined) continue;
 
     const argumente = numere.splice(0, numere.length);
-    const siruri = argumente.filter((a) => typeof a === "object");
+    const siruri = argumente.filter((a) => typeof a === "object" && (a.sir !== undefined || a.tablou !== undefined));
+    const nume2 = argumente.filter((a) => typeof a === "object" && a.nume !== undefined);
     const cifre = argumente.filter((a) => typeof a === "number");
+
+    if (operator === "Tf") {
+      const numeFont = nume2.length ? nume2[nume2.length - 1].nume : null;
+      cmapActiv = numeFont ? (harti.get(numeFont)?.cmap ?? null) : null;
+      if (cifre.length) marime = Math.abs(cifre[cifre.length - 1]) || marime;
+      continue;
+    }
 
     switch (operator) {
       case "Tm":
@@ -143,14 +325,14 @@ function fragmenteDinContinut(continut) {
         for (const argument of siruri) {
           let text = "";
           if (argument.sir !== undefined) {
-            text = decodeazaSir(argument.sir.slice(1, -1));
+            text = decodeazaCuFont(argument.sir, cmapActiv);
           } else {
             // TJ: siruri intercalate cu ajustari de kerning. O ajustare mare
             // negativa inseamna spatiu vizibil intre glife.
             const parti = argument.tablou.match(REGEX_SIR) ?? [];
-            text = parti.map((p) => decodeazaSir(p.slice(1, -1))).join("");
+            text = parti.map((p) => decodeazaCuFont(p, cmapActiv)).join("");
           }
-          if (text.trim()) fragmente.push({ x, y, text });
+          if (text.trim()) fragmente.push({ x, y, text, marime });
         }
         break;
       }
@@ -159,6 +341,31 @@ function fragmenteDinContinut(continut) {
     }
   }
   return fragmente;
+}
+
+/**
+ * Lipeste bucatile unei benzi, punand spatiu doar unde chiar e spatiu.
+ *
+ * Unele generatoare pozitioneaza fiecare glifa separat. Daca am pune spatiu
+ * intre orice doua fragmente, „inspector" ar iesi „i n s p e c t o r". Estimam
+ * latimea textului din numarul de caractere si marimea fontului, si punem
+ * spatiu numai cand distanta pana la fragmentul urmator o depaseste vizibil.
+ */
+function lipesteBucati(bucati) {
+  let text = "";
+  let sfarsitAnterior = null;
+  for (const bucata of bucati) {
+    const marime = bucata.marime ?? 10;
+    if (sfarsitAnterior !== null) {
+      const gol = bucata.x - sfarsitAnterior;
+      const areSpatiuLaCapete = /\s$/.test(text) || /^\s/.test(bucata.text);
+      if (!areSpatiuLaCapete && gol > marime * 0.22) text += " ";
+    }
+    text += bucata.text;
+    // Latime aproximativa: 0,5 em pe caracter e media pentru fonturile de text.
+    sfarsitAnterior = bucata.x + bucata.text.length * marime * 0.5;
+  }
+  return text.replace(/\s+/g, " ").trim();
 }
 
 /** Fragmentele grupate in randuri: acelasi Y (cu toleranta), ordonate dupa X. */
@@ -174,12 +381,7 @@ function randuriDinFragmente(fragmente) {
   return [...grupe.entries()]
     .sort((a, b) => b[0] - a[0]) // de sus in jos
     .map(([, bucati]) =>
-      bucati
-        .sort((a, b) => a.x - b.x)
-        .map((b) => b.text)
-        .join(" ")
-        .replace(/\s+/g, " ")
-        .trim(),
+      lipesteBucati(bucati.sort((a, b) => a.x - b.x)),
     )
     .filter(Boolean);
 }
@@ -194,13 +396,14 @@ function randuriDinFragmente(fragmente) {
  * extras date.
  */
 export function pagini(buffer) {
+  const { harti } = hartiFonturi(buffer);
   const rezultat = [];
   for (const { antet, date } of streamuri(buffer)) {
     const desfacut = dezarhiveaza(antet, date);
     if (!desfacut) continue;
     const continut = desfacut.toString("latin1");
     if (!/\bTj\b/.test(continut) && !/\bTJ\b/.test(continut)) continue;
-    const fragmente = fragmenteDinContinut(continut);
+    const fragmente = fragmenteDinContinut(continut, harti);
     if (fragmente.length) rezultat.push(fragmente);
   }
   return rezultat;
