@@ -726,3 +726,159 @@ si ramane dinamic oricum. `unsafe-hashes` scos (niciun handler inline in src/).
    a dat fals pozitiv. Doua greseli care s-au acoperit una pe alta.
    Regula: verifica `git branch --show-current` inainte de push, si alege
    pentru propagare un sir care exista DOAR in build-ul nou.
+
+## Audit SEO cap-coadă, 21 august 2026
+
+Sesiune cu trei agenți în paralel (off-site, SERP, on-page) plus tragere de
+date GSC, Bing, Umami și Vercel Analytics. Commit: `5aa3b54`.
+
+### Creșterea e reală și mare
+
+| | baseline 27 iun – 24 iul | 24 iul – 21 aug |
+|---|---|---|
+| clicuri | 2.204 | **4.693** (+113%) |
+| impresii | 181.049 | **429.491** (+137%) |
+| poziție medie | 6–10 pe generice | ~5,6 |
+
+### CTR-ul agregat e o problemă de MIX, nu de calitate
+
+| segment | interogări | clicuri | impresii | CTR | poz |
+|---|---|---|---|---|---|
+| cu an (2026) | 295 | 1.869 | 95.318 | **1,96%** | 4,8 |
+| fără an | 705 | 1.324 | 162.439 | **0,82%** | 6,1 |
+
+Cap de serie: „calculator salariu net" 54.076 impresii / 0,6% / poz 5,7 vs
+„calculator salariu net 2026" 6.505 impresii / 4,6% / poz 3,3 — clicuri aproape
+egale (323 vs 299) din de 8x mai puține impresii. Confirmă nota din memorie:
+nu trata CTR-ul agregat ca metrică de calitate fără să-l descompui.
+
+### Clusterul „zile lucrătoare" e zero-click. DOVADĂ, nu ipoteză.
+
+Ambii agenți au recomandat ca **prioritate 1** construirea a 12 pagini pe lună,
+pe argumentul „titlu potrivit pe lună = 9–13% CTR". **Am verificat și e fals.**
+Cele 9–13% erau interogări de *calculator* (homepage), nu de zile lucrătoare.
+
+Experiment controlat, din propriile date, aceeași pagină, două luni:
+
+| fereastră | titlul spunea | interogare | clicuri / impresii | CTR |
+|---|---|---|---|---|
+| 1–31 iulie | „iulie" | zile lucratoare iulie 2026 | 15 / 6.290 | **0,2%** |
+| 1–18 august | „august" | zile lucratoare august 2026 | 9 / 3.603 | **0,2%** |
+
+Potrivirea titlului cu luna nu schimbă nimic. Cluster total: 38.761 impresii,
+222 clicuri, 0,57% CTR, la poziția **4,5**. Google și competitorii (pluxee,
+edenred) afișează numărul direct în SERP. **Nu construi pagini pe lună.**
+
+Ce s-a făcut în schimb: titlul devine anual (interogarea anuală e cea mai mare
+a paginii, 14.979 impresii, și primea un titlu care promitea altă lună), luna
+rămâne în descriere.
+
+### Canibalizare, două cazuri
+
+1. **Rezolvat azi.** Trei ancore „Zile libere și lucrătoare 2026" trimiteau spre
+   `/zile-libere-2026`. Efectul: pagina „lucrătoare" e pe **1,0** pe „sarbatori
+   legale august 2026", iar pagina „libere" pe **55,2** pe „sarbatori legale
+   2026". Ancore dezambiguizate + intrare separată pe homepage.
+2. **Deschis.** `/salariu-minim` deviază ~2.128 impresii de „construcții" de la
+   `/salariu-minim-constructii-2026` — ambele apar în același SERP pe aceleași
+   interogări. Sursa: secțiunea „Minimul din construcții" din
+   `salariu-minim/page.tsx:583-589` + „construcții" în descrierea Article.
+
+### /calculator-pfa: 39 impresii în 28 de zile
+
+Nu e defect tehnic. Indexată, prerender static, canonică proprie, 8.721 de
+cuvinte, în sitemap. Dar **95,8% din impresii sunt de pe poziția 20+**, iar pe
+potrivirea exactă a propriului titlu („calculator taxe pfa 2026") stă pe 59,7.
+E autoritate, nu on-page. **Nu investi acolo.** Observație utilă: 8 din primele
+10 rezultate au „PFA vs SRL" în titlu; noi avem comparația în corp, nu în titlu.
+
+### Umami: 7 zile de date de conversie (evenimente din 15 august)
+
+- **~40% din sesiuni finalizează un calcul.** Mobil 42,5% > laptop 32,8%.
+- `calcul-finalizat` 1.439 · `descarca-fluturas` 71 · `calcul-pfa` 48 ·
+  `copiaza-embed` **0 (niciodată)**
+- `mod-calcul`: **net→brut 185 vs brut→net 75** — 71% vor sensul invers celui
+  implicit. Merită testat ce se întâmplă dacă modul implicit se schimbă.
+- 63 din 71 de descărcări de fluturaș vin din calculator, doar 8 din
+  `/fluturas-salariu` (pagina are 9s timp median — cel mai slab de pe site).
+- Mobil 55,8% din sesiuni.
+- Surse: google 1.167 · direct 316 · bing 112 · ddg 27 · brave 21 · **chatgpt 8**
+  (pe 31 de zile, Vercel Analytics: **chatgpt 50**, claude 4, gemini 2 —
+  traficul din LLM-uri depășește deja orice referrer clasic non-motor).
+
+**Pentru decizia reclame vs produs:** publicul e covârșitor B2C — angajați care
+își verifică salariul o dată. PFA (potențial plătitor) e ~3% din utilizarea
+calculatorului, embed-ul 0%. Datele NU susțin un produs plătit pentru publicul
+actual.
+
+### CORECȚIE la nota de caching din 15 august
+
+PROGRES.md susținea un baseline TTFB de „395–465 ms mediană". **Nu există în
+date.** Măsurat pe teren (Umami), excluzând ziua deployului:
+
+| | TTFB avg | p50 | p75 | p95 | LCP p50 | LCP p75 |
+|---|---|---|---|---|---|---|
+| înainte (2–14 aug) | 305 | 180 | 322 | 823 | 784 | 1.204 |
+| după (16–20 aug) | 287 | **170** | 305 | 897 | **688** | 1.100 |
+
+TTFB-ul era deja bun și abia s-a mișcat. Câștigul real e pe **LCP: −12% la
+mediană**. Refactorizarea a meritat, dar nu pentru motivul consemnat.
+
+CWV pe dispozitiv (p75, după refactorizare): laptop trece tot în verde; **mobil
+pică pe CLS (0,147 > 0,1)** și e la limită pe INP (120 ms). Mobilul e 56% din
+trafic și convertește cel mai bine — CLS-ul de pe mobil e următoarea țintă CWV.
+
+### Off-site: s-a mișcat, dar constrângerea rămâne
+
+| | anterior | azi (verificat) |
+|---|---|---|
+| domenii care linkează (non-social) | 3 | 5 |
+| dofollow **și independente** | ? | **2** (timeoff.guru, dev.to) |
+| linkuri Wikipedia RO | 0 | **4, în 3 articole** |
+| InLinks după Bing | — | 21 → 57 în 6 săptămâni |
+
+Wikipedia RO a acceptat site-ul ca sursă citabilă în trei articole
+(`Salariul minim pe economie în România`, `Salariu minim pe economie`,
+`Salariul mediu în economia României`) — citări `{{Citat web}}`, nofollow, dar
+e cel mai greu prag și e trecut. Saltul Bing e cel mai probabil propagare de
+mirror-uri Wikipedia, **nu** autoritate nouă. Diagnosticul din 10 august stă.
+
+**Widgetul nu e balast — e activ gata, fără distribuție.** `/widget` are 0
+impresii GSC și 0 evenimente `copiaza-embed`, dar livrează 3 snippeturi fiecare
+cu link de atribuire **dofollow**. Niciun site terț nu l-a încorporat. E cea mai
+scalabilă pârghie de linkuri nefolosită.
+
+API-ul Bing `GetUrlLinks`/`GetLinkCounts` returnează gol pentru proprietate
+(nu e problemă de cheie — `sites` și `queries` merg). Nu se poate enumera
+profilul de linkuri de acolo; `GetCrawlStats.InLinks` e singurul semnal.
+
+### Ce s-a schimbat azi (commit 5aa3b54)
+
+- titlu anual pe `/zile-lucratoare-2026`, luna mutată în descriere
+- `title: { absolute }` pe `/zile-lucratoare-2026`, `/zile-libere-2026`,
+  `/salariu-mediu` — avertismentele de titlu >60 car. scad **5 → 2**
+- trei ancore dezambiguizate + link nou spre zile lucrătoare din homepage
+- `public/llms.txt` lista **1 articol din 10**; completat, iar `npm test`
+  prinde de acum derivarea (`scripts/test-ui-contracts.mts`)
+
+Verificat: `npm run test`, `npm run lint`, `rm -rf .next && npm run build`,
+`npm run test:rendered` — toate verzi, 68 de rute, 3 rute dinamice neschimbate,
+ISR 12h păstrat pe zile-lucrătoare.
+
+### Capcană de mediu, costă timp dacă nu o știi
+
+Git Bash convertește argumentele care încep cu „/" în căi Windows.
+`node scripts/gsc.mjs queries --page=/calculator-pfa` devine
+`page~C:/Program Files/Git/calculator-pfa` și returnează **0 rânduri fără
+eroare** — arată exact ca „pagina nu are date". Fix: `export MSYS_NO_PATHCONV=1`.
+
+### Următoarele, în ordine
+
+1. **CLS pe mobil** (0,147 p75) — 56% din trafic, singurul CWV în roșu
+2. **Distribuție widget** — activul e construit, zero embed-uri terțe
+3. **Canibalizarea construcții** din `/salariu-minim`
+4. **Wikipedia**: 4 articole RO subcitate identificate ca ținte legitime
+   (`Fiscalitatea în România` are 5 `<ref>` la 24.238 caractere). Atenție WP:COI
+   — se declară pe pagina de discuție, doar `{{Citat web}}`, niciodată
+   „Legături externe".
+5. **NU** construi pagini pe lună pentru zile lucrătoare (vezi dovada de mai sus)
