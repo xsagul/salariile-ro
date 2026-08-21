@@ -64,6 +64,7 @@ export const PAGE_LAST_MODIFIED: Record<string, Date> = {
   "/calculator-pfa": new Date("2026-08-04T00:00:00.000Z"),
   "/salariu-mediu": new Date("2026-07-26T00:00:00.000Z"),
   "/salarii": new Date("2026-08-21T00:00:00.000Z"),
+  "/salarii/clasament": new Date("2026-08-21T00:00:00.000Z"),
   "/compara": new Date("2026-08-21T00:00:00.000Z"),
   "/metodologie": new Date("2026-07-26T00:00:00.000Z"),
   "/deducere-personala-2026": new Date("2026-07-06T00:00:00.000Z"),

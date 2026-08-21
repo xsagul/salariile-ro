@@ -24,6 +24,7 @@ const STATIC_ENTRIES: {
   { path: "/salariu-mediu", priority: 0.9, changeFrequency: "monthly" },
   { path: "/salarii", priority: 0.8, changeFrequency: "monthly" },
   { path: "/compara", priority: 0.7, changeFrequency: "monthly" },
+  { path: "/salarii/clasament", priority: 0.7, changeFrequency: "monthly" },
   { path: "/deducere-personala-2026", priority: 0.8, changeFrequency: "monthly" },
   { path: "/zile-libere-2026", priority: 0.8, changeFrequency: "monthly" },
   { path: "/zile-lucratoare-2026", priority: 0.8, changeFrequency: "monthly" },

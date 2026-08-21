@@ -137,6 +137,12 @@ export default function SalariiPage() {
               meserii — motivul pentru care omul intra pe pagina — sub fold.
               Cifrele raman in FAQ si pe fiecare pagina de meserie, unde au rost. */}
           <nav aria-label="Categorii de meserii" className="mt-8 flex flex-wrap gap-2">
+            <Link
+              href="/salarii/clasament"
+              className="rounded-full border border-stone-900 bg-stone-900 px-3 py-1.5 text-sm font-medium text-white shadow-soft transition-colors hover:bg-stone-700"
+            >
+              Clasamentul complet
+            </Link>
             {categorii.map(({ categorie }) => (
               <a
                 key={categorie.slug}
