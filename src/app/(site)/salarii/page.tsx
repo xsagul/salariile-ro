@@ -10,6 +10,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumb, Faq, H1, Lead } from "@/app/components/ui";
 import { LinkCard, NotaSursa, lei, lunaLunga } from "@/app/components/Salarii";
+import { denumireScurtaCaen } from "@/lib/caen-denumiri";
 import { calculStandard } from "@/lib/fiscal";
 import {
   AN_OCUPATII,
@@ -157,7 +158,7 @@ export default function SalariiPage() {
                     key={meserie.slug}
                     href={`/salarii/${meserie.slug}`}
                     titlu={meserie.nume}
-                    detaliu={`CAEN ${date!.sector.cheie} · ${date!.sector.denumire}`}
+                    detaliu={`CAEN ${date!.sector.cheie} · ${denumireScurtaCaen(date!.sector.cheie, date!.sector.denumire)}`}
                     valoare={`${lei(date!.sector.brutCurent)} lei`}
                   />
                 ))}

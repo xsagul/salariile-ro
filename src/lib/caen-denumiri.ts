@@ -101,3 +101,76 @@ export const DENUMIRI_JUDETE: Record<string, string> = {
   "Caras-Severin": "Caraș-Severin",
   Timis: "Timiș",
 };
+
+// Etichete scurte pentru cardurile din listinguri (hub-ul /salarii). Denumirea
+// completa de mai sus e corecta, dar pe un ecran de 375px nu incape langa titlu
+// si suma — cardul fie se taie, fie latea coloana peste viewport. Aici pastram
+// intelesul in 2-3 cuvinte; codul CAEN ramane afisat, iar denumirea completa
+// apare pe pagina meseriei si in nota de sursa, deci nu se pierde nimic.
+export const DENUMIRI_CAEN_SCURTE: Record<string, string> = {
+  TOTAL: "Total economie",
+
+  "01": "Agricultură",
+  "02": "Silvicultură",
+  "05": "Extracția cărbunelui",
+  "06": "Petrol și gaze",
+  "10": "Industria alimentară",
+  "14": "Confecții",
+  "16": "Prelucrarea lemnului",
+  "21": "Industria farmaceutică",
+  "24": "Metalurgie",
+  "25": "Construcții metalice",
+  "26": "Calculatoare și electronice",
+  "29": "Industria auto",
+  "33": "Reparații de utilaje",
+  "36": "Distribuția apei",
+  "38": "Salubritate",
+  "41": "Construcții de clădiri",
+  "43": "Lucrări speciale",
+  "46": "Comerț cu ridicata",
+  "47": "Comerț cu amănuntul",
+  "49": "Transport terestru",
+  "51": "Transport aerian",
+  "52": "Depozitare și logistică",
+  "53": "Poștă și curierat",
+  "55": "Hoteluri și cazare",
+  "56": "Restaurante",
+  "58": "Activități de editare",
+  "59": "Film și televiziune",
+  "60": "Radio, TV și știri",
+  "61": "Telecomunicații",
+  "62": "IT și software",
+  "63": "Servicii web și date",
+  "64": "Bănci și creditare",
+  "65": "Asigurări și pensii",
+  "66": "Servicii financiare",
+  "69": "Juridic și contabilitate",
+  "71": "Inginerie și arhitectură",
+  "72": "Cercetare-dezvoltare",
+  "73": "Publicitate și marketing",
+  "74": "Servicii profesionale",
+  "75": "Servicii veterinare",
+  "78": "Resurse umane",
+  "79": "Turism și rezervări",
+  "80": "Pază și protecție",
+  "81": "Curățenie și spații verzi",
+  "82": "Secretariat și suport",
+  "86": "Sănătate",
+  "87": "Îngrijire cu cazare",
+  "90": "Creație artistică",
+  "91": "Muzee și biblioteci",
+  "93": "Sport și recreere",
+  "96": "Alte servicii",
+
+  C: "Industria prelucrătoare",
+  D: "Energie și gaze",
+  G: "Comerț",
+  M: "Tranzacții imobiliare",
+  P: "Administrație publică",
+  Q: "Învățământ",
+};
+
+/** Eticheta scurta pentru listinguri; cade pe denumirea completa daca lipseste. */
+export function denumireScurtaCaen(cheie: string, completa: string): string {
+  return DENUMIRI_CAEN_SCURTE[cheie] ?? completa;
+}

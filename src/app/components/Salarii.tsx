@@ -214,6 +214,11 @@ export function NotaSursa({ children }: { children: ReactNode }) {
   );
 }
 
+// `min-w-0` pe radacina nu e decorativ: cardul e item de grid, iar un item de
+// grid are min-width auto, deci pista se dimensiona la max-content (denumirea
+// CAEN intreaga) si impingea lista peste latimea ecranului pe telefon. Cu
+// min-width 0, pista se opreste la latimea containerului si `truncate` de mai
+// jos chiar taie textul in loc sa fie ignorat.
 export function LinkCard({
   href,
   titlu,
@@ -228,7 +233,7 @@ export function LinkCard({
   return (
     <Link
       href={href}
-      className="flex items-center justify-between gap-3 rounded-md border border-stone-200 bg-surface px-4 py-3 shadow-soft transition-colors hover:border-stone-300 hover:bg-canvas"
+      className="flex min-w-0 items-center justify-between gap-3 rounded-md border border-stone-200 bg-surface px-4 py-3 shadow-soft transition-colors hover:border-stone-300 hover:bg-canvas"
     >
       <span className="min-w-0">
         <span className="block truncate text-sm font-medium text-stone-900">{titlu}</span>
