@@ -349,7 +349,7 @@ export const MESERII: Meserie[] = [
     ceFace: "Conduce treptele de epurare a apelor uzate și urmărește indicatorii de calitate la evacuare." },
   { slug: "crupier", nume: "Crupier", de: "crupier", categorie: "servicii", caen3: "92", caen2: "R", isco: "servicii",
     ceFace: "Conduce jocurile la masă într-un cazinou, plătește câștigurile și veghează la respectarea regulilor." },
-  { slug: "tehnician-calculatoare", nume: "Tehnician reparații calculatoare", de: "tehnician de reparații calculatoare", categorie: "it", caen3: "95", caen2: "S", isco: "tehnicieni",
+  { slug: "tehnician-calculatoare", nume: "Tehnician service IT", de: "tehnician service IT", categorie: "it", caen3: "95", caen2: "S", isco: "tehnicieni",
     ceFace: "Diagnostichează și repară calculatoare, laptopuri și periferice, într-un service independent sau de rețea." },
   { slug: "consultant-management", nume: "Consultant în management", de: "consultant în management", categorie: "servicii", caen3: "70", caen2: "M", isco: "specialisti",
     ceFace: "Analizează organizarea unei companii și propune schimbări de proces, structură sau strategie.",
@@ -509,6 +509,21 @@ const PERECHI: [string, string][] = [
   ["agent-imobiliar", "agent-vanzari"],
   ["secretar", "contabil"],
   ["operator-call-center", "vanzator"],
+
+  // Perechi pe meseriile adaugate. Aceeasi regula: sectoare CAEN diferite,
+  // altfel pagina ar arata aceeasi cifra de doua ori.
+  ["asistent-social", "asistent-medical"],
+  ["asistent-social", "profesor"],
+  ["operator-cnc", "sudor"],
+  ["tehnician-calculatoare", "programator"],
+  ["consultant-management", "contabil"],
+  ["constructor-drumuri", "zidar"],
+  ["marinar", "sofer-tir"],
+  ["crupier", "barman"],
+  ["inginer-aeronautic", "inginer-auto"],
+  ["tipograf", "designer-grafic"],
+  ["pescar", "fermier"],
+  ["electromecanic", "electrician"],
 ];
 
 export type Comparatie = { slug: string; a: Meserie; b: Meserie };
