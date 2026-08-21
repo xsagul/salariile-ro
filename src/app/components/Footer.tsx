@@ -14,6 +14,8 @@ const IMPLEMENTED_PAGES = new Set<string>([
   "/salariu-minim",
   "/salariu-minim-constructii-2026",
   "/salariu-mediu",
+  "/salarii",
+  "/compara",
   "/deducere-personala-2026",
   "/zile-libere-2026",
   "/zile-lucratoare-2026",
@@ -53,6 +55,13 @@ const FOOTER_GROUPS: Array<{ title: string; links: FooterLink[] }> = [
       { href: "/zile-lucratoare-2026", label: "Zile lucrătoare 2026" },
       { href: "/date-salarii", label: "Date salariale CSV/JSON" },
       { href: "/noutati", label: "Noutăți legislative" },
+    ],
+  },
+  {
+    title: "Meserii",
+    links: [
+      { href: "/salarii", label: "Salarii pe meserii" },
+      { href: "/compara", label: "Compară două meserii" },
     ],
   },
   {

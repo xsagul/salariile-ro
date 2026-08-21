@@ -1,6 +1,88 @@
 # Progres salariile.ro
 
-Ultima actualizare: 4 august 2026
+Ultima actualizare: 21 august 2026
+
+## Cluster nou: /salarii si /compara, pe date INS proprii — 21 august 2026
+
+Pornit de la ghidsalariu.ro/salarii si /compara. Structura e aceeasi (hub de
+meserii + pagini de meserie + hub de comparatii + pagini de comparatie), dar
+datele si etichetarea lor sunt facute de la zero, pentru ca ale lor nu rezista
+la verificare.
+
+**Ce am gasit la competitor (verificat in browser, 21 august):**
+- Publica „date INS 2024" pentru toate cele 98 de meserii. Noi avem iunie 2026.
+- Cifra din spatele fiecarei meserii e media sectorului CAEN, prezentata ca
+  salariu de ocupatie. De aceea Fermier = Inginer agronom = Veterinar = 5.850
+  lei, iar cele 6 meserii IT au aceeasi cifra.
+- Netul lor e gresit si inconsistent: pentru 15.537 lei brut afiseaza 12.157
+  lei net (78% din brut, imposibil la CAS 25% + CASS 10% + impozit 10%; corect
+  e ~9.089). Pe ACEEASI pagina, „meserii similare" cu acelasi brut apar cu
+  11.709 lei. Doua formule diferite, ambele gresite.
+- Judetele sunt etichetate ca orase („Timisoara"), desi INS publica pe judet.
+
+**Pipeline de date — `scripts/ins-tempo.mjs`, `npm run ins:tempo`:**
+API-ul TEMPO-Online nu e documentat public. Protocolul: `GET /matrix/{cod}`
+intoarce nomenclatoarele, iar `POST` pe ACELASI URL, cu optiunile selectate in
+`arr` si cu `matrixName` + `matrixDetails` din metadate, intoarce un tabel HTML.
+Doua capcane: `dimCode` trebuie sters din optiuni (asa face si UI-ul TEMPO, in
+`sendMatrix`), iar tabelul returnat inchide celulele de date malformat
+(`</td align='right'>`), deci parserul trebuie sa accepte atribute in eticheta
+de inchidere. Rezultatul se scrie in `src/data/ins-caen.json` (180 KB), deci
+build-ul ramane reproductibil offline.
+
+Trei serii, cu roluri diferite si perioade diferite — nu se amesteca niciodata:
+- FOM107G / FOM106G: brut si net lunar pe 102 activitati CAEN Rev.3, ultima
+  luna **iunie 2026** (media pe economie: 9.564 lei brut, 5.734 lei net).
+- FOM107E: brut pe 68 activitati CAEN Rev.2 x 42 judete, 2024, cu randul
+  national inclus.
+- FOM121B: ancheta din octombrie 2024 pe 9 grupe majore ISCO-08 x 11 grupe de
+  varsta, cu numar de salariati, salariu de baza SI venit brut realizat.
+
+FOM119D si FOM118G (CAEN x ISCO) au ultima actualizare in 2013 — inutilizabile.
+
+**Pozitia editoriala.** INS nu masoara „salariul de programator". Fiecare pagina
+spune asta explicit si arata patru cifre etichetate separat: brutul sectorului,
+netul mediu OBSERVAT de INS in acelasi sector, netul standard CALCULAT cu
+motorul fiscal al site-ului, si venitul brut al grupei de ocupatii. Diferenta
+dintre netul observat si cel calculat e explicata, nu ascunsa.
+
+**Livrat:** 102 meserii in 16 categorii (`/salarii/[meserie]`), 25 de
+comparatii (`/compara/[pereche]`), doua hub-uri. Rutele au trecut de la 70 la
+197. Toate statice.
+
+**Doua reguli codificate, ca sa nu alunece:**
+- O comparatie exista doar intre meserii din activitati CAEN diferite. Doua
+  ocupatii din acelasi sector ar afisa aceeasi cifra de doua ori. `COMPARATII`
+  filtreaza tacut, deci `scripts/test-meserii.mts` verifica lista sursa.
+- Abaterea unui judet se raporteaza la valoarea NATIONALA a aceleiasi serii
+  anuale, nu la seria lunara CAEN Rev.3. Prima versiune compara 2024 cu iunie
+  2026 si arata toate cele 42 de judete sub medie, inclusiv Clujul. Corect:
+  Cluj +17%, Bucuresti +13%, Timis +8%, Brasov -4%.
+
+**Alte decizii:**
+- Nomenclatorul INS vine fara diacritice si scris administrativ. Denumirile
+  afisate sunt redactate de noi (`src/lib/caen-denumiri.ts`, 57 de activitati +
+  22 de judete); eticheta INS originala ramane doar acolo unde CITAM sursa.
+- Nu sunt in bara de navigatie, la cererea patronului. Intrare doar din footer
+  (grup nou „Meserii"), din sitemap si din llms.txt.
+- Scoasa banda de trei carduri (media pe economie / net observat / net calculat)
+  de pe hubul /salarii: impingea lista de meserii sub fold, adica exact ce cauta
+  omul care intra pe pagina. Prima meserie e acum la 592 px, in viewport.
+  Cifrele raman in FAQ si pe fiecare pagina de meserie.
+- Titlurile din cluster sunt verificate STRICT la 60 de caractere in
+  `test-rendered.mts`, ca cele de calculator.
+
+**Verificare:** `npm run test:ci` trece integral — 197 rute cu HTTP 200, un
+singur H1/main, canonical corect, 197 blocuri JSON-LD valide, 19 verificari de
+continut.
+
+**De facut la urmatoarea sesiune:**
+- `npm run ins:tempo` lunar, cand INS publica luna noua; sitemap-ul isi ia
+  `lastModified` din `generatLa`, deci se propaga singur.
+- De masurat in GSC dupa 14-28 de zile complete daca clusterul prinde impresii
+  pe „salariu <meserie>". Daca nu prinde nimic in 8 saptamani, de restrans
+  catalogul la meseriile cu semnal, nu de mai adaugat.
+- De decis daca intra in bara abia dupa ce exista semnal.
 
 ## Trei articole noi + imaginile de brand refăcute — 5 august 2026
 

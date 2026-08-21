@@ -9,6 +9,8 @@ import {
   LAST_FISCAL_CONTENT_UPDATE,
 } from "@/lib/seo";
 import { getAllArticles } from "@/lib/noutati";
+import { COMPARATII, MESERII } from "@/lib/meserii";
+import { INS_GENERAT_LA } from "@/lib/ins-date";
 
 const STATIC_ENTRIES: {
   path: keyof typeof PAGE_LAST_MODIFIED;
@@ -20,6 +22,8 @@ const STATIC_ENTRIES: {
   { path: "/salariu-minim-constructii-2026", priority: 0.85, changeFrequency: "monthly" },
   { path: "/calculator-pfa", priority: 0.8, changeFrequency: "monthly" },
   { path: "/salariu-mediu", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/salarii", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/compara", priority: 0.7, changeFrequency: "monthly" },
   { path: "/deducere-personala-2026", priority: 0.8, changeFrequency: "monthly" },
   { path: "/zile-libere-2026", priority: 0.8, changeFrequency: "monthly" },
   { path: "/zile-lucratoare-2026", priority: 0.8, changeFrequency: "monthly" },
@@ -58,6 +62,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: LAST_FISCAL_CONTENT_UPDATE,
       changeFrequency: "monthly" as const,
       priority: 0.7,
+    })),
+
+    // Paginile de meserii si comparatii se reimprospateaza cand se reruleaza
+    // `npm run ins:tempo`, deci lastModified vine din data setului INS.
+    ...MESERII.map((meserie) => ({
+      url: `${baseUrl}/salarii/${meserie.slug}`,
+      lastModified: new Date(INS_GENERAT_LA),
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    })),
+
+    ...COMPARATII.map((comparatie) => ({
+      url: `${baseUrl}/compara/${comparatie.slug}`,
+      lastModified: new Date(INS_GENERAT_LA),
+      changeFrequency: "monthly" as const,
+      priority: 0.5,
     })),
 
     ...getAllArticles().map((a) => ({

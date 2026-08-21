@@ -145,6 +145,24 @@ async function auditRenderedSite() {
             failures.push(`${location}: link graph insuficient (${internalLinks.length} linkuri)`);
           }
         }
+
+        // Clusterul de meserii: fiecare pagina de meserie trebuie sa citeze
+        // sursa INS si sa trimita inapoi in cluster, altfel devine o frunza
+        // izolata cu o cifra fara provenienta.
+        if (pathname.startsWith("/salarii/")) {
+          const linkuriCluster = [
+            ...html.matchAll(/<a\b[^>]*href="(\/(?:salarii|compara)(?:\/[^"]*)?)"[^>]*>/gi),
+          ].map((match) => match[1]);
+          if (linkuriCluster.length < 3) {
+            failures.push(`${location}: link graph insuficient (${linkuriCluster.length} linkuri in cluster)`);
+          }
+          if (!html.includes("TEMPO-Online")) {
+            failures.push(`${location}: nu citeaza sursa INS TEMPO-Online`);
+          }
+          if (!/CAEN\s/.test(html)) {
+            failures.push(`${location}: nu declara activitatea CAEN din spatele cifrei`);
+          }
+        }
       } catch (error) {
         failures.push(`${location}: ${error instanceof Error ? error.message : String(error)}`);
       }
@@ -175,6 +193,17 @@ async function auditRenderedSite() {
     ["/", "indicatorul BASS", "eticheta BASS de pe homepage"],
     ["/metodologie", "D112", "validarea D112"],
     ["/noutati/cosul-minim-de-consum", "11.370", "cosul pentru doi adulti si doi copii"],
+    // Clusterul de meserii. Verificam eticheta, nu cifra: cifrele se schimba la
+    // fiecare rulare `npm run ins:tempo`, dar promisiunea paginii — sa spuna ce
+    // masoara si de unde vine — nu are voie sa dispara.
+    ["/salarii", "TEMPO-Online", "citarea sursei INS pe hubul de meserii"],
+    ["/salarii", "grupe majore de ocupații", "a doua masuratoare, dinspre ocupatie"],
+    ["/salarii/programator", "CAEN 62", "activitatea din spatele cifrei de programator"],
+    ["/salarii/programator", "Net standard calculat", "netul calculat cu motorul fiscal propriu"],
+    ["/salarii/medic", "Cât contează vechimea", "progresia pe varste din ancheta din octombrie"],
+    ["/compara", "activități economice diferite", "regula perechilor din sectoare diferite"],
+    ["/compara/programator-vs-medic", "Tabel comparativ", "tabelul comparativ"],
+    ["/compara/programator-vs-medic", "Cost total angajator", "randul de cost total"],
   ] as const;
 
   for (const [pathname, expected, label] of contentChecks) {
@@ -201,7 +230,11 @@ async function auditRenderedSite() {
 
     if (title.length > TITLE_MAX_LENGTH) {
       const raport = `${pathname} (${title.length}): ${title}`;
-      if (pathname.startsWith("/calculator/") || strictTitlePaths.has(pathname)) {
+      const clusterStrict =
+        pathname.startsWith("/calculator/") ||
+        pathname.startsWith("/salarii") ||
+        pathname.startsWith("/compara");
+      if (clusterStrict || strictTitlePaths.has(pathname)) {
         failures.push(`${raport} — title peste ${TITLE_MAX_LENGTH} caractere`);
       } else {
         titluriLungi.push(raport);
