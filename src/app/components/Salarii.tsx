@@ -4,6 +4,7 @@
 
 import Link from "next/link";
 import type { ReactNode } from "react";
+import type { ValoareJudet } from "@/lib/ins-date";
 
 export const lei = (valoare: number) => new Intl.NumberFormat("ro-RO").format(Math.round(valoare));
 
@@ -149,7 +150,9 @@ export function TabelJudete({
   an,
   numeSector,
 }: {
-  judete: { judet: string; brut: number }[];
+  // Tipul vine din biblioteca, nu redeclarat aici: cand `ValoareJudet` a primit
+  // `slug`, o copie locala ar fi ramas in urma in tacere.
+  judete: ValoareJudet[];
   /** Valoarea nationala a ACELEIASI serii si a aceluiasi an. */
   media: number;
   an: string;
@@ -189,7 +192,13 @@ export function TabelJudete({
                     className="absolute inset-y-1 left-0 rounded-r bg-stone-900/[0.06]"
                     style={{ width: `${Math.max(4, (rand.brut / max) * 100)}%` }}
                   />
-                  <span className="relative">{rand.judet}</span>
+                  {/* Judetul trimite la pagina lui: acolo se vede cum sta el pe
+                      TOATE activitatile, nu doar pe cea din tabelul asta. */}
+                  <span className="relative">
+                    <Link href={`/salarii/judet/${rand.slug}`} className="underline underline-offset-2 hover:text-stone-600">
+                      {rand.judet}
+                    </Link>
+                  </span>
                 </th>
                 <td className="border-b border-stone-100 px-3 py-2 text-right text-stone-700">{lei(rand.brut)} lei</td>
                 <td className="border-b border-stone-100 px-3 py-2 text-right text-stone-600">

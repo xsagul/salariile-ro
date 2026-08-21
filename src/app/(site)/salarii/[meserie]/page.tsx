@@ -512,6 +512,11 @@ export default async function MeseriePage({ params }: Props) {
                     {similare.map((alta) => (
                       <LinkCard key={alta.slug} href={`/salarii/${alta.slug}`} titlu={alta.nume} />
                     ))}
+                    <LinkCard
+                      href={`/salarii/domeniu/${categorie.slug}`}
+                      titlu={`Tot domeniul: ${categorie.nume}`}
+                      detaliu="Toate meseriile, cu activitățile CAEN"
+                    />
                   </div>
                 </div>
               )}

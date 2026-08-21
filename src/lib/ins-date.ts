@@ -146,14 +146,14 @@ export function variatieAnuala(serie: (number | null)[]): number | null {
 
 // ─── Judete (CAEN Rev.2, ultimul an disponibil) ──────────────────────────────
 
-export type ValoareJudet = { judet: string; brut: number };
+export type ValoareJudet = { judet: string; slug: string; brut: number };
 
 export function judetePentru(cheieRev2: string): ValoareJudet[] {
   const activitate = indexJudete.get(cheieRev2);
   if (!activitate) return [];
   return Object.entries(activitate.valori)
     .filter((pereche): pereche is [string, number] => pereche[1] !== null)
-    .map(([judet, brut]) => ({ judet: DENUMIRI_JUDETE[judet] ?? judet, brut }))
+    .map(([judet, brut]) => ({ judet: DENUMIRI_JUDETE[judet] ?? judet, slug: slugJudet(judet), brut }))
     .sort((a, b) => b.brut - a.brut);
 }
 
@@ -276,7 +276,7 @@ export type Judet = {
 };
 
 /** „Municipiul Bucuresti" → „bucuresti"; „Bistrita-Nasaud" → „bistrita-nasaud". */
-function slugJudet(nume: string): string {
+export function slugJudet(nume: string): string {
   return nume
     .replace(/^Municipiul\s+/i, "")
     .normalize("NFD")
