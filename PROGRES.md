@@ -2,6 +2,36 @@
 
 Ultima actualizare: 21 august 2026
 
+## Faza 1 si pipeline-ul de salarizare publica — 21 august 2026 (sesiune autonoma)
+
+### Livrat
+
+- **Faza 1** (commit 644f1ce): pozitie in clasament, interval real pe judete si a
+  doua cifra pe cardurile din /salarii. Perechi de cifre distincte pe hub: 57 → 70
+  din 102. Medic si Asistent medical se despart; cele cinci meserii IT nu, pentru
+  ca impart si CAEN 62, si grupa ISCO „specialisti".
+- **Extractor PDF zero-dependente** (commit 16e45f9): `scripts/lib/pdf-text.mjs`,
+  cu test propriu care isi genereaza fixture-ul. API: `randuri`, `pagini`, `benzi`,
+  `calitateText`.
+
+### Ce am aflat despre sursele art. 33, si de ce conteaza
+
+1. Institutiile publica listele ca **PDF, nu ca tabel HTML** (Primaria Sector 1:
+   30 de fisiere atasate, zero tabele in pagina). De aici extractorul.
+2. Un PDF nu are randuri, are fragmente la coordonate. Fara urmarirea matricei de
+   text, „31.03.2026" iese ca „3 1 .0 3 .202 6". Capcana: operanzii operatorilor
+   netratati (Tf, cm, re) se aduna in coada, deci Tm se citeste de la ultimii sase.
+3. **Limita care blocheaza publicarea:** pe lista ISJ Galati din martie 2026,
+   cuvantul „Inspector" lipseste COMPLET din stratul de text, desi „general" si
+   „auditor gradul" se extrag. Sunt subfontine cu encoding propriu, fara ToUnicode.
+   Rezultatul e o extragere partiala care arata plauzibil — randul are cifre si o
+   bucata de denumire. Pentru date salariale asta e mai periculos decat un esec.
+
+De aceea exista `calitateText` si de aceea **nu s-a publicat nicio cifra de
+salarizare publica pe site**. Urmatorul pas tehnic e citirea CMap-urilor ToUnicode
+din PDF; pana atunci, orice fisier care nu trece poarta se refuza, nu se publica
+partial.
+
 ## Studiu competitiv: paylab.ro si undelucram.ro — 21 august 2026
 
 Scopul proiectului s-a largit: de la "acoperim calculator-salarii.ro" la "devenim

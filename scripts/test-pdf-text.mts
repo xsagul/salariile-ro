@@ -9,7 +9,7 @@
 
 import assert from "node:assert/strict";
 import zlib from "node:zlib";
-import { randuri } from "./lib/pdf-text.mjs";
+import { benzi, calitateText, pagini, randuri } from "./lib/pdf-text.mjs";
 
 /** Un PDF de o pagina, cu content stream-ul dat. */
 function pdfCu(continut: string, comprimat: boolean): Buffer {
@@ -64,4 +64,24 @@ assert.deepEqual(randuri(pdfCu(CU_ESCAPE, true)), ["A(B) \\ C"], "escaparile oct
 // Un fisier care nu e PDF nu trebuie sa arunce.
 assert.deepEqual(randuri(Buffer.from("nu sunt un pdf", "utf8")), [], "intrare invalida: fara exceptie, fara text");
 
-console.log("OK: extractorul PDF reconstruieste randurile din fragmente (5 cazuri).");
+// Coordonatele raman disponibile pentru parserele de tabele: denumirea unei
+// functii sta in alta coloana decat cifrele, iar uneori pe alt rand.
+const paginiTest = pagini(pdfCu(CONTINUT, true));
+assert.equal(paginiTest.length, 1, "un singur content stream inseamna o singura pagina");
+const benziTest = benzi(paginiTest[0]);
+assert.equal(benziTest.length, 2, "doua benzi orizontale");
+assert.deepEqual(
+  benziTest[0].bucati.map((b) => b.x),
+  [72, 300],
+  "bucatile unei benzi pastreaza X-ul si vin de la stanga la dreapta",
+);
+
+// Poarta de calitate: un fisier fara strat de text nu trebuie sa treaca drept
+// citit cu succes. E singurul lucru care opreste publicarea unei extrageri
+// partiale ca si cum ar fi completa.
+assert.equal(calitateText(Buffer.from("nu sunt un pdf", "utf8")).areText, false, "fisier fara text: areText false");
+const calitate = calitateText(pdfCu(CONTINUT, true));
+assert.equal(calitate.areText, true, "fisier cu text: areText true");
+assert.equal(calitate.suspecte, 0, "text romanesc curat: zero fragmente suspecte");
+
+console.log("OK: extractorul PDF reconstruieste randurile din fragmente (9 cazuri).");

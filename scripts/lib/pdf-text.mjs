@@ -184,19 +184,85 @@ function randuriDinFragmente(fragmente) {
     .filter(Boolean);
 }
 
-/** Randurile documentului, reconstruite din pozitiile fragmentelor. */
-export function randuri(buffer) {
-  const toate = [];
+/**
+ * Fragmentele fiecarei pagini, cu coordonate.
+ *
+ * Pentru tabele nu ajung randurile ca text: intr-o lista de transparenta,
+ * denumirea functiei e o celula pe mai multe randuri, asa ca numele ajunge pe
+ * alt Y decat cifrele. Cine parseaza un tabel are nevoie de X ca sa stie in ce
+ * coloana cade fiecare bucata. `randuri` ramane pentru citit, asta e pentru
+ * extras date.
+ */
+export function pagini(buffer) {
+  const rezultat = [];
   for (const { antet, date } of streamuri(buffer)) {
     const desfacut = dezarhiveaza(antet, date);
     if (!desfacut) continue;
     const continut = desfacut.toString("latin1");
-    // Un content stream contine operatori de text; sarim peste fonturi si imagini.
     if (!/\bTj\b/.test(continut) && !/\bTJ\b/.test(continut)) continue;
-    // Fiecare stream e o pagina: randurile ei se inchid inainte de urmatoarea.
-    toate.push(...randuriDinFragmente(fragmenteDinContinut(continut)));
+    const fragmente = fragmenteDinContinut(continut);
+    if (fragmente.length) rezultat.push(fragmente);
   }
-  return toate;
+  return rezultat;
+}
+
+/**
+ * Benzile orizontale ale unei pagini: fragmentele grupate dupa Y, fiecare banda
+ * pastrandu-si bucatile cu X, ordonate de la stanga la dreapta.
+ */
+export function benzi(fragmente, toleranta = 2) {
+  const grupe = new Map();
+  for (const fragment of fragmente) {
+    const cheie = Math.round(fragment.y / toleranta);
+    if (!grupe.has(cheie)) grupe.set(cheie, []);
+    grupe.get(cheie).push(fragment);
+  }
+  return [...grupe.entries()]
+    .sort((a, b) => b[0] - a[0])
+    .map(([cheie, bucati]) => ({
+      y: cheie * toleranta,
+      bucati: bucati.sort((a, b) => a.x - b.x),
+      text: bucati.map((b) => b.text).join(" ").replace(/\s+/g, " ").trim(),
+    }))
+    .filter((banda) => banda.text);
+}
+
+/** Randurile documentului, reconstruite din pozitiile fragmentelor. */
+export function randuri(buffer) {
+  return pagini(buffer).flatMap((fragmente) => randuriDinFragmente(fragmente));
+}
+
+/**
+ * Cat de mult din stratul de text s-a putut decoda.
+ *
+ * De ce exista asta: pe lista ISJ Galati din martie 2026, cuvantul „Inspector"
+ * lipseste complet din text, desi „general" si „auditor gradul" se extrag —
+ * celulele sunt scrise cu o subfontina cu encoding propriu, fara ToUnicode, iar
+ * noi citim octetii bruti. Rezultatul e o extragere PARTIALA, care arata
+ * plauzibil: randul are cifre si o bucata de denumire, dar denumirea e trunchiata.
+ *
+ * Pentru date salariale, o extragere partiala tacuta e mai periculoasa decat un
+ * esec: publici „general — 14.017 lei" fara sa stii ca era „Inspector scolar
+ * general". De aceea orice apelant trebuie sa treaca prin verificarea asta si sa
+ * refuze fisierul care nu o trece, in loc sa publice ce a apucat sa citeasca.
+ */
+export function calitateText(buffer) {
+  const fragmente = pagini(buffer).flat();
+  const cuLitere = fragmente.filter((f) => /\p{L}/u.test(f.text));
+  // Un fragment „suspect" are litere, dar aproape numai caractere pe care nu le
+  // recunoastem ca text romanesc — semnul tipic de encoding nedecodat.
+  const suspecte = cuLitere.filter((f) => {
+    const litere = [...f.text].filter((c) => /\p{L}/u.test(c));
+    const recunoscute = litere.filter((c) => /[A-Za-zĂÂÎȘȚăâîșțĂ-ț]/.test(c));
+    return litere.length > 0 && recunoscute.length / litere.length < 0.8;
+  });
+  return {
+    fragmente: fragmente.length,
+    cuLitere: cuLitere.length,
+    suspecte: suspecte.length,
+    /** Fara niciun fragment cu litere, fisierul e scanat sau necitibil. */
+    areText: cuLitere.length > 0,
+  };
 }
 
 /** Textul intregului document, un rand pe linie. */
