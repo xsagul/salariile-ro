@@ -143,6 +143,12 @@ export default function SalariiPage() {
             >
               Clasamentul complet
             </Link>
+            <Link
+              href="/salarii/judete"
+              className="rounded-full border border-stone-900 bg-stone-900 px-3 py-1.5 text-sm font-medium text-white shadow-soft transition-colors hover:bg-stone-700"
+            >
+              Salarii pe județe
+            </Link>
             {categorii.map(({ categorie }) => (
               <a
                 key={categorie.slug}

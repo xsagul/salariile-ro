@@ -257,3 +257,84 @@ export function totalOcupatii(): { venitBrut: number; salariuDeBaza: number | nu
     salariati: total.salariati ?? null,
   };
 }
+
+// ─── Perspectiva inversa: un judet, toate activitatile lui ───────────────────
+//
+// `judetePentru` raspunde la „cum arata activitatea X pe judete". Aici raspundem
+// la intrebarea cealalta, pe care o pune cine cauta „salariu mediu in Cluj":
+// cum arata judetul Y pe toate activitatile.
+//
+// Seria e ANUALA si pe CAEN Rev.2, deci e mai veche decat seria lunara — INS nu
+// publica defalcare pe judete lunar. Paginile trebuie sa spuna anul la vedere.
+
+export type Judet = {
+  slug: string;
+  /** Numele cu diacritice, asa cum il afisam. */
+  nume: string;
+  /** Castigul mediu brut al judetului, randul TOTAL din seria anuala. */
+  brut: number;
+};
+
+/** „Municipiul Bucuresti" → „bucuresti"; „Bistrita-Nasaud" → „bistrita-nasaud". */
+function slugJudet(nume: string): string {
+  return nume
+    .replace(/^Municipiul\s+/i, "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[șş]/gi, "s")
+    .replace(/[țţ]/gi, "t")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+const randTotalJudete = date.judete.activitati.find((a) => cheieActivitate(a.caen) === "TOTAL");
+
+/** Toate judetele, ordonate descrescator dupa castigul mediu brut. */
+export const JUDETE: Judet[] = randTotalJudete
+  ? Object.entries(randTotalJudete.valori)
+      .filter((pereche): pereche is [string, number] => pereche[1] !== null)
+      .map(([brutNume, brut]) => ({
+        slug: slugJudet(brutNume),
+        nume: DENUMIRI_JUDETE[brutNume] ?? brutNume.replace(/^Municipiul\s+/i, ""),
+        brut,
+      }))
+      .sort((a, b) => b.brut - a.brut)
+  : [];
+
+const indexJudetDupaSlug = new Map(JUDETE.map((j) => [j.slug, j]));
+/** Cheia din nomenclatorul INS, de care avem nevoie ca sa citim valorile. */
+const numeInsDupaSlug = new Map(
+  randTotalJudete ? Object.keys(randTotalJudete.valori).map((nume) => [slugJudet(nume), nume]) : [],
+);
+
+export function getJudet(slug: string): Judet | undefined {
+  return indexJudetDupaSlug.get(slug);
+}
+
+/** Media nationala a seriei anuale — singura baza corecta de comparatie. */
+export const NATIONAL_JUDETE: number | null = randTotalJudete?.national ?? null;
+
+export type ActivitateInJudet = {
+  cheie: string;
+  denumire: string;
+  brut: number;
+  /** Valoarea nationala a ACELEIASI activitati, din acelasi an. */
+  national: number | null;
+};
+
+/** Toate activitatile cu valoare in judetul dat, ordonate descrescator. */
+export function activitatiInJudet(slug: string): ActivitateInJudet[] {
+  const numeIns = numeInsDupaSlug.get(slug);
+  if (!numeIns) return [];
+  return date.judete.activitati
+    .filter((a) => cheieActivitate(a.caen) !== "TOTAL")
+    .map((a) => {
+      const brut = a.valori[numeIns];
+      if (brut === null || brut === undefined) return null;
+      const cheie = cheieActivitate(a.caen);
+      return { cheie, denumire: denumireDinEticheta(cheie, a.caen), brut, national: a.national };
+    })
+    .filter((a): a is ActivitateInJudet => a !== null)
+    .sort((a, b) => b.brut - a.brut);
+}
