@@ -423,17 +423,20 @@ Poziționarea rămâne cea din §4: îi ocolim pe datele obiective.
    făcută față de media națională a *aceleiași* activități, nu față de media
    generală. E o familie de query-uri pe care n-o are nici paylab.
 
-### O decizie care e a ta, nu a mea
+### Decis: nu scriem articole despre competitori
 
-Studiul a găsit la paylab lucruri care ar face un articol editorial bun și un
-linkable asset real: un placeholder de template în textul vizibil, același
-interval etichetat și „net" și „brut" în aceeași pagină, și zero date
-structurate pe tot site-ul. Un material de tipul „am verificat cifrele de pe
-site-urile de salarii față de datele INS" ar atrage exact genul de citări care
-ne lipsesc.
+Defectele găsite la paylab (placeholder de template în textul vizibil, același
+interval etichetat și „net" și „brut", zero date structurate) rămân **material
+intern de orientare, nu subiect de articol.**
 
-**Nu l-am scris și nu l-am publicat.** A critica public un competitor numit e o
-decizie de poziționare și de reputație, nu una tehnică, iar tu ești cel care o ia.
+Sorin a respins pe 21 august 2026 ideea unui material editorial care să-i
+critice public: nu e profesionist. Decizia se aplică tuturor competitorilor
+numiți, nu doar paylab.
+
+**Ce facem în schimb:** ne diferențiem arătând sursa și data fiecărei cifre pe
+propriile pagini. Cine compară vede singur diferența, fără să i-o spunem noi
+despre altcineva. Linkable assets se construiesc din date proprii — clusterul pe
+Legea 153/2017, harta pe județe — nu din criticarea concurenței.
 
 ## 9. Ce rămâne de verificat manual (îmi trebuie ochii tăi)
 
