@@ -236,11 +236,28 @@ export function hartiFonturi(buffer) {
 const REGEX_TOKEN = new RegExp(
   "(\\[(?:[^\\[\\]\\\\]|\\\\.)*\\])|" + // tabloul de la TJ
     "(\\((?:\\\\.|[^\\\\()])*\\)|<[0-9A-Fa-f\\s]*>)|" + // sir literal sau hexa
-    "(-?\\d+(?:\\.\\d+)?)|" + // numar
+    "(-?\\d*\\.?\\d+(?:[eE]-?\\d+)?)|" + // numar
     "(/[A-Za-z0-9+.-]+)|" + // nume de resursa, pentru Tf
-    "(Tm|Td|TD|T\\*|TJ|Tj|Tf|TL|BT|ET|'|\")", // operatorii care ne intereseaza
+    "(Tm|Td|TD|T\\*|TJ|Tj|Tf|TL|BT|ET|cm|q|Q|'|\")", // operatorii care ne intereseaza
   "g",
 );
+
+// Matricile PDF sunt afine, scrise ca [a b c d e f]:
+//   | a b 0 |
+//   | c d 0 |
+//   | e f 1 |
+const UNITATE = [1, 0, 0, 1, 0, 0];
+
+function inmulteste(m1, m2) {
+  return [
+    m1[0] * m2[0] + m1[1] * m2[2],
+    m1[0] * m2[1] + m1[1] * m2[3],
+    m1[2] * m2[0] + m1[3] * m2[2],
+    m1[2] * m2[1] + m1[3] * m2[3],
+    m1[4] * m2[0] + m1[5] * m2[2] + m2[4],
+    m1[4] * m2[1] + m1[5] * m2[3] + m2[5],
+  ];
+}
 
 /**
  * Fragmentele de text dintr-un content stream, fiecare cu pozitia lui.
@@ -251,8 +268,10 @@ const REGEX_TOKEN = new RegExp(
  */
 function fragmenteDinContinut(continut, harti = new Map()) {
   const fragmente = [];
-  let x = 0;
-  let y = 0;
+  let tm = UNITATE; // matricea de text curenta
+  let tlm = UNITATE; // matricea liniei de text, de la care pleaca Td si T*
+  let ctm = UNITATE; // matricea grafica, schimbata de `cm` intre q si Q
+  const stiva = [];
   let leading = 0;
   let marime = 10;
   let cmapActiv = null;
@@ -289,39 +308,61 @@ function fragmenteDinContinut(continut, harti = new Map()) {
     }
 
     switch (operator) {
+      case "cm":
+        // Matricea grafica se compune, nu se inlocuieste.
+        if (cifre.length >= 6) ctm = inmulteste(cifre.slice(-6), ctm);
+        break;
+      case "q":
+        stiva.push(ctm);
+        break;
+      case "Q":
+        ctm = stiva.pop() ?? ctm;
+        break;
       case "Tm":
         if (cifre.length >= 6) {
           // Ultimii sase operanzi, nu primii: in coada s-au putut aduna si
-          // numere de la operatori pe care nu ii tratam (Tf, cm, re).
-          const matrice = cifre.slice(-6);
-          x = matrice[4];
-          y = matrice[5];
+          // numere de la operatori pe care nu ii tratam (Tf, re).
+          tlm = cifre.slice(-6);
+          tm = tlm;
         }
         break;
       case "Td":
       case "TD":
         if (cifre.length >= 2) {
-          x += cifre[cifre.length - 2];
-          y += cifre[cifre.length - 1];
-          if (operator === "TD") leading = -cifre[cifre.length - 1];
+          const tx = cifre[cifre.length - 2];
+          const ty = cifre[cifre.length - 1];
+          if (operator === "TD") leading = -ty;
+          tlm = inmulteste([1, 0, 0, 1, tx, ty], tlm);
+          tm = tlm;
         }
         break;
       case "T*":
-        y -= leading;
+        tlm = inmulteste([1, 0, 0, 1, 0, -leading], tlm);
+        tm = tlm;
         break;
       case "TL":
         if (cifre.length) leading = cifre[cifre.length - 1];
         break;
       case "BT":
-        x = 0;
-        y = 0;
+        tm = UNITATE;
+        tlm = UNITATE;
         break;
       case "'":
       case '"':
-        y -= leading;
+        tlm = inmulteste([1, 0, 0, 1, 0, -leading], tlm);
+        tm = tlm;
       // fallthrough: ' si " afiseaza sirul dupa ce trec la randul urmator
       case "Tj":
       case "TJ": {
+        // Pozitia reala pe pagina e matricea de text compusa cu cea grafica.
+        // Fara compunere, un document cu Tm scalat da coordonate de zeci de mii
+        // si tabelul se rupe in coloane inexistente.
+        const efectiv = inmulteste(tm, ctm);
+        const x = efectiv[4];
+        const y = efectiv[5];
+        // Marimea vizibila a fontului include scalarea verticala a matricei.
+        const scalare = Math.hypot(efectiv[1], efectiv[3]) || 1;
+        const marimeEfectiva = marime * scalare;
         for (const argument of siruri) {
           let text = "";
           if (argument.sir !== undefined) {
@@ -332,7 +373,10 @@ function fragmenteDinContinut(continut, harti = new Map()) {
             const parti = argument.tablou.match(REGEX_SIR) ?? [];
             text = parti.map((p) => decodeazaCuFont(p, cmapActiv)).join("");
           }
-          if (text.trim()) fragmente.push({ x, y, text, marime });
+          // Cand componenta „b" a matricei o depaseste pe „a", textul e scris
+          // pe verticala: pagina e un tabel landscape rotit 90 de grade.
+          const rotit = Math.abs(efectiv[1]) > Math.abs(efectiv[0]);
+          if (text.trim()) fragmente.push({ x, y, text, marime: marimeEfectiva, rotit });
         }
         break;
       }
@@ -395,6 +439,22 @@ function randuriDinFragmente(fragmente) {
  * coloana cade fiecare bucata. `randuri` ramane pentru citit, asta e pentru
  * extras date.
  */
+/**
+ * Aduce o pagina rotita la orientarea normala.
+ *
+ * Multe liste de salarii sunt tabele late, tiparite landscape prin rotirea
+ * continutului cu 90 de grade. Pe o astfel de pagina, un „rand" inseamna X
+ * constant si Y variabil — exact invers fata de o pagina normala. Daca nu
+ * normalizam, gruparea pe benzi citeste coloanele drept randuri si tabelul iese
+ * pe dos: pe lista Spitalului Miercurea-Ciuc, „doctor" aparea literă cu literă,
+ * pe verticala.
+ */
+function normalizeazaRotatia(fragmente) {
+  const rotite = fragmente.filter((f) => f.rotit).length;
+  if (rotite <= fragmente.length / 2) return fragmente;
+  return fragmente.map((f) => ({ ...f, x: f.y, y: -f.x }));
+}
+
 export function pagini(buffer) {
   const { harti } = hartiFonturi(buffer);
   const rezultat = [];
@@ -404,7 +464,7 @@ export function pagini(buffer) {
     const continut = desfacut.toString("latin1");
     if (!/\bTj\b/.test(continut) && !/\bTJ\b/.test(continut)) continue;
     const fragmente = fragmenteDinContinut(continut, harti);
-    if (fragmente.length) rezultat.push(fragmente);
+    if (fragmente.length) rezultat.push(normalizeazaRotatia(fragmente));
   }
   return rezultat;
 }
@@ -506,12 +566,30 @@ export function calitateText(buffer) {
     const recunoscute = litere.filter((c) => /[A-Za-zĂÂÎȘȚăâîșțĂ-ț]/.test(c));
     return litere.length > 0 && recunoscute.length / litere.length < 0.8;
   });
+  // Un sir foarte lung de cifre, fara separator, inseamna ca generatorul a
+  // scris tot randul de tabel ca un singur text. Pe lista Spitalului Judetean
+  // Miercurea-Ciuc, un rand intreg vine ca „517592144300000000100" — un singur
+  // fragment. Nu exista pozitie dupa care sa-l tai, si nu se poate ghici:
+  // „5 | 17592 | 1443 | ..." si „51 | 7592 | 1443 | ..." sunt la fel de
+  // plauzibile. Fisierele astea se refuza, nu se interpreteaza.
+  // Numaram doar siruri de cifre lipite in textul brut. Daca am scoate intai
+  // punctele, o data ca „01.07.2025" ar deveni „01072025" si ar trece drept
+  // celule lipite — verificat, exact asa pica lista Primariei Sector 1, care
+  // altfel se citeste perfect.
+  const cifreLipite = fragmente.filter((f) => /\d{8,}/.test(f.text)).length;
+  // Un numar lung izolat e normal (coduri, referinte). Semnalul e sistematic:
+  // la Spitalul Miercurea-Ciuc, 1.611 din 5.969 de fragmente (27%) sunt asa.
+  const proportieLipite = fragmente.length ? cifreLipite / fragmente.length : 0;
   return {
     fragmente: fragmente.length,
     cuLitere: cuLitere.length,
     suspecte: suspecte.length,
+    cifreLipite,
+    proportieLipite,
     /** Fara niciun fragment cu litere, fisierul e scanat sau necitibil. */
     areText: cuLitere.length > 0,
+    /** Singurul verdict pe care are voie sa se bazeze un colector de date. */
+    sePoateFolosi: cuLitere.length > 0 && suspecte.length === 0 && proportieLipite <= 0.02,
   };
 }
 

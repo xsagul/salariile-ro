@@ -155,5 +155,13 @@ assert.equal(calitateText(Buffer.from("nu sunt un pdf", "utf8")).areText, false,
 const calitate = calitateText(pdfCu(CONTINUT, true));
 assert.equal(calitate.areText, true, "fisier cu text: areText true");
 assert.equal(calitate.suspecte, 0, "text romanesc curat: zero fragmente suspecte");
+assert.equal(calitate.sePoateFolosi, true, "un tabel curat poate fi folosit ca sursa de date");
 
-console.log("OK: extractorul PDF reconstruieste randurile din fragmente (15 cazuri).");
+// Un rand de tabel scris ca un singur sir de cifre nu se poate imparti pe
+// coloane. Fisierul trebuie refuzat, nu interpretat.
+const CIFRE_LIPITE = ["BT", "1 0 0 1 72 700 Tm (517592144300000000100) Tj", "ET"].join("\n");
+const calitateLipita = calitateText(pdfCu(CIFRE_LIPITE, true));
+assert.equal(calitateLipita.cifreLipite, 1, "sirul lung de cifre trebuie semnalat");
+assert.equal(calitateLipita.sePoateFolosi, false, "fisier cu celule lipite: nefolosibil ca sursa de date");
+
+console.log("OK: extractorul PDF reconstruieste randurile din fragmente (18 cazuri).");
