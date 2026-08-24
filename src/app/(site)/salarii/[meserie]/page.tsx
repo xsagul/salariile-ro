@@ -557,7 +557,7 @@ export default async function MeseriePage({ params }: Props) {
 
               {comparatii.length > 0 && (
                 <div className="mt-8">
-                  <h2 className="text-sm font-medium uppercase tracking-wide text-stone-500">Comparații</h2>
+                  <h2 className="text-sm font-medium uppercase tracking-wide text-stone-600">Comparații</h2>
                   <div className="mt-3 grid gap-2">
                     {comparatii.map((comparatie) => (
                       <LinkCard
@@ -572,7 +572,7 @@ export default async function MeseriePage({ params }: Props) {
 
               {similare.length > 0 && (
                 <div className="mt-8">
-                  <h2 className="text-sm font-medium uppercase tracking-wide text-stone-500">
+                  <h2 className="text-sm font-medium uppercase tracking-wide text-stone-600">
                     Alte meserii din {categorie.nume.toLocaleLowerCase("ro-RO")}
                   </h2>
                   <div className="mt-3 grid gap-2">
