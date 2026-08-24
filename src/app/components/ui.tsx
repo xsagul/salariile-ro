@@ -130,6 +130,43 @@ export function Faq({
 }
 
 // Card CTA final — titlu, paragraf, buton stone (fără accent).
+/**
+ * Pagini conexe, la finalul unei pagini de continut.
+ *
+ * De ce exista: masurat pe 24 august 2026, /fluturas-salariu dadea DOUA linkuri
+ * interne din corp, iar /salariu-mediu si /deducere-personala-2026 cate patru,
+ * niciunul catre clusterul de meserii. Erau fundaturi: cititorul termina si nu
+ * avea unde sa mearga, iar paginile nu pasau nimic mai departe.
+ */
+export function PaginiConexe({
+  titlu = "Mai departe",
+  linkuri,
+}: {
+  titlu?: string;
+  linkuri: { href: string; label: string; descriere: string }[];
+}) {
+  return (
+    <section className="border-t border-stone-200 bg-canvas py-10 sm:py-12">
+      <div className="mx-auto max-w-3xl px-4 sm:px-6">
+        <h2 className="mb-5 text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">{titlu}</h2>
+        <ul className="grid gap-3 sm:grid-cols-2">
+          {linkuri.map((link) => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft transition-colors hover:border-stone-300 hover:bg-canvas"
+              >
+                <span className="text-sm font-medium text-stone-900">{link.label}</span>
+                <span className="mt-1 text-sm leading-normal text-stone-600">{link.descriere}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
 export function CtaCard({
   title,
   children,

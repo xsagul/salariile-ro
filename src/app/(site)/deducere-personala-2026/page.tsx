@@ -3,7 +3,7 @@ import Link from "next/link";
 import { personSchema } from "@/lib/person";
 import { calculeazaDeducerePersonala, SALARIU_MINIM } from "@/lib/fiscal";
 import { ogPage, twPage } from "@/lib/seo";
-import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow } from "@/app/components/ui";
+import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow, PaginiConexe } from "@/app/components/ui";
 import TabelArticol from "@/app/components/TabelArticol";
 
 // Titlul vechi („tabel și calcul pentru salariu") depășea 60 de caractere cu brandul și
@@ -211,6 +211,14 @@ export default function DeducerePersonalaPage() {
           <p className="source-note">Pagina actualizată: 6 iulie 2026.</p>
         </Section>
       </div>
+      <PaginiConexe
+        linkuri={[
+          { href: "/salarii", label: "Salarii pe meserii", descriere: "Cât se câștigă în 123 de meserii, cu datele INS și netul calculat." },
+          { href: "/salariu-minim", label: "Salariul minim 2026", descriere: "4.325 lei brut din 1 iulie. Deducerea se aplică integral aici." },
+          { href: "/fluturas-salariu", label: "Generator de fluturaș", descriere: "Fluturaș PDF cu deducerea inclusă, fără să ceri date personale." },
+          { href: "/metodologie", label: "Metodologia de calcul", descriere: "Cum se calculează deducerea, cu sursele normative." },
+        ]}
+      />
     </>
   );
 }

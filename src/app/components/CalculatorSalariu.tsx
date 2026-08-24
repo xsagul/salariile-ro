@@ -1263,6 +1263,27 @@ export default function CalculatorSalariu({
             </>
           )}
 
+          {/* Punctul de descoperire pentru widget.
+              Widgetul e singurul lucru de pe site care produce backlinkuri prin
+              simpla folosire: cine il incorporeaza pastreaza si linkul de credit,
+              care e dofollow. Pana acum era accesibil doar din footer, adica
+              invizibil pentru cine tocmai a folosit calculatorul — desi exact
+              aia e audienta care l-ar pune pe propriul site (contabili, HR,
+              bloguri). Se arata dupa calcul, cand omul a vazut deja ce face.
+              Un singur rand, fara buton si fara banner. */}
+          {rezAfisat && !embedded && (
+            <p className="mt-4 text-xs leading-relaxed text-stone-500" data-md-strip>
+              Ai un site?{" "}
+              <Link
+                href="/widget"
+                className="font-medium text-stone-700 underline underline-offset-2 hover:text-stone-900"
+              >
+                Pune calculatorul pe el, gratuit
+              </Link>{" "}
+              — fără cont și fără reclame.
+            </p>
+          )}
+
           {rezAfisat && regimFiscal !== REGIM_FISCAL_CURENT && (
             <p className="mt-5 text-xs leading-relaxed text-stone-500" data-md-strip>
               Calcul istoric pentru ianuarie–iunie 2026. Fluturașul PDF este disponibil numai pentru grila fiscală curentă.

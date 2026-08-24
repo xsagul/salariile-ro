@@ -6,7 +6,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import CalculatorSalariu from "@/app/components/CalculatorSalariu";
-import { Section } from "@/app/components/ui";
+import { PaginiConexe, Section } from "@/app/components/ui";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 
@@ -173,6 +173,14 @@ export default function FluturasSalariuPage() {
           Ultima actualizare: 26 iulie 2026.
         </p>
       </Section>
+      <PaginiConexe
+        linkuri={[
+          { href: "/salarii", label: "Salarii pe meserii", descriere: "Cât se câștigă în 123 de meserii, cu datele INS și netul calculat." },
+          { href: "/salariu-minim", label: "Salariul minim 2026", descriere: "4.325 lei brut din 1 iulie. Calculul net, pas cu pas." },
+          { href: "/widget", label: "Widget pentru site-ul tău", descriere: "Pune calculatorul pe propriul site, gratuit și fără cont." },
+          { href: "/metodologie", label: "Metodologia de calcul", descriere: "Formula completă, sursele normative și limitările declarate." },
+        ]}
+      />
     </>
   );
 }

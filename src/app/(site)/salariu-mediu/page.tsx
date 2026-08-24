@@ -6,6 +6,7 @@
 // întrebările neacoperite în corp, carduri aditive pe fiecare rând.
 
 import type { Metadata } from "next";
+import { PaginiConexe } from "@/app/components/ui";
 import Image from "next/image";
 import Link from "next/link";
 import { personSchema } from "@/lib/person";
@@ -568,6 +569,14 @@ export default function SalariuMediuPage() {
         </div>
       </div>
     </div>
+      <PaginiConexe
+        linkuri={[
+          { href: "/salarii", label: "Salarii pe meserii", descriere: "Media pe economie e una; pe meserie, alta. 123 de meserii, cu datele INS." },
+          { href: "/salarii/judete", label: "Salarii pe județe", descriere: "Unde se câștigă mai mult: toate cele 42 de județe." },
+          { href: "/salarii/clasament", label: "Cele mai bine plătite meserii", descriere: "Clasamentul complet, după câștigul mediu brut." },
+          { href: "/salariu-minim", label: "Salariul minim 2026", descriere: "Celălalt pilon: 4.325 lei brut din 1 iulie." },
+        ]}
+      />
     </>
   );
 }
