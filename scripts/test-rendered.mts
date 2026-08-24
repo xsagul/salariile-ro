@@ -223,6 +223,11 @@ async function auditRenderedSite() {
     ["/salarii/femei-barbati", "post egal", "precizarea ca nu se masoara diferenta la post egal"],
     ["/salarii/femei-barbati", "FOM121B", "citarea matricei INS"],
     ["/salarii/medic", "Femei și bărbați", "contextul pe sexe pe pagina de meserie"],
+    // Locuri de munca vacante: singura serie TRIMESTRIALA din set. Pagina
+    // raspundea doar la „cat se castiga"; asta raspunde la „cat se cauta".
+    ["/salarii/programator", "Posturi vacante", "semnalul de cerere pe pagina de meserie"],
+    ["/salarii/programator", "LMV102D", "citarea matricei de locuri vacante"],
+    ["/salarii/programator", "Cifra e a grupei", "precizarea ca vacantele sunt ale grupei, nu ale meseriei"],
     ["/salarii/medic", "Cât contează vechimea", "progresia pe varste din ancheta din octombrie"],
     ["/compara", "activități economice diferite", "regula perechilor din sectoare diferite"],
     ["/compara/programator-vs-medic", "Tabel comparativ", "tabelul comparativ"],

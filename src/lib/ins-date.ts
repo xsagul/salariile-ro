@@ -48,6 +48,15 @@ type SerieOcupatii = {
   }[];
 };
 
+type SerieVacante = {
+  matriceCifre: string;
+  matriceRate: string;
+  denumire: string;
+  ultimaActualizare: string | null;
+  perioade: string[];
+  grupe: { isco: string; vacante: (number | null)[]; rata: (number | null)[] }[];
+};
+
 type DateIns = {
   generatLa: string;
   sursa: { nume: string; url: string; licenta: string };
@@ -55,6 +64,8 @@ type DateIns = {
   net: SerieLunara;
   judete: SerieJudete;
   ocupatii: SerieOcupatii;
+  /** Locuri de munca vacante pe grupe ISCO. Adaugat pe 24 august 2026. */
+  vacante?: SerieVacante;
 };
 
 const date = dateInsBrute as DateIns;
@@ -350,6 +361,69 @@ export function diferenteSexePeVarste(): DiferentaPeVarsta[] {
       diferenta: valori.diferenta,
     };
   }).filter((v): v is DiferentaPeVarsta => v !== null);
+}
+
+// ─── Locuri de munca vacante ─────────────────────────────────────────────────
+//
+// Salariul spune cat se plateste; vacantele spun cat se cauta. Pana pe 24
+// august 2026 aratam doar prima jumatate a pietei muncii.
+//
+// E si cea mai proaspata serie din tot setul: trimestriala, actualizata la zi,
+// fata de ancheta pe ocupatii care e anuala si din octombrie.
+
+const VACANTE = date.vacante ?? null;
+const indexVacante = new Map((VACANTE?.grupe ?? []).map((g) => [g.isco, g]));
+
+export const MATRICE_VACANTE = VACANTE?.matriceCifre ?? null;
+export const MATRICE_RATE_VACANTE = VACANTE?.matriceRate ?? null;
+export const PERIOADA_VACANTE = VACANTE?.perioade.at(-1) ?? null;
+export const PERIOADE_VACANTE = VACANTE?.perioade ?? [];
+
+export type Vacante = {
+  grupa: GrupaIsco | "total";
+  nume: string;
+  /** Numarul de locuri vacante in ultimul trimestru disponibil. */
+  posturi: number;
+  /** Rata locurilor vacante, in procente (0,52 inseamna 0,52%). */
+  rata: number | null;
+  /** Seria pe ultimele trimestre, pentru context. */
+  serie: (number | null)[];
+  /** Variatia fata de acelasi trimestru al anului trecut, daca se poate. */
+  variatieAnuala: number | null;
+};
+
+function citesteVacante(cheieIns: string, grupa: GrupaIsco | "total", nume: string): Vacante | null {
+  const brut = indexVacante.get(cheieIns);
+  const posturi = brut?.vacante.at(-1);
+  if (!brut || posturi === null || posturi === undefined) return null;
+  const anTrecut = brut.vacante.at(-5);
+  return {
+    grupa,
+    nume,
+    posturi,
+    rata: brut.rata.at(-1) ?? null,
+    serie: brut.vacante,
+    variatieAnuala:
+      typeof anTrecut === "number" && anTrecut > 0 ? (posturi - anTrecut) / anTrecut : null,
+  };
+}
+
+/** Locurile vacante din grupa majora de ocupatii a unei meserii. */
+export function vacantePentruGrupa(grupa: GrupaIsco): Vacante | null {
+  return citesteVacante(GRUPE_ISCO[grupa], grupa, NUME_GRUPE_ISCO[grupa]);
+}
+
+/** Totalul pe economie. */
+export function vacanteTotal(): Vacante | null {
+  return citesteVacante("Total", "total", "Toate ocupațiile");
+}
+
+/** Toate grupele cu date, de la cele mai multe posturi vacante. */
+export function vacantePeGrupe(): Vacante[] {
+  return (Object.keys(GRUPE_ISCO) as GrupaIsco[])
+    .map(vacantePentruGrupa)
+    .filter((v): v is Vacante => v !== null)
+    .sort((a, b) => b.posturi - a.posturi);
 }
 
 // ─── Punerea celor doua serii pe aceeasi perioada ────────────────────────────

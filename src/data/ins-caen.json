@@ -9697,5 +9697,253 @@
         }
       }
     ]
+  },
+  "vacante": {
+    "matriceCifre": "LMV102D",
+    "matriceRate": "LMV101D",
+    "denumire": "Locuri de munca vacante pe grupe majore de ocupatii (ISCO-08)",
+    "ultimaActualizare": "20-08-2026",
+    "perioade": [
+      "Trimestrul III 2024",
+      "Trimestrul IV 2024",
+      "Trimestrul I 2025",
+      "Trimestrul II 2025",
+      "Trimestrul III 2025",
+      "Trimestrul IV 2025",
+      "Trimestrul I 2026",
+      "Trimestrul II 2026"
+    ],
+    "grupe": [
+      {
+        "isco": "Total",
+        "vacante": [
+          39947,
+          34303,
+          32610,
+          31333,
+          31617,
+          28360,
+          28261,
+          26461
+        ],
+        "rata": [
+          0.78,
+          0.67,
+          0.63,
+          0.61,
+          0.62,
+          0.55,
+          0.55,
+          0.52
+        ]
+      },
+      {
+        "isco": "Membri ai corpului legislativ, ai executivului, inalti conducatori ai administratiei publice, conducatori si functionari superiori",
+        "vacante": [
+          1600,
+          1455,
+          1370,
+          1340,
+          1437,
+          1250,
+          1186,
+          959
+        ],
+        "rata": [
+          0.43,
+          0.39,
+          0.37,
+          0.36,
+          0.39,
+          0.34,
+          0.31,
+          0.26
+        ]
+      },
+      {
+        "isco": "Specialisti in diverse domenii de activitate",
+        "vacante": [
+          12858,
+          9848,
+          9311,
+          8971,
+          9294,
+          9012,
+          7831,
+          7140
+        ],
+        "rata": [
+          1.07,
+          0.81,
+          0.76,
+          0.74,
+          0.77,
+          0.74,
+          0.65,
+          0.59
+        ]
+      },
+      {
+        "isco": "Tehnicieni si alti specialisti din domeniul tehnic",
+        "vacante": [
+          3228,
+          3145,
+          2910,
+          2943,
+          3088,
+          2697,
+          2724,
+          2797
+        ],
+        "rata": [
+          0.63,
+          0.61,
+          0.55,
+          0.56,
+          0.59,
+          0.51,
+          0.53,
+          0.54
+        ]
+      },
+      {
+        "isco": "Functionari administrativi",
+        "vacante": [
+          2225,
+          2094,
+          2527,
+          2300,
+          2214,
+          2098,
+          1679,
+          1397
+        ],
+        "rata": [
+          0.69,
+          0.64,
+          0.8,
+          0.72,
+          0.7,
+          0.66,
+          0.54,
+          0.46
+        ]
+      },
+      {
+        "isco": "Lucratori in domeniul serviciilor",
+        "vacante": [
+          6121,
+          6904,
+          4917,
+          4610,
+          4137,
+          4189,
+          4472,
+          4052
+        ],
+        "rata": [
+          0.74,
+          0.84,
+          0.61,
+          0.56,
+          0.51,
+          0.51,
+          0.55,
+          0.5
+        ]
+      },
+      {
+        "isco": "Lucratori calificati in agricultura, silvicultura si pescuit",
+        "vacante": [
+          50,
+          36,
+          40,
+          73,
+          58,
+          50,
+          35,
+          62
+        ],
+        "rata": [
+          0.23,
+          0.17,
+          0.18,
+          0.33,
+          0.27,
+          0.24,
+          0.16,
+          0.28
+        ]
+      },
+      {
+        "isco": "Muncitori calificati si asimilati",
+        "vacante": [
+          4766,
+          4064,
+          4090,
+          4186,
+          4180,
+          3356,
+          3446,
+          3509
+        ],
+        "rata": [
+          0.73,
+          0.63,
+          0.62,
+          0.64,
+          0.65,
+          0.53,
+          0.54,
+          0.55
+        ]
+      },
+      {
+        "isco": "Operatori la instalatii si masini; asamblori de masini si echipamente",
+        "vacante": [
+          3464,
+          2966,
+          2918,
+          2987,
+          3097,
+          2557,
+          3190,
+          2846
+        ],
+        "rata": [
+          0.63,
+          0.54,
+          0.52,
+          0.54,
+          0.56,
+          0.46,
+          0.58,
+          0.52
+        ]
+      },
+      {
+        "isco": "Ocupatii elementare",
+        "vacante": [
+          5635,
+          3791,
+          4527,
+          3923,
+          4112,
+          3151,
+          3698,
+          3699
+        ],
+        "rata": [
+          0.84,
+          0.57,
+          0.67,
+          0.58,
+          0.61,
+          0.47,
+          0.55,
+          0.55
+        ]
+      }
+    ]
   }
 }

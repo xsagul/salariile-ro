@@ -40,6 +40,16 @@ export function lunaLunga(eticheta: string): string {
   return eticheta.replace(/^Luna\s+/, "");
 }
 
+const TRIMESTRE: Record<string, string> = { I: "1", II: "2", III: "3", IV: "4" };
+
+/** „Trimestrul II 2026" → „T2 2026". Cifra romana nu se scrie cu litere mici. */
+export function trimestruScurt(eticheta: string | null): string {
+  if (!eticheta) return "";
+  const potrivire = eticheta.match(/Trimestrul\s+(I{1,3}|IV)\s+(\d{4})/i);
+  if (!potrivire) return eticheta;
+  return `T${TRIMESTRE[potrivire[1].toUpperCase()] ?? potrivire[1]} ${potrivire[2]}`;
+}
+
 export function CardCifra({
   eticheta,
   valoare,

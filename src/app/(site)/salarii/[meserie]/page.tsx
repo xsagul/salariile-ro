@@ -19,6 +19,7 @@ import {
   lei,
   lunaLunga,
   procent,
+  trimestruScurt,
 } from "@/app/components/Salarii";
 import {
   AN_JUDETE,
@@ -29,9 +30,12 @@ import {
   MATRICE_JUDETE,
   MATRICE_NET,
   MATRICE_OCUPATII,
+  MATRICE_VACANTE,
+  PERIOADA_VACANTE,
   TOTAL_ECONOMIE,
   diferentaSexe,
   etichetaJudete,
+  vacantePentruGrupa,
   variatieAnuala,
 } from "@/lib/ins-date";
 import {
@@ -191,6 +195,7 @@ export default async function MeseriePage({ params }: Props) {
   const comparatii = COMPARATII.filter((c) => c.a.slug === meserie.slug || c.b.slug === meserie.slug).slice(0, 4);
   const etichetaSectorJudete = etichetaJudete(meserie.caen2);
   const sexe = diferentaSexe(meserie.isco);
+  const vacante = vacantePentruGrupa(meserie.isco);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -326,8 +331,8 @@ export default async function MeseriePage({ params }: Props) {
               capetele intervalului sunt județe reale din aceeași serie anuală.
               Egalitatea de loc se declară explicit — locul e al activității, nu
               al ocupației, iar cititorul trebuie să știe asta. */}
-          {(clasament || interval) && (
-            <div className="mt-6 grid gap-3 sm:grid-cols-2">
+          {(clasament || interval || vacante) && (
+            <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {clasament && (
                 <div className="rounded-md border border-stone-200 bg-surface p-5 shadow-soft">
                   <div className="text-xs font-medium uppercase tracking-wide text-stone-500">
@@ -361,6 +366,37 @@ export default async function MeseriePage({ params }: Props) {
                     </strong>{" "}
                     brut, de la {interval.minim.judet} la {interval.maxim.judet}. Nu e o decilă estimată dintr-un
                     sondaj: sunt capetele reale ale defalcării INS pe județe.
+                  </p>
+                </div>
+              )}
+              {/* Cererea, nu doar plata. Pagina raspundea pana acum doar la
+                  „cat se castiga"; asta raspunde la „cat se cauta". E si cea
+                  mai proaspata cifra de pe pagina: trimestriala, in timp ce
+                  ancheta pe ocupatii e anuala si din octombrie. */}
+              {vacante && (
+                <div className="rounded-md border border-stone-200 bg-surface p-5 shadow-soft">
+                  <div className="text-xs font-medium uppercase tracking-wide text-stone-500">
+                    Posturi vacante, {trimestruScurt(PERIOADA_VACANTE)}
+                  </div>
+                  <p className="mt-2 text-base leading-normal text-stone-700">
+                    <strong className="font-semibold text-stone-900">{lei(vacante.posturi)} posturi</strong> vacante în
+                    grupa de ocupații din care face parte meseria, pe toată economia
+                    {vacante.rata !== null && (
+                      <>
+                        {" "}
+                        — o rată de {vacante.rata.toLocaleString("ro-RO", { maximumFractionDigits: 2 })}%
+                      </>
+                    )}
+                    .
+                    {vacante.variatieAnuala !== null && (
+                      <>
+                        {" "}
+                        Față de același trimestru al anului trecut,{" "}
+                        {vacante.variatieAnuala >= 0 ? "în creștere" : "în scădere"} cu{" "}
+                        {procent(Math.abs(vacante.variatieAnuala), 0)}%.
+                      </>
+                    )}{" "}
+                    Cifra e a grupei, nu a meseriei.
                   </p>
                 </div>
               )}
@@ -616,8 +652,16 @@ export default async function MeseriePage({ params }: Props) {
           <NotaSursa>
             Sursa: Institutul Național de Statistică, TEMPO-Online — matricele {MATRICE_BRUT} și {MATRICE_NET} (serie
             lunară pe activități CAEN Rev.3, ultima lună {LUNA}), {MATRICE_JUDETE} (pe județe, CAEN Rev.2,{" "}
-            {AN_JUDETE_SCURT}) și {MATRICE_OCUPATII} (ancheta din octombrie pe grupe majore de ocupații ISCO-08,{" "}
-            {AN_ANCHETA}). Reutilizare conform licenței pentru o guvernare deschisă. Netul standard este calculat de
+            {AN_JUDETE_SCURT}), {MATRICE_OCUPATII} (ancheta din octombrie pe grupe majore de ocupații ISCO-08,{" "}
+            {AN_ANCHETA})
+            {vacante && MATRICE_VACANTE ? (
+              <>
+                {" "}
+                și {MATRICE_VACANTE} (locuri de muncă vacante pe grupe de ocupații, trimestrial,{" "}
+                {trimestruScurt(PERIOADA_VACANTE)})
+              </>
+            ) : null}
+            . Reutilizare conform licenței pentru o guvernare deschisă. Netul standard este calculat de
             Salariile.ro cu regulile în vigoare din 1 iulie 2026 — vezi{" "}
             <Link href="/metodologie">metodologia</Link>. INS nu publică medii pe ocupații individuale, iar cifrele de
             aici nu sunt o promisiune salarială pentru un post anume.

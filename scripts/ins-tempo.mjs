@@ -264,10 +264,66 @@ async function serieOcupatii() {
   };
 }
 
+/**
+ * Locuri de munca vacante pe aceleasi grupe majore de ocupatii ISCO-08 pe care
+ * le folosim deja pe paginile de meserie.
+ *
+ * De ce conteaza: salariul spune cat se plateste, vacantele spun cat se cauta.
+ * Pana acum aratam doar prima jumatate. E si singura serie din setul nostru
+ * care e TRIMESTRIALA si actualizata la zi (20 august 2026), fata de ancheta pe
+ * ocupatii care e anuala si din octombrie.
+ *
+ * LMV102D = numarul de locuri vacante; LMV101D = rata lor, comparabila intre
+ * grupe de marimi diferite. Luam ambele, pe total tara.
+ */
+async function serieVacante() {
+  const cifre = { matrice: "LMV102D", grupe: {} };
+  const rate = { matrice: "LMV101D", grupe: {} };
+  let perioade = [];
+  let ultimaActualizare = null;
+
+  for (const [code, tinta] of [["LMV102D", cifre], ["LMV101D", rate]]) {
+    const meta = await matrixMeta(code);
+    ultimaActualizare = ultimaActualizare ?? meta.ultimaActualizare;
+    // Doar trimestrele, si doar ultimele opt: seria are 77 de perioade, dintre
+    // care si totaluri anuale, care ar dubla fiecare valoare in tabel.
+    const trimestre = meta.dimensionsMap[2].options.filter((o) => /Trimestrul/i.test(o.label));
+    const ultimele = trimestre.slice(-8);
+    const result = await matrixQuery(code, meta, [
+      byLabel((label) => label.trim() === "TOTAL"),
+      all,
+      () => ultimele,
+      all,
+    ]);
+    const parsed = parseResultTable(result.resultTable);
+    perioade = ultimele.map((o) => o.label.trim());
+    for (const row of parsed.rows) {
+      // Randuri: [regiune, grupa ISCO]; coloane: perioada x UM.
+      const isco = row.labels[row.labels.length - 1];
+      if (!isco) continue;
+      tinta.grupe[isco] = row.values.slice(0, ultimele.length);
+    }
+  }
+
+  return {
+    matriceCifre: cifre.matrice,
+    matriceRate: rate.matrice,
+    denumire: "Locuri de munca vacante pe grupe majore de ocupatii (ISCO-08)",
+    ultimaActualizare,
+    perioade,
+    grupe: Object.keys(cifre.grupe).map((isco) => ({
+      isco,
+      vacante: cifre.grupe[isco] ?? [],
+      rata: rate.grupe[isco] ?? [],
+    })),
+  };
+}
+
 const brut = await serieLunara("FOM107G");
 const net = await serieLunara("FOM106G");
 const judete = await serieJudete();
 const ocupatii = await serieOcupatii();
+const vacante = await serieVacante();
 
 const payload = {
   generatLa: new Date().toISOString().slice(0, 10),
@@ -280,6 +336,7 @@ const payload = {
   net,
   judete,
   ocupatii,
+  vacante,
 };
 
 await fs.mkdir(path.dirname(OUT), { recursive: true });
@@ -291,3 +348,4 @@ console.log(`  brut  ${brut.activitati.length} activitati x ${brut.luni.length} 
 console.log(`  net   ${net.activitati.length} activitati x ${net.luni.length} luni (ultima: ${net.luni.at(-1)})`);
 console.log(`  jud.  ${judete.activitati.length} activitati x ${numarJudete} judete (${judete.an})`);
 console.log(`  ISCO  ${ocupatii.grupe.length} grupe majore x ${Object.keys(ocupatii.grupe[0]?.varste ?? {}).length} grupe de varsta (${ocupatii.an})`);
+console.log(`  vac.  ${vacante.grupe.length} grupe x ${vacante.perioade.length} trimestre (ultimul: ${vacante.perioade.at(-1)})`);
