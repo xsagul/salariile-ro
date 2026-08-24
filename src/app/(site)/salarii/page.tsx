@@ -146,13 +146,13 @@ export default function SalariiPage() {
           >
             <Link
               href="/salarii/clasament"
-              className="rounded-full border border-stone-900 bg-stone-900 px-3 py-1.5 text-sm font-medium text-white shadow-soft transition-colors hover:bg-stone-700"
+              className="inline-flex min-h-11 items-center rounded-full border border-stone-900 bg-stone-900 px-4 text-sm font-medium text-white shadow-soft transition-colors hover:bg-stone-700"
             >
               Clasamentul complet
             </Link>
             <Link
               href="/salarii/judete"
-              className="rounded-full border border-stone-900 bg-stone-900 px-3 py-1.5 text-sm font-medium text-white shadow-soft transition-colors hover:bg-stone-700"
+              className="inline-flex min-h-11 items-center rounded-full border border-stone-900 bg-stone-900 px-4 text-sm font-medium text-white shadow-soft transition-colors hover:bg-stone-700"
             >
               Salarii pe județe
             </Link>
@@ -160,7 +160,7 @@ export default function SalariiPage() {
               <a
                 key={categorie.slug}
                 href={`#${categorie.slug}`}
-                className="rounded-full border border-stone-200 bg-surface px-3 py-1.5 text-sm text-stone-700 shadow-soft transition-colors hover:border-stone-300 hover:text-stone-900"
+                className="inline-flex min-h-11 items-center rounded-full border border-stone-200 bg-surface px-4 text-sm text-stone-700 shadow-soft transition-colors hover:border-stone-300 hover:text-stone-900"
               >
                 {categorie.nume}
               </a>

@@ -158,13 +158,13 @@ export default function FluturasSalariuPage() {
         <h2>Întrebări frecvente</h2>
         <div className="flex flex-col">
           {FAQ.map((item, i) => (
-            <details key={i} name="faq-fluturas" className="group border-b border-stone-200 py-4">
-              <summary className="flex cursor-pointer items-center justify-between gap-4 text-base font-medium tracking-[-0.01em] text-stone-900 [&::-webkit-details-marker]:hidden">
+            <details key={i} name="faq-fluturas" className="group border-b border-stone-200">
+              <summary className="flex min-h-11 cursor-pointer items-center justify-between gap-4 py-4 text-base font-medium tracking-[-0.01em] text-stone-900 [&::-webkit-details-marker]:hidden">
                 {item.q}
                 <span className="flex-shrink-0 text-xl text-stone-900 group-open:hidden">+</span>
                 <span className="hidden flex-shrink-0 text-xl text-stone-900 group-open:inline">−</span>
               </summary>
-              <p className="mt-3 max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600">{item.a}</p>
+              <p className="mb-4 max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600">{item.a}</p>
             </details>
           ))}
         </div>
