@@ -1,6 +1,63 @@
 # Progres salariile.ro
 
-Ultima actualizare: 21 august 2026
+Ultima actualizare: 24 august 2026
+
+## Audit SEO complet si resubmisie IndexNow — 24 august 2026
+
+Status: analiza terminata, verificata cu date live (GSC, Umami/Neon, build/teste);
+raportul complet e in `SEO-AUDIT-DEPARTAMENT-2026-08-24.md` (local, gitignored,
+ca si precedentele doua).
+
+- **Sterse** `SEO-AUDIT-DEPARTAMENT-2026-07-29.md` si
+  `SEO-AUDIT-DEPARTAMENT-2026-08-06.md` — instantanee depasite de patru
+  saptamani de trafic si de sesiunea din 21 august. Inlocuite de fisierul de
+  azi. Cele trei fisiere sunt in `.gitignore` (`/SEO-AUDIT-*.md`), deci nu au
+  fost niciodata in repo-ul public; stergerea nu e o operatie git.
+- GSC 28 vs 28 zile (`npm run gsc:weekly`, 26 iul-22 aug vs 28 iun-25 iul):
+  5.436 vs 2.216 clickuri (+145,3%), 494.470 vs 182.256 impresii (+171,3%),
+  CTR 1,10% vs 1,22% (-9,6%, diluare prin succes, nu regresie), pozitie 6,20
+  vs 7,77 (imbunatatire de 1,57 pozitii). Majoritatea query-urilor cap au
+  trecut din pozitia 7-8 in 3-6.
+- **Gasit un tipar nou:** trei query-uri mari (`calculator salariu net`,
+  `calcul salariu net`, `zile lucratoare 2026`) au CTR sub curba proprie a
+  site-ului la pozitia lor (curba din 5 august: poz 4 ≈ 1,47%, poz 5 ≈ 1,69%),
+  pierdere estimata ~1.000 clickuri/28 zile combinat. Query-urile cu an/luna
+  explicit in text au CTR peste curba. Ipoteza: SERP feature (featured
+  snippet/AI Overview) fura clickul pe genericele scurte; neconfirmabil direct
+  din GSC (`searchAppearance` tot 0 randuri). Actiune propusa, netestata inca:
+  titlu/meta cu raspuns direct pe homepage si `/calculator/calcul-salariu-net-4325-brut`.
+- **Umami interogat direct pe Neon** (28 zile): 8.543 pageviews, 6.804 vizite,
+  85,5% cu o singura pagevizualizare (asteptat, site utilitar). Doua semnale
+  noi fata de analizele anterioare: **Bing trimite 638 vizite/28 zile** (al
+  doilea canal dupa Google, peste toate motoarele alternative + LinkedIn +
+  Substack + Reddit la un loc) si **chatgpt.com trimite 37 de vizite** ca
+  referrer organic — primul semnal masurat de citare din motoare de raspuns AI.
+  Paginile noi din 21 august (`/salarii/*`) au trafic aproape nul, asteptat la
+  3 zile de la publicare.
+- Sanatate tehnica verificata azi: `npm run build`, `npm test` (8 suite) si
+  `npm run test:rendered` (290 rute, 290 blocuri JSON-LD) toate OK. Un singur
+  avertisment cosmetic: 2 titluri peste 60 de caractere in `/noutati`.
+- **Resubmis sitemap-ul complet (290 rute) prin `npm run indexnow`** —
+  ultima confirmare de trimitere din jurnal acoperea loturi mai vechi (63,
+  apoi 13 URL-uri); cele 93 de rute noi din 21 august nu aveau confirmare
+  directa. Acceptat HTTP 200.
+- Autoritate externa (Ahrefs, citire din 21 august, nu remasurata azi): DR 7,
+  32 de domenii (28% dofollow), 43 de backlinkuri (37% dofollow). Ramane
+  constrangerea structurala, a doua analiza consecutiva cu aceeasi concluzie.
+- **Pastrate** `STUDIU-COMPETITIV-HUB-SALARIAL-2026-08-21.md` (studiu activ,
+  cu verificare manuala inca deschisa la §9) si `STUDIU-GOOGLE-LEAK-2024.md`
+  (cadrul de analiza a factorilor de ranking ramane valabil; cifrele GSC
+  citate in el, din mai-iunie, sunt depasite si merita un refresh separat,
+  fara sa justifice stergerea).
+- Prioritati stabilite pentru urmatoarea sesiune, in ordine: (1) nu atinge
+  expansiunea din 21 august inainte de 4 septembrie (14 zile) / 18 septembrie
+  (28 zile); (2) test de titlu pe cele trei query-uri sub curba proprie; (3)
+  verificarea manuala ramasa din studiul competitiv (undelucram.ro,
+  ghidsalariu.ro blocheaza crawlerul); (4) distributia activelor noi (harta pe
+  judete, hub-urile de domeniu) pe canalele existente, nu constructia altora
+  noi; (5) remasurare Ahrefs in ~2 saptamani; (6) migrarea homepage-ului
+  ramane blocata de gate pana pe ~20 septembrie (a doua fereastra de 28 de
+  zile post-P0); (7) AdSense ramane neactivat, deliberat.
 
 ## Faza 1 si pipeline-ul de salarizare publica — 21 august 2026 (sesiune autonoma)
 
