@@ -607,15 +607,24 @@ export default function CalculatorSalariu({
     const parametri = new URLSearchParams(window.location.search);
     const dinBrut = parametri.get("brut");
     const dinNet = parametri.get("net");
-    const brut = dinBrut ?? dinNet;
+    // `salariu-input` nu vine dintr-un link partajat, ci dintr-un submit nativ:
+    // cine tasteaza si apasa Enter INAINTE ca React sa se hidrateze declanseaza
+    // trimiterea normala a formularului, fiindca `preventDefault` nu exista inca.
+    // Browserul reincarca pagina cu `?salariu-input=<valoare>`, iar omul ramanea
+    // cu formularul gol dupa ce tocmai isi scrisese salariul.
+    // Masurat in Umami pe 24 august 2026: 28 de aparitii reale. Il tratam ca pe
+    // un `brut` si normalizam URL-ul, deci reincarcarea da raspunsul, nu un gol.
+    const dinSubmitNativ = parametri.get("salariu-input");
+    const brut = dinBrut ?? dinNet ?? dinSubmitNativ;
     if (!brut) return;
 
-    const valoare = Math.round(Number(brut));
+    // Valoarea poate veni formatata („7.823"), asa cum o afiseaza inputul.
+    const valoare = Math.round(Number(String(brut).replace(/[^\d]/g, "")));
     // Taie valorile absurde dintr-un link modificat manual.
     if (!Number.isFinite(valoare) || valoare <= 0 || valoare > 10_000_000) return;
 
     paramCitit.current = true;
-    const modDinLink = dinBrut ? "brut" : "net";
+    const modDinLink = dinNet && !dinBrut ? "net" : "brut";
     const inputNou: InputState = {
       brut: String(valoare),
       tichete: "",
@@ -630,6 +639,12 @@ export default function CalculatorSalariu({
     setInput(inputNou);
     setRezAfisat(buildResult(inputNou, modDinLink, regimFiscal));
     setRezKey(inputKey(inputNou, modDinLink));
+
+    // Dupa un submit nativ, URL-ul contine numele campului din formular. Il
+    // rescriem in forma partajabila, ca sa nu circule linkuri cu `salariu-input`.
+    if (dinSubmitNativ && !dinBrut && !dinNet) {
+      window.history.replaceState(null, "", `?${new URLSearchParams({ brut: String(valoare) })}`);
+    }
     // Fara scroll: cine deschide linkul vede pagina de la inceput, ca oricare alta.
   }, [embedded, brutInitial, regimFiscal]);
 
