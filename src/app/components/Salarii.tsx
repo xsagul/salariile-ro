@@ -234,6 +234,7 @@ export function LinkCard({
   detaliu,
   valoare,
   subvaloare,
+  cauta,
 }: {
   href: string;
   titlu: string;
@@ -242,10 +243,14 @@ export function LinkCard({
   /** A doua cifra, ancorata in ocupatie. Fara ea, toate meseriile dintr-un
    *  sector arata identic in listing. */
   subvaloare?: string;
+  /** Textul peste care cauta filtrul de pe /salarii. Contine si sinonime care
+   *  nu se vad pe card, ca sa gaseasca „sora medicala" sau „IT". */
+  cauta?: string;
 }) {
   return (
     <Link
       href={href}
+      data-cauta={cauta}
       className="flex min-w-0 items-center justify-between gap-3 rounded-md border border-stone-200 bg-surface px-4 py-3 shadow-soft transition-colors hover:border-stone-300 hover:bg-canvas"
     >
       <span className="min-w-0">

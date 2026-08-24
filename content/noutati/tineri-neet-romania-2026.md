@@ -1,5 +1,5 @@
 ---
-title: "Tinerii din România, tot mai departe de școală și piața muncii"
+title: "Tinerii NEET în România: 19,2%, primii în UE"
 description: "Aproape unul din cinci tineri din România nu e nici la școală, nici la muncă. Suntem primii în Europa, și de ani buni nu se mișcă nimic."
 date: "2026-08-09"
 tip: "opinie"

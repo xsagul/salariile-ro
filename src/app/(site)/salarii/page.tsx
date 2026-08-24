@@ -9,6 +9,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumb, Faq, H1, Lead } from "@/app/components/ui";
+import FiltruMeserii from "@/app/components/FiltruMeserii";
 import { LinkCard, NotaSursa, lei, lunaLunga } from "@/app/components/Salarii";
 import { denumireScurtaCaen } from "@/lib/caen-denumiri";
 import { calculStandard } from "@/lib/fiscal";
@@ -136,7 +137,13 @@ export default function SalariiPage() {
           {/* Fara banda de trei carduri cu media pe economie: impingea lista de
               meserii — motivul pentru care omul intra pe pagina — sub fold.
               Cifrele raman in FAQ si pe fiecare pagina de meserie, unde au rost. */}
-          <nav aria-label="Categorii de meserii" className="mt-8 flex flex-wrap gap-2">
+          <FiltruMeserii total={MESERII.length} />
+
+          <nav
+            aria-label="Categorii de meserii"
+            data-scurtaturi-categorii
+            className="mt-8 flex flex-wrap gap-2 data-[filtrat=da]:hidden"
+          >
             <Link
               href="/salarii/clasament"
               className="rounded-full border border-stone-900 bg-stone-900 px-3 py-1.5 text-sm font-medium text-white shadow-soft transition-colors hover:bg-stone-700"
@@ -172,7 +179,7 @@ export default function SalariiPage() {
           </p>
 
           {categorii.map(({ categorie, meserii }) => (
-            <section key={categorie.slug} id={categorie.slug} className="mt-12 scroll-mt-20">
+            <section key={categorie.slug} id={categorie.slug} data-sectiune-meserii className="mt-12 scroll-mt-20">
               <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">
                 <Link href={`/salarii/domeniu/${categorie.slug}`} className="hover:underline hover:underline-offset-4">
                   {categorie.nume}
@@ -194,8 +201,22 @@ export default function SalariiPage() {
                     href={`/salarii/${meserie.slug}`}
                     titlu={meserie.nume}
                     detaliu={`CAEN ${date!.sector.cheie} · ${denumireScurtaCaen(date!.sector.cheie, date!.sector.denumire)}`}
-                    valoare={`${lei(date!.sector.brutCurent)} lei`}
-                    subvaloare={date!.isco ? `grupă ${lei(date!.isco.venitBrutTotal)}` : undefined}
+                    // Aceeasi baza ca pe pagina meseriei: intervalul net. Cat
+                    // timp cardul arata media sectorului, hubul si pagina de
+                    // detaliu spuneau doua cifre diferite pentru aceeasi meserie.
+                    valoare={
+                      date!.estimare
+                        ? `${lei(date!.estimare.netMin)}–${lei(date!.estimare.netMax)}`
+                        : `${lei(date!.netStandard)}`
+                    }
+                    subvaloare="lei net"
+                    cauta={[
+                      meserie.nume,
+                      meserie.de,
+                      categorie.nume,
+                      date!.sector.denumire,
+                      date!.isco?.nume ?? "",
+                    ].join(" ")}
                   />
                 ))}
               </div>
