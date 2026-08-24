@@ -6,14 +6,27 @@
 
 salariile.ro este un portal despre salarii și fiscalitate în România. Scop pe produs: calcul transparent salariu brut/net și informații fiscale actualizate, în prezent fără reclame și fără cont. Proiect independent, dezvoltat de Știuriuc Sorin-Marian.
 
-**Obiectivul real al proprietarului este VENITUL: site-ul trebuie să producă bani cât să înlocuiască salariul de la job.** Nu portofoliu, nu tranziție către front-end — versiunile anterioare ale acestui fișier spuneau asta și era greșit, iar o sesiune întreagă a fost judecată pe baza obiectivului greșit (24 august 2026).
+### Strategia, în ordinea decisă de proprietar (24 august 2026)
 
-Ce înseamnă asta în practică, pentru orice sesiune viitoare:
+Ținta finală este ca site-ul să producă venit cât să înlocuiască salariul de la job. Dar **secvența e deliberată și nu se scurtcircuitează**:
 
-- **Traficul nu e obiectivul, e un mijloc.** Nu raporta creșteri de impresii ca succes fără să spui ce venit produc.
-- **La 24 august 2026 site-ul nu are NICIUN mecanism de venit** — fără reclame, fără afiliere, fără produs plătit. Nu produce puțin; nu are de unde să producă. Ăsta e blocajul numărul unu, înaintea autorității.
-- **Valoarea pe vizitator contează mai mult decât numărul de vizitatori.** Un om care intră pe `/calculator-pfa` valorează pentru un contabil de ordinul sutelor de lei; același om valorează ~0,02 lei ca afișare de reclamă. Optimizarea pentru volum, când baza e mică, e drumul lung.
-- Direcția reclame-vs-produs rămâne nedecisă de proprietar; vezi memoria `directie-nedecisa-ads-vs-produs`. Nu presupune AdSense ca dat.
+1. **Acum:** salariile.ro devine cel mai mare hub salarial din România, acoperind ce fac paylab.ro și undelucram.ro.
+2. **Apoi:** postare de joburi, în zona ejobs / olx / anuntul.ro.
+3. **Abia după acoperirea nișei:** se decide monetizarea — vânzarea produsului, vânzarea traficului, AdSense, abonament de tip SmartBill sau altceva.
+
+**Nu propune monetizare acum.** A fost respinsă explicit. Nu e o scăpare, e o decizie: activul se construiește întâi. Versiuni anterioare ale acestui fișier spuneau că obiectivul e „tranziție profesională către front-end" — era greșit și a dus o sesiune întreagă pe direcția greșită.
+
+### Ce blochează de fapt pasul 1
+
+Nu numărul de pagini. **Datele.** Măsurat pe 24 august 2026:
+
+- Catalogul are 123 de meserii, dar plafonul cu cifră proprie e **95–100**, pentru că datele INS au doar 102 activități CAEN. Peste el nu se trece fără o sursă nouă.
+- paylab are **767 de poziții** pentru că are 14.383 de respondenți la sondaj. undelucram are **400.000 de salarii declarate** și 850.000 de utilizatori.
+- Diferența față de ei nu e volumul de conținut, e că **ei colectează date de la utilizatori și noi nu colectăm nimic.** Site-ul nu are, la data asta, niciun mecanism de colectare.
+
+Aproximativ **6.800 de oameni pe lună își tastează salariul brut** în calculator. Aia e exact materia primă pe care paylab a strâns-o prin sondaje. Se aruncă de fiecare dată.
+
+Decizia care deblochează pasul 1 e dacă se colectează salarii anonim (meserie + județ + brut, fără cont, fără PII) — și ea intră în tensiune cu poziționarea actuală „fără cont, fără reclame, nu colectăm nimic". **E o decizie de proprietar, nu de agent.**
 
 **Live:** https://salariile.ro
 **Repo:** https://github.com/xsagul/salariile-ro (public)
