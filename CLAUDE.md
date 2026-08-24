@@ -4,7 +4,16 @@
 
 ## Despre proiect
 
-salariile.ro este un portal despre salarii și fiscalitate în România. Scop: calcul transparent salariu brut/net și informații fiscale actualizate, în prezent fără reclame și fără cont. Modelul planificat este trafic organic și, numai după pragurile de conformitate/performance, monetizare prin AdSense. Proiect independent, dezvoltat de Știuriuc Sorin-Marian, cu obiectiv de tranziție profesională către front-end.
+salariile.ro este un portal despre salarii și fiscalitate în România. Scop pe produs: calcul transparent salariu brut/net și informații fiscale actualizate, în prezent fără reclame și fără cont. Proiect independent, dezvoltat de Știuriuc Sorin-Marian.
+
+**Obiectivul real al proprietarului este VENITUL: site-ul trebuie să producă bani cât să înlocuiască salariul de la job.** Nu portofoliu, nu tranziție către front-end — versiunile anterioare ale acestui fișier spuneau asta și era greșit, iar o sesiune întreagă a fost judecată pe baza obiectivului greșit (24 august 2026).
+
+Ce înseamnă asta în practică, pentru orice sesiune viitoare:
+
+- **Traficul nu e obiectivul, e un mijloc.** Nu raporta creșteri de impresii ca succes fără să spui ce venit produc.
+- **La 24 august 2026 site-ul nu are NICIUN mecanism de venit** — fără reclame, fără afiliere, fără produs plătit. Nu produce puțin; nu are de unde să producă. Ăsta e blocajul numărul unu, înaintea autorității.
+- **Valoarea pe vizitator contează mai mult decât numărul de vizitatori.** Un om care intră pe `/calculator-pfa` valorează pentru un contabil de ordinul sutelor de lei; același om valorează ~0,02 lei ca afișare de reclamă. Optimizarea pentru volum, când baza e mică, e drumul lung.
+- Direcția reclame-vs-produs rămâne nedecisă de proprietar; vezi memoria `directie-nedecisa-ads-vs-produs`. Nu presupune AdSense ca dat.
 
 **Live:** https://salariile.ro
 **Repo:** https://github.com/xsagul/salariile-ro (public)
