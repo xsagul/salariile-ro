@@ -66,19 +66,14 @@ export const metadata: Metadata = {
     description: "Calculează salariul net din brut sau brutul din net, cu regulile fiscale 2026.",
     images: ["/og-image.png"],
   },
+  // Index/follow sunt comportamentul implicit. Păstrăm doar controalele de
+  // preview aici, fără o directivă `index` care s-ar moșteni greșit pe 404.
   robots: {
-    index: true,
-    follow: true,
     googleBot: {
-      index: true,
-      follow: true,
       "max-snippet": -1,
       "max-image-preview": "large",
       "max-video-preview": -1,
     },
-  },
-  alternates: {
-    canonical: "https://salariile.ro",
   },
   verification: {
     other: {

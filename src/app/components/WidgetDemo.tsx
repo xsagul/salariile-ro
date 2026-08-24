@@ -90,7 +90,7 @@ export default function WidgetDemo({ variant = "minimal" }: WidgetDemoProps) {
       <a
         href={href}
         target="_blank"
-        rel="noopener"
+        rel="nofollow noopener"
         style={{
           display: "block",
           maxWidth,

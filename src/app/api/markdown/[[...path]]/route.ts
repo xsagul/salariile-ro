@@ -224,9 +224,11 @@ export async function GET(
     headers: {
       "Content-Type": "text/markdown; charset=utf-8",
       "x-markdown-tokens": String(tokenEstimate),
-      "Cache-Control": "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400",
-      // Vary: Accept — esențial pentru CDN să separe cache-ul HTML vs markdown
-      // (altfel risc de cache poisoning: browser primește markdown când vrea HTML)
+      // Next App Router suprascrie Vary pe răspunsul HTML (bug upstream
+      // vercel/next.js#85852). Până la rezolvarea lui, reprezentarea alternativă
+      // nu este cache-uită deloc: astfel markdown-ul nu poate otrăvi cache-ul HTML.
+      // Fetch-ul HTML intern rămâne revalidat separat mai sus.
+      "Cache-Control": "private, no-store, max-age=0",
       Vary: "Accept",
       // Indică canonical URL-ul HTML pentru claritate
       Link: `<${targetUrl}>; rel="canonical"`,

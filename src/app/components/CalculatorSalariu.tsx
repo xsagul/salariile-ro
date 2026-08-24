@@ -14,6 +14,7 @@ import {
   type Rezultat,
 } from "@/lib/fiscal";
 import { zileLucratoareLuna } from "@/lib/sarbatori";
+import { compuneFluturas } from "@/lib/fluturas";
 import FeedbackContextual from "@/app/components/FeedbackContextual";
 import { trackUmami } from "@/lib/umami";
 
@@ -88,49 +89,8 @@ function inputKey(inp: InputState, m: "brut" | "net") {
   return JSON.stringify([
     m, inp.brut, inp.tichete, inp.functieDeBAza,
     inp.persoanePretretinere, inp.varstaSub26, inp.copiiScolarizati, inp.scutitImpozit,
-    inp.salariuDeBaza ?? null,
+    inp.salariuDeBaza ?? null, inp.normaContract ?? null, inp.fractieLuna ?? null,
   ]);
-}
-
-// ─── Compunere brut pentru generatorul de fluturaș ────────────────────────────
-// Salariu de bază + ore suplimentare (tarif orar × ore × (1+spor%)) + sporuri fixe.
-// Rulează ÎNAINTE de motorul fiscal: calculeaza() primește brutul compus plus
-// salariuDeBaza (pentru eligibilitatea facilității OUG 89/2025). Reținerile NU
-// intră aici — se scad din net, după taxe (popriri/avans, ca pe statul de plată).
-function compuneFluturas(
-  inp: InputState,
-  extra: { sporOre: string; sporuri: string; normaOre: string; oreLucrate: string }
-) {
-  const baza = parseFloat(inp.brut) || 0;
-  const sporProc = parseFloat(extra.sporOre) || 0;
-  const fixe = parseInt(extra.sporuri) || 0;
-  const azi = new Date();
-  const oreNormaLuna = zileLucratoareLuna(azi.getFullYear(), azi.getMonth()) * 8;
-  // Norma lunară: implicit norma reală a lunii curente (zile lucrătoare × 8),
-  // editabilă. Orele lucrate: implicit norma întreagă. SUB normă = lună parțială
-  // (angajare/plecare la mijloc de lună, concediu fără plată) → venitul de bază
-  // se plătește proporțional. PESTE normă = diferența e automat ore suplimentare,
-  // plătite la tariful orar cu sporul procentual (nu există câmp separat — ca pe
-  // pontajul real, unde totalul orelor spune tot).
-  const oreNorma = Math.max(1, parseInt(extra.normaOre) || oreNormaLuna);
-  const oreLucrateTotal = extra.oreLucrate === "" ? oreNorma : Math.max(0, parseInt(extra.oreLucrate) || 0);
-  const oreSupl = Math.max(0, oreLucrateTotal - oreNorma);
-  const oreLucrate = Math.min(oreNorma, oreLucrateTotal);
-  const bazaRealizata = Math.round(baza * (oreLucrate / oreNorma));
-  const plataSupl = baza > 0 && oreSupl > 0
-    ? Math.round((baza / oreNorma) * oreSupl * (1 + sporProc / 100))
-    : 0;
-  const brutCompus = bazaRealizata + plataSupl + fixe;
-  return {
-    input: { ...inp, brut: String(brutCompus), salariuDeBaza: String(baza) } as InputState,
-    baza,
-    bazaRealizata,
-    plataSupl,
-    fixe,
-    oreNorma,
-    oreLucrate,
-    oreSupl,
-  };
 }
 
 // Exemple pentru placeholder – derivate din fiscal.ts (NU hardcodate).
@@ -257,7 +217,7 @@ async function generarePDFFluturas(opts: {
   /** Numele firmei, tipărit în antet (generatorul de fluturaș). */
   firma?: string;
   /** Defalcarea brutului compus: bază + ore suplimentare + sporuri (generatorul de fluturaș). */
-  detalii?: { baza: number; bazaRealizata: number; plataSupl: number; oreSupl: number; sporProc: number; fixe: number; oreNorma: number; oreLucrate: number };
+  detalii?: { baza: number; bazaRealizata: number; plataSupl: number; oreSupl: number; sporProc: number; fixe: number; oreNorma: number; oreLucrate: number; normaContract: "intreaga" | "partiala"; fractieLuna: number };
   /** Rețineri din net (avans, popriri) — scad din REST DE PLATĂ. */
   retineri?: number;
 }): Promise<void> {
@@ -358,7 +318,7 @@ async function generarePDFFluturas(opts: {
   const oreLucratePontaj = detalii?.oreLucrate ?? oreNormaPontaj;
   rand2(
     `Zile lucratoare: ${zileLucr}    Ore norma: ${oreNormaPontaj}    Ore lucrate: ${oreLucratePontaj}${oreSuplPontaj > 0 ? ` + ${oreSuplPontaj} supl.` : ""}`,
-    "Norma: 8 h/zi"
+    detalii?.normaContract === "partiala" ? "Contract: timp partial" : "Contract: norma intreaga"
   );
 
   // ─── Drepturi ─────────────────────────────────────────────────────────────
@@ -517,7 +477,7 @@ export default function CalculatorSalariu({
   // În modul fluturaș, inputul de calcul e brutul COMPUS (bază + suplimentare +
   // sporuri) cu salariuDeBaza atașat; altfel, inputul brut, neschimbat.
   const pregatesteInput = (inp: InputState): InputState =>
-    fluturas ? compuneFluturas(inp, { sporOre, sporuri, normaOre, oreLucrate }).input : inp;
+    fluturas ? compuneFluturas(inp, { sporOre, sporuri, normaOre, oreLucrate }, oreNormaCurenta).input : inp;
 
   // Rezultatul afișat – calculat O DATĂ la click pe Calculează, stocat ca obiect.
   // Nu se schimbă la tastare/toggle, doar la click. La mount, dacă brutInitial
@@ -528,9 +488,9 @@ export default function CalculatorSalariu({
   );
 
   // Defalcarea brutului compus la momentul ultimului calcul (doar mod fluturaș).
-  const [fluturasSnap, setFluturasSnap] = useState<{ baza: number; bazaRealizata: number; plataSupl: number; fixe: number; oreSupl: number; sporProc: number; oreNorma: number; oreLucrate: number } | null>(
+  const [fluturasSnap, setFluturasSnap] = useState<{ baza: number; bazaRealizata: number; plataSupl: number; fixe: number; oreSupl: number; sporProc: number; oreNorma: number; oreLucrate: number; normaContract: "intreaga" | "partiala"; fractieLuna: number } | null>(
     fluturas && brutInitial && parseFloat(brutInitial) > 0
-      ? (() => { const c = compuneFluturas(initialInput, { sporOre: "75", sporuri: "", normaOre: "", oreLucrate: "" }); return { baza: c.baza, bazaRealizata: c.bazaRealizata, plataSupl: c.plataSupl, fixe: c.fixe, oreSupl: c.oreSupl, sporProc: 75, oreNorma: c.oreNorma, oreLucrate: c.oreLucrate }; })()
+      ? (() => { const c = compuneFluturas(initialInput, { sporOre: "75", sporuri: "", normaOre: "", oreLucrate: "" }, oreNormaCurenta); return { baza: c.baza, bazaRealizata: c.bazaRealizata, plataSupl: c.plataSupl, fixe: c.fixe, oreSupl: c.oreSupl, sporProc: 75, oreNorma: c.oreNorma, oreLucrate: c.oreLucrate, normaContract: c.normaContract, fractieLuna: c.fractieLuna }; })()
       : null
   );
 
@@ -556,10 +516,10 @@ export default function CalculatorSalariu({
     }
     setEmptyWarn(false);
     if (fluturas) {
-      const c = compuneFluturas(input, { sporOre, sporuri, normaOre, oreLucrate });
+      const c = compuneFluturas(input, { sporOre, sporuri, normaOre, oreLucrate }, oreNormaCurenta);
       setRezAfisat(buildResult(c.input, mod, regimFiscal));
       setRezKey(inputKey(c.input, mod));
-      setFluturasSnap({ baza: c.baza, bazaRealizata: c.bazaRealizata, plataSupl: c.plataSupl, fixe: c.fixe, oreSupl: c.oreSupl, sporProc: parseFloat(sporOre) || 0, oreNorma: c.oreNorma, oreLucrate: c.oreLucrate });
+      setFluturasSnap({ baza: c.baza, bazaRealizata: c.bazaRealizata, plataSupl: c.plataSupl, fixe: c.fixe, oreSupl: c.oreSupl, sporProc: parseFloat(sporOre) || 0, oreNorma: c.oreNorma, oreLucrate: c.oreLucrate, normaContract: c.normaContract, fractieLuna: c.fractieLuna });
     } else {
       setRezAfisat(buildResult(input, mod, regimFiscal));
       setRezKey(inputKey(input, mod));
@@ -589,7 +549,7 @@ export default function CalculatorSalariu({
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
     const targetId = isMobile ? "rezultat-calcul" : "calc-layout";
     document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth", block: "start" });
-  }, [input, mod, regimFiscal, fluturas, sporOre, sporuri, normaOre, oreLucrate, embedded, brutInitial]);
+  }, [input, mod, regimFiscal, fluturas, sporOre, sporuri, normaOre, oreLucrate, oreNormaCurenta, embedded, brutInitial]);
 
   // Deschiderea unui link partajat: „?brut=5000" trebuie sa arate calculul, nu
   // un formular gol.
@@ -771,7 +731,7 @@ export default function CalculatorSalariu({
                     const brutVal = parseFloat(input.brut);
                     if (brutVal > 0) {
                       const rezTemp = calculeazaCuRegim(input, regimFiscal);
-                      if (rezTemp) set("brut", String(rezTemp.net));
+                      if (rezTemp) set("brut", String(rezTemp.netBani));
                     }
                   }
                   setMod("net");
@@ -819,14 +779,15 @@ export default function CalculatorSalariu({
                     />
                   </div>
                   <div className="grid grid-cols-2 gap-3">
-                    <InputNumber id="norma-ore" label="Normă lunară" unit="ore" value={normaOre} placeholder={`ex: ${oreNormaCurenta}`}
+                    <InputNumber id="norma-ore" label="Normă contract / lună" unit="ore" value={normaOre} placeholder={`ex: ${oreNormaCurenta}`}
                       onChange={setNormaOre} />
                     <InputNumber id="ore-lucrate" label="Ore lucrate" unit="ore" value={oreLucrate} placeholder={`ex: ${oreNormaCurenta}`}
                       onChange={setOreLucrate} />
                   </div>
                   <p className="-mt-3 mb-5 text-xs text-stone-500">
-                    Lasă gol pentru lună întreagă. Sub normă (angajare la mijloc de lună, concediu fără plată), baza se plătește
-                    proporțional; peste normă, diferența e automat ore suplimentare, plătite cu sporul de mai jos.
+                    Norma întreagă a lunii curente este {oreNormaCurenta} ore. O normă contractuală mai mică este tratată ca
+                    timp parțial, fără facilitatea OUG 89/2025. La normă întreagă, orele lucrate sub normă proratează baza și
+                    facilitatea; peste normă, diferența este plătită ca ore suplimentare.
                   </p>
                   <div className="grid grid-cols-2 gap-3">
                     <InputNumber id="spor-ore" label="Spor ore supl." unit="%" value={sporOre} placeholder="ex: 75"
@@ -1278,14 +1239,9 @@ export default function CalculatorSalariu({
             </>
           )}
 
-          {/* Punctul de descoperire pentru widget.
-              Widgetul e singurul lucru de pe site care produce backlinkuri prin
-              simpla folosire: cine il incorporeaza pastreaza si linkul de credit,
-              care e dofollow. Pana acum era accesibil doar din footer, adica
-              invizibil pentru cine tocmai a folosit calculatorul — desi exact
-              aia e audienta care l-ar pune pe propriul site (contabili, HR,
-              bloguri). Se arata dupa calcul, cand omul a vazut deja ce face.
-              Un singur rand, fara buton si fara banner. */}
+          {/* Punctul de descoperire pentru widget, afișat după calcul când
+              utilizatorul a văzut deja produsul. Integrarea păstrează o
+              atribuire vizibilă, calificată nofollow. */}
           {rezAfisat && !embedded && (
             <p className="mt-4 text-xs leading-relaxed text-stone-500" data-md-strip>
               Ai un site?{" "}

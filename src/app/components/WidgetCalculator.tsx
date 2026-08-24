@@ -482,7 +482,7 @@ export default function WidgetCalculator({ initialBrut }: { initialBrut?: string
         <a
           href="https://salariile.ro?utm_source=widget"
           target="_blank"
-          rel="noopener"
+          rel="nofollow noopener"
           className="font-medium text-stone-700 underline underline-offset-2 hover:text-stone-900"
         >
           salariile.ro

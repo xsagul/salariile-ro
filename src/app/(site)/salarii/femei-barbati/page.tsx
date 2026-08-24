@@ -14,6 +14,7 @@
 
 import type { Metadata } from "next";
 import Link from "next/link";
+import DataAssetCard from "@/app/components/DataAssetCard";
 import { Breadcrumb, Faq, H1, Lead } from "@/app/components/ui";
 import { CardCifra, NotaSursa, lei, procent } from "@/app/components/Salarii";
 import {
@@ -24,7 +25,10 @@ import {
   diferentaSexeTotal,
 } from "@/lib/ins-date";
 import { personSchema } from "@/lib/person";
-import { ogPage, twPage } from "@/lib/seo";
+import { ogPage, SITE_URL, twPage } from "@/lib/seo";
+
+const PAGE_PATH = "/salarii/femei-barbati";
+const CSV_PATH = "/date-diferente-salariale-femei-barbati-romania.csv";
 
 const AN = AN_OCUPATII.replace("Anul ", "");
 const TOTAL = diferentaSexeTotal();
@@ -111,7 +115,35 @@ const jsonLd = {
         logo: { "@type": "ImageObject", url: "https://salariile.ro/og-image.png", width: 1200, height: 630 },
       },
       mainEntityOfPage: "https://salariile.ro/salarii/femei-barbati",
-      dateModified: "2026-08-24",
+      dateModified: "2026-08-25",
+    },
+    {
+      "@type": "Dataset",
+      name: "Diferența de câștig între femei și bărbați în România",
+      description: DESCRIERE,
+      url: SITE_URL + PAGE_PATH,
+      identifier: "salariile-ro-diferente-castig-femei-barbati",
+      datePublished: "2026-08-25",
+      dateModified: "2026-08-25",
+      inLanguage: "ro-RO",
+      isAccessibleForFree: true,
+      spatialCoverage: { "@type": "Place", name: "România" },
+      creator: personSchema,
+      publisher: { "@type": "Organization", name: "Salariile.ro", url: SITE_URL },
+      license: "https://data.gov.ro/base/images/logoinst/OGL-ROU-1.0.pdf",
+      isBasedOn: "http://statistici.insse.ro:8077/tempo-online/",
+      variableMeasured: [
+        "venitul brut realizat al bărbaților",
+        "venitul brut realizat al femeilor",
+        "diferența procentuală de câștig",
+        "ponderea femeilor",
+      ],
+      distribution: {
+        "@type": "DataDownload",
+        name: "Diferența de câștig femei-bărbați în România — CSV",
+        encodingFormat: "text/csv",
+        contentUrl: SITE_URL + CSV_PATH,
+      },
     },
     ...(FAQ.length
       ? [
@@ -216,6 +248,13 @@ export default function FemeiBarbatiPage() {
               }
             />
           </div>
+
+          <DataAssetCard
+            href={CSV_PATH}
+            title="Datele din pagină, în format CSV"
+            description={`Descarcă veniturile brute realizate pentru femei și bărbați în octombrie ${AN}, diferențele pe grupe ISCO și pe vârste, plus efectivele și matricea INS folosită.`}
+            updated="25 august 2026"
+          />
 
           <p className="mt-4 rounded-md border border-stone-300 bg-surface p-4 text-sm leading-normal text-stone-700 shadow-soft">
             <strong className="font-semibold text-stone-900">Ce NU spune cifra:</strong> nu spune că femeile primesc cu{" "}

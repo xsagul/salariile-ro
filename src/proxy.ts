@@ -1,6 +1,7 @@
 // src/proxy.ts
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { prefersMarkdown } from "@/lib/http";
 
 export function proxy(request: NextRequest) {
   const accept = request.headers.get("accept") || "";
@@ -29,7 +30,7 @@ export function proxy(request: NextRequest) {
   //   - /api/*    (n-are sens să convertim răspunsuri API)
   //   - *.ext     (fișiere statice .png, .svg, .txt etc.)
   if (
-    accept.includes("text/markdown") &&
+    prefersMarkdown(accept) &&
     !path.startsWith("/api/") &&
     !/\.[a-z0-9]+$/i.test(path)
   ) {
@@ -108,15 +109,6 @@ export function proxy(request: NextRequest) {
   }
 
   response.headers.set('Content-Security-Policy', cspHeader);
-
-  // Vary: Accept — semnalează la CDN că răspunsul depinde de header-ul Accept
-  // (HTML pentru browser, markdown pentru agenți). Previne cache poisoning.
-  // Append la Vary-ul existent (Next adaugă deja rsc, next-router-* etc.).
-  const existingVary = response.headers.get("Vary");
-  response.headers.set(
-    "Vary",
-    existingVary ? `${existingVary}, Accept` : "Accept"
-  );
 
   // Link headers (RFC 8288) pentru descoperire agenți AI:
   // - sitemap      → unde sunt toate URL-urile indexabile

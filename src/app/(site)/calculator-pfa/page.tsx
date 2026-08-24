@@ -283,7 +283,7 @@ export default function CalculatorPfaPage() {
                       ))}
                     </tbody>
                 </TabelArticol>
-                <p className="mt-3 text-xs text-stone-500">
+                <p className="mt-3 text-xs text-stone-600">
                   Valori orientative pentru anul fiscal 2026, la salariul minim de {lei(SALARIU_MINIM_PFA_2026)} lei
                   valabil la 1 ianuarie 2026.
                 </p>

@@ -1361,3 +1361,46 @@ eroare** — arată exact ca „pagina nu are date". Fix: `export MSYS_NO_PATHCO
    — se declară pe pagina de discuție, doar `{{Citat web}}`, niciodată
    „Legături externe".
 5. **NU** construi pagini pe lună pentru zile lucrătoare (vezi dovada de mai sus)
+
+## Audit integral și remediere, 25 august 2026
+
+Implementat pe ramura `codex/audit-fixes-2026-08-25`. Excepție explicită a
+proprietarului: transportul sumelor prin `?brut` / `?net`, filtrarea lor din
+Umami/Vercel și redactarea istoricului rămân intenționat neschimbate timp de o
+săptămână. Nu s-au modificat layoutul de analytics, evenimentele Umami sau baza
+de date.
+
+### Corecturi cu impact direct
+
+- Calculator/fluturaș: facilitatea de 200/300 lei se proratează pentru lună
+  parțială și este zero la contract part-time; tichetele nu mai rup comutarea
+  brut↔net; căutarea net→brut își extinde dinamic limita.
+- Modelul celor 123 meserii și 37 comparații nu mai fabrică intervale sau
+  „câștigători” din două populații incompatibile. Reperele CAEN și ISCO sunt
+  afișate separat, inclusiv în metadata, FAQ și JSON-LD.
+- Câștigul mediu INS a fost actualizat atomic la iunie 2026: 9.564 lei brut și
+  5.734 lei net, cu `cs06r26.pdf`, dataseturile și toate suprafețele sincronizate.
+- Canibalizarea „salariu minim construcții” a fost redusă la un singur rezumat
+  contextual și link spre pagina owner.
+- Widgeturile distribuite folosesc `rel="nofollow noopener"`; contrastele PSI
+  identificate au fost corectate.
+- Două active publice citabile au fost adăugate: locuri vacante și diferențe de
+  câștig femei–bărbați, fiecare CSV stabil + schema.org `Dataset`.
+- 404 nu mai moștenește canonicalul homepage sau `robots index`; preview-urile
+  Google rămân nelimitate pe paginile valide.
+- Negocierea `Accept` este strictă. Din cauza bugului Next.js App Router care
+  suprascrie `Vary` pe HTML, reprezentarea Markdown este `private, no-store`,
+  eliminând posibilitatea de a contamina cache-ul HTML.
+- Headere de securitate, Node 22, Dependabot, audit npm fără vulnerabilități și
+  raportări GSC/Bing/Vercel cu ferestre exacte au fost adăugate/corectate.
+
+### Dovezi locale înainte de deploy
+
+- `npm test` — PASS, inclusiv regresiile fiscale și activele INS.
+- `npm run lint` — PASS.
+- `npx tsc --noEmit` — PASS.
+- `npm run build` — PASS, 302 pagini generate.
+- `npm run test:rendered` — PASS, 292 rute și 292 blocuri JSON-LD.
+- `npm audit --audit-level=low` — 0 vulnerabilități.
+- Vercel Analytics, fereastra exactă 27 iulie–23 august: 28 zile și 28 rânduri
+  zilnice, primul/ultimul bucket corecte.

@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 };
 
 const MINIMAL_CREDIT_CODE = `<a class="salariile-credit" href="https://salariile.ro?utm_source=widget"
-  target="_blank" rel="noopener"
+  target="_blank" rel="nofollow noopener"
   style="display:block;max-width:420px;margin:8px auto 0;font:14px/1.4 system-ui,sans-serif;color:#57534e">
   Calculator de salarii oferit de salariile.ro
 </a>`;
@@ -34,7 +34,7 @@ const MINIMAL_EMBED_CODE = `<iframe src="https://salariile.ro/widget/frame"
 ${MINIMAL_CREDIT_CODE}`;
 
 const COMPLETE_CREDIT_CODE = `<a class="salariile-credit" href="https://salariile.ro?utm_source=widget-complet"
-  target="_blank" rel="noopener"
+  target="_blank" rel="nofollow noopener"
   style="display:block;max-width:1152px;margin:8px auto 0;font:14px/1.4 system-ui,sans-serif;color:#57534e">
   Calculator complet de salarii oferit de salariile.ro
 </a>`;
@@ -46,7 +46,7 @@ const COMPLETE_EMBED_CODE = `<iframe src="https://salariile.ro/widget/frame?vari
 ${COMPLETE_CREDIT_CODE}`;
 
 const PAYSLIP_CREDIT_CODE = `<a class="salariile-credit" href="https://salariile.ro/fluturas-salariu?utm_source=widget-fluturas"
-  target="_blank" rel="noopener"
+  target="_blank" rel="nofollow noopener"
   style="display:block;max-width:1152px;margin:8px auto 0;font:14px/1.4 system-ui,sans-serif;color:#57534e">
   Generator de fluturaș de salariu oferit de salariile.ro
 </a>`;

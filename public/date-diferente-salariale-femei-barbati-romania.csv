@@ -1,0 +1,22 @@
+dimensiune,categorie,denumire,brut_masculin_lei,brut_feminin_lei,diferenta_fata_de_masculin_procente,salariati_masculin,salariati_feminin,pondere_femei_procente,perioada,matrice_ins
+total,total,Toate ocupațiile,8605,8114,-5.71,2445676,2169717,47.01,Anul 2024,FOM121B
+grupa_isco,muncitori,Muncitori calificați și asimilați,7292,5845,-19.84,409052,96241,19.05,Anul 2024,FOM121B
+grupa_isco,functionari,Funcționari administrativi,7489,6261,-16.40,106092,182677,63.26,Anul 2024,FOM121B
+grupa_isco,specialisti,Specialiști în diverse domenii de activitate,13687,11515,-15.87,412902,641808,60.85,Anul 2024,FOM121B
+grupa_isco,operatori,Operatori la instalații și mașini,7276,6251,-14.09,434229,99154,18.59,Anul 2024,FOM121B
+grupa_isco,tehnicieni,Tehnicieni și alți specialiști din domeniul tehnic,8973,7720,-13.96,251078,269626,51.78,Anul 2024,FOM121B
+grupa_isco,elementare,Ocupații elementare,5570,5061,-9.14,359662,237479,39.77,Anul 2024,FOM121B
+grupa_isco,conducatori,Conducători și funcționari superiori,12414,12036,-3.04,241250,185560,43.48,Anul 2024,FOM121B
+grupa_isco,servicii,Lucrători în domeniul serviciilor,5211,5188,-0.44,220869,453065,67.23,Anul 2024,FOM121B
+grupa_isco,agricultura,Lucrători calificați în agricultură și silvicultură,5209,5215,0.12,10542,4107,28.04,Anul 2024,FOM121B
+varsta_total_economie,15-19 ani,15-19 ani,5465,5007,-8.38,,,,Anul 2024,FOM121B
+varsta_total_economie,20-24 ani,20-24 ani,6604,6183,-6.37,,,,Anul 2024,FOM121B
+varsta_total_economie,25-29 ani,25-29 ani,8464,8097,-4.34,,,,Anul 2024,FOM121B
+varsta_total_economie,30-34 ani,30-34 ani,9326,8668,-7.06,,,,Anul 2024,FOM121B
+varsta_total_economie,35-39 ani,35-39 ani,9544,8599,-9.90,,,,Anul 2024,FOM121B
+varsta_total_economie,40-44 ani,40-44 ani,9548,8775,-8.10,,,,Anul 2024,FOM121B
+varsta_total_economie,45-49 ani,45-49 ani,8767,8287,-5.48,,,,Anul 2024,FOM121B
+varsta_total_economie,50-54 ani,50-54 ani,8159,7732,-5.23,,,,Anul 2024,FOM121B
+varsta_total_economie,55-59 ani,55-59 ani,8003,7626,-4.71,,,,Anul 2024,FOM121B
+varsta_total_economie,60-64 ani,60-64 ani,7859,8288,5.46,,,,Anul 2024,FOM121B
+varsta_total_economie,65+ ani,65+ ani,7595,7767,2.26,,,,Anul 2024,FOM121B

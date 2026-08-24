@@ -11,6 +11,7 @@
 
 import type { Metadata } from "next";
 import Link from "next/link";
+import DataAssetCard from "@/app/components/DataAssetCard";
 import { Breadcrumb, Faq, H1, Lead } from "@/app/components/ui";
 import { CardCifra, NotaSursa, lei, procent, trimestruScurt } from "@/app/components/Salarii";
 import {
@@ -27,7 +28,10 @@ import {
   type GrupaIsco,
 } from "@/lib/ins-date";
 import { personSchema } from "@/lib/person";
-import { ogPage, twPage } from "@/lib/seo";
+import { ogPage, SITE_URL, twPage } from "@/lib/seo";
+
+const PAGE_PATH = "/salarii/locuri-vacante";
+const CSV_PATH = "/date-locuri-vacante-romania.csv";
 
 const AN_ANCHETA = AN_OCUPATII.replace("Anul ", "");
 const TOTAL = vacanteTotal();
@@ -115,7 +119,35 @@ const jsonLd = {
         logo: { "@type": "ImageObject", url: "https://salariile.ro/og-image.png", width: 1200, height: 630 },
       },
       mainEntityOfPage: "https://salariile.ro/salarii/locuri-vacante",
-      dateModified: "2026-08-24",
+      dateModified: "2026-08-25",
+    },
+    {
+      "@type": "Dataset",
+      name: "Locuri de muncă vacante în România, pe grupe majore de ocupații",
+      description: DESCRIERE,
+      url: SITE_URL + PAGE_PATH,
+      identifier: "salariile-ro-locuri-vacante-isco",
+      datePublished: "2026-08-25",
+      dateModified: "2026-08-25",
+      inLanguage: "ro-RO",
+      isAccessibleForFree: true,
+      spatialCoverage: { "@type": "Place", name: "România" },
+      creator: personSchema,
+      publisher: { "@type": "Organization", name: "Salariile.ro", url: SITE_URL },
+      license: "https://data.gov.ro/base/images/logoinst/OGL-ROU-1.0.pdf",
+      isBasedOn: "http://statistici.insse.ro:8077/tempo-online/",
+      variableMeasured: [
+        "numărul locurilor de muncă vacante",
+        "rata locurilor de muncă vacante",
+        "variația anuală",
+        "reperul salarial brut indexat al grupei ISCO",
+      ],
+      distribution: {
+        "@type": "DataDownload",
+        name: "Locuri de muncă vacante în România — CSV",
+        encodingFormat: "text/csv",
+        contentUrl: SITE_URL + CSV_PATH,
+      },
     },
     ...(FAQ.length
       ? [
@@ -165,7 +197,7 @@ function SerieTrimestre({ valori, etichete }: { valori: (number | null)[]; etich
           />
         ))}
       </svg>
-      <div className="flex justify-between text-xs text-stone-500">
+      <div className="flex justify-between text-xs text-stone-600">
         <span>{trimestruScurt(etichete[0])}</span>
         <span>{trimestruScurt(etichete[etichete.length - 1])}</span>
       </div>
@@ -240,6 +272,13 @@ export default function LocuriVacantePage() {
               nota={celMaiCautat.nume}
             />
           </div>
+
+          <DataAssetCard
+            href={CSV_PATH}
+            title="Datele din pagină, în format CSV"
+            description={`Descarcă totalul și defalcarea pe grupe ISCO pentru ${PERIOADA}, împreună cu rata, variația anuală, perioadele și matricile INS folosite.`}
+            updated="25 august 2026"
+          />
 
           <section className="mt-12">
             <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">

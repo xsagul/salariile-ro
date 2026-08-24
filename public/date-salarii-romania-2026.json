@@ -1,8 +1,8 @@
 {
   "title": "Date salariale România 2026",
   "description": "Selecție verificată de indicatori salariali pentru România: salariul minim, indicatorul BASS și câștigul salarial mediu publicat de INS.",
-  "version": "2026-07-29",
-  "reference_date": "2026-07-29",
+  "version": "2026-08-25",
+  "reference_date": "2026-08-25",
   "language": "ro",
   "currency": "RON",
   "unit": "lei/lună",
@@ -34,10 +34,11 @@
       "institution": "Parlamentul României",
       "official_url": "https://legislatie.just.ro/Public/DetaliiDocument/308863"
     },
-    "ins_mai_2026": {
-      "name": "INS, câștigul salarial mediu — mai 2026",
+    "ins_iunie_2026": {
+      "name": "INS, câștigul salarial mediu — iunie 2026",
       "institution": "Institutul Național de Statistică",
-      "official_url": "https://insse.ro/cms/sites/default/files/com_presa/com_pdf/cs05r26.pdf"
+      "official_url": "https://insse.ro/cms/sites/default/files/com_presa/com_pdf/cs06r26.pdf",
+      "publication_date": "2026-08-12"
     }
   },
   "data_dictionary": {
@@ -88,17 +89,17 @@
       "methodology_note": "9.192 lei este indicatorul stabilit prin Legea 44/2026 pentru bugetul asigurărilor sociale; 5.377 lei este o estimare netă standard Salariile.ro, nu o statistică INS."
     },
     {
-      "id": "ins_average_earnings_may_2026",
-      "indicator": "Câștigul salarial mediu lunar INS — mai 2026",
-      "period_label": "mai 2026",
-      "period_start": "2026-05-01",
-      "period_end": "2026-05-31",
-      "gross_lei": 9483,
-      "net_lei": 5684,
+      "id": "ins_average_earnings_june_2026",
+      "indicator": "Câștigul salarial mediu lunar INS — iunie 2026",
+      "period_label": "iunie 2026",
+      "period_start": "2026-06-01",
+      "period_end": "2026-06-30",
+      "gross_lei": 9564,
+      "net_lei": 5734,
       "gross_value_type": "observed_aggregate",
       "net_value_type": "observed_aggregate",
-      "source_ids": ["ins_mai_2026"],
-      "methodology_note": "Valori agregate publicate de INS pentru luna mai; netul agregat nu reprezintă conversia fiscală a unui salariu individual de 9.483 lei brut."
+      "source_ids": ["ins_iunie_2026"],
+      "methodology_note": "Valori agregate publicate de INS pentru luna iunie; netul agregat nu reprezintă conversia fiscală a unui salariu individual de 9.564 lei brut."
     }
   ]
 }

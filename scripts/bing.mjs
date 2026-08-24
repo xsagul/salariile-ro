@@ -9,6 +9,8 @@
 //   node scripts/bing.mjs links /calculator-pfa   # backlinkuri către o pagină
 //   node scripts/bing.mjs linkcounts         # pagini + câte linkuri externe are fiecare
 //   node scripts/bing.mjs queries            # interogări de căutare pe Bing
+//   node scripts/bing.mjs queries --date=2026-08-21
+//   node scripts/bing.mjs queries --all-dates
 //   node scripts/bing.mjs crawl              # statistici de crawl Bing
 //   <orice> --json                           # JSON brut
 //
@@ -68,6 +70,13 @@ const fullUrl = (arg) => {
   if (/^https?:\/\//i.test(arg)) return arg;
   return SITE.replace(/\/+$/, "") + (arg.startsWith("/") ? arg : "/" + arg);
 };
+
+function bingDate(value) {
+  const milliseconds = String(value || "").match(/\/Date\((-?\d+)/)?.[1];
+  if (!milliseconds) return "";
+  const date = new Date(Number(milliseconds));
+  return Number.isNaN(date.getTime()) ? "" : date.toISOString().slice(0, 10);
+}
 
 (async () => {
   try {
@@ -148,13 +157,28 @@ const fullUrl = (arg) => {
       const d = await call("GetQueryStats", { siteUrl: SITE });
       if (opt.json) return console.log(JSON.stringify(d, null, 2));
       const rows = d || [];
-      console.log(`\nInterogări de căutare pe Bing (ultima perioadă):\n`);
       if (!rows.length) return console.log("(niciun date încă)\n");
-      console.log("  impresii  clicuri  poziție  interogare");
-      for (const r of rows.slice(0, Number(opt.limit || 30))) {
+      const datedRows = rows.map((row) => ({ ...row, _date: bingDate(row.Date) }));
+      const availableDates = [...new Set(datedRows.map((row) => row._date).filter(Boolean))].sort();
+      const requestedDate = opt.date ? String(opt.date) : availableDates.at(-1);
+      if (opt.date && !availableDates.includes(requestedDate)) {
+        throw new Error(`Bing nu a returnat date pentru ${requestedDate}. Disponibile: ${availableDates.at(0)} → ${availableDates.at(-1)}.`);
+      }
+      const allDates = opt["all-dates"] === true || opt["all-dates"] === "true";
+      const selectedRows = (allDates
+        ? datedRows
+        : datedRows.filter((row) => row._date === requestedDate))
+        .sort((a, b) => (b.Impressions || 0) - (a.Impressions || 0));
+      console.log(
+        allDates
+          ? `\nInterogări de căutare pe Bing (${availableDates.at(0)} → ${availableDates.at(-1)}):\n`
+          : `\nInterogări de căutare pe Bing (${requestedDate}, ultima perioadă disponibilă):\n`,
+      );
+      console.log("  data        impresii  clicuri  poziție  interogare");
+      for (const r of selectedRows.slice(0, Number(opt.limit || 30))) {
         const q = r.Query || "";
         console.log(
-          `  ${String(r.Impressions ?? "—").padStart(8)}  ${String(r.Clicks ?? "—").padStart(7)}  ${String(
+          `  ${String(r._date || "—").padEnd(10)}  ${String(r.Impressions ?? "—").padStart(8)}  ${String(r.Clicks ?? "—").padStart(7)}  ${String(
             r.AvgImpressionPosition ?? r.Position ?? "—",
           ).padStart(7)}  ${q}`,
         );

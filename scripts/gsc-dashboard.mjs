@@ -85,8 +85,8 @@ function position(value) {
   return value ? value.toFixed(2) : "—";
 }
 
-/** Ziua in care paginile de meserie au trecut pe intervalul CAEN×ISCO. */
-const ZIUA_INTERVALULUI = "2026-08-24";
+/** Ziua recastului: CAEN si ISCO au devenit repere separate, fara interval. */
+const DATA_RECAST_REPERE = "2026-08-25";
 
 /** „1 click", nu „1 clickuri". */
 function clickuri(n) {
@@ -148,11 +148,9 @@ try {
   // salariu" cad amandoua in tipare largi. Pe pagini e curat, fiindca tot
   // clusterul sta sub /salarii si /compara.
   //
-  // De ce e aici si nu intr-un script separat: pe 24 august 2026 paginile de
-  // meserie au trecut de la media sectorului CAEN la un interval CAEN×ISCO,
-  // pentru ca 55% dintre ele afisau aceeasi cifra ca alta meserie. Testul
-  // falsificabil al schimbarii e mai jos si trebuie sa apara la fiecare rulare,
-  // nu cand isi aminteste cineva de el.
+  // Sectiunea este strict descriptiva. Datele pe pagina includ toate query-urile
+  // si nu sunt comparabile cauzal cu un baseline construit pe query-uri. Recastul
+  // metodologic se noteaza doar ca reper temporal, fara verdict atribuit lui.
   const paginiCluster = (currentPages.rows || []).filter((rand) =>
     /\/(salarii|compara)(\/|$)/.test(rand.keys?.[0] ?? ""),
   );
@@ -206,27 +204,17 @@ try {
       return `| ${escapeCell(page)} | ${number(row.clicks)} | ${number(row.impressions)} | ${pct(row.ctr)} | ${position(row.position)} |`;
     }),
     "",
-    "## Clusterul de meserii — testul intervalului",
+    "## Clusterul de meserii — monitorizare descriptivă",
     "",
-    "Pe 24 august 2026, paginile de meserie au trecut de la media sectorului CAEN",
-    "la un interval CAEN×ISCO, pentru că 68 din 123 (55%) afișau aceeași cifră ca",
-    "altă meserie. Baseline-ul de dinainte, pe 7 zile: `/salarii/asistent-medical`",
-    "avea **17 afișări și 0 clickuri** de pe pozițiile 4,5–6.",
+    `Pe ${DATA_RECAST_REPERE}, paginile de meserie au fost reformulate pentru a afișa`,
+    "separat reperele CAEN și ISCO, fără a le transforma într-un interval al ocupației.",
+    "Valorile de mai jos sunt metrici agregate pe pagini. Ele nu izolează efectul",
+    "recastului și nu trebuie comparate cauzal cu baseline-uri pe interogări.",
     "",
     `- Cluster \`/salarii\` + \`/compara\`: **${clickuri(clusterMeserii.clicks)}** din ${number(clusterMeserii.impressions)} afișări (CTR ${pct(clusterMeserii.ctr)}), pe ${clusterMeserii.pagini} pagini cu date.`,
     asistent
       ? `- \`/salarii/asistent-medical\`: **${clickuri(asistent.clicks)}** din ${number(asistent.impressions)} afișări, poziția ${position(asistent.position)}.`
       : "- `/salarii/asistent-medical`: fără date în această fereastră.",
-    // Verdictul se da NUMAI pe o fereastra care incepe dupa schimbare. Altfel
-    // raportul ar judeca modificarea folosind zile in care ea inca nu exista pe
-    // site — exact eroarea de atribuire pe care roadmap-ul o interzice.
-    currentStart < ZIUA_INTERVALULUI
-      ? `- Verdict: **nu se poate formula încă.** Fereastra începe pe ${currentStart}, înainte de schimbarea din ${ZIUA_INTERVALULUI}, deci conține zile în care paginile arătau încă media sectorului. Prima citire curată e după ${ZIUA_INTERVALULUI} + 28 de zile.`
-      : !asistent || asistent.impressions < 15
-        ? "- Verdict: încă nu se poate formula, afișările sunt prea puține față de baseline."
-        : asistent.clicks === 0
-          ? "- **Verdict: ipoteza e INFIRMATĂ.** Pagina are afișări comparabile cu baseline-ul și tot zero clickuri, deci cifra greșită nu era cauza. Caută altundeva: intenția interogării, SERP features sau titlul."
-          : "- **Verdict: ipoteza ține.** Pagina a trecut de la zero clickuri; confirmă pe încă o fereastră înainte de a extinde modelul.",
     "",
     "## Semnale de urmărit",
     "",

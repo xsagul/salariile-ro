@@ -82,6 +82,14 @@ export interface InputState {
    *  + sporuri (generatorul de fluturaș). Facilitatea OUG 89/2025 se decide pe bază
    *  minimă + plafonul de venit brut, nu pe brutul compus. Absent → bază = brut. */
   salariuDeBaza?: string;
+  /** Tipul normei din contract. Facilitatea OUG 89/2025 este rezervată contractelor
+   *  cu normă întreagă. Absent păstrează comportamentul istoric al calculatorului
+   *  simplu; generatorul de fluturaș transmite întotdeauna valoarea explicită. */
+  normaContract?: "intreaga" | "partiala";
+  /** Fracția de lună pentru care se determină venitul (0–1). Pentru un contract
+   *  cu normă întreagă început/încetat în cursul lunii ori cu perioadă nelucrată,
+   *  OUG 89/2025 art. III alin. (4) cere diminuarea facilității. */
+  fractieLuna?: number;
 }
 
 export interface Rezultat {
@@ -96,7 +104,7 @@ export interface Rezultat {
   cam: number; //               D112: C4_ct · creanța 480 (CAM angajator 2,25%)
   costTotal: number; //         brut + CAM + tichete (cost total angajator)
   brutNet: number; //           % din brut care ajunge net (afișaj)
-  facilitate: number; //        suma netaxabilă OUG 89/2025 efectiv aplicată (0 sau DEDUCERE_MINIM)
+  facilitate: number; //        suma netaxabilă OUG 89/2025 efectiv aplicată (0–DEDUCERE_MINIM)
 }
 
 // ─── Calcul deducere personală (Codul Fiscal art. 77) ────────────────────────
@@ -141,14 +149,21 @@ export function calculeazaCuRegim(
   const { functieDeBAza, persoanePretretinere, varstaSub26, copiiScolarizati, scutitImpozit } = input;
   const regim = REGIMURI_FISCALE_SALARIU[regimFiscal];
 
-  // Facilitatea OUG 89/2025: salariul DE BAZĂ = minimul, iar venitul brut din
-  // salarii (fără tichete) ≤ plafon. Când brutul e compus (bază + suplimentare +
-  // sporuri), eligibilitatea se decide pe bază; fără salariuDeBaza, bază = brut,
-  // deci comportamentul istoric (brut === minim) rămâne identic.
+  // Facilitatea OUG 89/2025: contract cu normă întreagă, salariul DE BAZĂ = minimul,
+  // iar venitul brut din salarii (fără tichete) ≤ plafon. Când brutul e compus
+  // (bază + suplimentare + sporuri), eligibilitatea se decide pe bază; fără
+  // salariuDeBaza, bază = brut, deci comportamentul istoric rămâne identic.
+  // Art. III alin. (4) cere diminuarea sumei pentru fracția de lună; D112 păstrează
+  // suma diminuată într-un câmp distinct. Rotunjim la leu, ca restul bazelor D112.
   const salariuDeBaza = input.salariuDeBaza ? parseFloat(input.salariuDeBaza) : brut;
+  const normaIntreaga = input.normaContract !== "partiala";
+  const fractieLunaRaw = input.fractieLuna ?? 1;
+  const fractieLuna = Number.isFinite(fractieLunaRaw)
+    ? Math.min(1, Math.max(0, fractieLunaRaw))
+    : 1;
   const facilitate =
-    (functieDeBAza && salariuDeBaza === regim.salariuMinim && brut <= regim.plafonFacilitate)
-      ? regim.facilitate
+    (functieDeBAza && normaIntreaga && salariuDeBaza === regim.salariuMinim && brut <= regim.plafonFacilitate)
+      ? Math.round(regim.facilitate * fractieLuna)
       : 0;
   const bazaCasCassSalariu = Math.max(0, brut - facilitate);
 
@@ -218,6 +233,8 @@ export function calculeazaBrutDinNetCuRegim(
   input: Omit<InputState, "brut">,
   regimFiscal: RegimFiscalSalariu,
 ): number {
+  if (!Number.isFinite(net) || net <= 0) return 0;
+
   const valoriSpeciale = [REGIMURI_FISCALE_SALARIU[regimFiscal].salariuMinim];
   for (const v of valoriSpeciale) {
     const rez = calculeazaCuRegim({ ...input, brut: String(v) }, regimFiscal);
@@ -225,7 +242,19 @@ export function calculeazaBrutDinNetCuRegim(
   }
 
   let lo = net;
-  let hi = net * 3;
+  let hi = Math.max(1, net * 3);
+
+  // Cu tichete, taxele aferente lor se rețin din salariul în bani. Pentru un net
+  // cash mic, brutul necesar poate depăși mult vechiul plafon fix `net × 3`.
+  // Extindem intervalul până când capătul superior atinge ținta, apoi aplicăm
+  // aceeași căutare binară. Limita de 60 dublări evită orice buclă necontrolată.
+  let rezHi = calculeazaCuRegim({ ...input, brut: String(hi) }, regimFiscal);
+  for (let i = 0; i < 60 && (!rezHi || rezHi.netBani < net); i++) {
+    lo = hi;
+    hi *= 2;
+    rezHi = calculeazaCuRegim({ ...input, brut: String(hi) }, regimFiscal);
+  }
+
   for (let i = 0; i < 60; i++) {
     const mid = (lo + hi) / 2;
     const rez = calculeazaCuRegim({ ...input, brut: String(mid) }, regimFiscal);

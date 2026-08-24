@@ -1,7 +1,7 @@
 /*!
  * salariile.ro — script de integrare a widgetului (embed hibrid)
  * Găsește <div class="salariile-widget">, injectează iframe-ul calculatorului,
- * adaugă linkul de credit în DOM-ul paginii-gazdă (crawlable, contează pentru SEO)
+ * adaugă atribuirea vizibilă în DOM-ul paginii-gazdă
  * și dimensionează iframe-ul automat prin postMessage (fără height fix).
  *
  * Cod de integrare pentru gazdă:
@@ -39,10 +39,11 @@
       "width:100%;max-width:420px;height:" + clampHeight(el.getAttribute("data-height") || 790) + "px;border:1px solid #e7e5e4;border-radius:8px;display:block;box-sizing:border-box;margin:0 auto";
     iframe.height = String(clampHeight(el.getAttribute("data-height") || 790));
 
-    // Linkul de credit stă în DOM-ul GAZDEI (nu în iframe), ca să fie crawlabil.
-    // Ancoră de brand, conform politicii Google anti widget-link-scheme.
+    // Creditul vizibil stă în DOM-ul GAZDEI (nu în iframe). Linkul este
+    // calificat nofollow, ca integrarea să ofere atribuire fără semnal SEO.
     var credit = el.querySelector(".salariile-credit");
     if (credit) {
+      credit.setAttribute("rel", "nofollow noopener");
       el.insertBefore(iframe, credit);
     } else {
       el.appendChild(iframe);
@@ -50,7 +51,7 @@
       a.className = "salariile-credit";
       a.href = ORIGIN + "?utm_source=widget";
       a.target = "_blank";
-      a.rel = "noopener";
+      a.rel = "nofollow noopener";
       a.textContent = "Calculator de salarii oferit de salariile.ro";
       a.style.cssText =
         "display:block;max-width:420px;margin:8px auto 0;font:14px/1.4 system-ui,sans-serif;color:#57534e";

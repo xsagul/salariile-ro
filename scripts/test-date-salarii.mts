@@ -4,6 +4,7 @@ import path from "node:path";
 
 const datasetModulePath = "../src/lib/date-salarii.ts";
 const {
+  LATEST_INS_EARNINGS,
   SALARY_DATA_2026,
   SALARY_DATASET_REFERENCE_DATE,
   SALARY_DATASET_SOURCES,
@@ -14,8 +15,25 @@ const {
 const projectRoot = process.cwd();
 const jsonPath = path.join(projectRoot, "public", "date-salarii-romania-2026.json");
 const csvPath = path.join(projectRoot, "public", "date-salarii-romania-2026.csv");
+const insTempoPath = path.join(projectRoot, "src", "data", "ins-caen.json");
 
 const publicJson = JSON.parse(await readFile(jsonPath, "utf8"));
+const insTempo = JSON.parse(await readFile(insTempoPath, "utf8"));
+
+const ultimaLunaBrut = insTempo.brut.luni.at(-1);
+const ultimaLunaNet = insTempo.net.luni.at(-1);
+const totalBrut = insTempo.brut.activitati.find((row: { caen: string }) => row.caen.startsWith("TOTAL"));
+const totalNet = insTempo.net.activitati.find((row: { caen: string }) => row.caen.startsWith("TOTAL"));
+
+assert.equal(
+  ultimaLunaBrut,
+  `Luna ${LATEST_INS_EARNINGS.periodLabel}`,
+  "Datasetul public a rămas în urma ultimei luni brute din TEMPO",
+);
+assert.equal(ultimaLunaNet, ultimaLunaBrut, "Seriile brute și nete INS nu au aceeași lună de referință");
+assert.ok(totalBrut && totalNet, "Rândul TOTAL ECONOMIE lipsește din datele TEMPO");
+assert.equal(totalBrut.valori.at(-1), LATEST_INS_EARNINGS.grossLei, "Brutul INS public nu corespunde TOTAL ECONOMIE");
+assert.equal(totalNet.valori.at(-1), LATEST_INS_EARNINGS.netLei, "Netul INS public nu corespunde TOTAL ECONOMIE");
 
 assert.equal(publicJson.version, SALARY_DATASET_VERSION, "Versiunea JSON nu corespunde modulului TypeScript");
 assert.equal(

@@ -119,7 +119,7 @@ export default async function DomeniuPage({ params }: Props) {
     },
     {
       q: `De ce mai multe meserii din ${numeMic} au aceeași cifră?`,
-      a: `Pentru că INS nu publică o medie lunară pe ocupație, ci pe activitatea economică a angajatorului. Meseriile care lucrează în aceeași activitate CAEN moștenesc aceeași medie. Pe pagina fiecărei meserii vezi și a doua măsurătoare, dinspre ocupație — grupa majoră ISCO-08 din ancheta INS din octombrie — care le desparte acolo unde grupele diferă.`,
+      a: `Pentru că INS nu publică o medie lunară pe ocupație, ci pe activitatea economică a angajatorului. Meseriile care lucrează în aceeași activitate CAEN au același reper de sector. Pe pagina fiecărei meserii vezi separat și reperul grupei majore ISCO-08 din ancheta INS din octombrie. Acesta descrie o familie largă de ocupații din toate sectoarele; nu este o estimare care diferențiază automat meseriile.`,
     },
   ];
 

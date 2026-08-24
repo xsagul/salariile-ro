@@ -429,14 +429,14 @@ export function vacantePeGrupe(): Vacante[] {
 // ─── Punerea celor doua serii pe aceeasi perioada ────────────────────────────
 //
 // Seria pe activitati CAEN e lunara si proaspata; ancheta pe ocupatii ISCO e
-// anuala si din octombrie, deci mai veche cu peste un an. Cele doua cifre NU se
-// pot pune in acelasi interval asa cum vin: ar amesteca doua momente diferite.
+// anuala si din octombrie, deci mai veche cu peste un an. Cifrele raman repere
+// separate; aducerea la aceeasi luna nu le transforma intr-un interval.
 //
 // Le aducem la aceeasi luna inmultind valorile ISCO cu raportul dintre media pe
 // economie de acum si media pe economie din ancheta. Ipoteza, declarata explicit
 // in pagina: grupele de ocupatii au crescut in acelasi ritm cu economia. Nu e o
-// masuratoare, e o indexare — de aceea valorile indexate se eticheteaza mereu
-// „estimare", niciodata „conform INS".
+// masuratoare, e o indexare — de aceea valorile se eticheteaza „reper indexat",
+// niciodata drept salariul ocupatiei ori valoare observata de INS in luna noua.
 
 /** Cat a crescut media pe economie intre ancheta pe ocupatii si luna curenta. */
 export const FACTOR_INDEXARE_OCUPATII: number | null = (() => {

@@ -1,8 +1,31 @@
 // Setul de date publicat la /date-salarii. Valorile sunt intenționat puține și
 // strict documentate: nu amestecăm praguri legale, estimări și statistici INS.
 
-export const SALARY_DATASET_VERSION = "2026-07-29";
-export const SALARY_DATASET_REFERENCE_DATE = "2026-07-29";
+export const SALARY_DATASET_VERSION = "2026-08-25";
+export const SALARY_DATASET_REFERENCE_DATE = "2026-08-25";
+
+/**
+ * Sursa unică pentru cea mai recentă valoare lunară INS folosită în paginile
+ * editoriale și în datasetul public. Testul datasetului o compară și cu ultima
+ * lună / rândul TOTAL ECONOMIE din `src/data/ins-caen.json`, ca o actualizare
+ * TEMPO să nu poată lăsa aceste valori în urmă în tăcere.
+ */
+export const LATEST_INS_EARNINGS = {
+  sourceId: "ins_iunie_2026",
+  recordId: "ins_average_earnings_june_2026",
+  periodLabel: "iunie 2026",
+  monthName: "iunie",
+  periodStart: "2026-06-01",
+  periodEnd: "2026-06-30",
+  grossLei: 9564,
+  netLei: 5734,
+  previousPeriodLabel: "mai 2026",
+  previousNetLei: 5684,
+  monthlyNetChangePercent: 0.9,
+  publicationDate: "2026-08-12",
+  publicationDateLabel: "12 august 2026",
+  officialUrl: "https://insse.ro/cms/sites/default/files/com_presa/com_pdf/cs06r26.pdf",
+} as const;
 
 export const SALARY_DATASET_SOURCES = {
   hg_1506_2024: {
@@ -25,10 +48,11 @@ export const SALARY_DATASET_SOURCES = {
     institution: "Parlamentul României",
     official_url: "https://legislatie.just.ro/Public/DetaliiDocument/308863",
   },
-  ins_mai_2026: {
-    name: "INS, câștigul salarial mediu — mai 2026",
+  ins_iunie_2026: {
+    name: "INS, câștigul salarial mediu — iunie 2026",
     institution: "Institutul Național de Statistică",
-    official_url: "https://insse.ro/cms/sites/default/files/com_presa/com_pdf/cs05r26.pdf",
+    official_url: LATEST_INS_EARNINGS.officialUrl,
+    publication_date: LATEST_INS_EARNINGS.publicationDate,
   },
 } as const;
 
@@ -92,18 +116,18 @@ export const SALARY_DATA_2026 = [
       "9.192 lei este indicatorul stabilit prin Legea 44/2026 pentru bugetul asigurărilor sociale; 5.377 lei este o estimare netă standard Salariile.ro, nu o statistică INS.",
   },
   {
-    id: "ins_average_earnings_may_2026",
-    indicator: "Câștigul salarial mediu lunar INS — mai 2026",
-    period_label: "mai 2026",
-    period_start: "2026-05-01",
-    period_end: "2026-05-31",
-    gross_lei: 9483,
-    net_lei: 5684,
+    id: LATEST_INS_EARNINGS.recordId,
+    indicator: `Câștigul salarial mediu lunar INS — ${LATEST_INS_EARNINGS.periodLabel}`,
+    period_label: LATEST_INS_EARNINGS.periodLabel,
+    period_start: LATEST_INS_EARNINGS.periodStart,
+    period_end: LATEST_INS_EARNINGS.periodEnd,
+    gross_lei: LATEST_INS_EARNINGS.grossLei,
+    net_lei: LATEST_INS_EARNINGS.netLei,
     gross_value_type: "observed_aggregate",
     net_value_type: "observed_aggregate",
-    source_ids: ["ins_mai_2026"],
+    source_ids: [LATEST_INS_EARNINGS.sourceId],
     methodology_note:
-      "Valori agregate publicate de INS pentru luna mai; netul agregat nu reprezintă conversia fiscală a unui salariu individual de 9.483 lei brut.",
+      `Valori agregate publicate de INS pentru luna ${LATEST_INS_EARNINGS.monthName}; netul agregat nu reprezintă conversia fiscală a unui salariu individual de ${LATEST_INS_EARNINGS.grossLei.toLocaleString("ro-RO")} lei brut.`,
   },
 ] as const satisfies readonly SalaryDatasetRecord[];
 

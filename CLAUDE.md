@@ -24,7 +24,7 @@ Nu numărul de pagini. **Datele.** Măsurat pe 24 august 2026:
 - paylab are **767 de poziții** pentru că are 14.383 de respondenți la sondaj. undelucram are **400.000 de salarii declarate** și 850.000 de utilizatori.
 - Diferența față de ei nu e volumul de conținut, e că **ei colectează date de la utilizatori și noi nu colectăm nimic.** Site-ul nu are, la data asta, niciun mecanism de colectare.
 
-Aproximativ **6.800 de oameni pe lună își tastează salariul brut** în calculator. Aia e exact materia primă pe care paylab a strâns-o prin sondaje. Se aruncă de fiecare dată.
+Aproximativ **3.400 de sesiuni pe lună includ cel puțin un calcul salarial**, conform baseline-ului măsurat în analytics. Acesta este semnal de interes, nu echivalentul a 3.400 de persoane unice și nici un set de salarii declarat prin sondaj.
 
 Decizia care ar debloca pasul 1 e dacă se colectează salarii anonim (meserie + județ + brut, fără cont, fără PII).
 
@@ -61,7 +61,7 @@ Tensiunea care a oprit-o, și care rămâne reală: `/despre` promite azi „nu 
 - Salariu minim brut: **4.325 lei din 1 iulie 2026** (HG 146/2026); 4.050 lei în prima jumătate a anului
 - Salariu minim net: 2.699 lei (facilitate fiscală 200 lei, OUG 89/2025)
 - Indicatorul BASS 2026: 9.192 lei brut; net standard estimat: 5.377 lei. Nu se etichetează drept ultimul salariu mediu INS.
-- Ultimul câștig salarial mediu publicat de INS (mai 2026): 9.483 lei brut; 5.684 lei net. Se actualizează lunar.
+- Ultimul câștig salarial mediu publicat de INS (iunie 2026): 9.564 lei brut; 5.734 lei net. Se actualizează lunar.
 - CAS (pensie) 25%, CASS (sănătate) 10%, impozit venit 10%, CAM (angajator) 2,25%
 - Plafon deducere personală: 6.325 lei
 - Facilitățile IT/construcții ELIMINATE din 1 ian 2025 (OUG 156/2024)

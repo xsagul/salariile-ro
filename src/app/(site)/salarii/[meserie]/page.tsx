@@ -72,14 +72,7 @@ function titluPagina(nume: string) {
 
 function descrierePagina(date: DateMeserie) {
   const numeMic = date.meserie.nume.toLocaleLowerCase("ro-RO");
-  // Netul intai: oamenii cauta „salariu net <meserie>", nu brutul. Intervalul
-  // in loc de cifra de sector: altfel meseriile din acelasi CAEN ar avea toate
-  // aceeasi descriere, iar in SERP ar arata identic.
-  const { estimare } = date;
-  if (estimare && !estimare.capeteApropiate) {
-    return `Cât câștigă un ${numeMic} în 2026: estimativ ${lei(estimare.netMin)}–${lei(estimare.netMax)} lei net pe lună (${lei(estimare.brutMin)}–${lei(estimare.brutMax)} lei brut), din datele INS. Pe județe și pe vârste.`;
-  }
-  return `Salariu ${numeMic} în 2026: ${lei(date.sector.brutCurent)} lei brut mediu în sectorul CAEN ${date.sector.cheie} (INS, ${LUNA}) și ${lei(date.netStandard)} lei net calculat standard. Date pe județe și pe vârste.`;
+  return `INS nu publică salariul individual pentru ${numeMic}. Vezi separat reperul sectorului CAEN ${date.sector.cheie}: ${lei(date.sector.brutCurent)} lei brut, plus grupa ISCO, județe și vârste.`;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -101,40 +94,28 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 function faqPentru(date: DateMeserie) {
-  const { meserie, sector, isco, judete, interval, clasament, estimare } = date;
+  const { meserie, sector, isco, judete, interval, clasament, repere } = date;
   const numeMic = meserie.nume.toLocaleLowerCase("ro-RO");
   const primele = judete.slice(0, 3).map((j) => j.judet).join(", ");
-  const areInterval = estimare !== null && !estimare.capeteApropiate;
 
   // Raspunsurile din FAQ ajung in SERP ca rich result. Trebuie sa dea aceeasi
-  // cifra ca lead-ul paginii, altfel utilizatorul vede un numar in Google si
-  // altul dupa click.
-  const intrebari = areInterval
-    ? [
-        {
-          q: `Cât câștigă un ${numeMic} în România în 2026?`,
-          a: `Estimativ între ${lei(estimare.netMin)} și ${lei(estimare.netMax)} lei net pe lună, adică ${lei(estimare.brutMin)}–${lei(estimare.brutMax)} lei brut. INS nu publică salariul mediu pe ocupații individuale, ci două măsurători care încadrează ocupația: câștigul mediu din activitatea CAEN ${sector.cheie} (${sector.denumire}), unde lucrează majoritatea, și câștigul mediu al grupei de ocupații „${isco?.nume ?? ""}”, în toate sectoarele. Capetele intervalului sunt exact aceste două cifre.`,
-        },
-        {
-          q: `Care este salariul net al unui ${numeMic}?`,
-          a: `Între ${lei(estimare.netMin)} și ${lei(estimare.netMax)} lei net pe lună, calculat pentru funcția de bază, normă întreagă și fără persoane în întreținere, după CAS 25%, CASS 10% și impozit pe venit 10%.${estimare.inceput ? ` La început de carieră, la 20–24 de ani, reperul este ${lei(estimare.inceput.net)} lei net.` : ""}`,
-        },
-      ]
-    : [
-        {
-          q: `Cât câștigă un ${numeMic} în România în 2026?`,
-          a: `Nu există o statistică oficială separată pentru această ocupație. Cea mai apropiată măsurătoare lunară este câștigul salarial mediu brut din activitatea CAEN ${sector.cheie} (${sector.denumire}), unde lucrează majoritatea: ${lei(sector.brutCurent)} lei brut în ${LUNA}, conform INS. Media include toți salariații activității, de la debutanți la conducere.`,
-        },
-        {
-          q: `Care este salariul net al unui ${numeMic}?`,
-          a: `Un salariu brut de ${lei(sector.brutCurent)} lei, calculat pentru funcția de bază, normă întreagă și fără persoane în întreținere, dă ${lei(date.netStandard)} lei net în 2026, după CAS 25%, CASS 10% și impozit 10%.${date.netObservat ? ` Separat, netul mediu observat de INS în același sector și în aceeași lună a fost ${lei(date.netObservat)} lei — o medie a încasărilor reale, care include deduceri și scutiri.` : ""}`,
-        },
-      ];
+  // idee ca lead-ul: exista doua repere cu populatii diferite, nu un interval
+  // al ocupatiei si nici o cifra oficiala pentru postul individual.
+  const intrebari = [
+    {
+      q: `Cât câștigă un ${numeMic} în România în 2026?`,
+      a: `INS nu publică o medie separată pentru ocupația de ${numeMic}. Reperul lunar al activității CAEN ${sector.cheie} (${sector.denumire}) este ${lei(sector.brutCurent)} lei brut în ${LUNA}; el include toate ocupațiile din sector. Separat, grupa majoră ISCO „${isco?.nume ?? "nedisponibilă"}” are propriul venit brut mediu, pentru toate sectoarele. Cele două medii sunt contexte diferite și nu formează un interval al salariului acestei meserii.`,
+    },
+    {
+      q: `Care este salariul net al unui ${numeMic}?`,
+      a: `Nu există o valoare netă oficială pentru ocupația individuală. Pentru reperul CAEN de ${lei(sector.brutCurent)} lei brut, calculul fiscal standard dă ${lei(date.netStandard)} lei net. ${repere ? `Pentru reperul grupei ISCO de ${lei(repere.grupa.brut)} lei brut, același calcul dă ${lei(repere.grupa.net)} lei net.` : ""} Aceste neturi explică taxarea celor două medii statistice; nu estimează salariul unei persoane.`,
+    },
+  ];
 
-  if (areInterval && estimare.inceput) {
+  if (repere?.inceput) {
     intrebari.push({
       q: `Cât câștigă un ${numeMic} la început de carieră?`,
-      a: `În ancheta INS pe grupe de ocupații, salariații de 20–24 de ani din grupa „${isco?.nume ?? ""}” au avut un venit brut care, adus la nivelul lunii ${LUNA}, înseamnă ${lei(estimare.inceput.brut)} lei brut, adică ${lei(estimare.inceput.net)} lei net. Este un reper pentru începutul de carieră în grupa de ocupații, nu un salariu garantat de angajare.`,
+      a: `În ancheta INS pe grupe de ocupații, salariații de 20–24 de ani din grupa „${isco?.nume ?? ""}” au avut un venit brut care, adus la nivelul lunii ${LUNA}, înseamnă ${lei(repere.inceput.brut)} lei brut, adică ${lei(repere.inceput.net)} lei net. Este un reper pentru întreaga grupă de ocupații, în toate sectoarele, nu salariul de debut al unui ${numeMic}.`,
     });
   }
 
@@ -186,7 +167,7 @@ export default async function MeseriePage({ params }: Props) {
   if (!meserie) notFound();
 
   const date = dateMeserieSauEroare(meserie);
-  const { sector, isco, judete, categorie, interval, clasament, estimare } = date;
+  const { sector, isco, judete, categorie, interval, clasament, repere } = date;
   const numeMic = meserie.nume.toLocaleLowerCase("ro-RO");
   const variatie = variatieAnuala(sector.brut);
   const fataDeEconomie = (sector.brutCurent - TOTAL_ECONOMIE.brutCurent) / TOTAL_ECONOMIE.brutCurent;
@@ -251,73 +232,52 @@ export default async function MeseriePage({ params }: Props) {
             ]}
           />
           <H1>Salariu {numeMic} în 2026</H1>
-          {estimare && !estimare.capeteApropiate ? (
-            <Lead>
-              Un {numeMic} câștigă, estimativ, între <strong>{lei(estimare.netMin)} și {lei(estimare.netMax)} lei net</strong>{" "}
-              pe lună, adică {lei(estimare.brutMin)}–{lei(estimare.brutMax)} lei brut. INS nu măsoară salariul pe
-              ocupație, ci două lucruri care o încadrează: cât se câștigă în{" "}
-              <strong>activitatea angajatorului</strong> (CAEN {sector.cheie}) și cât se câștigă în{" "}
-              <strong>grupa de ocupații</strong> din care face parte postul. Capetele de mai sus sunt exact aceste două
-              măsurători.
-            </Lead>
-          ) : (
-            <Lead>
-              Media lunară a sectorului în care lucrează majoritatea celor cu această meserie — CAEN {sector.cheie},{" "}
-              {sector.denumire.toLocaleLowerCase("ro-RO")} — a fost <strong>{lei(sector.brutCurent)} lei brut</strong> în{" "}
-              {LUNA}, conform INS. Din acest brut rezultă <strong>{lei(date.netStandard)} lei net</strong> într-un calcul
-              standard. Nu este salariul unui {numeMic} anume: e media tuturor salariaților din activitate, de la
-              debutant la conducere.
-            </Lead>
-          )}
+          <Lead>
+            INS nu publică salariul mediu pentru ocupația individuală de {numeMic}. Mai jos găsești două{" "}
+            <strong>repere statistice separate</strong>: media activității angajatorului (CAEN {sector.cheie}) și media
+            grupei majore de ocupații. Au populații și perioade diferite; nu sunt limitele salariului meseriei și nu le
+            combinăm într-o estimare unică.
+          </Lead>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {estimare && !estimare.capeteApropiate ? (
-              <CardCifra
-                accent
-                eticheta="Estimare net, pe lună"
-                valoare={`${lei(estimare.netMin)}–${lei(estimare.netMax)}`}
-                nota={`Din ${lei(estimare.brutMin)}–${lei(estimare.brutMax)} lei brut. Capetele sunt cele două măsurători INS care încadrează ocupația.`}
-              />
-            ) : (
-              <CardCifra
-                accent
-                eticheta={`Brut mediu sector, ${LUNA}`}
-                valoare={lei(sector.brutCurent)}
-                nota={`CAEN ${sector.cheie}. ${fataDeEconomie >= 0 ? "Peste" : "Sub"} media pe economie cu ${procent(Math.abs(fataDeEconomie), 0)}%.`}
-              />
-            )}
             <CardCifra
-              eticheta={`Sectorul angajatorului, ${LUNA}`}
+              accent
+              eticheta={`Reper CAEN · brut, ${LUNA}`}
               valoare={lei(sector.brutCurent)}
-              nota={`Brut, CAEN ${sector.cheie}. ${fataDeEconomie >= 0 ? "Peste" : "Sub"} media pe economie cu ${procent(Math.abs(fataDeEconomie), 0)}%. Include toate ocupațiile din activitate.`}
+              nota={`Media tuturor salariaților din activitatea CAEN ${sector.cheie}, nu media ocupației. ${fataDeEconomie >= 0 ? "Peste" : "Sub"} economia cu ${procent(Math.abs(fataDeEconomie), 0)}%.`}
             />
             <CardCifra
-              eticheta="Grupa de ocupații, indexat"
-              valoare={estimare ? lei(estimare.brutOcupatie) : "—"}
+              eticheta="Reper CAEN · net calculat"
+              valoare={lei(date.netStandard)}
+              nota={`Calcul fiscal standard din ${lei(sector.brutCurent)} lei brut; nu este netul oficial al unui ${numeMic}.`}
+            />
+            <CardCifra
+              eticheta="Reper ISCO · brut indexat"
+              valoare={repere ? lei(repere.grupa.brut) : "—"}
               nota={
                 isco
-                  ? `Brut, „${isco.nume}”, în toate sectoarele. Ancheta INS din oct. ${AN_ANCHETA}, adusă la ${LUNA}.`
+                  ? `Media grupei „${isco.nume}”, toate sectoarele. Ancheta din oct. ${AN_ANCHETA}, adusă la ${LUNA}.`
                   : undefined
               }
             />
             <CardCifra
-              eticheta="La început de carieră"
-              valoare={estimare?.inceput ? lei(estimare.inceput.net) : "—"}
+              eticheta="Reper ISCO · net calculat"
+              valoare={repere ? lei(repere.grupa.net) : "—"}
               nota={
-                estimare?.inceput
-                  ? `Net, din ${lei(estimare.inceput.brut)} lei brut. Grupa de ocupații la 20–24 de ani, indexat.`
+                repere
+                  ? `Calcul fiscal standard din ${lei(repere.grupa.brut)} lei brut; media grupei, nu a meseriei.`
                   : undefined
               }
             />
           </div>
 
-          {estimare && !estimare.capeteApropiate && (
+          {repere && (
             <p className="mt-4 rounded-md border border-stone-200 bg-surface p-4 text-sm leading-normal text-stone-600 shadow-soft">
-              <strong className="font-semibold text-stone-900">Cum citești intervalul:</strong> nu e o decilă dintr-un
-              sondaj și nu garantăm că orice {numeMic} se încadrează în el. Sunt cele două cifre pe care le publică INS
-              și între care stă ocupația: media activității unde lucrează și media grupei de ocupații din care face
-              parte. Cifra pe grupe de ocupații vine din ancheta din octombrie {AN_ANCHETA} și e adusă la {LUNA} cu
-              evoluția câștigului mediu pe economie, ca să nu compare două perioade diferite.{" "}
+              <strong className="font-semibold text-stone-900">Cum citești reperele:</strong> CAEN grupează salariații
+              după activitatea angajatorului, indiferent de post; ISCO îi grupează după familia largă de ocupații,
+              indiferent de sector. Nu cunoaștem media aflată la intersecția lor, deci valorile nu formează un interval,
+              nu se mediază și nu spun cât câștigă un {numeMic} anume. Reperul ISCO din octombrie {AN_ANCHETA} este
+              indexat la {LUNA} doar pentru a-l exprima în nivelul salarial curent.{" "}
               <Link href="/metodologie" className="font-medium text-stone-900 underline underline-offset-2 hover:text-stone-600">
                 Metodologia completă
               </Link>

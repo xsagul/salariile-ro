@@ -30,7 +30,7 @@ const LUNA = lunaLunga(LUNA_REFERINTA);
 const NET_STANDARD_ECONOMIE = calculStandard(TOTAL_ECONOMIE.brutCurent)?.net ?? 0;
 const OCUPATII_TOTAL = totalOcupatii();
 
-const DESCRIERE = `Câștigul salarial mediu pe ${MESERII.length} meserii, cu datele INS din ${LUNA}: brut, net observat și net standard calculat. Sursa fiecărei cifre este declarată.`;
+const DESCRIERE = `Repere salariale pentru ${MESERII.length} meserii: mediile INS pe activități CAEN și grupe ISCO, afișate separat, fără a pretinde un salariu mediu pe ocupația individuală.`;
 
 export const metadata: Metadata = {
   title: { absolute: `Salarii pe meserii în România 2026 | Salariile.ro` },
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
 const FAQ = [
   {
     q: "Publică INS salariul mediu pentru fiecare meserie?",
-    a: `Nu. INS publică lunar câștigul salarial mediu pe activitatea economică a angajatorului (clasificarea CAEN) și, o dată pe an, câștigul pe grupe majore de ocupații (clasificarea ISCO-08), din ancheta din octombrie. Nu există o statistică oficială lunară pentru „salariul de programator” sau „salariul de bucătar” luate separat. Paginile de aici combină cele două surse și spun explicit ce reprezintă fiecare cifră.`,
+    a: `Nu. INS publică lunar câștigul salarial mediu pe activitatea economică a angajatorului (clasificarea CAEN) și, o dată pe an, câștigul pe grupe majore de ocupații (clasificarea ISCO-08), din ancheta din octombrie. Nu există o statistică oficială lunară pentru „salariul de programator” sau „salariul de bucătar” luate separat. Paginile de aici afișează cele două repere separat; ele nu formează un interval și nu sunt transformate într-o estimare a ocupației.`,
   },
   {
     q: "Cât este câștigul salarial mediu pe economie acum?",
@@ -130,8 +130,8 @@ export default function SalariiPage() {
             Cele {MESERII.length} meserii de mai jos folosesc datele oficiale INS actualizate până în{" "}
             <strong>{LUNA}</strong>. Institutul
             Național de Statistică nu publică o medie separată pentru fiecare ocupație, ci pentru activitatea
-            economică a angajatorului și pentru grupa majoră de ocupații. Pe fiecare pagină vezi ambele, etichetate
-            corect, plus netul calculat cu regulile fiscale în vigoare.
+            economică a angajatorului și pentru grupa majoră de ocupații. Pe fiecare pagină vezi cele două repere
+            separat, cu populația și perioada lor; nu le tratăm ca limite ale salariului unei meserii.
           </Lead>
 
           {/* Fara banda de trei carduri cu media pe economie: impingea lista de
@@ -183,11 +183,11 @@ export default function SalariiPage() {
               parea un al doilea salariu al aceleiasi meserii, cand de fapt e
               alta masuratoare, din alta ancheta si alt an. */}
           <p className="mt-6 rounded-md border border-stone-200 bg-surface p-4 text-sm leading-normal text-stone-600 shadow-soft">
-            Fiecare card arată două măsurători diferite, nu două variante ale aceleiași cifre. Sus, în bold, este{" "}
+            Fiecare card arată două măsurători diferite, nu salariul minim și maxim al meseriei. Sus, în bold, este{" "}
             <strong className="font-semibold text-stone-900">media lunară a activității CAEN</strong> unde lucrează
             majoritatea ({LUNA}); dedesubt, <strong className="font-semibold text-stone-900">venitul brut realizat
             al grupei de ocupații</strong> din ancheta INS din octombrie {AN_OCUPATII.replace("Anul ", "")}. Prima e
-            proaspătă dar largă, a doua e mai veche dar ancorată în ocupație.
+            proaspătă dar largă, a doua e mai veche și privește o familie largă de ocupații, în toate sectoarele.
           </p>
 
           {categorii.map(({ categorie, meserii }) => (
@@ -213,15 +213,8 @@ export default function SalariiPage() {
                     href={`/salarii/${meserie.slug}`}
                     titlu={meserie.nume}
                     detaliu={`CAEN ${date!.sector.cheie} · ${denumireScurtaCaen(date!.sector.cheie, date!.sector.denumire)}`}
-                    // Aceeasi baza ca pe pagina meseriei: intervalul net. Cat
-                    // timp cardul arata media sectorului, hubul si pagina de
-                    // detaliu spuneau doua cifre diferite pentru aceeasi meserie.
-                    valoare={
-                      date!.estimare
-                        ? `${lei(date!.estimare.netMin)}–${lei(date!.estimare.netMax)}`
-                        : `${lei(date!.netStandard)}`
-                    }
-                    subvaloare="lei net"
+                    valoare={`CAEN ${lei(date!.sector.brutCurent)} lei`}
+                    subvaloare={date!.repere ? `ISCO ${lei(date!.repere.grupa.brut)} lei` : undefined}
                     cauta={[
                       meserie.nume,
                       meserie.de,
@@ -240,10 +233,10 @@ export default function SalariiPage() {
               Ce arată și ce nu arată cifrele de mai sus
             </h2>
             <p className="mt-4 text-base leading-normal text-stone-600">
-              Suma din dreptul fiecărei meserii este câștigul salarial mediu brut din activitatea economică unde
-              lucrează majoritatea celor care practică meseria — de exemplu, CAEN 62 pentru un programator. Media
-              aceea include toți salariații activității, de la debutant la director, așa că nu este „salariul unui
-              programator”. Este cea mai apropiată măsurătoare oficială și lunară de care dispunem.
+              Reperul CAEN din dreptul fiecărei meserii este câștigul salarial mediu brut din activitatea economică
+              unde lucrează majoritatea celor care practică meseria — de exemplu, CAEN 62 pentru un programator. Media
+              include toți salariații activității, de la debutant la director, așa că nu este „salariul unui
+              programator”. Este contextul oficial lunar al sectorului, nu o estimare a postului.
             </p>
             <p className="mt-4 text-base leading-normal text-stone-600">
               A doua măsurătoare vine dinspre ocupație, nu dinspre angajator: ancheta INS din octombrie publică
@@ -251,7 +244,8 @@ export default function SalariiPage() {
               {AN_OCUPATII.replace("Anul ", "")}, media pe toate ocupațiile a fost{" "}
               {OCUPATII_TOTAL ? `${lei(OCUPATII_TOTAL.venitBrut)} lei venit brut realizat și ${lei(OCUPATII_TOTAL.salariuDeBaza ?? 0)} lei salariu de bază` : "—"}
               . Diferența dintre cele două arată cât cântăresc sporurile și primele peste încadrare. Fiecare pagină de
-              meserie afișează grupa relevantă și progresia pe vârste.
+              meserie afișează grupa relevantă și progresia pe vârste. Reperul CAEN și reperul ISCO nu se scad, nu se
+              mediază și nu delimitează salariul ocupației aflate la intersecția lor.
             </p>
             <NotaSursa>
               Sursa datelor: Institutul Național de Statistică, TEMPO-Online, matricele {MATRICE_BRUT} și{" "}
@@ -273,7 +267,7 @@ export default function SalariiPage() {
           <div className="rounded-md border border-stone-200 bg-surface p-6 shadow-soft sm:p-8">
             <h2 className="mb-2 text-2xl font-bold tracking-[-0.02em] text-stone-900">Compară două meserii</h2>
             <p className="mb-5 leading-normal text-stone-600">
-              Diferența de brut și de net între două ocupații din sectoare diferite, cu aceleași date INS.
+              Două seturi de repere CAEN și ISCO puse alături, fără clasarea ori declararea unui câștigător.
             </p>
             <Link
               href="/compara"

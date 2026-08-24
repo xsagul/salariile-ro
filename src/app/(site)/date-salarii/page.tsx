@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumb, CtaCard, Eyebrow, H1, Hero, Lead, Section } from "@/app/components/ui";
 import {
+  LATEST_INS_EARNINGS,
   SALARY_DATA_2026,
   SALARY_DATASET_REFERENCE_DATE,
   SALARY_DATASET_SOURCES,
@@ -146,14 +147,14 @@ export default function DateSalariiPage() {
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Date salariale 2026" }]} />
         <H1>Date salariale România 2026</H1>
         <p className="mt-3 text-sm text-stone-500 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2">
-          Compilat și verificat de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Publicat și actualizat 29 iulie 2026
+          Compilat și verificat de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Publicat 29 iulie 2026 · Actualizat 25 august 2026
         </p>
         <Lead>
           Un set mic, verificabil și pregătit pentru reutilizare: salariul minim din ambele semestre,
           indicatorul BASS și ultimul câștig salarial mediu disponibil de la INS. Fiecare valoare păstrează
           perioada, natura și sursa ei.
         </Lead>
-        <Eyebrow>DATA DE REFERINȚĂ 29 IULIE 2026 · 4 ÎNREGISTRĂRI · RON/LUNĂ</Eyebrow>
+        <Eyebrow>DATA DE REFERINȚĂ 25 AUGUST 2026 · 4 ÎNREGISTRĂRI · RON/LUNĂ</Eyebrow>
 
         <div className="mt-6 flex flex-wrap gap-3">
           <a
@@ -235,16 +236,16 @@ export default function DateSalariiPage() {
       </Section>
 
       <Section>
-        <h2>De ce 9.192 lei nu este același lucru cu 9.483 lei</h2>
+        <h2>De ce 9.192 lei nu este același lucru cu {formatLei(LATEST_INS_EARNINGS.grossLei)} lei</h2>
         <p>
           <strong>9.192 lei brut</strong> este câștigul salarial mediu brut utilizat la fundamentarea bugetului
           asigurărilor sociale de stat pentru întregul an 2026. Este stabilit prin <strong>Legea 44/2026</strong> și
           intră în calcule precum cele din sistemul de pensii. Nu este o măsurătoare lunară a salariilor plătite.
         </p>
         <p>
-          <strong>9.483 lei brut și 5.684 lei net</strong> sunt valorile agregate publicate de INS pentru{" "}
-          <strong>mai 2026</strong>. Ele descriu populația și metodologia statistică INS. Netul de 5.684 lei nu este
-          rezultatul introducerii unui brut individual de 9.483 lei într-un calculator salarial.
+          <strong>{formatLei(LATEST_INS_EARNINGS.grossLei)} lei brut și {formatLei(LATEST_INS_EARNINGS.netLei)} lei net</strong> sunt valorile agregate publicate de INS pentru{" "}
+          <strong>{LATEST_INS_EARNINGS.periodLabel}</strong>. Ele descriu populația și metodologia statistică INS. Netul de {formatLei(LATEST_INS_EARNINGS.netLei)} lei nu este
+          rezultatul introducerii unui brut individual de {formatLei(LATEST_INS_EARNINGS.grossLei)} lei într-un calculator salarial.
         </p>
         <p>
           <strong>5.377 lei net</strong> este numai estimarea Salariile.ro pentru un calcul salarial standard pornind
@@ -262,7 +263,7 @@ export default function DateSalariiPage() {
           <li>Câmpul <code>reference_date</code> arată până la ce dată a fost verificată versiunea descărcată.</li>
         </ul>
         <p>
-          Cea mai recentă lună INS inclusă este mai 2026, chiar dacă data de referință a setului este 29 iulie 2026.
+          Cea mai recentă lună INS inclusă este {LATEST_INS_EARNINGS.periodLabel}, chiar dacă data de referință a setului este 25 august 2026.
           Diferența există fiindcă statisticile lunare se publică ulterior perioadei măsurate.
         </p>
       </Section>

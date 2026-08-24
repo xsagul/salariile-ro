@@ -276,35 +276,36 @@ export default function MetodologiePage() {
         </Section>
 
         <Section>
-            <h2>Cum estimăm salariul unei meserii</h2>
+            <h2>Cum prezentăm reperele pentru o meserie</h2>
             <p>
-              Paginile din <Link href="/salarii">Salarii pe meserii</Link> arată un <strong>interval</strong>, nu o singură cifră. Motivul este că INS <strong>nu publică salariul mediu pe ocupații individuale</strong>. Nu există o statistică oficială numită „salariul unui asistent medical”. Ce publică INS sunt două măsurători diferite, fiecare corectă pe axa ei:
+              INS <strong>nu publică salariul mediu pe ocupații individuale</strong>. Nu există o statistică oficială numită „salariul unui asistent medical”. Paginile din <Link href="/salarii">Salarii pe meserii</Link> arată separat două repere, fiecare corect pe axa și populația lui:
             </p>
             <ul>
               <li><strong>Câștigul mediu din activitatea angajatorului</strong> (CAEN), serie lunară, cea mai proaspătă. Spune cât se câștigă în sectorul unde lucrează majoritatea celor cu meseria respectivă — dar include toate ocupațiile din acel sector, de la muncitor la director.</li>
               <li><strong>Câștigul mediu al grupei majore de ocupații</strong> (ISCO-08), din ancheta anuală din octombrie. Spune cât se câștigă făcând acel <em>tip</em> de muncă — dar în toate sectoarele economiei deodată.</li>
             </ul>
             <p>
-              Ocupația concretă stă la intersecția celor două, iar intersecția nu se publică. Folosim atunci ambele valori ca <strong>capete ale intervalului</strong>. Formularea din pagină este exactă: „cele două măsurători oficiale care încadrează ocupația”. Nu afirmăm că orice persoană din acea meserie se încadrează între capete și nu prezentăm intervalul ca pe o decilă dintr-un sondaj.
+              Ocupația concretă stă la intersecția celor două clasificări, iar media acelei intersecții nu se publică. Din două medii marginale nu rezultă statistic că media ocupației este între ele. De aceea <strong>nu le folosim ca limite, nu le mediem și nu construim o estimare unică</strong>. Fiecare valoare rămâne etichetată cu populația pe care o descrie.
             </p>
             <p>
-              Acest mod de prezentare are un al doilea efect, la fel de important: <strong>diferențiază meseriile</strong>. Cât timp pagina afișa doar media sectorului, un medic și un asistent medical primeau exact aceeași cifră, pentru că lucrează în aceeași activitate CAEN. Sunt însă în grupe de ocupații diferite — „Specialiști”, respectiv „Tehnicieni” — deci primesc intervale diferite, ceea ce corespunde realității.
+              De exemplu, medicul și asistentul medical împart același reper CAEN, fiindcă lucrează în aceeași activitate. Ei apar în grupe ISCO diferite, dar mediile acelor grupe descriu familii largi de ocupații din toate sectoarele. Diferența dintre reperele de grupă nu poate fi atribuită direct celor două posturi.
             </p>
             <h3>Indexarea cifrei pe ocupații</h3>
             <p>
               Cele două serii au perioade de referință diferite: seria pe activități este lunară și recentă, iar ancheta pe ocupații este din octombrie, cu peste un an în urmă. Puse alături fără corecție, ar compara două momente diferite din economie.
             </p>
             <p>
-              De aceea valorile pe grupe de ocupații sunt <strong>indexate la luna de referință curentă</strong>, înmulțindu-le cu raportul dintre câștigul mediu pe economie de acum și cel din luna anchetei. Ipoteza asumată, declarată și în pagină, este că grupele de ocupații au crescut în același ritm cu media pe economie. Nu este o măsurătoare, este o indexare — de aceea valorile rezultate sunt etichetate <strong>„estimare”</strong> și niciodată „conform INS”. Cifrele neindexate rămân vizibile în tabelul pe vârste de pe fiecare pagină.
+              De aceea valorile pe grupe de ocupații sunt <strong>indexate la luna de referință curentă</strong>, înmulțindu-le cu raportul dintre câștigul mediu pe economie de acum și cel din luna anchetei. Ipoteza asumată, declarată în pagină, este că grupele de ocupații au crescut în același ritm cu media pe economie. Nu este o nouă măsurătoare INS, ci un <strong>reper indexat</strong>. Cifrele neindexate rămân vizibile în tabelul pe vârste de pe fiecare pagină.
             </p>
             <h3>Ce nu poate face metoda</h3>
             <ul>
-              <li><strong>Nu separă meserii care împart și activitatea, și grupa de ocupații.</strong> Un programator, un tester QA și un administrator de sistem sunt toți în CAEN 62 și toți în „Specialiști”, deci primesc același interval. Datele oficiale nu îi disting, iar noi nu inventăm o diferență care nu se măsoară.</li>
-              <li><strong>Nu garantează că adevărul e între capete.</strong> Un debutant poate fi sub capătul de jos, iar cineva cu experiență și într-un oraș mare poate depăși capătul de sus. Pentru asta există reperul de început de carieră și defalcarea pe județe, ambele pe aceeași pagină.</li>
+              <li><strong>Nu produce media ocupației.</strong> Niciunul dintre cele două repere nu izolează simultan postul și sectorul, iar valoarea de la intersecția lor nu este disponibilă.</li>
+              <li><strong>Nu ordonează două meserii.</strong> Valorile CAEN și ISCO au compoziții diferite; din ele nu derivăm câștigători, diferențe procentuale sau diferențe anualizate între posturi.</li>
+              <li><strong>Nu stabilește limite individuale.</strong> Un salariu concret poate fi sub sau peste oricare dintre repere. Defalcările pe vârste și județe sunt tot medii de grup, nu praguri personale.</li>
               <li><strong>Nu măsoară firme individuale.</strong> Media unui sector e trasă în sus de angajatorii mari.</li>
             </ul>
             <p>
-              Comparațiile din <Link href="/compara">Compară salarii</Link> folosesc aceeași bază. Când intervalele a două meserii se suprapun semnificativ, pagina spune explicit că datele nu susțin declararea unui câștigător, în loc să compare două medii ca și cum diferența ar fi demonstrată.
+              Comparațiile din <Link href="/compara">Compară salarii</Link> păstrează aceeași disciplină: afișează alături reperele CAEN și ISCO, cu etichetele lor, dar nu le combină și nu declară care ocupație este mai bine plătită.
             </p>
         </Section>
 

@@ -10,7 +10,7 @@ Datele publice, rezultatele calculelor și explicațiile scurte pot fi citate cu
 
 - [Calculator salariu net 2026](https://salariile.ro/): tool interactiv pentru calcul brut → net (și invers), cu defalcare CAS 25%, CASS 10%, impozit pe venit 10%, deducere personală și cost total angajator (CAM 2,25%)
 - [Salariul minim brut 2026](https://salariile.ro/salariu-minim): valorile semestriale (4.050 lei până la 30 iunie / 4.325 lei din 1 iulie), calculul net detaliat (2.574 / 2.699 lei), facilitatea fiscală OUG 89/2025, plafoanele pentru deducere personală, sectorul construcții (4.582 lei), evoluția istorică 2019-2026
-- [Salariul mediu 2026](https://salariile.ro/salariu-mediu): separă indicatorul BASS de 9.192 lei brut (~5.377 lei net standard estimat) de ultimul câștig salarial mediu publicat de INS pentru mai 2026, 9.483 lei brut și 5.684 lei net
+- [Salariul mediu 2026](https://salariile.ro/salariu-mediu): separă indicatorul BASS de 9.192 lei brut (~5.377 lei net standard estimat) de ultimul câștig salarial mediu publicat de INS pentru iunie 2026, 9.564 lei brut și 5.734 lei net
 - [Date salariale România 2026](https://salariile.ro/date-salarii): set verificat și reutilizabil cu perioade, tipul fiecărei valori și surse oficiale; descărcare directă în [CSV](https://salariile.ro/date-salarii-romania-2026.csv) sau [JSON](https://salariile.ro/date-salarii-romania-2026.json)
 - [Salariul minim în construcții 2026](https://salariile.ro/salariu-minim-constructii-2026): 4.582 lei brut și 27,714 lei/oră, calcule nete pe semestre și explicația eliminării facilităților sectoriale
 - [Deducere personală 2026](https://salariile.ro/deducere-personala-2026): tabel cu deducerea personală de bază în funcție de salariul brut și persoanele în întreținere, plafon 6.325 lei din 1 iulie 2026, explicații Cod Fiscal art. 77
@@ -68,7 +68,7 @@ Datele publice, rezultatele calculelor și explicațiile scurte pot fi citate cu
 - Salariu minim brut: 4.050 lei (S1, ian–iun) → 4.325 lei (S2, din 1 iulie), HG 146/2026
 - Salariu minim net: 2.574 lei (S1) → 2.699 lei (S2), cu facilitate OUG 89/2025 de 300/200 lei netaxabili
 - Indicator BASS 2026: 9.192 lei brut (Legea 44/2026), ~5.377 lei net standard estimat
-- Ultimul câștig salarial mediu publicat de INS: mai 2026, 9.483 lei brut și 5.684 lei net
+- Ultimul câștig salarial mediu publicat de INS: iunie 2026, 9.564 lei brut și 5.734 lei net
 - Salariu minim în construcții: 4.582 lei brut, 27,714 lei/oră; fără facilitățile sectoriale eliminate din 2025
 - Contribuții angajat: CAS 25%, CASS 10%, impozit pe venit 10%
 - Contribuție angajator: CAM 2,25%

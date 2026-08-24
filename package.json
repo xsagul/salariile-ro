@@ -3,15 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "license": "Apache-2.0",
+  "engines": {
+    "node": ">=22 <23"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "node --no-warnings scripts/test-facilitate.mts && node --no-warnings scripts/test-fiscal-periods.mts && node --no-warnings scripts/test-pfa.mts && node --no-warnings scripts/test-forme-juridice.mts && node --no-warnings scripts/test-date-salarii.mts && node --no-warnings scripts/test-meserii.mts && node --no-warnings scripts/test-pdf-text.mts && node --no-warnings scripts/test-ui-contracts.mts",
+    "test": "node --no-warnings scripts/test-facilitate.mts && node --no-warnings scripts/test-fiscal-periods.mts && node --no-warnings scripts/test-pfa.mts && node --no-warnings scripts/test-forme-juridice.mts && node --no-warnings scripts/test-date-salarii.mts && node --no-warnings scripts/test-meserii.mts && tsx scripts/generate-public-ins-assets.mts --check && node --no-warnings scripts/test-pdf-text.mts && node --no-warnings scripts/test-ui-contracts.mts && node --no-warnings scripts/test-http.mts",
     "test:rendered": "node --no-warnings scripts/test-rendered.mts",
     "test:ci": "npm run test && npm run lint && npm run build && npm run test:rendered",
-    "ins:tempo": "node scripts/ins-tempo.mjs",
+    "ins:tempo": "node scripts/ins-tempo.mjs && tsx scripts/generate-public-ins-assets.mts",
+    "ins:assets": "tsx scripts/generate-public-ins-assets.mts",
     "gsc": "node scripts/gsc.mjs",
     "gsc:weekly": "node scripts/gsc-dashboard.mjs",
     "gsc-login": "node scripts/gsc-login.mjs",
@@ -42,6 +46,7 @@
     "eslint": "9.39.4",
     "eslint-config-next": "16.2.12",
     "tailwindcss": "^4",
+    "tsx": "^4.23.12",
     "typescript": "^5"
   },
   "overrides": {

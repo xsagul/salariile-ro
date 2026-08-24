@@ -8,7 +8,6 @@ import { Hero, Section, H1, Lead, Eyebrow } from "@/app/components/ui";
 
 export const metadata: Metadata = {
   title: "Pagina nu există · salariile.ro",
-  robots: { index: false, follow: true },
 };
 
 export default function NotFound() {

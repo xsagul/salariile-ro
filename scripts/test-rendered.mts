@@ -1,8 +1,42 @@
 import { once } from "node:events";
+import { createServer } from "node:net";
 import path from "node:path";
 import { spawn } from "node:child_process";
 
-const PORT = 3100;
+async function portDisponibil(portCerut?: number) {
+  return new Promise<number>((resolve, reject) => {
+    const proba = createServer();
+    proba.unref();
+    proba.once("error", reject);
+    proba.listen({ host: "127.0.0.1", port: portCerut ?? 0, exclusive: true }, () => {
+      const adresa = proba.address();
+      const port = typeof adresa === "object" && adresa ? adresa.port : null;
+      proba.close((error) => {
+        if (error) reject(error);
+        else if (!port) reject(new Error("Sistemul nu a returnat portul alocat pentru testul randat."));
+        else resolve(port);
+      });
+    });
+  });
+}
+
+const PORT_CERUT = process.env.TEST_RENDERED_PORT?.trim();
+const PORT_NUMERIC = PORT_CERUT ? Number(PORT_CERUT) : undefined;
+if (PORT_NUMERIC !== undefined && (!Number.isInteger(PORT_NUMERIC) || PORT_NUMERIC < 1 || PORT_NUMERIC > 65_535)) {
+  throw new Error(`TEST_RENDERED_PORT trebuie sa fie un numar intre 1 si 65535, primit: "${PORT_CERUT}".`);
+}
+
+let PORT: number;
+try {
+  PORT = await portDisponibil(PORT_NUMERIC);
+} catch (error) {
+  const detaliu = error instanceof Error ? error.message : String(error);
+  throw new Error(
+    PORT_NUMERIC
+      ? `TEST_RENDERED_PORT=${PORT_NUMERIC} nu este disponibil: ${detaliu}`
+      : `Nu am putut aloca dinamic un port liber pentru testul randat: ${detaliu}`,
+  );
+}
 const BASE_URL = `http://127.0.0.1:${PORT}`;
 const PROJECT_ROOT = process.cwd();
 const NEXT_BIN = path.join(PROJECT_ROOT, "node_modules", "next", "dist", "bin", "next");
@@ -86,6 +120,15 @@ function hasNoindex(html: string) {
     const name = tag.match(/\bname=["']([^"']+)["']/i)?.[1]?.toLowerCase();
     const content = tag.match(/\bcontent=["']([^"']+)["']/i)?.[1]?.toLowerCase() ?? "";
     return name === "robots" && content.split(/[\s,]+/).includes("noindex");
+  });
+}
+
+function hasIndexDirective(html: string) {
+  return [...html.matchAll(/<meta\b[^>]*>/gi)].some(([tag]) => {
+    const name = tag.match(/\bname=["']([^"']+)["']/i)?.[1]?.toLowerCase();
+    const content = tag.match(/\bcontent=["']([^"']+)["']/i)?.[1]?.toLowerCase() ?? "";
+    const directives = content.split(/[\s,]+/).filter(Boolean);
+    return (name === "robots" || name === "googlebot") && directives.includes("index");
   });
 }
 
@@ -194,8 +237,8 @@ async function auditRenderedSite() {
     ["/calculator/calcul-salariu-brut-2574-net", "facilitate de 300 lei", "regimul istoric S1 pentru 2.574 net"],
     ["/calculator/calcul-salariu-net-4582-brut", "2.754", "netul curent pentru 4.582 brut"],
     ["/calculator-pfa", "24.300", "pragul salarial PFA"],
-    ["/salariu-mediu", "9.483", "brutul INS din mai"],
-    ["/salariu-mediu", "5.684", "netul INS din mai"],
+    ["/salariu-mediu", "9.564", "brutul INS din iunie"],
+    ["/salariu-mediu", "5.734", "netul INS din iunie"],
     ["/", "indicatorul BASS", "eticheta BASS de pe homepage"],
     ["/metodologie", "D112", "validarea D112"],
     ["/noutati/cosul-minim-de-consum", "11.370", "cosul pentru doi adulti si doi copii"],
@@ -205,15 +248,12 @@ async function auditRenderedSite() {
     ["/salarii", "TEMPO-Online", "citarea sursei INS pe hubul de meserii"],
     ["/salarii", "grupe majore de ocupații", "a doua masuratoare, dinspre ocupatie"],
     ["/salarii/programator", "CAEN 62", "activitatea din spatele cifrei de programator"],
-    // Pagina de meserie raspunde cu un INTERVAL, nu cu media sectorului: cele
-    // doua masuratori INS (activitate si grupa de ocupatii) incadreaza ocupatia
-    // si, spre deosebire de cifra de sector singura, o si diferentiaza de
-    // meseriile vecine. Verificam ca ambele capete si eticheta lor sunt in
-    // pagina, plus nota care spune de ce cifra pe ocupatii e indexata.
-    ["/salarii/programator", "Estimare net, pe lună", "intervalul net estimat, calculat cu motorul fiscal"],
-    ["/salarii/programator", "Grupa de ocupații, indexat", "capatul dinspre ocupatie, adus la luna curenta"],
-    ["/salarii/programator", "Cum citești intervalul", "explicatia metodei direct in pagina"],
-    ["/salarii/asistent-medical", "Tehnicieni", "grupa de ocupatii care separa asistentul de medic"],
+    // Cele doua marginale CAEN si ISCO sunt repere separate. Testul pazeste
+    // etichetele si avertismentul care interzice vechiul interval derivat.
+    ["/salarii/programator", "Reper CAEN · brut", "reperul sectorului, etichetat explicit"],
+    ["/salarii/programator", "Reper ISCO · brut indexat", "reperul grupei, etichetat explicit"],
+    ["/salarii/programator", "Cum citești reperele", "explicatia metodei direct in pagina"],
+    ["/salarii/asistent-medical", "Tehnicieni", "grupa de ocupatii a asistentului medical"],
     ["/salarii/medic", "Specialiști", "grupa de ocupatii a medicului"],
     // Diferenta pe sexe: date care existau in matricea INS de la inceput, dar
     // pe care importul le arunca. Verificam eticheta si avertismentul de
@@ -232,31 +272,45 @@ async function auditRenderedSite() {
     ["/salarii/locuri-vacante", "Nu sunt anunțuri de angajare", "precizarea ca vacantele INS nu sunt anunturi"],
     ["/salarii/locuri-vacante", "LMV101D", "citarea matricei de rate"],
     ["/salarii/medic", "Cât contează vechimea", "progresia pe varste din ancheta din octombrie"],
-    ["/compara", "activități economice diferite", "regula perechilor din sectoare diferite"],
-    ["/compara/programator-vs-medic", "Tabel comparativ", "tabelul comparativ"],
-    ["/compara/programator-vs-medic", "Cost total angajator", "randul de cost total"],
+    ["/compara", "nu declarăm un câștigător", "limita metodologica a hubului de comparatii"],
+    ["/compara/programator-vs-medic", "Tabel cu repere separate", "tabelul cu benchmarkuri necombinate"],
+    ["/compara/programator-vs-medic", "nu sunt un minim și un maxim", "avertismentul impotriva intervalului"],
   ] as const;
 
   for (const [pathname, expected, label] of contentChecks) {
     if (!rendered.get(pathname)?.includes(expected)) failures.push(`${pathname}: lipseste ${label}`);
   }
 
-  // ── Meseriile din acelasi sector nu au voie sa dea acelasi raspuns ──────────
-  // Regresia pazita: cat timp pagina afisa media activitatii CAEN, un medic si
-  // un asistent medical primeau EXACT aceeasi cifra, desi unul e in grupa
-  // „specialisti" si celalalt in „tehnicieni". Descrierea meta e locul unde se
-  // vede cel mai repede, fiindca ea ajunge in SERP.
-  const perechiCareTrebuieSaDifere: [string, string][] = [
-    ["/salarii/medic", "/salarii/asistent-medical"],
-    ["/salarii/avocat", "/salarii/secretar"],
-    ["/salarii/inginer", "/salarii/muncitor-industria-alimentara"],
-  ];
-  for (const [unu, altul] of perechiCareTrebuieSaDifere) {
-    const a = metaDescriptionFrom(rendered.get(unu) ?? "");
-    const b = metaDescriptionFrom(rendered.get(altul) ?? "");
-    const cifre = (text: string) => (text.match(/[\d.]+–[\d.]+/g) ?? []).join("|");
-    if (a && b && cifre(a) && cifre(a) === cifre(b)) {
-      failures.push(`${unu} si ${altul}: acelasi interval in descriere (${cifre(a)}) — meseriile nu se diferentiaza`);
+  // ── Recast metodologic CAEN + ISCO ─────────────────────────────────────────
+  const paginiTematiceSalarii = new Set([
+    "/salarii/clasament",
+    "/salarii/judete",
+    "/salarii/femei-barbati",
+    "/salarii/locuri-vacante",
+  ]);
+  const paginiMeserii = [...rendered.keys()].filter(
+    (pathname) => /^\/salarii\/[^/]+$/.test(pathname) && !paginiTematiceSalarii.has(pathname),
+  );
+  const copyIntervalVechi = /Estimare net, pe lună|Cum citești intervalul|câștigă, estimativ, între|capetele sunt cele două/i;
+  for (const pathname of paginiMeserii) {
+    const html = rendered.get(pathname) ?? "";
+    if (!html.includes("Reper CAEN · brut")) failures.push(`${pathname}: lipseste reperul CAEN separat`);
+    if (!html.includes("Reper ISCO · brut indexat")) failures.push(`${pathname}: lipseste reperul ISCO separat`);
+    if (!html.includes("nu formează un interval")) failures.push(`${pathname}: lipseste limita CAEN/ISCO`);
+    if (copyIntervalVechi.test(html)) failures.push(`${pathname}: a reaparut copy-ul vechi despre interval`);
+  }
+
+  const paginiComparatii = [...rendered.keys()].filter((pathname) => /^\/compara\/[^/]+$/.test(pathname));
+  const concluzieComparatieVeche = /Măsurat la mijlocul|mijlocul interval|diferența este de aproximativ|lei pe an|Cele două intervale|Estimare (?:net|brut), pe lună/i;
+  for (const pathname of paginiComparatii) {
+    const html = rendered.get(pathname) ?? "";
+    const descriere = metaDescriptionFrom(html);
+    if (!html.includes("Reper CAEN")) failures.push(`${pathname}: lipsesc reperele CAEN`);
+    if (!html.includes("Reper ISCO")) failures.push(`${pathname}: lipsesc reperele ISCO`);
+    if (!html.includes("nu sunt un minim și un maxim")) failures.push(`${pathname}: lipseste avertismentul anti-interval`);
+    if (concluzieComparatieVeche.test(html)) failures.push(`${pathname}: a reaparut o concluzie derivata nepermisa`);
+    if (/[\d.]+\s*[–-]\s*[\d.]+\s*lei/.test(descriere)) {
+      failures.push(`${pathname}: metadata prezinta din nou un interval numeric`);
     }
   }
 
@@ -490,6 +544,21 @@ async function auditRenderedSite() {
     failures.push("/info: lipsește X-Robots-Tag noindex");
   }
 
+  const missingResponse = await fetch(`${BASE_URL}/pagina-inexistenta-audit-404`);
+  const missingHtml = await missingResponse.text();
+  if (missingResponse.status !== 404) {
+    failures.push(`/pagina-inexistenta-audit-404: trebuia HTTP 404, a răspuns ${missingResponse.status}`);
+  }
+  if (!hasNoindex(missingHtml)) {
+    failures.push("/pagina-inexistenta-audit-404: meta robots noindex lipsește");
+  }
+  if (hasIndexDirective(missingHtml)) {
+    failures.push("/pagina-inexistenta-audit-404: moștenește o directivă robots index");
+  }
+  if (canonicalFrom(missingHtml)) {
+    failures.push(`/pagina-inexistenta-audit-404: canonical nedorit ${canonicalFrom(missingHtml)}`);
+  }
+
   const calculatorPaths = [...rendered.keys()].filter((pathname) =>
     pathname.startsWith("/calculator/"),
   );
@@ -550,6 +619,23 @@ async function auditRenderedSite() {
   if (!markdownBody.includes("# Salariul minim")) {
     failures.push("/salariu-minim Accept markdown: continutul principal lipseste");
   }
+  if (!markdownResponse.headers.get("vary")?.toLowerCase().split(/\s*,\s*/).includes("accept")) {
+    failures.push("/salariu-minim Accept markdown: Vary nu include Accept");
+  }
+  if (!markdownResponse.headers.get("cache-control")?.toLowerCase().includes("no-store")) {
+    failures.push("/salariu-minim Accept markdown: reprezentarea alternativă trebuie să fie no-store");
+  }
+
+  const htmlResponse = await fetch(`${BASE_URL}/salariu-minim`, {
+    headers: { Accept: "text/html" },
+  });
+  if (!htmlResponse.headers.get("content-type")?.includes("text/html")) {
+    failures.push("/salariu-minim Accept HTML: Content-Type incorect");
+  }
+  const htmlBody = await htmlResponse.text();
+  if (!htmlBody.includes("<h1") || htmlBody.includes("---\ntitle:")) {
+    failures.push("/salariu-minim Accept HTML: răspunsul a fost contaminat cu reprezentarea Markdown");
+  }
 
   const rejectedMarkdownPaths = [
     "/api/markdown/calculator/calcul-salariu-net-5551-brut",
@@ -569,6 +655,33 @@ async function auditRenderedSite() {
   }
   if (publicAssetResponse.headers.has("content-security-policy")) {
     failures.push("/og-image.png: middleware-ul HTML ruleaza inutil pe asset static");
+  }
+
+  const publicDatasets = [
+    ["/salarii/locuri-vacante", "/date-locuri-vacante-romania.csv"],
+    ["/salarii/femei-barbati", "/date-diferente-salariale-femei-barbati-romania.csv"],
+  ] as const;
+  for (const [pagePath, assetPath] of publicDatasets) {
+    const pageHtml = rendered.get(pagePath) ?? "";
+    if (!pageHtml.includes(`href="${assetPath}"`)) {
+      failures.push(`${pagePath}: linkul public spre ${assetPath} lipsește`);
+    }
+    const datasetNode = jsonLdBlocks(pageHtml)
+      .flatMap((block) => (Array.isArray(block["@graph"]) ? block["@graph"] : [block]))
+      .find((node) => node["@type"] === "Dataset");
+    const contentUrl = datasetNode?.distribution?.contentUrl ?? "";
+    if (contentUrl !== `https://salariile.ro${assetPath}`) {
+      failures.push(`${pagePath}: Dataset/DataDownload nu indică activul CSV public`);
+    }
+
+    const assetResponse = await fetch(`${BASE_URL}${assetPath}`);
+    const assetBody = await assetResponse.text();
+    if (!assetResponse.ok || !assetResponse.headers.get("content-type")?.includes("text/csv")) {
+      failures.push(`${assetPath}: activul CSV nu este servit corect`);
+    }
+    if (assetBody.split(/\r?\n/).filter(Boolean).length < 2) {
+      failures.push(`${assetPath}: activul CSV nu conține rânduri de date`);
+    }
   }
 
   if (jsonLdBlockCount === 0) failures.push("Nu a fost gasit niciun bloc JSON-LD.");

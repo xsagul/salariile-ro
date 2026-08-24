@@ -395,61 +395,33 @@ export type DateMeserie = {
   interval: IntervalJudete | null;
   /** Locul sectorului in clasamentul celor MESERII.length meserii urmarite. */
   clasament: LocClasament | null;
-  /** Intervalul estimat pentru ocupatie, din cele doua masuratori INS. */
-  estimare: EstimareOcupatie | null;
+  /** Doua repere statistice distincte pentru ocupatie. Niciunul nu reprezinta
+   *  salariul ocupatiei individuale si nu formeaza impreuna un interval. */
+  repere: RepereOcupatie | null;
 };
 
 /**
- * Intervalul in care cade, estimativ, salariul ocupatiei.
+ * Reperele statistice disponibile in jurul unei ocupatii individuale.
  *
  * INS nu publica salariul pe ocupatie individuala. Publica doua marginale:
  * cat se castiga in ACTIVITATEA angajatorului (CAEN) si cat se castiga in
  * GRUPA DE OCUPATII (ISCO), indiferent de activitate. Ocupatia noastra e la
  * intersectia lor, iar intersectia nu se publica.
  *
- * Cele doua marginale marginesc raspunsul si, spre deosebire de cifra de sector
- * singura, il DIFERENTIAZA: un medic si un asistent medical sunt in acelasi
- * sector, dar in grupe de ocupatii diferite, deci primesc intervale diferite.
- *
- * Nu pretindem ca adevarul e garantat intre capete — pretindem exact ce e:
- * cele doua masuratori oficiale care incadreaza ocupatia. Valoarea ISCO e
- * indexata la luna curenta, altfel s-ar amesteca doua perioade.
+ * Cele doua marginale NU marginesc raspunsul: nu exista suport statistic
+ * pentru afirmatia ca media ocupatiei se afla intre ele, pentru media lor sau
+ * pentru ordonarea a doua meserii dupa asemenea valori derivate. De aceea le
+ * pastram separat, cu populatia si perioada fiecareia la vedere. Valoarea ISCO
+ * este doar indexata la luna curenta pentru comparabilitate temporala.
  */
-export type EstimareOcupatie = {
-  brutMin: number;
-  brutMax: number;
-  netMin: number;
-  netMax: number;
-  /** Mijlocul intervalului. Folosit unde e nevoie de o singura cifra
-   *  (clasamente, comparatii), ca sa nu apara doua cifre diferite pe
-   *  doua pagini pentru aceeasi meserie. */
-  brutReper: number;
-  netReper: number;
-  /** Capatul dat de sector (CAEN) si cel dat de ocupatie (ISCO), neordonate. */
-  brutSector: number;
-  brutOcupatie: number;
-  /** Sub 3% intre capete: cele doua masuratori spun practic acelasi lucru. */
-  capeteApropiate: boolean;
+export type RepereOcupatie = {
+  /** Media activitatii CAEN a angajatorului tipic, toate ocupatiile incluse. */
+  sector: { brut: number; net: number };
+  /** Media grupei majore ISCO, toate activitatile incluse, indexata la zi. */
+  grupa: { brut: number; net: number };
   /** Venitul grupei la 20–24 de ani, indexat — reperul pentru „debutant". */
   inceput: { brut: number; net: number } | null;
 };
-
-/**
- * Se suprapun intervalele a doua meserii intr-un mod care conteaza?
- *
- * Nu e de ajuns sa se atinga. Doua meserii din aceeasi grupa ISCO au INTOTDEAUNA
- * un capat comun — capatul dinspre ocupatie e aceeasi cifra — deci un test de
- * intersectie simplu ar raporta „suprapunere" pe orice astfel de pereche, ceea
- * ce ar fi fals. Cerem ca zona comuna sa acopere macar o zecime din intervalul
- * mai ingust.
- */
-export function intervaleSeSuprapun(a: EstimareOcupatie, b: EstimareOcupatie): boolean {
-  const comun = Math.min(a.brutMax, b.brutMax) - Math.max(a.brutMin, b.brutMin);
-  if (comun <= 0) return false;
-  const celMaiIngust = Math.min(a.brutMax - a.brutMin, b.brutMax - b.brutMin);
-  if (celMaiIngust <= 0) return true;
-  return comun / celMaiIngust >= 0.1;
-}
 
 /** Capetele intervalului pe judete — masuratoare reala, nu decile estimate. */
 export type IntervalJudete = {
@@ -507,30 +479,18 @@ const CLASAMENT: Map<string, LocClasament> = (() => {
   return rezultat;
 })();
 
-/** Intervalul dintre cifra de sector si cifra de ocupatie, ambele la aceeasi luna. */
-function estimareDin(sector: ActivitateCaen, isco: DateGrupaIsco | null): EstimareOcupatie | null {
+/** Cele doua repere, pastrate separat si aduse la aceeasi luna. */
+function repereDin(sector: ActivitateCaen, isco: DateGrupaIsco | null): RepereOcupatie | null {
   if (!isco) return null;
   const brutSector = sector.brutCurent;
-  const brutOcupatie = indexatLaZi(isco.venitBrutTotal);
-  const brutMin = Math.min(brutSector, brutOcupatie);
-  const brutMax = Math.max(brutSector, brutOcupatie);
-  const netMin = calculStandard(brutMin)?.net ?? 0;
-  const netMax = calculStandard(brutMax)?.net ?? 0;
+  const brutGrupa = indexatLaZi(isco.venitBrutTotal);
 
   const prag = isco.varste.find((v) => v.varsta === "20-24 ani");
   const inceputBrut = prag ? indexatLaZi(prag.venitBrut) : null;
-  const brutReper = Math.round((brutMin + brutMax) / 2);
 
   return {
-    brutMin,
-    brutMax,
-    netMin,
-    netMax,
-    brutReper,
-    netReper: calculStandard(brutReper)?.net ?? 0,
-    brutSector,
-    brutOcupatie,
-    capeteApropiate: (brutMax - brutMin) / brutMax < 0.03,
+    sector: { brut: brutSector, net: calculStandard(brutSector)?.net ?? 0 },
+    grupa: { brut: brutGrupa, net: calculStandard(brutGrupa)?.net ?? 0 },
     inceput: inceputBrut ? { brut: inceputBrut, net: calculStandard(inceputBrut)?.net ?? 0 } : null,
   };
 }
@@ -553,7 +513,7 @@ export function dateMeserie(meserie: Meserie): DateMeserie | null {
     mediaJudete: nationalJudete(meserie.caen2),
     interval: intervalDinJudete(judete),
     clasament: CLASAMENT.get(meserie.slug) ?? null,
-    estimare: estimareDin(sector, isco),
+    repere: repereDin(sector, isco),
   };
 }
 

@@ -1,0 +1,11 @@
+grupa_isco,denumire,posturi_vacante,rata_procente,variatie_anuala_procente,salariu_brut_grupa_indexat_lei,perioada_vacante,perioada_salariu_isco,luna_tinta_indexare_salariu,factor_indexare_salariu,matrice_vacante_ins,matrice_rate_ins,matrice_salariala_ins
+total,Toate ocupațiile,26461,0.52,-15.55,,Trimestrul II 2026,Anul 2024,Luna iunie 2026,,LMV102D,LMV101D,FOM121B
+specialisti,Specialiști în diverse domenii de activitate,7140,0.59,-20.41,14122,Trimestrul II 2026,Anul 2024,Luna iunie 2026,1.1421065201815142,LMV102D,LMV101D,FOM121B
+servicii,Lucrători în domeniul serviciilor,4052,0.5,-12.10,5934,Trimestrul II 2026,Anul 2024,Luna iunie 2026,1.1421065201815142,LMV102D,LMV101D,FOM121B
+elementare,Ocupații elementare,3699,0.55,-5.71,6130,Trimestrul II 2026,Anul 2024,Luna iunie 2026,1.1421065201815142,LMV102D,LMV101D,FOM121B
+muncitori,Muncitori calificați și asimilați,3509,0.55,-16.17,8013,Trimestrul II 2026,Anul 2024,Luna iunie 2026,1.1421065201815142,LMV102D,LMV101D,FOM121B
+operatori,Operatori la instalații și mașini,2846,0.52,-4.72,8092,Trimestrul II 2026,Anul 2024,Luna iunie 2026,1.1421065201815142,LMV102D,LMV101D,FOM121B
+tehnicieni,Tehnicieni și alți specialiști din domeniul tehnic,2797,0.54,-4.96,9507,Trimestrul II 2026,Anul 2024,Luna iunie 2026,1.1421065201815142,LMV102D,LMV101D,FOM121B
+functionari,Funcționari administrativi,1397,0.46,-39.26,7666,Trimestrul II 2026,Anul 2024,Luna iunie 2026,1.1421065201815142,LMV102D,LMV101D,FOM121B
+conducatori,Conducători și funcționari superiori,959,0.26,-28.43,13991,Trimestrul II 2026,Anul 2024,Luna iunie 2026,1.1421065201815142,LMV102D,LMV101D,FOM121B
+agricultura,Lucrători calificați în agricultură și silvicultură,62,0.28,-15.07,5952,Trimestrul II 2026,Anul 2024,Luna iunie 2026,1.1421065201815142,LMV102D,LMV101D,FOM121B

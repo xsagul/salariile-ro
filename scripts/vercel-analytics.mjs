@@ -5,6 +5,7 @@
 //   npm run vercel:analytics
 //   npm run vercel:analytics -- --days=7 --limit=15
 //   npm run vercel:analytics -- --days=28 --json
+//   npm run vercel:analytics -- --start=2026-07-27 --end=2026-08-23
 //   npm run vercel:snapshot
 
 import { execFile, execFileSync } from "node:child_process";
@@ -15,6 +16,8 @@ import { promisify } from "node:util";
 const execFileAsync = promisify(execFile);
 const ROOT = process.cwd();
 const PROJECT_FILE = path.join(ROOT, ".vercel", "project.json");
+const DAY_MS = 24 * 60 * 60 * 1000;
+const MAX_DAILY_BUCKETS = 100;
 
 function option(name, fallback) {
   const prefix = `--${name}=`;
@@ -28,6 +31,17 @@ function integerOption(name, fallback, min, max) {
     throw new Error(`--${name} trebuie să fie un număr întreg între ${min} și ${max}.`);
   }
   return value;
+}
+
+function parseIsoDateOption(name, value) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) {
+    throw new Error(`--${name} trebuie să aibă formatul YYYY-MM-DD.`);
+  }
+  const timestamp = Date.parse(`${value}T00:00:00.000Z`);
+  if (!Number.isFinite(timestamp) || new Date(timestamp).toISOString().slice(0, 10) !== value) {
+    throw new Error(`--${name} nu este o dată calendaristică validă.`);
+  }
+  return timestamp;
 }
 
 function findVercelCli() {
@@ -87,6 +101,39 @@ async function vercelApi(cli, route, params) {
   }
 }
 
+async function dailyReport(cli, common, since, until) {
+  const rowsByTimestamp = new Map();
+  let chunkStart = since;
+
+  while (chunkStart <= until) {
+    const startDate = new Date(chunkStart);
+    const startOfUtcDay = Date.UTC(
+      startDate.getUTCFullYear(),
+      startDate.getUTCMonth(),
+      startDate.getUTCDate(),
+    );
+    // Cel mult 100 de date calendaristice pe apel, limita endpointului.
+    const chunkEnd = Math.min(until, startOfUtcDay + MAX_DAILY_BUCKETS * DAY_MS - 1);
+    const report = await vercelApi(cli, "/v1/query/web-analytics/visits/aggregate", {
+      ...common,
+      since: String(chunkStart),
+      until: String(chunkEnd),
+      by: "day",
+      limit: String(MAX_DAILY_BUCKETS),
+    });
+    for (const row of report.data ?? []) {
+      rowsByTimestamp.set(row.timestamp, row);
+    }
+    chunkStart = chunkEnd + 1;
+  }
+
+  return {
+    data: [...rowsByTimestamp.values()].sort(
+      (left, right) => Date.parse(left.timestamp) - Date.parse(right.timestamp),
+    ),
+  };
+}
+
 function number(value) {
   return Number(value || 0).toLocaleString("ro-RO");
 }
@@ -118,13 +165,29 @@ function table(rows, firstKey) {
 async function main() {
   const days = integerOption("days", 28, 1, 365);
   const limit = integerOption("limit", 10, 1, 100);
+  const startOption = option("start", "");
+  const endOption = option("end", "");
+  if (Boolean(startOption) !== Boolean(endOption)) {
+    throw new Error("--start și --end trebuie folosite împreună.");
+  }
   const json = process.argv.includes("--json");
   const snapshot = process.argv.includes("--snapshot");
   const outputOption = option("output", "");
   const cli = findVercelCli();
   const project = readProject();
-  const until = Date.now();
-  const since = until - days * 24 * 60 * 60 * 1000;
+  const now = Date.now();
+  const generatedAt = new Date(now).toISOString();
+  const since = startOption
+    ? parseIsoDateOption("start", startOption)
+    : now - days * DAY_MS;
+  // `--end` este inclusiv pentru utilizator. API-ul Vercel tratează și `until`
+  // inclusiv, deci trimitem ultima milisecundă UTC a zilei cerute; începutul
+  // zilei următoare ar include încă un bucket zilnic.
+  const until = endOption
+    ? parseIsoDateOption("end", endOption) + DAY_MS - 1
+    : now;
+  if (since >= until) throw new Error("--start trebuie să fie anterior sau egal cu --end.");
+  const requestedDays = startOption ? Math.ceil((until - since + 1) / DAY_MS) : days;
   const common = {
     projectId: project.projectId,
     teamId: project.orgId,
@@ -138,7 +201,6 @@ async function main() {
     ["referrers", "referrerHostname"],
     ["countries", "country"],
     ["devices", "deviceType"],
-    ["daily", "day"],
   ];
   const reports = {};
 
@@ -149,11 +211,16 @@ async function main() {
       limit: String(limit),
     });
   }
+  // Endpointul acceptă cel mult 100 de bucketuri. Ferestrele mai lungi sunt
+  // paginate pe date calendaristice și apoi reunite, fără truncare.
+  reports.daily = await dailyReport(cli, common, since, until);
 
   const result = {
     project: project.projectName || project.projectId,
-    generatedAt: new Date(until).toISOString(),
-    requestedDays: days,
+    generatedAt,
+    requestedDays,
+    requestedStart: startOption || null,
+    requestedEnd: endOption || null,
     interval: count.query,
     totals: count.data,
     reports: Object.fromEntries(

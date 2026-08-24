@@ -84,12 +84,8 @@ const FAQ = [
     a: "Costul total pentru un salariu minim include brutul plus contribuția asiguratorie pentru muncă (CAM 2,25%). Rezultă 4.134 lei lunar în semestrul I 2026 și 4.418 lei începând cu 1 iulie 2026, o creștere de 284 lei lunar.",
   },
   {
-    q: "Salariul minim sectorul construcții se schimbă?",
-    a: "Nu. HG 146/2026 stabilește minimul general la 4.325 lei de la 1 iulie. Pragul sectorial de 4.582 lei rămâne reglementat distinct prin art. LXIX din OUG 156/2024.",
-  },
-  {
     q: "Cât este salariul minim în agricultură și industria alimentară din 1 iulie 2026?",
-    a: "4.325 lei, la fel ca minimul general. De la 1 iulie 2026, sectorul agricol și industria alimentară nu mai au un salariu minim propriu: OUG 29/2026 a abrogat nivelul distinct (art. LXX din OUG 156/2024), tocmai ca aceste sectoare să nu rămână la 4.050 lei în urma majorării generale. Construcțiile rămân singurul sector cu prag propriu, 4.582 lei.",
+    a: "4.325 lei, la fel ca minimul general. De la 1 iulie 2026, sectorul agricol și industria alimentară nu mai au un salariu minim propriu: OUG 29/2026 a abrogat nivelul distinct (art. LXX din OUG 156/2024), tocmai ca aceste sectoare să nu rămână la 4.050 lei în urma majorării generale.",
   },
   {
     q: "Ce este facilitatea fiscală de 300/200 lei?",
@@ -157,7 +153,7 @@ const jsonLd = {
       "@type": "Article",
       headline: "Salariul minim pe economie 2026: cât rămâne net la tine",
       description:
-        "Analiză a salariului minim brut pe țară în 2026: cadrul legal (HG 146/2026, OUG 89/2025), calcul net, ce câștigă angajatul și ce plătește firma, drepturi, normă parțială, sectoare (construcții 4.582 lei) și obligații.",
+        "Analiză a salariului minim brut pe țară în 2026: cadrul legal (HG 146/2026, OUG 89/2025), calcul net, ce câștigă angajatul și ce plătește firma, drepturi, normă parțială și obligații.",
       author: personSchema,
       publisher: {
         "@type": "Organization",
@@ -539,60 +535,6 @@ function CardCostFirma() {
   );
 }
 
-function CardSectoareNet() {
-  return (
-    <div className={card}>
-      <h3 className="mb-3 text-xs font-medium text-stone-500">Brut și net pe sectoare (iul–dec, lei / lună)</h3>
-      <table className="w-full text-sm tabular-nums">
-        <thead>
-          <tr className="border-b border-stone-200 text-stone-500">
-            <th scope="col" className="pb-2 text-left text-xs font-medium">Sector</th>
-            <th scope="col" className="pb-2 text-right text-xs font-medium uppercase tracking-wide">Brut</th>
-            <th scope="col" className="pb-2 text-right text-xs font-medium uppercase tracking-wide">Net</th>
-          </tr>
-        </thead>
-        <tbody className="[&_td]:py-2 [&_th]:py-2">
-          <tr className="border-b border-stone-100">
-            <th scope="row" className="text-left font-normal text-stone-600">Minim general</th>
-            <td className="text-right font-medium text-stone-900">{fmt(4325)}</td>
-            <td className="text-right font-bold text-stone-900">{fmt(2699)}</td>
-          </tr>
-          <tr className="border-b border-stone-100">
-            <th scope="row" className="text-left font-normal text-stone-600">Construcții</th>
-            <td className="text-right font-medium text-stone-900">{fmt(4582)}</td>
-            <td className="text-right font-bold text-stone-900">{fmt(2754)}</td>
-          </tr>
-          <tr>
-            <th scope="row" className="text-left font-normal text-stone-600">Agro și alimentar</th>
-            <td className="text-right font-medium text-stone-900">{fmt(4325)}</td>
-            <td className="text-right font-bold text-stone-900">{fmt(2699)}</td>
-          </tr>
-        </tbody>
-      </table>
-      <p className="mt-auto pt-4 text-xs text-stone-500">
-        În construcții, brutul e cu 257 de lei mai mare, dar netul doar cu 55: facilitatea de 200 de lei se acordă numai
-        la minimul general, iar deducerea personală scade pe măsură ce brutul urcă.
-      </p>
-    </div>
-  );
-}
-
-function CardConstructii() {
-  return (
-    <div className={`${card} ${strong} ${links}`}>
-      <h3 className="text-base font-bold tracking-[-0.01em] text-stone-900">Minimul din construcții</h3>
-      <p className="mt-2 text-sm leading-normal tracking-[-0.01em] text-stone-600">
-        Construcțiile au în 2026 un prag separat de <strong>4.582 lei brut</strong>, adică <strong>27,714 lei/oră</strong>.
-        La calculul standard, netul este 2.739 lei în semestrul I și 2.754 lei în semestrul al II-lea.
-      </p>
-      <p className="mt-auto pt-4 text-xs text-stone-500">
-        Vezi <Link href="/salariu-minim-constructii-2026">calculul complet pentru salariul minim din construcții</Link>,
-        inclusiv taxele și comparația cu minimul general.
-      </p>
-    </div>
-  );
-}
-
 function CardUrmatoareaCrestere() {
   return (
     <div className={`${card} ${strong}`}>
@@ -816,25 +758,19 @@ export default function SalariuMinimPage() {
               </aside>
             </div>
 
-            {/* RÂND 7 — minimul pe sectoare */}
+            {/* RÂND 7 — trimitere scurta catre owner-ul minimului sectorial */}
             <div className={row}>
               <div className="md:col-span-3">
                 <div className={`max-w-prose ${articol}`}>
-                  <h2>Minimul pe sectoare</h2>
+                  <h2>Există și un prag sectorial</h2>
                   <p>
-                    <Link href="/salariu-minim-constructii-2026">Construcțiile au un salariu minim propriu</Link>, <strong>4.582 lei</strong>, neschimbat tot anul, și au rămas
-                    singurul sector cu prag distinct: de la 1 iulie 2026, <strong>agricultura și industria alimentară</strong>{" "}
-                    au trecut pe minimul general de 4.325 lei, după ce <strong>OUG 29/2026</strong> le-a abrogat nivelul
-                    separat (altfel ar fi rămas la 4.050 lei). Iar un muncitor în construcții plătește azi aceleași taxe ca
-                    oricine: scutirile pe care le aveau <strong>IT-ul, construcțiile și agroalimentarul</strong> au fost{" "}
-                    <strong>eliminate (OUG 156/2024)</strong> din ianuarie 2025. Acum nu mai există niciun regim fiscal
-                    special pe sectoare.
+                    Pagina aceasta tratează minimul general. Construcțiile au un prag reglementat separat; valoarea,
+                    calculul net și baza legală sunt în pagina dedicată despre{" "}
+                    <Link href="/salariu-minim-constructii-2026">salariul minim în construcții în 2026</Link>.
+                    Agricultura și industria alimentară folosesc minimul general din 1 iulie 2026.
                   </p>
                 </div>
               </div>
-              <aside className={aside}>
-                <CardSectoareNet />
-              </aside>
             </div>
 
             {/* RÂND 8 — istoric: întâi tabelul (text), apoi graficul */}
@@ -864,10 +800,7 @@ export default function SalariuMinimPage() {
                 </div>
               </div>
               <aside className={aside}>
-                <div className="flex h-full flex-col gap-6">
-                  <CardConstructii />
-                  <CardUrmatoareaCrestere />
-                </div>
+                <CardUrmatoareaCrestere />
               </aside>
             </div>
 

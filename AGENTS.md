@@ -32,7 +32,7 @@ salariile.ro este un portal despre salarii și fiscalitate în România. Scop: c
 - Salariu minim brut: **4.325 lei din 1 iulie 2026** (HG 146/2026); 4.050 lei în prima jumătate a anului
 - Salariu minim net: 2.699 lei (facilitate fiscală 200 lei, OUG 89/2025)
 - Indicatorul BASS 2026: 9.192 lei brut; net standard estimat: 5.377 lei. Nu se etichetează drept ultimul salariu mediu INS.
-- Ultimul câștig salarial mediu publicat de INS (mai 2026): 9.483 lei brut; 5.684 lei net. Se actualizează lunar când INS publică o lună nouă.
+- Ultimul câștig salarial mediu publicat de INS (iunie 2026): 9.564 lei brut; 5.734 lei net. Se actualizează lunar când INS publică o lună nouă.
 - CAS (pensie) 25%, CASS (sănătate) 10%, impozit venit 10%, CAM (angajator) 2,25%
 - Plafon deducere personală: 6.325 lei
 - Facilitățile IT/construcții ELIMINATE din 1 ian 2025 (OUG 156/2024)
