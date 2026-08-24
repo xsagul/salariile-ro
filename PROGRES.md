@@ -2,6 +2,80 @@
 
 Ultima actualizare: 24 august 2026
 
+## Sesiunea a doua, 24 august 2026 — widget, fundaturi, un bug gasit in date
+
+Status: implementat, verificat cu `npm run test:ci`, comis, impins si verificat
+pe productie.
+
+### Bug real, gasit in datele de trafic, nu din citit cod
+
+Interogand `url_query` in Umami am gasit **28 de aparitii reale** ale lui
+`salariu-input=<valoare>` (14 doar pentru „7823"). Cauza: butonul e
+`type="submit"`, iar `preventDefault` traieste in `onSubmit`, care exista abia
+dupa hidratare. Cine tasteaza si apasa Enter mai devreme declanseaza trimiterea
+normala a formularului; browserul reincarca pagina, iar omul **ramane cu
+formularul gol** dupa ce tocmai si-a scris salariul.
+
+Nu se poate impiedica fara sa scot formularul (ar rupe Enter si accesibilitatea).
+Dar reincarcarea poate da raspunsul: parametrul se citeste ca `brut`, calculul se
+reface, URL-ul se normalizeaza in `?brut=7823`. Verificat pe live.
+
+**Lectia:** bugul asta nu se vedea in cod, in teste sau in GSC. S-a vazut doar
+in ce au facut oamenii. `url_query` merita o privire periodica.
+
+### Widgetul, atacul real pe autoritate
+
+E singurul lucru de pe site care produce backlinkuri **prin simpla folosire**:
+creditul din codul de incorporare e dofollow si e conditie de folosire. Pana azi
+era accesibil doar din footer, invizibil pentru cine tocmai a folosit
+calculatorul — desi aia e audienta care l-ar pune pe propriul site.
+
+- Apare acum dupa fiecare calcul, un rand discret. Nu apare in iframe.
+- Homepage-ul il linkeaza editorial.
+- Verificat ca urmarirea e posibila: Umami are coloana `utm_source` dedicata,
+  iar linkul de credit o poarta deja.
+
+Drafturi de distributie, **NEPUBLICATE**, in `seo-assets/`: articol dev.to despre
+problema CAEN×ISCO (widgetul mentionat o data, la final — pe dev.to promovarea
+directa nu prinde), draft Reddit cu declararea proprietatii din prima fraza,
+draft LinkedIn, plus tinte. Nimic nu se trimite fara acordul lui Sorin.
+
+### Fundaturi reparate
+
+Masurat: `/fluturas-salariu` dadea DOUA linkuri interne din corp,
+`/deducere-personala-2026` si `/salariu-mediu` cate patru, si niciuna nu linka
+clusterul de meserii. Componenta noua `PaginiConexe` in `ui.tsx`: 2→6, 4→6, 4→7.
+
+### Testul falsificabil a intrat in rutina
+
+`npm run gsc:weekly` raporteaza acum clusterul `/salarii` + `/compara` si starea
+lui `/salarii/asistent-medical`, cu baseline-ul scris in raport (17 afisari, zero
+clickuri inainte de 24 august). **Refuza sa dea un verdict pe o fereastra care
+incepe inaintea schimbarii**, ca sa nu judece modificarea folosind zile in care
+ea nu exista pe site.
+
+### Corectie la ce am recomandat dimineata
+
+Am propus un test de titlu pe trei interogari, cu „~1.000 clickuri/28 zile".
+**Cifra era gresita.** Curba CTR-pe-pozitie era circulara: `calculator salariu
+net` are 62.813 afisari dintr-o galeata de 112.506, deci isi tragea singur curba
+in jos si parea normal.
+
+Recalculat cu query-ul exclus din propria galeata:
+
+| interogare | pozitie | raport fata de curba | clickuri disponibile |
+|---|---:|---:|---:|
+| `calculator salariu net` | 5,4 | 0,73x | ~148 |
+| `calcul salariu net` | 5,4 | 0,98x | ~3 |
+| `zile lucratoare 2026` | 4,3 | 0,33x | ~218 |
+
+`zile lucratoare 2026` arata cel mai rau, dar e **cluster zero-click cunoscut**:
+potrivirea titlului a fost testata pe doua ferestre si nu misca nimic, iar doi
+agenti au recomandat deja, gresit, exact aceasta reparatie. Era sa fiu al treilea.
+
+Ramane o singura interogare cu ~148 de clickuri, pe titlul homepage-ului, care
+aduce 3.604. **Recomandarea se retrage** — raportul risc/castig nu o justifica.
+
 ## Audit de produs cap-coada si reproiectarea cifrei principale — 24 august 2026
 
 Status: implementat, verificat cu `npm run test:ci` (290 de rute), comis.
