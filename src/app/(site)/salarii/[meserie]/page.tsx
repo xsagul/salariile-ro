@@ -196,6 +196,11 @@ export default async function MeseriePage({ params }: Props) {
   const etichetaSectorJudete = etichetaJudete(meserie.caen2);
   const sexe = diferentaSexe(meserie.isco);
   const vacante = vacantePentruGrupa(meserie.isco);
+  // Cat din castig vine din afara incadrarii, in grupa de ocupatii.
+  const pesteBaza =
+    isco?.salariuDeBazaTotal && isco.salariuDeBazaTotal > 0
+      ? (isco.venitBrutTotal - isco.salariuDeBazaTotal) / isco.salariuDeBazaTotal
+      : null;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -453,6 +458,19 @@ export default async function MeseriePage({ params }: Props) {
                     realizat — adică baza plus sporuri, prime și ore suplimentare. Diferența dintre coloane arată cât
                     din câștig vine din afara încadrării.
                   </p>
+                  {/* Cifra explica o confuzie reala: omul isi vede salariul de
+                      baza in contract, vede media de pe site mai mare si crede
+                      ca cifra e gresita. La operatori, jumatate din castig vine
+                      din afara incadrarii. */}
+                  {pesteBaza !== null && (
+                    <p className="mt-4 text-base leading-normal text-stone-600">
+                      În această grupă, venitul realizat este cu{" "}
+                      <strong className="font-semibold text-stone-900">{procent(pesteBaza, 0)}% peste</strong> salariul
+                      de bază de încadrare. Dacă în contractul tău scrie o sumă mai mică decât cifrele de pe pagină, de
+                      obicei asta e explicația: contractul trece încadrarea, iar statistica măsoară ce s-a plătit
+                      efectiv, cu tot cu sporuri și ore suplimentare.
+                    </p>
+                  )}
                   <div className="my-6 overflow-x-auto">
                     <table className="w-full min-w-[30rem] border-separate border-spacing-0 overflow-hidden rounded-md border border-stone-200 bg-surface text-sm shadow-soft tabular-nums">
                       <caption className="sr-only">
