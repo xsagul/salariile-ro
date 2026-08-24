@@ -3,6 +3,7 @@
 // (hero pe grilă + calculator + zonă-articol 3+2 cu carduri-companion).
 
 import type { Metadata } from "next";
+import { PaginiConexe } from "@/app/components/ui";
 import Link from "next/link";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
@@ -535,6 +536,14 @@ export default function CalculatorPfaPage() {
           </div>
         </section>
       </div>
+      <PaginiConexe
+        linkuri={[
+          { href: "/salarii", label: "Salarii pe meserii", descriere: "Cât se câștigă ca angajat în 123 de meserii, cu datele INS." },
+          { href: "/", label: "Calculator salariu net", descriere: "Compară cu varianta pe contract de muncă: brut, net și costul firmei." },
+          { href: "/salariu-minim", label: "Salariul minim 2026", descriere: "Reperul de la care pornesc contribuțiile, inclusiv pentru PFA." },
+          { href: "/metodologie", label: "Metodologia de calcul", descriere: "Formulele, plafoanele și sursele normative, în detaliu." },
+        ]}
+      />
     </>
   );
 }

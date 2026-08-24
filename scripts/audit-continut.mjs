@@ -117,7 +117,11 @@ const template = (p) => {
   if (seg[0] === "salarii") {
     if (seg[1] === "judet") return "/salarii/judet/[judet]";
     if (seg[1] === "domeniu") return "/salarii/domeniu/[domeniu]";
-    if (seg.length === 2 && !["clasament", "judete"].includes(seg[1])) return "/salarii/[meserie]";
+    // Paginile tematice de sub /salarii/ nu sunt meserii. Fara excluderea lor,
+    // statisticile pe sablon ies false: o pagina tematica scurta trage in jos
+    // minimul de cuvinte al celor 123 de meserii.
+    const TEMATICE = ["clasament", "judete", "femei-barbati", "locuri-vacante"];
+    if (seg.length === 2 && !TEMATICE.includes(seg[1])) return "/salarii/[meserie]";
     return p;
   }
   return p;
