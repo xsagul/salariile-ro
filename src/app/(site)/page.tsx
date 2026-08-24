@@ -233,14 +233,25 @@ export default function Page() {
 
                   <h3 className="mb-3 mt-6 text-xs font-medium text-stone-500">Pagini conexe</h3>
                   <ul className="flex flex-col gap-2 text-sm">
+                    {/* Lista asta e singurul link editorial pe care homepage-ul
+                        il da mai departe, iar homepage-ul e pagina cea mai
+                        puternica a site-ului. Trei rute lipseau si erau
+                        accesibile doar din meniu sau din footer:
+                        /salarii (clusterul de 123 de meserii, pariul curent),
+                        /deducere-personala-2026 (cel mai bun CTR de pe site,
+                        13,6%) si /widget, care e motorul de backlinkuri —
+                        cine il incorporeaza pune si un link inapoi. */}
                     {([
+                      ["Salarii pe meserii", "/salarii"],
                       ["Salariul minim pe economie 2026", "/salariu-minim"],
                       ["Salariul minim în construcții", "/salariu-minim-constructii-2026"],
                       ["Salariul mediu pe economie", "/salariu-mediu"],
+                      ["Deducerea personală 2026", "/deducere-personala-2026"],
                       ["Calculator taxe PFA", "/calculator-pfa"],
                       ["Generator fluturaș de salariu", "/fluturas-salariu"],
                       ["Zile libere 2026", "/zile-libere-2026"],
                       ["Zile lucrătoare 2026", "/zile-lucratoare-2026"],
+                      ["Widget pentru site-ul tău", "/widget"],
                     ] as const).map(([label, href]) => (
                       <li key={href}>
                         <Link href={href} className="font-medium text-stone-900 underline underline-offset-2 hover:text-stone-600">{label}</Link>

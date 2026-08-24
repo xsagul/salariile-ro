@@ -52,8 +52,17 @@ async function fetchPage(path) {
   const $ = cheerio.load(html);
   const text = mainText($);
   const h2 = $("main h2").map((_, e) => $(e).text().trim()).get();
+  // Numai linkurile din <main>: alea sunt semnalul editorial. Header-ul si
+  // footerul apar identic pe toate paginile si ar face fiecare ruta sa para
+  // bine legata, ceea ce ar goli verificarea de sens.
   const internal = new Set();
   $("main a[href^='/']").each((_, e) => internal.add($(e).attr("href").split("#")[0]));
+  // Separat, linkurile din sabloanele comune, ca sa nu raportam drept „orfana"
+  // o pagina care e de fapt in footer pe tot site-ul.
+  const inSabloane = new Set();
+  $("header a[href^='/'], footer a[href^='/']").each((_, e) =>
+    inSabloane.add($(e).attr("href").split("#")[0]),
+  );
   const jsonld = $('script[type="application/ld+json"]')
     .map((_, e) => {
       try { return JSON.stringify(JSON.parse($(e).contents().text())).length; }
@@ -72,6 +81,7 @@ async function fetchPage(path) {
     text,
     internalLinks: [...internal],
     internalLinkCount: internal.size,
+    linkuriSablon: [...inSabloane],
     jsonldBlocks: jsonld.length,
     jsonldBad: jsonld.filter((n) => n === -1).length,
     tables: $("main table").length,
@@ -159,10 +169,23 @@ const dupBy = (key) => {
   return [...m].filter(([, ps]) => ps.length > 1).sort((a, b) => b[1].length - a[1].length);
 };
 
-// ── Orfane: pagini spre care nu linkează nimeni ────────────────────────
-const linkedTo = new Set();
-for (const p of ok) for (const l of p.internalLinks) linkedTo.add(l.replace(/\/$/, "") || "/");
-const orphans = ok.map((p) => p.path).filter((p) => p !== "/" && !linkedTo.has(p.replace(/\/$/, "") || "/"));
+// ── Orfane: pagini spre care nu linkează nicio altă pagină ─────────────
+// „Orfană" = nu e linkată nici din corpul vreunei pagini, nici din header/footer.
+// O pagină aflată doar în footer NU e orfană, dar nici nu are semnal editorial,
+// așa că o raportăm separat.
+const norm = (l) => l.replace(/\/$/, "") || "/";
+const dinCorp = new Set();
+const dinSabloane = new Set();
+for (const p of ok) {
+  for (const l of p.internalLinks) dinCorp.add(norm(l));
+  for (const l of p.linkuriSablon ?? []) dinSabloane.add(norm(l));
+}
+const orphans = ok
+  .map((p) => p.path)
+  .filter((p) => p !== "/" && !dinCorp.has(norm(p)) && !dinSabloane.has(norm(p)));
+const doarInSablon = ok
+  .map((p) => p.path)
+  .filter((p) => p !== "/" && !dinCorp.has(norm(p)) && dinSabloane.has(norm(p)));
 
 // ── Raport ─────────────────────────────────────────────────────────────
 const L = console.log;
@@ -207,9 +230,13 @@ const badH1 = ok.filter((p) => p.h1.length !== 1);
 if (!badH1.length) L(`Niciuna — fiecare pagină are exact un H1.`);
 else for (const p of badH1) L(`- ${p.h1.length} H1 pe \`${p.path}\``);
 
-L(`\n## Pagini orfane (nicio pagină nu linkează spre ele)\n`);
+L(`\n## Pagini orfane (nici din corpul altei pagini, nici din header/footer)\n`);
 if (!orphans.length) L(`Niciuna.`);
 else { L(`${orphans.length} rute:\n`); for (const o of orphans.slice(0, 40)) L(`- \`${o}\``); }
+
+L(`\n## Pagini ajunse doar din header/footer, fără niciun link editorial\n`);
+if (!doarInSablon.length) L(`Niciuna.`);
+else { L(`${doarInSablon.length} rute:\n`); for (const o of doarInSablon.slice(0, 40)) L(`- \`${o}\``); }
 
 L(`\n## Pagini cu puține linkuri interne (sub 5)\n`);
 const lonely = ok.filter((p) => p.internalLinkCount < 5).sort((a, b) => a.internalLinkCount - b.internalLinkCount);

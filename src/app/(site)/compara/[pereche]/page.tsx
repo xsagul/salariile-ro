@@ -53,7 +53,9 @@ function titluPagina(comparatie: Comparatie) {
 
 function descrierePagina(a: DateMeserie, b: DateMeserie) {
   if (a.estimare && b.estimare) {
-    return `${a.meserie.nume} vs ${b.meserie.nume} în 2026: ${lei(a.estimare.netMin)}–${lei(a.estimare.netMax)} lei net față de ${lei(b.estimare.netMin)}–${lei(b.estimare.netMax)} lei net pe lună, estimat din datele INS pe sector și pe grupa de ocupații.`;
+    // Coada scurta: numele unor meserii sunt lungi („Muncitor în industria
+    // alimentară"), iar descrierea trecea de 165 de caractere si se taia in SERP.
+    return `${a.meserie.nume} vs ${b.meserie.nume} în 2026: ${lei(a.estimare.netMin)}–${lei(a.estimare.netMax)} lei net față de ${lei(b.estimare.netMin)}–${lei(b.estimare.netMax)} lei net pe lună, estimat din datele INS.`;
   }
   return `${a.meserie.nume} vs ${b.meserie.nume} în 2026: ${lei(a.sector.brutCurent)} lei față de ${lei(b.sector.brutCurent)} lei brut mediu în sectoarele respective (INS, ${LUNA}), cu netul calculat pentru fiecare.`;
 }
