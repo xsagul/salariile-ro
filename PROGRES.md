@@ -2,6 +2,91 @@
 
 Ultima actualizare: 24 august 2026
 
+## Audit de produs cap-coada si reproiectarea cifrei principale — 24 august 2026
+
+Status: implementat, verificat cu `npm run test:ci` (290 de rute), comis.
+
+### Problema gasita, si cum a fost masurata
+
+Pe paginile de meserie, **68 din 123 (55%) afisau exact aceeasi cifra ca alta
+meserie**, pentru ca toate mosteneau media activitatii CAEN. Medic si asistent
+medical dadeau acelasi numar. Cinci meserii IT dadeau acelasi numar.
+
+Confirmarea ca e o problema reala, nu teoretica: `/salarii/asistent-medical` era
+cea mai vizibila pagina a clusterului nou — **17 afisari, ZERO clickuri**, de pe
+pozitiile 4,5 si 6. Interogarile reale sunt „salariu net asistent medical" si
+„salariu asistent medical debutant". Noi conduceam cu brutul mediu al sectorului
+sanitar, care include medicii.
+
+Prima mea masuratoare a dat 72%, gresit: regexul prindea varful pe judete din
+FAQ, nu cifra principala. Refacuta din descrierea meta, care are format fix.
+**Verifica-ti masuratoarea inainte s-o folosesti ca argument.**
+
+### Solutia
+
+INS publica doua marginale, nu intersectia lor: castigul din ACTIVITATEA
+angajatorului (CAEN, lunar) si castigul GRUPEI DE OCUPATII (ISCO, anual).
+Ocupatia sta intre ele. Folosim ambele capete ca interval — si asta si
+diferentiaza: medic e in „specialisti", asistent medical in „tehnicieni".
+
+- Coliziuni **55% → 38%**, cifre distincte **78 → 91**.
+- Cele doua serii nu se puteau pune in acelasi interval asa cum vin (iunie 2026
+  vs octombrie 2024). Valorile ISCO se **indexeaza** cu raportul mediilor pe
+  economie (**+14,2%**) si se eticheteaza „estimare", niciodata „conform INS".
+- Adaugat reper de **inceput de cariera** (grupa la 20–24 de ani) si netul in
+  fata, in lead si in meta — asa se cauta.
+- `/compara` trecut pe aceeasi baza. **19 din 37 de perechi au intervale care se
+  suprapun** si spun asta, in loc sa declare un castigator.
+- `/metodologie` documenteaza metoda, indexarea si ce NU poate face.
+
+### Restul auditului
+
+- **Cautare pe /salarii.** Erau 157 de linkuri si nicio cale de a filtra.
+  Filtrul lucreaza pe DOM, nu pe stare React: cele 123 de carduri raman randate
+  pe server (verificat cu curl, fara JS). Cauta fara diacritice.
+- **Calculul de pe homepage e partajabil.** URL-ul devine `?brut=5000`, iar
+  deschiderea linkului reface calculul. Buton de copiere. Nu se aplica in iframe
+  si nici pe paginile `/calculator/<valoare>`, care sunt deja adrese permanente.
+- **Zone de atingere.** FAQ-ul avea `<summary>` la 28px pe aproape tot site-ul
+  (padding-ul statea pe `<details>`); footerul avea 24 de linkuri la 20px cu 8px
+  intre ele. Toate la 44px. Pe /salarii: 37 → 19 tinte sub prag, iar cele ramase
+  sunt linkuri inline din titluri, exceptate de WCAG 2.2 SC 2.5.8.
+- **Contrast.** Verificat pe fiecare element cu text: 629 pe /salarii, 277 pe o
+  pagina de meserie. Un singur caz la limita (4,4:1 vs 4,5:1), corectat. Capcana
+  de metoda: Tailwind v4 emite culori in `lab()`, iar un verificator care
+  parseaza doar `rgb()` da fals pozitiv. Se rezolva convertind prin canvas.
+- **Linkuri interne.** Homepage-ul nu dadea niciun link editorial catre
+  `/salarii`, `/widget` sau `/deducere-personala-2026` (cel mai bun CTR de pe
+  site). 12 → 15 linkuri editoriale.
+- **Responsive:** nicio pagina verificata nu scrolleaza orizontal, la 375px si
+  la 1440px; tabelele largi stau in containere cu scroll propriu.
+
+### Ce NU am facut, si de ce
+
+- **N-am sters paginile `/compara`.** Zero interogari de comparatie in GSC pe 90
+  de zile, 566 de cuvinte, cel mai subtire sablon — dar au trei zile, deci datele
+  nu pot inca decide. Raman pe probatiune: nu se mai investeste in ele pana nu
+  arata cerere.
+- **N-am atins titlul `/noutati/cosul-minim-de-consum`**, desi are 61 de
+  caractere si testul avertizeaza. Are CTR 5,4% pe pozitia 4,5. Nu strici o
+  pagina care merge ca sa taci un avertisment de o litera.
+- **Repetitia de proza pe paginile de meserie a crescut 9% → 12%**, exclusiv din
+  nota de metodologie adaugata. Compromis asumat: nota e ce face cifra onesta.
+- **Cele 38% de coliziuni ramase** (programator = tester QA = DevOps) nu se pot
+  rezolva cu datele oficiale. Nu inventam o diferenta care nu se masoara.
+
+### Capcane de mediu, pentru sesiunea urmatoare
+
+- `npm run test:rendered` **isi porneste singur** un `next start` pe portul 3100.
+  Daca serverul de dev ruleaza acolo, testul loveste in el si pica pe ruta de
+  markdown, care are un bug **doar in modul dev**. Productia e sanatoasa:
+  verificat pe salariile.ro, markdown da 200 cu `text/markdown`, iar o ruta din
+  afara allowlist-ului da 404.
+- `next build` si `next dev` **imparte `.next` si se strica reciproc**. Sterge
+  `.next` cand treci de la unul la altul.
+- Scripturi noi, reproductibile: `scripts/audit-continut.mjs` (290 de rute),
+  `scripts/audit-repetitie.mjs`, `scripts/audit-cifre-meserii.mjs`.
+
 ## Audit SEO complet si resubmisie IndexNow — 24 august 2026
 
 Status: analiza terminata, verificata cu date live (GSC, Umami/Neon, build/teste);
