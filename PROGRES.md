@@ -2,6 +2,74 @@
 
 Ultima actualizare: 24 august 2026
 
+## Sesiunea a treia, 24 august 2026 — doua surse INS pe care le aruncam
+
+Status: implementat, verificat cu `npm run test:ci` (292 de rute), comis, impins
+si verificat pe productie.
+
+### Ce s-a descoperit
+
+Ambele lucruri de mai jos erau **deja in datele INS**, doar nu le ceream.
+
+**1. Diferenta salariala femei-barbati.** Matricea FOM121B are dimensiunea
+„Sexe" de cand o importam; scriptul cerea doar optiunea „Total" si arunca
+restul. Un `all` in locul unui filtru.
+
+- pe economie: femeile castiga cu **5,7%** mai putin (2024);
+- media ascunde diferente MAI MARI in interiorul grupelor: **19,8%** la
+  muncitori calificati, 16,4% la functionari, 15,9% la specialisti. Media pare
+  mica pentru ca femeile sunt concentrate in grupe mai bine platite;
+- pe varste: 4,3% la 25-29 de ani, **9,9%** la 35-39 (anii cu copii mici), apoi
+  se strange, iar dupa 60 se inverseaza.
+
+Pagina noua `/salarii/femei-barbati` spune de doua ori ce NU masoara cifra: nu e
+„la aceeasi munca, cu X% mai putin". Inversarea de dupa 60 e explicata ca
+probabil efect de selectie, nu ca avantaj real.
+
+**2. Locuri de munca vacante.** Matricea LMV102D publica vacantele pe EXACT
+aceleasi grupe ISCO-08 pe care le foloseam deja. E cea mai proaspata serie din
+tot setul — trimestriala, actualizata pe 20 august 2026.
+
+- T2 2026: **26.461 de posturi vacante**, rata 0,52%;
+- pe grupe, de la 7.140 la specialisti pana la 62 in agricultura;
+- pagina noua `/salarii/locuri-vacante`, plus un card pe fiecare pagina de
+  meserie.
+
+**De ce conteaza a doua:** tot restul site-ului masoara cat se PLATESTE. Asta e
+prima bucata de date despre cat se CAUTA, adica fundatia pentru un eventual
+cluster de joburi.
+
+### Verificari facute INAINTE de a construi
+
+Lectia din prima sesiune a zilei — 123 de pagini iesisera cu 55% cifre duplicate
+pentru ca nimeni nu verificase datele:
+
+- fiecare valoare „Total" din extragerea pe sexe se potriveste EXACT cu
+  datasetul de productie, pe toate cele 10 grupe;
+- barbati + femei = total, la persoana (4.615.393);
+- suma vacantelor pe cele 9 grupe da EXACT totalul de 26.461;
+- toate cele 9 etichete ISCO se potrivesc caracter cu caracter intre cele doua
+  anchete, deci se leaga de meserii fara mapare manuala;
+- diff-ul pe `ins-caen.json` e pur aditiv la ambele: singura linie stearsa e
+  data generarii. Nicio cifra deja publicata nu s-a schimbat.
+
+### Ce s-a decis sa NU se faca
+
+- **Nu s-a extins allowlist-ul de calculator.** Am cautat valori cu cerere
+  reala fara pagina: dupa ce scoti anii („2026" nu e un salariu), raman valori
+  arbitrare cu 12-26 de impresii pe 90 de zile — 11111, 10257, 4235. Nu e cerere
+  demonstrata, e long tail tastat o data. In plus, `?brut=` construit in sesiunea
+  a doua le acopera deja.
+- **S-a RETRAS recomandarea de test de titlu** din raportul de dimineata.
+  Cifra „~1.000 clickuri" era gresita: curba CTR-pe-pozitie era circulara,
+  fiindca `calculator salariu net` are 62.813 afisari dintr-o galeata de
+  112.506 si isi tragea singur curba in jos. Recalculat cu query-ul exclus din
+  propria galeata: 0,73x (≈148 clickuri) pentru el, 0,98x pentru `calcul salariu
+  net` (nimic de reparat), iar `zile lucratoare 2026` arata 0,33x dar e cluster
+  zero-click cunoscut, unde titlul a fost deja testat pe doua ferestre si nu
+  misca nimic. Ramane un singur query cu ~148 de clickuri, pe titlul
+  homepage-ului care aduce 3.604. Raportul risc/castig nu justifica schimbarea.
+
 ## Sesiunea a doua, 24 august 2026 — widget, fundaturi, un bug gasit in date
 
 Status: implementat, verificat cu `npm run test:ci`, comis, impins si verificat
