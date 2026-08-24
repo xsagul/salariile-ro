@@ -3,6 +3,7 @@ export type UmamiEvent =
   | { name: "mod-calcul"; data: { mod: "brut-net" | "net-brut" } }
   | { name: "calcul-pfa"; data: { regim: "real" | "norma"; mod: "venit-anual" | "net-lunar" } }
   | { name: "descarca-fluturas"; data: { context: "calculator" | "pagina-fluturas" } }
+  | { name: "copiaza-link-calcul"; data: { mod: "brut-net" | "net-brut" } }
   | { name: "copiaza-embed"; data: { varianta: "minimal" | "complet" | "fluturas" } };
 
 type UmamiWindow = Window & {

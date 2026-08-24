@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect, useRef } from "react";
 import Link from "next/link";
 import {
   calculeaza,
@@ -485,6 +485,7 @@ export default function CalculatorSalariu({
   // Avertisment scurt când se apasă Calculează fără un salariu valid (Nielsen h1/h9).
   const [emptyWarn, setEmptyWarn] = useState(false);
   const [pdfStatus, setPdfStatus] = useState<"idle" | "generating" | "success" | "error">("idle");
+  const [linkCopiat, setLinkCopiat] = useState(false);
   // Tichete: nr. × valoare/tichet → total stocat în input.tichete (calculul folosește totalul).
   const [nrTichete, setNrTichete] = useState("");
   const [valoareTichet, setValoareTichet] = useState("");
@@ -568,10 +569,82 @@ export default function CalculatorSalariu({
       data: { mod: mod === "brut" ? "brut-net" : "net-brut", context: fluturas ? "fluturas" : "principal" },
     });
     if (typeof window === "undefined") return;
+
+    // Rezultatul devine partajabil: pana acum, dupa un calcul, URL-ul ramanea „/"
+    // si nu puteai trimite nimanui cifra la care ajunsesesi.
+    //
+    // Se rescrie DOAR pe calculatorul liber. Intr-un iframe n-avem ce cauta in
+    // URL-ul gazdei, iar paginile /calculator/<valoare>-brut sunt deja adresa
+    // permanenta a acelui calcul si nu se rescriu peste ele.
+    // Canonical-ul homepage-ului e fix, deci parametrul nu creeaza duplicat.
+    if (!embedded && !brutInitial) {
+      const valoare = Math.round(parseFloat(input.brut) || 0);
+      if (valoare > 0) {
+        const parametri = new URLSearchParams({ [mod]: String(valoare) });
+        window.history.replaceState(null, "", `?${parametri}`);
+        setLinkCopiat(false);
+      }
+    }
+
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
     const targetId = isMobile ? "rezultat-calcul" : "calc-layout";
     document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth", block: "start" });
-  }, [input, mod, regimFiscal, fluturas, sporOre, sporuri, normaOre, oreLucrate]);
+  }, [input, mod, regimFiscal, fluturas, sporOre, sporuri, normaOre, oreLucrate, embedded, brutInitial]);
+
+  // Deschiderea unui link partajat: „?brut=5000" trebuie sa arate calculul, nu
+  // un formular gol.
+  //
+  // De ce efect si nu initializator de stare: pe server nu exista `location`.
+  // Daca starea initiala ar citi URL-ul, serverul ar randa un formular gol si
+  // clientul unul completat — hidratare rupta pe pagina cea mai vizitata a
+  // site-ului. Efectul ruleaza o singura data, dupa hidratare, si e exact cazul
+  // descris in documentatia regulii: sincronizare cu un sistem din afara React,
+  // aici bara de adrese. De aceea regula e dezactivata punctual, cu motiv.
+  const paramCitit = useRef(false);
+  useEffect(() => {
+    if (paramCitit.current || embedded || brutInitial) return;
+
+    const parametri = new URLSearchParams(window.location.search);
+    const dinBrut = parametri.get("brut");
+    const dinNet = parametri.get("net");
+    const brut = dinBrut ?? dinNet;
+    if (!brut) return;
+
+    const valoare = Math.round(Number(brut));
+    // Taie valorile absurde dintr-un link modificat manual.
+    if (!Number.isFinite(valoare) || valoare <= 0 || valoare > 10_000_000) return;
+
+    paramCitit.current = true;
+    const modDinLink = dinBrut ? "brut" : "net";
+    const inputNou: InputState = {
+      brut: String(valoare),
+      tichete: "",
+      functieDeBAza: true,
+      persoanePretretinere: 0,
+      varstaSub26: false,
+      copiiScolarizati: 0,
+      scutitImpozit: false,
+    };
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- citire unica din URL dupa hidratare; vezi comentariul de mai sus
+    setMod(modDinLink);
+    setInput(inputNou);
+    setRezAfisat(buildResult(inputNou, modDinLink, regimFiscal));
+    setRezKey(inputKey(inputNou, modDinLink));
+    // Fara scroll: cine deschide linkul vede pagina de la inceput, ca oricare alta.
+  }, [embedded, brutInitial, regimFiscal]);
+
+  const handleCopiazaLink = async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      setLinkCopiat(true);
+      trackUmami({ name: "copiaza-link-calcul", data: { mod: mod === "brut" ? "brut-net" : "net-brut" } });
+      window.setTimeout(() => setLinkCopiat(false), 3000);
+    } catch {
+      // Clipboard refuzat (permisiuni, context non-secure): selectam URL-ul din
+      // bara de adrese nu putem, dar utilizatorul il are deja acolo, corect.
+      setLinkCopiat(false);
+    }
+  };
 
   // Rezultatul afișat e „învechit" dacă datele curente diferă de cele de la ultimul calcul.
   const stale = rezAfisat !== null && rezKey !== inputKey(pregatesteInput(input), mod);
@@ -1166,6 +1239,19 @@ export default function CalculatorSalariu({
               onClick={handleDescarcaPdf}
             >
               {pdfStatus === "generating" ? "Se generează…" : "↓ Descarcă fluturaș PDF"}
+            </button>
+          )}
+
+          {rezAfisat && !embedded && !brutInitial && (
+            <button
+              type="button"
+              data-md-strip
+              disabled={stale}
+              aria-disabled={stale}
+              className={`ml-0 mt-3 inline-flex min-h-12 items-center gap-2 rounded border border-stone-300 px-4 py-3 text-xs font-medium text-stone-700 transition-colors sm:ml-3 sm:mt-5 ${stale ? "cursor-not-allowed opacity-50" : "hover:border-stone-900 hover:bg-stone-900 hover:text-white"}`}
+              onClick={handleCopiazaLink}
+            >
+              {linkCopiat ? "✓ Link copiat" : "⧉ Copiază linkul calculului"}
             </button>
           )}
 
