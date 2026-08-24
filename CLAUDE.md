@@ -26,7 +26,13 @@ Nu numărul de pagini. **Datele.** Măsurat pe 24 august 2026:
 
 Aproximativ **6.800 de oameni pe lună își tastează salariul brut** în calculator. Aia e exact materia primă pe care paylab a strâns-o prin sondaje. Se aruncă de fiecare dată.
 
-Decizia care deblochează pasul 1 e dacă se colectează salarii anonim (meserie + județ + brut, fără cont, fără PII) — și ea intră în tensiune cu poziționarea actuală „fără cont, fără reclame, nu colectăm nimic". **E o decizie de proprietar, nu de agent.**
+Decizia care ar debloca pasul 1 e dacă se colectează salarii anonim (meserie + județ + brut, fără cont, fără PII).
+
+**Status: RIDICATĂ ȘI AMÂNATĂ de proprietar pe 24 august 2026.** Nu respinsă — amânată, cu motivul că nu e clar dacă strică poziționarea. Nu s-a construit nimic; site-ul continuă să nu colecteze absolut nimic de la vizitatori.
+
+Tensiunea care a oprit-o, și care rămâne reală: `/despre` promite azi „nu există formulare, conturi de utilizator sau newsletter", iar politica de confidențialitate spune că nu colectăm date despre vizitatori individuali. Un formular de salarii, chiar anonim, schimbă contractul cu utilizatorul — și încrederea e exact activul care diferențiază site-ul de paylab și de presă.
+
+**Nu propune reluarea ei ca idee nouă.** Dacă se reia, se reia cu: bază legală GDPR, prag de k-anonimitate înainte de a publica orice cifră pe celulă (meserie × județ), text de politică actualizat și o cale de ștergere. Și cu decizia explicită a proprietarului, nu ca inițiativă de agent.
 
 **Live:** https://salariile.ro
 **Repo:** https://github.com/xsagul/salariile-ro (public)
