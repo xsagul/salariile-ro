@@ -159,8 +159,13 @@ async function auditRenderedSite() {
           if (!html.includes("TEMPO-Online")) {
             failures.push(`${location}: nu citeaza sursa INS TEMPO-Online`);
           }
-          if (!/CAEN\s/.test(html)) {
-            failures.push(`${location}: nu declara activitatea CAEN din spatele cifrei`);
+          // Regula cere ca o cifra de salariu sa aiba clasificarea declarata.
+          // /salarii/femei-barbati nu se sprijina pe CAEN, ci pe grupele majore
+          // de ocupatii ISCO-08 — alta clasificare, la fel de explicit citata.
+          // Deci ii cerem ISCO, nu o exceptam de la regula.
+          const clasificareCeruta = pathname === "/salarii/femei-barbati" ? /ISCO/ : /CAEN\s/;
+          if (!clasificareCeruta.test(html)) {
+            failures.push(`${location}: nu declara clasificarea din spatele cifrei`);
           }
         }
       } catch (error) {
@@ -209,6 +214,15 @@ async function auditRenderedSite() {
     ["/salarii/programator", "Cum citești intervalul", "explicatia metodei direct in pagina"],
     ["/salarii/asistent-medical", "Tehnicieni", "grupa de ocupatii care separa asistentul de medic"],
     ["/salarii/medic", "Specialiști", "grupa de ocupatii a medicului"],
+    // Diferenta pe sexe: date care existau in matricea INS de la inceput, dar
+    // pe care importul le arunca. Verificam eticheta si avertismentul de
+    // interpretare, nu cifra — cifra se schimba la fiecare `npm run ins:tempo`,
+    // dar pagina nu are voie sa ramana fara precizarea ca NU masoara
+    // discriminarea la post egal.
+    ["/salarii/femei-barbati", "Ce NU spune cifra", "avertismentul de interpretare"],
+    ["/salarii/femei-barbati", "post egal", "precizarea ca nu se masoara diferenta la post egal"],
+    ["/salarii/femei-barbati", "FOM121B", "citarea matricei INS"],
+    ["/salarii/medic", "Femei și bărbați", "contextul pe sexe pe pagina de meserie"],
     ["/salarii/medic", "Cât contează vechimea", "progresia pe varste din ancheta din octombrie"],
     ["/compara", "activități economice diferite", "regula perechilor din sectoare diferite"],
     ["/compara/programator-vs-medic", "Tabel comparativ", "tabelul comparativ"],

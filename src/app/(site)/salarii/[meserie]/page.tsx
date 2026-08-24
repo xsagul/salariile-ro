@@ -30,6 +30,7 @@ import {
   MATRICE_NET,
   MATRICE_OCUPATII,
   TOTAL_ECONOMIE,
+  diferentaSexe,
   etichetaJudete,
   variatieAnuala,
 } from "@/lib/ins-date";
@@ -189,6 +190,7 @@ export default async function MeseriePage({ params }: Props) {
   const similare = meseriiDinCategorie(categorie.slug).filter((m) => m.slug !== meserie.slug).slice(0, 6);
   const comparatii = COMPARATII.filter((c) => c.a.slug === meserie.slug || c.b.slug === meserie.slug).slice(0, 4);
   const etichetaSectorJudete = etichetaJudete(meserie.caen2);
+  const sexe = diferentaSexe(meserie.isco);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -470,6 +472,27 @@ export default async function MeseriePage({ params }: Props) {
                       </tbody>
                     </table>
                   </div>
+
+                  {/* Diferenta pe sexe din ACEEASI ancheta si aceeasi grupa.
+                      E context, nu diferentiere: toate meseriile dintr-o grupa
+                      ISCO au aceeasi cifra, si pagina spune asta. */}
+                  {sexe && (
+                    <p className="mt-4 rounded-md border border-stone-200 bg-surface p-4 text-sm leading-normal text-stone-600 shadow-soft">
+                      <strong className="font-semibold text-stone-900">Femei și bărbați:</strong> în aceeași grupă de
+                      ocupații, bărbații au avut un venit brut realizat de {lei(sexe.brutMasculin)} lei, iar femeile{" "}
+                      {lei(sexe.brutFeminin)} lei — o diferență de {procent(Math.abs(sexe.diferenta))}%
+                      {sexe.diferenta < 0 ? " în defavoarea femeilor" : " în favoarea femeilor"}.
+                      {sexe.pondereFemei !== null && ` Femeile reprezintă ${procent(sexe.pondereFemei, 0)}% din grupă.`}{" "}
+                      Cifra e a grupei întregi, nu a acestei meserii, și nu măsoară diferența la post egal.{" "}
+                      <Link
+                        href="/salarii/femei-barbati"
+                        className="font-medium text-stone-900 underline underline-offset-2 hover:text-stone-600"
+                      >
+                        Toate grupele și evoluția pe vârste
+                      </Link>
+                      .
+                    </p>
+                  )}
                 </section>
               )}
 

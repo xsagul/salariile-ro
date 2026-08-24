@@ -29,6 +29,11 @@ type SerieJudete = {
   activitati: { caen: string; national: number | null; valori: Record<string, number | null> }[];
 };
 
+type ValoriVarsta = Record<
+  string,
+  { salariati?: number | null; salariuDeBaza?: number | null; venitBrut?: number | null }
+>;
+
 type SerieOcupatii = {
   matrice: string;
   denumire: string;
@@ -36,7 +41,10 @@ type SerieOcupatii = {
   an: string;
   grupe: {
     isco: string;
-    varste: Record<string, { salariati?: number | null; salariuDeBaza?: number | null; venitBrut?: number | null }>;
+    /** Valorile pentru sexul „Total" — seria folosita peste tot in site. */
+    varste: ValoriVarsta;
+    /** Defalcarea pe sexe a aceleiasi anchete. Adaugata pe 24 august 2026. */
+    sexe?: { masculin: ValoriVarsta | null; feminin: ValoriVarsta | null } | null;
   }[];
 };
 
@@ -256,6 +264,92 @@ export function totalOcupatii(): { venitBrut: number; salariuDeBaza: number | nu
     salariuDeBaza: total.salariuDeBaza ?? null,
     salariati: total.salariati ?? null,
   };
+}
+
+// ─── Diferenta salariala intre femei si barbati ──────────────────────────────
+//
+// Aceeasi ancheta din octombrie, defalcata pe sexe. E singura masuratoare
+// oficiala pe care o putem publica pe subiectul asta: nu e sondaj, nu e
+// estimare, sunt salariatii numarati de INS.
+//
+// Atentie la interpretare, si pagina o spune: cifra NU inseamna „la aceeasi
+// munca, femeile primesc cu X% mai putin". Grupele majore de ocupatii sunt
+// largi, iar in interiorul lor barbatii si femeile nu ocupa aceleasi posturi.
+// E o diferenta de castig mediu, nu o masura a discriminarii la post egal.
+
+export type DiferentaSexe = {
+  grupa: GrupaIsco | "total";
+  nume: string;
+  brutMasculin: number;
+  brutFeminin: number;
+  salariatiMasculin: number | null;
+  salariatiFeminin: number | null;
+  /** Negativ = femeile castiga mai putin. Fractie, nu procent. */
+  diferenta: number;
+  /** Ponderea femeilor in grupa, cand se poate calcula. */
+  pondereFemei: number | null;
+};
+
+function citesteSexe(brut: SerieOcupatii["grupe"][number] | undefined, varsta = "Total") {
+  const m = brut?.sexe?.masculin?.[varsta];
+  const f = brut?.sexe?.feminin?.[varsta];
+  if (!m?.venitBrut || !f?.venitBrut) return null;
+  const salariatiMasculin = m.salariati ?? null;
+  const salariatiFeminin = f.salariati ?? null;
+  const totalSalariati =
+    salariatiMasculin !== null && salariatiFeminin !== null ? salariatiMasculin + salariatiFeminin : null;
+  return {
+    brutMasculin: m.venitBrut,
+    brutFeminin: f.venitBrut,
+    salariatiMasculin,
+    salariatiFeminin,
+    diferenta: (f.venitBrut - m.venitBrut) / m.venitBrut,
+    pondereFemei: totalSalariati && salariatiFeminin !== null ? salariatiFeminin / totalSalariati : null,
+  };
+}
+
+/** Diferenta pe o grupa majora de ocupatii. */
+export function diferentaSexe(grupa: GrupaIsco): DiferentaSexe | null {
+  const valori = citesteSexe(indexIsco.get(GRUPE_ISCO[grupa]));
+  if (!valori) return null;
+  return { grupa, nume: NUME_GRUPE_ISCO[grupa], ...valori };
+}
+
+/** Diferenta pe toata economia, randul „Total" al anchetei. */
+export function diferentaSexeTotal(): DiferentaSexe | null {
+  const valori = citesteSexe(indexIsco.get("Total"));
+  if (!valori) return null;
+  return { grupa: "total", nume: "Toate ocupațiile", ...valori };
+}
+
+/** Toate grupele cu date pe ambele sexe, de la diferenta cea mai mare. */
+export function diferenteSexePeGrupe(): DiferentaSexe[] {
+  return (Object.keys(GRUPE_ISCO) as GrupaIsco[])
+    .map(diferentaSexe)
+    .filter((d): d is DiferentaSexe => d !== null)
+    .sort((a, b) => a.diferenta - b.diferenta);
+}
+
+export type DiferentaPeVarsta = {
+  varsta: string;
+  brutMasculin: number;
+  brutFeminin: number;
+  diferenta: number;
+};
+
+/** Cum se schimba diferenta cu varsta, pe toata economia. */
+export function diferenteSexePeVarste(): DiferentaPeVarsta[] {
+  const total = indexIsco.get("Total");
+  return ORDINE_VARSTE.map((varsta) => {
+    const valori = citesteSexe(total, varsta);
+    if (!valori) return null;
+    return {
+      varsta: varsta.replace("65 de ani si peste", "65+ ani"),
+      brutMasculin: valori.brutMasculin,
+      brutFeminin: valori.brutFeminin,
+      diferenta: valori.diferenta,
+    };
+  }).filter((v): v is DiferentaPeVarsta => v !== null);
 }
 
 // ─── Punerea celor doua serii pe aceeasi perioada ────────────────────────────

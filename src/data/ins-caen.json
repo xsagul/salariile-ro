@@ -1,5 +1,5 @@
 {
-  "generatLa": "2026-08-21",
+  "generatLa": "2026-08-24",
   "sursa": {
     "nume": "Institutul Național de Statistică — TEMPO-Online",
     "url": "http://statistici.insse.ro:8077/tempo-online/",
@@ -7859,6 +7859,132 @@
             "salariuDeBaza": 6291,
             "venitBrut": 8021
           }
+        },
+        "sexe": {
+          "masculin": {
+            "Total": {
+              "salariati": 2445676,
+              "salariuDeBaza": 6575,
+              "venitBrut": 8605
+            },
+            "15-19 ani": {
+              "salariati": 17047,
+              "salariuDeBaza": 4287,
+              "venitBrut": 5465
+            },
+            "20-24 ani": {
+              "salariati": 131764,
+              "salariuDeBaza": 5096,
+              "venitBrut": 6604
+            },
+            "25-29 ani": {
+              "salariati": 211846,
+              "salariuDeBaza": 6580,
+              "venitBrut": 8464
+            },
+            "30-34 ani": {
+              "salariati": 248257,
+              "salariuDeBaza": 7224,
+              "venitBrut": 9326
+            },
+            "35-39 ani": {
+              "salariati": 324920,
+              "salariuDeBaza": 7386,
+              "venitBrut": 9544
+            },
+            "40-44 ani": {
+              "salariati": 314220,
+              "salariuDeBaza": 7343,
+              "venitBrut": 9548
+            },
+            "45-49 ani": {
+              "salariati": 358416,
+              "salariuDeBaza": 6653,
+              "venitBrut": 8767
+            },
+            "50-54 ani": {
+              "salariati": 339564,
+              "salariuDeBaza": 6085,
+              "venitBrut": 8159
+            },
+            "55-59 ani": {
+              "salariati": 324014,
+              "salariuDeBaza": 5955,
+              "venitBrut": 8003
+            },
+            "65 de ani si peste": {
+              "salariati": 53976,
+              "salariuDeBaza": 6082,
+              "venitBrut": 7595
+            },
+            "60-64 ani": {
+              "salariati": 121652,
+              "salariuDeBaza": 6033,
+              "venitBrut": 7859
+            }
+          },
+          "feminin": {
+            "Total": {
+              "salariati": 2169717,
+              "salariuDeBaza": 6527,
+              "venitBrut": 8114
+            },
+            "15-19 ani": {
+              "salariati": 10917,
+              "salariuDeBaza": 4182,
+              "venitBrut": 5007
+            },
+            "20-24 ani": {
+              "salariati": 109740,
+              "salariuDeBaza": 5050,
+              "venitBrut": 6183
+            },
+            "25-29 ani": {
+              "salariati": 177953,
+              "salariuDeBaza": 6562,
+              "venitBrut": 8097
+            },
+            "30-34 ani": {
+              "salariati": 193226,
+              "salariuDeBaza": 7037,
+              "venitBrut": 8668
+            },
+            "35-39 ani": {
+              "salariati": 286785,
+              "salariuDeBaza": 6979,
+              "venitBrut": 8599
+            },
+            "40-44 ani": {
+              "salariati": 308769,
+              "salariuDeBaza": 7084,
+              "venitBrut": 8775
+            },
+            "45-49 ani": {
+              "salariati": 361200,
+              "salariuDeBaza": 6625,
+              "venitBrut": 8287
+            },
+            "50-54 ani": {
+              "salariati": 332657,
+              "salariuDeBaza": 6122,
+              "venitBrut": 7732
+            },
+            "55-59 ani": {
+              "salariati": 290039,
+              "salariuDeBaza": 6074,
+              "venitBrut": 7626
+            },
+            "65 de ani si peste": {
+              "salariati": 24542,
+              "salariuDeBaza": 6460,
+              "venitBrut": 7767
+            },
+            "60-64 ani": {
+              "salariati": 73889,
+              "salariuDeBaza": 6717,
+              "venitBrut": 8288
+            }
+          }
         }
       },
       {
@@ -7923,6 +8049,132 @@
             "salariati": 18439,
             "salariuDeBaza": 9939,
             "venitBrut": 12528
+          }
+        },
+        "sexe": {
+          "masculin": {
+            "Total": {
+              "salariati": 241250,
+              "salariuDeBaza": 9878,
+              "venitBrut": 12414
+            },
+            "15-19 ani": {
+              "salariati": 135,
+              "salariuDeBaza": 4831,
+              "venitBrut": 5572
+            },
+            "20-24 ani": {
+              "salariati": 3206,
+              "salariuDeBaza": 5213,
+              "venitBrut": 6375
+            },
+            "25-29 ani": {
+              "salariati": 10028,
+              "salariuDeBaza": 6858,
+              "venitBrut": 8681
+            },
+            "30-34 ani": {
+              "salariati": 20157,
+              "salariuDeBaza": 8812,
+              "venitBrut": 11113
+            },
+            "35-39 ani": {
+              "salariati": 37164,
+              "salariuDeBaza": 9930,
+              "venitBrut": 12415
+            },
+            "40-44 ani": {
+              "salariati": 42370,
+              "salariuDeBaza": 10843,
+              "venitBrut": 13629
+            },
+            "45-49 ani": {
+              "salariati": 43999,
+              "salariuDeBaza": 10631,
+              "venitBrut": 13395
+            },
+            "50-54 ani": {
+              "salariati": 33574,
+              "salariuDeBaza": 10046,
+              "venitBrut": 12556
+            },
+            "55-59 ani": {
+              "salariati": 30738,
+              "salariuDeBaza": 9632,
+              "venitBrut": 12101
+            },
+            "65 de ani si peste": {
+              "salariati": 7402,
+              "salariuDeBaza": 9198,
+              "venitBrut": 11825
+            },
+            "60-64 ani": {
+              "salariati": 12477,
+              "salariuDeBaza": 9745,
+              "venitBrut": 12281
+            }
+          },
+          "feminin": {
+            "Total": {
+              "salariati": 185560,
+              "salariuDeBaza": 9829,
+              "venitBrut": 12036
+            },
+            "15-19 ani": {
+              "salariati": 123,
+              "salariuDeBaza": 4298,
+              "venitBrut": 4997
+            },
+            "20-24 ani": {
+              "salariati": 3166,
+              "salariuDeBaza": 5395,
+              "venitBrut": 6732
+            },
+            "25-29 ani": {
+              "salariati": 9562,
+              "salariuDeBaza": 7043,
+              "venitBrut": 8792
+            },
+            "30-34 ani": {
+              "salariati": 17059,
+              "salariuDeBaza": 8649,
+              "venitBrut": 10575
+            },
+            "35-39 ani": {
+              "salariati": 31441,
+              "salariuDeBaza": 9578,
+              "venitBrut": 11630
+            },
+            "40-44 ani": {
+              "salariati": 34397,
+              "salariuDeBaza": 10889,
+              "venitBrut": 13281
+            },
+            "45-49 ani": {
+              "salariati": 33305,
+              "salariuDeBaza": 10824,
+              "venitBrut": 13222
+            },
+            "50-54 ani": {
+              "salariati": 25607,
+              "salariuDeBaza": 9990,
+              "venitBrut": 12250
+            },
+            "55-59 ani": {
+              "salariati": 21593,
+              "salariuDeBaza": 9736,
+              "venitBrut": 12016
+            },
+            "65 de ani si peste": {
+              "salariati": 3345,
+              "salariuDeBaza": 8235,
+              "venitBrut": 9954
+            },
+            "60-64 ani": {
+              "salariati": 5962,
+              "salariuDeBaza": 10344,
+              "venitBrut": 13046
+            }
           }
         }
       },
@@ -7989,6 +8241,132 @@
             "salariuDeBaza": 10189,
             "venitBrut": 12685
           }
+        },
+        "sexe": {
+          "masculin": {
+            "Total": {
+              "salariati": 412902,
+              "salariuDeBaza": 11214,
+              "venitBrut": 13687
+            },
+            "15-19 ani": {
+              "salariati": 149,
+              "salariuDeBaza": 4878,
+              "venitBrut": 5546
+            },
+            "20-24 ani": {
+              "salariati": 16501,
+              "salariuDeBaza": 7855,
+              "venitBrut": 9316
+            },
+            "25-29 ani": {
+              "salariati": 58922,
+              "salariuDeBaza": 10241,
+              "venitBrut": 12312
+            },
+            "30-34 ani": {
+              "salariati": 62517,
+              "salariuDeBaza": 12036,
+              "venitBrut": 14486
+            },
+            "35-39 ani": {
+              "salariati": 69283,
+              "salariuDeBaza": 12757,
+              "venitBrut": 15360
+            },
+            "40-44 ani": {
+              "salariati": 61187,
+              "salariuDeBaza": 12364,
+              "venitBrut": 15104
+            },
+            "45-49 ani": {
+              "salariati": 52736,
+              "salariuDeBaza": 11219,
+              "venitBrut": 13886
+            },
+            "50-54 ani": {
+              "salariati": 35399,
+              "salariuDeBaza": 10319,
+              "venitBrut": 12923
+            },
+            "55-59 ani": {
+              "salariati": 31123,
+              "salariuDeBaza": 9833,
+              "venitBrut": 12456
+            },
+            "65 de ani si peste": {
+              "salariati": 9695,
+              "salariuDeBaza": 9090,
+              "venitBrut": 11126
+            },
+            "60-64 ani": {
+              "salariati": 15390,
+              "salariuDeBaza": 9905,
+              "venitBrut": 12495
+            }
+          },
+          "feminin": {
+            "Total": {
+              "salariati": 641808,
+              "salariuDeBaza": 9429,
+              "venitBrut": 11515
+            },
+            "15-19 ani": {
+              "salariati": 549,
+              "salariuDeBaza": 6482,
+              "venitBrut": 7004
+            },
+            "20-24 ani": {
+              "salariati": 26251,
+              "salariuDeBaza": 6767,
+              "venitBrut": 7877
+            },
+            "25-29 ani": {
+              "salariati": 78969,
+              "salariuDeBaza": 8400,
+              "venitBrut": 10146
+            },
+            "30-34 ani": {
+              "salariati": 75797,
+              "salariuDeBaza": 9563,
+              "venitBrut": 11540
+            },
+            "35-39 ani": {
+              "salariati": 94126,
+              "salariuDeBaza": 9908,
+              "venitBrut": 11914
+            },
+            "40-44 ani": {
+              "salariati": 99854,
+              "salariuDeBaza": 9896,
+              "venitBrut": 12007
+            },
+            "45-49 ani": {
+              "salariati": 102673,
+              "salariuDeBaza": 9637,
+              "venitBrut": 11898
+            },
+            "50-54 ani": {
+              "salariati": 75788,
+              "salariuDeBaza": 9438,
+              "venitBrut": 11834
+            },
+            "55-59 ani": {
+              "salariati": 60444,
+              "salariuDeBaza": 9628,
+              "venitBrut": 12023
+            },
+            "65 de ani si peste": {
+              "salariati": 7571,
+              "salariuDeBaza": 9104,
+              "venitBrut": 11102
+            },
+            "60-64 ani": {
+              "salariati": 19786,
+              "salariuDeBaza": 10409,
+              "venitBrut": 12832
+            }
+          }
         }
       },
       {
@@ -8053,6 +8431,132 @@
             "salariati": 16422,
             "salariuDeBaza": 6255,
             "venitBrut": 8237
+          }
+        },
+        "sexe": {
+          "masculin": {
+            "Total": {
+              "salariati": 251078,
+              "salariuDeBaza": 6511,
+              "venitBrut": 8973
+            },
+            "15-19 ani": {
+              "salariati": 1094,
+              "salariuDeBaza": 4536,
+              "venitBrut": 5498
+            },
+            "20-24 ani": {
+              "salariati": 17922,
+              "salariuDeBaza": 5695,
+              "venitBrut": 7240
+            },
+            "25-29 ani": {
+              "salariati": 28284,
+              "salariuDeBaza": 6570,
+              "venitBrut": 8695
+            },
+            "30-34 ani": {
+              "salariati": 30641,
+              "salariuDeBaza": 7087,
+              "venitBrut": 9629
+            },
+            "35-39 ani": {
+              "salariati": 39249,
+              "salariuDeBaza": 7003,
+              "venitBrut": 9748
+            },
+            "40-44 ani": {
+              "salariati": 34269,
+              "salariuDeBaza": 6775,
+              "venitBrut": 9571
+            },
+            "45-49 ani": {
+              "salariati": 33095,
+              "salariuDeBaza": 6346,
+              "venitBrut": 8912
+            },
+            "50-54 ani": {
+              "salariati": 27634,
+              "salariuDeBaza": 6173,
+              "venitBrut": 8723
+            },
+            "55-59 ani": {
+              "salariati": 26198,
+              "salariuDeBaza": 6142,
+              "venitBrut": 8675
+            },
+            "65 de ani si peste": {
+              "salariati": 3887,
+              "salariuDeBaza": 5778,
+              "venitBrut": 7235
+            },
+            "60-64 ani": {
+              "salariati": 8805,
+              "salariuDeBaza": 6100,
+              "venitBrut": 8440
+            }
+          },
+          "feminin": {
+            "Total": {
+              "salariati": 269626,
+              "salariuDeBaza": 5940,
+              "venitBrut": 7720
+            },
+            "15-19 ani": {
+              "salariati": 1069,
+              "salariuDeBaza": 5170,
+              "venitBrut": 5830
+            },
+            "20-24 ani": {
+              "salariati": 20383,
+              "salariuDeBaza": 5328,
+              "venitBrut": 6570
+            },
+            "25-29 ani": {
+              "salariati": 29269,
+              "salariuDeBaza": 5882,
+              "venitBrut": 7464
+            },
+            "30-34 ani": {
+              "salariati": 28503,
+              "salariuDeBaza": 6029,
+              "venitBrut": 7783
+            },
+            "35-39 ani": {
+              "salariati": 39691,
+              "salariuDeBaza": 5948,
+              "venitBrut": 7790
+            },
+            "40-44 ani": {
+              "salariati": 37898,
+              "salariuDeBaza": 6010,
+              "venitBrut": 7945
+            },
+            "45-49 ani": {
+              "salariati": 39670,
+              "salariuDeBaza": 5998,
+              "venitBrut": 7988
+            },
+            "50-54 ani": {
+              "salariati": 33078,
+              "salariuDeBaza": 5973,
+              "venitBrut": 7958
+            },
+            "55-59 ani": {
+              "salariati": 29441,
+              "salariuDeBaza": 6037,
+              "venitBrut": 7793
+            },
+            "65 de ani si peste": {
+              "salariati": 3007,
+              "salariuDeBaza": 5754,
+              "venitBrut": 6764
+            },
+            "60-64 ani": {
+              "salariati": 7617,
+              "salariuDeBaza": 6434,
+              "venitBrut": 8002
+            }
           }
         }
       },
@@ -8119,6 +8623,132 @@
             "salariuDeBaza": 5076,
             "venitBrut": 6427
           }
+        },
+        "sexe": {
+          "masculin": {
+            "Total": {
+              "salariati": 106092,
+              "salariuDeBaza": 5496,
+              "venitBrut": 7489
+            },
+            "15-19 ani": {
+              "salariati": 842,
+              "salariuDeBaza": 4411,
+              "venitBrut": 5619
+            },
+            "20-24 ani": {
+              "salariati": 10334,
+              "salariuDeBaza": 4994,
+              "venitBrut": 6713
+            },
+            "25-29 ani": {
+              "salariati": 12318,
+              "salariuDeBaza": 5471,
+              "venitBrut": 7421
+            },
+            "30-34 ani": {
+              "salariati": 12330,
+              "salariuDeBaza": 5711,
+              "venitBrut": 7727
+            },
+            "35-39 ani": {
+              "salariati": 14568,
+              "salariuDeBaza": 5855,
+              "venitBrut": 7871
+            },
+            "40-44 ani": {
+              "salariati": 12049,
+              "salariuDeBaza": 5716,
+              "venitBrut": 7627
+            },
+            "45-49 ani": {
+              "salariati": 12619,
+              "salariuDeBaza": 5490,
+              "venitBrut": 7445
+            },
+            "50-54 ani": {
+              "salariati": 12356,
+              "salariuDeBaza": 5385,
+              "venitBrut": 7539
+            },
+            "55-59 ani": {
+              "salariati": 13427,
+              "salariuDeBaza": 5442,
+              "venitBrut": 7848
+            },
+            "65 de ani si peste": {
+              "salariati": 1397,
+              "salariuDeBaza": 5006,
+              "venitBrut": 6226
+            },
+            "60-64 ani": {
+              "salariati": 3852,
+              "salariuDeBaza": 5153,
+              "venitBrut": 6744
+            }
+          },
+          "feminin": {
+            "Total": {
+              "salariati": 182677,
+              "salariuDeBaza": 4997,
+              "venitBrut": 6261
+            },
+            "15-19 ani": {
+              "salariati": 1227,
+              "salariuDeBaza": 4176,
+              "venitBrut": 5083
+            },
+            "20-24 ani": {
+              "salariati": 15250,
+              "salariuDeBaza": 4697,
+              "venitBrut": 5913
+            },
+            "25-29 ani": {
+              "salariati": 17717,
+              "salariuDeBaza": 5103,
+              "venitBrut": 6417
+            },
+            "30-34 ani": {
+              "salariati": 17774,
+              "salariuDeBaza": 5170,
+              "venitBrut": 6417
+            },
+            "35-39 ani": {
+              "salariati": 25810,
+              "salariuDeBaza": 5139,
+              "venitBrut": 6372
+            },
+            "40-44 ani": {
+              "salariati": 23029,
+              "salariuDeBaza": 5098,
+              "venitBrut": 6330
+            },
+            "45-49 ani": {
+              "salariati": 24717,
+              "salariuDeBaza": 4936,
+              "venitBrut": 6192
+            },
+            "50-54 ani": {
+              "salariati": 24472,
+              "salariuDeBaza": 4895,
+              "venitBrut": 6219
+            },
+            "55-59 ani": {
+              "salariati": 25126,
+              "salariuDeBaza": 4951,
+              "venitBrut": 6292
+            },
+            "65 de ani si peste": {
+              "salariati": 1867,
+              "salariuDeBaza": 4789,
+              "venitBrut": 5712
+            },
+            "60-64 ani": {
+              "salariati": 5688,
+              "salariuDeBaza": 5024,
+              "venitBrut": 6212
+            }
+          }
         }
       },
       {
@@ -8183,6 +8813,132 @@
             "salariati": 36173,
             "salariuDeBaza": 4254,
             "venitBrut": 5076
+          }
+        },
+        "sexe": {
+          "masculin": {
+            "Total": {
+              "salariati": 220869,
+              "salariuDeBaza": 4246,
+              "venitBrut": 5211
+            },
+            "15-19 ani": {
+              "salariati": 3006,
+              "salariuDeBaza": 3955,
+              "venitBrut": 4803
+            },
+            "20-24 ani": {
+              "salariati": 16271,
+              "salariuDeBaza": 4091,
+              "venitBrut": 5119
+            },
+            "25-29 ani": {
+              "salariati": 16901,
+              "salariuDeBaza": 4257,
+              "venitBrut": 5345
+            },
+            "30-34 ani": {
+              "salariati": 17558,
+              "salariuDeBaza": 4418,
+              "venitBrut": 5564
+            },
+            "35-39 ani": {
+              "salariati": 22210,
+              "salariuDeBaza": 4464,
+              "venitBrut": 5577
+            },
+            "40-44 ani": {
+              "salariati": 20871,
+              "salariuDeBaza": 4415,
+              "venitBrut": 5458
+            },
+            "45-49 ani": {
+              "salariati": 27673,
+              "salariuDeBaza": 4295,
+              "venitBrut": 5270
+            },
+            "50-54 ani": {
+              "salariati": 32180,
+              "salariuDeBaza": 4218,
+              "venitBrut": 5151
+            },
+            "55-59 ani": {
+              "salariati": 36116,
+              "salariuDeBaza": 4180,
+              "venitBrut": 5061
+            },
+            "65 de ani si peste": {
+              "salariati": 10808,
+              "salariuDeBaza": 3952,
+              "venitBrut": 4590
+            },
+            "60-64 ani": {
+              "salariati": 17275,
+              "salariuDeBaza": 4069,
+              "venitBrut": 4826
+            }
+          },
+          "feminin": {
+            "Total": {
+              "salariati": 453065,
+              "salariuDeBaza": 4277,
+              "venitBrut": 5188
+            },
+            "15-19 ani": {
+              "salariati": 5067,
+              "salariuDeBaza": 3875,
+              "venitBrut": 4555
+            },
+            "20-24 ani": {
+              "salariati": 29139,
+              "salariuDeBaza": 3992,
+              "venitBrut": 4842
+            },
+            "25-29 ani": {
+              "salariati": 25162,
+              "salariuDeBaza": 4084,
+              "venitBrut": 4982
+            },
+            "30-34 ani": {
+              "salariati": 30381,
+              "salariuDeBaza": 4111,
+              "venitBrut": 4997
+            },
+            "35-39 ani": {
+              "salariati": 51018,
+              "salariuDeBaza": 4170,
+              "venitBrut": 5075
+            },
+            "40-44 ani": {
+              "salariati": 55395,
+              "salariuDeBaza": 4260,
+              "venitBrut": 5172
+            },
+            "45-49 ani": {
+              "salariati": 75777,
+              "salariuDeBaza": 4323,
+              "venitBrut": 5251
+            },
+            "50-54 ani": {
+              "salariati": 82042,
+              "salariuDeBaza": 4386,
+              "venitBrut": 5327
+            },
+            "55-59 ani": {
+              "salariati": 74978,
+              "salariuDeBaza": 4440,
+              "venitBrut": 5389
+            },
+            "65 de ani si peste": {
+              "salariati": 5208,
+              "salariuDeBaza": 4087,
+              "venitBrut": 4747
+            },
+            "60-64 ani": {
+              "salariati": 18898,
+              "salariuDeBaza": 4424,
+              "venitBrut": 5304
+            }
           }
         }
       },
@@ -8249,6 +9005,122 @@
             "salariuDeBaza": 4376,
             "venitBrut": 5265
           }
+        },
+        "sexe": {
+          "masculin": {
+            "Total": {
+              "salariati": 10542,
+              "salariuDeBaza": 4214,
+              "venitBrut": 5209
+            },
+            "20-24 ani": {
+              "salariati": 305,
+              "salariuDeBaza": 4010,
+              "venitBrut": 5167
+            },
+            "25-29 ani": {
+              "salariati": 474,
+              "salariuDeBaza": 4158,
+              "venitBrut": 5065
+            },
+            "30-34 ani": {
+              "salariati": 775,
+              "salariuDeBaza": 4131,
+              "venitBrut": 5045
+            },
+            "35-39 ani": {
+              "salariati": 1107,
+              "salariuDeBaza": 4165,
+              "venitBrut": 4939
+            },
+            "40-44 ani": {
+              "salariati": 1299,
+              "salariuDeBaza": 4193,
+              "venitBrut": 5180
+            },
+            "45-49 ani": {
+              "salariati": 1841,
+              "salariuDeBaza": 4214,
+              "venitBrut": 5281
+            },
+            "50-54 ani": {
+              "salariati": 2119,
+              "salariuDeBaza": 4218,
+              "venitBrut": 5299
+            },
+            "55-59 ani": {
+              "salariati": 1749,
+              "salariuDeBaza": 4296,
+              "venitBrut": 5386
+            },
+            "65 de ani si peste": {
+              "salariati": 222,
+              "salariuDeBaza": 4308,
+              "venitBrut": 4870
+            },
+            "60-64 ani": {
+              "salariati": 610,
+              "salariuDeBaza": 4333,
+              "venitBrut": 5198
+            }
+          },
+          "feminin": {
+            "Total": {
+              "salariati": 4107,
+              "salariuDeBaza": 4229,
+              "venitBrut": 5215
+            },
+            "20-24 ani": {
+              "salariati": 122,
+              "salariuDeBaza": 3957,
+              "venitBrut": 4822
+            },
+            "25-29 ani": {
+              "salariati": 147,
+              "salariuDeBaza": 4249,
+              "venitBrut": 5075
+            },
+            "30-34 ani": {
+              "salariati": 194,
+              "salariuDeBaza": 4113,
+              "venitBrut": 5050
+            },
+            "35-39 ani": {
+              "salariati": 354,
+              "salariuDeBaza": 4060,
+              "venitBrut": 4954
+            },
+            "40-44 ani": {
+              "salariati": 468,
+              "salariuDeBaza": 4075,
+              "venitBrut": 4997
+            },
+            "45-49 ani": {
+              "salariati": 769,
+              "salariuDeBaza": 4167,
+              "venitBrut": 5228
+            },
+            "50-54 ani": {
+              "salariati": 962,
+              "salariuDeBaza": 4259,
+              "venitBrut": 5313
+            },
+            "55-59 ani": {
+              "salariati": 833,
+              "salariuDeBaza": 4396,
+              "venitBrut": 5385
+            },
+            "65 de ani si peste": {
+              "salariati": 53,
+              "salariuDeBaza": 4473,
+              "venitBrut": 5386
+            },
+            "60-64 ani": {
+              "salariati": 196,
+              "salariuDeBaza": 4513,
+              "venitBrut": 5474
+            }
+          }
         }
       },
       {
@@ -8313,6 +9185,132 @@
             "salariati": 29810,
             "salariuDeBaza": 5286,
             "venitBrut": 7091
+          }
+        },
+        "sexe": {
+          "masculin": {
+            "Total": {
+              "salariati": 409052,
+              "salariuDeBaza": 5370,
+              "venitBrut": 7292
+            },
+            "15-19 ani": {
+              "salariati": 2836,
+              "salariuDeBaza": 4510,
+              "venitBrut": 6018
+            },
+            "20-24 ani": {
+              "salariati": 15869,
+              "salariuDeBaza": 4902,
+              "venitBrut": 6645
+            },
+            "25-29 ani": {
+              "salariati": 20162,
+              "salariuDeBaza": 5178,
+              "venitBrut": 7103
+            },
+            "30-34 ani": {
+              "salariati": 27037,
+              "salariuDeBaza": 5316,
+              "venitBrut": 7266
+            },
+            "35-39 ani": {
+              "salariati": 42164,
+              "salariuDeBaza": 5379,
+              "venitBrut": 7276
+            },
+            "40-44 ani": {
+              "salariati": 46114,
+              "salariuDeBaza": 5379,
+              "venitBrut": 7206
+            },
+            "45-49 ani": {
+              "salariati": 62969,
+              "salariuDeBaza": 5434,
+              "venitBrut": 7314
+            },
+            "50-54 ani": {
+              "salariati": 75177,
+              "salariuDeBaza": 5449,
+              "venitBrut": 7490
+            },
+            "55-59 ani": {
+              "salariati": 80944,
+              "salariuDeBaza": 5438,
+              "venitBrut": 7456
+            },
+            "65 de ani si peste": {
+              "salariati": 8933,
+              "salariuDeBaza": 5244,
+              "venitBrut": 6698
+            },
+            "60-64 ani": {
+              "salariati": 26847,
+              "salariuDeBaza": 5381,
+              "venitBrut": 7242
+            }
+          },
+          "feminin": {
+            "Total": {
+              "salariati": 96241,
+              "salariuDeBaza": 4358,
+              "venitBrut": 5845
+            },
+            "15-19 ani": {
+              "salariati": 356,
+              "salariuDeBaza": 3995,
+              "venitBrut": 5381
+            },
+            "20-24 ani": {
+              "salariati": 2398,
+              "salariuDeBaza": 4213,
+              "venitBrut": 5702
+            },
+            "25-29 ani": {
+              "salariati": 3125,
+              "salariuDeBaza": 4399,
+              "venitBrut": 5994
+            },
+            "30-34 ani": {
+              "salariati": 4731,
+              "salariuDeBaza": 4388,
+              "venitBrut": 6002
+            },
+            "35-39 ani": {
+              "salariati": 9437,
+              "salariuDeBaza": 4329,
+              "venitBrut": 5829
+            },
+            "40-44 ani": {
+              "salariati": 12901,
+              "salariuDeBaza": 4328,
+              "venitBrut": 5821
+            },
+            "45-49 ani": {
+              "salariati": 18604,
+              "salariuDeBaza": 4301,
+              "venitBrut": 5747
+            },
+            "50-54 ani": {
+              "salariati": 21790,
+              "salariuDeBaza": 4387,
+              "venitBrut": 5919
+            },
+            "55-59 ani": {
+              "salariati": 19350,
+              "salariuDeBaza": 4413,
+              "venitBrut": 5880
+            },
+            "65 de ani si peste": {
+              "salariati": 586,
+              "salariuDeBaza": 4372,
+              "venitBrut": 5318
+            },
+            "60-64 ani": {
+              "salariati": 2963,
+              "salariuDeBaza": 4428,
+              "venitBrut": 5726
+            }
           }
         }
       },
@@ -8379,6 +9377,132 @@
             "salariuDeBaza": 4824,
             "venitBrut": 6993
           }
+        },
+        "sexe": {
+          "masculin": {
+            "Total": {
+              "salariati": 434229,
+              "salariuDeBaza": 4788,
+              "venitBrut": 7276
+            },
+            "15-19 ani": {
+              "salariati": 1618,
+              "salariuDeBaza": 4200,
+              "venitBrut": 5857
+            },
+            "20-24 ani": {
+              "salariati": 18192,
+              "salariuDeBaza": 4438,
+              "venitBrut": 6554
+            },
+            "25-29 ani": {
+              "salariati": 29640,
+              "salariuDeBaza": 4566,
+              "venitBrut": 6980
+            },
+            "30-34 ani": {
+              "salariati": 40311,
+              "salariuDeBaza": 4623,
+              "venitBrut": 7115
+            },
+            "35-39 ani": {
+              "salariati": 53725,
+              "salariuDeBaza": 4695,
+              "venitBrut": 7178
+            },
+            "40-44 ani": {
+              "salariati": 53445,
+              "salariuDeBaza": 4746,
+              "venitBrut": 7236
+            },
+            "45-49 ani": {
+              "salariati": 72195,
+              "salariuDeBaza": 4824,
+              "venitBrut": 7334
+            },
+            "50-54 ani": {
+              "salariati": 73592,
+              "salariuDeBaza": 4920,
+              "venitBrut": 7532
+            },
+            "55-59 ani": {
+              "salariati": 64305,
+              "salariuDeBaza": 5006,
+              "venitBrut": 7643
+            },
+            "65 de ani si peste": {
+              "salariati": 6348,
+              "salariuDeBaza": 4711,
+              "venitBrut": 6487
+            },
+            "60-64 ani": {
+              "salariati": 20858,
+              "salariuDeBaza": 4884,
+              "venitBrut": 7107
+            }
+          },
+          "feminin": {
+            "Total": {
+              "salariati": 99154,
+              "salariuDeBaza": 4295,
+              "venitBrut": 6251
+            },
+            "15-19 ani": {
+              "salariati": 405,
+              "salariuDeBaza": 3974,
+              "venitBrut": 5839
+            },
+            "20-24 ani": {
+              "salariati": 3155,
+              "salariuDeBaza": 4151,
+              "venitBrut": 6573
+            },
+            "25-29 ani": {
+              "salariati": 3955,
+              "salariuDeBaza": 4240,
+              "venitBrut": 6911
+            },
+            "30-34 ani": {
+              "salariati": 5129,
+              "salariuDeBaza": 4293,
+              "venitBrut": 6510
+            },
+            "35-39 ani": {
+              "salariati": 10115,
+              "salariuDeBaza": 4292,
+              "venitBrut": 6321
+            },
+            "40-44 ani": {
+              "salariati": 13568,
+              "salariuDeBaza": 4265,
+              "venitBrut": 6161
+            },
+            "45-49 ani": {
+              "salariati": 19608,
+              "salariuDeBaza": 4267,
+              "venitBrut": 6104
+            },
+            "50-54 ani": {
+              "salariati": 22087,
+              "salariuDeBaza": 4333,
+              "venitBrut": 6227
+            },
+            "55-59 ani": {
+              "salariati": 18278,
+              "salariuDeBaza": 4345,
+              "venitBrut": 6247
+            },
+            "65 de ani si peste": {
+              "salariati": 358,
+              "salariuDeBaza": 4104,
+              "venitBrut": 5399
+            },
+            "60-64 ani": {
+              "salariati": 2496,
+              "salariuDeBaza": 4325,
+              "venitBrut": 6036
+            }
+          }
         }
       },
       {
@@ -8443,6 +9567,132 @@
             "salariati": 25821,
             "salariuDeBaza": 4251,
             "venitBrut": 5118
+          }
+        },
+        "sexe": {
+          "masculin": {
+            "Total": {
+              "salariati": 359662,
+              "salariuDeBaza": 4428,
+              "venitBrut": 5570
+            },
+            "15-19 ani": {
+              "salariati": 7326,
+              "salariuDeBaza": 4285,
+              "venitBrut": 5412
+            },
+            "20-24 ani": {
+              "salariati": 33164,
+              "salariuDeBaza": 4376,
+              "venitBrut": 5649
+            },
+            "25-29 ani": {
+              "salariati": 35117,
+              "salariuDeBaza": 4409,
+              "venitBrut": 5708
+            },
+            "30-34 ani": {
+              "salariati": 36931,
+              "salariuDeBaza": 4462,
+              "venitBrut": 5696
+            },
+            "35-39 ani": {
+              "salariati": 45450,
+              "salariuDeBaza": 4491,
+              "venitBrut": 5647
+            },
+            "40-44 ani": {
+              "salariati": 42616,
+              "salariuDeBaza": 4483,
+              "venitBrut": 5605
+            },
+            "45-49 ani": {
+              "salariati": 51289,
+              "salariuDeBaza": 4464,
+              "venitBrut": 5579
+            },
+            "50-54 ani": {
+              "salariati": 47533,
+              "salariuDeBaza": 4420,
+              "venitBrut": 5534
+            },
+            "55-59 ani": {
+              "salariati": 39414,
+              "salariuDeBaza": 4385,
+              "venitBrut": 5422
+            },
+            "65 de ani si peste": {
+              "salariati": 5284,
+              "salariuDeBaza": 4200,
+              "venitBrut": 4925
+            },
+            "60-64 ani": {
+              "salariati": 15538,
+              "salariuDeBaza": 4319,
+              "venitBrut": 5217
+            }
+          },
+          "feminin": {
+            "Total": {
+              "salariati": 237479,
+              "salariuDeBaza": 4091,
+              "venitBrut": 5061
+            },
+            "15-19 ani": {
+              "salariati": 2112,
+              "salariuDeBaza": 3890,
+              "venitBrut": 4896
+            },
+            "20-24 ani": {
+              "salariati": 9876,
+              "salariuDeBaza": 3972,
+              "venitBrut": 5092
+            },
+            "25-29 ani": {
+              "salariati": 10047,
+              "salariuDeBaza": 4025,
+              "venitBrut": 5113
+            },
+            "30-34 ani": {
+              "salariati": 13658,
+              "salariuDeBaza": 4035,
+              "venitBrut": 5075
+            },
+            "35-39 ani": {
+              "salariati": 24793,
+              "salariuDeBaza": 4053,
+              "venitBrut": 5073
+            },
+            "40-44 ani": {
+              "salariati": 31259,
+              "salariuDeBaza": 4087,
+              "venitBrut": 5097
+            },
+            "45-49 ani": {
+              "salariati": 46077,
+              "salariuDeBaza": 4089,
+              "venitBrut": 5052
+            },
+            "50-54 ani": {
+              "salariati": 46831,
+              "salariuDeBaza": 4119,
+              "venitBrut": 5071
+            },
+            "55-59 ani": {
+              "salariati": 39996,
+              "salariuDeBaza": 4154,
+              "venitBrut": 5045
+            },
+            "65 de ani si peste": {
+              "salariati": 2547,
+              "salariuDeBaza": 4031,
+              "venitBrut": 4797
+            },
+            "60-64 ani": {
+              "salariati": 10283,
+              "salariuDeBaza": 4149,
+              "venitBrut": 4970
+            }
           }
         }
       }

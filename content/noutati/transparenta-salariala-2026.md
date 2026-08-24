@@ -150,6 +150,8 @@ Un „5.000 lei” poate însemna brut, net sau un pachet în care sunt incluse 
 
 Poți transforma rapid brutul în net cu [calculatorul salariile.ro](/), iar pentru repere generale poți consulta și pagina despre [salariul mediu](/salariu-mediu).
 
+Directiva cere angajatorilor să raporteze diferența de câștig dintre femei și bărbați din propria organizație. Până când asta devine obligatorie, singura măsurătoare oficială disponibilă este cea la nivel de economie: am publicat-o, pe grupe de ocupații și pe vârste, în [diferența de salariu între femei și bărbați](/salarii/femei-barbati).
+
 ## Ce ar trebui să pregătească firmele
 
 Chiar dacă legea finală nu este încă în vigoare, companiile care vor fi afectate pot începe să își verifice intern:

@@ -156,6 +156,12 @@ export default function SalariiPage() {
             >
               Salarii pe județe
             </Link>
+            <Link
+              href="/salarii/femei-barbati"
+              className="inline-flex min-h-11 items-center rounded-full border border-stone-900 bg-stone-900 px-4 text-sm font-medium text-white shadow-soft transition-colors hover:bg-stone-700"
+            >
+              Femei vs bărbați
+            </Link>
             {categorii.map(({ categorie }) => (
               <a
                 key={categorie.slug}

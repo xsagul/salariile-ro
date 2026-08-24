@@ -213,23 +213,24 @@ async function serieOcupatii() {
   const meta = await matrixMeta(code);
   const ani = meta.dimensionsMap[4].options;
   const ultimulAn = ani[ani.length - 1];
-  const result = await matrixQuery(code, meta, [
-    all,
-    all,
-    all,
-    byLabel((label) => label === "Total"),
-    () => [ultimulAn],
-    all,
-  ]);
+  // Cerem TOATE cele trei sexe, nu doar „Total". Dimensiunea 3 e sexul, iar
+  // matricea o are de la inceput — pana pe 24 august 2026 o aruncam.
+  // Datele pe sexe sunt singura masuratoare oficiala a diferentei salariale
+  // dintre femei si barbati pe care o putem publica; paylab are procentul de
+  // femei dintr-un sondaj, dar nu si cat castiga fiecare.
+  const result = await matrixQuery(code, meta, [all, all, all, all, () => [ultimulAn], all]);
   const parsed = parseResultTable(result.resultTable);
 
   // Randuri: [indicator, grupa de varsta, grupa ISCO, sex]; coloane: an x UM.
   const unitati = parsed.columns.map((tuple) => tuple[1]);
   const perGrupa = new Map();
   for (const row of parsed.rows) {
-    const [indicator, varsta, isco] = row.labels;
-    if (!perGrupa.has(isco)) perGrupa.set(isco, {});
-    const bucket = perGrupa.get(isco);
+    const [indicator, varsta, isco, sex] = row.labels;
+    const cheieSex = (sex ?? "Total").trim();
+    if (!perGrupa.has(isco)) perGrupa.set(isco, new Map());
+    const peSex = perGrupa.get(isco);
+    if (!peSex.has(cheieSex)) peSex.set(cheieSex, {});
+    const bucket = peSex.get(cheieSex);
     const cheieVarsta = varsta.trim();
     bucket[cheieVarsta] = bucket[cheieVarsta] ?? {};
     // Fiecare indicator are o singura unitate de masura cu sens.
@@ -249,7 +250,17 @@ async function serieOcupatii() {
     denumire: meta.matrixName,
     ultimaActualizare: meta.ultimaActualizare,
     an: ultimulAn.label,
-    grupe: [...perGrupa].map(([isco, varste]) => ({ isco, varste })),
+    // `varste` ramane EXACT ce era inainte — valorile pentru sexul „Total" —
+    // ca sa nu se schimbe nicio cifra deja publicata. Defalcarea pe sexe vine
+    // alaturi, ca adaugire.
+    grupe: [...perGrupa].map(([isco, peSex]) => ({
+      isco,
+      varste: peSex.get("Total") ?? {},
+      sexe: {
+        masculin: peSex.get("Masculin") ?? null,
+        feminin: peSex.get("Feminin") ?? null,
+      },
+    })),
   };
 }
 
