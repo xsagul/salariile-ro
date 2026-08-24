@@ -199,7 +199,16 @@ async function auditRenderedSite() {
     ["/salarii", "TEMPO-Online", "citarea sursei INS pe hubul de meserii"],
     ["/salarii", "grupe majore de ocupații", "a doua masuratoare, dinspre ocupatie"],
     ["/salarii/programator", "CAEN 62", "activitatea din spatele cifrei de programator"],
-    ["/salarii/programator", "Net standard calculat", "netul calculat cu motorul fiscal propriu"],
+    // Pagina de meserie raspunde cu un INTERVAL, nu cu media sectorului: cele
+    // doua masuratori INS (activitate si grupa de ocupatii) incadreaza ocupatia
+    // si, spre deosebire de cifra de sector singura, o si diferentiaza de
+    // meseriile vecine. Verificam ca ambele capete si eticheta lor sunt in
+    // pagina, plus nota care spune de ce cifra pe ocupatii e indexata.
+    ["/salarii/programator", "Estimare net, pe lună", "intervalul net estimat, calculat cu motorul fiscal"],
+    ["/salarii/programator", "Grupa de ocupații, indexat", "capatul dinspre ocupatie, adus la luna curenta"],
+    ["/salarii/programator", "Cum citești intervalul", "explicatia metodei direct in pagina"],
+    ["/salarii/asistent-medical", "Tehnicieni", "grupa de ocupatii care separa asistentul de medic"],
+    ["/salarii/medic", "Specialiști", "grupa de ocupatii a medicului"],
     ["/salarii/medic", "Cât contează vechimea", "progresia pe varste din ancheta din octombrie"],
     ["/compara", "activități economice diferite", "regula perechilor din sectoare diferite"],
     ["/compara/programator-vs-medic", "Tabel comparativ", "tabelul comparativ"],
@@ -208,6 +217,25 @@ async function auditRenderedSite() {
 
   for (const [pathname, expected, label] of contentChecks) {
     if (!rendered.get(pathname)?.includes(expected)) failures.push(`${pathname}: lipseste ${label}`);
+  }
+
+  // ── Meseriile din acelasi sector nu au voie sa dea acelasi raspuns ──────────
+  // Regresia pazita: cat timp pagina afisa media activitatii CAEN, un medic si
+  // un asistent medical primeau EXACT aceeasi cifra, desi unul e in grupa
+  // „specialisti" si celalalt in „tehnicieni". Descrierea meta e locul unde se
+  // vede cel mai repede, fiindca ea ajunge in SERP.
+  const perechiCareTrebuieSaDifere: [string, string][] = [
+    ["/salarii/medic", "/salarii/asistent-medical"],
+    ["/salarii/avocat", "/salarii/secretar"],
+    ["/salarii/inginer", "/salarii/muncitor-industria-alimentara"],
+  ];
+  for (const [unu, altul] of perechiCareTrebuieSaDifere) {
+    const a = metaDescriptionFrom(rendered.get(unu) ?? "");
+    const b = metaDescriptionFrom(rendered.get(altul) ?? "");
+    const cifre = (text: string) => (text.match(/[\d.]+–[\d.]+/g) ?? []).join("|");
+    if (a && b && cifre(a) && cifre(a) === cifre(b)) {
+      failures.push(`${unu} si ${altul}: acelasi interval in descriere (${cifre(a)}) — meseriile nu se diferentiaza`);
+    }
   }
 
   // ── SERP: titlul si descrierea trebuie sa contina RASPUNSUL, nu intrebarea ──

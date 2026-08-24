@@ -61,6 +61,11 @@ gsc-key.json
 /seo-assets/
 /SEO-AUDIT-*.md
 
+# Iesirile scripturilor de audit: se regenereaza oricand cu `node scripts/audit-*.mjs`
+# si contin defalcari GSC pe pagini, care nu se publica.
+/.audit-*.json
+/.gsc-*.json
+
 # Cercetare despre competitori: ramane LOCALA.
 # Repo-ul e public, deci orice analiza a defectelor concurentei publicata aici
 # devine, de fapt, un material public despre ei — exact ce am decis ca nu facem.

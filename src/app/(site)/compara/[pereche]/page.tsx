@@ -24,6 +24,7 @@ import {
   comparatiiInrudite,
   dateMeserieSauEroare,
   getComparatie,
+  intervaleSeSuprapun,
   type Comparatie,
   type DateMeserie,
 } from "@/lib/meserii";
@@ -51,6 +52,9 @@ function titluPagina(comparatie: Comparatie) {
 }
 
 function descrierePagina(a: DateMeserie, b: DateMeserie) {
+  if (a.estimare && b.estimare) {
+    return `${a.meserie.nume} vs ${b.meserie.nume} în 2026: ${lei(a.estimare.netMin)}–${lei(a.estimare.netMax)} lei net față de ${lei(b.estimare.netMin)}–${lei(b.estimare.netMax)} lei net pe lună, estimat din datele INS pe sector și pe grupa de ocupații.`;
+  }
   return `${a.meserie.nume} vs ${b.meserie.nume} în 2026: ${lei(a.sector.brutCurent)} lei față de ${lei(b.sector.brutCurent)} lei brut mediu în sectoarele respective (INS, ${LUNA}), cu netul calculat pentru fiecare.`;
 }
 
@@ -73,11 +77,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 function BaraComparativa({ a, b }: { a: DateMeserie; b: DateMeserie }) {
-  const max = Math.max(a.sector.brutCurent, b.sector.brutCurent);
-  const randuri = [
-    { nume: a.meserie.nume, brut: a.sector.brutCurent, net: a.netStandard },
-    { nume: b.meserie.nume, brut: b.sector.brutCurent, net: b.netStandard },
-  ];
+  const randuri = [a, b].map((d) => ({
+    nume: d.meserie.nume,
+    brut: d.estimare?.brutReper ?? d.sector.brutCurent,
+    net: d.estimare?.netReper ?? d.netStandard,
+  }));
+  const max = Math.max(...randuri.map((r) => r.brut));
 
   return (
     <div className="my-6 grid gap-4">
@@ -97,7 +102,8 @@ function BaraComparativa({ a, b }: { a: DateMeserie; b: DateMeserie }) {
         </div>
       ))}
       <p className="text-xs leading-normal text-stone-600">
-        Bara plină este netul care ajunge în mână; porțiunea deschisă, partea reținută ca CAS, CASS și impozit.
+        Barele arată mijlocul intervalului estimat pentru fiecare meserie. Bara plină este netul care ajunge în mână;
+        porțiunea deschisă, partea reținută ca CAS, CASS și impozit.
       </p>
     </div>
   );
@@ -110,24 +116,42 @@ export default async function ComparatiePage({ params }: Props) {
 
   const a = dateMeserieSauEroare(comparatie.a);
   const b = dateMeserieSauEroare(comparatie.b);
-  const castigator = a.sector.brutCurent >= b.sector.brutCurent ? a : b;
+  // Comparatia se face pe mijlocul intervalului estimat, aceeasi baza ca pe
+  // paginile de meserie. Daca intervalele se suprapun, diferenta nu e sustinuta
+  // de date si pagina spune asta in loc sa declare un castigator.
+  const seSuprapun =
+    a.estimare !== null && b.estimare !== null && intervaleSeSuprapun(a.estimare, b.estimare);
+  const reperA = a.estimare?.brutReper ?? a.sector.brutCurent;
+  const reperB = b.estimare?.brutReper ?? b.sector.brutCurent;
+  const castigator = reperA >= reperB ? a : b;
   const celalalt = castigator === a ? b : a;
-  const diferentaBrut = castigator.sector.brutCurent - celalalt.sector.brutCurent;
-  const diferentaProcent = diferentaBrut / celalalt.sector.brutCurent;
-  const diferentaNet = castigator.netStandard - celalalt.netStandard;
-  const rezultatA = calculStandard(a.sector.brutCurent);
-  const rezultatB = calculStandard(b.sector.brutCurent);
+  const reperCastigator = castigator === a ? reperA : reperB;
+  const reperCelalalt = celalalt === a ? reperA : reperB;
+  const diferentaBrut = reperCastigator - reperCelalalt;
+  const diferentaProcent = diferentaBrut / reperCelalalt;
+  const diferentaNet =
+    (castigator.estimare?.netReper ?? castigator.netStandard) -
+    (celalalt.estimare?.netReper ?? celalalt.netStandard);
+  // Retinerile si costul angajatorului se calculeaza din ACEEASI baza ca barele
+  // si ca restul tabelului — mijlocul intervalului. Altfel un rand al tabelului
+  // ar descrie brutul de sector, iar altul reperul, fara ca cititorul sa afle.
+  const rezultatA = calculStandard(reperA);
+  const rezultatB = calculStandard(reperB);
   const inrudite = comparatiiInrudite(comparatie);
   const aceeasiGrupa = a.meserie.isco === b.meserie.isco;
 
   const faq = [
     {
       q: `Cine câștigă mai mult: ${comparatie.a.nume.toLocaleLowerCase("ro-RO")} sau ${comparatie.b.nume.toLocaleLowerCase("ro-RO")}?`,
-      a: `Pe datele INS din ${LUNA}, sectorul în care lucrează majoritatea celor cu meseria de ${castigator.meserie.nume.toLocaleLowerCase("ro-RO")} are un câștig mediu brut cu ${procent(diferentaProcent, 0)}% mai mare — ${lei(castigator.sector.brutCurent)} lei față de ${lei(celalalt.sector.brutCurent)} lei, adică o diferență de ${lei(diferentaBrut)} lei brut pe lună. Comparația este între activități economice, nu între două posturi concrete.`,
+      a: seSuprapun
+        ? `Datele oficiale nu pot răspunde tranșant, pentru că intervalele celor două meserii se suprapun: ${comparatie.a.nume.toLocaleLowerCase("ro-RO")} ${lei(a.estimare!.brutMin)}–${lei(a.estimare!.brutMax)} lei brut, ${comparatie.b.nume.toLocaleLowerCase("ro-RO")} ${lei(b.estimare!.brutMin)}–${lei(b.estimare!.brutMax)} lei brut. Într-o zonă comună de valori, diferența dintre doi angajați concreți — dată de sector, județ și vechime — e mai mare decât diferența dintre mediile celor două meserii.`
+        : `${castigator.meserie.nume} câștigă mai mult: ${lei(castigator.estimare?.brutMin ?? castigator.sector.brutCurent)}–${lei(castigator.estimare?.brutMax ?? castigator.sector.brutCurent)} lei brut pe lună, față de ${lei(celalalt.estimare?.brutMin ?? celalalt.sector.brutCurent)}–${lei(celalalt.estimare?.brutMax ?? celalalt.sector.brutCurent)} lei. Măsurată la mijlocul fiecărui interval, diferența este de aproximativ ${procent(diferentaProcent, 0)}%, adică ${lei(diferentaBrut)} lei brut pe lună. Comparația e între medii statistice, nu între două posturi concrete.`,
     },
     {
       q: "Cât înseamnă diferența în mână?",
-      a: `După CAS 25%, CASS 10% și impozit 10%, cele două brute dau ${lei(castigator.netStandard)} lei, respectiv ${lei(celalalt.netStandard)} lei net, într-un calcul standard pentru funcția de bază fără persoane în întreținere. Diferența netă este de aproximativ ${lei(diferentaNet)} lei pe lună, adică ${lei(diferentaNet * 12)} lei pe an.`,
+      a: seSuprapun
+        ? `Nu se poate da o cifră unică, pentru că intervalele se suprapun. În net, ${comparatie.a.nume.toLocaleLowerCase("ro-RO")} se încadrează între ${lei(a.estimare!.netMin)} și ${lei(a.estimare!.netMax)} lei, iar ${comparatie.b.nume.toLocaleLowerCase("ro-RO")} între ${lei(b.estimare!.netMin)} și ${lei(b.estimare!.netMax)} lei, după CAS 25%, CASS 10% și impozit 10%.`
+        : `După CAS 25%, CASS 10% și impozit 10%, mijlocul intervalelor dă ${lei(castigator.estimare?.netReper ?? castigator.netStandard)} lei, respectiv ${lei(celalalt.estimare?.netReper ?? celalalt.netStandard)} lei net, într-un calcul standard pentru funcția de bază fără persoane în întreținere. Diferența netă este de aproximativ ${lei(diferentaNet)} lei pe lună, adică ${lei(diferentaNet * 12)} lei pe an.`,
     },
     {
       q: "Ce sectoare stau în spatele celor două cifre?",
@@ -175,29 +199,51 @@ export default async function ComparatiePage({ params }: Props) {
     ],
   };
 
+  const intervalText = (d: DateMeserie, campMin: "brutMin" | "netMin", campMax: "brutMax" | "netMax") =>
+    d.estimare ? `${lei(d.estimare[campMin])}–${lei(d.estimare[campMax])} lei` : "—";
+
   const randuriTabel: { eticheta: string; a: string; b: string }[] = [
+    {
+      eticheta: "Estimare net, pe lună",
+      a: intervalText(a, "netMin", "netMax"),
+      b: intervalText(b, "netMin", "netMax"),
+    },
+    {
+      eticheta: "Estimare brut, pe lună",
+      a: intervalText(a, "brutMin", "brutMax"),
+      b: intervalText(b, "brutMin", "brutMax"),
+    },
+    {
+      eticheta: "La început de carieră, net",
+      a: a.estimare?.inceput ? `${lei(a.estimare.inceput.net)} lei` : "—",
+      b: b.estimare?.inceput ? `${lei(b.estimare.inceput.net)} lei` : "—",
+    },
     { eticheta: `Brut mediu sector, ${LUNA}`, a: `${lei(a.sector.brutCurent)} lei`, b: `${lei(b.sector.brutCurent)} lei` },
-    { eticheta: "Net standard calculat", a: `${lei(a.netStandard)} lei`, b: `${lei(b.netStandard)} lei` },
     {
       eticheta: "Net mediu observat de INS",
       a: a.netObservat ? `${lei(a.netObservat)} lei` : "—",
       b: b.netObservat ? `${lei(b.netObservat)} lei` : "—",
     },
     {
-      eticheta: "CAS + CASS + impozit",
+      eticheta: "CAS + CASS + impozit, la mijlocul intervalului",
       a: rezultatA ? `${lei(rezultatA.cas + rezultatA.cass + rezultatA.impozit)} lei` : "—",
       b: rezultatB ? `${lei(rezultatB.cas + rezultatB.cass + rezultatB.impozit)} lei` : "—",
     },
     {
-      eticheta: "Cost total angajator",
+      eticheta: "Cost total angajator, la mijlocul intervalului",
       a: rezultatA ? `${lei(rezultatA.costTotal)} lei` : "—",
       b: rezultatB ? `${lei(rezultatB.costTotal)} lei` : "—",
     },
     { eticheta: "Activitate CAEN", a: `${a.sector.cheie} — ${a.sector.denumire}`, b: `${b.sector.cheie} — ${b.sector.denumire}` },
     {
-      eticheta: `Grupa de ocupații, venit brut oct. ${AN_ANCHETA}`,
-      a: a.isco ? `${lei(a.isco.venitBrutTotal)} lei` : "—",
-      b: b.isco ? `${lei(b.isco.venitBrutTotal)} lei` : "—",
+      eticheta: `Grupa de ocupații, brut indexat la ${LUNA}`,
+      a: a.estimare ? `${lei(a.estimare.brutOcupatie)} lei` : "—",
+      b: b.estimare ? `${lei(b.estimare.brutOcupatie)} lei` : "—",
+    },
+    {
+      eticheta: "Grupa de ocupații",
+      a: a.isco?.nume ?? "—",
+      b: b.isco?.nume ?? "—",
     },
     {
       eticheta: "Față de media pe economie",
@@ -222,25 +268,48 @@ export default async function ComparatiePage({ params }: Props) {
           <H1>
             {comparatie.a.nume} vs {comparatie.b.nume}
           </H1>
-          <Lead>
-            În {LUNA}, sectorul unde lucrează majoritatea celor cu meseria de{" "}
-            {castigator.meserie.nume.toLocaleLowerCase("ro-RO")} a avut un câștig mediu brut cu{" "}
-            <strong>{procent(diferentaProcent, 0)}%</strong> mai mare: {lei(castigator.sector.brutCurent)} lei față de{" "}
-            {lei(celalalt.sector.brutCurent)} lei. În mână, diferența este de aproximativ{" "}
-            <strong>{lei(diferentaNet)} lei pe lună</strong>.
-          </Lead>
+          {seSuprapun ? (
+            <Lead>
+              Cele două intervale <strong>se suprapun</strong>:{" "}
+              {comparatie.a.nume.toLocaleLowerCase("ro-RO")} {lei(a.estimare!.netMin)}–{lei(a.estimare!.netMax)} lei net,{" "}
+              {comparatie.b.nume.toLocaleLowerCase("ro-RO")} {lei(b.estimare!.netMin)}–{lei(b.estimare!.netMax)} lei net.
+              Datele oficiale nu susțin afirmația că una dintre meserii e plătită mai bine decât cealaltă — depinde de
+              sector, de județ și de vechime, iar diferența dintre doi oameni concreți e mai mare decât diferența dintre
+              cele două medii.
+            </Lead>
+          ) : (
+            <Lead>
+              {castigator.meserie.nume} câștigă mai mult:{" "}
+              <strong>
+                {lei(castigator.estimare!.netMin)}–{lei(castigator.estimare!.netMax)} lei net
+              </strong>{" "}
+              pe lună, față de {lei(celalalt.estimare!.netMin)}–{lei(celalalt.estimare!.netMax)} lei. Măsurat la mijlocul
+              fiecărui interval, diferența este de aproximativ <strong>{lei(diferentaNet)} lei net pe lună</strong>,
+              adică {lei(diferentaNet * 12)} lei pe an.
+            </Lead>
+          )}
 
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
             <CardCifra
               accent
               eticheta={comparatie.a.nume}
-              valoare={lei(a.sector.brutCurent)}
-              nota={`${lei(a.netStandard)} lei net · CAEN ${a.sector.cheie}`}
+              valoare={a.estimare ? `${lei(a.estimare.netMin)}–${lei(a.estimare.netMax)}` : lei(a.netStandard)}
+              nota={
+                a.estimare
+                  ? `lei net. Din ${lei(a.estimare.brutMin)}–${lei(a.estimare.brutMax)} lei brut · CAEN ${a.sector.cheie}`
+                  : `${lei(a.netStandard)} lei net · CAEN ${a.sector.cheie}`
+              }
+              unitate=""
             />
             <CardCifra
               eticheta={comparatie.b.nume}
-              valoare={lei(b.sector.brutCurent)}
-              nota={`${lei(b.netStandard)} lei net · CAEN ${b.sector.cheie}`}
+              valoare={b.estimare ? `${lei(b.estimare.netMin)}–${lei(b.estimare.netMax)}` : lei(b.netStandard)}
+              nota={
+                b.estimare
+                  ? `lei net. Din ${lei(b.estimare.brutMin)}–${lei(b.estimare.brutMax)} lei brut · CAEN ${b.sector.cheie}`
+                  : `${lei(b.netStandard)} lei net · CAEN ${b.sector.cheie}`
+              }
+              unitate=""
             />
           </div>
 

@@ -258,6 +258,31 @@ export function totalOcupatii(): { venitBrut: number; salariuDeBaza: number | nu
   };
 }
 
+// ─── Punerea celor doua serii pe aceeasi perioada ────────────────────────────
+//
+// Seria pe activitati CAEN e lunara si proaspata; ancheta pe ocupatii ISCO e
+// anuala si din octombrie, deci mai veche cu peste un an. Cele doua cifre NU se
+// pot pune in acelasi interval asa cum vin: ar amesteca doua momente diferite.
+//
+// Le aducem la aceeasi luna inmultind valorile ISCO cu raportul dintre media pe
+// economie de acum si media pe economie din ancheta. Ipoteza, declarata explicit
+// in pagina: grupele de ocupatii au crescut in acelasi ritm cu economia. Nu e o
+// masuratoare, e o indexare — de aceea valorile indexate se eticheteaza mereu
+// „estimare", niciodata „conform INS".
+
+/** Cat a crescut media pe economie intre ancheta pe ocupatii si luna curenta. */
+export const FACTOR_INDEXARE_OCUPATII: number | null = (() => {
+  const ancheta = indexIsco.get("Total")?.varste["Total"]?.venitBrut;
+  if (!ancheta) return null;
+  return TOTAL_ECONOMIE.brutCurent / ancheta;
+})();
+
+/** O valoare din ancheta pe ocupatii, adusa la luna de referinta a seriei lunare. */
+export function indexatLaZi(valoare: number): number {
+  if (!FACTOR_INDEXARE_OCUPATII) return valoare;
+  return Math.round(valoare * FACTOR_INDEXARE_OCUPATII);
+}
+
 // ─── Perspectiva inversa: un judet, toate activitatile lui ───────────────────
 //
 // `judetePentru` raspunde la „cum arata activitatea X pe judete". Aici raspundem

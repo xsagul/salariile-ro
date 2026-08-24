@@ -20,7 +20,6 @@ import {
   lunaLunga,
   procent,
 } from "@/app/components/Salarii";
-import { calculStandard } from "@/lib/fiscal";
 import {
   AN_JUDETE,
   AN_OCUPATII,
@@ -67,7 +66,15 @@ function titluPagina(nume: string) {
 }
 
 function descrierePagina(date: DateMeserie) {
-  return `Salariu ${date.meserie.nume.toLocaleLowerCase("ro-RO")} în 2026: ${lei(date.sector.brutCurent)} lei brut mediu în sectorul CAEN ${date.sector.cheie} (INS, ${LUNA}) și ${lei(date.netStandard)} lei net calculat standard. Date pe județe și pe vârste.`;
+  const numeMic = date.meserie.nume.toLocaleLowerCase("ro-RO");
+  // Netul intai: oamenii cauta „salariu net <meserie>", nu brutul. Intervalul
+  // in loc de cifra de sector: altfel meseriile din acelasi CAEN ar avea toate
+  // aceeasi descriere, iar in SERP ar arata identic.
+  const { estimare } = date;
+  if (estimare && !estimare.capeteApropiate) {
+    return `Cât câștigă un ${numeMic} în 2026: estimativ ${lei(estimare.netMin)}–${lei(estimare.netMax)} lei net pe lună (${lei(estimare.brutMin)}–${lei(estimare.brutMax)} lei brut), din datele INS. Pe județe și pe vârste.`;
+  }
+  return `Salariu ${numeMic} în 2026: ${lei(date.sector.brutCurent)} lei brut mediu în sectorul CAEN ${date.sector.cheie} (INS, ${LUNA}) și ${lei(date.netStandard)} lei net calculat standard. Date pe județe și pe vârste.`;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -89,19 +96,42 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 function faqPentru(date: DateMeserie) {
-  const { meserie, sector, isco, judete, interval, clasament } = date;
+  const { meserie, sector, isco, judete, interval, clasament, estimare } = date;
   const numeMic = meserie.nume.toLocaleLowerCase("ro-RO");
   const primele = judete.slice(0, 3).map((j) => j.judet).join(", ");
-  const intrebari = [
-    {
-      q: `Cât câștigă un ${numeMic} în România în 2026?`,
-      a: `Nu există o statistică oficială separată pentru această ocupație. Cea mai apropiată măsurătoare lunară este câștigul salarial mediu brut din activitatea CAEN ${sector.cheie} (${sector.denumire}), unde lucrează majoritatea: ${lei(sector.brutCurent)} lei brut în ${LUNA}, conform INS. Media include toți salariații activității, de la debutanți la conducere.`,
-    },
-    {
-      q: `Care este salariul net al unui ${numeMic}?`,
-      a: `Un salariu brut de ${lei(sector.brutCurent)} lei, calculat pentru funcția de bază, normă întreagă și fără persoane în întreținere, dă ${lei(date.netStandard)} lei net în 2026, după CAS 25%, CASS 10% și impozit 10%.${date.netObservat ? ` Separat, netul mediu observat de INS în același sector și în aceeași lună a fost ${lei(date.netObservat)} lei — o medie a încasărilor reale, care include deduceri și scutiri.` : ""}`,
-    },
-  ];
+  const areInterval = estimare !== null && !estimare.capeteApropiate;
+
+  // Raspunsurile din FAQ ajung in SERP ca rich result. Trebuie sa dea aceeasi
+  // cifra ca lead-ul paginii, altfel utilizatorul vede un numar in Google si
+  // altul dupa click.
+  const intrebari = areInterval
+    ? [
+        {
+          q: `Cât câștigă un ${numeMic} în România în 2026?`,
+          a: `Estimativ între ${lei(estimare.netMin)} și ${lei(estimare.netMax)} lei net pe lună, adică ${lei(estimare.brutMin)}–${lei(estimare.brutMax)} lei brut. INS nu publică salariul mediu pe ocupații individuale, ci două măsurători care încadrează ocupația: câștigul mediu din activitatea CAEN ${sector.cheie} (${sector.denumire}), unde lucrează majoritatea, și câștigul mediu al grupei de ocupații „${isco?.nume ?? ""}”, în toate sectoarele. Capetele intervalului sunt exact aceste două cifre.`,
+        },
+        {
+          q: `Care este salariul net al unui ${numeMic}?`,
+          a: `Între ${lei(estimare.netMin)} și ${lei(estimare.netMax)} lei net pe lună, calculat pentru funcția de bază, normă întreagă și fără persoane în întreținere, după CAS 25%, CASS 10% și impozit pe venit 10%.${estimare.inceput ? ` La început de carieră, la 20–24 de ani, reperul este ${lei(estimare.inceput.net)} lei net.` : ""}`,
+        },
+      ]
+    : [
+        {
+          q: `Cât câștigă un ${numeMic} în România în 2026?`,
+          a: `Nu există o statistică oficială separată pentru această ocupație. Cea mai apropiată măsurătoare lunară este câștigul salarial mediu brut din activitatea CAEN ${sector.cheie} (${sector.denumire}), unde lucrează majoritatea: ${lei(sector.brutCurent)} lei brut în ${LUNA}, conform INS. Media include toți salariații activității, de la debutanți la conducere.`,
+        },
+        {
+          q: `Care este salariul net al unui ${numeMic}?`,
+          a: `Un salariu brut de ${lei(sector.brutCurent)} lei, calculat pentru funcția de bază, normă întreagă și fără persoane în întreținere, dă ${lei(date.netStandard)} lei net în 2026, după CAS 25%, CASS 10% și impozit 10%.${date.netObservat ? ` Separat, netul mediu observat de INS în același sector și în aceeași lună a fost ${lei(date.netObservat)} lei — o medie a încasărilor reale, care include deduceri și scutiri.` : ""}`,
+        },
+      ];
+
+  if (areInterval && estimare.inceput) {
+    intrebari.push({
+      q: `Cât câștigă un ${numeMic} la început de carieră?`,
+      a: `În ancheta INS pe grupe de ocupații, salariații de 20–24 de ani din grupa „${isco?.nume ?? ""}” au avut un venit brut care, adus la nivelul lunii ${LUNA}, înseamnă ${lei(estimare.inceput.brut)} lei brut, adică ${lei(estimare.inceput.net)} lei net. Este un reper pentru începutul de carieră în grupa de ocupații, nu un salariu garantat de angajare.`,
+    });
+  }
 
   if (judete.length > 0) {
     intrebari.push({
@@ -151,11 +181,10 @@ export default async function MeseriePage({ params }: Props) {
   if (!meserie) notFound();
 
   const date = dateMeserieSauEroare(meserie);
-  const { sector, isco, judete, categorie, interval, clasament } = date;
+  const { sector, isco, judete, categorie, interval, clasament, estimare } = date;
   const numeMic = meserie.nume.toLocaleLowerCase("ro-RO");
   const variatie = variatieAnuala(sector.brut);
   const fataDeEconomie = (sector.brutCurent - TOTAL_ECONOMIE.brutCurent) / TOTAL_ECONOMIE.brutCurent;
-  const rezultat = calculStandard(sector.brutCurent);
   const faq = faqPentru(date);
   const similare = meseriiDinCategorie(categorie.slug).filter((m) => m.slug !== meserie.slug).slice(0, 6);
   const comparatii = COMPARATII.filter((c) => c.a.slug === meserie.slug || c.b.slug === meserie.slug).slice(0, 4);
@@ -210,41 +239,79 @@ export default async function MeseriePage({ params }: Props) {
             ]}
           />
           <H1>Salariu {numeMic} în 2026</H1>
-          <Lead>
-            Media lunară a sectorului în care lucrează majoritatea celor cu această meserie — CAEN {sector.cheie},{" "}
-            {sector.denumire.toLocaleLowerCase("ro-RO")} — a fost <strong>{lei(sector.brutCurent)} lei brut</strong> în{" "}
-            {LUNA}, conform INS. Din acest brut rezultă <strong>{lei(date.netStandard)} lei net</strong> într-un calcul
-            standard. Nu este salariul unui {numeMic} anume: e media tuturor salariaților din activitate, de la
-            debutant la conducere.
-          </Lead>
+          {estimare && !estimare.capeteApropiate ? (
+            <Lead>
+              Un {numeMic} câștigă, estimativ, între <strong>{lei(estimare.netMin)} și {lei(estimare.netMax)} lei net</strong>{" "}
+              pe lună, adică {lei(estimare.brutMin)}–{lei(estimare.brutMax)} lei brut. INS nu măsoară salariul pe
+              ocupație, ci două lucruri care o încadrează: cât se câștigă în{" "}
+              <strong>activitatea angajatorului</strong> (CAEN {sector.cheie}) și cât se câștigă în{" "}
+              <strong>grupa de ocupații</strong> din care face parte postul. Capetele de mai sus sunt exact aceste două
+              măsurători.
+            </Lead>
+          ) : (
+            <Lead>
+              Media lunară a sectorului în care lucrează majoritatea celor cu această meserie — CAEN {sector.cheie},{" "}
+              {sector.denumire.toLocaleLowerCase("ro-RO")} — a fost <strong>{lei(sector.brutCurent)} lei brut</strong> în{" "}
+              {LUNA}, conform INS. Din acest brut rezultă <strong>{lei(date.netStandard)} lei net</strong> într-un calcul
+              standard. Nu este salariul unui {numeMic} anume: e media tuturor salariaților din activitate, de la
+              debutant la conducere.
+            </Lead>
+          )}
 
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {estimare && !estimare.capeteApropiate ? (
+              <CardCifra
+                accent
+                eticheta="Estimare net, pe lună"
+                valoare={`${lei(estimare.netMin)}–${lei(estimare.netMax)}`}
+                nota={`Din ${lei(estimare.brutMin)}–${lei(estimare.brutMax)} lei brut. Capetele sunt cele două măsurători INS care încadrează ocupația.`}
+              />
+            ) : (
+              <CardCifra
+                accent
+                eticheta={`Brut mediu sector, ${LUNA}`}
+                valoare={lei(sector.brutCurent)}
+                nota={`CAEN ${sector.cheie}. ${fataDeEconomie >= 0 ? "Peste" : "Sub"} media pe economie cu ${procent(Math.abs(fataDeEconomie), 0)}%.`}
+              />
+            )}
             <CardCifra
-              accent
-              eticheta={`Brut mediu sector, ${LUNA}`}
+              eticheta={`Sectorul angajatorului, ${LUNA}`}
               valoare={lei(sector.brutCurent)}
-              nota={`CAEN ${sector.cheie}. ${fataDeEconomie >= 0 ? "Peste" : "Sub"} media pe economie cu ${procent(Math.abs(fataDeEconomie), 0)}%.`}
+              nota={`Brut, CAEN ${sector.cheie}. ${fataDeEconomie >= 0 ? "Peste" : "Sub"} media pe economie cu ${procent(Math.abs(fataDeEconomie), 0)}%. Include toate ocupațiile din activitate.`}
             />
             <CardCifra
-              eticheta="Net standard calculat"
-              valoare={lei(date.netStandard)}
+              eticheta="Grupa de ocupații, indexat"
+              valoare={estimare ? lei(estimare.brutOcupatie) : "—"}
               nota={
-                rezultat
-                  ? `CAS ${lei(rezultat.cas)} lei, CASS ${lei(rezultat.cass)} lei, impozit ${lei(rezultat.impozit)} lei.`
+                isco
+                  ? `Brut, „${isco.nume}”, în toate sectoarele. Ancheta INS din oct. ${AN_ANCHETA}, adusă la ${LUNA}.`
                   : undefined
               }
             />
             <CardCifra
-              eticheta="Net mediu observat de INS"
-              valoare={date.netObservat ? lei(date.netObservat) : "—"}
-              nota="Media încasărilor reale din sector, cu deduceri și scutiri incluse."
-            />
-            <CardCifra
-              eticheta={`Grupa de ocupații, oct. ${AN_ANCHETA}`}
-              valoare={isco ? lei(isco.venitBrutTotal) : "—"}
-              nota={isco ? `Venit brut realizat, „${isco.nume}”.` : undefined}
+              eticheta="La început de carieră"
+              valoare={estimare?.inceput ? lei(estimare.inceput.net) : "—"}
+              nota={
+                estimare?.inceput
+                  ? `Net, din ${lei(estimare.inceput.brut)} lei brut. Grupa de ocupații la 20–24 de ani, indexat.`
+                  : undefined
+              }
             />
           </div>
+
+          {estimare && !estimare.capeteApropiate && (
+            <p className="mt-4 rounded-md border border-stone-200 bg-surface p-4 text-sm leading-normal text-stone-600 shadow-soft">
+              <strong className="font-semibold text-stone-900">Cum citești intervalul:</strong> nu e o decilă dintr-un
+              sondaj și nu garantăm că orice {numeMic} se încadrează în el. Sunt cele două cifre pe care le publică INS
+              și între care stă ocupația: media activității unde lucrează și media grupei de ocupații din care face
+              parte. Cifra pe grupe de ocupații vine din ancheta din octombrie {AN_ANCHETA} și e adusă la {LUNA} cu
+              evoluția câștigului mediu pe economie, ca să nu compare două perioade diferite.{" "}
+              <Link href="/metodologie" className="font-medium text-stone-900 underline underline-offset-2 hover:text-stone-600">
+                Metodologia completă
+              </Link>
+              .
+            </p>
+          )}
 
           {meserie.nota && (
             <p className="mt-4 rounded-md border border-stone-300 bg-surface p-4 text-sm leading-normal text-stone-700 shadow-soft">
