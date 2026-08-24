@@ -159,11 +159,12 @@ async function auditRenderedSite() {
           if (!html.includes("TEMPO-Online")) {
             failures.push(`${location}: nu citeaza sursa INS TEMPO-Online`);
           }
-          // Regula cere ca o cifra de salariu sa aiba clasificarea declarata.
-          // /salarii/femei-barbati nu se sprijina pe CAEN, ci pe grupele majore
-          // de ocupatii ISCO-08 — alta clasificare, la fel de explicit citata.
-          // Deci ii cerem ISCO, nu o exceptam de la regula.
-          const clasificareCeruta = pathname === "/salarii/femei-barbati" ? /ISCO/ : /CAEN\s/;
+          // Regula cere ca o cifra sa aiba clasificarea declarata. Majoritatea
+          // paginilor se sprijina pe CAEN, dar cele construite dinspre OCUPATIE
+          // — diferenta pe sexe si locurile vacante — se sprijina pe grupele
+          // majore ISCO-08. Le cerem ISCO, nu le exceptam de la regula.
+          const PAGINI_ISCO = ["/salarii/femei-barbati", "/salarii/locuri-vacante"];
+          const clasificareCeruta = PAGINI_ISCO.includes(pathname) ? /ISCO/ : /CAEN\s/;
           if (!clasificareCeruta.test(html)) {
             failures.push(`${location}: nu declara clasificarea din spatele cifrei`);
           }
@@ -228,6 +229,8 @@ async function auditRenderedSite() {
     ["/salarii/programator", "Posturi vacante", "semnalul de cerere pe pagina de meserie"],
     ["/salarii/programator", "LMV102D", "citarea matricei de locuri vacante"],
     ["/salarii/programator", "Cifra e a grupei", "precizarea ca vacantele sunt ale grupei, nu ale meseriei"],
+    ["/salarii/locuri-vacante", "Nu sunt anunțuri de angajare", "precizarea ca vacantele INS nu sunt anunturi"],
+    ["/salarii/locuri-vacante", "LMV101D", "citarea matricei de rate"],
     ["/salarii/medic", "Cât contează vechimea", "progresia pe varste din ancheta din octombrie"],
     ["/compara", "activități economice diferite", "regula perechilor din sectoare diferite"],
     ["/compara/programator-vs-medic", "Tabel comparativ", "tabelul comparativ"],
