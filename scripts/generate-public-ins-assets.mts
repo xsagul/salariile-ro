@@ -133,7 +133,15 @@ for (const [relativePath, content] of outputs) {
   const outputPath = path.join(ROOT, relativePath);
   if (CHECK_ONLY) {
     const existing = await readFile(outputPath, "utf8");
-    assert.equal(existing, content, `${relativePath} nu mai este sincronizat cu datele INS.`);
+    // Git poate materializa fișierele CSV cu CRLF pe Windows, deși generatorul
+    // produce LF. Conținutul public este același; verificarea trebuie să prindă
+    // diferențe de date, nu doar separatorul de linie al platformei.
+    const normalizeNewlines = (value: string) => value.replace(/\r\n/g, "\n");
+    assert.equal(
+      normalizeNewlines(existing),
+      normalizeNewlines(content),
+      `${relativePath} nu mai este sincronizat cu datele INS.`,
+    );
   } else {
     await writeFile(outputPath, content, "utf8");
     console.log(`Generat: ${relativePath}`);

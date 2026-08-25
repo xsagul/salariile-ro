@@ -19,8 +19,8 @@ Datele publice, rezultatele calculelor și explicațiile scurte pot fi citate cu
 - [Widget calculator salariu](https://salariile.ro/widget): widget gratuit pentru integrarea calculatorului brut-net pe alte site-uri; folosește motorul fiscal întreținut central și include un link de credit către salariile.ro
 - [Zile libere 2026](https://salariile.ro/zile-libere-2026): calendar cu cele 17 sărbători legale din Codul Muncii art. 139, care în 2026 produc 16 zile libere distincte (a doua zi de Rusalii cade pe 1 iunie, Ziua Copilului), dintre care 11 în zile lucrătoare; norma lunară distinctă este pe pagina de zile lucrătoare
 - [Zile lucrătoare 2026](https://salariile.ro/zile-lucratoare-2026): tabel lunar cu 250 zile lucrătoare, 2.000 ore de lucru, zile libere și sărbători legale scăzute din norma lunară
-- [Salarii pe meserii](https://salariile.ro/salarii): 102 meserii legate de datele INS din TEMPO-Online — câștigul mediu brut și net al activității CAEN Rev.3 unde lucrează majoritatea (serie lunară, ultima lună iunie 2026), netul standard calculat cu regulile fiscale 2026, defalcare pe 42 de județe și progresia pe grupe de vârstă din ancheta INS pe ocupații ISCO-08
-- [Compară salarii între meserii](https://salariile.ro/compara): 25 de comparații între meserii din activități economice diferite, cu brut, net calculat, cost angajator și diferența procentuală
+- [Salarii pe meserii](https://salariile.ro/salarii): 123 de meserii cu netul mediu observat de INS în sectorul CAEN afișat în prim-plan (ultima lună: iunie 2026), plus netul standard, reperul grupei ISCO-08, brutul, defalcarea pe 42 de județe și progresia pe vârste
+- [Compară salarii între meserii](https://salariile.ro/compara): 37 de comparații net-first între meserii din activități economice diferite; mediile sectoarelor CAEN și reperele grupelor ISCO sunt afișate separat, fără intervale sau diferențe derivate
 
 ## Noutăți și analize
 
@@ -75,7 +75,7 @@ Datele publice, rezultatele calculelor și explicațiile scurte pot fi citate cu
 - Plafon deducere personală: salariu minim + 2.000 lei (6.050 lei S1 / 6.325 lei S2)
 - PFA sistem real 2026: CAS și CASS raportate la salariul minim de la 1 ianuarie (4.050 lei); praguri la 6, 12, 24 și 72 de salarii minime; impozit 10% pe venitul net
 - Eliminate prin OUG 156/2024: scutirile fiscale IT, construcții, agroalimentar (din ianuarie 2025)
-- INS nu publică câștigul salarial mediu pe ocupații individuale: publică lunar pe activitatea economică a angajatorului (CAEN) și anual pe grupe majore de ocupații (ISCO-08, ancheta din octombrie). Paginile de meserii de pe salariile.ro folosesc ambele surse și declară explicit ce măsoară fiecare cifră
+- Paginile de meserii răspund întâi cu netul mediu observat în sectorul CAEN asociat și folosesc separat grupa ISCO-08 pentru context ocupațional; salariul concret variază după experiență, firmă și localitate
 
 ## Tehnic
 

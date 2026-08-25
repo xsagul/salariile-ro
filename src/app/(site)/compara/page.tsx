@@ -1,20 +1,20 @@
 // src/app/(site)/compara/page.tsx
 // Hub-ul comparatiilor. Server Component pur.
 //
-// Fiecare pagina pune alaturi doua seturi de repere CAEN si ISCO, fara sa
-// transforme mediile de grup in salarii ale ocupatiilor individuale.
+// Fiecare pagina pune neturile in prim-plan si pastreaza separat contextul
+// sectoarelor CAEN si al grupelor ISCO.
 
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumb, Faq, H1, Lead } from "@/app/components/ui";
 import { NotaSursa, lei, lunaLunga } from "@/app/components/Salarii";
-import { AN_OCUPATII, LUNA_REFERINTA, MATRICE_BRUT, MATRICE_OCUPATII } from "@/lib/ins-date";
+import { AN_OCUPATII, LUNA_REFERINTA, MATRICE_BRUT, MATRICE_NET, MATRICE_OCUPATII } from "@/lib/ins-date";
 import { COMPARATII, dateMeserieSauEroare } from "@/lib/meserii";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
 
 const LUNA = lunaLunga(LUNA_REFERINTA);
-const DESCRIERE = `Pune alături reperele INS pentru două meserii: mediile sectoarelor CAEN și ale grupelor ISCO, afișate separat, fără câștigători sau diferențe derivate.`;
+const DESCRIERE = `Compară salariile nete pentru două meserii, cu mediile INS din sectoarele CAEN, brutul aferent și reperele grupelor ISCO afișate separat.`;
 
 export const metadata: Metadata = {
   title: { absolute: "Compară salarii între meserii 2026 | Salariile.ro" },
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 const FAQ = [
   {
     q: "Pe ce se compară cele două meserii?",
-    a: `Afișăm separat două contexte statistice pentru fiecare meserie: câștigul mediu din activitatea CAEN a angajatorului tipic, în ${LUNA}, și venitul mediu al grupei majore ISCO, din ancheta din octombrie ${AN_OCUPATII.replace("Anul ", "")}. INS nu publică media ocupației individuale, iar pagina nu combină reperele într-un interval sau o estimare unică.`,
+    a: `Afișăm întâi netul mediu observat în sectorul CAEN asociat fiecărei meserii, în ${LUNA}. Separat, arătăm netul orientativ al grupei ISCO din ancheta din octombrie ${AN_OCUPATII.replace("Anul ", "")}. Salariile concrete variază după experiență, firmă și localitate.`,
   },
   {
     q: "De ce nu există comparații între două meserii din același domeniu?",
@@ -35,7 +35,7 @@ const FAQ = [
   },
   {
     q: "Pot spune datele care meserie câștigă mai mult?",
-    a: "Nu. Mediile CAEN includ toate ocupațiile dintr-un sector, iar mediile ISCO includ familii largi de ocupații din toate sectoarele. Valorile pot oferi context, dar nu izolează cele două posturi și nu susțin un câștigător, o diferență procentuală sau o diferență anuală între meserii.",
+    a: "Valorile arată direct care sector are media netă mai mare și oferă un reper util de piață. Pentru două persoane concrete, ordinea se poate schimba în funcție de experiență, companie, oraș și responsabilități, de aceea nu declarăm un câștigător absolut între ocupații.",
   },
 ];
 
@@ -93,9 +93,9 @@ export default function ComparaPage() {
           <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Compară salarii" }]} />
           <H1>Compară salarii între meserii</H1>
           <Lead>
-            Fiecare pagină pune alături două tipuri de repere pentru fiecare meserie: activitatea CAEN a angajatorului
-            tipic și grupa majoră ISCO. INS nu publică salariul ocupației individuale, așa că nu ordonăm meseriile, nu
-            declarăm un câștigător și nu calculăm o diferență între ele.
+            Vezi dintr-o privire <strong>netul lunar</strong> asociat fiecărei meserii. Valoarea principală este media
+            netă INS din sectorul CAEN, iar dedesubt apare netul orientativ al grupei ISCO; paginile detaliate explică
+            brutul și diferențele de populație statistică.
           </Lead>
 
           <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -108,28 +108,28 @@ export default function ComparaPage() {
                 <div className="flex items-baseline justify-between gap-3">
                   <span className="text-base font-semibold tracking-[-0.01em] text-stone-900">{comparatie.a.nume}</span>
                   <span className="shrink-0 text-right text-xs tabular-nums text-stone-600">
-                    CAEN {lei(a.sector.brutCurent)} lei
-                    {a.repere && <span className="block">ISCO {lei(a.repere.grupa.brut)} lei</span>}
+                    <strong className="text-stone-900">{lei(a.netObservat ?? a.netStandard)} lei net</strong>
+                    {a.repere && <span className="block">ISCO {lei(a.repere.grupa.net)} lei net</span>}
                   </span>
                 </div>
                 <div className="my-2 text-xs uppercase tracking-wide text-stone-400">vs</div>
                 <div className="flex items-baseline justify-between gap-3">
                   <span className="text-base font-semibold tracking-[-0.01em] text-stone-900">{comparatie.b.nume}</span>
                   <span className="shrink-0 text-right text-xs tabular-nums text-stone-600">
-                    CAEN {lei(b.sector.brutCurent)} lei
-                    {b.repere && <span className="block">ISCO {lei(b.repere.grupa.brut)} lei</span>}
+                    <strong className="text-stone-900">{lei(b.netObservat ?? b.netStandard)} lei net</strong>
+                    {b.repere && <span className="block">ISCO {lei(b.repere.grupa.net)} lei net</span>}
                   </span>
                 </div>
                 <p className="mt-3 border-t border-stone-200 pt-3 text-xs leading-normal text-stone-600">
-                  Repere CAEN și ISCO afișate separat; niciuna dintre valori nu este salariul meseriei.
+                  Net de sector și net orientativ de grupă; suma individuală variază.
                 </p>
               </Link>
             ))}
           </div>
 
           <NotaSursa>
-            Sursa cifrelor: Institutul Național de Statistică, TEMPO-Online, matricea {MATRICE_BRUT} (câștig salarial
-            mediu brut lunar pe activități CAEN Rev.3), luna {LUNA}, și {MATRICE_OCUPATII} (grupe majore ISCO,
+            Sursa cifrelor: Institutul Național de Statistică, TEMPO-Online, matricele {MATRICE_NET} și {MATRICE_BRUT}{" "}
+            (câștig salarial mediu net și brut lunar pe activități CAEN Rev.3), luna {LUNA}, și {MATRICE_OCUPATII} (grupe majore ISCO,
             octombrie {AN_OCUPATII.replace("Anul ", "")}). Mediile descriu grupuri statistice, nu posturi individuale;
             vezi <Link href="/metodologie">metodologia</Link> și explicația completă în{" "}
             <Link href="/salarii">hub-ul de meserii</Link>.

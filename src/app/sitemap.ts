@@ -43,6 +43,11 @@ const STATIC_ENTRIES: {
   { path: "/termeni", priority: 0.3, changeFrequency: "yearly" },
 ];
 
+const MESERII_EDITORIAL_UPDATE = new Date("2026-08-25T00:00:00.000Z");
+const MESERII_LAST_MODIFIED = new Date(
+  Math.max(new Date(INS_GENERAT_LA).getTime(), MESERII_EDITORIAL_UPDATE.getTime()),
+);
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_URL;
 
@@ -68,8 +73,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     })),
 
-    // Paginile de meserii si comparatii se reimprospateaza cand se reruleaza
-    // `npm run ins:tempo`, deci lastModified vine din data setului INS.
+    // Paginile de meserii si comparatii se reimprospateaza atat la un import
+    // INS, cat si la un recast editorial. Sitemapul foloseste data cea mai noua.
     ...JUDETE.map((judet) => ({
       url: `${baseUrl}/salarii/judet/${judet.slug}`,
       lastModified: new Date(INS_GENERAT_LA),
@@ -86,14 +91,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     ...MESERII.map((meserie) => ({
       url: `${baseUrl}/salarii/${meserie.slug}`,
-      lastModified: new Date(INS_GENERAT_LA),
+      lastModified: MESERII_LAST_MODIFIED,
       changeFrequency: "monthly" as const,
       priority: 0.6,
     })),
 
     ...COMPARATII.map((comparatie) => ({
       url: `${baseUrl}/compara/${comparatie.slug}`,
-      lastModified: new Date(INS_GENERAT_LA),
+      lastModified: MESERII_LAST_MODIFIED,
       changeFrequency: "monthly" as const,
       priority: 0.5,
     })),

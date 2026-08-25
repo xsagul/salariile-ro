@@ -16,6 +16,7 @@ import path from "node:path";
 const root = process.cwd();
 const date = JSON.parse(await readFile(path.join(root, "src/data/ins-caen.json"), "utf8"));
 const sursa = await readFile(path.join(root, "src/lib/meserii.ts"), "utf8");
+const llms = await readFile(path.join(root, "public/llms.txt"), "utf8");
 
 /** Decupeaza corpul unui literal de tablou, dupa antetul lui. */
 function blocDupa(antet: string): string {
@@ -40,6 +41,13 @@ assert.ok(
 assert.ok(date.brut.luni.length >= 12, `Seria bruta are doar ${date.brut.luni.length} luni.`);
 assert.deepEqual(date.brut.luni, date.net.luni, "Seriile brut si net acopera luni diferite.");
 assert.match(date.brut.luni.at(-1), /^Luna \p{L}+ \d{4}$/u, "Ultima luna nu are eticheta INS asteptata.");
+assert.equal(date.judete.matrice, "FOM107E", "Seria pe judete trebuie sa ramana matricea INS FOM107E.");
+assert.match(
+  date.judete.denumire,
+  /câștigul salarial nominal mediu brut lunar|castigul salarial nominal mediu brut lunar/i,
+  "Seria pe judete nu mai declara indicatorul brut lunar.",
+);
+assert.match(date.judete.an, /^Anul \d{4}$/, "Perioada seriei pe judete nu mai este un an explicit.");
 
 const cheieActivitate = (eticheta: string) => eticheta.trim().split(/\s+/)[0];
 const brutDupaCheie = new Map<string, (number | null)[]>(
@@ -104,15 +112,22 @@ assert.deepEqual(duplicate, [], `Slug-uri duplicate in catalog: ${duplicate.join
 for (const meserie of meserii) {
   const brut = brutDupaCheie.get(meserie.caen3);
   assert.ok(brut, `${meserie.slug}: activitatea CAEN Rev.3 „${meserie.caen3}" lipseste din setul INS.`);
-  const valoare = [...brut].reverse().find((v) => v !== null);
+  const valoare = brut.at(-1);
   assert.ok(
     typeof valoare === "number" && valoare > 0,
-    `${meserie.slug}: CAEN ${meserie.caen3} nu are nicio valoare bruta in serie.`,
+    `${meserie.slug}: CAEN ${meserie.caen3} nu are brut in ultima luna publicata.`,
   );
 
+  const net = netDupaCheie.get(meserie.caen3);
+  assert.ok(net, `${meserie.slug}: CAEN ${meserie.caen3} lipseste din seria neta.`);
+  const netUltim = net.at(-1);
   assert.ok(
-    netDupaCheie.get(meserie.caen3),
-    `${meserie.slug}: CAEN ${meserie.caen3} lipseste din seria neta.`,
+    typeof netUltim === "number" && netUltim > 0,
+    `${meserie.slug}: CAEN ${meserie.caen3} nu are net in ultima luna publicata.`,
+  );
+  assert.ok(
+    netUltim < valoare,
+    `${meserie.slug}: netul curent (${netUltim}) nu este sub brutul curent (${valoare}).`,
   );
 
   const judete = judeteDupaCheie.get(meserie.caen2);
@@ -151,6 +166,8 @@ for (const [a, b] of perechi) {
 
 const slugComparatii = new Set(perechi.map(([a, b]) => `${a}-vs-${b}`));
 assert.equal(slugComparatii.size, perechi.length, "Exista perechi de comparatie duplicate.");
+assert.match(llms, new RegExp(`\\b${meserii.length} de meserii\\b`), "llms.txt are un numar vechi de meserii.");
+assert.match(llms, new RegExp(`\\b${perechi.length} de comparații\\b`), "llms.txt are un numar vechi de comparatii.");
 
 console.log(
   `OK: ${meserii.length} meserii si ${perechi.length} comparatii, pe setul INS din ${date.generatLa} (ultima luna: ${date.brut.luni.at(-1)}).`,

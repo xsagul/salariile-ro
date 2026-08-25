@@ -85,7 +85,7 @@ function position(value) {
   return value ? value.toFixed(2) : "—";
 }
 
-/** Ziua recastului: CAEN si ISCO au devenit repere separate, fara interval. */
+/** Ziua recastului: netul a revenit in prim-plan, cu CAEN/ISCO separate. */
 const DATA_RECAST_REPERE = "2026-08-25";
 
 /** „1 click", nu „1 clickuri". */
@@ -207,7 +207,8 @@ try {
     "## Clusterul de meserii — monitorizare descriptivă",
     "",
     `Pe ${DATA_RECAST_REPERE}, paginile de meserie au fost reformulate pentru a afișa`,
-    "separat reperele CAEN și ISCO, fără a le transforma într-un interval al ocupației.",
+    "netul mediu observat în sector în prim-plan și, separat, netul orientativ al grupei ISCO,",
+    "fără a transforma cele două surse într-un interval al ocupației.",
     "Valorile de mai jos sunt metrici agregate pe pagini. Ele nu izolează efectul",
     "recastului și nu trebuie comparate cauzal cu baseline-uri pe interogări.",
     "",

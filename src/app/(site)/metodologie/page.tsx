@@ -278,11 +278,14 @@ export default function MetodologiePage() {
         <Section>
             <h2>Cum prezentăm reperele pentru o meserie</h2>
             <p>
-              INS <strong>nu publică salariul mediu pe ocupații individuale</strong>. Nu există o statistică oficială numită „salariul unui asistent medical”. Paginile din <Link href="/salarii">Salarii pe meserii</Link> arată separat două repere, fiecare corect pe axa și populația lui:
+              Pentru întrebarea „cât câștigă un programator?”, paginile din <Link href="/salarii">Salarii pe meserii</Link> răspund întâi cu <strong>netul mediu observat de INS în sectorul asociat</strong>. Este cel mai actual reper lunar disponibil. Apoi arată separat contextul grupei ocupaționale ISCO, astfel încât utilizatorul primește suma utilă înaintea detaliilor metodologice.
+            </p>
+            <p>
+              INS publică mediile pe activitatea economică a angajatorului și pe grupe majore de ocupații, nu intersecția exactă dintre post și sector. De aceea păstrăm separat cele două repere, fiecare pe populația lui:
             </p>
             <ul>
-              <li><strong>Câștigul mediu din activitatea angajatorului</strong> (CAEN), serie lunară, cea mai proaspătă. Spune cât se câștigă în sectorul unde lucrează majoritatea celor cu meseria respectivă — dar include toate ocupațiile din acel sector, de la muncitor la director.</li>
-              <li><strong>Câștigul mediu al grupei majore de ocupații</strong> (ISCO-08), din ancheta anuală din octombrie. Spune cât se câștigă făcând acel <em>tip</em> de muncă — dar în toate sectoarele economiei deodată.</li>
+              <li><strong>Netul mediu observat în activitatea angajatorului</strong> (CAEN), serie lunară, este cifra principală. Include toate ocupațiile din acel sector, de la debutant la director; brutul și conversia fiscală standard rămân vizibile ca explicație.</li>
+              <li><strong>Netul orientativ al grupei majore de ocupații</strong> (ISCO-08) este calculat fiscal din ancheta anuală din octombrie și indexat la luna curentă. Adaugă perspectiva tipului de muncă, în toate sectoarele economiei.</li>
             </ul>
             <p>
               Ocupația concretă stă la intersecția celor două clasificări, iar media acelei intersecții nu se publică. Din două medii marginale nu rezultă statistic că media ocupației este între ele. De aceea <strong>nu le folosim ca limite, nu le mediem și nu construim o estimare unică</strong>. Fiecare valoare rămâne etichetată cu populația pe care o descrie.
@@ -305,7 +308,7 @@ export default function MetodologiePage() {
               <li><strong>Nu măsoară firme individuale.</strong> Media unui sector e trasă în sus de angajatorii mari.</li>
             </ul>
             <p>
-              Comparațiile din <Link href="/compara">Compară salarii</Link> păstrează aceeași disciplină: afișează alături reperele CAEN și ISCO, cu etichetele lor, dar nu le combină și nu declară care ocupație este mai bine plătită.
+              Comparațiile din <Link href="/compara">Compară salarii</Link> păstrează aceeași disciplină: afișează neturile sectoarelor în prim-plan și reperele ISCO separat, fără a le combina într-un interval sau într-o diferență derivată între ocupații.
             </p>
         </Section>
 

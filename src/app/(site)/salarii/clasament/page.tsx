@@ -230,9 +230,9 @@ export default function ClasamentPage() {
             </h2>
             <p className="mt-4 text-base leading-normal text-stone-600">
               Fiecare rând arată câștigul salarial mediu brut al activității economice în care lucrează majoritatea
-              celor cu meseria respectivă. Media aceea include toți salariații activității, de la debutant la
-              director, deci nu este salariul unei persoane cu meseria din rând. Este însă cea mai proaspătă
-              măsurătoare oficială pe care o avem: se actualizează lunar.
+              celor cu meseria respectivă. Este cel mai proaspăt reper oficial disponibil și include toate nivelurile,
+              de la debutant la director; salariul concret poate fi sub sau peste media sectorului. Seria se actualizează
+              lunar.
             </p>
             <p className="mt-4 text-base leading-normal text-stone-600">
               De aceea meseriile din aceeași activitate apar cu aceeași cifră. A doua măsurătoare, dinspre ocupație,

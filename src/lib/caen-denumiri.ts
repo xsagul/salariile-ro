@@ -174,3 +174,32 @@ export const DENUMIRI_CAEN_SCURTE: Record<string, string> = {
 export function denumireScurtaCaen(cheie: string, completa: string): string {
   return DENUMIRI_CAEN_SCURTE[cheie] ?? completa;
 }
+
+// Secțiunile alfabetice s-au deplasat în CAEN Rev.3. Tabelul județean FOM107E
+// este încă pe Rev.2, deci nu poate reutiliza dicționarul de mai sus: acolo P
+// înseamnă Învățământ și Q înseamnă Sănătate, nu Administrație și Învățământ.
+export const DENUMIRI_CAEN_REV2_SCURTE: Record<string, string> = {
+  A: "Agricultură, silvicultură și pescuit",
+  B: "Industria extractivă",
+  C: "Industria prelucrătoare",
+  D: "Energie electrică, termică și gaze",
+  E: "Apă, salubritate și deșeuri",
+  F: "Construcții",
+  G: "Comerț și reparații auto",
+  H: "Transport și depozitare",
+  I: "Hoteluri și restaurante",
+  J: "Informații și comunicații",
+  K: "Finanțe și asigurări",
+  L: "Tranzacții imobiliare",
+  M: "Activități profesionale, științifice și tehnice",
+  N: "Servicii administrative și suport",
+  O: "Administrație publică și apărare",
+  P: "Învățământ",
+  Q: "Sănătate și asistență socială",
+  R: "Cultură și activități recreative",
+  S: "Alte servicii",
+};
+
+export function denumireScurtaCaenRev2(cheie: string, completa: string): string {
+  return DENUMIRI_CAEN_REV2_SCURTE[cheie] ?? DENUMIRI_CAEN_SCURTE[cheie] ?? completa;
+}

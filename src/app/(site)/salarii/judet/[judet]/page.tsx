@@ -15,7 +15,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Breadcrumb, Faq, H1, Lead } from "@/app/components/ui";
 import { CardCifra, LinkCard, NotaSursa, lei, procent } from "@/app/components/Salarii";
-import { denumireScurtaCaen } from "@/lib/caen-denumiri";
+import { denumireScurtaCaenRev2 } from "@/lib/caen-denumiri";
 import {
   AN_JUDETE,
   JUDETE,
@@ -24,6 +24,7 @@ import {
   activitatiInJudet,
   getJudet,
   type ActivitateInJudet,
+  type Judet,
 } from "@/lib/ins-date";
 import { MESERII } from "@/lib/meserii";
 import { personSchema } from "@/lib/person";
@@ -40,6 +41,20 @@ export function generateStaticParams() {
 }
 
 const AN = AN_JUDETE.replace("Anul ", "");
+const BRAND = " | Salariile.ro";
+const TITLU_MAX = 60;
+const URL_FOM107E = "https://statistici.insse.ro/tempoins/?ind=FOM107E&lang=ro&page=tempo3";
+const URL_HG_900_2023 = "https://legislatie.just.ro/Public/DetaliiDocumentAfis/274843";
+const URL_HG_598_2024 = "https://legislatie.just.ro/Public/DetaliiDocumentAfis/283807";
+
+function titluPagina(judet: Judet) {
+  const titlu = `Câștig salarial brut în ${judet.nume}, media ${AN}`;
+  return titlu.length + BRAND.length <= TITLU_MAX ? `${titlu}${BRAND}` : titlu;
+}
+
+function descrierePagina(judet: Judet) {
+  return `În ${judet.nume}, câștigul salarial mediu brut lunar a fost ${lei(judet.brut)} lei, ca medie a întregului an ${AN} (INS FOM107E). Nu este net sau salariul minim 2026.`;
+}
 
 /** Meseriile din catalog care cad intr-o activitate Rev.2 data. */
 function meseriiPentruActivitate(cheieRev2: string): string[] {
@@ -51,15 +66,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const judet = getJudet(slug);
   if (!judet) return {};
 
-  const titlu = `Salariul mediu în ${judet.nume}`;
-  const descriere = `Câștigul salarial mediu brut în ${judet.nume}: ${lei(judet.brut)} lei în ${AN}, pe activități economice, cu datele INS. Comparat cu media pe țară.`;
+  const titluSocial = `Câștig salarial mediu brut în ${judet.nume}, media ${AN}`;
+  const descriere = descrierePagina(judet);
 
   return {
-    title: { absolute: `${titlu} | Salariile.ro` },
+    title: { absolute: titluPagina(judet) },
     description: descriere,
     alternates: { canonical: `https://salariile.ro/salarii/judet/${slug}` },
-    openGraph: ogPage({ title: titlu, description: descriere, path: `/salarii/judet/${slug}` }),
-    twitter: twPage({ title: titlu, description: descriere }),
+    openGraph: ogPage({ title: titluSocial, description: descriere, path: `/salarii/judet/${slug}` }),
+    twitter: twPage({ title: titluSocial, description: descriere }),
   };
 }
 
@@ -85,19 +100,19 @@ export default async function JudetPage({ params }: Props) {
   const intrebari = [
     {
       q: `Care este salariul mediu în ${judet.nume}?`,
-      a: `În ${AN}, câștigul salarial mediu brut în ${judet.nume} a fost ${lei(judet.brut)} lei${NATIONAL_JUDETE ? `, față de ${lei(NATIONAL_JUDETE)} lei media pe țară` : ""}${abatereJudet !== null ? ` — ${abatereJudet >= 0 ? "cu " + procent(abatereJudet, 0) + "% peste" : "cu " + procent(Math.abs(abatereJudet), 0) + "% sub"} media națională` : ""}. Județul este pe locul ${loc} din ${JUDETE.length}. Defalcarea pe județe este anuală: INS nu publică lunar la acest nivel.`,
+      a: `Ca medie a întregului an ${AN}, câștigul salarial mediu brut lunar în ${judet.nume} a fost ${lei(judet.brut)} lei${NATIONAL_JUDETE ? `, față de ${lei(NATIONAL_JUDETE)} lei media brută lunară pe țară` : ""}${abatereJudet !== null ? ` — ${abatereJudet >= 0 ? "cu " + procent(abatereJudet, 0) + "% peste" : "cu " + procent(Math.abs(abatereJudet), 0) + "% sub"} media națională` : ""}. Județul este pe locul ${loc} din ${JUDETE.length}.`,
     },
     {
       q: `În ce domenii se câștigă cel mai bine în ${judet.nume}?`,
-      a: `Cel mai bine plătită activitate din județ în ${AN} a fost ${ceaMaiBine.denumire.toLocaleLowerCase("ro-RO")} (CAEN ${ceaMaiBine.cheie}), cu ${lei(ceaMaiBine.brut)} lei brut, iar cea mai slab plătită ${ceaMaiProst.denumire.toLocaleLowerCase("ro-RO")}, cu ${lei(ceaMaiProst.brut)} lei.${punctForte ? ` Raportat la media pe țară a aceleiași activități, ${judet.nume} stă cel mai bine la ${punctForte.denumire.toLocaleLowerCase("ro-RO")}: ${procent((punctForte.brut - punctForte.national) / punctForte.national, 0)}% peste nivelul național.` : ""}`,
+      a: `Ca medie a întregului an ${AN}, activitatea cu cel mai mare câștig mediu brut lunar a fost ${ceaMaiBine.denumire.toLocaleLowerCase("ro-RO")} (CAEN ${ceaMaiBine.cheie}), cu ${lei(ceaMaiBine.brut)} lei, iar cea cu valoarea cea mai mică ${ceaMaiProst.denumire.toLocaleLowerCase("ro-RO")}, cu ${lei(ceaMaiProst.brut)} lei.${punctForte ? ` Raportat la media pe țară a aceleiași activități, ${judet.nume} stă cel mai bine la ${punctForte.denumire.toLocaleLowerCase("ro-RO")}: ${procent((punctForte.brut - punctForte.national) / punctForte.national, 0)}% peste nivelul național.` : ""}`,
     },
     {
       q: `De ce cifrele pe județ sunt din ${AN}, nu din luna curentă?`,
-      a: "Pentru că INS publică două serii diferite. Câștigul mediu pe activități economice se publică lunar, la nivel național, și e cel folosit pe paginile de meserii. Defalcarea pe județe se publică anual și pe clasificarea CAEN Rev.2, cu întârziere mai mare. Le ținem separate în loc să amestecăm un an cu o lună.",
+      a: `Pentru că INS publică două serii diferite. FOM107E oferă pe județe câștigul salarial mediu brut lunar ca medie a întregului an ${AN}, pe clasificarea CAEN Rev.2. Seria națională de pe paginile de meserii este lunară și mai recentă; le ținem separate.`,
     },
     {
       q: `Salariul mediu din ${judet.nume} este brut sau net?`,
-      a: `Brut. ${lei(judet.brut)} lei este câștigul salarial mediu brut lunar, care include salariul de bază plus sporuri și prime. Pentru net, folosește calculatorul: din brut se scad CAS 25%, CASS 10% și impozit 10%.`,
+      a: `Brut. ${lei(judet.brut)} lei este câștigul salarial mediu brut lunar, ca medie a întregului an ${AN}; include salariul de bază, sporuri și prime. Seria nu publică netul și nu reprezintă salariul minim: în 2024, minimul legal a fost 3.300 lei până la 30 iunie (HG 900/2023) și 3.700 lei din 1 iulie (HG 598/2024). Minimul din 2026 este un reper legal separat.`,
     },
   ];
 
@@ -115,8 +130,12 @@ export default async function JudetPage({ params }: Props) {
       },
       {
         "@type": "CollectionPage",
-        name: `Salariul mediu în ${judet.nume}`,
+        name: `Câștig salarial mediu brut lunar în ${judet.nume}, media ${AN}`,
+        description: descrierePagina(judet),
         url: `https://salariile.ro/salarii/judet/${slug}`,
+        dateModified: "2026-08-25",
+        temporalCoverage: AN,
+        isBasedOn: URL_FOM107E,
         author: personSchema,
         publisher: {
           "@type": "Organization",
@@ -149,9 +168,9 @@ export default async function JudetPage({ params }: Props) {
               { label: judet.nume },
             ]}
           />
-          <H1>Salariul mediu în {judet.nume}</H1>
+          <H1>Câștigul salarial mediu brut lunar în {judet.nume} — media {AN}</H1>
           <Lead>
-            În <strong>{AN}</strong>, câștigul salarial mediu brut din {judet.nume} a fost{" "}
+            Ca medie a întregului an <strong>{AN}</strong>, câștigul salarial mediu brut lunar din {judet.nume} a fost{" "}
             <strong>{lei(judet.brut)} lei</strong>
             {abatereJudet !== null && NATIONAL_JUDETE ? (
               <>
@@ -159,19 +178,19 @@ export default async function JudetPage({ params }: Props) {
                 {procent(Math.abs(abatereJudet), 0)}%
               </>
             ) : null}
-            . Județul e pe locul {loc} din {JUDETE.length}. Defalcarea pe județe se publică anual, nu lunar, așa că
-            aceste cifre sunt mai vechi decât seria lunară de pe paginile de meserii — nu le amestecăm.
+            . Județul e pe locul {loc} din {JUDETE.length}. Valoarea nu este netă și nu reprezintă salariul minim din
+            2026; seria județeană este anuală și separată de datele curente ale site-ului.
           </Lead>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <CardCifra
               accent
-              eticheta={`Brut mediu județ, ${AN}`}
+              eticheta={`Brut lunar mediu · ${AN}`}
               valoare={lei(judet.brut)}
-              nota={`Locul ${loc} din ${JUDETE.length} județe.`}
+              nota={`Media întregului an ${AN} · locul ${loc} din ${JUDETE.length} județe.`}
             />
             <CardCifra
-              eticheta="Media pe țară"
+              eticheta={`Media brută lunară pe țară · ${AN}`}
               valoare={NATIONAL_JUDETE ? lei(NATIONAL_JUDETE) : "—"}
               nota={
                 abatereJudet !== null
@@ -180,9 +199,9 @@ export default async function JudetPage({ params }: Props) {
               }
             />
             <CardCifra
-              eticheta="Cea mai bine plătită activitate"
+              eticheta={`Cel mai mare brut lunar pe activitate · ${AN}`}
               valoare={lei(ceaMaiBine.brut)}
-              nota={`CAEN ${ceaMaiBine.cheie} — ${denumireScurtaCaen(ceaMaiBine.cheie, ceaMaiBine.denumire)}.`}
+              nota={`Media întregului an · CAEN ${ceaMaiBine.cheie} — ${denumireScurtaCaenRev2(ceaMaiBine.cheie, ceaMaiBine.denumire)}.`}
             />
             <CardCifra
               eticheta="Activități cu date"
@@ -194,17 +213,17 @@ export default async function JudetPage({ params }: Props) {
 
           <section className="mt-12">
             <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">
-              Salariile pe activități economice în {judet.nume}
+              Câștiguri medii brute lunare pe activități în {judet.nume} — media {AN}
             </h2>
             <p className="mt-4 max-w-3xl text-base leading-normal text-stone-600">
-              Coloana din dreapta compară județul cu media națională a <em>aceleiași</em> activități, nu cu media
-              generală — altfel toate activitățile bine plătite ar apărea „peste medie” oriunde s-ar afla. Unde o
-              activitate găzduiește meserii din catalogul nostru, le găsești linkate.
+              Toate sumele sunt brute lunare, calculate ca medie pentru întregul an {AN}; nu sunt nete și nu sunt
+              salariul minim din 2026. Coloana din dreapta compară județul cu media națională a <em>aceleiași</em>{" "}
+              activități. Unde o activitate găzduiește meserii din catalogul nostru, le găsești linkate.
             </p>
             <div className="my-6 overflow-x-auto">
               <table className="w-full min-w-[44rem] border-separate border-spacing-0 overflow-hidden rounded-md border border-stone-200 bg-surface text-sm shadow-soft tabular-nums">
                 <caption className="sr-only">
-                  Câștigul salarial mediu brut pe activități economice în {judet.nume}, {AN}
+                  Câștigul salarial mediu brut lunar pe activități economice în {judet.nume}, media întregului an {AN}
                 </caption>
                 <thead>
                   <tr>
@@ -215,7 +234,7 @@ export default async function JudetPage({ params }: Props) {
                       Meserii din catalog
                     </th>
                     <th className="border-b border-stone-200 bg-canvas px-3 py-3 text-right text-xs font-medium uppercase tracking-wide text-stone-600">
-                      Brut în județ
+                      Brut lunar · media {AN}
                     </th>
                     <th className="border-b border-stone-200 bg-canvas px-3 py-3 text-right text-xs font-medium uppercase tracking-wide text-stone-600">
                       Față de aceeași activitate pe țară
@@ -242,7 +261,7 @@ export default async function JudetPage({ params }: Props) {
                           />
                           <span className="relative">
                             CAEN {activitate.cheie} ·{" "}
-                            {denumireScurtaCaen(activitate.cheie, activitate.denumire)}
+                            {denumireScurtaCaenRev2(activitate.cheie, activitate.denumire)}
                           </span>
                         </th>
                         <td className="border-b border-stone-100 px-3 py-2 text-left text-xs text-stone-500">
@@ -269,10 +288,14 @@ export default async function JudetPage({ params }: Props) {
               </table>
             </div>
             <NotaSursa>
-              Sursa: Institutul Național de Statistică, TEMPO-Online, matricea {MATRICE_JUDETE} — câștig salarial
-              mediu brut pe activități CAEN Rev.2 și județe, {AN}. Reutilizare conform licenței pentru o guvernare
-              deschisă. Sunt medii pe județ, nu pe oraș: un județ cu un singur angajator mare poate arăta o medie
-              care nu se regăsește în restul localităților. Vezi <Link href="/metodologie">metodologia</Link> și{" "}
+              Sursa: Institutul Național de Statistică, TEMPO-Online, matricea{" "}
+              <a href={URL_FOM107E} target="_blank" rel="noopener noreferrer">{MATRICE_JUDETE}</a> — câștig salarial
+              nominal mediu brut lunar pe activități CAEN Rev.2 și județe, media întregului an {AN}. Nu este net și
+              nu este salariul minim; în 2024, pragurile legale au fost stabilite prin{" "}
+              <a href={URL_HG_900_2023} target="_blank" rel="noopener noreferrer">HG 900/2023</a> și{" "}
+              <a href={URL_HG_598_2024} target="_blank" rel="noopener noreferrer">HG 598/2024</a>. Reutilizare conform
+              licenței pentru o guvernare deschisă. Sunt medii pe județ, nu pe oraș. Vezi{" "}
+              <Link href="/metodologie">metodologia</Link> și{" "}
               <Link href="/salarii/judete">toate județele</Link>.
             </NotaSursa>
           </section>
@@ -286,7 +309,7 @@ export default async function JudetPage({ params }: Props) {
                   key={alt.slug}
                   href={`/salarii/judet/${alt.slug}`}
                   titlu={alt.nume}
-                  detaliu={`Locul ${JUDETE.findIndex((j) => j.slug === alt.slug) + 1} din ${JUDETE.length}`}
+                  detaliu={`Brut lunar · media ${AN} · locul ${JUDETE.findIndex((j) => j.slug === alt.slug) + 1} din ${JUDETE.length}`}
                   valoare={`${lei(alt.brut)} lei`}
                 />
               ))}

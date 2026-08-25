@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-// Verifica paginile randate de meserie dupa recastul metodologic din 25 aug.
-// 2026: reperul CAEN si reperul ISCO trebuie sa fie separate, iar vechiul
-// interval CAEN×ISCO nu trebuie sa reapara in copy sau metadata.
+// Verifica paginile randate de meserie dupa recastul net-first din 25 aug.
+// 2026: netul sectorului si netul grupei ISCO trebuie sa fie separate, iar
+// vechiul interval CAEN×ISCO nu trebuie sa reapara in copy sau metadata.
 
 import * as cheerio from "cheerio";
 
@@ -38,11 +38,9 @@ async function grab(p) {
     status: raspuns.status,
     h1: $("h1").first().text().trim(),
     desc: $('meta[name="description"]').attr("content") || "",
-    caen: valoareCard($, "Reper CAEN · brut"),
-    isco: valoareCard($, "Reper ISCO · brut indexat"),
-    explicaSepararea:
-      text.includes("nu formează un interval") ||
-      (text.includes("nu sunt limitele salariului") && text.includes("nu le combinăm")),
+    caenNet: valoareCard($, "Câștig net lunar orientativ"),
+    iscoNet: valoareCard($, "Net orientativ · grupa ISCO"),
+    explicaSepararea: text.includes("nu formează un interval"),
     legacy: /Estimare net, pe lună|Cum citești intervalul|câștigă, estimativ, între|capetele (?:sunt|de mai sus)/i.test(
       `${text} ${$('meta[name="description"]').attr("content") || ""}`,
     ),
@@ -60,23 +58,23 @@ await Promise.all(
   }),
 );
 
-const faraCaen = rows.filter((r) => !r.caen);
-const faraIsco = rows.filter((r) => !r.isco);
+const faraCaenNet = rows.filter((r) => !r.caenNet);
+const faraIscoNet = rows.filter((r) => !r.iscoNet);
 const faraExplicatie = rows.filter((r) => !r.explicaSepararea);
 const legacy = rows.filter((r) => r.legacy);
 const eroriHttp = rows.filter((r) => r.status !== 200);
 
-console.log("\n# Audit repere CAEN și ISCO pe paginile de meserie\n");
+console.log("\n# Audit net-first pe paginile de meserie\n");
 console.log(`Pagini analizate: **${rows.length}**`);
-console.log(`Cu reper CAEN etichetat: **${rows.length - faraCaen.length}**`);
-console.log(`Cu reper ISCO etichetat: **${rows.length - faraIsco.length}**`);
+console.log(`Cu netul sectorului în prim-plan: **${rows.length - faraCaenNet.length}**`);
+console.log(`Cu netul grupei ISCO separat: **${rows.length - faraIscoNet.length}**`);
 console.log(`Cu avertisment că reperele nu formează un interval: **${rows.length - faraExplicatie.length}**`);
 console.log(`Cu formulări moștenite despre intervalul ocupației: **${legacy.length}**\n`);
 
 for (const [titlu, lista] of [
   ["Răspuns HTTP diferit de 200", eroriHttp],
-  ["Lipsește reperul CAEN", faraCaen],
-  ["Lipsește reperul ISCO", faraIsco],
+  ["Lipsește netul sectorului", faraCaenNet],
+  ["Lipsește netul grupei ISCO", faraIscoNet],
   ["Lipsește avertismentul metodologic", faraExplicatie],
   ["Copy vechi despre interval", legacy],
 ]) {
@@ -86,8 +84,8 @@ for (const [titlu, lista] of [
   console.log("");
 }
 
-if (eroriHttp.length || faraCaen.length || faraIsco.length || faraExplicatie.length || legacy.length) {
+if (eroriHttp.length || faraCaenNet.length || faraIscoNet.length || faraExplicatie.length || legacy.length) {
   process.exitCode = 1;
 } else {
-  console.log("OK: toate paginile păstrează separat reperele CAEN și ISCO, fără interval derivat.\n");
+  console.log("OK: toate paginile afișează netul primul și păstrează CAEN/ISCO separat, fără interval derivat.\n");
 }

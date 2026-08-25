@@ -1404,3 +1404,41 @@ de date.
 - `npm audit --audit-level=low` — 0 vulnerabilități.
 - Vercel Analytics, fereastra exactă 27 iulie–23 august: 28 zile și 28 rânduri
   zilnice, primul/ultimul bucket corecte.
+
+### Corecție UX net-first pentru meserii, 25 august 2026
+
+Feedbackul proprietarului a identificat o regresie de prezentare introdusă de
+recastul metodologic: separarea CAEN/ISCO era corectă, dar brutul devenise cifra
+mare și primul răspuns, iar copy-ul începea prea defensiv. Corecția păstrează
+metodologia și schimbă ierarhia informației:
+
+- toate cele 123 de carduri din `/salarii` afișează întâi netul mediu observat
+  de INS în sectorul CAEN și, secundar, netul orientativ al grupei ISCO;
+- toate paginile `/salarii/[meserie]` răspund în title, description, lead, FAQ și
+  primul card cu suma netă; brutul rămâne explicație secundară;
+- graficul lunar al meseriei folosește seria netă INS, nu seria brută;
+- cele 37 de comparații afișează neturile înaintea bruturilor, fără să readucă
+  intervalul CAEN×ISCO, mijlocul intervalului sau un câștigător derivat;
+- pentru programator, primul răspuns este **13.474 lei net/lună** (media netă
+  INS în CAEN 62), urmat de 22.689 lei brut ca explicație secundară, 8.261 lei
+  net ISCO și 5.633 lei net pentru grupa 20–24 de ani;
+- cardurile din hub au revenit la ierarhia vizuală preferată: suma netă singură
+  pe primul rând, apoi eticheta „lei net” și reperul ISCO dedesubt;
+- seria județeană FOM107E este etichetată peste tot drept „câștig salarial
+  nominal mediu brut lunar, media întregului an 2024”, distinct de net și de
+  salariul minim 2026. Pentru 2024 sunt explicate pragurile 3.300/3.700 lei și
+  reperul calendaristic simplu de 3.500 lei; tabelul Programator precizează
+  explicit că 3.653 lei în Giurgiu este peste acest reper anual;
+- etichetele scurte ale secțiunilor CAEN Rev.2 din paginile de județ au fost
+  separate de dicționarul Rev.3: P este din nou Învățământ, Q Sănătate și
+  asistență socială, iar M Activități profesionale, științifice și tehnice;
+- `llms.txt`, sitemapul, metodologia, dashboardul GSC și testele de regresie au
+  fost aliniate la prezentarea net-first.
+
+Nu s-a restaurat vechiul interval 8.261–13.273 lei: cele două valori provin din
+populații diferite și rămân afișate separat.
+
+Verificare finală: `npm run test:ci` — PASS; build cu 302 pagini, audit randat
+cu 292 rute / 292 blocuri JSON-LD și 41 verificări de conținut. Browser desktop
+și mobil: `/salarii`, `/salarii/programator` și `/salarii/judet/giurgiu` fără
+overflow, netul în prim-plan și etichetele CAEN Rev.2 corecte.

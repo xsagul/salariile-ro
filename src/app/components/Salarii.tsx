@@ -158,68 +158,131 @@ export function TabelJudete({
   judete,
   media,
   an,
-  numeSector,
+  numeActivitate,
 }: {
   // Tipul vine din biblioteca, nu redeclarat aici: cand `ValoareJudet` a primit
   // `slug`, o copie locala ar fi ramas in urma in tacere.
   judete: ValoareJudet[];
   /** Valoarea nationala a ACELEIASI serii si a aceluiasi an. */
-  media: number;
+  media: number | null;
   an: string;
-  numeSector: string;
+  /** Eticheta activitatii din seria judeteana CAEN Rev.2. */
+  numeActivitate: string;
 }) {
   if (judete.length === 0) return null;
-  const max = judete[0].brut;
+  const max = Math.max(...judete.map((judet) => judet.brut));
+  const minim = judete.reduce((curent, judet) => (judet.brut < curent.brut ? judet : curent));
+  const areMedieNationala = media !== null && media > 0;
+  const este2024 = an === "2024";
 
   return (
-    <div className="my-6 overflow-x-auto">
-      <table className="w-full min-w-[32rem] border-separate border-spacing-0 overflow-hidden rounded-md border border-stone-200 bg-surface text-sm shadow-soft tabular-nums">
-        <caption className="sr-only">{`Câștig salarial mediu brut pe județe în ${an}, ${numeSector}. Media națională a aceleiași activități: ${lei(media)} lei.`}</caption>
-        <thead>
-          <tr>
-            <th className="border-b border-stone-200 bg-canvas px-3 py-3 text-left text-xs font-medium uppercase tracking-wide text-stone-600">
-              Județ
-            </th>
-            <th className="border-b border-stone-200 bg-canvas px-3 py-3 text-right text-xs font-medium uppercase tracking-wide text-stone-600">
-              Brut
-            </th>
-            <th className="border-b border-stone-200 bg-canvas px-3 py-3 text-right text-xs font-medium uppercase tracking-wide text-stone-600">
-              Față de media pe țară ({an})
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {judete.map((rand) => {
-            const abatere = (rand.brut - media) / media;
-            return (
-              <tr key={rand.judet}>
-                <th
-                  scope="row"
-                  className="relative border-b border-stone-100 px-3 py-2 text-left font-medium text-stone-900"
-                >
-                  <span
-                    aria-hidden="true"
-                    className="absolute inset-y-1 left-0 rounded-r bg-stone-900/[0.06]"
-                    style={{ width: `${Math.max(4, (rand.brut / max) * 100)}%` }}
-                  />
-                  {/* Judetul trimite la pagina lui: acolo se vede cum sta el pe
+    <div className="my-6">
+      <div className="rounded-md border border-stone-200 bg-surface p-4 text-sm leading-normal text-stone-600 shadow-soft">
+        <p>
+          <strong className="font-semibold text-stone-900">Brut lunar, media anului {an}:</strong> fiecare sumă este
+          câștigul salarial nominal mediu brut lunar al activității CAEN Rev.2 „{numeActivitate}”, calculat pentru
+          întregul an. Nu este salariu net și nu reprezintă salariul minim din 2026. Vezi{" "}
+          <a
+            href="https://statistici.insse.ro/tempoins/?ind=FOM107E&lang=ro&page=tempo3"
+            target="_blank"
+            rel="noopener"
+            className="font-medium text-stone-900 underline underline-offset-2 hover:text-stone-600"
+          >
+            definiția INS (FOM107E)
+          </a>
+          .
+        </p>
+        {este2024 && (
+          <p className="mt-2">
+            În 2024, salariul de bază minim brut pentru normă întreagă a fost{" "}
+            <a
+              href="https://legislatie.just.ro/Public/DetaliiDocument/274843"
+              target="_blank"
+              rel="noopener"
+              className="font-medium text-stone-900 underline underline-offset-2 hover:text-stone-600"
+            >
+              3.300 lei în ianuarie–iunie
+            </a>{" "}
+            și{" "}
+            <a
+              href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/283807"
+              target="_blank"
+              rel="noopener"
+              className="font-medium text-stone-900 underline underline-offset-2 hover:text-stone-600"
+            >
+              3.700 lei din 1 iulie
+            </a>
+            . Reperul calendaristic simplu pentru cele 12 luni este 3.500 lei; o medie anuală nu se compară doar cu
+            nivelul din semestrul al doilea.
+            {minim.brut >= 3_500
+              ? ` În acest tabel, chiar valoarea minimă — ${lei(minim.brut)} lei în ${minim.judet} — este peste acel reper.`
+              : ""}{" "}
+            Câștigul mediu și salariul de bază minim rămân indicatori diferiți.
+          </p>
+        )}
+      </div>
+      <div className="mt-4 overflow-x-auto">
+        <table className="w-full min-w-[32rem] border-separate border-spacing-0 overflow-hidden rounded-md border border-stone-200 bg-surface text-sm shadow-soft tabular-nums">
+          <caption className="sr-only">
+            {`Câștig salarial nominal mediu brut lunar pe județe, media anului ${an}, activitatea CAEN Rev.2 ${numeActivitate}.${areMedieNationala ? ` Media brută națională a aceleiași activități: ${lei(media)} lei.` : ""}`}
+          </caption>
+          <thead>
+            <tr>
+              <th className="border-b border-stone-200 bg-canvas px-3 py-3 text-left text-xs font-medium uppercase tracking-wide text-stone-600">
+                Județ
+              </th>
+              <th className="border-b border-stone-200 bg-canvas px-3 py-3 text-right text-xs font-medium uppercase tracking-wide text-stone-600">
+                Brut lunar · media {an}
+              </th>
+              <th className="border-b border-stone-200 bg-canvas px-3 py-3 text-right text-xs font-medium uppercase tracking-wide text-stone-600">
+                Față de media brută națională · {an}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {judete.map((rand) => {
+              const abatere = areMedieNationala ? (rand.brut - media) / media : null;
+              return (
+                <tr key={rand.judet}>
+                  <th
+                    scope="row"
+                    className="relative border-b border-stone-100 px-3 py-2 text-left font-medium text-stone-900"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="absolute inset-y-1 left-0 rounded-r bg-stone-900/[0.06]"
+                      style={{ width: `${Math.max(4, (rand.brut / max) * 100)}%` }}
+                    />
+                    {/* Judetul trimite la pagina lui: acolo se vede cum sta el pe
                       TOATE activitatile, nu doar pe cea din tabelul asta. */}
-                  <span className="relative">
-                    <Link href={`/salarii/judet/${rand.slug}`} className="underline underline-offset-2 hover:text-stone-600">
-                      {rand.judet}
-                    </Link>
-                  </span>
-                </th>
-                <td className="border-b border-stone-100 px-3 py-2 text-right text-stone-700">{lei(rand.brut)} lei</td>
-                <td className="border-b border-stone-100 px-3 py-2 text-right text-stone-600">
-                  {abatere >= 0 ? "+" : "−"}
-                  {procent(Math.abs(abatere), 0)}%
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+                    <span className="relative">
+                      <Link
+                        href={`/salarii/judet/${rand.slug}`}
+                        className="underline underline-offset-2 hover:text-stone-600"
+                      >
+                        {rand.judet}
+                      </Link>
+                    </span>
+                  </th>
+                  <td className="border-b border-stone-100 px-3 py-2 text-right text-stone-700">
+                    {lei(rand.brut)} lei
+                  </td>
+                  <td className="border-b border-stone-100 px-3 py-2 text-right text-stone-600">
+                    {abatere === null ? (
+                      "—"
+                    ) : (
+                      <>
+                        {abatere >= 0 ? "+" : "−"}
+                        {procent(Math.abs(abatere), 0)}%
+                      </>
+                    )}
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

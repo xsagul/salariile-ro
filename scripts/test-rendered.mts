@@ -1,4 +1,5 @@
 import { once } from "node:events";
+import { readFile } from "node:fs/promises";
 import { createServer } from "node:net";
 import path from "node:path";
 import { spawn } from "node:child_process";
@@ -40,6 +41,8 @@ try {
 const BASE_URL = `http://127.0.0.1:${PORT}`;
 const PROJECT_ROOT = process.cwd();
 const NEXT_BIN = path.join(PROJECT_ROOT, "node_modules", "next", "dist", "bin", "next");
+const DATE_INS = JSON.parse(await readFile(path.join(PROJECT_ROOT, "src/data/ins-caen.json"), "utf8"));
+const AN_JUDETE = String(DATE_INS.judete.an).replace(/^Anul\s+/, "");
 
 const server = spawn(process.execPath, [NEXT_BIN, "start", "-p", String(PORT)], {
   cwd: PROJECT_ROOT,
@@ -113,6 +116,18 @@ function metaDescriptionFrom(html: string) {
     .map(([match]) => match)
     .find((match) => /\bname=["']description["']/i.test(match));
   return decodeHtml(tag?.match(/\bcontent="([^"]*)"/i)?.[1] ?? "").trim();
+}
+
+function visibleTextFrom(html: string) {
+  return decodeHtml(
+    html
+      .replace(/<script\b[\s\S]*?<\/script>/gi, " ")
+      .replace(/<style\b[\s\S]*?<\/style>/gi, " ")
+      .replace(/<!--[\s\S]*?-->/g, " ")
+      .replace(/<[^>]+>/g, " "),
+  )
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 function hasNoindex(html: string) {
@@ -248,11 +263,20 @@ async function auditRenderedSite() {
     ["/salarii", "TEMPO-Online", "citarea sursei INS pe hubul de meserii"],
     ["/salarii", "grupe majore de ocupații", "a doua masuratoare, dinspre ocupatie"],
     ["/salarii/programator", "CAEN 62", "activitatea din spatele cifrei de programator"],
-    // Cele doua marginale CAEN si ISCO sunt repere separate. Testul pazeste
-    // etichetele si avertismentul care interzice vechiul interval derivat.
-    ["/salarii/programator", "Reper CAEN · brut", "reperul sectorului, etichetat explicit"],
-    ["/salarii/programator", "Reper ISCO · brut indexat", "reperul grupei, etichetat explicit"],
-    ["/salarii/programator", "Cum citești reperele", "explicatia metodei direct in pagina"],
+    // Netul trebuie sa raspunda primul cautarii, iar cele doua populatii CAEN
+    // si ISCO raman separate, fara revenirea la intervalul derivat.
+    ["/salarii/programator", "Câștig net lunar orientativ", "netul observat in sector, afisat primul"],
+    ["/salarii/programator", "Net orientativ · grupa ISCO", "netul grupei, etichetat explicit"],
+    ["/salarii/programator", "Cum citești sumele", "explicatia metodei direct in pagina"],
+    ["/salarii/programator", `Brut lunar pe județe · media ${AN_JUDETE}`, "perioada tabelului judetean"],
+    ["/salarii/programator", "Nu este salariu net", "separarea tabelului judetean de net"],
+    ["/salarii/programator", "salariul minim din 2026", "separarea tabelului judetean de minimul curent"],
+    ["/salarii/programator", "3.500 lei", "reperul calendaristic pentru anul 2024"],
+    ["/salarii/judete", `media întregului an ${AN_JUDETE}`, "perioada explicita a hubului judetean"],
+    ["/salarii/judet/giurgiu", `media întregului an ${AN_JUDETE}`, "perioada explicita a paginii Giurgiu"],
+    ["/salarii/judet/giurgiu", "CAEN P · Învățământ", "eticheta CAEN Rev.2 P"],
+    ["/salarii/judet/giurgiu", "CAEN Q · Sănătate și asistență socială", "eticheta CAEN Rev.2 Q"],
+    ["/salarii/judet/giurgiu", "CAEN M · Activități profesionale", "eticheta CAEN Rev.2 M"],
     ["/salarii/asistent-medical", "Tehnicieni", "grupa de ocupatii a asistentului medical"],
     ["/salarii/medic", "Specialiști", "grupa de ocupatii a medicului"],
     // Diferenta pe sexe: date care existau in matricea INS de la inceput, dar
@@ -273,12 +297,15 @@ async function auditRenderedSite() {
     ["/salarii/locuri-vacante", "LMV101D", "citarea matricei de rate"],
     ["/salarii/medic", "Cât contează vechimea", "progresia pe varste din ancheta din octombrie"],
     ["/compara", "nu declarăm un câștigător", "limita metodologica a hubului de comparatii"],
-    ["/compara/programator-vs-medic", "Tabel cu repere separate", "tabelul cu benchmarkuri necombinate"],
+    ["/compara/programator-vs-medic", "Net, brut și context statistic", "tabelul cu netul inaintea brutului"],
     ["/compara/programator-vs-medic", "nu sunt un minim și un maxim", "avertismentul impotriva intervalului"],
   ] as const;
 
   for (const [pathname, expected, label] of contentChecks) {
-    if (!rendered.get(pathname)?.includes(expected)) failures.push(`${pathname}: lipseste ${label}`);
+    const html = rendered.get(pathname) ?? "";
+    if (!html.includes(expected) && !visibleTextFrom(html).includes(expected)) {
+      failures.push(`${pathname}: lipseste ${label}`);
+    }
   }
 
   // ── Recast metodologic CAEN + ISCO ─────────────────────────────────────────
@@ -294,10 +321,28 @@ async function auditRenderedSite() {
   const copyIntervalVechi = /Estimare net, pe lună|Cum citești intervalul|câștigă, estimativ, între|capetele sunt cele două/i;
   for (const pathname of paginiMeserii) {
     const html = rendered.get(pathname) ?? "";
-    if (!html.includes("Reper CAEN · brut")) failures.push(`${pathname}: lipseste reperul CAEN separat`);
-    if (!html.includes("Reper ISCO · brut indexat")) failures.push(`${pathname}: lipseste reperul ISCO separat`);
+    const title = titleFrom(html);
+    const descriere = metaDescriptionFrom(html);
+    const textVizibil = visibleTextFrom(html);
+    const continutVizibil = html.slice(Math.max(0, html.indexOf("<h1")));
+    const netPrincipalIndex = continutVizibil.indexOf("Câștig net lunar orientativ");
+    const primulBrutIndex = continutVizibil.indexOf("lei brut");
+    if (!html.includes("Câștig net lunar orientativ")) failures.push(`${pathname}: lipseste netul principal al sectorului`);
+    if (!html.includes("Net orientativ · grupa ISCO")) failures.push(`${pathname}: lipseste netul separat al grupei ISCO`);
     if (!html.includes("nu formează un interval")) failures.push(`${pathname}: lipseste limita CAEN/ISCO`);
+    if (html.includes("Interval pe județe")) failures.push(`${pathname}: tabelul judetean foloseste eticheta ambigua de interval`);
+    if (!textVizibil.includes(`Brut lunar · media ${AN_JUDETE}`)) {
+      failures.push(`${pathname}: tabelul judetean nu declara brutul lunar si media anului ${AN_JUDETE}`);
+    }
+    if (!textVizibil.includes("Nu este salariu net") || !textVizibil.includes("salariul minim din 2026")) {
+      failures.push(`${pathname}: lipseste separarea cifrelor judetene de net si minimul 2026`);
+    }
     if (copyIntervalVechi.test(html)) failures.push(`${pathname}: a reaparut copy-ul vechi despre interval`);
+    if (!/[\d.]+ lei net/i.test(title)) failures.push(`${pathname}: titlul nu raspunde cu suma neta`);
+    if (!/^[\d.]+ lei net\/lună/i.test(descriere)) failures.push(`${pathname}: descrierea nu incepe cu suma neta`);
+    if (primulBrutIndex >= 0 && netPrincipalIndex > primulBrutIndex) {
+      failures.push(`${pathname}: brutul apare inaintea cardului net principal`);
+    }
   }
 
   const paginiComparatii = [...rendered.keys()].filter((pathname) => /^\/compara\/[^/]+$/.test(pathname));
@@ -305,10 +350,16 @@ async function auditRenderedSite() {
   for (const pathname of paginiComparatii) {
     const html = rendered.get(pathname) ?? "";
     const descriere = metaDescriptionFrom(html);
-    if (!html.includes("Reper CAEN")) failures.push(`${pathname}: lipsesc reperele CAEN`);
-    if (!html.includes("Reper ISCO")) failures.push(`${pathname}: lipsesc reperele ISCO`);
+    const continutVizibil = html.slice(Math.max(0, html.indexOf("<h1")));
+    const netPrincipalIndex = continutVizibil.indexOf("Salariu net orientativ");
+    const primulBrutIndex = continutVizibil.indexOf("lei brut");
+    if (!html.includes("Salariu net orientativ")) failures.push(`${pathname}: lipseste netul principal CAEN`);
+    if (!html.includes("Net orientativ · grupa ISCO")) failures.push(`${pathname}: lipseste netul separat ISCO`);
     if (!html.includes("nu sunt un minim și un maxim")) failures.push(`${pathname}: lipseste avertismentul anti-interval`);
     if (concluzieComparatieVeche.test(html)) failures.push(`${pathname}: a reaparut o concluzie derivata nepermisa`);
+    if (primulBrutIndex >= 0 && netPrincipalIndex > primulBrutIndex) {
+      failures.push(`${pathname}: brutul apare inaintea cardurilor nete`);
+    }
     if (/[\d.]+\s*[–-]\s*[\d.]+\s*lei/.test(descriere)) {
       failures.push(`${pathname}: metadata prezinta din nou un interval numeric`);
     }
