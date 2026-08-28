@@ -1442,3 +1442,206 @@ Verificare finală: `npm run test:ci` — PASS; build cu 302 pagini, audit randa
 cu 292 rute / 292 blocuri JSON-LD și 41 verificări de conținut. Browser desktop
 și mobil: `/salarii`, `/salarii/programator` și `/salarii/judet/giurgiu` fără
 overflow, netul în prim-plan și etichetele CAEN Rev.2 corecte.
+
+## Sesiunea din 27 august 2026 — decizia de direcție și ce urmează
+
+**Criteriul s-a schimbat.** Ținta nu e „îi depășim pe paylab/undelucram" ca scop,
+ci **redundanță de trafic**: clusterul de calculator merge spre ~1.000 accesări/zi
+și e considerat bătălie câștigată (p2–p4, peste paylab, nu se umblă la el). Se
+caută încă ~1.000/zi din alte căutări, ca site-ul să nu depindă de o singură
+familie de cuvinte. Plan complet în `PLAN-12-LUNI-DEPASIRE-2026-08-27.md`.
+
+Ordinea rezultată, după volum disponibil: **firme > meserii > comparare**.
+Meseriile rămân motor de autoritate, nu de volum.
+
+**Verificat și picat:** costul mediu per angajat din bilanțuri publice. Extrasul
+public MFinanțe per CUI are cifra de afaceri, venituri/cheltuieli totale,
+profit și *numărul mediu de salariați* — dar **nu** cheltuielile cu personalul ca
+linie separată. Rămâne de verificat o singură dată dacă există o sursă completă
+(situații financiare integrale / ONRC / set bulk), pentru că schimbă complet ce
+poate conține o pagină de firmă.
+
+**Findings noi pe paylab** (capturi manuale, addendum 2 în
+`.cercetare-privata/PAYLAB-TEARDOWN-2026-08-21.md`): folosesc salariul minim
+expirat de 4.050 ca podea în toate pozițiile prost plătite; modulele de sondaj
+(% femei, vârstă medie) sunt **n/a** în coada lungă; clasamentul are 687 de
+poziții, nu 767; editorialul e mort din februarie 2019.
+
+**Problema noastră, măsurată pe hub:** 47 din 123 de meserii (38%) stau în grupuri
+cu cifră identică, concentrate exact pe domeniile cu volum — IT (Programator =
+Web developer = Tester QA = DevOps = Administrator sistem = 13.474), educație
+(Educator = Profesor universitar), medical, juridic, public, construcții.
+
+### Decizie în așteptare la proprietar
+
+Propunere: pe hub, când mai multe meserii împart o cifră, afișarea ei **o singură
+dată ca bandă de sector** („CAEN 62 · IT și software — 13.474 lei net"), cu
+meseriile listate dedesubt fără număr propriu. Nu cere date noi, nu schimbă
+ierarhia net-first. Proprietarul se gândește; **nu se implementează până nu decide.**
+
+### Termen care nu așteaptă
+
+**30 septembrie 2026** — publicarea legală a listelor pe Legea 153/2017. La 5
+săptămâni. Repară 11 din cele 47 de duplicate (educație, public, spitale) și e
+singura sursă publică pe *funcție*. De pregătit înainte: lista instituțiilor și
+URL-urile, plus rata de succes a extractorului măsurată pe ≥30 de liste (acum:
+3 din 7).
+
+### Continuare 27 august — surse pe ocupatie, verificate si inchise
+
+**Rute verificate si PICATE**, ca sa nu se reia:
+- **Eurostat SES** (`earn_ses22_48`, geo=RO): 14 coduri de ocupatie, toate de o
+  cifra — OC1…OC9. Identic cu FOM121B. Nu exista taietura la 2 cifre pentru RO.
+- **EURES**: schema *are* `offeredRemunerationPackage.salaries` cu min/max/moneda,
+  dar pe 120 de anunturi RO esantionate, 109 de la ANOFM, **0 cu salariu**; ESCO
+  completat pe 11/120. Endpoint: `POST /eures/api/jv-searchengine/public/jv-search/search`.
+- **MFinante**: extrasul public per CUI n-are „cheltuieli cu personalul"; are
+  numarul mediu de salariati.
+- **`JobPosting` schema.org**: bestjobs nu emite niciun JSON-LD pe pagina de anunt;
+  eJobs are doar WebSite/Organization.
+- **Scraping la scara pe eJobs**: oprit de proprietar. Blocaj si tehnic — listarea
+  e randata client-side, `/pagina2` intoarce acelasi HTML, ~2 anunturi per cerere.
+  robots.txt permite doar `pagina2`…`pagina10`.
+
+**Masurat pe eJobs** (contoarele lor, nu parsare): 6.047 din 16.152 anunturi au
+salariu = **37%**. Pe domenii: transport **72%**, constructii **50%**, IT 30%,
+medicina ~30%. Meseriile manuale declara salariul mult mai des.
+
+**Acoperire paylab** (`node scripts/audit-acoperire-paylab.mjs`): 693 pagini de
+pozitie, 673 ocupatii distincte, **209 acoperite, 464 lipsa**. Din 102 activitati
+CAEN folosim 78; cele 24 ramase sunt aproape toate agregate — doar **8** sunt
+activitati reale nefolosite. Deci din 464 lipsa, cel mult ~8 ar primi o cifra pe
+care n-o afisam deja. Clonarea catalogului lor ar duce duplicatele de la 38% la ~90%.
+
+**Toate cele 9 grupe ISCO sunt folosite**, dar inegal: specialisti 49, conducatori 1.
+91 de perechi CAEN×ISCO distincte din 123 de meserii.
+
+**Construit:** `src/lib/observatii-salariale.ts` — model agnostic de sursa pentru
+salarii pe ocupatie, cu prag de publicare 5, mediana + p25/p75 (nu medie), refuz
+de amestec brut/net si intre judete. `scripts/test-observatii.mts`, 15 verificari,
+legat in `npm test`. Testul a prins un bug real: filtrarea cuvintelor de grad
+facea ca „Registrator medical" sa se incadreze la „Asistent medical".
+
+**Decizii ale proprietarului azi:**
+- clusterul de calculator: bataile castigata, nu se umbla la el;
+- tinta e redundanta de trafic (~1.000/zi din alt cluster), nu depasirea in sine;
+- scraping pe joburi: **abandonat**;
+- job board propriu: **respins**, cold start pe partea de angajatori;
+- acoperire partiala: **acceptata** — dar cu regula „pagina doar unde exista date".
+
+### Urmatorul pas, decis
+
+Clusterul de **angajatori publici** pe Legea 153/2017: pagina per institutie cu
+grila reala (functie, grad, vechime), formatul undelucram dar cu act in loc de
+autodeclarare. Peste 3.100 de primarii, 42 de consilii judetene, sute de spitale.
+
+Prerechizita, inainte de 30 septembrie: **rata reala de extractie masurata pe ≥30
+de liste**, nu pe 7 (acum 3/7 = 43%). Daca rata nu urca, nu conteaza cate mii de
+institutii exista. Plus lista de institutii si URL-uri, pregatita inainte de termen.
+
+## Driftul de context, reparat mecanic — 28 august 2026
+
+### Ce era stricat
+
+`AGENTS.md` era o copie a `CLAUDE.md` care divergise tăcut. Păstra, la linia 7,
+exact cele două afirmații pe care `CLAUDE.md:17` le documentează ca fiind
+greșite: „monetizare prin AdSense" și „obiectiv de tranziție profesională către
+front-end". A doua costase deja o sesiune întreagă. Orice unealtă care citește
+`AGENTS.md` (Codex, Cursor, majoritatea harness-urilor) pornea cu strategia
+veche. Îi lipsea complet secțiunea de strategie: cele trei priorități, decizia
+de colectare, avertismentul despre monetizare.
+
+Măsurat: 21 de documente, ~4.900 de linii. Salariul minim apărea în 10 fișiere,
+media INS în 4, cifrele paylab în 5, „123 de meserii" în 4.
+
+### Ce s-a făcut
+
+1. `AGENTS.md` → pointer de 25 de linii către `CLAUDE.md`, cu tabelul „unde stă
+   fiecare fapt". Fără fapte proprii, deci nu mai poate diverge.
+2. Blocul fiscal din `CLAUDE.md` și paragraful de cote din `README.md` marcate
+   `<!-- fiscal:start ... fiscal:end -->`. `README.md` nu mai fixează valoarea
+   salariului minim în lista de funcții — descrie capabilitatea (ambele regimuri).
+3. `scripts/test-context-drift.mts`, legat în `npm run test`. Verifică: fiecare
+   sumă în lei și cotă procentuală din blocurile marcate există în `fiscal.ts` /
+   `date-salarii.ts`; valorile cheie n-au fost șterse; `AGENTS.md` a rămas
+   pointer; nicio strategie respinsă n-a reapărut.
+
+### De ce blocul marcat, și nu ștergerea cifrelor
+
+Ștergerea oarbă strica lucruri. În `ROADMAP-90-ZILE.md`, „4325" e slug de rută
+live (`/calculator/calcul-salariu-net-4325-brut`). În `BRAND.md`, cifrele sunt
+exemple de formatare ro-RO, nu afirmații de fapt. Verificarea se aplică numai
+în regiunea marcată explicit; restul rămâne neatins.
+
+`PROGRES.md` e exceptat deliberat — jurnal append-only, o cifră veche aici e
+corectă istoric.
+
+### Verificat, nu presupus
+
+Testul a fost falsificat pe toate ramurile înainte de a fi acceptat:
+cifră schimbată în `CLAUDE.md` → pică; valoare fiscală adăugată în `AGENTS.md`
+→ pică; strategia respinsă reintrodusă, cu și fără diacritice → pică; cotă
+schimbată în `README.md` → pică; textul original al bug-ului → pică. Curat:
+`npm run test` trece integral, `npm run lint` fără erori.
+
+Separat, validat JSON-LD-ul live pe 12 pagini: 12 blocuri, 471 noduri cu
+`@type`, 24 de tipuri, 0 erori. Povestea din podcast cu schema generată de AI
+și greșită nu se aplică aici.
+
+## Calculator salariu învățământ — 28 august 2026
+
+Cel mai mare gol față de paylab, din `GOL-KEYWORDS-PAYLAB-2026-08-28.md`:
+`calculator salariu invatamant`, 16.200 volum cumulat pe două variante, paylab
+pe p13 și p18. Fereastra e septembrie, cu începutul anului școlar.
+
+### Ce s-a verificat înainte de a construi
+
+**Legea 153/2017 se abrogă**, printr-un proiect în dezbatere publică din 17
+iulie 2026, neadoptat, cu date de intrare în vigoare contradictorii între surse
+(1 decembrie 2026 în presă, 1 ianuarie 2027 în art. 35 al draftului). S-a
+construit oricum: până la intrare în vigoare, personalul didactic e plătit după
+153/2017, deci pentru septembrie–noiembrie asta e cifra corectă.
+
+**Grila e în lei, nu pe coeficienți.** Pentru preuniversitar, anexa dă sume
+directe. Coeficienții (1,57–2,21) sunt tabelul care se aplică universitarului.
+Confuzia ar fi produs cifre greșite exact pentru publicul-țintă.
+
+**Coloana în plată e „iunie 2024"**, prin lanțul de menținere verificat în
+textul consolidat: 2025 la nivelul lunii decembrie 2024, 2026 la nivelul lunii
+decembrie 2025.
+
+### Ce s-a construit
+
+- `src/data/grila-invatamant-153-2017.json` — 97 de rânduri, 21 de funcții, cu
+  proveniență completă. Extras cu `scripts/extrage-grila-invatamant.mjs`, sursa
+  arhivată în `research/lege153-anexa1-invatamant-preuniversitar.txt`.
+- `src/lib/invatamant.ts` — grila, gradațiile, majorările, legarea la `fiscal.ts`
+  pentru net.
+- `src/app/components/CalculatorInvatamant.tsx` + pagina
+  `/calculator-salariu-invatamant`.
+- `scripts/test-invatamant.mts` — 18 verificări, în `npm run test`.
+
+### Trei capcane prinse în lege
+
+1. **Gradațiile se compun, nu se adună.** 7,5+5+5+2,5+2,5 dă 22,5%; compunerea
+   dă 24,52%. Testul verifică explicit că rezultatul NU e cel greșit.
+2. **Majorările se aplică după gradație.** ORDIN 3.993/2021 art. 1 alin. (1):
+   „se aplică la salariul de bază deținut/aflat în plată". La 10.230 lei bază,
+   dirigenția e 1.023 lei, nu 822.
+3. **Două feluri de vechime.** Cea în învățământ alege rândul din grilă; cea în
+   muncă dă gradația. Se combină, nu se substituie.
+
+### Verificat în browser
+
+Profesor grad I, peste 25 ani, gradația 5, cu dirigenție: 8.215 grilă → 10.230
+bază → 11.253 brut → **6.583 net**, cost angajator 11.506. Identic cu modulul.
+JSON-LD: 20 de noduri, 0 erori. Fără overflow orizontal pe 375 px. Un defect
+găsit și reparat: `select`-urile erau la 42 px, sub ținta de 44 px din BRAND.md
+§7; acum 44.
+
+### Ce lipsește
+
+Sporurile de predare simultană la 3–5 clase, practică pedagogică (10–25%) și
+condiții de muncă (art. 13) — textul lor n-a fost extras complet, deci nu s-au
+aproximat. Ipoteză marcată în cod: rotunjire la leu după fiecare gradație, nu o
+singură dată la final.

@@ -1,0 +1,804 @@
+{
+ "sursa": {
+  "act": "Legea-cadru nr. 153/2017 privind salarizarea personalului platit din fonduri publice",
+  "anexa": "Anexa I, Capitolul I, pct. 5 — Salarii de baza invatamant preuniversitar",
+  "formaConsolidata": "2026-01-01",
+  "url": "https://legislatie.just.ro/Public/DetaliiDocument/190446",
+  "extrasLocal": "research/lege153-anexa1-invatamant-preuniversitar.txt",
+  "dataExtragerii": "2026-08-28"
+ },
+ "coloanaFolosita": "iun2024",
+ "deCeIunie2024": [
+  "Grila are doua coloane: ianuarie 2024 si iunie 2024, ambele la Gradatia 0.",
+  "Coloana iunie 2024 este cea in plata azi, prin lantul de mentinere:",
+  "  - in anul 2025, de la 1 ianuarie, cuantumul brut al salariilor de baza se mentine la nivelul lunii decembrie 2024;",
+  "  - in anul 2026, de la 1 ianuarie, se mentine la nivelul lunii decembrie 2025.",
+  "Verificat in textul consolidat, nu presupus."
+ ],
+ "observatii2026": [
+  "OUG 7/2026 (MO 146 din 25 februarie 2026): indemnizatia pentru titlul stiintific de doctor este 500 lei brut lunar in 2026, prin derogare de la art. 14 alin. (1)."
+ ],
+ "atentie": [
+  "Sumele sunt salariu de baza BRUT la Gradatia 0 — inainte de gradatia de vechime in munca si de sporuri.",
+  "Vechimea din tabel este vechimea IN INVATAMANT, distincta de vechimea in munca ce da gradatia.",
+  "Legea 153/2017 urmeaza sa fie abrogata de o lege noua, aflata in proiect. Vezi VERIFICARI-SURSE-SALARII-2026-08-27.md."
+ ],
+ "randuri": [
+  {
+   "nr": 1,
+   "functie": "Profesor, educator-puericultor studii superioare de lungă durată grad didactic I",
+   "studii": "S",
+   "vechime": "peste 25 ani",
+   "ian2024": 7726,
+   "iun2024": 8215
+  },
+  {
+   "nr": 1,
+   "functie": "Profesor, educator-puericultor studii superioare de lungă durată grad didactic I",
+   "studii": "S",
+   "vechime": "20-25 ani",
+   "ian2024": 7234,
+   "iun2024": 7682
+  },
+  {
+   "nr": 1,
+   "functie": "Profesor, educator-puericultor studii superioare de lungă durată grad didactic I",
+   "studii": "S",
+   "vechime": "15-20 ani",
+   "ian2024": 6901,
+   "iun2024": 7317
+  },
+  {
+   "nr": 1,
+   "functie": "Profesor, educator-puericultor studii superioare de lungă durată grad didactic I",
+   "studii": "S",
+   "vechime": "10-15 ani",
+   "ian2024": 6645,
+   "iun2024": 7045
+  },
+  {
+   "nr": 1,
+   "functie": "Profesor, educator-puericultor studii superioare de lungă durată grad didactic I",
+   "studii": "S",
+   "vechime": "5-10 ani",
+   "ian2024": 6541,
+   "iun2024": 6935
+  },
+  {
+   "nr": 1,
+   "functie": "Profesor, educator-puericultor studii superioare de lungă durată grad didactic I",
+   "studii": "S",
+   "vechime": "1-5 ani",
+   "ian2024": 6388,
+   "iun2024": 6773
+  },
+  {
+   "nr": 2,
+   "functie": "Profesor, educator-puericultor studii superioare de lungă durată grad didactic II",
+   "studii": "S",
+   "vechime": "peste 25 ani",
+   "ian2024": 6946,
+   "iun2024": 7385
+  },
+  {
+   "nr": 2,
+   "functie": "Profesor, educator-puericultor studii superioare de lungă durată grad didactic II",
+   "studii": "S",
+   "vechime": "20-25 ani",
+   "ian2024": 6616,
+   "iun2024": 7025
+  },
+  {
+   "nr": 2,
+   "functie": "Profesor, educator-puericultor studii superioare de lungă durată grad didactic II",
+   "studii": "S",
+   "vechime": "15-20 ani",
+   "ian2024": 6439,
+   "iun2024": 6827
+  },
+  {
+   "nr": 2,
+   "functie": "Profesor, educator-puericultor studii superioare de lungă durată grad didactic II",
+   "studii": "S",
+   "vechime": "10-15 ani",
+   "ian2024": 6388,
+   "iun2024": 6773
+  },
+  {
+   "nr": 2,
+   "functie": "Profesor, educator-puericultor studii superioare de lungă durată grad didactic II",
+   "studii": "S",
+   "vechime": "5-10 ani",
+   "ian2024": 6336,
+   "iun2024": 6718
+  },
+  {
+   "nr": 2,
+   "functie": "Profesor, educator-puericultor studii superioare de lungă durată grad didactic II",
+   "studii": "S",
+   "vechime": "1-5 ani",
+   "ian2024": 6234,
+   "iun2024": 6609
+  },
+  {
+   "nr": 3,
+   "functie": "Profesor, educator-puericultor studii superioare de lungă durată grad didactic definitiv",
+   "studii": "S",
+   "vechime": "peste 25 ani",
+   "ian2024": 6635,
+   "iun2024": 7055
+  },
+  {
+   "nr": 3,
+   "functie": "Profesor, educator-puericultor studii superioare de lungă durată grad didactic definitiv",
+   "studii": "S",
+   "vechime": "20-25 ani",
+   "ian2024": 6461,
+   "iun2024": 6861
+  },
+  {
+   "nr": 3,
+   "functie": "Profesor, educator-puericultor studii superioare de lungă durată grad didactic definitiv",
+   "studii": "S",
+   "vechime": "15-20 ani",
+   "ian2024": 6336,
+   "iun2024": 6718
+  },
+  {
+   "nr": 3,
+   "functie": "Profesor, educator-puericultor studii superioare de lungă durată grad didactic definitiv",
+   "studii": "S",
+   "vechime": "10-15 ani",
+   "ian2024": 6234,
+   "iun2024": 6609
+  },
+  {
+   "nr": 3,
+   "functie": "Profesor, educator-puericultor studii superioare de lungă durată grad didactic definitiv",
+   "studii": "S",
+   "vechime": "5-10 ani",
+   "ian2024": 6182,
+   "iun2024": 6554
+  },
+  {
+   "nr": 3,
+   "functie": "Profesor, educator-puericultor studii superioare de lungă durată grad didactic definitiv",
+   "studii": "S",
+   "vechime": "1-5 ani",
+   "ian2024": 6132,
+   "iun2024": 6501
+  },
+  {
+   "nr": 4,
+   "functie": "Profesor, educator-puericultor studii superioare de lungă durată debutant",
+   "studii": "S",
+   "vechime": "până la 1 an",
+   "ian2024": 6080,
+   "iun2024": 6446
+  },
+  {
+   "nr": 5,
+   "functie": "Profesor, educator-puericultor studii superioare de scurtă durată grad didactic I",
+   "studii": "SSD",
+   "vechime": "peste 25 ani",
+   "ian2024": 6649,
+   "iun2024": 7051
+  },
+  {
+   "nr": 5,
+   "functie": "Profesor, educator-puericultor studii superioare de scurtă durată grad didactic I",
+   "studii": "SSD",
+   "vechime": "20-25 ani",
+   "ian2024": 6491,
+   "iun2024": 6882
+  },
+  {
+   "nr": 5,
+   "functie": "Profesor, educator-puericultor studii superioare de scurtă durată grad didactic I",
+   "studii": "SSD",
+   "vechime": "15-20 ani",
+   "ian2024": 6388,
+   "iun2024": 6773
+  },
+  {
+   "nr": 5,
+   "functie": "Profesor, educator-puericultor studii superioare de scurtă durată grad didactic I",
+   "studii": "SSD",
+   "vechime": "10-15 ani",
+   "ian2024": 6336,
+   "iun2024": 6718
+  },
+  {
+   "nr": 5,
+   "functie": "Profesor, educator-puericultor studii superioare de scurtă durată grad didactic I",
+   "studii": "SSD",
+   "vechime": "5-10 ani",
+   "ian2024": 6234,
+   "iun2024": 6609
+  },
+  {
+   "nr": 6,
+   "functie": "Profesor, educator-puericultor studii superioare de scurtă durată grad didactic II",
+   "studii": "SSD",
+   "vechime": "peste 25 ani",
+   "ian2024": 6491,
+   "iun2024": 6882
+  },
+  {
+   "nr": 6,
+   "functie": "Profesor, educator-puericultor studii superioare de scurtă durată grad didactic II",
+   "studii": "SSD",
+   "vechime": "20-25 ani",
+   "ian2024": 6284,
+   "iun2024": 6663
+  },
+  {
+   "nr": 6,
+   "functie": "Profesor, educator-puericultor studii superioare de scurtă durată grad didactic II",
+   "studii": "SSD",
+   "vechime": "15-20 ani",
+   "ian2024": 6234,
+   "iun2024": 6609
+  },
+  {
+   "nr": 6,
+   "functie": "Profesor, educator-puericultor studii superioare de scurtă durată grad didactic II",
+   "studii": "SSD",
+   "vechime": "10-15 ani",
+   "ian2024": 6182,
+   "iun2024": 6554
+  },
+  {
+   "nr": 6,
+   "functie": "Profesor, educator-puericultor studii superioare de scurtă durată grad didactic II",
+   "studii": "SSD",
+   "vechime": "5-10 ani",
+   "ian2024": 6132,
+   "iun2024": 6501
+  },
+  {
+   "nr": 6,
+   "functie": "Profesor, educator-puericultor studii superioare de scurtă durată grad didactic II",
+   "studii": "SSD",
+   "vechime": "1-5 ani",
+   "ian2024": 6080,
+   "iun2024": 6446
+  },
+  {
+   "nr": 7,
+   "functie": "Profesor, educator-puericultor studii superioare de scurtă durată grad didactic definitiv",
+   "studii": "SSD",
+   "vechime": "peste 25 ani",
+   "ian2024": 6336,
+   "iun2024": 6718
+  },
+  {
+   "nr": 7,
+   "functie": "Profesor, educator-puericultor studii superioare de scurtă durată grad didactic definitiv",
+   "studii": "SSD",
+   "vechime": "20-25 ani",
+   "ian2024": 6234,
+   "iun2024": 6609
+  },
+  {
+   "nr": 7,
+   "functie": "Profesor, educator-puericultor studii superioare de scurtă durată grad didactic definitiv",
+   "studii": "SSD",
+   "vechime": "15-20 ani",
+   "ian2024": 6182,
+   "iun2024": 6554
+  },
+  {
+   "nr": 7,
+   "functie": "Profesor, educator-puericultor studii superioare de scurtă durată grad didactic definitiv",
+   "studii": "SSD",
+   "vechime": "10-15 ani",
+   "ian2024": 6132,
+   "iun2024": 6501
+  },
+  {
+   "nr": 7,
+   "functie": "Profesor, educator-puericultor studii superioare de scurtă durată grad didactic definitiv",
+   "studii": "SSD",
+   "vechime": "5-10 ani",
+   "ian2024": 6080,
+   "iun2024": 6446
+  },
+  {
+   "nr": 7,
+   "functie": "Profesor, educator-puericultor studii superioare de scurtă durată grad didactic definitiv",
+   "studii": "SSD",
+   "vechime": "1-5 ani",
+   "ian2024": 6028,
+   "iun2024": 6391
+  },
+  {
+   "nr": 8,
+   "functie": "Profesor, educator-puericultor studii superioare de scurtă durată debutant",
+   "studii": "SSD",
+   "vechime": "până la 1 an",
+   "ian2024": 5977,
+   "iun2024": 6337
+  },
+  {
+   "nr": 9,
+   "functie": "Institutor, maistru-instructor studii superioare lungă durată grad didactic I",
+   "studii": "S",
+   "vechime": "peste 25 ani",
+   "ian2024": 6645,
+   "iun2024": 7045
+  },
+  {
+   "nr": 9,
+   "functie": "Institutor, maistru-instructor studii superioare lungă durată grad didactic I",
+   "studii": "S",
+   "vechime": "20-25 ani",
+   "ian2024": 6541,
+   "iun2024": 6935
+  },
+  {
+   "nr": 9,
+   "functie": "Institutor, maistru-instructor studii superioare lungă durată grad didactic I",
+   "studii": "S",
+   "vechime": "15-20 ani",
+   "ian2024": 6439,
+   "iun2024": 6827
+  },
+  {
+   "nr": 9,
+   "functie": "Institutor, maistru-instructor studii superioare lungă durată grad didactic I",
+   "studii": "S",
+   "vechime": "10-15 ani",
+   "ian2024": 6388,
+   "iun2024": 6773
+  },
+  {
+   "nr": 9,
+   "functie": "Institutor, maistru-instructor studii superioare lungă durată grad didactic I",
+   "studii": "S",
+   "vechime": "5-10 ani",
+   "ian2024": 6284,
+   "iun2024": 6663
+  },
+  {
+   "nr": 10,
+   "functie": "Institutor, maistru-instructor studii superioare lungă durată grad didactic II",
+   "studii": "S",
+   "vechime": "peste 25 ani",
+   "ian2024": 6491,
+   "iun2024": 6882
+  },
+  {
+   "nr": 10,
+   "functie": "Institutor, maistru-instructor studii superioare lungă durată grad didactic II",
+   "studii": "S",
+   "vechime": "20-25 ani",
+   "ian2024": 6388,
+   "iun2024": 6773
+  },
+  {
+   "nr": 10,
+   "functie": "Institutor, maistru-instructor studii superioare lungă durată grad didactic II",
+   "studii": "S",
+   "vechime": "15-20 ani",
+   "ian2024": 6336,
+   "iun2024": 6718
+  },
+  {
+   "nr": 10,
+   "functie": "Institutor, maistru-instructor studii superioare lungă durată grad didactic II",
+   "studii": "S",
+   "vechime": "10-15 ani",
+   "ian2024": 6284,
+   "iun2024": 6663
+  },
+  {
+   "nr": 10,
+   "functie": "Institutor, maistru-instructor studii superioare lungă durată grad didactic II",
+   "studii": "S",
+   "vechime": "5-10 ani",
+   "ian2024": 6234,
+   "iun2024": 6609
+  },
+  {
+   "nr": 10,
+   "functie": "Institutor, maistru-instructor studii superioare lungă durată grad didactic II",
+   "studii": "S",
+   "vechime": "1-5 ani",
+   "ian2024": 6182,
+   "iun2024": 6554
+  },
+  {
+   "nr": 11,
+   "functie": "Institutor, maistru-instructor studii superioare lungă durată grad didactic definitiv",
+   "studii": "S",
+   "vechime": "peste 25 ani",
+   "ian2024": 6388,
+   "iun2024": 6773
+  },
+  {
+   "nr": 11,
+   "functie": "Institutor, maistru-instructor studii superioare lungă durată grad didactic definitiv",
+   "studii": "S",
+   "vechime": "20-25 ani",
+   "ian2024": 6336,
+   "iun2024": 6718
+  },
+  {
+   "nr": 11,
+   "functie": "Institutor, maistru-instructor studii superioare lungă durată grad didactic definitiv",
+   "studii": "S",
+   "vechime": "15-20 ani",
+   "ian2024": 6284,
+   "iun2024": 6663
+  },
+  {
+   "nr": 11,
+   "functie": "Institutor, maistru-instructor studii superioare lungă durată grad didactic definitiv",
+   "studii": "S",
+   "vechime": "10-15 ani",
+   "ian2024": 6234,
+   "iun2024": 6609
+  },
+  {
+   "nr": 11,
+   "functie": "Institutor, maistru-instructor studii superioare lungă durată grad didactic definitiv",
+   "studii": "S",
+   "vechime": "5-10 ani",
+   "ian2024": 6182,
+   "iun2024": 6554
+  },
+  {
+   "nr": 11,
+   "functie": "Institutor, maistru-instructor studii superioare lungă durată grad didactic definitiv",
+   "studii": "S",
+   "vechime": "1-5 ani",
+   "ian2024": 6132,
+   "iun2024": 6501
+  },
+  {
+   "nr": 12,
+   "functie": "Institutor, maistru-instructor studii superioare lungă durată debutant",
+   "studii": "S",
+   "vechime": "până la 1 an",
+   "ian2024": 6080,
+   "iun2024": 6446
+  },
+  {
+   "nr": 13,
+   "functie": "Institutor, maistru-instructor studii superioare scurtă durată grad didactic I",
+   "studii": "SSD",
+   "vechime": "peste 25 ani",
+   "ian2024": 6491,
+   "iun2024": 6882
+  },
+  {
+   "nr": 13,
+   "functie": "Institutor, maistru-instructor studii superioare scurtă durată grad didactic I",
+   "studii": "SSD",
+   "vechime": "20-25 ani",
+   "ian2024": 6336,
+   "iun2024": 6718
+  },
+  {
+   "nr": 13,
+   "functie": "Institutor, maistru-instructor studii superioare scurtă durată grad didactic I",
+   "studii": "SSD",
+   "vechime": "15-20 ani",
+   "ian2024": 6234,
+   "iun2024": 6609
+  },
+  {
+   "nr": 13,
+   "functie": "Institutor, maistru-instructor studii superioare scurtă durată grad didactic I",
+   "studii": "SSD",
+   "vechime": "10-15 ani",
+   "ian2024": 6182,
+   "iun2024": 6554
+  },
+  {
+   "nr": 13,
+   "functie": "Institutor, maistru-instructor studii superioare scurtă durată grad didactic I",
+   "studii": "SSD",
+   "vechime": "5-10 ani",
+   "ian2024": 6132,
+   "iun2024": 6501
+  },
+  {
+   "nr": 14,
+   "functie": "Institutor, maistru-instructor studii superioare scurtă durată grad didactic II",
+   "studii": "SSD",
+   "vechime": "peste 25 ani",
+   "ian2024": 6388,
+   "iun2024": 6773
+  },
+  {
+   "nr": 14,
+   "functie": "Institutor, maistru-instructor studii superioare scurtă durată grad didactic II",
+   "studii": "SSD",
+   "vechime": "20-25 ani",
+   "ian2024": 6284,
+   "iun2024": 6663
+  },
+  {
+   "nr": 14,
+   "functie": "Institutor, maistru-instructor studii superioare scurtă durată grad didactic II",
+   "studii": "SSD",
+   "vechime": "15-20 ani",
+   "ian2024": 6234,
+   "iun2024": 6609
+  },
+  {
+   "nr": 14,
+   "functie": "Institutor, maistru-instructor studii superioare scurtă durată grad didactic II",
+   "studii": "SSD",
+   "vechime": "10-15 ani",
+   "ian2024": 6182,
+   "iun2024": 6554
+  },
+  {
+   "nr": 14,
+   "functie": "Institutor, maistru-instructor studii superioare scurtă durată grad didactic II",
+   "studii": "SSD",
+   "vechime": "5-10 ani",
+   "ian2024": 6132,
+   "iun2024": 6501
+  },
+  {
+   "nr": 14,
+   "functie": "Institutor, maistru-instructor studii superioare scurtă durată grad didactic II",
+   "studii": "SSD",
+   "vechime": "1-5 ani",
+   "ian2024": 6080,
+   "iun2024": 6446
+  },
+  {
+   "nr": 15,
+   "functie": "Institutor, maistru-instructor studii superioare scurtă durată grad didactic definitiv",
+   "studii": "SSD",
+   "vechime": "peste 25 ani",
+   "ian2024": 6284,
+   "iun2024": 6663
+  },
+  {
+   "nr": 15,
+   "functie": "Institutor, maistru-instructor studii superioare scurtă durată grad didactic definitiv",
+   "studii": "SSD",
+   "vechime": "20-25 ani",
+   "ian2024": 6234,
+   "iun2024": 6609
+  },
+  {
+   "nr": 15,
+   "functie": "Institutor, maistru-instructor studii superioare scurtă durată grad didactic definitiv",
+   "studii": "SSD",
+   "vechime": "15-20 ani",
+   "ian2024": 6182,
+   "iun2024": 6554
+  },
+  {
+   "nr": 15,
+   "functie": "Institutor, maistru-instructor studii superioare scurtă durată grad didactic definitiv",
+   "studii": "SSD",
+   "vechime": "10-15 ani",
+   "ian2024": 6132,
+   "iun2024": 6501
+  },
+  {
+   "nr": 15,
+   "functie": "Institutor, maistru-instructor studii superioare scurtă durată grad didactic definitiv",
+   "studii": "SSD",
+   "vechime": "5-10 ani",
+   "ian2024": 6080,
+   "iun2024": 6446
+  },
+  {
+   "nr": 15,
+   "functie": "Institutor, maistru-instructor studii superioare scurtă durată grad didactic definitiv",
+   "studii": "SSD",
+   "vechime": "1-5 ani",
+   "ian2024": 6028,
+   "iun2024": 6391
+  },
+  {
+   "nr": 16,
+   "functie": "Institutor, maistru-instructor studii superioare scurtă durată debutant",
+   "studii": "SSD",
+   "vechime": "până la 1 an",
+   "ian2024": 5977,
+   "iun2024": 6337
+  },
+  {
+   "nr": 17,
+   "functie": "Învățător, educatoare, maistru- instructor, educator-puericultor (cu studii de nivel liceal) grad didactic I",
+   "studii": "M",
+   "vechime": "peste 25 ani",
+   "ian2024": 6388,
+   "iun2024": 6773
+  },
+  {
+   "nr": 17,
+   "functie": "Învățător, educatoare, maistru- instructor, educator-puericultor (cu studii de nivel liceal) grad didactic I",
+   "studii": "M",
+   "vechime": "20-25 ani",
+   "ian2024": 6284,
+   "iun2024": 6663
+  },
+  {
+   "nr": 17,
+   "functie": "Învățător, educatoare, maistru- instructor, educator-puericultor (cu studii de nivel liceal) grad didactic I",
+   "studii": "M",
+   "vechime": "15-20 ani",
+   "ian2024": 6182,
+   "iun2024": 6554
+  },
+  {
+   "nr": 17,
+   "functie": "Învățător, educatoare, maistru- instructor, educator-puericultor (cu studii de nivel liceal) grad didactic I",
+   "studii": "M",
+   "vechime": "10-15 ani",
+   "ian2024": 6132,
+   "iun2024": 6501
+  },
+  {
+   "nr": 17,
+   "functie": "Învățător, educatoare, maistru- instructor, educator-puericultor (cu studii de nivel liceal) grad didactic I",
+   "studii": "M",
+   "vechime": "5-10 ani",
+   "ian2024": 6080,
+   "iun2024": 6446
+  },
+  {
+   "nr": 18,
+   "functie": "Învățător, educatoare, maistru- instructor, educator-puericultor (cu studii de nivel liceal) grad didactic II",
+   "studii": "M",
+   "vechime": "peste 25 ani",
+   "ian2024": 6284,
+   "iun2024": 6663
+  },
+  {
+   "nr": 18,
+   "functie": "Învățător, educatoare, maistru- instructor, educator-puericultor (cu studii de nivel liceal) grad didactic II",
+   "studii": "M",
+   "vechime": "20-25 ani",
+   "ian2024": 6234,
+   "iun2024": 6609
+  },
+  {
+   "nr": 18,
+   "functie": "Învățător, educatoare, maistru- instructor, educator-puericultor (cu studii de nivel liceal) grad didactic II",
+   "studii": "M",
+   "vechime": "15-20 ani",
+   "ian2024": 6182,
+   "iun2024": 6554
+  },
+  {
+   "nr": 18,
+   "functie": "Învățător, educatoare, maistru- instructor, educator-puericultor (cu studii de nivel liceal) grad didactic II",
+   "studii": "M",
+   "vechime": "10-15 ani",
+   "ian2024": 6132,
+   "iun2024": 6501
+  },
+  {
+   "nr": 18,
+   "functie": "Învățător, educatoare, maistru- instructor, educator-puericultor (cu studii de nivel liceal) grad didactic II",
+   "studii": "M",
+   "vechime": "5-10 ani",
+   "ian2024": 6080,
+   "iun2024": 6446
+  },
+  {
+   "nr": 19,
+   "functie": "Învățător, educatoare, maistru- instructor, educator-puericultor (cu studii de nivel liceal) grad didactic definitiv",
+   "studii": "M",
+   "vechime": "peste 25 ani",
+   "ian2024": 6234,
+   "iun2024": 6609
+  },
+  {
+   "nr": 19,
+   "functie": "Învățător, educatoare, maistru- instructor, educator-puericultor (cu studii de nivel liceal) grad didactic definitiv",
+   "studii": "M",
+   "vechime": "20-25 ani",
+   "ian2024": 6182,
+   "iun2024": 6554
+  },
+  {
+   "nr": 19,
+   "functie": "Învățător, educatoare, maistru- instructor, educator-puericultor (cu studii de nivel liceal) grad didactic definitiv",
+   "studii": "M",
+   "vechime": "15-20 ani",
+   "ian2024": 6132,
+   "iun2024": 6501
+  },
+  {
+   "nr": 19,
+   "functie": "Învățător, educatoare, maistru- instructor, educator-puericultor (cu studii de nivel liceal) grad didactic definitiv",
+   "studii": "M",
+   "vechime": "10-15 ani",
+   "ian2024": 6080,
+   "iun2024": 6446
+  },
+  {
+   "nr": 19,
+   "functie": "Învățător, educatoare, maistru- instructor, educator-puericultor (cu studii de nivel liceal) grad didactic definitiv",
+   "studii": "M",
+   "vechime": "5-10 ani",
+   "ian2024": 6028,
+   "iun2024": 6391
+  },
+  {
+   "nr": 19,
+   "functie": "Învățător, educatoare, maistru- instructor, educator-puericultor (cu studii de nivel liceal) grad didactic definitiv",
+   "studii": "M",
+   "vechime": "1-5 ani",
+   "ian2024": 5977,
+   "iun2024": 6337
+  },
+  {
+   "nr": 20,
+   "functie": "Învățător, educatoare, maistru-instructor, educator-puericultor (cu studii de nivel liceal) debutant",
+   "studii": "M",
+   "vechime": "până la 1 an",
+   "ian2024": 5874,
+   "iun2024": 6228
+  },
+  {
+   "nr": 21,
+   "functie": "Profesor, învățător, educatoare, educator, maistru- instructor, educator-puericultor (cu studii de nivel liceal, fără pregătire de specialitate)",
+   "studii": "M",
+   "vechime": "peste 25 ani",
+   "ian2024": 6182,
+   "iun2024": 6554
+  },
+  {
+   "nr": 21,
+   "functie": "Profesor, învățător, educatoare, educator, maistru- instructor, educator-puericultor (cu studii de nivel liceal, fără pregătire de specialitate)",
+   "studii": "M",
+   "vechime": "20-25 ani",
+   "ian2024": 6132,
+   "iun2024": 6501
+  },
+  {
+   "nr": 21,
+   "functie": "Profesor, învățător, educatoare, educator, maistru- instructor, educator-puericultor (cu studii de nivel liceal, fără pregătire de specialitate)",
+   "studii": "M",
+   "vechime": "15-20 ani",
+   "ian2024": 6080,
+   "iun2024": 6446
+  },
+  {
+   "nr": 21,
+   "functie": "Profesor, învățător, educatoare, educator, maistru- instructor, educator-puericultor (cu studii de nivel liceal, fără pregătire de specialitate)",
+   "studii": "M",
+   "vechime": "10-15 ani",
+   "ian2024": 6028,
+   "iun2024": 6391
+  },
+  {
+   "nr": 21,
+   "functie": "Profesor, învățător, educatoare, educator, maistru- instructor, educator-puericultor (cu studii de nivel liceal, fără pregătire de specialitate)",
+   "studii": "M",
+   "vechime": "5-10 ani",
+   "ian2024": 5977,
+   "iun2024": 6337
+  },
+  {
+   "nr": 21,
+   "functie": "Profesor, învățător, educatoare, educator, maistru- instructor, educator-puericultor (cu studii de nivel liceal, fără pregătire de specialitate)",
+   "studii": "M",
+   "vechime": "1-5 ani",
+   "ian2024": 5925,
+   "iun2024": 6282
+  },
+  {
+   "nr": 21,
+   "functie": "Profesor, învățător, educatoare, educator, maistru- instructor, educator-puericultor (cu studii de nivel liceal, fără pregătire de specialitate)",
+   "studii": "M",
+   "vechime": "până la 1 an",
+   "ian2024": 5874,
+   "iun2024": 6228
+  }
+ ]
+}

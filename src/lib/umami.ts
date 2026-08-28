@@ -4,7 +4,8 @@ export type UmamiEvent =
   | { name: "calcul-pfa"; data: { regim: "real" | "norma"; mod: "venit-anual" | "net-lunar" } }
   | { name: "descarca-fluturas"; data: { context: "calculator" | "pagina-fluturas" } }
   | { name: "copiaza-link-calcul"; data: { mod: "brut-net" | "net-brut" } }
-  | { name: "copiaza-embed"; data: { varianta: "minimal" | "complet" | "fluturas" } };
+  | { name: "copiaza-embed"; data: { varianta: "minimal" | "complet" | "fluturas" } }
+  | { name: "calcul-invatamant"; data: { gradatie: "0" | "1" | "2" | "3" | "4" | "5" } };
 
 type UmamiWindow = Window & {
   umami?: { track: (name: string, data?: Record<string, string>) => void };
