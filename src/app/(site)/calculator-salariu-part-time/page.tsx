@@ -115,9 +115,9 @@ export default function Page() {
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Calculator salariu part-time" }]} />
         <H1>Calculator salariu part-time 2026</H1>
         <Lead>
-          La 4 ore pe zi și minimul proporțional, primești <strong>{fmt(scenariu4h.faraExceptie.netBani)} lei net</strong>.
-          Fără excepție, firma ajunge la <strong>{fmt(scenariu4h.faraExceptie.costTotalCuDiferente)} lei</strong>, pentru că
-          suportă separat diferența CAS și CASS.
+          Alege câte ore are contractul și vezi netul angajatului, costul firmei și
+          diferența de CAS și CASS pe care angajatorul o suportă separat când brutul
+          e sub baza minimă. Fiecare linie arată cine plătește ce.
         </Lead>
       </Hero>
 
@@ -125,7 +125,7 @@ export default function Page() {
 
       <Section wide>
         <div className="grid gap-8 lg:grid-cols-5 lg:gap-10">
-          <Prose className="lg:col-span-3">
+          <Prose className="min-w-0 lg:col-span-3">
             <h2>Salariul la 2, 4 și 6 ore</h2>
             <p>
               Brutul minim scade proporțional cu timpul din contract. Netul nu scade exact în aceeași proporție,
@@ -179,7 +179,7 @@ export default function Page() {
             </p>
           </Prose>
 
-          <aside className="lg:col-span-2">
+          <aside className="min-w-0 lg:col-span-2">
             <div className="rounded-md border border-stone-200 bg-surface p-5 shadow-soft sm:p-6">
               <h2 className="text-lg font-bold tracking-[-0.02em] text-stone-900">Surse oficiale</h2>
               <ul className="mt-4 space-y-3 text-sm leading-normal text-stone-600 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2">
