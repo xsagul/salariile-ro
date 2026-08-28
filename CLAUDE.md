@@ -58,6 +58,11 @@ Tensiunea care a oprit-o, și care rămâne reală: `/despre` promite azi „nu 
 
 ## Constante fiscale curente (2026)
 
+<!-- fiscal:start — bloc verificat automat de `scripts/test-context-drift.mts`
+     contra `src/lib/fiscal.ts` și `src/lib/date-salarii.ts`, care dețin valorile.
+     Nu edita cifrele aici: schimbă-le în cod, apoi adu blocul la zi. Orice sumă
+     în lei sau cotă procentuală de mai jos care nu există în cod pică `npm run test`. -->
+
 - Salariu minim brut: **4.325 lei din 1 iulie 2026** (HG 146/2026); 4.050 lei în prima jumătate a anului
 - Salariu minim net: 2.699 lei (facilitate fiscală 200 lei, OUG 89/2025)
 - Indicatorul BASS 2026: 9.192 lei brut; net standard estimat: 5.377 lei. Nu se etichetează drept ultimul salariu mediu INS.
@@ -66,6 +71,8 @@ Tensiunea care a oprit-o, și care rămâne reală: `/despre` promite azi „nu 
 - Plafon deducere personală: 6.325 lei
 - Facilitățile IT/construcții ELIMINATE din 1 ian 2025 (OUG 156/2024)
 - Surse oficiale: legislatie.just.ro (HG 146/2026, OUG 89/2025, OUG 156/2024, Codul Fiscal, Codul Muncii)
+
+<!-- fiscal:end -->
 
 ## Starea SEO (referință verificată la 26 iulie 2026)
 
@@ -95,6 +102,7 @@ Tensiunea care a oprit-o, și care rămâne reală: `/despre` promite azi „nu 
 - **Persistență:** contextul se compactează automat — nu opri sarcini devreme din grija de tokeni; salvează progresul în `PROGRES.md` înainte de limită ca sesiunea următoare să continue de unde ai rămas.
 - **Backlinkuri:** prioritizează linkable assets pe site peste outreach manual. NU cumpăra linkuri, nu folosi tactici care riscă penalizare Google.
 - **Canale de distribuție existente (active):** dev.to (`dev.to/sorin_stiuriuc`), LinkedIn, Reddit (r/RoMunca), GitHub.
+- **Un fapt viu are exact un proprietar.** Constantele fiscale sunt deținute de `src/lib/fiscal.ts`, cifrele INS de `src/lib/date-salarii.ts` și `src/lib/ins-date.ts`, strategia de acest fișier, identitatea de `BRAND.md`. Nu rescrie o valoare în proză ca s-o ai la îndemână — ai creat o a doua sursă care va rămâne în urmă. Blocurile marcate `<!-- fiscal:start ... fiscal:end -->` sunt verificate contra codului de `scripts/test-context-drift.mts`, în `npm run test`. `PROGRES.md` e exceptat: e jurnal, iar o cifră veche acolo e o înregistrare corectă a ce era adevărat atunci. La fel fișierele cu dată în nume — arhivă, nu se editează.
 
 ## Direcție de arhitectură în plan (după stabilizarea valului din iulie)
 

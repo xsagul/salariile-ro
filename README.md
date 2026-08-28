@@ -19,14 +19,19 @@ Site-ul ofera calculatoare si ghiduri actualizate pentru salariu net/brut, salar
 
 - Calculator salariu din brut in net si din net in brut.
 - Defalcare CAS, CASS, impozit pe venit, CAM si cost total angajator.
-- Suport pentru salariul minim brut de 4.325 lei aplicabil de la 1 iulie 2026.
-- Explicatii pentru deducerea personala si facilitatea de 200 lei pentru salariul minim.
+- Suport pentru ambele regimuri ale salariului minim din 2026, cu perioada de aplicare a fiecaruia.
+- Explicatii pentru deducerea personala si facilitatea fiscala aplicata la salariul minim.
 - Pagini informationale pentru salariul minim, salariul mediu, zile libere, PFA si noutati fiscale.
 - Widget iframe/script care poate fi integrat gratuit pe alte site-uri.
 
 ## Surse si transparenta
 
+<!-- fiscal:start — cotele de mai jos sunt verificate contra `src/lib/fiscal.ts`
+     de `scripts/test-context-drift.mts`. Schimba-le in cod, apoi aici. -->
+
 Formulele sunt documentate public pe pagina de [metodologie](https://salariile.ro/metodologie). Calculele sunt orientative si folosesc legislatia fiscala curenta aplicabila in Romania, inclusiv CAS 25%, CASS 10%, impozit pe venit 10% si CAM 2,25%.
+
+<!-- fiscal:end -->
 
 Sursele principale sunt actele publicate pe `legislatie.just.ro`, datele INS si comunicatele institutiilor publice relevante.
 

@@ -70,3 +70,21 @@ gsc-key.json
 # Repo-ul e public, deci orice analiza a defectelor concurentei publicata aici
 # devine, de fapt, un material public despre ei — exact ce am decis ca nu facem.
 /.cercetare-privata/
+
+# Analiza de audienta si golul fata de competitori — RAMAN LOCALE.
+# Aceeasi ratiune ca la /.cercetare-privata/ si /SEO-AUDIT-*.md de mai sus:
+# contin defalcari GSC pe interogari si pozitiile competitorilor, exportate
+# dintr-un tool platit. Concluziile publicabile stau in PROGRES.md.
+/AUDIENTA-MASURATA-*.md
+/GOL-KEYWORDS-*.md
+/ACOPERIRE-PAYLAB-*.txt
+/PLAN-12-LUNI-*.md
+/research/paylab-keywords-*.csv
+/scripts/analiza-gol-paylab.mjs
+/scripts/audit-acoperire-paylab.mjs
+# Chestionarul de brand contine raspunsuri strategice si intrebari personale
+# adresate proprietarului. Ramane local; din el se scrie sectiunea de audienta
+# din BRAND.md, care e publicabila.
+/CHESTIONAR-BRAND.md
+# Verificarea surselor contine decizii interne inca neanuntate.
+/VERIFICARI-SURSE-SALARII-*.md
