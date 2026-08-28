@@ -1720,3 +1720,71 @@ Verificare înainte de publicare: 9/9 teste part-time, suita completă, lint,
 build și testarea celor 294 de rute randate au trecut. QA în browser a confirmat
 schimbarea live între scenariile de 2 și 4 ore și aplicarea excepției fără
 modificarea netului angajatului.
+
+## Umami scos, Node 24, calculator de învățământ — 28 august 2026 (seara)
+
+### Calculatorul de învățământ, forma finală
+
+Selectorul cu 21 de funcții într-un dropdown a devenit axe separate cu
+pastile: funcție × grad × studii × vechime × gradație, cu combinațiile
+imposibile stinse vizibil. Adăugate funcțiile de conducere (secțiunea 2 din
+anexă) — directorul e aceeași carieră, un profesor care ia o funcție nouă.
+
+Didactic auxiliar (secțiunea 6, 296 rânduri, 100 funcții) rămâne extras și
+testat, dar **pe raft**: e alt om, cu altă întrebare, iar liderul de piață
+nu-l are nici el pe pagina de calculator. Merită pagină separată.
+
+Compactare, după semnalarea proprietarului: formular **1.831 → 831 px** pe
+mobil. Explicația se arată o dată, nu sub fiecare pastilă; selectoarele cu
+o singură opțiune posibilă nu se mai desenează deloc; majorările intră sub
+un buton pliat; temeiul legal iese din rândurile tabelului și se
+consolidează sub el.
+
+### Part-time, reparat
+
+Pagina fusese generată de alt agent, fără indicații. Trei probleme:
+`useState` primea un tip `| null` și pica build-ul; hero-ul făcea un calcul
+înainte ca cititorul să aleagă ceva; panoul de rezultat avea trei stiluri
+suprapuse, cu inversarea pe „Cost total firmă" în loc de net.
+
+Plus un bug pe care l-am ratat prima dată și l-a găsit proprietarul:
+`pattern="[0-9]*"` pe un câmp care afișează „2.163" — validarea HTML5
+respingea submit-ul înainte ca React să ruleze. Butonul părea mort.
+Raportasem că nu există bug și că metoda mea de testare e de vină; era
+invers.
+
+### Umami, dezafectat
+
+Fiecare vizualizare lovea `/api/send` de două ori ca invocare — o dată prin
+rewrite-ul de pe salariile.ro, o dată în aplicația Umami. Scos complet:
+`src/lib/umami.ts`, `TimpPePagina.tsx`, scriptul din layout,
+rewrite-urile, 13 apeluri `trackUmami`, plus propul `variant` din
+`EmbedCode` care nu mai avea consumator.
+
+Paginile legale actualizate în același commit — `/cookies` și
+`/politica-confidentialitate` nu mai promit ceva ce nu mai facem.
+
+Testul de contracte UI verifica forma payload-ului; verifică acum că nu
+mai există **niciun** apel de tracking în codul de client.
+
+**Consumul s-a oprit fără să se șteargă nimic.** `/stats.js` dă 404, deci
+scriptul nu se mai încarcă și instanța nu mai primește trafic. Ștergerea
+proiectului Vercel și a bazei Neon rămâne curățenie, nu urgență — și e a
+proprietarului, fiind ștergere permanentă.
+
+**Cifra de 3.400 de sesiuni cu calcul nu se mai poate reface** dacă baza se
+șterge fără export: Vercel Analytics n-are evenimente proprii. Scriptul
+`scripts/export-umami.mjs` e gata și cere doar `DATABASE_URL` din Neon —
+Vercel îl marchează secret, deci `env pull` întoarce `[SENSITIVE]`.
+
+### Node 24
+
+Vercel semnala „Node.Js Version Override": implicit 24.x, dar `engines` îl
+fixa pe 22.x. Ridicat în trei locuri — `package.json`, `.nvmrc` și
+`.github/workflows/ci.yml`. Ultimul conta: CI-ul testa pe 22 în timp ce
+producția ar fi rulat pe 24.
+
+Verificat pe Node 24.20.0 real, obținut cu `npx node@24`, **înainte** de
+schimbare: cele 11 teste native, cele 3 prin tsx, `next build` și
+`test:rendered` cu 294 de rute. Producția confirmă „Node.js Version 24.x",
+fără suprascriere.
