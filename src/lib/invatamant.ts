@@ -496,3 +496,61 @@ export function salariuAuxiliar(
     rand,
   };
 }
+
+/**
+ * Calculul complet pentru o functie de conducere, cu net.
+ *
+ * Fara gradatie — e inclusa in salariul din tabel (nota 2). Majorarile de la
+ * lit. B nu se aplica: dirigentia si gradatia de merit sunt drepturi ale
+ * personalului didactic de predare, nu ale functiei de conducere.
+ * Indemnizatia de hrana si cea de doctorat raman, fiind generale.
+ */
+export function calculeazaConducereComplet(input: {
+  functie: number;
+  grad: "I" | "II";
+  studiiScurte?: boolean;
+  doctorat?: boolean;
+  faraHrana?: boolean;
+}): (Omit<RezultatComplet, "salariuGrila" | "gradatie" | "rand"> & {
+  randConducere: RandConducere;
+  temeiSalariu: string;
+}) | null {
+  const baza = salariuConducere(input.functie, input.grad, input.studiiScurte);
+  if (!baza) return null;
+
+  const linii: LinieCalcul[] = [];
+  let total = baza.salariu;
+
+  if (input.doctorat) {
+    linii.push({ eticheta: "Indemnizație titlu științific de doctor", suma: INDEMNIZATIE_DOCTORAT_2026, temei: TEMEI_DOCTORAT });
+    total += INDEMNIZATIE_DOCTORAT_2026;
+  }
+
+  const netBaza = netulFunctieiDeBaza(baza.salariu);
+  if (!input.faraHrana && netBaza !== null && netBaza <= PLAFON_HRANA_NET) {
+    linii.push({ eticheta: "Indemnizație de hrană", suma: INDEMNIZATIE_HRANA, temei: TEMEI_HRANA });
+    total += INDEMNIZATIE_HRANA;
+  }
+
+  const fiscal = calculeaza({
+    brut: String(total),
+    salariuDeBaza: String(baza.salariu),
+    tichete: "",
+    functieDeBAza: true,
+    persoanePretretinere: 0,
+    varstaSub26: false,
+    copiiScolarizati: 0,
+    scutitImpozit: false,
+    normaContract: "intreaga",
+  });
+  if (!fiscal) return null;
+
+  return {
+    salariuDeBaza: baza.salariu,
+    linii,
+    brutTotal: total,
+    fiscal,
+    randConducere: baza.rand,
+    temeiSalariu: baza.temei,
+  };
+}

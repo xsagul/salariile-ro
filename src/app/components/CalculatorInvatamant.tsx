@@ -2,59 +2,54 @@
 
 // src/app/components/CalculatorInvatamant.tsx
 // Calculator salariu învățământ preuniversitar — Legea 153/2017, Anexa I, cap. I.
-// Tipar identic cu CalculatorSalariu și CalculatorPFA: calcul o dată la
-// „Calculează"/Enter, formular col-span-2 + rezultat col-span-3, tabel cu
-// header, rând negru, bară.
 //
 // Toată aritmetica stă în `@/lib/invatamant`. Aici nu se calculează nimic —
-// componenta doar colectează opțiunile și afișează rezultatul cu temeiul legal
-// pe fiecare linie, conform promisiunii din BRAND.md: de la cifră se ajunge
+// componenta colectează opțiunile și afișează rezultatul cu temeiul legal pe
+// fiecare linie, conform promisiunii din BRAND.md: de la cifră se ajunge
 // întotdeauna la formulă, la actul normativ și la data de la care se aplică.
+//
+// De ce pastile și nu dropdown-uri: grila are 21 de funcții cu gradul copt în
+// denumire („Profesor, educator-puericultor studii superioare de lungă durată
+// grad didactic I"). Într-un select, o educatoare le parcurge pe toate ca să se
+// recunoască. Pe axe separate vede tot deodată, iar combinațiile care nu există
+// în grilă sunt stinse vizibil — nu ascunse și nu greșite în tăcere.
+//
+// Două categorii de personal, cu reguli OPUSE:
+//   didactic  — sumele sunt la gradația 0, deci gradația se aplică;
+//   conducere — sumele includ deja sporul de vechime la nivel maxim (nota 2),
+//               deci gradația NU se aplică.
 
 import { useState } from "react";
 import FeedbackContextual from "@/app/components/FeedbackContextual";
+import { SelectorPastile, type OptiunePastila } from "@/app/components/SelectorPastile";
 import { trackUmami } from "@/lib/umami";
 import {
   calculeazaInvatamantComplet,
-  functiiDisponibile,
+  calculeazaConducereComplet,
+  functiaPentru,
+  gradePosibile,
+  studiiPosibile,
   vechimiPentruFunctie,
+  CONDUCERE,
+  GRUPURI,
+  GRADE,
+  NIVELURI,
   GRADATII,
   MAJORARI,
   INDEMNIZATIE_DOCTORAT_2026,
   SURSA_GRILA,
-  type RezultatComplet,
+  type Grup,
+  type Grad,
+  type NivelGradatie,
 } from "@/lib/invatamant";
 
 const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(Math.round(n));
 
-const fieldLabel = "mb-2 block text-xs font-medium text-stone-500";
 const colHeader = "mb-4 border-b border-stone-200 pb-2 text-lg font-medium text-stone-900";
-// Aceleași clase ca `controlBox` din CalculatorSalariu — controalele trebuie să
-// arate identic pe tot site-ul. `text-base` pe mobil (sub 16 px Safari face zoom
-// la focus), `sm:text-sm` pe desktop. Focus = bordură stone-400 + strălucire
-// caldă, NU inel albastru de sistem (BRAND.md §9). `min-h-11` = ținta de 44 px.
-const controlBox =
-  "w-full rounded border border-stone-300 bg-surface px-3 py-2 text-base sm:text-sm text-stone-900 outline-none transition focus:border-stone-400 focus:shadow-[0_0_6px_rgba(28,25,23,0.12)]";
 
-/** Chevron propriu, ca la restul site-ului. `select`-ul nativ isi deseneaza
- *  sageata lipita de marginea campului si diferit pe fiecare sistem de operare;
- *  `appearance-none` o scoate, iar SVG-ul de aici o pune la `right-3`, in
- *  oglinda cu `px-3` din stanga. */
-function Chevron() {
-  return (
-    <svg
-      className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-stone-500"
-      viewBox="0 0 20 20" fill="none" stroke="currentColor" aria-hidden="true"
-    >
-      <path d="M5 7.5l5 5 5-5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
+type Categorie = "didactic" | "conducere";
 
-const FUNCTII = functiiDisponibile();
-
-/** `value === null` = încă nu s-a calculat; se afișează „–”, ca structura
- *  rezultatului să fie vizibilă înainte de a apăsa Calculează. */
+/** `value === null` = încă nu s-a calculat; se afișează „–”. */
 function Row({ label, value, sub, neg, bold, ultim, temei }: {
   label: string; value: string | null; sub?: boolean; neg?: boolean;
   bold?: boolean; ultim?: boolean; temei?: string;
@@ -93,235 +88,278 @@ function Toggle({ label, hint, checked, onChange }: {
 }
 
 export default function CalculatorInvatamant() {
-  const [functie, setFunctie] = useState(1);
-  const [vechimeInv, setVechimeInv] = useState(vechimiPentruFunctie(1)[0]);
-  const [aniMunca, setAniMunca] = useState(20);
+  const [categorie, setCategorie] = useState<Categorie>("didactic");
+
+  // didactic
+  const [grup, setGrup] = useState<Grup>("profesor");
+  const [grad, setGrad] = useState<Grad>("gradul-i");
+  const [studii, setStudii] = useState("S");
+  const [vechimeInv, setVechimeInv] = useState<string | null>(null);
+  const [gradatie, setGradatie] = useState<NivelGradatie>(5);
+
+  // conducere — implicit directorul de unitate, cel mai cautat
+  const [functieCond, setFunctieCond] = useState(5);
+  const [gradCond, setGradCond] = useState<"I" | "II">("I");
+  const [studiiScurte, setStudiiScurte] = useState(false);
+
+  // comune
   const [majorari, setMajorari] = useState<string[]>([]);
   const [doctorat, setDoctorat] = useState(false);
-  const [rez, setRez] = useState<RezultatComplet | null>(null);
+  const [rez, setRez] = useState<
+    | { fel: "didactic"; d: NonNullable<ReturnType<typeof calculeazaInvatamantComplet>> }
+    | { fel: "conducere"; c: NonNullable<ReturnType<typeof calculeazaConducereComplet>> }
+    | null
+  >(null);
 
-  const vechimi = vechimiPentruFunctie(functie);
+  const sterge = () => setRez(null);
 
-  function schimbaFunctie(nr: number) {
-    setFunctie(nr);
-    const noi = vechimiPentruFunctie(nr);
-    if (!noi.includes(vechimeInv)) setVechimeInv(noi[0]);
-    setRez(null);
+  // ─── Axele didactice, cu posibilitățile derivate din grilă ────────────────
+  const gradeOk = gradePosibile(grup);
+  const studiiOk = studiiPosibile(grup, grad);
+  const nrFunctie = functiaPentru(grup, grad, studii);
+  const vechimi = nrFunctie ? vechimiPentruFunctie(nrFunctie) : [];
+  const vechimeCurenta = vechimeInv && vechimi.includes(vechimeInv) ? vechimeInv : (vechimi[0] ?? null);
+
+  function alegeGrup(g: Grup) {
+    setGrup(g); sterge();
+    const grade = gradePosibile(g);
+    const gradNou = grade.has(grad) ? grad : [...grade][0];
+    setGrad(gradNou);
+    const st = studiiPosibile(g, gradNou);
+    if (!st.has(studii)) setStudii([...st][0]);
   }
 
-  function comuta(cod: string, on: boolean) {
-    setMajorari((prev) => (on ? [...prev, cod] : prev.filter((c) => c !== cod)));
-    setRez(null);
+  function alegeGrad(g: Grad) {
+    setGrad(g); sterge();
+    const st = studiiPosibile(grup, g);
+    if (!st.has(studii)) setStudii([...st][0]);
   }
 
   function calculeaza() {
-    const r = calculeazaInvatamantComplet({
-      functie,
-      vechimeInvatamant: vechimeInv,
-      aniMunca,
-      majorari,
-      doctorat,
+    if (categorie === "conducere") {
+      const c = calculeazaConducereComplet({ functie: functieCond, grad: gradCond, studiiScurte, doctorat });
+      setRez(c ? { fel: "conducere", c } : null);
+      if (c) trackUmami({ name: "calcul-invatamant", data: { gradatie: "0" } });
+      return;
+    }
+    if (!nrFunctie || !vechimeCurenta) { setRez(null); return; }
+    // Anii care cad sigur în fiecare tranșă de gradație.
+    const aniPtGradatie = [0, 3, 5, 10, 15, 20][gradatie];
+    const d = calculeazaInvatamantComplet({
+      functie: nrFunctie, vechimeInvatamant: vechimeCurenta, aniMunca: aniPtGradatie, majorari, doctorat,
     });
-    setRez(r);
-    if (r) trackUmami({ name: "calcul-invatamant", data: { gradatie: String(r.gradatie) as "0" | "1" | "2" | "3" | "4" | "5" } });
+    setRez(d ? { fel: "didactic", d } : null);
+    if (d) trackUmami({ name: "calcul-invatamant", data: { gradatie: String(d.gradatie) as "0" | "1" | "2" | "3" | "4" | "5" } });
   }
 
-  const gradatie = GRADATII[Math.min(5, aniMunca < 3 ? 0 : aniMunca < 5 ? 1 : aniMunca < 10 ? 2 : aniMunca < 15 ? 3 : aniMunca < 20 ? 4 : 5)];
+  const r = rez ? (rez.fel === "didactic" ? rez.d : rez.c) : null;
+
+  const optGrup: OptiunePastila<Grup>[] = GRUPURI.map((g) => ({ valoare: g.cod, eticheta: g.eticheta, detaliu: g.exemple }));
+  const optGrad: OptiunePastila<Grad>[] = GRADE.map((g) => ({ valoare: g.cod, eticheta: g.eticheta, detaliu: g.explicatie, posibil: gradeOk.has(g.cod) }));
+  const optStudii: OptiunePastila<string>[] = NIVELURI.map((n) => ({ valoare: n.cod, eticheta: n.eticheta, detaliu: n.explicatie, posibil: studiiOk.has(n.cod) }));
 
   return (
-    // Secțiunea stă pe `canvas`, cardurile pe `surface` deasupra ei. Fără
-    // învelișul ăsta, cardurile (#fffdf9) cad pe `<body>`-ul alb și dispar —
-    // exact datoria de identitate din BRAND.md §15. Homepage-ul face la fel.
+    // Secțiunea stă pe `canvas`, cardurile pe `surface` deasupra ei — altfel
+    // cardurile (#fffdf9) cad pe `<body>`-ul alb și dispar (BRAND.md §15).
     <section className="border-y border-stone-200 bg-canvas">
       <div className="mx-auto grid max-w-6xl gap-6 px-4 py-8 sm:px-6 sm:py-12 md:grid-cols-5">
-      {/* ─── Formular ─────────────────────────────────────────────────── */}
-      <div className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-2">
-        <h2 className={colHeader}>Încadrarea ta</h2>
+        {/* ─── Formular ───────────────────────────────────────────────── */}
+        <div className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-2">
+          <h2 className={colHeader}>Încadrarea ta</h2>
 
-        <div className="mb-5">
-          <label htmlFor="inv-functie" className={fieldLabel}>Funcția didactică și gradul</label>
-          <div className="relative">
-            <select
-              id="inv-functie"
-              className={`${controlBox} cursor-pointer appearance-none pr-9`}
-              value={functie}
-              onChange={(e) => schimbaFunctie(Number(e.target.value))}
-            >
-              {FUNCTII.map((f) => (
-                <option key={f.nr} value={f.nr}>{f.functie}</option>
-              ))}
-            </select>
-            <Chevron />
-          </div>
-        </div>
-
-        <div className="mb-5">
-          <label htmlFor="inv-vechime-inv" className={fieldLabel}>
-            Vechimea în învățământ
-            <span className="mt-0.5 block font-normal normal-case text-stone-600">
-              Alege rândul din grilă. E diferită de vechimea în muncă.
-            </span>
-          </label>
-          <div className="relative">
-            <select
-              id="inv-vechime-inv"
-              className={`${controlBox} cursor-pointer appearance-none pr-9`}
-              value={vechimeInv}
-              onChange={(e) => { setVechimeInv(e.target.value); setRez(null); }}
-            >
-              {vechimi.map((v) => <option key={v} value={v}>{v}</option>)}
-            </select>
-            <Chevron />
-          </div>
-        </div>
-
-        <div className="mb-5">
-          <label htmlFor="inv-ani-munca" className={fieldLabel}>
-            Vechimea în muncă (ani)
-            <span className="mt-0.5 block font-normal normal-case text-stone-600">
-              Dă gradația. Acum: <strong className="text-stone-900">gradația {gradatie.nivel}</strong> ({gradatie.eticheta}).
-            </span>
-          </label>
-          <input
-            id="inv-ani-munca"
-            type="number"
-            min={0}
-            max={50}
-            value={aniMunca}
-            onChange={(e) => { setAniMunca(Number(e.target.value)); setRez(null); }}
-            onKeyDown={(e) => { if (e.key === "Enter") calculeaza(); }}
-            className={controlBox}
+          <SelectorPastile<Categorie>
+            eticheta="Ce fel de post ocupi"
+            optiuni={[
+              { valoare: "didactic", eticheta: "Didactic de predare", detaliu: "profesor, învățător, educatoare" },
+              { valoare: "conducere", eticheta: "Conducere", detaliu: "director, director adjunct, inspector" },
+            ]}
+            valoare={categorie}
+            onChange={(v) => { setCategorie(v); sterge(); }}
           />
-        </div>
 
-        <fieldset className="mb-5 border-t border-stone-200 pt-4">
-          <legend className={fieldLabel}>Majorări</legend>
-          {MAJORARI.map((m) => (
+          {categorie === "didactic" ? (
+            <>
+              <SelectorPastile<Grup> eticheta="Funcția" optiuni={optGrup} valoare={grup} onChange={alegeGrup} coloane={1} />
+              <SelectorPastile<Grad> eticheta="Gradul didactic" optiuni={optGrad} valoare={grad} onChange={alegeGrad} coloane={1} />
+              <SelectorPastile<string>
+                eticheta="Nivelul studiilor"
+                ajutor="Opțiunile stinse nu există în grilă pentru funcția aleasă."
+                optiuni={optStudii}
+                valoare={studii}
+                onChange={(v) => { setStudii(v); sterge(); }}
+              />
+              <SelectorPastile<string>
+                eticheta="Vechimea în învățământ"
+                ajutor="Alege rândul din grilă — cât ai lucrat efectiv în sistem."
+                optiuni={vechimi.map((v) => ({ valoare: v, eticheta: v }))}
+                valoare={vechimeCurenta}
+                onChange={(v) => { setVechimeInv(v); sterge(); }}
+              />
+              <SelectorPastile<NivelGradatie>
+                eticheta="Gradația"
+                ajutor="Se dă după vechimea în MUNCĂ, din toată cariera — nu doar din învățământ."
+                optiuni={GRADATII.map((g) => ({ valoare: g.nivel as NivelGradatie, eticheta: `Gradația ${g.nivel}`, detaliu: g.eticheta }))}
+                valoare={gradatie}
+                onChange={(v) => { setGradatie(v); sterge(); }}
+              />
+            </>
+          ) : (
+            <>
+              <SelectorPastile<number>
+                eticheta="Funcția de conducere"
+                optiuni={CONDUCERE.map((c) => ({ valoare: c.nr, eticheta: c.functie }))}
+                valoare={functieCond}
+                onChange={(v) => { setFunctieCond(v); sterge(); }}
+                coloane={1}
+              />
+              <SelectorPastile<"I" | "II">
+                eticheta="Gradul"
+                optiuni={[{ valoare: "I", eticheta: "Gradul I" }, { valoare: "II", eticheta: "Gradul II" }]}
+                valoare={gradCond}
+                onChange={(v) => { setGradCond(v); sterge(); }}
+              />
+              <div className="mb-5 rounded border border-stone-300 bg-canvas px-3 py-2 text-xs text-stone-600">
+                La funcțiile de conducere <strong className="text-stone-900">nu se aplică gradația</strong> —
+                salariile din anexă cuprind deja sporul de vechime în muncă la nivel maxim (nota 2).
+              </div>
+              <fieldset className="mb-5 border-t border-stone-200 pt-4">
+                <Toggle
+                  label="Studii superioare de scurtă durată"
+                  hint="−20% · Anexa I, cap. I, pct. 2, nota 1"
+                  checked={studiiScurte}
+                  onChange={(v) => { setStudiiScurte(v); sterge(); }}
+                />
+              </fieldset>
+            </>
+          )}
+
+          <fieldset className="mb-5 border-t border-stone-200 pt-4">
+            <legend className="mb-2 block text-xs font-medium text-stone-500">Majorări</legend>
+            {categorie === "didactic" &&
+              MAJORARI.map((m) => (
+                <Toggle
+                  key={m.cod}
+                  label={m.eticheta}
+                  hint={`+${(m.cota * 100).toLocaleString("ro-RO")}% · ${m.temei}`}
+                  checked={majorari.includes(m.cod)}
+                  onChange={(on) => { setMajorari((p) => (on ? [...p, m.cod] : p.filter((c) => c !== m.cod))); sterge(); }}
+                />
+              ))}
             <Toggle
-              key={m.cod}
-              label={m.eticheta}
-              hint={`+${(m.cota * 100).toLocaleString("ro-RO")}% · ${m.temei}`}
-              checked={majorari.includes(m.cod)}
-              onChange={(v) => comuta(m.cod, v)}
+              label="Titlu științific de doctor"
+              hint={`${INDEMNIZATIE_DOCTORAT_2026} lei brut · OUG 7/2026`}
+              checked={doctorat}
+              onChange={(v) => { setDoctorat(v); sterge(); }}
             />
-          ))}
-          <Toggle
-            label="Titlu științific de doctor"
-            hint={`${INDEMNIZATIE_DOCTORAT_2026} lei brut · OUG 7/2026`}
-            checked={doctorat}
-            onChange={(v) => { setDoctorat(v); setRez(null); }}
-          />
-        </fieldset>
+          </fieldset>
 
-        <button
-          type="button"
-          onClick={calculeaza}
-          className="block min-h-12 w-full rounded bg-stone-900 px-4 py-3 text-sm font-medium text-white shadow-soft transition-colors hover:bg-stone-800 active:translate-y-px"
-        >
-          Calculează
-        </button>
-      </div>
-
-      {/* ─── Rezultat ─────────────────────────────────────────────────── */}
-      <div className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-3">
-        <h2 className={colHeader}>Rezultatul</h2>
-
-        {/* Tabel fiscal, după BRAND.md §9: antet pe `canvas`, corp pe `surface`,
-            sume la dreapta, iar rândul de total INVERSAT — singurul fundal plin
-            de rând din sistem. Scheletul se arată și înainte de calcul, ca
-            structura rezultatului să fie vizibilă din prima. */}
-        <div className="overflow-hidden rounded border border-stone-300">
-          <table className="w-full table-auto border-collapse [&_td]:align-middle [&_th]:align-middle text-sm text-stone-700 sm:table-fixed">
-            <colgroup><col /><col className="w-28 sm:w-36" /></colgroup>
-            <thead>
-              <tr>
-                <th className="border-b border-r border-b-stone-300 border-r-stone-300 bg-canvas px-3 py-3 text-left text-sm font-medium text-stone-700">
-                  Element de salarizare
-                </th>
-                <th className="border-b border-stone-300 bg-canvas px-3 py-3 text-right text-sm font-medium text-stone-700">
-                  Sumă
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <Row
-                label="Salariu de bază din grilă (gradația 0)"
-                value={rez ? fmt(rez.salariuGrila) : null}
-                temei={rez ? `Anexa I, cap. I, pct. 5 · iunie 2024 · ${rez.rand.studii}, ${rez.rand.vechime}` : undefined}
-              />
-              <Row
-                label={rez ? `Gradația ${rez.gradatie} de vechime în muncă` : "Gradația de vechime în muncă"}
-                value={rez ? fmt(rez.salariuDeBaza - rez.salariuGrila) : null}
-                sub
-                temei={rez ? "art. 10 alin. (4) · cotele se compun, nu se adună" : undefined}
-              />
-              <Row label="Salariul de bază deținut" value={rez ? fmt(rez.salariuDeBaza) : null} bold />
-
-              {rez?.linii.map((l) => (
-                <Row key={l.eticheta} label={l.eticheta} value={fmt(l.suma)} sub temei={l.temei} />
-              ))}
-
-              <Row label="Total brut" value={rez ? fmt(rez.brutTotal) : null} bold />
-              <Row label="CAS (pensie – 25%)" value={rez ? fmt(rez.fiscal.cas) : null} sub neg />
-              <Row label="CASS (sănătate – 10%)" value={rez ? fmt(rez.fiscal.cass) : null} sub neg />
-              <Row label="Impozit pe venit (10%)" value={rez ? fmt(rez.fiscal.impozit) : null} sub neg />
-
-              <tr className="bg-stone-900">
-                <td className="border-r border-r-stone-600 px-3 py-3 text-left text-sm font-bold text-white">
-                  Salariu net
-                </td>
-                <td className="whitespace-nowrap px-3 py-3 text-right text-sm font-bold tabular-nums text-white">
-                  {rez ? `${fmt(rez.fiscal.netBani)} lei` : "–"}
-                </td>
-              </tr>
-
-              {/* „Angajator" e vocabular de sector privat lipit pe un buget de
-                  stat. Angajatorul unui cadru didactic e unitatea de invatamant,
-                  institutie publica — care datoreaza CAM ca orice angajator.
-                  Cifra ramane (promisiunea e ca de la cifra se ajunge la
-                  formula), dar eticheta spune ce e de fapt. */}
-              <Row label="CAM (plătit de unitate – 2,25%)" value={rez ? fmt(rez.fiscal.cam) : null} />
-              <Row
-                label="Cost total pentru unitatea de învățământ"
-                value={rez ? fmt(rez.fiscal.costTotal) : null}
-                bold
-                ultim
-              />
-            </tbody>
-          </table>
+          <button
+            type="button"
+            onClick={calculeaza}
+            className="block min-h-12 w-full rounded bg-stone-900 px-4 py-3 text-sm font-medium text-white shadow-soft transition-colors hover:bg-stone-800 active:translate-y-px"
+          >
+            Calculează
+          </button>
         </div>
 
-        {!rez && (
-          <p className="mt-4 text-xs leading-relaxed text-stone-500">
-            Alege încadrarea și apasă <strong className="text-stone-900">Calculează</strong>.
-            Fiecare linie își arată temeiul din lege.
-          </p>
-        )}
+        {/* ─── Rezultat ───────────────────────────────────────────────── */}
+        <div className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-3">
+          <h2 className={colHeader}>Rezultatul</h2>
 
-        {rez && (
-          <>
+          {/* Tabel fiscal, după BRAND.md §9: antet pe `canvas`, corp pe `surface`,
+              iar rândul de total INVERSAT — singurul fundal plin de rând din sistem. */}
+          <div className="overflow-hidden rounded border border-stone-300">
+            <table className="w-full table-auto border-collapse text-sm text-stone-700 [&_td]:align-middle [&_th]:align-middle sm:table-fixed">
+              <colgroup><col /><col className="w-28 sm:w-36" /></colgroup>
+              <thead>
+                <tr>
+                  <th className="border-b border-r border-b-stone-300 border-r-stone-300 bg-canvas px-3 py-3 text-left text-sm font-medium text-stone-700">
+                    Element de salarizare
+                  </th>
+                  <th className="border-b border-stone-300 bg-canvas px-3 py-3 text-right text-sm font-medium text-stone-700">
+                    Sumă
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {rez?.fel === "conducere" ? (
+                  <Row
+                    label="Salariu de bază din anexă"
+                    value={fmt(rez.c.salariuDeBaza)}
+                    temei={rez.c.temeiSalariu}
+                    bold
+                  />
+                ) : (
+                  <>
+                    <Row
+                      label="Salariu de bază din grilă (gradația 0)"
+                      value={rez?.fel === "didactic" ? fmt(rez.d.salariuGrila) : null}
+                      temei={rez?.fel === "didactic" ? `Anexa I, cap. I, pct. 5 · iunie 2024 · ${rez.d.rand.studii}, ${rez.d.rand.vechime}` : undefined}
+                    />
+                    <Row
+                      label={rez?.fel === "didactic" ? `Gradația ${rez.d.gradatie} de vechime în muncă` : "Gradația de vechime în muncă"}
+                      value={rez?.fel === "didactic" ? fmt(rez.d.salariuDeBaza - rez.d.salariuGrila) : null}
+                      sub
+                      temei={rez?.fel === "didactic" ? "art. 10 alin. (4) · cotele se compun, nu se adună" : undefined}
+                    />
+                    <Row label="Salariul de bază deținut" value={r ? fmt(r.salariuDeBaza) : null} bold />
+                  </>
+                )}
 
-            <div className="mt-5 border-t border-stone-200 pt-4 text-xs text-stone-600">
-              <p className="mb-2">
-                <strong className="text-stone-900">De unde vine cifra.</strong>{" "}
-                {SURSA_GRILA.act}, {SURSA_GRILA.anexa}. Formă consolidată la{" "}
-                {new Date(SURSA_GRILA.formaConsolidata).toLocaleDateString("ro-RO")}.
-              </p>
-              <p className="mb-2">
-                Coloana folosită este cea din <strong className="text-stone-900">iunie 2024</strong>, pentru că
-                salariile de bază din sectorul public s-au menținut prin lege: în 2025 la nivelul lunii
-                decembrie 2024, iar în 2026 la nivelul lunii decembrie 2025.
-              </p>
-              <p>
-                Rezultatul este salariul de bază plus majorările bifate. Nu include sporuri de condiții
-                de muncă, plata cu ora, premii sau norma didactică sub/peste normă.
-              </p>
-            </div>
+                {r?.linii.map((l) => (
+                  <Row key={l.eticheta} label={l.eticheta} value={fmt(l.suma)} sub temei={l.temei} />
+                ))}
 
-            <FeedbackContextual context="calcul" />
-          </>
-        )}
-      </div>
+                <Row label="Total brut" value={r ? fmt(r.brutTotal) : null} bold />
+                <Row label="CAS (pensie – 25%)" value={r ? fmt(r.fiscal.cas) : null} sub neg />
+                <Row label="CASS (sănătate – 10%)" value={r ? fmt(r.fiscal.cass) : null} sub neg />
+                <Row label="Impozit pe venit (10%)" value={r ? fmt(r.fiscal.impozit) : null} sub neg />
+
+                <tr className="bg-stone-900">
+                  <td className="border-r border-r-stone-600 px-3 py-3 text-left text-sm font-bold text-white">
+                    Salariu net
+                  </td>
+                  <td className="whitespace-nowrap px-3 py-3 text-right text-sm font-bold tabular-nums text-white">
+                    {r ? `${fmt(r.fiscal.netBani)} lei` : "–"}
+                  </td>
+                </tr>
+
+                <Row label="CAM (plătit de unitate – 2,25%)" value={r ? fmt(r.fiscal.cam) : null} />
+                <Row label="Cost total pentru unitatea de învățământ" value={r ? fmt(r.fiscal.costTotal) : null} bold ultim />
+              </tbody>
+            </table>
+          </div>
+
+          {!r && (
+            <p className="mt-4 text-xs leading-relaxed text-stone-500">
+              Alege încadrarea și apasă <strong className="text-stone-900">Calculează</strong>.
+              Fiecare linie își arată temeiul din lege.
+            </p>
+          )}
+
+          {r && (
+            <>
+              <div className="mt-5 border-t border-stone-200 pt-4 text-xs text-stone-600">
+                <p className="mb-2">
+                  <strong className="text-stone-900">De unde vine cifra.</strong>{" "}
+                  {SURSA_GRILA.act}, {SURSA_GRILA.anexa}. Formă consolidată la{" "}
+                  {new Date(SURSA_GRILA.formaConsolidata).toLocaleDateString("ro-RO")}.
+                </p>
+                <p className="mb-2">
+                  Coloana folosită este cea din <strong className="text-stone-900">iunie 2024</strong>, pentru că
+                  salariile de bază din sectorul public s-au menținut prin lege: în 2025 la nivelul lunii
+                  decembrie 2024, iar în 2026 la nivelul lunii decembrie 2025.
+                </p>
+                <p>
+                  Rezultatul este salariul de bază plus majorările bifate. Nu include sporuri de condiții
+                  de muncă, plata cu ora, premii sau norma didactică sub/peste normă.
+                </p>
+              </div>
+
+              <FeedbackContextual context="calcul" />
+            </>
+          )}
+        </div>
       </div>
     </section>
   );
