@@ -55,6 +55,9 @@ export const REGIMURI_FISCALE_SALARIU = {
     salariuMinim: 4050,
     facilitate: 300,
     plafonFacilitate: 4300,
+    // OUG 89/2025 art. III alin. (5): pentru pragul minim CAS/CASS al
+    // contractelor sub minim, reperul de 4.050 lei se reduce cu 300 lei.
+    reducereBazaMinimaContributii: 300,
   },
   "2026-S2": {
     validFrom: "2026-07-01",
@@ -62,6 +65,10 @@ export const REGIMURI_FISCALE_SALARIU = {
     salariuMinim: SALARIU_MINIM,
     facilitate: DEDUCERE_MINIM,
     plafonFacilitate: PLAFON_FACILITATE,
+    // Aceeași derogare, cu reducerea de 200 lei pentru iulie–decembrie.
+    // Este o regulă distinctă de facilitatea acordată contractului full-time,
+    // chiar dacă în 2026 cele două reduceri au aceeași valoare.
+    reducereBazaMinimaContributii: DEDUCERE_MINIM,
   },
 } as const;
 
@@ -105,6 +112,16 @@ export interface Rezultat {
   costTotal: number; //         brut + CAM + tichete (cost total angajator)
   brutNet: number; //           % din brut care ajunge net (afișaj)
   facilitate: number; //        suma netaxabilă OUG 89/2025 efectiv aplicată (0–DEDUCERE_MINIM)
+}
+
+export interface RezultatPartTime extends Rezultat {
+  orePeZi: number;
+  oreLunareEstimate: number;
+  brutMinimProportional: number;
+  bazaMinimaContributii: number;
+  diferentaCasAngajator: number;
+  diferentaCassAngajator: number;
+  costTotalCuDiferente: number;
 }
 
 // ─── Calcul deducere personală (Codul Fiscal art. 77) ────────────────────────
@@ -222,6 +239,81 @@ export function calculeazaCuRegim(
 /** Calcul în regimul fiscal curent (S2 2026). Păstrează API-ul folosit de site. */
 export function calculeaza(input: InputState): Rezultat | null {
   return calculeazaCuRegim(input, REGIM_FISCAL_CURENT);
+}
+
+// ─── Contract cu timp parțial ───────────────────────────────────────────────
+
+/** Media lunară din HG 146/2026 pentru norma completă de 8 ore/zi. */
+export const ORE_LUNARE_NORMA_INTREAGA = 166.667;
+
+/** Salariul minim proporțional cu numărul de ore zilnice din contract. */
+export function salariuMinimPartTime(
+  orePeZi: number,
+  regimFiscal: RegimFiscalSalariu = REGIM_FISCAL_CURENT,
+): number {
+  if (!Number.isFinite(orePeZi) || orePeZi <= 0 || orePeZi > 8) return 0;
+  return Math.round(REGIMURI_FISCALE_SALARIU[regimFiscal].salariuMinim * (orePeZi / 8));
+}
+
+/**
+ * Calcul pentru un contract activ toată luna, cu timp parțial.
+ *
+ * Angajatului i se rețin CAS/CASS la venitul realizat. Dacă venitul este sub
+ * pragul minim și nu există o excepție de la art. 146 alin. (5^7), diferența
+ * până la contribuțiile aferente pragului este suportată de angajator — nu se
+ * scade încă o dată din net. Pentru iulie–decembrie 2026, OUG 89/2025 art. III
+ * alin. (5) reduce pragul de la salariul minim cu 200 lei.
+ */
+export function calculeazaPartTimeCuRegim(
+  input: InputState,
+  opts: {
+    orePeZi: number;
+    exceptatBazaMinima: boolean;
+    regimFiscal?: RegimFiscalSalariu;
+  },
+): RezultatPartTime | null {
+  const regimFiscal = opts.regimFiscal ?? REGIM_FISCAL_CURENT;
+  const orePeZi = opts.orePeZi;
+  if (!Number.isFinite(orePeZi) || orePeZi <= 0 || orePeZi > 8) return null;
+
+  const rezultat = calculeazaCuRegim(
+    { ...input, normaContract: "partiala" },
+    regimFiscal,
+  );
+  if (!rezultat) return null;
+
+  const regim = REGIMURI_FISCALE_SALARIU[regimFiscal];
+  const bazaMinimaContributii = Math.max(
+    0,
+    regim.salariuMinim - regim.reducereBazaMinimaContributii,
+  );
+  const brut = Number(input.brut);
+  const subBazaMinima = brut < bazaMinimaContributii;
+  const diferentaCasAngajator = !opts.exceptatBazaMinima && subBazaMinima
+    ? Math.max(0, Math.round(bazaMinimaContributii * CAS_PROCENT) - rezultat.cas)
+    : 0;
+  const diferentaCassAngajator = !opts.exceptatBazaMinima && subBazaMinima
+    ? Math.max(0, Math.round(bazaMinimaContributii * CASS_PROCENT) - rezultat.cass)
+    : 0;
+
+  return {
+    ...rezultat,
+    orePeZi,
+    oreLunareEstimate: ORE_LUNARE_NORMA_INTREAGA * (orePeZi / 8),
+    brutMinimProportional: salariuMinimPartTime(orePeZi, regimFiscal),
+    bazaMinimaContributii,
+    diferentaCasAngajator,
+    diferentaCassAngajator,
+    costTotalCuDiferente:
+      rezultat.costTotal + diferentaCasAngajator + diferentaCassAngajator,
+  };
+}
+
+export function calculeazaPartTime(
+  input: InputState,
+  opts: { orePeZi: number; exceptatBazaMinima: boolean },
+): RezultatPartTime | null {
+  return calculeazaPartTimeCuRegim(input, { ...opts, regimFiscal: REGIM_FISCAL_CURENT });
 }
 
 // ─── Calcul invers: brut din net ─────────────────────────────────────────────

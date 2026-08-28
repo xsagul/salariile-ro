@@ -566,6 +566,7 @@ function CardSurse() {
         <li><Link href="/noutati/salariul-minim-1-iulie-2026">Ce se schimbă de la 1 iulie 2026</Link></li>
         <li><Link href="/noutati/cosul-minim-de-consum">Salariul minim față de coșul minim de trai</Link></li>
         <li><Link href="/salariu-mediu">Salariul mediu pe economie</Link></li>
+        <li><Link href="/calculator-salariu-part-time">Calculator salariu part-time: 2, 4 și 6 ore</Link></li>
         <li><Link href="/calculator-pfa">Plafoanele PFA derivate din minim</Link></li>
         <li><Link href="/zile-libere-2026">Zile libere 2026</Link></li>
       </ul>

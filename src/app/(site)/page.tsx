@@ -243,6 +243,7 @@ export default function Page() {
                       ["Salariul minim în construcții", "/salariu-minim-constructii-2026"],
                       ["Salariul mediu pe economie", "/salariu-mediu"],
                       ["Deducerea personală 2026", "/deducere-personala-2026"],
+                      ["Calculator salariu part-time", "/calculator-salariu-part-time"],
                       ["Calculator taxe PFA", "/calculator-pfa"],
                       ["Generator fluturaș de salariu", "/fluturas-salariu"],
                       ["Zile libere 2026", "/zile-libere-2026"],

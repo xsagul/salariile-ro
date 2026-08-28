@@ -1701,3 +1701,22 @@ dispare.
 Lede-ul afișa salariul unei încadrări anume înainte ca cititorul să aleagă ceva.
 Scos: pe o pagină de calculator, hero-ul nu răspunde la o întrebare pe care
 nimeni n-a pus-o.
+
+## Audit impozitsalariu.ro și calculator part-time — 28 august 2026
+
+Auditul SERP, snippet și conținut a arătat că faviconul, titlul și descrierea
+salariile.ro nu au un defect evident. Search Console indica o creștere puternică
+pe interogarea principală, deci nu am rescris calculatorul de pe homepage.
+Diferența competitivă verificabilă era clusterul part-time și distribuția
+externă. Raportul complet este în `AUDIT-IMPOZITSALARIU-2026-08-28.md`.
+
+Adăugat `/calculator-salariu-part-time`: calculator pentru 2–6 ore care separă
+netul angajatului de diferențele CAS/CASS suportate de firmă, tratează
+excepțiile și arată scenariile D112. Logica locuiește în `src/lib/fiscal.ts`,
+iar ruta este legată din homepage, salariul minim, footer, sitemap și
+`llms.txt`.
+
+Verificare înainte de publicare: 9/9 teste part-time, suita completă, lint,
+build și testarea celor 294 de rute randate au trecut. QA în browser a confirmat
+schimbarea live între scenariile de 2 și 4 ore și aplicarea excepției fără
+modificarea netului angajatului.

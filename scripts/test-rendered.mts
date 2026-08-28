@@ -252,6 +252,8 @@ async function auditRenderedSite() {
     ["/calculator/calcul-salariu-brut-2574-net", "facilitate de 300 lei", "regimul istoric S1 pentru 2.574 net"],
     ["/calculator/calcul-salariu-net-4582-brut", "2.754", "netul curent pentru 4.582 brut"],
     ["/calculator-pfa", "24.300", "pragul salarial PFA"],
+    ["/calculator-salariu-part-time", "Diferență CAS", "diferența CAS suportată de firmă"],
+    ["/calculator-salariu-part-time", "Instrucțiunile D112", "sursa D112 pentru part-time"],
     ["/salariu-mediu", "9.564", "brutul INS din iunie"],
     ["/salariu-mediu", "5.734", "netul INS din iunie"],
     ["/", "indicatorul BASS", "eticheta BASS de pe homepage"],
