@@ -94,3 +94,6 @@ gsc-key.json
 # repo-ul e public. Concluziile publicabile se muta in PROGRES.md.
 /export-umami/
 /.env.umami
+
+# Analiza de backlinkuri a competitiei — date private, repo-ul e public
+/research/backlinks-competitie-*/
