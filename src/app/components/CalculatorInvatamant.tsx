@@ -265,7 +265,7 @@ export default function CalculatorInvatamant() {
                   <Toggle
                     key={m.cod}
                     label={m.eticheta}
-                    hint={`+${(m.cota * 100).toLocaleString("ro-RO")}% · ${m.temei}`}
+                    hint={`+${(m.cota * 100).toLocaleString("ro-RO")}%${m.detaliu ? " · " + m.detaliu : ""} · ${m.temei}`}
                     checked={majorari.includes(m.cod)}
                     onChange={(on) => { setMajorari((p) => (on ? [...p, m.cod] : p.filter((c) => c !== m.cod))); sterge(); }}
                   />

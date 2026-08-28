@@ -109,6 +109,8 @@ export function aplicaGradatia(salariuGrila: number, gradatie: NivelGradatie): n
 export type Majorare = {
   cod: string;
   eticheta: string;
+  /** Cine mai beneficiaza, cand denumirea scurta nu acopera tot. */
+  detaliu?: string;
   /** Cota aplicata la salariul de baza detinut. */
   cota: number;
   /** Temeiul, asa cum se afiseaza public. */
@@ -118,8 +120,13 @@ export type Majorare = {
 export const MAJORARI: Majorare[] = [
   {
     cod: "dirigentie",
-    eticheta: "Dirigenție / învățător / educatoare / profesor înv. primar sau preșcolar",
+    eticheta: "Dirigenție",
     cota: 0.10,
+    // Majorarea nu e doar pentru diriginti: invatatorii, educatoarele si
+    // profesorii pentru invatamant primar sau prescolar o primesc din oficiu.
+    // Denumirea scurta sta pe eticheta, restul in nota — altfel eticheta ocupa
+    // doua randuri pe telefon.
+    detaliu: "și pentru învățători, educatoare, profesori de învățământ primar sau preșcolar",
     temei: "Anexa I, cap. I, lit. B, art. 8",
   },
   {

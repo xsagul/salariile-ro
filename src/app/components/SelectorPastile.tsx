@@ -67,7 +67,9 @@ export function SelectorPastile<T extends string | number>({
               aria-pressed={activ}
               onClick={() => onChange(o.valoare)}
               className={[
-                "min-h-11 rounded px-3 text-sm transition-colors",
+                // `py-2` lasa loc etichetelor care se rup pe doua randuri (functiile de
+                // conducere au denumiri lungi); `min-h-11` pastreaza podeaua de 44 px.
+                "min-h-11 rounded px-3 py-2 text-sm transition-colors",
                 coloane === 1 ? "w-full text-left" : "",
                 activ
                   ? "bg-stone-900 font-medium text-white"
