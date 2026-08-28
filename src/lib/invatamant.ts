@@ -23,8 +23,19 @@
 // randul "20-25 ani" si gradatia 5.
 //
 // Legea 153/2017 urmeaza sa fie abrogata de o lege-cadru noua, aflata in
-// proiect la data scrierii. Vezi VERIFICARI-SURSE-SALARII-2026-08-27.md.
-// Structura de mai jos e pregatita pentru al doilea regim, ca in `fiscal.ts`.
+// proiect la data scrierii. Structura de mai jos e pregatita pentru al doilea
+// regim, ca in `fiscal.ts`.
+//
+// DAR nu se construieste pe proiect. Decizie a proprietarului, 28 august 2026:
+// se pune numai legislatie IN VIGOARE. Un proiect se schimba pana la adoptare —
+// grilele de invatamant s-au schimbat deja intre versiunea din 25 mai si cea
+// transmisa sindicatelor pe 20 august — iar daca legea trece abia anul viitor,
+// publicarea lui acum inseamna un an de cifre false.
+//
+// Declansatorul pentru al doilea regim e PUBLICAREA IN MONITORUL OFICIAL, nu
+// adoptarea in Parlament si nu articolele de presa. Cand se intampla, de
+// verificat in primul rand: gradatia de merit (+25%, art. 5) dispare in proiect,
+// deci `MAJORARI` trebuie legata de regim, nu lasata globala.
 
 import grilaData from "@/data/grila-invatamant-153-2017.json";
 

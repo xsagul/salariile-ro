@@ -1645,3 +1645,59 @@ Sporurile de predare simultană la 3–5 clase, practică pedagogică (10–25%)
 condiții de muncă (art. 13) — textul lor n-a fost extras complet, deci nu s-au
 aproximat. Ipoteză marcată în cod: rotunjire la leu după fiecare gradație, nu o
 singură dată la final.
+
+## Studiul SERP pe care trebuia să-l fac întâi — 28 august 2026
+
+Proprietarul a semnalat că am construit pagina fără studiu de competiție. Avea
+dreptate: fetch-uisem doar locul 1, de două ori, superficial. Pe 2–6 nu mă
+uitasem deloc. Făcut acum, după.
+
+### SERP-ul real pe „calculator salarii profesori"
+
+| # | Cine | Ce e |
+|---|---|---|
+| 1 | salarii.invatamantpreuniversitar.ro | Calculator specializat, grile 2012–2025, pe 153/2017 |
+| 2 | Facebook, același proiect | 44.200 urmăritori, 4,9★ din 334 recenzii |
+| 3 | scoala9.ro | Calculator + „care sunt cadrele didactice care pierd cel mai mult" |
+| 4 | tribunainvatamantului.ro | Grila noului proiect, actualizat acum 7 zile |
+| 5 | edupedu.ro | Calculator pentru noua lege (salarizare.zed-zen.com) |
+| 6 | calculatorsalarii.blog | Cere brutul ca input — n-are grilă; fără temei legal; „2025" în corp, „2026" în titlu |
+
+### Ce am aflat
+
+Pe **20 august 2026** Guvernul a transmis sindicatelor o versiune nouă a
+proiectului, cu grilele de învățământ rescrise: valoare de referință 4.000 lei
+(scăzută de la 4.100), coeficienți crescuți față de versiunea din 25 mai.
+Conform simulărilor sindicale citate în presă: debutant S ar urca de la 6.446 la
+~7.600 lei, iar grad I cu peste 25 de ani ar scădea de la 10.230 la ~9.680.
+Gradația de merit (+25%) dispare.
+
+**Intenția de căutare s-a mutat.** Trei din primele șase rezultate sunt despre
+noua lege. Un profesor nu caută „cât iau" — știe, e pe fluturaș. Caută „cât o să
+iau" și „cât pierd".
+
+### Decizia proprietarului: numai legislație în vigoare
+
+Ridicat ca oportunitate, respins motivat: proiectul s-a schimbat deja o dată
+între 25 mai și 20 august, iar dacă legea trece abia anul viitor, publicarea
+grilei acum înseamnă un an de cifre false. Declanșatorul pentru al doilea regim
+e **publicarea în Monitorul Oficial**, nu adoptarea și nu presa.
+
+Consemnat în `CLAUDE.md` (Reguli de lucru) și în capul lui `src/lib/invatamant.ts`,
+cu nota că `MAJORARI` va trebui legată de regim atunci — gradația de merit
+dispare.
+
+### Unde stăm, onest
+
+- **Locul 1: nu-l batem.** 13 ani de grile, sporuri pe județ, concediu medical,
+  cotizație de sindicat, plus 44K urmăritori pe Facebook. Aia e distribuție.
+- **Locul 6: îl batem clar.** El cere utilizatorului să tasteze brutul, deci nu e
+  calculator de grilă. Noi derivăm brutul din grilă și dăm articolul pe fiecare linie.
+- **Locurile 3–5: alt joc.** Ei sunt pe noua lege, noi pe cea în vigoare —
+  deliberat, prin decizia de mai sus.
+
+### Reparat în aceeași sesiune
+
+Lede-ul afișa salariul unei încadrări anume înainte ca cititorul să aleagă ceva.
+Scos: pe o pagină de calculator, hero-ul nu răspunde la o întrebare pe care
+nimeni n-a pus-o.
