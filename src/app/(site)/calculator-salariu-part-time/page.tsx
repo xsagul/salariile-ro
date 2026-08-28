@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import CalculatorPartTime from "@/app/components/CalculatorPartTime";
-import { Breadcrumb, Faq, H1, Hero, Lead, PaginiConexe, Prose, Section } from "@/app/components/ui";
+import { Breadcrumb, CardCompanion, Faq, H1, Hero, Lead, PaginiConexe, Prose, Repere, Section } from "@/app/components/ui";
 import TabelArticol from "@/app/components/TabelArticol";
 import {
   calculeazaPartTime,
@@ -111,7 +111,7 @@ export default function Page() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      <Hero>
+      <Hero peGrila>
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Calculator salariu part-time" }]} />
         <H1>Calculator salariu part-time 2026</H1>
         <Lead>
@@ -124,8 +124,8 @@ export default function Page() {
       <CalculatorPartTime />
 
       <Section wide>
-        <div className="grid gap-8 lg:grid-cols-5 lg:gap-10">
-          <Prose className="min-w-0 lg:col-span-3">
+        <div className="md:grid md:grid-cols-5 md:gap-6">
+          <Prose className="min-w-0 md:col-span-3">
             <h2>Salariul la 2, 4 și 6 ore</h2>
             <p>
               Brutul minim scade proporțional cu timpul din contract. Netul nu scade exact în aceeași proporție,
@@ -179,7 +179,7 @@ export default function Page() {
             </p>
           </Prose>
 
-          <aside className="min-w-0 lg:col-span-2">
+          <aside className="min-w-0 md:col-span-2">
             <div className="rounded-md border border-stone-200 bg-surface p-5 shadow-soft sm:p-6">
               <h2 className="text-lg font-bold tracking-[-0.02em] text-stone-900">Surse oficiale</h2>
               <ul className="mt-4 space-y-3 text-sm leading-normal text-stone-600 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2">
@@ -201,7 +201,26 @@ export default function Page() {
         </div>
       </Section>
 
-      <Faq items={FAQ} />
+      <Faq
+        items={FAQ}
+        companion={
+          <CardCompanion
+            titlu="Baza minimă de contribuții · 2026"
+            nota="Diferența o suportă firma, peste brut. Nu se scade din netul angajatului."
+          >
+            <Repere
+              randuri={[
+                ["Salariu minim, normă întreagă", "4.325 lei"],
+                ["Reducere OUG 89/2025", "− 200 lei"],
+                ["Bază minimă CAS și CASS", "4.125 lei"],
+                ["Minim proporțional, 2 ore", `${fmt(SCENARII[0].brut)} lei`],
+                ["Minim proporțional, 4 ore", `${fmt(SCENARII[1].brut)} lei`],
+                ["Minim proporțional, 6 ore", `${fmt(SCENARII[2].brut)} lei`],
+              ]}
+            />
+          </CardCompanion>
+        }
+      />
 
       <PaginiConexe
         linkuri={[

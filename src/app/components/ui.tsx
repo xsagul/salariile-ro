@@ -33,10 +33,21 @@ export function Prose({ children, className = "" }: { children: ReactNode; class
   return <div className={`${PROSE} ${className}`}>{children}</div>;
 }
 
-export function Hero({ children }: { children: ReactNode }) {
+export function Hero({
+  children,
+  peGrila = false,
+}: {
+  children: ReactNode;
+  /** Pune hero-ul pe grila 3+2, deci exact lățimea cardului de rezultat de
+   *  dedesubt. Se folosește pe paginile cu calculator, ca pe homepage. Pe
+   *  paginile de conținut rămâne pe toată lățimea, ca până acum. */
+  peGrila?: boolean;
+}) {
   return (
     <section className="border-b border-stone-200 bg-canvas py-10 sm:py-12">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">{children}</div>
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        {peGrila ? <GrilaPagina continut={children} /> : children}
+      </div>
     </section>
   );
 }
@@ -45,13 +56,26 @@ export function Section({
   children,
   wide = false,
   noTopBorder = false,
+  companion,
 }: {
   children: ReactNode;
   wide?: boolean;
   noTopBorder?: boolean;
+  /** Cardul din dreapta. Cu el, secțiunea intră pe grila 3+2 a paginii. */
+  companion?: ReactNode;
 }) {
+  const clase = `${noTopBorder ? "border-t-0" : "border-t border-stone-200 first:border-t-0"} bg-canvas py-10 sm:py-12`;
+  if (companion) {
+    return (
+      <section className={clase}>
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <GrilaPagina continut={<Prose>{children}</Prose>} companion={companion} />
+        </div>
+      </section>
+    );
+  }
   return (
-    <section className={`${noTopBorder ? "border-t-0" : "border-t border-stone-200 first:border-t-0"} bg-canvas py-10 sm:py-12`}>
+    <section className={clase}>
       <div className={`mx-auto px-4 sm:px-6 ${wide ? "max-w-6xl" : "max-w-3xl"}`}>
         <Prose>{children}</Prose>
       </div>
@@ -100,13 +124,19 @@ export function Eyebrow({ children }: { children: ReactNode }) {
 export function Faq({
   items,
   title = "Întrebări frecvente",
+  companion,
 }: {
   items: { q: string; a: string }[];
   title?: string;
+  /** Cardul din dreapta. Cu el, FAQ-ul intră pe grila 3+2, ca pe homepage. */
+  companion?: ReactNode;
 }) {
   return (
     <section className="border-t border-stone-200 bg-canvas py-10 sm:py-12">
-      <div className="mx-auto max-w-3xl px-4 sm:px-6">
+      <div className={`mx-auto px-4 sm:px-6 ${companion ? "max-w-6xl" : "max-w-3xl"}`}>
+        <GrilaPagina
+          companion={companion}
+          continut={<>
         <h2 className="mb-6 text-2xl font-bold tracking-[-0.02em] text-stone-900 sm:text-3xl">{title}</h2>
         <div className="flex flex-col">
           {items.map((item, i) => (
@@ -120,10 +150,12 @@ export function Faq({
                 <span className="flex-shrink-0 text-xl text-stone-900 group-open:hidden">+</span>
                 <span className="hidden flex-shrink-0 text-xl text-stone-900 group-open:inline">−</span>
               </summary>
-              <p className="mb-4 text-base leading-normal tracking-[-0.01em] text-stone-600">{item.a}</p>
+              <p className="mb-4 max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600">{item.a}</p>
             </details>
           ))}
         </div>
+          </>}
+        />
       </div>
     </section>
   );
@@ -193,5 +225,66 @@ export function CtaCard({
         </div>
       </div>
     </section>
+  );
+}
+
+// ─── Grila paginii: 3 + 2 ────────────────────────────────────────────────────
+//
+// Homepage-ul tine acelasi ritm de sus pana jos, intr-o grila de 5 coloane:
+// hero pe 3, calculator 2 + 3, articol 3 + card companion 2, FAQ 3 + companion.
+// Textul nu e niciodata centrat — sta in cele 3 coloane din stanga, exact cat
+// e cardul de rezultat, iar dreapta poarta un card cu informatie utila.
+//
+// Paginile noi foloseau trei latimi suprapuse: hero pe toata latimea, apoi
+// grila de 5, apoi articol centrat pe `max-w-3xl`. Arata ca trei pagini lipite.
+// Primitivele de aici exista ca sa nu se mai intample.
+
+export function GrilaPagina({
+  continut,
+  companion,
+}: {
+  continut: ReactNode;
+  /** Cardul din dreapta. Fara el, continutul ramane tot pe 3 coloane — ca la
+   *  hero — deci latimea se pastreaza si cand nu ai ce pune alaturi. */
+  companion?: ReactNode;
+}) {
+  return (
+    <div className="md:grid md:grid-cols-5 md:gap-6">
+      <div className="md:col-span-3">{continut}</div>
+      {companion ? <aside className="mt-8 md:col-span-2 md:mt-0">{companion}</aside> : null}
+    </div>
+  );
+}
+
+/** Cardul din coloana din dreapta: `surface`, bordura stone-200, umbra unica. */
+export function CardCompanion({
+  titlu,
+  children,
+  nota,
+}: {
+  titlu: string;
+  children: ReactNode;
+  nota?: string;
+}) {
+  return (
+    <div className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
+      <h3 className="mb-3 text-xs font-medium text-stone-500">{titlu}</h3>
+      {children}
+      {nota ? <p className="mt-3 text-xs text-stone-500">{nota}</p> : null}
+    </div>
+  );
+}
+
+/** Lista de perechi cheie-valoare pentru cardul companion. */
+export function Repere({ randuri }: { randuri: readonly (readonly [string, string])[] }) {
+  return (
+    <dl className="text-sm">
+      {randuri.map(([k, v]) => (
+        <div key={k} className="flex items-center justify-between gap-3 border-b border-stone-100 py-2 last:border-b-0">
+          <dt className="text-stone-600">{k}</dt>
+          <dd className="font-medium tabular-nums whitespace-nowrap text-stone-900">{v}</dd>
+        </div>
+      ))}
+    </dl>
   );
 }

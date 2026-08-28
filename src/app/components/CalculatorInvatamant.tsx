@@ -139,11 +139,16 @@ export default function CalculatorInvatamant() {
   // deci se aduce in ecran. Acelasi comportament ca pe homepage si part-time.
   function dupaCalcul() {
     if (typeof window === "undefined") return;
-    if (!window.matchMedia("(max-width: 767px)").matches) return;
+    // Ca pe homepage: pe mobil coloanele sunt una sub alta, deci se aduce in
+    // ecran rezultatul; pe desktop se aduce tot blocul, ca sa vezi si ce ai
+    // ales, si ce a iesit. Fara asta, cine deruleaza in jos apasa Calculeaza
+    // si nu se intampla nimic vizibil.
+    const mobil = window.matchMedia("(max-width: 768px)").matches;
+    const tinta = mobil ? "rezultat-invatamant" : "calc-invatamant";
     // Amanat un cadru: la momentul apelului React inca n-a re-randat, deci
     // panoul de rezultat are inaltimea veche si tinta ar fi calculata gresit.
     requestAnimationFrame(() => {
-      document.getElementById("rezultat-invatamant")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      document.getElementById(tinta)?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   }
 
@@ -174,7 +179,7 @@ export default function CalculatorInvatamant() {
     // Secțiunea stă pe `canvas`, cardurile pe `surface` deasupra ei — altfel
     // cardurile (#fffdf9) cad pe `<body>`-ul alb și dispar (BRAND.md §15).
     <section className="border-y border-stone-200 bg-canvas">
-      <div className="mx-auto grid max-w-6xl gap-6 px-4 py-8 sm:px-6 sm:py-12 md:grid-cols-5">
+      <div id="calc-invatamant" className="mx-auto grid max-w-6xl gap-6 px-4 py-8 sm:px-6 sm:py-12 md:grid-cols-5">
         {/* ─── Formular ───────────────────────────────────────────────── */}
         <div className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-2">
           <h2 className={colHeader}>Încadrarea ta</h2>

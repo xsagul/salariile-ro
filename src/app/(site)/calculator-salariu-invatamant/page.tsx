@@ -7,7 +7,7 @@
 
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Breadcrumb, Faq, H1, Hero, Lead, PaginiConexe, Prose, Section } from "@/app/components/ui";
+import { Breadcrumb, CardCompanion, Faq, H1, Hero, Lead, PaginiConexe, Prose, Repere, Section } from "@/app/components/ui";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
 import CalculatorInvatamant from "@/app/components/CalculatorInvatamant";
@@ -100,6 +100,16 @@ const jsonLd = {
   ],
 };
 
+const REPERE_INVATAMANT = [
+  ["Salariu de bază, minim în grilă", `${fmt(MIN_GRILA)} lei`],
+  ["Salariu de bază, maxim în grilă", `${fmt(MAX_GRILA)} lei`],
+  ["Gradația 5, cumulat", "+24,52%"],
+  ["Dirigenție", "+10%"],
+  ["Gradație de merit", "+25%"],
+  ["Indemnizație de hrană", "347 lei"],
+  ["Indemnizație doctorat", "500 lei"],
+] as const;
+
 export default function Page() {
   return (
     <>
@@ -108,7 +118,7 @@ export default function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <Hero>
+      <Hero peGrila>
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Calculator salariu învățământ" }]} />
         <H1>Calculator salariu învățământ 2026</H1>
         <Lead>
@@ -120,7 +130,16 @@ export default function Page() {
 
       <CalculatorInvatamant />
 
-      <Section>
+      <Section
+        companion={
+          <CardCompanion
+            titlu="Repere · Legea 153/2017"
+            nota="Sume brute, la gradația 0. Peste ele se aplică gradația de vechime în muncă și majorările bifate."
+          >
+            <Repere randuri={REPERE_INVATAMANT} />
+          </CardCompanion>
+        }
+      >
         <Prose>
           <h2>Cum se construiește salariul unui cadru didactic</h2>
           <p>
@@ -201,7 +220,21 @@ export default function Page() {
         </Prose>
       </Section>
 
-      <Faq items={FAQ} />
+      <Faq
+        items={FAQ}
+        companion={
+          <CardCompanion titlu="Cine e acoperit" nota="Personalul didactic auxiliar — contabil, secretară, bibliotecar — are altă secțiune în anexă și nu e inclus aici.">
+            <Repere
+              randuri={[
+                ["Funcții didactice de predare", "21"],
+                ["Combinații din grilă", `${GRILA.length}`],
+                ["Funcții de conducere", "6"],
+                ["Trepte de gradație", "6"],
+              ]}
+            />
+          </CardCompanion>
+        }
+      />
 
       <PaginiConexe
         linkuri={[

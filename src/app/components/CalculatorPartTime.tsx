@@ -197,9 +197,12 @@ export default function CalculatorPartTime() {
     setEmptyWarn(false);
     setRezAfisat(urmatorul);
 
-    if (window.matchMedia("(max-width: 767px)").matches) {
-      document.getElementById("rezultat-part-time")?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
+    // Ca pe homepage: mobil -> rezultatul, desktop -> tot blocul.
+    const mobil = window.matchMedia("(max-width: 768px)").matches;
+    const tinta = mobil ? "rezultat-part-time" : "calc-part-time";
+    requestAnimationFrame(() => {
+      document.getElementById(tinta)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
   };
 
   const comutaAvansat = () => {
@@ -214,7 +217,7 @@ export default function CalculatorPartTime() {
 
   return (
     <section className="border-b border-stone-200 bg-canvas" aria-labelledby="calculator-part-time">
-      <div className="mx-auto grid max-w-6xl items-start gap-6 px-4 py-8 sm:px-6 sm:py-12 md:grid-cols-5">
+      <div id="calc-part-time" className="mx-auto grid max-w-6xl items-start gap-6 px-4 py-8 sm:px-6 sm:py-12 md:grid-cols-5">
         <form
           className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-2"
           onSubmit={(event) => {
