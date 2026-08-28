@@ -136,10 +136,23 @@ export default function CalculatorInvatamant() {
     if (!st.has(studii)) setStudii([...st][0]);
   }
 
+  // Pe mobil coloanele sunt una sub alta: dupa calcul rezultatul e sub pliu,
+  // deci se aduce in ecran. Acelasi comportament ca pe homepage si part-time.
+  function dupaCalcul() {
+    if (typeof window === "undefined") return;
+    if (!window.matchMedia("(max-width: 767px)").matches) return;
+    // Amanat un cadru: la momentul apelului React inca n-a re-randat, deci
+    // panoul de rezultat are inaltimea veche si tinta ar fi calculata gresit.
+    requestAnimationFrame(() => {
+      document.getElementById("rezultat-invatamant")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }
+
   function calculeaza() {
     if (categorie === "conducere") {
       const c = calculeazaConducereComplet({ functie: functieCond, grad: gradCond, studiiScurte, doctorat });
       setRez(c ? { fel: "conducere", c } : null);
+      dupaCalcul();
       if (c) trackUmami({ name: "calcul-invatamant", data: { gradatie: "0" } });
       return;
     }
@@ -150,14 +163,15 @@ export default function CalculatorInvatamant() {
       functie: nrFunctie, vechimeInvatamant: vechimeCurenta, aniMunca: aniPtGradatie, majorari, doctorat,
     });
     setRez(d ? { fel: "didactic", d } : null);
+    dupaCalcul();
     if (d) trackUmami({ name: "calcul-invatamant", data: { gradatie: String(d.gradatie) as "0" | "1" | "2" | "3" | "4" | "5" } });
   }
 
   const r = rez ? (rez.fel === "didactic" ? rez.d : rez.c) : null;
 
-  const optGrup: OptiunePastila<Grup>[] = GRUPURI.map((g) => ({ valoare: g.cod, eticheta: g.eticheta, detaliu: g.exemple }));
-  const optGrad: OptiunePastila<Grad>[] = GRADE.map((g) => ({ valoare: g.cod, eticheta: g.eticheta, detaliu: g.explicatie, posibil: gradeOk.has(g.cod) }));
-  const optStudii: OptiunePastila<string>[] = NIVELURI.map((n) => ({ valoare: n.cod, eticheta: n.eticheta, detaliu: n.explicatie, posibil: studiiOk.has(n.cod) }));
+  const optGrup: OptiunePastila<Grup>[] = GRUPURI.map((g) => ({ valoare: g.cod, eticheta: g.eticheta }));
+  const optGrad: OptiunePastila<Grad>[] = GRADE.map((g) => ({ valoare: g.cod, eticheta: g.eticheta, posibil: gradeOk.has(g.cod) }));
+  const optStudii: OptiunePastila<string>[] = NIVELURI.map((n) => ({ valoare: n.cod, eticheta: n.eticheta, posibil: studiiOk.has(n.cod) }));
 
   return (
     // Secțiunea stă pe `canvas`, cardurile pe `surface` deasupra ei — altfel
@@ -171,8 +185,8 @@ export default function CalculatorInvatamant() {
           <SelectorPastile<Categorie>
             eticheta="Ce fel de post ocupi"
             optiuni={[
-              { valoare: "didactic", eticheta: "Didactic de predare", detaliu: "Profesor, învățător, educatoare — personal de predare." },
-              { valoare: "conducere", eticheta: "Conducere", detaliu: "Director, director adjunct, inspector școlar." },
+              { valoare: "didactic", eticheta: "Predare" },
+              { valoare: "conducere", eticheta: "Conducere" },
             ]}
             valoare={categorie}
             onChange={(v) => { setCategorie(v); sterge(); }}
@@ -184,22 +198,21 @@ export default function CalculatorInvatamant() {
               <SelectorPastile<Grad> eticheta="Gradul didactic" optiuni={optGrad} valoare={grad} onChange={alegeGrad} />
               <SelectorPastile<string>
                 eticheta="Nivelul studiilor"
-                ajutor="Opțiunile stinse nu există în grilă pentru funcția aleasă."
                 optiuni={optStudii}
                 valoare={studii}
                 onChange={(v) => { setStudii(v); sterge(); }}
               />
               <SelectorPastile<string>
                 eticheta="Vechimea în învățământ"
-                ajutor="Alege rândul din grilă — cât ai lucrat efectiv în sistem."
+                ajutor="Cât ai lucrat efectiv în sistem — nu toată cariera."
                 optiuni={vechimi.map((v) => ({ valoare: v, eticheta: v }))}
                 valoare={vechimeCurenta}
                 onChange={(v) => { setVechimeInv(v); sterge(); }}
               />
               <SelectorPastile<NivelGradatie>
                 eticheta="Gradația"
-                ajutor="Se dă după vechimea în MUNCĂ, din toată cariera — nu doar din învățământ."
-                optiuni={GRADATII.map((g) => ({ valoare: g.nivel as NivelGradatie, eticheta: String(g.nivel), detaliu: `Vechime în muncă: ${g.eticheta}.` }))}
+                ajutor="După vechimea în muncă, din toată cariera."
+                optiuni={GRADATII.map((g) => ({ valoare: g.nivel as NivelGradatie, eticheta: String(g.nivel) }))}
                 valoare={gradatie}
                 onChange={(v) => { setGradatie(v); sterge(); }}
               />
@@ -276,7 +289,7 @@ export default function CalculatorInvatamant() {
         </div>
 
         {/* ─── Rezultat ───────────────────────────────────────────────── */}
-        <div className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-3">
+        <div id="rezultat-invatamant" className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-3">
           <h2 className={colHeader}>Rezultatul</h2>
 
           {/* Tabel fiscal, după BRAND.md §9: antet pe `canvas`, corp pe `surface`,
@@ -299,7 +312,6 @@ export default function CalculatorInvatamant() {
                   <Row
                     label="Salariu de bază din anexă"
                     value={fmt(rez.c.salariuDeBaza)}
-                    temei={rez.c.temeiSalariu}
                     bold
                   />
                 ) : (
@@ -307,20 +319,18 @@ export default function CalculatorInvatamant() {
                     <Row
                       label="Salariu de bază din grilă (gradația 0)"
                       value={rez?.fel === "didactic" ? fmt(rez.d.salariuGrila) : null}
-                      temei={rez?.fel === "didactic" ? `Anexa I, cap. I, pct. 5 · iunie 2024 · ${rez.d.rand.studii}, ${rez.d.rand.vechime}` : undefined}
-                    />
+                      />
                     <Row
                       label={rez?.fel === "didactic" ? `Gradația ${rez.d.gradatie} de vechime în muncă` : "Gradația de vechime în muncă"}
                       value={rez?.fel === "didactic" ? fmt(rez.d.salariuDeBaza - rez.d.salariuGrila) : null}
                       sub
-                      temei={rez?.fel === "didactic" ? "art. 10 alin. (4) · cotele se compun, nu se adună" : undefined}
                     />
                     <Row label="Salariul de bază deținut" value={r ? fmt(r.salariuDeBaza) : null} bold />
                   </>
                 )}
 
                 {r?.linii.map((l) => (
-                  <Row key={l.eticheta} label={l.eticheta} value={fmt(l.suma)} sub temei={l.temei} />
+                  <Row key={l.eticheta} label={l.eticheta} value={fmt(l.suma)} sub />
                 ))}
 
                 <Row label="Total brut" value={r ? fmt(r.brutTotal) : null} bold />
@@ -363,9 +373,16 @@ export default function CalculatorInvatamant() {
                   salariile de bază din sectorul public s-au menținut prin lege: în 2025 la nivelul lunii
                   decembrie 2024, iar în 2026 la nivelul lunii decembrie 2025.
                 </p>
-                <p>
+                <p className="mb-2">
                   Rezultatul este salariul de bază plus majorările bifate. Nu include sporuri de condiții
                   de muncă, plata cu ora, premii sau norma didactică sub/peste normă.
+                </p>
+                <p>
+                  <strong className="text-stone-900">Temeiul fiecărei linii.</strong>{" "}
+                  {rez?.fel === "conducere"
+                    ? rez.c.temeiSalariu
+                    : "Salariul de bază: Anexa I, cap. I, pct. 5. Gradația: art. 10 alin. (4) — cotele se compun, nu se adună."}
+                  {r?.linii.length ? " " + r.linii.map((l) => `${l.eticheta}: ${l.temei}.`).join(" ") : ""}
                 </p>
               </div>
 
