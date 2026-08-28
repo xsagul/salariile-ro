@@ -140,6 +140,33 @@ export const MAJORARI: Majorare[] = [
 export const INDEMNIZATIE_DOCTORAT_2026 = 500;
 export const TEMEI_DOCTORAT = "OUG 7/2026, art. LIV alin. (1)";
 
+// ─── Indemnizatia de hrana (art. 18) ─────────────────────────────────────────
+//
+// Art. 18 alin. (1), in forma de la 1 ianuarie 2026 (modificat prin Legea
+// 141/2025, art. XV pct. 5): 347 lei lunar, pentru personalul "ale carui
+// salarii lunare sunt de pana la 6.000 lei net inclusiv".
+//
+// Alin. (1^2), introdus prin OUG 10/2024 SPECIAL pentru invatamant: pragul se
+// aplica "prin raportare la salariul NET CUVENIT FUNCTIEI DE BAZA". Asta
+// rezolva circularitatea — se compara netul salariului de baza, nu netul final
+// care ar include chiar indemnizatia.
+//
+// Se acorda proportional cu timpul efectiv lucrat in luna anterioara
+// (alin. (2)); calculatorul presupune luna intreaga.
+//
+// Este venit salarial si se impoziteaza: intra in brut inainte de CAS/CASS/
+// impozit. Asa o trateaza si calculatorul de pe salarii.invatamantpreuniversitar.ro,
+// care e referinta de piata pe segmentul asta.
+//
+// Sub grila actuala pragul nu musca niciodata: maximul e 8.215 lei la gradatia
+// 0, adica 10.230 cu gradatia 5, iar netul lui e 5.984 lei. Primul brut cu net
+// peste 6.000 e 10.259. Verificarea ramane in cod pentru cazul in care grila
+// creste — nu ca sa fie decorativa.
+
+export const INDEMNIZATIE_HRANA = 347;
+export const PLAFON_HRANA_NET = 6000;
+export const TEMEI_HRANA = "Legea 153/2017, art. 18 alin. (1) și (1^2)";
+
 // ─── Calculul ────────────────────────────────────────────────────────────────
 
 export type IntrareInvatamant = {
@@ -220,12 +247,42 @@ export type RezultatComplet = RezultatInvatamant & {
   fiscal: Rezultat;
 };
 
+/** Netul salariului de baza — baza de comparatie pentru pragul de la art. 18. */
+function netulFunctieiDeBaza(salariuDeBaza: number): number | null {
+  const r = calculeaza({
+    brut: String(salariuDeBaza),
+    tichete: "",
+    functieDeBAza: true,
+    persoanePretretinere: 0,
+    varstaSub26: false,
+    copiiScolarizati: 0,
+    scutitImpozit: false,
+    normaContract: "intreaga",
+  });
+  return r ? r.netBani : null;
+}
+
 export function calculeazaInvatamantComplet(
   input: IntrareInvatamant,
-  optiuni?: { persoanePretretinere?: number },
+  optiuni?: { persoanePretretinere?: number; faraHrana?: boolean },
 ): RezultatComplet | null {
   const brut = calculeazaInvatamant(input);
   if (!brut) return null;
+
+  // Indemnizatia de hrana intra in brut inainte de contributii, dar numai daca
+  // netul functiei de baza e sub plafon. `faraHrana` e pentru personalul care
+  // primeste alte drepturi de hrana — exclus expres de art. 18 alin. (1).
+  const netBaza = netulFunctieiDeBaza(brut.salariuDeBaza);
+  const areHrana = !optiuni?.faraHrana && netBaza !== null && netBaza <= PLAFON_HRANA_NET;
+
+  if (areHrana) {
+    brut.linii.push({
+      eticheta: "Indemnizație de hrană",
+      suma: INDEMNIZATIE_HRANA,
+      temei: TEMEI_HRANA,
+    });
+    brut.brutTotal += INDEMNIZATIE_HRANA;
+  }
 
   const fiscal = calculeaza({
     brut: String(brut.brutTotal),

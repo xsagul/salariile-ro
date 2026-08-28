@@ -172,3 +172,61 @@ ok("orice pereche functie x vechime din selectoare produce un calcul", () => {
 });
 
 console.log(`\n${treceri} verificari, toate trecute.`);
+
+console.log("\nIndemnizația de hrană (art. 18)");
+
+const {
+  calculeazaInvatamantComplet,
+  INDEMNIZATIE_HRANA,
+  PLAFON_HRANA_NET,
+} = (await import(modulPath)) as typeof import("../src/lib/invatamant");
+
+ok("se adauga la brut, nu la net", () => {
+  const r = calculeazaInvatamantComplet({ functie: 1, vechimeInvatamant: "peste 25 ani", aniMunca: 30 });
+  assert.ok(r);
+  const linie = r.linii.find((l) => l.eticheta.includes("hrană"));
+  assert.ok(linie, "lipseste linia de hrana");
+  assert.equal(linie.suma, INDEMNIZATIE_HRANA);
+  assert.equal(INDEMNIZATIE_HRANA, 347);
+  // salariul de baza ramane neatins; brutul creste cu 347
+  assert.equal(r.salariuDeBaza, 10230);
+  assert.equal(r.brutTotal, 10230 + 347);
+});
+
+ok("se poate exclude, pentru cine are alte drepturi de hrana", () => {
+  const r = calculeazaInvatamantComplet(
+    { functie: 1, vechimeInvatamant: "peste 25 ani", aniMunca: 30 },
+    { faraHrana: true },
+  );
+  assert.ok(r);
+  assert.ok(!r.linii.some((l) => l.eticheta.includes("hrană")));
+  assert.equal(r.brutTotal, 10230);
+});
+
+ok("toata grila actuala e sub plafonul de 6.000 lei net", () => {
+  // Daca asta cade, grila a crescut peste prag si art. 18 incepe sa muste.
+  for (const f of functiiDisponibile()) {
+    for (const v of vechimiPentruFunctie(f.nr)) {
+      const r = calculeazaInvatamantComplet({ functie: f.nr, vechimeInvatamant: v, aniMunca: 40 });
+      assert.ok(r, `${f.nr} × ${v}`);
+      assert.ok(
+        r.linii.some((l) => l.eticheta.includes("hrană")),
+        `${f.nr} × ${v} n-a primit hrana — netul bazei a depasit ${PLAFON_HRANA_NET}?`,
+      );
+    }
+  }
+});
+
+ok("hrana e impozitata — intra in baza de contributii", () => {
+  const cu = calculeazaInvatamantComplet({ functie: 1, vechimeInvatamant: "peste 25 ani", aniMunca: 30 });
+  const fara = calculeazaInvatamantComplet(
+    { functie: 1, vechimeInvatamant: "peste 25 ani", aniMunca: 30 }, { faraHrana: true });
+  assert.ok(cu && fara);
+  assert.ok(cu.fiscal.cas > fara.fiscal.cas, "CAS n-a crescut, deci hrana n-a intrat in baza");
+  // CAS se rotunjeste O DATA, pe baza totala — nu pe fiecare componenta. De aceea
+  // diferenta e 86, nu round(347 x 25%) = 87. Verificam regula, nu diferenta.
+  assert.equal(fara.fiscal.cas, Math.round(10230 * 0.25));
+  assert.equal(cu.fiscal.cas, Math.round((10230 + 347) * 0.25));
+});
+
+console.log(`\n${treceri} verificari, toate trecute.`);
