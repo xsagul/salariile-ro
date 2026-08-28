@@ -24,7 +24,7 @@ Nu numărul de pagini. **Datele.** Măsurat pe 24 august 2026:
 - paylab are **767 de poziții** pentru că are 14.383 de respondenți la sondaj. undelucram are **400.000 de salarii declarate** și 850.000 de utilizatori.
 - Diferența față de ei nu e volumul de conținut, e că **ei colectează date de la utilizatori și noi nu colectăm nimic.** Site-ul nu are, la data asta, niciun mecanism de colectare.
 
-Aproximativ **3.400 de sesiuni pe lună includ cel puțin un calcul salarial**, conform baseline-ului măsurat în analytics. Acesta este semnal de interes, nu echivalentul a 3.400 de persoane unice și nici un set de salarii declarat prin sondaj.
+Aproximativ **3.400 de sesiuni pe lună includ cel puțin un calcul salarial**, măsurat în Umami în august 2026. Cifra nu se mai poate reface: instanța Umami a fost dezafectată pe 28 august 2026, iar Vercel Analytics nu are evenimente proprii. Acesta este semnal de interes, nu echivalentul a 3.400 de persoane unice și nici un set de salarii declarat prin sondaj.
 
 Decizia care ar debloca pasul 1 e dacă se colectează salarii anonim (meserie + județ + brut, fără cont, fără PII).
 
@@ -82,7 +82,7 @@ Tensiunea care a oprit-o, și care rămâne reală: `/despre` promite azi „nu 
 - Paginile de calculator tranzacționale tind să aibă CTR mai sănătos decât paginile pur informative
 - Tehnic & on-page: nivel A/A+ conform tool-urilor de audit
 - Off-site (backlinkuri, autoritate de domeniu/DR): nivel F — zona cu cel mai mare potențial de creștere
-- GSC este conectat. Proiectul folosește Vercel Analytics, nu Google Analytics.
+- GSC este conectat. Singura măsurătoare de trafic de pe site e Vercel Analytics — nu Google Analytics, și nici Umami, dezafectat pe 28 august 2026. Nu mai există evenimente proprii, timp pe pagină sau Core Web Vitals din teren.
 
 ## Roadmap activ
 

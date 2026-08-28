@@ -93,9 +93,6 @@ export default function PoliticaConfidentialitatePage() {
                 <strong>Adresa IP, user agent, URL accesat, data și ora vizitei</strong>: colectate automat de către infrastructura de hosting (Vercel) pentru fiecare cerere HTTP. Folosite pentru securitate (detectare abuz, atacuri automate) și debugging. Păstrate maximum 30 de zile.
               </li>
               <li>
-                <strong>Metrici de performanță anonime</strong>: prin instanța noastră de Umami se înregistrează indicatori tehnici (timp de încărcare, Core Web Vitals) pentru îmbunătățirea site-ului. Colectarea e cookieless, folosește <code>sendBeacon</code> pentru transmisia anonimă a metricilor, datele sunt agregate și nu pot identifica un vizitator individual.
-              </li>
-              <li>
                 <strong>Statistici de vizitare anonime</strong>: prin Vercel Web Analytics se contorizează numărul de vizite, paginile cele mai accesate și țara de origine (la nivel general). Nu se folosesc cookies pentru această analiză, datele sunt complet anonime și nu se transferă către terți.
               </li>
             </ul>
@@ -136,9 +133,6 @@ export default function PoliticaConfidentialitatePage() {
               </li>
               <li>
                 <strong>Google LLC</strong> (SUA) — <strong>Search Console</strong>: pentru verificarea proprietății domeniului și monitorizarea performanței în rezultatele căutării. Nu colectează date despre vizitatorii individuali, doar statistici agregate despre cum apare site-ul în rezultatele Google.
-              </li>
-              <li>
-                <strong>Umami (instanță proprie)</strong>: statistici de vizitare cookieless, găzduite pe infrastructura noastră. Datele nu părăsesc controlul nostru și nu se transferă către terți.
               </li>
             </ul>
             <p>

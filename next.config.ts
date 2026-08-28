@@ -60,22 +60,6 @@ const nextConfig: NextConfig = {
     ];
   },
 
-  // Analytics proprii (Umami), servite prin domeniul propriu.
-  //
-  // De ce proxy și nu scriptul direct de pe instanța Umami: blocantele de
-  // reclame taie cererile către domenii cunoscute de analytics, dar lasă
-  // domeniul site-ului. În plus, scriptul își deduce singur endpointul din
-  // propriul `src`, deci servit de la /stats.js va trimite la /api/send —
-  // same-origin, adică `default-src 'self'` din CSP acoperă totul fără nicio
-  // excepție adăugată. Exact opusul situației de la Google Analytics.
-  async rewrites() {
-    const umami = "https://umami-salariile.vercel.app";
-    return [
-      { source: "/stats.js", destination: `${umami}/script.js` },
-      { source: "/api/send", destination: `${umami}/api/send` },
-    ];
-  },
-
   async redirects() {
     return [
       // ─── Redirect-uri permanente pentru URL-uri vechi (păstrează SEO juice) ───

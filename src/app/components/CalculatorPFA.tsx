@@ -1,7 +1,6 @@
 "use client";
 
 import FeedbackContextual from "@/app/components/FeedbackContextual";
-import { trackUmami } from "@/lib/umami";
 
 // src/app/components/CalculatorPFA.tsx
 // Calculator PFA 2026 — sistem real și normă de venit.
@@ -235,10 +234,6 @@ export default function CalculatorPFA() {
     }
     setWarn(false);
     setRez(r); setRezKey(snapKey(snap));
-    trackUmami({
-      name: "calcul-pfa",
-      data: { regim, mod: mod === "venit" ? "venit-anual" : "net-lunar" },
-    });
     if (typeof window !== "undefined") {
       const isMobile = window.matchMedia("(max-width: 768px)").matches;
       document.getElementById(isMobile ? "pfa-rezultat" : "pfa-layout")?.scrollIntoView({ behavior: "smooth", block: "start" });

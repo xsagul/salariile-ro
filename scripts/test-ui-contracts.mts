@@ -2,8 +2,7 @@ import assert from "node:assert/strict";
 import { readdir, readFile } from "node:fs/promises";
 
 const read = (path: string) => readFile(new URL(`../${path}`, import.meta.url), "utf8");
-const [umami, salary, pfa, header, embedLayout, home, widgetScript, widgetPage, widgetDemo, widgetCalculator] = await Promise.all([
-  read("src/lib/umami.ts"),
+const [salary, pfa, header, embedLayout, home, widgetScript, widgetPage, widgetDemo, widgetCalculator] = await Promise.all([
   read("src/app/components/CalculatorSalariu.tsx"),
   read("src/app/components/CalculatorPFA.tsx"),
   read("src/app/components/Header.tsx"),
@@ -15,13 +14,13 @@ const [umami, salary, pfa, header, embedLayout, home, widgetScript, widgetPage, 
   read("src/app/components/WidgetCalculator.tsx"),
 ]);
 
-for (const event of ["calcul-finalizat", "mod-calcul", "calcul-pfa", "descarca-fluturas", "copiaza-embed"]) {
-  assert.match(umami, new RegExp(`name: "${event}"`), `Lipsește contractul Umami ${event}`);
+// Contractul de evenimente Umami a dispărut odată cu instanța, dezafectată pe
+// 28 august 2026. Verificarea care conta rămâne, mutată de pe forma
+// payload-ului pe codul de client: dacă nu se emite nimic către exterior, nu se
+// poate scurge nicio sumă. Testul cade dacă reapare un apel de tracking.
+for (const sursa of [salary, pfa, home, widgetCalculator]) {
+  assert.doesNotMatch(sursa, /trackUmami|umami\?\.track|"\/api\/send"/, "A reapărut un apel de tracking");
 }
-for (const forbidden of ["salariu", "suma", "firma", "venituri", "incasari", "email"]) {
-  assert.doesNotMatch(umami, new RegExp(`\\b${forbidden}\\b`, "i"), `Payload-ul Umami nu trebuie să accepte ${forbidden}`);
-}
-assert.match(salary, /await generarePDFFluturas[\s\S]*trackUmami\(\{ name: "descarca-fluturas"/, "PDF-ul se măsoară după generare");
 assert.match(salary, /if \(rezTemp\) set\("brut", String\(rezTemp\.netBani\)\)/, "Comutarea brut→net trebuie să folosească netul cash, fără tichetele de pe card");
 assert.match(salary, /normaContract[\s\S]*fractieLuna/, "Generatorul trebuie să transmită explicit norma contractuală și fracția de lună");
 assert.match(pfa, /<button[\s\S]*role="switch"[\s\S]*aria-checked=/, "Switch-ul PFA trebuie să fie un singur buton semantic");

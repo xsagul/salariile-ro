@@ -22,7 +22,6 @@
 import { useState } from "react";
 import FeedbackContextual from "@/app/components/FeedbackContextual";
 import { SelectorPastile, type OptiunePastila } from "@/app/components/SelectorPastile";
-import { trackUmami } from "@/lib/umami";
 import {
   calculeazaInvatamantComplet,
   calculeazaConducereComplet,
@@ -153,7 +152,6 @@ export default function CalculatorInvatamant() {
       const c = calculeazaConducereComplet({ functie: functieCond, grad: gradCond, studiiScurte, doctorat });
       setRez(c ? { fel: "conducere", c } : null);
       dupaCalcul();
-      if (c) trackUmami({ name: "calcul-invatamant", data: { gradatie: "0" } });
       return;
     }
     if (!nrFunctie || !vechimeCurenta) { setRez(null); return; }
@@ -164,7 +162,6 @@ export default function CalculatorInvatamant() {
     });
     setRez(d ? { fel: "didactic", d } : null);
     dupaCalcul();
-    if (d) trackUmami({ name: "calcul-invatamant", data: { gradatie: String(d.gradatie) as "0" | "1" | "2" | "3" | "4" | "5" } });
   }
 
   const r = rez ? (rez.fel === "didactic" ? rez.d : rez.c) : null;

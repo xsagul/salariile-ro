@@ -16,7 +16,6 @@ import {
 import { zileLucratoareLuna } from "@/lib/sarbatori";
 import { compuneFluturas } from "@/lib/fluturas";
 import FeedbackContextual from "@/app/components/FeedbackContextual";
-import { trackUmami } from "@/lib/umami";
 
 type SelectOption = { v: number; l: string };
 
@@ -524,10 +523,6 @@ export default function CalculatorSalariu({
       setRezAfisat(buildResult(input, mod, regimFiscal));
       setRezKey(inputKey(input, mod));
     }
-    trackUmami({
-      name: "calcul-finalizat",
-      data: { mod: mod === "brut" ? "brut-net" : "net-brut", context: fluturas ? "fluturas" : "principal" },
-    });
     if (typeof window === "undefined") return;
 
     // Rezultatul devine partajabil: pana acum, dupa un calcul, URL-ul ramanea „/"
@@ -612,7 +607,6 @@ export default function CalculatorSalariu({
     try {
       await navigator.clipboard.writeText(window.location.href);
       setLinkCopiat(true);
-      trackUmami({ name: "copiaza-link-calcul", data: { mod: mod === "brut" ? "brut-net" : "net-brut" } });
       window.setTimeout(() => setLinkCopiat(false), 3000);
     } catch {
       // Clipboard refuzat (permisiuni, context non-secure): selectam URL-ul din
@@ -635,7 +629,6 @@ export default function CalculatorSalariu({
         detalii: fluturas && fluturasSnap ? fluturasSnap : undefined, retineri: retineriNum,
       });
       setPdfStatus("success");
-      trackUmami({ name: "descarca-fluturas", data: { context: fluturas ? "pagina-fluturas" : "calculator" } });
     } catch {
       setPdfStatus("error");
     }
@@ -717,7 +710,6 @@ export default function CalculatorSalariu({
                     if (netVal > 0) set("brut", String(calculeazaBrutDinNetCuRegim(netVal, input, regimFiscal)));
                   }
                   setMod("brut");
-                  trackUmami({ name: "mod-calcul", data: { mod: "brut-net" } });
                 }}
               >
                 Din brut în net
@@ -735,7 +727,6 @@ export default function CalculatorSalariu({
                     }
                   }
                   setMod("net");
-                  trackUmami({ name: "mod-calcul", data: { mod: "net-brut" } });
                 }}
               >
                 Din net în brut

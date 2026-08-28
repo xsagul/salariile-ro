@@ -137,7 +137,7 @@ export default function WidgetPage() {
           manual din atributul <code>height</code>.
         </p>
         <div className="my-6">
-          <EmbedCode code={MINIMAL_EMBED_CODE} variant="minimal" />
+          <EmbedCode code={MINIMAL_EMBED_CODE} />
         </div>
         <p>
           Aplică aceeași versiune a regulilor fiscale publicată pe site. Formulele complete sunt publice pe pagina
@@ -162,7 +162,7 @@ export default function WidgetPage() {
           </p>
         </div>
         <div className="my-6">
-          <EmbedCode code={COMPLETE_EMBED_CODE} variant="complet" />
+          <EmbedCode code={COMPLETE_EMBED_CODE} />
         </div>
       </Section>
 
@@ -184,7 +184,7 @@ export default function WidgetPage() {
           </p>
         </div>
         <div className="my-6">
-          <EmbedCode code={PAYSLIP_EMBED_CODE} variant="fluturas" />
+          <EmbedCode code={PAYSLIP_EMBED_CODE} />
         </div>
         <p className="max-w-3xl">
           Păstrează rândul cu creditul când preiei oricare dintre cele trei widgeturi. Ne ajută să ținem proiectul gratuit,
