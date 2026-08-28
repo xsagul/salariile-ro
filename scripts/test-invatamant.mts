@@ -171,7 +171,6 @@ ok("orice pereche functie x vechime din selectoare produce un calcul", () => {
   }
 });
 
-console.log(`\n${treceri} verificari, toate trecute.`);
 
 console.log("\nIndemnizația de hrană (art. 18)");
 
@@ -227,6 +226,108 @@ ok("hrana e impozitata — intra in baza de contributii", () => {
   // diferenta e 86, nu round(347 x 25%) = 87. Verificam regula, nu diferenta.
   assert.equal(fara.fiscal.cas, Math.round(10230 * 0.25));
   assert.equal(cu.fiscal.cas, Math.round((10230 + 347) * 0.25));
+});
+
+
+console.log("\nAxele de selecție");
+
+const {
+  GRUPURI, GRADE, NIVELURI, toateAxele, functiaPentru, gradePosibile, studiiPosibile,
+  CONDUCERE, AUXILIAR, salariuConducere, salariuAuxiliar, functiiAuxiliare, trepteAuxiliare,
+} = (await import(modulPath)) as typeof import("../src/lib/invatamant");
+
+ok("descompunerea acopera toate cele 21 de functii", () => {
+  assert.equal(toateAxele().length, 21);
+});
+
+ok("fiecare combinatie grup x grad x studii e unica", () => {
+  const chei = new Set(toateAxele().map((a) => `${a.grup}|${a.grad}|${a.studii}`));
+  assert.equal(chei.size, 21, "exista coliziuni intre combinatii");
+});
+
+ok("descompunerea se reconstituie exact — round-trip pe toate 21", () => {
+  for (const a of toateAxele()) {
+    assert.equal(functiaPentru(a.grup, a.grad, a.studii), a.nr, `${a.grup}/${a.grad}/${a.studii}`);
+  }
+});
+
+ok("combinatiile imposibile intorc null", () => {
+  // invatatorul nu exista cu studii superioare de lunga durata
+  assert.equal(functiaPentru("invatator", "gradul-i", "S"), null);
+  // necalificatul nu are grad didactic
+  assert.equal(functiaPentru("necalificat", "gradul-i", "M"), null);
+});
+
+ok("restrictiile de studii sunt cele din grila", () => {
+  assert.deepEqual([...studiiPosibile("profesor", "gradul-i")].sort(), ["S", "SSD"]);
+  assert.deepEqual([...studiiPosibile("invatator", "gradul-i")], ["M"]);
+  assert.deepEqual([...gradePosibile("necalificat")], ["fara-grad"]);
+});
+
+ok("etichetele acopera toate codurile folosite", () => {
+  const grupuri = new Set(GRUPURI.map((g) => g.cod));
+  const grade = new Set(GRADE.map((g) => g.cod));
+  const niv = new Set(NIVELURI.map((n) => n.cod));
+  for (const a of toateAxele()) {
+    assert.ok(grupuri.has(a.grup), `grup fara eticheta: ${a.grup}`);
+    assert.ok(grade.has(a.grad), `grad fara eticheta: ${a.grad}`);
+    assert.ok(niv.has(a.studii), `nivel fara eticheta: ${a.studii}`);
+  }
+});
+
+console.log("\nConducere și didactic auxiliar");
+
+ok("conducerea are 6 functii, cu director de unitate", () => {
+  assert.equal(CONDUCERE.length, 6);
+  assert.ok(CONDUCERE.some((r) => /Director unitate/.test(r.functie)));
+});
+
+ok("la conducere NU se aplica gradatia — e deja inclusa", () => {
+  const r = salariuConducere(5, "I");
+  assert.ok(r);
+  // valoarea din tabel, neatinsa de gradatie
+  assert.equal(r.salariu, 11484);
+  assert.match(r.temei, /nivel maxim/);
+});
+
+ok("studiile scurte diminueaza cu 20% la conducere", () => {
+  const plin = salariuConducere(5, "I");
+  const scurt = salariuConducere(5, "I", true);
+  assert.ok(plin && scurt);
+  assert.equal(scurt.salariu, Math.round(plin.salariu * 0.8));
+  assert.match(scurt.temei, /nota 1/);
+});
+
+ok("auxiliarul are 296 de randuri si 100 de functii", () => {
+  assert.equal(AUXILIAR.length, 296);
+  assert.equal(functiiAuxiliare().length, 100);
+});
+
+ok("contabilul si secretara scolii se gasesc", () => {
+  const nume = AUXILIAR.map((r) => r.functie.toLowerCase()).join(" | ");
+  assert.match(nume, /administrator financiar/);
+  assert.match(nume, /secretar/);
+  assert.match(nume, /bibliotecar/);
+});
+
+ok("la auxiliar gradatia se aplica normal", () => {
+  const f = functiiAuxiliare()[0];
+  const t = trepteAuxiliare(f.nr)[0];
+  const g0 = salariuAuxiliar(f.nr, t.treapta, 0);
+  const g5 = salariuAuxiliar(f.nr, t.treapta, 40);
+  assert.ok(g0 && g5);
+  assert.equal(g0.salariuDeBaza, g0.salariuGrila);
+  assert.ok(g5.salariuDeBaza > g5.salariuGrila, "gradatia n-a fost aplicata");
+  assert.equal(g5.gradatie, 5);
+});
+
+ok("orice functie auxiliara are cel putin o treapta care calculeaza", () => {
+  for (const f of functiiAuxiliare()) {
+    const tr = trepteAuxiliare(f.nr);
+    assert.ok(tr.length >= 1, `functia ${f.nr} n-are trepte`);
+    const r = salariuAuxiliar(f.nr, tr[0].treapta, 10);
+    assert.ok(r && r.salariuDeBaza > 0, `functia ${f.nr} nu calculeaza`);
+  }
 });
 
 console.log(`\n${treceri} verificari, toate trecute.`);

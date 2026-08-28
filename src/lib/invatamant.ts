@@ -316,3 +316,183 @@ export function functiiDisponibile(): { nr: number; functie: string; studii: str
 export function vechimiPentruFunctie(nr: number): string[] {
   return GRILA.filter((g) => g.nr === nr).map((g) => g.vechime);
 }
+
+// ─── Axele de selectie, pentru interfata cu pastile ──────────────────────────
+//
+// Grila are 21 de "functii" cu gradul copt in denumire — "Profesor,
+// educator-puericultor studii superioare de lunga durata grad didactic I".
+// Intr-un dropdown, o educatoare trebuie sa parcurga toate ca sa se recunoasca.
+//
+// Descompunerea in trei axe (grup x grad x studii) reconstituie exact cele 21
+// de combinatii, fara coliziuni — verificat in test. Asta permite selectoare
+// separate, cu combinatiile imposibile dezactivate: profesor si institutor
+// exista doar cu S si SSD, invatator si necalificat doar cu M.
+
+export type Grup = "profesor" | "institutor" | "invatator" | "necalificat";
+export type Grad = "gradul-i" | "gradul-ii" | "definitivat" | "debutant" | "fara-grad";
+
+export const GRUPURI: { cod: Grup; eticheta: string; exemple: string }[] = [
+  { cod: "profesor", eticheta: "Profesor", exemple: "profesor, educator-puericultor" },
+  { cod: "institutor", eticheta: "Institutor", exemple: "institutor, maistru-instructor" },
+  { cod: "invatator", eticheta: "Învățător / educatoare", exemple: "învățător, educatoare, maistru-instructor, educator-puericultor" },
+  { cod: "necalificat", eticheta: "Fără pregătire de specialitate", exemple: "suplinitor necalificat" },
+];
+
+export const GRADE: { cod: Grad; eticheta: string; explicatie: string }[] = [
+  { cod: "gradul-i", eticheta: "Gradul I", explicatie: "cel puțin 4 ani de la obținerea gradului II" },
+  { cod: "gradul-ii", eticheta: "Gradul II", explicatie: "cel puțin 4 ani de la definitivat" },
+  { cod: "definitivat", eticheta: "Definitivat", explicatie: "după examenul de definitivare în învățământ" },
+  { cod: "debutant", eticheta: "Debutant", explicatie: "până la obținerea definitivatului" },
+  { cod: "fara-grad", eticheta: "Fără grad", explicatie: "fără pregătire de specialitate" },
+];
+
+export const NIVELURI: { cod: string; eticheta: string; explicatie: string }[] = [
+  { cod: "S", eticheta: "S", explicatie: "studii superioare de lungă durată" },
+  { cod: "SSD", eticheta: "SSD", explicatie: "studii superioare de scurtă durată" },
+  { cod: "M", eticheta: "M", explicatie: "studii medii, nivel liceal" },
+];
+
+/** Descompunerea celor 21 de functii, derivata din denumiri. */
+const AXE: { nr: number; grup: Grup; grad: Grad; studii: string }[] = (() => {
+  const tipareGrad: [RegExp, Grad][] = [
+    [/grad didactic I$/, "gradul-i"],
+    [/grad didactic II$/, "gradul-ii"],
+    [/grad didactic definitiv$/, "definitivat"],
+    [/debutant$/, "debutant"],
+    [/fără pregătire de specialitate\)$/, "fara-grad"],
+  ];
+  const tipareGrup: [RegExp, Grup][] = [
+    [/^Profesor, educator-puericultor/, "profesor"],
+    [/^Institutor, maistru-instructor/, "institutor"],
+    [/^Învățător, educatoare, maistru-\s?instructor/, "invatator"],
+    [/^Profesor, învățător, educatoare, educator/, "necalificat"],
+  ];
+  const vazute = new Set<number>();
+  const out: { nr: number; grup: Grup; grad: Grad; studii: string }[] = [];
+  for (const r of GRILA) {
+    if (vazute.has(r.nr)) continue;
+    vazute.add(r.nr);
+    const grad = tipareGrad.find(([re]) => re.test(r.functie))?.[1];
+    const grup = tipareGrup.find(([re]) => re.test(r.functie))?.[1];
+    if (grad && grup) out.push({ nr: r.nr, grup, grad, studii: r.studii });
+  }
+  return out.sort((a, b) => a.nr - b.nr);
+})();
+
+export function toateAxele() {
+  return AXE;
+}
+
+/** Numarul functiei pentru o combinatie, sau null daca nu exista. */
+export function functiaPentru(grup: Grup, grad: Grad, studii: string): number | null {
+  return AXE.find((a) => a.grup === grup && a.grad === grad && a.studii === studii)?.nr ?? null;
+}
+
+/** Gradele posibile pentru un grup (restul se dezactiveaza in interfata). */
+export function gradePosibile(grup: Grup): Set<Grad> {
+  return new Set(AXE.filter((a) => a.grup === grup).map((a) => a.grad));
+}
+
+/** Nivelurile de studii posibile pentru un grup si un grad. */
+export function studiiPosibile(grup: Grup, grad: Grad): Set<string> {
+  return new Set(AXE.filter((a) => a.grup === grup && a.grad === grad).map((a) => a.studii));
+}
+
+// ─── Functii de conducere si didactice auxiliare (sectiunile 2 si 6) ─────────
+//
+// Aceeasi anexa, alte doua tabele. Motivul pentru care exista aici: un director
+// de scoala sau contabilul unitatii ajung pe aceeasi pagina si nu se gaseau in
+// grila didactica. Sectiunea 6 e cea mai mare din toata anexa — 296 de randuri.
+
+import grileExtra from "@/data/grile-anexa1-conducere-auxiliar.json";
+
+export const SURSA_GRILE_EXTRA = grileExtra.sursa;
+
+export type RandConducere = {
+  nr: number;
+  functie: string;
+  studii: string;
+  gradI: { ian2024: number; iun2024: number };
+  gradII: { ian2024: number; iun2024: number };
+};
+
+export type RandAuxiliar = {
+  nr: number;
+  functie: string;
+  treapta: string;
+  studii: string;
+  ian2024: number;
+  iun2024: number;
+};
+
+export const CONDUCERE: RandConducere[] = grileExtra.conducere.randuri as RandConducere[];
+export const AUXILIAR: RandAuxiliar[] = grileExtra.auxiliar.randuri as RandAuxiliar[];
+
+export const REGULI_CONDUCERE = grileExtra.conducere.reguli;
+
+/** Diminuarea pentru studii superioare de scurta durata la functiile de conducere. */
+export const DIMINUARE_SSD_CONDUCERE = 0.20;
+
+/**
+ * Salariul unei functii de conducere.
+ *
+ * CRITIC: la conducere NU se aplica gradatia de vechime. Nota 2 de sub tabelul
+ * sectiunii 2: "Salariile de baza prevazute la gradul I si gradul II cuprind
+ * sporul de vechime in munca la nivel maxim." Aplicarea gradatiei peste ar
+ * umfla rezultatul cu pana la 24,52%.
+ */
+export function salariuConducere(
+  nr: number,
+  grad: "I" | "II",
+  studiiScurte = false,
+): { salariu: number; rand: RandConducere; temei: string } | null {
+  const rand = CONDUCERE.find((r) => r.nr === nr);
+  if (!rand) return null;
+  const brut = (grad === "I" ? rand.gradI : rand.gradII)[COLOANA_IN_PLATA];
+  const salariu = studiiScurte ? Math.round(brut * (1 - DIMINUARE_SSD_CONDUCERE)) : brut;
+  return {
+    salariu,
+    rand,
+    temei:
+      "Anexa I, cap. I, pct. 2" +
+      (studiiScurte ? " · nota 1 (studii superioare de scurtă durată, −20%)" : "") +
+      " · include sporul de vechime la nivel maxim (nota 2)",
+  };
+}
+
+/** Functiile auxiliare distincte, pentru selector. */
+export function functiiAuxiliare(): { nr: number; functie: string }[] {
+  const vazute = new Set<number>();
+  const out: { nr: number; functie: string }[] = [];
+  for (const r of AUXILIAR) {
+    if (vazute.has(r.nr)) continue;
+    vazute.add(r.nr);
+    out.push({ nr: r.nr, functie: r.functie });
+  }
+  return out.sort((a, b) => a.functie.localeCompare(b.functie, "ro"));
+}
+
+/** Treptele disponibile pentru o functie auxiliara. */
+export function trepteAuxiliare(nr: number): RandAuxiliar[] {
+  return AUXILIAR.filter((r) => r.nr === nr);
+}
+
+/**
+ * Salariul unei functii didactice auxiliare. Sumele sunt la Gradatia 0, deci
+ * aici gradatia se aplica normal, spre deosebire de conducere.
+ */
+export function salariuAuxiliar(
+  nr: number,
+  treapta: string,
+  aniMunca: number,
+): { salariuGrila: number; gradatie: NivelGradatie; salariuDeBaza: number; rand: RandAuxiliar } | null {
+  const rand = AUXILIAR.find((r) => r.nr === nr && r.treapta === treapta);
+  if (!rand) return null;
+  const gradatie = gradatiaDupaVechime(aniMunca);
+  return {
+    salariuGrila: rand[COLOANA_IN_PLATA],
+    gradatie,
+    salariuDeBaza: aplicaGradatia(rand[COLOANA_IN_PLATA], gradatie),
+    rand,
+  };
+}

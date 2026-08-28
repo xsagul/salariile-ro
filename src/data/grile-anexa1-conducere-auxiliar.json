@@ -1,0 +1,2475 @@
+{
+ "sursa": {
+  "act": "Legea-cadru nr. 153/2017 privind salarizarea personalului platit din fonduri publice",
+  "anexa": "Anexa I, Capitolul I — sectiunile 2 si 6",
+  "formaConsolidata": "2026-01-01",
+  "url": "https://legislatie.just.ro/Public/DetaliiDocument/190446",
+  "dataExtragerii": "2026-08-28",
+  "extractor": "scripts/extrage-grile-anexa1.mjs"
+ },
+ "coloanaFolosita": "iun2024",
+ "conducere": {
+  "sectiune": "2. Functiile de conducere, de indrumare si control din invatamantul preuniversitar",
+  "reguli": [
+   "Salariile de la gradul I si gradul II CUPRIND sporul de vechime in munca la nivel maxim (nota 2 de sub tabel). Gradatia NU se mai aplica peste — ar umfla cu pana la 24,52%.",
+   "Pentru absolventii de studii superioare de scurta durata, salariile se diminueaza cu 20% (nota 1).",
+   "Salariile cuprind si salariul de baza aferent unei norme didactice."
+  ],
+  "randuri": [
+   {
+    "nr": 1,
+    "functie": "Inspector școlar general",
+    "studii": "S",
+    "gradI": {
+     "ian2024": 12410,
+     "iun2024": 13075
+    },
+    "gradII": {
+     "ian2024": 13341,
+     "iun2024": 14017
+    }
+   },
+   {
+    "nr": 2,
+    "functie": "Inspector școlar general adjunct",
+    "studii": "S",
+    "gradI": {
+     "ian2024": 11851,
+     "iun2024": 12486
+    },
+    "gradII": {
+     "ian2024": 12673,
+     "iun2024": 13315
+    }
+   },
+   {
+    "nr": 3,
+    "functie": "Director casa corpului didactic",
+    "studii": "S",
+    "gradI": {
+     "ian2024": 11851,
+     "iun2024": 12486
+    },
+    "gradII": {
+     "ian2024": 12673,
+     "iun2024": 13315
+    }
+   },
+   {
+    "nr": 4,
+    "functie": "Inspector școlar de specialitate, inspector școlar",
+    "studii": "S",
+    "gradI": {
+     "ian2024": 11161,
+     "iun2024": 11759
+    },
+    "gradII": {
+     "ian2024": 11782,
+     "iun2024": 12379
+    }
+   },
+   {
+    "nr": 5,
+    "functie": "Director unitate de învățământ",
+    "studii": "S",
+    "gradI": {
+     "ian2024": 10895,
+     "iun2024": 11484
+    },
+    "gradII": {
+     "ian2024": 11242,
+     "iun2024": 11812
+    }
+   },
+   {
+    "nr": 6,
+    "functie": "Director adjunct unitate de învățământ",
+    "studii": "S",
+    "gradI": {
+     "ian2024": 10856,
+     "iun2024": 11437
+    },
+    "gradII": {
+     "ian2024": 10930,
+     "iun2024": 11484
+    }
+   }
+  ]
+ },
+ "auxiliar": {
+  "sectiune": "6. Salarii de baza pentru functiile didactice auxiliare",
+  "reguli": [
+   "Sumele sunt la Gradatia 0, deci gradatia de vechime in munca se aplica normal, ca la sectiunea 5."
+  ],
+  "randuri": [
+   {
+    "nr": 1,
+    "functie": "Administrator financiar",
+    "treapta": "grad I",
+    "studii": "S",
+    "ian2024": 6221,
+    "iun2024": 6530
+   },
+   {
+    "nr": 1,
+    "functie": "Administrator financiar",
+    "treapta": "grad II",
+    "studii": "S",
+    "ian2024": 5921,
+    "iun2024": 6184
+   },
+   {
+    "nr": 1,
+    "functie": "Administrator financiar",
+    "treapta": "grad III",
+    "studii": "S",
+    "ian2024": 5760,
+    "iun2024": 5960
+   },
+   {
+    "nr": 1,
+    "functie": "Administrator financiar",
+    "treapta": "debutant",
+    "studii": "S",
+    "ian2024": 5537,
+    "iun2024": 5691
+   },
+   {
+    "nr": 2,
+    "functie": "Bibliotecar",
+    "treapta": "grad I",
+    "studii": "S",
+    "ian2024": 6042,
+    "iun2024": 6255
+   },
+   {
+    "nr": 2,
+    "functie": "Bibliotecar",
+    "treapta": "grad II",
+    "studii": "S",
+    "ian2024": 5833,
+    "iun2024": 6050
+   },
+   {
+    "nr": 2,
+    "functie": "Bibliotecar",
+    "treapta": "grad III",
+    "studii": "S",
+    "ian2024": 5705,
+    "iun2024": 5876
+   },
+   {
+    "nr": 2,
+    "functie": "Bibliotecar",
+    "treapta": "debutant",
+    "studii": "S",
+    "ian2024": 5513,
+    "iun2024": 5607
+   },
+   {
+    "nr": 3,
+    "functie": "Informatician, analist programator",
+    "treapta": "grad I A",
+    "studii": "S",
+    "ian2024": 6515,
+    "iun2024": 6820
+   },
+   {
+    "nr": 3,
+    "functie": "Informatician, analist programator",
+    "treapta": "grad I",
+    "studii": "S",
+    "ian2024": 6121,
+    "iun2024": 6400
+   },
+   {
+    "nr": 3,
+    "functie": "Informatician, analist programator",
+    "treapta": "grad II",
+    "studii": "S",
+    "ian2024": 5922,
+    "iun2024": 6140
+   },
+   {
+    "nr": 3,
+    "functie": "Informatician, analist programator",
+    "treapta": "debutant",
+    "studii": "S",
+    "ian2024": 5592,
+    "iun2024": 5775
+   },
+   {
+    "nr": 4,
+    "functie": "Informatician, analist programator",
+    "treapta": "grad I A",
+    "studii": "S",
+    "ian2024": 6392,
+    "iun2024": 6631
+   },
+   {
+    "nr": 4,
+    "functie": "Informatician, analist programator",
+    "treapta": "grad I",
+    "studii": "S",
+    "ian2024": 6005,
+    "iun2024": 6221
+   },
+   {
+    "nr": 4,
+    "functie": "Informatician, analist programator",
+    "treapta": "grad II",
+    "studii": "S",
+    "ian2024": 5813,
+    "iun2024": 5972
+   },
+   {
+    "nr": 4,
+    "functie": "Informatician, analist programator",
+    "treapta": "debutant",
+    "studii": "S",
+    "ian2024": 5513,
+    "iun2024": 5628
+   },
+   {
+    "nr": 5,
+    "functie": "Secretar institutie/ unitate de învățământ",
+    "treapta": "grad I",
+    "studii": "S",
+    "ian2024": 6158,
+    "iun2024": 6480
+   },
+   {
+    "nr": 5,
+    "functie": "Secretar institutie/ unitate de învățământ",
+    "treapta": "grad II",
+    "studii": "S",
+    "ian2024": 5921,
+    "iun2024": 6184
+   },
+   {
+    "nr": 5,
+    "functie": "Secretar institutie/ unitate de învățământ",
+    "treapta": "grad III",
+    "studii": "S",
+    "ian2024": 5760,
+    "iun2024": 5960
+   },
+   {
+    "nr": 5,
+    "functie": "Secretar institutie/ unitate de învățământ",
+    "treapta": "debutant",
+    "studii": "S",
+    "ian2024": 5537,
+    "iun2024": 5691
+   },
+   {
+    "nr": 6,
+    "functie": "Laborant",
+    "treapta": "grad IA",
+    "studii": "S",
+    "ian2024": 6034,
+    "iun2024": 6335
+   },
+   {
+    "nr": 6,
+    "functie": "Laborant",
+    "treapta": "grad I",
+    "studii": "S",
+    "ian2024": 5866,
+    "iun2024": 6100
+   },
+   {
+    "nr": 6,
+    "functie": "Laborant",
+    "treapta": "grad II",
+    "studii": "S",
+    "ian2024": 5705,
+    "iun2024": 5876
+   },
+   {
+    "nr": 6,
+    "functie": "Laborant",
+    "treapta": "debutant",
+    "studii": "S",
+    "ian2024": 5513,
+    "iun2024": 5607
+   },
+   {
+    "nr": 7,
+    "functie": "Pedagog școlar, Laborant, Mediator școlar",
+    "treapta": "grad IA",
+    "studii": "S",
+    "ian2024": 5932,
+    "iun2024": 6178
+   },
+   {
+    "nr": 7,
+    "functie": "Pedagog școlar, Laborant, Mediator școlar",
+    "treapta": "grad I",
+    "studii": "S",
+    "ian2024": 5770,
+    "iun2024": 5953
+   },
+   {
+    "nr": 7,
+    "functie": "Pedagog școlar, Laborant, Mediator școlar",
+    "treapta": "grad II",
+    "studii": "S",
+    "ian2024": 5657,
+    "iun2024": 5739
+   },
+   {
+    "nr": 7,
+    "functie": "Pedagog școlar, Laborant, Mediator școlar",
+    "treapta": "debutant",
+    "studii": "S",
+    "ian2024": 5513,
+    "iun2024": 5513
+   },
+   {
+    "nr": 8,
+    "functie": "Instructor-animator",
+    "treapta": "grad IA",
+    "studii": "S",
+    "ian2024": 5839,
+    "iun2024": 6058
+   },
+   {
+    "nr": 8,
+    "functie": "Instructor-animator",
+    "treapta": "grad I",
+    "studii": "S",
+    "ian2024": 5709,
+    "iun2024": 5859
+   },
+   {
+    "nr": 8,
+    "functie": "Instructor-animator",
+    "treapta": "grad II",
+    "studii": "S",
+    "ian2024": 5657,
+    "iun2024": 5657
+   },
+   {
+    "nr": 8,
+    "functie": "Instructor-animator",
+    "treapta": "debutant",
+    "studii": "S",
+    "ian2024": 5513,
+    "iun2024": 5513
+   },
+   {
+    "nr": 9,
+    "functie": "Instructor de educație extrașcolară, Corepetitor",
+    "treapta": "grad IA",
+    "studii": "S",
+    "ian2024": 5807,
+    "iun2024": 6033
+   },
+   {
+    "nr": 9,
+    "functie": "Instructor de educație extrașcolară, Corepetitor",
+    "treapta": "grad I",
+    "studii": "S",
+    "ian2024": 5678,
+    "iun2024": 5834
+   },
+   {
+    "nr": 9,
+    "functie": "Instructor de educație extrașcolară, Corepetitor",
+    "treapta": "grad II",
+    "studii": "S",
+    "ian2024": 5576,
+    "iun2024": 5576
+   },
+   {
+    "nr": 9,
+    "functie": "Instructor de educație extrașcolară, Corepetitor",
+    "treapta": "debutant",
+    "studii": "S",
+    "ian2024": 5513,
+    "iun2024": 5513
+   },
+   {
+    "nr": 10,
+    "functie": "Administrator patrimoniu",
+    "treapta": "grad I",
+    "studii": "S",
+    "ian2024": 6034,
+    "iun2024": 6335
+   },
+   {
+    "nr": 10,
+    "functie": "Administrator patrimoniu",
+    "treapta": "grad II",
+    "studii": "S",
+    "ian2024": 5835,
+    "iun2024": 6075
+   },
+   {
+    "nr": 10,
+    "functie": "Administrator patrimoniu",
+    "treapta": "grad III",
+    "studii": "S",
+    "ian2024": 5642,
+    "iun2024": 5825
+   },
+   {
+    "nr": 10,
+    "functie": "Administrator patrimoniu",
+    "treapta": "debutant",
+    "studii": "S",
+    "ian2024": 5513,
+    "iun2024": 5607
+   },
+   {
+    "nr": 11,
+    "functie": "Administrator financiar",
+    "treapta": "grad I",
+    "studii": "SSD",
+    "ian2024": 5835,
+    "iun2024": 6075
+   },
+   {
+    "nr": 11,
+    "functie": "Administrator financiar",
+    "treapta": "grad II",
+    "studii": "SSD",
+    "ian2024": 5605,
+    "iun2024": 5796
+   },
+   {
+    "nr": 11,
+    "functie": "Administrator financiar",
+    "treapta": "grad III",
+    "studii": "SSD",
+    "ian2024": 5460,
+    "iun2024": 5578
+   },
+   {
+    "nr": 11,
+    "functie": "Administrator financiar",
+    "treapta": "debutant",
+    "studii": "SSD",
+    "ian2024": 5408,
+    "iun2024": 5408
+   },
+   {
+    "nr": 12,
+    "functie": "Bibliotecar",
+    "treapta": "grad I",
+    "studii": "SSD",
+    "ian2024": 5701,
+    "iun2024": 5870
+   },
+   {
+    "nr": 12,
+    "functie": "Bibliotecar",
+    "treapta": "grad II",
+    "studii": "SSD",
+    "ian2024": 5513,
+    "iun2024": 5602
+   },
+   {
+    "nr": 12,
+    "functie": "Bibliotecar",
+    "treapta": "grad III",
+    "studii": "SSD",
+    "ian2024": 5460,
+    "iun2024": 5494
+   },
+   {
+    "nr": 12,
+    "functie": "Bibliotecar",
+    "treapta": "debutant",
+    "studii": "SSD",
+    "ian2024": 5408,
+    "iun2024": 5408
+   },
+   {
+    "nr": 13,
+    "functie": "Informatician, analist programator",
+    "treapta": "grad I",
+    "studii": "SSD",
+    "ian2024": 5910,
+    "iun2024": 6191
+   },
+   {
+    "nr": 13,
+    "functie": "Informatician, analist programator",
+    "treapta": "grad II",
+    "studii": "SSD",
+    "ian2024": 5681,
+    "iun2024": 5912
+   },
+   {
+    "nr": 13,
+    "functie": "Informatician, analist programator",
+    "treapta": "grad III",
+    "studii": "SSD",
+    "ian2024": 5522,
+    "iun2024": 5694
+   },
+   {
+    "nr": 13,
+    "functie": "Informatician, analist programator",
+    "treapta": "debutant",
+    "studii": "SSD",
+    "ian2024": 5408,
+    "iun2024": 5465
+   },
+   {
+    "nr": 14,
+    "functie": "Informatician, analist programator",
+    "treapta": "grad I",
+    "studii": "SSD",
+    "ian2024": 5801,
+    "iun2024": 6023
+   },
+   {
+    "nr": 14,
+    "functie": "Informatician, analist programator",
+    "treapta": "grad II",
+    "studii": "SSD",
+    "ian2024": 5578,
+    "iun2024": 5754
+   },
+   {
+    "nr": 14,
+    "functie": "Informatician, analist programator",
+    "treapta": "grad III",
+    "studii": "SSD",
+    "ian2024": 5460,
+    "iun2024": 5536
+   },
+   {
+    "nr": 14,
+    "functie": "Informatician, analist programator",
+    "treapta": "debutant",
+    "studii": "SSD",
+    "ian2024": 5408,
+    "iun2024": 5408
+   },
+   {
+    "nr": 15,
+    "functie": "Secretar institutie/ unitate de invatamant",
+    "treapta": "grad I",
+    "studii": "SSD",
+    "ian2024": 5835,
+    "iun2024": 6075
+   },
+   {
+    "nr": 15,
+    "functie": "Secretar institutie/ unitate de invatamant",
+    "treapta": "grad II",
+    "studii": "SSD",
+    "ian2024": 5605,
+    "iun2024": 5796
+   },
+   {
+    "nr": 15,
+    "functie": "Secretar institutie/ unitate de invatamant",
+    "treapta": "grad III",
+    "studii": "SSD",
+    "ian2024": 5460,
+    "iun2024": 5578
+   },
+   {
+    "nr": 15,
+    "functie": "Secretar institutie/ unitate de invatamant",
+    "treapta": "debutant",
+    "studii": "SSD",
+    "ian2024": 5408,
+    "iun2024": 5408
+   },
+   {
+    "nr": 16,
+    "functie": "Pedagog școlar, Laborant, Mediator școlar",
+    "treapta": "grad I",
+    "studii": "SSD",
+    "ian2024": 5692,
+    "iun2024": 5855
+   },
+   {
+    "nr": 16,
+    "functie": "Pedagog școlar, Laborant, Mediator școlar",
+    "treapta": "grad II",
+    "studii": "SSD",
+    "ian2024": 5513,
+    "iun2024": 5597
+   },
+   {
+    "nr": 16,
+    "functie": "Pedagog școlar, Laborant, Mediator școlar",
+    "treapta": "grad III",
+    "studii": "SSD",
+    "ian2024": 5460,
+    "iun2024": 5460
+   },
+   {
+    "nr": 16,
+    "functie": "Pedagog școlar, Laborant, Mediator școlar",
+    "treapta": "debutant",
+    "studii": "SSD",
+    "ian2024": 5408,
+    "iun2024": 5408
+   },
+   {
+    "nr": 17,
+    "functie": "Instructor-animator, Corepetitor, Instructor educație extrașcolară",
+    "treapta": "grad I",
+    "studii": "SSD",
+    "ian2024": 5537,
+    "iun2024": 5691
+   },
+   {
+    "nr": 17,
+    "functie": "Instructor-animator, Corepetitor, Instructor educație extrașcolară",
+    "treapta": "grad II",
+    "studii": "SSD",
+    "ian2024": 5513,
+    "iun2024": 5513
+   },
+   {
+    "nr": 17,
+    "functie": "Instructor-animator, Corepetitor, Instructor educație extrașcolară",
+    "treapta": "grad III",
+    "studii": "SSD",
+    "ian2024": 5460,
+    "iun2024": 5460
+   },
+   {
+    "nr": 17,
+    "functie": "Instructor-animator, Corepetitor, Instructor educație extrașcolară",
+    "treapta": "debutant",
+    "studii": "SSD",
+    "ian2024": 5408,
+    "iun2024": 5408
+   },
+   {
+    "nr": 18,
+    "functie": "Administrator patrimoniu",
+    "treapta": "grad I",
+    "studii": "SSD",
+    "ian2024": 5703,
+    "iun2024": 5920
+   },
+   {
+    "nr": 18,
+    "functie": "Administrator patrimoniu",
+    "treapta": "grad II",
+    "studii": "SSD",
+    "ian2024": 5544,
+    "iun2024": 5702
+   },
+   {
+    "nr": 18,
+    "functie": "Administrator patrimoniu",
+    "treapta": "grad III",
+    "studii": "SSD",
+    "ian2024": 5460,
+    "iun2024": 5494
+   },
+   {
+    "nr": 18,
+    "functie": "Administrator patrimoniu",
+    "treapta": "debutant",
+    "studii": "SSD",
+    "ian2024": 5408,
+    "iun2024": 5408
+   },
+   {
+    "nr": 19,
+    "functie": "Administrator financiar",
+    "treapta": "treapta I",
+    "studii": "M",
+    "ian2024": 5603,
+    "iun2024": 5820
+   },
+   {
+    "nr": 19,
+    "functie": "Administrator financiar",
+    "treapta": "treapta II",
+    "studii": "M",
+    "ian2024": 5444,
+    "iun2024": 5602
+   },
+   {
+    "nr": 19,
+    "functie": "Administrator financiar",
+    "treapta": "treapta III",
+    "studii": "M",
+    "ian2024": 5303,
+    "iun2024": 5365
+   },
+   {
+    "nr": 19,
+    "functie": "Administrator financiar",
+    "treapta": "debutant",
+    "studii": "M",
+    "ian2024": 5156,
+    "iun2024": 5156
+   },
+   {
+    "nr": 20,
+    "functie": "Bibliotecar",
+    "treapta": "treapta I",
+    "studii": "PL/M",
+    "ian2024": 5528,
+    "iun2024": 5704
+   },
+   {
+    "nr": 20,
+    "functie": "Bibliotecar",
+    "treapta": "treapta II",
+    "studii": "PL/M",
+    "ian2024": 5408,
+    "iun2024": 5497
+   },
+   {
+    "nr": 20,
+    "functie": "Bibliotecar",
+    "treapta": "treapta III",
+    "studii": "PL/M",
+    "ian2024": 5303,
+    "iun2024": 5303
+   },
+   {
+    "nr": 20,
+    "functie": "Bibliotecar",
+    "treapta": "debutant",
+    "studii": "PL/M",
+    "ian2024": 5156,
+    "iun2024": 5156
+   },
+   {
+    "nr": 21,
+    "functie": "Informatician, analist programator",
+    "treapta": "treapta I A",
+    "studii": "PL/M",
+    "ian2024": 5701,
+    "iun2024": 5943
+   },
+   {
+    "nr": 21,
+    "functie": "Informatician, analist programator",
+    "treapta": "treapta I",
+    "studii": "PL/M",
+    "ian2024": 5542,
+    "iun2024": 5725
+   },
+   {
+    "nr": 21,
+    "functie": "Informatician, analist programator",
+    "treapta": "treapta II",
+    "studii": "PL/M",
+    "ian2024": 5408,
+    "iun2024": 5518
+   },
+   {
+    "nr": 21,
+    "functie": "Informatician, analist programator",
+    "treapta": "debutant",
+    "studii": "PL/M",
+    "ian2024": 5303,
+    "iun2024": 5303
+   },
+   {
+    "nr": 22,
+    "functie": "Informatician, analist programator",
+    "treapta": "treapta I A",
+    "studii": "PL/M",
+    "ian2024": 5599,
+    "iun2024": 5786
+   },
+   {
+    "nr": 22,
+    "functie": "Informatician, analist programator",
+    "treapta": "treapta I",
+    "studii": "PL/M",
+    "ian2024": 5460,
+    "iun2024": 5568
+   },
+   {
+    "nr": 22,
+    "functie": "Informatician, analist programator",
+    "treapta": "treapta II",
+    "studii": "PL/M",
+    "ian2024": 5408,
+    "iun2024": 5408
+   },
+   {
+    "nr": 22,
+    "functie": "Informatician, analist programator",
+    "treapta": "debutant",
+    "studii": "PL/M",
+    "ian2024": 5303,
+    "iun2024": 5303
+   },
+   {
+    "nr": 23,
+    "functie": "Secretar institutie/ unitate de invatamant",
+    "treapta": "treapta I A",
+    "studii": "M",
+    "ian2024": 5603,
+    "iun2024": 5820
+   },
+   {
+    "nr": 23,
+    "functie": "Secretar institutie/ unitate de invatamant",
+    "treapta": "treapta I",
+    "studii": "M",
+    "ian2024": 5444,
+    "iun2024": 5602
+   },
+   {
+    "nr": 23,
+    "functie": "Secretar institutie/ unitate de invatamant",
+    "treapta": "treapta II",
+    "studii": "M",
+    "ian2024": 5303,
+    "iun2024": 5365
+   },
+   {
+    "nr": 23,
+    "functie": "Secretar institutie/ unitate de invatamant",
+    "treapta": "debutant",
+    "studii": "M",
+    "ian2024": 5156,
+    "iun2024": 5156
+   },
+   {
+    "nr": 24,
+    "functie": "Pedagog școlar",
+    "treapta": "treapta IA",
+    "studii": "M",
+    "ian2024": 5460,
+    "iun2024": 5599
+   },
+   {
+    "nr": 24,
+    "functie": "Pedagog școlar",
+    "treapta": "treapta I",
+    "studii": "M",
+    "ian2024": 5408,
+    "iun2024": 5408
+   },
+   {
+    "nr": 24,
+    "functie": "Pedagog școlar",
+    "treapta": "treapta II",
+    "studii": "M",
+    "ian2024": 5303,
+    "iun2024": 5303
+   },
+   {
+    "nr": 24,
+    "functie": "Pedagog școlar",
+    "treapta": "debutant",
+    "studii": "M",
+    "ian2024": 5156,
+    "iun2024": 5156
+   },
+   {
+    "nr": 25,
+    "functie": "Instructor-animator, Corepetitor, Instructor educație extrașcolară",
+    "treapta": "treapta IA",
+    "studii": "M",
+    "ian2024": 5460,
+    "iun2024": 5515
+   },
+   {
+    "nr": 25,
+    "functie": "Instructor-animator, Corepetitor, Instructor educație extrașcolară",
+    "treapta": "treapta I",
+    "studii": "M",
+    "ian2024": 5408,
+    "iun2024": 5408
+   },
+   {
+    "nr": 25,
+    "functie": "Instructor-animator, Corepetitor, Instructor educație extrașcolară",
+    "treapta": "treapta II",
+    "studii": "M",
+    "ian2024": 5303,
+    "iun2024": 5303
+   },
+   {
+    "nr": 25,
+    "functie": "Instructor-animator, Corepetitor, Instructor educație extrașcolară",
+    "treapta": "debutant",
+    "studii": "M",
+    "ian2024": 5156,
+    "iun2024": 5156
+   },
+   {
+    "nr": 26,
+    "functie": "Șef atelier școală",
+    "treapta": "treapta I",
+    "studii": "M",
+    "ian2024": 5522,
+    "iun2024": 5694
+   },
+   {
+    "nr": 26,
+    "functie": "Șef atelier școală",
+    "treapta": "treapta II",
+    "studii": "M",
+    "ian2024": 5408,
+    "iun2024": 5486
+   },
+   {
+    "nr": 26,
+    "functie": "Șef atelier școală",
+    "treapta": "treapta III",
+    "studii": "M",
+    "ian2024": 5303,
+    "iun2024": 5303
+   },
+   {
+    "nr": 26,
+    "functie": "Șef atelier școală",
+    "treapta": "debutant",
+    "studii": "M",
+    "ian2024": 5156,
+    "iun2024": 5156
+   },
+   {
+    "nr": 27,
+    "functie": "Administrator patrimoniu",
+    "treapta": "treapta I",
+    "studii": "M",
+    "ian2024": 5528,
+    "iun2024": 5704
+   },
+   {
+    "nr": 27,
+    "functie": "Administrator patrimoniu",
+    "treapta": "treapta II",
+    "studii": "M",
+    "ian2024": 5408,
+    "iun2024": 5497
+   },
+   {
+    "nr": 27,
+    "functie": "Administrator patrimoniu",
+    "treapta": "treapta III",
+    "studii": "M",
+    "ian2024": 5303,
+    "iun2024": 5303
+   },
+   {
+    "nr": 27,
+    "functie": "Administrator patrimoniu",
+    "treapta": "debutant",
+    "studii": "M",
+    "ian2024": 5156,
+    "iun2024": 5156
+   },
+   {
+    "nr": 28,
+    "functie": "Tehnician",
+    "treapta": "treapta IA",
+    "studii": "M",
+    "ian2024": 5578,
+    "iun2024": 5754
+   },
+   {
+    "nr": 28,
+    "functie": "Tehnician",
+    "treapta": "treapta I",
+    "studii": "M",
+    "ian2024": 5522,
+    "iun2024": 5694
+   },
+   {
+    "nr": 28,
+    "functie": "Tehnician",
+    "treapta": "treapta II",
+    "studii": "M",
+    "ian2024": 5408,
+    "iun2024": 5486
+   },
+   {
+    "nr": 28,
+    "functie": "Tehnician",
+    "treapta": "treapta III",
+    "studii": "M",
+    "ian2024": 5303,
+    "iun2024": 5303
+   },
+   {
+    "nr": 28,
+    "functie": "Tehnician",
+    "treapta": "debutant",
+    "studii": "M",
+    "ian2024": 5156,
+    "iun2024": 5156
+   },
+   {
+    "nr": 29,
+    "functie": "Laborant",
+    "treapta": "treapta I",
+    "studii": "PL/M",
+    "ian2024": 5460,
+    "iun2024": 5599
+   },
+   {
+    "nr": 29,
+    "functie": "Laborant",
+    "treapta": "treapta II",
+    "studii": "PL/M",
+    "ian2024": 5408,
+    "iun2024": 5408
+   },
+   {
+    "nr": 29,
+    "functie": "Laborant",
+    "treapta": "debutant",
+    "studii": "PL/M",
+    "ian2024": 5303,
+    "iun2024": 5303
+   },
+   {
+    "nr": 30,
+    "functie": "Instructor, model",
+    "treapta": "treapta I",
+    "studii": "PL/M",
+    "ian2024": 5531,
+    "iun2024": 5681
+   },
+   {
+    "nr": 30,
+    "functie": "Instructor, model",
+    "treapta": "treapta II",
+    "studii": "PL/M",
+    "ian2024": 5460,
+    "iun2024": 5473
+   },
+   {
+    "nr": 30,
+    "functie": "Instructor, model",
+    "treapta": "treapta III",
+    "studii": "PL/M",
+    "ian2024": 5408,
+    "iun2024": 5408
+   },
+   {
+    "nr": 30,
+    "functie": "Instructor, model",
+    "treapta": "debutant",
+    "studii": "PL/M",
+    "ian2024": 5303,
+    "iun2024": 5303
+   },
+   {
+    "nr": 31,
+    "functie": "Mediator școlar",
+    "treapta": "treapta IA",
+    "studii": "M/G",
+    "ian2024": 5460,
+    "iun2024": 5599
+   },
+   {
+    "nr": 31,
+    "functie": "Mediator școlar",
+    "treapta": "treapta I",
+    "studii": "M/G",
+    "ian2024": 4914,
+    "iun2024": 5083
+   },
+   {
+    "nr": 31,
+    "functie": "Mediator școlar",
+    "treapta": "treapta II",
+    "studii": "M/G",
+    "ian2024": 4623,
+    "iun2024": 4770
+   },
+   {
+    "nr": 31,
+    "functie": "Mediator școlar",
+    "treapta": "debutant",
+    "studii": "M/G",
+    "ian2024": 4463,
+    "iun2024": 4565
+   },
+   {
+    "nr": 32,
+    "functie": "Supraveghetor noapte",
+    "treapta": "treapta I",
+    "studii": "M/G",
+    "ian2024": 4241,
+    "iun2024": 4440
+   },
+   {
+    "nr": 32,
+    "functie": "Supraveghetor noapte",
+    "treapta": "treapta II",
+    "studii": "M/G",
+    "ian2024": 4094,
+    "iun2024": 4252
+   },
+   {
+    "nr": 32,
+    "functie": "Supraveghetor noapte",
+    "treapta": "treapta III",
+    "studii": "M/G",
+    "ian2024": 4005,
+    "iun2024": 4115
+   },
+   {
+    "nr": 32,
+    "functie": "Supraveghetor noapte",
+    "treapta": "debutant",
+    "studii": "M/G",
+    "ian2024": 3990,
+    "iun2024": 3990
+   },
+   {
+    "nr": 33,
+    "functie": "Bibliotecar, bibliotecar-arhivist, bibliograf, conservator, restaurator, analist; (Biblioteci Universitare)",
+    "treapta": "grad IA",
+    "studii": "S",
+    "ian2024": 6440,
+    "iun2024": 6705
+   },
+   {
+    "nr": 33,
+    "functie": "Bibliotecar, bibliotecar-arhivist, bibliograf, conservator, restaurator, analist; (Biblioteci Universitare)",
+    "treapta": "grad I",
+    "studii": "S",
+    "ian2024": 6077,
+    "iun2024": 6309
+   },
+   {
+    "nr": 33,
+    "functie": "Bibliotecar, bibliotecar-arhivist, bibliograf, conservator, restaurator, analist; (Biblioteci Universitare)",
+    "treapta": "grad II",
+    "studii": "S",
+    "ian2024": 5823,
+    "iun2024": 6010
+   },
+   {
+    "nr": 33,
+    "functie": "Bibliotecar, bibliotecar-arhivist, bibliograf, conservator, restaurator, analist; (Biblioteci Universitare)",
+    "treapta": "debutant",
+    "studii": "S",
+    "ian2024": 5537,
+    "iun2024": 5691
+   },
+   {
+    "nr": 34,
+    "functie": "Bibliotecar, bibliotecar-arhivist, bibliograf, tehnoredactor, conservator, restaurator; (Biblioteci Universitare)",
+    "treapta": "gradul I",
+    "studii": "SSD",
+    "ian2024": 5835,
+    "iun2024": 6075
+   },
+   {
+    "nr": 34,
+    "functie": "Bibliotecar, bibliotecar-arhivist, bibliograf, tehnoredactor, conservator, restaurator; (Biblioteci Universitare)",
+    "treapta": "grad II",
+    "studii": "SSD",
+    "ian2024": 5605,
+    "iun2024": 5796
+   },
+   {
+    "nr": 34,
+    "functie": "Bibliotecar, bibliotecar-arhivist, bibliograf, tehnoredactor, conservator, restaurator; (Biblioteci Universitare)",
+    "treapta": "grad III",
+    "studii": "SSD",
+    "ian2024": 5460,
+    "iun2024": 5578
+   },
+   {
+    "nr": 34,
+    "functie": "Bibliotecar, bibliotecar-arhivist, bibliograf, tehnoredactor, conservator, restaurator; (Biblioteci Universitare)",
+    "treapta": "debutant",
+    "studii": "SSD",
+    "ian2024": 5408,
+    "iun2024": 5408
+   },
+   {
+    "nr": 35,
+    "functie": "Bibliotecar, restaurator, conservator; (Biblioteci Universitare)",
+    "treapta": "treapta I",
+    "studii": "PL/M",
+    "ian2024": 5640,
+    "iun2024": 5849
+   },
+   {
+    "nr": 35,
+    "functie": "Bibliotecar, restaurator, conservator; (Biblioteci Universitare)",
+    "treapta": "treapta II",
+    "studii": "PL/M",
+    "ian2024": 5481,
+    "iun2024": 5631
+   },
+   {
+    "nr": 35,
+    "functie": "Bibliotecar, restaurator, conservator; (Biblioteci Universitare)",
+    "treapta": "treapta III",
+    "studii": "PL/M",
+    "ian2024": 5408,
+    "iun2024": 5423
+   },
+   {
+    "nr": 35,
+    "functie": "Bibliotecar, restaurator, conservator; (Biblioteci Universitare)",
+    "treapta": "debutant",
+    "studii": "PL/M",
+    "ian2024": 5303,
+    "iun2024": 5303
+   },
+   {
+    "nr": 36,
+    "functie": "Mânuitor carte, garderobier (Biblioteci Universitare)",
+    "treapta": "—",
+    "studii": "—",
+    "ian2024": 4460,
+    "iun2024": 4599
+   },
+   {
+    "nr": 37,
+    "functie": "Documentarist (CCD și centru de documentare și informare)",
+    "treapta": "grad IA",
+    "studii": "S",
+    "ian2024": 6440,
+    "iun2024": 6705
+   },
+   {
+    "nr": 37,
+    "functie": "Documentarist (CCD și centru de documentare și informare)",
+    "treapta": "grad I",
+    "studii": "S",
+    "ian2024": 6077,
+    "iun2024": 6309
+   },
+   {
+    "nr": 37,
+    "functie": "Documentarist (CCD și centru de documentare și informare)",
+    "treapta": "grad II",
+    "studii": "S",
+    "ian2024": 5823,
+    "iun2024": 6010
+   },
+   {
+    "nr": 37,
+    "functie": "Documentarist (CCD și centru de documentare și informare)",
+    "treapta": "debutant",
+    "studii": "S",
+    "ian2024": 5537,
+    "iun2024": 5691
+   },
+   {
+    "nr": 38,
+    "functie": "Documentarist",
+    "treapta": "treapta IA",
+    "studii": "M",
+    "ian2024": 5603,
+    "iun2024": 5820
+   },
+   {
+    "nr": 38,
+    "functie": "Documentarist",
+    "treapta": "treapta I",
+    "studii": "M",
+    "ian2024": 5444,
+    "iun2024": 5602
+   },
+   {
+    "nr": 38,
+    "functie": "Documentarist",
+    "treapta": "treapta II",
+    "studii": "M",
+    "ian2024": 5303,
+    "iun2024": 5365
+   },
+   {
+    "nr": 38,
+    "functie": "Documentarist",
+    "treapta": "debutant",
+    "studii": "M",
+    "ian2024": 5156,
+    "iun2024": 5156
+   },
+   {
+    "nr": 39,
+    "functie": "Secretar (tehnic) de redacție",
+    "treapta": "grad I",
+    "studii": "S",
+    "ian2024": 6065,
+    "iun2024": 6360
+   },
+   {
+    "nr": 39,
+    "functie": "Secretar (tehnic) de redacție",
+    "treapta": "grad II",
+    "studii": "S",
+    "ian2024": 5866,
+    "iun2024": 6100
+   },
+   {
+    "nr": 39,
+    "functie": "Secretar (tehnic) de redacție",
+    "treapta": "grad III",
+    "studii": "S",
+    "ian2024": 5705,
+    "iun2024": 5876
+   },
+   {
+    "nr": 39,
+    "functie": "Secretar (tehnic) de redacție",
+    "treapta": "debutant",
+    "studii": "S",
+    "ian2024": 5513,
+    "iun2024": 5607
+   },
+   {
+    "nr": 40,
+    "functie": "Secretar de redacție",
+    "treapta": "grad I",
+    "studii": "SSD",
+    "ian2024": 5766,
+    "iun2024": 5970
+   },
+   {
+    "nr": 40,
+    "functie": "Secretar de redacție",
+    "treapta": "grad II",
+    "studii": "SSD",
+    "ian2024": 5544,
+    "iun2024": 5702
+   },
+   {
+    "nr": 40,
+    "functie": "Secretar de redacție",
+    "treapta": "grad III",
+    "studii": "SSD",
+    "ian2024": 5460,
+    "iun2024": 5494
+   },
+   {
+    "nr": 40,
+    "functie": "Secretar de redacție",
+    "treapta": "debutant",
+    "studii": "SSD",
+    "ian2024": 5408,
+    "iun2024": 5408
+   },
+   {
+    "nr": 41,
+    "functie": "Secretar (tehnic) de redacție",
+    "treapta": "treapta IA",
+    "studii": "M",
+    "ian2024": 5528,
+    "iun2024": 5704
+   },
+   {
+    "nr": 41,
+    "functie": "Secretar (tehnic) de redacție",
+    "treapta": "treapta I",
+    "studii": "M",
+    "ian2024": 5408,
+    "iun2024": 5497
+   },
+   {
+    "nr": 41,
+    "functie": "Secretar (tehnic) de redacție",
+    "treapta": "treapta II",
+    "studii": "M",
+    "ian2024": 5303,
+    "iun2024": 5303
+   },
+   {
+    "nr": 41,
+    "functie": "Secretar (tehnic) de redacție",
+    "treapta": "debutant",
+    "studii": "M",
+    "ian2024": 5156,
+    "iun2024": 5156
+   },
+   {
+    "nr": 42,
+    "functie": "Redactor, tehnoredactor",
+    "treapta": "grad IA",
+    "studii": "S",
+    "ian2024": 6221,
+    "iun2024": 6530
+   },
+   {
+    "nr": 42,
+    "functie": "Redactor, tehnoredactor",
+    "treapta": "grad I",
+    "studii": "S",
+    "ian2024": 5921,
+    "iun2024": 6184
+   },
+   {
+    "nr": 42,
+    "functie": "Redactor, tehnoredactor",
+    "treapta": "grad II",
+    "studii": "S",
+    "ian2024": 5760,
+    "iun2024": 5960
+   },
+   {
+    "nr": 42,
+    "functie": "Redactor, tehnoredactor",
+    "treapta": "debutant",
+    "studii": "S",
+    "ian2024": 5537,
+    "iun2024": 5691
+   },
+   {
+    "nr": 43,
+    "functie": "Redactor, tehnoredactor",
+    "treapta": "grad I",
+    "studii": "SSD",
+    "ian2024": 5835,
+    "iun2024": 6075
+   },
+   {
+    "nr": 43,
+    "functie": "Redactor, tehnoredactor",
+    "treapta": "grad II",
+    "studii": "SSD",
+    "ian2024": 5605,
+    "iun2024": 5796
+   },
+   {
+    "nr": 43,
+    "functie": "Redactor, tehnoredactor",
+    "treapta": "grad III",
+    "studii": "SSD",
+    "ian2024": 5460,
+    "iun2024": 5578
+   },
+   {
+    "nr": 43,
+    "functie": "Redactor, tehnoredactor",
+    "treapta": "debutant",
+    "studii": "SSD",
+    "ian2024": 5408,
+    "iun2024": 5408
+   },
+   {
+    "nr": 44,
+    "functie": "Redactor, tehnoredactor",
+    "treapta": "treapta IA",
+    "studii": "M",
+    "ian2024": 5603,
+    "iun2024": 5820
+   },
+   {
+    "nr": 44,
+    "functie": "Redactor, tehnoredactor",
+    "treapta": "treapta I",
+    "studii": "M",
+    "ian2024": 5444,
+    "iun2024": 5602
+   },
+   {
+    "nr": 44,
+    "functie": "Redactor, tehnoredactor",
+    "treapta": "treapta II",
+    "studii": "M",
+    "ian2024": 5303,
+    "iun2024": 5365
+   },
+   {
+    "nr": 44,
+    "functie": "Redactor, tehnoredactor",
+    "treapta": "debutant",
+    "studii": "M",
+    "ian2024": 5156,
+    "iun2024": 5156
+   },
+   {
+    "nr": 45,
+    "functie": "Muzeograf, restaurator, conservator, taxidermist, educator muzeal",
+    "treapta": "grad IA",
+    "studii": "S",
+    "ian2024": 7053,
+    "iun2024": 7151
+   },
+   {
+    "nr": 45,
+    "functie": "Muzeograf, restaurator, conservator, taxidermist, educator muzeal",
+    "treapta": "grad I",
+    "studii": "S",
+    "ian2024": 6617,
+    "iun2024": 6690
+   },
+   {
+    "nr": 45,
+    "functie": "Muzeograf, restaurator, conservator, taxidermist, educator muzeal",
+    "treapta": "grad II",
+    "studii": "S",
+    "ian2024": 6330,
+    "iun2024": 6332
+   },
+   {
+    "nr": 45,
+    "functie": "Muzeograf, restaurator, conservator, taxidermist, educator muzeal",
+    "treapta": "debutant",
+    "studii": "S",
+    "ian2024": 5537,
+    "iun2024": 5691
+   },
+   {
+    "nr": 46,
+    "functie": "Muzeograf, restaurator, conservator, educator muzeal",
+    "treapta": "gradul I",
+    "studii": "SSD",
+    "ian2024": 5835,
+    "iun2024": 6075
+   },
+   {
+    "nr": 46,
+    "functie": "Muzeograf, restaurator, conservator, educator muzeal",
+    "treapta": "grad II",
+    "studii": "SSD",
+    "ian2024": 5605,
+    "iun2024": 5796
+   },
+   {
+    "nr": 46,
+    "functie": "Muzeograf, restaurator, conservator, educator muzeal",
+    "treapta": "grad III",
+    "studii": "SSD",
+    "ian2024": 5460,
+    "iun2024": 5578
+   },
+   {
+    "nr": 46,
+    "functie": "Muzeograf, restaurator, conservator, educator muzeal",
+    "treapta": "debutant",
+    "studii": "SSD",
+    "ian2024": 5408,
+    "iun2024": 5408
+   },
+   {
+    "nr": 47,
+    "functie": "Restaurator, gestionar custode",
+    "treapta": "treapta IA",
+    "studii": "M",
+    "ian2024": 5603,
+    "iun2024": 5820
+   },
+   {
+    "nr": 47,
+    "functie": "Restaurator, gestionar custode",
+    "treapta": "treapta I",
+    "studii": "M",
+    "ian2024": 5444,
+    "iun2024": 5602
+   },
+   {
+    "nr": 47,
+    "functie": "Restaurator, gestionar custode",
+    "treapta": "treapta II",
+    "studii": "M",
+    "ian2024": 5303,
+    "iun2024": 5365
+   },
+   {
+    "nr": 47,
+    "functie": "Restaurator, gestionar custode",
+    "treapta": "debutant",
+    "studii": "M",
+    "ian2024": 5156,
+    "iun2024": 5156
+   },
+   {
+    "nr": 48,
+    "functie": "Consilier juridic",
+    "treapta": "grad I A",
+    "studii": "S",
+    "ian2024": 6452,
+    "iun2024": 6770
+   },
+   {
+    "nr": 48,
+    "functie": "Consilier juridic",
+    "treapta": "grad I",
+    "studii": "S",
+    "ian2024": 6090,
+    "iun2024": 6375
+   },
+   {
+    "nr": 48,
+    "functie": "Consilier juridic",
+    "treapta": "gradul II",
+    "studii": "S",
+    "ian2024": 5891,
+    "iun2024": 6115
+   },
+   {
+    "nr": 48,
+    "functie": "Consilier juridic",
+    "treapta": "debutant",
+    "studii": "S",
+    "ian2024": 5537,
+    "iun2024": 5691
+   },
+   {
+    "nr": 49,
+    "functie": "Referent de specialitate",
+    "treapta": "grad I",
+    "studii": "S",
+    "ian2024": 6378,
+    "iun2024": 6655
+   },
+   {
+    "nr": 49,
+    "functie": "Referent de specialitate",
+    "treapta": "grad II",
+    "studii": "S",
+    "ian2024": 6014,
+    "iun2024": 6259
+   },
+   {
+    "nr": 49,
+    "functie": "Referent de specialitate",
+    "treapta": "grad III",
+    "studii": "S",
+    "ian2024": 5823,
+    "iun2024": 6010
+   },
+   {
+    "nr": 49,
+    "functie": "Referent de specialitate",
+    "treapta": "debutant",
+    "studii": "S",
+    "ian2024": 5537,
+    "iun2024": 5691
+   },
+   {
+    "nr": 50,
+    "functie": "Referent",
+    "treapta": "grad I",
+    "studii": "SSD",
+    "ian2024": 5835,
+    "iun2024": 6075
+   },
+   {
+    "nr": 50,
+    "functie": "Referent",
+    "treapta": "grad II",
+    "studii": "SSD",
+    "ian2024": 5605,
+    "iun2024": 5796
+   },
+   {
+    "nr": 50,
+    "functie": "Referent",
+    "treapta": "grad III",
+    "studii": "SSD",
+    "ian2024": 5460,
+    "iun2024": 5578
+   },
+   {
+    "nr": 50,
+    "functie": "Referent",
+    "treapta": "debutant",
+    "studii": "SSD",
+    "ian2024": 5408,
+    "iun2024": 5408
+   },
+   {
+    "nr": 51,
+    "functie": "Referent",
+    "treapta": "treapta IA",
+    "studii": "M",
+    "ian2024": 5640,
+    "iun2024": 5849
+   },
+   {
+    "nr": 51,
+    "functie": "Referent",
+    "treapta": "treapta I",
+    "studii": "M",
+    "ian2024": 5444,
+    "iun2024": 5602
+   },
+   {
+    "nr": 51,
+    "functie": "Referent",
+    "treapta": "treapta II",
+    "studii": "M",
+    "ian2024": 5303,
+    "iun2024": 5365
+   },
+   {
+    "nr": 51,
+    "functie": "Referent",
+    "treapta": "debutant",
+    "studii": "M",
+    "ian2024": 5156,
+    "iun2024": 5156
+   },
+   {
+    "nr": 52,
+    "functie": "Referent de specialitate",
+    "treapta": "grad I",
+    "studii": "S",
+    "ian2024": 6214,
+    "iun2024": 6403
+   },
+   {
+    "nr": 52,
+    "functie": "Referent de specialitate",
+    "treapta": "grad II",
+    "studii": "S",
+    "ian2024": 5864,
+    "iun2024": 6028
+   },
+   {
+    "nr": 52,
+    "functie": "Referent de specialitate",
+    "treapta": "grad III",
+    "studii": "S",
+    "ian2024": 5747,
+    "iun2024": 5789
+   },
+   {
+    "nr": 52,
+    "functie": "Referent de specialitate",
+    "treapta": "debutant",
+    "studii": "S",
+    "ian2024": 5516,
+    "iun2024": 5516
+   },
+   {
+    "nr": 53,
+    "functie": "Referent",
+    "treapta": "grad I",
+    "studii": "SSD",
+    "ian2024": 5692,
+    "iun2024": 5855
+   },
+   {
+    "nr": 53,
+    "functie": "Referent",
+    "treapta": "grad II",
+    "studii": "SSD",
+    "ian2024": 5513,
+    "iun2024": 5597
+   },
+   {
+    "nr": 53,
+    "functie": "Referent",
+    "treapta": "grad III",
+    "studii": "SSD",
+    "ian2024": 5460,
+    "iun2024": 5460
+   },
+   {
+    "nr": 53,
+    "functie": "Referent",
+    "treapta": "debutant",
+    "studii": "SSD",
+    "ian2024": 5408,
+    "iun2024": 5408
+   },
+   {
+    "nr": 54,
+    "functie": "Referent",
+    "treapta": "treapta IA",
+    "studii": "M",
+    "ian2024": 5513,
+    "iun2024": 5628
+   },
+   {
+    "nr": 54,
+    "functie": "Referent",
+    "treapta": "treapta I",
+    "studii": "M",
+    "ian2024": 5408,
+    "iun2024": 5408
+   },
+   {
+    "nr": 54,
+    "functie": "Referent",
+    "treapta": "treapta II",
+    "studii": "M",
+    "ian2024": 5303,
+    "iun2024": 5303
+   },
+   {
+    "nr": 54,
+    "functie": "Referent",
+    "treapta": "debutant",
+    "studii": "M",
+    "ian2024": 5156,
+    "iun2024": 5156
+   },
+   {
+    "nr": 55,
+    "functie": "* Auditor",
+    "treapta": "grad I A",
+    "studii": "S",
+    "ian2024": 6660,
+    "iun2024": 6950
+   },
+   {
+    "nr": 55,
+    "functie": "* Auditor",
+    "treapta": "grad I",
+    "studii": "S",
+    "ian2024": 6374,
+    "iun2024": 6650
+   },
+   {
+    "nr": 55,
+    "functie": "* Auditor",
+    "treapta": "grad II",
+    "studii": "S",
+    "ian2024": 5961,
+    "iun2024": 6200
+   },
+   {
+    "nr": 56,
+    "functie": "* Consilier, expert, inspector de specialitate, referent de specialitate",
+    "treapta": "grad I A",
+    "studii": "S",
+    "ian2024": 6565,
+    "iun2024": 6850
+   },
+   {
+    "nr": 56,
+    "functie": "* Consilier, expert, inspector de specialitate, referent de specialitate",
+    "treapta": "grad I",
+    "studii": "S",
+    "ian2024": 6279,
+    "iun2024": 6550
+   },
+   {
+    "nr": 56,
+    "functie": "* Consilier, expert, inspector de specialitate, referent de specialitate",
+    "treapta": "grad II",
+    "studii": "S",
+    "ian2024": 5962,
+    "iun2024": 6225
+   },
+   {
+    "nr": 56,
+    "functie": "* Consilier, expert, inspector de specialitate, referent de specialitate",
+    "treapta": "debutant",
+    "studii": "S",
+    "ian2024": 5705,
+    "iun2024": 5950
+   },
+   {
+    "nr": 57,
+    "functie": "* Consilier juridic",
+    "treapta": "grad I A",
+    "studii": "S",
+    "ian2024": 6565,
+    "iun2024": 6850
+   },
+   {
+    "nr": 57,
+    "functie": "* Consilier juridic",
+    "treapta": "grad I",
+    "studii": "S",
+    "ian2024": 6279,
+    "iun2024": 6550
+   },
+   {
+    "nr": 57,
+    "functie": "* Consilier juridic",
+    "treapta": "grad II",
+    "studii": "S",
+    "ian2024": 5962,
+    "iun2024": 6225
+   },
+   {
+    "nr": 57,
+    "functie": "* Consilier juridic",
+    "treapta": "debutant",
+    "studii": "S",
+    "ian2024": 5705,
+    "iun2024": 5950
+   },
+   {
+    "nr": 58,
+    "functie": "* Referent",
+    "treapta": "grad IA",
+    "studii": "SSD",
+    "ian2024": 5898,
+    "iun2024": 6150
+   },
+   {
+    "nr": 58,
+    "functie": "* Referent",
+    "treapta": "grad I",
+    "studii": "SSD",
+    "ian2024": 5802,
+    "iun2024": 6025
+   },
+   {
+    "nr": 58,
+    "functie": "* Referent",
+    "treapta": "grad II",
+    "studii": "SSD",
+    "ian2024": 5607,
+    "iun2024": 5825
+   },
+   {
+    "nr": 58,
+    "functie": "* Referent",
+    "treapta": "debutant",
+    "studii": "SSD",
+    "ian2024": 5505,
+    "iun2024": 5696
+   },
+   {
+    "nr": 59,
+    "functie": "*Referent",
+    "treapta": "treapta IA",
+    "studii": "M",
+    "ian2024": 5686,
+    "iun2024": 5920
+   },
+   {
+    "nr": 59,
+    "functie": "*Referent",
+    "treapta": "treapta I",
+    "studii": "M",
+    "ian2024": 5505,
+    "iun2024": 5696
+   },
+   {
+    "nr": 59,
+    "functie": "*Referent",
+    "treapta": "treapta II",
+    "studii": "M",
+    "ian2024": 5323,
+    "iun2024": 5470
+   },
+   {
+    "nr": 59,
+    "functie": "*Referent",
+    "treapta": "debutant",
+    "studii": "M",
+    "ian2024": 5156,
+    "iun2024": 5263
+   },
+   {
+    "nr": 60,
+    "functie": "Cercetător științific",
+    "treapta": "I",
+    "studii": "S",
+    "ian2024": 9741,
+    "iun2024": 10222
+   },
+   {
+    "nr": 61,
+    "functie": "Cercetător științific",
+    "treapta": "II",
+    "studii": "S",
+    "ian2024": 7822,
+    "iun2024": 8120
+   },
+   {
+    "nr": 62,
+    "functie": "Cercetător științific",
+    "treapta": "III",
+    "studii": "S",
+    "ian2024": 6189,
+    "iun2024": 6550
+   },
+   {
+    "nr": 63,
+    "functie": "Cercetător științific",
+    "treapta": "—",
+    "studii": "S",
+    "ian2024": 6028,
+    "iun2024": 6350
+   },
+   {
+    "nr": 64,
+    "functie": "Asistent de cercetare științifică",
+    "treapta": "—",
+    "studii": "S",
+    "ian2024": 5883,
+    "iun2024": 6150
+   },
+   {
+    "nr": 65,
+    "functie": "Asistent de cercetare științifică",
+    "treapta": "stagiar",
+    "studii": "S",
+    "ian2024": 5761,
+    "iun2024": 6035
+   },
+   {
+    "nr": 66,
+    "functie": "Asistent I",
+    "treapta": "—",
+    "studii": "M",
+    "ian2024": 5642,
+    "iun2024": 5906
+   },
+   {
+    "nr": 67,
+    "functie": "Asistent II",
+    "treapta": "—",
+    "studii": "M",
+    "ian2024": 5419,
+    "iun2024": 5617
+   },
+   {
+    "nr": 68,
+    "functie": "Asistent",
+    "treapta": "stagiar",
+    "studii": "M",
+    "ian2024": 5156,
+    "iun2024": 5156
+   },
+   {
+    "nr": 69,
+    "functie": "Inginer de sistem",
+    "treapta": "grad I A",
+    "studii": "S",
+    "ian2024": 6440,
+    "iun2024": 6705
+   },
+   {
+    "nr": 69,
+    "functie": "Inginer de sistem",
+    "treapta": "grad I",
+    "studii": "S",
+    "ian2024": 6046,
+    "iun2024": 6284
+   },
+   {
+    "nr": 69,
+    "functie": "Inginer de sistem",
+    "treapta": "grad II",
+    "studii": "S",
+    "ian2024": 5854,
+    "iun2024": 6035
+   },
+   {
+    "nr": 69,
+    "functie": "Inginer de sistem",
+    "treapta": "debutant",
+    "studii": "S",
+    "ian2024": 5537,
+    "iun2024": 5691
+   },
+   {
+    "nr": 70,
+    "functie": "Operator, controlor date I",
+    "treapta": "—",
+    "studii": "M",
+    "ian2024": 5640,
+    "iun2024": 5849
+   },
+   {
+    "nr": 70,
+    "functie": "II",
+    "treapta": "—",
+    "studii": "M",
+    "ian2024": 5444,
+    "iun2024": 5602
+   },
+   {
+    "nr": 70,
+    "functie": "III",
+    "treapta": "—",
+    "studii": "M",
+    "ian2024": 5303,
+    "iun2024": 5365
+   },
+   {
+    "nr": 70,
+    "functie": "III",
+    "treapta": "debutant",
+    "studii": "M",
+    "ian2024": 5156,
+    "iun2024": 5156
+   },
+   {
+    "nr": 71,
+    "functie": "Inginer specialist",
+    "treapta": "grad I A",
+    "studii": "S",
+    "ian2024": 6316,
+    "iun2024": 6560
+   },
+   {
+    "nr": 71,
+    "functie": "Inginer specialist",
+    "treapta": "grad I",
+    "studii": "S",
+    "ian2024": 5960,
+    "iun2024": 6175
+   },
+   {
+    "nr": 71,
+    "functie": "Inginer specialist",
+    "treapta": "grad II",
+    "studii": "S",
+    "ian2024": 5768,
+    "iun2024": 5926
+   },
+   {
+    "nr": 71,
+    "functie": "Inginer specialist",
+    "treapta": "debutant",
+    "studii": "S",
+    "ian2024": 5513,
+    "iun2024": 5607
+   },
+   {
+    "nr": 72,
+    "functie": "Subinginer I",
+    "treapta": "—",
+    "studii": "SSD",
+    "ian2024": 5766,
+    "iun2024": 5970
+   },
+   {
+    "nr": 72,
+    "functie": "II",
+    "treapta": "—",
+    "studii": "SSD",
+    "ian2024": 5544,
+    "iun2024": 5702
+   },
+   {
+    "nr": 72,
+    "functie": "III",
+    "treapta": "—",
+    "studii": "SSD",
+    "ian2024": 5460,
+    "iun2024": 5494
+   },
+   {
+    "nr": 72,
+    "functie": "III",
+    "treapta": "debutant",
+    "studii": "SSD",
+    "ian2024": 5408,
+    "iun2024": 5408
+   },
+   {
+    "nr": 73,
+    "functie": "Căpitan fluvial categoria A, căpitan fluvial categoria B",
+    "treapta": "—",
+    "studii": "M",
+    "ian2024": 5513,
+    "iun2024": 5513
+   },
+   {
+    "nr": 74,
+    "functie": "Ofițer punte maritim portuar, ofițer mecanic maritim-portuar, ofițer electrician maritim-portuar",
+    "treapta": "—",
+    "studii": "M",
+    "ian2024": 5303,
+    "iun2024": 5303
+   },
+   {
+    "nr": 75,
+    "functie": "Șef echipaj, timonier șef",
+    "treapta": "—",
+    "studii": "M/G",
+    "ian2024": 5408,
+    "iun2024": 5408
+   },
+   {
+    "nr": 76,
+    "functie": "Timonier fluvial",
+    "treapta": "—",
+    "studii": "M/G",
+    "ian2024": 5093,
+    "iun2024": 5093
+   },
+   {
+    "nr": 77,
+    "functie": "Șef mecanic fluvial",
+    "treapta": "—",
+    "studii": "M",
+    "ian2024": 5513,
+    "iun2024": 5513
+   },
+   {
+    "nr": 78,
+    "functie": "Inginer agronom, zootehnist, pedolog",
+    "treapta": "grad I",
+    "studii": "S",
+    "ian2024": 6128,
+    "iun2024": 6410
+   },
+   {
+    "nr": 78,
+    "functie": "Inginer agronom, zootehnist, pedolog",
+    "treapta": "grad II",
+    "studii": "S",
+    "ian2024": 5854,
+    "iun2024": 6035
+   },
+   {
+    "nr": 78,
+    "functie": "Inginer agronom, zootehnist, pedolog",
+    "treapta": "debutant",
+    "studii": "S",
+    "ian2024": 5537,
+    "iun2024": 5691
+   },
+   {
+    "nr": 79,
+    "functie": "Biolog, biochimist, chimist, fizician",
+    "treapta": "principal",
+    "studii": "S",
+    "ian2024": 6378,
+    "iun2024": 6655
+   },
+   {
+    "nr": 80,
+    "functie": "Biolog, biochimist, chimist, fizician",
+    "treapta": "specialist",
+    "studii": "S",
+    "ian2024": 5983,
+    "iun2024": 6234
+   },
+   {
+    "nr": 81,
+    "functie": "Biolog, biochimist, chimist, fizician",
+    "treapta": "—",
+    "studii": "S",
+    "ian2024": 5760,
+    "iun2024": 5960
+   },
+   {
+    "nr": 82,
+    "functie": "Biolog, biochimist, chimist, fizician",
+    "treapta": "debutant",
+    "studii": "S",
+    "ian2024": 5537,
+    "iun2024": 5691
+   },
+   {
+    "nr": 83,
+    "functie": "Sociolog",
+    "treapta": "principal",
+    "studii": "S",
+    "ian2024": 6339,
+    "iun2024": 6624
+   },
+   {
+    "nr": 84,
+    "functie": "Sociolog",
+    "treapta": "—",
+    "studii": "S",
+    "ian2024": 5760,
+    "iun2024": 5960
+   },
+   {
+    "nr": 85,
+    "functie": "Sociolog",
+    "treapta": "debutant",
+    "studii": "S",
+    "ian2024": 5537,
+    "iun2024": 5691
+   },
+   {
+    "nr": 86,
+    "functie": "Psiholog",
+    "treapta": "principal",
+    "studii": "S",
+    "ian2024": 6378,
+    "iun2024": 6655
+   },
+   {
+    "nr": 87,
+    "functie": "Psiholog",
+    "treapta": "specialist",
+    "studii": "S",
+    "ian2024": 5983,
+    "iun2024": 6234
+   },
+   {
+    "nr": 88,
+    "functie": "Psiholog",
+    "treapta": "practicant",
+    "studii": "S",
+    "ian2024": 5760,
+    "iun2024": 5960
+   },
+   {
+    "nr": 89,
+    "functie": "Psiholog",
+    "treapta": "debutant",
+    "studii": "S",
+    "ian2024": 5537,
+    "iun2024": 5691
+   },
+   {
+    "nr": 90,
+    "functie": "Asistent social",
+    "treapta": "principal",
+    "studii": "S",
+    "ian2024": 6378,
+    "iun2024": 6655
+   },
+   {
+    "nr": 91,
+    "functie": "Asistent social",
+    "treapta": "specialist",
+    "studii": "S",
+    "ian2024": 6014,
+    "iun2024": 6259
+   },
+   {
+    "nr": 92,
+    "functie": "Asistent social",
+    "treapta": "practicant",
+    "studii": "S",
+    "ian2024": 5823,
+    "iun2024": 6010
+   },
+   {
+    "nr": 93,
+    "functie": "Asistent social",
+    "treapta": "debutant",
+    "studii": "S",
+    "ian2024": 5537,
+    "iun2024": 5691
+   },
+   {
+    "nr": 94,
+    "functie": "Asistent social",
+    "treapta": "principal",
+    "studii": "SSD",
+    "ian2024": 5719,
+    "iun2024": 5897
+   },
+   {
+    "nr": 95,
+    "functie": "Asistent social",
+    "treapta": "specialist",
+    "studii": "SSD",
+    "ian2024": 5513,
+    "iun2024": 5628
+   },
+   {
+    "nr": 96,
+    "functie": "Asistent social",
+    "treapta": "practicant",
+    "studii": "SSD",
+    "ian2024": 5460,
+    "iun2024": 5460
+   },
+   {
+    "nr": 97,
+    "functie": "Asistent social",
+    "treapta": "debutant",
+    "studii": "SSD",
+    "ian2024": 5408,
+    "iun2024": 5408
+   },
+   {
+    "nr": 98,
+    "functie": "Infirmieră/infirmieră în educație timpurie",
+    "treapta": "treapta I",
+    "studii": "M/G",
+    "ian2024": 5531,
+    "iun2024": 5681
+   },
+   {
+    "nr": 98,
+    "functie": "Infirmieră/infirmieră în educație timpurie",
+    "treapta": "treapta II",
+    "studii": "M/G",
+    "ian2024": 5460,
+    "iun2024": 5473
+   },
+   {
+    "nr": 98,
+    "functie": "Infirmieră/infirmieră în educație timpurie",
+    "treapta": "treapta III",
+    "studii": "M/G",
+    "ian2024": 5093,
+    "iun2024": 5102
+   },
+   {
+    "nr": 98,
+    "functie": "Infirmieră/infirmieră în educație timpurie",
+    "treapta": "debutant",
+    "studii": "M/G",
+    "ian2024": 4988,
+    "iun2024": 4988
+   },
+   {
+    "nr": 99,
+    "functie": "Îngrijitor educație timpurie",
+    "treapta": "treapta IA",
+    "studii": "M",
+    "ian2024": 5522,
+    "iun2024": 5694
+   },
+   {
+    "nr": 99,
+    "functie": "Îngrijitor educație timpurie",
+    "treapta": "treapta I",
+    "studii": "M",
+    "ian2024": 5408,
+    "iun2024": 5486
+   },
+   {
+    "nr": 99,
+    "functie": "Îngrijitor educație timpurie",
+    "treapta": "treapta II",
+    "studii": "M",
+    "ian2024": 5303,
+    "iun2024": 5303
+   },
+   {
+    "nr": 99,
+    "functie": "Îngrijitor educație timpurie",
+    "treapta": "debutant",
+    "studii": "M",
+    "ian2024": 5156,
+    "iun2024": 5156
+   },
+   {
+    "nr": 100,
+    "functie": "Consilier în Carieră",
+    "treapta": "grad IA",
+    "studii": "S",
+    "ian2024": 5723,
+    "iun2024": 6133
+   },
+   {
+    "nr": 100,
+    "functie": "Consilier în Carieră",
+    "treapta": "grad I",
+    "studii": "S",
+    "ian2024": 5360,
+    "iun2024": 5737
+   },
+   {
+    "nr": 100,
+    "functie": "Consilier în Carieră",
+    "treapta": "grad II",
+    "studii": "S",
+    "ian2024": 5168,
+    "iun2024": 5488
+   },
+   {
+    "nr": 100,
+    "functie": "Consilier în Carieră",
+    "treapta": "debutant",
+    "studii": "S",
+    "ian2024": 4883,
+    "iun2024": 5169
+   }
+  ]
+ }
+}
