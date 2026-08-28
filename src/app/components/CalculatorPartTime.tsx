@@ -15,7 +15,7 @@ const fmtOre = (n: number) =>
 const fieldLabel = "mb-2 block text-xs font-medium text-stone-500";
 const colHeader = "mb-4 border-b border-stone-200 pb-2 text-lg font-medium text-stone-900";
 const controlBox =
-  "min-h-12 w-full min-w-0 rounded border border-stone-300 bg-surface px-3 py-2 text-base text-stone-900 outline-none transition focus:border-stone-400 focus:shadow-[0_0_6px_rgba(28,25,23,0.12)] sm:text-sm";
+  "w-full min-w-0 rounded border border-stone-300 bg-surface px-3 py-2 text-base text-stone-900 outline-none transition focus:border-stone-400 focus:shadow-[0_0_6px_rgba(28,25,23,0.12)] sm:text-sm";
 
 const EXCEPTII = [
   { value: "", label: "Nu se aplică nicio excepție" },
@@ -214,9 +214,9 @@ export default function CalculatorPartTime() {
 
   return (
     <section className="border-b border-stone-200 bg-canvas" aria-labelledby="calculator-part-time">
-      <div className="mx-auto grid max-w-6xl items-start gap-6 px-4 py-8 sm:px-6 sm:py-12 lg:grid-cols-5">
+      <div className="mx-auto grid max-w-6xl items-start gap-6 px-4 py-8 sm:px-6 sm:py-12 md:grid-cols-5">
         <form
-          className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 lg:col-span-2"
+          className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-2"
           onSubmit={(event) => {
             event.preventDefault();
             calculeaza();
@@ -254,7 +254,6 @@ export default function CalculatorPartTime() {
                 id="part-time-brut"
                 name="salariu-brut-part-time"
                 inputMode="numeric"
-                pattern="[0-9]*"
                 value={brut ? fmt(Number(brut)) : ""}
                 placeholder={`ex: ${fmt(salariuMinimPartTime(4))}`}
                 aria-invalid={emptyWarn || subMinimulLegal}
@@ -263,9 +262,9 @@ export default function CalculatorPartTime() {
                   setBrut(event.target.value.replace(/\D/g, ""));
                   if (emptyWarn) setEmptyWarn(false);
                 }}
-                className="min-h-12 min-w-0 flex-1 bg-transparent px-3 text-base tabular-nums text-stone-900 outline-none"
+                className="min-w-0 flex-1 bg-transparent px-3 py-2 text-base tabular-nums text-stone-900 outline-none"
               />
-              <span className="flex min-h-12 shrink-0 items-center border-l border-stone-300 px-3 text-sm text-stone-600">lei / lună</span>
+              <span className="flex shrink-0 items-center whitespace-nowrap border-l border-stone-200 px-3 text-xs font-medium text-stone-500">lei / lună</span>
             </div>
             <p
               id="part-time-brut-ajutor"
@@ -345,7 +344,7 @@ export default function CalculatorPartTime() {
 
         <div
           id="rezultat-part-time"
-          className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 lg:col-span-3"
+          className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-3"
           aria-live="polite"
         >
           <h2 className={colHeader}>Rezultat calcul</h2>
