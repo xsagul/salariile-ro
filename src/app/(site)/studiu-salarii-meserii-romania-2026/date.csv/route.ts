@@ -39,7 +39,7 @@ export function GET() {
         row.sector.cheie,
         row.sector.denumire,
         row.sector.brutCurent,
-        row.net,
+        row.netStandard,
         TOTAL_ECONOMIE.brutCurent,
         diferenta.toFixed(1),
         LUNA_REFERINTA,
