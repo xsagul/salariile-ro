@@ -88,3 +88,9 @@ gsc-key.json
 /CHESTIONAR-BRAND.md
 # Verificarea surselor contine decizii interne inca neanuntate.
 /VERIFICARI-SURSE-SALARII-*.md
+
+# Arhiva Umami: date de trafic defalcate pe pagini, sesiuni si interogari.
+# Aceeasi ratiune ca la /seo-snapshots/ si /AUDIENTA-MASURATA-*.md de mai sus —
+# repo-ul e public. Concluziile publicabile se muta in PROGRES.md.
+/export-umami/
+/.env.umami
