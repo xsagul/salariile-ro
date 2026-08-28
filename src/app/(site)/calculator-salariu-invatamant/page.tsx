@@ -11,7 +11,7 @@ import { Breadcrumb, Faq, H1, Hero, Lead, PaginiConexe, Prose, Section } from "@
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
 import CalculatorInvatamant from "@/app/components/CalculatorInvatamant";
-import { GRILA, SURSA_GRILA, GRADATII, calculeazaInvatamantComplet } from "@/lib/invatamant";
+import { GRILA, SURSA_GRILA, GRADATII } from "@/lib/invatamant";
 
 const TITLU = "Calculator salariu învățământ 2026: brut, gradație și net";
 const DESC =
@@ -25,13 +25,6 @@ export const metadata: Metadata = {
   openGraph: ogPage({ title: TITLU, description: DESC, path: "/calculator-salariu-invatamant" }),
   twitter: twPage({ title: TITLU, description: DESC }),
 };
-
-// Reper afișat în lede: profesor grad I, vechime maximă, gradația 5.
-const REPER = calculeazaInvatamantComplet({
-  functie: 1,
-  vechimeInvatamant: "peste 25 ani",
-  aniMunca: 30,
-});
 
 const MIN_GRILA = Math.min(...GRILA.map((g) => g.iun2024));
 const MAX_GRILA = Math.max(...GRILA.map((g) => g.iun2024));
@@ -119,17 +112,9 @@ export default function Page() {
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Calculator salariu învățământ" }]} />
         <H1>Calculator salariu învățământ 2026</H1>
         <Lead>
-          {REPER ? (
-            <>
-              Un profesor cu grad didactic I, peste 25 de ani vechime în învățământ și gradația 5 are{" "}
-              <strong>{fmt(REPER.salariuDeBaza)} lei brut</strong> salariu de bază, adică{" "}
-              <strong>{fmt(REPER.fiscal.netBani)} lei net</strong>. Cu dirigenție, brutul urcă la{" "}
-              {fmt(Math.round(REPER.salariuDeBaza * 1.1))} lei.
-            </>
-          ) : (
-            <>Calculează salariul unui cadru didactic pe grila din Legea 153/2017.</>
-          )}{" "}
-          Alege încadrarea mai jos și vezi fiecare linie cu articolul din lege.
+          Alege-ți încadrarea și vezi salariul de bază, gradația și netul — fiecare
+          linie cu articolul din lege. Grila e cea în plată azi, din Legea 153/2017,
+          formă consolidată la {new Date(SURSA_GRILA.formaConsolidata).toLocaleDateString("ro-RO")}.
         </Lead>
       </Hero>
 
