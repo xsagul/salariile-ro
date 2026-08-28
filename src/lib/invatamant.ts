@@ -332,10 +332,10 @@ export type Grup = "profesor" | "institutor" | "invatator" | "necalificat";
 export type Grad = "gradul-i" | "gradul-ii" | "definitivat" | "debutant" | "fara-grad";
 
 export const GRUPURI: { cod: Grup; eticheta: string; exemple: string }[] = [
-  { cod: "profesor", eticheta: "Profesor", exemple: "profesor, educator-puericultor" },
-  { cod: "institutor", eticheta: "Institutor", exemple: "institutor, maistru-instructor" },
-  { cod: "invatator", eticheta: "Învățător / educatoare", exemple: "învățător, educatoare, maistru-instructor, educator-puericultor" },
-  { cod: "necalificat", eticheta: "Fără pregătire de specialitate", exemple: "suplinitor necalificat" },
+  { cod: "profesor", eticheta: "Profesor", exemple: "Profesor sau educator-puericultor, cu studii superioare." },
+  { cod: "institutor", eticheta: "Institutor", exemple: "Institutor sau maistru-instructor, cu studii superioare." },
+  { cod: "invatator", eticheta: "Învățător", exemple: "Învățător, educatoare, maistru-instructor sau educator-puericultor, cu studii de nivel liceal." },
+  { cod: "necalificat", eticheta: "Necalificat", exemple: "Fără pregătire de specialitate — suplinitor necalificat." },
 ];
 
 export const GRADE: { cod: Grad; eticheta: string; explicatie: string }[] = [

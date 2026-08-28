@@ -105,6 +105,7 @@ export default function CalculatorInvatamant() {
   // comune
   const [majorari, setMajorari] = useState<string[]>([]);
   const [doctorat, setDoctorat] = useState(false);
+  const [avansat, setAvansat] = useState(false);
   const [rez, setRez] = useState<
     | { fel: "didactic"; d: NonNullable<ReturnType<typeof calculeazaInvatamantComplet>> }
     | { fel: "conducere"; c: NonNullable<ReturnType<typeof calculeazaConducereComplet>> }
@@ -170,8 +171,8 @@ export default function CalculatorInvatamant() {
           <SelectorPastile<Categorie>
             eticheta="Ce fel de post ocupi"
             optiuni={[
-              { valoare: "didactic", eticheta: "Didactic de predare", detaliu: "profesor, învățător, educatoare" },
-              { valoare: "conducere", eticheta: "Conducere", detaliu: "director, director adjunct, inspector" },
+              { valoare: "didactic", eticheta: "Didactic de predare", detaliu: "Profesor, învățător, educatoare — personal de predare." },
+              { valoare: "conducere", eticheta: "Conducere", detaliu: "Director, director adjunct, inspector școlar." },
             ]}
             valoare={categorie}
             onChange={(v) => { setCategorie(v); sterge(); }}
@@ -179,8 +180,8 @@ export default function CalculatorInvatamant() {
 
           {categorie === "didactic" ? (
             <>
-              <SelectorPastile<Grup> eticheta="Funcția" optiuni={optGrup} valoare={grup} onChange={alegeGrup} coloane={1} />
-              <SelectorPastile<Grad> eticheta="Gradul didactic" optiuni={optGrad} valoare={grad} onChange={alegeGrad} coloane={1} />
+              <SelectorPastile<Grup> eticheta="Funcția" optiuni={optGrup} valoare={grup} onChange={alegeGrup} />
+              <SelectorPastile<Grad> eticheta="Gradul didactic" optiuni={optGrad} valoare={grad} onChange={alegeGrad} />
               <SelectorPastile<string>
                 eticheta="Nivelul studiilor"
                 ajutor="Opțiunile stinse nu există în grilă pentru funcția aleasă."
@@ -198,7 +199,7 @@ export default function CalculatorInvatamant() {
               <SelectorPastile<NivelGradatie>
                 eticheta="Gradația"
                 ajutor="Se dă după vechimea în MUNCĂ, din toată cariera — nu doar din învățământ."
-                optiuni={GRADATII.map((g) => ({ valoare: g.nivel as NivelGradatie, eticheta: `Gradația ${g.nivel}`, detaliu: g.eticheta }))}
+                optiuni={GRADATII.map((g) => ({ valoare: g.nivel as NivelGradatie, eticheta: String(g.nivel), detaliu: `Vechime în muncă: ${g.eticheta}.` }))}
                 valoare={gradatie}
                 onChange={(v) => { setGradatie(v); sterge(); }}
               />
@@ -233,25 +234,37 @@ export default function CalculatorInvatamant() {
             </>
           )}
 
-          <fieldset className="mb-5 border-t border-stone-200 pt-4">
-            <legend className="mb-2 block text-xs font-medium text-stone-500">Majorări</legend>
-            {categorie === "didactic" &&
-              MAJORARI.map((m) => (
-                <Toggle
-                  key={m.cod}
-                  label={m.eticheta}
-                  hint={`+${(m.cota * 100).toLocaleString("ro-RO")}% · ${m.temei}`}
-                  checked={majorari.includes(m.cod)}
-                  onChange={(on) => { setMajorari((p) => (on ? [...p, m.cod] : p.filter((c) => c !== m.cod))); sterge(); }}
-                />
-              ))}
-            <Toggle
-              label="Titlu științific de doctor"
-              hint={`${INDEMNIZATIE_DOCTORAT_2026} lei brut · OUG 7/2026`}
-              checked={doctorat}
-              onChange={(v) => { setDoctorat(v); sterge(); }}
-            />
-          </fieldset>
+          {/* Majorările stau pliate, ca „Calculator avansat" de pe homepage.
+              Un profesor care vrea doar cifra de bază nu derulează pe lângă ele. */}
+          <button
+            type="button"
+            onClick={() => setAvansat((v) => !v)}
+            aria-expanded={avansat}
+            className="mb-3 min-h-11 w-full rounded border border-dashed border-stone-300 px-3 text-xs font-medium text-stone-600 transition-colors hover:bg-canvas"
+          >
+            {avansat ? "▲ Ascunde majorările" : "▼ Majorări: dirigenție, gradație de merit, doctorat"}
+          </button>
+
+          {avansat && (
+            <fieldset className="mb-4 border-t border-stone-200 pt-3">
+              {categorie === "didactic" &&
+                MAJORARI.map((m) => (
+                  <Toggle
+                    key={m.cod}
+                    label={m.eticheta}
+                    hint={`+${(m.cota * 100).toLocaleString("ro-RO")}% · ${m.temei}`}
+                    checked={majorari.includes(m.cod)}
+                    onChange={(on) => { setMajorari((p) => (on ? [...p, m.cod] : p.filter((c) => c !== m.cod))); sterge(); }}
+                  />
+                ))}
+              <Toggle
+                label="Titlu științific de doctor"
+                hint={`${INDEMNIZATIE_DOCTORAT_2026} lei brut · OUG 7/2026`}
+                checked={doctorat}
+                onChange={(v) => { setDoctorat(v); sterge(); }}
+              />
+            </fieldset>
+          )}
 
           <button
             type="button"

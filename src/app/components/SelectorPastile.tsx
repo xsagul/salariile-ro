@@ -9,14 +9,19 @@
 // recunoasca. Cu pastile pe axe separate vede tot deodata si combinatiile
 // imposibile sunt vizibil stinse, nu ascunse.
 //
+// REGULA DE COMPACTARE. Prima versiune punea explicatia sub FIECARE pastila.
+// Cu cinci grupuri, formularul ajungea la 1.831 px si nu se mai alinia cu
+// panoul de rezultat. Acum pastila arata doar eticheta, pe un rand, iar
+// explicatia se afiseaza o singura data — a optiunii selectate, sub titlu.
+// N randuri duble devin N randuri simple plus unul.
+//
 // Culorile respecta BRAND.md §9: selectat = plin stone-900 (ca butonul primar),
-// neselectat = `surface` cu bordura stone-300 (ca butonul secundar). Fara
-// culoare de accent — sistemul e monocrom.
+// neselectat = `surface` cu bordura stone-300 (ca butonul secundar).
 
 export type OptiunePastila<T extends string | number> = {
   valoare: T;
   eticheta: string;
-  /** Text mic sub eticheta — explicatia din lege, de exemplu. */
+  /** Explicatia din lege. Se arata doar cand optiunea e cea selectata. */
   detaliu?: string;
   /** Cand e fals, pastila se stinge si nu se poate apasa. */
   posibil?: boolean;
@@ -35,22 +40,22 @@ export function SelectorPastile<T extends string | number>({
   optiuni: OptiunePastila<T>[];
   valoare: T | null;
   onChange: (v: T) => void;
-  /** Fortat pe o coloana, pentru liste cu etichete lungi. */
+  /** Fortat pe o coloana — doar pentru liste cu denumiri lungi, ca la conducere. */
   coloane?: 1;
 }) {
   const selectata = optiuni.find((o) => o.valoare === valoare);
+  const nota = selectata?.detaliu ?? ajutor;
+
+  // Daca exista o singura optiune posibila, nu e o alegere — e un fapt. Nu se
+  // deseneaza deloc; valoarea e deja fixata de constrangerile grilei.
+  const posibile = optiuni.filter((o) => o.posibil !== false);
+  if (posibile.length <= 1) return null;
 
   return (
-    <fieldset className="mb-5">
-      <legend className="mb-2 flex flex-wrap items-baseline gap-x-2 text-xs font-medium text-stone-500">
-        <span>{eticheta}</span>
-        {selectata && (
-          <span className="font-bold text-stone-900">{selectata.eticheta}</span>
-        )}
-      </legend>
-      {ajutor && <p className="mb-2 text-xs text-stone-600">{ajutor}</p>}
+    <fieldset className="mb-3">
+      <legend className="mb-1 text-xs font-medium text-stone-500">{eticheta}</legend>
 
-      <div className={coloane === 1 ? "flex flex-col gap-1.5" : "flex flex-wrap gap-1.5"}>
+      <div className={coloane === 1 ? "flex flex-col gap-1" : "flex flex-wrap gap-1"}>
         {optiuni.map((o) => {
           const posibil = o.posibil !== false;
           const activ = o.valoare === valoare;
@@ -62,32 +67,23 @@ export function SelectorPastile<T extends string | number>({
               aria-pressed={activ}
               onClick={() => onChange(o.valoare)}
               className={[
-                "min-h-11 rounded px-3 py-2 text-left text-sm transition-colors",
-                coloane === 1 ? "w-full" : "",
+                "min-h-11 rounded px-3 text-sm transition-colors",
+                coloane === 1 ? "w-full text-left" : "",
                 activ
                   ? "bg-stone-900 font-medium text-white"
                   : posibil
                     ? "border border-stone-300 bg-surface text-stone-900 hover:bg-canvas"
-                    : "cursor-not-allowed border border-stone-200 bg-canvas text-stone-400",
+                    : "cursor-not-allowed border border-stone-200 bg-canvas text-stone-400 line-through decoration-stone-300",
               ].join(" ")}
               title={!posibil ? "Nu există în grilă pentru selecția curentă" : undefined}
             >
-              <span className={!posibil ? "line-through decoration-stone-300" : ""}>
-                {o.eticheta}
-              </span>
-              {o.detaliu && (
-                <span
-                  className={`mt-0.5 block text-xs font-normal ${
-                    activ ? "text-stone-300" : posibil ? "text-stone-600" : "text-stone-400"
-                  }`}
-                >
-                  {o.detaliu}
-                </span>
-              )}
+              {o.eticheta}
             </button>
           );
         })}
       </div>
+
+      {nota && <p className="mt-1 text-xs text-stone-600">{nota}</p>}
     </fieldset>
   );
 }
