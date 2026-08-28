@@ -29,11 +29,27 @@ const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(Math.round(n));
 
 const fieldLabel = "mb-2 block text-xs font-medium text-stone-500";
 const colHeader = "mb-4 border-b border-stone-200 pb-2 text-lg font-medium text-stone-900";
-// min-h-11 = 44 px, ținta minimă de atingere din BRAND.md §7. Fără ea,
-// `py-2.5` dă 42 px pe mobil — sub prag cu 2 px, măsurat în browser.
-const selectClass =
-  "min-h-11 w-full rounded border border-stone-300 bg-surface px-3 py-2.5 text-base text-stone-900 " +
-  "focus:border-stone-400 focus:outline-none focus:ring-2 focus:ring-stone-200";
+// Aceleași clase ca `controlBox` din CalculatorSalariu — controalele trebuie să
+// arate identic pe tot site-ul. `text-base` pe mobil (sub 16 px Safari face zoom
+// la focus), `sm:text-sm` pe desktop. Focus = bordură stone-400 + strălucire
+// caldă, NU inel albastru de sistem (BRAND.md §9). `min-h-11` = ținta de 44 px.
+const controlBox =
+  "w-full rounded border border-stone-300 bg-surface px-3 py-2 text-base sm:text-sm text-stone-900 outline-none transition focus:border-stone-400 focus:shadow-[0_0_6px_rgba(28,25,23,0.12)]";
+
+/** Chevron propriu, ca la restul site-ului. `select`-ul nativ isi deseneaza
+ *  sageata lipita de marginea campului si diferit pe fiecare sistem de operare;
+ *  `appearance-none` o scoate, iar SVG-ul de aici o pune la `right-3`, in
+ *  oglinda cu `px-3` din stanga. */
+function Chevron() {
+  return (
+    <svg
+      className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-stone-500"
+      viewBox="0 0 20 20" fill="none" stroke="currentColor" aria-hidden="true"
+    >
+      <path d="M5 7.5l5 5 5-5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
 
 const FUNCTII = functiiDisponibile();
 
@@ -122,38 +138,44 @@ export default function CalculatorInvatamant() {
       <div className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-2">
         <h2 className={colHeader}>Încadrarea ta</h2>
 
-        <div className="mb-4">
+        <div className="mb-5">
           <label htmlFor="inv-functie" className={fieldLabel}>Funcția didactică și gradul</label>
-          <select
-            id="inv-functie"
-            className={selectClass}
-            value={functie}
-            onChange={(e) => schimbaFunctie(Number(e.target.value))}
-          >
-            {FUNCTII.map((f) => (
-              <option key={f.nr} value={f.nr}>{f.functie}</option>
-            ))}
-          </select>
+          <div className="relative">
+            <select
+              id="inv-functie"
+              className={`${controlBox} cursor-pointer appearance-none pr-9`}
+              value={functie}
+              onChange={(e) => schimbaFunctie(Number(e.target.value))}
+            >
+              {FUNCTII.map((f) => (
+                <option key={f.nr} value={f.nr}>{f.functie}</option>
+              ))}
+            </select>
+            <Chevron />
+          </div>
         </div>
 
-        <div className="mb-4">
+        <div className="mb-5">
           <label htmlFor="inv-vechime-inv" className={fieldLabel}>
             Vechimea în învățământ
             <span className="mt-0.5 block font-normal normal-case text-stone-600">
               Alege rândul din grilă. E diferită de vechimea în muncă.
             </span>
           </label>
-          <select
-            id="inv-vechime-inv"
-            className={selectClass}
-            value={vechimeInv}
-            onChange={(e) => { setVechimeInv(e.target.value); setRez(null); }}
-          >
-            {vechimi.map((v) => <option key={v} value={v}>{v}</option>)}
-          </select>
+          <div className="relative">
+            <select
+              id="inv-vechime-inv"
+              className={`${controlBox} cursor-pointer appearance-none pr-9`}
+              value={vechimeInv}
+              onChange={(e) => { setVechimeInv(e.target.value); setRez(null); }}
+            >
+              {vechimi.map((v) => <option key={v} value={v}>{v}</option>)}
+            </select>
+            <Chevron />
+          </div>
         </div>
 
-        <div className="mb-4">
+        <div className="mb-5">
           <label htmlFor="inv-ani-munca" className={fieldLabel}>
             Vechimea în muncă (ani)
             <span className="mt-0.5 block font-normal normal-case text-stone-600">
@@ -168,7 +190,7 @@ export default function CalculatorInvatamant() {
             value={aniMunca}
             onChange={(e) => { setAniMunca(Number(e.target.value)); setRez(null); }}
             onKeyDown={(e) => { if (e.key === "Enter") calculeaza(); }}
-            className={selectClass}
+            className={controlBox}
           />
         </div>
 
@@ -194,7 +216,7 @@ export default function CalculatorInvatamant() {
         <button
           type="button"
           onClick={calculeaza}
-          className="min-h-11 w-full rounded bg-stone-900 px-4 py-3 font-medium text-white transition-colors hover:bg-stone-700"
+          className="block min-h-12 w-full rounded bg-stone-900 px-4 py-3 text-sm font-medium text-white shadow-soft transition-colors hover:bg-stone-800 active:translate-y-px"
         >
           Calculează
         </button>

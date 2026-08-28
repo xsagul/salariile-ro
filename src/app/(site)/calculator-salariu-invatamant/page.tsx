@@ -167,13 +167,13 @@ export default function Page() {
         </Prose>
 
         <div className="mx-auto mt-4 max-w-3xl overflow-x-auto px-4 sm:px-6">
-          <table className="w-full border-collapse text-sm">
+          <table className="w-full border-collapse text-xs sm:text-sm">
             <thead>
               <tr className="bg-canvas">
-                <th className="border-b border-stone-300 px-3 py-2 text-left font-medium">Gradație</th>
-                <th className="border-b border-stone-300 px-3 py-2 text-left font-medium">Vechime în muncă</th>
-                <th className="border-b border-stone-300 px-3 py-2 text-right font-medium">Cotă</th>
-                <th className="border-b border-stone-300 px-3 py-2 text-right font-medium">Cumulat</th>
+                <th className="border-b border-stone-300 px-2 py-2 text-left font-medium sm:px-3">Gradație</th>
+                <th className="border-b border-stone-300 px-2 py-2 text-left font-medium sm:px-3"><span className="sm:hidden">Vechime</span><span className="hidden sm:inline">Vechime în muncă</span></th>
+                <th className="hidden border-b border-stone-300 px-2 py-2 text-right font-medium sm:table-cell sm:px-3">Cotă</th>
+                <th className="border-b border-stone-300 px-2 py-2 text-right font-medium sm:px-3">Cumulat</th>
               </tr>
             </thead>
             <tbody>
@@ -181,12 +181,12 @@ export default function Page() {
                 const cumulat = GRADATII.slice(1, i + 1).reduce((s, x) => s * (1 + x.cota), 1);
                 return (
                   <tr key={g.nivel}>
-                    <td className="border-b border-stone-200 px-3 py-2">{g.nivel}</td>
-                    <td className="border-b border-stone-200 px-3 py-2">{g.eticheta}</td>
-                    <td className="border-b border-stone-200 px-3 py-2 text-right tabular-nums">
+                    <td className="border-b border-stone-200 px-2 py-2 sm:px-3">{g.nivel}</td>
+                    <td className="border-b border-stone-200 px-2 py-2 sm:px-3">{g.eticheta}</td>
+                    <td className="hidden border-b border-stone-200 px-2 py-2 text-right tabular-nums sm:table-cell sm:px-3">
                       {g.cota ? `+${(g.cota * 100).toLocaleString("ro-RO")}%` : "—"}
                     </td>
-                    <td className="border-b border-stone-200 px-3 py-2 text-right tabular-nums">
+                    <td className="border-b border-stone-200 px-2 py-2 text-right tabular-nums sm:px-3">
                       +{((cumulat - 1) * 100).toFixed(2).replace(".", ",")}%
                     </td>
                   </tr>
