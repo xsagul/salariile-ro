@@ -3,7 +3,7 @@ title: "Legea salarizării 2026 a picat. Ce urmează"
 description: "Negocierile au eșuat pe 26 august și România pierde 770 mil. euro. Salariul tău din septembrie se calculează la fel. Cifrele reale, pe grila în vigoare."
 date: "2026-08-28"
 hero: "/noutati/legea-salarizarii-2026.webp"
-heroAlt: "Ilustrație editorială minimalistă: patru trepte pline formând o grilă de salarizare, iar a cincea desenată doar cu linie întreruptă — treapta care nu a fost adoptată."
+heroAlt: "Ilustrație editorială: un dosar intitulat „Legea salarizării” alături de o balanță a justiției, un fluturaș de salariu, teancuri de monede și un grafic cu bare."
 ---
 
 Pe 26 august, negocierile pentru noua lege a salarizării au eșuat. Nu s-a depus niciun proiect în Parlament și nu s-a votat nimic. România pierde 770 de milioane de euro din PNRR.
