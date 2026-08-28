@@ -9,6 +9,7 @@ import Link from "next/link";
 const IMPLEMENTED_PAGES = new Set<string>([
   "/",
   "/calculator-pfa",
+  "/calculator-salariu-invatamant",
   "/fluturas-salariu",
   "/widget",
   "/salariu-minim",
@@ -42,6 +43,7 @@ const FOOTER_GROUPS: Array<{ title: string; links: FooterLink[] }> = [
       { href: "/fluturas-salariu", label: "Generator fluturaș salariu" },
       { href: "/widget", label: "Widget pentru site-ul tău" },
       { href: "/calculator-concediu", label: "Calculator concediu medical" },
+      { href: "/calculator-salariu-invatamant", label: "Calculator salariu învățământ" },
     ],
   },
   {

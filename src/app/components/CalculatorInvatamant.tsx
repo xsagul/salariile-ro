@@ -29,8 +29,6 @@ const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(Math.round(n));
 
 const fieldLabel = "mb-2 block text-xs font-medium text-stone-500";
 const colHeader = "mb-4 border-b border-stone-200 pb-2 text-lg font-medium text-stone-900";
-const cellL = "border-b border-r border-stone-300 px-3 py-3 text-left";
-const cellR = "border-b border-stone-300 px-3 py-3 text-right tabular-nums whitespace-nowrap";
 // min-h-11 = 44 px, ținta minimă de atingere din BRAND.md §7. Fără ea,
 // `py-2.5` dă 42 px pe mobil — sub prag cu 2 px, măsurat în browser.
 const selectClass =
@@ -39,17 +37,21 @@ const selectClass =
 
 const FUNCTII = functiiDisponibile();
 
-function Row({ label, value, sub, neg, bold, temei }: {
-  label: string; value: string; sub?: boolean; neg?: boolean; bold?: boolean; temei?: string;
+/** `value === null` = încă nu s-a calculat; se afișează „–”, ca structura
+ *  rezultatului să fie vizibilă înainte de a apăsa Calculează. */
+function Row({ label, value, sub, neg, bold, ultim, temei }: {
+  label: string; value: string | null; sub?: boolean; neg?: boolean;
+  bold?: boolean; ultim?: boolean; temei?: string;
 }) {
+  const b = ultim ? "" : "border-b ";
   return (
     <tr>
-      <td className={`${cellL} ${sub ? "pl-4 sm:pl-8" : ""} ${bold ? "font-bold text-stone-900" : ""}`}>
+      <td className={`${b}border-r border-stone-300 px-3 py-3 text-left ${sub ? "pl-4 sm:pl-8" : ""} ${bold ? "font-bold text-stone-900" : ""}`}>
         {label}
         {temei ? <span className="mt-0.5 block text-xs text-stone-600">{temei}</span> : null}
       </td>
-      <td className={`${cellR} ${bold ? "font-bold text-stone-900" : ""}`}>
-        {neg ? "− " : ""}{value} lei
+      <td className={`${b}border-stone-300 px-3 py-3 text-right tabular-nums whitespace-nowrap ${bold ? "font-bold text-stone-900" : ""}`}>
+        {value === null ? "–" : `${neg ? "− " : ""}${value} lei`}
       </td>
     </tr>
   );
@@ -111,7 +113,11 @@ export default function CalculatorInvatamant() {
   const gradatie = GRADATII[Math.min(5, aniMunca < 3 ? 0 : aniMunca < 5 ? 1 : aniMunca < 10 ? 2 : aniMunca < 15 ? 3 : aniMunca < 20 ? 4 : 5)];
 
   return (
-    <div className="mx-auto grid max-w-6xl gap-6 px-4 py-8 sm:px-6 sm:py-12 md:grid-cols-5">
+    // Secțiunea stă pe `canvas`, cardurile pe `surface` deasupra ei. Fără
+    // învelișul ăsta, cardurile (#fffdf9) cad pe `<body>`-ul alb și dispar —
+    // exact datoria de identitate din BRAND.md §15. Homepage-ul face la fel.
+    <section className="border-y border-stone-200 bg-canvas">
+      <div className="mx-auto grid max-w-6xl gap-6 px-4 py-8 sm:px-6 sm:py-12 md:grid-cols-5">
       {/* ─── Formular ─────────────────────────────────────────────────── */}
       <div className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-2">
         <h2 className={colHeader}>Încadrarea ta</h2>
@@ -198,49 +204,70 @@ export default function CalculatorInvatamant() {
       <div className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-3">
         <h2 className={colHeader}>Rezultatul</h2>
 
-        {!rez ? (
-          <p className="text-sm text-stone-600">
+        {/* Tabel fiscal, după BRAND.md §9: antet pe `canvas`, corp pe `surface`,
+            sume la dreapta, iar rândul de total INVERSAT — singurul fundal plin
+            de rând din sistem. Scheletul se arată și înainte de calcul, ca
+            structura rezultatului să fie vizibilă din prima. */}
+        <div className="overflow-hidden rounded border border-stone-300">
+          <table className="w-full table-auto border-collapse [&_td]:align-middle [&_th]:align-middle text-sm text-stone-700 sm:table-fixed">
+            <colgroup><col /><col className="w-28 sm:w-36" /></colgroup>
+            <thead>
+              <tr>
+                <th className="border-b border-r border-b-stone-300 border-r-stone-300 bg-canvas px-3 py-3 text-left text-sm font-medium text-stone-700">
+                  Element de salarizare
+                </th>
+                <th className="border-b border-stone-300 bg-canvas px-3 py-3 text-right text-sm font-medium text-stone-700">
+                  Sumă
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <Row
+                label="Salariu de bază din grilă (gradația 0)"
+                value={rez ? fmt(rez.salariuGrila) : null}
+                temei={rez ? `Anexa I, cap. I, pct. 5 · iunie 2024 · ${rez.rand.studii}, ${rez.rand.vechime}` : undefined}
+              />
+              <Row
+                label={rez ? `Gradația ${rez.gradatie} de vechime în muncă` : "Gradația de vechime în muncă"}
+                value={rez ? fmt(rez.salariuDeBaza - rez.salariuGrila) : null}
+                sub
+                temei={rez ? "art. 10 alin. (4) · cotele se compun, nu se adună" : undefined}
+              />
+              <Row label="Salariul de bază deținut" value={rez ? fmt(rez.salariuDeBaza) : null} bold />
+
+              {rez?.linii.map((l) => (
+                <Row key={l.eticheta} label={l.eticheta} value={fmt(l.suma)} sub temei={l.temei} />
+              ))}
+
+              <Row label="Total brut" value={rez ? fmt(rez.brutTotal) : null} bold />
+              <Row label="CAS (pensie – 25%)" value={rez ? fmt(rez.fiscal.cas) : null} sub neg />
+              <Row label="CASS (sănătate – 10%)" value={rez ? fmt(rez.fiscal.cass) : null} sub neg />
+              <Row label="Impozit pe venit (10%)" value={rez ? fmt(rez.fiscal.impozit) : null} sub neg />
+
+              <tr className="bg-stone-900">
+                <td className="border-r border-r-stone-600 px-3 py-3 text-left text-sm font-bold text-white">
+                  Salariu net
+                </td>
+                <td className="whitespace-nowrap px-3 py-3 text-right text-sm font-bold tabular-nums text-white">
+                  {rez ? `${fmt(rez.fiscal.netBani)} lei` : "–"}
+                </td>
+              </tr>
+
+              <Row label="CAM (angajator – 2,25%)" value={rez ? fmt(rez.fiscal.cam) : null} />
+              <Row label="Cost total angajator" value={rez ? fmt(rez.fiscal.costTotal) : null} bold ultim />
+            </tbody>
+          </table>
+        </div>
+
+        {!rez && (
+          <p className="mt-4 text-xs leading-relaxed text-stone-500">
             Alege încadrarea și apasă <strong className="text-stone-900">Calculează</strong>.
-            Fiecare linie din rezultat își arată temeiul din lege.
+            Fiecare linie își arată temeiul din lege.
           </p>
-        ) : (
+        )}
+
+        {rez && (
           <>
-            <table className="w-full border-collapse text-sm">
-              <tbody>
-                <Row
-                  label="Salariu de bază din grilă (gradația 0)"
-                  value={fmt(rez.salariuGrila)}
-                  temei={`Anexa I, cap. I, pct. 5 · coloana iunie 2024 · ${rez.rand.studii}, ${rez.rand.vechime}`}
-                />
-                <Row
-                  label={`Gradația ${rez.gradatie} de vechime în muncă`}
-                  value={fmt(rez.salariuDeBaza - rez.salariuGrila)}
-                  sub
-                  temei="art. 10 alin. (4) · cotele se compun, nu se adună"
-                />
-                <Row label="Salariul de bază deținut" value={fmt(rez.salariuDeBaza)} bold />
-
-                {rez.linii.map((l) => (
-                  <Row key={l.eticheta} label={l.eticheta} value={fmt(l.suma)} sub temei={l.temei} />
-                ))}
-
-                <Row label="Total brut" value={fmt(rez.brutTotal)} bold />
-                <Row label="CAS (pensie) 25%" value={fmt(rez.fiscal.cas)} sub neg />
-                <Row label="CASS (sănătate) 10%" value={fmt(rez.fiscal.cass)} sub neg />
-                <Row label="Impozit pe venit 10%" value={fmt(rez.fiscal.impozit)} sub neg />
-              </tbody>
-            </table>
-
-            <div className="mt-4 rounded bg-stone-900 px-4 py-4 text-white">
-              <div className="flex items-baseline justify-between gap-4">
-                <span className="text-sm">Salariu net, în cont</span>
-                <span className="text-2xl font-bold tabular-nums">{fmt(rez.fiscal.netBani)} lei</span>
-              </div>
-            </div>
-
-            <p className="mt-4 text-xs text-stone-600">
-              Cost total angajator: {fmt(rez.fiscal.costTotal)} lei (brut + CAM 2,25%).
-            </p>
 
             <div className="mt-5 border-t border-stone-200 pt-4 text-xs text-stone-600">
               <p className="mb-2">
@@ -263,6 +290,7 @@ export default function CalculatorInvatamant() {
           </>
         )}
       </div>
-    </div>
+      </div>
+    </section>
   );
 }
