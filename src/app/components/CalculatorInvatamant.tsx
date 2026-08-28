@@ -253,8 +253,18 @@ export default function CalculatorInvatamant() {
                 </td>
               </tr>
 
-              <Row label="CAM (angajator – 2,25%)" value={rez ? fmt(rez.fiscal.cam) : null} />
-              <Row label="Cost total angajator" value={rez ? fmt(rez.fiscal.costTotal) : null} bold ultim />
+              {/* „Angajator" e vocabular de sector privat lipit pe un buget de
+                  stat. Angajatorul unui cadru didactic e unitatea de invatamant,
+                  institutie publica — care datoreaza CAM ca orice angajator.
+                  Cifra ramane (promisiunea e ca de la cifra se ajunge la
+                  formula), dar eticheta spune ce e de fapt. */}
+              <Row label="CAM (plătit de unitate – 2,25%)" value={rez ? fmt(rez.fiscal.cam) : null} />
+              <Row
+                label="Cost total pentru unitatea de învățământ"
+                value={rez ? fmt(rez.fiscal.costTotal) : null}
+                bold
+                ultim
+              />
             </tbody>
           </table>
         </div>
