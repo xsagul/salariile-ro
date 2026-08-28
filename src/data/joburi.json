@@ -1,0 +1,121 @@
+{
+  "sursa": {
+    "stare": "schelet",
+    "explicatie": "Anunturi de test pentru dezvoltarea hubului. NU sunt oferte reale si nu se publica. Se sterg inainte de primul deploy, cand hubul primeste o sursa de date reala.",
+    "generatLa": "2026-08-29"
+  },
+  "joburi": [
+    {
+      "slug": "electrician-mentenanta-cluj",
+      "titlu": "Electrician mentenanță",
+      "companie": "Firmă de test SRL",
+      "judet": "Cluj",
+      "oras": "Cluj-Napoca",
+      "modLucru": "la-birou",
+      "tipContract": "norma-intreaga",
+      "salariu": { "min": 4800, "max": 6200, "moneda": "RON" },
+      "categorie": "industrie",
+      "meserie": "electrician",
+      "descriere": "Asigură mentenanța preventivă și corectivă a instalațiilor electrice dintr-o hală de producție. Intervine la avarii, ține evidența reviziilor și respectă normele de securitate a muncii.",
+      "cerinte": [
+        "Calificare de electrician și autorizație ANRE gradul I",
+        "Experiență de minimum 2 ani în mentenanță industrială",
+        "Disponibilitate pentru lucru în două schimburi"
+      ],
+      "aplicaEmail": "test@example.com",
+      "publicatLa": "2026-08-27T08:00:00.000Z",
+      "expiraLa": "2026-10-27T08:00:00.000Z"
+    },
+    {
+      "slug": "asistent-medical-bucuresti",
+      "titlu": "Asistent medical generalist",
+      "companie": "Clinică de test",
+      "judet": "București",
+      "oras": "București",
+      "modLucru": "la-birou",
+      "tipContract": "norma-intreaga",
+      "salariu": { "min": 5200, "max": 6800, "moneda": "RON" },
+      "categorie": "medical",
+      "meserie": "asistent-medical",
+      "descriere": "Pregătește pacienții pentru consultații, administrează tratamentele prescrise și ține evidența fișelor. Lucrează în tură de zi, într-o clinică ambulatorie.",
+      "cerinte": [
+        "Diplomă de asistent medical generalist și aviz OAMGMAMR la zi",
+        "Experiență de minimum 1 an"
+      ],
+      "aplicaEmail": "test@example.com",
+      "publicatLa": "2026-08-26T09:30:00.000Z",
+      "expiraLa": "2026-10-26T09:30:00.000Z"
+    },
+    {
+      "slug": "programator-frontend-remote",
+      "titlu": "Programator frontend",
+      "companie": "Studio de test",
+      "judet": "Timiș",
+      "oras": "Timișoara",
+      "modLucru": "remote",
+      "tipContract": "norma-intreaga",
+      "salariu": { "min": 9000, "max": 14000, "moneda": "RON" },
+      "categorie": "it",
+      "meserie": "web-developer",
+      "descriere": "Construiește interfețe pentru produsele interne ale companiei, în TypeScript și React. Lucrează integral remote, cu o zi de birou pe lună.",
+      "cerinte": [
+        "Experiență de minimum 3 ani cu TypeScript și React",
+        "Familiaritate cu testarea automată"
+      ],
+      "aplicaUrl": "https://example.com/cariere",
+      "publicatLa": "2026-08-28T11:00:00.000Z",
+      "expiraLa": "2026-10-28T11:00:00.000Z"
+    },
+    {
+      "slug": "sofer-livrari-iasi",
+      "titlu": "Șofer livrări",
+      "companie": "Distribuție de test",
+      "judet": "Iași",
+      "oras": "Iași",
+      "modLucru": "la-birou",
+      "tipContract": "norma-intreaga",
+      "salariu": { "min": 4325, "max": 5100, "moneda": "RON" },
+      "categorie": "transport",
+      "meserie": "sofer",
+      "descriere": "Livrează marfă către clienți în oraș și în județ, cu autoutilitară sub 3,5 tone. Încarcă și descarcă marfa și predă documentele de transport.",
+      "cerinte": ["Permis categoria B, minimum 2 ani vechime", "Cunoașterea orașului"],
+      "aplicaEmail": "test@example.com",
+      "publicatLa": "2026-08-25T07:15:00.000Z",
+      "expiraLa": "2026-10-25T07:15:00.000Z"
+    },
+    {
+      "slug": "contabil-brasov",
+      "titlu": "Contabil",
+      "companie": "Cabinet de test",
+      "judet": "Brașov",
+      "oras": "Brașov",
+      "modLucru": "hibrid",
+      "tipContract": "norma-intreaga",
+      "salariu": { "min": 6000, "max": 8500, "moneda": "RON" },
+      "categorie": "finante",
+      "meserie": "contabil",
+      "descriere": "Ține contabilitatea unui portofoliu de firme mici, întocmește declarațiile fiscale și pregătește situațiile financiare anuale.",
+      "cerinte": ["Studii economice superioare", "Experiență cu SAGA sau WinMentor"],
+      "aplicaEmail": "test@example.com",
+      "publicatLa": "2026-08-24T13:45:00.000Z",
+      "expiraLa": "2026-10-24T13:45:00.000Z"
+    },
+    {
+      "slug": "vanzator-consultant-constanta",
+      "titlu": "Vânzător consultant",
+      "companie": "Retail de test",
+      "judet": "Constanța",
+      "oras": "Constanța",
+      "modLucru": "la-birou",
+      "tipContract": "part-time",
+      "salariu": { "min": 2600, "max": 3200, "moneda": "RON" },
+      "categorie": "comert",
+      "meserie": "vanzator",
+      "descriere": "Consiliază clienții în magazin, aranjează raftul și operează casa de marcat. Program de 6 ore pe zi, cu weekenduri prin rotație.",
+      "cerinte": ["Studii medii", "Experiență în retail constituie avantaj"],
+      "aplicaEmail": "test@example.com",
+      "publicatLa": "2026-08-23T10:00:00.000Z",
+      "expiraLa": "2026-10-23T10:00:00.000Z"
+    }
+  ]
+}

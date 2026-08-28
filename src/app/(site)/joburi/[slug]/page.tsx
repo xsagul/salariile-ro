@@ -1,0 +1,149 @@
+// src/app/(site)/joburi/[slug]/page.tsx
+// Pagina unui anunt. Server Component pur.
+//
+// SEO: `JobPosting` in JSON-LD e conditia de intrare in Google for Jobs, adica
+// in widgetul de joburi din SERP. Fiecare anunt de aici are `baseSalary`, ceea
+// ce e semnal puternic acolo — si e exact campul pe care 77,5% din anunturile
+// de pe eJobs nu il au.
+
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { Breadcrumb, H1, Section } from "@/app/components/ui";
+import { Eticheta, SalariuJob } from "@/app/components/Joburi";
+import { NotaSursa } from "@/app/components/Salarii";
+import { MESERII } from "@/lib/meserii";
+import { ogPage, twPage } from "@/lib/seo";
+import { MOD_LUCRU, TIP_CONTRACT, jobDupaSlug, joburiActive, jobPostingSchema } from "@/lib/joburi";
+
+export function generateStaticParams() {
+  return joburiActive().map((j) => ({ slug: j.slug }));
+}
+
+// JSON.stringify pus direct intr-un <script> se poate rupe daca textul contine
+// „</script>". Anunturile vor veni de la angajatori, deci textul e necontrolat
+// de noi — se escapeaza de pe acum, nu dupa primul incident.
+function jsonLdSigur(obiect: unknown): string {
+  return JSON.stringify(obiect).replace(/</g, "\\u003c");
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const job = jobDupaSlug(slug);
+  if (!job) return {};
+  const titlu = `${job.titlu} – ${job.oras ?? job.judet}`;
+  const descriere = `${job.companie} caută ${job.titlu.toLowerCase()} în ${job.oras ?? job.judet}. Salariu ${job.salariu.min}–${job.salariu.max} lei brut, cu netul calculat.`;
+  return {
+    title: { absolute: `${titlu} | Salariile.ro` },
+    description: descriere,
+    alternates: { canonical: `https://salariile.ro/joburi/${job.slug}` },
+    openGraph: ogPage({ title: titlu, description: descriere, path: `/joburi/${job.slug}` }),
+    twitter: twPage({ title: titlu, description: descriere }),
+  };
+}
+
+export default async function PaginaJob({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const job = jobDupaSlug(slug);
+  if (!job) notFound();
+
+  const url = `https://salariile.ro/joburi/${job.slug}`;
+  const meserie = job.meserie ? MESERII.find((m) => m.slug === job.meserie) : undefined;
+  const dataRo = (iso: string) =>
+    new Date(iso).toLocaleDateString("ro-RO", { day: "numeric", month: "long", year: "numeric" });
+
+  return (
+    <>
+      <Breadcrumb
+        items={[
+          { href: "/", label: "Acasă" },
+          { href: "/joburi", label: "Locuri de muncă" },
+          { label: job.titlu },
+        ]}
+      />
+
+      <H1>{job.titlu}</H1>
+      <p className="mt-2 text-lg text-stone-600">
+        {job.companie} · {job.oras ?? job.judet}
+      </p>
+
+      <div className="mt-5 rounded-md border border-stone-200 bg-canvas p-5">
+        <SalariuJob job={job} marime="mare" />
+        <div className="mt-4 flex flex-wrap gap-1.5">
+          <Eticheta>{TIP_CONTRACT[job.tipContract]}</Eticheta>
+          <Eticheta>{MOD_LUCRU[job.modLucru]}</Eticheta>
+          <Eticheta>{job.judet}</Eticheta>
+        </div>
+      </div>
+
+      <Section>
+        <h2>Despre rol</h2>
+        <p>{job.descriere}</p>
+      </Section>
+
+      {job.cerinte?.length ? (
+        <Section>
+          <h2>Cerințe</h2>
+          <ul>
+            {job.cerinte.map((c) => (
+              <li key={c}>{c}</li>
+            ))}
+          </ul>
+        </Section>
+      ) : null}
+
+      <Section>
+        <h2>Aplică</h2>
+        {job.aplicaUrl ? (
+          <a
+            href={job.aplicaUrl}
+            rel="nofollow noopener"
+            target="_blank"
+            className="inline-flex min-h-11 items-center rounded bg-stone-900 px-4 text-sm font-medium text-white"
+          >
+            Aplică pe site-ul companiei
+          </a>
+        ) : job.aplicaEmail ? (
+          <a
+            href={`mailto:${job.aplicaEmail}?subject=${encodeURIComponent(job.titlu)}`}
+            className="inline-flex min-h-11 items-center rounded bg-stone-900 px-4 text-sm font-medium text-white"
+          >
+            Trimite CV pe email
+          </a>
+        ) : (
+          <p className="text-stone-600">Anunțul nu are o modalitate de contact.</p>
+        )}
+        <p className="mt-3 text-sm text-stone-600">
+          Publicat pe {dataRo(job.publicatLa)}. Anunțul expiră pe {dataRo(job.expiraLa)}.
+        </p>
+      </Section>
+
+      {meserie ? (
+        <Section>
+          <h2>Contextul salarial</h2>
+          <p className="text-stone-700">
+            Vezi ce se câștigă în general pe această meserie, cu mediile INS, pe pagina{" "}
+            <Link href={`/salarii/${meserie.slug}`} className="underline">
+              salariu {meserie.de}
+            </Link>
+            . Cifra de acolo este media sectorului, nu oferta acestui angajator.
+          </p>
+        </Section>
+      ) : null}
+
+      <NotaSursa>
+        Salariul brut este cel declarat de angajator. Netul este calculat de noi, pentru normă întreagă și
+        funcția de bază, fără persoane în întreținere. Nu verificăm veridicitatea ofertei.
+      </NotaSursa>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLdSigur(jobPostingSchema(job, url)) }}
+      />
+    </>
+  );
+}

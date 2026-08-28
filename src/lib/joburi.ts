@@ -1,0 +1,194 @@
+// src/lib/joburi.ts
+//
+// Hubul de recrutare. Regula care defineste produsul si care e impusa de TIP,
+// nu de conventie: `salariu` NU e optional. Un anunt fara salariu nu se poate
+// construi, deci nu poate exista pe site.
+//
+// De ce asa: pe eJobs, 22,5% dintre anunturi publica salariul (masurat pe un
+// esantion de 40 din feedul lor RSS, 29 august 2026, prin `baseSalary` din
+// JSON-LD). Restul de 77,5% sunt „salariu negociabil". Diferentierea noastra nu
+// e volumul — nu-l putem castiga — ci ca la noi cifra exista intotdeauna.
+//
+// Al doilea lucru pe care nu-l are nimeni: NETUL. eJobs afiseaza „4.200-6.100
+// lei" si atat. Noi trecem fiecare interval prin `calculStandard` si aratam cat
+// ramane in mana. E acelasi motor fiscal care alimenteaza calculatorul, deci
+// cifra din anunt si cifra din calculator nu pot diverge.
+//
+// Legea transparentei salariale (proiect L445/2026, inca neadoptat) NU obliga
+// la publicarea salariului in anunt — obliga la comunicarea lui candidatului in
+// procesul de recrutare. Verificat pe 29 august 2026. Deci hubul asta nu se
+// bazeaza pe lege ca sa existe; legea doar face norma ceea ce noi cerem oricum.
+
+import { calculStandard } from "@/lib/fiscal";
+
+export type ModLucru = "la-birou" | "hibrid" | "remote";
+export type TipContract = "norma-intreaga" | "part-time" | "temporar" | "internship" | "sezonier";
+
+export const MOD_LUCRU: Record<ModLucru, string> = {
+  "la-birou": "La birou",
+  hibrid: "Hibrid",
+  remote: "Remote",
+};
+
+export const TIP_CONTRACT: Record<TipContract, string> = {
+  "norma-intreaga": "Normă întreagă",
+  "part-time": "Part-time",
+  temporar: "Perioadă determinată",
+  internship: "Internship",
+  sezonier: "Sezonier",
+};
+
+/** Intervalul brut lunar. Ambele capete obligatorii — un singur numar e tot un interval, cu min = max. */
+export type IntervalSalariu = {
+  min: number;
+  max: number;
+  /** Deocamdata doar RON. Anunturile in euro se convertesc la publicare, nu la afisare. */
+  moneda: "RON";
+};
+
+export type Job = {
+  slug: string;
+  titlu: string;
+  companie: string;
+  judet: string;
+  oras?: string;
+  modLucru: ModLucru;
+  tipContract: TipContract;
+  /** OBLIGATORIU. Vezi comentariul din capul fisierului. */
+  salariu: IntervalSalariu;
+  /** Categoria din catalogul de meserii, ca sa putem lega anuntul de pagina de meserie. */
+  categorie: string;
+  /** Slugul meseriei din `meserii.ts`, cand se poate potrivi. Leaga anuntul de cifra INS. */
+  meserie?: string;
+  descriere: string;
+  cerinte?: string[];
+  aplicaUrl?: string;
+  aplicaEmail?: string;
+  /** ISO. Data publicarii si data expirarii — ambele cerute de schema JobPosting. */
+  publicatLa: string;
+  expiraLa: string;
+};
+
+// ─── Sursa de date ───────────────────────────────────────────────────────────
+//
+// Deocamdata un fisier. NU e o solutie de durata: un hub de anunturi are nevoie
+// de scriere, deci de o baza de date si de un flux de moderare. Pana se decide
+// infrastructura, fisierul lasa sa se verifice ruta, SEO-ul, schema si forma
+// paginii fara sa angajam nimic — si fara ca site-ul sa colecteze ceva.
+
+import joburiData from "@/data/joburi.json";
+
+export const JOBURI: Job[] = joburiData.joburi as Job[];
+export const SURSA_JOBURI = joburiData.sursa;
+
+// ─── Netul ───────────────────────────────────────────────────────────────────
+
+export type SalariuCalculat = {
+  brutMin: number;
+  brutMax: number;
+  netMin: number;
+  netMax: number;
+  /** true cand min === max, ca sa nu afisam „3.000 – 3.000 lei". */
+  fix: boolean;
+};
+
+/**
+ * Trece intervalul brut prin motorul fiscal si intoarce si netul.
+ * Se foloseste `calculStandard`, adica exact ce ruleaza calculatorul de pe
+ * homepage: fara persoane in intretinere, norma intreaga, functie de baza.
+ */
+export function salariuCalculat(s: IntervalSalariu): SalariuCalculat | null {
+  const netMin = calculStandard(s.min)?.net;
+  const netMax = calculStandard(s.max)?.net;
+  if (netMin == null || netMax == null) return null;
+  return { brutMin: s.min, brutMax: s.max, netMin, netMax, fix: s.min === s.max };
+}
+
+// ─── Selectii ────────────────────────────────────────────────────────────────
+
+export function jobDupaSlug(slug: string): Job | null {
+  return JOBURI.find((j) => j.slug === slug) ?? null;
+}
+
+/** Anunturile neexpirate, cele mai noi intai. */
+export function joburiActive(acum: Date = new Date()): Job[] {
+  return JOBURI.filter((j) => new Date(j.expiraLa) >= acum).sort(
+    (a, b) => new Date(b.publicatLa).getTime() - new Date(a.publicatLa).getTime(),
+  );
+}
+
+export function joburiDinJudet(judet: string): Job[] {
+  return joburiActive().filter((j) => j.judet.toLowerCase() === judet.toLowerCase());
+}
+
+export function joburiDinCategorie(categorie: string): Job[] {
+  return joburiActive().filter((j) => j.categorie === categorie);
+}
+
+/** Judetele care au cel putin un anunt activ, cu numarul lor. */
+export function judeteCuJoburi(): { judet: string; nr: number }[] {
+  const m = new Map<string, number>();
+  for (const j of joburiActive()) m.set(j.judet, (m.get(j.judet) ?? 0) + 1);
+  return [...m.entries()]
+    .map(([judet, nr]) => ({ judet, nr }))
+    .sort((a, b) => b.nr - a.nr || a.judet.localeCompare(b.judet, "ro"));
+}
+
+export function categoriiCuJoburi(): { categorie: string; nr: number }[] {
+  const m = new Map<string, number>();
+  for (const j of joburiActive()) m.set(j.categorie, (m.get(j.categorie) ?? 0) + 1);
+  return [...m.entries()]
+    .map(([categorie, nr]) => ({ categorie, nr }))
+    .sort((a, b) => b.nr - a.nr);
+}
+
+/** Mediana intervalelor brute, pentru contextul din capul hubului. */
+export function medianaBrut(joburi: Job[] = joburiActive()): number | null {
+  if (!joburi.length) return null;
+  const mijloace = joburi.map((j) => (j.salariu.min + j.salariu.max) / 2).sort((a, b) => a - b);
+  const i = Math.floor(mijloace.length / 2);
+  return Math.round(mijloace.length % 2 ? mijloace[i] : (mijloace[i - 1] + mijloace[i]) / 2);
+}
+
+// ─── schema.org ──────────────────────────────────────────────────────────────
+//
+// JobPosting e conditia de intrare in Google for Jobs — widgetul de joburi din
+// SERP. Fara el, anunturile sunt pagini obisnuite. Campurile obligatorii sunt
+// title, description, datePosted, hiringOrganization si jobLocation; `validThrough`
+// si `baseSalary` sunt puternic recomandate, iar la noi baseSalary exista mereu.
+
+export function jobPostingSchema(j: Job, url: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    title: j.titlu,
+    description: j.descriere,
+    datePosted: j.publicatLa,
+    validThrough: j.expiraLa,
+    employmentType:
+      j.tipContract === "part-time" ? "PART_TIME" : j.tipContract === "internship" ? "INTERN" : "FULL_TIME",
+    hiringOrganization: { "@type": "Organization", name: j.companie },
+    jobLocation: {
+      "@type": "Place",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: j.oras ?? j.judet,
+        addressRegion: j.judet,
+        addressCountry: "RO",
+      },
+    },
+    ...(j.modLucru === "remote" ? { jobLocationType: "TELECOMMUTE" } : {}),
+    baseSalary: {
+      "@type": "MonetaryAmount",
+      currency: j.salariu.moneda,
+      value: {
+        "@type": "QuantitativeValue",
+        minValue: j.salariu.min,
+        maxValue: j.salariu.max,
+        unitText: "MONTH",
+      },
+    },
+    url,
+    directApply: Boolean(j.aplicaEmail),
+  };
+}
