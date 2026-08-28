@@ -141,6 +141,12 @@ export const MESERII: Meserie[] = [
     ceFace: "Autentifică acte, succesiuni și tranzacții imobiliare într-un birou notarial." },
   { slug: "consilier-juridic", nume: "Consilier juridic", de: "consilier juridic", categorie: "juridic", caen3: "69", caen2: "M", isco: "specialisti", cor: "261103",
     ceFace: "Asigură asistența juridică internă a unei companii sau instituții: contracte, conformare, litigii." },
+  { slug: "judecator", nume: "Judecător", de: "judecător", categorie: "juridic", caen3: "P", caen2: "O", isco: "specialisti",
+    ceFace: "Judecă procese și pronunță hotărâri, la judecătorie, tribunal, curte de apel sau la Înalta Curte.",
+    nota: "Salariul unui magistrat este stabilit prin lege, nu de piață — Anexa V la Legea-cadru 153/2017. Cifra de aici este media întregii administrații publice și apărări, deci nu reflectă indemnizația unui judecător." },
+  { slug: "procuror", nume: "Procuror", de: "procuror", categorie: "juridic", caen3: "P", caen2: "O", isco: "specialisti",
+    ceFace: "Conduce sau supraveghează urmărirea penală și susține acuzarea în instanță, într-un parchet.",
+    nota: "Ca și la judecători, indemnizația e stabilită prin Anexa V la Legea-cadru 153/2017. Media sectorului acoperă toată administrația publică și apărarea, deci este mult sub venitul unui procuror." },
 
   // ─── Inginerie și arhitectură ──────────────────────────────────────────────
   { slug: "inginer", nume: "Inginer", de: "inginer", categorie: "inginerie", caen3: "71", caen2: "M", isco: "specialisti", cor: "214999",
@@ -304,6 +310,9 @@ export const MESERII: Meserie[] = [
     ceFace: "Organizează colecțiile și accesul publicului într-o bibliotecă sau într-un centru de documentare." },
   { slug: "antrenor-sportiv", nume: "Antrenor sportiv", de: "antrenor sportiv", categorie: "servicii", caen3: "93", caen2: "R", isco: "specialisti", cor: "342201",
     ceFace: "Pregătește sportivi sau grupe de amatori și planifică antrenamentele și competițiile." },
+  { slug: "preot", nume: "Preot", de: "preot", categorie: "servicii", caen3: "94", caen2: "S", isco: "specialisti",
+    ceFace: "Oficiază slujbele și administrează o parohie sau o altă unitate de cult.",
+    nota: "Personalul clerical primește sprijin salarial de la bugetul de stat, prin Legea 142/1999, completat din veniturile proprii ale unității de cult. Cifra de aici este media activităților asociative, care acoperă mult mai mult decât cultele." },
 
   // ─── Meserii adăugate pe activități CAEN încă nefolosite ───────────────────
   // Regula de extindere: o meserie nouă intră numai dacă activitatea ei CAEN nu

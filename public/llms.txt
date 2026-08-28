@@ -20,7 +20,7 @@ Datele publice, rezultatele calculelor și explicațiile scurte pot fi citate cu
 - [Widget calculator salariu](https://salariile.ro/widget): widget gratuit pentru integrarea calculatorului brut-net pe alte site-uri; folosește motorul fiscal întreținut central și include un link de credit către salariile.ro
 - [Zile libere 2026](https://salariile.ro/zile-libere-2026): calendar cu cele 17 sărbători legale din Codul Muncii art. 139, care în 2026 produc 16 zile libere distincte (a doua zi de Rusalii cade pe 1 iunie, Ziua Copilului), dintre care 11 în zile lucrătoare; norma lunară distinctă este pe pagina de zile lucrătoare
 - [Zile lucrătoare 2026](https://salariile.ro/zile-lucratoare-2026): tabel lunar cu 250 zile lucrătoare, 2.000 ore de lucru, zile libere și sărbători legale scăzute din norma lunară
-- [Salarii pe meserii](https://salariile.ro/salarii): 123 de meserii cu netul mediu observat de INS în sectorul CAEN afișat în prim-plan (ultima lună: iunie 2026), plus netul standard, reperul grupei ISCO-08, brutul, defalcarea pe 42 de județe și progresia pe vârste
+- [Salarii pe meserii](https://salariile.ro/salarii): 126 de meserii cu netul mediu observat de INS în sectorul CAEN afișat în prim-plan (ultima lună: iunie 2026), plus netul standard, reperul grupei ISCO-08, brutul, defalcarea pe 42 de județe și progresia pe vârste
 - [Compară salarii între meserii](https://salariile.ro/compara): 37 de comparații net-first între meserii din activități economice diferite; mediile sectoarelor CAEN și reperele grupelor ISCO sunt afișate separat, fără intervale sau diferențe derivate
 
 ## Noutăți și analize
