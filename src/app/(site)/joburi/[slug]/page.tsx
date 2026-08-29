@@ -11,6 +11,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Breadcrumb, H1, Hero, Section } from "@/app/components/ui";
 import { Eticheta, SalariuJob } from "@/app/components/Joburi";
+import RaporteazaAnunt from "@/app/components/RaporteazaAnunt";
 import { NotaSursa } from "@/app/components/Salarii";
 import { MESERII } from "@/lib/meserii";
 import { ogPage, twPage } from "@/lib/seo";
@@ -138,16 +139,9 @@ export default async function PaginaJob({ params }: { params: Promise<{ slug: st
             deschis înainte să pregătești dosarul.
           </p>
         ) : null}
-        <p className="mt-2 text-sm text-stone-600">
-          Postul e deja ocupat?{" "}
-          <a
-            href={`mailto:contact@salariile.ro?subject=${encodeURIComponent(`Post ocupat: ${job.titlu}`)}&body=${encodeURIComponent(`Anunțul https://salariile.ro/joburi/${job.slug} pare să nu mai fie valabil.`)}`}
-            className="font-medium text-stone-900 underline underline-offset-2"
-          >
-            Spune-ne
-          </a>{" "}
-          și îl retragem.
-        </p>
+        <div className="mt-4 border-t border-stone-200 pt-4">
+          <RaporteazaAnunt slug={job.slug} />
+        </div>
       </Section>
 
       {meserie ? (
