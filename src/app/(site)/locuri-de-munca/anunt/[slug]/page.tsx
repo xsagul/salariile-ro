@@ -20,6 +20,7 @@ import {
   TIP_CONTRACT,
   ZILE_PANA_LA_AVERTISMENT,
   esteVechi,
+  localitateaJobului,
   jobDupaSlug,
   joburiActive,
   jobPostingSchema,
@@ -46,13 +47,14 @@ export async function generateMetadata({
   const { slug } = await params;
   const job = jobDupaSlug(slug);
   if (!job) return {};
-  const titlu = `${job.titlu} – ${job.oras ?? job.judet}`;
-  const descriere = `${job.companie} caută ${job.titlu.toLowerCase()} în ${job.oras ?? job.judet}. Salariu ${job.salariu.min}–${job.salariu.max} lei brut, cu netul calculat.`;
+  const loc = localitateaJobului(job);
+  const titlu = `${job.titlu} – ${loc?.nume ?? job.localitate}`;
+  const descriere = `${job.companie} caută ${job.titlu.toLowerCase()} în ${loc?.nume ?? job.localitate}. Salariu ${job.salariu.min}–${job.salariu.max} lei brut, cu netul calculat.`;
   return {
     title: { absolute: `${titlu} | Salariile.ro` },
     description: descriere,
-    alternates: { canonical: `https://salariile.ro/locuri-de-munca/${job.slug}` },
-    openGraph: ogPage({ title: titlu, description: descriere, path: `/locuri-de-munca/${job.slug}` }),
+    alternates: { canonical: `https://salariile.ro/locuri-de-munca/anunt/${job.slug}` },
+    openGraph: ogPage({ title: titlu, description: descriere, path: `/locuri-de-munca/anunt/${job.slug}` }),
     twitter: twPage({ title: titlu, description: descriere }),
   };
 }
@@ -62,7 +64,8 @@ export default async function PaginaJob({ params }: { params: Promise<{ slug: st
   const job = jobDupaSlug(slug);
   if (!job) notFound();
 
-  const url = `https://salariile.ro/locuri-de-munca/${job.slug}`;
+  const url = `https://salariile.ro/locuri-de-munca/anunt/${job.slug}`;
+  const locJ = localitateaJobului(job);
   const meserie = job.meserie ? MESERII.find((m) => m.slug === job.meserie) : undefined;
   const dataRo = (iso: string) =>
     new Date(iso).toLocaleDateString("ro-RO", { day: "numeric", month: "long", year: "numeric" });
@@ -79,7 +82,7 @@ export default async function PaginaJob({ params }: { params: Promise<{ slug: st
         />
         <H1>{job.titlu}</H1>
         <p className="mt-2 text-lg text-stone-600">
-          {job.companie} · {job.oras ?? job.judet}
+          {job.companie} · {locJ?.nume ?? job.localitate}
         </p>
 
         <div className="mt-5 rounded-md border border-stone-200 bg-surface p-5">
@@ -87,7 +90,7 @@ export default async function PaginaJob({ params }: { params: Promise<{ slug: st
           <div className="mt-4 flex flex-wrap gap-1.5">
             <Eticheta>{TIP_CONTRACT[job.tipContract]}</Eticheta>
             <Eticheta>{MOD_LUCRU[job.modLucru]}</Eticheta>
-            <Eticheta>{job.judet}</Eticheta>
+            <Eticheta>{locJ?.judet ?? ""}</Eticheta>
           </div>
         </div>
       </Hero>

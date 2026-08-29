@@ -20,6 +20,7 @@
 // bazeaza pe lege ca sa existe; legea doar face norma ceea ce noi cerem oricum.
 
 import { brutDinNetStandard, calculStandard } from "@/lib/fiscal";
+import { distantaKm, localitate as gasesteLocalitate, type Localitate } from "@/lib/localitati";
 
 export type ModLucru = "la-birou" | "hibrid" | "remote";
 export type TipContract = "norma-intreaga" | "part-time" | "temporar" | "internship" | "sezonier";
@@ -61,8 +62,8 @@ export type Job = {
   slug: string;
   titlu: string;
   companie: string;
-  judet: string;
-  oras?: string;
+  /** Slugul localitatii din `localitati.ts`. Normalizat, ca sa functioneze filtrul de distanta. */
+  localitate: string;
   modLucru: ModLucru;
   tipContract: TipContract;
   /** OBLIGATORIU. Vezi comentariul din capul fisierului. */
@@ -182,21 +183,61 @@ export function varstaText(job: Job, acum: Date = new Date()): string {
   return `publicat acum ${z} zile`;
 }
 
-export function joburiDinJudet(judet: string): Job[] {
-  return joburiActive().filter((j) => j.judet.toLowerCase() === judet.toLowerCase());
-}
-
 export function joburiDinCategorie(categorie: string): Job[] {
   return joburiActive().filter((j) => j.categorie === categorie);
 }
 
-/** Judetele care au cel putin un anunt activ, cu numarul lor. */
-export function judeteCuJoburi(): { judet: string; nr: number }[] {
+/** Localitatea unui anunt, sau null daca slugul nu e in catalog. */
+export function localitateaJobului(job: Job): Localitate | null {
+  return gasesteLocalitate(job.localitate);
+}
+
+export function joburiDinLocalitate(slug: string): Job[] {
+  return joburiActive().filter((j) => j.localitate === slug);
+}
+
+export function joburiDinLocalitateSiMeserie(slugLocalitate: string, slugMeserie: string): Job[] {
+  return joburiDinLocalitate(slugLocalitate).filter((j) => j.meserie === slugMeserie);
+}
+
+export function joburiDinMeserie(slugMeserie: string): Job[] {
+  return joburiActive().filter((j) => j.meserie === slugMeserie);
+}
+
+/**
+ * Anunturile din raza data fata de o localitate. Asta e raspunsul la intrebarea
+ * pe care si-o pune de fapt un candidat — „ce e aproape de casa" — si e singurul
+ * filtru pe care OLX il are, iar eJobs nu.
+ *
+ * Anunturile remote intra intotdeauna, indiferent de raza: nu au distanta.
+ */
+export function joburiInRaza(slugLocalitate: string, km: number): Job[] {
+  const centru = gasesteLocalitate(slugLocalitate);
+  if (!centru) return [];
+  return joburiActive().filter((j) => {
+    if (j.modLucru === "remote") return true;
+    if (j.localitate === slugLocalitate) return true;
+    if (km <= 0) return false;
+    const l = gasesteLocalitate(j.localitate);
+    return l ? distantaKm(centru, l) <= km : false;
+  });
+}
+
+/** Localitatile care au cel putin un anunt activ, cu numarul lor. */
+export function localitatiCuJoburi(): { localitate: Localitate; nr: number }[] {
   const m = new Map<string, number>();
-  for (const j of joburiActive()) m.set(j.judet, (m.get(j.judet) ?? 0) + 1);
+  for (const j of joburiActive()) m.set(j.localitate, (m.get(j.localitate) ?? 0) + 1);
   return [...m.entries()]
-    .map(([judet, nr]) => ({ judet, nr }))
-    .sort((a, b) => b.nr - a.nr || a.judet.localeCompare(b.judet, "ro"));
+    .map(([slug, nr]) => ({ localitate: gasesteLocalitate(slug), nr }))
+    .filter((x): x is { localitate: Localitate; nr: number } => x.localitate !== null)
+    .sort((a, b) => b.nr - a.nr || a.localitate.nume.localeCompare(b.localitate.nume, "ro"));
+}
+
+/** Meseriile care au cel putin un anunt activ intr-o localitate. */
+export function meseriiDinLocalitate(slug: string): { meserie: string; nr: number }[] {
+  const m = new Map<string, number>();
+  for (const j of joburiDinLocalitate(slug)) if (j.meserie) m.set(j.meserie, (m.get(j.meserie) ?? 0) + 1);
+  return [...m.entries()].map(([meserie, nr]) => ({ meserie, nr })).sort((a, b) => b.nr - a.nr);
 }
 
 export function categoriiCuJoburi(): { categorie: string; nr: number }[] {
@@ -233,15 +274,24 @@ export function jobPostingSchema(j: Job, url: string) {
     employmentType:
       j.tipContract === "part-time" ? "PART_TIME" : j.tipContract === "internship" ? "INTERN" : "FULL_TIME",
     hiringOrganization: { "@type": "Organization", name: j.companie },
-    jobLocation: {
-      "@type": "Place",
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: j.oras ?? j.judet,
-        addressRegion: j.judet,
-        addressCountry: "RO",
-      },
-    },
+    ...(() => {
+      const l = gasesteLocalitate(j.localitate);
+      return {
+        jobLocation: {
+          "@type": "Place",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: l?.nume ?? j.localitate,
+            addressRegion: l?.judet ?? "",
+            addressCountry: "RO",
+          },
+          // Coordonatele intra in schema: Google for Jobs le foloseste pentru
+          // „joburi langa mine", care e exact intentia din spatele filtrului de
+          // distanta al OLX-ului.
+          ...(l ? { geo: { "@type": "GeoCoordinates", latitude: l.lat, longitude: l.lng } } : {}),
+        },
+      };
+    })(),
     ...(j.modLucru === "remote" ? { jobLocationType: "TELECOMMUTE" } : {}),
     // ATENTIE: `baseSalary` din schema.org inseamna BRUT. Cand angajatorul a
     // declarat suma in mana, aici trebuie sa mearga brutul calculat, nu cifra

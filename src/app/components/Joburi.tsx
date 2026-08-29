@@ -8,7 +8,7 @@
 
 import Link from "next/link";
 import { lei } from "@/app/components/Salarii";
-import { MOD_LUCRU, TIP_CONTRACT, esteVechi, salariuCalculat, varstaText, type Job } from "@/lib/joburi";
+import { MOD_LUCRU, TIP_CONTRACT, esteVechi, localitateaJobului, salariuCalculat, varstaText, type Job } from "@/lib/joburi";
 
 /** „4.800 – 6.200 lei" sau „4.800 lei" cand intervalul e un punct. */
 export function intervalLei(min: number, max: number): string {
@@ -46,34 +46,32 @@ export function SalariuJob({ job, marime = "mic" }: { job: Job; marime?: "mic" |
   );
 }
 
-/** Un rand din lista de anunturi. */
+/** Cardul unui anunt. NU include <li> — cine il pune in lista adauga elementul. */
 export function CardJob({ job }: { job: Job }) {
   return (
-    <li>
-      <Link
-        href={`/locuri-de-munca/${job.slug}`}
-        className="block rounded-md border border-stone-200 bg-surface p-4 transition-colors hover:bg-canvas"
-      >
-        <div className="sm:flex sm:items-start sm:justify-between sm:gap-4">
-          <div className="min-w-0">
-            <h3 className="text-base font-semibold text-stone-900">{job.titlu}</h3>
-            <p className="mt-0.5 text-sm text-stone-600">
-              {job.companie} · {job.oras ?? job.judet}
-            </p>
-            <div className="mt-2 flex flex-wrap items-center gap-1.5">
-              <Eticheta>{TIP_CONTRACT[job.tipContract]}</Eticheta>
-              <Eticheta>{MOD_LUCRU[job.modLucru]}</Eticheta>
-              <span className={esteVechi(job) ? "text-xs font-medium text-stone-900" : "text-xs text-stone-600"}>
-                {varstaText(job)}
-              </span>
-            </div>
-          </div>
-          <div className="mt-3 shrink-0 sm:mt-0 sm:text-right">
-            <SalariuJob job={job} />
+    <Link
+      href={`/locuri-de-munca/anunt/${job.slug}`}
+      className="block rounded-md border border-stone-200 bg-surface p-4 transition-colors hover:bg-canvas"
+    >
+      <div className="sm:flex sm:items-start sm:justify-between sm:gap-4">
+        <div className="min-w-0">
+          <h3 className="text-base font-semibold text-stone-900">{job.titlu}</h3>
+          <p className="mt-0.5 text-sm text-stone-600">
+            {job.companie} · {localitateaJobului(job)?.nume ?? job.localitate}
+          </p>
+          <div className="mt-2 flex flex-wrap items-center gap-1.5">
+            <Eticheta>{TIP_CONTRACT[job.tipContract]}</Eticheta>
+            <Eticheta>{MOD_LUCRU[job.modLucru]}</Eticheta>
+            <span className={esteVechi(job) ? "text-xs font-medium text-stone-900" : "text-xs text-stone-600"}>
+              {varstaText(job)}
+            </span>
           </div>
         </div>
-      </Link>
-    </li>
+        <div className="mt-3 shrink-0 sm:mt-0 sm:text-right">
+          <SalariuJob job={job} />
+        </div>
+      </div>
+    </Link>
   );
 }
 
@@ -88,7 +86,9 @@ export function ListaJoburi({ joburi }: { joburi: Job[] }) {
   return (
     <ul className="list-none space-y-3 pl-0">
       {joburi.map((j) => (
-        <CardJob key={j.slug} job={j} />
+        <li key={j.slug}>
+          <CardJob job={j} />
+        </li>
       ))}
     </ul>
   );

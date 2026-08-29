@@ -23,6 +23,7 @@
 import { useMemo, useState } from "react";
 import { brutDinNetStandard, calculStandard } from "@/lib/fiscal";
 import { TIP_CONTRACT, MOD_LUCRU, type ModLucru, type TipContract } from "@/lib/joburi";
+import { localitatiDupaCerere } from "@/lib/localitati";
 
 const lei = (v: number) => new Intl.NumberFormat("ro-RO").format(Math.round(v));
 const ADRESA = "contact@salariile.ro";
@@ -31,6 +32,7 @@ export default function FormularAnunt() {
   const [titlu, setTitlu] = useState("");
   const [companie, setCompanie] = useState("");
   const [oras, setOras] = useState("");
+  const LOCALITATI_OPT = localitatiDupaCerere();
   const [telefon, setTelefon] = useState("");
   const [altContact, setAltContact] = useState("");
   const [sumaMin, setSumaMin] = useState("");
@@ -70,7 +72,7 @@ export default function FormularAnunt() {
   const corp = [
     `Titlu: ${titlu}`,
     `Companie: ${companie}`,
-    `Localitate: ${oras}`,
+    `Localitate: ${LOCALITATI_OPT.find((l) => l.slug === oras)?.nume ?? "—"} (${oras})`,
     `Salariu declarat: ${min} – ${max} lei ${tipSuma}`,
     pereche
       ? tipSuma === "net"
@@ -107,8 +109,17 @@ export default function FormularAnunt() {
         </div>
         <div>
           <label className={eticheta} htmlFor="an-oras">Localitatea</label>
-          <input id="an-oras" className={camp} value={oras} onChange={(e) => setOras(e.target.value)}
-            placeholder="Cluj-Napoca" />
+          {/*
+            Listă închisă, nu text liber. Fără localitate normalizată, filtrul de
+            distanță nu are pe ce lucra — „Cluj", „cluj napoca" și „Cluj-Napoca"
+            ar fi trei orașe diferite, iar anunțul n-ar apărea în raza nimănui.
+          */}
+          <select id="an-oras" className={camp} value={oras} onChange={(e) => setOras(e.target.value)}>
+            <option value="">Alege localitatea…</option>
+            {LOCALITATI_OPT.map((l) => (
+              <option key={l.slug} value={l.slug}>{l.nume} ({l.judet})</option>
+            ))}
+          </select>
         </div>
         <div>
           <label className={eticheta} htmlFor="an-tel">Telefon pentru candidați</label>

@@ -9,8 +9,6 @@
       "slug": "barman-cluj",
       "titlu": "Barman",
       "companie": "Bar de test",
-      "judet": "Cluj",
-      "oras": "Cluj-Napoca",
       "modLucru": "la-birou",
       "tipContract": "norma-intreaga",
       "salariu": {
@@ -28,14 +26,37 @@
       ],
       "aplicaTelefon": "0700 000 010",
       "publicatLa": "2026-08-29T10:00:00.000Z",
-      "expiraLa": "2026-09-28T10:00:00.000Z"
+      "expiraLa": "2026-09-28T10:00:00.000Z",
+      "localitate": "cluj-napoca"
+    },
+    {
+      "slug": "operator-productie-turda",
+      "titlu": "Operator producție",
+      "companie": "Fabrică de test",
+      "localitate": "turda",
+      "modLucru": "la-birou",
+      "tipContract": "norma-intreaga",
+      "salariu": {
+        "min": 3400,
+        "max": 4100,
+        "moneda": "RON",
+        "tip": "net"
+      },
+      "categorie": "industrie",
+      "meserie": "operator-productie",
+      "descriere": "Deservește linia de producție, verifică parametrii de calitate și completează fișele de tură. Trei schimburi, cu spor de noapte.",
+      "cerinte": [
+        "Studii medii",
+        "Disponibilitate pentru lucru în trei schimburi"
+      ],
+      "aplicaTelefon": "0700 000 015",
+      "publicatLa": "2026-08-28T09:00:00.000Z",
+      "expiraLa": "2026-09-27T09:00:00.000Z"
     },
     {
       "slug": "electrician-mentenanta-cluj",
       "titlu": "Electrician mentenanță",
       "companie": "Firmă de test SRL",
-      "judet": "Cluj",
-      "oras": "Cluj-Napoca",
       "modLucru": "la-birou",
       "tipContract": "norma-intreaga",
       "salariu": {
@@ -54,14 +75,13 @@
       ],
       "publicatLa": "2026-08-29T09:00:00.000Z",
       "expiraLa": "2026-09-28T09:00:00.000Z",
-      "aplicaTelefon": "0700 000 011"
+      "aplicaTelefon": "0700 000 011",
+      "localitate": "cluj-napoca"
     },
     {
       "slug": "asistent-medical-bucuresti",
       "titlu": "Asistent medical generalist",
       "companie": "Clinică de test",
-      "judet": "București",
-      "oras": "București",
       "modLucru": "la-birou",
       "tipContract": "norma-intreaga",
       "salariu": {
@@ -79,14 +99,13 @@
       ],
       "publicatLa": "2026-08-27T09:00:00.000Z",
       "expiraLa": "2026-09-26T09:00:00.000Z",
-      "aplicaTelefon": "0700 000 014"
+      "aplicaTelefon": "0700 000 014",
+      "localitate": "bucuresti"
     },
     {
       "slug": "programator-frontend-remote",
       "titlu": "Programator frontend",
       "companie": "Studio de test",
-      "judet": "Timiș",
-      "oras": "Timișoara",
       "modLucru": "remote",
       "tipContract": "norma-intreaga",
       "salariu": {
@@ -104,14 +123,13 @@
       ],
       "aplicaUrl": "https://example.com/cariere",
       "publicatLa": "2026-08-22T09:00:00.000Z",
-      "expiraLa": "2026-09-21T09:00:00.000Z"
+      "expiraLa": "2026-09-21T09:00:00.000Z",
+      "localitate": "timisoara"
     },
     {
       "slug": "sofer-livrari-iasi",
       "titlu": "Șofer livrări",
       "companie": "Distribuție de test",
-      "judet": "Iași",
-      "oras": "Iași",
       "modLucru": "la-birou",
       "tipContract": "norma-intreaga",
       "salariu": {
@@ -129,14 +147,13 @@
       ],
       "publicatLa": "2026-08-16T09:00:00.000Z",
       "expiraLa": "2026-09-15T09:00:00.000Z",
-      "aplicaTelefon": "0700 000 012"
+      "aplicaTelefon": "0700 000 012",
+      "localitate": "iasi"
     },
     {
       "slug": "contabil-brasov",
       "titlu": "Contabil",
       "companie": "Cabinet de test",
-      "judet": "Brașov",
-      "oras": "Brașov",
       "modLucru": "hibrid",
       "tipContract": "norma-intreaga",
       "salariu": {
@@ -154,14 +171,13 @@
       ],
       "aplicaEmail": "test@example.com",
       "publicatLa": "2026-08-07T09:00:00.000Z",
-      "expiraLa": "2026-09-06T09:00:00.000Z"
+      "expiraLa": "2026-09-06T09:00:00.000Z",
+      "localitate": "brasov"
     },
     {
       "slug": "vanzator-consultant-constanta",
       "titlu": "Vânzător consultant",
       "companie": "Retail de test",
-      "judet": "Constanța",
-      "oras": "Constanța",
       "modLucru": "la-birou",
       "tipContract": "part-time",
       "salariu": {
@@ -179,7 +195,8 @@
       ],
       "publicatLa": "2026-08-03T09:00:00.000Z",
       "expiraLa": "2026-09-02T09:00:00.000Z",
-      "aplicaTelefon": "0700 000 013"
+      "aplicaTelefon": "0700 000 013",
+      "localitate": "constanta"
     }
   ]
 }
