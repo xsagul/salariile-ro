@@ -1,4 +1,4 @@
-// src/app/(site)/joburi/[slug]/page.tsx
+// src/app/(site)/locuri-de-munca/[slug]/page.tsx
 // Pagina unui anunt. Server Component pur.
 //
 // SEO: `JobPosting` in JSON-LD e conditia de intrare in Google for Jobs, adica
@@ -51,8 +51,8 @@ export async function generateMetadata({
   return {
     title: { absolute: `${titlu} | Salariile.ro` },
     description: descriere,
-    alternates: { canonical: `https://salariile.ro/joburi/${job.slug}` },
-    openGraph: ogPage({ title: titlu, description: descriere, path: `/joburi/${job.slug}` }),
+    alternates: { canonical: `https://salariile.ro/locuri-de-munca/${job.slug}` },
+    openGraph: ogPage({ title: titlu, description: descriere, path: `/locuri-de-munca/${job.slug}` }),
     twitter: twPage({ title: titlu, description: descriere }),
   };
 }
@@ -62,7 +62,7 @@ export default async function PaginaJob({ params }: { params: Promise<{ slug: st
   const job = jobDupaSlug(slug);
   if (!job) notFound();
 
-  const url = `https://salariile.ro/joburi/${job.slug}`;
+  const url = `https://salariile.ro/locuri-de-munca/${job.slug}`;
   const meserie = job.meserie ? MESERII.find((m) => m.slug === job.meserie) : undefined;
   const dataRo = (iso: string) =>
     new Date(iso).toLocaleDateString("ro-RO", { day: "numeric", month: "long", year: "numeric" });

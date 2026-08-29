@@ -55,7 +55,7 @@ async function notifica(job: { slug: string; titlu: string; companie: string }) 
     "",
     `Anunț:    ${job.titlu}`,
     `Companie: ${job.companie}`,
-    `Link:     https://salariile.ro/joburi/${job.slug}`,
+    `Link:     https://salariile.ro/locuri-de-munca/${job.slug}`,
     "",
     "Verifică și retrage anunțul dacă e cazul. Raportul nu a schimbat nimic pe site.",
   ].join("\n");

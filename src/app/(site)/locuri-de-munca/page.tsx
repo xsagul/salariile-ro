@@ -1,4 +1,4 @@
-// src/app/(site)/joburi/page.tsx
+// src/app/(site)/locuri-de-munca/page.tsx
 // Hubul de recrutare. Server Component pur.
 //
 // Promisiunea paginii, si singurul motiv pentru care ar alege cineva locul asta
@@ -20,8 +20,8 @@ const DESCRIERE =
 export const metadata: Metadata = {
   title: { absolute: "Locuri de muncă cu salariul afișat | Salariile.ro" },
   description: DESCRIERE,
-  alternates: { canonical: "https://salariile.ro/joburi" },
-  openGraph: ogPage({ title: "Locuri de muncă cu salariul afișat", description: DESCRIERE, path: "/joburi" }),
+  alternates: { canonical: "https://salariile.ro/locuri-de-munca" },
+  openGraph: ogPage({ title: "Locuri de muncă cu salariul afișat", description: DESCRIERE, path: "/locuri-de-munca" }),
   twitter: twPage({ title: "Locuri de muncă cu salariul afișat", description: DESCRIERE }),
 };
 
@@ -122,7 +122,7 @@ export default function Joburi() {
               </p>
               <p className="mt-3">
                 <Link
-                  href="/joburi/publica"
+                  href="/locuri-de-munca/publica"
                   className="inline-flex min-h-11 items-center rounded bg-stone-900 px-4 text-sm font-medium text-white"
                 >
                   Publică un anunț

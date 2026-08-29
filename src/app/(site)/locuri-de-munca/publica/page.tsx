@@ -1,4 +1,4 @@
-// src/app/(site)/joburi/publica/page.tsx
+// src/app/(site)/locuri-de-munca/publica/page.tsx
 // Pagina de publicare pentru angajatori.
 
 import type { Metadata } from "next";
@@ -13,8 +13,8 @@ const DESCRIERE =
 export const metadata: Metadata = {
   title: { absolute: "Publică un anunț de angajare | Salariile.ro" },
   description: DESCRIERE,
-  alternates: { canonical: "https://salariile.ro/joburi/publica" },
-  openGraph: ogPage({ title: "Publică un anunț de angajare", description: DESCRIERE, path: "/joburi/publica" }),
+  alternates: { canonical: "https://salariile.ro/locuri-de-munca/publica" },
+  openGraph: ogPage({ title: "Publică un anunț de angajare", description: DESCRIERE, path: "/locuri-de-munca/publica" }),
   twitter: twPage({ title: "Publică un anunț de angajare", description: DESCRIERE }),
 };
 

@@ -51,7 +51,7 @@ export function CardJob({ job }: { job: Job }) {
   return (
     <li>
       <Link
-        href={`/joburi/${job.slug}`}
+        href={`/locuri-de-munca/${job.slug}`}
         className="block rounded-md border border-stone-200 bg-surface p-4 transition-colors hover:bg-canvas"
       >
         <div className="sm:flex sm:items-start sm:justify-between sm:gap-4">
