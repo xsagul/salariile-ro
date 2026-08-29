@@ -1,10 +1,35 @@
 {
   "sursa": {
     "stare": "schelet",
-    "explicatie": "Anunturi de test pentru dezvoltarea hubului. NU sunt oferte reale si nu se publica. Se sterg inainte de primul deploy, cand hubul primeste o sursa de date reala.",
+    "explicatie": "Anunturi de test pentru dezvoltarea hubului. NU sunt oferte reale, numerele de telefon sunt inventate (0700 000 0xx) si nu se publica. Se sterg inainte de primul deploy.",
     "generatLa": "2026-08-29"
   },
   "joburi": [
+    {
+      "slug": "barman-cluj",
+      "titlu": "Barman",
+      "companie": "Bar de test",
+      "judet": "Cluj",
+      "oras": "Cluj-Napoca",
+      "modLucru": "la-birou",
+      "tipContract": "norma-intreaga",
+      "salariu": {
+        "min": 3000,
+        "max": 3800,
+        "moneda": "RON",
+        "tip": "net"
+      },
+      "categorie": "horeca",
+      "meserie": "barman",
+      "descriere": "Prepară și servește băuturi la bar, gestionează stocul de la raft și încasează. Ture de seară, cu două weekenduri libere pe lună.",
+      "cerinte": [
+        "Experiență de minimum un an la bar",
+        "Disponibilitate pentru ture de seară"
+      ],
+      "aplicaTelefon": "0700 000 010",
+      "publicatLa": "2026-08-29T10:00:00.000Z",
+      "expiraLa": "2026-09-28T10:00:00.000Z"
+    },
     {
       "slug": "electrician-mentenanta-cluj",
       "titlu": "Electrician mentenanță",
@@ -16,7 +41,8 @@
       "salariu": {
         "min": 4800,
         "max": 6200,
-        "moneda": "RON"
+        "moneda": "RON",
+        "tip": "brut"
       },
       "categorie": "industrie",
       "meserie": "electrician",
@@ -26,9 +52,9 @@
         "Experiență de minimum 2 ani în mentenanță industrială",
         "Disponibilitate pentru lucru în două schimburi"
       ],
-      "aplicaEmail": "test@example.com",
       "publicatLa": "2026-08-29T09:00:00.000Z",
-      "expiraLa": "2026-09-28T09:00:00.000Z"
+      "expiraLa": "2026-09-28T09:00:00.000Z",
+      "aplicaTelefon": "0700 000 011"
     },
     {
       "slug": "asistent-medical-bucuresti",
@@ -41,7 +67,8 @@
       "salariu": {
         "min": 5200,
         "max": 6800,
-        "moneda": "RON"
+        "moneda": "RON",
+        "tip": "brut"
       },
       "categorie": "medical",
       "meserie": "asistent-medical",
@@ -50,9 +77,9 @@
         "Diplomă de asistent medical generalist și aviz OAMGMAMR la zi",
         "Experiență de minimum 1 an"
       ],
-      "aplicaEmail": "test@example.com",
       "publicatLa": "2026-08-27T09:00:00.000Z",
-      "expiraLa": "2026-09-26T09:00:00.000Z"
+      "expiraLa": "2026-09-26T09:00:00.000Z",
+      "aplicaTelefon": "0700 000 014"
     },
     {
       "slug": "programator-frontend-remote",
@@ -65,7 +92,8 @@
       "salariu": {
         "min": 9000,
         "max": 14000,
-        "moneda": "RON"
+        "moneda": "RON",
+        "tip": "brut"
       },
       "categorie": "it",
       "meserie": "web-developer",
@@ -87,9 +115,10 @@
       "modLucru": "la-birou",
       "tipContract": "norma-intreaga",
       "salariu": {
-        "min": 4325,
-        "max": 5100,
-        "moneda": "RON"
+        "min": 2700,
+        "max": 3100,
+        "moneda": "RON",
+        "tip": "net"
       },
       "categorie": "transport",
       "meserie": "sofer",
@@ -98,9 +127,9 @@
         "Permis categoria B, minimum 2 ani vechime",
         "Cunoașterea orașului"
       ],
-      "aplicaEmail": "test@example.com",
       "publicatLa": "2026-08-16T09:00:00.000Z",
-      "expiraLa": "2026-09-15T09:00:00.000Z"
+      "expiraLa": "2026-09-15T09:00:00.000Z",
+      "aplicaTelefon": "0700 000 012"
     },
     {
       "slug": "contabil-brasov",
@@ -113,7 +142,8 @@
       "salariu": {
         "min": 6000,
         "max": 8500,
-        "moneda": "RON"
+        "moneda": "RON",
+        "tip": "brut"
       },
       "categorie": "finante",
       "meserie": "contabil",
@@ -135,9 +165,10 @@
       "modLucru": "la-birou",
       "tipContract": "part-time",
       "salariu": {
-        "min": 2600,
-        "max": 3200,
-        "moneda": "RON"
+        "min": 1650,
+        "max": 1950,
+        "moneda": "RON",
+        "tip": "net"
       },
       "categorie": "comert",
       "meserie": "vanzator",
@@ -146,9 +177,9 @@
         "Studii medii",
         "Experiență în retail constituie avantaj"
       ],
-      "aplicaEmail": "test@example.com",
       "publicatLa": "2026-08-03T09:00:00.000Z",
-      "expiraLa": "2026-09-02T09:00:00.000Z"
+      "expiraLa": "2026-09-02T09:00:00.000Z",
+      "aplicaTelefon": "0700 000 013"
     }
   ]
 }

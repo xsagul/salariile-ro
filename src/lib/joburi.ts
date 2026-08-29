@@ -19,7 +19,7 @@
 // procesul de recrutare. Verificat pe 29 august 2026. Deci hubul asta nu se
 // bazeaza pe lege ca sa existe; legea doar face norma ceea ce noi cerem oricum.
 
-import { calculStandard } from "@/lib/fiscal";
+import { brutDinNetStandard, calculStandard } from "@/lib/fiscal";
 
 export type ModLucru = "la-birou" | "hibrid" | "remote";
 export type TipContract = "norma-intreaga" | "part-time" | "temporar" | "internship" | "sezonier";
@@ -38,12 +38,23 @@ export const TIP_CONTRACT: Record<TipContract, string> = {
   sezonier: "Sezonier",
 };
 
-/** Intervalul brut lunar. Ambele capete obligatorii — un singur numar e tot un interval, cu min = max. */
+/**
+ * Intervalul lunar. Ambele capete obligatorii — un singur numar e tot un
+ * interval, cu min = max.
+ *
+ * `tip` exista pentru ca jumatate din piata nu gandeste in brut. In HoReCa,
+ * retail, constructii sau curatenie, oferta se spune „2.500 in mana" — adica
+ * net. Daca am cere angajatorului sa converteasca singur, ar gresi sau ar
+ * renunta, iar cifra publicata ar fi falsa. Asa ca il intrebam ce a vrut sa
+ * spuna si convertim noi, in ambele sensuri.
+ */
 export type IntervalSalariu = {
   min: number;
   max: number;
   /** Deocamdata doar RON. Anunturile in euro se convertesc la publicare, nu la afisare. */
   moneda: "RON";
+  /** Ce a declarat angajatorul: suma din contract sau suma din mana. */
+  tip: "brut" | "net";
 };
 
 export type Job = {
@@ -62,6 +73,13 @@ export type Job = {
   meserie?: string;
   descriere: string;
   cerinte?: string[];
+  /**
+   * Contactul. Ordinea nu e intamplatoare: in HoReCa, retail, constructii sau
+   * transport nimeni nu trimite CV — se suna. Un `tel:` pe telefon e o singura
+   * apasare, cel mai mic efort posibil pentru un candidat. Emailul si formularul
+   * de pe site-ul companiei raman pentru gulerele albe.
+   */
+  aplicaTelefon?: string;
   aplicaUrl?: string;
   aplicaEmail?: string;
   /** ISO. Data publicarii si data expirarii — ambele cerute de schema JobPosting. */
@@ -90,18 +108,28 @@ export type SalariuCalculat = {
   netMax: number;
   /** true cand min === max, ca sa nu afisam „3.000 – 3.000 lei". */
   fix: boolean;
+  /** Capatul declarat de angajator; celalalt e calculat de noi. */
+  declarat: "brut" | "net";
 };
 
 /**
- * Trece intervalul brut prin motorul fiscal si intoarce si netul.
- * Se foloseste `calculStandard`, adica exact ce ruleaza calculatorul de pe
- * homepage: fara persoane in intretinere, norma intreaga, functie de baza.
+ * Completeaza intervalul in ambele sensuri, indiferent ce a declarat
+ * angajatorul. Se folosesc `calculStandard` si `brutDinNetStandard`, adica
+ * exact ce ruleaza calculatorul de pe homepage: fara persoane in intretinere,
+ * norma intreaga, functie de baza.
  */
 export function salariuCalculat(s: IntervalSalariu): SalariuCalculat | null {
+  const fix = s.min === s.max;
+  if (s.tip === "net") {
+    const brutMin = brutDinNetStandard(s.min);
+    const brutMax = brutDinNetStandard(s.max);
+    if (!brutMin || !brutMax) return null;
+    return { brutMin, brutMax, netMin: s.min, netMax: s.max, fix, declarat: "net" };
+  }
   const netMin = calculStandard(s.min)?.net;
   const netMax = calculStandard(s.max)?.net;
   if (netMin == null || netMax == null) return null;
-  return { brutMin: s.min, brutMax: s.max, netMin, netMax, fix: s.min === s.max };
+  return { brutMin: s.min, brutMax: s.max, netMin, netMax, fix, declarat: "brut" };
 }
 
 // ─── Selectii ────────────────────────────────────────────────────────────────
@@ -215,16 +243,28 @@ export function jobPostingSchema(j: Job, url: string) {
       },
     },
     ...(j.modLucru === "remote" ? { jobLocationType: "TELECOMMUTE" } : {}),
-    baseSalary: {
-      "@type": "MonetaryAmount",
-      currency: j.salariu.moneda,
-      value: {
-        "@type": "QuantitativeValue",
-        minValue: j.salariu.min,
-        maxValue: j.salariu.max,
-        unitText: "MONTH",
-      },
-    },
+    // ATENTIE: `baseSalary` din schema.org inseamna BRUT. Cand angajatorul a
+    // declarat suma in mana, aici trebuie sa mearga brutul calculat, nu cifra
+    // lui — altfel Google for Jobs ar arata un barman cu „3.000-3.800" ca si
+    // cum ar fi salariul din contract, adica aproape jumatate din cat costa
+    // efectiv postul.
+    ...(() => {
+      const s = salariuCalculat(j.salariu);
+      return s
+        ? {
+            baseSalary: {
+              "@type": "MonetaryAmount",
+              currency: j.salariu.moneda,
+              value: {
+                "@type": "QuantitativeValue",
+                minValue: s.brutMin,
+                maxValue: s.brutMax,
+                unitText: "MONTH",
+              },
+            },
+          }
+        : {};
+    })(),
     url,
     directApply: Boolean(j.aplicaEmail),
   };

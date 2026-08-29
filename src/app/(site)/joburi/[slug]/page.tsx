@@ -110,25 +110,51 @@ export default async function PaginaJob({ params }: { params: Promise<{ slug: st
 
       <Section faraProse>
         <h2 className="mb-4 text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">Aplică</h2>
+        {/*
+          Telefonul primul, si nu din intamplare. In HoReCa, retail, constructii
+          sau transport nimeni nu trimite CV — se suna. Pe telefon, `tel:` e o
+          singura apasare; pe desktop, numarul ramane vizibil si copiabil.
+        */}
+        {job.aplicaTelefon ? (
+          <a
+            href={`tel:${job.aplicaTelefon.replace(/[^\d+]/g, "")}`}
+            className="inline-flex min-h-11 items-center rounded bg-stone-900 px-4 text-base font-semibold tracking-[-0.01em] text-white"
+          >
+            Sună la {job.aplicaTelefon}
+          </a>
+        ) : null}
+
         {job.aplicaUrl ? (
           <a
             href={job.aplicaUrl}
             rel="nofollow noopener"
             target="_blank"
-            className="inline-flex min-h-11 items-center rounded bg-stone-900 px-4 text-sm font-medium text-white"
+            className={`inline-flex min-h-11 items-center rounded px-4 text-sm font-medium ${
+              job.aplicaTelefon
+                ? "ml-2 border border-stone-300 bg-surface text-stone-900"
+                : "bg-stone-900 text-white"
+            }`}
           >
             Aplică pe site-ul companiei
           </a>
-        ) : job.aplicaEmail ? (
+        ) : null}
+
+        {job.aplicaEmail ? (
           <a
             href={`mailto:${job.aplicaEmail}?subject=${encodeURIComponent(job.titlu)}`}
-            className="inline-flex min-h-11 items-center rounded bg-stone-900 px-4 text-sm font-medium text-white"
+            className={`inline-flex min-h-11 items-center rounded px-4 text-sm font-medium ${
+              job.aplicaTelefon || job.aplicaUrl
+                ? "ml-2 border border-stone-300 bg-surface text-stone-900"
+                : "bg-stone-900 text-white"
+            }`}
           >
-            Trimite CV pe email
+            Scrie pe email
           </a>
-        ) : (
+        ) : null}
+
+        {!job.aplicaTelefon && !job.aplicaUrl && !job.aplicaEmail ? (
           <p className="text-stone-600">Anunțul nu are o modalitate de contact.</p>
-        )}
+        ) : null}
         <p className="mt-3 text-sm text-stone-600">
           Publicat pe {dataRo(job.publicatLa)} — {varstaText(job)}. Expiră automat pe{" "}
           {dataRo(job.expiraLa)}, peste {zilePanaLaExpirare(job)} zile.

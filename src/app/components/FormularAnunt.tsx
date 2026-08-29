@@ -2,20 +2,26 @@
 
 // src/app/components/FormularAnunt.tsx
 //
-// Formularul de publicare. Doua lucruri deliberate:
+// Formularul de publicare. Trei lucruri deliberate:
 //
 // 1. SALARIUL E OBLIGATORIU. Butonul e inactiv fara el. Nu e o validare de
 //    curtoazie — e singura regula care face hubul sa difere de eJobs.
-// 2. Angajatorul vede NETUL pe masura ce tasteaza. Cei mai multi gandesc in
-//    brut si nu stiu ce ajunge in mana; aici afla inainte sa publice, iar
-//    candidatul vede exact aceeasi cifra.
 //
-// Nu trimite nimic catre server. Compune un email, iar anuntul se publica
-// manual. Asa hubul poate exista inainte de a avea baza de date, iar site-ul
-// continua sa nu colecteze nimic de la vizitatori.
+// 2. BRUT SAU NET, la alegerea angajatorului. Jumatate din piata nu gandeste
+//    in brut: in HoReCa, retail sau constructii oferta se spune „3.000 in
+//    mana". Daca l-am obliga sa converteasca singur, ar gresi sau ar renunta.
+//    Il intrebam ce a vrut sa spuna si convertim noi, in ambele sensuri.
+//
+// 3. TELEFONUL E CONTACTUL PRINCIPAL. Pe OLX, Publi24 si anuntul.ro lumea
+//    suna; nimeni nu trimite CV la un bar. Emailul si linkul raman optionale,
+//    pentru cine recruteaza altfel.
+//
+// Nu trimite nimic catre server: compune un email, iar anuntul se publica
+// manual. Asa hubul exista inainte de baza de date, iar site-ul continua sa nu
+// colecteze nimic de la vizitatori.
 
 import { useMemo, useState } from "react";
-import { calculStandard } from "@/lib/fiscal";
+import { brutDinNetStandard, calculStandard } from "@/lib/fiscal";
 import { TIP_CONTRACT, MOD_LUCRU, type ModLucru, type TipContract } from "@/lib/joburi";
 
 const lei = (v: number) => new Intl.NumberFormat("ro-RO").format(Math.round(v));
@@ -25,42 +31,62 @@ export default function FormularAnunt() {
   const [titlu, setTitlu] = useState("");
   const [companie, setCompanie] = useState("");
   const [oras, setOras] = useState("");
-  const [brutMin, setBrutMin] = useState("");
-  const [brutMax, setBrutMax] = useState("");
+  const [telefon, setTelefon] = useState("");
+  const [altContact, setAltContact] = useState("");
+  const [sumaMin, setSumaMin] = useState("");
+  const [sumaMax, setSumaMax] = useState("");
+  const [tipSuma, setTipSuma] = useState<"net" | "brut">("net");
   const [tip, setTip] = useState<TipContract>("norma-intreaga");
   const [mod, setMod] = useState<ModLucru>("la-birou");
   const [descriere, setDescriere] = useState("");
-  const [contact, setContact] = useState("");
 
   const nr = (s: string) => {
     const v = Number(s.replace(/[^\d]/g, ""));
     return Number.isFinite(v) && v > 0 ? v : null;
   };
-  const min = nr(brutMin);
-  const max = nr(brutMax) ?? min;
+  const min = nr(sumaMin);
+  const max = nr(sumaMax) ?? min;
 
-  const net = useMemo(() => {
+  // Se completeaza celalalt capat, oricare ar fi fost declarat. Suma scrisa de
+  // angajator ramane neatinsa — rotunjirea inversa poate misca un leu, iar el
+  // trebuie sa vada exact ce a tastat.
+  const pereche = useMemo(() => {
     if (min == null || max == null) return null;
-    const a = calculStandard(min)?.net;
-    const b = calculStandard(max)?.net;
-    return a == null || b == null ? null : { a, b };
-  }, [min, max]);
+    if (tipSuma === "net") {
+      const bMin = brutDinNetStandard(min);
+      const bMax = brutDinNetStandard(max);
+      return bMin && bMax ? { netMin: min, netMax: max, brutMin: bMin, brutMax: bMax } : null;
+    }
+    const nMin = calculStandard(min)?.net;
+    const nMax = calculStandard(max)?.net;
+    return nMin != null && nMax != null ? { netMin: nMin, netMax: nMax, brutMin: min, brutMax: max } : null;
+  }, [min, max, tipSuma]);
 
   const salariuValid = min != null && max != null && max >= min;
-  const gata = salariuValid && titlu.trim() && companie.trim() && oras.trim() && contact.trim();
+  const gata = Boolean(salariuValid && titlu.trim() && companie.trim() && oras.trim() && (telefon.trim() || altContact.trim()));
+
+  const interval = (a: number, b: number) => (a === b ? `${lei(a)} lei` : `${lei(a)} – ${lei(b)} lei`);
 
   const corp = [
     `Titlu: ${titlu}`,
     `Companie: ${companie}`,
     `Localitate: ${oras}`,
-    `Salariu brut: ${min} – ${max} lei/lună`,
+    `Salariu declarat: ${min} – ${max} lei ${tipSuma}`,
+    pereche
+      ? tipSuma === "net"
+        ? `  (brut calculat: ${pereche.brutMin} – ${pereche.brutMax} lei)`
+        : `  (net calculat: ${pereche.netMin} – ${pereche.netMax} lei)`
+      : "",
     `Tip contract: ${TIP_CONTRACT[tip]}`,
     `Mod de lucru: ${MOD_LUCRU[mod]}`,
-    `Contact pentru candidați: ${contact}`,
+    `Telefon: ${telefon || "—"}`,
+    `Alt contact: ${altContact || "—"}`,
     "",
     "Descriere:",
     descriere,
-  ].join("\n");
+  ]
+    .filter(Boolean)
+    .join("\n");
 
   const mailto = `mailto:${ADRESA}?subject=${encodeURIComponent(`Anunț: ${titlu || "(fără titlu)"}`)}&body=${encodeURIComponent(corp)}`;
 
@@ -73,10 +99,10 @@ export default function FormularAnunt() {
         <div>
           <label className={eticheta} htmlFor="an-titlu">Titlul postului</label>
           <input id="an-titlu" className={camp} value={titlu} onChange={(e) => setTitlu(e.target.value)}
-            placeholder="Electrician mentenanță" />
+            placeholder="Barman" />
         </div>
         <div>
-          <label className={eticheta} htmlFor="an-companie">Compania</label>
+          <label className={eticheta} htmlFor="an-companie">Compania sau localul</label>
           <input id="an-companie" className={camp} value={companie} onChange={(e) => setCompanie(e.target.value)} />
         </div>
         <div>
@@ -85,38 +111,52 @@ export default function FormularAnunt() {
             placeholder="Cluj-Napoca" />
         </div>
         <div>
-          <label className={eticheta} htmlFor="an-contact">Unde aplică candidații</label>
-          <input id="an-contact" className={camp} value={contact} onChange={(e) => setContact(e.target.value)}
-            placeholder="email sau link" />
+          <label className={eticheta} htmlFor="an-tel">Telefon pentru candidați</label>
+          <input id="an-tel" type="tel" inputMode="tel" className={camp} value={telefon}
+            onChange={(e) => setTelefon(e.target.value)} placeholder="07xx xxx xxx" />
         </div>
       </div>
 
       <fieldset className="mt-5 rounded border border-stone-300 bg-canvas p-4">
-        <legend className="px-1 text-xs font-medium text-stone-900">Salariul brut lunar — obligatoriu</legend>
+        <legend className="px-1 text-xs font-medium text-stone-900">Salariul lunar — obligatoriu</legend>
+
+        <div className="mb-3 flex gap-1" role="group" aria-label="Suma declarată este">
+          {(["net", "brut"] as const).map((t) => (
+            <button key={t} type="button" onClick={() => setTipSuma(t)} aria-pressed={tipSuma === t}
+              className={`min-h-11 rounded px-3 text-sm transition-colors ${
+                tipSuma === t
+                  ? "bg-stone-900 font-medium text-white"
+                  : "border border-stone-300 bg-surface text-stone-900 hover:bg-canvas"
+              }`}>
+              {t === "net" ? "În mână (net)" : "În contract (brut)"}
+            </button>
+          ))}
+        </div>
+
         <div className="grid gap-3 sm:grid-cols-2">
           <div>
             <label className={eticheta} htmlFor="an-min">De la (lei)</label>
-            <input id="an-min" inputMode="numeric" className={camp} value={brutMin}
-              onChange={(e) => setBrutMin(e.target.value)} placeholder="4800" />
+            <input id="an-min" inputMode="numeric" className={camp} value={sumaMin}
+              onChange={(e) => setSumaMin(e.target.value)} placeholder="3000" />
           </div>
           <div>
             <label className={eticheta} htmlFor="an-max">Până la (lei)</label>
-            <input id="an-max" inputMode="numeric" className={camp} value={brutMax}
-              onChange={(e) => setBrutMax(e.target.value)} placeholder="6200" />
+            <input id="an-max" inputMode="numeric" className={camp} value={sumaMax}
+              onChange={(e) => setSumaMax(e.target.value)} placeholder="3800" />
           </div>
         </div>
 
-        {net ? (
+        {pereche ? (
           <p className="mt-3 text-sm text-stone-700">
             Candidatul va vedea{" "}
-            <strong className="text-stone-900">
-              {net.a === net.b ? `${lei(net.a)} lei` : `${lei(net.a)} – ${lei(net.b)} lei`} net în mână
-            </strong>
-            , alături de brutul pe care l-ai scris.
+            <strong className="text-stone-900">{interval(pereche.netMin, pereche.netMax)} net în mână</strong>, iar
+            în contract{" "}
+            <strong className="text-stone-900">{interval(pereche.brutMin, pereche.brutMax)} brut</strong>.
           </p>
         ) : (
           <p className="mt-3 text-sm text-stone-600">
-            Fără salariu, anunțul nu se poate publica. Un interval este suficient.
+            Fără salariu, anunțul nu se poate publica. Un interval este suficient, iar cealaltă sumă o
+            calculăm noi.
           </p>
         )}
       </fieldset>
@@ -137,7 +177,13 @@ export default function FormularAnunt() {
       </div>
 
       <div className="mt-4">
-        <label className={eticheta} htmlFor="an-descriere">Descrierea rolului</label>
+        <label className={eticheta} htmlFor="an-alt">Email sau link, dacă preferi (opțional)</label>
+        <input id="an-alt" className={camp} value={altContact} onChange={(e) => setAltContact(e.target.value)}
+          placeholder="adresa@firma.ro sau link către pagina de cariere" />
+      </div>
+
+      <div className="mt-4">
+        <label className={eticheta} htmlFor="an-descriere">Ce presupune jobul</label>
         <textarea id="an-descriere" rows={5}
           className="w-full rounded border border-stone-300 bg-surface p-3 text-sm text-stone-900"
           value={descriere} onChange={(e) => setDescriere(e.target.value)} />
