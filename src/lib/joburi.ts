@@ -117,6 +117,43 @@ export function joburiActive(acum: Date = new Date()): Job[] {
   );
 }
 
+// ─── Prospetimea anuntului ───────────────────────────────────────────────────
+//
+// Problema clasica a oricarui site de recrutare: angajatorul ocupa postul si nu
+// se mai intoarce sa retraga anuntul. Candidatii suna saptamani intregi pentru
+// un loc care nu mai exista, iar increderea in site se duce prima.
+//
+// Nu se rezolva prin expirare lunga si speranta. Trei masuri, toate vizibile:
+//   1. DURATA SCURTA — 30 de zile, nu 60. Un anunt real se reinnoieste usor.
+//   2. VARSTA LA VEDERE — candidatul vede „publicat acum 24 de zile" si isi face
+//      singur o idee, in loc sa presupuna ca e proaspat.
+//   3. SEMNAL DE VECHIME — peste 21 de zile anuntul e marcat explicit, ca sa nu
+//      se piarda in lista.
+
+export const ZILE_VALABILITATE = 30;
+/** De la cate zile marcam anuntul ca fiind vechi. */
+export const ZILE_PANA_LA_AVERTISMENT = 21;
+
+export function zileDeLaPublicare(job: Job, acum: Date = new Date()): number {
+  return Math.max(0, Math.floor((acum.getTime() - new Date(job.publicatLa).getTime()) / 86_400_000));
+}
+
+export function zilePanaLaExpirare(job: Job, acum: Date = new Date()): number {
+  return Math.max(0, Math.ceil((new Date(job.expiraLa).getTime() - acum.getTime()) / 86_400_000));
+}
+
+export function esteVechi(job: Job, acum: Date = new Date()): boolean {
+  return zileDeLaPublicare(job, acum) >= ZILE_PANA_LA_AVERTISMENT;
+}
+
+/** „azi", „acum 1 zi", „acum 12 zile". */
+export function varstaText(job: Job, acum: Date = new Date()): string {
+  const z = zileDeLaPublicare(job, acum);
+  if (z === 0) return "publicat azi";
+  if (z === 1) return "publicat acum o zi";
+  return `publicat acum ${z} zile`;
+}
+
 export function joburiDinJudet(judet: string): Job[] {
   return joburiActive().filter((j) => j.judet.toLowerCase() === judet.toLowerCase());
 }

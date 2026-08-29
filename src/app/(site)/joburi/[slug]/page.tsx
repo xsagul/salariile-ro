@@ -9,12 +9,22 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Breadcrumb, H1, Section } from "@/app/components/ui";
+import { Breadcrumb, H1, Hero, Section } from "@/app/components/ui";
 import { Eticheta, SalariuJob } from "@/app/components/Joburi";
 import { NotaSursa } from "@/app/components/Salarii";
 import { MESERII } from "@/lib/meserii";
 import { ogPage, twPage } from "@/lib/seo";
-import { MOD_LUCRU, TIP_CONTRACT, jobDupaSlug, joburiActive, jobPostingSchema } from "@/lib/joburi";
+import {
+  MOD_LUCRU,
+  TIP_CONTRACT,
+  ZILE_PANA_LA_AVERTISMENT,
+  esteVechi,
+  jobDupaSlug,
+  joburiActive,
+  jobPostingSchema,
+  varstaText,
+  zilePanaLaExpirare,
+} from "@/lib/joburi";
 
 export function generateStaticParams() {
   return joburiActive().map((j) => ({ slug: j.slug }));
@@ -58,27 +68,28 @@ export default async function PaginaJob({ params }: { params: Promise<{ slug: st
 
   return (
     <>
-      <Breadcrumb
-        items={[
-          { href: "/", label: "Acasă" },
-          { href: "/joburi", label: "Locuri de muncă" },
-          { label: job.titlu },
-        ]}
-      />
+      <Hero peGrila>
+        <Breadcrumb
+          items={[
+            { href: "/", label: "Acasă" },
+            { href: "/joburi", label: "Locuri de muncă" },
+            { label: job.titlu },
+          ]}
+        />
+        <H1>{job.titlu}</H1>
+        <p className="mt-2 text-lg text-stone-600">
+          {job.companie} · {job.oras ?? job.judet}
+        </p>
 
-      <H1>{job.titlu}</H1>
-      <p className="mt-2 text-lg text-stone-600">
-        {job.companie} · {job.oras ?? job.judet}
-      </p>
-
-      <div className="mt-5 rounded-md border border-stone-200 bg-canvas p-5">
-        <SalariuJob job={job} marime="mare" />
-        <div className="mt-4 flex flex-wrap gap-1.5">
-          <Eticheta>{TIP_CONTRACT[job.tipContract]}</Eticheta>
-          <Eticheta>{MOD_LUCRU[job.modLucru]}</Eticheta>
-          <Eticheta>{job.judet}</Eticheta>
+        <div className="mt-5 rounded-md border border-stone-200 bg-surface p-5">
+          <SalariuJob job={job} marime="mare" />
+          <div className="mt-4 flex flex-wrap gap-1.5">
+            <Eticheta>{TIP_CONTRACT[job.tipContract]}</Eticheta>
+            <Eticheta>{MOD_LUCRU[job.modLucru]}</Eticheta>
+            <Eticheta>{job.judet}</Eticheta>
+          </div>
         </div>
-      </div>
+      </Hero>
 
       <Section>
         <h2>Despre rol</h2>
@@ -96,8 +107,8 @@ export default async function PaginaJob({ params }: { params: Promise<{ slug: st
         </Section>
       ) : null}
 
-      <Section>
-        <h2>Aplică</h2>
+      <Section faraProse>
+        <h2 className="mb-4 text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">Aplică</h2>
         {job.aplicaUrl ? (
           <a
             href={job.aplicaUrl}
@@ -118,7 +129,24 @@ export default async function PaginaJob({ params }: { params: Promise<{ slug: st
           <p className="text-stone-600">Anunțul nu are o modalitate de contact.</p>
         )}
         <p className="mt-3 text-sm text-stone-600">
-          Publicat pe {dataRo(job.publicatLa)}. Anunțul expiră pe {dataRo(job.expiraLa)}.
+          Publicat pe {dataRo(job.publicatLa)} — {varstaText(job)}. Expiră automat pe{" "}
+          {dataRo(job.expiraLa)}, peste {zilePanaLaExpirare(job)} zile.
+        </p>
+        {esteVechi(job) ? (
+          <p className="mt-2 rounded border border-stone-500 bg-surface p-3 text-sm font-medium text-stone-900">
+            Anunțul are peste {ZILE_PANA_LA_AVERTISMENT} de zile. Confirmă cu angajatorul că postul e încă
+            deschis înainte să pregătești dosarul.
+          </p>
+        ) : null}
+        <p className="mt-2 text-sm text-stone-600">
+          Postul e deja ocupat?{" "}
+          <a
+            href={`mailto:contact@salariile.ro?subject=${encodeURIComponent(`Post ocupat: ${job.titlu}`)}&body=${encodeURIComponent(`Anunțul https://salariile.ro/joburi/${job.slug} pare să nu mai fie valabil.`)}`}
+            className="font-medium text-stone-900 underline underline-offset-2"
+          >
+            Spune-ne
+          </a>{" "}
+          și îl retragem.
         </p>
       </Section>
 

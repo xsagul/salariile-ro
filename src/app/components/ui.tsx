@@ -57,28 +57,35 @@ export function Section({
   wide = false,
   noTopBorder = false,
   companion,
+  faraProse = false,
 }: {
   children: ReactNode;
   wide?: boolean;
   noTopBorder?: boolean;
   /** Cardul din dreapta. Cu el, secțiunea intră pe grila 3+2 a paginii. */
   companion?: ReactNode;
+  /**
+   * Sare peste stilurile de text. `PROSE` folosește selectori descendenți
+   * (`[&_a]:underline`, `[&_ul]:list-disc`), așa că orice componentă imbricată
+   * le moștenește — o listă de carduri ajunge subliniată și cu buline. Pentru
+   * conținut care nu e proză, secțiunea păstrează doar cadrul și spațierea.
+   */
+  faraProse?: boolean;
 }) {
   const clase = `${noTopBorder ? "border-t-0" : "border-t border-stone-200 first:border-t-0"} bg-canvas py-10 sm:py-12`;
+  const corp = faraProse ? <>{children}</> : <Prose>{children}</Prose>;
   if (companion) {
     return (
       <section className={clase}>
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <GrilaPagina continut={<Prose>{children}</Prose>} companion={companion} />
+          <GrilaPagina continut={corp} companion={companion} />
         </div>
       </section>
     );
   }
   return (
     <section className={clase}>
-      <div className={`mx-auto px-4 sm:px-6 ${wide ? "max-w-6xl" : "max-w-3xl"}`}>
-        <Prose>{children}</Prose>
-      </div>
+      <div className={`mx-auto px-4 sm:px-6 ${wide ? "max-w-6xl" : "max-w-3xl"}`}>{corp}</div>
     </section>
   );
 }

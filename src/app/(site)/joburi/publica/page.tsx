@@ -82,7 +82,7 @@ export default function Publica() {
           },
           {
             q: "Cât stă anunțul pe site?",
-            a: "60 de zile, apoi expiră automat. Ne poți scrie oricând ca să îl prelungim sau să îl retragem.",
+            a: "30 de zile, apoi expiră automat. Cu două săptămâni înainte îți scriem să confirmi că postul e încă deschis. Dacă nu răspunzi, anunțul iese — preferăm o listă mai scurtă decât una cu posturi deja ocupate.",
           },
         ]}
       />

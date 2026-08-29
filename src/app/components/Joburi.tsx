@@ -8,7 +8,7 @@
 
 import Link from "next/link";
 import { lei } from "@/app/components/Salarii";
-import { MOD_LUCRU, TIP_CONTRACT, salariuCalculat, type Job } from "@/lib/joburi";
+import { MOD_LUCRU, TIP_CONTRACT, esteVechi, salariuCalculat, varstaText, type Job } from "@/lib/joburi";
 
 /** „4.800 – 6.200 lei" sau „4.800 lei" cand intervalul e un punct. */
 export function intervalLei(min: number, max: number): string {
@@ -60,9 +60,12 @@ export function CardJob({ job }: { job: Job }) {
             <p className="mt-0.5 text-sm text-stone-600">
               {job.companie} · {job.oras ?? job.judet}
             </p>
-            <div className="mt-2 flex flex-wrap gap-1.5">
+            <div className="mt-2 flex flex-wrap items-center gap-1.5">
               <Eticheta>{TIP_CONTRACT[job.tipContract]}</Eticheta>
               <Eticheta>{MOD_LUCRU[job.modLucru]}</Eticheta>
+              <span className={esteVechi(job) ? "text-xs font-medium text-stone-900" : "text-xs text-stone-600"}>
+                {varstaText(job)}
+              </span>
             </div>
           </div>
           <div className="mt-3 shrink-0 sm:mt-0 sm:text-right">
@@ -83,7 +86,7 @@ export function ListaJoburi({ joburi }: { joburi: Job[] }) {
     );
   }
   return (
-    <ul className="space-y-3">
+    <ul className="list-none space-y-3 pl-0">
       {joburi.map((j) => (
         <CardJob key={j.slug} job={j} />
       ))}

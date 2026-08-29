@@ -46,6 +46,7 @@ export default function Joburi() {
 
       <Section
         wide
+        faraProse
         companion={
           mediana && medianaNet ? (
             <CardCompanion titlu="Mediana anunțurilor" nota="Calculată pe anunțurile active de pe această pagină.">
@@ -60,12 +61,16 @@ export default function Joburi() {
           ) : undefined
         }
       >
-        <h2>{joburi.length} anunțuri active</h2>
+        <h2 className="mb-4 text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">
+          {joburi.length} anunțuri active
+        </h2>
         <ListaJoburi joburi={joburi} />
-        <p className="source-note">
+        <p className="mt-4 text-sm leading-normal text-stone-600">
           Netul e calculat cu același motor fiscal ca{" "}
-          <Link href="/">calculatorul de salariu</Link>, pentru normă întreagă și funcția de bază. Cifra din
-          anunț și cifra din calculator nu pot diverge.
+          <Link href="/" className="font-medium text-stone-900 underline underline-offset-2">
+            calculatorul de salariu
+          </Link>
+          , pentru normă întreagă și funcția de bază. Cifra din anunț și cifra din calculator nu pot diverge.
         </p>
       </Section>
 

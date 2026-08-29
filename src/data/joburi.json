@@ -13,7 +13,11 @@
       "oras": "Cluj-Napoca",
       "modLucru": "la-birou",
       "tipContract": "norma-intreaga",
-      "salariu": { "min": 4800, "max": 6200, "moneda": "RON" },
+      "salariu": {
+        "min": 4800,
+        "max": 6200,
+        "moneda": "RON"
+      },
       "categorie": "industrie",
       "meserie": "electrician",
       "descriere": "Asigură mentenanța preventivă și corectivă a instalațiilor electrice dintr-o hală de producție. Intervine la avarii, ține evidența reviziilor și respectă normele de securitate a muncii.",
@@ -23,8 +27,8 @@
         "Disponibilitate pentru lucru în două schimburi"
       ],
       "aplicaEmail": "test@example.com",
-      "publicatLa": "2026-08-27T08:00:00.000Z",
-      "expiraLa": "2026-10-27T08:00:00.000Z"
+      "publicatLa": "2026-08-29T09:00:00.000Z",
+      "expiraLa": "2026-09-28T09:00:00.000Z"
     },
     {
       "slug": "asistent-medical-bucuresti",
@@ -34,7 +38,11 @@
       "oras": "București",
       "modLucru": "la-birou",
       "tipContract": "norma-intreaga",
-      "salariu": { "min": 5200, "max": 6800, "moneda": "RON" },
+      "salariu": {
+        "min": 5200,
+        "max": 6800,
+        "moneda": "RON"
+      },
       "categorie": "medical",
       "meserie": "asistent-medical",
       "descriere": "Pregătește pacienții pentru consultații, administrează tratamentele prescrise și ține evidența fișelor. Lucrează în tură de zi, într-o clinică ambulatorie.",
@@ -43,8 +51,8 @@
         "Experiență de minimum 1 an"
       ],
       "aplicaEmail": "test@example.com",
-      "publicatLa": "2026-08-26T09:30:00.000Z",
-      "expiraLa": "2026-10-26T09:30:00.000Z"
+      "publicatLa": "2026-08-27T09:00:00.000Z",
+      "expiraLa": "2026-09-26T09:00:00.000Z"
     },
     {
       "slug": "programator-frontend-remote",
@@ -54,7 +62,11 @@
       "oras": "Timișoara",
       "modLucru": "remote",
       "tipContract": "norma-intreaga",
-      "salariu": { "min": 9000, "max": 14000, "moneda": "RON" },
+      "salariu": {
+        "min": 9000,
+        "max": 14000,
+        "moneda": "RON"
+      },
       "categorie": "it",
       "meserie": "web-developer",
       "descriere": "Construiește interfețe pentru produsele interne ale companiei, în TypeScript și React. Lucrează integral remote, cu o zi de birou pe lună.",
@@ -63,8 +75,8 @@
         "Familiaritate cu testarea automată"
       ],
       "aplicaUrl": "https://example.com/cariere",
-      "publicatLa": "2026-08-28T11:00:00.000Z",
-      "expiraLa": "2026-10-28T11:00:00.000Z"
+      "publicatLa": "2026-08-22T09:00:00.000Z",
+      "expiraLa": "2026-09-21T09:00:00.000Z"
     },
     {
       "slug": "sofer-livrari-iasi",
@@ -74,14 +86,21 @@
       "oras": "Iași",
       "modLucru": "la-birou",
       "tipContract": "norma-intreaga",
-      "salariu": { "min": 4325, "max": 5100, "moneda": "RON" },
+      "salariu": {
+        "min": 4325,
+        "max": 5100,
+        "moneda": "RON"
+      },
       "categorie": "transport",
       "meserie": "sofer",
       "descriere": "Livrează marfă către clienți în oraș și în județ, cu autoutilitară sub 3,5 tone. Încarcă și descarcă marfa și predă documentele de transport.",
-      "cerinte": ["Permis categoria B, minimum 2 ani vechime", "Cunoașterea orașului"],
+      "cerinte": [
+        "Permis categoria B, minimum 2 ani vechime",
+        "Cunoașterea orașului"
+      ],
       "aplicaEmail": "test@example.com",
-      "publicatLa": "2026-08-25T07:15:00.000Z",
-      "expiraLa": "2026-10-25T07:15:00.000Z"
+      "publicatLa": "2026-08-16T09:00:00.000Z",
+      "expiraLa": "2026-09-15T09:00:00.000Z"
     },
     {
       "slug": "contabil-brasov",
@@ -91,14 +110,21 @@
       "oras": "Brașov",
       "modLucru": "hibrid",
       "tipContract": "norma-intreaga",
-      "salariu": { "min": 6000, "max": 8500, "moneda": "RON" },
+      "salariu": {
+        "min": 6000,
+        "max": 8500,
+        "moneda": "RON"
+      },
       "categorie": "finante",
       "meserie": "contabil",
       "descriere": "Ține contabilitatea unui portofoliu de firme mici, întocmește declarațiile fiscale și pregătește situațiile financiare anuale.",
-      "cerinte": ["Studii economice superioare", "Experiență cu SAGA sau WinMentor"],
+      "cerinte": [
+        "Studii economice superioare",
+        "Experiență cu SAGA sau WinMentor"
+      ],
       "aplicaEmail": "test@example.com",
-      "publicatLa": "2026-08-24T13:45:00.000Z",
-      "expiraLa": "2026-10-24T13:45:00.000Z"
+      "publicatLa": "2026-08-07T09:00:00.000Z",
+      "expiraLa": "2026-09-06T09:00:00.000Z"
     },
     {
       "slug": "vanzator-consultant-constanta",
@@ -108,14 +134,21 @@
       "oras": "Constanța",
       "modLucru": "la-birou",
       "tipContract": "part-time",
-      "salariu": { "min": 2600, "max": 3200, "moneda": "RON" },
+      "salariu": {
+        "min": 2600,
+        "max": 3200,
+        "moneda": "RON"
+      },
       "categorie": "comert",
       "meserie": "vanzator",
       "descriere": "Consiliază clienții în magazin, aranjează raftul și operează casa de marcat. Program de 6 ore pe zi, cu weekenduri prin rotație.",
-      "cerinte": ["Studii medii", "Experiență în retail constituie avantaj"],
+      "cerinte": [
+        "Studii medii",
+        "Experiență în retail constituie avantaj"
+      ],
       "aplicaEmail": "test@example.com",
-      "publicatLa": "2026-08-23T10:00:00.000Z",
-      "expiraLa": "2026-10-23T10:00:00.000Z"
+      "publicatLa": "2026-08-03T09:00:00.000Z",
+      "expiraLa": "2026-09-02T09:00:00.000Z"
     }
   ]
 }
