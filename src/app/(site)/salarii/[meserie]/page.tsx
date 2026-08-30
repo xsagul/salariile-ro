@@ -45,7 +45,7 @@ import {
   type DateMeserie,
 } from "@/lib/meserii";
 import { denumireScurtaCaen } from "@/lib/caen-denumiri";
-import { intersectie } from "@/lib/ocupatii-caen";
+import { cifreMeserie, intersectie } from "@/lib/ocupatii-caen";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
 
@@ -71,8 +71,10 @@ const TITLU_MAX = 60;
  * netul observat in sector, apoi calculul standard.
  */
 function netPrincipal(date: DateMeserie) {
-  const x = intersectie(date.meserie.caen2, date.meserie.isco);
-  return x ? x.net : (date.netObservat ?? date.netStandard);
+  return cifreMeserie(date.meserie.caen2, date.meserie.isco, {
+    net: date.netObservat ?? date.netStandard,
+    brut: date.sector.brutCurent,
+  }).net;
 }
 
 function titluPagina(date: DateMeserie) {

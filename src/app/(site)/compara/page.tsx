@@ -10,6 +10,7 @@ import { Breadcrumb, Faq, H1, Lead } from "@/app/components/ui";
 import { NotaSursa, lei, lunaLunga } from "@/app/components/Salarii";
 import { AN_OCUPATII, LUNA_REFERINTA, MATRICE_BRUT, MATRICE_NET, MATRICE_OCUPATII } from "@/lib/ins-date";
 import { COMPARATII, dateMeserieSauEroare } from "@/lib/meserii";
+import { cifreMeserie } from "@/lib/ocupatii-caen";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
 
@@ -108,16 +109,16 @@ export default function ComparaPage() {
                 <div className="flex items-baseline justify-between gap-3">
                   <span className="text-base font-semibold tracking-[-0.01em] text-stone-900">{comparatie.a.nume}</span>
                   <span className="shrink-0 text-right text-xs tabular-nums text-stone-600">
-                    <strong className="text-stone-900">{lei(a.netObservat ?? a.netStandard)} lei net</strong>
-                    {a.repere && <span className="block">ISCO {lei(a.repere.grupa.net)} lei net</span>}
+                    <strong className="text-stone-900">{lei(cifreMeserie(a.meserie.caen2, a.meserie.isco, { net: a.netObservat ?? a.netStandard, brut: a.sector.brutCurent }).net)} lei net</strong>
+                    <span className="block">{lei(cifreMeserie(a.meserie.caen2, a.meserie.isco, { net: a.netObservat ?? a.netStandard, brut: a.sector.brutCurent }).brut)} lei brut</span>
                   </span>
                 </div>
                 <div className="my-2 text-xs uppercase tracking-wide text-stone-400">vs</div>
                 <div className="flex items-baseline justify-between gap-3">
                   <span className="text-base font-semibold tracking-[-0.01em] text-stone-900">{comparatie.b.nume}</span>
                   <span className="shrink-0 text-right text-xs tabular-nums text-stone-600">
-                    <strong className="text-stone-900">{lei(b.netObservat ?? b.netStandard)} lei net</strong>
-                    {b.repere && <span className="block">ISCO {lei(b.repere.grupa.net)} lei net</span>}
+                    <strong className="text-stone-900">{lei(cifreMeserie(b.meserie.caen2, b.meserie.isco, { net: b.netObservat ?? b.netStandard, brut: b.sector.brutCurent }).net)} lei net</strong>
+                    <span className="block">{lei(cifreMeserie(b.meserie.caen2, b.meserie.isco, { net: b.netObservat ?? b.netStandard, brut: b.sector.brutCurent }).brut)} lei brut</span>
                   </span>
                 </div>
                 <p className="mt-3 border-t border-stone-200 pt-3 text-xs leading-normal text-stone-600">

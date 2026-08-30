@@ -138,3 +138,29 @@ export const SURSA_INTERSECTIE = {
   an: AN,
   generatLa: D.generatLa,
 };
+
+// ─── Cifrele afisate ─────────────────────────────────────────────────────────
+//
+// UN SINGUR PROPRIETAR pentru netul si brutul unei meserii. Toate paginile care
+// arata o cifra — /salarii, /compara, /compara/[pereche], /salarii/[meserie] —
+// trec pe aici. Prima incercare de a schimba doar pagina de meserie a lasat
+// hubul si comparatiile pe cifra veche, iar titlul unei pagini promitea 13.474
+// acolo unde corpul arata 12.404.
+
+export type CifreMeserie = {
+  net: number;
+  brut: number;
+  /** false cand am cazut pe media sectorului (administratia publica). */
+  dinIntersectie: boolean;
+};
+
+export function cifreMeserie(
+  caenRev2: string,
+  grupa: GrupaIsco,
+  rezerva: { net: number; brut: number },
+): CifreMeserie {
+  const x = intersectie(caenRev2, grupa);
+  return x
+    ? { net: x.net, brut: x.brut, dinIntersectie: true }
+    : { ...rezerva, dinIntersectie: false };
+}

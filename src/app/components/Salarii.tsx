@@ -63,22 +63,23 @@ export function CardCifra({
   nota?: ReactNode;
   accent?: boolean;
 }) {
+  // Cardul principal NU se inverseaza pe negru. Restul limbajului vizual spune
+  // „stone monocrom, fara accent", iar negrul plin e rezervat butoanelor —
+  // altfel un card si un buton arata la fel si nu se mai stie ce se poate apasa.
+  // Accentul se marcheaza prin BORDURA, ca in BRAND.md §5: greutate si contur,
+  // nu inversare de fundal.
   return (
     <div
-      className={`flex h-full flex-col rounded-md border p-5 shadow-soft ${
-        accent ? "border-stone-900 bg-stone-900 text-white" : "border-stone-200 bg-surface"
+      className={`flex h-full flex-col rounded-md bg-surface p-5 shadow-soft ${
+        accent ? "border-2 border-stone-900" : "border border-stone-200"
       }`}
     >
-      <div className={`text-xs font-medium uppercase tracking-wide ${accent ? "text-stone-300" : "text-stone-500"}`}>
-        {eticheta}
-      </div>
-      <div className={`mt-2 text-2xl font-bold tracking-[-0.02em] sm:text-3xl ${accent ? "text-white" : "text-stone-900"}`}>
+      <div className="text-xs font-medium uppercase tracking-wide text-stone-500">{eticheta}</div>
+      <div className="mt-2 text-2xl font-bold tracking-[-0.02em] text-stone-900 sm:text-3xl">
         {valoare}
         {unitate && <span className="ml-1 text-base font-medium">{unitate}</span>}
       </div>
-      {nota && (
-        <p className={`mt-2 text-xs leading-normal ${accent ? "text-stone-300" : "text-stone-600"}`}>{nota}</p>
-      )}
+      {nota && <p className="mt-2 text-xs leading-normal text-stone-600">{nota}</p>}
     </div>
   );
 }

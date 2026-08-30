@@ -23,6 +23,7 @@ import {
   type Comparatie,
   type DateMeserie,
 } from "@/lib/meserii";
+import { cifreMeserie } from "@/lib/ocupatii-caen";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
 
@@ -48,7 +49,10 @@ function titluPagina(comparatie: Comparatie) {
 }
 
 function netPrincipal(date: DateMeserie) {
-  return date.netObservat ?? date.netStandard;
+  return cifreMeserie(date.meserie.caen2, date.meserie.isco, {
+    net: date.netObservat ?? date.netStandard,
+    brut: date.sector.brutCurent,
+  }).net;
 }
 
 function descrierePagina(a: DateMeserie, b: DateMeserie) {

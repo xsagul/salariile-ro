@@ -22,6 +22,7 @@ import {
   totalOcupatii,
 } from "@/lib/ins-date";
 import { CATEGORII, MESERII, dateMeserie, meseriiDinCategorie } from "@/lib/meserii";
+import { cifreMeserie } from "@/lib/ocupatii-caen";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
 
@@ -46,7 +47,7 @@ export const metadata: Metadata = {
 const FAQ = [
   {
     q: "Publică INS salariul mediu pentru fiecare meserie?",
-    a: `Pentru fiecare meserie afișăm drept reper principal media netă observată de INS în sectorul CAEN asociat, actualizată lunar. Adăugăm separat netul orientativ al grupei ISCO din care face parte ocupația. Sunt cele mai apropiate repere oficiale disponibile, iar salariul concret variază după experiență, firmă și localitate.`,
+    a: `Pentru fiecare meserie afișăm netul și brutul grupei de ocupații din sectorul în care lucrează de regulă — cea mai fină combinație publicată de INS. Nu există salarii pe ocupații individuale, așa că meserii înrudite din aceeași grupă apar cu aceeași valoare. Salariul concret variază după experiență, firmă și localitate.`,
   },
   {
     q: "Cât este câștigul salarial mediu pe economie acum?",
@@ -208,10 +209,8 @@ export default function SalariiPage() {
                     href={`/salarii/${meserie.slug}`}
                     titlu={meserie.nume}
                     detaliu={`CAEN ${date!.sector.cheie} · ${denumireScurtaCaen(date!.sector.cheie, date!.sector.denumire)}`}
-                    valoare={lei(date!.netObservat ?? date!.netStandard)}
-                    subvaloare={
-                      date!.repere ? `lei net · ISCO ${lei(date!.repere.grupa.net)} lei net` : "lei net"
-                    }
+                    valoare={lei(cifreMeserie(meserie.caen2, meserie.isco, { net: date!.netObservat ?? date!.netStandard, brut: date!.sector.brutCurent }).net)}
+                    subvaloare={`lei net · ${lei(cifreMeserie(meserie.caen2, meserie.isco, { net: date!.netObservat ?? date!.netStandard, brut: date!.sector.brutCurent }).brut)} lei brut`}
                     cauta={[
                       meserie.nume,
                       meserie.de,
@@ -264,7 +263,7 @@ export default function SalariiPage() {
           <div className="rounded-md border border-stone-200 bg-surface p-6 shadow-soft sm:p-8">
             <h2 className="mb-2 text-2xl font-bold tracking-[-0.02em] text-stone-900">Compară două meserii</h2>
             <p className="mb-5 leading-normal text-stone-600">
-              Două seturi de repere CAEN și ISCO puse alături, fără clasarea ori declararea unui câștigător.
+              Netul și brutul aceleiași grupe de ocupații din sectorul asociat, puse alături, fără clasarea ori declararea unui câștigător.
             </p>
             <Link
               href="/compara"
