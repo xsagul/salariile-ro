@@ -270,9 +270,13 @@ async function auditRenderedSite() {
     ["/salarii/programator", "CAEN 62", "activitatea din spatele cifrei de programator"],
     // Netul trebuie sa raspunda primul cautarii, iar cele doua populatii CAEN
     // si ISCO raman separate, fara revenirea la intervalul derivat.
-    ["/salarii/programator", "Câștig net lunar orientativ", "netul observat in sector, afisat primul"],
-    ["/salarii/programator", "Net orientativ · grupa ISCO", "netul grupei, etichetat explicit"],
-    ["/salarii/programator", "Cum citești sumele", "explicatia metodei direct in pagina"],
+    // Rescrise pe 31 august 2026, odata cu trecerea la o singura cifra in
+    // prim-plan. Vechile verificari cereau cardul „Net orientativ · grupa ISCO"
+    // si paragraful „Cum citesti sumele" — amandoua scoase deliberat, fiindca
+    // patru repere cu greutate egala nu raspundeau la intrebarea cititorului.
+    ["/salarii/programator", "Câștig net lunar", "netul principal, afisat primul"],
+    ["/salarii/programator", "Salariu brut", "brutul din care rezulta netul"],
+    ["/salarii/programator", "Ce măsoară cifra", "limita cifrei, declarata in pagina"],
     ["/salarii/programator", `Brut lunar pe județe · media ${AN_JUDETE}`, "perioada tabelului judetean"],
     ["/salarii/programator", "Nu este salariu net", "separarea tabelului judetean de net"],
     ["/salarii/programator", "salariul minim din 2026", "separarea tabelului judetean de minimul curent"],
@@ -332,9 +336,14 @@ async function auditRenderedSite() {
     const continutVizibil = html.slice(Math.max(0, html.indexOf("<h1")));
     const netPrincipalIndex = continutVizibil.indexOf("Câștig net lunar orientativ");
     const primulBrutIndex = continutVizibil.indexOf("lei brut");
-    if (!html.includes("Câștig net lunar orientativ")) failures.push(`${pathname}: lipseste netul principal al sectorului`);
-    if (!html.includes("Net orientativ · grupa ISCO")) failures.push(`${pathname}: lipseste netul separat al grupei ISCO`);
-    if (!html.includes("nu formează un interval")) failures.push(`${pathname}: lipseste limita CAEN/ISCO`);
+    // Din 31 august 2026 pagina duce O singura cifra in prim-plan — netul din
+    // intersectia activitate x ocupatie — plus brutul ei. Reperele ISCO si cel
+    // de inceput de cariera au coborat in FAQ, ca sa nu concureze raspunsul.
+    // Garantia ramane aceeasi: limita cifrei trebuie DECLARATA in pagina.
+    if (!html.includes("Câștig net lunar")) failures.push(`${pathname}: lipseste netul principal`);
+    if (!html.includes("Salariu brut")) failures.push(`${pathname}: lipseste brutul`);
+    if (!/nu a meseriei în sine|repere la nivel de grupă și sector/.test(html))
+      failures.push(`${pathname}: lipseste limita declarata a cifrei`);
     if (html.includes("Interval pe județe")) failures.push(`${pathname}: tabelul judetean foloseste eticheta ambigua de interval`);
     if (!textVizibil.includes(`Brut lunar · media ${AN_JUDETE}`)) {
       failures.push(`${pathname}: tabelul judetean nu declara brutul lunar si media anului ${AN_JUDETE}`);

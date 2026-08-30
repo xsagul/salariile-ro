@@ -44,6 +44,8 @@ import {
   meseriiDinCategorie,
   type DateMeserie,
 } from "@/lib/meserii";
+import { denumireScurtaCaen } from "@/lib/caen-denumiri";
+import { intersectie } from "@/lib/ocupatii-caen";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
 
@@ -63,8 +65,14 @@ const AN_JUDETE_SCURT = AN_JUDETE.replace("Anul ", "");
 const BRAND = " | Salariile.ro";
 const TITLU_MAX = 60;
 
+/**
+ * Cifra principala a paginii — un singur proprietar, ca titlul, descrierea si
+ * corpul sa nu poata diverge. Ordinea: intersectia activitate x ocupatie, apoi
+ * netul observat in sector, apoi calculul standard.
+ */
 function netPrincipal(date: DateMeserie) {
-  return date.netObservat ?? date.netStandard;
+  const x = intersectie(date.meserie.caen2, date.meserie.isco);
+  return x ? x.net : (date.netObservat ?? date.netStandard);
 }
 
 function titluPagina(date: DateMeserie) {
@@ -74,7 +82,7 @@ function titluPagina(date: DateMeserie) {
 
 function descrierePagina(date: DateMeserie) {
   const numeMic = date.meserie.nume.toLocaleLowerCase("ro-RO");
-  return `${lei(netPrincipal(date))} lei net/lună în sectorul CAEN ${date.sector.cheie} asociat meseriei de ${numeMic}, conform INS (${LUNA}). Vezi brutul, grupa ISCO, județele și vârstele.`;
+  return `${lei(netPrincipal(date))} lei net/lună pentru ${numeMic}, din datele INS pe grupa de ocupații din sectorul asociat, indexate la ${LUNA}. Vezi brutul, diferența pe sexe, județele și vârstele.`;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -97,6 +105,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 function faqPentru(date: DateMeserie) {
   const { meserie, sector, isco, judete, interval, clasament, repere } = date;
+  const X = intersectie(meserie.caen2, meserie.isco);
   const numeMic = meserie.nume.toLocaleLowerCase("ro-RO");
   const primele = judete.slice(0, 3).map((j) => j.judet).join(", ");
   const netCurent = netPrincipal(date);
@@ -110,7 +119,9 @@ function faqPentru(date: DateMeserie) {
     },
     {
       q: `Care este salariul net al unui ${numeMic}?`,
-      a: `Reperul principal este ${lei(netCurent)} lei net pe lună, media observată de INS în sectorul asociat meseriei. Media brută a aceluiași sector este ${lei(sector.brutCurent)} lei; transformată fiscal în condiții standard, aceasta dă ${lei(date.netStandard)} lei net. ${repere ? `Separat, grupa largă de ocupații ISCO „${isco?.nume ?? ""}” are un reper orientativ de ${lei(repere.grupa.net)} lei net.` : ""}`,
+      a: X
+        ? `Aproximativ ${lei(X.net)} lei net pe lună, din ${lei(X.brut)} lei brut. Cifra vine din ancheta INS pe grupa „${isco?.nume ?? ""}” din același sector de activitate, adică din ${lei(X.salariati ?? 0)} de salariați, și este indexată la ${LUNA}. Ancheta se face în octombrie; ultima disponibilă este din ${X.an.replace("Anul ", "")}. Media întregului sector, indiferent de ocupație, este ${lei(sector.brutCurent)} lei brut — o cifră mai largă, care include și posturile foarte diferite de acesta.`
+        : `Reperul este ${lei(netCurent)} lei net pe lună, media observată de INS în sectorul asociat meseriei. Pentru această ocupație INS nu publică o cifră pe grupa de ocupații din sector, pentru că administrația publică nu intră în ancheta salarială.`,
     },
   ];
 
@@ -169,7 +180,10 @@ export default async function MeseriePage({ params }: Props) {
   if (!meserie) notFound();
 
   const date = dateMeserieSauEroare(meserie);
-  const { sector, isco, judete, categorie, interval, clasament, repere } = date;
+  const { sector, isco, judete, categorie, interval, clasament } = date;
+  // Celula comuna activitate x ocupatie. `null` pentru administratia publica,
+  // pe care INS nu o include in ancheta salariala.
+  const X = intersectie(meserie.caen2, meserie.isco);
   const numeMic = meserie.nume.toLocaleLowerCase("ro-RO");
   const netCurent = netPrincipal(date);
   const variatie = variatieAnuala(sector.net);
@@ -235,58 +249,72 @@ export default async function MeseriePage({ params }: Props) {
           />
           <H1>Salariu {numeMic} în 2026</H1>
           <Lead>
-            Ca reper principal, un {numeMic} câștigă aproximativ <strong>{lei(netCurent)} lei net pe lună</strong> în{" "}
-            2026. Este media netă observată de INS în sectorul CAEN {sector.cheie}, actualizată pentru {LUNA}. Pentru
-            context ocupațional, grupa ISCO indică separat{" "}
-            {repere ? <strong>{lei(repere.grupa.net)} lei net</strong> : "—"}; salariul concret variază după experiență,
-            firmă și oraș.
+            {X ? (
+              <>
+                Un {numeMic} câștigă în medie <strong>{lei(X.net)} lei net pe lună</strong>, din{" "}
+                <strong>{lei(X.brut)} lei brut</strong>. Cifra vine din ancheta INS pe {X.salariati ? `${lei(X.salariati)} de salariați` : "salariații"}{" "}
+                din aceeași grupă de ocupații și același sector, actualizată la {LUNA}.
+              </>
+            ) : (
+              <>
+                Ca reper, un {numeMic} câștigă aproximativ <strong>{lei(netCurent)} lei net pe lună</strong> în 2026 —
+                media netă observată de INS în sectorul CAEN {sector.cheie}, actualizată pentru {LUNA}.
+              </>
+            )}
           </Lead>
 
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {/*
+            DOUA cifre, nu patru. Pana pe 31 august 2026 pagina arata media
+            sectorului, brutul sectorului, reperul grupei ISCO si reperul de
+            inceput de cariera — plus un paragraf care explica cum sa le citesti.
+            Patru repere cu greutate egala nu ajuta pe nimeni: omul cauta „cat
+            castiga un web developer", nu un tabel statistic. Restul reperelor
+            raman mai jos in pagina, unde nu concureaza cu raspunsul.
+          */}
+          <div className="mt-8 grid gap-4 sm:grid-cols-2">
             <CardCifra
               accent
-              eticheta="Câștig net lunar orientativ"
-              valoare={lei(netCurent)}
+              eticheta="Câștig net lunar"
+              valoare={lei(X ? X.net : netCurent)}
               unitate="lei net"
-              nota={`Media netă INS din sectorul CAEN ${sector.cheie}, ${LUNA}. Salariul real variază după experiență și angajator.`}
-            />
-            <CardCifra
-              eticheta="Brut mediu al sectorului"
-              valoare={lei(sector.brutCurent)}
-              unitate="lei brut"
-              nota={`Media tuturor salariaților din CAEN ${sector.cheie}, ${LUNA}; contextul din care provine netul principal.`}
-            />
-            <CardCifra
-              eticheta="Net orientativ · grupa ISCO"
-              valoare={repere ? lei(repere.grupa.net) : "—"}
-              unitate={repere ? "lei net" : ""}
               nota={
-                repere
-                  ? `Calcul standard din ${lei(repere.grupa.brut)} lei brut pentru grupa „${isco?.nume ?? "—"}”.`
-                  : undefined
+                X
+                  ? `Grupa „${isco?.nume ?? ""}” în ${denumireScurtaCaen(sector.cheie, sector.denumire).toLocaleLowerCase("ro-RO")}, ancheta INS din octombrie ${X.an.replace("Anul ", "")}, indexată la ${LUNA}.`
+                  : `Media netă INS din sectorul CAEN ${sector.cheie}, ${LUNA}.`
               }
             />
             <CardCifra
-              eticheta="La început de carieră · net"
-              valoare={repere?.inceput ? lei(repere.inceput.net) : "—"}
-              unitate={repere?.inceput ? "lei net" : ""}
+              eticheta="Salariu brut"
+              valoare={lei(X ? X.brut : sector.brutCurent)}
+              unitate="lei brut"
               nota={
-                repere?.inceput
-                  ? `Grupa ISCO la 20–24 de ani, din ${lei(repere.inceput.brut)} lei brut, indexată la ${LUNA}.`
-                  : undefined
+                X
+                  ? `Suma din contract, înainte de CAS, CASS și impozit. Netul de alături e calculat din ea.`
+                  : `Media tuturor salariaților din CAEN ${sector.cheie}, ${LUNA}.`
               }
             />
           </div>
 
-          {repere && (
+          {X && (
             <p className="mt-4 rounded-md border border-stone-200 bg-surface p-4 text-sm leading-normal text-stone-600 shadow-soft">
-              <strong className="font-semibold text-stone-900">Cum citești sumele:</strong> netul din primul card este
-              reperul cel mai actual și arată media observată în sectorul unde lucrează de regulă un {numeMic}. Reperul
-              ISCO adaugă perspectiva grupei largi de ocupații, în toate sectoarele. Cele două contexte nu formează un
-              interval; folosește-le ca orientare, nu ca minim și maxim. Salariul concret depinde de experiență,
-              companie și localitate.{" "}
+              <strong className="font-semibold text-stone-900">Ce măsoară cifra:</strong> media grupei de ocupații
+              „{isco?.nume ?? ""}” din acest sector — nu a meseriei în sine. INS nu publică salarii pe ocupații
+              individuale, așa că meserii înrudite din aceeași grupă apar cu aceeași valoare. Este cel mai fin nivel
+              disponibil, nu o măsurătoare directă a postului.{" "}
               <Link href="/metodologie" className="font-medium text-stone-900 underline underline-offset-2 hover:text-stone-600">
                 Metodologia completă
+              </Link>
+              .
+            </p>
+          )}
+
+          {X?.peSexe && (
+            <p className="mt-4 text-sm leading-normal text-stone-600">
+              În aceeași grupă și același sector, bărbații câștigă {lei(X.peSexe.masculin)} lei brut și femeile{" "}
+              {lei(X.peSexe.feminin)} lei — o diferență de{" "}
+              <strong className="font-semibold text-stone-900">{X.peSexe.diferentaProcent}%</strong>.{" "}
+              <Link href="/salarii/femei-barbati" className="font-medium text-stone-900 underline underline-offset-2 hover:text-stone-600">
+                Vezi diferența pe toată economia
               </Link>
               .
             </p>
@@ -657,7 +685,7 @@ export default async function MeseriePage({ params }: Props) {
             ) : null}
             . Reutilizare conform licenței pentru o guvernare deschisă. Netul standard este calculat de
             Salariile.ro cu regulile în vigoare din 1 iulie 2026 — vezi{" "}
-            <Link href="/metodologie">metodologia</Link>. Valorile sunt repere de piață la nivel de sector și grupă;
+            <Link href="/metodologie">metodologia</Link>. Cifra principală vine din matricea FOM121A (câștig pe grupe de ocupații și activități, anual, octombrie). Valorile sunt repere la nivel de grupă și sector;
             oferta individuală variază în funcție de rol, experiență, angajator și localitate.
           </NotaSursa>
         </div>
