@@ -2,12 +2,20 @@
 // Catalogul de meserii pentru /salarii si /compara.
 //
 // PRINCIPIUL PAGINILOR: INS nu publica salarii medii pe ocupatii individuale.
-// Publica doua lucruri diferite, si le tinem separate peste tot:
+// Publica trei lucruri diferite, si le tinem separate peste tot:
 //   1. castigul mediu din ACTIVITATEA angajatorului (CAEN) — lunar, proaspat;
 //   2. castigul mediu al GRUPEI MAJORE DE OCUPATII (ISCO-08) — anual, din
-//      ancheta din octombrie, cu defalcare pe varste.
-// O meserie e legata de amandoua, iar pagina spune explicit ce e fiecare cifra.
+//      ancheta din octombrie, cu defalcare pe varste;
+//   3. INTERSECTIA lor — grupa de ocupatii IN activitatea respectiva — anuala,
+//      din matricea FOM121A. Vezi `src/data/ins-ocupatii-caen.json`.
+// O meserie e legata de toate trei, iar pagina spune explicit ce e fiecare cifra.
 // Nu inventam „salariul de programator" ca si cum ar fi masurat direct.
+//
+// CORECTIE, 31 august 2026. Pana azi fisierul asta a afirmat ca intersectia NU
+// se publica. Era fals, si ne-a costat luni de zile: FOM121A o publica, pe 67 de
+// activitati x 10 grupe x 3 forme de proprietate x 3 sexe x 11 ani. Verificat pe
+// tot catalogul TEMPO, 1.916 matrice. Ce nu exista e COR — nicio matrice de
+// salarii nu coboara sub grupa majora.
 
 import { calculStandard } from "@/lib/fiscal";
 import {
@@ -414,8 +422,12 @@ export type DateMeserie = {
  *
  * INS nu publica salariul pe ocupatie individuala. Publica doua marginale:
  * cat se castiga in ACTIVITATEA angajatorului (CAEN) si cat se castiga in
- * GRUPA DE OCUPATII (ISCO), indiferent de activitate. Ocupatia noastra e la
- * intersectia lor, iar intersectia nu se publica.
+ * GRUPA DE OCUPATII (ISCO), indiferent de activitate.
+ *
+ * ATENTIE: pana pe 31 august 2026 aici scria ca intersectia lor nu se publica.
+ * Era fals — o publica FOM121A. Reperele de mai jos raman cele doua marginale,
+ * pentru ca asa arata paginile azi; intersectia e disponibila separat si
+ * urmeaza sa le inlocuiasca.
  *
  * Cele doua marginale NU marginesc raspunsul: nu exista suport statistic
  * pentru afirmatia ca media ocupatiei se afla intre ele, pentru media lor sau
