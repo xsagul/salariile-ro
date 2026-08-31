@@ -1788,3 +1788,83 @@ Verificat pe Node 24.20.0 real, obținut cu `npx node@24`, **înainte** de
 schimbare: cele 11 teste native, cele 3 prin tsx, `next build` și
 `test:rendered` cu 294 de rute. Producția confirmă „Node.js Version 24.x",
 fără suprascriere.
+
+## 31 august 2026 — salariile din lege, nu din estimare
+
+### Ce s-a schimbat
+
+Pe 17 meserii bugetare, pagina nu mai arată o singură cifră estimată, ci
+scara de carieră din grila legii, cu brut și net pe fiecare treaptă. Medicul
+merge de la **7.125 lei ca rezident an I la 14.125 ca primar**, în loc de o
+singură cifră de 13.214 lei brut care nu descria pe nimeni anume.
+
+Acoperă medic, stomatolog, farmacist, asistent medical, fizioterapeut,
+psiholog, asistent social, infirmier, judecător, procuror, polițist, militar,
+pompier, funcționar public, bibliotecar, preot, medic veterinar.
+
+Cifra din titlu **rămâne** cea statistică. Grila e salariu de bază la gradația
+0, deci nu e comparabilă cu un câștig mediu realizat, și nu se aplică în
+privat. Stă ca secțiune separată, etichetată.
+
+Extras cu `scripts/lege153-grile.mjs` din textul consolidat: 2.674 de rânduri,
+139 de grile, toate anexele. Datele stau în `src/data/grile-153-2017.json`.
+
+### Trei capcane care ar fi trecut neobservate
+
+**Documentul conține și versiunile vechi ale fiecărui tabel.** Medic primar
+apare de trei ori în aceeași pagină: 12.500 (forma din 2020), 13.625 (martie
+2024) și 14.125 (iunie 2024). Un extractor care ia primul tabel găsit publică
+o cifră cu doi ani în urmă. Versiunile istorice stau în `<span class="S_BLC"
+style="…color:blue">`, deci scriptul calculează îmbricarea span-urilor și
+aruncă tot ce cade într-un bloc albastru.
+
+**La polițiști și militari salariul nu e o cifră din tabel, ci o sumă.**
+Anexa VI, art. 3 alin. (2): solda lunară se compune din solda de funcție plus
+solda de grad. Sunt două grile publicate separat. Cine arată doar prima
+subestimează cu 1.600–2.800 de lei. Le adunăm și arătăm descompunerea.
+
+**Catalogul are o meserie cu slugul `constructor`.** `DEFINITII["constructor"]`
+întoarce constructorul moștenit din `Object.prototype` — un obiect adevărat,
+fără `trepte` — și build-ul cădea pe `/salarii/constructor` cu „trepte is not
+iterable". Căutarea trece acum prin `Object.hasOwn`.
+
+Testul de asemenea a prins o eroare, dar în așteptarea scrisă de mână, nu în
+cod: presupusesem că personalul auxiliar sanitar rămăsese la nivelul 2022.
+Fusese majorat odată cu cel medico-sanitar — infirmieră 4.615, nu 3.550.
+
+35 de verificări noi, cu cifrele citite din lege, în `npm test`.
+
+### Pentru restul meseriilor — ce am găsit, ce rămâne
+
+Cele ~109 meserii din privat nu au și nu vor avea o cifră stabilită prin lege.
+Epuizate deja, fără rezultat: TEMPO (143 de matrice căutate după dimensiuni,
+niciuna nu coboară sub grupa majoră ISCO), Eurostat SES, data.gov.ro,
+microdatele INS (contractul interzice publicarea).
+
+Trei direcții rămân, în ordinea raportului dintre efort și câștig:
+
+1. **Art. 33 din aceeași lege** — fiecare instituție publică e obligată să
+   publice, pe 31 martie și 30 septembrie, lista tuturor funcțiilor cu salariul
+   de bază **și cu tipul, baza de calcul și valoarea brută a fiecărui spor**.
+   Asta e plata reală, nu grila. E și trimisă electronic la Ministerul Muncii
+   în perioada 1–30 octombrie. Nu există un set centralizat public: fiecare
+   instituție publică PDF-uri separate. Efort mediu-mare, câștig mare — ar
+   completa exact ce grila nu spune.
+
+2. **Anunțurile de job cu salariu declarat** — singurul semnal per-ocupație
+   care există la scară în privat. Se potrivește cu hubul de recrutare de pe
+   branch-ul `joburi`, care are deja `IntervalSalariu` cu brut și net. Azi doar
+   o minoritate din anunțurile românești au salariu.
+
+3. **Directiva (UE) 2023/970 privind transparența salarială** — termen de
+   transpunere 7 iunie 2026, deci **depășit**. România nu a transpus-o: există
+   un proiect de lege pe site-ul Senatului, lansat în consultare de Ministerul
+   Muncii la finalul lui martie 2026. Prevede că un candidat are dreptul să
+   afle nivelul sau intervalul salarial **înainte de interviu**.
+
+   **Nu se construiește nimic pe ea până la publicarea în Monitorul Oficial** —
+   regula proiectului, iar aici e cu atât mai clară cu cât textul e încă în
+   consultare. Contează însă pentru direcția 2: dacă trece, intervalele devin
+   obligatorii în anunțuri, iar direcția 2 se transformă din culegere de firimi
+   în sursă principală. Ăsta e argumentul pentru care hubul de joburi merită
+   făcut bine acum, nu conținutul despre directivă.
