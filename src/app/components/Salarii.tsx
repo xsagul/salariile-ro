@@ -4,6 +4,7 @@
 
 import Link from "next/link";
 import type { ReactNode } from "react";
+import type { GrilaPublica } from "@/lib/grile-publice";
 import type { ValoareJudet } from "@/lib/ins-date";
 
 export const lei = (valoare: number) => new Intl.NumberFormat("ro-RO").format(Math.round(valoare));
@@ -338,5 +339,79 @@ export function LinkCard({
         </span>
       )}
     </Link>
+  );
+}
+
+/**
+ * Scara de salarii dintr-o grila a Legii 153/2017.
+ *
+ * Se uita altfel decat restul paginii, si intentionat: celelalte tabele arata
+ * o medie masurata, asta arata o suma scrisa in lege. De aceea coloana de brut
+ * e cea principala — grila e stabilita in brut, iar netul e calculul nostru
+ * peste ea, nu o cifra din act.
+ */
+export function TabelGrila({
+  grila,
+  meserie,
+}: {
+  grila: GrilaPublica;
+  /** Numele meseriei, la singular si cu litera mica, pentru rezumatul tabelului. */
+  meserie: string;
+}) {
+  const max = Math.max(...grila.trepte.map((t) => t.brut));
+  const areComponente = grila.trepte.some((t) => t.componente);
+
+  return (
+    <div className="mt-6 overflow-x-auto">
+      <table className="w-full min-w-[34rem] border-separate border-spacing-0 overflow-hidden rounded-md border border-stone-200 bg-surface text-sm shadow-soft tabular-nums">
+        <caption className="sr-only">
+          {`${grila.numeSuma[0].toUpperCase()}${grila.numeSuma.slice(1)} la gradația 0 pentru ${meserie}, pe trepte, din ${grila.anexa} la Legea-cadru nr. 153/2017, nivelul ${grila.coloana}.`}
+        </caption>
+        <thead>
+          <tr>
+            <th className="border-b border-stone-200 bg-canvas px-3 py-3 text-left text-xs font-medium uppercase tracking-wide text-stone-600">
+              Treaptă
+            </th>
+            {areComponente && (
+              <th className="hidden border-b border-stone-200 bg-canvas px-3 py-3 text-right text-xs font-medium uppercase tracking-wide text-stone-600 sm:table-cell">
+                Funcție + grad
+              </th>
+            )}
+            <th className="border-b border-stone-200 bg-canvas px-3 py-3 text-right text-xs font-medium uppercase tracking-wide text-stone-600">
+              Brut lunar
+            </th>
+            <th className="border-b border-stone-200 bg-canvas px-3 py-3 text-right text-xs font-medium uppercase tracking-wide text-stone-600">
+              Net estimat
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {grila.trepte.map((t) => (
+            <tr key={t.eticheta}>
+              <th
+                scope="row"
+                className="relative border-b border-stone-100 px-3 py-2 text-left font-medium text-stone-900"
+              >
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-y-1 left-0 rounded-r bg-stone-900/[0.06]"
+                  style={{ width: `${Math.max(4, (t.brut / max) * 100)}%` }}
+                />
+                <span className="relative">{t.eticheta}</span>
+              </th>
+              {areComponente && (
+                <td className="hidden border-b border-stone-100 px-3 py-2 text-right text-xs text-stone-500 sm:table-cell">
+                  {t.componente ? t.componente.map((c) => lei(c.valoare)).join(" + ") : "—"}
+                </td>
+              )}
+              <td className="border-b border-stone-100 px-3 py-2 text-right font-semibold text-stone-900">
+                {lei(t.brut)} lei
+              </td>
+              <td className="border-b border-stone-100 px-3 py-2 text-right text-stone-600">{lei(t.net)} lei</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }

@@ -151,10 +151,10 @@ export const MESERII: Meserie[] = [
     ceFace: "Asigură asistența juridică internă a unei companii sau instituții: contracte, conformare, litigii." },
   { slug: "judecator", nume: "Judecător", de: "judecător", categorie: "juridic", caen3: "P", caen2: "O", isco: "specialisti",
     ceFace: "Judecă procese și pronunță hotărâri, la judecătorie, tribunal, curte de apel sau la Înalta Curte.",
-    nota: "Salariul unui magistrat este stabilit prin lege, nu de piață — Anexa V la Legea-cadru 153/2017. Cifra de aici este media întregii administrații publice și apărări, deci nu reflectă indemnizația unui judecător." },
+    nota: "Salariul unui magistrat este stabilit prin lege, nu de piață. Cifra de sus este media întregii administrații publice și apărări, deci nu e indemnizația unui judecător — aceea e mai jos în pagină, pe grade, din Anexa V la Legea-cadru 153/2017." },
   { slug: "procuror", nume: "Procuror", de: "procuror", categorie: "juridic", caen3: "P", caen2: "O", isco: "specialisti",
     ceFace: "Conduce sau supraveghează urmărirea penală și susține acuzarea în instanță, într-un parchet.",
-    nota: "Ca și la judecători, indemnizația e stabilită prin Anexa V la Legea-cadru 153/2017. Media sectorului acoperă toată administrația publică și apărarea, deci este mult sub venitul unui procuror." },
+    nota: "Ca și la judecători, indemnizația e stabilită prin lege și o găsești mai jos în pagină, pe grade, din Anexa V la Legea-cadru 153/2017. Media sectorului acoperă toată administrația publică și apărarea, deci este mult sub venitul unui procuror." },
 
   // ─── Inginerie și arhitectură ──────────────────────────────────────────────
   { slug: "inginer", nume: "Inginer", de: "inginer", categorie: "inginerie", caen3: "71", caen2: "M", isco: "specialisti", cor: "214999",

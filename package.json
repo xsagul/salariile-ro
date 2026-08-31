@@ -11,7 +11,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "node --no-warnings scripts/test-facilitate.mts && node --no-warnings scripts/test-fiscal-periods.mts && node --no-warnings scripts/test-part-time.mts && node --no-warnings scripts/test-pfa.mts && node --no-warnings scripts/test-forme-juridice.mts && node --no-warnings scripts/test-date-salarii.mts && node --no-warnings scripts/test-meserii.mts && tsx scripts/generate-public-ins-assets.mts --check && node --no-warnings scripts/test-pdf-text.mts && node --no-warnings scripts/test-ui-contracts.mts && node --no-warnings scripts/test-http.mts && tsx scripts/test-observatii.mts && tsx scripts/test-invatamant.mts && node --no-warnings scripts/test-context-drift.mts",
+    "test": "node --no-warnings scripts/test-facilitate.mts && node --no-warnings scripts/test-fiscal-periods.mts && node --no-warnings scripts/test-part-time.mts && node --no-warnings scripts/test-pfa.mts && node --no-warnings scripts/test-forme-juridice.mts && node --no-warnings scripts/test-date-salarii.mts && node --no-warnings scripts/test-meserii.mts && tsx scripts/generate-public-ins-assets.mts --check && node --no-warnings scripts/test-pdf-text.mts && node --no-warnings scripts/test-ui-contracts.mts && node --no-warnings scripts/test-http.mts && tsx scripts/test-observatii.mts && tsx scripts/test-invatamant.mts && tsx scripts/test-grile-publice.mts && node --no-warnings scripts/test-context-drift.mts",
     "test:rendered": "node --no-warnings scripts/test-rendered.mts",
     "test:ci": "npm run test && npm run lint && npm run build && npm run test:rendered",
     "ins:tempo": "node scripts/ins-tempo.mjs && tsx scripts/generate-public-ins-assets.mts",

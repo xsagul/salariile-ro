@@ -14,6 +14,7 @@ import {
   GraficSerie,
   LinkCard,
   NotaSursa,
+  TabelGrila,
   TabelJudete,
   lei,
   lunaLunga,
@@ -45,6 +46,7 @@ import {
   type DateMeserie,
 } from "@/lib/meserii";
 import { denumireScurtaCaen } from "@/lib/caen-denumiri";
+import { SURSA_GRILE, grilaPublica } from "@/lib/grile-publice";
 import { cifreMeserie, intersectie } from "@/lib/ocupatii-caen";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
@@ -187,6 +189,8 @@ export default async function MeseriePage({ params }: Props) {
   // pe care INS nu o include in ancheta salariala.
   const X = intersectie(meserie.caen2, meserie.isco);
   const numeMic = meserie.nume.toLocaleLowerCase("ro-RO");
+  // Grila legala, doar pentru meseriile bugetare. `null` pentru restul.
+  const grila = grilaPublica(meserie.slug);
   const netCurent = netPrincipal(date);
   const variatie = variatieAnuala(sector.net);
   const faq = faqPentru(date);
@@ -408,6 +412,34 @@ export default async function MeseriePage({ params }: Props) {
 
           <div className="mt-12 grid gap-10 lg:grid-cols-3">
             <div className="min-w-0 lg:col-span-2">
+              {grila && (
+                <section className="mb-12">
+                  <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">
+                    Cât ia un {numeMic} în sistemul public, după lege
+                  </h2>
+                  <p className="mt-4 text-base leading-normal text-stone-600">
+                    Aici nu estimăm. Pentru {numeMic} din {grila.domeniu}, suma e stabilită prin lege, pe fiecare
+                    treaptă, în {grila.anexa} la Legea-cadru nr. 153/2017. Cifrele de mai jos sunt{" "}
+                    <strong>
+                      {grila.numeSuma} la gradația 0
+                    </strong>
+                    , la nivelul {grila.coloana} — adică înainte de gradația de vechime și de sporuri. Un angajat cu
+                    vechime ia mai mult.
+                  </p>
+                  <TabelGrila grila={grila} meserie={numeMic} />
+                  {grila.nota && <p className="mt-4 text-sm leading-normal text-stone-600">{grila.nota}</p>}
+                  <NotaSursa>
+                    Sursă: {SURSA_GRILE.act}, {grila.anexa}, text consolidat pe{" "}
+                    <a href={SURSA_GRILE.url} target="_blank" rel="noopener">
+                      legislatie.just.ro
+                    </a>
+                    . Netul e calculat de noi din brut, în condiții standard (fără persoane în întreținere), cu cotele
+                    din 2026. Grila se aplică personalului plătit din fonduri publice; în privat salariul se
+                    negociază, iar reperul potrivit rămâne media din secțiunile de mai jos.
+                  </NotaSursa>
+                </section>
+              )}
+
               <section>
                 <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">
                   Ce face un {numeMic}

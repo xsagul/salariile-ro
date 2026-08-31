@@ -97,3 +97,8 @@ gsc-key.json
 
 # Analiza de backlinkuri a competitiei — date private, repo-ul e public
 /research/backlinks-competitie-*/
+
+# Textul consolidat al Legii 153/2017, descarcat de scripts/lege153-grile.mjs.
+# 6 MB de HTML public, care se ia din nou oricand cu `--refetch`. Ce conteaza —
+# grilele extrase — e versionat in src/data/grile-153-2017.json.
+/research/lege153-consolidat.html
