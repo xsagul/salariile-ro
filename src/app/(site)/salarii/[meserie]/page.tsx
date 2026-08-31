@@ -122,7 +122,7 @@ function faqPentru(date: DateMeserie) {
     {
       q: `Care este salariul net al unui ${numeMic}?`,
       a: X
-        ? `Aproximativ ${lei(X.net)} lei net pe lună, din ${lei(X.brut)} lei brut. Cifra vine din ancheta INS pe grupa „${isco?.nume ?? ""}” din același sector de activitate, adică din ${lei(X.salariati ?? 0)} de salariați, și este indexată la ${LUNA}. Ancheta se face în octombrie; ultima disponibilă este din ${X.an.replace("Anul ", "")}. Media întregului sector, indiferent de ocupație, este ${lei(sector.brutCurent)} lei brut — o cifră mai largă, care include și posturile foarte diferite de acesta.`
+        ? `Aproximativ ${lei(netPrincipal(date))} lei net pe lună. Pornim de la media sectorului la ${LUNA} — ${lei(sector.brutCurent)} lei brut — și o ajustăm cu raportul dintre grupa „${isco?.nume ?? ""}” și media aceluiași sector, măsurat de INS pe ${lei(X.salariati ?? 0)} de salariați. Nivelul e actual; doar raportul dintre grupe vine din ancheta anuală, pentru că INS nu publică salarii pe ocupații individuale.`
         : `Reperul este ${lei(netCurent)} lei net pe lună, media observată de INS în sectorul asociat meseriei. Pentru această ocupație INS nu publică o cifră pe grupa de ocupații din sector, pentru că administrația publică nu intră în ancheta salarială.`,
     },
   ];
@@ -253,9 +253,10 @@ export default async function MeseriePage({ params }: Props) {
           <Lead>
             {X ? (
               <>
-                Un {numeMic} câștigă în medie <strong>{lei(X.net)} lei net pe lună</strong>, din{" "}
-                <strong>{lei(X.brut)} lei brut</strong>. Cifra vine din ancheta INS pe {X.salariati ? `${lei(X.salariati)} de salariați` : "salariații"}{" "}
-                din aceeași grupă de ocupații și același sector, actualizată la {LUNA}.
+                Un {numeMic} câștigă în medie{" "}
+                <strong>{lei(cifreMeserie(meserie.caen2, meserie.isco, { net: netCurent, brut: sector.brutCurent }).net)} lei net pe lună</strong>, din{" "}
+                <strong>{lei(cifreMeserie(meserie.caen2, meserie.isco, { net: netCurent, brut: sector.brutCurent }).brut)} lei brut</strong>. Nivelul e cel
+                al sectorului la {LUNA}, ajustat cu cât câștigă grupa „{isco?.nume ?? ""}” față de media sectorului.
               </>
             ) : (
               <>
@@ -277,17 +278,17 @@ export default async function MeseriePage({ params }: Props) {
             <CardCifra
               accent
               eticheta="Câștig net lunar"
-              valoare={lei(X ? X.net : netCurent)}
+              valoare={lei(cifreMeserie(meserie.caen2, meserie.isco, { net: netCurent, brut: sector.brutCurent }).net)}
               unitate="lei net"
               nota={
                 X
-                  ? `Grupa „${isco?.nume ?? ""}” în ${denumireScurtaCaen(sector.cheie, sector.denumire).toLocaleLowerCase("ro-RO")}, ancheta INS din octombrie ${X.an.replace("Anul ", "")}, indexată la ${LUNA}.`
+                  ? `Media sectorului ${denumireScurtaCaen(sector.cheie, sector.denumire).toLocaleLowerCase("ro-RO")} la ${LUNA}, ajustată cu raportul grupei „${isco?.nume ?? ""}” față de sector, din ancheta INS.`
                   : `Media netă INS din sectorul CAEN ${sector.cheie}, ${LUNA}.`
               }
             />
             <CardCifra
               eticheta="Salariu brut"
-              valoare={lei(X ? X.brut : sector.brutCurent)}
+              valoare={lei(cifreMeserie(meserie.caen2, meserie.isco, { net: netCurent, brut: sector.brutCurent }).brut)}
               unitate="lei brut"
               nota={
                 X
@@ -299,10 +300,10 @@ export default async function MeseriePage({ params }: Props) {
 
           {X && (
             <p className="mt-4 rounded-md border border-stone-200 bg-surface p-4 text-sm leading-normal text-stone-600 shadow-soft">
-              <strong className="font-semibold text-stone-900">Ce măsoară cifra:</strong> media grupei de ocupații
-              „{isco?.nume ?? ""}” din acest sector — nu a meseriei în sine. INS nu publică salarii pe ocupații
-              individuale, așa că meserii înrudite din aceeași grupă apar cu aceeași valoare. Este cel mai fin nivel
-              disponibil, nu o măsurătoare directă a postului.{" "}
+              <strong className="font-semibold text-stone-900">Ce măsoară cifra:</strong> nivelul curent al sectorului,
+              ajustat cu cât câștigă grupa „{isco?.nume ?? ""}” față de media aceluiași sector. Nivelul e de la {LUNA};
+              raportul dintre grupe vine din ancheta INS din octombrie {X.an.replace("Anul ", "")}, pentru că mai fin
+              de-atât nu se publică. Meserii înrudite din aceeași grupă apar cu aceeași valoare.{" "}
               <Link href="/metodologie" className="font-medium text-stone-900 underline underline-offset-2 hover:text-stone-600">
                 Metodologia completă
               </Link>

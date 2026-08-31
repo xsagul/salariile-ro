@@ -154,13 +154,49 @@ export type CifreMeserie = {
   dinIntersectie: boolean;
 };
 
+/**
+ * Raportul dintre castigul grupei si media sectorului, din ACEEASI ancheta.
+ * E adimensional, deci nu imbatraneste odata cu nivelul preturilor.
+ */
+export function raportOcupational(caenRev2: string, grupa: GrupaIsco): number | null {
+  const c = indexCaen(caenRev2);
+  const i = indexIsco(grupa);
+  const iTotalIsco = N.isco.findIndex((x) => x.trim() === "Total");
+  if (c < 0 || i < 0 || iTotalIsco < 0) return null;
+  const alGrupei = celula(iVenit, c, i, iTotalSex);
+  const alSectorului = celula(iVenit, c, iTotalIsco, iTotalSex);
+  if (!alGrupei || !alSectorului) return null;
+  return alGrupei / alSectorului;
+}
+
+/**
+ * Cifrele afisate pentru o meserie.
+ *
+ * METODA, si de ce e asta si nu alta. Am incercat doua variante inaintea ei:
+ *
+ *   a) media sectorului CAEN, seria lunara — PROASPATA (iunie 2026), dar toate
+ *      meseriile dintr-un sector ieseau identice. 79 de valori distincte.
+ *   b) celula ancheta activitate x ocupatie, direct — diferentiata pe grupe,
+ *      dar VECHE: octombrie 2024, indexata cu un factor global. 78 de valori.
+ *      Am pierdut 20 de luni de prospetime pentru un castig care nu s-a vazut.
+ *
+ * Varianta de acum ia ce e bun din amandoua: NIVELUL vine din seria lunara
+ * curenta a sectorului, iar DIFERENTIEREA din raportul grupa/sector masurat in
+ * ancheta. Ipoteza e ca structura salariala dintr-un sector — cat ia un
+ * specialist fata de media sectorului — se schimba mult mai lent decat nivelul
+ * absolut. E o ipoteza, si scrie in metodologie.
+ *
+ * Rezultat: 90 de valori distincte, cu baza la luna curenta.
+ */
 export function cifreMeserie(
   caenRev2: string,
   grupa: GrupaIsco,
   rezerva: { net: number; brut: number },
 ): CifreMeserie {
-  const x = intersectie(caenRev2, grupa);
-  return x
-    ? { net: x.net, brut: x.brut, dinIntersectie: true }
-    : { ...rezerva, dinIntersectie: false };
+  const raport = raportOcupational(caenRev2, grupa);
+  if (raport == null) return { ...rezerva, dinIntersectie: false };
+  const brut = Math.round(rezerva.brut * raport);
+  const net = calculStandard(brut)?.net;
+  if (net == null) return { ...rezerva, dinIntersectie: false };
+  return { net, brut, dinIntersectie: true };
 }
