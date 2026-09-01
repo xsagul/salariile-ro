@@ -44,6 +44,11 @@ function runGsc(command, options = {}) {
     cwd: path.resolve(SCRIPT_DIR, ".."),
     encoding: "utf8",
     stdio: ["ignore", "pipe", "pipe"],
+    // Node limitează implicit stdout-ul unui copil la 1 MB și aruncă ENOBUFS
+    // peste prag. Raportul GSC a depășit pragul pe 1 septembrie 2026, odată cu
+    // creșterea site-ului, și a rupt `npm run gsc:weekly` fără vreun indiciu
+    // că problema e dimensiunea, nu autentificarea.
+    maxBuffer: 256 * 1024 * 1024,
   });
   return JSON.parse(output);
 }
