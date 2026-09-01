@@ -9,7 +9,7 @@ nu are continuitate între sesiuni, iar 90 de zile sunt lungi.
 **Țintă:** `/calculator-pfa` ajunge pe **poziția ≤ 8** pentru interogarea
 `calculator pfa`, măsurată în Google Search Console.
 
-**Termen:** până pe **1 decembrie 2026** (90 de zile).
+**Termen:** până pe **1 octombrie 2026** (90 de zile).
 
 **Măsurare:** `node scripts/gsc.mjs queries --query=calculator pfa`
 Poziția medie pe fereastra de 28 de zile care se încheie cel mai aproape de
@@ -53,7 +53,7 @@ optimizarea de structură e o distragere. Ambele răspunsuri sunt utile.
   SRL; blocul „Răspuns scurt" coborât sub calculator; hero comprimat de la 6
   la 2 rânduri pe mobil. Commit `21c93cd`.
 - **2026-09-02** — Sesiunea alocată. Termenul s-a scurtat la **1 lună**
-  (2 octombrie 2026), la cererea proprietarului: mai devreme = procent mai
+  (1 octombrie 2026), la cererea proprietarului: mai devreme = procent mai
   mare; la fix o lună 51%; la o lună și o zi egalitate; peste, pierdut.
 
   Ce s-a făcut:
