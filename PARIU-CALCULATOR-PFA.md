@@ -52,3 +52,38 @@ optimizarea de structură e o distragere. Ambele răspunsuri sunt utile.
 - **2026-09-02** — Faza 1: titlu, descriere și hero anunță comparația PFA vs
   SRL; blocul „Răspuns scurt" coborât sub calculator; hero comprimat de la 6
   la 2 rânduri pe mobil. Commit `21c93cd`.
+- **2026-09-02** — Sesiunea alocată. Termenul s-a scurtat la **1 lună**
+  (2 octombrie 2026), la cererea proprietarului: mai devreme = procent mai
+  mare; la fix o lună 51%; la o lună și o zi egalitate; peste, pierdut.
+
+  Ce s-a făcut:
+  1. Faza 1 pe pagină (commit `21c93cd`) — titlu, descriere și hero anunță
+     comparația PFA vs SRL; „Răspuns scurt" coborât sub calculator.
+  2. Grup „Instrumente" în bară (commit `98508a6`) — +1 link intern crawlabil
+     către pagină pe toate cele 298 de rute. Măsurat pe HTML livrat.
+
+  Ce NU s-a făcut, și de ce:
+  - **Faza 2 abandonată ca inutilă.** Plănuiam să scot comparația PFA vs SRL
+    în față. Verificând componenta, era deja acolo: primul element din panoul
+    de rezultat, comutator în trei căi, verdict sortat, cu micro exclus peste
+    plafonul de 100.000 €. Singurul gol era că pagina n-o anunța — reparat la
+    faza 1. A modifica o componentă corectă pentru câștig marginal ar fi fost
+    o greșeală.
+  - **Fără outreach.** La 30 de zile linkurile reci nu apucă să compună.
+
+  ## Riscul principal, și singura acțiune cerută proprietarului
+
+  `gsc inspect` arată **ultima crawl pe 10 august 2026** — 23 de zile.
+  Dacă intervalul se menține, Google s-ar putea să nu vadă schimbările înainte
+  de 2 octombrie. Optimizarea unei pagini necitite nu produce nimic.
+
+  **Acțiune cerută: „Request Indexing" în GSC pentru /calculator-pfa.**
+  E acțiune de cont, nu intervenție pe pagină, deci nu strică pariul.
+
+  ## Context istoric găsit în Header.tsx
+
+  Pagina a pierdut locul doi din bară pe 10 august 2026, dar NU de-aia a căzut:
+  îl pierduse fiindcă era deja pe poziția 48 cu 3 clickuri. De atunci a urcat
+  singură la 30,6. Trendul era deja pozitiv înainte de intervenția mea — ceea
+  ce înseamnă că o eventuală urcare nu se poate atribui integral schimbărilor
+  de azi.
