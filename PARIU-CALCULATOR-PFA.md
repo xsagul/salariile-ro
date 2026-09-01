@@ -87,3 +87,26 @@ optimizarea de structură e o distragere. Ambele răspunsuri sunt utile.
   singură la 30,6. Trendul era deja pozitiv înainte de intervenția mea — ceea
   ce înseamnă că o eventuală urcare nu se poate atribui integral schimbărilor
   de azi.
+
+- **2026-09-02, sesiunea a doua.** Măsurătoare la zi: `calculator pfa` a urcat
+  de la 30,6 (28 zile) la **23,5** (7 zile) și 24,2 (3 zile). Eșantion mic —
+  9-19 impresii — deci direcție, nu dovadă. Varianta `calculator pfa 2026` stă
+  deja la 11,7-13,2.
+
+  **Ce s-a făcut:** articol `/noutati/pfa-sau-srl-2026` (commit `80493c6`).
+
+  Motivul, în ordinea în care a fost descoperit:
+  1. Pagina era o insulă. Subiectul PFA apărea o singură dată în tot restul
+     site-ului, deci nu exista de unde să vină suport tematic.
+  2. Clusterul PFA vs SRL exista în GSC, cu site-ul pe pozițiile 40-80. Cerere
+     reală, nefolosită.
+  3. Locurile 1 și 2 pe „calculator pfa" (SOLO, StartCo) câștigă exact pe acest
+     unghi — îl au în titlu.
+  4. Motorul de calcul era deja construit și testat. Cifrele din articol sunt
+     produse cu el, nu preluate din presă.
+
+  Articolul aduce patru linkuri contextuale către pagină, din conținut
+  relevant tematic — altceva decât linkul de navigație adăugat dimineață.
+
+  **De făcut de proprietar:** imaginea hero pentru articol. Câmpul e opțional
+  în cod, dar celelalte 11 articole au una și lipsa se vede în listare.
