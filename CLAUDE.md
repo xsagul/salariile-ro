@@ -82,7 +82,7 @@ Tensiunea care a oprit-o, și care rămâne reală: `/despre` promite azi „nu 
 - Paginile de calculator tranzacționale tind să aibă CTR mai sănătos decât paginile pur informative
 - Tehnic & on-page: nivel A/A+ conform tool-urilor de audit
 - Off-site (backlinkuri, autoritate de domeniu/DR): nivel F — zona cu cel mai mare potențial de creștere
-- GSC este conectat. Singura măsurătoare de trafic de pe site e Vercel Analytics — nu Google Analytics, și nici Umami, dezafectat pe 28 august 2026. Nu mai există evenimente proprii, timp pe pagină sau Core Web Vitals din teren.
+- GSC este conectat. Măsurătoarea de trafic e Vercel Analytics — nu Google Analytics, și nici Umami, dezafectat pe 28 august 2026. Din 1 septembrie 2026 există și Vercel Speed Insights, deci **Core Web Vitals din teren real sunt disponibile din nou** (RES 99 pe mobil la activare). Rămân pierdute: evenimentele proprii și timpul pe pagină. Evenimentele proprii nu se pot recâștiga pe planul Hobby, care nu permite custom events — deci „câte sesiuni includ un calcul salarial” rămâne nemăsurabil fără Pro.
 
 ## Roadmap activ
 

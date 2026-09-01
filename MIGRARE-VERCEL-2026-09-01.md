@@ -201,3 +201,82 @@ Singura schimbare automată: ALIAS-ul apex, de la `3918a89b6786ae46` la
       Nu strică nimic (vechiul nu mai are domeniu), dar e zgomot.
 - [ ] Ștergerea contului vechi — acum sigură: domeniul și zona DNS au ieșit.
       Se pierde definitiv istoricul Vercel Analytics și Speed Insights.
+
+---
+
+# Audit SEO al configurației Vercel — după migrare
+
+Toate măsurate pe infrastructura NOUĂ, 1 septembrie 2026.
+
+## Acces crawlere — nimic nu blochează
+
+Cele mai periculoase setări Vercel pentru SEO sunt cele care blochează tăcut:
+Deployment Protection, Firewall, Attack Challenge Mode. Testate direct cu
+User-Agent de crawler, nu presupuse din dashboard:
+
+- Googlebot: 200 pe 4 pagini + **18 URL-uri luate la întâmplare din sitemap**,
+  acoperind toate tipurile de rută. 0 eșecuri.
+- Bingbot: 200
+- `robots.txt`: `Allow: /`, `Disallow: /api/`, sitemap declarat
+- `sitemap.xml`: 200 pentru Googlebot, 51,5 KB, 298 URL-uri
+
+## Canonicalizare — o singură variantă indexabilă
+
+| Sursă | Comportament |
+|---|---|
+| `http://salariile.ro` | 308 → https |
+| `www.salariile.ro` | 301 → apex |
+| `/salariu-minim/` | 308 → fără slash |
+| pagină inexistentă | 404 real, nu soft-404 |
+| `*.vercel.app` | `X-Robots-Tag: noindex, nofollow, noarchive` (automat de la Vercel) |
+| canonical în HTML | `https://salariile.ro` peste tot |
+
+Apex-ul e singura variantă indexabilă. Nu există risc de conținut duplicat.
+
+## Platformă
+
+- HSTS: `max-age=63072000; includeSubDomains; preload` (2 ani)
+- Compresie: brotli
+- CDN: `X-Vercel-Cache: HIT`
+- Node 24 — identic cu ce rulează în CI
+
+## Performanță pe infrastructura nouă
+
+PSI mobil, homepage: **97 performanță / 100 SEO / 100 accesibilitate /
+100 best practices**. Înainte de migrare era 98/100/100/100 — diferența e
+variație între rulări, nu regresie.
+
+## REPARAT în timpul auditului
+
+`.vercel/project.json`, copiat de pe PC-ul vechi, pointa la proiectul
+`prj_BCjw4gTbv5HAHyW0ZhjCVj7SysH2` — **cel șters**. Relegat la
+`prj_RLEIk34PYfsuDYRaISVGmBBeYxyB`. Fără asta, `vercel env pull`,
+`vercel deploy` și `vercel firewall` eșuau local. `.env.local` a fost
+regenerat cu un OIDC token proaspăt (cel copiat era din iulie, expirat).
+
+## Rămâne deschis
+
+1. ~~Speed Insights~~ — **REZOLVAT**. A fost întârziere de provizionare, nimic
+   altceva. Beacon-ul `/vitals` a răspuns 503 vreo oră după deploy, apoi a
+   început să accepte date. Confirmat în dashboard: **Real Experience Score
+   99 pe mobil**, „Great, Above 90", peste 75% din vizite cu experiență bună.
+   Desktop e încă gol — n-au fost vizitatori desktop, nu e o problemă.
+
+   Lecție: am tratat 503-ul persistent ca semn de defect de configurație și
+   am recomandat suport Vercel. Greșit. Ipoteza corectă (provizionare în curs)
+   o formulasem, apoi am abandonat-o prea repede fiindcă eroarea se repeta.
+   Un 503 care se repetă nu înseamnă permanent.
+2. **LCP 2,6 s pe mobil** — singura metrică sub prag (2,5 s). Restul verzi.
+3. **Titlu de 61 caractere** pe `/noutati/cosul-minim-de-consum`, preexistent.
+
+## Concluzie
+
+Nicio setare Vercel nu necesită schimbare. Configurația e corectă pentru SEO.
+
+
+## Măsurătoarea de teren, recâștigată
+
+CLAUDE.md documenta că odată cu dezafectarea Umami (28 august 2026) s-au
+pierdut evenimentele proprii, timpul pe pagină și Core Web Vitals din teren.
+Speed Insights închide ultima parte: CWV din teren real există din nou.
+Evenimentele proprii NU sunt recâștigate — Hobby nu permite custom events.
