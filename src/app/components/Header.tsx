@@ -31,6 +31,26 @@ const NAV: Item[] = [
       { href: "/compara", label: "Compară două meserii" },
     ],
   },
+  // Adăugat pe 2 septembrie 2026. Site-ul are cinci unelte, dar din bară se
+  // ajungea doar la cea de pe homepage; restul trăiau exclusiv în footer.
+  // Grupul nu ia locul nimănui — „Meserii" rămâne pe doi, cu pariul lui.
+  //
+  // Declarație de interes: schimbarea a fost făcută în cadrul pariului pe
+  // /calculator-pfa (vezi PARIU-CALCULATOR-PFA.md), deci îmi servește. Testul
+  // aplicat înainte de a o face: ajută și dincolo de ea? Da — /fluturas-salariu,
+  // /calculator-salariu-part-time, /calculator-salariu-invatamant și /widget
+  // erau la fel de izolate. Dacă bara devine prea încărcată, grupul ăsta e
+  // primul care trebuie tăiat, nu „Meserii".
+  {
+    label: "Instrumente",
+    children: [
+      { href: "/calculator-pfa", label: "Calculator PFA" },
+      { href: "/calculator-salariu-part-time", label: "Salariu part-time" },
+      { href: "/calculator-salariu-invatamant", label: "Salariu învățământ" },
+      { href: "/fluturas-salariu", label: "Generator fluturaș" },
+      { href: "/widget", label: "Widget pentru site-ul tău" },
+    ],
+  },
   {
     label: "Ghiduri",
     children: [
