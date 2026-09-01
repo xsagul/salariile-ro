@@ -2,18 +2,18 @@
 
 Convenit între proprietar (Știuriuc Sorin-Marian) și agent, 2 septembrie 2026.
 Scris aici pentru că niciunul dintre noi nu se poate baza pe memorie: agentul
-nu are continuitate între sesiuni, iar 90 de zile sunt lungi.
+nu are continuitate între sesiuni, iar o lună e lungă.
 
 ## Termeni
 
 **Țintă:** `/calculator-pfa` ajunge pe **poziția ≤ 8** pentru interogarea
 `calculator pfa`, măsurată în Google Search Console.
 
-**Termen:** până pe **1 octombrie 2026** (o lună de la stabilirea pariului).
+**Termen:** până pe **2 octombrie 2026** (o lună de la stabilirea pariului).
 
 **Măsurare:** `node scripts/gsc.mjs queries --query=calculator pfa`
 Poziția medie pe fereastra de 28 de zile care se încheie cel mai aproape de
-1 octombrie. Nu poziția dintr-o zi bună.
+2 octombrie. Nu poziția dintr-o zi bună.
 
 ## Punctul de plecare, 2 septembrie 2026
 
@@ -35,7 +35,7 @@ Analiza care stă la baza planului: `SXO-CALCULATOR-PFA-2026-09-02.md`
 3. Fără cumpărare de linkuri și fără tactici care riscă penalizare — regula
    e din CLAUDE.md și rămâne valabilă și în interiorul pariului.
 4. Prioritatea e linkable assets și arhitectura internă, nu outreach rece.
-   La 90 de zile linkurile reci nu apucă să compună.
+   La o lună linkurile reci nu apucă să compună.
 
 ## De ce contează rezultatul, indiferent cine câștigă
 
@@ -53,7 +53,7 @@ optimizarea de structură e o distragere. Ambele răspunsuri sunt utile.
   SRL; blocul „Răspuns scurt" coborât sub calculator; hero comprimat de la 6
   la 2 rânduri pe mobil. Commit `21c93cd`.
 - **2026-09-02** — Sesiunea alocată. Termenul s-a scurtat la **1 lună**
-  (1 octombrie 2026), la cererea proprietarului: mai devreme = procent mai
+  (2 octombrie 2026), la cererea proprietarului: mai devreme = procent mai
   mare; la fix o lună 51%; la o lună și o zi egalitate; peste, pierdut.
 
   Ce s-a făcut:
@@ -75,7 +75,7 @@ optimizarea de structură e o distragere. Ambele răspunsuri sunt utile.
 
   `gsc inspect` arată **ultima crawl pe 10 august 2026** — 23 de zile.
   Dacă intervalul se menține, Google s-ar putea să nu vadă schimbările înainte
-  de 1 octombrie. Optimizarea unei pagini necitite nu produce nimic.
+  de 2 octombrie. Optimizarea unei pagini necitite nu produce nimic.
 
   **Acțiune cerută: „Request Indexing" în GSC pentru /calculator-pfa.**
   E acțiune de cont, nu intervenție pe pagină, deci nu strică pariul.
