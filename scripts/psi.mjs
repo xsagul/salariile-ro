@@ -10,8 +10,11 @@
 //   node scripts/psi.mjs https://salariile.ro/    # URL complet
 //   node scripts/psi.mjs /calculator-pfa --json   # JSON brut
 //
-// Config (opțional):
-//   PSI_KEY   cheie API PageSpeed (gratuită) — necesară doar dacă lovești limita keyless
+// Config (obligatoriu):
+//   Cheia se caută în ordinea: --key=AIza...  →  PSI_KEY  →  ./.gsc/psi-key
+//   Fără cheie API-ul răspunde 429 cu "quota_limit_value": "0" — Google a tăiat cota
+//   anonimă la zero, deci nu mai e o limită atinsă la trafic mare, ci un zid de la
+//   primul apel. Verificat pe 1 septembrie 2026.
 //             node scripts/psi.mjs / --key=AIza...
 //
 // Notă: apelul durează 10-30s (Google rulează Lighthouse live pe pagina ta).
@@ -50,7 +53,7 @@ const pct = (score) => (score == null ? "—" : Math.round(score * 100));
       try {
         key = fs.readFileSync("./.gsc/psi-key", "utf8").trim();
       } catch {
-        /* fără cheie — se încearcă keyless */
+        /* fără cheie — apelul va eșua cu 429 (cotă anonimă zero) */
       }
     }
 
