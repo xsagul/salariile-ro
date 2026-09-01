@@ -362,11 +362,13 @@ export default function CalculatorPFA() {
             }
             setAvansat(!avansat);
           }}>
-          {/* Eticheta numeste ce e inauntru, nu nivelul de dificultate.
-              „Calculator avansat" nu ii spunea nimic unui pensionar: nu avea
-              motiv sa creada ca il priveste, desi bifa ii schimba rezultatul.
-              Concurentul de pe locul 3 tine aceleasi bife la vedere. 2 sept 2026. */}
-          {avansat ? "▲ Ascunde" : "▼ Sunt pensionar, am salariu sau schimb contabilitatea"}
+          {/* Eticheta numeste cine e vizat, nu nivelul de dificultate: „Calculator
+              avansat" nu ii spunea nimic unui pensionar, desi bifa dinauntru ii
+              schimba rezultatul. Tinuta scurta INTENTIONAT — o prima versiune de 53
+              de caractere ingrosa formularul pe doua randuri, iar simplitatea (doua
+              inputuri, cel mai mic formular din SERP) e un avantaj de aparat.
+              Restul optiunilor se vad dupa deschidere. 2 septembrie 2026. */}
+          {avansat ? "▲ Ascunde" : "▼ Sunt pensionar sau salariat"}
         </button>
 
         {avansat && (
