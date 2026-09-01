@@ -69,13 +69,6 @@ const FOOTER_GROUPS: Array<{ title: string; links: FooterLink[] }> = [
     ],
   },
   {
-    title: "Comunitate",
-    links: [
-      // Parteneriat: subreddit-ul de muncă/salarii care găzduiește proiectul
-      { href: "https://www.reddit.com/r/RoMunca/", label: "r/RoMunca pe Reddit", external: true },
-    ],
-  },
-  {
     title: "Despre",
     links: [
       { href: "/despre", label: "Despre proiect" },
