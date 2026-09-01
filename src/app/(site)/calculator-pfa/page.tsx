@@ -188,31 +188,6 @@ export default function CalculatorPfaPage() {
         {/* CALCULATOR */}
         <CalculatorPFA />
 
-        {/* RĂSPUNS SCURT — mutat sub calculator pe 2 septembrie 2026. SERP-ul pentru
-            „calculator pfa" premiază unealta, nu articolul: primele trei rezultate au
-            1–3 titluri și pun calculatorul imediat. Blocul ăsta îl împingea sub pliu pe
-            mobil. Vezi SXO-CALCULATOR-PFA-2026-09-02.md */}
-        <section className="rule-t bg-canvas">
-          <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
-            <div className="md:grid md:grid-cols-5 md:gap-6">
-              <div className="md:col-span-3">
-                  <div className="mt-5 max-w-prose border-l-2 border-stone-900 pl-4 text-sm leading-normal tracking-[-0.01em] text-stone-700">
-                    <p className="font-semibold text-stone-900">Răspuns scurt</p>
-                    <p className="mt-1">
-                      La PFA, taxele pornesc de la venitul net anual: <strong>CASS 10%</strong>, <strong>CAS 25%</strong>{" "}
-                      dacă atingi plafonul de 12 salarii minime și <strong>impozit 10%</strong>.
-                    </p>
-                    <p className="mt-2">
-                      Plafoanele anului fiscal 2026 se raportează la salariul minim de la 1 ianuarie,{" "}
-                      <strong>{lei(SALARIU_MINIM_PFA_2026)} lei</strong>. Majorarea la 4.325 lei din 1 iulie 2026{" "}
-                      <strong>nu le schimbă</strong> – pentru 2027 va conta minimul aflat în vigoare la 1 ianuarie 2027.
-                    </p>
-                  </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* ZONĂ ARTICOL — 3+2, ca pe homepage */}
         <section className="rule-t py-8 sm:py-12">
           <div className="mx-auto max-w-6xl space-y-8 px-4 sm:space-y-12 sm:px-6">
