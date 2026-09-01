@@ -23,14 +23,14 @@ import { PLAFON_MICRO_LEI } from "@/lib/forme-juridice";
 // Titlul și descrierea urmează intenția reală din SERP, nu doar cuvântul-cheie.
 // Descrierea veche se termina cu „salariul minim de 4.050 lei" și arăta depășită
 // în rezultate, deși e corectă: plafoanele PFA folosesc minimul de la 1 ianuarie.
-const PFA_TITLU = "Calculator taxe PFA 2026: cât rămâne, pe tranșe de venit";
+const PFA_TITLU = "Calculator taxe PFA 2026: compară cu SRL micro și profit";
 const PFA_DESC =
-  "Vezi ce plătește un PFA în sistem real în 2026, pe tranșe de venit, și cât îi rămâne.";
+  "Vezi ce plătește un PFA în 2026 și cât ar rămâne, la aceleași cifre, cu un SRL micro sau SRL pe impozit pe profit.";
 
 export const metadata: Metadata = {
   title: { absolute: PFA_TITLU },
   description:
-    "La 60.000 lei venit net, un PFA plătește 22.335 lei taxe și rămâne cu 37.665 lei. Tabel pe tranșe, pragul CAS care costă 10.854 lei și comparație PFA vs SRL.",
+    "Compară pe loc PFA cu SRL micro și SRL pe impozit pe profit. La 60.000 lei venit net, un PFA plătește 22.335 lei taxe și rămâne cu 37.665 lei.",
   alternates: { canonical: "https://salariile.ro/calculator-pfa" },
   openGraph: ogPage({ title: PFA_TITLU, description: PFA_DESC, path: "/calculator-pfa" }),
   twitter: twPage({ title: PFA_TITLU, description: PFA_DESC }),
@@ -176,22 +176,9 @@ export default function CalculatorPfaPage() {
             <div className="md:col-span-3">
               <h1 className="mb-3 text-3xl font-bold tracking-[-0.02em] text-stone-900 sm:text-4xl">Calculator taxe PFA 2026</h1>
               <p className="max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600">
-                Vezi cât plătești ca PFA – CAS, CASS și impozit – și cât îți rămâne. Merge în ambele regimuri, sistem
-                real și normă de venit, și poate calcula și invers: îi spui cât vrei să-ți rămână pe lună și îți arată
-                ce venit îți trebuie.
+                Cât plătești ca PFA – CAS, CASS și impozit – și cât îți rămâne. În sistem real compară pe loc cu{" "}
+                <strong>SRL micro</strong> și <strong>SRL pe impozit pe profit</strong>, la aceleași cifre.
               </p>
-              <div className="mt-5 max-w-prose border-l-2 border-stone-900 pl-4 text-sm leading-normal tracking-[-0.01em] text-stone-700">
-                <p className="font-semibold text-stone-900">Răspuns scurt</p>
-                <p className="mt-1">
-                  La PFA, taxele pornesc de la venitul net anual: <strong>CASS 10%</strong>, <strong>CAS 25%</strong>{" "}
-                  dacă atingi plafonul de 12 salarii minime și <strong>impozit 10%</strong>.
-                </p>
-                <p className="mt-2">
-                  Plafoanele anului fiscal 2026 se raportează la salariul minim de la 1 ianuarie,{" "}
-                  <strong>{lei(SALARIU_MINIM_PFA_2026)} lei</strong>. Majorarea la 4.325 lei din 1 iulie 2026{" "}
-                  <strong>nu le schimbă</strong> – pentru 2027 va conta minimul aflat în vigoare la 1 ianuarie 2027.
-                </p>
-              </div>
               <div className="mt-4 text-xs text-stone-600">Actualizat 4 august 2026</div>
             </div>
           </div>
@@ -200,6 +187,31 @@ export default function CalculatorPfaPage() {
 
         {/* CALCULATOR */}
         <CalculatorPFA />
+
+        {/* RĂSPUNS SCURT — mutat sub calculator pe 2 septembrie 2026. SERP-ul pentru
+            „calculator pfa" premiază unealta, nu articolul: primele trei rezultate au
+            1–3 titluri și pun calculatorul imediat. Blocul ăsta îl împingea sub pliu pe
+            mobil. Vezi SXO-CALCULATOR-PFA-2026-09-02.md */}
+        <section className="rule-t bg-canvas">
+          <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
+            <div className="md:grid md:grid-cols-5 md:gap-6">
+              <div className="md:col-span-3">
+                  <div className="mt-5 max-w-prose border-l-2 border-stone-900 pl-4 text-sm leading-normal tracking-[-0.01em] text-stone-700">
+                    <p className="font-semibold text-stone-900">Răspuns scurt</p>
+                    <p className="mt-1">
+                      La PFA, taxele pornesc de la venitul net anual: <strong>CASS 10%</strong>, <strong>CAS 25%</strong>{" "}
+                      dacă atingi plafonul de 12 salarii minime și <strong>impozit 10%</strong>.
+                    </p>
+                    <p className="mt-2">
+                      Plafoanele anului fiscal 2026 se raportează la salariul minim de la 1 ianuarie,{" "}
+                      <strong>{lei(SALARIU_MINIM_PFA_2026)} lei</strong>. Majorarea la 4.325 lei din 1 iulie 2026{" "}
+                      <strong>nu le schimbă</strong> – pentru 2027 va conta minimul aflat în vigoare la 1 ianuarie 2027.
+                    </p>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* ZONĂ ARTICOL — 3+2, ca pe homepage */}
         <section className="rule-t py-8 sm:py-12">
