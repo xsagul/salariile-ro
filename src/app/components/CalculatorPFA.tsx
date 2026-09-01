@@ -362,7 +362,11 @@ export default function CalculatorPFA() {
             }
             setAvansat(!avansat);
           }}>
-          {avansat ? "▲ Ascunde opțiuni avansate" : "▼ Calculator avansat"}
+          {/* Eticheta numeste ce e inauntru, nu nivelul de dificultate.
+              „Calculator avansat" nu ii spunea nimic unui pensionar: nu avea
+              motiv sa creada ca il priveste, desi bifa ii schimba rezultatul.
+              Concurentul de pe locul 3 tine aceleasi bife la vedere. 2 sept 2026. */}
+          {avansat ? "▲ Ascunde" : "▼ Sunt pensionar, am salariu sau schimb contabilitatea"}
         </button>
 
         {avansat && (
