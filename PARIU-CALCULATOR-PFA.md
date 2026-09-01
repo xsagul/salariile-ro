@@ -9,11 +9,11 @@ nu are continuitate între sesiuni, iar 90 de zile sunt lungi.
 **Țintă:** `/calculator-pfa` ajunge pe **poziția ≤ 8** pentru interogarea
 `calculator pfa`, măsurată în Google Search Console.
 
-**Termen:** până pe **1 octombrie 2026** (90 de zile).
+**Termen:** până pe **1 octombrie 2026** (o lună de la stabilirea pariului).
 
 **Măsurare:** `node scripts/gsc.mjs queries --query=calculator pfa`
 Poziția medie pe fereastra de 28 de zile care se încheie cel mai aproape de
-1 decembrie. Nu poziția dintr-o zi bună.
+1 octombrie. Nu poziția dintr-o zi bună.
 
 ## Punctul de plecare, 2 septembrie 2026
 
@@ -75,7 +75,7 @@ optimizarea de structură e o distragere. Ambele răspunsuri sunt utile.
 
   `gsc inspect` arată **ultima crawl pe 10 august 2026** — 23 de zile.
   Dacă intervalul se menține, Google s-ar putea să nu vadă schimbările înainte
-  de 2 octombrie. Optimizarea unei pagini necitite nu produce nimic.
+  de 1 octombrie. Optimizarea unei pagini necitite nu produce nimic.
 
   **Acțiune cerută: „Request Indexing" în GSC pentru /calculator-pfa.**
   E acțiune de cont, nu intervenție pe pagină, deci nu strică pariul.
