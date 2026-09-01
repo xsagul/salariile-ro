@@ -75,3 +75,57 @@ actualizări de dată sperând că mută poziția.
   putut fi extras.
 - Nu s-au analizat PAA, AI Overview sau reclamele — captura furnizată
   acoperea doar primele trei rezultate organice.
+
+---
+
+# Teardown al concurenței — 2 septembrie 2026
+
+Prima analiză a fost superficială: titluri, octeți, număr de inputuri.
+Asta e cea completă, cerută de proprietar. Paginile au fost descărcate și
+parsate, nu doar privite.
+
+## Schema structurată
+
+| | tipuri declarate |
+|---|---|
+| solo (#1) | SoftwareApplication, **Offer**, FAQPage, ImageObject, WebPage, Organization |
+| startco (#2) | FAQPage, Question, Answer — atât |
+| taxepfa (#3) | WebApplication, **Offer** |
+| salariile.ro | WebApplication, FAQPage, BreadcrumbList, Organization, Person |
+
+Locurile 1 și 3 declară `offers` cu preț; noi declarăm `isAccessibleForFree`.
+Documentația Google pentru aplicații cere `offers`. Diferență mică, dar reală.
+**Nu s-a implementat** — fără `aggregateRating` nu produce rich result oricum,
+iar ratinguri nu se inventează.
+
+## Funcționalitate, comparată
+
+| | startco #2 | taxepfa #3 | noi |
+|---|---|---|---|
+| Venit lunar / anual | comutator | anual | doar anual pe calea directă |
+| Slider de explorare | — | **0–500.000 lei** | — |
+| „Sunt pensionar" | — | vizibil permanent | era ascuns |
+| „Sunt salariat" | — | vizibil permanent | era ascuns |
+| Recenzii / social proof | **da** | — | — |
+| Comparație PFA vs SRL | da | — | da, cu clasament sortat |
+
+## Ce s-a schimbat în urma teardown-ului
+
+Eticheta panoului ascuns, de la „Calculator avansat" la „Sunt pensionar, am
+salariu sau schimb contabilitatea". Panoul conține două bife care schimbă
+rezultatul; cine e în acele situații primea un răspuns greșit pentru el.
+
+Nu s-a copiat soluția taxepfa (bife mereu vizibile): simplitatea implicită —
+două inputuri, cea mai mică din SERP — e un avantaj de păstrat. Problema era
+descoperirea, nu vizibilitatea.
+
+## Ce NU s-a făcut, și rămâne oportunitate
+
+1. **Sliderul.** Cea mai distinctivă funcție a lui taxepfa. Nu e un input, e
+   un mod de explorare: tragi și vezi cum se mișcă rezultatul. Exact tiparul
+   care produce sesiuni lungi — `lastLongestClicks` din studiul NavBoost.
+   Cea mai promițătoare adăugare rămasă, dar cere muncă în componentă și
+   verificare vizuală serioasă.
+2. **Venit lunar pe calea directă.** Mulți freelanceri gândesc lunar. Avem
+   lunar doar pe calculul invers („din net lunar").
+3. **`offers` în schema.** Vezi mai sus; valoare marginală.
