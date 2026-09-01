@@ -101,7 +101,7 @@ export default function CookiesPage() {
                 <strong>Cookies strict necesare</strong>: site-ul nu setează cookies funcționale de tipul „preferințe limbă” sau „mod întunecat”, pentru că aceste funcționalități nu există în versiunea curentă.
               </li>
               <li>
-                <strong>Analiză</strong>: folosim Vercel Web Analytics, <strong>cookieless</strong>. Nu setează cookies și nu identifică vizitatori individuali. Datele sunt agregate: număr de vizite și pagini populare.
+                <strong>Analiză</strong>: folosim Vercel Web Analytics și Vercel Speed Insights, ambele <strong>cookieless</strong>. Nu setează cookies și nu identifică vizitatori individuali. Datele sunt agregate: număr de vizite, pagini populare și viteza reală de încărcare a paginilor.
               </li>
               <li>
                 <strong>Publicitate</strong>: niciuna. Site-ul nu afișează reclame, nu folosește remarketing și nu integrează platforme publicitare.

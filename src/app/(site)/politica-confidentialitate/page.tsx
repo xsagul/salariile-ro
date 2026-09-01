@@ -95,6 +95,9 @@ export default function PoliticaConfidentialitatePage() {
               <li>
                 <strong>Statistici de vizitare anonime</strong>: prin Vercel Web Analytics se contorizează numărul de vizite, paginile cele mai accesate și țara de origine (la nivel general). Nu se folosesc cookies pentru această analiză, datele sunt complet anonime și nu se transferă către terți.
               </li>
+              <li>
+                <strong>Măsurători de performanță anonime</strong>: prin Vercel Speed Insights se măsoară cât de repede se încarcă paginile pentru vizitatori reali (Core Web Vitals). Sunt date tehnice despre pagină, fără cookies, fără identificarea vizitatorului și fără transfer către terți.
+              </li>
             </ul>
             <h3>Publicitate: niciuna</h3>
             <p>
@@ -144,7 +147,7 @@ export default function PoliticaConfidentialitatePage() {
             <h2>5. Durata stocării</h2>
             <ul>
               <li>Logs de server: maximum 30 de zile, după care se șterg automat de către Vercel.</li>
-              <li>Statistici Vercel Analytics: agregate, păstrate la nivel anonim conform politicii Vercel.</li>
+              <li>Statistici Vercel Analytics și Speed Insights: agregate, păstrate la nivel anonim conform politicii Vercel.</li>
               <li>Date Google Search Console: agregate, păstrate conform politicii Google (16 luni pentru istoricul detaliat).</li>
             </ul>
         </Section>
