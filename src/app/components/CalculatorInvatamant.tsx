@@ -237,7 +237,7 @@ export default function CalculatorInvatamant() {
                 coloane={1}
               />
               <SelectorPastile<"I" | "II">
-                eticheta="Gradul"
+                eticheta="Gradul unității de învățământ"
                 optiuni={[{ valoare: "I", eticheta: "Gradul I" }, { valoare: "II", eticheta: "Gradul II" }]}
                 valoare={gradCond}
                 onChange={(v) => { setGradCond(v); sterge(); }}
