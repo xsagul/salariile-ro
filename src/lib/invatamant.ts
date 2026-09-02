@@ -433,6 +433,26 @@ export type RandAuxiliar = {
 };
 
 export const CONDUCERE: RandConducere[] = grileExtra.conducere.randuri as RandConducere[];
+/**
+ * Grila personalului didactic auxiliar: 296 de randuri, 100 de functii
+ * (bibliotecar, secretar, administrator financiar, laborant, pedagog scolar,
+ * informatician, mediator scolar, infirmiera, psiholog s.a.).
+ *
+ * NU e conectata la CalculatorInvatamant, si asta e INTENTIONAT. Calculatorul
+ * de pe /calculator-salariu-invatamant acopera personalul didactic si de
+ * conducere. Auxiliarul isi primeste propria pagina, ca sa poata tinti
+ * interogari proprii („salariu bibliotecar scoala", „salariu secretar
+ * scoala") pe care pagina de invatamant nu le-ar prinde niciodata.
+ *
+ * NEDECIS pe 3 septembrie 2026: o singura pagina de calculator pentru tot
+ * auxiliarul, sau cate o pagina per functie. Decizia depinde de un studiu SEO
+ * pe care proprietarul il face separat — o pagina e mai usor de intretinut,
+ * 100 de pagini tintesc mai precis dar risca continut subtire.
+ *
+ * Deci: daca gasesti grila asta nefolosita, NU o inghesui in calculatorul de
+ * invatamant. Datele, `functiiAuxiliare`, `trepteAuxiliare` si `salariuAuxiliar`
+ * sunt scrise si acoperite de test-invatamant.mts; ce lipseste e doar pagina.
+ */
 export const AUXILIAR: RandAuxiliar[] = grileExtra.auxiliar.randuri as RandAuxiliar[];
 
 export const REGULI_CONDUCERE = grileExtra.conducere.reguli;
