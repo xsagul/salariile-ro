@@ -364,18 +364,27 @@ export default function CalculatorPFA() {
           className="mb-5 flex min-h-11 w-full items-center justify-center rounded border border-dashed border-stone-300 px-4 text-xs font-medium text-stone-500 transition-colors hover:border-stone-400 hover:text-stone-700"
           onClick={() => {
             if (avansat) {
+              // TOATE bifele, nu doar primele doua. Un comutator ramas activ
+              // sub un panou inchis schimba rezultatul fara ca omul sa vada de ce.
               setSalariatPestePlafonCASS(false);
               setPensionar(false);
+              setHandicapGravAccentuat(false);
+              setStudent(false);
             }
             setAvansat(!avansat);
           }}>
-          {/* Eticheta numeste cine e vizat, nu nivelul de dificultate: „Calculator
-              avansat" nu ii spunea nimic unui pensionar, desi bifa dinauntru ii
-              schimba rezultatul. Tinuta scurta INTENTIONAT — o prima versiune de 53
-              de caractere ingrosa formularul pe doua randuri, iar simplitatea (doua
-              inputuri, cel mai mic formular din SERP) e un avantaj de aparat.
-              Restul optiunilor se vad dupa deschidere. 2 septembrie 2026. */}
-          {avansat ? "▲ Ascunde" : "▼ Sunt pensionar sau salariat"}
+          {/* Eticheta neutra, ca la SOLO. A trecut prin doua versiuni care numeau
+              cazurile — „Calculator avansat", apoi „Sunt pensionar sau salariat" —
+              si care aveau un defect comun: enumerau, deci trebuiau sa fie complete.
+              Cu patru bife inauntru, orice enumerare fie se lungeste pe doua randuri,
+              fie minte prin omisiune (un student citea „pensionar sau salariat” si
+              trecea mai departe).
+
+              Compromisul asumat: „Afiseaza optiuni” nu mai spune PE CINE priveste,
+              deci cineva care nu se stie caz special poate sa nu deschida deloc.
+              Legenda dinauntru — „In 2026 esti?” — preia sarcina asta imediat dupa
+              deschidere. 3 septembrie 2026. */}
+          {avansat ? "▲ Ascunde opțiunile" : "▼ Afișează opțiuni"}
         </button>
 
         {avansat && (
