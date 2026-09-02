@@ -173,7 +173,14 @@ export default function CalculatorInvatamant() {
 
   const optGrup: OptiunePastila<Grup>[] = GRUPURI.map((g) => ({ valoare: g.cod, eticheta: g.eticheta }));
   const optGrad: OptiunePastila<Grad>[] = GRADE.map((g) => ({ valoare: g.cod, eticheta: g.eticheta, posibil: gradeOk.has(g.cod) }));
-  const optStudii: OptiunePastila<string>[] = NIVELURI.map((n) => ({ valoare: n.cod, eticheta: n.eticheta, posibil: studiiOk.has(n.cod) }));
+  // Eticheta e explicatia, nu abrevierea: „Studii superioare de lunga durata (S)".
+  // Codul din grila ramane in paranteza, ca sa poata fi recunoscut de cine il stie.
+  // Inainte se afisa doar „S / SSD / M", iar explicatia nu aparea NICAIERI in pagina.
+  const optStudii: OptiunePastila<string>[] = NIVELURI.map((n) => ({
+    valoare: n.cod,
+    eticheta: `${n.explicatie.charAt(0).toUpperCase()}${n.explicatie.slice(1)} (${n.cod})`,
+    posibil: studiiOk.has(n.cod),
+  }));
 
   return (
     // Secțiunea stă pe `canvas`, cardurile pe `surface` deasupra ei — altfel
@@ -200,9 +207,9 @@ export default function CalculatorInvatamant() {
               <SelectorPastile<Grad> eticheta="Gradul didactic" optiuni={optGrad} valoare={grad} onChange={alegeGrad} />
               <SelectorPastile<string>
                 eticheta="Nivelul studiilor"
-                ajutor="S = superioare de lungă durată · SSD = superioare de scurtă durată · M = medii, nivel liceal."
                 optiuni={optStudii}
                 valoare={studii}
+                coloane={1}
                 onChange={(v) => { setStudii(v); sterge(); }}
               />
               <SelectorPastile<string>
@@ -214,7 +221,7 @@ export default function CalculatorInvatamant() {
               />
               <SelectorPastile<NivelGradatie>
                 eticheta="Vechime totală în muncă"
-                ajutor="Câți ani ai lucrat în total, inclusiv în afara învățământului. Din ea rezultă gradația."
+                ajutor="Câți ani ai lucrat în total, inclusiv în afara învățământului."
                 optiuni={GRADATII.map((g) => ({ valoare: g.nivel as NivelGradatie, eticheta: g.eticheta }))}
                 valoare={gradatie}
                 onChange={(v) => { setGradatie(v); sterge(); }}
