@@ -44,7 +44,11 @@ export function SelectorPastile<T extends string | number>({
   coloane?: 1;
 }) {
   const selectata = optiuni.find((o) => o.valoare === valoare);
-  const nota = selectata?.detaliu ?? ajutor;
+  // Ghidajul static („ajutor") se aseaza SUB eticheta si DEASUPRA optiunilor:
+  // altfel utilizatorul alege inainte sa citeasca ce i se cere. Feedbackul
+  // despre optiunea aleasa („detaliu") ramane dedesubt, unde ii e locul.
+  // Separate pe 2 septembrie 2026; inainte erau acelasi slot, sub optiuni.
+  const notaSelectie = selectata?.detaliu;
 
   // Daca exista o singura optiune posibila, nu e o alegere — e un fapt. Nu se
   // deseneaza deloc; valoarea e deja fixata de constrangerile grilei.
@@ -54,6 +58,7 @@ export function SelectorPastile<T extends string | number>({
   return (
     <fieldset className="mb-3">
       <legend className="mb-1 text-xs font-medium text-stone-500">{eticheta}</legend>
+      {ajutor && <p className="mb-2 text-xs leading-normal text-stone-600">{ajutor}</p>}
 
       <div className={coloane === 1 ? "flex flex-col gap-1" : "flex flex-wrap gap-1"}>
         {optiuni.map((o) => {
@@ -85,7 +90,7 @@ export function SelectorPastile<T extends string | number>({
         })}
       </div>
 
-      {nota && <p className="mt-1 text-xs text-stone-600">{nota}</p>}
+      {notaSelectie && <p className="mt-1 text-xs text-stone-600">{notaSelectie}</p>}
     </fieldset>
   );
 }

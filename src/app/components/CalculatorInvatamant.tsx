@@ -200,21 +200,22 @@ export default function CalculatorInvatamant() {
               <SelectorPastile<Grad> eticheta="Gradul didactic" optiuni={optGrad} valoare={grad} onChange={alegeGrad} />
               <SelectorPastile<string>
                 eticheta="Nivelul studiilor"
+                ajutor="S = superioare de lungă durată · SSD = superioare de scurtă durată · M = medii, nivel liceal."
                 optiuni={optStudii}
                 valoare={studii}
                 onChange={(v) => { setStudii(v); sterge(); }}
               />
               <SelectorPastile<string>
                 eticheta="Vechimea în învățământ"
-                ajutor="Cât ai lucrat efectiv în sistem — nu toată cariera."
+                ajutor="Câți ani ai lucrat în sistemul de învățământ."
                 optiuni={vechimi.map((v) => ({ valoare: v, eticheta: v }))}
                 valoare={vechimeCurenta}
                 onChange={(v) => { setVechimeInv(v); sterge(); }}
               />
               <SelectorPastile<NivelGradatie>
-                eticheta="Gradația"
-                ajutor="După vechimea în muncă, din toată cariera."
-                optiuni={GRADATII.map((g) => ({ valoare: g.nivel as NivelGradatie, eticheta: String(g.nivel) }))}
+                eticheta="Vechime totală în muncă"
+                ajutor="Câți ani ai lucrat în total, inclusiv în afara învățământului. Din ea rezultă gradația."
+                optiuni={GRADATII.map((g) => ({ valoare: g.nivel as NivelGradatie, eticheta: g.eticheta }))}
                 valoare={gradatie}
                 onChange={(v) => { setGradatie(v); sterge(); }}
               />
