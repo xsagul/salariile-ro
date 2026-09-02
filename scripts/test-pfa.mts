@@ -117,4 +117,28 @@ assert.equal(anafNorma.cas, 0, "ANAF: norma sub 12 salarii minime nu declanșeaz
 assert.equal(anafNorma.impozit, 4_215, "ANAF: impozitul este 10% din normă, nu din normă minus CASS");
 assert.equal(anafNorma.totalTaxe, 8_430, "ANAF: total obligații pentru norma de 42.150 lei");
 
-console.log("PFA 2026: 39 aserțiuni fiscale trecute (sistem real + normă de venit).");
+// ─── Handicap grav sau accentuat (art. 60 pct. 1) ────────────────────────────
+// Scutirea privește DOAR impozitul pe venit. Contribuțiile rămân datorate:
+// scutirea de CASS pentru handicap acoperă veniturile salariale, nu pe cele din
+// activități independente, iar art. 150 nu prevede o excepție de CAS.
+const handicap = { salariatPestePlafonCASS: false, pensionar: false, handicapGravAccentuat: true };
+
+const hFara = calculeazaPFA(93_600, standard);
+const hCu = calculeazaPFA(93_600, handicap);
+
+assert.equal(hCu.impozit, 0, "Handicapul grav sau accentuat scutește de impozitul pe venit");
+assert.equal(hCu.cas, hFara.cas, "Scutirea nu atinge CAS");
+assert.equal(hCu.cass, hFara.cass, "Scutirea nu atinge CASS");
+assert.equal(hCu.totalTaxe, hFara.totalTaxe - hFara.impozit, "Scade exact impozitul, nimic altceva");
+assert.equal(hCu.ramas, hFara.ramas + hFara.impozit, "Ce ramane creste exact cu impozitul scutit");
+
+// Sub pragul CAS, scutirea lasa doar CASS de plata.
+const hMic = calculeazaPFA(30_000, handicap);
+assert.equal(hMic.impozit, 0, "Scutirea se aplica si sub pragul CAS");
+assert.equal(hMic.cas, 0, "Sub 12 salarii minime nu se datoreaza CAS, indiferent de handicap");
+assert.equal(hMic.totalTaxe, hMic.cass, "Sub prag ramane doar CASS");
+
+// Absenta optiunii se comporta ca inainte — e optionala, nu implicita.
+assert.deepEqual(calculeazaPFA(93_600, { ...standard, handicapGravAccentuat: false }), hFara, "false = fara scutire");
+
+console.log("PFA 2026: 47 aserțiuni fiscale trecute (sistem real + normă de venit + scutirea de handicap).");

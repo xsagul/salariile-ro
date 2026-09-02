@@ -26,6 +26,18 @@ export type OptiuniPFA = {
   salariatPestePlafonCASS: boolean;
   /** Persoana are calitatea de pensionar pentru situația anuală simulată. */
   pensionar: boolean;
+  /**
+   * Handicap GRAV sau ACCENTUAT. Scutește de impozitul pe venit veniturile din
+   * activități independente (art. 60 pct. 1 din Codul fiscal). Handicapul mediu
+   * sau ușor NU beneficiază.
+   *
+   * Scutirea privește DOAR impozitul. CAS și CASS rămân datorate: scutirea de
+   * CASS pentru handicap acoperă veniturile salariale, nu pe cele din activități
+   * independente, iar art. 150 nu prevede o excepție de CAS pentru handicap.
+   *
+   * Opțional, ca să nu rupă apelurile existente.
+   */
+  handicapGravAccentuat?: boolean;
 };
 
 export type RezultatPFA = {
@@ -89,7 +101,10 @@ export function calculeazaPFA(venitNetInitial: number, optiuni: OptiuniPFA): Rez
     cas = Math.round(bazaCasMinima * 0.25);
   }
 
-  const impozit = Math.round(Math.max(0, venitNet - cas - cassDeductibila) * 0.1);
+  // Scutirea de la art. 60 anulează impozitul, dar nu atinge contribuțiile.
+  const impozit = optiuni.handicapGravAccentuat
+    ? 0
+    : Math.round(Math.max(0, venitNet - cas - cassDeductibila) * 0.1);
   const totalTaxe = cas + cass + impozit;
 
   return {
