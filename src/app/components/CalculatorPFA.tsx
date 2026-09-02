@@ -45,6 +45,12 @@ type Regim = "real" | "norma";
 type Mod = "venit" | "net";
 
 const LUNI_PE_AN = 12;
+
+// Gol, zero sau aiurea inseamna an intreg; peste 12 se taie la 12. Definita o
+// singura data fiindca are doi consumatori care nu au voie sa se contrazica:
+// calculul propriu-zis si valoarea scrisa inapoi in camp la apasarea butonului.
+const clampLuni = (v: string) =>
+  Math.min(LUNI_PE_AN, Math.max(1, Number(v) || LUNI_PE_AN));
 /** Forma juridică afișată în tabelul de rezultat. */
 type Forma = "pfa" | "micro" | "profit";
 type Snap = {
@@ -137,7 +143,7 @@ function buildResult(s: Snap): Rezultat | null {
   // Cate luni ai activitate. Fara asta, cine lucreaza jumatate de an ar primi
   // taxele unui an intreg: introduce 8.000/luna si i-am calcula 96.000 venit.
   // Gol sau 0 inseamna anul intreg; peste 12 nu are sens, deci se limiteaza.
-  const luni = Math.min(LUNI_PE_AN, Math.max(1, Number(s.luni) || LUNI_PE_AN));
+  const luni = clampLuni(s.luni);
   const venituri = (Number(s.incasari) || 0) * luni;
   const cheltuieli = (Number(s.cheltuieli) || 0) * luni;
   if (s.mod === "venit") {
@@ -271,6 +277,10 @@ export default function CalculatorPFA() {
       return;
     }
     setWarn(false);
+    // Scriem in camp exact numarul cu care s-a calculat. Placeholderul „ex: 12”
+    // e un exemplu, nu o valoare: lasat asa, omul vedea un camp gol langa un
+    // rezultat pe 12 luni si nu avea de unde sti pe ce perioada e cifra.
+    setLuni(String(clampLuni(luni)));
     setRez(r); setRezKey(snapKey(snap));
     if (typeof window !== "undefined") {
       const isMobile = window.matchMedia("(max-width: 768px)").matches;
