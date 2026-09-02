@@ -322,7 +322,7 @@ export default function CalculatorPFA() {
               <>
                 <MoneyField id="pfa-incasari" label="Cât încasezi pe lună" unit="lei / lună" placeholder="ex: 8.000" value={incasari} onChange={(v) => { setIncasari(v); if (warn) setWarn(false); }} onEnter={handleCalc} />
                 <MoneyField id="pfa-cheltuieli" label="Cheltuieli deductibile pe lună" unit="lei / lună" hint="Costurile activității (chirie, echipamente, transport…) – se scad din încasări, iar taxele se calculează pe ce rămâne." placeholder="ex: 2.000" value={cheltuieli} onChange={setCheltuieli} onEnter={handleCalc} />
-                <MoneyField id="pfa-luni" label="Câte luni ai activitate în 2026" unit="luni" placeholder="12" value={luni} onChange={setLuni} onEnter={handleCalc} />
+                <MoneyField id="pfa-luni" label="Câte luni ai activitate în 2026" unit="luni" placeholder="ex: 12" value={luni} onChange={setLuni} onEnter={handleCalc} />
               </>
             ) : (
               <MoneyField id="pfa-netdorit" label="Vreau să-mi rămână" unit="lei / lună" hint="Suma netă pe care vrei s-o ai în mână, pe lună." placeholder="ex: 6.000" value={netDorit} onChange={(v) => { setNetDorit(v); if (warn) setWarn(false); }} onEnter={handleCalc} />
@@ -381,8 +381,18 @@ export default function CalculatorPFA() {
         {avansat && (
           <div className="mb-5">
             <span className={fieldLabel}>În 2026 ești?</span>
+            {/* Doar „Angajat”, fara pragul de 24.300 lei. Pragul e real —
+                art. 174 alin. (7) cere venituri salariale de cel putin 6 salarii
+                minime — dar un angajat cu salariul minim pe un an intreg face
+                12 × 4.050 = 48.600 lei, adica DUBLUL pragului. Ca sa cazi sub el
+                trebuie sa fi lucrat sub sase luni.
+
+                Eticheta cu prag cerea deci un calcul mental pentru un caz care
+                aproape nu apare, si sugera ca pragul e o conditie obisnuita.
+                Cazul-limita ramane necalculat corect pentru cine a lucrat cateva
+                luni; e un compromis asumat in favoarea celor multi. */}
             <Toggle
-              label="Angajat, cu salariu de peste 24.300 lei"
+              label="Angajat"
               checked={salariatPestePlafonCASS}
               onChange={setSalariatPestePlafonCASS}
             />
