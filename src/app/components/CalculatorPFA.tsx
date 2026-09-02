@@ -54,7 +54,7 @@ type Snap = {
   cheltuieli: string;
   norma: string;
   netDorit: string;
-  contabilitate: string;
+  luni: string;
   salariatPestePlafonCASS: boolean;
   pensionar: boolean;
 };
@@ -65,7 +65,7 @@ const snapKey = (s: Snap) => JSON.stringify([
   s.cheltuieli,
   s.norma,
   s.netDorit,
-  s.contabilitate,
+  s.luni,
   s.salariatPestePlafonCASS,
   s.pensionar,
 ]);
@@ -128,8 +128,12 @@ function buildResult(s: Snap): Rezultat | null {
   // toata fiscalitatea PFA e anuala: plafoanele CAS/CASS se raporteaza la
   // venitul net ANUAL. Conversia se face AICI, la granita de intrare, si
   // nicaieri altundeva — tot ce urmeaza ramane in lei/an, neatins.
-  const venituri = (Number(s.incasari) || 0) * LUNI_PE_AN;
-  const cheltuieli = (Number(s.cheltuieli) || 0) * LUNI_PE_AN;
+  // Cate luni ai activitate. Fara asta, cine lucreaza jumatate de an ar primi
+  // taxele unui an intreg: introduce 8.000/luna si i-am calcula 96.000 venit.
+  // Gol sau 0 inseamna anul intreg; peste 12 nu are sens, deci se limiteaza.
+  const luni = Math.min(LUNI_PE_AN, Math.max(1, Number(s.luni) || LUNI_PE_AN));
+  const venituri = (Number(s.incasari) || 0) * luni;
+  const cheltuieli = (Number(s.cheltuieli) || 0) * luni;
   if (s.mod === "venit") {
     venitNet = Math.max(0, venituri - cheltuieli);
   } else {
@@ -139,7 +143,10 @@ function buildResult(s: Snap): Rezultat | null {
   }
   if (venitNet <= 0) return null;
 
-  const contabilitate = s.contabilitate === "" ? CONTABILITATE_SRL_IMPLICIT : Number(s.contabilitate) || 0;
+  // Ipoteza fixa, nu intrebare: acesta e un calculator PFA, iar contabilitatea
+  // in partida dubla e un cost care exista doar la SRL. Ramane declarata in
+  // rezultat — randul „Cheltuieli (inclusiv contabilitate)” si nota de sub tabel.
+  const contabilitate = CONTABILITATE_SRL_IMPLICIT;
   const optiuniSrl = { cheltuialaContabilitate: contabilitate };
 
   return {
@@ -232,7 +239,7 @@ export default function CalculatorPFA() {
   const [cheltuieli, setCheltuieli] = useState("");
   const [norma, setNorma] = useState("");
   const [netDorit, setNetDorit] = useState("");
-  const [contabilitate, setContabilitate] = useState("");
+  const [luni, setLuni] = useState("");
   const [forma, setForma] = useState<Forma>("pfa");
   const [salariatPestePlafonCASS, setSalariatPestePlafonCASS] = useState(false);
   const [pensionar, setPensionar] = useState(false);
@@ -242,7 +249,7 @@ export default function CalculatorPFA() {
   const [rezKey, setRezKey] = useState("");
   const [warn, setWarn] = useState(false);
 
-  const snap: Snap = { regim, mod, incasari, cheltuieli, norma, netDorit, contabilitate, salariatPestePlafonCASS, pensionar };
+  const snap: Snap = { regim, mod, incasari, cheltuieli, norma, netDorit, luni, salariatPestePlafonCASS, pensionar };
   const stale = rez !== null && rezKey !== snapKey(snap);
 
   // Câmpul pe care îl focalizăm când lipsește informația obligatorie.
@@ -307,6 +314,7 @@ export default function CalculatorPFA() {
               <>
                 <MoneyField id="pfa-incasari" label="Cât încasezi pe lună" unit="lei / lună" placeholder="ex: 8.000" value={incasari} onChange={(v) => { setIncasari(v); if (warn) setWarn(false); }} onEnter={handleCalc} />
                 <MoneyField id="pfa-cheltuieli" label="Cheltuieli deductibile pe lună" unit="lei / lună" hint="Costurile activității (chirie, echipamente, transport…) – se scad din încasări, iar taxele se calculează pe ce rămâne." placeholder="ex: 2.000" value={cheltuieli} onChange={setCheltuieli} onEnter={handleCalc} />
+                <MoneyField id="pfa-luni" label="Câte luni ai activitate în 2026" unit="luni" placeholder="12" value={luni} onChange={setLuni} onEnter={handleCalc} />
               </>
             ) : (
               <MoneyField id="pfa-netdorit" label="Vreau să-mi rămână" unit="lei / lună" hint="Suma netă pe care vrei s-o ai în mână, pe lună." placeholder="ex: 6.000" value={netDorit} onChange={(v) => { setNetDorit(v); if (warn) setWarn(false); }} onEnter={handleCalc} />
@@ -380,19 +388,6 @@ export default function CalculatorPFA() {
               se suspendă sau încetează în cursul anului.
             </p>
 
-            {regim === "real" && mod === "venit" && (
-              <div className="mt-5 border-t border-stone-200 pt-5">
-                <MoneyField
-                  id="pfa-contabilitate"
-                  label="Contabilitate SRL, în plus față de cheltuieli"
-                  hint={`Se adaugă doar la variantele SRL, care cer contabilitate în partidă dublă. Implicit ${fmt(CONTABILITATE_SRL_IMPLICIT)} lei/an. La venituri medii, această sumă e cât toată diferența dintre PFA și micro, deci schimbă verdictul.`}
-                  placeholder={fmt(CONTABILITATE_SRL_IMPLICIT)}
-                  value={contabilitate}
-                  onChange={setContabilitate}
-                  onEnter={handleCalc}
-                />
-              </div>
-            )}
           </div>
         )}
 
