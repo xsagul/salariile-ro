@@ -43,6 +43,8 @@ const grupeazaMii = (raw: string) => {
 
 type Regim = "real" | "norma";
 type Mod = "venit" | "net";
+
+const LUNI_PE_AN = 12;
 /** Forma juridică afișată în tabelul de rezultat. */
 type Forma = "pfa" | "micro" | "profit";
 type Snap = {
@@ -122,8 +124,12 @@ function buildResult(s: Snap): Rezultat | null {
   }
 
   let venitNet: number;
-  const venituri = Number(s.incasari) || 0;
-  const cheltuieli = Number(s.cheltuieli) || 0;
+  // Formularul cere sume LUNARE (ca SOLO, locul 1 pe „calculator pfa”), dar
+  // toata fiscalitatea PFA e anuala: plafoanele CAS/CASS se raporteaza la
+  // venitul net ANUAL. Conversia se face AICI, la granita de intrare, si
+  // nicaieri altundeva — tot ce urmeaza ramane in lei/an, neatins.
+  const venituri = (Number(s.incasari) || 0) * LUNI_PE_AN;
+  const cheltuieli = (Number(s.cheltuieli) || 0) * LUNI_PE_AN;
   if (s.mod === "venit") {
     venitNet = Math.max(0, venituri - cheltuieli);
   } else {
@@ -217,7 +223,11 @@ export default function CalculatorPFA() {
   // rupe build-ul. Asa raman verificate de tipuri si nu putrezesc pana la
   // pagina normei.
   const regim = "real" as Regim;
-  const [mod, setMod] = useState<Mod>("venit");
+  // Fixat pe „din venit” din 3 septembrie 2026, odata cu trecerea la sume
+  // lunare. Calculul invers („vreau sa-mi ramana X”) ramane implementat in
+  // buildResult si acoperit de teste; daca se reactiveaza, se reintroduce si
+  // comutatorul. `as Mod` impiedica ingustarea la tipul literal.
+  const mod = "venit" as Mod;
   const [incasari, setIncasari] = useState("");
   const [cheltuieli, setCheltuieli] = useState("");
   const [norma, setNorma] = useState("");
@@ -253,24 +263,6 @@ export default function CalculatorPFA() {
     }
   };
 
-  const switchMod = (target: Mod) => {
-    if (target === mod) return;
-    if (target === "net") {
-      const vn = Math.max(0, (Number(incasari) || 0) - (Number(cheltuieli) || 0));
-      if (vn > 0) {
-        const lunar = Math.round(calculeazaPFA(vn, { salariatPestePlafonCASS, pensionar }).ramas / 12);
-        setNetDorit(lunar > 0 ? String(lunar) : "");
-      }
-    } else {
-      const lunar = Number(netDorit) || 0;
-      if (lunar > 0) {
-        const vn = venitNetPfaPentruRamas(lunar * 12, { salariatPestePlafonCASS, pensionar });
-        setIncasari(vn > 0 ? String(vn) : "");
-        setCheltuieli("");
-      }
-    }
-    setMod(target);
-  };
 
   const tab = (active: boolean, extra = "") =>
     `${extra} flex-1 inline-flex min-h-11 items-center justify-center px-2 text-sm font-medium transition-colors ${active ? "bg-stone-900 text-white" : "text-stone-500 hover:bg-canvas"}`;
@@ -310,18 +302,11 @@ export default function CalculatorPFA() {
 
         {regim === "real" ? (
           <>
-            <div className="mb-5">
-              <span className={fieldLabel}>Direcție de calcul</span>
-              <div className="flex w-full overflow-hidden rounded border border-stone-300">
-                <button type="button" className={tab(mod === "venit")} onClick={() => switchMod("venit")}>Din venit anual</button>
-                <button type="button" className={tab(mod === "net", "border-l border-stone-300")} onClick={() => switchMod("net")}>Din net lunar</button>
-              </div>
-            </div>
 
             {mod === "venit" ? (
               <>
-                <MoneyField id="pfa-incasari" label="Încasări brute" placeholder="ex: 100.000" value={incasari} onChange={(v) => { setIncasari(v); if (warn) setWarn(false); }} onEnter={handleCalc} />
-                <MoneyField id="pfa-cheltuieli" label="Cheltuieli deductibile" hint="Costurile activității (chirie, echipamente, transport…) – se scad din încasări, iar taxele se calculează pe ce rămâne." placeholder="ex: 20.000" value={cheltuieli} onChange={setCheltuieli} onEnter={handleCalc} />
+                <MoneyField id="pfa-incasari" label="Cât încasezi pe lună" unit="lei / lună" placeholder="ex: 8.000" value={incasari} onChange={(v) => { setIncasari(v); if (warn) setWarn(false); }} onEnter={handleCalc} />
+                <MoneyField id="pfa-cheltuieli" label="Cheltuieli deductibile pe lună" unit="lei / lună" hint="Costurile activității (chirie, echipamente, transport…) – se scad din încasări, iar taxele se calculează pe ce rămâne." placeholder="ex: 2.000" value={cheltuieli} onChange={setCheltuieli} onEnter={handleCalc} />
               </>
             ) : (
               <MoneyField id="pfa-netdorit" label="Vreau să-mi rămână" unit="lei / lună" hint="Suma netă pe care vrei s-o ai în mână, pe lună." placeholder="ex: 6.000" value={netDorit} onChange={(v) => { setNetDorit(v); if (warn) setWarn(false); }} onEnter={handleCalc} />
