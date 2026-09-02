@@ -176,7 +176,7 @@ export default function CalculatorPfaPage() {
             <div className="md:col-span-3">
               <h1 className="mb-3 text-3xl font-bold tracking-[-0.02em] text-stone-900 sm:text-4xl">Calculator taxe PFA 2026</h1>
               <p className="max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600">
-                Cât plătești ca PFA – CAS, CASS și impozit – și cât îți rămâne. În sistem real compară pe loc cu{" "}
+                Cât plătești ca PFA <strong>în sistem real</strong> – CAS, CASS și impozit – și cât îți rămâne. Compară pe loc cu{" "}
                 <strong>SRL micro</strong> și <strong>SRL pe impozit pe profit</strong>, la aceleași cifre.
               </p>
               <div className="mt-4 text-xs text-stone-600">Actualizat 4 august 2026</div>
@@ -335,9 +335,8 @@ export default function CalculatorPfaPage() {
                 </p>
                 <p className={p}>
                   Regula simplă: norma de venit avantajează pe cine încasează mult peste normă și are cheltuieli mici;
-                  sistemul real avantajează pe cine are cheltuieli reale consistente. Comută calculatorul de mai sus pe{" "}
-                  <strong>Normă de venit</strong>, pune și încasările reale, și îți arată direct care variantă te costă
-                  mai puțin.
+                  sistemul real avantajează pe cine are cheltuieli reale consistente. Calculatorul de mai sus acoperă
+                  <strong>sistemul real</strong>; norma de venit primește o pagină proprie.
                 </p>
               </div>
 

@@ -203,7 +203,20 @@ function Row({ label, value, sub, neg, bold }: { label: string; value: string; s
 }
 
 export default function CalculatorPFA() {
-  const [regim, setRegim] = useState<Regim>("real");
+  // Regimul e FIXAT pe sistem real din 3 septembrie 2026. Comutatorul era
+  // prima intrebare a formularului si cea mai greu de raspuns: regimul nu se
+  // alege liber (depinde de activitate si de plafon, art. 69 alin. (9)), deci
+  // ceream o alegere care pentru majoritate e deja determinata.
+  //
+  // Codul pentru norma NU s-a sters — ramurile de mai jos raman corecte si
+  // acoperite de test-pfa.mts. Norma isi primeste pagina proprie, ca sa poata
+  // tinti interogari proprii; atunci se reactiveaza de aici. Nu o reintroduce
+  // in acest formular.
+  // `as Regim` e intentionat: fara el, TypeScript ingusteaza constanta la
+  // tipul literal "real" si marcheaza ramurile de norma drept cod mort, ceea ce
+  // rupe build-ul. Asa raman verificate de tipuri si nu putrezesc pana la
+  // pagina normei.
+  const regim = "real" as Regim;
   const [mod, setMod] = useState<Mod>("venit");
   const [incasari, setIncasari] = useState("");
   const [cheltuieli, setCheltuieli] = useState("");
@@ -294,13 +307,6 @@ export default function CalculatorPFA() {
       <div className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-2">
         <h2 className={colHeader}>Date</h2>
 
-        <div className="mb-5">
-          <span className={fieldLabel}>Regim de impozitare</span>
-          <div className="flex w-full overflow-hidden rounded border border-stone-300">
-            <button type="button" className={tab(regim === "real")} onClick={() => { setRegim("real"); setWarn(false); }}>Sistem real</button>
-            <button type="button" className={tab(regim === "norma", "border-l border-stone-300")} onClick={() => { setRegim("norma"); setWarn(false); }}>Normă de venit</button>
-          </div>
-        </div>
 
         {regim === "real" ? (
           <>
