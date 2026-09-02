@@ -420,11 +420,6 @@ export default function CalculatorPFA() {
               checked={pensionar}
               onChange={setPensionar}
             />
-            <p className="mt-3 text-xs leading-normal text-stone-500">
-              Aceste situații elimină doar diferența CASS până la minim (art. 154). Pensionarii nu datorează CAS.
-              Handicapul grav sau accentuat scutește de impozit, dar nu și de contribuții (art. 60 din Codul
-              fiscal). Plafoanele sunt anuale și nu se reduc dacă activitatea începe sau încetează în cursul anului.
-            </p>
           </div>
         )}
 
