@@ -38,6 +38,14 @@ export type OptiuniPFA = {
    * Opțional, ca să nu rupă apelurile existente.
    */
   handicapGravAccentuat?: boolean;
+  /**
+   * Elev sau student pana in 26 de ani. NU scuteste de CASS pe venitul din PFA:
+   * art. 154 lit. a) scoate explicit din scutire veniturile de la art. 155 alin.
+   * (1) lit. b), adica activitatile independente. Scuteste insa de DIFERENTA
+   * pana la baza minima de 6 salarii minime, fiind o categorie din art. 154
+   * (art. 174 alin. (8)).
+   */
+  student?: boolean;
 };
 
 export type RezultatPFA = {
@@ -77,7 +85,19 @@ export function calculeazaPFA(venitNetInitial: number, optiuni: OptiuniPFA): Rez
     };
   }
 
-  const exceptatDiferentaCass = optiuni.salariatPestePlafonCASS || optiuni.pensionar;
+  // Diferenta pana la baza minima de 6 salarii minime NU se datoreaza de cei
+  // enumerati la art. 174 alin. (7) — salarii de cel putin 6 salarii minime,
+  // venituri din pensii — si nici de categoriile din art. 154 la care trimite
+  // alin. (8): elevi si studenti pana in 26 de ani, persoane cu handicap grav
+  // (gradul 1) sau accentuat (gradul 2).
+  //
+  // Atentie la ce NU inseamna: toti acestia datoreaza in continuare CASS de 10%
+  // pe venitul PFA efectiv. Scutirea priveste doar completarea pana la minim.
+  const exceptatDiferentaCass =
+    optiuni.salariatPestePlafonCASS ||
+    optiuni.pensionar ||
+    optiuni.handicapGravAccentuat === true ||
+    optiuni.student === true;
 
   // CASS pe venitul efectiv este datorată inclusiv de salariați și pensionari.
   // Excepțiile îi scutesc doar de diferența până la baza minimă de 6 salarii.

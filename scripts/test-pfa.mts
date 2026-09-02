@@ -141,4 +141,36 @@ assert.equal(hMic.totalTaxe, hMic.cass, "Sub prag ramane doar CASS");
 // Absenta optiunii se comporta ca inainte — e optionala, nu implicita.
 assert.deepEqual(calculeazaPFA(93_600, { ...standard, handicapGravAccentuat: false }), hFara, "false = fara scutire");
 
-console.log("PFA 2026: 47 aserțiuni fiscale trecute (sistem real + normă de venit + scutirea de handicap).");
+// ─── Art. 154 + art. 174 alin. (8): diferenta pana la CASS minim ─────────────
+// Categoriile din art. 154 — elevi/studenti pana in 26 de ani, persoane cu
+// handicap grav (gr. 1) sau accentuat (gr. 2) — NU datoreaza completarea pana
+// la baza minima de 6 salarii. Datoreaza insa CASS 10% pe venitul PFA efectiv.
+// Verificat contra calculatorului public SOLO la 800 lei/luna: 80 lei CASS
+// lunar cu bifa, 203 fara. Toate cele 10 valori comparate coincid.
+const venitSubPragMinim = 9_600; // 800 lei/luna, sub cele 6 salarii minime (24.300)
+
+const vspFara = calculeazaPFA(venitSubPragMinim, standard);
+assert.equal(vspFara.cass, 2_430, "Fara scutire, sub prag se plateste CASS la baza minima");
+
+for (const [nume, opt] of [
+  ["student", { ...standard, student: true }],
+  ["handicap grav/accentuat", { ...standard, handicapGravAccentuat: true }],
+  ["salariat peste prag", salariatEligibil],
+  ["pensionar", pensionar],
+] as const) {
+  const r = calculeazaPFA(venitSubPragMinim, opt);
+  assert.equal(r.cass, 960, `${nume}: CASS este 10% pe venitul efectiv, nu baza minima`);
+  assert.equal(r.cassDiferentaMinima, 0, `${nume}: nu se adauga diferenta pana la minim`);
+}
+
+// Scutirea de la minim NU e scutire de CASS: contributia pe venit ramane.
+assert.ok(calculeazaPFA(venitSubPragMinim, { ...standard, student: true }).cass > 0, "Studentul datoreaza CASS pe venitul PFA");
+
+// Studentul nu e scutit de impozit — doar handicapul grav sau accentuat este.
+assert.equal(
+  calculeazaPFA(venitSubPragMinim, { ...standard, student: true }).impozit,
+  calculeazaPFA(venitSubPragMinim, { ...standard, handicapGravAccentuat: true }).impozit + 864,
+  "Studentul plateste impozit, persoana cu handicap grav sau accentuat nu",
+);
+
+console.log("PFA 2026: 58 aserțiuni fiscale trecute (sistem real + normă + art. 60 + art. 154).");

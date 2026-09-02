@@ -58,6 +58,7 @@ type Snap = {
   salariatPestePlafonCASS: boolean;
   pensionar: boolean;
   handicapGravAccentuat: boolean;
+  student: boolean;
 };
 const snapKey = (s: Snap) => JSON.stringify([
   s.regim,
@@ -70,12 +71,14 @@ const snapKey = (s: Snap) => JSON.stringify([
   s.salariatPestePlafonCASS,
   s.pensionar,
   s.handicapGravAccentuat,
+  s.student,
 ]);
 
 const optiuniDinSnap = (s: Snap) => ({
   salariatPestePlafonCASS: s.salariatPestePlafonCASS,
   pensionar: s.pensionar,
   handicapGravAccentuat: s.handicapGravAccentuat,
+  student: s.student,
 });
 
 type Rezultat =
@@ -247,13 +250,14 @@ export default function CalculatorPFA() {
   const [salariatPestePlafonCASS, setSalariatPestePlafonCASS] = useState(false);
   const [pensionar, setPensionar] = useState(false);
   const [handicapGravAccentuat, setHandicapGravAccentuat] = useState(false);
+  const [student, setStudent] = useState(false);
   const [avansat, setAvansat] = useState(false);
 
   const [rez, setRez] = useState<Rezultat | null>(null);
   const [rezKey, setRezKey] = useState("");
   const [warn, setWarn] = useState(false);
 
-  const snap: Snap = { regim, mod, incasari, cheltuieli, norma, netDorit, luni, salariatPestePlafonCASS, pensionar, handicapGravAccentuat };
+  const snap: Snap = { regim, mod, incasari, cheltuieli, norma, netDorit, luni, salariatPestePlafonCASS, pensionar, handicapGravAccentuat, student };
   const stale = rez !== null && rezKey !== snapKey(snap);
 
   // Câmpul pe care îl focalizăm când lipsește informația obligatorie.
@@ -388,12 +392,17 @@ export default function CalculatorPFA() {
               onChange={setHandicapGravAccentuat}
             />
             <Toggle
+              label="Elev sau student, până în 26 de ani"
+              checked={student}
+              onChange={setStudent}
+            />
+            <Toggle
               label="Pensionar"
               checked={pensionar}
               onChange={setPensionar}
             />
             <p className="mt-3 text-xs leading-normal text-stone-500">
-              Salariul și pensia elimină doar diferența CASS până la minim. Pensionarii nu datorează CAS.
+              Aceste situații elimină doar diferența CASS până la minim (art. 154). Pensionarii nu datorează CAS.
               Handicapul grav sau accentuat scutește de impozit, dar nu și de contribuții (art. 60 din Codul
               fiscal). Plafoanele sunt anuale și nu se reduc dacă activitatea începe sau încetează în cursul anului.
             </p>
