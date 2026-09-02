@@ -277,11 +277,19 @@ export default function CalculatorPFA() {
       return;
     }
     setWarn(false);
+
     // Scriem in camp exact numarul cu care s-a calculat. Placeholderul „ex: 12”
     // e un exemplu, nu o valoare: lasat asa, omul vedea un camp gol langa un
     // rezultat pe 12 luni si nu avea de unde sti pe ce perioada e cifra.
-    setLuni(String(clampLuni(luni)));
-    setRez(r); setRezKey(snapKey(snap));
+    //
+    // Cheia rezultatului se ia din snapshotul NORMALIZAT, nu din cel brut.
+    // Altfel scrierea in camp isi declanseaza singura avertismentul „ai
+    // modificat datele”: cheia ar retine luni="", campul ar deveni "12", iar
+    // componenta ar vedea o diferenta pe care n-a facut-o utilizatorul.
+    const luniNormalizate = String(clampLuni(luni));
+    const snapNormalizat: Snap = { ...snap, luni: luniNormalizate };
+    setLuni(luniNormalizate);
+    setRez(r); setRezKey(snapKey(snapNormalizat));
     if (typeof window !== "undefined") {
       const isMobile = window.matchMedia("(max-width: 768px)").matches;
       document.getElementById(isMobile ? "pfa-rezultat" : "pfa-layout")?.scrollIntoView({ behavior: "smooth", block: "start" });
