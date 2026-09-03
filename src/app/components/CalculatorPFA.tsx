@@ -29,7 +29,7 @@ import {
 } from "@/lib/pfa";
 import {
   calculeazaSrl,
-  CONTABILITATE_SRL_IMPLICIT,
+
   PLAFON_MICRO_LEI,
   type RezultatSrl,
 } from "@/lib/forme-juridice";
@@ -159,12 +159,16 @@ function buildResult(s: Snap): Rezultat | null {
     venitNet = venitNetPfaPentruRamas(lunar * 12, optiuni);
   }
   if (venitNet <= 0) return null;
-
-  // Ipoteza fixa, nu intrebare: acesta e un calculator PFA, iar contabilitatea
-  // in partida dubla e un cost care exista doar la SRL. Ramane declarata in
-  // rezultat — randul „Cheltuieli (inclusiv contabilitate)” si nota de sub tabel.
-  const contabilitate = CONTABILITATE_SRL_IMPLICIT;
-  const optiuniSrl = { cheltuialaContabilitate: contabilitate };
+  // Zero explicit, nu implicitul de 6.000 lei din forme-juridice.ts. Pana pe
+  // 3 septembrie 2026 adaugam costul contabilitatii peste ce tasta omul: scria
+  // „cheltuieli 0” si calculam cu 6.000. O ipoteza pe care nu o ceruse nimeni,
+  // intr-un camp al carui rost e tocmai sa spuna el cat cheltuieste.
+  //
+  // Costul e insa real, si e una dintre diferentele adevarate dintre PFA si SRL:
+  // un PFA isi poate tine singur evidenta in partida simpla, un SRL nu. Scos de
+  // aici, SRL-ul iese putin mai bine decat e. De aceea absenta lui e scrisa sub
+  // tabel si in verdictul de egalitate, nu doar presupusa.
+  const optiuniSrl = { cheltuialaContabilitate: 0 };
 
   return {
     tip: "real",
@@ -517,8 +521,8 @@ export default function CalculatorPFA() {
                     <>
                       La cifrele tale, <strong className="font-bold text-stone-900">{clasament[0].nume}</strong> și{" "}
                       <strong className="font-bold text-stone-900">{clasament[1].nume}</strong> ies aproape la fel –
-                      diferența e de doar {fmt(clasament[0].ramas - clasament[1].ramas)} lei pe an, sub marja ipotezei
-                      de contabilitate.
+                      diferența e de doar {fmt(clasament[0].ramas - clasament[1].ramas)} lei pe an – mai puțin decât
+                      costul anual de contabilitate al unui SRL, care nu e inclus în cifrele de mai jos.
                     </>
                   ) : (
                     <>
@@ -560,7 +564,7 @@ export default function CalculatorPFA() {
                   {rezultatSrl ? (
                     <>
                       <Row label="Venituri (cifra de afaceri)" value={fmtP(rezultatSrl.venituri)} />
-                      <Row label='Cheltuieli <span class="text-stone-400">(inclusiv contabilitate)</span>' value={fmtP(rezultatSrl.cheltuieli)} sub neg />
+                      <Row label="Cheltuieli" value={fmtP(rezultatSrl.cheltuieli)} sub neg />
                       <Row
                         label={'Cost salariu minim <span class="text-stone-400">' + (rezultatSrl.tip === "micro" ? "(obligatoriu la micro)" : "(opțional, dar reduce impozitul)") + "</span>"}
                         value={fmtP(rezultatSrl.costSalarial)}
@@ -689,8 +693,10 @@ export default function CalculatorPFA() {
                   an fiscal 2026, pe ipoteze explicite: proprietarul e și salariat la nivelul salariului minim, iar tot
                   profitul se distribuie ca dividende în același an, după 1 ianuarie 2026, deci cu impozit de 16%.
                   Cota micro este 1% pe venituri – tranșa de 3% a fost eliminată prin OUG 89/2025. CASS pe dividende se
-                  datorează pe trepte de 6, 12 și 24 de salarii minime, calculate pe dividendul net. Schimbă salariul,
-                  momentul distribuirii sau costul de contabilitate și rezultatul se mută – confirmă cu un contabil.
+                  datorează pe trepte de 6, 12 și 24 de salarii minime, calculate pe dividendul net. Contabilitatea în
+                  partidă dublă, obligatorie la SRL, <strong className="font-medium text-stone-900">nu este inclusă</strong> –
+                  trece-o în câmpul de cheltuieli dacă vrei să o vezi în rezultat. Schimbă salariul sau momentul
+                  distribuirii și rezultatul se mută – confirmă cu un contabil.
                 </>
               ) : rez.tip === "real" ? (
                 <>
