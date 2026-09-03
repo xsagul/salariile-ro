@@ -126,6 +126,18 @@ const PLAFOANE: [string, string][] = [
   ["CASS maximă / an", "29.160 lei"],
 ];
 
+// Data vizibila iese din ACEEASI sursa ca lastmod-ul din sitemap si ca
+// dateModified-ul din JSON-LD. Scrisa de mana, a ramas in urma cu o luna in
+// momentul in care celelalte doua s-au actualizat — exact defectul descris in
+// CLAUDE.md: un fapt viu are exact un proprietar.
+//
+// timeZone UTC explicit: build-ul poate rula in orice fus, iar fara el o data
+// de miezul noptii UTC s-ar afisa cu o zi mai devreme la vest de Greenwich,
+// deci textul vizibil ar contrazice sitemap-ul.
+const ACTUALIZAT = PAGE_LAST_MODIFIED["/calculator-pfa"].toLocaleDateString("ro-RO", {
+  day: "numeric", month: "long", year: "numeric", timeZone: "UTC",
+});
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
@@ -182,7 +194,7 @@ export default function CalculatorPfaPage() {
                 Cât plătești ca PFA <strong>în sistem real</strong> – CAS, CASS și impozit – și cât îți rămâne. Compară pe loc cu{" "}
                 <strong>SRL micro</strong> și <strong>SRL pe impozit pe profit</strong>, la aceleași cifre.
               </p>
-              <div className="mt-4 text-xs text-stone-600">Actualizat 4 august 2026</div>
+              <div className="mt-4 text-xs text-stone-600">Actualizat {ACTUALIZAT}</div>
             </div>
           </div>
         </div>
