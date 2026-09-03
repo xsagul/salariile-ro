@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 import { PaginiConexe } from "@/app/components/ui";
 import Link from "next/link";
 import { personSchema } from "@/lib/person";
-import { ogPage, twPage } from "@/lib/seo";
+import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 import CalculatorPFA from "@/app/components/CalculatorPFA";
 import TabelArticol from "@/app/components/TabelArticol";
 import {
@@ -147,6 +147,9 @@ const jsonLd = {
         "Calculator pentru taxele unui PFA în sistem real, 2026: CAS, CASS, impozit pe venit și venitul rămas.",
       publisher: { "@type": "Organization", name: "Salariile.ro", url: "https://salariile.ro" },
       author: personSchema,
+      // Aceeasi sursa ca lastmod-ul din sitemap, ca sa nu apara doua date
+      // diferite pentru aceeasi pagina. Tiparul e luat de la /fluturas-salariu.
+      dateModified: PAGE_LAST_MODIFIED["/calculator-pfa"].toISOString().slice(0, 10),
     },
     {
       "@type": "FAQPage",
