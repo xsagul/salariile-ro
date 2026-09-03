@@ -178,7 +178,15 @@ function buildResult(s: Snap): Rezultat | null {
         ? {
             venituri,
             micro: calculeazaSrl(venituri, cheltuieli, { tip: "micro", ...optiuniSrl }),
-            profit: calculeazaSrl(venituri, cheltuieli, { tip: "profit", ...optiuniSrl }),
+            // Fara salariu la impozit pe profit. Salariatul e cerut de art. 47
+            // alin. (1) lit. g) din Codul fiscal — o conditie a definitiei
+            // microintreprinderii, Titlul III. Impozitul pe profit e Titlul II si
+            // nu are conditia. Verificat in forma consolidata, 3 septembrie 2026.
+            //
+            // Pana azi ii puneam salariu si aici, ceea ce subevalua forma aproape
+            // peste tot: 1.345 lei/luna la 1.000 lei venit, 381 la 20.000. Singura
+            // zona unde salariul castiga e in jur de 12.000 lei/luna, cu 24 de lei.
+            profit: calculeazaSrl(venituri, cheltuieli, { tip: "profit", cuSalariu: false, ...optiuniSrl }),
           }
         : null,
   };
@@ -566,7 +574,7 @@ export default function CalculatorPFA() {
                       <Row label="Venituri (cifra de afaceri)" value={fmtP(rezultatSrl.venituri)} />
                       <Row label="Cheltuieli" value={fmtP(rezultatSrl.cheltuieli)} sub neg />
                       <Row
-                        label={'Cost salariu minim <span class="text-stone-400">' + (rezultatSrl.tip === "micro" ? "(obligatoriu la micro)" : "(opțional, dar reduce impozitul)") + "</span>"}
+                        label={'Cost salariu minim <span class="text-stone-400">' + (rezultatSrl.tip === "micro" ? "(obligatoriu la micro)" : "(opțional la impozit pe profit)") + "</span>"}
                         value={fmtP(rezultatSrl.costSalarial)}
                         sub
                         neg
@@ -693,7 +701,16 @@ export default function CalculatorPFA() {
                   an fiscal 2026, pe ipoteze explicite: proprietarul e și salariat la nivelul salariului minim, iar tot
                   profitul se distribuie ca dividende în același an, după 1 ianuarie 2026, deci cu impozit de 16%.
                   Cota micro este 1% pe venituri – tranșa de 3% a fost eliminată prin OUG 89/2025. CASS pe dividende se
-                  datorează pe trepte de 6, 12 și 24 de salarii minime, calculate pe dividendul net. Contabilitatea în
+                  datorează pe trepte de 6, 12 și 24 de salarii minime, calculate pe dividendul net.
+                  {rezultatSrl.tip === "profit" && (
+                    <>
+                      {" "}La impozit pe profit salariul nu e obligatoriu – condiția de angajat e a
+                      microîntreprinderii, art. 47 alin. (1) lit. g) – deci aici nu e luat. Fără salariu nu ai
+                      însă asigurare de sănătate prin firmă, iar sub 6 salarii minime nici dividendele nu
+                      atrag CASS.
+                    </>
+                  )}{" "}
+                  Contabilitatea în
                   partidă dublă, obligatorie la SRL, <strong className="font-medium text-stone-900">nu este inclusă</strong> –
                   trece-o în câmpul de cheltuieli dacă vrei să o vezi în rezultat. Schimbă salariul sau momentul
                   distribuirii și rezultatul se mută – confirmă cu un contabil.
