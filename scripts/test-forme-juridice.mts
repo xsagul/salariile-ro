@@ -118,4 +118,37 @@ assert.equal(
 
 assert.equal(PLAFON_MICRO_LEI, 509_850, "Plafonul micro la cursul BNR de la 31 decembrie 2025");
 
-console.log("Forme juridice 2026: 31 aserțiuni trecute (PFA, micro 1%, impozit pe profit).");
+// ─── Firma care nu isi acopera propriul salariu obligatoriu ─────────────────
+// 12.000 lei venit anual (1.000 lei/luna) si contabilitatea implicita. Micro
+// cere prin lege un salariat, dar obligatia nu produce si banii de plata: ies
+// 6.000 cheltuieli + 51.312 cost salarial + 120 impozit = 57.432 din 12.000.
+const microSubCostulSalariului = calculeazaSrl(12_000, 0, { tip: "micro" });
+assert.equal(
+  microSubCostulSalariului.deficit,
+  45_432,
+  "Micro: cat trebuie sa bage proprietarul ca firma sa plateasca salariul minim",
+);
+assert.equal(
+  microSubCostulSalariului.ramas,
+  -13_794,
+  "Micro: proprietarul iese pe minus, nu cu salariul net intreg in mana",
+);
+assert.ok(
+  microSubCostulSalariului.ramas < 0,
+  "Micro sub pragul de viabilitate nu are voie sa arate castig",
+);
+
+// Identitatea pe care se sprijina calculul de mai sus: cand firma e solvabila,
+// ce ramane la proprietar e exact venitul minus cheltuieli minus taxe. Daca
+// asta se rupe, inseamna ca o pierdere a fost din nou inghitita pe undeva.
+for (const tip of ["micro", "profit"] as const) {
+  const r = calculeazaSrl(VENITURI, CHELTUIELI, { tip });
+  assert.equal(r.deficit, 0, `${tip}: la 200.000 lei firma se sustine singura`);
+  assert.equal(
+    r.ramas,
+    r.salariuNet + r.dividendeNete - r.cassDividende,
+    `${tip}: la firma solvabila, formula noua da acelasi rezultat ca cea veche`,
+  );
+}
+
+console.log("Forme juridice 2026: 38 aserțiuni trecute (PFA, micro 1%, impozit pe profit, prag de viabilitate).");

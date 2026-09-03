@@ -87,7 +87,13 @@ export type RezultatSrl = {
   cassDividende: number;
   /** Total dus la stat, din toate sursele. */
   totalTaxe: number;
-  /** Cât ajunge efectiv la proprietar. */
+  /**
+   * Cât lipsește din venituri ca firma să-și acopere singură cheltuielile,
+   * salariul minim obligatoriu și impozitul. Peste zero înseamnă că forma
+   * nu se susține la cifra asta: banii trebuie băgați de proprietar.
+   */
+  deficit: number;
+  /** Cât ajunge efectiv la proprietar. Negativ dacă are de acoperit un deficit. */
   ramas: number;
 };
 
@@ -132,6 +138,11 @@ export function calculeazaSrl(
   const taxeSalariale = costSalarial - salariuNet;
   const totalTaxe = taxeSalariale + impozitFirma + impozitDividende + cass;
 
+  // Salariul minim e obligatoriu la micro, dar obligatia nu creeaza si banii
+  // din care sa fie platit. Sub un anumit venit, firma nu isi acopera propriile
+  // costuri, iar diferenta o pune proprietarul din buzunar.
+  const deficit = Math.max(0, cheltuieli + costSalarial + impozitFirma - venituri);
+
   return {
     tip: optiuni.tip,
     venituri,
@@ -144,6 +155,11 @@ export function calculeazaSrl(
     dividendeNete,
     cassDividende: cass,
     totalTaxe,
-    ramas: salariuNet + dividendeNete - cass,
+    deficit,
+    // Cand firma e solvabila, asta e identic cu salariuNet + dividendeNete − cass.
+    // Difera exact cu deficitul, adica exact acolo unde Math.max de mai sus taia
+    // pierderea si faceau sa para ca iei acasa un salariu pe care nu-l acopera
+    // nimic. La 12.000 lei venit anual, micro arata asa +31.638 in loc de −13.794.
+    ramas: venituri - cheltuieli - totalTaxe,
   };
 }

@@ -536,6 +536,14 @@ export default function CalculatorPFA() {
                     accesibilă pentru anul următor.
                   </p>
                 )}
+                {rezultatSrl !== null && rezultatSrl.deficit > 0 && (
+                  <p role="status" className="mt-3 rounded border border-stone-900 bg-surface px-3 py-2 text-xs leading-normal text-stone-700">
+                    <strong className="font-bold text-stone-900">Firma nu se susține la cifra asta.</strong> Salariul minim e
+                    obligatoriu la micro, dar din venituri nu ies banii de plată: ar trebui să bagi{" "}
+                    <strong className="font-bold text-stone-900">{fmt(rezultatSrl.deficit)} lei pe an</strong> din buzunarul tău.
+                    De aceea cifra de mai jos e negativă — sunt banii cu care ieși în minus, nu salariul pe care l-ai încasa.
+                  </p>
+                )}
               </div>
             )}
 
