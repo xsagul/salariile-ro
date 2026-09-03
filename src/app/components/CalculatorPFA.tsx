@@ -46,6 +46,11 @@ type Mod = "venit" | "net";
 
 const LUNI_PE_AN = 12;
 
+// Unitatea in care se citeste tabelul. Implicit luna, fiindca formularul cere
+// tot sume lunare — a cere „8.000 pe luna” si a raspunde cu 96.000 muta
+// conversia in capul omului.
+type Perioada = "luna" | "an";
+
 // Gol, zero sau aiurea inseamna an intreg; peste 12 se taie la 12. Definita o
 // singura data fiindca are doi consumatori care nu au voie sa se contrazica:
 // calculul propriu-zis si valoarea scrisa inapoi in camp la apasarea butonului.
@@ -258,6 +263,7 @@ export default function CalculatorPFA() {
   const [handicapGravAccentuat, setHandicapGravAccentuat] = useState(false);
   const [student, setStudent] = useState(false);
   const [avansat, setAvansat] = useState(false);
+  const [perioada, setPerioada] = useState<Perioada>("luna");
 
   const [rez, setRez] = useState<Rezultat | null>(null);
   const [rezKey, setRezKey] = useState("");
@@ -325,6 +331,14 @@ export default function CalculatorPFA() {
   const ramasBara =
     rez === null ? 0 : rez.tip === "real" ? (rezultatSrl ? rezultatSrl.ramas : rez.r.ramas) : rez.ramas;
   const ang = bazaBara > 0 ? Math.max(0, Math.min(100, Math.round((ramasBara / bazaBara) * 100))) : 0;
+
+  // Se imparte la LUNILE DE ACTIVITATE, nu la 12. Cine lucreaza 6 luni castiga
+  // in acele 6 luni; impartirea la 12 i-ar injumatati cifra lunara fara motiv.
+  const luniActive = clampLuni(luni);
+  // Un singur formatator pentru tot tabelul, ca sa nu poata ramane un rand
+  // pe an intr-un tabel pe luna. Pragurile legale raman insa anuale si
+  // folosesc mai jos fmt() direct — vezi nota de la plafonul micro.
+  const fmtP = (v: number) => fmt(perioada === "luna" ? v / luniActive : v);
 
   return (
     <div id="pfa-layout" className="mx-auto grid max-w-6xl gap-6 px-4 py-8 sm:px-6 sm:py-12 md:grid-cols-5">
@@ -459,7 +473,26 @@ export default function CalculatorPFA() {
 
       {/* REZULTAT */}
       <div id="pfa-rezultat" className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-3">
-        <h2 className={colHeader}>Rezultat</h2>
+        <div className="mb-4 flex items-center justify-between gap-3 border-b border-stone-200 pb-2">
+          <h2 className="text-lg font-medium text-stone-900">Rezultat</h2>
+          {rez && (
+            <div className="inline-flex shrink-0 overflow-hidden rounded border border-stone-300" role="group" aria-label="Perioada afișată">
+              {([["luna", "Pe lună"], ["an", "Pe an"]] as [Perioada, string][]).map(([val, eticheta]) => (
+                <button
+                  key={val}
+                  type="button"
+                  onClick={() => setPerioada(val)}
+                  aria-pressed={perioada === val}
+                  className={`min-h-11 px-3 text-xs font-medium transition-colors ${
+                    perioada === val ? "bg-stone-900 text-white" : "bg-surface text-stone-600 hover:bg-canvas"
+                  }`}
+                >
+                  {eticheta}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
 
         {stale && (
           <p className="mb-4 rounded border border-stone-300 bg-canvas px-3 py-2 text-xs text-stone-600" role="status">
@@ -489,8 +522,8 @@ export default function CalculatorPFA() {
                     <>
                       La cifrele tale ieși cel mai bine cu{" "}
                       <strong className="font-bold text-stone-900">{clasament[0].nume}</strong>: îți rămân{" "}
-                      <strong className="font-bold text-stone-900">{fmt(clasament[0].ramas)} lei</strong>, cu{" "}
-                      {fmt(clasament[0].ramas - clasament[1].ramas)} lei peste {clasament[1].nume}.
+                      <strong className="font-bold text-stone-900">{fmtP(clasament[0].ramas)} lei</strong>, cu{" "}
+                      {fmtP(clasament[0].ramas - clasament[1].ramas)} lei peste {clasament[1].nume}.
                     </>
                   )}
                 </p>
@@ -530,45 +563,45 @@ export default function CalculatorPFA() {
                         sub
                         neg
                       />
-                      <Row label="Dividende brute" value={fmt(rezultatSrl.dividendeBrute)} />
-                      <Row label='Impozit pe dividende <span class="text-stone-400">(16%)</span>' value={fmt(rezultatSrl.impozitDividende)} sub neg />
+                      <Row label="Dividende brute" value={fmtP(rezultatSrl.dividendeBrute)} />
+                      <Row label='Impozit pe dividende <span class="text-stone-400">(16%)</span>' value={fmtP(rezultatSrl.impozitDividende)} sub neg />
                       <Row
                         label={'CASS pe dividende <span class="text-stone-400">' + (rezultatSrl.cassDividende > 0 ? "(pe trepte, nu procent)" : "(sub 6 salarii minime)") + "</span>"}
-                        value={fmt(rezultatSrl.cassDividende)}
+                        value={fmtP(rezultatSrl.cassDividende)}
                         sub
                         neg
                       />
-                      <Row label='Salariu net încasat <span class="text-stone-400">(se adaugă)</span>' value={fmt(rezultatSrl.salariuNet)} sub />
-                      <Row label="Total taxe la stat" value={fmt(rezultatSrl.totalTaxe)} bold />
+                      <Row label='Salariu net încasat <span class="text-stone-400">(se adaugă)</span>' value={fmtP(rezultatSrl.salariuNet)} sub />
+                      <Row label="Total taxe la stat" value={fmtP(rezultatSrl.totalTaxe)} bold />
                       <tr className="bg-stone-900">
                         <td className="border-r border-r-stone-600 px-3 py-3 text-left text-sm font-bold text-white">Rămâne la tine</td>
-                        <td className="px-3 py-3 text-right text-sm font-bold tabular-nums whitespace-nowrap text-white">{fmt(rezultatSrl.ramas)}</td>
+                        <td className="px-3 py-3 text-right text-sm font-bold tabular-nums whitespace-nowrap text-white">{fmtP(rezultatSrl.ramas)}</td>
                       </tr>
                     </>
                   ) : (
                     <>
                       {rez.tip === "real" ? (
-                        <Row label={mod === "net" ? "Venit net necesar" : "Venit net (încasări − cheltuieli)"} value={fmt(rez.r.venitNet)} />
+                        <Row label={mod === "net" ? "Venit net necesar" : "Venit net (încasări − cheltuieli)"} value={fmtP(rez.r.venitNet)} />
                       ) : (
                         <>
-                          <Row label="Normă de venit (bază de calcul)" value={fmt(rez.r.norma)} />
+                          <Row label="Normă de venit (bază de calcul)" value={fmtP(rez.r.norma)} />
                           {rez.incasari > 0 && (
-                            <Row label='Încasări efective <span class="text-stone-400">(nu schimbă taxele)</span>' value={fmt(rez.incasari)} sub />
+                            <Row label='Încasări efective <span class="text-stone-400">(nu schimbă taxele)</span>' value={fmtP(rez.incasari)} sub />
                           )}
                         </>
                       )}
-                      <Row label='CAS <span class="text-stone-400">(Pensii − 25%)</span>' value={fmt(rez.r.cas)} sub neg />
-                      <Row label='CASS <span class="text-stone-400">(Sănătate − 10%)</span>' value={fmt(rez.r.cass)} sub neg />
+                      <Row label='CAS <span class="text-stone-400">(Pensii − 25%)</span>' value={fmtP(rez.r.cas)} sub neg />
+                      <Row label='CASS <span class="text-stone-400">(Sănătate − 10%)</span>' value={fmtP(rez.r.cass)} sub neg />
                       {rez.r.cassDiferentaMinima > 0 && (
-                        <Row label='din care diferență până la minimul CASS <span class="text-stone-400">(nedeductibilă)</span>' value={fmt(rez.r.cassDiferentaMinima)} sub />
+                        <Row label='din care diferență până la minimul CASS <span class="text-stone-400">(nedeductibilă)</span>' value={fmtP(rez.r.cassDiferentaMinima)} sub />
                       )}
                       <Row
                         label={rez.tip === "real" ? "Impozit pe venit (10%)" : 'Impozit pe venit <span class="text-stone-400">(10% pe normă, fără deducerea contribuțiilor)</span>'}
-                        value={fmt(rez.r.impozit)}
+                        value={fmtP(rez.r.impozit)}
                         sub
                         neg
                       />
-                      <Row label="Total taxe la stat" value={fmt(rez.r.totalTaxe)} bold />
+                      <Row label="Total taxe la stat" value={fmtP(rez.r.totalTaxe)} bold />
                       <tr className="bg-stone-900">
                         <td className="border-r border-r-stone-600 px-3 py-3 text-left text-sm font-bold text-white">
                           Rămâne la tine
@@ -577,7 +610,7 @@ export default function CalculatorPFA() {
                           )}
                         </td>
                         <td className="px-3 py-3 text-right text-sm font-bold tabular-nums whitespace-nowrap text-white">
-                          {fmt(rez.tip === "real" ? rez.r.ramas : rez.ramas)}
+                          {fmtP(rez.tip === "real" ? rez.r.ramas : rez.ramas)}
                         </td>
                       </tr>
                     </>
@@ -591,9 +624,11 @@ export default function CalculatorPFA() {
                 <colgroup><col /><col className="w-28 sm:w-36" /></colgroup>
                 <tbody>
                   <tr className="bg-canvas">
-                    <td className="border-r border-stone-300 px-3 py-3 text-left text-sm font-bold text-stone-700">Rămâne pe lună (≈)</td>
+                    <td className="border-r border-stone-300 px-3 py-3 text-left text-sm font-bold text-stone-700">
+                      {perioada === "luna" ? "Rămâne pe an" : "Rămâne pe lună (≈)"}
+                    </td>
                     <td className="px-3 py-3 text-right text-sm font-bold tabular-nums whitespace-nowrap text-stone-900">
-                      {fmt(ramasBara / 12)}
+                      {fmt(perioada === "luna" ? ramasBara : ramasBara / luniActive)}
                     </td>
                   </tr>
                 </tbody>
