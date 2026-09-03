@@ -619,22 +619,6 @@ export default function CalculatorPFA() {
               </table>
             </div>
 
-            <div className="mt-3 overflow-hidden rounded border border-stone-300">
-              <table className="w-full table-auto border-collapse text-sm text-stone-700 [&_td]:align-middle sm:table-fixed">
-                <colgroup><col /><col className="w-28 sm:w-36" /></colgroup>
-                <tbody>
-                  <tr className="bg-canvas">
-                    <td className="border-r border-stone-300 px-3 py-3 text-left text-sm font-bold text-stone-700">
-                      {perioada === "luna" ? "Rămâne pe an" : "Rămâne pe lună (≈)"}
-                    </td>
-                    <td className="px-3 py-3 text-right text-sm font-bold tabular-nums whitespace-nowrap text-stone-900">
-                      {fmt(perioada === "luna" ? ramasBara : ramasBara / luniActive)}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
             {/* Comparația directă a celor două regimuri, la aceleași cifre reale. */}
             {rez.tip === "norma" && rez.totalTaxeReal !== null && (
               <div className="mt-3 rounded border border-stone-300 bg-canvas p-4">
