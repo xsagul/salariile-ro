@@ -336,7 +336,9 @@ export default function CalculatorPFA() {
   // in acele 6 luni; impartirea la 12 i-ar injumatati cifra lunara fara motiv.
   const luniActive = clampLuni(luni);
   // Un singur formatator pentru tot tabelul, ca sa nu poata ramane un rand
-  // pe an intr-un tabel pe luna. Pragurile legale raman insa anuale si
+  // pe an intr-un tabel pe luna — greseala facuta o data deja, cand primele
+  // patru randuri SRL au ramas anuale sub un tabel lunar. Pragurile legale
+  // raman insa anuale si
   // folosesc mai jos fmt() direct — vezi nota de la plafonul micro.
   const fmtP = (v: number) => fmt(perioada === "luna" ? v / luniActive : v);
 
@@ -549,17 +551,17 @@ export default function CalculatorPFA() {
                 <tbody>
                   {rezultatSrl ? (
                     <>
-                      <Row label="Venituri (cifra de afaceri)" value={fmt(rezultatSrl.venituri)} />
-                      <Row label='Cheltuieli <span class="text-stone-400">(inclusiv contabilitate)</span>' value={fmt(rezultatSrl.cheltuieli)} sub neg />
+                      <Row label="Venituri (cifra de afaceri)" value={fmtP(rezultatSrl.venituri)} />
+                      <Row label='Cheltuieli <span class="text-stone-400">(inclusiv contabilitate)</span>' value={fmtP(rezultatSrl.cheltuieli)} sub neg />
                       <Row
                         label={'Cost salariu minim <span class="text-stone-400">' + (rezultatSrl.tip === "micro" ? "(obligatoriu la micro)" : "(opțional, dar reduce impozitul)") + "</span>"}
-                        value={fmt(rezultatSrl.costSalarial)}
+                        value={fmtP(rezultatSrl.costSalarial)}
                         sub
                         neg
                       />
                       <Row
                         label={rezultatSrl.tip === "micro" ? 'Impozit micro <span class="text-stone-400">(1% pe venituri)</span>' : 'Impozit pe profit <span class="text-stone-400">(16%)</span>'}
-                        value={fmt(rezultatSrl.impozitFirma)}
+                        value={fmtP(rezultatSrl.impozitFirma)}
                         sub
                         neg
                       />
@@ -625,19 +627,19 @@ export default function CalculatorPFA() {
                 <h3 className="mb-2 text-xs font-medium text-stone-500">La aceleași cifre, în sistem real</h3>
                 {rez.totalTaxeReal === rez.r.totalTaxe ? (
                   <p className="text-sm leading-normal text-stone-700">
-                    Taxele ar fi identice: <strong className="font-bold text-stone-900">{fmt(rez.totalTaxeReal)} lei</strong>.
+                    Taxele ar fi identice: <strong className="font-bold text-stone-900">{fmtP(rez.totalTaxeReal)} lei</strong>.
                   </p>
                 ) : (
                   <p className="text-sm leading-normal text-stone-700">
-                    Ai plăti <strong className="font-bold text-stone-900">{fmt(rez.totalTaxeReal)} lei</strong> taxe, adică{" "}
+                    Ai plăti <strong className="font-bold text-stone-900">{fmtP(rez.totalTaxeReal)} lei</strong> taxe, adică{" "}
                     {rez.totalTaxeReal > rez.r.totalTaxe ? (
                       <>
-                        cu <strong className="font-bold text-stone-900">{fmt(rez.totalTaxeReal - rez.r.totalTaxe)} lei mai mult</strong>{" "}
+                        cu <strong className="font-bold text-stone-900">{fmtP(rez.totalTaxeReal - rez.r.totalTaxe)} lei mai mult</strong>{" "}
                         decât pe normă. La cifrele astea, norma de venit este mai avantajoasă.
                       </>
                     ) : (
                       <>
-                        cu <strong className="font-bold text-stone-900">{fmt(rez.r.totalTaxe - rez.totalTaxeReal)} lei mai puțin</strong>{" "}
+                        cu <strong className="font-bold text-stone-900">{fmtP(rez.r.totalTaxe - rez.totalTaxeReal)} lei mai puțin</strong>{" "}
                         decât pe normă. La cifrele astea, sistemul real este mai avantajos.
                       </>
                     )}
