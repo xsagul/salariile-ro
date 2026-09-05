@@ -10,7 +10,8 @@ import { Breadcrumb, Faq, H1, Lead } from "@/app/components/ui";
 import { NotaSursa, lunaLunga } from "@/app/components/Salarii";
 import { AN_OCUPATII, LUNA_REFERINTA, MATRICE_BRUT, MATRICE_NET, MATRICE_OCUPATII } from "@/lib/ins-date";
 import { MESERII, COMPARATII, dateMeserieSauEroare } from "@/lib/meserii";
-import { reperMeserie, textReper } from '@/lib/repere-meserii';
+import { reperMeserie } from '@/lib/repere-meserii';
+import { textIndicator } from '@/lib/indicator-meserie';
 import AlegeComparatie from '@/app/components/AlegeComparatie';
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
@@ -108,16 +109,16 @@ export default function ComparaPage() {
                 <div className="grid gap-2">
                   <span className="text-base font-semibold tracking-[-0.01em] text-stone-900">{comparatie.a.nume}</span>
                   <span className="text-xs tabular-nums text-stone-600">
-                    <strong className="text-stone-900">{textReper(reperMeserie(a))} {reperMeserie(a).unit}</strong>
-                    <span className="block">{reperMeserie(a).label}</span>
+                    <strong className="text-stone-900">{textIndicator(reperMeserie(a))}</strong>
+                    
                   </span>
                 </div>
                 <div className="my-2 text-xs uppercase tracking-wide text-stone-600">vs</div>
                 <div className="grid gap-2">
                   <span className="text-base font-semibold tracking-[-0.01em] text-stone-900">{comparatie.b.nume}</span>
                   <span className="text-xs tabular-nums text-stone-600">
-                    <strong className="text-stone-900">{textReper(reperMeserie(b))} {reperMeserie(b).unit}</strong>
-                    <span className="block">{reperMeserie(b).label}</span>
+                    <strong className="text-stone-900">{textIndicator(reperMeserie(b))}</strong>
+                    
                   </span>
                 </div>
                 <p className="mt-3 border-t border-stone-200 pt-3 text-xs leading-normal text-stone-600">

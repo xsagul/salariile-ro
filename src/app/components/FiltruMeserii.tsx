@@ -96,7 +96,7 @@ export default function FiltruMeserii({ total }: { total: number }) {
       </div>
       <p id="cauta-meserie-stare" role="status" aria-live="polite" className="mt-2 text-sm text-stone-600">
         {gasite === null
-          ? `${total} de meserii. Caută și după codul COR afișat.`
+          ? `${total} de meserii. Caută și după cod COR.`
           : gasite === 0
             ? `Nicio meserie nu se potrivește cu „${termen}”. Încearcă un cuvânt mai scurt.`
             : `${gasite} ${gasite === 1 ? "meserie găsită" : "meserii găsite"}.`}

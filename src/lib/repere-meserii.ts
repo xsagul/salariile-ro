@@ -3,6 +3,8 @@ import { grilaPublica, SURSA_GRILE } from '@/lib/grile-publice';
 import { LUNA_REFERINTA } from '@/lib/ins-date';
 import education from '@/data/grila-invatamant-153-2017.json';
 import { calculStandard } from '@/lib/fiscal';
+import offers from '@/data/repere-oferte-it.json';
+import { indicatorMeserie, textIndicator } from '@/lib/indicator-meserie';
 
 export function grilaEducatie(slug:string) {
   if(slug==='profesor') return education.randuri.filter(r=>r.nr>=1 && r.nr<=8);
@@ -24,11 +26,13 @@ export type ReperMeserie = {
 };
 export function reperMeserie(d: DateMeserie): ReperMeserie {
   const common = { n:null, median:null, p25:null, p75:null, upper:null };
-  if(d.meserie.slug==='programator') return {
-    ...common,kind:'external-advertised',value:13500,median:12000,p25:8800,p75:17000,unit:'lei net/lună',
+  const advertised = Object.hasOwn(offers.roles, d.meserie.slug)
+    ? offers.roles[d.meserie.slug as keyof typeof offers.roles] : null;
+  if(advertised) return {
+    ...common,kind:'external-advertised',value:advertised.mean,median:advertised.median,p25:advertised.p25,p75:advertised.p75,unit:'lei net/lună',
     label:'Medie publicată de DevJob · oferte',period:'perioadă neprecizată; consultat 6 septembrie 2026',
-    population:'Software Developer / Software Engineer, România, toate nivelurile',
-    source:'DevJob, Software Developer salary in Romania',url:'https://devjob.ro/en/salaries',
+    population:`${advertised.population}, ${offers.geography}, ${offers.experience}`,
+    source:`DevJob, ${advertised.population} salary in Romania`,url:advertised.url,
     note:'DevJob calculează statistici din intervalele salariale furnizate de angajatori în anunțuri. Sunt oferte, nu salarii încasate. Mediana și quartilele sunt cele publicate de furnizor; metoda de transformare a intervalelor, perioada și eșantionul exact al acestei selecții nu sunt precizate. Nu sunt statistici calculate de Salariile.ro.',
   };
   const teaching=grilaEducatie(d.meserie.slug);
@@ -68,5 +72,7 @@ export function textReper(r: ReperMeserie): string {
 }
 export function descriereReper(d: DateMeserie): string {
   const r=reperMeserie(d);
-  return `${r.label}: ${textReper(r)} ${r.unit}, ${r.period}. ${r.population}. ${r.note}`;
+  const indicator=indicatorMeserie(r);
+  if(indicator.value===null) return `Nu avem încă suficiente date pentru un salariu median sau mediu al acestei meserii. ${r.label}: ${textReper(r)} ${r.unit}, ${r.period}. ${r.population}. ${r.note}`;
+  return `${indicator.metric==='median'?'Mediană':'Medie'}: ${textIndicator(r)} pe lună. ${r.source}, ${r.period}. ${r.population}. ${r.note}`;
 }

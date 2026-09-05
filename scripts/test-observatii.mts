@@ -2,6 +2,8 @@ import assert from 'node:assert/strict';
 import { agregheaza, incadreaza, PRAG_PUBLICARE, type ObservatieSalariala } from '../src/lib/observatii-salariale';
 import { MESERII, dateMeserieSauEroare, COMPARATII } from '../src/lib/meserii';
 import { reperMeserie, textReper } from '../src/lib/repere-meserii';
+import offers from '../src/data/repere-oferte-it.json';
+import { indicatorMeserie } from '../src/lib/indicator-meserie';
 import cor from '../src/data/cor-meserii.json';
 const make=(n:number):ObservatieSalariala[]=>Array.from({length:n},(_,i)=>({meserie:'zugrav',titluSursa:'Zugrav',fel:'declarat',suma:'net',minim:4000+i*10,maxim:4000+i*10,data:'2026-08-27',referinta:'https://example.org/record/'+i,id:'source:'+i,perioada:'2026-08',concept:'realizat',norma:'intreaga',experienta:'3-5 ani',reutilizarePermisa:true}));
 const options={meserie:'zugrav',suma:'net' as const};
@@ -24,11 +26,13 @@ const counts:Record<string,number>={};
 for(const m of MESERII) {
  const r=reperMeserie(dateMeserieSauEroare(m)); counts[r.kind]=(counts[r.kind]??0)+1;
  assert.equal(r.unit,'lei net/lună');assert.ok(r.url.startsWith('https://'));assert.ok(r.period);assert.ok(r.population);assert.ok(r.note);
- assert.equal(r.n,null);if(r.kind==='external-advertised'){assert.equal(r.median,12000);assert.equal(r.p25,8800);assert.equal(r.p75,17000);}else{assert.equal(r.median,null);assert.equal(r.p25,null);assert.equal(r.p75,null);}
+ assert.equal(r.n,null);if(r.kind==='external-advertised'){const expected=offers.roles[m.slug as keyof typeof offers.roles];assert.ok(expected);assert.equal(r.median,expected.median);assert.equal(r.p25,expected.p25);assert.equal(r.p75,expected.p75);assert.equal(indicatorMeserie(r).value,expected.median);}else{assert.equal(r.median,null);assert.equal(r.p25,null);assert.equal(r.p75,null);}
  assert.ok(!textReper(r).includes('NaN')); assert.ok(r.value===null || r.value>0);
  const mapping=cor.occupations[m.slug as keyof typeof cor.occupations];assert.ok(mapping);
  assert.equal(m.cor??null,mapping.code);if(m.cor)assert.ok(mapping.name);
  if(r.kind==='sector-context')assert.equal(r.value,dateMeserieSauEroare(m).netObservat);
+ if(r.kind==='sector-context'||r.kind==='public-grid')assert.equal(indicatorMeserie(r).value,null);
+ if(r.kind==='external-reported')assert.equal(indicatorMeserie(r).value,r.value);
 }
 assert.equal(reperMeserie(dateMeserieSauEroare(MESERII.find(x=>x.slug==='contabil')!)).value,5000);
 assert.equal(reperMeserie(dateMeserieSauEroare(MESERII.find(x=>x.slug==='constructor')!)).kind,'sector-context');

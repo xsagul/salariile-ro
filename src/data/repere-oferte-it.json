@@ -1,0 +1,14 @@
+{
+  "checkedAt": "2026-09-06",
+  "period": null,
+  "geography": "România",
+  "experience": "toate nivelurile",
+  "unit": "lei net/lună",
+  "reuse": "Citări editoriale punctuale, cu atribuire și legătură la fiecare pagină; fără copierea anunțurilor sau a bazei de date. Nu presupune o licență de reutilizare masivă.",
+  "sourceMethod": "Statistici publicate de DevJob din intervalele salariale furnizate de angajatori în anunțuri. Perioada, eșantionul exact pe rol și transformarea intervalelor nu sunt publicate. Nu sunt observații individuale sau statistici calculate de Salariile.ro.",
+  "roles": {
+    "programator": { "population": "Software Developer / Software Engineer", "url": "https://devjob.ro/en/salaries", "mean": 13500, "median": 12000, "p25": 8800, "p75": 17000, "n": null },
+    "tester-qa": { "population": "QA, Test Engineer", "url": "https://devjob.ro/en/salaries/Tester/all/all", "mean": 11900, "median": 10300, "p25": 7500, "p75": 14000, "n": null },
+    "devops-engineer": { "population": "DevOps", "url": "https://devjob.ro/en/salaries/DevOps/all/all", "mean": 14900, "median": 13500, "p25": 9500, "p75": 17500, "n": null }
+  }
+}

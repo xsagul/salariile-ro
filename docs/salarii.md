@@ -12,6 +12,8 @@ Instrucțiuni de lucru: acest document și codul din repository. Nu folosi docum
 
 ## Reguli de publicare
 
+Catalogul afișează numele complet și o singură sumă netă: mediana disponibilă, altfel media specifică meseriei. În lipsa ambelor afișează o liniuță, fără a substitui media sectorului sau mijlocul grilei. Reperul Salariile.ro este selectat din surse citate, nu o măsurare proprie. Ofertele angajatorilor sunt distincte; când același reper provine din aceleași oferte, identitatea sursei este declarată în detalii. Cele trei citări DevJob au roluri și adrese distincte în `src/data/repere-oferte-it.json`.
+
 Netul este suma principală pe toate paginile și comparațiile. Pentru grile afișăm netul standard; brutul rămâne în detaliile sursei. Explicațiile metodologice sunt restrânse, la cerere, fără paragrafe fiscale lângă suma principală.
 
 O medie de sector nu devine salariul meseriei prin etichetare sau ajustare. Vârsta nu devine experiență. O ofertă sau o grilă nu devine salariu realizat. Numărul căutărilor, celulelor sau treptelor nu devine număr de salariați. Nu se reconstruiesc percentile din medii și nu se agregă mijloacele intervalelor drept observații salariale.

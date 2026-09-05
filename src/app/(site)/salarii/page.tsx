@@ -9,8 +9,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumb, Faq, H1, Lead } from "@/app/components/ui";
 import FiltruMeserii from "@/app/components/FiltruMeserii";
-import { LinkCard, NotaSursa, lei, lunaLunga } from "@/app/components/Salarii";
-import { denumireScurtaCaen } from "@/lib/caen-denumiri";
+import { NotaSursa, lei, lunaLunga } from "@/app/components/Salarii";
+
 import { calculStandard } from "@/lib/fiscal";
 import {
   AN_OCUPATII,
@@ -19,16 +19,17 @@ import {
   MATRICE_NET,
   MATRICE_OCUPATII,
   TOTAL_ECONOMIE,
-  totalOcupatii,
+
 } from "@/lib/ins-date";
 import { CATEGORII, MESERII, dateMeserie, meseriiDinCategorie } from "@/lib/meserii";
-import { reperMeserie, textReper } from '@/lib/repere-meserii';
+import { reperMeserie } from '@/lib/repere-meserii';
+import { indicatorMeserie, textIndicator } from '@/lib/indicator-meserie';
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
 
 const LUNA = lunaLunga(LUNA_REFERINTA);
 const NET_STANDARD_ECONOMIE = calculStandard(TOTAL_ECONOMIE.brutCurent)?.net ?? 0;
-const OCUPATII_TOTAL = totalOcupatii();
+
 
 const DESCRIERE = `Salarii pentru ${MESERII.length} meserii: repere din surse citate, grile publice și context INS. Caută meseria și compară perioada, brutul și netul.`;
 
@@ -173,14 +174,7 @@ export default function SalariiPage() {
             ))}
           </nav>
 
-          {/* Legenda celor doua neturi: primul este observat lunar in sector,
-              al doilea este calculat pentru grupa larga de ocupatii. */}
-          <p className="mt-6 rounded-md border border-stone-200 bg-surface p-4 text-sm leading-normal text-stone-600 shadow-soft">
-            Suma mare este <strong className="font-semibold text-stone-900">netul mediu observat în sectorul CAEN</strong>{" "}
-            din {LUNA}. Dedesubt apare <strong className="font-semibold text-stone-900">netul orientativ al grupei
-            ISCO</strong>, calculat fiscal din ancheta pe ocupații și adus la nivelul salarial curent. Sunt două contexte,
-            nu un minim și un maxim; salariul individual poate varia.
-          </p>
+          <p className="mt-6 text-sm text-stone-600">Sume nete lunare. Mediană disponibilă, altfel medie pe meserie. — = date insuficiente.</p>
 
           {categorii.map(({ categorie, meserii }) => (
             <section key={categorie.slug} id={categorie.slug} data-sectiune-meserii className="mt-12 scroll-mt-20">
@@ -198,16 +192,14 @@ export default function SalariiPage() {
                   Vezi domeniul
                 </Link>
               </p>
-              <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="mt-4 grid gap-3 lg:grid-cols-2">
                 {meserii.map(({ meserie, date }) => (
-                  <LinkCard
+                  <Link
                     key={meserie.slug}
                     href={`/salarii/${meserie.slug}`}
-                    titlu={meserie.nume}
-                    detaliu={`CAEN ${date!.sector.cheie} · ${denumireScurtaCaen(date!.sector.cheie, date!.sector.denumire)}`}
-                    valoare={textReper(reperMeserie(date!))}
-                    subvaloare={`${reperMeserie(date!).unit} · ${reperMeserie(date!).label}`}
-                    cauta={[
+                    className="flex min-h-14 items-center justify-between gap-2 rounded-md border border-stone-200 bg-surface px-3 py-3 text-sm shadow-soft hover:border-stone-400 sm:px-4 sm:text-base"
+                    data-salary-row={indicatorMeserie(reperMeserie(date!)).metric ?? "unavailable"}
+                    data-cauta={[
                       meserie.nume,
                       meserie.de,
                       meserie.cor ?? "",
@@ -215,7 +207,10 @@ export default function SalariiPage() {
                       date!.sector.denumire,
                       date!.isco?.nume ?? "",
                     ].join(" ")}
-                  />
+                  >
+                    <span data-profession-name className="font-medium text-stone-900">{meserie.nume}</span>
+                    <span data-profession-salary className="shrink-0 whitespace-nowrap font-semibold text-stone-700">{indicatorMeserie(reperMeserie(date!)).value === null ? <><span aria-hidden="true">—</span><span className="sr-only">Date insuficiente</span></> : textIndicator(reperMeserie(date!))}</span>
+                  </Link>
                 ))}
               </div>
             </section>
@@ -228,15 +223,7 @@ export default function SalariiPage() {
             <p className="mt-4 text-base leading-normal text-stone-600">
               Reperele provin din populații și perioade diferite. O medie declarată de utilizatorii unei surse externe descrie respondenții acelei surse. O grilă descrie funcții publice și trepte. Media INS descrie toate ocupațiile din sector. Nu ordonăm aceste valori într-un clasament al meseriilor.
             </p>
-            <p className="mt-4 text-base leading-normal text-stone-600">
-              Al doilea net vine dinspre ocupație, nu dinspre angajator: ancheta INS din octombrie publică venitul brut
-              realizat pe grupe majore ISCO-08, iar noi îl transformăm fiscal și îl afișăm net. În{" "}
-              {AN_OCUPATII.replace("Anul ", "")}, media pe toate ocupațiile a fost{" "}
-              {OCUPATII_TOTAL ? `${lei(OCUPATII_TOTAL.venitBrut)} lei venit brut realizat și ${lei(OCUPATII_TOTAL.salariuDeBaza ?? 0)} lei salariu de bază` : "—"}
-              . Diferența dintre cele două arată cât cântăresc sporurile și primele peste încadrare. Fiecare pagină de
-              meserie afișează grupa relevantă și progresia pe vârste. Reperul CAEN și reperul ISCO nu se scad, nu se
-              mediază și nu delimitează salariul ocupației aflate la intersecția lor.
-            </p>
+
             <NotaSursa>
               Sursa datelor: Institutul Național de Statistică, TEMPO-Online, matricele {MATRICE_BRUT} și{" "}
               {MATRICE_NET} (serii lunare pe activități CAEN Rev.3, ultima lună {LUNA}) și {MATRICE_OCUPATII}{" "}
