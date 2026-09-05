@@ -330,6 +330,9 @@ async function auditRenderedSite() {
   const copyIntervalVechi = /Estimare net, pe lună|Cum citești intervalul|câștigă, estimativ, între|capetele sunt cele două/i;
   for (const pathname of paginiMeserii) {
     const html = rendered.get(pathname) ?? "";
+    for (const id of ['profil', 'piata', 'oferta']) {
+      if (!html.includes(`id="${id}"`)) failures.push(`${pathname}: ancora #${id} nu are destinație`);
+    }
     const title = titleFrom(html);
     const descriere = metaDescriptionFrom(html);
     const textVizibil = visibleTextFrom(html);

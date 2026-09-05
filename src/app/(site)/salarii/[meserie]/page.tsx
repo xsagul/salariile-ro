@@ -194,7 +194,7 @@ export default async function MeseriePage({ params }: Props) {
             <h2 className="text-xl font-bold">Grad didactic, studii și vechime în învățământ</h2>
             <p className="mt-3 text-sm text-stone-600">Net standard pe trepte didactice.</p>
             <div className="mt-4 max-h-96 overflow-auto"><table className="w-full min-w-[32rem] text-sm">
-              <caption className="sr-only">Grila didactică: funcție, studii, vechime și salariu de bază brut</caption>
+              <caption className="sr-only">Grila didactică: funcție, studii, vechime și net standard</caption>
               <thead><tr>{['Funcție și grad','Studii','Vechime în învățământ','Net lunar'].map(h=><th key={h} scope="col" className="border-b p-3 text-left">{h}</th>)}</tr></thead>
               <tbody>{grilaDidactica.map((r,i)=><tr key={i}><th scope="row" className="border-b border-stone-100 p-3 text-left font-normal">{r.functie}</th><td className="p-3">{r.studii}</td><td className="p-3">{r.vechime}</td><td className="whitespace-nowrap p-3 font-semibold">{lei(calculStandard(r.iun2024)!.net)} lei</td></tr>)}</tbody>
             </table></div>
@@ -219,7 +219,7 @@ export default async function MeseriePage({ params }: Props) {
               Egalitatea de loc se declară explicit — locul e al activității, nu
               al ocupației, iar cititorul trebuie să știe asta. */}
           {(clasament || interval || vacante) && (
-            <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <details className="mt-6"><summary className="min-h-11 cursor-pointer py-3 font-semibold">Contextul pieței muncii</summary><div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {clasament && (
                 <div className="rounded-md border border-stone-200 bg-surface p-5 shadow-soft">
                   <div className="text-xs font-medium uppercase tracking-wide text-stone-500">
@@ -287,7 +287,7 @@ export default async function MeseriePage({ params }: Props) {
                   </p>
                 </div>
               )}
-            </div>
+            </div></details>
           )}
 
           <div className="mt-12 grid gap-10 lg:grid-cols-3">
@@ -312,7 +312,7 @@ export default async function MeseriePage({ params }: Props) {
                 </section>
               )}
 
-              <section>
+              <section id="profil">
                 <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">
                   Ce face un {numeMic}
                 </h2>
@@ -326,7 +326,7 @@ export default async function MeseriePage({ params }: Props) {
                 </p>
               </section>
 
-              <section className="mt-12">
+              <section className="mt-12" id="piata">
                 <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">
                   Cum a evoluat sectorul în ultimele {LUNI_SERIE.length} luni
                 </h2>
@@ -350,7 +350,7 @@ export default async function MeseriePage({ params }: Props) {
               </section>
 
               {isco && isco.varste.length > 0 && (
-                <section className="mt-12">
+                <details className="mt-8"><summary className="min-h-11 cursor-pointer py-3 text-lg font-semibold">Venituri pe grupe de vârstă</summary>
                   <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">
                     Vârsta și veniturile grupei ISCO
                   </h2>
@@ -368,8 +368,7 @@ export default async function MeseriePage({ params }: Props) {
                     <p className="mt-4 text-base leading-normal text-stone-600">
                       În această grupă, venitul realizat este cu{" "}
                       <strong className="font-semibold text-stone-900">{procent(pesteBaza, 0)}% peste</strong> salariul
-                      de bază de încadrare. Dacă în contractul tău scrie o sumă mai mică decât cifrele de pe pagină, de
-                      obicei asta e explicația: contractul trece încadrarea, iar statistica măsoară ce s-a plătit
+                      de bază de încadrare. Contractul trece salariul de bază, iar statistica măsoară ce s-a plătit
                       efectiv, cu tot cu sporuri și ore suplimentare.
                     </p>
                   )}
@@ -449,11 +448,11 @@ export default async function MeseriePage({ params }: Props) {
                       .
                     </p>
                   )}
-                </section>
+                </details>
               )}
 
               {judete.length > 0 && (
-                <section className="mt-12">
+                <details className="mt-8"><summary className="min-h-11 cursor-pointer py-3 text-lg font-semibold">Date regionale INS</summary>
                   <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">
                     Câștigul mediu brut lunar al sectorului pe județe — media {AN_JUDETE_SCURT}
                   </h2>
@@ -482,41 +481,15 @@ export default async function MeseriePage({ params }: Props) {
                     an={AN_JUDETE_SCURT}
                     numeActivitate={etichetaSectorJudete ?? sector.denumire}
                   />
-                </section>
+                </details>
               )}
 
-              <section className="mt-12">
-                <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">
-                  Ce mută salariul în sus sau în jos
-                </h2>
-                <ul className="mt-4 list-disc pl-5 text-base leading-normal text-stone-600 [&_li]:mb-2">
-                  <li>
-                    <strong className="font-semibold text-stone-900">Județul.</strong> În sectorul asociat acestei
-                    meserii, distanța dintre extreme a fost de{" "}
-                    {judete.length > 0
-                      ? `${lei(judete[0].brut - judete[judete.length - 1].brut)} lei brut lunar în media anului ${AN_JUDETE_SCURT}`
-                      : "una semnificativă"}
-                    .
-                  </li>
-                  <li>
-                    <strong className="font-semibold text-stone-900">Vechimea.</strong> În grupa de ocupații
-                    relevantă, câștigul crește până în jurul vârstei de 35–44 de ani, apoi se aplatizează.
-                  </li>
-                  <li>
-                    <strong className="font-semibold text-stone-900">Partea variabilă.</strong> Diferența dintre
-                    salariul de bază și venitul brut realizat este sporuri, prime și ore suplimentare — negociabile
-                    separat de încadrare.
-                  </li>
-                  <li>
-                    <strong className="font-semibold text-stone-900">Mărimea angajatorului.</strong> Media sectorului
-                    e trasă în sus de firmele mari; într-o firmă mică din aceeași activitate, brutul e de regulă sub
-                    medie.
-                  </li>
-                  <li>
-                    <strong className="font-semibold text-stone-900">Regimul fiscal.</strong> Din 1 ianuarie 2025 nu
-                    mai există scutiri de impozit pentru IT și construcții, deci brutul se transformă în net la fel
-                    în toate domeniile.
-                  </li>
+              <section className="mt-10">
+                <h2 className="text-xl font-bold text-stone-900">Ce contează când compari două oferte</h2>
+                <ul className="mt-4 space-y-3 text-stone-600">
+                  <li><strong className="text-stone-900">Suma garantată.</strong> Separă netul lunar fix de bonusuri, bacșișuri, diurnă și beneficii.</li>
+                  <li><strong className="text-stone-900">Programul.</strong> Compară același număr de ore și verifică turele, orele suplimentare și timpul de deplasare.</li>
+                  <li><strong className="text-stone-900">Responsabilitățile.</strong> Titlul postului poate fi același, dar atribuțiile și nivelul de autonomie pot fi diferite.</li>
                 </ul>
               </section>
             </div>
