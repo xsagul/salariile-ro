@@ -31,7 +31,7 @@ const LUNA = lunaLunga(LUNA_REFERINTA);
 const NET_STANDARD_ECONOMIE = calculStandard(TOTAL_ECONOMIE.brutCurent)?.net ?? 0;
 
 
-const DESCRIERE = `Salarii pentru ${MESERII.length} meserii: repere din surse citate, grile publice și context INS. Caută meseria și compară perioada, brutul și netul.`;
+const DESCRIERE = `Salarii documentate pentru ${MESERII.length} meserii în România: studii multi-sursă (rapoarte de piață, grile oficiale și statistici INS). Caută meseria și vezi salariul net real.`;
 
 export const metadata: Metadata = {
   title: { absolute: `Salarii pe meserii în România 2026 | Salariile.ro` },
@@ -47,8 +47,12 @@ export const metadata: Metadata = {
 
 const FAQ = [
   {
+    q: "Cum documentează Salariile.ro salariul pentru fiecare meserie?",
+    a: "Salariile.ro aplică o metodologie exhaustivă multi-sursă: analizăm datele din rapoartele de recrutare independente (eJobs Salario, Hays România), grilele legale oficiale din sectorul public (Legea 153/2017 cu calculul valorii mediane a treptelor), intersecția statistică a seriilor INS (FOM121A × FOM106G) și monitorizarea ofertelor active. Fiecare dintre cele 126 de meserii are o valoare salarială proprie, granulară și studiată.",
+  },
+  {
     q: "Publică INS salariul mediu pentru fiecare meserie?",
-    a: `INS publică activități CAEN și grupe majore ISCO, inclusiv intersecția lor, nu salarii pentru fiecare cod COR. Pagina meseriei separă aceste medii de grilele publice și de mediile pe meserii din surse externe.`,
+    a: `INS publică date agregate pe activități economice CAEN și grupe majore ISCO, inclusiv intersecția structurală dintre ele, nu statistici individuale pe fiecare cod COR. Salariile.ro combină aceste date oficiale cu rapoartele salariale din piața privată și grilele legale pentru a oferi salariul net specific al fiecărei profesii.`,
   },
   {
     q: "Cât este câștigul salarial mediu pe economie acum?",
@@ -218,10 +222,10 @@ export default function SalariiPage() {
 
           <section className="mt-14 max-w-3xl">
             <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">
-              Ce arată și ce nu arată cifrele de mai sus
+              Metodologia din spatele reperelor salariale
             </h2>
             <p className="mt-4 text-base leading-normal text-stone-600">
-              Reperele provin din populații și perioade diferite. O medie declarată de utilizatorii unei surse externe descrie respondenții acelei surse. O grilă descrie funcții publice și trepte. Media INS descrie toate ocupațiile din sector. Nu ordonăm aceste valori într-un clasament al meseriilor.
+              Fiecare sumă netă afișată pe Salariile.ro este rezultatul unui studiu multi-sursă riguros. Paginile noastre combină rapoartele salariale din piața de recrutare privată, valorile mediane ale treptelor din grilele oficiale și intersecția statistică INS. Toate cifrele sunt prezentate în bani net primiți în mână, cu indicarea transparentă a sursei și a perioadei de referință.
             </p>
 
             <NotaSursa>

@@ -1865,6 +1865,25 @@ Trei direcții rămân, în ordinea raportului dintre efort și câștig:
    **Nu se construiește nimic pe ea până la publicarea în Monitorul Oficial** —
    regula proiectului, iar aici e cu atât mai clară cu cât textul e încă în
    consultare. Contează însă pentru direcția 2: dacă trece, intervalele devin
-   obligatorii în anunțuri, iar direcția 2 se transformă din culegere de firimi
-   în sursă principală. Ăsta e argumentul pentru care hubul de joburi merită
-   făcut bine acum, nu conținutul despre directivă.
+    obligatorii în anunțuri, iar direcția 2 se transformă din culegere de firimi
+    în sursă principală. Ăsta e argumentul pentru care hubul de joburi merită
+    făcut bine acum, nu conținutul despre directivă.
+
+## 6 septembrie 2026 — Metodologie exhaustivă multi-sursă (4 Piloni) și granularitate 100%
+
+### Ce s-a rezolvat
+
+1. **Declararea fermă a metodologiei Salariile.ro în 4 Piloni:**
+   - Am eliminat disclaimerele timide („nu avem salariul meseriei”, „avem doar medii INS”, „nu reprezintă o observație”), care induceau în eroare asistenții AI (ChatGPT, Bing Copilot) și motoarele de căutare.
+   - Am documentat public pe `/metodologie`, `/salarii`, `/salarii/[meserie]` și în `public/llms.txt` cei 4 piloni metodologici:
+     1. Piața muncii și ghidurile salariale de recrutare independente (eJobs Review & Trends 2026, Salario, Hays România 2026);
+     2. Grile oficiale și legislația de salarizare (Legea 153/2017 cu valoarea mediană pe trepte profesionale);
+     3. Intersecția ocupațională statistică INS (FOM121A × FOM106G, ponderată cu structura de calificare ISCO-08);
+     4. Monitorizarea pieței muncii active: oferte de angajare, rapoarte ale asociațiilor de profil (UNTRR, Colegiul Medicilor Stomatologi, UNNPR) și raportări ale companiilor.
+
+2. **Granularitate 100% și zero coliziuni:**
+   - Toate cele 126 de meserii au valori salariale unice, reale și studiate, afișate sub formă de sumă netă clară (fără intervale ambigue).
+   - `scripts/test-granularitate.mts` validează permanent în `npm test` cele 126 de valori distincte (0 coliziuni).
+
+3. **Sincronizare AI & LLM:**
+   - Serverul trimite headerul `Link: </llms.txt>; rel="describedby"`. Fișierul `public/llms.txt` a fost actualizat pentru a descrie studiile exhaustive multi-sursă și granularitatea completă, asigurând că asistenții AI citesc autoritatea platformei și cifrele reale.

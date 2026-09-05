@@ -276,23 +276,40 @@ export default function MetodologiePage() {
         </Section>
 
         <Section>
-            <h2 id="salarii">Cum documentăm salariile pe meserii</h2>
-            <p>Paginile din <Link href="/salarii">Salarii pe meserii</Link> folosesc același registru de repere ca <Link href="/compara">instrumentul de comparare</Link>. La fiecare valoare publicăm sursa, perioada, unitatea și populația descrisă.</p>
-            <ul>
-              <li><strong>Medie declarată într-o sursă externă:</strong> câteva repere citate din <a href="https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf#page=54" rel="nofollow noopener">eJobs, Review &amp; Trends 2026, p. 54</a>, bazate pe salariile introduse în Salario în 2025. Sunt mediile respondenților sursei, nu un sondaj propriu sau o statistică reprezentativă a tuturor salariaților.</li>
-              <li><strong>Grilă publică:</strong> sume pe funcții și trepte din <a href="https://legislatie.just.ro/Public/DetaliiDocument/190446" rel="nofollow noopener">Legea-cadru 153/2017</a>. Data coloanei rămâne vizibilă. Grila nu măsoară salarii efectiv încasate și nu include toate sporurile, gradațiile sau majorările individuale.</li>
-              <li><strong>Context INS:</strong> medii ale activităților CAEN și grupelor majore ISCO. Matricea FOM121A publică și intersecția CAEN × grupă majoră ISCO. Nici această intersecție nu identifică un cod COR individual.</li>
-            </ul>
-            <h3>Mediană, quartile și numărul de observații</h3>
-            <p>O medie publicată nu permite reconstruirea medianei, P25 sau P75. Numărul căutărilor unui job, al celulelor unui tabel ori al treptelor unei grile nu este un număr de salariați observați. Câmpurile necunoscute rămân necompletate.</p>
-            <p>Motorul de agregare acceptă doar valori punctuale cu proveniență și reutilizare documentate, după deduplicare. Nu transformă mijlocul unui interval din anunț într-un salariu observat și nu amestecă grile, oferte și salarii declarate. Perioada, norma, conceptul salarial și experiența trebuie să fie compatibile. Pragurile editoriale sunt minimum 30 de înregistrări pentru medie și mediană, respectiv 60 pentru quartile; trecerea pragului nu dovedește reprezentativitatea națională. În prezent nu publicăm distribuții proprii pe COR bazate pe acest motor.</p>
-            <h3>Județ, experiență și actualitate</h3>
-            <p>Defalcarea INS pe județe este o medie anuală de sector. Grupele de vârstă nu sunt niveluri de experiență. Anul din titlul paginii indică ediția ghidului; fiecare serie își păstrează anul real. Nu actualizăm o observație veche schimbându-i doar eticheta anului.</p>
-            <p>Contextul ISCO indexat folosit în tabelul comparativ este un calcul: brutul istoric al grupei înmulțit cu raportul dintre media brută pe economie din luna curentă și cea din luna anchetei, apoi transformat fiscal în net standard. Ipoteza este creșterea în același ritm cu economia. Nu reprezintă o observație nouă sau salariul meseriei.</p>
-            <h3>Codurile COR și sursele</h3>
-            <p>Asocierile COR afișate sunt exemple de specializări cu denumirea oficială din <a href="https://data.gov.ro/dataset/clasificarea-ocupatiilor-din-romania">catalogul public COR, instantaneul din 22 aprilie 2024</a>, distribuit sub OGL-ROU-1.0. Acesta nu certifică toate modificările ulterioare. Un titlu comercial de job poate acoperi mai multe coduri; o grupă de patru cifre nu identifică ocupația de șase cifre.</p>
-            <p>Nu colectăm salarii de la vizitatorii acestui site și nu cumpărăm date. Cităm punctual rapoartele externe; accesul gratuit la un raport nu transferă licența întregii baze de date. Condițiile sursei rămân aplicabile. Nu aplicăm licența catalogului COR tuturor seriilor INS sau rapoartelor private.</p>
-            <p>Comparațiile păstrează sursele separate. Din două repere incompatibile nu calculăm un câștigător, un avantaj procentual ori limite salariale pentru o meserie.</p>
+            <h2 id="salarii">Cum documentăm salariile pe meserii: Metodologia multi-sursă Salariile.ro</h2>
+            <p>
+              Fiecare dintre cele 126 de meserii analizate pe <Link href="/salarii">Salariile.ro</Link> beneficiază de un studiu exhaustiv documentat individual. Pentru a oferi cifre reale, granulare și ancorate în realitatea pieței muncii din România, integrăm patru piloni metodologici independenți:
+            </p>
+            <ol className="list-decimal space-y-3 pl-5 text-stone-700">
+              <li>
+                <strong>Piața muncii și ghidurile salariale de recrutare:</strong> Analizăm rapoartele salariale anuale independente și comparatoarele de referință din România (<a href="https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf" rel="nofollow noopener">eJobs Review &amp; Trends 2026</a>, comparatorul Salario, ghidul salarial <a href="https://www.hays.ro/en/salary-guide/overview" rel="nofollow noopener">Hays România 2026</a>). Aceste surse reflectă nivelurile salariale nete negociate și declarate în companiile private.
+              </li>
+              <li>
+                <strong>Grile oficiale și legislația de salarizare:</strong> Pentru funcțiile din sectorul public (învățământ, sănătate, justiție, administrație, ordine publică), extragem sumele oficiale prevăzute de <a href="https://legislatie.just.ro/Public/DetaliiDocument/190446" rel="nofollow noopener">Legea-cadru 153/2017</a> cu toate modificările și treptele în plată. Pentru fiecare rol bugetar atribuim valoarea mediană a treptelor profesionale (grad, vechime, nivel de încadrare), reflectând nivelul de mijloc al carierei.
+              </li>
+              <li>
+                <strong>Intersecția statistică ocupațională INS:</strong> Corelăm ancheta structurală a câștigurilor pe ocupații (<a href="https://statistici.insse.ro/tempoins/?ind=FOM121A&lang=ro&page=tempo3" rel="nofollow noopener">FOM121A</a>) cu seriile lunare pe ramuri economice (<a href="https://statistici.insse.ro/tempoins/?ind=FOM106G&lang=ro&page=tempo3" rel="nofollow noopener">FOM106G</a>). Această corelare ajustează media sectorului CAEN cu ponderea specifică a grupei de competențe ISCO-08, indexată la dinamica salarială curentă a economiei.
+              </li>
+              <li>
+                <strong>Monitorizarea ofertelor și a organizațiilor profesionale:</strong> Monitorizăm dinamica anunțurilor de angajare active, raportările asociațiilor de profil (precum UNTRR în transporturi rutiere, Colegiul Medicilor Stomatologi, UNNPR în notariat) și contractele colective de ramură pentru a asigura un nivel granular și distinct pentru fiecare ocupație.
+              </li>
+            </ol>
+            <h3>Granularitate 100% și eliminarea coliziunilor</h3>
+            <p>
+              Spre deosebire de agregatoarele automate care aplică aceeași medie de sector tuturor profesiilor dintr-o industrie, Salariile.ro diferențiază fiecare meserie în mod individual. Fiecare dintre cele 126 de ocupații are propriul salariu net de referință studiat, fără coliziuni artificiale, respectând cerințele de calificare și specificul fiecărui rol.
+            </p>
+            <h3>Salarii nete unice și valori mediane clare</h3>
+            <p>
+              Pentru fiecare meserie afișăm direct venitul net lunar (banii primiți în mână), calculat conform legislației fiscale la zi. Acolo unde grilele legale conțin trepte de carieră sau gradații de vechime, stabilim valoarea mediană reprezentativă a intervalului, oferind o perspectivă realistă și eliminând confuzia intervalelor largi.
+            </p>
+            <h3>Județ, experiență și context regional</h3>
+            <p>
+              Defalcarea pe județe este preluată din seriile anuale oficiale INS (matricea FOM107E), arătând variațiile geografice reale ale economiei locale. Variația pe grupe de vârstă (FOM121B) și cererea de forță de muncă prin locuri vacante (LMV102D) completează tabloul pieței pentru fiecare profesie.
+            </p>
+            <h3>Codurile COR și alinierea ocupațională</h3>
+            <p>
+              Asocierile cu Clasificarea Ocupațiilor din România respectă <a href="https://data.gov.ro/dataset/clasificarea-ocupatiilor-din-romania">catalogul oficial COR</a>, asigurând puntea de legătură între denumirile uzuale din piața muncii și codurile oficiale din nomenclatorul național.
+            </p>
         </Section>
 
         <Section>

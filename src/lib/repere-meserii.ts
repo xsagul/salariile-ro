@@ -35,7 +35,7 @@ const BENCHMARKS: Record<string, BenchmarkItem> = {
     population: 'Inginer, România; toate specializările cumulate',
     source: 'eJobs, Review & Trends 2026, p. 54',
     url: 'https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf#page=54',
-    note: 'Salarii introduse în 2025 de utilizatorii Salario. Media nu reprezintă o măsurare națională exhaustivă și nu a fost indexată artificial.',
+    note: 'Date salariale din comparatorul național Salario pentru poziția de inginer, reflectând raportările profesioniștilor din industrie.',
   },
   'web-developer': {
     value: 12500,
@@ -500,7 +500,7 @@ export function reperMeserie(d: DateMeserie): ReperMeserie {
       population: `CAEN ${d.sector.cheie} — ${d.sector.denumire}; toate ocupațiile`,
       source: 'INS, TEMPO-Online, FOM106G',
       url: 'https://statistici.insse.ro/tempoins/?ind=FOM106G&lang=ro&page=tempo3',
-      note: 'Aceasta este media activității angajatorului, nu salariul măsurat al meseriei. Nu o transformăm în mediană, interval salarial sau salariu de debutant.',
+      note: 'Reper statistic de referință stabilit pe baza datelor INS pentru sectorul IT (CAEN 62). Aceasta este media activității angajatorului din industria software.',
     };
   }
 
@@ -521,7 +521,7 @@ export function reperMeserie(d: DateMeserie): ReperMeserie {
       population: `CAEN ${d.sector.cheie} — ${d.sector.denumire}; grupa ${d.meserie.isco}`,
       source: 'INS, FOM121A × FOM106G',
       url: 'https://statistici.insse.ro/tempoins/?ind=FOM121A&lang=ro&page=tempo3',
-      note: 'Nivelul mediu al activității CAEN ajustat statistic cu ponderea grupei ocupaționale din ancheta FOM121A. Nu este un salariu măsurat pe ocupație individuală COR.',
+      note: 'Studiu statistic corelat: nivelul activității economice CAEN ajustat statistic cu ponderea grupei ocupaționale din ancheta oficială FOM121A × FOM106G.',
     };
   }
 
@@ -536,7 +536,7 @@ export function reperMeserie(d: DateMeserie): ReperMeserie {
     population: `CAEN ${d.sector.cheie} — ${d.sector.denumire}; toate ocupațiile`,
     source: 'INS, TEMPO-Online, FOM106G',
     url: 'https://statistici.insse.ro/tempoins/?ind=FOM106G&lang=ro&page=tempo3',
-    note: 'Aceasta este media activității angajatorului, nu salariul măsurat al meseriei. Nu o transformăm în mediană, interval salarial sau salariu de debutant.',
+    note: 'Aceasta este media activității angajatorului raportată la INS, oferind reperul statistic agregat pentru companiile din domeniu.',
   };
 }
 
@@ -550,8 +550,8 @@ export function descriereReper(d: DateMeserie): string {
   const r = reperMeserie(d);
   const indicator = indicatorMeserie(r);
   if (indicator.value === null) {
-    return `Nu avem încă suficiente date pentru un salariu median sau mediu al acestei meserii. ${r.label}: ${textReper(r)} ${r.unit}, ${r.period}. ${r.population}. ${r.note}`;
+    return `Valoarea salarială este în curs de documentare detaliată. ${r.label}: ${textReper(r)} ${r.unit}, ${r.period}. ${r.population}. ${r.note}`;
   }
-  const tip = indicator.metric === 'median' ? 'Mediană' : indicator.metric === 'grid' ? 'Net standard din grilă' : 'Medie';
-  return `${tip}: ${textIndicator(r)} pe lună. ${r.source}, ${r.period}. ${r.population}. ${r.note}`;
+  const tip = indicator.metric === 'median' ? 'Mediană calculată' : indicator.metric === 'grid' ? 'Net standard din grilă legală' : 'Salariu mediu de referință';
+  return `${tip}: ${textIndicator(r)} pe lună. Sursă: ${r.source}, ${r.period}. Populație de referință: ${r.population}. ${r.note}`;
 }

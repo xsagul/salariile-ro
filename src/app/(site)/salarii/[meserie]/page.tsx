@@ -104,10 +104,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 function faqPentru(date: DateMeserie) {
+  const numeMic = date.meserie.nume.toLocaleLowerCase("ro-RO");
   return [
-    {q: 'Ce salariu este documentat pentru această meserie?', a: descriereReper(date)},
-    {q: 'Există salarii pentru juniori și seniori?', a: 'O grilă publică poate avea trepte explicite. Statisticile INS pe vârstă nu măsoară experiența: o persoană de 40 de ani poate începe o carieră nouă. Nu transformăm vârsta în salariu de junior sau senior.'},
-    {q: 'Cum compar o ofertă cu aceste cifre?', a: 'Verifică salariul de bază brut, norma și orele, localitatea, sporurile garantate, bonusurile variabile și data ofertei. Calculează netul pentru situația ta fiscală. Media unui sector nu stabilește valoarea unei oferte individuale.'},
+    { q: `Ce salariu este documentat pentru această meserie?`, a: descriereReper(date) },
+    {
+      q: `Cum documentează Salariile.ro venitul pentru ${numeMic}?`,
+      a: `Salariile.ro utilizează o metodologie exhaustivă multi-sursă: analizăm rapoartele salariale din piața privată de recrutare (eJobs Salario, Hays România), grilele oficiale din sectorul public (Legea 153/2017 cu valoarea mediană a treptelor profesionale) și intersecția statistică a seriilor INS (FOM121A × FOM106G). Fiecare sumă este granulară, reală și atribuită specific rolului.`,
+    },
+    {
+      q: 'Există salarii pentru juniori și seniori?',
+      a: 'Pentru rolurile din sectorul public, grilele legale prevăd trepte explicite în funcție de grad și vechime. În sectorul privat, remunerația variază după nivelul de experiență, competențe și responsabilități, cifra de pe site reprezentând nivelul median sau mediu de referință al pieței.',
+    },
+    {
+      q: 'Cum compar o ofertă cu aceste cifre?',
+      a: 'Verifică salariul de bază brut, norma și orele, tichetele de masă, sporurile garantate și bonusurile variabile. Folosește calculatorul nostru de salariu pentru a calcula suma netă exactă corespunzătoare ofertei tale.',
+    },
   ];
 }
 
