@@ -10,7 +10,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Breadcrumb, Faq, H1, Lead } from "@/app/components/ui";
 import {
-  CardCifra,
   GraficSerie,
   LinkCard,
   NotaSursa,
@@ -45,9 +44,11 @@ import {
   meseriiDinCategorie,
   type DateMeserie,
 } from "@/lib/meserii";
-import { denumireScurtaCaen } from "@/lib/caen-denumiri";
 import { SURSA_GRILE, grilaPublica } from "@/lib/grile-publice";
-import { cifreMeserie, intersectie } from "@/lib/ocupatii-caen";
+import ReperSalariu from '@/app/components/ReperSalariu';
+import { descriereReper, grilaEducatie } from '@/lib/repere-meserii';
+import corCatalogue from '@/data/cor-meserii.json';
+import { calculStandard } from '@/lib/fiscal';
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
 
@@ -72,21 +73,16 @@ const TITLU_MAX = 60;
  * corpul sa nu poata diverge. Ordinea: intersectia activitate x ocupatie, apoi
  * netul observat in sector, apoi calculul standard.
  */
-function netPrincipal(date: DateMeserie) {
-  return cifreMeserie(date.meserie.caen2, date.meserie.isco, {
-    net: date.netObservat ?? date.netStandard,
-    brut: date.sector.brutCurent,
-  }).net;
-}
+
 
 function titluPagina(date: DateMeserie) {
-  const scurt = `Salariu ${date.meserie.nume.toLocaleLowerCase("ro-RO")} 2026: ${lei(netPrincipal(date))} lei net`;
+  const scurt = `Salariu ${date.meserie.nume.toLocaleLowerCase("ro-RO")} 2026`;
   return scurt.length + BRAND.length <= TITLU_MAX ? `${scurt}${BRAND}` : scurt;
 }
 
 function descrierePagina(date: DateMeserie) {
   const numeMic = date.meserie.nume.toLocaleLowerCase("ro-RO");
-  return `${lei(netPrincipal(date))} lei net/lună pentru ${numeMic}, din datele INS pe grupa de ocupații din sectorul asociat, indexate la ${LUNA}. Vezi brutul, diferența pe sexe, județele și vârstele.`;
+  return `Salariu ${numeMic} în 2026: net lunar, trepte salariale și comparații cu meserii înrudite. Surse citate și date INS pentru contextul regional.`;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -108,74 +104,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 function faqPentru(date: DateMeserie) {
-  const { meserie, sector, isco, judete, interval, clasament, repere } = date;
-  const X = intersectie(meserie.caen2, meserie.isco);
-  const numeMic = meserie.nume.toLocaleLowerCase("ro-RO");
-  const primele = judete.slice(0, 3).map((j) => j.judet).join(", ");
-  const netCurent = netPrincipal(date);
-
-  // Raspunsurile din FAQ ajung in SERP ca rich result. Dau intai suma neta
-  // cautata de utilizator, apoi explica pe scurt baza statistica.
-  const intrebari = [
-    {
-      q: `Cât câștigă un ${numeMic} în România în 2026?`,
-      a: `Ca reper actual, un ${numeMic} câștigă aproximativ ${lei(netCurent)} lei net pe lună în 2026. Cifra este media netă observată de INS în activitatea CAEN ${sector.cheie} (${sector.denumire}) din ${LUNA}. Salariul concret poate fi mai mic sau mai mare, în funcție de experiență, firmă, oraș și responsabilități.`,
-    },
-    {
-      q: `Care este salariul net al unui ${numeMic}?`,
-      a: X
-        ? `Aproximativ ${lei(netPrincipal(date))} lei net pe lună. Pornim de la media sectorului la ${LUNA} — ${lei(sector.brutCurent)} lei brut — și o ajustăm cu raportul dintre grupa „${isco?.nume ?? ""}” și media aceluiași sector, măsurat de INS pe ${lei(X.salariati ?? 0)} de salariați. Nivelul e actual; doar raportul dintre grupe vine din ancheta anuală, pentru că INS nu publică salarii pe ocupații individuale.`
-        : `Reperul este ${lei(netCurent)} lei net pe lună, media observată de INS în sectorul asociat meseriei. Pentru această ocupație INS nu publică o cifră pe grupa de ocupații din sector, pentru că administrația publică nu intră în ancheta salarială.`,
-    },
+  return [
+    {q: 'Ce salariu este documentat pentru această meserie?', a: descriereReper(date)},
+    {q: 'Există salarii pentru juniori și seniori?', a: 'O grilă publică poate avea trepte explicite. Statisticile INS pe vârstă nu măsoară experiența: o persoană de 40 de ani poate începe o carieră nouă. Nu transformăm vârsta în salariu de junior sau senior.'},
+    {q: 'Cum compar o ofertă cu aceste cifre?', a: 'Verifică salariul de bază brut, norma și orele, localitatea, sporurile garantate, bonusurile variabile și data ofertei. Calculează netul pentru situația ta fiscală. Media unui sector nu stabilește valoarea unei oferte individuale.'},
   ];
-
-  if (repere?.inceput) {
-    intrebari.push({
-      q: `Cât câștigă un ${numeMic} la început de carieră?`,
-      a: `Pentru începutul de carieră, reperul grupei ISCO la 20–24 de ani este ${lei(repere.inceput.net)} lei net pe lună, calculat din ${lei(repere.inceput.brut)} lei brut și indexat la ${LUNA}. Este o orientare pentru grupa largă „${isco?.nume ?? ""}”; oferta concretă depinde de angajator, oraș și pregătire.`,
-    });
-  }
-
-  if (judete.length > 0) {
-    intrebari.push({
-      q: `În ce județe se câștigă cel mai bine ca ${numeMic}?`,
-      a: `Ca medie lunară a întregului an ${AN_JUDETE_SCURT}, cele mai mari câștiguri salariale medii brute din activitatea CAEN Rev.2 asociată meseriei au fost în ${primele}. Vârful a fost ${lei(judete[0].brut)} lei brut în ${judete[0].judet}, iar valoarea cea mai mică ${lei(judete[judete.length - 1].brut)} lei, în ${judete[judete.length - 1].judet}. Sunt medii brute istorice ale sectorului, nu salarii nete ale meseriei și nu salariul minim din 2026.`,
-    });
-  }
-
-  if (interval) {
-    intrebari.push({
-      q: `Cum variază media sectorului pe județe pentru un ${numeMic}?`,
-      a: `În seria anuală INS pentru ${AN_JUDETE_SCURT}, câștigul salarial mediu brut lunar al sectorului asociat meseriei a fost între ${lei(interval.minim.brut)} lei în ${interval.minim.judet} și ${lei(interval.maxim.brut)} lei în ${interval.maxim.judet}. Acestea sunt mediile activității CAEN Rev.2 calculate pentru întregul an, nu un minim și un maxim salarial al meseriei.`,
-    });
-  }
-
-  if (clasament) {
-    intrebari.push({
-      q: `Este ${numeMic} o meserie bine plătită?`,
-      a: `Raportat la celelalte activități urmărite pe site, sectorul în care lucrează un ${numeMic} este pe locul ${clasament.loc} din ${clasament.total}, după câștigul mediu brut din ${LUNA}.${clasament.laEgalitate > 0 ? ` Locul este al activității, nu al ocupației: încă ${clasament.laEgalitate} ${clasament.laEgalitate === 1 ? "meserie din catalog împarte" : "meserii din catalog împart"} aceeași poziție, pentru că împart aceeași activitate CAEN.` : ""} Comparația corectă se face între sectoare, nu între persoane.`,
-    });
-  }
-
-  if (isco) {
-    const tanar = isco.varste.find((v) => v.varsta === "25-29 ani");
-    const matur = isco.varste.find((v) => v.varsta === "40-44 ani");
-    if (tanar && matur) {
-      intrebari.push({
-        q: `Cum crește salariul cu experiența pentru un ${numeMic}?`,
-        a: `Meseria intră în grupa majoră de ocupații „${isco.nume}”. În ancheta INS din octombrie ${AN_ANCHETA}, venitul brut realizat în această grupă a fost ${lei(tanar.venitBrut)} lei la 25–29 de ani și ${lei(matur.venitBrut)} lei la 40–44 de ani, adică o creștere de ${procent((matur.venitBrut - tanar.venitBrut) / tanar.venitBrut, 0)}% între cele două praguri de vârstă.`,
-      });
-    }
-  }
-
-  if (meserie.cor) {
-    intrebari.push({
-      q: `Ce cod COR are meseria de ${numeMic}?`,
-      a: `Codul COR folosit uzual pentru ${numeMic} este ${meserie.cor}. Codul se trece în contractul individual de muncă și în registrul general de evidență a salariaților; nu determină salariul, dar determină grupa de ocupații în care intră postul în statistici.`,
-    });
-  }
-
-  return intrebari;
 }
 
 export default async function MeseriePage({ params }: Props) {
@@ -187,11 +120,12 @@ export default async function MeseriePage({ params }: Props) {
   const { sector, isco, judete, categorie, interval, clasament } = date;
   // Celula comuna activitate x ocupatie. `null` pentru administratia publica,
   // pe care INS nu o include in ancheta salariala.
-  const X = intersectie(meserie.caen2, meserie.isco);
+
   const numeMic = meserie.nume.toLocaleLowerCase("ro-RO");
   // Grila legala, doar pentru meseriile bugetare. `null` pentru restul.
   const grila = grilaPublica(meserie.slug);
-  const netCurent = netPrincipal(date);
+  const grilaDidactica = grilaEducatie(meserie.slug);
+
   const variatie = variatieAnuala(sector.net);
   const faq = faqPentru(date);
   const similare = meseriiDinCategorie(categorie.slug).filter((m) => m.slug !== meserie.slug).slice(0, 6);
@@ -227,7 +161,7 @@ export default async function MeseriePage({ params }: Props) {
           logo: { "@type": "ImageObject", url: "https://salariile.ro/og-image.png", width: 1200, height: 630 },
         },
         mainEntityOfPage: `https://salariile.ro/salarii/${slug}`,
-        dateModified: "2026-08-25",
+        dateModified: "2026-09-06",
       },
       {
         "@type": "FAQPage",
@@ -254,78 +188,24 @@ export default async function MeseriePage({ params }: Props) {
             ]}
           />
           <H1>Salariu {numeMic} în 2026</H1>
-          <Lead>
-            {X ? (
-              <>
-                Un {numeMic} câștigă în medie{" "}
-                <strong>{lei(cifreMeserie(meserie.caen2, meserie.isco, { net: netCurent, brut: sector.brutCurent }).net)} lei net pe lună</strong>, din{" "}
-                <strong>{lei(cifreMeserie(meserie.caen2, meserie.isco, { net: netCurent, brut: sector.brutCurent }).brut)} lei brut</strong>. Nivelul e cel
-                al sectorului la {LUNA}, ajustat cu cât câștigă grupa „{isco?.nume ?? ""}” față de media sectorului.
-              </>
-            ) : (
-              <>
-                Ca reper, un {numeMic} câștigă aproximativ <strong>{lei(netCurent)} lei net pe lună</strong> în 2026 —
-                media netă observată de INS în sectorul CAEN {sector.cheie}, actualizată pentru {LUNA}.
-              </>
-            )}
-          </Lead>
-
-          {/*
-            DOUA cifre, nu patru. Pana pe 31 august 2026 pagina arata media
-            sectorului, brutul sectorului, reperul grupei ISCO si reperul de
-            inceput de cariera — plus un paragraf care explica cum sa le citesti.
-            Patru repere cu greutate egala nu ajuta pe nimeni: omul cauta „cat
-            castiga un web developer", nu un tabel statistic. Restul reperelor
-            raman mai jos in pagina, unde nu concureaza cu raspunsul.
-          */}
-          <div className="mt-8 grid gap-4 sm:grid-cols-2">
-            <CardCifra
-              accent
-              eticheta="Câștig net lunar"
-              valoare={lei(cifreMeserie(meserie.caen2, meserie.isco, { net: netCurent, brut: sector.brutCurent }).net)}
-              unitate="lei net"
-              nota={
-                X
-                  ? `Media sectorului ${denumireScurtaCaen(sector.cheie, sector.denumire).toLocaleLowerCase("ro-RO")} la ${LUNA}, ajustată cu raportul grupei „${isco?.nume ?? ""}” față de sector, din ancheta INS.`
-                  : `Media netă INS din sectorul CAEN ${sector.cheie}, ${LUNA}.`
-              }
-            />
-            <CardCifra
-              eticheta="Salariu brut"
-              valoare={lei(cifreMeserie(meserie.caen2, meserie.isco, { net: netCurent, brut: sector.brutCurent }).brut)}
-              unitate="lei brut"
-              nota={
-                X
-                  ? `Suma din contract, înainte de CAS, CASS și impozit. Netul de alături e calculat din ea.`
-                  : `Media tuturor salariaților din CAEN ${sector.cheie}, ${LUNA}.`
-              }
-            />
-          </div>
-
-          {X && (
-            <p className="mt-4 rounded-md border border-stone-200 bg-surface p-4 text-sm leading-normal text-stone-600 shadow-soft">
-              <strong className="font-semibold text-stone-900">Ce măsoară cifra:</strong> nivelul curent al sectorului,
-              ajustat cu cât câștigă grupa „{isco?.nume ?? ""}” față de media aceluiași sector. Nivelul e de la {LUNA};
-              raportul dintre grupe vine din ancheta INS din octombrie {X.an.replace("Anul ", "")}, pentru că mai fin
-              de-atât nu se publică. Meserii înrudite din aceeași grupă apar cu aceeași valoare.{" "}
-              <Link href="/metodologie" className="font-medium text-stone-900 underline underline-offset-2 hover:text-stone-600">
-                Metodologia completă
-              </Link>
-              .
-            </p>
-          )}
-
-          {X?.peSexe && (
-            <p className="mt-4 text-sm leading-normal text-stone-600">
-              În aceeași grupă și același sector, bărbații câștigă {lei(X.peSexe.masculin)} lei brut și femeile{" "}
-              {lei(X.peSexe.feminin)} lei — o diferență de{" "}
-              <strong className="font-semibold text-stone-900">{X.peSexe.diferentaProcent}%</strong>.{" "}
-              <Link href="/salarii/femei-barbati" className="font-medium text-stone-900 underline underline-offset-2 hover:text-stone-600">
-                Vezi diferența pe toată economia
-              </Link>
-              .
-            </p>
-          )}
+          <Lead>{meserie.ceFace} Vezi salariul net și compară meserii înrudite.</Lead>
+          <ReperSalariu date={date} />
+          {grilaDidactica.length > 0 && <section className="mt-8 rounded-md border border-stone-200 bg-surface p-5">
+            <h2 className="text-xl font-bold">Grad didactic, studii și vechime în învățământ</h2>
+            <p className="mt-3 text-sm text-stone-600">Net standard pe trepte didactice.</p>
+            <div className="mt-4 max-h-96 overflow-auto"><table className="w-full min-w-[32rem] text-sm">
+              <caption className="sr-only">Grila didactică: funcție, studii, vechime și salariu de bază brut</caption>
+              <thead><tr>{['Funcție și grad','Studii','Vechime în învățământ','Net lunar'].map(h=><th key={h} scope="col" className="border-b p-3 text-left">{h}</th>)}</tr></thead>
+              <tbody>{grilaDidactica.map((r,i)=><tr key={i}><th scope="row" className="border-b border-stone-100 p-3 text-left font-normal">{r.functie}</th><td className="p-3">{r.studii}</td><td className="p-3">{r.vechime}</td><td className="whitespace-nowrap p-3 font-semibold">{lei(calculStandard(r.iun2024)!.net)} lei</td></tr>)}</tbody>
+            </table></div>
+            <Link href="/calculator-salariu-invatamant" className="mt-4 inline-flex min-h-11 items-center underline underline-offset-4">Calculează salariul cu gradația și majorările tale</Link>
+          </section>}
+          <nav aria-label="În această pagină" className="mt-6 flex flex-wrap gap-4 text-sm underline underline-offset-4">
+            <a href="#profil" className="min-h-11 py-3">Meserie și COR</a>
+            <a href="#piata" className="min-h-11 py-3">Evoluția sectorului</a>
+            <a href="#oferta" className="min-h-11 py-3">Verifică oferta</a>
+            <Link href="/compara" className="min-h-11 py-3">Compară meseriile</Link>
+          </nav>
 
           {meserie.nota && (
             <p className="mt-4 rounded-md border border-stone-300 bg-surface p-4 text-sm leading-normal text-stone-700 shadow-soft">
@@ -415,17 +295,9 @@ export default async function MeseriePage({ params }: Props) {
               {grila && (
                 <section className="mb-12">
                   <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">
-                    Cât ia un {numeMic} în sistemul public, după lege
+                    Grila pentru {numeMic}: funcții și trepte
                   </h2>
-                  <p className="mt-4 text-base leading-normal text-stone-600">
-                    Aici nu estimăm. Pentru {numeMic} din {grila.domeniu}, suma e stabilită prin lege, pe fiecare
-                    treaptă, în {grila.anexa} la Legea-cadru nr. 153/2017. Cifrele de mai jos sunt{" "}
-                    <strong>
-                      {grila.numeSuma} la gradația 0
-                    </strong>
-                    , la nivelul {grila.coloana} — adică înainte de gradația de vechime și de sporuri. Un angajat cu
-                    vechime ia mai mult.
-                  </p>
+                  <p className="mt-4 text-sm text-stone-600">Net standard pe trepte, în {grila.domeniu}.</p>
                   <TabelGrila grila={grila} meserie={numeMic} />
                   {grila.nota && <p className="mt-4 text-sm leading-normal text-stone-600">{grila.nota}</p>}
                   <NotaSursa>
@@ -435,7 +307,7 @@ export default async function MeseriePage({ params }: Props) {
                     </a>
                     . Netul e calculat de noi din brut, în condiții standard (fără persoane în întreținere), cu cotele
                     din 2026. Grila se aplică personalului plătit din fonduri publice; în privat salariul se
-                    negociază, iar reperul potrivit rămâne media din secțiunile de mai jos.
+                    negociază, iar grila publică nu stabilește salariul negociat.
                   </NotaSursa>
                 </section>
               )}
@@ -446,11 +318,11 @@ export default async function MeseriePage({ params }: Props) {
                 </h2>
                 <p className="mt-4 text-base leading-normal text-stone-600">{meserie.ceFace}</p>
                 <p className="mt-4 text-base leading-normal text-stone-600">
-                  În statistica oficială, postul apare de două ori și în două feluri: prin activitatea angajatorului
-                  (CAEN {sector.cheie} — {sector.denumire.toLocaleLowerCase("ro-RO")}) și prin grupa majoră de
-                  ocupații {isco ? `„${isco.nume}”` : "din clasificarea ISCO-08"}
-                  {meserie.cor ? `, corespunzătoare codului COR ${meserie.cor}` : ""}. Cele două nu se suprapun: în
-                  aceeași activitate lucrează și specialiști, și personal administrativ, și muncitori.
+                  Activitatea angajatorului este CAEN {sector.cheie} — {sector.denumire}. Grupa ocupațională folosită pentru contextul statistic este {isco?.nume ?? 'ISCO-08'}. Aceste clasificări descriu populații mai largi decât meseria.
+                </p>
+                <p className="mt-4 text-sm leading-relaxed text-stone-600">
+                  {meserie.cor ? <>Exemplu de specializare COR: <strong>{meserie.cor}</strong> — {corCatalogue.occupations[meserie.slug as keyof typeof corCatalogue.occupations]?.name}. Verifică dacă denumirea și atribuțiile corespund postului tău. </> : <>Titlul acestei pagini poate acoperi mai multe încadrări; codul exact se stabilește după atribuțiile postului. </>}
+                  Referință: <a href={corCatalogue.source} className="underline">catalogul oficial COR, instantaneul din 22 aprilie 2024</a>. Modificările ulterioare trebuie verificate înaintea unei încadrări contractuale; acesta nu este un registru consolidat la zi.
                 </p>
               </section>
 
@@ -480,10 +352,10 @@ export default async function MeseriePage({ params }: Props) {
               {isco && isco.varste.length > 0 && (
                 <section className="mt-12">
                   <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">
-                    Cât contează vechimea
+                    Vârsta și veniturile grupei ISCO
                   </h2>
                   <p className="mt-4 text-base leading-normal text-stone-600">
-                    Aici nu mai vorbim despre sector, ci despre ocupație. Ancheta INS din octombrie {AN_ANCHETA}{" "}
+                    Aceste date descriu grupa majoră de ocupații, nu experiența în meseria individuală. Ancheta INS din octombrie {AN_ANCHETA}{" "}
                     publică, pentru grupa „{isco.nume}”, atât salariul de bază de încadrare, cât și venitul brut
                     realizat — adică baza plus sporuri, prime și ore suplimentare. Diferența dintre coloane arată cât
                     din câștig vine din afara încadrării.
@@ -649,7 +521,7 @@ export default async function MeseriePage({ params }: Props) {
               </section>
             </div>
 
-            <aside className="min-w-0 lg:col-span-1">
+            <aside id="oferta" className="min-w-0 lg:col-span-1">
               <div className="rounded-md border border-stone-200 bg-surface p-6 shadow-soft">
                 <h2 className="text-lg font-semibold tracking-[-0.01em] text-stone-900">Calculează-ți net-ul</h2>
                 <p className="mt-2 text-sm leading-normal text-stone-600">
@@ -718,9 +590,9 @@ export default async function MeseriePage({ params }: Props) {
                 {trimestruScurt(PERIOADA_VACANTE)})
               </>
             ) : null}
-            . Reutilizare conform licenței pentru o guvernare deschisă. Netul standard este calculat de
+            . Netul standard este calculat de
             Salariile.ro cu regulile în vigoare din 1 iulie 2026 — vezi{" "}
-            <Link href="/metodologie">metodologia</Link>. Cifra principală vine din matricea FOM121A (câștig pe grupe de ocupații și activități, anual, octombrie). Valorile sunt repere la nivel de grupă și sector;
+            <Link href="/metodologie">metodologia</Link>. Fiecare reper salarial este citat separat în partea de sus a paginii. Valorile sunt repere la nivel de grupă și sector;
             oferta individuală variază în funcție de rol, experiență, angajator și localitate.
           </NotaSursa>
         </div>

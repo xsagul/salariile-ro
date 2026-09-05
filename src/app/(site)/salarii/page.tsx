@@ -22,7 +22,7 @@ import {
   totalOcupatii,
 } from "@/lib/ins-date";
 import { CATEGORII, MESERII, dateMeserie, meseriiDinCategorie } from "@/lib/meserii";
-import { cifreMeserie } from "@/lib/ocupatii-caen";
+import { reperMeserie, textReper } from '@/lib/repere-meserii';
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
 
@@ -30,7 +30,7 @@ const LUNA = lunaLunga(LUNA_REFERINTA);
 const NET_STANDARD_ECONOMIE = calculStandard(TOTAL_ECONOMIE.brutCurent)?.net ?? 0;
 const OCUPATII_TOTAL = totalOcupatii();
 
-const DESCRIERE = `Salarii nete pentru ${MESERII.length} meserii din România, cu mediile INS actualizate la ${LUNA}. Vezi netul lunar, brutul, experiența și diferențele pe județe.`;
+const DESCRIERE = `Salarii pentru ${MESERII.length} meserii: repere din surse citate, grile publice și context INS. Caută meseria și compară perioada, brutul și netul.`;
 
 export const metadata: Metadata = {
   title: { absolute: `Salarii pe meserii în România 2026 | Salariile.ro` },
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
 const FAQ = [
   {
     q: "Publică INS salariul mediu pentru fiecare meserie?",
-    a: `Pentru fiecare meserie afișăm netul și brutul grupei de ocupații din sectorul în care lucrează de regulă — cea mai fină combinație publicată de INS. Nu există salarii pe ocupații individuale, așa că meserii înrudite din aceeași grupă apar cu aceeași valoare. Salariul concret variază după experiență, firmă și localitate.`,
+    a: `INS publică activități CAEN și grupe majore ISCO, inclusiv intersecția lor, nu salarii pentru fiecare cod COR. Pagina meseriei separă aceste medii de grilele publice și de mediile pe meserii din surse externe.`,
   },
   {
     q: "Cât este câștigul salarial mediu pe economie acum?",
@@ -126,11 +126,7 @@ export default function SalariiPage() {
         <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
           <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Salarii pe meserii" }]} />
           <H1>Salarii pe meserii în România</H1>
-          <Lead>
-            Vezi direct cât se câștigă <strong>net</strong> în cele {MESERII.length} de meserii, cu datele INS actualizate
-            până în <strong>{LUNA}</strong>. Suma principală de pe fiecare card este media netă a sectorului asociat;
-            pagina meseriei explică brutul, grupa ocupațională, experiența și diferențele regionale.
-          </Lead>
+          <Lead>Cât se câștigă în mână? Caută meseria și vezi salariul net, apoi compară cu alte ocupații.</Lead>
 
           {/* Fara banda de trei carduri cu media pe economie: impingea lista de
               meserii — motivul pentru care omul intra pe pagina — sub fold.
@@ -209,11 +205,12 @@ export default function SalariiPage() {
                     href={`/salarii/${meserie.slug}`}
                     titlu={meserie.nume}
                     detaliu={`CAEN ${date!.sector.cheie} · ${denumireScurtaCaen(date!.sector.cheie, date!.sector.denumire)}`}
-                    valoare={lei(cifreMeserie(meserie.caen2, meserie.isco, { net: date!.netObservat ?? date!.netStandard, brut: date!.sector.brutCurent }).net)}
-                    subvaloare={`lei net · ${lei(cifreMeserie(meserie.caen2, meserie.isco, { net: date!.netObservat ?? date!.netStandard, brut: date!.sector.brutCurent }).brut)} lei brut`}
+                    valoare={textReper(reperMeserie(date!))}
+                    subvaloare={`${reperMeserie(date!).unit} · ${reperMeserie(date!).label}`}
                     cauta={[
                       meserie.nume,
                       meserie.de,
+                      meserie.cor ?? "",
                       categorie.nume,
                       date!.sector.denumire,
                       date!.isco?.nume ?? "",
@@ -229,10 +226,7 @@ export default function SalariiPage() {
               Ce arată și ce nu arată cifrele de mai sus
             </h2>
             <p className="mt-4 text-base leading-normal text-stone-600">
-              Suma netă din dreptul fiecărei meserii este media observată în activitatea economică unde lucrează de
-              regulă cei care practică meseria — de exemplu, CAEN 62 pentru un programator. Este cel mai actual reper
-              lunar disponibil și include toate nivelurile de experiență; salariul unei persoane poate fi sub sau peste
-              medie.
+              Reperele provin din populații și perioade diferite. O medie declarată de utilizatorii unei surse externe descrie respondenții acelei surse. O grilă descrie funcții publice și trepte. Media INS descrie toate ocupațiile din sector. Nu ordonăm aceste valori într-un clasament al meseriilor.
             </p>
             <p className="mt-4 text-base leading-normal text-stone-600">
               Al doilea net vine dinspre ocupație, nu dinspre angajator: ancheta INS din octombrie publică venitul brut
@@ -247,8 +241,7 @@ export default function SalariiPage() {
               Sursa datelor: Institutul Național de Statistică, TEMPO-Online, matricele {MATRICE_BRUT} și{" "}
               {MATRICE_NET} (serii lunare pe activități CAEN Rev.3, ultima lună {LUNA}) și {MATRICE_OCUPATII}{" "}
               (ancheta din octombrie pe grupe majore de ocupații ISCO-08,{" "}
-              {AN_OCUPATII.toLowerCase().replace("anul", "anul")}). Reutilizare conform licenței pentru o guvernare
-              deschisă. Netul standard este calculat de Salariile.ro, nu de INS. Vezi{" "}
+              {AN_OCUPATII.toLowerCase().replace("anul", "anul")}). Netul standard este calculat de Salariile.ro, nu de INS. Vezi{" "}
               <Link href="/metodologie">metodologia de calcul</Link> și{" "}
               <Link href="/date-salarii">setul de date publicat</Link>.
             </NotaSursa>
@@ -263,7 +256,7 @@ export default function SalariiPage() {
           <div className="rounded-md border border-stone-200 bg-surface p-6 shadow-soft sm:p-8">
             <h2 className="mb-2 text-2xl font-bold tracking-[-0.02em] text-stone-900">Compară două meserii</h2>
             <p className="mb-5 leading-normal text-stone-600">
-              Netul și brutul aceleiași grupe de ocupații din sectorul asociat, puse alături, fără clasarea ori declararea unui câștigător.
+              Repere salariale, atribuții și contextul pieței, cu sursa fiecărei valori la vedere.
             </p>
             <Link
               href="/compara"

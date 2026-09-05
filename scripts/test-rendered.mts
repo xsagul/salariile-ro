@@ -274,9 +274,9 @@ async function auditRenderedSite() {
     // prim-plan. Vechile verificari cereau cardul „Net orientativ · grupa ISCO"
     // si paragraful „Cum citesti sumele" — amandoua scoase deliberat, fiindca
     // patru repere cu greutate egala nu raspundeau la intrebarea cititorului.
-    ["/salarii/programator", "Câștig net lunar", "netul principal, afisat primul"],
-    ["/salarii/programator", "Salariu brut", "brutul din care rezulta netul"],
-    ["/salarii/programator", "Ce măsoară cifra", "limita cifrei, declarata in pagina"],
+    ["/salarii/programator", "Medie publicată de DevJob · oferte", "netul principal, afisat primul"],
+    ["/salarii/programator", "lei net/lună", "brutul din care rezulta netul"],
+    ["/salarii/programator", "Sunt oferte, nu salarii încasate", "limita cifrei, declarata in pagina"],
     ["/salarii/programator", `Brut lunar pe județe · media ${AN_JUDETE}`, "perioada tabelului judetean"],
     ["/salarii/programator", "Nu este salariu net", "separarea tabelului judetean de net"],
     ["/salarii/programator", "salariul minim din 2026", "separarea tabelului judetean de minimul curent"],
@@ -304,7 +304,7 @@ async function auditRenderedSite() {
     ["/salarii/programator", "Cifra e a grupei", "precizarea ca vacantele sunt ale grupei, nu ale meseriei"],
     ["/salarii/locuri-vacante", "Nu sunt anunțuri de angajare", "precizarea ca vacantele INS nu sunt anunturi"],
     ["/salarii/locuri-vacante", "LMV101D", "citarea matricei de rate"],
-    ["/salarii/medic", "Cât contează vechimea", "progresia pe varste din ancheta din octombrie"],
+    ["/salarii/medic", "Vârsta și veniturile grupei ISCO", "progresia pe varste din ancheta din octombrie"],
     ["/compara", "nu declarăm un câștigător", "limita metodologica a hubului de comparatii"],
     ["/compara/programator-vs-medic", "Net, brut și context statistic", "tabelul cu netul inaintea brutului"],
     ["/compara/programator-vs-medic", "nu sunt un minim și un maxim", "avertismentul impotriva intervalului"],
@@ -333,15 +333,12 @@ async function auditRenderedSite() {
     const title = titleFrom(html);
     const descriere = metaDescriptionFrom(html);
     const textVizibil = visibleTextFrom(html);
-    const continutVizibil = html.slice(Math.max(0, html.indexOf("<h1")));
-    const netPrincipalIndex = continutVizibil.indexOf("Câștig net lunar orientativ");
-    const primulBrutIndex = continutVizibil.indexOf("lei brut");
     // Din 31 august 2026 pagina duce O singura cifra in prim-plan — netul din
     // intersectia activitate x ocupatie — plus brutul ei. Reperele ISCO si cel
     // de inceput de cariera au coborat in FAQ, ca sa nu concureze raspunsul.
     // Garantia ramane aceeasi: limita cifrei trebuie DECLARATA in pagina.
-    if (!html.includes("Câștig net lunar")) failures.push(`${pathname}: lipseste netul principal`);
-    if (!html.includes("Salariu brut")) failures.push(`${pathname}: lipseste brutul`);
+    if (!html.includes("data-salary-kind=")) failures.push(`${pathname}: lipsește tipul sursei salariale`);
+    if (!html.includes("Sursa și detaliile cifrei")) failures.push(`${pathname}: lipsește acoperirea statistică`);
     if (!/nu a meseriei în sine|repere la nivel de grupă și sector/.test(html))
       failures.push(`${pathname}: lipseste limita declarata a cifrei`);
     if (html.includes("Interval pe județe")) failures.push(`${pathname}: tabelul judetean foloseste eticheta ambigua de interval`);
@@ -352,11 +349,9 @@ async function auditRenderedSite() {
       failures.push(`${pathname}: lipseste separarea cifrelor judetene de net si minimul 2026`);
     }
     if (copyIntervalVechi.test(html)) failures.push(`${pathname}: a reaparut copy-ul vechi despre interval`);
-    if (!/[\d.]+ lei net/i.test(title)) failures.push(`${pathname}: titlul nu raspunde cu suma neta`);
-    if (!/^[\d.]+ lei net\/lună/i.test(descriere)) failures.push(`${pathname}: descrierea nu incepe cu suma neta`);
-    if (primulBrutIndex >= 0 && netPrincipalIndex > primulBrutIndex) {
-      failures.push(`${pathname}: brutul apare inaintea cardului net principal`);
-    }
+    if (/[\d.]+ lei (net|brut)/i.test(title)) failures.push(`${pathname}: titlul atribuie o cifră nesusținută meseriei`);
+    if (/^[\d.]+ lei (net|brut)/i.test(descriere)) failures.push(`${pathname}: descrierea atribuie o cifră nesusținută meseriei`);
+
   }
 
   const paginiComparatii = [...rendered.keys()].filter((pathname) => /^\/compara\/[^/]+$/.test(pathname));
@@ -364,16 +359,11 @@ async function auditRenderedSite() {
   for (const pathname of paginiComparatii) {
     const html = rendered.get(pathname) ?? "";
     const descriere = metaDescriptionFrom(html);
-    const continutVizibil = html.slice(Math.max(0, html.indexOf("<h1")));
-    const netPrincipalIndex = continutVizibil.indexOf("Salariu net orientativ");
-    const primulBrutIndex = continutVizibil.indexOf("lei brut");
-    if (!html.includes("Salariu net orientativ")) failures.push(`${pathname}: lipseste netul principal CAEN`);
-    if (!html.includes("Net orientativ · grupa ISCO")) failures.push(`${pathname}: lipseste netul separat ISCO`);
+    if ((html.match(/data-salary-kind=/g) ?? []).length !== 2) failures.push(`${pathname}: comparația trebuie să aibă două repere cu tip declarat`);
+    if (!html.includes("Perioada reperului")) failures.push(`${pathname}: lipsește perioada fiecărui reper`);
     if (!html.includes("nu sunt un minim și un maxim")) failures.push(`${pathname}: lipseste avertismentul anti-interval`);
     if (concluzieComparatieVeche.test(html)) failures.push(`${pathname}: a reaparut o concluzie derivata nepermisa`);
-    if (primulBrutIndex >= 0 && netPrincipalIndex > primulBrutIndex) {
-      failures.push(`${pathname}: brutul apare inaintea cardurilor nete`);
-    }
+
     if (/[\d.]+\s*[–-]\s*[\d.]+\s*lei/.test(descriere)) {
       failures.push(`${pathname}: metadata prezinta din nou un interval numeric`);
     }

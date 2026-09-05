@@ -1,0 +1,513 @@
+{
+  "snapshot": "2024-04-22",
+  "reviewedAt": "2026-09-06",
+  "source": "https://data.gov.ro/dataset/clasificarea-ocupatiilor-din-romania",
+  "license": "OGL-ROU-1.0",
+  "note": "Denumiri din instantaneul oficial indicat; codurile exemplifică specializări, nu certifică încadrarea contractuală și nici consolidarea tuturor modificărilor până în 2026.",
+  "occupations": {
+    "programator": {
+      "code": "251202",
+      "name": "programator"
+    },
+    "web-developer": {
+      "code": "251208",
+      "name": "inginer în realizarea, întreținerea și dezvoltarea aplicațiilor web"
+    },
+    "tester-qa": {
+      "code": "351108",
+      "name": "analist testare software"
+    },
+    "devops-engineer": {
+      "code": null,
+      "name": null
+    },
+    "administrator-sistem": {
+      "code": null,
+      "name": null
+    },
+    "analist-date": {
+      "code": null,
+      "name": null
+    },
+    "inginer-telecomunicatii": {
+      "code": "215204",
+      "name": "inginer electronist transporturi, telecomunicații"
+    },
+    "medic": {
+      "code": "221101",
+      "name": "medic medicină generală"
+    },
+    "asistent-medical": {
+      "code": "325901",
+      "name": "asistent medical generalist"
+    },
+    "stomatolog": {
+      "code": "226101",
+      "name": "medic stomatolog"
+    },
+    "farmacist": {
+      "code": "226201",
+      "name": "farmacist"
+    },
+    "farmacist-industrie": {
+      "code": null,
+      "name": null
+    },
+    "psiholog": {
+      "code": "263401",
+      "name": "psiholog în specialitatea psihologie clinică"
+    },
+    "fizioterapeut": {
+      "code": "226402",
+      "name": "fizioterapeut"
+    },
+    "infirmier": {
+      "code": "532103",
+      "name": "infirmier/infirmieră"
+    },
+    "medic-veterinar": {
+      "code": "225002",
+      "name": "medic veterinar"
+    },
+    "profesor": {
+      "code": "233002",
+      "name": "profesor în învățământul gimnazial"
+    },
+    "invatator": {
+      "code": "234101",
+      "name": "profesor în învățământul primar"
+    },
+    "educator": {
+      "code": "234201",
+      "name": "profesor în învățământul preșcolar"
+    },
+    "profesor-universitar": {
+      "code": "231005",
+      "name": "profesor universitar"
+    },
+    "cercetator": {
+      "code": null,
+      "name": null
+    },
+    "instructor-auto": {
+      "code": "516502",
+      "name": "instructor auto"
+    },
+    "contabil": {
+      "code": "331302",
+      "name": "contabil"
+    },
+    "auditor": {
+      "code": "241107",
+      "name": "auditor financiar"
+    },
+    "analist-financiar": {
+      "code": "241305",
+      "name": "analist financiar"
+    },
+    "ofiter-credite": {
+      "code": "241230",
+      "name": "ofițer bancar (credite, marketing, produse și servicii bancare)"
+    },
+    "agent-asigurari": {
+      "code": "332101",
+      "name": "agent de asigurare"
+    },
+    "broker": {
+      "code": null,
+      "name": null
+    },
+    "consultant-financiar": {
+      "code": null,
+      "name": null
+    },
+    "avocat": {
+      "code": "261101",
+      "name": "avocat"
+    },
+    "notar": {
+      "code": "261906",
+      "name": "notar"
+    },
+    "consilier-juridic": {
+      "code": "261103",
+      "name": "consilier juridic"
+    },
+    "judecator": {
+      "code": "261202",
+      "name": "judecător"
+    },
+    "procuror": {
+      "code": "261201",
+      "name": "procuror"
+    },
+    "inginer": {
+      "code": null,
+      "name": null
+    },
+    "arhitect": {
+      "code": "216101",
+      "name": "arhitect clădiri"
+    },
+    "inginer-electronist": {
+      "code": "215213",
+      "name": "proiectant inginer electronist"
+    },
+    "inginer-auto": {
+      "code": "214412",
+      "name": "inginer autovehicule rutiere"
+    },
+    "inginer-energetician": {
+      "code": "215108",
+      "name": "inginer energetică industrială"
+    },
+    "inginer-petrol": {
+      "code": "214616",
+      "name": "inginer petrolist"
+    },
+    "inginer-agronom": {
+      "code": "213201",
+      "name": "consilier inginer agronom"
+    },
+    "constructor": {
+      "code": null,
+      "name": null
+    },
+    "zidar": {
+      "code": "711205",
+      "name": "zidar roșar-tencuitor"
+    },
+    "dulgher": {
+      "code": "711501",
+      "name": "dulgher (exclusiv restaurator)"
+    },
+    "electrician": {
+      "code": "741101",
+      "name": "electrician în construcții"
+    },
+    "instalator": {
+      "code": "712609",
+      "name": "instalator instalații tehnico-sanitare și de gaze"
+    },
+    "zugrav": {
+      "code": "713102",
+      "name": "zugrav"
+    },
+    "faiantar": {
+      "code": "712201",
+      "name": "faianțar"
+    },
+    "sudor": {
+      "code": "721208",
+      "name": "sudor"
+    },
+    "tamplar": {
+      "code": "752201",
+      "name": "tâmplar universal"
+    },
+    "operator-productie": {
+      "code": null,
+      "name": null
+    },
+    "mecanic-auto": {
+      "code": "723103",
+      "name": "mecanic auto"
+    },
+    "tehnician-mentenanta": {
+      "code": null,
+      "name": null
+    },
+    "metalurgist": {
+      "code": null,
+      "name": null
+    },
+    "miner": {
+      "code": "811101",
+      "name": "miner în subteran"
+    },
+    "croitor": {
+      "code": "753101",
+      "name": "croitor"
+    },
+    "muncitor-industria-alimentara": {
+      "code": null,
+      "name": null
+    },
+    "cofetar": {
+      "code": "751202",
+      "name": "cofetar"
+    },
+    "sofer-tir": {
+      "code": "833201",
+      "name": "conducător auto transport rutier de mărfuri"
+    },
+    "sofer-autobuz": {
+      "code": "833101",
+      "name": "conducător auto transport rutier de persoane"
+    },
+    "taximetrist": {
+      "code": "832201",
+      "name": "șofer de autoturisme și camionete"
+    },
+    "mecanic-locomotiva": {
+      "code": "831101",
+      "name": "mecanic locomotivă și automotor"
+    },
+    "curier": {
+      "code": "962101",
+      "name": "curier"
+    },
+    "postas": {
+      "code": "441206",
+      "name": "factor poștal"
+    },
+    "pilot": {
+      "code": null,
+      "name": null
+    },
+    "insotitor-de-bord": {
+      "code": "511101",
+      "name": "însoțitor de bord"
+    },
+    "logistician": {
+      "code": "214955",
+      "name": "logistician în transporturi"
+    },
+    "vanzator": {
+      "code": "522101",
+      "name": "vânzător"
+    },
+    "casier": {
+      "code": "523003",
+      "name": "casier"
+    },
+    "manager-magazin": {
+      "code": null,
+      "name": null
+    },
+    "agent-vanzari": {
+      "code": "332203",
+      "name": "agent de vânzări"
+    },
+    "bucatar": {
+      "code": "512001",
+      "name": "bucătar"
+    },
+    "chelner": {
+      "code": "513102",
+      "name": "ospătar (chelner)"
+    },
+    "barman": {
+      "code": "513202",
+      "name": "barman preparator"
+    },
+    "receptioner-hotel": {
+      "code": "422401",
+      "name": "recepționer de hotel"
+    },
+    "agent-turism": {
+      "code": "422101",
+      "name": "agent de voiaj"
+    },
+    "functionar-public": {
+      "code": null,
+      "name": null
+    },
+    "politist": {
+      "code": null,
+      "name": null
+    },
+    "pompier": {
+      "code": null,
+      "name": null
+    },
+    "militar": {
+      "code": null,
+      "name": null
+    },
+    "jurnalist": {
+      "code": null,
+      "name": null
+    },
+    "editor": {
+      "code": "264211",
+      "name": "redactor"
+    },
+    "cameraman": {
+      "code": "352131",
+      "name": "cameraman"
+    },
+    "regizor": {
+      "code": "265410",
+      "name": "regizor artistic"
+    },
+    "designer-grafic": {
+      "code": "216601",
+      "name": "designer grafică (studii medii)"
+    },
+    "specialist-marketing": {
+      "code": "243103",
+      "name": "specialist marketing"
+    },
+    "traducator": {
+      "code": "264306",
+      "name": "traducător (studii superioare)"
+    },
+    "actor": {
+      "code": "265501",
+      "name": "actor"
+    },
+    "muzician": {
+      "code": null,
+      "name": null
+    },
+    "fermier": {
+      "code": "613001",
+      "name": "fermier în producția vegetală"
+    },
+    "silvicultor": {
+      "code": "213234",
+      "name": "tehnician silvic - exploatare"
+    },
+    "electrician-centrala": {
+      "code": "741301",
+      "name": "electrician exploatare centrale și stații electrice"
+    },
+    "operator-statie-apa": {
+      "code": "313202",
+      "name": "operator hidraulic în alimentările cu apă"
+    },
+    "operator-salubritate": {
+      "code": "961301",
+      "name": "lucrător pentru salubrizare căi publice"
+    },
+    "agent-paza": {
+      "code": "541401",
+      "name": "agent de securitate"
+    },
+    "agent-curatenie": {
+      "code": "911201",
+      "name": "femeie de serviciu"
+    },
+    "operator-call-center": {
+      "code": null,
+      "name": null
+    },
+    "secretar": {
+      "code": "412001",
+      "name": "secretară"
+    },
+    "specialist-resurse-umane": {
+      "code": "242314",
+      "name": "specialist resurse umane"
+    },
+    "agent-imobiliar": {
+      "code": "333401",
+      "name": "agent imobiliar (broker imobiliar)"
+    },
+    "frizer": {
+      "code": "514102",
+      "name": "frizer"
+    },
+    "cosmetician": {
+      "code": "514201",
+      "name": "cosmetician"
+    },
+    "bibliotecar": {
+      "code": "262202",
+      "name": "bibliotecar (studii superioare)"
+    },
+    "antrenor-sportiv": {
+      "code": "342201",
+      "name": "antrenor"
+    },
+    "preot": {
+      "code": "263627",
+      "name": "preot"
+    },
+    "asistent-social": {
+      "code": "263501",
+      "name": "asistent social"
+    },
+    "operator-cnc": {
+      "code": "722323",
+      "name": "operator la mașini-unelte cu comandă numerică"
+    },
+    "electromecanic": {
+      "code": "742214",
+      "name": "electromecanic"
+    },
+    "operator-chimist": {
+      "code": null,
+      "name": null
+    },
+    "operator-mase-plastice": {
+      "code": "814209",
+      "name": "operator mase plastice"
+    },
+    "operator-rafinarie": {
+      "code": null,
+      "name": null
+    },
+    "sondor": {
+      "code": "811310",
+      "name": "sondor la forajul mecanizat și reparații sonde"
+    },
+    "sticlar": {
+      "code": null,
+      "name": null
+    },
+    "tesator": {
+      "code": "731816",
+      "name": "țesător"
+    },
+    "cizmar": {
+      "code": "753601",
+      "name": "cizmar - confecționer încălțăminte, după comandă"
+    },
+    "tapiter": {
+      "code": "753401",
+      "name": "tapițer"
+    },
+    "bijutier": {
+      "code": "731302",
+      "name": "bijutier metale prețioase"
+    },
+    "tipograf": {
+      "code": "732207",
+      "name": "tipograf-tipăritor"
+    },
+    "constructor-drumuri": {
+      "code": null,
+      "name": null
+    },
+    "marinar": {
+      "code": "835001",
+      "name": "marinar, pilot naval, barjist"
+    },
+    "inginer-aeronautic": {
+      "code": "214437",
+      "name": "proiectant inginer aeronave"
+    },
+    "operator-epurare": {
+      "code": "818902",
+      "name": "operator la tratarea și epurarea apelor uzate"
+    },
+    "crupier": {
+      "code": "421201",
+      "name": "crupier"
+    },
+    "tehnician-calculatoare": {
+      "code": "351103",
+      "name": "tehnician echipamente de calcul și rețele"
+    },
+    "consultant-management": {
+      "code": "263107",
+      "name": "consultant în management"
+    },
+    "pescar": {
+      "code": "622201",
+      "name": "pescar în ape interioare și de coastă"
+    }
+  }
+}

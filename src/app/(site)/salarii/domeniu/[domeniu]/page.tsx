@@ -102,7 +102,7 @@ export default async function DomeniuPage({ params }: Props) {
   const activitati = activitatiDomeniu(date);
   const ceaMaiBine = date[0];
   const ceaMaiProst = date[date.length - 1];
-  const mediaDomeniu = Math.round(date.reduce((sumă, d) => sumă + d.sector.brutCurent, 0) / date.length);
+  const mediaDomeniu = Math.round(activitati.reduce((suma, d) => suma + d.brut, 0) / activitati.length);
   const fataDeEconomie = (mediaDomeniu - TOTAL_ECONOMIE.brutCurent) / TOTAL_ECONOMIE.brutCurent;
   const slugurile = new Set(date.map((d) => d.meserie.slug));
   const comparatii = COMPARATII.filter((c) => slugurile.has(c.a.slug) || slugurile.has(c.b.slug)).slice(0, 6);
@@ -111,11 +111,11 @@ export default async function DomeniuPage({ params }: Props) {
   const intrebari = [
     {
       q: `Cât se câștigă în ${numeMic} în România?`,
-      a: `Cele ${date.length} meserii urmărite aici se împart pe ${activitati.length} ${activitati.length === 1 ? "activitate economică" : "activități economice"} din clasificarea CAEN. În ${LUNA}, câștigul salarial mediu brut al acestor activități a mers de la ${lei(ceaMaiProst.sector.brutCurent)} lei (${ceaMaiProst.sector.denumire.toLocaleLowerCase("ro-RO")}) până la ${lei(ceaMaiBine.sector.brutCurent)} lei (${ceaMaiBine.sector.denumire.toLocaleLowerCase("ro-RO")}). Media simplă a activităților din domeniu este ${lei(mediaDomeniu)} lei brut, ${fataDeEconomie >= 0 ? "peste" : "sub"} media pe economie cu ${procent(Math.abs(fataDeEconomie), 0)}%.`,
+      a: `Cele ${date.length} meserii urmărite aici se împart pe ${activitati.length} ${activitati.length === 1 ? "activitate economică" : "activități economice"} din clasificarea CAEN. În ${LUNA}, câștigul salarial mediu brut al acestor activități a mers de la ${lei(ceaMaiProst.sector.brutCurent)} lei (${ceaMaiProst.sector.denumire.toLocaleLowerCase("ro-RO")}) până la ${lei(ceaMaiBine.sector.brutCurent)} lei (${ceaMaiBine.sector.denumire.toLocaleLowerCase("ro-RO")}). Media aritmetică neponderată a activităților selectate, care nu este salariul mediu al domeniului, este ${lei(mediaDomeniu)} lei brut, ${fataDeEconomie >= 0 ? "peste" : "sub"} media pe economie cu ${procent(Math.abs(fataDeEconomie), 0)}%.`,
     },
     {
       q: `Care este cea mai bine plătită meserie din ${numeMic}?`,
-      a: `După câștigul mediu brut al activității în care lucrează, ${ceaMaiBine.meserie.nume.toLocaleLowerCase("ro-RO")} stă cel mai bine: ${lei(ceaMaiBine.sector.brutCurent)} lei brut în ${LUNA}, în CAEN ${ceaMaiBine.sector.cheie}. Atenție la ce înseamnă cifra: e media tuturor salariaților activității, de la debutant la conducere, nu salariul unei persoane cu această meserie.`,
+      a: `Datele INS disponibile aici nu stabilesc meseria cu cel mai mare salariu. Ele permit compararea activităților economice. Paginile individuale adaugă surse specifice meseriei și grile publice, unde acestea sunt documentate.`,
     },
     {
       q: `De ce mai multe meserii din ${numeMic} au aceeași cifră?`,
@@ -184,15 +184,15 @@ export default async function DomeniuPage({ params }: Props) {
             {categorie.descriere} Sunt <strong>{date.length} meserii</strong>, împărțite pe {activitati.length}{" "}
             {activitati.length === 1 ? "activitate economică" : "activități economice"} din clasificarea CAEN, cu
             datele INS din <strong>{LUNA}</strong>. Fiecare cifră de mai jos este media activității în care lucrează
-            majoritatea celor cu meseria respectivă — nu salariul unei persoane.
+            angajatori asociați editorial meseriei — nu salariul unei persoane.
           </Lead>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <CardCifra
               accent
-              eticheta={`Media domeniului, ${LUNA}`}
+              eticheta={`Medie neponderată CAEN, ${LUNA}`}
               valoare={lei(mediaDomeniu)}
-              nota={`Media simplă a celor ${activitati.length} activități. ${fataDeEconomie >= 0 ? "Peste" : "Sub"} media pe economie cu ${procent(Math.abs(fataDeEconomie), 0)}%.`}
+              nota={`Indicator calculat, nu media salariaților domeniului. Cele ${activitati.length} activități au pondere egală. ${fataDeEconomie >= 0 ? "Peste" : "Sub"} media pe economie cu ${procent(Math.abs(fataDeEconomie), 0)}%.`}
             />
             <CardCifra
               eticheta="Cel mai bine plătit sector"
@@ -299,7 +299,7 @@ export default async function DomeniuPage({ params }: Props) {
             <NotaSursa>
               Sursa: Institutul Național de Statistică, TEMPO-Online — matricele {MATRICE_BRUT} și {MATRICE_NET}{" "}
               (serie lunară pe activități CAEN Rev.3, ultima lună {LUNA}) și {MATRICE_JUDETE} (defalcarea pe județe,
-              CAEN Rev.2, {AN_JUDETE_SCURT}). Reutilizare conform licenței pentru o guvernare deschisă. Gruparea pe
+              CAEN Rev.2, {AN_JUDETE_SCURT}).  Gruparea pe
               domenii aparține Salariile.ro, nu INS. Vezi <Link href="/metodologie">metodologia</Link> și{" "}
               <Link href="/salarii">toate meseriile</Link>.
             </NotaSursa>

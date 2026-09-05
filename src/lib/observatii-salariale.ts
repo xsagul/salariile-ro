@@ -48,6 +48,14 @@ export type ObservatieSalariala = {
   data: string;
   /** Referinta verificabila: URL de document, numar de act, identificator. */
   referinta: string;
+  /** Cohorta trebuie declarată de importator; lipsa ei împiedică publicarea. */
+  perioada?: string;
+  concept?: "baza" | "realizat" | "ofertat";
+  norma?: "intreaga" | "partiala";
+  experienta?: string;
+  /** Identificator stabil al înregistrării, pentru deduplicare. */
+  id?: string;
+  reutilizarePermisa?: boolean;
 };
 
 /**
@@ -55,7 +63,7 @@ export type ObservatieSalariala = {
  * folosesc si competitorii care lucreaza cu sondaje, din acelasi motiv: sub
  * cateva observatii, o „medie" e un accident, nu o masuratoare.
  */
-export const PRAG_PUBLICARE = 5;
+export const PRAG_PUBLICARE = 30;
 
 export type Agregat = {
   meserie: string;
@@ -64,8 +72,9 @@ export type Agregat = {
   /** Numarul de observatii din spatele cifrelor. Se afiseaza intotdeauna. */
   observatii: number;
   median: number;
-  p25: number;
-  p75: number;
+  mean: number;
+  p25: number | null;
+  p75: number | null;
   /** Cea mai veche si cea mai noua observatie folosita. */
   dataPrimei: string;
   dataUltimei: string;
@@ -90,7 +99,7 @@ const cuvinte = (x: string) =>
     .filter(Boolean);
 
 const indexCor = new Map<string, Meserie>();
-for (const m of MESERII) if (m.cor) indexCor.set(m.cor, m);
+for (const m of MESERII) if (m.cor && MESERII.filter(x=>x.cor===m.cor).length === 1) indexCor.set(m.cor, m);
 
 /**
  * Incadreaza un titlu liber intr-o meserie din catalog.
@@ -112,9 +121,8 @@ export function incadreaza(titlu: string, cor?: string): Meserie | null {
   if (cor) {
     const dupaCor = indexCor.get(cor);
     if (dupaCor) return dupaCor;
-    // COR-ul e ierarhic: primele 4 cifre dau grupa de baza.
-    const grupa = cor.slice(0, 4);
-    for (const m of MESERII) if (m.cor?.startsWith(grupa)) return m;
+    // O grupă de bază nu identifică ocupația. Nu ignorăm un COR explicit.
+    return null;
   }
 
   const tokTitlu = new Set(cuvinte(titlu));
@@ -148,7 +156,8 @@ export function agregheaza(
 ): Agregat | null {
   const { meserie, suma, judet = null, prag = PRAG_PUBLICARE } = optiuni;
 
-  const relevante = observatii.filter(
+  if (!Number.isInteger(prag) || prag < PRAG_PUBLICARE) return null;
+  const candidate = observatii.filter(
     (o) =>
       o.meserie === meserie &&
       o.suma === suma &&
@@ -156,13 +165,26 @@ export function agregheaza(
       Number.isFinite(o.minim) &&
       Number.isFinite(o.maxim) &&
       o.minim > 0 &&
-      o.maxim >= o.minim,
+      o.maxim === o.minim &&
+      o.fel !== "lege-153" &&
+      o.reutilizarePermisa === true && !!o.id && !!o.perioada &&
+      !!o.concept && !!o.norma && !!o.experienta &&
+      /^\d{4}-\d{2}-\d{2}$/.test(o.data) &&
+      Number.isFinite(Date.parse(o.data)),
   );
+  // Nu calculăm statistici din intervale, grile sau cohorte incompatibile.
+  const cohorta = new Set(candidate.map(o=>JSON.stringify([o.fel,o.perioada,o.concept,o.norma,o.experienta])));
+  if (cohorta.size !== 1) return null;
+  const unice = new Map<string, ObservatieSalariala>();
+  for (const o of candidate) {
+    const anterior=unice.get(o.id!);
+    if(anterior && JSON.stringify(anterior)!==JSON.stringify(o)) return null;
+    unice.set(o.id!,o);
+  }
+  const relevante=[...unice.values()];
   if (relevante.length < prag) return null;
 
-  // Mijlocul intervalului declarat e cea mai buna estimare punctuala a unei
-  // observatii. Pentru sursele care dau o singura cifra, minim === maxim.
-  const valori = relevante.map((o) => (o.minim + o.maxim) / 2).sort((a, b) => a - b);
+  const valori = relevante.map((o) => o.minim).sort((a, b) => a - b);
   const date = relevante.map((o) => o.data).sort();
 
   return {
@@ -170,9 +192,10 @@ export function agregheaza(
     judet,
     suma,
     observatii: relevante.length,
-    median: Math.round(percentila(valori, 50)),
-    p25: Math.round(percentila(valori, 25)),
-    p75: Math.round(percentila(valori, 75)),
+    median: (valori[Math.floor((valori.length-1)/2)] + valori[Math.floor(valori.length/2)]) / 2,
+    mean: valori.reduce((a,b)=>a+b,0)/valori.length,
+    p25: valori.length >= 60 ? percentila(valori, 25) : null,
+    p75: valori.length >= 60 ? percentila(valori, 75) : null,
     dataPrimei: date[0],
     dataUltimei: date[date.length - 1],
     surse: [...new Set(relevante.map((o) => o.fel))],

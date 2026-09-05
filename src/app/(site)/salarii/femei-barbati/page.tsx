@@ -408,7 +408,7 @@ export default function FemeiBarbatiPage() {
               Sursa datelor: Institutul Național de Statistică, TEMPO-Online, matricea {MATRICE_OCUPATII} — numărul
               salariaților cu program complet plătiți întreaga lună, salariul brut de bază și venitul brut realizat în
               octombrie, pe grupe de vârstă, pe grupe majore de ocupații (ISCO-08) și pe sexe. Ultimul an disponibil:{" "}
-              {AN}. Reutilizare conform licenței pentru o guvernare deschisă. Vezi{" "}
+              {AN}. Vezi{" "}
               <Link href="/metodologie">metodologia</Link> și{" "}
               <Link href="/salarii">salariile pe meserii</Link>.
             </NotaSursa>

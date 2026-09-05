@@ -29,28 +29,27 @@ const CLASAMENT: DateMeserie[] = MESERII.map((meserie) => dateMeserie(meserie))
 const PRIMA = CLASAMENT[0];
 const ULTIMA = CLASAMENT[CLASAMENT.length - 1];
 const RAPORT = PRIMA.sector.brutCurent / ULTIMA.sector.brutCurent;
-const PESTE_MEDIE = CLASAMENT.filter((d) => d.sector.brutCurent > TOTAL_ECONOMIE.brutCurent).length;
+const SECTOARE = [...new Map(CLASAMENT.map(d=>[d.sector.cheie,d.sector])).values()];
+const PESTE_MEDIE = SECTOARE.filter(s=>s.brutCurent > TOTAL_ECONOMIE.brutCurent).length;
 
 const DESCRIERE = `Cele ${CLASAMENT.length} meserii urmărite, ordonate după câștigul salarial mediu brut al activității în care se practică, cu datele INS din ${LUNA}.`;
 
 export const metadata: Metadata = {
-  title: { absolute: "Cele mai bine plătite meserii din România | Salariile.ro" },
+  title: { absolute: "Meserii și sectoare: clasamentul salariilor | Salariile.ro" },
   description: DESCRIERE,
   alternates: { canonical: "https://salariile.ro/salarii/clasament" },
   openGraph: ogPage({
-    title: "Cele mai bine plătite meserii din România",
+    title: "Meserii și sectoare: clasamentul salariilor",
     description: DESCRIERE,
     path: "/salarii/clasament",
   }),
-  twitter: twPage({ title: "Cele mai bine plătite meserii din România", description: DESCRIERE }),
+  twitter: twPage({ title: "Meserii și sectoare: clasamentul salariilor", description: DESCRIERE }),
 };
 
 const FAQ = [
   {
     q: "Care sunt cele mai bine plătite meserii din România?",
-    a: `Din cele ${CLASAMENT.length} meserii urmărite aici, cel mai sus stau ${CLASAMENT.slice(0, 3)
-      .map((d) => d.meserie.nume.toLocaleLowerCase("ro-RO"))
-      .join(", ")}. Ordinea este dată de câștigul salarial mediu brut al activității economice în care se practică meseria, în ${LUNA}, conform INS. Nu este un clasament al persoanelor: în aceeași activitate intră și debutanți, și conducere.`,
+    a: `INS nu publică o ierarhie lunară a salariilor pentru fiecare meserie. Tabelul ordonează activitățile CAEN asociate paginilor noastre după media brută din ${LUNA}. O activitate cu medie ridicată poate include ocupații cu salarii foarte diferite.`,
   },
   {
     q: "De ce mai multe meserii apar pe același loc?",
@@ -79,7 +78,7 @@ const jsonLd = {
     },
     {
       "@type": "CollectionPage",
-      name: "Cele mai bine plătite meserii din România",
+      name: "Meserii și sectoare: clasamentul salariilor",
       description: DESCRIERE,
       url: "https://salariile.ro/salarii/clasament",
       author: personSchema,
@@ -126,7 +125,7 @@ export default function ClasamentPage() {
               { label: "Clasament" },
             ]}
           />
-          <H1>Cele mai bine plătite meserii din România</H1>
+          <H1>Meserii și sectoare: clasamentul salariilor</H1>
           <Lead>
             Cele {CLASAMENT.length} meserii urmărite pe site, ordonate după câștigul salarial mediu brut al
             activității economice în care se practică, cu datele INS din <strong>{LUNA}</strong>. Locul este al
@@ -139,12 +138,12 @@ export default function ClasamentPage() {
               accent
               eticheta="În capul clasamentului"
               valoare={lei(PRIMA.sector.brutCurent)}
-              nota={`${PRIMA.meserie.nume} — CAEN ${PRIMA.sector.cheie}.`}
+              nota={`${PRIMA.sector.denumire} — CAEN ${PRIMA.sector.cheie}.`}
             />
             <CardCifra
               eticheta="La coada clasamentului"
               valoare={lei(ULTIMA.sector.brutCurent)}
-              nota={`${ULTIMA.meserie.nume} — CAEN ${ULTIMA.sector.cheie}.`}
+              nota={`${ULTIMA.sector.denumire} — CAEN ${ULTIMA.sector.cheie}.`}
             />
             <CardCifra
               eticheta="Raport primul / ultimul"
@@ -155,8 +154,8 @@ export default function ClasamentPage() {
             <CardCifra
               eticheta="Peste media pe economie"
               valoare={String(PESTE_MEDIE)}
-              unitate={`din ${CLASAMENT.length}`}
-              nota="Restul sunt sub media pe economie."
+              unitate={`sectoare din ${SECTOARE.length}`}
+              nota="Activități CAEN distincte; fiecare este numărată o singură dată."
             />
           </div>
 
@@ -238,12 +237,12 @@ export default function ClasamentPage() {
               De aceea meseriile din aceeași activitate apar cu aceeași cifră. A doua măsurătoare, dinspre ocupație,
               e ancheta INS din octombrie pe grupe majore ISCO-08 — o găsești pe pagina fiecărei meserii, împreună cu
               progresia pe vârste și cu defalcarea pe județe. Cine vrea să compare două meserii direct are{" "}
-              <Link href="/compara">paginile de comparație</Link>.
+              <Link href="/compara">paginile de comparație</Link>, iar cererea de muncă se vede separat în{" "}
+              <Link href="/salarii/locuri-vacante">datele INS despre locurile de muncă vacante</Link>.
             </p>
             <NotaSursa>
               Sursa: Institutul Național de Statistică, TEMPO-Online, matricele {MATRICE_BRUT} și {MATRICE_NET},
-              serie lunară pe activități CAEN Rev.3, ultima lună {LUNA}. Reutilizare conform licenței pentru o
-              guvernare deschisă. Ordonarea și gruparea aparțin Salariile.ro. Vezi{" "}
+              serie lunară pe activități CAEN Rev.3, ultima lună {LUNA}. Ordonarea și gruparea aparțin Salariile.ro. Vezi{" "}
               <Link href="/metodologie">metodologia</Link> și <Link href="/salarii">toate meseriile</Link>.
             </NotaSursa>
           </section>

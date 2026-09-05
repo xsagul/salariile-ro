@@ -276,40 +276,24 @@ export default function MetodologiePage() {
         </Section>
 
         <Section>
-            <h2>Cum prezentăm reperele pentru o meserie</h2>
-            <p>
-              Pentru întrebarea „cât câștigă un programator?”, paginile din <Link href="/salarii">Salarii pe meserii</Link> răspund întâi cu <strong>netul mediu observat de INS în sectorul asociat</strong>. Este cel mai actual reper lunar disponibil. Apoi arată separat contextul grupei ocupaționale ISCO, astfel încât utilizatorul primește suma utilă înaintea detaliilor metodologice.
-            </p>
-            <p>
-              INS publică mediile pe activitatea economică a angajatorului și pe grupe majore de ocupații, nu intersecția exactă dintre post și sector. De aceea păstrăm separat cele două repere, fiecare pe populația lui:
-            </p>
+            <h2 id="salarii">Cum documentăm salariile pe meserii</h2>
+            <p>Paginile din <Link href="/salarii">Salarii pe meserii</Link> folosesc același registru de repere ca <Link href="/compara">instrumentul de comparare</Link>. La fiecare valoare publicăm sursa, perioada, unitatea și populația descrisă.</p>
             <ul>
-              <li><strong>Netul mediu observat în activitatea angajatorului</strong> (CAEN), serie lunară, este cifra principală. Include toate ocupațiile din acel sector, de la debutant la director; brutul și conversia fiscală standard rămân vizibile ca explicație.</li>
-              <li><strong>Netul orientativ al grupei majore de ocupații</strong> (ISCO-08) este calculat fiscal din ancheta anuală din octombrie și indexat la luna curentă. Adaugă perspectiva tipului de muncă, în toate sectoarele economiei.</li>
+              <li><strong>Statistici de oferte:</strong> pentru programatori cităm <a href="https://devjob.ro/en/salaries">DevJob, Software Developer salary in Romania</a>, consultat la 6 septembrie 2026. Furnizorul folosește intervale din anunțuri introduse de angajatori. Păstrăm mediana și quartilele ca statistici externe ale ofertelor; nu le recalculăm și nu le prezentăm drept salarii efectiv plătite. Perioada și eșantionul exact al selecției sunt necunoscute.</li>
+              <li><strong>Medie declarată într-o sursă externă:</strong> câteva repere citate din <a href="https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf#page=54">eJobs, Review &amp; Trends 2026, p. 54</a>, bazate pe salariile introduse în Salario în 2025. Sunt mediile respondenților sursei, nu un sondaj propriu sau o statistică reprezentativă a tuturor salariaților.</li>
+              <li><strong>Grilă publică:</strong> sume pe funcții și trepte din <a href="https://legislatie.just.ro/Public/DetaliiDocument/190446">Legea-cadru 153/2017</a>. Data coloanei rămâne vizibilă. Grila nu măsoară salarii efectiv încasate și nu include toate sporurile, gradațiile sau majorările individuale.</li>
+              <li><strong>Context INS:</strong> medii ale activităților CAEN și grupelor majore ISCO. Matricea FOM121A publică și intersecția CAEN × grupă majoră ISCO. Nici această intersecție nu identifică un cod COR individual.</li>
             </ul>
-            <p>
-              Ocupația concretă stă la intersecția celor două clasificări, iar media acelei intersecții nu se publică. Din două medii marginale nu rezultă statistic că media ocupației este între ele. De aceea <strong>nu le folosim ca limite, nu le mediem și nu construim o estimare unică</strong>. Fiecare valoare rămâne etichetată cu populația pe care o descrie.
-            </p>
-            <p>
-              De exemplu, medicul și asistentul medical împart același reper CAEN, fiindcă lucrează în aceeași activitate. Ei apar în grupe ISCO diferite, dar mediile acelor grupe descriu familii largi de ocupații din toate sectoarele. Diferența dintre reperele de grupă nu poate fi atribuită direct celor două posturi.
-            </p>
-            <h3>Indexarea cifrei pe ocupații</h3>
-            <p>
-              Cele două serii au perioade de referință diferite: seria pe activități este lunară și recentă, iar ancheta pe ocupații este din octombrie, cu peste un an în urmă. Puse alături fără corecție, ar compara două momente diferite din economie.
-            </p>
-            <p>
-              De aceea valorile pe grupe de ocupații sunt <strong>indexate la luna de referință curentă</strong>, înmulțindu-le cu raportul dintre câștigul mediu pe economie de acum și cel din luna anchetei. Ipoteza asumată, declarată în pagină, este că grupele de ocupații au crescut în același ritm cu media pe economie. Nu este o nouă măsurătoare INS, ci un <strong>reper indexat</strong>. Cifrele neindexate rămân vizibile în tabelul pe vârste de pe fiecare pagină.
-            </p>
-            <h3>Ce nu poate face metoda</h3>
-            <ul>
-              <li><strong>Nu produce media ocupației.</strong> Niciunul dintre cele două repere nu izolează simultan postul și sectorul, iar valoarea de la intersecția lor nu este disponibilă.</li>
-              <li><strong>Nu ordonează două meserii.</strong> Valorile CAEN și ISCO au compoziții diferite; din ele nu derivăm câștigători, diferențe procentuale sau diferențe anualizate între posturi.</li>
-              <li><strong>Nu stabilește limite individuale.</strong> Un salariu concret poate fi sub sau peste oricare dintre repere. Defalcările pe vârste și județe sunt tot medii de grup, nu praguri personale.</li>
-              <li><strong>Nu măsoară firme individuale.</strong> Media unui sector e trasă în sus de angajatorii mari.</li>
-            </ul>
-            <p>
-              Comparațiile din <Link href="/compara">Compară salarii</Link> păstrează aceeași disciplină: afișează neturile sectoarelor în prim-plan și reperele ISCO separat, fără a le combina într-un interval sau într-o diferență derivată între ocupații.
-            </p>
+            <h3>Mediană, quartile și numărul de observații</h3>
+            <p>O medie publicată nu permite reconstruirea medianei, P25 sau P75. Numărul căutărilor unui job, al celulelor unui tabel ori al treptelor unei grile nu este un număr de salariați observați. Câmpurile necunoscute rămân necompletate.</p>
+            <p>Motorul de agregare acceptă doar valori punctuale cu proveniență și reutilizare documentate, după deduplicare. Nu transformă mijlocul unui interval din anunț într-un salariu observat și nu amestecă grile, oferte și salarii declarate. Perioada, norma, conceptul salarial și experiența trebuie să fie compatibile. Pragurile editoriale sunt minimum 30 de înregistrări pentru medie și mediană, respectiv 60 pentru quartile; trecerea pragului nu dovedește reprezentativitatea națională. În prezent nu publicăm distribuții proprii pe COR bazate pe acest motor.</p>
+            <h3>Județ, experiență și actualitate</h3>
+            <p>Defalcarea INS pe județe este o medie anuală de sector. Grupele de vârstă nu sunt niveluri de experiență. Anul din titlul paginii indică ediția ghidului; fiecare serie își păstrează anul real. Nu actualizăm o observație veche schimbându-i doar eticheta anului.</p>
+            <p>Contextul ISCO indexat folosit în tabelul comparativ este un calcul: brutul istoric al grupei înmulțit cu raportul dintre media brută pe economie din luna curentă și cea din luna anchetei, apoi transformat fiscal în net standard. Ipoteza este creșterea în același ritm cu economia. Nu reprezintă o observație nouă sau salariul meseriei.</p>
+            <h3>Codurile COR și sursele</h3>
+            <p>Asocierile COR afișate sunt exemple de specializări cu denumirea oficială din <a href="https://data.gov.ro/dataset/clasificarea-ocupatiilor-din-romania">catalogul public COR, instantaneul din 22 aprilie 2024</a>, distribuit sub OGL-ROU-1.0. Acesta nu certifică toate modificările ulterioare. Un titlu comercial de job poate acoperi mai multe coduri; o grupă de patru cifre nu identifică ocupația de șase cifre.</p>
+            <p>Nu colectăm salarii de la vizitatorii acestui site și nu cumpărăm date. Cităm punctual rapoartele externe; accesul gratuit la un raport nu transferă licența întregii baze de date. Condițiile sursei rămân aplicabile. Nu aplicăm licența catalogului COR tuturor seriilor INS sau rapoartelor private.</p>
+            <p>Comparațiile păstrează sursele separate. Din două repere incompatibile nu calculăm un câștigător, un avantaj procentual ori limite salariale pentru o meserie.</p>
         </Section>
 
         <Section>

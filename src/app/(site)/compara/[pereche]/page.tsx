@@ -7,7 +7,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Breadcrumb, Faq, H1, Lead } from "@/app/components/ui";
-import { CardCifra, LinkCard, NotaSursa, lei, lunaLunga } from "@/app/components/Salarii";
+import { LinkCard, NotaSursa, lei, lunaLunga } from "@/app/components/Salarii";
 import {
   AN_OCUPATII,
   LUNA_REFERINTA,
@@ -23,7 +23,8 @@ import {
   type Comparatie,
   type DateMeserie,
 } from "@/lib/meserii";
-import { cifreMeserie } from "@/lib/ocupatii-caen";
+import ReperSalariu from '@/app/components/ReperSalariu';
+import { reperMeserie, textReper } from '@/lib/repere-meserii';
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
 
@@ -48,17 +49,10 @@ function titluPagina(comparatie: Comparatie) {
   return scurt.length + BRAND.length <= TITLU_MAX ? `${scurt}${BRAND}` : scurt;
 }
 
-function netPrincipal(date: DateMeserie) {
-  return cifreMeserie(date.meserie.caen2, date.meserie.isco, {
-    net: date.netObservat ?? date.netStandard,
-    brut: date.sector.brutCurent,
-  }).net;
-}
+
 
 function descrierePagina(a: DateMeserie, b: DateMeserie) {
-  const baza = `${a.meserie.nume}: ${lei(netPrincipal(a))} lei net; ${b.meserie.nume}: ${lei(netPrincipal(b))} lei net.`;
-  const completa = `${baza} Medii INS pe sectoarele CAEN (${LUNA}), cu brutul și contextul ISCO afișate separat.`;
-  return completa.length <= 165 ? completa : `${baza} Medii nete INS pe sectoarele CAEN, ${LUNA}.`;
+  return `Compară ${a.meserie.nume.toLocaleLowerCase('ro-RO')} și ${b.meserie.nume.toLocaleLowerCase('ro-RO')}: repere salariale cu surse și perioade, atribuții, brut și net, context INS.`;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -94,18 +88,9 @@ export default async function ComparatiePage({ params }: Props) {
   const aceeasiGrupa = a.meserie.isco === b.meserie.isco;
 
   const faq = [
-    {
-      q: `Cine câștigă mai mult: ${comparatie.a.nume.toLocaleLowerCase("ro-RO")} sau ${comparatie.b.nume.toLocaleLowerCase("ro-RO")}?`,
-      a: `Ca repere nete de sector, un ${comparatie.a.de} are ${lei(netPrincipal(a))} lei pe lună, iar un ${comparatie.b.de} ${lei(netPrincipal(b))} lei, conform INS pentru ${LUNA}. Cifrele compară sectoarele CAEN asociate, nu două persoane cu acele posturi, așa că experiența și angajatorul pot schimba ordinea în cazuri concrete.`,
-    },
-    {
-      q: "Ce se poate compara corect în tabel?",
-      a: `Poți compara netul mediu observat în sectoarele CAEN din ${LUNA} și, separat, netul orientativ al grupelor majore ISCO din ancheta din octombrie ${AN_ANCHETA}, indexat la nivelul salarial curent. Sunt repere utile de piață, iar salariile individuale variază.`,
-    },
-    {
-      q: "Cum este calculat netul afișat?",
-      a: "Netul principal este media observată și publicată de INS pentru sectorul CAEN. Pentru grupa ISCO și pentru comparația fiscală standard aplicăm separat CAS, CASS și impozitul pe venit la brutul aferent, pentru funcția de bază și fără persoane în întreținere.",
-    },
+    {q: 'Care dintre cele două meserii se plătește mai bine?', a: 'Reperele afișate au populația și perioada precizate separat. Mediile de sector, salariile declarate și grilele publice nu stabilesc un clasament al ocupațiilor. Pentru o decizie, compară oferte cu aceeași normă, experiență și localitate.'},
+    {q: 'Ce se poate compara corect în tabel?', a: 'Mediile INS de sector din aceeași lună se compară între activități economice. Grilele arată funcții și trepte din sistemul public. Valorile din surse diferite nu sunt un minim și un maxim al salariului unei meserii.'},
+    {q: 'Cum compar salariul brut cu netul?', a: 'Folosește calculatorul pentru brutul din ofertă și situația ta fiscală. Netul calculat din media brută a unui sector nu este același indicator cu media netă măsurată de INS.'},
   ];
 
   const jsonLd = {
@@ -135,7 +120,7 @@ export default async function ComparatiePage({ params }: Props) {
           logo: { "@type": "ImageObject", url: "https://salariile.ro/og-image.png", width: 1200, height: 630 },
         },
         mainEntityOfPage: `https://salariile.ro/compara/${pereche}`,
-        dateModified: "2026-08-25",
+        dateModified: "2026-09-06",
       },
       {
         "@type": "FAQPage",
@@ -148,47 +133,20 @@ export default async function ComparatiePage({ params }: Props) {
     ],
   };
 
-  const randuriTabel: { eticheta: string; a: string; b: string }[] = [
-    {
-      eticheta: `Net mediu observat în sector, ${LUNA}`,
-      a: `${lei(netPrincipal(a))} lei`,
-      b: `${lei(netPrincipal(b))} lei`,
-    },
-    {
-      eticheta: "Net calculat standard din brutul sectorului",
-      a: `${lei(a.netStandard)} lei`,
-      b: `${lei(b.netStandard)} lei`,
-    },
-    {
-      eticheta: "Net orientativ · grupa ISCO",
-      a: reperIsco(a, "net"),
-      b: reperIsco(b, "net"),
-    },
-    {
-      eticheta: "La început de carieră · grupa ISCO net",
-      a: a.repere?.inceput ? `${lei(a.repere.inceput.net)} lei` : "—",
-      b: b.repere?.inceput ? `${lei(b.repere.inceput.net)} lei` : "—",
-    },
-    {
-      eticheta: "Activitate CAEN",
-      a: `${a.sector.cheie} — ${a.sector.denumire}`,
-      b: `${b.sector.cheie} — ${b.sector.denumire}`,
-    },
-    {
-      eticheta: `Brut mediu în sector, ${LUNA}`,
-      a: `${lei(a.sector.brutCurent)} lei`,
-      b: `${lei(b.sector.brutCurent)} lei`,
-    },
-    {
-      eticheta: "Grupă majoră ISCO",
-      a: a.isco?.nume ?? "—",
-      b: b.isco?.nume ?? "—",
-    },
-    {
-      eticheta: `Brut mediu · grupa ISCO, indexat la ${LUNA}`,
-      a: reperIsco(a, "brut"),
-      b: reperIsco(b, "brut"),
-    },
+  const ra=reperMeserie(a), rb=reperMeserie(b);
+  const randuriTabel = [
+    {eticheta:'Reper salarial documentat',a:textReper(ra)+' '+ra.unit,b:textReper(rb)+' '+rb.unit},
+    {eticheta:'Ce măsoară',a:ra.label,b:rb.label},
+    {eticheta:'Perioada reperului',a:ra.period,b:rb.period},
+    {eticheta:'Populația acoperită',a:ra.population,b:rb.population},
+    {eticheta:'Mediană / P25 / P75 ale furnizorului',a:ra.median===null?'Nepublicate în acest reper':`${lei(ra.median)} / ${lei(ra.p25!)} / ${lei(ra.p75!)} lei net · oferte`,b:rb.median===null?'Nepublicate în acest reper':`${lei(rb.median)} / ${lei(rb.p25!)} / ${lei(rb.p75!)} lei net · oferte`},
+    {eticheta:'Număr de observații individuale',a:'Nepublicat pentru meserie',b:'Nepublicat pentru meserie'},
+    {eticheta:'Responsabilități',a:a.meserie.ceFace,b:b.meserie.ceFace},
+    {eticheta:`Context: net mediu sector, ${LUNA}`,a:a.netObservat===null?'—':lei(a.netObservat)+' lei',b:b.netObservat===null?'—':lei(b.netObservat)+' lei'},
+
+    {eticheta:'Activitate CAEN',a:a.sector.cheie+' — '+a.sector.denumire,b:b.sector.cheie+' — '+b.sector.denumire},
+    {eticheta:'Grupă majoră ISCO',a:a.isco?.nume??'—',b:b.isco?.nume??'—'},
+    {eticheta:'Net calculat al grupei ISCO, indexat',a:reperIsco(a,'net'),b:reperIsco(b,'net')},
   ];
 
   return (
@@ -207,45 +165,13 @@ export default async function ComparatiePage({ params }: Props) {
           <H1>
             {comparatie.a.nume} vs {comparatie.b.nume}
           </H1>
-          <Lead>
-            Ca repere actuale de sector, un {comparatie.a.de} are{" "}
-            <strong>{lei(netPrincipal(a))} lei net pe lună</strong>, iar un {comparatie.b.de}{" "}
-            <strong>{lei(netPrincipal(b))} lei net</strong>. Sunt mediile nete INS din sectoarele CAEN asociate, în{" "}
-            {LUNA}; experiența, compania și orașul pot schimba salariile concrete.
-          </Lead>
-
-          <div className="mt-8 grid gap-6 sm:grid-cols-2">
-            {[a, b].map((date) => (
-              <section key={date.meserie.slug} className="rounded-md border border-stone-200 bg-surface p-5 shadow-soft">
-                <h2 className="text-lg font-semibold tracking-[-0.01em] text-stone-900">{date.meserie.nume}</h2>
-                <div className="mt-4 grid gap-3">
-                  <CardCifra
-                    accent
-                    eticheta={`Salariu net orientativ · ${LUNA}`}
-                    valoare={lei(netPrincipal(date))}
-                    nota={`Media netă INS din sectorul CAEN ${date.sector.cheie}; ${lei(date.sector.brutCurent)} lei brut.`}
-                  />
-                  <CardCifra
-                    eticheta="Net orientativ · grupa ISCO"
-                    valoare={date.repere ? lei(date.repere.grupa.net) : "—"}
-                    nota={
-                      date.repere
-                        ? `Calcul standard din ${lei(date.repere.grupa.brut)} lei brut · grupa „${date.isco?.nume ?? "—"}”`
-                        : undefined
-                    }
-                  />
-                </div>
-              </section>
-            ))}
+          <Lead>Salariile nete, unul lângă altul. Deschide detaliile pentru surse și informații despre cele două meserii.</Lead>
+          <div className="mt-6 grid gap-6 sm:grid-cols-2">
+            {[a,b].map(d=><div key={d.meserie.slug}><h2 className="text-lg font-semibold">{d.meserie.nume}</h2><ReperSalariu date={d}/></div>)}
           </div>
 
-          <p className="mt-4 rounded-md border border-stone-200 bg-surface p-4 text-sm leading-normal text-stone-600 shadow-soft">
-            <strong className="font-semibold text-stone-900">Cum citești comparația:</strong> valoarea mare este netul
-            mediu observat în sector; a doua este netul orientativ al grupei ISCO. Cele două valori nu sunt un minim și
-            un maxim, iar salariul unei persoane poate fi sub sau peste aceste repere.
-          </p>
 
-          <section className="mt-12">
+          <details className="mt-8"><summary className="min-h-11 cursor-pointer py-3 text-lg font-semibold">Detalii ale comparației</summary><p className="mt-3 text-sm text-stone-600">Mediile de sector și reperele ISCO nu sunt un minim și un maxim salarial.</p>
             <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">Net, brut și context statistic</h2>
             <div className="my-6 overflow-x-auto">
               <table className="w-full min-w-[34rem] border-separate border-spacing-0 overflow-hidden rounded-md border border-stone-200 bg-surface text-sm shadow-soft tabular-nums">
@@ -278,7 +204,7 @@ export default async function ComparatiePage({ params }: Props) {
                 </tbody>
               </table>
             </div>
-          </section>
+          </details>
 
           <section className="mt-12">
             <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">Cum se citește comparația</h2>
@@ -324,8 +250,7 @@ export default async function ComparatiePage({ params }: Props) {
           <NotaSursa>
             Sursa: Institutul Național de Statistică, TEMPO-Online — matricele {MATRICE_BRUT} și {MATRICE_NET}{" "}
             (câștig salarial mediu brut și net pe activități CAEN Rev.3, luna {LUNA}) și {MATRICE_OCUPATII} (ancheta
-            din octombrie pe grupe majore de ocupații, {AN_ANCHETA}). Reutilizare conform licenței pentru o guvernare
-            deschisă. Neturile standard sunt calculate de Salariile.ro — vezi <Link href="/metodologie">metodologia</Link>.
+            din octombrie pe grupe majore de ocupații, {AN_ANCHETA}). Neturile standard sunt calculate de Salariile.ro — vezi <Link href="/metodologie">metodologia</Link>.
             Metodologia explică separat populația fiecărui reper.
           </NotaSursa>
         </div>
