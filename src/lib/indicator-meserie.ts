@@ -11,8 +11,5 @@ export function indicatorMeserie(reper: ReperMeserie) {
 export function textIndicator(reper: ReperMeserie): string {
   const { value } = indicatorMeserie(reper);
   if (value === null) return 'Date insuficiente';
-  if (reper.upper !== null && reper.upper !== value) {
-    return `${value.toLocaleString('ro-RO')}–${reper.upper.toLocaleString('ro-RO')} lei net`;
-  }
   return `${value.toLocaleString('ro-RO')} lei net`;
 }

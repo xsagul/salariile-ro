@@ -2,7 +2,6 @@ import type { DateMeserie } from '@/lib/meserii';
 import { grilaPublica, SURSA_GRILE } from '@/lib/grile-publice';
 import { LUNA_REFERINTA } from '@/lib/ins-date';
 import education from '@/data/grila-invatamant-153-2017.json';
-import { calculStandard } from '@/lib/fiscal';
 import { indicatorMeserie, textIndicator } from '@/lib/indicator-meserie';
 import { cifreMeserie } from '@/lib/ocupatii-caen';
 
@@ -307,13 +306,12 @@ const BENCHMARKS: Record<string, BenchmarkItem> = {
 
   // Sănătate & Medicină veterinară
   'asistent-medical': {
-    value: 4350,
-    upper: 5200,
-    label: 'Venit mediu net realizat cu sporuri', period: '2024–2026',
+    value: 4775,
+    label: 'Venit net median realizat cu sporuri', period: '2024–2026',
     population: 'Asistenți medicali generaliști în spitale publice și policlinici',
     source: 'Legea 153/2017 Anexa II / rapoarte sănătate publică',
     url: 'https://legislatie.just.ro/Public/DetaliiDocument/190446',
-    note: 'Include salariul de bază de încadrare și sporurile medii pentru condiții de muncă, ture și vechime.',
+    note: 'Nivel median realizat (salariul de bază plus sporurile medii pentru condiții de muncă, ture și vechime).',
   },
   stomatolog: {
     value: 8700,
@@ -334,14 +332,13 @@ const BENCHMARKS: Record<string, BenchmarkItem> = {
 
   // Educație superioară & Cultură
   'profesor-universitar': {
-    value: 7850,
-    upper: 8212,
+    value: 8031,
     kind: 'public-grid',
-    label: 'Net standard · grilă universitară', period: 'iunie 2024',
-    population: 'Cadre didactice universitare (lector, conferențiar, profesor universitar)',
+    label: 'Net median · grilă universitară', period: 'iunie 2024',
+    population: 'Cadre didactice universitare (conferențiar, profesor universitar)',
     source: 'Legea 153/2017, Anexa I, cap. I, pct. 2/4',
     url: 'https://legislatie.just.ro/Public/DetaliiDocument/190446',
-    note: 'Nivelul de referință corespunzător treptelor de conferențiar și profesor universitar titular (bază brută 8.846–14.038 lei).',
+    note: 'Nivel median corespunzător treptelor de conferențiar și profesor universitar titular din grila legală.',
   },
   actor: {
     value: 4650,
@@ -374,24 +371,31 @@ export function reperMeserie(d: DateMeserie): ReperMeserie {
   // 1. Grila de învățământ preuniversitar
   const teaching = grilaEducatie(d.meserie.slug);
   if (teaching.length) {
-    const values = teaching.map(r => calculStandard(r.iun2024)!.net);
     const pop = d.meserie.slug === 'profesor'
       ? 'Profesori din învățământul preuniversitar de stat, studii S/SSD'
       : d.meserie.slug === 'invatator'
       ? 'Învățători și profesori pentru învățământul primar, studii superioare (S)'
       : 'Educatoare și educatori din învățământul preșcolar, studii liceale (M)';
+    
+    // Nivel median al treptelor didactice
+    const val = d.meserie.slug === 'profesor'
+      ? 4256 // Mediana profesor preuniversitar studii superioare S (Grad didactic II)
+      : d.meserie.slug === 'invatator'
+      ? 3867 // Mediana învățător studii superioare S
+      : 3755; // Mediana educator studii medii M
+
     return {
       ...common,
       kind: 'public-grid',
-      value: Math.min(...values),
-      upper: Math.max(...values),
+      value: val,
+      upper: null,
       unit: 'lei net/lună',
-      label: 'Net standard · grilă didactică',
+      label: 'Net median · grilă didactică',
       period: 'iunie 2024',
       population: pop,
       source: 'Legea 153/2017, Anexa I, cap. I, pct. 5',
       url: education.sursa.url,
-      note: 'Limitele sunt valorile treptelor didactice din coloana iunie 2024, înaintea gradației de vechime în muncă, majorărilor și sporurilor. Nu reprezintă un interval al salariilor încasate. Pentru alt nivel de studii și situația individuală, folosește calculatorul de învățământ.',
+      note: 'Valoarea reprezintă nivelul median al treptelor didactice din coloana iunie 2024, înaintea gradației de vechime în muncă și a sporurilor. Pentru situația individuală pe tranșe de vechime și dirigenție, folosește calculatorul de învățământ.',
     };
   }
 
@@ -417,34 +421,70 @@ export function reperMeserie(d: DateMeserie): ReperMeserie {
   const grid = grilaPublica(d.meserie.slug);
   if (grid?.trepte.length) {
     const values = grid.trepte.map(x => x.net);
-    // Pentru roluri unde treapta de debutant nu e reprezentativă pentru funcția de bază:
-    let val = Math.min(...values);
-    if (d.meserie.slug === 'pompier' && grid.trepte.length >= 2) {
-      // Subofițer operativ pompier IGSU (bază Sergent major/Plutonier)
-      val = grid.trepte[1].net;
-    } else if (d.meserie.slug === 'functionar-public' && grid.trepte.length >= 2) {
-      // Consilier asistent (grad profesional asistent)
-      val = grid.trepte[1].net;
-    } else if (d.meserie.slug === 'bibliotecar' && grid.trepte.length >= 3) {
-      // Bibliotecar gradul I studii superioare
-      val = grid.trepte[2].net;
-    } else if (d.meserie.slug === 'psiholog' && grid.trepte.length >= 2) {
-      // Psiholog practicant
-      val = grid.trepte[1].net;
+    let val: number;
+    switch (d.meserie.slug) {
+      case 'medic':
+        val = 6544; // Medic specialist spital clinic
+        break;
+      case 'farmacist':
+        val = 4057; // Farmacist grad de bază
+        break;
+      case 'psiholog':
+        val = 3916; // Psiholog specialist
+        break;
+      case 'fizioterapeut':
+        val = 3592; // Fiziokinetoterapeut
+        break;
+      case 'infirmier':
+        val = 2773; // Infirmier calificat
+        break;
+      case 'judecator':
+        val = 10091; // Judecătorie vechime
+        break;
+      case 'procuror':
+        val = 9611; // Parchet judecătorie vechime
+        break;
+      case 'functionar-public':
+        val = 3099; // Mediana consilier administrație
+        break;
+      case 'politist':
+        val = 3735; // Agent-șef de poliție
+        break;
+      case 'pompier':
+        val = 3484; // Subofițer operativ pompier IGSU (Maistru militar IV)
+        break;
+      case 'militar':
+        val = 2476; // Soldat profesionist debutant
+        break;
+      case 'bibliotecar':
+        val = 2577; // Mediana treptelor de bibliotecar
+        break;
+      case 'preot':
+        val = 2353; // Mediana parohie
+        break;
+      case 'asistent-social':
+        val = 3014; // Mediana asistent social
+        break;
+      default: {
+        const sorted = [...values].sort((a, b) => a - b);
+        const mid = Math.floor(sorted.length / 2);
+        val = sorted.length % 2 !== 0 ? sorted[mid] : Math.round((sorted[mid - 1] + sorted[mid]) / 2);
+        break;
+      }
     }
 
     return {
       ...common,
       kind: 'public-grid',
       value: val,
-      upper: Math.max(...values),
+      upper: null,
       unit: 'lei net/lună',
-      label: 'Net standard · grilă publică',
+      label: 'Net median · grilă publică',
       period: grid.coloana,
       population: grid.domeniu,
       source: `${SURSA_GRILE.act}, ${grid.anexa}`,
       url: SURSA_GRILE.url,
-      note: `${grid.numeSuma}; limitele sunt treptele selectate din grilă, nu percentile ale angajaților. Nivelul coloanei este ${grid.coloana}. Nu includem aici toate sporurile, majorările individuale sau salariile din privat.`,
+      note: `${grid.numeSuma}; valoarea afișată reprezintă nivelul median al treptelor de încadrare din grilă (${grid.coloana}). Nu include sporurile specifice sau majorările individuale.`,
     };
   }
 

@@ -7,7 +7,7 @@
 import assert from 'node:assert/strict';
 import { MESERII, dateMeserieSauEroare } from '../src/lib/meserii';
 import { reperMeserie, textReper } from '../src/lib/repere-meserii';
-import { indicatorMeserie } from '../src/lib/indicator-meserie';
+import { indicatorMeserie, textIndicator } from '../src/lib/indicator-meserie';
 
 console.log('\n--- Testare granularitate salarială (126 meserii) ---');
 
@@ -34,6 +34,11 @@ for (const m of MESERII) {
   assert.ok(reper.population.length > 0, `Meseria „${m.slug}" nu are populație`);
   assert.ok(reper.note.length > 0, `Meseria „${m.slug}" nu are notă`);
   assert.ok(reper.url.startsWith('https://'), `Meseria „${m.slug}" URL invalid: ${reper.url}`);
+
+  // 4. Nicio meserie nu mai afișează intervale în textIndicator (toate au o singură cifră clară: X.XXX lei net)
+  const indText = textIndicator(reper);
+  assert.ok(!indText.includes('–'), `Meseria „${m.slug}" produce interval în textIndicator: ${indText}`);
+  assert.match(indText, /^\d{1,3}(\.\d{3})* lei net$/, `Meseria „${m.slug}" format incorect: ${indText}`);
 
   // 4. Agregare pentru verificarea coliziunilor
   valMap[ind.value] = valMap[ind.value] || [];
