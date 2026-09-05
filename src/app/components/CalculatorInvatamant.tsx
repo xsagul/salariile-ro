@@ -5,8 +5,8 @@
 //
 // Toată aritmetica stă în `@/lib/invatamant`. Aici nu se calculează nimic —
 // componenta colectează opțiunile și afișează rezultatul cu temeiul legal pe
-// fiecare linie, conform promisiunii din BRAND.md: de la cifră se ajunge
-// întotdeauna la formulă, la actul normativ și la data de la care se aplică.
+// fiecare linie: de la cifră se ajunge întotdeauna la formulă, la actul normativ
+// și la data de la care se aplică.
 //
 // De ce pastile și nu dropdown-uri: grila are 21 de funcții cu gradul copt în
 // denumire („Profesor, educator-puericultor studii superioare de lungă durată
@@ -184,7 +184,7 @@ export default function CalculatorInvatamant() {
 
   return (
     // Secțiunea stă pe `canvas`, cardurile pe `surface` deasupra ei — altfel
-    // cardurile (#fffdf9) cad pe `<body>`-ul alb și dispar (BRAND.md §15).
+    // cardurile (#fffdf9) cad pe `<body>`-ul alb și dispar.
     <section className="border-y border-stone-200 bg-canvas">
       <div id="calc-invatamant" className="mx-auto grid max-w-6xl gap-6 px-4 py-8 sm:px-6 sm:py-12 md:grid-cols-5">
         {/* ─── Formular ───────────────────────────────────────────────── */}
@@ -302,7 +302,7 @@ export default function CalculatorInvatamant() {
         <div id="rezultat-invatamant" className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-3">
           <h2 className={colHeader}>Rezultatul</h2>
 
-          {/* Tabel fiscal, după BRAND.md §9: antet pe `canvas`, corp pe `surface`,
+          {/* Tabel fiscal: antet pe `canvas`, corp pe `surface`,
               iar rândul de total INVERSAT — singurul fundal plin de rând din sistem. */}
           <div className="overflow-hidden rounded border border-stone-300">
             <table className="w-full table-auto border-collapse text-sm text-stone-700 [&_td]:align-middle [&_th]:align-middle sm:table-fixed">

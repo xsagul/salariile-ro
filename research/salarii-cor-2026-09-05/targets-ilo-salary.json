@@ -1,0 +1,4 @@
+[
+ {"id":"ilo-monthly-mean","url":"https://rplumber.ilo.org/data/indicator/?id=EAR_EMTA_SEX_OCU_NB_A&ref_area=ROU"},
+ {"id":"ilo-monthly-median","url":"https://rplumber.ilo.org/data/indicator/?id=EAR_EMTM_SEX_OCU_NB_A&ref_area=ROU"}
+]

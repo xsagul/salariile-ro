@@ -67,4 +67,4 @@ Pentru că problemele lor sunt o prelungire limpede a unor probleme structurale 
 
 - Eurostat, [*Fewer young people not in work or education in 2025*](https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20260528-2)
 - Eurostat, [*Statistics on young people neither in employment nor in education or training*](https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Statistics_on_young_people_neither_in_employment_nor_in_education_or_training)
-- Eurofound, [*Exploring the diversity of NEETs*](https://www.eurofound.europa.eu/en/publications/2016/exploring-diversity-neets)
+- Eurofound, [*Exploring the diversity of NEETs*](https://op.europa.eu/en/publication-detail/-/publication/00c83c68-472a-11e6-9c64-01aa75ed71a1/language-en)

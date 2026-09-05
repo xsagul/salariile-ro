@@ -1,0 +1,1305 @@
+{
+  "reference_snapshot": "2024-04-22; not certified current 2026",
+  "count": 126,
+  "missing_codes": [
+    {
+      "slug": "judecator",
+      "site_name": "Judecător",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "procuror",
+      "site_name": "Procuror",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "preot",
+      "site_name": "Preot",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "asistent-social",
+      "site_name": "Asistent social",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "operator-cnc",
+      "site_name": "Operator CNC",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "electromecanic",
+      "site_name": "Electromecanic",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "operator-chimist",
+      "site_name": "Operator chimist",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "operator-mase-plastice",
+      "site_name": "Operator mase plastice",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "operator-rafinarie",
+      "site_name": "Operator rafinărie",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "sondor",
+      "site_name": "Sondor",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "sticlar",
+      "site_name": "Sticlar",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "tesator",
+      "site_name": "Țesător",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "cizmar",
+      "site_name": "Cizmar",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "tapiter",
+      "site_name": "Tapițer",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "bijutier",
+      "site_name": "Bijutier",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "tipograf",
+      "site_name": "Tipograf",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "constructor-drumuri",
+      "site_name": "Constructor de drumuri",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "marinar",
+      "site_name": "Marinar",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "inginer-aeronautic",
+      "site_name": "Inginer aeronautic",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "operator-epurare",
+      "site_name": "Operator stație de epurare",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "crupier",
+      "site_name": "Crupier",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "tehnician-calculatoare",
+      "site_name": "Tehnician service IT",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "consultant-management",
+      "site_name": "Consultant în management",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "pescar",
+      "site_name": "Pescar",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    }
+  ],
+  "unknown_codes": [
+    {
+      "slug": "tester-qa",
+      "site_name": "Tester QA",
+      "site_cor": "251903",
+      "official_2024_name": null,
+      "exists_in_2024": false,
+      "review_required": true
+    },
+    {
+      "slug": "medic-veterinar",
+      "site_name": "Medic veterinar",
+      "site_cor": "225101",
+      "official_2024_name": null,
+      "exists_in_2024": false,
+      "review_required": true
+    },
+    {
+      "slug": "instructor-auto",
+      "site_name": "Instructor auto",
+      "site_cor": "235501",
+      "official_2024_name": null,
+      "exists_in_2024": false,
+      "review_required": true
+    },
+    {
+      "slug": "notar",
+      "site_name": "Notar",
+      "site_cor": "261104",
+      "official_2024_name": null,
+      "exists_in_2024": false,
+      "review_required": true
+    },
+    {
+      "slug": "inginer",
+      "site_name": "Inginer",
+      "site_cor": "214999",
+      "official_2024_name": null,
+      "exists_in_2024": false,
+      "review_required": true
+    },
+    {
+      "slug": "militar",
+      "site_name": "Militar",
+      "site_cor": "031101",
+      "official_2024_name": null,
+      "exists_in_2024": false,
+      "review_required": true
+    },
+    {
+      "slug": "fermier",
+      "site_name": "Fermier",
+      "site_cor": "611001",
+      "official_2024_name": null,
+      "exists_in_2024": false,
+      "review_required": true
+    },
+    {
+      "slug": "electrician-centrala",
+      "site_name": "Electrician centrală electrică",
+      "site_cor": "313301",
+      "official_2024_name": null,
+      "exists_in_2024": false,
+      "review_required": true
+    },
+    {
+      "slug": "operator-call-center",
+      "site_name": "Operator call center",
+      "site_cor": "422201",
+      "official_2024_name": null,
+      "exists_in_2024": false,
+      "review_required": true
+    }
+  ],
+  "duplicates": [
+    {
+      "cor": "214601",
+      "pages": [
+        "cercetator",
+        "inginer-petrol"
+      ]
+    },
+    {
+      "cor": "252901",
+      "pages": [
+        "devops-engineer",
+        "analist-date"
+      ]
+    },
+    {
+      "cor": "261103",
+      "pages": [
+        "avocat",
+        "consilier-juridic"
+      ]
+    }
+  ],
+  "rows": [
+    {
+      "slug": "programator",
+      "site_name": "Programator",
+      "site_cor": "251201",
+      "official_2024_name": "analist",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "web-developer",
+      "site_name": "Web developer",
+      "site_cor": "251401",
+      "official_2024_name": "specialist în domeniul proiectării asistate pe calculator",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "tester-qa",
+      "site_name": "Tester QA",
+      "site_cor": "251903",
+      "official_2024_name": null,
+      "exists_in_2024": false,
+      "review_required": true
+    },
+    {
+      "slug": "devops-engineer",
+      "site_name": "Inginer DevOps",
+      "site_cor": "252901",
+      "official_2024_name": "specialist SIG/IT",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "administrator-sistem",
+      "site_name": "Administrator de sistem",
+      "site_cor": "252101",
+      "official_2024_name": "administrator baze de date",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "analist-date",
+      "site_name": "Analist de date",
+      "site_cor": "252901",
+      "official_2024_name": "specialist SIG/IT",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "inginer-telecomunicatii",
+      "site_name": "Inginer telecomunicații",
+      "site_cor": "215201",
+      "official_2024_name": "inginer electromecanic SCB",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "medic",
+      "site_name": "Medic",
+      "site_cor": "221101",
+      "official_2024_name": "medic medicină generală",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "asistent-medical",
+      "site_name": "Asistent medical",
+      "site_cor": "325901",
+      "official_2024_name": "asistent medical generalist",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "stomatolog",
+      "site_name": "Stomatolog",
+      "site_cor": "226101",
+      "official_2024_name": "medic stomatolog",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "farmacist",
+      "site_name": "Farmacist",
+      "site_cor": "226201",
+      "official_2024_name": "farmacist",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "farmacist-industrie",
+      "site_name": "Farmacist în industrie",
+      "site_cor": "226205",
+      "official_2024_name": "farmacist primar",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "psiholog",
+      "site_name": "Psiholog",
+      "site_cor": "263401",
+      "official_2024_name": "psiholog în specialitatea psihologie clinică",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "fizioterapeut",
+      "site_name": "Fizioterapeut",
+      "site_cor": "226402",
+      "official_2024_name": "fizioterapeut",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "infirmier",
+      "site_name": "Infirmier",
+      "site_cor": "532103",
+      "official_2024_name": "infirmier/infirmieră",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "medic-veterinar",
+      "site_name": "Medic veterinar",
+      "site_cor": "225101",
+      "official_2024_name": null,
+      "exists_in_2024": false,
+      "review_required": true
+    },
+    {
+      "slug": "profesor",
+      "site_name": "Profesor",
+      "site_cor": "233002",
+      "official_2024_name": "profesor în învățământul gimnazial",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "invatator",
+      "site_name": "Învățător",
+      "site_cor": "234101",
+      "official_2024_name": "profesor în învățământul primar",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "educator",
+      "site_name": "Educator",
+      "site_cor": "234201",
+      "official_2024_name": "profesor în învățământul preșcolar",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "profesor-universitar",
+      "site_name": "Profesor universitar",
+      "site_cor": "231001",
+      "official_2024_name": "asistent universitar",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "cercetator",
+      "site_name": "Cercetător",
+      "site_cor": "214601",
+      "official_2024_name": "inginer metalurgie extractivă",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "instructor-auto",
+      "site_name": "Instructor auto",
+      "site_cor": "235501",
+      "official_2024_name": null,
+      "exists_in_2024": false,
+      "review_required": true
+    },
+    {
+      "slug": "contabil",
+      "site_name": "Contabil",
+      "site_cor": "241102",
+      "official_2024_name": "expert contabil-verificator",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "auditor",
+      "site_name": "Auditor financiar",
+      "site_cor": "241103",
+      "official_2024_name": "revizor contabil",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "analist-financiar",
+      "site_name": "Analist financiar",
+      "site_cor": "241304",
+      "official_2024_name": "asistent de cercetare în gestiune, contabilitate, control financiar",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "ofiter-credite",
+      "site_name": "Ofițer de credite",
+      "site_cor": "331101",
+      "official_2024_name": "cambist (broker valori)",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "agent-asigurari",
+      "site_name": "Agent de asigurări",
+      "site_cor": "332102",
+      "official_2024_name": "broker în asigurări",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "broker",
+      "site_name": "Broker",
+      "site_cor": "331201",
+      "official_2024_name": "",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "consultant-financiar",
+      "site_name": "Consultant financiar",
+      "site_cor": "241202",
+      "official_2024_name": "comisar Garda Financiară",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "avocat",
+      "site_name": "Avocat",
+      "site_cor": "261103",
+      "official_2024_name": "consilier juridic",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "notar",
+      "site_name": "Notar",
+      "site_cor": "261104",
+      "official_2024_name": null,
+      "exists_in_2024": false,
+      "review_required": true
+    },
+    {
+      "slug": "consilier-juridic",
+      "site_name": "Consilier juridic",
+      "site_cor": "261103",
+      "official_2024_name": "consilier juridic",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "judecator",
+      "site_name": "Judecător",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "procuror",
+      "site_name": "Procuror",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "inginer",
+      "site_name": "Inginer",
+      "site_cor": "214999",
+      "official_2024_name": null,
+      "exists_in_2024": false,
+      "review_required": true
+    },
+    {
+      "slug": "arhitect",
+      "site_name": "Arhitect",
+      "site_cor": "216101",
+      "official_2024_name": "arhitect clădiri",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "inginer-electronist",
+      "site_name": "Inginer electronist",
+      "site_cor": "215101",
+      "official_2024_name": "dispecer energetic feroviar",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "inginer-auto",
+      "site_name": "Inginer auto",
+      "site_cor": "214402",
+      "official_2024_name": "subinginer mecanic",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "inginer-energetician",
+      "site_name": "Inginer energetician",
+      "site_cor": "215104",
+      "official_2024_name": "dispecer rețele de înaltă tensiune",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "inginer-petrol",
+      "site_name": "Inginer petrolist",
+      "site_cor": "214601",
+      "official_2024_name": "inginer metalurgie extractivă",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "inginer-agronom",
+      "site_name": "Inginer agronom",
+      "site_cor": "213201",
+      "official_2024_name": "consilier inginer agronom",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "constructor",
+      "site_name": "Muncitor în construcții",
+      "site_cor": "711901",
+      "official_2024_name": "muncitor hidrometru",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "zidar",
+      "site_name": "Zidar",
+      "site_cor": "711204",
+      "official_2024_name": "zidar șamotor",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "dulgher",
+      "site_name": "Dulgher",
+      "site_cor": "711501",
+      "official_2024_name": "dulgher (exclusiv restaurator)",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "electrician",
+      "site_name": "Electrician",
+      "site_cor": "741101",
+      "official_2024_name": "electrician în construcții",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "instalator",
+      "site_name": "Instalator",
+      "site_cor": "712601",
+      "official_2024_name": "detector pierderi apă și gaze",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "zugrav",
+      "site_name": "Zugrav",
+      "site_cor": "713101",
+      "official_2024_name": "tapetar",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "faiantar",
+      "site_name": "Faianțar",
+      "site_cor": "712201",
+      "official_2024_name": "faianțar",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "sudor",
+      "site_name": "Sudor",
+      "site_cor": "721208",
+      "official_2024_name": "sudor",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "tamplar",
+      "site_name": "Tâmplar",
+      "site_cor": "752201",
+      "official_2024_name": "tâmplar universal",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "operator-productie",
+      "site_name": "Operator producție",
+      "site_cor": "817102",
+      "official_2024_name": "preparator pastă",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "mecanic-auto",
+      "site_name": "Mecanic auto",
+      "site_cor": "723103",
+      "official_2024_name": "mecanic auto",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "tehnician-mentenanta",
+      "site_name": "Tehnician mentenanță",
+      "site_cor": "313101",
+      "official_2024_name": "operator la instalațiile din centrale electrice",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "metalurgist",
+      "site_name": "Metalurgist",
+      "site_cor": "812101",
+      "official_2024_name": "cocsar",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "miner",
+      "site_name": "Miner",
+      "site_cor": "811101",
+      "official_2024_name": "miner în subteran",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "croitor",
+      "site_name": "Croitor",
+      "site_cor": "753105",
+      "official_2024_name": "plior confecții",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "muncitor-industria-alimentara",
+      "site_name": "Muncitor în industria alimentară",
+      "site_cor": "751101",
+      "official_2024_name": "carmangier",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "cofetar",
+      "site_name": "Cofetar",
+      "site_cor": "751201",
+      "official_2024_name": "brutar",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "sofer-tir",
+      "site_name": "Șofer TIR",
+      "site_cor": "833201",
+      "official_2024_name": "conducător auto transport rutier de mărfuri",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "sofer-autobuz",
+      "site_name": "Șofer de autobuz",
+      "site_cor": "833101",
+      "official_2024_name": "conducător auto transport rutier de persoane",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "taximetrist",
+      "site_name": "Taximetrist",
+      "site_cor": "832201",
+      "official_2024_name": "șofer de autoturisme și camionete",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "mecanic-locomotiva",
+      "site_name": "Mecanic de locomotivă",
+      "site_cor": "831201",
+      "official_2024_name": "frânar",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "curier",
+      "site_name": "Curier",
+      "site_cor": "962101",
+      "official_2024_name": "curier",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "postas",
+      "site_name": "Poștaș",
+      "site_cor": "432101",
+      "official_2024_name": "gestionar depozit",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "pilot",
+      "site_name": "Pilot",
+      "site_cor": "315301",
+      "official_2024_name": "comandant detașament zbor",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "insotitor-de-bord",
+      "site_name": "Însoțitor de bord",
+      "site_cor": "511101",
+      "official_2024_name": "însoțitor de bord",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "logistician",
+      "site_name": "Logistician",
+      "site_cor": "333905",
+      "official_2024_name": "manager sportiv",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "vanzator",
+      "site_name": "Vânzător",
+      "site_cor": "522101",
+      "official_2024_name": "vânzător",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "casier",
+      "site_name": "Casier",
+      "site_cor": "523001",
+      "official_2024_name": "taxator",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "manager-magazin",
+      "site_name": "Manager de magazin",
+      "site_cor": "142001",
+      "official_2024_name": "președinte cooperativă de consum",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "agent-vanzari",
+      "site_name": "Agent de vânzări",
+      "site_cor": "332203",
+      "official_2024_name": "agent de vânzări",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "bucatar",
+      "site_name": "Bucătar",
+      "site_cor": "512001",
+      "official_2024_name": "bucătar",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "chelner",
+      "site_name": "Chelner",
+      "site_cor": "513102",
+      "official_2024_name": "ospătar (chelner)",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "barman",
+      "site_name": "Barman",
+      "site_cor": "513202",
+      "official_2024_name": "barman preparator",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "receptioner-hotel",
+      "site_name": "Recepționer hotel",
+      "site_cor": "422401",
+      "official_2024_name": "recepționer de hotel",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "agent-turism",
+      "site_name": "Agent de turism",
+      "site_cor": "422101",
+      "official_2024_name": "agent de voiaj",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "functionar-public",
+      "site_name": "Funcționar public",
+      "site_cor": "411001",
+      "official_2024_name": "funcționar administrativ",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "politist",
+      "site_name": "Polițist",
+      "site_cor": "541101",
+      "official_2024_name": "șef compartiment pentru prevenire",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "pompier",
+      "site_name": "Pompier",
+      "site_cor": "541102",
+      "official_2024_name": "șef formație intervenție, salvare și prim ajutor",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "militar",
+      "site_name": "Militar",
+      "site_cor": "031101",
+      "official_2024_name": null,
+      "exists_in_2024": false,
+      "review_required": true
+    },
+    {
+      "slug": "jurnalist",
+      "site_name": "Jurnalist",
+      "site_cor": "264201",
+      "official_2024_name": "comentator publicist",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "editor",
+      "site_name": "Editor",
+      "site_cor": "264202",
+      "official_2024_name": "corector (studii superioare)",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "cameraman",
+      "site_name": "Cameraman",
+      "site_cor": "352101",
+      "official_2024_name": "acustician cinematografic",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "regizor",
+      "site_name": "Regizor",
+      "site_cor": "265601",
+      "official_2024_name": "prezentator (crainic) radio",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "designer-grafic",
+      "site_name": "Designer grafic",
+      "site_cor": "216601",
+      "official_2024_name": "designer grafică (studii medii)",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "specialist-marketing",
+      "site_name": "Specialist marketing",
+      "site_cor": "243102",
+      "official_2024_name": "organizator activitate turism (studii superioare)",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "traducator",
+      "site_name": "Traducător",
+      "site_cor": "264301",
+      "official_2024_name": "filolog",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "actor",
+      "site_name": "Actor",
+      "site_cor": "265501",
+      "official_2024_name": "actor",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "muzician",
+      "site_name": "Muzician",
+      "site_cor": "265201",
+      "official_2024_name": "acompaniator",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "fermier",
+      "site_name": "Fermier",
+      "site_cor": "611001",
+      "official_2024_name": null,
+      "exists_in_2024": false,
+      "review_required": true
+    },
+    {
+      "slug": "silvicultor",
+      "site_name": "Silvicultor",
+      "site_cor": "314101",
+      "official_2024_name": "tehnician în bacteriologie",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "electrician-centrala",
+      "site_name": "Electrician centrală electrică",
+      "site_cor": "313301",
+      "official_2024_name": null,
+      "exists_in_2024": false,
+      "review_required": true
+    },
+    {
+      "slug": "operator-statie-apa",
+      "site_name": "Operator stație de apă",
+      "site_cor": "313401",
+      "official_2024_name": "operator chimist la chimizarea metanului",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "operator-salubritate",
+      "site_name": "Operator salubritate",
+      "site_cor": "961301",
+      "official_2024_name": "lucrător pentru salubrizare căi publice",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "agent-paza",
+      "site_name": "Agent de pază",
+      "site_cor": "541401",
+      "official_2024_name": "agent de securitate",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "agent-curatenie",
+      "site_name": "Agent de curățenie",
+      "site_cor": "911201",
+      "official_2024_name": "femeie de serviciu",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "operator-call-center",
+      "site_name": "Operator call center",
+      "site_cor": "422201",
+      "official_2024_name": null,
+      "exists_in_2024": false,
+      "review_required": true
+    },
+    {
+      "slug": "secretar",
+      "site_name": "Secretar",
+      "site_cor": "412001",
+      "official_2024_name": "secretară",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "specialist-resurse-umane",
+      "site_name": "Specialist resurse umane",
+      "site_cor": "242314",
+      "official_2024_name": "specialist resurse umane",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "agent-imobiliar",
+      "site_name": "Agent imobiliar",
+      "site_cor": "333401",
+      "official_2024_name": "agent imobiliar (broker imobiliar)",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "frizer",
+      "site_name": "Frizer",
+      "site_cor": "514101",
+      "official_2024_name": "coafor",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "cosmetician",
+      "site_name": "Cosmetician",
+      "site_cor": "514201",
+      "official_2024_name": "cosmetician",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "bibliotecar",
+      "site_name": "Bibliotecar",
+      "site_cor": "262101",
+      "official_2024_name": "arhivist",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "antrenor-sportiv",
+      "site_name": "Antrenor sportiv",
+      "site_cor": "342201",
+      "official_2024_name": "antrenor",
+      "exists_in_2024": true,
+      "review_required": true
+    },
+    {
+      "slug": "preot",
+      "site_name": "Preot",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "asistent-social",
+      "site_name": "Asistent social",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "operator-cnc",
+      "site_name": "Operator CNC",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "electromecanic",
+      "site_name": "Electromecanic",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "operator-chimist",
+      "site_name": "Operator chimist",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "operator-mase-plastice",
+      "site_name": "Operator mase plastice",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "operator-rafinarie",
+      "site_name": "Operator rafinărie",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "sondor",
+      "site_name": "Sondor",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "sticlar",
+      "site_name": "Sticlar",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "tesator",
+      "site_name": "Țesător",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "cizmar",
+      "site_name": "Cizmar",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "tapiter",
+      "site_name": "Tapițer",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "bijutier",
+      "site_name": "Bijutier",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "tipograf",
+      "site_name": "Tipograf",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "constructor-drumuri",
+      "site_name": "Constructor de drumuri",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "marinar",
+      "site_name": "Marinar",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "inginer-aeronautic",
+      "site_name": "Inginer aeronautic",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "operator-epurare",
+      "site_name": "Operator stație de epurare",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "crupier",
+      "site_name": "Crupier",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "tehnician-calculatoare",
+      "site_name": "Tehnician service IT",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "consultant-management",
+      "site_name": "Consultant în management",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    },
+    {
+      "slug": "pescar",
+      "site_name": "Pescar",
+      "site_cor": null,
+      "official_2024_name": null,
+      "exists_in_2024": null,
+      "review_required": true
+    }
+  ]
+}

@@ -12,13 +12,13 @@ Instrucțiuni de lucru: acest document și codul din repository. Nu folosi docum
 
 ## Reguli de publicare
 
-Catalogul afișează numele complet și o singură sumă netă: mediana disponibilă, altfel media specifică meseriei. În lipsa ambelor afișează o liniuță, fără a substitui media sectorului sau mijlocul grilei. Reperul Salariile.ro este selectat din surse citate, nu o măsurare proprie. Ofertele angajatorilor sunt distincte; când același reper provine din aceleași oferte, identitatea sursei este declarată în detalii. Cele trei citări DevJob au roluri și adrese distincte în `src/data/repere-oferte-it.json`.
+Catalogul afișează numele complet și o singură sumă netă: mediana disponibilă, media specifică meseriei, netul din grila publică sau reperul statistic al sectorului din seriile oficiale INS. Reperul Salariile.ro este selectat din surse citate, nu o măsurare proprie.
 
 Netul este suma principală pe toate paginile și comparațiile. Pentru grile afișăm netul standard; brutul rămâne în detaliile sursei. Explicațiile metodologice sunt restrânse, la cerere, fără paragrafe fiscale lângă suma principală.
 
 O medie de sector nu devine salariul meseriei prin etichetare sau ajustare. Vârsta nu devine experiență. O ofertă sau o grilă nu devine salariu realizat. Numărul căutărilor, celulelor sau treptelor nu devine număr de salariați. Nu se reconstruiesc percentile din medii și nu se agregă mijloacele intervalelor drept observații salariale.
 
-Fiecare reper are populație, unitate, sursă, adresă, perioadă și limită de interpretare. Câmpurile necunoscute rămân `null`. Referința DevJob păstrează mediana și quartilele furnizorului ca statistici externe ale ofertelor; acestea nu trec prin agregatorul nostru. Cele cinci referințe Salario sunt citări punctuale din raportul eJobs, nu o copie a bazei de date. Anul raportului nu înlocuiește anul observațiilor.
+Fiecare reper are populație, unitate, sursă, adresă, perioadă și limită de interpretare. Câmpurile necunoscute rămân `null`. Cele cinci referințe Salario sunt citări punctuale din raportul eJobs, nu o copie a bazei de date. Anul raportului nu înlocuiește anul observațiilor.
 
 Titlurile SEO descriu meseria și ediția ghidului, fără cifre atribuite artificial și fără promisiuni de precizie neprobate. Comparațiile nu ordonează ocupațiile după valori cu concepte sau populații diferite. Selectorul compară oricare două dintre paginile existente fără a genera mii de URL-uri goale.
 

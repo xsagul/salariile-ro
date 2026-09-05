@@ -1,0 +1,58 @@
+{
+  "checked_at": "2026-09-05",
+  "purpose": "Probe citite din surse; nu constituie baza finală și nu se importă automat în statisticile publice ale meseriilor.",
+  "records": [
+    {
+      "id": "E01", "source_id": "S22", "source": "eJobs Salario, Review and Trends 2026",
+      "url": "https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf", "locator": "p. 54; metodologie p. 43",
+      "source_role": "Contabil", "cor6": null, "mapping_status": "title_only_requires_review",
+      "kind": "provider_aggregate", "origin_kind": "external_employee_self_reports", "model_status": "not_stated_for_cell",
+      "salary_concept": "reported_net_salary", "gross_net": "net", "currency": "RON", "periodicity": "month",
+      "reference_start": "2025-01-01", "reference_end": "2025-12-31", "region": "RO", "experience": null,
+      "amount": null, "mean": 5000, "median": null, "p25": null, "p75": null,
+      "n": null, "n_definition": "not_published_for_cell", "n_employers": null,
+      "rights_status": "limited_attributed_reference; systematic_republication_not_confirmed",
+      "publication_decision": "reference_only", "eligible_for_own_salary_distribution": false,
+      "limitation": "Sursă voluntară externă; nu salarii payroll validate. Nu există n sau COR în celula publicată."
+    },
+    {
+      "id": "E02", "source_id": "S21", "source": "DevJob.ro, rendered public salary page",
+      "url": "https://devjob.ro/en/salaries", "locator": "Software Developer / Romania / All levels; browser 2026-09-05",
+      "source_role": "Software Developer", "cor6": null, "mapping_status": "provider_role_not_exact_COR",
+      "kind": "provider_aggregate", "origin_kind": "employer_advertised_salary_ranges", "model_status": "interval_transformation_not_explained_in_page",
+      "salary_concept": "provider_statistics_of_advertised_salary", "gross_net": "net", "currency": "RON", "periodicity": "month",
+      "reference_start": null, "reference_end": null, "captured_at": "2026-09-05", "region": "RO", "experience": "all_levels",
+      "amount": null, "mean": 13500, "median": 12000, "p25": 8800, "p75": 17000,
+      "n": null, "n_definition": "cell_count_not_published; site_states_over_1000_jobs_over_its_history", "n_employers": null,
+      "rights_status": "limited_attributed_reference; systematic_republication_not_confirmed",
+      "publication_decision": "reference_only", "eligible_for_own_salary_distribution": false,
+      "limitation": "Salarii oferite, nu sume efectiv încasate. Perioada și n ale celulei nu au fost confirmate. Nu înlocuiește datele unui COR individual."
+    },
+    {
+      "id": "E03", "source_id": "S09", "source": "Universitatea de Arhitectură și Urbanism Ion Mincu",
+      "url": "https://www.uauim.ro/universitatea/personal/2025-2026/Transparenta%20veniturilor%20salariale%20cf.%20L153-2017%20martie%202026.xlsx", "locator": "sheet Transparenta 2025; title C3 March 2026; A181/B181",
+      "source_role": "Contabil sef", "cor6": null, "mapping_status": "institutional_function_requires_COR_review",
+      "kind": "public_grid", "origin_kind": "public_employer_salary_disclosure", "model_status": "not_modelled_by_Salariile",
+      "salary_concept": "published_base_salary", "gross_net": "gross_base", "currency": "RON", "periodicity": "month",
+      "reference_start": "2026-03-01", "reference_end": "2026-03-31", "region": "institution_UAUIM; actual_workplace_not_verified", "experience": null,
+      "amount": 10115, "mean": null, "median": null, "p25": null, "p75": null,
+      "n": null, "n_definition": "row_is_function_not_proven_employee_count", "n_employers": 1,
+      "rights_status": "public_disclosure; systematic_database_reuse_terms_to_verify",
+      "publication_decision": "reference_only", "eligible_for_own_salary_distribution": false,
+      "limitation": "Salariu de bază al unei funcții într-o instituție. Nu total, nu net, nu medie națională; sporurile sunt componente separate."
+    },
+    {
+      "id": "E04", "source_id": "S05", "source": "Eurostat SES 2022 / Romania",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/earn_ses22_21?lang=EN&geo=RO&time=2022&sex=T&indic_se=ERN&isco08=OC7&sizeclas=GE10&age=TOTAL&unit=NAC&freq=A", "locator": "JSON-stat cell freq=A sex=T indic_se=ERN isco08=OC7 sizeclas=GE10 age=TOTAL unit=NAC geo=RO time=2022",
+      "source_role": "ISCO08 OC7 Craft and related trades workers", "cor6": null, "mapping_status": "broad_ISCO_major_group_only",
+      "kind": "official_aggregate", "origin_kind": "structure_of_earnings_survey", "model_status": "survey_estimate_with_official_methodology",
+      "salary_concept": "gross_monthly_earnings_SES", "gross_net": "gross", "currency": "RON", "periodicity": "month",
+      "reference_start": "2022-10-01", "reference_end": "2022-10-31", "region": "RO", "experience": null,
+      "amount": null, "mean": 4781, "median": null, "p25": null, "p75": null,
+      "n": null, "n_definition": "salary_table_does_not_supply_raw_sample_n", "n_employers": null,
+      "rights_status": "Eurostat_public_reuse_with_attribution_and_applicable_conditions",
+      "publication_decision": "group_context_only", "eligible_for_own_salary_distribution": false,
+      "limitation": "Grupă majoră, 2022, întreprinderi 10+, NACE B-S fără O. Nu salariul individual al zugravului/electricianului/instalatorului în 2026."
+    }
+  ]
+}

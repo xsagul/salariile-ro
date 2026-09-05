@@ -134,6 +134,10 @@ export default function FluturasSalariuPage() {
           Pentru înțelegerea fiecărui rând de pe fluturașul primit de la firmă, citește ghidul:{" "}
           <Link href="/noutati/cum-citesti-fluturasul-de-salariu">cum îți citești fluturașul de salariu</Link>.
         </p>
+        <p className="source-note">
+          Dacă luna include zile de boală, verifică separat procentele, baza și excepțiile din ghidul despre{" "}
+          <Link href="/noutati/concediu-medical-2026">plata concediului medical în 2026</Link>.
+        </p>
       </Section>
 
       <Section>

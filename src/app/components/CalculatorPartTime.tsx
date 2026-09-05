@@ -359,12 +359,10 @@ export default function CalculatorPartTime() {
           )}
 
           <div className={stale ? "opacity-50 transition-opacity" : "transition-opacity"}>
-            {/* Un singur fel de prezentare, ca la restul calculatoarelor:
-                tabel fiscal cu rândul de total inversat. BRAND.md §9 spune că
-                inversarea e "rezervată rezultatului final" — pe un calculator de
-                salariu, ăla e netul angajatului, nu costul firmei.
+            {/* Tabel fiscal cu rândul de total inversat (rezultatul final:
+                pe un calculator de salariu, este netul angajatului, nu costul firmei).
 
-                Coloana "Suportată de" rămâne: e chiar diferența dintre pagina
+                Coloana "Suportată de" rămâne: e diferența dintre pagina
                 asta și un calculator obișnuit de net. La part-time, cine plătește
                 diferența de CAS/CASS e întrebarea. */}
             <div className="overflow-hidden rounded border border-stone-300">

@@ -1,0 +1,211 @@
+{
+  "version": "1.2",
+  "description": "API for salary data from Paylab.com\n\nTo access our API, use URL prefix https://www.paylab.com/paylab_api/v1/\n\nAPI allows you to get salary data for most of countries in the world and in the scope according the plan which you choose.\n\nThe results are precomputed with statistical models, and updates are done depending on new respondents.\n\nThe results are working with total monthly salaries. Generally, we are publishing gross salary except of these countries, where it is net: Bosnia and Herzegovina, Croatia, Estonia, Latvia, Lithuania, North Macedonia, Romania, Serbia and Uzbekistan.\n\nDefault currency in results is always local currency of the requested country. With the optional 'currency' parameter, data can be requested calculated with current exchange rate.\n",
+  "servers": [
+    {
+      "url": "https://paylab.com/paylab_api/v1",
+      "description": "Production server"
+    }
+  ],
+  "paths": [
+    {
+      "path": "/countries",
+      "summary": "List of available countries",
+      "parameters": [
+        "#/components/parameters/AcceptLanguageHeader",
+        "#/components/parameters/LangQuery"
+      ]
+    },
+    {
+      "path": "/currencies",
+      "summary": "List of available currencies",
+      "parameters": [
+        "#/components/parameters/AcceptLanguageHeader",
+        "#/components/parameters/LangQuery"
+      ]
+    },
+    {
+      "path": "/category_positions",
+      "summary": "List of available category-positions",
+      "description": "Every job title is defined as combination of position and category, where this position belong. That is why we call it category-position (catpos). For example 2c1 means Administrative worker (1) in category Administration (2)\n",
+      "parameters": [
+        "#/components/parameters/AcceptLanguageHeader",
+        "#/components/parameters/LangQuery"
+      ]
+    },
+    {
+      "path": "/country/{country}/category_positions",
+      "summary": "List of category-positions for country with available quality",
+      "description": "Parameter quality is a floating point number, that represents how trustworthy are computed data. As a minimum usable quality is considered '0'. Negative numbers are not trustworthy.\n",
+      "parameters": [
+        "#/components/parameters/AcceptLanguageHeader",
+        "#/components/parameters/LangQuery",
+        "#/components/parameters/Country"
+      ]
+    },
+    {
+      "path": "/country/{country}/category_position/{catpos}/basic",
+      "summary": "Basic detail for catpos in country",
+      "description": "Basic results contains 1st decile and 9th decile of total monthly salary.\n",
+      "parameters": [
+        "#/components/parameters/Catpos",
+        "#/components/parameters/Country",
+        "#/components/parameters/CurrencyQuery"
+      ]
+    },
+    {
+      "path": "/country/{country}/category_position/{catpos}/advanced",
+      "summary": "Advanced detail for catpos in country",
+      "description": "Advanced results contains salary data for all standard percentiles: 1st decile, 1st quartile, median, 3rd quartile and 9th decile and average salarye of total monthly salary. Data are available for selected positon and country.\n",
+      "parameters": [
+        "#/components/parameters/Catpos",
+        "#/components/parameters/Country",
+        "#/components/parameters/CurrencyQuery"
+      ]
+    },
+    {
+      "path": "/country/{country}/category_position/{catpos}/full",
+      "summary": "Full detail for catpos in country",
+      "description": "Full results contains salary data for all standard percentiles: 1st decile, 1st quartile, median, 3rd quartile and 9th decile and average salarye of total monthly salary. Data are available for selected position and country and also for one of parameter: region_level_2 (if available), education level, work of experience level, company size, age group. The combination of these parameters is not possible. Full report gives you also data for industry.\n",
+      "parameters": [
+        "#/components/parameters/AcceptLanguageHeader",
+        "#/components/parameters/LangQuery",
+        "#/components/parameters/Catpos",
+        "#/components/parameters/Country",
+        "#/components/parameters/CurrencyQuery"
+      ]
+    }
+  ],
+  "schemas": {
+    "GenericError": {
+      "properties": [
+        "message",
+        "logref",
+        "path",
+        "_links"
+      ],
+      "quantiles": []
+    },
+    "Country": {
+      "properties": [
+        "id",
+        "name",
+        "code",
+        "currency",
+        "salaryType",
+        "continent",
+        "usability",
+        "_links"
+      ],
+      "quantiles": []
+    },
+    "ArrayOfCountries": {
+      "properties": [],
+      "quantiles": []
+    },
+    "Currency": {
+      "properties": [
+        "id",
+        "rateToEur"
+      ],
+      "quantiles": []
+    },
+    "ArrayOfCurrencies": {
+      "properties": [],
+      "quantiles": []
+    },
+    "Catpos": {
+      "properties": [
+        "id",
+        "positionName",
+        "categoryName",
+        "jobDescription"
+      ],
+      "quantiles": []
+    },
+    "ArrayOfCatpos": {
+      "properties": [],
+      "quantiles": []
+    },
+    "CountryCatpos": {
+      "properties": [
+        "id",
+        "quality",
+        "model",
+        "count",
+        "positionName",
+        "categoryName",
+        "_links"
+      ],
+      "quantiles": []
+    },
+    "ArrayOfCountryCatpos": {
+      "properties": [],
+      "quantiles": []
+    },
+    "CatposDetailBasic": {
+      "properties": [
+        "catpos",
+        "country",
+        "quality",
+        "currency",
+        "quantiles",
+        "_links"
+      ],
+      "quantiles": [
+        "q10",
+        "q90"
+      ]
+    },
+    "CatposDetailAdvanced": {
+      "properties": [
+        "catpos",
+        "country",
+        "quality",
+        "currency",
+        "quantiles",
+        "_links"
+      ],
+      "quantiles": [
+        "average",
+        "q10",
+        "q25",
+        "q50",
+        "q75",
+        "q90"
+      ]
+    },
+    "CatposDetailFull": {
+      "properties": [
+        "catpos",
+        "country",
+        "quality",
+        "language",
+        "currency",
+        "quantiles",
+        "_links",
+        "regionLevel2",
+        "educationLevel",
+        "workExperience",
+        "companySize",
+        "ageGroup",
+        "businessArea"
+      ],
+      "quantiles": [
+        "average",
+        "q10",
+        "q25",
+        "q50",
+        "q75",
+        "q90"
+      ]
+    }
+  },
+  "security": {
+    "TokenAuth": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-Auth-Token"
+    }
+  }
+}

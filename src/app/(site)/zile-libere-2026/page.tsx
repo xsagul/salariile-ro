@@ -356,6 +356,7 @@ export default function ZileLibere2026Page() {
                 <h3 className="mb-3 mt-6 text-xs font-medium text-stone-500">Pagini conexe</h3>
                 <ul className={`flex flex-col gap-2 text-sm ${links}`}>
                   <li><Link href="/zile-lucratoare-2026">Zile și ore lucrătoare 2026</Link></li>
+                  <li><Link href="/noutati/zile-libere-ramase-2026-minivacante">Zile libere rămase și minivacanțe în 2026</Link></li>
                   <li><Link href="/salariu-minim">Salariul minim 2026</Link></li>
                   <li><Link href="/salariu-mediu">Salariul mediu pe economie</Link></li>
                   <li><Link href="/">Calculator salariu net</Link></li>

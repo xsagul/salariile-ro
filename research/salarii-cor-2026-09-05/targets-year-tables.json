@@ -1,0 +1,5 @@
+[
+ {"id":"eurostat-ses22-21","url":"https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/earn_ses22_21?geo=RO&lang=EN"},
+ {"id":"eurostat-ses22-48","url":"https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/earn_ses22_48?geo=RO&lang=EN"},
+ {"id":"ilo-toc","url":"https://rplumber.ilo.org/data/indicator/?id=EAR_4MTH_SEX_OCU_CUR_NB_A"}
+]

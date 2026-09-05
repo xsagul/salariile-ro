@@ -1,0 +1,276 @@
+{
+  "checked_at": "2026-09-05",
+  "scope": "30 primary source records; additional unverified candidate families in REGISTRU-SURSE.md",
+  "sources": [
+    {
+      "id": "S01",
+      "name": "COR, Ministerul Muncii / data.gov.ro",
+      "verified_granularity_and_fields": "Ocupație la șase cifre și denumire. **Nicio sumă salarială.** Am extras 4.537 coduri unice din fotografia publicată în aprilie 2024.",
+      "access_files_api_cost": "[CKAN package_show](https://data.gov.ro/api/3/action/package_show?id=clasificarea-ocupatiilor-din-romania); [XML în ordinea codului](https://data.gov.ro/dataset/695974d3-4be3-4bbe-a56a-bb639ad908e2/resource/6181ed62-d72f-411e-b742-ac030ce636fc/download/isco-08-lista-cresc-cod-ocupatii-cor-2024.xml). XML-ul este un pachet Word XML, nu o listă simplă de elemente ocupație.",
+      "rights_and_decision": "Metadatele declară OGL-ROU-1.0. Se păstrează atribuirea și versiunea. Există modificări ulterioare, inclusiv [Ordinul 66/51/2026](https://legislatie.just.ro/Public/DetaliiDocument/308425). Fotografia din 2024 nu este certificată ca nomenclator complet la zi în 2026.",
+      "checked_at": "2026-09-05",
+      "verification_scope": "See field-level qualifications; listing is not a granted production licence."
+    },
+    {
+      "id": "S02",
+      "name": "INS TEMPO, câștiguri lunare",
+      "verified_granularity_and_fields": "`FOM106G` net / `FOM107G` brut, activități CAEN Rev.3; `FOM107E` serie anuală brută pe județe / CAEN Rev.2. Medii de activitate, **nu salariul ocupației**. Fără distribuția necesară P25/P75.",
+      "access_files_api_cost": "[Catalog TEMPO](https://statistici.insse.ro/tempoins/?context=15&lang=ro&page=tempo2). Protocolul folosit în repo: `http://statistici.insse.ro:8077/tempo-ins/matrix/{cod}` GET metadate, POST selecții. Testul din această cercetare a primit `ECONNREFUSED`. Exportul oficial din interfață rămâne alternativa; nu considerăm protocolul un API contractual stabil.",
+      "rights_and_decision": "Citare și condițiile produsului INS; nu extindem automat licența COR la TEMPO. Păstrăm pentru context macro și verificare, nu pentru completarea automată a fiecărui COR.",
+      "checked_at": "2026-09-05",
+      "verification_scope": "See field-level qualifications; listing is not a granted production licence."
+    },
+    {
+      "id": "S03",
+      "name": "INS TEMPO, ocupație × activitate",
+      "verified_granularity_and_fields": "`FOM121A`: număr salariați cu timp complet și lună întreagă, salariu de bază mediu brut, câștig mediu brut realizat, proprietate × activitate CAEN × **grupă majoră ISCO/COR** × sex. `FOM121B`: vârstă × grupă majoră × sex. `FOM118G`, `FOM119D` sunt serii istorice relevante, cu definiții de verificat pe fiecare ediție.",
+      "access_files_api_cost": "Același catalog și protocol ca S02. `dimensionsMap` conține selecțiile și identificatorii; `resultTable` este tabel HTML. Scripturi existente: `scripts/lib-tempo.mjs`, `scripts/ins-tempo.mjs`.",
+      "rights_and_decision": "FOM121A există: ar fi greșit să spunem că nu există intersecția ocupație–CAEN. Limita este nivelul de ocupație: o cifră, nu șase. Numărul statistic de salariați nu este automat numărul respondenților eșantionului.",
+      "checked_at": "2026-09-05",
+      "verification_scope": "See field-level qualifications; listing is not a granted production licence."
+    },
+    {
+      "id": "S04",
+      "name": "INS, Disparități salariale 2022",
+      "verified_granularity_and_fields": "Publicație de 62 pagini: rezultate pe **grupe majore**. Excel-urile anunțate în cuprins: 1 număr salariați; 2/3 câștig brut/net orar; 4/5 brut/net octombrie; 6 brut anual; 7 durată normală; 8 ore remunerate. Reprezentativitate națională, întreprinderi cu minimum 10 salariați.",
+      "access_files_api_cost": "[Pagina INS](https://insse.ro/cms/ro/content/disparităţi-salariale-factori-de-influenţă-anul-2022) a avut problemă TLS. Am citit [publicația scrisă de INS, copie găzduită de Edupedu](https://cdn.edupedu.ro/wp-content/uploads/2024/09/disparitati_salariale_factori_de_influenta_in_anul_2022.pdf), inclusiv cuprinsul și secțiunea 2.7. Fișierele Excel de pe CD nu au fost obținute.",
+      "rights_and_decision": "Pagina de drepturi a publicației cere acord scris pentru reproducere/stocare și permite utilizare explicativă cu citare precisă. Nu presupunem licență deschisă pentru republicarea bazei. Solicitare de reutilizare și tabulare detaliată către INS.",
+      "checked_at": "2026-09-05",
+      "verification_scope": "See field-level qualifications; listing is not a granted production licence."
+    },
+    {
+      "id": "S05",
+      "name": "Eurostat, SES public",
+      "verified_granularity_and_fields": "Testate efectiv `earn_ses22_21` și `earn_ses22_48`, `geo=RO`: numai ISCO major și agregate. `_21`: `freq, sex, indic_se, isco08, sizeclas, age, unit, geo, time`; `ERN` este câștig brut, `NAC` monedă națională. `_48` adaugă activitatea. Numerele de salariați sunt în `_03`, `_53`, `_54`, nu într-un câmp generic „n” al salariului.",
+      "access_files_api_cost": "[API 2022, tabel 21](https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/earn_ses22_21?geo=RO&lang=EN), [tabel 48](https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/earn_ses22_48?geo=RO&lang=EN). JSON-stat / Data Browser. `earn_ses_monthly` are indicatori de medie, mediană, D1/D9, dar nu P25/P75; prezența unui cod în dicționar nu garantează o celulă populată pentru RO/2022.",
+      "rights_and_decision": "[Reutilizare comercială autorizată pentru aceste date Eurostat, cu atribuire și condiții](https://ec.europa.eu/eurostat/help/copyright-notice). Statistici de anchetă, nu microdate brute. Nu atribuim medianele unor agregate meseriilor din interior.",
+      "checked_at": "2026-09-05",
+      "verification_scope": "See field-level qualifications; listing is not a granted production licence."
+    },
+    {
+      "id": "S06",
+      "name": "SES, microdate și tabulări speciale",
+      "verified_granularity_and_fields": "[Raportul României](https://ec.europa.eu/eurostat/cache/metadata/en/earn_ses2022_esqrs_ro.htm) descrie codificarea colectată la **ISCO patru cifre**. Aceasta nu confirmă COR șase cifre în fișierul accesibil. Variabile: B23 ocupație, B26 vechime la angajator, B41 brut anual, B411 bonusuri anuale, B42 brut lunar, B421 ore suplimentare plătite, B422 sporuri schimb, B43 brut orar.",
+      "access_files_api_cost": "[Pagina de acces](https://ec.europa.eu/eurostat/web/microdata/structure-of-earnings-survey), [lista variabilelor XLS](https://ec.europa.eu/eurostat/documents/203647/203707/SES_variables_list.xls/b287a6fc-19b2-493d-a3f2-4ee70d3439b1), [anonimizare, document cu actualizare SES 2018](https://ec.europa.eu/eurostat/documents/203647/203707/Anonymisation-method-SES-microdata.pdf/1bc66dce-bae1-40a3-ac33-0396761cf481). Nu am obținut microdatele RO 2022.",
+      "rights_and_decision": "Acces științific pentru entități recunoscute / proiect aprobat; nu este o licență generală pentru produs comercial SEO. Restricțiile ISCO două cifre din anexa unor țări nu trebuie atribuite automat României. Tabularea specială publicabilă este pista practică.",
+      "checked_at": "2026-09-05",
+      "verification_scope": "See field-level qualifications; listing is not a granted production licence."
+    },
+    {
+      "id": "S07",
+      "name": "Inspecția Muncii, REGES-ONLINE",
+      "verified_granularity_and_fields": "[HG 295/2025, art. 4](https://legislatie.just.ro/Public/DetaliiDocumentAfis/295995): funcție/ocupație COR, salariu de bază lunar brut contractual, indemnizații/sporuri/adaosuri prevăzute, timp de lucru, date contract. **Contractul nu dovedește suma efectiv plătită în fiecare lună.**",
+      "access_files_api_cost": "Platformă administrativă cu acces autorizat pentru angajator/salariat. Nu am identificat un API public cu toate contractele naționale. De solicitat agregate COR × perioadă × normă × geografie, cu protecția celulelor mici.",
+      "rights_and_decision": "Nu extragem contracte personale din conturi pentru a construi o bază națională. Acces/reutilizare a agregatelor de cerut instituției; [Legea 179/2022](https://legislatie.just.ro/Public/DetaliiDocument/256414) nu anulează confidențialitatea și nu garantează crearea oricărui tabel nou.",
+      "checked_at": "2026-09-05",
+      "verification_scope": "See field-level qualifications; listing is not a granted production licence."
+    },
+    {
+      "id": "S08",
+      "name": "D112 / date salarizare angajatori",
+      "verified_granularity_and_fields": "INS confirmă folosirea D112 împreună cu REGES în SES 2022. Datele de plată pot valida venitul realizat; **D112 nu este confirmat aici ca fișier public cu COR exact**. Asocierea COR–plată trebuie făcută legal la deținătorul autorizat.",
+      "access_files_api_cost": "Nu există în cercetare un export ANAF public utilizabil pentru salarii individuale. Pista: partener de payroll / angajatori care livrează agregate documentate sau microdate minimizate în cadru contractual. Schema exactă a unui furnizor rămâne de obținut.",
+      "rights_and_decision": "Confidențialitate fiscală, GDPR, mandat și contract pentru fiecare partener. Datele anonime publicabile și drepturile asupra statisticilor derivate trebuie definite explicit. Prioritate foarte mare pentru precizie; acces național neconfirmat.",
+      "checked_at": "2026-09-05",
+      "verification_scope": "See field-level qualifications; listing is not a granted production licence."
+    },
+    {
+      "id": "S09",
+      "name": "Liste publice de salarii, art. 33 L153",
+      "verified_granularity_and_fields": "Funcție, grad/treaptă, bază, sporuri, indemnizații, temei legal. Ocupație uneori recognoscibilă; adesea „muncitor calificat” fără specializare. Nu confundăm un rând cu un angajat. **Exemplu real:** UAUIM, martie 2026, „Contabil șef”, bază 10.115 lei, rând 181.",
+      "access_files_api_cost": "[Index oficial UAUIM](https://www.uauim.ro/informatii-interes-public/), [XLSX martie 2026](https://www.uauim.ro/universitatea/personal/2025-2026/Transparenta%20veniturilor%20salariale%20cf.%20L153-2017%20martie%202026.xlsx). Foaia se numește „Transparenta 2025”, dar titlul din C3 spune martie 2026 — se citește conținutul, nu doar numele foii.",
+      "rights_and_decision": "Publicare prevăzută de [art. 33](https://legislatie.just.ro/Public/DetaliiDocument/298840), la 31 martie și 30 septembrie. Refolosim informația relevantă fără nume personale și verificăm drepturile documentului / reutilizarea sistematică. Reper pentru instituție și funcție, nu mediană națională.",
+      "checked_at": "2026-09-05",
+      "verification_scope": "See field-level qualifications; listing is not a granted production licence."
+    },
+    {
+      "id": "S10",
+      "name": "Contracte colective / grile sectoriale",
+      "verified_granularity_and_fields": "Minime, clase, coeficienți, vechime și beneficii negociate; pot include profesii precise. **Nu constituie distribuția salariilor efectiv plătite.**",
+      "access_files_api_cost": "Documente ale ministerului, sindicatelor, patronatelor și angajatorilor. Nu am obținut o bază națională completă, structurată și actuală pe COR.",
+      "rights_and_decision": "Se verifică părțile, aplicabilitatea, durata și licența fiecărui document. Nu extrapolăm o grilă la întregul sector. Pista de completare pentru meserii manuale, separată de salariile observate.",
+      "checked_at": "2026-09-05",
+      "verification_scope": "See field-level qualifications; listing is not a granted production licence."
+    },
+    {
+      "id": "S11",
+      "name": "ANOFM / PULS / Mediere",
+      "verified_granularity_and_fields": "În rezultatul public consultat: titlu, COR șase cifre, județ, normă, contract, experiență, date publicare/expirare. Un exemplu de programator ajutor era COR 351201; rubrica salariu nu conținea sumă.",
+      "access_files_api_cost": "[Portal ANOFM](https://mediere.anofm.ro/). Linkurile de anunț consultate prin indexare au răspuns ulterior 404 la descărcare directă. Nu declarăm aceste posturi active. API/feed oficial de reutilizare nu a fost confirmat.",
+      "rights_and_decision": "Candidat bun pentru etichetarea COR și cererea de locuri de muncă; acoperirea salariului trebuie măsurată. Solicităm export/feed și condiții; accesul public al paginii nu este o licență nelimitată pentru reconstrucția bazei.",
+      "checked_at": "2026-09-05",
+      "verification_scope": "See field-level qualifications; listing is not a granted production licence."
+    },
+    {
+      "id": "S12",
+      "name": "EURES",
+      "verified_granularity_and_fields": "Posturi, ocupații și locații; salariul depinde de anunț și țară. Include RO, dar poate dubla ANOFM. O ofertă în străinătate pentru vorbitori de română nu este salariu în România.",
+      "access_files_api_cost": "[Portalul oficial și condițiile de utilizare](https://europa.eu/eures/portal/jv-se/home?lang=en&pageCode=find_a_job).",
+      "rights_and_decision": "Portalul precizează că extragerea prin API sau tehnologii similare este permisă organizațiilor partenere EURES recunoscute. Nu folosim un scraper terț sau un endpoint descoperit pentru a evita această condiție. Eventual parteneriat.",
+      "checked_at": "2026-09-05",
+      "verification_scope": "See field-level qualifications; listing is not a granted production licence."
+    },
+    {
+      "id": "S13",
+      "name": "ILOSTAT",
+      "verified_granularity_and_fields": "Testate RO: **927 înregistrări statistice pentru medie**, **852 pentru mediană**, cu mai multe perioade/surse/sexe. Coduri observate: ISCO08/88 o cifră și grupe de competență. Aceste numere nu reprezintă angajați.",
+      "access_files_api_cost": "[Metadate actuale CSV](https://rplumber.ilo.org/metadata/toc/indicator?lang=en&format=.csv); [medie](https://rplumber.ilo.org/data/indicator/?id=EAR_EMTA_SEX_OCU_NB_A&ref_area=ROU), [mediană](https://rplumber.ilo.org/data/indicator/?id=EAR_EMTM_SEX_OCU_NB_A&ref_area=ROU). Câmpuri `ref_area,source,indicator,sex,classif1,time,obs_value,obs_status,note_classif,note_indicator,note_source`.",
+      "rights_and_decision": "Reutilizare supusă politicii ILO și notelor sursei; verificarea licenței comerciale specifice rămâne deschisă. Unele valori necesită decodarea notelor pentru unitate/concept. Nu multiplicăm încrederea numărând INS/Eurostat/ILO ca trei anchete independente.",
+      "checked_at": "2026-09-05",
+      "verification_scope": "See field-level qualifications; listing is not a granted production licence."
+    },
+    {
+      "id": "S14",
+      "name": "EU-SILC / AMIGO–EU-LFS",
+      "verified_granularity_and_fields": "Anchete utile pentru venit, ocupare și ponderi, cu ocupații agregate în accesul public. EU-SILC are venit salarial anual, care nu este automat salariul lunar al ocupației curente; AMIGO/LFS nu înseamnă bază publică COR × fluturaș de salariu.",
+      "access_files_api_cost": "[Microdate Eurostat](https://ec.europa.eu/eurostat/web/microdata). Fișier RO, ediție, dicționar și granularitate efectivă nu au fost obținute în acest studiu. Nu importăm variabile vechi ca și cum ar fi schema 2026.",
+      "rights_and_decision": "Acces științific și reguli de divulgare. Prioritate secundară: control de structură și cercetare, nu furnizor imediat de salarii pe fiecare COR.",
+      "checked_at": "2026-09-05",
+      "verification_scope": "See field-level qualifications; listing is not a granted production licence."
+    },
+    {
+      "id": "S15",
+      "name": "Site-uri proprii ale angajatorilor, Ashby",
+      "verified_granularity_and_fields": "Un anunț / rol / locație / nivel, cu componente de remunerare. `title, employmentType, publishedAt, workplaceType, jobUrl`, `compensationTiers[].components[]`: `compensationType, interval, currencyCode, minValue,maxValue`. Salariul poate lipsi.",
+      "access_files_api_cost": "[Documentație publică](https://developers.ashbyhq.com/docs/public-job-posting-api): `GET https://api.ashbyhq.com/posting-api/job-board/{JOB_BOARD_NAME}?includeCompensation=true`. Codul COR se validează separat; salariul unei zone americane nu se aplică automat unui post remote eligibil în RO.",
+      "rights_and_decision": "API-ul servește publicarea paginii de cariere a organizației. Pentru agregare repetată: permisiunea/licența angajatorului și termenii aplicabili. Stocăm faptele necesare și proveniența; nu copiem gratuit întreaga descriere de post.",
+      "checked_at": "2026-09-05",
+      "verification_scope": "See field-level qualifications; listing is not a granted production licence."
+    },
+    {
+      "id": "S16",
+      "name": "Greenhouse Job Board API",
+      "verified_granularity_and_fields": "Un post, titlu, locație, conținut, metadate publicate. `pay_input_ranges`: `min_cents,max_cents,currency_type,title,blurb`. Parametrul relevant este **`pay_transparency=true`**.",
+      "access_files_api_cost": "[Documentație](https://developers.greenhouse.io/job-board.html): `GET https://boards-api.greenhouse.io/v1/boards/{board_token}/jobs/{job_id}?pay_transparency=true`. Valorile sunt în subdiviziuni monetare; perioada și eligibilitatea geografică se verifică din anunț.",
+      "rights_and_decision": "Aceleași condiții ca S15. Nu presupunem COR, net/brut ori cuantum lunar din simpla existență a unui interval numeric. Nu accesăm candidaturi sau date de recrutare private.",
+      "checked_at": "2026-09-05",
+      "verification_scope": "See field-level qualifications; listing is not a granted production licence."
+    },
+    {
+      "id": "S17",
+      "name": "Jooble REST API",
+      "verified_granularity_and_fields": "`id,title,location,snippet,salary,source,type,link,company,updated`. `salary` este text; poate necesita parsare sau poate fi gol. Reprezintă oferta, nu venitul realizat.",
+      "access_files_api_cost": "[Documentație oficială RO](https://help.jooble.org/ro/support/solutions/articles/60001448238-documenta%C8%9Bie-rest-api). Cheie regională și POST JSON. Documentația consultată indică **500 cereri gratuite în total**, nu lunar.",
+      "rights_and_decision": "Licența de stocare și publicare a agregatelor salariale trebuie confirmată; se păstrează sursa originară și se elimină duplicatele între platforme. Nu am folosit chei sau credite din conturile utilizatorului.",
+      "checked_at": "2026-09-05",
+      "verification_scope": "See field-level qualifications; listing is not a granted production licence."
+    },
+    {
+      "id": "S18",
+      "name": "Lightcast Global Job Postings",
+      "verified_granularity_and_fields": "Date comerciale pe anunț, ocupație clasificată, competențe, geografie și timp. Acoperirea RO începe în martie 2018; extinderea surselor poate produce salturi artificiale în serii. Salariul publicat trebuie separat de orice valoare imputată a produsului cumpărat.",
+      "access_files_api_cost": "[API oficial](https://docs.lightcast.io/lightcast-api/reference/overview-global-job-postings), OAuth2, scope `postings:global`; [istoric acoperire](https://kb.lightcast.io/en/articles/10070429-global-job-posting-start-month). Preț prin ofertă.",
+      "rights_and_decision": "Candidat comercial puternic pentru volum. De cerut schema exactă a salariului, procent cu salariu real RO, mapare ESCO/ISCO, eșantion, drept SEO și exportul statisticilor. Nu este confirmat un export COR6 complet.",
+      "checked_at": "2026-09-05",
+      "verification_scope": "See field-level qualifications; listing is not a granted production licence."
+    },
+    {
+      "id": "S19",
+      "name": "Coresignal Jobs API",
+      "verified_granularity_and_fields": "Furnizorul declară titlu, locație, descriere, competențe, salariu, companie și deduplicare multisursă. Nu am verificat un lot RO și nici distribuția salariilor publicate.",
+      "access_files_api_cost": "[Produs oficial](https://coresignal.com/solutions/jobs-data-api/), [FAQ](https://coresignal.com/faq/). Prețurile de intrare nu constituie ofertă pentru întregul volum și drepturile Salariile.ro.",
+      "rights_and_decision": "Doar pista de job postings, nu profiluri de persoane. Se cere drept de analiză/republicare, sursă originală, diferența observat/inferat și acoperire RO. Nu achiziționăm până la validarea unui eșantion.",
+      "checked_at": "2026-09-05",
+      "verification_scope": "See field-level qualifications; listing is not a granted production licence."
+    },
+    {
+      "id": "S20",
+      "name": "eJobs, BestJobs, OLX, Hipo, anunțuri locale",
+      "verified_granularity_and_fields": "Pot oferi meserie explicită, județ, experiență și salariu/interval. Lipsuri frecvente posibile: normă, perioadă, net/brut, bonus inclus. Nu am verificat o schemă comună sau un API de salarizare public pentru aceste platforme.",
+      "access_files_api_cost": "Feed / export / acord direct cu fiecare platformă; pagini publice pentru probe punctuale. Separat, eJobs are produsul Salario (S22).",
+      "rights_and_decision": "Drepturile sunt separate pentru fiecare platformă. Nu folosim scraping masiv ca presupusă licență. Anunțurile duplicat nu cresc `n`; site-urile de agregare nu sunt observații independente. Pista prioritară pentru instalatori, zugravi și zidari.",
+      "checked_at": "2026-09-05",
+      "verification_scope": "See field-level qualifications; listing is not a granted production licence."
+    },
+    {
+      "id": "S21",
+      "name": "DevJob.ro",
+      "verified_granularity_and_fields": "Filtre IT / tehnologie, oraș și senioritate. Pagina redată în browser declară baza: peste 1.000 anunțuri cu intervale furnizate de angajatori de-a lungul existenței platformei. La verificare: media afișată 13.500, mediana 12.000, P25 8.800, P75 17.000 RON net/lună pentru categoria generală Software Developer.",
+      "access_files_api_cost": "[Pagina verificată](https://devjob.ro/en/salaries). Sumele sunt **statisticile publicate de DevJob despre ofertele sale**, nu calculele noastre din salarii plătite. `n` exact al celulei, fereastra temporală și transformarea intervalelor nu sunt explicate suficient în pagina citită.",
+      "rights_and_decision": "Utilizare editorială limitată cu citare; pentru actualizare automată / bază derivată, de negociat feed și drepturi. Nu etichetăm aceste quartile ca distribuția salariilor reale ale tuturor programatorilor români.",
+      "checked_at": "2026-09-05",
+      "verification_scope": "See field-level qualifications; listing is not a granted production licence."
+    },
+    {
+      "id": "S22",
+      "name": "eJobs Salario",
+      "verified_granularity_and_fields": "Roluri individuale și agregate pe industrie/județ. În raportul pentru 2026, datele salariale provin din declarațiile introduse în **2025**: contabil medie 5.000 lei net/lună, Developer 12.500. Fără COR și fără `n` pe aceste două celule; fără mediană/P25/P75 aferente.",
+      "access_files_api_cost": "[Review & Trends 2026, paginile 43, 53–54](https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf), descărcat și citit. Eventual licență / parteneriat pentru export mai detaliat.",
+      "rights_and_decision": "Date declarate voluntar pe o platformă externă, nu payroll verificat și nu colectare de la vizitatorii noștri. Cifrele sunt exemple de sursă, nu mediane naționale. Republicarea sistematică necesită drepturi clare.",
+      "checked_at": "2026-09-05",
+      "verification_scope": "See field-level qualifications; listing is not a granted production licence."
+    },
+    {
+      "id": "S23",
+      "name": "Paylab API",
+      "verified_granularity_and_fields": "Taxonomie proprie `catpos`; `CountryCatpos` are `quality,model,count`. Advanced: medie, P10/P25/P50/P75/P90. Full: regiune, experiență, educație, mărime firmă, vârstă, industrie **separat**, fără intersecția parametrilor. România: net lunar total, potrivit documentației. Rezultatele sunt precomputate statistic, nu o promisiune de cuantile empirice.",
+      "access_files_api_cost": "[API / prețuri](https://www.paylab.com/paylab-api?lang=en), [OpenAPI 1.2](https://api.swaggerhub.com/apis/Profesia/PaylabPublicApi/1.2), [metodologie](https://www.paylab.ro/en/methodology). Basic 122 EUR/lună; Advanced 491; Full 860, pe abonament anual, conform paginii la verificare, taxe și volum de confirmat în ofertă.",
+      "rights_and_decision": "Drepturile de SEO public, cache și agregate trebuie negociate. `count` există în schema pe rol/țară; semnificația, perioada, deduplicarea și `n` pentru subgrupe nu sunt confirmate. Nu folosim `quality` drept interval de încredere. Nu am cumpărat abonament.",
+      "checked_at": "2026-09-05",
+      "verification_scope": "See field-level qualifications; listing is not a granted production licence."
+    },
+    {
+      "id": "S24",
+      "name": "Hays România Salary Guide 2026",
+      "verified_granularity_and_fields": "Peste 260 roluri calificate în nouă arii. Acoperire bună pentru IT, finanțe, inginerie, HR etc.; nu întregul COR, în special meseriile manuale. Ghid de recrutare, nu recensământ salarial.",
+      "access_files_api_cost": "[Pagina oficială 2026](https://www.hays.ro/en/salary-guide/overview). Acces la ghid prin formular; PDF-ul 2026 și metodologia fiecărui tabel nu au fost obținute. Nu confundăm cele 450 persoane din sondajul de tendințe cu observații salariale pentru fiecare rol.",
+      "rights_and_decision": "Acord pentru republicare sistematică; citări editoriale punctuale sunt o utilizare diferită de reconstruirea bazei. Nu atribuim automat min/max/„optimum” unei mediane sau P25/P75.",
+      "checked_at": "2026-09-05",
+      "verification_scope": "See field-level qualifications; listing is not a granted production licence."
+    },
+    {
+      "id": "S25",
+      "name": "PwC PayWell România",
+      "verified_granularity_and_fields": "Platforma confirmă pentru ediția 2025: peste 149 companii, 212.000 angajați, 1.390 poziții unice raportate, actualizări trimestriale. Context de carieră, post, sector, comparatori. Taxonomie proprie; „1.390 poziții” nu înseamnă 1.390 coduri COR.",
+      "access_files_api_cost": "[Pagina oficială](https://www.pwc.ro/ro/Store/Studiul_salarial_si_de_beneficii_PayWell.html). Preț afișat de la 1.650 EUR + TVA pentru participanți și 3.300 EUR + TVA pentru neparticipanți; perioada, modulele și dreptul editorial necesită ofertă. API public și setul exact de percentili nu au fost demonstrate.",
+      "rights_and_decision": "Prioritate mare pentru salarii raportate de angajatori. Nu presupunem că abonamentul HR permite publicarea pe mii de pagini. Cerem distinct distribuții empirice, `n` angajați/companii, cote de eșantion și licență pentru public.",
+      "checked_at": "2026-09-05",
+      "verification_scope": "See field-level qualifications; listing is not a granted production licence."
+    },
+    {
+      "id": "S26",
+      "name": "Mercer TRS",
+      "verified_granularity_and_fields": "Bibliotecă de roluri și niveluri, remunerație de bază și componente, rezultate de piață; exemplele de produs disting uneori rezultate pe angajați/organizații și valori regresate. Cifrele globale nu dovedesc acoperirea RO pentru fiecare meserie.",
+      "access_files_api_cost": "[Broșură TRS](https://shop.mercer.com/media/wysiwyg/file_uploads/TRS/TRS-Brochure.pdf), [handbook 2024](https://shop.mercer.com/media/wysiwyg/file_uploads/EN_2024TRS_Product-Handbook_final.pdf). România, eșantionul curent, API și preț: de confirmat prin ofertă.",
+      "rights_and_decision": "Comercial, de negociat drepturile statisticilor publice și alinierea COR. Candidat pentru evaluare, nu sursă de producție deja conectată.",
+      "checked_at": "2026-09-05",
+      "verification_scope": "See field-level qualifications; listing is not a granted production licence."
+    },
+    {
+      "id": "S27",
+      "name": "WTW Salary Surveys",
+      "verified_granularity_and_fields": "Date salariale pe job și nivel din anchete pentru angajatori. Prezența globală și menționarea istorică a RO nu certifică acoperirea actuală a meseriilor manuale ori fiecare percentilă dorită.",
+      "access_files_api_cost": "[Produs oficial](https://www.wtwco.com/en-us/solutions/products/salary-surveys). Catalog RO, exemple, variabile, `n`, preț și API necesită confirmare.",
+      "rights_and_decision": "Licență comercială pentru uzul nostru concret. Studiile despre procentul creșterilor salariale nu sunt benchmarkuri ale nivelului salariului.",
+      "checked_at": "2026-09-05",
+      "verification_scope": "See field-level qualifications; listing is not a granted production licence."
+    },
+    {
+      "id": "S28",
+      "name": "Aon Radford McLagan Compensation Database",
+      "verified_granularity_and_fields": "Arhitectură proprie de joburi/niveluri și date salariale ale companiilor participante, mai multe industrii. Nu am primit eșantion RO.",
+      "access_files_api_cost": "[Produs oficial](https://www.aon.com/en/capabilities/human-capital-analytics/radford-mclagan-compensation-database). Pagina prezintă comunitate de participanți; accesul ca publisher și redistribuirea nu sunt confirmate.",
+      "rights_and_decision": "Candidat comercial, cu verificarea eligibilității și drepturilor înainte de cumpărare. Dimensiunile globale ale bazei nu se folosesc ca `n` România.",
+      "checked_at": "2026-09-05",
+      "verification_scope": "See field-level qualifications; listing is not a granted production licence."
+    },
+    {
+      "id": "S29",
+      "name": "Undelucram.ro",
+      "verified_granularity_and_fields": "Rol, companie, locație și salarii raportate de comunitate; există servicii de rapoarte salariale. Nu am verificat un export cu toți percentilii și `n` per COR.",
+      "access_files_api_cost": "[Raport și descriere oficială a cercetării](https://www.undelucram.ro/ro/cumlucram/rezultate-sondaj-regional-undelucramro-asteptarile-angajatilor-vs-realitatea-din-companii-2310). API, cost, schemă salarială exactă: neconfirmate.",
+      "rights_and_decision": "Rol secundar, raportare voluntară externă. Nu introducem date false pentru a debloca acces și nu presupunem drept de republicare a bazei.",
+      "checked_at": "2026-09-05",
+      "verification_scope": "See field-level qualifications; listing is not a granted production licence."
+    },
+    {
+      "id": "S30",
+      "name": "Stack Overflow Developer Survey",
+      "verified_granularity_and_fields": "Sondaj extern pentru roluri IT, țară, experiență și remunerare anuală. Selecție voluntară, eșantion RO mai mic decât totalul global. Nu are COR și nu acoperă meserii manuale.",
+      "access_files_api_cost": "[Ediția 2025](https://survey.stackoverflow.co/2025/), [roluri și licență](https://survey.stackoverflow.co/2025/developers), [depozit oficial al instrumentului](https://github.com/StackExchange/Survey). Arhiva de răspunsuri 2025 și schema sa nu au fost descărcate; nu pretindem variabile/`n` verificate în fișier.",
+      "rights_and_decision": "Pagina declară ODbL pentru date. Cerințele de atribuire și share-alike pentru o bază derivată trebuie tratate distinct de licența codului site-ului. Nu convertim automat remunerația anuală totală în salariu net lunar.",
+      "checked_at": "2026-09-05",
+      "verification_scope": "See field-level qualifications; listing is not a granted production licence."
+    }
+  ]
+}

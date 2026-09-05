@@ -1,0 +1,180 @@
+{
+  "table": "Structure of earnings survey - monthly earnings",
+  "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/earn_ses_monthly?lang=EN&freq=A&nace_r2=B-S_X_O&isco08=OC7&worktime=FT&age=TOTAL&sex=T&geo=RO&time=2022",
+  "scope": "ISCO major group 7; not individual occupations; gross monthly EUR; SES 2022",
+  "records": [
+    {
+      "dimensions": {
+        "freq": "A",
+        "nace_r2": "B-S_X_O",
+        "isco08": "OC7",
+        "worktime": "FT",
+        "age": "TOTAL",
+        "sex": "T",
+        "geo": "RO",
+        "time": "2022",
+        "indic_se": "MEAN_E_EUR"
+      },
+      "valid_codes": true,
+      "value": null,
+      "status": null
+    },
+    {
+      "dimensions": {
+        "freq": "A",
+        "nace_r2": "B-S_X_O",
+        "isco08": "OC7",
+        "worktime": "FT",
+        "age": "TOTAL",
+        "sex": "T",
+        "geo": "RO",
+        "time": "2022",
+        "indic_se": "MED_E_EUR"
+      },
+      "valid_codes": true,
+      "value": null,
+      "status": null
+    },
+    {
+      "dimensions": {
+        "freq": "A",
+        "nace_r2": "B-S_X_O",
+        "isco08": "OC7",
+        "worktime": "FT",
+        "age": "TOTAL",
+        "sex": "T",
+        "geo": "RO",
+        "time": "2022",
+        "indic_se": "D1_E_EUR"
+      },
+      "valid_codes": true,
+      "value": null,
+      "status": null
+    },
+    {
+      "dimensions": {
+        "freq": "A",
+        "nace_r2": "B-S_X_O",
+        "isco08": "OC7",
+        "worktime": "FT",
+        "age": "TOTAL",
+        "sex": "T",
+        "geo": "RO",
+        "time": "2022",
+        "indic_se": "D9_E_EUR"
+      },
+      "valid_codes": true,
+      "value": null,
+      "status": null
+    }
+  ],
+  "dimensions": {
+    "freq": {
+      "label": "Time frequency",
+      "codes": {
+        "A": "Annual"
+      }
+    },
+    "nace_r2": {
+      "label": "Statistical classification of economic activities in the European Community (NACE Rev. 2)",
+      "codes": {
+        "B-S_X_O": "Industry, construction and services (except public administration, defense, compulsory social security)",
+        "B-N": "Business economy",
+        "B-F": "Industry and construction",
+        "G-N": "Services of the business economy",
+        "P-S": "Education; human health and social work activities; arts, entertainment and recreation; other service activities"
+      }
+    },
+    "isco08": {
+      "label": "International Standard Classification of Occupations 2008 (ISCO-08)",
+      "codes": {
+        "TOTAL": "Total",
+        "OC1-5": "Non manual workers",
+        "OC1": "Managers",
+        "OC2": "Professionals",
+        "OC3": "Technicians and associate professionals",
+        "OC4": "Clerical support workers",
+        "OC5": "Service and sales workers",
+        "OC6-8": "Skilled manual workers",
+        "OC6": "Skilled agricultural, forestry and fishery workers",
+        "OC7-9": "Manual workers",
+        "OC7": "Craft and related trades workers",
+        "OC8": "Plant and machine operators and assemblers",
+        "OC9": "Elementary occupations",
+        "OC0": "Armed forces occupations"
+      }
+    },
+    "worktime": {
+      "label": "Working time",
+      "codes": {
+        "TOTAL": "Total",
+        "PT": "Part-time",
+        "FT": "Full-time",
+        "TOT_FTE": "Total in full-time equivalents",
+        "PT_FTE": "Part-time in full-time equivalents"
+      }
+    },
+    "age": {
+      "label": "Age class",
+      "codes": {
+        "TOTAL": "Total",
+        "Y_LT30": "Less than 30 years",
+        "Y30-39": "From 30 to 39 years",
+        "Y30-49": "From 30 to 49 years",
+        "Y40-49": "From 40 to 49 years",
+        "Y50-59": "From 50 to 59 years",
+        "Y_GE50": "50 years or over",
+        "Y_GE60": "60 years or over"
+      }
+    },
+    "sex": {
+      "label": "Sex",
+      "codes": {
+        "T": "Total",
+        "M": "Males",
+        "F": "Females"
+      }
+    },
+    "indic_se": {
+      "label": "Structure of earnings indicator",
+      "codes": {
+        "MEAN_E_EUR": "Mean earnings in euro",
+        "MEAN_E_PPS": "Mean earnings in PPS",
+        "MED_E_EUR": "Median earnings in euro",
+        "MED_E_PPS": "Median earnings in PPS",
+        "D1_E_EUR": "First decile earnings in euro",
+        "D1_E_PPS": "First decile earnings in PPS",
+        "D9_E_EUR": "Ninth decile earnings in euro",
+        "D9_E_PPS": "Ninth decile earnings in PPS",
+        "MEAN_OP_SAL_EUR": "Mean overtime pay per employee in euro",
+        "MEAN_OP_SAL_PPS": "Mean overtime pay per employee in PPS",
+        "MEAN_OP_SALC_EUR": "Mean overtime pay per employee concerned in euro",
+        "MEAN_OP_SALC_PPS": "Mean overtime pay per employee concerned in PPS",
+        "MEAN_SP_SAL_EUR": "Mean shift pay per employee in euro",
+        "MEAN_SP_SAL_PPS": "Mean shift pay per employee in PPS",
+        "MEAN_SP_SALC_EUR": "Mean shift pay per employee concerned in euro",
+        "MEAN_SP_SALC_PPS": "Mean shift pay per employee concerned in PPS",
+        "MEAN_HP": "Mean number of hours paid",
+        "MEAN_OHP_SAL": "Mean number of overtime hours paid per employee",
+        "MEAN_OHP_SALC": "Mean number of overtime hours paid per employee concerned"
+      }
+    },
+    "geo": {
+      "label": "Geopolitical entity (reporting)",
+      "codes": {
+        "RO": "Romania"
+      }
+    },
+    "time": {
+      "label": "Time",
+      "codes": {
+        "2002": "2002",
+        "2006": "2006",
+        "2010": "2010",
+        "2014": "2014",
+        "2018": "2018",
+        "2022": "2022"
+      }
+    }
+  }
+}

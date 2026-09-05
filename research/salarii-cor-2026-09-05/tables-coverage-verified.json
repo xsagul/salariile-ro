@@ -1,0 +1,561 @@
+{
+  "ilo-monthly-mean": {
+    "rows": 927,
+    "countries": [
+      "ROU"
+    ],
+    "sources": [
+      "BB:439",
+      "DA:12948",
+      "DA:435"
+    ],
+    "years": [
+      "2002",
+      "2006",
+      "2007",
+      "2008",
+      "2009",
+      "2010",
+      "2011",
+      "2012",
+      "2013",
+      "2014",
+      "2015",
+      "2016",
+      "2017",
+      "2018",
+      "2019",
+      "2020",
+      "2021",
+      "2022",
+      "2023",
+      "2024",
+      "2025"
+    ],
+    "occupation_codes": [
+      "OCU_ISCO08_0",
+      "OCU_ISCO08_1",
+      "OCU_ISCO08_2",
+      "OCU_ISCO08_3",
+      "OCU_ISCO08_4",
+      "OCU_ISCO08_5",
+      "OCU_ISCO08_6",
+      "OCU_ISCO08_7",
+      "OCU_ISCO08_8",
+      "OCU_ISCO08_9",
+      "OCU_ISCO08_TOTAL",
+      "OCU_ISCO88_0",
+      "OCU_ISCO88_1",
+      "OCU_ISCO88_2",
+      "OCU_ISCO88_3",
+      "OCU_ISCO88_4",
+      "OCU_ISCO88_5",
+      "OCU_ISCO88_6",
+      "OCU_ISCO88_7",
+      "OCU_ISCO88_8",
+      "OCU_ISCO88_9",
+      "OCU_ISCO88_TOTAL",
+      "OCU_ISCO88_X",
+      "OCU_SKILL_L1",
+      "OCU_SKILL_L2",
+      "OCU_SKILL_L3-4",
+      "OCU_SKILL_TOTAL",
+      "OCU_SKILL_X"
+    ],
+    "columns": [
+      "ref_area",
+      "source",
+      "indicator",
+      "sex",
+      "classif1",
+      "time",
+      "obs_value",
+      "obs_status",
+      "note_classif",
+      "note_indicator",
+      "note_source"
+    ]
+  },
+  "ilo-monthly-median": {
+    "rows": 852,
+    "countries": [
+      "ROU"
+    ],
+    "sources": [
+      "BB:439"
+    ],
+    "years": [
+      "2007",
+      "2008",
+      "2009",
+      "2011",
+      "2012",
+      "2013",
+      "2014",
+      "2015",
+      "2016",
+      "2017",
+      "2018",
+      "2019",
+      "2020",
+      "2021",
+      "2022",
+      "2023",
+      "2024",
+      "2025"
+    ],
+    "occupation_codes": [
+      "OCU_ISCO08_0",
+      "OCU_ISCO08_1",
+      "OCU_ISCO08_2",
+      "OCU_ISCO08_3",
+      "OCU_ISCO08_4",
+      "OCU_ISCO08_5",
+      "OCU_ISCO08_6",
+      "OCU_ISCO08_7",
+      "OCU_ISCO08_8",
+      "OCU_ISCO08_9",
+      "OCU_ISCO08_TOTAL",
+      "OCU_ISCO88_0",
+      "OCU_ISCO88_1",
+      "OCU_ISCO88_2",
+      "OCU_ISCO88_3",
+      "OCU_ISCO88_4",
+      "OCU_ISCO88_5",
+      "OCU_ISCO88_6",
+      "OCU_ISCO88_7",
+      "OCU_ISCO88_8",
+      "OCU_ISCO88_9",
+      "OCU_ISCO88_TOTAL",
+      "OCU_SKILL_L1",
+      "OCU_SKILL_L2",
+      "OCU_SKILL_L3-4",
+      "OCU_SKILL_TOTAL",
+      "OCU_SKILL_X"
+    ],
+    "columns": [
+      "ref_area",
+      "source",
+      "indicator",
+      "sex",
+      "classif1",
+      "time",
+      "obs_value",
+      "obs_status",
+      "note_classif",
+      "note_indicator",
+      "note_source"
+    ]
+  },
+  "eurostat-ses22-21": {
+    "nonempty": 1440,
+    "populated_dimensions": [
+      {
+        "year": "2022",
+        "isco08": "OC1",
+        "nonempty": 120
+      },
+      {
+        "year": "2022",
+        "isco08": "OC1-5",
+        "nonempty": 120
+      },
+      {
+        "year": "2022",
+        "isco08": "OC2",
+        "nonempty": 120
+      },
+      {
+        "year": "2022",
+        "isco08": "OC3",
+        "nonempty": 120
+      },
+      {
+        "year": "2022",
+        "isco08": "OC4",
+        "nonempty": 120
+      },
+      {
+        "year": "2022",
+        "isco08": "OC5",
+        "nonempty": 120
+      },
+      {
+        "year": "2022",
+        "isco08": "OC6",
+        "nonempty": 120
+      },
+      {
+        "year": "2022",
+        "isco08": "OC7",
+        "nonempty": 120
+      },
+      {
+        "year": "2022",
+        "isco08": "OC7-9",
+        "nonempty": 120
+      },
+      {
+        "year": "2022",
+        "isco08": "OC8",
+        "nonempty": 120
+      },
+      {
+        "year": "2022",
+        "isco08": "OC9",
+        "nonempty": 120
+      },
+      {
+        "year": "2022",
+        "isco08": "TOTAL",
+        "nonempty": 120
+      }
+    ],
+    "sample_craft_group": [
+      {
+        "time": "2022",
+        "geo": "RO",
+        "unit": "NAC",
+        "age": "TOTAL",
+        "sizeclas": "GE10",
+        "isco08": "OC7",
+        "indic_se": "ERN",
+        "sex": "T",
+        "freq": "A",
+        "value": 4781,
+        "status": null
+      }
+    ]
+  },
+  "eurostat-monthly": {
+    "nonempty": 344392,
+    "populated_dimensions": [
+      {
+        "year": "2002",
+        "isco08": "OC1",
+        "nonempty": 5680
+      },
+      {
+        "year": "2002",
+        "isco08": "OC1-5",
+        "nonempty": 7185
+      },
+      {
+        "year": "2002",
+        "isco08": "OC2",
+        "nonempty": 6683
+      },
+      {
+        "year": "2002",
+        "isco08": "OC3",
+        "nonempty": 6399
+      },
+      {
+        "year": "2002",
+        "isco08": "OC4",
+        "nonempty": 5761
+      },
+      {
+        "year": "2002",
+        "isco08": "OC5",
+        "nonempty": 6140
+      },
+      {
+        "year": "2002",
+        "isco08": "OC6",
+        "nonempty": 3467
+      },
+      {
+        "year": "2002",
+        "isco08": "OC6-8",
+        "nonempty": 6381
+      },
+      {
+        "year": "2002",
+        "isco08": "OC7",
+        "nonempty": 6184
+      },
+      {
+        "year": "2002",
+        "isco08": "OC8",
+        "nonempty": 5514
+      },
+      {
+        "year": "2002",
+        "isco08": "OC9",
+        "nonempty": 6609
+      },
+      {
+        "year": "2002",
+        "isco08": "TOTAL",
+        "nonempty": 7464
+      },
+      {
+        "year": "2006",
+        "isco08": "OC1",
+        "nonempty": 6309
+      },
+      {
+        "year": "2006",
+        "isco08": "OC1-5",
+        "nonempty": 7536
+      },
+      {
+        "year": "2006",
+        "isco08": "OC2",
+        "nonempty": 7316
+      },
+      {
+        "year": "2006",
+        "isco08": "OC3",
+        "nonempty": 7023
+      },
+      {
+        "year": "2006",
+        "isco08": "OC4",
+        "nonempty": 6820
+      },
+      {
+        "year": "2006",
+        "isco08": "OC5",
+        "nonempty": 6589
+      },
+      {
+        "year": "2006",
+        "isco08": "OC6",
+        "nonempty": 3427
+      },
+      {
+        "year": "2006",
+        "isco08": "OC6-8",
+        "nonempty": 6722
+      },
+      {
+        "year": "2006",
+        "isco08": "OC7",
+        "nonempty": 6492
+      },
+      {
+        "year": "2006",
+        "isco08": "OC8",
+        "nonempty": 6213
+      },
+      {
+        "year": "2006",
+        "isco08": "OC9",
+        "nonempty": 6961
+      },
+      {
+        "year": "2006",
+        "isco08": "TOTAL",
+        "nonempty": 7584
+      },
+      {
+        "year": "2010",
+        "isco08": "OC1",
+        "nonempty": 6273
+      },
+      {
+        "year": "2010",
+        "isco08": "OC1-5",
+        "nonempty": 7462
+      },
+      {
+        "year": "2010",
+        "isco08": "OC2",
+        "nonempty": 7174
+      },
+      {
+        "year": "2010",
+        "isco08": "OC3",
+        "nonempty": 6973
+      },
+      {
+        "year": "2010",
+        "isco08": "OC4",
+        "nonempty": 6840
+      },
+      {
+        "year": "2010",
+        "isco08": "OC5",
+        "nonempty": 6698
+      },
+      {
+        "year": "2010",
+        "isco08": "OC6",
+        "nonempty": 3400
+      },
+      {
+        "year": "2010",
+        "isco08": "OC6-8",
+        "nonempty": 6557
+      },
+      {
+        "year": "2010",
+        "isco08": "OC7",
+        "nonempty": 6168
+      },
+      {
+        "year": "2010",
+        "isco08": "OC8",
+        "nonempty": 5970
+      },
+      {
+        "year": "2010",
+        "isco08": "OC9",
+        "nonempty": 6974
+      },
+      {
+        "year": "2010",
+        "isco08": "TOTAL",
+        "nonempty": 7596
+      },
+      {
+        "year": "2014",
+        "isco08": "OC1",
+        "nonempty": 5804
+      },
+      {
+        "year": "2014",
+        "isco08": "OC1-5",
+        "nonempty": 6634
+      },
+      {
+        "year": "2014",
+        "isco08": "OC2",
+        "nonempty": 6506
+      },
+      {
+        "year": "2014",
+        "isco08": "OC3",
+        "nonempty": 6304
+      },
+      {
+        "year": "2014",
+        "isco08": "OC4",
+        "nonempty": 6282
+      },
+      {
+        "year": "2014",
+        "isco08": "OC5",
+        "nonempty": 6298
+      },
+      {
+        "year": "2014",
+        "isco08": "OC6",
+        "nonempty": 2948
+      },
+      {
+        "year": "2014",
+        "isco08": "OC6-8",
+        "nonempty": 6136
+      },
+      {
+        "year": "2014",
+        "isco08": "OC7",
+        "nonempty": 5871
+      },
+      {
+        "year": "2014",
+        "isco08": "OC8",
+        "nonempty": 5527
+      },
+      {
+        "year": "2014",
+        "isco08": "OC9",
+        "nonempty": 6388
+      },
+      {
+        "year": "2014",
+        "isco08": "TOTAL",
+        "nonempty": 6726
+      },
+      {
+        "year": "2018",
+        "isco08": "OC1",
+        "nonempty": 3124
+      },
+      {
+        "year": "2018",
+        "isco08": "OC1-5",
+        "nonempty": 3408
+      },
+      {
+        "year": "2018",
+        "isco08": "OC2",
+        "nonempty": 3350
+      },
+      {
+        "year": "2018",
+        "isco08": "OC3",
+        "nonempty": 3278
+      },
+      {
+        "year": "2018",
+        "isco08": "OC4",
+        "nonempty": 3297
+      },
+      {
+        "year": "2018",
+        "isco08": "OC5",
+        "nonempty": 3288
+      },
+      {
+        "year": "2018",
+        "isco08": "OC6",
+        "nonempty": 1902
+      },
+      {
+        "year": "2018",
+        "isco08": "OC6-8",
+        "nonempty": 3243
+      },
+      {
+        "year": "2018",
+        "isco08": "OC7",
+        "nonempty": 3157
+      },
+      {
+        "year": "2018",
+        "isco08": "OC7-9",
+        "nonempty": 3375
+      },
+      {
+        "year": "2018",
+        "isco08": "OC8",
+        "nonempty": 3116
+      },
+      {
+        "year": "2018",
+        "isco08": "OC9",
+        "nonempty": 3326
+      },
+      {
+        "year": "2018",
+        "isco08": "TOTAL",
+        "nonempty": 3420
+      },
+      {
+        "year": "2022",
+        "isco08": "OC1-5",
+        "nonempty": 285
+      },
+      {
+        "year": "2022",
+        "isco08": "OC6-8",
+        "nonempty": 285
+      },
+      {
+        "year": "2022",
+        "isco08": "OC7-9",
+        "nonempty": 285
+      },
+      {
+        "year": "2022",
+        "isco08": "TOTAL",
+        "nonempty": 285
+      }
+    ],
+    "sample_craft_group": []
+  }
+}

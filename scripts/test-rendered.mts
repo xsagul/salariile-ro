@@ -274,9 +274,9 @@ async function auditRenderedSite() {
     // prim-plan. Vechile verificari cereau cardul „Net orientativ · grupa ISCO"
     // si paragraful „Cum citesti sumele" — amandoua scoase deliberat, fiindca
     // patru repere cu greutate egala nu raspundeau la intrebarea cititorului.
-    ["/salarii/programator", "Medie publicată de DevJob · oferte", "netul principal, afisat primul"],
-    ["/salarii/programator", "lei net/lună", "brutul din care rezulta netul"],
-    ["/salarii/programator", "Sunt oferte, nu salarii încasate", "limita cifrei, declarata in pagina"],
+    ["/salarii/programator", "Context INS · media sectorului", "netul principal, afisat primul"],
+    ["/salarii/programator", "lei net/lună", "unitatea de masura"],
+    ["/salarii/programator", "Aceasta este media activității angajatorului", "limita cifrei, declarata in pagina"],
     ["/salarii/programator", `Brut lunar pe județe · media ${AN_JUDETE}`, "perioada tabelului judetean"],
     ["/salarii/programator", "Nu este salariu net", "separarea tabelului judetean de net"],
     ["/salarii/programator", "salariul minim din 2026", "separarea tabelului judetean de minimul curent"],

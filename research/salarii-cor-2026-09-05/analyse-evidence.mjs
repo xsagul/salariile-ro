@@ -1,0 +1,21 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+const root=import.meta.dirname;
+const read=async p=>JSON.parse(await fs.readFile(path.join(root,p),'utf8'));
+const cor=await read('cor-catalogue-2024.json');const byCode=new Map(cor.map(x=>[x.cor,x.name]));
+const source=await fs.readFile(path.join(root,'../../src/lib/meserii.ts'),'utf8');
+const segment=source.split('export const MESERII: Meserie[] = [')[1].split('\n];')[0];
+const rows=[...segment.matchAll(/\{ slug: "([^"]+)", nume: "([^"]+)"([^\n]+)/g)].map(m=>{const code=m[3].match(/cor: "(\d+)"/)?.[1]??null;return{slug:m[1],site_name:m[2],site_cor:code,official_2024_name:byCode.get(code)??null,exists_in_2024:code?byCode.has(code):null,review_required:true};});
+const duplicates=Object.entries(Object.groupBy(rows.filter(x=>x.site_cor),x=>x.site_cor)).filter(([_,v])=>v.length>1).map(([code,v])=>({cor:code,pages:v.map(x=>x.slug)}));
+await fs.writeFile(path.join(root,'audit-cor-pagini.json'),JSON.stringify({reference_snapshot:'2024-04-22; not certified current 2026',count:rows.length,missing_codes:rows.filter(x=>!x.site_cor),unknown_codes:rows.filter(x=>x.site_cor&&!x.exists_in_2024),duplicates,rows},null,2));
+const p=await read('raw/paylab-api-v1-2.json');
+const api={version:p.info.version,description:p.info.description,servers:p.servers,paths:Object.entries(p.paths).map(([path,v])=>({path,summary:v.get.summary,description:v.get.description,parameters:v.get.parameters.map(x=>x.$ref??x.name)})),schemas:Object.fromEntries(Object.entries(p.components.schemas).map(([k,v])=>[k,{properties:Object.keys(v.properties??{}),quantiles:Object.keys(v.properties?.quantiles?.properties??{})}])),security:p.components.securitySchemes};
+await fs.writeFile(path.join(root,'paylab-api-verified.json'),JSON.stringify(api,null,2));
+const j=await read('raw/eurostat-monthly.json');
+const selected={freq:'A',nace_r2:'B-S_X_O',isco08:'OC7',worktime:'FT',age:'TOTAL',sex:'T',geo:'RO',time:'2022'};
+const dims=j.id.map(k=>Object.keys(j.dimension[k].category.index).sort((a,b)=>j.dimension[k].category.index[a]-j.dimension[k].category.index[b]));
+const records=[];
+for(const indicator of ['MEAN_E_EUR','MED_E_EUR','D1_E_EUR','D9_E_EUR']){let idx=0;const codes={...selected,indic_se:indicator};let valid=true;for(let a=0;a<j.id.length;a++){const i=dims[a].indexOf(codes[j.id[a]]);if(i<0){valid=false;break;}idx=idx*j.size[a]+i;}records.push({dimensions:codes,valid_codes:valid,value:valid?(j.value?.[idx]??null):null,status:valid?(j.status?.[idx]??null):null});}
+const url='https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/earn_ses_monthly?'+new URLSearchParams({lang:'EN',...selected}).toString();
+await fs.writeFile(path.join(root,'eurostat-verified-query.json'),JSON.stringify({table:j.label,url,scope:'ISCO major group 7; not individual occupations; gross monthly EUR; SES 2022',records,dimensions:Object.fromEntries(j.id.map(k=>[k,{label:j.dimension[k].label,codes:j.dimension[k].category.label}]))},null,2));
+console.log(JSON.stringify({pages:rows.length,withoutCOR:rows.filter(x=>!x.site_cor).length,unknown:rows.filter(x=>x.site_cor&&!x.exists_in_2024).map(x=>({slug:x.slug,cor:x.site_cor})),duplicates,selected:rows.filter(x=>['programator','web-developer','instalator','zugrav','zidar','electrician','contabil','avocat','consilier-juridic'].includes(x.slug)),api,query:{url,records}},null,2));

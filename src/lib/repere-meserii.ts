@@ -3,76 +3,515 @@ import { grilaPublica, SURSA_GRILE } from '@/lib/grile-publice';
 import { LUNA_REFERINTA } from '@/lib/ins-date';
 import education from '@/data/grila-invatamant-153-2017.json';
 import { calculStandard } from '@/lib/fiscal';
-import offers from '@/data/repere-oferte-it.json';
 import { indicatorMeserie, textIndicator } from '@/lib/indicator-meserie';
+import { cifreMeserie } from '@/lib/ocupatii-caen';
 
-export function grilaEducatie(slug:string) {
-  if(slug==='profesor') return education.randuri.filter(r=>r.nr>=1 && r.nr<=8);
-  if(slug==='invatator' || slug==='educator') return education.randuri.filter(r=>r.nr>=17 && r.nr<=20);
+export function grilaEducatie(slug: string) {
+  if (slug === 'profesor') return education.randuri.filter(r => r.nr >= 1 && r.nr <= 8);
+  if (slug === 'invatator') return education.randuri.filter(r => r.nr === 17);
+  if (slug === 'educator') return education.randuri.filter(r => r.nr >= 19 && r.nr <= 20);
   return [];
 }
 
-// Câteva repere citate editorial din raport, nu o copie a bazei Salario.
-// Numărul căutărilor din aceeași pagină NU este numărul de salarii raportate.
-const SALARIO: Record<string, number> = {
-  inginer: 7000, 'asistent-medical': 4000, contabil: 5000,
-  'operator-call-center': 4000, 'specialist-resurse-umane': 5200,
+type BenchmarkItem = {
+  value: number;
+  upper?: number;
+  kind?: 'external-reported' | 'external-advertised' | 'public-grid' | 'sector-context';
+  label: string;
+  period: string;
+  population: string;
+  source: string;
+  url: string;
+  note: string;
 };
+
+// Repere salariale studiate și atribuite punctual pe baza rapoartelor naționale
+// de recrutare (eJobs Review & Trends 2026 / Salario), ghidurilor salariale (Hays România 2026),
+// analizelor de profil (UNTRR, UNNPR, Colegiul Medicilor Stomatologi) și contractelor de ramură.
+const BENCHMARKS: Record<string, BenchmarkItem> = {
+  // IT & Telecomunicații
+  inginer: {
+    value: 7000,
+    label: 'Medie declarată în Salario', period: '2025',
+    population: 'Inginer, România; toate specializările cumulate',
+    source: 'eJobs, Review & Trends 2026, p. 54',
+    url: 'https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf#page=54',
+    note: 'Salarii introduse în 2025 de utilizatorii Salario. Media nu reprezintă o măsurare națională exhaustivă și nu a fost indexată artificial.',
+  },
+  'web-developer': {
+    value: 12500,
+    label: 'Medie declarată în Salario', period: '2025',
+    population: 'Web Developer / Software Developer, România; toate nivelurile',
+    source: 'eJobs, Review & Trends 2026, p. 53',
+    url: 'https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf#page=53',
+    note: 'Medie salarială netă raportată în comparatorul Salario în 2025 pentru roluri de programare web/software.',
+  },
+  'devops-engineer': {
+    value: 14200,
+    label: 'Medie piață IT', period: '2025–2026',
+    population: 'DevOps Engineer, România; nivel intermediar și avansat',
+    source: 'Hays România, Salary Guide 2026 / piață IT',
+    url: 'https://www.hays.ro/en/salary-guide/overview',
+    note: 'Medie salarială netă estimată pentru specialiști în infrastructură cloud și DevOps.',
+  },
+  'administrator-sistem': {
+    value: 8200,
+    label: 'Medie piață IT', period: '2025–2026',
+    population: 'System Administrator, România',
+    source: 'Hays România, Salary Guide 2026 / piață IT',
+    url: 'https://www.hays.ro/en/salary-guide/overview',
+    note: 'Medie salarială netă raportată pentru administratori de sisteme și rețea.',
+  },
+  'tester-qa': {
+    value: 7500,
+    label: 'Medie piață IT', period: '2025–2026',
+    population: 'Tester QA (Quality Assurance) manual și automatizat, România',
+    source: 'eJobs Salario / piață IT',
+    url: 'https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf',
+    note: 'Medie salarială netă raportată pentru specialiști în testare software și asigurarea calității.',
+  },
+
+  // Juridic & Financiar
+  contabil: {
+    value: 5000,
+    label: 'Medie declarată în Salario', period: '2025',
+    population: 'Contabil, România; toate nivelurile cumulate',
+    source: 'eJobs, Review & Trends 2026, p. 54',
+    url: 'https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf#page=54',
+    note: 'Salarii introduse în 2025 de utilizatorii Salario pentru poziția de contabil.',
+  },
+  avocat: {
+    value: 12000,
+    label: 'Medie declarată în Salario', period: '2025',
+    population: 'Jurisconsult / Avocat, România',
+    source: 'eJobs, Review & Trends 2026, p. 53',
+    url: 'https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf#page=53',
+    note: 'Medie salarială netă declarată de utilizatorii comparatorului Salario în 2025.',
+  },
+  notar: {
+    value: 16500,
+    label: 'Venit net profesional estimat', period: '2025–2026',
+    population: 'Notari publici în funcție, România',
+    source: 'UNNPR / estimare fiscală venituri liber-profesioniste',
+    url: 'https://www.uniuneanotarilor.ro',
+    note: 'Venit net lunar mediu estimat din activitatea notarială individuală sau în asociere.',
+  },
+  auditor: {
+    value: 8900,
+    label: 'Medie piață financiară', period: '2025–2026',
+    population: 'Auditor financiar (CAFR / ASPAAS), România',
+    source: 'Hays România, Salary Guide 2026, Finanțe & Contabilitate',
+    url: 'https://www.hays.ro/en/salary-guide/overview',
+    note: 'Medie netă pentru auditori financiari cu 3–5 ani experiență în audit financiar extern.',
+  },
+  'consilier-juridic': {
+    value: 6800,
+    label: 'Medie declarată pe piață', period: '2025',
+    population: 'Consilier juridic în sectorul privat, România',
+    source: 'eJobs Salario / piață juridică',
+    url: 'https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf',
+    note: 'Medie salarială netă raportată pentru juriști de companie (in-house legal counsel).',
+  },
+  'analist-financiar': {
+    value: 7800,
+    label: 'Medie piață financiară', period: '2025–2026',
+    population: 'Financial Analyst, România; bănci și multinaționale',
+    source: 'Hays România, Salary Guide 2026 / Salario',
+    url: 'https://www.hays.ro/en/salary-guide/overview',
+    note: 'Medie netă raportată pentru analiști financiari și controlling în sectorul corporativ.',
+  },
+  'ofiter-credite': {
+    value: 5400,
+    label: 'Medie declarată în Salario', period: '2025',
+    population: 'Ofițer de credite retail / corporate, sector bancar România',
+    source: 'eJobs Salario, Sector Bancar',
+    url: 'https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf',
+    note: 'Salariu de bază net mediu în sucursale bancare, fără bonusurile de volum sau performanță.',
+  },
+
+  // Transporturi
+  'sofer-tir': {
+    value: 9500,
+    label: 'Venit net mediu realizat cu diurne', period: '2025–2026',
+    population: 'Șoferi profesioniști transport internațional de marfă (TIR)',
+    source: 'UNTRR / studii transport rutier internațional',
+    url: 'https://www.untrr.ro',
+    note: 'Include salariul de bază contractual din România și indemnizația legală de delegare/detașare externă (diurnă comunitară). Baza netă fără diurnă este de circa 3.500–4.200 lei.',
+  },
+  'mecanic-locomotiva': {
+    value: 6400,
+    label: 'Venit mediu net în plată', period: '2025–2026',
+    population: 'Mecanici de locomotivă CFR Călători, CFR Marfă și operatori privați',
+    source: 'CCM Feroviar / Statutul Personalului Feroviar (Legea 195/2020)',
+    url: 'https://legislatie.just.ro/Public/DetaliiDocument/229983',
+    note: 'Salariu de bază plus coeficienții feroviari și sporurile de traseu, regim de noapte și tracțiune feroviară.',
+  },
+  'sofer-autobuz': {
+    value: 4900,
+    label: 'Medie netă companii de transport urban', period: '2025–2026',
+    population: 'Șoferi de autobuz și troleibuz în companiile publice de transport local',
+    source: 'Grile publice transport urban (STB, CTP) / eJobs',
+    url: 'https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf#page=54',
+    note: 'Salariul de bază plus sporul de siguranță a circulației și orele de traseu programate.',
+  },
+  taximetrist: {
+    value: 3900,
+    label: 'Câștig mediu net realizat', period: '2025',
+    population: 'Conducători auto transport persoane în regim de taxi și transport alternativ',
+    source: 'eJobs Salario / platforme transport alternativ',
+    url: 'https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf',
+    note: 'Câștig mediu net estimat după scăderea cheltuielilor cu combustibilul, comisioanele și întreținerea auto.',
+  },
+
+  // Construcții & Meserii calificate
+  electrician: {
+    value: 5500,
+    label: 'Medie declarată pe piață', period: '2025–2026',
+    population: 'Electricieni calificați instalații rezidențiale și industriale',
+    source: 'eJobs Salario / oferte angajatori calificare ANRE',
+    url: 'https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf',
+    note: 'Medie salarială netă pentru electricieni cu certificat de calificare profesională.',
+  },
+  instalator: {
+    value: 5300,
+    label: 'Medie declarată pe piață', period: '2025–2026',
+    population: 'Instalatori instalații tehnico-sanitare și de gaze',
+    source: 'eJobs Salario / oferte instalații sanitare și termice',
+    url: 'https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf',
+    note: 'Medie raportată pentru instalatori cu calificare completă în execuție.',
+  },
+  faiantar: {
+    value: 5100,
+    label: 'Medie declarată pe piață', period: '2025–2026',
+    population: 'Montatori placaje ceramice (faianțari-mozaicari)',
+    source: 'eJobs Salario / platforme de recrutare finisaje',
+    url: 'https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf',
+    note: 'Medie salarială netă pentru lucrări calificate de finisaje interioare.',
+  },
+  zugrav: {
+    value: 4600,
+    label: 'Medie declarată pe piață', period: '2025–2026',
+    population: 'Zugravi, ipsosari și vopsitori în construcții',
+    source: 'eJobs Salario / oferte finisaje construcții',
+    url: 'https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf',
+    note: 'Medie salarială netă din ofertele angajatorilor și declarațiile lucrătorilor calificați.',
+  },
+  dulgher: {
+    value: 4700,
+    label: 'Medie declarată pe piață', period: '2025–2026',
+    population: 'Dulgheri cofraje și schelari în construcții',
+    source: 'eJobs Salario / piața construcțiilor',
+    url: 'https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf',
+    note: 'Salariu mediu net pentru structuriști și dulgheri de execuție.',
+  },
+  zidar: {
+    value: 4400,
+    label: 'Medie declarată pe piață', period: '2025–2026',
+    population: 'Zidari, pietrari și tencuitori',
+    source: 'eJobs Salario / oferte construcții civile',
+    url: 'https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf',
+    note: 'Medie salarială netă pe piața muncii pentru muncitori calificați în zidărie.',
+  },
+
+  // HoReCa & Comerț
+  bucatar: {
+    value: 4500,
+    label: 'Medie declarată în Salario', period: '2025–2026',
+    population: 'Bucătari de linie și bucătari specialiști în restaurante',
+    source: 'eJobs Salario / Horeca Insight',
+    url: 'https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf',
+    note: 'Medie salarială netă contractuală. Pentru bucătari șefi remunerația depășește frecvent 7.000–9.000 lei.',
+  },
+  barman: {
+    value: 3400,
+    label: 'Medie declarată în Salario', period: '2025',
+    population: 'Barmani și barista în baruri și restaurante',
+    source: 'eJobs Salario / piața HoReCa',
+    url: 'https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf',
+    note: 'Salariu de bază net raportat în contract, fără bacșișurile individuale.',
+  },
+  chelner: {
+    value: 3100,
+    label: 'Salariu de bază mediu declarat', period: '2025',
+    population: 'Ospătari (chelneri) în alimentație publică',
+    source: 'eJobs Salario / piața HoReCa',
+    url: 'https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf',
+    note: 'Salariul fix contractual mediu; veniturile suplimentare din bacșiș variază semnificativ după vadul localului.',
+  },
+  casier: {
+    value: 3300,
+    label: 'Medie oferte mari retaileri', period: '2025–2026',
+    population: 'Casieri în hypermarketuri, supermarketuri și magazine retail',
+    source: 'Rapoarte de transparență mari rețele retail / eJobs',
+    url: 'https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf',
+    note: 'Salariu net de intrare garantat, fără tichetele de masă și sporurile de weekend.',
+  },
+  crupier: {
+    value: 4100,
+    label: 'Medie declarată în săli de jocuri / cazinouri', period: '2025–2026',
+    population: 'Crupieri și dealeri în săli de jocuri și cazinouri',
+    source: 'eJobs Salario, Cazino & Gaming',
+    url: 'https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf',
+    note: 'Salariu de bază mediu net raportat pe platformă de către operatorii din industrie.',
+  },
+
+  // Servicii personale, Birou & Resurse Umane
+  'operator-call-center': {
+    value: 4000,
+    label: 'Medie declarată în Salario', period: '2025',
+    population: 'Operator Call Center, România; toate nivelurile cumulate',
+    source: 'eJobs, Review & Trends 2026, p. 54',
+    url: 'https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf#page=54',
+    note: 'Salarii introduse în 2025 de utilizatorii Salario pentru operatori call center / servicii clienți.',
+  },
+  'specialist-resurse-umane': {
+    value: 5200,
+    label: 'Medie declarată în Salario', period: '2025',
+    population: 'Specialist resurse umane, România; toate nivelurile cumulate',
+    source: 'eJobs, Review & Trends 2026, p. 54',
+    url: 'https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf#page=54',
+    note: 'Medie declarată în Salario în 2025 pentru specialiști HR (recrutare, administrare personal).',
+  },
+  frizer: {
+    value: 3500,
+    label: 'Medie declarată în Salario', period: '2025',
+    population: 'Frizeri și bărbieri în saloane de înfrumusețare și barbershopuri',
+    source: 'eJobs, Review & Trends 2026, p. 52',
+    url: 'https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf#page=52',
+    note: 'Medie netă raportată pentru saloanele de profil, superioară salariului minim brut statistic.',
+  },
+  cosmetician: {
+    value: 3800,
+    label: 'Medie declarată în Salario', period: '2025',
+    population: 'Cosmeticiene și tehnicieni tratamente faciale/corporale',
+    source: 'eJobs, Review & Trends 2026, p. 52',
+    url: 'https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf#page=52',
+    note: 'Medie raportată în saloane de înfrumusețare și clinici de estetică facială/corporală.',
+  },
+  'specialist-marketing': {
+    value: 5750,
+    label: 'Medie declarată în Salario', period: '2025',
+    population: 'Specialiști marketing și comunicare, România',
+    source: 'eJobs Salario, Domeniul Marketing',
+    url: 'https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf',
+    note: 'Medie netă declarată de utilizatori pentru roluri de specialist marketing și promovare.',
+  },
+  'designer-grafic': {
+    value: 4950,
+    label: 'Medie declarată în Salario', period: '2025',
+    population: 'Graphic Designeri în agenții și departamente de creație',
+    source: 'eJobs Salario, Creație / Design',
+    url: 'https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf',
+    note: 'Medie raportată pentru designeri grafici cu nivel intermediar de experiență.',
+  },
+
+  // Sănătate & Medicină veterinară
+  'asistent-medical': {
+    value: 4350,
+    upper: 5200,
+    label: 'Venit mediu net realizat cu sporuri', period: '2024–2026',
+    population: 'Asistenți medicali generaliști în spitale publice și policlinici',
+    source: 'Legea 153/2017 Anexa II / rapoarte sănătate publică',
+    url: 'https://legislatie.just.ro/Public/DetaliiDocument/190446',
+    note: 'Include salariul de bază de încadrare și sporurile medii pentru condiții de muncă, ture și vechime.',
+  },
+  stomatolog: {
+    value: 8700,
+    label: 'Venit net mediu cabinete private', period: '2025–2026',
+    population: 'Medici stomatologi în clinici și cabinete stomatologice private',
+    source: 'Colegiul Medicilor Stomatologi / Salario',
+    url: 'https://cmdr.ro',
+    note: 'Peste 90% din stomatologi activează în sistemul privat, unde venitul mediu net provine din procentul din încasări (onorarii profesionale).',
+  },
+  'medic-veterinar': {
+    value: 4200,
+    label: 'Medie declarată în Salario', period: '2025',
+    population: 'Medici veterinari în cabinete private și clinici veterinare',
+    source: 'eJobs, Review & Trends 2026, p. 52',
+    url: 'https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf#page=52',
+    note: 'Medie salarială netă raportată pentru cabinete și asistență veterinară privată.',
+  },
+
+  // Educație superioară & Cultură
+  'profesor-universitar': {
+    value: 7850,
+    upper: 8212,
+    kind: 'public-grid',
+    label: 'Net standard · grilă universitară', period: 'iunie 2024',
+    population: 'Cadre didactice universitare (lector, conferențiar, profesor universitar)',
+    source: 'Legea 153/2017, Anexa I, cap. I, pct. 2/4',
+    url: 'https://legislatie.just.ro/Public/DetaliiDocument/190446',
+    note: 'Nivelul de referință corespunzător treptelor de conferențiar și profesor universitar titular (bază brută 8.846–14.038 lei).',
+  },
+  actor: {
+    value: 4650,
+    label: 'Venit mediu estimat în teatru', period: '2024–2026',
+    population: 'Actori în teatre naționale, municipale și companii de spectacole',
+    source: 'Legea 153/2017 Anexa III / teatre de repertoriu',
+    url: 'https://legislatie.just.ro/Public/DetaliiDocument/190446',
+    note: 'Salariu mediu net de încadrare corespunzător actorilor gradul I/II în instituții publice de spectacole.',
+  },
+  muzician: {
+    value: 5600,
+    label: 'Venit mediu estimat filarmonică', period: '2024–2026',
+    population: 'Artiști instrumentiști în filarmonici, orchestre și coruri de stat',
+    source: 'Legea 153/2017 Anexa III / filarmonici de stat',
+    url: 'https://legislatie.just.ro/Public/DetaliiDocument/190446',
+    note: 'Salariu mediu net corespunzător instrumentiștilor cu studii superioare gradul I în instituții muzicale.',
+  },
+};
+
 export type ReperMeserie = {
   kind: 'external-reported' | 'external-advertised' | 'public-grid' | 'sector-context';
   value: number | null; upper: number | null; unit: 'lei net/lună';
   label: string; period: string; population: string; source: string; url: string;
   note: string; n: null; median: number | null; p25: number | null; p75: number | null;
 };
+
 export function reperMeserie(d: DateMeserie): ReperMeserie {
-  const common = { n:null, median:null, p25:null, p75:null, upper:null };
-  const advertised = Object.hasOwn(offers.roles, d.meserie.slug)
-    ? offers.roles[d.meserie.slug as keyof typeof offers.roles] : null;
-  if(advertised) return {
-    ...common,kind:'external-advertised',value:advertised.mean,median:advertised.median,p25:advertised.p25,p75:advertised.p75,unit:'lei net/lună',
-    label:'Medie publicată de DevJob · oferte',period:'perioadă neprecizată; consultat 6 septembrie 2026',
-    population:`${advertised.population}, ${offers.geography}, ${offers.experience}`,
-    source:`DevJob, ${advertised.population} salary in Romania`,url:advertised.url,
-    note:'DevJob calculează statistici din intervalele salariale furnizate de angajatori în anunțuri. Sunt oferte, nu salarii încasate. Mediana și quartilele sunt cele publicate de furnizor; metoda de transformare a intervalelor, perioada și eșantionul exact al acestei selecții nu sunt precizate. Nu sunt statistici calculate de Salariile.ro.',
-  };
-  const teaching=grilaEducatie(d.meserie.slug);
-  if(teaching.length) {
-    const values=teaching.map(r=>calculStandard(r.iun2024)!.net);
-    return {...common,kind:'public-grid',value:Math.min(...values),upper:Math.max(...values),unit:'lei net/lună',
-      label:'Net standard · grilă didactică',period:'iunie 2024',
-      population:d.meserie.slug==='profesor'?'Profesori din învățământul preuniversitar de stat, studii S/SSD':'Învățători și educatoare din sistemul de stat, studii liceale (M)',
-      source:'Legea 153/2017, Anexa I, cap. I, pct. 5',url:education.sursa.url,
-      note:'Limitele sunt valorile treptelor didactice din coloana iunie 2024, înaintea gradației de vechime în muncă, majorărilor și sporurilor. Nu reprezintă un interval al salariilor încasate. Pentru alt nivel de studii și situația individuală, folosește calculatorul de învățământ.',};
+  const common = { n: null, median: null, p25: null, p75: null, upper: null };
+
+  // 1. Grila de învățământ preuniversitar
+  const teaching = grilaEducatie(d.meserie.slug);
+  if (teaching.length) {
+    const values = teaching.map(r => calculStandard(r.iun2024)!.net);
+    const pop = d.meserie.slug === 'profesor'
+      ? 'Profesori din învățământul preuniversitar de stat, studii S/SSD'
+      : d.meserie.slug === 'invatator'
+      ? 'Învățători și profesori pentru învățământul primar, studii superioare (S)'
+      : 'Educatoare și educatori din învățământul preșcolar, studii liceale (M)';
+    return {
+      ...common,
+      kind: 'public-grid',
+      value: Math.min(...values),
+      upper: Math.max(...values),
+      unit: 'lei net/lună',
+      label: 'Net standard · grilă didactică',
+      period: 'iunie 2024',
+      population: pop,
+      source: 'Legea 153/2017, Anexa I, cap. I, pct. 5',
+      url: education.sursa.url,
+      note: 'Limitele sunt valorile treptelor didactice din coloana iunie 2024, înaintea gradației de vechime în muncă, majorărilor și sporurilor. Nu reprezintă un interval al salariilor încasate. Pentru alt nivel de studii și situația individuală, folosește calculatorul de învățământ.',
+    };
   }
-  const reported = Object.hasOwn(SALARIO, d.meserie.slug) ? SALARIO[d.meserie.slug] : null;
-  if (reported) return {
-    ...common, kind:'external-reported',value:reported,unit:'lei net/lună',
-    label:'Medie declarată în Salario',period:'2025',population:`${d.meserie.nume}, România; toate nivelurile cumulate`,
-    source:'eJobs, Review & Trends 2026, p. 54',url:'https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf#page=54',
-    note:'Salarii introduse în 2025 de utilizatorii Salario. Eșantionul acestei meserii și distribuția nu sunt publicate în raport. Media nu reprezintă o măsurare națională reprezentativă și nu a fost indexată la 2026.',
-  };
+
+  // 2. Repere studiate de piață și contractuale pe meserie
+  if (Object.hasOwn(BENCHMARKS, d.meserie.slug)) {
+    const b = BENCHMARKS[d.meserie.slug];
+    return {
+      ...common,
+      kind: b.kind ?? 'external-reported',
+      value: b.value,
+      upper: b.upper ?? null,
+      unit: 'lei net/lună',
+      label: b.label,
+      period: b.period,
+      population: b.population,
+      source: b.source,
+      url: b.url,
+      note: b.note,
+    };
+  }
+
+  // 3. Grila publică legală (Legea 153/2017)
   const grid = grilaPublica(d.meserie.slug);
   if (grid?.trepte.length) {
-    const values=grid.trepte.map(x=>x.net);
-    return {...common,kind:'public-grid',value:Math.min(...values),upper:Math.max(...values),unit:'lei net/lună',
-      label:'Net standard · grilă publică',period:grid.coloana,population:grid.domeniu,
-      source:`${SURSA_GRILE.act}, ${grid.anexa}`,url:SURSA_GRILE.url,
-      note:`${grid.numeSuma}; limitele sunt treptele selectate din grilă, nu percentile ale angajaților. Nivelul coloanei este ${grid.coloana}. Nu includem aici toate sporurile, majorările individuale sau salariile din privat.`,};
+    const values = grid.trepte.map(x => x.net);
+    // Pentru roluri unde treapta de debutant nu e reprezentativă pentru funcția de bază:
+    let val = Math.min(...values);
+    if (d.meserie.slug === 'pompier' && grid.trepte.length >= 2) {
+      // Subofițer operativ pompier IGSU (bază Sergent major/Plutonier)
+      val = grid.trepte[1].net;
+    } else if (d.meserie.slug === 'functionar-public' && grid.trepte.length >= 2) {
+      // Consilier asistent (grad profesional asistent)
+      val = grid.trepte[1].net;
+    } else if (d.meserie.slug === 'bibliotecar' && grid.trepte.length >= 3) {
+      // Bibliotecar gradul I studii superioare
+      val = grid.trepte[2].net;
+    } else if (d.meserie.slug === 'psiholog' && grid.trepte.length >= 2) {
+      // Psiholog practicant
+      val = grid.trepte[1].net;
+    }
+
+    return {
+      ...common,
+      kind: 'public-grid',
+      value: val,
+      upper: Math.max(...values),
+      unit: 'lei net/lună',
+      label: 'Net standard · grilă publică',
+      period: grid.coloana,
+      population: grid.domeniu,
+      source: `${SURSA_GRILE.act}, ${grid.anexa}`,
+      url: SURSA_GRILE.url,
+      note: `${grid.numeSuma}; limitele sunt treptele selectate din grilă, nu percentile ale angajaților. Nivelul coloanei este ${grid.coloana}. Nu includem aici toate sporurile, majorările individuale sau salariile din privat.`,
+    };
   }
-  return {...common,kind:'sector-context',value:d.netObservat,unit:'lei net/lună',
-    label:'Context INS · media sectorului',period:LUNA_REFERINTA,
-    population:`CAEN ${d.sector.cheie} — ${d.sector.denumire}; toate ocupațiile`,
-    source:'INS, TEMPO-Online, FOM106G',url:'https://statistici.insse.ro/tempoins/?ind=FOM106G&lang=ro&page=tempo3',
-    note:'Aceasta este media activității angajatorului, nu salariul măsurat al meseriei. Nu o transformăm în mediană, interval salarial sau salariu de debutant.',};
+
+  // 4. Pentru programator păstrăm explicit contextul mediei sectorului verificat contractual
+  if (d.meserie.slug === 'programator') {
+    return {
+      ...common,
+      kind: 'sector-context',
+      value: d.netObservat,
+      unit: 'lei net/lună',
+      label: 'Context INS · media sectorului',
+      period: LUNA_REFERINTA,
+      population: `CAEN ${d.sector.cheie} — ${d.sector.denumire}; toate ocupațiile`,
+      source: 'INS, TEMPO-Online, FOM106G',
+      url: 'https://statistici.insse.ro/tempoins/?ind=FOM106G&lang=ro&page=tempo3',
+      note: 'Aceasta este media activității angajatorului, nu salariul măsurat al meseriei. Nu o transformăm în mediană, interval salarial sau salariu de debutant.',
+    };
+  }
+
+  // 5. Intersecția ocupațională FOM121A × FOM106G (seria lunară a sectorului + ponderea grupei ISCO)
+  const cm = cifreMeserie(d.meserie.caen2, d.meserie.isco, {
+    net: d.netObservat ?? d.netStandard,
+    brut: d.sector.brutCurent,
+  });
+
+  if (cm.dinIntersectie) {
+    return {
+      ...common,
+      kind: 'sector-context',
+      value: cm.net,
+      unit: 'lei net/lună',
+      label: 'Context INS · grupă ocupațională în sector',
+      period: LUNA_REFERINTA,
+      population: `CAEN ${d.sector.cheie} — ${d.sector.denumire}; grupa ${d.meserie.isco}`,
+      source: 'INS, FOM121A × FOM106G',
+      url: 'https://statistici.insse.ro/tempoins/?ind=FOM121A&lang=ro&page=tempo3',
+      note: 'Nivelul mediu al activității CAEN ajustat statistic cu ponderea grupei ocupaționale din ancheta FOM121A. Nu este un salariu măsurat pe ocupație individuală COR.',
+    };
+  }
+
+  // 5. Fallback pe media activității angajatorului
+  return {
+    ...common,
+    kind: 'sector-context',
+    value: d.netObservat,
+    unit: 'lei net/lună',
+    label: 'Context INS · media sectorului',
+    period: LUNA_REFERINTA,
+    population: `CAEN ${d.sector.cheie} — ${d.sector.denumire}; toate ocupațiile`,
+    source: 'INS, TEMPO-Online, FOM106G',
+    url: 'https://statistici.insse.ro/tempoins/?ind=FOM106G&lang=ro&page=tempo3',
+    note: 'Aceasta este media activității angajatorului, nu salariul măsurat al meseriei. Nu o transformăm în mediană, interval salarial sau salariu de debutant.',
+  };
 }
+
 export function textReper(r: ReperMeserie): string {
-  if(r.value === null) return 'Neraportat';
-  const f=(n:number)=>n.toLocaleString('ro-RO',{maximumFractionDigits:0});
-  return r.upper!==null && r.upper!==r.value ? `${f(r.value)}–${f(r.upper)}` : f(r.value);
+  if (r.value === null) return 'Neraportat';
+  const f = (n: number) => n.toLocaleString('ro-RO', { maximumFractionDigits: 0 });
+  return r.upper !== null && r.upper !== r.value ? `${f(r.value)}–${f(r.upper)}` : f(r.value);
 }
+
 export function descriereReper(d: DateMeserie): string {
-  const r=reperMeserie(d);
-  const indicator=indicatorMeserie(r);
-  if(indicator.value===null) return `Nu avem încă suficiente date pentru un salariu median sau mediu al acestei meserii. ${r.label}: ${textReper(r)} ${r.unit}, ${r.period}. ${r.population}. ${r.note}`;
-  return `${indicator.metric==='median'?'Mediană':'Medie'}: ${textIndicator(r)} pe lună. ${r.source}, ${r.period}. ${r.population}. ${r.note}`;
+  const r = reperMeserie(d);
+  const indicator = indicatorMeserie(r);
+  if (indicator.value === null) {
+    return `Nu avem încă suficiente date pentru un salariu median sau mediu al acestei meserii. ${r.label}: ${textReper(r)} ${r.unit}, ${r.period}. ${r.population}. ${r.note}`;
+  }
+  const tip = indicator.metric === 'median' ? 'Mediană' : indicator.metric === 'grid' ? 'Net standard din grilă' : 'Medie';
+  return `${tip}: ${textIndicator(r)} pe lună. ${r.source}, ${r.period}. ${r.population}. ${r.note}`;
 }

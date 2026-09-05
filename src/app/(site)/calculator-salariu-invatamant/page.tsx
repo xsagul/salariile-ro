@@ -19,8 +19,7 @@ const DESC =
 
 export const metadata: Metadata = {
   title: { absolute: TITLU },
-  description:
-    "Grila completă pentru învățământul preuniversitar: 21 de funcții didactice, gradațiile 0–5, dirigenția de 10% și indemnizația de doctorat. Fiecare cifră cu articolul din lege.",
+  description: DESC,
   alternates: { canonical: "https://salariile.ro/calculator-salariu-invatamant" },
   openGraph: ogPage({ title: TITLU, description: DESC, path: "/calculator-salariu-invatamant" }),
   twitter: twPage({ title: TITLU, description: DESC }),

@@ -15,7 +15,7 @@
 // explicatia se afiseaza o singura data — a optiunii selectate, sub titlu.
 // N randuri duble devin N randuri simple plus unul.
 //
-// Culorile respecta BRAND.md §9: selectat = plin stone-900 (ca butonul primar),
+// Culori: selectat = plin stone-900 (ca butonul primar),
 // neselectat = `surface` cu bordura stone-300 (ca butonul secundar).
 
 export type OptiunePastila<T extends string | number> = {

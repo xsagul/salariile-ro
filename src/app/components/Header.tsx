@@ -12,16 +12,6 @@ type Item = Leaf | Group;
 // Structură extensibilă: linkuri simple + grupuri (dropdown). Starea meniurilor
 // e ținută PE GRUP, nu global, ca să poată exista oricâte dropdownuri.
 //
-// Locul doi din bară se dă pe merit, nu pe vechime. Istoric: /fluturas-salariu
-// l-a luat de la /calculator-pfa pe 10 august 2026, cu 46 de clicuri din Google
-// în 28 de zile de pe poziția 7,6, față de 3 clicuri de pe poziția 48. Pe 21
-// august l-a cedat grupului „Meserii" — clusterul /salarii + /compara, 127 de
-// pagini noi care n-au încă niciun istoric în GSC și au nevoie de un drum
-// intern ca să fie descoperite. E un pariu, nu o măsurătoare: fluturașul aducea
-// trafic real, meseriile încă nu aduc niciunul.
-//
-// Nici /fluturas-salariu, nici /calculator-pfa nu rămân orfane: ambele sunt
-// linkate din footer, iar PFA și contextual din /salariu-minim.
 const NAV: Item[] = [
   { href: "/", label: "Calculator salariu" },
   {
@@ -31,16 +21,6 @@ const NAV: Item[] = [
       { href: "/compara", label: "Compară două meserii" },
     ],
   },
-  // Adăugat pe 2 septembrie 2026. Site-ul are cinci unelte, dar din bară se
-  // ajungea doar la cea de pe homepage; restul trăiau exclusiv în footer.
-  // Grupul nu ia locul nimănui — „Meserii" rămâne pe doi, cu pariul lui.
-  //
-  // Declarație de interes: schimbarea a fost făcută în cadrul pariului pe
-  // /calculator-pfa (vezi PARIU-CALCULATOR-PFA.md), deci îmi servește. Testul
-  // aplicat înainte de a o face: ajută și dincolo de ea? Da — /fluturas-salariu,
-  // /calculator-salariu-part-time, /calculator-salariu-invatamant și /widget
-  // erau la fel de izolate. Dacă bara devine prea încărcată, grupul ăsta e
-  // primul care trebuie tăiat, nu „Meserii".
   {
     label: "Instrumente",
     children: [

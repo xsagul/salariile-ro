@@ -127,9 +127,7 @@ const PLAFOANE: [string, string][] = [
 ];
 
 // Data vizibila iese din ACEEASI sursa ca lastmod-ul din sitemap si ca
-// dateModified-ul din JSON-LD. Scrisa de mana, a ramas in urma cu o luna in
-// momentul in care celelalte doua s-au actualizat — exact defectul descris in
-// CLAUDE.md: un fapt viu are exact un proprietar.
+// dateModified-ul din JSON-LD: un fapt viu are o singura sursa de adevar.
 //
 // timeZone UTC explicit: build-ul poate rula in orice fus, iar fara el o data
 // de miezul noptii UTC s-ar afisa cu o zi mai devreme la vest de Greenwich,

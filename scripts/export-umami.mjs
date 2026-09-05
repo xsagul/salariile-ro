@@ -10,9 +10,8 @@
 //
 //   1. RANDURILE BRUTE, tabel cu tabel, in NDJSON — ca sa se poata reinteroga
 //      oricand, cu orice intrebare pe care n-am pus-o azi.
-//   2. AGREGATELE CALCULATE, in JSON si Markdown — concluziile pe care le
-//      folosim in CLAUDE.md si PROGRES.md raman verificabile si dupa ce baza
-//      nu mai exista.
+//   2. AGREGATELE CALCULATE, in JSON si Markdown — concluziile de trafic
+//      raman verificabile si dupa ce baza nu mai exista.
 //
 // Folosire:
 //   DATABASE_URL="postgres://..." node scripts/export-umami.mjs

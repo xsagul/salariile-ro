@@ -1,5 +1,5 @@
 ---
-title: "Coșul minim de consum: cât costă traiul decent"
+title: "Coșul minim de consum pentru un trai decent"
 description: "Ultimele valori publicate ale coșului pentru un trai decent, din septembrie 2025, și comparația documentată cu salariul minim net din 2026."
 date: "2026-06-08"
 updated: "2026-07-26"

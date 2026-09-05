@@ -174,7 +174,7 @@ export default function SalariiPage() {
             ))}
           </nav>
 
-          <p className="mt-6 text-sm text-stone-600">Sume nete lunare. Mediană disponibilă, altfel medie pe meserie. — = date insuficiente.</p>
+          <p className="mt-6 text-sm text-stone-600">Sume nete lunare: mediană sau medie declarată, grilă legală sau reper statistic INS.</p>
 
           {categorii.map(({ categorie, meserii }) => (
             <section key={categorie.slug} id={categorie.slug} data-sectiune-meserii className="mt-12 scroll-mt-20">

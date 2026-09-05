@@ -1,0 +1,11 @@
+[
+ {"id":"cor-2024","url":"https://data.gov.ro/dataset/695974d3-4be3-4bbe-a56a-bb639ad908e2/resource/6181ed62-d72f-411e-b742-ac030ce636fc/download/isco-08-lista-cresc-cod-ocupatii-cor-2024.xml"},
+ {"id":"ses-variables","url":"https://ec.europa.eu/eurostat/documents/203647/203707/SES_variables_list.xls/b287a6fc-19b2-493d-a3f2-4ee70d3439b1"},
+ {"id":"ses-anonymisation","url":"https://ec.europa.eu/eurostat/documents/203647/203707/Anonymisation-method-SES-microdata.pdf/1bc66dce-bae1-40a3-ac33-0396761cf481"},
+ {"id":"paylab-openapi","url":"https://api.swaggerhub.com/apis/Profesia/PaylabPublicApi"},
+ {"id":"ins-publication-alt","url":"https://www.insse.ro/cms/ro/content/disparit%C4%83%C5%A3i-salariale-factori-de-influen%C5%A3%C4%83-anul-2022"},
+ {"id":"ashby-api","url":"https://developers.ashbyhq.com/docs/public-job-posting-api"},
+ {"id":"greenhouse-api","url":"https://developers.greenhouse.io/job-board.html"},
+ {"id":"eurostat-copyright","url":"https://ec.europa.eu/eurostat/about-us/policies/copyright"},
+ {"id":"anofm-programator","url":"https://mediere.anofm.ro/app/module/mediere/job/3095686"}
+]
