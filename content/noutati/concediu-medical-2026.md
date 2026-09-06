@@ -125,7 +125,7 @@ Cele mai frecvente confuzii apar când angajatul compară indemnizația cu salar
 
 De aceea este mai util să verifici separat zilele și componentele de pe statul de plată decât să compari doar totalul primit în cont.
 
-Dacă vrei să înțelegi fiecare rând, vezi și ghidul nostru despre [cum citești fluturașul de salariu](/noutati/cum-citesti-fluturasul-de-salariu).
+Dacă vrei să înțelegi fiecare rând sau să generezi un model cu rețineri defalcate, consultă generatorul de [fluturaș de salariu](/fluturas-salariu) și ghidul dedicat despre [cum citești fluturașul de salariu](/noutati/cum-citesti-fluturasul-de-salariu).
 
 ## Ce să verifici dacă ai concediu medical în 2026
 
@@ -134,7 +134,7 @@ Dacă vrei să înțelegi fiecare rând, vezi și ghidul nostru despre [cum cite
 - codul de indemnizație de pe certificat;
 - dacă certificatul este inițial sau „în continuare”;
 - durata totală a episodului de boală;
-- câte zile lucrătoare intră efectiv în perioada certificatului;
+- câte zile lucrătoare intră efectiv în perioada certificatului (vezi [calendarul zilelor lucrătoare 2026](/zile-lucratoare-2026) pentru norma lunară de ore);
 - veniturile folosite pentru baza de calcul;
 - dacă situația ta intră într-o excepție de la diminuarea cu o zi.
 

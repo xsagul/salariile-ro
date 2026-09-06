@@ -122,11 +122,32 @@ export default function DesprePage() {
         <Section>
             <h2>Cum poți contribui</h2>
             <p>
-              Dacă observi o eroare de calcul, o referință legislativă depășită sau ai sugestii pentru pagini noi (calculator PFA, calculator concediu medical etc.), poți scrie la adresa de pe pagina de <Link href="/contact">contact</Link>. Răspund la toate mesajele primite, deși timpul de răspuns poate fi de câteva zile, fiind un proiect personal întreținut în timpul liber.
+              Dacă observi o eroare de calcul, o referință legislativă depășită sau ai sugestii pentru calculatoare noi ori scenarii fiscale specifice, poți scrie la adresa de pe pagina de <Link href="/contact">contact</Link>. Răspund la toate mesajele primite, deși timpul de răspuns poate fi de câteva zile, fiind un proiect personal întreținut în timpul liber.
             </p>
             <p>
               Erorile concrete (de exemplu o cifră greșită într-un calcul detaliat) au prioritate maximă, le corectez de regulă în aceeași zi în care primesc raportarea.
             </p>
+        </Section>
+
+        <Section>
+            <h2>Jurnal de corecții și actualizări</h2>
+            <p>
+              Pentru transparență totală, fiecare schimbare legislativă majoră sau revizie metodologică este documentată public:
+            </p>
+            <ul>
+              <li>
+                <strong>5 septembrie 2026</strong> — Verificare și aliniere a metadatelor și etichetării pe toate calculatoarele; consolidarea distincției dintre datele statistice agregate INS (CAEN × ISCO) și salariile individuale; audit tehnic și SEO complet.
+              </li>
+              <li>
+                <strong>28 august 2026</strong> — Actualizare a metadatelor și corelare a formulelor fiscale pentru semestrul II 2026; revizie a calculatoarelor specializate (învățământ, part-time, PFA).
+              </li>
+              <li>
+                <strong>4 august 2026</strong> — Aliniere la OUG nr. 89/2025 și publicarea analizei dedicate facilității de 300 lei / 200 lei pentru salariul minim brut garantat în plată de 4.325 lei.
+              </li>
+              <li>
+                <strong>1 iulie 2026</strong> — Intrarea în vigoare a salariului minim brut garantat în plată de 4.325 lei (HG nr. 598/2024 și OUG nr. 89/2025) și ajustarea automată a grilelor de deduceri personale.
+              </li>
+            </ul>
         </Section>
       </div>
     </>

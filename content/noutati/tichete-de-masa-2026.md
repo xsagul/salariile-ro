@@ -162,7 +162,7 @@ Notează separat:
 6. taxele aferente tichetelor;
 7. alte bonusuri sau beneficii.
 
-Pentru partea brut-net poți folosi [calculatorul salariile.ro](/). Pentru formulele și regulile fiscale generale găsești detalii în [metodologie](/metodologie).
+Pentru a vedea cum apar tichetele și reținerile pe documentul lunar, generează un [fluturaș de salariu PDF](/fluturas-salariu). Pentru numărul exact de zile lucrătoare din fiecare lună folosite la pontajul tichetelor, consultă [calendarul zilelor lucrătoare 2026](/zile-lucratoare-2026), iar pentru calculul complet introdu valoarea tichetelor direct în [calculatorul salariu net](/). Detaliile formulelor sunt documentate în [metodologie](/metodologie).
 
 ## Surse oficiale
 

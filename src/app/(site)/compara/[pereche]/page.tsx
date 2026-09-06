@@ -170,6 +170,16 @@ export default async function ComparatiePage({ params }: Props) {
             {[a,b].map(d=><div key={d.meserie.slug}><h2 className="text-lg font-semibold">{d.meserie.nume}</h2><ReperSalariu date={d}/></div>)}
           </div>
 
+          {ra.label !== rb.label || ra.period !== rb.period ? (
+            <div className="mt-6 rounded-md border border-amber-200 bg-amber-50 p-4 text-xs leading-relaxed text-amber-950">
+              <strong>Avertisment metodologic:</strong> Cele două meserii folosesc repere diferite ({ra.label} din {ra.period} pentru {a.meserie.nume} față de {rb.label} din {rb.period} pentru {b.meserie.nume}). Cifrele descriu cadre statistice distincte și nu reprezintă un raport salarial direct între două persoane.
+            </div>
+          ) : (
+            <p className="mt-4 text-xs text-stone-500">
+              Ambele ocupații folosesc același tip de reper ({ra.label}, {ra.period}). Cifrele reflectă agregate de piață, nu salarii negociate individual.
+            </p>
+          )}
+
 
           <details className="mt-8"><summary className="min-h-11 cursor-pointer py-3 text-lg font-semibold">Detalii ale comparației</summary><p className="mt-3 text-sm text-stone-600">Mediile de sector și reperele ISCO nu sunt un minim și un maxim salarial.</p>
             <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">Net, brut și context statistic</h2>

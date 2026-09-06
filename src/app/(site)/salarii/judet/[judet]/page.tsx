@@ -57,8 +57,8 @@ function descrierePagina(judet: Judet) {
 }
 
 /** Meseriile din catalog care cad intr-o activitate Rev.2 data. */
-function meseriiPentruActivitate(cheieRev2: string): string[] {
-  return MESERII.filter((m) => m.caen2 === cheieRev2).map((m) => m.nume);
+function meseriiPentruActivitate(cheieRev2: string): { nume: string; slug: string }[] {
+  return MESERII.filter((m) => m.caen2 === cheieRev2).map((m) => ({ nume: m.nume, slug: m.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -265,8 +265,24 @@ export default async function JudetPage({ params }: Props) {
                           </span>
                         </th>
                         <td className="border-b border-stone-100 px-3 py-2 text-left text-xs text-stone-500">
-                          {meserii.length > 0 ? meserii.slice(0, 3).join(", ") : "—"}
-                          {meserii.length > 3 ? ` +${meserii.length - 3}` : ""}
+                          {meserii.length > 0 ? (
+                            <>
+                              {meserii.slice(0, 3).map((m, idx) => (
+                                <span key={m.slug}>
+                                  {idx > 0 && ", "}
+                                  <Link
+                                    href={`/salarii/${m.slug}`}
+                                    className="text-stone-700 underline underline-offset-2 hover:text-stone-900"
+                                  >
+                                    {m.nume}
+                                  </Link>
+                                </span>
+                              ))}
+                              {meserii.length > 3 ? ` +${meserii.length - 3}` : ""}
+                            </>
+                          ) : (
+                            "—"
+                          )}
                         </td>
                         <td className="border-b border-stone-100 px-3 py-2 text-right font-semibold text-stone-900">
                           {lei(activitate.brut)} lei

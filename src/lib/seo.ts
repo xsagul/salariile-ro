@@ -79,7 +79,7 @@ export const PAGE_LAST_MODIFIED: Record<string, Date> = {
   "/widget": new Date("2026-08-25T00:00:00.000Z"),
   "/date-salarii": new Date("2026-08-25T00:00:00.000Z"),
   "/noutati": new Date("2026-07-26T00:00:00.000Z"),
-  "/despre": new Date("2026-07-26T00:00:00.000Z"),
+  "/despre": new Date("2026-09-05T00:00:00.000Z"),
   "/contact": new Date("2026-04-01T00:00:00.000Z"),
   "/politica-confidentialitate": new Date("2026-08-14T00:00:00.000Z"),
   "/cookies": new Date("2026-08-14T00:00:00.000Z"),
