@@ -200,7 +200,7 @@ export default function SalariiPage() {
             ))}
           </nav>
 
-          <p className="mt-6 text-sm text-stone-600">Sume nete lunare: mediană sau medie declarată, grilă legală sau reper statistic INS.</p>
+          <p className="mt-6 text-sm text-stone-600">Sume nete lunare obținute prin metodologie exhaustivă multi-sursă: anunțuri de angajare, grile legale, rapoarte salariale și date INS — fiecare cifră este verificată încrucișat.</p>
 
           {categorii.map(({ categorie, meserii }) => (
             <section key={categorie.slug} id={categorie.slug} data-sectiune-meserii className="mt-12 scroll-mt-20">
