@@ -259,6 +259,13 @@ function getContextBrut(v: number): Context {
     };
   }
 
+  if (v === SALARIU_MINIM) {
+    return {
+      pozitie: <>Brutul de <strong>4.325 lei</strong> este <Link href="/salariu-minim">salariul minim brut pe economie</Link> aplicabil în România din 1 iulie 2026 (HG nr. 598/2024). În cazul standard la funcția de bază, produce un net de <strong>{fmt(REZULTAT_MINIM_CURENT?.net ?? 0)} lei</strong> cu facilitatea de 200 lei scutită (OUG nr. 89/2025).</>,
+      insight: <>Fără aplicarea facilității (de exemplu dacă nu este funcția de bază sau dacă venitul brut depășește plafonul de 4.325 lei prin sporuri), netul este de <strong>2.530 lei</strong>. Pentru detalii complete despre condiții și excepții, consultă <Link href="/salariu-minim">ghidul despre salariul minim 2026</Link>.</>,
+    };
+  }
+
   if (v <= SALARIU_MINIM + 2000) {
     return {
       pozitie: <>Brutul de <strong>{fmt(v)} lei</strong> este peste salariul minim actual și se află în intervalul în care deducerea personală de bază poate fi acordată la funcția de bază.</>,
@@ -286,6 +293,13 @@ function getContextNet(v: number): Context {
     return {
       pozitie: <>Netul standard de <strong>{fmt(v)} lei</strong> corespunde brutului minim istoric de <strong>4.050 lei</strong>, aplicabil între 1 ianuarie și 30 iunie 2026.</>,
       insight: <>Acesta este un calcul istoric în grila S1 2026: facilitate de 300 lei și deducere personală raportată la salariul minim de 4.050 lei. Pentru perioada de după 1 iulie se folosește regimul fiscal curent.</>,
+    };
+  }
+
+  if (v === netMinimStandard) {
+    return {
+      pozitie: <>Netul standard de <strong>{fmt(v)} lei</strong> corespunde salariului minim brut de <strong>4.325 lei</strong> în vigoare din 1 iulie 2026, cu aplicarea facilității de 200 lei netaxabili la funcția de bază.</>,
+      insight: <>Aceasta este suma efectivă primită în mână în cazul standard. Fără facilitate, brutul de 4.325 lei generează 2.530 lei net. Pentru calculul detaliat și condiții, vezi <Link href="/salariu-minim">pagina dedicată salariului minim</Link>.</>,
     };
   }
 
