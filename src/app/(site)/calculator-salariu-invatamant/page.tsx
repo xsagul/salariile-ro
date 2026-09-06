@@ -200,6 +200,22 @@ export default function Page() {
         </div>
 
         <Prose>
+          <h2>Exemple practice: profesor, învățător, educator</h2>
+          <p>
+            Cum arată calculul în trei cazuri tipice din învățământul preuniversitar (normă întreagă, funcție de bază, fără persoane în întreținere):
+          </p>
+          <ul>
+            <li>
+              <strong>Profesor studii superioare (grad I, &gt;25 ani vechime, gradația 5 + dirigenție):</strong> grilă 8.223 lei + gradație 5 (+24,52% = 2.016 lei) = 10.239 lei salariu de bază. Cu dirigenție (+10% din salariul de bază = 1.024 lei), brutul ajunge la 11.263 lei, generând aproximativ <strong>6.589 lei net</strong> (+ indemnizația de hrană de 347 lei brut). Vezi reperele pentru <Link href="/salarii/profesor">salariu profesor</Link>.
+            </li>
+            <li>
+              <strong>Învățător studii superioare (grad II, 10–15 ani vechime, gradația 3):</strong> grilă 6.848 lei + gradație 3 (+18,07% = 1.237 lei) = 8.085 lei salariu de bază brut, adică aproximativ <strong>4.730 lei net</strong>. Vezi pagina dedicată pentru <Link href="/salarii/invatator">salariu învățător</Link>.
+            </li>
+            <li>
+              <strong>Educator debutant studii superioare (&lt;1 an vechime, gradația 0):</strong> grilă 6.080 lei brut = aproximativ <strong>3.557 lei net</strong> (la care se adaugă indemnizația de hrană). Vezi reperele pentru <Link href="/salarii/educator">salariu educator</Link>.
+            </li>
+          </ul>
+
           <h2>De unde vin cifrele</h2>
           <p>
             Grila are {GRILA.length} de combinații de funcție, nivel de studii și vechime în
@@ -237,9 +253,11 @@ export default function Page() {
 
       <PaginiConexe
         linkuri={[
-          { href: "/", label: "Calculator salariu net", descriere: "Brut în net pentru orice salariu." },
-          { href: "/salariu-mediu", label: "Salariul mediu pe economie", descriere: "Ultima cifră INS, actualizată lunar." },
+          { href: "/salarii/profesor", label: "Salariu profesor", descriere: "Grila și reperele din sectorul de educație." },
+          { href: "/salarii/invatator", label: "Salariu învățător", descriere: "Grila pentru cadrele din învățământul primar." },
+          { href: "/salarii/educator", label: "Salariu educator", descriere: "Salarii și trepte pentru învățământul preșcolar." },
           { href: "/salarii/domeniu/educatie", label: "Salarii în educație", descriere: "Cifrele INS pentru învățământ." },
+          { href: "/", label: "Calculator salariu net", descriere: "Brut în net pentru orice salariu." },
           { href: "/fluturas-salariu", label: "Generator de fluturaș", descriere: "Vezi defalcarea, ca pe hârtie." },
         ]}
       />

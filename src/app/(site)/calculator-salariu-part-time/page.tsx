@@ -48,7 +48,11 @@ const scenariu4h = SCENARII.find((scenariu) => scenariu.ore === 4)!;
 const FAQ = [
   {
     q: "Cât este salariul net la 4 ore în 2026?",
-    a: `La minimul proporțional pentru 4 ore pe zi, rezultatul standard este ${fmt(scenariu4h.faraExceptie.netBani)} lei net. Calculul presupune funcția de bază, o lună completă și zero persoane în întreținere.`,
+    a: `La minimul proporțional pentru 4 ore pe zi, rezultatul standard este ${fmt(scenariu4h.faraExceptie.netBani)} lei net (la 2.163 lei brut). Calculul presupune funcția de bază, o lună completă și zero persoane în întreținere.`,
+  },
+  {
+    q: "Cât este salariul net la 2 ore sau 6 ore în 2026?",
+    a: `La 2 ore/zi, salariul minim proporțional este ${fmt(SCENARII[0].brut)} lei brut, adică ${fmt(SCENARII[0].faraExceptie.netBani)} lei net. La 6 ore/zi, minimul este ${fmt(SCENARII[2].brut)} lei brut, adică ${fmt(SCENARII[2].faraExceptie.netBani)} lei net. Aceste valori presupun funcția de bază; dacă part-time-ul este încheiat în afara funcției de bază, deducerea personală este 0, iar netul scade proporțional.`,
   },
   {
     q: "Cât costă firma un contract de 4 ore?",
@@ -126,7 +130,7 @@ export default function Page() {
       <Section wide>
         <div className="md:grid md:grid-cols-5 md:gap-6">
           <Prose className="min-w-0 md:col-span-3">
-            <h2>Salariul la 2, 4 și 6 ore</h2>
+            <h2 id="scenarii-part-time" className="scroll-mt-20">Salariul la 2, 4 și 6 ore</h2>
             <p>
               Brutul minim scade proporțional cu timpul din contract. Netul nu scade exact în aceeași proporție,
               deoarece deducerea personală se calculează după propriile reguli. Costul firmei urmează încă o regulă:
@@ -144,8 +148,12 @@ export default function Page() {
               </thead>
               <tbody>
                 {SCENARII.map((scenariu) => (
-                  <tr key={scenariu.ore}>
-                    <th scope="row">{scenariu.ore} ore/zi</th>
+                  <tr key={scenariu.ore} id={`scenariu-${scenariu.ore}-ore`} className="scroll-mt-20">
+                    <th scope="row">
+                      <a href={`#scenariu-${scenariu.ore}-ore`} className="hover:underline">
+                        {scenariu.ore} ore/zi
+                      </a>
+                    </th>
                     <td>{fmt(scenariu.brut)} lei</td>
                     <td><strong>{fmt(scenariu.faraExceptie.netBani)} lei</strong></td>
                     <td>{fmt(scenariu.faraExceptie.costTotalCuDiferente)} lei</td>

@@ -130,6 +130,22 @@ export default function FluturasSalariuPage() {
           reținerile din net (avans, popriri) și restul de plată. Fiecare cifră vine din același modul de calcul folosit
           de <Link href="/">calculatorul de salariu</Link>, sincronizat cu Declarația 112 ANAF.
         </p>
+
+        <div className="my-6 rounded-md border border-stone-200 bg-surface p-5 shadow-soft sm:p-6">
+          <h3 className="text-xs font-semibold uppercase tracking-wide text-stone-500">Model fluturaș orientativ · 5.000 lei brut (normă întreagă)</h3>
+          <dl className="mt-3 grid grid-cols-1 gap-2 text-sm sm:grid-cols-2">
+            <div className="flex justify-between border-b border-stone-100 py-1.5"><dt className="text-stone-600">Salariu de bază brut:</dt><dd className="font-semibold text-stone-900">5.000 lei</dd></div>
+            <div className="flex justify-between border-b border-stone-100 py-1.5"><dt className="text-stone-600">CAS (25% pensie):</dt><dd className="tabular-nums text-stone-700">1.250 lei</dd></div>
+            <div className="flex justify-between border-b border-stone-100 py-1.5"><dt className="text-stone-600">CASS (10% sănătate):</dt><dd className="tabular-nums text-stone-700">500 lei</dd></div>
+            <div className="flex justify-between border-b border-stone-100 py-1.5"><dt className="text-stone-600">Deducere personală:</dt><dd className="tabular-nums text-stone-700">562 lei</dd></div>
+            <div className="flex justify-between border-b border-stone-100 py-1.5"><dt className="text-stone-600">Impozit pe venit (10%):</dt><dd className="tabular-nums text-stone-700">269 lei</dd></div>
+            <div className="flex justify-between border-b border-stone-100 py-1.5 bg-stone-50 px-2 rounded sm:col-span-2"><dt className="font-bold text-stone-900">Rest de plată (net în cont):</dt><dd className="font-bold text-stone-900">2.981 lei</dd></div>
+          </dl>
+          <p className="mt-3 text-xs text-stone-500">
+            Document orientativ demonstrativ generat pentru verificare. Pe fluturașul emis oficial de angajator pot apărea componente specifice contractului tău.
+          </p>
+        </div>
+
         <p className="source-note">
           Pentru înțelegerea fiecărui rând de pe fluturașul primit de la firmă, citește ghidul:{" "}
           <Link href="/noutati/cum-citesti-fluturasul-de-salariu">cum îți citești fluturașul de salariu</Link>.
@@ -178,12 +194,12 @@ export default function FluturasSalariuPage() {
         </div>
         <p className="source-note">
           Surse: Codul Muncii (Legea 53/2003, art. 166-168), Codul Fiscal (Legea 227/2015), HG 146/2026, OUG 89/2025.
-          Ultima actualizare: 26 iulie 2026.
+          Ultima actualizare: 16 august 2026.
         </p>
       </Section>
       <PaginiConexe
         linkuri={[
-          { href: "/salarii", label: "Salarii pe meserii", descriere: "Cât se câștigă în 123 de meserii, cu datele INS și netul calculat." },
+          { href: "/salarii", label: "Salarii pe meserii", descriere: "Cât se câștigă în 132 de meserii, cu datele INS și netul calculat." },
           { href: "/salariu-minim", label: "Salariul minim 2026", descriere: "4.325 lei brut din 1 iulie. Calculul net, pas cu pas." },
           { href: "/widget", label: "Widget pentru site-ul tău", descriere: "Pune calculatorul pe propriul site, gratuit și fără cont." },
           { href: "/metodologie", label: "Metodologia de calcul", descriere: "Formula completă, sursele normative și limitările declarate." },

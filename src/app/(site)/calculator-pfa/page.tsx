@@ -520,6 +520,7 @@ export default function CalculatorPfaPage() {
                   </ul>
                   <h3 className="mb-3 mt-6 text-xs font-medium text-stone-500">Pagini conexe</h3>
                   <ul className="flex flex-col gap-2 text-sm [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-600">
+                    <li><Link href="/noutati/pfa-sau-srl-2026">Ghid comparativ: PFA sau SRL în 2026</Link></li>
                     <li><Link href="/">Calculator salariu net</Link></li>
                     <li><Link href="/salariu-minim">Salariul minim 2026</Link></li>
                     <li><Link href="/salariu-mediu">Salariul mediu pe economie</Link></li>
@@ -537,7 +538,8 @@ export default function CalculatorPfaPage() {
       </div>
       <PaginiConexe
         linkuri={[
-          { href: "/salarii", label: "Salarii pe meserii", descriere: "Cât se câștigă ca angajat în 123 de meserii, cu datele INS." },
+          { href: "/noutati/pfa-sau-srl-2026", label: "PFA sau SRL în 2026?", descriere: "Comparație detaliată la 60.000, 100.000 și 200.000 lei încasări." },
+          { href: "/salarii", label: "Salarii pe meserii", descriere: "Cât se câștigă ca angajat în 132 de meserii, cu datele INS." },
           { href: "/", label: "Calculator salariu net", descriere: "Compară cu varianta pe contract de muncă: brut, net și costul firmei." },
           { href: "/salariu-minim", label: "Salariul minim 2026", descriere: "Reperul de la care pornesc contribuțiile, inclusiv pentru PFA." },
           { href: "/metodologie", label: "Metodologia de calcul", descriere: "Formulele, plafoanele și sursele normative, în detaliu." },
