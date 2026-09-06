@@ -138,32 +138,10 @@ export default function SalariiPage() {
               Cifrele raman in FAQ si pe fiecare pagina de meserie, unde au rost. */}
           <FiltruMeserii total={MESERII.length} />
 
-          {/* Căutări frecvente și meserii cu volum mare de interes */}
-          <div
-            data-scurtaturi-categorii
-            className="mt-6 flex flex-wrap items-center gap-1.5 text-xs text-stone-600 data-[filtrat=da]:hidden"
-          >
-            <span className="font-semibold text-stone-800">Căutate frecvent:</span>
-            <Link href="/salarii/medic-rezident" className="rounded-full bg-stone-200/80 px-2.5 py-1 text-stone-800 transition-colors hover:bg-stone-300">Medic rezident</Link>
-            <Link href="/salarii/politist" className="rounded-full bg-stone-200/80 px-2.5 py-1 text-stone-800 transition-colors hover:bg-stone-300">Polițist</Link>
-            <Link href="/salarii/insotitor-de-bord" className="rounded-full bg-stone-200/80 px-2.5 py-1 text-stone-800 transition-colors hover:bg-stone-300">Însoțitor de bord (stewardesă)</Link>
-            <Link href="/salarii/judecator" className="rounded-full bg-stone-200/80 px-2.5 py-1 text-stone-800 transition-colors hover:bg-stone-300">Judecător</Link>
-            <Link href="/salarii/procuror" className="rounded-full bg-stone-200/80 px-2.5 py-1 text-stone-800 transition-colors hover:bg-stone-300">Procuror</Link>
-            <Link href="/salarii/preot" className="rounded-full bg-stone-200/80 px-2.5 py-1 text-stone-800 transition-colors hover:bg-stone-300">Preot</Link>
-            <Link href="/salarii/ingrijitor-batrani" className="rounded-full bg-stone-200/80 px-2.5 py-1 text-stone-800 transition-colors hover:bg-stone-300">Îngrijitor bătrâni</Link>
-            <Link href="/salarii/asistent-medical" className="rounded-full bg-stone-200/80 px-2.5 py-1 text-stone-800 transition-colors hover:bg-stone-300">Asistent medical</Link>
-            <Link href="/salarii/tehnician-dentar" className="rounded-full bg-stone-200/80 px-2.5 py-1 text-stone-800 transition-colors hover:bg-stone-300">Tehnician dentar</Link>
-            <Link href="/salarii/kinetoterapeut" className="rounded-full bg-stone-200/80 px-2.5 py-1 text-stone-800 transition-colors hover:bg-stone-300">Kinetoterapeut</Link>
-            <Link href="/salarii/sofer-ambulanta" className="rounded-full bg-stone-200/80 px-2.5 py-1 text-stone-800 transition-colors hover:bg-stone-300">Șofer ambulanță</Link>
-            <Link href="/salarii/asistent-farmacie" className="rounded-full bg-stone-200/80 px-2.5 py-1 text-stone-800 transition-colors hover:bg-stone-300">Asistent farmacie</Link>
-            <Link href="/salarii/programator" className="rounded-full bg-stone-200/80 px-2.5 py-1 text-stone-800 transition-colors hover:bg-stone-300">Programator</Link>
-            <Link href="/salarii/contabil" className="rounded-full bg-stone-200/80 px-2.5 py-1 text-stone-800 transition-colors hover:bg-stone-300">Contabil</Link>
-          </div>
-
           <nav
-            aria-label="Categorii de meserii"
+            aria-label="Pagini tematice"
             data-scurtaturi-categorii
-            className="mt-8 flex flex-wrap gap-2 data-[filtrat=da]:hidden"
+            className="mt-6 flex flex-wrap gap-2 data-[filtrat=da]:hidden"
           >
             <Link
               href="/salarii/clasament"
@@ -189,15 +167,6 @@ export default function SalariiPage() {
             >
               Locuri vacante
             </Link>
-            {categorii.map(({ categorie }) => (
-              <a
-                key={categorie.slug}
-                href={`#${categorie.slug}`}
-                className="inline-flex min-h-11 items-center rounded-full border border-stone-200 bg-surface px-4 text-sm text-stone-700 shadow-soft transition-colors hover:border-stone-300 hover:text-stone-900"
-              >
-                {categorie.nume}
-              </a>
-            ))}
           </nav>
 
           <p className="mt-6 text-sm text-stone-600">Sume nete lunare obținute prin metodologie exhaustivă multi-sursă: anunțuri de angajare, grile legale, rapoarte salariale și date INS — fiecare cifră este verificată încrucișat.</p>
