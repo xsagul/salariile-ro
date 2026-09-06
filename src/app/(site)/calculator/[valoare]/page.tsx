@@ -240,8 +240,8 @@ const REZULTAT_MINIM_CURENT = calculStandard(SALARIU_MINIM);
 function getContextBrut(v: number): Context {
   if (v === 4325) {
     return {
-      pozitie: <>Brutul de <strong>4.325 lei</strong> este <Link href="/salariu-minim">salariul minim brut pe economie</Link> în vigoare din 1 iulie 2026, conform HG 146/2026.</>,
-      insight: <>În cazul standard folosit pe această pagină — funcție de bază, fără tichete și fără persoane în întreținere — rezultatul include facilitatea de 200 lei și deducerea personală. Netul efectiv poate fi diferit dacă nu sunt îndeplinite condițiile facilității sau situația angajatului diferă.</>,
+      pozitie: <>Brutul de <strong>4.325 lei</strong> este <Link href="/salariu-minim">salariul minim pe economie în 2026 (4.325 brut, 2.699 net)</Link> în vigoare din 1 iulie 2026, conform HG 146/2026.</>,
+      insight: <>În cazul standard folosit pe această pagină — funcție de bază, normă întreagă, fără tichete și fără persoane în întreținere — rezultatul include facilitatea de 200 lei și deducerea personală (2.699 lei net). Fără facilitate, netul devine 2.530 lei. Vezi calculul complet și toate scenariile pe pagina de referință pentru <Link href="/salariu-minim">salariul minim 2026</Link>.</>,
     };
   }
 

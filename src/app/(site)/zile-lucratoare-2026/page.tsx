@@ -49,6 +49,17 @@ const TOTAL_LUCRATOARE = rows.reduce((sum, row) => sum + row.lucratoare, 0);
 const TOTAL_ORE = TOTAL_LUCRATOARE * 8;
 const TOTAL_LIBERE = 365 - TOTAL_LUCRATOARE;
 
+const CSV_CONTENT = [
+  "Luna,Zile lucratoare,Ore lucratoare (8h/zi),Zile libere,Sarbatori legale",
+  ...rows.map((r) => {
+    const s = r.holidays.map((h) => `${h.day} ${r.name.toLowerCase()} (${h.label}${h.weekend ? " - weekend" : ""})`).join("; ");
+    return `"${r.name}",${r.lucratoare},${r.ore},${r.libere},"${s}"`;
+  }),
+  `"Total ${YEAR}",${TOTAL_LUCRATOARE},${TOTAL_ORE},${TOTAL_LIBERE},""`,
+].join("\r\n");
+
+const CSV_DATA_URI = `data:text/csv;charset=utf-8,${encodeURIComponent(CSV_CONTENT)}`;
+
 // Luna curentă în fusul orar al României. Titlul, blocul „Răspuns rapid" și una
 // dintre întrebările FAQ vizează luna în curs, pentru că acolo e cererea reală
 // („zile lucrătoare <lună> 2026"). Calculul se face la fiecare regenerare ISR,
@@ -184,7 +195,7 @@ export default function ZileLucratoare2026Page() {
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Zile lucrătoare 2026" }]} />
         <H1>Zile lucrătoare 2026</H1>
         <p className="mt-3 text-sm text-stone-500 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2">
-          Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat 15 iulie 2026
+          Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat 21 august 2026
         </p>
         <Lead>
           În 2026 sunt <strong>{TOTAL_LUCRATOARE} zile lucrătoare</strong> și <strong>{TOTAL_ORE.toLocaleString("ro-RO")} ore de lucru</strong> la program standard de 8 ore pe zi.
@@ -242,6 +253,33 @@ export default function ZileLucratoare2026Page() {
           <p>
             Tabelul scade weekendurile și sărbătorile legale care cad în zile de luni-vineri. Este util pentru pontaj, tarif orar, tichete de masă și contracte part-time.
           </p>
+
+          <div className="my-4 flex flex-wrap items-center justify-between gap-3">
+            <div className="flex flex-wrap items-center gap-1.5 text-xs text-stone-600">
+              <span className="font-medium text-stone-700">Sari la lună:</span>
+              {rows.map((r) => (
+                <a
+                  key={r.name}
+                  href={`#${r.name.toLowerCase()}`}
+                  className="rounded border border-stone-200 bg-surface px-1.5 py-0.5 text-stone-700 hover:border-stone-400 hover:text-stone-900"
+                >
+                  {r.name.slice(0, 3)}
+                </a>
+              ))}
+            </div>
+            <a
+              href={CSV_DATA_URI}
+              download={`zile-lucratoare-${YEAR}.csv`}
+              className="inline-flex items-center gap-1.5 rounded-md border border-stone-300 bg-surface px-3 py-1 text-xs font-medium text-stone-700 shadow-soft hover:border-stone-400 hover:bg-stone-50 hover:text-stone-900"
+              title="Descarcă tabelul complet în format CSV pentru Excel sau pontaj"
+            >
+              <svg className="h-3.5 w-3.5 text-stone-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+              Descarcă tabelul (CSV)
+            </a>
+          </div>
+
           <TabelArticol>
               <thead>
                 <tr>
@@ -253,8 +291,12 @@ export default function ZileLucratoare2026Page() {
               </thead>
               <tbody>
                 {rows.map((row) => (
-                  <tr key={row.name}>
-                    <td className="font-medium text-stone-900">{row.name}</td>
+                  <tr key={row.name} id={row.name.toLowerCase()} className="scroll-mt-24">
+                    <td className="font-medium text-stone-900">
+                      <a href={`#${row.name.toLowerCase()}`} className="hover:underline">
+                        {row.name}
+                      </a>
+                    </td>
                     <td className="text-right tabular-nums">{row.lucratoare}</td>
                     <td className="text-right tabular-nums">{row.ore}</td>
                     <td className="text-right tabular-nums">{row.libere}</td>

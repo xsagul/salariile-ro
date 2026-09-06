@@ -593,12 +593,13 @@ export default function SalariuMinimPage() {
             <div className="md:col-span-3">
               <h1 className="text-3xl font-bold tracking-[-0.02em] text-stone-900 sm:text-4xl">Salariul minim pe economie 2026: brut și net</h1>
               <p className="mt-4 text-xs text-stone-600 [&_a]:font-medium [&_a]:text-stone-700 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-900">
-                Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat 26 iulie 2026
+                Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat 4 august 2026
               </p>
               <p className={`mt-5 max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600 ${strong}`}>
-                Din 1 iulie 2026, salariul minim brut este <strong>4.325 lei</strong>, adică <strong>2.699 lei</strong>{" "}
-                net, în mână. Până la 1 iulie a fost 4.050 lei, cu 2.574 net. În continuare vezi ce reține statul, cât
-                costă firma și de ce netul a crescut mai puțin decât brutul.
+                Din 1 iulie 2026, salariul minim brut este <strong>4.325 lei</strong>, adică <strong>2.699 lei net</strong>{" "}
+                în mână (cu facilitatea de 200 lei netaxabili la normă întreagă și funcție de bază; fără facilitate, netul este 2.530 lei).
+                Până la 30 iunie a fost <strong>4.050 lei brut</strong> (2.574 lei net, cu scutirea de 300 lei). În continuare vezi
+                condițiile exacte de acordare, ce reține statul, costul firmei și de ce netul a crescut mai puțin decât brutul.
               </p>
             </div>
             <div className={aside}>

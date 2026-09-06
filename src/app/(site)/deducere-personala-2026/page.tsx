@@ -97,7 +97,7 @@ export default function DeducerePersonalaPage() {
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Deducere personală 2026" }]} />
         <H1>Deducere personală 2026</H1>
         <p className="mt-3 text-sm text-stone-500 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2">
-          Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat 6 iulie 2026
+          Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat 16 august 2026
         </p>
         <Lead>
           La salariul minim de {fmt(SALARIU_MINIM)} lei brut, deducerea personală de bază în 2026 este de{" "}

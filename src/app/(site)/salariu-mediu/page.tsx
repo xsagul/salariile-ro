@@ -213,6 +213,20 @@ export default function SalariuMediuPage() {
               <strong>9.192 lei brut</strong> (Legea 44/2026). În continuare vezi de ce sunt două cifre, la ce se
               folosește cea oficială, cât rămâne net și de ce media nu descrie venitul fiecărui angajat.
             </p>
+
+            {/* Separare vizuală imediată INS vs BASS */}
+            <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+              <div className="rounded-md border border-stone-200 bg-surface p-3.5 shadow-soft">
+                <p className="text-xs font-semibold uppercase tracking-wide text-stone-500">1. Cifra statistică INS ({INS_PERIOD_LABEL})</p>
+                <div className="mt-1 text-xl font-bold tabular-nums text-stone-900">{INS_NET_LABEL} lei <span className="text-sm font-normal text-stone-600">net</span></div>
+                <p className="mt-0.5 text-xs text-stone-600">{INS_BRUT_LABEL} lei brut · variație lunară</p>
+              </div>
+              <div className="rounded-md border border-stone-200 bg-surface p-3.5 shadow-soft">
+                <p className="text-xs font-semibold uppercase tracking-wide text-stone-500">2. Cifra oficială BASS (pensii 2026)</p>
+                <div className="mt-1 text-xl font-bold tabular-nums text-stone-900">9.192 lei <span className="text-sm font-normal text-stone-600">brut</span></div>
+                <p className="mt-0.5 text-xs text-stone-600">Legea 44/2026 · fix tot anul · ~5.377 net</p>
+              </div>
+            </div>
           </div>
           <figure className={aside}>
             <Image
@@ -236,7 +250,7 @@ export default function SalariuMediuPage() {
           <div className={row}>
             <div className="md:col-span-3">
               <div className={`max-w-prose ${articol}`}>
-                <h2>De ce sunt două cifre</h2>
+                <h2 id="de-ce-sunt-doua-cifre" className="scroll-mt-20">De ce sunt două cifre</h2>
                 <p>
                   <strong>Cifra reală</strong> o măsoară INS în fiecare lună, din salariile efectiv plătite, și se
                   mișcă în sus și în jos (în iunie a crescut față de mai). <strong>Cifra oficială</strong>{" "}
@@ -256,15 +270,15 @@ export default function SalariuMediuPage() {
                 <table className="w-full text-sm tabular-nums">
                   <tbody className="[&_td]:py-2">
                     <tr className="border-b border-stone-100">
-                      <td className="text-left text-stone-600">Net (real, INS)</td>
+                      <td className="text-left text-stone-600">Net (real, INS · {INS_PERIOD_LABEL})</td>
                       <td className="text-right font-bold text-stone-900">{fmt(INS_NET_VALUE)}</td>
                     </tr>
                     <tr className="border-b border-stone-100">
-                      <td className="text-left text-stone-600">Brut (real, INS)</td>
+                      <td className="text-left text-stone-600">Brut (real, INS · {INS_PERIOD_LABEL})</td>
                       <td className="text-right font-medium text-stone-900">{fmt(INS_BRUT_VALUE)}</td>
                     </tr>
                     <tr>
-                      <td className="text-left text-stone-600">Brut oficial (la pensii)</td>
+                      <td className="text-left text-stone-600">Brut oficial (BASS, la pensii)</td>
                       <td className="text-right text-stone-700">{fmt(9192)}</td>
                     </tr>
                   </tbody>
@@ -278,7 +292,7 @@ export default function SalariuMediuPage() {
           <div className={row}>
             <div className="md:col-span-3">
               <div className={`max-w-prose ${articol}`}>
-                <h2>Salariul mediu brut 2026 pentru calculul pensiei și plafoane</h2>
+                <h2 id="calcul-pensie" className="scroll-mt-20">Salariul mediu brut 2026 pentru calculul pensiei și plafoane</h2>
                 <p>
                   Numele complet al cifrei oficiale e <strong>câștigul salarial mediu brut utilizat la fundamentarea
                   bugetului asigurărilor sociale de stat</strong>: 9.192 lei pentru 2026. De ea se leagă:
