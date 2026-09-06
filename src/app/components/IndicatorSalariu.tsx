@@ -66,22 +66,40 @@ export default function IndicatorSalariu({ reper: r }: { reper: ReperMeserie }) 
       {/* Card de triangulare multi-sursă */}
       {t && (
         <div className="mt-4 grid gap-2.5 sm:grid-cols-3">
-          {t.anunturi && (
+          {t.anunturi ? (
             <div className="rounded border border-stone-200 bg-white p-3 text-xs shadow-xs">
               <div className="flex items-center justify-between">
                 <span className="font-semibold text-stone-800">1. Anunțuri active</span>
                 <span className="rounded bg-emerald-50 px-1.5 py-0.5 text-[10px] font-semibold text-emerald-700 border border-emerald-200">
-                  {t.anunturi.surseDistincte ?? 3} surse
+                  {t.anunturi.surseDistincte} {t.anunturi.surseDistincte === 1 ? 'sursă' : 'surse'}
                 </span>
               </div>
               <div className="mt-1.5 text-stone-700">
                 <strong>{t.anunturi.esantion} oferte</strong> verificate
               </div>
               <div className="mt-0.5 text-[11px] text-stone-500">
-                pe {t.anunturi.platforme?.join(', ')}
+                pe {t.anunturi.platforme?.join(' și ')}
               </div>
               <div className="mt-2 border-t border-stone-100 pt-1.5 font-mono text-[11px] text-stone-700">
                 {t.anunturi.interval?.min?.toLocaleString('ro-RO')}–{t.anunturi.interval?.max?.toLocaleString('ro-RO')} lei net
+              </div>
+            </div>
+          ) : (
+            <div className="rounded border border-stone-200 bg-white p-3 text-xs shadow-xs">
+              <div className="flex items-center justify-between">
+                <span className="font-semibold text-stone-800">1. Anunțuri active</span>
+                <span className="rounded bg-stone-100 px-1.5 py-0.5 text-[10px] font-medium text-stone-600">
+                  Transparență redusă
+                </span>
+              </div>
+              <div className="mt-1.5 text-stone-700">
+                Salariu confidențial online
+              </div>
+              <div className="mt-0.5 text-[11px] text-stone-500">
+                Negociere directă la interviu
+              </div>
+              <div className="mt-2 border-t border-stone-100 pt-1.5 text-[11px] text-stone-600">
+                Ancorat în Salario & INS
               </div>
             </div>
           )}
@@ -135,7 +153,7 @@ export default function IndicatorSalariu({ reper: r }: { reper: ReperMeserie }) 
         {t?.anunturi?.distributie && (
           <div className="mt-3 rounded bg-stone-50 p-3 border border-stone-200">
             <span className="font-semibold text-stone-900">
-              Triangularea internă a anunțurilor din piață (3 surse concurente):
+              Distribuția ofertelor verificate din piață (crawling direct):
             </span>
             <ul className="mt-1.5 list-disc pl-4 space-y-1 text-stone-700">
               {t.anunturi.distributie.map((d: { sursa: string; oferte: number }) => (
@@ -145,7 +163,7 @@ export default function IndicatorSalariu({ reper: r }: { reper: ReperMeserie }) 
               ))}
             </ul>
             <p className="mt-2 text-[11px] text-stone-500">
-              Pentru a evita distorsiunile create de politicile comerciale ale unui singur portal de recrutare, colectăm și verificăm concomitent ofertele din 3 platforme independente.
+              Date colectate prin interogarea directă a anunțurilor active cu salariu specificat (OLX și BestJobs). Se exclud contractele din străinătate, sumele sub salariul minim și outlierii statistici.
             </p>
           </div>
         )}
