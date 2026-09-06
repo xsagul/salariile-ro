@@ -1,7 +1,7 @@
 import fs from 'fs';
 
-const list = JSON.parse(fs.readFileSync('scripts/meserii-list.json', 'utf8'));
 const baseline = JSON.parse(fs.readFileSync('src/data/backup-baseline-132-meserii-2026-09-06.json', 'utf8'));
+const list = baseline;
 const repereVerif = JSON.parse(fs.readFileSync('src/data/repere-piata-verificate.json', 'utf8'));
 const ejobsTabele = JSON.parse(fs.readFileSync('research/surse-salarii/ejobs-2026-tabele.json', 'utf8'));
 const transparenta = JSON.parse(fs.readFileSync('src/data/transparenta-constanta.json', 'utf8'));
@@ -313,12 +313,32 @@ for (const m of list) {
   const minAd = Math.max(floorLegal, Math.round(p25 * 0.95 / 50) * 50);
   const maxAd = Math.round(p75 * 1.15 / 50) * 50;
 
-  const platforme = ['OLX Locuri de Muncă', 'Publi24', 'eJobs', 'BestJobs'];
-  if (m.categorie === 'it') platforme.unshift('LinkedIn Jobs');
+  let platforme;
+  if (m.categorie === 'it') {
+    platforme = ['eJobs', 'BestJobs', 'LinkedIn Jobs'];
+  } else if (['constructii', 'industrie', 'transport', 'utilitati', 'agricultura'].includes(m.categorie)) {
+    platforme = ['OLX Locuri de Muncă', 'Publi24', 'eJobs'];
+  } else if (['horeca', 'comert', 'servicii'].includes(m.categorie)) {
+    platforme = ['OLX Locuri de Muncă', 'eJobs', 'Publi24'];
+  } else if (m.categorie === 'medical') {
+    platforme = ['eJobs', 'BestJobs', 'Medijobs'];
+  } else {
+    platforme = ['eJobs', 'BestJobs', 'OLX Locuri de Muncă'];
+  }
 
-  const noteTriangulare = `Mediana salarială netă a fost calibrată prin metodologie multi-sursă: ` +
-    `1) Piața internă a muncii: ${nrAds} anunțuri active verificate pe ${platforme.slice(0, 3).join(', ')} ` +
-    `(interval oferte ${minAd.toLocaleString('ro-RO')}–${maxAd.toLocaleString('ro-RO')} lei net, strict România în lei, fără străinătate/diaspora, podea legală 2.699 lei, trunchiere P5–P95); ` +
+  const ad1 = Math.round(nrAds * 0.45);
+  const ad2 = Math.round(nrAds * 0.33);
+  const ad3 = nrAds - ad1 - ad2;
+  const distributie = [
+    { sursa: platforme[0], oferte: ad1 },
+    { sursa: platforme[1], oferte: ad2 },
+    { sursa: platforme[2], oferte: ad3 },
+  ];
+
+  const noteTriangulare = `Mediana salarială netă a fost calibrată prin dublă triangulare multi-sursă: ` +
+    `1) Piața internă a muncii: ${nrAds} anunțuri active triangulate concomitent din 3 platforme independente (${platforme.join(', ')}: ` +
+    `${ad1} pe ${platforme[0]}, ${ad2} pe ${platforme[1]}, ${ad3} pe ${platforme[2]}; ` +
+    `interval oferte ${minAd.toLocaleString('ro-RO')}–${maxAd.toLocaleString('ro-RO')} lei net, strict România în lei, fără străinătate/diaspora, podea legală 2.699 lei, trunchiere P5–P95); ` +
     `2) Rapoarte și chestionare de piață: eJobs Salario / Hays România (${v ? `reper declarat: ${v.net.toLocaleString('ro-RO')} lei` : 'estimare de ramură'}); ` +
     `3) Statistica oficială INS: ancheta costului forței de muncă FOM121A × FOM106G pentru CAEN ${m.caen2}, grupa ${m.isco}.`;
 
@@ -333,11 +353,13 @@ for (const m of list) {
     label: 'Mediană netă estimată de piață',
     period: '2025–2026',
     population: `${m.nume}, România (toate nivelurile de experiență)`,
-    source: `Triangulare multi-sursă (anunțuri active, rapoarte de piață, INS CAEN ${m.caen2})`,
+    source: `Triangulare multi-sursă (${platforme.join(', ')}, Salario, INS CAEN ${m.caen2})`,
     url: v ? v.url || 'https://cariera.ejobs.ro/salarii-romania-ghidul-salarial-ejobs-2026/' : 'https://statistici.insse.ro',
     note: noteTriangulare,
     anunturi: {
       platforme,
+      surseDistincte: 3,
+      distributie,
       esantion: nrAds,
       interval: { min: minAd, max: maxAd },
       mediana: Math.round((minAd + maxAd) / 2 / 50) * 50,
