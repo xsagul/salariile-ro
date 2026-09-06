@@ -26,7 +26,7 @@ import {
 import ReperSalariu from '@/app/components/ReperSalariu';
 import { reperMeserie, textReper } from '@/lib/repere-meserii';
 import { personSchema } from "@/lib/person";
-import { ogPage, twPage } from "@/lib/seo";
+import { ogPage, twPage, MESERII_LAST_MODIFIED } from "@/lib/seo";
 
 interface Props {
   params: Promise<{ pereche: string }>;
@@ -120,7 +120,7 @@ export default async function ComparatiePage({ params }: Props) {
           logo: { "@type": "ImageObject", url: "https://salariile.ro/og-image.png", width: 1200, height: 630 },
         },
         mainEntityOfPage: `https://salariile.ro/compara/${pereche}`,
-        dateModified: "2026-09-06",
+        dateModified: MESERII_LAST_MODIFIED.toISOString().slice(0, 10),
       },
       {
         "@type": "FAQPage",

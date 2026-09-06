@@ -15,7 +15,7 @@
 
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ogPage, twPage } from "@/lib/seo";
+import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow } from "@/app/components/ui";
 
 export const metadata: Metadata = {
@@ -53,7 +53,7 @@ const jsonLd = {
         "Salariile.ro este cookieless prin design, fără cookies de tracking, analiză comportamentală sau publicitate.",
       url: "https://salariile.ro/cookies",
       inLanguage: "ro-RO",
-      dateModified: "2026-08-14",
+      dateModified: PAGE_LAST_MODIFIED["/cookies"].toISOString().slice(0, 10),
       isPartOf: {
         "@type": "WebSite",
         name: "Salariile.ro",

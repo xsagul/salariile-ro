@@ -22,3 +22,20 @@ for (const [header, expected] of cases) {
 }
 
 console.log(`HTTP content negotiation: ${cases.length} cazuri trecute.`);
+
+import { readFile } from "node:fs/promises";
+
+const routeSource = await readFile(
+  new URL("../src/app/api/markdown/[[...path]]/route.ts", import.meta.url),
+  "utf8"
+);
+
+// Verificări A17: toate familiile de rute publice au reprezentare Markdown permisă
+assert.match(routeSource, /MESERII\.map/, "ALLOWED_MARKDOWN_PATHS include meseriile");
+assert.match(routeSource, /JUDETE\.map/, "ALLOWED_MARKDOWN_PATHS include județele");
+assert.match(routeSource, /CATEGORII\.map/, "ALLOWED_MARKDOWN_PATHS include domeniile");
+assert.match(routeSource, /COMPARATII\.map/, "ALLOWED_MARKDOWN_PATHS include comparațiile");
+
+console.log("Markdown allowlist contracte: verificat.");
+
+

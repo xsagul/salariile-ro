@@ -11,7 +11,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { personSchema } from "@/lib/person";
-import { ogPage, twPage } from "@/lib/seo";
+import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 
 // Imaginea de share a paginii: crop 1200×630 din hero (nu brandul generic).
 const OG_SALARIU_MINIM = {
@@ -163,7 +163,7 @@ const jsonLd = {
       image: { "@type": "ImageObject", url: "https://salariile.ro/og-salariu-minim.jpg", width: 1200, height: 630 },
       mainEntityOfPage: "https://salariile.ro/salariu-minim",
       datePublished: "2026-04-27",
-      dateModified: "2026-07-26",
+      dateModified: PAGE_LAST_MODIFIED["/salariu-minim"].toISOString().slice(0, 10),
     },
     {
       "@type": "FAQPage",

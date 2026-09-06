@@ -10,7 +10,7 @@ import { Breadcrumb, Faq, H1, Lead } from "@/app/components/ui";
 import { CardCifra, NotaSursa, lei, procent } from "@/app/components/Salarii";
 import { AN_JUDETE, JUDETE, MATRICE_JUDETE, NATIONAL_JUDETE } from "@/lib/ins-date";
 import { personSchema } from "@/lib/person";
-import { ogPage, twPage } from "@/lib/seo";
+import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 
 const AN = AN_JUDETE.replace("Anul ", "");
 const PRIMUL = JUDETE[0];
@@ -82,7 +82,7 @@ const jsonLd = {
       name: TITLU,
       description: DESCRIERE,
       url: "https://salariile.ro/salarii/judete",
-      dateModified: "2026-08-25",
+      dateModified: PAGE_LAST_MODIFIED["/salarii/judete"].toISOString().slice(0, 10),
       temporalCoverage: AN,
       isBasedOn: URL_FOM107E,
       author: personSchema,

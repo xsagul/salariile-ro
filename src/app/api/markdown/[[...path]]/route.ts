@@ -22,6 +22,8 @@ import {
   allCalculatorSlugs,
 } from "@/lib/seo";
 import { getAllArticles } from "@/lib/noutati";
+import { CATEGORII, COMPARATII, MESERII } from "@/lib/meserii";
+import { JUDETE } from "@/lib/ins-date";
 
 export const dynamic = "force-dynamic";
 
@@ -30,10 +32,14 @@ type Params = { path?: string[] };
 const MAX_HTML_BYTES = 2 * 1024 * 1024;
 const FETCH_TIMEOUT_MS = 8_000;
 
-const ALLOWED_MARKDOWN_PATHS = new Set([
+export const ALLOWED_MARKDOWN_PATHS = new Set([
   ...Object.keys(PAGE_LAST_MODIFIED),
   ...getAllArticles().map((article) => `/noutati/${article.slug}`),
   ...allCalculatorSlugs().map((slug) => `/calculator/${slug}`),
+  ...MESERII.map((m) => `/salarii/${m.slug}`),
+  ...JUDETE.map((j) => `/salarii/judet/${j.slug}`),
+  ...CATEGORII.map((c) => `/salarii/domeniu/${c.slug}`),
+  ...COMPARATII.map((comp) => `/compara/${comp.slug}`),
 ]);
 
 function sourceOrigin(requestUrl: URL): string {

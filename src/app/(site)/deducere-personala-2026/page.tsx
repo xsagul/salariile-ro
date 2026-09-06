@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { personSchema } from "@/lib/person";
 import { calculeazaDeducerePersonala, SALARIU_MINIM } from "@/lib/fiscal";
-import { ogPage, twPage } from "@/lib/seo";
+import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow, PaginiConexe } from "@/app/components/ui";
 import TabelArticol from "@/app/components/TabelArticol";
 
@@ -71,7 +71,7 @@ const jsonLd = {
       },
       image: { "@type": "ImageObject", url: "https://salariile.ro/og-image.png", width: 1200, height: 630 },
       datePublished: "2026-07-06",
-      dateModified: "2026-07-06",
+      dateModified: PAGE_LAST_MODIFIED["/deducere-personala-2026"].toISOString().slice(0, 10),
       mainEntityOfPage: `https://salariile.ro${PATH}`,
     },
     {

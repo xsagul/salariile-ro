@@ -6,7 +6,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { personSchema } from "@/lib/person";
-import { ogPage, twPage } from "@/lib/seo";
+import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 import { SARBATORI_LEGALE_2026 as HOLIDAYS } from "@/lib/sarbatori";
 
 // ─── Metadata SEO ────────────────────────────────────────────────────────────
@@ -144,7 +144,7 @@ const jsonLd = {
       image: { "@type": "ImageObject", url: "https://salariile.ro/og-image.png", width: 1200, height: 630 },
       mainEntityOfPage: "https://salariile.ro/zile-libere-2026",
       datePublished: "2026-05-19",
-      dateModified: "2026-07-06",
+      dateModified: PAGE_LAST_MODIFIED["/zile-libere-2026"].toISOString().slice(0, 10),
     },
     {
       "@type": "FAQPage",

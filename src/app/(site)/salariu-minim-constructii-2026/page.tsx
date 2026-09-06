@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Breadcrumb, CtaCard, Eyebrow, Faq, H1, Hero, Lead, Section } from "@/app/components/ui";
 import { calculStandardCuRegim } from "@/lib/fiscal";
 import { personSchema } from "@/lib/person";
-import { ogPage, twPage } from "@/lib/seo";
+import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 import TabelArticol from "@/app/components/TabelArticol";
 
 // Titlul depășea 60 de caractere cu sufixul de brand, iar descrierea folosea jargon
@@ -93,7 +93,7 @@ const jsonLd = {
       },
       image: { "@type": "ImageObject", url: "https://salariile.ro/og-image.png", width: 1200, height: 630 },
       datePublished: "2026-07-26",
-      dateModified: "2026-07-26",
+      dateModified: PAGE_LAST_MODIFIED["/salariu-minim-constructii-2026"].toISOString().slice(0, 10),
       mainEntityOfPage: `https://salariile.ro${PATH}`,
     },
     {

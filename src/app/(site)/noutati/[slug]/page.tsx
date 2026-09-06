@@ -47,13 +47,41 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
+const ARTICOLE_CONEXE: Record<string, string[]> = {
+  "tichete-de-masa-2026": ["cum-citesti-fluturasul-de-salariu", "concediu-medical-2026", "salariu-peste-minim-1-iulie-2026"],
+  "concediu-medical-2026": ["cum-citesti-fluturasul-de-salariu", "tichete-de-masa-2026", "salariu-peste-minim-1-iulie-2026"],
+  "cum-citesti-fluturasul-de-salariu": ["tichete-de-masa-2026", "concediu-medical-2026", "salariu-peste-minim-1-iulie-2026"],
+  "salariul-minim-1-iulie-2026": ["salariu-peste-minim-1-iulie-2026", "salariul-minim-romania-vs-uniunea-europeana-2026", "cosul-minim-de-consum"],
+  "salariu-peste-minim-1-iulie-2026": ["salariul-minim-1-iulie-2026", "salariul-minim-romania-vs-uniunea-europeana-2026", "tichete-de-masa-2026"],
+  "salariul-minim-romania-vs-uniunea-europeana-2026": ["salariul-minim-1-iulie-2026", "cosul-minim-de-consum", "salariu-peste-minim-1-iulie-2026"],
+  "cosul-minim-de-consum": ["salariul-minim-1-iulie-2026", "salariul-minim-romania-vs-uniunea-europeana-2026", "legea-salarizarii-2026"],
+  "legea-salarizarii-2026": ["transparenta-salariala-2026", "tineri-neet-romania-2026", "salariul-minim-1-iulie-2026"],
+  "transparenta-salariala-2026": ["legea-salarizarii-2026", "tineri-neet-romania-2026", "cum-citesti-fluturasul-de-salariu"],
+  "tineri-neet-romania-2026": ["transparenta-salariala-2026", "cosul-minim-de-consum", "legea-salarizarii-2026"],
+  "zile-libere-ramase-2026-minivacante": ["salariul-minim-1-iulie-2026", "cum-citesti-fluturasul-de-salariu", "tichete-de-masa-2026"],
+  "pfa-sau-srl-2026": ["salariu-peste-minim-1-iulie-2026", "cum-citesti-fluturasul-de-salariu", "transparenta-salariala-2026"],
+};
+
+function articoleConexePentru(slug: string) {
+  const preferate = ARTICOLE_CONEXE[slug] ?? [];
+  const toate = getAllArticles();
+  const indexate = new Map(toate.map((art) => [art.slug, art]));
+  const gasite = preferate
+    .map((s) => indexate.get(s))
+    .filter((art): art is NonNullable<typeof art> => Boolean(art));
+
+  if (gasite.length >= 3) return gasite.slice(0, 3);
+  const restul = toate.filter((x) => x.slug !== slug && !preferate.includes(x.slug));
+  return [...gasite, ...restul].slice(0, 3);
+}
+
 export default async function ArticolPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const a = getArticle(slug);
   if (!a) notFound();
 
-  // Articole conexe: cele mai recente, fără cel curent. Funnel intern + ține cititorul în cluster.
-  const related = getAllArticles().filter((x) => x.slug !== a.slug).slice(0, 3);
+  // Articole conexe tematice: conectare editorială relevantă pe clustere, nu doar data publicării.
+  const related = articoleConexePentru(a.slug);
 
   const url = `https://salariile.ro/noutati/${a.slug}`;
   const jsonLd = {

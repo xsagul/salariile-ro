@@ -14,6 +14,9 @@ export default function IndicatorSalariu({ reper: r }: { reper: ReperMeserie }) 
       <p className={`mt-2 font-bold tracking-tight text-stone-900 ${indicator.value === null ? 'text-xl' : 'text-3xl'}`}>
         {textIndicator(r)}
       </p>
+      <p className="mt-1 text-xs text-stone-600">
+        {r.label} · {r.period}
+      </p>
     </div>
     {advertised && (
       <div className="mt-5 border-t border-stone-200 pt-4" data-salary-offers="available">

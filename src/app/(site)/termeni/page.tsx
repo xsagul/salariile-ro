@@ -3,7 +3,7 @@
 
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ogPage, twPage } from "@/lib/seo";
+import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow } from "@/app/components/ui";
 
 export const metadata: Metadata = {
@@ -41,7 +41,7 @@ const jsonLd = {
         "Termenii de utilizare a salariile.ro: caracter informativ al conținutului, limitări de răspundere, drepturi de autor, soluționare litigii.",
       url: "https://salariile.ro/termeni",
       inLanguage: "ro-RO",
-      dateModified: "2026-07-29",
+      dateModified: PAGE_LAST_MODIFIED["/termeni"].toISOString().slice(0, 10),
       isPartOf: {
         "@type": "WebSite",
         name: "Salariile.ro",

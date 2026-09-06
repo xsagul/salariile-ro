@@ -12,7 +12,7 @@ import Link from "next/link";
 import { LATEST_INS_EARNINGS } from "@/lib/date-salarii";
 import { LUNA_REFERINTA, TOTAL_ECONOMIE } from "@/lib/ins-date";
 import { personSchema } from "@/lib/person";
-import { ogPage, twPage } from "@/lib/seo";
+import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 
 const INS_PERIOD_LABEL = LUNA_REFERINTA.replace(/^Luna\s+/, "");
 const INS_MONTH_NAME = INS_PERIOD_LABEL.split(" ")[0];
@@ -160,7 +160,7 @@ const jsonLd = {
       image: { "@type": "ImageObject", url: "https://salariile.ro/og-salariu-mediu.jpg", width: 1200, height: 630 },
       mainEntityOfPage: "https://salariile.ro/salariu-mediu",
       datePublished: "2026-03-30",
-      dateModified: "2026-08-25",
+      dateModified: PAGE_LAST_MODIFIED["/salariu-mediu"].toISOString().slice(0, 10),
     },
     {
       "@type": "FAQPage",
@@ -564,6 +564,7 @@ export default function SalariuMediuPage() {
                 <h3 className="mb-3 mt-6 text-xs font-medium text-stone-500">Pagini conexe</h3>
                 <ul className={`flex flex-col gap-2 text-sm ${links}`}>
                   <li><Link href="/salariu-minim">Salariul minim 2026</Link></li>
+                  <li><Link href="/salarii/locuri-vacante">Locuri de muncă vacante în economie</Link></li>
                   <li><Link href="/">Calculator salariu net</Link></li>
                   <li><Link href="/zile-libere-2026">Zile libere 2026</Link></li>
                 </ul>
@@ -595,7 +596,8 @@ export default function SalariuMediuPage() {
     </div>
       <PaginiConexe
         linkuri={[
-          { href: "/salarii", label: "Salarii pe meserii", descriere: "Media pe economie e una; pe meserie, alta. 123 de meserii, cu datele INS." },
+          { href: "/salarii", label: "Salarii pe meserii", descriere: "Media pe economie e una; pe meserie, alta. Toate meseriile cu date INS." },
+          { href: "/salarii/locuri-vacante", label: "Locuri de muncă vacante", descriere: "Cât se caută în economie: posturi vacante și rata pe grupe de ocupații." },
           { href: "/salarii/judete", label: "Salarii pe județe", descriere: "Unde se câștigă mai mult: toate cele 42 de județe." },
           { href: "/salarii/clasament", label: "Cele mai bine plătite meserii", descriere: "Clasamentul complet, după câștigul mediu brut." },
           { href: "/salariu-minim", label: "Salariul minim 2026", descriere: "Celălalt pilon: 4.325 lei brut din 1 iulie." },

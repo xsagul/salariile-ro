@@ -50,7 +50,7 @@ import { descriereReper, grilaEducatie } from '@/lib/repere-meserii';
 import corCatalogue from '@/data/cor-meserii.json';
 import { calculStandard } from '@/lib/fiscal';
 import { personSchema } from "@/lib/person";
-import { ogPage, twPage } from "@/lib/seo";
+import { ogPage, twPage, MESERII_LAST_MODIFIED } from "@/lib/seo";
 
 interface Props {
   params: Promise<{ meserie: string }>;
@@ -172,7 +172,7 @@ export default async function MeseriePage({ params }: Props) {
           logo: { "@type": "ImageObject", url: "https://salariile.ro/og-image.png", width: 1200, height: 630 },
         },
         mainEntityOfPage: `https://salariile.ro/salarii/${slug}`,
-        dateModified: "2026-09-06",
+        dateModified: MESERII_LAST_MODIFIED.toISOString().slice(0, 10),
       },
       {
         "@type": "FAQPage",

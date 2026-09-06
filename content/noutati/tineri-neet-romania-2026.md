@@ -63,6 +63,8 @@ Nu cred că există o soluție punctuală pentru problema tinerilor neîncadraț
 
 Pentru că problemele lor sunt o prelungire limpede a unor probleme structurale legate de modul de împărțire a valorii adăugate create în economie, iar la capitolul de incluziune ori mobilitate socială România stă foarte prost.
 
+Pentru o perspectivă completă asupra cererii de forță de muncă din economia reală, consultă datele oficiale INS despre [locurile de muncă vacante pe grupe de ocupații](/salarii/locuri-vacante).
+
 ## Surse
 
 - Eurostat, [*Fewer young people not in work or education in 2025*](https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20260528-2)

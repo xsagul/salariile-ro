@@ -67,7 +67,7 @@ export const PAGE_LAST_MODIFIED: Record<string, Date> = {
   "/salariu-mediu": new Date("2026-08-25T00:00:00.000Z"),
   "/salarii": new Date("2026-08-25T00:00:00.000Z"),
   "/salarii/clasament": new Date("2026-08-25T00:00:00.000Z"),
-  "/salarii/judete": new Date("2026-08-21T00:00:00.000Z"),
+  "/salarii/judete": new Date("2026-08-25T00:00:00.000Z"),
   "/salarii/femei-barbati": new Date("2026-08-25T00:00:00.000Z"),
   "/salarii/locuri-vacante": new Date("2026-08-25T00:00:00.000Z"),
   "/compara": new Date("2026-08-25T00:00:00.000Z"),
@@ -81,10 +81,22 @@ export const PAGE_LAST_MODIFIED: Record<string, Date> = {
   "/noutati": new Date("2026-07-26T00:00:00.000Z"),
   "/despre": new Date("2026-07-26T00:00:00.000Z"),
   "/contact": new Date("2026-04-01T00:00:00.000Z"),
-  "/politica-confidentialitate": new Date("2026-04-01T00:00:00.000Z"),
-  "/cookies": new Date("2026-04-01T00:00:00.000Z"),
-  "/termeni": new Date("2026-04-01T00:00:00.000Z"),
+  "/politica-confidentialitate": new Date("2026-08-14T00:00:00.000Z"),
+  "/cookies": new Date("2026-08-14T00:00:00.000Z"),
+  "/termeni": new Date("2026-07-29T00:00:00.000Z"),
 };
+
+import { INS_GENERAT_LA } from "@/lib/ins-date";
+
+export const MESERII_EDITORIAL_UPDATE = new Date("2026-09-06T00:00:00.000Z");
+export const MESERII_LAST_MODIFIED = new Date(
+  Math.max(new Date(INS_GENERAT_LA).getTime(), MESERII_EDITORIAL_UPDATE.getTime()),
+);
+
+export const JUDETE_EDITORIAL_UPDATE = new Date("2026-08-25T00:00:00.000Z");
+export const JUDETE_LAST_MODIFIED = new Date(
+  Math.max(new Date(INS_GENERAT_LA).getTime(), JUDETE_EDITORIAL_UPDATE.getTime()),
+);
 
 /** Valori brute indexate (net din brut) — aliniat cu sitemap + Ahrefs/GSC.
  *  Extins la 26 iulie 2026 pe baza GSC. Păstrăm numai valorile cu semnal real

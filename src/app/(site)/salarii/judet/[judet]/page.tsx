@@ -28,7 +28,7 @@ import {
 } from "@/lib/ins-date";
 import { MESERII } from "@/lib/meserii";
 import { personSchema } from "@/lib/person";
-import { ogPage, twPage } from "@/lib/seo";
+import { ogPage, twPage, JUDETE_LAST_MODIFIED } from "@/lib/seo";
 
 interface Props {
   params: Promise<{ judet: string }>;
@@ -133,7 +133,7 @@ export default async function JudetPage({ params }: Props) {
         name: `Câștig salarial mediu brut lunar în ${judet.nume}, media ${AN}`,
         description: descrierePagina(judet),
         url: `https://salariile.ro/salarii/judet/${slug}`,
-        dateModified: "2026-08-25",
+        dateModified: JUDETE_LAST_MODIFIED.toISOString().slice(0, 10),
         temporalCoverage: AN,
         isBasedOn: URL_FOM107E,
         author: personSchema,

@@ -4,7 +4,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { personSchema } from "@/lib/person";
-import { ogPage, twPage } from "@/lib/seo";
+import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow } from "@/app/components/ui";
 
 export const metadata: Metadata = {
@@ -51,7 +51,7 @@ const jsonLd = {
       },
       image: { "@type": "ImageObject", url: "https://salariile.ro/og-image.png", width: 1200, height: 630 },
       datePublished: "2026-04-01",
-      dateModified: "2026-07-26",
+      dateModified: PAGE_LAST_MODIFIED["/metodologie"].toISOString().slice(0, 10),
       proficiencyLevel: "Expert",
       about: [
         { "@type": "Thing", name: "Codul Fiscal Legea 227/2015" },

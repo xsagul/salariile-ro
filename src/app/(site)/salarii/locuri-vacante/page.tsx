@@ -28,7 +28,7 @@ import {
   type GrupaIsco,
 } from "@/lib/ins-date";
 import { personSchema } from "@/lib/person";
-import { ogPage, SITE_URL, twPage } from "@/lib/seo";
+import { ogPage, SITE_URL, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 
 const PAGE_PATH = "/salarii/locuri-vacante";
 const CSV_PATH = "/date-locuri-vacante-romania.csv";
@@ -119,7 +119,7 @@ const jsonLd = {
         logo: { "@type": "ImageObject", url: "https://salariile.ro/og-image.png", width: 1200, height: 630 },
       },
       mainEntityOfPage: "https://salariile.ro/salarii/locuri-vacante",
-      dateModified: "2026-08-25",
+      dateModified: PAGE_LAST_MODIFIED["/salarii/locuri-vacante"].toISOString().slice(0, 10),
     },
     {
       "@type": "Dataset",
@@ -128,7 +128,7 @@ const jsonLd = {
       url: SITE_URL + PAGE_PATH,
       identifier: "salariile-ro-locuri-vacante-isco",
       datePublished: "2026-08-25",
-      dateModified: "2026-08-25",
+      dateModified: PAGE_LAST_MODIFIED["/salarii/locuri-vacante"].toISOString().slice(0, 10),
       inLanguage: "ro-RO",
       isAccessibleForFree: true,
       spatialCoverage: { "@type": "Place", name: "România" },

@@ -138,6 +138,10 @@ export default function FluturasSalariuPage() {
           Dacă luna include zile de boală, verifică separat procentele, baza și excepțiile din ghidul despre{" "}
           <Link href="/noutati/concediu-medical-2026">plata concediului medical în 2026</Link>.
         </p>
+        <p className="source-note">
+          Pentru tichetele de masă și modul în care sunt impozitate pe fluturaș, consultă ghidul despre{" "}
+          <Link href="/noutati/tichete-de-masa-2026">taxele și valoarea netă a tichetelor de masă în 2026</Link>.
+        </p>
       </Section>
 
       <Section>

@@ -7,6 +7,8 @@ import {
   calculatorSlugBrut,
   calculatorSlugNet,
   LAST_FISCAL_CONTENT_UPDATE,
+  MESERII_LAST_MODIFIED,
+  JUDETE_LAST_MODIFIED,
 } from "@/lib/seo";
 import { getAllArticles } from "@/lib/noutati";
 import { CATEGORII, COMPARATII, MESERII } from "@/lib/meserii";
@@ -45,11 +47,6 @@ const STATIC_ENTRIES: {
   { path: "/termeni", priority: 0.3, changeFrequency: "yearly" },
 ];
 
-const MESERII_EDITORIAL_UPDATE = new Date("2026-08-25T00:00:00.000Z");
-const MESERII_LAST_MODIFIED = new Date(
-  Math.max(new Date(INS_GENERAT_LA).getTime(), MESERII_EDITORIAL_UPDATE.getTime()),
-);
-
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_URL;
 
@@ -79,7 +76,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // INS, cat si la un recast editorial. Sitemapul foloseste data cea mai noua.
     ...JUDETE.map((judet) => ({
       url: `${baseUrl}/salarii/judet/${judet.slug}`,
-      lastModified: new Date(INS_GENERAT_LA),
+      lastModified: JUDETE_LAST_MODIFIED,
       changeFrequency: "monthly" as const,
       priority: 0.6,
     })),

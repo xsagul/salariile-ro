@@ -3,7 +3,7 @@
 
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ogPage, twPage } from "@/lib/seo";
+import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow } from "@/app/components/ui";
 
 export const metadata: Metadata = {
@@ -47,7 +47,7 @@ const jsonLd = {
         "Politica GDPR a salariile.ro: date colectate (logs server, analytics anonime Vercel), bază legală interes legitim, drepturile vizitatorilor, autoritate ANSPDCP.",
       url: "https://salariile.ro/politica-confidentialitate",
       inLanguage: "ro-RO",
-      dateModified: "2026-08-14",
+      dateModified: PAGE_LAST_MODIFIED["/politica-confidentialitate"].toISOString().slice(0, 10),
       isPartOf: {
         "@type": "WebSite",
         name: "Salariile.ro",

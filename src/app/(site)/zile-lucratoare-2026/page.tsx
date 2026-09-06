@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { personSchema } from "@/lib/person";
 import { SARBATORI_LEGALE_2026, zileLucratoareLuna } from "@/lib/sarbatori";
-import { ogPage, twPage } from "@/lib/seo";
+import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow } from "@/app/components/ui";
 import TabelArticol from "@/app/components/TabelArticol";
 
@@ -157,7 +157,7 @@ const buildJsonLd = () => ({
       },
       image: { "@type": "ImageObject", url: "https://salariile.ro/og-image.png", width: 1200, height: 630 },
       datePublished: "2026-07-06",
-      dateModified: "2026-07-15",
+      dateModified: PAGE_LAST_MODIFIED["/zile-lucratoare-2026"].toISOString().slice(0, 10),
       mainEntityOfPage: `https://salariile.ro${PATH}`,
     },
     {
@@ -331,6 +331,7 @@ export default function ZileLucratoare2026Page() {
           <ul>
             <li><a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/128646" target="_blank" rel="noopener">Codul Muncii, Legea 53/2003</a> · art. 139 și art. 142</li>
             <li><Link href="/zile-libere-2026">Zile libere 2026</Link>, calendar vizual și punți</li>
+            <li><Link href="/noutati/zile-libere-ramase-2026-minivacante">Zile libere rămase și minivacanțe în 2026</Link></li>
             <li><Link href="/salariu-minim">Salariul minim 2026</Link>, pentru normă și calcul net</li>
             <li><Link href="/fluturas-salariu">Generator fluturaș salariu</Link>, pentru fluturaș PDF orientativ</li>
           </ul>

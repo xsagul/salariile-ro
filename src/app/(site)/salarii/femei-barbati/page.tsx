@@ -25,7 +25,7 @@ import {
   diferentaSexeTotal,
 } from "@/lib/ins-date";
 import { personSchema } from "@/lib/person";
-import { ogPage, SITE_URL, twPage } from "@/lib/seo";
+import { ogPage, SITE_URL, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 
 const PAGE_PATH = "/salarii/femei-barbati";
 const CSV_PATH = "/date-diferente-salariale-femei-barbati-romania.csv";
@@ -115,7 +115,7 @@ const jsonLd = {
         logo: { "@type": "ImageObject", url: "https://salariile.ro/og-image.png", width: 1200, height: 630 },
       },
       mainEntityOfPage: "https://salariile.ro/salarii/femei-barbati",
-      dateModified: "2026-08-25",
+      dateModified: PAGE_LAST_MODIFIED["/salarii/femei-barbati"].toISOString().slice(0, 10),
     },
     {
       "@type": "Dataset",
@@ -124,7 +124,7 @@ const jsonLd = {
       url: SITE_URL + PAGE_PATH,
       identifier: "salariile-ro-diferente-castig-femei-barbati",
       datePublished: "2026-08-25",
-      dateModified: "2026-08-25",
+      dateModified: PAGE_LAST_MODIFIED["/salarii/femei-barbati"].toISOString().slice(0, 10),
       inLanguage: "ro-RO",
       isAccessibleForFree: true,
       spatialCoverage: { "@type": "Place", name: "România" },
