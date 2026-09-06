@@ -148,7 +148,7 @@ export default async function ArticolPage({ params }: { params: Promise<{ slug: 
             {a.hero ? (
               <Image src={a.hero} alt={a.heroAlt || a.title} fill priority className="object-cover" sizes="(max-width: 768px) 100vw, 768px" />
             ) : (
-              <span className="absolute inset-0 flex items-center justify-center text-xs font-medium uppercase tracking-wide text-stone-400">Imagine articol</span>
+              <span className="absolute inset-0 flex items-center justify-center text-xs font-medium uppercase tracking-wide text-stone-600">Imagine articol</span>
             )}
           </div>
 

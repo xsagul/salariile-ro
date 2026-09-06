@@ -217,12 +217,12 @@ export default function SalariuMediuPage() {
             {/* Separare vizuală imediată INS vs BASS */}
             <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
               <div className="rounded-md border border-stone-200 bg-surface p-3.5 shadow-soft">
-                <p className="text-xs font-semibold uppercase tracking-wide text-stone-500">1. Cifra statistică INS ({INS_PERIOD_LABEL})</p>
+                <p className="text-xs font-semibold uppercase tracking-wide text-stone-600">1. Cifra statistică INS ({INS_PERIOD_LABEL})</p>
                 <div className="mt-1 text-xl font-bold tabular-nums text-stone-900">{INS_NET_LABEL} lei <span className="text-sm font-normal text-stone-600">net</span></div>
                 <p className="mt-0.5 text-xs text-stone-600">{INS_BRUT_LABEL} lei brut · variație lunară</p>
               </div>
               <div className="rounded-md border border-stone-200 bg-surface p-3.5 shadow-soft">
-                <p className="text-xs font-semibold uppercase tracking-wide text-stone-500">2. Cifra oficială BASS (pensii 2026)</p>
+                <p className="text-xs font-semibold uppercase tracking-wide text-stone-600">2. Cifra oficială BASS (pensii 2026)</p>
                 <div className="mt-1 text-xl font-bold tabular-nums text-stone-900">9.192 lei <span className="text-sm font-normal text-stone-600">brut</span></div>
                 <p className="mt-0.5 text-xs text-stone-600">Legea 44/2026 · fix tot anul · ~5.377 net</p>
               </div>
@@ -266,7 +266,7 @@ export default function SalariuMediuPage() {
             </div>
             <aside className={aside}>
               <div className={card}>
-                <h3 className="mb-3 text-xs font-medium text-stone-500">Cifre · 2026 (lei / lună)</h3>
+                <h3 className="mb-3 text-xs font-medium text-stone-600">Cifre · 2026 (lei / lună)</h3>
                 <table className="w-full text-sm tabular-nums">
                   <tbody className="[&_td]:py-2">
                     <tr className="border-b border-stone-100">
@@ -283,7 +283,7 @@ export default function SalariuMediuPage() {
                     </tr>
                   </tbody>
                 </table>
-                <p className="mt-auto pt-4 text-xs text-stone-500">Real = ce măsoară INS lunar (5.518 net în ian., 5.557 în feb., 5.938 în mar., 5.843 în apr., 5.684 în mai, 5.734 în iun.). Oficial = valoare fixă (Legea 44/2026), folosită la pensii și ajutoare.</p>
+                <p className="mt-auto pt-4 text-xs text-stone-600">Real = ce măsoară INS lunar (5.518 net în ian., 5.557 în feb., 5.938 în mar., 5.843 în apr., 5.684 în mai, 5.734 în iun.). Oficial = valoare fixă (Legea 44/2026), folosită la pensii și ajutoare.</p>
               </div>
             </aside>
           </div>
@@ -332,7 +332,7 @@ export default function SalariuMediuPage() {
                     </tr>
                   </tbody>
                 </table>
-                <p className="mt-auto pt-4 text-xs text-stone-500">Din 30 martie 2026. Înainte: 8.620 lei (ajutor 8.620 / 4.310).</p>
+                <p className="mt-auto pt-4 text-xs text-stone-600">Din 30 martie 2026. Înainte: 8.620 lei (ajutor 8.620 / 4.310).</p>
               </div>
             </aside>
           </div>
@@ -421,7 +421,7 @@ export default function SalariuMediuPage() {
                   Mediana, adică salariul de la mijloc, arată pragul sub care se află jumătate dintre angajați. INS nu
                   publică o mediană salarială lunară în același comunicat cu media.
                 </p>
-                <p className="mt-auto pt-4 text-xs text-stone-500">Nu publicăm o estimare numerică fără un set de date compatibil, o perioadă clară și o metodologie verificabilă.</p>
+                <p className="mt-auto pt-4 text-xs text-stone-600">Nu publicăm o estimare numerică fără un set de date compatibil, o perioadă clară și o metodologie verificabilă.</p>
               </div>
             </aside>
           </div>
@@ -435,7 +435,7 @@ export default function SalariuMediuPage() {
                 <div className="my-6 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
                   <table className="w-full text-sm tabular-nums [&_td]:py-2 [&_tbody_th]:py-2 [&_tbody_th]:pr-2 [&_tbody_th]:text-left [&_td:not(:first-child)]:pl-3 [&_th:not(:first-child)]:pl-3 [&_td:not(:first-child)]:text-right [&_th:not(:first-child)]:text-right">
                     <thead>
-                      <tr className="border-b border-stone-300 text-xs font-medium uppercase tracking-wide text-stone-500">
+                      <tr className="border-b border-stone-300 text-xs font-medium uppercase tracking-wide text-stone-600">
                         <th scope="col" className="pb-2 text-left">An</th>
                         <th scope="col" className="pb-2">Brut</th>
                         <th scope="col" className="pb-2">Net</th>
@@ -449,8 +449,8 @@ export default function SalariuMediuPage() {
                           <th scope="row" className="font-normal text-stone-600">{r.an}</th>
                           <td className="text-stone-900">{fmt(r.brut)}</td>
                           <td className="text-stone-700">{fmt(r.net)}</td>
-                          <td className="hidden text-stone-500 sm:table-cell">{r.crestere}</td>
-                          <td className="hidden text-stone-500 md:table-cell">{r.lege}</td>
+                          <td className="hidden text-stone-600 sm:table-cell">{r.crestere}</td>
+                          <td className="hidden text-stone-600 md:table-cell">{r.lege}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -520,7 +520,7 @@ export default function SalariuMediuPage() {
                       })}
                     </div>
                   </div>
-                  <p className="mt-4 text-xs text-stone-500">Brut = valoarea oficială folosită la buget; net = estimat (~58% din brut). Treci cu mouse-ul (sau atinge) un an pentru cifre.</p>
+                  <p className="mt-4 text-xs text-stone-600">Brut = valoarea oficială folosită la buget; net = estimat (~58% din brut). Treci cu mouse-ul (sau atinge) un an pentru cifre.</p>
                 </figure>
               </div>
             </div>
@@ -568,21 +568,21 @@ export default function SalariuMediuPage() {
             </div>
             <aside className={aside}>
               <div className={card}>
-                <h3 className="mb-3 text-xs font-medium text-stone-500">Surse oficiale</h3>
+                <h3 className="mb-3 text-xs font-medium text-stone-600">Surse oficiale</h3>
                 <ul className={`flex flex-col gap-2 text-sm leading-normal text-stone-600 ${links}`}>
                   <li><strong className="font-medium text-stone-900">Legea 44/2026</strong>: bugetul asigurărilor sociale 2026</li>
                   <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/276927" target="_blank" rel="noopener">Legea 360/2023</a>: sistemul public de pensii și ajutorul de deces</li>
                   <li><a href={LATEST_INS_EARNINGS.officialUrl} target="_blank" rel="noopener">INS, comunicatul pentru {INS_PERIOD_LABEL}</a>: {INS_BRUT_LABEL} lei brut, {INS_NET_LABEL} lei net, publicat {LATEST_INS_EARNINGS.publicationDateLabel}</li>
                   <li><a href="https://cnp.ro" target="_blank" rel="noopener">CNSP</a>: prognoze 2026–2028</li>
                 </ul>
-                <h3 className="mb-3 mt-6 text-xs font-medium text-stone-500">Pagini conexe</h3>
+                <h3 className="mb-3 mt-6 text-xs font-medium text-stone-600">Pagini conexe</h3>
                 <ul className={`flex flex-col gap-2 text-sm ${links}`}>
                   <li><Link href="/salariu-minim">Salariul minim 2026</Link></li>
                   <li><Link href="/salarii/locuri-vacante">Locuri de muncă vacante în economie</Link></li>
                   <li><Link href="/">Calculator salariu net</Link></li>
                   <li><Link href="/zile-libere-2026">Zile libere 2026</Link></li>
                 </ul>
-                <p className="mt-auto pt-6 text-xs text-stone-500">Ultima actualizare: 25 august 2026.</p>
+                <p className="mt-auto pt-6 text-xs text-stone-600">Ultima actualizare: 25 august 2026.</p>
               </div>
             </aside>
           </div>

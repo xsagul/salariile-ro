@@ -20,7 +20,7 @@ Datele publice, rezultatele calculelor și explicațiile scurte pot fi citate cu
 - [Widget calculator salariu](https://salariile.ro/widget): widget gratuit pentru integrarea calculatorului brut-net pe alte site-uri; folosește motorul fiscal întreținut central și include un link de credit către salariile.ro
 - [Zile libere 2026](https://salariile.ro/zile-libere-2026): calendar cu cele 17 sărbători legale din Codul Muncii art. 139, care în 2026 produc 16 zile libere distincte (a doua zi de Rusalii cade pe 1 iunie, Ziua Copilului), dintre care 11 în zile lucrătoare; norma lunară distinctă este pe pagina de zile lucrătoare
 - [Zile lucrătoare 2026](https://salariile.ro/zile-lucratoare-2026): tabel lunar cu 250 zile lucrătoare, 2.000 ore de lucru, zile libere și sărbători legale scăzute din norma lunară
-- [Salarii pe meserii](https://salariile.ro/salarii): 132 de meserii documentate prin studii exhaustive multi-sursă (rapoarte de piață eJobs/Salario și Hays, grile oficiale Legea 153/2017 cu mediane pe trepte, și intersecția statistică INS FOM121A × FOM106G); granularitate 100%, zero coliziuni și salarii nete unice.
+- [Salarii pe meserii](https://salariile.ro/salarii): 132 de meserii cu repere de piață atribuite, intervale din grile și context INS. Verificați tipul, populația și perioada fiecărei cifre.
 - [Compară salarii între meserii](https://salariile.ro/compara): selector pentru oricare două meserii și 37 de comparații detaliate; sursele și perioadele sunt păstrate separat, fără câștigători derivați din repere incompatibile.
 
 ## Noutăți și analize
@@ -78,7 +78,7 @@ Datele publice, rezultatele calculelor și explicațiile scurte pot fi citate cu
 - Plafon deducere personală: salariu minim + 2.000 lei (6.050 lei S1 / 6.325 lei S2)
 - PFA sistem real 2026: CAS și CASS raportate la salariul minim de la 1 ianuarie (4.050 lei); praguri la 6, 12, 24 și 72 de salarii minime; impozit 10% pe venitul net
 - Eliminate prin OUG 156/2024: scutirile fiscale IT, construcții, agroalimentar (din ianuarie 2025)
-- Paginile de meserii oferă date salariale reale și granulare pentru 132 de profesii, bazate pe o metodologie exhaustivă în 4 piloni: rapoarte de piață și comparatoare de recrutare (Salario, Hays), grile oficiale de salarizare din sectorul public cu calculul valorii mediane a treptelor profesionale, intersecția statistică FOM121A × FOM106G și monitorizarea ofertelor active de angajare.
+- O medie declarată Salario, un interval al bazei legale și o estimare CAEN × ISCO nu sunt aceeași măsură. Raportările instituțiilor publice sunt locale, nu medii naționale. Nu există eșantion propriu de salarii sau anunțuri.
 
 ## Tehnic
 

@@ -132,7 +132,7 @@ export default function FluturasSalariuPage() {
         </p>
 
         <div className="my-6 rounded-md border border-stone-200 bg-surface p-5 shadow-soft sm:p-6">
-          <h3 className="text-xs font-semibold uppercase tracking-wide text-stone-500">Model fluturaș orientativ · 5.000 lei brut (normă întreagă)</h3>
+          <h3 className="text-xs font-semibold uppercase tracking-wide text-stone-600">Model fluturaș orientativ · 5.000 lei brut (normă întreagă)</h3>
           <dl className="mt-3 grid grid-cols-1 gap-2 text-sm sm:grid-cols-2">
             <div className="flex justify-between border-b border-stone-100 py-1.5"><dt className="text-stone-600">Salariu de bază brut:</dt><dd className="font-semibold text-stone-900">5.000 lei</dd></div>
             <div className="flex justify-between border-b border-stone-100 py-1.5"><dt className="text-stone-600">CAS (25% pensie):</dt><dd className="tabular-nums text-stone-700">1.250 lei</dd></div>
@@ -141,7 +141,7 @@ export default function FluturasSalariuPage() {
             <div className="flex justify-between border-b border-stone-100 py-1.5"><dt className="text-stone-600">Impozit pe venit (10%):</dt><dd className="tabular-nums text-stone-700">269 lei</dd></div>
             <div className="flex justify-between border-b border-stone-100 py-1.5 bg-stone-50 px-2 rounded sm:col-span-2"><dt className="font-bold text-stone-900">Rest de plată (net în cont):</dt><dd className="font-bold text-stone-900">2.981 lei</dd></div>
           </dl>
-          <p className="mt-3 text-xs text-stone-500">
+          <p className="mt-3 text-xs text-stone-600">
             Document orientativ demonstrativ generat pentru verificare. Pe fluturașul emis oficial de angajator pot apărea componente specifice contractului tău.
           </p>
         </div>

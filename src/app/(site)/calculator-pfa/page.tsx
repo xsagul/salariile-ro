@@ -234,7 +234,7 @@ export default function CalculatorPfaPage() {
 
               <aside className="mt-8 md:col-span-2 md:mt-0">
                 <div className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
-                  <h3 className="mb-3 text-xs font-medium text-stone-500">Plafoane PFA · 2026</h3>
+                  <h3 className="mb-3 text-xs font-medium text-stone-600">Plafoane PFA · 2026</h3>
                   <dl className="text-sm">
                     {PLAFOANE.map(([k, v]) => (
                       <div key={k} className="flex items-center justify-between border-b border-stone-100 py-2 last:border-b-0">
@@ -243,7 +243,7 @@ export default function CalculatorPfaPage() {
                       </div>
                     ))}
                   </dl>
-                  <p className="mt-3 text-xs text-stone-500">Plafoane anuale pentru anul fiscal 2026.</p>
+                  <p className="mt-3 text-xs text-stone-600">Plafoane anuale pentru anul fiscal 2026.</p>
                 </div>
               </aside>
             </div>
@@ -291,7 +291,7 @@ export default function CalculatorPfaPage() {
 
               <aside className="mt-8 md:col-span-2 md:mt-0">
                 <div className="flex h-full flex-col rounded-md border border-stone-300 bg-surface p-4 shadow-soft sm:p-6">
-                  <h3 className="mb-3 text-xs font-medium text-stone-500">Pragul care te costă</h3>
+                  <h3 className="mb-3 text-xs font-medium text-stone-600">Pragul care te costă</h3>
                   <p className="text-sm leading-normal text-stone-700">
                     Sub {lei(PLAFON_CAS_12_2026)} lei venit net nu datorezi CAS. La fix acest prag, CAS devine
                     obligatoriu pe o bază fixă de 12 salarii minime.
@@ -301,7 +301,7 @@ export default function CalculatorPfaPage() {
                     {lei(PIERDERE_PRAG)} lei</strong>. Același salt apare și la {lei(PLAFON_CAS_24_2026)} lei, unde baza
                     CAS urcă la 24 de salarii minime.
                   </p>
-                  <p className="mt-3 text-xs text-stone-500">
+                  <p className="mt-3 text-xs text-stone-600">
                     Dacă ești aproape de prag la final de an, momentul încasării unei facturi poate conta mai mult decât
                     valoarea ei.
                   </p>
@@ -355,7 +355,7 @@ export default function CalculatorPfaPage() {
 
               <aside className="mt-8 md:col-span-2 md:mt-0">
                 <div className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
-                  <h3 className="mb-3 text-xs font-medium text-stone-500">Cheltuieli deductibile uzuale</h3>
+                  <h3 className="mb-3 text-xs font-medium text-stone-600">Cheltuieli deductibile uzuale</h3>
                   <ul className="list-disc pl-4 text-sm leading-normal text-stone-600 [&_li]:mb-1.5">
                     <li>chirie și utilități pentru spațiul activității</li>
                     <li>echipamente, software, abonamente profesionale</li>
@@ -364,7 +364,7 @@ export default function CalculatorPfaPage() {
                     <li>cursuri și materiale de specialitate</li>
                     <li>comisioane bancare ale contului de activitate</li>
                   </ul>
-                  <p className="mt-3 text-xs text-stone-500">
+                  <p className="mt-3 text-xs text-stone-600">
                     Deductibilitatea depinde de legătura cu activitatea și de documentele justificative. Unele categorii
                     au plafoane proprii în Codul fiscal.
                   </p>
@@ -464,7 +464,7 @@ export default function CalculatorPfaPage() {
 
               <aside className="mt-8 md:col-span-2 md:mt-0">
                 <div className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
-                  <h3 className="mb-3 text-xs font-medium text-stone-500">Calendarul unui PFA</h3>
+                  <h3 className="mb-3 text-xs font-medium text-stone-600">Calendarul unui PFA</h3>
                   <dl className="text-sm">
                     <div className="border-b border-stone-100 py-2">
                       <dt className="font-medium text-stone-900">Declarația unică (D212)</dt>
@@ -486,7 +486,7 @@ export default function CalculatorPfaPage() {
                       </dd>
                     </div>
                   </dl>
-                  <p className="mt-3 text-xs text-stone-500">
+                  <p className="mt-3 text-xs text-stone-600">
                     Termenele exacte se verifică anual pe anaf.ro, pentru că se pot modifica prin ordin.
                   </p>
                 </div>
@@ -513,19 +513,19 @@ export default function CalculatorPfaPage() {
 
               <aside className="mt-8 md:col-span-2 md:mt-0">
                 <div className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
-                  <h3 className="mb-3 text-xs font-medium text-stone-500">Surse oficiale</h3>
+                  <h3 className="mb-3 text-xs font-medium text-stone-600">Surse oficiale</h3>
                   <ul className="flex flex-col gap-2 text-sm leading-normal text-stone-600 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-600">
                     <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/257144" target="_blank" rel="noopener">Codul Fiscal (Legea 227/2015)</a> – contribuții și impozit pentru activități independente</li>
                     <li><a href="https://static.anaf.ro/static/10/Cluj/cj_DU_activ_indep_22apr2026.pdf" target="_blank" rel="noopener">ANAF – ghid Declarația Unică 2026</a> – plafoane, excepții CAS/CASS și cazuri practice</li>
                   </ul>
-                  <h3 className="mb-3 mt-6 text-xs font-medium text-stone-500">Pagini conexe</h3>
+                  <h3 className="mb-3 mt-6 text-xs font-medium text-stone-600">Pagini conexe</h3>
                   <ul className="flex flex-col gap-2 text-sm [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-600">
                     <li><Link href="/noutati/pfa-sau-srl-2026">Ghid comparativ: PFA sau SRL în 2026</Link></li>
                     <li><Link href="/">Calculator salariu net</Link></li>
                     <li><Link href="/salariu-minim">Salariul minim 2026</Link></li>
                     <li><Link href="/salariu-mediu">Salariul mediu pe economie</Link></li>
                   </ul>
-                  <p className="mt-auto pt-6 text-xs text-stone-500">
+                  <p className="mt-auto pt-6 text-xs text-stone-600">
                     Calculatorul acoperă sistemul real, norma de venit și cazurile uzuale. Pentru situații speciale,
                     confirmă cu un contabil.
                   </p>

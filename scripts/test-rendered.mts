@@ -214,15 +214,16 @@ async function auditRenderedSite() {
           if (linkuriCluster.length < 3) {
             failures.push(`${location}: link graph insuficient (${linkuriCluster.length} linkuri in cluster)`);
           }
-          if (!html.includes("TEMPO-Online")) {
-            failures.push(`${location}: nu citeaza sursa INS TEMPO-Online`);
+          const sursaCeruta = pathname === '/salarii/clasament' ? 'Salario' : 'TEMPO-Online';
+          if (!html.includes(sursaCeruta)) {
+            failures.push(`${location}: nu citeaza sursa ${sursaCeruta}`);
           }
           // Regula cere ca o cifra sa aiba clasificarea declarata. Majoritatea
           // paginilor se sprijina pe CAEN, dar cele construite dinspre OCUPATIE
           // — diferenta pe sexe si locurile vacante — se sprijina pe grupele
           // majore ISCO-08. Le cerem ISCO, nu le exceptam de la regula.
           const PAGINI_ISCO = ["/salarii/femei-barbati", "/salarii/locuri-vacante"];
-          const clasificareCeruta = PAGINI_ISCO.includes(pathname) ? /ISCO/ : /CAEN\s/;
+          const clasificareCeruta = pathname === '/salarii/clasament' ? /Rolul din sursă/ : PAGINI_ISCO.includes(pathname) ? /ISCO/ : /CAEN\s/;
           if (!clasificareCeruta.test(html)) {
             failures.push(`${location}: nu declara clasificarea din spatele cifrei`);
           }
@@ -274,9 +275,9 @@ async function auditRenderedSite() {
     // prim-plan. Vechile verificari cereau cardul „Net orientativ · grupa ISCO"
     // si paragraful „Cum citesti sumele" — amandoua scoase deliberat, fiindca
     // patru repere cu greutate egala nu raspundeau la intrebarea cititorului.
-    ["/salarii/programator", "Medie piață IT / programator", "netul principal, afisat primul"],
-    ["/salarii/programator", "lei net/lună", "unitatea de masura"],
-    ["/salarii/programator", "etalonul oficial al întregii industrii software", "limita cifrei, declarata in pagina"],
+    ["/salarii/programator", "Medie netă declarată în Salario", "netul principal, afisat primul"],
+    ["/salarii/programator", "lei net", "unitatea de masura"],
+    ["/salarii/programator", "raportări voluntare", "limita cifrei, declarata in pagina"],
     ["/salarii/programator", `Brut lunar pe județe · media ${AN_JUDETE}`, "perioada tabelului judetean"],
     ["/salarii/programator", "Nu este salariu net", "separarea tabelului judetean de net"],
     ["/salarii/programator", "salariul minim din 2026", "separarea tabelului judetean de minimul curent"],

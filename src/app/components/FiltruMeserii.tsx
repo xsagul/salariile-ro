@@ -77,7 +77,7 @@ export default function FiltruMeserii({ total }: { total: number }) {
           }}
           placeholder="electrician, asistent medical, programator…"
           autoComplete="off"
-          className="min-h-11 w-full rounded-md border border-stone-300 bg-surface px-4 py-2.5 pr-12 text-base text-stone-900 shadow-soft outline-none placeholder:text-stone-400 focus-visible:border-stone-900 focus-visible:ring-2 focus-visible:ring-stone-900/20"
+          className="min-h-11 w-full rounded-md border border-stone-300 bg-surface px-4 py-2.5 pr-12 text-base text-stone-900 shadow-soft outline-none placeholder:text-stone-600 focus-visible:border-stone-900 focus-visible:ring-2 focus-visible:ring-stone-900/20"
           aria-describedby="cauta-meserie-stare"
         />
         {termen && (
@@ -87,7 +87,7 @@ export default function FiltruMeserii({ total }: { total: number }) {
               schimba("");
               inputRef.current?.focus();
             }}
-            className="absolute right-2 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded text-stone-500 transition-colors hover:bg-stone-100 hover:text-stone-900"
+            className="absolute right-2 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded text-stone-600 transition-colors hover:bg-stone-100 hover:text-stone-900"
             aria-label="Șterge căutarea"
           >
             ✕

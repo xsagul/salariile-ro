@@ -5,6 +5,7 @@ import { SARBATORI_LEGALE_2026, zileLucratoareLuna } from "@/lib/sarbatori";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow } from "@/app/components/ui";
 import TabelArticol from "@/app/components/TabelArticol";
+import CalculatorIntervalZile from '@/app/components/CalculatorIntervalZile';
 
 const PATH = "/zile-lucratoare-2026";
 const YEAR = 2026;
@@ -194,7 +195,7 @@ export default function ZileLucratoare2026Page() {
       <Hero>
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Zile lucrătoare 2026" }]} />
         <H1>Zile lucrătoare 2026</H1>
-        <p className="mt-3 text-sm text-stone-500 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2">
+        <p className="mt-3 text-sm text-stone-600 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2">
           Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat 21 august 2026
         </p>
         <Lead>
@@ -205,8 +206,10 @@ export default function ZileLucratoare2026Page() {
 
       <div>
         <Section wide>
+          <CalculatorIntervalZile />
+          <Link href="/zile-lucratoare-2027" className="mt-4 inline-flex min-h-11 items-center underline">Zile lucrătoare 2027 și export CSV</Link>
           <div className="rounded-md border border-stone-300 bg-surface p-5 shadow-soft sm:p-6">
-            <p className="text-xs font-medium uppercase tracking-wide text-stone-500">Răspuns rapid pentru luna curentă</p>
+            <p className="text-xs font-medium uppercase tracking-wide text-stone-600">Răspuns rapid pentru luna curentă</p>
             <h2 id="luna-curenta" className="mt-2">
               {lunaCurenta ? `Zile lucrătoare ${lunaCurenta.name.toLowerCase()} ${YEAR}` : `Zile lucrătoare în ${YEAR}`}
             </h2>
@@ -234,15 +237,15 @@ export default function ZileLucratoare2026Page() {
           <div className="grid gap-4 sm:grid-cols-3">
             <div className="rounded-md border border-stone-200 bg-surface p-5 shadow-soft">
               <div className="text-3xl font-bold tabular-nums text-stone-900">{TOTAL_LUCRATOARE}</div>
-              <p className="mt-1 text-xs uppercase tracking-wide text-stone-500">Zile lucrătoare</p>
+              <p className="mt-1 text-xs uppercase tracking-wide text-stone-600">Zile lucrătoare</p>
             </div>
             <div className="rounded-md border border-stone-200 bg-surface p-5 shadow-soft">
               <div className="text-3xl font-bold tabular-nums text-stone-900">{TOTAL_ORE.toLocaleString("ro-RO")}</div>
-              <p className="mt-1 text-xs uppercase tracking-wide text-stone-500">Ore de lucru</p>
+              <p className="mt-1 text-xs uppercase tracking-wide text-stone-600">Ore de lucru</p>
             </div>
             <div className="rounded-md border border-stone-200 bg-surface p-5 shadow-soft">
               <div className="text-3xl font-bold tabular-nums text-stone-900">{TOTAL_LIBERE}</div>
-              <p className="mt-1 text-xs uppercase tracking-wide text-stone-500">Zile libere total</p>
+              <p className="mt-1 text-xs uppercase tracking-wide text-stone-600">Zile libere total</p>
             </div>
           </div>
         </Section>
@@ -273,7 +276,7 @@ export default function ZileLucratoare2026Page() {
               className="inline-flex items-center gap-1.5 rounded-md border border-stone-300 bg-surface px-3 py-1 text-xs font-medium text-stone-700 shadow-soft hover:border-stone-400 hover:bg-stone-50 hover:text-stone-900"
               title="Descarcă tabelul complet în format CSV pentru Excel sau pontaj"
             >
-              <svg className="h-3.5 w-3.5 text-stone-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="h-3.5 w-3.5 text-stone-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
               </svg>
               Descarcă tabelul (CSV)

@@ -200,7 +200,7 @@ function TabelPasCuPas() {
     <div className="my-6 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
       <table className="w-full text-sm tabular-nums [&_td]:py-2.5 [&_thead_th]:pb-2 [&_tbody_th]:py-2.5 [&_tbody_th]:text-left [&_td:first-child]:pr-2 [&_th:first-child]:pr-2 [&_td:not(:first-child)]:whitespace-nowrap [&_td:not(:first-child)]:pl-3 [&_th:not(:first-child)]:pl-3 [&_td:not(:first-child)]:text-right [&_th:not(:first-child)]:text-right">
         <thead>
-          <tr className="border-b border-stone-300 text-xs font-medium uppercase tracking-wide text-stone-500">
+          <tr className="border-b border-stone-300 text-xs font-medium uppercase tracking-wide text-stone-600">
             <th scope="col" className="text-left">Pas</th>
             <th scope="col">ian–iun</th>
             <th scope="col">iul–dec</th>
@@ -212,13 +212,13 @@ function TabelPasCuPas() {
             <th scope="row" className="font-normal text-stone-600">Salariu brut</th>
             <td className="font-medium text-stone-900">4.050</td>
             <td className="font-medium text-stone-900">4.325</td>
-            <td className="hidden text-stone-500 sm:table-cell">+275</td>
+            <td className="hidden text-stone-600 sm:table-cell">+275</td>
           </tr>
           <tr className="border-b border-stone-100">
             <th scope="row" className="font-normal text-stone-600">− Scutit de taxe</th>
             <td className="text-stone-700">300</td>
             <td className="text-stone-700">200</td>
-            <td className="hidden text-stone-500 sm:table-cell">−100</td>
+            <td className="hidden text-stone-600 sm:table-cell">−100</td>
           </tr>
           <tr className="border-b border-stone-100 bg-stone-50">
             <th scope="row" className="font-medium text-stone-900">= Bază pentru taxe</th>
@@ -230,19 +230,19 @@ function TabelPasCuPas() {
             <th scope="row" className="font-normal text-stone-600">− CAS 25% <span className="text-stone-600">(pensie)</span></th>
             <td className="text-stone-700">938</td>
             <td className="text-stone-700">1.031</td>
-            <td className="hidden text-stone-500 sm:table-cell">+93</td>
+            <td className="hidden text-stone-600 sm:table-cell">+93</td>
           </tr>
           <tr className="border-b border-stone-100">
             <th scope="row" className="font-normal text-stone-600">− CASS 10% <span className="text-stone-600">(sănătate)</span></th>
             <td className="text-stone-700">375</td>
             <td className="text-stone-700">413</td>
-            <td className="hidden text-stone-500 sm:table-cell">+38</td>
+            <td className="hidden text-stone-600 sm:table-cell">+38</td>
           </tr>
           <tr className="border-b border-stone-100">
             <th scope="row" className="font-normal text-stone-600">− Impozit 10%</th>
             <td className="text-stone-700">163</td>
             <td className="text-stone-700">182</td>
-            <td className="hidden text-stone-500 sm:table-cell">+19</td>
+            <td className="hidden text-stone-600 sm:table-cell">+19</td>
           </tr>
           <tr className="[&_td]:pt-3 [&_td]:font-bold [&_td]:text-stone-900 [&_th]:pt-3 [&_th]:font-bold [&_th]:text-stone-900">
             <th scope="row">= Net în mână</th>
@@ -261,7 +261,7 @@ function TabelPartTime() {
     <div className="my-6 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
       <table className="w-full text-sm tabular-nums [&_td]:py-2.5 [&_tbody_th]:py-2.5 [&_tbody_th]:pr-2 [&_tbody_th]:text-left [&_td:not(:first-child)]:pl-3 [&_th:not(:first-child)]:pl-3 [&_td:not(:first-child)]:text-right [&_th:not(:first-child)]:text-right">
         <thead>
-          <tr className="border-b border-stone-300 text-xs font-medium uppercase tracking-wide text-stone-500">
+          <tr className="border-b border-stone-300 text-xs font-medium uppercase tracking-wide text-stone-600">
             <th scope="col" className="pb-2 text-left">Normă</th>
             <th scope="col" className="pb-2">Brut</th>
             <th scope="col" className="pb-2">Net în mână</th>
@@ -277,7 +277,7 @@ function TabelPartTime() {
           ))}
         </tbody>
       </table>
-      <p className="mt-3 text-xs text-stone-500">
+      <p className="mt-3 text-xs text-stone-600">
         Perioada iulie–decembrie 2026, funcție de bază, fără persoane în întreținere. Facilitatea de 200 lei cere normă
         întreagă, iar deducerea personală rămâne întreagă la orice normă, de aceea netul nu scade exact proporțional cu orele.
       </p>
@@ -290,7 +290,7 @@ function TabelIstoric() {
     <div className="my-6 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
       <table className="w-full text-sm tabular-nums [&_td]:py-2 [&_tbody_th]:py-2 [&_tbody_th]:pr-2 [&_tbody_th]:text-left [&_td:not(:first-child)]:pl-3 [&_th:not(:first-child)]:pl-3 [&_td:not(:first-child)]:text-right [&_th:not(:first-child)]:text-right">
         <thead>
-          <tr className="border-b border-stone-300 text-xs font-medium uppercase tracking-wide text-stone-500">
+          <tr className="border-b border-stone-300 text-xs font-medium uppercase tracking-wide text-stone-600">
             <th scope="col" className="pb-2 text-left">Perioadă</th>
             <th scope="col" className="pb-2">Brut</th>
             <th scope="col" className="pb-2">Net</th>
@@ -303,7 +303,7 @@ function TabelIstoric() {
               <th scope="row" className="font-normal text-stone-600">{r.perioada}</th>
               <td className="text-stone-900">{fmt(r.brut)}</td>
               <td className="text-stone-700">{fmt(r.net)}</td>
-              <td className="hidden text-stone-500 sm:table-cell">{r.crestere}</td>
+              <td className="hidden text-stone-600 sm:table-cell">{r.crestere}</td>
             </tr>
           ))}
         </tbody>
@@ -379,7 +379,7 @@ function GraficIstoric() {
           })}
         </div>
       </div>
-      <p className="mt-4 text-xs text-stone-500">Brut = salariul minim legal al fiecărui an; net = suma rămasă în mână, după CAS, CASS și impozit. Treci cu mouse-ul (sau atinge) un an pentru cifre.</p>
+      <p className="mt-4 text-xs text-stone-600">Brut = salariul minim legal al fiecărui an; net = suma rămasă în mână, după CAS, CASS și impozit. Treci cu mouse-ul (sau atinge) un an pentru cifre.</p>
     </figure>
   );
 }
@@ -425,7 +425,7 @@ function CardPastrezi() {
         stat. Rata a scăzut puțin față de prima parte a anului (<strong>63,6%</strong>), pentru că partea scutită
         de taxe s-a redus de la 300 la 200 de lei.
       </p>
-      <p className="mt-auto pt-4 text-xs text-stone-500">CAS și CASS se aplică pe „bază&quot; (brut minus partea scutită), nu pe brutul întreg, de aceea îți rămâne peste 60%.</p>
+      <p className="mt-auto pt-4 text-xs text-stone-600">CAS și CASS se aplică pe „bază&quot; (brut minus partea scutită), nu pe brutul întreg, de aceea îți rămâne peste 60%.</p>
     </div>
   );
 }
@@ -446,10 +446,10 @@ function CardCatiOameni() {
 function CardCifre() {
   return (
     <div className={card}>
-      <h3 className="mb-3 text-xs font-medium text-stone-500">Cifre · 2026 (lei / lună)</h3>
+      <h3 className="mb-3 text-xs font-medium text-stone-600">Cifre · 2026 (lei / lună)</h3>
       <table className="w-full text-sm tabular-nums">
         <thead>
-          <tr className="border-b border-stone-200 text-stone-500">
+          <tr className="border-b border-stone-200 text-stone-600">
             <th scope="col" className="pb-2 text-left text-xs font-medium"></th>
             <th scope="col" className="pb-2 text-right text-xs font-medium uppercase tracking-wide">ian–iun</th>
             <th scope="col" className="pb-2 text-right text-xs font-medium uppercase tracking-wide">iul–dec</th>
@@ -478,7 +478,7 @@ function CardCifre() {
           </tr>
         </tbody>
       </table>
-      <p className="mt-auto pt-4 text-xs text-stone-500">Net standard, funcție de bază, cu facilitatea fiscală inclusă.</p>
+      <p className="mt-auto pt-4 text-xs text-stone-600">Net standard, funcție de bază, cu facilitatea fiscală inclusă.</p>
     </div>
   );
 }
@@ -551,7 +551,7 @@ function CardUrmatoareaCrestere() {
 function CardSurse() {
   return (
     <div className={card}>
-      <h3 className="mb-3 text-xs font-medium text-stone-500">Surse oficiale</h3>
+      <h3 className="mb-3 text-xs font-medium text-stone-600">Surse oficiale</h3>
       <ul className={`flex flex-col gap-2 text-sm leading-normal text-stone-600 ${links}`}>
         <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/308231" target="_blank" rel="noopener">HG 146/2026</a>: salariul minim, 1 iulie 2026</li>
         <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/291450" target="_blank" rel="noopener">HG 1506/2024</a>: salariul minim, 1 ian. 2025</li>
@@ -561,7 +561,7 @@ function CardSurse() {
         <li><a href="https://www.inspectiamuncii.ro/documents/66402/268210/Comunicat%2B1%2Biulie.pdf/c0655b8a-b9d1-4ec7-b641-b470c7bab969" target="_blank" rel="noopener">Inspecția Muncii</a>: acte individuale și raportarea modificării în REGES</li>
         <li><a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/128646" target="_blank" rel="noopener">Codul Muncii</a> · <a href="https://legislatie.just.ro/Public/DetaliiDocument/257144" target="_blank" rel="noopener">Codul Fiscal</a></li>
       </ul>
-      <h3 className="mb-3 mt-6 text-xs font-medium text-stone-500">Pagini conexe</h3>
+      <h3 className="mb-3 mt-6 text-xs font-medium text-stone-600">Pagini conexe</h3>
       <ul className={`flex flex-col gap-2 text-sm ${links}`}>
         <li><Link href="/noutati/salariul-minim-1-iulie-2026">Ce se schimbă de la 1 iulie 2026</Link></li>
         <li><Link href="/noutati/salariu-peste-minim-1-iulie-2026">Ce se întâmplă cu salariile puțin peste minim</Link></li>
@@ -573,7 +573,7 @@ function CardSurse() {
         <li><Link href="/calculator-pfa">Plafoanele PFA derivate din minim</Link></li>
         <li><Link href="/zile-libere-2026">Zile libere 2026</Link></li>
       </ul>
-      <p className="mt-auto pt-6 text-xs text-stone-500">Ultima actualizare: 4 august 2026.</p>
+      <p className="mt-auto pt-6 text-xs text-stone-600">Ultima actualizare: 4 august 2026.</p>
     </div>
   );
 }

@@ -264,7 +264,7 @@ export default async function JudetPage({ params }: Props) {
                             {denumireScurtaCaenRev2(activitate.cheie, activitate.denumire)}
                           </span>
                         </th>
-                        <td className="border-b border-stone-100 px-3 py-2 text-left text-xs text-stone-500">
+                        <td className="border-b border-stone-100 px-3 py-2 text-left text-xs text-stone-600">
                           {meserii.length > 0 ? (
                             <>
                               {meserii.slice(0, 3).map((m, idx) => (

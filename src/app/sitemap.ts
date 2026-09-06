@@ -19,6 +19,8 @@ const STATIC_ENTRIES: {
   priority: number;
   changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"];
 }[] = [
+  { path: "/zile-libere-2027", priority: 0.8, changeFrequency: "yearly" },
+  { path: "/zile-lucratoare-2027", priority: 0.8, changeFrequency: "yearly" },
   { path: "/", priority: 1, changeFrequency: "monthly" },
   { path: "/salariu-minim", priority: 0.9, changeFrequency: "monthly" },
   { path: "/salariu-minim-constructii-2026", priority: 0.85, changeFrequency: "monthly" },

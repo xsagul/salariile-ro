@@ -57,7 +57,7 @@ export function SelectorPastile<T extends string | number>({
 
   return (
     <fieldset className="mb-3">
-      <legend className="mb-1 text-xs font-medium text-stone-500">{eticheta}</legend>
+      <legend className="mb-1 text-xs font-medium text-stone-600">{eticheta}</legend>
       {ajutor && <p className="mb-2 text-xs leading-normal text-stone-600">{ajutor}</p>}
 
       <div className={coloane === 1 ? "flex flex-col gap-1" : "flex flex-wrap gap-1"}>
@@ -80,7 +80,7 @@ export function SelectorPastile<T extends string | number>({
                   ? "bg-stone-900 font-medium text-white"
                   : posibil
                     ? "border border-stone-300 bg-surface text-stone-900 hover:bg-canvas"
-                    : "cursor-not-allowed border border-stone-200 bg-canvas text-stone-400 line-through decoration-stone-300",
+                    : "cursor-not-allowed border border-stone-200 bg-canvas text-stone-600 line-through decoration-stone-300",
               ].join(" ")}
               title={!posibil ? "Nu există în grilă pentru selecția curentă" : undefined}
             >

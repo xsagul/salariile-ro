@@ -187,6 +187,11 @@ function bingDate(value) {
       return;
     }
 
+    if (cmd === "issues") {
+      const data = await call('GetCrawlIssues', {siteUrl:SITE});
+      console.log(JSON.stringify(data,null,2));
+      return;
+    }
     if (cmd === "crawl") {
       const d = await call("GetCrawlStats", { siteUrl: SITE });
       if (opt.json) return console.log(JSON.stringify(d, null, 2));

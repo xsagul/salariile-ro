@@ -165,7 +165,7 @@ const links =
 
 function dayClass(c: NonNullable<Cell>) {
   if (c.holiday) return "bg-stone-900 font-semibold text-white";
-  if (c.weekend) return "text-stone-400";
+  if (c.weekend) return "text-stone-600";
   return "text-stone-700";
 }
 
@@ -181,7 +181,8 @@ export default function ZileLibere2026Page() {
 
           {/* HERO */}
           <div className="max-w-prose">
-            <p className="text-xs font-medium uppercase tracking-wide text-stone-500">Calendar 2026</p>
+            <p className="text-xs font-medium uppercase tracking-wide text-stone-600">Calendar 2026</p>
+            <nav className="mb-4 flex flex-wrap gap-4 text-sm"><Link href="/zile-libere-2027" className="min-h-11 py-3 underline">Calendar zile libere 2027</Link><a download href="/api/calendar/2026?format=ics" className="min-h-11 py-3 underline">Importă sărbătorile 2026 (ICS)</a></nav>
             <h1 className="mt-2 text-3xl font-bold tracking-[-0.02em] text-stone-900 sm:text-4xl">Zile libere 2026</h1>
             <p className="mt-3 text-xs text-stone-600 [&_a]:font-medium [&_a]:text-stone-700 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-900">
               Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat 6 iulie 2026
@@ -211,7 +212,7 @@ export default function ZileLibere2026Page() {
             ] as const).map(([n, label]) => (
               <div key={label} className={card}>
                 <div className="text-3xl font-bold tabular-nums tracking-[-0.02em] text-stone-900">{n}</div>
-                <div className="mt-1 text-xs uppercase tracking-wide text-stone-500">{label}</div>
+                <div className="mt-1 text-xs uppercase tracking-wide text-stone-600">{label}</div>
               </div>
             ))}
           </div>
@@ -222,7 +223,7 @@ export default function ZileLibere2026Page() {
             {/* Legendă */}
             <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-xs text-stone-600">
               <span className="flex items-center gap-2"><span className="inline-block h-3 w-3 rounded-sm bg-stone-100 ring-1 ring-inset ring-stone-300" aria-hidden="true" />Zi lucrătoare</span>
-              <span className="flex items-center gap-2"><span className="inline-block h-3 w-3 rounded-sm bg-stone-100 ring-1 ring-inset ring-stone-300" aria-hidden="true" /><span className="text-stone-400">Weekend</span></span>
+              <span className="flex items-center gap-2"><span className="inline-block h-3 w-3 rounded-sm bg-stone-100 ring-1 ring-inset ring-stone-300" aria-hidden="true" /><span className="text-stone-600">Weekend</span></span>
               <span className="flex items-center gap-2"><span className="inline-block h-3 w-3 rounded-sm bg-stone-900" aria-hidden="true" />Sărbătoare legală</span>
             </div>
 
@@ -231,11 +232,11 @@ export default function ZileLibere2026Page() {
                 <div key={mo.nume} className={card}>
                   <div className="flex items-baseline justify-between">
                     <h3 className="text-base font-semibold tracking-[-0.01em] text-stone-900">{mo.nume}</h3>
-                    <span className="text-xs text-stone-500">{mo.lucr} lucr. · {mo.libere} libere</span>
+                    <span className="text-xs text-stone-600">{mo.lucr} lucr. · {mo.libere} libere</span>
                   </div>
                   <div className="mt-3 grid grid-cols-7 gap-1 text-center">
                     {ZILE_SCURT.map((z) => (
-                      <div key={z} className="text-[10px] font-medium uppercase text-stone-400">{z}</div>
+                      <div key={z} className="text-[10px] font-medium uppercase text-stone-600">{z}</div>
                     ))}
                     {mo.cells.map((c, i) => {
                       if (c === null) return <div key={i} />;
@@ -271,7 +272,7 @@ export default function ZileLibere2026Page() {
           {/* ZILE LUCRĂTOARE — trimitere spre pagina dedicată */}
           <div className="mt-12 border-t border-stone-200 pt-10 sm:mt-16 sm:pt-14">
             <div className={`${card} max-w-3xl`}>
-              <p className="text-xs font-medium uppercase tracking-wide text-stone-500">Tabel separat</p>
+              <p className="text-xs font-medium uppercase tracking-wide text-stone-600">Tabel separat</p>
               <h2 className="mt-2 text-2xl font-bold tracking-[-0.02em] text-stone-900">Ai nevoie de zilele și orele lucrătoare pe lună?</h2>
               <p className="mt-3 max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600">
                 Pagina dedicată centralizează pentru fiecare lună numărul de zile lucrătoare și orele la norme de 8, 6 și 4 ore,
@@ -300,9 +301,9 @@ export default function ZileLibere2026Page() {
                   <li key={`${h.m}-${h.d}-${h.nume}`} className="flex items-baseline justify-between gap-4 border-b border-stone-100 py-2.5">
                     <span className="text-sm text-stone-800">
                       {h.nume}
-                      {h.weekend && <span className="ml-2 text-xs text-stone-400">(weekend)</span>}
+                      {h.weekend && <span className="ml-2 text-xs text-stone-600">(weekend)</span>}
                     </span>
-                    <span className="flex-shrink-0 text-sm tabular-nums text-stone-500">{h.d} {LUNI_NUME[h.m - 1].toLowerCase()} · {h.zi}</span>
+                    <span className="flex-shrink-0 text-sm tabular-nums text-stone-600">{h.d} {LUNI_NUME[h.m - 1].toLowerCase()} · {h.zi}</span>
                   </li>
                 ))}
               </ul>
@@ -321,7 +322,7 @@ export default function ZileLibere2026Page() {
                 <div key={p.titlu} className={card}>
                   <div className="flex items-baseline justify-between">
                     <h3 className="text-base font-semibold tracking-[-0.01em] text-stone-900">{p.titlu}</h3>
-                    <span className="text-xs font-medium text-stone-500">{p.zile}</span>
+                    <span className="text-xs font-medium text-stone-600">{p.zile}</span>
                   </div>
                   <p className="mt-2 text-sm leading-normal text-stone-600">{p.detalii}</p>
                 </div>
@@ -348,12 +349,12 @@ export default function ZileLibere2026Page() {
             </div>
             <aside className="mt-8 md:col-span-2 md:mt-0">
               <div className={`flex h-full flex-col ${card}`}>
-                <h3 className="mb-3 text-xs font-medium text-stone-500">Surse oficiale</h3>
+                <h3 className="mb-3 text-xs font-medium text-stone-600">Surse oficiale</h3>
                 <ul className={`flex flex-col gap-2 text-sm leading-normal text-stone-600 ${links}`}>
                   <li><a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/128646" target="_blank" rel="noopener">Codul Muncii (Legea 53/2003)</a>: art. 139 (sărbători) și 142 (compensare)</li>
                   <li>Calendar ortodox 2026: datele de Paște și Rusalii</li>
                 </ul>
-                <h3 className="mb-3 mt-6 text-xs font-medium text-stone-500">Pagini conexe</h3>
+                <h3 className="mb-3 mt-6 text-xs font-medium text-stone-600">Pagini conexe</h3>
                 <ul className={`flex flex-col gap-2 text-sm ${links}`}>
                   <li><Link href="/zile-lucratoare-2026">Zile și ore lucrătoare 2026</Link></li>
                   <li><Link href="/noutati/zile-libere-ramase-2026-minivacante">Zile libere rămase și minivacanțe în 2026</Link></li>
@@ -361,7 +362,7 @@ export default function ZileLibere2026Page() {
                   <li><Link href="/salariu-mediu">Salariul mediu pe economie</Link></li>
                   <li><Link href="/">Calculator salariu net</Link></li>
                 </ul>
-                <p className="mt-auto pt-6 text-xs text-stone-500">Ultima actualizare: 2 iulie 2026.</p>
+                <p className="mt-auto pt-6 text-xs text-stone-600">Ultima actualizare: 2 iulie 2026.</p>
               </div>
             </aside>
           </div>

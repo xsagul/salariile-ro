@@ -81,11 +81,11 @@ export default function NoutatiPage() {
                         {a.hero ? (
                           <Image src={a.hero} alt={a.heroAlt || a.title} fill className="object-cover transition-transform duration-300 group-hover:scale-[1.02]" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
                         ) : (
-                          <span className="absolute inset-0 flex items-center justify-center text-xs font-medium uppercase tracking-wide text-stone-400">Imagine articol</span>
+                          <span className="absolute inset-0 flex items-center justify-center text-xs font-medium uppercase tracking-wide text-stone-600">Imagine articol</span>
                         )}
                       </div>
                       <div className="flex flex-1 flex-col p-5">
-                        <div className="mb-2 flex flex-wrap items-center gap-2 text-xs text-stone-500">
+                        <div className="mb-2 flex flex-wrap items-center gap-2 text-xs text-stone-600">
                           {a.tip === "opinie" && (
                             <span className="rounded border border-stone-300 px-1.5 py-0.5 font-medium uppercase tracking-wide text-stone-700">Opinie</span>
                           )}

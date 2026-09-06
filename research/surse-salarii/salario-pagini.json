@@ -1,0 +1,506 @@
+{
+  "checkedAt": "2026-09-07",
+  "method": "Pagini individuale ale furnizorului, fără reproducerea anunțurilor. Perioada raportărilor nu este publicată.",
+  "records": [
+    {
+      "slug": "analist-date",
+      "url": "https://www.ejobs.ro/salario/salarii-analist-date",
+      "status": 200,
+      "role": "Analist date",
+      "net": 5500,
+      "providerN": 312,
+      "excerpt": "Intră pe eJobsSalariu Analist dateMai jos poți vedea salariul mediu net pentru categoria aleasă.5500 Lei (net) Calculat pe baza salariilor introduse de 312 specialiști. ",
+      "decision": "eligible-after-role-review"
+    },
+    {
+      "slug": "antrenor-sportiv",
+      "url": "https://www.ejobs.ro/salario/salarii-antrenor-sportiv",
+      "status": 200,
+      "role": "Antrenor sportiv",
+      "net": 5000,
+      "providerN": 10,
+      "excerpt": "Intră pe eJobsSalariu Antrenor sportivMai jos poți vedea salariul mediu net pentru categoria aleasă.5000 Lei (net) Calculat pe baza salariilor introduse de 10 specialiști. ",
+      "decision": "insufficient-evidence"
+    },
+    {
+      "slug": "bijutier",
+      "url": "https://www.ejobs.ro/salario/salarii-bijutier",
+      "status": 200,
+      "role": "bijutier",
+      "net": 6000,
+      "providerN": 5,
+      "excerpt": "Intră pe eJobsSalariu bijutierMai jos poți vedea salariul mediu net pentru categoria aleasă.6000 Lei (net) Calculat pe baza salariilor introduse de 5 specialiști. ",
+      "decision": "insufficient-evidence"
+    },
+    {
+      "slug": "cercetator",
+      "url": "https://www.ejobs.ro/salario/salarii-cercetator",
+      "status": 200,
+      "role": "Cercetator",
+      "net": 5100,
+      "providerN": 42,
+      "excerpt": "Intră pe eJobsSalariu CercetatorMai jos poți vedea salariul mediu net pentru categoria aleasă.5100 Lei (net) Calculat pe baza salariilor introduse de 42 specialiști. ",
+      "decision": "eligible-after-role-review"
+    },
+    {
+      "slug": "cizmar",
+      "url": "https://www.ejobs.ro/salario/salarii-cizmar",
+      "status": 200,
+      "role": "cizmar",
+      "net": null,
+      "providerN": null,
+      "excerpt": "Intră pe eJobsSalariu cizmarMai jos poți vedea salariul mediu net pentru categoria aleasă.Nu există suficiente date",
+      "decision": "insufficient-evidence"
+    },
+    {
+      "slug": "cofetar",
+      "url": "https://www.ejobs.ro/salario/salarii-cofetar",
+      "status": 200,
+      "role": "Cofetar",
+      "net": 4000,
+      "providerN": 47,
+      "excerpt": "Intră pe eJobsSalariu CofetarMai jos poți vedea salariul mediu net pentru categoria aleasă.4000 Lei (net) Calculat pe baza salariilor introduse de 47 specialiști. ",
+      "decision": "eligible-after-role-review"
+    },
+    {
+      "slug": "constructor",
+      "url": "https://www.ejobs.ro/salario/salarii-constructor",
+      "status": 200,
+      "role": "Constructor",
+      "net": 7000,
+      "providerN": 471,
+      "excerpt": "Intră pe eJobsSalariu ConstructorMai jos poți vedea salariul mediu net pentru categoria aleasă.7000 Lei (net) Calculat pe baza salariilor introduse de 471 specialiști. ",
+      "decision": "eligible-after-role-review"
+    },
+    {
+      "slug": "constructor-drumuri",
+      "url": "https://www.ejobs.ro/salario/salarii-constructor-drumuri",
+      "status": 200,
+      "role": "constructor-drumuri",
+      "net": null,
+      "providerN": null,
+      "excerpt": "Intră pe eJobsSalariu constructor-drumuriMai jos poți vedea salariul mediu net pentru categoria aleasă.Nu există suficiente date",
+      "decision": "insufficient-evidence"
+    },
+    {
+      "slug": "consultant-financiar",
+      "url": "https://www.ejobs.ro/salario/salarii-consultant-financiar",
+      "status": 200,
+      "role": "Consultant financiar",
+      "net": 5000,
+      "providerN": 104,
+      "excerpt": "Intră pe eJobsSalariu Consultant financiarMai jos poți vedea salariul mediu net pentru categoria aleasă.5000 Lei (net) Calculat pe baza salariilor introduse de 104 specialiști. ",
+      "decision": "eligible-after-role-review"
+    },
+    {
+      "slug": "consultant-management",
+      "url": "https://www.ejobs.ro/salario/salarii-consultant-management",
+      "status": 200,
+      "role": "Consultant management",
+      "net": 5500,
+      "providerN": 21,
+      "excerpt": "Intră pe eJobsSalariu Consultant managementMai jos poți vedea salariul mediu net pentru categoria aleasă.5500 Lei (net) Calculat pe baza salariilor introduse de 21 specialiști. ",
+      "decision": "insufficient-evidence"
+    },
+    {
+      "slug": "dulgher",
+      "url": "https://www.ejobs.ro/salario/salarii-dulgher",
+      "status": 200,
+      "role": "Dulgher",
+      "net": 6000,
+      "providerN": 3,
+      "excerpt": "Intră pe eJobsSalariu DulgherMai jos poți vedea salariul mediu net pentru categoria aleasă.6000 Lei (net) Calculat pe baza salariilor introduse de 3 specialiști. ",
+      "decision": "insufficient-evidence"
+    },
+    {
+      "slug": "electrician-centrala",
+      "url": "https://www.ejobs.ro/salario/salarii-electrician-centrala",
+      "status": 200,
+      "role": "electrician-centrala",
+      "net": null,
+      "providerN": null,
+      "excerpt": "Intră pe eJobsSalariu electrician-centralaMai jos poți vedea salariul mediu net pentru categoria aleasă.Nu există suficiente date",
+      "decision": "insufficient-evidence"
+    },
+    {
+      "slug": "faiantar",
+      "url": "https://www.ejobs.ro/salario/salarii-faiantar",
+      "status": 200,
+      "role": "faiantar",
+      "net": 5500,
+      "providerN": 3,
+      "excerpt": "Intră pe eJobsSalariu faiantarMai jos poți vedea salariul mediu net pentru categoria aleasă.5500 Lei (net) Calculat pe baza salariilor introduse de 3 specialiști. ",
+      "decision": "insufficient-evidence"
+    },
+    {
+      "slug": "farmacist-industrie",
+      "url": "https://www.ejobs.ro/salario/salarii-farmacist-industrie",
+      "status": 200,
+      "role": "farmacist-industrie",
+      "net": null,
+      "providerN": null,
+      "excerpt": "Intră pe eJobsSalariu farmacist-industrieMai jos poți vedea salariul mediu net pentru categoria aleasă.Nu există suficiente date",
+      "decision": "insufficient-evidence"
+    },
+    {
+      "slug": "fermier",
+      "url": "https://www.ejobs.ro/salario/salarii-fermier",
+      "status": 200,
+      "role": "fermier",
+      "net": null,
+      "providerN": null,
+      "excerpt": "Intră pe eJobsSalariu fermierMai jos poți vedea salariul mediu net pentru categoria aleasă.Nu există suficiente date",
+      "decision": "insufficient-evidence"
+    },
+    {
+      "slug": "inginer",
+      "url": "https://www.ejobs.ro/salario/salarii-inginer",
+      "status": 200,
+      "role": "inginer",
+      "net": 6200,
+      "providerN": 6520,
+      "excerpt": "Intră pe eJobsSalariu inginerMai jos poți vedea salariul mediu net pentru categoria aleasă.6200 Lei (net) Calculat pe baza salariilor introduse de 6520 specialiști. ",
+      "decision": "eligible-after-role-review"
+    },
+    {
+      "slug": "inginer-electronist",
+      "url": "https://www.ejobs.ro/salario/salarii-inginer-electronist",
+      "status": 200,
+      "role": "Inginer electronist",
+      "net": 5350,
+      "providerN": 64,
+      "excerpt": "Intră pe eJobsSalariu Inginer electronistMai jos poți vedea salariul mediu net pentru categoria aleasă.5350 Lei (net) Calculat pe baza salariilor introduse de 64 specialiști. ",
+      "decision": "eligible-after-role-review"
+    },
+    {
+      "slug": "inginer-petrol",
+      "url": "https://www.ejobs.ro/salario/salarii-inginer-petrol",
+      "status": 200,
+      "role": "inginer petrol",
+      "net": 7000,
+      "providerN": 18,
+      "excerpt": "Intră pe eJobsSalariu inginer petrolMai jos poți vedea salariul mediu net pentru categoria aleasă.7000 Lei (net) Calculat pe baza salariilor introduse de 18 specialiști. ",
+      "decision": "insufficient-evidence"
+    },
+    {
+      "slug": "instructor-auto",
+      "url": "https://www.ejobs.ro/salario/salarii-instructor-auto",
+      "status": 200,
+      "role": "Instructor auto",
+      "net": 4250,
+      "providerN": 8,
+      "excerpt": "Intră pe eJobsSalariu Instructor autoMai jos poți vedea salariul mediu net pentru categoria aleasă.4250 Lei (net) Calculat pe baza salariilor introduse de 8 specialiști. ",
+      "decision": "insufficient-evidence"
+    },
+    {
+      "slug": "marinar",
+      "url": "https://www.ejobs.ro/salario/salarii-marinar",
+      "status": 200,
+      "role": "Marinar",
+      "net": 11500,
+      "providerN": 4,
+      "excerpt": "Intră pe eJobsSalariu MarinarMai jos poți vedea salariul mediu net pentru categoria aleasă.11500 Lei (net) Calculat pe baza salariilor introduse de 4 specialiști. ",
+      "decision": "insufficient-evidence"
+    },
+    {
+      "slug": "mecanic-locomotiva",
+      "url": "https://www.ejobs.ro/salario/salarii-mecanic-locomotiva",
+      "status": 200,
+      "role": "Mecanic locomotiva",
+      "net": 8000,
+      "providerN": 3,
+      "excerpt": "Intră pe eJobsSalariu Mecanic locomotivaMai jos poți vedea salariul mediu net pentru categoria aleasă.8000 Lei (net) Calculat pe baza salariilor introduse de 3 specialiști. ",
+      "decision": "insufficient-evidence"
+    },
+    {
+      "slug": "metalurgist",
+      "url": "https://www.ejobs.ro/salario/salarii-metalurgist",
+      "status": 200,
+      "role": "metalurgist",
+      "net": null,
+      "providerN": null,
+      "excerpt": "Intră pe eJobsSalariu metalurgistMai jos poți vedea salariul mediu net pentru categoria aleasă.Nu există suficiente date",
+      "decision": "insufficient-evidence"
+    },
+    {
+      "slug": "miner",
+      "url": "https://www.ejobs.ro/salario/salarii-miner",
+      "status": 200,
+      "role": "Miner",
+      "net": 4000,
+      "providerN": 2,
+      "excerpt": "Intră pe eJobsSalariu MinerMai jos poți vedea salariul mediu net pentru categoria aleasă.4000 Lei (net) Calculat pe baza salariilor introduse de 2 specialiști. ",
+      "decision": "insufficient-evidence"
+    },
+    {
+      "slug": "muncitor-industria-alimentara",
+      "url": "https://www.ejobs.ro/salario/salarii-muncitor-industria-alimentara",
+      "status": 200,
+      "role": "muncitor-industria-alimentara",
+      "net": null,
+      "providerN": null,
+      "excerpt": "Intră pe eJobsSalariu muncitor-industria-alimentaraMai jos poți vedea salariul mediu net pentru categoria aleasă.Nu există suficiente date",
+      "decision": "insufficient-evidence"
+    },
+    {
+      "slug": "muzician",
+      "url": "https://www.ejobs.ro/salario/salarii-muzician",
+      "status": 200,
+      "role": "muzician",
+      "net": null,
+      "providerN": null,
+      "excerpt": "Intră pe eJobsSalariu muzicianMai jos poți vedea salariul mediu net pentru categoria aleasă.Nu există suficiente date",
+      "decision": "insufficient-evidence"
+    },
+    {
+      "slug": "notar",
+      "url": "https://www.ejobs.ro/salario/salarii-notar",
+      "status": 200,
+      "role": "Notar",
+      "net": 3800,
+      "providerN": 5,
+      "excerpt": "Intră pe eJobsSalariu NotarMai jos poți vedea salariul mediu net pentru categoria aleasă.3800 Lei (net) Calculat pe baza salariilor introduse de 5 specialiști. ",
+      "decision": "insufficient-evidence"
+    },
+    {
+      "slug": "operator-chimist",
+      "url": "https://www.ejobs.ro/salario/salarii-operator-chimist",
+      "status": 200,
+      "role": "Operator chimist",
+      "net": 4177,
+      "providerN": 87,
+      "excerpt": "Intră pe eJobsSalariu Operator chimistMai jos poți vedea salariul mediu net pentru categoria aleasă.4177 Lei (net) Calculat pe baza salariilor introduse de 87 specialiști. ",
+      "decision": "eligible-after-role-review"
+    },
+    {
+      "slug": "operator-epurare",
+      "url": "https://www.ejobs.ro/salario/salarii-operator-epurare",
+      "status": 200,
+      "role": "operator-epurare",
+      "net": null,
+      "providerN": null,
+      "excerpt": "Intră pe eJobsSalariu operator-epurareMai jos poți vedea salariul mediu net pentru categoria aleasă.Nu există suficiente date",
+      "decision": "insufficient-evidence"
+    },
+    {
+      "slug": "operator-mase-plastice",
+      "url": "https://www.ejobs.ro/salario/salarii-operator-mase-plastice",
+      "status": 200,
+      "role": "Operator mase plastice",
+      "net": 3800,
+      "providerN": 8,
+      "excerpt": "Intră pe eJobsSalariu Operator mase plasticeMai jos poți vedea salariul mediu net pentru categoria aleasă.3800 Lei (net) Calculat pe baza salariilor introduse de 8 specialiști. ",
+      "decision": "insufficient-evidence"
+    },
+    {
+      "slug": "operator-rafinarie",
+      "url": "https://www.ejobs.ro/salario/salarii-operator-rafinarie",
+      "status": 200,
+      "role": "operator-rafinarie",
+      "net": null,
+      "providerN": null,
+      "excerpt": "Intră pe eJobsSalariu operator-rafinarieMai jos poți vedea salariul mediu net pentru categoria aleasă.Nu există suficiente date",
+      "decision": "insufficient-evidence"
+    },
+    {
+      "slug": "operator-salubritate",
+      "url": "https://www.ejobs.ro/salario/salarii-operator-salubritate",
+      "status": 200,
+      "role": "operator-salubritate",
+      "net": null,
+      "providerN": null,
+      "excerpt": "Intră pe eJobsSalariu operator-salubritateMai jos poți vedea salariul mediu net pentru categoria aleasă.Nu există suficiente date",
+      "decision": "insufficient-evidence"
+    },
+    {
+      "slug": "operator-statie-apa",
+      "url": "https://www.ejobs.ro/salario/salarii-operator-statie-apa",
+      "status": 200,
+      "role": "operator-statie-apa",
+      "net": null,
+      "providerN": null,
+      "excerpt": "Intră pe eJobsSalariu operator-statie-apaMai jos poți vedea salariul mediu net pentru categoria aleasă.Nu există suficiente date",
+      "decision": "insufficient-evidence"
+    },
+    {
+      "slug": "pescar",
+      "url": "https://www.ejobs.ro/salario/salarii-pescar",
+      "status": 200,
+      "role": "pescar",
+      "net": 9000,
+      "providerN": 1,
+      "excerpt": "Intră pe eJobsSalariu pescarMai jos poți vedea salariul mediu net pentru categoria aleasă.9000 Lei (net) Calculat pe baza salariilor introduse de 1 specialiști. ",
+      "decision": "insufficient-evidence"
+    },
+    {
+      "slug": "pilot",
+      "url": "https://www.ejobs.ro/salario/salarii-pilot",
+      "status": 200,
+      "role": "Pilot",
+      "net": 6500,
+      "providerN": 5,
+      "excerpt": "Intră pe eJobsSalariu PilotMai jos poți vedea salariul mediu net pentru categoria aleasă.6500 Lei (net) Calculat pe baza salariilor introduse de 5 specialiști. ",
+      "decision": "insufficient-evidence"
+    },
+    {
+      "slug": "postas",
+      "url": "https://www.ejobs.ro/salario/salarii-postas",
+      "status": 200,
+      "role": "postas",
+      "net": null,
+      "providerN": null,
+      "excerpt": "Intră pe eJobsSalariu postasMai jos poți vedea salariul mediu net pentru categoria aleasă.Nu există suficiente date",
+      "decision": "insufficient-evidence"
+    },
+    {
+      "slug": "receptioner-hotel",
+      "url": "https://www.ejobs.ro/salario/salarii-receptioner-hotel",
+      "status": 200,
+      "role": "Receptioner hotel",
+      "net": 3500,
+      "providerN": 267,
+      "excerpt": "Intră pe eJobsSalariu Receptioner hotelMai jos poți vedea salariul mediu net pentru categoria aleasă.3500 Lei (net) Calculat pe baza salariilor introduse de 267 specialiști. ",
+      "decision": "eligible-after-role-review"
+    },
+    {
+      "slug": "regizor",
+      "url": "https://www.ejobs.ro/salario/salarii-regizor",
+      "status": 200,
+      "role": "Regizor",
+      "net": 8000,
+      "providerN": 1,
+      "excerpt": "Intră pe eJobsSalariu RegizorMai jos poți vedea salariul mediu net pentru categoria aleasă.8000 Lei (net) Calculat pe baza salariilor introduse de 1 specialiști. ",
+      "decision": "insufficient-evidence"
+    },
+    {
+      "slug": "silvicultor",
+      "url": "https://www.ejobs.ro/salario/salarii-silvicultor",
+      "status": 200,
+      "role": "Silvicultor",
+      "net": 4300,
+      "providerN": 6,
+      "excerpt": "Intră pe eJobsSalariu SilvicultorMai jos poți vedea salariul mediu net pentru categoria aleasă.4300 Lei (net) Calculat pe baza salariilor introduse de 6 specialiști. ",
+      "decision": "insufficient-evidence"
+    },
+    {
+      "slug": "sofer-ambulanta",
+      "url": "https://www.ejobs.ro/salario/salarii-sofer-ambulanta",
+      "status": 200,
+      "role": "Șofer ambulanță",
+      "net": 5250,
+      "providerN": 6,
+      "excerpt": "Intră pe eJobsSalariu Șofer ambulanțăMai jos poți vedea salariul mediu net pentru categoria aleasă.5250 Lei (net) Calculat pe baza salariilor introduse de 6 specialiști. ",
+      "decision": "insufficient-evidence"
+    },
+    {
+      "slug": "sondor",
+      "url": "https://www.ejobs.ro/salario/salarii-sondor",
+      "status": 200,
+      "role": "sondor",
+      "net": null,
+      "providerN": null,
+      "excerpt": "Intră pe eJobsSalariu sondorMai jos poți vedea salariul mediu net pentru categoria aleasă.Nu există suficiente date",
+      "decision": "insufficient-evidence"
+    },
+    {
+      "slug": "specialist-resurse-umane",
+      "url": "https://www.ejobs.ro/salario/salarii-specialist-resurse-umane",
+      "status": 200,
+      "role": "Specialist Resurse Umane",
+      "net": 5500,
+      "providerN": 609,
+      "excerpt": "Intră pe eJobsSalariu Specialist Resurse UmaneMai jos poți vedea salariul mediu net pentru categoria aleasă.5500 Lei (net) Calculat pe baza salariilor introduse de 609 specialiști. ",
+      "decision": "eligible-after-role-review"
+    },
+    {
+      "slug": "sticlar",
+      "url": "https://www.ejobs.ro/salario/salarii-sticlar",
+      "status": 200,
+      "role": "sticlar",
+      "net": null,
+      "providerN": null,
+      "excerpt": "Intră pe eJobsSalariu sticlarMai jos poți vedea salariul mediu net pentru categoria aleasă.Nu există suficiente date",
+      "decision": "insufficient-evidence"
+    },
+    {
+      "slug": "tamplar",
+      "url": "https://www.ejobs.ro/salario/salarii-tamplar",
+      "status": 200,
+      "role": "Tâmplar",
+      "net": 5000,
+      "providerN": 28,
+      "excerpt": "Intră pe eJobsSalariu TâmplarMai jos poți vedea salariul mediu net pentru categoria aleasă.5000 Lei (net) Calculat pe baza salariilor introduse de 28 specialiști. ",
+      "decision": "insufficient-evidence"
+    },
+    {
+      "slug": "tapiter",
+      "url": "https://www.ejobs.ro/salario/salarii-tapiter",
+      "status": 200,
+      "role": "Tapițer",
+      "net": 4350,
+      "providerN": 4,
+      "excerpt": "Intră pe eJobsSalariu TapițerMai jos poți vedea salariul mediu net pentru categoria aleasă.4350 Lei (net) Calculat pe baza salariilor introduse de 4 specialiști. ",
+      "decision": "insufficient-evidence"
+    },
+    {
+      "slug": "tehnician-calculatoare",
+      "url": "https://www.ejobs.ro/salario/salarii-tehnician-calculatoare",
+      "status": 200,
+      "role": "tehnician-calculatoare",
+      "net": null,
+      "providerN": null,
+      "excerpt": "Intră pe eJobsSalariu tehnician-calculatoareMai jos poți vedea salariul mediu net pentru categoria aleasă.Nu există suficiente date",
+      "decision": "insufficient-evidence"
+    },
+    {
+      "slug": "tehnician-mentenanta",
+      "url": "https://www.ejobs.ro/salario/salarii-tehnician-mentenanta",
+      "status": 200,
+      "role": "Tehnician mentenanta",
+      "net": 5500,
+      "providerN": 58,
+      "excerpt": "Intră pe eJobsSalariu Tehnician mentenantaMai jos poți vedea salariul mediu net pentru categoria aleasă.5500 Lei (net) Calculat pe baza salariilor introduse de 58 specialiști. ",
+      "decision": "eligible-after-role-review"
+    },
+    {
+      "slug": "tesator",
+      "url": "https://www.ejobs.ro/salario/salarii-tesator",
+      "status": 200,
+      "role": "tesator",
+      "net": null,
+      "providerN": null,
+      "excerpt": "Intră pe eJobsSalariu tesatorMai jos poți vedea salariul mediu net pentru categoria aleasă.Nu există suficiente date",
+      "decision": "insufficient-evidence"
+    },
+    {
+      "slug": "tipograf",
+      "url": "https://www.ejobs.ro/salario/salarii-tipograf",
+      "status": 200,
+      "role": "Tipograf",
+      "net": 3925,
+      "providerN": 6,
+      "excerpt": "Intră pe eJobsSalariu TipografMai jos poți vedea salariul mediu net pentru categoria aleasă.3925 Lei (net) Calculat pe baza salariilor introduse de 6 specialiști. ",
+      "decision": "insufficient-evidence"
+    },
+    {
+      "slug": "zidar",
+      "url": "https://www.ejobs.ro/salario/salarii-zidar",
+      "status": 200,
+      "role": "Zidar",
+      "net": 4706,
+      "providerN": 4,
+      "excerpt": "Intră pe eJobsSalariu ZidarMai jos poți vedea salariul mediu net pentru categoria aleasă.4706 Lei (net) Calculat pe baza salariilor introduse de 4 specialiști. ",
+      "decision": "insufficient-evidence"
+    },
+    {
+      "slug": "zugrav",
+      "url": "https://www.ejobs.ro/salario/salarii-zugrav",
+      "status": 200,
+      "role": "Zugrav",
+      "net": 5500,
+      "providerN": 5,
+      "excerpt": "Intră pe eJobsSalariu ZugravMai jos poți vedea salariul mediu net pentru categoria aleasă.5500 Lei (net) Calculat pe baza salariilor introduse de 5 specialiști. ",
+      "decision": "insufficient-evidence"
+    }
+  ]
+}

@@ -178,7 +178,7 @@ export default function Page() {
 
               <aside className="mt-8 md:col-span-2 md:mt-0">
                 <div className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
-                  <h3 className="mb-3 text-xs font-medium text-stone-500">Repere fiscale · 2026</h3>
+                  <h3 className="mb-3 text-xs font-medium text-stone-600">Repere fiscale · 2026</h3>
                   <dl className="text-sm">
                     {([
                       ["Net la salariul minim (4.325 brut)", "2.699 lei"],
@@ -195,7 +195,7 @@ export default function Page() {
                       </div>
                     ))}
                   </dl>
-                  <p className="mt-3 text-xs text-stone-500">Net standard, funcție de bază. 9.192 lei este indicatorul brut fix din BASS 2026, nu câștigul salarial mediu lunar publicat de INS.</p>
+                  <p className="mt-3 text-xs text-stone-600">Net standard, funcție de bază. 9.192 lei este indicatorul brut fix din BASS 2026, nu câștigul salarial mediu lunar publicat de INS.</p>
                 </div>
               </aside>
             </div>
@@ -222,7 +222,7 @@ export default function Page() {
 
               <aside className="mt-8 md:col-span-2 md:mt-0">
                 <div className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
-                  <h3 className="mb-3 text-xs font-medium text-stone-500">Surse oficiale</h3>
+                  <h3 className="mb-3 text-xs font-medium text-stone-600">Surse oficiale</h3>
                   <ul className="flex flex-col gap-2 text-sm [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-600">
                     <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/308231" target="_blank" rel="noopener">HG 146/2026 – salariul minim</a></li>
                     <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/305817" target="_blank" rel="noopener">OUG 89/2025 – facilitate salariu minim</a></li>
@@ -232,7 +232,7 @@ export default function Page() {
                     <li className="text-stone-600">ANAF – Declarația 112</li>
                   </ul>
 
-                  <h3 className="mb-3 mt-6 text-xs font-medium text-stone-500">Pagini conexe</h3>
+                  <h3 className="mb-3 mt-6 text-xs font-medium text-stone-600">Pagini conexe</h3>
                   <ul className="flex flex-col gap-2 text-sm">
                     {/* Legături editoriale către instrumentele și paginile
                         principale care altfel ar fi accesibile mai ales din
@@ -256,7 +256,7 @@ export default function Page() {
                     ))}
                   </ul>
 
-                  <p className="mt-6 text-xs text-stone-500">Ultima actualizare: 26 iulie 2026.</p>
+                  <p className="mt-6 text-xs text-stone-600">Ultima actualizare: 26 iulie 2026.</p>
                 </div>
               </aside>
             </div>

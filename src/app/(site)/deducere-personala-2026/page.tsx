@@ -96,7 +96,7 @@ export default function DeducerePersonalaPage() {
       <Hero>
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Deducere personală 2026" }]} />
         <H1>Deducere personală 2026</H1>
-        <p className="mt-3 text-sm text-stone-500 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2">
+        <p className="mt-3 text-sm text-stone-600 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2">
           Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat 16 august 2026
         </p>
         <Lead>
@@ -113,15 +113,15 @@ export default function DeducerePersonalaPage() {
           <div className="grid gap-4 sm:grid-cols-3">
             <div className="rounded-md border border-stone-200 bg-surface p-5 shadow-soft">
               <div className="text-3xl font-bold tabular-nums text-stone-900">{fmt(PLAFON)} lei</div>
-              <p className="mt-1 text-xs uppercase tracking-wide text-stone-500">Plafon brut</p>
+              <p className="mt-1 text-xs uppercase tracking-wide text-stone-600">Plafon brut</p>
             </div>
             <div className="rounded-md border border-stone-200 bg-surface p-5 shadow-soft">
               <div className="text-3xl font-bold tabular-nums text-stone-900">{fmt(maxFaraPersoane)} lei</div>
-              <p className="mt-1 text-xs uppercase tracking-wide text-stone-500">Deducere maximă fără persoane</p>
+              <p className="mt-1 text-xs uppercase tracking-wide text-stone-600">Deducere maximă fără persoane</p>
             </div>
             <div className="rounded-md border border-stone-200 bg-surface p-5 shadow-soft">
               <div className="text-3xl font-bold tabular-nums text-stone-900">{fmt(maxCuPatruPersoane)} lei</div>
-              <p className="mt-1 text-xs uppercase tracking-wide text-stone-500">Deducere maximă cu 4+ persoane</p>
+              <p className="mt-1 text-xs uppercase tracking-wide text-stone-600">Deducere maximă cu 4+ persoane</p>
             </div>
           </div>
         </Section>

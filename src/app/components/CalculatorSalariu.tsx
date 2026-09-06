@@ -110,7 +110,7 @@ const EX_PLACEHOLDER_NET = String(
 
 // ─── Clase utilitare reutilizate (design tokens „în linie") ──────────────────
 const fieldLabel =
-  "mb-2 block text-xs font-medium text-stone-500";
+  "mb-2 block text-xs font-medium text-stone-600";
 // text-base sm:text-sm → 16px pe mobil împiedică zoom-ul automat iOS la focus; 14px pe desktop.
 const controlBox =
   "w-full rounded border border-stone-300 bg-surface px-3 py-2 text-base sm:text-sm text-stone-900 outline-none transition focus:border-stone-400 focus:shadow-[0_0_6px_rgba(28,25,23,0.12)]";
@@ -126,7 +126,7 @@ function InputNumber({ id, label, value, onChange, placeholder, hint, onEnter, t
   return (
     <div className="mb-5">
       <label htmlFor={id} className={fieldLabel}>{label}</label>
-      {hint && <span className="mb-2 block text-xs text-stone-500">{hint}</span>}
+      {hint && <span className="mb-2 block text-xs text-stone-600">{hint}</span>}
       <div className={`flex w-full overflow-hidden rounded border transition focus-within:border-stone-400 focus-within:shadow-[0_0_6px_rgba(28,25,23,0.12)] ${error ? "border-stone-500" : "border-stone-300"}`}>
         <input
           id={id}
@@ -141,7 +141,7 @@ function InputNumber({ id, label, value, onChange, placeholder, hint, onEnter, t
           aria-describedby={error ? `${id}-error` : undefined}
           className={`min-w-0 flex-1 bg-transparent px-3 py-2 text-base text-stone-900 outline-none${tall ? " leading-7" : ""}`}
         />
-        {unit && <span className="flex items-center whitespace-nowrap border-l border-stone-200 px-3 text-xs font-medium text-stone-500">{unit}</span>}
+        {unit && <span className="flex items-center whitespace-nowrap border-l border-stone-200 px-3 text-xs font-medium text-stone-600">{unit}</span>}
       </div>
       {error && <span id={`${id}-error`} role="alert" className="mt-2 block text-xs font-medium text-stone-900">{error}</span>}
     </div>
@@ -180,7 +180,7 @@ function Select({ id, label, value, options, onChange, disabled = false }: Selec
           {options.map((o) => (<option key={o.v} value={o.v}>{o.l}</option>))}
         </select>
         {/* Chevron custom – aliniat la right-3 (12px), oglindă cu px-3 din stânga */}
-        <svg className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-stone-500" viewBox="0 0 20 20" fill="none" stroke="currentColor" aria-hidden="true">
+        <svg className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-stone-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" aria-hidden="true">
           <path d="M5 7.5l5 5 5-5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </div>
@@ -702,7 +702,7 @@ export default function CalculatorSalariu({
             <div className="flex w-full overflow-hidden rounded border border-stone-300">
               <button
                 type="button"
-                className={`flex-1 inline-flex min-h-11 items-center justify-center px-4 text-sm font-medium transition-colors ${mod === "brut" ? "bg-stone-900 text-white" : "text-stone-500 hover:bg-canvas"}`}
+                className={`flex-1 inline-flex min-h-11 items-center justify-center px-4 text-sm font-medium transition-colors ${mod === "brut" ? "bg-stone-900 text-white" : "text-stone-600 hover:bg-canvas"}`}
                 onClick={() => {
                   if (mod === "brut") return;
                   if (mod === "net") {
@@ -716,7 +716,7 @@ export default function CalculatorSalariu({
               </button>
               <button
                 type="button"
-                className={`border-l border-stone-300 flex-1 inline-flex min-h-11 items-center justify-center px-4 text-sm font-medium transition-colors ${mod === "net" ? "bg-stone-900 text-white" : "text-stone-500 hover:bg-canvas"}`}
+                className={`border-l border-stone-300 flex-1 inline-flex min-h-11 items-center justify-center px-4 text-sm font-medium transition-colors ${mod === "net" ? "bg-stone-900 text-white" : "text-stone-600 hover:bg-canvas"}`}
                 onClick={() => {
                   if (mod === "net") return;
                   if (mod === "brut") {
@@ -739,7 +739,7 @@ export default function CalculatorSalariu({
 
           <button
             type="button"
-            className="mb-5 flex min-h-11 w-full items-center justify-center rounded border border-dashed border-stone-300 px-4 text-xs font-medium text-stone-500 transition-colors hover:border-stone-400 hover:text-stone-700"
+            className="mb-5 flex min-h-11 w-full items-center justify-center rounded border border-dashed border-stone-300 px-4 text-xs font-medium text-stone-600 transition-colors hover:border-stone-400 hover:text-stone-700"
             onClick={() => {
               if (avansat) {
                 set("tichete", ""); setNrTichete(""); setValoareTichet(""); set("functieDeBAza", true); set("persoanePretretinere", 0); set("varstaSub26", false); set("copiiScolarizati", 0); set("scutitImpozit", false);
@@ -775,7 +775,7 @@ export default function CalculatorSalariu({
                     <InputNumber id="ore-lucrate" label="Ore lucrate" unit="ore" value={oreLucrate} placeholder={`ex: ${oreNormaCurenta}`}
                       onChange={setOreLucrate} />
                   </div>
-                  <p className="-mt-3 mb-5 text-xs text-stone-500">
+                  <p className="-mt-3 mb-5 text-xs text-stone-600">
                     Norma întreagă a lunii curente este {oreNormaCurenta} ore. O normă contractuală mai mică este tratată ca
                     timp parțial, fără facilitatea OUG 89/2025. La normă întreagă, orele lucrate sub normă proratează baza și
                     facilitatea; peste normă, diferența este plătită ca ore suplimentare.
@@ -786,7 +786,7 @@ export default function CalculatorSalariu({
                     <InputNumber id="sporuri-fixe" label="Sporuri și prime (brute)" unit="lei" value={sporuri} placeholder="ex: 200"
                       onChange={setSporuri} />
                   </div>
-                  <p className="-mt-3 mb-5 text-xs text-stone-500">
+                  <p className="-mt-3 mb-5 text-xs text-stone-600">
                     Sporul legal minim la ore suplimentare e 75% (Codul Muncii art. 123). Sporurile brute se taxează ca salariul.
                   </p>
                   <InputNumber id="retineri-input" label="Rețineri (avans, popriri)" unit="lei" value={retineri} placeholder="ex: 0"
@@ -801,7 +801,7 @@ export default function CalculatorSalariu({
                 <InputNumber id="valoare-tichet" label="Valoare / tichet" unit="lei" value={valoareTichet} placeholder="ex: 40"
                   onChange={(v) => { setValoareTichet(v); const t = (parseInt(nrTichete) || 0) * (parseInt(v) || 0); set("tichete", t ? String(t) : ""); }} />
               </div>
-              <p className="-mt-3 mb-5 text-xs text-stone-500">
+              <p className="-mt-3 mb-5 text-xs text-stone-600">
                 Cel mult un tichet pe zi lucrată · maxim legal 45 lei/tichet (Legea 201/2025).
                 {(parseInt(input.tichete) || 0) > 0 && (
                   <> Total: <span className="font-medium text-stone-700">{fmt(parseInt(input.tichete))}</span> / lună.</>
@@ -860,8 +860,8 @@ export default function CalculatorSalariu({
                     </tr>
                     {fluturasSnap && fluturasSnap.oreNorma > 0 && fluturasSnap.baza > 0 && (
                       <tr>
-                        <td className={`${cellL} text-stone-500`}>Ore standard ({fluturasSnap.oreNorma} ore/lună)</td>
-                        <td className={`${cellR} text-stone-500`}>{(fluturasSnap.baza / fluturasSnap.oreNorma).toLocaleString("ro-RO", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} lei/oră</td>
+                        <td className={`${cellL} text-stone-600`}>Ore standard ({fluturasSnap.oreNorma} ore/lună)</td>
+                        <td className={`${cellR} text-stone-600`}>{(fluturasSnap.baza / fluturasSnap.oreNorma).toLocaleString("ro-RO", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} lei/oră</td>
                       </tr>
                     )}
                     {fluturasSnap && fluturasSnap.oreLucrate < fluturasSnap.oreNorma && (
@@ -905,8 +905,8 @@ export default function CalculatorSalariu({
                   <tbody>
                     {rezAfisat.rez.facilitate > 0 && (
                       <tr>
-                        <td className={`${cellL} text-stone-500`}>Sumă netaxabilă salariu minim (OUG 89/2025)</td>
-                        <td className={`${cellR} text-stone-500`}>{fmt(rezAfisat.rez.facilitate)}</td>
+                        <td className={`${cellL} text-stone-600`}>Sumă netaxabilă salariu minim (OUG 89/2025)</td>
+                        <td className={`${cellR} text-stone-600`}>{fmt(rezAfisat.rez.facilitate)}</td>
                       </tr>
                     )}
                     <tr>
@@ -919,8 +919,8 @@ export default function CalculatorSalariu({
                     </tr>
                     {rezAfisat.rez.deducerePersonala > 0 && (
                       <tr>
-                        <td className={`${cellL} text-stone-500`}>Deducere personală (netaxabilă)</td>
-                        <td className={`${cellR} text-stone-500`}>{fmt(rezAfisat.rez.deducerePersonala)}</td>
+                        <td className={`${cellL} text-stone-600`}>Deducere personală (netaxabilă)</td>
+                        <td className={`${cellR} text-stone-600`}>{fmt(rezAfisat.rez.deducerePersonala)}</td>
                       </tr>
                     )}
                     <tr>
@@ -1070,7 +1070,7 @@ export default function CalculatorSalariu({
                     <div className="flex min-w-0 items-center justify-start overflow-hidden whitespace-nowrap bg-stone-900 px-3 text-white" style={{ flexGrow: ang, flexBasis: 0 }}>Angajat {ang}%</div>
                     <div className="flex min-w-0 items-center justify-end overflow-hidden whitespace-nowrap border-l border-dashed border-stone-300 bg-canvas px-3 text-stone-700" style={{ flexGrow: stat, flexBasis: 0 }}>Stat {stat}%</div>
                   </div>
-                  <p className="mt-2 text-xs text-stone-500">Din costul total al firmei: cât ajunge la tine (net) și cât la stat (CAS, CASS, impozit, CAM).</p>
+                  <p className="mt-2 text-xs text-stone-600">Din costul total al firmei: cât ajunge la tine (net) și cât la stat (CAS, CASS, impozit, CAM).</p>
                 </div>
               );
             })()}
@@ -1234,7 +1234,7 @@ export default function CalculatorSalariu({
               utilizatorul a văzut deja produsul. Integrarea păstrează o
               atribuire vizibilă, calificată nofollow. */}
           {rezAfisat && !embedded && (
-            <p className="mt-4 text-xs leading-relaxed text-stone-500" data-md-strip>
+            <p className="mt-4 text-xs leading-relaxed text-stone-600" data-md-strip>
               Ai un site?{" "}
               <Link
                 href="/widget"
@@ -1247,13 +1247,13 @@ export default function CalculatorSalariu({
           )}
 
           {rezAfisat && regimFiscal !== REGIM_FISCAL_CURENT && (
-            <p className="mt-5 text-xs leading-relaxed text-stone-500" data-md-strip>
+            <p className="mt-5 text-xs leading-relaxed text-stone-600" data-md-strip>
               Calcul istoric pentru ianuarie–iunie 2026. Fluturașul PDF este disponibil numai pentru grila fiscală curentă.
             </p>
           )}
 
           {!rezAfisat && (
-            <p className="mt-4 text-xs leading-relaxed text-stone-500" data-md-strip>
+            <p className="mt-4 text-xs leading-relaxed text-stone-600" data-md-strip>
               Completează salariul brut pentru a genera fluturașul · Grila fiscală 2026
               (minim: {new Intl.NumberFormat("ro-RO").format(REGIMURI_FISCALE_SALARIU[regimFiscal].salariuMinim)} lei)
             </p>

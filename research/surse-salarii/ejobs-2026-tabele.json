@@ -1,0 +1,2342 @@
+{
+  "url": "https://cariera.ejobs.ro/salarii-romania-ghidul-salarial-ejobs-2026/",
+  "checkedAt": "2026-09-07",
+  "rows": [
+    [
+      "An",
+      "Salariu mediu net real",
+      "Salariu mediu net așteptat"
+    ],
+    [
+      "2023",
+      "4.000 lei",
+      "5.200 lei"
+    ],
+    [
+      "2024",
+      "4.700 lei",
+      "6.100 lei"
+    ],
+    [
+      "2025",
+      "5.200 lei",
+      "6.700 lei"
+    ],
+    [
+      "2026",
+      "5.400 lei",
+      "7.000 lei"
+    ],
+    [
+      "",
+      "Salariu mediu net real",
+      "Salariu mediu net așteptat"
+    ],
+    [
+      "Valoare medie",
+      "5.400 lei/lună",
+      "7.000 lei/lună"
+    ],
+    [
+      "Creștere vs. 2025",
+      "+3,8%",
+      "+4,4%"
+    ],
+    [
+      "Diferență",
+      "30%"
+    ],
+    [
+      "Interval salarial",
+      "Pondere"
+    ],
+    [
+      "2.574 – 3.000 lei",
+      "8,3%"
+    ],
+    [
+      "3.001 – 4.500 lei",
+      "25%"
+    ],
+    [
+      "4.501 – 7.000 lei",
+      "37%"
+    ],
+    [
+      "7.001 – 10.000 lei",
+      "18,5%"
+    ],
+    [
+      "Peste 10.000 lei",
+      "10,1%"
+    ],
+    [
+      "Interval salarial",
+      "Pondere"
+    ],
+    [
+      "2.574 – 3.000 lei",
+      "1,8%"
+    ],
+    [
+      "3.001 – 4.500 lei",
+      "37,2%"
+    ],
+    [
+      "4.501 – 7.000 lei",
+      "28,3%"
+    ],
+    [
+      "7.001 – 10.000 lei",
+      "20,1%"
+    ],
+    [
+      "Peste 10.000 lei",
+      "12,6%"
+    ],
+    [
+      "Județ",
+      "Salariu mediu net real",
+      "Salariu mediu net așteptat",
+      "Diferență"
+    ],
+    [
+      "Alba",
+      "4.500 lei",
+      "6.000 lei",
+      "33%"
+    ],
+    [
+      "Arad",
+      "5.000 lei",
+      "6.000 lei",
+      "20%"
+    ],
+    [
+      "Argeș",
+      "5.000 lei",
+      "6.000 lei",
+      "20%"
+    ],
+    [
+      "Bacău",
+      "4.500 lei",
+      "6.000 lei",
+      "33%"
+    ],
+    [
+      "Bihor",
+      "5.000 lei",
+      "6.000 lei",
+      "20%"
+    ],
+    [
+      "Bistrița-Năsăud",
+      "4.200 lei",
+      "5.500 lei",
+      "31%"
+    ],
+    [
+      "Botoșani",
+      "4.500 lei",
+      "6.000 lei",
+      "33%"
+    ],
+    [
+      "Brăila",
+      "4.500 lei",
+      "6.000 lei",
+      "33%"
+    ],
+    [
+      "Brașov",
+      "5.000 lei",
+      "6.500 lei",
+      "30%"
+    ],
+    [
+      "București",
+      "6.000 lei",
+      "8.000 lei",
+      "33%"
+    ],
+    [
+      "Buzău",
+      "4.900 lei",
+      "6.000 lei",
+      "22%"
+    ],
+    [
+      "Călărași",
+      "4.600 lei",
+      "6.000 lei",
+      "30%"
+    ],
+    [
+      "Caraș-Severin",
+      "4.200 lei",
+      "5.300 lei",
+      "26%"
+    ],
+    [
+      "Cluj",
+      "5.500 lei",
+      "7.000 lei",
+      "27%"
+    ],
+    [
+      "Constanța",
+      "5.000 lei",
+      "6.000 lei",
+      "20%"
+    ],
+    [
+      "Covasna",
+      "4.800 lei",
+      "6.000 lei",
+      "25%"
+    ],
+    [
+      "Dâmbovița",
+      "4.400 lei",
+      "6.000 lei",
+      "36%"
+    ],
+    [
+      "Dolj",
+      "5.000 lei",
+      "6.500 lei",
+      "30%"
+    ],
+    [
+      "Galați",
+      "4.500 lei",
+      "6.000 lei",
+      "33%"
+    ],
+    [
+      "Giurgiu",
+      "4.200 lei",
+      "5.500 lei",
+      "31%"
+    ],
+    [
+      "Gorj",
+      "4.000 lei",
+      "5.000 lei",
+      "25%"
+    ],
+    [
+      "Harghita",
+      "4.300 lei",
+      "5.500 lei",
+      "28%"
+    ],
+    [
+      "Hunedoara",
+      "4.000 lei",
+      "5.500 lei",
+      "38%"
+    ],
+    [
+      "Ialomița",
+      "5.000 lei",
+      "7.000 lei",
+      "40%"
+    ],
+    [
+      "Iași",
+      "5.000 lei",
+      "6.000 lei",
+      "20%"
+    ],
+    [
+      "Ilfov",
+      "5.000 lei",
+      "6.500 lei",
+      "30%"
+    ],
+    [
+      "Maramureș",
+      "4.500 lei",
+      "6.000 lei",
+      "33%"
+    ],
+    [
+      "Mehedinți",
+      "4.500 lei",
+      "7.000 lei",
+      "56%"
+    ],
+    [
+      "Mureș",
+      "4.700 lei",
+      "6.000 lei",
+      "28%"
+    ],
+    [
+      "Neamț",
+      "5.000 lei",
+      "6.500 lei",
+      "30%"
+    ],
+    [
+      "Olt",
+      "5.000 lei",
+      "6.000 lei",
+      "20%"
+    ],
+    [
+      "Prahova",
+      "5.000 lei",
+      "6.000 lei",
+      "20%"
+    ],
+    [
+      "Sălaj",
+      "5.000 lei",
+      "6.000 lei",
+      "20%"
+    ],
+    [
+      "Satu-Mare",
+      "5.000 lei",
+      "6.000 lei",
+      "20%"
+    ],
+    [
+      "Sibiu",
+      "5.200 lei",
+      "7.000 lei",
+      "35%"
+    ],
+    [
+      "Suceava",
+      "4.000 lei",
+      "6.000 lei",
+      "50%"
+    ],
+    [
+      "Teleorman",
+      "4.800 lei",
+      "6.500 lei",
+      "35%"
+    ],
+    [
+      "Timiș",
+      "5.100 lei",
+      "7.000 lei",
+      "37%"
+    ],
+    [
+      "Tulcea",
+      "4.500 lei",
+      "6.500 lei",
+      "44%"
+    ],
+    [
+      "Vâlcea",
+      "4.000 lei",
+      "6.000 lei",
+      "50%"
+    ],
+    [
+      "Vaslui",
+      "4.000 lei",
+      "5.000 lei",
+      "25%"
+    ],
+    [
+      "Vrancea",
+      "4.000 lei",
+      "5.500 lei",
+      "38%"
+    ],
+    [
+      "Județ",
+      "Salariu mediu net real",
+      "Salariu mediu net așteptat",
+      "Diferență"
+    ],
+    [
+      "Arad",
+      "5.000 lei",
+      "6.000 lei",
+      "20%"
+    ],
+    [
+      "Argeș",
+      "5.000 lei",
+      "6.000 lei",
+      "20%"
+    ],
+    [
+      "Bihor",
+      "5.000 lei",
+      "6.000 lei",
+      "20%"
+    ],
+    [
+      "Constanța",
+      "5.000 lei",
+      "6.000 lei",
+      "20%"
+    ],
+    [
+      "Iași",
+      "5.000 lei",
+      "6.000 lei",
+      "20%"
+    ],
+    [
+      "Județ",
+      "Salariu mediu net real",
+      "Salariu mediu net așteptat",
+      "Diferență"
+    ],
+    [
+      "Ialomița",
+      "5.000 lei",
+      "7.000 lei",
+      "40%"
+    ],
+    [
+      "Tulcea",
+      "4.500 lei",
+      "6.500 lei",
+      "44%"
+    ],
+    [
+      "Suceava",
+      "4.000 lei",
+      "6.000 lei",
+      "50%"
+    ],
+    [
+      "Vâlcea",
+      "4.000 lei",
+      "6.000 lei",
+      "50%"
+    ],
+    [
+      "Mehedinți",
+      "4.500 lei",
+      "7.000 lei",
+      "58%"
+    ],
+    [
+      "Domeniu",
+      "Salariu mediu net real",
+      "Salariu mediu net așteptat",
+      "Diferență"
+    ],
+    [
+      "Achiziții, Administrativ & Back Office",
+      "4.850 lei",
+      "6.000 lei",
+      "23%"
+    ],
+    [
+      "Agricultură & Protecția mediului",
+      "5.300 lei",
+      "7.000 lei",
+      "32%"
+    ],
+    [
+      "Arhitectură, Construcții & Instalații",
+      "5.460 lei",
+      "7.250 lei",
+      "32%"
+    ],
+    [
+      "Au pair / Babysitter / Curățenie",
+      "3.500 lei",
+      "5.000 lei",
+      "43%"
+    ],
+    [
+      "Auto & Echipamente",
+      "5.250 lei",
+      "6.750 lei",
+      "28%"
+    ],
+    [
+      "Beauty & Wellness",
+      "4.500 lei",
+      "5.500 lei",
+      "22%"
+    ],
+    [
+      "Call Center / Relații Clienți",
+      "4.300 lei",
+      "5.000 lei",
+      "16%"
+    ],
+    [
+      "Casino & Entertainment",
+      "6.000 lei",
+      "8.000 lei",
+      "33%"
+    ],
+    [
+      "Educație & Training",
+      "4.800 lei",
+      "6.200 lei",
+      "29%"
+    ],
+    [
+      "Financiar, Bancar & Contabilitate",
+      "5.167 lei",
+      "7.000 lei",
+      "35%"
+    ],
+    [
+      "Industria Alimentară",
+      "4.700 lei",
+      "6.200 lei",
+      "31%"
+    ],
+    [
+      "Inginerie",
+      "6.000 lei",
+      "8.000 lei",
+      "33%"
+    ],
+    [
+      "IT Hardware",
+      "10.000 lei",
+      "13.000 lei",
+      "30%"
+    ],
+    [
+      "IT Software",
+      "8.000 lei",
+      "12.000 lei",
+      "50%"
+    ],
+    [
+      "Juridic",
+      "5.000 lei",
+      "7.000 lei",
+      "40%"
+    ],
+    [
+      "Marketing, PR & Publicitate",
+      "5.700 lei",
+      "7.200 lei",
+      "26%"
+    ],
+    [
+      "Media & Jurnalism",
+      "5.070 lei",
+      "6.625 lei",
+      "30%"
+    ],
+    [
+      "Medicină & Farmacie",
+      "5.500 lei",
+      "7.000 lei",
+      "27%"
+    ],
+    [
+      "Naval & Aeronautic",
+      "6.100 lei",
+      "8.000 lei",
+      "31%"
+    ],
+    [
+      "Pază & Protecție",
+      "5.000 lei",
+      "6.000 lei",
+      "20%"
+    ],
+    [
+      "Producție",
+      "5.200 lei",
+      "7.000 lei",
+      "35%"
+    ],
+    [
+      "Resurse Umane & Protecția Muncii",
+      "5.750 lei",
+      "7.500 lei",
+      "30%"
+    ],
+    [
+      "Telecomunicații",
+      "6.000 lei",
+      "8.000 lei",
+      "33%"
+    ],
+    [
+      "Transport & Logistică",
+      "5.000 lei",
+      "6.500 lei",
+      "30%"
+    ],
+    [
+      "Turism & HoReCa",
+      "4.500 lei",
+      "6.000 lei",
+      "33%"
+    ],
+    [
+      "Vânzări & Retail",
+      "5.000 lei",
+      "6.167 lei",
+      "23%"
+    ],
+    [
+      "Domeniu",
+      "Salariu mediu net real",
+      "Salariu mediu net așteptat",
+      "Diferență"
+    ],
+    [
+      "Call Center / Relații Clienți",
+      "4.300 lei",
+      "5.000 lei",
+      "16%"
+    ],
+    [
+      "Pază & Protecție",
+      "5.000 lei",
+      "6.000 lei",
+      "20%"
+    ],
+    [
+      "Beauty & Wellness",
+      "4.500 lei",
+      "5.500 lei",
+      "22%"
+    ],
+    [
+      "Achiziții, Administrativ & Back Office",
+      "4.850 lei",
+      "6.000 lei",
+      "23%"
+    ],
+    [
+      "Vânzări & Retail",
+      "5.000 lei",
+      "6.167 lei",
+      "23%"
+    ],
+    [
+      "Domeniu",
+      "Salariu mediu net real",
+      "Salariu mediu net așteptat",
+      "Diferență"
+    ],
+    [
+      "Financiar, Bancar & Contabilitate",
+      "5.167 lei",
+      "7.000 lei",
+      "35%"
+    ],
+    [
+      "Producție",
+      "5.200 lei",
+      "7.000 lei",
+      "35%"
+    ],
+    [
+      "Juridic",
+      "5.000 lei",
+      "7.000 lei",
+      "40%"
+    ],
+    [
+      "Au pair / Babysitter / Curățenie",
+      "3.500 lei",
+      "5.000 lei",
+      "43%"
+    ],
+    [
+      "IT Software",
+      "8.000 lei",
+      "12.000 lei",
+      "50%"
+    ],
+    [
+      "Nivel carieră",
+      "Salariu mediu net real",
+      "Salariu mediu net așteptat",
+      "Diferență"
+    ],
+    [
+      "Entry level < 2 ani",
+      "4.000 lei",
+      "5.000 lei",
+      "25%"
+    ],
+    [
+      "Mid-level 2-5 ani",
+      "5.000 lei",
+      "6.500 lei",
+      "30%"
+    ],
+    [
+      "Senior > 5 ani",
+      "6.300 lei",
+      "8.000 lei",
+      "26%"
+    ],
+    [
+      "Poziție",
+      "Salariu mediu net real",
+      "Salariu mediu net așteptat",
+      "Diferență"
+    ],
+    [
+      "CEO",
+      "20.000 lei",
+      "25.000 lei",
+      "25%"
+    ],
+    [
+      "Secretar administrativ",
+      "4.000 lei",
+      "5.000 lei",
+      "25%"
+    ],
+    [
+      "Office Manager",
+      "5.000 lei",
+      "7.000 lei",
+      "40%"
+    ],
+    [
+      "Asistent Manager",
+      "5.000 lei",
+      "7.000 lei",
+      "20%"
+    ],
+    [
+      "Back office",
+      "4.200 lei",
+      "5.000 lei",
+      "19%"
+    ],
+    [
+      "Operator introducere date",
+      "3.500 lei",
+      "4.500 lei",
+      "29%"
+    ],
+    [
+      "Operator PC",
+      "3.300 lei",
+      "5.000 lei",
+      "51%"
+    ],
+    [
+      "Manager/Director achiziții",
+      "8.000 lei",
+      "10.000 lei",
+      "25%"
+    ],
+    [
+      "Specialist achiziții",
+      "5.700 lei",
+      "7.000 lei",
+      "23%"
+    ],
+    [
+      "Administrator",
+      "5.300 lei",
+      "7.000 lei",
+      "32%"
+    ],
+    [
+      "Asistent back office",
+      "3.500 lei",
+      "4.500 lei",
+      "28%"
+    ],
+    [
+      "Poziție",
+      "Salariu mediu net real",
+      "Salariu mediu net așteptat",
+      "Diferență"
+    ],
+    [
+      "Inginer agronom",
+      "5.800 lei",
+      "7.000 lei",
+      "20%"
+    ],
+    [
+      "Biolog",
+      "4.000 lei",
+      "6.000 lei",
+      "50%"
+    ],
+    [
+      "Medic veterinar",
+      "5.400 lei",
+      "7.000 lei",
+      "29%"
+    ],
+    [
+      "Șef fermă",
+      "8.250 lei",
+      "10.000 lei",
+      "21%"
+    ],
+    [
+      "Inginer zootehnist",
+      "5.000 lei",
+      "6.000 lei",
+      "20%"
+    ],
+    [
+      "Muncitor agricol",
+      "4.000 lei",
+      "5.000 lei",
+      "25%"
+    ],
+    [
+      "Inspector Protecția mediului",
+      "4.500 lei",
+      "6.000 lei",
+      "33%"
+    ],
+    [
+      "Inginer mediu",
+      "5.500 lei",
+      "7.000 lei",
+      "27%"
+    ],
+    [
+      "Ecolog",
+      "5.000 lei",
+      "6.000 lei",
+      "20%"
+    ],
+    [
+      "Poziție",
+      "Salariu mediu net real",
+      "Salariu mediu net așteptat",
+      "Diferență"
+    ],
+    [
+      "Instalator",
+      "5.000 lei",
+      "6.500 lei",
+      "30%"
+    ],
+    [
+      "Electrician",
+      "5.000 lei",
+      "7.000 lei",
+      "40%"
+    ],
+    [
+      "Diriginte șantier",
+      "9.000 lei",
+      "12.000 lei",
+      "33%"
+    ],
+    [
+      "Site manager",
+      "10.000 lei",
+      "14.000 lei",
+      "40%"
+    ],
+    [
+      "Muncitor necalificat",
+      "3.500 lei",
+      "4.500 lei",
+      "28%"
+    ],
+    [
+      "Arhitect",
+      "6.000 lei",
+      "8.000 lei",
+      "33%"
+    ],
+    [
+      "Agent imobiliar",
+      "5.000 lei",
+      "8.000 lei",
+      "60%"
+    ],
+    [
+      "Designer interior",
+      "5.000 lei",
+      "7.500 lei",
+      "50%"
+    ],
+    [
+      "Desenator 3D",
+      "5.200 lei",
+      "7.500 lei",
+      "44%"
+    ],
+    [
+      "Muncitor calificat",
+      "4.250 lei",
+      "6.000 lei",
+      "41%"
+    ],
+    [
+      "Poziție",
+      "Salariu mediu net real",
+      "Salariu mediu net așteptat",
+      "Diferență"
+    ],
+    [
+      "Personal curățenie",
+      "3.000 lei",
+      "3.500 lei",
+      "16%"
+    ],
+    [
+      "Persoană pentru menaj",
+      "2.700 lei",
+      "4.500 lei",
+      "67%"
+    ],
+    [
+      "Îngrijitor copii",
+      "4.500 lei",
+      "5.500 lei",
+      "22%"
+    ],
+    [
+      "Îngrijitor persoane vârstnice",
+      "4.100 lei",
+      "4.100 lei",
+      "0%"
+    ],
+    [
+      "Infirmier/ă",
+      "3.700 lei",
+      "4.500 lei",
+      "21%"
+    ],
+    [
+      "Poziție",
+      "Salariu mediu net real",
+      "Salariu mediu net așteptat",
+      "Diferență"
+    ],
+    [
+      "Mecanic auto",
+      "5.000 lei",
+      "6.000 lei",
+      "20%"
+    ],
+    [
+      "Inginer automotive",
+      "6.800 lei",
+      "9.000 lei",
+      "32%"
+    ],
+    [
+      "Inginer electromecanic",
+      "7.300 lei",
+      "10.000 lei",
+      "37%"
+    ],
+    [
+      "Tehnician electromecanic",
+      "5.000 lei",
+      "6.000 lei",
+      "20%"
+    ],
+    [
+      "Inginer service",
+      "6.450 lei",
+      "8.500 lei",
+      "32%"
+    ],
+    [
+      "Lăcătuș mecanic",
+      "4.200 lei",
+      "5.000 lei",
+      "19%"
+    ],
+    [
+      "Poziție",
+      "Salariu mediu net real",
+      "Salariu mediu net așteptat",
+      "Diferență"
+    ],
+    [
+      "Instructor sportiv",
+      "4.000 lei",
+      "6.000 lei",
+      "50%"
+    ],
+    [
+      "Maseur",
+      "3.000 lei",
+      "5.000 lei",
+      "66%"
+    ],
+    [
+      "Coafor",
+      "5.000 lei",
+      "7.000 lei",
+      "40%"
+    ],
+    [
+      "Frizer",
+      "3.700 lei",
+      "4.500 lei",
+      "22%"
+    ],
+    [
+      "Make-up artist",
+      "3.000 lei",
+      "4.000 lei",
+      "33%"
+    ],
+    [
+      "Cosmetician",
+      "4.000 lei",
+      "5.000 lei",
+      "25%"
+    ],
+    [
+      "Poziție",
+      "Salariu mediu net real",
+      "Salariu mediu net așteptat",
+      "Diferență"
+    ],
+    [
+      "Coordonator Call Center",
+      "4.500 lei",
+      "6.000 lei",
+      "33%"
+    ],
+    [
+      "Team Leader",
+      "4.500 lei",
+      "6.000 lei",
+      "33%"
+    ],
+    [
+      "Specialist servicii clienți",
+      "4.100 lei",
+      "5.000 lei",
+      "22%"
+    ],
+    [
+      "Customer Service Supervisor",
+      "5.000 lei",
+      "6.000 lei",
+      "20%"
+    ],
+    [
+      "Analist servicii clienți",
+      "4.700 lei",
+      "6.000 lei",
+      "28%"
+    ],
+    [
+      "Front desk",
+      "3.700 lei",
+      "5.000 lei",
+      "35%"
+    ],
+    [
+      "Recepționist",
+      "3.300 lei",
+      "4.000 lei",
+      "21%"
+    ],
+    [
+      "Poziție",
+      "Salariu mediu net real",
+      "Salariu mediu net așteptat",
+      "Diferență"
+    ],
+    [
+      "Supraveghetor jocuri",
+      "4.500 lei",
+      "5.000 lei",
+      "11%"
+    ],
+    [
+      "Crupier cazino",
+      "4.000 lei",
+      "5.000 lei",
+      "25%"
+    ],
+    [
+      "Dealer cazino",
+      "4.000 lei",
+      "6.000 lei",
+      "50%"
+    ],
+    [
+      "Casier pariuri",
+      "3.100 lei",
+      "4.500 lei",
+      "45%"
+    ],
+    [
+      "Animator",
+      "5.000 lei",
+      "7.000 lei",
+      "40%"
+    ],
+    [
+      "Actor",
+      "4.600 lei",
+      "6.000 lei",
+      "30%"
+    ],
+    [
+      "Promoter",
+      "4.000 lei",
+      "4.500 lei",
+      "13%"
+    ],
+    [
+      "Hostess",
+      "3.500 lei",
+      "4.000 lei",
+      "14%"
+    ],
+    [
+      "Organizator evenimente",
+      "5.250 lei",
+      "6.000 lei",
+      "14%"
+    ],
+    [
+      "Poziție",
+      "Salariu mediu net real",
+      "Salariu mediu net așteptat",
+      "Diferență"
+    ],
+    [
+      "Profesor liceu",
+      "5.400 lei",
+      "7.000 lei",
+      "29%"
+    ],
+    [
+      "Profesor gimnaziu",
+      "4.700 lei",
+      "6.000 lei",
+      "27%"
+    ],
+    [
+      "Învățător",
+      "3.700 lei",
+      "5.000 lei",
+      "35%"
+    ],
+    [
+      "Profesor universitar",
+      "9.000 lei",
+      "12.000 lei",
+      "33%"
+    ],
+    [
+      "Asistent universitar",
+      "4.300 lei",
+      "5.000 lei",
+      "16%"
+    ],
+    [
+      "Lector universitar",
+      "6.700 lei",
+      "8.000 lei",
+      "19%"
+    ],
+    [
+      "Trainer/Formator",
+      "5.200 lei",
+      "7.000 lei",
+      "34%"
+    ],
+    [
+      "Educator",
+      "4.000 lei",
+      "5.000 lei",
+      "25%"
+    ],
+    [
+      "Psiholog",
+      "4.500 lei",
+      "6.000 lei",
+      "33%"
+    ],
+    [
+      "Poziție",
+      "Salariu mediu net real",
+      "Salariu mediu net așteptat",
+      "Diferență"
+    ],
+    [
+      "Chief Financial Officer",
+      "15.000 lei",
+      "20.000 lei",
+      "33%"
+    ],
+    [
+      "Contabil",
+      "5.200 lei",
+      "7.000 lei",
+      "35%"
+    ],
+    [
+      "Economist",
+      "5.000 lei",
+      "6.500 lei",
+      "30%"
+    ],
+    [
+      "Analist financiar",
+      "6.500 lei",
+      "8.500 lei",
+      "31%"
+    ],
+    [
+      "Controlor financiar",
+      "5.000 lei",
+      "6.500 lei",
+      "30%"
+    ],
+    [
+      "Auditor",
+      "5.000 lei",
+      "7.000 lei",
+      "40%"
+    ],
+    [
+      "Analist bancar",
+      "5.000 lei",
+      "7.000 lei",
+      "40%"
+    ],
+    [
+      "Ofițer bancar",
+      "4.000 lei",
+      "5.000 lei",
+      "25%"
+    ],
+    [
+      "Ofițer credite",
+      "4.300 lei",
+      "5.500 lei",
+      "28%"
+    ],
+    [
+      "Agent asigurări",
+      "4.000 lei",
+      "5.000 lei",
+      "25%"
+    ],
+    [
+      "Broker",
+      "4.500 lei",
+      "7.000 lei",
+      "56%"
+    ],
+    [
+      "Director agenție bancară",
+      "7.000 lei",
+      "10.000 lei",
+      "43%"
+    ],
+    [
+      "Asistent contabil",
+      "4.000 lei",
+      "5.000 lei",
+      "25%"
+    ],
+    [
+      "Business Analyst",
+      "7.700 lei",
+      "10.000 lei",
+      "30%"
+    ],
+    [
+      "Șofer mașină valori",
+      "4.000 lei",
+      "5.000 lei",
+      "25%"
+    ],
+    [
+      "Poziție",
+      "Salariu mediu net real",
+      "Salariu mediu net așteptat",
+      "Diferență"
+    ],
+    [
+      "Inginer alimentație",
+      "4.500 lei",
+      "7.000 lei",
+      "55%"
+    ],
+    [
+      "Chimist",
+      "4.800 lei",
+      "6.000 lei",
+      "25%"
+    ],
+    [
+      "Analist laborator",
+      "4.450 lei",
+      "6.000 lei",
+      "35%"
+    ],
+    [
+      "Inspector calitate",
+      "4.500 lei",
+      "6.000 lei",
+      "33%"
+    ],
+    [
+      "Supervizor producție",
+      "5.000 lei",
+      "7.000 lei",
+      "40%"
+    ],
+    [
+      "Nutriționist",
+      "4.000 lei",
+      "7.000 lei",
+      "75%"
+    ],
+    [
+      "Inspector siguranță alimentară",
+      "4.500 lei",
+      "6.000 lei",
+      "33%"
+    ],
+    [
+      "Microbiolog",
+      "3.500 lei",
+      "5.000 lei",
+      "43%"
+    ],
+    [
+      "Brutar/Patiser/Cofetar",
+      "3.500 lei",
+      "5.000 lei",
+      "42%"
+    ],
+    [
+      "Măcelar",
+      "3.000 lei",
+      "4.300 lei",
+      "43%"
+    ],
+    [
+      "Poziție",
+      "Salariu mediu net real",
+      "Salariu mediu net așteptat",
+      "Diferență"
+    ],
+    [
+      "Inginer mecanic",
+      "5.500 lei",
+      "7.250 lei",
+      "32%"
+    ],
+    [
+      "Inginer automotive",
+      "6.800 lei",
+      "9.000 lei",
+      "32%"
+    ],
+    [
+      "Inginer energetician",
+      "6.000 lei",
+      "8.500 lei",
+      "42%"
+    ],
+    [
+      "Inginer producție",
+      "6.000 lei",
+      "8.000 lei",
+      "33%"
+    ],
+    [
+      "Inginer simulare",
+      "6.000 lei",
+      "8.000 lei",
+      "33%"
+    ],
+    [
+      "Inginer industrializare",
+      "6.000 lei",
+      "8.000 lei",
+      "33%"
+    ],
+    [
+      "Inginer topograf",
+      "6.000 lei",
+      "8.000 lei",
+      "33%"
+    ],
+    [
+      "Inginer geodez",
+      "6.000 lei",
+      "8.000 lei",
+      "33%"
+    ],
+    [
+      "Inginer documentație tehnică",
+      "6.000 lei",
+      "8.000 lei",
+      "33%"
+    ],
+    [
+      "Inginer construcții",
+      "7.400 lei",
+      "10.000 lei",
+      "35%"
+    ],
+    [
+      "Inginer proiectant",
+      "5.500 lei",
+      "7.500 lei",
+      "36%"
+    ],
+    [
+      "Inginer instalații",
+      "7.400 lei",
+      "10.000 lei",
+      "35%"
+    ],
+    [
+      "Inginer civil",
+      "7.500 lei",
+      "10.000 lei",
+      "33%"
+    ],
+    [
+      "Poziție",
+      "Salariu mediu net real",
+      "Salariu mediu net așteptat",
+      "Diferență"
+    ],
+    [
+      "Administrator IT",
+      "10.000 lei",
+      "12.000 lei",
+      "20%"
+    ],
+    [
+      "Tehnician IT",
+      "7.000 lei",
+      "8.500 lei",
+      "21%"
+    ],
+    [
+      "Inginer IT",
+      "11.500 lei",
+      "14.500 lei",
+      "26%"
+    ],
+    [
+      "Consultant IT",
+      "15.000 lei",
+      "20.000 lei",
+      "33%"
+    ],
+    [
+      "Inginer network",
+      "9.000 lei",
+      "11.000 lei",
+      "22%"
+    ],
+    [
+      "Analist IT",
+      "10.300 lei",
+      "13.000 lei",
+      "26%"
+    ],
+    [
+      "Inginer sistem IT",
+      "11.000 lei",
+      "14.500 lei",
+      "31%"
+    ],
+    [
+      "Poziție",
+      "Salariu mediu net real",
+      "Salariu mediu net așteptat",
+      "Diferență"
+    ],
+    [
+      "Software Developer",
+      "9.000 lei",
+      "12.000 lei",
+      "33%"
+    ],
+    [
+      "Programator Full Stack",
+      "8.800 lei",
+      "12.000 lei",
+      "36%"
+    ],
+    [
+      "DevOps Engineer",
+      "9.300 lei",
+      "14.000 lei",
+      "50%"
+    ],
+    [
+      "Data Engineer",
+      "9.000 lei",
+      "12.000 lei",
+      "33%"
+    ],
+    [
+      "QA testare manuală",
+      "6.700 lei",
+      "8.500 lei",
+      "27%"
+    ],
+    [
+      "Software Project Manager",
+      "9.500 lei",
+      "14.000 lei",
+      "47%"
+    ],
+    [
+      "Web Developer",
+      "7.200 lei",
+      "10.000 lei",
+      "39%"
+    ],
+    [
+      "Front-End Developer",
+      "7.850 lei",
+      "10.000 lei",
+      "27%"
+    ],
+    [
+      "Back-End Developer",
+      "9.000 lei",
+      "12.000 lei",
+      "33%"
+    ],
+    [
+      "Product Owner",
+      "10.300 lei",
+      "15.000 lei",
+      "45%"
+    ],
+    [
+      "Inginer Software",
+      "9.300 lei",
+      "13.000 lei",
+      "40%"
+    ],
+    [
+      "Poziție",
+      "Salariu mediu net real",
+      "Salariu mediu net așteptat",
+      "Diferență"
+    ],
+    [
+      "Consilier juridic",
+      "5.300 lei",
+      "7.500 lei",
+      "41%"
+    ],
+    [
+      "Jurist",
+      "5.300 lei",
+      "7.500 lei",
+      "41%"
+    ],
+    [
+      "Avocat",
+      "7.000 lei",
+      "10.000 lei",
+      "43%"
+    ],
+    [
+      "Ofițer executare silită",
+      "4.000 lei",
+      "5.000 lei",
+      "25%"
+    ],
+    [
+      "Judecător",
+      "10.500 lei",
+      "13.000 lei",
+      "23%"
+    ],
+    [
+      "Procuror",
+      "16.000 lei",
+      "20.000 lei",
+      "25%"
+    ],
+    [
+      "Grefier",
+      "6.350 lei",
+      "8.000 lei",
+      "26%"
+    ],
+    [
+      "Funcționar",
+      "4.200 lei",
+      "5.500 lei",
+      "31%"
+    ],
+    [
+      "Poziție",
+      "Salariu mediu net real",
+      "Salariu mediu net așteptat",
+      "Diferență"
+    ],
+    [
+      "Director de Marketing",
+      "10.000 lei",
+      "14.000 lei",
+      "40%"
+    ],
+    [
+      "Specialist Marketing",
+      "5.300 lei",
+      "7.000 lei",
+      "32%"
+    ],
+    [
+      "Brand Manager",
+      "7.500 lei",
+      "10.000 lei",
+      "33%"
+    ],
+    [
+      "Specialist Social Media",
+      "4.800 lei",
+      "6.000 lei",
+      "25%"
+    ],
+    [
+      "Copywriter",
+      "4.300 lei",
+      "6.000 lei",
+      "39%"
+    ],
+    [
+      "Manager Marketing",
+      "8.500 lei",
+      "12.000 lei",
+      "41%"
+    ],
+    [
+      "Analist Marketing",
+      "6.000 lei",
+      "8.000 lei",
+      "33%"
+    ],
+    [
+      "Specialist SEO",
+      "5.500 lei",
+      "8.000 lei",
+      "45%"
+    ],
+    [
+      "Specialist PPC",
+      "5.500 lei",
+      "7.000 lei",
+      "27%"
+    ],
+    [
+      "Specialist relații publice",
+      "4.500 lei",
+      "6.000 lei",
+      "33%"
+    ],
+    [
+      "Art Director",
+      "7.300 lei",
+      "10.000 lei",
+      "37%"
+    ],
+    [
+      "UI/UX Designer",
+      "5.200 lei",
+      "7.500 lei",
+      "44%"
+    ],
+    [
+      "Graphic Designer",
+      "5.200 lei",
+      "7.500 lei",
+      "44%"
+    ],
+    [
+      "Poziție",
+      "Salariu mediu net real",
+      "Salariu mediu net așteptat",
+      "Diferență"
+    ],
+    [
+      "Jurnalist",
+      "4.900 lei",
+      "6.500 lei",
+      "32%"
+    ],
+    [
+      "Redactor",
+      "4.600 lei",
+      "6.000 lei",
+      "30%"
+    ],
+    [
+      "Traducător",
+      "4.300 lei",
+      "6.000 lei",
+      "39%"
+    ],
+    [
+      "Moderator conținut",
+      "4.100 lei",
+      "5.000 lei",
+      "22%"
+    ],
+    [
+      "Producător video",
+      "5.500 lei",
+      "8.000 lei",
+      "45%"
+    ],
+    [
+      "Producător",
+      "5.500 lei",
+      "8.000 lei",
+      "45%"
+    ],
+    [
+      "Cameraman",
+      "4.000 lei",
+      "7.000 lei",
+      "75%"
+    ],
+    [
+      "Fotograf",
+      "4.400 lei",
+      "6.000 lei",
+      "36%"
+    ],
+    [
+      "Poziție",
+      "Salariu mediu net real",
+      "Salariu mediu net așteptat",
+      "Diferență"
+    ],
+    [
+      "Asistent medical",
+      "4.000 lei",
+      "5.000 lei",
+      "25%"
+    ],
+    [
+      "Farmacist",
+      "4.500 lei",
+      "6.000 lei",
+      "33%"
+    ],
+    [
+      "Medic specialist",
+      "12.000 lei",
+      "15.000 lei",
+      "25%"
+    ],
+    [
+      "Medic rezident",
+      "7.125 lei",
+      "8.000 lei",
+      "12%"
+    ],
+    [
+      "Medic de familie",
+      "10.000 lei",
+      "12.000 lei",
+      "20%"
+    ],
+    [
+      "Medic anestezist",
+      "14.000 lei",
+      "20.475 lei",
+      "46%"
+    ],
+    [
+      "Medic psihiatru",
+      "7.400 lei",
+      "10.000 lei",
+      "35%"
+    ],
+    [
+      "Asistent farmacist",
+      "3.450 lei",
+      "4.500 lei",
+      "30%"
+    ],
+    [
+      "Kinetoterapeut",
+      "3.600 lei",
+      "5.000 lei",
+      "39%"
+    ],
+    [
+      "Registrator medical",
+      "3.500 lei",
+      "4.500 lei",
+      "29%"
+    ],
+    [
+      "Reprezentant medical",
+      "6.000 lei",
+      "8.000 lei",
+      "33%"
+    ],
+    [
+      "Tehnician dentar",
+      "5.000 lei",
+      "7.000 lei",
+      "40%"
+    ],
+    [
+      "Stomatolog",
+      "6.000 lei",
+      "9.000 lei",
+      "50%"
+    ],
+    [
+      "Poziție",
+      "Salariu mediu net real",
+      "Salariu mediu net așteptat",
+      "Diferență"
+    ],
+    [
+      "Inginer aeronave",
+      "6.200 lei",
+      "8.000 lei",
+      "29%"
+    ],
+    [
+      "Pilot naval/aeronave",
+      "12.000 lei",
+      "15.000 lei",
+      "25%"
+    ],
+    [
+      "Agent maritim",
+      "6.000 lei",
+      "8.000 lei",
+      "33%"
+    ],
+    [
+      "Ofițer naval",
+      "10.700 lei",
+      "12.000 lei",
+      "12%"
+    ],
+    [
+      "Marinar",
+      "9.000 lei",
+      "12.000 lei",
+      "33%"
+    ],
+    [
+      "Controlor trafic",
+      "14.000 lei",
+      "18.000 lei",
+      "28%"
+    ],
+    [
+      "Echipaj cabină",
+      "8.000 lei",
+      "10.000 lei",
+      "25%"
+    ],
+    [
+      "Poziție",
+      "Salariu mediu net real",
+      "Salariu mediu net așteptat",
+      "Diferență"
+    ],
+    [
+      "Agent pază și securitate",
+      "3.000 lei",
+      "4.000 lei",
+      "33%"
+    ],
+    [
+      "Agent/Ofițer de poliție",
+      "7.000 lei",
+      "8.500 lei",
+      "21%"
+    ],
+    [
+      "Tehnician sisteme securitate",
+      "4.800 lei",
+      "6.500 lei",
+      "35%"
+    ],
+    [
+      "Inspector securitate",
+      "5.500 lei",
+      "7.500 lei",
+      "36%"
+    ],
+    [
+      "Pompier",
+      "3.800 lei",
+      "4.800 lei",
+      "26%"
+    ],
+    [
+      "Dispecer pază",
+      "3.200 lei",
+      "4.500 lei",
+      "41%"
+    ],
+    [
+      "Inginer sisteme securitate",
+      "6.800 lei",
+      "9.000 lei",
+      "32%"
+    ],
+    [
+      "Poziție",
+      "Salariu mediu net real",
+      "Salariu mediu net așteptat",
+      "Diferență"
+    ],
+    [
+      "Șef tură",
+      "4.950 lei",
+      "6.000 lei",
+      "21%"
+    ],
+    [
+      "Operator producție",
+      "3.500 lei",
+      "4.500 lei",
+      "29%"
+    ],
+    [
+      "Sudor",
+      "5.500 lei",
+      "7.500 lei",
+      "36%"
+    ],
+    [
+      "Mecanic",
+      "5.500 lei",
+      "7.000 lei",
+      "27%"
+    ],
+    [
+      "Operator CNC",
+      "4.100 lei",
+      "5.000 lei",
+      "22%"
+    ],
+    [
+      "Manager/Director producție",
+      "9.000 lei",
+      "12.000 lei",
+      "33%"
+    ],
+    [
+      "Planificator producție",
+      "6.350 lei",
+      "8.000 lei",
+      "26%"
+    ],
+    [
+      "Cartonagist",
+      "3.500 lei",
+      "4.500 lei",
+      "29%"
+    ],
+    [
+      "Designer vestimentar",
+      "4.500 lei",
+      "6.000 lei",
+      "33%"
+    ],
+    [
+      "Croitor",
+      "3.500 lei",
+      "4.500 lei",
+      "28%"
+    ],
+    [
+      "Sculer matrițer",
+      "5.000 lei",
+      "6.500 lei",
+      "30%"
+    ],
+    [
+      "Operator mase plastice",
+      "2.450 lei",
+      "3.100 lei",
+      "26%"
+    ],
+    [
+      "Stivuitorist",
+      "4.000 lei",
+      "5.500 lei",
+      "37%"
+    ],
+    [
+      "Poziție",
+      "Salariu mediu net real",
+      "Salariu mediu net așteptat",
+      "Diferență"
+    ],
+    [
+      "Chief Human Resources Officer",
+      "9.000 lei",
+      "11.000 lei",
+      "22%"
+    ],
+    [
+      "Recruiter",
+      "5.000 lei",
+      "6.700 lei",
+      "34%"
+    ],
+    [
+      "Specialist recrutare",
+      "5.200 lei",
+      "6.500 lei",
+      "25%"
+    ],
+    [
+      "Manager HR",
+      "8.300 lei",
+      "10.000 lei",
+      "20%"
+    ],
+    [
+      "Analist HR",
+      "5.000 lei",
+      "7.000 lei",
+      "40%"
+    ],
+    [
+      "Specialist salarizare",
+      "6.850 lei",
+      "8.000 lei",
+      "16%"
+    ],
+    [
+      "Analist recrutare",
+      "5.000 lei",
+      "7.000 lei",
+      "40%"
+    ],
+    [
+      "Inspector SSM",
+      "5.500 lei",
+      "7.000 lei",
+      "27%"
+    ],
+    [
+      "Asistent resurse umane",
+      "4.000 lei",
+      "5.000 lei",
+      "25%"
+    ],
+    [
+      "Poziție",
+      "Salariu mediu net real",
+      "Salariu mediu net așteptat",
+      "Diferență"
+    ],
+    [
+      "Inginer telecomunicații",
+      "8.500 lei",
+      "11.000 lei",
+      "29%"
+    ],
+    [
+      "Specialist în telecomunicații",
+      "7.500 lei",
+      "10.000 lei",
+      "33%"
+    ],
+    [
+      "Tehnician telecomunicații",
+      "4.500 lei",
+      "6.000 lei",
+      "33%"
+    ],
+    [
+      "Reprezentant tehnic",
+      "5.000 lei",
+      "7.000 lei",
+      "40%"
+    ],
+    [
+      "Operator rețele fibră optică",
+      "5.000 lei",
+      "6.500 lei",
+      "30%"
+    ],
+    [
+      "Jonctor fibră optică",
+      "4.500 lei",
+      "6.000 lei",
+      "33%"
+    ],
+    [
+      "Poziție",
+      "Salariu mediu net real",
+      "Salariu mediu net așteptat",
+      "Diferență"
+    ],
+    [
+      "Șofer TIR/camion",
+      "5.500 lei",
+      "7.500 lei",
+      "36%"
+    ],
+    [
+      "Șofer autobuz",
+      "4.600 lei",
+      "6.500 lei",
+      "41%"
+    ],
+    [
+      "Șofer taxi",
+      "4.000 lei",
+      "5.500 lei",
+      "38%"
+    ],
+    [
+      "Șofer privat",
+      "5.000 lei",
+      "6.000 lei",
+      "20%"
+    ],
+    [
+      "Curier",
+      "4.000 lei",
+      "5.000 lei",
+      "25%"
+    ],
+    [
+      "Logistician",
+      "5.100 lei",
+      "6.500 lei",
+      "27%"
+    ],
+    [
+      "Șef depozit",
+      "6.000 lei",
+      "8.000 lei",
+      "33%"
+    ],
+    [
+      "Dispecer transport",
+      "5.000 lei",
+      "7.000 lei",
+      "40%"
+    ],
+    [
+      "Director logistică",
+      "8.500 lei",
+      "12.000 lei",
+      "41%"
+    ],
+    [
+      "Specialist transport",
+      "5.000 lei",
+      "7.000 lei",
+      "40%"
+    ],
+    [
+      "Gestionar stoc",
+      "4.000 lei",
+      "5.000 lei",
+      "25%"
+    ],
+    [
+      "Manipulant marfă",
+      "3.500 lei",
+      "4.000 lei",
+      "14%"
+    ],
+    [
+      "Lucrător depozit",
+      "3.500 lei",
+      "4.000 lei",
+      "14%"
+    ],
+    [
+      "Motostivuitorist",
+      "4.000 lei",
+      "5.000 lei",
+      "25%"
+    ],
+    [
+      "Ambalator",
+      "3.000 lei",
+      "4.000 lei",
+      "33%"
+    ],
+    [
+      "Picker",
+      "3.200 lei",
+      "4.000 lei",
+      "25%"
+    ],
+    [
+      "Poziție",
+      "Salariu mediu net real",
+      "Salariu mediu net așteptat",
+      "Diferență"
+    ],
+    [
+      "Agent turism",
+      "4.000 lei",
+      "5.000 lei",
+      "25%"
+    ],
+    [
+      "Manager/Director hotel",
+      "7.500 lei",
+      "10.000 lei",
+      "33%"
+    ],
+    [
+      "Bucătar",
+      "5.000 lei",
+      "7.000 lei",
+      "40%"
+    ],
+    [
+      "Ospătar",
+      "3.200 lei",
+      "4.000 lei",
+      "25%"
+    ],
+    [
+      "Barman",
+      "3.000 lei",
+      "4.000 lei",
+      "33%"
+    ],
+    [
+      "Barista",
+      "3.000 lei",
+      "4.000 lei",
+      "33%"
+    ],
+    [
+      "Ajutor bucătărie",
+      "3.400 lei",
+      "4.000 lei",
+      "18%"
+    ],
+    [
+      "Manager restaurant",
+      "5.000 lei",
+      "7.000 lei",
+      "40%"
+    ],
+    [
+      "Reprezentant vânzări HoReCa",
+      "4.000 lei",
+      "6.000 lei",
+      "50%"
+    ],
+    [
+      "Poziție",
+      "Salariu mediu net real",
+      "Salariu mediu net așteptat",
+      "Diferență"
+    ],
+    [
+      "Manager/Director magazin",
+      "5.000 lei",
+      "6.000 lei",
+      "20%"
+    ],
+    [
+      "Reprezentant vânzări",
+      "5.000 lei",
+      "7.000 lei",
+      "40%"
+    ],
+    [
+      "Agent vânzări",
+      "5.000 lei",
+      "6.500 lei",
+      "30%"
+    ],
+    [
+      "Account Manager",
+      "6.500 lei",
+      "8.000 lei",
+      "23%"
+    ],
+    [
+      "Key Account Manager",
+      "7.000 lei",
+      "9.000 lei",
+      "29%"
+    ],
+    [
+      "Manager vânzări",
+      "8.500 lei",
+      "12.000 lei",
+      "41%"
+    ],
+    [
+      "Consultant vânzări",
+      "4.000 lei",
+      "5.000 lei",
+      "25%"
+    ],
+    [
+      "Merchandiser",
+      "4.000 lei",
+      "5.000 lei",
+      "25%"
+    ],
+    [
+      "Lucrător comercial",
+      "3.800 lei",
+      "4.400 lei",
+      "33%"
+    ],
+    [
+      "Casier",
+      "4.000 lei",
+      "4.600 lei",
+      "25%"
+    ],
+    [
+      "Analist vânzări",
+      "5.500 lei",
+      "7.000 lei",
+      "27%"
+    ],
+    [
+      "Consilier auto",
+      "5.350 lei",
+      "7.000 lei",
+      "30%"
+    ],
+    [
+      "Business Developer",
+      "7.000 lei",
+      "9.000 lei",
+      "29%"
+    ]
+  ]
+}

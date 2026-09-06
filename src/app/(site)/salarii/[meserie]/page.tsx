@@ -45,6 +45,7 @@ import {
   type DateMeserie,
 } from "@/lib/meserii";
 import { SURSA_GRILE, grilaPublica } from "@/lib/grile-publice";
+import TransparentaSalariu from '@/app/components/TransparentaSalariu';
 import ReperSalariu from '@/app/components/ReperSalariu';
 import { descriereReper, grilaEducatie } from '@/lib/repere-meserii';
 import corCatalogue from '@/data/cor-meserii.json';
@@ -109,7 +110,7 @@ function faqPentru(date: DateMeserie) {
     { q: `Ce salariu este documentat pentru această meserie?`, a: descriereReper(date) },
     {
       q: `Cum documentează Salariile.ro venitul pentru ${numeMic}?`,
-      a: `Salariile.ro utilizează o metodologie exhaustivă multi-sursă: analizăm rapoartele salariale din piața privată de recrutare (eJobs Salario, Hays România), grilele oficiale din sectorul public (Legea 153/2017 cu valoarea mediană a treptelor profesionale) și intersecția statistică a seriilor INS (FOM121A × FOM106G). Fiecare sumă este granulară, reală și atribuită specific rolului.`,
+      a: descriereReper(date),
     },
     {
       q: 'Există salarii pentru juniori și seniori?',
@@ -199,8 +200,9 @@ export default async function MeseriePage({ params }: Props) {
             ]}
           />
           <H1>Salariu {numeMic} în 2026</H1>
-          <Lead>{meserie.ceFace} Vezi salariul net și compară meserii înrudite.</Lead>
+          <Lead>{meserie.ceFace} Vezi reperul salarial, sursa și limitele lui. Compară meserii înrudite.</Lead>
           <ReperSalariu date={date} />
+          <TransparentaSalariu slug={slug} />
           {grilaDidactica.length > 0 && <section className="mt-8 rounded-md border border-stone-200 bg-surface p-5">
             <h2 className="text-xl font-bold">Grad didactic, studii și vechime în învățământ</h2>
             <p className="mt-3 text-sm text-stone-600">Net standard pe trepte didactice.</p>
@@ -233,7 +235,7 @@ export default async function MeseriePage({ params }: Props) {
             <details className="mt-6"><summary className="min-h-11 cursor-pointer py-3 font-semibold">Contextul pieței muncii</summary><div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {clasament && (
                 <div className="rounded-md border border-stone-200 bg-surface p-5 shadow-soft">
-                  <div className="text-xs font-medium uppercase tracking-wide text-stone-500">
+                  <div className="text-xs font-medium uppercase tracking-wide text-stone-600">
                     Poziția în clasament
                   </div>
                   <p className="mt-2 text-base leading-normal text-stone-700">
@@ -245,13 +247,13 @@ export default async function MeseriePage({ params }: Props) {
                     <Link href="/salarii/clasament" className="underline underline-offset-2 hover:text-stone-900">
                       clasamentul salariilor nete
                     </Link>{" "}
-                    analizate pe site, după venitul net de referință.
+                    cu medii declarate în aceeași ediție Salario. Valorile egale au același loc.
                   </p>
                 </div>
               )}
               {interval && (
                 <div className="rounded-md border border-stone-200 bg-surface p-5 shadow-soft">
-                  <div className="text-xs font-medium uppercase tracking-wide text-stone-500">
+                  <div className="text-xs font-medium uppercase tracking-wide text-stone-600">
                     Brut lunar pe județe · media {AN_JUDETE_SCURT}
                   </div>
                   <p className="mt-2 text-base leading-normal text-stone-700">
@@ -269,7 +271,7 @@ export default async function MeseriePage({ params }: Props) {
                   ancheta pe ocupatii e anuala si din octombrie. */}
               {vacante && (
                 <div className="rounded-md border border-stone-200 bg-surface p-5 shadow-soft">
-                  <div className="text-xs font-medium uppercase tracking-wide text-stone-500">
+                  <div className="text-xs font-medium uppercase tracking-wide text-stone-600">
                     Posturi vacante, {trimestruScurt(PERIOADA_VACANTE)}
                   </div>
                   <p className="mt-2 text-base leading-normal text-stone-700">

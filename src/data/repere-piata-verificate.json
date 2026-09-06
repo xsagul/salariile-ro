@@ -1,0 +1,425 @@
+{
+  "source": "eJobs, Ghidul Salarial 2026 / Salario",
+  "url": "https://cariera.ejobs.ro/salarii-romania-ghidul-salarial-ejobs-2026/",
+  "checkedAt": "2026-09-07",
+  "period": "31 martie 2025 – 31 martie 2026",
+  "metric": "mean",
+  "unit": "net/month/RON",
+  "method": "Raportări voluntare ale angajaților. Eșantionul total al ghidului nu este eșantionul fiecărei meserii.",
+  "records": [
+    {
+      "slug": "programator",
+      "role": "Software Developer",
+      "net": 9000,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "web-developer",
+      "role": "Web Developer",
+      "net": 7200,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "devops-engineer",
+      "role": "DevOps Engineer",
+      "net": 9300,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "administrator-sistem",
+      "role": "Administrator IT",
+      "net": 10000,
+      "note": "Administrator IT este un rol apropiat; sursa nu izolează administratorii de sisteme de ceilalți administratori IT."
+    },
+    {
+      "slug": "tester-qa",
+      "role": "QA testare manuală",
+      "net": 6700,
+      "note": "Rolul sursei este QA manual; automatizarea nu este o cohortă separată în acest reper."
+    },
+    {
+      "slug": "contabil",
+      "role": "Contabil",
+      "net": 5200,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "avocat",
+      "role": "Avocat",
+      "net": 7000,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "auditor",
+      "role": "Auditor",
+      "net": 5000,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "consilier-juridic",
+      "role": "Consilier juridic",
+      "net": 5300,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "analist-financiar",
+      "role": "Analist financiar",
+      "net": 6500,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "ofiter-credite",
+      "role": "Ofițer credite",
+      "net": 4300,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "sofer-tir",
+      "role": "Șofer TIR/camion",
+      "net": 5500,
+      "note": "Sursa cumulează șoferi TIR/camion. Nu separă cursele interne de cele externe și nici diurna de salariul de bază."
+    },
+    {
+      "slug": "sofer-autobuz",
+      "role": "Șofer autobuz",
+      "net": 4600,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "taximetrist",
+      "role": "Șofer taxi",
+      "net": 4000,
+      "note": "Statistica nu precizează tratamentul comisioanelor și cheltuielilor mașinii; nu o interpreta drept profit al unei activități independente."
+    },
+    {
+      "slug": "electrician",
+      "role": "Electrician",
+      "net": 5000,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "instalator",
+      "role": "Instalator",
+      "net": 5000,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "sudor",
+      "role": "Sudor",
+      "net": 5500,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "mecanic-auto",
+      "role": "Mecanic auto",
+      "net": 5000,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "operator-productie",
+      "role": "Operator producție",
+      "net": 3500,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "operator-cnc",
+      "role": "Operator CNC",
+      "net": 4100,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "electromecanic",
+      "role": "Tehnician electromecanic",
+      "net": 5000,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "croitor",
+      "role": "Croitor",
+      "net": 3500,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "curier",
+      "role": "Curier",
+      "net": 4000,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "logistician",
+      "role": "Logistician",
+      "net": 5100,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "vanzator",
+      "role": "Lucrător comercial",
+      "net": 3800,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "casier",
+      "role": "Casier",
+      "net": 4000,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "bucatar",
+      "role": "Bucătar",
+      "net": 5000,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "chelner",
+      "role": "Ospătar",
+      "net": 3200,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "barman",
+      "role": "Barman",
+      "net": 3000,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "agent-turism",
+      "role": "Agent turism",
+      "net": 4000,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "agent-paza",
+      "role": "Agent pază și securitate",
+      "net": 3000,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "agent-curatenie",
+      "role": "Personal curățenie",
+      "net": 3000,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "frizer",
+      "role": "Frizer",
+      "net": 3700,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "cosmetician",
+      "role": "Cosmetician",
+      "net": 4000,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "ingrijitor-batrani",
+      "role": "Îngrijitor persoane vârstnice",
+      "net": 4100,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "asistent-medical",
+      "role": "Asistent medical",
+      "net": 4000,
+      "note": "Nu există separare public/privat, secție, ture sau sporuri în celula publicată."
+    },
+    {
+      "slug": "farmacist",
+      "role": "Farmacist",
+      "net": 4500,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "stomatolog",
+      "role": "Stomatolog",
+      "net": 6000,
+      "note": "Sursa nu separă contractul de muncă de colaborarea pe procent; nu reprezintă încasările unui cabinet."
+    },
+    {
+      "slug": "medic-veterinar",
+      "role": "Medic veterinar",
+      "net": 5400,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "tehnician-dentar",
+      "role": "Tehnician dentar",
+      "net": 5000,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "kinetoterapeut",
+      "role": "Kinetoterapeut",
+      "net": 3600,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "asistent-farmacie",
+      "role": "Asistent farmacist",
+      "net": 3450,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "psiholog",
+      "role": "Psiholog",
+      "net": 4500,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "infirmier",
+      "role": "Infirmier/ă",
+      "net": 3700,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "invatator",
+      "role": "Învățător",
+      "net": 3700,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "educator",
+      "role": "Educator",
+      "net": 4000,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "profesor-universitar",
+      "role": "Profesor universitar",
+      "net": 9000,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "actor",
+      "role": "Actor",
+      "net": 4600,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "arhitect",
+      "role": "Arhitect",
+      "net": 6000,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "agent-imobiliar",
+      "role": "Agent imobiliar",
+      "net": 5000,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "agent-vanzari",
+      "role": "Agent vânzări",
+      "net": 5000,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "designer-grafic",
+      "role": "Graphic Designer",
+      "net": 5200,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "secretar",
+      "role": "Secretar administrativ",
+      "net": 4000,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "editor",
+      "role": "Redactor",
+      "net": 4600,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "insotitor-de-bord",
+      "role": "Echipaj cabină",
+      "net": 8000,
+      "note": "Sursa nu publică separat baza, diurnele și plata orelor de zbor."
+    },
+    {
+      "slug": "inginer-auto",
+      "role": "Inginer automotive",
+      "net": 6800,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "inginer-telecomunicatii",
+      "role": "Inginer telecomunicații",
+      "net": 8500,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "inginer-aeronautic",
+      "role": "Inginer aeronave",
+      "net": 6200,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "inginer-agronom",
+      "role": "Inginer agronom",
+      "net": 5800,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "inginer-energetician",
+      "role": "Inginer energetician",
+      "net": 6000,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "specialist-marketing",
+      "role": "Specialist Marketing",
+      "net": 5300,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "jurnalist",
+      "role": "Jurnalist",
+      "net": 4900,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "traducator",
+      "role": "Traducător",
+      "net": 4300,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "cameraman",
+      "role": "Cameraman",
+      "net": 4000,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "agent-asigurari",
+      "role": "Agent asigurări",
+      "net": 4000,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "broker",
+      "role": "Broker",
+      "net": 4500,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "manager-magazin",
+      "role": "Manager/Director magazin",
+      "net": 5000,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    },
+    {
+      "slug": "operator-call-center",
+      "role": "Specialist servicii clienți",
+      "net": 4100,
+      "note": "Specialist servicii clienți este mai larg decât operator telefonic; canalele și limbile nu sunt separate."
+    },
+    {
+      "slug": "crupier",
+      "role": "Crupier cazino",
+      "net": 4000,
+      "note": "Sursa cumulează orașele și nivelurile de experiență; nu publică eșantionul acestei ocupații."
+    }
+  ]
+}

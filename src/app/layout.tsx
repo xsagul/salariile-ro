@@ -89,7 +89,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ro" className={inter.variable}>
-      <body className="min-h-screen overflow-x-hidden bg-white font-sans text-stone-700 antialiased">
+      <body className="min-h-screen overflow-x-hidden bg-canvas font-sans text-stone-700 antialiased">
         {children}
       </body>
     </html>

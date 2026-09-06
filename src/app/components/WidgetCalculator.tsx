@@ -204,11 +204,11 @@ export default function WidgetCalculator({ initialBrut }: { initialBrut?: string
         </h2>
 
         <div className="mb-5">
-          <span className="mb-2 block text-xs font-medium text-stone-500">Direcție de calcul</span>
+          <span className="mb-2 block text-xs font-medium text-stone-600">Direcție de calcul</span>
           <div className="flex w-full overflow-hidden rounded border border-stone-300">
             <button
               type="button"
-              className={`flex-1 inline-flex min-h-9 items-center justify-center px-3 text-xs font-medium transition-colors ${mod === "brut" ? "bg-stone-900 text-white" : "text-stone-500 hover:bg-canvas"}`}
+              className={`flex-1 inline-flex min-h-9 items-center justify-center px-3 text-xs font-medium transition-colors ${mod === "brut" ? "bg-stone-900 text-white" : "text-stone-600 hover:bg-canvas"}`}
               onClick={() => {
                 if (mod === "net") {
                   const netVal = parseFloat(valoare);
@@ -228,7 +228,7 @@ export default function WidgetCalculator({ initialBrut }: { initialBrut?: string
             </button>
             <button
               type="button"
-              className={`border-l border-stone-300 flex-1 inline-flex min-h-9 items-center justify-center px-3 text-xs font-medium transition-colors ${mod === "net" ? "bg-stone-900 text-white" : "text-stone-500 hover:bg-canvas"}`}
+              className={`border-l border-stone-300 flex-1 inline-flex min-h-9 items-center justify-center px-3 text-xs font-medium transition-colors ${mod === "net" ? "bg-stone-900 text-white" : "text-stone-600 hover:bg-canvas"}`}
               onClick={() => {
                 if (mod === "brut") {
                   const brutVal = parseFloat(valoare);
@@ -250,7 +250,7 @@ export default function WidgetCalculator({ initialBrut }: { initialBrut?: string
         </div>
 
         <div className="mb-5">
-          <label htmlFor="w-brut" className="mb-2 block text-xs font-medium text-stone-500">
+          <label htmlFor="w-brut" className="mb-2 block text-xs font-medium text-stone-600">
             {mod === "brut" ? "Salariu brut" : "Salariu net"}
           </label>
           <div
@@ -271,7 +271,7 @@ export default function WidgetCalculator({ initialBrut }: { initialBrut?: string
               placeholder={mod === "brut" ? `ex: ${grupeazaMii(String(EX_BRUT))}` : `ex: ${grupeazaMii(String(EX_NET))}`}
               className="min-w-0 flex-1 bg-transparent px-3 py-2 text-base text-stone-900 outline-none"
             />
-            <span className="flex shrink-0 items-center whitespace-nowrap border-l border-stone-200 px-3 text-xs font-medium text-stone-500">
+            <span className="flex shrink-0 items-center whitespace-nowrap border-l border-stone-200 px-3 text-xs font-medium text-stone-600">
               lei / lună
             </span>
           </div>
@@ -292,7 +292,7 @@ export default function WidgetCalculator({ initialBrut }: { initialBrut?: string
         <div className="mb-5 rounded border border-dashed border-stone-300 bg-surface">
           <button
             type="button"
-            className="flex min-h-10 w-full items-center justify-center px-3 text-xs font-medium text-stone-500 transition-colors hover:text-stone-700"
+            className="flex min-h-10 w-full items-center justify-center px-3 text-xs font-medium text-stone-600 transition-colors hover:text-stone-700"
             onClick={toggleAdvanced}
             aria-expanded={advancedOpen}
           >
@@ -310,7 +310,7 @@ export default function WidgetCalculator({ initialBrut }: { initialBrut?: string
             <div ref={advancedPanelRef} className="min-h-0 overflow-hidden">
               <div className="p-3">
                 <div className="grid grid-cols-2 gap-3">
-                  <label className="flex h-full flex-col gap-1 text-xs font-medium text-stone-500">
+                  <label className="flex h-full flex-col gap-1 text-xs font-medium text-stone-600">
                     <span className="min-[360px]:hidden">Pers. în întreținere</span>
                     <span className="hidden min-[360px]:inline">Persoane în întreținere</span>
                     <select
@@ -324,13 +324,13 @@ export default function WidgetCalculator({ initialBrut }: { initialBrut?: string
                     </select>
                   </label>
 
-                  <label className="flex h-full flex-col gap-1 text-xs font-medium text-stone-500">
+                  <label className="flex h-full flex-col gap-1 text-xs font-medium text-stone-600">
                     <span>Copii școlari</span>
                     <select
                       value={advanced.copiiScolarizati}
                       disabled={advanced.persoanePretretinere === 0}
                       onChange={(e) => updateAdvanced("copiiScolarizati", Number(e.target.value))}
-                      className="mt-auto h-9 w-full rounded border border-stone-300 bg-white px-2 text-sm text-stone-900 outline-none disabled:bg-canvas disabled:text-stone-400 focus:border-stone-400"
+                      className="mt-auto h-9 w-full rounded border border-stone-300 bg-white px-2 text-sm text-stone-900 outline-none disabled:bg-canvas disabled:text-stone-600 focus:border-stone-400"
                     >
                       {Array.from({ length: advanced.persoanePretretinere + 1 }, (_, n) => (
                         <option key={n} value={n}>{n === 0 ? "Niciunul" : n}</option>
@@ -450,7 +450,7 @@ export default function WidgetCalculator({ initialBrut }: { initialBrut?: string
                 Stat {procentStat}%
               </div>
             </div>
-            <p className="mt-2 text-xs text-stone-500">
+            <p className="mt-2 text-xs text-stone-600">
               Din costul total al firmei: netul tău vs taxe și contribuții ({fmt(totalTaxe + rez.cam)} lei).
             </p>
           </div>
@@ -472,12 +472,12 @@ export default function WidgetCalculator({ initialBrut }: { initialBrut?: string
                 </span>
               </span>
             </span>
-            <p className="max-w-52 text-sm text-stone-500">Introdu salariul și apasă Calculează.</p>
+            <p className="max-w-52 text-sm text-stone-600">Introdu salariul și apasă Calculează.</p>
           </div>
         </div>
       )}
 
-      <p className="text-xs text-stone-500">
+      <p className="text-xs text-stone-600">
         Actualizat conform legislației în vigoare ·{" "}
         <a
           href="https://salariile.ro?utm_source=widget"

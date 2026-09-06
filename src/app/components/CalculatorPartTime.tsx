@@ -12,7 +12,7 @@ const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(Math.round(n));
 const fmtOre = (n: number) =>
   new Intl.NumberFormat("ro-RO", { maximumFractionDigits: 2 }).format(n);
 
-const fieldLabel = "mb-2 block text-xs font-medium text-stone-500";
+const fieldLabel = "mb-2 block text-xs font-medium text-stone-600";
 const colHeader = "mb-4 border-b border-stone-200 pb-2 text-lg font-medium text-stone-900";
 const controlBox =
   "w-full min-w-0 rounded border border-stone-300 bg-surface px-3 py-2 text-base text-stone-900 outline-none transition focus:border-stone-400 focus:shadow-[0_0_6px_rgba(28,25,23,0.12)] sm:text-sm";
@@ -101,7 +101,7 @@ const rezultatInitial: RezultatAfisat = (() => {
 function Chevron() {
   return (
     <svg
-      className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-stone-500"
+      className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-stone-600"
       viewBox="0 0 20 20"
       fill="none"
       stroke="currentColor"
@@ -267,7 +267,7 @@ export default function CalculatorPartTime() {
                 }}
                 className="min-w-0 flex-1 bg-transparent px-3 py-2 text-base tabular-nums text-stone-900 outline-none"
               />
-              <span className="flex shrink-0 items-center whitespace-nowrap border-l border-stone-200 px-3 text-xs font-medium text-stone-500">lei / lună</span>
+              <span className="flex shrink-0 items-center whitespace-nowrap border-l border-stone-200 px-3 text-xs font-medium text-stone-600">lei / lună</span>
             </div>
             <p
               id="part-time-brut-ajutor"
@@ -287,7 +287,7 @@ export default function CalculatorPartTime() {
             aria-expanded={avansat}
             aria-controls="optiuni-avansate-part-time"
             onClick={comutaAvansat}
-            className="mb-5 flex min-h-11 w-full items-center justify-center rounded border border-dashed border-stone-300 px-4 text-xs font-medium text-stone-500 transition-colors hover:border-stone-400 hover:text-stone-700"
+            className="mb-5 flex min-h-11 w-full items-center justify-center rounded border border-dashed border-stone-300 px-4 text-xs font-medium text-stone-600 transition-colors hover:border-stone-400 hover:text-stone-700"
           >
             {avansat ? "▲ Ascunde opțiuni avansate" : "▼ Calculator avansat"}
           </button>

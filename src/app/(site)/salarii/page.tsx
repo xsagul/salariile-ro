@@ -31,7 +31,7 @@ const LUNA = lunaLunga(LUNA_REFERINTA);
 const NET_STANDARD_ECONOMIE = calculStandard(TOTAL_ECONOMIE.brutCurent)?.net ?? 0;
 
 
-const DESCRIERE = `Salarii documentate pentru ${MESERII.length} meserii în România: studii multi-sursă (rapoarte de piață, grile oficiale și statistici INS). Caută meseria și vezi salariul net real.`;
+const DESCRIERE = `Repere salariale pentru ${MESERII.length} meserii în România: medii declarate, grile de bază și context INS. Surse, perioade și comparații explicate.`;
 
 export const metadata: Metadata = {
   title: { absolute: `Salarii pe meserii în România 2026 | Salariile.ro` },
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
 const FAQ = [
   {
     q: "Cum documentează Salariile.ro salariul pentru fiecare meserie?",
-    a: `Salariile.ro aplică o metodologie exhaustivă multi-sursă: analizăm datele din rapoartele de recrutare independente (eJobs Salario, Hays România), grilele legale oficiale din sectorul public (Legea 153/2017 cu calculul valorii mediane a treptelor), intersecția statistică a seriilor INS (FOM121A × FOM106G) și monitorizarea ofertelor active. Fiecare dintre cele ${MESERII.length} de meserii are o valoare salarială proprie, granulară și studiată.`,
+    a: `Pentru fiecare meserie indicăm tipul datelor disponibile: medie declarată de angajați în Salario, interval din grila legală sau context statistic INS. Sursele de angajator sunt prezentate separat. Nu combinăm populații și perioade diferite într-o medie națională.`,
   },
   {
     q: "Publică INS salariul mediu pentru fiecare meserie?",
@@ -169,7 +169,7 @@ export default function SalariiPage() {
             </Link>
           </nav>
 
-          <p className="mt-6 text-sm text-stone-600">Sume nete lunare obținute prin metodologie exhaustivă multi-sursă: anunțuri de angajare, grile legale, rapoarte salariale și date INS — fiecare cifră este verificată încrucișat.</p>
+          <p className="mt-6 text-sm text-stone-600">Sume nete lunare cu sursa și perioada alături. Mediile declarate, intervalele din grile și estimările de grupă au semnificații diferite.</p>
 
           {categorii.map(({ categorie, meserii }) => (
             <section key={categorie.slug} id={categorie.slug} data-sectiune-meserii className="mt-12 scroll-mt-20">
@@ -216,7 +216,7 @@ export default function SalariiPage() {
               Metodologia din spatele reperelor salariale
             </h2>
             <p className="mt-4 text-base leading-normal text-stone-600">
-              Fiecare sumă netă afișată pe Salariile.ro este rezultatul unui studiu multi-sursă riguros. Paginile noastre combină rapoartele salariale din piața de recrutare privată, valorile mediane ale treptelor din grilele oficiale și intersecția statistică INS. Toate cifrele sunt prezentate în bani net primiți în mână, cu indicarea transparentă a sursei și a perioadei de referință.
+              Sursele se verifică separat: raportările angajaților descriu un eșantion voluntar, documentele angajatorilor descriu o instituție, iar INS oferă context pe activități și grupe. Grilele indică baza legală. Nu transformăm o medie sectorială sau suma dintr-o grilă într-un salariu observat al meseriei.
             </p>
 
             <NotaSursa>

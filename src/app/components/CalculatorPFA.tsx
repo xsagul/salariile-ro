@@ -193,7 +193,7 @@ function buildResult(s: Snap): Rezultat | null {
 }
 
 // ─── Tokens ──────────────────────────────────────────────────────────────────
-const fieldLabel = "mb-2 block text-xs font-medium text-stone-500";
+const fieldLabel = "mb-2 block text-xs font-medium text-stone-600";
 const colHeader = "mb-4 border-b border-stone-200 pb-2 text-lg font-medium text-stone-900";
 const cellL = "border-b border-r border-stone-300 px-3 py-3 text-left";
 const cellR = "border-b border-stone-300 px-3 py-3 text-right tabular-nums whitespace-nowrap";
@@ -205,14 +205,14 @@ function MoneyField({ id, label, hint, value, placeholder, unit = "lei / an", on
   return (
     <div className="mb-5">
       <label htmlFor={id} className={fieldLabel}>{label}</label>
-      {hint && <span className="mb-2 block text-xs text-stone-500">{hint}</span>}
+      {hint && <span className="mb-2 block text-xs text-stone-600">{hint}</span>}
       <div className="flex w-full overflow-hidden rounded border border-stone-300 transition focus-within:border-stone-400 focus-within:shadow-[0_0_6px_rgba(28,25,23,0.12)]">
         <input id={id} name={id} type="text" inputMode="numeric" value={grupeazaMii(value)}
           onChange={(e) => onChange(doarCifre(e.target.value))}
           onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); onEnter(); } }}
           placeholder={placeholder || "0"}
           className="min-w-0 flex-1 bg-transparent px-3 py-2 text-base leading-7 text-stone-900 outline-none" />
-        <span className="flex items-center whitespace-nowrap border-l border-stone-200 px-3 text-xs font-medium text-stone-500">{unit}</span>
+        <span className="flex items-center whitespace-nowrap border-l border-stone-200 px-3 text-xs font-medium text-stone-600">{unit}</span>
       </div>
     </div>
   );
@@ -316,7 +316,7 @@ export default function CalculatorPFA() {
 
 
   const tab = (active: boolean, extra = "") =>
-    `${extra} flex-1 inline-flex min-h-11 items-center justify-center px-2 text-sm font-medium transition-colors ${active ? "bg-stone-900 text-white" : "text-stone-500 hover:bg-canvas"}`;
+    `${extra} flex-1 inline-flex min-h-11 items-center justify-center px-2 text-sm font-medium transition-colors ${active ? "bg-stone-900 text-white" : "text-stone-600 hover:bg-canvas"}`;
 
   // Comparația între forme e disponibilă doar când avem cifra de afaceri.
   const srl = rez !== null && rez.tip === "real" ? rez.srl : null;
@@ -407,7 +407,7 @@ export default function CalculatorPFA() {
         )}
 
         <button type="button"
-          className="mb-5 flex min-h-11 w-full items-center justify-center rounded border border-dashed border-stone-300 px-4 text-xs font-medium text-stone-500 transition-colors hover:border-stone-400 hover:text-stone-700"
+          className="mb-5 flex min-h-11 w-full items-center justify-center rounded border border-dashed border-stone-300 px-4 text-xs font-medium text-stone-600 transition-colors hover:border-stone-400 hover:text-stone-700"
           onClick={() => {
             if (avansat) {
               // TOATE bifele, nu doar primele doua. Un comutator ramas activ
@@ -574,26 +574,26 @@ export default function CalculatorPFA() {
                       <Row label="Venituri (cifra de afaceri)" value={fmtP(rezultatSrl.venituri)} />
                       <Row label="Cheltuieli" value={fmtP(rezultatSrl.cheltuieli)} sub neg />
                       <Row
-                        label={'Cost salariu minim <span class="text-stone-400">' + (rezultatSrl.tip === "micro" ? "(obligatoriu la micro)" : "(opțional la impozit pe profit)") + "</span>"}
+                        label={'Cost salariu minim <span class="text-stone-600">' + (rezultatSrl.tip === "micro" ? "(obligatoriu la micro)" : "(opțional la impozit pe profit)") + "</span>"}
                         value={fmtP(rezultatSrl.costSalarial)}
                         sub
                         neg
                       />
                       <Row
-                        label={rezultatSrl.tip === "micro" ? 'Impozit micro <span class="text-stone-400">(1% pe venituri)</span>' : 'Impozit pe profit <span class="text-stone-400">(16%)</span>'}
+                        label={rezultatSrl.tip === "micro" ? 'Impozit micro <span class="text-stone-600">(1% pe venituri)</span>' : 'Impozit pe profit <span class="text-stone-600">(16%)</span>'}
                         value={fmtP(rezultatSrl.impozitFirma)}
                         sub
                         neg
                       />
                       <Row label="Dividende brute" value={fmtP(rezultatSrl.dividendeBrute)} />
-                      <Row label='Impozit pe dividende <span class="text-stone-400">(16%)</span>' value={fmtP(rezultatSrl.impozitDividende)} sub neg />
+                      <Row label='Impozit pe dividende <span class="text-stone-600">(16%)</span>' value={fmtP(rezultatSrl.impozitDividende)} sub neg />
                       <Row
-                        label={'CASS pe dividende <span class="text-stone-400">' + (rezultatSrl.cassDividende > 0 ? "(pe trepte, nu procent)" : "(sub 6 salarii minime)") + "</span>"}
+                        label={'CASS pe dividende <span class="text-stone-600">' + (rezultatSrl.cassDividende > 0 ? "(pe trepte, nu procent)" : "(sub 6 salarii minime)") + "</span>"}
                         value={fmtP(rezultatSrl.cassDividende)}
                         sub
                         neg
                       />
-                      <Row label='Salariu net încasat <span class="text-stone-400">(se adaugă)</span>' value={fmtP(rezultatSrl.salariuNet)} sub />
+                      <Row label='Salariu net încasat <span class="text-stone-600">(se adaugă)</span>' value={fmtP(rezultatSrl.salariuNet)} sub />
                       <Row label="Total taxe la stat" value={fmtP(rezultatSrl.totalTaxe)} bold />
                       <tr className="bg-stone-900">
                         <td className="border-r border-r-stone-600 px-3 py-3 text-left text-sm font-bold text-white">Rămâne la tine</td>
@@ -608,17 +608,17 @@ export default function CalculatorPFA() {
                         <>
                           <Row label="Normă de venit (bază de calcul)" value={fmtP(rez.r.norma)} />
                           {rez.incasari > 0 && (
-                            <Row label='Încasări efective <span class="text-stone-400">(nu schimbă taxele)</span>' value={fmtP(rez.incasari)} sub />
+                            <Row label='Încasări efective <span class="text-stone-600">(nu schimbă taxele)</span>' value={fmtP(rez.incasari)} sub />
                           )}
                         </>
                       )}
-                      <Row label='CAS <span class="text-stone-400">(Pensii − 25%)</span>' value={fmtP(rez.r.cas)} sub neg />
-                      <Row label='CASS <span class="text-stone-400">(Sănătate − 10%)</span>' value={fmtP(rez.r.cass)} sub neg />
+                      <Row label='CAS <span class="text-stone-600">(Pensii − 25%)</span>' value={fmtP(rez.r.cas)} sub neg />
+                      <Row label='CASS <span class="text-stone-600">(Sănătate − 10%)</span>' value={fmtP(rez.r.cass)} sub neg />
                       {rez.r.cassDiferentaMinima > 0 && (
-                        <Row label='din care diferență până la minimul CASS <span class="text-stone-400">(nedeductibilă)</span>' value={fmtP(rez.r.cassDiferentaMinima)} sub />
+                        <Row label='din care diferență până la minimul CASS <span class="text-stone-600">(nedeductibilă)</span>' value={fmtP(rez.r.cassDiferentaMinima)} sub />
                       )}
                       <Row
-                        label={rez.tip === "real" ? "Impozit pe venit (10%)" : 'Impozit pe venit <span class="text-stone-400">(10% pe normă, fără deducerea contribuțiilor)</span>'}
+                        label={rez.tip === "real" ? "Impozit pe venit (10%)" : 'Impozit pe venit <span class="text-stone-600">(10% pe normă, fără deducerea contribuțiilor)</span>'}
                         value={fmtP(rez.r.impozit)}
                         sub
                         neg
@@ -644,7 +644,7 @@ export default function CalculatorPFA() {
             {/* Comparația directă a celor două regimuri, la aceleași cifre reale. */}
             {rez.tip === "norma" && rez.totalTaxeReal !== null && (
               <div className="mt-3 rounded border border-stone-300 bg-canvas p-4">
-                <h3 className="mb-2 text-xs font-medium text-stone-500">La aceleași cifre, în sistem real</h3>
+                <h3 className="mb-2 text-xs font-medium text-stone-600">La aceleași cifre, în sistem real</h3>
                 {rez.totalTaxeReal === rez.r.totalTaxe ? (
                   <p className="text-sm leading-normal text-stone-700">
                     Taxele ar fi identice: <strong className="font-bold text-stone-900">{fmtP(rez.totalTaxeReal)} lei</strong>.
@@ -665,7 +665,7 @@ export default function CalculatorPFA() {
                     )}
                   </p>
                 )}
-                <p className="mt-2 text-xs leading-normal text-stone-500">
+                <p className="mt-2 text-xs leading-normal text-stone-600">
                   Comparație orientativă la aceleași încasări și cheltuieli. Trecerea de la un regim la altul nu este
                   liberă oricând: depinde de activitate, de opțiunea depusă și de pragul de mai jos.
                 </p>
@@ -685,7 +685,7 @@ export default function CalculatorPFA() {
                 <div className="flex min-w-0 items-center justify-start overflow-hidden whitespace-nowrap bg-stone-900 px-3 text-white" style={{ flexGrow: ang, flexBasis: 0 }}>Tu {ang}%</div>
                 <div className="flex min-w-0 items-center justify-end overflow-hidden whitespace-nowrap border-l border-dashed border-stone-300 bg-canvas px-3 text-stone-700" style={{ flexGrow: 100 - ang, flexBasis: 0 }}>Stat {100 - ang}%</div>
               </div>
-              <p className="mt-2 text-xs text-stone-500">
+              <p className="mt-2 text-xs text-stone-600">
                 {rez.tip === "real"
                   ? "Din venitul net: cât rămâne la tine și cât la stat."
                   : rez.incasari > 0
@@ -694,7 +694,7 @@ export default function CalculatorPFA() {
               </p>
             </div>
 
-            <p className="mt-4 text-xs leading-normal text-stone-500">
+            <p className="mt-4 text-xs leading-normal text-stone-600">
               {rezultatSrl ? (
                 <>
                   Estimare pentru {rezultatSrl.tip === "micro" ? "SRL microîntreprindere" : "SRL cu impozit pe profit"},
@@ -754,7 +754,7 @@ export default function CalculatorPFA() {
                 </tbody>
               </table>
             </div>
-            <p className="mt-4 text-xs leading-relaxed text-stone-500">
+            <p className="mt-4 text-xs leading-relaxed text-stone-600">
               Completează datele și apasă Calculează · CAS 25%, CASS 10%, impozit 10% · Plafoane 2026
             </p>
           </>

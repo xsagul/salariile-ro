@@ -117,7 +117,7 @@ export function Lead({ children }: { children: ReactNode }) {
 }
 
 export function Eyebrow({ children }: { children: ReactNode }) {
-  return <p className="mt-4 text-xs uppercase tracking-wide text-stone-500">{children}</p>;
+  return <p className="mt-4 text-xs uppercase tracking-wide text-stone-600">{children}</p>;
 }
 
 // Listă FAQ cu <details>/<summary> nativ. Marker custom +/− prin group-open.
@@ -268,9 +268,9 @@ export function CardCompanion({
 }) {
   return (
     <div className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
-      <h3 className="mb-3 text-xs font-medium text-stone-500">{titlu}</h3>
+      <h3 className="mb-3 text-xs font-medium text-stone-600">{titlu}</h3>
       {children}
-      {nota ? <p className="mt-3 text-xs text-stone-500">{nota}</p> : null}
+      {nota ? <p className="mt-3 text-xs text-stone-600">{nota}</p> : null}
     </div>
   );
 }

@@ -72,7 +72,7 @@ export default function MetodologiePage() {
       <Hero>
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Metodologie" }]} />
         <H1>Metodologie de calcul</H1>
-        <p className="mt-3 text-sm text-stone-500 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2">
+        <p className="mt-3 text-sm text-stone-600 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2">
           Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Publicat 1 aprilie 2026 · Actualizat 26 iulie 2026
         </p>
         <Lead>
@@ -276,40 +276,19 @@ export default function MetodologiePage() {
         </Section>
 
         <Section>
-            <h2 id="salarii">Cum documentăm salariile pe meserii: Metodologia multi-sursă Salariile.ro</h2>
-            <p>
-              Fiecare dintre cele 132 de meserii analizate pe <Link href="/salarii">Salariile.ro</Link> beneficiază de un studiu exhaustiv documentat individual. Pentru a oferi cifre reale, granulare și ancorate în realitatea pieței muncii din România, integrăm patru piloni metodologici independenți:
-            </p>
-            <ol className="list-decimal space-y-3 pl-5 text-stone-700">
-              <li>
-                <strong>Piața muncii și ghidurile salariale de recrutare:</strong> Analizăm rapoartele salariale anuale independente și comparatoarele de referință din România (<a href="https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf" rel="nofollow noopener">eJobs Review &amp; Trends 2026</a>, comparatorul Salario, ghidul salarial <a href="https://www.hays.ro/en/salary-guide/overview" rel="nofollow noopener">Hays România 2026</a>). Aceste surse reflectă nivelurile salariale nete negociate și declarate în companiile private.
-              </li>
-              <li>
-                <strong>Grile oficiale și legislația de salarizare:</strong> Pentru funcțiile din sectorul public (învățământ, sănătate, justiție, administrație, ordine publică), extragem sumele oficiale prevăzute de <a href="https://legislatie.just.ro/Public/DetaliiDocument/190446" rel="nofollow noopener">Legea-cadru 153/2017</a> cu toate modificările și treptele în plată. Pentru fiecare rol bugetar atribuim valoarea mediană a treptelor profesionale (grad, vechime, nivel de încadrare), reflectând nivelul de mijloc al carierei.
-              </li>
-              <li>
-                <strong>Intersecția statistică ocupațională INS:</strong> Corelăm ancheta structurală a câștigurilor pe ocupații (<a href="https://statistici.insse.ro/tempoins/?ind=FOM121A&lang=ro&page=tempo3" rel="nofollow noopener">FOM121A</a>) cu seriile lunare pe ramuri economice (<a href="https://statistici.insse.ro/tempoins/?ind=FOM106G&lang=ro&page=tempo3" rel="nofollow noopener">FOM106G</a>). Această corelare ajustează media sectorului CAEN cu ponderea specifică a grupei de competențe ISCO-08, indexată la dinamica salarială curentă a economiei.
-              </li>
-              <li>
-                <strong>Monitorizarea ofertelor și a organizațiilor profesionale:</strong> Monitorizăm dinamica anunțurilor de angajare active, raportările asociațiilor de profil (precum UNTRR în transporturi rutiere, Colegiul Medicilor Stomatologi, UNNPR în notariat) și contractele colective de ramură pentru a asigura un nivel granular și distinct pentru fiecare ocupație.
-              </li>
-            </ol>
-            <h3>Granularitate 100% și eliminarea coliziunilor</h3>
-            <p>
-              Spre deosebire de agregatoarele automate care aplică aceeași medie de sector tuturor profesiilor dintr-o industrie, Salariile.ro diferențiază fiecare meserie în mod individual. Fiecare dintre cele 132 de ocupații are propriul salariu net de referință studiat, fără coliziuni artificiale, respectând cerințele de calificare și specificul fiecărui rol.
-            </p>
-            <h3>Salarii nete unice și valori mediane clare</h3>
-            <p>
-              Pentru fiecare meserie afișăm direct venitul net lunar (banii primiți în mână), calculat conform legislației fiscale la zi. Acolo unde grilele legale conțin trepte de carieră sau gradații de vechime, stabilim valoarea mediană reprezentativă a intervalului, oferind o perspectivă realistă și eliminând confuzia intervalelor largi.
-            </p>
-            <h3>Județ, experiență și context regional</h3>
-            <p>
-              Defalcarea pe județe este preluată din seriile anuale oficiale INS (matricea FOM107E), arătând variațiile geografice reale ale economiei locale. Variația pe grupe de vârstă (FOM121B) și cererea de forță de muncă prin locuri vacante (LMV102D) completează tabloul pieței pentru fiecare profesie.
-            </p>
-            <h3>Codurile COR și alinierea ocupațională</h3>
-            <p>
-              Asocierile cu Clasificarea Ocupațiilor din România respectă <a href="https://data.gov.ro/dataset/clasificarea-ocupatiilor-din-romania">catalogul oficial COR</a>, asigurând puntea de legătură între denumirile uzuale din piața muncii și codurile oficiale din nomenclatorul național.
-            </p>
+            <h2 id="salarii">Cum verificăm salariile pe meserii</h2>
+            <p>Fiecare reper din <Link href="/salarii">catalog</Link> păstrează sursa, perioada, populația și natura sumei. Sursele independente sunt prezentate alături, cu diferențele explicate. Nu calculăm o medie între un sondaj, o ofertă și o grilă.</p>
+            <h3>Salarii declarate de angajați</h3>
+            <p>Folosim mediile nete publicate în <a href="https://cariera.ejobs.ro/salarii-romania-ghidul-salarial-ejobs-2026/">Ghidul Salarial eJobs 2026</a>, pentru raportări între 31 martie 2025 și 31 martie 2026. Eșantionul este voluntar. Numărul total de răspunsuri din ghid nu reprezintă numărul de răspunsuri al fiecărei meserii. Păstrăm denumirea exactă a rolului sursei și semnalăm asocierile mai largi.</p>
+            <h3>Raportări de angajator și grile</h3>
+            <p>Documentele de transparență salarială permit separarea bazei de sporuri. Publicăm intervale ale funcțiilor din instituția citată. Conversia brut/net este standard, fără presupuneri despre deducerile persoanelor. Rândurile nu sunt tratate automat ca angajați distincți. Componentele anuale nu se adună la salariul lunar.</p>
+            <p>Grilele Legii 153/2017 indică trepte ale bazei legale, nu media salariilor încasate. Afișăm intervalul treptelor disponibile. Fără ponderile angajaților pe trepte nu putem calcula o mediană a personalului.</p>
+            <h3>Estimări INS și limite ocupaționale</h3>
+            <p>FOM121A încrucișează activitatea economică și grupa majoră ISCO. Corelarea cu seria lunară FOM106G produce o estimare de grupă, nu salariul unui cod COR. Datele pe județe descriu activități economice, iar vârsta nu este echivalentul experienței profesionale.</p>
+            <h3>Controlul surselor</h3>
+            <p>Nu inventăm numere de anunțuri, percentile sau scoruri de încredere. Două meserii pot avea aceeași valoare raportată. Nu modificăm cifrele pentru a obține salarii distincte și nu eliminăm observații istorice folosind pragul legal dintr-o altă perioadă.</p>
+            <h3 id="corectii">Jurnal de corecții</h3>
+            <p><time dateTime="2026-09-07">7 septembrie 2026</time>: am retras afirmațiile despre eșantioane de anunțuri și scoruri de încredere fără înregistrări verificabile, am înlocuit reperele de piață cu valori atribuite punctual și am separat intervalele din grile de salariile declarate. Am adăugat raportări de angajator cu baza și componentele lunare distincte. Revizia de date și implementarea aparțin autorului site-ului; nu declarăm o revizie contabilă externă.</p>
         </Section>
 
         <Section>

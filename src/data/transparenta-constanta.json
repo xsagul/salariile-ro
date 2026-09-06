@@ -1,0 +1,188 @@
+{
+  "source": "SCJU Sfântul Apostol Andrei Constanța",
+  "url": "https://www.spitalulconstanta.ro/wp-content/uploads/2026/03/Venituri_salariale-Martie_2026.xlsx",
+  "checkedAt": "2026-09-07",
+  "period": "martie 2026",
+  "unit": "gross/month/RON",
+  "method": "Intervalul rândurilor publicate pentru funcții de execuție. Baza este coloana D; suma componentelor lunare este D:U. Voucherele și indemnizația anuală de hrană V:W sunt excluse. Rândurile nu sunt identificate drept persoane distincte. Nu estimăm media națională.",
+  "records": [
+    {
+      "slug": "asistent-medical",
+      "rows": 1092,
+      "locator": "Sheet1, rânduri 38–1182, funcții fără conducere",
+      "roles": [
+        "Asistent medical",
+        "Asistent medical debutant",
+        "Asistent medical principal"
+      ],
+      "baseMin": 1701,
+      "baseMax": 9849,
+      "componentsMin": 2313,
+      "componentsMax": 16887
+    },
+    {
+      "slug": "asistent-farmacie",
+      "rows": 19,
+      "locator": "Sheet1, rânduri 18–37, funcții fără conducere",
+      "roles": [
+        "Asistent de farmacie licentiat principal",
+        "Asistent farmacie principal"
+      ],
+      "baseMin": 6983,
+      "baseMax": 7954,
+      "componentsMin": 7982,
+      "componentsMax": 11163
+    },
+    {
+      "slug": "medic",
+      "rows": 759,
+      "locator": "Sheet1, rânduri 2064–3942, funcții fără conducere",
+      "roles": [
+        "Medic primar ",
+        "Medic specialist "
+      ],
+      "baseMin": 3849,
+      "baseMax": 22866,
+      "componentsMin": 4430,
+      "componentsMax": 40066
+    },
+    {
+      "slug": "medic-rezident",
+      "rows": 1069,
+      "locator": "Sheet1, rânduri 2554–3622, funcții fără conducere",
+      "roles": [
+        "Medic rezident anul I",
+        "Medic rezident anul II ",
+        "Medic rezident anul III ",
+        "Medic rezident anul IV-V",
+        "Medic rezident anul VI-VII "
+      ],
+      "baseMin": 3294,
+      "baseMax": 11704,
+      "componentsMin": 3294,
+      "componentsMax": 18359
+    },
+    {
+      "slug": "farmacist",
+      "rows": 124,
+      "locator": "Sheet1, rânduri 1428–1552, funcții fără conducere",
+      "roles": [
+        "Farmacist",
+        "Farmacist primar",
+        "Farmacist rezident anul I",
+        "Farmacist rezident anul II",
+        "Farmacist rezident anul III",
+        "Farmacist specialist"
+      ],
+      "baseMin": 6668,
+      "baseMax": 13871,
+      "componentsMin": 6668,
+      "componentsMax": 21099
+    },
+    {
+      "slug": "infirmier",
+      "rows": 421,
+      "locator": "Sheet1, rânduri 1570–1990, funcții fără conducere",
+      "roles": [
+        "Infirmiera ",
+        "Infirmiera debutant"
+      ],
+      "baseMin": 4615,
+      "baseMax": 5844,
+      "componentsMin": 4900,
+      "componentsMax": 8941
+    },
+    {
+      "slug": "psiholog",
+      "rows": 13,
+      "locator": "Sheet1, rânduri 4083–4095, funcții fără conducere",
+      "roles": [
+        "Psiholog principal",
+        "Psiholog specialist"
+      ],
+      "baseMin": 8944,
+      "baseMax": 10415,
+      "componentsMin": 8944,
+      "componentsMax": 13987
+    },
+    {
+      "slug": "kinetoterapeut",
+      "rows": 5,
+      "locator": "Sheet1, rânduri 2042–2046, funcții fără conducere",
+      "roles": [
+        "KINETOTERAPEUT",
+        "Kinetoterapeut debutant"
+      ],
+      "baseMin": 3666,
+      "baseMax": 8088,
+      "componentsMin": 4491,
+      "componentsMax": 8731
+    },
+    {
+      "slug": "biolog",
+      "rows": 9,
+      "locator": "Sheet1, rânduri 1210–1218, funcții fără conducere",
+      "roles": [
+        "Biolog principal",
+        "Biolog specialist"
+      ],
+      "baseMin": 7555,
+      "baseMax": 12309,
+      "componentsMin": 11264,
+      "componentsMax": 17869
+    },
+    {
+      "slug": "chimist",
+      "rows": 6,
+      "locator": "Sheet1, rânduri 1386–1391, funcții fără conducere",
+      "roles": [
+        "Chimist principal",
+        "Chimist specialist"
+      ],
+      "baseMin": 7933,
+      "baseMax": 12309,
+      "componentsMin": 12426,
+      "componentsMax": 18830
+    },
+    {
+      "slug": "asistent-social",
+      "rows": 13,
+      "locator": "Sheet1, rânduri 1185–1197, funcții fără conducere",
+      "roles": [
+        "Asistent social",
+        "Asistent social principal"
+      ],
+      "baseMin": 7698,
+      "baseMax": 9748,
+      "componentsMin": 7871,
+      "componentsMax": 13190
+    },
+    {
+      "slug": "cercetator",
+      "rows": 17,
+      "locator": "Sheet1, rânduri 1369–1385, funcții fără conducere",
+      "roles": [
+        "Cercetator stiintific",
+        "Cercetator stiintific I",
+        "Cercetator stiintific II",
+        "Cercetator stiintific III"
+      ],
+      "baseMin": 6314,
+      "baseMax": 22866,
+      "componentsMin": 7990,
+      "componentsMax": 40066
+    },
+    {
+      "slug": "pompier",
+      "rows": 14,
+      "locator": "Sheet1, rânduri 4068–4081, funcții fără conducere",
+      "roles": [
+        "Pompier"
+      ],
+      "baseMin": 6044,
+      "baseMax": 6667,
+      "componentsMin": 7153,
+      "componentsMax": 7848
+    }
+  ]
+}

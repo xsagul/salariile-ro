@@ -11,6 +11,7 @@ import {
 } from "@/lib/date-salarii";
 import { personSchema } from "@/lib/person";
 import { ogPage, SITE_URL, twPage } from "@/lib/seo";
+import BuletinSalarii from '@/app/components/BuletinSalarii';
 import TabelArticol from "@/app/components/TabelArticol";
 
 const PAGE_PATH = "/date-salarii";
@@ -146,7 +147,7 @@ export default function DateSalariiPage() {
       <Hero>
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Date salariale 2026" }]} />
         <H1>Date salariale România 2026</H1>
-        <p className="mt-3 text-sm text-stone-500 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2">
+        <p className="mt-3 text-sm text-stone-600 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2">
           Compilat și verificat de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Publicat 29 iulie 2026 · Actualizat 25 august 2026
         </p>
         <Lead>
@@ -198,17 +199,17 @@ export default function DateSalariiPage() {
                 <tr key={record.id}>
                   <th scope="row">
                     <strong>{record.indicator}</strong>
-                    <span className="mt-1 block text-xs text-stone-500">{record.period_label}</span>
+                    <span className="mt-1 block text-xs text-stone-600">{record.period_label}</span>
                   </th>
                   <td>
                     <strong>{formatLei(record.gross_lei)}</strong>
-                    <span className="mt-1 block text-xs text-stone-500">
+                    <span className="mt-1 block text-xs text-stone-600">
                       {valueTypeLabels[record.gross_value_type]}
                     </span>
                   </td>
                   <td>
                     <strong>{formatLei(record.net_lei)}</strong>
-                    <span className="mt-1 block text-xs text-stone-500">
+                    <span className="mt-1 block text-xs text-stone-600">
                       {valueTypeLabels[record.net_value_type]}
                     </span>
                   </td>
@@ -236,6 +237,7 @@ export default function DateSalariiPage() {
       </Section>
 
       <Section>
+          <BuletinSalarii />
         <h2>De ce 9.192 lei nu este același lucru cu {formatLei(LATEST_INS_EARNINGS.grossLei)} lei</h2>
         <p>
           <strong>9.192 lei brut</strong> este câștigul salarial mediu brut utilizat la fundamentarea bugetului

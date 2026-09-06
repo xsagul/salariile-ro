@@ -65,21 +65,23 @@ export const PAGE_LAST_MODIFIED: Record<string, Date> = {
   "/calculator-salariu-part-time": new Date("2026-08-28T00:00:00.000Z"),
   "/calculator-salariu-invatamant": new Date("2026-08-28T00:00:00.000Z"),
   "/salariu-mediu": new Date("2026-08-25T00:00:00.000Z"),
-  "/salarii": new Date("2026-08-25T00:00:00.000Z"),
-  "/salarii/clasament": new Date("2026-09-06T00:00:00.000Z"),
+  "/salarii": new Date("2026-09-07T00:00:00.000Z"),
+  "/salarii/clasament": new Date("2026-09-07T00:00:00.000Z"),
   "/salarii/judete": new Date("2026-08-25T00:00:00.000Z"),
   "/salarii/femei-barbati": new Date("2026-08-25T00:00:00.000Z"),
   "/salarii/locuri-vacante": new Date("2026-08-25T00:00:00.000Z"),
   "/compara": new Date("2026-08-25T00:00:00.000Z"),
-  "/metodologie": new Date("2026-07-26T00:00:00.000Z"),
+  "/metodologie": new Date("2026-09-07T00:00:00.000Z"),
   "/deducere-personala-2026": new Date("2026-07-06T00:00:00.000Z"),
-  "/zile-libere-2026": new Date("2026-07-26T00:00:00.000Z"),
-  "/zile-lucratoare-2026": new Date("2026-07-15T00:00:00.000Z"),
+  "/zile-libere-2026": new Date("2026-09-07T00:00:00.000Z"),
+  "/zile-lucratoare-2026": new Date("2026-09-07T00:00:00.000Z"),
+  "/zile-libere-2027": new Date("2026-09-07T00:00:00.000Z"),
+  "/zile-lucratoare-2027": new Date("2026-09-07T00:00:00.000Z"),
   "/fluturas-salariu": new Date("2026-07-26T00:00:00.000Z"),
   "/widget": new Date("2026-08-25T00:00:00.000Z"),
-  "/date-salarii": new Date("2026-08-25T00:00:00.000Z"),
+  "/date-salarii": new Date("2026-09-07T00:00:00.000Z"),
   "/noutati": new Date("2026-07-26T00:00:00.000Z"),
-  "/despre": new Date("2026-09-05T00:00:00.000Z"),
+  "/despre": new Date("2026-09-07T00:00:00.000Z"),
   "/contact": new Date("2026-04-01T00:00:00.000Z"),
   "/politica-confidentialitate": new Date("2026-08-14T00:00:00.000Z"),
   "/cookies": new Date("2026-08-14T00:00:00.000Z"),
@@ -88,7 +90,7 @@ export const PAGE_LAST_MODIFIED: Record<string, Date> = {
 
 import { INS_GENERAT_LA } from "@/lib/ins-date";
 
-export const MESERII_EDITORIAL_UPDATE = new Date("2026-09-06T00:00:00.000Z");
+export const MESERII_EDITORIAL_UPDATE = new Date("2026-09-07T00:00:00.000Z");
 export const MESERII_LAST_MODIFIED = new Date(
   Math.max(new Date(INS_GENERAT_LA).getTime(), MESERII_EDITORIAL_UPDATE.getTime()),
 );

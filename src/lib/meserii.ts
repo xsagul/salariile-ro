@@ -492,16 +492,8 @@ function dateMeserieFaraClasament(meserie: Meserie): Omit<DateMeserie, "clasamen
   const rezultat = calculStandard(sector.brutCurent);
   const rawJudete = judetePentru(meserie.caen2);
   const national = nationalJudete(meserie.caen2);
-
-  // Varianta A: Indexare la dinamica salarială a sectorului (2026) și garantare minim legal (4.325 lei brut)
-  const factor = national && national > 0 && sector.brutCurent > national ? sector.brutCurent / national : 1;
-  const judete = rawJudete
-    .map((j) => ({
-      ...j,
-      brut: Math.max(SALARIU_MINIM, Math.round(j.brut * factor)),
-    }))
-    .sort((a, b) => b.brut - a.brut);
-  const mediaJudete = national ? Math.max(SALARIU_MINIM, Math.round(national * factor)) : null;
+  const judete = [...rawJudete].sort((a, b) => b.brut - a.brut);
+  const mediaJudete = national;
 
   const isco = grupaIsco(meserie.isco);
   return {

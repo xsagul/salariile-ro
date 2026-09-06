@@ -25,7 +25,7 @@ export default function EmbedCode({ code }: { code: string }) {
       </pre>
       <button
         onClick={copy}
-        className="absolute right-3 top-3 rounded-md bg-stone-700 px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-stone-600"
+        className="absolute right-3 top-3 rounded bg-stone-700 px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-stone-600"
       >
         {copied ? "Copiat ✓" : "Copiază codul"}
       </button>

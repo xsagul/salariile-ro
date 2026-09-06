@@ -188,7 +188,7 @@ export default function JudetePage() {
                   const abatere = NATIONAL_JUDETE ? (judet.brut - NATIONAL_JUDETE) / NATIONAL_JUDETE : null;
                   return (
                     <tr key={judet.slug}>
-                      <td className="border-b border-stone-100 px-3 py-2 text-left text-stone-500">{index + 1}</td>
+                      <td className="border-b border-stone-100 px-3 py-2 text-left text-stone-600">{index + 1}</td>
                       <th
                         scope="row"
                         className="relative border-b border-stone-100 px-3 py-2 text-left font-medium text-stone-900"

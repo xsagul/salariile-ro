@@ -209,7 +209,7 @@ export default function Header() {
 
         {/* Mobile hamburger */}
         <button
-          className="ml-auto flex h-11 w-11 cursor-pointer flex-col items-center justify-center gap-[5px] rounded-md p-0 hover:bg-stone-200/60 md:hidden"
+          className="ml-auto flex h-11 w-11 cursor-pointer flex-col items-center justify-center gap-[5px] rounded p-0 hover:bg-stone-200/60 md:hidden"
           aria-label={open ? "Închide meniul" : "Deschide meniul"}
           aria-expanded={open}
           onClick={() => setOpen(!open)}

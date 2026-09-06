@@ -175,7 +175,7 @@ export default async function ComparatiePage({ params }: Props) {
               <strong>Avertisment metodologic:</strong> Cele două meserii folosesc repere diferite ({ra.label} din {ra.period} pentru {a.meserie.nume} față de {rb.label} din {rb.period} pentru {b.meserie.nume}). Cifrele descriu cadre statistice distincte și nu reprezintă un raport salarial direct între două persoane.
             </div>
           ) : (
-            <p className="mt-4 text-xs text-stone-500">
+            <p className="mt-4 text-xs text-stone-600">
               Ambele ocupații folosesc același tip de reper ({ra.label}, {ra.period}). Cifrele reflectă agregate de piață, nu salarii negociate individual.
             </p>
           )}

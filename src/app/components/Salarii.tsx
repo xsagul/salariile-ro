@@ -74,7 +74,7 @@ export function CardCifra({
         accent ? "border-2 border-stone-900" : "border border-stone-200"
       }`}
     >
-      <div className="text-xs font-medium uppercase tracking-wide text-stone-500">{eticheta}</div>
+      <div className="text-xs font-medium uppercase tracking-wide text-stone-600">{eticheta}</div>
       <div className="mt-2 text-2xl font-bold tracking-[-0.02em] text-stone-900 sm:text-3xl">
         {valoare}
         {unitate && <span className="ml-1 text-base font-medium">{unitate}</span>}
@@ -329,12 +329,12 @@ export function LinkCard({
     >
       <span className="min-w-0">
         <span className="block truncate text-sm font-medium text-stone-900">{titlu}</span>
-        {detaliu && <span className="block truncate text-xs text-stone-500">{detaliu}</span>}
+        {detaliu && <span className="block truncate text-xs text-stone-600">{detaliu}</span>}
       </span>
       {valoare && (
         <span className="shrink-0 text-right">
           <span className="block text-sm font-semibold tabular-nums text-stone-700">{valoare}</span>
-          {subvaloare && <span className="block text-xs tabular-nums text-stone-500">{subvaloare}</span>}
+          {subvaloare && <span className="block text-xs tabular-nums text-stone-600">{subvaloare}</span>}
         </span>
       )}
     </Link>

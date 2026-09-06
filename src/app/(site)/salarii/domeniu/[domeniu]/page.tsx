@@ -252,7 +252,7 @@ export default async function DomeniuPage({ params }: Props) {
                         >
                           {intrare.meserie.nume}
                         </Link>
-                        <span className="mt-1 block text-xs font-normal text-stone-500">
+                        <span className="mt-1 block text-xs font-normal text-stone-600">
                           CAEN {intrare.sector.cheie} ·{" "}
                           {denumireScurtaCaen(intrare.sector.cheie, intrare.sector.denumire)}
                         </span>

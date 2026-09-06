@@ -25,7 +25,11 @@ const counts:Record<string,number>={};
 for(const m of MESERII) {
  const r=reperMeserie(dateMeserieSauEroare(m)); counts[r.kind]=(counts[r.kind]??0)+1;
  assert.equal(r.unit,'lei net/lună');assert.ok(r.url.startsWith('https://'));assert.ok(r.period);assert.ok(r.population);assert.ok(r.note);
- assert.equal(r.n,null);assert.equal(r.median,null);assert.equal(r.p25,null);assert.equal(r.p75,null);
+ assert.ok(r.median !== null && r.median > 0, m.slug);
+ assert.ok(r.p25 !== null && r.p25 > 0, m.slug);
+ assert.ok(r.p75 !== null && r.p75 >= r.median, m.slug);
+ assert.ok(r.p25 <= r.median, m.slug);
+ assert.ok(r.n === null || (typeof r.n === 'number' && r.n > 0), m.slug);
  assert.ok(!textReper(r).includes('NaN')); assert.ok(r.value===null || r.value>0);
  const mapping=cor.occupations[m.slug as keyof typeof cor.occupations];assert.ok(mapping);
  assert.equal(m.cor??null,mapping.code);if(m.cor)assert.ok(mapping.name);
@@ -35,7 +39,7 @@ for(const m of MESERII) {
  const val = indicatorMeserie(r).value;
  assert.ok(val !== null && val > 0);
 }
-assert.equal(reperMeserie(dateMeserieSauEroare(MESERII.find(x=>x.slug==='contabil')!)).value,5000);
+assert.equal(reperMeserie(dateMeserieSauEroare(MESERII.find(x=>x.slug==='contabil')!)).value,5200);
 assert.equal(reperMeserie(dateMeserieSauEroare(MESERII.find(x=>x.slug==='cercetator')!)).kind,'sector-context');
 assert.equal(reperMeserie(dateMeserieSauEroare(MESERII.find(x=>x.slug==='constructor')!)).kind,'external-reported');
 assert.equal(cor.occupations.zugrav.code,'713102');assert.equal(cor.occupations.contabil.code,'331302');

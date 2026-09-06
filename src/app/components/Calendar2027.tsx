@@ -1,0 +1,18 @@
+import Link from 'next/link';
+import {Breadcrumb,H1,Lead} from '@/app/components/ui';
+import {SARBATORI_LEGALE_2027,zileLucratoareLuna} from '@/lib/sarbatori';
+import CalculatorIntervalZile from './CalculatorIntervalZile';
+const months=Array.from({length:12},(_,m)=>({name:new Intl.DateTimeFormat('ro-RO',{month:'long',timeZone:'UTC'}).format(new Date(Date.UTC(2027,m,1))),days:zileLucratoareLuna(2027,m)}));
+const total=months.reduce((n,m)=>n+m.days,0);
+export default function Calendar2027({tip}:{tip:'libere'|'lucratoare'}){
+ const work=tip==='lucratoare';
+ return <div className="bg-canvas"><div className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
+  <Breadcrumb items={[{href:'/',label:'Acasă'},{label:work?'Zile lucrătoare 2027':'Zile libere 2027'}]}/>
+  <H1>{work?`Zile lucrătoare 2027: ${total} de zile`:'Zile libere 2027: calendarul sărbătorilor legale'}</H1>
+  <Lead>{work?`${total} de zile lucrătoare și ${(total*8).toLocaleString('ro-RO')} de ore la 8 ore pe zi, pentru program luni–vineri și calendar ortodox.`:'Datele sărbătorilor legale din 2027, conform Codului Muncii în vigoare. Paștele ortodox este pe 2 mai.'}</Lead>
+  <nav className="mt-5 flex flex-wrap gap-4 text-sm"><Link className="min-h-11 py-3 underline" href={work?'/zile-libere-2027':'/zile-lucratoare-2027'}>{work?'Calendarul zilelor libere':'Tabelul zilelor lucrătoare'}</Link><Link className="min-h-11 py-3 underline" href={`/zile-${tip}-2026`}>Calendar 2026</Link><a download className="min-h-11 py-3 underline" href={`/api/calendar/2027?format=${work?'csv':'ics'}`}>{work?'Descarcă tabel CSV':'Importă sărbătorile în calendar (ICS)'}</a></nav>
+  {work?<div className="my-5 overflow-x-auto"><table className="w-full text-sm"><caption className="sr-only">Norma lunară pentru 2027</caption><thead><tr>{['Luna','Zile lucrătoare','Ore (8/zi)'].map(h=><th scope="col" key={h} className="border-b p-3 text-left">{h}</th>)}</tr></thead><tbody>{months.map(m=><tr key={m.name}><th scope="row" className="border-b p-3 text-left font-normal capitalize">{m.name}</th><td className="border-b p-3">{m.days}</td><td className="border-b p-3">{m.days*8}</td></tr>)}</tbody></table></div>:<div className="my-5 overflow-x-auto"><table className="w-full text-sm"><caption className="sr-only">Sărbători legale 2027</caption><thead><tr><th className="p-3 text-left" scope="col">Data și ziua</th><th className="p-3 text-left" scope="col">Sărbătoarea</th></tr></thead><tbody>{Object.entries(SARBATORI_LEGALE_2027).map(([key,name])=>{const [m,d]=key.split('-').map(Number);return <tr key={key}><th className="border-b p-3 text-left font-normal" scope="row">{new Intl.DateTimeFormat('ro-RO',{day:'numeric',month:'long',weekday:'long',timeZone:'UTC'}).format(new Date(Date.UTC(2027,m-1,d)))}</th><td className="border-b p-3">{name}</td></tr>;})}</tbody></table></div>}
+  {work&&<CalculatorIntervalZile an={2027}/>}
+  <section className="mt-8 space-y-3 text-sm text-stone-600"><h2 className="text-xl font-bold text-stone-900">Reguli și surse</h2><p>Nu includem punți bugetare pentru 2027 care nu au fost adoptate. O sărbătoare în weekend nu se mută automat luni. Pentru cultele creștine, Vinerea Mare, Paștele și Rusaliile se acordă la data celebrării de către cultul de care aparții. Programul în ture și activitățile care nu pot fi întrerupte au reguli distincte.</p><p>Temei: <a className="underline" href="https://legislatie.just.ro/Public/DetaliiDocument/128647">Codul Muncii, art. 139–142</a>. Data Paștelui: <a className="underline" href="https://roea.org/files/Calendar/2025/2025-Calendar---Romanian.pdf">calendarul Episcopiei Ortodoxe Române din America, tabelul până în 2027</a>. Verificat la 7 septembrie 2026.</p></section>
+ </div></div>;
+}

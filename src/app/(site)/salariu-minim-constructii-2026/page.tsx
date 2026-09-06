@@ -121,7 +121,7 @@ export default function SalariuMinimConstructii2026Page() {
           ]}
         />
         <H1>Salariul minim în construcții 2026</H1>
-        <p className="mt-3 text-sm text-stone-500 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2">
+        <p className="mt-3 text-sm text-stone-600 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2">
           Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat 26 iulie 2026
         </p>
         <Lead>
@@ -143,7 +143,7 @@ export default function SalariuMinimConstructii2026Page() {
             ].map(([valoare, eticheta]) => (
               <div key={eticheta} className="rounded-md border border-stone-200 bg-surface p-5 shadow-soft">
                 <div className="text-3xl font-bold tabular-nums tracking-[-0.02em] text-stone-900">{valoare}</div>
-                <p className="mt-1 text-xs uppercase tracking-wide text-stone-500">{eticheta}</p>
+                <p className="mt-1 text-xs uppercase tracking-wide text-stone-600">{eticheta}</p>
               </div>
             ))}
           </div>

@@ -11,6 +11,7 @@
 import { execFile, execFileSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
+import os from "node:os";
 import { promisify } from "node:util";
 
 const execFileAsync = promisify(execFile);
@@ -52,6 +53,8 @@ function findVercelCli() {
       path.join(process.env.APPDATA, "npm", "node_modules", "vercel", "dist", "vc.js"),
     );
   }
+  const installed = candidates.find(candidate => fs.existsSync(candidate));
+  if (installed) return installed;
 
   try {
     const npm = process.platform === "win32" ? "npm.cmd" : "npm";
@@ -87,12 +90,15 @@ function readProject() {
 async function vercelApi(cli, route, params) {
   const query = new URLSearchParams(params).toString();
   const endpoint = `${route}?${query}`;
+  // Migrarea a salvat contul proprietar în această configurație CLI.
+  const migratedConfig = path.join(os.homedir(), '.vercel-nou');
+  const config = option('global-config', process.env.VERCEL_GLOBAL_CONFIG || (fs.existsSync(path.join(migratedConfig,'auth.json')) ? migratedConfig : ''));
 
   try {
     const { stdout } = await execFileAsync(
       process.execPath,
-      [cli, "api", endpoint, "--raw"],
-      { cwd: ROOT, encoding: "utf8", maxBuffer: 4 * 1024 * 1024 },
+      [cli, ...(config ? ['--global-config',config] : []), "api", endpoint, "--raw"],
+      { cwd: ROOT, encoding: "utf8", maxBuffer: 4 * 1024 * 1024, windowsHide: true },
     );
     return JSON.parse(stdout);
   } catch (error) {
