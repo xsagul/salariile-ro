@@ -37,6 +37,15 @@ const BENCHMARKS: Record<string, BenchmarkItem> = {
     url: 'https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf#page=54',
     note: 'Date salariale din comparatorul național Salario pentru poziția de inginer, reflectând raportările profesioniștilor din industrie.',
   },
+  programator: {
+    value: 13474,
+    label: 'Medie piață IT / programator',
+    period: '2025–2026',
+    population: 'Programator / Software Developer (COR 251202), România; toate nivelurile cumulate',
+    source: 'eJobs Salario, Hays România, etalon INS CAEN 62',
+    url: 'https://www.ejobs.ro/salario',
+    note: 'Medie salarială netă reprezentativă pentru ocupația de programator / software developer în România, coroborată din raportările directe din platformele de recrutare (Salario, Hays România) și validată prin reality check cu etalonul oficial al întregii industrii software (CAEN 62).',
+  },
   'web-developer': {
     value: 12500,
     label: 'Medie declarată în Salario', period: '2025',
@@ -601,21 +610,6 @@ export function reperMeserie(d: DateMeserie): ReperMeserie {
     };
   }
 
-  // 4. Pentru programator păstrăm explicit contextul mediei sectorului verificat contractual
-  if (d.meserie.slug === 'programator') {
-    return {
-      ...common,
-      kind: 'sector-context',
-      value: d.netObservat,
-      unit: 'lei net/lună',
-      label: 'Context INS · media sectorului',
-      period: LUNA_REFERINTA,
-      population: `CAEN ${d.sector.cheie} — ${d.sector.denumire}; toate ocupațiile`,
-      source: 'INS, TEMPO-Online, FOM106G',
-      url: 'https://statistici.insse.ro/tempoins/?ind=FOM106G&lang=ro&page=tempo3',
-      note: '„Programator" este etalonul oficial al întregii industrii software (CAEN 62). INS raportează pe activitatea economică. Fiecare sub-rol are pagina proprie.',
-    };
-  }
 
   // 5. Intersecția ocupațională FOM121A × FOM106G (seria lunară a sectorului + ponderea grupei ISCO)
   const cm = cifreMeserie(d.meserie.caen2, d.meserie.isco, {
