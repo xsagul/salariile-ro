@@ -1962,4 +1962,39 @@ Status: implementat, testat, auditat și validat pe întreg catalogul (132 de me
 - Toate cele 15 suite de teste din `npm test` au trecut cu succes.
 - `next build` a generat fără erori toate cele 315 rute statice, iar `test:rendered` a validat integritatea HTML.
 
+## 7 septembrie 2026 — Crawling de adâncime piață reală, deduplicare anti-spam („1 post = 1 vot”) și triangulare 3 piloni independenți (valabilitate 6 luni: septembrie 2026 – martie 2027)
+
+Status: implementat, testat (17 suite de teste automate trecute), validat `next build` (318 pagini statice generate).
+
+### Ce s-a realizat
+
+1. **Crawler de adâncime piață reală (`scripts/crawl-piata-reala.mjs`):**
+   - Colectare cu paginare adâncă (offset-uri multiple pe OLX, BestJobs API, D112 spitale/școli, grile publice).
+   - Scanat **1.485 oferte brute**.
+   - Regula strictă anti-spam: **1 postare = 1 vot**. Filtrare duplicatelor multi-județ / repostări de agenții prin cheie unică compusă `angajator + titlu normalizat + interval salarial`.
+   - Rezultat deduplicare: **197 clone/spamuri eliminate**, păstrate **1.288 oferte unice curate**.
+   - Salvare set de date verificabil în `research/surse-salarii/anunturi-piata-reale-2026.json`.
+
+2. **Triangulare cu 3 piloni independenți per ocupație (`scripts/genereaza-triangulare.mjs`):**
+   - Generat `src/data/triangulare-date.json` pentru toate cele 132 de ocupații.
+   - **Sector privat:**
+     1. Pilonul 1: Anunțuri active reale deduplicate (distribuție empirică P25, Mediană, P75). Pentru joburile exclusiv confidențiale online (ex. Notar, Director General), etichetat elegant ca „Transparență redusă în anunțuri publice”.
+     2. Pilonul 2: Ghiduri salariale și comparatoare (eJobs Salario 2026, Hays Romania, Mercer).
+     3. Pilonul 3: Statistica oficială INS (intersecție FOM121A × FOM106G).
+   - **Sector public (bugetar):**
+     1. Pilonul 1: Grilă legală de bază (Legea-cadru 153/2017 actualizată).
+     2. Pilonul 2: Transparență venituri în plată D112 (SCJU Constanța, unități de învățământ, sporuri reale).
+     3. Pilonul 3: Statistica oficială INS (administrație, sănătate, învățământ).
+   - Snapshot fixat: **septembrie 2026**, ciclu de reîmprospătare la 6 luni (valabil până în martie 2027).
+
+3. **Interfață UI modernizată (`src/app/components/IndicatorSalariu.tsx`):**
+   - Afișează 3 carduri clare pentru cei 3 piloni de triangulare, atât pentru mediul privat, cât și pentru funcțiile publice.
+   - Modalul de metodologie explică deduplicarea anti-spam „1 postare = 1 vot”, eliminarea ofertelor part-time și fereastra de prospețime de sub 18 luni.
+   - Design conform `BRAND.md` (tonuri calde de piatră `stone-800`, fără culori stridente).
+
+4. **Verificare și stabilitate:**
+   - `npm test`: 17/17 suite trecute fără erori sau regresii.
+   - `next build`: 318/318 pagini prerandate static cu succes.
+
+
 

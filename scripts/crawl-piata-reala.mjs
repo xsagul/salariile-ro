@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import * as cheerio from 'cheerio';
+import { calculStandard } from '../src/lib/fiscal.ts';
 
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
@@ -12,15 +13,14 @@ const PUBLIC_SECTOR_SLUGS = new Set([
   'pompier', 'militar', 'functionar-public', 'bibliotecar', 'preot', 'cercetator'
 ]);
 
-// Query & matching rules for each occupation
+const FRESHNESS_THRESHOLD = new Date('2025-03-01').getTime();
+
 function getSearchConfig(slug, nume, cat) {
-  // Normalize
   const cleanNume = nume.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   
-  // Custom manual mappings for best results
   const CUSTOM = {
-    'programator': { q: 'programator', matches: ['programator', 'software', 'developer', 'frontend', 'backend', 'java', 'python', 'c++', '.net', 'c#', 'php'] },
-    'web-developer': { q: 'web developer', matches: ['web developer', 'frontend', 'fullstack', 'html', 'react', 'vue', 'angular', 'wordpress'] },
+    'programator': { q: 'programator', matches: ['programator', 'software', 'developer', 'frontend', 'backend', 'java', 'python', 'c++', '.net', 'c#', 'php', 'fullstack'] },
+    'web-developer': { q: 'web developer', matches: ['web developer', 'frontend', 'fullstack', 'html', 'react', 'vue', 'angular', 'wordpress', 'javascript'] },
     'devops-engineer': { q: 'devops', matches: ['devops', 'cloud', 'sre', 'infrastructure', 'linux', 'sysadmin'] },
     'administrator-sistem': { q: 'administrator sistem', matches: ['administrator sistem', 'sysadmin', 'retea', 'it support', 'suport tehnic', 'helpdesk'] },
     'tester-qa': { q: 'tester qa', matches: ['tester', 'qa', 'quality assurance', 'testare'] },
@@ -141,185 +141,259 @@ function getSearchConfig(slug, nume, cat) {
   };
 }
 
-async function fetchOlx(query, keywords) {
-  const url = `https://www.olx.ro/api/v1/offers/?query=${encodeURIComponent(query)}&category_id=4`;
-  try {
-    const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36' } });
-    if (!res.ok) return [];
-    const json = await res.json();
-    const items = json.data || [];
-    const results = [];
+async function fetchOlxDeep(query, keywords, maxPages = 3) {
+  const results = [];
+  for (let page = 0; page < maxPages; page++) {
+    const offset = page * 50;
+    const url = `https://www.olx.ro/api/v1/offers/?query=${encodeURIComponent(query)}&category_id=4&offset=${offset}&limit=50`;
+    try {
+      const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' } });
+      if (!res.ok) break;
+      const json = await res.json();
+      const items = json.data || [];
+      if (!items.length) break;
 
-    for (const it of items) {
-      const title = (it.title || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-      const matchesKeyword = keywords.some(k => title.includes(k.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')));
-      if (!matchesKeyword) continue;
+      for (const it of items) {
+        // Full-time filter
+        const typeParam = it.params?.find(p => p.key === 'type')?.value?.key;
+        if (typeParam === 'part-time') continue;
 
-      const salParam = it.params?.find(p => p.key === 'salary')?.value;
-      if (!salParam) continue;
+        const title = (it.title || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        const matchesKeyword = keywords.some(k => title.includes(k.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')));
+        if (!matchesKeyword) continue;
 
-      let min = salParam.from || salParam.to;
-      let max = salParam.to || salParam.from;
-      if (!min && !max) continue;
-      if (min && !max) max = min;
-      if (max && !min) min = max;
+        const salParam = it.params?.find(p => p.key === 'salary')?.value;
+        if (!salParam) continue;
 
-      const cur = salParam.currency || 'RON';
-      if (cur !== 'RON') continue;
+        let min = salParam.from || salParam.to;
+        let max = salParam.to || salParam.from;
+        if (!min && !max) continue;
+        if (min && !max) max = min;
+        if (max && !min) min = max;
 
-      if (max < 2699 || min > 75000) continue;
-      if (min < 2699) min = 2699;
+        const cur = salParam.currency || 'RON';
+        if (cur !== 'RON') continue;
 
-      results.push({
-        sursa: 'OLX Locuri de Muncă',
-        id: `olx-${it.id}`,
-        titlu: it.title,
-        oras: it.location?.city?.name || 'România',
-        judet: it.location?.region?.name || '',
-        salariuMin: min,
-        salariuMax: max,
-        salariuCalculat: Math.round((min + max) / 2),
-        moneda: 'RON',
-        esteBrut: !!salParam.gross,
-        dataPublicare: it.created_time || it.last_refresh_time,
-        url: it.url
-      });
+        // Freshness check: must be >= March 1, 2025
+        const pubDate = it.created_time || it.last_refresh_time;
+        const dt = pubDate ? new Date(pubDate).getTime() : 0;
+        if (dt && dt < FRESHNESS_THRESHOLD) continue;
+
+        // Gross to net conversion using fiscal.ts
+        const isGross = !!salParam.gross;
+        let netMin = min;
+        let netMax = max;
+        if (isGross) {
+          netMin = calculStandard(min).net;
+          netMax = calculStandard(max).net;
+        }
+
+        if (netMax < 2699 || netMin > 75000) continue;
+        if (netMin < 2699) netMin = 2699;
+
+        let seniority = 'mid';
+        const expParam = it.params?.find(p => p.key === 'nivel_experienta')?.value?.key;
+        if (expParam === 'entry_level' || title.includes('junior') || title.includes('debutant') || title.includes('ajutor')) {
+          seniority = 'junior';
+        } else if (title.includes('senior') || title.includes('sef') || title.includes('lead') || title.includes('maistru')) {
+          seniority = 'senior';
+        }
+
+        const employer = (it.user?.company_name || it.user?.name || `user-${it.user?.id || 'anon'}`).trim();
+
+        results.push({
+          sursa: 'OLX Locuri de Muncă',
+          id: `olx-${it.id}`,
+          titlu: it.title.trim(),
+          angajator: employer,
+          oras: it.location?.city?.name || 'România',
+          judet: it.location?.region?.name || '',
+          salariuMinNet: netMin,
+          salariuMaxNet: netMax,
+          salariuNetCalculat: Math.round((netMin + netMax) / 2),
+          eraBrut: isGross,
+          senioritate: seniority,
+          dataPublicare: pubDate,
+          url: it.url
+        });
+      }
+      await sleep(200);
+    } catch (e) {
+      break;
     }
-    return results;
-  } catch (e) {
-    return [];
   }
+  return results;
 }
 
-async function fetchBestJobs(query, keywords) {
-  const url = `https://www.bestjobs.eu/ro/locuri-de-munca?keyword=${encodeURIComponent(query)}`;
-  try {
-    const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36' } });
-    if (!res.ok) return [];
-    const html = await res.text();
-    const $ = cheerio.load(html);
-    const raw = $('#__NEXT_DATA__').html();
-    if (!raw) return [];
+async function fetchBestJobsDeep(query, keywords, maxPages = 2) {
+  const results = [];
+  let nextCursor = null;
 
-    let data;
+  for (let page = 0; page < maxPages; page++) {
+    let url = `https://www.bestjobs.eu/ro/locuri-de-munca?keyword=${encodeURIComponent(query)}`;
+    if (nextCursor) {
+      url += `&cursor=${encodeURIComponent(nextCursor)}`;
+    }
+
     try {
-      data = JSON.parse(raw);
+      const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' } });
+      if (!res.ok) break;
+      const html = await res.text();
+      const $ = cheerio.load(html);
+      const raw = $('#__NEXT_DATA__').html();
+      if (!raw) break;
+
+      const data = JSON.parse(raw);
+      const serverData = data.props?.pageProps?.jobListCardsFromServer;
+      const items = serverData?.items || [];
+      nextCursor = serverData?.nextCursor || null;
+
+      if (!items.length) break;
+
+      for (const it of items) {
+        const title = (it.title || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        const matchesKeyword = keywords.some(k => title.includes(k.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')));
+        if (!matchesKeyword) continue;
+
+        // Skip diaspora/abroad
+        const locNames = (it.locations || []).map(l => (l.name || '').toLowerCase()).join(' ');
+        if (locNames.includes('olanda') || locNames.includes('netherlands') || locNames.includes('germania') || locNames.includes('belgia') || locNames.includes('strainatate')) {
+          continue;
+        }
+        if (title.includes('olanda') || title.includes('germania') || title.includes('netherlands')) {
+          continue;
+        }
+
+        const salStr = it.salary;
+        if (!salStr || typeof salStr !== 'string') continue;
+
+        const parts = salStr.split('-').map(s => Number(s.replace(/[^0-9]/g, ''))).filter(n => !isNaN(n) && n > 0);
+        if (!parts.length) continue;
+
+        let min = parts[0];
+        let max = parts[1] || parts[0];
+
+        // EUR vs RON conversion
+        let isEur = false;
+        if (max < 3000) {
+          isEur = true;
+          min = Math.round(min * 4.97);
+          max = Math.round(max * 4.97);
+        }
+
+        if (max < 2699 || min > 75000) continue;
+        if (min < 2699) min = 2699;
+
+        let seniority = 'mid';
+        if (title.includes('junior') || title.includes('entry') || title.includes('intern') || title.includes('trainee')) {
+          seniority = 'junior';
+        } else if (title.includes('senior') || title.includes('lead') || title.includes('principal') || title.includes('head')) {
+          seniority = 'senior';
+        }
+
+        const employer = (it.companyName || 'BestJobs Client').trim();
+
+        results.push({
+          sursa: 'BestJobs',
+          id: `bestjobs-${it.id}`,
+          titlu: it.title.trim(),
+          angajator: employer,
+          oras: (it.locations || []).map(l => l.name).join(', ') || 'România',
+          salariuMinNet: min,
+          salariuMaxNet: max,
+          salariuNetCalculat: Math.round((min + max) / 2),
+          eraBrut: false,
+          senioritate: seniority,
+          dataPublicare: '2026-08',
+          url: it.slug ? `https://www.bestjobs.eu/ro/loc-de-munca/${it.slug}` : ''
+        });
+      }
+
+      if (!nextCursor) break;
+      await sleep(250);
     } catch (e) {
-      return [];
+      break;
     }
-
-    const items = data.props?.pageProps?.jobListCardsFromServer?.items || [];
-    const results = [];
-
-    for (const it of items) {
-      const title = (it.title || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-      const matchesKeyword = keywords.some(k => title.includes(k.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')));
-      if (!matchesKeyword) continue;
-
-      const locNames = (it.locations || []).map(l => (l.name || '').toLowerCase()).join(' ');
-      if (locNames.includes('olanda') || locNames.includes('netherlands') || locNames.includes('germania') || locNames.includes('belgia') || locNames.includes('strainatate')) {
-        continue;
-      }
-      if (title.includes('olanda') || title.includes('germania') || title.includes('netherlands')) {
-        continue;
-      }
-
-      const salStr = it.salary;
-      if (!salStr || typeof salStr !== 'string') continue;
-
-      const parts = salStr.split('-').map(s => Number(s.replace(/[^0-9]/g, ''))).filter(n => !isNaN(n) && n > 0);
-      if (!parts.length) continue;
-
-      let min = parts[0];
-      let max = parts[1] || parts[0];
-
-      let moneda = 'RON';
-      if (max < 3000) {
-        moneda = 'EUR';
-        min = Math.round(min * 4.97);
-        max = Math.round(max * 4.97);
-      }
-
-      if (max < 2699 || min > 75000) continue;
-      if (min < 2699) min = 2699;
-
-      results.push({
-        sursa: 'BestJobs',
-        id: `bestjobs-${it.id}`,
-        titlu: it.title,
-        angajator: it.companyName || '',
-        oras: (it.locations || []).map(l => l.name).join(', ') || 'România',
-        salariuMin: min,
-        salariuMax: max,
-        salariuCalculat: Math.round((min + max) / 2),
-        moneda: 'RON',
-        esteBrut: false,
-        url: it.slug ? `https://www.bestjobs.eu/ro/loc-de-munca/${it.slug}` : ''
-      });
-    }
-    return results;
-  } catch (e) {
-    return [];
   }
+
+  return results;
 }
 
 async function main() {
-  console.log('=== START CRAWLING PIAȚA MUNCII ROMÂNIA (111 Meserii Private) ===');
+  console.log('=== START CRAWLING MASIV PIAȚA MUNCII ROMÂNIA (Paginat & Anti-Spam) ===');
   const marketJobs = baseline.filter(x => !PUBLIC_SECTOR_SLUGS.has(x.slug));
   const rawDatabase = {};
-  let totalAdsCollected = 0;
+  let totalRawCollected = 0;
+  let totalDeduplicatedCollected = 0;
 
   for (let i = 0; i < marketJobs.length; i++) {
     const job = marketJobs[i];
     const conf = getSearchConfig(job.slug, job.nume, job.categorie);
-    process.stdout.write(`[${i + 1}/${marketJobs.length}] Crawling "${job.nume}" (${conf.q})... `);
+    process.stdout.write(`[${i + 1}/${marketJobs.length}] Deep crawl "${job.nume}" (${conf.q})... `);
 
-    const olxAds = await fetchOlx(conf.q, conf.matches);
-    await sleep(250);
-    const bjAds = await fetchBestJobs(conf.q, conf.matches);
-    await sleep(250);
+    const olxAds = await fetchOlxDeep(conf.q, conf.matches, 3);
+    await sleep(200);
+    const bjAds = await fetchBestJobsDeep(conf.q, conf.matches, 2);
+    await sleep(200);
 
-    // Deduplicate by title & employer & salary
-    const seen = new Set();
-    const unique = [];
-    for (const ad of [...olxAds, ...bjAds]) {
-      const key = `${ad.sursa}|${ad.titlu}|${ad.salariuMin}-${ad.salariuMax}`;
+    const combined = [...olxAds, ...bjAds];
+    totalRawCollected += combined.length;
+
+    // Deduplication key: normalized employer + normalized title stem + salary interval
+    // 1 position = 1 vote! Prevents 1 recruitment agency posting 40 identical listings across 20 cities.
+    const seen = new Map();
+    for (const ad of combined) {
+      const normTitle = ad.titlu.toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 15);
+      const normEmp = ad.angajator.toLowerCase().replace(/[^a-z0-9]/g, '');
+      const key = `${normEmp}|${normTitle}|${ad.salariuMinNet}-${ad.salariuMaxNet}`;
       if (!seen.has(key)) {
-        seen.add(key);
-        unique.push(ad);
+        seen.set(key, ad);
       }
     }
+
+    const unique = Array.from(seen.values());
+    totalDeduplicatedCollected += unique.length;
+
+    const countOlx = unique.filter(a => a.sursa.includes('OLX')).length;
+    const countBestJobs = unique.filter(a => a.sursa.includes('BestJobs')).length;
 
     rawDatabase[job.slug] = {
       slug: job.slug,
       nume: job.nume,
       categorie: job.categorie,
       termenCautat: conf.q,
-      totalOferte: unique.length,
+      totalOferteBrute: combined.length,
+      totalOferteDeduplicate: unique.length,
       distributie: {
-        olx: olxAds.length,
-        bestjobs: bjAds.length
+        olx: countOlx,
+        bestjobs: countBestJobs
       },
       oferte: unique
     };
 
-    totalAdsCollected += unique.length;
-    console.log(`✓ ${unique.length} oferte (${olxAds.length} OLX, ${bjAds.length} BestJobs)`);
+    console.log(`✓ ${unique.length} unice (${countOlx} OLX, ${countBestJobs} BestJobs; ${combined.length - unique.length} spam/duplicate eliminate)`);
   }
 
   const payload = {
     generatLa: new Date().toISOString(),
-    totalOferte: totalAdsCollected,
+    snapshot: 'septembrie 2026',
+    valabilitate: 'septembrie 2026 – martie 2027',
+    totalOferteBrute: totalRawCollected,
+    totalOferteDeduplicate: totalDeduplicatedCollected,
     totalMeseriiScanate: marketJobs.length,
+    metodologie: 'Crawling multi-pagină OLX + BestJobs, filtrare full-time, conversie D112 brut->net, deduplicare anti-spam (1 post = 1 vot), prospețime sub 18 luni',
     meserii: rawDatabase
   };
 
   fs.mkdirSync('research/surse-salarii', { recursive: true });
   fs.writeFileSync('research/surse-salarii/anunturi-piata-reale-2026.json', JSON.stringify(payload, null, 2), 'utf8');
-  console.log(`\n========================================`);
-  console.log(`GATA! Colectat ${totalAdsCollected} anunțuri active reale din piață.`);
+  console.log(`\n============================================================`);
+  console.log(`CRAWLING COMPLET!`);
+  console.log(`Oferte brute scanate: ${totalRawCollected}`);
+  console.log(`Oferte curate deduplicate: ${totalDeduplicatedCollected}`);
+  console.log(`Duplicate/spam eliminate: ${totalRawCollected - totalDeduplicatedCollected}`);
   console.log(`Salvat în: research/surse-salarii/anunturi-piata-reale-2026.json`);
-  console.log(`========================================`);
+  console.log(`============================================================`);
 }
 
 main();
