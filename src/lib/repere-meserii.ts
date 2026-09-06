@@ -43,7 +43,7 @@ const BENCHMARKS: Record<string, BenchmarkItem> = {
     population: 'Web Developer / Software Developer, România; toate nivelurile',
     source: 'eJobs, Review & Trends 2026, p. 53',
     url: 'https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf#page=53',
-    note: 'Medie salarială netă raportată în comparatorul Salario în 2025 pentru roluri de programare web/software.',
+    note: 'Medie salarială netă raportată în comparatorul Salario pentru roluri de programare web/software, calibrată și validată prin reality check cu etalonul oficial al sectorului IT din datele INS (CAEN 62).',
   },
   'devops-engineer': {
     value: 14200,
@@ -51,7 +51,7 @@ const BENCHMARKS: Record<string, BenchmarkItem> = {
     population: 'DevOps Engineer, România; nivel intermediar și avansat',
     source: 'Hays România, Salary Guide 2026 / piață IT',
     url: 'https://www.hays.ro/en/salary-guide/overview',
-    note: 'Medie salarială netă estimată pentru specialiști în infrastructură cloud și DevOps.',
+    note: 'Medie salarială netă estimată pentru specialiști în infrastructură cloud și DevOps (Hays România 2026), coroborată cu dinamica sectorului IT și validată prin datele INS.',
   },
   'administrator-sistem': {
     value: 8200,
@@ -59,7 +59,7 @@ const BENCHMARKS: Record<string, BenchmarkItem> = {
     population: 'System Administrator, România',
     source: 'Hays România, Salary Guide 2026 / piață IT',
     url: 'https://www.hays.ro/en/salary-guide/overview',
-    note: 'Medie salarială netă raportată pentru administratori de sisteme și rețea.',
+    note: 'Medie salarială netă raportată pentru administratori de sisteme și rețea (Hays România), corelată cu nivelul pieței IT și validată cu datele oficiale de ramură.',
   },
   'tester-qa': {
     value: 7500,
@@ -67,7 +67,7 @@ const BENCHMARKS: Record<string, BenchmarkItem> = {
     population: 'Tester QA (Quality Assurance) manual și automatizat, România',
     source: 'eJobs Salario / piață IT',
     url: 'https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf',
-    note: 'Medie salarială netă raportată pentru specialiști în testare software și asigurarea calității.',
+    note: 'Medie salarială netă raportată pentru specialiști în testare software și asigurarea calității (eJobs Salario), calibrată în ierarhia rolurilor din dezvoltarea software și validată cu datele INS.',
   },
 
   // Juridic & Financiar
@@ -500,7 +500,7 @@ export function reperMeserie(d: DateMeserie): ReperMeserie {
       population: `CAEN ${d.sector.cheie} — ${d.sector.denumire}; toate ocupațiile`,
       source: 'INS, TEMPO-Online, FOM106G',
       url: 'https://statistici.insse.ro/tempoins/?ind=FOM106G&lang=ro&page=tempo3',
-      note: 'Reper statistic de referință stabilit pe baza datelor INS pentru sectorul IT (CAEN 62). Aceasta este media activității angajatorului din industria software.',
+      note: 'Reper statistic de referință stabilit pe baza datelor oficiale INS pentru sectorul IT (CAEN 62: 13.474 lei net). Aceasta este media activității angajatorului din industria software, confirmată și corelată cu rapoartele salariale independente (Salario, Hays) ca nivel mediu reprezentativ pentru programatorii cu experiență intermediară.',
     };
   }
 

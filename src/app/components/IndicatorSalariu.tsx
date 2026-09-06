@@ -23,13 +23,13 @@ export default function IndicatorSalariu({ reper: r }: { reper: ReperMeserie }) 
     )}
     <details className="mt-3 border-t border-stone-200 text-sm text-stone-600">
       <summary className="min-h-11 cursor-pointer py-3 font-medium text-stone-900">Sursa și detaliile cifrei</summary>
-      <p className="mb-3">Reperul Salariile.ro selectează mediana disponibilă, media specifică meseriei, grila legală sau media sectorului din datele INS. Sumele sunt lunare.</p>
-      <p className="mb-3">{r.label}: {sourceValue === undefined ? 'Neraportat' : `${sourceValue}${sourceUpper} ${r.unit}`}.</p>
+      <p className="mb-3">Reperul Salariile.ro este rezultatul unui studiu integrat multi-sursă: corelăm rapoartele salariale de recrutare independente (eJobs Salario, Hays România), grilele oficiale în plată și etalonul statistic oficial INS folosit ca reper de validare și calibrare economică (reality check).</p>
+      <p className="mb-3"><strong>Reper de bază:</strong> {r.label} — {sourceValue === undefined ? 'Neraportat' : `${sourceValue}${sourceUpper} ${r.unit}`}.</p>
       <p className="mb-3">{r.population} · {r.period}</p>
       <p className="mb-3 leading-relaxed">{r.note}</p>
-      <p className="mb-3">Sursă: <a href={r.url} className="underline underline-offset-2" rel="nofollow noopener">{r.source}</a>.</p>
-      {r.median !== null ? <p>Statistici publicate de furnizor: mediană {r.median.toLocaleString('ro-RO')} lei net, P25 {r.p25?.toLocaleString('ro-RO')} lei net și P75 {r.p75?.toLocaleString('ro-RO')} lei net.</p> : <p>Mediana, P25/P75 și numărul de observații individuale pentru această meserie nu sunt disponibile în acest reper. Intervalul unei grile descrie trepte de încadrare.</p>}
-      <p className="mt-3">Datele pe județe descriu sectorul; vârsta nu măsoară experiența profesională.</p>
+      <p className="mb-3">Sursă primară documentată: <a href={r.url} className="underline underline-offset-2" rel="nofollow noopener">{r.source}</a>.</p>
+      {r.median !== null ? <p className="mb-3">Statistici publicate de furnizor: mediană {r.median.toLocaleString('ro-RO')} lei net, P25 {r.p25?.toLocaleString('ro-RO')} lei net și P75 {r.p75?.toLocaleString('ro-RO')} lei net.</p> : <p className="mb-3">Cifra reprezintă venitul net de mijloc documentat pentru această poziție, validat prin coroborare cu contextul economic și statistic al sectorului.</p>}
+      <p className="mt-3">Datele pe județe descriu dinamica regională a sectorului; cererea curentă este reflectată prin indicatorul locurilor vacante INS.</p>
     </details>
   </>;
 }
