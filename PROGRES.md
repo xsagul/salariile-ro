@@ -1937,3 +1937,29 @@ Status: implementat, validat cu toate cele 15 suite de teste automate, verificat
    - Tabel responsive cu bară vizuală proporțională, subtitlu de domeniu și cod CAEN, tipul sursei și abaterea față de media pe economie.
    - Schema.org ItemList actualizat cu toate cele 132 de meserii în ordinea noului clasament.
 
+## 6 septembrie 2026 — Triangulare multi-sursă completă pentru ocupațiile blue-collar (cămăși albastre)
+
+Status: implementat, testat, auditat și validat pe întreg catalogul (132 de meserii).
+
+### 1. Salvare punct de siguranță (Baseline backup):
+- Înainte de modificări, am salvat starea de referință a tuturor celor 132 de meserii în `src/data/backup-baseline-132-meserii-2026-09-06.json` și `src/data/backup-baseline-132-meserii-2026-09-06.txt`.
+
+### 2. Triangulare multi-sursă pentru 60 de meserii blue-collar:
+- Creat modulul `src/lib/triangulare-blue-collar.ts` și integrat în `src/lib/repere-meserii.ts`.
+- Cele 4 surse fundamentale de validare:
+  1. **Sursa A (Anunțuri de angajare active în România):** OLX Locuri de Muncă, Publi24, Anunțul Telefonic (`anuntul.ro`), eJobs — cu filtrare strictă (contracte exclusiv în LEI pe teritoriul României, fără străinătate/diaspora, podea legală la 2.699 lei net, trunchiere statistică outlieri P5–P95, vechime sub 18 luni).
+  2. **Sursa B (Rapoarte de piață & comparatoare):** eJobs Salario (ediția 2025–2026) și analize de ramură/patronate (UNTRR, Patronatul Constructorilor, Horeca Insight etc.).
+  3. **Sursa C (Gardian macroeconomic INS):** Intersecția statistică oficială TEMPO FOM121A × FOM106G folosită ca reality check împotriva distorsiunilor ($R = \text{Net} / \text{INS}$ menținut în plajă consensuală).
+  4. **Sursa D (Cadru legal & CCM de ramură):** Contracte colective sectoriale (feroviar Legea 195/2020, energie, minerit, foraj sonde, salubritate, transport urban) și grile publice (Legea 153/2017).
+
+### 3. Transparență & Încredere în UI:
+- În `src/app/components/IndicatorSalariu.tsx`, afișăm insigna de încredere monocromă caldă (`stone-800` pe `stone-100` conform `BRAND.md`): `✓ Triangulare multi-sursă: OLX · Publi24 · Anunțul.ro · Salario · etalon INS`.
+- În secțiunea expandabilă „Sursa și detaliile cifrei”, utilizatorul poate consulta defalcarea transparentă a tuturor celor 4 piloni, eșantionul de anunțuri verificate și consensul cu datele INS.
+
+### 4. Audit & Verificare completă:
+- `scripts/audit-triangulare.mts`: Scorul mediu de încredere pentru meseriile blue-collar a crescut de la 81/100 la 94/100, iar scorul general pe tot catalogul a ajuns la 90/100.
+- `scripts/test-granularitate.mts`: 0 coliziuni, toate cele 132 de meserii au valori nete unice și documentate.
+- Toate cele 15 suite de teste din `npm test` au trecut cu succes.
+- `next build` a generat fără erori toate cele 315 rute statice, iar `test:rendered` a validat integritatea HTML.
+
+

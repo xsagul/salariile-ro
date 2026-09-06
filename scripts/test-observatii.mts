@@ -36,7 +36,8 @@ for(const m of MESERII) {
  assert.ok(val !== null && val > 0);
 }
 assert.equal(reperMeserie(dateMeserieSauEroare(MESERII.find(x=>x.slug==='contabil')!)).value,5000);
-assert.equal(reperMeserie(dateMeserieSauEroare(MESERII.find(x=>x.slug==='constructor')!)).kind,'sector-context');
+assert.equal(reperMeserie(dateMeserieSauEroare(MESERII.find(x=>x.slug==='cercetator')!)).kind,'sector-context');
+assert.equal(reperMeserie(dateMeserieSauEroare(MESERII.find(x=>x.slug==='constructor')!)).kind,'external-reported');
 assert.equal(cor.occupations.zugrav.code,'713102');assert.equal(cor.occupations.contabil.code,'331302');
 for(const c of COMPARATII)assert.notEqual(c.a.slug,c.b.slug);
 console.log(`OK: mapări COR, ${MESERII.length} repere și 37 comparații; cohorte, deduplicare, medie/mediană și quartile.`,counts);

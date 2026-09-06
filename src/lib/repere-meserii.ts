@@ -4,6 +4,7 @@ import { LUNA_REFERINTA } from '@/lib/ins-date';
 import education from '@/data/grila-invatamant-153-2017.json';
 import { indicatorMeserie, textIndicator } from '@/lib/indicator-meserie';
 import { cifreMeserie } from '@/lib/ocupatii-caen';
+import { obtineTriangulareBlueCollar, type DateTriangulare } from '@/lib/triangulare-blue-collar';
 
 export function grilaEducatie(slug: string) {
   if (slug === 'profesor') return education.randuri.filter(r => r.nr >= 1 && r.nr <= 8);
@@ -482,10 +483,11 @@ export type ReperMeserie = {
   value: number | null; upper: number | null; unit: 'lei net/lună';
   label: string; period: string; population: string; source: string; url: string;
   note: string; n: null; median: number | null; p25: number | null; p75: number | null;
+  triangulare?: DateTriangulare | null;
 };
 
 export function reperMeserie(d: DateMeserie): ReperMeserie {
-  const common = { n: null, median: null, p25: null, p75: null, upper: null };
+  const common = { n: null, median: null, p25: null, p75: null, upper: null, triangulare: null };
 
   // 1. Grila de învățământ preuniversitar
   const teaching = grilaEducatie(d.meserie.slug);
@@ -518,7 +520,26 @@ export function reperMeserie(d: DateMeserie): ReperMeserie {
     };
   }
 
-  // 2. Repere studiate de piață și contractuale pe meserie
+  // 2. Triangulare multi-sursă piață blue-collar (România, fără străinătate/EUR, podea 2.699 lei, P5-P95)
+  const tb = obtineTriangulareBlueCollar(d.meserie.slug);
+  if (tb) {
+    return {
+      ...common,
+      kind: 'external-reported',
+      value: tb.net,
+      upper: null,
+      unit: 'lei net/lună',
+      label: tb.label,
+      period: tb.period,
+      population: tb.population,
+      source: tb.source,
+      url: tb.url,
+      note: tb.note,
+      triangulare: tb,
+    };
+  }
+
+  // 3. Repere studiate de piață și contractuale pe meserie (white-collar)
   if (Object.hasOwn(BENCHMARKS, d.meserie.slug)) {
     const b = BENCHMARKS[d.meserie.slug];
     return {
