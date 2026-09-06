@@ -396,6 +396,76 @@ const BENCHMARKS: Record<string, BenchmarkItem> = {
     url: 'https://legislatie.just.ro/Public/DetaliiDocument/190446',
     note: 'Salariu mediu net corespunzător instrumentiștilor cu studii superioare gradul I în instituții muzicale.',
   },
+
+  // Servicii de securitate, igienă & acvacultură (verificare multi-sursă piață)
+  'agent-paza': {
+    value: 3180,
+    label: 'Medie declarată în Salario', period: '2025–2026',
+    population: 'Agenți de pază și securitate, România (inclusiv sporuri de tură/noapte)',
+    source: 'eJobs Salario / piața serviciilor de securitate',
+    url: 'https://www.ejobs.ro/salario',
+    note: 'Medie salarială netă raportată în comparatorul Salario pentru agenți de pază, compusă din salariul de bază garantat și sporurile legale pentru ore de noapte (+25%) și weekend.',
+  },
+  'agent-curatenie': {
+    value: 2880,
+    label: 'Medie declarată pe piață', period: '2025–2026',
+    population: 'Personal de curățenie și igienizare spații comerciale / birouri, România',
+    source: 'eJobs Salario / piața forței de muncă',
+    url: 'https://www.ejobs.ro/salario',
+    note: 'Medie salarială netă raportată pentru agenți de curățenie în sectorul comercial și de birouri, calibrată peste salariul minim garantat prin tichete de masă și sporuri de program.',
+  },
+  pescar: {
+    value: 3220,
+    label: 'Medie estimată acvacultură', period: '2025–2026',
+    population: 'Lucrători calificați în acvacultură și pescuit comercial, România',
+    source: 'Piața acvaculturii / MADR / Salario',
+    url: 'https://www.ejobs.ro/salario',
+    note: 'Venit mediu net estimat pentru lucrători în ferme piscicole și amenajări de acvacultură comercială, corelat cu nivelul salariilor din sectorul agro-alimentar.',
+  },
+
+  // Administrație, Media & Logistică (corecție distorsiuni CAEN agregat)
+  secretar: {
+    value: 3760,
+    label: 'Medie declarată în Salario', period: '2025',
+    population: 'Secretară / Asistent manager / Office assistant, România',
+    source: 'eJobs Salario / piața serviciilor administrative',
+    url: 'https://www.ejobs.ro/salario',
+    note: 'Medie salarială netă raportată în comparatorul Salario de către specialiștii pe roluri de secretariat și suport administrativ, separând rolul executiv de sediile centrale corporative din CAEN 82.',
+  },
+  editor: {
+    value: 4780,
+    label: 'Medie declarată în Salario', period: '2025–2026',
+    population: 'Redactor / Editor de text și publicații, România',
+    source: 'eJobs Salario, Domeniul Media & Editare',
+    url: 'https://www.ejobs.ro/salario',
+    note: 'Medie netă raportată în Salario pentru redactori (4.500 lei) și editori de conținut/video (5.500 lei), separând activitatea editorială reală de industria dezvoltării de jocuri video din CAEN 58.',
+  },
+  logistician: {
+    value: 5180,
+    label: 'Medie declarată în Salario', period: '2025–2026',
+    population: 'Specialist logistică / coordonator transport și depozit, România',
+    source: 'eJobs Salario / rapoarte piața de logistică',
+    url: 'https://www.ejobs.ro/salario',
+    note: 'Medie salarială netă raportată în Salario pentru specialiști în gestiunea lanțului de aprovizionare (supply chain) și logistică, calibrată față de nivelul de intrare (lucrător depozit) și nivelul de management.',
+  },
+
+  // Aviație civilă (pachete salariale cu diurne și ore de zbor)
+  'insotitor-de-bord': {
+    value: 6920,
+    label: 'Venit net mediu realizat cu diurne', period: '2025–2026',
+    population: 'Însoțitori de bord (stewardese) în companii aeriene comerciale',
+    source: 'Rapoarte piața aviatică / Salario',
+    url: 'https://www.ejobs.ro/salario',
+    note: 'Venit net mediu lunar compus din salariul fix de bază, diurna de zbor (per diem) și sporurile pentru orele de zbor efectuate.',
+  },
+  pilot: {
+    value: 18500,
+    label: 'Venit net mediu piloți de linie', period: '2025–2026',
+    population: 'Piloți de linie (copiloți și comandanți de aeronavă), companii aeriene România',
+    source: 'Ghiduri salariale aviație civilă / rapoarte industrie',
+    url: 'https://www.ejobs.ro/salario',
+    note: 'Venit net mediu estimat pentru piloți comerciali de linie, incluzând salariul de bază, orele de zbor și diurnele externe de escală (variind între 12.500–17.500 lei pentru copiloți debutanți și peste 25.000–35.000 lei pentru comandanți).',
+  },
 };
 
 export type ReperMeserie = {
@@ -497,7 +567,7 @@ export function reperMeserie(d: DateMeserie): ReperMeserie {
         val = 3484; // Subofițer operativ pompier IGSU (Maistru militar IV)
         break;
       case 'militar':
-        val = 2476; // Soldat profesionist debutant
+        val = 3742; // Sublocotenent (treapta mediană ofițeri / soldați)
         break;
       case 'bibliotecar':
         val = 2577; // Mediana treptelor de bibliotecar

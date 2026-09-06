@@ -17,7 +17,7 @@
 // tot catalogul TEMPO, 1.916 matrice. Ce nu exista e COR — nicio matrice de
 // salarii nu coboara sub grupa majora.
 
-import { calculStandard } from "@/lib/fiscal";
+import { SALARIU_MINIM, calculStandard } from "@/lib/fiscal";
 import {
   activitate,
   grupaIsco,
@@ -534,7 +534,19 @@ export function dateMeserie(meserie: Meserie): DateMeserie | null {
   const categorie = getCategorie(meserie.categorie);
   if (!sector || !categorie) return null;
   const rezultat = calculStandard(sector.brutCurent);
-  const judete = judetePentru(meserie.caen2);
+  const rawJudete = judetePentru(meserie.caen2);
+  const national = nationalJudete(meserie.caen2);
+
+  // Varianta A: Indexare la dinamica salarială a sectorului (2026) și garantare minim legal (4.325 lei brut)
+  const factor = national && national > 0 && sector.brutCurent > national ? sector.brutCurent / national : 1;
+  const judete = rawJudete
+    .map((j) => ({
+      ...j,
+      brut: Math.max(SALARIU_MINIM, Math.round(j.brut * factor)),
+    }))
+    .sort((a, b) => b.brut - a.brut);
+  const mediaJudete = national ? Math.max(SALARIU_MINIM, Math.round(national * factor)) : null;
+
   const isco = grupaIsco(meserie.isco);
   return {
     meserie,
@@ -544,7 +556,7 @@ export function dateMeserie(meserie: Meserie): DateMeserie | null {
     netObservat: sector.netCurent,
     isco,
     judete,
-    mediaJudete: nationalJudete(meserie.caen2),
+    mediaJudete,
     interval: intervalDinJudete(judete),
     clasament: CLASAMENT.get(meserie.slug) ?? null,
     repere: repereDin(sector, isco),
