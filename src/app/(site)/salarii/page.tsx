@@ -48,7 +48,7 @@ export const metadata: Metadata = {
 const FAQ = [
   {
     q: "Cum documentează Salariile.ro salariul pentru fiecare meserie?",
-    a: "Salariile.ro aplică o metodologie exhaustivă multi-sursă: analizăm datele din rapoartele de recrutare independente (eJobs Salario, Hays România), grilele legale oficiale din sectorul public (Legea 153/2017 cu calculul valorii mediane a treptelor), intersecția statistică a seriilor INS (FOM121A × FOM106G) și monitorizarea ofertelor active. Fiecare dintre cele 126 de meserii are o valoare salarială proprie, granulară și studiată.",
+    a: `Salariile.ro aplică o metodologie exhaustivă multi-sursă: analizăm datele din rapoartele de recrutare independente (eJobs Salario, Hays România), grilele legale oficiale din sectorul public (Legea 153/2017 cu calculul valorii mediane a treptelor), intersecția statistică a seriilor INS (FOM121A × FOM106G) și monitorizarea ofertelor active. Fiecare dintre cele ${MESERII.length} de meserii are o valoare salarială proprie, granulară și studiată.`,
   },
   {
     q: "Publică INS salariul mediu pentru fiecare meserie?",
@@ -137,6 +137,28 @@ export default function SalariiPage() {
               meserii — motivul pentru care omul intra pe pagina — sub fold.
               Cifrele raman in FAQ si pe fiecare pagina de meserie, unde au rost. */}
           <FiltruMeserii total={MESERII.length} />
+
+          {/* Căutări frecvente și meserii cu volum mare de interes */}
+          <div
+            data-scurtaturi-categorii
+            className="mt-6 flex flex-wrap items-center gap-1.5 text-xs text-stone-600 data-[filtrat=da]:hidden"
+          >
+            <span className="font-semibold text-stone-800">Căutate frecvent:</span>
+            <Link href="/salarii/medic-rezident" className="rounded-full bg-stone-200/80 px-2.5 py-1 text-stone-800 transition-colors hover:bg-stone-300">Medic rezident</Link>
+            <Link href="/salarii/politist" className="rounded-full bg-stone-200/80 px-2.5 py-1 text-stone-800 transition-colors hover:bg-stone-300">Polițist</Link>
+            <Link href="/salarii/insotitor-de-bord" className="rounded-full bg-stone-200/80 px-2.5 py-1 text-stone-800 transition-colors hover:bg-stone-300">Însoțitor de bord (stewardesă)</Link>
+            <Link href="/salarii/judecator" className="rounded-full bg-stone-200/80 px-2.5 py-1 text-stone-800 transition-colors hover:bg-stone-300">Judecător</Link>
+            <Link href="/salarii/procuror" className="rounded-full bg-stone-200/80 px-2.5 py-1 text-stone-800 transition-colors hover:bg-stone-300">Procuror</Link>
+            <Link href="/salarii/preot" className="rounded-full bg-stone-200/80 px-2.5 py-1 text-stone-800 transition-colors hover:bg-stone-300">Preot</Link>
+            <Link href="/salarii/ingrijitor-batrani" className="rounded-full bg-stone-200/80 px-2.5 py-1 text-stone-800 transition-colors hover:bg-stone-300">Îngrijitor bătrâni</Link>
+            <Link href="/salarii/asistent-medical" className="rounded-full bg-stone-200/80 px-2.5 py-1 text-stone-800 transition-colors hover:bg-stone-300">Asistent medical</Link>
+            <Link href="/salarii/tehnician-dentar" className="rounded-full bg-stone-200/80 px-2.5 py-1 text-stone-800 transition-colors hover:bg-stone-300">Tehnician dentar</Link>
+            <Link href="/salarii/kinetoterapeut" className="rounded-full bg-stone-200/80 px-2.5 py-1 text-stone-800 transition-colors hover:bg-stone-300">Kinetoterapeut</Link>
+            <Link href="/salarii/sofer-ambulanta" className="rounded-full bg-stone-200/80 px-2.5 py-1 text-stone-800 transition-colors hover:bg-stone-300">Șofer ambulanță</Link>
+            <Link href="/salarii/asistent-farmacie" className="rounded-full bg-stone-200/80 px-2.5 py-1 text-stone-800 transition-colors hover:bg-stone-300">Asistent farmacie</Link>
+            <Link href="/salarii/programator" className="rounded-full bg-stone-200/80 px-2.5 py-1 text-stone-800 transition-colors hover:bg-stone-300">Programator</Link>
+            <Link href="/salarii/contabil" className="rounded-full bg-stone-200/80 px-2.5 py-1 text-stone-800 transition-colors hover:bg-stone-300">Contabil</Link>
+          </div>
 
           <nav
             aria-label="Categorii de meserii"

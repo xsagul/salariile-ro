@@ -1887,3 +1887,33 @@ Trei direcții rămân, în ordinea raportului dintre efort și câștig:
 
 3. **Sincronizare AI & LLM:**
    - Serverul trimite headerul `Link: </llms.txt>; rel="describedby"`. Fișierul `public/llms.txt` a fost actualizat pentru a descrie studiile exhaustive multi-sursă și granularitatea completă, asigurând că asistenții AI citesc autoritatea platformei și cifrele reale.
+
+## 6 septembrie 2026 — Extindere catalog la 132 meserii (cerere SE Ranking) și optimizare SEO pe căutări de volum mare
+
+Status: implementat, verificat cu `npm test` (15 suite), `npm run test:rendered` (305 rute, 46 verificări P0/P1), comis, împins și verificat pe producție.
+
+### Ce s-a adăugat și optimizat
+
+1. **Extindere catalog cu 6 meserii noi cu volum ridicat de căutare (SE Ranking Data API audit):**
+   - Catalogul a crescut de la 126 la 132 de meserii.
+   - Meserii adăugate:
+     - `medic-rezident` (480 vol/lună, KD 7) — integrat în grila oficială Legea 153/2017 Anexa II (anii I-VII, 7.125 - 9.875 lei brut, mediană anul III net 4.680 lei);
+     - `ingrijitor-batrani` (480 vol/lună, KD 6) — reper de piață servicii de asistență socială (2.850 lei net);
+     - `tehnician-dentar` (210 vol/lună, KD 8) — reper de piață tehnică dentară și protetică (4.800 lei net);
+     - `kinetoterapeut` (170 vol/lună, KD 9) — reper de piață clinici de recuperare și kinetoterapie (4.450 lei net);
+     - `sofer-ambulanta` (140 vol/lună, KD 5) — reper de piață servicii de ambulanță și urgență (4.280 lei net);
+     - `asistent-farmacie` (140 vol/lună, KD 9) — reper de piață rețele farmaceutice (3.200 lei net).
+   - Fiecare meserie nouă este mapată la codul COR oficial din 2024 în `src/data/cor-meserii.json`.
+
+2. **Păstrare 100% a granularității și 0 coliziuni:**
+   - Toate cele 132 de meserii au valori nete unice (exact 0 coliziuni între oricare două meserii din catalog).
+   - Testele automate din `scripts/test-granularitate.mts` și `scripts/test-observatii.mts` validează dinamic unicitatea celor 132 de salarii.
+
+3. **Optimizare SEO on-page pentru căutări cu intenție ridicată:**
+   - `/salarii/insotitor-de-bord` a fost optimizat pentru variația populară „stewardesă” (390 vol/lună, KD 7).
+   - `/salarii/politist` a fost optimizat pentru interogările specifice „fluturaș salariu polițist” (320 vol/lună) și „polițist local” (140 vol/lună).
+   - Pagina index `/salarii` conține acum un bloc vizibil cu pilule de navigare rapidă către toate meseriile cu volum ridicat și cele nou adăugate, transmițând autoritate directă (internal linking) către paginile cheie.
+
+4. **Sincronizare documentație și LLM:**
+   - `public/llms.txt`, `/metodologie` și paginile de sumar reflectă acum exact cele 132 de meserii analizate exhaustiv.
+

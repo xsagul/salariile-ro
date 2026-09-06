@@ -1,7 +1,7 @@
 // scripts/test-granularitate.mts
 //
-// Verifică granularitatea salarială pentru toate cele 126 de meserii din catalog.
-// Criteriu de succes: ZERO coliziuni (126 valori salariale unice), nicio meserie cu
+// Verifică granularitatea salarială pentru toate meseriile din catalog.
+// Criteriu de succes: ZERO coliziuni (valori salariale unice), nicio meserie cu
 // salariu nul sau lipsă, și metadate complete pe fiecare reper (sursă, perioadă, populație).
 
 import assert from 'node:assert/strict';
@@ -9,7 +9,7 @@ import { MESERII, dateMeserieSauEroare } from '../src/lib/meserii';
 import { reperMeserie, textReper } from '../src/lib/repere-meserii';
 import { indicatorMeserie, textIndicator } from '../src/lib/indicator-meserie';
 
-console.log('\n--- Testare granularitate salarială (126 meserii) ---');
+console.log(`\n--- Testare granularitate salarială (${MESERII.length} meserii) ---`);
 
 const valMap: Record<number, { slug: string; nume: string; kind: string; source: string }[]> = {};
 
@@ -64,4 +64,4 @@ if (collisions.length > 0) {
 assert.equal(Object.keys(valMap).length, MESERII.length, `Trebuie să existe exact ${MESERII.length} valori unice, dar există ${Object.keys(valMap).length}`);
 assert.equal(collisions.length, 0, `Trebuie să existe 0 coliziuni, dar există ${collisions.length}`);
 
-console.log('✓ OK: Toate cele 126 de meserii au salarii 100% unice, reale și documentate!\n');
+console.log(`✓ OK: Toate cele ${MESERII.length} de meserii au salarii 100% unice, reale și documentate!\n`);

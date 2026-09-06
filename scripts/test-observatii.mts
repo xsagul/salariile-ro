@@ -39,4 +39,4 @@ assert.equal(reperMeserie(dateMeserieSauEroare(MESERII.find(x=>x.slug==='contabi
 assert.equal(reperMeserie(dateMeserieSauEroare(MESERII.find(x=>x.slug==='constructor')!)).kind,'sector-context');
 assert.equal(cor.occupations.zugrav.code,'713102');assert.equal(cor.occupations.contabil.code,'331302');
 for(const c of COMPARATII)assert.notEqual(c.a.slug,c.b.slug);
-console.log('OK: mapări COR, 126 repere și 37 comparații; cohorte, deduplicare, medie/mediană și quartile.',counts);
+console.log(`OK: mapări COR, ${MESERII.length} repere și 37 comparații; cohorte, deduplicare, medie/mediană și quartile.`,counts);

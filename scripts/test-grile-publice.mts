@@ -59,6 +59,10 @@ ok("asistent medical postliceal, principal = 5.474", () =>
 ok("fiziokinetoterapeut principal = 7.470", () => assert.equal(brut("fizioterapeut", "Principal"), 7470));
 ok("psiholog principal = 7.603", () => assert.equal(brut("psiholog", "Principal"), 7603));
 ok("asistent social principal = 5.473", () => assert.equal(brut("asistent-social", "Principal"), 5473));
+ok("medic rezident anul I = 7.125 si anul VI–VII = 9.875", () => {
+  assert.equal(brut("medic-rezident", "Rezident anul I"), 7125);
+  assert.equal(brut("medic-rezident", "Rezident anul VI–VII"), 9875);
+});
 
 console.log("\nSanatate — personal auxiliar");
 

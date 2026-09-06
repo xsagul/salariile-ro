@@ -278,7 +278,7 @@ export default function MetodologiePage() {
         <Section>
             <h2 id="salarii">Cum documentăm salariile pe meserii: Metodologia multi-sursă Salariile.ro</h2>
             <p>
-              Fiecare dintre cele 126 de meserii analizate pe <Link href="/salarii">Salariile.ro</Link> beneficiază de un studiu exhaustiv documentat individual. Pentru a oferi cifre reale, granulare și ancorate în realitatea pieței muncii din România, integrăm patru piloni metodologici independenți:
+              Fiecare dintre cele 132 de meserii analizate pe <Link href="/salarii">Salariile.ro</Link> beneficiază de un studiu exhaustiv documentat individual. Pentru a oferi cifre reale, granulare și ancorate în realitatea pieței muncii din România, integrăm patru piloni metodologici independenți:
             </p>
             <ol className="list-decimal space-y-3 pl-5 text-stone-700">
               <li>
@@ -296,7 +296,7 @@ export default function MetodologiePage() {
             </ol>
             <h3>Granularitate 100% și eliminarea coliziunilor</h3>
             <p>
-              Spre deosebire de agregatoarele automate care aplică aceeași medie de sector tuturor profesiilor dintr-o industrie, Salariile.ro diferențiază fiecare meserie în mod individual. Fiecare dintre cele 126 de ocupații are propriul salariu net de referință studiat, fără coliziuni artificiale, respectând cerințele de calificare și specificul fiecărui rol.
+              Spre deosebire de agregatoarele automate care aplică aceeași medie de sector tuturor profesiilor dintr-o industrie, Salariile.ro diferențiază fiecare meserie în mod individual. Fiecare dintre cele 132 de ocupații are propriul salariu net de referință studiat, fără coliziuni artificiale, respectând cerințele de calificare și specificul fiecărui rol.
             </p>
             <h3>Salarii nete unice și valori mediane clare</h3>
             <p>

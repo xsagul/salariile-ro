@@ -169,6 +169,21 @@ const DEFINITII: Record<string, Definitie> = {
       "În anatomie patologică și medicină legală grila e mai mare — 18.363 lei pentru medic primar — iar la ambulanță, UPU și ATI, 15.072 lei.",
   },
 
+  "medic-rezident": {
+    anexa: "Anexa nr. II",
+    sectiune: "Unităti clinice",
+    domeniu: "spitale și institute clinice",
+    trepte: [
+      { eticheta: "Rezident anul I", functie: "Medic rezident anul I" },
+      { eticheta: "Rezident anul II", functie: "Medic rezident anul II" },
+      { eticheta: "Rezident anul III", functie: "Medic rezident anul III" },
+      { eticheta: "Rezident anul IV–V", functie: "Medic rezident anul IV - V" },
+      { eticheta: "Rezident anul VI–VII", functie: "Medic rezident anul VI - VII" },
+    ],
+    nota:
+      "La salariul de bază din grilă se adaugă sporul de secție (de la 15% pe secții normale până la 50–85% la UPU/ATI/anatomie patologică), indemnizația de hrană și plata gărzilor efectuate.",
+  },
+
   stomatolog: {
     anexa: "Anexa nr. II",
     sectiune: "Unităti clinice",

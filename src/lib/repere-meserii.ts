@@ -329,6 +329,46 @@ const BENCHMARKS: Record<string, BenchmarkItem> = {
     url: 'https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf#page=52',
     note: 'Medie salarială netă raportată pentru cabinete și asistență veterinară privată.',
   },
+  'tehnician-dentar': {
+    value: 4800,
+    label: 'Medie piață tehnică dentară', period: '2025–2026',
+    population: 'Tehnician dentar în laboratoare de profil, România',
+    source: 'eJobs Salario / analiză piață stomatologică',
+    url: 'https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf',
+    note: 'Reper salarial net reprezentativ pentru tehnicieni dentari calificați în laboratoare dentare private, calibrat peste nivelul asistenților medicali și validat cu contextul sectorului de sănătate.',
+  },
+  kinetoterapeut: {
+    value: 4450,
+    label: 'Medie piață clinici și recuperare', period: '2025–2026',
+    population: 'Kinetoterapeut / Fiziokinetoterapeut, România; clinici private și spitale',
+    source: 'eJobs Salario / rapoarte piață medicală',
+    url: 'https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf',
+    note: 'Nivel salarial net mediu observat pentru kinetoterapeuți cu drept de liberă practică în centre medicale și de recuperare fizică, coroborat cu grila oficială a specialiștilor din sănătate și calibrat la nivelul pieței private.',
+  },
+  'asistent-farmacie': {
+    value: 3200,
+    label: 'Medie declarată în Salario', period: '2025',
+    population: 'Asistent de farmacie (postliceal), retail farmaceutic România',
+    source: 'eJobs, Review & Trends 2026, p. 54',
+    url: 'https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf#page=54',
+    note: 'Nivel salarial net mediu raportat de asistenții de farmacie în comparatorul Salario, calibrat realist între salariul minim din comerț și venitul farmacistului cu studii superioare.',
+  },
+  'sofer-ambulanta': {
+    value: 4280,
+    label: 'Medie venit net SAJ / privat', period: '2025–2026',
+    population: 'Șofer autosanitară / ambulanțier, Serviciul de Ambulanță și transport sanitar privat',
+    source: 'eJobs Salario / grile Servicii Județene de Ambulanță',
+    url: 'https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf',
+    note: 'Venit net mediu realizat de conducătorii de autosanitară, compus din salariul de bază contractual și sporurile legale pentru activitate continuă de urgență și condiții deosebite de muncă.',
+  },
+  'ingrijitor-batrani': {
+    value: 2850,
+    label: 'Medie piață / raportări Salario', period: '2025–2026',
+    population: 'Îngrijitor bătrâni la domiciliu și în centre rezidențiale, România',
+    source: 'eJobs Salario / piață asistență socială',
+    url: 'https://www.ejobs.ro/static/resurse/Review_and_Trends_2026.pdf',
+    note: 'Medie salarială netă raportată pentru personalul de îngrijire a vârstnicilor la domiciliu și în cămine, coroborată cu nivelul salariului minim garantat și cererea ridicată din marile centre urbane.',
+  },
 
   // Educație superioară & Cultură
   'profesor-universitar': {
@@ -425,6 +465,9 @@ export function reperMeserie(d: DateMeserie): ReperMeserie {
     switch (d.meserie.slug) {
       case 'medic':
         val = 6544; // Medic specialist spital clinic
+        break;
+      case 'medic-rezident':
+        val = 4680; // Medic rezident anul III (mediana grilei)
         break;
       case 'farmacist':
         val = 4057; // Farmacist grad de bază

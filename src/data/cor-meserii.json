@@ -508,6 +508,30 @@
     "pescar": {
       "code": "622201",
       "name": "pescar în ape interioare și de coastă"
+    },
+    "medic-rezident": {
+      "code": "221102",
+      "name": "medic rezident"
+    },
+    "ingrijitor-batrani": {
+      "code": "532201",
+      "name": "îngrijitor bătrâni la domiciliu"
+    },
+    "tehnician-dentar": {
+      "code": "325101",
+      "name": "tehnician dentar"
+    },
+    "kinetoterapeut": {
+      "code": "226401",
+      "name": "fiziokinetoterapeut"
+    },
+    "sofer-ambulanta": {
+      "code": "832203",
+      "name": "șofer autoambulanță"
+    },
+    "asistent-farmacie": {
+      "code": "321301",
+      "name": "asistent farmacist"
     }
   }
 }
