@@ -1917,3 +1917,23 @@ Status: implementat, verificat cu `npm test` (15 suite), `npm run test:rendered`
 4. **Sincronizare documentație și LLM:**
    - `public/llms.txt`, `/metodologie` și paginile de sumar reflectă acum exact cele 132 de meserii analizate exhaustiv.
 
+## 6 septembrie 2026 — Actualizare clasament meserii (/salarii/clasament) pe baza salariilor nete reale (132 de meserii)
+
+Status: implementat, validat cu toate cele 15 suite de teste automate, verificat `next build` și `test:rendered` (305 rute).
+
+### Ce s-a rezolvat
+
+1. **Clasament net-first al celor 132 de ocupații:**
+   - `/salarii/clasament` nu mai afișează ierarhia brută pe ramuri CAEN, ci clasamentul real al tuturor celor 132 de meserii ordonate descrescător după salariul net de referință (banii primiți în mână).
+   - Locul #1 este ocupat de Pilot (18.500 lei net), urmat de Notar (16.500 lei net), Inginer DevOps (14.200 lei net) și Programator (13.474 lei net).
+   - Toate valorile afișate în clasament sunt 100% identice cu sumele de pe paginile individuale ale fiecărei meserii.
+
+2. **Poziție unică în clasament pe pagina fiecărei meserii:**
+   - În `src/lib/meserii.ts`, fiecare meserie primește un rang dedicat de la 1 la 132 (`loc: 1..132`, `total: 132`, `laEgalitate: 0`).
+   - Pe paginile individuale `/salarii/[meserie]`, cardul de context afișează clar „Ocupația este pe locul X din 132 în clasamentul salariilor nete analizate pe site, după salariul net de referință”.
+
+3. **Optimizare SEO, UX și Schema.org:**
+   - Adăugate metadate complete, titlu optimizat sub 60 de caractere, metrici cheie (Locul 1, Mediana de 4.835 lei, Raportul extremităților de 7,9×, 50 de meserii peste media pe economie).
+   - Tabel responsive cu bară vizuală proporțională, subtitlu de domeniu și cod CAEN, tipul sursei și abaterea față de media pe economie.
+   - Schema.org ItemList actualizat cu toate cele 132 de meserii în ordinea noului clasament.
+

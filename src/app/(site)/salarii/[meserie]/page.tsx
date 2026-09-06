@@ -234,22 +234,18 @@ export default async function MeseriePage({ params }: Props) {
               {clasament && (
                 <div className="rounded-md border border-stone-200 bg-surface p-5 shadow-soft">
                   <div className="text-xs font-medium uppercase tracking-wide text-stone-500">
-                    Poziția pe piața muncii
+                    Poziția în clasament
                   </div>
                   <p className="mt-2 text-base leading-normal text-stone-700">
-                    Activitatea este pe{" "}
+                    Ocupația este pe{" "}
                     <strong className="font-semibold text-stone-900">
                       locul {clasament.loc} din {clasament.total}
                     </strong>{" "}
-                    dintre cele urmărite pe site, după câștigul mediu brut din {LUNA}.
-                    {clasament.laEgalitate > 0 && (
-                      <>
-                        {" "}
-                        Alte {clasament.laEgalitate}{" "}
-                        {clasament.laEgalitate === 1 ? "meserie împarte" : "meserii împart"} același loc, pentru că
-                        împart aceeași activitate CAEN. Locul este al activității, nu al ocupației.
-                      </>
-                    )}
+                    în{" "}
+                    <Link href="/salarii/clasament" className="underline underline-offset-2 hover:text-stone-900">
+                      clasamentul salariilor nete
+                    </Link>{" "}
+                    analizate pe site, după venitul net de referință.
                   </p>
                 </div>
               )}

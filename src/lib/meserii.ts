@@ -29,6 +29,8 @@ import {
   type GrupaIsco,
   type ValoareJudet,
 } from "@/lib/ins-date";
+import { reperMeserie } from "@/lib/repere-meserii";
+import { indicatorMeserie } from "@/lib/indicator-meserie";
 
 export type CategorieMeserii = {
   slug: string;
@@ -482,54 +484,8 @@ function intervalDinJudete(judete: ValoareJudet[]): IntervalJudete | null {
   return { minim, maxim, raport: maxim.brut / minim.brut };
 }
 
-// Clasamentul se construieste o singura data, peste toate meseriile din
-// catalog. Meseriile care impart acelasi CAEN impart si locul — nu le
-// despartim artificial, pentru ca nu avem nicio masuratoare care sa le
-// desparta. Numarul de meserii aflate la egalitate se afiseaza in pagina, ca
-// cititorul sa stie ca locul e al sectorului, nu al ocupatiei.
-const CLASAMENT: Map<string, LocClasament> = (() => {
-  const brutPeCaen = new Map<string, number>();
-  for (const meserie of MESERII) {
-    if (brutPeCaen.has(meserie.caen3)) continue;
-    const sector = activitate(meserie.caen3);
-    if (sector) brutPeCaen.set(meserie.caen3, sector.brutCurent);
-  }
-  const ordonate = [...brutPeCaen.entries()].sort((a, b) => b[1] - a[1]);
-  const locPeCaen = new Map(ordonate.map(([caen], index) => [caen, index + 1]));
-  const cateMeseriiPeCaen = new Map<string, number>();
-  for (const meserie of MESERII) {
-    cateMeseriiPeCaen.set(meserie.caen3, (cateMeseriiPeCaen.get(meserie.caen3) ?? 0) + 1);
-  }
-  const rezultat = new Map<string, LocClasament>();
-  for (const meserie of MESERII) {
-    const loc = locPeCaen.get(meserie.caen3);
-    if (!loc) continue;
-    rezultat.set(meserie.slug, {
-      loc,
-      total: ordonate.length,
-      laEgalitate: (cateMeseriiPeCaen.get(meserie.caen3) ?? 1) - 1,
-    });
-  }
-  return rezultat;
-})();
-
-/** Cele doua repere, pastrate separat si aduse la aceeasi luna. */
-function repereDin(sector: ActivitateCaen, isco: DateGrupaIsco | null): RepereOcupatie | null {
-  if (!isco) return null;
-  const brutSector = sector.brutCurent;
-  const brutGrupa = indexatLaZi(isco.venitBrutTotal);
-
-  const prag = isco.varste.find((v) => v.varsta === "20-24 ani");
-  const inceputBrut = prag ? indexatLaZi(prag.venitBrut) : null;
-
-  return {
-    sector: { brut: brutSector, net: calculStandard(brutSector)?.net ?? 0 },
-    grupa: { brut: brutGrupa, net: calculStandard(brutGrupa)?.net ?? 0 },
-    inceput: inceputBrut ? { brut: inceputBrut, net: calculStandard(inceputBrut)?.net ?? 0 } : null,
-  };
-}
-
-export function dateMeserie(meserie: Meserie): DateMeserie | null {
+/** Datele de bază ale unei meserii, fără clasament (pentru a evita recursivitatea la inițializare). */
+function dateMeserieFaraClasament(meserie: Meserie): Omit<DateMeserie, "clasament"> | null {
   const sector = activitate(meserie.caen3);
   const categorie = getCategorie(meserie.categorie);
   if (!sector || !categorie) return null;
@@ -558,8 +514,57 @@ export function dateMeserie(meserie: Meserie): DateMeserie | null {
     judete,
     mediaJudete,
     interval: intervalDinJudete(judete),
-    clasament: CLASAMENT.get(meserie.slug) ?? null,
     repere: repereDin(sector, isco),
+  };
+}
+
+// Clasamentul celor 132 de meserii din catalog, ordonate descrescător după
+// salariul net de referință (indicatorul principal afișat în pagina fiecărei meserii).
+// Toate valorile sunt distincte (0 coliziuni), fiecare ocupație primind un rang unic.
+const CLASAMENT: Map<string, LocClasament> = (() => {
+  const scoruri: { slug: string; net: number }[] = [];
+  for (const meserie of MESERII) {
+    const date = dateMeserieFaraClasament(meserie);
+    if (!date) continue;
+    const reper = reperMeserie(date as DateMeserie);
+    const ind = indicatorMeserie(reper);
+    scoruri.push({ slug: meserie.slug, net: ind.value ?? 0 });
+  }
+  scoruri.sort((a, b) => b.net - a.net || a.slug.localeCompare(b.slug, "ro"));
+
+  const rezultat = new Map<string, LocClasament>();
+  for (let i = 0; i < scoruri.length; i++) {
+    rezultat.set(scoruri[i].slug, {
+      loc: i + 1,
+      total: scoruri.length,
+      laEgalitate: 0,
+    });
+  }
+  return rezultat;
+})();
+
+/** Cele doua repere, pastrate separat si aduse la aceeasi luna. */
+function repereDin(sector: ActivitateCaen, isco: DateGrupaIsco | null): RepereOcupatie | null {
+  if (!isco) return null;
+  const brutSector = sector.brutCurent;
+  const brutGrupa = indexatLaZi(isco.venitBrutTotal);
+
+  const prag = isco.varste.find((v) => v.varsta === "20-24 ani");
+  const inceputBrut = prag ? indexatLaZi(prag.venitBrut) : null;
+
+  return {
+    sector: { brut: brutSector, net: calculStandard(brutSector)?.net ?? 0 },
+    grupa: { brut: brutGrupa, net: calculStandard(brutGrupa)?.net ?? 0 },
+    inceput: inceputBrut ? { brut: inceputBrut, net: calculStandard(inceputBrut)?.net ?? 0 } : null,
+  };
+}
+
+export function dateMeserie(meserie: Meserie): DateMeserie | null {
+  const date = dateMeserieFaraClasament(meserie);
+  if (!date) return null;
+  return {
+    ...date,
+    clasament: CLASAMENT.get(meserie.slug) ?? null,
   };
 }
 

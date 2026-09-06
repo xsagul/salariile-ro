@@ -613,7 +613,7 @@ export default function SalariuMediuPage() {
           { href: "/salarii", label: "Salarii pe meserii", descriere: "Media pe economie e una; pe meserie, alta. Toate meseriile cu date INS." },
           { href: "/salarii/locuri-vacante", label: "Locuri de muncă vacante", descriere: "Cât se caută în economie: posturi vacante și rata pe grupe de ocupații." },
           { href: "/salarii/judete", label: "Salarii pe județe", descriere: "Unde se câștigă mai mult: toate cele 42 de județe." },
-          { href: "/salarii/clasament", label: "Cele mai bine plătite meserii", descriere: "Clasamentul complet, după câștigul mediu brut." },
+          { href: "/salarii/clasament", label: "Cele mai bine plătite meserii", descriere: "Clasamentul complet al celor 132 de meserii, după salariul net." },
           { href: "/salariu-minim", label: "Salariul minim 2026", descriere: "Celălalt pilon: 4.325 lei brut din 1 iulie." },
         ]}
       />
