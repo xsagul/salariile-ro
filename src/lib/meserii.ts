@@ -77,7 +77,8 @@ export type Meserie = {
 export const MESERII: Meserie[] = [
   // ─── IT și telecomunicații ─────────────────────────────────────────────────
   { slug: "programator", nume: "Programator", de: "programator", categorie: "it", caen3: "62", caen2: "62-63", isco: "specialisti", cor: "251202",
-    ceFace: "Scrie și întreține cod pentru aplicații web, mobile sau de întreprindere, de obicei într-o echipă cu testeri, designeri și un product owner." },
+    ceFace: "Scrie și întreține cod pentru aplicații web, mobile sau de întreprindere, de obicei într-o echipă cu testeri, designeri și un product owner.",
+    nota: `„Programator" este termenul-umbrelă pe care îl folosim pentru întreaga industrie software (CAEN 62). Cifra de reper acoperă toate rolurile din sector — web developer, DevOps, QA, analist de date etc. Fiecare sub-rol are pagina proprie cu salariul său distinct.` },
   { slug: "web-developer", nume: "Web developer", de: "web developer", categorie: "it", caen3: "62", caen2: "62-63", isco: "specialisti", cor: "251208",
     ceFace: "Construiește interfețe și servicii web, de la componente de front-end până la integrarea cu API-uri și baze de date." },
   { slug: "tester-qa", nume: "Tester QA", de: "tester QA", categorie: "it", caen3: "62", caen2: "62-63", isco: "tehnicieni", cor: "351108",

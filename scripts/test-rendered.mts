@@ -276,7 +276,7 @@ async function auditRenderedSite() {
     // patru repere cu greutate egala nu raspundeau la intrebarea cititorului.
     ["/salarii/programator", "Context INS · media sectorului", "netul principal, afisat primul"],
     ["/salarii/programator", "lei net/lună", "unitatea de masura"],
-    ["/salarii/programator", "Aceasta este media activității angajatorului", "limita cifrei, declarata in pagina"],
+    ["/salarii/programator", "etalonul oficial al întregii industrii software", "limita cifrei, declarata in pagina"],
     ["/salarii/programator", `Brut lunar pe județe · media ${AN_JUDETE}`, "perioada tabelului judetean"],
     ["/salarii/programator", "Nu este salariu net", "separarea tabelului judetean de net"],
     ["/salarii/programator", "salariul minim din 2026", "separarea tabelului judetean de minimul curent"],
