@@ -543,7 +543,7 @@ export function reperMeserie(d: DateMeserie): ReperMeserie {
       population: `CAEN ${d.sector.cheie} — ${d.sector.denumire}; toate ocupațiile`,
       source: 'INS, TEMPO-Online, FOM106G',
       url: 'https://statistici.insse.ro/tempoins/?ind=FOM106G&lang=ro&page=tempo3',
-      note: '„Programator" este etalonul oficial al întregii industrii software (CAEN 62). INS raportează salariul mediu pe activitatea economică, nu pe titlul de post; de aceea cifra de 13.474 lei net acoperă toate rolurile software — de la web developer la DevOps și QA. Fiecare sub-rol are pagina proprie cu reperul său distinct. Valoarea este corelată și cu rapoartele salariale independente (Salario, Hays) ca nivel mediu reprezentativ pentru specialiștii software cu experiență intermediară.',
+      note: '„Programator" este etalonul oficial al întregii industrii software (CAEN 62). INS raportează pe activitatea economică. Fiecare sub-rol are pagina proprie.',
     };
   }
 
