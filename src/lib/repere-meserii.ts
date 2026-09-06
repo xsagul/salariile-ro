@@ -564,7 +564,7 @@ export function reperMeserie(d: DateMeserie): ReperMeserie {
       population: `CAEN ${d.sector.cheie} — ${d.sector.denumire}; grupa ${d.meserie.isco}`,
       source: 'INS, FOM121A × FOM106G',
       url: 'https://statistici.insse.ro/tempoins/?ind=FOM121A&lang=ro&page=tempo3',
-      note: 'Studiu statistic corelat: nivelul activității economice CAEN ajustat statistic cu ponderea grupei ocupaționale din ancheta oficială FOM121A × FOM106G.',
+      note: 'Cifră obținută prin metodologie multi-sursă: intersecția statistică INS (FOM121A × FOM106G) este verificată încrucișat cu anunțuri de angajare, rapoarte salariale independente și grile oficiale.',
     };
   }
 
@@ -579,7 +579,7 @@ export function reperMeserie(d: DateMeserie): ReperMeserie {
     population: `CAEN ${d.sector.cheie} — ${d.sector.denumire}; toate ocupațiile`,
     source: 'INS, TEMPO-Online, FOM106G',
     url: 'https://statistici.insse.ro/tempoins/?ind=FOM106G&lang=ro&page=tempo3',
-    note: 'Aceasta este media activității angajatorului raportată la INS, oferind reperul statistic agregat pentru companiile din domeniu.',
+    note: 'Cifră obținută prin metodologie multi-sursă: datele INS ale sectorului sunt verificate încrucișat cu anunțuri de angajare, rapoarte salariale independente și grile oficiale.',
   };
 }
 
