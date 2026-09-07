@@ -21,25 +21,20 @@ export const metadata: Metadata = {
   twitter: twPage({ title: TITLU, description: DESC }),
 };
 
-const stableResizeCode = (desktopHeight: number, mobileHeight: number) => `<script>
+const AUTO_RESIZE_CODE = `<script>
 (function (frame) {
   if (!frame) return;
-  var reportedHeight = 0;
-  function reservedHeight() {
-    return window.matchMedia("(max-width: 767px)").matches ? ${mobileHeight} : ${desktopHeight};
-  }
-  function applyHeight() {
-    frame.style.height = Math.max(reservedHeight(), reportedHeight) + "px";
-  }
-  applyHeight();
+  var lastHeight = parseInt(frame.getAttribute("height"), 10) || 0;
   window.addEventListener("message", function (event) {
     if (event.origin !== "https://salariile.ro" || event.source !== frame.contentWindow) return;
     var data = event.data;
     if (!data || data.type !== "salariile:height" || !data.height) return;
-    reportedHeight = Math.ceil(Number(data.height)) || 0;
-    applyHeight();
+    var nextHeight = Math.ceil(Number(data.height));
+    if (!Number.isFinite(nextHeight) || nextHeight < 320) return;
+    if (Math.abs(nextHeight - lastHeight) < 8) return;
+    lastHeight = nextHeight;
+    frame.style.height = nextHeight + "px";
   });
-  window.addEventListener("resize", applyHeight);
 })(document.currentScript.previousElementSibling);
 </script>`;
 
@@ -53,7 +48,7 @@ const MINIMAL_EMBED_CODE = `<iframe src="https://salariile.ro/widget/frame"
   width="100%" height="790" loading="lazy" scrolling="no"
   style="border:1px solid #e7e5e4;border-radius:8px;max-width:420px;display:block;box-sizing:border-box;margin:0 auto"
   title="Calculator salariu net 2026"></iframe>
-${stableResizeCode(790, 790)}
+${AUTO_RESIZE_CODE}
 ${MINIMAL_CREDIT_CODE}`;
 
 const COMPLETE_CREDIT_CODE = `<a class="salariile-credit" href="https://salariile.ro?utm_source=widget-complet"
@@ -66,7 +61,7 @@ const COMPLETE_EMBED_CODE = `<iframe src="https://salariile.ro/widget/frame?vari
   width="100%" height="900" loading="lazy" scrolling="no"
   style="border:1px solid #e7e5e4;border-radius:8px;max-width:1152px;display:block;box-sizing:border-box;margin:0 auto"
   title="Calculator complet de salarii 2026"></iframe>
-${stableResizeCode(900, 1450)}
+${AUTO_RESIZE_CODE}
 ${COMPLETE_CREDIT_CODE}`;
 
 const PAYSLIP_CREDIT_CODE = `<a class="salariile-credit" href="https://salariile.ro/fluturas-salariu?utm_source=widget-fluturas"
@@ -76,10 +71,10 @@ const PAYSLIP_CREDIT_CODE = `<a class="salariile-credit" href="https://salariile
 </a>`;
 
 const PAYSLIP_EMBED_CODE = `<iframe src="https://salariile.ro/widget/frame/fluturas"
-  width="100%" height="1200" loading="lazy" scrolling="no"
+  width="100%" height="1000" loading="lazy" scrolling="no"
   style="border:1px solid #e7e5e4;border-radius:8px;max-width:1152px;display:block;box-sizing:border-box;margin:0 auto"
   title="Generator fluturaș de salariu 2026"></iframe>
-${stableResizeCode(1200, 2000)}
+${AUTO_RESIZE_CODE}
 ${PAYSLIP_CREDIT_CODE}`;
 
 const FAQ = [
@@ -100,8 +95,8 @@ const FAQ = [
     a: "Este de preferat să păstrezi creditul și linkul către salariile.ro, pentru ca utilizatorii să poată identifica sursa calculatorului și să ajungă la metodologia completă. Totuși, păstrarea linkului este la alegerea ta și nu este o condiție pentru folosirea widgetului.",
   },
   {
-    q: "Se schimbă înălțimea paginii când folosesc widgetul?",
-    a: "În mod normal, nu. Codul rezervă de la început spațiul necesar stării calculate, cu o înălțime mai mare pe mobil, unde coloanele se stivuiesc. Astfel, apăsarea butonului Calculează nu ar trebui să împingă în jos conținutul paginii. Auto-redimensionarea rămâne activă doar ca plasă de siguranță pentru stări neobișnuit de înalte, de exemplu când sunt deschise multe opțiuni avansate.",
+    q: "Cum se adaptează înălțimea widgetului?",
+    a: "Codul de integrare ajustează automat înălțimea iframe-ului după conținut. Dacă apare rezultatul, se deschid opțiunile avansate sau layout-ul se stivuiește pe mobil, widgetul crește cât are nevoie și se micșorează când conținutul devine din nou mai scurt, fără scroll interior. Valorile height din cod sunt doar fallback pentru platformele care blochează scripturile inline.",
   },
 ];
 
@@ -158,8 +153,8 @@ export default function WidgetPage() {
         </div>
         <h3>Codul widgetului minimalist</h3>
         <p>
-          Copiază tot codul și lipește-l în pagina ta, unde vrei să apară calculatorul. Spațiul pentru rezultat este
-          rezervat de la început, astfel încât pagina să rămână stabilă în timpul folosirii.
+          Copiază tot codul și lipește-l în pagina ta, unde vrei să apară calculatorul. Înălțimea se ajustează
+          automat după conținut, fără scroll interior.
         </p>
         <div className="my-6">
           <EmbedCode code={MINIMAL_EMBED_CODE} />
@@ -182,9 +177,8 @@ export default function WidgetPage() {
         <div className="max-w-3xl">
           <h3>Codul widgetului complet</h3>
           <p>
-            Copiază tot codul de mai jos. Pe mobil, unde formularul și rezultatul se stivuiesc, codul rezervă din
-            start o înălțime mai mare. Rezultatul apare în spațiul deja rezervat, fără scroll interior și fără să
-            împingă conținutul de sub widget la fiecare calcul.
+            Copiază tot codul de mai jos. Pe ecrane înguste calculatorul se adaptează, iar iframe-ul își schimbă
+            automat înălțimea când apare rezultatul sau se deschid opțiunile, fără scroll interior.
           </p>
         </div>
         <div className="my-6">
@@ -205,8 +199,8 @@ export default function WidgetPage() {
         <div className="max-w-3xl">
           <h3>Codul widgetului pentru fluturaș</h3>
           <p>
-            Și aici spațiul pentru starea calculată este rezervat de la început, separat pentru desktop și mobil.
-            Auto-redimensionarea intervine doar dacă o stare avansată depășește spațiul rezervat.
+            Codul folosește o pagină iframe separată de landingul public și își ajustează automat înălțimea după
+            formular și rezultat, inclusiv pe mobil.
           </p>
         </div>
         <div className="my-6">
