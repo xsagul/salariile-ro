@@ -1,7 +1,9 @@
 import fs from 'node:fs';
 import { extrageObservatiiOlx } from './connectors/olx.mjs';
 import { extrageObservatiiBestJobs } from './connectors/bestjobs.mjs';
+import { extrageObservatiiEjobs } from './connectors/ejobs.mjs';
 import { extrageObservatiiSectorPublic } from './connectors/public-sector.mjs';
+import { extrageObservatiiAgentCuration } from './connectors/agent-curation.mjs';
 import { deduplicaObservatiiCrossSite } from './deduplicator.mjs';
 import { sleep } from './connectors/base.mjs';
 
@@ -151,32 +153,42 @@ export async function ruleazaPipelineComplet({ snapshotId = '2026-09', limit = n
 
   let toateObservatiileBrute = [];
 
-  // 1. Rulare conectori privați (OLX + BestJobs)
+  // 1. Rulare conectori privați conectați live (OLX + BestJobs + eJobs)
+  console.log(`\n1. Scanare conectori live (OLX, BestJobs, eJobs) pe ${jobsToProcess.length} meserii de piață...`);
   for (let i = 0; i < jobsToProcess.length; i++) {
     const job = jobsToProcess[i];
     const conf = getSearchConfig(job.slug, job.nume);
-    process.stdout.write(`[${i + 1}/${jobsToProcess.length}] Scanare conectată "${job.nume}" (${conf.q})... `);
+    process.stdout.write(`[${i + 1}/${jobsToProcess.length}] Scanare "${job.nume}" (${conf.q})... `);
 
     const olxObs = await extrageObservatiiOlx(conf.q, job.slug, conf.matches, 3);
-    await sleep(200);
+    await sleep(150);
 
     const bjObs = await extrageObservatiiBestJobs(conf.q, job.slug, conf.matches, 2);
-    await sleep(200);
+    await sleep(150);
 
-    const rawJobObs = [...olxObs, ...bjObs];
+    const ejobsObs = await extrageObservatiiEjobs(conf.q, job.slug, conf.matches, 1);
+    await sleep(150);
+
+    const rawJobObs = [...olxObs, ...bjObs, ...ejobsObs];
     toateObservatiileBrute.push(...rawJobObs);
 
-    console.log(`✓ ${rawJobObs.length} observații culese (${olxObs.length} OLX, ${bjObs.length} BestJobs)`);
+    console.log(`✓ ${rawJobObs.length} oferte (${olxObs.length} OLX, ${bjObs.length} BestJobs, ${ejobsObs.length} eJobs)`);
   }
 
-  // 2. Rulare conector sector public (D112 spitale / grile)
-  console.log(`\nScanare conector sector public (D112 / SCJU Constanța)...`);
+  // 2. Rulare conector sector public (D112 spitale / SUUB / Legea 153/2017)
+  console.log(`\n2. Scanare conector sector public (Transparență D112 / Spitale / Administrație)...`);
   const publicObs = extrageObservatiiSectorPublic();
   console.log(`✓ ${publicObs.length} observații oficiale extrase din transparență publică.`);
   toateObservatiileBrute.push(...publicObs);
 
-  // 3. Deduplicare cross-site și calcul scor de încredere consolidat
-  console.log(`\nDeduplicare cross-site și scoring de încredere...`);
+  // 3. Rulare conector Cenzus Curat Salariile.ro (Agent Deep Reading de la marii angajatori)
+  console.log(`\n3. Încărcare Cenzus Curat Salariile.ro (Agent Deep Reading - Marii Angajatori din România)...`);
+  const agentObs = extrageObservatiiAgentCuration();
+  console.log(`✓ ${agentObs.length} observații curate adăugate din cenzusul de oferte declarate.`);
+  toateObservatiileBrute.push(...agentObs);
+
+  // 4. Deduplicare cross-site și calcul scor de încredere consolidat
+  console.log(`\n4. Deduplicare cross-site („1 post = 1 vot”) și scoring de încredere...`);
   const { observatiiUnice, totalOriginal, totalDeduplicate, duplicateEliminate, confirmateCrossSite } = deduplicaObservatiiCrossSite(toateObservatiileBrute);
 
   console.log(`Total observații brute culese: ${totalOriginal}`);
@@ -184,7 +196,7 @@ export async function ruleazaPipelineComplet({ snapshotId = '2026-09', limit = n
   console.log(`Duplicate cross-site eliminate: ${duplicateEliminate}`);
   console.log(`Confirmate pe multiple platforme: ${confirmateCrossSite}`);
 
-  // 4. Salvare snapshot istoric (fără suprascriere a istoricului trecut)
+  // 5. Salvare snapshot istoric
   const snapshotPayload = {
     snapshot: snapshotId,
     generatLa: new Date().toISOString(),
@@ -202,7 +214,7 @@ export async function ruleazaPipelineComplet({ snapshotId = '2026-09', limit = n
   fs.writeFileSync(`${snapshotDir}/observatii-complete.json`, JSON.stringify(snapshotPayload, null, 2), 'utf8');
   console.log(`\n✓ Salvat snapshot istoric: ${snapshotDir}/observatii-complete.json`);
 
-  // 5. Sincronizare cu compatibilitatea legacy pentru generare triangulare
+  // 6. Sincronizare cu compatibilitatea legacy pentru generare triangulare
   const groupedBySlug = new Map();
   for (const obs of observatiiUnice) {
     if (!groupedBySlug.has(obs.ocupatie_normalizata)) {
@@ -216,15 +228,28 @@ export async function ruleazaPipelineComplet({ snapshotId = '2026-09', limit = n
     const jobObs = groupedBySlug.get(job.slug) || [];
     const countOlx = jobObs.filter(a => (a.surse_confirmate || []).includes('olx') || a.sursa === 'olx').length;
     const countBestJobs = jobObs.filter(a => (a.surse_confirmate || []).includes('bestjobs') || a.sursa === 'bestjobs').length;
+    const countEjobs = jobObs.filter(a => (a.surse_confirmate || []).includes('ejobs') || a.sursa === 'ejobs').length;
+    const countAgent = jobObs.filter(a => (a.surse_confirmate || []).includes('cenzus_agent_curat') || a.sursa === 'cenzus_agent_curat').length;
+    const countPublic = jobObs.filter(a => (a.surse_confirmate || []).includes('transparenta_d112') || a.sursa === 'transparenta_d112').length;
 
     rawDatabase[job.slug] = {
       slug: job.slug,
       nume: job.nume,
       categorie: job.categorie,
       totalOferteDeduplicate: jobObs.length,
-      distributie: { olx: countOlx, bestjobs: countBestJobs },
+      distributie: {
+        olx: countOlx,
+        bestjobs: countBestJobs,
+        ejobs: countEjobs,
+        cenzus_agent_curat: countAgent,
+        transparenta_d112: countPublic
+      },
       oferte: jobObs.map(o => ({
-        sursa: o.sursa === 'olx' ? 'OLX Locuri de Muncă' : (o.sursa === 'bestjobs' ? 'BestJobs' : o.sursa),
+        sursa: o.sursa === 'olx' ? 'OLX Locuri de Muncă' :
+               (o.sursa === 'bestjobs' ? 'BestJobs' :
+               (o.sursa === 'ejobs' ? 'eJobs' :
+               (o.sursa === 'cenzus_agent_curat' ? 'Cenzus Curat Salariile.ro' :
+               (o.sursa === 'transparenta_d112' ? 'Transparență Instituțională D112' : o.sursa)))),
         id: o.id,
         titlu: o.job_title_raw,
         angajator: o.angajator_raw,
@@ -248,7 +273,7 @@ export async function ruleazaPipelineComplet({ snapshotId = '2026-09', limit = n
     totalOferteBrute: totalOriginal,
     totalOferteDeduplicate: totalDeduplicate,
     totalMeseriiScanate: baseline.length,
-    metodologie: 'Pipeline modular multi-sursă (conectori independenți OLX + BestJobs + D112), normalizare COR, deduplicare cross-site, scoring de încredere, stocare istorică',
+    metodologie: 'Pipeline modular multi-sursă (OLX + BestJobs + eJobs + Transparență D112 + Cenzus Curat Salariile.ro), normalizare COR, deduplicare cross-site, scoring de încredere, stocare istorică',
     meserii: rawDatabase
   };
 

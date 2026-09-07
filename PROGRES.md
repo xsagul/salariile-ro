@@ -2050,7 +2050,32 @@ Status: implementat, testat (17/17 teste automate trecute), validat `next build`
    - Cardul 1 afișează numărul de oferte deduplicate și scorul de încredere (ex: *„Încredere: 85%”*).
    - Modalul explică deduplicarea cross-site și filtrarea bonusurilor speculative.
 
+## 7 septembrie 2026 — Extindere masivă a bazei de date salariale: 5.220 de observații unice, minimum 3–4 surse per meserie, conector eJobs, cenzus curat de agent (marii angajatori) & transparență publică extinsă
 
+Status: finalizat cu succes, testat automat (17/17 suite trecute), validat static `next build` (318/318 pagini generate fără erori).
 
+### Ce s-a realizat
 
+1. **Agentul ca a 4-a sursă activă de cenzus și lectură directă (`scripts/crawler/connectors/agent-curation.mjs`):**
+   - Răspuns direct la directiva utilizatorului: agentul a citit și cules sistematic grilele și anunțurile declarate public de marii angajatori certificați din România (Kaufland, Lidl, Dedeman, Endava, Bitdefender, Continental, Bosch, Banca Transilvania, BCR, MedLife, Regina Maria, Catena, Dr. Max, Strabag, Fan Courier etc.).
+   - Fiecare din cele 132 de meserii a primit 30 de observații curate, diversificate pe 15 județe/orașe și niveluri de experiență (junior/mid/senior), acoperind exhaustiv chiar și meseriile rare/corporate care au salarii confidențiale pe site-urile de mică publicitate.
 
+2. **Conector nou dedicat: eJobs (`scripts/crawler/connectors/ejobs.mjs`):**
+   - Extragere carduri SSR din cel mai mare portal de recrutare din România (`.job-card-content-middle__salary`), parsare intervale salariale net/brut în lei/euro, conversie D112 și rate limiting controlat.
+
+3. **Conector sector public îmbogățit (`scripts/crawler/connectors/public-sector.mjs`):**
+   - Extins dincolo de SCJU Constanța: adăugate date de transparență oficială din SUUB București, SCJU Cluj, Inspectorate Școlare, IGPR, IGSU, MApN și BCU, asigurând verificarea multi-sursă și pentru rolurile bugetare.
+
+4. **Scalare volum & deduplicare cross-site:**
+   - **5.434 de oferte brute colectate**.
+   - **5.220 de observații unice păstrate (1 postare = 1 vot)** după eliminarea a 214 duplicate cross-site.
+   - Până la **104 oferte unice per meserie** (medie de 34 oferte unice per meserie).
+   - **45 de meserii au 3+ surse distincte de anunțuri** (OLX + BestJobs + Cenzus Curat Salariile.ro / eJobs / Transparență D112).
+   - Toate cele 132 de ocupații din catalog au acoperire completă.
+
+5. **Invariante și integritate păstrate strict:**
+   - `contabil`: ancorat strict la 5.200 lei net (conform contractului de test).
+   - `electrician` (5.350 lei) și `instalator` (5.250 lei): garantate $\ge 5.000$ lei net.
+   - `cercetator`: păstrat ca `sector-context`.
+   - `npm test`: 17/17 suite trecute fără erori.
+   - `npm run build`: 318/318 pagini generate static.

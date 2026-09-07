@@ -321,8 +321,12 @@ for (const m of list) {
     const minAd = salarii[0];
     const maxAd = salarii[salarii.length - 1];
 
-    const countOlx = realAds.filter(a => a.sursa.includes('OLX')).length;
-    const countBestJobs = realAds.filter(a => a.sursa.includes('BestJobs')).length;
+    const countOlx = realAds.filter(a => (a.sursa || '').includes('OLX')).length;
+    const countBestJobs = realAds.filter(a => (a.sursa || '').includes('BestJobs')).length;
+    const countEjobs = realAds.filter(a => (a.sursa || '').includes('eJobs') || (a.sursa || '').includes('ejobs')).length;
+    const countAgent = realAds.filter(a => (a.sursa || '').includes('Cenzus') || (a.sursa || '').includes('cenzus')).length;
+    const countPublic = realAds.filter(a => (a.sursa || '').includes('Transparență') || (a.sursa || '').includes('transparenta')).length;
+
     const platforme = [];
     const distributie = [];
     if (countOlx > 0) {
@@ -332,6 +336,18 @@ for (const m of list) {
     if (countBestJobs > 0) {
       platforme.push('BestJobs');
       distributie.push({ sursa: 'BestJobs', oferte: countBestJobs });
+    }
+    if (countEjobs > 0) {
+      platforme.push('eJobs');
+      distributie.push({ sursa: 'eJobs', oferte: countEjobs });
+    }
+    if (countAgent > 0) {
+      platforme.push('Cenzus Curat Salariile.ro');
+      distributie.push({ sursa: 'Cenzus Curat Salariile.ro', oferte: countAgent });
+    }
+    if (countPublic > 0) {
+      platforme.push('Transparență Instituțională D112');
+      distributie.push({ sursa: 'Transparență Instituțională D112', oferte: countPublic });
     }
 
     // Blend adMedian with baseVal (eJobs Salario / INS)
@@ -416,7 +432,7 @@ for (const m of list) {
   }
 
   const noteTriangulare = anunturiInfo
-    ? `Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): ` +
+    ? `Mediana salarială netă a fost triangulată din ${anunturiInfo.surseDistincte} surse independente (snapshot septembrie 2026): ` +
       `1) Piața activă: ${anunturiInfo.esantion} oferte unice verificate pe ${anunturiInfo.platforme.join(' și ')} ` +
       `(${anunturiInfo.distributie.map(d => `${d.oferte} pe ${d.sursa}`).join(', ')}; ` +
       `deduplicate cross-site „1 post = 1 vot”, interval ${anunturiInfo.interval.min.toLocaleString('ro-RO')}–${anunturiInfo.interval.max.toLocaleString('ro-RO')} lei net, scor de încredere ${anunturiInfo.scorIncredere}, normă întreagă, conversie D112 brut->net); ` +
@@ -480,10 +496,10 @@ const finalPayload = {
   totalOferteBruteScanate: rawAdsData.totalOferteBrute,
   totalOferteDeduplicate: rawAdsData.totalOferteDeduplicate,
   duplicateSpamEliminate: rawAdsData.totalOferteBrute - rawAdsData.totalOferteDeduplicate,
-  metodologie: 'Pipeline în 10 pași: crawling adânc OLX + BestJobs, 1 post = 1 vot, normă întreagă, conversie D112 brut->net, eJobs Salario 2026, INS TEMPO FOM121A x FOM106G, Legea 153/2017',
+  metodologie: 'Pipeline modular multi-sursă (OLX + BestJobs + eJobs + Transparență D112 + Cenzus Curat Salariile.ro), 1 post = 1 vot, normă întreagă, conversie D112 brut->net, eJobs Salario 2026, INS TEMPO FOM121A x FOM106G, Legea 153/2017',
   totalMeserii: Object.keys(output).length,
   meserii: output
 };
 
 fs.writeFileSync('src/data/triangulare-date.json', JSON.stringify(finalPayload, null, 2), 'utf8');
-console.log(`✓ Generat src/data/triangulare-date.json cu ${Object.keys(output).length} meserii (Snapshot: septembrie 2026, 1.288 oferte curate)!`);
+console.log(`✓ Generat src/data/triangulare-date.json cu ${Object.keys(output).length} meserii triangulate din surse multiple!`);
