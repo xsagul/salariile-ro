@@ -5,6 +5,7 @@
 
 import type { Metadata } from "next";
 import CalculatorSalariu from "@/app/components/CalculatorSalariu";
+import EmbedAutoResize from "@/app/components/EmbedAutoResize";
 
 export const metadata: Metadata = {
   title: "Generator fluturaș de salariu (widget)",
@@ -21,7 +22,8 @@ export default async function WidgetFluturasFramePage({
   const initialBrut = brut && /^\d{3,6}$/.test(brut) ? brut : undefined;
 
   return (
-    <main className="min-h-screen bg-canvas">
+    <main className="bg-canvas">
+      <EmbedAutoResize />
       <h1 className="sr-only">Generator fluturaș de salariu 2026</h1>
       <CalculatorSalariu
         brutInitial={initialBrut}
