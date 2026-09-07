@@ -9,6 +9,7 @@
 import type { Metadata } from "next";
 import CalculatorSalariu from "@/app/components/CalculatorSalariu";
 import WidgetCalculator from "@/app/components/WidgetCalculator";
+import EmbedAutoResize from "@/app/components/EmbedAutoResize";
 
 export const metadata: Metadata = {
   title: "Calculator salariu net (widget)",
@@ -26,9 +27,10 @@ export default async function WidgetFramePage({
   const isComplete = variant === "complet";
 
   return (
-    <main className="min-h-screen bg-canvas">
+    <main className="bg-canvas">
       {isComplete ? (
         <>
+          <EmbedAutoResize />
           <h1 className="sr-only">Calculator complet de salarii 2026</h1>
           <CalculatorSalariu brutInitial={initialBrut} embedded />
         </>
