@@ -21,6 +21,18 @@ export const metadata: Metadata = {
   twitter: twPage({ title: TITLU, description: DESC }),
 };
 
+const AUTO_RESIZE_CODE = `<script>
+(function (frame) {
+  if (!frame) return;
+  window.addEventListener("message", function (event) {
+    if (event.origin !== "https://salariile.ro" || event.source !== frame.contentWindow) return;
+    var data = event.data;
+    if (!data || data.type !== "salariile:height" || !data.height) return;
+    frame.style.height = Math.ceil(Number(data.height)) + "px";
+  });
+})(document.currentScript.previousElementSibling);
+</script>`;
+
 const MINIMAL_CREDIT_CODE = `<a class="salariile-credit" href="https://salariile.ro?utm_source=widget"
   target="_blank" rel="noopener"
   style="display:block;max-width:420px;margin:8px auto 0;font:14px/1.4 system-ui,sans-serif;color:#57534e">
@@ -31,6 +43,7 @@ const MINIMAL_EMBED_CODE = `<iframe src="https://salariile.ro/widget/frame"
   width="100%" height="790" loading="lazy" scrolling="no"
   style="border:1px solid #e7e5e4;border-radius:8px;max-width:420px;display:block;box-sizing:border-box;margin:0 auto"
   title="Calculator salariu net 2026"></iframe>
+${AUTO_RESIZE_CODE}
 ${MINIMAL_CREDIT_CODE}`;
 
 const COMPLETE_CREDIT_CODE = `<a class="salariile-credit" href="https://salariile.ro?utm_source=widget-complet"
@@ -40,9 +53,10 @@ const COMPLETE_CREDIT_CODE = `<a class="salariile-credit" href="https://salariil
 </a>`;
 
 const COMPLETE_EMBED_CODE = `<iframe src="https://salariile.ro/widget/frame?variant=complet"
-  width="100%" height="900" loading="lazy"
+  width="100%" height="900" loading="lazy" scrolling="no"
   style="border:1px solid #e7e5e4;border-radius:8px;max-width:1152px;display:block;box-sizing:border-box;margin:0 auto"
   title="Calculator complet de salarii 2026"></iframe>
+${AUTO_RESIZE_CODE}
 ${COMPLETE_CREDIT_CODE}`;
 
 const PAYSLIP_CREDIT_CODE = `<a class="salariile-credit" href="https://salariile.ro/fluturas-salariu?utm_source=widget-fluturas"
@@ -52,9 +66,10 @@ const PAYSLIP_CREDIT_CODE = `<a class="salariile-credit" href="https://salariile
 </a>`;
 
 const PAYSLIP_EMBED_CODE = `<iframe src="https://salariile.ro/widget/frame/fluturas"
-  width="100%" height="1000" loading="lazy"
+  width="100%" height="1000" loading="lazy" scrolling="no"
   style="border:1px solid #e7e5e4;border-radius:8px;max-width:1152px;display:block;box-sizing:border-box;margin:0 auto"
   title="Generator fluturaș de salariu 2026"></iframe>
+${AUTO_RESIZE_CODE}
 ${PAYSLIP_CREDIT_CODE}`;
 
 const FAQ = [
@@ -76,7 +91,7 @@ const FAQ = [
   },
   {
     q: "Trebuie să fixez înălțimea?",
-    a: "Da. Varianta minimalistă folosește 790 px, cea completă 900 px, iar generatorul de fluturaș 1.000 px. Ultimele două permit derularea în interior când opțiunile avansate sunt deschise sau coloanele se stivuiesc pe mobil. Poți ajusta atributul height pentru pagina ta.",
+    a: "Nu în mod normal. Codul de integrare ajustează automat înălțimea iframe-ului după conținut, inclusiv pe mobil și după deschiderea opțiunilor sau recalculare. Valorile height din cod sunt doar fallback; dacă platforma pe care publici blochează scripturile inline, poți mări manual atributul height.",
   },
 ];
 
@@ -133,8 +148,8 @@ export default function WidgetPage() {
         </div>
         <h3>Codul widgetului minimalist</h3>
         <p>
-          Copiază tot codul și lipește-l în pagina ta, unde vrei să apară calculatorul. Înălțimea se poate ajusta
-          manual din atributul <code>height</code>.
+          Copiază tot codul și lipește-l în pagina ta, unde vrei să apară calculatorul. Înălțimea se ajustează
+          automat după conținut.
         </p>
         <div className="my-6">
           <EmbedCode code={MINIMAL_EMBED_CODE} />
@@ -157,8 +172,8 @@ export default function WidgetPage() {
         <div className="max-w-3xl">
           <h3>Codul widgetului complet</h3>
           <p>
-            Copiază tot codul de mai jos. Pe ecrane înguste calculatorul se adaptează și permite derularea în
-            interiorul iframe-ului, fără să lărgească pagina gazdă.
+            Copiază tot codul de mai jos. Pe ecrane înguste calculatorul se adaptează, iar iframe-ul își ajustează
+            automat înălțimea după conținut, fără scroll interior.
           </p>
         </div>
         <div className="my-6">
@@ -179,8 +194,8 @@ export default function WidgetPage() {
         <div className="max-w-3xl">
           <h3>Codul widgetului pentru fluturaș</h3>
           <p>
-            Codul folosește o pagină iframe separată de landingul public. Generatorul se adaptează pe mobil și
-            păstrează derularea internă pentru formularul avansat și rezultatul complet.
+            Codul folosește o pagină iframe separată de landingul public și își ajustează automat înălțimea după
+            formular și rezultat, inclusiv pe mobil.
           </p>
         </div>
         <div className="my-6">
