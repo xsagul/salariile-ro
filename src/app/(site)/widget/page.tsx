@@ -72,7 +72,7 @@ const FAQ = [
   },
   {
     q: "Trebuie să păstrez linkul către salariile.ro?",
-    a: "Da. Linkul de credit trebuie păstrat când preiei un widget. Este modul simplu prin care proiectul rămâne gratuit, fără cont și fără reclame.",
+    a: "Este de preferat să păstrezi creditul și linkul către salariile.ro, pentru ca utilizatorii să poată identifica sursa calculatorului și să ajungă la metodologia completă. Totuși, păstrarea linkului este la alegerea ta și nu este o condiție pentru folosirea widgetului.",
   },
   {
     q: "Trebuie să fixez înălțimea?",
@@ -187,8 +187,7 @@ export default function WidgetPage() {
           <EmbedCode code={PAYSLIP_EMBED_CODE} />
         </div>
         <p className="max-w-3xl">
-          Păstrează rândul cu creditul când preiei oricare dintre cele trei widgeturi. Ne ajută să ținem proiectul gratuit,
-          fără cont și fără reclame. Pentru dimensiuni speciale sau integrare într-un CMS, scrie-ne la{" "}
+          Creditul către salariile.ro este recomandat pentru ca utilizatorii să poată identifica sursa, dar păstrarea lui rămâne la alegerea publisherului. Pentru dimensiuni speciale sau integrare într-un CMS, scrie-ne la{" "}
           <a href="mailto:contact@salariile.ro">contact@salariile.ro</a>.
         </p>
       </Section>
