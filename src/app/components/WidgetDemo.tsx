@@ -1,18 +1,16 @@
 "use client";
 
 // Demo fidel pentru cele trei iframe-uri prezentate pe /widget.
-// Varianta minimalistă își ajustează înălțimea în pagina noastră prin postMessage.
-// Variantele ample păstrează scrollul intern, deoarece formularele se stivuiesc pe mobil.
+// Rezervă de la început spațiul stării calculate, astfel încât rezultatul să nu
+// împingă conținutul paginii. postMessage poate doar mări peste rezerva normală.
 
 import { useEffect, useRef, useState } from "react";
 
 const MINIMAL_HEIGHT = 790;
-const COMPLETE_HEIGHT = 900;
-const PAYSLIP_HEIGHT = 1000;
-const MIN_HEIGHT = 360;
-const MAX_MINIMAL_HEIGHT = 900;
-const clampMinimalHeight = (height: number) =>
-  Math.min(MAX_MINIMAL_HEIGHT, Math.max(MIN_HEIGHT, Math.ceil(height)));
+const COMPLETE_DESKTOP_HEIGHT = 900;
+const COMPLETE_MOBILE_HEIGHT = 1450;
+const PAYSLIP_DESKTOP_HEIGHT = 1200;
+const PAYSLIP_MOBILE_HEIGHT = 2000;
 
 type WidgetDemoProps = {
   variant?: "minimal" | "complet" | "fluturas";
@@ -20,31 +18,50 @@ type WidgetDemoProps = {
 
 export default function WidgetDemo({ variant = "minimal" }: WidgetDemoProps) {
   const ref = useRef<HTMLIFrameElement>(null);
+  const reportedHeightRef = useRef(0);
   const isMinimal = variant === "minimal";
   const isComplete = variant === "complet";
   const isPayslip = variant === "fluturas";
-  const initialHeight = isPayslip
-    ? PAYSLIP_HEIGHT
+
+  const desktopHeight = isPayslip
+    ? PAYSLIP_DESKTOP_HEIGHT
     : isComplete
-      ? COMPLETE_HEIGHT
+      ? COMPLETE_DESKTOP_HEIGHT
       : MINIMAL_HEIGHT;
-  const [height, setHeight] = useState(initialHeight);
+  const mobileHeight = isPayslip
+    ? PAYSLIP_MOBILE_HEIGHT
+    : isComplete
+      ? COMPLETE_MOBILE_HEIGHT
+      : MINIMAL_HEIGHT;
+
+  const [height, setHeight] = useState(desktopHeight);
 
   useEffect(() => {
-    if (!isMinimal) return;
+    const reservedHeight = () =>
+      window.matchMedia("(max-width: 767px)").matches ? mobileHeight : desktopHeight;
+
+    const applyHeight = () => {
+      setHeight(Math.max(reservedHeight(), reportedHeightRef.current));
+    };
 
     const onMsg = (event: MessageEvent) => {
       if (event.origin !== window.location.origin) return;
       const data = event.data;
       if (!data || data.type !== "salariile:height" || !data.height) return;
       if (ref.current && event.source === ref.current.contentWindow) {
-        setHeight(clampMinimalHeight(data.height));
+        reportedHeightRef.current = Math.ceil(Number(data.height)) || 0;
+        applyHeight();
       }
     };
 
+    applyHeight();
     window.addEventListener("message", onMsg);
-    return () => window.removeEventListener("message", onMsg);
-  }, [isMinimal]);
+    window.addEventListener("resize", applyHeight);
+    return () => {
+      window.removeEventListener("message", onMsg);
+      window.removeEventListener("resize", applyHeight);
+    };
+  }, [desktopHeight, mobileHeight]);
 
   const maxWidth = isMinimal ? 420 : 1152;
   const src = isPayslip
@@ -75,7 +92,7 @@ export default function WidgetDemo({ variant = "minimal" }: WidgetDemoProps) {
         src={src}
         title={title}
         loading="lazy"
-        scrolling={isMinimal ? "no" : undefined}
+        scrolling="no"
         style={{
           width: "100%",
           maxWidth,
@@ -90,7 +107,7 @@ export default function WidgetDemo({ variant = "minimal" }: WidgetDemoProps) {
       <a
         href={href}
         target="_blank"
-        rel="nofollow noopener"
+        rel="noopener"
         style={{
           display: "block",
           maxWidth,
