@@ -35,7 +35,18 @@ export default async function WidgetFramePage({
           <CalculatorSalariu brutInitial={initialBrut} embedded />
         </>
       ) : (
-        <WidgetCalculator initialBrut={initialBrut} />
+        <div className="widget-minimal-autoheight">
+          <style>{`
+            .widget-minimal-autoheight > div > div:first-child {
+              height: auto !important;
+              overflow: visible !important;
+            }
+            .widget-minimal-autoheight > div > div:nth-child(2) {
+              display: none !important;
+            }
+          `}</style>
+          <WidgetCalculator initialBrut={initialBrut} />
+        </div>
       )}
     </main>
   );
