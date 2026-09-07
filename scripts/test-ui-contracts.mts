@@ -2,13 +2,12 @@ import assert from "node:assert/strict";
 import { readdir, readFile } from "node:fs/promises";
 
 const read = (path: string) => readFile(new URL(`../${path}`, import.meta.url), "utf8");
-const [salary, pfa, header, embedLayout, home, widgetScript, widgetPage, widgetDemo, widgetCalculator] = await Promise.all([
+const [salary, pfa, header, embedLayout, home, widgetPage, widgetDemo, widgetCalculator] = await Promise.all([
   read("src/app/components/CalculatorSalariu.tsx"),
   read("src/app/components/CalculatorPFA.tsx"),
   read("src/app/components/Header.tsx"),
   read("src/app/(embed)/layout.tsx"),
   read("src/app/(site)/page.tsx"),
-  read("public/widget.js"),
   read("src/app/(site)/widget/page.tsx"),
   read("src/app/components/WidgetDemo.tsx"),
   read("src/app/components/WidgetCalculator.tsx"),
@@ -35,12 +34,16 @@ assert.match(header, /groupsOpen\[item\.label\]/, "Accordeonul mobil trebuie sa 
 assert.match(header, /event\.key === "Escape"/);
 assert.doesNotMatch(embedLayout, /stats\.js|umami/i, "Layout-ul embed nu trebuie să activeze analytics");
 assert.match(home, /Calculator salariu net 2026: net, taxe și cost angajator/);
-assert.match(widgetScript, /credit\.setAttribute\("rel", "nofollow noopener"\)/, "Widgetul trebuie să califice și creditele furnizate de gazdă");
-assert.match(widgetScript, /a\.rel = "nofollow noopener"/, "Creditul generat de widget trebuie să fie nofollow");
-assert.equal((widgetPage.match(/rel="nofollow noopener"/g) ?? []).length, 3, "Toate cele trei coduri de embed trebuie să aibă credit nofollow");
-assert.match(widgetDemo, /rel="nofollow noopener"/, "Demo-ul widgetului trebuie să reproducă atributul nofollow");
-assert.match(widgetCalculator, /rel="nofollow noopener"/, "Creditul din iframe trebuie să fie nofollow");
-for (const source of [widgetScript, widgetPage, widgetDemo, widgetCalculator, salary, home]) {
+
+// Widgeturile sunt acum cod HTML copiat explicit de publisher, fără vechiul
+// public/widget.js. Creditul extern rămâne vizibil și la alegerea publisherului.
+assert.doesNotMatch(widgetPage, /widget\.js/, "Pagina /widget nu trebuie să mai depindă de vechiul public/widget.js");
+assert.doesNotMatch(widgetPage, /rel="nofollow noopener"/, "Codurile de embed nu trebuie să forțeze nofollow pe creditul extern");
+assert.doesNotMatch(widgetDemo, /rel="nofollow noopener"/, "Demo-ul trebuie să reproducă creditul extern fără nofollow forțat");
+assert.match(widgetCalculator, /rel="nofollow noopener"/, "Creditul informativ din iframe-ul minimalist rămâne calificat separat");
+assert.match(widgetPage, /stableResizeCode\(900, 1450\)/, "Widgetul complet trebuie să rezerve din start mai mult spațiu pe mobil");
+assert.match(widgetPage, /stableResizeCode\(1200, 2000\)/, "Widgetul de fluturaș trebuie să rezerve din start mai mult spațiu pe mobil");
+for (const source of [widgetPage, widgetDemo, widgetCalculator, salary, home]) {
   assert.doesNotMatch(source, /contează pentru SEO|motorul de backlink|produce backlink|dofollow|crawlable|crawlabil/i, "Copy-ul widgetului nu trebuie să promită valoare SEO");
 }
 
