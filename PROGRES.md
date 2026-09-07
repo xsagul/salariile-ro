@@ -1996,5 +1996,27 @@ Status: implementat, testat (17 suite de teste automate trecute), validat `next 
    - `npm test`: 17/17 suite trecute fără erori sau regresii.
    - `next build`: 318/318 pagini prerandate static cu succes.
 
+## 7 septembrie 2026 — Integrare analiză semantică inteligentă (scepticism bacșiș/bonusuri & extindere la 1.372 anunțuri unice)
+
+Status: finalizat, testat cu 17 suite automate trecute cu succes, validat `next build` (318 pagini statice).
+
+### Ce s-a implementat
+
+1. **Analizor semantic inteligent integrat în crawler (`analizeazaSemanticAnunt`):**
+   - **Scepticism sănătos la Bacșiș & Bonusuri:**
+     - Dacă descrierea conține salariul fix explicit (ex: `salariu fix 3.500 lei + tips`), se extrage salariul fix garantat drept referință, fără anularea anunțului.
+     - Dacă intervalul este umflat speculativ din cauza comisioanelor/bonusurilor (ecart max/min $\ge 1.5$, ex: `3.000 – 10.000 lei`), algoritmul temperează sceptic cifra în baza garantată ($\min + 0.15 \times \text{ecart}$), eliminând bonusurile fanteziste.
+   - **Toleranță fonetică și expresii colocviale românești:**
+     - Mapate variații de scriere: `electricean`, `tablotier`, `om instalatii`, `mecanic auto`, `bucatareasa`, `meserias gresie`, `zugraveala`, `sofer duba`, `muncitor constructii`.
+   - **Filtrare anti-scam & puritate teritorială:**
+     - Excluse automat ofertele pentru străinătate (Germania, Olanda etc.) și anunțurile de tip MLM/videochat/bani din telefon.
+
+2. **Metrici crawl final:**
+   - **1.563 oferte brute scanate**.
+   - **1.372 oferte unice curate** păstrate după deduplicare anti-spam („1 postare = 1 vot”).
+   - **191 de duplicate/spamuri/scamuri eliminate**.
+   - Generat `src/data/triangulare-date.json` actualizat pe cele 132 de ocupații.
+
+
 
 

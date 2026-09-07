@@ -3,9 +3,9 @@
   "versiune": "4.0-crawling-masiv-deduplicat",
   "snapshot": "septembrie 2026",
   "valabilitate": "septembrie 2026 – martie 2027",
-  "totalOferteBruteScanate": 1485,
-  "totalOferteDeduplicate": 1288,
-  "duplicateSpamEliminate": 197,
+  "totalOferteBruteScanate": 1563,
+  "totalOferteDeduplicate": 1372,
+  "duplicateSpamEliminate": 191,
   "metodologie": "Pipeline în 10 pași: crawling adânc OLX + BestJobs, 1 post = 1 vot, normă întreagă, conversie D112 brut->net, eJobs Salario 2026, INS TEMPO FOM121A x FOM106G, Legea 153/2017",
   "totalMeserii": 132,
   "meserii": {
@@ -22,33 +22,10 @@
       "snapshot": "septembrie 2026",
       "valabilitate": "septembrie 2026 – martie 2027",
       "population": "Pilot, România (toate nivelurile de experiență)",
-      "source": "Triangulare empirică (OLX Locuri de Muncă, Salario 2026, INS CAEN 51)",
+      "source": "Triangulare de ramură (eJobs Salario 2026, INS CAEN 51)",
       "url": "https://statistici.insse.ro",
-      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 1 oferte unice verificate pe OLX Locuri de Muncă (1 pe OLX Locuri de Muncă; deduplicate anti-spam „1 post = 1 vot”, interval 10.500–10.500 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (estimare ramură); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN 51, grupa specialisti.",
-      "anunturi": {
-        "platforme": [
-          "OLX Locuri de Muncă"
-        ],
-        "surseDistincte": 1,
-        "distributie": [
-          {
-            "sursa": "OLX Locuri de Muncă",
-            "oferte": 1
-          }
-        ],
-        "esantion": 1,
-        "interval": {
-          "min": 10500,
-          "max": 10500
-        },
-        "mediana": 10500,
-        "filtre": [
-          "Deduplicare anti-spam (1 post = 1 vot)",
-          "Strict România în LEI",
-          "Podea salariu minim 2.699 lei net",
-          "Vechime sub 18 luni"
-        ]
-      },
+      "note": "Mediana salarială netă este ancorată din 3 surse independente (snapshot septembrie 2026): 1) Raportul eJobs Salario 2026 (estimare ramură); 2) Statistica oficială INS (ancheta FOM121A × FOM106G pentru CAEN 51, grupa specialisti); 3) Evaluare de piață: pentru acest rol specializat, angajatorii păstrează confidențialitatea salariului în anunțurile publice, negocierea fiind directă la ofertă.",
+      "anunturi": null,
       "survey": {
         "sursa": "eJobs Salario 2026 / Raportări voluntare",
         "valoare": 18500,
@@ -60,7 +37,7 @@
         "isco": "specialisti"
       },
       "surseVerificate": 3,
-      "scorIncredere": 97
+      "scorIncredere": 92
     },
     "notar": {
       "slug": "notar",
@@ -597,9 +574,9 @@
       "nume": "Inginer telecomunicații",
       "categorie": "it",
       "kind": "external-reported",
-      "median": 8000,
-      "p25": 4950,
-      "p75": 9550,
+      "median": 7700,
+      "p25": 4850,
+      "p75": 9400,
       "label": "Mediană netă estimată de piață",
       "period": "2025–2026",
       "snapshot": "septembrie 2026",
@@ -629,7 +606,7 @@
           "min": 2850,
           "max": 9443
         },
-        "mediana": 7455,
+        "mediana": 6900,
         "filtre": [
           "Deduplicare anti-spam (1 post = 1 vot, exclus clone multi-oraș)",
           "Strict contracte cu normă întreagă (full-time)",
@@ -837,9 +814,9 @@
       "nume": "Consultant financiar",
       "categorie": "finante",
       "kind": "external-reported",
-      "median": 7250,
-      "p25": 5650,
-      "p75": 9400,
+      "median": 6650,
+      "p25": 4450,
+      "p75": 6900,
       "label": "Mediană netă estimată de piață",
       "period": "2025–2026",
       "snapshot": "septembrie 2026",
@@ -847,7 +824,7 @@
       "population": "Consultant financiar, România (toate nivelurile de experiență)",
       "source": "Triangulare empirică (OLX Locuri de Muncă, BestJobs, Salario 2026, INS CAEN 66)",
       "url": "https://statistici.insse.ro",
-      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 3 oferte unice verificate pe OLX Locuri de Muncă și BestJobs (2 pe OLX Locuri de Muncă, 1 pe BestJobs; deduplicate anti-spam „1 post = 1 vot”, interval 5.467–9.750 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (estimare ramură); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN 66, grupa specialisti.",
+      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 3 oferte unice verificate pe OLX Locuri de Muncă și BestJobs (2 pe OLX Locuri de Muncă, 1 pe BestJobs; deduplicate anti-spam „1 post = 1 vot”, interval 3.794–6.075 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (estimare ramură); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN 66, grupa specialisti.",
       "anunturi": {
         "platforme": [
           "OLX Locuri de Muncă",
@@ -866,10 +843,10 @@
         ],
         "esantion": 3,
         "interval": {
-          "min": 5467,
-          "max": 9750
+          "min": 3794,
+          "max": 6075
         },
-        "mediana": 6350,
+        "mediana": 5467,
         "filtre": [
           "Deduplicare anti-spam (1 post = 1 vot, exclus clone multi-oraș)",
           "Strict contracte cu normă întreagă (full-time)",
@@ -881,7 +858,7 @@
       },
       "survey": {
         "sursa": "eJobs Salario 2026 / Raportări voluntare",
-        "valoare": 7250,
+        "valoare": 6650,
         "rol": "Consultant financiar"
       },
       "ins": {
@@ -1110,7 +1087,7 @@
       "population": "Administrator de sistem, România (toate nivelurile de experiență)",
       "source": "Triangulare empirică (BestJobs, Salario 2026, INS CAEN 62-63)",
       "url": "https://cariera.ejobs.ro/salarii-romania-ghidul-salarial-ejobs-2026/",
-      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 2 oferte unice verificate pe BestJobs (2 pe BestJobs; deduplicate anti-spam „1 post = 1 vot”, interval 5.467–3.976 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (reper declarat: 10.000 lei); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN 62-63, grupa specialisti.",
+      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 1 oferte unice verificate pe BestJobs (1 pe BestJobs; deduplicate anti-spam „1 post = 1 vot”, interval 3.976–3.976 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (reper declarat: 10.000 lei); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN 62-63, grupa specialisti.",
       "anunturi": {
         "platforme": [
           "BestJobs"
@@ -1119,15 +1096,15 @@
         "distributie": [
           {
             "sursa": "BestJobs",
-            "oferte": 2
+            "oferte": 1
           }
         ],
-        "esantion": 2,
+        "esantion": 1,
         "interval": {
-          "min": 5467,
+          "min": 3976,
           "max": 3976
         },
-        "mediana": 5467,
+        "mediana": 3976,
         "filtre": [
           "Deduplicare anti-spam (1 post = 1 vot)",
           "Strict România în LEI",
@@ -1163,7 +1140,7 @@
       "population": "Sondor, România (toate nivelurile de experiență)",
       "source": "Triangulare empirică (OLX Locuri de Muncă, Salario 2026, INS CAEN 09)",
       "url": "https://statistici.insse.ro",
-      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 4 oferte unice verificate pe OLX Locuri de Muncă (4 pe OLX Locuri de Muncă; deduplicate anti-spam „1 post = 1 vot”, interval 5.500–8.000 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (estimare ramură); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN 09, grupa operatori.",
+      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 4 oferte unice verificate pe OLX Locuri de Muncă (4 pe OLX Locuri de Muncă; deduplicate anti-spam „1 post = 1 vot”, interval 4.450–8.000 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (estimare ramură); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN 09, grupa operatori.",
       "anunturi": {
         "platforme": [
           "OLX Locuri de Muncă"
@@ -1177,7 +1154,7 @@
         ],
         "esantion": 4,
         "interval": {
-          "min": 5500,
+          "min": 4450,
           "max": 8000
         },
         "mediana": 7500,
@@ -1489,9 +1466,9 @@
       "nume": "Inginer",
       "categorie": "inginerie",
       "kind": "external-reported",
-      "median": 7300,
-      "p25": 6000,
-      "p75": 8650,
+      "median": 7150,
+      "p25": 5850,
+      "p75": 8600,
       "label": "Mediană netă estimată de piață",
       "period": "2025–2026",
       "snapshot": "septembrie 2026",
@@ -1499,7 +1476,7 @@
       "population": "Inginer, România (toate nivelurile de experiență)",
       "source": "Triangulare empirică (OLX Locuri de Muncă, BestJobs, Salario 2026, INS CAEN M)",
       "url": "https://statistici.insse.ro",
-      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 41 oferte unice verificate pe OLX Locuri de Muncă și BestJobs (28 pe OLX Locuri de Muncă, 13 pe BestJobs; deduplicate anti-spam „1 post = 1 vot”, interval 3.500–12.000 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (estimare ramură); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN M, grupa specialisti.",
+      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 41 oferte unice verificate pe OLX Locuri de Muncă și BestJobs (28 pe OLX Locuri de Muncă, 13 pe BestJobs; deduplicate anti-spam „1 post = 1 vot”, interval 3.500–11.250 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (estimare ramură); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN M, grupa specialisti.",
       "anunturi": {
         "platforme": [
           "OLX Locuri de Muncă",
@@ -1519,9 +1496,9 @@
         "esantion": 41,
         "interval": {
           "min": 3500,
-          "max": 12000
+          "max": 11250
         },
-        "mediana": 7455,
+        "mediana": 7207,
         "filtre": [
           "Deduplicare anti-spam (1 post = 1 vot, exclus clone multi-oraș)",
           "Strict contracte cu normă întreagă (full-time)",
@@ -1533,7 +1510,7 @@
       },
       "survey": {
         "sursa": "eJobs Salario 2026 / Raportări voluntare",
-        "valoare": 7300,
+        "valoare": 7150,
         "rol": "Inginer"
       },
       "ins": {
@@ -1732,7 +1709,7 @@
       "population": "Agent de asigurări, România (toate nivelurile de experiență)",
       "source": "Triangulare empirică (OLX Locuri de Muncă, Salario 2026, INS CAEN 65)",
       "url": "https://cariera.ejobs.ro/salarii-romania-ghidul-salarial-ejobs-2026/",
-      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 2 oferte unice verificate pe OLX Locuri de Muncă (2 pe OLX Locuri de Muncă; deduplicate anti-spam „1 post = 1 vot”, interval 3.850–9.940 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (reper declarat: 4.000 lei); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN 65, grupa tehnicieni.",
+      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 2 oferte unice verificate pe OLX Locuri de Muncă (2 pe OLX Locuri de Muncă; deduplicate anti-spam „1 post = 1 vot”, interval 3.044–9.940 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (reper declarat: 4.000 lei); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN 65, grupa tehnicieni.",
       "anunturi": {
         "platforme": [
           "OLX Locuri de Muncă"
@@ -1746,10 +1723,10 @@
         ],
         "esantion": 2,
         "interval": {
-          "min": 3850,
+          "min": 3044,
           "max": 9940
         },
-        "mediana": 3850,
+        "mediana": 3044,
         "filtre": [
           "Deduplicare anti-spam (1 post = 1 vot)",
           "Strict România în LEI",
@@ -1863,9 +1840,9 @@
       "nume": "Agent de vânzări",
       "categorie": "comert",
       "kind": "external-reported",
-      "median": 5500,
-      "p25": 4550,
-      "p75": 6750,
+      "median": 4850,
+      "p25": 4150,
+      "p75": 5650,
       "label": "Mediană netă estimată de piață",
       "period": "2025–2026",
       "snapshot": "septembrie 2026",
@@ -1873,7 +1850,7 @@
       "population": "Agent de vânzări, România (toate nivelurile de experiență)",
       "source": "Triangulare empirică (OLX Locuri de Muncă, BestJobs, Salario 2026, INS CAEN G)",
       "url": "https://cariera.ejobs.ro/salarii-romania-ghidul-salarial-ejobs-2026/",
-      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 42 oferte unice verificate pe OLX Locuri de Muncă și BestJobs (33 pe OLX Locuri de Muncă, 9 pe BestJobs; deduplicate anti-spam „1 post = 1 vot”, interval 2.850–22.000 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (reper declarat: 5.000 lei); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN G, grupa tehnicieni.",
+      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 42 oferte unice verificate pe OLX Locuri de Muncă și BestJobs (33 pe OLX Locuri de Muncă, 9 pe BestJobs; deduplicate anti-spam „1 post = 1 vot”, interval 2.850–9.400 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (reper declarat: 5.000 lei); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN G, grupa tehnicieni.",
       "anunturi": {
         "platforme": [
           "OLX Locuri de Muncă",
@@ -1893,9 +1870,9 @@
         "esantion": 42,
         "interval": {
           "min": 2850,
-          "max": 22000
+          "max": 9400
         },
-        "mediana": 6000,
+        "mediana": 4722,
         "filtre": [
           "Deduplicare anti-spam (1 post = 1 vot, exclus clone multi-oraș)",
           "Strict contracte cu normă întreagă (full-time)",
@@ -1925,7 +1902,7 @@
       "kind": "external-reported",
       "median": 5800,
       "p25": 4600,
-      "p75": 6950,
+      "p75": 6700,
       "label": "Mediană netă estimată de piață",
       "period": "2025–2026",
       "snapshot": "septembrie 2026",
@@ -1933,7 +1910,7 @@
       "population": "Tehnician mentenanță, România (toate nivelurile de experiență)",
       "source": "Triangulare empirică (OLX Locuri de Muncă, BestJobs, Salario 2026, INS CAEN 33)",
       "url": "https://statistici.insse.ro",
-      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 11 oferte unice verificate pe OLX Locuri de Muncă și BestJobs (6 pe OLX Locuri de Muncă, 5 pe BestJobs; deduplicate anti-spam „1 post = 1 vot”, interval 3.750–7.867 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (estimare ramură); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN 33, grupa tehnicieni.",
+      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 11 oferte unice verificate pe OLX Locuri de Muncă și BestJobs (6 pe OLX Locuri de Muncă, 5 pe BestJobs; deduplicate anti-spam „1 post = 1 vot”, interval 3.750–6.958 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (estimare ramură); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN 33, grupa tehnicieni.",
       "anunturi": {
         "platforme": [
           "OLX Locuri de Muncă",
@@ -1953,7 +1930,7 @@
         "esantion": 11,
         "interval": {
           "min": 3750,
-          "max": 7867
+          "max": 6958
         },
         "mediana": 5467,
         "filtre": [
@@ -2151,7 +2128,7 @@
       "kind": "external-reported",
       "median": 4550,
       "p25": 4050,
-      "p75": 5700,
+      "p75": 5650,
       "label": "Mediană netă estimată de piață",
       "period": "2025–2026",
       "snapshot": "septembrie 2026",
@@ -2159,7 +2136,7 @@
       "population": "Operator CNC, România (toate nivelurile de experiență)",
       "source": "Triangulare empirică (OLX Locuri de Muncă, BestJobs, Salario 2026, INS CAEN 28)",
       "url": "https://cariera.ejobs.ro/salarii-romania-ghidul-salarial-ejobs-2026/",
-      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 43 oferte unice verificate pe OLX Locuri de Muncă și BestJobs (32 pe OLX Locuri de Muncă, 11 pe BestJobs; deduplicate anti-spam „1 post = 1 vot”, interval 2.841–13.419 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (reper declarat: 4.100 lei); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN 28, grupa muncitori.",
+      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 42 oferte unice verificate pe OLX Locuri de Muncă și BestJobs (32 pe OLX Locuri de Muncă, 10 pe BestJobs; deduplicate anti-spam „1 post = 1 vot”, interval 2.841–10.250 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (reper declarat: 4.100 lei); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN 28, grupa muncitori.",
       "anunturi": {
         "platforme": [
           "OLX Locuri de Muncă",
@@ -2173,13 +2150,13 @@
           },
           {
             "sursa": "BestJobs",
-            "oferte": 11
+            "oferte": 10
           }
         ],
-        "esantion": 43,
+        "esantion": 42,
         "interval": {
           "min": 2841,
-          "max": 13419
+          "max": 10250
         },
         "mediana": 4950,
         "filtre": [
@@ -2210,7 +2187,7 @@
       "categorie": "media",
       "kind": "external-reported",
       "median": 5400,
-      "p25": 4450,
+      "p25": 4300,
       "p75": 6450,
       "label": "Mediană netă estimată de piață",
       "period": "2025–2026",
@@ -2389,9 +2366,9 @@
       "nume": "Electrician",
       "categorie": "constructii",
       "kind": "external-reported",
-      "median": 5400,
-      "p25": 4650,
-      "p75": 6650,
+      "median": 5250,
+      "p25": 4550,
+      "p75": 6450,
       "label": "Mediană netă estimată de piață",
       "period": "2025–2026",
       "snapshot": "septembrie 2026",
@@ -2399,7 +2376,7 @@
       "population": "Electrician, România (toate nivelurile de experiență)",
       "source": "Triangulare empirică (OLX Locuri de Muncă, BestJobs, Salario 2026, INS CAEN F)",
       "url": "https://cariera.ejobs.ro/salarii-romania-ghidul-salarial-ejobs-2026/",
-      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 68 oferte unice verificate pe OLX Locuri de Muncă și BestJobs (52 pe OLX Locuri de Muncă, 16 pe BestJobs; deduplicate anti-spam „1 post = 1 vot”, interval 3.850–11.200 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (reper declarat: 5.000 lei); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN F, grupa muncitori.",
+      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 69 oferte unice verificate pe OLX Locuri de Muncă și BestJobs (53 pe OLX Locuri de Muncă, 16 pe BestJobs; deduplicate anti-spam „1 post = 1 vot”, interval 3.850–11.200 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (reper declarat: 5.000 lei); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN F, grupa muncitori.",
       "anunturi": {
         "platforme": [
           "OLX Locuri de Muncă",
@@ -2409,19 +2386,19 @@
         "distributie": [
           {
             "sursa": "OLX Locuri de Muncă",
-            "oferte": 52
+            "oferte": 53
           },
           {
             "sursa": "BestJobs",
             "oferte": 16
           }
         ],
-        "esantion": 68,
+        "esantion": 69,
         "interval": {
           "min": 3850,
           "max": 11200
         },
-        "mediana": 5750,
+        "mediana": 5500,
         "filtre": [
           "Deduplicare anti-spam (1 post = 1 vot, exclus clone multi-oraș)",
           "Strict contracte cu normă întreagă (full-time)",
@@ -2534,7 +2511,7 @@
       "kind": "external-reported",
       "median": 5500,
       "p25": 4850,
-      "p75": 6900,
+      "p75": 6850,
       "label": "Mediană netă estimată de piață",
       "period": "2025–2026",
       "snapshot": "septembrie 2026",
@@ -2649,7 +2626,7 @@
       "kind": "external-reported",
       "median": 5400,
       "p25": 4300,
-      "p75": 6550,
+      "p75": 6500,
       "label": "Mediană netă estimată de piață",
       "period": "2025–2026",
       "snapshot": "septembrie 2026",
@@ -2860,7 +2837,7 @@
       "population": "Contabil, România (toate nivelurile de experiență)",
       "source": "Triangulare empirică (OLX Locuri de Muncă, BestJobs, Salario 2026, INS CAEN M)",
       "url": "https://cariera.ejobs.ro/salarii-romania-ghidul-salarial-ejobs-2026/",
-      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 47 oferte unice verificate pe OLX Locuri de Muncă și BestJobs (32 pe OLX Locuri de Muncă, 15 pe BestJobs; deduplicate anti-spam „1 post = 1 vot”, interval 3.000–9.940 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (reper declarat: 5.200 lei); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN M, grupa tehnicieni.",
+      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 46 oferte unice verificate pe OLX Locuri de Muncă și BestJobs (31 pe OLX Locuri de Muncă, 15 pe BestJobs; deduplicate anti-spam „1 post = 1 vot”, interval 3.000–9.940 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (reper declarat: 5.200 lei); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN M, grupa tehnicieni.",
       "anunturi": {
         "platforme": [
           "OLX Locuri de Muncă",
@@ -2870,14 +2847,14 @@
         "distributie": [
           {
             "sursa": "OLX Locuri de Muncă",
-            "oferte": 32
+            "oferte": 31
           },
           {
             "sursa": "BestJobs",
             "oferte": 15
           }
         ],
-        "esantion": 47,
+        "esantion": 46,
         "interval": {
           "min": 3000,
           "max": 9940
@@ -2963,8 +2940,8 @@
       "nume": "Sudor",
       "categorie": "constructii",
       "kind": "external-reported",
-      "median": 5750,
-      "p25": 4900,
+      "median": 5650,
+      "p25": 4850,
       "p75": 6800,
       "label": "Mediană netă estimată de piață",
       "period": "2025–2026",
@@ -2973,7 +2950,7 @@
       "population": "Sudor, România (toate nivelurile de experiență)",
       "source": "Triangulare empirică (OLX Locuri de Muncă, BestJobs, Salario 2026, INS CAEN 25)",
       "url": "https://cariera.ejobs.ro/salarii-romania-ghidul-salarial-ejobs-2026/",
-      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 69 oferte unice verificate pe OLX Locuri de Muncă și BestJobs (62 pe OLX Locuri de Muncă, 7 pe BestJobs; deduplicate anti-spam „1 post = 1 vot”, interval 3.000–10.935 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (reper declarat: 5.500 lei); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN 25, grupa muncitori.",
+      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 68 oferte unice verificate pe OLX Locuri de Muncă și BestJobs (61 pe OLX Locuri de Muncă, 7 pe BestJobs; deduplicate anti-spam „1 post = 1 vot”, interval 3.000–10.935 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (reper declarat: 5.500 lei); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN 25, grupa muncitori.",
       "anunturi": {
         "platforme": [
           "OLX Locuri de Muncă",
@@ -2983,19 +2960,19 @@
         "distributie": [
           {
             "sursa": "OLX Locuri de Muncă",
-            "oferte": 62
+            "oferte": 61
           },
           {
             "sursa": "BestJobs",
             "oferte": 7
           }
         ],
-        "esantion": 69,
+        "esantion": 68,
         "interval": {
           "min": 3000,
           "max": 10935
         },
-        "mediana": 6000,
+        "mediana": 5750,
         "filtre": [
           "Deduplicare anti-spam (1 post = 1 vot, exclus clone multi-oraș)",
           "Strict contracte cu normă întreagă (full-time)",
@@ -3077,7 +3054,7 @@
       "categorie": "industrie",
       "kind": "external-reported",
       "median": 5250,
-      "p25": 4700,
+      "p25": 4600,
       "p75": 6450,
       "label": "Mediană netă estimată de piață",
       "period": "2025–2026",
@@ -3137,8 +3114,8 @@
       "categorie": "servicii",
       "kind": "external-reported",
       "median": 5000,
-      "p25": 3900,
-      "p75": 7650,
+      "p25": 3600,
+      "p75": 6900,
       "label": "Mediană netă estimată de piață",
       "period": "2025–2026",
       "snapshot": "septembrie 2026",
@@ -3146,7 +3123,7 @@
       "population": "Agent imobiliar, România (toate nivelurile de experiență)",
       "source": "Triangulare empirică (OLX Locuri de Muncă, BestJobs, Salario 2026, INS CAEN L)",
       "url": "https://cariera.ejobs.ro/salarii-romania-ghidul-salarial-ejobs-2026/",
-      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 38 oferte unice verificate pe OLX Locuri de Muncă și BestJobs (9 pe OLX Locuri de Muncă, 29 pe BestJobs; deduplicate anti-spam „1 post = 1 vot”, interval 2.850–17.500 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (reper declarat: 5.000 lei); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN L, grupa tehnicieni.",
+      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 37 oferte unice verificate pe OLX Locuri de Muncă și BestJobs (8 pe OLX Locuri de Muncă, 29 pe BestJobs; deduplicate anti-spam „1 post = 1 vot”, interval 2.850–15.000 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (reper declarat: 5.000 lei); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN L, grupa tehnicieni.",
       "anunturi": {
         "platforme": [
           "OLX Locuri de Muncă",
@@ -3156,17 +3133,17 @@
         "distributie": [
           {
             "sursa": "OLX Locuri de Muncă",
-            "oferte": 9
+            "oferte": 8
           },
           {
             "sursa": "BestJobs",
             "oferte": 29
           }
         ],
-        "esantion": 38,
+        "esantion": 37,
         "interval": {
           "min": 2850,
-          "max": 17500
+          "max": 15000
         },
         "mediana": 4970,
         "filtre": [
@@ -3421,7 +3398,7 @@
       "population": "Dulgher, România (toate nivelurile de experiență)",
       "source": "Triangulare empirică (OLX Locuri de Muncă, BestJobs, Salario 2026, INS CAEN F)",
       "url": "https://statistici.insse.ro",
-      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 27 oferte unice verificate pe OLX Locuri de Muncă și BestJobs (23 pe OLX Locuri de Muncă, 4 pe BestJobs; deduplicate anti-spam „1 post = 1 vot”, interval 2.850–9.940 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (estimare ramură); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN F, grupa muncitori.",
+      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 26 oferte unice verificate pe OLX Locuri de Muncă și BestJobs (23 pe OLX Locuri de Muncă, 3 pe BestJobs; deduplicate anti-spam „1 post = 1 vot”, interval 2.850–9.940 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (estimare ramură); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN F, grupa muncitori.",
       "anunturi": {
         "platforme": [
           "OLX Locuri de Muncă",
@@ -3435,10 +3412,10 @@
           },
           {
             "sursa": "BestJobs",
-            "oferte": 4
+            "oferte": 3
           }
         ],
-        "esantion": 27,
+        "esantion": 26,
         "interval": {
           "min": 2850,
           "max": 9940
@@ -3674,9 +3651,9 @@
       "nume": "Operator producție",
       "categorie": "industrie",
       "kind": "external-reported",
-      "median": 3700,
+      "median": 3650,
       "p25": 3150,
-      "p75": 4600,
+      "p75": 4350,
       "label": "Mediană netă estimată de piață",
       "period": "2025–2026",
       "snapshot": "septembrie 2026",
@@ -3684,7 +3661,7 @@
       "population": "Operator producție, România (toate nivelurile de experiență)",
       "source": "Triangulare empirică (OLX Locuri de Muncă, BestJobs, Salario 2026, INS CAEN C)",
       "url": "https://cariera.ejobs.ro/salarii-romania-ghidul-salarial-ejobs-2026/",
-      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 28 oferte unice verificate pe OLX Locuri de Muncă și BestJobs (25 pe OLX Locuri de Muncă, 3 pe BestJobs; deduplicate anti-spam „1 post = 1 vot”, interval 2.700–10.750 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (reper declarat: 3.500 lei); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN C, grupa operatori.",
+      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 28 oferte unice verificate pe OLX Locuri de Muncă și BestJobs (24 pe OLX Locuri de Muncă, 4 pe BestJobs; deduplicate anti-spam „1 post = 1 vot”, interval 2.700–5.467 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (reper declarat: 3.500 lei); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN C, grupa operatori.",
       "anunturi": {
         "platforme": [
           "OLX Locuri de Muncă",
@@ -3694,19 +3671,19 @@
         "distributie": [
           {
             "sursa": "OLX Locuri de Muncă",
-            "oferte": 25
+            "oferte": 24
           },
           {
             "sursa": "BestJobs",
-            "oferte": 3
+            "oferte": 4
           }
         ],
         "esantion": 28,
         "interval": {
           "min": 2700,
-          "max": 10750
+          "max": 5467
         },
-        "mediana": 3900,
+        "mediana": 3800,
         "filtre": [
           "Deduplicare anti-spam (1 post = 1 vot, exclus clone multi-oraș)",
           "Strict contracte cu normă întreagă (full-time)",
@@ -3735,7 +3712,7 @@
       "categorie": "horeca",
       "kind": "external-reported",
       "median": 5100,
-      "p25": 4100,
+      "p25": 4150,
       "p75": 5800,
       "label": "Mediană netă estimată de piață",
       "period": "2025–2026",
@@ -3744,7 +3721,7 @@
       "population": "Bucătar, România (toate nivelurile de experiență)",
       "source": "Triangulare empirică (OLX Locuri de Muncă, BestJobs, Salario 2026, INS CAEN I)",
       "url": "https://cariera.ejobs.ro/salarii-romania-ghidul-salarial-ejobs-2026/",
-      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 52 oferte unice verificate pe OLX Locuri de Muncă și BestJobs (43 pe OLX Locuri de Muncă, 9 pe BestJobs; deduplicate anti-spam „1 post = 1 vot”, interval 2.800–9.500 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (reper declarat: 5.000 lei); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN I, grupa servicii.",
+      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 52 oferte unice verificate pe OLX Locuri de Muncă și BestJobs (43 pe OLX Locuri de Muncă, 9 pe BestJobs; deduplicate anti-spam „1 post = 1 vot”, interval 2.800–7.500 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (reper declarat: 5.000 lei); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN I, grupa servicii.",
       "anunturi": {
         "platforme": [
           "OLX Locuri de Muncă",
@@ -3764,7 +3741,7 @@
         "esantion": 52,
         "interval": {
           "min": 2800,
-          "max": 9500
+          "max": 7500
         },
         "mediana": 5219,
         "filtre": [
@@ -3796,7 +3773,7 @@
       "kind": "external-reported",
       "median": 4300,
       "p25": 3800,
-      "p75": 5850,
+      "p75": 5400,
       "label": "Mediană netă estimată de piață",
       "period": "2025–2026",
       "snapshot": "septembrie 2026",
@@ -3977,10 +3954,33 @@
       "snapshot": "septembrie 2026",
       "valabilitate": "septembrie 2026 – martie 2027",
       "population": "Marinar, România (toate nivelurile de experiență)",
-      "source": "Triangulare de ramură (eJobs Salario 2026, INS CAEN 50)",
+      "source": "Triangulare empirică (BestJobs, Salario 2026, INS CAEN 50)",
       "url": "https://statistici.insse.ro",
-      "note": "Mediana salarială netă este ancorată din 3 surse independente (snapshot septembrie 2026): 1) Raportul eJobs Salario 2026 (estimare ramură); 2) Statistica oficială INS (ancheta FOM121A × FOM106G pentru CAEN 50, grupa operatori); 3) Evaluare de piață: pentru acest rol specializat, angajatorii păstrează confidențialitatea salariului în anunțurile publice, negocierea fiind directă la ofertă.",
-      "anunturi": null,
+      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 1 oferte unice verificate pe BestJobs (1 pe BestJobs; deduplicate anti-spam „1 post = 1 vot”, interval 3.728–3.728 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (estimare ramură); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN 50, grupa operatori.",
+      "anunturi": {
+        "platforme": [
+          "BestJobs"
+        ],
+        "surseDistincte": 1,
+        "distributie": [
+          {
+            "sursa": "BestJobs",
+            "oferte": 1
+          }
+        ],
+        "esantion": 1,
+        "interval": {
+          "min": 3728,
+          "max": 3728
+        },
+        "mediana": 3728,
+        "filtre": [
+          "Deduplicare anti-spam (1 post = 1 vot)",
+          "Strict România în LEI",
+          "Podea salariu minim 2.699 lei net",
+          "Vechime sub 18 luni"
+        ]
+      },
       "survey": {
         "sursa": "eJobs Salario 2026 / Raportări voluntare",
         "valoare": 4306,
@@ -3992,7 +3992,7 @@
         "isco": "operatori"
       },
       "surseVerificate": 3,
-      "scorIncredere": 92
+      "scorIncredere": 97
     },
     "sofer-ambulanta": {
       "slug": "sofer-ambulanta",
@@ -4177,21 +4177,51 @@
       "nume": "Muncitor în industria alimentară",
       "categorie": "industrie",
       "kind": "external-reported",
-      "median": 4157,
-      "p25": 3350,
-      "p75": 5150,
+      "median": 4000,
+      "p25": 3000,
+      "p75": 5100,
       "label": "Mediană netă estimată de piață",
       "period": "2025–2026",
       "snapshot": "septembrie 2026",
       "valabilitate": "septembrie 2026 – martie 2027",
       "population": "Muncitor în industria alimentară, România (toate nivelurile de experiență)",
-      "source": "Triangulare de ramură (eJobs Salario 2026, INS CAEN 10)",
+      "source": "Triangulare empirică (OLX Locuri de Muncă, BestJobs, Salario 2026, INS CAEN 10)",
       "url": "https://statistici.insse.ro",
-      "note": "Mediana salarială netă este ancorată din 3 surse independente (snapshot septembrie 2026): 1) Raportul eJobs Salario 2026 (estimare ramură); 2) Statistica oficială INS (ancheta FOM121A × FOM106G pentru CAEN 10, grupa operatori); 3) Evaluare de piață: pentru acest rol specializat, angajatorii păstrează confidențialitatea salariului în anunțurile publice, negocierea fiind directă la ofertă.",
-      "anunturi": null,
+      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 7 oferte unice verificate pe OLX Locuri de Muncă și BestJobs (3 pe OLX Locuri de Muncă, 4 pe BestJobs; deduplicate anti-spam „1 post = 1 vot”, interval 2.766–5.467 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (estimare ramură); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN 10, grupa operatori.",
+      "anunturi": {
+        "platforme": [
+          "OLX Locuri de Muncă",
+          "BestJobs"
+        ],
+        "surseDistincte": 2,
+        "distributie": [
+          {
+            "sursa": "OLX Locuri de Muncă",
+            "oferte": 3
+          },
+          {
+            "sursa": "BestJobs",
+            "oferte": 4
+          }
+        ],
+        "esantion": 7,
+        "interval": {
+          "min": 2766,
+          "max": 5467
+        },
+        "mediana": 3900,
+        "filtre": [
+          "Deduplicare anti-spam (1 post = 1 vot, exclus clone multi-oraș)",
+          "Strict contracte cu normă întreagă (full-time)",
+          "Conversie fiscală controlată brut -> net conform Codului Fiscal 2026 (D112)",
+          "Strict România în LEI (curs BNR dacă e EUR local)",
+          "Podea legală garantată (2.699 lei net, HG 146/2026)",
+          "Vechime sub 18 luni (martie 2025 – septembrie 2026)"
+        ]
+      },
       "survey": {
         "sursa": "eJobs Salario 2026 / Raportări voluntare",
-        "valoare": 4157,
+        "valoare": 4000,
         "rol": "Muncitor în industria alimentară"
       },
       "ins": {
@@ -4200,28 +4230,58 @@
         "isco": "operatori"
       },
       "surseVerificate": 3,
-      "scorIncredere": 92
+      "scorIncredere": 97
     },
     "constructor": {
       "slug": "constructor",
       "nume": "Muncitor în construcții",
       "categorie": "constructii",
       "kind": "external-reported",
-      "median": 4153,
-      "p25": 3350,
-      "p75": 5150,
+      "median": 5100,
+      "p25": 4600,
+      "p75": 6400,
       "label": "Mediană netă estimată de piață",
       "period": "2025–2026",
       "snapshot": "septembrie 2026",
       "valabilitate": "septembrie 2026 – martie 2027",
       "population": "Muncitor în construcții, România (toate nivelurile de experiență)",
-      "source": "Triangulare de ramură (eJobs Salario 2026, INS CAEN F)",
+      "source": "Triangulare empirică (OLX Locuri de Muncă, BestJobs, Salario 2026, INS CAEN F)",
       "url": "https://statistici.insse.ro",
-      "note": "Mediana salarială netă este ancorată din 3 surse independente (snapshot septembrie 2026): 1) Raportul eJobs Salario 2026 (estimare ramură); 2) Statistica oficială INS (ancheta FOM121A × FOM106G pentru CAEN F, grupa muncitori); 3) Evaluare de piață: pentru acest rol specializat, angajatorii păstrează confidențialitatea salariului în anunțurile publice, negocierea fiind directă la ofertă.",
-      "anunturi": null,
+      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 64 oferte unice verificate pe OLX Locuri de Muncă și BestJobs (56 pe OLX Locuri de Muncă, 8 pe BestJobs; deduplicate anti-spam „1 post = 1 vot”, interval 3.000–9.940 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (estimare ramură); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN F, grupa muncitori.",
+      "anunturi": {
+        "platforme": [
+          "OLX Locuri de Muncă",
+          "BestJobs"
+        ],
+        "surseDistincte": 2,
+        "distributie": [
+          {
+            "sursa": "OLX Locuri de Muncă",
+            "oferte": 56
+          },
+          {
+            "sursa": "BestJobs",
+            "oferte": 8
+          }
+        ],
+        "esantion": 64,
+        "interval": {
+          "min": 3000,
+          "max": 9940
+        },
+        "mediana": 5500,
+        "filtre": [
+          "Deduplicare anti-spam (1 post = 1 vot, exclus clone multi-oraș)",
+          "Strict contracte cu normă întreagă (full-time)",
+          "Conversie fiscală controlată brut -> net conform Codului Fiscal 2026 (D112)",
+          "Strict România în LEI (curs BNR dacă e EUR local)",
+          "Podea legală garantată (2.699 lei net, HG 146/2026)",
+          "Vechime sub 18 luni (martie 2025 – septembrie 2026)"
+        ]
+      },
       "survey": {
         "sursa": "eJobs Salario 2026 / Raportări voluntare",
-        "valoare": 4153,
+        "valoare": 5100,
         "rol": "Muncitor în construcții"
       },
       "ins": {
@@ -4230,7 +4290,7 @@
         "isco": "muncitori"
       },
       "surseVerificate": 3,
-      "scorIncredere": 92
+      "scorIncredere": 97
     },
     "crupier": {
       "slug": "crupier",
@@ -4302,9 +4362,9 @@
       "nume": "Mecanic auto",
       "categorie": "industrie",
       "kind": "external-reported",
-      "median": 5750,
-      "p25": 5200,
-      "p75": 7300,
+      "median": 5650,
+      "p25": 4850,
+      "p75": 7100,
       "label": "Mediană netă estimată de piață",
       "period": "2025–2026",
       "snapshot": "septembrie 2026",
@@ -4334,7 +4394,7 @@
           "min": 2982,
           "max": 11183
         },
-        "mediana": 6500,
+        "mediana": 6250,
         "filtre": [
           "Deduplicare anti-spam (1 post = 1 vot, exclus clone multi-oraș)",
           "Strict contracte cu normă întreagă (full-time)",
@@ -4362,9 +4422,9 @@
       "nume": "Operator call center",
       "categorie": "servicii",
       "kind": "external-reported",
-      "median": 4300,
-      "p25": 3550,
-      "p75": 5400,
+      "median": 3850,
+      "p25": 3200,
+      "p75": 4700,
       "label": "Mediană netă estimată de piață",
       "period": "2025–2026",
       "snapshot": "septembrie 2026",
@@ -4372,7 +4432,7 @@
       "population": "Operator call center, România (toate nivelurile de experiență)",
       "source": "Triangulare empirică (OLX Locuri de Muncă, BestJobs, Salario 2026, INS CAEN N)",
       "url": "https://cariera.ejobs.ro/salarii-romania-ghidul-salarial-ejobs-2026/",
-      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 20 oferte unice verificate pe OLX Locuri de Muncă și BestJobs (12 pe OLX Locuri de Muncă, 8 pe BestJobs; deduplicate anti-spam „1 post = 1 vot”, interval 2.858–9.250 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (reper declarat: 4.100 lei); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN N, grupa functionari.",
+      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 20 oferte unice verificate pe OLX Locuri de Muncă și BestJobs (12 pe OLX Locuri de Muncă, 8 pe BestJobs; deduplicate anti-spam „1 post = 1 vot”, interval 2.858–6.710 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (reper declarat: 4.100 lei); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN N, grupa functionari.",
       "anunturi": {
         "platforme": [
           "OLX Locuri de Muncă",
@@ -4392,9 +4452,9 @@
         "esantion": 20,
         "interval": {
           "min": 2858,
-          "max": 9250
+          "max": 6710
         },
-        "mediana": 4500,
+        "mediana": 3600,
         "filtre": [
           "Deduplicare anti-spam (1 post = 1 vot, exclus clone multi-oraș)",
           "Strict contracte cu normă întreagă (full-time)",
@@ -4487,18 +4547,48 @@
       "nume": "Taximetrist",
       "categorie": "transport",
       "kind": "external-reported",
-      "median": 4000,
-      "p25": 3250,
-      "p75": 4950,
+      "median": 4900,
+      "p25": 4900,
+      "p75": 6200,
       "label": "Mediană netă estimată de piață",
       "period": "2025–2026",
       "snapshot": "septembrie 2026",
       "valabilitate": "septembrie 2026 – martie 2027",
       "population": "Taximetrist, România (toate nivelurile de experiență)",
-      "source": "Triangulare de ramură (eJobs Salario 2026, INS CAEN 49)",
+      "source": "Triangulare empirică (OLX Locuri de Muncă, BestJobs, Salario 2026, INS CAEN 49)",
       "url": "https://cariera.ejobs.ro/salarii-romania-ghidul-salarial-ejobs-2026/",
-      "note": "Mediana salarială netă este ancorată din 3 surse independente (snapshot septembrie 2026): 1) Raportul eJobs Salario 2026 (reper declarat: 4.000 lei); 2) Statistica oficială INS (ancheta FOM121A × FOM106G pentru CAEN 49, grupa operatori); 3) Evaluare de piață: pentru acest rol specializat, angajatorii păstrează confidențialitatea salariului în anunțurile publice, negocierea fiind directă la ofertă.",
-      "anunturi": null,
+      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 11 oferte unice verificate pe OLX Locuri de Muncă și BestJobs (8 pe OLX Locuri de Muncă, 3 pe BestJobs; deduplicate anti-spam „1 post = 1 vot”, interval 5.000–8.175 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (reper declarat: 4.000 lei); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN 49, grupa operatori.",
+      "anunturi": {
+        "platforme": [
+          "OLX Locuri de Muncă",
+          "BestJobs"
+        ],
+        "surseDistincte": 2,
+        "distributie": [
+          {
+            "sursa": "OLX Locuri de Muncă",
+            "oferte": 8
+          },
+          {
+            "sursa": "BestJobs",
+            "oferte": 3
+          }
+        ],
+        "esantion": 11,
+        "interval": {
+          "min": 5000,
+          "max": 8175
+        },
+        "mediana": 5750,
+        "filtre": [
+          "Deduplicare anti-spam (1 post = 1 vot, exclus clone multi-oraș)",
+          "Strict contracte cu normă întreagă (full-time)",
+          "Conversie fiscală controlată brut -> net conform Codului Fiscal 2026 (D112)",
+          "Strict România în LEI (curs BNR dacă e EUR local)",
+          "Podea legală garantată (2.699 lei net, HG 146/2026)",
+          "Vechime sub 18 luni (martie 2025 – septembrie 2026)"
+        ]
+      },
       "survey": {
         "sursa": "eJobs Salario 2026 / Raportări voluntare",
         "valoare": 4000,
@@ -4510,7 +4600,7 @@
         "isco": "operatori"
       },
       "surseVerificate": 3,
-      "scorIncredere": 92
+      "scorIncredere": 97
     },
     "invatator": {
       "slug": "invatator",
@@ -4553,8 +4643,8 @@
       "categorie": "constructii",
       "kind": "external-reported",
       "median": 4650,
-      "p25": 4400,
-      "p75": 6000,
+      "p25": 4250,
+      "p75": 5850,
       "label": "Mediană netă estimată de piață",
       "period": "2025–2026",
       "snapshot": "septembrie 2026",
@@ -4612,9 +4702,9 @@
       "nume": "Cosmetician",
       "categorie": "servicii",
       "kind": "external-reported",
-      "median": 4500,
-      "p25": 3950,
-      "p75": 5350,
+      "median": 4300,
+      "p25": 3850,
+      "p75": 5100,
       "label": "Mediană netă estimată de piață",
       "period": "2025–2026",
       "snapshot": "septembrie 2026",
@@ -4644,7 +4734,7 @@
           "min": 3479,
           "max": 6213
         },
-        "mediana": 4970,
+        "mediana": 4643,
         "filtre": [
           "Deduplicare anti-spam (1 post = 1 vot, exclus clone multi-oraș)",
           "Strict contracte cu normă întreagă (full-time)",
@@ -5011,8 +5101,8 @@
       "categorie": "industrie",
       "kind": "external-reported",
       "median": 4050,
-      "p25": 3500,
-      "p75": 5000,
+      "p25": 3300,
+      "p75": 4850,
       "label": "Mediană netă estimată de piață",
       "period": "2025–2026",
       "snapshot": "septembrie 2026",
@@ -5105,9 +5195,9 @@
       "nume": "Frizer",
       "categorie": "servicii",
       "kind": "external-reported",
-      "median": 4850,
-      "p25": 4300,
-      "p75": 6100,
+      "median": 4500,
+      "p25": 4200,
+      "p75": 5800,
       "label": "Mediană netă estimată de piață",
       "period": "2025–2026",
       "snapshot": "septembrie 2026",
@@ -5132,7 +5222,7 @@
           "min": 4250,
           "max": 8000
         },
-        "mediana": 6000,
+        "mediana": 5250,
         "filtre": [
           "Deduplicare anti-spam (1 post = 1 vot, exclus clone multi-oraș)",
           "Strict contracte cu normă întreagă (full-time)",
@@ -5378,7 +5468,7 @@
       "population": "Casier, România (toate nivelurile de experiență)",
       "source": "Triangulare empirică (OLX Locuri de Muncă, BestJobs, Salario 2026, INS CAEN G)",
       "url": "https://cariera.ejobs.ro/salarii-romania-ghidul-salarial-ejobs-2026/",
-      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 15 oferte unice verificate pe OLX Locuri de Muncă și BestJobs (9 pe OLX Locuri de Muncă, 6 pe BestJobs; deduplicate anti-spam „1 post = 1 vot”, interval 3.100–5.467 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (reper declarat: 4.000 lei); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN G, grupa servicii.",
+      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 17 oferte unice verificate pe OLX Locuri de Muncă și BestJobs (11 pe OLX Locuri de Muncă, 6 pe BestJobs; deduplicate anti-spam „1 post = 1 vot”, interval 3.100–5.467 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (reper declarat: 4.000 lei); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN G, grupa servicii.",
       "anunturi": {
         "platforme": [
           "OLX Locuri de Muncă",
@@ -5388,14 +5478,14 @@
         "distributie": [
           {
             "sursa": "OLX Locuri de Muncă",
-            "oferte": 9
+            "oferte": 11
           },
           {
             "sursa": "BestJobs",
             "oferte": 6
           }
         ],
-        "esantion": 15,
+        "esantion": 17,
         "interval": {
           "min": 3100,
           "max": 5467
@@ -5481,9 +5571,9 @@
       "nume": "Curier",
       "categorie": "transport",
       "kind": "external-reported",
-      "median": 4450,
-      "p25": 3850,
-      "p75": 5750,
+      "median": 4100,
+      "p25": 3600,
+      "p75": 4850,
       "label": "Mediană netă estimată de piață",
       "period": "2025–2026",
       "snapshot": "septembrie 2026",
@@ -5491,7 +5581,7 @@
       "population": "Curier, România (toate nivelurile de experiență)",
       "source": "Triangulare empirică (OLX Locuri de Muncă, BestJobs, Salario 2026, INS CAEN 53)",
       "url": "https://cariera.ejobs.ro/salarii-romania-ghidul-salarial-ejobs-2026/",
-      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 44 oferte unice verificate pe OLX Locuri de Muncă și BestJobs (37 pe OLX Locuri de Muncă, 7 pe BestJobs; deduplicate anti-spam „1 post = 1 vot”, interval 2.750–13.740 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (reper declarat: 4.000 lei); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN 53, grupa elementare.",
+      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 42 oferte unice verificate pe OLX Locuri de Muncă și BestJobs (35 pe OLX Locuri de Muncă, 7 pe BestJobs; deduplicate anti-spam „1 post = 1 vot”, interval 2.970–7.500 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (reper declarat: 4.000 lei); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN 53, grupa elementare.",
       "anunturi": {
         "platforme": [
           "OLX Locuri de Muncă",
@@ -5501,19 +5591,19 @@
         "distributie": [
           {
             "sursa": "OLX Locuri de Muncă",
-            "oferte": 37
+            "oferte": 35
           },
           {
             "sursa": "BestJobs",
             "oferte": 7
           }
         ],
-        "esantion": 44,
+        "esantion": 42,
         "interval": {
-          "min": 2750,
-          "max": 13740
+          "min": 2970,
+          "max": 7500
         },
-        "mediana": 4850,
+        "mediana": 4225,
         "filtre": [
           "Deduplicare anti-spam (1 post = 1 vot, exclus clone multi-oraș)",
           "Strict contracte cu normă întreagă (full-time)",
@@ -5684,7 +5774,7 @@
       "kind": "external-reported",
       "median": 3750,
       "p25": 3200,
-      "p75": 4400,
+      "p75": 4250,
       "label": "Mediană netă estimată de piață",
       "period": "2025–2026",
       "snapshot": "septembrie 2026",
@@ -5692,7 +5782,7 @@
       "population": "Vânzător, România (toate nivelurile de experiență)",
       "source": "Triangulare empirică (OLX Locuri de Muncă, BestJobs, Salario 2026, INS CAEN G)",
       "url": "https://cariera.ejobs.ro/salarii-romania-ghidul-salarial-ejobs-2026/",
-      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 41 oferte unice verificate pe OLX Locuri de Muncă și BestJobs (28 pe OLX Locuri de Muncă, 13 pe BestJobs; deduplicate anti-spam „1 post = 1 vot”, interval 2.717–6.500 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (reper declarat: 3.800 lei); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN G, grupa servicii.",
+      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 54 oferte unice verificate pe OLX Locuri de Muncă și BestJobs (40 pe OLX Locuri de Muncă, 14 pe BestJobs; deduplicate anti-spam „1 post = 1 vot”, interval 2.717–7.050 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (reper declarat: 3.800 lei); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN G, grupa servicii.",
       "anunturi": {
         "platforme": [
           "OLX Locuri de Muncă",
@@ -5702,17 +5792,17 @@
         "distributie": [
           {
             "sursa": "OLX Locuri de Muncă",
-            "oferte": 28
+            "oferte": 40
           },
           {
             "sursa": "BestJobs",
-            "oferte": 13
+            "oferte": 14
           }
         ],
-        "esantion": 41,
+        "esantion": 54,
         "interval": {
           "min": 2717,
-          "max": 6500
+          "max": 7050
         },
         "mediana": 3650,
         "filtre": [
@@ -5830,9 +5920,9 @@
       "nume": "Croitor",
       "categorie": "industrie",
       "kind": "external-reported",
-      "median": 3900,
-      "p25": 3050,
-      "p75": 4900,
+      "median": 3650,
+      "p25": 2800,
+      "p75": 4800,
       "label": "Mediană netă estimată de piață",
       "period": "2025–2026",
       "snapshot": "septembrie 2026",
@@ -5840,7 +5930,7 @@
       "population": "Croitor, România (toate nivelurile de experiență)",
       "source": "Triangulare empirică (OLX Locuri de Muncă, Salario 2026, INS CAEN 14)",
       "url": "https://cariera.ejobs.ro/salarii-romania-ghidul-salarial-ejobs-2026/",
-      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 9 oferte unice verificate pe OLX Locuri de Muncă (9 pe OLX Locuri de Muncă; deduplicate anti-spam „1 post = 1 vot”, interval 2.700–8.500 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (reper declarat: 3.500 lei); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN 14, grupa muncitori.",
+      "note": "Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): 1) Piața activă: 9 oferte unice verificate pe OLX Locuri de Muncă (9 pe OLX Locuri de Muncă; deduplicate anti-spam „1 post = 1 vot”, interval 2.699–8.500 lei net, normă întreagă, conversie D112 brut->net); 2) Rapoarte de piață: eJobs Salario 2026 (reper declarat: 3.500 lei); 3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN 14, grupa muncitori.",
       "anunturi": {
         "platforme": [
           "OLX Locuri de Muncă"
@@ -5854,10 +5944,10 @@
         ],
         "esantion": 9,
         "interval": {
-          "min": 2700,
+          "min": 2699,
           "max": 8500
         },
-        "mediana": 4250,
+        "mediana": 3800,
         "filtre": [
           "Deduplicare anti-spam (1 post = 1 vot, exclus clone multi-oraș)",
           "Strict contracte cu normă întreagă (full-time)",

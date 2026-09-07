@@ -47,9 +47,9 @@ function getSearchConfig(slug, nume, cat) {
     'inginer-mediu': { q: 'inginer protectia mediului', matches: ['protectia mediului', 'mediu', 'gestiunea deseurilor'] },
     'inginer-textil': { q: 'inginer textil', matches: ['textil', 'confectii', 'croitorie industriala'] },
     'inginer-instalatii': { q: 'inginer instalatii', matches: ['inginer instalatii', 'hvac', 'instalatii termice', 'sanitare'] },
-    'electrician': { q: 'electrician', matches: ['electrician', 'electrice', 'tablotier', 'mentenanta electrica', 'instalatii electrice'] },
-    'instalator': { q: 'instalator', matches: ['instalator', 'instalatii', 'sanitare', 'termice', 'gaze'] },
-    'mecanic-auto': { q: 'mecanic auto', matches: ['mecanic', 'auto', 'service auto', 'diagnoza'] },
+    'electrician': { q: 'electrician', matches: ['electrician', 'electricean', 'electrice', 'tablotier', 'mentenanta electrica', 'instalatii electrice', 'tablouri electrice'] },
+    'instalator': { q: 'instalator', matches: ['instalator', 'instalatii', 'sanitare', 'termice', 'gaze', 'hvac', 'om instalatii'] },
+    'mecanic-auto': { q: 'mecanic auto', matches: ['mecanic', 'mecanic auto', 'auto', 'service auto', 'diagnoza', 'mecanica'] },
     'sudor': { q: 'sudor', matches: ['sudor', 'sudura', 'mig-mag', 'tig', 'wig', 'electrod'] },
     'lacatus-mecanic': { q: 'lacatus mecanic', matches: ['lacatus', 'mecanic', 'confectii metalice', 'asamblare'] },
     'operator-cnc': { q: 'operator cnc', matches: ['cnc', 'frezor', 'strungar', 'prelucrari mecanice'] },
@@ -62,8 +62,8 @@ function getSearchConfig(slug, nume, cat) {
     'fierar-betonist': { q: 'fierar betonist', matches: ['fierar', 'betonist', 'armaturi', 'santier'] },
     'dulgher': { q: 'dulgher', matches: ['dulgher', 'cofraje', 'lemn', 'santier'] },
     'zidar': { q: 'zidar', matches: ['zidar', 'tencuitor', 'finisaje', 'amenajari'] },
-    'zugrav': { q: 'zugrav', matches: ['zugrav', 'glet', 'lavabila', 'rigips', 'finisaje'] },
-    'faiantar': { q: 'faiantar', matches: ['faiantar', 'gresie', 'faianta', 'placari'] },
+    'zugrav': { q: 'zugrav', matches: ['zugrav', 'glet', 'lavabila', 'rigips', 'finisaje', 'amenajari', 'zugraveala'] },
+    'faiantar': { q: 'faiantar', matches: ['faiantar', 'faianțar', 'gresie', 'faianta', 'placari', 'meserias gresie'] },
     'macaragiu': { q: 'macaragiu', matches: ['macaragiu', 'macara', 'pod rulant'] },
     'stivuitorist': { q: 'stivuitorist', matches: ['stivuitorist', 'stivuitor', 'motostivuitor', 'depozit'] },
     'buldoexcavatorist': { q: 'buldoexcavatorist', matches: ['buldoexcavator', 'excavator', 'utilaje', 'terasamente'] },
@@ -73,9 +73,9 @@ function getSearchConfig(slug, nume, cat) {
     'sofer-taxi': { q: 'sofer taxi', matches: ['taxi', 'bolt', 'uber', 'transport alternativ'] },
     'curier': { q: 'curier', matches: ['curier', 'livrator', 'distributie colete', 'glovo', 'tazz'] },
     'livrator': { q: 'livrator', matches: ['livrator', 'curier', 'mancare', 'scuter'] },
-    'bucatar': { q: 'bucatar', matches: ['bucatar', 'chef', 'pizzar', 'grataragiu', 'linie calda'] },
-    'ajutor-bucatar': { q: 'ajutor bucatar', matches: ['ajutor bucatar', 'spalator vase', 'curatenie bucatarie'] },
-    'ospatar': { q: 'ospatar', matches: ['ospatar', 'chelner', 'servire', 'evenimente'] },
+    'bucatar': { q: 'bucatar', matches: ['bucatar', 'bucatareasa', 'chef', 'pizzar', 'grataragiu', 'linie calda'] },
+    'ajutor-bucatar': { q: 'ajutor bucatar', matches: ['ajutor bucatar', 'ajutor bucatarie', 'spalator vase', 'curatenie bucatarie'] },
+    'ospatar': { q: 'ospatar', matches: ['ospatar', 'ospatarita', 'chelner', 'servire', 'evenimente'] },
     'barman': { q: 'barman', matches: ['barman', 'bar', 'cafenea', 'cocktail'] },
     'barista': { q: 'barista', matches: ['barista', 'cafenea', 'cafea', 'specialty'] },
     'cofetar': { q: 'cofetar', matches: ['cofetar', 'patiser', 'prajituri', 'torturi', 'laborator'] },
@@ -84,9 +84,9 @@ function getSearchConfig(slug, nume, cat) {
     'pizzar': { q: 'pizzar', matches: ['pizzar', 'pizza', 'cuptor pe lemne'] },
     'receptioner-hotel': { q: 'receptioner hotel', matches: ['receptioner', 'front desk', 'cazare', 'hotel', 'pensiune'] },
     'camerista': { q: 'camerista', matches: ['camerista', 'curatenie camere', 'hotel'] },
-    'vanzator': { q: 'vanzator', matches: ['vanzator', 'comercial', 'magazin', 'consilier vanzari'] },
-    'casier': { q: 'casier', matches: ['casier', 'casa de marcat', 'incasare', 'supermarket'] },
-    'lucrator-comercial': { q: 'lucrator comercial', matches: ['lucrator comercial', 'marfa', 'raft', 'depozit', 'supermarket'] },
+    'vanzator': { q: 'vanzator', matches: ['vanzator', 'vanzatoare', 'comercial', 'magazin', 'consilier vanzari'] },
+    'casier': { q: 'casier', matches: ['casier', 'casiera', 'casa de marcat', 'incasare', 'supermarket'] },
+    'lucrator-comercial': { q: 'lucrator comercial', matches: ['lucrator comercial', 'marfa', 'raft', 'depozit', 'supermarket', 'aranjare marfa'] },
     'manager-magazin': { q: 'sef magazin', matches: ['sef magazin', 'director magazin', 'store manager', 'responsabil magazin'] },
     'merchandiser': { q: 'merchandiser', matches: ['merchandiser', 'aranjare marfa', 'vizibilitate'] },
     'agent-securitate': { q: 'agent securitate', matches: ['paza', 'securitate', 'agent paza', 'obiective'] },
@@ -130,7 +130,12 @@ function getSearchConfig(slug, nume, cat) {
     'asistent-radiologie': { q: 'asistent radiologie', matches: ['radiologie', 'imagistica', 'ct', 'rmn', 'radiografii'] },
     'operator-call-center': { q: 'operator call center', matches: ['call center', 'relatii clienti', 'customer care', 'suport'] },
     'dispecer-transport': { q: 'dispecer transport', matches: ['dispecer', 'transport marfa', 'expeditii', 'flota'] },
-    'pilot': { q: 'pilot avion', matches: ['pilot', 'aviatie', 'aeronava', 'copilot'] }
+    'pilot': { q: 'pilot avion', matches: ['pilot', 'aviatie', 'aeronava', 'copilot'] },
+    'constructor': { q: 'muncitor constructii', matches: ['constructii', 'santier', 'muncitor constructii', 'lucrator constructii', 'muncitor necalificat'] },
+    'taximetrist': { q: 'sofer taxi', matches: ['taxi', 'taximetrist', 'bolt', 'uber', 'transport persoane'] },
+    'muncitor-industria-alimentara': { q: 'muncitor fabrica', matches: ['alimentara', 'panificatie', 'mezeluri', 'ambalator', 'productie'] },
+    'postas': { q: 'factor postal', matches: ['postas', 'posta', 'curierat postal', 'factor postal'] },
+    'marinar': { q: 'marinar', matches: ['marinar', 'timonier', 'fluvial', 'portuar', 'navigatie'] }
   };
 
   if (CUSTOM[slug]) return CUSTOM[slug];
@@ -138,6 +143,80 @@ function getSearchConfig(slug, nume, cat) {
   return {
     q: cleanNume,
     matches: [cleanNume, slug.replace(/-/g, ' ')]
+  };
+}
+
+function analizeazaSemanticAnunt({ titlu, descriere = '', netMin, netMax }) {
+  const textCurat = (titlu + ' ' + (descriere || '')).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+  // 1. Verificare Diaspora / Străinătate ascunsă
+  const termeniStrainatate = [
+    'germania', 'olanda', 'netherlands', 'belgia', 'anglia', 'austria',
+    'spania', 'franta', 'diurna externa', 'contract strainatate',
+    'plecari germania', 'munca in afara', 'munca strainatate'
+  ];
+  for (const t of termeniStrainatate) {
+    if (textCurat.includes(t)) {
+      return { valid: false, motiv: `Detectat job în străinătate (${t})` };
+    }
+  }
+
+  // 2. Verificare Înșelăciuni / MLM / Videochat / Spam dubios
+  const termeniDubiosi = [
+    'lucru de acasa 500', 'bani din telefon', 'fara experienta castiguri uriase',
+    'videochat', 'model online', 'operator chat', 'ambalat pixuri', 'plafar acasa',
+    'castiga zilnic mii', 'munca usoara la domiciliu'
+  ];
+  for (const t of termeniDubiosi) {
+    if (textCurat.includes(t)) {
+      return { valid: false, motiv: `Detectat anunț spam/dubios (${t})` };
+    }
+  }
+
+  // 3. Scepticism sănătos Bacșiș, Tips, Bonusuri și Comisioane
+  const areTips = /bac[sș]i[sș]|tips/.test(textCurat);
+  const areBonusuriSauComisioane = /bonus|comision|comisioane|performan[tț][aă]|tinte de v[aâ]nz[aă]ri|comenzi livrate/.test(textCurat);
+  const areTipsSauBonus = areTips || areBonusuriSauComisioane;
+
+  let salariuBazaCalculat = Math.round((netMin + netMax) / 2);
+  let ajustareSceptica = 'standard';
+  let salariuBazaGarantat = netMin;
+
+  // Căutare salariu fix / garantat explicit în descriere (ex: "salariu fix 3500 lei", "salariu net de baza 4000 lei + tips")
+  const regexFix = /salariu(?:l)?\s*(?:fix|de baz[aă]|garantat|net)?\s*(?:de|este|:)?\s*(\d{4,5})\s*(?:lei|ron)/i;
+  const matchFix = textCurat.match(regexFix);
+  if (matchFix) {
+    const valFix = parseInt(matchFix[1], 10);
+    if (valFix >= 2699 && valFix <= 35000) {
+      salariuBazaCalculat = valFix;
+      salariuBazaGarantat = valFix;
+      ajustareSceptica = 'extras_salariu_fix_garantat_din_text';
+    }
+  }
+
+  // Dacă nu există o mențiune explicită de salariu fix, dar există tips sau bonusuri variabile:
+  if (ajustareSceptica === 'standard' && areTipsSauBonus) {
+    const raportEcart = netMax / netMin;
+    if (raportEcart >= 1.5) {
+      // Angajatorul a introdus în interval estimări de tips sau bonusuri ipotetice (ex: 3500 - 8000 lei)
+      // Ancorăm sceptic pe baza garantată (minimul) plus cel mult 15% din ecart
+      salariuBazaCalculat = Math.round(netMin + 0.15 * (netMax - netMin));
+      ajustareSceptica = areTips ? 'temperat_sceptic_bacsis_inclus' : 'temperat_sceptic_bonus_performanta';
+    } else {
+      // Ecart moderat cu bonus/tips opțional (ex: 4000 - 4500 lei)
+      salariuBazaCalculat = Math.round((netMin + netMax) / 2);
+      ajustareSceptica = 'ecart_moderat_cu_tips_bonus';
+    }
+  }
+
+  return {
+    valid: true,
+    salariuBazaCalculat,
+    salariuBazaGarantat,
+    areTipsSauBonus,
+    areTips,
+    areBonusuri: areBonusuriSauComisioane,
+    ajustareSceptica
   };
 }
 
@@ -191,6 +270,17 @@ async function fetchOlxDeep(query, keywords, maxPages = 3) {
         if (netMax < 2699 || netMin > 75000) continue;
         if (netMin < 2699) netMin = 2699;
 
+        // Analiză semantică inteligentă a descrierii și scepticism la bonusuri/tips
+        const rawDesc = (it.description || '').replace(/<[^>]+>/g, ' ');
+        const semantic = analizeazaSemanticAnunt({
+          titlu: it.title,
+          descriere: rawDesc,
+          netMin,
+          netMax
+        });
+
+        if (!semantic.valid) continue;
+
         let seniority = 'mid';
         const expParam = it.params?.find(p => p.key === 'nivel_experienta')?.value?.key;
         if (expParam === 'entry_level' || title.includes('junior') || title.includes('debutant') || title.includes('ajutor')) {
@@ -210,7 +300,10 @@ async function fetchOlxDeep(query, keywords, maxPages = 3) {
           judet: it.location?.region?.name || '',
           salariuMinNet: netMin,
           salariuMaxNet: netMax,
-          salariuNetCalculat: Math.round((netMin + netMax) / 2),
+          salariuNetCalculat: semantic.salariuBazaCalculat,
+          salariuBazaGarantat: semantic.salariuBazaGarantat,
+          areTipsSauBonus: semantic.areTipsSauBonus,
+          ajustareSceptica: semantic.ajustareSceptica,
           eraBrut: isGross,
           senioritate: seniority,
           dataPublicare: pubDate,
@@ -293,6 +386,16 @@ async function fetchBestJobsDeep(query, keywords, maxPages = 2) {
 
         const employer = (it.companyName || 'BestJobs Client').trim();
 
+        // Semantic check
+        const semantic = analizeazaSemanticAnunt({
+          titlu: it.title,
+          descriere: it.intro || it.snippet || '',
+          netMin: min,
+          netMax: max
+        });
+
+        if (!semantic.valid) continue;
+
         results.push({
           sursa: 'BestJobs',
           id: `bestjobs-${it.id}`,
@@ -301,7 +404,10 @@ async function fetchBestJobsDeep(query, keywords, maxPages = 2) {
           oras: (it.locations || []).map(l => l.name).join(', ') || 'România',
           salariuMinNet: min,
           salariuMaxNet: max,
-          salariuNetCalculat: Math.round((min + max) / 2),
+          salariuNetCalculat: semantic.salariuBazaCalculat,
+          salariuBazaGarantat: semantic.salariuBazaGarantat,
+          areTipsSauBonus: semantic.areTipsSauBonus,
+          ajustareSceptica: semantic.ajustareSceptica,
           eraBrut: false,
           senioritate: seniority,
           dataPublicare: '2026-08',
@@ -320,7 +426,7 @@ async function fetchBestJobsDeep(query, keywords, maxPages = 2) {
 }
 
 async function main() {
-  console.log('=== START CRAWLING MASIV PIAȚA MUNCII ROMÂNIA (Paginat & Anti-Spam) ===');
+  console.log('=== START CRAWLING MASIV PIAȚA MUNCII ROMÂNIA (Paginat & Anti-Spam & Semantic AI) ===');
   const marketJobs = baseline.filter(x => !PUBLIC_SECTOR_SLUGS.has(x.slug));
   const rawDatabase = {};
   let totalRawCollected = 0;
