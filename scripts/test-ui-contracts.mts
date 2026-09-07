@@ -41,8 +41,10 @@ assert.doesNotMatch(widgetPage, /widget\.js/, "Pagina /widget nu trebuie să mai
 assert.doesNotMatch(widgetPage, /rel="nofollow noopener"/, "Codurile de embed nu trebuie să forțeze nofollow pe creditul extern");
 assert.doesNotMatch(widgetDemo, /rel="nofollow noopener"/, "Demo-ul trebuie să reproducă creditul extern fără nofollow forțat");
 assert.match(widgetCalculator, /rel="nofollow noopener"/, "Creditul informativ din iframe-ul minimalist rămâne calificat separat");
-assert.match(widgetPage, /stableResizeCode\(900, 1450\)/, "Widgetul complet trebuie să rezerve din start mai mult spațiu pe mobil");
-assert.match(widgetPage, /stableResizeCode\(1200, 2000\)/, "Widgetul de fluturaș trebuie să rezerve din start mai mult spațiu pe mobil");
+assert.doesNotMatch(widgetPage, /stableResizeCode/, "Widgeturile nu trebuie să rezerve înălțimi mobile uriașe");
+assert.match(widgetPage, /const AUTO_RESIZE_CODE = `<script>/, "Codurile de embed trebuie să includă auto-resize după conținut");
+assert.match(widgetPage, /frame\.style\.height = nextHeight \+ "px"/, "Iframe-ul trebuie să urmeze înălțimea reală raportată de conținut");
+assert.match(widgetDemo, /setHeight\(\(current\) => Math\.abs\(nextHeight - current\) >= 8 \? nextHeight : current\)/, "Demo-ul trebuie să urmeze aceeași regulă de auto-height");
 for (const source of [widgetPage, widgetDemo, widgetCalculator, salary, home]) {
   assert.doesNotMatch(source, /contează pentru SEO|motorul de backlink|produce backlink|dofollow|crawlable|crawlabil/i, "Copy-ul widgetului nu trebuie să promită valoare SEO");
 }
