@@ -133,10 +133,10 @@ export default function IndicatorSalariu({ reper: r }: { reper: ReperMeserie }) 
                     </span>
                   </div>
                   <div className="mt-1.5 text-stone-700">
-                    <strong>{t.anunturi.esantion} oferte</strong> verificate
+                    <strong>{t.anunturi.esantion} oferte</strong> deduplicate
                   </div>
                   <div className="mt-0.5 text-[11px] text-stone-500">
-                    pe {t.anunturi.platforme?.join(' și ')}
+                    {t.anunturi.scorIncredere ? `Încredere: ${Math.round(t.anunturi.scorIncredere > 1 ? t.anunturi.scorIncredere : t.anunturi.scorIncredere * 100)}%` : `pe ${t.anunturi.platforme?.join(' și ')}`}
                   </div>
                   <div className="mt-2 border-t border-stone-100 pt-1.5 font-mono text-[11px] text-stone-700">
                     {t.anunturi.interval?.min?.toLocaleString('ro-RO')}–{t.anunturi.interval?.max?.toLocaleString('ro-RO')} lei net
@@ -225,7 +225,7 @@ export default function IndicatorSalariu({ reper: r }: { reper: ReperMeserie }) 
               ))}
             </ul>
             <p className="mt-2 text-[11px] text-stone-500">
-              Garanție anti-spam: 1 post = 1 vot. Dacă o companie clonează același anunț în zeci de orașe, sistemul reține o singură observație. Se filtrează strict contractele cu normă întreagă, salariile exprimate brut sunt convertite la net conform Codului Fiscal 2026, iar vechimea anunțurilor este sub 18 luni (martie 2025 – septembrie 2026).
+              Garanție anti-spam și cross-site: 1 post = 1 vot. Dacă o companie clonează același anunț în zeci de orașe sau pe platforme multiple, sistemul reține o singură observație consolidată. Fiecare ofertă primește un scor de încredere (0–100%) bazat pe claritatea intervalului, existența salariului de bază garantat și excluderea bonusurilor speculative. Se filtrează strict contractele cu normă întreagă, iar istoricul de snapshot este arhivat la 6 luni (septembrie 2026 – martie 2027).
             </p>
           </div>
         )}

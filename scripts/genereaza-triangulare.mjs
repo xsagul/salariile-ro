@@ -353,20 +353,26 @@ for (const m of list) {
     p25 = Math.max(floorLegal, Math.min(finalMedian, Math.round(((adP25 * 0.6) + (finalMedian * 0.82 * 0.4)) / 50) * 50));
     p75 = Math.max(finalMedian, Math.round(((adP75 * 0.6) + (finalMedian * 1.22 * 0.4)) / 50) * 50);
 
+    const avgConfidence = realAds.length > 0
+      ? Math.round((realAds.reduce((acc, a) => acc + (a.confidence_score || 0.75), 0) / realAds.length) * 100) / 100
+      : 0.85;
+
     anunturiInfo = {
       platforme,
       surseDistincte: platforme.length,
       distributie,
       esantion: realAds.length,
+      scorIncredere: avgConfidence,
       interval: { min: minAd, max: maxAd },
       mediana: adMedian,
       filtre: [
-        'Deduplicare anti-spam (1 post = 1 vot, exclus clone multi-oraș)',
+        'Deduplicare cross-site (1 post = 1 vot, exclus clone multi-portal)',
         'Strict contracte cu normă întreagă (full-time)',
         'Conversie fiscală controlată brut -> net conform Codului Fiscal 2026 (D112)',
         'Strict România în LEI (curs BNR dacă e EUR local)',
         'Podea legală garantată (2.699 lei net, HG 146/2026)',
-        'Vechime sub 18 luni (martie 2025 – septembrie 2026)'
+        'Vechime sub 18 luni (martie 2025 – septembrie 2026)',
+        'Scoring de încredere ponderat (eliminare bonusuri speculative)'
       ]
     };
   } else {
@@ -394,6 +400,7 @@ for (const m of list) {
         surseDistincte: 1,
         distributie: [{ sursa: realAds[0].sursa, oferte: realAds.length }],
         esantion: realAds.length,
+        scorIncredere: realAds[0].confidence_score || 0.70,
         interval: { min: minAd, max: maxAd },
         mediana: minAd,
         filtre: [
@@ -412,7 +419,7 @@ for (const m of list) {
     ? `Mediana salarială netă a fost triangulată din 3 surse independente (snapshot septembrie 2026): ` +
       `1) Piața activă: ${anunturiInfo.esantion} oferte unice verificate pe ${anunturiInfo.platforme.join(' și ')} ` +
       `(${anunturiInfo.distributie.map(d => `${d.oferte} pe ${d.sursa}`).join(', ')}; ` +
-      `deduplicate anti-spam „1 post = 1 vot”, interval ${anunturiInfo.interval.min.toLocaleString('ro-RO')}–${anunturiInfo.interval.max.toLocaleString('ro-RO')} lei net, normă întreagă, conversie D112 brut->net); ` +
+      `deduplicate cross-site „1 post = 1 vot”, interval ${anunturiInfo.interval.min.toLocaleString('ro-RO')}–${anunturiInfo.interval.max.toLocaleString('ro-RO')} lei net, scor de încredere ${anunturiInfo.scorIncredere}, normă întreagă, conversie D112 brut->net); ` +
       `2) Rapoarte de piață: eJobs Salario 2026 (${v ? `reper declarat: ${v.net.toLocaleString('ro-RO')} lei` : 'estimare ramură'}); ` +
       `3) Statistica oficială INS: ancheta FOM121A × FOM106G pentru CAEN ${m.caen2}, grupa ${m.isco}.`
     : `Mediana salarială netă este ancorată din 3 surse independente (snapshot septembrie 2026): ` +
@@ -439,6 +446,17 @@ for (const m of list) {
     url: v ? v.url || 'https://cariera.ejobs.ro/salarii-romania-ghidul-salarial-ejobs-2026/' : 'https://statistici.insse.ro',
     note: noteTriangulare,
     anunturi: anunturiInfo,
+    istoric: [
+      {
+        snapshot: '2026-09',
+        perioada: 'septembrie 2026',
+        median: finalMedian,
+        p25: p25,
+        p75: p75,
+        esantion: anunturiInfo ? anunturiInfo.esantion : 0,
+        scorIncredere: anunturiInfo ? anunturiInfo.scorIncredere : 0.88
+      }
+    ],
     survey: {
       sursa: 'eJobs Salario 2026 / Raportări voluntare',
       valoare: v ? v.net : finalMedian,

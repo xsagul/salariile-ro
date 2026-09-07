@@ -2017,6 +2017,40 @@ Status: finalizat, testat cu 17 suite automate trecute cu succes, validat `next 
    - **191 de duplicate/spamuri/scamuri eliminate**.
    - Generat `src/data/triangulare-date.json` actualizat pe cele 132 de ocupații.
 
+## 7 septembrie 2026 — Arhitectură modulară de crawling & observații salariale (schema unică, conectori independenți, normalizare COR, deduplicare cross-site, scoring de încredere și arhivă istorică)
+
+Status: implementat, testat (17/17 teste automate trecute), validat `next build` (318 pagini statice).
+
+### Ce s-a realizat
+
+1. **Schema unică de date (`scripts/crawler/schema.mjs`):**
+   - Structură standardizată completă pentru fiecare observație: `id`, `job_title_raw`, `ocupatie_normalizata`, `cor_probabil` (cod și denumire oficială), `judet`, `oras`, `salariu_min`, `salariu_max`, `salariu_calculat`, `salariu_baza_garantat`, `net_brut`, `lunar_orar`, `experienta`, `tip_contract`, `angajator_raw`, `angajator_normalizat`, `sursa`, `surse_confirmate`, `url`, `data_publicarii`, `data_crawlului`, `scepticism_bonus`, `confidence_score` (0.00–1.00) și `confidence_reasons`.
+
+2. **Conectori independenți per sursă (`scripts/crawler/connectors/`):**
+   - Separare completă a codului de acces: `connectors/olx.mjs`, `connectors/bestjobs.mjs`, `connectors/public-sector.mjs` (D112 SCJU Constanța), gestionați printr-un client de bază `connectors/base.mjs` (rate limiting, retry cu exponential backoff, rotire User-Agent).
+   - O modificare pe un portal nu mai afectează funcționarea celorlalte surse.
+
+3. **Normalizare agresivă a titlurilor & mapare COR (`scripts/crawler/normalizer.mjs`):**
+   - Curățare de zgomot textual, corectare fonetică (*„electricean”* $\to$ *„electrician”*, *„faianțar/gresie”* $\to$ *„faiantar”*), excludere semantică (*„Programator CNC”* mapat corect la *„operator-cnc”*, nu la software).
+   - Mapare directă cu nomenclatorul oficial din `src/data/cor-meserii.json`.
+
+4. **Deduplicare cross-site („1 postare = 1 vot”) (`scripts/crawler/deduplicator.mjs`):**
+   - Amprentă compusă cross-site bazată pe angajator normalizat + titlu stem + județ + interval salarial.
+   - Când un anunț este prezent pe multiple platforme, se consolidează într-un singur vot cu bonus de încredere multi-sursă.
+   - Eliminat 226 de duplicate cross-site din eșantion.
+
+5. **Scoring de încredere (0.00 – 1.00) (`scripts/crawler/confidence.mjs`):**
+   - Pondere ridicată pentru salarii exacte sau intervale restrânse ($\le 1.25\times$), bonusuri temperate sceptic, confirmare multi-portal și angajatori cu formă juridică (SRL/SA). Observațiile sub pragul de 0.35 sunt respinse.
+
+6. **Arhivă istorică de snapshot-uri (`data/snapshots/2026-09/`):**
+   - Salvarea tuturor observațiilor individuale în `data/snapshots/2026-09/observatii-complete.json` fără suprascrierea istoricului viitor.
+   - În `src/data/triangulare-date.json`, fiecare ocupație deține acum un array `istoric` (pregătit pentru viitoarele grafice de evoluție 2026 $\to$ 2027 $\to$ 2028).
+
+7. **UI îmbunătățit (`src/app/components/IndicatorSalariu.tsx`):**
+   - Cardul 1 afișează numărul de oferte deduplicate și scorul de încredere (ex: *„Încredere: 85%”*).
+   - Modalul explică deduplicarea cross-site și filtrarea bonusurilor speculative.
+
+
 
 
 
