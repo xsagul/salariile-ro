@@ -86,6 +86,29 @@ Tensiunea care a oprit-o, și care rămâne reală: `/despre` promite azi „nu 
 
 ## Roadmap activ
 
+### Salarii pe meserii — colectarea decisă pe 7 septembrie 2026
+
+Proprietarul cere o colectare amplă a anunțurilor active la momentul verificării,
+cât mai completă pe fiecare sursă, pentru toate meseriile din catalog. După această
+perioadă de colectare intenționează o pauză de aproximativ șase luni. Nu programa
+recrawl automat; data fotografiei pieței rămâne vizibilă și nu devine o promisiune
+că ofertele vor fi actuale pe toată durata pauzei.
+
+Scopul cifrei orientative este compararea remunerației și alegerea carierei.
+Preferința este pentru un indicator central, rezistent la extreme. Ofertele,
+salariile declarate de angajați și grilele legale rămân concepte distincte.
+O medie publicată nu se redenumește mediană. Mijlocul unui interval oferit este
+o ipoteză de estimare, nu salariul observat al unui angajat.
+
+Auditul codului a identificat observații generate artificial în vechiul
+„Cenzus Curat”. Generatorul este retras; istoricul rămâne pentru audit.
+Nu reintroduce observații pornind de la salarii-țintă, nume de angajatori,
+scoruri de încredere inventate sau cote minime pe meserie. Verificarea cere
+pagina sursă, suma originală, interpretarea unității și data colectării.
+Pragurile de publicare sunt deținute de `scripts/crawler/policy.mjs`,
+acoperirea produsului de `src/data/acoperire-anunturi.json`.
+„Undă verde” se acordă pe dovezi; lipsa datelor nu se rezolvă prin valori fabricate.
+
 - Planul verificat pe 90 de zile este în `ROADMAP-90-ZILE.md`; baseline-ul pre-P0 se termină la 24 iulie 2026
 - Snapshotul reproductibil se rulează cu `npm run gsc:weekly`; nu se atribuie efecte P0/P1 înainte de date post-deploy complete
 - Rutele `/calculator/[valoare]` sunt allowlist-only. O valoare nouă intră în `src/lib/seo.ts` numai cu cerere demonstrată sau rol fiscal distinct și trebuie acoperită de `scripts/test-rendered.mts`

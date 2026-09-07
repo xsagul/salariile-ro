@@ -2,7 +2,8 @@ import type { DateMeserie } from '@/lib/meserii';
 import { grilaPublica, SURSA_GRILE } from '@/lib/grile-publice';
 import { LUNA_REFERINTA } from '@/lib/ins-date';
 import education from '@/data/grila-invatamant-153-2017.json';
-import triangulareData from '@/data/triangulare-date.json';
+import reports from '@/data/repere-piata-verificate.json';
+import { ACOPERIRE_ANUNTURI, type AcoperireAnunturi } from '@/lib/acoperire-anunturi';
 import { calculStandard } from '@/lib/fiscal';
 import { textIndicator } from '@/lib/indicator-meserie';
 import { cifreMeserie } from '@/lib/ocupatii-caen';
@@ -29,50 +30,38 @@ export type ReperMeserie = {
   median: number | null;
   p25: number | null;
   p75: number | null;
-  triangulare?: any;
+  anunturi?: AcoperireAnunturi;
 };
 
-/** Selectăm măsura documentată din sistemul de triangulare multi-sursă axat pe mediană. */
+/** Keep different populations and metrics separate. Missing quartiles stay missing. */
 export function reperMeserie(d: DateMeserie): ReperMeserie {
-  const common = { unit: 'lei net/lună' as const };
-  const t = (triangulareData as any).meserii?.[d.meserie.slug];
+  const common = { unit: 'lei net/lună' as const, median: null, p25: null, p75: null,
+    anunturi: ACOPERIRE_ANUNTURI[d.meserie.slug] };
+  const report = reports.records.find(r => r.slug === d.meserie.slug);
 
-  if (t) {
+  if (report) {
     return {
       ...common,
-      kind: t.kind,
-      value: t.median,
-      upper: t.kind === 'public-grid' && t.grila?.bazaMax ? t.grila.bazaMax : null,
-      median: t.median,
-      p25: t.p25,
-      p75: t.p75,
-      n: t.anunturi?.esantion ?? null,
-      label: t.label,
-      period: t.period,
-      population: t.population,
-      source: t.source,
-      url: t.url,
-      note: t.note,
-      triangulare: t,
+      kind: 'external-reported', value: report.net, upper: null, n: null,
+      label: 'Medie netă declarată în Salario', period: reports.period,
+      population: `${report.role}, România; nivelurile de experiență și localitățile cumulate`,
+      source: reports.source, url: reports.url,
+      note: `${reports.method} ${report.note} Media nu este o mediană și nu stabilește salariul cel mai frecvent.`,
     };
   }
 
-  // Fallback pe grilă legală dacă nu a fost înregistrat în triangulare
+  // Grila legală este un reper separat, cu propriul sens statistic.
   const teaching = grilaEducatie(d.meserie.slug);
   const grid = grilaPublica(d.meserie.slug);
   const values = teaching.length ? teaching.map(r => calculStandard(r.iun2024)!.net) : grid?.trepte.map(r => r.net) ?? [];
   if (values.length) {
     const minVal = Math.min(...values);
     const maxVal = Math.max(...values);
-    const midVal = Math.round((minVal + maxVal) / 2);
     return {
       ...common,
       kind: 'public-grid',
       value: minVal,
       upper: maxVal,
-      median: midVal,
-      p25: minVal,
-      p75: maxVal,
       n: null,
       label: 'Interval net calculat din grila de bază',
       period: teaching.length ? 'coloana iunie 2024' : grid!.coloana,
@@ -90,9 +79,6 @@ export function reperMeserie(d: DateMeserie): ReperMeserie {
     kind: 'sector-context',
     value: val,
     upper: null,
-    median: val,
-    p25: Math.round(val * 0.8),
-    p75: Math.round(val * 1.2),
     n: null,
     label: cm.dinIntersectie ? 'Estimare INS · grupă ocupațională în sector' : 'Context INS · media sectorului',
     period: LUNA_REFERINTA,

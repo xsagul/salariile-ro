@@ -1,0 +1,16 @@
+{
+  "generatedAt": "2026-09-07",
+  "policy": {
+    "version": 3,
+    "snapshotWindowDays": 7,
+    "minAds": 30,
+    "minEmployers": 10,
+    "minCounties": 5,
+    "minSources": 2,
+    "maxEmployerShare": 0.2,
+    "maxSourceShare": 0.8,
+    "minExplicitMonthly": 10,
+    "maxSensitivity": 0.15
+  },
+  "coverage": {}
+}

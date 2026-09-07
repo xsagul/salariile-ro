@@ -1,245 +1,43 @@
+import Link from 'next/link';
 import type { ReperMeserie } from '@/lib/repere-meserii';
 import { indicatorMeserie, textIndicator } from '@/lib/indicator-meserie';
 
 export default function IndicatorSalariu({ reper: r }: { reper: ReperMeserie }) {
-  const indicator = indicatorMeserie(r);
-  const t = r.triangulare;
-
-  const tipReper =
-    r.kind === 'public-grid'
-      ? 'Grilă publică legală (Legea 153/2017)'
-      : r.kind === 'sector-context'
-      ? 'Context statistic INS (nivel de grupă)'
-      : 'Mediană salarială netă de piață';
-
-  const explicatieReper =
-    r.kind === 'public-grid'
-      ? 'Valoare de referință din treptele grilei oficiale de stat, înaintea sporurilor specifice.'
-      : r.kind === 'sector-context'
-      ? 'Cifră macroeconomică INS calculată din seria sectorului și ancheta ocupațională.'
-      : 'Reprezintă suma câștigată cel mai frecvent de masa critică a lucrătorilor (50% sub mediană, 50% peste).';
-
+  const indicator = indicatorMeserie(r), a = r.anunturi;
+  const explanation = r.kind === 'public-grid'
+    ? 'Intervalul descrie trepte din grila de bază, convertite în net standard. Nu arată distribuția salariilor încasate, sporurile sau vechimea individuală.'
+    : r.kind === 'sector-context'
+    ? 'Acesta este un reper pentru o grupă largă de ocupații din sector. Salariul meseriei exacte nu este măsurat separat în această serie.'
+    : r.kind === 'external-advertised'
+    ? 'Interval calculat din salariile oferite în anunțurile eligibile. Oferta de angajare poate diferi de salariul efectiv încasat.'
+    : 'Media provine din raportări voluntare ale angajaților în sursa citată. Numărul de răspunsuri pentru această meserie și mediana nu sunt publicate de sursă.';
   return (
     <div data-salary-primary={indicator.metric ?? 'unavailable'}>
-      <div className="flex flex-wrap items-center justify-between gap-2">
-        <span className="inline-flex items-center rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-semibold text-emerald-800 border border-emerald-200">
-          {tipReper}
-        </span>
-        {t?.scorIncredere && (
-          <span className="text-xs text-stone-500">
-            Consens surse: <strong className="text-stone-800">{t.scorIncredere}%</strong>
-          </span>
-        )}
+      <p className="text-xs font-medium text-stone-700">{r.label}</p>
+      <p className="mt-3 text-3xl font-bold tracking-tight text-stone-900 sm:text-4xl">{textIndicator(r)}</p>
+      <p className="mt-1 text-sm text-stone-600">pe lună · {r.period}</p>
+      <p className="mt-2 text-sm leading-relaxed text-stone-600">{explanation}</p>
+      <p className="mt-2 text-xs text-stone-600">
+        Sursă: <a className="underline underline-offset-2" href={r.url} rel="nofollow noopener">{r.source}</a>
+      </p>
+      <div className="mt-5 border-t border-stone-200 pt-4 text-sm text-stone-700">
+        <p className="font-semibold text-stone-900">Ce am verificat în anunțuri</p>
+        {a?.n ? <>
+          <p className="mt-1">{a.n} anunțuri eligibile după deduplicare · {a.employers} angajatori identificați · {a.counties} județe identificate.</p>
+          <p className="mt-1 text-xs text-stone-600">{Object.entries(a.sourceCounts).map(([source,n]) => `${source}: ${n}`).join(' · ')}</p>
+          <p className="mt-1 text-xs text-stone-600">{a.explicitMonthly} cu perioadă lunară explicită; {a.assumedMonthly} cu perioadă lunară presupusă pentru normă întreagă. Conversiile din brut și euro sunt documentate în registru.</p>
+          {a.midpointEstimate !== null && a.midpointEstimate !== undefined && <p className="mt-2">Reper central estimat al ofertelor: <strong>{Math.round(a.midpointEstimate/100)*100} lei net / lună</strong>. Calculat ca mediană a mijloacelor intervalelor oferite.</p>}
+          {a.medianBounds ? <p className="mt-2">Limitele medianei ofertelor: <strong>{a.medianBounds.min.toLocaleString('ro-RO')}–{a.medianBounds.max.toLocaleString('ro-RO')} lei net / lună</strong>. Intervalele oferite nu permit determinarea unei mediane exacte.</p>
+            : <p className="mt-2">Acoperirea este insuficientă pentru a publica mediana ofertelor acestei meserii.</p>}
+        </> : <p className="mt-1">Nu avem încă anunțuri care să îndeplinească toate criteriile de verificare pentru această meserie.</p>}
+        <p className="mt-2 text-xs leading-relaxed text-stone-600">Anunțurile nu formează un eșantion reprezentativ al tuturor angajaților. Mai multe platforme pot conține aceeași ofertă. Mediana este valoarea din mijlocul unei distribuții; nu este neapărat salariul cel mai frecvent.</p>
+        <Link className="mt-2 inline-flex min-h-11 items-center underline underline-offset-2" href="/salarii/acoperire">Vezi acoperirea fiecărei meserii și criteriile de publicare</Link>
       </div>
-
-      <p className="mt-3 text-3xl font-extrabold tracking-tight text-stone-900 sm:text-4xl">
-        {textIndicator(r)}
-      </p>
-
-      <p className="mt-1 text-sm font-medium text-stone-600">
-        {r.label} · {r.period}
-      </p>
-      <p className="mt-1 text-xs text-stone-500">{explicatieReper}</p>
-
-      {/* Intervalul reprezentativ P25 – P75 (Cvartilele pieței) */}
-      {r.p25 && r.p75 && r.p25 !== r.p75 && (
-        <div className="mt-5 rounded-md border border-stone-200 bg-stone-50/70 p-3.5">
-          <div className="flex items-center justify-between text-xs font-medium text-stone-700">
-            <span>Interval tipic (P25 – P75)</span>
-            <span className="font-semibold text-stone-900">
-              {r.p25.toLocaleString('ro-RO')} – {r.p75.toLocaleString('ro-RO')} lei net
-            </span>
-          </div>
-          <div className="mt-2 flex h-2 w-full overflow-hidden rounded-full bg-stone-200">
-            <div className="w-1/4 bg-stone-300" title="Sub P25 (debutanți / salarii de intrare)" />
-            <div className="w-2/4 bg-emerald-500" title="P25–P75: 50% din forța de muncă" />
-            <div className="w-1/4 bg-stone-300" title="Peste P75 (experiență avansată / seniori)" />
-          </div>
-          <div className="mt-2 flex justify-between text-[11px] text-stone-500">
-            <span>Debutant: ~{r.p25.toLocaleString('ro-RO')} lei</span>
-            <span className="font-medium text-stone-700">Mediană: {r.value?.toLocaleString('ro-RO')} lei</span>
-            <span>Senior: ~{r.p75.toLocaleString('ro-RO')} lei</span>
-          </div>
-        </div>
-      )}
-
-      {/* Card de triangulare multi-sursă */}
-      {t && (
-        <div className="mt-4 grid gap-2.5 sm:grid-cols-3">
-          {t.kind === 'public-grid' ? (
-            <>
-              <div className="rounded border border-stone-200 bg-white p-3 text-xs shadow-xs">
-                <div className="flex items-center justify-between">
-                  <span className="font-semibold text-stone-800">1. Grilă legală bază</span>
-                  <span className="rounded bg-emerald-50 px-1.5 py-0.5 text-[10px] font-semibold text-emerald-700 border border-emerald-200">
-                    Legea 153
-                  </span>
-                </div>
-                <div className="mt-1.5 text-stone-700">
-                  <strong>{t.grila?.bazaMin?.toLocaleString('ro-RO')}–{t.grila?.bazaMax?.toLocaleString('ro-RO')} lei</strong> net
-                </div>
-                <div className="mt-0.5 text-[11px] text-stone-500">
-                  Salariu de bază pe trepte
-                </div>
-                <div className="mt-2 border-t border-stone-100 pt-1.5 text-[11px] text-stone-600 truncate">
-                  Fără sporuri și indemnizații
-                </div>
-              </div>
-
-              <div className="rounded border border-stone-200 bg-white p-3 text-xs shadow-xs">
-                <div className="flex items-center justify-between">
-                  <span className="font-semibold text-stone-800">2. Transparență D112</span>
-                  <span className="rounded bg-stone-100 px-1.5 py-0.5 text-[10px] font-medium text-stone-600">
-                    În plată
-                  </span>
-                </div>
-                <div className="mt-1.5 text-stone-700">
-                  <strong>{t.median?.toLocaleString('ro-RO')} lei</strong> net median
-                </div>
-                <div className="mt-0.5 text-[11px] text-stone-500 truncate">
-                  Fluturași reali cu sporuri
-                </div>
-                <div className="mt-2 border-t border-stone-100 pt-1.5 text-[11px] text-stone-600 truncate">
-                  P25: {t.p25?.toLocaleString('ro-RO')} · P75: {t.p75?.toLocaleString('ro-RO')} lei
-                </div>
-              </div>
-
-              <div className="rounded border border-stone-200 bg-white p-3 text-xs shadow-xs">
-                <div className="flex items-center justify-between">
-                  <span className="font-semibold text-stone-800">3. Statistica INS</span>
-                  <span className="rounded bg-stone-100 px-1.5 py-0.5 text-[10px] font-medium text-stone-600">
-                    Sector public
-                  </span>
-                </div>
-                <div className="mt-1.5 text-stone-700">
-                  CAEN <strong>{t.ins?.caen}</strong> · {t.ins?.isco}
-                </div>
-                <div className="mt-0.5 text-[11px] text-stone-500">
-                  Ancheta FOM121A × FOM106G
-                </div>
-                <div className="mt-2 border-t border-stone-100 pt-1.5 text-[11px] text-stone-600">
-                  Etalon macroeconomic
-                </div>
-              </div>
-            </>
-          ) : (
-            <>
-              {t.anunturi ? (
-                <div className="rounded border border-stone-200 bg-white p-3 text-xs shadow-xs">
-                  <div className="flex items-center justify-between">
-                    <span className="font-semibold text-stone-800">1. Anunțuri active</span>
-                    <span className="rounded bg-emerald-50 px-1.5 py-0.5 text-[10px] font-semibold text-emerald-700 border border-emerald-200">
-                      {t.anunturi.surseDistincte} {t.anunturi.surseDistincte === 1 ? 'sursă' : 'surse'}
-                    </span>
-                  </div>
-                  <div className="mt-1.5 text-stone-700">
-                    <strong>{t.anunturi.esantion} oferte</strong> deduplicate
-                  </div>
-                  <div className="mt-0.5 text-[11px] text-stone-500">
-                    {t.anunturi.scorIncredere ? `Încredere: ${Math.round(t.anunturi.scorIncredere > 1 ? t.anunturi.scorIncredere : t.anunturi.scorIncredere * 100)}%` : `pe ${t.anunturi.platforme?.join(' și ')}`}
-                  </div>
-                  <div className="mt-2 border-t border-stone-100 pt-1.5 font-mono text-[11px] text-stone-700">
-                    {t.anunturi.interval?.min?.toLocaleString('ro-RO')}–{t.anunturi.interval?.max?.toLocaleString('ro-RO')} lei net
-                  </div>
-                </div>
-              ) : (
-                <div className="rounded border border-stone-200 bg-white p-3 text-xs shadow-xs">
-                  <div className="flex items-center justify-between">
-                    <span className="font-semibold text-stone-800">1. Anunțuri active</span>
-                    <span className="rounded bg-stone-100 px-1.5 py-0.5 text-[10px] font-medium text-stone-600">
-                      Transparență redusă
-                    </span>
-                  </div>
-                  <div className="mt-1.5 text-stone-700">
-                    Salariu confidențial online
-                  </div>
-                  <div className="mt-0.5 text-[11px] text-stone-500">
-                    Negociere directă la interviu
-                  </div>
-                  <div className="mt-2 border-t border-stone-100 pt-1.5 text-[11px] text-stone-600">
-                    Ancorat în Salario & INS
-                  </div>
-                </div>
-              )}
-
-              {t.survey && (
-                <div className="rounded border border-stone-200 bg-white p-3 text-xs shadow-xs">
-                  <div className="flex items-center justify-between">
-                    <span className="font-semibold text-stone-800">2. Ghiduri salariale</span>
-                    <span className="rounded bg-stone-100 px-1.5 py-0.5 text-[10px] font-medium text-stone-600">
-                      Chestionare
-                    </span>
-                  </div>
-                  <div className="mt-1.5 text-stone-700">
-                    <strong>{t.survey.valoare?.toLocaleString('ro-RO')} lei</strong> net
-                  </div>
-                  <div className="mt-0.5 text-[11px] text-stone-500 truncate" title={t.survey.sursa}>
-                    {t.survey.sursa}
-                  </div>
-                  <div className="mt-2 border-t border-stone-100 pt-1.5 text-[11px] text-stone-600 truncate">
-                    Rol: {t.survey.rol}
-                  </div>
-                </div>
-              )}
-
-              {t.ins && (
-                <div className="rounded border border-stone-200 bg-white p-3 text-xs shadow-xs">
-                  <div className="flex items-center justify-between">
-                    <span className="font-semibold text-stone-800">3. Statistica INS</span>
-                    <span className="rounded bg-stone-100 px-1.5 py-0.5 text-[10px] font-medium text-stone-600">
-                      Oficial D112
-                    </span>
-                  </div>
-                  <div className="mt-1.5 text-stone-700">
-                    CAEN <strong>{t.ins.caen}</strong> · {t.ins.isco}
-                  </div>
-                  <div className="mt-0.5 text-[11px] text-stone-500">
-                    Ancheta FOM121A × FOM106G
-                  </div>
-                  <div className="mt-2 border-t border-stone-100 pt-1.5 text-[11px] text-stone-600">
-                    Etalon macroeconomic
-                  </div>
-                </div>
-              )}
-            </>
-          )}
-        </div>
-      )}
-
-      <details className="mt-4 border-t border-stone-200 pt-3 text-xs text-stone-600">
-        <summary className="min-h-11 cursor-pointer py-2 font-medium text-stone-800 hover:text-stone-900">
-          Metodologie detaliată și triangulare pe 3 surse (Snapshot: septembrie 2026)
-        </summary>
-        <p className="mt-2 leading-relaxed">{r.note}</p>
-
-        {t?.anunturi?.distributie && (
-          <div className="mt-3 rounded bg-stone-50 p-3 border border-stone-200">
-            <span className="font-semibold text-stone-900">
-              Distribuția ofertelor verificate din piață (crawling direct & deduplicare anti-spam):
-            </span>
-            <ul className="mt-1.5 list-disc pl-4 space-y-1 text-stone-700">
-              {t.anunturi.distributie.map((d: { sursa: string; oferte: number }) => (
-                <li key={d.sursa}>
-                  <strong>{d.sursa}</strong>: {d.oferte} poziții unice verificate în lei
-                </li>
-              ))}
-            </ul>
-            <p className="mt-2 text-[11px] text-stone-500">
-              Garanție anti-spam și cross-site: 1 post = 1 vot. Dacă o companie clonează același anunț în zeci de orașe sau pe platforme multiple, sistemul reține o singură observație consolidată. Fiecare ofertă primește un scor de încredere (0–100%) bazat pe claritatea intervalului, existența salariului de bază garantat și excluderea bonusurilor speculative. Se filtrează strict contractele cu normă întreagă, iar istoricul de snapshot este arhivat la 6 luni (septembrie 2026 – martie 2027).
-            </p>
-          </div>
-        )}
-
-        <p className="mt-2.5">
-          Sursă primară:{' '}
-          <a href={r.url} className="underline underline-offset-2 hover:text-stone-900" rel="nofollow noopener">
-            {r.source}
-          </a>
-          .
-        </p>
-        <p className="mt-1 text-[11px] text-stone-500">
-          Filtre de calitate obligatorii: strict România (fără contracte din diaspora/străinătate), strict contracte în LEI (fără EUR), podea garantată la salariul minim pe economie (2.699 lei net, HG 146/2026), eliminare outlieri P5–P95, vechime sub 18 luni (2025–2026).
-        </p>
+      <details className="mt-3 border-t border-stone-200 text-xs text-stone-600">
+        <summary className="min-h-11 cursor-pointer py-3 font-medium text-stone-900">Sursa și detaliile cifrei</summary>
+        <p className="leading-relaxed">{r.note}</p>
+        <p className="mt-2">Populația descrisă: {r.population}.</p>
+        {!!a?.examples?.length && <ul className="mt-3 space-y-2">{a.examples.map(o => <li key={o.url}><a className="inline-flex min-h-11 items-center underline" href={o.url} rel="nofollow noopener">{o.source}: {o.min.toLocaleString('ro-RO')}–{o.max.toLocaleString('ro-RO')} lei net / lună</a></li>)}</ul>}
       </details>
     </div>
   );

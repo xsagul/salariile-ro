@@ -114,7 +114,7 @@ function faqPentru(date: DateMeserie) {
     },
     {
       q: 'Există salarii pentru juniori și seniori?',
-      a: 'Pentru rolurile din sectorul public, grilele legale prevăd trepte explicite în funcție de grad și vechime. În sectorul privat, remunerația variază după nivelul de experiență, competențe și responsabilități, cifra de pe site reprezentând nivelul median sau mediu de referință al pieței.',
+      a: 'Pentru rolurile din sectorul public, grilele legale prevăd trepte explicite în funcție de grad și vechime. În sectorul privat, remunerația variază după nivelul de experiență, competențe și responsabilități, reperul de pe site fiind însoțit de tipul sursei și populația pe care o descrie.',
     },
     {
       q: 'Cum compar o ofertă cu aceste cifre?',

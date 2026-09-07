@@ -2079,3 +2079,15 @@ Status: finalizat cu succes, testat automat (17/17 suite trecute), validat stati
    - `cercetator`: păstrat ca `sector-context`.
    - `npm test`: 17/17 suite trecute fără erori.
    - `npm run build`: 318/318 pagini generate static.
+
+## 7 septembrie 2026 — Audit independent: retragerea cenzusului sintetic și colectare pe inventare (în lucru)
+
+Verificarea codului infirmă concluzia intrării anterioare: 3.960 din cele 5.220 de observații erau produse de un generator pornind de la baseline, cu angajatori și localități atribuite artificial. Conectorul public mai adăuga intervale fără document primar. Acestea nu sunt observații de piață. Generatoarele și agregatorul care calibra salariile la ținte sunt dezactivate; arhivele istorice rămân nemodificate pentru audit.
+
+Cele 69 de valori Salario au fost comparate individual cu tabelul oficial eJobs: sunt medii ale raportărilor voluntare, nu mediane. Runtime-ul afișează tipul real al reperului și nu mai folosește triangularea sintetică. Clasamentul compară doar valorile aceleiași surse și ediții; egalitățile au același loc. Se pregătește pagina de acoperire pentru toate cele 132 de meserii.
+
+Noul crawler păstrează HTML privat și hash SHA-256, respectă robots și oprește sursele la limitare de acces. Clasificarea nu moștenește meseria căutată: programator CNC nu este programator software, secretarul biroului notarial nu este notar. Se păstrează suma și moneda originale, conversiile documentate, data colectării și dovada activității. Intervalele, beneficiile, salariile fără perioadă explicită și concentrarea pe angajatori/surse sunt tratate separat.
+
+Rulare curentă: `.cercetare-privata/crawl-runs/census-active-2026-09-07/state.json`, log `.cercetare-privata/crawl-audit/census.log`. Inventare găsite: 13.000 URL-uri Publi24, 6.507 eJobs din 67 sitemap-uri, 2.329 Bestjobs, 961 oferte Anuntul; OLX parcurge categoriile și paginile lor. Acestea sunt URL-uri descoperite, NU salarii verificate. eJobs a răspuns 429 la detalii; limitarea este înregistrată, fără ocolire. Colectarea continuă și nu există încă verdict final de acoperire.
+
+Verificările unitare ale noului parser trec; build-ul și testele randate se repetă după publicarea rezultatului final. Modificările nu sunt încă publicate. Reprocesarea finală trebuie să recitească dovezile cu parserul final, deoarece colectarea rulează cu versiunea încărcată la pornire.

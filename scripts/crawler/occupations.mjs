@@ -1,0 +1,78 @@
+import fs from 'node:fs';
+import { normalizeText as clean } from './policy.mjs';
+// Names only. Never use baseline salaries as observations or calibration targets.
+export const catalog = JSON.parse(fs.readFileSync('src/data/cor-meserii.json', 'utf8')).occupations;
+const names = JSON.parse(fs.readFileSync('src/data/backup-baseline-132-meserii-2026-09-06.json', 'utf8')).map(({ slug, nume }) => ({ slug, nume }));
+export const occupations = names;
+const aliases = {
+  programator: ['software developer','software engineer','inginer software','backend developer','java developer','python developer','full stack developer'],
+  'web-developer': ['frontend developer','front end developer','react developer','angular developer'],
+  'devops-engineer': ['devops','site reliability engineer','cloud engineer'],
+  'administrator-sistem': ['administrator sistem','system administrator','sysadmin'],
+  'tester-qa': ['qa engineer','quality assurance','software tester'],
+  'analist-date': ['data analyst','analist date'],
+  'operator-cnc': ['programator cnc','operator cnc','cnc operator','frezor cnc','strungar cnc'],
+  electrician: ['electricieni','electricean','electrician auto'],
+  instalator: ['instalatori','instalator sanitar'],
+  constructor: ['muncitor constructii','muncitori constructii','muncitori in constructii','lucrator constructii','lucrator in constructii','muncitor necalificat constructii'],
+  'agent-paza': ['agent securitate','agenti securitate','agent paza','agenti paza','ag securitate','paznic'],
+  'agent-curatenie': ['personal curatenie','operator curatenie','femeie de serviciu','menajera'],
+  chelner: ['ospatar','ospatari','ospatarita'],
+  vanzator: ['vanzatoare','lucrator comercial','lucratori comerciali'],
+  'sofer-tir': ['sofer camion','sofer c e','sofer tir','sofer profesionist','soferi profesionisti','soferi tir','sofer categoria c e','sofer categoria c+e'],
+  taximetrist: ['sofer taxi'],
+  'medic-veterinar': ['doctor veterinar'],
+  stomatolog: ['medic dentist'],
+  'consilier-juridic': ['jurist'],
+  secretar: ['secretara','secretar birou notarial','asistent manager'],
+  'designer-grafic': ['graphic designer','grafician'],
+  'specialist-resurse-umane': ['specialist hr','hr specialist','recruiter','recrutor'],
+  'manager-magazin': ['sef magazin','store manager','director magazin'],
+  'inginer-agronom': ['agronom'],
+  'operator-call-center': ['call center','customer support'],
+  bucatar: ['bucatari','bucatareasa'],
+  sudor: ['sudori'],
+  contabil: ['contabila','accountant'],
+  'agent-vanzari': ['reprezentant vanzari','sales representative','sales advisor','agenti vanzari','consultant vanzari','consilier vanzari','reprezentant comercial'],
+  'asistent-medical': ['asistenta medicala','asistenti medicali','asistente medicale','asistent generalist'],
+  'asistent-farmacie': ['asistent farmacie','asistenta farmacie'],
+  infirmier: ['infirmiera','infirmiere'],
+  'ingrijitor-batrani': ['ingrijitoare batrani','ingrijitor persoane varstnice'],
+  'mecanic-auto': ['mecanici auto','mecanic autovehicule'],
+  tamplar: ['tamplari'],
+  dulgher: ['dulgheri'],
+  zidar: ['zidari'],
+  zugrav: ['zugravi'],
+  croitor: ['croitoreasa','croitorese','croitori'],
+  casier: ['casiera','casieri','casiere'],
+  curier: ['curieri'],
+  farmacist: ['farmacisti','farmacista'],
+  cofetar: ['cofetari','cofetareasa'],
+  'operator-productie': ['operatori productie'],
+  frizer: ['frizeri','barber','frizerita'],
+  cosmetician: ['cosmeticiana'],
+  inginer: ['ingineri','inginer constructor'],
+  sudor: ['sudori','welder'],
+  educator: ['educatoare'],
+  invatator: ['invatatoare'],
+  profesor: ['profesoara'],
+  'insotitor-de-bord': ['insotitor de bord','stewardesa','flight attendant','cabin crew'],
+  'receptioner-hotel': ['receptioner hotel','hotel receptionist','receptionera hotel'],
+};
+export function queriesFor(job) { return [...new Set([clean(job.nume), ...(aliases[job.slug] || []).slice(0, 2)])]; }
+const rules = names.flatMap(job => [clean(job.nume),clean(job.slug),...(aliases[job.slug] || [])].map(term => ({ slug: job.slug, term: clean(term) })));
+function matches(text, term) { return (` ${text} `).includes(` ${term} `); }
+export function classifyTitle(title) {
+  const text = clean(title);
+  if (/\b(caut loc de munca|caut un loc de munca|caut de lucru|caut angajare|caut colaborare|ofer servicii|prestam servicii|meditatii|inchiriez post|inchiriez camera)\b/.test(text)) return {slug:null,reason:'jobseeker_or_services_ad'};
+  // Assistant roles outside the catalogue must never inherit the senior occupation.
+  if (/\b(ajutor|ajutoare|ajutoarelor|ucenic|ucenici)\b/.test(text)) return { slug: null, reason: 'assistant_or_mixed_role' };
+  if (/\b(asistent veterinar|asistent stomatolog|secretar notarial)\b/.test(text)) return { slug: null, reason: 'different_role' };
+  if (/\b(programator|programatori)\b/.test(text) && /\b(plc|roboti|robot|injectie|masini)\b/.test(text) && !/\bcnc\b/.test(text)) return { slug:null,reason:'different_role' };
+  let hits = rules.filter(r => matches(text, r.term));
+  // Specific title wins over contained generic words: CNC/programator, medic veterinar/medic.
+  hits = hits.filter(r => !hits.some(s => s.slug !== r.slug && s.term.length > r.term.length && matches(s.term, r.term)));
+  const slugs = [...new Set(hits.map(r => r.slug))];
+  if (slugs.length !== 1) return { slug: null, reason: slugs.length ? 'ambiguous_occupation' : 'unknown_occupation' };
+  return { slug: slugs[0], reason: 'title_match' };
+}

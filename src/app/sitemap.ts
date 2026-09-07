@@ -30,6 +30,7 @@ const STATIC_ENTRIES: {
   { path: "/salariu-mediu", priority: 0.9, changeFrequency: "monthly" },
   { path: "/salarii", priority: 0.8, changeFrequency: "monthly" },
   { path: "/compara", priority: 0.7, changeFrequency: "monthly" },
+  { path: "/salarii/acoperire", priority: 0.6, changeFrequency: "weekly" },
   { path: "/salarii/clasament", priority: 0.7, changeFrequency: "monthly" },
   { path: "/salarii/judete", priority: 0.7, changeFrequency: "monthly" },
   { path: "/salarii/femei-barbati", priority: 0.7, changeFrequency: "yearly" },

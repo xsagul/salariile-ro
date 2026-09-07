@@ -214,7 +214,7 @@ async function auditRenderedSite() {
           if (linkuriCluster.length < 3) {
             failures.push(`${location}: link graph insuficient (${linkuriCluster.length} linkuri in cluster)`);
           }
-          const sursaCeruta = pathname === '/salarii/clasament' ? 'Salario' : 'TEMPO-Online';
+          const sursaCeruta = pathname === '/salarii/acoperire' ? 'registrul observațiilor' : pathname === '/salarii/clasament' ? 'Salario' : 'TEMPO-Online';
           if (!html.includes(sursaCeruta)) {
             failures.push(`${location}: nu citeaza sursa ${sursaCeruta}`);
           }
@@ -223,7 +223,7 @@ async function auditRenderedSite() {
           // — diferenta pe sexe si locurile vacante — se sprijina pe grupele
           // majore ISCO-08. Le cerem ISCO, nu le exceptam de la regula.
           const PAGINI_ISCO = ["/salarii/femei-barbati", "/salarii/locuri-vacante"];
-          const clasificareCeruta = pathname === '/salarii/clasament' ? /Rolul din sursă/ : PAGINI_ISCO.includes(pathname) ? /ISCO/ : /CAEN\s/;
+          const clasificareCeruta = pathname === '/salarii/acoperire' ? /ocupație identificabilă/ : pathname === '/salarii/clasament' ? /Rolul din sursă/ : PAGINI_ISCO.includes(pathname) ? /ISCO/ : /CAEN\s/;
           if (!clasificareCeruta.test(html)) {
             failures.push(`${location}: nu declara clasificarea din spatele cifrei`);
           }
@@ -320,6 +320,7 @@ async function auditRenderedSite() {
 
   // ── Recast metodologic CAEN + ISCO ─────────────────────────────────────────
   const paginiTematiceSalarii = new Set([
+    "/salarii/acoperire",
     "/salarii/clasament",
     "/salarii/judete",
     "/salarii/femei-barbati",

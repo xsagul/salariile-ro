@@ -4,6 +4,7 @@ import { MESERII, dateMeserieSauEroare, COMPARATII } from '../src/lib/meserii';
 import { reperMeserie, textReper } from '../src/lib/repere-meserii';
 import { indicatorMeserie } from '../src/lib/indicator-meserie';
 import cor from '../src/data/cor-meserii.json';
+import reports from '../src/data/repere-piata-verificate.json';
 const make=(n:number):ObservatieSalariala[]=>Array.from({length:n},(_,i)=>({meserie:'zugrav',titluSursa:'Zugrav',fel:'declarat',suma:'net',minim:4000+i*10,maxim:4000+i*10,data:'2026-08-27',referinta:'https://example.org/record/'+i,id:'source:'+i,perioada:'2026-08',concept:'realizat',norma:'intreaga',experienta:'3-5 ani',reutilizarePermisa:true}));
 const options={meserie:'zugrav',suma:'net' as const};
 assert.equal(incadreaza('Inginer ofertare','251202')?.slug,'programator');
@@ -25,10 +26,8 @@ const counts:Record<string,number>={};
 for(const m of MESERII) {
  const r=reperMeserie(dateMeserieSauEroare(m)); counts[r.kind]=(counts[r.kind]??0)+1;
  assert.equal(r.unit,'lei net/lună');assert.ok(r.url.startsWith('https://'));assert.ok(r.period);assert.ok(r.population);assert.ok(r.note);
- assert.ok(r.median !== null && r.median > 0, m.slug);
- assert.ok(r.p25 !== null && r.p25 > 0, m.slug);
- assert.ok(r.p75 !== null && r.p75 >= r.median, m.slug);
- assert.ok(r.p25 <= r.median, m.slug);
+ assert.equal(r.median,null,`${m.slug}: source does not publish a median`);
+ assert.equal(r.p25,null); assert.equal(r.p75,null);
  assert.ok(r.n === null || (typeof r.n === 'number' && r.n > 0), m.slug);
  assert.ok(!textReper(r).includes('NaN')); assert.ok(r.value===null || r.value>0);
  const mapping=cor.occupations[m.slug as keyof typeof cor.occupations];assert.ok(mapping);
@@ -39,9 +38,9 @@ for(const m of MESERII) {
  const val = indicatorMeserie(r).value;
  assert.ok(val !== null && val > 0);
 }
-assert.equal(reperMeserie(dateMeserieSauEroare(MESERII.find(x=>x.slug==='contabil')!)).value,5200);
+assert.equal(reperMeserie(dateMeserieSauEroare(MESERII.find(x=>x.slug==='contabil')!)).value,reports.records.find(x=>x.slug==='contabil')!.net);
 assert.equal(reperMeserie(dateMeserieSauEroare(MESERII.find(x=>x.slug==='cercetator')!)).kind,'sector-context');
-assert.equal(reperMeserie(dateMeserieSauEroare(MESERII.find(x=>x.slug==='constructor')!)).kind,'external-reported');
+assert.equal(reperMeserie(dateMeserieSauEroare(MESERII.find(x=>x.slug==='constructor')!)).kind,'sector-context');
 assert.equal(cor.occupations.zugrav.code,'713102');assert.equal(cor.occupations.contabil.code,'331302');
 for(const c of COMPARATII)assert.notEqual(c.a.slug,c.b.slug);
 console.log(`OK: mapări COR, ${MESERII.length} repere și 37 comparații; cohorte, deduplicare, medie/mediană și quartile.`,counts);

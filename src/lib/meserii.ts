@@ -17,7 +17,7 @@
 // tot catalogul TEMPO, 1.916 matrice. Ce nu exista e COR — nicio matrice de
 // salarii nu coboara sub grupa majora.
 
-import { SALARIU_MINIM, calculStandard } from "@/lib/fiscal";
+import { calculStandard } from "@/lib/fiscal";
 import {
   activitate,
   grupaIsco,
@@ -510,15 +510,16 @@ function dateMeserieFaraClasament(meserie: Meserie): Omit<DateMeserie, "clasamen
   };
 }
 
-// Clasamentul celor 132 de meserii din catalog, ordonate descrescător după
-// salariul net de referință (indicatorul principal afișat în pagina fiecărei meserii).
-// Toate valorile sunt distincte (0 coliziuni), fiecare ocupație primind un rang unic.
+// Clasăm numai mediile declarate în aceeași sursă și perioadă.
+// Grilele și contextul INS rămân pe pagini, fără rang între măsuri diferite.
+// Valorile egale primesc același rang; egalitatea nu se ascunde prin calibrare.
 const CLASAMENT: Map<string, LocClasament> = (() => {
   const scoruri: { slug: string; net: number }[] = [];
   for (const meserie of MESERII) {
     const date = dateMeserieFaraClasament(meserie);
     if (!date) continue;
     const reper = reperMeserie(date as DateMeserie);
+    if (reper.kind !== 'external-reported') continue;
     const ind = indicatorMeserie(reper);
     scoruri.push({ slug: meserie.slug, net: ind.value ?? 0 });
   }
@@ -527,9 +528,9 @@ const CLASAMENT: Map<string, LocClasament> = (() => {
   const rezultat = new Map<string, LocClasament>();
   for (let i = 0; i < scoruri.length; i++) {
     rezultat.set(scoruri[i].slug, {
-      loc: i + 1,
+      loc: scoruri.findIndex(s => s.net === scoruri[i].net) + 1,
       total: scoruri.length,
-      laEgalitate: 0,
+      laEgalitate: scoruri.filter(s => s.net === scoruri[i].net).length - 1,
     });
   }
   return rezultat;

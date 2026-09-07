@@ -5,18 +5,18 @@ import { MESERII, CATEGORII, dateMeserieSauEroare } from '@/lib/meserii';
 import { reperMeserie } from '@/lib/repere-meserii';
 import { textIndicator } from '@/lib/indicator-meserie';
 import { ogPage, twPage } from '@/lib/seo';
-import triangulare from '@/data/triangulare-date.json';
+import reports from '@/data/repere-piata-verificate.json';
 
 const entries = MESERII.map(m => {
   const d = dateMeserieSauEroare(m);
   const r = reperMeserie(d);
   return { m, d, r };
-}).sort((a, b) => (b.r.value ?? 0) - (a.r.value ?? 0) || a.m.slug.localeCompare(b.m.slug, 'ro'));
+}).filter(x => x.r.kind === 'external-reported').sort((a, b) => (b.r.value ?? 0) - (a.r.value ?? 0) || a.m.slug.localeCompare(b.m.slug, 'ro'));
 
-const description = `Clasament complet al celor ${entries.length} de meserii din România în 2026, ordonate după mediana netă estimată prin triangulare multi-sursă (anunțuri active, rapoarte de piață, INS).`;
+const description = `Clasament pentru ${entries.length} de meserii cu medii nete declarate în aceeași ediție Salario, cu sursa și acoperirea anunțurilor salariale.`;
 
 export const metadata: Metadata = {
-  title: 'Top salarii pe meserii în România 2026 | Clasament complet',
+  title: 'Clasament salarii pe meserii 2026',
   description,
   alternates: { canonical: 'https://salariile.ro/salarii/clasament' },
   openGraph: ogPage({
@@ -59,36 +59,36 @@ export default function Clasament() {
         />
         <H1>Top salarii pe meserii în România 2026</H1>
         <Lead>
-          Toate cele {entries.length} de meserii din catalog, clasate după mediana netă estimată prin triangulare multi-sursă: piața activă a anunțurilor din România, rapoarte salariale, statistica oficială INS și grile legale.
+          {entries.length} de meserii cu medii nete declarate în aceeași ediție Salario. Celelalte meserii rămân în catalog, cu grila publică sau contextul INS disponibil.
         </Lead>
 
         <div className="mt-4 rounded-md border border-stone-200 bg-surface p-4 text-sm text-stone-700">
-          <h2 className="font-semibold text-stone-900">Cum se citește clasamentul pe mediană:</h2>
+          <h2 className="font-semibold text-stone-900">Cum se citește clasamentul</h2>
           <p className="mt-1 leading-relaxed">
-            Spre deosebire de o simplă medie aritmetică (care este distorsionată în sus de câteva salarii foarte mari) sau tabele comerciale cu cifre rotunjite din burtă la 5.000 lei, acest clasament urmărește <strong>ceea ce sunt plătiți cei mai mulți oameni dintr-o ocupație (mediana pieței)</strong> și intervalul reprezentativ P25–P75 (debutant vs. experimentat).
+            Comparăm aceeași măsură și perioadă: media națională declarată de angajați în Salario. Eșantioanele pe meserie nu sunt publicate, iar raportările voluntare pot avea dezechilibre. Ordinea este orientativă; valorile egale au același loc. Nu avem o mediană națională verificată pentru fiecare meserie.
           </p>
         </div>
 
         <div className="my-8 overflow-x-auto">
           <table className="w-full text-sm">
-            <caption className="sr-only">Clasamentul celor 132 de meserii după mediana netă</caption>
+            <caption className="sr-only">Repere salariale pe meserii și tipul sursei</caption>
             <thead>
               <tr className="border-b border-stone-300 text-stone-700">
                 <th scope="col" className="p-3 text-left font-semibold">Loc</th>
                 <th scope="col" className="p-3 text-left font-semibold">Meserie</th>
-                <th scope="col" className="p-3 text-left font-semibold">Domeniu</th>
-                <th scope="col" className="p-3 text-right font-semibold">Mediană netă / lună</th>
-                <th scope="col" className="p-3 text-right font-semibold">Interval tipic (P25–P75)</th>
+                <th scope="col" className="p-3 text-left font-semibold">Rolul din sursă</th>
+                <th scope="col" className="p-3 text-right font-semibold">Reper net / lună</th>
+                <th scope="col" className="p-3 text-right font-semibold">Anunțuri eligibile</th>
                 <th scope="col" className="p-3 text-left font-semibold">Tip reper</th>
               </tr>
             </thead>
             <tbody>
-              {entries.map((x, i) => {
+              {entries.map((x) => {
                 const cat = CATEGORII.find(c => c.slug === x.m.categorie);
                 const isPublic = x.r.kind === 'public-grid';
                 return (
                   <tr key={x.m.slug} className="hover:bg-stone-50/60 border-b border-stone-100">
-                    <td className="p-3 font-mono text-xs font-medium text-stone-500">#{i + 1}</td>
+                    <td className="p-3 font-mono text-xs font-medium text-stone-600">#{x.d.clasament?.loc}</td>
                     <th scope="row" className="p-3 text-left font-medium text-stone-900">
                       <Link
                         className="inline-flex min-h-11 items-center underline hover:text-stone-700"
@@ -99,26 +99,20 @@ export default function Clasament() {
                     </th>
                     <td className="p-3 text-xs text-stone-600">
                       <span className="inline-block rounded bg-stone-100 px-2 py-0.5 font-medium text-stone-700">
-                        {cat?.nume ?? x.m.categorie}
+                        {reports.records.find(r=>r.slug===x.m.slug)?.role ?? cat?.nume}
                       </span>
                     </td>
                     <td className="whitespace-nowrap p-3 text-right font-bold text-stone-900">
                       {textIndicator(x.r)}
                     </td>
                     <td className="whitespace-nowrap p-3 text-right text-xs text-stone-600">
-                      {x.r.p25 && x.r.p75 ? (
-                        <span>
-                          {x.r.p25.toLocaleString('ro-RO')} – {x.r.p75.toLocaleString('ro-RO')} lei
-                        </span>
-                      ) : (
-                        '—'
-                      )}
+                      {x.r.anunturi?.n ?? 0}
                     </td>
-                    <td className="p-3 text-xs text-stone-500">
+                    <td className="p-3 text-xs text-stone-600">
                       {isPublic ? (
-                        <span className="text-amber-800 font-medium">Grilă Legea 153</span>
+                        <span className="text-stone-800 font-medium">Grilă de bază</span>
                       ) : (
-                        <span className="text-emerald-800 font-medium">Triangulat piață</span>
+                        <span className="text-stone-800 font-medium">{x.r.kind === 'sector-context' ? 'Context INS' : 'Medie declarată'}</span>
                       )}
                     </td>
                   </tr>
@@ -130,7 +124,7 @@ export default function Clasament() {
 
         <div className="rounded-md border border-stone-200 bg-stone-50 p-5 text-sm text-stone-600 space-y-2">
           <p>
-            <strong>Metodologia Salariile.ro:</strong> Nicio cifră nu provine dintr-o singură sursă nevalidată. Filtrele obligatorii aplicate la colectare elimină ofertele externe din diaspora/străinătate, anunțurile exprimate în EUR și contractele sub salariul minim net legal (2.699 lei net, HG 146/2026). Trunchierea P5–P95 curăță valorile aberante.
+            <strong>Metodologia Salariile.ro:</strong> Publicăm numai măsura susținută de sursă. Anunțurile eligibile sunt analizate separat, cu dovadă pentru sumă, net/brut, normă și perioadă. Nu completăm lipsurile cu salarii generate și nu ajustăm cifrele pentru a impune o anumită ordine.
           </p>
           <p>
             Vezi și <Link className="underline hover:text-stone-900" href="/salarii">Catalogul tuturor meseriilor</Link>, <Link className="underline hover:text-stone-900" href="/compara">Comparatorul salarial între două profesii</Link> sau <Link className="underline hover:text-stone-900" href="/metodologie">Metodologia detaliată</Link>.
