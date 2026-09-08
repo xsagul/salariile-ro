@@ -92,8 +92,13 @@ const EJOBS_LISTING = 'https://www.ejobs.ro/locuri-de-munca/salarii';
 const EJOBS_PER_PAGE = 40, EJOBS_MAX_PAGES = 10, EJOBS_MAX_FACETS = 400;
 async function ejobsInventory(){
   const entry=state.sources.ejobs||{urls:[],maps:[],events:[]};state.sources.ejobs=entry;
-  const urls=new Set(entry.urls), withSalary=new Set(entry.withSalary||[]), facets=[EJOBS_LISTING], seen=new Set(facets);
+  const urls=new Set(entry.urls), withSalary=new Set(entry.withSalary||[]);
   entry.facets=entry.facets||[];
+  // La reluare, fatetele deja descoperite se reiau din stare. Altfel coada ar
+  // porni mereu doar cu listarea de baza, a carei prima pagina e deja parcursa,
+  // deci nu s-ar mai descoperi niciodata sub-fatete si rundele n-ar avansa.
+  entry.facetQueue=entry.facetQueue||[];
+  const facets=[...new Set([EJOBS_LISTING,...entry.facetQueue,...entry.facets.map(f=>f.url)])], seen=new Set(facets);
   // Doar o parte din carduri sunt <a href>; restul stau in payload-ul paginii.
   const jobLink=/\/user\/locuri-de-munca\/[a-z0-9-]+\/\d+/g;
   const facetLink=/^\/locuri-de-munca\/salarii(?:\/(?!pagina)[a-z0-9-]+)+$/;
@@ -115,9 +120,9 @@ async function ejobsInventory(){
             for(const h of hrefs){
               if(!facetLink.test(h.split('?')[0]))continue;
               const abs=new URL(h,EJOBS_LISTING).href;
-              if(!seen.has(abs)){seen.add(abs);facets.push(abs);}
+              if(!seen.has(abs)){seen.add(abs);facets.push(abs);entry.facetQueue.push(abs);}
             }
-          entry.facets.push({url:facet,total});
+          if(!entry.facets.some(f=>f.url===facet))entry.facets.push({url:facet,total});
         }
         const found=[...new Set(doc.html.match(jobLink)||[])];
         if(!found.length)break;
