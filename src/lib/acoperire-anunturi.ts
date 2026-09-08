@@ -6,6 +6,8 @@ export type CohortaNedeclarata = {
 };
 export type AcoperireAnunturi = {
   name: string; n: number; ads?: number;
+  /** Cate anunturi ale meseriei am citit si cate nu declarau nicio suma. */
+  read?: number | null; withoutSalary?: number | null;
   /** Baza scrisa langa suma, altundeva in anunt, sau doar eticheta constanta a portalului. */
   basisNearAmount?: number; basisFromDocument?: number; basisFromPlatform?: number;
   employers: number; counties: number;

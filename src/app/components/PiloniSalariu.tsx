@@ -22,9 +22,8 @@ export default function PiloniSalariu({ date }: { date: DateMeserie }) {
     <section className="mt-8" id="piloni" data-piloni={piloni.filter(p => p.stare !== 'lipsa').length}>
       <h2 className="text-xl font-bold text-stone-900 sm:text-2xl">Trei surse despre cât se câștigă ca {nume}</h2>
       <p className="mt-2 max-w-3xl text-sm leading-relaxed text-stone-700">
-        Nu le amestecăm într-o singură cifră. Un anunț spune ce se oferă la angajare, un salariu declarat spune ce
-        raportează cine lucrează deja acolo, iar statistica oficială spune ce s-a plătit efectiv, dar pe o grupă largă
-        de ocupații. Sunt populații diferite; o medie a lor nu ar avea nicio sursă în spate.
+        Fiecare răspunde la altă întrebare: cât se oferă la angajare, cât declară cine lucrează deja acolo, cât s-a
+        plătit efectiv. Le arătăm separat, ca să vezi unde sunt de acord și unde nu.
       </p>
       <div className="mt-5 grid gap-4 sm:grid-cols-3">
         {piloni.map((p, i) => (
@@ -34,7 +33,6 @@ export default function PiloniSalariu({ date }: { date: DateMeserie }) {
             <p className={`mt-2 font-bold tracking-tight text-stone-900 ${p.valoare !== null ? 'text-2xl' : 'text-lg'}`}>{cifra(p)}</p>
             <p className="mt-1 text-xs text-stone-600">net / lună · {p.concept}</p>
             {p.n !== null && p.n > 0 && <p className="mt-1 text-xs text-stone-600">{p.n} anunțuri verificate</p>}
-            <p className="mt-2 text-xs leading-relaxed text-stone-600">{p.nota}</p>
             <p className="mt-2 text-xs text-stone-600">
               {p.url.startsWith('/')
                 ? <Link className="underline underline-offset-2" href={p.url}>{p.sursa}</Link>

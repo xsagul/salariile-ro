@@ -24,7 +24,9 @@ for (const o of data.observations) {
 const records = deduplicate(data.observations);
 const coverage = Object.fromEntries(occupations.map(job => {
   const subset=records.filter(r=>r.slug===job.slug);
-  return [job.slug,{name:job.nume,...summarize(subset),examples:subset.slice(0,5).map(({url,source,min,max})=>({url,source,min,max}))}];
+  const prev=data.coverage?.[job.slug]||{};
+  return [job.slug,{name:job.nume,read:prev.read??null,withoutSalary:prev.withoutSalary??null,
+    ...summarize(subset),examples:subset.slice(0,5).map(({url,source,min,max})=>({url,source,min,max}))}];
 }));
 const result = { generatedAt:data.generatedAt, run, policy:POLICY, scope:data.scope, stats:data.stats, sourceInventory:data.sourceInventory || {}, coverage };
 const checkpoint = JSON.parse(fs.readFileSync(`${root}/checkpoint.json`,'utf8'));

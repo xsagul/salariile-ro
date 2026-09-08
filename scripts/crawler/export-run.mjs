@@ -29,7 +29,14 @@ export function exportRun(state, root) {
       acceptedAds:all.filter(r=>r.accepted).length,acceptedBeforeDedup:all.filter(r=>r.accepted).flatMap(r=>r.observations||[r.observation]).length,accepted:observations.length,
       duplicates:all.filter(r=>r.accepted).flatMap(r=>r.observations||[r.observation]).length-observations.length,rejected:all.filter(r=>!r.accepted).length,
       errors:Object.values(state.sources).reduce((sum,s)=>sum+s.events.length,0)},
-    observations,coverage:Object.fromEntries(occupations.map(j=>[j.slug,{name:j.nume,...summarize(observations.filter(o=>o.slug===j.slug))}])) };
+    observations,coverage:Object.fromEntries(occupations.map(j=>{
+      // Cate anunturi ale acestei meserii am citit efectiv si cate nu declarau nicio suma.
+      // Fara asta, un „2 anunturi" se citeste ca fapt despre piata, nu ca limita a colectarii.
+      const mine=all.filter(r=>(r.slugs||[r.slug]).includes(j.slug));
+      const faraSuma=mine.filter(r=>!r.accepted&&(r.reasons||[]).includes('salary_evidence_incomplete')).length;
+      return [j.slug,{name:j.nume,read:mine.length,withoutSalary:faraSuma,
+        ...summarize(observations.filter(o=>o.slug===j.slug))}];
+    })) };
   fs.writeFileSync(`${root}/verified.json`,JSON.stringify(payload,null,2));
   fs.writeFileSync(`${root}/checkpoint.json`,JSON.stringify({records:observations,rejected:all.filter(r=>!r.accepted),events:Object.entries(state.sources).flatMap(([source,s])=>s.events.map(e=>({...e,source})))},null,2));
   return payload;

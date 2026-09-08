@@ -22,7 +22,7 @@ export default function AlegeComparatie({options}:{options:OptiuneComparatie[]})
     {first===second ? <p role="status" className="mt-5">Ai ales aceeași meserie. Selectează o a doua meserie pentru comparație.</p> : <div aria-live="polite" aria-atomic="true">
       <div className="mt-6 grid gap-6 sm:grid-cols-2">{[a,b].map(o=><article key={o.slug}>
         <h3 className="text-lg font-semibold"><a href={`/salarii/${o.slug}`} className="underline underline-offset-4">{o.name}</a></h3>
-        <div className="mt-3"><IndicatorSalariu reper={o.reference} /></div>
+        <div className="mt-3"><IndicatorSalariu reper={o.reference} slug={o.slug} /></div>
         <p className="mt-4 text-sm">{o.description}</p>
       </article>)}</div>
     </div>}
