@@ -45,7 +45,12 @@ for(const m of MESERII) {
  const val = indicatorMeserie(r).value;
  assert.ok(val !== null && val > 0);
 }
-assert.equal(reperMeserie(dateMeserieSauEroare(MESERII.find(x=>x.slug==='contabil')!)).value,reports.records.find(x=>x.slug==='contabil')!.net);
+// Colectarea proprie trecuta prin praguri conduce; altfel ramane media citata.
+{
+ const r=reperMeserie(dateMeserieSauEroare(MESERII.find(x=>x.slug==='contabil')!));
+ if(r.kind==='external-advertised') assert.ok(r.n && r.n>=30,'reperul propriu al contabilului are esantionul cerut');
+ else assert.equal(r.value,reports.records.find(x=>x.slug==='contabil')!.net);
+}
 assert.equal(reperMeserie(dateMeserieSauEroare(MESERII.find(x=>x.slug==='cercetator')!)).kind,'sector-context');
 assert.equal(reperMeserie(dateMeserieSauEroare(MESERII.find(x=>x.slug==='constructor')!)).kind,'sector-context');
 // Cei trei piloni raman separati: populatii si concepte diferite, deci nicio cifra unica.

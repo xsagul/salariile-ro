@@ -73,6 +73,14 @@ Aproape jumătate dintre anunțurile cu sumă nu spun net sau brut. Nu se presup
 netul. Acestea formează cohorta `undeclaredBasis`, numărată și publicată separat;
 nu intră în mediană, în praguri sau în intervalul principal.
 
+Câmpul structurat este intervalul larg pe care angajatorul îl completează în
+formular; textul poate numi cifra exactă, cu net sau brut lângă ea. O cifră din
+text aflată **în interiorul** intervalului declarat este dovada mai specifică,
+nu o contrazicere — la OLX asta descria 380 din respingerile marcate drept
+conflict, toate cu netul scris explicit. O cifră din **afara** intervalului
+rămâne conflict. O sumă din interval fără nicio bază declarată nu adaugă nimic
+peste portal și lasă înregistrarea în cohorta fără bază.
+
 Câmpul structurat de salariu al unei platforme este dovadă primară când textul nu
 spune nimic, nu doar un veto. OLX stochează o sumă unică drept `from = to - 1` și
 este normalizată. Dacă textul contrazice câmpul, rezultatul este `salary_conflict`,
@@ -104,6 +112,10 @@ Un număr suficient de rânduri nu dovedește reprezentativitatea națională.
 Cereri seriale pe gazdă, identificare proprie, pauză și respectarea robots.txt.
 Răspunsurile de limitare sau autentificare opresc gazda; `Retry-After` este
 respectat. O provocare de acces nu se ocolește. Cache-ul poate fi auditat offline.
+
+O gazdă care ne-a limitat primește apoi mai mult spațiu: pauza dintre cereri se
+dublează la fiecare 429, până la 15 secunde. Reluarea la același ritm ar produce
+aceeași limitare.
 
 Pauza unei gazde expiră: după `Retry-After` gazda se reia în aceeași rulare.
 Altfel o singură limitare ar anula sursa pentru tot restul colectării — s-a

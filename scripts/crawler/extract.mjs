@@ -185,8 +185,24 @@ export function resolveSalary(r, candidates = extractSalaryCandidates(r)) {
       const best = matching.find(c => c.basis) || matching[0];
       return { salary: { ...best, monthly: best.monthly || structured.period === 'month' || r.source === 'ejobs', evidenceKind: 'structured_field_and_text' } };
     }
-    // A portal figure that the wording contradicts is a conflict, never a silent override.
-    if (candidates.length) return { error: 'salary_conflict' };
+    // Campul structurat este intervalul larg pe care angajatorul il completeaza in
+    // formular; textul poate numi cifra exacta, cu net sau brut chiar langa ea.
+    // Cand cifra din text cade in interiorul intervalului declarat, ea este dovada
+    // mai specifica, nu o contrazicere. In afara intervalului ramane conflict.
+    const inside = c => c.currency === structured.currency && c.min >= structured.min && c.max <= structured.max;
+    // O cifra din afara intervalului declarat contrazice portalul: conflict, nu suprascriere.
+    if (candidates.some(c => !inside(c))) return { error: 'salary_conflict' };
+    const named = candidates.filter(c => c.basis);
+    const bases = new Set(named.map(c => c.basis));
+    if (named.length && bases.size === 1) {
+      const min = Math.min(...named.map(c => c.min)), max = Math.max(...named.map(c => c.max));
+      return { salary: { ...named[0], min, max,
+        monthly: named.some(c => c.monthly) || structured.period === 'month',
+        snippet: `${named[0].snippet} · în intervalul declarat ${structured.min}–${structured.max} ${structured.currency}`,
+        evidenceKind: 'text_within_structured_range' } };
+    }
+    // O suma din interiorul intervalului, fara baza declarata nicaieri, nu adauga
+    // nimic peste ce spune deja portalul: ramane campul structurat, fara baza.
     // The wording already ruled this figure out as a benefit, a package or the wrong unit.
     if ((candidates.excluded || []).some(x => x.min === structured.min && x.currency === structured.currency)) return { error: 'salary_evidence_incomplete' };
     const declared = documentBasis(document);

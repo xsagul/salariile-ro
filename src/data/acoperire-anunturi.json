@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-08T00:22:28.755Z",
+  "generatedAt": "2026-09-08T03:41:13.732Z",
   "run": "census-full-2026-09-08",
   "policy": {
     "version": 4,
@@ -162,12 +162,12 @@
   },
   "stats": {
     "inventoried": 37834,
-    "read": 6786,
-    "acceptedAds": 1341,
-    "acceptedBeforeDedup": 1515,
-    "accepted": 1442,
-    "duplicates": 73,
-    "rejected": 5445,
+    "read": 11713,
+    "acceptedAds": 2545,
+    "acceptedBeforeDedup": 2724,
+    "accepted": 2572,
+    "duplicates": 152,
+    "rejected": 9168,
     "errors": 6
   },
   "sourceInventory": {
@@ -176,9 +176,9 @@
       "sitemapOrCategories": 40,
       "inventoryEnumerated": true,
       "catalogCandidates": 5596,
-      "catalogChecked": 881,
-      "catalogPassComplete": false,
-      "pagesFetched": 881,
+      "catalogChecked": 5596,
+      "catalogPassComplete": true,
+      "pagesFetched": 5596,
       "listedAt": "2026-09-07T23:45:00.934Z",
       "events": [
         {
@@ -196,18 +196,18 @@
       "sitemapOrCategories": 67,
       "inventoryEnumerated": true,
       "catalogCandidates": 2962,
-      "catalogChecked": 367,
+      "catalogChecked": 408,
       "catalogPassComplete": false,
-      "pagesFetched": 369,
+      "pagesFetched": 410,
       "listedAt": "2026-09-07T23:41:47.835Z",
       "events": [
         {
           "url": "https://www.ejobs.ro/user/locuri-de-munca/lucrator-comercial-cofetaria-madame-prallini/1979840",
           "stage": "detail",
           "error": "host_paused_429",
-          "count": 2,
-          "lastUrl": "https://www.ejobs.ro/user/locuri-de-munca/ospatar/1978906",
-          "lastAt": "2026-09-08T00:09:55.189Z"
+          "count": 4,
+          "lastUrl": "https://www.ejobs.ro/user/locuri-de-munca/vanzator-suceava-cuza-voda-f-m/1979145",
+          "lastAt": "2026-09-08T03:07:29.212Z"
         },
         {
           "url": "https://www.ejobs.ro/user/locuri-de-munca/lucrator-comercial-cofetaria-madame-prallini/1979840",
@@ -236,18 +236,18 @@
       "sitemapOrCategories": 1,
       "inventoryEnumerated": true,
       "catalogCandidates": 5429,
-      "catalogChecked": 2744,
+      "catalogChecked": 2915,
       "catalogPassComplete": false,
-      "pagesFetched": 2884,
+      "pagesFetched": 3053,
       "listedAt": "2026-09-07T23:41:39.228Z",
       "events": [
         {
           "url": "https://www.publi24.ro/anunturi/locuri-de-munca/horeca/personal-receptie-administratie/anunt/gloria-events-angajeaza-barman-si-ospatar-bucatar-receptioner-calificat-pentru-hotel/8704dig7fi7d7367egi8h1g932d3d075.html",
           "stage": "detail",
           "error": "http_410",
-          "count": 13,
-          "lastUrl": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/electricieni/anunt/angajam-electricieni-si-tehnicieni-hvac-proiect-italia-cazare-transport-gratuit/898fi7f3g8e274f81dehd4h42g2h21f3.html",
-          "lastAt": "2026-09-08T00:11:06.874Z"
+          "count": 15,
+          "lastUrl": "https://www.publi24.ro/anunturi/locuri-de-munca/horeca/ospatar-barman-sef-de-sala/anunt/angajez-ospatar-restaurant-rare-garden/8igei6ii354e7gd4d33f95d0ie0f1hi0.html",
+          "lastAt": "2026-09-08T03:08:36.946Z"
         },
         {
           "url": "https://www.publi24.ro/anunturi/locuri-de-munca/cereri-locuri-de-munca/anunt/angajam-farmacist-in-orasul-ludus-jud-mures/87e48901747f758e21i3ed8d69h96741.html",
@@ -262,8 +262,10 @@
           "url": "https://www.publi24.ro/anunturi/locuri-de-munca/casieri-lucratori-comerciali/anunt/lucrator-comercial-sector-6-bucuresti/82979388hgid7g24d256ge7193350i7i.html",
           "stage": "detail",
           "error": "host_paused_429",
-          "count": 1,
-          "firstAt": "2026-09-08T00:12:22.442Z"
+          "count": 3,
+          "firstAt": "2026-09-08T00:12:22.442Z",
+          "lastUrl": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/tamplari-montatori-mobilier/anunt/angajam-confectioneri-aluminiu-si-montatori-partitii-sticla-securizata/968f239e7h31780ede042fg8g7756g52.html",
+          "lastAt": "2026-09-08T03:09:55.521Z"
         }
       ],
       "limitation": "Completitudinea se raportează la inventarul public accesibil, nu la baza internă a platformei."
@@ -442,17 +444,24 @@
         "max": 9453
       },
       "undeclaredBasis": {
-        "n": 4,
+        "n": 5,
         "sourceCounts": {
+          "olx": 1,
           "bestjobs": 4
         },
         "observedRange": {
-          "min": 7878,
+          "min": 7000,
           "max": 19957
         },
-        "midpointEstimate": 11160.5
+        "midpointEstimate": 10504
       },
       "examples": [
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-programator-freza-cnc-IDkQfCo.html",
+          "source": "olx",
+          "min": 7000,
+          "max": 12000
+        },
         {
           "url": "https://www.ejobs.ro/user/locuri-de-munca/agentic-ai-engineer-ai-agents-backend-developer-hermes-first/1981131",
           "source": "ejobs",
@@ -476,12 +485,6 @@
           "source": "bestjobs",
           "min": 7878,
           "max": 15756
-        },
-        {
-          "url": "https://www.bestjobs.eu/loc-de-munca/software-engineer-441",
-          "source": "bestjobs",
-          "min": 7878,
-          "max": 9979
         }
       ]
     },
@@ -947,80 +950,79 @@
     },
     "sofer-tir": {
       "name": "Șofer TIR",
-      "n": 7,
-      "ads": 7,
-      "basisNearAmount": 6,
-      "basisFromDocument": 1,
-      "employers": 5,
-      "counties": 6,
+      "n": 19,
+      "ads": 19,
+      "basisNearAmount": 11,
+      "basisFromDocument": 8,
+      "employers": 9,
+      "counties": 16,
       "sourceCounts": {
-        "olx": 2,
+        "olx": 14,
         "publi24": 5
       },
-      "employerShare": 0.2857142857142857,
-      "sourceShare": 0.7142857142857143,
+      "employerShare": 0.10526315789473684,
+      "sourceShare": 0.7368421052631579,
       "gaps": [
         "too_few_ads",
         "too_few_known_employers",
-        "employer_concentration",
         "too_few_explicit_monthly",
         "pay_period_sensitivity"
       ],
-      "explicitMonthly": 4,
-      "assumedMonthly": 3,
-      "periodSensitivity": 0.20930232558139536,
-      "sourceSensitivity": 0.10882352941176471,
+      "explicitMonthly": 8,
+      "assumedMonthly": 11,
+      "periodSensitivity": 0.16216216216216217,
+      "sourceSensitivity": 0.0967741935483871,
       "midpointEstimate": null,
       "status": "insufficient",
       "medianBounds": null,
       "observedRange": {
-        "min": 5850,
-        "max": 15756
+        "min": 4900,
+        "max": 18382
       },
       "undeclaredBasis": {
-        "n": 15,
+        "n": 132,
         "sourceCounts": {
-          "publi24": 9,
-          "olx": 1,
+          "publi24": 10,
+          "olx": 117,
           "bestjobs": 3,
           "anuntul": 2
         },
         "observedRange": {
-          "min": 2700,
-          "max": 18382
+          "min": 8,
+          "max": 33612
         },
-        "midpointEstimate": 7615
+        "midpointEstimate": 7682.5
       },
       "examples": [
         {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/soferi-transporturi/transport-marfa-intern/anunt/angajam-sofer-profesionist-c-e/7i1ieh2g120g7g33297gid211d2f9fh5.html",
+          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/soferi-transporturi/transport-marfa-intern/anunt/angajez-sofer-profesionist-categoria-c-e/8hfi543ie8fe7578efee9h90d71dd6d5.html",
           "source": "publi24",
           "min": 7500,
-          "max": 7500
+          "max": 8500
         },
         {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/soferi-transporturi/transport-marfa-international/anunt/angajez-soferi-profesionisti-ce-cu-experienta-3300-euro/790h7234d33g743gegh4ef893i7e4089.html",
-          "source": "publi24",
-          "min": 17331,
-          "max": 17331
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-soferi-profesionisti-c-e-pe-contract-de-romania-IDjNxwJ.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-soferi-profesionisti-categoria-c-e-pentru-curse-in-tara-IDkSeW5.html",
           "source": "olx",
-          "min": 16806,
-          "max": 18382
+          "min": 6900,
+          "max": 7000
         },
         {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/soferi-transporturi/transport-marfa-intern/anunt/angajez-sofer-camion-intern/774i9665f1d977h91e05585196i9ig76.html",
-          "source": "publi24",
-          "min": 8000,
+          "url": "https://www.olx.ro/oferta/loc-de-munca/sofer-profesionist-IDkpOHq.html",
+          "source": "olx",
+          "min": 6000,
+          "max": 7000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-soferi-profesionisti-transport-intern-IDkKFLZ.html",
+          "source": "olx",
+          "min": 7878,
+          "max": 10504
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-sofer-profesionist-IDjgcd3.html",
+          "source": "olx",
+          "min": 6000,
           "max": 8000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-soferi-profesionisti-cu-experienta-la-cereale-salariu-13000-lei-IDjpddj.html",
-          "source": "olx",
-          "min": 13000,
-          "max": 13000
         }
       ]
     },
@@ -1169,12 +1171,30 @@
       "medianBounds": null,
       "observedRange": null,
       "undeclaredBasis": {
-        "n": 0,
-        "observedRange": null,
-        "midpointEstimate": null,
-        "sourceCounts": {}
+        "n": 2,
+        "sourceCounts": {
+          "olx": 2
+        },
+        "observedRange": {
+          "min": 2700,
+          "max": 4500
+        },
+        "midpointEstimate": 3550
       },
-      "examples": []
+      "examples": [
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajare-asistent-asistenta-stomatologie-IDkRzlN.html",
+          "source": "olx",
+          "min": 3500,
+          "max": 4500
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/asistent-stomatologie-medicina-dentara-IDkRMg2.html",
+          "source": "olx",
+          "min": 2700,
+          "max": 3500
+        }
+      ]
     },
     "cercetator": {
       "name": "Cercetător",
@@ -1369,12 +1389,24 @@
       "medianBounds": null,
       "observedRange": null,
       "undeclaredBasis": {
-        "n": 0,
-        "observedRange": null,
-        "midpointEstimate": null,
-        "sourceCounts": {}
+        "n": 1,
+        "sourceCounts": {
+          "olx": 1
+        },
+        "observedRange": {
+          "min": 6000,
+          "max": 10000
+        },
+        "midpointEstimate": 8000
       },
-      "examples": []
+      "examples": [
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/operator-foreza-sondor-IDknuGj.html",
+          "source": "olx",
+          "min": 6000,
+          "max": 10000
+        }
+      ]
     },
     "profesor-universitar": {
       "name": "Profesor universitar",
@@ -1652,79 +1684,79 @@
     },
     "inginer": {
       "name": "Inginer",
-      "n": 37,
-      "ads": 37,
-      "basisNearAmount": 24,
-      "basisFromDocument": 13,
-      "employers": 34,
-      "counties": 8,
+      "n": 42,
+      "ads": 42,
+      "basisNearAmount": 25,
+      "basisFromDocument": 17,
+      "employers": 38,
+      "counties": 11,
       "sourceCounts": {
-        "olx": 3,
+        "olx": 8,
         "ejobs": 17,
         "bestjobs": 12,
         "publi24": 4,
         "anuntul": 1
       },
-      "employerShare": 0.08108108108108109,
-      "sourceShare": 0.4594594594594595,
+      "employerShare": 0.07142857142857142,
+      "sourceShare": 0.40476190476190477,
       "gaps": [],
       "explicitMonthly": 31,
-      "assumedMonthly": 6,
-      "periodSensitivity": 0.024714285714285713,
-      "sourceSensitivity": 0.0768273033543284,
-      "midpointEstimate": 6827,
+      "assumedMonthly": 11,
+      "periodSensitivity": 0.024678571428571428,
+      "sourceSensitivity": 0.1154564429309019,
+      "midpointEstimate": 6827.25,
       "status": "advertised_interval",
       "medianBounds": {
         "min": 6000,
-        "max": 7353
+        "max": 7689
       },
       "observedRange": {
         "min": 3200,
         "max": 15000
       },
       "undeclaredBasis": {
-        "n": 67,
+        "n": 89,
         "sourceCounts": {
-          "olx": 10,
+          "olx": 32,
           "bestjobs": 56,
           "anuntul": 1
         },
         "observedRange": {
-          "min": 3000,
-          "max": 15000
+          "min": 2200,
+          "max": 18382
         },
-        "midpointEstimate": 6565
+        "midpointEstimate": 6657
       },
       "examples": [
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-inginer-tehnolog-industria-carnii-experienta-min-5-ani-IDkdvK6.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-inginer-civile-cu-experienta-sef-santier-IDkGcZK.html",
           "source": "olx",
-          "min": 5000,
-          "max": 6000
+          "min": 10504,
+          "max": 18382
         },
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-responsabil-calitate-inginer-calitate-ind-alimentara-IDk7iAs.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-inginer-automatizari-IDkPBzC.html",
           "source": "olx",
-          "min": 3700,
-          "max": 4000
+          "min": 5250,
+          "max": 7000
         },
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/inginer-instalatii-electrice-primare-tensiune-medie-si-inalta-galati-IDkSGGL.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/inginer-instalatii-constructii-IDkTyjC.html",
+          "source": "olx",
+          "min": 8000,
+          "max": 9000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-inginer-cq-carte-tehnica-constructii-civile-IDkOzo6.html",
           "source": "olx",
           "min": 7000,
-          "max": 10000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/inginer-proiectant-telecomunicatii-bucuresti-IDkSOHl.html",
-          "source": "olx",
-          "min": 6000,
           "max": 12000
         },
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/inginer-designer-3d-juniorsenior-proiectare-mecanica-cad-autocad-solidworks-rhino-IDkSoFF.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-inginer-costructii-civile-si-industriale-inginer-electrice-inginer-instalatii-sanitare-canalizare-termice-si-ventilatii-IDkSb1l.html",
           "source": "olx",
-          "min": 3000,
-          "max": 4000
+          "min": 6000,
+          "max": 10000
         }
       ]
     },
@@ -1832,35 +1864,35 @@
     },
     "consilier-juridic": {
       "name": "Consilier juridic",
-      "n": 1,
-      "ads": 1,
-      "basisNearAmount": 0,
+      "n": 2,
+      "ads": 2,
+      "basisNearAmount": 1,
       "basisFromDocument": 1,
       "employers": 1,
-      "counties": 1,
+      "counties": 2,
       "sourceCounts": {
+        "olx": 1,
         "hipo": 1
       },
-      "employerShare": 1,
-      "sourceShare": 1,
+      "employerShare": 0.5,
+      "sourceShare": 0.5,
       "gaps": [
         "too_few_ads",
         "too_few_known_employers",
         "too_few_known_counties",
-        "single_source",
         "employer_concentration",
-        "source_concentration",
-        "too_few_explicit_monthly"
+        "too_few_explicit_monthly",
+        "source_sensitivity"
       ],
       "explicitMonthly": 1,
-      "assumedMonthly": 0,
-      "periodSensitivity": 0,
-      "sourceSensitivity": null,
+      "assumedMonthly": 1,
+      "periodSensitivity": 0.14285714285714285,
+      "sourceSensitivity": 0.16666666666666666,
       "midpointEstimate": null,
       "status": "insufficient",
       "medianBounds": null,
       "observedRange": {
-        "min": 7000,
+        "min": 5000,
         "max": 7000
       },
       "undeclaredBasis": {
@@ -1876,6 +1908,12 @@
         "midpointEstimate": 5278
       },
       "examples": [
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-jurist-5000-lei-IDkR0Iz.html",
+          "source": "olx",
+          "min": 5000,
+          "max": 5000
+        },
         {
           "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-jurist-consilier-juridic-IDkGhOv.html",
           "source": "olx",
@@ -1899,12 +1937,6 @@
           "source": "bestjobs",
           "min": 5278,
           "max": 5278
-        },
-        {
-          "url": "https://www.bestjobs.eu/loc-de-munca/consilier-juridic-experienta-in-executare-silita",
-          "source": "bestjobs",
-          "min": 6827,
-          "max": 7878
         }
       ]
     },
@@ -1956,18 +1988,19 @@
     },
     "manager-magazin": {
       "name": "Manager de magazin",
-      "n": 4,
-      "ads": 4,
-      "basisNearAmount": 3,
+      "n": 5,
+      "ads": 5,
+      "basisNearAmount": 4,
       "basisFromDocument": 1,
-      "employers": 3,
-      "counties": 0,
+      "employers": 4,
+      "counties": 1,
       "sourceCounts": {
+        "olx": 1,
         "ejobs": 3,
         "bestjobs": 1
       },
-      "employerShare": 0.5,
-      "sourceShare": 0.75,
+      "employerShare": 0.4,
+      "sourceShare": 0.6,
       "gaps": [
         "too_few_ads",
         "too_few_known_employers",
@@ -1977,9 +2010,9 @@
         "source_sensitivity"
       ],
       "explicitMonthly": 4,
-      "assumedMonthly": 0,
+      "assumedMonthly": 1,
       "periodSensitivity": 0,
-      "sourceSensitivity": 2.2825,
+      "sourceSensitivity": 1.06625,
       "midpointEstimate": null,
       "status": "insufficient",
       "medianBounds": null,
@@ -1988,46 +2021,46 @@
         "max": 21008
       },
       "undeclaredBasis": {
-        "n": 2,
+        "n": 5,
         "sourceCounts": {
-          "olx": 2
+          "olx": 5
         },
         "observedRange": {
           "min": 3200,
-          "max": 4500
+          "max": 6500
         },
-        "midpointEstimate": 4050
+        "midpointEstimate": 5000
       },
       "examples": [
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/director-magazin-oltenita-IDkTnYh.html",
+          "source": "olx",
+          "min": 6000,
+          "max": 6500
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/director-magazin-constanta-cariera-in-retail-fashion-IDkROuD.html",
+          "source": "olx",
+          "min": 4500,
+          "max": 5500
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/director-magazin-tulcea-IDkTo1X.html",
+          "source": "olx",
+          "min": 6000,
+          "max": 6500
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/director-magazin-galati-IDkTnU7.html",
+          "source": "olx",
+          "min": 5100,
+          "max": 5100
+        },
         {
           "url": "https://www.olx.ro/oferta/loc-de-munca/asistent-manager-magazin-alimentar-IDkSwEY.html",
           "source": "olx",
           "min": 4000,
           "max": 4500
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-sef-magazin-vanzator-ploiesti-IDkSFk6.html",
-          "source": "olx",
-          "min": 3200,
-          "max": 4500
-        },
-        {
-          "url": "https://www.ejobs.ro/user/locuri-de-munca/asistent-manager-magazin-rol-activ-in-vanzare/1979980",
-          "source": "ejobs",
-          "min": 3800,
-          "max": 5000
-        },
-        {
-          "url": "https://www.ejobs.ro/user/locuri-de-munca/manager-magazin-action-falticeni/1982217",
-          "source": "ejobs",
-          "min": 5800,
-          "max": 6200
-        },
-        {
-          "url": "https://www.ejobs.ro/user/locuri-de-munca/manager-magazin-action-braila/1979390",
-          "source": "ejobs",
-          "min": 5800,
-          "max": 6200
         }
       ]
     },
@@ -2103,75 +2136,75 @@
     },
     "agent-vanzari": {
       "name": "Agent de vânzări",
-      "n": 31,
-      "ads": 31,
-      "basisNearAmount": 20,
-      "basisFromDocument": 11,
-      "employers": 30,
-      "counties": 4,
+      "n": 48,
+      "ads": 48,
+      "basisNearAmount": 30,
+      "basisFromDocument": 18,
+      "employers": 40,
+      "counties": 11,
       "sourceCounts": {
+        "ejobs": 17,
+        "olx": 18,
         "publi24": 1,
-        "olx": 3,
-        "ejobs": 15,
         "bestjobs": 12
       },
-      "employerShare": 0.03225806451612903,
-      "sourceShare": 0.4838709677419355,
-      "gaps": [
-        "too_few_known_counties",
-        "source_sensitivity"
-      ],
-      "explicitMonthly": 29,
-      "assumedMonthly": 2,
-      "periodSensitivity": 0,
-      "sourceSensitivity": 0.2777777777777778,
-      "midpointEstimate": null,
-      "status": "insufficient",
-      "medianBounds": null,
+      "employerShare": 0.0625,
+      "sourceShare": 0.375,
+      "gaps": [],
+      "explicitMonthly": 35,
+      "assumedMonthly": 13,
+      "periodSensitivity": 0.019487064620898196,
+      "sourceSensitivity": 0.08623643632210165,
+      "midpointEstimate": 4377.5,
+      "status": "advertised_interval",
+      "medianBounds": {
+        "min": 3500,
+        "max": 5000
+      },
       "observedRange": {
         "min": 2700,
         "max": 12605
       },
       "undeclaredBasis": {
-        "n": 76,
+        "n": 146,
         "sourceCounts": {
-          "olx": 8,
+          "olx": 78,
           "bestjobs": 63,
           "anuntul": 5
         },
         "observedRange": {
           "min": 2500,
-          "max": 23634
+          "max": 26260
         },
-        "midpointEstimate": 4989.25
+        "midpointEstimate": 4500
       },
       "examples": [
         {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/administratie/secretariat/anunt/cautam-reprezentant-vanzari-show-room-roci-naturale/83gede439h237fi22e8fe6df548g0e77.html",
-          "source": "publi24",
-          "min": 2754,
-          "max": 2754
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/senior-sales-representative-horeca/1983138",
+          "source": "ejobs",
+          "min": 5000,
+          "max": 7000
         },
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-agenti-vanzari-vansell-IDjiIur.html",
-          "source": "olx",
-          "min": 4000,
-          "max": 8000
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/sales-advisor-nespresso-boutique-baneasa-mall-full-time-h/1981110",
+          "source": "ejobs",
+          "min": 3100,
+          "max": 3300
         },
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/consultant-vanzari-magazin-spirits-and-tabaco-IDkPGqD.html",
-          "source": "olx",
-          "min": 2500,
-          "max": 3700
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/consultant-vanzari-design-interior-showroom-homedit-IDkTdWA.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/agent-vanzari-tulcea-pavaje-si-produse-din-beton-vibropresat-IDkRBFH.html",
           "source": "olx",
           "min": 5000,
-          "max": 6500
+          "max": 7000
         },
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/reprezentant-comercial-inginer-ofertare-IDkQerY.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/consilier-vanzari-IDkRlSC.html",
+          "source": "olx",
+          "min": 2600,
+          "max": 3000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/agent-vanzari-tamplarie-pvc-barrier-IDkRm2b.html",
           "source": "olx",
           "min": 3500,
           "max": 5000
@@ -2180,77 +2213,78 @@
     },
     "tehnician-mentenanta": {
       "name": "Tehnician mentenanță",
-      "n": 7,
-      "ads": 7,
-      "basisNearAmount": 6,
+      "n": 10,
+      "ads": 10,
+      "basisNearAmount": 9,
       "basisFromDocument": 1,
-      "employers": 6,
-      "counties": 5,
+      "employers": 9,
+      "counties": 7,
       "sourceCounts": {
-        "olx": 2,
+        "olx": 5,
         "ejobs": 2,
         "publi24": 2,
         "anuntul": 1
       },
-      "employerShare": 0.14285714285714285,
-      "sourceShare": 0.2857142857142857,
+      "employerShare": 0.1,
+      "sourceShare": 0.5,
       "gaps": [
         "too_few_ads",
         "too_few_known_employers",
         "too_few_explicit_monthly"
       ],
       "explicitMonthly": 2,
-      "assumedMonthly": 5,
-      "periodSensitivity": 0.05737704918032787,
-      "sourceSensitivity": 0.06086956521739131,
+      "assumedMonthly": 8,
+      "periodSensitivity": 0.07315573770491804,
+      "sourceSensitivity": 0.044218439089100156,
       "midpointEstimate": null,
       "status": "insufficient",
       "medianBounds": null,
       "observedRange": {
-        "min": 4095,
+        "min": 3000,
         "max": 9875
       },
       "undeclaredBasis": {
-        "n": 4,
+        "n": 6,
         "sourceCounts": {
+          "olx": 2,
           "bestjobs": 4
         },
         "observedRange": {
-          "min": 5252,
+          "min": 3500,
           "max": 7615
         },
-        "midpointEstimate": 5895.25
+        "midpointEstimate": 5777
       },
       "examples": [
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-tehnician-mentenanta-electrician-mecanic-IDkNEBV.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/tehnician-mentenanta-intretinere-cladiri-IDkRmIP.html",
           "source": "olx",
-          "min": 5859,
-          "max": 9875
-        },
-        {
-          "url": "https://www.ejobs.ro/user/locuri-de-munca/tehnician-mentenanta-electromecanic-salesianer-prejmer/1978374",
-          "source": "ejobs",
-          "min": 5900,
-          "max": 7000
-        },
-        {
-          "url": "https://www.ejobs.ro/user/locuri-de-munca/tehnician-mentenanta-mecanic-intretinere-electromecanic/1983353",
-          "source": "ejobs",
-          "min": 5500,
+          "min": 6000,
           "max": 6000
         },
         {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/muncitori-productie-depozit-logistica/operatori-utilaje/anunt/angajam-tehnician-mentenanta-instalator-si-electrician-1-schimb-dudestii-noi/i7265g38e76174i8d952ei414h2732f2.html",
-          "source": "publi24",
-          "min": 4095,
-          "max": 7020
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-tehnician-mentenanta-expresoare-cafea-si-echipamente-de-apa-brasov-IDkREBH.html",
+          "source": "olx",
+          "min": 3000,
+          "max": 4000
         },
         {
-          "url": "https://www.bestjobs.eu/loc-de-munca/electrician-tehnician-mentenanta-1",
-          "source": "bestjobs",
-          "min": 6906,
-          "max": 7615
+          "url": "https://www.olx.ro/oferta/loc-de-munca/tehnician-mentenanta-IDkEW7W.html",
+          "source": "olx",
+          "min": 3500,
+          "max": 4000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/tehnician-mentenanta-spatiu-de-tip-industrial-lazu-jud-constanta-IDkRMmL.html",
+          "source": "olx",
+          "min": 3500,
+          "max": 4000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-tehnician-mentenanta-IDkRKZp.html",
+          "source": "olx",
+          "min": 5000,
+          "max": 5500
         }
       ]
     },
@@ -2349,12 +2383,24 @@
       "medianBounds": null,
       "observedRange": null,
       "undeclaredBasis": {
-        "n": 0,
-        "observedRange": null,
-        "midpointEstimate": null,
-        "sourceCounts": {}
+        "n": 1,
+        "sourceCounts": {
+          "olx": 1
+        },
+        "observedRange": {
+          "min": 4000,
+          "max": 5000
+        },
+        "midpointEstimate": 4500
       },
-      "examples": []
+      "examples": [
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/broker-in-asigurari-IDkThBt.html",
+          "source": "olx",
+          "min": 4000,
+          "max": 5000
+        }
+      ]
     },
     "cameraman": {
       "name": "Cameraman",
@@ -2392,30 +2438,28 @@
     },
     "operator-cnc": {
       "name": "Operator CNC",
-      "n": 11,
-      "ads": 11,
-      "basisNearAmount": 11,
-      "basisFromDocument": 0,
-      "employers": 9,
-      "counties": 9,
+      "n": 15,
+      "ads": 15,
+      "basisNearAmount": 13,
+      "basisFromDocument": 2,
+      "employers": 13,
+      "counties": 10,
       "sourceCounts": {
-        "olx": 5,
+        "ejobs": 1,
+        "olx": 8,
         "publi24": 5,
         "anuntul": 1
       },
-      "employerShare": 0.09090909090909091,
-      "sourceShare": 0.45454545454545453,
+      "employerShare": 0.06666666666666667,
+      "sourceShare": 0.5333333333333333,
       "gaps": [
         "too_few_ads",
-        "too_few_known_employers",
-        "too_few_explicit_monthly",
-        "pay_period_sensitivity",
-        "source_sensitivity"
+        "too_few_explicit_monthly"
       ],
-      "explicitMonthly": 5,
-      "assumedMonthly": 6,
-      "periodSensitivity": 0.18095238095238095,
-      "sourceSensitivity": 0.19186046511627908,
+      "explicitMonthly": 6,
+      "assumedMonthly": 9,
+      "periodSensitivity": 0.12897560975609756,
+      "sourceSensitivity": 0.12007168458781362,
       "midpointEstimate": null,
       "status": "insufficient",
       "medianBounds": null,
@@ -2424,48 +2468,48 @@
         "max": 7000
       },
       "undeclaredBasis": {
-        "n": 7,
+        "n": 18,
         "sourceCounts": {
-          "olx": 1,
+          "olx": 12,
           "hipo": 1,
           "bestjobs": 5
         },
         "observedRange": {
-          "min": 3676,
-          "max": 8000
+          "min": 3500,
+          "max": 12000
         },
-        "midpointEstimate": 5252
+        "midpointEstimate": 5376
       },
       "examples": [
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/inginer-programator-cnc-IDkMbtn.html",
-          "source": "olx",
-          "min": 6000,
-          "max": 8000
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/operator-cnc/1979874",
+          "source": "ejobs",
+          "min": 3676,
+          "max": 5252
         },
         {
-          "url": "https://www.hipo.ro/locuri-de-munca/locuri_de_munca/270918/Trenkwalder-Romania/ANGAJ%C4%82M-OPERATOR-CNC-%E2%80%93-DEBITARE-CU-PLASMA",
-          "source": "hipo",
-          "min": 5000,
-          "max": 5500
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/operator-cnc-prelucrarea-lemnului-cumpana-constanta-IDkRkKb.html",
-          "source": "olx",
-          "min": 3800,
-          "max": 4800
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/hawema-tooling-angajeaza-programator-cnc-IDkiINv.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/societate-comercial-angajeaz-operator-cnc-IDkAjZ1.html",
           "source": "olx",
           "min": 5000,
-          "max": 7000
+          "max": 7500
         },
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/operator-cnc-formare-profesionala-asigurata-program-fix-IDk1J09.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajez-operator-cnc-IDjLvfC.html",
           "source": "olx",
-          "min": 3200,
-          "max": 4300
+          "min": 5500,
+          "max": 6500
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-operator-cnc-freza-strung-in-serie-brasov-IDkMuf4.html",
+          "source": "olx",
+          "min": 4000,
+          "max": 4200
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-operator-cnc-IDkSw3d.html",
+          "source": "olx",
+          "min": 3500,
+          "max": 3500
         }
       ]
     },
@@ -2629,156 +2673,196 @@
     },
     "metalurgist": {
       "name": "Metalurgist",
-      "n": 0,
-      "ads": 0,
+      "n": 1,
+      "ads": 1,
       "basisNearAmount": 0,
-      "basisFromDocument": 0,
-      "employers": 0,
-      "counties": 0,
-      "sourceCounts": {},
-      "employerShare": 0,
-      "sourceShare": 0,
+      "basisFromDocument": 1,
+      "employers": 1,
+      "counties": 1,
+      "sourceCounts": {
+        "olx": 1
+      },
+      "employerShare": 1,
+      "sourceShare": 1,
       "gaps": [
         "too_few_ads",
         "too_few_known_employers",
         "too_few_known_counties",
         "single_source",
+        "employer_concentration",
+        "source_concentration",
         "too_few_explicit_monthly"
       ],
       "explicitMonthly": 0,
-      "assumedMonthly": 0,
+      "assumedMonthly": 1,
       "periodSensitivity": null,
       "sourceSensitivity": null,
       "midpointEstimate": null,
-      "status": "no_verified_ads",
+      "status": "insufficient",
       "medianBounds": null,
-      "observedRange": null,
+      "observedRange": {
+        "min": 3000,
+        "max": 4200
+      },
       "undeclaredBasis": {
         "n": 0,
         "observedRange": null,
         "midpointEstimate": null,
         "sourceCounts": {}
       },
-      "examples": []
+      "examples": [
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-muncitor-necalificat-metalurgie-IDkQ0rX.html",
+          "source": "olx",
+          "min": 3000,
+          "max": 4200
+        }
+      ]
     },
     "electrician": {
       "name": "Electrician",
-      "n": 50,
-      "ads": 50,
-      "basisNearAmount": 44,
-      "basisFromDocument": 6,
-      "employers": 45,
-      "counties": 12,
+      "n": 68,
+      "ads": 68,
+      "basisNearAmount": 53,
+      "basisFromDocument": 15,
+      "employers": 52,
+      "counties": 16,
       "sourceCounts": {
+        "olx": 27,
         "publi24": 20,
-        "olx": 9,
         "ejobs": 14,
         "bestjobs": 4,
         "anuntul": 3
       },
-      "employerShare": 0.06,
-      "sourceShare": 0.4,
+      "employerShare": 0.058823529411764705,
+      "sourceShare": 0.39705882352941174,
       "gaps": [],
-      "explicitMonthly": 20,
-      "assumedMonthly": 30,
-      "periodSensitivity": 0.02239601848560256,
-      "sourceSensitivity": 0.03618181818181818,
-      "midpointEstimate": 5500,
+      "explicitMonthly": 21,
+      "assumedMonthly": 47,
+      "periodSensitivity": 0.0001904036557501904,
+      "sourceSensitivity": 0.04741953913540278,
+      "midpointEstimate": 5251,
       "status": "advertised_interval",
       "medianBounds": {
-        "min": 4713.5,
-        "max": 6600
+        "min": 4500,
+        "max": 6000
       },
       "observedRange": {
         "min": 2500,
         "max": 18907
       },
       "undeclaredBasis": {
-        "n": 53,
+        "n": 103,
         "sourceCounts": {
-          "olx": 17,
+          "olx": 67,
           "hipo": 2,
           "bestjobs": 21,
           "publi24": 3,
           "anuntul": 10
         },
         "observedRange": {
-          "min": 3151,
+          "min": 3000,
           "max": 14000
         },
-        "midpointEstimate": 6039.5
+        "midpointEstimate": 6000
       },
       "examples": [
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/electrician-jt-cablaj-sisteme-electrice-proiecte-energie-regenerabila-scada-suport-instalare-echipamente-masuratori-tehnice-mentenanta-diagnosticare-IDkSqk2.html",
-          "source": "olx",
-          "min": 6000,
-          "max": 8000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/electrician-jt-cablaj-sisteme-electrice-proiecte-energie-regenerabila-scada-suport-instalare-echipamente-masuratori-tehnice-mentenenta-diagnosticare-IDkSGMm.html",
-          "source": "olx",
-          "min": 6000,
-          "max": 8000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/electrician-mt-sisteme-electrice-proiecte-energie-regenerabila-masuratori-tehnice-si-incercari-manevre-si-mentenanta-diagnosticare-IDkSvih.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/electrician-usi-automate-si-elevatoare-mocheta-IDkSuXZ.html",
           "source": "olx",
           "min": 5000,
-          "max": 9000
+          "max": 5500
         },
         {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/muncitori-productie-depozit-logistica/manipulanti-marfa/anunt/manipulant-marfuri-echipamente-electrice/51739e70864h7973e0i104g98ge985i8.html",
-          "source": "publi24",
-          "min": 2800,
-          "max": 2800
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-lacatus-mecanic-si-electrician-in-constructii-IDky50t.html",
+          "source": "olx",
+          "min": 3000,
+          "max": 5000
         },
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/electrician-productie-noua-fabrica-de-hrana-pentru-caini-si-pisici-IDjSAcZ.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/electricieni-si-muncitori-necalificati-IDkRQi9.html",
           "source": "olx",
           "min": 4000,
-          "max": 5000
+          "max": 8000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-electricieni-muncitori-clificati-si-necalificati-IDkRkWg.html",
+          "source": "olx",
+          "min": 3500,
+          "max": 4500
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-montatori-panouri-fotovoltaice-si-electrician-IDjSurY.html",
+          "source": "olx",
+          "min": 4000,
+          "max": 7000
         }
       ]
     },
     "constructor-drumuri": {
       "name": "Constructor de drumuri",
-      "n": 0,
-      "ads": 0,
+      "n": 1,
+      "ads": 1,
       "basisNearAmount": 0,
-      "basisFromDocument": 0,
-      "employers": 0,
-      "counties": 0,
-      "sourceCounts": {},
-      "employerShare": 0,
-      "sourceShare": 0,
+      "basisFromDocument": 1,
+      "employers": 1,
+      "counties": 1,
+      "sourceCounts": {
+        "olx": 1
+      },
+      "employerShare": 1,
+      "sourceShare": 1,
       "gaps": [
         "too_few_ads",
         "too_few_known_employers",
         "too_few_known_counties",
         "single_source",
+        "employer_concentration",
+        "source_concentration",
         "too_few_explicit_monthly"
       ],
       "explicitMonthly": 0,
-      "assumedMonthly": 0,
+      "assumedMonthly": 1,
       "periodSensitivity": null,
       "sourceSensitivity": null,
       "midpointEstimate": null,
-      "status": "no_verified_ads",
+      "status": "insufficient",
       "medianBounds": null,
-      "observedRange": null,
+      "observedRange": {
+        "min": 4000,
+        "max": 6000
+      },
       "undeclaredBasis": {
-        "n": 1,
+        "n": 3,
         "sourceCounts": {
+          "olx": 2,
           "bestjobs": 1
         },
         "observedRange": {
-          "min": 10504,
+          "min": 250,
           "max": 14180
         },
-        "midpointEstimate": 12342
+        "midpointEstimate": 4000
       },
       "examples": [
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-muncitori-calificati-constructii-drumuri-judetul-timis-arad-locatie-zona-de-vest-lugoj-arad-timisoara-IDkStJb.html",
+          "source": "olx",
+          "min": 4000,
+          "max": 6000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-muncitori-calificati-si-necalificati-constructii-drumuri-constructii-civile-IDkJxEa.html",
+          "source": "olx",
+          "min": 3000,
+          "max": 5000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/muncitori-calificati-si-necalificati-constructii-drumuri-pavatori-bordurari-cazare-gratuita-IDkNKQ9.html",
+          "source": "olx",
+          "min": 250,
+          "max": 500
+        },
         {
           "url": "https://www.bestjobs.eu/loc-de-munca/sef-laborant-in-constructii-drumuri",
           "source": "bestjobs",
@@ -2841,41 +2925,41 @@
     },
     "instalator": {
       "name": "Instalator",
-      "n": 38,
-      "ads": 38,
-      "basisNearAmount": 30,
+      "n": 43,
+      "ads": 43,
+      "basisNearAmount": 35,
       "basisFromDocument": 8,
-      "employers": 28,
-      "counties": 7,
+      "employers": 31,
+      "counties": 8,
       "sourceCounts": {
-        "olx": 8,
+        "olx": 13,
         "publi24": 10,
         "ejobs": 10,
         "bestjobs": 5,
         "anuntul": 5
       },
-      "employerShare": 0.05263157894736842,
-      "sourceShare": 0.2631578947368421,
+      "employerShare": 0.06976744186046512,
+      "sourceShare": 0.3023255813953488,
       "gaps": [],
-      "explicitMonthly": 18,
-      "assumedMonthly": 20,
-      "periodSensitivity": 0.1327450980392157,
-      "sourceSensitivity": 0.04521817770743839,
-      "midpointEstimate": 5528.75,
+      "explicitMonthly": 19,
+      "assumedMonthly": 24,
+      "periodSensitivity": 0.047619047619047616,
+      "sourceSensitivity": 0.010454545454545454,
+      "midpointEstimate": 5500,
       "status": "advertised_interval",
       "medianBounds": {
         "min": 5000,
-        "max": 6500
+        "max": 6000
       },
       "observedRange": {
         "min": 3000,
         "max": 36763
       },
       "undeclaredBasis": {
-        "n": 41,
+        "n": 76,
         "sourceCounts": {
+          "olx": 48,
           "publi24": 4,
-          "olx": 13,
           "bestjobs": 13,
           "anuntul": 11
         },
@@ -2883,38 +2967,38 @@
           "min": 2521,
           "max": 52519
         },
-        "midpointEstimate": 5777
+        "midpointEstimate": 5500
       },
       "examples": [
         {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/muncitori-constructii/anunt/angajam-instalatori-si-muncitori-necalificati-pe-perioada-nedeterminata-tel/858i2f5i2h3d7g5fe2h0e417187fg82d.html",
-          "source": "publi24",
-          "min": 3000,
-          "max": 3000
-        },
-        {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/instalatori/anunt/angajam-instalatori-cu-experienta-sau-colaboratori/7e33eh40451h7fe2d9d6463946eg8g7g.html",
-          "source": "publi24",
-          "min": 6000,
-          "max": 7000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-instalatori-IDkQyHJ.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/rota-gaz-angajeaza-instalator-calificat-IDkPKTI.html",
           "source": "olx",
-          "min": 6000,
+          "min": 4000,
+          "max": 6000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/instalator-instalatii-termice-sanitare-cu-experienta-IDkmxtl.html",
+          "source": "olx",
+          "min": 4000,
+          "max": 6000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/instalator-santier-brasov-IDkhAEH.html",
+          "source": "olx",
+          "min": 4000,
+          "max": 5500
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-instalator-instalatii-termice-si-sanitare-IDkb2jn.html",
+          "source": "olx",
+          "min": 5000,
+          "max": 6000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-instalatori-lucrari-sanitare-si-termice-IDkRkVQ.html",
+          "source": "olx",
+          "min": 5000,
           "max": 8000
-        },
-        {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/instalatori/anunt/angajare-in-lucrari-de-instalatii-sanitare-termice/6fdhg65e88d17g5hd163h1078i3e1686.html",
-          "source": "publi24",
-          "min": 4000,
-          "max": 4000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/instalator-tehnician-paradisul-acvatic-IDkLley.html",
-          "source": "olx",
-          "min": 4000,
-          "max": 4500
         }
       ]
     },
@@ -2966,30 +3050,36 @@
     },
     "specialist-resurse-umane": {
       "name": "Specialist resurse umane",
-      "n": 0,
-      "ads": 0,
-      "basisNearAmount": 0,
+      "n": 1,
+      "ads": 1,
+      "basisNearAmount": 1,
       "basisFromDocument": 0,
       "employers": 0,
-      "counties": 0,
-      "sourceCounts": {},
+      "counties": 1,
+      "sourceCounts": {
+        "olx": 1
+      },
       "employerShare": 0,
-      "sourceShare": 0,
+      "sourceShare": 1,
       "gaps": [
         "too_few_ads",
         "too_few_known_employers",
         "too_few_known_counties",
         "single_source",
+        "source_concentration",
         "too_few_explicit_monthly"
       ],
-      "explicitMonthly": 0,
+      "explicitMonthly": 1,
       "assumedMonthly": 0,
-      "periodSensitivity": null,
+      "periodSensitivity": 0,
       "sourceSensitivity": null,
       "midpointEstimate": null,
-      "status": "no_verified_ads",
+      "status": "insufficient",
       "medianBounds": null,
-      "observedRange": null,
+      "observedRange": {
+        "min": 4500,
+        "max": 4500
+      },
       "undeclaredBasis": {
         "n": 5,
         "sourceCounts": {
@@ -3003,6 +3093,12 @@
         "midpointEstimate": 5777
       },
       "examples": [
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-recrutor-pentru-campanii-influenceri-4500-lei-luna-IDkU7um.html",
+          "source": "olx",
+          "min": 4500,
+          "max": 4500
+        },
         {
           "url": "https://www.hipo.ro/locuri-de-munca/locuri_de_munca/218582/Euro-Testing-Software-Solutions/junior-IT-recruiter",
           "source": "hipo",
@@ -3026,136 +3122,145 @@
           "source": "bestjobs",
           "min": 7852,
           "max": 8692
-        },
-        {
-          "url": "https://www.bestjobs.eu/loc-de-munca/specialist-resurse-umane-per-det-2-ani",
-          "source": "bestjobs",
-          "min": 5252,
-          "max": 6302
         }
       ]
     },
     "logistician": {
       "name": "Logistician",
-      "n": 8,
-      "ads": 8,
-      "basisNearAmount": 7,
-      "basisFromDocument": 1,
+      "n": 11,
+      "ads": 11,
+      "basisNearAmount": 9,
+      "basisFromDocument": 2,
       "employers": 8,
-      "counties": 1,
+      "counties": 4,
       "sourceCounts": {
+        "olx": 3,
         "publi24": 1,
         "ejobs": 6,
         "bestjobs": 1
       },
-      "employerShare": 0.125,
-      "sourceShare": 0.75,
+      "employerShare": 0.09090909090909091,
+      "sourceShare": 0.5454545454545454,
       "gaps": [
         "too_few_ads",
         "too_few_known_employers",
         "too_few_known_counties",
         "too_few_explicit_monthly"
       ],
-      "explicitMonthly": 7,
-      "assumedMonthly": 1,
-      "periodSensitivity": 0.07156458267216756,
-      "sourceSensitivity": 0.08716458725004272,
+      "explicitMonthly": 8,
+      "assumedMonthly": 3,
+      "periodSensitivity": 0.07563682589351195,
+      "sourceSensitivity": 0.08182587538347615,
       "midpointEstimate": null,
       "status": "insufficient",
       "medianBounds": null,
       "observedRange": {
         "min": 3000,
-        "max": 8928
+        "max": 12000
       },
       "undeclaredBasis": {
-        "n": 8,
+        "n": 12,
         "sourceCounts": {
+          "olx": 4,
           "bestjobs": 8
         },
         "observedRange": {
-          "min": 3624,
+          "min": 3000,
           "max": 12605
         },
-        "midpointEstimate": 4661.25
+        "midpointEstimate": 4136.25
       },
       "examples": [
         {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/muncitori-productie-depozit-logistica/gestionari-depozit/anunt/angajam-operatori-logistica-cu-autorizatie-iscir-in-arad/7fi9h9167fgg7f12ef4i0h3525dhdf46.html",
-          "source": "publi24",
-          "min": 3285,
-          "max": 3285
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-muncitor-intretinere-logistica-spalatorie-IDkC10J.html",
+          "source": "olx",
+          "min": 3000,
+          "max": 3800
         },
         {
-          "url": "https://www.ejobs.ro/user/locuri-de-munca/operator-date-administrativ-logistica-depozit-km-a/1979757",
-          "source": "ejobs",
-          "min": 4000,
-          "max": 4100
+          "url": "https://www.olx.ro/oferta/loc-de-munca/business-development-manager-transport-logistica-IDkQAhX.html",
+          "source": "olx",
+          "min": 8000,
+          "max": 12000
         },
         {
-          "url": "https://www.ejobs.ro/user/locuri-de-munca/manager-operatiuni-logistica/1984269",
-          "source": "ejobs",
-          "min": 5000,
-          "max": 6000
+          "url": "https://www.olx.ro/oferta/loc-de-munca/sofer-categoria-b-logistica-jti-IDkSkU7.html",
+          "source": "olx",
+          "min": 3500,
+          "max": 4200
         },
         {
-          "url": "https://www.ejobs.ro/user/locuri-de-munca/gestionar-logistica/1978867",
-          "source": "ejobs",
-          "min": 6565,
-          "max": 8928
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-operator-logistica-sofer-IDjUeDM.html",
+          "source": "olx",
+          "min": 3000,
+          "max": 3500
         },
         {
-          "url": "https://www.ejobs.ro/user/locuri-de-munca/dispeceri-logistica-coordonatori-transport/1977887",
-          "source": "ejobs",
-          "min": 4000,
-          "max": 4000
+          "url": "https://www.olx.ro/oferta/loc-de-munca/manager-logistica-operatiuni-e-commerce-IDkUbXw.html",
+          "source": "olx",
+          "min": 8000,
+          "max": 12000
         }
       ]
     },
     "operator-mase-plastice": {
       "name": "Operator mase plastice",
-      "n": 3,
-      "ads": 3,
+      "n": 4,
+      "ads": 4,
       "basisNearAmount": 3,
-      "basisFromDocument": 0,
-      "employers": 3,
-      "counties": 3,
+      "basisFromDocument": 1,
+      "employers": 4,
+      "counties": 4,
       "sourceCounts": {
+        "olx": 1,
         "publi24": 3
       },
-      "employerShare": 0.3333333333333333,
-      "sourceShare": 1,
+      "employerShare": 0.25,
+      "sourceShare": 0.75,
       "gaps": [
         "too_few_ads",
         "too_few_known_employers",
         "too_few_known_counties",
-        "single_source",
         "employer_concentration",
-        "source_concentration",
-        "too_few_explicit_monthly"
+        "too_few_explicit_monthly",
+        "source_sensitivity"
       ],
       "explicitMonthly": 0,
-      "assumedMonthly": 3,
+      "assumedMonthly": 4,
       "periodSensitivity": null,
-      "sourceSensitivity": null,
+      "sourceSensitivity": 0.2972972972972973,
       "midpointEstimate": null,
       "status": "insufficient",
       "medianBounds": null,
       "observedRange": {
         "min": 2993,
-        "max": 4300
+        "max": 5200
       },
       "undeclaredBasis": {
-        "n": 1,
+        "n": 2,
         "sourceCounts": {
+          "olx": 1,
           "bestjobs": 1
         },
         "observedRange": {
           "min": 3650,
-          "max": 4044
+          "max": 5400
         },
-        "midpointEstimate": 3847
+        "midpointEstimate": 4386
       },
       "examples": [
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/operator-mase-plastice-IDjhtBp.html",
+          "source": "olx",
+          "min": 4450,
+          "max": 5400
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-operator-mase-plastice-popesti-leordeni-IDkub4j.html",
+          "source": "olx",
+          "min": 4400,
+          "max": 5200
+        },
         {
           "url": "https://www.publi24.ro/anunturi/locuri-de-munca/muncitori-productie-depozit-logistica/operatori-utilaje/anunt/angajam-operator-mase-plastice-masini-de-injectie-sector-4/94ie01ehe8gf7e73d5111i0474h9691g.html",
           "source": "publi24",
@@ -3173,162 +3278,163 @@
           "source": "publi24",
           "min": 2993,
           "max": 2993
-        },
-        {
-          "url": "https://www.bestjobs.eu/loc-de-munca/operator-mase-plastice-tehnician-5",
-          "source": "bestjobs",
-          "min": 3650,
-          "max": 4044
         }
       ]
     },
     "faiantar": {
       "name": "Faianțar",
-      "n": 1,
-      "ads": 1,
+      "n": 2,
+      "ads": 2,
       "basisNearAmount": 1,
-      "basisFromDocument": 0,
+      "basisFromDocument": 1,
       "employers": 1,
-      "counties": 1,
+      "counties": 2,
       "sourceCounts": {
+        "olx": 1,
         "publi24": 1
       },
-      "employerShare": 1,
-      "sourceShare": 1,
+      "employerShare": 0.5,
+      "sourceShare": 0.5,
       "gaps": [
         "too_few_ads",
         "too_few_known_employers",
         "too_few_known_counties",
-        "single_source",
         "employer_concentration",
-        "source_concentration",
-        "too_few_explicit_monthly"
+        "too_few_explicit_monthly",
+        "source_sensitivity"
       ],
       "explicitMonthly": 0,
-      "assumedMonthly": 1,
+      "assumedMonthly": 2,
       "periodSensitivity": null,
-      "sourceSensitivity": null,
+      "sourceSensitivity": 0.29213483146067415,
       "midpointEstimate": null,
       "status": "insufficient",
       "medianBounds": null,
       "observedRange": {
         "min": 6300,
-        "max": 6300
+        "max": 15000
       },
       "undeclaredBasis": {
-        "n": 3,
+        "n": 6,
         "sourceCounts": {
-          "olx": 1,
+          "olx": 4,
           "anuntul": 2
         },
         "observedRange": {
           "min": 4727,
-          "max": 8403
+          "max": 21008
         },
-        "midpointEstimate": 6000
+        "midpointEstimate": 7032.5
       },
       "examples": [
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/montatori-gresie-si-faianta-IDkQ53W.html",
+          "source": "olx",
+          "min": 15756,
+          "max": 21008
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajari-montator-gresie-si-faianta-IDkTi6c.html",
+          "source": "olx",
+          "min": 8000,
+          "max": 10000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-montatori-gresie-si-faianta-cu-experienta-bucuresti-si-ilfov-IDjyGVC.html",
+          "source": "olx",
+          "min": 6000,
+          "max": 9000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-muncitori-pentru-montaj-gresie-faianta-si-gips-carton-IDkRt07.html",
+          "source": "olx",
+          "min": 8000,
+          "max": 15000
+        },
         {
           "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/finisaje/anunt/montator-parchet-gresie-si-faianta-6500/4h7f59f304g07220dh1h6i93518865e5.html",
           "source": "publi24",
           "min": 6300,
           "max": 6300
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-faiantar-zugrav-IDkTgml.html",
-          "source": "olx",
-          "min": 4727,
-          "max": 8403
-        },
-        {
-          "url": "https://www.anuntul.ro/anunt-angajare-faiantari-pentru-firma-J03eQ8",
-          "source": "anuntul",
-          "min": 6000,
-          "max": 6000
-        },
-        {
-          "url": "https://www.anuntul.ro/anunt-angajare-zidar-faiantar-sau-constructor-Veznxk",
-          "source": "anuntul",
-          "min": 5000,
-          "max": 6000
         }
       ]
     },
     "contabil": {
       "name": "Contabil",
-      "n": 30,
-      "ads": 30,
+      "n": 39,
+      "ads": 39,
       "basisNearAmount": 10,
-      "basisFromDocument": 20,
-      "employers": 29,
-      "counties": 4,
+      "basisFromDocument": 29,
+      "employers": 34,
+      "counties": 10,
       "sourceCounts": {
+        "olx": 11,
         "hipo": 1,
         "publi24": 1,
-        "olx": 2,
         "bestjobs": 20,
         "ejobs": 6
       },
-      "employerShare": 0.03333333333333333,
-      "sourceShare": 0.6666666666666666,
-      "gaps": [
-        "too_few_known_counties"
-      ],
+      "employerShare": 0.02564102564102564,
+      "sourceShare": 0.5128205128205128,
+      "gaps": [],
       "explicitMonthly": 26,
-      "assumedMonthly": 4,
+      "assumedMonthly": 13,
       "periodSensitivity": 0,
-      "sourceSensitivity": 0.12157273419649657,
-      "midpointEstimate": null,
-      "status": "insufficient",
-      "medianBounds": null,
+      "sourceSensitivity": 0.09558263518659559,
+      "midpointEstimate": 5252,
+      "status": "advertised_interval",
+      "medianBounds": {
+        "min": 4989,
+        "max": 6000
+      },
       "observedRange": {
-        "min": 3151,
-        "max": 10504
+        "min": 3000,
+        "max": 12000
       },
       "undeclaredBasis": {
-        "n": 22,
+        "n": 38,
         "sourceCounts": {
-          "olx": 1,
+          "olx": 17,
           "ejobs": 1,
           "bestjobs": 16,
           "anuntul": 4
         },
         "observedRange": {
           "min": 1602,
-          "max": 12079
+          "max": 15000
         },
-        "midpointEstimate": 5711.5
+        "midpointEstimate": 5500
       },
       "examples": [
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/sc-iletrans-srl-angajeaza-in-cadrul-departamentului-contabil-IDkT9Sj.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/expert-contabil-cu-experienta-IDkwBm3.html",
           "source": "olx",
-          "min": 3500,
-          "max": 4000
+          "min": 10000,
+          "max": 15000
         },
         {
-          "url": "https://www.hipo.ro/locuri-de-munca/locuri_de_munca/270492/ABC-Human-Capital/Contabil-produc%C8%9Bie---Sector-4",
-          "source": "hipo",
-          "min": 6000,
-          "max": 6500
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-expert-contabil-IDkIzvL.html",
+          "source": "olx",
+          "min": 7000,
+          "max": 12000
         },
         {
-          "url": "https://www.ejobs.ro/user/locuri-de-munca/contabil-junior-asistent-manager-e-commerce-fionna-ro/1984404",
-          "source": "ejobs",
-          "min": 5000,
-          "max": 5000
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-contabil-sef-la-carmangeria-jupanul-IDkSblX.html",
+          "source": "olx",
+          "min": 7000,
+          "max": 10000
         },
         {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/finante-contabilitate/anunt/angajam-contabil-zona-mehala-timisoara/752dghgi2d9e7643d386593847i99i8d.html",
-          "source": "publi24",
-          "min": 4500,
-          "max": 5000
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-expert-contabil-IDkg8Jd.html",
+          "source": "olx",
+          "min": 8000,
+          "max": 10000
         },
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-contabil-cu-experienta-in-bistrita-IDkTxbi.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/economist-contabil-domeniul-constructii-IDkaBVl.html",
           "source": "olx",
           "min": 5000,
-          "max": 6000
+          "max": 10000
         }
       ]
     },
@@ -3411,81 +3517,80 @@
     },
     "sudor": {
       "name": "Sudor",
-      "n": 13,
-      "ads": 13,
-      "basisNearAmount": 12,
-      "basisFromDocument": 1,
-      "employers": 9,
-      "counties": 8,
+      "n": 19,
+      "ads": 19,
+      "basisNearAmount": 16,
+      "basisFromDocument": 3,
+      "employers": 12,
+      "counties": 12,
       "sourceCounts": {
-        "publi24": 7,
-        "olx": 4,
+        "publi24": 8,
+        "olx": 9,
         "ejobs": 1,
         "anuntul": 1
       },
-      "employerShare": 0.15384615384615385,
-      "sourceShare": 0.5384615384615384,
+      "employerShare": 0.10526315789473684,
+      "sourceShare": 0.47368421052631576,
       "gaps": [
         "too_few_ads",
-        "too_few_known_employers",
         "too_few_explicit_monthly"
       ],
-      "explicitMonthly": 6,
-      "assumedMonthly": 7,
-      "periodSensitivity": 0.024390243902439025,
-      "sourceSensitivity": 0.05,
+      "explicitMonthly": 9,
+      "assumedMonthly": 10,
+      "periodSensitivity": 0.047619047619047616,
+      "sourceSensitivity": 0,
       "midpointEstimate": null,
       "status": "insufficient",
       "medianBounds": null,
       "observedRange": {
         "min": 68,
-        "max": 6500
+        "max": 12000
       },
       "undeclaredBasis": {
-        "n": 20,
+        "n": 54,
         "sourceCounts": {
+          "olx": 38,
           "publi24": 1,
-          "olx": 4,
           "hipo": 1,
           "bestjobs": 5,
           "anuntul": 9
         },
         "observedRange": {
-          "min": 2900,
+          "min": 2500,
           "max": 36763
         },
-        "midpointEstimate": 6300
+        "midpointEstimate": 5763.5
       },
       "examples": [
         {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/sudori/anunt/angajam-sudori-si-lacatusi/85fi505h794e71id12f3f61414f62i58.html",
+          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/sudori/anunt/angajam-sudor-lacatus-pentru-montaj-structuri-metalice-de-hale-industriale/8e6g629h5fff7d4gee151013ig7e167g.html",
           "source": "publi24",
-          "min": 3000,
-          "max": 4000
+          "min": 5800,
+          "max": 6500
         },
         {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/sudori/anunt/angajam-sudor-mig-mag-argon-corgon-co2-si-electric-calificat-cu-experienta/7ee5838fii4d77h012d15ge458994e1e.html",
-          "source": "publi24",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-sudori-mig-mag-si-montatori-structuri-metalice-IDkJby2.html",
+          "source": "olx",
           "min": 4000,
-          "max": 4000
+          "max": 5500
         },
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/welder-fabricators-IDkSEoW.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-sudor-lacatus-IDkEHfo.html",
           "source": "olx",
-          "min": 68,
-          "max": 68
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-instalatori-sudori-IDkaRcR.html",
-          "source": "olx",
-          "min": 5000,
-          "max": 6000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-mecanic-buldoexcavator-sudori-ol-instalatori-apa-canal-necalificati-IDjZjUI.html",
-          "source": "olx",
-          "min": 5000,
+          "min": 4500,
           "max": 8000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-sudor-autorizat-iscir-polietilena-pe-si-otel-ol-IDkbCJM.html",
+          "source": "olx",
+          "min": 5000,
+          "max": 7000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-lacatus-si-sudori-electric-pentru-teava-IDkoRuf.html",
+          "source": "olx",
+          "min": 6000,
+          "max": 9000
         }
       ]
     },
@@ -3525,29 +3630,27 @@
     },
     "electromecanic": {
       "name": "Electromecanic",
-      "n": 13,
-      "ads": 13,
-      "basisNearAmount": 13,
+      "n": 16,
+      "ads": 16,
+      "basisNearAmount": 16,
       "basisFromDocument": 0,
-      "employers": 11,
-      "counties": 4,
+      "employers": 14,
+      "counties": 5,
       "sourceCounts": {
-        "publi24": 5,
-        "ejobs": 7,
-        "olx": 1
+        "ejobs": 8,
+        "olx": 3,
+        "publi24": 5
       },
-      "employerShare": 0.23076923076923078,
-      "sourceShare": 0.5384615384615384,
+      "employerShare": 0.1875,
+      "sourceShare": 0.5,
       "gaps": [
         "too_few_ads",
-        "too_few_known_counties",
-        "employer_concentration",
         "too_few_explicit_monthly"
       ],
-      "explicitMonthly": 7,
-      "assumedMonthly": 6,
-      "periodSensitivity": 0.12733042443474812,
-      "sourceSensitivity": 0.09568181818181819,
+      "explicitMonthly": 8,
+      "assumedMonthly": 8,
+      "periodSensitivity": 0.11782003528719859,
+      "sourceSensitivity": 0.12044444444444445,
       "midpointEstimate": null,
       "status": "insufficient",
       "medianBounds": null,
@@ -3556,48 +3659,48 @@
         "max": 10000
       },
       "undeclaredBasis": {
-        "n": 7,
+        "n": 14,
         "sourceCounts": {
+          "olx": 8,
           "hipo": 1,
-          "olx": 1,
           "bestjobs": 5
         },
         "observedRange": {
           "min": 3151,
-          "max": 8000
+          "max": 13130
         },
-        "midpointEstimate": 5383
+        "midpointEstimate": 5500
       },
       "examples": [
         {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/muncitori-constructii/anunt/comtim-romania-angajeaza-lacatus-mecanic-electrician-electromecanic-venit-net-4000-7000-lei/f6dffhe6ii4d79dhe5dh8853dfe65de1.html",
-          "source": "publi24",
-          "min": 4000,
-          "max": 7000
-        },
-        {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/ingineri/anunt/angajam-electrician-electromecanic/di35d2g437167682edd029h71979d98i.html",
-          "source": "publi24",
-          "min": 4500,
-          "max": 4500
-        },
-        {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/muncitori-constructii/anunt/comtim-romania-angajeaza-lacatus-mecanic-electrician-electromecanic-venit-net-4000-7000-lei/1799ed27i50678hee74f5g6i25e80829.html",
-          "source": "publi24",
-          "min": 4000,
-          "max": 7000
-        },
-        {
-          "url": "https://www.hipo.ro/locuri-de-munca/locuri_de_munca/270536/Working4U/Electromecanic-Service",
-          "source": "hipo",
-          "min": 6000,
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/specialist-electromecanic/1979537",
+          "source": "ejobs",
+          "min": 5000,
           "max": 8000
         },
         {
-          "url": "https://www.ejobs.ro/user/locuri-de-munca/tehnician-mentenanta-electromecanic-salesianer-prejmer/1978374",
-          "source": "ejobs",
-          "min": 5900,
-          "max": 7000
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-mecanic-electromecanic-IDkQEJn.html",
+          "source": "olx",
+          "min": 4000,
+          "max": 5000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/electromecanic-service-mentenanta-utilaje-craiova-IDkSGra.html",
+          "source": "olx",
+          "min": 4000,
+          "max": 6000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/reglor-tehnician-electromecanic-IDkRFDe.html",
+          "source": "olx",
+          "min": 5000,
+          "max": 6000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/electromecanic-arad-IDkTJY8.html",
+          "source": "olx",
+          "min": 4800,
+          "max": 4800
         }
       ]
     },
@@ -3780,29 +3883,29 @@
     },
     "asistent-medical": {
       "name": "Asistent medical",
-      "n": 7,
-      "ads": 7,
-      "basisNearAmount": 5,
-      "basisFromDocument": 2,
-      "employers": 5,
+      "n": 10,
+      "ads": 10,
+      "basisNearAmount": 7,
+      "basisFromDocument": 3,
+      "employers": 7,
       "counties": 4,
       "sourceCounts": {
+        "olx": 5,
         "publi24": 3,
-        "olx": 2,
         "bestjobs": 2
       },
-      "employerShare": 0.14285714285714285,
-      "sourceShare": 0.42857142857142855,
+      "employerShare": 0.1,
+      "sourceShare": 0.5,
       "gaps": [
         "too_few_ads",
         "too_few_known_employers",
         "too_few_known_counties",
         "too_few_explicit_monthly"
       ],
-      "explicitMonthly": 6,
-      "assumedMonthly": 1,
-      "periodSensitivity": 0.02966824644549763,
-      "sourceSensitivity": 0.13314447592067988,
+      "explicitMonthly": 7,
+      "assumedMonthly": 3,
+      "periodSensitivity": 0.14926724137931036,
+      "sourceSensitivity": 0.10639914880680955,
       "midpointEstimate": null,
       "status": "insufficient",
       "medianBounds": null,
@@ -3811,49 +3914,50 @@
         "max": 11554
       },
       "undeclaredBasis": {
-        "n": 13,
+        "n": 34,
         "sourceCounts": {
-          "hipo": 1,
           "publi24": 3,
+          "olx": 21,
+          "hipo": 1,
           "bestjobs": 7,
           "anuntul": 2
         },
         "observedRange": {
           "min": 2500,
-          "max": 7878
+          "max": 8962
         },
-        "midpointEstimate": 4650
+        "midpointEstimate": 4000
       },
       "examples": [
         {
-          "url": "https://www.hipo.ro/locuri-de-munca/locuri_de_munca/268472/DentOP/Asistent-Medical",
-          "source": "hipo",
-          "min": 3000,
-          "max": 5000
-        },
-        {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/medicina-umana/anunt/kinetoterapeut-asistent-medical-clinica-orl-specializata-in-vertij-bucuresti/1g36di8ff6057d8720688193d290h26h.html",
-          "source": "publi24",
-          "min": 4000,
-          "max": 5300
-        },
-        {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/menaj-ingrijire-persoane/ingrijitori-batrani/anunt/oferta-de-lucru-israel-asistenta-medicala-sau-infirmiera/94h014g98ie577feehf7d66h7h8f4401.html",
-          "source": "publi24",
-          "min": 11554,
-          "max": 11554
-        },
-        {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/medicina-umana/anunt/angajam-asistenta-medicala-in-otopeni-pentru-camin-persoane-varstnice/6i3dh2he3h8e7gf01514eiif1265g15d.html",
+          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/medicina-umana/anunt/angajam-asistenta-medicala-in-otopeni-pentru-camin-persoane-varstnice/8d253fffid7f7d3224ggi30gf942h78f.html",
           "source": "publi24",
           "min": 5500,
           "max": 6500
         },
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/asistenta-medicala-centru-de-seniori-in-zona-parcul-carol-5-300-6-300-lei-luna-IDkRukk.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-asistent-medical-generalist-clinica-jadent-IDkRCZS.html",
           "source": "olx",
-          "min": 5300,
-          "max": 6300
+          "min": 3676,
+          "max": 6302
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/asistenta-medicala-stomatologie-IDkIb1K.html",
+          "source": "olx",
+          "min": 3000,
+          "max": 5000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/asistent-medical-clinica-stomatologica-cit-IDkeDok.html",
+          "source": "olx",
+          "min": 3300,
+          "max": 3500
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-asistenta-medicala-pentru-caminul-de-batrani-sf-dumitru-din-bragadiru-ilfov-IDkRtcK.html",
+          "source": "olx",
+          "min": 4500,
+          "max": 6500
         }
       ]
     },
@@ -3918,9 +4022,9 @@
       "medianBounds": null,
       "observedRange": null,
       "undeclaredBasis": {
-        "n": 3,
+        "n": 5,
         "sourceCounts": {
-          "olx": 2,
+          "olx": 4,
           "bestjobs": 1
         },
         "observedRange": {
@@ -3930,6 +4034,18 @@
         "midpointEstimate": 4201.5
       },
       "examples": [
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-coordonator-productie-comenzi-sticla-termoizolanta-IDkSvQk.html",
+          "source": "olx",
+          "min": 3000,
+          "max": 4000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/manager-hala-productie-sticla-termopan-dandis-nuta-srl-IDkSlfI.html",
+          "source": "olx",
+          "min": 4000,
+          "max": 6000
+        },
         {
           "url": "https://www.olx.ro/oferta/loc-de-munca/reprezentant-vanzarii-in-showroom-sticla-IDkKW1k.html",
           "source": "olx",
@@ -3952,39 +4068,38 @@
     },
     "dulgher": {
       "name": "Dulgher",
-      "n": 6,
-      "ads": 6,
-      "basisNearAmount": 6,
-      "basisFromDocument": 0,
-      "employers": 6,
-      "counties": 5,
+      "n": 10,
+      "ads": 10,
+      "basisNearAmount": 9,
+      "basisFromDocument": 1,
+      "employers": 10,
+      "counties": 8,
       "sourceCounts": {
-        "publi24": 2,
-        "olx": 4
+        "olx": 8,
+        "publi24": 2
       },
-      "employerShare": 0.16666666666666666,
-      "sourceShare": 0.6666666666666666,
+      "employerShare": 0.1,
+      "sourceShare": 0.8,
       "gaps": [
         "too_few_ads",
-        "too_few_known_employers",
         "too_few_explicit_monthly"
       ],
-      "explicitMonthly": 2,
-      "assumedMonthly": 4,
-      "periodSensitivity": 0.06521739130434782,
-      "sourceSensitivity": 0.04081632653061224,
+      "explicitMonthly": 3,
+      "assumedMonthly": 7,
+      "periodSensitivity": 0,
+      "sourceSensitivity": 0.10869565217391304,
       "midpointEstimate": null,
       "status": "insufficient",
       "medianBounds": null,
       "observedRange": {
         "min": 5000,
-        "max": 8000
+        "max": 10504
       },
       "undeclaredBasis": {
-        "n": 9,
+        "n": 15,
         "sourceCounts": {
-          "olx": 8,
-          "publi24": 1
+          "publi24": 2,
+          "olx": 13
         },
         "observedRange": {
           "min": 4000,
@@ -3994,34 +4109,34 @@
       },
       "examples": [
         {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/muncitori-constructii/anunt/muncitori-calificati-constructii-echipa-de-dulgheri/89hh141g2d9e730e1893ed3g78de3f3f.html",
+          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/muncitori-constructii/anunt/angajam-dulgheri-calificati-salariu-6000-7000-ron/95h9d8587208707h1i002g79f17f42d5.html",
           "source": "publi24",
-          "min": 7000,
+          "min": 6000,
           "max": 7000
         },
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-inginer-constructor-fierari-dulgheri-finisori-IDkLv1S.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajez-dulgherii-IDkSVly.html",
           "source": "olx",
           "min": 5000,
-          "max": 10000
+          "max": 7000
         },
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/zidari-dulgheri-IDkTQJG.html",
-          "source": "olx",
-          "min": 4500,
-          "max": 6500
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-in-suceava-fara-deplasari-fierari-betonisti-dulgheri-si-zidari-salariu-motivant-IDkMYSN.html",
-          "source": "olx",
-          "min": 4500,
-          "max": 6000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-dulgher-sau-zidar-pt-constructie-case-la-rosu-IDjN5jH.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-dulgher-cu-experienta-IDkRyDS.html",
           "source": "olx",
           "min": 6000,
-          "max": 9000
+          "max": 7000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-dulgher-cu-experienta-pentru-lucrari-constructiicofraje-cu-panouri-doka-IDjLych.html",
+          "source": "olx",
+          "min": 7878,
+          "max": 10504
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajez-dulgheri-si-fierari-in-constructii-IDkSlVO.html",
+          "source": "olx",
+          "min": 5000,
+          "max": 8000
         }
       ]
     },
@@ -4173,48 +4288,48 @@
         "max": 6500
       },
       "undeclaredBasis": {
-        "n": 10,
+        "n": 14,
         "sourceCounts": {
-          "olx": 3,
+          "olx": 7,
           "publi24": 1,
           "anuntul": 6
         },
         "observedRange": {
-          "min": 4727,
-          "max": 8500
+          "min": 250,
+          "max": 9000
         },
-        "midpointEstimate": 6900
+        "midpointEstimate": 6775
       },
       "examples": [
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angaje-montatori-gips-carton-si-zugravi-cu-experienta-in-domeniu-IDk6IdK.html",
+          "source": "olx",
+          "min": 250,
+          "max": 450
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-finisori-zugravi-rigipsari-300-450-lei-pe-zi-cazare-IDkstCa.html",
+          "source": "olx",
+          "min": 300,
+          "max": 450
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-zugravi-cu-experienta-oferim-cazare-conditii-excelente-IDkRL90.html",
+          "source": "olx",
+          "min": 6500,
+          "max": 9000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-zugravi-si-faiantari-IDkyJlo.html",
+          "source": "olx",
+          "min": 6000,
+          "max": 7000
+        },
         {
           "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-rigipsari-zidari-zugravi-IDkEICt.html",
           "source": "olx",
           "min": 6000,
           "max": 8000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajez-muncitori-in-constructii-zugravi-si-rigipsari-IDkzgq1.html",
-          "source": "olx",
-          "min": 7000,
-          "max": 8500
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-faiantar-zugrav-IDkTgml.html",
-          "source": "olx",
-          "min": 4727,
-          "max": 8403
-        },
-        {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/finisaje/anunt/angajare-zidari-zugravi-rigipsari-si-necalificati-pentru-bucuresti/1d32853952857gi11h4d88e7g5480991.html",
-          "source": "publi24",
-          "min": 6500,
-          "max": 6500
-        },
-        {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/muncitori-constructii/anunt/angajam-dulgher-zugrav-muncitori-constructii/f5g7dd0gff1f79ied1g1dgei9877h912.html",
-          "source": "publi24",
-          "min": 5000,
-          "max": 6500
         }
       ]
     },
@@ -4254,28 +4369,28 @@
     },
     "operator-productie": {
       "name": "Operator producție",
-      "n": 33,
-      "ads": 33,
-      "basisNearAmount": 32,
-      "basisFromDocument": 1,
-      "employers": 22,
-      "counties": 12,
+      "n": 47,
+      "ads": 47,
+      "basisNearAmount": 41,
+      "basisFromDocument": 6,
+      "employers": 30,
+      "counties": 17,
       "sourceCounts": {
+        "olx": 23,
         "publi24": 21,
         "undelucram": 1,
-        "olx": 9,
         "bestjobs": 1,
         "anuntul": 1
       },
-      "employerShare": 0.15151515151515152,
-      "sourceShare": 0.6363636363636364,
+      "employerShare": 0.1702127659574468,
+      "sourceShare": 0.48936170212765956,
       "gaps": [
         "too_few_explicit_monthly"
       ],
-      "explicitMonthly": 1,
-      "assumedMonthly": 32,
+      "explicitMonthly": 3,
+      "assumedMonthly": 44,
       "periodSensitivity": 0.0986046511627907,
-      "sourceSensitivity": 0.011695906432748537,
+      "sourceSensitivity": 0.010835913312693499,
       "midpointEstimate": null,
       "status": "insufficient",
       "medianBounds": null,
@@ -4284,128 +4399,128 @@
         "max": 7000
       },
       "undeclaredBasis": {
-        "n": 6,
+        "n": 20,
         "sourceCounts": {
-          "olx": 1,
+          "olx": 15,
           "hipo": 1,
           "bestjobs": 3,
           "anuntul": 1
         },
         "observedRange": {
-          "min": 2700,
+          "min": 2600,
           "max": 6302
         },
-        "midpointEstimate": 3850.75
+        "midpointEstimate": 3750
       },
       "examples": [
         {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/muncitori-productie-depozit-logistica/operatori-productie/anunt/angajam-operatori-productie-in-3-schimburi-cu-contract-nedeterminat-timisoara/83f968i695g973iidd27e99761ef5gd0.html",
-          "source": "publi24",
-          "min": 2656,
-          "max": 2656
-        },
-        {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/muncitori-productie-depozit-logistica/operatori-productie/anunt/manpower-recruteaza-operatori-productie-pe-perioada-nedeterminata-in-satu-mare/7h8736ee5g937i94df876gh41i309600.html",
-          "source": "publi24",
-          "min": 2873,
-          "max": 2873
-        },
-        {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/muncitori-productie-depozit-logistica/operatori-productie/anunt/manpower-angajeaza-operatori-productie-in-timisoara/7f961gd64e9979h3163g229h09907hig.html",
-          "source": "publi24",
-          "min": 2629,
-          "max": 2629
-        },
-        {
-          "url": "https://www.undelucram.ro/ro/locuri-de-munca/operator-productie-divizia-anvelope-tires/95732",
-          "source": "undelucram",
-          "min": 503,
-          "max": 503
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-operator-productie-iasi-IDkTHSj.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/operator-productie-fabrica-clinceni-transport-asigurat-IDkTAXD.html",
           "source": "olx",
-          "min": 2700,
+          "min": 3400,
+          "max": 4300
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/operator-ptoductie-mobilier-IDkRSux.html",
+          "source": "olx",
+          "min": 4000,
+          "max": 5000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-operator-productie-fabricarea-produselor-din-carne-IDkLZD7.html",
+          "source": "olx",
+          "min": 2600,
           "max": 3000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-operator-productie-IDkyM8n.html",
+          "source": "olx",
+          "min": 3500,
+          "max": 4000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/fabrica-incaltaminte-angajam-operator-productie-IDkRo05.html",
+          "source": "olx",
+          "min": 3700,
+          "max": 4500
         }
       ]
     },
     "bucatar": {
       "name": "Bucătar",
-      "n": 18,
-      "ads": 18,
-      "basisNearAmount": 15,
-      "basisFromDocument": 3,
-      "employers": 12,
-      "counties": 6,
+      "n": 31,
+      "ads": 31,
+      "basisNearAmount": 24,
+      "basisFromDocument": 7,
+      "employers": 21,
+      "counties": 13,
       "sourceCounts": {
-        "ejobs": 9,
+        "ejobs": 10,
+        "olx": 15,
         "publi24": 2,
-        "olx": 3,
         "bestjobs": 1,
         "anuntul": 3
       },
-      "employerShare": 0.1111111111111111,
-      "sourceShare": 0.5,
-      "gaps": [
-        "too_few_ads",
-        "source_sensitivity"
-      ],
-      "explicitMonthly": 12,
-      "assumedMonthly": 6,
-      "periodSensitivity": 0.05405405405405406,
-      "sourceSensitivity": 0.17714285714285713,
-      "midpointEstimate": null,
-      "status": "insufficient",
-      "medianBounds": null,
+      "employerShare": 0.0967741935483871,
+      "sourceShare": 0.4838709677419355,
+      "gaps": [],
+      "explicitMonthly": 15,
+      "assumedMonthly": 16,
+      "periodSensitivity": 0,
+      "sourceSensitivity": 0.05263157894736842,
+      "midpointEstimate": 4750,
+      "status": "advertised_interval",
+      "medianBounds": {
+        "min": 4500,
+        "max": 4753
+      },
       "observedRange": {
         "min": 2700,
-        "max": 9000
+        "max": 10000
       },
       "undeclaredBasis": {
-        "n": 30,
+        "n": 92,
         "sourceCounts": {
+          "olx": 66,
           "publi24": 2,
-          "olx": 4,
           "anuntul": 19,
           "bestjobs": 5
         },
         "observedRange": {
-          "min": 2500,
-          "max": 9453
+          "min": 1000,
+          "max": 10000
         },
-        "midpointEstimate": 5000
+        "midpointEstimate": 5075
       },
       "examples": [
         {
-          "url": "https://www.ejobs.ro/user/locuri-de-munca/lucrator-in-bucatarie-fast-food-grand-arena-mall/1982640",
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/preparator-bucatarie-rece/1982266",
           "source": "ejobs",
+          "min": 4500,
+          "max": 5000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-personal-in-bucatarie-pe-strada-republicii-IDkRDeq.html",
+          "source": "olx",
+          "min": 3750,
+          "max": 4000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-lucrator-bucatarie-IDkSty9.html",
+          "source": "olx",
+          "min": 2700,
+          "max": 3500
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-pizzer-cu-experienta-si-bucatar-cu-experienta-IDkTtTk.html",
+          "source": "olx",
+          "min": 4500,
+          "max": 5000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-personal-pentru-bucatarie-de-tip-fast-food-IDk3fNo.html",
+          "source": "olx",
           "min": 4000,
-          "max": 4500
-        },
-        {
-          "url": "https://www.ejobs.ro/user/locuri-de-munca/lucrator-curatenie-bucatarie/1978818",
-          "source": "ejobs",
-          "min": 3000,
-          "max": 3000
-        },
-        {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/horeca/bucatar-ajutor-bucatar/anunt/bucatareasa/7033g3091e6775022fidi3604hf677gg.html",
-          "source": "publi24",
-          "min": 2800,
-          "max": 2800
-        },
-        {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/horeca/personal-curatenie-si-cameristi/anunt/angajam-lucrator-curatenie-bucatarie-ghiroda-timis/3699d47832g573i21715e89gd2di9118.html",
-          "source": "publi24",
-          "min": 3000,
-          "max": 3000
-        },
-        {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/horeca/personal-fast-food/anunt/restaurant-mado-zalau-preparatori-bucatarie/359hi16f612e711319e6hh0f192e32de.html",
-          "source": "publi24",
-          "min": 3600,
-          "max": 3600
+          "max": 6000
         }
       ]
     },
@@ -4502,90 +4617,110 @@
       "medianBounds": null,
       "observedRange": null,
       "undeclaredBasis": {
-        "n": 14,
+        "n": 19,
         "sourceCounts": {
-          "olx": 6,
+          "olx": 11,
           "publi24": 3,
           "anuntul": 5
         },
         "observedRange": {
-          "min": 4500,
+          "min": 3500,
           "max": 26260
         },
-        "midpointEstimate": 6750
+        "midpointEstimate": 6500
       },
       "examples": [
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/zidari-dulgheri-IDkTQJG.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajez-tencuitori-zidari-si-tinichigii-lucrari-de-constructii-IDkfLl6.html",
           "source": "olx",
-          "min": 4500,
-          "max": 6500
+          "min": 4000,
+          "max": 5500
         },
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-in-suceava-fara-deplasari-fierari-betonisti-dulgheri-si-zidari-salariu-motivant-IDkMYSN.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajez-zidari-bca-danemarca-IDkCO1d.html",
           "source": "olx",
-          "min": 4500,
+          "min": 3500,
           "max": 6000
         },
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-rigipsari-zidari-zugravi-IDkEICt.html",
-          "source": "olx",
-          "min": 6000,
-          "max": 8000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-dulgher-sau-zidar-pt-constructie-case-la-rosu-IDjN5jH.html",
-          "source": "olx",
-          "min": 6000,
-          "max": 9000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-zidari-dulgheri-fierari-in-sibiu-IDkuA5z.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-rigipsari-tencuitori-zidari-IDkG0O5.html",
           "source": "olx",
           "min": 5000,
           "max": 8000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajez-zidari-finisori-IDk8mKH.html",
+          "source": "olx",
+          "min": 5000,
+          "max": 7000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/firma-de-constructii-angajeaza-zidari-IDkCjnM.html",
+          "source": "olx",
+          "min": 5000,
+          "max": 7000
         }
       ]
     },
     "tipograf": {
       "name": "Tipograf",
-      "n": 0,
-      "ads": 0,
+      "n": 1,
+      "ads": 1,
       "basisNearAmount": 0,
-      "basisFromDocument": 0,
-      "employers": 0,
-      "counties": 0,
-      "sourceCounts": {},
-      "employerShare": 0,
-      "sourceShare": 0,
+      "basisFromDocument": 1,
+      "employers": 1,
+      "counties": 1,
+      "sourceCounts": {
+        "olx": 1
+      },
+      "employerShare": 1,
+      "sourceShare": 1,
       "gaps": [
         "too_few_ads",
         "too_few_known_employers",
         "too_few_known_counties",
         "single_source",
+        "employer_concentration",
+        "source_concentration",
         "too_few_explicit_monthly"
       ],
       "explicitMonthly": 0,
-      "assumedMonthly": 0,
+      "assumedMonthly": 1,
       "periodSensitivity": null,
       "sourceSensitivity": null,
       "midpointEstimate": null,
-      "status": "no_verified_ads",
+      "status": "insufficient",
       "medianBounds": null,
-      "observedRange": null,
+      "observedRange": {
+        "min": 5600,
+        "max": 6300
+      },
       "undeclaredBasis": {
-        "n": 2,
+        "n": 3,
         "sourceCounts": {
+          "olx": 1,
           "publi24": 1,
           "bestjobs": 1
         },
         "observedRange": {
-          "min": 4202,
+          "min": 3300,
           "max": 4202
         },
         "midpointEstimate": 4202
       },
       "examples": [
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-tipograf-imprimator-popesti-leordeni-IDkubRj.html",
+          "source": "olx",
+          "min": 5600,
+          "max": 6300
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/masinist-ghilotina-in-tipografie-faur-poarta-4-IDkQ2Lw.html",
+          "source": "olx",
+          "min": 3300,
+          "max": 3500
+        },
         {
           "url": "https://www.publi24.ro/anunturi/locuri-de-munca/muncitori-productie-depozit-logistica/operatori-productie/anunt/angajam-tipograf-offset-ploiesti/fh8hif2g237475772h419fh4eh08i1f8.html",
           "source": "publi24",
@@ -4602,37 +4737,51 @@
     },
     "marinar": {
       "name": "Marinar",
-      "n": 0,
-      "ads": 0,
-      "basisNearAmount": 0,
+      "n": 1,
+      "ads": 1,
+      "basisNearAmount": 1,
       "basisFromDocument": 0,
-      "employers": 0,
-      "counties": 0,
-      "sourceCounts": {},
-      "employerShare": 0,
-      "sourceShare": 0,
+      "employers": 1,
+      "counties": 1,
+      "sourceCounts": {
+        "olx": 1
+      },
+      "employerShare": 1,
+      "sourceShare": 1,
       "gaps": [
         "too_few_ads",
         "too_few_known_employers",
         "too_few_known_counties",
         "single_source",
+        "employer_concentration",
+        "source_concentration",
         "too_few_explicit_monthly"
       ],
-      "explicitMonthly": 0,
+      "explicitMonthly": 1,
       "assumedMonthly": 0,
-      "periodSensitivity": null,
+      "periodSensitivity": 0,
       "sourceSensitivity": null,
       "midpointEstimate": null,
-      "status": "no_verified_ads",
+      "status": "insufficient",
       "medianBounds": null,
-      "observedRange": null,
+      "observedRange": {
+        "min": 3500,
+        "max": 6000
+      },
       "undeclaredBasis": {
         "n": 0,
         "observedRange": null,
         "midpointEstimate": null,
         "sourceCounts": {}
       },
-      "examples": []
+      "examples": [
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/operatori-masinarii-automate-procesare-ambalare-feliere-carne-IDkTyDF.html",
+          "source": "olx",
+          "min": 3500,
+          "max": 6000
+        }
+      ]
     },
     "sofer-ambulanta": {
       "name": "Șofer de ambulanță",
@@ -4907,31 +5056,30 @@
     },
     "constructor": {
       "name": "Muncitor în construcții",
-      "n": 19,
-      "ads": 19,
-      "basisNearAmount": 12,
-      "basisFromDocument": 7,
-      "employers": 15,
-      "counties": 7,
+      "n": 25,
+      "ads": 25,
+      "basisNearAmount": 17,
+      "basisFromDocument": 8,
+      "employers": 20,
+      "counties": 10,
       "sourceCounts": {
+        "olx": 8,
         "publi24": 7,
         "ejobs": 3,
         "bestjobs": 4,
-        "olx": 2,
         "anuntul": 3
       },
-      "employerShare": 0.05263157894736842,
-      "sourceShare": 0.3684210526315789,
+      "employerShare": 0.04,
+      "sourceShare": 0.32,
       "gaps": [
         "too_few_ads",
         "too_few_explicit_monthly",
-        "pay_period_sensitivity",
-        "source_sensitivity"
+        "pay_period_sensitivity"
       ],
-      "explicitMonthly": 8,
-      "assumedMonthly": 11,
-      "periodSensitivity": 0.21858350500816937,
-      "sourceSensitivity": 0.1660909090909091,
+      "explicitMonthly": 9,
+      "assumedMonthly": 16,
+      "periodSensitivity": 0.15775596894682878,
+      "sourceSensitivity": 0.043478260869565216,
       "midpointEstimate": null,
       "status": "insufficient",
       "medianBounds": null,
@@ -4940,49 +5088,49 @@
         "max": 15000
       },
       "undeclaredBasis": {
-        "n": 28,
+        "n": 119,
         "sourceCounts": {
+          "olx": 96,
           "publi24": 6,
-          "olx": 5,
           "bestjobs": 9,
           "anuntul": 8
         },
         "observedRange": {
-          "min": 180,
-          "max": 13130
+          "min": 5,
+          "max": 30461
         },
-        "midpointEstimate": 6125
+        "midpointEstimate": 6000
       },
       "examples": [
         {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/muncitori-constructii/anunt/angajam-muncitor-calificat-in-constructii/7ihge746fi6e7323df7296e95f3571i3.html",
-          "source": "publi24",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-in-constructii-IDkBSNe.html",
+          "source": "olx",
           "min": 4000,
-          "max": 4100
+          "max": 6000
         },
         {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/soferi-transporturi/transport-marfa-intern/anunt/depozit-materiale-de-constructii-giroc-angajam-2-soferi-transport-marfa-tel-zerosaptenouanoua401995/701de8de654974didf8f7e1354478dhh.html",
-          "source": "publi24",
-          "min": 4600,
-          "max": 4600
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-urgent-meserias-in-constructii-muncitor-calificat-IDkwsIy.html",
+          "source": "olx",
+          "min": 8000,
+          "max": 10000
         },
         {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/muncitori-constructii/anunt/angajam-muncitori-calificati-si-necalificati-in-constructii/6g2h9i51d5567i612e820f870ghgf65e.html",
-          "source": "publi24",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-muncitorii-in-constructii-IDkBlqp.html",
+          "source": "olx",
+          "min": 4000,
+          "max": 5500
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/sef-santier-in-constructii-IDkPWzD.html",
+          "source": "olx",
           "min": 7000,
-          "max": 9000
+          "max": 10000
         },
         {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/muncitori-constructii/anunt/muncitori-calificati-in-constructii/6g86171f89697fg0e8ff33fi92427243.html",
-          "source": "publi24",
-          "min": 5500,
-          "max": 7000
-        },
-        {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/zugravi/anunt/angajam-muncitori-necalificati-pentru-lucrari-de-constructii/69efiiii874074i51dgdh9ge1616202i.html",
-          "source": "publi24",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/muncitori-constructii-calificati-IDkS89r.html",
+          "source": "olx",
           "min": 4000,
-          "max": 4000
+          "max": 6000
         }
       ]
     },
@@ -5112,32 +5260,31 @@
     },
     "mecanic-auto": {
       "name": "Mecanic auto",
-      "n": 6,
-      "ads": 6,
-      "basisNearAmount": 4,
-      "basisFromDocument": 2,
-      "employers": 5,
-      "counties": 2,
+      "n": 9,
+      "ads": 9,
+      "basisNearAmount": 6,
+      "basisFromDocument": 3,
+      "employers": 8,
+      "counties": 5,
       "sourceCounts": {
+        "olx": 4,
         "ejobs": 3,
-        "olx": 1,
         "publi24": 1,
         "anuntul": 1
       },
-      "employerShare": 0.16666666666666666,
-      "sourceShare": 0.5,
+      "employerShare": 0.1111111111111111,
+      "sourceShare": 0.4444444444444444,
       "gaps": [
         "too_few_ads",
         "too_few_known_employers",
-        "too_few_known_counties",
         "too_few_explicit_monthly",
         "pay_period_sensitivity",
         "source_sensitivity"
       ],
       "explicitMonthly": 5,
-      "assumedMonthly": 1,
-      "periodSensitivity": 0.4375,
-      "sourceSensitivity": 0.30434782608695654,
+      "assumedMonthly": 4,
+      "periodSensitivity": 0.375,
+      "sourceSensitivity": 0.2727272727272727,
       "midpointEstimate": null,
       "status": "insufficient",
       "medianBounds": null,
@@ -5146,78 +5293,78 @@
         "max": 10000
       },
       "undeclaredBasis": {
-        "n": 15,
+        "n": 71,
         "sourceCounts": {
-          "olx": 5,
-          "publi24": 2,
+          "publi24": 4,
+          "olx": 59,
           "bestjobs": 6,
           "anuntul": 2
         },
         "observedRange": {
-          "min": 3500,
-          "max": 13130
+          "min": 3000,
+          "max": 21008
         },
         "midpointEstimate": 6500
       },
       "examples": [
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/mecanic-auto-pregatitor-auto-IDkBhX6.html",
-          "source": "olx",
+          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/service-spalatorie-auto/service-auto/anunt/angajez-mecanic-auto-cu-experienta/944h971031e67644e2h88h8237f6232i.html",
+          "source": "publi24",
+          "min": 7000,
+          "max": 7000
+        },
+        {
+          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/service-spalatorie-auto/service-auto/anunt/angajam-mecanic-auto-salariu-6000-9000-ron/8iegdg12i36f73g0e3359if9g7ief755.html",
+          "source": "publi24",
           "min": 6000,
-          "max": 10000
+          "max": 9000
         },
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajez-mecanic-auto-electrician-auto-IDkTxet.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-mecanic-auto-brasov-IDkMuyx.html",
           "source": "olx",
-          "min": 4000,
-          "max": 8000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/mecanici-auto-si-electricieni-auto-IDkLuZ6.html",
-          "source": "olx",
-          "min": 5000,
-          "max": 8000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-electrician-tehnician-dicagnoza-mecanic-auto-IDkSPYW.html",
-          "source": "olx",
-          "min": 5000,
-          "max": 10000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajez-spalare-curatare-vopsire-utilaje-mecanic-utilaje-mecanic-auto-sau-electromecanic-sau-sudor-sau-tanar-dinamic-zona-chitila-sectorul-1-IDkQJhz.html",
-          "source": "olx",
-          "min": 4000,
+          "min": 4500,
           "max": 6000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-mecanic-auto-IDjogDg.html",
+          "source": "olx",
+          "min": 4500,
+          "max": 8000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/firma-super-imposer-din-timisoara-angajeaza-mecanic-auto-cu-experienta-pentru-intretinerea-si-repararea-autobuzelor-si-microbuzelor-din-flota-proprie-IDkHAdv.html",
+          "source": "olx",
+          "min": 5000,
+          "max": 6500
         }
       ]
     },
     "operator-call-center": {
       "name": "Operator call center",
-      "n": 10,
-      "ads": 10,
-      "basisNearAmount": 6,
+      "n": 12,
+      "ads": 12,
+      "basisNearAmount": 8,
       "basisFromDocument": 4,
-      "employers": 10,
-      "counties": 2,
+      "employers": 12,
+      "counties": 3,
       "sourceCounts": {
+        "ejobs": 5,
+        "olx": 1,
         "hipo": 1,
-        "ejobs": 4,
         "bestjobs": 4,
         "publi24": 1
       },
-      "employerShare": 0.1,
-      "sourceShare": 0.4,
+      "employerShare": 0.08333333333333333,
+      "sourceShare": 0.4166666666666667,
       "gaps": [
         "too_few_ads",
         "too_few_known_counties",
-        "too_few_explicit_monthly",
         "source_sensitivity"
       ],
-      "explicitMonthly": 9,
-      "assumedMonthly": 1,
-      "periodSensitivity": 0.0375,
-      "sourceSensitivity": 0.2336746987951807,
+      "explicitMonthly": 10,
+      "assumedMonthly": 2,
+      "periodSensitivity": 0.09036144578313253,
+      "sourceSensitivity": 0.16022099447513813,
       "midpointEstimate": null,
       "status": "insufficient",
       "medianBounds": null,
@@ -5226,48 +5373,48 @@
         "max": 7090
       },
       "undeclaredBasis": {
-        "n": 9,
+        "n": 14,
         "sourceCounts": {
-          "olx": 2,
+          "olx": 7,
           "hipo": 1,
           "bestjobs": 6
         },
         "observedRange": {
           "min": 2500,
-          "max": 8666
+          "max": 12000
         },
-        "midpointEstimate": 3413.5
+        "midpointEstimate": 3725
       },
       "examples": [
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-operator-call-center-si-content-creator-tiktok-in-alba-iulia-IDkTXYf.html",
-          "source": "olx",
-          "min": 2500,
-          "max": 4500
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-agent-vanzari-call-center-proiect-limba-romana-IDk3aSF.html",
-          "source": "olx",
-          "min": 2700,
-          "max": 3300
-        },
-        {
-          "url": "https://www.hipo.ro/locuri-de-munca/locuri_de_munca/269733/Randstad-Romania/Operator-back-office/call-center-italiana-Iasi",
-          "source": "hipo",
-          "min": 3200,
-          "max": 3200
-        },
-        {
-          "url": "https://www.hipo.ro/locuri-de-munca/locuri_de_munca/270465/ABC-Human-Capital/Customer-Support-Specialist-%E2%80%93-medical-field---middle-level",
-          "source": "hipo",
-          "min": 5000,
-          "max": 5500
-        },
-        {
-          "url": "https://www.ejobs.ro/user/locuri-de-munca/consultant-vanzari-bb-agent-call-center/1981762",
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/ofiter-de-credit-call-center-vanzari-colectare/1981243",
           "source": "ejobs",
-          "min": 3000,
+          "min": 4500,
           "max": 5000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-customer-suport-cu-limba-ceha-sau-slovaca-IDkQFxu.html",
+          "source": "olx",
+          "min": 8000,
+          "max": 12000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/call-center-operatori-venituri-minime-4000-lei-bucuresti-romarket-ro-IDjinlo.html",
+          "source": "olx",
+          "min": 4000,
+          "max": 4000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/agent-call-center-cu-engleza-avansat-in-iasi-grupa-din-septembrie-IDkQeZR.html",
+          "source": "olx",
+          "min": 3200,
+          "max": 4200
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/call-center-cu-limba-bulgara-vorbitor-nativ-call-center-afumati-IDkOT4i.html",
+          "source": "olx",
+          "min": 6827,
+          "max": 6827
         }
       ]
     },
@@ -5366,12 +5513,24 @@
       "medianBounds": null,
       "observedRange": null,
       "undeclaredBasis": {
-        "n": 0,
-        "observedRange": null,
-        "midpointEstimate": null,
-        "sourceCounts": {}
+        "n": 1,
+        "sourceCounts": {
+          "olx": 1
+        },
+        "observedRange": {
+          "min": 100,
+          "max": 110
+        },
+        "midpointEstimate": 105
       },
-      "examples": []
+      "examples": [
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajez-sofer-taxi-dacia-logan-cu-gpl-IDkzSVw.html",
+          "source": "olx",
+          "min": 100,
+          "max": 110
+        }
+      ]
     },
     "invatator": {
       "name": "Învățător",
@@ -5440,78 +5599,78 @@
     },
     "tamplar": {
       "name": "Tâmplar",
-      "n": 7,
-      "ads": 7,
-      "basisNearAmount": 6,
-      "basisFromDocument": 1,
-      "employers": 6,
-      "counties": 5,
+      "n": 12,
+      "ads": 12,
+      "basisNearAmount": 9,
+      "basisFromDocument": 3,
+      "employers": 9,
+      "counties": 8,
       "sourceCounts": {
+        "olx": 7,
         "publi24": 4,
-        "olx": 2,
         "anuntul": 1
       },
-      "employerShare": 0.14285714285714285,
-      "sourceShare": 0.5714285714285714,
+      "employerShare": 0.16666666666666666,
+      "sourceShare": 0.5833333333333334,
       "gaps": [
         "too_few_ads",
         "too_few_known_employers",
         "too_few_explicit_monthly"
       ],
       "explicitMonthly": 1,
-      "assumedMonthly": 6,
+      "assumedMonthly": 11,
       "periodSensitivity": 0,
       "sourceSensitivity": 0.045454545454545456,
       "midpointEstimate": null,
       "status": "insufficient",
       "medianBounds": null,
       "observedRange": {
-        "min": 4000,
+        "min": 3500,
         "max": 8000
       },
       "undeclaredBasis": {
-        "n": 11,
+        "n": 38,
         "sourceCounts": {
-          "olx": 2,
+          "olx": 29,
           "anuntul": 6,
           "publi24": 3
         },
         "observedRange": {
-          "min": 3500,
-          "max": 8000
+          "min": 3000,
+          "max": 10000
         },
-        "midpointEstimate": 5750
+        "midpointEstimate": 5125
       },
       "examples": [
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-tehnician-ofertare-tamplarie-aluminiu-entry-level-IDkPM9J.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/montatori-tamplarie-pvc-si-aluminiu-IDkSyMV.html",
           "source": "olx",
-          "min": 4500,
-          "max": 7000
-        },
-        {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/sudori/anunt/montator-si-muncitor-productie-tamplarie-termopan-aluminiu/3h4f586d435371f4d91if65de87391h8.html",
-          "source": "publi24",
-          "min": 4000,
-          "max": 4000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-montatori-tamplarie-pvc-si-sticla-securizata-IDkpwqY.html",
-          "source": "olx",
-          "min": 3500,
+          "min": 3000,
           "max": 6000
         },
         {
-          "url": "https://www.anuntul.ro/anunt-angajare-montatori-tamplarii-si-fatade-xPvqd9",
-          "source": "anuntul",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/confectioner-montator-tamplarie-al-si-pvc-IDkSuVj.html",
+          "source": "olx",
           "min": 4500,
-          "max": 8000
+          "max": 5500
         },
         {
-          "url": "https://www.anuntul.ro/anunt-angajare-montator-tamplarie-pvc-26XVME",
-          "source": "anuntul",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/cubic-mob-angajeaza-tamplar-pal-mdf-IDkRLhu.html",
+          "source": "olx",
           "min": 4000,
-          "max": 5000
+          "max": 6000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/montatori-tamplarie-pvc-IDkScKk.html",
+          "source": "olx",
+          "min": 5000,
+          "max": 6000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-montator-tamplarie-pvc-si-aluminiu-fatade-ventilate-cluj-napoca-IDkz5tn.html",
+          "source": "olx",
+          "min": 4000,
+          "max": 5500
         }
       ]
     },
@@ -5549,17 +5708,23 @@
         "max": 6000
       },
       "undeclaredBasis": {
-        "n": 3,
+        "n": 4,
         "sourceCounts": {
-          "olx": 3
+          "olx": 4
         },
         "observedRange": {
-          "min": 3800,
+          "min": 3500,
           "max": 8000
         },
-        "midpointEstimate": 4500
+        "midpointEstimate": 4450
       },
       "examples": [
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-cosmetician-operator-intretinere-corporala-maseur-IDkGA0Y.html",
+          "source": "olx",
+          "min": 3500,
+          "max": 4000
+        },
         {
           "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-cosmeticiana-cu-experienta-IDko4wm.html",
           "source": "olx",
@@ -5583,41 +5748,33 @@
           "source": "olx",
           "min": 4500,
           "max": 6000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-cosmeticiana-tratamente-faciale-si-corporale-sector-6-IDjP0mb.html",
-          "source": "olx",
-          "min": 3800,
-          "max": 5000
         }
       ]
     },
     "secretar": {
       "name": "Secretar",
-      "n": 21,
-      "ads": 21,
-      "basisNearAmount": 19,
-      "basisFromDocument": 2,
-      "employers": 17,
-      "counties": 4,
+      "n": 29,
+      "ads": 29,
+      "basisNearAmount": 23,
+      "basisFromDocument": 6,
+      "employers": 21,
+      "counties": 8,
       "sourceCounts": {
+        "olx": 10,
         "ejobs": 14,
-        "olx": 2,
         "bestjobs": 1,
         "publi24": 2,
         "anuntul": 2
       },
-      "employerShare": 0.09523809523809523,
-      "sourceShare": 0.6666666666666666,
+      "employerShare": 0.06896551724137931,
+      "sourceShare": 0.4827586206896552,
       "gaps": [
-        "too_few_ads",
-        "too_few_known_counties",
-        "source_sensitivity"
+        "too_few_ads"
       ],
-      "explicitMonthly": 16,
-      "assumedMonthly": 5,
-      "periodSensitivity": 0.023255813953488372,
-      "sourceSensitivity": 0.19047619047619047,
+      "explicitMonthly": 17,
+      "assumedMonthly": 12,
+      "periodSensitivity": 0.047619047619047616,
+      "sourceSensitivity": 0.1,
       "midpointEstimate": null,
       "status": "insufficient",
       "medianBounds": null,
@@ -5626,49 +5783,49 @@
         "max": 15000
       },
       "undeclaredBasis": {
-        "n": 14,
+        "n": 29,
         "sourceCounts": {
-          "olx": 1,
+          "olx": 16,
           "ejobs": 1,
           "bestjobs": 11,
           "anuntul": 1
         },
         "observedRange": {
-          "min": 2626,
+          "min": 2500,
           "max": 10000
         },
-        "midpointEstimate": 4727
+        "midpointEstimate": 4500
       },
       "examples": [
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/asistent-manager-magazin-alimentar-IDkSwEY.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajez-secretara-IDkSoiq.html",
+          "source": "olx",
+          "min": 4000,
+          "max": 6000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-secretara-IDkR0Dz.html",
+          "source": "olx",
+          "min": 2981,
+          "max": 2981
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/asistent-manager-la-receptie-IDkSvR6.html",
+          "source": "olx",
+          "min": 2800,
+          "max": 3000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/asistent-administrativ-secretara-IDkTjzF.html",
+          "source": "olx",
+          "min": 3500,
+          "max": 4000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/dezvoltator-imobiliar-angajeaza-secretara-IDkpuQN.html",
           "source": "olx",
           "min": 4000,
           "max": 4500
-        },
-        {
-          "url": "https://www.ejobs.ro/user/locuri-de-munca/asistent-manager-la-noodle-pack-drumul-taberei/1983046",
-          "source": "ejobs",
-          "min": 3300,
-          "max": 3500
-        },
-        {
-          "url": "https://www.ejobs.ro/user/locuri-de-munca/asistent-manager-la-noodle-pack-cluj/1983781",
-          "source": "ejobs",
-          "min": 3300,
-          "max": 3300
-        },
-        {
-          "url": "https://www.ejobs.ro/user/locuri-de-munca/contabil-junior-asistent-manager-e-commerce-fionna-ro/1984404",
-          "source": "ejobs",
-          "min": 5000,
-          "max": 5000
-        },
-        {
-          "url": "https://www.ejobs.ro/user/locuri-de-munca/consultant-vanzari-asistent-manager-hvac/1981751",
-          "source": "ejobs",
-          "min": 4000,
-          "max": 6000
         }
       ]
     },
@@ -5784,44 +5941,66 @@
     },
     "militar": {
       "name": "Militar",
-      "n": 1,
-      "ads": 1,
-      "basisNearAmount": 1,
+      "n": 2,
+      "ads": 2,
+      "basisNearAmount": 2,
       "basisFromDocument": 0,
       "employers": 1,
-      "counties": 0,
+      "counties": 1,
       "sourceCounts": {
+        "olx": 1,
         "ejobs": 1
       },
-      "employerShare": 1,
-      "sourceShare": 1,
+      "employerShare": 0.5,
+      "sourceShare": 0.5,
       "gaps": [
         "too_few_ads",
         "too_few_known_employers",
         "too_few_known_counties",
-        "single_source",
         "employer_concentration",
-        "source_concentration",
         "too_few_explicit_monthly"
       ],
       "explicitMonthly": 1,
-      "assumedMonthly": 0,
-      "periodSensitivity": 0,
-      "sourceSensitivity": null,
+      "assumedMonthly": 1,
+      "periodSensitivity": 0.08629605688429218,
+      "sourceSensitivity": 0.0944464096215069,
       "midpointEstimate": null,
       "status": "insufficient",
       "medianBounds": null,
       "observedRange": {
-        "min": 3500,
+        "min": 3200,
         "max": 4235
       },
       "undeclaredBasis": {
-        "n": 0,
-        "observedRange": null,
-        "midpointEstimate": null,
-        "sourceCounts": {}
+        "n": 2,
+        "sourceCounts": {
+          "olx": 2
+        },
+        "observedRange": {
+          "min": 3300,
+          "max": 5500
+        },
+        "midpointEstimate": 3950
       },
       "examples": [
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-la-insula-telefoane-in-carrefour-militari-si-orhideea-IDkTopH.html",
+          "source": "olx",
+          "min": 3300,
+          "max": 5500
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/auto-soft-militari-angajaza-gestionar-depozit-cu-experienta-IDkTwtm.html",
+          "source": "olx",
+          "min": 3500,
+          "max": 3500
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/editura-herald-cauta-sofer-distribuitor-militari-livram-bucurie-IDkUpQo.html",
+          "source": "olx",
+          "min": 3200,
+          "max": 3200
+        },
         {
           "url": "https://www.ejobs.ro/user/locuri-de-munca/lucrator-depozit-militari-si-pallady/1984246",
           "source": "ejobs",
@@ -5866,18 +6045,19 @@
     },
     "receptioner-hotel": {
       "name": "Recepționer hotel",
-      "n": 2,
-      "ads": 2,
-      "basisNearAmount": 2,
+      "n": 3,
+      "ads": 3,
+      "basisNearAmount": 3,
       "basisFromDocument": 0,
       "employers": 2,
-      "counties": 1,
+      "counties": 2,
       "sourceCounts": {
+        "olx": 1,
         "ejobs": 1,
         "publi24": 1
       },
-      "employerShare": 0.5,
-      "sourceShare": 0.5,
+      "employerShare": 0.3333333333333333,
+      "sourceShare": 0.3333333333333333,
       "gaps": [
         "too_few_ads",
         "too_few_known_employers",
@@ -5886,9 +6066,9 @@
         "too_few_explicit_monthly"
       ],
       "explicitMonthly": 1,
-      "assumedMonthly": 1,
-      "periodSensitivity": 0.02631578947368421,
-      "sourceSensitivity": 0.02702702702702703,
+      "assumedMonthly": 2,
+      "periodSensitivity": 0.05263157894736842,
+      "sourceSensitivity": 0.027777777777777776,
       "midpointEstimate": null,
       "status": "insufficient",
       "medianBounds": null,
@@ -5897,34 +6077,47 @@
         "max": 4000
       },
       "undeclaredBasis": {
-        "n": 1,
+        "n": 9,
         "sourceCounts": {
+          "olx": 8,
           "anuntul": 1
         },
         "observedRange": {
-          "min": 3500,
-          "max": 4000
+          "min": 2500,
+          "max": 5000
         },
-        "midpointEstimate": 3750
+        "midpointEstimate": 3700
       },
       "examples": [
         {
-          "url": "https://www.ejobs.ro/user/locuri-de-munca/receptioner-hotel-tura-de-noapte-night-auditor/1983922",
-          "source": "ejobs",
-          "min": 3600,
+          "url": "https://www.olx.ro/oferta/loc-de-munca/anagajam-receptionera-hotel-zava-oferim-cazare-IDkQGWh.html",
+          "source": "olx",
+          "min": 3000,
+          "max": 3500
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-receptionera-hotel-4-stele-zona-cismigiu-bucuresti-IDkTgts.html",
+          "source": "olx",
+          "min": 3800,
           "max": 4000
         },
         {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/horeca/personal-receptie-administratie/anunt/receptioner-hotel-4-sector-1-tura-de-noapte-3600-lei/70d7gegd60fe7id0e4g2gee9d30e5ghf.html",
-          "source": "publi24",
-          "min": 3600,
-          "max": 3600
+          "url": "https://www.olx.ro/oferta/loc-de-munca/receptioner-hotel-mycontinental-sibiu-IDkREjs.html",
+          "source": "olx",
+          "min": 2500,
+          "max": 2900
         },
         {
-          "url": "https://www.anuntul.ro/anunt-angajare-receptioner-hotel-4-rmq910",
-          "source": "anuntul",
-          "min": 3500,
-          "max": 4000
+          "url": "https://www.olx.ro/oferta/loc-de-munca/receptioner-hotel-4-in-centrul-bucurestiului-IDkd7JS.html",
+          "source": "olx",
+          "min": 3800,
+          "max": 4100
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-receptioner-hotel-ambient-4-brasov-IDkLJsA.html",
+          "source": "olx",
+          "min": 3600,
+          "max": 3800
         }
       ]
     },
@@ -5998,31 +6191,30 @@
     },
     "cofetar": {
       "name": "Cofetar",
-      "n": 7,
-      "ads": 7,
+      "n": 8,
+      "ads": 8,
       "basisNearAmount": 6,
-      "basisFromDocument": 1,
-      "employers": 6,
-      "counties": 4,
+      "basisFromDocument": 2,
+      "employers": 7,
+      "counties": 5,
       "sourceCounts": {
-        "olx": 2,
-        "publi24": 3,
+        "olx": 4,
         "ejobs": 1,
+        "publi24": 2,
         "anuntul": 1
       },
-      "employerShare": 0.14285714285714285,
-      "sourceShare": 0.42857142857142855,
+      "employerShare": 0.125,
+      "sourceShare": 0.5,
       "gaps": [
         "too_few_ads",
         "too_few_known_employers",
-        "too_few_known_counties",
         "too_few_explicit_monthly",
         "source_sensitivity"
       ],
       "explicitMonthly": 1,
-      "assumedMonthly": 6,
-      "periodSensitivity": 0.07234522634325201,
-      "sourceSensitivity": 0.15754865860073644,
+      "assumedMonthly": 7,
+      "periodSensitivity": 0.06501198702580736,
+      "sourceSensitivity": 0.2684057203389831,
       "midpointEstimate": null,
       "status": "insufficient",
       "medianBounds": null,
@@ -6031,47 +6223,47 @@
         "max": 6302
       },
       "undeclaredBasis": {
-        "n": 4,
+        "n": 9,
         "sourceCounts": {
-          "olx": 3,
+          "olx": 8,
           "anuntul": 1
         },
         "observedRange": {
-          "min": 3000,
-          "max": 6000
+          "min": 2500,
+          "max": 8000
         },
-        "midpointEstimate": 4875
+        "midpointEstimate": 5250
       },
       "examples": [
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-personal-brutarie-cofetarie-cu-experienta-IDkQvHP.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-cofetar-cantina-restaurant-IDksmle.html",
           "source": "olx",
-          "min": 3000,
-          "max": 5000
+          "min": 3500,
+          "max": 4000
         },
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajez-doamna-cofetar-cu-experienta-in-domeniu-IDkhysU.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-cofetar-cu-experienta-laborator-cofetarie-ploiesti-nord-IDkTLix.html",
           "source": "olx",
-          "min": 3000,
+          "min": 4500,
           "max": 6000
         },
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/cofetaria-sicopan-angajeaza-cofetar-personal-laborator-IDkmRd9.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-personal-pentru-laborator-cofetarie-broli-IDkQcGv.html",
           "source": "olx",
           "min": 2500,
+          "max": 3500
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajez-cofetari-patiseri-IDkTLIN.html",
+          "source": "olx",
+          "min": 4000,
           "max": 4500
         },
         {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/industrie-alimentara/brutarie-patiserie-cofetarie/anunt/angajam-personal-productie-vanzare-cofetarie/62e13e1720757figei4dd9f737d7h463.html",
-          "source": "publi24",
-          "min": 3300,
-          "max": 3300
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-cofetar-popesti-leordeni-IDkj5vX.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajez-cofetar-cu-experienta-IDkNaZe.html",
           "source": "olx",
-          "min": 5000,
-          "max": 5500
+          "min": 4000,
+          "max": 7000
         }
       ]
     },
@@ -6287,41 +6479,39 @@
     },
     "barman": {
       "name": "Barman",
-      "n": 8,
-      "ads": 8,
-      "basisNearAmount": 7,
-      "basisFromDocument": 1,
-      "employers": 6,
-      "counties": 4,
+      "n": 10,
+      "ads": 10,
+      "basisNearAmount": 8,
+      "basisFromDocument": 2,
+      "employers": 8,
+      "counties": 5,
       "sourceCounts": {
-        "publi24": 4,
-        "ejobs": 3,
-        "olx": 1
+        "ejobs": 4,
+        "olx": 2,
+        "publi24": 4
       },
-      "employerShare": 0.25,
-      "sourceShare": 0.5,
+      "employerShare": 0.2,
+      "sourceShare": 0.4,
       "gaps": [
         "too_few_ads",
         "too_few_known_employers",
-        "too_few_known_counties",
-        "employer_concentration",
         "too_few_explicit_monthly"
       ],
-      "explicitMonthly": 5,
-      "assumedMonthly": 3,
-      "periodSensitivity": 0,
-      "sourceSensitivity": 0.021142857142857144,
+      "explicitMonthly": 6,
+      "assumedMonthly": 4,
+      "periodSensitivity": 0.0410958904109589,
+      "sourceSensitivity": 0.07142857142857142,
       "midpointEstimate": null,
       "status": "insufficient",
       "medianBounds": null,
       "observedRange": {
-        "min": 2704,
-        "max": 4000
+        "min": 2699,
+        "max": 4500
       },
       "undeclaredBasis": {
-        "n": 14,
+        "n": 23,
         "sourceCounts": {
-          "olx": 9,
+          "olx": 18,
           "bestjobs": 2,
           "anuntul": 3
         },
@@ -6329,38 +6519,38 @@
           "min": 2500,
           "max": 7000
         },
-        "midpointEstimate": 3850
+        "midpointEstimate": 3550
       },
       "examples": [
         {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/horeca/ospatar-barman-sef-de-sala/anunt/angajam-barman-cafenea-in-centrul-vechi-bucuresti/89015i73g8ih79h6e2f13fd351h7dd44.html",
-          "source": "publi24",
-          "min": 3000,
-          "max": 3000
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/waiter-barman/1978440",
+          "source": "ejobs",
+          "min": 3500,
+          "max": 4500
         },
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajare-barman-ospatar-IDkTeCY.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajez-barman-cu-experienta-IDkBKjB.html",
           "source": "olx",
-          "min": 2500,
-          "max": 3000
+          "min": 3000,
+          "max": 3200
         },
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/barman-ospatar-cu-experienta-program-2-2-IDkTLXM.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/barman-preparator-barista-pitesti-IDk99ZH.html",
           "source": "olx",
           "min": 3000,
           "max": 3500
         },
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-ospatar-barman-IDkPPhD.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/restaurant-nou-pe-republiicii-angajeaza-barman-IDkSdq9.html",
           "source": "olx",
-          "min": 3200,
+          "min": 3000,
           "max": 3500
         },
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajez-barman-ospatar-IDkSrVw.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/wine-bar-centrul-vechi-angajeaza-barman-IDkSlTc.html",
           "source": "olx",
-          "min": 2700,
-          "max": 5000
+          "min": 3500,
+          "max": 4000
         }
       ]
     },
@@ -6448,38 +6638,39 @@
     },
     "casier": {
       "name": "Casier",
-      "n": 39,
-      "ads": 39,
-      "basisNearAmount": 32,
-      "basisFromDocument": 7,
-      "employers": 21,
-      "counties": 8,
+      "n": 46,
+      "ads": 46,
+      "basisNearAmount": 36,
+      "basisFromDocument": 10,
+      "employers": 23,
+      "counties": 9,
       "sourceCounts": {
-        "olx": 11,
+        "olx": 18,
         "ejobs": 5,
         "publi24": 17,
         "anuntul": 6
       },
-      "employerShare": 0.1282051282051282,
-      "sourceShare": 0.4358974358974359,
-      "gaps": [
-        "too_few_explicit_monthly"
-      ],
-      "explicitMonthly": 8,
-      "assumedMonthly": 31,
-      "periodSensitivity": 0.05970149253731343,
-      "sourceSensitivity": 0.056338028169014086,
-      "midpointEstimate": null,
-      "status": "insufficient",
-      "medianBounds": null,
+      "employerShare": 0.10869565217391304,
+      "sourceShare": 0.391304347826087,
+      "gaps": [],
+      "explicitMonthly": 10,
+      "assumedMonthly": 36,
+      "periodSensitivity": 0.045454545454545456,
+      "sourceSensitivity": 0.036231884057971016,
+      "midpointEstimate": 3450,
+      "status": "advertised_interval",
+      "medianBounds": {
+        "min": 3375,
+        "max": 3500
+      },
       "observedRange": {
         "min": 2600,
         "max": 7000
       },
       "undeclaredBasis": {
-        "n": 46,
+        "n": 62,
         "sourceCounts": {
-          "olx": 25,
+          "olx": 41,
           "publi24": 5,
           "bestjobs": 6,
           "anuntul": 10
@@ -6488,38 +6679,38 @@
           "min": 2500,
           "max": 5000
         },
-        "midpointEstimate": 3650
+        "midpointEstimate": 3625
       },
       "examples": [
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/casier-lucrator-gastro-omv-corbeanca-IDkFyXU.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/casier-a-fast-food-central-IDkQ3c4.html",
           "source": "olx",
-          "min": 4850,
-          "max": 7000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-urgent-casier-intre-lacuri-IDkpvmc.html",
-          "source": "olx",
-          "min": 3400,
+          "min": 3000,
           "max": 3500
         },
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-casieri-la-doi-pasi-market-IDkPV3Q.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-lucratori-bucatarie-si-casieri-IDkOG2g.html",
           "source": "olx",
-          "min": 3900,
+          "min": 3600,
           "max": 4200
         },
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/casier-inmedio-drumul-taberelor-IDkT71I.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-casieri-pentru-noul-fast-food-yumm-iulius-mall-cluj-IDkOWXF.html",
           "source": "olx",
-          "min": 3000,
-          "max": 3200
+          "min": 3500,
+          "max": 3900
         },
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-casier-brutarie-IDkQZmo.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-casier-dodo-pizza-IDkRtFA.html",
           "source": "olx",
-          "min": 4000,
-          "max": 5000
+          "min": 3600,
+          "max": 3800
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/casier-restaurant-program-2-2-IDkRUAz.html",
+          "source": "olx",
+          "min": 2700,
+          "max": 2900
         }
       ]
     },
@@ -6559,21 +6750,21 @@
     },
     "curier": {
       "name": "Curier",
-      "n": 9,
-      "ads": 9,
-      "basisNearAmount": 4,
+      "n": 10,
+      "ads": 10,
+      "basisNearAmount": 5,
       "basisFromDocument": 5,
-      "employers": 4,
+      "employers": 5,
       "counties": 4,
       "sourceCounts": {
+        "publi24": 2,
         "olx": 2,
         "bestjobs": 4,
         "ejobs": 1,
-        "anuntul": 1,
-        "publi24": 1
+        "anuntul": 1
       },
-      "employerShare": 0.4444444444444444,
-      "sourceShare": 0.4444444444444444,
+      "employerShare": 0.4,
+      "sourceShare": 0.4,
       "gaps": [
         "too_few_ads",
         "too_few_known_employers",
@@ -6583,58 +6774,59 @@
         "source_sensitivity"
       ],
       "explicitMonthly": 6,
-      "assumedMonthly": 3,
+      "assumedMonthly": 4,
       "periodSensitivity": 0,
-      "sourceSensitivity": 0.1600403180647329,
+      "sourceSensitivity": 0.17683951170343823,
       "midpointEstimate": null,
       "status": "insufficient",
       "medianBounds": null,
       "observedRange": {
-        "min": 3000,
+        "min": 2699,
         "max": 10000
       },
       "undeclaredBasis": {
-        "n": 4,
+        "n": 18,
         "sourceCounts": {
+          "olx": 14,
           "publi24": 3,
           "bestjobs": 1
         },
         "observedRange": {
-          "min": 3300,
+          "min": 2500,
           "max": 13000
         },
-        "midpointEstimate": 5969.5
+        "midpointEstimate": 4300
       },
       "examples": [
         {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/soferi-transporturi/curierat-livrari/anunt/cargus-bistrita-cauta-colaboratori-sau-curieri-borsa/75g62fg467d97gfh22261hg49d212139.html",
+          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/soferi-transporturi/curierat-livrari/anunt/angajam-60-de-curieri-in-bucuresti/8g571i6f9gh07864dd84f3d1d9ge879f.html",
           "source": "publi24",
-          "min": 11000,
-          "max": 13000
+          "min": 2699,
+          "max": 2699
         },
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/curier-sofer-fan-courier-brasov-m-f-IDkvab4.html",
-          "source": "olx",
-          "min": 3000,
-          "max": 4000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-curieri-pentru-sameday-sebes-IDkyRUn.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/curieri-soferi-livratori-sameday-sibiu-depozit-stefan-cel-mare-IDkAzEU.html",
           "source": "olx",
           "min": 3500,
-          "max": 4000
+          "max": 4800
         },
         {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/soferi-transporturi/curierat-livrari/anunt/angajam-curieri-wolt-bolt-food-si-glovo/68gh00g92ei97271d438984e12edi3hi.html",
-          "source": "publi24",
-          "min": 8000,
-          "max": 8000
+          "url": "https://www.olx.ro/oferta/loc-de-munca/curieri-cu-masina-personala-braila-delivery-IDkPF1K.html",
+          "source": "olx",
+          "min": 4000,
+          "max": 6000
         },
         {
-          "url": "https://www.bestjobs.eu/loc-de-munca/coordonator-curieri-oradea-9",
-          "source": "bestjobs",
-          "min": 4202,
-          "max": 4727
+          "url": "https://www.olx.ro/oferta/loc-de-munca/fan-courier-cauta-sofer-pentru-livrare-colete-IDjYX9C.html",
+          "source": "olx",
+          "min": 4800,
+          "max": 5700
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajez-curier-sameday-IDjQ2JE.html",
+          "source": "olx",
+          "min": 3500,
+          "max": 4500
         }
       ]
     },
@@ -6722,235 +6914,238 @@
     },
     "agent-paza": {
       "name": "Agent de pază",
-      "n": 5,
-      "ads": 5,
-      "basisNearAmount": 3,
-      "basisFromDocument": 2,
-      "employers": 2,
-      "counties": 3,
+      "n": 22,
+      "ads": 22,
+      "basisNearAmount": 16,
+      "basisFromDocument": 6,
+      "employers": 5,
+      "counties": 13,
       "sourceCounts": {
-        "olx": 1,
+        "olx": 18,
         "publi24": 1,
         "anuntul": 3
       },
-      "employerShare": 0.2,
-      "sourceShare": 0.6,
+      "employerShare": 0.36363636363636365,
+      "sourceShare": 0.8181818181818182,
       "gaps": [
         "too_few_ads",
         "too_few_known_employers",
-        "too_few_known_counties",
-        "too_few_explicit_monthly"
+        "employer_concentration",
+        "source_concentration",
+        "too_few_explicit_monthly",
+        "pay_period_sensitivity"
       ],
-      "explicitMonthly": 0,
-      "assumedMonthly": 5,
-      "periodSensitivity": null,
-      "sourceSensitivity": 0.037037037037037035,
+      "explicitMonthly": 1,
+      "assumedMonthly": 21,
+      "periodSensitivity": 0.1875,
+      "sourceSensitivity": 0.12,
       "midpointEstimate": null,
       "status": "insufficient",
       "medianBounds": null,
       "observedRange": {
-        "min": 3060,
-        "max": 4560
+        "min": 2700,
+        "max": 4600
       },
       "undeclaredBasis": {
-        "n": 3,
+        "n": 9,
         "sourceCounts": {
+          "olx": 6,
           "publi24": 1,
           "anuntul": 2
         },
         "observedRange": {
-          "min": 2600,
-          "max": 3750
+          "min": 2570,
+          "max": 4400
         },
-        "midpointEstimate": 3000
+        "midpointEstimate": 3250
       },
       "examples": [
         {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/agent-securitate/anunt/agent-securitate-pentru-spatii-comerciale/6iigd4d6dg8470791dd9ge20g7ehi090.html",
-          "source": "publi24",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/scoala-privata-din-bucuresti-angajeaza-paznic-IDkRCwb.html",
+          "source": "olx",
+          "min": 4000,
+          "max": 4000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-agenti-securitate-pentru-spatii-comerciale-IDkTVqI.html",
+          "source": "olx",
+          "min": 3000,
+          "max": 3500
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/agenti-securitate-pentru-magazinul-noriel-din-loc-balotesti-jud-ilfov-IDkRXEv.html",
+          "source": "olx",
+          "min": 2700,
+          "max": 2700
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/agenti-securitate-kaufland-loc-medias-jud-sibiu-IDkJ5qf.html",
+          "source": "olx",
           "min": 3000,
           "max": 3000
         },
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/bgs-angajeaza-agenti-securitate-cladire-birouri-piata-romana-IDkB2d8.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/agenti-securitate-pentru-magazinul-lidl-din-loc-adjud-jud-vrancea-IDkPIlh.html",
           "source": "olx",
-          "min": 4000,
-          "max": 4500
-        },
-        {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/agent-securitate/anunt/angajam-agent-securitate-pentru-deichmann/9g566145196376hgdh04d398ggii1e4i.html",
-          "source": "publi24",
-          "min": 3060,
-          "max": 3060
-        },
-        {
-          "url": "https://www.anuntul.ro/anunt-angajare-agenti-paza-securitate-tarif-mjkerK",
-          "source": "anuntul",
-          "min": 3420,
-          "max": 4560
-        },
-        {
-          "url": "https://www.anuntul.ro/anunt-angajare-agent-paza-si-dispecer-video-VexvPn",
-          "source": "anuntul",
-          "min": 2600,
-          "max": 2600
+          "min": 3000,
+          "max": 3000
         }
       ]
     },
     "vanzator": {
       "name": "Vânzător",
-      "n": 82,
-      "ads": 82,
-      "basisNearAmount": 71,
-      "basisFromDocument": 11,
-      "employers": 43,
-      "counties": 19,
+      "n": 107,
+      "ads": 107,
+      "basisNearAmount": 86,
+      "basisFromDocument": 21,
+      "employers": 52,
+      "counties": 22,
       "sourceCounts": {
-        "olx": 21,
-        "ejobs": 11,
-        "publi24": 32,
+        "publi24": 33,
+        "ejobs": 14,
+        "olx": 42,
         "undelucram": 12,
         "anuntul": 5,
         "bestjobs": 1
       },
-      "employerShare": 0.15853658536585366,
-      "sourceShare": 0.3902439024390244,
+      "employerShare": 0.12149532710280374,
+      "sourceShare": 0.3925233644859813,
       "gaps": [],
-      "explicitMonthly": 16,
-      "assumedMonthly": 66,
-      "periodSensitivity": 0.03597122302158273,
-      "sourceSensitivity": 0.03731343283582089,
-      "midpointEstimate": 3350,
+      "explicitMonthly": 20,
+      "assumedMonthly": 87,
+      "periodSensitivity": 0.011194029850746268,
+      "sourceSensitivity": 0.04150943396226415,
+      "midpointEstimate": 3312.5,
       "status": "advertised_interval",
       "medianBounds": {
         "min": 3252,
-        "max": 3400
+        "max": 3500
       },
       "observedRange": {
         "min": 2450,
         "max": 5800
       },
       "undeclaredBasis": {
-        "n": 129,
+        "n": 204,
         "sourceCounts": {
-          "olx": 56,
-          "publi24": 15,
+          "publi24": 16,
+          "olx": 130,
           "bestjobs": 9,
           "anuntul": 49
         },
         "observedRange": {
           "min": 1602,
-          "max": 6000
+          "max": 7000
         },
         "midpointEstimate": 3600
       },
       "examples": [
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-lucrator-comercial-cofetarie-selimbar-IDkSmvJ.html",
-          "source": "olx",
-          "min": 3500,
-          "max": 4000
+          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/casieri-lucratori-comerciali/anunt/angajam-vanzatoare-pentru-pravalia-sergiana-din-fagaras/9466h69di4df75432hdff60948hhd193.html",
+          "source": "publi24",
+          "min": 2699,
+          "max": 2699
         },
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-vanzatoare-brutarie-cuptorul-vecin-marasesti-318-IDkxpIK.html",
-          "source": "olx",
+          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/casieri-lucratori-comerciali/anunt/angajez-vanzatoare-magazin-mixt/8hh1040160g178e0eg853fi1g05121ig.html",
+          "source": "publi24",
+          "min": 3200,
+          "max": 3200
+        },
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/lucrator-comercial-grill-domnesti-west-park-f-m/1980169",
+          "source": "ejobs",
+          "min": 3252,
+          "max": 3252
+        },
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/vanzator-vanzatoare/1984580",
+          "source": "ejobs",
+          "min": 2850,
+          "max": 3250
+        },
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/vanzator-vanzatoare-magazin-alimentar/1982918",
+          "source": "ejobs",
           "min": 3000,
-          "max": 4000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/bcj-amanet-angajeaza-lucrator-comercial-IDjIt4Z.html",
-          "source": "olx",
-          "min": 3000,
-          "max": 5000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/cofetaria-lapterra-angajeaza-vanzatoare-IDkfEIa.html",
-          "source": "olx",
-          "min": 3500,
-          "max": 4000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajez-vanzatoare-magazin-non-stop-IDkgBZl.html",
-          "source": "olx",
-          "min": 4500,
-          "max": 4800
+          "max": 3500
         }
       ]
     },
     "chelner": {
       "name": "Chelner",
-      "n": 17,
-      "ads": 17,
-      "basisNearAmount": 17,
-      "basisFromDocument": 0,
-      "employers": 13,
-      "counties": 5,
+      "n": 25,
+      "ads": 25,
+      "basisNearAmount": 20,
+      "basisFromDocument": 5,
+      "employers": 18,
+      "counties": 8,
       "sourceCounts": {
-        "ejobs": 10,
+        "ejobs": 11,
+        "olx": 9,
         "publi24": 4,
-        "olx": 2,
         "anuntul": 1
       },
-      "employerShare": 0.11764705882352941,
-      "sourceShare": 0.5882352941176471,
+      "employerShare": 0.16,
+      "sourceShare": 0.44,
       "gaps": [
         "too_few_ads"
       ],
-      "explicitMonthly": 11,
-      "assumedMonthly": 6,
-      "periodSensitivity": 0.025340559542991064,
-      "sourceSensitivity": 0.024714285714285713,
+      "explicitMonthly": 12,
+      "assumedMonthly": 13,
+      "periodSensitivity": 0.012511752368554278,
+      "sourceSensitivity": 0,
       "midpointEstimate": null,
       "status": "insufficient",
       "medianBounds": null,
       "observedRange": {
         "min": 2500,
-        "max": 4500
+        "max": 5000
       },
       "undeclaredBasis": {
-        "n": 19,
+        "n": 54,
         "sourceCounts": {
-          "olx": 11,
+          "olx": 46,
           "bestjobs": 5,
           "anuntul": 2,
           "publi24": 1
         },
         "observedRange": {
-          "min": 1838,
+          "min": 1,
           "max": 15000
         },
         "midpointEstimate": 3500
       },
       "examples": [
         {
-          "url": "https://www.ejobs.ro/user/locuri-de-munca/ospatar/1978900",
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/ospatar/1978906",
           "source": "ejobs",
-          "min": 3500,
+          "min": 3151,
+          "max": 4202
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/restaurant-mediterana-angajeaza-lucrator-spalat-vase-ospatar-lucrator-fast-food-IDkRKc2.html",
+          "source": "olx",
+          "min": 3600,
+          "max": 4000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/club-winners-angajeaza-ospatar-IDkK1fb.html",
+          "source": "olx",
+          "min": 2500,
+          "max": 3000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/divine-bistro-angajeaza-ospatar-IDkr6ZT.html",
+          "source": "olx",
+          "min": 2750,
+          "max": 3000
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/hotel-la-rocca-angajeaza-ospatar-chelner-IDkqUq6.html",
+          "source": "olx",
+          "min": 3000,
           "max": 3500
-        },
-        {
-          "url": "https://www.ejobs.ro/user/locuri-de-munca/ospatar/1978316",
-          "source": "ejobs",
-          "min": 2800,
-          "max": 3500
-        },
-        {
-          "url": "https://www.ejobs.ro/user/locuri-de-munca/ospatar-mercure-bucharest-cantemir/1982525",
-          "source": "ejobs",
-          "min": 3300,
-          "max": 4200
-        },
-        {
-          "url": "https://www.ejobs.ro/user/locuri-de-munca/ospatar-hotel-poiana-brasov/1979407",
-          "source": "ejobs",
-          "min": 3500,
-          "max": 3500
-        },
-        {
-          "url": "https://www.ejobs.ro/user/locuri-de-munca/ospatar-cu-experienta/1979862",
-          "source": "ejobs",
-          "min": 2700,
-          "max": 2700
         }
       ]
     },
@@ -6990,41 +7185,40 @@
     },
     "croitor": {
       "name": "Croitor",
-      "n": 1,
-      "ads": 1,
+      "n": 3,
+      "ads": 3,
       "basisNearAmount": 1,
-      "basisFromDocument": 0,
-      "employers": 1,
-      "counties": 1,
+      "basisFromDocument": 2,
+      "employers": 2,
+      "counties": 2,
       "sourceCounts": {
+        "olx": 2,
         "publi24": 1
       },
-      "employerShare": 1,
-      "sourceShare": 1,
+      "employerShare": 0.6666666666666666,
+      "sourceShare": 0.6666666666666666,
       "gaps": [
         "too_few_ads",
         "too_few_known_employers",
         "too_few_known_counties",
-        "single_source",
         "employer_concentration",
-        "source_concentration",
         "too_few_explicit_monthly"
       ],
       "explicitMonthly": 0,
-      "assumedMonthly": 1,
+      "assumedMonthly": 3,
       "periodSensitivity": null,
-      "sourceSensitivity": null,
+      "sourceSensitivity": 0.018867924528301886,
       "midpointEstimate": null,
       "status": "insufficient",
       "medianBounds": null,
       "observedRange": {
-        "min": 2700,
+        "min": 2600,
         "max": 2700
       },
       "undeclaredBasis": {
-        "n": 6,
+        "n": 8,
         "sourceCounts": {
-          "olx": 1,
+          "olx": 3,
           "anuntul": 4,
           "publi24": 1
         },
@@ -7036,34 +7230,34 @@
       },
       "examples": [
         {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/confectii-croitorie/anunt/chitila-operator-masini-de-cusut-croitorie/8687dd82dehf7273dei246043eg7f1eg.html",
-          "source": "publi24",
-          "min": 2700,
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-croitor-croitoreasa-brasov-IDkMu80.html",
+          "source": "olx",
+          "min": 2600,
           "max": 2700
         },
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/caut-croitor-croitoreasa-cu-experienta-IDkQENr.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-croitoreasa-in-brasov-IDkSGW5.html",
           "source": "olx",
-          "min": 7000,
-          "max": 10000
+          "min": 2600,
+          "max": 2700
         },
         {
-          "url": "https://www.anuntul.ro/anunt-angajare-croitoreasa-7Xrav9",
-          "source": "anuntul",
-          "min": 4400,
-          "max": 6400
-        },
-        {
-          "url": "https://www.anuntul.ro/anunt-angajare-croitoreasa-confectionera-mjND2Q",
-          "source": "anuntul",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajez-croitoreasa-IDkSYDa.html",
+          "source": "olx",
           "min": 3500,
           "max": 4000
         },
         {
-          "url": "https://www.anuntul.ro/anunt-angajare-croitoreasa-pt-retusuri-w4mYM3",
-          "source": "anuntul",
-          "min": 3500,
-          "max": 6000
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajez-croitor-croitoreasa-pentru-costume-si-camasi-barbati-IDkRyfj.html",
+          "source": "olx",
+          "min": 5900,
+          "max": 8500
+        },
+        {
+          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/confectii-croitorie/anunt/chitila-operator-masini-de-cusut-croitorie/8687dd82dehf7273dei246043eg7f1eg.html",
+          "source": "publi24",
+          "min": 2700,
+          "max": 2700
         }
       ]
     },
@@ -7128,49 +7322,61 @@
       "medianBounds": null,
       "observedRange": null,
       "undeclaredBasis": {
-        "n": 0,
-        "observedRange": null,
-        "midpointEstimate": null,
-        "sourceCounts": {}
+        "n": 1,
+        "sourceCounts": {
+          "olx": 1
+        },
+        "observedRange": {
+          "min": 4500,
+          "max": 5000
+        },
+        "midpointEstimate": 4750
       },
-      "examples": []
+      "examples": [
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/instructor-auto-categoria-a-b-IDkRxer.html",
+          "source": "olx",
+          "min": 4500,
+          "max": 5000
+        }
+      ]
     },
     "agent-curatenie": {
       "name": "Agent de curățenie",
-      "n": 19,
-      "ads": 19,
-      "basisNearAmount": 16,
-      "basisFromDocument": 3,
-      "employers": 10,
-      "counties": 7,
+      "n": 36,
+      "ads": 36,
+      "basisNearAmount": 31,
+      "basisFromDocument": 5,
+      "employers": 18,
+      "counties": 11,
       "sourceCounts": {
-        "olx": 4,
+        "ejobs": 4,
+        "olx": 20,
         "undelucram": 1,
-        "ejobs": 3,
         "publi24": 7,
         "anuntul": 4
       },
-      "employerShare": 0.10526315789473684,
-      "sourceShare": 0.3684210526315789,
-      "gaps": [
-        "too_few_ads",
-        "too_few_explicit_monthly"
-      ],
-      "explicitMonthly": 6,
-      "assumedMonthly": 13,
-      "periodSensitivity": 0.11796610169491525,
-      "sourceSensitivity": 0.09035779260157671,
-      "midpointEstimate": null,
-      "status": "insufficient",
-      "medianBounds": null,
+      "employerShare": 0.16666666666666666,
+      "sourceShare": 0.5555555555555556,
+      "gaps": [],
+      "explicitMonthly": 12,
+      "assumedMonthly": 24,
+      "periodSensitivity": 0.008064516129032258,
+      "sourceSensitivity": 0.04,
+      "midpointEstimate": 3125,
+      "status": "advertised_interval",
+      "medianBounds": {
+        "min": 3100,
+        "max": 3150
+      },
       "observedRange": {
         "min": 2500,
         "max": 5000
       },
       "undeclaredBasis": {
-        "n": 29,
+        "n": 57,
         "sourceCounts": {
-          "olx": 4,
+          "olx": 32,
           "anuntul": 20,
           "publi24": 4,
           "bestjobs": 1
@@ -7179,38 +7385,38 @@
           "min": 1600,
           "max": 6000
         },
-        "midpointEstimate": 3500
+        "midpointEstimate": 3625
       },
       "examples": [
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-agent-curatenie-cu-permis-auto-IDkSncl.html",
-          "source": "olx",
-          "min": 2500,
-          "max": 3500
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/agent-de-curatenie/1978833",
+          "source": "ejobs",
+          "min": 3200,
+          "max": 3200
         },
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/personal-curatenie-full-time-bucuresti-IDjlukS.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajez-patiser-covrigar-femeie-de-serviciu-IDjU9DY.html",
           "source": "olx",
-          "min": 3500,
-          "max": 4500
+          "min": 4000,
+          "max": 5000
         },
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-personal-curatenie-fabrica-din-medias-IDkTQks.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/personal-curatenie-barbati-si-femei-lidl-tulcea-IDkFMUD.html",
           "source": "olx",
-          "min": 3298,
-          "max": 3298
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/oferta-loc-de-munca-permanent-operator-curatenie-IDkRcnF.html",
-          "source": "olx",
-          "min": 3500,
+          "min": 4000,
           "max": 4000
         },
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/scoala-sectorul-6-angajeaza-personal-curatenie-IDkSgE2.html",
+          "url": "https://www.olx.ro/oferta/loc-de-munca/personal-curatenie-IDkRTLK.html",
+          "source": "olx",
+          "min": 2570,
+          "max": 2600
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-agent-curatenie-echipa-mobila-IDkTwaU.html",
           "source": "olx",
           "min": 3500,
-          "max": 4000
+          "max": 5000
         }
       ]
     },
@@ -7296,19 +7502,31 @@
         "max": 11554
       },
       "undeclaredBasis": {
-        "n": 8,
+        "n": 10,
         "sourceCounts": {
+          "olx": 3,
           "publi24": 3,
-          "olx": 1,
           "anuntul": 4
         },
         "observedRange": {
           "min": 3000,
           "max": 6000
         },
-        "midpointEstimate": 4100
+        "midpointEstimate": 4225
       },
       "examples": [
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-infirmiera-ingrijitoare-in-otopeni-pentru-camin-persoane-varstnice-IDkRkzs.html",
+          "source": "olx",
+          "min": 4000,
+          "max": 5500
+        },
+        {
+          "url": "https://www.olx.ro/oferta/loc-de-munca/camin-privat-de-vatrani-angajeaza-infirmiere-IDkOQc0.html",
+          "source": "olx",
+          "min": 4500,
+          "max": 5000
+        },
         {
           "url": "https://www.publi24.ro/anunturi/locuri-de-munca/menaj-ingrijire-persoane/ingrijitori-batrani/anunt/angajam-infirmiera-camin-de-batrani-in-otopeni/8688g2i3d53h7e13e6f80d54ddh81f93.html",
           "source": "publi24",
@@ -7325,18 +7543,6 @@
           "url": "https://www.olx.ro/oferta/loc-de-munca/green-care-angajeaza-asistente-infirmiere-bucatareasa-femeie-de-serviciu-IDkRyAF.html",
           "source": "olx",
           "min": 3600,
-          "max": 4500
-        },
-        {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/menaj-ingrijire-persoane/ingrijitori-batrani/anunt/ingrijitor-batrani-infirmier/3i8d5h5ihidi7119260d23f8i855f97d.html",
-          "source": "publi24",
-          "min": 3000,
-          "max": 3000
-        },
-        {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/menaj-ingrijire-persoane/ingrijitori-batrani/anunt/angajam-infirmiera-camin-pentru-batrani-in-otopeni/58g7i1740g587d2h12i30eii6e88692d.html",
-          "source": "publi24",
-          "min": 3000,
           "max": 4500
         }
       ]
@@ -7411,23 +7617,23 @@
     }
   },
   "rejectionCounts": {
-    "contract_or_variable_income": 240,
-    "foreign_or_noncomparable_work": 541,
-    "salary_evidence_incomplete": 5007,
-    "unknown_occupation": 402,
-    "wide_range_review": 39,
+    "contract_or_variable_income": 510,
+    "foreign_or_noncomparable_work": 1382,
+    "salary_evidence_incomplete": 7670,
+    "unknown_occupation": 488,
+    "wide_range_review": 264,
     "assistant_or_mixed_role": 20,
-    "full_time_unconfirmed": 494,
-    "multiple_unresolved_amounts": 139,
-    "http_410": 13,
-    "expired": 5,
+    "full_time_unconfirmed": 742,
+    "multiple_unresolved_amounts": 142,
+    "http_410": 15,
+    "expired": 7,
     "country_unconfirmed": 43,
-    "ad_too_old": 85,
-    "salary_conflict": 29,
-    "monthly_unconfirmed": 28,
-    "invalid_amount": 3,
+    "ad_too_old": 670,
+    "monthly_unconfirmed": 132,
+    "invalid_amount": 5,
+    "salary_conflict": 203,
     "base_salary_unclear": 2,
-    "unsupported_detail_schema": 1,
+    "unsupported_detail_schema": 5,
     "jobseeker_or_services_ad": 17,
     "different_role": 1
   },
@@ -7444,9 +7650,9 @@
       "url": "https://www.ejobs.ro/user/locuri-de-munca/lucrator-comercial-cofetaria-madame-prallini/1979840",
       "stage": "detail",
       "error": "host_paused_429",
-      "count": 2,
-      "lastUrl": "https://www.ejobs.ro/user/locuri-de-munca/ospatar/1978906",
-      "lastAt": "2026-09-08T00:09:55.189Z",
+      "count": 4,
+      "lastUrl": "https://www.ejobs.ro/user/locuri-de-munca/vanzator-suceava-cuza-voda-f-m/1979145",
+      "lastAt": "2026-09-08T03:07:29.212Z",
       "source": "ejobs"
     },
     {
@@ -7461,9 +7667,9 @@
       "url": "https://www.publi24.ro/anunturi/locuri-de-munca/horeca/personal-receptie-administratie/anunt/gloria-events-angajeaza-barman-si-ospatar-bucatar-receptioner-calificat-pentru-hotel/8704dig7fi7d7367egi8h1g932d3d075.html",
       "stage": "detail",
       "error": "http_410",
-      "count": 13,
-      "lastUrl": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/electricieni/anunt/angajam-electricieni-si-tehnicieni-hvac-proiect-italia-cazare-transport-gratuit/898fi7f3g8e274f81dehd4h42g2h21f3.html",
-      "lastAt": "2026-09-08T00:11:06.874Z",
+      "count": 15,
+      "lastUrl": "https://www.publi24.ro/anunturi/locuri-de-munca/horeca/ospatar-barman-sef-de-sala/anunt/angajez-ospatar-restaurant-rare-garden/8igei6ii354e7gd4d33f95d0ie0f1hi0.html",
+      "lastAt": "2026-09-08T03:08:36.946Z",
       "source": "publi24"
     },
     {
@@ -7480,8 +7686,10 @@
       "url": "https://www.publi24.ro/anunturi/locuri-de-munca/casieri-lucratori-comerciali/anunt/lucrator-comercial-sector-6-bucuresti/82979388hgid7g24d256ge7193350i7i.html",
       "stage": "detail",
       "error": "host_paused_429",
-      "count": 1,
+      "count": 3,
       "firstAt": "2026-09-08T00:12:22.442Z",
+      "lastUrl": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/tamplari-montatori-mobilier/anunt/angajam-confectioneri-aluminiu-si-montatori-partitii-sticla-securizata/968f239e7h31780ede042fg8g7756g52.html",
+      "lastAt": "2026-09-08T03:09:55.521Z",
       "source": "publi24"
     }
   ]

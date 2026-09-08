@@ -59,6 +59,21 @@ assert.equal(resolveSalary(structuredOnly).salary.evidenceKind,'structured_field
 assert.equal(resolveSalary(structuredOnly).salary.basis,null);
 assert.equal(resolveSalary({...structuredOnly,description:'Salariul se plateste net.'}).salary.basis,'net');
 assert.equal(olxRecord({title:'x',salary:{from:5700,to:5701,currencyCode:'RON'}}).salary.to,5700,'OLX stores one figure as from = to - 1');
+// Cifra exacta din text, cu baza langa ea, in interiorul intervalului declarat de portal.
+const inRange={...base,description:'Salariu: 3.200 lei NET pe luna.',salary:{from:2800,to:3500,currencyCode:'RON',period:'MONTH'},source:'olx'};
+assert.equal(resolveSalary(inRange).salary.min,3200);
+assert.equal(resolveSalary(inRange).salary.basis,'net');
+assert.equal(resolveSalary(inRange).salary.evidenceKind,'text_within_structured_range');
+// Doua capete numite in text acopera exact intervalul portalului.
+assert.equal(resolveSalary({...inRange,description:'Salariul cuprins intre 2800 lei net si 3500 lei net.'}).salary.max,3500);
+// In afara intervalului declarat ramane conflict, niciodata o suprascriere tacuta.
+assert.equal(resolveSalary({...inRange,description:'Salariu: 9.000 lei NET pe luna.'}).error,'salary_conflict');
+// Baza declarata in alta parte a anuntului ramane dovada, marcata ca atare.
+const departe=resolveSalary({...inRange,description:['Toate sumele din acest anunt sunt nete si se platesc pe 15.','Program de luni pana vineri, opt ore.','Salariu: 3.200 lei pe luna.'].join(String.fromCharCode(10))}).salary;
+assert.equal(departe.min,3200); assert.equal(departe.basisEvidence,'document');
+// O suma din interval fara nicio baza declarata nu adauga nimic peste portal.
+const faraBaza=resolveSalary({...inRange,description:'Se ofera 3.200 lei pe luna.'}).salary;
+assert.equal(faraBaza.evidenceKind,'structured_field'); assert.equal(faraBaza.basis,null);
 // Several trades in one advert, one figure: an observation for each trade.
 const multi=assess({...base,title:'Angajam zidari, dulgheri si fierari',description:'Salariu net 5000 lei lunar.',salary:null},evidence,now);
 assert.ok(multi.accepted);

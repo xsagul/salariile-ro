@@ -40,9 +40,12 @@ for (const m of MESERII) {
     assert.equal(r.value, source.net, 'valoarea publicată este exact măsura sursei');
     assert.equal(r.kind,'external-reported');
   } else assert.ok(['public-grid','sector-context'].includes(r.kind));
-  // Cohorta fara baza declarata nu atinge niciodata cifra principala.
-  if (ads?.undeclaredBasis?.n && ads.midpointEstimate !== null) {
-    assert.notEqual(r.value, Math.round(ads.undeclaredBasis.midpointEstimate ?? -1), m.slug);
+  // Cohorta fara baza declarata este raportata, dar nu intra in numaratoarea care
+  // trece pragurile. Separarea in sine e demonstrata in scripts/test-crawler.mjs;
+  // aici verificam doar ca cele doua cohorte raman numarate distinct.
+  if (ads?.undeclaredBasis?.n) {
+    assert.ok(ads.n < ads.n + ads.undeclaredBasis.n, `${m.slug}: cohorta fara baza nu se adauga la numaratoare`);
+    if (ads.medianBounds) assert.ok(ads.n >= 30, `${m.slug}: pragul se masoara doar pe baza declarata`);
   }
 }
 

@@ -4,7 +4,7 @@ export const sleep = ms => new Promise(r => setTimeout(r, ms));
 export const hash = s => crypto.createHash('sha256').update(s).digest('hex');
 const ua = 'SalariileRoResearch/2.0 (+https://salariile.ro/despre)';
 // A rate limit pauses a host until Retry-After elapses, not for the whole run.
-const hosts = new Map(), robots = new Map(), blocked = new Map();
+const hosts = new Map(), robots = new Map(), blocked = new Map(), backoff = new Map();
 export function allowedByRobots(text, url) {
   const rules = []; let applies = false;
   for (const line of text.split(/\r?\n/)) {
@@ -43,7 +43,8 @@ export async function getPage(url, dir) {
   const previous = hosts.get(origin) || Promise.resolve();
   const task = previous.catch(() => {}).then(async () => {
     const crawlDelay=Number((await robots.get(origin)).match(/Crawl-delay:\s*(\d+(?:\.\d+)?)/i)?.[1] || 0)*1000;
-    await sleep(Math.max(1000,crawlDelay));
+    // A host that has rate-limited us gets more room, not the same pace again.
+    await sleep(Math.max(1000,crawlDelay,backoff.get(origin) || 0));
     for (let attempt = 0; attempt < 3; attempt++) {
       const r = await fetch(url, { headers: { 'User-Agent': ua }, signal: AbortSignal.timeout(20000), redirect: 'manual' });
       if ([301,302,303,307,308].includes(r.status)) {
@@ -54,6 +55,7 @@ export async function getPage(url, dir) {
       if ([401,403,429].includes(r.status)) {
         const retry=r.headers.get('retry-after'),retryMs=Number(retry)*1000 || (Date.parse(retry)-Date.now()) || 0;
         const resumeAt=r.status===429?Date.now()+Math.max(3600000,retryMs):null;
+        if (r.status===429) backoff.set(origin, Math.min(15000, (backoff.get(origin) || 1000) * 2));
         blocked.set(origin,resumeAt);
         fs.writeFileSync(pausePath,JSON.stringify({status:r.status,at:new Date().toISOString(),until:resumeAt?new Date(resumeAt).toISOString():null}));
         throw new Error('host_paused_' + r.status);
