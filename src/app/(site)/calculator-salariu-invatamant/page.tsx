@@ -256,7 +256,7 @@ export default function Page() {
           { href: "/salarii/profesor", label: "Salariu profesor", descriere: "Grila și reperele din sectorul de educație." },
           { href: "/salarii/invatator", label: "Salariu învățător", descriere: "Grila pentru cadrele din învățământul primar." },
           { href: "/salarii/educator", label: "Salariu educator", descriere: "Salarii și trepte pentru învățământul preșcolar." },
-          { href: "/salarii/domeniu/educatie", label: "Salarii în educație", descriere: "Cifrele INS pentru învățământ." },
+          { href: "/calculator-salariu-sanatate", label: "Calculator salariu sănătate", descriere: "Aceeași lege, Anexa II." },
           { href: "/", label: "Calculator salariu net", descriere: "Brut în net pentru orice salariu." },
           { href: "/fluturas-salariu", label: "Generator de fluturaș", descriere: "Vezi defalcarea, ca pe hârtie." },
         ]}

@@ -349,8 +349,22 @@ export function LinkCard({
  * e cea principala — grila e stabilita in brut, iar netul e calculul nostru
  * peste ea, nu o cifra din act.
  */
+/**
+ * Anexele care au calculator propriu. Tabelul arata treptele la gradatia 0;
+ * calculatorul le aplica vechimea si indemnizatiile, adica exact ce nu poate
+ * face un tabel static. Invatamantul nu e aici: acolo grila didactica se
+ * randeaza separat, in pagina meseriei, cu propria legatura.
+ */
+const CALCULATOR_ANEXA: Record<string, { href: string; text: string }> = {
+  "Anexa nr. II": {
+    href: "/calculator-salariu-sanatate",
+    text: "Calculează cu gradația ta de vechime",
+  },
+};
+
 export function TabelGrila({grila,meserie}:{grila:GrilaPublica;meserie:string}) {
   const max=Math.max(...grila.trepte.map(t=>t.net));
+  const calculator = CALCULATOR_ANEXA[grila.anexa];
   return <div className="mt-6">
     <p className="mb-3 text-sm text-stone-600">Net standard</p>
     <table className="w-full rounded-md border border-stone-200 bg-surface text-sm tabular-nums">
@@ -361,6 +375,7 @@ export function TabelGrila({grila,meserie}:{grila:GrilaPublica;meserie:string}) 
         <td className="whitespace-nowrap border-b border-stone-100 p-3 text-right font-semibold">{lei(t.net)} lei</td>
       </tr>)}</tbody>
     </table>
+    {calculator && <Link href={calculator.href} className="mt-4 inline-flex min-h-11 items-center underline underline-offset-4">{calculator.text}</Link>}
     <details className="mt-3 text-sm text-stone-600"><summary className="min-h-11 cursor-pointer py-3">Valorile din grila sursă</summary>
       <p>{grila.numeSuma}, {grila.anexa}, coloana {grila.coloana}.</p>
       <ul className="mt-3 space-y-2">{grila.trepte.map(t=><li key={t.eticheta}>{t.eticheta}: {lei(t.brut)} lei brut{t.componente ? ' ('+t.componente.map(c=>c.eticheta+': '+lei(c.valoare)).join(' + ')+')' : ''}.</li>)}</ul>

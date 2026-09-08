@@ -57,48 +57,37 @@ export const GRILA: RandGrila[] = grilaData.randuri as RandGrila[];
 /** Coloana in plata. Se schimba doar cand se schimba legea, nu la editare. */
 export const COLOANA_IN_PLATA = "iun2024" as const;
 
-// ─── Gradatia de vechime in munca (art. 10 alin. (4)) ────────────────────────
+// ─── Prevederile generale ale legii ──────────────────────────────────────────
 //
-// Cotele se COMPUN, nu se aduna: fiecare se aplica la salariul de baza avut,
-// nu la cel din anexa. Adunarea (7,5+5+5+2,5+2,5 = 22,5%) e gresita; compunerea
-// da 24,52%. E cea mai frecventa eroare in calculatoarele de pe piata.
+// Gradatia de vechime (art. 10), indemnizatia pentru titlul stiintific de doctor
+// (art. 14) si indemnizatia de hrana (art. 18) NU sunt specifice invatamantului:
+// sunt in corpul legii si se aplica tuturor anexelor. Proprietarul lor e
+// `lege153.ts`. Aici se re-exporta pentru ca modulul asta le expunea deja
+// public si le importa componenta de calculator.
 
-export const GRADATII = [
-  { nivel: 0, eticheta: "sub 3 ani", cota: 0 },
-  { nivel: 1, eticheta: "3–5 ani", cota: 0.075 },
-  { nivel: 2, eticheta: "5–10 ani", cota: 0.05 },
-  { nivel: 3, eticheta: "10–15 ani", cota: 0.05 },
-  { nivel: 4, eticheta: "15–20 ani", cota: 0.025 },
-  { nivel: 5, eticheta: "peste 20 ani", cota: 0.025 },
-] as const;
+import {
+  aplicaGradatia,
+  gradatiaDupaVechime,
+  INDEMNIZATIE_DOCTORAT_2026,
+  TEMEI_DOCTORAT,
+  INDEMNIZATIE_HRANA,
+  PLAFON_HRANA_NET,
+  TEMEI_HRANA,
+  type NivelGradatie,
+  type LinieCalcul,
+} from "@/lib/lege153";
 
-export type NivelGradatie = 0 | 1 | 2 | 3 | 4 | 5;
-
-/** Gradatia in functie de vechimea in munca, in ani impliniti. */
-export function gradatiaDupaVechime(aniMunca: number): NivelGradatie {
-  if (aniMunca < 3) return 0;
-  if (aniMunca < 5) return 1;
-  if (aniMunca < 10) return 2;
-  if (aniMunca < 15) return 3;
-  if (aniMunca < 20) return 4;
-  return 5;
-}
-
-/**
- * Aplica gradatiile cumulativ, rotunjind la leu dupa fiecare treapta.
- *
- * Rotunjirea pe treapta, si nu o singura data la final, e alegerea noastra:
- * legea spune ca fiecare gradatie da "noul salariu de baza", deci fiecare
- * treapta produce o suma concreta. Diferenta fata de rotunjirea finala e de
- * cel mult cativa lei. Marcata explicit ca ipoteza, nu ca text de lege.
- */
-export function aplicaGradatia(salariuGrila: number, gradatie: NivelGradatie): number {
-  let s = salariuGrila;
-  for (let i = 1; i <= gradatie; i++) {
-    s = Math.round(s * (1 + GRADATII[i].cota));
-  }
-  return s;
-}
+export {
+  GRADATII,
+  gradatiaDupaVechime,
+  aplicaGradatia,
+  INDEMNIZATIE_DOCTORAT_2026,
+  TEMEI_DOCTORAT,
+  INDEMNIZATIE_HRANA,
+  PLAFON_HRANA_NET,
+  TEMEI_HRANA,
+} from "@/lib/lege153";
+export type { NivelGradatie, LinieCalcul } from "@/lib/lege153";
 
 // ─── Majorari specifice personalului didactic (Anexa I, cap. I, lit. B) ──────
 //
@@ -143,36 +132,7 @@ export const MAJORARI: Majorare[] = [
   },
 ];
 
-/** Indemnizatia pentru titlul stiintific de doctor — suma fixa, nu procent. */
-export const INDEMNIZATIE_DOCTORAT_2026 = 500;
-export const TEMEI_DOCTORAT = "OUG 7/2026, art. LIV alin. (1)";
 
-// ─── Indemnizatia de hrana (art. 18) ─────────────────────────────────────────
-//
-// Art. 18 alin. (1), in forma de la 1 ianuarie 2026 (modificat prin Legea
-// 141/2025, art. XV pct. 5): 347 lei lunar, pentru personalul "ale carui
-// salarii lunare sunt de pana la 6.000 lei net inclusiv".
-//
-// Alin. (1^2), introdus prin OUG 10/2024 SPECIAL pentru invatamant: pragul se
-// aplica "prin raportare la salariul NET CUVENIT FUNCTIEI DE BAZA". Asta
-// rezolva circularitatea — se compara netul salariului de baza, nu netul final
-// care ar include chiar indemnizatia.
-//
-// Se acorda proportional cu timpul efectiv lucrat in luna anterioara
-// (alin. (2)); calculatorul presupune luna intreaga.
-//
-// Este venit salarial si se impoziteaza: intra in brut inainte de CAS/CASS/
-// impozit. Asa o trateaza si calculatorul de pe salarii.invatamantpreuniversitar.ro,
-// care e referinta de piata pe segmentul asta.
-//
-// Sub grila actuala pragul nu musca niciodata: maximul e 8.215 lei la gradatia
-// 0, adica 10.230 cu gradatia 5, iar netul lui e 5.984 lei. Primul brut cu net
-// peste 6.000 e 10.259. Verificarea ramane in cod pentru cazul in care grila
-// creste — nu ca sa fie decorativa.
-
-export const INDEMNIZATIE_HRANA = 347;
-export const PLAFON_HRANA_NET = 6000;
-export const TEMEI_HRANA = "Legea 153/2017, art. 18 alin. (1) și (1^2)";
 
 // ─── Calculul ────────────────────────────────────────────────────────────────
 
@@ -189,11 +149,6 @@ export type IntrareInvatamant = {
   doctorat?: boolean;
 };
 
-export type LinieCalcul = {
-  eticheta: string;
-  suma: number;
-  temei: string;
-};
 
 export type RezultatInvatamant = {
   salariuGrila: number;

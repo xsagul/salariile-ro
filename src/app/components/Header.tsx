@@ -27,6 +27,7 @@ const NAV: Item[] = [
       { href: "/calculator-pfa", label: "Calculator PFA" },
       { href: "/calculator-salariu-part-time", label: "Salariu part-time" },
       { href: "/calculator-salariu-invatamant", label: "Salariu învățământ" },
+      { href: "/calculator-salariu-sanatate", label: "Salariu sănătate" },
       { href: "/fluturas-salariu", label: "Generator fluturaș" },
       { href: "/widget", label: "Widget pentru site-ul tău" },
     ],

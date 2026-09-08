@@ -11,6 +11,7 @@ const IMPLEMENTED_PAGES = new Set<string>([
   "/calculator-pfa",
   "/calculator-salariu-part-time",
   "/calculator-salariu-invatamant",
+  "/calculator-salariu-sanatate",
   "/fluturas-salariu",
   "/widget",
   "/salariu-minim",
@@ -46,6 +47,7 @@ const FOOTER_GROUPS: Array<{ title: string; links: FooterLink[] }> = [
       { href: "/widget", label: "Widget pentru site-ul tău" },
       { href: "/calculator-concediu", label: "Calculator concediu medical" },
       { href: "/calculator-salariu-invatamant", label: "Calculator salariu învățământ" },
+      { href: "/calculator-salariu-sanatate", label: "Calculator salariu sănătate" },
     ],
   },
   {
