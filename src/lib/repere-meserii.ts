@@ -84,7 +84,10 @@ export function reperMeserie(d: DateMeserie): ReperMeserie {
 
   // Grila legală este un reper separat, cu propriul sens statistic.
   const teaching = grilaEducatie(d.meserie.slug);
-  const grid = grilaPublica(d.meserie.slug);
+  const gridBrut = grilaPublica(d.meserie.slug);
+  // O grila care descrie doar angajatorul public nu poate fi cifra unei meserii
+  // practicate majoritar in privat. Ramane sectiune in pagina, nu reper.
+  const grid = gridBrut?.doarSectiune ? null : gridBrut;
   const values = teaching.length ? teaching.map(r => calculStandard(r.iun2024)!.net) : grid?.trepte.map(r => r.net) ?? [];
   if (values.length) {
     const minVal = Math.min(...values);
@@ -155,7 +158,10 @@ export function piloniMeserie(d: DateMeserie): Pilon[] {
   const a = ACOPERIRE_ANUNTURI[d.meserie.slug];
   const report = reports.records.find(r => r.slug === d.meserie.slug);
   const teaching = grilaEducatie(d.meserie.slug);
-  const grid = grilaPublica(d.meserie.slug);
+  const gridBrut = grilaPublica(d.meserie.slug);
+  // O grila care descrie doar angajatorul public nu poate fi cifra unei meserii
+  // practicate majoritar in privat. Ramane sectiune in pagina, nu reper.
+  const grid = gridBrut?.doarSectiune ? null : gridBrut;
   const trepte = teaching.length ? teaching.map(r => calculStandard(r.iun2024)!.net) : grid?.trepte.map(r => r.net) ?? [];
   const cm = cifreMeserie(d.meserie.caen2, d.meserie.isco, { net: d.netObservat ?? d.netStandard, brut: d.sector.brutCurent });
 

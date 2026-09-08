@@ -129,6 +129,13 @@ type Definitie = {
   trepte: CautareTreapta[];
   /** Cand legea nu-i zice „salariu de baza". */
   numeSuma?: string;
+  /**
+   * Grila descrie doar un fel de angajator, nu meseria intreaga. Un muzician de
+   * filarmonica de stat e salarizat de lege; unul de trupa de nunta nu. Grilele
+   * marcate asa se arata ca sectiune informativa, dar nu devin cifra paginii —
+   * altfel raspunsul e corect ca litera si fals ca raspuns.
+   */
+  doarSectiune?: boolean;
   /** Limitarea specifica meseriei, cand exista una peste cea generala. */
   nota?: string;
 };
@@ -287,6 +294,34 @@ const DEFINITII: Record<string, Definitie> = {
     ],
     nota:
       "În lege funcția apare împreună cu statisticianul medical, la același nivel de salarizare. În unități neclinice și la ambulanță grila este mai mică.",
+  },
+
+  "sofer-ambulanta": {
+    anexa: "Anexa nr. II",
+    sectiune: "Servicii de ambulanță",
+    domeniu: "serviciile de ambulanță și UPU-SMURD",
+    trepte: [
+      { eticheta: "Șofer autosanitară II", functie: "Șofer autosanitară II*7)" },
+      { eticheta: "Șofer autosanitară I", functie: "Șofer autosanitară I*7)" },
+    ],
+    nota:
+      "Grila acoperă serviciile publice de ambulanță și structurile de primire a urgențelor. Ambulanțele private nu se salarizează după ea.",
+  },
+
+  muzician: {
+    anexa: "Anexa nr. III",
+    domeniu: "instituții publice de spectacole și concerte",
+    doarSectiune: true,
+    trepte: [
+      // Legea nu salarizeaza „muzicianul", ci un sir intreg de functii artistice
+      // puse la acelasi nivel. Denumirea completa e cheia de cautare.
+      { eticheta: "Artist instrumentist, debutant", functie: "Artist instrumentist, artist liric, balerin, dansator, artist circ, corepetitor, acompaniator, regizor scenă (culise), maestru de studii (balet, canto, muzical), corist (opera, opereta) gradul IA; debutant" },
+      { eticheta: "Artist instrumentist, gradul II", functie: "Artist instrumentist, artist liric, balerin, dansator, artist circ, corepetitor, acompaniator, regizor scenă (culise), maestru de studii (balet, canto, muzical), corist (opera, opereta) gradul IA; gradul II" },
+      { eticheta: "Artist instrumentist, gradul I", functie: "Artist instrumentist, artist liric, balerin, dansator, artist circ, corepetitor, acompaniator, regizor scenă (culise), maestru de studii (balet, canto, muzical), corist (opera, opereta) gradul IA; gradul I" },
+      { eticheta: "Artist instrumentist, gradul IA", functie: "Artist instrumentist, artist liric, balerin, dansator, artist circ, corepetitor, acompaniator, regizor scenă (culise), maestru de studii (balet, canto, muzical), corist (opera, opereta) gradul IA" },
+    ],
+    nota:
+      "Se aplică doar muzicienilor angajați în filarmonici, opere și teatre de stat. Majoritatea muzicienilor lucrează pe cont propriu sau la evenimente, unde nu există grilă.",
   },
 
   judecator: {
@@ -538,6 +573,8 @@ export type GrilaPublica = {
   coloana: string;
   trepte: TreaptaPublica[];
   nota?: string;
+  /** Grila acopera doar un fel de angajator: se arata, dar nu devine cifra paginii. */
+  doarSectiune?: boolean;
 };
 
 const cuNet = (brut: number, rest: Omit<TreaptaPublica, "brut" | "net">): TreaptaPublica | null => {
@@ -572,6 +609,7 @@ function grilaCivila(def: Definitie): GrilaPublica | null {
     coloana: coloana ?? D.coloanaInPlata,
     trepte,
     nota: def.nota,
+    doarSectiune: def.doarSectiune,
   };
 }
 
