@@ -48,6 +48,7 @@ async function inventory(source){
   if(state.sources[source]?.inventoryComplete)return state.sources[source];
   if(source==='olx')return olxInventory();
   if(source==='undelucram')return undelucramInventory();
+  if(source==='ejobs')return ejobsInventory();
   const config=roots[source];if(!config)throw new Error('Unknown source');
   const entry=state.sources[source]||{urls:[],maps:[],events:[]};state.sources[source]=entry;
   try{
@@ -82,6 +83,54 @@ async function olxInventory(){
   }
   entry.inventoryComplete=entry.maps.length===leaves.length;entry.totalUrls=entry.urls.length;entry.listedAt=new Date().toISOString();save();return entry;
 }
+// Portalul are o listare proprie de anunturi care declara salariul. Fiecare URL
+// descoperit acolo are o suma, deci fiecare cerere de detaliu conteaza. Paginarea
+// este limitata de robots la primele zece pagini, asa ca acoperirea vine din
+// fatetele publice ale listarii, nu din adancime.
+const EJOBS_LISTING = 'https://www.ejobs.ro/locuri-de-munca/salarii';
+const EJOBS_PER_PAGE = 40, EJOBS_MAX_PAGES = 10, EJOBS_MAX_FACETS = 400;
+async function ejobsInventory(){
+  const entry=state.sources.ejobs||{urls:[],maps:[],events:[]};state.sources.ejobs=entry;
+  const urls=new Set(entry.urls), withSalary=new Set(entry.withSalary||[]), facets=[EJOBS_LISTING], seen=new Set(facets);
+  entry.facets=entry.facets||[];
+  // Doar o parte din carduri sunt <a href>; restul stau in payload-ul paginii.
+  const jobLink=/\/user\/locuri-de-munca\/[a-z0-9-]+\/\d+/g;
+  const facetLink=/^\/locuri-de-munca\/salarii(?:\/(?!pagina)[a-z0-9-]+)+$/;
+  const reach=EJOBS_PER_PAGE*EJOBS_MAX_PAGES;
+  try{
+    for(const facet of facets){
+      let total=null;
+      for(let page=1;page<=EJOBS_MAX_PAGES;page++){
+        const url=page===1?facet:`${facet}/pagina${page}`;
+        if(entry.maps.includes(url))continue;
+        const doc=await fetchPage(url,evidenceDir);
+        const $=cheerio.load(doc.html);
+        const hrefs=$('a[href]').toArray().map(e=>$(e).attr('href')).filter(Boolean);
+        entry.maps.push(url);
+        if(page===1){
+          total=Number($.text().match(/([\d.]+)\s*locuri de munca/)?.[1]?.replaceAll('.',''))||null;
+          // Se coboara pe fatete doar cand listarea trece de cat lasa robots sa paginam.
+          if((total===null||total>reach)&&facets.length<EJOBS_MAX_FACETS)
+            for(const h of hrefs){
+              if(!facetLink.test(h.split('?')[0]))continue;
+              const abs=new URL(h,EJOBS_LISTING).href;
+              if(!seen.has(abs)){seen.add(abs);facets.push(abs);}
+            }
+          entry.facets.push({url:facet,total});
+        }
+        const found=[...new Set(doc.html.match(jobLink)||[])];
+        if(!found.length)break;
+        for(const h of found){const u=canonicalUrl(new URL(h,EJOBS_LISTING).href);urls.add(u);withSalary.add(u);}
+        entry.urls=[...urls];entry.withSalary=[...withSalary];save();
+        if(total!==null&&page*EJOBS_PER_PAGE>=total)break;
+      }
+    }
+    entry.inventoryComplete=true;entry.listedAt=new Date().toISOString();entry.totalUrls=entry.urls.length;
+    const acoperite=entry.facets.filter(f=>f.total!==null&&f.total<=reach).length;
+    entry.inventoryNote=`Listarea publica de anunturi cu salariu: ${entry.facets.length} fatete, dintre care ${acoperite} incap integral in cele zece pagini permise de robots.txt. Fatetele mai mari raman parcurse doar pana la pagina zece.`;
+  }catch(e){noteEvent(entry,{stage:'inventory',error:e.message});}
+  save();return entry;
+}
 // The sitemap lists paginated result pages, not adverts; the advert links live on them.
 async function undelucramInventory(){
   const entry=state.sources.undelucram||{urls:[],maps:[],events:[]};state.sources.undelucram=entry;
@@ -108,7 +157,11 @@ async function crawl(source){
   const entry=await inventory(source);const ids=entry.urls||[];
   // A multi-trade advert is a candidate, not an ambiguity to skip before reading it.
   const candidates=ids.map(url=>({url,classification:classifyAll(titleFromUrl(url,source))}));
-  candidates.sort((a,b)=>b.classification.slugs.length-a.classification.slugs.length);
+  // Anunturile descoperite in listarea de salarii au sigur o suma: se citesc primele,
+  // ca fiecare cerere permisa de gazda sa produca o observatie, nu o respingere.
+  const declared=new Set(entry.withSalary||[]);
+  candidates.sort((a,b)=>(declared.has(b.url)?1:0)-(declared.has(a.url)?1:0)
+    || b.classification.slugs.length-a.classification.slugs.length);
   entry.catalogCandidates=candidates.filter(c=>c.classification.slugs.length).length;entry.includeUnknown=includeUnknown;save();
   let i=0;
   for(const {url,classification} of candidates){

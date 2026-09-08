@@ -3,7 +3,17 @@
 Comanda principală este `npm run crawl:census -- --run=<id>`.
 Inventarul pornește din sitemap-uri publice; pentru OLX din categoriile și
 paginile listă, iar pentru undelucram din paginile de rezultate, fiindcă
-sitemap-ul lor listează pagini de listare, nu anunțuri. Parametrul
+sitemap-ul lor listează pagini de listare, nu anunțuri.
+
+eJobs are o listare publică de anunțuri care declară salariul. Sitemap-ul dă
+anunțuri la întâmplare, din care aproape două treimi nu au nicio sumă; listarea
+dă exact pe cele care au. `robots.txt` permite paginarea doar până la pagina 10,
+adică 400 de anunțuri per listare, așa că acoperirea vine din fațetele publice
+— orașe, departamente, tip de contract — care se stivuiesc în URL. Fiecare
+listare își declară totalul: sub 400 se parcurge integral, peste 400 se
+parcurge cât se poate și se coboară în sub-fațete. URL-urile descoperite astfel
+sunt marcate `withSalary` și se citesc primele, ca fiecare cerere permisă de
+gazdă să producă o observație, nu o respingere. Parametrul
 `--sources=olx,ejobs,bestjobs,publi24,anuntul,hipo,undelucram`
 restrânge o reluare; nu șterge sursele deja salvate. `--include-unknown`
 extinde lectura și la titlurile URL care nu sunt încă asociate catalogului.
