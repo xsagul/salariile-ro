@@ -5,7 +5,9 @@ export type CohortaNedeclarata = {
   observedRange: { min: number; max: number } | null; midpointEstimate: number | null;
 };
 export type AcoperireAnunturi = {
-  name: string; n: number; ads?: number; basisNearAmount?: number; basisFromDocument?: number;
+  name: string; n: number; ads?: number;
+  /** Baza scrisa langa suma, altundeva in anunt, sau doar eticheta constanta a portalului. */
+  basisNearAmount?: number; basisFromDocument?: number; basisFromPlatform?: number;
   employers: number; counties: number;
   sourceCounts: Record<string, number>; gaps: string[]; status: string;
   explicitMonthly: number; assumedMonthly:number; midpointEstimate:number | null;

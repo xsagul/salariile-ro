@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-08T03:41:13.732Z",
+  "generatedAt": "2026-09-08T11:45:24.789Z",
   "run": "census-full-2026-09-08",
   "policy": {
     "version": 4,
@@ -161,14 +161,14 @@
     "method": "public_source_inventories"
   },
   "stats": {
-    "inventoried": 37834,
-    "read": 11713,
-    "acceptedAds": 2545,
-    "acceptedBeforeDedup": 2724,
-    "accepted": 2572,
+    "inventoried": 37896,
+    "read": 12201,
+    "acceptedAds": 2580,
+    "acceptedBeforeDedup": 2759,
+    "accepted": 2607,
     "duplicates": 152,
-    "rejected": 9168,
-    "errors": 6
+    "rejected": 9621,
+    "errors": 7
   },
   "sourceInventory": {
     "olx": {
@@ -192,22 +192,22 @@
       "limitation": "Completitudinea se raportează la inventarul public accesibil, nu la baza internă a platformei."
     },
     "ejobs": {
-      "inventoryUrls": 6507,
-      "sitemapOrCategories": 67,
-      "inventoryEnumerated": true,
-      "catalogCandidates": 2962,
-      "catalogChecked": 408,
+      "inventoryUrls": 6569,
+      "sitemapOrCategories": 17,
+      "inventoryEnumerated": false,
+      "catalogCandidates": 2993,
+      "catalogChecked": 485,
       "catalogPassComplete": false,
-      "pagesFetched": 410,
+      "pagesFetched": 487,
       "listedAt": "2026-09-07T23:41:47.835Z",
       "events": [
         {
           "url": "https://www.ejobs.ro/user/locuri-de-munca/lucrator-comercial-cofetaria-madame-prallini/1979840",
           "stage": "detail",
           "error": "host_paused_429",
-          "count": 4,
-          "lastUrl": "https://www.ejobs.ro/user/locuri-de-munca/vanzator-suceava-cuza-voda-f-m/1979145",
-          "lastAt": "2026-09-08T03:07:29.212Z"
+          "count": 8,
+          "lastUrl": "https://www.ejobs.ro/user/locuri-de-munca/instalatori-si-electricieni-bucuresti-si-imprejurimi/1984796",
+          "lastAt": "2026-09-08T11:14:56.814Z"
         },
         {
           "url": "https://www.ejobs.ro/user/locuri-de-munca/lucrator-comercial-cofetaria-madame-prallini/1979840",
@@ -215,6 +215,13 @@
           "error": "The operation was aborted due to timeout",
           "count": 2625,
           "lastUrl": "https://www.ejobs.ro/user/locuri-de-munca/vanzator-vatra-dornei-f-m/1980090"
+        },
+        {
+          "stage": "inventory",
+          "error": "host_paused_429",
+          "count": 2,
+          "firstAt": "2026-09-08T10:12:06.739Z",
+          "lastAt": "2026-09-08T11:14:51.612Z"
         }
       ],
       "limitation": "Completitudinea se raportează la inventarul public accesibil, nu la baza internă a platformei."
@@ -236,18 +243,18 @@
       "sitemapOrCategories": 1,
       "inventoryEnumerated": true,
       "catalogCandidates": 5429,
-      "catalogChecked": 2915,
+      "catalogChecked": 3326,
       "catalogPassComplete": false,
-      "pagesFetched": 3053,
+      "pagesFetched": 3459,
       "listedAt": "2026-09-07T23:41:39.228Z",
       "events": [
         {
           "url": "https://www.publi24.ro/anunturi/locuri-de-munca/horeca/personal-receptie-administratie/anunt/gloria-events-angajeaza-barman-si-ospatar-bucatar-receptioner-calificat-pentru-hotel/8704dig7fi7d7367egi8h1g932d3d075.html",
           "stage": "detail",
           "error": "http_410",
-          "count": 15,
-          "lastUrl": "https://www.publi24.ro/anunturi/locuri-de-munca/horeca/ospatar-barman-sef-de-sala/anunt/angajez-ospatar-restaurant-rare-garden/8igei6ii354e7gd4d33f95d0ie0f1hi0.html",
-          "lastAt": "2026-09-08T03:08:36.946Z"
+          "count": 20,
+          "lastUrl": "https://www.publi24.ro/anunturi/locuri-de-munca/salubrizare-curatenie-dezinsectie/anunt/angajam-personal-curatenie/035f066057g57794ddid7711f34fd520.html",
+          "lastAt": "2026-09-08T09:07:00.655Z"
         },
         {
           "url": "https://www.publi24.ro/anunturi/locuri-de-munca/cereri-locuri-de-munca/anunt/angajam-farmacist-in-orasul-ludus-jud-mures/87e48901747f758e21i3ed8d69h96741.html",
@@ -262,10 +269,10 @@
           "url": "https://www.publi24.ro/anunturi/locuri-de-munca/casieri-lucratori-comerciali/anunt/lucrator-comercial-sector-6-bucuresti/82979388hgid7g24d256ge7193350i7i.html",
           "stage": "detail",
           "error": "host_paused_429",
-          "count": 3,
+          "count": 5,
           "firstAt": "2026-09-08T00:12:22.442Z",
-          "lastUrl": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/tamplari-montatori-mobilier/anunt/angajam-confectioneri-aluminiu-si-montatori-partitii-sticla-securizata/968f239e7h31780ede042fg8g7756g52.html",
-          "lastAt": "2026-09-08T03:09:55.521Z"
+          "lastUrl": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/muncitori-constructii/anunt/kareol-serv-construct-angajeaza-muncitori-necalificati-si-muncitori-calificati/0ge38449g6g67d43245f74376g9h0f3g.html",
+          "lastAt": "2026-09-08T09:11:11.382Z"
         }
       ],
       "limitation": "Completitudinea se raportează la inventarul public accesibil, nu la baza internă a platformei."
@@ -314,6 +321,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -348,6 +356,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -382,6 +391,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -414,8 +424,9 @@
       "name": "Programator",
       "n": 2,
       "ads": 2,
-      "basisNearAmount": 1,
+      "basisNearAmount": 0,
       "basisFromDocument": 1,
+      "basisFromPlatform": 1,
       "employers": 2,
       "counties": 0,
       "sourceCounts": {
@@ -494,6 +505,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -528,6 +540,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -562,6 +575,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -594,8 +608,9 @@
       "name": "Avocat",
       "n": 1,
       "ads": 1,
-      "basisNearAmount": 1,
+      "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 1,
       "employers": 1,
       "counties": 0,
       "sourceCounts": {
@@ -642,8 +657,9 @@
       "name": "Inginer electronist",
       "n": 1,
       "ads": 1,
-      "basisNearAmount": 1,
+      "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 1,
       "employers": 1,
       "counties": 0,
       "sourceCounts": {
@@ -692,6 +708,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -726,6 +743,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -760,6 +778,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -806,6 +825,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -840,6 +860,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -874,6 +895,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -920,6 +942,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -954,6 +977,7 @@
       "ads": 19,
       "basisNearAmount": 11,
       "basisFromDocument": 8,
+      "basisFromPlatform": 0,
       "employers": 9,
       "counties": 16,
       "sourceCounts": {
@@ -980,9 +1004,9 @@
         "max": 18382
       },
       "undeclaredBasis": {
-        "n": 132,
+        "n": 138,
         "sourceCounts": {
-          "publi24": 10,
+          "publi24": 16,
           "olx": 117,
           "bestjobs": 3,
           "anuntul": 2
@@ -991,38 +1015,38 @@
           "min": 8,
           "max": 33612
         },
-        "midpointEstimate": 7682.5
+        "midpointEstimate": 7500
       },
       "examples": [
         {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/soferi-transporturi/transport-marfa-intern/anunt/angajez-sofer-profesionist-categoria-c-e/8hfi543ie8fe7578efee9h90d71dd6d5.html",
+          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/soferi-transporturi/transport-marfa-intern/anunt/sofer-profesionist-c-e-pentru-cap-tractor-cu-semiremorca-prelata-curse-romania-si-bena-cereale/08i7h8gd41577d71268835g02g79f84e.html",
+          "source": "publi24",
+          "min": 6500,
+          "max": 6500
+        },
+        {
+          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/soferi-transporturi/transport-marfa-intern/anunt/angajam-soferi-profesionisti-ce-transport-intern/9g3i7i070f0772f01ee7ei52gh2d2g9g.html",
           "source": "publi24",
           "min": 7500,
-          "max": 8500
+          "max": 7500
         },
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-soferi-profesionisti-categoria-c-e-pentru-curse-in-tara-IDkSeW5.html",
-          "source": "olx",
-          "min": 6900,
-          "max": 7000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/sofer-profesionist-IDkpOHq.html",
-          "source": "olx",
-          "min": 6000,
-          "max": 7000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-soferi-profesionisti-transport-intern-IDkKFLZ.html",
-          "source": "olx",
-          "min": 7878,
-          "max": 10504
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-sofer-profesionist-IDjgcd3.html",
-          "source": "olx",
-          "min": 6000,
+          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/soferi-transporturi/transport-marfa-intern/anunt/angajam-soferi-profesionisti-c-e-deva/9fi4i06h1g9e7f1821509f956334f6ef.html",
+          "source": "publi24",
+          "min": 7000,
           "max": 8000
+        },
+        {
+          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/soferi-transporturi/transport-marfa-international/anunt/angajez-sofer-profesionist-c-e/9808deefi75377fh174g66h512gf9f26.html",
+          "source": "publi24",
+          "min": 525,
+          "max": 525
+        },
+        {
+          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/soferi-transporturi/transport-marfa-intern/anunt/angajez-sofer-profesionist-cat-c-e/9888h3h23d827d9i23h4i40dh2i28d00.html",
+          "source": "publi24",
+          "min": 9000,
+          "max": 9000
         }
       ]
     },
@@ -1032,6 +1056,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -1076,8 +1101,9 @@
       "name": "Auditor financiar",
       "n": 2,
       "ads": 2,
-      "basisNearAmount": 2,
+      "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 2,
       "employers": 2,
       "counties": 0,
       "sourceCounts": {
@@ -1150,6 +1176,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -1202,6 +1229,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -1236,6 +1264,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -1266,42 +1295,63 @@
     },
     "arhitect": {
       "name": "Arhitect",
-      "n": 0,
-      "ads": 0,
+      "n": 1,
+      "ads": 1,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
-      "employers": 0,
+      "basisFromPlatform": 1,
+      "employers": 1,
       "counties": 0,
-      "sourceCounts": {},
-      "employerShare": 0,
-      "sourceShare": 0,
+      "sourceCounts": {
+        "ejobs": 1
+      },
+      "employerShare": 1,
+      "sourceShare": 1,
       "gaps": [
         "too_few_ads",
         "too_few_known_employers",
         "too_few_known_counties",
         "single_source",
+        "employer_concentration",
+        "source_concentration",
         "too_few_explicit_monthly"
       ],
-      "explicitMonthly": 0,
+      "explicitMonthly": 1,
       "assumedMonthly": 0,
-      "periodSensitivity": null,
+      "periodSensitivity": 0,
       "sourceSensitivity": null,
       "midpointEstimate": null,
-      "status": "no_verified_ads",
+      "status": "insufficient",
       "medianBounds": null,
-      "observedRange": null,
+      "observedRange": {
+        "min": 5000,
+        "max": 7500
+      },
       "undeclaredBasis": {
-        "n": 2,
+        "n": 3,
         "sourceCounts": {
+          "ejobs": 1,
           "bestjobs": 2
         },
         "observedRange": {
-          "min": 6302,
+          "min": 4000,
           "max": 7878
         },
         "midpointEstimate": 7090
       },
       "examples": [
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/arhitect-senior-coordonator-mid-level/1983827",
+          "source": "ejobs",
+          "min": 5000,
+          "max": 7500
+        },
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/arhitect-de-interior/1980082",
+          "source": "ejobs",
+          "min": 4000,
+          "max": 4500
+        },
         {
           "url": "https://www.bestjobs.eu/loc-de-munca/arhitect-designer-1",
           "source": "bestjobs",
@@ -1322,6 +1372,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -1368,6 +1419,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -1414,6 +1466,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -1448,6 +1501,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -1482,6 +1536,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -1528,6 +1583,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -1574,6 +1630,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -1620,6 +1677,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -1654,6 +1712,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -1684,23 +1743,24 @@
     },
     "inginer": {
       "name": "Inginer",
-      "n": 42,
-      "ads": 42,
-      "basisNearAmount": 25,
+      "n": 44,
+      "ads": 44,
+      "basisNearAmount": 8,
       "basisFromDocument": 17,
-      "employers": 38,
+      "basisFromPlatform": 19,
+      "employers": 40,
       "counties": 11,
       "sourceCounts": {
+        "ejobs": 19,
         "olx": 8,
-        "ejobs": 17,
         "bestjobs": 12,
         "publi24": 4,
         "anuntul": 1
       },
-      "employerShare": 0.07142857142857142,
-      "sourceShare": 0.40476190476190477,
+      "employerShare": 0.06818181818181818,
+      "sourceShare": 0.4318181818181818,
       "gaps": [],
-      "explicitMonthly": 31,
+      "explicitMonthly": 33,
       "assumedMonthly": 11,
       "periodSensitivity": 0.024678571428571428,
       "sourceSensitivity": 0.1154564429309019,
@@ -1711,7 +1771,7 @@
         "max": 7689
       },
       "observedRange": {
-        "min": 3200,
+        "min": 3000,
         "max": 15000
       },
       "undeclaredBasis": {
@@ -1729,6 +1789,18 @@
       },
       "examples": [
         {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/manager-proiect-constructii-inginer-constructor/1984692",
+          "source": "ejobs",
+          "min": 8000,
+          "max": 12000
+        },
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/inginer-tehnolog-productie-in-piatra-neamt/1978623",
+          "source": "ejobs",
+          "min": 3000,
+          "max": 5000
+        },
+        {
           "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-inginer-civile-cu-experienta-sef-santier-IDkGcZK.html",
           "source": "olx",
           "min": 10504,
@@ -1745,18 +1817,6 @@
           "source": "olx",
           "min": 8000,
           "max": 9000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-inginer-cq-carte-tehnica-constructii-civile-IDkOzo6.html",
-          "source": "olx",
-          "min": 7000,
-          "max": 12000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-inginer-costructii-civile-si-industriale-inginer-electrice-inginer-instalatii-sanitare-canalizare-termice-si-ventilatii-IDkSb1l.html",
-          "source": "olx",
-          "min": 6000,
-          "max": 10000
         }
       ]
     },
@@ -1766,6 +1826,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -1800,6 +1861,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -1834,6 +1896,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -1868,6 +1931,7 @@
       "ads": 2,
       "basisNearAmount": 1,
       "basisFromDocument": 1,
+      "basisFromPlatform": 0,
       "employers": 1,
       "counties": 2,
       "sourceCounts": {
@@ -1946,6 +2010,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -1990,8 +2055,9 @@
       "name": "Manager de magazin",
       "n": 5,
       "ads": 5,
-      "basisNearAmount": 4,
+      "basisNearAmount": 1,
       "basisFromDocument": 1,
+      "basisFromPlatform": 3,
       "employers": 4,
       "counties": 1,
       "sourceCounts": {
@@ -2070,6 +2136,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -2136,26 +2203,27 @@
     },
     "agent-vanzari": {
       "name": "Agent de vânzări",
-      "n": 48,
-      "ads": 48,
-      "basisNearAmount": 30,
+      "n": 49,
+      "ads": 49,
+      "basisNearAmount": 15,
       "basisFromDocument": 18,
-      "employers": 40,
+      "basisFromPlatform": 16,
+      "employers": 41,
       "counties": 11,
       "sourceCounts": {
+        "publi24": 2,
         "ejobs": 17,
         "olx": 18,
-        "publi24": 1,
         "bestjobs": 12
       },
-      "employerShare": 0.0625,
-      "sourceShare": 0.375,
+      "employerShare": 0.061224489795918366,
+      "sourceShare": 0.3673469387755102,
       "gaps": [],
-      "explicitMonthly": 35,
+      "explicitMonthly": 36,
       "assumedMonthly": 13,
-      "periodSensitivity": 0.019487064620898196,
-      "sourceSensitivity": 0.08623643632210165,
-      "midpointEstimate": 4377.5,
+      "periodSensitivity": 0.0060795359473478725,
+      "sourceSensitivity": 0.10213243546576879,
+      "midpointEstimate": 4455,
       "status": "advertised_interval",
       "medianBounds": {
         "min": 3500,
@@ -2180,6 +2248,12 @@
       },
       "examples": [
         {
+          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/agenti-consultanti-vanzari/agent-vanzari/anunt/consilier-vanzari-magazin-naturist-doctorul-naturii-incinta-galerie-kaufland-berceni-bucuresti/03487edf6ee175072e7d9fddhgdhe6h5.html",
+          "source": "publi24",
+          "min": 4500,
+          "max": 4500
+        },
+        {
           "url": "https://www.ejobs.ro/user/locuri-de-munca/senior-sales-representative-horeca/1983138",
           "source": "ejobs",
           "min": 5000,
@@ -2202,12 +2276,6 @@
           "source": "olx",
           "min": 2600,
           "max": 3000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/agent-vanzari-tamplarie-pvc-barrier-IDkRm2b.html",
-          "source": "olx",
-          "min": 3500,
-          "max": 5000
         }
       ]
     },
@@ -2215,8 +2283,9 @@
       "name": "Tehnician mentenanță",
       "n": 10,
       "ads": 10,
-      "basisNearAmount": 9,
+      "basisNearAmount": 7,
       "basisFromDocument": 1,
+      "basisFromPlatform": 2,
       "employers": 9,
       "counties": 7,
       "sourceCounts": {
@@ -2294,6 +2363,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -2328,6 +2398,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -2358,30 +2429,38 @@
     },
     "broker": {
       "name": "Broker",
-      "n": 0,
-      "ads": 0,
+      "n": 3,
+      "ads": 3,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
-      "employers": 0,
+      "basisFromPlatform": 3,
+      "employers": 3,
       "counties": 0,
-      "sourceCounts": {},
-      "employerShare": 0,
-      "sourceShare": 0,
+      "sourceCounts": {
+        "ejobs": 3
+      },
+      "employerShare": 0.3333333333333333,
+      "sourceShare": 1,
       "gaps": [
         "too_few_ads",
         "too_few_known_employers",
         "too_few_known_counties",
         "single_source",
+        "employer_concentration",
+        "source_concentration",
         "too_few_explicit_monthly"
       ],
-      "explicitMonthly": 0,
+      "explicitMonthly": 3,
       "assumedMonthly": 0,
-      "periodSensitivity": null,
+      "periodSensitivity": 0,
       "sourceSensitivity": null,
       "midpointEstimate": null,
-      "status": "no_verified_ads",
+      "status": "insufficient",
       "medianBounds": null,
-      "observedRange": null,
+      "observedRange": {
+        "min": 4000,
+        "max": 7500
+      },
       "undeclaredBasis": {
         "n": 1,
         "sourceCounts": {
@@ -2394,6 +2473,24 @@
         "midpointEstimate": 4500
       },
       "examples": [
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/broker-in-asigurari/1983191",
+          "source": "ejobs",
+          "min": 4000,
+          "max": 5000
+        },
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/broker-asigurari/1984637",
+          "source": "ejobs",
+          "min": 5000,
+          "max": 7500
+        },
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/broker-asigurari/1983451",
+          "source": "ejobs",
+          "min": 4400,
+          "max": 5100
+        },
         {
           "url": "https://www.olx.ro/oferta/loc-de-munca/broker-in-asigurari-IDkThBt.html",
           "source": "olx",
@@ -2408,6 +2505,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -2440,8 +2538,9 @@
       "name": "Operator CNC",
       "n": 15,
       "ads": 15,
-      "basisNearAmount": 13,
+      "basisNearAmount": 12,
       "basisFromDocument": 2,
+      "basisFromPlatform": 1,
       "employers": 13,
       "counties": 10,
       "sourceCounts": {
@@ -2519,6 +2618,7 @@
       "ads": 1,
       "basisNearAmount": 0,
       "basisFromDocument": 1,
+      "basisFromPlatform": 0,
       "employers": 1,
       "counties": 0,
       "sourceCounts": {
@@ -2597,6 +2697,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -2643,6 +2744,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -2677,6 +2779,7 @@
       "ads": 1,
       "basisNearAmount": 0,
       "basisFromDocument": 1,
+      "basisFromPlatform": 0,
       "employers": 1,
       "counties": 1,
       "sourceCounts": {
@@ -2721,25 +2824,26 @@
     },
     "electrician": {
       "name": "Electrician",
-      "n": 68,
-      "ads": 68,
-      "basisNearAmount": 53,
+      "n": 70,
+      "ads": 70,
+      "basisNearAmount": 42,
       "basisFromDocument": 15,
-      "employers": 52,
-      "counties": 16,
+      "basisFromPlatform": 13,
+      "employers": 54,
+      "counties": 17,
       "sourceCounts": {
+        "publi24": 22,
         "olx": 27,
-        "publi24": 20,
         "ejobs": 14,
         "bestjobs": 4,
         "anuntul": 3
       },
-      "employerShare": 0.058823529411764705,
-      "sourceShare": 0.39705882352941174,
+      "employerShare": 0.05714285714285714,
+      "sourceShare": 0.38571428571428573,
       "gaps": [],
-      "explicitMonthly": 21,
-      "assumedMonthly": 47,
-      "periodSensitivity": 0.0001904036557501904,
+      "explicitMonthly": 22,
+      "assumedMonthly": 48,
+      "periodSensitivity": 0.023251488095238096,
       "sourceSensitivity": 0.04741953913540278,
       "midpointEstimate": 5251,
       "status": "advertised_interval",
@@ -2768,6 +2872,18 @@
       },
       "examples": [
         {
+          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/muncitori-productie-depozit-logistica/operatori-productie/anunt/operator-linii-de-productie-cabluri-electrice/019f7ii7h9i97d4211d2d52370h4698h.html",
+          "source": "publi24",
+          "min": 4500,
+          "max": 4500
+        },
+        {
+          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/electricieni/anunt/angajez-electricieni/91hi07d9h86e7118de39ei78dh0445fh.html",
+          "source": "publi24",
+          "min": 5500,
+          "max": 5500
+        },
+        {
           "url": "https://www.olx.ro/oferta/loc-de-munca/electrician-usi-automate-si-elevatoare-mocheta-IDkSuXZ.html",
           "source": "olx",
           "min": 5000,
@@ -2784,18 +2900,6 @@
           "source": "olx",
           "min": 4000,
           "max": 8000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-electricieni-muncitori-clificati-si-necalificati-IDkRkWg.html",
-          "source": "olx",
-          "min": 3500,
-          "max": 4500
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-montatori-panouri-fotovoltaice-si-electrician-IDjSurY.html",
-          "source": "olx",
-          "min": 4000,
-          "max": 7000
         }
       ]
     },
@@ -2805,6 +2909,7 @@
       "ads": 1,
       "basisNearAmount": 0,
       "basisFromDocument": 1,
+      "basisFromPlatform": 0,
       "employers": 1,
       "counties": 1,
       "sourceCounts": {
@@ -2877,6 +2982,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -2925,41 +3031,42 @@
     },
     "instalator": {
       "name": "Instalator",
-      "n": 43,
-      "ads": 43,
-      "basisNearAmount": 35,
+      "n": 44,
+      "ads": 44,
+      "basisNearAmount": 26,
       "basisFromDocument": 8,
-      "employers": 31,
-      "counties": 8,
+      "basisFromPlatform": 10,
+      "employers": 32,
+      "counties": 9,
       "sourceCounts": {
+        "publi24": 11,
         "olx": 13,
-        "publi24": 10,
         "ejobs": 10,
         "bestjobs": 5,
         "anuntul": 5
       },
-      "employerShare": 0.06976744186046512,
-      "sourceShare": 0.3023255813953488,
+      "employerShare": 0.06818181818181818,
+      "sourceShare": 0.29545454545454547,
       "gaps": [],
       "explicitMonthly": 19,
-      "assumedMonthly": 24,
-      "periodSensitivity": 0.047619047619047616,
-      "sourceSensitivity": 0.010454545454545454,
-      "midpointEstimate": 5500,
+      "assumedMonthly": 25,
+      "periodSensitivity": 0.0530952380952381,
+      "sourceSensitivity": 0.04521817770743839,
+      "midpointEstimate": 5528.75,
       "status": "advertised_interval",
       "medianBounds": {
         "min": 5000,
-        "max": 6000
+        "max": 6500
       },
       "observedRange": {
         "min": 3000,
         "max": 36763
       },
       "undeclaredBasis": {
-        "n": 76,
+        "n": 77,
         "sourceCounts": {
+          "publi24": 5,
           "olx": 48,
-          "publi24": 4,
           "bestjobs": 13,
           "anuntul": 11
         },
@@ -2970,6 +3077,18 @@
         "midpointEstimate": 5500
       },
       "examples": [
+        {
+          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/instalatori/anunt/angajam-instalatori-5-500-7-000-lei/9hi3g869fe547h7h22g5h30716dd7gii.html",
+          "source": "publi24",
+          "min": 5500,
+          "max": 7000
+        },
+        {
+          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/instalatori/anunt/angajam-instalator-instalatii-sanitare-termice-alba-iulia/9eg6h1he993h7679ee5iig644448gdgh.html",
+          "source": "publi24",
+          "min": 5000,
+          "max": 7000
+        },
         {
           "url": "https://www.olx.ro/oferta/loc-de-munca/rota-gaz-angajeaza-instalator-calificat-IDkPKTI.html",
           "source": "olx",
@@ -2987,18 +3106,6 @@
           "source": "olx",
           "min": 4000,
           "max": 5500
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-instalator-instalatii-termice-si-sanitare-IDkb2jn.html",
-          "source": "olx",
-          "min": 5000,
-          "max": 6000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-instalatori-lucrari-sanitare-si-termice-IDkRkVQ.html",
-          "source": "olx",
-          "min": 5000,
-          "max": 8000
         }
       ]
     },
@@ -3008,6 +3115,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -3054,6 +3162,7 @@
       "ads": 1,
       "basisNearAmount": 1,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 1,
       "sourceCounts": {
@@ -3129,8 +3238,9 @@
       "name": "Logistician",
       "n": 11,
       "ads": 11,
-      "basisNearAmount": 9,
+      "basisNearAmount": 3,
       "basisFromDocument": 2,
+      "basisFromPlatform": 6,
       "employers": 8,
       "counties": 4,
       "sourceCounts": {
@@ -3209,6 +3319,7 @@
       "ads": 4,
       "basisNearAmount": 3,
       "basisFromDocument": 1,
+      "basisFromPlatform": 0,
       "employers": 4,
       "counties": 4,
       "sourceCounts": {
@@ -3287,6 +3398,7 @@
       "ads": 2,
       "basisNearAmount": 1,
       "basisFromDocument": 1,
+      "basisFromPlatform": 0,
       "employers": 1,
       "counties": 2,
       "sourceCounts": {
@@ -3363,8 +3475,9 @@
       "name": "Contabil",
       "n": 39,
       "ads": 39,
-      "basisNearAmount": 10,
+      "basisNearAmount": 4,
       "basisFromDocument": 29,
+      "basisFromPlatform": 6,
       "employers": 34,
       "counties": 10,
       "sourceCounts": {
@@ -3442,8 +3555,9 @@
       "name": "Designer grafic",
       "n": 4,
       "ads": 4,
-      "basisNearAmount": 4,
+      "basisNearAmount": 3,
       "basisFromDocument": 0,
+      "basisFromPlatform": 1,
       "employers": 3,
       "counties": 2,
       "sourceCounts": {
@@ -3519,8 +3633,9 @@
       "name": "Sudor",
       "n": 19,
       "ads": 19,
-      "basisNearAmount": 16,
+      "basisNearAmount": 15,
       "basisFromDocument": 3,
+      "basisFromPlatform": 1,
       "employers": 12,
       "counties": 12,
       "sourceCounts": {
@@ -3547,10 +3662,10 @@
         "max": 12000
       },
       "undeclaredBasis": {
-        "n": 54,
+        "n": 55,
         "sourceCounts": {
+          "publi24": 2,
           "olx": 38,
-          "publi24": 1,
           "hipo": 1,
           "bestjobs": 5,
           "anuntul": 9
@@ -3559,9 +3674,15 @@
           "min": 2500,
           "max": 36763
         },
-        "midpointEstimate": 5763.5
+        "midpointEstimate": 5750
       },
       "examples": [
+        {
+          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/sudori/anunt/sudori-mig-co2-cu-experienta-pentru-hale-metalice/9f4509ehif347fd513gi83f31826fe1d.html",
+          "source": "publi24",
+          "min": 5000,
+          "max": 5500
+        },
         {
           "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/sudori/anunt/angajam-sudor-lacatus-pentru-montaj-structuri-metalice-de-hale-industriale/8e6g629h5fff7d4gee151013ig7e167g.html",
           "source": "publi24",
@@ -3585,12 +3706,6 @@
           "source": "olx",
           "min": 5000,
           "max": 7000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-lacatus-si-sudori-electric-pentru-teava-IDkoRuf.html",
-          "source": "olx",
-          "min": 6000,
-          "max": 9000
         }
       ]
     },
@@ -3600,6 +3715,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -3632,8 +3748,9 @@
       "name": "Electromecanic",
       "n": 16,
       "ads": 16,
-      "basisNearAmount": 16,
+      "basisNearAmount": 8,
       "basisFromDocument": 0,
+      "basisFromPlatform": 8,
       "employers": 14,
       "counties": 5,
       "sourceCounts": {
@@ -3710,6 +3827,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -3762,6 +3880,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -3806,8 +3925,9 @@
       "name": "Editor",
       "n": 1,
       "ads": 1,
-      "basisNearAmount": 1,
+      "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 1,
       "employers": 1,
       "counties": 0,
       "sourceCounts": {
@@ -3887,6 +4007,7 @@
       "ads": 10,
       "basisNearAmount": 7,
       "basisFromDocument": 3,
+      "basisFromPlatform": 0,
       "employers": 7,
       "counties": 4,
       "sourceCounts": {
@@ -3967,6 +4088,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -4001,6 +4123,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -4072,6 +4195,7 @@
       "ads": 10,
       "basisNearAmount": 9,
       "basisFromDocument": 1,
+      "basisFromPlatform": 0,
       "employers": 10,
       "counties": 8,
       "sourceCounts": {
@@ -4146,6 +4270,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -4180,6 +4305,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -4214,6 +4340,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -4260,6 +4387,7 @@
       "ads": 1,
       "basisNearAmount": 1,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 1,
       "counties": 1,
       "sourceCounts": {
@@ -4339,6 +4467,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -4369,26 +4498,27 @@
     },
     "operator-productie": {
       "name": "Operator producție",
-      "n": 47,
-      "ads": 47,
-      "basisNearAmount": 41,
+      "n": 51,
+      "ads": 51,
+      "basisNearAmount": 45,
       "basisFromDocument": 6,
-      "employers": 30,
+      "basisFromPlatform": 0,
+      "employers": 32,
       "counties": 17,
       "sourceCounts": {
+        "publi24": 25,
         "olx": 23,
-        "publi24": 21,
         "undelucram": 1,
         "bestjobs": 1,
         "anuntul": 1
       },
-      "employerShare": 0.1702127659574468,
-      "sourceShare": 0.48936170212765956,
+      "employerShare": 0.1568627450980392,
+      "sourceShare": 0.49019607843137253,
       "gaps": [
         "too_few_explicit_monthly"
       ],
       "explicitMonthly": 3,
-      "assumedMonthly": 44,
+      "assumedMonthly": 48,
       "periodSensitivity": 0.0986046511627907,
       "sourceSensitivity": 0.010835913312693499,
       "midpointEstimate": null,
@@ -4414,34 +4544,34 @@
       },
       "examples": [
         {
+          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/muncitori-productie-depozit-logistica/anunt/operatori-productie-parcul-industrial-freidorf/0figgg391e887346e79d1i3477i2dd6g.html",
+          "source": "publi24",
+          "min": 2779,
+          "max": 2779
+        },
+        {
+          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/muncitori-productie-depozit-logistica/operatori-productie/anunt/manpower-angajeaza-operatori-productie-satu-mare/0734032g6ggi7h88279dh5g57fh50311.html",
+          "source": "publi24",
+          "min": 2873,
+          "max": 2873
+        },
+        {
+          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/muncitori-productie-depozit-logistica/operatori-productie/anunt/operatori-productie-timisoara/04h9ee81h9237h7heeh422257i056e68.html",
+          "source": "publi24",
+          "min": 2629,
+          "max": 2629
+        },
+        {
+          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/muncitori-productie-depozit-logistica/operatori-productie/anunt/manpower-angajeaza-operator-productie-in-timisoara/9ig9ge96i99d78052fei47g39gf88003.html",
+          "source": "publi24",
+          "min": 2907,
+          "max": 2907
+        },
+        {
           "url": "https://www.olx.ro/oferta/loc-de-munca/operator-productie-fabrica-clinceni-transport-asigurat-IDkTAXD.html",
           "source": "olx",
           "min": 3400,
           "max": 4300
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/operator-ptoductie-mobilier-IDkRSux.html",
-          "source": "olx",
-          "min": 4000,
-          "max": 5000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-operator-productie-fabricarea-produselor-din-carne-IDkLZD7.html",
-          "source": "olx",
-          "min": 2600,
-          "max": 3000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-operator-productie-IDkyM8n.html",
-          "source": "olx",
-          "min": 3500,
-          "max": 4000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/fabrica-incaltaminte-angajam-operator-productie-IDkRo05.html",
-          "source": "olx",
-          "min": 3700,
-          "max": 4500
         }
       ]
     },
@@ -4449,8 +4579,9 @@
       "name": "Bucătar",
       "n": 31,
       "ads": 31,
-      "basisNearAmount": 24,
+      "basisNearAmount": 14,
       "basisFromDocument": 7,
+      "basisFromPlatform": 10,
       "employers": 21,
       "counties": 13,
       "sourceCounts": {
@@ -4530,6 +4661,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -4596,6 +4728,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -4668,6 +4801,7 @@
       "ads": 1,
       "basisNearAmount": 0,
       "basisFromDocument": 1,
+      "basisFromPlatform": 0,
       "employers": 1,
       "counties": 1,
       "sourceCounts": {
@@ -4741,6 +4875,7 @@
       "ads": 1,
       "basisNearAmount": 1,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 1,
       "counties": 1,
       "sourceCounts": {
@@ -4789,6 +4924,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -4823,6 +4959,7 @@
       "ads": 1,
       "basisNearAmount": 1,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 1,
       "counties": 1,
       "sourceCounts": {
@@ -4882,6 +5019,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -4947,6 +5085,7 @@
       "ads": 2,
       "basisNearAmount": 1,
       "basisFromDocument": 1,
+      "basisFromPlatform": 0,
       "employers": 2,
       "counties": 1,
       "sourceCounts": {
@@ -5026,6 +5165,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -5056,30 +5196,31 @@
     },
     "constructor": {
       "name": "Muncitor în construcții",
-      "n": 25,
-      "ads": 25,
-      "basisNearAmount": 17,
+      "n": 26,
+      "ads": 26,
+      "basisNearAmount": 15,
       "basisFromDocument": 8,
-      "employers": 20,
-      "counties": 10,
+      "basisFromPlatform": 3,
+      "employers": 21,
+      "counties": 11,
       "sourceCounts": {
+        "publi24": 8,
         "olx": 8,
-        "publi24": 7,
         "ejobs": 3,
         "bestjobs": 4,
         "anuntul": 3
       },
-      "employerShare": 0.04,
-      "sourceShare": 0.32,
+      "employerShare": 0.038461538461538464,
+      "sourceShare": 0.3076923076923077,
       "gaps": [
         "too_few_ads",
         "too_few_explicit_monthly",
         "pay_period_sensitivity"
       ],
       "explicitMonthly": 9,
-      "assumedMonthly": 16,
-      "periodSensitivity": 0.15775596894682878,
-      "sourceSensitivity": 0.043478260869565216,
+      "assumedMonthly": 17,
+      "periodSensitivity": 0.17606562179581076,
+      "sourceSensitivity": 0.06666666666666667,
       "midpointEstimate": null,
       "status": "insufficient",
       "medianBounds": null,
@@ -5103,6 +5244,12 @@
       },
       "examples": [
         {
+          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/muncitori-constructii/anunt/angajeri-constructii/0234d2g8e3d87f8gee78f5f09d792d51.html",
+          "source": "publi24",
+          "min": 4000,
+          "max": 4000
+        },
+        {
           "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-in-constructii-IDkBSNe.html",
           "source": "olx",
           "min": 4000,
@@ -5125,12 +5272,6 @@
           "source": "olx",
           "min": 7000,
           "max": 10000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/muncitori-constructii-calificati-IDkS89r.html",
-          "source": "olx",
-          "min": 4000,
-          "max": 6000
         }
       ]
     },
@@ -5140,6 +5281,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -5186,6 +5328,7 @@
       "ads": 1,
       "basisNearAmount": 1,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 1,
       "counties": 1,
       "sourceCounts": {
@@ -5260,31 +5403,30 @@
     },
     "mecanic-auto": {
       "name": "Mecanic auto",
-      "n": 9,
-      "ads": 9,
-      "basisNearAmount": 6,
+      "n": 11,
+      "ads": 11,
+      "basisNearAmount": 5,
       "basisFromDocument": 3,
-      "employers": 8,
+      "basisFromPlatform": 3,
+      "employers": 10,
       "counties": 5,
       "sourceCounts": {
+        "publi24": 3,
         "olx": 4,
         "ejobs": 3,
-        "publi24": 1,
         "anuntul": 1
       },
-      "employerShare": 0.1111111111111111,
-      "sourceShare": 0.4444444444444444,
+      "employerShare": 0.09090909090909091,
+      "sourceShare": 0.36363636363636365,
       "gaps": [
         "too_few_ads",
-        "too_few_known_employers",
         "too_few_explicit_monthly",
-        "pay_period_sensitivity",
-        "source_sensitivity"
+        "pay_period_sensitivity"
       ],
       "explicitMonthly": 5,
-      "assumedMonthly": 4,
-      "periodSensitivity": 0.375,
-      "sourceSensitivity": 0.2727272727272727,
+      "assumedMonthly": 6,
+      "periodSensitivity": 0.5,
+      "sourceSensitivity": 0.041666666666666664,
       "midpointEstimate": null,
       "status": "insufficient",
       "medianBounds": null,
@@ -5308,6 +5450,18 @@
       },
       "examples": [
         {
+          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/service-spalatorie-auto/service-auto/anunt/mecanic-auto-cu-experienta-6000ron/9h265101fh677ee71g2h09d2e9686322.html",
+          "source": "publi24",
+          "min": 6000,
+          "max": 6000
+        },
+        {
+          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/service-spalatorie-auto/service-auto/anunt/angajez-mecanic-auto-service/9e141dh3348g707f191g53d404i2f7g0.html",
+          "source": "publi24",
+          "min": 5000,
+          "max": 7000
+        },
+        {
           "url": "https://www.publi24.ro/anunturi/locuri-de-munca/service-spalatorie-auto/service-auto/anunt/angajez-mecanic-auto-cu-experienta/944h971031e67644e2h88h8237f6232i.html",
           "source": "publi24",
           "min": 7000,
@@ -5324,18 +5478,6 @@
           "source": "olx",
           "min": 4500,
           "max": 6000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-mecanic-auto-IDjogDg.html",
-          "source": "olx",
-          "min": 4500,
-          "max": 8000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/firma-super-imposer-din-timisoara-angajeaza-mecanic-auto-cu-experienta-pentru-intretinerea-si-repararea-autobuzelor-si-microbuzelor-din-flota-proprie-IDkHAdv.html",
-          "source": "olx",
-          "min": 5000,
-          "max": 6500
         }
       ]
     },
@@ -5343,8 +5485,9 @@
       "name": "Operator call center",
       "n": 12,
       "ads": 12,
-      "basisNearAmount": 8,
+      "basisNearAmount": 3,
       "basisFromDocument": 4,
+      "basisFromPlatform": 5,
       "employers": 12,
       "counties": 3,
       "sourceCounts": {
@@ -5424,6 +5567,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -5458,6 +5602,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -5492,6 +5637,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -5536,8 +5682,9 @@
       "name": "Învățător",
       "n": 1,
       "ads": 1,
-      "basisNearAmount": 1,
+      "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 1,
       "employers": 1,
       "counties": 0,
       "sourceCounts": {
@@ -5599,28 +5746,28 @@
     },
     "tamplar": {
       "name": "Tâmplar",
-      "n": 12,
-      "ads": 12,
-      "basisNearAmount": 9,
+      "n": 13,
+      "ads": 13,
+      "basisNearAmount": 10,
       "basisFromDocument": 3,
-      "employers": 9,
+      "basisFromPlatform": 0,
+      "employers": 10,
       "counties": 8,
       "sourceCounts": {
+        "publi24": 5,
         "olx": 7,
-        "publi24": 4,
         "anuntul": 1
       },
-      "employerShare": 0.16666666666666666,
-      "sourceShare": 0.5833333333333334,
+      "employerShare": 0.15384615384615385,
+      "sourceShare": 0.5384615384615384,
       "gaps": [
         "too_few_ads",
-        "too_few_known_employers",
         "too_few_explicit_monthly"
       ],
       "explicitMonthly": 1,
-      "assumedMonthly": 11,
+      "assumedMonthly": 12,
       "periodSensitivity": 0,
-      "sourceSensitivity": 0.045454545454545456,
+      "sourceSensitivity": 0.06818181818181818,
       "midpointEstimate": null,
       "status": "insufficient",
       "medianBounds": null,
@@ -5642,6 +5789,12 @@
         "midpointEstimate": 5125
       },
       "examples": [
+        {
+          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/muncitori-constructii/anunt/angajam-lucrator-atelier-tamplarie-aluminiu-si-montaje/9id69e18g6gh7d47218ed6e9g44e2dd7.html",
+          "source": "publi24",
+          "min": 6000,
+          "max": 6000
+        },
         {
           "url": "https://www.olx.ro/oferta/loc-de-munca/montatori-tamplarie-pvc-si-aluminiu-IDkSyMV.html",
           "source": "olx",
@@ -5665,12 +5818,6 @@
           "source": "olx",
           "min": 5000,
           "max": 6000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-montator-tamplarie-pvc-si-aluminiu-fatade-ventilate-cluj-napoca-IDkz5tn.html",
-          "source": "olx",
-          "min": 4000,
-          "max": 5500
         }
       ]
     },
@@ -5680,6 +5827,7 @@
       "ads": 3,
       "basisNearAmount": 2,
       "basisFromDocument": 1,
+      "basisFromPlatform": 0,
       "employers": 2,
       "counties": 1,
       "sourceCounts": {
@@ -5755,8 +5903,9 @@
       "name": "Secretar",
       "n": 29,
       "ads": 29,
-      "basisNearAmount": 23,
+      "basisNearAmount": 9,
       "basisFromDocument": 6,
+      "basisFromPlatform": 14,
       "employers": 21,
       "counties": 8,
       "sourceCounts": {
@@ -5833,8 +5982,9 @@
       "name": "Educator",
       "n": 2,
       "ads": 2,
-      "basisNearAmount": 2,
+      "basisNearAmount": 1,
       "basisFromDocument": 0,
+      "basisFromPlatform": 1,
       "employers": 1,
       "counties": 1,
       "sourceCounts": {
@@ -5911,6 +6061,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -5943,8 +6094,9 @@
       "name": "Militar",
       "n": 2,
       "ads": 2,
-      "basisNearAmount": 2,
+      "basisNearAmount": 1,
       "basisFromDocument": 0,
+      "basisFromPlatform": 1,
       "employers": 1,
       "counties": 1,
       "sourceCounts": {
@@ -6015,6 +6167,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -6047,8 +6200,9 @@
       "name": "Recepționer hotel",
       "n": 3,
       "ads": 3,
-      "basisNearAmount": 3,
+      "basisNearAmount": 2,
       "basisFromDocument": 0,
+      "basisFromPlatform": 1,
       "employers": 2,
       "counties": 2,
       "sourceCounts": {
@@ -6127,6 +6281,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -6161,6 +6316,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -6193,8 +6349,9 @@
       "name": "Cofetar",
       "n": 8,
       "ads": 8,
-      "basisNearAmount": 6,
+      "basisNearAmount": 5,
       "basisFromDocument": 2,
+      "basisFromPlatform": 1,
       "employers": 7,
       "counties": 5,
       "sourceCounts": {
@@ -6273,6 +6430,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -6319,6 +6477,7 @@
       "ads": 2,
       "basisNearAmount": 1,
       "basisFromDocument": 1,
+      "basisFromPlatform": 0,
       "employers": 1,
       "counties": 1,
       "sourceCounts": {
@@ -6396,6 +6555,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -6449,6 +6609,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -6481,8 +6642,9 @@
       "name": "Barman",
       "n": 10,
       "ads": 10,
-      "basisNearAmount": 8,
+      "basisNearAmount": 4,
       "basisFromDocument": 2,
+      "basisFromPlatform": 4,
       "employers": 8,
       "counties": 5,
       "sourceCounts": {
@@ -6560,6 +6722,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -6594,6 +6757,7 @@
       "ads": 1,
       "basisNearAmount": 1,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 1,
       "counties": 1,
       "sourceCounts": {
@@ -6640,8 +6804,9 @@
       "name": "Casier",
       "n": 46,
       "ads": 46,
-      "basisNearAmount": 36,
+      "basisNearAmount": 31,
       "basisFromDocument": 10,
+      "basisFromPlatform": 5,
       "employers": 23,
       "counties": 9,
       "sourceCounts": {
@@ -6720,6 +6885,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -6752,8 +6918,9 @@
       "name": "Curier",
       "n": 10,
       "ads": 10,
-      "basisNearAmount": 5,
+      "basisNearAmount": 4,
       "basisFromDocument": 5,
+      "basisFromPlatform": 1,
       "employers": 5,
       "counties": 4,
       "sourceCounts": {
@@ -6836,6 +7003,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -6870,6 +7038,7 @@
       "ads": 1,
       "basisNearAmount": 1,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 1,
       "counties": 1,
       "sourceCounts": {
@@ -6918,6 +7087,7 @@
       "ads": 22,
       "basisNearAmount": 16,
       "basisFromDocument": 6,
+      "basisFromPlatform": 0,
       "employers": 5,
       "counties": 13,
       "sourceCounts": {
@@ -6994,25 +7164,26 @@
     },
     "vanzator": {
       "name": "Vânzător",
-      "n": 107,
-      "ads": 107,
-      "basisNearAmount": 86,
+      "n": 109,
+      "ads": 109,
+      "basisNearAmount": 76,
       "basisFromDocument": 21,
-      "employers": 52,
+      "basisFromPlatform": 12,
+      "employers": 54,
       "counties": 22,
       "sourceCounts": {
-        "publi24": 33,
+        "publi24": 35,
         "ejobs": 14,
         "olx": 42,
         "undelucram": 12,
         "anuntul": 5,
         "bestjobs": 1
       },
-      "employerShare": 0.12149532710280374,
-      "sourceShare": 0.3925233644859813,
+      "employerShare": 0.11926605504587157,
+      "sourceShare": 0.3853211009174312,
       "gaps": [],
       "explicitMonthly": 20,
-      "assumedMonthly": 87,
+      "assumedMonthly": 89,
       "periodSensitivity": 0.011194029850746268,
       "sourceSensitivity": 0.04150943396226415,
       "midpointEstimate": 3312.5,
@@ -7026,9 +7197,9 @@
         "max": 5800
       },
       "undeclaredBasis": {
-        "n": 204,
+        "n": 206,
         "sourceCounts": {
-          "publi24": 16,
+          "publi24": 18,
           "olx": 130,
           "bestjobs": 9,
           "anuntul": 49
@@ -7041,34 +7212,34 @@
       },
       "examples": [
         {
+          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/horeca/anunt/lucrator-comercial-moldovan-carmangerie/7b0161777e6e6653.html",
+          "source": "publi24",
+          "min": 3000,
+          "max": 3200
+        },
+        {
+          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/casieri-lucratori-comerciali/anunt/unic-mini-shop-s-r-l-angajam-lucrator-comercial-vanzator/0fh20fd615hh73341395g0fhh1g7134f.html",
+          "source": "publi24",
+          "min": 3700,
+          "max": 3700
+        },
+        {
+          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/casieri-lucratori-comerciali/anunt/angajez-vanzatoare-magazin-non-stop/074i8g7e01h87730113hf6230ed5ed66.html",
+          "source": "publi24",
+          "min": 4000,
+          "max": 4000
+        },
+        {
+          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/casieri-lucratori-comerciali/anunt/personal-calificat-lucratori-comerciali-sef-de-tura-sef-de-magazin/9284750i76d0767ee64g55357372dh82.html",
+          "source": "publi24",
+          "min": 3500,
+          "max": 5000
+        },
+        {
           "url": "https://www.publi24.ro/anunturi/locuri-de-munca/casieri-lucratori-comerciali/anunt/angajam-vanzatoare-pentru-pravalia-sergiana-din-fagaras/9466h69di4df75432hdff60948hhd193.html",
           "source": "publi24",
           "min": 2699,
           "max": 2699
-        },
-        {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/casieri-lucratori-comerciali/anunt/angajez-vanzatoare-magazin-mixt/8hh1040160g178e0eg853fi1g05121ig.html",
-          "source": "publi24",
-          "min": 3200,
-          "max": 3200
-        },
-        {
-          "url": "https://www.ejobs.ro/user/locuri-de-munca/lucrator-comercial-grill-domnesti-west-park-f-m/1980169",
-          "source": "ejobs",
-          "min": 3252,
-          "max": 3252
-        },
-        {
-          "url": "https://www.ejobs.ro/user/locuri-de-munca/vanzator-vanzatoare/1984580",
-          "source": "ejobs",
-          "min": 2850,
-          "max": 3250
-        },
-        {
-          "url": "https://www.ejobs.ro/user/locuri-de-munca/vanzator-vanzatoare-magazin-alimentar/1982918",
-          "source": "ejobs",
-          "min": 3000,
-          "max": 3500
         }
       ]
     },
@@ -7076,8 +7247,9 @@
       "name": "Chelner",
       "n": 25,
       "ads": 25,
-      "basisNearAmount": 20,
+      "basisNearAmount": 10,
       "basisFromDocument": 5,
+      "basisFromPlatform": 10,
       "employers": 18,
       "counties": 8,
       "sourceCounts": {
@@ -7155,6 +7327,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -7189,6 +7362,7 @@
       "ads": 3,
       "basisNearAmount": 1,
       "basisFromDocument": 2,
+      "basisFromPlatform": 0,
       "employers": 2,
       "counties": 2,
       "sourceCounts": {
@@ -7267,6 +7441,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -7301,6 +7476,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -7343,80 +7519,81 @@
     },
     "agent-curatenie": {
       "name": "Agent de curățenie",
-      "n": 36,
-      "ads": 36,
-      "basisNearAmount": 31,
+      "n": 39,
+      "ads": 39,
+      "basisNearAmount": 29,
       "basisFromDocument": 5,
-      "employers": 18,
+      "basisFromPlatform": 5,
+      "employers": 21,
       "counties": 11,
       "sourceCounts": {
-        "ejobs": 4,
+        "ejobs": 6,
+        "publi24": 8,
         "olx": 20,
         "undelucram": 1,
-        "publi24": 7,
         "anuntul": 4
       },
-      "employerShare": 0.16666666666666666,
-      "sourceShare": 0.5555555555555556,
+      "employerShare": 0.15384615384615385,
+      "sourceShare": 0.5128205128205128,
       "gaps": [],
-      "explicitMonthly": 12,
-      "assumedMonthly": 24,
-      "periodSensitivity": 0.008064516129032258,
-      "sourceSensitivity": 0.04,
-      "midpointEstimate": 3125,
+      "explicitMonthly": 14,
+      "assumedMonthly": 25,
+      "periodSensitivity": 0,
+      "sourceSensitivity": 0.0625,
+      "midpointEstimate": 3200,
       "status": "advertised_interval",
       "medianBounds": {
-        "min": 3100,
-        "max": 3150
+        "min": 3200,
+        "max": 3200
       },
       "observedRange": {
         "min": 2500,
         "max": 5000
       },
       "undeclaredBasis": {
-        "n": 57,
+        "n": 58,
         "sourceCounts": {
+          "publi24": 5,
           "olx": 32,
           "anuntul": 20,
-          "publi24": 4,
           "bestjobs": 1
         },
         "observedRange": {
           "min": 1600,
           "max": 6000
         },
-        "midpointEstimate": 3625
+        "midpointEstimate": 3562.5
       },
       "examples": [
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/personal-curatenie/1984285",
+          "source": "ejobs",
+          "min": 3300,
+          "max": 3300
+        },
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/personal-curatenie-stefanestii-de-jos-ilfov-galla-plazza/1984672",
+          "source": "ejobs",
+          "min": 3500,
+          "max": 3600
+        },
+        {
+          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/salubrizare-curatenie-dezinsectie/anunt/personal-curatenie-barbati-si-femei-lidl-tulcea/9g34f3fi8h6479e723eg63d8g00i8996.html",
+          "source": "publi24",
+          "min": 3200,
+          "max": 3200
+        },
+        {
+          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/salubrizare-curatenie-dezinsectie/anunt/angajam-femeie-de-serviciu-pentru-curatenie-imobil/9258gf8gef407ieh2g3fie0f0d3ff95g.html",
+          "source": "publi24",
+          "min": 3000,
+          "max": 3000
+        },
         {
           "url": "https://www.ejobs.ro/user/locuri-de-munca/agent-de-curatenie/1978833",
           "source": "ejobs",
           "min": 3200,
           "max": 3200
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajez-patiser-covrigar-femeie-de-serviciu-IDjU9DY.html",
-          "source": "olx",
-          "min": 4000,
-          "max": 5000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/personal-curatenie-barbati-si-femei-lidl-tulcea-IDkFMUD.html",
-          "source": "olx",
-          "min": 4000,
-          "max": 4000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/personal-curatenie-IDkRTLK.html",
-          "source": "olx",
-          "min": 2570,
-          "max": 2600
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-agent-curatenie-echipa-mobila-IDkTwaU.html",
-          "source": "olx",
-          "min": 3500,
-          "max": 5000
         }
       ]
     },
@@ -7426,6 +7603,7 @@
       "ads": 1,
       "basisNearAmount": 1,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 1,
       "counties": 1,
       "sourceCounts": {
@@ -7474,6 +7652,7 @@
       "ads": 2,
       "basisNearAmount": 2,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 2,
       "counties": 2,
       "sourceCounts": {
@@ -7553,6 +7732,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -7587,6 +7767,7 @@
       "ads": 0,
       "basisNearAmount": 0,
       "basisFromDocument": 0,
+      "basisFromPlatform": 0,
       "employers": 0,
       "counties": 0,
       "sourceCounts": {},
@@ -7617,20 +7798,20 @@
     }
   },
   "rejectionCounts": {
-    "contract_or_variable_income": 510,
-    "foreign_or_noncomparable_work": 1382,
-    "salary_evidence_incomplete": 7670,
-    "unknown_occupation": 488,
-    "wide_range_review": 264,
+    "contract_or_variable_income": 530,
+    "foreign_or_noncomparable_work": 1447,
+    "salary_evidence_incomplete": 8087,
+    "unknown_occupation": 491,
+    "wide_range_review": 278,
     "assistant_or_mixed_role": 20,
-    "full_time_unconfirmed": 742,
-    "multiple_unresolved_amounts": 142,
-    "http_410": 15,
+    "full_time_unconfirmed": 834,
+    "multiple_unresolved_amounts": 143,
+    "http_410": 20,
     "expired": 7,
-    "country_unconfirmed": 43,
+    "country_unconfirmed": 47,
     "ad_too_old": 670,
-    "monthly_unconfirmed": 132,
-    "invalid_amount": 5,
+    "monthly_unconfirmed": 134,
+    "invalid_amount": 6,
     "salary_conflict": 203,
     "base_salary_unclear": 2,
     "unsupported_detail_schema": 5,
@@ -7650,9 +7831,9 @@
       "url": "https://www.ejobs.ro/user/locuri-de-munca/lucrator-comercial-cofetaria-madame-prallini/1979840",
       "stage": "detail",
       "error": "host_paused_429",
-      "count": 4,
-      "lastUrl": "https://www.ejobs.ro/user/locuri-de-munca/vanzator-suceava-cuza-voda-f-m/1979145",
-      "lastAt": "2026-09-08T03:07:29.212Z",
+      "count": 8,
+      "lastUrl": "https://www.ejobs.ro/user/locuri-de-munca/instalatori-si-electricieni-bucuresti-si-imprejurimi/1984796",
+      "lastAt": "2026-09-08T11:14:56.814Z",
       "source": "ejobs"
     },
     {
@@ -7664,12 +7845,20 @@
       "source": "ejobs"
     },
     {
+      "stage": "inventory",
+      "error": "host_paused_429",
+      "count": 2,
+      "firstAt": "2026-09-08T10:12:06.739Z",
+      "lastAt": "2026-09-08T11:14:51.612Z",
+      "source": "ejobs"
+    },
+    {
       "url": "https://www.publi24.ro/anunturi/locuri-de-munca/horeca/personal-receptie-administratie/anunt/gloria-events-angajeaza-barman-si-ospatar-bucatar-receptioner-calificat-pentru-hotel/8704dig7fi7d7367egi8h1g932d3d075.html",
       "stage": "detail",
       "error": "http_410",
-      "count": 15,
-      "lastUrl": "https://www.publi24.ro/anunturi/locuri-de-munca/horeca/ospatar-barman-sef-de-sala/anunt/angajez-ospatar-restaurant-rare-garden/8igei6ii354e7gd4d33f95d0ie0f1hi0.html",
-      "lastAt": "2026-09-08T03:08:36.946Z",
+      "count": 20,
+      "lastUrl": "https://www.publi24.ro/anunturi/locuri-de-munca/salubrizare-curatenie-dezinsectie/anunt/angajam-personal-curatenie/035f066057g57794ddid7711f34fd520.html",
+      "lastAt": "2026-09-08T09:07:00.655Z",
       "source": "publi24"
     },
     {
@@ -7686,10 +7875,10 @@
       "url": "https://www.publi24.ro/anunturi/locuri-de-munca/casieri-lucratori-comerciali/anunt/lucrator-comercial-sector-6-bucuresti/82979388hgid7g24d256ge7193350i7i.html",
       "stage": "detail",
       "error": "host_paused_429",
-      "count": 3,
+      "count": 5,
       "firstAt": "2026-09-08T00:12:22.442Z",
-      "lastUrl": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/tamplari-montatori-mobilier/anunt/angajam-confectioneri-aluminiu-si-montatori-partitii-sticla-securizata/968f239e7h31780ede042fg8g7756g52.html",
-      "lastAt": "2026-09-08T03:09:55.521Z",
+      "lastUrl": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/muncitori-constructii/anunt/kareol-serv-construct-angajeaza-muncitori-necalificati-si-muncitori-calificati/0ge38449g6g67d43245f74376g9h0f3g.html",
+      "lastAt": "2026-09-08T09:11:11.382Z",
       "source": "publi24"
     }
   ]

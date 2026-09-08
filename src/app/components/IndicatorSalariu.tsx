@@ -26,7 +26,11 @@ export default function IndicatorSalariu({ reper: r }: { reper: ReperMeserie }) 
           <p className="mt-1">{a.n} anunțuri eligibile după deduplicare · {a.employers} angajatori identificați · {a.counties} județe identificate.</p>
           <p className="mt-1 text-xs text-stone-600">{Object.entries(a.sourceCounts).map(([source,n]) => `${source}: ${n}`).join(' · ')}</p>
           <p className="mt-1 text-xs text-stone-600">{a.explicitMonthly} cu perioadă lunară explicită; {a.assumedMonthly} cu perioadă lunară presupusă pentru normă întreagă. Conversiile din brut și euro sunt documentate în registru.</p>
-          {a.basisFromDocument !== undefined && a.basisFromDocument > 0 && <p className="mt-1 text-xs text-stone-600">{a.basisNearAmount} au „net” sau „brut” scris lângă sumă; la {a.basisFromDocument} baza este declarată în altă parte a aceluiași anunț.</p>}
+          {(!!a.basisFromDocument || !!a.basisFromPlatform) && <p className="mt-1 text-xs text-stone-600">
+            Cât de tare e dovada pentru net sau brut: {a.basisNearAmount} au cuvântul scris lângă sumă
+            {!!a.basisFromDocument && `, ${a.basisFromDocument} îl au în altă parte a aceluiași anunț`}
+            {!!a.basisFromPlatform && `, iar ${a.basisFromPlatform} au doar eticheta pe care platforma o pune identic pe toate anunțurile ei`}.
+          </p>}
           {a.midpointEstimate !== null && a.midpointEstimate !== undefined && <p className="mt-2">Reper central estimat al ofertelor: <strong>{Math.round(a.midpointEstimate/100)*100} lei net / lună</strong>. Calculat ca mediană a mijloacelor intervalelor oferite.</p>}
           {a.medianBounds ? <p className="mt-2">Limitele medianei ofertelor: <strong>{Math.round(a.medianBounds.min).toLocaleString('ro-RO')}–{Math.round(a.medianBounds.max).toLocaleString('ro-RO')} lei net / lună</strong>. Intervalele oferite nu permit determinarea unei mediane exacte.</p>
             : <>

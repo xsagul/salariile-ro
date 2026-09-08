@@ -68,6 +68,9 @@ assert.equal(resolveSalary(inRange).salary.evidenceKind,'text_within_structured_
 assert.equal(resolveSalary({...inRange,description:'Salariul cuprins intre 2800 lei net si 3500 lei net.'}).salary.max,3500);
 // In afara intervalului declarat ramane conflict, niciodata o suprascriere tacuta.
 assert.equal(resolveSalary({...inRange,description:'Salariu: 9.000 lei NET pe luna.'}).error,'salary_conflict');
+// Eticheta constanta a unui portal este dovada mai slaba si se numara separat.
+assert.equal(extractSalary({source:'ejobs',salaryText:'3500 - 4000 RON net',description:'Angajam contabil.'}).basisEvidence,'platform');
+assert.equal(extractSalary({source:'bestjobs',salaryText:'3500 - 4000 RON net',description:'Angajam contabil.'}).basisEvidence,'local');
 // Baza declarata in alta parte a anuntului ramane dovada, marcata ca atare.
 const departe=resolveSalary({...inRange,description:['Toate sumele din acest anunt sunt nete si se platesc pe 15.','Program de luni pana vineri, opt ore.','Salariu: 3.200 lei pe luna.'].join(String.fromCharCode(10))}).salary;
 assert.equal(departe.min,3200); assert.equal(departe.basisEvidence,'document');
@@ -101,6 +104,8 @@ const mixed=[...many,...Array.from({length:20},(_,i)=>({...o,id:`u-${i}`,adId:`u
 assert.deepEqual(summarize(mixed).medianBounds,summarize(many).medianBounds,'An undeclared basis never moves the published figure');
 assert.equal(summarize(mixed).undeclaredBasis.n,20);
 assert.equal(summarize(many).basisNearAmount,40,'Baza de langa suma se numara separat de cea din restul anuntului');
+assert.equal(summarize(many.map(x=>({...x,basisEvidence:'platform'}))).basisFromPlatform,40);
+assert.equal(summarize(many.map(x=>({...x,basisEvidence:'platform'}))).basisNearAmount,0);
 assert.equal(summarize(many.map(o=>({...o,basisEvidence:'document'}))).basisFromDocument,40);
 assert.equal(summarize(mixed).n,40,'Only declared-basis adverts count towards the gates');
 const shifted=many.map((o,i)=>({...o,min:i%2?10000:3000,max:i%2?10000:3000}));

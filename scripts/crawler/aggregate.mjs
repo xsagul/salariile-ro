@@ -48,8 +48,11 @@ export function summarize(all) {
   if (sourceShare > POLICY.maxSourceShare) gaps.push('source_concentration');
   // Interval-censored salaries: the median itself lies between these two endpoints.
   // Never turn the midpoint of an offered range into an observed employee salary.
-  // Baza scrisa langa suma este dovada mai tare decat una aflata in alta parte a anuntului.
-  const basisNearAmount = records.filter(r => r.basisEvidence !== 'document').length;
+  // Trei tarii de dovada pentru baza: scrisa langa suma, scrisa altundeva in
+  // acelasi anunt, sau doar eticheta constanta pe care portalul o pune peste tot.
+  const basisFromDocument = records.filter(r => r.basisEvidence === 'document').length;
+  const basisFromPlatform = records.filter(r => r.basisEvidence === 'platform').length;
+  const basisNearAmount = n - basisFromDocument - basisFromPlatform;
   const strict = records.filter(r=>r.periodEvidence === 'explicit_monthly');
   const explicitMonthly = strict.length;
   const midpoint = rows=>quantile(rows.map(r=>(r.min+r.max)/2),0.5);
@@ -62,7 +65,7 @@ export function summarize(all) {
   const sourceSensitivity = midpointEstimate && omitSource.length ? Math.max(...omitSource.map(v=>Math.abs(v-midpointEstimate)/midpointEstimate)) : null;
   if (sourceSensitivity !== null && sourceSensitivity > POLICY.maxSensitivity) gaps.push('source_sensitivity');
   const publishable = gaps.length === 0;
-  return { n, ads: ads.size || n, basisNearAmount, basisFromDocument: n - basisNearAmount, employers: employers.size, counties: counties.size, sourceCounts, employerShare, sourceShare, gaps,
+  return { n, ads: ads.size || n, basisNearAmount, basisFromDocument, basisFromPlatform, employers: employers.size, counties: counties.size, sourceCounts, employerShare, sourceShare, gaps,
     explicitMonthly, assumedMonthly:n-explicitMonthly, periodSensitivity, sourceSensitivity,
     midpointEstimate:publishable ? midpointEstimate : null,
     status: publishable ? 'advertised_interval' : n ? 'insufficient' : 'no_verified_ads',

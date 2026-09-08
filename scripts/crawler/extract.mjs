@@ -142,6 +142,11 @@ export function extractSalaryCandidates(r) {
     if (nums?.length && nums.length <= 2 && !NON_MONTHLY.test(flat)) candidates.unshift({ min: number(nums[0]), max: number(nums[1] || nums[0]),
       basis: NET_WORDS.test(flat) ? 'net' : GROSS_WORDS.test(flat) ? 'brut' : null,
       currency: /\bRON\b/i.test(r.salaryText) ? 'RON' : 'EUR', snippet: r.salaryText,
+      // Unele portaluri eticheteaza toate sumele la fel, din propriul model de date.
+      // eJobs afiseaza „net" pe fiecare anunt — masurat 196 din 196, niciodata „brut" —
+      // iar payload-ul paginii nu contine nicio cheie de baza. Este o conventie a
+      // platformei, nu o declaratie a angajatorului, si se numara separat.
+      basisEvidence: r.source === 'ejobs' ? 'platform' : NET_WORDS.test(flat) || GROSS_WORDS.test(flat) ? 'local' : null,
       monthly: /lun[aă]/i.test(r.salaryText) || r.source === 'ejobs', explicitFixed: false,
       roleSlugs: [], evidenceKind: 'salary_field' });
   }
