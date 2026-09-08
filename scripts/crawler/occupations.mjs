@@ -2,7 +2,9 @@ import fs from 'node:fs';
 import { normalizeText as clean, editDistance } from './policy.mjs';
 // Names only. Never use baseline salaries as observations or calibration targets.
 export const catalog = JSON.parse(fs.readFileSync('src/data/cor-meserii.json', 'utf8')).occupations;
-const names = JSON.parse(fs.readFileSync('src/data/backup-baseline-132-meserii-2026-09-06.json', 'utf8')).map(({ slug, nume }) => ({ slug, nume }));
+// Sursa de adevar este `src/lib/meserii.ts`; fisierul de aici e generat din ea
+// de `scripts/genereaza-catalog-meserii.mts` si verificat la fiecare `npm test`.
+const names = JSON.parse(fs.readFileSync('src/data/meserii-catalog.json', 'utf8')).meserii;
 export const occupations = names;
 const aliases = {
   programator: ['software developer','software engineer','inginer software','backend developer','java developer','python developer','full stack developer'],
@@ -15,7 +17,7 @@ const aliases = {
   electrician: ['electricieni','electricean','electrician auto'],
   instalator: ['instalatori','instalator sanitar'],
   constructor: ['muncitor constructii','muncitori constructii','muncitori in constructii','lucrator constructii','lucrator in constructii','muncitor necalificat constructii'],
-  'agent-paza': ['agent securitate','agenti securitate','agent paza','agenti paza','ag securitate','paznic'],
+  'agent-paza': ['agent securitate','agent de securitate','agenti de securitate','agenti securitate','agent paza','agent de paza','agenti paza','ag securitate','paznic'],
   'agent-curatenie': ['personal curatenie','operator curatenie','femeie de serviciu','menajera'],
   chelner: ['ospatar','ospatari','ospatarita'],
   vanzator: ['vanzatoare','lucrator comercial','lucratori comerciali'],
@@ -33,6 +35,12 @@ const aliases = {
   bucatar: ['bucatari','bucatareasa'],
   sudor: ['sudori'],
   contabil: ['contabila','accountant'],
+  economist: ['economist','economista'],
+  grefier: ['grefieri','grefier de sedinta'],
+  jandarm: ['jandarmi','subofiter jandarm'],
+  'registrator-medical': ['registrator medical','registratori medicali','statistician medical'],
+  'sofer-ridesharing': ['sofer bolt','sofer uber','sofer ridesharing','sofer aplicatie'],
+  'administrator-bloc': ['administrator bloc','administrator imobile','administrator asociatie'],
   'agent-vanzari': ['reprezentant vanzari','sales representative','sales advisor','agenti vanzari','consultant vanzari','consilier vanzari','reprezentant comercial'],
   'asistent-medical': ['asistenta medicala','asistenti medicali','asistente medicale','asistent generalist'],
   'asistent-farmacie': ['asistent farmacie','asistenta farmacie'],

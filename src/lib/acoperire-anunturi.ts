@@ -13,6 +13,8 @@ export type AcoperireAnunturi = {
   employers: number; counties: number;
   sourceCounts: Record<string, number>; gaps: string[]; status: string;
   explicitMonthly: number; assumedMonthly:number; midpointEstimate:number | null;
+  /** Mediana mijloacelor, calculata indiferent de praguri. */
+  centralEstimate?: number | null;
   medianBounds: { min: number; max: number } | null;
   observedRange: { min: number; max: number } | null;
   undeclaredBasis?: CohortaNedeclarata;

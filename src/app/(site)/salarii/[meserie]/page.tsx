@@ -107,21 +107,48 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 function faqPentru(date: DateMeserie) {
   const numeMic = date.meserie.nume.toLocaleLowerCase("ro-RO");
-  return [
-    { q: `Ce salariu este documentat pentru această meserie?`, a: descriereReper(date) },
-    {
-      q: `Cum documentează Salariile.ro venitul pentru ${numeMic}?`,
-      a: descriereReper(date),
-    },
-    {
-      q: 'Există salarii pentru juniori și seniori?',
-      a: 'Pentru rolurile din sectorul public, grilele legale prevăd trepte explicite în funcție de grad și vechime. În sectorul privat, remunerația variază după nivelul de experiență, competențe și responsabilități, reperul de pe site fiind însoțit de tipul sursei și populația pe care o descrie.',
-    },
-    {
-      q: 'Cum compar o ofertă cu aceste cifre?',
-      a: 'Verifică salariul de bază brut, norma și orele, tichetele de masă, sporurile garantate și bonusurile variabile. Folosește calculatorul nostru de salariu pentru a calcula suma netă exactă corespunzătoare ofertei tale.',
-    },
+  const de = date.meserie.de;
+  const grila = grilaPublica(date.meserie.slug);
+  const didactic = grilaEducatie(date.meserie.slug);
+  const trepte = didactic.length
+    ? didactic.map(r => ({ eticheta: r.functie, net: calculStandard(r.iun2024)!.net }))
+    : grila?.trepte.map(t => ({ eticheta: t.eticheta, net: t.net })) ?? [];
+  // Oamenii nu cauta „ce salariu este documentat". Cauta „cat castiga un X",
+  // „ce salariu are un X" si, cel mai des, treapta de inceput: „X debutant".
+  // Randurile grilei nu sunt ordonate dupa vechime — la invatamant sunt niveluri
+  // de studii — deci capetele se aleg dupa suma, nu dupa pozitia in tabel.
+  const dupaSuma = [...trepte].sort((a, b) => a.net - b.net);
+  const debutanti = trepte.filter(t => /debutant|stagiar|an i/i.test(t.eticheta));
+  const debutant = debutanti.length
+    ? debutanti.reduce((min, t) => (t.net < min.net ? t : min))
+    : dupaSuma[0];
+  const maxim = dupaSuma[dupaSuma.length - 1];
+  const varf = maxim && debutant && maxim.net > debutant.net * 1.05 ? maxim : null;
+  const lei = (n: number) => `${n.toLocaleString("ro-RO")} lei net pe lună`;
+
+  const intrebari = [
+    { q: `Cât câștigă un ${de} în România?`, a: descriereReper(date) },
+    { q: `Ce salariu are un ${de}?`, a: descriereReper(date) },
   ];
+  if (debutant) {
+    intrebari.push({
+      q: `Cât câștigă un ${de} debutant?`,
+      a: `La început de carieră, treapta „${debutant.eticheta}" înseamnă ${lei(debutant.net)}, calculat din salariul de bază brut prevăzut în grila legală, la gradația 0.${varf ? ` Cea mai bine plătită treaptă din grilă, „${varf.eticheta}", ajunge la ${lei(varf.net)}.` : ""} Peste aceste sume vin gradațiile de vechime și sporurile, care nu sunt incluse aici.`,
+    });
+  }
+  intrebari.push(
+    {
+      q: `Care sunt treptele de salarizare pentru ${numeMic}?`,
+      a: trepte.length
+        ? `Grila legală prevede ${trepte.length} trepte: ${trepte.map(t => `${t.eticheta.toLocaleLowerCase("ro-RO")} ${lei(t.net)}`).join("; ")}. Sumele sunt salarii de bază la gradația 0, înainte de vechime și sporuri.`
+        : "Pentru rolurile din sectorul public, grilele legale prevăd trepte explicite după grad și vechime. În sectorul privat remunerația variază după experiență, competențe și responsabilități, iar reperul de pe pagină este însoțit de tipul sursei și de populația pe care o descrie.",
+    },
+    {
+      q: `Cum compar o ofertă de angajare cu salariul unui ${de}?`,
+      a: "Verifică salariul de bază brut, norma și orele, tichetele de masă, sporurile garantate și bonusurile variabile. Folosește calculatorul nostru de salariu ca să afli suma netă exactă a ofertei tale și compar-o cu reperul de mai sus.",
+    },
+  );
+  return intrebari;
 }
 
 export default async function MeseriePage({ params }: Props) {

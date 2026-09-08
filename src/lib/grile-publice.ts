@@ -276,6 +276,19 @@ const DEFINITII: Record<string, Definitie> = {
       "La ambulanță, UPU și ATI grila e puțin mai mare: 4.693 lei. Funcția apare în lege sub denumirea „infirmieră”, la feminin.",
   },
 
+  "registrator-medical": {
+    anexa: "Anexa nr. II",
+    sectiune: "Unități clinice",
+    domeniu: "spitale și institute clinice",
+    trepte: [
+      { eticheta: "Debutant", functie: "Statistician medical, registrator medical; debutant" },
+      { eticheta: "Registrator medical", functie: "Statistician medical, registrator medical" },
+      { eticheta: "Principal", functie: "Statistician medical, registrator medical; principal" },
+    ],
+    nota:
+      "În lege funcția apare împreună cu statisticianul medical, la același nivel de salarizare. În unități neclinice și la ambulanță grila este mai mică.",
+  },
+
   judecator: {
     anexa: "Anexa nr. V",
     domeniu: "instanțe judecătorești",
@@ -428,6 +441,36 @@ const MILITARE: Record<string, { domeniu: string; numeSuma: string; nota: string
       },
     ],
   },
+  jandarm: {
+    domeniu: "Jandarmeria Română",
+    numeSuma: "solda brută de funcție plus solda de grad",
+    nota:
+      "Jandarmii sunt cadre militare și se salarizează pe aceeași anexă ca armata, nu pe grila polițiștilor. Solda de funcție are un minim și un maxim; folosim minimul. Peste ea vin gradațiile de vechime și sporurile pentru condiții.",
+    trepte: [
+      { eticheta: "Soldat gradat profesionist", functie: "Funcții corespunzătoare gradului de soldat", grad: "Soldat" },
+      {
+        eticheta: "Maistru militar clasa a IV-a",
+        functie: "Funcții corespunzătoare gradului de maistru militar cls. a IV-a/sergent major",
+        grad: "Maistru militar clasa a IV-a",
+      },
+      {
+        eticheta: "Sublocotenent",
+        functie: "Funcții corespunzătoare gradului de sublocotenent, aspirant, subinspector de poliție/penitenciare",
+        grad: "Sublocotenent, aspirant, subinspector de poliție/penitenciare",
+      },
+      {
+        eticheta: "Căpitan",
+        functie: "Funcții corespunzătoare gradului de căpitan, inspector principal de poliție/penitenciare",
+        grad: "Căpitan, inspector principal de poliție/penitenciare",
+      },
+      {
+        eticheta: "Colonel",
+        functie: "Funcții corespunzătoare gradului de colonel, comandor, comisar-șef de poliție/penitenciare",
+        grad: "Colonel, comandor, comisar-șef de poliție/penitenciare",
+      },
+    ],
+  },
+
   militar: {
     domeniu: "Armata României",
     numeSuma: "solda brută de funcție plus solda de grad",

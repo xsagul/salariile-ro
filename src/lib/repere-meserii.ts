@@ -16,7 +16,7 @@ export function grilaEducatie(slug: string) {
 }
 
 export type ReperMeserie = {
-  kind: 'external-reported' | 'external-advertised' | 'public-grid' | 'sector-context';
+  kind: 'salariile-ro' | 'external-reported' | 'external-advertised' | 'public-grid' | 'sector-context';
   value: number | null;
   upper: number | null;
   unit: 'lei net/lună';
@@ -31,6 +31,7 @@ export type ReperMeserie = {
   p25: number | null;
   p75: number | null;
   anunturi?: AcoperireAnunturi;
+  compus?: ReperCompus;
 };
 
 /** Keep different populations and metrics separate. Missing quartiles stay missing. */
@@ -38,6 +39,21 @@ export function reperMeserie(d: DateMeserie): ReperMeserie {
   const common = { unit: 'lei net/lună' as const, median: null, p25: null, p75: null,
     anunturi: ACOPERIRE_ANUNTURI[d.meserie.slug] };
   const report = reports.records.find(r => r.slug === d.meserie.slug);
+
+  // Cand doua repere independente descriu aceeasi meserie — ce se ofera si ce se
+  // declara — reperul propriu al site-ului conduce. Nu inlocuieste pilonii: se
+  // construieste din ei si ii arata dedesubt, fiecare cu sursa lui.
+  const compus = reperCompus(piloniMeserie(d));
+  if (compus && compus.surse >= 2) {
+    return {
+      ...common, kind: 'salariile-ro', value: compus.valoare, upper: null, n: common.anunturi?.n ?? null,
+      compus, label: 'Reper Salariile.ro',
+      period: `anunțuri active la ${new Date(DATA_VERIFICARE_ANUNTURI).toLocaleDateString('ro-RO', { timeZone: 'Europe/Bucharest' })} și surse declarate citate`,
+      population: compus.intrari.map(i => i.titlu.toLowerCase()).join(' și '),
+      source: 'Salariile.ro', url: 'https://salariile.ro/metodologie',
+      note: `${compus.metoda} Intrări: ${compus.intrari.map(i => `${i.titlu} ${Math.round(i.valoare).toLocaleString('ro-RO')} lei`).join('; ')}.${compus.verificareOficiala ? ` Verificare INS pe grupa de ocupații: ${compus.verificareOficiala.valoare.toLocaleString('ro-RO')} lei, raport ${compus.verificareOficiala.raport}${compus.verificareOficiala.inBanda ? ', în bandă plauzibilă' : ', în afara benzii plauzibile'}.` : ''}`,
+    };
+  }
 
   // Colectarea proprie conduce cand trece toate pragurile: e singura cifra pe
   // meseria exacta, cu n publicat, surse numite si registru public de dovezi.
@@ -143,9 +159,12 @@ export function piloniMeserie(d: DateMeserie): Pilon[] {
   const trepte = teaching.length ? teaching.map(r => calculStandard(r.iun2024)!.net) : grid?.trepte.map(r => r.net) ?? [];
   const cm = cifreMeserie(d.meserie.caen2, d.meserie.isco, { net: d.netObservat ?? d.netStandard, brut: d.sector.brutCurent });
 
+  // Sub praguri cifra ramane utila pentru orientare daca esantionul e macar de zece
+  // anunturi, dar nu devine cifra principala a paginii.
+  const centralAnunturi = a?.midpointEstimate ?? ((a?.n ?? 0) >= 10 ? a?.centralEstimate ?? null : null);
   const anunturi: Pilon = {
     cheie: 'anunturi', titlu: 'Ce se oferă acum în anunțuri',
-    valoare: a?.midpointEstimate ?? null,
+    valoare: centralAnunturi !== null && centralAnunturi !== undefined ? Math.round(centralAnunturi) : null,
     interval: a?.medianBounds ?? a?.observedRange ?? null,
     concept: 'salariu oferit la angajare',
     populatie: 'anunțuri active, normă întreagă, muncă în România, sumă explicită',
@@ -197,4 +216,46 @@ export function convergentaPiloni(piloni: Pilon[]) {
   const valori = puncte.map(p => p.valoare);
   const min = Math.min(...valori), max = Math.max(...valori);
   return { min, max, raspandire: (max - min) / min, puncte };
+}
+
+export type ReperCompus = {
+  valoare: number;
+  surse: number;
+  intrari: { cheie: Pilon['cheie']; titlu: string; valoare: number }[];
+  verificareOficiala: { valoare: number; raport: number; inBanda: boolean } | null;
+  metoda: string;
+};
+
+/**
+ * Punctul de orientare al site-ului. Nu este salariul cuiva anume si nu inlocuieste
+ * pilonii: se construieste din ei si ii arata dedesubt.
+ *
+ * Intra doar reperele care descriu meseria exacta — ce se ofera in anunturi si ce
+ * declara angajatii. Statistica oficiala este pe grupa larga de ocupatii, prea larga
+ * ca sa traga cifra, dar buna ca sa verifice ca nu a luat-o razna: daca rezultatul
+ * iese din banda din jurul ei, se marcheaza in loc sa se ascunda.
+ */
+export function reperCompus(piloni: Pilon[]): ReperCompus | null {
+  // Doar valori centrale. Mijlocul intervalului observat este media dintre cea mai
+  // mica si cea mai mare suma gasita — nu descrie piata si nu intra niciodata aici.
+  const specifice = piloni
+    .filter(p => p.cheie === 'anunturi' || p.cheie === 'declarat')
+    .map(p => ({ cheie: p.cheie, titlu: p.titlu, valoare: p.valoare }))
+    .filter((p): p is { cheie: Pilon['cheie']; titlu: string; valoare: number } => p.valoare !== null && p.valoare > 0);
+  if (!specifice.length) return null;
+
+  const valori = [...specifice.map(p => p.valoare)].sort((a, b) => a - b);
+  const mijloc = Math.floor(valori.length / 2);
+  const valoare = Math.round(valori.length % 2 ? valori[mijloc] : (valori[mijloc - 1] + valori[mijloc]) / 2);
+
+  const oficial = piloni.find(p => p.cheie === 'oficial');
+  const referinta = oficial?.valoare ?? (oficial?.interval ? (oficial.interval.min + oficial.interval.max) / 2 : null);
+  const verificareOficiala = referinta && referinta > 0
+    ? { valoare: Math.round(referinta), raport: +(valoare / referinta).toFixed(2), inBanda: valoare >= referinta * 0.6 && valoare <= referinta * 1.8 }
+    : null;
+
+  return {
+    valoare, surse: specifice.length, intrari: specifice, verificareOficiala,
+    metoda: 'Mediana reperelor care descriu meseria exactă: salariile oferite în anunțurile verificate de noi și salariile declarate de angajați în sursele citate. Statistica oficială nu intră în calcul, fiindcă măsoară o grupă largă de ocupații; este folosită doar ca verificare de plauzibilitate.',
+  };
 }

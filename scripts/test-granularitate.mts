@@ -31,7 +31,17 @@ for (const m of MESERII) {
   // apoi media externa, apoi grila legala, apoi contextul INS.
   const source = reports.records.find(x=>x.slug===m.slug);
   const ads = ACOPERIRE_ANUNTURI[m.slug];
-  if (ads?.medianBounds) {
+  if (r.kind === 'salariile-ro') {
+    // Reperul propriu se construieste doar din valori centrale, niciodata din
+    // mijlocul intervalului observat, si arata din ce e facut.
+    const c = r.compus!;
+    assert.ok(c.surse >= 2, `${m.slug}: reperul propriu cere cel putin doua surse`);
+    assert.equal(c.intrari.length, c.surse, m.slug);
+    for (const i of c.intrari) assert.ok(i.valoare > 0 && ['anunturi','declarat'].includes(i.cheie), m.slug);
+    const valori = c.intrari.map(i => i.valoare).sort((a, b) => a - b);
+    assert.ok(r.value! >= Math.floor(valori[0]) && r.value! <= Math.ceil(valori.at(-1)!), `${m.slug}: reperul sta intre intrarile lui`);
+    assert.ok(c.metoda.length > 40, m.slug);
+  } else if (ads?.medianBounds) {
     assert.equal(r.kind,'external-advertised',m.slug);
     assert.equal(r.value, Math.round(ads.midpointEstimate!), 'cifra proprie este exact mediana mijloacelor');
     assert.equal(r.n, ads.n, 'numarul de anunturi este afisat');

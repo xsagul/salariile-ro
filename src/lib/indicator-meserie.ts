@@ -3,6 +3,7 @@ import type { ReperMeserie } from './repere-meserii';
 // Modul pur, comun catalogului, paginilor și comparatorului din browser.
 export function indicatorMeserie(reper: ReperMeserie) {
   if (reper.median !== null) return { value: reper.median, metric: 'median' as const };
+  if (reper.kind === 'salariile-ro') return { value: reper.value, metric: 'composite' as const };
   if (reper.kind === 'external-advertised') return { value: reper.value, metric: 'advertised' as const };
   if (reper.kind === 'public-grid') return { value: reper.value, metric: 'grid' as const };
   if (reper.kind === 'sector-context') return { value: reper.value, metric: 'context' as const };

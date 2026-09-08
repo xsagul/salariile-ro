@@ -68,6 +68,9 @@ export function summarize(all) {
   return { n, ads: ads.size || n, basisNearAmount, basisFromDocument, basisFromPlatform, employers: employers.size, counties: counties.size, sourceCounts, employerShare, sourceShare, gaps,
     explicitMonthly, assumedMonthly:n-explicitMonthly, periodSensitivity, sourceSensitivity,
     midpointEstimate:publishable ? midpointEstimate : null,
+    // Estimarea centrala se calculeaza mereu; pragurile guverneaza ce se publica
+    // drept cifra principala, nu daca statistica poate fi calculata.
+    centralEstimate: midpointEstimate,
     status: publishable ? 'advertised_interval' : n ? 'insufficient' : 'no_verified_ads',
     medianBounds: publishable ? { min: quantile(records.map(r=>r.min),0.5), max: quantile(records.map(r=>r.max),0.5) } : null,
     observedRange: n ? { min: Math.min(...records.map(r=>r.min)), max: Math.max(...records.map(r=>r.max)) } : null,

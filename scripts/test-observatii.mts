@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { agregheaza, incadreaza, PRAG_PUBLICARE, type ObservatieSalariala } from '../src/lib/observatii-salariale';
 import { MESERII, dateMeserieSauEroare, COMPARATII } from '../src/lib/meserii';
-import { reperMeserie, textReper, piloniMeserie, convergentaPiloni } from '../src/lib/repere-meserii';
+import { reperMeserie, textReper, piloniMeserie, convergentaPiloni, reperCompus } from '../src/lib/repere-meserii';
 import { indicatorMeserie } from '../src/lib/indicator-meserie';
 import cor from '../src/data/cor-meserii.json';
 import reports from '../src/data/repere-piata-verificate.json';
@@ -9,7 +9,11 @@ const make=(n:number):ObservatieSalariala[]=>Array.from({length:n},(_,i)=>({mese
 const options={meserie:'zugrav',suma:'net' as const};
 assert.equal(incadreaza('Inginer ofertare','251202')?.slug,'programator');
 assert.equal(incadreaza('Programator','251299'),null,'un COR necunoscut nu se deduce din prefix sau din titlu');
-assert.equal(incadreaza('Registrator medical'),null);
+// Meseriile cu cerere mare de cautare intra in catalog cu maparea lor COR.
+assert.equal(incadreaza('Registrator medical')?.slug,'registrator-medical');
+assert.equal(incadreaza('Grefier')?.slug,'grefier');
+assert.equal(incadreaza('Jandarm')?.slug,'jandarm');
+assert.equal(incadreaza('Titlu care nu exista in nomenclator'),null,'un titlu necunoscut nu se deduce');
 assert.equal(incadreaza('Asistent medical')?.slug,'asistent-medical');
 assert.equal(agregheaza(make(PRAG_PUBLICARE-1),options),null);
 assert.equal(agregheaza(make(30),{...options,prag:1}),null,'pragul nu poate fi ocolit');
@@ -45,15 +49,22 @@ for(const m of MESERII) {
  const val = indicatorMeserie(r).value;
  assert.ok(val !== null && val > 0);
 }
-// Colectarea proprie trecuta prin praguri conduce; altfel ramane media citata.
+// Ierarhia reperului principal: reperul propriu din doua surse, apoi colectarea
+// proprie trecuta prin praguri, apoi media externa citata.
 {
  const r=reperMeserie(dateMeserieSauEroare(MESERII.find(x=>x.slug==='contabil')!));
- if(r.kind==='external-advertised') assert.ok(r.n && r.n>=30,'reperul propriu al contabilului are esantionul cerut');
- else assert.equal(r.value,reports.records.find(x=>x.slug==='contabil')!.net);
+ const salario=reports.records.find(x=>x.slug==='contabil')!.net;
+ if(r.kind==='salariile-ro'){
+  const valori=r.compus!.intrari.map(i=>i.valoare);
+  assert.ok(valori.includes(salario),'media citata este una dintre intrarile reperului propriu');
+  assert.ok(r.value!>=Math.min(...valori)&&r.value!<=Math.max(...valori),'reperul nu iese din intrarile lui');
+ } else if(r.kind==='external-advertised') assert.ok(r.n && r.n>=30);
+ else assert.equal(r.value,salario);
 }
 assert.equal(reperMeserie(dateMeserieSauEroare(MESERII.find(x=>x.slug==='cercetator')!)).kind,'sector-context');
 assert.equal(reperMeserie(dateMeserieSauEroare(MESERII.find(x=>x.slug==='constructor')!)).kind,'sector-context');
-// Cei trei piloni raman separati: populatii si concepte diferite, deci nicio cifra unica.
+// Pilonii raman calculati separat, cu sursa fiecaruia, si cand din ei se
+// construieste reperul propriu al site-ului.
 for(const m of MESERII){
  const p=piloniMeserie(dateMeserieSauEroare(m));
  assert.equal(p.length,3,m.slug);
@@ -67,6 +78,9 @@ for(const m of MESERII){
  }
  const c=convergentaPiloni(p);
  if(c){assert.ok(c.max>=c.min);assert.ok(c.puncte.length>=2);assert.ok(!('valoare' in c),'convergenta nu produce o cifra unica');}
+ // Statistica oficiala verifica reperul propriu, dar nu intra niciodata in el.
+ const comp=reperCompus(p);
+ if(comp)assert.ok(!comp.intrari.some(i=>i.cheie==='oficial'),`${m.slug}: grupa ISCO nu intra in reper`);
 }
 assert.equal(cor.occupations.zugrav.code,'713102');assert.equal(cor.occupations.contabil.code,'331302');
 for(const c of COMPARATII)assert.notEqual(c.a.slug,c.b.slug);

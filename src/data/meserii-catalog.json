@@ -1,0 +1,557 @@
+{
+  "generatDin": "src/lib/meserii.ts",
+  "meserii": [
+    {
+      "slug": "programator",
+      "nume": "Programator"
+    },
+    {
+      "slug": "web-developer",
+      "nume": "Web developer"
+    },
+    {
+      "slug": "tester-qa",
+      "nume": "Tester QA"
+    },
+    {
+      "slug": "devops-engineer",
+      "nume": "Inginer DevOps"
+    },
+    {
+      "slug": "administrator-sistem",
+      "nume": "Administrator de sistem"
+    },
+    {
+      "slug": "analist-date",
+      "nume": "Analist de date"
+    },
+    {
+      "slug": "inginer-telecomunicatii",
+      "nume": "Inginer telecomunicații"
+    },
+    {
+      "slug": "medic",
+      "nume": "Medic"
+    },
+    {
+      "slug": "medic-rezident",
+      "nume": "Medic rezident"
+    },
+    {
+      "slug": "asistent-medical",
+      "nume": "Asistent medical"
+    },
+    {
+      "slug": "registrator-medical",
+      "nume": "Registrator medical"
+    },
+    {
+      "slug": "stomatolog",
+      "nume": "Stomatolog"
+    },
+    {
+      "slug": "tehnician-dentar",
+      "nume": "Tehnician dentar"
+    },
+    {
+      "slug": "farmacist",
+      "nume": "Farmacist"
+    },
+    {
+      "slug": "asistent-farmacie",
+      "nume": "Asistent de farmacie"
+    },
+    {
+      "slug": "farmacist-industrie",
+      "nume": "Farmacist în industrie"
+    },
+    {
+      "slug": "psiholog",
+      "nume": "Psiholog"
+    },
+    {
+      "slug": "fizioterapeut",
+      "nume": "Fizioterapeut"
+    },
+    {
+      "slug": "kinetoterapeut",
+      "nume": "Kinetoterapeut"
+    },
+    {
+      "slug": "infirmier",
+      "nume": "Infirmier"
+    },
+    {
+      "slug": "medic-veterinar",
+      "nume": "Medic veterinar"
+    },
+    {
+      "slug": "profesor",
+      "nume": "Profesor"
+    },
+    {
+      "slug": "invatator",
+      "nume": "Învățător"
+    },
+    {
+      "slug": "educator",
+      "nume": "Educator"
+    },
+    {
+      "slug": "profesor-universitar",
+      "nume": "Profesor universitar"
+    },
+    {
+      "slug": "cercetator",
+      "nume": "Cercetător"
+    },
+    {
+      "slug": "instructor-auto",
+      "nume": "Instructor auto"
+    },
+    {
+      "slug": "contabil",
+      "nume": "Contabil"
+    },
+    {
+      "slug": "auditor",
+      "nume": "Auditor financiar"
+    },
+    {
+      "slug": "analist-financiar",
+      "nume": "Analist financiar"
+    },
+    {
+      "slug": "economist",
+      "nume": "Economist"
+    },
+    {
+      "slug": "ofiter-credite",
+      "nume": "Ofițer de credite"
+    },
+    {
+      "slug": "agent-asigurari",
+      "nume": "Agent de asigurări"
+    },
+    {
+      "slug": "broker",
+      "nume": "Broker"
+    },
+    {
+      "slug": "consultant-financiar",
+      "nume": "Consultant financiar"
+    },
+    {
+      "slug": "avocat",
+      "nume": "Avocat"
+    },
+    {
+      "slug": "notar",
+      "nume": "Notar"
+    },
+    {
+      "slug": "consilier-juridic",
+      "nume": "Consilier juridic"
+    },
+    {
+      "slug": "judecator",
+      "nume": "Judecător"
+    },
+    {
+      "slug": "procuror",
+      "nume": "Procuror"
+    },
+    {
+      "slug": "grefier",
+      "nume": "Grefier"
+    },
+    {
+      "slug": "inginer",
+      "nume": "Inginer"
+    },
+    {
+      "slug": "arhitect",
+      "nume": "Arhitect"
+    },
+    {
+      "slug": "inginer-electronist",
+      "nume": "Inginer electronist"
+    },
+    {
+      "slug": "inginer-auto",
+      "nume": "Inginer auto"
+    },
+    {
+      "slug": "inginer-energetician",
+      "nume": "Inginer energetician"
+    },
+    {
+      "slug": "inginer-petrol",
+      "nume": "Inginer petrolist"
+    },
+    {
+      "slug": "inginer-agronom",
+      "nume": "Inginer agronom"
+    },
+    {
+      "slug": "constructor",
+      "nume": "Muncitor în construcții"
+    },
+    {
+      "slug": "zidar",
+      "nume": "Zidar"
+    },
+    {
+      "slug": "dulgher",
+      "nume": "Dulgher"
+    },
+    {
+      "slug": "electrician",
+      "nume": "Electrician"
+    },
+    {
+      "slug": "instalator",
+      "nume": "Instalator"
+    },
+    {
+      "slug": "zugrav",
+      "nume": "Zugrav"
+    },
+    {
+      "slug": "faiantar",
+      "nume": "Faianțar"
+    },
+    {
+      "slug": "sudor",
+      "nume": "Sudor"
+    },
+    {
+      "slug": "tamplar",
+      "nume": "Tâmplar"
+    },
+    {
+      "slug": "operator-productie",
+      "nume": "Operator producție"
+    },
+    {
+      "slug": "mecanic-auto",
+      "nume": "Mecanic auto"
+    },
+    {
+      "slug": "tehnician-mentenanta",
+      "nume": "Tehnician mentenanță"
+    },
+    {
+      "slug": "metalurgist",
+      "nume": "Metalurgist"
+    },
+    {
+      "slug": "miner",
+      "nume": "Miner"
+    },
+    {
+      "slug": "croitor",
+      "nume": "Croitor"
+    },
+    {
+      "slug": "muncitor-industria-alimentara",
+      "nume": "Muncitor în industria alimentară"
+    },
+    {
+      "slug": "cofetar",
+      "nume": "Cofetar"
+    },
+    {
+      "slug": "sofer-tir",
+      "nume": "Șofer TIR"
+    },
+    {
+      "slug": "sofer-autobuz",
+      "nume": "Șofer de autobuz"
+    },
+    {
+      "slug": "taximetrist",
+      "nume": "Taximetrist"
+    },
+    {
+      "slug": "mecanic-locomotiva",
+      "nume": "Mecanic de locomotivă"
+    },
+    {
+      "slug": "curier",
+      "nume": "Curier"
+    },
+    {
+      "slug": "sofer-ridesharing",
+      "nume": "Șofer ridesharing"
+    },
+    {
+      "slug": "postas",
+      "nume": "Poștaș"
+    },
+    {
+      "slug": "pilot",
+      "nume": "Pilot"
+    },
+    {
+      "slug": "insotitor-de-bord",
+      "nume": "Însoțitor de bord (stewardesă)"
+    },
+    {
+      "slug": "sofer-ambulanta",
+      "nume": "Șofer de ambulanță"
+    },
+    {
+      "slug": "logistician",
+      "nume": "Logistician"
+    },
+    {
+      "slug": "vanzator",
+      "nume": "Vânzător"
+    },
+    {
+      "slug": "casier",
+      "nume": "Casier"
+    },
+    {
+      "slug": "manager-magazin",
+      "nume": "Manager de magazin"
+    },
+    {
+      "slug": "agent-vanzari",
+      "nume": "Agent de vânzări"
+    },
+    {
+      "slug": "bucatar",
+      "nume": "Bucătar"
+    },
+    {
+      "slug": "chelner",
+      "nume": "Chelner"
+    },
+    {
+      "slug": "barman",
+      "nume": "Barman"
+    },
+    {
+      "slug": "receptioner-hotel",
+      "nume": "Recepționer hotel"
+    },
+    {
+      "slug": "agent-turism",
+      "nume": "Agent de turism"
+    },
+    {
+      "slug": "functionar-public",
+      "nume": "Funcționar public"
+    },
+    {
+      "slug": "politist",
+      "nume": "Polițist"
+    },
+    {
+      "slug": "jandarm",
+      "nume": "Jandarm"
+    },
+    {
+      "slug": "pompier",
+      "nume": "Pompier"
+    },
+    {
+      "slug": "militar",
+      "nume": "Militar"
+    },
+    {
+      "slug": "jurnalist",
+      "nume": "Jurnalist"
+    },
+    {
+      "slug": "editor",
+      "nume": "Editor"
+    },
+    {
+      "slug": "cameraman",
+      "nume": "Cameraman"
+    },
+    {
+      "slug": "regizor",
+      "nume": "Regizor"
+    },
+    {
+      "slug": "designer-grafic",
+      "nume": "Designer grafic"
+    },
+    {
+      "slug": "specialist-marketing",
+      "nume": "Specialist marketing"
+    },
+    {
+      "slug": "traducator",
+      "nume": "Traducător"
+    },
+    {
+      "slug": "actor",
+      "nume": "Actor"
+    },
+    {
+      "slug": "muzician",
+      "nume": "Muzician"
+    },
+    {
+      "slug": "fermier",
+      "nume": "Fermier"
+    },
+    {
+      "slug": "silvicultor",
+      "nume": "Silvicultor"
+    },
+    {
+      "slug": "electrician-centrala",
+      "nume": "Electrician centrală electrică"
+    },
+    {
+      "slug": "operator-statie-apa",
+      "nume": "Operator stație de apă"
+    },
+    {
+      "slug": "operator-salubritate",
+      "nume": "Operator salubritate"
+    },
+    {
+      "slug": "agent-paza",
+      "nume": "Agent de pază"
+    },
+    {
+      "slug": "agent-curatenie",
+      "nume": "Agent de curățenie"
+    },
+    {
+      "slug": "operator-call-center",
+      "nume": "Operator call center"
+    },
+    {
+      "slug": "secretar",
+      "nume": "Secretar"
+    },
+    {
+      "slug": "specialist-resurse-umane",
+      "nume": "Specialist resurse umane"
+    },
+    {
+      "slug": "agent-imobiliar",
+      "nume": "Agent imobiliar"
+    },
+    {
+      "slug": "administrator-bloc",
+      "nume": "Administrator de bloc"
+    },
+    {
+      "slug": "frizer",
+      "nume": "Frizer"
+    },
+    {
+      "slug": "cosmetician",
+      "nume": "Cosmetician"
+    },
+    {
+      "slug": "bibliotecar",
+      "nume": "Bibliotecar"
+    },
+    {
+      "slug": "antrenor-sportiv",
+      "nume": "Antrenor sportiv"
+    },
+    {
+      "slug": "preot",
+      "nume": "Preot"
+    },
+    {
+      "slug": "ingrijitor-batrani",
+      "nume": "Îngrijitor de bătrâni"
+    },
+    {
+      "slug": "asistent-social",
+      "nume": "Asistent social"
+    },
+    {
+      "slug": "operator-cnc",
+      "nume": "Operator CNC"
+    },
+    {
+      "slug": "electromecanic",
+      "nume": "Electromecanic"
+    },
+    {
+      "slug": "operator-chimist",
+      "nume": "Operator chimist"
+    },
+    {
+      "slug": "operator-mase-plastice",
+      "nume": "Operator mase plastice"
+    },
+    {
+      "slug": "operator-rafinarie",
+      "nume": "Operator rafinărie"
+    },
+    {
+      "slug": "sondor",
+      "nume": "Sondor"
+    },
+    {
+      "slug": "sticlar",
+      "nume": "Sticlar"
+    },
+    {
+      "slug": "tesator",
+      "nume": "Țesător"
+    },
+    {
+      "slug": "cizmar",
+      "nume": "Cizmar"
+    },
+    {
+      "slug": "tapiter",
+      "nume": "Tapițer"
+    },
+    {
+      "slug": "bijutier",
+      "nume": "Bijutier"
+    },
+    {
+      "slug": "tipograf",
+      "nume": "Tipograf"
+    },
+    {
+      "slug": "constructor-drumuri",
+      "nume": "Constructor de drumuri"
+    },
+    {
+      "slug": "marinar",
+      "nume": "Marinar"
+    },
+    {
+      "slug": "inginer-aeronautic",
+      "nume": "Inginer aeronautic"
+    },
+    {
+      "slug": "operator-epurare",
+      "nume": "Operator stație de epurare"
+    },
+    {
+      "slug": "crupier",
+      "nume": "Crupier"
+    },
+    {
+      "slug": "tehnician-calculatoare",
+      "nume": "Tehnician service IT"
+    },
+    {
+      "slug": "consultant-management",
+      "nume": "Consultant în management"
+    },
+    {
+      "slug": "pescar",
+      "nume": "Pescar"
+    }
+  ]
+}
