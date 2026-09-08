@@ -1,6 +1,7 @@
 // Re-evaluate saved primary evidence after parser changes, without inventing records.
 import fs from 'node:fs';
 import { detailRecord, assess } from './extract.mjs';
+import { listingRecords } from './ejobs-listing.mjs';
 import { hash, fetchPage } from './http.mjs';
 import { exportRun } from './export-run.mjs';
 const run=process.argv.find(a=>a.startsWith('--run='))?.slice(6);
@@ -20,10 +21,15 @@ for(const [source,entry] of Object.entries(state.sources)) {
     else if(fs.existsSync(metaFile)) {const meta=JSON.parse(fs.readFileSync(metaFile,'utf8'));if(fs.existsSync(meta.evidenceFile))page={...meta,html:fs.readFileSync(meta.evidenceFile,'utf8')};}
     if(!page)continue;
     if(hash(page.html)!==page.sha256)throw new Error(`Evidence changed: ${url}`);
-    const raw=detailRecord(page,source);
+    // O inregistrare venita din listare se reciteste din aceeasi pagina de listare.
+    const raw=old?.fromListing
+      ? listingRecords(page.html,page.url).find(c=>c.url.replace(/\/$/,'')===url.replace(/\/$/,''))
+      : detailRecord(page,source);
     const result=assess(raw?{...raw,listedAt:entry.listedAt,fx:state.fx}:null,page,new Date(page.retrievedAt));
     if(old?.accepted!==result.accepted)changed++;
-    state.results[url]={...result,url,source,listedAt:entry.listedAt,raw,evidence:{file:page.evidenceFile,sha256:page.sha256,retrievedAt:page.retrievedAt}};
+    state.results[url]={...result,url,source,listedAt:old?.listedAt??entry.listedAt,raw,
+      evidence:{file:page.evidenceFile,sha256:page.sha256,retrievedAt:page.retrievedAt},
+      ...(old?.fromListing?{fromListing:true}:{})};
   }
 }
 state.reprocessedAt=new Date().toISOString();

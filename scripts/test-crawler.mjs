@@ -4,6 +4,7 @@ import { assess, extractSalary, extractSalaryCandidates, resolveSalary, detailRe
 import { deduplicate, summarize } from './crawler/aggregate.mjs';
 import { quantile, editDistance } from './crawler/policy.mjs';
 import { allowedByRobots } from './crawler/http.mjs';
+import { hydrateNuxt, listingRecords } from './crawler/ejobs-listing.mjs';
 for (const [title,slug] of [['Programator CNC','operator-cnc'],['Medic veterinar','medic-veterinar'],['Secretar birou notarial','secretar'],['Asistent medical','asistent-medical'],['Ajutor bucătar',null],['Electrician și instalator',null],['Programator Java','programator'],['Consilier Juridic/Secretar Birou Notarial',null]]) assert.equal(classifyTitle(title).slug,slug,title);
 // An advert may hire several trades at once; each is a separate observation.
 assert.deepEqual(classifyAll('Electrician și instalator').slugs.sort(),['electrician','instalator']);
@@ -120,4 +121,28 @@ assert.equal(allowedByRobots('User-agent: *\nDisallow: */pagina\nAllow: */pagina
 const olxJob={title:'Contabil',description:base.description,url:base.url,createdAt:'2026-09-01',validTo:'2026-10-01',status:'active',location:{city:{name:'Brasov'},region:{name:'Brasov'}},params:[{key:'type',value:{key:'full-time'}}],salary:base.salary};
 const page={html:'<script>window.__PRERENDERED_STATE__= '+JSON.stringify(JSON.stringify({jobAd:{job:olxJob}}))+';</script>',url:base.url};
 assert.ok(assess(detailRecord(page,'olx'),evidence,now).accepted,'OLX detail schema differs from listing schema');
+// Payload-ul aplatizat pe indici: valorile nu stau langa chei.
+assert.deepEqual(hydrateNuxt([{a:1,b:2},'x',[1]]),{a:'x',b:['x']});
+assert.deepEqual(hydrateNuxt([[1,2],'a','b']),['a','b']);
+assert.equal(hydrateNuxt([{v:-1}]).v,undefined,'indicii negativi sunt valori speciale');
+// O pagina de listare produce inregistrari in aceeasi forma ca pagina de detaliu.
+const listing='<div id="__NUXT_DATA__" style="display:none">'+JSON.stringify([
+  {pinia:1},{jobs:2},{_listItems:3},[4],
+  {id:5,title:6,company:7,salary:10,locations:11,creationDate:14,slug:15,expirationDate:16,contractTypesIds:17},
+  1984891,'Contabil',{id:8,name:9},191366,'Exemplu SRL','4000 - 4500 RON',[12],{cityId:13},1,
+  '2026-09-01T00:00:00Z','contabil','2026-10-01T00:00:00Z',[18],5,
+  '[[1,"bucuresti",10,"Bucuresti"]]',
+])+'</div>';
+const cards=listingRecords(listing,'https://www.ejobs.ro/locuri-de-munca/salarii');
+assert.equal(cards.length,1);
+assert.equal(cards[0].title,'Contabil');
+assert.equal(cards[0].employer,'Exemplu SRL');
+assert.equal(cards[0].salaryText,'4000 - 4500 RON');
+assert.equal(cards[0].city,'Bucuresti','orasul vine din nomenclatorul portalului, nu din id brut');
+assert.equal(cards[0].country,'RO');
+assert.equal(cards[0].contract,'full-time');
+assert.equal(cards[0].url,'https://www.ejobs.ro/user/locuri-de-munca/contabil/1984891');
+// Un oras necunoscut nu devine tacit Romania.
+const strain=listing.replace('{"cityId":13}','{"cityId":99999}');
+assert.equal(listingRecords(strain,'https://www.ejobs.ro/locuri-de-munca/salarii')[0].country,null);
 console.log('OK: crawler evidence, units, dates, staleness, pay wording, gross/net pairs, multi-trade adverts, occupation ambiguity, interval statistics, cohorts, deduplication and robots policy.');

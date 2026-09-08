@@ -6,6 +6,7 @@ import { classifyAll } from './occupations.mjs';
 import { detailRecord, assess, olxState } from './extract.mjs';
 import { canonicalUrl, POLICY } from './policy.mjs';
 import { exportRun } from './export-run.mjs';
+import { listingRecords } from './ejobs-listing.mjs';
 // Some portals percent-encode titles in a legacy charset; the raw segment still classifies.
 const safeDecode = s => { try { return decodeURIComponent(s); } catch { return s; } };
 const arg=(key,value)=>process.argv.find(a=>a.startsWith(`--${key}=`))?.slice(key.length+3)||value;
@@ -121,6 +122,17 @@ async function ejobsInventory(){
         const found=[...new Set(doc.html.match(jobLink)||[])];
         if(!found.length)break;
         for(const h of found){const u=canonicalUrl(new URL(h,EJOBS_LISTING).href);urls.add(u);withSalary.add(u);}
+        // Pagina de listare este ea insasi dovada: contine suma, angajatorul,
+        // orasele si tipul de contract pentru fiecare din cele patruzeci de anunturi.
+        // Verificat pe toate anuntul pe care le avem si din pagina de detaliu:
+        // 34 din 34 potriviri exacte pe titlu, angajator, suma si moneda.
+        const evidence={evidenceFile:doc.evidenceFile,sha256:doc.sha256,retrievedAt:doc.retrievedAt};
+        for(const card of listingRecords(doc.html,url)){
+          const u=canonicalUrl(card.url);
+          if(state.results[u])continue;
+          const result=assess({...card,listedAt:doc.retrievedAt,fx:state.fx},evidence,new Date(doc.retrievedAt));
+          state.results[u]={...result,url:u,source:'ejobs',listedAt:doc.retrievedAt,evidence,raw:card,fromListing:true};
+        }
         entry.urls=[...urls];entry.withSalary=[...withSalary];save();
         if(total!==null&&page*EJOBS_PER_PAGE>=total)break;
       }

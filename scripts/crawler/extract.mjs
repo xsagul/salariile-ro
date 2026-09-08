@@ -251,6 +251,8 @@ function observation(r, evidence, salary, slug, date, extra) {
     city: r.city || null, county: r.county || null, publishedAt: Number.isFinite(date) ? new Date(date).toISOString().slice(0,10) : null, dateKind: r.dateKind || 'published',
     listedAt: r.listedAt || null, activityEvidence: r.active === true ? 'explicit_active_status' : r.expires ? 'valid_through' : 'current_source_inventory',
     retrievedAt: evidence.retrievedAt, salaryEvidence: salary.snippet, salaryFieldEvidence: r.salaryText || null,
+    // Dovada este pagina de listare a portalului sau pagina anuntului; reverificarea difera.
+    evidenceScope: r.listingOnly ? 'listing_page' : 'detail_page',
     evidence: { sha256: evidence.sha256, file: evidence.evidenceFile },
     descriptionHash: hash(normalizeText(r.description)), sources: [r.source], sourceUrls: [url], ...extra };
 }

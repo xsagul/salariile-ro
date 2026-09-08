@@ -4,6 +4,7 @@ import { occupations } from './occupations.mjs';
 import { deduplicate, summarize } from './aggregate.mjs';
 import { POLICY } from './policy.mjs';
 import { assess, detailRecord } from './extract.mjs';
+import { listingRecords } from './ejobs-listing.mjs';
 const run = process.argv.find(a=>a.startsWith('--run='))?.slice(6);
 if (!run || !/^[\w-]+$/.test(run)) throw new Error('Use --run=<id>');
 const root = `.cercetare-privata/crawl-runs/${run}`;
@@ -13,7 +14,10 @@ for (const o of data.observations) {
   const content = fs.readFileSync(o.evidence.file);
   if (crypto.createHash('sha256').update(content).digest('hex') !== o.evidence.sha256) throw new Error(`Evidence changed: ${o.id}`);
   const page={html:content.toString('utf8'),url:o.url,sha256:o.evidence.sha256,evidenceFile:o.evidence.file,retrievedAt:o.retrievedAt};
-  const raw=detailRecord(page,o.source);
+  // O observatie venita din listare se reciteste din aceeasi pagina de listare.
+  const raw=o.evidenceScope==='listing_page'
+    ? listingRecords(page.html,o.url).find(c=>c.url.replace(/\/$/,'')===o.url.replace(/\/$/,''))
+    : detailRecord(page,o.source);
   const checked=assess(raw?{...raw,listedAt:o.listedAt,fx:o.conversion}:null,page,new Date(o.retrievedAt));
   if (!checked.accepted) throw new Error(`Evidence no longer passes extraction: ${o.url}: ${checked.reasons}`);
   // One advert may hold several trades; verify against the observation for this trade.

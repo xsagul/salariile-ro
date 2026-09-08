@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-08T11:45:24.789Z",
+  "generatedAt": "2026-09-08T12:38:40.734Z",
   "run": "census-full-2026-09-08",
   "policy": {
     "version": 4,
@@ -162,12 +162,12 @@
   },
   "stats": {
     "inventoried": 37896,
-    "read": 12201,
-    "acceptedAds": 2580,
-    "acceptedBeforeDedup": 2759,
-    "accepted": 2607,
-    "duplicates": 152,
-    "rejected": 9621,
+    "read": 12607,
+    "acceptedAds": 2699,
+    "acceptedBeforeDedup": 2879,
+    "accepted": 2722,
+    "duplicates": 157,
+    "rejected": 9908,
     "errors": 7
   },
   "sourceInventory": {
@@ -193,21 +193,21 @@
     },
     "ejobs": {
       "inventoryUrls": 6569,
-      "sitemapOrCategories": 17,
+      "sitemapOrCategories": 12,
       "inventoryEnumerated": false,
       "catalogCandidates": 2993,
-      "catalogChecked": 485,
+      "catalogChecked": 669,
       "catalogPassComplete": false,
-      "pagesFetched": 487,
-      "listedAt": "2026-09-07T23:41:47.835Z",
+      "pagesFetched": 893,
+      "listedAt": "2026-09-08T12:34:51.867Z",
       "events": [
         {
           "url": "https://www.ejobs.ro/user/locuri-de-munca/lucrator-comercial-cofetaria-madame-prallini/1979840",
           "stage": "detail",
           "error": "host_paused_429",
-          "count": 8,
-          "lastUrl": "https://www.ejobs.ro/user/locuri-de-munca/instalatori-si-electricieni-bucuresti-si-imprejurimi/1984796",
-          "lastAt": "2026-09-08T11:14:56.814Z"
+          "count": 12,
+          "lastUrl": "https://www.ejobs.ro/user/locuri-de-munca/contabil-senior/1979077",
+          "lastAt": "2026-09-08T12:38:14.617Z"
         },
         {
           "url": "https://www.ejobs.ro/user/locuri-de-munca/lucrator-comercial-cofetaria-madame-prallini/1979840",
@@ -219,9 +219,9 @@
         {
           "stage": "inventory",
           "error": "host_paused_429",
-          "count": 2,
+          "count": 4,
           "firstAt": "2026-09-08T10:12:06.739Z",
-          "lastAt": "2026-09-08T11:14:51.612Z"
+          "lastAt": "2026-09-08T12:38:10.253Z"
         }
       ],
       "limitation": "Completitudinea se raportează la inventarul public accesibil, nu la baza internă a platformei."
@@ -317,6 +317,8 @@
   "coverage": {
     "pilot": {
       "name": "Pilot",
+      "read": 4,
+      "withoutSalary": 4,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -352,6 +354,8 @@
     },
     "notar": {
       "name": "Notar",
+      "read": 2,
+      "withoutSalary": 2,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -387,6 +391,8 @@
     },
     "devops-engineer": {
       "name": "Inginer DevOps",
+      "read": 50,
+      "withoutSalary": 50,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -422,6 +428,8 @@
     },
     "programator": {
       "name": "Programator",
+      "read": 106,
+      "withoutSalary": 106,
       "n": 2,
       "ads": 2,
       "basisNearAmount": 0,
@@ -455,18 +463,31 @@
         "max": 9453
       },
       "undeclaredBasis": {
-        "n": 5,
+        "n": 7,
         "sourceCounts": {
+          "ejobs": 2,
           "olx": 1,
           "bestjobs": 4
         },
         "observedRange": {
           "min": 7000,
-          "max": 19957
+          "max": 20000
         },
         "midpointEstimate": 10504
       },
       "examples": [
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/automotive-embedded-software-engineer/1984763",
+          "source": "ejobs",
+          "min": 10000,
+          "max": 20000
+        },
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/coordonator-programari-si-relatii-pacienti-full-time/1984840",
+          "source": "ejobs",
+          "min": 8000,
+          "max": 8000
+        },
         {
           "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-programator-freza-cnc-IDkQfCo.html",
           "source": "olx",
@@ -484,23 +505,13 @@
           "source": "bestjobs",
           "min": 10504,
           "max": 10504
-        },
-        {
-          "url": "https://www.bestjobs.eu/loc-de-munca/software-developer-backend-f-m-x",
-          "source": "bestjobs",
-          "min": 8403,
-          "max": 9453
-        },
-        {
-          "url": "https://www.bestjobs.eu/loc-de-munca/java-developer-1224",
-          "source": "bestjobs",
-          "min": 7878,
-          "max": 15756
         }
       ]
     },
     "inginer-petrol": {
       "name": "Inginer petrolist",
+      "read": 0,
+      "withoutSalary": 0,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -536,6 +547,8 @@
     },
     "web-developer": {
       "name": "Web developer",
+      "read": 9,
+      "withoutSalary": 8,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -571,6 +584,8 @@
     },
     "consultant-management": {
       "name": "Consultant în management",
+      "read": 3,
+      "withoutSalary": 2,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -606,6 +621,8 @@
     },
     "avocat": {
       "name": "Avocat",
+      "read": 4,
+      "withoutSalary": 4,
       "n": 1,
       "ads": 1,
       "basisNearAmount": 0,
@@ -655,6 +672,8 @@
     },
     "inginer-electronist": {
       "name": "Inginer electronist",
+      "read": 2,
+      "withoutSalary": 2,
       "n": 1,
       "ads": 1,
       "basisNearAmount": 0,
@@ -704,6 +723,8 @@
     },
     "judecator": {
       "name": "Judecător",
+      "read": 0,
+      "withoutSalary": 0,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -739,6 +760,8 @@
     },
     "operator-rafinarie": {
       "name": "Operator rafinărie",
+      "read": 0,
+      "withoutSalary": 0,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -774,6 +797,8 @@
     },
     "inginer-auto": {
       "name": "Inginer auto",
+      "read": 2,
+      "withoutSalary": 2,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -821,6 +846,8 @@
     },
     "inginer-telecomunicatii": {
       "name": "Inginer telecomunicații",
+      "read": 0,
+      "withoutSalary": 0,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -856,6 +883,8 @@
     },
     "analist-date": {
       "name": "Analist de date",
+      "read": 18,
+      "withoutSalary": 18,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -891,6 +920,8 @@
     },
     "procuror": {
       "name": "Procuror",
+      "read": 0,
+      "withoutSalary": 0,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -938,6 +969,8 @@
     },
     "inginer-energetician": {
       "name": "Inginer energetician",
+      "read": 15,
+      "withoutSalary": 15,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -973,6 +1006,8 @@
     },
     "sofer-tir": {
       "name": "Șofer TIR",
+      "read": 930,
+      "withoutSalary": 660,
       "n": 19,
       "ads": 19,
       "basisNearAmount": 11,
@@ -1004,8 +1039,9 @@
         "max": 18382
       },
       "undeclaredBasis": {
-        "n": 138,
+        "n": 141,
         "sourceCounts": {
+          "ejobs": 3,
           "publi24": 16,
           "olx": 117,
           "bestjobs": 3,
@@ -1019,6 +1055,24 @@
       },
       "examples": [
         {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/sofer-profesionist/1984204",
+          "source": "ejobs",
+          "min": 5000,
+          "max": 8000
+        },
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/angajez-sofer-tir/1979192",
+          "source": "ejobs",
+          "min": 7878,
+          "max": 15756
+        },
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/soferi-profesionisti-categoria-c-e/1983428",
+          "source": "ejobs",
+          "min": 16806,
+          "max": 16806
+        },
+        {
           "url": "https://www.publi24.ro/anunturi/locuri-de-munca/soferi-transporturi/transport-marfa-intern/anunt/sofer-profesionist-c-e-pentru-cap-tractor-cu-semiremorca-prelata-curse-romania-si-bena-cereale/08i7h8gd41577d71268835g02g79f84e.html",
           "source": "publi24",
           "min": 6500,
@@ -1029,29 +1083,13 @@
           "source": "publi24",
           "min": 7500,
           "max": 7500
-        },
-        {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/soferi-transporturi/transport-marfa-intern/anunt/angajam-soferi-profesionisti-c-e-deva/9fi4i06h1g9e7f1821509f956334f6ef.html",
-          "source": "publi24",
-          "min": 7000,
-          "max": 8000
-        },
-        {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/soferi-transporturi/transport-marfa-international/anunt/angajez-sofer-profesionist-c-e/9808deefi75377fh174g66h512gf9f26.html",
-          "source": "publi24",
-          "min": 525,
-          "max": 525
-        },
-        {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/soferi-transporturi/transport-marfa-intern/anunt/angajez-sofer-profesionist-cat-c-e/9888h3h23d827d9i23h4i40dh2i28d00.html",
-          "source": "publi24",
-          "min": 9000,
-          "max": 9000
         }
       ]
     },
     "consultant-financiar": {
       "name": "Consultant financiar",
+      "read": 66,
+      "withoutSalary": 41,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -1099,6 +1137,8 @@
     },
     "auditor": {
       "name": "Auditor financiar",
+      "read": 26,
+      "withoutSalary": 25,
       "n": 2,
       "ads": 2,
       "basisNearAmount": 0,
@@ -1172,6 +1212,8 @@
     },
     "stomatolog": {
       "name": "Stomatolog",
+      "read": 41,
+      "withoutSalary": 38,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -1225,6 +1267,8 @@
     },
     "cercetator": {
       "name": "Cercetător",
+      "read": 0,
+      "withoutSalary": 0,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -1260,6 +1304,8 @@
     },
     "inginer-aeronautic": {
       "name": "Inginer aeronautic",
+      "read": 0,
+      "withoutSalary": 0,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -1295,6 +1341,8 @@
     },
     "arhitect": {
       "name": "Arhitect",
+      "read": 73,
+      "withoutSalary": 66,
       "n": 1,
       "ads": 1,
       "basisNearAmount": 0,
@@ -1328,18 +1376,24 @@
         "max": 7500
       },
       "undeclaredBasis": {
-        "n": 3,
+        "n": 4,
         "sourceCounts": {
-          "ejobs": 1,
+          "ejobs": 2,
           "bestjobs": 2
         },
         "observedRange": {
           "min": 4000,
-          "max": 7878
+          "max": 20000
         },
         "midpointEstimate": 7090
       },
       "examples": [
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/system-integration-test-architect-automotive-software/1984762",
+          "source": "ejobs",
+          "min": 10000,
+          "max": 20000
+        },
         {
           "url": "https://www.ejobs.ro/user/locuri-de-munca/arhitect-senior-coordonator-mid-level/1983827",
           "source": "ejobs",
@@ -1368,6 +1422,8 @@
     },
     "administrator-sistem": {
       "name": "Administrator de sistem",
+      "read": 5,
+      "withoutSalary": 5,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -1415,6 +1471,8 @@
     },
     "sondor": {
       "name": "Sondor",
+      "read": 5,
+      "withoutSalary": 1,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -1462,6 +1520,8 @@
     },
     "profesor-universitar": {
       "name": "Profesor universitar",
+      "read": 0,
+      "withoutSalary": 0,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -1497,6 +1557,8 @@
     },
     "farmacist-industrie": {
       "name": "Farmacist în industrie",
+      "read": 0,
+      "withoutSalary": 0,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -1532,6 +1594,8 @@
     },
     "jurnalist": {
       "name": "Jurnalist",
+      "read": 1,
+      "withoutSalary": 1,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -1579,6 +1643,8 @@
     },
     "analist-financiar": {
       "name": "Analist financiar",
+      "read": 4,
+      "withoutSalary": 4,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -1626,6 +1692,8 @@
     },
     "tester-qa": {
       "name": "Tester QA",
+      "read": 20,
+      "withoutSalary": 19,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -1673,6 +1741,8 @@
     },
     "regizor": {
       "name": "Regizor",
+      "read": 1,
+      "withoutSalary": 1,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -1708,6 +1778,8 @@
     },
     "electrician-centrala": {
       "name": "Electrician centrală electrică",
+      "read": 0,
+      "withoutSalary": 0,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -1743,24 +1815,26 @@
     },
     "inginer": {
       "name": "Inginer",
-      "n": 44,
-      "ads": 44,
+      "read": 461,
+      "withoutSalary": 430,
+      "n": 48,
+      "ads": 48,
       "basisNearAmount": 8,
       "basisFromDocument": 17,
-      "basisFromPlatform": 19,
-      "employers": 40,
+      "basisFromPlatform": 23,
+      "employers": 43,
       "counties": 11,
       "sourceCounts": {
-        "ejobs": 19,
+        "ejobs": 23,
         "olx": 8,
         "bestjobs": 12,
         "publi24": 4,
         "anuntul": 1
       },
-      "employerShare": 0.06818181818181818,
-      "sourceShare": 0.4318181818181818,
+      "employerShare": 0.0625,
+      "sourceShare": 0.4791666666666667,
       "gaps": [],
-      "explicitMonthly": 33,
+      "explicitMonthly": 37,
       "assumedMonthly": 11,
       "periodSensitivity": 0.024678571428571428,
       "sourceSensitivity": 0.1154564429309019,
@@ -1775,8 +1849,9 @@
         "max": 15000
       },
       "undeclaredBasis": {
-        "n": 89,
+        "n": 93,
         "sourceCounts": {
+          "ejobs": 4,
           "olx": 32,
           "bestjobs": 56,
           "anuntul": 1
@@ -1785,43 +1860,45 @@
           "min": 2200,
           "max": 18382
         },
-        "midpointEstimate": 6657
+        "midpointEstimate": 6565
       },
       "examples": [
         {
-          "url": "https://www.ejobs.ro/user/locuri-de-munca/manager-proiect-constructii-inginer-constructor/1984692",
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/inginer-proiectare-domeniu-electric/1978296",
           "source": "ejobs",
           "min": 8000,
           "max": 12000
         },
         {
-          "url": "https://www.ejobs.ro/user/locuri-de-munca/inginer-tehnolog-productie-in-piatra-neamt/1978623",
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/inginer-proiectant-specializarea-ccia/1980007",
           "source": "ejobs",
-          "min": 3000,
-          "max": 5000
+          "min": 5500,
+          "max": 7500
         },
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-inginer-civile-cu-experienta-sef-santier-IDkGcZK.html",
-          "source": "olx",
-          "min": 10504,
-          "max": 18382
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/inginer-proiectant-instalatii-pentru-constructii/1980344",
+          "source": "ejobs",
+          "min": 5500,
+          "max": 7500
         },
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-inginer-automatizari-IDkPBzC.html",
-          "source": "olx",
-          "min": 5250,
-          "max": 7000
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/inginer-constructor-coordonator-santier/1981466",
+          "source": "ejobs",
+          "min": 7878,
+          "max": 7878
         },
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/inginer-instalatii-constructii-IDkTyjC.html",
-          "source": "olx",
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/inginer-automatist/1982488",
+          "source": "ejobs",
           "min": 8000,
-          "max": 9000
+          "max": 12000
         }
       ]
     },
     "traducator": {
       "name": "Traducător",
+      "read": 3,
+      "withoutSalary": 3,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -1857,6 +1934,8 @@
     },
     "insotitor-de-bord": {
       "name": "Însoțitor de bord (stewardesă)",
+      "read": 2,
+      "withoutSalary": 2,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -1892,6 +1971,8 @@
     },
     "miner": {
       "name": "Miner",
+      "read": 0,
+      "withoutSalary": 0,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -1927,6 +2008,8 @@
     },
     "consilier-juridic": {
       "name": "Consilier juridic",
+      "read": 18,
+      "withoutSalary": 18,
       "n": 2,
       "ads": 2,
       "basisNearAmount": 1,
@@ -1960,8 +2043,9 @@
         "max": 7000
       },
       "undeclaredBasis": {
-        "n": 5,
+        "n": 6,
         "sourceCounts": {
+          "ejobs": 1,
           "olx": 1,
           "bestjobs": 4
         },
@@ -1969,9 +2053,15 @@
           "min": 2800,
           "max": 11029
         },
-        "midpointEstimate": 5278
+        "midpointEstimate": 5265
       },
       "examples": [
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/consilier-juridic-ploiesti/1984085",
+          "source": "ejobs",
+          "min": 3600,
+          "max": 4500
+        },
         {
           "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-jurist-5000-lei-IDkR0Iz.html",
           "source": "olx",
@@ -1995,17 +2085,13 @@
           "source": "bestjobs",
           "min": 7878,
           "max": 11029
-        },
-        {
-          "url": "https://www.bestjobs.eu/loc-de-munca/consilier-juridic-1538",
-          "source": "bestjobs",
-          "min": 5278,
-          "max": 5278
         }
       ]
     },
     "agent-asigurari": {
       "name": "Agent de asigurări",
+      "read": 12,
+      "withoutSalary": 11,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -2053,6 +2139,8 @@
     },
     "manager-magazin": {
       "name": "Manager de magazin",
+      "read": 115,
+      "withoutSalary": 112,
       "n": 5,
       "ads": 5,
       "basisNearAmount": 1,
@@ -2087,17 +2175,36 @@
         "max": 21008
       },
       "undeclaredBasis": {
-        "n": 5,
+        "n": 8,
         "sourceCounts": {
+          "ejobs": 3,
           "olx": 5
         },
         "observedRange": {
           "min": 3200,
-          "max": 6500
+          "max": 7500
         },
-        "midpointEstimate": 5000
+        "midpointEstimate": 5350
       },
       "examples": [
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/store-manager-optometrist/1983135",
+          "source": "ejobs",
+          "min": 4500,
+          "max": 7500
+        },
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/store-manager-mr-diy-romania/1983477",
+          "source": "ejobs",
+          "min": 5000,
+          "max": 6000
+        },
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/director-magazin-craiova/1984873",
+          "source": "ejobs",
+          "min": 5200,
+          "max": 5200
+        },
         {
           "url": "https://www.olx.ro/oferta/loc-de-munca/director-magazin-oltenita-IDkTnYh.html",
           "source": "olx",
@@ -2109,29 +2216,13 @@
           "source": "olx",
           "min": 4500,
           "max": 5500
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/director-magazin-tulcea-IDkTo1X.html",
-          "source": "olx",
-          "min": 6000,
-          "max": 6500
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/director-magazin-galati-IDkTnU7.html",
-          "source": "olx",
-          "min": 5100,
-          "max": 5100
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/asistent-manager-magazin-alimentar-IDkSwEY.html",
-          "source": "olx",
-          "min": 4000,
-          "max": 4500
         }
       ]
     },
     "medic": {
       "name": "Medic",
+      "read": 61,
+      "withoutSalary": 51,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -2158,8 +2249,9 @@
       "medianBounds": null,
       "observedRange": null,
       "undeclaredBasis": {
-        "n": 5,
+        "n": 7,
         "sourceCounts": {
+          "ejobs": 2,
           "bestjobs": 5
         },
         "observedRange": {
@@ -2169,6 +2261,18 @@
         "midpointEstimate": 11291.5
       },
       "examples": [
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/medic-tehnician-veterinar-pentru-farmacie-veterinara/1983015",
+          "source": "ejobs",
+          "min": 4202,
+          "max": 6302
+        },
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/medic-de-familie/1983388",
+          "source": "ejobs",
+          "min": 15000,
+          "max": 15000
+        },
         {
           "url": "https://www.bestjobs.eu/loc-de-munca/medic-dermatolog-pentru-consultatii-proceduri",
           "source": "bestjobs",
@@ -2186,47 +2290,37 @@
           "source": "bestjobs",
           "min": 16806,
           "max": 26260
-        },
-        {
-          "url": "https://www.bestjobs.eu/loc-de-munca/medic-specialist-oncolog",
-          "source": "bestjobs",
-          "min": 21008,
-          "max": 23634
-        },
-        {
-          "url": "https://www.bestjobs.eu/loc-de-munca/medic-medicina-de-laborator-29",
-          "source": "bestjobs",
-          "min": 1681,
-          "max": 1681
         }
       ]
     },
     "agent-vanzari": {
       "name": "Agent de vânzări",
-      "n": 49,
-      "ads": 49,
+      "read": 583,
+      "withoutSalary": 393,
+      "n": 52,
+      "ads": 52,
       "basisNearAmount": 15,
       "basisFromDocument": 18,
-      "basisFromPlatform": 16,
-      "employers": 41,
+      "basisFromPlatform": 19,
+      "employers": 43,
       "counties": 11,
       "sourceCounts": {
+        "ejobs": 20,
         "publi24": 2,
-        "ejobs": 17,
         "olx": 18,
         "bestjobs": 12
       },
-      "employerShare": 0.061224489795918366,
-      "sourceShare": 0.3673469387755102,
+      "employerShare": 0.057692307692307696,
+      "sourceShare": 0.38461538461538464,
       "gaps": [],
-      "explicitMonthly": 36,
+      "explicitMonthly": 39,
       "assumedMonthly": 13,
-      "periodSensitivity": 0.0060795359473478725,
-      "sourceSensitivity": 0.10213243546576879,
-      "midpointEstimate": 4455,
+      "periodSensitivity": 0.008944444444444444,
+      "sourceSensitivity": 0.1030887381579685,
+      "midpointEstimate": 4459.75,
       "status": "advertised_interval",
       "medianBounds": {
-        "min": 3500,
+        "min": 3969.5,
         "max": 5000
       },
       "observedRange": {
@@ -2234,8 +2328,9 @@
         "max": 12605
       },
       "undeclaredBasis": {
-        "n": 146,
+        "n": 171,
         "sourceCounts": {
+          "ejobs": 25,
           "olx": 78,
           "bestjobs": 63,
           "anuntul": 5
@@ -2244,67 +2339,69 @@
           "min": 2500,
           "max": 26260
         },
-        "midpointEstimate": 4500
+        "midpointEstimate": 4600
       },
       "examples": [
         {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/agenti-consultanti-vanzari/agent-vanzari/anunt/consilier-vanzari-magazin-naturist-doctorul-naturii-incinta-galerie-kaufland-berceni-bucuresti/03487edf6ee175072e7d9fddhgdhe6h5.html",
-          "source": "publi24",
-          "min": 4500,
-          "max": 4500
-        },
-        {
-          "url": "https://www.ejobs.ro/user/locuri-de-munca/senior-sales-representative-horeca/1983138",
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/reprezentant-vanzari-judetele-bn-ms-hr-si-cv/1982941",
           "source": "ejobs",
           "min": 5000,
-          "max": 7000
+          "max": 10000
         },
         {
-          "url": "https://www.ejobs.ro/user/locuri-de-munca/sales-advisor-nespresso-boutique-baneasa-mall-full-time-h/1981110",
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/reprezentant-vanzari-iasi-si-vaslui/1982858",
           "source": "ejobs",
-          "min": 3100,
-          "max": 3300
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/agent-vanzari-tulcea-pavaje-si-produse-din-beton-vibropresat-IDkRBFH.html",
-          "source": "olx",
           "min": 5000,
-          "max": 7000
+          "max": 10000
         },
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/consilier-vanzari-IDkRlSC.html",
-          "source": "olx",
-          "min": 2600,
-          "max": 3000
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/consultant-vanzari-servicii-publice/1984718",
+          "source": "ejobs",
+          "min": 4000,
+          "max": 4000
+        },
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/consilier-vanzari-premium/1984346",
+          "source": "ejobs",
+          "min": 3151,
+          "max": 6302
+        },
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/agent-de-vanzari-bb-produse-electronice/1984174",
+          "source": "ejobs",
+          "min": 5000,
+          "max": 5000
         }
       ]
     },
     "tehnician-mentenanta": {
       "name": "Tehnician mentenanță",
-      "n": 10,
-      "ads": 10,
+      "read": 67,
+      "withoutSalary": 60,
+      "n": 11,
+      "ads": 11,
       "basisNearAmount": 7,
       "basisFromDocument": 1,
-      "basisFromPlatform": 2,
+      "basisFromPlatform": 3,
       "employers": 9,
       "counties": 7,
       "sourceCounts": {
+        "ejobs": 3,
         "olx": 5,
-        "ejobs": 2,
         "publi24": 2,
         "anuntul": 1
       },
-      "employerShare": 0.1,
-      "sourceShare": 0.5,
+      "employerShare": 0.18181818181818182,
+      "sourceShare": 0.45454545454545453,
       "gaps": [
         "too_few_ads",
         "too_few_known_employers",
         "too_few_explicit_monthly"
       ],
-      "explicitMonthly": 2,
+      "explicitMonthly": 3,
       "assumedMonthly": 8,
-      "periodSensitivity": 0.07315573770491804,
-      "sourceSensitivity": 0.044218439089100156,
+      "periodSensitivity": 0.033478260869565214,
+      "sourceSensitivity": 0.0553306342780027,
       "midpointEstimate": null,
       "status": "insufficient",
       "medianBounds": null,
@@ -2325,6 +2422,12 @@
         "midpointEstimate": 5777
       },
       "examples": [
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/tehnician-mentenanta-fabrica-multinationala/1982238",
+          "source": "ejobs",
+          "min": 4200,
+          "max": 4500
+        },
         {
           "url": "https://www.olx.ro/oferta/loc-de-munca/tehnician-mentenanta-intretinere-cladiri-IDkRmIP.html",
           "source": "olx",
@@ -2348,17 +2451,13 @@
           "source": "olx",
           "min": 3500,
           "max": 4000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-tehnician-mentenanta-IDkRKZp.html",
-          "source": "olx",
-          "min": 5000,
-          "max": 5500
         }
       ]
     },
     "mecanic-locomotiva": {
       "name": "Mecanic de locomotivă",
+      "read": 0,
+      "withoutSalary": 0,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -2394,6 +2493,8 @@
     },
     "silvicultor": {
       "name": "Silvicultor",
+      "read": 1,
+      "withoutSalary": 1,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -2429,6 +2530,8 @@
     },
     "broker": {
       "name": "Broker",
+      "read": 61,
+      "withoutSalary": 57,
       "n": 3,
       "ads": 3,
       "basisNearAmount": 0,
@@ -2462,17 +2565,24 @@
         "max": 7500
       },
       "undeclaredBasis": {
-        "n": 1,
+        "n": 2,
         "sourceCounts": {
+          "ejobs": 1,
           "olx": 1
         },
         "observedRange": {
           "min": 4000,
-          "max": 5000
+          "max": 52519
         },
-        "midpointEstimate": 4500
+        "midpointEstimate": 21944.75
       },
       "examples": [
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/broker-imobiliar-klass-estates-finance/1983629",
+          "source": "ejobs",
+          "min": 26260,
+          "max": 52519
+        },
         {
           "url": "https://www.ejobs.ro/user/locuri-de-munca/broker-in-asigurari/1983191",
           "source": "ejobs",
@@ -2501,6 +2611,8 @@
     },
     "cameraman": {
       "name": "Cameraman",
+      "read": 0,
+      "withoutSalary": 0,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -2536,6 +2648,8 @@
     },
     "operator-cnc": {
       "name": "Operator CNC",
+      "read": 73,
+      "withoutSalary": 70,
       "n": 15,
       "ads": 15,
       "basisNearAmount": 12,
@@ -2614,6 +2728,8 @@
     },
     "specialist-marketing": {
       "name": "Specialist marketing",
+      "read": 15,
+      "withoutSalary": 14,
       "n": 1,
       "ads": 1,
       "basisNearAmount": 0,
@@ -2693,6 +2809,8 @@
     },
     "inginer-agronom": {
       "name": "Inginer agronom",
+      "read": 13,
+      "withoutSalary": 12,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -2740,6 +2858,8 @@
     },
     "muzician": {
       "name": "Muzician",
+      "read": 0,
+      "withoutSalary": 0,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -2775,6 +2895,8 @@
     },
     "metalurgist": {
       "name": "Metalurgist",
+      "read": 5,
+      "withoutSalary": 4,
       "n": 1,
       "ads": 1,
       "basisNearAmount": 0,
@@ -2824,28 +2946,30 @@
     },
     "electrician": {
       "name": "Electrician",
-      "n": 70,
-      "ads": 70,
+      "read": 699,
+      "withoutSalary": 605,
+      "n": 75,
+      "ads": 75,
       "basisNearAmount": 42,
       "basisFromDocument": 15,
-      "basisFromPlatform": 13,
-      "employers": 54,
+      "basisFromPlatform": 18,
+      "employers": 59,
       "counties": 17,
       "sourceCounts": {
+        "ejobs": 19,
         "publi24": 22,
         "olx": 27,
-        "ejobs": 14,
         "bestjobs": 4,
         "anuntul": 3
       },
-      "employerShare": 0.05714285714285714,
-      "sourceShare": 0.38571428571428573,
+      "employerShare": 0.05333333333333334,
+      "sourceShare": 0.36,
       "gaps": [],
-      "explicitMonthly": 22,
+      "explicitMonthly": 27,
       "assumedMonthly": 48,
-      "periodSensitivity": 0.023251488095238096,
-      "sourceSensitivity": 0.04741953913540278,
-      "midpointEstimate": 5251,
+      "periodSensitivity": 0.10825902158513209,
+      "sourceSensitivity": 0.028037383177570093,
+      "midpointEstimate": 5350,
       "status": "advertised_interval",
       "medianBounds": {
         "min": 4500,
@@ -2853,11 +2977,12 @@
       },
       "observedRange": {
         "min": 2500,
-        "max": 18907
+        "max": 19000
       },
       "undeclaredBasis": {
-        "n": 103,
+        "n": 110,
         "sourceCounts": {
+          "ejobs": 7,
           "olx": 67,
           "hipo": 2,
           "bestjobs": 21,
@@ -2866,45 +2991,47 @@
         },
         "observedRange": {
           "min": 3000,
-          "max": 14000
+          "max": 15000
         },
         "midpointEstimate": 6000
       },
       "examples": [
         {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/muncitori-productie-depozit-logistica/operatori-productie/anunt/operator-linii-de-productie-cabluri-electrice/019f7ii7h9i97d4211d2d52370h4698h.html",
-          "source": "publi24",
-          "min": 4500,
-          "max": 4500
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/proiectant-statii-electrice/1984495",
+          "source": "ejobs",
+          "min": 14000,
+          "max": 19000
         },
         {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/electricieni/anunt/angajez-electricieni/91hi07d9h86e7118de39ei78dh0445fh.html",
-          "source": "publi24",
-          "min": 5500,
-          "max": 5500
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/electrician-usi-automate-si-elevatoare-mocheta-IDkSuXZ.html",
-          "source": "olx",
-          "min": 5000,
-          "max": 5500
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-lacatus-mecanic-si-electrician-in-constructii-IDky50t.html",
-          "source": "olx",
-          "min": 3000,
-          "max": 5000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/electricieni-si-muncitori-necalificati-IDkRQi9.html",
-          "source": "olx",
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/electrician-mt-jt-electric-serv-srl/1982177",
+          "source": "ejobs",
           "min": 4000,
-          "max": 8000
+          "max": 6000
+        },
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/electrician-instalatii-electrice-executie-senior-sef-echipa/1982748",
+          "source": "ejobs",
+          "min": 5000,
+          "max": 7000
+        },
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/coordonator-electrician-fotovoltaic-anre-a-b-bucuresti/1984228",
+          "source": "ejobs",
+          "min": 4000,
+          "max": 7999
+        },
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/instalatori-si-electricieni-bucuresti-si-imprejurimi/1984796",
+          "source": "ejobs",
+          "min": 5777,
+          "max": 7353
         }
       ]
     },
     "constructor-drumuri": {
       "name": "Constructor de drumuri",
+      "read": 0,
+      "withoutSalary": 0,
       "n": 1,
       "ads": 1,
       "basisNearAmount": 0,
@@ -2978,6 +3105,8 @@
     },
     "ofiter-credite": {
       "name": "Ofițer de credite",
+      "read": 2,
+      "withoutSalary": 2,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -3031,24 +3160,26 @@
     },
     "instalator": {
       "name": "Instalator",
-      "n": 44,
-      "ads": 44,
+      "read": 366,
+      "withoutSalary": 311,
+      "n": 48,
+      "ads": 48,
       "basisNearAmount": 26,
       "basisFromDocument": 8,
-      "basisFromPlatform": 10,
-      "employers": 32,
+      "basisFromPlatform": 14,
+      "employers": 36,
       "counties": 9,
       "sourceCounts": {
+        "ejobs": 14,
         "publi24": 11,
         "olx": 13,
-        "ejobs": 10,
         "bestjobs": 5,
         "anuntul": 5
       },
-      "employerShare": 0.06818181818181818,
-      "sourceShare": 0.29545454545454547,
+      "employerShare": 0.0625,
+      "sourceShare": 0.2916666666666667,
       "gaps": [],
-      "explicitMonthly": 19,
+      "explicitMonthly": 23,
       "assumedMonthly": 25,
       "periodSensitivity": 0.0530952380952381,
       "sourceSensitivity": 0.04521817770743839,
@@ -3078,39 +3209,41 @@
       },
       "examples": [
         {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/instalator/1983217",
+          "source": "ejobs",
+          "min": 3500,
+          "max": 5000
+        },
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/instalator-sanitar/1984472",
+          "source": "ejobs",
+          "min": 4000,
+          "max": 6000
+        },
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/instalator-muncitor/1983147",
+          "source": "ejobs",
+          "min": 7000,
+          "max": 10000
+        },
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/instalatori-si-electricieni-bucuresti-si-imprejurimi/1984796",
+          "source": "ejobs",
+          "min": 5777,
+          "max": 7353
+        },
+        {
           "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/instalatori/anunt/angajam-instalatori-5-500-7-000-lei/9hi3g869fe547h7h22g5h30716dd7gii.html",
           "source": "publi24",
           "min": 5500,
           "max": 7000
-        },
-        {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/instalatori/anunt/angajam-instalator-instalatii-sanitare-termice-alba-iulia/9eg6h1he993h7679ee5iig644448gdgh.html",
-          "source": "publi24",
-          "min": 5000,
-          "max": 7000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/rota-gaz-angajeaza-instalator-calificat-IDkPKTI.html",
-          "source": "olx",
-          "min": 4000,
-          "max": 6000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/instalator-instalatii-termice-sanitare-cu-experienta-IDkmxtl.html",
-          "source": "olx",
-          "min": 4000,
-          "max": 6000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/instalator-santier-brasov-IDkhAEH.html",
-          "source": "olx",
-          "min": 4000,
-          "max": 5500
         }
       ]
     },
     "agent-turism": {
       "name": "Agent de turism",
+      "read": 4,
+      "withoutSalary": 4,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -3137,17 +3270,24 @@
       "medianBounds": null,
       "observedRange": null,
       "undeclaredBasis": {
-        "n": 1,
+        "n": 2,
         "sourceCounts": {
+          "ejobs": 1,
           "bestjobs": 1
         },
         "observedRange": {
           "min": 3991,
-          "max": 4490
+          "max": 7500
         },
-        "midpointEstimate": 4240.5
+        "midpointEstimate": 4995.25
       },
       "examples": [
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/agent-de-turism-bucuresti/1984871",
+          "source": "ejobs",
+          "min": 4000,
+          "max": 7500
+        },
         {
           "url": "https://www.bestjobs.eu/loc-de-munca/agent-de-turism-304",
           "source": "bestjobs",
@@ -3158,6 +3298,8 @@
     },
     "specialist-resurse-umane": {
       "name": "Specialist resurse umane",
+      "read": 31,
+      "withoutSalary": 31,
       "n": 1,
       "ads": 1,
       "basisNearAmount": 1,
@@ -3236,6 +3378,8 @@
     },
     "logistician": {
       "name": "Logistician",
+      "read": 57,
+      "withoutSalary": 52,
       "n": 11,
       "ads": 11,
       "basisNearAmount": 3,
@@ -3269,8 +3413,9 @@
         "max": 12000
       },
       "undeclaredBasis": {
-        "n": 12,
+        "n": 13,
         "sourceCounts": {
+          "ejobs": 1,
           "olx": 4,
           "bestjobs": 8
         },
@@ -3278,9 +3423,15 @@
           "min": 3000,
           "max": 12605
         },
-        "midpointEstimate": 4136.25
+        "midpointEstimate": 4070.5
       },
       "examples": [
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/operator-calculator-logistica-cluj-floresti/1984892",
+          "source": "ejobs",
+          "min": 3000,
+          "max": 3700
+        },
         {
           "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-muncitor-intretinere-logistica-spalatorie-IDkC10J.html",
           "source": "olx",
@@ -3304,17 +3455,13 @@
           "source": "olx",
           "min": 3000,
           "max": 3500
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/manager-logistica-operatiuni-e-commerce-IDkUbXw.html",
-          "source": "olx",
-          "min": 8000,
-          "max": 12000
         }
       ]
     },
     "operator-mase-plastice": {
       "name": "Operator mase plastice",
+      "read": 9,
+      "withoutSalary": 9,
       "n": 4,
       "ads": 4,
       "basisNearAmount": 3,
@@ -3394,6 +3541,8 @@
     },
     "faiantar": {
       "name": "Faianțar",
+      "read": 34,
+      "withoutSalary": 28,
       "n": 2,
       "ads": 2,
       "basisNearAmount": 1,
@@ -3473,24 +3622,26 @@
     },
     "contabil": {
       "name": "Contabil",
-      "n": 39,
-      "ads": 39,
+      "read": 192,
+      "withoutSalary": 183,
+      "n": 41,
+      "ads": 41,
       "basisNearAmount": 4,
       "basisFromDocument": 29,
-      "basisFromPlatform": 6,
-      "employers": 34,
+      "basisFromPlatform": 8,
+      "employers": 36,
       "counties": 10,
       "sourceCounts": {
+        "ejobs": 8,
         "olx": 11,
         "hipo": 1,
         "publi24": 1,
-        "bestjobs": 20,
-        "ejobs": 6
+        "bestjobs": 20
       },
-      "employerShare": 0.02564102564102564,
-      "sourceShare": 0.5128205128205128,
+      "employerShare": 0.024390243902439025,
+      "sourceShare": 0.4878048780487805,
       "gaps": [],
-      "explicitMonthly": 26,
+      "explicitMonthly": 28,
       "assumedMonthly": 13,
       "periodSensitivity": 0,
       "sourceSensitivity": 0.09558263518659559,
@@ -3501,14 +3652,14 @@
         "max": 6000
       },
       "observedRange": {
-        "min": 3000,
+        "min": 2500,
         "max": 12000
       },
       "undeclaredBasis": {
-        "n": 38,
+        "n": 47,
         "sourceCounts": {
+          "ejobs": 10,
           "olx": 17,
-          "ejobs": 1,
           "bestjobs": 16,
           "anuntul": 4
         },
@@ -3516,43 +3667,45 @@
           "min": 1602,
           "max": 15000
         },
-        "midpointEstimate": 5500
+        "midpointEstimate": 5646
       },
       "examples": [
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/expert-contabil-cu-experienta-IDkwBm3.html",
-          "source": "olx",
-          "min": 10000,
-          "max": 15000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-expert-contabil-IDkIzvL.html",
-          "source": "olx",
-          "min": 7000,
-          "max": 12000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-contabil-sef-la-carmangeria-jupanul-IDkSblX.html",
-          "source": "olx",
-          "min": 7000,
-          "max": 10000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-expert-contabil-IDkg8Jd.html",
-          "source": "olx",
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/contabil-senior-firma-contabilitate/1983473",
+          "source": "ejobs",
           "min": 8000,
           "max": 10000
         },
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/economist-contabil-domeniul-constructii-IDkaBVl.html",
-          "source": "olx",
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/contabil-sef/1979575",
+          "source": "ejobs",
+          "min": 2500,
+          "max": 4500
+        },
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/contabil-senior-calan/1980373",
+          "source": "ejobs",
           "min": 5000,
-          "max": 10000
+          "max": 7000
+        },
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/economist-contabil/1978250",
+          "source": "ejobs",
+          "min": 6000,
+          "max": 8000
+        },
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/contabil-senior-firma-contabilitate-zona-primaverii-hybrid/1984250",
+          "source": "ejobs",
+          "min": 7900,
+          "max": 8900
         }
       ]
     },
     "designer-grafic": {
       "name": "Designer grafic",
+      "read": 8,
+      "withoutSalary": 8,
       "n": 4,
       "ads": 4,
       "basisNearAmount": 3,
@@ -3631,6 +3784,8 @@
     },
     "sudor": {
       "name": "Sudor",
+      "read": 303,
+      "withoutSalary": 262,
       "n": 19,
       "ads": 19,
       "basisNearAmount": 15,
@@ -3662,8 +3817,9 @@
         "max": 12000
       },
       "undeclaredBasis": {
-        "n": 55,
+        "n": 56,
         "sourceCounts": {
+          "ejobs": 1,
           "publi24": 2,
           "olx": 38,
           "hipo": 1,
@@ -3674,9 +3830,15 @@
           "min": 2500,
           "max": 36763
         },
-        "midpointEstimate": 5750
+        "midpointEstimate": 5763.5
       },
       "examples": [
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/sudor/1982501",
+          "source": "ejobs",
+          "min": 5000,
+          "max": 7000
+        },
         {
           "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/sudori/anunt/sudori-mig-co2-cu-experienta-pentru-hale-metalice/9f4509ehif347fd513gi83f31826fe1d.html",
           "source": "publi24",
@@ -3700,17 +3862,13 @@
           "source": "olx",
           "min": 4500,
           "max": 8000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-sudor-autorizat-iscir-polietilena-pe-si-otel-ol-IDkbCJM.html",
-          "source": "olx",
-          "min": 5000,
-          "max": 7000
         }
       ]
     },
     "sofer-autobuz": {
       "name": "Șofer de autobuz",
+      "read": 7,
+      "withoutSalary": 5,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -3746,34 +3904,36 @@
     },
     "electromecanic": {
       "name": "Electromecanic",
-      "n": 16,
-      "ads": 16,
+      "read": 81,
+      "withoutSalary": 70,
+      "n": 17,
+      "ads": 17,
       "basisNearAmount": 8,
       "basisFromDocument": 0,
-      "basisFromPlatform": 8,
-      "employers": 14,
+      "basisFromPlatform": 9,
+      "employers": 15,
       "counties": 5,
       "sourceCounts": {
-        "ejobs": 8,
+        "ejobs": 9,
         "olx": 3,
         "publi24": 5
       },
-      "employerShare": 0.1875,
-      "sourceShare": 0.5,
+      "employerShare": 0.17647058823529413,
+      "sourceShare": 0.5294117647058824,
       "gaps": [
         "too_few_ads",
         "too_few_explicit_monthly"
       ],
-      "explicitMonthly": 8,
+      "explicitMonthly": 9,
       "assumedMonthly": 8,
-      "periodSensitivity": 0.11782003528719859,
-      "sourceSensitivity": 0.12044444444444445,
+      "periodSensitivity": 0.10852713178294573,
+      "sourceSensitivity": 0.10891304347826088,
       "midpointEstimate": null,
       "status": "insufficient",
       "medianBounds": null,
       "observedRange": {
         "min": 4000,
-        "max": 10000
+        "max": 10504
       },
       "undeclaredBasis": {
         "n": 14,
@@ -3789,6 +3949,12 @@
         "midpointEstimate": 5500
       },
       "examples": [
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/electromecanic-utilaje-euro-net/1984487",
+          "source": "ejobs",
+          "min": 5252,
+          "max": 10504
+        },
         {
           "url": "https://www.ejobs.ro/user/locuri-de-munca/specialist-electromecanic/1979537",
           "source": "ejobs",
@@ -3812,17 +3978,13 @@
           "source": "olx",
           "min": 5000,
           "max": 6000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/electromecanic-arad-IDkTJY8.html",
-          "source": "olx",
-          "min": 4800,
-          "max": 4800
         }
       ]
     },
     "agent-imobiliar": {
       "name": "Agent imobiliar",
+      "read": 34,
+      "withoutSalary": 20,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -3849,17 +4011,24 @@
       "medianBounds": null,
       "observedRange": null,
       "undeclaredBasis": {
-        "n": 2,
+        "n": 3,
         "sourceCounts": {
+          "ejobs": 1,
           "bestjobs": 2
         },
         "observedRange": {
-          "min": 5252,
+          "min": 5000,
           "max": 26260
         },
-        "midpointEstimate": 14443
+        "midpointEstimate": 7878
       },
       "examples": [
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/agent-imobiliar/1984744",
+          "source": "ejobs",
+          "min": 5000,
+          "max": 10000
+        },
         {
           "url": "https://www.bestjobs.eu/loc-de-munca/agent-imobiliar-789",
           "source": "bestjobs",
@@ -3876,6 +4045,8 @@
     },
     "tehnician-dentar": {
       "name": "Tehnician dentar",
+      "read": 15,
+      "withoutSalary": 13,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -3923,6 +4094,8 @@
     },
     "editor": {
       "name": "Editor",
+      "read": 2,
+      "withoutSalary": 0,
       "n": 1,
       "ads": 1,
       "basisNearAmount": 0,
@@ -4003,6 +4176,8 @@
     },
     "asistent-medical": {
       "name": "Asistent medical",
+      "read": 216,
+      "withoutSalary": 206,
       "n": 10,
       "ads": 10,
       "basisNearAmount": 7,
@@ -4035,8 +4210,9 @@
         "max": 11554
       },
       "undeclaredBasis": {
-        "n": 34,
+        "n": 37,
         "sourceCounts": {
+          "ejobs": 3,
           "publi24": 3,
           "olx": 21,
           "hipo": 1,
@@ -4051,6 +4227,24 @@
       },
       "examples": [
         {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/asistent-medical-stomatologie-full-time/1979843",
+          "source": "ejobs",
+          "min": 4000,
+          "max": 5000
+        },
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/asistent-medical-generalist-cabinet-medicina-de-familie/1984539",
+          "source": "ejobs",
+          "min": 3300,
+          "max": 3300
+        },
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/asistent-medical-generalist-imagistica-dentara/1984284",
+          "source": "ejobs",
+          "min": 3600,
+          "max": 5000
+        },
+        {
           "url": "https://www.publi24.ro/anunturi/locuri-de-munca/medicina-umana/anunt/angajam-asistenta-medicala-in-otopeni-pentru-camin-persoane-varstnice/8d253fffid7f7d3224ggi30gf942h78f.html",
           "source": "publi24",
           "min": 5500,
@@ -4061,29 +4255,13 @@
           "source": "olx",
           "min": 3676,
           "max": 6302
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/asistenta-medicala-stomatologie-IDkIb1K.html",
-          "source": "olx",
-          "min": 3000,
-          "max": 5000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/asistent-medical-clinica-stomatologica-cit-IDkeDok.html",
-          "source": "olx",
-          "min": 3300,
-          "max": 3500
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-asistenta-medicala-pentru-caminul-de-batrani-sf-dumitru-din-bragadiru-ilfov-IDkRtcK.html",
-          "source": "olx",
-          "min": 4500,
-          "max": 6500
         }
       ]
     },
     "operator-chimist": {
       "name": "Operator chimist",
+      "read": 4,
+      "withoutSalary": 4,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -4119,6 +4297,8 @@
     },
     "sticlar": {
       "name": "Sticlar",
+      "read": 10,
+      "withoutSalary": 10,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -4191,33 +4371,37 @@
     },
     "dulgher": {
       "name": "Dulgher",
-      "n": 10,
-      "ads": 10,
+      "read": 156,
+      "withoutSalary": 128,
+      "n": 12,
+      "ads": 12,
       "basisNearAmount": 9,
       "basisFromDocument": 1,
-      "basisFromPlatform": 0,
-      "employers": 10,
+      "basisFromPlatform": 2,
+      "employers": 12,
       "counties": 8,
       "sourceCounts": {
+        "ejobs": 2,
         "olx": 8,
         "publi24": 2
       },
-      "employerShare": 0.1,
-      "sourceShare": 0.8,
+      "employerShare": 0.08333333333333333,
+      "sourceShare": 0.6666666666666666,
       "gaps": [
         "too_few_ads",
-        "too_few_explicit_monthly"
+        "too_few_explicit_monthly",
+        "source_sensitivity"
       ],
-      "explicitMonthly": 3,
+      "explicitMonthly": 5,
       "assumedMonthly": 7,
-      "periodSensitivity": 0,
-      "sourceSensitivity": 0.10869565217391304,
+      "periodSensitivity": 0.06521739130434782,
+      "sourceSensitivity": 0.1836734693877551,
       "midpointEstimate": null,
       "status": "insufficient",
       "medianBounds": null,
       "observedRange": {
         "min": 5000,
-        "max": 10504
+        "max": 15756
       },
       "undeclaredBasis": {
         "n": 15,
@@ -4232,6 +4416,18 @@
         "midpointEstimate": 6500
       },
       "examples": [
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/dulgheri-norvegia-bergen/1980315",
+          "source": "ejobs",
+          "min": 13655,
+          "max": 15756
+        },
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/dulgher/1983146",
+          "source": "ejobs",
+          "min": 7000,
+          "max": 8000
+        },
         {
           "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/muncitori-constructii/anunt/angajam-dulgheri-calificati-salariu-6000-7000-ron/95h9d8587208707h1i002g79f17f42d5.html",
           "source": "publi24",
@@ -4249,23 +4445,13 @@
           "source": "olx",
           "min": 6000,
           "max": 7000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-dulgher-cu-experienta-pentru-lucrari-constructiicofraje-cu-panouri-doka-IDjLych.html",
-          "source": "olx",
-          "min": 7878,
-          "max": 10504
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajez-dulgheri-si-fierari-in-constructii-IDkSlVO.html",
-          "source": "olx",
-          "min": 5000,
-          "max": 8000
         }
       ]
     },
     "medic-rezident": {
       "name": "Medic rezident",
+      "read": 0,
+      "withoutSalary": 0,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -4301,6 +4487,8 @@
     },
     "actor": {
       "name": "Actor",
+      "read": 0,
+      "withoutSalary": 0,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -4336,6 +4524,8 @@
     },
     "operator-epurare": {
       "name": "Operator stație de epurare",
+      "read": 0,
+      "withoutSalary": 0,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -4383,6 +4573,8 @@
     },
     "zugrav": {
       "name": "Zugrav",
+      "read": 57,
+      "withoutSalary": 52,
       "n": 1,
       "ads": 1,
       "basisNearAmount": 1,
@@ -4463,6 +4655,8 @@
     },
     "operator-statie-apa": {
       "name": "Operator stație de apă",
+      "read": 0,
+      "withoutSalary": 0,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -4498,6 +4692,8 @@
     },
     "operator-productie": {
       "name": "Operator producție",
+      "read": 179,
+      "withoutSalary": 147,
       "n": 51,
       "ads": 51,
       "basisNearAmount": 45,
@@ -4529,8 +4725,9 @@
         "max": 7000
       },
       "undeclaredBasis": {
-        "n": 20,
+        "n": 22,
         "sourceCounts": {
+          "ejobs": 2,
           "olx": 15,
           "hipo": 1,
           "bestjobs": 3,
@@ -4538,11 +4735,23 @@
         },
         "observedRange": {
           "min": 2600,
-          "max": 6302
+          "max": 10000
         },
         "midpointEstimate": 3750
       },
       "examples": [
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/operator-productie-folii-plastice-extrudare-blow-molding/1984234",
+          "source": "ejobs",
+          "min": 6000,
+          "max": 10000
+        },
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/operator-productie-muncitor-necalificat/1982004",
+          "source": "ejobs",
+          "min": 2700,
+          "max": 3000
+        },
         {
           "url": "https://www.publi24.ro/anunturi/locuri-de-munca/muncitori-productie-depozit-logistica/anunt/operatori-productie-parcul-industrial-freidorf/0figgg391e887346e79d1i3477i2dd6g.html",
           "source": "publi24",
@@ -4560,23 +4769,13 @@
           "source": "publi24",
           "min": 2629,
           "max": 2629
-        },
-        {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/muncitori-productie-depozit-logistica/operatori-productie/anunt/manpower-angajeaza-operator-productie-in-timisoara/9ig9ge96i99d78052fei47g39gf88003.html",
-          "source": "publi24",
-          "min": 2907,
-          "max": 2907
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/operator-productie-fabrica-clinceni-transport-asigurat-IDkTAXD.html",
-          "source": "olx",
-          "min": 3400,
-          "max": 4300
         }
       ]
     },
     "bucatar": {
       "name": "Bucătar",
+      "read": 239,
+      "withoutSalary": 203,
       "n": 31,
       "ads": 31,
       "basisNearAmount": 14,
@@ -4657,6 +4856,8 @@
     },
     "kinetoterapeut": {
       "name": "Kinetoterapeut",
+      "read": 24,
+      "withoutSalary": 20,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -4724,6 +4925,8 @@
     },
     "zidar": {
       "name": "Zidar",
+      "read": 114,
+      "withoutSalary": 100,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -4797,6 +5000,8 @@
     },
     "tipograf": {
       "name": "Tipograf",
+      "read": 17,
+      "withoutSalary": 15,
       "n": 1,
       "ads": 1,
       "basisNearAmount": 0,
@@ -4871,6 +5076,8 @@
     },
     "marinar": {
       "name": "Marinar",
+      "read": 1,
+      "withoutSalary": 1,
       "n": 1,
       "ads": 1,
       "basisNearAmount": 1,
@@ -4920,6 +5127,8 @@
     },
     "sofer-ambulanta": {
       "name": "Șofer de ambulanță",
+      "read": 1,
+      "withoutSalary": 1,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -4955,6 +5164,8 @@
     },
     "bijutier": {
       "name": "Bijutier",
+      "read": 3,
+      "withoutSalary": 3,
       "n": 1,
       "ads": 1,
       "basisNearAmount": 1,
@@ -5015,6 +5226,8 @@
     },
     "profesor": {
       "name": "Profesor",
+      "read": 30,
+      "withoutSalary": 26,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -5081,6 +5294,8 @@
     },
     "medic-veterinar": {
       "name": "Medic veterinar",
+      "read": 18,
+      "withoutSalary": 17,
       "n": 2,
       "ads": 2,
       "basisNearAmount": 1,
@@ -5115,18 +5330,37 @@
         "max": 7353
       },
       "undeclaredBasis": {
-        "n": 3,
+        "n": 6,
         "sourceCounts": {
+          "ejobs": 3,
           "bestjobs": 2,
           "anuntul": 1
         },
         "observedRange": {
-          "min": 4500,
-          "max": 7878
+          "min": 3500,
+          "max": 10000
         },
-        "midpointEstimate": 6039.5
+        "midpointEstimate": 6019.75
       },
       "examples": [
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/medic-veterinar/1984241",
+          "source": "ejobs",
+          "min": 5000,
+          "max": 7000
+        },
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/medic-veterinar/1982538",
+          "source": "ejobs",
+          "min": 5000,
+          "max": 10000
+        },
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/medic-veterinar-farmacie-veterinara/1981532",
+          "source": "ejobs",
+          "min": 3500,
+          "max": 5000
+        },
         {
           "url": "https://www.publi24.ro/anunturi/locuri-de-munca/medicina-veterinara/anunt/angajam-medic-veterinar-farmacie/85d65f957h5g7gf6211dgeehf3666h79.html",
           "source": "publi24",
@@ -5138,29 +5372,13 @@
           "source": "bestjobs",
           "min": 5252,
           "max": 7878
-        },
-        {
-          "url": "https://www.bestjobs.eu/loc-de-munca/medic-veterinar-400",
-          "source": "bestjobs",
-          "min": 5252,
-          "max": 6827
-        },
-        {
-          "url": "https://www.bestjobs.eu/loc-de-munca/medic-veterinar-402",
-          "source": "bestjobs",
-          "min": 3676,
-          "max": 7353
-        },
-        {
-          "url": "https://www.anuntul.ro/anunt-angajare-medic-veterinar-farmacie-rm3XVb",
-          "source": "anuntul",
-          "min": 4500,
-          "max": 5000
         }
       ]
     },
     "muncitor-industria-alimentara": {
       "name": "Muncitor în industria alimentară",
+      "read": 0,
+      "withoutSalary": 0,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -5196,6 +5414,8 @@
     },
     "constructor": {
       "name": "Muncitor în construcții",
+      "read": 577,
+      "withoutSalary": 508,
       "n": 26,
       "ads": 26,
       "basisNearAmount": 15,
@@ -5229,8 +5449,9 @@
         "max": 15000
       },
       "undeclaredBasis": {
-        "n": 119,
+        "n": 120,
         "sourceCounts": {
+          "ejobs": 1,
           "olx": 96,
           "publi24": 6,
           "bestjobs": 9,
@@ -5240,9 +5461,15 @@
           "min": 5,
           "max": 30461
         },
-        "midpointEstimate": 6000
+        "midpointEstimate": 5950
       },
       "examples": [
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/muncitor-constructii-bucuresti/1984874",
+          "source": "ejobs",
+          "min": 4000,
+          "max": 4500
+        },
         {
           "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/muncitori-constructii/anunt/angajeri-constructii/0234d2g8e3d87f8gee78f5f09d792d51.html",
           "source": "publi24",
@@ -5266,17 +5493,13 @@
           "source": "olx",
           "min": 4000,
           "max": 5500
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/sef-santier-in-constructii-IDkPWzD.html",
-          "source": "olx",
-          "min": 7000,
-          "max": 10000
         }
       ]
     },
     "crupier": {
       "name": "Crupier",
+      "read": 4,
+      "withoutSalary": 3,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -5324,6 +5547,8 @@
     },
     "farmacist": {
       "name": "Farmacist",
+      "read": 95,
+      "withoutSalary": 94,
       "n": 1,
       "ads": 1,
       "basisNearAmount": 1,
@@ -5403,30 +5628,31 @@
     },
     "mecanic-auto": {
       "name": "Mecanic auto",
-      "n": 11,
-      "ads": 11,
+      "read": 201,
+      "withoutSalary": 155,
+      "n": 12,
+      "ads": 12,
       "basisNearAmount": 5,
       "basisFromDocument": 3,
-      "basisFromPlatform": 3,
-      "employers": 10,
+      "basisFromPlatform": 4,
+      "employers": 11,
       "counties": 5,
       "sourceCounts": {
+        "ejobs": 4,
         "publi24": 3,
         "olx": 4,
-        "ejobs": 3,
         "anuntul": 1
       },
-      "employerShare": 0.09090909090909091,
-      "sourceShare": 0.36363636363636365,
+      "employerShare": 0.08333333333333333,
+      "sourceShare": 0.3333333333333333,
       "gaps": [
         "too_few_ads",
-        "too_few_explicit_monthly",
-        "pay_period_sensitivity"
+        "too_few_explicit_monthly"
       ],
-      "explicitMonthly": 5,
+      "explicitMonthly": 6,
       "assumedMonthly": 6,
-      "periodSensitivity": 0.5,
-      "sourceSensitivity": 0.041666666666666664,
+      "periodSensitivity": 0.09090909090909091,
+      "sourceSensitivity": 0,
       "midpointEstimate": null,
       "status": "insufficient",
       "medianBounds": null,
@@ -5435,8 +5661,9 @@
         "max": 10000
       },
       "undeclaredBasis": {
-        "n": 71,
+        "n": 73,
         "sourceCounts": {
+          "ejobs": 2,
           "publi24": 4,
           "olx": 59,
           "bestjobs": 6,
@@ -5450,6 +5677,24 @@
       },
       "examples": [
         {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/mecanic-auto/1980673",
+          "source": "ejobs",
+          "min": 6000,
+          "max": 8000
+        },
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/mecanic-auto/1979595",
+          "source": "ejobs",
+          "min": 5000,
+          "max": 8000
+        },
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/mecanic-auto/1984865",
+          "source": "ejobs",
+          "min": 3000,
+          "max": 5000
+        },
+        {
           "url": "https://www.publi24.ro/anunturi/locuri-de-munca/service-spalatorie-auto/service-auto/anunt/mecanic-auto-cu-experienta-6000ron/9h265101fh677ee71g2h09d2e9686322.html",
           "source": "publi24",
           "min": 6000,
@@ -5460,29 +5705,13 @@
           "source": "publi24",
           "min": 5000,
           "max": 7000
-        },
-        {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/service-spalatorie-auto/service-auto/anunt/angajez-mecanic-auto-cu-experienta/944h971031e67644e2h88h8237f6232i.html",
-          "source": "publi24",
-          "min": 7000,
-          "max": 7000
-        },
-        {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/service-spalatorie-auto/service-auto/anunt/angajam-mecanic-auto-salariu-6000-9000-ron/8iegdg12i36f73g0e3359if9g7ief755.html",
-          "source": "publi24",
-          "min": 6000,
-          "max": 9000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-mecanic-auto-brasov-IDkMuyx.html",
-          "source": "olx",
-          "min": 4500,
-          "max": 6000
         }
       ]
     },
     "operator-call-center": {
       "name": "Operator call center",
+      "read": 72,
+      "withoutSalary": 53,
       "n": 12,
       "ads": 12,
       "basisNearAmount": 3,
@@ -5516,8 +5745,9 @@
         "max": 7090
       },
       "undeclaredBasis": {
-        "n": 14,
+        "n": 23,
         "sourceCounts": {
+          "ejobs": 9,
           "olx": 7,
           "hipo": 1,
           "bestjobs": 6
@@ -5526,43 +5756,45 @@
           "min": 2500,
           "max": 12000
         },
-        "midpointEstimate": 3725
+        "midpointEstimate": 3700
       },
       "examples": [
         {
-          "url": "https://www.ejobs.ro/user/locuri-de-munca/ofiter-de-credit-call-center-vanzari-colectare/1981243",
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/agent-call-center-limba-engleza/1982702",
           "source": "ejobs",
-          "min": 4500,
-          "max": 5000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/angajam-customer-suport-cu-limba-ceha-sau-slovaca-IDkQFxu.html",
-          "source": "olx",
-          "min": 8000,
-          "max": 12000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/call-center-operatori-venituri-minime-4000-lei-bucuresti-romarket-ro-IDjinlo.html",
-          "source": "olx",
-          "min": 4000,
+          "min": 3000,
           "max": 4000
         },
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/agent-call-center-cu-engleza-avansat-in-iasi-grupa-din-septembrie-IDkQeZR.html",
-          "source": "olx",
-          "min": 3200,
-          "max": 4200
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/agent-call-center-colectare-creante/1984226",
+          "source": "ejobs",
+          "min": 3000,
+          "max": 3000
         },
         {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/call-center-cu-limba-bulgara-vorbitor-nativ-call-center-afumati-IDkOT4i.html",
-          "source": "olx",
-          "min": 6827,
-          "max": 6827
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/team-leader-call-center/1984223",
+          "source": "ejobs",
+          "min": 3700,
+          "max": 4000
+        },
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/customer-support-specialist-with-english/1982838",
+          "source": "ejobs",
+          "min": 4500,
+          "max": 4500
+        },
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/agent-call-center-domeniul-bancar/1983402",
+          "source": "ejobs",
+          "min": 2900,
+          "max": 2900
         }
       ]
     },
     "tesator": {
       "name": "Țesător",
+      "read": 0,
+      "withoutSalary": 0,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -5598,6 +5830,8 @@
     },
     "psiholog": {
       "name": "Psiholog",
+      "read": 8,
+      "withoutSalary": 8,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -5633,6 +5867,8 @@
     },
     "taximetrist": {
       "name": "Taximetrist",
+      "read": 52,
+      "withoutSalary": 49,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -5680,6 +5916,8 @@
     },
     "invatator": {
       "name": "Învățător",
+      "read": 5,
+      "withoutSalary": 3,
       "n": 1,
       "ads": 1,
       "basisNearAmount": 0,
@@ -5746,28 +5984,31 @@
     },
     "tamplar": {
       "name": "Tâmplar",
-      "n": 13,
-      "ads": 13,
+      "read": 151,
+      "withoutSalary": 125,
+      "n": 14,
+      "ads": 14,
       "basisNearAmount": 10,
       "basisFromDocument": 3,
-      "basisFromPlatform": 0,
-      "employers": 10,
+      "basisFromPlatform": 1,
+      "employers": 11,
       "counties": 8,
       "sourceCounts": {
+        "ejobs": 1,
         "publi24": 5,
         "olx": 7,
         "anuntul": 1
       },
-      "employerShare": 0.15384615384615385,
-      "sourceShare": 0.5384615384615384,
+      "employerShare": 0.14285714285714285,
+      "sourceShare": 0.5,
       "gaps": [
         "too_few_ads",
         "too_few_explicit_monthly"
       ],
-      "explicitMonthly": 1,
+      "explicitMonthly": 2,
       "assumedMonthly": 12,
-      "periodSensitivity": 0,
-      "sourceSensitivity": 0.06818181818181818,
+      "periodSensitivity": 0.0625,
+      "sourceSensitivity": 0.06666666666666667,
       "midpointEstimate": null,
       "status": "insufficient",
       "medianBounds": null,
@@ -5776,8 +6017,9 @@
         "max": 8000
       },
       "undeclaredBasis": {
-        "n": 38,
+        "n": 39,
         "sourceCounts": {
+          "ejobs": 1,
           "olx": 29,
           "anuntul": 6,
           "publi24": 3
@@ -5786,9 +6028,21 @@
           "min": 3000,
           "max": 10000
         },
-        "midpointEstimate": 5125
+        "midpointEstimate": 5000
       },
       "examples": [
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/montatori-tamplarie-pvc-si-aluminiu/1980010",
+          "source": "ejobs",
+          "min": 5000,
+          "max": 8000
+        },
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/tamplar-calificat-in-lemn-mdf-pal/1979125",
+          "source": "ejobs",
+          "min": 3000,
+          "max": 5000
+        },
         {
           "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/muncitori-constructii/anunt/angajam-lucrator-atelier-tamplarie-aluminiu-si-montaje/9id69e18g6gh7d47218ed6e9g44e2dd7.html",
           "source": "publi24",
@@ -5806,23 +6060,13 @@
           "source": "olx",
           "min": 4500,
           "max": 5500
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/cubic-mob-angajeaza-tamplar-pal-mdf-IDkRLhu.html",
-          "source": "olx",
-          "min": 4000,
-          "max": 6000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/montatori-tamplarie-pvc-IDkScKk.html",
-          "source": "olx",
-          "min": 5000,
-          "max": 6000
         }
       ]
     },
     "cosmetician": {
       "name": "Cosmetician",
+      "read": 28,
+      "withoutSalary": 26,
       "n": 3,
       "ads": 3,
       "basisNearAmount": 2,
@@ -5901,6 +6145,8 @@
     },
     "secretar": {
       "name": "Secretar",
+      "read": 111,
+      "withoutSalary": 93,
       "n": 29,
       "ads": 29,
       "basisNearAmount": 9,
@@ -5932,10 +6178,10 @@
         "max": 15000
       },
       "undeclaredBasis": {
-        "n": 29,
+        "n": 30,
         "sourceCounts": {
+          "ejobs": 2,
           "olx": 16,
-          "ejobs": 1,
           "bestjobs": 11,
           "anuntul": 1
         },
@@ -5943,9 +6189,15 @@
           "min": 2500,
           "max": 10000
         },
-        "midpointEstimate": 4500
+        "midpointEstimate": 4475
       },
       "examples": [
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/office-manager-asistent-manager/1984615",
+          "source": "ejobs",
+          "min": 3500,
+          "max": 4000
+        },
         {
           "url": "https://www.olx.ro/oferta/loc-de-munca/angajez-secretara-IDkSoiq.html",
           "source": "olx",
@@ -5969,17 +6221,13 @@
           "source": "olx",
           "min": 3500,
           "max": 4000
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/dezvoltator-imobiliar-angajeaza-secretara-IDkpuQN.html",
-          "source": "olx",
-          "min": 4000,
-          "max": 4500
         }
       ]
     },
     "educator": {
       "name": "Educator",
+      "read": 8,
+      "withoutSalary": 8,
       "n": 2,
       "ads": 2,
       "basisNearAmount": 1,
@@ -6057,6 +6305,8 @@
     },
     "fermier": {
       "name": "Fermier",
+      "read": 0,
+      "withoutSalary": 0,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -6092,6 +6342,8 @@
     },
     "militar": {
       "name": "Militar",
+      "read": 12,
+      "withoutSalary": 10,
       "n": 2,
       "ads": 2,
       "basisNearAmount": 1,
@@ -6163,6 +6415,8 @@
     },
     "politist": {
       "name": "Polițist",
+      "read": 0,
+      "withoutSalary": 0,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -6198,6 +6452,8 @@
     },
     "receptioner-hotel": {
       "name": "Recepționer hotel",
+      "read": 17,
+      "withoutSalary": 16,
       "n": 3,
       "ads": 3,
       "basisNearAmount": 2,
@@ -6277,6 +6533,8 @@
     },
     "antrenor-sportiv": {
       "name": "Antrenor sportiv",
+      "read": 0,
+      "withoutSalary": 0,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -6312,6 +6570,8 @@
     },
     "cizmar": {
       "name": "Cizmar",
+      "read": 2,
+      "withoutSalary": 2,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -6347,6 +6607,8 @@
     },
     "cofetar": {
       "name": "Cofetar",
+      "read": 45,
+      "withoutSalary": 40,
       "n": 8,
       "ads": 8,
       "basisNearAmount": 5,
@@ -6426,6 +6688,8 @@
     },
     "fizioterapeut": {
       "name": "Fizioterapeut",
+      "read": 7,
+      "withoutSalary": 4,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -6473,6 +6737,8 @@
     },
     "frizer": {
       "name": "Frizer",
+      "read": 70,
+      "withoutSalary": 66,
       "n": 2,
       "ads": 2,
       "basisNearAmount": 1,
@@ -6551,6 +6817,8 @@
     },
     "pompier": {
       "name": "Pompier",
+      "read": 4,
+      "withoutSalary": 4,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -6605,6 +6873,8 @@
     },
     "postas": {
       "name": "Poștaș",
+      "read": 2,
+      "withoutSalary": 2,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -6640,6 +6910,8 @@
     },
     "barman": {
       "name": "Barman",
+      "read": 102,
+      "withoutSalary": 94,
       "n": 10,
       "ads": 10,
       "basisNearAmount": 4,
@@ -6718,6 +6990,8 @@
     },
     "operator-salubritate": {
       "name": "Operator salubritate",
+      "read": 0,
+      "withoutSalary": 0,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -6753,6 +7027,8 @@
     },
     "tapiter": {
       "name": "Tapițer",
+      "read": 7,
+      "withoutSalary": 6,
       "n": 1,
       "ads": 1,
       "basisNearAmount": 1,
@@ -6802,6 +7078,8 @@
     },
     "casier": {
       "name": "Casier",
+      "read": 387,
+      "withoutSalary": 353,
       "n": 46,
       "ads": 46,
       "basisNearAmount": 31,
@@ -6833,8 +7111,9 @@
         "max": 7000
       },
       "undeclaredBasis": {
-        "n": 62,
+        "n": 63,
         "sourceCounts": {
+          "ejobs": 1,
           "olx": 41,
           "publi24": 5,
           "bestjobs": 6,
@@ -6842,11 +7121,17 @@
         },
         "observedRange": {
           "min": 2500,
-          "max": 5000
+          "max": 7500
         },
-        "midpointEstimate": 3625
+        "midpointEstimate": 3650
       },
       "examples": [
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/casier-schimb-valutar-si-aur-de-investitii/1983929",
+          "source": "ejobs",
+          "min": 5000,
+          "max": 7500
+        },
         {
           "url": "https://www.olx.ro/oferta/loc-de-munca/casier-a-fast-food-central-IDkQ3c4.html",
           "source": "olx",
@@ -6870,17 +7155,13 @@
           "source": "olx",
           "min": 3600,
           "max": 3800
-        },
-        {
-          "url": "https://www.olx.ro/oferta/loc-de-munca/casier-restaurant-program-2-2-IDkRUAz.html",
-          "source": "olx",
-          "min": 2700,
-          "max": 2900
         }
       ]
     },
     "tehnician-calculatoare": {
       "name": "Tehnician service IT",
+      "read": 0,
+      "withoutSalary": 0,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -6916,6 +7197,8 @@
     },
     "curier": {
       "name": "Curier",
+      "read": 428,
+      "withoutSalary": 189,
       "n": 10,
       "ads": 10,
       "basisNearAmount": 4,
@@ -6999,6 +7282,8 @@
     },
     "pescar": {
       "name": "Pescar",
+      "read": 0,
+      "withoutSalary": 0,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -7034,6 +7319,8 @@
     },
     "asistent-farmacie": {
       "name": "Asistent de farmacie",
+      "read": 25,
+      "withoutSalary": 24,
       "n": 1,
       "ads": 1,
       "basisNearAmount": 1,
@@ -7083,6 +7370,8 @@
     },
     "agent-paza": {
       "name": "Agent de pază",
+      "read": 135,
+      "withoutSalary": 125,
       "n": 22,
       "ads": 22,
       "basisNearAmount": 16,
@@ -7164,6 +7453,8 @@
     },
     "vanzator": {
       "name": "Vânzător",
+      "read": 994,
+      "withoutSalary": 906,
       "n": 109,
       "ads": 109,
       "basisNearAmount": 76,
@@ -7197,8 +7488,9 @@
         "max": 5800
       },
       "undeclaredBasis": {
-        "n": 206,
+        "n": 211,
         "sourceCounts": {
+          "ejobs": 5,
           "publi24": 18,
           "olx": 130,
           "bestjobs": 9,
@@ -7212,39 +7504,41 @@
       },
       "examples": [
         {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/horeca/anunt/lucrator-comercial-moldovan-carmangerie/7b0161777e6e6653.html",
-          "source": "publi24",
-          "min": 3000,
-          "max": 3200
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/vanzator-inghetata-artizanala-gelateria-la-romana-dal/1982528",
+          "source": "ejobs",
+          "min": 3500,
+          "max": 3600
         },
         {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/casieri-lucratori-comerciali/anunt/unic-mini-shop-s-r-l-angajam-lucrator-comercial-vanzator/0fh20fd615hh73341395g0fhh1g7134f.html",
-          "source": "publi24",
-          "min": 3700,
-          "max": 3700
-        },
-        {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/casieri-lucratori-comerciali/anunt/angajez-vanzatoare-magazin-non-stop/074i8g7e01h87730113hf6230ed5ed66.html",
-          "source": "publi24",
-          "min": 4000,
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/vanzator-mobila-manipulant-marfa-bucuresti/1982796",
+          "source": "ejobs",
+          "min": 2400,
           "max": 4000
         },
         {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/casieri-lucratori-comerciali/anunt/personal-calificat-lucratori-comerciali-sef-de-tura-sef-de-magazin/9284750i76d0767ee64g55357372dh82.html",
-          "source": "publi24",
-          "min": 3500,
-          "max": 5000
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/lucrator-comercial-procesare-comenzi/1982769",
+          "source": "ejobs",
+          "min": 4800,
+          "max": 6000
         },
         {
-          "url": "https://www.publi24.ro/anunturi/locuri-de-munca/casieri-lucratori-comerciali/anunt/angajam-vanzatoare-pentru-pravalia-sergiana-din-fagaras/9466h69di4df75432hdff60948hhd193.html",
-          "source": "publi24",
-          "min": 2699,
-          "max": 2699
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/vanzator-mobila-vanzator-decoratiuni-cluj/1982764",
+          "source": "ejobs",
+          "min": 2400,
+          "max": 4000
+        },
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/lucrator-comercial-bijuteria-gabriel/1984803",
+          "source": "ejobs",
+          "min": 3500,
+          "max": 4500
         }
       ]
     },
     "chelner": {
       "name": "Chelner",
+      "read": 215,
+      "withoutSalary": 194,
       "n": 25,
       "ads": 25,
       "basisNearAmount": 10,
@@ -7323,6 +7617,8 @@
     },
     "functionar-public": {
       "name": "Funcționar public",
+      "read": 1,
+      "withoutSalary": 1,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -7358,6 +7654,8 @@
     },
     "croitor": {
       "name": "Croitor",
+      "read": 37,
+      "withoutSalary": 31,
       "n": 3,
       "ads": 3,
       "basisNearAmount": 1,
@@ -7437,6 +7735,8 @@
     },
     "asistent-social": {
       "name": "Asistent social",
+      "read": 3,
+      "withoutSalary": 3,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -7472,6 +7772,8 @@
     },
     "instructor-auto": {
       "name": "Instructor auto",
+      "read": 14,
+      "withoutSalary": 14,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -7519,6 +7821,8 @@
     },
     "agent-curatenie": {
       "name": "Agent de curățenie",
+      "read": 250,
+      "withoutSalary": 201,
       "n": 39,
       "ads": 39,
       "basisNearAmount": 29,
@@ -7551,8 +7855,9 @@
         "max": 5000
       },
       "undeclaredBasis": {
-        "n": 58,
+        "n": 59,
         "sourceCounts": {
+          "ejobs": 1,
           "publi24": 5,
           "olx": 32,
           "anuntul": 20,
@@ -7562,9 +7867,15 @@
           "min": 1600,
           "max": 6000
         },
-        "midpointEstimate": 3562.5
+        "midpointEstimate": 3500
       },
       "examples": [
+        {
+          "url": "https://www.ejobs.ro/user/locuri-de-munca/personal-curatenie/1984914",
+          "source": "ejobs",
+          "min": 2300,
+          "max": 2700
+        },
         {
           "url": "https://www.ejobs.ro/user/locuri-de-munca/personal-curatenie/1984285",
           "source": "ejobs",
@@ -7588,17 +7899,13 @@
           "source": "publi24",
           "min": 3000,
           "max": 3000
-        },
-        {
-          "url": "https://www.ejobs.ro/user/locuri-de-munca/agent-de-curatenie/1978833",
-          "source": "ejobs",
-          "min": 3200,
-          "max": 3200
         }
       ]
     },
     "ingrijitor-batrani": {
       "name": "Îngrijitor de bătrâni",
+      "read": 10,
+      "withoutSalary": 9,
       "n": 1,
       "ads": 1,
       "basisNearAmount": 1,
@@ -7648,6 +7955,8 @@
     },
     "infirmier": {
       "name": "Infirmier",
+      "read": 43,
+      "withoutSalary": 40,
       "n": 2,
       "ads": 2,
       "basisNearAmount": 2,
@@ -7728,6 +8037,8 @@
     },
     "bibliotecar": {
       "name": "Bibliotecar",
+      "read": 0,
+      "withoutSalary": 0,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -7763,6 +8074,8 @@
     },
     "preot": {
       "name": "Preot",
+      "read": 0,
+      "withoutSalary": 0,
       "n": 0,
       "ads": 0,
       "basisNearAmount": 0,
@@ -7799,16 +8112,16 @@
   },
   "rejectionCounts": {
     "contract_or_variable_income": 530,
-    "foreign_or_noncomparable_work": 1447,
-    "salary_evidence_incomplete": 8087,
-    "unknown_occupation": 491,
-    "wide_range_review": 278,
-    "assistant_or_mixed_role": 20,
-    "full_time_unconfirmed": 834,
+    "foreign_or_noncomparable_work": 1474,
+    "salary_evidence_incomplete": 8314,
+    "unknown_occupation": 714,
+    "wide_range_review": 308,
+    "assistant_or_mixed_role": 21,
+    "full_time_unconfirmed": 884,
     "multiple_unresolved_amounts": 143,
     "http_410": 20,
     "expired": 7,
-    "country_unconfirmed": 47,
+    "country_unconfirmed": 119,
     "ad_too_old": 670,
     "monthly_unconfirmed": 134,
     "invalid_amount": 6,
@@ -7831,9 +8144,9 @@
       "url": "https://www.ejobs.ro/user/locuri-de-munca/lucrator-comercial-cofetaria-madame-prallini/1979840",
       "stage": "detail",
       "error": "host_paused_429",
-      "count": 8,
-      "lastUrl": "https://www.ejobs.ro/user/locuri-de-munca/instalatori-si-electricieni-bucuresti-si-imprejurimi/1984796",
-      "lastAt": "2026-09-08T11:14:56.814Z",
+      "count": 12,
+      "lastUrl": "https://www.ejobs.ro/user/locuri-de-munca/contabil-senior/1979077",
+      "lastAt": "2026-09-08T12:38:14.617Z",
       "source": "ejobs"
     },
     {
@@ -7847,9 +8160,9 @@
     {
       "stage": "inventory",
       "error": "host_paused_429",
-      "count": 2,
+      "count": 4,
       "firstAt": "2026-09-08T10:12:06.739Z",
-      "lastAt": "2026-09-08T11:14:51.612Z",
+      "lastAt": "2026-09-08T12:38:10.253Z",
       "source": "ejobs"
     },
     {
