@@ -654,3 +654,23 @@ export function comparatiiInrudite(comparatie: Comparatie, limita = 4): Comparat
         c.b.slug === comparatie.b.slug),
   ).slice(0, limita);
 }
+
+/**
+ * Meseriile cele mai apropiate de una data, pentru legaturile din pagina.
+ * „Primele din categorie" e o ordine arbitrara la categoriile mari; apropierea
+ * reala e data de grupa de ocupatii si de activitatea angajatorului, care sunt
+ * exact dimensiunile pe care cititorul compara doua meserii.
+ */
+export function meseriiInrudite(meserie: Meserie, cate = 6): Meserie[] {
+  const scor = (alta: Meserie) =>
+    (alta.categorie === meserie.categorie ? 4 : 0) +
+    (alta.isco === meserie.isco ? 3 : 0) +
+    (alta.caen3 === meserie.caen3 ? 2 : 0) +
+    (alta.caen2 === meserie.caen2 ? 1 : 0);
+  return MESERII.filter(m => m.slug !== meserie.slug)
+    .map(m => ({ m, s: scor(m) }))
+    .filter(x => x.s >= 4)
+    .sort((a, b) => b.s - a.s || a.m.nume.localeCompare(b.m.nume, "ro"))
+    .slice(0, cate)
+    .map(x => x.m);
+}

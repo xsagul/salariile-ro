@@ -41,14 +41,16 @@ import {
   MESERII,
   dateMeserieSauEroare,
   getMeserie,
-  meseriiDinCategorie,
+  meseriiInrudite,
   type DateMeserie,
 } from "@/lib/meserii";
 import { SURSA_GRILE, grilaPublica } from "@/lib/grile-publice";
 import TransparentaSalariu from '@/app/components/TransparentaSalariu';
 import ReperSalariu from '@/app/components/ReperSalariu';
 import PiloniSalariu from '@/app/components/PiloniSalariu';
+import TrepteRapide from '@/app/components/TrepteRapide';
 import { descriereReper, grilaEducatie, reperMeserie } from '@/lib/repere-meserii';
+import { textIndicator } from '@/lib/indicator-meserie';
 import corCatalogue from '@/data/cor-meserii.json';
 import { calculStandard } from '@/lib/fiscal';
 import { personSchema } from "@/lib/person";
@@ -203,7 +205,12 @@ export default async function MeseriePage({ params }: Props) {
 
   const variatie = variatieAnuala(sector.net);
   const faq = faqPentru(date);
-  const similare = meseriiDinCategorie(categorie.slug).filter((m) => m.slug !== meserie.slug).slice(0, 6);
+  // Ordonate dupa apropierea reala — grupa de ocupatii si activitate — nu dupa
+  // pozitia in categorie, si insotite de cifra, ca legatura sa merite clickul.
+  const similare = meseriiInrudite(meserie).map((alta) => {
+    const r = reperMeserie(dateMeserieSauEroare(alta));
+    return { alta, cifra: r.value ? `${textIndicator(r)} · ${r.label.toLocaleLowerCase("ro-RO")}` : undefined };
+  });
   const comparatii = COMPARATII.filter((c) => c.a.slug === meserie.slug || c.b.slug === meserie.slug).slice(0, 4);
   const etichetaSectorJudete = etichetaJudete(meserie.caen2);
   const sexe = diferentaSexe(meserie.isco);
@@ -265,6 +272,7 @@ export default async function MeseriePage({ params }: Props) {
           <H1>Salariu {numeMic} în 2026</H1>
           <Lead>{meserie.ceFace} Vezi reperul salarial, sursa și limitele lui. Compară meserii înrudite.</Lead>
           <ReperSalariu date={date} />
+          <TrepteRapide date={date} />
           <PiloniSalariu date={date} />
           <TransparentaSalariu slug={slug} />
           {grilaDidactica.length > 0 && <section className="mt-8 rounded-md border border-stone-200 bg-surface p-5">
@@ -599,11 +607,11 @@ export default async function MeseriePage({ params }: Props) {
               {similare.length > 0 && (
                 <div className="mt-8">
                   <h2 className="text-sm font-medium uppercase tracking-wide text-stone-600">
-                    Alte meserii din {categorie.nume.toLocaleLowerCase("ro-RO")}
+                    Meserii apropiate de {numeMic}
                   </h2>
                   <div className="mt-3 grid gap-2">
-                    {similare.map((alta) => (
-                      <LinkCard key={alta.slug} href={`/salarii/${alta.slug}`} titlu={alta.nume} />
+                    {similare.map(({ alta, cifra }) => (
+                      <LinkCard key={alta.slug} href={`/salarii/${alta.slug}`} titlu={alta.nume} detaliu={cifra} />
                     ))}
                     <LinkCard
                       href={`/salarii/domeniu/${categorie.slug}`}
