@@ -2,16 +2,21 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Breadcrumb, H1, Lead } from '@/app/components/ui';
 import { MESERII, CATEGORII, dateMeserieSauEroare } from '@/lib/meserii';
-import { reperMeserie } from '@/lib/repere-meserii';
-import { textIndicator } from '@/lib/indicator-meserie';
 import { ogPage, twPage } from '@/lib/seo';
 import reports from '@/data/repere-piata-verificate.json';
+import { ACOPERIRE_ANUNTURI } from '@/lib/acoperire-anunturi';
 
-const entries = MESERII.map(m => {
-  const d = dateMeserieSauEroare(m);
-  const r = reperMeserie(d);
-  return { m, d, r };
-}).filter(x => x.r.kind === 'external-reported').sort((a, b) => (b.r.value ?? 0) - (a.r.value ?? 0) || a.m.slug.localeCompare(b.m.slug, 'ro'));
+// Clasamentul compara o singura masura, din aceeasi editie a aceleiasi surse.
+// De aceea porneste din inregistrarile Salario, nu din reperul principal al
+// paginii: cand colectarea noastra devine reperul unei meserii, meseria trebuie
+// sa ramana comparabila aici, nu sa dispara din clasament.
+const entries = reports.records
+  .map(rec => {
+    const m = MESERII.find(x => x.slug === rec.slug);
+    return m ? { m, d: dateMeserieSauEroare(m), rec, a: ACOPERIRE_ANUNTURI[rec.slug] } : null;
+  })
+  .filter((x): x is NonNullable<typeof x> => x !== null)
+  .sort((a, b) => b.rec.net - a.rec.net || a.m.slug.localeCompare(b.m.slug, 'ro'));
 
 const description = `Clasament pentru ${entries.length} de meserii cu medii nete declarate în aceeași ediție Salario, cu sursa și acoperirea anunțurilor salariale.`;
 
@@ -67,6 +72,9 @@ export default function Clasament() {
           <p className="mt-1 leading-relaxed">
             Comparăm aceeași măsură și perioadă: media națională declarată de angajați în Salario. Eșantioanele pe meserie nu sunt publicate, iar raportările voluntare pot avea dezechilibre. Ordinea este orientativă; valorile egale au același loc. Nu avem o mediană națională verificată pentru fiecare meserie.
           </p>
+          <p className="mt-2 leading-relaxed">
+            Pentru unele meserii avem și un reper din propriile noastre anunțuri verificate. Nu îl amestecăm aici, pentru că măsoară altceva — ce se oferă la angajare, nu ce declară cine lucrează deja. Îl găsești pe pagina meseriei, marcat ca atare.
+          </p>
         </div>
 
         <div className="my-8 overflow-x-auto">
@@ -85,7 +93,6 @@ export default function Clasament() {
             <tbody>
               {entries.map((x) => {
                 const cat = CATEGORII.find(c => c.slug === x.m.categorie);
-                const isPublic = x.r.kind === 'public-grid';
                 return (
                   <tr key={x.m.slug} className="hover:bg-stone-50/60 border-b border-stone-100">
                     <td className="p-3 font-mono text-xs font-medium text-stone-600">#{x.d.clasament?.loc}</td>
@@ -99,20 +106,22 @@ export default function Clasament() {
                     </th>
                     <td className="p-3 text-xs text-stone-600">
                       <span className="inline-block rounded bg-stone-100 px-2 py-0.5 font-medium text-stone-700">
-                        {reports.records.find(r=>r.slug===x.m.slug)?.role ?? cat?.nume}
+                        {x.rec.role ?? cat?.nume}
                       </span>
                     </td>
                     <td className="whitespace-nowrap p-3 text-right font-bold text-stone-900">
-                      {textIndicator(x.r)}
+                      {x.rec.net.toLocaleString('ro-RO')} lei net
                     </td>
                     <td className="whitespace-nowrap p-3 text-right text-xs text-stone-600">
-                      {x.r.anunturi?.n ?? 0}
+                      {x.a?.n ?? 0}
                     </td>
                     <td className="p-3 text-xs text-stone-600">
-                      {isPublic ? (
-                        <span className="text-stone-800 font-medium">Grilă de bază</span>
+                      {x.a?.medianBounds ? (
+                        <Link className="font-medium text-stone-800 underline" href={`/salarii/${x.m.slug}`}>
+                          Avem și cifră proprie
+                        </Link>
                       ) : (
-                        <span className="text-stone-800 font-medium">{x.r.kind === 'sector-context' ? 'Context INS' : 'Medie declarată'}</span>
+                        <span className="font-medium text-stone-800">Medie declarată</span>
                       )}
                     </td>
                   </tr>
