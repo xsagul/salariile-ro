@@ -48,7 +48,7 @@ import { SURSA_GRILE, grilaPublica } from "@/lib/grile-publice";
 import TransparentaSalariu from '@/app/components/TransparentaSalariu';
 import ReperSalariu from '@/app/components/ReperSalariu';
 import PiloniSalariu from '@/app/components/PiloniSalariu';
-import { descriereReper, grilaEducatie } from '@/lib/repere-meserii';
+import { descriereReper, grilaEducatie, reperMeserie } from '@/lib/repere-meserii';
 import corCatalogue from '@/data/cor-meserii.json';
 import { calculStandard } from '@/lib/fiscal';
 import { personSchema } from "@/lib/person";
@@ -82,9 +82,44 @@ function titluPagina(date: DateMeserie) {
   return scurt.length + BRAND.length <= TITLU_MAX ? `${scurt}${BRAND}` : scurt;
 }
 
+/**
+ * Descrierea porneste de la intrebarea pe care omul o tasteaza si da o cifra
+ * concreta, dar niciodata una care sa inchida intrebarea. Un interval sau un
+ * reper insotit de „din ce e facut" arata ca avem raspunsul si lasa deschisa
+ * intrebarea „eu unde ma incadrez", la care se raspunde doar in pagina.
+ */
 function descrierePagina(date: DateMeserie) {
-  const numeMic = date.meserie.nume.toLocaleLowerCase("ro-RO");
-  return `Salariu ${numeMic} în 2026: net lunar, trepte salariale și comparații cu meserii înrudite. Surse citate și date INS pentru contextul regional.`;
+  const de = date.meserie.de;
+  const lei = (n: number) => n.toLocaleString("ro-RO");
+  const r = reperMeserie(date);
+  const inceput = `Cât câștigă un ${de}`;
+
+  const grila = grilaPublica(date.meserie.slug);
+  const didactic = grilaEducatie(date.meserie.slug);
+  const trepte = didactic.length
+    ? didactic.map(x => calculStandard(x.iun2024)!.net)
+    : grila?.trepte.map(t => t.net) ?? [];
+  if (trepte.length > 1) {
+    const min = Math.min(...trepte), max = Math.max(...trepte);
+    return `${inceput}: ${lei(min)} lei net la debut, până la ${lei(max)} lei. Trepte din grila legală, plus salarii din anunțuri verificate și date INS.`;
+  }
+
+  const a = r.anunturi;
+  if (r.kind === "salariile-ro" && r.value) {
+    const surse = r.compus?.surse ?? 2;
+    return `${inceput}: reper ${lei(r.value)} lei net, construit din ${surse} surse independente. Vezi anunțurile verificate din spate și cum se compară cu oferta ta.`;
+  }
+  if (r.kind === "external-advertised" && r.value && a?.n) {
+    return `${inceput}: ${lei(r.value)} lei net, mediana salariilor din ${a.n} anunțuri verificate de noi. Vezi sursele, județele și cum se compară cu oferta ta.`;
+  }
+  if (r.kind === "external-reported" && r.value) {
+    return `${inceput}: ${lei(r.value)} lei net, medie declarată de angajați. Plus salarii din anunțuri verificate și context din datele INS.`;
+  }
+  if (r.kind === "public-grid" && r.value) {
+    return `${inceput}: ${lei(r.value)} lei net din grila legală, la gradația 0. Plus salarii din anunțuri verificate și context din datele INS.`;
+  }
+  // Fara reper pe meseria exacta nu se pune o cifra care ar parea masurata.
+  return `${inceput} în România: ce arată anunțurile verificate, salariile declarate și datele INS pentru sectorul în care lucrează.`;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

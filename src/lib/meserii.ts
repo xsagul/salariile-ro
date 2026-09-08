@@ -279,7 +279,7 @@ export const MESERII: Meserie[] = [
   // ─── Administrație publică și ordine ───────────────────────────────────────
   { slug: "functionar-public", nume: "Funcționar public", de: "funcționar public", categorie: "public", caen3: "P", caen2: "O", isco: "functionari",
     ceFace: "Instrumentează dosare și lucrări într-o instituție publică, pe o funcție obținută prin concurs." },
-  { slug: "politist", nume: "Polițist", de: "politist", categorie: "public", caen3: "P", caen2: "O", isco: "servicii",
+  { slug: "politist", nume: "Polițist", de: "polițist", categorie: "public", caen3: "P", caen2: "O", isco: "servicii",
     ceFace: "Asigură ordinea publică, constată contravenții și infracțiuni și participă la anchete operative (Poliția Română, Frontieră sau poliție locală)." },
   { slug: "jandarm", nume: "Jandarm", de: "jandarm", categorie: "public", caen3: "P", caen2: "O", isco: "servicii", cor: "541101",
     ceFace: "Asigură ordinea publică, paza obiectivelor și intervenția în situații care cer forță militarizată.",
