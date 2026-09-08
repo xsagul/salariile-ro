@@ -25,6 +25,7 @@ import {
   getJudet,
   type ActivitateInJudet,
   type Judet,
+  INS_SURSA,
 } from "@/lib/ins-date";
 import { MESERII } from "@/lib/meserii";
 import { personSchema } from "@/lib/person";
@@ -43,7 +44,7 @@ export function generateStaticParams() {
 const AN = AN_JUDETE.replace("Anul ", "");
 const BRAND = " | Salariile.ro";
 const TITLU_MAX = 60;
-const URL_FOM107E = "https://statistici.insse.ro/tempoins/?ind=FOM107E&lang=ro&page=tempo3";
+const URL_FOM107E = INS_SURSA.url;
 const URL_HG_900_2023 = "https://legislatie.just.ro/Public/DetaliiDocumentAfis/274843";
 const URL_HG_598_2024 = "https://legislatie.just.ro/Public/DetaliiDocumentAfis/283807";
 

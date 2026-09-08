@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { urlSursaValid } from "./lib/url-sursa";
 import { agregheaza, incadreaza, PRAG_PUBLICARE, type ObservatieSalariala } from '../src/lib/observatii-salariale';
 import { MESERII, dateMeserieSauEroare, COMPARATII } from '../src/lib/meserii';
 import { reperMeserie, textReper, piloniMeserie, convergentaPiloni, reperCompus } from '../src/lib/repere-meserii';
@@ -29,7 +30,7 @@ assert.equal(agregheaza(make(60).map((x,i)=>({...x,judet:i<29?'Cluj':'Iași'})),
 const counts:Record<string,number>={};
 for(const m of MESERII) {
  const r=reperMeserie(dateMeserieSauEroare(m)); counts[r.kind]=(counts[r.kind]??0)+1;
- assert.equal(r.unit,'lei net/lună');assert.ok(r.url.startsWith('https://'));assert.ok(r.period);assert.ok(r.population);assert.ok(r.note);
+ assert.equal(r.unit,'lei net/lună');assert.ok(urlSursaValid(r.url),`${m.slug}: ${r.url}`);assert.ok(r.period);assert.ok(r.population);assert.ok(r.note);
  assert.equal(r.median,null,`${m.slug}: source does not publish a median`);
  assert.equal(r.p25,null); assert.equal(r.p75,null);
  assert.ok(r.n === null || (typeof r.n === 'number' && r.n > 0), m.slug);

@@ -35,6 +35,7 @@ import {
   etichetaJudete,
   vacantePentruGrupa,
   variatieAnuala,
+  INS_SURSA,
 } from "@/lib/ins-date";
 import {
   COMPARATII,
@@ -628,7 +629,7 @@ export default async function MeseriePage({ params }: Props) {
             Sursa: Institutul Național de Statistică, TEMPO-Online — matricele {MATRICE_BRUT} și {MATRICE_NET} (serie
             lunară pe activități CAEN Rev.3, ultima lună {LUNA}),{" "}
             <a
-              href="https://statistici.insse.ro/tempoins/?ind=FOM107E&lang=ro&page=tempo3"
+              href={INS_SURSA.url}
               target="_blank"
               rel="noopener"
             >

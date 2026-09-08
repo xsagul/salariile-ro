@@ -1,4 +1,5 @@
 import type { DateMeserie } from '@/lib/meserii';
+import { INS_SURSA } from "@/lib/ins-date";
 import { grilaPublica, SURSA_GRILE } from '@/lib/grile-publice';
 import { LUNA_REFERINTA } from '@/lib/ins-date';
 import education from '@/data/grila-invatamant-153-2017.json';
@@ -119,7 +120,7 @@ export function reperMeserie(d: DateMeserie): ReperMeserie {
     period: LUNA_REFERINTA,
     population: `CAEN ${d.sector.cheie} — ${d.sector.denumire}${cm.dinIntersectie ? `; grupa majoră ISCO ${d.meserie.isco}` : '; toate ocupațiile'}`,
     source: cm.dinIntersectie ? 'INS, FOM121A × FOM106G; calcul Salariile.ro' : 'INS, FOM106G',
-    url: `https://statistici.insse.ro/tempoins/?ind=${cm.dinIntersectie ? 'FOM121A' : 'FOM106G'}&lang=ro&page=tempo3`,
+    url: INS_SURSA.url,
     note: 'Reper agregat de context. Nu există aici o observație salarială verificată pentru meseria exactă.',
   };
 }
@@ -206,7 +207,7 @@ export function piloniMeserie(d: DateMeserie): Pilon[] {
     concept: cm.dinIntersectie ? 'estimare pentru grupa de ocupații din sector' : 'media sectorului de activitate',
     populatie: `CAEN ${d.sector.cheie} — ${d.sector.denumire}${cm.dinIntersectie ? `; grupa majoră ISCO ${d.meserie.isco}` : '; toate ocupațiile'}`,
     sursa: cm.dinIntersectie ? 'INS, FOM121A × FOM106G; calcul Salariile.ro' : 'INS, FOM106G',
-    url: `https://statistici.insse.ro/tempoins/?ind=${cm.dinIntersectie ? 'FOM121A' : 'FOM106G'}&lang=ro&page=tempo3`,
+    url: INS_SURSA.url,
     n: null, stare: 'publicat',
     nota: 'Salariu efectiv plătit, dar pe o grupă largă de ocupații — nu pe meseria exactă. INS nu publică salarii pe codul COR.',
   };

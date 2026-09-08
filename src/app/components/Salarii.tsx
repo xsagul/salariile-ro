@@ -5,7 +5,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import type { GrilaPublica } from "@/lib/grile-publice";
-import type { ValoareJudet } from "@/lib/ins-date";
+import { INS_SURSA, type ValoareJudet } from "@/lib/ins-date";
 
 export const lei = (valoare: number) => new Intl.NumberFormat("ro-RO").format(Math.round(valoare));
 
@@ -184,7 +184,7 @@ export function TabelJudete({
           câștigul salarial nominal mediu brut lunar al activității CAEN Rev.2 „{numeActivitate}”, calculat pentru
           întregul an. Nu este salariu net și nu reprezintă salariul minim din 2026. Vezi{" "}
           <a
-            href="https://statistici.insse.ro/tempoins/?ind=FOM107E&lang=ro&page=tempo3"
+            href={INS_SURSA.url}
             target="_blank"
             rel="noopener"
             className="font-medium text-stone-900 underline underline-offset-2 hover:text-stone-600"

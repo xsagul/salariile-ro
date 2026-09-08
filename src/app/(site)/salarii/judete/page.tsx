@@ -8,7 +8,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumb, Faq, H1, Lead } from "@/app/components/ui";
 import { CardCifra, NotaSursa, lei, procent } from "@/app/components/Salarii";
-import { AN_JUDETE, JUDETE, MATRICE_JUDETE, NATIONAL_JUDETE } from "@/lib/ins-date";
+import { AN_JUDETE, JUDETE, MATRICE_JUDETE, NATIONAL_JUDETE, INS_SURSA } from "@/lib/ins-date";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 
@@ -16,7 +16,7 @@ const AN = AN_JUDETE.replace("Anul ", "");
 const PRIMUL = JUDETE[0];
 const ULTIMUL = JUDETE[JUDETE.length - 1];
 const RAPORT = PRIMUL.brut / ULTIMUL.brut;
-const URL_FOM107E = "https://statistici.insse.ro/tempoins/?ind=FOM107E&lang=ro&page=tempo3";
+const URL_FOM107E = INS_SURSA.url;
 const URL_HG_900_2023 = "https://legislatie.just.ro/Public/DetaliiDocumentAfis/274843";
 const URL_HG_598_2024 = "https://legislatie.just.ro/Public/DetaliiDocumentAfis/283807";
 // Copia locala e necesara: ingustarea de tip a lui NATIONAL_JUDETE nu

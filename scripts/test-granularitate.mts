@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { urlSursaValid } from "./lib/url-sursa";
 import { MESERII, dateMeserieSauEroare } from '../src/lib/meserii';
 import { reperMeserie, textReper } from '../src/lib/repere-meserii';
 import { textIndicator } from '../src/lib/indicator-meserie';
@@ -20,7 +21,7 @@ for (const m of MESERII) {
   assert.equal(r.p75, null, 'nu inventăm quartile');
 
   for (const value of [r.source, r.period, r.population, r.note]) assert.ok(value.length > 0, m.slug);
-  assert.ok(r.url.startsWith('https://'));
+  assert.ok(urlSursaValid(r.url), r.url);
   assert.ok(!textReper(r).includes('NaN'));
 
   if (r.upper !== null && r.upper !== r.value) {
