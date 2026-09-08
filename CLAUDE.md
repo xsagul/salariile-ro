@@ -131,6 +131,35 @@ populații și concepte diferite; o medie ponderată a lor n-ar avea nicio surs�
 s-o susțină și ar repeta eroarea cenzusului sintetic. Divergența dintre piloni se
 afișează ca informație, nu se netezește.
 
+**Cererea de căutare e la bugetari, nu unde e ușor de colectat.** Măsurat pe 8
+septembrie 2026, din date SE Ranking: 15 din primele 25 de clustere de căutare
+pentru salarii sunt sector public — asistent medical 1.890/lună, profesor 1.690,
+polițist 1.310 — adică ~69% din volum. Acolo cifra vine din Legea 153/2017, nu
+din anunțuri, iar datele sunt deja complete. Meseriile publicate din anunțuri —
+electrician, vânzător, casier — nu apar în primele 25. `programator` are ~120 de
+căutări lunare pe toate variantele; „salariu profesor debutant" singur are 590.
+Nu prioritiza după ce e ușor de colectat.
+
+**Catalogul de meserii are o singură sursă de adevăr: `src/lib/meserii.ts`.**
+Crawlerul citește `src/data/meserii-catalog.json`, generat din ea de
+`scripts/genereaza-catalog-meserii.mts` și verificat la fiecare `npm test`. Până
+pe 9 septembrie 2026 citea dintr-un backup înghețat cu 132 de meserii, deci
+meseriile adăugate nu se recunoșteau niciodată în anunțuri.
+
+**O grilă legală descrie un fel de angajator, nu o meserie.** Anexa III
+salarizează filarmonicile și teatrele de stat; cine caută „salariu muzician" e
+freelancerul. Steagul `doarSectiune` din `src/lib/grile-publice.ts` arată grila ca
+secțiune, cu domeniul ei, fără s-o lase să devină cifra paginii. Verifică
+întotdeauna dacă meseria e practicată majoritar la stat înainte de a lega o grilă
+ca reper principal.
+
+**Grefier: rândurile există în lege, extragerea nu le prinde.** Tabelul din Anexa V
+are și coloană de lei, și una de coeficienți, iar `grila()` din
+`scripts/lege153-grile.mjs` îl respinge. Re-extragerea pe text proaspăt dă exact
+aceleași 2.100 de rânduri — nu e cache vechi. Nereparat: modificarea atinge toate
+anexele și cere diff complet înainte de acceptare. Textul legii e în
+`research/lege153-consolidat.html`.
+
 **Surse de anunțuri.** Active: OLX, eJobs, BestJobs, Publi24, Anuntul.ro, hipo.ro,
 undelucram.ro (ultima permisă explicit de proprietar pe 8 septembrie 2026).
 Verificate și respinse cu motiv, nu din lipsă de timp: `posturi.gov.ro` — paginile

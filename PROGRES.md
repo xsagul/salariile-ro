@@ -1,6 +1,6 @@
 # Progres salariile.ro
 
-Ultima actualizare: 8 septembrie 2026
+Ultima actualizare: 9 septembrie 2026
 
 ## Sesiunea a treia, 24 august 2026 — doua surse INS pe care le aruncam
 
@@ -2156,3 +2156,73 @@ n-ar avea nicio sursă în spate. `convergentaPiloni` arată dacă reperele cad 
 nu cad, divergența e afișată ca informație: dacă ofertele sunt sub statistică, postul se
 scoate la angajare mai jos decât câștigă cine e deja acolo.
 
+## 8–9 septembrie 2026 — Cererea de căutare e la bugetari, nu unde colectam; catalog cu o singură sursă de adevăr
+
+Status: comis, nedat push la cererea proprietarului până se termină colectarea.
+
+### Ce au arătat datele SEO
+
+Două fișiere trase din SE Ranking înainte să expire abonamentul au răsturnat
+prioritățile. **Cincisprezece din primele douăzeci și cinci de clustere de căutare
+sunt sector public** — asistent medical 1.890, profesor 1.690, polițist 1.310 —
+adică ~69% din volum. Acolo salariul vine din Legea 153/2017, nu din anunțuri.
+
+Cele nouă meserii publicate din anunțuri — electrician, vânzător, casier — **nu
+apar deloc în primele douăzeci și cinci**. Iar `programator`, pentru care s-a
+consumat multă îngrijorare, are ~120 de căutări lunare pe toate variantele;
+„salariu profesor debutant" singur are 590.
+
+Concluzia durabilă: **volumul de crawl nu e proporțional cu cererea**. Anunțurile
+servesc minoritatea căutărilor. Nu înseamnă că pilonul 1 e inutil — e singura
+sursă proprie — dar prioritizarea trebuie citită din cerere, nu din ce e ușor de
+colectat.
+
+### Ce s-a adăugat
+
+Șase meserii care lipseau: grefier, jandarm, registrator medical, șofer
+ridesharing, administrator de bloc, economist. Plus aliasul pentru „agent de
+securitate", care exista în catalog dar nu se potrivea din cauza prepoziției.
+Acoperire: 34 din 34 de meserii din ambele fișiere, zero volum neservit.
+
+### Bug care ar fi anulat jumătate din muncă
+
+Clasificatorul crawlerului citea din `backup-baseline-132-meserii-2026-09-06.json`,
+un fișier înghețat. Meseriile noi n-ar fi fost recunoscute niciodată în anunțuri.
+Catalogul se generează acum din `src/lib/meserii.ts` prin
+`scripts/genereaza-catalog-meserii.mts`, iar `npm test` cade dacă a rămas în urmă.
+
+### Grilă ca secțiune, nu ca titlu
+
+O grilă legală descrie **un fel de angajator, nu o meserie**. Anexa III
+salarizează filarmonicile de stat; cine caută „salariu muzician" e freelancerul.
+Steagul `doarSectiune` din `grile-publice.ts` arată grila în pagină, cu domeniul
+ei, fără s-o lase să devină cifra paginii. Muzicianul îl folosește; șofer
+ambulanță nu, fiind majoritar public.
+
+### Grefier — diagnosticat, nereparat
+
+Rândurile există în lege: „Grefier șef serviciu, M, 7.019 lei". Tabelul din Anexa
+V are și coloană de lei, și una de coeficienți, iar `grila()` din
+`scripts/lege153-grile.mjs` nu-l prinde. **Re-extragerea pe textul proaspăt
+descărcat dă exact aceleași 2.100 de rânduri**, deci nu e cache vechi. Nereparat
+deliberat: o modificare în `grila()` atinge toate cele opt anexe, iar 900 de
+căutări lunare nu justifică riscul fără un diff complet înainte de acceptare.
+Textul legii e acum în `research/lege153-consolidat.html` pentru cine reia.
+
+### SEO pe paginile existente, nu pagini noi
+
+Nouă formulări pentru „profesor" sunt un singur intent; pagini separate s-ar
+canibaliza. FAQ-ul întreba „Ce salariu este documentat pentru această meserie?",
+formulare pe care n-o caută nimeni. Acum întreabă ce se tastează și răspunde cu
+cifra treptei. Descrierile pornesc de la întrebare și dau un interval, nu un
+răspuns care închide clickul. Titlurile rămân neatinse — schimbarea a 138 deodată
+ar face imposibilă atribuirea oricărei mișcări de poziție.
+
+Treptele grilei apar acum imediat sub cifră, iar legăturile către alte meserii se
+ordonează după grupa de ocupații și activitate, nu după poziția în categorie.
+
+### Colectare
+
+24.213 pagini citite, 3.036 acceptate, 89 din 138 de meserii atinse. OLX aproape
+complet; eJobs și publi24 limitate de gazdă. Parserul de listare eJobs, validat
+34/34, aduce ~12 observații la o cerere în loc de 0,35.
