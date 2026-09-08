@@ -108,11 +108,13 @@ async function ejobsInventory(){
       let total=null;
       for(let page=1;page<=EJOBS_MAX_PAGES;page++){
         const url=page===1?facet:`${facet}/pagina${page}`;
-        if(entry.maps.includes(url))continue;
+        // O pagina deja parcursa se reciteste din cache, gratuit. Sarind-o, prima
+        // pagina a fiecarei fatete nu s-ar mai deschide niciodata dupa prima runda,
+        // deci sub-fatetele nu s-ar mai descoperi si coada ar ramane goala.
         const doc=await fetchPage(url,evidenceDir);
         const $=cheerio.load(doc.html);
         const hrefs=$('a[href]').toArray().map(e=>$(e).attr('href')).filter(Boolean);
-        entry.maps.push(url);
+        if(!entry.maps.includes(url))entry.maps.push(url);
         if(page===1){
           total=Number($.text().match(/([\d.]+)\s*locuri de munca/)?.[1]?.replaceAll('.',''))||null;
           // Se coboara pe fatete doar cand listarea trece de cat lasa robots sa paginam.
