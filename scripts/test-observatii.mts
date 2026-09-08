@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { agregheaza, incadreaza, PRAG_PUBLICARE, type ObservatieSalariala } from '../src/lib/observatii-salariale';
 import { MESERII, dateMeserieSauEroare, COMPARATII } from '../src/lib/meserii';
-import { reperMeserie, textReper } from '../src/lib/repere-meserii';
+import { reperMeserie, textReper, piloniMeserie, convergentaPiloni } from '../src/lib/repere-meserii';
 import { indicatorMeserie } from '../src/lib/indicator-meserie';
 import cor from '../src/data/cor-meserii.json';
 import reports from '../src/data/repere-piata-verificate.json';
@@ -35,12 +35,34 @@ for(const m of MESERII) {
  if(r.kind==='sector-context'){assert.ok(r.value && r.value>0);assert.equal(indicatorMeserie(r).value,r.value);}
  if(r.kind==='public-grid')assert.equal(indicatorMeserie(r).value,r.value);
  if(r.kind==='external-reported')assert.equal(indicatorMeserie(r).value,r.value);
+ if(r.kind==='external-advertised'){
+  // Colectarea proprie conduce doar cand a trecut toate pragurile, cu n si limite afisate.
+  assert.ok(r.n && r.n>0,`${m.slug}: reperul din anunturi are nevoie de n`);
+  assert.equal(indicatorMeserie(r).metric,'advertised',m.slug);
+  assert.ok(/limitele posibile ale medianei/.test(r.note),`${m.slug}: nota trebuie sa arate limitele medianei`);
+  assert.ok(r.url.includes('/salarii/acoperire'),m.slug);
+ }
  const val = indicatorMeserie(r).value;
  assert.ok(val !== null && val > 0);
 }
 assert.equal(reperMeserie(dateMeserieSauEroare(MESERII.find(x=>x.slug==='contabil')!)).value,reports.records.find(x=>x.slug==='contabil')!.net);
 assert.equal(reperMeserie(dateMeserieSauEroare(MESERII.find(x=>x.slug==='cercetator')!)).kind,'sector-context');
 assert.equal(reperMeserie(dateMeserieSauEroare(MESERII.find(x=>x.slug==='constructor')!)).kind,'sector-context');
+// Cei trei piloni raman separati: populatii si concepte diferite, deci nicio cifra unica.
+for(const m of MESERII){
+ const p=piloniMeserie(dateMeserieSauEroare(m));
+ assert.equal(p.length,3,m.slug);
+ assert.deepEqual(p.map(x=>x.cheie),['anunturi','declarat','oficial'],m.slug);
+ assert.equal(new Set(p.map(x=>x.concept)).size,3,`${m.slug}: fiecare pilon masoara altceva`);
+ for(const x of p){
+  assert.ok(x.titlu && x.sursa && x.nota && x.url,`${m.slug}/${x.cheie}`);
+  assert.ok(x.valoare===null || x.valoare>0,`${m.slug}/${x.cheie}`);
+  assert.ok(x.interval===null || x.interval.max>=x.interval.min,`${m.slug}/${x.cheie}`);
+  if(x.cheie==='anunturi') assert.ok(x.valoare===null || x.stare==='publicat','o cifra centrala din anunturi apare doar peste praguri');
+ }
+ const c=convergentaPiloni(p);
+ if(c){assert.ok(c.max>=c.min);assert.ok(c.puncte.length>=2);assert.ok(!('valoare' in c),'convergenta nu produce o cifra unica');}
+}
 assert.equal(cor.occupations.zugrav.code,'713102');assert.equal(cor.occupations.contabil.code,'331302');
 for(const c of COMPARATII)assert.notEqual(c.a.slug,c.b.slug);
 console.log(`OK: mapări COR, ${MESERII.length} repere și 37 comparații; cohorte, deduplicare, medie/mediană și quartile.`,counts);

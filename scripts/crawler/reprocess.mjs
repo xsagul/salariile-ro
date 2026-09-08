@@ -8,7 +8,6 @@ if(!run || !/^[\w-]+$/.test(run))throw new Error('Use --run=<id>');
 const root=`.cercetare-privata/crawl-runs/${run}`;
 const state=JSON.parse(fs.readFileSync(`${root}/state.json`,'utf8'));
 const cache='.cercetare-privata/crawl-runs/verified-2026-09-07/evidence';
-const completeDetails=process.argv.includes('--complete-details');
 const preview=process.argv.includes('--preview');
 if (!preview && !state.collectionStoppedAt) throw new Error('Stop the collector and record collectionStoppedAt before replacing its state; use --preview for a separate report.');
 let changed=0;
@@ -19,11 +18,6 @@ for(const [source,entry] of Object.entries(state.sources)) {
     let page=null;
     if(old?.evidence?.file && fs.existsSync(old.evidence.file)) page={...old.evidence,evidenceFile:old.evidence.file,html:fs.readFileSync(old.evidence.file,'utf8'),url};
     else if(fs.existsSync(metaFile)) {const meta=JSON.parse(fs.readFileSync(metaFile,'utf8'));if(fs.existsSync(meta.evidenceFile))page={...meta,html:fs.readFileSync(meta.evidenceFile,'utf8')};}
-    if(!page && completeDetails && entry.embedded?.[url]) {
-      const e=entry.embedded[url];
-      const pre=assess({...e.record,listedAt:e.listedAt,fx:state.fx},e.evidence,new Date(e.evidence.retrievedAt));
-      if(pre.accepted)try{page=await fetchPage(url,cache);}catch(error){entry.events.push({url,stage:'complete_detail',error:error.message});if(/host_paused/.test(error.message))break;}
-    }
     if(!page)continue;
     if(hash(page.html)!==page.sha256)throw new Error(`Evidence changed: ${url}`);
     const raw=detailRecord(page,source);

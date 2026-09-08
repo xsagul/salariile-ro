@@ -26,10 +26,19 @@ export default function IndicatorSalariu({ reper: r }: { reper: ReperMeserie }) 
           <p className="mt-1">{a.n} anunțuri eligibile după deduplicare · {a.employers} angajatori identificați · {a.counties} județe identificate.</p>
           <p className="mt-1 text-xs text-stone-600">{Object.entries(a.sourceCounts).map(([source,n]) => `${source}: ${n}`).join(' · ')}</p>
           <p className="mt-1 text-xs text-stone-600">{a.explicitMonthly} cu perioadă lunară explicită; {a.assumedMonthly} cu perioadă lunară presupusă pentru normă întreagă. Conversiile din brut și euro sunt documentate în registru.</p>
+          {a.basisFromDocument !== undefined && a.basisFromDocument > 0 && <p className="mt-1 text-xs text-stone-600">{a.basisNearAmount} au „net” sau „brut” scris lângă sumă; la {a.basisFromDocument} baza este declarată în altă parte a aceluiași anunț.</p>}
           {a.midpointEstimate !== null && a.midpointEstimate !== undefined && <p className="mt-2">Reper central estimat al ofertelor: <strong>{Math.round(a.midpointEstimate/100)*100} lei net / lună</strong>. Calculat ca mediană a mijloacelor intervalelor oferite.</p>}
-          {a.medianBounds ? <p className="mt-2">Limitele medianei ofertelor: <strong>{a.medianBounds.min.toLocaleString('ro-RO')}–{a.medianBounds.max.toLocaleString('ro-RO')} lei net / lună</strong>. Intervalele oferite nu permit determinarea unei mediane exacte.</p>
-            : <p className="mt-2">Acoperirea este insuficientă pentru a publica mediana ofertelor acestei meserii.</p>}
+          {a.medianBounds ? <p className="mt-2">Limitele medianei ofertelor: <strong>{Math.round(a.medianBounds.min).toLocaleString('ro-RO')}–{Math.round(a.medianBounds.max).toLocaleString('ro-RO')} lei net / lună</strong>. Intervalele oferite nu permit determinarea unei mediane exacte.</p>
+            : <>
+              <p className="mt-2">Acoperirea este insuficientă pentru a publica mediana ofertelor acestei meserii.</p>
+              {a.observedRange && <p className="mt-1">Intervalul observat în cele {a.n} anunțuri: <strong>{a.observedRange.min.toLocaleString('ro-RO')}–{a.observedRange.max.toLocaleString('ro-RO')} lei net / lună</strong>. Sunt capetele a ce am găsit, nu o mediană și nu o estimare a pieței.</p>}
+            </>}
         </> : <p className="mt-1">Nu avem încă anunțuri care să îndeplinească toate criteriile de verificare pentru această meserie.</p>}
+        {!!a?.undeclaredBasis?.n && a.undeclaredBasis.observedRange && <p className="mt-2 text-xs leading-relaxed text-stone-600">
+          Separat: {a.undeclaredBasis.n} anunțuri dau o sumă fără să spună dacă e netă sau brută
+          ({a.undeclaredBasis.observedRange.min.toLocaleString('ro-RO')}–{a.undeclaredBasis.observedRange.max.toLocaleString('ro-RO')} lei / lună, așa cum sunt scrise).
+          Nu presupunem netul și nu le adunăm la cifra de mai sus, pentru că 3.600 lei brut și 3.600 lei net nu sunt același salariu.
+        </p>}
         <p className="mt-2 text-xs leading-relaxed text-stone-600">Anunțurile nu formează un eșantion reprezentativ al tuturor angajaților. Mai multe platforme pot conține aceeași ofertă. Mediana este valoarea din mijlocul unei distribuții; nu este neapărat salariul cel mai frecvent.</p>
         <Link className="mt-2 inline-flex min-h-11 items-center underline underline-offset-2" href="/salarii/acoperire">Vezi acoperirea fiecărei meserii și criteriile de publicare</Link>
       </div>

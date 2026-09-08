@@ -1,5 +1,5 @@
 import fs from 'node:fs';
-import { normalizeText as clean } from './policy.mjs';
+import { normalizeText as clean, editDistance } from './policy.mjs';
 // Names only. Never use baseline salaries as observations or calibration targets.
 export const catalog = JSON.parse(fs.readFileSync('src/data/cor-meserii.json', 'utf8')).occupations;
 const names = JSON.parse(fs.readFileSync('src/data/backup-baseline-132-meserii-2026-09-06.json', 'utf8')).map(({ slug, nume }) => ({ slug, nume }));
@@ -61,18 +61,42 @@ const aliases = {
 };
 export function queriesFor(job) { return [...new Set([clean(job.nume), ...(aliases[job.slug] || []).slice(0, 2)])]; }
 const rules = names.flatMap(job => [clean(job.nume),clean(job.slug),...(aliases[job.slug] || [])].map(term => ({ slug: job.slug, term: clean(term) })));
-function matches(text, term) { return (` ${text} `).includes(` ${term} `); }
-export function classifyTitle(title) {
-  const text = clean(title);
-  if (/\b(caut loc de munca|caut un loc de munca|caut de lucru|caut angajare|caut colaborare|ofer servicii|prestam servicii|meditatii|inchiriez post|inchiriez camera)\b/.test(text)) return {slug:null,reason:'jobseeker_or_services_ad'};
+const exclusions = [
+  [/\b(caut loc de munca|caut un loc de munca|caut de lucru|caut angajare|caut colaborare|ofer servicii|prestam servicii|meditatii|inchiriez post|inchiriez camera)\b/, 'jobseeker_or_services_ad'],
   // Assistant roles outside the catalogue must never inherit the senior occupation.
-  if (/\b(ajutor|ajutoare|ajutoarelor|ucenic|ucenici)\b/.test(text)) return { slug: null, reason: 'assistant_or_mixed_role' };
-  if (/\b(asistent veterinar|asistent stomatolog|secretar notarial)\b/.test(text)) return { slug: null, reason: 'different_role' };
-  if (/\b(programator|programatori)\b/.test(text) && /\b(plc|roboti|robot|injectie|masini)\b/.test(text) && !/\bcnc\b/.test(text)) return { slug:null,reason:'different_role' };
+  [/\b(ajutor|ajutoare|ajutoarelor|ucenic|ucenici)\b/, 'assistant_or_mixed_role'],
+  [/\b(asistent veterinar|asistent stomatolog|secretar notarial)\b/, 'different_role'],
+];
+function matches(text, term) { return (` ${text} `).includes(` ${term} `); }
+/** Romanian plural and inflection endings that must not hide a catalogue term. */
+const stem = word => word.length >= 7 ? word.replace(/(uri|ilor|elor|ului|ele|ile|ii|i|e|a)$/, '') : word;
+/** Misspellings are common in classifieds. Tolerance grows with term length only. */
+function fuzzyMatches(tokens, stems, term) {
+  const parts = term.split(' ');
+  if (parts.some(p => p.length < 7)) return false;
+  const budget = t => (t.length >= 11 ? 2 : 1);
+  if (parts.length === 1) return tokens.some((t, i) => editDistance(t, term, budget(term)) <= budget(term) || editDistance(stems[i], stem(term), budget(term)) <= budget(term));
+  return tokens.some((_, i) => parts.every((p, k) => i + k < tokens.length && editDistance(tokens[i + k], p, budget(p)) <= budget(p)));
+}
+/**
+ * Every catalogue occupation named in the title. A single advert may hire for
+ * several trades at once; each one is a separate observation, never a discard.
+ */
+export function classifyAll(title) {
+  const text = clean(title);
+  for (const [pattern, reason] of exclusions) if (pattern.test(text)) return { slugs: [], reason };
+  if (/\b(programator|programatori)\b/.test(text) && /\b(plc|roboti|robot|injectie|masini)\b/.test(text) && !/\bcnc\b/.test(text)) return { slugs: [], reason: 'different_role' };
+  const tokens = text.split(' ').filter(Boolean), stems = tokens.map(stem);
   let hits = rules.filter(r => matches(text, r.term));
+  let how = 'title_match';
+  if (!hits.length) { hits = rules.filter(r => fuzzyMatches(tokens, stems, r.term)); how = 'title_fuzzy_match'; }
   // Specific title wins over contained generic words: CNC/programator, medic veterinar/medic.
   hits = hits.filter(r => !hits.some(s => s.slug !== r.slug && s.term.length > r.term.length && matches(s.term, r.term)));
   const slugs = [...new Set(hits.map(r => r.slug))];
-  if (slugs.length !== 1) return { slug: null, reason: slugs.length ? 'ambiguous_occupation' : 'unknown_occupation' };
-  return { slug: slugs[0], reason: 'title_match' };
+  return { slugs, reason: slugs.length ? how : 'unknown_occupation' };
+}
+/** Single-occupation view, for inventory filtering and for adverts about one job. */
+export function classifyTitle(title) {
+  const { slugs, reason } = classifyAll(title);
+  return { slug: slugs.length === 1 ? slugs[0] : null, slugs, reason: slugs.length > 1 ? 'ambiguous_occupation' : reason };
 }

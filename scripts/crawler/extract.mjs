@@ -1,5 +1,5 @@
 import * as cheerio from 'cheerio';
-import { classifyTitle } from './occupations.mjs';
+import { classifyTitle, classifyAll } from './occupations.mjs';
 import { POLICY, normalizeText, canonicalUrl } from './policy.mjs';
 import { hash } from './http.mjs';
 import { calculStandard } from '../../src/lib/fiscal.ts';
@@ -26,11 +26,15 @@ export function structuredJobs($) {
   return out;
 }
 export function olxRecord(it) {
+  // OLX stores a single declared amount as from = to - 1; that is one figure, not a range.
+  const s = it.salary && Number(it.salary.from) > 0
+    ? { ...it.salary, to: Number(it.salary.to) - Number(it.salary.from) === 1 ? Number(it.salary.from) : it.salary.to }
+    : it.salary;
   return { title: it.title, description: plain(it.description), url: it.url, employer: it.user?.company_name || it.employer?.companyName || (it.isBusiness ? it.user?.name : null),
     employerId: it.user?.id ? `olx:${it.user.id}` : null, city: it.location?.cityName || it.location?.city?.name, county: it.location?.regionName || it.location?.region?.name,
     country: (it.location?.regionName || it.location?.region?.name) ? 'RO' : null, date: it.createdTime || it.createdAt, expires: it.validToTime || it.validTo,
     active: it.isActive ?? it.status === 'active', contract: it.params?.find(p => p.key === 'type')?.normalizedValue || it.params?.find(p => p.key === 'type')?.value?.key,
-    salary: it.salary, source: 'olx' };
+    salary: s, source: 'olx' };
 }
 export function detailRecord(page, source) {
   const $ = cheerio.load(page.html);
@@ -64,51 +68,174 @@ export function detailRecord(page, source) {
   return { title: plain(j.title), description: plain(j.description), url: page.url, source, employer: j.hiringOrganization?.name,
     employerId: j.hiringOrganization?.sameAs || null,
     city: locations.map(l => l.addressLocality).join('; '), county: locations.length === 1 ? locations[0].addressRegion : null,
-    country: locations.length && locations.every(l => ['RO','Romania','România'].includes(l.addressCountry?.name || l.addressCountry)) ? 'RO' : null,
+    // Some publishers put the country code in addressRegion and omit addressCountry.
+    country: locations.length && locations.every(l => ['RO','Romania','România'].includes(l.addressCountry?.name || l.addressCountry) || l.addressRegion === 'RO') ? 'RO' : null,
     contract: [j.employmentType].flat().length === 1 ? [j.employmentType].flat()[0] : null, date: j.datePosted, expires: j.validThrough,
     salaryText, salary: j.baseSalary ? { from: j.baseSalary.value?.minValue || j.baseSalary.value?.value, to: j.baseSalary.value?.maxValue || j.baseSalary.value?.value, currencyCode: j.baseSalary.currency, period: j.baseSalary.value?.unitText } : null };
 }
 const amount = '(?:\\d{1,3}(?:[ .]\\d{3})+|\\d{3,6})';
-const salaryPattern = new RegExp(`(${amount})(?:\\s*(?:[-–—]|si|și)\\s*(${amount}))?\\s*(lei|ron|eur|euro|€)`, 'gi');
+const salaryPattern = new RegExp(`(${amount})(?:\\s*(?:[-–—]|si|și|la)\\s*(${amount}))?\\s*(lei|ron|eur|euro|€)`, 'gi');
 const number = s => Number(s.replace(/[ .]/g, ''));
-export function extractSalary(r) {
-  // Local salary evidence only; benefits elsewhere do not become salary.
-  const segments = (r.description || '').split(/[\n;!]/).flatMap(s => s.match(/[^.]+(?:\.(?=\d{3})[^.]+)*/g) || []);
-  const candidates = [];
+// An advert names pay in many ways. "In mana" and "in cont" are the everyday
+// Romanian for take-home pay and count as an explicit net basis.
+const STRONG_PAY = /salari|remunerat|salariz|leafa|in mana|pe mana|in cont/;
+const WEAK_PAY = /venit|castig|plata|platim|oferim|se ofera|se acorda/;
+// Formele flexionate sunt curente in anunturi: „salariul net", „salarii nete", „plata neta".
+const NET_WORDS = /\bnet(a|e|ul|ului|ele|elor)?\b|in mana|pe mana|in cont/;
+const BENEFIT_BEFORE = /tichet|bilet|bon |bonuri|bonus|prima|prime|premi|bacsis|tips|comision|diurna|spor|cazare|transport|abonament|asigurare|concediu|recomand|vechime/;
+const PACKAGE_CONTEXT = /pachet|include|inclusiv|total/;
+const NON_MONTHLY = /\b(pe ora|ora net|net ora|pe zi|zi net|net zi|orar|zilnic|saptamanal|pe saptamana|pe an|anual)\b/;
+const OPEN_ENDED = /\b(de la|incepe|porneste|pana la|maximum|minim)\b/;
+const GROSS_WORDS = /\bbrut(a|e|ul|ului|ele|elor)?\b/;
+/** The qualifier nearest the figure wins: "brut 5000 lei ... net 2981" is gross then net. */
+function nearestBasis(before, after) {
+  const b = normalizeText(before), a = normalizeText(after);
+  const back = re => { let last = -1; for (const m of b.matchAll(new RegExp(re.source, 'g'))) last = m.index + m[0].length; return last < 0 ? Infinity : b.length - last; };
+  const forward = re => { const m = a.match(re); return m ? m.index : Infinity; };
+  const scores = [['net', Math.min(back(NET_WORDS), forward(NET_WORDS))], ['brut', Math.min(back(GROSS_WORDS), forward(GROSS_WORDS))]];
+  const [name, distance] = scores.sort((x, y) => x[1] - y[1])[0];
+  return Number.isFinite(distance) ? name : null;
+}
+
+/** Every distinct pay figure the advert states, with the evidence around it. */
+export function extractSalaryCandidates(r) {
+  const title = r.title || '', description = r.description || '';
+  const document = normalizeText(`${title} ${description}`);
+  const packaged = /pachet salarial|pachet de beneficii|pachet complet/.test(document);
+  // Titles carry the figure often enough that skipping them loses real adverts.
+  const segments = [title, ...description.split(/[\n;!]/).flatMap(s => s.match(/[^.]+(?:\.(?=\d{3})[^.]+)*/g) || [])];
+  const candidates = [], excluded = [];
   for (const segment of segments) {
-    for (const m of segment.matchAll(salaryPattern)) {
-      const before = segment.slice(Math.max(0, m.index - 70), m.index);
-      const after = segment.slice(m.index + m[0].length, m.index + m[0].length + 45);
+    const found = [...segment.matchAll(salaryPattern)];
+    let payInSegment = false;
+    for (const [i, m] of found.entries()) {
+      const end = m.index + m[0].length;
+      // Context stops at the neighbouring figure, so "brut ... net" stays two figures.
+      const start = Math.max(0, i ? found[i - 1].index + found[i - 1][0].length : 0, m.index - 70);
+      const before = segment.slice(start, m.index);
+      const after = segment.slice(end, Math.min(i + 1 < found.length ? found[i + 1].index : segment.length, end + 45));
       const context = before + m[0] + after.split(/\+|\bplus\b|\bsi bonuri\b|\bși bonuri\b/i)[0];
-      if (!m[2] && /\b(de la|incepe|porneste|pana la|maximum|minim)\b/.test(normalizeText(context))) continue;
-      if (!/salariu|salarial|remunerat/i.test(context)) continue;
-      if (/tichet|bilet|concediu|recomand|prima|prime|bonus/i.test(normalizeText(before)) || /pachet|include|inclusiv|total/i.test(normalizeText(context))) continue;
-      const basis = /\bnet\b/i.test(context) ? 'net' : /\bbrut\b/i.test(context) ? 'brut' : null;
-      candidates.push({ min: number(m[1]), max: number(m[2] || m[1]), basis, currency: /lei|ron/i.test(m[3]) ? 'RON' : 'EUR', snippet: context.trim(), monthly: /(?:pe\s+|\/)?lun[aă]|lunar/i.test(context), explicitFixed: /fix|baza|garantat/i.test(normalizeText(context)) });
+      const flat = normalizeText(context), flatBefore = normalizeText(before);
+      const drop = reason => excluded.push({ min: number(m[1]), max: number(m[2] || m[1]), currency: /lei|ron/i.test(m[3]) ? 'RON' : 'EUR', reason });
+      if (!m[2] && OPEN_ENDED.test(flat)) { drop('open_ended'); continue; }
+      const strong = STRONG_PAY.test(flat);
+      // "Salariu brut X, adica net Y": the second figure inherits the pay framing of
+      // the sentence, but only when it carries a basis word of its own.
+      const inherits = payInSegment && (NET_WORDS.test(flat) || GROSS_WORDS.test(flat));
+      if (!strong && !inherits && !WEAK_PAY.test(flat)) { drop('not_pay_context'); continue; }
+      // A package framing turns a bare "venit" figure into the package, not the base pay.
+      if (packaged && !strong && !inherits) { drop('package_framing'); continue; }
+      if (BENEFIT_BEFORE.test(flatBefore) || PACKAGE_CONTEXT.test(flat)) { drop('benefit_or_package'); continue; }
+      if (NON_MONTHLY.test(flat)) { drop('non_monthly_unit'); continue; }
+      const localBasis = nearestBasis(before, after);
+      candidates.push({ min: number(m[1]), max: number(m[2] || m[1]),
+        basis: localBasis, basisEvidence: localBasis ? 'local' : null,
+        currency: /lei|ron/i.test(m[3]) ? 'RON' : 'EUR', snippet: context.trim(),
+        monthly: /lunar|pe luna|\/ ?luna|\bluna\b/.test(flat), explicitFixed: /fix|baza|garantat/.test(flat),
+        roleSlugs: classifyAll(segment).slugs, evidenceKind: 'description_text' });
+      payInSegment = true;
     }
   }
   if (r.salaryText && /\bRON\b|\bEUR\b|€|euro/i.test(r.salaryText)) {
-    const nums = r.salaryText.match(new RegExp(amount,'g'));
-    if (nums?.length && nums.length <= 2) candidates.unshift({ min: number(nums[0]), max: number(nums[1] || nums[0]), basis: /\bnet\b/i.test(r.salaryText) ? 'net' : /\bbrut\b/i.test(r.salaryText) ? 'brut' : null, currency: /\bRON\b/i.test(r.salaryText) ? 'RON' : 'EUR', snippet: r.salaryText, monthly: /lun[aă]/i.test(r.salaryText) || r.source === 'ejobs', explicitFixed: false });
+    const nums = r.salaryText.match(new RegExp(amount, 'g'));
+    const flat = normalizeText(r.salaryText);
+    if (nums?.length && nums.length <= 2 && !NON_MONTHLY.test(flat)) candidates.unshift({ min: number(nums[0]), max: number(nums[1] || nums[0]),
+      basis: NET_WORDS.test(flat) ? 'net' : GROSS_WORDS.test(flat) ? 'brut' : null,
+      currency: /\bRON\b/i.test(r.salaryText) ? 'RON' : 'EUR', snippet: r.salaryText,
+      monthly: /lun[aă]/i.test(r.salaryText) || r.source === 'ejobs', explicitFixed: false,
+      roleSlugs: [], evidenceKind: 'salary_field' });
   }
+  // Figures the wording rules out. A portal field must never resurrect them.
+  candidates.excluded = excluded;
+  return candidates;
+}
+/**
+ * Cand suma nu are calificativ langa ea, dar anuntul spune o singura data „net”
+ * sau o singura data „brut”, aceea este baza declarata a anuntului. Este dovada
+ * din text, nu o presupunere: daca apar amandoua, ramane nedeclarata.
+ */
+function documentBasis(text) {
+  const net = NET_WORDS.test(text), gross = GROSS_WORDS.test(text);
+  return net && !gross ? 'net' : gross && !net ? 'brut' : null;
+}
+/** Two figures for one job when the net is the standard conversion of the gross. */
+function grossNetPair(a, b) {
+  const gross = a.basis === 'brut' ? a : b, net = a.basis === 'net' ? a : b;
+  if (gross.basis !== 'brut' || net.basis !== 'net' || gross.currency !== net.currency) return null;
+  const converted = calculStandard(gross.min)?.net;
+  if (!(converted > 0) || Math.abs(converted - net.min) / net.min > 0.03) return null;
+  return { ...net, pairedGross: { min: gross.min, max: gross.max }, snippet: `${net.snippet} · ${gross.snippet}` };
+}
+const key = c => `${c.min}|${c.max}|${c.basis}|${c.currency}`;
+/**
+ * One figure for the advert, or a reason it cannot be reduced to one.
+ * The structured pay field of a portal is primary evidence, not merely a veto.
+ */
+export function resolveSalary(r, candidates = extractSalaryCandidates(r)) {
   const s = r.salary;
-  if (s && ['RON','EUR'].includes(s.currencyCode) && Number(s.from) > 0 && Number(s.to) > 0) {
-    const matching = candidates.filter(c => c.min === Number(s.from) && c.max === Number(s.to) && c.basis && c.currency === s.currencyCode);
-    // Structured interval plus matching explicit net/brut evidence in the description.
-    if (matching.length) return { ...matching[0], monthly: matching[0].monthly || normalizeText(s.period || '') === 'month' || r.source === 'ejobs' };
+  const wholeAd = normalizeText(`${r.title || ''} ${r.description || ''} ${r.salaryText || ''}`);
+  const fallback = documentBasis(wholeAd);
+  if (fallback) for (const c of candidates) if (!c.basis) { c.basis = fallback; c.basisEvidence = 'document'; }
+  const structured = s && ['RON','EUR'].includes(s.currencyCode) && Number(s.from) > 0 && Number(s.to) >= Number(s.from)
+    ? { min: Number(s.from), max: Number(s.to), currency: s.currencyCode, period: normalizeText(s.period || '') } : null;
+  const document = normalizeText(`${r.title || ''} ${r.description || ''}`);
+  if (structured) {
+    const matching = candidates.filter(c => c.min === structured.min && c.max === structured.max && c.currency === structured.currency);
+    if (matching.length) {
+      const best = matching.find(c => c.basis) || matching[0];
+      return { salary: { ...best, monthly: best.monthly || structured.period === 'month' || r.source === 'ejobs', evidenceKind: 'structured_field_and_text' } };
+    }
+    // A portal figure that the wording contradicts is a conflict, never a silent override.
+    if (candidates.length) return { error: 'salary_conflict' };
+    // The wording already ruled this figure out as a benefit, a package or the wrong unit.
+    if ((candidates.excluded || []).some(x => x.min === structured.min && x.currency === structured.currency)) return { error: 'salary_evidence_incomplete' };
+    const declared = documentBasis(document);
+    return { salary: { ...structured, basis: declared, basisEvidence: declared ? 'document' : null,
+      snippet: `câmp structurat ${r.source}: ${structured.min}${structured.max !== structured.min ? `–${structured.max}` : ''} ${structured.currency}`,
+      monthly: structured.period === 'month', explicitFixed: false, roleSlugs: [], evidenceKind: 'structured_field' } };
   }
-  const known = candidates.filter(c => c.basis);
-  const distinct = [...new Set(known.map(c => `${c.min}|${c.max}|${c.basis}|${c.currency}`))];
-  if (distinct.length !== 1) return null;
-  const selected = known[0];
-  // Incompatible structured amount/currency requires review, never a silent override.
-  if (s && (s.currencyCode !== selected.currency || Number(s.from) !== selected.min || Number(s.to) !== selected.max)) return null;
-  if (/\b(pe ora|ora net|net ora|pe zi|zi net|net zi|orar|zilnic|saptamanal|pe saptamana|pe an|anual)\b/.test(normalizeText(selected.snippet))) return null;
-  return selected;
+  const distinct = [...new Map(candidates.map(c => [key(c), c])).values()];
+  if (!distinct.length) return { error: 'salary_evidence_incomplete' };
+  if (distinct.length === 1) return { salary: distinct[0] };
+  if (distinct.length === 2) { const paired = grossNetPair(distinct[0], distinct[1]); if (paired) return { salary: paired }; }
+  return { error: 'multiple_unresolved_amounts', candidates: distinct };
+}
+/** Backwards-compatible single-value view. */
+export function extractSalary(r) { return resolveSalary(r).salary || null; }
+
+function salaryProblems(salary, r) {
+  const reasons = [];
+  if (salary.currency === 'EUR' && !(r.fx?.EURRON > 0 && r.fx?.date && r.fx?.source)) reasons.push('exchange_rate_missing');
+  // Preserve a separate, explicitly labelled cohort when a full-time advert states
+  // an amount but omits the pay period. Never count it as explicit monthly evidence.
+  if (!salary.monthly && !['full time','norma intreaga'].includes(normalizeText(r.contract || ''))) reasons.push('monthly_unconfirmed');
+  if (!(salary.min > 0 && salary.max >= salary.min && salary.max <= 100000)) reasons.push('invalid_amount');
+  if (salary.max / salary.min > 2) reasons.push('wide_range_review');
+  if (/\b(tips|bacsis|bonus|comision)\b/.test(normalizeText(salary.snippet)) && !salary.explicitFixed) reasons.push('base_salary_unclear');
+  return reasons;
+}
+function observation(r, evidence, salary, slug, date, extra) {
+  const url = canonicalUrl(r.url);
+  const employer = r.employer && !/confidential|anonim/i.test(r.employer) ? normalizeText(r.employer) : null;
+  const rate = salary.currency === 'EUR' ? r.fx.EURRON : 1;
+  // An undeclared basis is never guessed. It is carried as its own cohort.
+  const net = value => salary.basis === 'brut' ? calculStandard(Math.round(value * rate)).net : Math.round(value * rate);
+  return { id: hash(`${url}|${slug}`).slice(0, 24), adId: hash(url).slice(0, 24), url, source: r.source, slug,
+    title: r.title, min: net(salary.min), max: net(salary.max), originalSalary: salary, conversion: salary.currency === 'EUR' ? r.fx : null,
+    netConversion: salary.basis === 'brut' ? 'calculStandard; ipotezele standard din fiscal.ts' : null,
+    basis: salary.basis || 'nedeclarat', basisDeclared: !!salary.basis, basisEvidence: salary.basisEvidence || null, currency: 'RON', unit: 'month', concept: 'advertised_base',
+    periodEvidence: salary.monthly ? 'explicit_monthly' : 'assumed_monthly_full_time',
+    salaryEvidenceKind: salary.evidenceKind || 'description_text',
+    employer: r.employer || null, employerKey: employer || r.employerId || null, employerKnown: !!employer,
+    city: r.city || null, county: r.county || null, publishedAt: Number.isFinite(date) ? new Date(date).toISOString().slice(0,10) : null, dateKind: r.dateKind || 'published',
+    listedAt: r.listedAt || null, activityEvidence: r.active === true ? 'explicit_active_status' : r.expires ? 'valid_through' : 'current_source_inventory',
+    retrievedAt: evidence.retrievedAt, salaryEvidence: salary.snippet, salaryFieldEvidence: r.salaryText || null,
+    evidence: { sha256: evidence.sha256, file: evidence.evidenceFile },
+    descriptionHash: hash(normalizeText(r.description)), sources: [r.source], sourceUrls: [url], ...extra };
 }
 export function assess(r, evidence, now = new Date()) {
   const reasons = []; if (!r) return { accepted: false, reasons: ['unsupported_detail_schema'] };
-  const classification = classifyTitle(r.title || ''); if (!classification.slug) reasons.push(classification.reason);
+  const classification = classifyAll(r.title || ''); if (!classification.slugs.length) reasons.push(classification.reason);
   if (r.country !== 'RO') reasons.push('country_unconfirmed');
   const text = normalizeText(`${r.title} ${r.description}`);
   if (/\b(germania|olanda|belgia|austria|franta|anglia|italia|spania|strainatate|comunitate|diurna|videochat|mlm)\b/.test(text)) reasons.push('foreign_or_noncomparable_work');
@@ -116,37 +243,33 @@ export function assess(r, evidence, now = new Date()) {
   if (/\b(part time|pfa|srl propriu|contract de colaborare|colaborare b2b|exclusiv pe comision|doar comision)\b/.test(text)) reasons.push('contract_or_variable_income');
   const date = Date.parse(r.date);
   if (Number.isFinite(date) && date > now.getTime()+86400000) reasons.push('future_publication_date');
+  // An explicit staleness bound, so freshness is a rule and not a side effect of the inventory.
+  if (Number.isFinite(date) && now.getTime()-date > POLICY.maxAdAgeDays*86400000) reasons.push('ad_too_old');
   const listedAt = Date.parse(r.listedAt), retrieved = Date.parse(evidence?.retrievedAt);
   const activeEvidence = r.active === true || (r.expires && Date.parse(r.expires) >= now.getTime()) || (Number.isFinite(listedAt) && Math.abs(now.getTime()-listedAt) <= POLICY.snapshotWindowDays*86400000);
   if (!activeEvidence) reasons.push('active_status_unconfirmed');
   if (!Number.isFinite(retrieved) || Math.abs(now.getTime()-retrieved) > POLICY.snapshotWindowDays*86400000) reasons.push('snapshot_date_unconfirmed');
   if (r.active === false || (r.expires && Date.parse(r.expires) < now.getTime())) reasons.push('expired');
-  const salary = extractSalary(r);
-  if (!salary) reasons.push('salary_evidence_incomplete');
-  else {
-    if (salary.currency === 'EUR' && !(r.fx?.EURRON > 0 && r.fx?.date && r.fx?.source)) reasons.push('exchange_rate_missing');
-    // Preserve a separate, explicitly labelled cohort when a full-time ad states
-    // net/brut and currency but omits the pay period. Never count it as explicit monthly evidence.
-    if (!salary.monthly && !['full time','norma intreaga'].includes(normalizeText(r.contract || ''))) reasons.push('monthly_unconfirmed');
-    if (!(salary.min > 0 && salary.max >= salary.min && salary.max <= 100000)) reasons.push('invalid_amount');
-    if (salary.max / salary.min > 2) reasons.push('wide_range_review');
-    if (/\b(tips|bacsis|bonus|comision)\b/.test(normalizeText(salary.snippet)) && !salary.explicitFixed) reasons.push('base_salary_unclear');
-  }
   if (!evidence?.sha256 || !evidence.evidenceFile) reasons.push('evidence_missing');
-  if (reasons.length) return { accepted: false, reasons, slug: classification.slug, title: r.title, url: r.url, source: r.source };
-  const url = canonicalUrl(r.url);
-  const employer = r.employer && !/confidential|anonim/i.test(r.employer) ? normalizeText(r.employer) : null;
-  const rate = salary.currency === 'EUR' ? r.fx.EURRON : 1;
-  const net = value => salary.basis === 'brut' ? calculStandard(Math.round(value*rate)).net : Math.round(value*rate);
-  return { accepted: true, observation: { id: hash(url).slice(0,24), url, source: r.source, slug: classification.slug,
-    title: r.title, min: net(salary.min), max: net(salary.max), originalSalary: salary, conversion: salary.currency === 'EUR' ? r.fx : null,
-    netConversion: salary.basis === 'brut' ? 'calculStandard; ipotezele standard din fiscal.ts' : null,
-    basis: 'net', currency: 'RON', unit: 'month', concept: 'advertised_base',
-    periodEvidence: salary.monthly ? 'explicit_monthly' : 'assumed_monthly_full_time',
-    employer: r.employer || null, employerKey: employer || r.employerId || null, employerKnown: !!employer,
-    city: r.city || null, county: r.county || null, publishedAt: Number.isFinite(date) ? new Date(date).toISOString().slice(0,10) : null, dateKind: r.dateKind || 'published',
-    listedAt: r.listedAt || null, activityEvidence: r.active === true ? 'explicit_active_status' : r.expires ? 'valid_through' : 'current_source_inventory',
-    retrievedAt: evidence.retrievedAt, salaryEvidence: salary.snippet, salaryFieldEvidence:r.salaryText || null,
-    evidence: { sha256: evidence.sha256, file: evidence.evidenceFile },
-    descriptionHash: hash(normalizeText(r.description)), sources: [r.source], sourceUrls: [url] } };
+
+  const candidates = extractSalaryCandidates(r);
+  const resolved = resolveSalary(r, candidates);
+  // One advert may hire several trades. Attribute a figure to a trade only when the
+  // wording names them together; otherwise the single figure applies to each opening.
+  const perRole = classification.slugs.length > 1 && resolved.error === 'multiple_unresolved_amounts'
+    ? resolved.candidates.filter(c => c.roleSlugs.length === 1 && classification.slugs.includes(c.roleSlugs[0]))
+    : [];
+  const roleCovered = new Set(perRole.map(c => c.roleSlugs[0]));
+  const pairs = perRole.length && roleCovered.size === perRole.length
+    ? perRole.map(c => ({ slug: c.roleSlugs[0], salary: c }))
+    : resolved.salary ? classification.slugs.map(slug => ({ slug, salary: resolved.salary })) : [];
+
+  if (!pairs.length) reasons.push(resolved.error || 'salary_evidence_incomplete');
+  else for (const p of pairs) reasons.push(...salaryProblems(p.salary, r));
+  if (reasons.length) return { accepted: false, reasons: [...new Set(reasons)], slug: classification.slugs[0] || null, slugs: classification.slugs, title: r.title, url: r.url, source: r.source };
+
+  const sharedFigure = pairs.length > 1 && new Set(pairs.map(p => key(p.salary))).size === 1;
+  const observations = pairs.map(p => observation(r, evidence, p.salary, p.slug, date,
+    sharedFigure ? { figureSharedAcrossRoles: pairs.map(x => x.slug) } : {}));
+  return { accepted: true, observation: observations[0], observations };
 }

@@ -1,17 +1,20 @@
 import fs from 'node:fs';
-import { occupations, classifyTitle } from './occupations.mjs';
+import { occupations, classifyAll } from './occupations.mjs';
 import { POLICY } from './policy.mjs';
 import { deduplicate, summarize } from './aggregate.mjs';
+// Some portals percent-encode titles in a legacy charset; the raw segment still classifies.
+const safeDecode = s => { try { return decodeURIComponent(s); } catch { return s; } };
 
 export function titleFromUrl(url, source) {
-  const parts = new URL(url).pathname.split('/');
-  return decodeURIComponent(source === 'publi24' || source === 'ejobs' ? parts.at(-2) : parts.at(-1)).replaceAll('-', ' ');
+  const parts = new URL(url).pathname.split('/').filter(Boolean);
+  return safeDecode(['publi24','ejobs','undelucram'].includes(source) ? parts.at(-2) : parts.at(-1)).replaceAll('-', ' ');
 }
 export function exportRun(state, root) {
   const all = Object.values(state.results);
-  const observations = deduplicate(all.filter(r=>r.accepted).map(r=>r.observation));
+  // One advert hiring several trades yields one observation per trade.
+  const observations = deduplicate(all.filter(r=>r.accepted).flatMap(r=>r.observations || [r.observation]));
   const sourceInventory = Object.fromEntries(Object.entries(state.sources).map(([source,s])=> {
-    const candidates = s.urls.filter(url=>classifyTitle(titleFromUrl(url,source)).slug);
+    const candidates = s.urls.filter(url=>classifyAll(titleFromUrl(url,source)).slugs.length);
     const checked = candidates.filter(url=>state.results[url]).length;
     return [source, { inventoryUrls:s.urls.length, sitemapOrCategories:s.maps.length,
       inventoryEnumerated:!!s.inventoryComplete, catalogCandidates:candidates.length,
@@ -23,8 +26,8 @@ export function exportRun(state, root) {
   const payload = { version:POLICY.version, run:state.run, generatedAt:new Date().toISOString(), policy:POLICY, fx:state.fx,
     scope:{sources:Object.keys(state.sources),slugs:occupations.map(j=>j.slug),method:'public_source_inventories'},sourceInventory,
     stats:{inventoried:Object.values(state.sources).reduce((sum,s)=>sum+s.urls.length,0),read:all.length,
-      acceptedBeforeDedup:all.filter(r=>r.accepted).length,accepted:observations.length,
-      duplicates:all.filter(r=>r.accepted).length-observations.length,rejected:all.filter(r=>!r.accepted).length,
+      acceptedAds:all.filter(r=>r.accepted).length,acceptedBeforeDedup:all.filter(r=>r.accepted).flatMap(r=>r.observations||[r.observation]).length,accepted:observations.length,
+      duplicates:all.filter(r=>r.accepted).flatMap(r=>r.observations||[r.observation]).length-observations.length,rejected:all.filter(r=>!r.accepted).length,
       errors:Object.values(state.sources).reduce((sum,s)=>sum+s.events.length,0)},
     observations,coverage:Object.fromEntries(occupations.map(j=>[j.slug,{name:j.nume,...summarize(observations.filter(o=>o.slug===j.slug))}])) };
   fs.writeFileSync(`${root}/verified.json`,JSON.stringify(payload,null,2));

@@ -1,6 +1,6 @@
 # Progres salariile.ro
 
-Ultima actualizare: 24 august 2026
+Ultima actualizare: 8 septembrie 2026
 
 ## Sesiunea a treia, 24 august 2026 — doua surse INS pe care le aruncam
 
@@ -2091,3 +2091,68 @@ Noul crawler păstrează HTML privat și hash SHA-256, respectă robots și opre
 Rulare curentă: `.cercetare-privata/crawl-runs/census-active-2026-09-07/state.json`, log `.cercetare-privata/crawl-audit/census.log`. Inventare găsite: 13.000 URL-uri Publi24, 6.507 eJobs din 67 sitemap-uri, 2.329 Bestjobs, 961 oferte Anuntul; OLX parcurge categoriile și paginile lor. Acestea sunt URL-uri descoperite, NU salarii verificate. eJobs a răspuns 429 la detalii; limitarea este înregistrată, fără ocolire. Colectarea continuă și nu există încă verdict final de acoperire.
 
 Verificările unitare ale noului parser trec; build-ul și testele randate se repetă după publicarea rezultatului final. Modificările nu sunt încă publicate. Reprocesarea finală trebuie să recitească dovezile cu parserul final, deoarece colectarea rulează cu versiunea încărcată la pornire.
+
+## 8 septembrie 2026 — Auditul a arătat că plafonul nu era piața, ci trei bug-uri; crawler reparat, cohortă separată și trei piloni pe fiecare pagină
+
+Status: parser reparat și testat, crawl complet în desfășurare, pagini livrate.
+
+### Ce era greșit
+
+Concluzia din 7 septembrie — „doar 304 observații, ~12 anunțuri pe meserie" — era
+produsul codului, nu al pieței. Proprietarul a contestat-o; verificarea i-a dat dreptate.
+
+1. **OLX nu a fost niciodată crawlat.** `census.mjs` judeca anunțul din cardul de
+   listare, care nu conține salariul, și îl respingea fără a-l deschide. Din 4.808
+   candidați OLX s-au deschis 94; dintre aceia, 91 au fost acceptați (97%).
+   3.492 au fost respinși pe „lipsă salariu" fără a fi citiți.
+2. **Câmpul structurat de salariu al OLX era ignorat** ca dovadă, folosit doar ca veto.
+   Măsurat pe 150 de anunțuri OLX alese aleator din cele niciodată deschise:
+   **71 aveau salariu declarat structurat (47,3%); parserul accepta 1 (0,7%)**. Factor 68×.
+3. **Parserul cerea cuvântul „net" sau „brut".** Efect pe sursele care *au* fost citite
+   corect: bestjobs 467 anunțuri cu salariu declarat → 21 acceptate; anuntul.ro 345 → 34.
+   Se aruncau `"5000 - 10000 €/luna"` și `"3.600 RON"`.
+
+Alte pierderi măsurate pe corpusul de 3.737 de anunțuri cu descriere: titlul nu era
+scanat deloc (31 anunțuri cu sumă în titlu), „în mână"/„în cont" nerecunoscute (24),
+anunțuri cu mai multe sume aruncate integral (160), 529 titluri neclasificate din care
+257 aveau sumă. Cele mai multe „sume multiple" nu erau roluri diferite, ci salariu plus
+tichete sau bacșiș.
+
+### Ce s-a reparat
+
+Titlul se scanează. „Salariu", „venit lunar", „câștig", „se oferă" sunt context de plată;
+„în mână", „pe mână", „în cont" sunt bază netă explicită. Calificativul cel mai apropiat
+de sumă decide baza, deci „brut 5.000 lei, adică net 2.981 lei" rămâne pereche brut/net
+pentru același post, verificată prin conversia standard, nu două cifre în conflict.
+Salariu plus beneficiu păstrează salariul. Roluri multiple produc o observație per meserie
+când textul leagă meseria de sumă; `adId` păstrează identitatea anunțului, deci pragurile
+de concentrare nu pot fi păcălite. Titlurile scrise greșit se potrivesc tolerant pe COR,
+cu toleranță care crește cu lungimea și niciodată sub șapte caractere. Anunțurile cu mai
+multe meserii nu mai sunt eliminate ca `ambiguous_occupation` înainte de a fi citite.
+Câmpul structurat devine dovadă primară când textul tace, cu `salary_conflict` când textul
+îl contrazice și fără a reînvia o cifră deja exclusă ca beneficiu. `to = from + 1` la OLX
+este o sumă unică, normalizată. Vechimea e regulă explicită, `maxAdAgeDays = 548`.
+
+Reprocesarea acelorași dovezi, fără nicio recitire din rețea: **313 → 810 observații**.
+
+### Decizia proprietarului pe bază nedeclarată
+
+Aproape jumătate din anunțurile cu sumă nu spun net sau brut. Nu se presupune netul.
+Formează cohorta `undeclaredBasis`: numărată, publicată alături, niciodată în mediană,
+în praguri sau în intervalul principal.
+
+### Surse
+
+Adăugate: **hipo.ro** (1.790 anunțuri, JSON-LD) și **undelucram.ro** (permis explicit de
+proprietar; sitemap-ul lor listează pagini de rezultate, deci inventarul trece prin ele).
+Verificate și respinse cu motiv: **posturi.gov.ro** — paginile de concurs nu conțin sume,
+deci un conector acolo ar returna zero; **ro.indeed.com** — robots.txt interzice `/viewjob`.
+
+### Trei piloni pe fiecare pagină de meserie
+
+`piloniMeserie` calculează independent: anunțuri (colectare proprie), declarat (Salario)
+și oficial (INS sau grila 153/2017). Nu se ponderează într-o singură cifră — o medie a lor
+n-ar avea nicio sursă în spate. `convergentaPiloni` arată dacă reperele cad împreună; când
+nu cad, divergența e afișată ca informație: dacă ofertele sunt sub statistică, postul se
+scoate la angajare mai jos decât câștigă cine e deja acolo.
+

@@ -16,7 +16,10 @@ for (const o of data.observations) {
   const raw=detailRecord(page,o.source);
   const checked=assess(raw?{...raw,listedAt:o.listedAt,fx:o.conversion}:null,page,new Date(o.retrievedAt));
   if (!checked.accepted) throw new Error(`Evidence no longer passes extraction: ${o.url}: ${checked.reasons}`);
-  for(const key of ['slug','min','max','title','publishedAt','periodEvidence'])if(checked.observation[key]!==o[key])throw new Error(`Observation differs from evidence: ${o.url} (${key})`);
+  // One advert may hold several trades; verify against the observation for this trade.
+  const same=(checked.observations||[checked.observation]).find(x=>x.slug===o.slug);
+  if(!same)throw new Error(`Evidence no longer yields this occupation: ${o.url} (${o.slug})`);
+  for(const key of ['slug','min','max','title','publishedAt','periodEvidence'])if(same[key]!==o[key])throw new Error(`Observation differs from evidence: ${o.url} (${key})`);
 }
 const records = deduplicate(data.observations);
 const coverage = Object.fromEntries(occupations.map(job => {
@@ -29,15 +32,15 @@ const rejectionCounts={};for(const r of checkpoint.rejected)for(const reason of 
 result.rejectionCounts=rejectionCounts;
 result.sourceErrors=checkpoint.events.filter(e=>e.error);
 fs.writeFileSync(`${root}/coverage.json`,JSON.stringify(result,null,2));
-const rows = ['meserie,anunturi,lunar_explicit,lunar_presupus,angajatori,judete,platforme,status,lipsuri'];
-for (const [slug,a] of Object.entries(coverage)) rows.push([slug,a.n,a.explicitMonthly,a.assumedMonthly,a.employers,a.counties,Object.keys(a.sourceCounts).length,a.status,a.gaps.join('|')].join(','));
+const rows = ['meserie,anunturi,anunturi_baza_nedeclarata,lunar_explicit,lunar_presupus,angajatori,judete,platforme,status,lipsuri'];
+for (const [slug,a] of Object.entries(coverage)) rows.push([slug,a.n,a.undeclaredBasis.n,a.explicitMonthly,a.assumedMonthly,a.employers,a.counties,Object.keys(a.sourceCounts).length,a.status,a.gaps.join('|')].join(','));
 fs.writeFileSync(`${root}/coverage.csv`,rows.join('\n')+'\n');
 if (process.argv.includes('--publish')) {
   if (data.scope.slugs.length !== occupations.length) throw new Error('A partial catalogue run cannot replace coverage');
   // Errors and rejected records remain explicit; no claim that blocked sources were scanned.
   fs.writeFileSync('src/data/acoperire-anunturi.json',JSON.stringify(result,null,2)+'\n');
   fs.mkdirSync('public/date',{recursive:true});
-  const publicRecords=records.map(({id,url,source,slug,min,max,publishedAt,retrievedAt,evidence,originalSalary,conversion,netConversion,periodEvidence,activityEvidence,listedAt,sourceUrls})=>({id,url,source,slug,min,max,unit:'lei net/lună',concept:'salariu oferit',publishedAt,retrievedAt,listedAt,activityEvidence,periodEvidence,originalSalary:{min:originalSalary.min,max:originalSalary.max,currency:originalSalary.currency,basis:originalSalary.basis,monthlyExplicit:originalSalary.monthly},conversion,netConversion,evidenceSha256:evidence.sha256,sourceUrls}));
+  const publicRecords=records.map(({id,adId,url,source,slug,min,max,basis,basisDeclared,salaryEvidenceKind,figureSharedAcrossRoles,publishedAt,retrievedAt,evidence,originalSalary,conversion,netConversion,periodEvidence,activityEvidence,listedAt,sourceUrls})=>({id,adId,url,source,slug,min,max,unit:'lei net/lună',concept:'salariu oferit',basis,basisDeclared,salaryEvidenceKind,figureSharedAcrossRoles:figureSharedAcrossRoles||null,publishedAt,retrievedAt,listedAt,activityEvidence,periodEvidence,originalSalary:{min:originalSalary.min,max:originalSalary.max,currency:originalSalary.currency,basis:originalSalary.basis,monthlyExplicit:originalSalary.monthly},conversion,netConversion,evidenceSha256:evidence.sha256,sourceUrls}));
   fs.writeFileSync('public/date/anunturi-verificate.json',JSON.stringify({generatedAt:data.generatedAt,run,limitations:'Oferte, nu salarii efectiv încasate. Conversiile standard și ipoteza lunară pentru ofertele fără perioadă explicită sunt marcate pe fiecare înregistrare. Eșantionul nu este reprezentativ național.',observations:publicRecords},null,2)+'\n');
   fs.writeFileSync('public/date/acoperire-anunturi.csv',rows.join('\n')+'\n');
 }

@@ -3,7 +3,8 @@ import crypto from 'node:crypto';
 export const sleep = ms => new Promise(r => setTimeout(r, ms));
 export const hash = s => crypto.createHash('sha256').update(s).digest('hex');
 const ua = 'SalariileRoResearch/2.0 (+https://salariile.ro/despre)';
-const hosts = new Map(), robots = new Map(), blocked = new Set();
+// A rate limit pauses a host until Retry-After elapses, not for the whole run.
+const hosts = new Map(), robots = new Map(), blocked = new Map();
 export function allowedByRobots(text, url) {
   const rules = []; let applies = false;
   for (const line of text.split(/\r?\n/)) {
@@ -25,7 +26,11 @@ export async function getPage(url, dir) {
   if (fs.existsSync(metaPath) && fs.existsSync(htmlPath)) return { ...JSON.parse(fs.readFileSync(metaPath, 'utf8')), html: fs.readFileSync(htmlPath, 'utf8') };
   const pausePath=`${dir}/pause-${hash(origin)}.json`;
   if(fs.existsSync(pausePath)) {const pause=JSON.parse(fs.readFileSync(pausePath,'utf8'));if(!pause.until || Date.parse(pause.until)>Date.now())throw new Error(`host_paused_${pause.status}`);}
-  if (blocked.has(origin)) throw new Error('host_paused');
+  const until = blocked.get(origin);
+  if (until !== undefined) {
+    if (until === null || until > Date.now()) throw new Error('host_paused');
+    blocked.delete(origin);
+  }
   if (!robots.has(origin)) {
     robots.set(origin, (async () => {
       const r = await fetch(origin + '/robots.txt', { headers: { 'User-Agent': ua }, signal: AbortSignal.timeout(20000) });
@@ -47,15 +52,16 @@ export async function getPage(url, dir) {
         return { redirect: target };
       }
       if ([401,403,429].includes(r.status)) {
-        blocked.add(origin);
         const retry=r.headers.get('retry-after'),retryMs=Number(retry)*1000 || (Date.parse(retry)-Date.now()) || 0;
-        fs.writeFileSync(pausePath,JSON.stringify({status:r.status,at:new Date().toISOString(),until:r.status===429?new Date(Date.now()+Math.max(3600000,retryMs)).toISOString():null}));
+        const resumeAt=r.status===429?Date.now()+Math.max(3600000,retryMs):null;
+        blocked.set(origin,resumeAt);
+        fs.writeFileSync(pausePath,JSON.stringify({status:r.status,at:new Date().toISOString(),until:resumeAt?new Date(resumeAt).toISOString():null}));
         throw new Error('host_paused_' + r.status);
       }
       if ([500,502,503,504].includes(r.status) && attempt < 2) { await sleep(Math.min(30000, Number(r.headers.get('retry-after')) * 1000 || 2000 * 2 ** attempt)); continue; }
       if (!r.ok) throw new Error('http_' + r.status);
       const html = await r.text();
-      if (/just a moment|verify you are human/i.test(html.slice(0,2000))) {blocked.add(origin);fs.writeFileSync(pausePath,JSON.stringify({status:'challenge',at:new Date().toISOString(),until:null}));throw new Error('host_paused_challenge');}
+      if (/just a moment|verify you are human/i.test(html.slice(0,2000))) {blocked.set(origin,null);fs.writeFileSync(pausePath,JSON.stringify({status:'challenge',at:new Date().toISOString(),until:null}));throw new Error('host_paused_challenge');}
       const meta = { url: r.url, retrievedAt: new Date().toISOString(), sha256: hash(html), evidenceFile: htmlPath };
       fs.writeFileSync(htmlPath, html); fs.writeFileSync(metaPath, JSON.stringify(meta));
       return { ...meta, html };

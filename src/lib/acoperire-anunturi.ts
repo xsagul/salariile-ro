@@ -1,10 +1,17 @@
 import data from '@/data/acoperire-anunturi.json';
+/** Adverts whose wording does not say net or gross. Reported apart, never merged in. */
+export type CohortaNedeclarata = {
+  n: number; sourceCounts: Record<string, number>;
+  observedRange: { min: number; max: number } | null; midpointEstimate: number | null;
+};
 export type AcoperireAnunturi = {
-  name: string; n: number; employers: number; counties: number;
+  name: string; n: number; ads?: number; basisNearAmount?: number; basisFromDocument?: number;
+  employers: number; counties: number;
   sourceCounts: Record<string, number>; gaps: string[]; status: string;
   explicitMonthly: number; assumedMonthly:number; midpointEstimate:number | null;
   medianBounds: { min: number; max: number } | null;
   observedRange: { min: number; max: number } | null;
+  undeclaredBasis?: CohortaNedeclarata;
   examples?: { url: string; source: string; min: number; max: number }[];
 };
 export const DATA_VERIFICARE_ANUNTURI = data.generatedAt;

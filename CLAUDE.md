@@ -20,7 +20,7 @@ salariile.ro este un portal despre salarii și fiscalitate în România. Scop pe
 
 Nu numărul de pagini. **Datele.** Măsurat pe 24 august 2026:
 
-- Catalogul are 126 de meserii. Plafonul cu cifră proprie **nu mai e 95–100** — cifra aia, scrisă pe 24 august, presupunea că INS publică doar media pe activitate CAEN. Verificat pe 31 august 2026, pe tot catalogul TEMPO (1.916 matrice): matricea **FOM121A** încrucișează activitatea cu grupa de ocupații, pe forme de proprietate, sexe și 11 ani. Sunt **544 de celule cu date, 527 de valori distincte** — deci plafonul real e de ordinul a 500, nu 100. Ce nu există nicăieri în TEMPO e COR: fiecare matrice de salarii cu dimensiune ocupațională are exact 10 opțiuni, Total plus cele 9 grupe majore ISCO. Deci „specialiști în servicii IT” rămâne o grupă, nu „programator”.
+- Catalogul are 132 de meserii (`MESERII.length` din `src/lib/meserii.ts` deține numărul). Plafonul cu cifră proprie **nu mai e 95–100** — cifra aia, scrisă pe 24 august, presupunea că INS publică doar media pe activitate CAEN. Verificat pe 31 august 2026, pe tot catalogul TEMPO (1.916 matrice): matricea **FOM121A** încrucișează activitatea cu grupa de ocupații, pe forme de proprietate, sexe și 11 ani. Sunt **544 de celule cu date, 527 de valori distincte** — deci plafonul real e de ordinul a 500, nu 100. Ce nu există nicăieri în TEMPO e COR: fiecare matrice de salarii cu dimensiune ocupațională are exact 10 opțiuni, Total plus cele 9 grupe majore ISCO. Deci „specialiști în servicii IT” rămâne o grupă, nu „programator”.
 - paylab are **767 de poziții** pentru că are 14.383 de respondenți la sondaj. undelucram are **400.000 de salarii declarate** și 850.000 de utilizatori.
 - Diferența față de ei nu e volumul de conținut, e că **ei colectează date de la utilizatori și noi nu colectăm nimic.** Site-ul nu are, la data asta, niciun mecanism de colectare.
 
@@ -108,6 +108,34 @@ pagina sursă, suma originală, interpretarea unității și data colectării.
 Pragurile de publicare sunt deținute de `scripts/crawler/policy.mjs`,
 acoperirea produsului de `src/data/acoperire-anunturi.json`.
 „Undă verde” se acordă pe dovezi; lipsa datelor nu se rezolvă prin valori fabricate.
+
+**Nu confunda un plafon de cod cu un plafon al pieței.** Pe 8 septembrie 2026,
+concluzia „în România există doar ~12 anunțuri cu sumă pe meserie” s-a dovedit
+falsă: erau trei bug-uri. OLX nu fusese niciodată deschis (se judeca din cardul de
+listare, care nu conține salariul), câmpul structurat de salariu era ignorat ca
+dovadă, iar parserul cerea cuvântul „net” sau „brut”. Măsurat pe eșantion aleator,
+47% dintre anunțurile OLX declarau un salariu, în timp ce parserul accepta 0,7%.
+Înainte de a raporta o limită a datelor, măsoară un eșantion din ce ai respins:
+`scripts/crawler/masoara-olx.mjs` și `scripts/crawler/masoara-pierderi.mjs` există
+exact pentru asta și nu ating rețeaua decât pe eșantion.
+
+**Sumele fără net/brut sunt cohortă separată, decis de proprietar pe 8 septembrie
+2026.** Aproape jumătate din anunțurile cu sumă nu spun baza. Nu se presupune netul:
+3.600 lei brut înseamnă circa 2.100 lei net. Cohorta `undeclaredBasis` se numără și
+se publică alături, niciodată în mediană, în praguri sau în intervalul principal.
+
+**Cei trei piloni nu se topesc într-o cifră.** `piloniMeserie` din
+`src/lib/repere-meserii.ts` calculează independent anunțurile (colectare proprie),
+salariile declarate (Salario) și datele oficiale (INS, grilele 153/2017). Sunt
+populații și concepte diferite; o medie ponderată a lor n-ar avea nicio sursă care
+s-o susțină și ar repeta eroarea cenzusului sintetic. Divergența dintre piloni se
+afișează ca informație, nu se netezește.
+
+**Surse de anunțuri.** Active: OLX, eJobs, BestJobs, Publi24, Anuntul.ro, hipo.ro,
+undelucram.ro (ultima permisă explicit de proprietar pe 8 septembrie 2026).
+Verificate și respinse cu motiv, nu din lipsă de timp: `posturi.gov.ro` — paginile
+de concurs nu conțin sume, un conector acolo ar returna zero; `ro.indeed.com` —
+robots.txt interzice `/viewjob`. Nu le repropune fără o verificare nouă.
 
 - Planul verificat pe 90 de zile este în `ROADMAP-90-ZILE.md`; baseline-ul pre-P0 se termină la 24 iulie 2026
 - Snapshotul reproductibil se rulează cu `npm run gsc:weekly`; nu se atribuie efecte P0/P1 înainte de date post-deploy complete
