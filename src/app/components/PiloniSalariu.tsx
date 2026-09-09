@@ -9,7 +9,10 @@ function cifra(p: Pilon) {
   if (p.interval) return `${lei(p.interval.min)} – ${lei(p.interval.max)}`;
   // „Nu avem" spune ca am incercat si n-am reusit. Cand meseria e platita dupa
   // grila legala, anuntul e instrumentul gresit, iar asta se scrie pe fata.
-  if (p.motivLipsa) return 'nu se măsoară aici';
+  // Fara niciun anunt, fraza spune ca instrumentul nu se aplica. Cu cateva
+  // anunturi sub prag, cifra ramane „date insuficiente", iar motivul apare
+  // dedesubt: altfel am nega anunturile pe care chiar le-am citit.
+  if (p.motivLipsa && !p.n) return 'nu se măsoară aici';
   if (p.stare === 'insuficient') return 'date insuficiente';
   // Pentru anunturi lipsa e a colectarii noastre, care continua; pentru o sursa
   // externa pe care doar o citam, nu.

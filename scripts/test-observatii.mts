@@ -88,6 +88,9 @@ for(const m of MESERII){
   assert.ok(x.valoare===null || x.valoare>0,`${m.slug}/${x.cheie}`);
   assert.ok(x.interval===null || x.interval.max>=x.interval.min,`${m.slug}/${x.cheie}`);
   if(x.cheie==='anunturi') assert.ok(x.valoare===null || x.stare==='publicat','o cifra centrala din anunturi apare doar peste praguri');
+  // Nici intervalul. `observedRange` sunt capetele esantionului, nu o statistica:
+  // un singur anunt a facut candva pagina de medic sa arate „20.000–20.000 lei".
+  if(x.cheie==='anunturi') assert.ok(x.interval===null || x.stare==='publicat','un interval din anunturi apare doar peste praguri');
  }
  const c=convergentaPiloni(p);
  if(c){assert.ok(c.max>=c.min);assert.ok(c.puncte.length>=2);assert.ok(!('valoare' in c),'convergenta nu produce o cifra unica');}

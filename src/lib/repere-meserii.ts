@@ -183,7 +183,11 @@ export function piloniMeserie(d: DateMeserie): Pilon[] {
   const anunturi: Pilon = {
     cheie: 'anunturi', titlu: 'Ce se oferă acum în anunțuri',
     valoare: centralAnunturi !== null && centralAnunturi !== undefined ? Math.round(centralAnunturi) : null,
-    interval: a?.medianBounds ?? a?.observedRange ?? null,
+    // Nici intervalul nu scapa de praguri. `observedRange` e minimul si maximul
+    // esantionului, nu o statistica: un singur anunt facea pagina de medic sa
+    // arate „20.000–20.000 lei", iar douazeci de anunturi dadeau la asistent
+    // medical „3.000–30.000". Capetele unui esantion mic sunt exceptii, nu piata.
+    interval: a?.medianBounds ?? null,
     concept: 'salariu oferit la angajare',
     populatie: 'anunțuri active, normă întreagă, muncă în România, sumă explicită',
     sursa: 'Colectare proprie Salariile.ro', url: '/salarii/acoperire',
@@ -191,10 +195,13 @@ export function piloniMeserie(d: DateMeserie): Pilon[] {
     stare: a?.medianBounds ? 'publicat' : a?.n ? 'insuficient' : 'lipsa',
     nota: 'O ofertă de angajare nu este salariul încasat de cineva care lucrează de ani în acel post.',
     // Grila legala sau grila de invatamant inseamna ca meseria e platita dupa
-    // lege, nu negociata in anunt. Atunci absenta anunturilor e o proprietate a
-    // meseriei, nu o lipsa a colectarii, si se spune ca atare.
-    ...(!a?.n && (grid || teaching.length)
-      ? { motivLipsa: 'Meserie plătită după grila legală, nu prin ofertă negociată în anunț.' }
+    // lege, nu negociata in anunt. Conditia e absenta unei cifre publicabile, nu
+    // absenta oricarui anunt: un singur anunt privat nu masoara salariul unui
+    // profesor, iar „date insuficiente" langa el citeste ca esec al colectarii.
+    ...(!a?.medianBounds && (grid || teaching.length)
+      ? { motivLipsa: a?.n
+        ? 'Meserie plătită după grila legală; anunțurile găsite nu ating pragurile de publicare.'
+        : 'Meserie plătită după grila legală, nu prin ofertă negociată în anunț.' }
       : {}),
   };
   const declarat: Pilon = report ? {
