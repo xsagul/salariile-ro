@@ -20,7 +20,7 @@ salariile.ro este un portal despre salarii și fiscalitate în România. Scop pe
 
 Nu numărul de pagini. **Datele.** Măsurat pe 24 august 2026:
 
-- Catalogul are 138 de meserii (`MESERII.length` din `src/lib/meserii.ts` deține numărul). Plafonul cu cifră proprie **nu mai e 95–100** — cifra aia, scrisă pe 24 august, presupunea că INS publică doar media pe activitate CAEN. Verificat pe 31 august 2026, pe tot catalogul TEMPO (1.916 matrice): matricea **FOM121A** încrucișează activitatea cu grupa de ocupații, pe forme de proprietate, sexe și 11 ani. Sunt **544 de celule cu date, 527 de valori distincte** — deci plafonul real e de ordinul a 500, nu 100. Ce nu există nicăieri în TEMPO e COR: fiecare matrice de salarii cu dimensiune ocupațională are exact 10 opțiuni, Total plus cele 9 grupe majore ISCO. Deci „specialiști în servicii IT” rămâne o grupă, nu „programator”.
+- Catalogul are 142 de meserii (`MESERII.length` din `src/lib/meserii.ts` deține numărul). Plafonul cu cifră proprie **nu mai e 95–100** — cifra aia, scrisă pe 24 august, presupunea că INS publică doar media pe activitate CAEN. Verificat pe 31 august 2026, pe tot catalogul TEMPO (1.916 matrice): matricea **FOM121A** încrucișează activitatea cu grupa de ocupații, pe forme de proprietate, sexe și 11 ani. Sunt **544 de celule cu date, 527 de valori distincte** — deci plafonul real e de ordinul a 500, nu 100. Ce nu există nicăieri în TEMPO e COR: fiecare matrice de salarii cu dimensiune ocupațională are exact 10 opțiuni, Total plus cele 9 grupe majore ISCO. Deci „specialiști în servicii IT” rămâne o grupă, nu „programator”.
 - paylab are **767 de poziții** pentru că are 14.383 de respondenți la sondaj. undelucram are **400.000 de salarii declarate** și 850.000 de utilizatori.
 - Diferența față de ei nu e volumul de conținut, e că **ei colectează date de la utilizatori și noi nu colectăm nimic.** Site-ul nu are, la data asta, niciun mecanism de colectare.
 
@@ -169,6 +169,32 @@ are și coloană de lei, și una de coeficienți, iar `grila()` din
 aceleași 2.100 de rânduri — nu e cache vechi. Nereparat: modificarea atinge toate
 anexele și cere diff complet înainte de acceptare. Textul legii e în
 `research/lege153-consolidat.html`.
+
+**Colectarea e publicată, iar constrângerea s-a mutat pe catalog.** Pe 9
+septembrie 2026: 1.523 de anunțuri cu bază declarată, 2.264 în cohorta separată,
+14 meserii cu cifră proprie din 142. Ce blochează restul nu mai e colectarea, ci
+catalogul: 11.033 de anunțuri citite cad fiindcă titlul nu se potrivește nici unei
+meserii, iar în 4.265 dintre ele parserul citise deja corect suma.
+
+O meserie se adaugă numai pe dovezi, iar două precedente țin regula:
+„montator" a fost respins cu 32 de anunțuri fiindcă în COR nu există ca ocupație,
+ci ca cincisprezece meserii distincte; „ambalator" nu a intrat ca sinonim la
+manipulant, deși ar fi urcat cifra peste prag, fiindcă ambalarea și manipularea
+sunt grupe ISCO diferite. **O meserie nu se lărgește ca să atingă un prag.**
+
+**Nu extinde catalogul dincolo de ce susțin dovezile.** Măsurat în Search Console
+pe 9 septembrie: `/salarii/judecator`, `/salarii/preot` și `/salarii/procuror` sunt
+descoperite din sitemap și **niciodată crawl-ate**. Google refuză deja să deschidă
+pagini dintr-un set de peste o sută aproape identice. Paginile de meserie adună
+împreună ~21 de clickuri la 28 de zile; calculatoarele pe clustere de bugetari
+aduc de zeci de ori mai mult — învățământul a făcut 0 → 381 de clickuri pe
+săptămână în două săptămâni.
+
+**Sub praguri nu se arată nimic: nici cifră centrală, nici interval.** Capetele
+unui eșantion mic nu sunt o statistică — un singur anunț a făcut cândva pagina de
+medic să afișeze „20.000–20.000 lei". Ambele reguli au test propriu în
+`test-observatii.mts`. Meseriile plătite după grila legală nu spun „nu avem", ci
+că nu se măsoară prin anunț; nicăieri pe site nu apare „0 anunțuri".
 
 **Surse de anunțuri.** Active: OLX, eJobs, BestJobs, Publi24, Anuntul.ro, hipo.ro,
 undelucram.ro (ultima permisă explicit de proprietar pe 8 septembrie 2026).
