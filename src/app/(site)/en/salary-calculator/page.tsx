@@ -30,6 +30,7 @@ import { PaginiConexe, Section } from "@/app/components/ui";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
 import { CAM_PROCENT, CASS_PROCENT, CAS_PROCENT, IMPOZIT_PROCENT, SALARIU_MINIM, calculStandard } from "@/lib/fiscal";
+import { CURS_DATA, EUR_RON } from "@/lib/curs";
 
 const TITLE = "Romanian Salary Calculator 2026: gross to net and employer cost";
 const DESCRIPTION =
@@ -128,18 +129,36 @@ export default function Page() {
 
       <CalculatorSalariu
         limba="en"
+        monedaInitiala="EUR"
+        cuMoneda
         titluCustom={<>Romanian Salary Calculator 2026</>}
         subtitluCustom={
           <>
             Enter a gross salary and see what reaches the employee&rsquo;s account, with the pension
             and health contributions, the flat 10% income tax and the employer&rsquo;s total cost.
-            It works from net to gross as well. Same engine as the{" "}
+            Amounts are shown in euro by default — switch to lei at any time. It works from net to
+            gross as well. Same engine as the{" "}
             <Link href="/">Romanian version of this calculator</Link>, same 2026 rules.
           </>
         }
       />
 
       <Section>
+        <h2>Euro or lei</h2>
+        <p>
+          The calculator opens in euro, because that is how most people arriving in Romania think
+          about pay. Everything is converted at the European Central Bank reference rate — currently{" "}
+          <strong>1 EUR = {EUR_RON} RON</strong>, from {CURS_DATA} — and you can switch to lei at any
+          time. The switch converts the amount you typed as well, so the real figure stays the same.
+        </p>
+        <p>
+          One thing worth being clear about: <strong>the calculation itself is always done in lei.</strong>{" "}
+          Romanian law writes every threshold in lei — the minimum wage, the personal deduction, the
+          tax-free allowance — so converting first would move those thresholds and change the answer.
+          The euro figures are an indicative conversion of a result computed in lei. Your contract,
+          your contributions and your real payslip are in lei too.
+        </p>
+
         <h2>How Romanian payroll works</h2>
         <p>
           Romania splits the cost of employment into three visible parts, and the gross salary in

@@ -17,6 +17,7 @@ import { zileLucratoareLuna } from "@/lib/sarbatori";
 import { compuneFluturas } from "@/lib/fluturas";
 import FeedbackContextual from "@/app/components/FeedbackContextual";
 import { TEXTE, type Limba, type TexteCalculator } from "@/lib/calculator-texte";
+import { CURS_DATA, EUR_RON, converteste, cursVechi, inLei, type Moneda } from "@/lib/curs";
 
 type SelectOption = { v: number; l: string };
 
@@ -232,8 +233,10 @@ async function generarePDFFluturas(opts: {
   retineri?: number;
   /** Textele documentului. Fluturașul se generează în limba interfeței. */
   t: TexteCalculator;
+  /** Moneda de afișare. Sumele sunt calculate în lei și convertite doar aici. */
+  moneda: Moneda;
 }): Promise<void> {
-  const { brut, rez, nrTichete, valoareTichet, scutitImpozit, firma, detalii, retineri = 0, t } = opts;
+  const { brut, rez, nrTichete, valoareTichet, scutitImpozit, firma, detalii, retineri = 0, t, moneda } = opts;
 
   // Import dinamic – biblioteca se încarcă doar când utilizatorul apasă butonul
   const { jsPDF } = await import("jspdf");
@@ -264,7 +267,13 @@ async function generarePDFFluturas(opts: {
   const LH = 5; //                       înălțimea unui rând, mm
   let y = 20;
 
-  const lei = (n: number) => `${n.toLocaleString("ro-RO")} lei`;
+  // Fluturasul urmeaza moneda aleasa in interfata. Calculul de deasupra e in
+  // lei; aici se converteste doar la tiparire, ca sa nu existe doua monede pe
+  // acelasi document.
+  const lei = (n: number) =>
+    moneda === "EUR"
+      ? `${converteste(n, "EUR").toLocaleString(t.locale)} EUR`
+      : `${n.toLocaleString(t.locale)} ${t.moneda}`;
   const mono = (bold = false, dim = false) => {
     doc.setFont("courier", bold ? "bold" : "normal");
     doc.setFontSize(FS);
@@ -438,6 +447,8 @@ export default function CalculatorSalariu({
   fluturas = false,
   embedded = false,
   limba = "ro",
+  monedaInitiala = "RON",
+  cuMoneda = false,
 }: {
   brutInitial?: string;
   modInitial?: "brut" | "net";
@@ -459,11 +470,32 @@ export default function CalculatorSalariu({
    * componentă care ar diverge la prima modificare fiscală.
    */
   limba?: Limba;
+  /**
+   * Moneda de afișare și de introducere a sumei. Calculul rămâne ÎNTOTDEAUNA în
+   * lei — contribuțiile, plafoanele și deducerea sunt scrise în lege în lei.
+   * Euro e un strat de conversie la intrare și la ieșire, la cursul de referință
+   * BCE, cu data lui afișată. Pagina engleză pornește în euro.
+   */
+  monedaInitiala?: Moneda;
+  /**
+   * Arată comutatorul RON/EUR. Implicit ascuns, ca paginile românești să rămână
+   * exact cum erau — o pagină în lei nu are nevoie de el, iar homepage-ul nu
+   * trebuie atins.
+   */
+  cuMoneda?: boolean;
 }) {
   const t = TEXTE[limba];
+  const [moneda, setMoneda] = useState<Moneda>(monedaInitiala);
   // Umbrește `fmt`-ul de modul, ca toate sumele afișate în componentă să urmeze
   // limba aleasă fără să fie nevoie să se atingă fiecare apel în parte.
-  const fmt = fmtCu(t.locale, t.moneda);
+  // Sumele se calculează în lei și se convertesc doar la afișare. Un singur
+  //  pentru tot tabelul înseamnă că nicio linie nu poate rămâne în altă
+  // monedă decât celelalte.
+  const fmtLei = fmtCu(t.locale, t.moneda);
+  const fmt = (n: number) =>
+    moneda === "EUR"
+      ? new Intl.NumberFormat(t.locale).format(converteste(n, "EUR")) + " EUR"
+      : fmtLei(n);
   const wrap = wide ? "max-w-7xl" : "max-w-6xl";
   const [mod, setMod] = useState<"brut" | "net">(modInitial);
   const [avansat, setAvansat] = useState(false);
@@ -501,8 +533,22 @@ export default function CalculatorSalariu({
 
   // În modul fluturaș, inputul de calcul e brutul COMPUS (bază + suplimentare +
   // sporuri) cu salariuDeBaza atașat; altfel, inputul brut, neschimbat.
-  const pregatesteInput = (inp: InputState): InputState =>
-    fluturas ? compuneFluturas(inp, { sporOre, sporuri, normaOre, oreLucrate }, oreNormaCurenta).input : inp;
+  // Sumele tastate sunt in moneda aleasa; motorul fiscal primeste MEREU lei.
+  // Conversia se face aici, in singurul loc prin care trece orice calcul — si
+  // calculul propriu-zis, si cheia de prospetime a rezultatului. Daca ar fi
+  // facuta in doua locuri, cele doua ar putea diverge si rezultatul ar parea
+  // invechit fara motiv.
+  const inLeiDacaTrebuie = (v: string) =>
+    moneda === "EUR" && parseFloat(v) > 0 ? String(inLei(parseFloat(v))) : v;
+
+  const pregatesteInput = (inp: InputState): InputState => {
+    const inLeiInp: InputState = moneda === "EUR"
+      ? { ...inp, brut: inLeiDacaTrebuie(inp.brut), tichete: inLeiDacaTrebuie(inp.tichete) }
+      : inp;
+    return fluturas
+      ? compuneFluturas(inLeiInp, { sporOre, sporuri, normaOre, oreLucrate }, oreNormaCurenta).input
+      : inLeiInp;
+  };
 
   // Rezultatul afișat – calculat O DATĂ la click pe Calculează, stocat ca obiect.
   // Nu se schimbă la tastare/toggle, doar la click. La mount, dacă brutInitial
@@ -653,7 +699,7 @@ export default function CalculatorSalariu({
         brut: parseFloat(rezAfisat.brutEfectiv), rez: rezAfisat.rez, nrTichete, valoareTichet,
         scutitImpozit: rezAfisat.scutitImpozit, firma: fluturas ? firma : undefined,
         detalii: fluturas && fluturasSnap ? fluturasSnap : undefined, retineri: retineriNum,
-        t,
+        t, moneda,
       });
       setPdfStatus("success");
     } catch {
@@ -759,6 +805,35 @@ export default function CalculatorSalariu({
                 {t.dinNetInBrut}
               </button>
             </div>
+          </div>
+          )}
+
+          {/* Comutator de monedă. Schimbă și suma tastată, ca valoarea reală să
+              rămână aceeași: 5.250 lei devin 1.000 EUR, nu 5.250 EUR. */}
+          {cuMoneda && (
+          <div className="mb-5">
+            <span className={fieldLabel}>{t.moneda_}</span>
+            <div className="flex w-full overflow-hidden rounded border border-stone-300">
+              {(["EUR", "RON"] as const).map((m, i) => (
+                <button
+                  key={m}
+                  type="button"
+                  className={`${i > 0 ? "border-l border-stone-300 " : ""}flex-1 inline-flex min-h-11 items-center justify-center px-4 text-sm font-medium transition-colors ${moneda === m ? "bg-stone-900 text-white" : "text-stone-600 hover:bg-canvas"}`}
+                  onClick={() => {
+                    if (moneda === m) return;
+                    const val = parseFloat(input.brut);
+                    if (val > 0) set("brut", String(m === "EUR" ? Math.round(val / EUR_RON) : Math.round(val * EUR_RON)));
+                    setMoneda(m);
+                  }}
+                >
+                  {m}
+                </button>
+              ))}
+            </div>
+            <p className="mt-2 text-xs text-stone-600">
+              {t.cursNota(String(EUR_RON), CURS_DATA)}
+              {cursVechi() ? <> · {t.cursVechiNota}</> : null}
+            </p>
           </div>
           )}
 

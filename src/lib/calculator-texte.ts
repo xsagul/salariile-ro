@@ -18,10 +18,12 @@
 //   — denumirile contributiilor (CAS, CASS, CAM) raman abrevierile romanesti,
 //     pentru ca asa apar pe fluturasul real si in D112; se explica in paranteza;
 //   — numerele actelor normative (HG 146/2026, OUG 89/2025, Legea 201/2025)
-//     raman cum sunt publicate in Monitorul Oficial;
-//   — moneda ramane RON, fara conversie: un curs valutar are nevoie de o sursa
-//     vie cu proprietar, iar o valoare inghetata in cod ar deveni falsa in
-//     cateva luni.
+//     raman cum sunt publicate in Monitorul Oficial.
+//
+// Moneda: pagina engleza porneste in euro, dar CALCULUL ramane in lei. Cursul
+// vine din `src/lib/curs.ts`, adus de la Banca Centrala Europeana si datat, ca
+// sa nu existe niciun numar fara sursa vie. Conversia e un strat de afisare si
+// de introducere a sumei, si se spune pe fata in `notaConversie`.
 
 export type Limba = "ro" | "en";
 
@@ -45,6 +47,10 @@ export type TexteCalculator = {
   // ─── Formular ─────────────────────────────────────────────────────────
   dateSalariale: string;
   directieCalcul: string;
+  moneda_: string;
+  cursNota: (curs: string, data: string) => string;
+  cursVechiNota: string;
+  notaConversie: string;
   dinBrutInNet: string;
   dinNetInBrut: string;
   salariuDeBazaBrut: string;
@@ -159,6 +165,11 @@ const RO: TexteCalculator = {
 
   dateSalariale: "Date salariale",
   directieCalcul: "Direcție de calcul",
+  moneda_: "Monedă",
+  cursNota: (curs, data) => `1 EUR = ${curs} RON · curs de referință BCE din ${data}`,
+  cursVechiNota: "Cursul afișat este mai vechi de o lună.",
+  notaConversie:
+    "Sumele în euro sunt o conversie orientativă. Salariul, contribuțiile și fluturașul real sunt în lei — legea scrie plafoanele în lei, iar calculul se face în lei.",
   dinBrutInNet: "Din brut în net",
   dinNetInBrut: "Din net în brut",
   salariuDeBazaBrut: "Salariu de bază (brut)",
@@ -276,6 +287,11 @@ const EN: TexteCalculator = {
 
   dateSalariale: "Salary details",
   directieCalcul: "Calculation direction",
+  moneda_: "Currency",
+  cursNota: (curs, data) => `1 EUR = ${curs} RON · ECB reference rate of ${data}`,
+  cursVechiNota: "The rate shown is more than a month old.",
+  notaConversie:
+    "Euro amounts are an indicative conversion. The salary, the contributions and the real payslip are in RON — the law sets every threshold in RON, and the calculation is done in RON.",
   dinBrutInNet: "Gross to net",
   dinNetInBrut: "Net to gross",
   salariuDeBazaBrut: "Base salary (gross)",
