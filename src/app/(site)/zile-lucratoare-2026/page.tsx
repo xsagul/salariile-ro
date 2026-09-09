@@ -379,6 +379,7 @@ export default function ZileLucratoare2026Page() {
             <li><Link href="/noutati/zile-libere-ramase-2026-minivacante">Zile libere rămase și minivacanțe în 2026</Link></li>
             <li><Link href="/salariu-minim">Salariul minim 2026</Link>, pentru normă și calcul net</li>
             <li><Link href="/fluturas-salariu">Generator fluturaș salariu</Link>, pentru fluturaș PDF orientativ</li>
+            <li><Link href="/calculator-ore-suplimentare">Calculator ore suplimentare</Link>, pentru sporul de 75%, cel de noapte și cel de sărbători</li>
           </ul>
           <p className="source-note">Pagina actualizată: 15 iulie 2026.</p>
         </Section>

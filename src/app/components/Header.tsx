@@ -28,6 +28,7 @@ const NAV: Item[] = [
       { href: "/calculator-salariu-part-time", label: "Salariu part-time" },
       { href: "/calculator-salariu-invatamant", label: "Salariu învățământ" },
       { href: "/calculator-salariu-sanatate", label: "Salariu sănătate" },
+      { href: "/calculator-ore-suplimentare", label: "Ore suplimentare" },
       { href: "/fluturas-salariu", label: "Generator fluturaș" },
       { href: "/widget", label: "Widget pentru site-ul tău" },
     ],
