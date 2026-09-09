@@ -2341,3 +2341,80 @@ node scripts/crawler/importa-pagini-externe.mjs --dir="<...>/pagini" \
 
 Face copie de siguranță a stării înainte să scrie și refuză să pornească dacă
 `collectionStoppedAt` lipsește.
+
+### 9 septembrie 2026, partea a doua — publicare, patru meserii pe dovezi, trei tratamente
+
+**Publicat.** Colectarea a fost reprocesată cu parserul curent înainte de audit,
+iar auditul a reverificat fiecare observație: hash-ul dovezii, reextragerea din
+pagina sursă, comparația câmp cu câmp. A trecut de două ori, înainte și după
+extinderea catalogului.
+
+| | înainte (8 sep) | acum |
+| --- | --- | --- |
+| anunțuri cu bază declarată | 882 | 1.523 |
+| cohortă fără bază, numărată separat | — | 2.264 |
+| meserii | 132 | 142 |
+| meserii cu cel puțin un anunț | 61 | 79 |
+| meserii cu cifră proprie | 9 | 14 |
+
+Pasul de import extern s-a dovedit deja făcut: scrierea dovezilor în cache-ul
+comun le adusese în inventarul eJobs, iar reprocesarea le citise ca pe orice altă
+dovadă. 1.383 eJobs și 940 publi24 sunt în stare, 380 acceptate.
+
+**Patru meserii adăugate, fiecare pe dovezi.** Codurile COR nu au fost inventate:
+clasificarea completă, 4.537 de ocupații din același instantaneu pe care îl
+citează `cor-meserii.json`, era deja în `research/salarii-cor-2026-09-05`.
+
+| meserie | COR | rezultat |
+| --- | --- | --- |
+| magaziner | 432102 | 53 anunțuri, 47 angajatori, 12 județe, 5 platforme — **publică** |
+| stivuitorist | 834403 | 53, 32, 15, 4 — **publică** |
+| manipulant-marfa | 933303 | 35 anunțuri, dar 7 cu perioadă lunară din 10 |
+| sofer-distributie | 832201 | 27 anunțuri din 30 |
+
+**Două respinse deliberat.** „Montator" avea 32 de anunțuri, dar în COR nu există
+ca ocupație — există cincisprezece meserii distincte, de la montator placaje la
+montator bijuterii. O mediană peste ele n-ar descrie nicio meserie reală.
+„Ambalator" nu a intrat ca sinonim la manipulant, deși ar fi urcat cifra peste
+prag: ambalarea și manipularea sunt grupe ISCO diferite. O meserie nu se lărgește
+ca să atingă un prag.
+
+**Sub praguri nu se mai arată nicio cifră centrală.** `aggregate.mjs` calculează
+`centralEstimate` mereu, dar datele publicate pe 8 septembrie nu conțineau deloc
+câmpul, deci ramura din `repere-meserii.ts` care îl folosea n-a rulat niciodată.
+Odată publicat, 18 meserii ar fi afișat o cifră fără să treacă pragurile —
+`manager-magazin` cu 11 anunțuri și șase verificări picate, printre ele. Testul
+din `test-observatii.mts` a prins-o.
+
+**Cele trei tratamente pentru meseriile fără anunțuri.** O meserie plătită după
+grila legală nu spune „nu avem", ci „nu se măsoară aici", cu motivul dedesubt.
+În tabelul de acoperire rândul ei spune „Salarizare pe grilă legală", iar
+zerourile devin liniuțe. Unde chiar nu am colectat și nu există grilă, scrie
+„încă necolectat". Nu mai există niciun „0 anunțuri" pe site.
+
+**Ce citesc modelele despre noi s-a schimbat.** `llms.txt` ne descria drept
+„calculator de salariu net" și îi lipseau opt pagini lansate între timp. Mai
+grav, conținea o afirmație devenită falsă: „Nu există eșantion propriu de salarii
+sau anunțuri". Acum descrie portalul, cele trei surse ținute separat, colectarea
+proprie și pragurile — fără să reproducă numărul de anunțuri, care rămâne la
+`/salarii/acoperire`, unde are un singur proprietar.
+
+**Auditul contului Search Console**, făcut prin browser fiindcă API-ul nu expune
+rapoartele de indexare: nicio acțiune manuală, nicio problemă de securitate,
+0 breadcrumbs invalide, 0 URL-uri non-HTTPS, 297 de pagini indexate. Din cele 23
+neindexate, 3 sunt widgeturile iframe (intenționat), 9 sunt fonturi și favicon-uri,
+4 sunt 404-uri vechi, 1 e un duplicat care azi întoarce 404. Rămân trei reale:
+`/salarii/judecator`, `/salarii/preot` și `/salarii/procuror`, descoperite din
+sitemap și **niciodată crawl-ate** — Google refuză deja să deschidă pagini dintr-un
+set de peste o sută aproape identice. Argument măsurat împotriva extinderii
+catalogului dincolo de ce susțin dovezile.
+
+`/calculator-concediu` returnează 404 din 30 aprilie, când redirecturile către
+`/info` au fost eliminate deliberat. Google cunoaște URL-ul. Din lista aceea,
+`/calculator-pfa` și `/noutati` s-au construit între timp; concediul nu.
+
+**Trei teste erau roșii sau au devenit roșii, toate din același motiv:** fixau o
+stare a datelor, nu o regulă. `test-rendered` cerea un titlu scos pe 8 septembrie;
+`test-observatii` folosea `constructor` drept exemplu de meserie fără date proprii,
+iar el tocmai a trecut pragul; `test-crawler` folosea „stivuitorist" drept meserie
+din afara catalogului, iar eu tocmai l-am adăugat. Toate trei exprimă acum regula.

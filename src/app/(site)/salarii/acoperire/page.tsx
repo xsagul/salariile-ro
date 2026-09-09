@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { Breadcrumb, H1, Lead } from '@/app/components/ui';
 import { MESERII } from '@/lib/meserii';
 import { ACOPERIRE_ANUNTURI, DATA_VERIFICARE_ANUNTURI, PRAGURI_ANUNTURI, INVENTAR_SURSE } from '@/lib/acoperire-anunturi';
+import { grilaPublica } from '@/lib/grile-publice';
+import { grilaEducatie } from '@/lib/repere-meserii';
 
 export const metadata: Metadata = {
   title: 'Acoperirea datelor salariale pe meserii',
@@ -16,6 +18,14 @@ export default function Acoperire() {
   const cuDate = rows.filter(r=>(r.a?.n ?? 0) > 0).length;
   const publicabile = rows.filter(r=>r.a?.medianBounds).length;
   const surseIncomplete = Object.entries(INVENTAR_SURSE).filter(([,s])=>!s.catalogPassComplete);
+  // O meserie platita dupa grila legala nu are anunturi pentru ca asa e platita,
+  // nu pentru ca am ratat-o noi. Un rand de zerouri cu „Fara anunturi eligibile"
+  // citeste ca esec al colectarii si ne descalifica pe nedrept.
+  const peGrila = (slug: string) => {
+    const g = grilaPublica(slug);
+    return grilaEducatie(slug).length > 0 || (!!g && !g.doarSectiune);
+  };
+  const nr = (v: number | null | undefined) => (v ? v.toLocaleString('ro-RO') : '—');
   return <div className="bg-canvas"><div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
     <Breadcrumb items={[{href:'/',label:'Acasă'},{href:'/salarii',label:'Salarii pe meserii'},{label:'Acoperirea datelor'}]} />
     <H1>Cât știm despre salariile pe meserii</H1>
@@ -41,7 +51,7 @@ export default function Acoperire() {
     <div className="mt-8 overflow-x-auto"><table className="w-full text-sm">
       <caption className="sr-only">Acoperirea anunțurilor salariale pentru fiecare meserie</caption>
       <thead className="text-left text-stone-700"><tr className="border-b border-stone-300"><th className="p-3">Meserie</th><th className="p-3 text-right">Citite</th><th className="p-3 text-right">Fără sumă</th><th className="p-3 text-right">Anunțuri / lunar explicit</th><th className="p-3 text-right">Bază lângă sumă</th><th className="p-3 text-right">Bază nedeclarată</th><th className="p-3 text-right">Angajatori</th><th className="p-3 text-right">Județe</th><th className="p-3">Surse</th><th className="p-3">Publicarea medianei ofertelor</th></tr></thead>
-      <tbody>{rows.map(({m,a})=><tr key={m.slug} id={m.slug} className="scroll-mt-24 border-b border-stone-200 target:bg-amber-50"><th scope="row" className="p-3 text-left font-medium"><Link className="inline-flex min-h-11 items-center underline" href={`/salarii/${m.slug}`}>{m.nume}</Link></th><td className="p-3 text-right text-stone-600">{a?.read ?? 0}</td><td className="p-3 text-right text-stone-600">{a?.withoutSalary ?? 0}</td><td className="p-3 text-right">{a?.n ?? 0} / {a?.explicitMonthly ?? 0}</td><td className="p-3 text-right text-stone-600">{a?.basisNearAmount ?? 0}</td><td className="p-3 text-right text-stone-600">{a?.undeclaredBasis?.n ?? 0}</td><td className="p-3 text-right">{a?.employers ?? 0}</td><td className="p-3 text-right">{a?.counties ?? 0}</td><td className="p-3 text-stone-600">{a ? Object.entries(a.sourceCounts).map(([s,n])=>`${s}: ${n}`).join(' · ') || '—' : '—'}</td><td className="p-3 text-stone-600">{a?.medianBounds ? 'Limite calculabile' : a?.n ? 'Acoperire insuficientă' : 'Fără anunțuri eligibile'}</td></tr>)}</tbody>
+      <tbody>{rows.map(({m,a})=><tr key={m.slug} id={m.slug} className="scroll-mt-24 border-b border-stone-200 target:bg-amber-50"><th scope="row" className="p-3 text-left font-medium"><Link className="inline-flex min-h-11 items-center underline" href={`/salarii/${m.slug}`}>{m.nume}</Link></th><td className="p-3 text-right text-stone-600">{nr(a?.read)}</td><td className="p-3 text-right text-stone-600">{nr(a?.withoutSalary)}</td><td className="p-3 text-right">{a?.n ? `${a.n} / ${a.explicitMonthly ?? 0}` : '—'}</td><td className="p-3 text-right text-stone-600">{nr(a?.basisNearAmount)}</td><td className="p-3 text-right text-stone-600">{nr(a?.undeclaredBasis?.n)}</td><td className="p-3 text-right">{nr(a?.employers)}</td><td className="p-3 text-right">{nr(a?.counties)}</td><td className="p-3 text-stone-600">{a ? Object.entries(a.sourceCounts).map(([s,n])=>`${s}: ${n}`).join(' · ') || '—' : '—'}</td><td className="p-3 text-stone-600">{a?.medianBounds ? 'Limite calculabile' : a?.n ? 'Acoperire insuficientă' : peGrila(m.slug) ? 'Salarizare pe grilă legală' : 'Fără anunțuri eligibile'}</td></tr>)}</tbody>
     </table></div>
   </div></div>;
 }

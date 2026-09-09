@@ -66,6 +66,14 @@ const aliases = {
   profesor: ['profesoara'],
   'insotitor-de-bord': ['insotitor de bord','stewardesa','flight attendant','cabin crew'],
   'receptioner-hotel': ['receptioner hotel','hotel receptionist','receptionera hotel'],
+  // Formele din anunturi pentru meseriile adaugate pe 9 septembrie. Pluralele
+  // le prinde `stem`; aici stau doar cuvintele efectiv diferite.
+  // „Ambalator" NU intra la manipulant: ambalarea si manipularea marfii sunt
+  // grupe ISCO distincte, iar o meserie nu se largeste ca sa atinga un prag.
+  magaziner: ['gestionar depozit','gestionar de depozit','lucrator depozit','lucrator in depozit','operator depozit','gestionar marfa'],
+  stivuitorist: ['operator stivuitor','operator motostivuitor','motostivuitorist','conducator stivuitor'],
+  'manipulant-marfa': ['manipulant','manipulant marfa','manipulant marfuri'],
+  'sofer-distributie': ['sofer livrator','sofer livrari','sofer categoria b','sofer cat b','sofer de distributie'],
 };
 export function queriesFor(job) { return [...new Set([clean(job.nume), ...(aliases[job.slug] || []).slice(0, 2)])]; }
 const rules = names.flatMap(job => [clean(job.nume),clean(job.slug),...(aliases[job.slug] || [])].map(term => ({ slug: job.slug, term: clean(term) })));

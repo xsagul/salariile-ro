@@ -148,6 +148,13 @@ export type Pilon = {
   n: number | null;
   stare: 'publicat' | 'insuficient' | 'lipsa';
   nota: string;
+  /**
+   * De ce lipseste cifra, cand lipsa nu e o scapare de-a noastra. Un profesor
+   * nu se angajeaza prin anunt cu salariu negociabil: e platit dupa Legea
+   * 153/2017. „Nu avem" ar spune ca n-am reusit sa masuram; adevarul e ca
+   * anuntul e instrumentul gresit pentru meseria asta.
+   */
+  motivLipsa?: string;
 };
 
 /**
@@ -183,6 +190,12 @@ export function piloniMeserie(d: DateMeserie): Pilon[] {
     n: a?.n ?? 0,
     stare: a?.medianBounds ? 'publicat' : a?.n ? 'insuficient' : 'lipsa',
     nota: 'O ofertă de angajare nu este salariul încasat de cineva care lucrează de ani în acel post.',
+    // Grila legala sau grila de invatamant inseamna ca meseria e platita dupa
+    // lege, nu negociata in anunt. Atunci absenta anunturilor e o proprietate a
+    // meseriei, nu o lipsa a colectarii, si se spune ca atare.
+    ...(!a?.n && (grid || teaching.length)
+      ? { motivLipsa: 'Meserie plătită după grila legală, nu prin ofertă negociată în anunț.' }
+      : {}),
   };
   const declarat: Pilon = report ? {
     cheie: 'declarat', titlu: 'Ce declară angajații',

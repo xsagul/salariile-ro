@@ -253,6 +253,22 @@ export const MESERII: Meserie[] = [
     ceFace: "Conduce autospeciala de salvare în regim de urgență prioritară, menține vehiculul operativ și sprijină echipajul medical la transportul pacienților." },
   { slug: "logistician", nume: "Logistician", de: "logistician", categorie: "transport", caen3: "52", caen2: "52", isco: "specialisti", cor: "214955",
     ceFace: "Planifică fluxul de mărfuri între furnizori, depozite și clienți și optimizează costul de transport." },
+  // Adaugate pe 9 septembrie 2026, pe dovezi, nu pe intuitie: fiecare avea in
+  // colectarea proprie peste treizeci de anunturi cu baza net/brut declarata,
+  // din cel putin patru platforme. Pana atunci anunturile lor cadeau cu
+  // `unknown_occupation`, desi parserul le citise corect suma.
+  // „Montator" a fost masurat si respins: in COR nu exista ca ocupatie, ci ca
+  // cincisprezece meserii diferite — placaje, pereti, tamplarie, subansamble —
+  // iar o mediana peste ele n-ar descrie nicio meserie reala.
+  { slug: "magaziner", nume: "Magaziner", de: "magaziner", categorie: "transport", caen3: "52", caen2: "52", isco: "functionari", cor: "432102",
+    ceFace: "Primește, așază și eliberează marfa din depozit, ține evidența stocului și întocmește documentele de intrare și de ieșire." },
+  { slug: "stivuitorist", nume: "Stivuitorist", de: "stivuitorist", categorie: "transport", caen3: "52", caen2: "52", isco: "operatori", cor: "834403",
+    ceFace: "Manevrează motostivuitorul la încărcat, descărcat și stivuit, pe baza autorizației pentru utilajul respectiv." },
+  { slug: "manipulant-marfa", nume: "Manipulant mărfuri", de: "manipulant de mărfuri", categorie: "transport", caen3: "52", caen2: "52", isco: "elementare", cor: "933303",
+    ceFace: "Încarcă, descarcă și pregătește marfa pentru livrare, manual sau cu transpaleta." },
+  { slug: "sofer-distributie", nume: "Șofer distribuție", de: "șofer de distribuție", categorie: "transport", caen3: "49", caen2: "49", isco: "operatori", cor: "832201",
+    ceFace: "Livrează marfă pe o rută zilnică cu autoutilitară, de regulă pe categoria B, și predă documentele la fiecare punct.",
+    nota: "COR nu separă distribuția locală de transportul rutier de mărfuri; codul este cel al autoturismelor și camionetelor, comun cu taximetria." },
 
   // ─── Comerț ────────────────────────────────────────────────────────────────
   { slug: "vanzator", nume: "Vânzător", de: "vânzător", categorie: "comert", caen3: "47", caen2: "G", isco: "servicii", cor: "522101",

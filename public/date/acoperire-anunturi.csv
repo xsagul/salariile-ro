@@ -47,11 +47,11 @@ inginer-auto,2,1,2,0,2,0,1,insufficient,too_few_ads|too_few_known_employers|too_
 inginer-energetician,0,0,0,0,0,0,0,no_verified_ads,too_few_ads|too_few_known_employers|too_few_known_counties|single_source|too_few_explicit_monthly
 inginer-petrol,0,0,0,0,0,0,0,no_verified_ads,too_few_ads|too_few_known_employers|too_few_known_counties|single_source|too_few_explicit_monthly
 inginer-agronom,0,1,0,0,0,0,0,no_verified_ads,too_few_ads|too_few_known_employers|too_few_known_counties|single_source|too_few_explicit_monthly
-constructor,33,134,13,20,26,12,5,insufficient,pay_period_sensitivity
+constructor,32,133,13,19,25,12,5,advertised_interval,
 zidar,0,21,0,0,0,0,0,no_verified_ads,too_few_ads|too_few_known_employers|too_few_known_counties|single_source|too_few_explicit_monthly
 dulgher,16,15,6,10,15,9,3,insufficient,too_few_ads|too_few_explicit_monthly
-electrician,117,122,58,59,84,19,5,advertised_interval,
-instalator,60,82,32,28,44,11,5,advertised_interval,
+electrician,115,122,58,57,82,19,5,advertised_interval,
+instalator,59,82,31,28,44,11,5,advertised_interval,
 zugrav,1,15,1,0,1,1,1,insufficient,too_few_ads|too_few_known_employers|too_few_known_counties|single_source|employer_concentration|source_concentration|too_few_explicit_monthly
 faiantar,2,6,0,2,1,2,2,insufficient,too_few_ads|too_few_known_employers|too_few_known_counties|employer_concentration|too_few_explicit_monthly|source_sensitivity
 sudor,34,58,22,12,23,14,4,advertised_interval,
@@ -74,7 +74,11 @@ postas,0,0,0,0,0,0,0,no_verified_ads,too_few_ads|too_few_known_employers|too_few
 pilot,0,0,0,0,0,0,0,no_verified_ads,too_few_ads|too_few_known_employers|too_few_known_counties|single_source|too_few_explicit_monthly
 insotitor-de-bord,0,0,0,0,0,0,0,no_verified_ads,too_few_ads|too_few_known_employers|too_few_known_counties|single_source|too_few_explicit_monthly
 sofer-ambulanta,0,0,0,0,0,0,0,no_verified_ads,too_few_ads|too_few_known_employers|too_few_known_counties|single_source|too_few_explicit_monthly
-logistician,12,13,9,3,9,4,4,insufficient,too_few_ads|too_few_known_employers|too_few_known_counties|too_few_explicit_monthly
+logistician,12,12,9,3,9,4,4,insufficient,too_few_ads|too_few_known_employers|too_few_known_counties|too_few_explicit_monthly
+magaziner,53,41,32,21,47,12,5,advertised_interval,
+stivuitorist,53,33,23,30,32,15,4,advertised_interval,
+manipulant-marfa,35,52,7,28,26,18,5,insufficient,too_few_explicit_monthly
+sofer-distributie,27,55,13,14,19,11,4,insufficient,too_few_ads
 vanzator,128,220,28,100,64,22,6,advertised_interval,
 casier,50,65,13,37,26,10,4,advertised_interval,
 manager-magazin,11,11,10,1,6,1,3,insufficient,too_few_ads|too_few_known_employers|too_few_known_counties|employer_concentration|source_concentration|source_sensitivity
@@ -88,7 +92,7 @@ functionar-public,0,0,0,0,0,0,0,no_verified_ads,too_few_ads|too_few_known_employ
 politist,0,0,0,0,0,0,0,no_verified_ads,too_few_ads|too_few_known_employers|too_few_known_counties|single_source|too_few_explicit_monthly
 jandarm,0,0,0,0,0,0,0,no_verified_ads,too_few_ads|too_few_known_employers|too_few_known_counties|single_source|too_few_explicit_monthly
 pompier,1,3,1,0,1,0,1,insufficient,too_few_ads|too_few_known_employers|too_few_known_counties|single_source|employer_concentration|source_concentration|too_few_explicit_monthly
-militar,2,2,1,1,1,1,2,insufficient,too_few_ads|too_few_known_employers|too_few_known_counties|employer_concentration|too_few_explicit_monthly
+militar,1,1,0,1,0,1,1,insufficient,too_few_ads|too_few_known_employers|too_few_known_counties|single_source|source_concentration|too_few_explicit_monthly
 jurnalist,0,1,0,0,0,0,0,no_verified_ads,too_few_ads|too_few_known_employers|too_few_known_counties|single_source|too_few_explicit_monthly
 editor,1,4,1,0,1,0,1,insufficient,too_few_ads|too_few_known_employers|too_few_known_counties|single_source|employer_concentration|source_concentration|too_few_explicit_monthly
 cameraman,0,0,0,0,0,0,0,no_verified_ads,too_few_ads|too_few_known_employers|too_few_known_counties|single_source|too_few_explicit_monthly

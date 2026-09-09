@@ -30,13 +30,17 @@ assert.equal(assess({...base,active:undefined},evidence,now).accepted,false);
 assert.equal(assess(base,{...evidence,retrievedAt:'2025-01-01'},now).accepted,false);
 // Un anunt cu suma clara, dar cu o meserie care nu e in catalog, nu este un anunt
 // fara suma. Confundandu-le, limita catalogului s-ar citi drept limita a pietei.
-const faraCatalog=assess({...base,title:'Angajam stivuitorist',description:'Salariu 4500 lei net pe luna.',salary:null},evidence,now);
+// Titlul trebuie sa ramana in afara catalogului ca testul sa aiba sens. Pana pe
+// 9 septembrie 2026 aici scria „stivuitorist", care intre timp a intrat in
+// catalog si a facut cazul sa se accepte. Daca „sommelier" ajunge vreodata
+// meserie publicata, se schimba si aici.
+const faraCatalog=assess({...base,title:'Angajam sommelier',description:'Salariu 4500 lei net pe luna.',salary:null},evidence,now);
 assert.equal(faraCatalog.accepted,false);
 assert.ok(faraCatalog.reasons.includes('unknown_occupation'));
 assert.ok(faraCatalog.reasons.includes('amount_without_catalogue_occupation'));
 assert.ok(!faraCatalog.reasons.includes('salary_evidence_incomplete'),'Suma exista; ce lipseste este meseria');
 // Cand chiar nu exista nicio suma, motivul ramane cel despre suma.
-assert.ok(assess({...base,title:'Angajam stivuitorist',description:'Program de 8 ore.',salary:null},evidence,now)
+assert.ok(assess({...base,title:'Angajam sommelier',description:'Program de 8 ore.',salary:null},evidence,now)
   .reasons.includes('salary_evidence_incomplete'));
 assert.equal(classifyTitle('Ajutoare de bucătar').slug,null);
 assert.equal(extractSalary({description:'Salariu net de la 5000 lei lunar'}),null);

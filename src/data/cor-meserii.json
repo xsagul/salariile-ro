@@ -305,9 +305,17 @@
       "code": "214955",
       "name": "logistician în transporturi"
     },
+    "magaziner": {
+      "code": "432102",
+      "name": "magaziner"
+    },
     "manager-magazin": {
       "code": null,
       "name": null
+    },
+    "manipulant-marfa": {
+      "code": "933303",
+      "name": "manipulant mărfuri"
     },
     "marinar": {
       "code": "835001",
@@ -469,6 +477,10 @@
       "code": "833101",
       "name": "conducător auto transport rutier de persoane"
     },
+    "sofer-distributie": {
+      "code": "832201",
+      "name": "șofer de autoturisme și camionete"
+    },
     "sofer-ridesharing": {
       "code": "832201",
       "name": "sofer autoturisme si camionete"
@@ -492,6 +504,10 @@
     "sticlar": {
       "code": null,
       "name": null
+    },
+    "stivuitorist": {
+      "code": "834403",
+      "name": "stivuitorist"
     },
     "stomatolog": {
       "code": "226101",

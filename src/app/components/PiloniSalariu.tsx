@@ -7,7 +7,13 @@ const lei = (n: number) => `${Math.round(n).toLocaleString('ro-RO')} lei`;
 function cifra(p: Pilon) {
   if (p.valoare !== null) return lei(p.valoare);
   if (p.interval) return `${lei(p.interval.min)} – ${lei(p.interval.max)}`;
-  return p.stare === 'insuficient' ? 'date insuficiente' : 'nu avem';
+  // „Nu avem" spune ca am incercat si n-am reusit. Cand meseria e platita dupa
+  // grila legala, anuntul e instrumentul gresit, iar asta se scrie pe fata.
+  if (p.motivLipsa) return 'nu se măsoară aici';
+  if (p.stare === 'insuficient') return 'date insuficiente';
+  // Pentru anunturi lipsa e a colectarii noastre, care continua; pentru o sursa
+  // externa pe care doar o citam, nu.
+  return p.cheie === 'anunturi' ? 'încă necolectat' : 'nu avem';
 }
 
 /**
@@ -33,6 +39,7 @@ export default function PiloniSalariu({ date }: { date: DateMeserie }) {
             <p className={`mt-2 font-bold tracking-tight text-stone-900 ${p.valoare !== null ? 'text-2xl' : 'text-lg'}`}>{cifra(p)}</p>
             <p className="mt-1 text-xs text-stone-600">net / lună · {p.concept}</p>
             {p.n !== null && p.n > 0 && <p className="mt-1 text-xs text-stone-600">{p.n} anunțuri verificate</p>}
+            {p.motivLipsa && <p className="mt-1 text-xs text-stone-600">{p.motivLipsa}</p>}
             <p className="mt-2 text-xs text-stone-600">
               {p.url.startsWith('/')
                 ? <Link className="underline underline-offset-2" href={p.url}>{p.sursa}</Link>

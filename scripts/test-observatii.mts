@@ -2,7 +2,9 @@ import assert from 'node:assert/strict';
 import { urlSursaValid } from "./lib/url-sursa";
 import { agregheaza, incadreaza, PRAG_PUBLICARE, type ObservatieSalariala } from '../src/lib/observatii-salariale';
 import { MESERII, dateMeserieSauEroare, COMPARATII } from '../src/lib/meserii';
-import { reperMeserie, textReper, piloniMeserie, convergentaPiloni, reperCompus } from '../src/lib/repere-meserii';
+import { reperMeserie, textReper, piloniMeserie, convergentaPiloni, reperCompus, grilaEducatie } from '../src/lib/repere-meserii';
+import { grilaPublica } from '../src/lib/grile-publice';
+import { ACOPERIRE_ANUNTURI } from '../src/lib/acoperire-anunturi';
 import { indicatorMeserie } from '../src/lib/indicator-meserie';
 import cor from '../src/data/cor-meserii.json';
 import reports from '../src/data/repere-piata-verificate.json';
@@ -62,8 +64,18 @@ for(const m of MESERII) {
  } else if(r.kind==='external-advertised') assert.ok(r.n && r.n>=30);
  else assert.equal(r.value,salario);
 }
+// Regula, nu exemplul: o meserie fara masuratoare proprie cade pe contextul de
+// sector, si numai acolo. `constructor` a fost pana pe 9 septembrie 2026 al
+// doilea exemplu fix; a trecut pragul de publicare din anunturi si a incetat sa
+// mai ilustreze regula. Fixarea unui slug testa starea datelor, nu comportamentul.
 assert.equal(reperMeserie(dateMeserieSauEroare(MESERII.find(x=>x.slug==='cercetator')!)).kind,'sector-context');
-assert.equal(reperMeserie(dateMeserieSauEroare(MESERII.find(x=>x.slug==='constructor')!)).kind,'sector-context');
+for(const m of MESERII){
+ const d=dateMeserieSauEroare(m), r=reperMeserie(d), a=ACOPERIRE_ANUNTURI[m.slug];
+ const areMasuratoare=!!a?.medianBounds||!!reports.records.find(x=>x.slug===m.slug)
+  ||grilaEducatie(m.slug).length>0||!!(grilaPublica(m.slug)&&!grilaPublica(m.slug)!.doarSectiune);
+ if(!areMasuratoare)assert.equal(r.kind,'sector-context',`${m.slug}: fara masuratoare proprie, reperul trebuie sa ramana context de sector`);
+ if(r.kind==='sector-context')assert.ok(!a?.medianBounds,`${m.slug}: are mediana publicabila, dar reperul e context de sector`);
+}
 // Pilonii raman calculati separat, cu sursa fiecaruia, si cand din ei se
 // construieste reperul propriu al site-ului.
 for(const m of MESERII){

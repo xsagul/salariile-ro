@@ -306,6 +306,22 @@
       "nume": "Logistician"
     },
     {
+      "slug": "magaziner",
+      "nume": "Magaziner"
+    },
+    {
+      "slug": "stivuitorist",
+      "nume": "Stivuitorist"
+    },
+    {
+      "slug": "manipulant-marfa",
+      "nume": "Manipulant mărfuri"
+    },
+    {
+      "slug": "sofer-distributie",
+      "nume": "Șofer distribuție"
+    },
+    {
       "slug": "vanzator",
       "nume": "Vânzător"
     },

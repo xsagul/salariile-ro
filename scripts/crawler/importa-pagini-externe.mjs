@@ -23,6 +23,7 @@ import * as cheerio from 'cheerio';
 import { hash } from './http.mjs';
 import { canonicalUrl } from './policy.mjs';
 import { detailRecord, assess, resolveSalary } from './extract.mjs';
+import { exportRun } from './export-run.mjs';
 import { classifyAll } from './occupations.mjs';
 
 const arg = (key, fallback) => process.argv.find(a => a.startsWith(`--${key}=`))?.slice(key.length + 3) ?? fallback;
@@ -189,4 +190,7 @@ entry.importExtern = {
   },
 };
 fs.writeFileSync(statePath, JSON.stringify(proaspat, null, 2));
-console.log(JSON.stringify({ adaugateInStare: adaugate, dejaAvute: sarite, copieDeSiguranta: copie }, null, 1));
+// Exportul se reface din starea noua. Fara asta `crawl:report` ar audita
+// `verified.json` de dinaintea importului si n-ar vedea observatiile adaugate.
+const payload = exportRun(proaspat, `.cercetare-privata/crawl-runs/${run}`);
+console.log(JSON.stringify({ adaugateInStare: adaugate, dejaAvute: sarite, copieDeSiguranta: copie, ...payload.stats }, null, 1));
