@@ -51,7 +51,7 @@ function Camp({ eticheta, ajutor, valoare, onChange, sufix, min = 0, pas = 1 }: 
           step={pas}
           value={valoare}
           onChange={(e) => onChange(e.target.value)}
-          className="min-h-11 w-full rounded border border-stone-300 px-3 py-2 text-sm tabular-nums text-stone-900 focus:border-stone-500 focus:outline-none focus:ring-1 focus:ring-stone-300"
+          className="min-h-11 w-full rounded border border-stone-300 px-3 py-2 text-base tabular-nums text-stone-900 sm:text-sm focus:border-stone-500 focus:outline-none focus:ring-1 focus:ring-stone-300"
         />
         <span className="shrink-0 text-sm text-stone-600">{sufix}</span>
       </span>
