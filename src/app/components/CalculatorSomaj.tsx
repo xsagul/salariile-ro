@@ -69,7 +69,7 @@ export default function CalculatorSomaj() {
   const fara = !absolvent && durataLuni(aniStagiu) === null;
 
   return (
-    <div className="grid gap-4 md:grid-cols-5">
+    <div id="calc-somaj" className="mx-auto grid max-w-6xl gap-6 px-4 py-8 sm:px-6 sm:py-12 md:grid-cols-5">
       {/* ─── Intrări ─────────────────────────────────────────────────── */}
       <div className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-2">
         <h2 className={colHeader}>Situația ta</h2>
@@ -85,7 +85,7 @@ export default function CalculatorSomaj() {
             <span>
               Sunt absolvent
               <span className="mt-0.5 block text-xs text-stone-600">
-                Altă regulă: sumă fixă, pe 6 luni, fără legătură cu vreun salariu anterior.
+                Sumă fixă, pe 6 luni, indiferent de salariul anterior.
               </span>
             </span>
           </label>
@@ -94,7 +94,7 @@ export default function CalculatorSomaj() {
             <>
               <SelectorPastile
                 eticheta="Stagiul de cotizare"
-                ajutor="Perioada în care s-au plătit contribuții de șomaj. Decide și durata, și cota."
+                ajutor="Decide și durata, și cota."
                 optiuni={STAGII}
                 valoare={aniStagiu}
                 onChange={(v) => { setAniStagiu(v); reset(); }}
@@ -105,7 +105,7 @@ export default function CalculatorSomaj() {
                   Media salariului brut, ultimele 12 luni
                 </span>
                 <span className="mt-0.5 block text-xs leading-relaxed text-stone-600">
-                  Baza pe care s-au plătit contribuțiile de șomaj. Contează doar peste 3 ani de stagiu.
+                  Contează doar peste 3 ani de stagiu.
                 </span>
                 <span className="mt-2 flex items-center gap-2">
                   <input

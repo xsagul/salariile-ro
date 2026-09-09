@@ -114,7 +114,7 @@ export default function CalculatorOreSuplimentare() {
   const reset = () => setRez(null);
 
   return (
-    <div className="grid gap-4 md:grid-cols-5">
+    <div id="calc-ore" className="mx-auto grid max-w-6xl gap-6 px-4 py-8 sm:px-6 sm:py-12 md:grid-cols-5">
       {/* ─── Intrări ─────────────────────────────────────────────────── */}
       <div className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-2">
         <h2 className={colHeader}>Orele tale</h2>
@@ -122,7 +122,7 @@ export default function CalculatorOreSuplimentare() {
         <div className="flex flex-col gap-5">
           <Camp
             eticheta="Salariul de bază brut"
-            ajutor="Suma din contract, înainte de sporuri."
+            ajutor="Din contract, înainte de sporuri."
             valoare={baza}
             onChange={(v) => { setBaza(v); reset(); }}
             sufix="lei"
@@ -131,7 +131,7 @@ export default function CalculatorOreSuplimentare() {
 
           <SelectorPastile
             eticheta="Luna"
-            ajutor="Tariful orar depinde de câte zile lucrătoare are luna, nu de o medie."
+            ajutor="Tariful orar depinde de zilele lucrătoare ale lunii."
             optiuni={optiuniLuni}
             valoare={luna0}
             onChange={(v) => { setLuna0(v); reset(); }}
@@ -140,7 +140,7 @@ export default function CalculatorOreSuplimentare() {
           <div className="grid gap-4 sm:grid-cols-2">
             <Camp
               eticheta="Ore suplimentare"
-              ajutor="Doar cele necompensate cu ore libere plătite."
+              ajutor="Doar cele neplătite cu timp liber."
               valoare={oreSup}
               onChange={(v) => { setOreSup(v); reset(); }}
               sufix="ore"

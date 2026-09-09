@@ -117,7 +117,7 @@ export default function CalculatorSanatate() {
   const sporGradatie = r ? r.salariuDeBaza - r.salariuGrila : null;
 
   return (
-    <div className="grid gap-4 md:grid-cols-5">
+    <div id="calc-sanatate" className="mx-auto grid max-w-6xl gap-6 px-4 py-8 sm:px-6 sm:py-12 md:grid-cols-5">
       {/* ─── Opțiuni ─────────────────────────────────────────────────── */}
       <div className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-2">
         <h2 className={colHeader}>Încadrarea</h2>
@@ -125,7 +125,6 @@ export default function CalculatorSanatate() {
         <div className="flex flex-col gap-5">
           <SelectorPastile
             eticheta="Meseria"
-            ajutor="Funcțiile din Anexa nr. II a Legii 153/2017, pentru unități sanitare publice."
             optiuni={optiuniMeserii}
             valoare={slug}
             onChange={(v) => {
@@ -133,24 +132,21 @@ export default function CalculatorSanatate() {
               setTreapta(null);
               setRez(null);
             }}
-            coloane={1}
           />
 
           <SelectorPastile
             eticheta="Treapta profesională"
-            ajutor="Gradul din grilă — debutant, specialist, principal și așa mai departe."
             optiuni={optiuniTrepte}
             valoare={treaptaCurenta}
             onChange={(v) => {
               setTreapta(v);
               setRez(null);
             }}
-            coloane={1}
           />
 
           <SelectorPastile
             eticheta="Gradația de vechime în muncă"
-            ajutor="Vechimea din toată cariera, nu doar din sănătate. Se aplică peste suma din grilă."
+            ajutor="Din toată cariera, nu doar din sănătate."
             optiuni={optiuniGradatie}
             valoare={gradatie}
             onChange={(v) => {
@@ -162,7 +158,7 @@ export default function CalculatorSanatate() {
           <div className="border-t border-stone-200 pt-4">
             <Toggle
               label="Titlu științific de doctor"
-              hint={`${fmt(INDEMNIZATIE_DOCTORAT_2026)} lei lunar. ${CONDITII_DOCTORAT}`}
+              hint={`${fmt(INDEMNIZATIE_DOCTORAT_2026)} lei lunar, dacă lucrezi în domeniul titlului.`}
               checked={doctorat}
               onChange={(v) => {
                 setDoctorat(v);
@@ -171,7 +167,7 @@ export default function CalculatorSanatate() {
             />
             <Toggle
               label="Primesc alte drepturi de hrană"
-              hint="Bifează dacă unitatea acordă hrană potrivit legislației specifice — atunci indemnizația de 347 lei nu se cuvine (art. 18 alin. (1))."
+              hint="Atunci indemnizația de hrană nu se cuvine."
               checked={alteDrepturiHrana}
               onChange={(v) => {
                 setAlteDrepturiHrana(v);
