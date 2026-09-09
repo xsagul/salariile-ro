@@ -14,6 +14,7 @@ const IMPLEMENTED_PAGES = new Set<string>([
   "/calculator-salariu-sanatate",
   "/calculator-ore-suplimentare",
   "/calculator-indemnizatie-somaj",
+  "/en/salary-calculator",
   "/fluturas-salariu",
   "/widget",
   "/salariu-minim",

@@ -46,6 +46,10 @@ const NAV: Item[] = [
     ],
   },
   { href: "/noutati", label: "Noutăți" },
+  // Pagina în engleză. Stă la capătul navigației, ca la site-urile care au
+  // versiune internațională, ca să fie găsită de cine caută „EN" fără să ocupe
+  // spațiu în meniul principal.
+  { href: "/en/salary-calculator", label: "EN" },
 ];
 
 const isGroup = (i: Item): i is Group => "children" in i;
