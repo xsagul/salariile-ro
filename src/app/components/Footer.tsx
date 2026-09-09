@@ -13,6 +13,7 @@ const IMPLEMENTED_PAGES = new Set<string>([
   "/calculator-salariu-invatamant",
   "/calculator-salariu-sanatate",
   "/calculator-ore-suplimentare",
+  "/calculator-indemnizatie-somaj",
   "/fluturas-salariu",
   "/widget",
   "/salariu-minim",
@@ -50,6 +51,7 @@ const FOOTER_GROUPS: Array<{ title: string; links: FooterLink[] }> = [
       { href: "/calculator-salariu-invatamant", label: "Calculator salariu învățământ" },
       { href: "/calculator-salariu-sanatate", label: "Calculator salariu sănătate" },
       { href: "/calculator-ore-suplimentare", label: "Calculator ore suplimentare" },
+      { href: "/calculator-indemnizatie-somaj", label: "Calculator indemnizație șomaj" },
     ],
   },
   {

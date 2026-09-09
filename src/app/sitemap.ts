@@ -29,6 +29,7 @@ const STATIC_ENTRIES: {
   { path: "/calculator-salariu-invatamant", priority: 0.9, changeFrequency: "monthly" },
   { path: "/calculator-salariu-sanatate", priority: 0.9, changeFrequency: "monthly" },
   { path: "/calculator-ore-suplimentare", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/calculator-indemnizatie-somaj", priority: 0.9, changeFrequency: "monthly" },
   { path: "/salariu-mediu", priority: 0.9, changeFrequency: "monthly" },
   { path: "/salarii", priority: 0.8, changeFrequency: "monthly" },
   { path: "/compara", priority: 0.7, changeFrequency: "monthly" },

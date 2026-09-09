@@ -29,6 +29,7 @@ const NAV: Item[] = [
       { href: "/calculator-salariu-invatamant", label: "Salariu învățământ" },
       { href: "/calculator-salariu-sanatate", label: "Salariu sănătate" },
       { href: "/calculator-ore-suplimentare", label: "Ore suplimentare" },
+      { href: "/calculator-indemnizatie-somaj", label: "Indemnizație șomaj" },
       { href: "/fluturas-salariu", label: "Generator fluturaș" },
       { href: "/widget", label: "Widget pentru site-ul tău" },
     ],
