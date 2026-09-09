@@ -188,7 +188,7 @@ export default function Page() {
           </p>
           <p>
             Verificat pe 9 septembrie 2026: două dintre site-urile care apar pe prima pagină la
-            „calculator indemnizație șomaj" folosesc încă formula veche.
+            „calculator indemnizație șomaj” folosesc încă formula veche.
           </p>
 
           <h2>Ce se reține și ce nu</h2>

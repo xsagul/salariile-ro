@@ -287,7 +287,15 @@ export function assess(r, evidence, now = new Date()) {
     ? perRole.map(c => ({ slug: c.roleSlugs[0], salary: c }))
     : resolved.salary ? classification.slugs.map(slug => ({ slug, salary: resolved.salary })) : [];
 
-  if (!pairs.length) reasons.push(resolved.error || 'salary_evidence_incomplete');
+  // Cand suma exista dar nu are de cine sa se lege, ce lipseste este meseria din
+  // catalog, deja consemnata mai sus. „salary_evidence_incomplete" ar spune ca
+  // anuntul nu declara nimic si ar face limita catalogului sa arate ca o limita a
+  // pietei: masurat pe 2.323 de anunturi salvate extern, 1.684 aveau o suma pe care
+  // parserul o rezolva, iar 1.168 dintre ele cadeau doar fiindca titlul nu se
+  // potriveste catalogului de 138 de meserii.
+  if (!pairs.length) reasons.push(resolved.salary && !classification.slugs.length
+    ? 'amount_without_catalogue_occupation'
+    : resolved.error || 'salary_evidence_incomplete');
   else for (const p of pairs) reasons.push(...salaryProblems(p.salary, r));
   if (reasons.length) return { accepted: false, reasons: [...new Set(reasons)], slug: classification.slugs[0] || null, slugs: classification.slugs, title: r.title, url: r.url, source: r.source };
 

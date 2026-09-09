@@ -2226,3 +2226,118 @@ ordonează după grupa de ocupații și activitate, nu după poziția în catego
 24.213 pagini citite, 3.036 acceptate, 89 din 138 de meserii atinse. OLX aproape
 complet; eJobs și publi24 limitate de gazdă. Parserul de listare eJobs, validat
 34/34, aduce ~12 observații la o cerere în loc de 0,35.
+
+## 9 septembrie 2026 — Corpusul extern de 2.323 de pagini: constrângerea nu mai e colectarea, e catalogul
+
+Colectarea făcută în afara pipeline-ului (Gemini, la cererea proprietarului) a
+livrat pe desktop **2.339 de pagini salvate** — 1.383 eJobs, 956 publi24 — plus
+listele de URL-uri și verdictele ei. Regula din `verifica-lot-extern.mjs` a rămas
+în picioare: nicio cifră din fișierele externe nu a intrat în date. Fișierul
+extern dă adresa și pagina; suma, meseria, baza și acceptarea le decide
+`extract.mjs` din HTML-ul salvat.
+
+### Cum a fost verificată autenticitatea
+
+O pagină este primită ca dovadă numai dacă își declară singură adresa:
+`<link rel="canonical">` trebuie să fie exact URL-ul căruia i-o atribuim. Altfel
+fișierul ar putea fi orice pagină salvată sub orice nume. Au trecut 2.323;
+16 pagini publi24 au fost respinse fiindcă declarau alt anunț.
+
+Al doilea control, independent: din cele 384 de anunțuri pe care parserul nostru
+le-a acceptat, **suma noastră coincide cu suma colectorului extern în toate
+384**. (Două păreau nepotriviri; erau un artefact al comparării cu coloana de
+citat, trunchiată, în loc de coloana de sumă.)
+
+Instrumentul e `scripts/crawler/importa-pagini-externe.mjs`. Fără `--scrie` nu
+modifică nimic, doar măsoară. `retrievedAt` este data reală a fișierului, nu
+momentul importului, fiindcă de ea depinde fereastra de prospețime din
+`policy.mjs`. Dovezile au intrat în cache-ul comun cu `provenance:
+"colectare-externa"`, deci se văd ca atare la audit.
+
+### Ce a adus
+
+2.316 din cele 2.339 de pagini erau URL-uri pe care **nu le citiserăm niciodată**
+— colectarea externă a mers pe listări de categorie, a noastră pe sitemap-uri,
+iar seturile sunt aproape disjuncte. Din ele, **384 de observații acceptate**
+(367 eJobs, 17 publi24), peste cele 3.037 existente.
+
+### Bugul de raportare: 1.168 de sume numărate drept „anunț fără sumă"
+
+`salary_evidence_incomplete` se adăuga și atunci când suma exista, dar titlul nu
+se lega de nicio meserie din catalog: fără meserie nu se formează nicio pereche
+`{meserie, sumă}`, iar codul cădea pe motivul despre sumă. Verificat pe un caz
+individual: „Angajez muncitori necalificați", text „Salariu 4500-4800 lei net",
+parserul rezolvă corect 4500–4800 net cu dovada bazei lângă cifră — și anunțul
+era înregistrat ca „fără dovadă de salariu".
+
+Numărat așa, motivul arăta ca o limită a pieței. Nu era: e limita catalogului.
+După corectare (`amount_without_catalogue_occupation`, cu test care pică pe codul
+vechi), histograma pe corpusul extern:
+
+| motiv | înainte | după |
+| --- | --- | --- |
+| eJobs, `salary_evidence_incomplete` | 871 | 212 |
+| publi24, `salary_evidence_incomplete` | 877 | 368 |
+
+Cifrele reale ale corpusului extern: **1.684 din 2.323 de pagini au o sumă pe
+care parserul nostru o rezolvă** (72,5%), iar **1.168 dintre ele cad exclusiv
+fiindcă meseria nu e în catalog**.
+
+### Cât de mare e golul, în colectarea pe care o avem deja
+
+**10.449 de anunțuri** din cele 25.169 citite au fost respinse cu
+`unknown_occupation`. Rulând `resolveSalary` pe `raw`-ul deja salvat, fără rețea,
+iată ce ar debloca fiecare meserie propusă — și, în ultima coloană, câte dintre
+ele chiar declară net sau brut, singurele care intră în mediană după decizia din
+8 septembrie:
+
+| meserie propusă | anunțuri | cu sumă | angajatori | locuri | surse | mediană | net+brut |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| muncitor-necalificat | 298 | 130 | 53 | 43 | 4 | 3.500 | 51 |
+| montator | 197 | 96 | 52 | 32 | 5 | 4.900 | 19 |
+| magaziner | 266 | 94 | 76 | 52 | 4 | 3.550 | 25 |
+| manipulant-marfa | 229 | 85 | 57 | 34 | 5 | 3.675 | 23 |
+| sofer-distributie | 169 | 82 | 41 | 32 | 4 | 3.650 | 18 |
+| stivuitorist | 164 | 66 | 50 | 27 | 5 | 3.999 | 24 |
+| dispecer-transport | 76 | 38 | 25 | 25 | 4 | 4.500 | 5 |
+| vopsitor-industrial | 71 | 37 | 24 | 20 | 4 | 6.000 | 10 |
+| lacatus | 92 | 36 | 20 | 22 | 3 | 4.750 | 6 |
+| frigotehnist | 46 | 36 | 12 | 11 | 3 | 5.250 | 21 |
+| sofer-camion | 67 | 33 | 15 | 21 | 4 | 5.750 | 1 |
+| camerista | 47 | 30 | 14 | 11 | 4 | 3.200 | 10 |
+| macaragiu | 27 | 10 | 6 | 8 | 3 | 7.400 | 3 |
+| merchandiser | 28 | 5 | 2 | 3 | 1 | 3.050 | 0 |
+
+### Concluzia sobră, care contează mai mult decât numărul mare
+
+`summarize` numără la `minAds` **doar observațiile cu bază declarată**. Pe coloana
+din dreapta, o singură meserie propusă trece de pragul de 30: muncitor
+necalificat, cu 51 — și nici ea nu e sigură până nu trec și pragurile de
+angajatori, județe, surse, lunar explicit și sensibilitate.
+
+Deci: catalogul chiar e constrângerea pe *cât din colectare e utilizabil*, dar
+transformarea în cifre publicate se lovește de același zid ca până acum — două
+treimi din anunțurile astea nu spun net sau brut. O meserie nouă înseamnă o
+pagină publică; adăugate toate paisprezece, ar fi în majoritate pagini sub prag,
+adică exact statutul celor 52 de meserii „insufficient" de azi.
+
+Verificarea cererii nu s-a putut face: cheia SE Ranking a rămas fără fonduri
+(402 Payment Required pe `keywords/export`). În GSC, ultimele 28 de zile, toate
+formulările care ating meseriile de mai sus adună **105 impresii și 0 clickuri** —
+dar asta nu dovedește lipsa cererii, fiindcă nu avem pagini pe care să apărem.
+
+### Ce a rămas nefăcut, deliberat
+
+Observațiile **nu** au fost înscrise în `state.json`. O a doua sesiune de agent
+lucra în același repo în timp ce rula analiza asta (procese Codex active,
+`state.json` rescris la 18:02, 18:20 și 18:37), iar `README`-ul crawlerului
+interzice explicit două scrieri concurente pe aceeași stare. Dovezile sunt însă
+salvate în cache, deci înscrierea e o singură comandă când repo-ul e liber:
+
+```
+node scripts/crawler/importa-pagini-externe.mjs --dir="<...>/pagini" \
+  --index="<...>/rezultate_5232.txt" --sursa=ejobs --scrie --adauga-in-stare
+```
+
+Face copie de siguranță a stării înainte să scrie și refuză să pornească dacă
+`collectionStoppedAt` lipsește.
