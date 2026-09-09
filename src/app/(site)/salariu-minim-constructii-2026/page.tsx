@@ -219,6 +219,28 @@ export default function SalariuMinimConstructii2026Page() {
         </Section>
 
         <Section>
+          <h2>Cum se calculează salariul net în construcții</h2>
+          <p>
+            La fel ca în orice alt domeniu. Din 1 ianuarie 2025, facilitățile fiscale sectoriale au
+            fost eliminate prin OUG 156/2024, iar un salariu din construcții se calculează cu
+            aceleași cote ca al oricărui salariat: CAS 25%, CASS 10% și impozit pe venit 10%, plus
+            CAM 2,25% în sarcina angajatorului.
+          </p>
+          <p>
+            Nu îți trebuie un calculator de salarii separat pentru construcții, pentru că nu mai
+            există un calcul separat. Singurul element sectorial rămas este pragul de la care
+            pornește salariul: <strong>{fmt(MINIM_CONSTRUCTII)} lei brut</strong> în construcții,
+            față de 4.325 lei în restul economiei. Peste acest prag, calculul brut-net este identic.
+          </p>
+          <p>
+            Pentru orice altă sumă decât minimul sectorial, pune brutul în{" "}
+            <Link href="/">calculatorul de salariu net</Link> și primești netul cu contribuțiile
+            defalcate. Rezultatul este exact cel pe care l-ar da un calculator dedicat
+            construcțiilor — formula nu diferă cu nimic.
+          </p>
+        </Section>
+
+        <Section>
           <h2>De ce netul urcă cu 15 lei din iulie</h2>
           <p>
             Brutul sectorial rămâne {fmt(MINIM_CONSTRUCTII)} lei, iar CAS și CASS au aceleași valori în ambele semestre.
