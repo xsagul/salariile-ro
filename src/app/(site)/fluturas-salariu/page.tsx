@@ -13,7 +13,7 @@ import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Fluturaș de salariu: generator PDF 2026",
   description:
-    "Generează gratuit un fluturaș de salariu PDF: brut, net, CAS, CASS, impozit, deducere personală, tichete și cost angajator, actualizat 2026.",
+    "Generează gratuit un fluturaș de salariu PDF, cu aceleași rânduri ca statul de plată: brut, net, CAS, CASS, impozit, deducere personală și cost angajator, 2026.",
   alternates: { canonical: "https://salariile.ro/fluturas-salariu" },
   openGraph: ogPage({
     title: "Fluturaș de salariu: generator PDF 2026",
@@ -36,6 +36,14 @@ const FAQ = [
   {
     q: "Este angajatorul obligat să îmi dea fluturaș de salariu?",
     a: "Codul Muncii (art. 168) obligă angajatorul să poată dovedi plata salariului prin statele de plată și documente justificative, iar tu ai dreptul să ceri detaliile calculului. Fluturașul, ca document numit așa, nu e impus explicit de lege, dar este practica standard, iar multe contracte colective de muncă îl prevăd expres. Dacă nu îl primești, cere-l în scris.",
+  },
+  {
+    q: "Care este diferența dintre fluturaș și statul de plată?",
+    a: "Sunt două documente diferite, cu același calcul în spate. Statul de plată este documentul angajatorului: cuprinde toți salariații, se semnează ca dovadă a plății și se arhivează în aceleași condiții ca actele contabile, conform art. 168 din Codul Muncii. Fluturașul este extrasul tău individual din acel stat — aceleași rânduri, dar numai pentru tine. De aceea generatorul de aici îți dă, practic, propriul rând din statul de plată: brut, contribuții, deduceri, net.",
+  },
+  {
+    q: "Pot folosi generatorul ca model de stat de plată?",
+    a: "Pentru un singur salariat, da: rândurile sunt aceleași și le poți transcrie într-un model de stat de plată. Documentul generat aici rămâne însă un fluturaș individual și orientativ, nu un stat de plată oficial — acela se întocmește de angajator pentru toți salariații, se semnează și se arhivează. Folosește-l ca să verifici cifrele, nu ca să înlocuiești evidența contabilă.",
   },
   {
     q: "Ce verific prima dată pe fluturaș?",
@@ -157,6 +165,36 @@ export default function FluturasSalariuPage() {
         <p className="source-note">
           Pentru tichetele de masă și modul în care sunt impozitate pe fluturaș, consultă ghidul despre{" "}
           <Link href="/noutati/tichete-de-masa-2026">taxele și valoarea netă a tichetelor de masă în 2026</Link>.
+        </p>
+      </Section>
+
+      <Section>
+        <h2>Fluturaș, stat de plată sau adeverință de salariu</h2>
+        <p>
+          Trei nume pentru aceleași cifre, cu roluri diferite. Confuzia dintre ele e firească,
+          pentru că toate pornesc din același calcul lunar.
+        </p>
+        <ul>
+          <li>
+            <strong>Statul de plată</strong> este documentul angajatorului, cu toți salariații pe
+            el. Se semnează ca dovadă a plății și se arhivează în aceleași condiții ca actele
+            contabile — <a href="https://legislatie.just.ro/Public/DetaliiDocument/128647" target="_blank" rel="noopener">Codul Muncii, art. 168</a>.
+            Un model de stat de plată are, pentru fiecare salariat, exact rândurile de mai jos.
+          </li>
+          <li>
+            <strong>Fluturașul</strong> este extrasul tău individual din statul de plată: aceleași
+            rânduri, dar numai ale tale. Generatorul de aici îl produce în PDF.
+          </li>
+          <li>
+            <strong>Adeverința de salariu</strong> este un document emis la cerere, pentru bancă
+            sau pentru o instituție, și atestă de obicei venitul pe mai multe luni, nu defalcarea
+            unei singure luni.
+          </li>
+        </ul>
+        <p>
+          Dacă ai nevoie de un model de stat de plată pentru un singur salariat, calculul de aici
+          îți dă toate rândurile de completat. Documentul generat rămâne orientativ: statul de
+          plată oficial se întocmește de angajator, se semnează și se arhivează.
         </p>
       </Section>
 
