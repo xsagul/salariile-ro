@@ -86,6 +86,16 @@ Tensiunea care a oprit-o, și care rămâne reală: `/despre` promite azi „nu 
 
 ## Roadmap activ
 
+### Prioritizarea SEO — precizare a proprietarului, 9 septembrie 2026
+
+Folosește SE Ranking pentru descoperirea familiilor mari de căutări conectate cu
+paginile existente și pentru extinderea utilității lor. Un cuvânt izolat cu volum
+mic și dificultate mică nu justifică o pagină nouă. Compară intenția întregului
+subiect, paginile care atrag trafic la concurenți, datele GSC și capacitatea
+noastră de a oferi un răspuns verificabil. Nu limita cercetarea la cuvinte ușoare
+și nu relua auditul tehnic general. Volumele SE Ranking sunt estimări de căutări,
+nu impresii sau clicuri garantate; variantele aceleiași intenții se pot suprapune.
+
 ### Salarii pe meserii — colectarea decisă pe 7 septembrie 2026
 
 Proprietarul cere o colectare amplă a anunțurilor active la momentul verificării,

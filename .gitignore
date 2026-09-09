@@ -98,6 +98,12 @@ gsc-key.json
 # Analiza de backlinkuri a competitiei — date private, repo-ul e public
 /research/backlinks-competitie-*/
 
+# Extragerile din Search Console: interogari, clickuri, impresii si pozitii,
+# defalcate pe pagina si pe cuvant. Aceeasi ratiune ca la /seo-snapshots/ si
+# /export-umami/ — repo-ul e public, iar astea sunt datele de trafic ale
+# site-ului. Concluziile publicabile se scriu in PROGRES.md.
+/research/seo-growth-*/
+
 # Textul consolidat al Legii 153/2017, descarcat de scripts/lege153-grile.mjs.
 # 6 MB de HTML public, care se ia din nou oricand cu `--refetch`. Ce conteaza —
 # grilele extrase — e versionat in src/data/grile-153-2017.json.

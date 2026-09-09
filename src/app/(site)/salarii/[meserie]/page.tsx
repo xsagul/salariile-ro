@@ -97,14 +97,15 @@ function descrierePagina(date: DateMeserie) {
   const r = reperMeserie(date);
   const inceput = `Cât câștigă un ${de}`;
 
-  const grila = grilaPublica(date.meserie.slug);
+  const grilaCandidata = grilaPublica(date.meserie.slug);
+  const grila = grilaCandidata?.doarSectiune ? undefined : grilaCandidata;
   const didactic = grilaEducatie(date.meserie.slug);
   const trepte = didactic.length
     ? didactic.map(x => calculStandard(x.iun2024)!.net)
     : grila?.trepte.map(t => t.net) ?? [];
   if (trepte.length > 1) {
     const min = Math.min(...trepte), max = Math.max(...trepte);
-    return `${inceput}: ${lei(min)} lei net la debut, până la ${lei(max)} lei. Trepte din grila legală, plus salarii din anunțuri verificate și date INS.`;
+    return `${inceput}: ${lei(min)}–${lei(max)} lei net calculat pe treptele grilei publice afișate. Vezi funcțiile, studiile și componentele incluse.`;
   }
 
   const a = r.anunturi;
@@ -146,7 +147,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 function faqPentru(date: DateMeserie) {
   const numeMic = date.meserie.nume.toLocaleLowerCase("ro-RO");
   const de = date.meserie.de;
-  const grila = grilaPublica(date.meserie.slug);
+  const candidata = grilaPublica(date.meserie.slug);
+  const grila = candidata?.doarSectiune ? undefined : candidata;
   const didactic = grilaEducatie(date.meserie.slug);
   const trepte = didactic.length
     ? didactic.map(r => ({ eticheta: r.functie, net: calculStandard(r.iun2024)!.net }))
@@ -159,14 +161,13 @@ function faqPentru(date: DateMeserie) {
   const debutanti = trepte.filter(t => /debutant|stagiar|an i/i.test(t.eticheta));
   const debutant = debutanti.length
     ? debutanti.reduce((min, t) => (t.net < min.net ? t : min))
-    : dupaSuma[0];
+    : undefined;
   const maxim = dupaSuma[dupaSuma.length - 1];
   const varf = maxim && debutant && maxim.net > debutant.net * 1.05 ? maxim : null;
   const lei = (n: number) => `${n.toLocaleString("ro-RO")} lei net pe lună`;
 
   const intrebari = [
     { q: `Cât câștigă un ${de} în România?`, a: descriereReper(date) },
-    { q: `Ce salariu are un ${de}?`, a: descriereReper(date) },
   ];
   if (debutant) {
     intrebari.push({

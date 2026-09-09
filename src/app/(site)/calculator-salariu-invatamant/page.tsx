@@ -11,11 +11,12 @@ import { Breadcrumb, CardCompanion, Faq, H1, Hero, Lead, PaginiConexe, Prose, Re
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
 import CalculatorInvatamant from "@/app/components/CalculatorInvatamant";
-import { GRILA, SURSA_GRILA, GRADATII } from "@/lib/invatamant";
+import GrilaInvatamant from "@/app/components/GrilaInvatamant";
+import { GRILA, SURSA_GRILA, GRADATII, calculeazaInvatamantComplet, INDEMNIZATIE_HRANA, INDEMNIZATIE_DOCTORAT_2026, MAJORARI } from "@/lib/invatamant";
 
-const TITLU = "Calculator salariu învățământ 2026: brut, gradație și net";
+const TITLU = "Calculator salariu învățământ 2026: net și grilă";
 const DESC =
-  "Calculează salariul unui cadru didactic în 2026, pe grila din Legea 153/2017: salariu de bază, gradație, dirigenție și net.";
+  "Calculator salariu învățământ 2026 cu gradație, dirigenție și net. Consultă grila de salarizare pe funcții, studii și vechime sau descarcă tabelul CSV.";
 
 export const metadata: Metadata = {
   title: { absolute: TITLU },
@@ -28,11 +29,20 @@ export const metadata: Metadata = {
 const MIN_GRILA = Math.min(...GRILA.map((g) => g.iun2024));
 const MAX_GRILA = Math.max(...GRILA.map((g) => g.iun2024));
 const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(n);
+const EXEMPLE = [
+  { label: "Profesor, studii superioare, grad I, peste 25 de ani în învățământ și în muncă, cu dirigenție", href: "/salarii/profesor", input: { functie: 1, vechimeInvatamant: "peste 25 ani", aniMunca: 26, majorari: ["dirigentie"] } },
+  { label: "Învățător, studii liceale, grad I, 10–15 ani în învățământ și 12 ani în muncă, cu majorarea pentru învățători", href: "/salarii/invatator", input: { functie: 17, vechimeInvatamant: "10-15 ani", aniMunca: 12, majorari: ["dirigentie"] } },
+  { label: "Educatoare debutantă, studii liceale, sub un an de vechime, cu majorarea pentru educatoare", href: "/salarii/educator", input: { functie: 20, vechimeInvatamant: "până la 1 an", aniMunca: 0, majorari: ["dirigentie"] } },
+].map(exemplu => {
+  const rezultat = calculeazaInvatamantComplet(exemplu.input);
+  if (!rezultat) throw new Error(`Exemplu de învățământ fără încadrare: ${exemplu.label}`);
+  return { ...exemplu, rezultat };
+});
 
 const FAQ = [
   {
     q: "Ce salariu are un profesor în 2026?",
-    a: `Salariul de bază din grilă pornește de la ${fmt(MIN_GRILA)} lei brut pentru un debutant cu studii liceale și ajunge la ${fmt(MAX_GRILA)} lei pentru un profesor cu grad didactic I și peste 25 de ani vechime în învățământ. Peste această sumă se aplică gradația de vechime în muncă, care poate adăuga până la 24,52%, plus majorările pentru dirigenție, gradație de merit sau doctorat.`,
+    a: `În tabelul personalului didactic de predare, salariile de bază sunt între ${fmt(MIN_GRILA)} și ${fmt(MAX_GRILA)} lei brut, la gradația 0. Intervalul cuprinde funcții și niveluri de studii diferite; nu este salariul net al unui profesor. Pentru încadrarea ta, alege funcția, studiile și vechimea, apoi aplică gradația de vechime în muncă și majorările la care ai dreptul.`,
   },
   {
     q: "De ce sunt două feluri de vechime?",
@@ -51,8 +61,8 @@ const FAQ = [
     a: "10% din salariul de bază, conform Anexei I, cap. I, lit. B, art. 8. Beneficiază personalul didactic care îndeplinește funcția de diriginte, precum și învățătorii, educatoarele, institutorii și profesorii pentru învățământul primar și preșcolar. Se aplică la salariul de bază deținut, adică după gradație — nu la valoarea brută din grilă.",
   },
   {
-    q: "Se schimbă legea salarizării?",
-    a: "Există un proiect de lege-cadru nouă care ar abroga Legea 153/2017, aflat în dezbatere publică din iulie 2026. Nu este adoptat, iar datele de intrare în vigoare diferă între surse. Până la adoptare și intrare în vigoare, personalul didactic este plătit după grila de aici.",
+    q: "Tabelul grilei arată salariul net sau brut?",
+    a: "Tabelul arată salariul de bază brut la gradația 0 pentru personalul didactic de predare. Pentru net trebuie calculate gradația de vechime în muncă, majorările și indemnizațiile aplicabile, apoi contribuțiile și impozitul. Folosește calculatorul pentru încadrarea completă; nu transforma întregul interval al grilei într-un salariu mediu.",
   },
 ];
 
@@ -103,10 +113,10 @@ const REPERE_INVATAMANT = [
   ["Salariu de bază, minim în grilă", `${fmt(MIN_GRILA)} lei`],
   ["Salariu de bază, maxim în grilă", `${fmt(MAX_GRILA)} lei`],
   ["Gradația 5, cumulat", "+24,52%"],
-  ["Dirigenție", "+10%"],
-  ["Gradație de merit", "+25%"],
-  ["Indemnizație de hrană", "347 lei"],
-  ["Indemnizație doctorat", "500 lei"],
+  ["Dirigenție", `+${fmt(MAJORARI.find(m => m.cod === "dirigentie")!.cota * 100)}%`],
+  ["Gradație de merit", `+${fmt(MAJORARI.find(m => m.cod === "gradatie-merit")!.cota * 100)}%`],
+  ["Indemnizație de hrană", `${fmt(INDEMNIZATIE_HRANA)} lei brut`],
+  ["Indemnizație doctorat", `${fmt(INDEMNIZATIE_DOCTORAT_2026)} lei brut`],
 ] as const;
 
 export default function Page() {
@@ -128,6 +138,12 @@ export default function Page() {
       </Hero>
 
       <CalculatorInvatamant />
+
+      <div className="mx-auto max-w-3xl px-4 py-4 sm:px-6">
+        <a href="#grila-salarizare" className="inline-flex min-h-11 items-center text-sm font-medium text-stone-900 underline underline-offset-2">Vezi grila de salarizare pe funcții și vechime</a>
+      </div>
+
+      <GrilaInvatamant />
 
       <Section
         companion={
@@ -158,7 +174,8 @@ export default function Page() {
             <li>
               <strong>Majorările.</strong> Dirigenția, gradația de merit și predarea simultană se
               aplică la salariul de bază <em>deținut</em>, nu la valoarea din grilă. Diferența e
-              reală: la un salariu de bază de 10.230 lei, dirigenția înseamnă 1.023 lei, nu 822.
+              reală: în primul exemplu de mai jos, majorarea pentru dirigenție este calculată
+              după aplicarea gradației.
             </li>
           </ol>
 
@@ -202,18 +219,21 @@ export default function Page() {
         <Prose>
           <h2>Exemple practice: profesor, învățător, educator</h2>
           <p>
-            Cum arată calculul în trei cazuri tipice din învățământul preuniversitar (normă întreagă, funcție de bază, fără persoane în întreținere):
+            Trei încadrări distincte, calculate cu aceleași formule ca instrumentul de mai sus:
+            normă întreagă, funcție de bază, fără persoane în întreținere, fără deducerea
+            suplimentară pentru vârsta sub 26 de ani și fără doctorat. Indemnizația de hrană
+            este inclusă când se îndeplinește pragul legal. Exemplele nu sunt medii salariale.
           </p>
           <ul>
-            <li>
-              <strong>Profesor studii superioare (grad I, &gt;25 ani vechime, gradația 5 + dirigenție):</strong> grilă 8.223 lei + gradație 5 (+24,52% = 2.016 lei) = 10.239 lei salariu de bază. Cu dirigenție (+10% din salariul de bază = 1.024 lei), brutul ajunge la 11.263 lei, generând aproximativ <strong>6.589 lei net</strong> (+ indemnizația de hrană de 347 lei brut). Vezi reperele pentru <Link href="/salarii/profesor">salariu profesor</Link>.
-            </li>
-            <li>
-              <strong>Învățător studii superioare (grad II, 10–15 ani vechime, gradația 3):</strong> grilă 6.848 lei + gradație 3 (+18,07% = 1.237 lei) = 8.085 lei salariu de bază brut, adică aproximativ <strong>4.730 lei net</strong>. Vezi pagina dedicată pentru <Link href="/salarii/invatator">salariu învățător</Link>.
-            </li>
-            <li>
-              <strong>Educator debutant studii superioare (&lt;1 an vechime, gradația 0):</strong> grilă 6.080 lei brut = aproximativ <strong>3.557 lei net</strong> (la care se adaugă indemnizația de hrană). Vezi reperele pentru <Link href="/salarii/educator">salariu educator</Link>.
-            </li>
+            {EXEMPLE.map(({ label, href, rezultat: r }) => (
+              <li key={href}>
+                <strong>{label}:</strong> {fmt(r.salariuGrila)} lei brut în grilă;
+                gradația {r.gradatie} produce {fmt(r.salariuDeBaza)} lei salariu de bază brut.
+                {r.linii.map(l => ` ${l.eticheta}: ${fmt(l.suma)} lei brut.`).join("")}
+                {" "}Total: {fmt(r.brutTotal)} lei brut, <strong>{fmt(r.fiscal.netBani)} lei net</strong>.
+                {" "}<Link href={href}>Vezi reperele și sursele pentru meserie</Link>.
+              </li>
+            ))}
           </ul>
 
           <h2>De unde vin cifrele</h2>

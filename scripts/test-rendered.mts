@@ -247,6 +247,27 @@ async function auditRenderedSite() {
     if (!rendered.has(pathname)) failures.push(`${pathname}: valoarea GSC lipseste din sitemap`);
   }
 
+  // Exportul și grila consultabilă trebuie să acopere aceeași sursă integrală.
+  const grilaInvatamant = JSON.parse(await readFile(new URL("../src/data/grila-invatamant-153-2017.json", import.meta.url), "utf8"));
+  const invatamantHtml = rendered.get("/calculator-salariu-invatamant") ?? "";
+  if ((invatamantHtml.match(/data-grila-rand=/g) ?? []).length !== grilaInvatamant.randuri.length) {
+    failures.push("/calculator-salariu-invatamant: grila completă nu este prezentă în HTML");
+  }
+  const grilaCsv = await fetch(`${BASE_URL}/date/grila-invatamant.csv`);
+  const csvText = await grilaCsv.text();
+  if (!grilaCsv.ok || !grilaCsv.headers.get("content-type")?.includes("text/csv") || grilaCsv.headers.get("x-robots-tag") !== "noindex") {
+    failures.push("Exportul grilei: status, tip de fișier sau indexare incorectă");
+  }
+  if (csvText.trim().split(/\r?\n/).length !== grilaInvatamant.randuri.length + 1) {
+    failures.push("Exportul grilei: nu conține toate rândurile sursei");
+  }
+  for (const r of grilaInvatamant.randuri) {
+    const escaped = (s: string) => s.replaceAll('"', '""');
+    if (!csvText.includes(`"${escaped(r.functie)}";"${r.studii}";"${r.vechime}";"${r.iun2024}";"0"`)) {
+      failures.push(`Exportul grilei: rând lipsă sau valoare diferită pentru ${r.nr}/${r.vechime}`);
+    }
+  }
+
   const contentChecks = [
     ["/calculator/calcul-salariu-net-4050-brut", "2.574", "netul S1 pentru 4.050 brut"],
     ["/calculator/calcul-salariu-brut-2574-net", "4.050", "brutul S1 pentru 2.574 net"],
@@ -343,7 +364,12 @@ async function auditRenderedSite() {
     // de inceput de cariera au coborat in FAQ, ca sa nu concureze raspunsul.
     // Garantia ramane aceeasi: limita cifrei trebuie DECLARATA in pagina.
     if (!html.includes("data-salary-kind=")) failures.push(`${pathname}: lipsește tipul sursei salariale`);
-    if (!html.includes("Sursa și detaliile cifrei")) failures.push(`${pathname}: lipsește acoperirea statistică`);
+    // Blocul „Sursa si detaliile cifrei" a fost scos deliberat pe 8 septembrie, in
+    // `b8c9107`: detaliile de acoperire au trecut pe /salarii/acoperire, cu ancora pe
+    // randul meseriei. Garantia ramane aceeasi si se verifica pe ce a inlocuit-o —
+    // din pagina meseriei trebuie sa ajungi la randul ei de acoperire dintr-un click.
+    const slugMeserie = pathname.split("/").pop();
+    if (!html.includes(`/salarii/acoperire#${slugMeserie}`)) failures.push(`${pathname}: lipsește legătura către rândul de acoperire`);
     if (!/nu a meseriei în sine|repere la nivel de grupă și sector/.test(html))
       failures.push(`${pathname}: lipseste limita declarata a cifrei`);
     if (html.includes("Interval pe județe")) failures.push(`${pathname}: tabelul judetean foloseste eticheta ambigua de interval`);
@@ -506,11 +532,21 @@ async function auditRenderedSite() {
   if (!minimalSnippet.includes("scrolling=&quot;no&quot;")) {
     failures.push('/widget: snippetul minimalist trebuie sa pastreze scrolling="no"');
   }
-  if (completeSnippet.includes("scrolling=&quot;no&quot;")) {
-    failures.push('/widget: snippetul complet nu trebuie sa blocheze scrollul intern');
+  // Din septembrie 2026 toate cele trei variante isi urmeaza inaltimea continutului
+  // prin `postMessage`, deci niciuna nu are nevoie de scroll intern. Regula veche —
+  // scroll permis pe variantele inalte — descria widgetul cu inaltime fixa.
+  // Ce trebuie garantat acum: fara scroll intern, dar NICIODATA fara scriptul de
+  // redimensionare, altfel continutul mai inalt decat fallback-ul ar fi taiat.
+  for (const [nume, snippet] of [["complet", completeSnippet], ["fluturas", payslipSnippet]] as const) {
+    if (!snippet.includes("scrolling=&quot;no&quot;")) {
+      failures.push(`/widget: snippetul ${nume} trebuie sa pastreze scrolling="no"`);
+    }
   }
-  if (payslipSnippet.includes("scrolling=&quot;no&quot;")) {
-    failures.push('/widget: snippetul fluturas nu trebuie sa blocheze scrollul intern');
+  for (const [nume, start] of [["minimalist", minimalSnippetStart], ["complet", completeSnippetStart], ["fluturas", payslipSnippetStart]] as const) {
+    const bloc = start >= 0 ? widgetPage.slice(start, start + 2000) : "";
+    if (!bloc.includes("salariile:height")) {
+      failures.push(`/widget: snippetul ${nume} nu contine scriptul de redimensionare`);
+    }
   }
 
   const frameSitemapEntries = locations.filter(

@@ -30,9 +30,16 @@ export default function WidgetDemo({ variant = "minimal" }: WidgetDemoProps) {
 
   const [height, setHeight] = useState(initialHeight);
 
-  useEffect(() => {
+  // Varianta e fixată la montare pe /widget, dar dacă s-ar schimba, înălțimea de
+  // pornire trebuie să o urmeze. Ajustarea se face în timpul randării, nu într-un
+  // efect: un setState în efect declanșează o a doua randare, în cascadă.
+  const [variantaRandata, setVariantaRandata] = useState(initialHeight);
+  if (variantaRandata !== initialHeight) {
+    setVariantaRandata(initialHeight);
     setHeight(initialHeight);
+  }
 
+  useEffect(() => {
     const onMsg = (event: MessageEvent) => {
       if (event.origin !== window.location.origin) return;
       const data = event.data;
@@ -47,7 +54,7 @@ export default function WidgetDemo({ variant = "minimal" }: WidgetDemoProps) {
 
     window.addEventListener("message", onMsg);
     return () => window.removeEventListener("message", onMsg);
-  }, [initialHeight]);
+  }, []);
 
   const maxWidth = isMinimal ? 420 : 1152;
   const src = isPayslip

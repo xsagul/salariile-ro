@@ -19,7 +19,6 @@ import {
   ISR_AN,
   TEMEI,
   calculeazaSomaj,
-  cotaVariabila,
   durataLuni,
   type RezultatSomaj,
 } from "@/lib/somaj";

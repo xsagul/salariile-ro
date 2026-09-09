@@ -11,7 +11,7 @@ import { calculatorSlugBrut, PAGE_LAST_MODIFIED } from "@/lib/seo";
 // plus head terms „salariu brut" / „brut în net".
 export const metadata: Metadata = {
   title: {
-    absolute: "Calculator salariu net 2026: net, taxe și cost angajator",
+    absolute: "Calculator salariu net 2026: brut în net și invers",
   },
   description:
     "Calculează salariul net din brut sau brutul din net, cu regulile fiscale 2026. Vezi CAS, CASS, impozitul, deducerea personală și costul pentru angajator.",
@@ -20,6 +20,18 @@ export const metadata: Metadata = {
 
 // 1. Extragem datele pentru a le folosi și în schema ascunsă, și pe ecran
 const faqData = [
+  {
+    q: "Ce înseamnă salariu brut și salariu net?",
+    a: "Salariul brut este suma înainte de reținerile fiscale. Salariul net este suma rămasă după contribuții și impozit. Pentru a compara două oferte, verifică dacă ambele sume sunt brute sau nete și dacă beneficiile, precum tichetele de masă, sunt incluse ori acordate separat.",
+  },
+  {
+    q: "Salariul de bază este același lucru cu salariul brut?",
+    a: "Salariul de bază este componenta fixă a remunerației. Venitul brut al unei luni poate include și sporuri, indemnizații sau alte adaosuri, potrivit art. 160 din Codul muncii. Dacă ai ore suplimentare sau bonusuri, brutul lunar poate fi mai mare decât salariul de bază din contract.",
+  },
+  {
+    q: "Ce înseamnă avans și lichidare la salariu?",
+    a: "Avansul este o parte din salariu plătită înaintea plății finale a lunii. Lichidarea este suma rămasă de achitat după scăderea avansului și a reținerilor aplicabile. Nu sunt două salarii: compară totalul net pentru aceeași lună. Datele de plată sunt cele stabilite prin contract sau regulamentul intern, conform art. 166 din Codul muncii.",
+  },
   {
     q: "Cum se calculează salariul net din brut?",
     // Google ignoră meta descrierea homepage-ului și își compune singur snippetul
@@ -244,7 +256,10 @@ export default function Page() {
                       ["Salariul mediu pe economie", "/salariu-mediu"],
                       ["Deducerea personală 2026", "/deducere-personala-2026"],
                       ["Calculator salariu part-time", "/calculator-salariu-part-time"],
-                      ["Calculator taxe PFA", "/calculator-pfa"],
+                      ["Calculator taxe PFA și SRL", "/calculator-pfa"],
+                      ["Calculator salarii învățământ", "/calculator-salariu-invatamant"],
+                      ["Calculator salarii sănătate", "/calculator-salariu-sanatate"],
+                      ["Calculator ore suplimentare și spor de noapte", "/calculator-ore-suplimentare"],
                       ["Generator fluturaș de salariu", "/fluturas-salariu"],
                       ["Zile libere 2026", "/zile-libere-2026"],
                       ["Zile lucrătoare 2026", "/zile-lucratoare-2026"],
@@ -256,7 +271,7 @@ export default function Page() {
                     ))}
                   </ul>
 
-                  <p className="mt-6 text-xs text-stone-600">Ultima actualizare: 26 iulie 2026.</p>
+                  <p className="mt-6 text-xs text-stone-600">Ultima actualizare: {PAGE_LAST_MODIFIED["/"].toLocaleDateString("ro-RO", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })}.</p>
                 </div>
               </aside>
             </div>
@@ -266,8 +281,8 @@ export default function Page() {
                 Calcule salariale populare
               </h2>
               <p className="mb-4 max-w-prose text-sm leading-normal text-stone-600">
-                Repere brute validate prin cerere reală de căutare, cu defalcarea completă
-                pentru CAS, CASS, impozit, net și costul angajatorului.
+                Alege o sumă brută pentru a vedea netul, taxele și costul angajatorului,
+                cu ipotezele explicate pentru fiecare calcul.
               </p>
               <ul className="flex flex-wrap gap-2">
                 {calculeBrutPopulare.map((valoare) => (

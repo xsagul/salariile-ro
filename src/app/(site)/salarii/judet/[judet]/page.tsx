@@ -49,12 +49,12 @@ const URL_HG_900_2023 = "https://legislatie.just.ro/Public/DetaliiDocumentAfis/2
 const URL_HG_598_2024 = "https://legislatie.just.ro/Public/DetaliiDocumentAfis/283807";
 
 function titluPagina(judet: Judet) {
-  const titlu = `Câștig salarial brut în ${judet.nume}, media ${AN}`;
+  const titlu = `Salariu mediu brut în ${judet.nume}: date INS ${AN}`;
   return titlu.length + BRAND.length <= TITLU_MAX ? `${titlu}${BRAND}` : titlu;
 }
 
 function descrierePagina(judet: Judet) {
-  return `În ${judet.nume}, câștigul salarial mediu brut lunar a fost ${lei(judet.brut)} lei, ca medie a întregului an ${AN} (INS FOM107E). Nu este net sau salariul minim 2026.`;
+  return `Salariul mediu brut în ${judet.nume}: ${lei(judet.brut)} lei, media lunară a anului ${AN} (INS). Compară activitățile economice și media națională din aceeași perioadă.`;
 }
 
 /** Meseriile din catalog care cad intr-o activitate Rev.2 data. */

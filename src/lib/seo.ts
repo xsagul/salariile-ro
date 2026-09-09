@@ -58,12 +58,12 @@ export const LAST_FISCAL_CONTENT_UPDATE = new Date("2026-07-26T00:00:00.000Z");
 export const PAGE_LAST_MODIFIED: Record<string, Date> = {
   // Date editoriale reale, schimbate numai când conținutul paginii este revizuit.
   // Data intrării în vigoare a unui regim fiscal rămâne descrisă separat în pagină.
-  "/": new Date("2026-07-26T00:00:00.000Z"),
+  "/": new Date("2026-09-09T00:00:00.000Z"),
   "/salariu-minim": new Date("2026-08-04T00:00:00.000Z"),
   "/salariu-minim-constructii-2026": new Date("2026-07-26T00:00:00.000Z"),
   "/calculator-pfa": new Date("2026-09-03T00:00:00.000Z"),
   "/calculator-salariu-part-time": new Date("2026-08-28T00:00:00.000Z"),
-  "/calculator-salariu-invatamant": new Date("2026-08-28T00:00:00.000Z"),
+  "/calculator-salariu-invatamant": new Date("2026-09-09T00:00:00.000Z"),
   "/calculator-salariu-sanatate": new Date("2026-09-09T00:00:00.000Z"),
   "/calculator-ore-suplimentare": new Date("2026-09-09T00:00:00.000Z"),
   "/calculator-indemnizatie-somaj": new Date("2026-09-09T00:00:00.000Z"),
@@ -95,12 +95,12 @@ export const PAGE_LAST_MODIFIED: Record<string, Date> = {
 
 import { INS_GENERAT_LA } from "@/lib/ins-date";
 
-export const MESERII_EDITORIAL_UPDATE = new Date("2026-09-07T00:00:00.000Z");
+export const MESERII_EDITORIAL_UPDATE = new Date("2026-09-09T00:00:00.000Z");
 export const MESERII_LAST_MODIFIED = new Date(
   Math.max(new Date(INS_GENERAT_LA).getTime(), MESERII_EDITORIAL_UPDATE.getTime()),
 );
 
-export const JUDETE_EDITORIAL_UPDATE = new Date("2026-08-25T00:00:00.000Z");
+export const JUDETE_EDITORIAL_UPDATE = new Date("2026-09-09T00:00:00.000Z");
 export const JUDETE_LAST_MODIFIED = new Date(
   Math.max(new Date(INS_GENERAT_LA).getTime(), JUDETE_EDITORIAL_UPDATE.getTime()),
 );

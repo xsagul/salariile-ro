@@ -166,9 +166,13 @@ export function piloniMeserie(d: DateMeserie): Pilon[] {
   const trepte = teaching.length ? teaching.map(r => calculStandard(r.iun2024)!.net) : grid?.trepte.map(r => r.net) ?? [];
   const cm = cifreMeserie(d.meserie.caen2, d.meserie.isco, { net: d.netObservat ?? d.netStandard, brut: d.sector.brutCurent });
 
-  // Sub praguri cifra ramane utila pentru orientare daca esantionul e macar de zece
-  // anunturi, dar nu devine cifra principala a paginii.
-  const centralAnunturi = a?.midpointEstimate ?? ((a?.n ?? 0) >= 10 ? a?.centralEstimate ?? null : null);
+  // Sub praguri nu se arata nicio cifra centrala. `aggregate.mjs` calculeaza
+  // `centralEstimate` intotdeauna, dar pragurile decid daca poate fi ARATATA drept
+  // cifra meseriei. Altfel unsprezece anunturi de la un singur angajator ar aparea
+  // pe pagina la fel ca o suta din cinci platforme, iar eticheta „insuficient" de
+  // langa cifra nu sterge cifra din mintea nimanui. Intervalul observat ramane
+  // vizibil, marcat ca atare.
+  const centralAnunturi = a?.midpointEstimate ?? null;
   const anunturi: Pilon = {
     cheie: 'anunturi', titlu: 'Ce se oferă acum în anunțuri',
     valoare: centralAnunturi !== null && centralAnunturi !== undefined ? Math.round(centralAnunturi) : null,

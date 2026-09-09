@@ -33,7 +33,7 @@ assert.doesNotMatch(header, /id="desktop-[a-z-]+-menu"/, "Meniurile nu pot avea 
 assert.match(header, /groupsOpen\[item\.label\]/, "Accordeonul mobil trebuie sa fie per grup");
 assert.match(header, /event\.key === "Escape"/);
 assert.doesNotMatch(embedLayout, /stats\.js|umami/i, "Layout-ul embed nu trebuie să activeze analytics");
-assert.match(home, /Calculator salariu net 2026: net, taxe și cost angajator/);
+assert.match(home, /Calculator salariu net 2026: brut în net și invers/);
 
 // Widgeturile sunt acum cod HTML copiat explicit de publisher, fără vechiul
 // public/widget.js. Creditul extern rămâne vizibil și la alegerea publisherului.

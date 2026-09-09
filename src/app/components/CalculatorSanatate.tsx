@@ -22,7 +22,6 @@ import { SelectorPastile, type OptiunePastila } from "@/app/components/SelectorP
 import {
   calculeazaSanatate,
   meserieSanatate,
-  CONDITII_DOCTORAT,
   MESERII_SANATATE,
   type RezultatSanatate,
 } from "@/lib/sanatate";
