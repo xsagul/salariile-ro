@@ -32,6 +32,7 @@ export type TexteCalculator = {
   locale: string;
   moneda: string;
   monedaPeLuna: string;
+  perLuna: string;
   ore: string;
 
   // ─── Hero ─────────────────────────────────────────────────────────────
@@ -90,6 +91,17 @@ export type TexteCalculator = {
   staleInainte: string;
   staleDupa: string;
   eticheta: string;
+  indicatorFiscal: string;
+  salariuNetRand: string;
+  casPensii: string;
+  camAngajatorRand: string;
+  costTotalAngajator: string;
+  barAngajat: (p: number) => string;
+  barStat: (p: number) => string;
+  golCuMinim: (minim: string) => string;
+  aiUnSite: string;
+  puneCalculatorul: string;
+  faraCont: string;
   suma: string;
 
   salariuDeBazaIncadrare: string;
@@ -151,6 +163,7 @@ const RO: TexteCalculator = {
   locale: "ro-RO",
   moneda: "lei",
   monedaPeLuna: "lei / lună",
+  perLuna: "/ lună",
   ore: "ore",
 
   acasa: "Acasă",
@@ -210,6 +223,17 @@ const RO: TexteCalculator = {
   staleInainte: "Ai modificat datele – apasă ",
   staleDupa: " pentru a actualiza rezultatul.",
   eticheta: "Element",
+  indicatorFiscal: "Indicator fiscal",
+  salariuNetRand: "Salariu net",
+  casPensii: "CAS (Pensii – 25%)",
+  camAngajatorRand: "CAM (angajator – 2,25%)",
+  costTotalAngajator: "Cost total angajator",
+  barAngajat: (p) => `Angajat ${p}%`,
+  barStat: (p) => `Stat ${p}%`,
+  golCuMinim: (minim) => `Completează salariul brut pentru a genera fluturașul · Grila fiscală 2026 (minim: ${minim} lei)`,
+  aiUnSite: "Ai un site?",
+  puneCalculatorul: "Pune calculatorul pe el, gratuit",
+  faraCont: "— fără cont și fără reclame.",
   suma: "Sumă",
 
   salariuDeBazaIncadrare: "Salariu de bază (încadrare)",
@@ -273,6 +297,7 @@ const EN: TexteCalculator = {
   locale: "en-GB",
   moneda: "RON",
   monedaPeLuna: "RON / month",
+  perLuna: "/ month",
   ore: "hours",
 
   acasa: "Home",
@@ -332,6 +357,17 @@ const EN: TexteCalculator = {
   staleInainte: "You changed the inputs – press ",
   staleDupa: " to refresh the result.",
   eticheta: "Item",
+  indicatorFiscal: "Item",
+  salariuNetRand: "Net salary",
+  casPensii: "CAS — pension contribution (25%)",
+  camAngajatorRand: "CAM — employer contribution (2.25%)",
+  costTotalAngajator: "Total employer cost",
+  barAngajat: (p) => `Employee ${p}%`,
+  barStat: (p) => `State ${p}%`,
+  golCuMinim: (minim) => `Enter a gross salary to generate the payslip · 2026 tax rules (minimum: ${minim})`,
+  aiUnSite: "Have a website?",
+  puneCalculatorul: "Embed this calculator, free",
+  faraCont: "— no account, no ads.",
   suma: "Amount",
 
   salariuDeBazaIncadrare: "Base salary (contract)",

@@ -17,7 +17,7 @@ import { zileLucratoareLuna } from "@/lib/sarbatori";
 import { compuneFluturas } from "@/lib/fluturas";
 import FeedbackContextual from "@/app/components/FeedbackContextual";
 import { TEXTE, type Limba, type TexteCalculator } from "@/lib/calculator-texte";
-import { CURS_DATA, EUR_RON, converteste, cursVechi, inLei, type Moneda } from "@/lib/curs";
+import { CURS_DATA, EUR_RON, converteste, cursVechi, inEuro, inLei, type Moneda } from "@/lib/curs";
 
 type SelectOption = { v: number; l: string };
 
@@ -492,6 +492,12 @@ export default function CalculatorSalariu({
   //  pentru tot tabelul înseamnă că nicio linie nu poate rămâne în altă
   // monedă decât celelalte.
   const fmtLei = fmtCu(t.locale, t.moneda);
+  // Eticheta unității urmează moneda aleasă, nu limba: în euro scrie „EUR",
+  // nu „RON". Altfel câmpul cere lei și afișează euro.
+  const etMoneda = moneda === "EUR" ? "EUR" : t.moneda;
+  const etMonedaLuna = `${etMoneda} ${t.perLuna}`;
+  /** Un exemplu în lei, arătat în moneda aleasă. */
+  const exemplu = (lei: number) => grupeazaMii(String(converteste(lei, moneda)));
   const fmt = (n: number) =>
     moneda === "EUR"
       ? new Intl.NumberFormat(t.locale).format(converteste(n, "EUR")) + " EUR"
@@ -541,10 +547,14 @@ export default function CalculatorSalariu({
   const inLeiDacaTrebuie = (v: string) =>
     moneda === "EUR" && parseFloat(v) > 0 ? String(inLei(parseFloat(v))) : v;
 
-  const pregatesteInput = (inp: InputState): InputState => {
-    const inLeiInp: InputState = moneda === "EUR"
+  /** Inputul, cu sumele aduse în lei. Motorul fiscal nu vede niciodată euro. */
+  const inputInLei = (inp: InputState): InputState =>
+    moneda === "EUR"
       ? { ...inp, brut: inLeiDacaTrebuie(inp.brut), tichete: inLeiDacaTrebuie(inp.tichete) }
       : inp;
+
+  const pregatesteInput = (inp: InputState): InputState => {
+    const inLeiInp = inputInLei(inp);
     return fluturas
       ? compuneFluturas(inLeiInp, { sporOre, sporuri, normaOre, oreLucrate }, oreNormaCurenta).input
       : inLeiInp;
@@ -587,13 +597,16 @@ export default function CalculatorSalariu({
     }
     setEmptyWarn(false);
     if (fluturas) {
-      const c = compuneFluturas(input, { sporOre, sporuri, normaOre, oreLucrate }, oreNormaCurenta);
+      const c = compuneFluturas(inputInLei(input), { sporOre, sporuri, normaOre, oreLucrate }, oreNormaCurenta);
       setRezAfisat(buildResult(c.input, mod, regimFiscal));
       setRezKey(inputKey(c.input, mod));
       setFluturasSnap({ baza: c.baza, bazaRealizata: c.bazaRealizata, plataSupl: c.plataSupl, fixe: c.fixe, oreSupl: c.oreSupl, sporProc: parseFloat(sporOre) || 0, oreNorma: c.oreNorma, oreLucrate: c.oreLucrate, normaContract: c.normaContract, fractieLuna: c.fractieLuna });
     } else {
-      setRezAfisat(buildResult(input, mod, regimFiscal));
-      setRezKey(inputKey(input, mod));
+      // `pregatesteInput`, nu `input`: altfel cheia rezultatului s-ar calcula pe
+      // suma în euro, iar verificarea de prospețime pe cea în lei — și rezultatul
+      // ar apărea învechit imediat după ce a fost calculat.
+      setRezAfisat(buildResult(pregatesteInput(input), mod, regimFiscal));
+      setRezKey(inputKey(pregatesteInput(input), mod));
     }
     if (typeof window === "undefined") return;
 
@@ -605,7 +618,9 @@ export default function CalculatorSalariu({
     // permanenta a acelui calcul si nu se rescriu peste ele.
     // Canonical-ul homepage-ului e fix, deci parametrul nu creeaza duplicat.
     if (!embedded && !brutInitial) {
-      const valoare = Math.round(parseFloat(input.brut) || 0);
+      // Linkul poartă întotdeauna lei, indiferent de moneda afișată. Altfel un
+      // link făcut în euro s-ar redeschide ca lei și ar arăta alt salariu.
+      const valoare = Math.round(parseFloat(inputInLei(input).brut) || 0);
       if (valoare > 0) {
         const parametri = new URLSearchParams({ [mod]: String(valoare) });
         window.history.replaceState(null, "", `?${parametri}`);
@@ -652,8 +667,13 @@ export default function CalculatorSalariu({
 
     paramCitit.current = true;
     const modDinLink = dinNet && !dinBrut ? "net" : "brut";
+    // Linkul poartă lei. Dacă interfața e în euro, câmpul trebuie să arate euro,
+    // altfel omul vede „4.325" lângă eticheta EUR. Se convertește o singură dată,
+    // iar rezultatul și cheia se calculează din valoarea convertită înapoi — nu
+    // din cea originală — ca rotunjirea dus-întors să nu lase rezultatul
+    // permanent „învechit" pentru un leu diferență.
     const inputNou: InputState = {
-      brut: String(valoare),
+      brut: String(moneda === "EUR" ? inEuro(valoare) : valoare),
       tichete: "",
       functieDeBAza: true,
       persoanePretretinere: 0,
@@ -664,8 +684,8 @@ export default function CalculatorSalariu({
     // eslint-disable-next-line react-hooks/set-state-in-effect -- citire unica din URL dupa hidratare; vezi comentariul de mai sus
     setMod(modDinLink);
     setInput(inputNou);
-    setRezAfisat(buildResult(inputNou, modDinLink, regimFiscal));
-    setRezKey(inputKey(inputNou, modDinLink));
+    setRezAfisat(buildResult(pregatesteInput(inputNou), modDinLink, regimFiscal));
+    setRezKey(inputKey(pregatesteInput(inputNou), modDinLink));
 
     // Dupa un submit nativ, URL-ul contine numele campului din formular. Il
     // rescriem in forma partajabila, ca sa nu circule linkuri cu `salariu-input`.
@@ -837,7 +857,7 @@ export default function CalculatorSalariu({
           </div>
           )}
 
-          <InputNumber id="salariu-input" unit={t.monedaPeLuna} label={fluturas ? t.salariuDeBazaBrut : mod === "brut" ? t.salariuBrut : t.salariuNet} value={input.brut} onChange={(v) => { set("brut", v); if (emptyWarn) setEmptyWarn(false); }} placeholder={mod === "brut" ? `${t.exemplu} ${grupeazaMii(EX_PLACEHOLDER_BRUT)}` : `${t.exemplu} ${grupeazaMii(EX_PLACEHOLDER_NET)}`} onEnter={handleCalculeaza} error={emptyWarn ? t.eroareSalariuGol : undefined} tall />
+          <InputNumber id="salariu-input" unit={etMonedaLuna} label={fluturas ? t.salariuDeBazaBrut : mod === "brut" ? t.salariuBrut : t.salariuNet} value={input.brut} onChange={(v) => { set("brut", v); if (emptyWarn) setEmptyWarn(false); }} placeholder={mod === "brut" ? `${t.exemplu} ${exemplu(Number(EX_PLACEHOLDER_BRUT))}` : `${t.exemplu} ${exemplu(Number(EX_PLACEHOLDER_NET))}`} onEnter={handleCalculeaza} error={emptyWarn ? t.eroareSalariuGol : undefined} tall />
 
           <button
             type="button"
@@ -885,13 +905,13 @@ export default function CalculatorSalariu({
                   <div className="grid grid-cols-2 gap-3">
                     <InputNumber id="spor-ore" label={t.sporOreSupl} unit="%" value={sporOre} placeholder={`${t.exemplu} 75`}
                       onChange={setSporOre} />
-                    <InputNumber id="sporuri-fixe" label={t.sporuriPrime} unit={t.moneda} value={sporuri} placeholder={`${t.exemplu} 200`}
+                    <InputNumber id="sporuri-fixe" label={t.sporuriPrime} unit={etMoneda} value={sporuri} placeholder={`${t.exemplu} ${exemplu(200)}`}
                       onChange={setSporuri} />
                   </div>
                   <p className="-mt-3 mb-5 text-xs text-stone-600">
                     Sporul legal minim la ore suplimentare e 75% (Codul Muncii art. 123). Sporurile brute se taxează ca salariul.
                   </p>
-                  <InputNumber id="retineri-input" label={t.retineri} unit={t.moneda} value={retineri} placeholder={`${t.exemplu} 0`}
+                  <InputNumber id="retineri-input" label={t.retineri} unit={etMoneda} value={retineri} placeholder={`${t.exemplu} 0`}
                     onChange={setRetineri} hint={t.retineriExplicatie} />
                 </>
               )}
@@ -900,7 +920,7 @@ export default function CalculatorSalariu({
               <div className="grid grid-cols-2 gap-3">
                 <InputNumber id="nr-tichete" label={t.tichetePeLuna} unit="" value={nrTichete} placeholder={`${t.exemplu} 21`}
                   onChange={(v) => { setNrTichete(v); const t = (parseInt(v) || 0) * (parseInt(valoareTichet) || 0); set("tichete", t ? String(t) : ""); }} />
-                <InputNumber id="valoare-tichet" label={t.valoareTichet} unit={t.moneda} value={valoareTichet} placeholder={`${t.exemplu} 40`}
+                <InputNumber id="valoare-tichet" label={t.valoareTichet} unit={etMoneda} value={valoareTichet} placeholder={`${t.exemplu} ${exemplu(40)}`}
                   onChange={(v) => { setValoareTichet(v); const t = (parseInt(nrTichete) || 0) * (parseInt(v) || 0); set("tichete", t ? String(t) : ""); }} />
               </div>
               <p className="-mt-3 mb-5 text-xs text-stone-600">
@@ -935,8 +955,8 @@ export default function CalculatorSalariu({
 
           {stale && (
             <p className="mb-4 rounded border border-stone-300 bg-canvas px-3 py-2 text-xs text-stone-600" role="status">
-              Ai modificat datele – apasă{" "}
-              <strong className="font-medium text-stone-900">Calculează</strong> pentru a actualiza rezultatul.
+              {t.staleInainte}
+              <strong className="font-medium text-stone-900">{t.calculeaza}</strong>{t.staleDupa}
             </p>
           )}
 
@@ -951,7 +971,7 @@ export default function CalculatorSalariu({
                   <colgroup><col /><col className="w-28 sm:w-36" /></colgroup>
                   <thead>
                     <tr>
-                      <th className="border-b border-b-stone-300 border-r border-r-stone-300 bg-canvas px-3 py-3 text-left text-sm font-medium text-stone-700">Indicator fiscal</th>
+                      <th className="border-b border-b-stone-300 border-r border-r-stone-300 bg-canvas px-3 py-3 text-left text-sm font-medium text-stone-700">{t.indicatorFiscal}</th>
                       <th className="border-b border-stone-300 bg-canvas px-3 py-3 text-right text-sm font-medium text-stone-700">{t.suma}</th>
                     </tr>
                   </thead>
@@ -1026,7 +1046,7 @@ export default function CalculatorSalariu({
                       </tr>
                     )}
                     <tr>
-                      <td className={cellL}>Impozit pe venit (10%)</td>
+                      <td className={cellL}>{t.impozitVenit}</td>
                       <td className={cellR}>− {fmt(rezAfisat.rez.impozit)}</td>
                     </tr>
                     <tr className="bg-canvas">
@@ -1043,7 +1063,7 @@ export default function CalculatorSalariu({
                   <colgroup><col /><col className="w-28 sm:w-36" /></colgroup>
                   <tbody>
                     <tr className="bg-stone-900">
-                      <td className="border-r border-r-stone-600 px-3 py-3 text-left text-sm font-bold text-white">Salariu net</td>
+                      <td className="border-r border-r-stone-600 px-3 py-3 text-left text-sm font-bold text-white">{t.salariuNetRand}</td>
                       <td className="px-3 py-3 text-right text-sm font-bold tabular-nums whitespace-nowrap text-white">{fmt(rezAfisat.rez.netBani)}</td>
                     </tr>
                     {rezAfisat.rez.tichete > 0 && (
@@ -1077,7 +1097,7 @@ export default function CalculatorSalariu({
                 <colgroup><col /><col className="w-28 sm:w-36" /></colgroup>
                 <thead>
                   <tr>
-                    <th className="border-b border-b-stone-300 border-r border-r-stone-300 bg-canvas px-3 py-3 text-left text-sm font-medium text-stone-700">Indicator fiscal</th>
+                    <th className="border-b border-b-stone-300 border-r border-r-stone-300 bg-canvas px-3 py-3 text-left text-sm font-medium text-stone-700">{t.indicatorFiscal}</th>
                     <th className="border-b border-stone-300 bg-canvas px-3 py-3 text-right text-sm font-medium text-stone-700">{t.suma}</th>
                   </tr>
                 </thead>
@@ -1093,7 +1113,7 @@ export default function CalculatorSalariu({
                     </tr>
                   )}
                   <tr>
-                    <td className={`${cellL} pl-4 sm:pl-8`}>CAS (Pensii – 25%)</td>
+                    <td className={`${cellL} pl-4 sm:pl-8`}>{t.casPensii}</td>
                     <td className={cellR}>− {fmt(rezAfisat.rez.cas)}</td>
                   </tr>
                   <tr>
@@ -1107,7 +1127,7 @@ export default function CalculatorSalariu({
                     </tr>
                   )}
                   <tr>
-                    <td className={cellL}>Impozit pe venit (10%)</td>
+                    <td className={cellL}>{t.impozitVenit}</td>
                     <td className={cellR}>− {fmt(rezAfisat.rez.impozit)}</td>
                   </tr>
                   <tr className="bg-canvas">
@@ -1118,7 +1138,7 @@ export default function CalculatorSalariu({
                       taxele pe tichete, oprite din bani — ca pe fluturașul real). Tichetele
                       intră integral pe card, la valoarea nominală, pe rând separat. */}
                   <tr className="bg-stone-900">
-                    <td className="border-r border-r-stone-600 px-3 py-3 text-left text-sm font-bold text-white">Salariu net</td>
+                    <td className="border-r border-r-stone-600 px-3 py-3 text-left text-sm font-bold text-white">{t.salariuNetRand}</td>
                     <td className="px-3 py-3 text-right text-sm font-bold tabular-nums whitespace-nowrap text-white">{fmt(rezAfisat.rez.netBani)}</td>
                   </tr>
                   {rezAfisat.rez.tichete > 0 && (
@@ -1143,13 +1163,13 @@ export default function CalculatorSalariu({
                 <colgroup><col /><col className="w-28 sm:w-36" /></colgroup>
                 <tbody>
                   <tr>
-                    <td className={cellL}>CAM (angajator – 2,25%)</td>
+                    <td className={cellL}>{t.camAngajatorRand}</td>
                     <td className={cellR}>{fmt(rezAfisat.rez.cam)}</td>
                   </tr>
                   {/* Tichetele nu se repetă aici — apar deja în tabelul de sus; costul total
                       le include (brut + CAM + tichete). */}
                   <tr className="bg-canvas">
-                    <td className="border-r border-stone-300 px-3 py-3 text-left text-sm font-bold text-stone-700">Cost total angajator</td>
+                    <td className="border-r border-stone-300 px-3 py-3 text-left text-sm font-bold text-stone-700">{t.costTotalAngajator}</td>
                     <td className="px-3 py-3 text-right text-sm font-bold tabular-nums whitespace-nowrap text-stone-900">{fmt(rezAfisat.rez.costTotal)}</td>
                   </tr>
                 </tbody>
@@ -1169,8 +1189,8 @@ export default function CalculatorSalariu({
                     role="img"
                     aria-label={`Din costul total al firmei, ${ang}% ajunge la angajat (salariu net) și ${stat}% la stat (CAS, CASS, impozit, CAM).`}
                   >
-                    <div className="flex min-w-0 items-center justify-start overflow-hidden whitespace-nowrap bg-stone-900 px-3 text-white" style={{ flexGrow: ang, flexBasis: 0 }}>Angajat {ang}%</div>
-                    <div className="flex min-w-0 items-center justify-end overflow-hidden whitespace-nowrap border-l border-dashed border-stone-300 bg-canvas px-3 text-stone-700" style={{ flexGrow: stat, flexBasis: 0 }}>Stat {stat}%</div>
+                    <div className="flex min-w-0 items-center justify-start overflow-hidden whitespace-nowrap bg-stone-900 px-3 text-white" style={{ flexGrow: ang, flexBasis: 0 }}>{t.barAngajat(ang)}</div>
+                    <div className="flex min-w-0 items-center justify-end overflow-hidden whitespace-nowrap border-l border-dashed border-stone-300 bg-canvas px-3 text-stone-700" style={{ flexGrow: stat, flexBasis: 0 }}>{t.barStat(stat)}</div>
                   </div>
                   <p className="mt-2 text-xs text-stone-600">{t.baraNota}</p>
                 </div>
@@ -1186,7 +1206,7 @@ export default function CalculatorSalariu({
                   <colgroup><col /><col className="w-28 sm:w-36" /></colgroup>
                   <thead>
                     <tr>
-                      <th className="border-b border-b-stone-300 border-r border-r-stone-300 bg-canvas px-3 py-3 text-left text-sm font-medium text-stone-700">Indicator fiscal</th>
+                      <th className="border-b border-b-stone-300 border-r border-r-stone-300 bg-canvas px-3 py-3 text-left text-sm font-medium text-stone-700">{t.indicatorFiscal}</th>
                       <th className="border-b border-stone-300 bg-canvas px-3 py-3 text-right text-sm font-medium text-stone-700">{t.suma}</th>
                     </tr>
                   </thead>
@@ -1215,7 +1235,7 @@ export default function CalculatorSalariu({
                       <td className={cellR}>–</td>
                     </tr>
                     <tr>
-                      <td className={cellL}>Impozit pe venit (10%)</td>
+                      <td className={cellL}>{t.impozitVenit}</td>
                       <td className={cellR}>–</td>
                     </tr>
                     <tr className="bg-canvas">
@@ -1230,7 +1250,7 @@ export default function CalculatorSalariu({
                   <colgroup><col /><col className="w-28 sm:w-36" /></colgroup>
                   <tbody>
                     <tr className="bg-stone-900">
-                      <td className="border-r border-r-stone-600 px-3 py-3 text-left text-sm font-bold text-white">Salariu net</td>
+                      <td className="border-r border-r-stone-600 px-3 py-3 text-left text-sm font-bold text-white">{t.salariuNetRand}</td>
                       <td className="px-3 py-3 text-right text-sm font-bold text-white/80">–</td>
                     </tr>
                     <tr>
@@ -1248,7 +1268,7 @@ export default function CalculatorSalariu({
                 <colgroup><col /><col className="w-28 sm:w-36" /></colgroup>
                 <thead>
                   <tr>
-                    <th className="border-b border-b-stone-300 border-r border-r-stone-300 bg-canvas px-3 py-3 text-left text-sm font-medium text-stone-700">Indicator fiscal</th>
+                    <th className="border-b border-b-stone-300 border-r border-r-stone-300 bg-canvas px-3 py-3 text-left text-sm font-medium text-stone-700">{t.indicatorFiscal}</th>
                     <th className="border-b border-stone-300 bg-canvas px-3 py-3 text-right text-sm font-medium text-stone-700">{t.suma}</th>
                   </tr>
                 </thead>
@@ -1258,7 +1278,7 @@ export default function CalculatorSalariu({
                     <td className={cellR} aria-hidden="true">–</td>
                   </tr>
                   <tr>
-                    <td className={`${cellL} pl-4 sm:pl-8`}>CAS (Pensii – 25%)</td>
+                    <td className={`${cellL} pl-4 sm:pl-8`}>{t.casPensii}</td>
                     <td className={cellR} aria-hidden="true">–</td>
                   </tr>
                   <tr>
@@ -1266,7 +1286,7 @@ export default function CalculatorSalariu({
                     <td className={cellR} aria-hidden="true">–</td>
                   </tr>
                   <tr>
-                    <td className={cellL}>Impozit pe venit (10%)</td>
+                    <td className={cellL}>{t.impozitVenit}</td>
                     <td className={cellR} aria-hidden="true">–</td>
                   </tr>
                   <tr className="bg-canvas">
@@ -1274,7 +1294,7 @@ export default function CalculatorSalariu({
                     <td className={cellR} aria-hidden="true">–</td>
                   </tr>
                   <tr className="bg-stone-900">
-                    <td className="border-r border-r-stone-600 px-3 py-3 text-left text-sm font-bold text-white">Salariu net</td>
+                    <td className="border-r border-r-stone-600 px-3 py-3 text-left text-sm font-bold text-white">{t.salariuNetRand}</td>
                     <td className="px-3 py-3 text-right text-sm font-bold text-white/80" aria-hidden="true">–</td>
                   </tr>
                 </tbody>
@@ -1285,11 +1305,11 @@ export default function CalculatorSalariu({
                 <colgroup><col /><col className="w-28 sm:w-36" /></colgroup>
                 <tbody>
                   <tr>
-                    <td className={cellL}>CAM (angajator – 2,25%)</td>
+                    <td className={cellL}>{t.camAngajatorRand}</td>
                     <td className={cellR} aria-hidden="true">–</td>
                   </tr>
                   <tr className="bg-canvas">
-                    <td className="border-r border-stone-300 px-3 py-3 text-left text-sm font-bold text-stone-700">Cost total angajator</td>
+                    <td className="border-r border-stone-300 px-3 py-3 text-left text-sm font-bold text-stone-700">{t.costTotalAngajator}</td>
                     <td className="px-3 py-3 text-right text-sm font-bold" aria-hidden="true">–</td>
                   </tr>
                 </tbody>
@@ -1328,7 +1348,7 @@ export default function CalculatorSalariu({
             <>
               {pdfStatus === "success" && <p className="mt-3 text-xs text-stone-600" role="status">{t.pdfDescarcat}</p>}
               {pdfStatus === "error" && <p className="mt-3 text-xs font-medium text-stone-900" role="alert">PDF-ul nu a putut fi generat. Încearcă din nou.</p>}
-              <FeedbackContextual context={pdfStatus === "error" ? "pdf" : "calcul"} />
+              <FeedbackContextual context={pdfStatus === "error" ? "pdf" : "calcul"} limba={limba} />
             </>
           )}
 
@@ -1337,14 +1357,14 @@ export default function CalculatorSalariu({
               atribuire vizibilă, calificată nofollow. */}
           {rezAfisat && !embedded && (
             <p className="mt-4 text-xs leading-relaxed text-stone-600" data-md-strip>
-              Ai un site?{" "}
+              {t.aiUnSite}{" "}
               <Link
                 href="/widget"
                 className="font-medium text-stone-700 underline underline-offset-2 hover:text-stone-900"
               >
-                Pune calculatorul pe el, gratuit
+                {t.puneCalculatorul}
               </Link>{" "}
-              — fără cont și fără reclame.
+              {t.faraCont}
             </p>
           )}
 
@@ -1356,8 +1376,7 @@ export default function CalculatorSalariu({
 
           {!rezAfisat && (
             <p className="mt-4 text-xs leading-relaxed text-stone-600" data-md-strip>
-              Completează salariul brut pentru a genera fluturașul · Grila fiscală 2026
-              (minim: {new Intl.NumberFormat("ro-RO").format(REGIMURI_FISCALE_SALARIU[regimFiscal].salariuMinim)} lei)
+              {t.golCuMinim(fmt(REGIMURI_FISCALE_SALARIU[regimFiscal].salariuMinim))}
             </p>
           )}
         </div>
