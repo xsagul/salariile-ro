@@ -1721,6 +1721,59 @@ build și testarea celor 294 de rute randate au trecut. QA în browser a confirm
 schimbarea live între scenariile de 2 și 4 ore și aplicarea excepției fără
 modificarea netului angajatului.
 
+## Pre-încărcarea link-urilor oprită — 11 septembrie 2026
+
+### De ce
+
+Proprietarul se temea, pe drept, că Edge Requests (467K/1M la 10 septembrie) vor
+atinge plafonul și site-ul va fi pus pe pauză. Documentația Vercel: la depășire
+susținută deploy-ul intră pe pauză cu 503 DEPLOYMENT_PAUSED și nu se reia automat.
+(Alerta de 75% CPU primită în aceeași zi era de pe alt cont, nu de pe salariile.ro.)
+
+Traficul din fereastra de 30 de zile nu era uniform: GSC 202 clickuri/zi în prima
+jumătate, 488/zi în ultima săptămână. Vercel Analytics, 2–10 septembrie: 851 de
+afișări/zi, cu 1.011 pe 10 septembrie. Deci ritmul curent e peste media ferestrei.
+
+### Ce s-a măsurat
+
+`next/link` pre-încarcă în producție orice rută statică al cărei link intră în
+ecran, iar Next 16 cere fiecare segment separat. O cerere de tip prefetch spre
+/salariu-mediu: 200, text/x-component, X-Vercel-Cache PRERENDER, 86 KB.
+
+Vizitator nou pe mobil, Edge headless prin playwright-core, pe producție:
+
+| pagină | fără scroll | scroll complet | după fix |
+|---|---|---|---|
+| / | 21 (4 prefetch) | 143 (113) | 17 (0) |
+| /salariu-minim | 28 (9) | 139 (108) | 17 (0) |
+| /zile-lucratoare-2026 | 31 (13) | 135 (105) | 16 (0) |
+| /calculator-salariu-invatamant | 24 (5) | 142 (112) | 17 (0) |
+
+Click-ul pe link navighează în continuare client-side (verificat pe producție:
+/salariu-minim → /despre și / → /salariu-minim, fără reîncărcare, H1 corect).
+
+### Ce s-a făcut
+
+`src/app/components/Link.tsx`: singurul Link al site-ului, `prefetch = false`
+implicit. Cele 43 de fișiere îl importă. `scripts/test-ui-contracts.mts` pică la
+orice import direct din `next/link` — verificat cu un fișier-capcană.
+
+### Calculul
+
+La 17 cereri pe vizită (limită superioară: navigările interne costă mai puțin),
+plafonul de 1M se atinge pe la ~1.800 de afișări/zi, cu ~80K rezervate boților.
+Înainte, cu vizitele care derulau pagina, punctul de rupere era mult mai jos și
+cobora odată cu cât citeau oamenii. La 851/zi rezerva e acum ~2×.
+
+Nicio optimizare nu face cererile zero. Dacă traficul se dublează (anunțul
+salariului minim pe 2027, schimbările fiscale din ianuarie), Hobby se atinge
+oricum. Asigurarea e Pro (10M Edge Requests incluse, fără oprire bruscă) —
+decizie financiară a proprietarului, prezentată, nu luată.
+
+Pârghie rămasă, nefolosită: scriptul Speed Insights costă 1 din cele 17 cereri
+pe vizită pentru date plafonate la 10K evenimente, pe care CrUX (`npm run psi`)
+le dă gratuit.
+
 ## Middleware-ul scos din calea fierbinte — 10 septembrie 2026
 
 ### De ce ardeau cotele Vercel
