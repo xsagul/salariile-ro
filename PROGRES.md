@@ -1721,6 +1721,56 @@ build și testarea celor 294 de rute randate au trecut. QA în browser a confirm
 schimbarea live între scenariile de 2 și 4 ore și aplicarea excepției fără
 modificarea netului angajatului.
 
+## Middleware-ul scos din calea fierbinte — 10 septembrie 2026
+
+### De ce ardeau cotele Vercel
+
+Proprietarul a semnalat ca limitele Vercel se consuma si cedeaza in 1-2
+saptamani. Diagnosticul: `src/proxy.ts` rula la FIECARE cerere HTML.
+
+`next build` arata ca practic tot site-ul e prerandat — 331 de rute, doar
+`/widget/frame*` sunt dinamice. Deci paginile se serveau din CDN si nu costau
+nimic. Middleware-ul era singurul lucru care transforma un hit gratuit de cache
+intr-o invocare de functie, si o facea pe 100% din traficul HTML.
+
+Pe ruta publica facea patru lucruri, toate constante — CSP, `Link`,
+`X-Robots-Tag` pe *.vercel.app, 410 pe `/info`. Niciunul nu depindea de cerere.
+
+**Cifra care leaga totul:** raportul masurat pe 26 iulie-22 august a fost 8.543
+pageviews Umami la 5.436 clickuri GSC, adica 1,57. La 8.466 clickuri GSC in
+fereastra 13 aug-10 sept, traficul uman e ~13.300 pageviews/28 zile. Dar
+middleware-ul se invoca si pe boti, iar `robots.txt` e deschis catre toti botii
+AI pe 331 de rute. **Botii nu apar in Umami** (analytics pe JS nu-i vede) dar
+erau facturati integral. Exact de-aia consumul parea inexplicabil fata de ce
+arata analytics-ul.
+
+### Ce s-a facut
+
+CSP + Link + X-Robots-Tag -> `next.config.ts` (le pune CDN-ul, zero invocari).
+410 pe /info -> `src/app/info/route.ts`. In proxy raman doar nonce-ul per cerere
+pe `/widget/frame*` si negocierea markdown, cu `has: accept ~ text/markdown` in
+matcher. `functions-config-manifest.json` confirma cele trei matchere compilate.
+
+CSP-ul are proprietar unic in `src/lib/csp.ts`, importat si de config si de proxy.
+
+O regresie prinsa la verificare: header-ul `Link` din config suprascria
+canonicalul pe raspunsurile markdown. Reparat cu `missing` pe Accept, simetric
+cu matcher-ul. Verificat pe productie ca revine `rel="canonical"`.
+
+Verificat octet cu octet fata de baseline pe 6 cazuri, local si pe productie.
+Singurul delta: `/info` primeste acum si CSP+Link pe 410. `X-Vercel-Cache:
+PRERENDER` pe paginile publice.
+
+### Ce ramane nemasurat
+
+`vercel whoami` da `Not authorized`, deci nu s-a putut citi CARE cota e aproape
+de plafon. Fixul e corect indiferent, dar daca metrica arsa e bandwidth sau
+image transformations, mai e de lucru. De cerut proprietarului.
+
+Optiune nefolosita, care pastreaza intacta strategia GEO: `robots.txt` permite
+azi si crawlerele de tooling SEO (Ahrefs, Semrush, DataForSeo, DotBot), care nu
+aduc nicio citare. Blocarea lor taie sarcina fara sa atinga botii AI.
+
 ## Umami scos, Node 24, calculator de învățământ — 28 august 2026 (seara)
 
 ### Calculatorul de învățământ, forma finală
