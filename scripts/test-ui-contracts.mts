@@ -62,4 +62,24 @@ for (const slug of slugs) {
   assert.ok(llms.includes(`/noutati/${slug}`), `llms.txt nu listeaza articolul ${slug}`);
 }
 
+// Pre-încărcarea automată a link-urilor consuma Edge Requests pe planul Hobby:
+// măsurat pe 11 septembrie 2026, 113 din 143 de cereri ale unei vizite pe
+// homepage erau pre-încărcări. Toate link-urile trec prin wrapperul fără prefetch.
+const { sep } = await import("node:path");
+const extensiiSursa = [".ts", ".tsx", ".js", ".jsx"];
+const fisiereSrc = (await readdir(new URL("../src", import.meta.url), { recursive: true }))
+  .map((f) => String(f).split(sep).join("/"))
+  .filter((f) => extensiiSursa.some((ext) => f.endsWith(ext)) && f !== "app/components/Link.tsx");
+for (const f of fisiereSrc) {
+  const sursa = await read(`src/${f}`);
+  assert.ok(
+    !sursa.includes('from "next/link"') && !sursa.includes("from 'next/link'"),
+    `${f} importă next/link direct; folosește @/app/components/Link`,
+  );
+}
+assert.ok(
+  (await read("src/app/components/Link.tsx")).includes("prefetch = false"),
+  "Wrapperul Link trebuie să oprească pre-încărcarea implicit",
+);
+
 console.log("✓ Contractele UI, analytics cookieless și CTR sunt valide");

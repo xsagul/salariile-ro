@@ -1,6 +1,6 @@
 // src/app/page.tsx
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/app/components/Link";
 import CalculatorSalariu from "@/app/components/CalculatorSalariu";
 import { personSchema } from "@/lib/person";
 import { calculatorSlugBrut, PAGE_LAST_MODIFIED } from "@/lib/seo";

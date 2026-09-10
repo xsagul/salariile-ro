@@ -3,7 +3,7 @@
 // Adaugi un articol nou = adaugi un fișier .md. Nicio pagină nu se hardcodează.
 
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/app/components/Link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getArticle, getAllSlugs, getAllArticles, formatDateRo } from "@/lib/noutati";

@@ -6,7 +6,7 @@
 // CAEN/ISCO ramane vizibil, fara a transforma cele doua surse intr-un interval.
 
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/app/components/Link";
 import { Breadcrumb, Faq, H1, Lead } from "@/app/components/ui";
 import FiltruMeserii from "@/app/components/FiltruMeserii";
 import { NotaSursa, lei, lunaLunga } from "@/app/components/Salarii";

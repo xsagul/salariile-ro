@@ -5,7 +5,7 @@
 // in conflict cu slug-urile de meserii.
 
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/app/components/Link";
 import { Breadcrumb, Faq, H1, Lead } from "@/app/components/ui";
 import { CardCifra, NotaSursa, lei, procent } from "@/app/components/Salarii";
 import { AN_JUDETE, JUDETE, MATRICE_JUDETE, NATIONAL_JUDETE, INS_SURSA } from "@/lib/ins-date";

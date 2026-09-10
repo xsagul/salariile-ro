@@ -3,7 +3,7 @@
 
 import React from "react";
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/app/components/Link";
 import { notFound } from "next/navigation";
 import CalculatorSalariu from "@/app/components/CalculatorSalariu";
 import { Section } from "@/app/components/ui";

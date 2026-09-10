@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/app/components/Link";
 import { Breadcrumb, CtaCard, Eyebrow, Faq, H1, Hero, Lead, Section } from "@/app/components/ui";
 import { calculStandardCuRegim } from "@/lib/fiscal";
 import { personSchema } from "@/lib/person";

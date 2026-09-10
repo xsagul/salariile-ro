@@ -11,7 +11,7 @@
 // creada ca sunt cifre din luna curenta.
 
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/app/components/Link";
 import { notFound } from "next/navigation";
 import { Breadcrumb, Faq, H1, Lead } from "@/app/components/ui";
 import { CardCifra, LinkCard, NotaSursa, lei, procent } from "@/app/components/Salarii";

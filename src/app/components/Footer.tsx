@@ -3,7 +3,7 @@
 // Afișează doar linkuri către pagini IMPLEMENTATE.
 // Adaugă o pagină în IMPLEMENTED_PAGES când e gata și apare automat.
 
-import Link from "next/link";
+import Link from "@/app/components/Link";
 
 // Set centralizat: aici adăugăm rutele pe măsură ce le construim
 const IMPLEMENTED_PAGES = new Set<string>([

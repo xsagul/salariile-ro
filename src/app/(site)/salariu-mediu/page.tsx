@@ -8,7 +8,7 @@
 import type { Metadata } from "next";
 import { PaginiConexe } from "@/app/components/ui";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/app/components/Link";
 import { LATEST_INS_EARNINGS } from "@/lib/date-salarii";
 import { LUNA_REFERINTA, TOTAL_ECONOMIE } from "@/lib/ins-date";
 import { personSchema } from "@/lib/person";

@@ -3,7 +3,7 @@
 // Limbajul pilonului: stone monocrom, fără accent, tracking Inter, bg-canvas.
 // <Prose> stilează automat h2/h3/p/ul/a/strong/table prin variante descendente.
 
-import Link from "next/link";
+import Link from "@/app/components/Link";
 import type { ReactNode } from "react";
 
 const PROSE = [

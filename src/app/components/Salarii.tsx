@@ -2,7 +2,7 @@
 // Primitive folosite de /salarii si /compara. Server Components pure, fara JS
 // la client: graficul e SVG randat pe server, tabelele sunt HTML simplu.
 
-import Link from "next/link";
+import Link from "@/app/components/Link";
 import type { ReactNode } from "react";
 import type { GrilaPublica } from "@/lib/grile-publice";
 import { INS_SURSA, type ValoareJudet } from "@/lib/ins-date";

@@ -4,7 +4,7 @@
 // medii ale reperelor, diferente derivate sau un „castigator".
 
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/app/components/Link";
 import { notFound } from "next/navigation";
 import { Breadcrumb, Faq, H1, Lead } from "@/app/components/ui";
 import { LinkCard, NotaSursa, lei, lunaLunga } from "@/app/components/Salarii";

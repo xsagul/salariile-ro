@@ -4,7 +4,7 @@
 // în componenta de rezultat); pagina adaugă contextul editorial și FAQ-ul.
 
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/app/components/Link";
 import CalculatorSalariu from "@/app/components/CalculatorSalariu";
 import { PaginiConexe, Section } from "@/app/components/ui";
 import { personSchema } from "@/lib/person";

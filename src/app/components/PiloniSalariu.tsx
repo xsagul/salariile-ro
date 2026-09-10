@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from "@/app/components/Link";
 import type { DateMeserie } from '@/lib/meserii';
 import { piloniMeserie, convergentaPiloni, type Pilon } from '@/lib/repere-meserii';
 

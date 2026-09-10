@@ -13,7 +13,7 @@
 // ori, pentru ca e exact eroarea de interpretare care circula in presa.
 
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/app/components/Link";
 import DataAssetCard from "@/app/components/DataAssetCard";
 import { Breadcrumb, Faq, H1, Lead } from "@/app/components/ui";
 import { CardCifra, NotaSursa, lei, procent } from "@/app/components/Salarii";

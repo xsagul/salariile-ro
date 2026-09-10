@@ -6,7 +6,7 @@
 // netul orientativ al grupei de ocupatii. Brutul ramane context secundar.
 
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/app/components/Link";
 import { notFound } from "next/navigation";
 import { Breadcrumb, Faq, H1, Lead } from "@/app/components/ui";
 import {

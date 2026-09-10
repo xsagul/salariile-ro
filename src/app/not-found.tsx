@@ -3,7 +3,7 @@
 // nu găsește o rută. Conform App Router file convention.
 
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/app/components/Link";
 import { Hero, Section, H1, Lead, Eyebrow } from "@/app/components/ui";
 
 export const metadata: Metadata = {

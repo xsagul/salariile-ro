@@ -3,7 +3,7 @@
 // Stil aliniat cu restul site-ului (stone monocrom), dar format de listă ca pe site-urile de știri.
 
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/app/components/Link";
 import Image from "next/image";
 import { getAllArticles, formatDateRo } from "@/lib/noutati";
 import { personSchema } from "@/lib/person";

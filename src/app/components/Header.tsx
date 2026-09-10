@@ -1,7 +1,7 @@
 "use client";
 
 // src/app/components/Header.tsx
-import Link from "next/link";
+import Link from "@/app/components/Link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 

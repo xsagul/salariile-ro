@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from "@/app/components/Link";
 import {Breadcrumb,H1,Lead} from '@/app/components/ui';
 import {SARBATORI_LEGALE_2027,zileLucratoareLuna} from '@/lib/sarbatori';
 import CalculatorIntervalZile from './CalculatorIntervalZile';

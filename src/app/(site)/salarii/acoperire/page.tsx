@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import Link from "@/app/components/Link";
 import { Breadcrumb, H1, Lead } from '@/app/components/ui';
 import { MESERII } from '@/lib/meserii';
 import { ACOPERIRE_ANUNTURI, DATA_VERIFICARE_ANUNTURI, PRAGURI_ANUNTURI, INVENTAR_SURSE } from '@/lib/acoperire-anunturi';

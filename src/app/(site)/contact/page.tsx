@@ -2,7 +2,7 @@
 // Server Component. Pagina de contact — onest minimal.
 
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/app/components/Link";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
 import { Hero, Section, Breadcrumb, H1, Lead } from "@/app/components/ui";

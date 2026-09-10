@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/app/components/Link";
 import type { Limba } from "@/lib/calculator-texte";
 
 // Invitatia de a semnala o greseala, sub rezultat. Are nevoie de limba pentru

@@ -5,7 +5,7 @@
 // sectoarelor CAEN si al grupelor ISCO.
 
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/app/components/Link";
 import { Breadcrumb, Faq, H1, Lead } from "@/app/components/ui";
 import { NotaSursa, lunaLunga } from "@/app/components/Salarii";
 import { AN_OCUPATII, LUNA_REFERINTA, MATRICE_BRUT, MATRICE_NET, MATRICE_OCUPATII } from "@/lib/ins-date";

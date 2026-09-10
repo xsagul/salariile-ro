@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import Link from "@/app/components/Link";
 import { Breadcrumb, H1, Lead } from '@/app/components/ui';
 import { MESERII, CATEGORII, dateMeserieSauEroare } from '@/lib/meserii';
 import { ogPage, twPage } from '@/lib/seo';

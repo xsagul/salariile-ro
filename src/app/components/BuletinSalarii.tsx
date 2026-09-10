@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from "@/app/components/Link";
 import {TOTAL_ECONOMIE,LUNI_SERIE,INS_GENERAT_LA,MATRICE_NET,MATRICE_BRUT} from '@/lib/ins-date';
 import {GraficSerie,lunaLunga} from './Salarii';
 export default function BuletinSalarii(){

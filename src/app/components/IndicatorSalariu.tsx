@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from "@/app/components/Link";
 import type { ReperMeserie } from '@/lib/repere-meserii';
 import { indicatorMeserie, textIndicator } from '@/lib/indicator-meserie';
 
