@@ -40,8 +40,17 @@ export default function SiteLayout({
           Declarat în /cookies și /politica-confidentialitate. Adăugat 1 septembrie
           2026: măsurătoarea de teren lipsea de la dezafectarea Umami. Doar pe
           Vercel. Same-origin (/_vercel/speed-insights/), deci trece de CSP-ul
-          `script-src 'self'` fără modificări — vezi src/proxy.ts. */}
-      {process.env.VERCEL_ENV && <SpeedInsights />}
+          `script-src 'self'` fără modificări — vezi src/lib/csp.ts.
+
+          `sampleRate` pus pe 10 septembrie 2026: planul Hobby dă 10.000 de
+          evenimente pe perioadă, iar la rată plină cota s-a epuizat în 9 zile
+          (10K/10K în dashboard) — deci măsurătoarea murea și restul lunii nu
+          mai exista deloc. La ~830 de afișări/zi și ~1,34 evenimente pe
+          afișare, rata plină cere ~33.000 de evenimente/lună. 0,2 lasă ~6.700,
+          adică date pe toată luna, cu spațiu pentru creșterea traficului.
+          Compromisul e că p75 pe rută devine zgomotos; p75 pe site rămâne
+          solid. Ridică rata doar odată cu planul, nu „ca să vedem mai bine". */}
+      {process.env.VERCEL_ENV && <SpeedInsights sampleRate={0.2} />}
     </>
   );
 }
