@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { CSP_PAGINI_PUBLICE, LINK_HEADER } from "./src/lib/csp";
 
 const nextConfig: NextConfig = {
 
@@ -24,9 +25,10 @@ const nextConfig: NextConfig = {
           // Headere noi adăugate pentru securitate maximă (Lighthouse):
           { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
           { key: "Cross-Origin-Opener-Policy", value: "same-origin" }
-          // NOTE: Link header (RFC 8288) e setat din middleware ca să se aplice
-          // DOAR pe răspunsurile HTML/dynamic (nu pe asseturi statice — nu are
-          // sens să trimitem hint-uri de sitemap pe fiecare .png/.woff2/.svg).
+          // NOTE: CSP și Link (RFC 8288) sunt în blocul de mai jos, restrâns la
+          // căile fără extensie — nu are sens să trimitem hint-uri de sitemap pe
+          // fiecare .png/.woff2/.svg. Până pe 10 septembrie 2026 veneau din
+          // middleware, care se invoca la fiecare cerere HTML.
         ],
       },
       {
@@ -47,6 +49,38 @@ const nextConfig: NextConfig = {
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
           { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()" },
           { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
+        ],
+      },
+      {
+        // --- CSP + Link pe paginile publice ------------------------------
+        // Mutate aici din `src/proxy.ts` pe 10 septembrie 2026. Sunt siruri
+        // CONSTANTE: nu depind de cerere, deci nu au ce cauta intr-o functie
+        // invocata la fiecare cerere HTML, boti inclusi.
+        //
+        // `[^.]*` = doar caile fara punct, adica exact ce prindea si matcher-ul
+        // vechi al proxy-ului (care excludea `.*\..*`). Asseturile din public/
+        // raman, ca si inainte, fara aceste headere.
+        //
+        // `widget/frame` e exclus: acolo CSP-ul are nonce per cerere si ramane
+        // in proxy, singurul loc unde chiar e nevoie de cerere.
+        source: "/((?!widget/frame|api/|_next/)[^.]*)",
+        // `missing` oglindeste exact matcher-ul din proxy: cererile care cer
+        // markdown sunt rescrise catre /api/markdown, care isi pune propriul
+        // header `Link` cu rel="canonical". Fara conditia asta, Link-ul de aici
+        // l-ar suprascrie si agentii ar pierde canonicalul.
+        missing: [{ type: "header" as const, key: "accept", value: ".*text/markdown.*" }],
+        headers: [
+          { key: "Content-Security-Policy", value: CSP_PAGINI_PUBLICE },
+          { key: "Link", value: LINK_HEADER },
+        ],
+      },
+      {
+        // Deploy-urile de preview nu trebuie indexate. Era tot in proxy, pe
+        // baza header-ului `host`; `has` face acelasi lucru la nivel de CDN.
+        source: "/(.*)",
+        has: [{ type: "host" as const, value: ".*\\.vercel\\.app" }],
+        headers: [
+          { key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" },
         ],
       },
       {
