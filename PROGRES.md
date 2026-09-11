@@ -2521,3 +2521,33 @@ stare a datelor, nu o regulă. `test-rendered` cerea un titlu scos pe 8 septembr
 `test-observatii` folosea `constructor` drept exemplu de meserie fără date proprii,
 iar el tocmai a trecut pragul; `test-crawler` folosea „stivuitorist" drept meserie
 din afara catalogului, iar eu tocmai l-am adăugat. Toate trei exprimă acum regula.
+
+## Articol despre indexarea salariului cu inflația — 11 septembrie 2026
+
+La cererea proprietarului, creat articolul
+`/noutati/indexarea-salariului-inflatie-2026`, cu data zilei și ilustrație proprie
+în stilul editorial existent. Contextul este dat de interviul Economedia din
+9 septembrie și reportajul TVR din 10 septembrie. Textul explică puterea de
+cumpărare, formula de indexare și diferența dintre negocierea unei măriri și
+o obligație contractuală. Codul muncii, art. 162, a fost verificat în forma
+consolidată; formula și alegerea perioadei au sursă INS. Exemplul numeric este
+explicit ipotetic, fără a reproduce constante fiscale sau valori INS curente.
+
+Selecția pornește de la performanța măsurată în Search Console a articolelor
+despre costul vieții. SE Ranking a răspuns HTTP 402, sold API insuficient;
+nu s-au obținut volume și nu s-au efectuat plăți. Datele defalcate și nota de
+lucru rămân locale în `seo-assets/`.
+
+Imaginea este WebP, 1536 × 1024, aproximativ 113 KiB, cu `hero` și `heroAlt`.
+Articolul intră automat în Noutăți și sitemap, are canonical, BlogPosting și
+imagine pentru distribuire prin șablonul existent. Legăturile din articolele
+despre coșul minim și salariul peste minim îl conectează la conținutul relevant.
+Lista `llms.txt` a fost completată.
+
+Verificare locală înainte de publicare: `npm test`, `npm run lint`,
+`npm run build`, `npm run test:rendered` și `git diff --check` au trecut.
+Lint: zero erori, 16 avertismente în fișiere nemodificate. Testele randate:
+323 de rute verificate, 320 de blocuri JSON-LD valide; trei avertismente de
+titluri preexistente, în alte pagini. Titlul nou are 55 de caractere cu sufix,
+descrierea 147. Verificat în browser la dimensiunea desktop și la 390 px:
+imagine încărcată, tabel lizibil, fără depășire laterală și fără erori de consolă.

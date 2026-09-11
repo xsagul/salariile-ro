@@ -48,13 +48,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 }
 
 const ARTICOLE_CONEXE: Record<string, string[]> = {
+  "indexarea-salariului-inflatie-2026": ["cosul-minim-de-consum", "salariu-peste-minim-1-iulie-2026", "cum-citesti-fluturasul-de-salariu"],
   "tichete-de-masa-2026": ["cum-citesti-fluturasul-de-salariu", "concediu-medical-2026", "salariu-peste-minim-1-iulie-2026"],
   "concediu-medical-2026": ["cum-citesti-fluturasul-de-salariu", "tichete-de-masa-2026", "salariu-peste-minim-1-iulie-2026"],
   "cum-citesti-fluturasul-de-salariu": ["tichete-de-masa-2026", "concediu-medical-2026", "salariu-peste-minim-1-iulie-2026"],
   "salariul-minim-1-iulie-2026": ["salariu-peste-minim-1-iulie-2026", "salariul-minim-romania-vs-uniunea-europeana-2026", "cosul-minim-de-consum"],
-  "salariu-peste-minim-1-iulie-2026": ["salariul-minim-1-iulie-2026", "salariul-minim-romania-vs-uniunea-europeana-2026", "tichete-de-masa-2026"],
+  "salariu-peste-minim-1-iulie-2026": ["salariul-minim-1-iulie-2026", "indexarea-salariului-inflatie-2026", "tichete-de-masa-2026"],
   "salariul-minim-romania-vs-uniunea-europeana-2026": ["salariul-minim-1-iulie-2026", "cosul-minim-de-consum", "salariu-peste-minim-1-iulie-2026"],
-  "cosul-minim-de-consum": ["salariul-minim-1-iulie-2026", "salariul-minim-romania-vs-uniunea-europeana-2026", "legea-salarizarii-2026"],
+  "cosul-minim-de-consum": ["indexarea-salariului-inflatie-2026", "salariul-minim-romania-vs-uniunea-europeana-2026", "legea-salarizarii-2026"],
   "legea-salarizarii-2026": ["transparenta-salariala-2026", "tineri-neet-romania-2026", "salariul-minim-1-iulie-2026"],
   "transparenta-salariala-2026": ["legea-salarizarii-2026", "tineri-neet-romania-2026", "cum-citesti-fluturasul-de-salariu"],
   "tineri-neet-romania-2026": ["transparenta-salariala-2026", "cosul-minim-de-consum", "legea-salarizarii-2026"],
