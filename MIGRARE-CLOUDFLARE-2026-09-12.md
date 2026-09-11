@@ -6,8 +6,10 @@ Hobby e restricționat la uz necomercial. Termenii Cloudflare pentru planul
 gratuit nu interzic uzul comercial; singura restricție specifică e procesarea
 datelor de card pe site.
 
-**Stare: codul e gata și verificat. Producția e încă pe Vercel.** Comutarea
-așteaptă pașii proprietarului de mai jos.
+**Stare (12 septembrie 2026): codul e gata și verificat; zona Cloudflare e
+creată, iar nameserverele sunt schimbate la Namebox și în propagare. Producția
+e încă pe Vercel.** Pașii 1–3 de mai jos sunt făcuți; urmează zona „Active” în
+Cloudflare și pasul 4.
 
 - Ramura: `migrare-cloudflare` (worktree local `C:\Users\Sorin\Desktop\salariile-ro-cf`)
 - **Nu face merge în `main` înainte de comutare.** Vercel e încă legat de repo:

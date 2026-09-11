@@ -2609,3 +2609,28 @@ Planul complet, pașii proprietarului, comutarea și rollback-ul sunt în
 `MIGRARE-CLOUDFLARE-2026-09-12.md`. Blocat pe proprietar: cont Cloudflare, zona
 adăugată cu înregistrările pe „DNS only”, nameserverele schimbate la Namebox.
 **Ramura nu se unește în `main` înainte de comutare.**
+
+### Faza DNS pornită — 12 septembrie 2026
+
+Zona `salariile.ro` e creată în contul Cloudflare `Sorin.stiuriuc@gmail.com`, pe
+planul Free. Formularul de creare avea implicit pornit „Block training in
+robots.txt”: Cloudflare ar fi injectat în robots.txt blocarea boților AI de
+antrenare, contra strategiei GEO. L-am oprit; Search, Agent și Training sunt pe Allow.
+
+Scanarea automată a importat 6 A pe proxied (inclusiv wildcard-ul `*`), 3 CAA și
+`_domainconnect` de la Vercel, și a ratat CNAME-ul Bing. Zona finală are 9
+înregistrări, toate DNS only.
+
+Nameserverul Vercel rotește la fiecare interogare perechi din 216.198.79.1,
+216.198.79.65, 64.29.17.1 și 64.29.17.65. Toate servesc site-ul identic
+(verificat HTTP și TLS pe fiecare), deci o comparație cu o singură pereche dă
+fals „diferit”. Scriptul de comparație adună setul din mai multe interogări.
+
+Verificat înainte de schimbare: carlane.ns.cloudflare.com și scott.ns.cloudflare.com
+răspund identic cu ns1.vercel-dns.com pentru A, AAAA, MX, TXT și CNAME-ul Bing.
+Nameserverele sunt schimbate la Namebox, iar WHOIS-ul ROTLD le arată imediat.
+Resolverele publice țin nameserverele Vercel în cache până la 24 h; în tot acest
+timp site-ul dă 200, www dă 301, iar MX-urile sunt intacte.
+
+Următorul pas: zona „Active” în Cloudflare, apoi `wrangler login` și deploy-ul
+de previzualizare.
