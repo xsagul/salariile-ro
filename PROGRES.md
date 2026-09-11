@@ -1721,109 +1721,6 @@ build și testarea celor 294 de rute randate au trecut. QA în browser a confirm
 schimbarea live între scenariile de 2 și 4 ore și aplicarea excepției fără
 modificarea netului angajatului.
 
-## Pre-încărcarea link-urilor oprită — 11 septembrie 2026
-
-### De ce
-
-Proprietarul se temea, pe drept, că Edge Requests (467K/1M la 10 septembrie) vor
-atinge plafonul și site-ul va fi pus pe pauză. Documentația Vercel: la depășire
-susținută deploy-ul intră pe pauză cu 503 DEPLOYMENT_PAUSED și nu se reia automat.
-(Alerta de 75% CPU primită în aceeași zi era de pe alt cont, nu de pe salariile.ro.)
-
-Traficul din fereastra de 30 de zile nu era uniform: GSC 202 clickuri/zi în prima
-jumătate, 488/zi în ultima săptămână. Vercel Analytics, 2–10 septembrie: 851 de
-afișări/zi, cu 1.011 pe 10 septembrie. Deci ritmul curent e peste media ferestrei.
-
-### Ce s-a măsurat
-
-`next/link` pre-încarcă în producție orice rută statică al cărei link intră în
-ecran, iar Next 16 cere fiecare segment separat. O cerere de tip prefetch spre
-/salariu-mediu: 200, text/x-component, X-Vercel-Cache PRERENDER, 86 KB.
-
-Vizitator nou pe mobil, Edge headless prin playwright-core, pe producție:
-
-| pagină | fără scroll | scroll complet | după fix |
-|---|---|---|---|
-| / | 21 (4 prefetch) | 143 (113) | 17 (0) |
-| /salariu-minim | 28 (9) | 139 (108) | 17 (0) |
-| /zile-lucratoare-2026 | 31 (13) | 135 (105) | 16 (0) |
-| /calculator-salariu-invatamant | 24 (5) | 142 (112) | 17 (0) |
-
-Click-ul pe link navighează în continuare client-side (verificat pe producție:
-/salariu-minim → /despre și / → /salariu-minim, fără reîncărcare, H1 corect).
-
-### Ce s-a făcut
-
-`src/app/components/Link.tsx`: singurul Link al site-ului, `prefetch = false`
-implicit. Cele 43 de fișiere îl importă. `scripts/test-ui-contracts.mts` pică la
-orice import direct din `next/link` — verificat cu un fișier-capcană.
-
-### Calculul
-
-La 17 cereri pe vizită (limită superioară: navigările interne costă mai puțin),
-plafonul de 1M se atinge pe la ~1.800 de afișări/zi, cu ~80K rezervate boților.
-Înainte, cu vizitele care derulau pagina, punctul de rupere era mult mai jos și
-cobora odată cu cât citeau oamenii. La 851/zi rezerva e acum ~2×.
-
-Nicio optimizare nu face cererile zero. Dacă traficul se dublează (anunțul
-salariului minim pe 2027, schimbările fiscale din ianuarie), Hobby se atinge
-oricum. Asigurarea e Pro (10M Edge Requests incluse, fără oprire bruscă) —
-decizie financiară a proprietarului, prezentată, nu luată.
-
-Pârghie rămasă, nefolosită: scriptul Speed Insights costă 1 din cele 17 cereri
-pe vizită pentru date plafonate la 10K evenimente, pe care CrUX (`npm run psi`)
-le dă gratuit.
-
-## Middleware-ul scos din calea fierbinte — 10 septembrie 2026
-
-### De ce ardeau cotele Vercel
-
-Proprietarul a semnalat ca limitele Vercel se consuma si cedeaza in 1-2
-saptamani. Diagnosticul: `src/proxy.ts` rula la FIECARE cerere HTML.
-
-`next build` arata ca practic tot site-ul e prerandat — 331 de rute, doar
-`/widget/frame*` sunt dinamice. Deci paginile se serveau din CDN si nu costau
-nimic. Middleware-ul era singurul lucru care transforma un hit gratuit de cache
-intr-o invocare de functie, si o facea pe 100% din traficul HTML.
-
-Pe ruta publica facea patru lucruri, toate constante — CSP, `Link`,
-`X-Robots-Tag` pe *.vercel.app, 410 pe `/info`. Niciunul nu depindea de cerere.
-
-**Cifra care leaga totul:** raportul masurat pe 26 iulie-22 august a fost 8.543
-pageviews Umami la 5.436 clickuri GSC, adica 1,57. La 8.466 clickuri GSC in
-fereastra 13 aug-10 sept, traficul uman e ~13.300 pageviews/28 zile. Dar
-middleware-ul se invoca si pe boti, iar `robots.txt` e deschis catre toti botii
-AI pe 331 de rute. **Botii nu apar in Umami** (analytics pe JS nu-i vede) dar
-erau facturati integral. Exact de-aia consumul parea inexplicabil fata de ce
-arata analytics-ul.
-
-### Ce s-a facut
-
-CSP + Link + X-Robots-Tag -> `next.config.ts` (le pune CDN-ul, zero invocari).
-410 pe /info -> `src/app/info/route.ts`. In proxy raman doar nonce-ul per cerere
-pe `/widget/frame*` si negocierea markdown, cu `has: accept ~ text/markdown` in
-matcher. `functions-config-manifest.json` confirma cele trei matchere compilate.
-
-CSP-ul are proprietar unic in `src/lib/csp.ts`, importat si de config si de proxy.
-
-O regresie prinsa la verificare: header-ul `Link` din config suprascria
-canonicalul pe raspunsurile markdown. Reparat cu `missing` pe Accept, simetric
-cu matcher-ul. Verificat pe productie ca revine `rel="canonical"`.
-
-Verificat octet cu octet fata de baseline pe 6 cazuri, local si pe productie.
-Singurul delta: `/info` primeste acum si CSP+Link pe 410. `X-Vercel-Cache:
-PRERENDER` pe paginile publice.
-
-### Ce ramane nemasurat
-
-`vercel whoami` da `Not authorized`, deci nu s-a putut citi CARE cota e aproape
-de plafon. Fixul e corect indiferent, dar daca metrica arsa e bandwidth sau
-image transformations, mai e de lucru. De cerut proprietarului.
-
-Optiune nefolosita, care pastreaza intacta strategia GEO: `robots.txt` permite
-azi si crawlerele de tooling SEO (Ahrefs, Semrush, DataForSeo, DotBot), care nu
-aduc nicio citare. Blocarea lor taie sarcina fara sa atinga botii AI.
-
 ## Umami scos, Node 24, calculator de învățământ — 28 august 2026 (seara)
 
 ### Calculatorul de învățământ, forma finală
@@ -2551,3 +2448,164 @@ Lint: zero erori, 16 avertismente în fișiere nemodificate. Testele randate:
 titluri preexistente, în alte pagini. Titlul nou are 55 de caractere cu sufix,
 descrierea 147. Verificat în browser la dimensiunea desktop și la 390 px:
 imagine încărcată, tabel lizibil, fără depășire laterală și fără erori de consolă.
+
+## Middleware-ul scos din calea fierbinte — 10 septembrie 2026
+
+### De ce ardeau cotele Vercel
+
+Proprietarul a semnalat ca limitele Vercel se consuma si cedeaza in 1-2
+saptamani. Diagnosticul: `src/proxy.ts` rula la FIECARE cerere HTML.
+
+`next build` arata ca practic tot site-ul e prerandat — 331 de rute, doar
+`/widget/frame*` sunt dinamice. Deci paginile se serveau din CDN si nu costau
+nimic. Middleware-ul era singurul lucru care transforma un hit gratuit de cache
+intr-o invocare de functie, si o facea pe 100% din traficul HTML.
+
+Pe ruta publica facea patru lucruri, toate constante — CSP, `Link`,
+`X-Robots-Tag` pe *.vercel.app, 410 pe `/info`. Niciunul nu depindea de cerere.
+
+**Cifra care leaga totul:** raportul masurat pe 26 iulie-22 august a fost 8.543
+pageviews Umami la 5.436 clickuri GSC, adica 1,57. La 8.466 clickuri GSC in
+fereastra 13 aug-10 sept, traficul uman e ~13.300 pageviews/28 zile. Dar
+middleware-ul se invoca si pe boti, iar `robots.txt` e deschis catre toti botii
+AI pe 331 de rute. **Botii nu apar in Umami** (analytics pe JS nu-i vede) dar
+erau facturati integral. Exact de-aia consumul parea inexplicabil fata de ce
+arata analytics-ul.
+
+### Ce s-a facut
+
+CSP + Link + X-Robots-Tag -> `next.config.ts` (le pune CDN-ul, zero invocari).
+410 pe /info -> `src/app/info/route.ts`. In proxy raman doar nonce-ul per cerere
+pe `/widget/frame*` si negocierea markdown, cu `has: accept ~ text/markdown` in
+matcher. `functions-config-manifest.json` confirma cele trei matchere compilate.
+
+CSP-ul are proprietar unic in `src/lib/csp.ts`, importat si de config si de proxy.
+
+O regresie prinsa la verificare: header-ul `Link` din config suprascria
+canonicalul pe raspunsurile markdown. Reparat cu `missing` pe Accept, simetric
+cu matcher-ul. Verificat pe productie ca revine `rel="canonical"`.
+
+Verificat octet cu octet fata de baseline pe 6 cazuri, local si pe productie.
+Singurul delta: `/info` primeste acum si CSP+Link pe 410. `X-Vercel-Cache:
+PRERENDER` pe paginile publice.
+
+### Ce ramane nemasurat
+
+`vercel whoami` da `Not authorized`, deci nu s-a putut citi CARE cota e aproape
+de plafon. Fixul e corect indiferent, dar daca metrica arsa e bandwidth sau
+image transformations, mai e de lucru. De cerut proprietarului.
+
+Optiune nefolosita, care pastreaza intacta strategia GEO: `robots.txt` permite
+azi si crawlerele de tooling SEO (Ahrefs, Semrush, DataForSeo, DotBot), care nu
+aduc nicio citare. Blocarea lor taie sarcina fara sa atinga botii AI.
+
+## Pre-încărcarea link-urilor oprită — 11 septembrie 2026
+
+### De ce
+
+Proprietarul se temea, pe drept, că Edge Requests (467K/1M la 10 septembrie) vor
+atinge plafonul și site-ul va fi pus pe pauză. Documentația Vercel: la depășire
+susținută deploy-ul intră pe pauză cu 503 DEPLOYMENT_PAUSED și nu se reia automat.
+(Alerta de 75% CPU primită în aceeași zi era de pe alt cont, nu de pe salariile.ro.)
+
+Traficul din fereastra de 30 de zile nu era uniform: GSC 202 clickuri/zi în prima
+jumătate, 488/zi în ultima săptămână. Vercel Analytics, 2–10 septembrie: 851 de
+afișări/zi, cu 1.011 pe 10 septembrie. Deci ritmul curent e peste media ferestrei.
+
+### Ce s-a măsurat
+
+`next/link` pre-încarcă în producție orice rută statică al cărei link intră în
+ecran, iar Next 16 cere fiecare segment separat. O cerere de tip prefetch spre
+/salariu-mediu: 200, text/x-component, X-Vercel-Cache PRERENDER, 86 KB.
+
+Vizitator nou pe mobil, Edge headless prin playwright-core, pe producție:
+
+| pagină | fără scroll | scroll complet | după fix |
+|---|---|---|---|
+| / | 21 (4 prefetch) | 143 (113) | 17 (0) |
+| /salariu-minim | 28 (9) | 139 (108) | 17 (0) |
+| /zile-lucratoare-2026 | 31 (13) | 135 (105) | 16 (0) |
+| /calculator-salariu-invatamant | 24 (5) | 142 (112) | 17 (0) |
+
+Click-ul pe link navighează în continuare client-side (verificat pe producție:
+/salariu-minim → /despre și / → /salariu-minim, fără reîncărcare, H1 corect).
+
+### Ce s-a făcut
+
+`src/app/components/Link.tsx`: singurul Link al site-ului, `prefetch = false`
+implicit. Cele 43 de fișiere îl importă. `scripts/test-ui-contracts.mts` pică la
+orice import direct din `next/link` — verificat cu un fișier-capcană.
+
+### Calculul
+
+La 17 cereri pe vizită (limită superioară: navigările interne costă mai puțin),
+plafonul de 1M se atinge pe la ~1.800 de afișări/zi, cu ~80K rezervate boților.
+Înainte, cu vizitele care derulau pagina, punctul de rupere era mult mai jos și
+cobora odată cu cât citeau oamenii. La 851/zi rezerva e acum ~2×.
+
+Nicio optimizare nu face cererile zero. Dacă traficul se dublează (anunțul
+salariului minim pe 2027, schimbările fiscale din ianuarie), Hobby se atinge
+oricum. Asigurarea e Pro (10M Edge Requests incluse, fără oprire bruscă) —
+decizie financiară a proprietarului, prezentată, nu luată.
+
+Pârghie rămasă, nefolosită: scriptul Speed Insights costă 1 din cele 17 cereri
+pe vizită pentru date plafonate la 10K evenimente, pe care CrUX (`npm run psi`)
+le dă gratuit.
+
+## Mutarea pe Cloudflare pregătită și verificată — 12 septembrie 2026
+
+### Decizia
+
+Proprietarul a decis mutarea de pe Vercel pe Cloudflare: plafoanele Hobby
+(Edge Requests 467K/1M la 10 septembrie, cu trafic în creștere) și uz comercial
+viitor fără abonament. Verificat în termenii Cloudflare: planul gratuit nu
+interzice uzul comercial; singura restricție specifică e procesarea datelor de
+card pe site. Vercel Hobby e restricționat la uz necomercial.
+
+### Ce s-a făcut
+
+Ramura `migrare-cloudflare` (commit e29fcce), worktree local `salariile-ro-cf`.
+Site 100% static (`output: "export"`), servit ca assets de Cloudflare, fără
+script de Worker: cererile către assets statice sunt gratuite și nelimitate.
+
+Blocajele găsite pe un build de probă și rezolvate: proxy-ul, `/api/markdown`,
+`/api/calendar`, `/api/date-salarii/serie`, `/info`, widgetul care citea
+`searchParams` pe server, ISR pe `/zile-lucratoare-2026`, optimizarea de imagini
+la cerere și rutele robots/manifest/sitemap, care cer `force-static` explicit.
+
+Capcana evitată: `/info` exportat static ar fi răspuns 200 în loc de 410, adică
+un soft-404. Scos; pe Cloudflare e 404 real.
+
+Comportamentul Cloudflare s-a măsurat cu `wrangler dev`, nu s-a presupus din
+documentație:
+
+- `/ruta` servește `ruta.html` fără slash, exact URL-urile de pe Vercel;
+- `/ruta/` dă implicit 307; regula `/*/ /:splat 301` îl face permanent, iar `/`
+  rămâne 200, fără buclă;
+- o pagină inexistentă dă 404 cu `404.html`;
+- în `_headers`, `! Header` urmat de o nouă valoare pe aceeași rută înlocuiește
+  headerul, nu îl dublează;
+- headerele puse de un route handler se pierd la export și trebuie refăcute în
+  `_headers`: grila de învățământ își pierduse `X-Robots-Tag: noindex`.
+
+Worktree nou pe Windows cu `core.autocrlf=true`: `genereaza-catalog-meserii
+--check` compară octeți și pică pe CRLF, deși conținutul e identic. Nu e drift;
+regenerarea fișierului rezolvă local, iar CI-ul pe Linux nu e afectat.
+
+### Verificat
+
+- `scripts/compara-hosting.mjs`: 338 de URL-uri, producția Vercel vs Cloudflare
+  local, 0 diferențe neasumate și 12 asumate cu motiv (texte legale, link-uri de
+  descărcare, `lastmod` pe 3 pagini, o linie din `llms.txt`, `/info` 410 → 404).
+- `test:rendered` pe runtime-ul Cloudflare: 323 de rute. `npm test`, `tsc`, `eslint`.
+- Browser Edge pe mobil: widget cu `?brut=` și `?variant=complet`, brut invalid
+  ignorat, fluturaș, navigare client-side din fișierele RSC statice: 0 erori de
+  consolă, 0 cereri eșuate.
+- Hero `/salariu-minim`: PNG de 838 KB → WebP de 6,5 KB la 640 px.
+
+### Ce urmează
+
+Planul complet, pașii proprietarului, comutarea și rollback-ul sunt în
+`MIGRARE-CLOUDFLARE-2026-09-12.md`. Blocat pe proprietar: cont Cloudflare, zona
+adăugată cu înregistrările pe „DNS only”, nameserverele schimbate la Namebox.
+**Ramura nu se unește în `main` înainte de comutare.**

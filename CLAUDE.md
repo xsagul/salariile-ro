@@ -44,6 +44,7 @@ Tensiunea care a oprit-o, și care rămâne reală: `/despre` promite azi „nu 
 - Arhitectură SSR (problemele de client-side rendering care stricau indexarea sunt rezolvate)
 - Fișiere cheie: `src/proxy.ts` (fostul `middleware.ts`, redenumit în Next 16), `next.config.ts`, `src/`, `public/`
 - Rutare: `src/app/(site)/` = paginile publice (Header/Footer/analytics), `src/app/(embed)/` = rutele de widget care rulează în iframe pe site-uri terțe. Grupurile nu apar în URL. Root layout-ul e minimal și trebuie să rămână static — nu adăuga `headers()` sau `cookies()` acolo, scoate tot site-ul din cache.
+- **Mutare în curs spre Cloudflare, decisă de proprietar pe 12 septembrie 2026.** Producția e încă pe Vercel. Codul e pe ramura `migrare-cloudflare`: export static, `_headers` și `_redirects` generate de `scripts/genereaza-cloudflare.mts`, paritatea cu producția verificată de `scripts/compara-hosting.mjs`. Planul, pașii proprietarului, comutarea și rollback-ul: `MIGRARE-CLOUDFLARE-2026-09-12.md`. **Nu uni ramura în `main` înainte de comutare:** Vercel e încă legat de repo și ar publica exportul static fără headere de securitate și fără redirecturi.
 
 ## Secțiunile site-ului
 
