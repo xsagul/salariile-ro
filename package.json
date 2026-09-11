@@ -33,7 +33,7 @@
     "curs:check": "node scripts/curs-valutar.mjs --check",
     "build:previzualizare": "tsx scripts/genereaza-imagini.mts && next build && tsx scripts/genereaza-cloudflare.mts --previzualizare",
     "deploy": "npm run build && wrangler deploy",
-    "deploy:previzualizare": "npm run build:previzualizare && wrangler deploy --name salariile-ro-previzualizare",
+    "deploy:previzualizare": "npm run build:previzualizare && wrangler deploy --config wrangler.previzualizare.jsonc",
     "compara:hosting": "node scripts/compara-hosting.mjs"
   },
   "dependencies": {

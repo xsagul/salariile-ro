@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // Copia de previzualizare: Worker separat, cu noindex pe tot (build cu
+  // --previzualizare), niciodată pe domeniul de producție. workers_dev e setat
+  // explicit: fără el, un deploy cu --domain sau --route îl dezactivează.
+  "name": "salariile-ro-previzualizare",
+  "compatibility_date": "2026-09-01",
+  "workers_dev": true,
+  "preview_urls": false,
+  "assets": {
+    "directory": "./out",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}
