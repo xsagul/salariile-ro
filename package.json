@@ -8,8 +8,8 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "build": "tsx scripts/genereaza-imagini.mts && next build && tsx scripts/genereaza-cloudflare.mts",
+    "start": "wrangler dev --port 8788 --ip 127.0.0.1",
     "lint": "eslint",
     "test": "node --no-warnings scripts/test-facilitate.mts && node --no-warnings scripts/test-fiscal-periods.mts && node --no-warnings scripts/test-part-time.mts && node --no-warnings scripts/test-pfa.mts && node --no-warnings scripts/test-forme-juridice.mts && node --no-warnings scripts/test-date-salarii.mts && node --no-warnings scripts/test-meserii.mts && tsx scripts/generate-public-ins-assets.mts --check && tsx scripts/genereaza-catalog-meserii.mts --check && node --no-warnings scripts/test-pdf-text.mts && node --no-warnings scripts/test-ui-contracts.mts && node --no-warnings scripts/test-http.mts && tsx scripts/test-observatii.mts && tsx scripts/test-invatamant.mts && tsx scripts/test-grile-publice.mts && tsx scripts/test-sanatate.mts && tsx scripts/test-ore-suplimentare.mts && tsx scripts/test-somaj.mts && tsx scripts/test-curs.mts && tsx scripts/test-granularitate.mts && tsx scripts/test-context-drift.mts && tsx scripts/test-calendar.mts && node scripts/test-crawler.mjs",
     "test:rendered": "node --no-warnings scripts/test-rendered.mts",
@@ -30,11 +30,13 @@
     "crawl:report": "node scripts/crawler/report.mjs",
     "crawl:test": "node scripts/test-crawler.mjs",
     "curs": "node scripts/curs-valutar.mjs",
-    "curs:check": "node scripts/curs-valutar.mjs --check"
+    "curs:check": "node scripts/curs-valutar.mjs --check",
+    "build:previzualizare": "tsx scripts/genereaza-imagini.mts && next build && tsx scripts/genereaza-cloudflare.mts --previzualizare",
+    "deploy": "npm run build && wrangler deploy",
+    "deploy:previzualizare": "npm run build:previzualizare && wrangler deploy --name salariile-ro-previzualizare",
+    "compara:hosting": "node scripts/compara-hosting.mjs"
   },
   "dependencies": {
-    "@vercel/analytics": "^2.0.1",
-    "@vercel/speed-insights": "^2.0.0",
     "cheerio": "^1.2.0",
     "gray-matter": "^4.0.3",
     "jspdf": "^4.2.1",
@@ -54,9 +56,11 @@
     "eslint": "9.39.4",
     "eslint-config-next": "16.2.12",
     "postgres": "^3.4.9",
+    "sharp": "0.35.3",
     "tailwindcss": "^4",
     "tsx": "^4.23.12",
-    "typescript": "^5"
+    "typescript": "^5",
+    "wrangler": "^4.131.1"
   },
   "overrides": {
     "postcss": "8.5.23",

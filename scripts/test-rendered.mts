@@ -40,15 +40,19 @@ try {
 }
 const BASE_URL = `http://127.0.0.1:${PORT}`;
 const PROJECT_ROOT = process.cwd();
-const NEXT_BIN = path.join(PROJECT_ROOT, "node_modules", "next", "dist", "bin", "next");
+// Site static pe Cloudflare: testul servește out/ cu runtime-ul local Cloudflare
+// (wrangler dev), care aplică exact html_handling, _headers și _redirects.
+const WRANGLER_BIN = path.join(PROJECT_ROOT, "node_modules", "wrangler", "bin", "wrangler.js");
 const DATE_INS = JSON.parse(await readFile(path.join(PROJECT_ROOT, "src/data/ins-caen.json"), "utf8"));
 const AN_JUDETE = String(DATE_INS.judete.an).replace(/^Anul\s+/, "");
 
-const server = spawn(process.execPath, [NEXT_BIN, "start", "-p", String(PORT)], {
+const server = spawn(process.execPath, [WRANGLER_BIN, "dev", "--port", String(PORT), "--ip", "127.0.0.1"], {
   cwd: PROJECT_ROOT,
-  env: { ...process.env, NODE_ENV: "production" },
+  env: { ...process.env, CI: "1", WRANGLER_SEND_METRICS: "false" },
   stdio: ["ignore", "pipe", "pipe"],
   windowsHide: true,
+  // Pe POSIX, grup propriu de procese: wrangler pornește un workerd copil.
+  detached: process.platform !== "win32",
 });
 
 let serverOutput = "";
@@ -63,9 +67,9 @@ const delay = (milliseconds: number) =>
   new Promise((resolve) => setTimeout(resolve, milliseconds));
 
 async function waitForServer() {
-  for (let attempt = 0; attempt < 40; attempt += 1) {
+  for (let attempt = 0; attempt < 120; attempt += 1) {
     if (server.exitCode !== null) {
-      throw new Error(`Serverul Next.js s-a oprit prematur.\n${serverOutput}`);
+      throw new Error(`Serverul local Cloudflare (wrangler dev) s-a oprit prematur.\n${serverOutput}`);
     }
 
     try {
@@ -601,11 +605,11 @@ async function auditRenderedSite() {
       if (response.headers.has("x-frame-options")) {
         failures.push(`${pathname}: X-Frame-Options blocheaza integrarea externa`);
       }
-      if (kind !== "minimal" && !html.includes("Date salariale")) {
+      // Pe găzduirea statică HTML-ul iframe-ului e unul singur pentru orice query:
+      // ?variant=complet și ?brut= se aplică în browser (WidgetFrameDinUrl), deci
+      // conținutul variantei complete nu se poate verifica din HTML, ci în browser.
+      if (kind === "payslip" && !html.includes("Date salariale")) {
         failures.push(`${pathname}: lipseste sectiunea Date salariale`);
-      }
-      if (kind === "complete" && !html.includes("Rezultat calcul")) {
-        failures.push(`${pathname}: lipseste sectiunea Rezultat calcul`);
       }
       if (kind === "payslip" && !html.includes("Fluturaș de salariu")) {
         failures.push(`${pathname}: lipseste rezultatul pentru fluturas`);
@@ -632,12 +636,14 @@ async function auditRenderedSite() {
     }
   }
 
+  // /info dădea 410 pe Vercel. Găzduirea statică nu poate întoarce 410, deci e
+  // 404 real, cu pagina 404 marcată noindex. Contează să nu devină 200 (soft-404).
   const retiredInfoResponse = await fetch(`${BASE_URL}/info`);
-  if (retiredInfoResponse.status !== 410) {
-    failures.push(`/info: trebuia HTTP 410, a răspuns ${retiredInfoResponse.status}`);
+  if (retiredInfoResponse.status !== 404) {
+    failures.push(`/info: trebuia HTTP 404, a răspuns ${retiredInfoResponse.status}`);
   }
-  if (!retiredInfoResponse.headers.get("x-robots-tag")?.includes("noindex")) {
-    failures.push("/info: lipsește X-Robots-Tag noindex");
+  if (!hasNoindex(await retiredInfoResponse.text())) {
+    failures.push("/info: pagina 404 nu e noindex");
   }
 
   const missingResponse = await fetch(`${BASE_URL}/pagina-inexistenta-audit-404`);
@@ -702,24 +708,18 @@ async function auditRenderedSite() {
     );
   }
 
-  const markdownResponse = await fetch(`${BASE_URL}/salariu-minim`, {
-    headers: { Accept: "text/markdown" },
-  });
+  // Markdown pentru agenți: pe găzduirea statică nu mai există negociere pe Accept,
+  // ci fișier generat la build lângă pagină (scripts/genereaza-cloudflare.mts).
+  const markdownResponse = await fetch(`${BASE_URL}/salariu-minim.md`);
   const markdownBody = await markdownResponse.text();
   if (markdownResponse.status !== 200) {
-    failures.push(`/salariu-minim Accept markdown: HTTP ${markdownResponse.status}`);
+    failures.push(`/salariu-minim.md: HTTP ${markdownResponse.status}`);
   }
   if (!markdownResponse.headers.get("content-type")?.includes("text/markdown")) {
-    failures.push("/salariu-minim Accept markdown: Content-Type incorect");
+    failures.push(`/salariu-minim.md: Content-Type ${markdownResponse.headers.get("content-type")}`);
   }
   if (!markdownBody.includes("# Salariul minim")) {
-    failures.push("/salariu-minim Accept markdown: continutul principal lipseste");
-  }
-  if (!markdownResponse.headers.get("vary")?.toLowerCase().split(/\s*,\s*/).includes("accept")) {
-    failures.push("/salariu-minim Accept markdown: Vary nu include Accept");
-  }
-  if (!markdownResponse.headers.get("cache-control")?.toLowerCase().includes("no-store")) {
-    failures.push("/salariu-minim Accept markdown: reprezentarea alternativă trebuie să fie no-store");
+    failures.push("/salariu-minim.md: continutul principal lipseste");
   }
 
   const htmlResponse = await fetch(`${BASE_URL}/salariu-minim`, {
@@ -750,7 +750,7 @@ async function auditRenderedSite() {
     failures.push("/og-image.png: fisier public nehashuit servit immutable");
   }
   if (publicAssetResponse.headers.has("content-security-policy")) {
-    failures.push("/og-image.png: middleware-ul HTML ruleaza inutil pe asset static");
+    failures.push("/og-image.png: asset static primeste CSP de document");
   }
 
   const publicDatasets = [
@@ -806,15 +806,21 @@ async function auditRenderedSite() {
 
   console.log("OK: HTTP 200, un singur H1/main si canonical corect pe toate rutele.");
   console.log("OK: JSON-LD valid, allowlist inchis, link graph si valorile GSC au trecut.");
-  console.log("OK: Markdown allowlist/negociere si headerele asseturilor au trecut.");
+  console.log("OK: Markdown static si headerele asseturilor au trecut.");
   console.log("OK: toate cele trei iframe-uri sunt integrabile, noindex si absente din sitemap.");
 }
 
 try {
   await auditRenderedSite();
 } finally {
-  if (server.exitCode === null) {
-    server.kill();
-    await Promise.race([once(server, "exit"), delay(3_000)]);
+  if (server.exitCode === null && server.pid) {
+    // wrangler pornește un proces workerd copil: se oprește tot arborele,
+    // altfel fișierele din out/ rămân blocate pe Windows.
+    if (process.platform === "win32") {
+      spawn("taskkill", ["/pid", String(server.pid), "/T", "/F"], { windowsHide: true });
+    } else {
+      process.kill(-server.pid, "SIGTERM");
+    }
+    await Promise.race([once(server, "exit"), delay(5_000)]);
   }
 }

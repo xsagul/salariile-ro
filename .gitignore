@@ -108,3 +108,8 @@ gsc-key.json
 # 6 MB de HTML public, care se ia din nou oricand cu `--refetch`. Ce conteaza —
 # grilele extrase — e versionat in src/data/grile-153-2017.json.
 /research/lege153-consolidat.html
+
+# Cloudflare: export static si variante de imagini generate la build
+/out
+/public/_img
+/.wrangler

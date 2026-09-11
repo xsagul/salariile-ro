@@ -6,9 +6,9 @@
 // afișările lui nu sunt vizitele noastre și nu trebuie să ne polueze datele.
 //
 // Rutele din grupul ăsta sunt singurele care primesc input de la utilizator
-// (`?brut=`), deci sunt și singurele cu suprafață de injecție. De aceea
-// rămân dinamice și primesc CSP-ul strict, cu nonce și `strict-dynamic`
-// (vezi src/proxy.ts). Input-ul e validat separat în fiecare pagină.
+// (`?brut=`). Pe găzduirea statică inputul se citește în browser și e acceptat
+// doar ca 3–6 cifre (WidgetFrameDinUrl, WidgetFluturasDinUrl). CSP-ul lor,
+// încadrabil pe orice site, e CSP_WIDGET din src/lib/csp.ts.
 
 export default function EmbedLayout({
   children,

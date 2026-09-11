@@ -94,6 +94,6 @@ Datele publice, rezultatele calculelor și explicațiile scurte pot fi citate cu
 
 ## Tehnic
 
-- Site Next.js cu HTML randat server-side și calcul fiscal interactiv în browser; Vercel Analytics este cookieless și agregat
+- Site Next.js generat static (HTML complet la build), găzduit pe Cloudflare, cu calcul fiscal interactiv în browser; Cloudflare Web Analytics este cookieless și agregat
 - Conținut și calcule revizuite la 9 septembrie 2026; regimul salarial curent este valabil din 1 iulie 2026
 - Operator: Știuriuc Sorin-Marian (persoană fizică, proiect personal)

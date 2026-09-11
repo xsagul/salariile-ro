@@ -44,7 +44,7 @@ const jsonLd = {
       "@type": "WebPage",
       name: "Politica de confidențialitate salariile.ro",
       description:
-        "Politica GDPR a salariile.ro: date colectate (logs server, analytics anonime Vercel), bază legală interes legitim, drepturile vizitatorilor, autoritate ANSPDCP.",
+        "Politica GDPR a salariile.ro: date colectate (logs server, analytics anonime Cloudflare), bază legală interes legitim, drepturile vizitatorilor, autoritate ANSPDCP.",
       url: "https://salariile.ro/politica-confidentialitate",
       inLanguage: "ro-RO",
       dateModified: PAGE_LAST_MODIFIED["/politica-confidentialitate"].toISOString().slice(0, 10),
@@ -90,13 +90,10 @@ export default function PoliticaConfidentialitatePage() {
             <h3>Date colectate automat</h3>
             <ul>
               <li>
-                <strong>Adresa IP, user agent, URL accesat, data și ora vizitei</strong>: colectate automat de către infrastructura de hosting (Vercel) pentru fiecare cerere HTTP. Folosite pentru securitate (detectare abuz, atacuri automate) și debugging. Păstrate maximum 30 de zile.
+                <strong>Adresa IP, user agent, URL accesat, data și ora vizitei</strong>: prelucrate automat de infrastructura de hosting (Cloudflare) pentru fiecare cerere HTTP, ca pagina să fie livrată și protejată de abuz și atacuri automate. Site-ul nu păstrează jurnale proprii de acces; Cloudflare le prelucrează ca procesator, conform politicii sale.
               </li>
               <li>
-                <strong>Statistici de vizitare anonime</strong>: prin Vercel Web Analytics se contorizează numărul de vizite, paginile cele mai accesate și țara de origine (la nivel general). Nu se folosesc cookies pentru această analiză, datele sunt complet anonime și nu se transferă către terți.
-              </li>
-              <li>
-                <strong>Măsurători de performanță anonime</strong>: prin Vercel Speed Insights se măsoară cât de repede se încarcă paginile pentru vizitatori reali (Core Web Vitals). Sunt date tehnice despre pagină, fără cookies, fără identificarea vizitatorului și fără transfer către terți.
+                <strong>Statistici de vizitare anonime</strong>: prin Cloudflare Web Analytics se contorizează numărul de vizite, paginile cele mai accesate, țara de origine (la nivel general) și timpii de încărcare a paginilor. Nu se folosesc cookies sau stocare locală, vizitatorii nu sunt amprentați, iar datele sunt agregate și nu se transferă către terți.
               </li>
             </ul>
             <h3>Publicitate: niciuna</h3>
@@ -132,22 +129,22 @@ export default function PoliticaConfidentialitatePage() {
             </p>
             <ul>
               <li>
-                <strong>Vercel Inc.</strong> (SUA): furnizor de hosting și CDN. Procesează automat fiecare cerere către site. Vercel este certificat conform mecanismului UE-SUA Data Privacy Framework. <a href="https://vercel.com/legal/privacy-notice" target="_blank" rel="noopener">Politica Vercel</a>.
+                <strong>Cloudflare, Inc.</strong> (SUA): furnizor de hosting și CDN și al statisticilor anonime Web Analytics. Procesează automat, ca procesator, fiecare cerere către site. Cloudflare este certificat conform mecanismului UE-SUA Data Privacy Framework. <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Politica Cloudflare</a>.
               </li>
               <li>
                 <strong>Google LLC</strong> (SUA) — <strong>Search Console</strong>: pentru verificarea proprietății domeniului și monitorizarea performanței în rezultatele căutării. Nu colectează date despre vizitatorii individuali, doar statistici agregate despre cum apare site-ul în rezultatele Google.
               </li>
             </ul>
             <p>
-              Transferurile către SUA se realizează în temeiul mecanismului UE-SUA Data Privacy Framework, la care Google și Vercel sunt certificate. Nu folosim alți subprocesatori. Lista se actualizează aici dacă apar modificări.
+              Transferurile către SUA se realizează în temeiul mecanismului UE-SUA Data Privacy Framework, la care Google și Cloudflare sunt certificate. Nu folosim alți subprocesatori. Lista se actualizează aici dacă apar modificări.
             </p>
         </Section>
 
         <Section>
             <h2>5. Durata stocării</h2>
             <ul>
-              <li>Logs de server: maximum 30 de zile, după care se șterg automat de către Vercel.</li>
-              <li>Statistici Vercel Analytics și Speed Insights: agregate, păstrate la nivel anonim conform politicii Vercel.</li>
+              <li>Jurnale de acces: site-ul nu păstrează jurnale proprii; Cloudflare le prelucrează ca procesator, pe durata stabilită în politica sa de confidențialitate.</li>
+              <li>Statistici Cloudflare Web Analytics: agregate, fără date de identificare a vizitatorilor, păstrate conform politicii Cloudflare.</li>
               <li>Date Google Search Console: agregate, păstrate conform politicii Google (16 luni pentru istoricul detaliat).</li>
             </ul>
         </Section>

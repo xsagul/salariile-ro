@@ -1,9 +1,15 @@
-import {sarbatoriAn,zileLucratoareLuna} from '@/lib/sarbatori';
-export async function GET(request:Request,{params}:{params:Promise<{an:string}>}){
- const {an}=await params;
- if(!['2026','2027'].includes(an))return new Response('Calendar indisponibil',{status:404});
- const year=Number(an),format=new URL(request.url).searchParams.get('format')??'ics';
- if(!['csv','ics'].includes(format))return new Response('Format invalid',{status:400});
+// src/lib/export-calendar.ts
+//
+// Calendarul sărbătorilor legale ca fișier: ICS pentru import, CSV pentru tabel.
+// Mutat din /api/calendar/[an]?format=..., care nu poate exista pe găzduire
+// statică. Fișierele se generează la build, la /date/calendar/<an>.<format>.
+
+import { sarbatoriAn, zileLucratoareLuna } from "@/lib/sarbatori";
+
+export const FISIERE_CALENDAR = ["2026.ics", "2026.csv", "2027.ics", "2027.csv"] as const;
+
+export function continutCalendar(an: "2026" | "2027", format: "csv" | "ics"): string {
+ const year = Number(an);
  const pad=(n:number)=>String(n).padStart(2,'0');
  let body:string;
  if(format==='csv')body='\uFEFFLuna,Zile lucratoare,Ore la 8 ore pe zi\r\n'+Array.from({length:12},(_,i)=>`${i+1},${zileLucratoareLuna(year,i)},${zileLucratoareLuna(year,i)*8}`).join('\r\n');
@@ -12,5 +18,5 @@ export async function GET(request:Request,{params}:{params:Promise<{an:string}>}
   const end=`${next.getUTCFullYear()}${pad(next.getUTCMonth()+1)}${pad(next.getUTCDate())}`;
   return ['BEGIN:VEVENT',`UID:${start}@salariile.ro`,'DTSTAMP:20260907T000000Z',`DTSTART;VALUE=DATE:${start}`,`DTEND;VALUE=DATE:${end}`,`SUMMARY:${name}`,'TRANSP:TRANSPARENT','END:VEVENT'];
  }),'END:VCALENDAR',''].join('\r\n');
- return new Response(body,{headers:{'Content-Type':format==='csv'?'text/csv; charset=utf-8':'text/calendar; charset=utf-8','Content-Disposition':`attachment; filename="calendar-${an}.${format}"`,'Cache-Control':'public, max-age=86400','X-Robots-Tag':'noindex'}});
+ return body;
 }

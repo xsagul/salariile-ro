@@ -14,6 +14,8 @@ import { getAllArticles } from "@/lib/noutati";
 import { CATEGORII, COMPARATII, MESERII } from "@/lib/meserii";
 import { INS_GENERAT_LA, JUDETE } from "@/lib/ins-date";
 
+export const dynamic = "force-static";
+
 const STATIC_ENTRIES: {
   path: keyof typeof PAGE_LAST_MODIFIED;
   priority: number;

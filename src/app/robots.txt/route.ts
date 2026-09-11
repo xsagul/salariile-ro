@@ -7,6 +7,8 @@
 // Excluderi: /api/ (endpoint-uri tehnice) și crawlerele de tooling SEO, care
 // nu produc nicio citare dar costa Edge Requests — vezi comentariul din payload.
 
+export const dynamic = "force-static";
+
 export function GET() {
   const content = `# Crawlerele de tooling SEO: blocate pe 10 septembrie 2026.
 # Nu aduc nicio citare si niciun vizitator, dar consuma Edge Requests pe 331

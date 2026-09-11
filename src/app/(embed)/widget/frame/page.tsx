@@ -5,11 +5,13 @@
 // permite frame-ancestors *.
 // noindex: pagina trăiește în iframe pe alte site-uri, nu în rezultatele Google —
 // pagina indexabilă care o prezintă e /widget.
+// Pe găzduirea statică HTML-ul e același pentru orice query; `?brut=` se aplică
+// în browser, prin WidgetFrameDinUrl. Fallback-ul e widgetul fără parametri.
 
 import type { Metadata } from "next";
-import CalculatorSalariu from "@/app/components/CalculatorSalariu";
-import WidgetCalculator from "@/app/components/WidgetCalculator";
-import EmbedAutoResize from "@/app/components/EmbedAutoResize";
+import { Suspense } from "react";
+import WidgetFrameContinut from "@/app/components/WidgetFrameContinut";
+import WidgetFrameDinUrl from "@/app/components/WidgetFrameDinUrl";
 
 export const metadata: Metadata = {
   title: "Calculator salariu net (widget)",
@@ -17,37 +19,10 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://salariile.ro/widget" },
 };
 
-export default async function WidgetFramePage({
-  searchParams,
-}: {
-  searchParams: Promise<{ brut?: string; variant?: string }>;
-}) {
-  const { brut, variant } = await searchParams;
-  const initialBrut = brut && /^\d{3,6}$/.test(brut) ? brut : undefined;
-  const isComplete = variant === "complet";
-
+export default function Page() {
   return (
-    <main className="bg-canvas">
-      {isComplete ? (
-        <>
-          <EmbedAutoResize />
-          <h1 className="sr-only">Calculator complet de salarii 2026</h1>
-          <CalculatorSalariu brutInitial={initialBrut} embedded />
-        </>
-      ) : (
-        <div className="widget-minimal-autoheight">
-          <style>{`
-            .widget-minimal-autoheight > div > div:first-child {
-              height: auto !important;
-              overflow: visible !important;
-            }
-            .widget-minimal-autoheight > div > div:nth-child(2) {
-              display: none !important;
-            }
-          `}</style>
-          <WidgetCalculator initialBrut={initialBrut} />
-        </div>
-      )}
-    </main>
+    <Suspense fallback={<WidgetFrameContinut isComplete={false} />}>
+      <WidgetFrameDinUrl />
+    </Suspense>
   );
 }
