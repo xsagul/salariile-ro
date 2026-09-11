@@ -2634,3 +2634,24 @@ timp site-ul dă 200, www dă 301, iar MX-urile sunt intacte.
 
 Următorul pas: zona „Active” în Cloudflare, apoi `wrangler login` și deploy-ul
 de previzualizare.
+
+### Zona activă și copia de probă verificată pe Cloudflare — 12 septembrie 2026
+
+Zona `salariile.ro` a devenit „Active” în Cloudflare, cu toate înregistrările pe
+DNS only, deci traficul merge încă la Vercel. `wrangler login` e autorizat de
+proprietar în browser pe contul `5c021919a5681657b122be5eff61e25f`.
+
+Copia de probă, cu noindex pe tot, e publicată pe Worker-ul separat
+`salariile-ro-previzualizare` (https://salariile-ro-previzualizare.sorin-stiuriuc.workers.dev),
+niciodată pe producție. Verificat pe infrastructura reală Cloudflare, nu doar local:
+
+- `compara-hosting.mjs --ignora=header.x-robots-tag`: 338 de URL-uri, 0 diferențe
+  neasumate, 12 asumate;
+- headere: 301 pe `/ruta/` și pe URL-urile vechi, 404 real, `frame-ancestors *`
+  fără X-Frame-Options pe widget, `text/markdown` pe `.md`;
+- browser Edge pe mobil: toate cele 8 verificări (widget, fluturaș, navigare),
+  0 erori de consolă, 0 cereri eșuate.
+
+În dashboard, „Markdown for Agents” (negociere pe `Accept: text/markdown`) apare
+doar pe planul Pro, deci varianta cu fișiere `.md` generate la build rămâne cea
+corectă pe Free.
