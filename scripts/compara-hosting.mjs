@@ -20,6 +20,9 @@ const arg = (nume, implicit) => {
 const A = arg("a", "https://salariile.ro").replace(/\/+$/, "");
 const B = arg("b", "http://127.0.0.1:8788").replace(/\/+$/, "");
 const UA = "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)";
+// Câmpuri ignorate explicit, de ex. `--ignora=header.x-robots-tag` contra copiei de
+// previzualizare, care are intenționat noindex pe tot.
+const IGNORATE = new Set(arg("ignora", "").split(",").filter(Boolean));
 
 // Diferențe cunoscute, fiecare cu motivul ei. Orice altceva pică verificarea.
 const DESCARCARI_STATICE =
@@ -127,7 +130,7 @@ const diferente = [];
 const asumate = [];
 
 function compara(url, camp, a, b) {
-  if (a === b) return;
+  if (a === b || IGNORATE.has(camp)) return;
   let [va, vb] = [String(a), String(b)];
   if (va.length > 160 || vb.length > 160) {
     let i = 0;
