@@ -2688,3 +2688,33 @@ Verificat independent pe cinci rezolvere — Cloudflare, Google, Quad9, OpenDNS
 monitorul a făcut 18 verificări fără niciun incident: site 200, www 301, MX 2/2.
 Zona rămâne pe DNS only, deci producția e servită tot de Vercel; comutarea
 propriu-zisă așteaptă decizia proprietarului.
+
+### Bază de comparație pentru viteză, înainte de comutare — 12 septembrie 2026
+
+Măsurat înainte de mutare, ca după ea să existe cu ce compara. Datele sunt în
+`audit-seo/cwv-inainte-de-cloudflare-2026-09-12.json`.
+
+**Teren (CrUX, utilizatori reali, fereastra de 28 de zile, p75)** — asta e
+măsurătoarea care contează pentru Google, și e integral în verde:
+
+| Pagină | LCP | INP | CLS | TTFB |
+|---|---|---|---|---|
+| homepage, mobil | 1.308 ms | 158 ms | 0 | 383 ms |
+| homepage, desktop | 794 ms | 90 ms | 0 | 300 ms |
+| /salariu-minim, mobil | 1.308 ms | 150 ms | 0 | 385 ms |
+| /zile-lucratoare-2026, mobil | 1.294 ms | — | 0 | 355 ms |
+| /calculator-salariu-invatamant, mobil | 1.110 ms | 132 ms | 0 | 341 ms |
+
+**Măsurătoare directă, Vercel vs copia Cloudflare**, 9 cereri per URL, mediana,
+de pe aceeași mașină și în același moment: TTFB 138–140 ms pe Vercel față de
+50–59 ms pe Cloudflare; timp total 164–170 ms față de 56–72 ms. HTML comprimat:
+16.788 vs 15.869 octeți pe homepage.
+
+**Laborator (Lighthouse, o singură rulare):** scor 97–99 pe Vercel, 96–97 pe
+copia Cloudflare; LCP de laborator iese uneori mai mare pe Cloudflare (2.701 vs
+1.951 ms pe homepage). Nu e o concluzie: o rulare Lighthouse variază cu sute de
+milisecunde, iar copia rulează pe workers.dev, nu pe domeniul propriu. Semnalul
+repetat și consistent e cel direct, de mai sus.
+
+Datele de teren se mișcă lent, fiind o fereastră de 28 de zile: după comutare se
+compară săptămânal, nu a doua zi.
