@@ -2718,3 +2718,35 @@ repetat și consistent e cel direct, de mai sus.
 
 Datele de teren se mișcă lent, fiind o fereastră de 28 de zile: după comutare se
 compară săptămânal, nu a doua zi.
+
+### Comutarea pe Cloudflare — 12 septembrie 2026, ~02:50 UTC
+
+Făcută la cererea proprietarului, la ora cu trafic minim. Ordinea a fost
+inversată față de planul inițial, din cauza unui incident util:
+
+Sonda mea de o cerere pe secundă cu `no-cache` a declanșat protecția anti-bot a
+Vercel, care a început să întoarcă `403` cu `X-Vercel-Mitigated: challenge`
+pentru IP-ul meu, la 52 de secunde după pornire. Verificat din exterior, prin
+serverele Google (PageSpeed): site-ul răspundea 200, scor 100, LCP 1.202 ms —
+deci vizitatorii nu au fost afectați, doar IP-ul meu. Lecția: nicio sondă mai
+deasă de 10-15 secunde către origine, fără cache-busting.
+
+Consecința pentru plan: dacă apex-ul trecea întâi pe „Proxied”, tot traficul ar
+fi ajuns la Vercel de pe câteva IP-uri Cloudflare — exact tiparul care tocmai
+declanșase blocarea. Deci **ruta s-a creat prima** (inactivă cât timp
+înregistrarea e „DNS only”), iar comutarea propriu-zisă a fost trecerea
+înregistrărilor apex pe „Proxied”. Astfel Vercel nu a primit nicio cerere
+intermediară.
+
+Secvența: Worker de producție publicat fără trigger (3.769 fișiere, fără
+noindex) → ruta `salariile.ro/*` atașată la 02:46:21 → ambele A apex trecute pe
+„Proxied”. Autoritativ, apex-ul răspunde acum 188.114.96.8 și 188.114.97.8.
+
+Verificat imediat pe edge, ocolind cache-ul local: pagini 200 servite de
+Cloudflare, `/ruta/` și URL-urile vechi cu 301, 404 real, `.md` cu text/markdown,
+robots.txt, sitemap.xml, llms.txt, descărcări cu `X-Robots-Tag: noindex`, widget
+cu `frame-ancestors *`, CSP și HSTS prezente, fără niciun antet Vercel.
+
+`www` a rămas deocamdată pe „DNS only” spre Vercel, unde face 301 către apex.
+Ramura NU s-a unit în `main`, deci build-ul Vercel rămâne neatins ca plasă de
+siguranță. Rollback: se șterge ruta din Workers Routes.
