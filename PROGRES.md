@@ -2750,3 +2750,30 @@ cu `frame-ancestors *`, CSP și HSTS prezente, fără niciun antet Vercel.
 `www` a rămas deocamdată pe „DNS only” spre Vercel, unde face 301 către apex.
 Ramura NU s-a unit în `main`, deci build-ul Vercel rămâne neatins ca plasă de
 siguranță. Rollback: se șterge ruta din Workers Routes.
+
+### Verificarea de după comutare — 12 septembrie 2026
+
+Paritate live, copia de referință contra producției, măsurată direct pe edge:
+**338 de URL-uri, 0 diferențe.** Prima rulare dăduse 80 de diferențe „403”, dar
+cauza era locală: resolverul rețelei mele a continuat să dea IP-urile Vercel
+zece minute după comutare, iar cererile ajungeau la Vercel, unde IP-ul meu era
+blocat. Rezolverele publice și Google vedeau deja Cloudflare. Unealta are acum
+opțiunea `--ip-b`, care ocolește resolverul.
+
+Confirmare externă, prin PageSpeed (serverele Google): `/salariu-minim` întoarce
+200, scor 96, TTFB 6 ms.
+
+Viteză, aceleași măsurători ca înainte de comutare (9 cereri, mediană):
+
+| Pagină | TTFB pe Vercel | TTFB pe Cloudflare |
+|---|---|---|
+| / | 140 ms | 43 ms |
+| /salariu-minim | 138 ms | 36 ms |
+| /zile-lucratoare-2026 | 139 ms | 36 ms |
+| /salarii/programator | 140 ms | 39 ms |
+
+`CF-Cache-Status: HIT` pe paginile HTML, cu `Cache-Control: public, max-age=0,
+must-revalidate` — cache la edge, revalidare în browser.
+
+Datele de teren (CrUX) se schimbă lent, fiind medie pe 28 de zile: se compară
+săptămânal cu `CWV-INAINTE-DE-CLOUDFLARE-2026-09-12.json`.
