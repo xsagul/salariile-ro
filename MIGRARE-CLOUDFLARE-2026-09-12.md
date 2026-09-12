@@ -6,10 +6,11 @@ Hobby e restricționat la uz necomercial. Termenii Cloudflare pentru planul
 gratuit nu interzic uzul comercial; singura restricție specifică e procesarea
 datelor de card pe site.
 
-**Stare (12 septembrie 2026): codul e gata și verificat; zona Cloudflare e
-creată, iar nameserverele sunt schimbate la Namebox și în propagare. Producția
-e încă pe Vercel.** Pașii 1–3 de mai jos sunt făcuți; urmează zona „Active” în
-Cloudflare și pasul 4.
+**Stare (12 septembrie 2026): zona Cloudflare e activă, nameserverele sunt
+schimbate la Namebox, copia de probă e publicată și verificată pe infrastructura
+reală, iar metoda de comutare e validată pe subdomeniu. Producția e încă pe
+Vercel.** Toți pașii proprietarului sunt făcuți, în afară de cheile pentru
+publicarea automată din GitHub (pasul 5). Urmează comutarea, cu confirmarea lui.
 
 - Ramura: `migrare-cloudflare` (worktree local `C:\Users\Sorin\Desktop\salariile-ro-cf`)
 - **Nu face merge în `main` înainte de comutare.** Vercel e încă legat de repo:
@@ -98,13 +99,12 @@ Condițiile, toate verificate pe ramură:
    `salariile-ro-previzualizare` (workers.dev), cu noindex pe tot, niciodată
    pe producție. `compara-hosting` contra lui: infrastructura Cloudflare reală,
    nu doar runtime-ul local.
-2. Test pe un subdomeniu (`cf.salariile.ro`), cu Custom Domain pe Worker-ul de
-   previzualizare: cât durează emiterea certificatului și ce face Cloudflare cu
-   o înregistrare A existentă. Documentația nu spune nici una, nici alta. Cu HSTS
-   preload, un certificat lipsă înseamnă site inaccesibil, deci se măsoară întâi
-   aici, nu pe apex.
-3. Certificatul Universal SSL al zonei confirmat „Active”; TTL-ul înregistrărilor
-   apex coborât la 60 s, ca rollback-ul să se propage într-un minut.
+2. FĂCUT. Test pe subdomeniul `cf.salariile.ro`: Custom Domain-ul e refuzat pe
+   hostname-uri cu înregistrări existente, iar varianta „Proxied” plus rută
+   trece fără nicio fereastră. Detaliile și măsurătorile sunt mai jos, în
+   „Metoda de comutare, validată pe subdomeniu”.
+3. FĂCUT. Universal SSL al zonei e „Active” și acoperă `salariile.ro` și
+   `*.salariile.ro`, deci comutarea nu așteaptă niciun certificat nou.
 
 ## Comutarea (împreună, la oră cu trafic minim)
 
