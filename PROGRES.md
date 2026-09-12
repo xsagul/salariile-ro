@@ -2927,3 +2927,51 @@ Date noi, pe care găzduirea veche nu le dădea — AI Crawl Control, ultimele 2
 `/calculator/calcul-salariu-net-4325-brut` (4), `/salariu-minim` (4).
 Operatori: ChatGPT-User 53, Applebot 11, Claude-SearchBot 2. Zero „demand
 signals” (conținut cerut și negăsit).
+
+### Negocierea Markdown: funcționează, dar Cloudflare o vrea altfel — 12 septembrie 2026
+
+Regulă Single Redirect în zonă, cu expresie personalizată. Condiție: `Accept`
+conține `text/markdown`, calea ≠ `/`, fără punct în cale, nu începe cu `/widget`,
+`/date` sau `/_next`. Acțiune: **307 dinamic** către
+`concat("https://salariile.ro", http.request.uri.path, ".md")`.
+
+**307, nu 301**, deliberat: răspunsul depinde de un antet al cererii, iar un
+redirect permanent poate fi memorat per-URL și ar ajunge să trimită la `.md`
+inclusiv cereri normale de pagină.
+
+Verificat pe **ambele** noduri de edge: un salt → `200 text/markdown`.
+Excluderile țin (`/`, `/widget/frame`, `/sitemap.xml`, `/robots.txt` — niciun
+redirect). Vizitatorii normali primesc HTML. Regula `www` → apex, intactă.
+
+**Agent Readiness a urcat 3/5 → 4/5, dar nu pentru ce credeam.** Content Signals
+e acum verde; **Markdown Negotiation a rămas gri**. Citit din clasa pictogramei
+(`text-kumo-badge-green` față de `text-kumo-subtle`) — singurul loc unde starea
+există, fiindcă punctele nu au etichetă accesibilă, iar capturile de ecran expiră
+pe pagina aceea. Concluzia: verificatorul lor **nu acceptă un redirect**; vrea
+Markdown la *același* URL, cu 200, probabil și `Vary: Accept`. Asta cere calcul la
+edge. Un script de Worker ar transforma fiecare cerere în invocare numărată —
+exact ce interzice regula din `CLAUDE.md`. De evaluat: Cloudflare Snippets, cu
+limitele lor verificate înainte de a promite ceva.
+
+**Greșeală proprie, consemnată ca atare: am creat regula de două ori.** Apăsam
+butoanele cu secvența `pointerdown+mousedown+mouseup+click`, necesară ca să se
+deschidă selectoarele React — dar pe un buton de trimitere înseamnă două
+trimiteri. Duplicatul a fost șters după ce am verificat că rândul vizat e chiar
+al treilea. Regulă de acum: secvența completă **doar** pentru componente care nu
+răspund la `click`; un singur `click` pe butoane obișnuite și pe orice acțiune
+distructivă.
+
+**Cum se automatizează panoul Cloudflare** (m-a costat câteva runde de eșecuri
+tăcute, toate raportând succes):
+
+- capturile de ecran expiră pe paginile grele — se lucrează prin `get_page_text`
+  și prin citirea DOM-ului, nu prin imagini;
+- `find` descrie uneori greșit elementele; referințele sunt bune, descrierile nu;
+- `form_input` nu atinge componentele React — scrie în input un șir gol;
+- clicul pe referință **nu are efect dacă elementul e în afara ecranului**:
+  `scroll_to` înainte, întotdeauna;
+- selectoarele sunt `react-select`: se deschid cu `mousedown` pe container, iar
+  opțiunile se citesc din elementul indicat de `aria-controls`, nu prin
+  `[role="option"]`;
+- API-ul panoului prin sesiune e blocat (cookie-uri), deci automatizarea trece
+  obligatoriu prin interfață.
