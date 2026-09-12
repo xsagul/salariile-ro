@@ -2680,3 +2680,11 @@ Curățenie după test: ruta `cf.salariile.ro/*` ștearsă din Workers Routes ș
 înregistrări de producție, toate pe DNS only. Propagarea nameserverelor e
 parțială: Google DNS folosește deja Cloudflare, 1.1.1.1, Quad9 și OpenDNS încă
 nu, cu TTL de până la 24 h. Producția răspunde normal în tot acest timp.
+
+Propagarea nameserverelor s-a încheiat la 02:11 UTC pe 12 septembrie 2026,
+adică în aproximativ patru ore de la schimbarea de la Namebox, nu în 24.
+Verificat independent pe cinci rezolvere — Cloudflare, Google, Quad9, OpenDNS
+și AdGuard: toate dau carlane și scott.ns.cloudflare.com. În tot intervalul,
+monitorul a făcut 18 verificări fără niciun incident: site 200, www 301, MX 2/2.
+Zona rămâne pe DNS only, deci producția e servită tot de Vercel; comutarea
+propriu-zisă așteaptă decizia proprietarului.
