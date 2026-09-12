@@ -2888,3 +2888,42 @@ panoul arăta 2 afișări și 2 vizite. Prezența scriptului în HTML nu dovedea
 cererile de verificare făcute cu `curl` nu execută JavaScript, deci nu ele au
 produs cifrele. Cui aparțin vizitele nu se poate spune — Web Analytics nu
 urmărește vizitatori individuali, ceea ce e exact motivul pentru care a fost ales.
+
+### Content Signals în `robots.txt` — 12 septembrie 2026
+
+Diagnosticul „Agent Readiness” al Cloudflare dă **„Almost ready”, 3/5 la Quick
+Wins**. Cele două puncte lipsă, fiecare confirmat de mine prin măsurătoare, nu
+citit din panou (stările sunt pictograme fără etichetă accesibilă, iar capturile
+de ecran expirau pe acea pagină):
+
+- **Content Signals** — nicio directivă `Content-Signal:` în `robots.txt`;
+- **Markdown Negotiation** — `Accept: text/markdown` pe un URL normal întorcea
+  `text/html`. Merg doar fișierele `.md` statice, la URL propriu.
+
+Primul e reparat: `src/app/robots.txt/route.ts` declară acum
+`Content-Signal: search=yes, ai-input=yes, ai-train=yes` în grupul `User-agent: *`.
+**Nu e o decizie nouă de politică** — fișierul spunea deja în proză că permitem
+toți boții AI, inclusiv la antrenare și citare, ca strategie GEO. Directiva doar
+exprimă aceeași politică în sintaxa pe care o citesc uneltele automate. Dacă
+politica se schimbă vreodată, se schimbă acolo **și** în `/llms.txt` deodată.
+
+Verificat în producție după deploy: `robots.txt` servește directiva.
+
+**Atenție la ce raportează `wrangler`.** Deploy-ul a scris „Success! Uploaded
+1660 files”, dar imediat după, **„No targets deployed for salariile-ro”** — ruta
+`salariile.ro/*` e adăugată în panou, nu în `wrangler.jsonc`. Mesajul e
+îngrijorător, dar măsurătoarea pe producție a arătat conținutul nou servit. Nu
+trata „No targets deployed” drept eșec și nici „Success” drept confirmare:
+singura dovadă e o cerere către site.
+
+**Premisa că „Cloudflare servește singur paginile pentru AI” e falsă.** Lista
+Cloudflare cere explicit *„Serve AI-optimized text formats — Markdown
+Negotiation”* ca pe ceva ce **site-ul** trebuie să ofere. Sistemul de Markdown
+nu e redundant; e pe jumătate făcut. Nu-l șterge.
+
+Date noi, pe care găzduirea veche nu le dădea — AI Crawl Control, ultimele 24 h:
+**66 de preluări pentru răspunsuri AI, pe 47 de pagini.** Top:
+`/noutati/salariul-minim-1-iulie-2026` (6), `/` (4),
+`/calculator/calcul-salariu-net-4325-brut` (4), `/salariu-minim` (4).
+Operatori: ChatGPT-User 53, Applebot 11, Claude-SearchBot 2. Zero „demand
+signals” (conținut cerut și negăsit).
