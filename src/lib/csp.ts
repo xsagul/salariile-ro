@@ -2,17 +2,13 @@
 //
 // Proprietarul unic al politicii CSP și al header-ului `Link`.
 //
-// De ce există: până pe 10 septembrie 2026 aceste headere se puneau din
-// `src/proxy.ts`, deci middleware-ul rula la FIECARE cerere HTML — inclusiv la
-// fiecare trecere de bot, iar `robots.txt` e deschis către toți boții AI.
-// Pe rutele publice headerul e un șir constant: nu depinde de cerere, deci nu
-// are ce căuta într-o funcție. Mutat în `next.config.ts`, îl pune CDN-ul, fără
-// nicio invocare. Middleware-ul rămâne doar unde chiar e nevoie de cerere:
-// nonce-ul per cerere pe rutele de widget și negocierea de conținut markdown.
+// Pe Cloudflare site-ul e static: nu există middleware și nici server care să
+// genereze un nonce per cerere. scripts/genereaza-cloudflare.mts scrie aceste
+// politici în out/_headers, iar Cloudflare le aplică la edge.
 //
-// Importat din DOUĂ locuri, de aceea stă separat:
-//   - `next.config.ts`  → varianta constantă, pentru paginile publice
-//   - `src/proxy.ts`    → varianta cu nonce, pentru /widget/frame*
+// Istoric: până pe 10 septembrie 2026 CSP-ul se punea din src/proxy.ts la
+// fiecare cerere HTML (o invocare de funcție pe Vercel, boți incluși), apoi din
+// next.config.ts. La mutarea pe Cloudflare (septembrie 2026) proxy-ul a dispărut.
 
 /**
  * Header `Link` (RFC 8288) pentru descoperirea de către agenți AI:
@@ -20,6 +16,9 @@
  */
 export const LINK_HEADER =
   '</sitemap.xml>; rel="sitemap", </llms.txt>; rel="describedby"; type="text/markdown"';
+
+/** Beacon-ul Cloudflare Web Analytics (cookieless), injectat automat la edge. */
+export const CLOUDFLARE_INSIGHTS = "https://static.cloudflareinsights.com";
 
 /**
  * Construiește politica CSP.
@@ -56,16 +55,31 @@ export function construiesteCsp({
  * Politica pentru paginile publice.
  *
  * De ce `'unsafe-inline'` și nu nonce: un nonce e prin definiție incompatibil
- * cu o pagină cache-uită — HTML-ul servit din edge la o mie de oameni are un
- * singur nonce, deci nonce-ul nu mai e secret. Iar paginile publice sunt
- * statice și NU primesc input de la utilizator (fără conturi, fără bază de
- * date, `/calculator/[valoare]` e allowlist-only), deci nu există vector de
- * injecție pe care `'unsafe-inline'` să-l deschidă.
+ * cu o pagină statică — același HTML servit la o mie de oameni are un singur
+ * nonce, deci nonce-ul nu mai e secret. Iar paginile publice NU primesc input
+ * de la utilizator (fără conturi, fără bază de date, `/calculator/[valoare]` e
+ * allowlist-only), deci nu există vector de injecție pe care `'unsafe-inline'`
+ * să-l deschidă.
  *
- * Evaluat o singură dată, la încărcarea configului: nu depinde de cerere.
+ * Beacon-ul Web Analytics raportează la /cdn-cgi/rum pe același domeniu, deci
+ * `default-src 'self'` îl acoperă fără connect-src separat.
  */
 export const CSP_PAGINI_PUBLICE = construiesteCsp({
-  scriptSrc: "'self' 'unsafe-inline'",
+  scriptSrc: `'self' 'unsafe-inline' ${CLOUDFLARE_INSIGHTS}`,
   frameAncestors: "'none'",
   development: process.env.NODE_ENV === "development",
+});
+
+/**
+ * Politica pentru iframe-urile /widget/frame*: încadrabile pe orice site.
+ *
+ * Pe Vercel aveau nonce per cerere și `'strict-dynamic'`, fiind singurele rute
+ * dinamice. Pe găzduirea statică nonce-ul nu mai e posibil. Riscul rămâne închis
+ * altfel: singurul input e `?brut=`, acceptat doar ca 3–6 cifre și randat de
+ * React, care escapează textul. Fără analytics în iframe: afișările de pe
+ * site-urile altora nu sunt vizitele noastre.
+ */
+export const CSP_WIDGET = construiesteCsp({
+  scriptSrc: "'self' 'unsafe-inline'",
+  frameAncestors: "*",
 });

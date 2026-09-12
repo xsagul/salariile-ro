@@ -112,7 +112,7 @@ export default function DesprePage() {
         <Section>
             <h2>Cum este finanțat proiectul</h2>
             <p>
-              Salariile.ro nu afișează reclame, nu folosește programe de afiliere și nu vinde date despre utilizatori. Singurele costuri sunt domeniul anual și hostingul (Vercel, plan gratuit pentru proiecte mici), pe care le acopăr personal.
+              Salariile.ro nu afișează reclame, nu folosește programe de afiliere și nu vinde date despre utilizatori. Singurele costuri sunt domeniul anual și hostingul (Cloudflare, plan gratuit), pe care le acopăr personal.
             </p>
             <p>
               Pentru transparență totală: site-ul nu colectează date personale despre vizitatori dincolo de informațiile tehnice strict necesare funcționării (vezi <Link href="/politica-confidentialitate">politica de confidențialitate</Link>). Nu există formulare, conturi de utilizator sau newsletter.

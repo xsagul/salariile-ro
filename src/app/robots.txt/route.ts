@@ -7,6 +7,8 @@
 // Excluderi: /api/ (endpoint-uri tehnice) și crawlerele de tooling SEO, care
 // nu produc nicio citare dar costa Edge Requests — vezi comentariul din payload.
 
+export const dynamic = "force-static";
+
 export function GET() {
   const content = `# Crawlerele de tooling SEO: blocate pe 10 septembrie 2026.
 # Nu aduc nicio citare si niciun vizitator, dar consuma Edge Requests pe 331
@@ -28,7 +30,16 @@ Disallow: /
 # ca sa maximizam sansa ca site-ul sa fie cunoscut si CITAT de motoarele
 # generative (ChatGPT, Claude, Perplexity, Google AI Overviews, Copilot).
 # Cererea de atribuire cu link e exprimata in /llms.txt.
+#
+# Content-Signal (contentsignals.org) exprima aceeasi politica in sintaxa pe care
+# o citesc uneltele automate, adaugata pe 12 septembrie 2026. NU e o decizie noua:
+# search=yes  -> aparitia in rezultate de cautare, cu link inapoi
+# ai-input=yes -> folosirea continutului ca sursa pentru raspunsuri generate
+# ai-train=yes -> folosirea continutului la antrenarea modelelor
+# Toate trei sunt "yes" fiindca strategia de mai sus e citarea, nu blocarea.
+# Daca politica se schimba vreodata, se schimba AICI si in /llms.txt deodata.
 User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Allow: /
 Disallow: /api/
 

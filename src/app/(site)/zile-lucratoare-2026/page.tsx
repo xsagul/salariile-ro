@@ -131,8 +131,9 @@ const faqList = () => [
   },
 ];
 
-// Regenerare la 12 ore, ca titlul lunar să treacă singur la luna următoare.
-export const revalidate = 43200;
+// Luna curentă din descriere se calculează la build. Pe găzduirea statică nu
+// există regenerare la cerere: rebuild-ul zilnic din .github/workflows/ci.yml
+// o face să treacă singură la luna următoare.
 
 export function generateMetadata(): Metadata {
   const { title, description } = metaLuna();

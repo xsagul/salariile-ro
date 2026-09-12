@@ -182,7 +182,7 @@ export default function ZileLibere2026Page() {
           {/* HERO */}
           <div className="max-w-prose">
             <p className="text-xs font-medium uppercase tracking-wide text-stone-600">Calendar 2026</p>
-            <nav className="mb-4 flex flex-wrap gap-4 text-sm"><Link href="/zile-libere-2027" className="min-h-11 py-3 underline">Calendar zile libere 2027</Link><a download href="/api/calendar/2026?format=ics" className="min-h-11 py-3 underline">Importă sărbătorile 2026 (ICS)</a></nav>
+            <nav className="mb-4 flex flex-wrap gap-4 text-sm"><Link href="/zile-libere-2027" className="min-h-11 py-3 underline">Calendar zile libere 2027</Link><a download href="/date/calendar/2026.ics" className="min-h-11 py-3 underline">Importă sărbătorile 2026 (ICS)</a></nav>
             <h1 className="mt-2 text-3xl font-bold tracking-[-0.02em] text-stone-900 sm:text-4xl">Zile libere 2026</h1>
             <p className="mt-3 text-xs text-stone-600 [&_a]:font-medium [&_a]:text-stone-700 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-900">
               Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat 6 iulie 2026

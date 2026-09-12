@@ -3,6 +3,11 @@ name: CI
 on:
   push:
   pull_request:
+  # Site static: pagina de zile lucrătoare își calculează luna curentă la build.
+  # Rebuild zilnic, ca luna să treacă singură fără commit.
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
 
 jobs:
   verify:
@@ -18,3 +23,12 @@ jobs:
       - run: npm run lint
       - run: npm run build
       - run: npm run test:rendered
+      # Publicarea pe Cloudflare: doar de pe main, după ce toate verificările de
+      # mai sus au trecut, cu exact build-ul verificat. Cheile sunt secrete ale repo-ului.
+      - name: Publică pe Cloudflare
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy

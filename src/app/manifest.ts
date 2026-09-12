@@ -4,6 +4,8 @@
 
 import type { MetadataRoute } from "next";
 
+export const dynamic = "force-static";
+
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "Salariile.ro: Calculator salariu net 2026",

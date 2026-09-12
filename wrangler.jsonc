@@ -1,0 +1,24 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "salariile-ro",
+  "compatibility_date": "2026-09-01",
+
+  // Explicit, nu implicit: pe 12 septembrie 2026 un deploy cu --domain a
+  // dezactivat workers.dev pe copia de probă fiindcă setarea lipsea. Producția
+  // se servește doar pe salariile.ro, deci workers.dev rămâne oprit.
+  "workers_dev": false,
+  "preview_urls": false,
+
+  // Site 100% static, fără script de Worker: toate cererile sunt cereri de
+  // assets, pe care Cloudflare le declară „free and unlimited" (documentație
+  // verificată pe 11 septembrie 2026). Nu adăuga "main" fără să recitești asta:
+  // un script transformă fiecare cerere într-o invocare numărată.
+  "assets": {
+    "directory": "./out",
+    // /salariu-minim servește salariu-minim.html, fără slash — exact URL-urile
+    // de pe Vercel. Verificat cu `wrangler dev`.
+    "html_handling": "auto-trailing-slash",
+    // Pagina inexistentă întoarce 404 real cu out/404.html, nu soft-404.
+    "not_found_handling": "404-page"
+  }
+}

@@ -15,6 +15,8 @@
 //
 // După separarea în route groups: 28 de rute statice/prerandate, 3 dinamice
 // (API-ul de markdown și cele două rute de widget, care citesc searchParams).
+// De la mutarea pe Cloudflare (septembrie 2026) nu mai e niciuna dinamică: tot
+// site-ul e export static (vezi next.config.ts).
 //
 // Nu adăuga aici `headers()`, `cookies()` sau alt API dinamic. Dacă ai nevoie
 // de ele, pune-le în layout-ul grupului care le cere, nu în rădăcină.

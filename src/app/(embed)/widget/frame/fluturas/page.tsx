@@ -2,10 +2,13 @@
 // Pagină dedicată iframe-ului pentru generatorul de fluturaș. Reutilizează
 // aceeași componentă ca /fluturas-salariu, fără hero, Header, Footer sau conținut
 // editorial. Ruta este noindex și poate fi încadrată extern prin CSP.
+// Pe găzduirea statică HTML-ul e același pentru orice query; `?brut=` se aplică
+// în browser, prin WidgetFluturasDinUrl. Fallback-ul e widgetul fără parametri.
 
 import type { Metadata } from "next";
-import CalculatorSalariu from "@/app/components/CalculatorSalariu";
-import EmbedAutoResize from "@/app/components/EmbedAutoResize";
+import { Suspense } from "react";
+import WidgetFluturasContinut from "@/app/components/WidgetFluturasContinut";
+import WidgetFluturasDinUrl from "@/app/components/WidgetFluturasDinUrl";
 
 export const metadata: Metadata = {
   title: "Generator fluturaș de salariu (widget)",
@@ -13,24 +16,10 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://salariile.ro/fluturas-salariu" },
 };
 
-export default async function WidgetFluturasFramePage({
-  searchParams,
-}: {
-  searchParams: Promise<{ brut?: string }>;
-}) {
-  const { brut } = await searchParams;
-  const initialBrut = brut && /^\d{3,6}$/.test(brut) ? brut : undefined;
-
+export default function Page() {
   return (
-    <main className="bg-canvas">
-      <EmbedAutoResize />
-      <h1 className="sr-only">Generator fluturaș de salariu 2026</h1>
-      <CalculatorSalariu
-        brutInitial={initialBrut}
-        modInitial="brut"
-        fluturas
-        embedded
-      />
-    </main>
+    <Suspense fallback={<WidgetFluturasContinut />}>
+      <WidgetFluturasDinUrl />
+    </Suspense>
   );
 }

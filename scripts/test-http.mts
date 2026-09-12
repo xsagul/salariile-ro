@@ -26,7 +26,7 @@ console.log(`HTTP content negotiation: ${cases.length} cazuri trecute.`);
 import { readFile } from "node:fs/promises";
 
 const routeSource = await readFile(
-  new URL("../src/app/api/markdown/[[...path]]/route.ts", import.meta.url),
+  new URL("../src/lib/markdown-rute.ts", import.meta.url),
   "utf8"
 );
 
