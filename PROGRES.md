@@ -2655,3 +2655,22 @@ niciodată pe producție. Verificat pe infrastructura reală Cloudflare, nu doar
 În dashboard, „Markdown for Agents” (negociere pe `Accept: text/markdown`) apare
 doar pe planul Pro, deci varianta cu fișiere `.md` generate la build rămâne cea
 corectă pe Free.
+
+### Metoda de comutare, validată pe un subdomeniu — 12 septembrie 2026
+
+Custom Domain-ul pe apex e exclus: Cloudflare refuză hostname-urile cu
+înregistrări existente (cod 100117), deci ar fi cerut ștergerea A-urilor spre
+Vercel înainte, cu o fereastră în care numele nu ar fi existat.
+
+Testat în schimb, pe `cf.salariile.ro`, varianta fără fereastră: înregistrarea
+trece pe „Proxied” (IP-ul se schimbă din Vercel în Cloudflare fără niciun
+răspuns ratat, certificat valid tot timpul), apoi se atașează ruta
+`cf.salariile.ro/*`. Ruta funcționează pe un Worker doar cu fișiere statice —
+lucru neconfirmat de documentație: 200 pe pagini, 301 pe `/ruta/` și pe URL-urile
+vechi, 404 real, fără antete Vercel. După ștergerea rutei, prima interogare
+arată din nou Vercel, deci revenirea e imediată.
+
+Două capcane găsite: `wrangler deploy` fără `--route` nu șterge o rută existentă
+(ștergerea se face din dashboard), iar un deploy cu `--domain` sau `--route`
+dezactivează `workers.dev` dacă `workers_dev` lipsește din configurație — s-a
+întâmplat pe copia de probă și e acum explicit în ambele fișiere.

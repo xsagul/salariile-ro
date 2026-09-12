@@ -112,16 +112,20 @@ Condițiile, toate verificate pe ramură:
    înghețată ca rezervă.
 2. Merge `migrare-cloudflare` în `main` → CI rulează testele și publică pe
    Cloudflare.
-3. În zona Cloudflare: Custom Domain `salariile.ro` pe Worker (înlocuiește
-   A-urile spre Vercel); `www` cu Redirect Rule 301 → `https://salariile.ro`;
-   „Always Use HTTPS” pornit.
-4. Imediat după: apex 200 cu CSP și HSTS, `www` → 301, `http` → https,
+3. În zona Cloudflare, `salariile.ro` și `www` trec pe „Proxied”. Traficul merge
+   prin Cloudflare la Vercel, fără nicio fereastră: verificat pe subdomeniu,
+   schimbarea IP-ului nu a ratat niciun răspuns.
+4. Se adaugă ruta `salariile.ro/*` către Worker-ul de producție. Din acel moment
+   site-ul e servit de Cloudflare, nu de Vercel.
+5. Imediat după: apex 200 cu CSP și HSTS, `www` → 301, `http` → https,
    `compara-hosting` între deploy-ul Vercel înghețat și `https://salariile.ro`.
-5. Web Analytics pornit (setare automată), cu `/widget/frame*` exclus.
-6. Search Console: test live URL Inspection pe câteva URL-uri, sitemap retrimis.
+6. Web Analytics pornit (setare automată), cu `/widget/frame*` exclus.
+7. Search Console: test live URL Inspection pe câteva URL-uri, sitemap retrimis.
 
-**Rollback:** Custom Domain scos, A-urile `@` repuse pe `216.198.79.1` și
-`64.29.17.1` (nor gri). Traficul revine pe Vercel în câteva minute.
+**Rollback:** se șterge ruta din Workers Routes. Traficul revine la Vercel de la
+prima cerere de după ștergere (măsurat pe subdomeniu). Atenție: `wrangler deploy`
+fără `--route` NU șterge o rută existentă — ștergerea se face din dashboard. Dacă
+e nevoie și de întoarcerea DNS-ului, `@` și `www` se pun înapoi pe „DNS only”.
 
 ## După comutare
 
@@ -137,3 +141,26 @@ Condițiile, toate verificate pe ramură:
 - comportamentul la o înregistrare A existentă pe hostname;
 - dacă regulile gratuite pot citi header-ul `Accept` (negocierea Markdown);
 - echivalența edge-ului real cu `wrangler dev` — acoperită de pasul 1 al agentului.
+
+
+## Metoda de comutare, validată pe subdomeniu (12 septembrie 2026)
+
+Testat pe `cf.salariile.ro`, subdomeniu nefolosit, cu o sondă care cerea pagina
+în fiecare secundă prin nameserverul autoritativ Cloudflare:
+
+- **Custom Domain nu e potrivit pentru apex.** Cloudflare refuză hostname-urile
+  care au deja înregistrări: „Hostname 'cf.salariile.ro' already has externally
+  managed DNS records (A, CNAME, etc). Delete them first” (cod 100117). Ar fi
+  cerut ștergerea A-urilor înainte, deci o fereastră în care numele nu ar exista,
+  iar resolverele ar fi putut ține minte răspunsul negativ.
+- **Trecerea pe „Proxied” nu întrerupe nimic.** IP-ul s-a schimbat din cel Vercel
+  în cel Cloudflare fără niciun răspuns ratat și cu certificat valid tot timpul.
+- **Ruta funcționează pe un Worker doar cu fișiere statice**, lucru pe care
+  documentația nu îl confirmă. După atașare: 200 pe pagini, 301 pe `/ruta/` și pe
+  URL-urile vechi, 404 real, fără antete Vercel.
+- **Revenirea e imediată:** prima interogare de după ștergerea rutei arată din nou
+  răspunsul Vercel.
+- **Două capcane:** `wrangler deploy` fără `--route` nu șterge ruta existentă, iar
+  un deploy cu `--domain` sau `--route` dezactivează `workers.dev` dacă
+  `workers_dev` lipsește din configurație. De aceea e acum explicit în ambele
+  fișiere de configurare.
