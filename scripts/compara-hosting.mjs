@@ -23,6 +23,10 @@ const UA = "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.h
 // Câmpuri ignorate explicit, de ex. `--ignora=header.x-robots-tag` contra copiei de
 // previzualizare, care are intenționat noindex pe tot.
 const IGNORATE = new Set(arg("ignora", "").split(",").filter(Boolean));
+// `--ip-b=1.2.3.4` trimite cererile catre B direct la un IP, prin curl, ocolind
+// resolverul sistemului. Necesar cand DNS-ul local inca tine raspunsul vechi in
+// cache, ca la comutarea din 12 septembrie 2026.
+const IP_B = arg("ip-b", "");
 
 // Diferențe cunoscute, fiecare cu motivul ei. Orice altceva pică verificarea.
 const DESCARCARI_STATICE =
@@ -69,7 +73,29 @@ const eText = (tip) => /text\/|xml|json|markdown|manifest/.test(tip);
 const eRedirect = (status) => status >= 300 && status < 400;
 const permanent = (status) => status === 301 || status === 308;
 
+async function cerePrinCurl(baza, cale) {
+  const { execFile } = await import("node:child_process");
+  const { promisify } = await import("node:util");
+  const CRLF = String.fromCharCode(13, 10);
+  const SEPARATOR = CRLF + CRLF;
+  const gazda = new URL(baza).hostname;
+  const argumente = ["-s", "-D", "-", "--max-time", "25", "-A", UA, "--resolve", gazda + ":443:" + IP_B, baza + cale];
+  const { stdout } = await promisify(execFile)("curl", argumente, { maxBuffer: 64 * 1024 * 1024 });
+  const taiere = stdout.indexOf(SEPARATOR);
+  const linii = stdout.slice(0, taiere < 0 ? 0 : taiere).split(CRLF);
+  const status = Number((linii[0] || "").split(" ")[1] || 0);
+  const headere = new Headers();
+  for (const linie of linii.slice(1)) {
+    const i = linie.indexOf(":");
+    if (i > 0) { try { headere.append(linie.slice(0, i).trim(), linie.slice(i + 1).trim()); } catch {} }
+  }
+  const tip = headere.get("content-type") || "";
+  const corp = taiere < 0 ? "" : stdout.slice(taiere + SEPARATOR.length);
+  return { status, location: headere.get("location"), tip, corp: eText(tip) ? corp : "", headere };
+}
+
 async function cere(baza, cale) {
+  if (IP_B && baza === B) return cerePrinCurl(baza, cale);
   const raspuns = await fetch(baza + cale, { redirect: "manual", headers: { "User-Agent": UA } });
   const tip = raspuns.headers.get("content-type") || "";
   return {
