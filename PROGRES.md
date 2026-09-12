@@ -2777,3 +2777,84 @@ must-revalidate` — cache la edge, revalidare în browser.
 
 Datele de teren (CrUX) se schimbă lent, fiind medie pe 28 de zile: se compară
 săptămânal cu `CWV-INAINTE-DE-CLOUDFLARE-2026-09-12.json`.
+
+### Web Analytics, și pregătirea pentru `www` — 12 septembrie 2026, ~03:15 UTC
+
+Cloudflare Web Analytics e pornit pe `salariile.ro`, cu setare automată. Verificat
+pe edge: beacon-ul apare pe `/` și `/salariu-minim`, dar **nu** apare pe
+`/widget/frame` și `/widget/frame/fluturas`. Cerința din plan — iframe-urile
+găzduite pe site-uri terțe să nu fie măsurate — e deci îndeplinită fără
+configurare separată. Măsurat de două ori, la momente diferite, cu `/` aflat tot
+pe `CF-Cache-Status: HIT`: absența de pe widget nu e un artefact de cache.
+
+CSP-ul permitea deja `https://static.cloudflareinsights.com` în `script-src`
+(`src/lib/csp.ts`), deci beacon-ul nu e blocat și nu a fost nevoie de nicio
+modificare de cod.
+
+Rutele reale de iframe sunt `/widget/frame` și `/widget/frame/fluturas`. `/widget`
+e pagina publică de prezentare, din grupul `(site)`, și se măsoară normal; tiparul
+`/widget/frame*` le separă corect. Ghicisem întâi `/widget/fluturas`, care dă 404 —
+404-ul era greșeala mea de ghicit, nu o regresie.
+
+**Resolverul meu nu e un instrument bun de verificare.** Google, Cloudflare și
+Quad9 întorc toate IP-uri Cloudflare; doar resolverul rețelei mele mai dă IP-urile
+Vercel, iar acolo Vercel îmi răspunde 403 cu `X-Vercel-Mitigated: challenge`,
+fiindcă IP-ul meu e provocat. Golirea cache-ului DNS din Windows nu a schimbat
+nimic, deci rămânerea în urmă e la upstream, nu local. Orice măsurătoare directă
+de la mine se face pinuit pe IP-ul edge; altfel `Server: Vercel` arată ca o
+regresie care nu există.
+
+Verificat înainte de a atinge `www`, nu după: ruta Workers e `salariile.ro/*`,
+adică doar apex — trecerea lui `www` pe „Proxied” nu face Worker-ul să servească
+site-ul și pe `www`, deci nu apare conținut duplicat. Modul SSL/TLS e `Full`, deci
+chiar dacă regula de redirect nu ar prinde, traficul ar merge criptat la Vercel,
+care face oricum 301 către apex — fără buclă. Comportamentul de replicat:
+`www/salariu-minim?test=1` → 301 către `https://salariile.ro/salariu-minim?test=1`,
+cu cale și query intacte.
+
+### `www` mutat la edge, și o regresie găsită pe `http://` — 12 septembrie 2026, ~03:30 UTC
+
+Aceeași ordine ca la comutarea principală: întâi regula, apoi DNS-ul. Regula de
+redirect a fost publicată cât timp `www` era încă „DNS only”, deci inertă, și abia
+apoi am trecut cele două înregistrări A pe „Proxied”.
+
+Șablonul „Redirect from WWW to root” vine cu **„Preserve query string” nebifat**.
+Lăsat așa, ar fi tăiat query-ul, adică o regresie față de comportamentul măsurat
+înainte pe Vercel. Bifat înainte de publicare. Verificat după, pe cazurile unde o
+astfel de regulă produce URL-uri malformate: `www` fără nicio cale → 301 către
+`https://salariile.ro/`, cu slash simplu → la fel, cale adâncă cu doi parametri →
+`?a=1&b=2` păstrat întocmai.
+
+**Regresia pe care paritatea nu avea cum s-o prindă.** Unealta de comparație
+rulează pe `https://`. Măsurat separat, apexul servea **200 pe `http://`**, cu
+tot conținutul, în loc de redirectul 308 pe care îl făcea Vercel. Canonical-ul
+indica corect `https://`, deci expunerea era atenuată, dar rămânea o suprafață
+`http://` pentru fiecare pagină. Reparat prin pornirea „Always Use HTTPS”, care
+era oprită.
+
+**Ipoteză proprie, infirmată de măsurătoare.** Presupusesem că rutele Workers
+rulează înaintea redirectului „Always Use HTTPS”, deci că setarea nu va repara
+apexul și va fi nevoie de o regulă de redirect separată. Fals: după pornire,
+`http://apex` întoarce 301. Nu s-a mai construit nimic în plus. Notat fiindcă
+ipoteza era gata să producă o regulă inutilă.
+
+**`www` pe `http://` depindea încă de Vercel, fără să se vadă.** Primul salt
+arăta `server: cloudflare` și părea rezolvat la edge, dar antetele complete
+dădeau `cf-cache-status: DYNAMIC` — deci cererea chiar mersese la origine — plus
+un antet `Refresh:` lângă `Location:`, tiparul redirectului Vercel. Un antet de
+server nu spune cine a produs răspunsul când răspunsul trece printr-un proxy.
+După pornirea setării, ambele semne au dispărut.
+
+Starea finală, măsurată pe lanțul complet, nu doar pe primul salt:
+
+| Pornind de la | Salturi | Final |
+|---|---|---|
+| `http://salariile.ro/salariu-minim?test=1` | 1 | 200 pe `https://salariile.ro/salariu-minim?test=1` |
+| `http://www.salariile.ro/salariu-minim?test=1` | 2 | 200 pe `https://salariile.ro/salariu-minim?test=1` |
+| `https://www.salariile.ro/...` | 1 | 301 către apex, query intact |
+| `https://salariile.ro/...` | 0 | 200, `CF-Cache-Status: HIT` |
+
+Nicio cale de trafic viu nu mai trece prin Vercel. Înregistrările A păstrează
+intenționat IP-urile Vercel ca origine de rezervă: ruta Workers interceptează
+înaintea originii, iar ștergerea ei readuce traficul pe Vercel. Domeniul NU se
+scoate din Vercel deocamdată.

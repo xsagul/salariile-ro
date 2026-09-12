@@ -6,11 +6,13 @@ Hobby e restricționat la uz necomercial. Termenii Cloudflare pentru planul
 gratuit nu interzic uzul comercial; singura restricție specifică e procesarea
 datelor de card pe site.
 
-**Stare (12 septembrie 2026): zona Cloudflare e activă, nameserverele sunt
-schimbate la Namebox, copia de probă e publicată și verificată pe infrastructura
-reală, iar metoda de comutare e validată pe subdomeniu. Producția e încă pe
-Vercel.** Toți pașii proprietarului sunt făcuți, în afară de cheile pentru
-publicarea automată din GitHub (pasul 5). Urmează comutarea, cu confirmarea lui.
+**Stare (12 septembrie 2026, ~03:30 UTC): COMUTAREA E FĂCUTĂ.** Producția —
+apex și `www` — e servită de Cloudflare. Nicio cale de trafic viu nu mai trece
+prin Vercel, însă proiectul Vercel rămâne intact ca rezervă și domeniul **nu** e
+scos de acolo. Singurul pas al proprietarului rămas nefăcut sunt cheile pentru
+publicarea automată din GitHub (pasul 5), deci publicarea se face manual, cu
+`wrangler`. Măsurătorile de după comutare sunt în `PROGRES.md`, la intrările din
+12 septembrie 2026.
 
 - Ramura: `migrare-cloudflare` (worktree local `C:\Users\Sorin\Desktop\salariile-ro-cf`)
 - **Nu face merge în `main` înainte de comutare.** Vercel e încă legat de repo:
@@ -108,19 +110,26 @@ Condițiile, toate verificate pe ramură:
 
 ## Comutarea (împreună, la oră cu trafic minim)
 
-1. Auto-deploy-ul Vercel oprit pe `main`, ca producția Vercel să rămână
+1. FĂCUT. Auto-deploy-ul Vercel oprit pe `main`, ca producția Vercel să rămână
    înghețată ca rezervă.
-2. Merge `migrare-cloudflare` în `main` → CI rulează testele și publică pe
-   Cloudflare.
-3. În zona Cloudflare, `salariile.ro` și `www` trec pe „Proxied”. Traficul merge
-   prin Cloudflare la Vercel, fără nicio fereastră: verificat pe subdomeniu,
-   schimbarea IP-ului nu a ratat niciun răspuns.
-4. Se adaugă ruta `salariile.ro/*` către Worker-ul de producție. Din acel moment
-   site-ul e servit de Cloudflare, nu de Vercel.
-5. Imediat după: apex 200 cu CSP și HSTS, `www` → 301, `http` → https,
-   `compara-hosting` între deploy-ul Vercel înghețat și `https://salariile.ro`.
-6. Web Analytics pornit (setare automată), cu `/widget/frame*` exclus.
-7. Search Console: test live URL Inspection pe câteva URL-uri, sitemap retrimis.
+2. **NU s-a făcut, deliberat.** Ramura `migrare-cloudflare` a rămas neunită în
+   `main`, la decizia proprietarului, ca build-ul Vercel să rămână intact pentru
+   rollback. Publicarea pe Cloudflare s-a făcut manual, cu `wrangler`.
+3. FĂCUT, dar în doi timpi, nu odată. Apexul a trecut pe „Proxied” la comutare;
+   `www` abia la ~03:30 UTC, după ce fusese publicată întâi regula de redirect.
+   Aceeași ordine, „întâi regula, apoi DNS-ul”, a ținut `www` fără fereastră.
+4. FĂCUT, și făcut înaintea pasului 3 pentru apex: ruta `salariile.ro/*` a fost
+   atașată prima, ca Vercel să nu servească niciodată trafic venit prin proxy.
+5. FĂCUT, cu o rezervă. 338 de URL-uri, 0 diferențe — dar `compara-hosting`
+   rulează pe `https://`, deci **nu putea prinde** că apexul servea 200 pe
+   `http://` în loc de redirect. Găsit separat, măsurând pe schemă, și reparat
+   pornind „Always Use HTTPS” (era oprită).
+6. FĂCUT. `/widget/frame` și `/widget/frame/fluturas` nu primesc beacon-ul, fără
+   configurare separată; verificat de două ori, la momente diferite, cu `/`
+   aflat tot pe `CF-Cache-Status: HIT`, deci nu e artefact de cache.
+7. FĂCUT pe jumătate: URL Inspection pe `/` și `/salariu-minim` — ambele
+   indexate, robots.txt ALLOWED, canonical corect. **Sitemap-ul nu a fost încă
+   retrimis.**
 
 **Rollback:** se șterge ruta din Workers Routes. Traficul revine la Vercel de la
 prima cerere de după ștergere (măsurat pe subdomeniu). Atenție: `wrangler deploy`
