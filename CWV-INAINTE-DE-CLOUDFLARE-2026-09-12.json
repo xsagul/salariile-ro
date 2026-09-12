@@ -1,0 +1,162 @@
+{
+  "capturat": "2026-09-12T02:35:14.862Z",
+  "rezultate": [
+    {
+      "gazduire": "vercel",
+      "ruta": "/",
+      "strategie": "mobile",
+      "scor": 99,
+      "lab_lcp": 1951,
+      "lab_fcp": 1027,
+      "lab_cls": 0,
+      "lab_tbt": 96,
+      "lab_si": 2064,
+      "lab_ttfb": 4,
+      "teren_pagina": {
+        "CUMULATIVE_LAYOUT_SHIFT_SCORE": 0,
+        "EXPERIMENTAL_TIME_TO_FIRST_BYTE": 383,
+        "FIRST_CONTENTFUL_PAINT_MS": 1299,
+        "INTERACTION_TO_NEXT_PAINT": 158,
+        "LARGEST_CONTENTFUL_PAINT_MS": 1308
+      },
+      "teren_origine": {
+        "CUMULATIVE_LAYOUT_SHIFT_SCORE": 0,
+        "EXPERIMENTAL_TIME_TO_FIRST_BYTE": 385,
+        "FIRST_CONTENTFUL_PAINT_MS": 1299,
+        "INTERACTION_TO_NEXT_PAINT": 150,
+        "LARGEST_CONTENTFUL_PAINT_MS": 1308
+      }
+    },
+    {
+      "gazduire": "vercel",
+      "ruta": "/",
+      "strategie": "desktop",
+      "scor": 100,
+      "lab_lcp": 401,
+      "lab_fcp": 262,
+      "lab_cls": 0,
+      "lab_tbt": 0,
+      "lab_si": 845,
+      "lab_ttfb": 4,
+      "teren_pagina": {
+        "CUMULATIVE_LAYOUT_SHIFT_SCORE": 0,
+        "EXPERIMENTAL_TIME_TO_FIRST_BYTE": 300,
+        "FIRST_CONTENTFUL_PAINT_MS": 804,
+        "INTERACTION_TO_NEXT_PAINT": 90,
+        "LARGEST_CONTENTFUL_PAINT_MS": 794
+      },
+      "teren_origine": {
+        "CUMULATIVE_LAYOUT_SHIFT_SCORE": 0,
+        "EXPERIMENTAL_TIME_TO_FIRST_BYTE": 298,
+        "FIRST_CONTENTFUL_PAINT_MS": 796,
+        "INTERACTION_TO_NEXT_PAINT": 73,
+        "LARGEST_CONTENTFUL_PAINT_MS": 794
+      }
+    },
+    {
+      "gazduire": "vercel",
+      "ruta": "/salariu-minim",
+      "strategie": "mobile",
+      "scor": 99,
+      "lab_lcp": 2101,
+      "lab_fcp": 972,
+      "lab_cls": 0,
+      "lab_tbt": 41,
+      "lab_si": 1317,
+      "lab_ttfb": 6,
+      "teren_pagina": {
+        "CUMULATIVE_LAYOUT_SHIFT_SCORE": 0,
+        "EXPERIMENTAL_TIME_TO_FIRST_BYTE": 385,
+        "FIRST_CONTENTFUL_PAINT_MS": 1299,
+        "INTERACTION_TO_NEXT_PAINT": 150,
+        "LARGEST_CONTENTFUL_PAINT_MS": 1308
+      },
+      "teren_origine": {
+        "CUMULATIVE_LAYOUT_SHIFT_SCORE": 0,
+        "EXPERIMENTAL_TIME_TO_FIRST_BYTE": 385,
+        "FIRST_CONTENTFUL_PAINT_MS": 1299,
+        "INTERACTION_TO_NEXT_PAINT": 150,
+        "LARGEST_CONTENTFUL_PAINT_MS": 1308
+      }
+    },
+    {
+      "gazduire": "vercel",
+      "ruta": "/zile-lucratoare-2026",
+      "strategie": "mobile",
+      "scor": 98,
+      "lab_lcp": 2476,
+      "lab_fcp": 935,
+      "lab_cls": 0,
+      "lab_tbt": 21,
+      "lab_si": 1379,
+      "lab_ttfb": 4,
+      "teren_pagina": {
+        "CUMULATIVE_LAYOUT_SHIFT_SCORE": 0,
+        "EXPERIMENTAL_TIME_TO_FIRST_BYTE": 355,
+        "FIRST_CONTENTFUL_PAINT_MS": 1277,
+        "LARGEST_CONTENTFUL_PAINT_MS": 1294
+      },
+      "teren_origine": {
+        "CUMULATIVE_LAYOUT_SHIFT_SCORE": 0,
+        "EXPERIMENTAL_TIME_TO_FIRST_BYTE": 385,
+        "FIRST_CONTENTFUL_PAINT_MS": 1299,
+        "INTERACTION_TO_NEXT_PAINT": 150,
+        "LARGEST_CONTENTFUL_PAINT_MS": 1308
+      }
+    },
+    {
+      "gazduire": "vercel",
+      "ruta": "/calculator-salariu-invatamant",
+      "strategie": "mobile",
+      "scor": 97,
+      "lab_lcp": 2551,
+      "lab_fcp": 950,
+      "lab_cls": 0,
+      "lab_tbt": 20,
+      "lab_si": 990,
+      "lab_ttfb": 6,
+      "teren_pagina": {
+        "CUMULATIVE_LAYOUT_SHIFT_SCORE": 0,
+        "EXPERIMENTAL_TIME_TO_FIRST_BYTE": 341,
+        "FIRST_CONTENTFUL_PAINT_MS": 1118,
+        "INTERACTION_TO_NEXT_PAINT": 132,
+        "LARGEST_CONTENTFUL_PAINT_MS": 1110
+      },
+      "teren_origine": {
+        "CUMULATIVE_LAYOUT_SHIFT_SCORE": 0,
+        "EXPERIMENTAL_TIME_TO_FIRST_BYTE": 385,
+        "FIRST_CONTENTFUL_PAINT_MS": 1299,
+        "INTERACTION_TO_NEXT_PAINT": 150,
+        "LARGEST_CONTENTFUL_PAINT_MS": 1308
+      }
+    },
+    {
+      "gazduire": "cloudflare",
+      "ruta": "/",
+      "strategie": "mobile",
+      "scor": 96,
+      "lab_lcp": 2701,
+      "lab_fcp": 960,
+      "lab_cls": 0,
+      "lab_tbt": 8,
+      "lab_si": 960,
+      "lab_ttfb": 3,
+      "teren_pagina": {},
+      "teren_origine": {}
+    },
+    {
+      "gazduire": "cloudflare",
+      "ruta": "/salariu-minim",
+      "strategie": "mobile",
+      "scor": 97,
+      "lab_lcp": 2551,
+      "lab_fcp": 973,
+      "lab_cls": 0,
+      "lab_tbt": 56,
+      "lab_si": 1070,
+      "lab_ttfb": 5,
+      "teren_pagina": {},
+      "teren_origine": {}
+    }
+  ]
+}
