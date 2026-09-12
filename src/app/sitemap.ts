@@ -36,6 +36,7 @@ const STATIC_ENTRIES: {
   { path: "/compara", priority: 0.7, changeFrequency: "monthly" },
   { path: "/salarii/acoperire", priority: 0.6, changeFrequency: "weekly" },
   { path: "/salarii/clasament", priority: 0.7, changeFrequency: "monthly" },
+  { path: "/studiu-salarii-meserii-romania-2026", priority: 0.8, changeFrequency: "monthly" },
   { path: "/salarii/judete", priority: 0.7, changeFrequency: "monthly" },
   { path: "/salarii/femei-barbati", priority: 0.7, changeFrequency: "yearly" },
   { path: "/salarii/locuri-vacante", priority: 0.7, changeFrequency: "monthly" },
@@ -79,8 +80,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     })),
 
-    // Paginile de meserii si comparatii se reimprospateaza atat la un import
-    // INS, cat si la un recast editorial. Sitemapul foloseste data cea mai noua.
     ...JUDETE.map((judet) => ({
       url: `${baseUrl}/salarii/judet/${judet.slug}`,
       lastModified: JUDETE_LAST_MODIFIED,
