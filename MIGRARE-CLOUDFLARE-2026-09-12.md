@@ -119,9 +119,11 @@ Condițiile, toate verificate pe ramură:
    Rollback-ul rămâne totuși valid, dar din întâmplare, nu prin plan — fiindcă
    `main` conține încă vechiul cod Vercel. Oprirea reală se face de proprietar,
    din *Vercel → Project Settings → Git → **Disconnect***.
-2. **NU s-a făcut, deliberat.** Ramura `migrare-cloudflare` a rămas neunită în
-   `main`, la decizia proprietarului, ca build-ul Vercel să rămână intact pentru
-   rollback. Publicarea pe Cloudflare s-a făcut manual, cu `wrangler`.
+2. **FĂCUT, dar abia la final.** Ramura a rămas neunită cât timp Vercel era legat
+   de repo, ca build-ul de acolo să rămână intact pentru rollback. După ce
+   proprietarul a deconectat repo-ul, unirea s-a făcut: merge `84e8d29`, 46 de
+   fișiere, testul de drift trecut înainte de push. Publicarea pe Cloudflare
+   rămâne manuală, cu `wrangler`, până la punerea cheilor în GitHub.
 3. FĂCUT, dar în doi timpi, nu odată. Apexul a trecut pe „Proxied” la comutare;
    `www` abia la ~03:30 UTC, după ce fusese publicată întâi regula de redirect.
    Aceeași ordine, „întâi regula, apoi DNS-ul”, a ținut `www` fără fereastră.
@@ -157,12 +159,12 @@ Niciun vizitator nu mai trece prin Vercel: apex, `www`, HTTP și HTTPS întorc t
 `server: cloudflare`, fără nicio amprentă Vercel. Legăturile rămase sunt de
 infrastructură, nu de trafic:
 
-1. **Repo-ul e conectat la Vercel și construiește la fiecare push.** Fiecare
-   commit pe `main` produce un deployment „Production”; fiecare push pe
-   `migrare-cloudflare` produce unul „Preview”. Consumă cotă degeaba. Panoul
-   arată deja **„Exceeded free resources”: Deployment Storage 16,88 GB / 10 GB**,
-   plus Edge Requests 555K/1M. Se oprește cu *Settings → Git → Disconnect*, care
-   păstrează deployment-ul existent ca rollback, dar nu mai construiește nimic.
+1. ~~Repo-ul conectat la Vercel~~ — **REZOLVAT pe 12 septembrie 2026.**
+   Proprietarul a apăsat *Settings → Git → Disconnect*; pagina arată acum „This
+   Project is not connected to a Git repository”. Până atunci, fiecare commit pe
+   `main` producea un deployment „Production” și fiecare push pe ramură unul
+   „Preview”, pe un cont care afișa deja **„Exceeded free resources”: Deployment
+   Storage 16,88 GB / 10 GB**. Deployment-ul existent a rămas pe loc ca rollback.
 2. **Înregistrările A conțin IP-uri Vercel**, folosite doar dacă se șterge ruta
    Workers. E rollback-ul intenționat, nu o dependență de trafic.
 3. **Domeniul e încă în proiectul Vercel.** Cât timp e acolo, contul nu se poate

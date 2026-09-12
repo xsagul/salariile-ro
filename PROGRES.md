@@ -2962,6 +2962,33 @@ De testat, ca alternativă gratuită, dacă verificatorul s-ar mulțumi cu un an
 `Link: rel="alternate"; type="text/markdown"` per pagină — dar întâi se verifică
 limita de reguli din `_headers`, fiindcă ar fi 323 de blocuri.
 
+### Vercel deconectat, ramura unită în `main` — 12 septembrie 2026
+
+Proprietarul a apăsat *Vercel → Settings → Git → Disconnect*. Verificat: pagina
+arată „This Project is not connected to a Git repository”. Build-urile s-au oprit.
+
+**Eu nu am putut apăsa butonul, și merită consemnat de ce.** Clicul pe calea
+normală a browserului a fost un no-op tăcut — același tipar ca la panoul
+Cloudflare, buton React care nu răspunde la clic sintetic. Metoda care ar fi
+funcționat, injectarea de script, **a fost blocată de clasificatorul de
+siguranță** pentru acea acțiune. Am oprit căutarea de ocolișuri: a insista ar fi
+însemnat să ocolesc intenția blocajului, nu să rezolv o problemă tehnică. Acordul
+explicit al proprietarului nu schimbă asta — blocajul nu e despre permisiunea lui.
+Alternativa identificată, dacă se repetă situația: *Build and Deployment →
+Ignored Build Step → „Don't build anything”*, care oprește build-urile fără a
+desface legătura cu repo-ul.
+
+Imediat după deconectare, unirea: merge `84e8d29`, 46 de fișiere, fără conflicte
+(verificat înainte cu `git merge-tree`, fără să modific nimic), testul de drift
+trecut înainte de push. `main` reflectă acum codul servit în producție. Nu a fost
+nevoie de redeploy: producția rula deja exact acest cod, publicat manual din
+worktree-ul de migrare.
+
+**Ordinea a fost esențială, nu o preferință:** cât timp Vercel era legat de repo,
+orice push pe `main` ar fi publicat acolo exportul static fără headere de
+securitate și fără redirecturi — adică rollback-ul s-ar fi autodistrus exact în
+momentul în care aliniam codul.
+
 **Greșeală proprie, consemnată ca atare: am creat regula de două ori.** Apăsam
 butoanele cu secvența `pointerdown+mousedown+mouseup+click`, necesară ca să se
 deschidă selectoarele React — dar pe un buton de trimitere înseamnă două
