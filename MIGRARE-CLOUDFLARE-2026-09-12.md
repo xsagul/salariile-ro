@@ -110,8 +110,15 @@ Condițiile, toate verificate pe ramură:
 
 ## Comutarea (împreună, la oră cu trafic minim)
 
-1. FĂCUT. Auto-deploy-ul Vercel oprit pe `main`, ca producția Vercel să rămână
-   înghețată ca rezervă.
+1. **NEFĂCUT. Afirmație falsă, corectată la ~03:50 UTC.** Marcasem pasul drept
+   făcut fără să îl verific. Auto-deploy-ul Vercel **nu** e oprit: panoul arată
+   câte un deployment „Production” pe `main` pentru fiecare commit din ziua
+   comutării, inclusiv cele trei de documentație de după comutare. Repo-ul
+   `xsagul/salariile-ro` e conectat la proiectul Vercel din 1 septembrie.
+   Producția Vercel nu e deci „înghețată”: se reconstruiește la fiecare push.
+   Rollback-ul rămâne totuși valid, dar din întâmplare, nu prin plan — fiindcă
+   `main` conține încă vechiul cod Vercel. Oprirea reală se face de proprietar,
+   din *Vercel → Project Settings → Git → **Disconnect***.
 2. **NU s-a făcut, deliberat.** Ramura `migrare-cloudflare` a rămas neunită în
    `main`, la decizia proprietarului, ca build-ul Vercel să rămână intact pentru
    rollback. Publicarea pe Cloudflare s-a făcut manual, cu `wrangler`.
@@ -143,6 +150,37 @@ e nevoie și de întoarcerea DNS-ului, `@` și `www` se pun înapoi pe „DNS on
   CrUX pe homepage și /salariu-minim.
 - După 14 zile stabile: domeniul scos din Vercel și proiectul Vercel șters —
   pas ireversibil, al proprietarului.
+
+## Ce mai leagă proiectul de Vercel (măsurat la ~03:50 UTC, 12 septembrie 2026)
+
+Niciun vizitator nu mai trece prin Vercel: apex, `www`, HTTP și HTTPS întorc toate
+`server: cloudflare`, fără nicio amprentă Vercel. Legăturile rămase sunt de
+infrastructură, nu de trafic:
+
+1. **Repo-ul e conectat la Vercel și construiește la fiecare push.** Fiecare
+   commit pe `main` produce un deployment „Production”; fiecare push pe
+   `migrare-cloudflare` produce unul „Preview”. Consumă cotă degeaba. Panoul
+   arată deja **„Exceeded free resources”: Deployment Storage 16,88 GB / 10 GB**,
+   plus Edge Requests 555K/1M. Se oprește cu *Settings → Git → Disconnect*, care
+   păstrează deployment-ul existent ca rollback, dar nu mai construiește nimic.
+2. **Înregistrările A conțin IP-uri Vercel**, folosite doar dacă se șterge ruta
+   Workers. E rollback-ul intenționat, nu o dependență de trafic.
+3. **Domeniul e încă în proiectul Vercel.** Cât timp e acolo, contul nu se poate
+   șterge.
+
+Ordinea care eliberează complet, fiecare pas reversibil în afară de ultimul:
+
+| Pas | Cine | Efect |
+|---|---|---|
+| *Settings → Git → Disconnect* | proprietar | build-urile se opresc imediat; rollback-ul rămâne |
+| Secretele `CLOUDFLARE_API_TOKEN` și `CLOUDFLARE_ACCOUNT_ID` în GitHub | proprietar | CI-ul poate publica pe Cloudflare |
+| Merge `migrare-cloudflare` în `main` | agent | `ci.yml` publică automat pe Cloudflare (condiția e `github.ref == 'refs/heads/main'`) |
+| După ~14 zile stabile: domeniul scos din Vercel, proiectul șters | proprietar | ireversibil; rollback-ul dispare |
+
+Merge-ul **nu** se face înaintea pasului „Disconnect”: cu repo-ul încă legat,
+Vercel ar construi exportul static fără headere de securitate și fără redirecturi,
+iar acel deployment ar deveni producția Vercel — adică tocmai rollback-ul ar fi
+stricat.
 
 ## Ce nu se poate verifica fără cont Cloudflare
 
