@@ -2858,3 +2858,33 @@ Nicio cale de trafic viu nu mai trece prin Vercel. Înregistrările A păstreaz�
 intenționat IP-urile Vercel ca origine de rezervă: ruta Workers interceptează
 înaintea originii, iar ștergerea ei readuce traficul pe Vercel. Domeniul NU se
 scoate din Vercel deocamdată.
+
+**Afirmații din runbook, închise cu măsurători pe producție:**
+
+| Verificat | Rezultat |
+|---|---|
+| `/salariu-minim.md` (Markdown pentru agenți) | 200, `text/markdown` |
+| `/llms.txt` | 200, declarat și în antetul `Link` |
+| `/api/calendar/2026?format=ics` (URL vechi) | 301 → `/date/calendar/2026.ics` |
+| `/pagina-care-nu-exista` | 404 real, nu soft-404 |
+| `/date/salarii-serie-ins.{csv,json}` | 200, `X-Robots-Tag: noindex`, `Content-Disposition: attachment` |
+| `sitemap.xml` | 200, `application/xml`, 323 URL-uri, retrimis la Google la 03:33 UTC |
+| `robots.txt` | declară sitemap-ul; `Disallow: /api/` a rămas vestigial, calea nu mai există |
+
+**Noindex-ul iframe-urilor vine din `<meta>`, nu din antet.** `/widget/frame` nu
+are `X-Robots-Tag` — verificat direct, fiindcă runbook-ul afirma „iframe-urile
+sunt noindex" fără să spună prin ce mecanism. HTML-ul conține
+`<meta name="robots" content="noindex, nofollow">` și canonical către `/widget`,
+iar sursa confirmă: `robots: { index: false, follow: false }` în
+`src/app/(embed)/widget/frame/page.tsx` și în `.../fluturas/page.tsx`. Corect,
+dar de reținut: o verificare pe antete singură ar fi raportat fals o lipsă.
+
+Rămâne deschis, deliberat: negocierea pe `Accept: text/markdown` nu a fost
+testată pe zonă. Fișierele `.md` generate la build sunt mecanismul ales și
+funcționează, deci nu blochează nimic.
+
+**Beacon-ul chiar transmite, nu doar există.** La 25 de minute după pornire,
+panoul arăta 2 afișări și 2 vizite. Prezența scriptului în HTML nu dovedea asta;
+cererile de verificare făcute cu `curl` nu execută JavaScript, deci nu ele au
+produs cifrele. Cui aparțin vizitele nu se poate spune — Web Analytics nu
+urmărește vizitatori individuali, ceea ce e exact motivul pentru care a fost ales.
