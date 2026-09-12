@@ -2674,3 +2674,9 @@ Două capcane găsite: `wrangler deploy` fără `--route` nu șterge o rută exi
 (ștergerea se face din dashboard), iar un deploy cu `--domain` sau `--route`
 dezactivează `workers.dev` dacă `workers_dev` lipsește din configurație — s-a
 întâmplat pe copia de probă și e acum explicit în ambele fișiere.
+
+Curățenie după test: ruta `cf.salariile.ro/*` ștearsă din Workers Routes și
+înregistrarea A de test ștearsă din zonă. Zona are din nou exact cele 9
+înregistrări de producție, toate pe DNS only. Propagarea nameserverelor e
+parțială: Google DNS folosește deja Cloudflare, 1.1.1.1, Quad9 și OpenDNS încă
+nu, cu TTL de până la 24 h. Producția răspunde normal în tot acest timp.
