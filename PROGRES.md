@@ -2989,6 +2989,68 @@ orice push pe `main` ar fi publicat acolo exportul static fără headere de
 securitate și fără redirecturi — adică rollback-ul s-ar fi autodistrus exact în
 momentul în care aliniam codul.
 
+### Experiment Astro, pasul 1: `/salarii/[meserie]` — 12 septembrie 2026
+
+**De ce s-a pus problema.** După ieșirea de pe Vercel, framework-ul nu mai e
+constrâns. Proprietarul a arătat că observația nu e teoretică: propriul lui
+proiect, `calculatorulinflatiei` (Astro), livrează **zero fișiere `.js`**, are o
+singură dependență și își randează calculatorul ca `.astro` cu ~2 KB de script
+inline. Nu React ca insulă — **fără framework deloc**.
+
+**Ce s-a măsurat înainte de a scrie cod.** Pe site-ul actual, o pagină de text pur
+(`/despre`) livrează exact același JS ca una de conținut: **188,3 KB comprimați**,
+iar tot calculatorul adaugă doar ~16 KB. Din 327 de pagini generate, **doar 53
+conțin vreun element de formular** — restul plătesc taxa degeaba. Dar datele de
+teren erau deja verzi: INP 73–158 ms, LCP sub 1,4 s, CLS 0. Deci risipa e mare,
+dar nu doare utilizatorii azi. Asta rămâne argumentul care ține rescrierea în
+frâu, nu entuziasmul.
+
+**Montajul experimentului.** Folder separat, `salariile-astro`, în afara repo-ului:
+Next tratează `src/pages` drept Pages Router, deci structura Astro în repo ar fi
+rupt build-ul. `src/lib` e **refolosit prin alias, nu copiat** — altfel s-ar fi
+creat a doua sursă de adevăr, exact ce migrarea trebuie să evite. Ipoteza asta a
+fost testată prima, cu zece linii, nu după cinci sute: pagina de probă a scos
+142 de meserii, iunie 2026, `calculStandard(10000).net = 5.850 lei`, reper
+`programator` 9.000 lei — aceleași valori ca producția.
+
+**Rezultatul, pe toate cele 142 de pagini:**
+
+| Câmp comparat | Rezultat |
+|---|---|
+| title, description, robots, canonical, h1, jsonLd, linkuriInterne | **142/142 identice** |
+| text (ca atare) | 0/142 — diferență **constantă** de 109 caractere/pagină |
+| text (ignorând spațiile) | **142/142 identice** |
+
+Cele 109 caractere nu sunt conținut: HTML-ul live conține 272–276 markeri
+`<!-- -->`, pe care React îi emite între noduri de text adiacente, iar extractorul
+din `compara-hosting` înlocuiește orice tag cu un **spațiu**. Într-un site integral
+Astro nu ar exista partea care îi produce.
+
+**Greutatea, comprimat de ambele părți:** de la **210,8 KB la 9,8 KB** — de 21 de
+ori mai puțin. Zero fișiere `.js`; singurul `<script>` din pagină e JSON-LD-ul.
+
+**Câștigul e atribuit, nu doar constatat.** Din 196,2 KB de HTML live, **119,2 KB
+(61%) erau încărcătura React serializată inline**. Markup plus conținut: 34,7 KB
+live față de 34,1 KB Astro. Practic egale — deci câștigul nu vine din faptul că
+în experiment am scris mai puține clase CSS (diferența de clase e doar 6 KB).
+
+**Build: 143 de pagini în 2,44 s.**
+
+**Harnașamentul și-a demonstrat valoarea prinzând o greșeală a agentului.** Prima
+rulare a dat 131/142 la text. Cele 11 pagini erau toate din sănătate și fiecăreia
+îi lipseau exact 31 de caractere: „Calculează cu gradația ta de vechime", linkul
+din `CALCULATOR_ANEXA` care apare doar la „Anexa nr. II". Îl omisesem la portarea
+tabelului. **`linkuriInterne` a ieșit 142/142 chiar și cu linkul lipsă**, fiindcă
+`/calculator-salariu-sanatate` apare oricum în meniu și în subsol, iar câmpul
+compară o mulțime, nu aparițiile. Doar comparația pe text l-a prins. De reținut
+când se judecă ce garantează fiecare câmp.
+
+**Ce NU dovedește pasul ăsta.** Nimic despre calculatoare — `CalculatorSalariu` are
+1.386 de linii de React și e pasul 2, partea grea. Nimic despre CSS: experimentul
+a sărit deliberat stilizarea, fiindcă `compara-hosting` nu compară clase. Și nimic
+despre celelalte ~180 de pagini. **Nu concluziona „migrăm tot" dintr-un șablon
+portat**, oricât de bine ar arăta cifrele.
+
 **Greșeală proprie, consemnată ca atare: am creat regula de două ori.** Apăsam
 butoanele cu secvența `pointerdown+mousedown+mouseup+click`, necesară ca să se
 deschidă selectoarele React — dar pe un buton de trimitere înseamnă două
