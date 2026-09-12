@@ -2950,8 +2950,17 @@ există, fiindcă punctele nu au etichetă accesibilă, iar capturile de ecran e
 pe pagina aceea. Concluzia: verificatorul lor **nu acceptă un redirect**; vrea
 Markdown la *același* URL, cu 200, probabil și `Vary: Accept`. Asta cere calcul la
 edge. Un script de Worker ar transforma fiecare cerere în invocare numărată —
-exact ce interzice regula din `CLAUDE.md`. De evaluat: Cloudflare Snippets, cu
-limitele lor verificate înainte de a promite ceva.
+exact ce interzice regula din `CLAUDE.md`.
+
+**Snippets: verificat, NU sunt disponibile pe Free.** Pagina zonei spune explicit
+„Available at no extra cost on Pro, Business, and Enterprise plans”, cu buton de
+upgrade. Deci ultima cale ieftină către 5/5 e închisă: bifa aceea costă fie un
+plan plătit, fie un script de Worker cu invocări numărate. **Nu o urmări fără
+decizia proprietarului** — e cheltuială, nu optimizare. Scopul funcțional e deja
+atins: un agent care cere `text/markdown` primește Markdown într-un singur salt.
+De testat, ca alternativă gratuită, dacă verificatorul s-ar mulțumi cu un antet
+`Link: rel="alternate"; type="text/markdown"` per pagină — dar întâi se verifică
+limita de reguli din `_headers`, fiindcă ar fi 323 de blocuri.
 
 **Greșeală proprie, consemnată ca atare: am creat regula de două ori.** Apăsam
 butoanele cu secvența `pointerdown+mousedown+mouseup+click`, necesară ca să se
