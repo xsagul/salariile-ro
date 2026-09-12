@@ -3051,6 +3051,60 @@ a sărit deliberat stilizarea, fiindcă `compara-hosting` nu compară clase. Și
 despre celelalte ~180 de pagini. **Nu concluziona „migrăm tot" dintr-un șablon
 portat**, oricât de bine ar arăta cifrele.
 
+### Experiment Astro, pasul 2: calculatorul — 12 septembrie 2026
+
+**Întrebarea, îngustă intenționat:** poate calculatorul să fie `.astro` plus un
+script de comportament, cu (a) același HTML randat pe server și (b) calcul corect
+în browser? Nu „poate fi portată interfața" — aia e muncă, nu incertitudine.
+
+**Prima descoperire a redus ținta de câteva ori.** Componenta are 1.386 de linii,
+dar homepage-ul live randează pe server **doar scheletul**: 1 `<input>`, 0
+`<select>`, 4 butoane, 2 tabele în care fiecare valoare e „–", 7.147 de caractere
+de text. Panoul avansat, tabelul cu cifre, butonul PDF și cel de partajare **nu
+sunt randate pe server deloc**. Deci paritatea cere formularul și scheletul, nu
+calculatorul întreg. De reprodus fidel și o ciudățenie existentă: textul live
+spune „minim: 4.325 lei **lei**", cu „lei" dublat.
+
+**A doua ipoteză critică, testată izolat cu o pagină de zece linii:** poate un
+`<script>` din Astro să importe motorul fiscal din repo, iar Vite să-l împacheteze
+pentru browser? `fiscal.ts` are 396 de linii și **zero importuri**; `sarbatori`,
+`fluturas`, `calculator-texte` și `curs` sunt la fel de curate — niciunul nu atinge
+React sau Next.
+
+Răspuns: **da, și mai bine decât speram.** Astro a împachetat motorul și l-a
+**încorporat inline**: zero fișiere `.js`, un singur `<script type="module">` de
+1.963 de octeți, **912 octeți comprimat Brotli** — pentru tot motorul fiscal.
+Față de 188,3 KB de runtime React azi.
+
+**Verificat funcțional în browser, nu dedus din octeți:**
+
+| Intrare | Rezultat în browser |
+|---|---|
+| la încărcare | 2.699 lei — **identic cu randarea pe server** |
+| 10.000 brut | net 5.850 · CAS 2.500 · CASS 1.000 · impozit 650 · cost 10.225 |
+| 4.325 brut | net **2.699** · CAS 1.031 · CASS 413 — facilitatea de 200 lei se aplică |
+| 0 | „valoare invalida" |
+
+Zero mesaje în consolă. Cazul salariului minim conta cel mai mult: acolo CAS și
+CASS se calculează pe 4.125, nu pe 4.325, deci o eroare de logică s-ar fi văzut
+imediat. Aceleași funcții produc aceleași cifre pe server și în browser — o
+singură sursă de adevăr, ca `@/lib/inflatie` în `calculatorulinflatiei`.
+
+**Ce NU dovedește pasul 2.** Interfața calculatorului **nu e portată**; s-a dovedit
+tiparul, nu produsul. Netestate: generarea PDF (`jspdf`, import dinamic), cele
+**șapte locuri** unde e folosit calculatorul cu proprietăți diferite
+(`brutInitial`, `embedded`, `fluturas`, `limba`, `monedaInitiala`), engleza și
+comutatorul EUR. Fiecare dintre ele poate ascunde muncă.
+
+**Lecții de unealtă, ca următoarea sesiune să nu le redescopere:**
+`preview_start` citește `.claude/launch.json` **din directorul sesiunii**, nu din
+folderul pe care i-l dai — cerând configurația experimentului, a pornit serverul
+de dezvoltare Next al site-ului real. Iar `file://` în afara folderului de proiect
+se deschide ca **instantaneu static**, unde scripturile nu rulează, deci nu e cale
+de testare. Soluția: o configurație `astro-preview` în `.claude/launch.json` al
+repo-ului, care pornește serverul prin `--prefix ../salariile-astro`. `.claude` e
+în `.gitignore`, deci nu poluează repo-ul.
+
 **Greșeală proprie, consemnată ca atare: am creat regula de două ori.** Apăsam
 butoanele cu secvența `pointerdown+mousedown+mouseup+click`, necesară ca să se
 deschidă selectoarele React — dar pe un buton de trimitere înseamnă două
