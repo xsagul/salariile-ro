@@ -30,7 +30,16 @@ Disallow: /
 # ca sa maximizam sansa ca site-ul sa fie cunoscut si CITAT de motoarele
 # generative (ChatGPT, Claude, Perplexity, Google AI Overviews, Copilot).
 # Cererea de atribuire cu link e exprimata in /llms.txt.
+#
+# Content-Signal (contentsignals.org) exprima aceeasi politica in sintaxa pe care
+# o citesc uneltele automate, adaugata pe 12 septembrie 2026. NU e o decizie noua:
+# search=yes  -> aparitia in rezultate de cautare, cu link inapoi
+# ai-input=yes -> folosirea continutului ca sursa pentru raspunsuri generate
+# ai-train=yes -> folosirea continutului la antrenarea modelelor
+# Toate trei sunt "yes" fiindca strategia de mai sus e citarea, nu blocarea.
+# Daca politica se schimba vreodata, se schimba AICI si in /llms.txt deodata.
 User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Allow: /
 Disallow: /api/
 
