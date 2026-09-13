@@ -271,8 +271,8 @@ ca si precedentele doua).
 - Autoritate externa (Ahrefs, citire din 21 august, nu remasurata azi): DR 7,
   32 de domenii (28% dofollow), 43 de backlinkuri (37% dofollow). Ramane
   constrangerea structurala, a doua analiza consecutiva cu aceeasi concluzie.
-- **Pastrate** `STUDIU-COMPETITIV-HUB-SALARIAL-2026-08-21.md` (studiu activ,
-  cu verificare manuala inca deschisa la §9) si `STUDIU-GOOGLE-LEAK-2024.md`
+- **Pastrate** `docs/arhiva/STUDIU-COMPETITIV-HUB-SALARIAL-2026-08-21.md` (studiu activ,
+  cu verificare manuala inca deschisa la §9) si `docs/arhiva/STUDIU-GOOGLE-LEAK-2024.md`
   (cadrul de analiza a factorilor de ranking ramane valabil; cifrele GSC
   citate in el, din mai-iunie, sunt depasite si merita un refresh separat,
   fara sa justifice stergerea).
@@ -313,7 +313,7 @@ ca si precedentele doua).
   `structuraTabel`, `hartiFonturi`.
 
 **Sitemap: 197 → 290 de rute.** Raportul de acoperire fata de cei doi competitori
-e in §8bis din STUDIU-COMPETITIV-HUB-SALARIAL-2026-08-21.md.
+e in §8bis din docs/arhiva/STUDIU-COMPETITIV-HUB-SALARIAL-2026-08-21.md.
 
 ### Ce am aflat despre sursele art. 33, si de ce conteaza
 
@@ -367,7 +367,7 @@ Doua lectii care schimba planul:
 
 Scopul proiectului s-a largit: de la "acoperim calculator-salarii.ro" la "devenim
 hub-ul salarial #1 din Romania". Studiul cap-coada e in
-`STUDIU-COMPETITIV-HUB-SALARIAL-2026-08-21.md`. Trei lucruri de retinut fara sa-l
+`docs/arhiva/STUDIU-COMPETITIV-HUB-SALARIAL-2026-08-21.md`. Trei lucruri de retinut fara sa-l
 deschizi:
 
 1. **Nisa ocupationala nu e aparata de paylab sau undelucram.** Pe "salariu
@@ -1038,7 +1038,7 @@ Cauza e structurala: cine scrie despre salariul minim linkeaza pagina cu
 salariul minim. Linkurile editoriale nu vin niciodata spre homepage.
 
 Conteaza pentru `homepagePagerankNs`, unul dintre cele 7 atribute nebifate
-din STUDIU-GOOGLE-LEAK-2024.md.
+din docs/arhiva/STUDIU-GOOGLE-LEAK-2024.md.
 
 ### Tinte pentru homepage (categoria care linkeaza homepage-uri)
 
@@ -1708,7 +1708,7 @@ Auditul SERP, snippet și conținut a arătat că faviconul, titlul și descrier
 salariile.ro nu au un defect evident. Search Console indica o creștere puternică
 pe interogarea principală, deci nu am rescris calculatorul de pe homepage.
 Diferența competitivă verificabilă era clusterul part-time și distribuția
-externă. Raportul complet este în `AUDIT-IMPOZITSALARIU-2026-08-28.md`.
+externă. Raportul complet este în `docs/arhiva/AUDIT-IMPOZITSALARIU-2026-08-28.md`.
 
 Adăugat `/calculator-salariu-part-time`: calculator pentru 2–6 ore care separă
 netul angajatului de diferențele CAS/CASS suportate de firmă, tratează
@@ -2606,7 +2606,7 @@ regenerarea fișierului rezolvă local, iar CI-ul pe Linux nu e afectat.
 ### Ce urmează
 
 Planul complet, pașii proprietarului, comutarea și rollback-ul sunt în
-`MIGRARE-CLOUDFLARE-2026-09-12.md`. Blocat pe proprietar: cont Cloudflare, zona
+`docs/arhiva/MIGRARE-CLOUDFLARE-2026-09-12.md`. Blocat pe proprietar: cont Cloudflare, zona
 adăugată cu înregistrările pe „DNS only”, nameserverele schimbate la Namebox.
 **Ramura nu se unește în `main` înainte de comutare.**
 
@@ -2776,7 +2776,7 @@ Viteză, aceleași măsurători ca înainte de comutare (9 cereri, mediană):
 must-revalidate` — cache la edge, revalidare în browser.
 
 Datele de teren (CrUX) se schimbă lent, fiind medie pe 28 de zile: se compară
-săptămânal cu `CWV-INAINTE-DE-CLOUDFLARE-2026-09-12.json`.
+săptămânal cu `docs/arhiva/CWV-INAINTE-DE-CLOUDFLARE-2026-09-12.json`.
 
 ### Web Analytics, și pregătirea pentru `www` — 12 septembrie 2026, ~03:15 UTC
 
