@@ -3011,3 +3011,15 @@ tăcute, toate raportând succes):
   `[role="option"]`;
 - API-ul panoului prin sesiune e blocat (cookie-uri), deci automatizarea trece
   obligatoriu prin interfață.
+
+## 14 septembrie 2026 — propunere homepage în ramură separată
+
+La cererea proprietarului: evaluare vizuală a producției, recuperare parțială a
+contextului conversațiilor SEO și verificare Search Console pentru homepage.
+Propunere pe `codex/homepage-intentie-2026-09-14`, pornită din `4e8c580`.
+Rezultat în prim-plan, formular compact, taxe la cerere, opțiuni care nu se șterg
+la închidere, exemple derivate din motor, explicații și FAQ reorganizate.
+Decizii și limite: `docs/review-homepage/DECIZII-2026-09-14.md`.
+Previzualizare autonomă: fișierul `homepage-redesign.html`, livrat în conversație.
+Niciun merge sau deploy pe producție. Verificarea vizuală finală rămâne necesară:
+browserul cloud nu permite accesul la serverul local sau la fișiere locale.
