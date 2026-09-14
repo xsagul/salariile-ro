@@ -285,7 +285,7 @@ async function auditRenderedSite() {
     ["/calculator-salariu-part-time", "Instrucțiunile D112", "sursa D112 pentru part-time"],
     ["/salariu-mediu", "9.564", "brutul INS din iunie"],
     ["/salariu-mediu", "5.734", "netul INS din iunie"],
-    ["/", "indicatorul BASS", "eticheta BASS de pe homepage"],
+    ["/", "Cum se calculează salariul net?", "explicația calculului de pe homepage"],
     ["/metodologie", "D112", "validarea D112"],
     ["/noutati/cosul-minim-de-consum", "11.370", "cosul pentru doi adulti si doi copii"],
     // Clusterul de meserii. Verificam eticheta, nu cifra: cifrele se schimba la

@@ -58,7 +58,7 @@ export const LAST_FISCAL_CONTENT_UPDATE = new Date("2026-07-26T00:00:00.000Z");
 export const PAGE_LAST_MODIFIED: Record<string, Date> = {
   // Date editoriale reale, schimbate numai când conținutul paginii este revizuit.
   // Data intrării în vigoare a unui regim fiscal rămâne descrisă separat în pagină.
-  "/": new Date("2026-09-09T00:00:00.000Z"),
+  "/": new Date("2026-09-14T00:00:00.000Z"),
   "/salariu-minim": new Date("2026-08-04T00:00:00.000Z"),
   "/salariu-minim-constructii-2026": new Date("2026-07-26T00:00:00.000Z"),
   "/calculator-pfa": new Date("2026-09-03T00:00:00.000Z"),

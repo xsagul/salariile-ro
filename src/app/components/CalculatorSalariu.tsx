@@ -2,6 +2,7 @@
 
 import React, { useState, useCallback, useEffect, useRef } from "react";
 import Link from "@/app/components/Link";
+import RezultatHomepage from "@/app/components/RezultatHomepage";
 import {
   calculeaza,
   calculeazaCuRegim,
@@ -87,6 +88,7 @@ function buildResult(
   if (!rez) return null;
   return {
     rez,
+    mod: snapshotMod,
     brutEfectiv,
     functieDeBAza: snapshotInput.functieDeBAza,
     scutitImpozit: snapshotInput.scutitImpozit,
@@ -449,6 +451,7 @@ export default function CalculatorSalariu({
   limba = "ro",
   monedaInitiala = "RON",
   cuMoneda = false,
+  homepage = false,
 }: {
   brutInitial?: string;
   modInitial?: "brut" | "net";
@@ -483,6 +486,8 @@ export default function CalculatorSalariu({
    * trebuie atins.
    */
   cuMoneda?: boolean;
+  /** Ierarhie compactă activată exclusiv pe homepage. */
+  homepage?: boolean;
 }) {
   const t = TEXTE[limba];
   const [moneda, setMoneda] = useState<Moneda>(monedaInitiala);
@@ -630,8 +635,12 @@ export default function CalculatorSalariu({
 
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
     const targetId = isMobile ? "rezultat-calcul" : "calc-layout";
-    document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth", block: "start" });
-  }, [input, mod, regimFiscal, fluturas, sporOre, sporuri, normaOre, oreLucrate, oreNormaCurenta, embedded, brutInitial]);
+    if (!homepage || isMobile) requestAnimationFrame(() => {
+      const target = document.getElementById(targetId);
+      target?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+      if (homepage) target?.focus({ preventScroll: true });
+    });
+  }, [input, mod, regimFiscal, fluturas, sporOre, sporuri, normaOre, oreLucrate, oreNormaCurenta, embedded, brutInitial, homepage]);
 
   // Deschiderea unui link partajat: „?brut=5000" trebuie sa arate calculul, nu
   // un formular gol.
@@ -732,7 +741,7 @@ export default function CalculatorSalariu({
   return (
     <>
       {/* ── Hero ── */}
-      {!embedded && (
+      {!embedded && !homepage && (
         <section className="border-b border-stone-200 bg-canvas">
           <div className={`mx-auto ${wrap} px-4 py-8 sm:px-6 sm:py-12`}>
             {/* Hero pe aceeași grilă (col-span-3) = exact lățimea cardului „Rezultat calcul", la orice viewport. */}
@@ -777,24 +786,25 @@ export default function CalculatorSalariu({
       )}
 
       {/* ── Calculator ── */}
-      <div className={`mx-auto grid ${wrap} gap-6 px-4 py-8 sm:px-6 sm:py-12 md:grid-cols-5`} id="calc-layout">
+      <div className={`mx-auto grid ${wrap} ${homepage ? "gap-0 pb-6 pt-0 sm:pb-8" : "gap-6 py-8 sm:py-12"} px-4 sm:px-6 md:grid-cols-5`} id="calc-layout">
         {/* Coloana Stângă – formular */}
         <form
-          className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-2"
+          className={`min-w-0 border border-stone-200 bg-surface sm:p-6 md:col-span-2 ${homepage ? "p-5 rounded-t-md md:rounded-l-md md:rounded-tr-none" : "p-4 rounded-md shadow-soft"}`}
           data-md-strip
           onSubmit={(event) => {
             event.preventDefault();
             handleCalculeaza();
           }}
         >
-          <h2 className={colHeader}>{t.dateSalariale}</h2>
+          <h2 className={homepage ? "sr-only" : colHeader}>{t.dateSalariale}</h2>
 
           {!fluturas && (
           <div className="mb-5">
-            <span className={fieldLabel}>{t.directieCalcul}</span>
+            <span className={homepage ? "sr-only" : fieldLabel}>{t.directieCalcul}</span>
             <div className="flex w-full overflow-hidden rounded border border-stone-300">
               <button
                 type="button"
+                aria-pressed={mod === "brut"}
                 className={`flex-1 inline-flex min-h-11 items-center justify-center px-4 text-sm font-medium transition-colors ${mod === "brut" ? "bg-stone-900 text-white" : "text-stone-600 hover:bg-canvas"}`}
                 onClick={() => {
                   if (mod === "brut") return;
@@ -809,6 +819,7 @@ export default function CalculatorSalariu({
               </button>
               <button
                 type="button"
+                aria-pressed={mod === "net"}
                 className={`border-l border-stone-300 flex-1 inline-flex min-h-11 items-center justify-center px-4 text-sm font-medium transition-colors ${mod === "net" ? "bg-stone-900 text-white" : "text-stone-600 hover:bg-canvas"}`}
                 onClick={() => {
                   if (mod === "net") return;
@@ -862,19 +873,21 @@ export default function CalculatorSalariu({
           <button
             type="button"
             className="mb-5 flex min-h-11 w-full items-center justify-center rounded border border-dashed border-stone-300 px-4 text-xs font-medium text-stone-600 transition-colors hover:border-stone-400 hover:text-stone-700"
+            aria-expanded={avansat}
+            aria-controls="optiuni-salariale"
             onClick={() => {
-              if (avansat) {
+              if (avansat && !homepage) {
                 set("tichete", ""); setNrTichete(""); setValoareTichet(""); set("functieDeBAza", true); set("persoanePretretinere", 0); set("varstaSub26", false); set("copiiScolarizati", 0); set("scutitImpozit", false);
                 if (fluturas) { setFirma(""); setSporOre("75"); setSporuri(""); setRetineri(""); setNormaOre(""); setOreLucrate(""); }
               }
               setAvansat(!avansat);
             }}
           >
-            {avansat ? t.ascundeAvansate : t.calculatorAvansat}
+            {homepage ? (avansat ? "Ascunde opțiunile" : "Tichete, deduceri și scutiri") : avansat ? t.ascundeAvansate : t.calculatorAvansat}
           </button>
 
           {avansat && (
-            <>
+            <div id="optiuni-salariale">
               {fluturas && (
                 <>
                   {/* Câmpurile statului de plată — doar în generatorul de fluturaș */}
@@ -937,7 +950,10 @@ export default function CalculatorSalariu({
                 <Toggle label={t.varstaSub26} checked={input.varstaSub26} onChange={(v) => set("varstaSub26", v)} />
                 <Toggle label="Scutit de impozit (de exemplu, handicap)" checked={input.scutitImpozit} onChange={(v) => set("scutitImpozit", v)} />
               </div>
-            </>
+              {homepage && <button type="button" className="mt-3 min-h-11 text-xs font-medium underline underline-offset-2" onClick={() => {
+                set("tichete", ""); setNrTichete(""); setValoareTichet(""); set("functieDeBAza", true); set("persoanePretretinere", 0); set("varstaSub26", false); set("copiiScolarizati", 0); set("scutitImpozit", false);
+              }}>Resetează opțiunile</button>}
+            </div>
           )}
 
           <button
@@ -947,20 +963,21 @@ export default function CalculatorSalariu({
           >
             {t.calculeaza}
           </button>
+          {homepage && <p className="mt-3 text-xs leading-relaxed text-stone-600">{input.functieDeBAza && !input.tichete && !input.persoanePretretinere && !input.varstaSub26 && !input.scutitImpozit ? "Normă întreagă, funcție de bază, fără tichete sau persoane în întreținere." : "Calcul cu opțiuni personalizate. Le poți verifica în Tichete, deduceri și scutiri."} <Link href="/calculator-salariu-part-time" className="underline underline-offset-2">Lucrezi part-time?</Link></p>}
         </form>
 
         {/* Coloana Dreaptă – rezultate */}
-        <div className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-3" id="rezultat-calcul">
-          <h2 className={colHeader}>{fluturas ? t.fluturasDeSalariu : t.rezultatCalcul}</h2>
+        <div className={`min-w-0 border border-stone-200 bg-surface sm:p-6 md:col-span-3 ${homepage ? "p-5 rounded-b-md border-t-0 md:rounded-r-md md:rounded-bl-none md:border-l-0 md:border-t" : "p-4 rounded-md shadow-soft"}`} id="rezultat-calcul" tabIndex={homepage ? -1 : undefined}>
+          <h2 className={homepage ? "sr-only" : colHeader}>{fluturas ? t.fluturasDeSalariu : t.rezultatCalcul}</h2>
 
-          {stale && (
+          {stale && !homepage && (
             <p className="mb-4 rounded border border-stone-300 bg-canvas px-3 py-2 text-xs text-stone-600" role="status">
               {t.staleInainte}
               <strong className="font-medium text-stone-900">{t.calculeaza}</strong>{t.staleDupa}
             </p>
           )}
 
-          {rezAfisat && fluturas ? (
+          {homepage ? <RezultatHomepage rezultat={rezAfisat?.rez ?? null} brut={Number(rezAfisat?.brutEfectiv ?? 0)} mod={rezAfisat?.mod ?? mod} stale={stale} /> : rezAfisat && fluturas ? (
             /* Modul fluturaș: rezultatul E fluturașul. Trei blocuri separate
                (Drepturi / Rețineri / De plată), cu aceeași despărțitură vizuală
                ca pe homepage între tabelul principal și costurile angajatorului. */
@@ -1355,7 +1372,7 @@ export default function CalculatorSalariu({
           {/* Punctul de descoperire pentru widget, afișat după calcul când
               utilizatorul a văzut deja produsul. Integrarea păstrează o
               atribuire vizibilă, calificată nofollow. */}
-          {rezAfisat && !embedded && (
+          {rezAfisat && !embedded && !homepage && (
             <p className="mt-4 text-xs leading-relaxed text-stone-600" data-md-strip>
               {t.aiUnSite}{" "}
               <Link
@@ -1374,9 +1391,9 @@ export default function CalculatorSalariu({
             </p>
           )}
 
-          {!rezAfisat && (
+          {!rezAfisat && !homepage && (
             <p className="mt-4 text-xs leading-relaxed text-stone-600" data-md-strip>
-              {t.golCuMinim(fmt(REGIMURI_FISCALE_SALARIU[regimFiscal].salariuMinim))}
+              {t.golCuMinim(new Intl.NumberFormat(t.locale).format(REGIMURI_FISCALE_SALARIU[regimFiscal].salariuMinim))}
             </p>
           )}
         </div>

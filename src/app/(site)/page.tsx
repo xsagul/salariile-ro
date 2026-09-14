@@ -3,7 +3,16 @@ import type { Metadata } from "next";
 import Link from "@/app/components/Link";
 import CalculatorSalariu from "@/app/components/CalculatorSalariu";
 import { personSchema } from "@/lib/person";
-import { calculatorSlugBrut, PAGE_LAST_MODIFIED } from "@/lib/seo";
+import { calculatorSlugBrut, PAGE_LAST_MODIFIED, ogPage, twPage } from "@/lib/seo";
+
+import { H1, Lead } from "@/app/components/ui";
+import { calculStandard, SALARIU_MINIM, CAS_PROCENT, CASS_PROCENT, IMPOZIT_PROCENT, CAM_PROCENT, DEDUCERE_MINIM } from "@/lib/fiscal";
+
+const numar = (n: number) => new Intl.NumberFormat("ro-RO").format(n);
+const procent = (n: number) => new Intl.NumberFormat("ro-RO", { style: "percent", maximumFractionDigits: 2 }).format(n);
+const exempluNet = calculStandard(5000)!;
+const minimNet = calculStandard(SALARIU_MINIM)!;
+const descriere = "Calculează salariul net din brut sau brutul din net în 2026. Vezi banii primiți, taxele, deducerile și costul angajatorului. Include tichete de masă.";
 
 // Metadata proprie homepage-ului (suprascrie default-ul global din layout, fără
 // să atingă celelalte pagini). Țintește termenul cu cel mai mare volum din nișă,
@@ -13,8 +22,9 @@ export const metadata: Metadata = {
   title: {
     absolute: "Calculator salariu net 2026: brut în net și invers",
   },
-  description:
-    "Calculează salariul net din brut sau brutul din net, cu regulile fiscale 2026. Vezi CAS, CASS, impozitul, deducerea personală și costul pentru angajator.",
+  description: descriere,
+  openGraph: ogPage({ title: "Calculator salariu net 2026: brut în net și invers", description: descriere, path: "/" }),
+  twitter: twPage({ title: "Calculator salariu net 2026: brut în net și invers", description: descriere }),
   alternates: { canonical: "https://salariile.ro" },
 };
 
@@ -39,35 +49,35 @@ const faqData = [
     // context: fără formula cu minusuri, care arăta rupt în SERP, și fără
     // referiri la „calculatorul de aici" (întrebarea următoare acoperă oricum
     // calculul invers).
-    a: "Din salariul brut se rețin trei taxe: CAS 25% pentru pensie, CASS 10% pentru sănătate și impozit pe venit 10%. La 5.000 lei brut rămân 2.981 lei net în 2026. Pentru veniturile sub 6.325 lei brut se aplică și deducerea personală, care reduce baza impozitului și crește netul.",
+    a: `La 5.000 lei brut rămân ${numar(exempluNet.netBani)} lei net, pentru o lună întreagă, funcție de bază, fără tichete, persoane în întreținere sau scutiri. Din brut se rețin CAS (${procent(CAS_PROCENT)}), CASS (${procent(CASS_PROCENT)}) și impozitul pe venit (${procent(IMPOZIT_PROCENT)} din baza impozabilă, după contribuții și deduceri). Exemplul folosește regulile din iulie–decembrie 2026.`,
   },
   {
     q: "Cum folosesc calculatorul de salarii brut-net?",
-    a: "Pui salariul brut și calculatorul de salarii brut-net îți arată instant netul, reținerile (CAS 25%, CASS 10%, impozit 10%) și costul angajatorului. Funcționează și invers: dai cât vrei să rămână în mână și afli salariul brut necesar. Așa vezi salariul brut, netul și ce te costă, în ambele sensuri.",
+    a: "Alegi Din brut în net sau Din net în brut, introduci suma lunară și apeși Calculează. Dacă primești tichete, ai persoane în întreținere, ai sub 26 de ani sau beneficiezi de o scutire, completezi și opțiunile. Rezultatul se actualizează când apeși din nou Calculează.",
   },
   {
     q: "Care este salariul minim brut în România în 2026?",
-    a: "Salariul minim brut pe economie este 4.325 lei din 1 iulie 2026, conform HG 146/2026. În prima jumătate a anului a fost 4.050 lei brut. Calculul net complet, pe fiecare semestru, este explicat pe pagina dedicată salariului minim.",
+    a: `Salariul minim brut este ${numar(SALARIU_MINIM)} lei din 1 iulie 2026, conform HG 146/2026. În cazul standard, netul este ${numar(minimNet.netBani)} lei. Acesta include facilitatea de ${numar(DEDUCERE_MINIM)} lei netaxabili, dacă sunt îndeplinite condițiile OUG 89/2025. Valorile și condițiile pentru ambele semestre sunt explicate pe pagina salariului minim.`,
   },
   {
     q: "Ce este deducerea personală și cui se aplică?",
-    a: "Deducerea personală este o sumă scăzută din baza de calcul a impozitului pe venit. Se aplică salariaților cu venituri brute de până la 6.325 lei, doar pe funcția de bază. Suma depinde de venit și de numărul de persoane în întreținere. La salariul minim, deducerea de bază este de aproximativ 865 lei și crește cu numărul persoanelor în întreținere. Scade treptat pe măsură ce salariul urcă spre 6.325 lei, iar peste acest prag devine zero. În plus, se adaugă o deducere pentru tinerii sub 26 de ani (15% din salariul minim, circa 649 lei) și 100 lei pentru fiecare copil minor aflat în școlarizare.",
+    a: "Deducerea personală reduce baza impozitului pe venit, nu suma contribuțiilor. Deducerea de bază se aplică la funcția de bază, în limita plafonului de venit, și depinde de salariul brut și persoanele în întreținere. Există și deduceri suplimentare pentru tinerii sub 26 de ani și copiii școlarizați, fiecare cu propriile condiții. Completează situația ta în opțiunile calculatorului.",
   },
   {
     q: "Ce facilități fiscale au angajații din IT și construcții?",
-    a: "Începând cu 1 ianuarie 2025, facilitățile fiscale pentru sectoarele IT, construcții și agricultură/industrie alimentară au fost ELIMINATE conform OUG 156/2024. Anterior, acești angajați erau scutiți de impozit pe venit pentru salarii brute de până la 10.000 lei. Acum plătesc impozit ca în sectorul standard.",
+    a: "Facilitățile fiscale sectoriale pentru IT, construcții și agricultură/industria alimentară au fost eliminate de la 1 ianuarie 2025, conform OUG 156/2024. Calculatorul folosește regulile generale. Alte scutiri individuale se aplică numai dacă sunt îndeplinite condițiile legale.",
   },
   {
     q: "Cât plătește total angajatorul pe lângă salariul brut?",
-    a: "În plus față de salariul brut, angajatorul plătește Contribuția Asiguratorie pentru Muncă (CAM) de 2,25% din salariul brut. Aceasta nu afectează salariul net al angajatului. De exemplu, pentru un brut de 5.000 lei, costul total al firmei este 5.113 lei (5.000 + 113 lei CAM).",
+    a: `Angajatorul plătește contribuția asiguratorie pentru muncă (CAM), cu o cotă de ${procent(CAM_PROCENT)} aplicată bazei de calcul. Pentru 5.000 lei brut, fără tichete, costul total este ${numar(exempluNet.costTotal)} lei. Când se aplică facilitatea pentru salariul minim, suma netaxabilă reduce și baza CAM. Tichetele se adaugă separat la costul firmei.`,
   },
   {
     q: "Se trece salariul brut sau net în contractul de muncă?",
-    a: "În contractul individual de muncă (CIM) se trece întotdeauna salariul brut – este suma negociată și declarată la ANAF. Salariul net, banii primiți efectiv „în mână”, nu apare ca atare în contract: rezultă din brut după reținerea CAS (25%), CASS (10%) și a impozitului pe venit (10%). De aceea, la negociere, clarifică mereu dacă suma discutată este brută sau netă, fiindcă diferența este semnificativă – pentru un salariu standard, contribuțiile și impozitul înseamnă circa 41% din brut.",
+    a: "În contractul individual de muncă se specifică salariul de bază brut. Netul rezultă după contribuții și impozit și poate varia cu deducerile, tichetele sau alte elemente ale lunii. La negociere, clarifică dacă suma discutată este brută sau netă și ce beneficii sunt acordate separat.",
   },
   {
     q: "Ce sunt tichetele de masă din punct de vedere fiscal?",
-    a: "Tichetele de masă sunt un beneficiu extrasalarial: cel mult un tichet pe zi lucrată, cu valoare nominală de maximum 45 lei (Legea 201/2025). Pentru angajat, tichetele sunt supuse CASS (10%) și impozitului pe venit (10%), dar NU și CAS – iar aceste taxe se rețin din salariul în bani, cardul de tichete primind valoarea integrală. Angajatorul nu datorează contribuții pentru tichete (nici CAM); costul lui este valoarea nominală. De aceea, cu tichete, suma din cont poate coborî puțin sub netul standard – calculatorul le afișează separat, exact ca pe fluturaș.",
+    a: "Tichetele de masă se acordă separat de salariul în bani. Taxele aferente lor se rețin din salariu, iar pe cardul de masă intră valoarea nominală. De aceea, suma primită în cont poate fi mai mică decât netul fără tichete. Introdu numărul și valoarea tichetelor în opțiunile calculatorului: rezultatul arată separat banii și tichetele.",
   },
 ];
 
@@ -145,161 +155,103 @@ const homepageJsonLd = {
   ],
 };
 
-// Conținutul „Cum funcționează calculul" – definit O SINGURĂ DATĂ și folosit
-// atât în layout-ul mobil (secțiune always-open), cât și ca primul tab pe desktop.
-const cumFunctioneazaTitlu = "Calculator salariu net: cum funcționează calculul";
-const calculeBrutPopulare = [4325, 5000, 7000, 10000, 20000] as const;
-const cumFunctioneazaBody = (
-  <>
-    <p className="mb-4 text-base leading-normal tracking-[-0.01em] text-stone-600">
-      Din salariul brut se rețin trei contribuții obligatorii: <strong>CAS</strong> (25% pentru pensie), <strong>CASS</strong> (10% pentru sănătate) și <strong>impozitul pe venit</strong> (10%). Pentru salariile sub 6.325 lei brut se aplică o deducere personală care reduce baza de calcul a impozitului.
-    </p>
-    <p className="mb-4 text-base leading-normal tracking-[-0.01em] text-stone-600">
-      Salariații plătiți la nivelul <Link href="/salariu-minim">salariului minim pe economie (4.325 lei brut / 2.699 lei net)</Link> au o sumă fixă de 200 lei scutită de contribuții (OUG 89/2025). Salariul minim brut este <strong>4.325 lei din 1 iulie 2026</strong> (HG 146/2026). Separat, indicatorul BASS pentru 2026 este 9.192 lei; vezi <Link href="/salariu-mediu">diferența față de câștigul salarial mediu lunar publicat de INS</Link>.
-    </p>
-    <p className="mb-4 text-base leading-normal tracking-[-0.01em] text-stone-600">
-      Pe lângă salariul brut, angajatorul mai plătește o contribuție de 2,25% (CAM, Contribuția Asiguratorie pentru Muncă), care nu afectează salariul net al angajatului dar crește costul total al firmei.
-    </p>
-  </>
-);
+const calculeBrutPopulare = [SALARIU_MINIM, 5000, 7000, 10000, 20000];
+const faqPrincipale = [faqData[3], faqData[0], faqData[4], faqData[5], faqData[6], faqData[10]];
+const faqAlte = [faqData[1], faqData[2], faqData[7], faqData[8], faqData[9]];
+const linkClass = "font-medium text-stone-900 underline underline-offset-4 hover:text-stone-600 focus-visible:outline-2 focus-visible:outline-offset-4";
+
+function Intrebare({ item }: { item: { q: string; a: string } }) {
+  return <details name="faq" className="group border-b border-stone-200">
+    <summary className="flex min-h-11 cursor-pointer items-center justify-between gap-5 py-4 text-sm font-medium text-stone-900 focus-visible:outline-2 focus-visible:outline-offset-4 [&::-webkit-details-marker]:hidden">
+      {item.q}<span aria-hidden="true" className="group-open:hidden">+</span><span aria-hidden="true" className="hidden group-open:inline">−</span>
+    </summary>
+    <p className="mb-5 max-w-prose text-sm leading-relaxed text-stone-600">{item.a}</p>
+  </details>;
+}
 
 export default function Page() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageJsonLd) }}
-      />
-
-      <div className="bg-canvas">
-        <CalculatorSalariu />
-
-        {/* ── Zonă de articol: două rânduri, fiecare cu conținut (stânga,
-            col-span-3, aliniat la grila calculatorului) + companion (dreapta,
-            col-span-2) de aceeași înălțime prin grid-stretch. Fără sticky —
-            totul scrollează împreună. Pe mobil se stivuiește. ── */}
-        <section className="rule-t py-8 sm:py-12">
-          <div className="mx-auto max-w-6xl space-y-8 px-4 sm:space-y-12 sm:px-6">
-
-            {/* Rândul 1 – articol „Cum funcționează" + repere fiscale */}
-            <div className="md:grid md:grid-cols-5 md:gap-6">
-              <div className="md:col-span-3 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-600 [&_strong]:font-bold">
-                <h2 className="mb-4 text-2xl font-bold tracking-[-0.02em] text-stone-900 sm:text-3xl">{cumFunctioneazaTitlu}</h2>
-                <div className="max-w-prose">{cumFunctioneazaBody}</div>
-              </div>
-
-              <aside className="mt-8 md:col-span-2 md:mt-0">
-                <div className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
-                  <h3 className="mb-3 text-xs font-medium text-stone-600">Repere fiscale · 2026</h3>
-                  <dl className="text-sm">
-                    {([
-                      ["Net la salariul minim (4.325 brut)", "2.699 lei"],
-                      ["Net estimat din indicatorul BASS", "5.377 lei"],
-                      ["Plafon deducere personală", "6.325 lei"],
-                      ["CAS (pensie)", "25%"],
-                      ["CASS (sănătate)", "10%"],
-                      ["Impozit pe venit", "10%"],
-                      ["CAM (angajator)", "2,25%"],
-                    ] as const).map(([k, v]) => (
-                      <div key={k} className="flex items-center justify-between border-b border-stone-100 py-2 last:border-b-0">
-                        <dt className="text-stone-600">{k}</dt>
-                        <dd className="font-medium tabular-nums text-stone-900">{v}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                  <p className="mt-3 text-xs text-stone-600">Net standard, funcție de bază. 9.192 lei este indicatorul brut fix din BASS 2026, nu câștigul salarial mediu lunar publicat de INS.</p>
-                </div>
-              </aside>
-            </div>
-
-            {/* Rândul 2 – FAQ + surse oficiale și linkuri */}
-            <div className="md:grid md:grid-cols-5 md:gap-6">
-              <div className="md:col-span-3">
-                <h2 className="mb-6 text-2xl font-bold tracking-[-0.02em] text-stone-900 sm:text-3xl">Întrebări frecvente</h2>
-                <div className="flex flex-col">
-                  {faqData.map((item, i) => (
-                    <details key={i} name="faq" className="group border-b border-stone-200">
-                      {/* min-h-11 = 44px, pragul de zona de atingere. Vezi nota
-                          din componenta Faq: aceeasi corectie, alt fisier. */}
-                      <summary className="flex min-h-11 cursor-pointer items-center justify-between gap-4 py-4 text-base font-medium text-stone-900 [&::-webkit-details-marker]:hidden">
-                        {item.q}
-                        <span className="flex-shrink-0 text-xl text-stone-900 group-open:hidden">+</span>
-                        <span className="hidden flex-shrink-0 text-xl text-stone-900 group-open:inline">−</span>
-                      </summary>
-                      <p className="mb-4 max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600">{item.a}</p>
-                    </details>
-                  ))}
-                </div>
-              </div>
-
-              <aside className="mt-8 md:col-span-2 md:mt-0">
-                <div className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
-                  <h3 className="mb-3 text-xs font-medium text-stone-600">Surse oficiale</h3>
-                  <ul className="flex flex-col gap-2 text-sm [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-600">
-                    <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/308231" target="_blank" rel="noopener">HG 146/2026 – salariul minim</a></li>
-                    <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/305817" target="_blank" rel="noopener">OUG 89/2025 – facilitate salariu minim</a></li>
-                    <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/293109" target="_blank" rel="noopener">OUG 156/2024 – eliminare facilități IT/construcții</a></li>
-                    <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/257144" target="_blank" rel="noopener">Codul Fiscal (Legea 227/2015) – contribuții, impozit, deduceri</a></li>
-                    <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/75203" target="_blank" rel="noopener">Codul Muncii (Legea 53/2003) – salariul în contract</a></li>
-                    <li className="text-stone-600">ANAF – Declarația 112</li>
-                  </ul>
-
-                  <h3 className="mb-3 mt-6 text-xs font-medium text-stone-600">Pagini conexe</h3>
-                  <ul className="flex flex-col gap-2 text-sm">
-                    {/* Legături editoriale către instrumentele și paginile
-                        principale care altfel ar fi accesibile mai ales din
-                        meniu sau footer. */}
-                    {([
-                      ["Salarii pe meserii", "/salarii"],
-                      ["Salariul minim pe economie 2026", "/salariu-minim"],
-                      ["Salariul minim în construcții", "/salariu-minim-constructii-2026"],
-                      ["Salariul mediu pe economie", "/salariu-mediu"],
-                      ["Deducerea personală 2026", "/deducere-personala-2026"],
-                      ["Calculator salariu part-time", "/calculator-salariu-part-time"],
-                      ["Calculator taxe PFA și SRL", "/calculator-pfa"],
-                      ["Calculator salarii învățământ", "/calculator-salariu-invatamant"],
-                      ["Calculator salarii sănătate", "/calculator-salariu-sanatate"],
-                      ["Calculator ore suplimentare și spor de noapte", "/calculator-ore-suplimentare"],
-                      ["Generator fluturaș de salariu", "/fluturas-salariu"],
-                      ["Zile libere 2026", "/zile-libere-2026"],
-                      ["Zile lucrătoare 2026", "/zile-lucratoare-2026"],
-                      ["Widget pentru site-ul tău", "/widget"],
-                    ] as const).map(([label, href]) => (
-                      <li key={href}>
-                        <Link href={href} className="font-medium text-stone-900 underline underline-offset-2 hover:text-stone-600">{label}</Link>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <p className="mt-6 text-xs text-stone-600">Ultima actualizare: {PAGE_LAST_MODIFIED["/"].toLocaleDateString("ro-RO", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })}.</p>
-                </div>
-              </aside>
-            </div>
-
-            <div className="border-t border-stone-200 pt-8">
-              <h2 className="mb-3 text-lg font-bold tracking-[-0.02em] text-stone-900">
-                Calcule salariale populare
-              </h2>
-              <p className="mb-4 max-w-prose text-sm leading-normal text-stone-600">
-                Alege o sumă brută pentru a vedea netul, taxele și costul angajatorului,
-                cu ipotezele explicate pentru fiecare calcul.
-              </p>
-              <ul className="flex flex-wrap gap-2">
-                {calculeBrutPopulare.map((valoare) => (
-                  <li key={valoare}>
-                    <Link
-                      href={`/calculator/${calculatorSlugBrut(valoare)}`}
-                      className="inline-flex min-h-11 items-center rounded border border-stone-300 bg-surface px-4 text-sm font-medium text-stone-900 shadow-soft transition-colors hover:border-stone-400"
-                    >
-                      {new Intl.NumberFormat("ro-RO").format(valoare)} lei brut → net
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-          </div>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageJsonLd) }} />
+      <div className="bg-canvas [&_button:focus-visible]:outline-2 [&_button:focus-visible]:outline-offset-4">
+        <section aria-labelledby="titlu-homepage" className="mx-auto max-w-6xl px-4 pb-5 pt-7 sm:px-6 sm:pb-6 sm:pt-9">
+          <div id="titlu-homepage"><H1>Calculator salariu net 2026</H1></div>
+          <Lead>Introdu salariul brut și află câți bani primești. Poți calcula și invers, din net în brut.</Lead>
         </section>
+        <CalculatorSalariu homepage />
+
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-1 border-b border-stone-300 pb-6 text-xs leading-relaxed text-stone-600">
+            <span>Reguli aplicabile din 1 iulie 2026.</span>
+            <a href="https://legislatie.just.ro/Public/DetaliiDocument/308231" className={linkClass}>HG 146/2026</a><span aria-hidden="true">·</span>
+            <a href="https://legislatie.just.ro/Public/DetaliiDocument/305817" className={linkClass}>OUG 89/2025</a>
+          </div>
+
+          <section aria-labelledby="alte-calcule" className="border-b border-stone-300 py-6 sm:flex sm:items-baseline sm:gap-8">
+            <h2 id="alte-calcule" className="shrink-0 text-sm font-semibold text-stone-900">Ai nevoie de alt calcul?</h2>
+            <ul className="mt-2 flex flex-wrap gap-x-6 sm:mt-0">
+              {[["Învățământ", "/calculator-salariu-invatamant"], ["Part-time", "/calculator-salariu-part-time"], ["PFA", "/calculator-pfa"], ["Ore suplimentare", "/calculator-ore-suplimentare"]].map(([label, href]) => <li key={href}><Link href={href} className={`${linkClass} inline-flex min-h-11 items-center text-sm`}>{label}<span aria-hidden="true" className="ml-2">↗</span></Link></li>)}
+            </ul>
+          </section>
+
+          <section aria-labelledby="cum-se-calculeaza" className="grid gap-8 border-b border-stone-300 py-9 sm:py-10 md:grid-cols-5 md:gap-12">
+            <div className="md:col-span-3">
+              <h2 id="cum-se-calculeaza" className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">Cum se calculează salariul net?</h2>
+              <p className="mt-4 max-w-prose text-base leading-relaxed text-stone-600">Din brut se scad contribuțiile pentru pensie (CAS), sănătate (CASS) și impozitul pe venit. Impozitul se aplică bazei rămase după contribuții și deduceri.</p>
+              <p className="mt-4 text-sm leading-relaxed text-stone-600">La <strong className="text-stone-900">5.000 lei brut</strong>, rezultatul standard este <strong className="text-stone-900">{numar(exempluNet.netBani)} lei net</strong>. Tichetele, deducerile și scutirile pot schimba suma primită.</p>
+              <p className="mt-3 text-xs leading-relaxed text-stone-600">Exemplu pentru iulie–decembrie 2026: normă întreagă, funcție de bază, fără tichete sau persoane în întreținere, vârstă de cel puțin 26 de ani, fără scutiri.</p>
+              <Link href="/metodologie" className={`${linkClass} mt-3 inline-flex min-h-11 items-center text-sm`}>Vezi formula și condițiile de calcul <span aria-hidden="true" className="ml-2">→</span></Link>
+            </div>
+            <aside className="md:col-span-2">
+              <h3 className="text-sm font-semibold text-stone-900">Din brut în net, pentru o sumă anume</h3>
+              <ul className="mt-3 divide-y divide-stone-200">
+                {calculeBrutPopulare.map((valoare) => <li key={valoare}><Link href={`/calculator/${calculatorSlugBrut(valoare)}`} className="flex min-h-11 items-center justify-between gap-4 py-2 text-sm text-stone-700 hover:text-stone-900 focus-visible:outline-2 focus-visible:outline-offset-4"><span>{numar(valoare)} lei brut</span><span className="font-medium text-stone-900">{numar(calculStandard(valoare)!.netBani)} lei net <span aria-hidden="true">↗</span></span></Link></li>)}
+              </ul>
+              <p className="mt-3 text-xs leading-relaxed text-stone-600">Aceleași ipoteze standard ca în exemplu. <Link href="/salariu-minim" className={linkClass}>Vezi salariul minim și condițiile facilității.</Link></p>
+            </aside>
+          </section>
+
+          <section aria-labelledby="faq-home" className="grid gap-8 border-b border-stone-300 py-9 sm:py-10 md:grid-cols-5 md:gap-12">
+            <div className="md:col-span-2">
+              <h2 id="faq-home" className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">Întrebări despre calcul</h2>
+              <p className="mt-3 max-w-sm text-sm leading-relaxed text-stone-600">Brut, net, deduceri și tichete: explicațiile de care ai nevoie pentru a înțelege rezultatul.</p>
+            </div>
+            <div className="md:col-span-3">
+              {faqPrincipale.map(item => <Intrebare key={item.q} item={item} />)}
+              <details className="mt-3">
+                <summary className="flex min-h-11 cursor-pointer items-center text-sm font-medium text-stone-900 underline underline-offset-4">Alte întrebări despre salariu</summary>
+                {faqAlte.map(item => <Intrebare key={item.q} item={item} />)}
+              </details>
+            </div>
+          </section>
+
+          <section aria-labelledby="salarii-meserii" className="grid gap-6 border-b border-stone-300 py-9 sm:py-10 md:grid-cols-5 md:gap-12">
+            <div className="md:col-span-3">
+              <h2 id="salarii-meserii" className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">Cât se câștigă în meseria ta?</h2>
+              <p className="mt-3 max-w-prose text-sm leading-relaxed text-stone-600">Consultă salarii din anunțuri, salarii declarate și grile publice. Sursele și perioadele sunt afișate separat, ca să știi ce compari.</p>
+              <Link href="/salarii" className={`${linkClass} mt-3 inline-flex min-h-11 items-center text-sm`}>Vezi salariile pe meserii <span aria-hidden="true" className="ml-2">→</span></Link>
+            </div>
+            <nav aria-label="Informații salariale" className="flex flex-col items-start text-sm md:col-span-2">
+              {[["Compară două meserii", "/compara"], ["Salariul mediu în România", "/salariu-mediu"], ["Zile libere 2026", "/zile-libere-2026"]].map(([label, href]) => <Link key={href} href={href} className={`${linkClass} inline-flex min-h-11 items-center`}>{label}</Link>)}
+            </nav>
+          </section>
+
+          <section aria-labelledby="surse-home" className="grid gap-5 py-8 text-xs leading-relaxed text-stone-600 md:grid-cols-5 md:gap-12">
+            <div className="md:col-span-2">
+              <h2 id="surse-home" className="text-sm font-semibold text-stone-900">Surse și verificare</h2>
+              <p className="mt-2">Proiect de <Link href="/despre" className={linkClass}>Știuriuc Sorin-Marian</Link>.</p>
+              <p className="mt-1">Conținut revizuit: <time dateTime={PAGE_LAST_MODIFIED["/"].toISOString().slice(0, 10)}>{PAGE_LAST_MODIFIED["/"].toLocaleDateString("ro-RO", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })}</time>.</p>
+            </div>
+            <div className="md:col-span-3">
+              <ul className="flex flex-wrap gap-x-5 gap-y-3">
+                <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/257144" className={linkClass}>Codul fiscal · contribuții și deduceri</a></li>
+                <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/75203" className={linkClass}>Codul muncii · salariul în contract</a></li>
+                <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/293109" className={linkClass}>OUG 156/2024 · facilități eliminate</a></li>
+              </ul>
+              <p className="mt-3">Calcule orientative. Pentru situații speciale, verifică <Link href="/metodologie" className={linkClass}>ipotezele și limitele metodei</Link>. Cotele standard: CAS {procent(CAS_PROCENT)}, CASS {procent(CASS_PROCENT)}, impozit {procent(IMPOZIT_PROCENT)}, CAM {procent(CAM_PROCENT)}.</p>
+            </div>
+          </section>
+        </div>
       </div>
     </>
   );
