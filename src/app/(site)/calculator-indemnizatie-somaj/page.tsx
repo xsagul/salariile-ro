@@ -135,9 +135,9 @@ export default function Page() {
 
       <Hero peGrila>
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Calculator indemnizație șomaj" }]} />
-        <H1>Calculator indemnizație șomaj</H1>
+        <H1>Calculator indemnizație șomaj 2026</H1>
         <Lead>
-          Vezi cât primești șomaj pe lună și câte luni.
+          Alege stagiul de cotizare și salariul brut mediu și vezi indemnizația lunară, câte luni o primești și netul.
         </Lead>
       </Hero>
 

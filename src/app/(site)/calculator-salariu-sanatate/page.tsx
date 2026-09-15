@@ -143,9 +143,9 @@ export default function Page() {
 
       <Hero peGrila>
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Calculator salariu sănătate" }]} />
-        <H1>Calculator salariu sănătate</H1>
+        <H1>Calculator salariu sănătate 2026</H1>
         <Lead>
-          Alege meseria, treapta și vechimea și vezi salariul net.
+          Alege-ți încadrarea și vezi salariul de bază, gradația de vechime și netul, după grila în plată.
         </Lead>
       </Hero>
 

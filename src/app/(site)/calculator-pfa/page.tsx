@@ -189,9 +189,9 @@ export default function CalculatorPfaPage() {
         <div className="mx-auto max-w-6xl px-4 pt-6 sm:px-6 sm:pt-10">
           <div className="md:grid md:grid-cols-5 md:gap-6">
             <div className="md:col-span-3">
-              <h1 className="mb-2 text-[1.4375rem] font-bold leading-tight tracking-[-0.02em] text-stone-900 sm:text-4xl">Calculator taxe PFA 2026</h1>
+              <h1 className="mb-2 text-[1.625rem] font-bold leading-tight tracking-[-0.02em] text-stone-900 sm:text-4xl">Calculator taxe PFA 2026</h1>
               <p className="max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600">
-                Vezi cât plătești ca PFA și cât îți rămâne, comparat cu un SRL.
+                Cât plătești ca PFA în sistem real și cât îți rămâne, comparat cu SRL micro și SRL pe profit.
               </p>
             </div>
           </div>

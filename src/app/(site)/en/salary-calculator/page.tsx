@@ -24,6 +24,7 @@
 // pagini. Substantiv comun, deci varianta cu litera mica e cea corecta.
 
 import type { Metadata } from "next";
+import Link from "@/app/components/Link";
 import CalculatorSalariu from "@/app/components/CalculatorSalariu";
 import { PaginiConexe, Section } from "@/app/components/ui";
 import { personSchema } from "@/lib/person";
@@ -133,7 +134,11 @@ export default function Page() {
         titluCustom={<>Romanian Salary Calculator 2026</>}
         subtitluCustom={
           <>
-            See your take-home pay from a gross salary, or the other way round.
+            Enter a gross salary and see what reaches the employee&rsquo;s account, with the pension
+            and health contributions, the flat 10% income tax and the employer&rsquo;s total cost.
+            Amounts are shown in euro by default — switch to lei at any time. It works from net to
+            gross as well. Same engine as the{" "}
+            <Link href="/">Romanian version of this calculator</Link>, same 2026 rules.
           </>
         }
       />

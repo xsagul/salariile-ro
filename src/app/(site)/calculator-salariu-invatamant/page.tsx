@@ -129,9 +129,9 @@ export default function Page() {
 
       <Hero peGrila>
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Calculator salariu învățământ" }]} />
-        <H1>Calculator salariu învățământ</H1>
+        <H1>Calculator salariu învățământ 2026</H1>
         <Lead>
-          Alege funcția, gradul și vechimea și vezi salariul net.
+          Alege-ți încadrarea și vezi salariul de bază, gradația și netul, după grila în plată.
         </Lead>
       </Hero>
 

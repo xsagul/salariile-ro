@@ -137,9 +137,9 @@ export default function Page() {
 
       <Hero peGrila>
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Calculator ore suplimentare" }]} />
-        <H1>Calculator ore suplimentare</H1>
+        <H1>Calculator ore suplimentare 2026</H1>
         <Lead>
-          Vezi cât primești în plus pentru orele lucrate peste program, noaptea sau de sărbători.
+          Pune salariul de bază și orele lucrate peste program, noaptea sau de sărbători, și vezi sporul și netul.
         </Lead>
       </Hero>
 

@@ -132,10 +132,12 @@ export default function CalculatorSalariuConstructiiPage() {
       <div className="bg-canvas">
         <CalculatorSalariu
           brutInitial={String(SALARIU_MINIM_CONSTRUCTII)}
-          titluCustom={<>Calculator salariu construcții</>}
+          titluCustom={<>Calculator salariu construcții 2026</>}
           subtitluCustom={
             <>
-              Calculează netul sau brutul pentru un salariu în construcții.
+              Calculul pornește de la salariul de bază minim din construcții, {fmt(SALARIU_MINIM_CONSTRUCTII)} lei brut.
+              Schimbă suma sau treci pe net în brut. Nu mai există facilități pentru domeniu, deci se aplică
+              CAS 25%, CASS 10% și impozit 10%, ca pentru orice salariat.
             </>
           }
         />
