@@ -781,7 +781,6 @@ export default function CalculatorSalariu({
         {/* Coloana Stângă – formular */}
         <form
           className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-2"
-          data-md-strip
           onSubmit={(event) => {
             event.preventDefault();
             handleCalculeaza();
@@ -1200,7 +1199,7 @@ export default function CalculatorSalariu({
           ) : fluturas ? (
             /* Stare goală în modul fluturaș: scheletul documentului, în aceleași
                trei blocuri ca varianta calculată, cu antetul colorat ca pe homepage. */
-            <div aria-hidden="true" data-md-strip>
+            <div aria-hidden="true">
               <div className="overflow-hidden rounded border border-stone-300 text-stone-600">
                 <table className="w-full table-auto border-collapse [&_td]:align-middle [&_th]:align-middle sm:table-fixed text-sm">
                   <colgroup><col /><col className="w-28 sm:w-36" /></colgroup>
@@ -1263,7 +1262,7 @@ export default function CalculatorSalariu({
             </div>
           ) : (
             <>
-            <div className="overflow-hidden rounded border border-stone-300 text-stone-600" aria-hidden="true" data-md-strip>
+            <div className="overflow-hidden rounded border border-stone-300 text-stone-600" aria-hidden="true">
               <table className="w-full table-auto border-collapse [&_td]:align-middle [&_th]:align-middle sm:table-fixed text-sm">
                 <colgroup><col /><col className="w-28 sm:w-36" /></colgroup>
                 <thead>
@@ -1321,7 +1320,6 @@ export default function CalculatorSalariu({
           {rezAfisat && regimFiscal === REGIM_FISCAL_CURENT && (
             <button
               type="button"
-              data-md-strip
               disabled={stale || pdfStatus === "generating"}
               aria-disabled={stale || pdfStatus === "generating"}
               className={`mt-5 inline-flex min-h-12 items-center gap-2 rounded border border-stone-300 px-4 py-3 text-xs font-medium text-stone-700 transition-colors ${stale || pdfStatus === "generating" ? "cursor-not-allowed opacity-50" : "hover:border-stone-900 hover:bg-stone-900 hover:text-white"}`}
@@ -1334,7 +1332,6 @@ export default function CalculatorSalariu({
           {rezAfisat && !embedded && !brutInitial && (
             <button
               type="button"
-              data-md-strip
               disabled={stale}
               aria-disabled={stale}
               className={`ml-0 mt-3 inline-flex min-h-12 items-center gap-2 rounded border border-stone-300 px-4 py-3 text-xs font-medium text-stone-700 transition-colors sm:ml-3 sm:mt-5 ${stale ? "cursor-not-allowed opacity-50" : "hover:border-stone-900 hover:bg-stone-900 hover:text-white"}`}
@@ -1356,7 +1353,7 @@ export default function CalculatorSalariu({
               utilizatorul a văzut deja produsul. Integrarea păstrează o
               atribuire vizibilă, calificată nofollow. */}
           {rezAfisat && !embedded && (
-            <p className="mt-4 text-xs leading-relaxed text-stone-600" data-md-strip>
+            <p className="mt-4 text-xs leading-relaxed text-stone-600">
               {t.aiUnSite}{" "}
               <Link
                 href="/widget"
@@ -1369,13 +1366,13 @@ export default function CalculatorSalariu({
           )}
 
           {rezAfisat && regimFiscal !== REGIM_FISCAL_CURENT && (
-            <p className="mt-5 text-xs leading-relaxed text-stone-600" data-md-strip>
+            <p className="mt-5 text-xs leading-relaxed text-stone-600">
               Calcul istoric pentru ianuarie–iunie 2026. Fluturașul PDF este disponibil numai pentru grila fiscală curentă.
             </p>
           )}
 
           {!rezAfisat && (
-            <p className="mt-4 text-xs leading-relaxed text-stone-600" data-md-strip>
+            <p className="mt-4 text-xs leading-relaxed text-stone-600">
               {t.golCuMinim(fmt(REGIMURI_FISCALE_SALARIU[regimFiscal].salariuMinim))}
             </p>
           )}

@@ -708,34 +708,13 @@ async function auditRenderedSite() {
     );
   }
 
-  // Markdown pentru agenți: pe găzduirea statică nu mai există negociere pe Accept,
-  // ci fișier generat la build lângă pagină (scripts/genereaza-cloudflare.mts).
-  const markdownResponse = await fetch(`${BASE_URL}/salariu-minim.md`);
-  const markdownBody = await markdownResponse.text();
-  if (markdownResponse.status !== 200) {
-    failures.push(`/salariu-minim.md: HTTP ${markdownResponse.status}`);
-  }
-  if (!markdownResponse.headers.get("content-type")?.includes("text/markdown")) {
-    failures.push(`/salariu-minim.md: Content-Type ${markdownResponse.headers.get("content-type")}`);
-  }
-  if (!markdownBody.includes("# Salariul minim")) {
-    failures.push("/salariu-minim.md: continutul principal lipseste");
-  }
-
-  const htmlResponse = await fetch(`${BASE_URL}/salariu-minim`, {
-    headers: { Accept: "text/html" },
-  });
-  if (!htmlResponse.headers.get("content-type")?.includes("text/html")) {
-    failures.push("/salariu-minim Accept HTML: Content-Type incorect");
-  }
-  const htmlBody = await htmlResponse.text();
-  if (!htmlBody.includes("<h1") || htmlBody.includes("---\ntitle:")) {
-    failures.push("/salariu-minim Accept HTML: răspunsul a fost contaminat cu reprezentarea Markdown");
-  }
-
+  // Copiile Markdown ale paginilor au fost scoase pe 15 septembrie 2026: Googlebot
+  // le descărca fără noindex și fără canonical, adică duplicate ale paginilor.
+  // Agenții AI citesc HTML-ul. Testul cade dacă reapare vreo copie `.md`.
   const rejectedMarkdownPaths = [
-    "/api/markdown/calculator/calcul-salariu-net-5551-brut",
-    "/api/markdown/api/markdown/salariu-minim",
+    "/salariu-minim.md",
+    "/index.md",
+    "/api/markdown/salariu-minim",
   ] as const;
   for (const pathname of rejectedMarkdownPaths) {
     const response = await fetch(`${BASE_URL}${pathname}`);
@@ -806,7 +785,7 @@ async function auditRenderedSite() {
 
   console.log("OK: HTTP 200, un singur H1/main si canonical corect pe toate rutele.");
   console.log("OK: JSON-LD valid, allowlist inchis, link graph si valorile GSC au trecut.");
-  console.log("OK: Markdown static si headerele asseturilor au trecut.");
+  console.log("OK: fara copii Markdown ale paginilor; headerele asseturilor au trecut.");
   console.log("OK: toate cele trei iframe-uri sunt integrabile, noindex si absente din sitemap.");
 }
 

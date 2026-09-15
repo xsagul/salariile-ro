@@ -6,18 +6,19 @@
 //
 //   _headers    securitate + CSP, din src/lib/csp.ts
 //   _redirects  redirecturile permanente, din src/lib/redirecturi.ts
-//   <ruta>.md   Markdown pentru agenți AI, din src/lib/markdown-rute.ts
+//
+// Fișierele `<ruta>.md` pentru agenți AI au fost scoase pe 15 septembrie 2026:
+// aproape niciun agent nu le cerea, iar Googlebot descărcase 974 într-o zi, fără
+// noindex și fără canonical — copii duplicate ale paginilor.
 //
 // `--previzualizare` adaugă X-Robots-Tag noindex pe tot. Google cere noindex pe
 // hostname-ul temporar (workers.dev) cât timp se testează înainte de mutare.
 
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { CSP_PAGINI_PUBLICE, CSP_WIDGET, LINK_HEADER } from "../src/lib/csp";
 import { REDIRECTURI } from "../src/lib/redirecturi";
 import { FISIERE_CALENDAR } from "../src/lib/export-calendar";
-import { ALLOWED_MARKDOWN_PATHS } from "../src/lib/markdown-rute";
-import { htmlInMarkdown } from "../src/lib/markdown-agenti";
 
 const OUT = path.join(process.cwd(), "out");
 const previzualizare = process.argv.includes("--previzualizare");
@@ -38,7 +39,7 @@ const SECURITATE = [
 
 // Asseturile n-au avut niciodată CSP sau Link: nu sunt documente, iar pe Vercel
 // matcher-ul proxy-ului excludea orice cale cu extensie.
-const ASSETURI = ["/_next/*", "/_img/*", "/*.txt", "/*.xml", "/*.json", "/*.webmanifest", "/*.csv", "/*.ics", "/*.md"];
+const ASSETURI = ["/_next/*", "/_img/*", "/*.txt", "/*.xml", "/*.json", "/*.webmanifest", "/*.csv", "/*.ics"];
 const IMAGINI_SI_FONTURI = ["/*.png", "/*.jpg", "/*.jpeg", "/*.webp", "/*.svg", "/*.ico", "/*.woff2"];
 const FARA_DOCUMENT = ["! Content-Security-Policy", "! Link"];
 
@@ -84,18 +85,7 @@ writeFileSync(path.join(OUT, "_headers"), `${headere.join("\n")}\n`);
 const redirecturi = [...REDIRECTURI.map(({ de, la }) => `${de} ${la} 301`), "/*/ /:splat 301"];
 writeFileSync(path.join(OUT, "_redirects"), `${redirecturi.join("\n")}\n`);
 
-let markdown = 0;
-for (const ruta of ALLOWED_MARKDOWN_PATHS) {
-  const fisierHtml = path.join(OUT, ruta === "/" ? "index.html" : `${ruta.slice(1)}.html`);
-  if (!existsSync(fisierHtml)) {
-    throw new Error(`Lipsește ${fisierHtml}, necesar pentru reprezentarea Markdown a ${ruta}.`);
-  }
-  const fisierMd = path.join(OUT, ruta === "/" ? "index.md" : `${ruta.slice(1)}.md`);
-  writeFileSync(fisierMd, htmlInMarkdown(readFileSync(fisierHtml, "utf8")));
-  markdown += 1;
-}
-
 console.log(
-  `Cloudflare: _headers ${headere.length} reguli · _redirects ${redirecturi.length} · Markdown ${markdown} fișiere` +
+  `Cloudflare: _headers ${headere.length} reguli · _redirects ${redirecturi.length}` +
     (previzualizare ? " · PREVIZUALIZARE (noindex pe tot)" : ""),
 );
