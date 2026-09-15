@@ -3077,3 +3077,26 @@ repropune.
 **Datele SE Ranking dispar la finalul trialului (18 septembrie 2026).** Contul
 vede 1.529 de cuvinte pentru salaria.ro, 1.422 impozitsalariu.ro, 23.300
 calculator-salarii.ro (API-ul interfeței dă maximum 5.000) și 518 pentru noi.
+
+## Auditul SE Ranking: ce era real și ce nu — 15 septembrie 2026
+
+Auditul din contul SE Ranking era din 11 septembrie, dinaintea mutării pe
+Cloudflare: scor 96, 377 de probleme. Triate pe producție și în cod:
+
+- **Real, reparat:** `/calculator-salariu-sanatate` descărca 2,58 MB de JavaScript
+  (1,9 MB într-un singur chunk, 517 KB comprimat), fiindcă componenta client
+  importa `grile-153-2017.json` cu toate anexele. Calculul e acum în
+  `sanatate-calcul.ts`, fără date; pagina trimite doar grilele Anexei II ca props.
+  Live: 652 KB, sub homepage. Tot real: linkul spre `/salarii/domeniu/sanatate`
+  (404, slug-ul e `medical`), `/en/salary-calculator` fără niciun link intern
+  (acum în footer) și zece descrieri de 159–168 de caractere. `test-rendered`
+  pică de acum la orice descriere peste 158, pe tot site-ul.
+- **Rezolvat deja de migrare:** URL-urile `/api/*` blocate de robots.txt (acum
+  301 spre `/date/*`), linkul Eurostat 5XX (200 la reverificare).
+- **Fals pozitiv, lăsat:** ghidul eJobs dă 403 crawlerului pe 168 de pagini, dar
+  200 unui browser; legislatie.just.ro dă timeout roboților; `noindex` pe
+  fișierele din `/date/*` e intenționat; CSV-urile și ICS-urile servite
+  necomprimate au împreună ~30 KB.
+
+Audit relansat după deploy: scor **97**, **0 erori** (erau 2), 362 de probleme,
+toate din categoria de mai sus.
