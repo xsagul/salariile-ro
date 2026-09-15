@@ -723,6 +723,17 @@ async function auditRenderedSite() {
     }
   }
 
+  // security.txt (RFC 9116) are câmp obligatoriu `Expires`: expirat, fișierul
+  // devine invalid în tăcere. Testul cade cu 30 de zile înainte, ca să fie reînnoit.
+  const securityTxtResponse = await fetch(`${BASE_URL}/.well-known/security.txt`);
+  const securityTxt = await securityTxtResponse.text();
+  const expira = Date.parse(securityTxt.match(/^Expires:\s*(\S+)/m)?.[1] ?? "");
+  if (securityTxtResponse.status !== 200 || !/^Contact:\s*mailto:/m.test(securityTxt)) {
+    failures.push(`/.well-known/security.txt: HTTP ${securityTxtResponse.status} sau fără Contact`);
+  } else if (!Number.isFinite(expira) || expira - Date.now() < 30 * 86_400_000) {
+    failures.push("/.well-known/security.txt: Expires lipsește sau expiră în mai puțin de 30 de zile — actualizează data");
+  }
+
   const publicAssetResponse = await fetch(`${BASE_URL}/og-image.png`);
   const assetCacheControl = publicAssetResponse.headers.get("cache-control") || "";
   if (assetCacheControl.includes("immutable")) {
