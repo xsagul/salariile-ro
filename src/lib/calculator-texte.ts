@@ -40,10 +40,9 @@ export type TexteCalculator = {
   breadcrumbFluturas: string;
   breadcrumbCalculator: string;
   titlu: string;
-  subtitluInainteLink: string;
-  subtitluIntreLinkuri: string;
-  subtitluDupaLink: string;
-  ultimaActualizare: string;
+  /** O frază: ce face calculatorul. Actele normative și data actualizării stau
+   *  lângă sursele de sub calculator, nu deasupra câmpului de salariu. */
+  subtitlu: string;
 
   // ─── Formular ─────────────────────────────────────────────────────────
   dateSalariale: string;
@@ -170,11 +169,7 @@ const RO: TexteCalculator = {
   breadcrumbFluturas: "Fluturaș de salariu",
   breadcrumbCalculator: "Calculator salariu",
   titlu: "Calculator salariu net 2026",
-  subtitluInainteLink:
-    "Calcul salariu net din brut: pune salariul brut și vezi netul, cu CAS, CASS, impozit și costul angajatorului, conform ",
-  subtitluIntreLinkuri: " și ",
-  subtitluDupaLink: ". Funcționează și invers, din net în brut.",
-  ultimaActualizare: "Ultima actualizare: 26 iulie 2026",
+  subtitlu: "Vezi netul din brut sau brutul din net, cu taxele reținute și costul total pentru angajator.",
 
   dateSalariale: "Date salariale",
   directieCalcul: "Direcție de calcul",
@@ -304,11 +299,7 @@ const EN: TexteCalculator = {
   breadcrumbFluturas: "Payslip",
   breadcrumbCalculator: "Salary calculator",
   titlu: "Romanian Salary Calculator 2026",
-  subtitluInainteLink:
-    "Gross to net salary in Romania: enter the gross and see what you take home, with pension, health contributions, income tax and the total employer cost, under ",
-  subtitluIntreLinkuri: " and ",
-  subtitluDupaLink: ". It works the other way round too, from net to gross.",
-  ultimaActualizare: "Last updated: 26 July 2026",
+  subtitlu: "See take-home pay from a gross salary, or the gross behind a net figure, with every deduction and the total employer cost.",
 
   dateSalariale: "Salary details",
   directieCalcul: "Calculation direction",

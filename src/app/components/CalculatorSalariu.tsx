@@ -733,8 +733,12 @@ export default function CalculatorSalariu({
     <>
       {/* ── Hero ── */}
       {!embedded && (
-        <section className="border-b border-stone-200 bg-canvas">
-          <div className={`mx-auto ${wrap} px-4 py-8 sm:px-6 sm:py-12`}>
+        // Zona de sus e cât titlul și o frază, nu o bandă separată. Măsurat pe 15
+        // septembrie 2026: cu vechiul hero (paragraf de trei rânduri cu acte normative,
+        // dată, spațiu de 48 px sus și jos) câmpul de salariu începea la 558 px pe orice
+        // ecran, iar pe 360×800 butonul „Calculează" ieșea sub primul ecran.
+        <section className="bg-canvas">
+          <div className={`mx-auto ${wrap} px-4 pt-6 sm:px-6 sm:pt-10`}>
             {/* Hero pe aceeași grilă (col-span-3) = exact lățimea cardului „Rezultat calcul", la orice viewport. */}
             <div className="md:grid md:grid-cols-5 md:gap-6">
               <div className="md:col-span-3">
@@ -748,28 +752,14 @@ export default function CalculatorSalariu({
                 )}
 
                 {/* Titlul Dinamic */}
-                <h1 className="mb-3 text-3xl font-bold tracking-[-0.02em] text-stone-900 sm:text-4xl">
+                {/* Pe telefon titlul „Calculator salariu net 2026" încape pe un rând. */}
+                <h1 className="mb-2 text-[1.625rem] font-bold leading-tight tracking-[-0.02em] text-stone-900 sm:text-4xl">
                   {titluCustom || <>{t.titlu}</>}
                 </h1>
 
-                {/* Subtitlul Dinamic */}
                 <p className="max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600 [&_a]:font-medium [&_a]:text-stone-700 [&_a]:underline [&_a]:underline-offset-2 hover:[&_a]:text-stone-900">
-                  {subtitluCustom || (
-                    <>
-                      {t.subtitluInainteLink}
-                      <a href="https://legislatie.just.ro/Public/DetaliiDocument/308231" target="_blank" rel="noopener noreferrer">HG 146/2026</a>
-                      {t.subtitluIntreLinkuri}
-                      <a href="https://legislatie.just.ro/Public/DetaliiDocument/305817" target="_blank" rel="noopener noreferrer">OUG 89/2025</a>{t.subtitluDupaLink}
-                    </>
-                  )}
+                  {subtitluCustom || t.subtitlu}
                 </p>
-
-                {/* Dateline tehnic, scurt și curat */}
-                {!titluCustom && (
-                  <div className="mt-4 text-xs text-stone-600">
-                    {t.ultimaActualizare}
-                  </div>
-                )}
               </div>
             </div>
           </div>
@@ -777,7 +767,7 @@ export default function CalculatorSalariu({
       )}
 
       {/* ── Calculator ── */}
-      <div className={`mx-auto grid ${wrap} gap-6 px-4 py-8 sm:px-6 sm:py-12 md:grid-cols-5`} id="calc-layout">
+      <div className={`mx-auto grid ${wrap} gap-6 px-4 sm:px-6 ${embedded ? "py-8 sm:py-12" : "pt-5 pb-8 sm:pt-6 sm:pb-12"} md:grid-cols-5`} id="calc-layout">
         {/* Coloana Stângă – formular */}
         <form
           className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-2"
