@@ -415,6 +415,33 @@ async function auditRenderedSite() {
   const DESCRIPTION_MAX_LENGTH = 165;
   const SITE_DESCRIPTION_MAX_LENGTH = 158;
 
+  // ── Niciun an vechi în zona de sus a instrumentelor ──
+  // Regulă a proprietarului, 15 septembrie 2026: un vizitator grăbit care vede
+  // „2017" sau „2025" lângă titlu crede că pagina e învechită și pleacă, chiar
+  // dacă legea e în vigoare. Anul actului normativ stă mai jos, lângă surse.
+  // Zona verificată: de la <main> până la primul control al formularului.
+  const AN_CURENT = 2026;
+  const PAGINI_INSTRUMENT = [
+    "/", "/calculator-pfa", "/calculator-salariu-part-time", "/calculator-salariu-constructii",
+    "/calculator-salariu-invatamant", "/calculator-salariu-sanatate", "/calculator-ore-suplimentare",
+    "/calculator-indemnizatie-somaj", "/fluturas-salariu", "/en/salary-calculator",
+  ];
+  for (const pathname of PAGINI_INSTRUMENT) {
+    const html = rendered.get(pathname) ?? "";
+    const main = html.slice(Math.max(0, html.indexOf("<main")));
+    const primulControl = main.search(/<form|<input|<select|<button/);
+    // Doar textul vizibil: JSON-LD-ul și datele React din <script> conțin
+    // legitim anii actelor normative.
+    const zonaSus = (primulControl > 0 ? main.slice(0, primulControl) : main.slice(0, 4000))
+      .replace(/<(script|style|noscript|template)\b[\s\S]*?<\/\1>/g, " ")
+      .replace(/<nav[\s\S]*?<\/nav>/g, " ")
+      .replace(/<[^>]+>/g, " ");
+    const aniVechi = [...zonaSus.matchAll(/\b(19\d\d|20\d\d)\b/g)].map((m) => Number(m[1])).filter((an) => an < AN_CURENT);
+    if (aniVechi.length) {
+      failures.push(`${pathname}: an vechi în zona de sus a instrumentului (${[...new Set(aniVechi)].join(", ")})`);
+    }
+  }
+
   const strictTitlePaths = new Set([
     "/salariu-minim-constructii-2026",
     "/deducere-personala-2026",

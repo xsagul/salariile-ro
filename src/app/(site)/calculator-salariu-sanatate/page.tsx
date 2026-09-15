@@ -145,7 +145,7 @@ export default function Page() {
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Calculator salariu sănătate" }]} />
         <H1>Calculator salariu sănătate 2026</H1>
         <Lead>
-          Alege-ți încadrarea și vezi salariul de bază, gradația de vechime și netul, după Anexa II a Legii 153/2017.
+          Alege-ți încadrarea și vezi salariul de bază, gradația de vechime și netul, după grila în plată.
         </Lead>
       </Hero>
 

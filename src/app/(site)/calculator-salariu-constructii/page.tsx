@@ -136,7 +136,7 @@ export default function CalculatorSalariuConstructiiPage() {
           subtitluCustom={
             <>
               Calculul pornește de la salariul de bază minim din construcții, {fmt(SALARIU_MINIM_CONSTRUCTII)} lei brut.
-              Schimbă suma sau treci pe net în brut. Din 2025 nu mai există facilități pentru domeniu, deci se aplică
+              Schimbă suma sau treci pe net în brut. Nu mai există facilități pentru domeniu, deci se aplică
               CAS 25%, CASS 10% și impozit 10%, ca pentru orice salariat.
             </>
           }

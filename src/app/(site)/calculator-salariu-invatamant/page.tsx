@@ -131,7 +131,7 @@ export default function Page() {
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Calculator salariu învățământ" }]} />
         <H1>Calculator salariu învățământ 2026</H1>
         <Lead>
-          Alege-ți încadrarea și vezi salariul de bază, gradația și netul, după grila în plată din Legea 153/2017.
+          Alege-ți încadrarea și vezi salariul de bază, gradația și netul, după grila în plată.
         </Lead>
       </Hero>
 
