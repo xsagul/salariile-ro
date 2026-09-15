@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
 import { Breadcrumb, CtaCard, Eyebrow, Faq, H1, Hero, Lead, Section } from "@/app/components/ui";
-import { calculStandardCuRegim } from "@/lib/fiscal";
+import { calculStandardCuRegim, SALARIU_MINIM_CONSTRUCTII } from "@/lib/fiscal";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 import TabelArticol from "@/app/components/TabelArticol";
@@ -13,7 +13,7 @@ const TITLE = "Salariu minim construcții 2026: 4.582 lei brut, 2.754 net";
 const DESCRIPTION =
   "Salariul minim în construcții este 4.582 lei brut pe lună în 2026, adică 27,714 lei pe oră și 2.754 lei net din iulie. Cost total angajator: 4.685 lei.";
 const PATH = "/salariu-minim-constructii-2026";
-const MINIM_CONSTRUCTII = 4582;
+const MINIM_CONSTRUCTII = SALARIU_MINIM_CONSTRUCTII;
 const TARIF_ORAR = "27,714";
 
 type Regim = "2026-S1" | "2026-S2";
@@ -227,16 +227,15 @@ export default function SalariuMinimConstructii2026Page() {
             CAM 2,25% în sarcina angajatorului.
           </p>
           <p>
-            Nu îți trebuie un calculator de salarii separat pentru construcții, pentru că nu mai
-            există un calcul separat. Singurul element sectorial rămas este pragul de la care
-            pornește salariul: <strong>{fmt(MINIM_CONSTRUCTII)} lei brut</strong> în construcții,
+            Formula nu mai are nimic sectorial. Singurul element specific rămas este pragul de la
+            care pornește salariul: <strong>{fmt(MINIM_CONSTRUCTII)} lei brut</strong> în construcții,
             față de 4.325 lei în restul economiei. Peste acest prag, calculul brut-net este identic.
           </p>
           <p>
-            Pentru orice altă sumă decât minimul sectorial, pune brutul în{" "}
-            <Link href="/">calculatorul de salariu net</Link> și primești netul cu contribuțiile
-            defalcate. Rezultatul este exact cel pe care l-ar da un calculator dedicat
-            construcțiilor — formula nu diferă cu nimic.
+            Pentru orice altă sumă decât minimul sectorial, folosește{" "}
+            <Link href="/calculator-salariu-constructii">calculatorul de salariu pentru construcții</Link>:
+            pornește de la {fmt(MINIM_CONSTRUCTII)} lei, calculează în ambele sensuri și arată
+            netul pentru salariile uzuale din domeniu.
           </p>
         </Section>
 
@@ -369,11 +368,12 @@ export default function SalariuMinimConstructii2026Page() {
 
         <CtaCard
           title="Calculează salariul tău exact"
-          href="/calculator/calcul-salariu-net-4582-brut"
-          label="Vezi calculul pentru 4.582 lei brut"
+          href="/calculator-salariu-constructii"
+          label="Calculator salariu construcții"
         >
-          Introdu 4.582 lei sau orice alt salariu brut și adaugă persoanele în întreținere, tichetele și opțiunile care se
-          aplică situației tale.
+          Introdu salariul brut sau netul dorit și adaugă persoanele în întreținere, tichetele și opțiunile care se
+          aplică situației tale. Defalcarea completă pentru 4.582 lei brut e și pe{" "}
+          <Link href="/calculator/calcul-salariu-net-4582-brut">pagina de calcul dedicată</Link>.
         </CtaCard>
       </div>
     </>

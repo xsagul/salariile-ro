@@ -28,6 +28,7 @@ const STATIC_ENTRIES: {
   { path: "/salariu-minim-constructii-2026", priority: 0.85, changeFrequency: "monthly" },
   { path: "/calculator-pfa", priority: 0.8, changeFrequency: "monthly" },
   { path: "/calculator-salariu-part-time", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/calculator-salariu-constructii", priority: 0.9, changeFrequency: "monthly" },
   { path: "/calculator-salariu-invatamant", priority: 0.9, changeFrequency: "monthly" },
   { path: "/calculator-salariu-sanatate", priority: 0.9, changeFrequency: "monthly" },
   { path: "/calculator-ore-suplimentare", priority: 0.9, changeFrequency: "monthly" },

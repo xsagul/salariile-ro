@@ -283,6 +283,8 @@ async function auditRenderedSite() {
     ["/calculator-salariu-part-time", "Calculator avansat", "opțiunile avansate part-time"],
     ["/calculator-salariu-part-time", "1.352 lei net", "rezultatul inițial randat pentru indexare"],
     ["/calculator-salariu-part-time", "Instrucțiunile D112", "sursa D112 pentru part-time"],
+    ["/calculator-salariu-constructii", "2.754", "netul la minimul din construcții, randat pentru indexare"],
+    ["/calculator-salariu-constructii", "OUG 156/2024", "temeiul eliminării facilităților din construcții"],
     ["/salariu-mediu", "9.564", "brutul INS din iunie"],
     ["/salariu-mediu", "5.734", "netul INS din iunie"],
     ["/", "indicatorul BASS", "eticheta BASS de pe homepage"],

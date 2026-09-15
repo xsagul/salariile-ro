@@ -256,6 +256,7 @@ export default function Page() {
                       ["Salariul mediu pe economie", "/salariu-mediu"],
                       ["Deducerea personală 2026", "/deducere-personala-2026"],
                       ["Calculator salariu part-time", "/calculator-salariu-part-time"],
+                      ["Calculator salariu construcții", "/calculator-salariu-constructii"],
                       ["Calculator taxe PFA și SRL", "/calculator-pfa"],
                       ["Calculator salarii învățământ", "/calculator-salariu-invatamant"],
                       ["Calculator salarii sănătate", "/calculator-salariu-sanatate"],

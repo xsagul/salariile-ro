@@ -1,6 +1,6 @@
 # Progres salariile.ro
 
-Ultima actualizare: 9 septembrie 2026
+Ultima actualizare: 15 septembrie 2026
 
 ## Sesiunea a treia, 24 august 2026 — doua surse INS pe care le aruncam
 
@@ -3011,3 +3011,64 @@ tăcute, toate raportând succes):
   `[role="option"]`;
 - API-ul panoului prin sesiune e blocat (cookie-uri), deci automatizarea trece
   obligatoriu prin interfață.
+
+## De ce SE Ranking îi dă lui salaria.ro de 3,5 ori traficul nostru — 15 septembrie 2026
+
+Cerere a proprietarului, cu o întrebare concretă: pe cuvintele principale salaria.ro
+e sub noi, dar SE Ranking îi estimează ~4 ori traficul. Date trase din contul SE
+Ranking (trial) prin interfață, pentru salaria.ro, impozitsalariu.ro,
+calculator-salarii.ro și salariile.ro, apoi confruntate cu GSC și cu SERP-ul live.
+
+**Estimările SE Ranking (România, septembrie 2026):** salaria.ro 57.800 vizite/lună,
+calculator-salarii.ro 177.000, impozitsalariu.ro 21.300, salariile.ro 16.300.
+Traficul e extrem de concentrat: 80% din estimarea fiecăruia vine din **6–10
+cuvinte**, aceleași la toți (calculator salariu net, calculator salariu/salarii,
+calcul salariu net/brut, brut în net). Noi rankăm deja pe toate. „Acoperirea"
+primelor 80% nu e o problemă de conținut.
+
+**Diferența de 3,5× e un artefact al modelului, nu trafic real:**
+
+1. **Estimarea e volum × CTR presupus pentru poziție.** Pe noi, SE Ranking dă
+   5.826 de vizite/lună pe „calculator salariu net"; GSC arată **770 de clicuri
+   în 28 de zile** (57.174 de afișări, poziția medie 3,2). Supraestimare de ~7,5×
+   pe cuvântul principal; pe tot site-ul, 16.300 estimat față de 6.956 clicuri
+   reale în 28 de zile.
+2. **21% din estimarea salaria.ro vine din „calcul" (450.000/lună, poziția 5).**
+   Noi apărem pe același cuvânt la poziția 7,3 cu **446 de afișări în 28 de zile
+   și 0 clicuri**. Volumul e fals pentru intenția de salariu — căutarea e
+   răspunsă de calculatorul Google.
+3. **Pozițiile lor sunt vechi.** SE Ranking: salaria 2, noi 5. SERP live pe 15
+   septembrie („calculator salariu net"): calculator-salarii.ro 1,
+   impozitsalariu.ro 2, **salariile.ro 3, salaria.ro 4**. Istoricul SE Ranking
+   confirmă urcarea: calculator salariu 49→10, brut în net 51→6, calculator
+   salariu net 12→5.
+4. **SERP-ul e navigațional.** „Calculator salarii" e numele site-ului de pe
+   locul 1, care ia aproape tot. De aceea CTR-ul nostru pe poziția ~3 e 1,1–1,5%,
+   iar cu anul în query („calculator salariu net 2026") sare la 9,2%. Nimic din
+   titlu nu repară asta; plafonul pe cuvintele principale e autoritatea.
+
+**Golurile reale sunt între 80% și 95% din traficul concurenților** — familii pe
+care calculator-salarii.ro le deține cu pagini dedicate, iar noi lipseam:
+
+| Familie | Volum SE Ranking | Noi (GSC, 28–90 zile) | Stare |
+|---|---|---|---|
+| calculator salariu (net) construcții | ~2.900/lună, 9 variante | poz. 9–25, homepage | **pagină nouă azi** |
+| șomaj (somaj, cât e șomajul, calculator indemnizație) | 6.600 + ~1.800 | poz. 20–50 | pagină publicată pe 9 sept., prea devreme de judecat |
+| calculator vechime | 2.900 | inexistent | candidat, cere verificarea intenției |
+| calculator salariu IT | ~800 | poz. 16–32 | candidat mic: facilitatea a dispărut în 2025 |
+| salariu minim pe economie | 18.100 | poz. 7,7, CTR 0,3% | pagina există; problemă de CTR, nu de acoperire |
+
+**Construit: `/calculator-salariu-constructii`.** SERP-ul live pe „calculator salariu
+net construcții" are aproape numai calculatoare dedicate (calculator-salarii.ro,
+Nexus ERP, Papervee, curs-valutar-bnr, LeaveBoard); `/salariu-minim-constructii-2026`
+nu apare. Rezumatul AI din SERP dădea ~2.680 lei net la 4.582 brut — corect e
+2.754. Pagina refolosește `CalculatorSalariu` pornit la 4.582 lei, tabele brut→net
+(4.582–10.000) și net→brut (3.000–6.000), toate din motorul fiscal, FAQ și surse.
+Pragul de 4.582 lei și tariful orar au acum un singur proprietar în `fiscal.ts`
+(`SALARIU_MINIM_CONSTRUCTII`, `TARIF_ORAR_MINIM_CONSTRUCTII`). Pagina de minim
+păstrează intenția „salariu minim construcții" și trimite calculul spre pagina
+nouă. De măsurat din ~29 septembrie: `npm run gsc -- queries --page=/calculator-salariu-constructii --page-exact`.
+
+**Datele SE Ranking dispar la finalul trialului (18 septembrie 2026).** Contul
+vede 1.529 de cuvinte pentru salaria.ro, 1.422 impozitsalariu.ro, 23.300
+calculator-salarii.ro (API-ul interfeței dă maximum 5.000) și 518 pentru noi.

@@ -37,6 +37,13 @@ export const CASS_PROCENT = 0.10;
 export const IMPOZIT_PROCENT = 0.10;
 export const CAM_PROCENT = 0.0225;
 export const DEDUCERE_MINIM = 200;
+// Salariul de bază minim brut în construcții (OUG 156/2024, art. LXIX): prag
+// sectorial cu temei separat, deci NU urmează minimul general din HG 146/2026.
+// Calculul brut-net rămâne cel standard — facilitățile sectoriale nu mai există
+// din ianuarie 2025.
+export const SALARIU_MINIM_CONSTRUCTII = 4582;
+// Tariful orar mediu din același articol, pentru 165,334 ore pe lună.
+export const TARIF_ORAR_MINIM_CONSTRUCTII = 27.714;
 // Plafonul facilității (OUG 89/2025, S2 2026): facilitatea se acordă când salariul
 // DE BAZĂ este exact minimul, iar venitul brut lunar din salarii (FĂRĂ tichete)
 // nu depășește acest plafon. În S1 era 4.300; din 1 iulie, 4.600.

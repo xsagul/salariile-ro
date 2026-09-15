@@ -63,6 +63,7 @@ export const PAGE_LAST_MODIFIED: Record<string, Date> = {
   "/salariu-minim-constructii-2026": new Date("2026-07-26T00:00:00.000Z"),
   "/calculator-pfa": new Date("2026-09-03T00:00:00.000Z"),
   "/calculator-salariu-part-time": new Date("2026-08-28T00:00:00.000Z"),
+  "/calculator-salariu-constructii": new Date("2026-09-15T00:00:00.000Z"),
   "/calculator-salariu-invatamant": new Date("2026-09-09T00:00:00.000Z"),
   "/calculator-salariu-sanatate": new Date("2026-09-09T00:00:00.000Z"),
   "/calculator-ore-suplimentare": new Date("2026-09-09T00:00:00.000Z"),
