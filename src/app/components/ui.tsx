@@ -49,7 +49,7 @@ export function Hero({
   if (peGrila) {
     return (
       <section className="bg-canvas pt-6 sm:pt-10">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 [&_h1]:text-[1.625rem] [&_h1]:leading-tight sm:[&_h1]:text-4xl [&_nav]:mb-3">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 [&_h1]:text-[1.4375rem] [&_h1]:leading-tight sm:[&_h1]:text-4xl [&_nav]:mb-3">
           <GrilaPagina continut={children} />
         </div>
       </section>

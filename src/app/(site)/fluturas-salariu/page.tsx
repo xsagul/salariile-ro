@@ -120,9 +120,7 @@ export default function FluturasSalariuPage() {
           titluCustom={<>Generator fluturaș de salariu</>}
           subtitluCustom={
             <>
-              Completează salariul de bază și, dacă e cazul, orele lucrate, orele suplimentare, sporurile, tichetele
-              și reținerile. Apasă Calculează, apoi descarcă fluturașul în PDF cu butonul de sub tabel. Calcul conform
-              legislației 2026, în formatul programelor de salarizare.
+              Completează salariul și descarcă fluturașul în PDF.
             </>
           }
         />

@@ -752,8 +752,9 @@ export default function CalculatorSalariu({
                 )}
 
                 {/* Titlul Dinamic */}
-                {/* Pe telefon titlul „Calculator salariu net 2026" încape pe un rând. */}
-                <h1 className="mb-2 text-[1.625rem] font-bold leading-tight tracking-[-0.02em] text-stone-900 sm:text-4xl">
+                {/* 23 px pe telefon: măsurat pe 15 septembrie 2026, cu 26 px titlurile instrumentelor
+                    se rupeau pe două rânduri pe ecranele de 360–414 px. */}
+                <h1 className="mb-2 text-[1.4375rem] font-bold leading-tight tracking-[-0.02em] text-stone-900 sm:text-4xl">
                   {titluCustom || <>{t.titlu}</>}
                 </h1>
 

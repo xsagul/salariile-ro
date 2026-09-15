@@ -117,9 +117,9 @@ export default function Page() {
 
       <Hero peGrila>
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Calculator salariu part-time" }]} />
-        <H1>Calculator salariu part-time 2026</H1>
+        <H1>Calculator salariu part-time</H1>
         <Lead>
-          Alege orele din contract și vezi netul, costul firmei și diferența de CAS și CASS plătită de angajator.
+          Alege câte ore lucrezi pe zi și vezi cât primești în mână și cât plătește firma.
         </Lead>
       </Hero>
 
