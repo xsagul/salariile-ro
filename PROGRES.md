@@ -3167,3 +3167,24 @@ Verificat live după deploy: câmpul la 382 px pe telefon (438 px pe 360), 398 p
 pe desktop; butonul vizibil pe toate cele 8 dimensiuni. Rămase deschise, la
 alegerea proprietarului: titlul se rupe pe două rânduri la 360 px; titlul
 „Date salariale" din formular ar mai urca instrumentul cu 50–70 px.
+
+## Instrumentele urcă pe primul ecran și derulează la rezultat — publicat 15 septembrie 2026, 14:06 ora României
+
+Continuarea valului de la 13:33, cerută de proprietar pe aceleași dovezi.
+Pe PFA, part-time, învățământ, sănătate, ore suplimentare și șomaj, antetul
+paginilor-instrument (`Hero peGrila`) e acum titlu și o frază, fără bandă și
+linie; titlul are 26 px pe telefon. Primul control urcă pe telefon (393 px):
+PFA 432 → 292, part-time 507 → 379, învățământ 480 → 375, sănătate 479 → 375,
+ore suplimentare 509 → 405, șomaj 465 → 361. Paginile de conținut folosesc
+`Hero` fără `peGrila` și nu s-au schimbat.
+
+**Bug găsit și reparat în același val:** pe sănătate, ore suplimentare și șomaj
+„Calculează" nu derula la rezultat. Pe producție, poziția de derulare rămânea
+identică după clic, pe telefon și pe desktop, iar pe mobil rezultatul e sub
+formular. Acum toate cele șapte instrumente (plus homepage) aduc rezultatul în
+ecran, verificat pe producție prin clic real în Chromium: ținta ajunge la 0 px de
+marginea de sus, pe telefon 393 și desktop 1536. Helper comun:
+`src/lib/deruleaza-la-rezultat.ts`.
+
+Pentru comparația din octombrie: aceste șase pagini au, ca homepage-ul, o schimbare
+de aspect suprapusă peste linkurile interne (09:38).
