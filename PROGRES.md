@@ -3069,6 +3069,11 @@ Pragul de 4.582 lei și tariful orar au acum un singur proprietar în `fiscal.ts
 păstrează intenția „salariu minim construcții" și trimite calculul spre pagina
 nouă. De măsurat din ~29 septembrie: `npm run gsc -- queries --page=/calculator-salariu-constructii --page-exact`.
 
+**Pagină separată pentru brut: respinsă de proprietar, 15 septembrie 2026.**
+calculator-salarii.ro ia 8,7% din trafic cu `/calcul-salariu-brut/`, dar homepage-ul
+nostru face ambele sensuri și rankează pe ambele familii cu o singură pagină. Nu se
+repropune.
+
 **Datele SE Ranking dispar la finalul trialului (18 septembrie 2026).** Contul
 vede 1.529 de cuvinte pentru salaria.ro, 1.422 impozitsalariu.ro, 23.300
 calculator-salarii.ro (API-ul interfeței dă maximum 5.000) și 518 pentru noi.
