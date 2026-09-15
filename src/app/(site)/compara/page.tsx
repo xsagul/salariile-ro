@@ -27,6 +27,15 @@ export const metadata: Metadata = {
   twitter: twPage({ title: "Compară salarii între meserii 2026", description: DESCRIERE }),
 };
 
+const COMPARATII_CU_CERERE = [
+  "electrician-vs-sudor",
+  "sofer-tir-vs-curier",
+  "asistent-social-vs-asistent-medical",
+  "farmacist-vs-asistent-medical",
+  "avocat-vs-analist-financiar",
+  "profesor-vs-contabil",
+];
+
 const FAQ = [
   {
     q: "Pe ce se compară cele două meserii?",
@@ -81,7 +90,14 @@ const jsonLd = {
 };
 
 export default function ComparaPage() {
-  const comparatii = COMPARATII.map((comparatie) => {
+  // Doar comparațiile cu cerere, nu toate cele 37. /compara are backlink dofollow
+  // (legalmarketing.ro), iar cu 59 de linkuri pe pagină homepage-ul primea 1/59
+  // din ce transmite. Cele 37 de perechi au adus împreună ~25 de clicuri în 90 de
+  // zile; restul rămân legate din paginile de meserie. Ordinea: afișări GSC, 15
+  // septembrie 2026.
+  const comparatii = COMPARATII.filter((comparatie) => COMPARATII_CU_CERERE.includes(comparatie.slug))
+    .sort((x, y) => COMPARATII_CU_CERERE.indexOf(x.slug) - COMPARATII_CU_CERERE.indexOf(y.slug))
+    .map((comparatie) => {
     const a = dateMeserieSauEroare(comparatie.a);
     const b = dateMeserieSauEroare(comparatie.b);
     return { comparatie, a, b };
@@ -97,6 +113,10 @@ export default function ComparaPage() {
           <H1>Compară salarii între meserii</H1>
           <Lead>Alege două meserii și vezi salariile nete, unul lângă altul.</Lead>
           <AlegeComparatie options={MESERII.map(m=>{const d=dateMeserieSauEroare(m);return {slug:m.slug,name:m.nume,activity:d.sector.denumire,description:m.ceFace,reference:reperMeserie(d)};})} />
+          <p className="mt-6 text-base text-stone-600">
+            Oferta e în brut? Vezi cât rămâne în mână cu{" "}
+            <Link href="/" className="font-medium text-stone-900 underline underline-offset-2">calculatorul de salariu net</Link>.
+          </p>
           <h2 className="mt-12 text-2xl font-bold">Comparații detaliate</h2>
 
           <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
