@@ -653,7 +653,15 @@ export default function SalariuMinimPage() {
                   <p>
                     Cheia e rândul „bază pentru taxe&quot;: urcă cu 375 de lei, nu cu 275, fiindcă partea scutită scade cu 100. O
                     felie mai mare devine impozabilă, așa că statul reține în plus exact cei 150 de lei (93 + 38 + 19) care
-                    „lipsesc&quot; din creșterea netă. Tabelul complet pe plafoane e la <Link href="/deducere-personala-2026">deducerea personală 2026</Link>; pentru orice altă sumă, folosește <Link href="/">calculatorul</Link>.
+                    „lipsesc&quot; din creșterea netă. Tabelul complet pe plafoane e la <Link href="/deducere-personala-2026">deducerea personală 2026</Link>; pentru orice altă sumă, folosește <Link href="/">calculatorul de salariu net</Link>.
+                  </p>
+                  {/* Pagina asta are cele mai multe backlinkuri dofollow din site (șase
+                      domenii, Search Console, 15 septembrie 2026), iar pagina de calcul
+                      pentru 4.325 lei are 11.700 de afișări pe poziția 3,8 cu aproape
+                      nicio autoritate internă. Linkul din text le leagă. */}
+                  <p>
+                    Toate reținerile la minimul din iulie, cu costul firmei, sunt pe{" "}
+                    <Link href="/calculator/calcul-salariu-net-4325-brut">calculul salariului net la 4.325 lei brut</Link>.
                   </p>
                 </div>
               </div>

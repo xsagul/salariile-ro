@@ -262,9 +262,11 @@ export default function Page() {
                       ["Calculator salarii sănătate", "/calculator-salariu-sanatate"],
                       ["Calculator ore suplimentare și spor de noapte", "/calculator-ore-suplimentare"],
                       ["Generator fluturaș de salariu", "/fluturas-salariu"],
-                      ["Zile libere 2026", "/zile-libere-2026"],
                       ["Zile lucrătoare 2026", "/zile-lucratoare-2026"],
                       ["Widget pentru site-ul tău", "/widget"],
+                      // Singurul link intern spre pagina engleză: în subsol primea
+                      // câte o parte din autoritatea fiecărei pagini pentru 35 de afișări.
+                      ["Romanian salary calculator (English)", "/en/salary-calculator"],
                     ] as const).map(([label, href]) => (
                       <li key={href}>
                         <Link href={href} className="font-medium text-stone-900 underline underline-offset-2 hover:text-stone-600">{label}</Link>

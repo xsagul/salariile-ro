@@ -12,15 +12,15 @@ type Item = Leaf | Group;
 // Structură extensibilă: linkuri simple + grupuri (dropdown). Starea meniurilor
 // e ținută PE GRUP, nu global, ca să poată exista oricâte dropdownuri.
 //
+// Meniul apare pe fiecare pagină, deci fiecare intrare primește o parte din
+// autoritatea TUTUROR paginilor. Pe 15 septembrie 2026 au rămas doar paginile cu
+// cerere măsurată în Search Console. Au ieșit /compara (6 clicuri în 28 de zile),
+// /widget (1), /calculator-ore-suplimentare (6) și /zile-libere-2026 (5, sezon
+// trecut); toate rămân legate din textul paginilor înrudite. Nu adăuga o pagină
+// aici fără cerere: fiecare intrare nouă scade partea tuturor celorlalte.
 const NAV: Item[] = [
   { href: "/", label: "Calculator salariu" },
-  {
-    label: "Meserii",
-    children: [
-      { href: "/salarii", label: "Salarii pe meserii" },
-      { href: "/compara", label: "Compară două meserii" },
-    ],
-  },
+  { href: "/salarii", label: "Meserii" },
   {
     label: "Instrumente",
     children: [
@@ -29,10 +29,8 @@ const NAV: Item[] = [
       { href: "/calculator-salariu-constructii", label: "Salariu construcții" },
       { href: "/calculator-salariu-invatamant", label: "Salariu învățământ" },
       { href: "/calculator-salariu-sanatate", label: "Salariu sănătate" },
-      { href: "/calculator-ore-suplimentare", label: "Ore suplimentare" },
       { href: "/calculator-indemnizatie-somaj", label: "Indemnizație șomaj" },
       { href: "/fluturas-salariu", label: "Generator fluturaș" },
-      { href: "/widget", label: "Widget pentru site-ul tău" },
     ],
   },
   {
@@ -42,7 +40,6 @@ const NAV: Item[] = [
       { href: "/salariu-minim-constructii-2026", label: "Minim construcții" },
       { href: "/salariu-mediu", label: "Salariu mediu" },
       { href: "/deducere-personala-2026", label: "Deducere personală" },
-      { href: "/zile-libere-2026", label: "Zile libere 2026" },
       { href: "/zile-lucratoare-2026", label: "Zile lucrătoare 2026" },
     ],
   },

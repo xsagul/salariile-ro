@@ -219,7 +219,8 @@ export default async function JudetPage({ params }: Props) {
             <p className="mt-4 max-w-3xl text-base leading-normal text-stone-600">
               Toate sumele sunt brute lunare, calculate ca medie pentru întregul an {AN}; nu sunt nete și nu sunt
               salariul minim din 2026. Coloana din dreapta compară județul cu media națională a <em>aceleiași</em>{" "}
-              activități. Unde o activitate găzduiește meserii din catalogul nostru, le găsești linkate.
+              activități. Unde o activitate găzduiește meserii din catalogul nostru, le găsești numite, iar
+              toate sunt în <Link href="/salarii">catalogul de salarii pe meserii</Link>.
             </p>
             <div className="my-6 overflow-x-auto">
               <table className="w-full min-w-[44rem] border-separate border-spacing-0 overflow-hidden rounded-md border border-stone-200 bg-surface text-sm shadow-soft tabular-nums">
@@ -266,19 +267,12 @@ export default async function JudetPage({ params }: Props) {
                           </span>
                         </th>
                         <td className="border-b border-stone-100 px-3 py-2 text-left text-xs text-stone-600">
+                          {/* Nume, nu linkuri, decis pe 15 septembrie 2026: 89 de linkuri
+                              spre meserii pe fiecare din cele 43 de pagini de județ țineau
+                              autoritatea învârtindu-se în clusterul de meserii. */}
                           {meserii.length > 0 ? (
                             <>
-                              {meserii.slice(0, 3).map((m, idx) => (
-                                <span key={m.slug}>
-                                  {idx > 0 && ", "}
-                                  <Link
-                                    href={`/salarii/${m.slug}`}
-                                    className="text-stone-700 underline underline-offset-2 hover:text-stone-900"
-                                  >
-                                    {m.nume}
-                                  </Link>
-                                </span>
-                              ))}
+                              {meserii.slice(0, 3).map((m) => m.nume).join(", ")}
                               {meserii.length > 3 ? ` +${meserii.length - 3}` : ""}
                             </>
                           ) : (

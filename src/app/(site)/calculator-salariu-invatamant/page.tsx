@@ -278,7 +278,7 @@ export default function Page() {
           { href: "/salarii/educator", label: "Salariu educator", descriere: "Salarii și trepte pentru învățământul preșcolar." },
           { href: "/calculator-salariu-sanatate", label: "Calculator salariu sănătate", descriere: "Aceeași lege, Anexa II." },
           { href: "/", label: "Calculator salariu net", descriere: "Brut în net pentru orice salariu." },
-          { href: "/fluturas-salariu", label: "Generator de fluturaș", descriere: "Vezi defalcarea, ca pe hârtie." },
+          { href: "/noutati/legea-salarizarii-2026", label: "Legea salarizării 2026 a picat", descriere: "De ce grila în vigoare rămâne Legea 153/2017." },
         ]}
       />
     </>

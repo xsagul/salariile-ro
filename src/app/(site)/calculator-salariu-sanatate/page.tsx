@@ -230,7 +230,7 @@ export default function Page() {
           { href: "/salarii/asistent-medical", label: "Salariu asistent medical", descriere: "Grila și reperele pentru asistenți." },
           { href: "/salarii/medic", label: "Salariu medic", descriere: "De la rezident la medic primar." },
           { href: "/salarii/medic-rezident", label: "Salariu medic rezident", descriere: "Treptele pe ani de rezidențiat." },
-          { href: "/calculator-salariu-invatamant", label: "Calculator salariu învățământ", descriere: "Aceeași lege, Anexa I." },
+          { href: "/noutati/legea-salarizarii-2026", label: "Legea salarizării 2026 a picat", descriere: "De ce grila în vigoare rămâne Legea 153/2017." },
           { href: "/salarii/domeniu/medical", label: "Salarii în sănătate", descriere: "Cifrele INS pentru sectorul sanitar." },
           { href: "/", label: "Calculator salariu net", descriere: "Brut în net pentru orice salariu." },
         ]}

@@ -564,6 +564,10 @@ export default async function MeseriePage({ params }: Props) {
                     an={AN_JUDETE_SCURT}
                     numeActivitate={etichetaSectorJudete ?? sector.denumire}
                   />
+                  <p className="text-sm text-stone-600">
+                    Cum stă fiecare județ pe toate activitățile:{" "}
+                    <Link href="/salarii/judete" className="underline underline-offset-2">salariile pe județe</Link>.
+                  </p>
                 </details>
               )}
 

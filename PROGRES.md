@@ -3100,3 +3100,45 @@ Cloudflare: scor 96, 377 de probleme. Triate pe producție și în cod:
 
 Audit relansat după deploy: scor **97**, **0 erori** (erau 2), 362 de probleme,
 toate din categoria de mai sus.
+
+## Autoritatea internă redistribuită după cerere — 15 septembrie 2026
+
+Cerere a proprietarului: homepage-ul și paginile cu câștig real de vizite trebuie
+împinse, iar autoritatea internă nu se mai risipește. Aprobat explicit și pentru
+clusterul de meserii: „da, dacă vom câștiga vizite".
+
+**Backlinkurile reale (Search Console + verificarea `rel` pe fiecare pagină
+sursă).** 136 de linkuri de pe 12 site-uri, dar cele care transmit autoritate sunt
+puține: `/salariu-minim` are **șase domenii dofollow** (factual.ro, dinpolitica.ro,
+taxnews.ro, hackingwork.ro, fastfulfill.ro, timeoff.guru), homepage-ul patru
+(contributors.ro, taxnews.ro, calculatorulinflatiei.ro, dev.to), `/metodologie`
+unul (taxnews.ro), `/compara` unul (legalmarketing.ro). Reddit (94), GitHub (17),
+Wikipedia și romaniapozitiva.ro sunt nofollow. Căutarea
+`"salariile.ro" -site:salariile.ro` a găsit mențiuni pe care Search Console nu le
+raportează încă (contributors.ro, legalmarketing.ro, hackingwork.ro,
+calculatorulinflatiei.ro/salariu), plus unele fără link (brainsource.network,
+bugetul.ro, legalmarketing.ro/studiu-..., facetotibanii.ro pe categorie).
+
+**Modelul.** PageRank pe cele 324 de pagini din `out/`, cu intrarea externă
+ponderată după domeniile dofollow de mai sus. Scriptul a rămas în scratchpad, nu
+în repo: e o măsurătoare de moment, iar Google nu publică formula.
+
+**Ce se risipea:** meniul și subsolul dădeau aceeași parte (~2,5%) la 26 de
+pagini, inclusiv la `/cookies`, `/termeni`, `/widget`, `/compara` (0–6 clicuri în
+28 de zile). Tabelele din paginile de meserie aveau 42 de linkuri spre județe,
+iar cele de județ 89 spre meserii — ~10.000 de linkuri care țineau autoritatea
+în clusterul cu 3,4% din clicuri.
+
+**Ce s-a schimbat:** meniul și subsolul păstrează doar paginile cu cerere plus
+despre, contact și confidențialitate; tabelele de județe și activități au text,
+nu linkuri; `/salariu-minim` leagă din text calculul pentru 4.325 lei și
+homepage-ul cu ancora „calculatorul de salariu net"; calculatoarele de
+învățământ și sănătate leagă articolul despre legea salarizării; pagina engleză
+e legată doar de pe homepage.
+
+**Efect în model (înainte → după):** homepage 5,95% → 6,99% (+17%); paginile cu
+cerere din meniu (zile lucrătoare, învățământ, salariu mediu, minim construcții,
+PFA, fluturaș) +41% fiecare; calculul la 4.325 lei 0,21% → 0,62%; articolul
+despre legea salarizării 0,08% → 0,42%; `/cookies` −93%, `/widget` −75%,
+`/compara` −66%. De verificat în GSC din ~29 septembrie, pe pozițiile paginilor
+de mai sus; paginile de județ pot pierde crawl, iar asta e costul acceptat.

@@ -254,16 +254,12 @@ export function TabelJudete({
                       className="absolute inset-y-1 left-0 rounded-r bg-stone-900/[0.06]"
                       style={{ width: `${Math.max(4, (rand.brut / max) * 100)}%` }}
                     />
-                    {/* Judetul trimite la pagina lui: acolo se vede cum sta el pe
-                      TOATE activitatile, nu doar pe cea din tabelul asta. */}
-                    <span className="relative">
-                      <Link
-                        href={`/salarii/judet/${rand.slug}`}
-                        className="underline underline-offset-2 hover:text-stone-600"
-                      >
-                        {rand.judet}
-                      </Link>
-                    </span>
+                    {/* Fără link pe fiecare județ, decis pe 15 septembrie 2026. Tabelul
+                      apărea pe 146 de pagini de meserie cu 42 de linkuri fiecare, iar
+                      autoritatea acestor pagini se ducea în paginile de județ (sub 0,5%
+                      din clicuri), nu spre calculatoare. Pagina care le adună pe toate
+                      e legată o singură dată, sub tabel. */}
+                    <span className="relative">{rand.judet}</span>
                   </th>
                   <td className="border-b border-stone-100 px-3 py-2 text-right text-stone-700">
                     {lei(rand.brut)} lei
