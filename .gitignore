@@ -98,6 +98,10 @@ gsc-key.json
 # Analiza de backlinkuri a competitiei — date private, repo-ul e public
 /research/backlinks-competitie-*/
 
+# Exporturile SE Ranking (cuvintele și pozițiile competitorilor): date dintr-un
+# tool plătit, repo-ul e public. Concluziile publicabile stau în PROGRES.md.
+/research/seranking-*/
+
 # Extragerile din Search Console: interogari, clickuri, impresii si pozitii,
 # defalcate pe pagina si pe cuvant. Aceeasi ratiune ca la /seo-snapshots/ si
 # /export-umami/ — repo-ul e public, iar astea sunt datele de trafic ale
