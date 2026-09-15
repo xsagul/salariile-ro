@@ -3142,3 +3142,28 @@ PFA, fluturaș) +41% fiecare; calculul la 4.325 lei 0,21% → 0,62%; articolul
 despre legea salarizării 0,08% → 0,42%; `/cookies` −93%, `/widget` −75%,
 `/compara` −66%. De verificat în GSC din ~29 septembrie, pe pozițiile paginilor
 de mai sus; paginile de județ pot pierde crawl, iar asta e costul acceptat.
+
+## Calculatorul urcă pe primul ecran — publicat 15 septembrie 2026, 13:33 ora României (10:33 UTC)
+
+Decizie a proprietarului, luată în fereastra de măsurare a linkurilor interne,
+după ce i-am arătat compromisul. **La comparația din ~13 octombrie, prima pagină,
+`/calculator/*`, `/calculator-salariu-constructii`, `/fluturas-salariu` și
+`/en/salary-calculator` au două schimbări suprapuse** (linkuri 09:38, aspect
+13:33); paginile fără `CalculatorSalariu` (zile lucrătoare, salariu minim,
+învățământ, salariu mediu, minim construcții, articole) rămân comparabile curat.
+
+Motivul, măsurat cu capturi Chromium pe 8 dimensiuni (3 desktop din StatCounter
+RO + 5 telefoane care fac ~41% din telefoanele din România): câmpul de salariu
+începea la 558 px pe orice ecran, iar pe 360×800 butonul „Calculează" era
+complet sub primul ecran (pe 384×832, tăiat). impozitsalariu.ro: câmp la 308 px.
+
+Ce s-a schimbat în `CalculatorSalariu`: subtitlul de trei rânduri cu HG/OUG și
+data fixă „26 iulie" a devenit o frază (`subtitlu` în `calculator-texte.ts`);
+titlul pe telefon 30 → 26 px; spațiul de deasupra calculatorului 144 → 64 px pe
+desktop și 96 → 44 px pe telefon; linia de separare scoasă. Actele normative și
+data reală rămân în caseta „Surse" de sub calculator.
+
+Verificat live după deploy: câmpul la 382 px pe telefon (438 px pe 360), 398 px
+pe desktop; butonul vizibil pe toate cele 8 dimensiuni. Rămase deschise, la
+alegerea proprietarului: titlul se rupe pe două rânduri la 360 px; titlul
+„Date salariale" din formular ar mai urca instrumentul cu 50–70 px.
