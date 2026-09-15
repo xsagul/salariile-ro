@@ -27,6 +27,7 @@ import {
   TEMEI,
   type RezultatOre,
 } from "@/lib/ore-suplimentare";
+import { deruleazaLaRezultat } from "@/lib/deruleaza-la-rezultat";
 
 const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(Math.round(n));
 const fmt2 = (n: number) =>
@@ -107,6 +108,7 @@ export default function CalculatorOreSuplimentare() {
         cotaSarbatoare: (Number(cotaSarb) || 100) / 100,
       }),
     );
+    deruleazaLaRezultat("rezultat-ore", "calc-ore");
   }
 
   const r = rez;

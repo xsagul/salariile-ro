@@ -22,6 +22,7 @@ import {
   durataLuni,
   type RezultatSomaj,
 } from "@/lib/somaj";
+import { deruleazaLaRezultat } from "@/lib/deruleaza-la-rezultat";
 
 const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(Math.round(n));
 const colHeader = "mb-4 border-b border-stone-200 pb-2 text-lg font-medium text-stone-900";
@@ -61,8 +62,10 @@ export default function CalculatorSomaj() {
   const [rez, setRez] = useState<RezultatSomaj | null>(null);
 
   const reset = () => setRez(null);
-  const calculeaza = () =>
+  const calculeaza = () => {
     setRez(calculeazaSomaj({ aniStagiu, mediaBruta: Number(media) || 0, absolvent }));
+    deruleazaLaRezultat("rezultat-somaj", "calc-somaj");
+  };
 
   const r = rez;
   const fara = !absolvent && durataLuni(aniStagiu) === null;
