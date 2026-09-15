@@ -137,8 +137,7 @@ export default function Page() {
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Calculator indemnizație șomaj" }]} />
         <H1>Calculator indemnizație șomaj 2026</H1>
         <Lead>
-          Alege-ți stagiul de cotizare și media salariului brut. Vezi cât primești pe lună, câte
-          luni și cât rămâne după reținerea CASS — fiecare linie cu articolul din lege.
+          Alege stagiul de cotizare și salariul brut mediu și vezi indemnizația lunară, câte luni o primești și netul.
         </Lead>
       </Hero>
 

@@ -139,8 +139,7 @@ export default function Page() {
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Calculator ore suplimentare" }]} />
         <H1>Calculator ore suplimentare 2026</H1>
         <Lead>
-          Pune-ți salariul de bază și orele lucrate peste program, noaptea sau în sărbători legale.
-          Vezi sporul pe fiecare linie, cu articolul din Codul Muncii, și cât rămâne net.
+          Pune salariul de bază și orele lucrate peste program, noaptea sau de sărbători, și vezi sporul și netul.
         </Lead>
       </Hero>
 

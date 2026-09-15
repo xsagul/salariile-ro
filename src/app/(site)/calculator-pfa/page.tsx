@@ -182,17 +182,17 @@ export default function CalculatorPfaPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <div className="bg-canvas">
-        {/* HERO — pe grila calculatorului (col-span-3), cu linie sub el ca pe homepage */}
-        <section className="border-b border-stone-200 bg-canvas">
-        <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
+        {/* HERO — titlu și o frază, pe grila calculatorului. Ca pe homepage din 15
+            septembrie 2026: primul câmp începea la 432–468 px pe telefon, iar
+            butonul „Calculează" era sub primul ecran. Data a trecut lângă surse. */}
+        <section className="bg-canvas">
+        <div className="mx-auto max-w-6xl px-4 pt-6 sm:px-6 sm:pt-10">
           <div className="md:grid md:grid-cols-5 md:gap-6">
             <div className="md:col-span-3">
-              <h1 className="mb-3 text-3xl font-bold tracking-[-0.02em] text-stone-900 sm:text-4xl">Calculator taxe PFA 2026</h1>
+              <h1 className="mb-2 text-[1.625rem] font-bold leading-tight tracking-[-0.02em] text-stone-900 sm:text-4xl">Calculator taxe PFA 2026</h1>
               <p className="max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600">
-                Cât plătești ca PFA <strong>în sistem real</strong> – CAS, CASS și impozit – și cât îți rămâne. Compară pe loc cu{" "}
-                <strong>SRL micro</strong> și <strong>SRL pe impozit pe profit</strong>, la aceleași cifre.
+                Cât plătești ca PFA în sistem real și cât îți rămâne, comparat cu SRL micro și SRL pe profit.
               </p>
-              <div className="mt-4 text-xs text-stone-600">Actualizat {ACTUALIZAT}</div>
             </div>
           </div>
         </div>
@@ -527,7 +527,7 @@ export default function CalculatorPfaPage() {
                   </ul>
                   <p className="mt-auto pt-6 text-xs text-stone-600">
                     Calculatorul acoperă sistemul real, norma de venit și cazurile uzuale. Pentru situații speciale,
-                    confirmă cu un contabil.
+                    confirmă cu un contabil. Actualizat {ACTUALIZAT}.
                   </p>
                 </div>
               </aside>

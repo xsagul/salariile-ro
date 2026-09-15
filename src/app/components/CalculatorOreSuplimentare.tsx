@@ -114,7 +114,7 @@ export default function CalculatorOreSuplimentare() {
   const reset = () => setRez(null);
 
   return (
-    <div id="calc-ore" className="mx-auto grid max-w-6xl gap-6 px-4 py-8 sm:px-6 sm:py-12 md:grid-cols-5">
+    <div id="calc-ore" className="mx-auto grid max-w-6xl gap-6 px-4 pt-5 pb-8 sm:px-6 sm:pt-6 sm:pb-12 md:grid-cols-5">
       {/* ─── Intrări ─────────────────────────────────────────────────── */}
       <div className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-2">
         <h2 className={colHeader}>Orele tale</h2>

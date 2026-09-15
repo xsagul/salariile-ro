@@ -43,11 +43,21 @@ export function Hero({
    *  paginile de conținut rămâne pe toată lățimea, ca până acum. */
   peGrila?: boolean;
 }) {
+  // Pe paginile-instrument hero-ul e doar titlul și o frază, lipit de instrument:
+  // măsurat pe 15 septembrie 2026, banda cu padding de 40–48 px și linie dedesubt
+  // împingea primul control la 425–509 px. Paginile de conținut rămân neschimbate.
+  if (peGrila) {
+    return (
+      <section className="bg-canvas pt-6 sm:pt-10">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 [&_h1]:text-[1.625rem] [&_h1]:leading-tight sm:[&_h1]:text-4xl [&_nav]:mb-3">
+          <GrilaPagina continut={children} />
+        </div>
+      </section>
+    );
+  }
   return (
     <section className="border-b border-stone-200 bg-canvas py-10 sm:py-12">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        {peGrila ? <GrilaPagina continut={children} /> : children}
-      </div>
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">{children}</div>
     </section>
   );
 }

@@ -119,9 +119,7 @@ export default function Page() {
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Calculator salariu part-time" }]} />
         <H1>Calculator salariu part-time 2026</H1>
         <Lead>
-          Alege câte ore are contractul și vezi netul angajatului, costul firmei și
-          diferența de CAS și CASS pe care angajatorul o suportă separat când brutul
-          e sub baza minimă. Fiecare linie arată cine plătește ce.
+          Alege orele din contract și vezi netul, costul firmei și diferența de CAS și CASS plătită de angajator.
         </Lead>
       </Hero>
 

@@ -217,7 +217,7 @@ export default function CalculatorPartTime() {
 
   return (
     <section className="border-b border-stone-200 bg-canvas" aria-labelledby="calculator-part-time">
-      <div id="calc-part-time" className="mx-auto grid max-w-6xl items-start gap-6 px-4 py-8 sm:px-6 sm:py-12 md:grid-cols-5">
+      <div id="calc-part-time" className="mx-auto grid max-w-6xl items-start gap-6 px-4 pt-5 pb-8 sm:px-6 sm:pt-6 sm:pb-12 md:grid-cols-5">
         <form
           className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-2"
           onSubmit={(event) => {
