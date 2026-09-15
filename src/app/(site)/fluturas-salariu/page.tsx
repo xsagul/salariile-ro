@@ -13,7 +13,7 @@ import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Fluturaș de salariu: generator PDF 2026",
   description:
-    "Generează gratuit un fluturaș de salariu PDF, cu aceleași rânduri ca statul de plată: brut, net, CAS, CASS, impozit, deducere personală și cost angajator, 2026.",
+    "Generează gratuit un fluturaș de salariu PDF, cu rândurile statului de plată: brut, net, CAS, CASS, impozit, deducere personală și cost angajator, 2026.",
   alternates: { canonical: "https://salariile.ro/fluturas-salariu" },
   openGraph: ogPage({
     title: "Fluturaș de salariu: generator PDF 2026",

@@ -111,10 +111,10 @@ function descrierePagina(date: DateMeserie) {
   const a = r.anunturi;
   if (r.kind === "salariile-ro" && r.value) {
     const surse = r.compus?.surse ?? 2;
-    return `${inceput}: reper ${lei(r.value)} lei net, construit din ${surse} surse independente. Vezi anunțurile verificate din spate și cum se compară cu oferta ta.`;
+    return `${inceput}: reper ${lei(r.value)} lei net, din ${surse} surse independente. Vezi anunțurile verificate și cum se compară cu oferta ta.`;
   }
   if (r.kind === "external-advertised" && r.value && a?.n) {
-    return `${inceput}: ${lei(r.value)} lei net, mediana salariilor din ${a.n} anunțuri verificate de noi. Vezi sursele, județele și cum se compară cu oferta ta.`;
+    return `${inceput}: ${lei(r.value)} lei net, mediana din ${a.n} anunțuri verificate. Vezi sursele, județele și cum se compară cu oferta ta.`;
   }
   if (r.kind === "external-reported" && r.value) {
     return `${inceput}: ${lei(r.value)} lei net, medie declarată de angajați. Plus salarii din anunțuri verificate și context din datele INS.`;
@@ -123,7 +123,7 @@ function descrierePagina(date: DateMeserie) {
     return `${inceput}: ${lei(r.value)} lei net din grila legală, la gradația 0. Plus salarii din anunțuri verificate și context din datele INS.`;
   }
   // Fara reper pe meseria exacta nu se pune o cifra care ar parea masurata.
-  return `${inceput} în România: ce arată anunțurile verificate, salariile declarate și datele INS pentru sectorul în care lucrează.`;
+  return `${inceput} în România: anunțuri verificate, salarii declarate și datele INS pentru sectorul în care lucrează.`;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

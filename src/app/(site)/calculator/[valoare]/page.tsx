@@ -112,7 +112,7 @@ function descriereSeo(date: CalculPagina) {
   const taxe = `CAS ${fmt(rez.cas)} lei, CASS ${fmt(rez.cass)} lei și impozit ${fmt(rez.impozit)} lei`;
 
   if (esteCalculIstoricS1) {
-    const perioada = "între 1 ianuarie și 30 iunie 2026";
+    const perioada = "în ianuarie–iunie 2026";
     return isNetDinBrut
       ? `${fmt(rez.net)} lei net rezultau din ${fmt(brutEfectiv)} lei brut ${perioada}: ${taxe}. Cost total angajator: ${fmt(rez.costTotal)} lei.`
       : `${fmt(brutEfectiv)} lei brut corespundeau unui net de ${fmt(cifraNum)} lei ${perioada}: ${taxe}. Cost total angajator: ${fmt(rez.costTotal)} lei.`;

@@ -34,7 +34,7 @@ import { CURS_DATA, EUR_RON } from "@/lib/curs";
 
 const TITLE = "Romanian Salary Calculator 2026: gross to net and employer cost";
 const DESCRIPTION =
-  "Work out net pay from a gross salary in Romania for 2026: pension and health contributions, the 10% flat income tax, the personal deduction and the total employer cost.";
+  "Net pay from a gross salary in Romania for 2026: pension and health contributions, the 10% flat income tax, the personal deduction and total employer cost.";
 const PATH = "/en/salary-calculator";
 
 export const metadata: Metadata = {

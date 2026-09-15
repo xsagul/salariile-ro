@@ -19,12 +19,14 @@
 import { useState } from "react";
 import FeedbackContextual from "@/app/components/FeedbackContextual";
 import { SelectorPastile, type OptiunePastila } from "@/app/components/SelectorPastile";
+// NU din `@/lib/sanatate`: acela importă toate grilele Legii 153/2017, care
+// ajungeau întregi în browser (1,9 MB de JavaScript). Grilele Anexei II vin ca
+// props de la pagină.
 import {
-  calculeazaSanatate,
-  meserieSanatate,
-  MESERII_SANATATE,
+  calculeazaPentruMeserie,
+  type MeserieSanatate,
   type RezultatSanatate,
-} from "@/lib/sanatate";
+} from "@/lib/sanatate-calcul";
 import { GRADATII, INDEMNIZATIE_DOCTORAT_2026, type NivelGradatie } from "@/lib/lege153";
 
 const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(Math.round(n));
@@ -67,7 +69,7 @@ function Toggle({ label, hint, checked, onChange }: {
   );
 }
 
-export default function CalculatorSanatate() {
+export default function CalculatorSanatate({ meserii }: { meserii: MeserieSanatate[] }) {
   // Implicit asistentul medical: e cea mai căutată meserie din sănătate.
   const [slug, setSlug] = useState("asistent-medical");
   const [treapta, setTreapta] = useState<string | null>(null);
@@ -76,12 +78,12 @@ export default function CalculatorSanatate() {
   const [alteDrepturiHrana, setAlteDrepturiHrana] = useState(false);
   const [rez, setRez] = useState<RezultatSanatate | null>(null);
 
-  const meserie = meserieSanatate(slug);
+  const meserie = meserii.find((m) => m.slug === slug);
   const trepte = meserie?.trepte ?? [];
   // Treapta aleasă rămâne validă doar cât timp aparține meseriei curente.
   const treaptaCurenta = trepte.some((t) => t.eticheta === treapta) ? treapta : null;
 
-  const optiuniMeserii: OptiunePastila<string>[] = MESERII_SANATATE.map((m) => ({
+  const optiuniMeserii: OptiunePastila<string>[] = meserii.map((m) => ({
     valoare: m.slug,
     eticheta: m.nume,
     detaliu: `Grilă pentru ${m.domeniu}. ${m.trepte.length} trepte.`,
@@ -100,9 +102,9 @@ export default function CalculatorSanatate() {
   }));
 
   function calculeaza() {
-    if (!treaptaCurenta) return;
+    if (!treaptaCurenta || !meserie) return;
     setRez(
-      calculeazaSanatate({
+      calculeazaPentruMeserie(meserie, {
         slug,
         treapta: treaptaCurenta,
         gradatie,

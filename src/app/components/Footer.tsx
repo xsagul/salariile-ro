@@ -55,6 +55,9 @@ const FOOTER_GROUPS: Array<{ title: string; links: FooterLink[] }> = [
       { href: "/calculator-salariu-sanatate", label: "Calculator salariu sănătate" },
       { href: "/calculator-ore-suplimentare", label: "Calculator ore suplimentare" },
       { href: "/calculator-indemnizatie-somaj", label: "Calculator indemnizație șomaj" },
+      // Singura cale internă spre pagina engleză: auditul SE Ranking din 11
+      // septembrie 2026 a găsit-o fără niciun link intern, descoperită doar din sitemap.
+      { href: "/en/salary-calculator", label: "Salary calculator (English)" },
     ],
   },
   {

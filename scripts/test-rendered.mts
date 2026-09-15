@@ -413,6 +413,7 @@ async function auditRenderedSite() {
   const TITLE_MAX_LENGTH = 60;
   const DESCRIPTION_MIN_LENGTH = 110;
   const DESCRIPTION_MAX_LENGTH = 165;
+  const SITE_DESCRIPTION_MAX_LENGTH = 158;
 
   const strictTitlePaths = new Set([
     "/salariu-minim-constructii-2026",
@@ -438,6 +439,14 @@ async function auditRenderedSite() {
     }
     if (!description) {
       failures.push(`${pathname}: meta description lipseste`);
+    }
+    // Pe tot site-ul, nu doar pe /calculator/: auditul SE Ranking din 11
+    // septembrie 2026 a semnalat descrierile de 159–168 de caractere, iar
+    // Google le taie cam de la aceeași lungime. Șabloanele de meserii generează
+    // lungimi diferite la fiecare reîmprospătare a datelor, deci limita se
+    // verifică pe HTML-ul randat, nu în sursă.
+    if (description.length > SITE_DESCRIPTION_MAX_LENGTH) {
+      failures.push(`${pathname}: descriere de ${description.length} caractere, peste ${SITE_DESCRIPTION_MAX_LENGTH} ("${description}")`);
     }
 
     if (!pathname.startsWith("/calculator/")) continue;

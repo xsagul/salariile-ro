@@ -49,7 +49,7 @@ const NET_IN_BRUT = [3000, 3500, 4000, 4500, 5000, 6000].map((net) => {
 const PENTRU_4000_NET = NET_IN_BRUT.find((rand) => rand.netDorit === 4000)!;
 
 const TITLU = "Calculator salariu net construcții 2026: brut în net";
-const DESC = `În construcții netul se calculează ca în restul economiei: la ${fmt(SALARIU_MINIM_CONSTRUCTII)} lei brut rămân ${fmt(LA_MINIM.netBani)} lei net, la 5.000 lei, ${fmt(LA_5000.netBani)} lei. Calcul brut-net și net-brut, 2026.`;
+const DESC = `În construcții netul se calculează ca în restul economiei: la ${fmt(SALARIU_MINIM_CONSTRUCTII)} lei brut rămân ${fmt(LA_MINIM.netBani)} lei net, la 5.000 lei, ${fmt(LA_5000.netBani)} lei. Calcul brut-net și invers, 2026.`;
 
 export const metadata: Metadata = {
   title: { absolute: TITLU },

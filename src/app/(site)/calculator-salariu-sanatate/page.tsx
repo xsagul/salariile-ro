@@ -150,7 +150,7 @@ export default function Page() {
         </Lead>
       </Hero>
 
-      <CalculatorSanatate />
+      <CalculatorSanatate meserii={MESERII_SANATATE} />
 
       <Section
         companion={
@@ -231,7 +231,7 @@ export default function Page() {
           { href: "/salarii/medic", label: "Salariu medic", descriere: "De la rezident la medic primar." },
           { href: "/salarii/medic-rezident", label: "Salariu medic rezident", descriere: "Treptele pe ani de rezidențiat." },
           { href: "/calculator-salariu-invatamant", label: "Calculator salariu învățământ", descriere: "Aceeași lege, Anexa I." },
-          { href: "/salarii/domeniu/sanatate", label: "Salarii în sănătate", descriere: "Cifrele INS pentru sectorul sanitar." },
+          { href: "/salarii/domeniu/medical", label: "Salarii în sănătate", descriere: "Cifrele INS pentru sectorul sanitar." },
           { href: "/", label: "Calculator salariu net", descriere: "Brut în net pentru orice salariu." },
         ]}
       />

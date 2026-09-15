@@ -10,9 +10,9 @@
 // indemnizatia de hrana. Asta e munca pe care calculatorul generic n-o poate
 // face, si e singurul motiv pentru care o pagina separata se justifica.
 //
-// Un calculator sectorial pentru constructii sau IT NU se justifica: acolo
-// facilitatile fiscale au fost eliminate de la 1 ianuarie 2025, calculul e
-// identic cu cel standard, iar omul isi stie brutul din contract.
+// Un calculator separat pentru constructii exista din alt motiv: aritmetica e cea
+// standard, dar cererea de cautare e mare (vezi `/calculator-salariu-constructii`).
+// Aici pagina se justifica prin calcul, acolo prin intentia de cautare.
 //
 // De unde vin cifrele. NU se citeste direct din `grile-153-2017.json`: acolo
 // randurile cu mai multe coloane sunt neetichetate (un „Manager" are patru
@@ -29,22 +29,17 @@
 //   — sporul de doctorat e inclus, dar pe bifa (art. 14 il conditioneaza).
 // O cifra care le-ar presupune ar fi mai mare si mai falsa.
 
-import { grilaPublica, MESERII_CU_GRILA, type TreaptaPublica } from "@/lib/grile-publice";
+import { grilaPublica, MESERII_CU_GRILA } from "@/lib/grile-publice";
 import { getMeserie } from "@/lib/meserii";
-import { calculeaza, calculStandard, type Rezultat } from "@/lib/fiscal";
 import {
-  aplicaGradatia,
-  gradatiaDupaVechime,
-  CONDITII_DOCTORAT,
-  INDEMNIZATIE_DOCTORAT_2026,
-  INDEMNIZATIE_HRANA,
-  PLAFON_HRANA_NET,
-  TEMEI_DOCTORAT,
-  TEMEI_GRADATIE,
-  TEMEI_HRANA,
-  type LinieCalcul,
-  type NivelGradatie,
-} from "@/lib/lege153";
+  calculeazaPentruMeserie,
+  type IntrareSanatate,
+  type MeserieSanatate,
+  type RezultatSanatate,
+} from "@/lib/sanatate-calcul";
+import { CONDITII_DOCTORAT, TEMEI_GRADATIE } from "@/lib/lege153";
+
+export type { IntrareSanatate, MeserieSanatate, RezultatSanatate };
 
 export const ANEXA = "Anexa nr. II";
 
@@ -55,14 +50,10 @@ export { CONDITII_DOCTORAT };
 // Lista se DERIVA din `grile-publice.ts`, nu se scrie de mana. Daca acolo se
 // adauga o functie din Anexa II, apare si aici fara alta interventie; daca se
 // scoate, dispare. O a doua lista scrisa manual ar ramane in urma tacut.
-
-export type MeserieSanatate = {
-  slug: string;
-  nume: string;
-  /** Cum ii spune legii angajatorul — „spitale și institute clinice". */
-  domeniu: string;
-  trepte: TreaptaPublica[];
-};
+//
+// Modulul importa toate grilele, deci NU se importa din componente client:
+// pagina ii da componentei `MESERII_SANATATE` ca props, iar calculul vine din
+// `sanatate-calcul.ts`.
 
 function construieste(): MeserieSanatate[] {
   const out: MeserieSanatate[] = [];
@@ -91,101 +82,10 @@ export const TOTAL_TREPTE = MESERII_SANATATE.reduce((n, m) => n + m.trepte.lengt
 
 // ─── Calculul ────────────────────────────────────────────────────────────────
 
-export type IntrareSanatate = {
-  slug: string;
-  /** Eticheta treptei, exact cum o da `grilaPublica`. */
-  treapta: string;
-  /**
-   * Gradatia de vechime in munca. Se da fie direct treapta (interfata alege
-   * banda, pentru ca pe ea o cheie legea), fie anii impliniti si se deduce.
-   */
-  gradatie?: NivelGradatie;
-  /** Vechimea in MUNCA, in ani impliniti — folosita cand `gradatie` lipseste. */
-  aniMunca?: number;
-  /** Titlu stiintific de doctor, in domeniul postului (art. 14). */
-  doctorat?: boolean;
-  /**
-   * Primeste alte drepturi de hrana potrivit legislatiei specifice — caz in
-   * care indemnizatia de 347 lei NU se acorda (art. 18 alin. (1), teza a doua).
-   * In sanatate exceptia asta e reala, de aceea e comutator si nu presupunere.
-   */
-  alteDrepturiHrana?: boolean;
-  persoanePretretinere?: number;
-};
-
-export type RezultatSanatate = {
-  meserie: MeserieSanatate;
-  treapta: TreaptaPublica;
-  /** Suma din grila, la gradatia 0. */
-  salariuGrila: number;
-  gradatie: NivelGradatie;
-  /** Dupa aplicarea gradatiei. */
-  salariuDeBaza: number;
-  /** Ce se adauga peste salariul de baza, fiecare cu temeiul lui. */
-  linii: LinieCalcul[];
-  brutTotal: number;
-  fiscal: Rezultat;
-  /** Adevarat cand indemnizatia de hrana a fost refuzata de plafon, nu de bifa. */
-  hranaPesteplafon: boolean;
-};
-
 export function calculeazaSanatate(input: IntrareSanatate): RezultatSanatate | null {
   const meserie = meserieSanatate(input.slug);
   if (!meserie) return null;
-  const treapta = meserie.trepte.find((t) => t.eticheta === input.treapta);
-  if (!treapta) return null;
-
-  const salariuGrila = treapta.brut;
-  const gradatie = input.gradatie ?? gradatiaDupaVechime(input.aniMunca ?? 0);
-  const salariuDeBaza = aplicaGradatia(salariuGrila, gradatie);
-
-  const linii: LinieCalcul[] = [];
-  let total = salariuDeBaza;
-
-  if (input.doctorat) {
-    linii.push({
-      eticheta: "Indemnizație titlu științific de doctor",
-      suma: INDEMNIZATIE_DOCTORAT_2026,
-      temei: TEMEI_DOCTORAT,
-    });
-    total += INDEMNIZATIE_DOCTORAT_2026;
-  }
-
-  // Plafonul se raporteaza la netul salariului de baza, nu la netul final —
-  // altfel indemnizatia s-ar compara cu un net din care face ea insasi parte.
-  // Vezi nota din `lege153.ts`: pentru invatamant asa spune legea expres, iar
-  // pentru celelalte anexe e citirea noastra, declarata ca atare.
-  const netBaza = calculStandard(salariuDeBaza)?.net ?? null;
-  const pesteplafon = netBaza !== null && netBaza > PLAFON_HRANA_NET;
-  if (!input.alteDrepturiHrana && netBaza !== null && !pesteplafon) {
-    linii.push({ eticheta: "Indemnizație de hrană", suma: INDEMNIZATIE_HRANA, temei: TEMEI_HRANA });
-    total += INDEMNIZATIE_HRANA;
-  }
-
-  const fiscal = calculeaza({
-    brut: String(total),
-    salariuDeBaza: String(salariuDeBaza),
-    tichete: "",
-    functieDeBAza: true,
-    persoanePretretinere: input.persoanePretretinere ?? 0,
-    varstaSub26: false,
-    copiiScolarizati: 0,
-    scutitImpozit: false,
-    normaContract: "intreaga",
-  });
-  if (!fiscal) return null;
-
-  return {
-    meserie,
-    treapta,
-    salariuGrila,
-    gradatie,
-    salariuDeBaza,
-    linii,
-    brutTotal: total,
-    fiscal,
-    hranaPesteplafon: pesteplafon && !input.alteDrepturiHrana,
-  };
+  return calculeazaPentruMeserie(meserie, input);
 }
 
 export const TEMEI_GRADATIE_PUBLIC = TEMEI_GRADATIE;
