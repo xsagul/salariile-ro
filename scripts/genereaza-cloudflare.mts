@@ -34,7 +34,10 @@ const SECURITATE = [
   "X-Content-Type-Options: nosniff",
   "Referrer-Policy: strict-origin-when-cross-origin",
   "Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()",
-  "Strict-Transport-Security: max-age=63072000; includeSubDomains; preload",
+  // HSTS e deținut de setarea zonei (SSL/TLS → Edge Certificates → HSTS, pornită pe
+  // 15 septembrie 2026: 12 luni, subdomenii, preload), care îl înlocuiește pe acesta
+  // și îl pune și pe redirecturile www. Valoarea de aici e aceeași, ca rezervă.
+  "Strict-Transport-Security: max-age=31536000; includeSubDomains; preload",
 ];
 
 // Asseturile n-au avut niciodată CSP sau Link: nu sunt documente, iar pe Vercel
