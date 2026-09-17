@@ -22,6 +22,7 @@
 // de ele, pune-le în layout-ul grupului care le cere, nu în rădăcină.
 
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import type { Metadata } from "next";
 
 import "./globals.css";
@@ -92,6 +93,26 @@ export default function RootLayout({
   return (
     <html lang="ro" className={inter.variable}>
       <body className="min-h-screen overflow-x-hidden bg-canvas font-sans text-stone-700 antialiased">
+        {/* Doar inițializează starea Consent Mode; nu încarcă și nu trimite
+            nimic singur. Stă în root fiindcă Next execută beforeInteractive
+            garantat numai aici. Tagurile Google externe rămân exclusiv în
+            layout-ul public, deci widgeturile nu sunt măsurate. */}
+        <Script id="google-consent-default" strategy="beforeInteractive">
+          {`window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+window.gtag=gtag;
+window.googlefc=window.googlefc||{};
+window.googlefc.callbackQueue=window.googlefc.callbackQueue||[];
+gtag('consent','default',{
+  'ad_storage':'denied',
+  'ad_user_data':'denied',
+  'ad_personalization':'denied',
+  'analytics_storage':'denied',
+  'wait_for_update':500
+});
+gtag('set','ads_data_redaction',true);
+try{localStorage.removeItem('salariile-consimtamant-analytics')}catch(e){}`}
+        </Script>
         {children}
       </body>
     </html>

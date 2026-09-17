@@ -42,29 +42,6 @@ export default function SiteLayout({
         <main className="flex-1">{children}</main>
         <Footer />
       </div>
-      {/* Starea implicită este refuzată înainte de încărcarea tagurilor. CMP-ul
-          Google publicat în AdSense actualizează automat Consent Mode după
-          alegerea vizitatorului. În modul avansat pot exista pinguri fără
-          cookies înainte de acord, dar stocarea rămâne blocată. */}
-      <script
-        id="google-consent-default"
-        dangerouslySetInnerHTML={{
-          __html: `window.dataLayer=window.dataLayer||[];
-function gtag(){dataLayer.push(arguments);}
-window.gtag=gtag;
-window.googlefc=window.googlefc||{};
-window.googlefc.callbackQueue=window.googlefc.callbackQueue||[];
-gtag('consent','default',{
-  'ad_storage':'denied',
-  'ad_user_data':'denied',
-  'ad_personalization':'denied',
-  'analytics_storage':'denied',
-  'wait_for_update':500
-});
-gtag('set','ads_data_redaction',true);
-try{localStorage.removeItem('salariile-consimtamant-analytics')}catch(e){}`,
-        }}
-      />
       {/* Scriptul AdSense publică CMP-ul Google. Auto ads este OFF în cont și
           nu există unități publicitare în pagini, deci nu apar reclame. */}
       <Script

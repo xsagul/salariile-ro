@@ -41,8 +41,8 @@ assert.doesNotMatch(embedLayout, /adsbygoogle|googlesyndication|googletagmanager
 assert.match(siteLayout, /ca-pub-5894290637571256[\s\S]*google-adsense-account/, "Verificarea AdSense trebuie să rămână în meta tag");
 assert.match(siteLayout, /pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle\.js/, "Scriptul AdSense trebuie să publice CMP-ul Google");
 assert.doesNotMatch(siteLayout + rootLayout, /<ins[^>]+adsbygoogle|adsbygoogle\.push/, "Codul nu trebuie să conțină unități de reclamă");
-assert.match(siteLayout, /google-consent-default[\s\S]*analytics_storage':'denied'/, "Consent Mode trebuie inițializat pe denied înaintea tagurilor");
-assert.match(siteLayout, /googlefc\.callbackQueue=window\.googlefc\.callbackQueue\|\|\[\]/, "Coada API a CMP-ului trebuie inițializată înaintea scriptului AdSense");
+assert.match(rootLayout, /google-consent-default[\s\S]*strategy="beforeInteractive"[\s\S]*analytics_storage':'denied'/, "Consent Mode trebuie inițializat pe denied înaintea tagurilor");
+assert.match(rootLayout, /googlefc\.callbackQueue=window\.googlefc\.callbackQueue\|\|\[\]/, "Coada API a CMP-ului trebuie inițializată înaintea scriptului AdSense");
 assert.match(siteLayout, /googletagmanager\.com\/gtag\/js/, "Layout-ul public trebuie să încarce Google tag");
 assert.match(siteLayout, /G-2L1J64H5H9/, "Layout-ul public trebuie să folosească fluxul GA4 corect");
 assert.match(siteLayout, /allow_google_signals':false[\s\S]*allow_ad_personalization_signals':false/, "Semnalele și personalizarea publicitară GA4 trebuie să rămână oprite");
