@@ -22,6 +22,12 @@ export const CLOUDFLARE_INSIGHTS = "https://static.cloudflareinsights.com";
 export const GOOGLE_TAG_MANAGER = "https://www.googletagmanager.com";
 const GOOGLE_ANALYTICS_CONNECT =
   "https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com";
+const ADSENSE_SCRIPT =
+  "https://pagead2.googlesyndication.com https://partner.googleadservices.com https://tpc.googlesyndication.com https://www.googletagservices.com https://fundingchoicesmessages.google.com";
+const ADSENSE_FRAME =
+  "https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com https://fundingchoicesmessages.google.com";
+const ADSENSE_CONNECT =
+  "https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://csi.gstatic.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://fundingchoicesmessages.google.com";
 
 /**
  * Construiește politica CSP.
@@ -35,12 +41,14 @@ export function construiesteCsp({
   development = false,
   imgSrc = "'self' blob: data:",
   connectSrc,
+  frameSrc,
 }: {
   scriptSrc: string;
   frameAncestors: string;
   development?: boolean;
   imgSrc?: string;
   connectSrc?: string;
+  frameSrc?: string;
 }): string {
   return `
     default-src 'self';
@@ -48,6 +56,7 @@ export function construiesteCsp({
     style-src 'self' 'unsafe-inline';
     img-src ${imgSrc};
     ${connectSrc ? `connect-src ${connectSrc};` : ""}
+    ${frameSrc ? `frame-src ${frameSrc};` : ""}
     font-src 'self' data:;
     object-src 'none';
     base-uri 'self';
@@ -73,10 +82,11 @@ export function construiesteCsp({
  * `default-src 'self'` îl acoperă fără connect-src separat.
  */
 export const CSP_PAGINI_PUBLICE = construiesteCsp({
-  scriptSrc: `'self' 'unsafe-inline' ${CLOUDFLARE_INSIGHTS} ${GOOGLE_TAG_MANAGER}`,
+  scriptSrc: `'self' 'unsafe-inline' ${CLOUDFLARE_INSIGHTS} ${GOOGLE_TAG_MANAGER} ${ADSENSE_SCRIPT}`,
   frameAncestors: "'none'",
-  imgSrc: `'self' blob: data: https://*.google-analytics.com https://*.googletagmanager.com`,
-  connectSrc: `'self' ${GOOGLE_ANALYTICS_CONNECT}`,
+  imgSrc: `'self' blob: data: https:`,
+  connectSrc: `'self' ${GOOGLE_ANALYTICS_CONNECT} ${ADSENSE_CONNECT}`,
+  frameSrc: `'self' ${ADSENSE_FRAME}`,
   development: process.env.NODE_ENV === "development",
 });
 

@@ -94,6 +94,6 @@ Datele publice, rezultatele calculelor și explicațiile scurte pot fi citate cu
 
 ## Tehnic
 
-- Site Next.js generat static (HTML complet la build), găzduit pe Cloudflare, cu calcul fiscal interactiv în browser; Cloudflare Web Analytics este cookieless, iar GA4 se încarcă numai după consimțământ explicit
+- Site Next.js generat static (HTML complet la build), găzduit pe Cloudflare, cu calcul fiscal interactiv în browser; Cloudflare Web Analytics este cookieless, iar GA4 respectă alegerea din CMP-ul Google prin Consent Mode; reclamele sunt oprite
 - Conținut și calcule revizuite la 9 septembrie 2026; regimul salarial curent este valabil din 1 iulie 2026
 - Operator: Știuriuc Sorin-Marian (persoană fizică, proiect personal)

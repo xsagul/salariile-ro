@@ -7,8 +7,8 @@
 //   - 13 aug 2026: integrat Google AdSense, pagina rescrisă;
 //   - 14 aug 2026: AdSense scos, pagina rescrisă din nou.
 //
-// Din 17 septembrie 2026: GA4 rulează numai după acord explicit. AdSense este
-// conectat exclusiv prin meta tag + ads.txt, fără script și fără reclame.
+// Din 17 septembrie 2026: CMP-ul Google din AdSense gestionează acordul pentru
+// GA4 prin Consent Mode. Scriptul AdSense este prezent, dar reclamele sunt OFF.
 
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
@@ -18,18 +18,18 @@ import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow } from "@/app/components/u
 export const metadata: Metadata = {
   title: "Politica de cookies și analiză",
   description:
-    "Cloudflare Analytics este cookieless, iar GA4 pornește doar după acord. AdSense este conectat fără reclame sau script publicitar.",
+    "Cloudflare Analytics este cookieless, iar GA4 respectă alegerea din CMP-ul Google. AdSense nu afișează reclame.",
   alternates: { canonical: "https://salariile.ro/cookies" },
   openGraph: ogPage({
     title: "Politica de cookies și analiză",
     description:
-      "GA4 se încarcă numai după acord explicit, iar AdSense nu afișează reclame.",
+      "GA4 folosește Consent Mode, iar AdSense nu afișează reclame.",
     path: "/cookies",
   }),
   twitter: twPage({
     title: "Politica de cookies și analiză",
     description:
-      "GA4 se încarcă numai după acord explicit, iar AdSense nu afișează reclame.",
+      "GA4 folosește Consent Mode, iar AdSense nu afișează reclame.",
   }),
 };
 
@@ -47,7 +47,7 @@ const jsonLd = {
       "@type": "WebPage",
       name: "Politica cookies salariile.ro",
       description:
-        "Cloudflare Analytics este cookieless, Google Analytics 4 este opțional, iar AdSense este conectat fără reclame și fără script publicitar.",
+        "Cloudflare Analytics este cookieless, Google Analytics 4 respectă consimțământul, iar AdSense este conectat fără reclame.",
       url: "https://salariile.ro/cookies",
       inLanguage: "ro-RO",
       dateModified: PAGE_LAST_MODIFIED["/cookies"].toISOString().slice(0, 10),
@@ -69,9 +69,9 @@ export default function CookiesPage() {
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Politica cookies" }]} />
         <H1>Politica cookies</H1>
         <Lead>
-          Cloudflare Web Analytics măsoară traficul fără cookies. Google Analytics 4 este opțional și nu se încarcă înainte să alegi „Da”. AdSense este conectat pentru verificarea proprietății, dar reclamele și scriptul publicitar sunt oprite.
+          Cloudflare Web Analytics măsoară traficul fără cookies. Google Analytics 4 respectă alegerea din bannerul Google, iar stocarea este blocată înainte de acord. AdSense încarcă bannerul, dar reclamele sunt oprite.
         </Lead>
-        <Eyebrow>GA4 DOAR CU ACORD · ZERO RECLAME · ÎN VIGOARE: 17 SEPTEMBRIE 2026</Eyebrow>
+        <Eyebrow>CONSENT MODE · ZERO RECLAME · ÎN VIGOARE: 17 SEPTEMBRIE 2026</Eyebrow>
       </Hero>
 
       <div>
@@ -88,7 +88,7 @@ export default function CookiesPage() {
         <Section>
             <h2>Ce folosește salariile.ro</h2>
             <p>
-              Pe scurt: <strong>niciun cookie înainte să îți dai acordul și niciun cookie de publicitate</strong>.
+              Pe scurt: <strong>niciun cookie Google de analiză sau publicitate înainte să îți dai acordul și nicio reclamă afișată</strong>.
             </p>
             <p>
               Decizia de design este deliberată: calculatorul de salariu nu are nevoie să te urmărească pentru a funcționa. Toate calculele se execută local în browser, nu există conturi de utilizator, nu există formulare care să necesite păstrarea stării între pagini.
@@ -101,10 +101,10 @@ export default function CookiesPage() {
                 <strong>Cloudflare Web Analytics</strong>: rulează cookieless, fără stocare locală sau amprentare. Datele sunt agregate: vizite, pagini populare și timpi de încărcare.
               </li>
               <li>
-                <strong>Google Analytics 4</strong>: se încarcă numai după ce alegi „Da”. Poate seta cookies <code>_ga</code> și <code>_ga_2L1J64H5H9</code> pentru a distinge vizitele. Măsoară paginile accesate, sursa vizitei, tipul dispozitivului, regiunea aproximativă și interacțiuni standard precum scrollul, clickurile externe și descărcările. Semnalele și personalizarea publicitară sunt dezactivate explicit.
+                <strong>Google Analytics 4</strong>: tagul se încarcă în modul avansat Consent Mode cu stocarea refuzată implicit. Înainte de acord poate trimite pinguri fără cookies, care nu conțin un identificator persistent; după acord poate seta cookies <code>_ga</code> și <code>_ga_2L1J64H5H9</code>. Măsoară paginile accesate, sursa vizitei, tipul dispozitivului, regiunea aproximativă și interacțiuni standard precum scrollul, clickurile externe și descărcările. Google Signals și personalizarea publicitară sunt dezactivate.
               </li>
               <li>
-                <strong>Google AdSense</strong>: site-ul este verificat printr-un meta tag neexecutabil și prin <code>ads.txt</code>. Nu există script AdSense, unități de anunț sau Auto ads active, deci integrarea nu afișează reclame și nu trimite date despre vizitatori către rețeaua publicitară.
+                <strong>Google AdSense</strong>: scriptul său publică platforma de consimțământ Google (CMP). Auto ads este oprit și nu există unități de anunț, deci nu se afișează reclame. Scriptul poate face cereri tehnice către Google pentru banner, verificare și protecție antifraudă.
               </li>
               <li>
                 <strong>Rețele sociale</strong>: niciunul. Nu sunt integrate widget-uri Facebook, X sau alte rețele.
@@ -115,10 +115,10 @@ export default function CookiesPage() {
         <Section>
             <h2>Cum funcționează consimțământul</h2>
             <p>
-              La prima vizită, bannerul are două opțiuni la fel de accesibile: „Da” și „Nu”. Până nu alegi „Da”, codul Google Analytics nu este descărcat și nu pleacă niciun ping către Google Analytics.
+              Pentru vizitatorii din Spațiul Economic European, Regatul Unit și Elveția, mesajul standard Google publicat din AdSense cere acordul și oferă administrarea opțiunilor. Până la alegere, Consent Mode păstrează stocarea pentru analiză și publicitate pe <code>denied</code>.
             </p>
             <p>
-              Alegerea se păstrează șase luni în <code>localStorage</code>, strict pentru a nu te întreba la fiecare pagină. O poți schimba oricând din „Setări cookies” în subsol. La retragerea acordului, colectarea este oprită și cookies <code>_ga</code> sunt șterse. Site-ul funcționează integral indiferent de alegere.
+              Google păstrează alegerea în înregistrarea CMP, inclusiv prin cookie-ul <code>FCCDCF</code>. O poți schimba oricând din „Setări cookies” în subsol; acțiunea redeschide mesajul Google și permite retragerea acordului. Site-ul funcționează integral indiferent de alegere.
             </p>
         </Section>
 
@@ -145,10 +145,10 @@ export default function CookiesPage() {
               </li>
             </ul>
             <p>
-              Am considerat că nu merită: vizitatorii ar fi plătit cu date personale și cu un site mai lent, pentru un venit estimat sub 100 de lei pe lună. Contul AdSense rămâne aprobat și e posibil să reluăm testul în viitor — dacă o facem, această pagină va fi actualizată <em>înainte</em>, nu după.
+              Am considerat că reclamele nu merită: vizitatorii ar fi plătit cu date personale și cu un site mai lent, pentru un venit estimat sub 100 de lei pe lună. Contul AdSense rămâne aprobat, dar în configurația actuală scriptul este folosit pentru CMP, cu Auto ads oprit și fără unități de anunț.
             </p>
             <p>
-              Conectarea actuală prin meta tag și <code>ads.txt</code> nu repune acel script și nu repetă testul: este doar o dovadă de proprietate citită de crawlerul AdSense.
+              Integrarea actuală repune costul tehnic al scriptului și al CMP-ului, dar nu componenta vizibilă de publicitate. Meta tag-ul și <code>ads.txt</code> rămân și ele prezente pentru verificarea contului.
             </p>
         </Section>
 
@@ -162,7 +162,7 @@ export default function CookiesPage() {
               <li>Apasă F12 pentru a deschide instrumentele de dezvoltator</li>
               <li>Mergi la tab-ul „Application” (Chrome/Brave) sau „Storage” (Firefox)</li>
               <li>Verifică secțiunile „Cookies” și „Local storage” pentru salariile.ro</li>
-              <li>În tab-ul „Network”, înainte de acord, nu trebuie să existe cereri către Google Analytics sau AdSense</li>
+              <li>În tab-ul „Network”, înainte de acord pot exista cereri Consent Mode și AdSense, dar în „Application” nu trebuie să apară cookies <code>_ga</code></li>
             </ul>
             <p>
               Dacă găsești ceva ce nu este descris aici, <Link href="/contact">scrie-ne</Link> — pagina se corectează, nu se apără.
@@ -186,7 +186,7 @@ export default function CookiesPage() {
             <p>
               Pentru detalii despre toate datele prelucrate (inclusiv logs de server, statistici anonime și temeiul juridic), vezi <Link href="/politica-confidentialitate">politica de confidențialitate</Link>.
             </p>
-            <p className="source-note">Ultima actualizare: 17 septembrie 2026 — GA4 reintrodus numai după acord; AdSense conectat fără script și fără reclame.</p>
+            <p className="source-note">Ultima actualizare: 17 septembrie 2026 — bannerul standard Google gestionează GA4 prin Consent Mode; AdSense este fără reclame.</p>
         </Section>
       </div>
     </>

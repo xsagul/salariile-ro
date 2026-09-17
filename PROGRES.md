@@ -3213,3 +3213,27 @@ reclamelor sunt dezactivate. Widgeturile iframe nu primesc GA4.
 Au fost actualizate înainte de publicare politica de cookies, politica de
 confidențialitate, termenii, `CLAUDE.md` și `llms.txt`; contractele automate
 interzic reapariția scriptului AdSense și verifică izolarea widgeturilor.
+
+## Corecție: CMP-ul standard AdSense în locul bannerului propriu — 17 septembrie 2026
+
+Proprietarul a clarificat imediat după primul deploy că prin „AdSense și GA4”
+se referea la bannerul standard Google folosit în testul din august, nu la un
+banner propriu pentru Analytics. Implementarea de mai sus rămâne în jurnal ca
+istoric, dar a fost înlocuită în aceeași sesiune.
+
+Mesajul european `Consimtamant UE - salariile.ro`, deja publicat în AdSense, a
+fost păstrat. În setările contului au fost activate interpretarea alegerii prin
+Consent Mode pentru scopurile de publicitate și pentru `analytics_storage`.
+Site-ul încarcă din nou `adsbygoogle.js` ca să publice CMP-ul Google; **Auto ads
+rămâne OFF** și codul nu conține nicio unitate de anunț, deci nu apar reclame.
+
+GA4 pornește cu `analytics_storage`, `ad_storage`, `ad_user_data` și
+`ad_personalization` pe `denied`; CMP-ul le actualizează după alegere. Este
+modul avansat Consent Mode: înainte de acord pot exista pinguri fără cookies,
+dar nu identificatori persistenți Google. Google Signals și personalizarea
+publicitară rămân oprite. Linkul „Setări cookies” folosește API-ul oficial
+`googlefc.showRevocationMessage()` pentru a redeschide mesajul Google.
+
+Rutele `/widget/frame*` rămân fără AdSense și fără GA4. CSP-ul public permite
+din nou domeniile necesare CMP-ului, iar textele legale descriu explicit
+cererile tehnice și diferența dintre scriptul AdSense și afișarea reclamelor.

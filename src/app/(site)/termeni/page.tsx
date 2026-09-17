@@ -141,7 +141,7 @@ export default function TermeniPage() {
         <Section>
             <h2>7. Date personale</h2>
             <p>
-              Prelucrarea datelor personale este descrisă separat în <Link href="/politica-confidentialitate">politica de confidențialitate</Link>. Pe scurt: site-ul nu afișează reclame; Google Analytics se încarcă numai după acord, iar refuzul nu limitează nicio funcție.
+              Prelucrarea datelor personale este descrisă separat în <Link href="/politica-confidentialitate">politica de confidențialitate</Link>. Pe scurt: site-ul nu afișează reclame; Google Analytics respectă alegerea din bannerul Google prin Consent Mode, iar refuzul nu limitează nicio funcție.
             </p>
         </Section>
 

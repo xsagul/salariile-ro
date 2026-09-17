@@ -2,14 +2,14 @@ import assert from "node:assert/strict";
 import { readdir, readFile } from "node:fs/promises";
 
 const read = (path: string) => readFile(new URL(`../${path}`, import.meta.url), "utf8");
-const [salary, pfa, header, embedLayout, siteLayout, rootLayout, analyticsConsent, csp, home, widgetPage, widgetDemo, widgetCalculator] = await Promise.all([
+const [salary, pfa, header, embedLayout, siteLayout, rootLayout, googlePreferences, csp, home, widgetPage, widgetDemo, widgetCalculator] = await Promise.all([
   read("src/app/components/CalculatorSalariu.tsx"),
   read("src/app/components/CalculatorPFA.tsx"),
   read("src/app/components/Header.tsx"),
   read("src/app/(embed)/layout.tsx"),
   read("src/app/(site)/layout.tsx"),
   read("src/app/layout.tsx"),
-  read("src/app/components/ConsimtamantAnalytics.tsx"),
+  read("src/app/components/ButonPreferinteGoogle.tsx"),
   read("src/lib/csp.ts"),
   read("src/app/(site)/page.tsx"),
   read("src/app/(site)/widget/page.tsx"),
@@ -37,13 +37,16 @@ assert.doesNotMatch(header, /id="desktop-[a-z-]+-menu"/, "Meniurile nu pot avea 
 assert.match(header, /groupsOpen\[item\.label\]/, "Accordeonul mobil trebuie sa fie per grup");
 assert.match(header, /event\.key === "Escape"/);
 assert.doesNotMatch(embedLayout, /stats\.js|umami/i, "Layout-ul embed nu trebuie să activeze analytics");
-assert.doesNotMatch(embedLayout, /ConsimtamantAnalytics|googletagmanager|google-analytics/i, "Layout-ul embed nu trebuie să activeze GA4");
-assert.match(siteLayout, /ConsimtamantAnalytics/, "Layout-ul public trebuie să monteze controlul de consimțământ GA4");
-assert.match(siteLayout, /google-adsense-account[\s\S]*ca-pub-5894290637571256/, "Verificarea AdSense trebuie să rămână în meta tag");
-assert.doesNotMatch(siteLayout + rootLayout, /pagead2\.googlesyndication|adsbygoogle\.js/, "Scriptul AdSense ar activa rețeaua publicitară");
-assert.match(analyticsConsent, /stare === "granted"[\s\S]*googletagmanager\.com/, "GA4 trebuie încărcat numai după acord");
-assert.match(analyticsConsent, /ad_storage':'denied'[\s\S]*ad_personalization':'denied'/, "Semnalele publicitare GA4 trebuie să rămână oprite");
-assert.match(csp, /GOOGLE_TAG_MANAGER[\s\S]*GOOGLE_ANALYTICS_CONNECT/, "CSP-ul public trebuie să permită strict endpointurile GA4");
+assert.doesNotMatch(embedLayout, /adsbygoogle|googlesyndication|googletagmanager|google-analytics/i, "Layout-ul embed nu trebuie să activeze AdSense sau GA4");
+assert.match(siteLayout, /ca-pub-5894290637571256[\s\S]*google-adsense-account/, "Verificarea AdSense trebuie să rămână în meta tag");
+assert.match(siteLayout, /pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle\.js/, "Scriptul AdSense trebuie să publice CMP-ul Google");
+assert.doesNotMatch(siteLayout + rootLayout, /<ins[^>]+adsbygoogle|adsbygoogle\.push/, "Codul nu trebuie să conțină unități de reclamă");
+assert.match(siteLayout, /google-consent-default[\s\S]*analytics_storage':'denied'/, "Consent Mode trebuie inițializat pe denied înaintea tagurilor");
+assert.match(siteLayout, /googletagmanager\.com\/gtag\/js/, "Layout-ul public trebuie să încarce Google tag");
+assert.match(siteLayout, /G-2L1J64H5H9/, "Layout-ul public trebuie să folosească fluxul GA4 corect");
+assert.match(siteLayout, /allow_google_signals':false[\s\S]*allow_ad_personalization_signals':false/, "Semnalele și personalizarea publicitară GA4 trebuie să rămână oprite");
+assert.match(googlePreferences, /CONSENT_API_READY[\s\S]*showRevocationMessage/, "Setările cookies trebuie să redeschidă mesajul Google");
+assert.match(csp, /ADSENSE_SCRIPT[\s\S]*ADSENSE_FRAME[\s\S]*ADSENSE_CONNECT/, "CSP-ul public trebuie să permită CMP-ul AdSense");
 assert.equal((await read("public/ads.txt")).trim(), "google.com, pub-5894290637571256, DIRECT, f08c47fec0942fa0", "ads.txt trebuie să autorizeze numai contul AdSense al site-ului");
 assert.match(home, /Calculator salariu net 2026 - Brut în net și invers/);
 
