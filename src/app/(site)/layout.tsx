@@ -46,10 +46,14 @@ export default function SiteLayout({
           Google publicat în AdSense actualizează automat Consent Mode după
           alegerea vizitatorului. În modul avansat pot exista pinguri fără
           cookies înainte de acord, dar stocarea rămâne blocată. */}
-      <Script id="google-consent-default" strategy="beforeInteractive">
-        {`window.dataLayer=window.dataLayer||[];
+      <script
+        id="google-consent-default"
+        dangerouslySetInnerHTML={{
+          __html: `window.dataLayer=window.dataLayer||[];
 function gtag(){dataLayer.push(arguments);}
 window.gtag=gtag;
+window.googlefc=window.googlefc||{};
+window.googlefc.callbackQueue=window.googlefc.callbackQueue||[];
 gtag('consent','default',{
   'ad_storage':'denied',
   'ad_user_data':'denied',
@@ -58,8 +62,9 @@ gtag('consent','default',{
   'wait_for_update':500
 });
 gtag('set','ads_data_redaction',true);
-try{localStorage.removeItem('salariile-consimtamant-analytics')}catch(e){}`}
-      </Script>
+try{localStorage.removeItem('salariile-consimtamant-analytics')}catch(e){}`,
+        }}
+      />
       {/* Scriptul AdSense publică CMP-ul Google. Auto ads este OFF în cont și
           nu există unități publicitare în pagini, deci nu apar reclame. */}
       <Script
