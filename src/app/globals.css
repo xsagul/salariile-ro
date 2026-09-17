@@ -81,4 +81,11 @@
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
+
+  /* Google CMP: asigură că dialogul de consimțământ folosește Open Sans cu fallback sans-serif, nu serif */
+  .fc-consent-root,
+  .fc-consent-root * {
+    font-family: 'Open Sans', var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  }
 }
+

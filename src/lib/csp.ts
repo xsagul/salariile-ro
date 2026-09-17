@@ -28,6 +28,8 @@ const ADSENSE_FRAME =
   "https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com https://fundingchoicesmessages.google.com";
 const ADSENSE_CONNECT =
   "https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://csi.gstatic.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://fundingchoicesmessages.google.com";
+const GOOGLE_FONTS_STYLE = "https://fonts.googleapis.com";
+const GOOGLE_FONTS_ASSET = "https://fonts.gstatic.com";
 
 /**
  * Construiește politica CSP.
@@ -42,6 +44,8 @@ export function construiesteCsp({
   imgSrc = "'self' blob: data:",
   connectSrc,
   frameSrc,
+  styleSrc = "'self' 'unsafe-inline'",
+  fontSrc = "'self' data:",
 }: {
   scriptSrc: string;
   frameAncestors: string;
@@ -49,15 +53,17 @@ export function construiesteCsp({
   imgSrc?: string;
   connectSrc?: string;
   frameSrc?: string;
+  styleSrc?: string;
+  fontSrc?: string;
 }): string {
   return `
     default-src 'self';
     script-src ${scriptSrc}${development ? " 'unsafe-eval'" : ""};
-    style-src 'self' 'unsafe-inline';
+    style-src ${styleSrc};
     img-src ${imgSrc};
     ${connectSrc ? `connect-src ${connectSrc};` : ""}
     ${frameSrc ? `frame-src ${frameSrc};` : ""}
-    font-src 'self' data:;
+    font-src ${fontSrc};
     object-src 'none';
     base-uri 'self';
     form-action 'self';
@@ -84,9 +90,11 @@ export function construiesteCsp({
 export const CSP_PAGINI_PUBLICE = construiesteCsp({
   scriptSrc: `'self' 'unsafe-inline' ${CLOUDFLARE_INSIGHTS} ${GOOGLE_TAG_MANAGER} ${ADSENSE_SCRIPT}`,
   frameAncestors: "'none'",
+  styleSrc: `'self' 'unsafe-inline' ${GOOGLE_FONTS_STYLE}`,
   imgSrc: `'self' blob: data: https:`,
   connectSrc: `'self' ${GOOGLE_ANALYTICS_CONNECT} ${ADSENSE_CONNECT}`,
   frameSrc: `'self' ${ADSENSE_FRAME}`,
+  fontSrc: `'self' data: ${GOOGLE_FONTS_ASSET}`,
   development: process.env.NODE_ENV === "development",
 });
 
