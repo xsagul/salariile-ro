@@ -15,8 +15,18 @@
 // pe rute.
 
 
+import type { Metadata } from "next";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import ConsimtamantAnalytics from "@/app/components/ConsimtamantAnalytics";
+
+// Verificare AdSense fără script publicitar. Meta tag-ul nu execută cod, nu
+// trimite date despre vizitatori și nu poate afișa reclame.
+export const metadata: Metadata = {
+  other: {
+    "google-adsense-account": "ca-pub-5894290637571256",
+  },
+};
 
 export default function SiteLayout({
   children,
@@ -30,10 +40,12 @@ export default function SiteLayout({
         <main className="flex-1">{children}</main>
         <Footer />
       </div>
+      <ConsimtamantAnalytics />
       {/* Analytics: Cloudflare Web Analytics, injectat automat la edge
           (cookieless, fără localStorage, fără amprentare). Nu se încarcă nimic
           din cod; CSP-ul permite beacon-ul în src/lib/csp.ts. Declarat în
-          /cookies și /politica-confidentialitate. Vercel Analytics și Speed
+          /cookies și /politica-confidentialitate. GA4 este separat și se
+          încarcă numai după consimțământ explicit. Vercel Analytics și Speed
           Insights au dispărut la mutarea pe Cloudflare (septembrie 2026); Core
           Web Vitals din teren rămân disponibile din CrUX (`npm run psi`). */}
     </>

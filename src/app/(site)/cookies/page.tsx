@@ -7,11 +7,8 @@
 //   - 13 aug 2026: integrat Google AdSense, pagina rescrisă;
 //   - 14 aug 2026: AdSense scos, pagina rescrisă din nou.
 //
-// Secțiunea „Ce am măsurat” se păstrează deliberat, deși reclamele nu mai sunt
-// active: e o măsurătoare reală pe utilizatorii noștri, e utilă publicului și
-// documentează de ce am renunțat. Dacă AdSense se repune, se remăsoară înainte
-// de a modifica textul — măsurătoarea inițială, făcută pe localhost cu CMP-ul
-// nepublicat, a dat alt rezultat decât producția.
+// Din 17 septembrie 2026: GA4 rulează numai după acord explicit. AdSense este
+// conectat exclusiv prin meta tag + ads.txt, fără script și fără reclame.
 
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
@@ -19,20 +16,20 @@ import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow } from "@/app/components/ui";
 
 export const metadata: Metadata = {
-  title: "Politica de cookies, fără tracking",
+  title: "Politica de cookies și analiză",
   description:
-    "Salariile.ro este cookieless. Nu folosim cookies pentru analiză, publicitate sau tracking. Inclusiv ce am măsurat în cele 24 de ore în care am testat reclame.",
+    "Cloudflare Analytics este cookieless, iar GA4 pornește doar după acord. AdSense este conectat fără reclame sau script publicitar.",
   alternates: { canonical: "https://salariile.ro/cookies" },
   openGraph: ogPage({
-    title: "Politica de cookies, fără tracking",
+    title: "Politica de cookies și analiză",
     description:
-      "Salariile.ro este cookieless: fără cookies de analiză, publicitate sau tracking.",
+      "GA4 se încarcă numai după acord explicit, iar AdSense nu afișează reclame.",
     path: "/cookies",
   }),
   twitter: twPage({
-    title: "Politica de cookies, fără tracking",
+    title: "Politica de cookies și analiză",
     description:
-      "Salariile.ro este cookieless: fără cookies de analiză, publicitate sau tracking.",
+      "GA4 se încarcă numai după acord explicit, iar AdSense nu afișează reclame.",
   }),
 };
 
@@ -50,7 +47,7 @@ const jsonLd = {
       "@type": "WebPage",
       name: "Politica cookies salariile.ro",
       description:
-        "Salariile.ro este cookieless prin design, fără cookies de tracking, analiză comportamentală sau publicitate.",
+        "Cloudflare Analytics este cookieless, Google Analytics 4 este opțional, iar AdSense este conectat fără reclame și fără script publicitar.",
       url: "https://salariile.ro/cookies",
       inLanguage: "ro-RO",
       dateModified: PAGE_LAST_MODIFIED["/cookies"].toISOString().slice(0, 10),
@@ -72,9 +69,9 @@ export default function CookiesPage() {
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Politica cookies" }]} />
         <H1>Politica cookies</H1>
         <Lead>
-          Salariile.ro funcționează fără cookies pentru tracking, publicitate sau analiză comportamentală. Pagina explică ce există efectiv, de ce nu folosim consent banner și ce am aflat în cele 24 de ore în care am testat reclame.
+          Cloudflare Web Analytics măsoară traficul fără cookies. Google Analytics 4 este opțional și nu se încarcă înainte să alegi „Da”. AdSense este conectat pentru verificarea proprietății, dar reclamele și scriptul publicitar sunt oprite.
         </Lead>
-        <Eyebrow>ZERO COOKIES DE TRACKING · ZERO PUBLICITATE · ÎN VIGOARE: 14 AUGUST 2026</Eyebrow>
+        <Eyebrow>GA4 DOAR CU ACORD · ZERO RECLAME · ÎN VIGOARE: 17 SEPTEMBRIE 2026</Eyebrow>
       </Hero>
 
       <div>
@@ -91,7 +88,7 @@ export default function CookiesPage() {
         <Section>
             <h2>Ce folosește salariile.ro</h2>
             <p>
-              Pe scurt: <strong>niciun cookie pentru tracking sau publicitate</strong>.
+              Pe scurt: <strong>niciun cookie înainte să îți dai acordul și niciun cookie de publicitate</strong>.
             </p>
             <p>
               Decizia de design este deliberată: calculatorul de salariu nu are nevoie să te urmărească pentru a funcționa. Toate calculele se execută local în browser, nu există conturi de utilizator, nu există formulare care să necesite păstrarea stării între pagini.
@@ -101,10 +98,13 @@ export default function CookiesPage() {
                 <strong>Cookies strict necesare</strong>: site-ul nu setează cookies funcționale de tipul „preferințe limbă” sau „mod întunecat”, pentru că aceste funcționalități nu există în versiunea curentă.
               </li>
               <li>
-                <strong>Analiză</strong>: folosim Cloudflare Web Analytics, <strong>cookieless</strong>. Nu setează cookies, nu folosește stocare locală și nu identifică vizitatori individuali. Datele sunt agregate: număr de vizite, pagini populare și timpii de încărcare a paginilor.
+                <strong>Cloudflare Web Analytics</strong>: rulează cookieless, fără stocare locală sau amprentare. Datele sunt agregate: vizite, pagini populare și timpi de încărcare.
               </li>
               <li>
-                <strong>Publicitate</strong>: niciuna. Site-ul nu afișează reclame, nu folosește remarketing și nu integrează platforme publicitare.
+                <strong>Google Analytics 4</strong>: se încarcă numai după ce alegi „Da”. Poate seta cookies <code>_ga</code> și <code>_ga_2L1J64H5H9</code> pentru a distinge vizitele. Măsoară paginile accesate, sursa vizitei, tipul dispozitivului, regiunea aproximativă și interacțiuni standard precum scrollul, clickurile externe și descărcările. Semnalele și personalizarea publicitară sunt dezactivate explicit.
+              </li>
+              <li>
+                <strong>Google AdSense</strong>: site-ul este verificat printr-un meta tag neexecutabil și prin <code>ads.txt</code>. Nu există script AdSense, unități de anunț sau Auto ads active, deci integrarea nu afișează reclame și nu trimite date despre vizitatori către rețeaua publicitară.
               </li>
               <li>
                 <strong>Rețele sociale</strong>: niciunul. Nu sunt integrate widget-uri Facebook, X sau alte rețele.
@@ -113,12 +113,12 @@ export default function CookiesPage() {
         </Section>
 
         <Section>
-            <h2>De ce nu există consent banner</h2>
+            <h2>Cum funcționează consimțământul</h2>
             <p>
-              Cele mai multe site-uri afișează un banner „Acceptă cookies” pentru că setează cookies care necesită consimțământ: Google Analytics, Facebook Pixel, programe de afiliere, rețele publicitare.
+              La prima vizită, bannerul are două opțiuni la fel de accesibile: „Da” și „Nu”. Până nu alegi „Da”, codul Google Analytics nu este descărcat și nu pleacă niciun ping către Google Analytics.
             </p>
             <p>
-              Salariile.ro nu setează astfel de cookies, deci nu are obligația legală să ceară consimțământ. Nu e o portiță: pur și simplu nu există date pentru care să se ceară acordul.
+              Alegerea se păstrează șase luni în <code>localStorage</code>, strict pentru a nu te întreba la fiecare pagină. O poți schimba oricând din „Setări cookies” în subsol. La retragerea acordului, colectarea este oprită și cookies <code>_ga</code> sunt șterse. Site-ul funcționează integral indiferent de alegere.
             </p>
         </Section>
 
@@ -147,6 +147,9 @@ export default function CookiesPage() {
             <p>
               Am considerat că nu merită: vizitatorii ar fi plătit cu date personale și cu un site mai lent, pentru un venit estimat sub 100 de lei pe lună. Contul AdSense rămâne aprobat și e posibil să reluăm testul în viitor — dacă o facem, această pagină va fi actualizată <em>înainte</em>, nu după.
             </p>
+            <p>
+              Conectarea actuală prin meta tag și <code>ads.txt</code> nu repune acel script și nu repetă testul: este doar o dovadă de proprietate citită de crawlerul AdSense.
+            </p>
         </Section>
 
         <Section>
@@ -159,7 +162,7 @@ export default function CookiesPage() {
               <li>Apasă F12 pentru a deschide instrumentele de dezvoltator</li>
               <li>Mergi la tab-ul „Application” (Chrome/Brave) sau „Storage” (Firefox)</li>
               <li>Verifică secțiunile „Cookies” și „Local storage” pentru salariile.ro</li>
-              <li>În tab-ul „Network” vezi toate cererile făcute de pagină</li>
+              <li>În tab-ul „Network”, înainte de acord, nu trebuie să existe cereri către Google Analytics sau AdSense</li>
             </ul>
             <p>
               Dacă găsești ceva ce nu este descris aici, <Link href="/contact">scrie-ne</Link> — pagina se corectează, nu se apără.
@@ -169,7 +172,7 @@ export default function CookiesPage() {
         <Section>
             <h2>Cum dezactivezi cookies (pentru orice site)</h2>
             <p>
-              Chiar dacă pe salariile.ro nu sunt relevante, orice browser modern permite blocarea cookies global sau per site:
+              Pe lângă opțiunea „Nu” din banner, orice browser modern permite blocarea cookies global sau per site:
             </p>
             <ul>
               <li><strong>Chrome / Brave / Edge:</strong> Setări → Confidențialitate și securitate → Cookies și alte date ale site-ului</li>
@@ -183,7 +186,7 @@ export default function CookiesPage() {
             <p>
               Pentru detalii despre toate datele prelucrate (inclusiv logs de server, statistici anonime și temeiul juridic), vezi <Link href="/politica-confidentialitate">politica de confidențialitate</Link>.
             </p>
-            <p className="source-note">Ultima actualizare: 14 august 2026. Între 13 și 14 august 2026 site-ul a afișat un banner de consimțământ și a avut integrat Google AdSense; ambele au fost eliminate.</p>
+            <p className="source-note">Ultima actualizare: 17 septembrie 2026 — GA4 reintrodus numai după acord; AdSense conectat fără script și fără reclame.</p>
         </Section>
       </div>
     </>

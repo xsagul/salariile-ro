@@ -2,11 +2,15 @@ import assert from "node:assert/strict";
 import { readdir, readFile } from "node:fs/promises";
 
 const read = (path: string) => readFile(new URL(`../${path}`, import.meta.url), "utf8");
-const [salary, pfa, header, embedLayout, home, widgetPage, widgetDemo, widgetCalculator] = await Promise.all([
+const [salary, pfa, header, embedLayout, siteLayout, rootLayout, analyticsConsent, csp, home, widgetPage, widgetDemo, widgetCalculator] = await Promise.all([
   read("src/app/components/CalculatorSalariu.tsx"),
   read("src/app/components/CalculatorPFA.tsx"),
   read("src/app/components/Header.tsx"),
   read("src/app/(embed)/layout.tsx"),
+  read("src/app/(site)/layout.tsx"),
+  read("src/app/layout.tsx"),
+  read("src/app/components/ConsimtamantAnalytics.tsx"),
+  read("src/lib/csp.ts"),
   read("src/app/(site)/page.tsx"),
   read("src/app/(site)/widget/page.tsx"),
   read("src/app/components/WidgetDemo.tsx"),
@@ -33,6 +37,14 @@ assert.doesNotMatch(header, /id="desktop-[a-z-]+-menu"/, "Meniurile nu pot avea 
 assert.match(header, /groupsOpen\[item\.label\]/, "Accordeonul mobil trebuie sa fie per grup");
 assert.match(header, /event\.key === "Escape"/);
 assert.doesNotMatch(embedLayout, /stats\.js|umami/i, "Layout-ul embed nu trebuie să activeze analytics");
+assert.doesNotMatch(embedLayout, /ConsimtamantAnalytics|googletagmanager|google-analytics/i, "Layout-ul embed nu trebuie să activeze GA4");
+assert.match(siteLayout, /ConsimtamantAnalytics/, "Layout-ul public trebuie să monteze controlul de consimțământ GA4");
+assert.match(siteLayout, /google-adsense-account[\s\S]*ca-pub-5894290637571256/, "Verificarea AdSense trebuie să rămână în meta tag");
+assert.doesNotMatch(siteLayout + rootLayout, /pagead2\.googlesyndication|adsbygoogle\.js/, "Scriptul AdSense ar activa rețeaua publicitară");
+assert.match(analyticsConsent, /stare === "granted"[\s\S]*googletagmanager\.com/, "GA4 trebuie încărcat numai după acord");
+assert.match(analyticsConsent, /ad_storage':'denied'[\s\S]*ad_personalization':'denied'/, "Semnalele publicitare GA4 trebuie să rămână oprite");
+assert.match(csp, /GOOGLE_TAG_MANAGER[\s\S]*GOOGLE_ANALYTICS_CONNECT/, "CSP-ul public trebuie să permită strict endpointurile GA4");
+assert.equal((await read("public/ads.txt")).trim(), "google.com, pub-5894290637571256, DIRECT, f08c47fec0942fa0", "ads.txt trebuie să autorizeze numai contul AdSense al site-ului");
 assert.match(home, /Calculator salariu net 2026 - Brut în net și invers/);
 
 // Widgeturile sunt acum cod HTML copiat explicit de publisher, fără vechiul
@@ -82,4 +94,4 @@ assert.ok(
   "Wrapperul Link trebuie să oprească pre-încărcarea implicit",
 );
 
-console.log("✓ Contractele UI, analytics cookieless și CTR sunt valide");
+console.log("✓ Contractele UI, analytics cu consimțământ și CTR sunt valide");

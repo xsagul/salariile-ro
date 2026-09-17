@@ -1,9 +1,11 @@
 // src/app/components/Footer.tsx
-// Footer global. Server Component pur (zero JS la client).
+// Footer global. Rămâne Server Component; doar butonul de preferințe analytics
+// este o insulă client minimală.
 // Afișează doar linkuri către pagini IMPLEMENTATE.
 // Adaugă o pagină în IMPLEMENTED_PAGES când e gata și apare automat.
 
 import Link from "@/app/components/Link";
+import ButonPreferinteAnalytics from "@/app/components/ButonPreferinteAnalytics";
 
 // Set centralizat: aici adăugăm rutele pe măsură ce le construim
 const IMPLEMENTED_PAGES = new Set<string>([
@@ -145,6 +147,7 @@ export default function Footer() {
             © {new Date().getFullYear()} Salariile.ro – Actualizat conform
             legislației fiscale în vigoare
           </p>
+          <ButonPreferinteAnalytics />
           {/* Profiluri publice ale autorului – semnal E-E-A-T vizibil pentru
               Quality Raters. rel="me" = atribut microformat oficial pentru
               identitatea autorului. URL-urile nu sunt afișate niciodată

@@ -73,7 +73,7 @@ Datele publice, rezultatele calculelor și explicațiile scurte pot fi citate cu
 
 - [Termeni și condiții](https://salariile.ro/termeni)
 - [Politica de confidențialitate (GDPR)](https://salariile.ro/politica-confidentialitate)
-- [Politica cookies (cookieless prin design)](https://salariile.ro/cookies)
+- [Politica cookies și analiză](https://salariile.ro/cookies)
 
 ## Date factuale 2026 — context fiscal
 
@@ -94,6 +94,6 @@ Datele publice, rezultatele calculelor și explicațiile scurte pot fi citate cu
 
 ## Tehnic
 
-- Site Next.js generat static (HTML complet la build), găzduit pe Cloudflare, cu calcul fiscal interactiv în browser; Cloudflare Web Analytics este cookieless și agregat
+- Site Next.js generat static (HTML complet la build), găzduit pe Cloudflare, cu calcul fiscal interactiv în browser; Cloudflare Web Analytics este cookieless, iar GA4 se încarcă numai după consimțământ explicit
 - Conținut și calcule revizuite la 9 septembrie 2026; regimul salarial curent este valabil din 1 iulie 2026
 - Operator: Știuriuc Sorin-Marian (persoană fizică, proiect personal)

@@ -3188,3 +3188,28 @@ marginea de sus, pe telefon 393 și desktop 1536. Helper comun:
 
 Pentru comparația din octombrie: aceste șase pagini au, ca homepage-ul, o schimbare
 de aspect suprapusă peste linkurile interne (09:38).
+
+## GA4 cu acord explicit și AdSense fără reclame — 17 septembrie 2026
+
+Cerere explicită a proprietarului: AdSense și GA4 se adaugă pe site, fără
+activarea reclamelor. Verificat în conturi înainte de schimbare: proprietatea
+GA4 existentă este `G-2L1J64H5H9`, fluxul web este pentru `https://salariile.ro`,
+măsurarea îmbunătățită este activă, iar retenția pentru utilizatori și evenimente
+este 14 luni. În AdSense, site-ul era deja `Ready`, Auto ads era `OFF`, iar
+`ads.txt` apărea `Not found`.
+
+**AdSense:** conectare numai prin meta tag-ul oficial de verificare și
+`/ads.txt`. Nu există `adsbygoogle.js`, unități de anunț sau Auto ads. Prin
+urmare, integrarea nu afișează reclame, nu încarcă CMP-ul Google și nu repetă
+costul de performanță măsurat în testul din 13–14 august.
+
+**GA4:** scriptul nu se descarcă înainte de „Da”; nu folosim Consent Mode cu
+pinguri cookieless înainte de alegere. „Da” și „Nu” sunt pe primul strat, la un
+singur clic. Ambele alegeri se țin șase luni în `localStorage`, pot fi schimbate
+din „Setări cookies”, iar retragerea oprește colectarea și șterge cookies `_ga`.
+Stocarea și personalizarea publicitară, Google Signals și personalizarea
+reclamelor sunt dezactivate. Widgeturile iframe nu primesc GA4.
+
+Au fost actualizate înainte de publicare politica de cookies, politica de
+confidențialitate, termenii, `CLAUDE.md` și `llms.txt`; contractele automate
+interzic reapariția scriptului AdSense și verifică izolarea widgeturilor.

@@ -44,7 +44,7 @@ const jsonLd = {
       "@type": "WebPage",
       name: "Politica de confidențialitate salariile.ro",
       description:
-        "Politica GDPR a salariile.ro: date colectate (logs server, analytics anonime Cloudflare), bază legală interes legitim, drepturile vizitatorilor, autoritate ANSPDCP.",
+        "Politica GDPR a salariile.ro: logs Cloudflare, analytics cookieless și Google Analytics 4 numai cu consimțământ, baze legale și drepturile vizitatorilor.",
       url: "https://salariile.ro/politica-confidentialitate",
       inLanguage: "ro-RO",
       dateModified: PAGE_LAST_MODIFIED["/politica-confidentialitate"].toISOString().slice(0, 10),
@@ -68,7 +68,7 @@ export default function PoliticaConfidentialitatePage() {
         <Lead>
           Salariile.ro respectă Regulamentul UE 2016/679 privind protecția datelor cu caracter personal (GDPR) și Legea 190/2018. Această politică explică ce date prelucrăm, în ce scop și ce drepturi ai ca vizitator.
         </Lead>
-        <Eyebrow>ÎN VIGOARE: 14 AUGUST 2026 · ÎNTREȚINUT INDEPENDENT · ZERO ANUNȚURI</Eyebrow>
+        <Eyebrow>ÎN VIGOARE: 17 SEPTEMBRIE 2026 · GA4 DOAR CU ACORD · ZERO ANUNȚURI</Eyebrow>
       </Hero>
 
       <div>
@@ -95,10 +95,13 @@ export default function PoliticaConfidentialitatePage() {
               <li>
                 <strong>Statistici de vizitare anonime</strong>: prin Cloudflare Web Analytics se contorizează numărul de vizite, paginile cele mai accesate, țara de origine (la nivel general) și timpii de încărcare a paginilor. Nu se folosesc cookies sau stocare locală, vizitatorii nu sunt amprentați, iar datele sunt agregate și nu se transferă către terți.
               </li>
+              <li>
+                <strong>Google Analytics 4, numai cu consimțământ</strong>: dacă alegi „Da” în banner, GA4 înregistrează paginile vizitate, sursa vizitei, tipul dispozitivului, regiunea aproximativă și interacțiuni standard. Folosește identificatorul <code>G-2L1J64H5H9</code> și cookies <code>_ga</code>. Semnalele publicitare, personalizarea reclamelor și stocarea publicitară sunt dezactivate. Dacă alegi „Nu”, scriptul nu se descarcă.
+              </li>
             </ul>
             <h3>Publicitate: niciuna</h3>
             <p>
-              Site-ul nu afișează reclame și nu transmite date către rețele publicitare. Între 13 și 14 august 2026 a existat o integrare Google AdSense, cu banner de consimțământ; a fost eliminată complet. Ce s-a colectat în acel interval și de ce am renunțat sunt descrise pe pagina <Link href="/cookies">cookies</Link>.
+              Site-ul nu afișează reclame și nu încarcă scriptul Google AdSense. Contul AdSense este conectat numai printr-un meta tag neexecutabil și prin fișierul public <code>ads.txt</code>, pentru verificarea proprietății. Auto ads și unitățile de anunț sunt oprite. Testul cu script publicitar din 13–14 august 2026 este documentat pe pagina <Link href="/cookies">cookies</Link>.
             </p>
             <p>
               Dacă publicitatea va fi reintrodusă, această pagină și pagina de cookies vor fi actualizate <strong>înainte</strong> ca scriptul să ajungă în producție, iar prelucrarea se va face exclusiv pe bază de consimțământ.
@@ -107,7 +110,7 @@ export default function PoliticaConfidentialitatePage() {
             <ul>
               <li>Nu există formulare de înregistrare, conturi de utilizator sau newsletter.</li>
               <li>Sumele brut/net pe care le introduci în calculator se procesează exclusiv în browser-ul tău și nu sunt transmise sau stocate pe server.</li>
-              <li>Nu folosim Google Analytics, Facebook Pixel, programe de afiliere sau alte instrumente de tracking comportamental.</li>
+              <li>Nu folosim Facebook Pixel, remarketing, programe de afiliere sau profilare publicitară. GA4 rulează numai după acord.</li>
               <li>Nu vindem și nu transferăm date către terți în scopuri comerciale.</li>
             </ul>
         </Section>
@@ -118,7 +121,7 @@ export default function PoliticaConfidentialitatePage() {
               Datele colectate automat (logs de server, statistici anonime) se prelucrează în temeiul <strong>interesului legitim</strong> al operatorului (Art. 6 alin. 1 lit. f din GDPR), adică asigurarea funcționării și securității site-ului. Interesul legitim este proporțional cu impactul minim asupra vizitatorilor, datele fiind agregate sau de scurtă durată.
             </p>
             <p>
-              Nu prelucrăm date pe bază de consimțământ, pentru că nu există prelucrări care să îl necesite: nu afișăm reclame și nu folosim tracking comportamental. Dacă asta se schimbă, temeiul va fi consimțământul (Art. 6 alin. 1 lit. a din GDPR), iar pagina va fi actualizată înainte.
+              Datele Google Analytics 4 se prelucrează exclusiv în baza <strong>consimțământului</strong> (Art. 6 alin. 1 lit. a GDPR și regulile ePrivacy). Refuzul nu limitează nicio funcție, iar acordul poate fi retras oricând din „Setări cookies”.
             </p>
         </Section>
 
@@ -129,6 +132,9 @@ export default function PoliticaConfidentialitatePage() {
             </p>
             <ul>
               <li>
+                <strong>Google Ireland Limited</strong> (Irlanda, cu posibile transferuri către Google LLC în SUA): furnizor Google Analytics 4, activ exclusiv după acord. Google LLC este certificat în cadrul UE–SUA Data Privacy Framework. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Politica Google</a>.
+              </li>
+              <li>
                 <strong>Cloudflare, Inc.</strong> (SUA): furnizor de hosting și CDN și al statisticilor anonime Web Analytics. Procesează automat, ca procesator, fiecare cerere către site. Cloudflare este certificat conform mecanismului UE-SUA Data Privacy Framework. <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Politica Cloudflare</a>.
               </li>
               <li>
@@ -136,7 +142,7 @@ export default function PoliticaConfidentialitatePage() {
               </li>
             </ul>
             <p>
-              Transferurile către SUA se realizează în temeiul mecanismului UE-SUA Data Privacy Framework, la care Google și Cloudflare sunt certificate. Nu folosim alți subprocesatori. Lista se actualizează aici dacă apar modificări.
+              Transferurile către SUA se realizează în temeiul mecanismului UE-SUA Data Privacy Framework, la care Google și Cloudflare sunt certificate. Lista se actualizează aici dacă apar modificări.
             </p>
         </Section>
 
@@ -145,6 +151,7 @@ export default function PoliticaConfidentialitatePage() {
             <ul>
               <li>Jurnale de acces: site-ul nu păstrează jurnale proprii; Cloudflare le prelucrează ca procesator, pe durata stabilită în politica sa de confidențialitate.</li>
               <li>Statistici Cloudflare Web Analytics: agregate, fără date de identificare a vizitatorilor, păstrate conform politicii Cloudflare.</li>
+              <li>Date Google Analytics 4 asociate cu identificatori și evenimente: 14 luni, conform setării proprietății verificată la 17 septembrie 2026. Alegerea din banner se păstrează șase luni în browser.</li>
               <li>Date Google Search Console: agregate, păstrate conform politicii Google (16 luni pentru istoricul detaliat).</li>
             </ul>
         </Section>
@@ -152,7 +159,7 @@ export default function PoliticaConfidentialitatePage() {
         <Section>
             <h2>6. Cookies</h2>
             <p>
-Salariile.ro nu folosește cookies pentru tracking și nu afișează reclame. Pagina dedicată <Link href="/cookies">cookies</Link> descrie ce există efectiv, ce am măsurat în testul de publicitate din 13–14 august 2026 și cum poți verifica singur, în browser.
+Salariile.ro nu afișează reclame. Cookies de analiză GA4 apar numai după acord, iar pagina dedicată <Link href="/cookies">cookies</Link> explică alegerea, retragerea și verificarea în browser.
             </p>
         </Section>
 
@@ -196,7 +203,7 @@ Salariile.ro nu folosește cookies pentru tracking și nu afișează reclame. Pa
             <p>
               Această politică poate fi actualizată periodic, în special dacă se modifică stack-ul tehnic al site-ului sau apar cerințe legale noi. Versiunea curentă este menționată în antetul paginii cu data intrării în vigoare. Modificările semnificative vor fi anunțate vizibil pe homepage înainte de a intra în vigoare.
             </p>
-            <p className="source-note">Ultima actualizare: 14 august 2026 — eliminarea Google AdSense, reintegrat pentru aproximativ 24 de ore pe 13 august 2026.</p>
+            <p className="source-note">Ultima actualizare: 17 septembrie 2026 — GA4 activ numai după consimțământ; AdSense conectat fără script și fără reclame.</p>
         </Section>
       </div>
     </>

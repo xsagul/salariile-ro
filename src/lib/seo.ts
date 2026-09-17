@@ -89,9 +89,9 @@ export const PAGE_LAST_MODIFIED: Record<string, Date> = {
   "/noutati": new Date("2026-07-26T00:00:00.000Z"),
   "/despre": new Date("2026-09-12T00:00:00.000Z"),
   "/contact": new Date("2026-04-01T00:00:00.000Z"),
-  "/politica-confidentialitate": new Date("2026-09-12T00:00:00.000Z"),
-  "/cookies": new Date("2026-09-12T00:00:00.000Z"),
-  "/termeni": new Date("2026-07-29T00:00:00.000Z"),
+  "/politica-confidentialitate": new Date("2026-09-17T00:00:00.000Z"),
+  "/cookies": new Date("2026-09-17T00:00:00.000Z"),
+  "/termeni": new Date("2026-09-17T00:00:00.000Z"),
 };
 
 import { INS_GENERAT_LA } from "@/lib/ins-date";

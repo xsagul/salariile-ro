@@ -19,6 +19,9 @@ export const LINK_HEADER =
 
 /** Beacon-ul Cloudflare Web Analytics (cookieless), injectat automat la edge. */
 export const CLOUDFLARE_INSIGHTS = "https://static.cloudflareinsights.com";
+export const GOOGLE_TAG_MANAGER = "https://www.googletagmanager.com";
+const GOOGLE_ANALYTICS_CONNECT =
+  "https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com";
 
 /**
  * Construiește politica CSP.
@@ -30,16 +33,21 @@ export function construiesteCsp({
   scriptSrc,
   frameAncestors,
   development = false,
+  imgSrc = "'self' blob: data:",
+  connectSrc,
 }: {
   scriptSrc: string;
   frameAncestors: string;
   development?: boolean;
+  imgSrc?: string;
+  connectSrc?: string;
 }): string {
   return `
     default-src 'self';
     script-src ${scriptSrc}${development ? " 'unsafe-eval'" : ""};
     style-src 'self' 'unsafe-inline';
-    img-src 'self' blob: data:;
+    img-src ${imgSrc};
+    ${connectSrc ? `connect-src ${connectSrc};` : ""}
     font-src 'self' data:;
     object-src 'none';
     base-uri 'self';
@@ -65,8 +73,10 @@ export function construiesteCsp({
  * `default-src 'self'` îl acoperă fără connect-src separat.
  */
 export const CSP_PAGINI_PUBLICE = construiesteCsp({
-  scriptSrc: `'self' 'unsafe-inline' ${CLOUDFLARE_INSIGHTS}`,
+  scriptSrc: `'self' 'unsafe-inline' ${CLOUDFLARE_INSIGHTS} ${GOOGLE_TAG_MANAGER}`,
   frameAncestors: "'none'",
+  imgSrc: `'self' blob: data: https://*.google-analytics.com https://*.googletagmanager.com`,
+  connectSrc: `'self' ${GOOGLE_ANALYTICS_CONNECT}`,
   development: process.env.NODE_ENV === "development",
 });
 
