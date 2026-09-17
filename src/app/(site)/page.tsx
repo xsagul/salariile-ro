@@ -11,10 +11,10 @@ import { calculatorSlugBrut, PAGE_LAST_MODIFIED } from "@/lib/seo";
 // plus head terms „salariu brut" / „brut în net".
 export const metadata: Metadata = {
   title: {
-    absolute: "Calculator salariu net 2026: brut în net și invers",
+    absolute: "Calculator salariu net 2026 - Brut în net și invers",
   },
   description:
-    "Calculează salariul net din brut sau brutul din net, cu regulile fiscale 2026. Vezi CAS, CASS, impozitul, deducerea personală și costul pentru angajator.",
+    "Calculează salariul net din brut sau brutul din net pentru 2026. Vezi taxele plătite de angajat și angajator în România.",
   alternates: { canonical: "https://salariile.ro" },
 };
 
@@ -34,11 +34,13 @@ const faqData = [
   },
   {
     q: "Cum se calculează salariul net din brut?",
-    // Google ignoră meta descrierea homepage-ului și își compune singur snippetul
-    // din acest răspuns. De aceea textul trebuie să se citească bine SCOS din
-    // context: fără formula cu minusuri, care arăta rupt în SERP, și fără
-    // referiri la „calculatorul de aici" (întrebarea următoare acoperă oricum
-    // calculul invers).
+    // Verificat din nou pe 16 septembrie 2026: Google FOLOSEȘTE meta descrierea
+    // homepage-ului ca snippet principal (a apărut cuvânt cu cuvânt în SERP).
+    // Comentariul vechi spunea invers și era depășit. Răspunsul de mai jos
+    // apare totuși separat, ca „Rezumat generat de AI" pe unele interogări —
+    // rămâne scris SCOS din context, fără formula cu minusuri, care arăta rupt,
+    // și fără referiri la „calculatorul de aici" (întrebarea următoare acoperă
+    // oricum calculul invers).
     a: "Din salariul brut se rețin trei taxe: CAS 25% pentru pensie, CASS 10% pentru sănătate și impozit pe venit 10%. La 5.000 lei brut rămân 2.981 lei net în 2026. Pentru veniturile sub 6.325 lei brut se aplică și deducerea personală, care reduce baza impozitului și crește netul.",
   },
   {

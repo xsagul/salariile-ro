@@ -28,7 +28,7 @@ import { MESERII_SANATATE, TOTAL_TREPTE } from "@/lib/sanatate";
 import { SURSA_GRILE } from "@/lib/grile-publice";
 import { INDEMNIZATIE_HRANA, PLAFON_HRANA_NET, INDEMNIZATIE_DOCTORAT_2026 } from "@/lib/lege153";
 
-const TITLU = "Calculator salariu sănătate 2026: grilă, gradație și net";
+const TITLU = "Calculator Salarii Sănătate 2026 - Vezi net și grilă";
 const DESC =
   "Calculează salariul din sistemul sanitar public în 2026, pe grila din Legea 153/2017: salariu de bază, gradația de vechime, indemnizația de hrană și netul.";
 

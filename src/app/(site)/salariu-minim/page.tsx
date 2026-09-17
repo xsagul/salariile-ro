@@ -26,9 +26,9 @@ const OG_SALARIU_MINIM = {
 export const metadata: Metadata = {
   // Titlu absolut: cu sufixul de brand ajungea la 70 de caractere și se trunchia
   // în SERP exact peste cifre. Pagina are cea mai mare rezervă de CTR din site.
-  title: { absolute: "Salariul minim pe economie 2026: 4.325 brut, 2.699 net" },
+  title: { absolute: "Salariul minim pe economie 2026 - Brut, net și taxe" },
   description:
-    "Salariul minim: 4.325 lei brut și 2.699 lei net din 1 iulie 2026, cu facilitatea de 200 lei. Până la 1 iulie: 4.050 brut, 2.574 net. Cost firmă: 4.418 lei.",
+    "Salariul minim e 4.325 lei brut și 2.699 lei net din 1 iulie 2026, o creștere de la 4.050 lei. Vezi cum s-a calculat și costul total pentru angajator.",
   alternates: { canonical: "https://salariile.ro/salariu-minim" },
   openGraph: ogPage({
     title: "Salariul minim pe economie 2026: cât rămâne net la tine",

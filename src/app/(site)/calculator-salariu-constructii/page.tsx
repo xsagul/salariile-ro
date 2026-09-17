@@ -48,7 +48,7 @@ const NET_IN_BRUT = [3000, 3500, 4000, 4500, 5000, 6000].map((net) => {
 });
 const PENTRU_4000_NET = NET_IN_BRUT.find((rand) => rand.netDorit === 4000)!;
 
-const TITLU = "Calculator salariu net construcții 2026: brut în net";
+const TITLU = "Calculator Salariu Construcții 2026 - Brut în net și invers";
 const DESC = `În construcții netul se calculează ca în restul economiei: la ${fmt(SALARIU_MINIM_CONSTRUCTII)} lei brut rămân ${fmt(LA_MINIM.netBani)} lei net, la 5.000 lei, ${fmt(LA_5000.netBani)} lei. Calcul brut-net și invers, 2026.`;
 
 export const metadata: Metadata = {
@@ -135,9 +135,7 @@ export default function CalculatorSalariuConstructiiPage() {
           titluCustom={<>Calculator salariu construcții 2026</>}
           subtitluCustom={
             <>
-              Calculul pornește de la salariul de bază minim din construcții, {fmt(SALARIU_MINIM_CONSTRUCTII)} lei brut.
-              Schimbă suma sau treci pe net în brut. Nu mai există facilități pentru domeniu, deci se aplică
-              CAS 25%, CASS 10% și impozit 10%, ca pentru orice salariat.
+              Calculează netul sau brutul pentru un salariu în construcții.
             </>
           }
         />

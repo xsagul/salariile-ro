@@ -9,7 +9,7 @@ import TabelArticol from "@/app/components/TabelArticol";
 // Titlul depășea 60 de caractere cu sufixul de brand, iar descrierea folosea jargon
 // („S1", „S2") plus meta-limbaj despre pagină („cu taxe și surse"), nu răspunsul la
 // întrebarea utilizatorului — motiv pentru care Google prefera meniul de navigație.
-const TITLE = "Salariu minim construcții 2026: 4.582 lei brut, 2.754 net";
+const TITLE = "Salariu minim construcții 2026 - 4.582 lei brut, 2.754 net";
 const DESCRIPTION =
   "Salariul minim în construcții este 4.582 lei brut pe lună în 2026, adică 27,714 lei pe oră și 2.754 lei net din iulie. Cost total angajator: 4.685 lei.";
 const PATH = "/salariu-minim-constructii-2026";

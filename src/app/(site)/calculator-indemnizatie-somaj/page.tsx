@@ -24,7 +24,7 @@ import { ogPage, twPage } from "@/lib/seo";
 import CalculatorSomaj from "@/app/components/CalculatorSomaj";
 import { COTE, ISR, ISR_AN, SURSA_ISR, TEMEI, URL_LEGE, calculeazaSomaj } from "@/lib/somaj";
 
-const TITLU = "Calculator indemnizație șomaj 2026: cât primești și cât timp";
+const TITLU = "Calculator Ajutor Șomaj 2026 - Cât primești și cât timp";
 const DESC =
   "Calculează ajutorul de șomaj în 2026: partea fixă din indicatorul social de referință, cota pe stagiul de cotizare, durata de 6–12 luni și netul după CASS.";
 

@@ -47,7 +47,7 @@ const OG_SALARIU_MEDIU = {
 // ─── Metadata SEO ────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: { absolute: "Salariul mediu pe economie 2026: brut, net, mediană" },
+  title: { absolute: "Salariul mediu pe economie 2026 - Brut, net, mediană" },
   description:
     `Salariul mediu 2026: ${INS_BRUT_LABEL} lei brut și ${INS_NET_LABEL} lei net în ${INS_MONTH_NAME}, conform INS; indicatorul bugetar este 9.192 lei. Date, explicații și surse.`,
   alternates: { canonical: "https://salariile.ro/salariu-mediu" },

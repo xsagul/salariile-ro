@@ -14,7 +14,7 @@ import CalculatorInvatamant from "@/app/components/CalculatorInvatamant";
 import GrilaInvatamant from "@/app/components/GrilaInvatamant";
 import { GRILA, SURSA_GRILA, GRADATII, calculeazaInvatamantComplet, INDEMNIZATIE_HRANA, INDEMNIZATIE_DOCTORAT_2026, MAJORARI } from "@/lib/invatamant";
 
-const TITLU = "Calculator salariu învățământ 2026: net și grilă";
+const TITLU = "Calculator Salarii Învățământ 2026 - Vezi net și grilă";
 const DESC =
   "Calculator salariu învățământ 2026 cu gradație, dirigenție și net. Consultă grila de salarizare pe funcții, studii și vechime sau descarcă tabelul CSV.";
 

@@ -11,7 +11,7 @@ import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
 
 const PATH = "/calculator-salariu-part-time";
-const TITLU = "Calculator salariu part-time 2026: net și cost firmă";
+const TITLU = "Calculator salariu part-time 2026 - Vezi net și ore";
 const DESC =
   "Calculează salariul net și costul firmei pentru un contract part-time de 2, 4 sau 6 ore, inclusiv diferența CAS/CASS și excepțiile legale.";
 const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(n);

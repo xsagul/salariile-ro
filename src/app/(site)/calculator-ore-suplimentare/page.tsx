@@ -30,7 +30,7 @@ import {
   oreNormaleLuna,
 } from "@/lib/ore-suplimentare";
 
-const TITLU = "Calculator ore suplimentare 2026: spor 75%, noapte și sărbători";
+const TITLU = "Calculator ore suplimentare 2026 - Vezi cât primești";
 const DESC =
   "Calculează sporul pentru ore suplimentare, muncă de noapte și sărbători legale în 2026, pe tariful orar real al lunii și pe cotele din Codul Muncii.";
 

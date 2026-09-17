@@ -23,7 +23,7 @@ import { PLAFON_MICRO_LEI } from "@/lib/forme-juridice";
 // Titlul și descrierea urmează intenția reală din SERP, nu doar cuvântul-cheie.
 // Descrierea veche se termina cu „salariul minim de 4.050 lei" și arăta depășită
 // în rezultate, deși e corectă: plafoanele PFA folosesc minimul de la 1 ianuarie.
-const PFA_TITLU = "Calculator taxe PFA 2026: compară cu SRL micro și profit";
+const PFA_TITLU = "Calculator taxe PFA 2026 - Compară PFA, SRL și Micro";
 const PFA_DESC =
   "Vezi ce plătește un PFA în 2026 și cât ar rămâne, la aceleași cifre, cu un SRL micro sau SRL pe impozit pe profit.";
 
