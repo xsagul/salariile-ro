@@ -3289,10 +3289,37 @@ fost greșită. Search Console e legat din 23 august 2026.
 **Rămas:**
 - Marcarea `calcul` ca eveniment cheie: GA4 oferă steaua doar după ce evenimentul
   apare în Admin → Events → Recent events (poate dura până la 24 de ore).
-- De investigat: în 11–17 septembrie, 189 de sesiuni „Cross-network” și 179
-  „Unassigned”, cu sursa „(data not available)”, din ~430.
-- Limită: rapoartele conțin doar vizitatorii care acceptă cookies; modelarea
-  Consent Mode e probabil sub prag. Volumele totale rămân în Cloudflare.
+- Limită: modelarea Consent Mode e probabil sub prag. Volumele totale rămân în
+  Cloudflare.
+
+**Investigație „Cross-network” / „Unassigned”, 18 septembrie, dimineața.** Toate
+cele 289 de sesiuni din raport sunt din 17 septembrie, prima zi cu GA4, în care
+configurația s-a schimbat de mai multe ori (banner propriu, apoi CMP Google și
+Consent Mode). Pe sursă/mediu: „(data not available)” 189 = canalul
+„Cross-network”, „(not set)” 179 = „Unassigned”, google / organic 38,
+direct 20. Suma pe surse (431) depășește totalul, iar sesiunile implicate sunt 3
+din 289 (1%), chiar și la Google organic.
+
+Documentația GA4 (support.google.com/analytics/answer/15509398): „(data not
+available)” apare când atribuirea nu e încă procesată și sesiunea are GCLID sau
+UTM; campania devine „(cross-network)”, canalul „Cross-network”; apare mai des în
+datele din ziua curentă. Pentru „(not set)”, GA4 afișează „nu s-au primit date”,
+cu corecturi vizibile după 24–48 de ore.
+
+În timp real, la ~05:50 UTC: 12 vizitatori activi în 30 de minute, 20 de
+evenimente `calcul`, 35 `sectiune_vazuta`, 12 `parasire_pagina`, dar un singur
+utilizator cu proprietatea `viewport_clasa` (agentul, cu acord). Concluzia cea
+mai probabilă, nu încă dovedită: majoritatea vizitatorilor nu dau acordul și
+trimit pinguri fără cookies. Acestea intră în numărul de evenimente, dar fără
+sursă de trafic și fără sesiuni implicate. Nu e o eroare de cod; nu s-a schimbat
+nimic. Evenimentele proprii poartă propriile măsurători (`secunde`,
+`scroll_max`, `interactiune`), deci rămân utile și pentru vizitatorii fără acord.
+
+De reverificat pe 20 septembrie, pe 18 septembrie (prima zi completă cu
+configurația finală, procesată): ponderea „(not set)” / „(data not available)”
+și dacă `calcul` apare în Admin → Events → Recent events, ca să fie marcat
+eveniment cheie. Commiturile au fost urcate pe GitHub (`bc59d9a..6b949bb`); CI
+pică la pasul de publicare, ca înainte, fiindcă secretele Cloudflare lipsesc.
 - Politica de confidențialitate promite anunț pe homepage pentru modificări
   semnificative; extinderea evenimentelor sub același consimțământ și același
   furnizor a fost tratată ca nesemnificativă. Decizia poate fi revizuită.
