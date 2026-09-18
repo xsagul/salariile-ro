@@ -3237,3 +3237,62 @@ publicitară rămân oprite. Linkul „Setări cookies” folosește API-ul ofic
 Rutele `/widget/frame*` rămân fără AdSense și fără GA4. CSP-ul public permite
 din nou domeniile necesare CMP-ului, iar textele legale descriu explicit
 cererile tehnice și diferența dintre scriptul AdSense și afișarea reclamelor.
+
+## GA4: afișări fără suma salariului și evenimente proprii — 18 septembrie 2026
+
+Cerere a proprietarului: GA4 să colecteze tot ce ajută la îmbunătățirea
+paginilor (calcule, timp, scroll, ieșiri rapide, dimensiuni de ecran, viteză),
+fără furnizori noi. Bannerul CMP rămâne cum e, decizie explicită.
+
+**Problemă găsită, măsurată live înainte de schimbare:** după un calcul,
+calculatorul scrie `?brut=6000` în bară, iar măsurarea îmbunătățită trimitea o
+afișare nouă la schimbarea istoricului, cu `dl=https://salariile.ro/?brut=6000`.
+Suma pleca la Google (și în pingurile fără cookies), iar fiecare calcul devenea o
+afișare falsă. La un link partajat `?brut=5000`, `form_start` putea purta suma în
+`form_destination`. Calculele celorlalte șapte calculatoare nu lăsau nicio urmă;
+`form_submit` nu se declanșa (formularul face `preventDefault`).
+
+**Remediere:** `src/app/components/Masurare.tsx` trimite afișările din cod, cu
+`adresaFaraSume` (scoate `brut`, `net`, `salariu-input`, păstrează `utm_*`);
+formularul calculatorului are `action` fix. În GA4 Admin, „Page changes based on
+browser history events” a fost OPRIT (~05:30 UTC), apoi publicat imediat:
+versiunile Cloudflare `e343ef46` și `f4c7048a`, commiturile `dc969f9` și `8289079`.
+Tagul Google are `max-age=900`: vizitatorii cu tagul vechi în cache au mai putut
+trimite afișări pe istoric până la 15 minute după schimbare.
+
+Evenimente noi, fără sume (lista deținută de `src/lib/analytics.ts`): `calcul`
+pe toate cele 8 calculatoare, scroll 25/50/75, `sectiune_vazuta`,
+`detalii_deschise`, `parasire_pagina` (secunde vizibile, scroll maxim,
+interacțiune, motiv), `search` în filtrul de meserii (cu `rezultate: 0` pentru
+meseriile lipsă), `click_link_intern`, `copiaza_link`, `copiaza_embed`,
+`file_download` pentru `.ics`/`.json`/PDF, `web_vitals`, `eroare_js`.
+
+**Constatare verificată în producție:** GA4 ignoră parametrii proprii dați prin
+`gtag("set", {...})`; trec doar câmpurile standard (page_location). `viewport` și
+`viewport_clasa` se lipesc acum explicit pe fiecare eveniment propriu, iar
+`viewport_clasa` e și proprietate de utilizator.
+
+Verificat pe producție după publicare, cu cererile către `g/collect` capturate:
+linkul `/?brut=5000&utm_source=test_intern` a plecat ca
+`https://salariile.ro/?utm_source=test_intern`; un calcul la 8.000 lei a trimis
+`calcul` (instrument=salariu, varianta=brut_in_net, avansat=nu, moneda=RON) și
+nicio afișare cu suma; navigarea spre `/salarii` a trimis `click_link_intern`,
+`parasire_pagina` și o singură afișare. Sesiunile de test din browserul integrat
+(18 septembrie, sursa `test_intern`) sunt ale agentului, nu vizitatori.
+
+**GA4 Admin:** 15 dimensiuni pe eveniment, 1 pe utilizator
+(`viewport_clasa_utilizator`) și 3 metrici (`secunde` în secunde, `scroll_max`,
+`valoare`). Colectarea datelor furnizate de utilizatori era deja OPRITĂ — tagul
+`__ogt_1p_data_v2` apare și implicit, deci concluzia inițială că ar fi pornită a
+fost greșită. Search Console e legat din 23 august 2026.
+
+**Rămas:**
+- Marcarea `calcul` ca eveniment cheie: GA4 oferă steaua doar după ce evenimentul
+  apare în Admin → Events → Recent events (poate dura până la 24 de ore).
+- De investigat: în 11–17 septembrie, 189 de sesiuni „Cross-network” și 179
+  „Unassigned”, cu sursa „(data not available)”, din ~430.
+- Limită: rapoartele conțin doar vizitatorii care acceptă cookies; modelarea
+  Consent Mode e probabil sub prag. Volumele totale rămân în Cloudflare.
+- Politica de confidențialitate promite anunț pe homepage pentru modificări
+  semnificative; extinderea evenimentelor sub același consimțământ și același
+  furnizor a fost tratată ca nesemnificativă. Decizia poate fi revizuită.
