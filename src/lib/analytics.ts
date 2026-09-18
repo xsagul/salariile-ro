@@ -12,8 +12,10 @@
 // browserului” este OPRIT. Dacă se repornește, suma revine în rapoarte și
 // fiecare navigare internă se numără de două ori.
 //
-// Evenimente proprii (dimensiunile personalizate au aceleași nume în GA4 Admin):
-//   page_view          afișare; poartă și `viewport` și `viewport_clasa`
+// Evenimente proprii (dimensiunile personalizate au aceleași nume în GA4 Admin).
+// Toate poartă `viewport` (ex. „393x742”) și `viewport_clasa`; clasa e și
+// proprietate de utilizator, ca rata de implicare să se poată împărți pe ea.
+//   page_view          afișarea, cu adresa fără sumă
 //   scroll             percent_scrolled 25/50/75; 90 vine din măsurarea îmbunătățită
 //   sectiune_vazuta    element = titlul H2 din <main> care a intrat în ecran
 //   detalii_deschise   element = textul din <summary> (întrebări frecvente etc.)
@@ -77,9 +79,19 @@ export function gtag(...args: unknown[]): void {
   window.gtag(...args);
 }
 
+// GA4 ignoră parametrii proprii dați prin `gtag("set", {...})`: trec doar
+// câmpurile standard, ca page_location. Verificat în producție pe 18 septembrie
+// 2026 — `viewport` setat așa nu apărea în nicio cerere. De aceea parametrii
+// comuni se lipesc explicit pe fiecare eveniment propriu.
+let parametriComuni: Record<string, string> = {};
+
+export function seteazaParametriComuni(parametri: Record<string, string>): void {
+  parametriComuni = { ...parametriComuni, ...parametri };
+}
+
 export function trimiteEveniment(nume: string, parametri: Record<string, Valoare> = {}): void {
   const curati: Record<string, string | number> = {};
-  for (const [cheie, valoare] of Object.entries(parametri)) {
+  for (const [cheie, valoare] of Object.entries({ ...parametriComuni, ...parametri })) {
     if (valoare !== undefined && valoare !== "") curati[cheie] = valoare;
   }
   gtag("event", nume, curati);

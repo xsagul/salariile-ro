@@ -22,6 +22,7 @@ import {
   adresaFaraSume,
   clasaViewport,
   gtag,
+  seteazaParametriComuni,
   textScurt,
   trimiteEveniment,
 } from "@/lib/analytics";
@@ -85,10 +86,9 @@ function raporteazaParasirea(motiv: "navigare_interna" | "ascunsa") {
 
 function seteazaViewport() {
   latimeRaportata = window.innerWidth;
-  gtag("set", {
-    viewport: `${window.innerWidth}x${window.innerHeight}`,
-    viewport_clasa: clasaViewport(window.innerWidth),
-  });
+  const viewport_clasa = clasaViewport(window.innerWidth);
+  seteazaParametriComuni({ viewport: `${window.innerWidth}x${window.innerHeight}`, viewport_clasa });
+  gtag("set", "user_properties", { viewport_clasa });
 }
 
 function zona(element: Element): string {

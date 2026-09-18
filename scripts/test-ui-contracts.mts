@@ -71,6 +71,10 @@ const [masurare, analytics] = await Promise.all([read("src/app/components/Masura
 assert.match(masurare, /const adresa = adresaFaraSume\(window\.location\.href\)/, "Adresa trimisă la GA4 trebuie curățată de sume");
 assert.match(masurare, /page_location: adresa/, "page_location trebuie să fie adresa curățată");
 assert.match(masurare, /send_page_view: false[\s\S]*allow_google_signals: false[\s\S]*allow_ad_personalization_signals: false/, "GA4 fără afișare automată, fără Signals și fără personalizare publicitară");
+// `gtag("set", {viewport})` nu ajunge în GA4 (verificat în producție): parametrii
+// comuni trebuie lipiți pe fiecare eveniment, iar clasa ferestrei e proprietate de utilizator.
+assert.match(masurare, /seteazaParametriComuni\(\{ viewport:/, "Viewportul trebuie trimis pe fiecare eveniment, nu prin gtag set");
+assert.match(masurare, /gtag\("set", "user_properties", \{ viewport_clasa \}\)/, "Clasa ferestrei trebuie să fie proprietate de utilizator");
 assert.match(masurare, /DOMENII_MASURATE\.has\(window\.location\.hostname\)/, "GA4 se configurează doar pe domeniul de producție");
 assert.doesNotMatch(siteLayout + masurare + analytics, /anonymize_ip/, "anonymize_ip nu există în GA4 și ar pleca drept parametru inutil");
 assert.match(salary, /action=\{embedded \? undefined : pathname\}/, "Formularul nu trebuie să aibă `?brut=` ca destinație (form_destination în GA4)");
