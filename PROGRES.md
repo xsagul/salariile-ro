@@ -3323,3 +3323,34 @@ pică la pasul de publicare, ca înainte, fiindcă secretele Cloudflare lipsesc.
 - Politica de confidențialitate promite anunț pe homepage pentru modificări
   semnificative; extinderea evenimentelor sub același consimțământ și același
   furnizor a fost tratată ca nesemnificativă. Decizia poate fi revizuită.
+
+## SE Ranking: ultima zi, concurenți și câștigul de trafic — 18 septembrie 2026
+
+Date salvate local în `research/seranking-2026-09-18/` (exclus din git, vezi README
+acolo): 800 de căutări „salariu …” cu volum ≥ 30, cele 313 cuvinte urmărite în
+proiect, backlinkurile calculator-salarii.ro, salaria.ro și impozitsalariu.ro.
+Nerealizat: paylab.ro și undelucram.ro (CAPTCHA pe Competitive Research), volumele
+pentru 104 meserii din catalog (Search Volume Checker e plătit separat).
+
+**Acoperire:** pe cele 2.193 de cuvinte ale celor trei concurenți suntem pe pagina 1
+la 612, care adună ~89% din volumul lor. Lipsim de pe 1.445, dar adună ~8% din volum.
+Diferența nu e de pagini, e de poziție.
+
+**CTR-ul nostru real pe poziție** (GSC, 28 zile, interogări ≥ 300 impresii):
+~2 → 5,9%, ~3 → 1,95%, ~4 → 1,24%, 5–6 → 0,7%. O curbă generică de CTR supraestimează
+de ~10 ori pentru site-ul ăsta.
+
+**Unde e câștigul, în ordine:**
+1. Nucleul „calculator salariu net/brut”: 148k impresii/28 zile la poziția ~3,3,
+   CTR 1,54%. La poziția 2, cu CTR-ul nostru măsurat, ar fi ~+6.000 clickuri/lună.
+   salaria.ro e pe 2 cu doar ~3 linkuri reale; calculator-salarii.ro pe 1 la
+   „calculator salarii” cu 889 de domenii (adevarul, hotnews, avocatnet, edupedu,
+   tpu.ro, mrfinance…). Backlinkurile nu explică singure diferența.
+2. Șomaj: ~13k volum, calculator-salarii.ro pe 1 cu `/calcul-ajutor-somaj/`
+   („ajutorul de somaj”, „cat e somajul in romania”); noi absenți sau 49–78, deși
+   avem `/calculator-indemnizatie-somaj`.
+3. Zile libere/lucrătoare: „zile libere 2026” 74k/lună, noi 22 pe 17 sept, în
+   afara top 100 pe 18 sept; valul „2027” vine din noiembrie.
+4. Calculator vechime: ~3.400 volum, concurentul doar pe 21–28, noi fără pagină.
+5. Sume concrete: ~10.800 volum în total; unde avem pagini `/calculator/…` suntem
+   deja pe 1–2. Lipsesc puține valori, iar multe nu sunt salarii brute valide.
