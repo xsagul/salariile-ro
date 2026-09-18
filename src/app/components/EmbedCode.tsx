@@ -4,13 +4,17 @@
 // Bloc de cod cu buton „Copiază" pentru pagina /widget (codul de embed al widgetului).
 
 import { useState } from "react";
+import { trimiteEveniment } from "@/lib/analytics";
 
-export default function EmbedCode({ code }: { code: string }) {
+export default function EmbedCode({ code, tip }: { code: string; tip: "minimal" | "complet" | "fluturas" }) {
   const [copied, setCopied] = useState(false);
 
   const copy = async () => {
     try {
       await navigator.clipboard.writeText(code);
+      // Widgetul copiat e un link spre noi pe un site străin: singurul semnal
+      // de backlink pe care îl vedem înainte să apară în Search Console.
+      trimiteEveniment("copiaza_embed", { varianta: tip });
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {

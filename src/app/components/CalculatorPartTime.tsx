@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { masoaraCalcul } from "@/lib/analytics";
 import {
   calculeazaPartTime,
   salariuMinimPartTime,
@@ -196,6 +197,7 @@ export default function CalculatorPartTime() {
     if (!urmatorul) return;
     setEmptyWarn(false);
     setRezAfisat(urmatorul);
+    masoaraCalcul("part_time", { varianta: `${orePeZi}h`, avansat });
 
     // Ca pe homepage: mobil -> rezultatul, desktop -> tot blocul.
     const mobil = window.matchMedia("(max-width: 768px)").matches;

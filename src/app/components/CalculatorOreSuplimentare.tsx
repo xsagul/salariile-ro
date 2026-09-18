@@ -28,6 +28,7 @@ import {
   type RezultatOre,
 } from "@/lib/ore-suplimentare";
 import { deruleazaLaRezultat } from "@/lib/deruleaza-la-rezultat";
+import { masoaraCalcul } from "@/lib/analytics";
 
 const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(Math.round(n));
 const fmt2 = (n: number) =>
@@ -108,6 +109,7 @@ export default function CalculatorOreSuplimentare() {
         cotaSarbatoare: (Number(cotaSarb) || 100) / 100,
       }),
     );
+    masoaraCalcul("ore_suplimentare");
     deruleazaLaRezultat("rezultat-ore", "calc-ore");
   }
 

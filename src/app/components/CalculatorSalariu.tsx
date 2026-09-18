@@ -1,7 +1,9 @@
 "use client";
 
 import React, { useState, useCallback, useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import Link from "@/app/components/Link";
+import { masoaraCalcul, trimiteEveniment } from "@/lib/analytics";
 import {
   calculeaza,
   calculeazaCuRegim,
@@ -485,6 +487,7 @@ export default function CalculatorSalariu({
   cuMoneda?: boolean;
 }) {
   const t = TEXTE[limba];
+  const pathname = usePathname();
   const [moneda, setMoneda] = useState<Moneda>(monedaInitiala);
   // Umbrește `fmt`-ul de modul, ca toate sumele afișate în componentă să urmeze
   // limba aleasă fără să fie nevoie să se atingă fiecare apel în parte.
@@ -610,6 +613,15 @@ export default function CalculatorSalariu({
     }
     if (typeof window === "undefined") return;
 
+    // Fără sumă: doar ce fel de calcul s-a cerut. În iframe nu există GA4.
+    if (!embedded) {
+      masoaraCalcul(fluturas ? "fluturas" : "salariu", {
+        varianta: fluturas ? undefined : mod === "brut" ? "brut_in_net" : "net_in_brut",
+        avansat,
+        moneda,
+      });
+    }
+
     // Rezultatul devine partajabil: pana acum, dupa un calcul, URL-ul ramanea „/"
     // si nu puteai trimite nimanui cifra la care ajunsesesi.
     //
@@ -631,7 +643,7 @@ export default function CalculatorSalariu({
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
     const targetId = isMobile ? "rezultat-calcul" : "calc-layout";
     document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth", block: "start" });
-  }, [input, mod, regimFiscal, fluturas, sporOre, sporuri, normaOre, oreLucrate, oreNormaCurenta, embedded, brutInitial]);
+  }, [input, mod, regimFiscal, fluturas, sporOre, sporuri, normaOre, oreLucrate, oreNormaCurenta, embedded, brutInitial, avansat, moneda]);
 
   // Deschiderea unui link partajat: „?brut=5000" trebuie sa arate calculul, nu
   // un formular gol.
@@ -698,6 +710,7 @@ export default function CalculatorSalariu({
   const handleCopiazaLink = async () => {
     try {
       await navigator.clipboard.writeText(window.location.href);
+      trimiteEveniment("copiaza_link", { instrument: fluturas ? "fluturas" : "salariu" });
       setLinkCopiat(true);
       window.setTimeout(() => setLinkCopiat(false), 3000);
     } catch {
@@ -720,6 +733,13 @@ export default function CalculatorSalariu({
         scutitImpozit: rezAfisat.scutitImpozit, firma: fluturas ? firma : undefined,
         detalii: fluturas && fluturasSnap ? fluturasSnap : undefined, retineri: retineriNum,
         t, moneda,
+      });
+      // Numele real al fișierului conține suma; aici pleacă doar tipul.
+      trimiteEveniment("file_download", {
+        file_extension: "pdf",
+        file_name: "fluturas-salariu.pdf",
+        link_text: "PDF fluturaș",
+        instrument: fluturas ? "fluturas" : "salariu",
       });
       setPdfStatus("success");
     } catch {
@@ -771,6 +791,10 @@ export default function CalculatorSalariu({
         {/* Coloana Stângă – formular */}
         <form
           className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-2"
+          // Fără `action`, destinația formularului e adresa curentă, deci și
+          // `?brut=` — iar GA4 o trimite ca `form_destination` la `form_start`.
+          // În iframe rămâne adresa curentă: widgetul își citește parametrii din ea.
+          action={embedded ? undefined : pathname}
           onSubmit={(event) => {
             event.preventDefault();
             handleCalculeaza();

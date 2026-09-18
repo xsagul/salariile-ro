@@ -21,6 +21,7 @@
 
 import { useState } from "react";
 import FeedbackContextual from "@/app/components/FeedbackContextual";
+import { masoaraCalcul } from "@/lib/analytics";
 import { SelectorPastile, type OptiunePastila } from "@/app/components/SelectorPastile";
 import {
   calculeazaInvatamantComplet,
@@ -156,6 +157,7 @@ export default function CalculatorInvatamant() {
     if (categorie === "conducere") {
       const c = calculeazaConducereComplet({ functie: functieCond, grad: gradCond, studiiScurte, doctorat });
       setRez(c ? { fel: "conducere", c } : null);
+      if (c) masoaraCalcul("invatamant", { varianta: "conducere", avansat });
       dupaCalcul();
       return;
     }
@@ -166,6 +168,7 @@ export default function CalculatorInvatamant() {
       functie: nrFunctie, vechimeInvatamant: vechimeCurenta, aniMunca: aniPtGradatie, majorari, doctorat,
     });
     setRez(d ? { fel: "didactic", d } : null);
+    if (d) masoaraCalcul("invatamant", { varianta: "didactic", avansat });
     dupaCalcul();
   }
 

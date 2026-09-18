@@ -29,6 +29,7 @@ import {
 } from "@/lib/sanatate-calcul";
 import { GRADATII, INDEMNIZATIE_DOCTORAT_2026, type NivelGradatie } from "@/lib/lege153";
 import { deruleazaLaRezultat } from "@/lib/deruleaza-la-rezultat";
+import { masoaraCalcul } from "@/lib/analytics";
 
 const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(Math.round(n));
 const colHeader = "mb-4 border-b border-stone-200 pb-2 text-lg font-medium text-stone-900";
@@ -113,6 +114,7 @@ export default function CalculatorSanatate({ meserii }: { meserii: MeserieSanata
         alteDrepturiHrana,
       }),
     );
+    masoaraCalcul("sanatate", { varianta: slug });
     deruleazaLaRezultat("rezultat-sanatate", "calc-sanatate");
   }
 

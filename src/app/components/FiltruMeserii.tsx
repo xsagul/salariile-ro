@@ -13,7 +13,13 @@
 // Filtrarea se face in handlerul de input, nu intr-un efect: e o actiune
 // declansata de utilizator, nu o sincronizare cu un sistem extern.
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { textScurt, trimiteEveniment } from "@/lib/analytics";
+
+// Termenul se trimite după o pauză în tastare, nu la fiecare literă: „el",
+// „ele", „elec" nu sunt căutări, „electrician" este. Căutările fără niciun
+// rezultat sunt dovada că lipsește o meserie din catalog.
+const PAUZA_CAUTARE_MS = 1500;
 
 /** Fara diacritice si fara majuscule: „Faianțar" se gaseste si scriind „faiantar". */
 function normalizeaza(text: string): string {
@@ -53,11 +59,23 @@ export default function FiltruMeserii({ total }: { total: number }) {
   const [termen, setTermen] = useState("");
   const [gasite, setGasite] = useState<number | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const temporizator = useRef<number | undefined>(undefined);
+  const ultimulTrimis = useRef("");
+
+  useEffect(() => () => window.clearTimeout(temporizator.current), []);
 
   function schimba(valoare: string) {
     setTermen(valoare);
     const vizibile = aplicaFiltrul(valoare);
     setGasite(valoare.trim() ? vizibile : null);
+
+    window.clearTimeout(temporizator.current);
+    const cautat = textScurt(valoare.toLowerCase(), 50);
+    if (cautat.length < 2 || cautat === ultimulTrimis.current) return;
+    temporizator.current = window.setTimeout(() => {
+      ultimulTrimis.current = cautat;
+      trimiteEveniment("search", { search_term: cautat, rezultate: vizibile });
+    }, PAUZA_CAUTARE_MS);
   }
 
   return (

@@ -101,7 +101,7 @@ export default function CookiesPage() {
                 <strong>Cloudflare Web Analytics</strong>: rulează cookieless, fără stocare locală sau amprentare. Datele sunt agregate: vizite, pagini populare și timpi de încărcare.
               </li>
               <li>
-                <strong>Google Analytics 4</strong>: tagul se încarcă în modul avansat Consent Mode cu stocarea refuzată implicit. Înainte de acord poate trimite pinguri fără cookies, care nu conțin un identificator persistent; după acord poate seta cookies <code>_ga</code> și <code>_ga_2L1J64H5H9</code>. Măsoară paginile accesate, sursa vizitei, tipul dispozitivului, regiunea aproximativă și interacțiuni standard precum scrollul, clickurile externe și descărcările. Google Signals și personalizarea publicitară sunt dezactivate.
+                <strong>Google Analytics 4</strong>: tagul se încarcă în modul avansat Consent Mode cu stocarea refuzată implicit. Înainte de acord poate trimite pinguri fără cookies, care nu conțin un identificator persistent; după acord poate seta cookies <code>_ga</code> și <code>_ga_2L1J64H5H9</code>. Măsoară paginile accesate, sursa vizitei, tipul dispozitivului, dimensiunea ecranului și a ferestrei, regiunea aproximativă, cât derulezi și ce secțiuni vezi, timpul petrecut pe pagină, clickurile pe linkuri, descărcările, folosirea calculatoarelor (fără sumele introduse), căutările în lista de meserii, viteza paginii și erorile tehnice. Google Signals și personalizarea publicitară sunt dezactivate.
               </li>
               <li>
                 <strong>Google AdSense</strong>: scriptul său publică platforma de consimțământ Google (CMP). Auto ads este oprit și nu există unități de anunț, deci nu se afișează reclame. Scriptul poate face cereri tehnice către Google pentru banner, verificare și protecție antifraudă.
@@ -186,7 +186,7 @@ export default function CookiesPage() {
             <p>
               Pentru detalii despre toate datele prelucrate (inclusiv logs de server, statistici anonime și temeiul juridic), vezi <Link href="/politica-confidentialitate">politica de confidențialitate</Link>.
             </p>
-            <p className="source-note">Ultima actualizare: 17 septembrie 2026 — bannerul standard Google gestionează GA4 prin Consent Mode; AdSense este fără reclame.</p>
+            <p className="source-note">Ultima actualizare: 18 septembrie 2026 — GA4 măsoară folosirea paginilor și a calculatoarelor, fără sumele introduse; bannerul standard Google și Consent Mode rămân neschimbate; AdSense este fără reclame.</p>
         </Section>
       </div>
     </>

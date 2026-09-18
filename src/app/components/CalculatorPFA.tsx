@@ -21,6 +21,7 @@ import FeedbackContextual from "@/app/components/FeedbackContextual";
 // din art. 118 alin. (2) este rezervată veniturilor stabilite în sistem real.
 
 import { useState } from "react";
+import { masoaraCalcul } from "@/lib/analytics";
 import {
   calculeazaPFA,
   calculeazaPfaNormaVenit,
@@ -308,6 +309,7 @@ export default function CalculatorPFA() {
     const snapNormalizat: Snap = { ...snap, luni: luniNormalizate };
     setLuni(luniNormalizate);
     setRez(r); setRezKey(snapKey(snapNormalizat));
+    masoaraCalcul("pfa", { avansat });
     if (typeof window !== "undefined") {
       const isMobile = window.matchMedia("(max-width: 768px)").matches;
       document.getElementById(isMobile ? "pfa-rezultat" : "pfa-layout")?.scrollIntoView({ behavior: "smooth", block: "start" });

@@ -19,8 +19,9 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import Masurare from "@/app/components/Masurare";
+import { GA_MEASUREMENT_ID } from "@/lib/analytics";
 
-const GA_MEASUREMENT_ID = "G-2L1J64H5H9";
 const ADSENSE_CLIENT = "ca-pub-5894290637571256";
 
 // Meta tag-ul rămâne ca metodă suplimentară de verificare a contului.
@@ -55,14 +56,9 @@ export default function SiteLayout({
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
         strategy="afterInteractive"
       />
-      <Script id="ga4-config" strategy="afterInteractive">
-        {`gtag('js',new Date());
-gtag('config','${GA_MEASUREMENT_ID}',{
-  'anonymize_ip':true,
-  'allow_google_signals':false,
-  'allow_ad_personalization_signals':false
-});`}
-      </Script>
+      {/* Configurația GA4, afișările fără sumă și evenimentele proprii: vezi
+          src/lib/analytics.ts. */}
+      <Masurare />
       {/* Analytics: Cloudflare Web Analytics, injectat automat la edge
           (cookieless, fără localStorage, fără amprentare). Nu se încarcă nimic
           din cod; CSP-ul permite beacon-ul în src/lib/csp.ts. Declarat în

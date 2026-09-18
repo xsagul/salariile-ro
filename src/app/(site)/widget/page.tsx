@@ -157,7 +157,7 @@ export default function WidgetPage() {
           automat după conținut, fără scroll interior.
         </p>
         <div className="my-6">
-          <EmbedCode code={MINIMAL_EMBED_CODE} />
+          <EmbedCode code={MINIMAL_EMBED_CODE} tip="minimal" />
         </div>
         <p>
           Aplică aceeași versiune a regulilor fiscale publicată pe site. Formulele complete sunt publice pe pagina
@@ -182,7 +182,7 @@ export default function WidgetPage() {
           </p>
         </div>
         <div className="my-6">
-          <EmbedCode code={COMPLETE_EMBED_CODE} />
+          <EmbedCode code={COMPLETE_EMBED_CODE} tip="complet" />
         </div>
       </Section>
 
@@ -204,7 +204,7 @@ export default function WidgetPage() {
           </p>
         </div>
         <div className="my-6">
-          <EmbedCode code={PAYSLIP_EMBED_CODE} />
+          <EmbedCode code={PAYSLIP_EMBED_CODE} tip="fluturas" />
         </div>
         <p className="max-w-3xl">
           Creditul către salariile.ro este recomandat pentru ca utilizatorii să poată identifica sursa, dar păstrarea lui rămâne la alegerea publisherului. Pentru dimensiuni speciale sau integrare într-un CMS, scrie-ne la{" "}

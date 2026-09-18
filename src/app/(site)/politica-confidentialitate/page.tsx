@@ -96,7 +96,7 @@ export default function PoliticaConfidentialitatePage() {
                 <strong>Statistici de vizitare anonime</strong>: prin Cloudflare Web Analytics se contorizează numărul de vizite, paginile cele mai accesate, țara de origine (la nivel general) și timpii de încărcare a paginilor. Nu se folosesc cookies sau stocare locală, vizitatorii nu sunt amprentați, iar datele sunt agregate și nu se transferă către terți.
               </li>
               <li>
-                <strong>Google Analytics 4 cu Consent Mode</strong>: tagul folosește identificatorul <code>G-2L1J64H5H9</code>. Înainte de acord, stocarea este refuzată și pot fi trimise pinguri fără cookies; după acord, GA4 poate folosi cookies <code>_ga</code> și înregistrează paginile vizitate, sursa vizitei, tipul dispozitivului, regiunea aproximativă și interacțiuni standard. Google Signals și personalizarea reclamelor sunt dezactivate.
+                <strong>Google Analytics 4 cu Consent Mode</strong>: tagul folosește identificatorul <code>G-2L1J64H5H9</code>. Înainte de acord, stocarea este refuzată și pot fi trimise pinguri fără cookies; după acord, GA4 poate folosi cookies <code>_ga</code>. Se înregistrează paginile vizitate și pagina anterioară, sursa vizitei, tipul dispozitivului, rezoluția ecranului și dimensiunea ferestrei browserului, regiunea aproximativă; cât derulezi, ce secțiuni ajung în ecran, cât timp rămâne pagina vizibilă, ce întrebări deschizi și ce linkuri interne apeși; ce calculator folosești și tipul calculului (de exemplu brut în net), <strong>fără sumele introduse</strong>; termenul scris în căutarea de meserii; descărcările și linkurile copiate; timpii de încărcare și de răspuns ai paginii și erorile tehnice ale site-ului. Google Signals și personalizarea reclamelor sunt dezactivate.
               </li>
             </ul>
             <h3>Publicitate: niciuna</h3>
@@ -109,7 +109,7 @@ export default function PoliticaConfidentialitatePage() {
             <h3>Date pe care NU le colectăm</h3>
             <ul>
               <li>Nu există formulare de înregistrare, conturi de utilizator sau newsletter.</li>
-              <li>Sumele brut/net pe care le introduci în calculator se procesează exclusiv în browser-ul tău și nu sunt transmise sau stocate pe server.</li>
+              <li>Sumele pe care le introduci în calculatoare se procesează exclusiv în browser-ul tău. Nu sunt transmise sau stocate pe server și nu ajung nici în Google Analytics: adresa paginii se trimite fără parametrii <code>brut</code> și <code>net</code>, iar evenimentele de calcul spun doar ce calculator ai folosit.</li>
               <li>Nu folosim Facebook Pixel, remarketing, programe de afiliere sau profilare publicitară. GA4 respectă alegerea transmisă de CMP prin Consent Mode.</li>
               <li>Nu vindem și nu transferăm date către terți în scopuri comerciale.</li>
             </ul>
@@ -203,7 +203,7 @@ Salariile.ro nu afișează reclame. Cookies de analiză GA4 apar numai după aco
             <p>
               Această politică poate fi actualizată periodic, în special dacă se modifică stack-ul tehnic al site-ului sau apar cerințe legale noi. Versiunea curentă este menționată în antetul paginii cu data intrării în vigoare. Modificările semnificative vor fi anunțate vizibil pe homepage înainte de a intra în vigoare.
             </p>
-            <p className="source-note">Ultima actualizare: 17 septembrie 2026 — CMP-ul Google și GA4 cu Consent Mode; AdSense fără reclame.</p>
+            <p className="source-note">Ultima actualizare: 18 septembrie 2026 — GA4 măsoară folosirea paginilor și a calculatoarelor, fără sumele introduse; CMP-ul Google și Consent Mode rămân neschimbate.</p>
         </Section>
       </div>
     </>

@@ -44,8 +44,57 @@ assert.doesNotMatch(siteLayout + rootLayout, /<ins[^>]+adsbygoogle|adsbygoogle\.
 assert.match(rootLayout, /google-consent-default[\s\S]*strategy="beforeInteractive"[\s\S]*analytics_storage':'denied'/, "Consent Mode trebuie inițializat pe denied înaintea tagurilor");
 assert.match(rootLayout, /googlefc\.callbackQueue=window\.googlefc\.callbackQueue\|\|\[\]/, "Coada API a CMP-ului trebuie inițializată înaintea scriptului AdSense");
 assert.match(siteLayout, /googletagmanager\.com\/gtag\/js/, "Layout-ul public trebuie să încarce Google tag");
-assert.match(siteLayout, /G-2L1J64H5H9/, "Layout-ul public trebuie să folosească fluxul GA4 corect");
-assert.match(siteLayout, /allow_google_signals':false[\s\S]*allow_ad_personalization_signals':false/, "Semnalele și personalizarea publicitară GA4 trebuie să rămână oprite");
+assert.match(siteLayout, /<Masurare \/>/, "Layout-ul public trebuie să monteze măsurarea GA4");
+assert.doesNotMatch(embedLayout, /Masurare|@\/lib\/analytics/, "Widgeturile nu trebuie măsurate");
+
+// GA4, 18 septembrie 2026: calculatorul scrie `?brut=6000` în bară, iar GA4
+// trimitea adresa la fiecare schimbare — suma pleca la Google și fiecare calcul
+// devenea o afișare falsă. Afișările se trimit acum din cod, cu adresa curățată,
+// iar în GA4 Admin afișările pe istoricul browserului sunt oprite.
+const analyticsPath = "../src/lib/analytics.ts";
+const { adresaFaraSume, clasaViewport, GA_MEASUREMENT_ID } = (await import(analyticsPath)) as typeof import("../src/lib/analytics");
+assert.equal(GA_MEASUREMENT_ID, "G-2L1J64H5H9", "Fluxul GA4 trebuie să rămână cel al site-ului");
+assert.equal(adresaFaraSume("https://salariile.ro/?brut=6000"), "https://salariile.ro/");
+assert.equal(adresaFaraSume("https://salariile.ro/?net=3500#rezultat"), "https://salariile.ro/");
+assert.equal(adresaFaraSume("https://salariile.ro/?salariu-input=7.823"), "https://salariile.ro/");
+assert.equal(
+  adresaFaraSume("https://salariile.ro/?brut=6000&utm_source=reddit&utm_medium=social"),
+  "https://salariile.ro/?utm_source=reddit&utm_medium=social",
+  "Parametrii de campanie trebuie să rămână",
+);
+assert.equal(adresaFaraSume(""), "");
+assert.equal(clasaViewport(393), "360-399");
+assert.equal(clasaViewport(768), "768-1023");
+assert.equal(clasaViewport(1920), ">=1536");
+
+const [masurare, analytics] = await Promise.all([read("src/app/components/Masurare.tsx"), read("src/lib/analytics.ts")]);
+assert.match(masurare, /const adresa = adresaFaraSume\(window\.location\.href\)/, "Adresa trimisă la GA4 trebuie curățată de sume");
+assert.match(masurare, /page_location: adresa/, "page_location trebuie să fie adresa curățată");
+assert.match(masurare, /send_page_view: false[\s\S]*allow_google_signals: false[\s\S]*allow_ad_personalization_signals: false/, "GA4 fără afișare automată, fără Signals și fără personalizare publicitară");
+assert.match(masurare, /DOMENII_MASURATE\.has\(window\.location\.hostname\)/, "GA4 se configurează doar pe domeniul de producție");
+assert.doesNotMatch(siteLayout + masurare + analytics, /anonymize_ip/, "anonymize_ip nu există în GA4 și ar pleca drept parametru inutil");
+assert.match(salary, /action=\{embedded \? undefined : pathname\}/, "Formularul nu trebuie să aibă `?brut=` ca destinație (form_destination în GA4)");
+
+// Fiecare calculator raportează calculul, iar niciun eveniment nu poartă suma.
+const calculatoare = [
+  "CalculatorSalariu", "CalculatorPFA", "CalculatorInvatamant", "CalculatorSanatate", "CalculatorSomaj",
+  "CalculatorOreSuplimentare", "CalculatorPartTime", "CalculatorIntervalZile",
+];
+for (const nume of calculatoare) {
+  const sursa = await read(`src/app/components/${nume}.tsx`);
+  assert.match(sursa, /masoaraCalcul\(/, `${nume} trebuie să trimită evenimentul calcul`);
+}
+for (const nume of [...calculatoare, "FiltruMeserii", "EmbedCode", "Masurare"]) {
+  const sursa = await read(`src/app/components/${nume}.tsx`);
+  for (const apel of sursa.matchAll(/(?:masoaraCalcul|trimiteEveniment)\(([\s\S]*?)\);/g)) {
+    assert.doesNotMatch(
+      apel[1],
+      /\binput\b|parseFloat|parseInt|Number\(|rezAfisat|brutEfectiv|firma|incasari|\bmedia\b|\bbaza\b|location\.href/,
+      `${nume}: un eveniment GA4 pare să poarte o sumă sau adresa brută: ${apel[0].slice(0, 120)}`,
+    );
+  }
+}
+
 assert.match(googlePreferences, /CONSENT_API_READY[\s\S]*showRevocationMessage/, "Setările cookies trebuie să redeschidă mesajul Google");
 assert.match(csp, /ADSENSE_SCRIPT[\s\S]*ADSENSE_FRAME[\s\S]*ADSENSE_CONNECT/, "CSP-ul public trebuie să permită CMP-ul AdSense");
 assert.equal((await read("public/ads.txt")).trim(), "google.com, pub-5894290637571256, DIRECT, f08c47fec0942fa0", "ads.txt trebuie să autorizeze numai contul AdSense al site-ului");

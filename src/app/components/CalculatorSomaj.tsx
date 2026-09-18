@@ -23,6 +23,7 @@ import {
   type RezultatSomaj,
 } from "@/lib/somaj";
 import { deruleazaLaRezultat } from "@/lib/deruleaza-la-rezultat";
+import { masoaraCalcul } from "@/lib/analytics";
 
 const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(Math.round(n));
 const colHeader = "mb-4 border-b border-stone-200 pb-2 text-lg font-medium text-stone-900";
@@ -64,6 +65,7 @@ export default function CalculatorSomaj() {
   const reset = () => setRez(null);
   const calculeaza = () => {
     setRez(calculeazaSomaj({ aniStagiu, mediaBruta: Number(media) || 0, absolvent }));
+    masoaraCalcul("somaj", { varianta: absolvent ? "absolvent" : "stagiu" });
     deruleazaLaRezultat("rezultat-somaj", "calc-somaj");
   };
 
