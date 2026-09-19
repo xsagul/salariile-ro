@@ -3354,3 +3354,17 @@ de ~10 ori pentru site-ul ăsta.
 4. Calculator vechime: ~3.400 volum, concurentul doar pe 21–28, noi fără pagină.
 5. Sume concrete: ~10.800 volum în total; unde avem pagini `/calculator/…` suntem
    deja pe 1–2. Lipsesc puține valori, iar multe nu sunt salarii brute valide.
+
+## Test favicon carabinieră + cravată, 24 de ore — 19 septembrie 2026
+
+Pornit la **06:41 UTC** (commituri `46aae75`, `7c82713`, `071a2f2`). Fișierele sunt ale
+proprietarului: `salariile-favicon-optimized.ico` și `salariile-favicon-exact.svg`, cu
+un singur adaos — fundal alb opac, fiindcă pe SERP-ul întunecat cravata neagră pe
+transparent dispărea. Apple 180, 192 și 512 sunt redimensionări ale PNG-ului lui
+(09_34_16), aplatizate pe alb. ICO-ul trebuie să conțină PNG RGBA: cu RGB, Turbopack
+refuză build-ul („The PNG is not in RGBA format”).
+
+**Nu e decizie de identitate:** `BRAND.md` nu s-a schimbat. **Revert** după 24 h:
+`git revert 071a2f2 7c82713 46aae75` + `npm run deploy`. Google preia faviconul în
+zile, nu ore, și îl poate păstra zile după revert; 24 de ore nu măsoară CTR.
+`icon.svg` are 223 KB (PNG încorporat): dacă se păstrează, merită vectorizat.
