@@ -3375,3 +3375,29 @@ asemănător, iar site-ul lui nu mai funcționează — confuzia ne-ar transfera
 un site stricat. Iconița anterioară e din nou live pe toate cele cinci fișiere.
 Regula care rămâne: **înainte de a semăna cu un concurent, verifică dacă a
 dispărut efectiv din rezultate, nu doar dacă paginile lui mai răspund.**
+
+## Prima citire GA4 cu evenimente proprii — 19 septembrie 2026
+
+Ziua de 19 septembrie, comparată cu 18 (prima zi plină de date; măsurarea a pornit
+pe 17):
+
+| | 19 sept (vineri) | 18 sept (joi) |
+|---|---|---|
+| utilizatori | 245 | 516 |
+| calcule (`calcul`) | 230 | 487 |
+| utilizatori care au calculat | 125 (51%) | 238 (46%) |
+| timp mediu de interacțiune | 1m 09s | 1m 28s |
+| `parasire_pagina` | 130 utilizatori | 335 |
+
+**Scăderea la jumătate nu e o defecțiune, e vinerea.** În Search Console, 12
+septembrie (vineri) a făcut 237 de clicuri față de 503 joi — aceeași proporție.
+Verificat și că scriptul GA4 e pe pagina live și că evenimentele curg toată ziua.
+
+**Ce aflăm nou, din evenimente proprii:** unu din doi vizitatori face cel puțin un
+calcul, cu 1,8 calcule fiecare. Pe homepage, 116 utilizatori, 58 de secunde în
+medie. `/calculator-salariu-invatamant` ține 1m 18s cu 43 de utilizatori — de
+patru ori mai puțini decât homepage-ul, dar timp mai mare pe vizitator.
+
+**Atenție la „evenimente cheie" în comparații**: 229 vs 142 nu e creștere de
+comportament — `calcul` a fost marcat ca eveniment cheie pe 18, la jumătatea zilei.
+Orice comparație care traversează 17–18 septembrie compară configurații diferite.
