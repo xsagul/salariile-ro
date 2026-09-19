@@ -3368,3 +3368,10 @@ refuză build-ul („The PNG is not in RGBA format”).
 `git revert 071a2f2 7c82713 46aae75` + `npm run deploy`. Google preia faviconul în
 zile, nu ore, și îl poate păstra zile după revert; 24 de ore nu măsoară CTR.
 `icon.svg` are 223 KB (PNG încorporat): dacă se păstrează, merită vectorizat.
+
+**Oprit după ~3 ore, 20 septembrie 2026 (`0ef374e`).** Motivul nu e estetica:
+`impozitsalariu.ro` e încă în SERP, deasupra noastră, cu un semn roșu vertical
+asemănător, iar site-ul lui nu mai funcționează — confuzia ne-ar transfera nouă
+un site stricat. Iconița anterioară e din nou live pe toate cele cinci fișiere.
+Regula care rămâne: **înainte de a semăna cu un concurent, verifică dacă a
+dispărut efectiv din rezultate, nu doar dacă paginile lui mai răspund.**
