@@ -3413,6 +3413,12 @@ vinietă pe tot ecranul, bannere, multiplex și „ad intents” (linkuri, ancor
 inserate automat în textul paginilor). Scopul e o singură cifră: cât produce ziua de
 marți, cea mai bună zi a săptămânii, la densitate maximă de reclame.
 
+**Ad intents scoase la 05:35**, după 40 de minute, la cererea proprietarului: nu
+plătesc pe afișare, ci doar dacă cineva apasă chip-ul, iar pe pagină arătau ca
+linkuri proprii. Pe telefon, unul dintre ele („Obține Finanțări Publice") se așeza
+chiar peste câmpul de alegere brut/net. Restul formatelor rămân până la finalul
+testului.
+
 **Ce era înainte:** Auto ads OFF, nicio unitate de anunț, iar singurele reclame veneau
 dintr-un experiment pornit de Google pe 20 septembrie („Ad intents”, 50% din trafic,
 90 de zile, aplicare automată). L-am încheiat cu „Keep original” ca să pot edita
