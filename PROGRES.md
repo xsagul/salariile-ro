@@ -3381,7 +3381,7 @@ dispărut efectiv din rezultate, nu doar dacă paginile lui mai răspund.**
 Ziua de 19 septembrie, comparată cu 18 (prima zi plină de date; măsurarea a pornit
 pe 17):
 
-| | 19 sept (vineri) | 18 sept (joi) |
+| | 19 sept (sâmbătă) | 18 sept (vineri) |
 |---|---|---|
 | utilizatori | 245 | 516 |
 | calcule (`calcul`) | 230 | 487 |
@@ -3389,8 +3389,11 @@ pe 17):
 | timp mediu de interacțiune | 1m 09s | 1m 28s |
 | `parasire_pagina` | 130 utilizatori | 335 |
 
-**Scăderea la jumătate nu e o defecțiune, e vinerea.** În Search Console, 12
-septembrie (vineri) a făcut 237 de clicuri față de 503 joi — aceeași proporție.
+**Scăderea la jumătate nu e o defecțiune, e weekendul.** Corectat pe 21 septembrie:
+19 septembrie a fost sâmbătă, nu vineri, cum scrisesem întâi. În Search Console,
+sâmbetele fac 222 și 237 de clicuri, față de 473–582 vinerea — aceeași proporție.
+Media pe zi a săptămânii, trei săptămâni: luni 606, marți 653, miercuri 549,
+joi 603, vineri 519, sâmbătă 230, duminică 299.
 Verificat și că scriptul GA4 e pe pagina live și că evenimentele curg toată ziua.
 
 **Ce aflăm nou, din evenimente proprii:** unu din doi vizitatori face cel puțin un
