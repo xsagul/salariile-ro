@@ -3404,3 +3404,29 @@ patru ori mai puțini decât homepage-ul, dar timp mai mare pe vizitator.
 **Atenție la „evenimente cheie" în comparații**: 229 vs 142 nu e creștere de
 comportament — `calcul` a fost marcat ca eveniment cheie pe 18, la jumătatea zilei.
 Orice comparație care traversează 17–18 septembrie compară configurații diferite.
+
+## Test de RPM maxim, 24 de ore — 21–22 septembrie 2026
+
+Pornit la **04:55**, ora României, din contul AdSense (`pub-5894290637571256`),
+fără nicio schimbare de cod. Auto ads ON cu **toate** formatele: ancoră, laterale,
+vinietă pe tot ecranul, bannere, multiplex și „ad intents” (linkuri, ancore și chips
+inserate automat în textul paginilor). Scopul e o singură cifră: cât produce ziua de
+marți, cea mai bună zi a săptămânii, la densitate maximă de reclame.
+
+**Ce era înainte:** Auto ads OFF, nicio unitate de anunț, iar singurele reclame veneau
+dintr-un experiment pornit de Google pe 20 septembrie („Ad intents”, 50% din trafic,
+90 de zile, aplicare automată). L-am încheiat cu „Keep original” ca să pot edita
+setările — avea 0 impresii, deci nu s-a pierdut venit.
+
+**Punctul de plecare, 7 zile până pe 20 septembrie:** 1.625 afișări de pagină,
+14 impresii de anunț, 1 clic, 0,02 €. Sub 1% dintre pagini arătau o reclamă.
+Consimțământul nu e o piedică: 95% acceptă, din 1.400 de mesaje afișate.
+
+**Estimare făcută înainte de test, ca să avem cu ce compara:** ~650 de clicuri din
+Google (media a trei zile de marți), ~790 de afișări de pagină, ~2.400 de impresii,
+**1–2,5 €**, cu maximul absolut în jur de 3 €. Prima zi subestimează: Google are
+nevoie de zile ca să calibreze plasările.
+
+**Contul nu poate încă încasa:** lipsesc informațiile fiscale, verificarea de
+identitate și metoda de plată. Sunt ale proprietarului; agentul nu le completează.
+Pragul de plată e 70 €.
