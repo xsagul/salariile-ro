@@ -24,39 +24,47 @@ const ACTUALIZAT = PAGE_LAST_MODIFIED[PATH].toLocaleDateString("ro-RO", {
 });
 
 export const metadata: Metadata = {
-  title: { absolute: "SmartBill 2026: preț, salarizare și Conta | Salariile.ro" },
+  title: { absolute: "SmartBill 2026: prețuri, facturare și Conta | Salariile.ro" },
   description:
-    "SmartBill în 2026: prețuri Conta, salarizare și D112, limitele planurilor și comparație cu SAGA. Date verificate în sursele oficiale SmartBill.",
+    "SmartBill în 2026: prețuri actuale, Facturare, Gestiune, Conta, POS, e-Factura, login și salarizare. Ghid independent cu surse oficiale.",
   alternates: { canonical: "https://salariile.ro/smartbill" },
   openGraph: ogPage({
-    title: "SmartBill 2026: preț, salarizare și Conta",
+    title: "SmartBill 2026: prețuri, facturare și Conta",
     description:
-      "Prețurile SmartBill Conta, ce include salarizarea și D112 și cum se compară cu SAGA.",
+      "Prețurile și produsele SmartBill: Facturare, Gestiune, Conta, POS, e-Factura, login și salarizare.",
     path: PATH,
   }),
   twitter: twPage({
-    title: "SmartBill 2026: preț, salarizare și Conta",
+    title: "SmartBill 2026: prețuri, facturare și Conta",
     description:
-      "Prețurile SmartBill Conta, ce include salarizarea și D112 și cum se compară cu SAGA.",
+      "Prețurile și produsele SmartBill: Facturare, Gestiune, Conta, POS, e-Factura, login și salarizare.",
   }),
 };
 
 const FAQ = [
   {
+    q: "Ce este SmartBill?",
+    a: "SmartBill este o suită românească de aplicații cloud pentru facturare, e-Factura, gestiune, POS și contabilitate. Produsele sunt separate pe planuri, iar funcțiile de salarizare și D112 sunt în SmartBill Conta.",
+  },
+  {
+    q: "Cât costă SmartBill?",
+    a: "La verificarea din 22 septembrie 2026, SmartBill Facturare pornește de la 5,84 euro + TVA pe lună, iar Gestiune + Facturare de la 16,32 euro + TVA pe lună. SmartBill Conta are plan Free la 0 euro, Conta S la 2 euro + TVA/CIF/lună și Conta M la 79 euro + TVA/CIF/lună pentru firmele de contabilitate. Furnizorul poate modifica prețurile.",
+  },
+  {
     q: "SmartBill are salarizare?",
-    a: "Da. Modulul SmartBill Conta include salarizare și generarea D112. În evidența salariaților se pot completa date personale, contractuale, salariul de bază, norma, sporurile, taxele și deducerile.",
+    a: "Da. SmartBill Conta include salarizare și D112. În evidența salariaților se pot completa date contractuale, salariul de bază, norma, sporurile, contribuțiile și deducerile, iar aplicația poate genera state și fluturași.",
   },
   {
-    q: "Cât costă SmartBill Conta?",
-    a: "Pentru firmele de contabilitate, pagina oficială afișează Free la 0 euro, Conta S la 2 euro + TVA/CIF/lună și Conta M la 79 euro + TVA/CIF/lună. Pentru contabilitate internă se adaugă un tarif de 25 euro/lună per cont. Prețurile și condițiile pot fi schimbate de furnizor.",
+    q: "Unde este login-ul SmartBill?",
+    a: "Autentificarea se face pe serviciul oficial cloud.smartbill.ro. Salariile.ro nu cere și nu intermediază datele de acces SmartBill.",
   },
   {
-    q: "SmartBill Conta este același lucru cu SmartBill Facturare?",
-    a: "Nu. SmartBill are produse și planuri distincte pentru facturare, gestiune, POS și contabilitate. Funcțiile de salarizare și D112 analizate aici apar în SmartBill Conta.",
+    q: "Se scrie SmartBill sau Smart Bill?",
+    a: "Numele oficial al produsului este SmartBill, într-un singur cuvânt. Căutarea „Smart Bill” este însă folosită frecvent pentru același produs, de aceea o tratăm aici ca aceeași intenție.",
   },
   {
     q: "SmartBill sau SAGA pentru salarii?",
-    a: "Ambele au funcții de salarizare și D112, dar modelul de utilizare diferă. SmartBill Conta este orientat spre lucru în cloud și abonamente pe planuri; SAGA C este aplicația desktop, iar SAGA WEB oferă acces prin browser. Alegerea depinde de fluxul firmei, numărul de societăți și nevoia de lucru online.",
+    a: "Ambele au funcții de salarizare și D112. SmartBill Conta este un serviciu cloud, SAGA C este aplicație desktop, iar SAGA WEB funcționează în browser. Diferența practică ține de fluxul de lucru, licențiere și modul în care gestionezi firmele.",
   },
 ];
 
@@ -72,9 +80,9 @@ const jsonLd = {
     },
     {
       "@type": "Article",
-      headline: "SmartBill 2026: preț, salarizare și contabilitate",
+      headline: "SmartBill 2026: prețuri, facturare, gestiune și contabilitate",
       description:
-        "Ghid despre SmartBill Conta: prețuri, salarizare, D112, planuri și comparație cu SAGA.",
+        "Ghid independent despre SmartBill: produse, prețuri, e-Factura, Conta, salarizare și comparație cu SAGA.",
       author: personSchema,
       publisher: { "@type": "Organization", name: "Salariile.ro", url: "https://salariile.ro" },
       mainEntityOfPage: "https://salariile.ro/smartbill",
@@ -100,135 +108,220 @@ export default function SmartBillPage() {
 
       <Hero>
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "SmartBill" }]} />
-        <H1>SmartBill în 2026: preț, salarizare și contabilitate</H1>
+        <H1>SmartBill în 2026: prețuri, facturare, gestiune și Conta</H1>
         <Lead>
-          <strong>SmartBill Conta include salarizare și D112.</strong> Pentru firmele de contabilitate,
-          planul Free este 0 €, Conta S este 2 € + TVA/CIF/lună, iar Conta M este 79 € + TVA/CIF/lună.
-          Dacă ții contabilitatea intern, SmartBill afișează și un tarif de 25 € pe lună per cont.
-          Mai jos vezi ce primești pentru salarii și unde diferă de SAGA.
+          <strong>SmartBill este o suită cloud pentru facturare, e-Factura, gestiune, POS și contabilitate.</strong>{" "}
+          Facturarea pornește de la 5,84 € + TVA/lună, iar Gestiune + Facturare de la 16,32 € + TVA/lună.
+          SmartBill Conta are planuri separate și include salarizare + D112. Mai jos găsești produsele,
+          prețurile, login-ul și diferența față de SAGA.
         </Lead>
-        <Eyebrow>Verificat {ACTUALIZAT} · surse oficiale SmartBill</Eyebrow>
+        <Eyebrow>Ghid independent · verificat {ACTUALIZAT} în sursele oficiale SmartBill</Eyebrow>
       </Hero>
 
       <Section
         noTopBorder
         companion={
-          <CardCompanion
-            titlu="Pe scurt"
-            nota="Prețurile sunt cele afișate de SmartBill la verificarea din 22 septembrie 2026 și pot fi modificate de furnizor."
-          >
+          <CardCompanion titlu="SmartBill pe scurt" nota="Prețurile sunt cele afișate public la 22 septembrie 2026.">
             <Repere
               randuri={[
-                ["Free", "0 €"],
-                ["Conta S", "2 € + TVA/CIF/lună"],
-                ["Conta M", "79 € + TVA/CIF/lună"],
-                ["Testare", "3 luni contabile"],
+                ["Facturare", "de la 5,84 € + TVA/lună"],
+                ["Gestiune + Facturare", "de la 16,32 € + TVA/lună"],
+                ["Conta", "Free / S / M"],
+                ["Acces", "cloud / browser"],
               ]}
             />
           </CardCompanion>
         }
       >
-        <h2>Preț SmartBill Conta în 2026</h2>
+        <h2>Ce este SmartBill și ce produse are</h2>
         <p>
-          SmartBill separă oferta pentru firmele de contabilitate de situația în care o firmă își ține
-          contabilitatea intern. În varianta pentru firme de contabilitate, pagina oficială afișează:
+          SmartBill nu este un singur program. Este un ecosistem de produse pentru administrarea financiară
+          a unei firme. Homepage-ul oficial separă <strong>Facturare</strong>, <strong>Gestiune + Facturare</strong>,
+          <strong>POS</strong> și <strong>Contabilitate</strong>, iar toate sunt legate de același ecosistem cloud.
         </p>
         <div className="table-wrap">
           <table>
             <thead>
               <tr>
-                <th>Plan</th>
-                <th>Preț afișat</th>
-                <th>Salarizare + D112</th>
+                <th>Produs</th>
+                <th>Pentru ce îl folosești</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <th>Free</th>
-                <td>0 €</td>
-                <td>2 contracte incluse</td>
+                <th>SmartBill Facturare</th>
+                <td>Facturi, e-Factura, proforme, chitanțe, încasări și rapoarte.</td>
               </tr>
               <tr>
-                <th>Conta S</th>
-                <td>2 € + TVA/CIF/lună</td>
-                <td>10 contracte incluse*</td>
+                <th>SmartBill Gestiune</th>
+                <td>Stocuri, NIR, inventar, coduri de bare, plus funcțiile de facturare.</td>
               </tr>
               <tr>
-                <th>Conta M</th>
-                <td>79 € + TVA/CIF/lună</td>
-                <td>20 contracte incluse*</td>
+                <th>SmartBill POS</th>
+                <td>Vânzare prin casă de marcat, inclusiv integrare cu gestiunea.</td>
+              </tr>
+              <tr>
+                <th>SmartBill Conta</th>
+                <td>Contabilitate, declarații, salarizare, D112, SAF-T și integrare SPV.</td>
               </tr>
             </tbody>
           </table>
         </div>
         <p>
-          Pentru contabilitate internă, pagina afișează suplimentar <strong>25 € pe lună per cont</strong>,
-          peste planul Conta S sau Conta M. SmartBill oferă o perioadă de testare de trei luni contabile.
-        </p>
-        <p>
-          *SmartBill precizează chiar pe pagina de prețuri că limitele și taxarea suplimentară pentru
-          numărul de salariați din Conta S și M <strong>nu sunt aplicate încă</strong> la data verificării.
-          Așadar, tabelul descrie structura publicată a planurilor, nu o taxare care se aplică deja fiecărui
-          contract peste limită.
+          Dacă ai căutat „Smart Bill” scris separat, este aceeași entitate: forma folosită oficial de companie
+          este <strong>SmartBill</strong>.
         </p>
         <p className="source-note">
-          Sursă:{" "}
-          <a href="https://www.smartbill.ro/preturi/contabilitate?tip=intern">
-            SmartBill — prețuri Conta
+          Surse:{" "}
+          <a href="https://www.smartbill.ro/">SmartBill — pagina principală</a>
+          {" · "}
+          <a href="https://www.smartbill.ro/preturi/facturare-gestiune">
+            SmartBill — Facturare și Gestiune
           </a>.
         </p>
       </Section>
 
       <Section
         companion={
-          <CardCompanion titlu="Ce intră în fluxul de salarii">
+          <CardCompanion titlu="Prețuri de intrare">
+            <Repere
+              randuri={[
+                ["Facturare", "5,84 € + TVA/lună"],
+                ["Gestiune + Facturare", "16,32 € + TVA/lună"],
+                ["Conta Free", "0 €"],
+                ["Conta S", "2 € + TVA/CIF/lună"],
+                ["Conta M", "79 € + TVA/CIF/lună"],
+              ]}
+            />
+          </CardCompanion>
+        }
+      >
+        <h2>Prețuri SmartBill în 2026</h2>
+        <p>
+          Pagina oficială de prețuri afișează <strong>SmartBill Facturare de la 5,84 € + TVA/lună</strong> și
+          <strong> SmartBill Gestiune + Facturare de la 16,32 € + TVA/lună</strong>. Ambele pot fi testate
+          gratuit 30 de zile. Pentru firmele aflate în primul an de la înființare, SmartBill afișează o
+          promoție de 12 luni gratuite pentru Facturare, Gestiune și programul de vânzare cu casă de marcat.
+        </p>
+        <p>
+          La Facturare, planurile sunt Silver, Gold și Platinum. Diferențele principale sunt numărul de
+          facturi, utilizatorii incluși, automatizarea e-Factura, rapoartele și accesul la API/plugin-uri.
+          La Gestiune apar în plus stocurile, inventarul, NIR, codurile de bare și rapoartele de gestiune.
+        </p>
+        <p>
+          SmartBill Conta are altă structură de preț. Pentru firmele de contabilitate, pagina oficială
+          afișează Free la 0 €, Conta S la 2 € + TVA/CIF/lună și Conta M la 79 € + TVA/CIF/lună. Pentru
+          contabilitatea internă se adaugă 25 € + TVA/lună per cont.
+        </p>
+        <p>
+          Prețurile se pot schimba. De aceea păstrăm data verificării vizibilă și trimitem la paginile
+          oficiale, nu la capturi sau tarife istorice.
+        </p>
+        <p className="source-note">
+          Surse:{" "}
+          <a href="https://www.smartbill.ro/preturi/facturare-gestiune">
+            SmartBill — prețuri Facturare și Gestiune
+          </a>
+          {" · "}
+          <a href="https://www.smartbill.ro/preturi/contabilitate?tip=intern">
+            SmartBill — prețuri Conta
+          </a>.
+        </p>
+      </Section>
+
+      <Section>
+        <h2>SmartBill Facturare și e-Factura</h2>
+        <p>
+          Zona de Facturare acoperă emiterea și trimiterea facturilor, proformelor și chitanțelor, precum și
+          integrarea cu RO e-Factura. Planurile superioare adaugă trimitere automată sau în masă, facturare
+          recurentă, notificări către clienți și funcții pentru magazine online.
+        </p>
+        <p>
+          Pentru un utilizator care caută pur și simplu „SmartBill”, aceasta este una dintre intențiile
+          dominante din rezultatele Google: acces rapid la facturare și e-Factura, nu salarizare. Din acest
+          motiv ghidul începe cu produsele și prețurile și abia apoi intră în SmartBill Conta.
+        </p>
+      </Section>
+
+      <Section>
+        <h2>SmartBill Gestiune și POS</h2>
+        <p>
+          SmartBill Gestiune adaugă peste facturare evidența stocurilor: recepții și NIR, mișcări de stoc,
+          inventar, coduri de bare, plăți către furnizori și rapoarte. Poate fi conectat cu SmartBill POS
+          pentru vânzarea prin casă de marcat.
+        </p>
+        <p>
+          Pentru magazine sau firme care lucrează cu marfă, comparația relevantă nu este între un simplu
+          program de facturare și SmartBill, ci între pachetele de gestiune și fluxul complet necesar firmei.
+        </p>
+      </Section>
+
+      <Section
+        companion={
+          <CardCompanion titlu="Salarizare în SmartBill Conta">
             <ul className="space-y-2 text-sm text-stone-600">
-              <li>salariați și date contractuale</li>
+              <li>salariați și contracte</li>
               <li>salariu de bază, normă și program</li>
-              <li>sporuri, taxe și deduceri</li>
-              <li>stat de plată și fluturași</li>
+              <li>sporuri, contribuții și deduceri</li>
+              <li>state de salarii și fluturași</li>
               <li>Declarația 112</li>
             </ul>
           </CardCompanion>
         }
       >
-        <h2>Ce poate face SmartBill pentru salarizare</h2>
+        <h2>SmartBill Conta: contabilitate, salarii și D112</h2>
         <p>
-          Salarizarea nu este un produs separat: este inclusă în <strong>SmartBill Conta</strong>.
-          În zona „Salariați”, documentația oficială arată că poți introduce datele personale și bancare,
-          funcția, salariul de bază, norma de lucru, datele contractului, concediul, sporurile, contribuțiile
-          și deducerile personale.
+          <strong>Salarizarea este în SmartBill Conta</strong>, nu în planul simplu de Facturare. Documentația
+          oficială pentru salariați include date personale și contractuale, salariul de bază, norma de lucru,
+          programul, sporurile, contribuțiile și deducerile.
         </p>
         <p>
-          Din același flux se generează statul de salarii și informațiile necesare pentru D112. SmartBill
-          publică separat actualizările legislative ale modulului; în august 2026 a actualizat D112 pentru
-          regulile aplicabile din iulie 2026.
+          Pagina de prețuri Conta include explicit <strong>Salarizare + D112</strong>. Planul Free afișează
+          două contracte incluse, Conta S zece, iar Conta M douăzeci. SmartBill precizează însă că, la data
+          verificării, limitele și taxarea suplimentară pentru numărul de salariați nu sunt încă aplicate.
         </p>
         <p>
           Dacă vrei doar să verifici un brut sau un net, nu ai nevoie de un program contabil. Pentru un
-          calcul individual poți folosi <Link href="/">calculatorul de salariu net</Link>. Programul
-          contabil devine relevant când trebuie să ții evidența angajaților, să generezi state și să
-          raportezi lunar.
+          calcul individual poți folosi <Link href="/">calculatorul salariile.ro</Link>. SmartBill Conta
+          devine relevant când ai de gestionat angajați, state, fluturași și declarații.
         </p>
         <p className="source-note">
           Surse:{" "}
-          <a href="https://ajutorconta.smartbill.ro/article/718-salariati">SmartBill Conta — Salariați</a>
+          <a href="https://www.smartbill.ro/preturi/contabilitate?tip=intern">
+            SmartBill Conta — prețuri și salarizare
+          </a>
           {" · "}
-          <a href="https://www.smartbill.ro/actualizari">SmartBill — actualizări produse</a>.
+          <a href="https://ajutorconta.smartbill.ro/article/718-salariati">
+            Ajutor SmartBill Conta — Salariați
+          </a>.
         </p>
       </Section>
 
-      <Section>
-        <h2>SmartBill Conta, Facturare și Gestiune nu sunt același produs</h2>
+      <Section
+        companion={
+          <CardCompanion titlu="Acces rapid">
+            <Repere
+              randuri={[
+                ["Login SmartBill", "cloud.smartbill.ro"],
+                ["Facturare", "online"],
+                ["Conta", "online"],
+                ["Aplicații", "iOS / Android"],
+              ]}
+            />
+          </CardCompanion>
+        }
+      >
+        <h2>SmartBill login și autentificare</h2>
         <p>
-          O căutare după „SmartBill” poate însemna lucruri diferite. SmartBill are produse pentru facturare,
-          gestiune, POS și contabilitate. <strong>Salarizarea și D112 sunt în SmartBill Conta</strong>.
+          Dacă ai deja cont și intenția este doar autentificarea, intrarea corectă este serviciul oficial
+          SmartBill Cloud. Salariile.ro nu reproduce formularul de login și nu cere date de acces.
         </p>
         <p>
-          Dacă ai nevoie doar de emiterea facturilor, comparația de preț trebuie făcută pe planurile de
-          Facturare. Dacă ai nevoie de salarii, declarații și evidență contabilă, planurile Conta sunt cele
-          relevante. Am separat aceste două lucruri fiindcă prețurile de facturare nu spun cât costă
-          automat fluxul complet de contabilitate și salarii.
+          Pentru utilizatorii care caută informații înainte de a cumpăra, pagina de față rămâne separată de
+          autentificare: explică produsele, prețurile și funcțiile, apoi te trimite la serviciul oficial.
+        </p>
+        <p className="source-note">
+          Login oficial: <a href="https://cloud.smartbill.ro/auth/login/">cloud.smartbill.ro/auth/login</a>.
         </p>
       </Section>
 
@@ -246,33 +339,20 @@ export default function SmartBillPage() {
           </CardCompanion>
         }
       >
-        <h2>SmartBill vs SAGA pentru salarizare</h2>
+        <h2>SmartBill vs SAGA pentru contabilitate și salarizare</h2>
         <p>
-          SmartBill și SAGA se suprapun la contabilitate și salarii, dar nu sunt construite identic.
-          SmartBill Conta este un serviciu cloud cu planuri de abonament. SAGA C este programul desktop,
-          iar SAGA WEB este varianta accesibilă din browser.
+          SmartBill și SAGA se suprapun la contabilitate și salarii, dar au modele diferite. SmartBill Conta
+          este un serviciu cloud pe planuri. SAGA C este aplicația desktop, iar SAGA WEB este varianta
+          accesibilă din browser.
         </p>
         <p>
-          Pentru salarii, ambele documentații includ evidența angajaților și D112. Diferența practică este
-          mai ales în fluxul de lucru, licențiere și ecosistem. SAGA oferă și o licență freeware pentru
-          aplicația desktop, dar fără actualizări, suport și mentenanță; SmartBill are plan Free și planuri
-          Conta cu funcționalități și limite publicate.
+          Pentru salarii, ambele documentații includ evidența angajaților și D112. Alegerea practică ține de
+          modul în care vrei să lucrezi, de numărul de firme și de modelul de licențiere, nu de existența sau
+          absența calculului salarial.
         </p>
         <p>
-          Am pus detaliile despre SAGA separat, ca să nu amestecăm două intenții de căutare diferite:
-          <Link href="/saga"> vezi ghidul SAGA C și SAGA WEB</Link>.
-        </p>
-      </Section>
-
-      <Section>
-        <h2>SmartBill login și autentificare</h2>
-        <p>
-          Dacă intenția ta este doar autentificarea, intrarea corectă este serviciul oficial SmartBill.
-          Salariile.ro nu reproduce formularul de login și nu cere date de acces. Pagina aceasta explică
-          produsul, prețul și funcțiile de salarizare.
-        </p>
-        <p className="source-note">
-          Autentificare oficială: <a href="https://cloud.smartbill.ro">cloud.smartbill.ro</a>.
+          Detaliile despre SAGA sunt într-o pagină separată, ca fiecare pagină să aibă o entitate și o
+          intenție principală clară: <Link href="/saga">SAGA C și SAGA WEB</Link>.
         </p>
       </Section>
 
@@ -281,26 +361,10 @@ export default function SmartBillPage() {
       <Section>
         <h2>Surse verificate</h2>
         <ul>
-          <li>
-            <a href="https://www.smartbill.ro/preturi/contabilitate?tip=intern">
-              SmartBill — prețuri SmartBill Conta
-            </a>
-          </li>
-          <li>
-            <a href="https://ajutorconta.smartbill.ro/article/718-salariati">
-              SmartBill Conta — evidența salariaților
-            </a>
-          </li>
-          <li>
-            <a href="https://www.smartbill.ro/actualizari">
-              SmartBill — actualizări produse
-            </a>
-          </li>
-          <li>
-            <a href="https://www.sagasoft.ro/conditii-licenta.php">
-              SAGA Software — condițiile licenței
-            </a>
-          </li>
+          <li><a href="https://www.smartbill.ro/">SmartBill — pagina principală</a></li>
+          <li><a href="https://www.smartbill.ro/preturi/facturare-gestiune">SmartBill — prețuri Facturare și Gestiune</a></li>
+          <li><a href="https://www.smartbill.ro/preturi/contabilitate?tip=intern">SmartBill — prețuri Conta</a></li>
+          <li><a href="https://ajutorconta.smartbill.ro/article/718-salariati">SmartBill Conta — evidența salariaților</a></li>
         </ul>
         <p>
           Salariile.ro nu este afiliat cu SmartBill sau SAGA. Numele produselor apar pentru identificarea
@@ -312,8 +376,8 @@ export default function SmartBillPage() {
         linkuri={[
           { href: "/saga", label: "SAGA C și SAGA WEB", descriere: "Contabilitate, salarii, D112 și licențiere." },
           { href: "/", label: "Calculator salariu net", descriere: "Transformă brutul în net și vezi taxele." },
-          { href: "/calculator-pfa", label: "Calculator PFA", descriere: "Compară taxele PFA cu formele de firmă." },
           { href: "/fluturas-salariu", label: "Fluturaș de salariu", descriere: "Vezi ce înseamnă fiecare rând din statul de plată." },
+          { href: "/calculator-pfa", label: "Calculator PFA", descriere: "Calculează taxele pentru activitate independentă." },
         ]}
       />
     </>
