@@ -23,12 +23,6 @@ jobs:
       - run: npm run lint
       - run: npm run build
       - run: npm run test:rendered
-      # Publicarea pe Cloudflare: doar de pe main, după ce toate verificările de
-      # mai sus au trecut, cu exact build-ul verificat. Cheile sunt secrete ale repo-ului.
-      - name: Publică pe Cloudflare
-        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: deploy
+
+      # Publicarea este gestionată separat de Cloudflare Workers Builds, care
+      # urmărește branch-ul main și rulează build-ul/deploy-ul cu tokenul propriu.
