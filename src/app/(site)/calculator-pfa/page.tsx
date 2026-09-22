@@ -542,6 +542,8 @@ export default function CalculatorPfaPage() {
           { href: "/salarii", label: "Salarii pe meserii", descriere: "Cât se câștigă ca angajat în 132 de meserii, cu datele INS." },
           { href: "/", label: "Calculator salariu net", descriere: "Compară cu varianta pe contract de muncă: brut, net și costul firmei." },
           { href: "/salariu-minim", label: "Salariul minim 2026", descriere: "Reperul de la care pornesc contribuțiile, inclusiv pentru PFA." },
+          { href: "/smartbill", label: "SmartBill Conta", descriere: "Prețuri, salarizare, D112 și planurile SmartBill Conta." },
+          { href: "/saga", label: "SAGA C și SAGA WEB", descriere: "Contabilitate, salarii, D112 și licențiere." },
           { href: "/metodologie", label: "Metodologia de calcul", descriere: "Formulele, plafoanele și sursele normative, în detaliu." },
         ]}
       />
