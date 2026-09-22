@@ -241,6 +241,8 @@ export default function FluturasSalariuPage() {
           { href: "/salariu-minim", label: "Salariul minim 2026", descriere: "4.325 lei brut din 1 iulie. Calculul net, pas cu pas." },
           { href: "/widget", label: "Widget pentru site-ul tău", descriere: "Pune calculatorul pe propriul site, gratuit și fără cont." },
           { href: "/metodologie", label: "Metodologia de calcul", descriere: "Formula completă, sursele normative și limitările declarate." },
+          { href: "/smartbill", label: "SmartBill și salarizare", descriere: "Prețuri, SmartBill Conta, D112 și funcțiile pentru salarii." },
+          { href: "/saga", label: "SAGA pentru salarii", descriere: "SAGA C, SAGA WEB, D112 și licențiere." },
         ]}
       />
     </>
