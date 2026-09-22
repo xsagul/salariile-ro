@@ -106,9 +106,9 @@ export default function SagaPage() {
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "SAGA" }]} />
         <H1>SAGA în 2026: program pentru salarii și contabilitate</H1>
         <Lead>
-          <strong>SAGA C ține contabilitatea, salariile și stocurile</strong>, iar SAGA WEB mută accesul
-          în browser. SAGA are și o licență freeware pentru desktop, dar fără actualizări și suport.
-          Pentru salarizare există configurarea angajaților, state de salarii și D112.
+          <strong>SAGA C este gratuit și fără limitări pentru funcțiile incluse în versiunea descărcată</strong>,
+          iar actualizările și asistența fac obiectul licenței. Programul acoperă contabilitate, salarii și
+          stocuri; SAGA WEB oferă acces la funcționalități similare prin browser.
         </Lead>
         <Eyebrow>Verificat {ACTUALIZAT} · surse oficiale SAGA Software</Eyebrow>
       </Hero>
@@ -175,9 +175,9 @@ export default function SagaPage() {
           contractele cu scutiri sau concedii medicale și celelalte categorii raportate în D112.
         </p>
         <p>
-          SAGA a continuat să actualizeze aceste funcții în 2026. În versiunea 3.0.604 din 27 iunie au
-          fost introduse modificările de salarizare aplicabile din iulie 2026, iar versiunea 3.0.605 din
-          5 august a actualizat D112.
+          SAGA a continuat să actualizeze aceste funcții în 2026. Jurnalul oficial consemnează modificări
+          pentru salarizarea aplicabilă din iulie și actualizări D112, iar pagina SAGA C afișează în prezent
+          versiunea 3.0.605, datată 9 septembrie 2026.
         </p>
         <p>
           Pentru verificarea rapidă a unui salariu individual poți folosi
@@ -204,8 +204,8 @@ export default function SagaPage() {
         <h2>SAGA gratuit vs licență plătită</h2>
         <p>
           SAGA Software definește explicit o <strong>licență Freeware</strong> pentru SAGA C și SAGA P.S.
-          Aceasta poate fi folosită pe termen nedeterminat cât timp furnizorul continuă să ofere varianta
-          Freeware.
+          Pagina SAGA C descrie programul drept gratuit și fără limitări; condițiile de licențiere precizează
+          că varianta Freeware poate fi folosită pe termen nedeterminat cât timp furnizorul continuă să o ofere.
         </p>
         <p>
           Limita importantă este alta: licența Freeware <strong>nu include actualizările programului,
@@ -311,6 +311,11 @@ export default function SagaPage() {
       <Section>
         <h2>Surse verificate</h2>
         <ul>
+          <li>
+            <a href="https://www.sagasoft.ro/saga-c.php">
+              SAGA Software — SAGA C
+            </a>
+          </li>
           <li>
             <a href="https://www.sagasoft.ro/conditii-licenta.php">
               SAGA Software — licență și condiții de utilizare
