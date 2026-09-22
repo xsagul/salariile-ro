@@ -35,6 +35,8 @@ const STATIC_ENTRIES: {
   { path: "/calculator-indemnizatie-somaj", priority: 0.9, changeFrequency: "monthly" },
   { path: "/en/salary-calculator", priority: 0.8, changeFrequency: "monthly" },
   { path: "/salariu-mediu", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/smartbill", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/saga", priority: 0.8, changeFrequency: "monthly" },
   { path: "/salarii", priority: 0.8, changeFrequency: "monthly" },
   { path: "/compara", priority: 0.7, changeFrequency: "monthly" },
   { path: "/salarii/acoperire", priority: 0.6, changeFrequency: "weekly" },
