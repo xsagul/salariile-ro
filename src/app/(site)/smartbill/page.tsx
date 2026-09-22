@@ -1,14 +1,11 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "@/app/components/Link";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 import {
-  Hero,
   Section,
   Breadcrumb,
-  H1,
-  Lead,
-  Eyebrow,
   CardCompanion,
   Repere,
   PaginiConexe,
@@ -106,38 +103,68 @@ export default function SmartBillPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      <Hero>
-        <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "SmartBill" }]} />
-        <H1>SmartBill în 2026: prețuri, facturare, gestiune și Conta</H1>
-        <Lead>
-          <strong>SmartBill este o suită cloud pentru facturare, e-Factura, gestiune, POS și contabilitate.</strong>{" "}
-          Facturarea pornește de la 5,84 € + TVA/lună, iar Gestiune + Facturare de la 16,32 € + TVA/lună.
-          SmartBill Conta are planuri separate și include salarizare + D112. Mai jos găsești produsele,
-          prețurile, login-ul și diferența față de SAGA.
-        </Lead>
-        <Eyebrow>Ghid independent · verificat {ACTUALIZAT} în sursele oficiale SmartBill</Eyebrow>
-      </Hero>
+      <section className="bg-canvas">
+        <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
+          <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "SmartBill" }]} />
+          <div className="md:grid md:grid-cols-5 md:items-center md:gap-8 lg:gap-10">
+            <div className="md:col-span-3">
+              <h1 className="max-w-xl text-[1.625rem] font-bold leading-[1.08] tracking-[-0.025em] text-stone-900 sm:text-4xl">
+                SmartBill: ce oferă și cui i se potrivește
+              </h1>
+              <p className="mt-4 text-xs text-stone-600 [&_a]:font-medium [&_a]:text-stone-700 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-900">
+                Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat {ACTUALIZAT}
+              </p>
+              <p className="mt-5 max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600 [&_strong]:font-semibold [&_strong]:text-stone-900">
+                <strong>Pe scurt, SmartBill este potrivit dacă vrei să facturezi online și să trimiți e-Factura fără un program instalat.</strong>{" "}
+                Pentru stocuri ai nevoie de pachetul de gestiune, iar contabilitatea și salariile sunt în SmartBill Conta.
+              </p>
+            </div>
+            <div className="mt-7 md:col-span-2 md:mt-0">
+              <Image
+                src="/hero-smartbill.webp"
+                alt="Ilustrație cu o antreprenoare care verifică o factură lângă un calculator de birou"
+                width={1200}
+                height={900}
+                priority
+                sizes="(max-width: 768px) 100vw, 480px"
+                className="w-full rounded-md"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
 
       <Section
-        noTopBorder
         companion={
-          <CardCompanion titlu="SmartBill pe scurt" nota="Prețurile sunt cele afișate public la 22 septembrie 2026.">
-            <Repere
-              randuri={[
-                ["Facturare", "de la 5,84 € + TVA/lună"],
-                ["Gestiune + Facturare", "de la 16,32 € + TVA/lună"],
-                ["Conta", "Free / S / M"],
-                ["Acces", "cloud / browser"],
-              ]}
-            />
+          <CardCompanion titlu="Verdict rapid">
+            <ul className="space-y-3 text-sm leading-normal text-stone-600 [&_strong]:font-semibold [&_strong]:text-stone-900">
+              <li><strong>Potrivit:</strong> PFA și firme care vor facturare online, e-Factura și acces de pe telefon.</li>
+              <li><strong>Cu gestiune:</strong> dacă lucrezi cu stocuri, NIR, inventar sau casă de marcat.</li>
+              <li><strong>Pentru salarii:</strong> ai nevoie de SmartBill Conta, nu de planul simplu de facturare.</li>
+            </ul>
           </CardCompanion>
         }
       >
-        <h2>Ce este SmartBill și ce produse are</h2>
+        <h2>Merită SmartBill pentru firma ta?</h2>
         <p>
-          SmartBill nu este un singur program. Este un ecosistem de produse pentru administrarea financiară
-          a unei firme. Homepage-ul oficial separă <strong>Facturare</strong>, <strong>Gestiune + Facturare</strong>,
-          <strong>POS</strong> și <strong>Contabilitate</strong>, iar toate sunt legate de același ecosistem cloud.
+          Da, dacă prioritatea ta este să emiți documente rapid, să lucrezi din browser sau de pe telefon și
+          să trimiți facturile în SPV din același loc. Pentru o firmă mică, acestea sunt avantajele care se
+          simt cel mai repede în activitatea de zi cu zi.
+        </p>
+        <p>
+          Compară însă pachetele înainte să alegi. Facturarea, gestiunea și contabilitatea sunt produse
+          distincte, iar funcțiile de salarizare nu sunt incluse în abonamentul simplu de facturare.
+        </p>
+        <p className="source-note">
+          Informațiile despre produse și prețuri au fost verificate la {ACTUALIZAT} în sursele oficiale SmartBill.
+        </p>
+      </Section>
+
+      <Section>
+        <h2>Ce produse SmartBill există</h2>
+        <p>
+          SmartBill grupează patru produse principale. Alegerea devine mai simplă dacă pornești de la munca
+          pe care vrei să o rezolvi, nu de la lista completă de funcții.
         </p>
         <div className="table-wrap">
           <table>
