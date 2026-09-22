@@ -1,14 +1,11 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "@/app/components/Link";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 import {
-  Hero,
   Section,
   Breadcrumb,
-  H1,
-  Lead,
-  Eyebrow,
   CardCompanion,
   Repere,
   PaginiConexe,
@@ -102,33 +99,64 @@ export default function SagaPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      <Hero>
-        <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "SAGA" }]} />
-        <H1>SAGA Web și SAGA C: salarii și contabilitate</H1>
-        <Lead>
-          <strong>SAGA C este gratuit și fără limitări pentru funcțiile incluse în versiunea descărcată</strong>,
-          iar actualizările și asistența fac obiectul licenței. Programul acoperă contabilitate, salarii și
-          stocuri; SAGA WEB oferă acces la funcționalități similare prin browser.
-        </Lead>
-        <Eyebrow>Verificat {ACTUALIZAT} · surse oficiale SAGA Software</Eyebrow>
-      </Hero>
+      <section className="bg-canvas">
+        <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
+          <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "SAGA" }]} />
+          <div className="md:grid md:grid-cols-5 md:items-center md:gap-8 lg:gap-10">
+            <div className="md:col-span-3">
+              <h1 className="max-w-xl text-[1.625rem] font-bold leading-[1.08] tracking-[-0.025em] text-stone-900 sm:text-4xl">
+                SAGA: desktop sau web pentru contabilitate?
+              </h1>
+              <p className="mt-4 text-xs text-stone-600 [&_a]:font-medium [&_a]:text-stone-700 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-900">
+                Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat {ACTUALIZAT}
+              </p>
+              <p className="mt-5 max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600 [&_strong]:font-semibold [&_strong]:text-stone-900">
+                <strong>Alege SAGA C dacă lucrezi local pe PC și ai nevoie de contabilitate, salarii și stocuri într-un singur program.</strong>{" "}
+                Dacă accesul din browser este prioritar, varianta relevantă este SAGA WEB.
+              </p>
+            </div>
+            <div className="mt-7 md:col-span-2 md:mt-0">
+              <Image
+                src="/hero-saga.webp"
+                alt="Ilustrație cu o contabilă care organizează documente lângă un calculator de birou"
+                width={1200}
+                height={900}
+                priority
+                sizes="(max-width: 768px) 100vw, 480px"
+                className="w-full rounded-md"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
 
       <Section
-        noTopBorder
         companion={
-          <CardCompanion titlu="Produsele relevante">
-            <Repere
-              randuri={[
-                ["SAGA C", "desktop · partidă dublă"],
-                ["SAGA P.S.", "desktop · partidă simplă"],
-                ["SAGA WEB", "browser"],
-                ["Freeware", "fără actualizări/support"],
-              ]}
-            />
+          <CardCompanion titlu="Verdict rapid">
+            <ul className="space-y-3 text-sm leading-normal text-stone-600 [&_strong]:font-semibold [&_strong]:text-stone-900">
+              <li><strong>SAGA C:</strong> pentru contabilitate în partidă dublă și lucru local pe PC.</li>
+              <li><strong>SAGA WEB:</strong> dacă vrei să intri în program direct din browser.</li>
+              <li><strong>Pentru salarii:</strong> ambele variante includ fluxuri de salarizare și D112.</li>
+            </ul>
           </CardCompanion>
         }
       >
-        <h2>SAGA C, SAGA WEB și SAGA Software</h2>
+        <h2>Ce variantă SAGA ți se potrivește?</h2>
+        <p>
+          SAGA C este alegerea firească pentru contabili și firme care lucrează pe Windows, gestionează mai
+          multe tipuri de evidențe și vor să păstreze fluxul principal pe calculatorul propriu.
+        </p>
+        <p>
+          SAGA WEB răspunde altei nevoi: accesul online. Nu alegi între ele după numărul de funcții afișate,
+          ci după locul din care lucrezi și felul în care vrei să accesezi datele firmei.
+        </p>
+        <p className="source-note">
+          Informațiile despre produse și licențiere au fost verificate la {ACTUALIZAT} în sursele oficiale SAGA Software.
+        </p>
+      </Section>
+
+      <Section>
+        <h2>SAGA C, SAGA WEB și SAGA P.S.</h2>
         <p>
           <strong>SAGA C</strong> este aplicația desktop pentru evidență contabilă, salarială și de
           stocuri în partidă dublă. Pentru partidă simplă există SAGA P.S. <strong>SAGA WEB</strong>
