@@ -24,18 +24,18 @@ const ACTUALIZAT = PAGE_LAST_MODIFIED[PATH].toLocaleDateString("ro-RO", {
 });
 
 export const metadata: Metadata = {
-  title: { absolute: "SAGA 2026: program salarii și contabilitate | Salariile.ro" },
+  title: { absolute: "SAGA Web și SAGA C: salarii, contabilitate | Salariile.ro" },
   description:
     "SAGA C și SAGA WEB în 2026: contabilitate, salarizare, D112, licență freeware și diferențele față de SmartBill. Surse oficiale SAGA.",
   alternates: { canonical: "https://salariile.ro/saga" },
   openGraph: ogPage({
-    title: "SAGA 2026: program salarii și contabilitate",
+    title: "SAGA Web și SAGA C: salarii și contabilitate",
     description:
       "Ce sunt SAGA C și SAGA WEB, cum funcționează salarizarea și D112 și cum diferă de SmartBill.",
     path: PATH,
   }),
   twitter: twPage({
-    title: "SAGA 2026: program salarii și contabilitate",
+    title: "SAGA Web și SAGA C: salarii și contabilitate",
     description:
       "Ce sunt SAGA C și SAGA WEB, cum funcționează salarizarea și D112 și cum diferă de SmartBill.",
   }),
@@ -104,7 +104,7 @@ export default function SagaPage() {
 
       <Hero>
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "SAGA" }]} />
-        <H1>SAGA în 2026: program pentru salarii și contabilitate</H1>
+        <H1>SAGA Web și SAGA C: salarii și contabilitate</H1>
         <Lead>
           <strong>SAGA C este gratuit și fără limitări pentru funcțiile incluse în versiunea descărcată</strong>,
           iar actualizările și asistența fac obiectul licenței. Programul acoperă contabilitate, salarii și
