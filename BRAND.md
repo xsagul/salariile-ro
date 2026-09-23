@@ -79,8 +79,11 @@ nu se redesenează de mână.
 
 - Spațiu liber: minimum înălțimea marcajului „ii” pe toate laturile.
 - Minim: 28 px înălțime wordmarkul în chrome, 16 px faviconul.
-- Pe fundal deschis: varianta normală. Pe fundal închis: varianta „invers”
-  (litere albe, `.ro` în #9A958C, „ii” rămâne cerneală pe galben).
+- Pe fundal deschis: varianta normală. Pe fundal închis: varianta „invers” —
+  litere albe, `.ro` în #9A958C, iar „ii” **galben, fără căsuță**. Decis de
+  proprietar pe 23 septembrie 2026: în kit, „ii” era negru în căsuță și alb unde
+  ieșea din ea; la dimensiuni mici părea rupt. Pe negru, galbenul ca literă are
+  11,6:1 — regula „galbenul nu e text” privește fundalul deschis.
 - Interzis: rotire, umbră, contur, gradient, recolorare, alt font, „ii” fără marcaj.
 
 ## 5. Culoare — monocrom cald, cu un singur marcaj
@@ -94,7 +97,8 @@ septembrie 2026 se adaugă culorile mărcii, cu rol strict limitat:
 | `--color-cerneala` | #121212 | Semnul „ii” și textul scris peste galben |
 | — | #8A857C / #9A958C | Sufixul `.ro` din logo, pe deschis / pe închis. Nu e token de interfață. |
 
-**Galbenul nu e niciodată text** — pe alb are 1,6:1. Se folosește doar ca fundal,
+**Galbenul nu e niciodată text pe fundal deschis** — pe alb are 1,6:1. Singura
+excepție pe închis e „ii” din logoul invers (§4). Se folosește doar ca fundal,
 cu cerneală peste (12,1:1). Pe ecran apare o singură cifră marcată: netul (sau
 „rămâne la tine” la PFA) din rândul de total al calculatoarelor.
 
@@ -234,7 +238,7 @@ Distincții care nu se pierd niciodată:
 OG: fundal cerneală #121212 (invers față de site, ca să iasă din fluxul alb al
 rețelei), simbolul „ii” pe galben la stânga, eyebrow majuscule, titlu pe max. trei
 rânduri ~61 px / 800, linie de 1 px, promisiunea într-un rând, jos wordmarkul
-„invers” + referință legală în mono. `public/og-image.png` se randează din
+„invers” („ii” galben, fără căsuță) + referință legală în mono. `public/og-image.png` se randează din
 `public/og-image.svg` cu Inter instalat local; fără el, `sharp` cade pe Arial.
 
 Editorial: ilustrație în paletă caldă, `.webp` în `public/noutati/`, declarate în
