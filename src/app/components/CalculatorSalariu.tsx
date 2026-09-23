@@ -9,7 +9,6 @@ import {
   calculeazaCuRegim,
   calculeazaBrutDinNetCuRegim,
   REGIM_FISCAL_CURENT,
-  REGIMURI_FISCALE_SALARIU,
   SALARIU_MINIM,
   type InputState,
   type RegimFiscalSalariu,
@@ -57,13 +56,9 @@ type SelectProps = {
  * Formatarea sumelor. Depinde de limbă — separatorul de mii și denumirea monedei
  * diferă între „4.050 lei" și „4,050 RON" — deci se construiește din dicționar,
  * nu se scrie o dată la nivel de modul.
- *
- * `fmt` rămâne varianta românească, pentru codul care rulează în afara
- * componentei. În interiorul ei se folosește o versiune legată de limba aleasă.
  */
 const fmtCu = (loc: string, mon: string) => (n: number) =>
   new Intl.NumberFormat(loc).format(n) + " " + mon;
-const fmt = fmtCu("ro-RO", "lei");
 
 // Inputurile monetare stochează DOAR cifre în state (ex: "4050"), dar se afișează
 // grupate cu separator de mii (ex: "4.050"). Astfel calculul primește mereu un
@@ -911,9 +906,7 @@ export default function CalculatorSalariu({
                       onChange={setOreLucrate} />
                   </div>
                   <p className="-mt-3 mb-5 text-xs text-stone-600">
-                    Norma întreagă a lunii curente este {oreNormaCurenta} ore. O normă contractuală mai mică este tratată ca
-                    timp parțial, fără facilitatea OUG 89/2025. La normă întreagă, orele lucrate sub normă proratează baza și
-                    facilitatea; peste normă, diferența este plătită ca ore suplimentare.
+                    {t.normaExplicatie(String(oreNormaCurenta))}
                   </p>
                   <div className="grid grid-cols-2 gap-3">
                     <InputNumber id="spor-ore" label={t.sporOreSupl} unit="%" value={sporOre} placeholder={`${t.exemplu} 75`}
@@ -922,7 +915,7 @@ export default function CalculatorSalariu({
                       onChange={setSporuri} />
                   </div>
                   <p className="-mt-3 mb-5 text-xs text-stone-600">
-                    Sporul legal minim la ore suplimentare e 75% (Codul Muncii art. 123). Sporurile brute se taxează ca salariul.
+                    {t.sporExplicatie}
                   </p>
                   <InputNumber id="retineri-input" label={t.retineri} unit={etMoneda} value={retineri} placeholder={`${t.exemplu} 0`}
                     onChange={setRetineri} hint={t.retineriExplicatie} />
@@ -942,13 +935,13 @@ export default function CalculatorSalariu({
                   <> Total: <span className="font-medium text-stone-700">{fmt(parseInt(input.tichete))}</span> / lună.</>
                 )}
               </p>
-              <Select id="persoane-intretinere" label={t.persoaneIntretinere} value={input.persoanePretretinere} options={[0, 1, 2, 3, 4, 5].map((n) => ({ v: n, l: n === 0 ? "Niciuna" : `${n} ${n === 1 ? "persoană" : "persoane"}` }))} onChange={(v) => { set("persoanePretretinere", v); if (input.copiiScolarizati > v) set("copiiScolarizati", v); }} />
-              <Select id="copii-scolari" label={t.copiiScolari} value={input.copiiScolarizati} disabled={input.persoanePretretinere === 0} options={Array.from({ length: input.persoanePretretinere + 1 }, (_, n) => ({ v: n, l: n === 0 ? "Niciunul" : `${n} ${n === 1 ? "copil" : "copii"}` }))} onChange={(v) => set("copiiScolarizati", v)} />
+              <Select id="persoane-intretinere" label={t.persoaneIntretinere} value={input.persoanePretretinere} options={[0, 1, 2, 3, 4, 5].map((n) => ({ v: n, l: n === 0 ? t.niciuna : `${n} ${n === 1 ? t.persoana : t.persoane}` }))} onChange={(v) => { set("persoanePretretinere", v); if (input.copiiScolarizati > v) set("copiiScolarizati", v); }} />
+              <Select id="copii-scolari" label={t.copiiScolari} value={input.copiiScolarizati} disabled={input.persoanePretretinere === 0} options={Array.from({ length: input.persoanePretretinere + 1 }, (_, n) => ({ v: n, l: n === 0 ? t.niciunul : `${n} ${n === 1 ? t.copil : t.copii}` }))} onChange={(v) => set("copiiScolarizati", v)} />
               {/* Switch-uri (da/nu) – listă contiguă cu hairline-uri interne; last:border-b-0 prinde pe Scutit */}
               <div>
                 <Toggle label={t.functieDeBaza} checked={input.functieDeBAza} onChange={(v) => set("functieDeBAza", v)} />
                 <Toggle label={t.varstaSub26} checked={input.varstaSub26} onChange={(v) => set("varstaSub26", v)} />
-                <Toggle label="Scutit de impozit (de exemplu, handicap)" checked={input.scutitImpozit} onChange={(v) => set("scutitImpozit", v)} />
+                <Toggle label={t.scutitImpozit} checked={input.scutitImpozit} onChange={(v) => set("scutitImpozit", v)} />
               </div>
             </>
           )}
@@ -1097,10 +1090,7 @@ export default function CalculatorSalariu({
                 </table>
               </div>
               {rezAfisat.rez.tichete > 0 && (
-                <p className="mt-2 text-xs text-stone-600">
-                  E normal ca banii din cont să coboare sub netul standard al salariului: taxele pe tichete (CASS + impozit)
-                  se opresc din salariul în bani, iar tichetele intră integral pe card. Așa apare și pe fluturaș.
-                </p>
+                <p className="mt-2 text-xs text-stone-600">{t.notaTichete}</p>
               )}
             </div>
           ) : rezAfisat ? (
@@ -1166,10 +1156,7 @@ export default function CalculatorSalariu({
             {/* Cu tichete, banii din cont coboară sub netul standard al salariului (taxele
                 pe tichete se opresc din bani) — explicăm, ca cifra să nu pară o eroare. */}
             {rezAfisat.rez.tichete > 0 && (
-              <p className="mt-2 text-xs text-stone-600">
-                E normal ca banii din cont să coboare sub netul standard al salariului: taxele pe tichete (CASS + impozit)
-                se opresc din salariul în bani, iar tichetele intră integral pe card. Așa apare și pe fluturaș.
-              </p>
+              <p className="mt-2 text-xs text-stone-600">{t.notaTichete}</p>
             )}
             <div className="mt-3 overflow-hidden rounded border border-stone-300">
               <table className="w-full table-auto border-collapse [&_td]:align-middle [&_th]:align-middle sm:table-fixed text-sm text-stone-700">
@@ -1200,7 +1187,7 @@ export default function CalculatorSalariu({
                   <div
                     className="flex h-10 w-full overflow-hidden rounded border border-dashed border-stone-300 text-xs font-medium"
                     role="img"
-                    aria-label={`Din costul total al firmei, ${ang}% ajunge la angajat (salariu net) și ${stat}% la stat (CAS, CASS, impozit, CAM).`}
+                    aria-label={t.bara(ang, stat)}
                   >
                     <div className="flex min-w-0 items-center justify-start overflow-hidden whitespace-nowrap bg-stone-900 px-3 text-white" style={{ flexGrow: ang, flexBasis: 0 }}>{t.barAngajat(ang)}</div>
                     <div className="flex min-w-0 items-center justify-end overflow-hidden whitespace-nowrap border-l border-dashed border-stone-300 bg-canvas px-3 text-stone-700" style={{ flexGrow: stat, flexBasis: 0 }}>{t.barStat(stat)}</div>
@@ -1358,7 +1345,7 @@ export default function CalculatorSalariu({
           {rezAfisat && regimFiscal === REGIM_FISCAL_CURENT && (
             <>
               {pdfStatus === "success" && <p className="mt-3 text-xs text-stone-600" role="status">{t.pdfDescarcat}</p>}
-              {pdfStatus === "error" && <p className="mt-3 text-xs font-medium text-stone-900" role="alert">PDF-ul nu a putut fi generat. Încearcă din nou.</p>}
+              {pdfStatus === "error" && <p className="mt-3 text-xs font-medium text-stone-900" role="alert">{t.pdfEroare}</p>}
               <FeedbackContextual context={pdfStatus === "error" ? "pdf" : "calcul"} limba={limba} />
             </>
           )}
@@ -1380,14 +1367,12 @@ export default function CalculatorSalariu({
           )}
 
           {rezAfisat && regimFiscal !== REGIM_FISCAL_CURENT && (
-            <p className="mt-5 text-xs leading-relaxed text-stone-600">
-              Calcul istoric pentru ianuarie–iunie 2026. Fluturașul PDF este disponibil numai pentru grila fiscală curentă.
-            </p>
+            <p className="mt-5 text-xs leading-relaxed text-stone-600">{t.notaIstoric}</p>
           )}
 
           {!rezAfisat && (
             <p className="mt-4 text-xs leading-relaxed text-stone-600">
-              {t.golCuMinim(fmt(REGIMURI_FISCALE_SALARIU[regimFiscal].salariuMinim))}
+              {fluturas ? t.golFluturas : t.gol}
             </p>
           )}
         </div>

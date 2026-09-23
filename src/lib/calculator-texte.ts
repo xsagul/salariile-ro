@@ -79,6 +79,10 @@ export type TexteCalculator = {
   persoaneIntretinere: string;
   persoana: string;
   persoane: string;
+  niciuna: string;
+  niciunul: string;
+  copil: string;
+  copii: string;
   copiiScolari: string;
   functieDeBaza: string;
   varstaSub26: string;
@@ -97,7 +101,6 @@ export type TexteCalculator = {
   costTotalAngajator: string;
   barAngajat: (p: number) => string;
   barStat: (p: number) => string;
-  golCuMinim: (minim: string) => string;
   aiUnSite: string;
   puneCalculatorul: string;
   faraCont: string;
@@ -184,7 +187,7 @@ const RO: TexteCalculator = {
   salariuBrut: "Salariu brut",
   salariuNet: "Salariu net",
   exemplu: "ex:",
-  eroareSalariuGol: "Introdu un salariu mai întâi.",
+  eroareSalariuGol: "Scrie mai întâi un salariu.",
   ascundeAvansate: "▲ Ascunde opțiuni avansate",
   calculatorAvansat: "▼ Calculator avansat",
   calculeaza: "Calculează",
@@ -193,21 +196,25 @@ const RO: TexteCalculator = {
   firma: "Firma (opțional, apare pe PDF)",
   normaContract: "Normă contract / lună",
   normaExplicatie: (ore) =>
-    `Norma întreagă a lunii curente este ${ore} ore. O normă contractuală mai mică este tratată ca timp parțial, fără facilitatea OUG 89/2025. La normă întreagă, orele lucrate sub normă proratează baza și facilitatea; peste normă, diferența este plătită ca ore suplimentare.`,
+    `Luna curentă are ${ore} ore la normă întreagă. Dacă ai lucrat mai puțin, salariul scade proporțional. Orele peste normă se plătesc ca ore suplimentare.`,
   oreLucrate: "Ore lucrate",
   sporOreSupl: "Spor ore supl.",
   sporExplicatie:
-    "Sporul legal minim la ore suplimentare e 75% (Codul Muncii art. 123). Sporurile brute se taxează ca salariul.",
+    "Legea cere cel puțin 75% spor pentru orele suplimentare. Sporurile și primele se taxează ca salariul.",
   sporuriPrime: "Sporuri și prime (brute)",
   retineri: "Rețineri (avans, popriri)",
   retineriExplicatie: "Se scad la final, din netul de plată.",
   tichetePeLuna: "Tichete / lună",
   valoareTichet: "Valoare / tichet",
-  tichetExplicatie: "Cel mult un tichet pe zi lucrată · maxim legal 45 lei/tichet (Legea 201/2025).",
+  tichetExplicatie: "Cel mult un tichet pe zi lucrată, de maximum 45 lei.",
   tichetTotal: "Total:",
   persoaneIntretinere: "Persoane în întreținere",
   persoana: "persoană",
   persoane: "persoane",
+  niciuna: "Niciuna",
+  niciunul: "Niciunul",
+  copil: "copil",
+  copii: "copii",
   copiiScolari: "Dintre care, copii minori școlari",
   functieDeBaza: "Funcție de bază (jobul principal)",
   varstaSub26: "Vârstă sub 26 ani",
@@ -220,12 +227,11 @@ const RO: TexteCalculator = {
   eticheta: "Element",
   indicatorFiscal: "Indicator fiscal",
   salariuNetRand: "Salariu net",
-  casPensii: "CAS (Pensii – 25%)",
-  camAngajatorRand: "CAM (angajator – 2,25%)",
-  costTotalAngajator: "Cost total angajator",
+  casPensii: "CAS, pensie (25%)",
+  camAngajatorRand: "CAM, plătit de firmă (2,25%)",
+  costTotalAngajator: "Cost total pentru firmă",
   barAngajat: (p) => `Angajat ${p}%`,
   barStat: (p) => `Stat ${p}%`,
-  golCuMinim: (minim) => `Completează salariul brut pentru a genera fluturașul · Grila fiscală 2026 (minim: ${minim} lei)`,
   aiUnSite: "Ai un site?",
   puneCalculatorul: "Pune calculatorul pe el, gratuit",
   faraCont: "— fără cont și fără reclame.",
@@ -238,30 +244,30 @@ const RO: TexteCalculator = {
   venitBrutTotal: "Venit brut total",
   tichete: "Tichete de masă",
   sumaNetaxabila: "Sumă netaxabilă salariu minim (OUG 89/2025)",
-  casPensie: "CAS (pensie – 25%)",
-  cassSanatate: "CASS (sănătate – 10%)",
+  casPensie: "CAS, pensie (25%)",
+  cassSanatate: "CASS, sănătate (10%)",
   deducerePersonala: "Deducere personală (netaxabilă)",
   bazaImpozit: "Baza de calcul impozit",
   impozitVenit: "Impozit pe venit (10%)",
   scutit: "0 lei (scutit)",
   totalRetineri: "Total rețineri",
-  totalRetineriAngajat: "Total rețineri angajat",
+  totalRetineriAngajat: "Total taxe reținute",
   restDePlata: "Rest de plată",
   retineriRand: "Rețineri (avans, popriri)",
   tichetePeCard: "Tichete de masă (pe card, valoare integrală)",
   notaTichete:
-    "E normal ca banii din cont să coboare sub netul standard al salariului: taxele pe tichete (CASS + impozit) se opresc din salariul în bani, iar tichetele intră integral pe card. Așa apare și pe fluturaș.",
+    "Banii din cont ies puțin mai mici decât fără tichete. E normal: tichetele intră întregi pe card, iar taxele pe ele se opresc din salariu, la fel ca pe fluturaș.",
 
-  salariuIncadrareBrut: "Salariu de încadrare (Brut)",
-  facilitateFiscala: "Facilitate fiscală (neimpozabilă)",
-  deducereAplicata: "Deducere personală (aplicată)",
+  salariuIncadrareBrut: "Salariu brut",
+  facilitateFiscala: "Netaxat la salariul minim",
+  deducereAplicata: "Deducere personală",
 
   costAngajator: "Cost angajator",
   camAngajator: "CAM (2,25%)",
   costTotal: "Cost total angajator",
   bara: (angajat, stat) =>
     `Din costul total al firmei, ${angajat}% ajunge la angajat (salariu net) și ${stat}% la stat (CAS, CASS, impozit, CAM).`,
-  baraNota: "Din costul total al firmei: cât ajunge la tine (net) și cât la stat (CAS, CASS, impozit, CAM).",
+  baraNota: "Din tot ce plătește firma pentru postul tău: partea care ajunge la tine și partea care merge la stat.",
 
   descarcaPdf: "↓ Descarcă fluturaș PDF",
   seGenereaza: "Se generează…",
@@ -270,8 +276,8 @@ const RO: TexteCalculator = {
   copiazaLink: "⧉ Copiază linkul calculului",
   linkCopiat: "✓ Link copiat",
 
-  gol: "Completează salariul pentru a vedea rezultatul · Grila fiscală 2026",
-  golFluturas: "Completează salariul brut pentru a genera fluturașul · Grila fiscală 2026",
+  gol: "Rezultatul apare aici. Calculul folosește regulile fiscale în vigoare.",
+  golFluturas: "Fluturașul apare aici după ce scrii salariul de bază.",
   notaIstoric:
     "Calcul istoric pentru ianuarie–iunie 2026. Fluturașul PDF este disponibil numai pentru grila fiscală curentă.",
 
@@ -338,6 +344,10 @@ const EN: TexteCalculator = {
   persoaneIntretinere: "Dependants",
   persoana: "person",
   persoane: "people",
+  niciuna: "None",
+  niciunul: "None",
+  copil: "child",
+  copii: "children",
   copiiScolari: "Of which, school-age children",
   functieDeBaza: "Main employer (primary job)",
   varstaSub26: "Under 26 years old",
@@ -355,7 +365,6 @@ const EN: TexteCalculator = {
   costTotalAngajator: "Total employer cost",
   barAngajat: (p) => `Employee ${p}%`,
   barStat: (p) => `State ${p}%`,
-  golCuMinim: (minim) => `Enter a gross salary to generate the payslip · 2026 tax rules (minimum: ${minim})`,
   aiUnSite: "Have a website?",
   puneCalculatorul: "Embed this calculator, free",
   faraCont: "— no account, no ads.",
@@ -401,8 +410,8 @@ const EN: TexteCalculator = {
   copiazaLink: "⧉ Copy link to this calculation",
   linkCopiat: "✓ Link copied",
 
-  gol: "Enter a salary to see the result · 2026 tax rules",
-  golFluturas: "Enter the gross salary to generate the payslip · 2026 tax rules",
+  gol: "The result appears here. The calculation uses the tax rules currently in force.",
+  golFluturas: "The payslip appears here once you enter the base salary.",
   notaIstoric:
     "Historical calculation for January–June 2026. The PDF payslip is available only for the current tax rules.",
 

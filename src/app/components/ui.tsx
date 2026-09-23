@@ -12,6 +12,8 @@ const PROSE = [
   "[&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:tracking-[-0.01em] [&_h3]:text-stone-900",
   "[&_p]:mb-4 [&_p]:text-base [&_p]:leading-normal [&_p]:tracking-[-0.01em] [&_p]:text-stone-600",
   "[&_ul]:mb-4 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:text-stone-600 [&_li]:mb-2 [&_li]:leading-normal [&_li]:tracking-[-0.01em]",
+  // Pașii numerotați: fără stil propriu, preflight-ul Tailwind le ștergea cifrele.
+  "[&_ol]:mb-4 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:text-stone-600",
   "[&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 hover:[&_a]:text-stone-600",
   "[&_strong]:font-semibold [&_strong]:text-stone-900",
   "[&_em]:not-italic [&_em]:font-medium [&_em]:text-stone-900",
@@ -282,6 +284,20 @@ export function CardCompanion({
       {children}
       {nota ? <p className="mt-3 text-xs text-stone-600">{nota}</p> : null}
     </div>
+  );
+}
+
+/**
+ * Cardul de formulă de sub un calculator: rânduri scurte, monospațiate, cu bara
+ * din stânga. Decis de proprietar pe 24 septembrie 2026: sub instrument stă
+ * formula, nu un tabel cu un exemplu pe care cititorul nu l-a cerut.
+ */
+export function Formula({ randuri, eticheta }: { randuri: readonly string[]; eticheta?: string }) {
+  return (
+    <figure className="my-5 max-w-full overflow-x-auto rounded-md border border-stone-200 border-l-4 border-l-stone-900 bg-surface px-4 py-3 shadow-soft">
+      {eticheta ? <figcaption className="sr-only">{eticheta}</figcaption> : null}
+      <pre className="font-mono text-[13px] leading-7 text-stone-900 sm:text-sm">{randuri.join("\n")}</pre>
+    </figure>
   );
 }
 

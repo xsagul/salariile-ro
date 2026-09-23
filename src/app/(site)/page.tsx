@@ -2,8 +2,17 @@
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
 import CalculatorSalariu from "@/app/components/CalculatorSalariu";
+import { Formula } from "@/app/components/ui";
 import { personSchema } from "@/lib/person";
 import { calculatorSlugBrut, PAGE_LAST_MODIFIED } from "@/lib/seo";
+import { calculStandard, SALARIU_MINIM } from "@/lib/fiscal";
+
+const lei = (n: number) => new Intl.NumberFormat("ro-RO").format(n);
+
+// Cifrele din text și din FAQ se calculează din motorul fiscal,
+// ca să nu rămână în urmă la următoarea schimbare de reguli.
+const PLAFON_DEDUCERE = SALARIU_MINIM + 2000;
+const MINIM = calculStandard(SALARIU_MINIM)!;
 
 // Metadata proprie homepage-ului (suprascrie default-ul global din layout, fără
 // să atingă celelalte pagini). Țintește termenul cu cel mai mare volum din nișă,
@@ -18,58 +27,37 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://salariile.ro" },
 };
 
-// 1. Extragem datele pentru a le folosi și în schema ascunsă, și pe ecran
+// Întrebările la care corpul paginii nu răspunde deja. Aceleași texte intră și
+// în schema FAQPage, deci fiecare răspuns trebuie să se înțeleagă singur.
+// Rescrise pe 24 septembrie 2026: un răspuns, o idee, cel mult o cifră.
 const faqData = [
   {
-    q: "Ce înseamnă salariu brut și salariu net?",
-    a: "Salariul brut este suma înainte de reținerile fiscale. Salariul net este suma rămasă după contribuții și impozit. Pentru a compara două oferte, verifică dacă ambele sume sunt brute sau nete și dacă beneficiile, precum tichetele de masă, sunt incluse ori acordate separat.",
+    q: "În contract se trece salariul brut sau net?",
+    a: "Brutul. Contractul de muncă, statul de plată și declarațiile către ANAF pornesc toate de la brut, iar netul rezultă din el după taxe. Când negociezi, întreabă mereu dacă suma discutată e brută sau netă: netul e doar cam 60% din brut.",
   },
   {
-    q: "Salariul de bază este același lucru cu salariul brut?",
-    a: "Salariul de bază este componenta fixă a remunerației. Venitul brut al unei luni poate include și sporuri, indemnizații sau alte adaosuri, potrivit art. 160 din Codul muncii. Dacă ai ore suplimentare sau bonusuri, brutul lunar poate fi mai mare decât salariul de bază din contract.",
+    q: "Salariul de bază e același lucru cu salariul brut?",
+    a: "Nu întotdeauna. Salariul de bază e partea fixă din contract. Brutul unei luni poate fi mai mare, pentru că include și sporurile, orele suplimentare sau primele din luna respectivă.",
   },
   {
-    q: "Ce înseamnă avans și lichidare la salariu?",
-    a: "Avansul este o parte din salariu plătită înaintea plății finale a lunii. Lichidarea este suma rămasă de achitat după scăderea avansului și a reținerilor aplicabile. Nu sunt două salarii: compară totalul net pentru aceeași lună. Datele de plată sunt cele stabilite prin contract sau regulamentul intern, conform art. 166 din Codul muncii.",
+    q: "Ce înseamnă avans și lichidare?",
+    a: "Sunt două tranșe ale aceluiași salariu. Avansul se plătește la jumătatea lunii, lichidarea e restul, după ce se scad avansul și reținerile. Adunate, dau netul lunii.",
   },
   {
-    q: "Cum se calculează salariul net din brut?",
-    // Verificat din nou pe 16 septembrie 2026: Google FOLOSEȘTE meta descrierea
-    // homepage-ului ca snippet principal (a apărut cuvânt cu cuvânt în SERP).
-    // Comentariul vechi spunea invers și era depășit. Răspunsul de mai jos
-    // apare totuși separat, ca „Rezumat generat de AI" pe unele interogări —
-    // rămâne scris SCOS din context, fără formula cu minusuri, care arăta rupt,
-    // și fără referiri la „calculatorul de aici" (întrebarea următoare acoperă
-    // oricum calculul invers).
-    a: "Din salariul brut se rețin trei taxe: CAS 25% pentru pensie, CASS 10% pentru sănătate și impozit pe venit 10%. La 5.000 lei brut rămân 2.981 lei net în 2026. Pentru veniturile sub 6.325 lei brut se aplică și deducerea personală, care reduce baza impozitului și crește netul.",
+    q: "Cât e salariul minim net în 2026?",
+    a: `${lei(MINIM.netBani)} lei în mână, din ${lei(SALARIU_MINIM)} lei brut, de la 1 iulie 2026. La salariul minim cu normă întreagă, 200 de lei din brut nu se taxează deloc, de aceea netul iese ceva mai mare decât la alte salarii.`,
   },
   {
-    q: "Cum folosesc calculatorul de salarii brut-net?",
-    a: "Pui salariul brut și calculatorul de salarii brut-net îți arată instant netul, reținerile (CAS 25%, CASS 10%, impozit 10%) și costul angajatorului. Funcționează și invers: dai cât vrei să rămână în mână și afli salariul brut necesar. Așa vezi salariul brut, netul și ce te costă, în ambele sensuri.",
+    q: "Ce este deducerea personală?",
+    a: `O parte din venit pe care nu plătești impozit. O primesc doar salariații cu brut de până la ${lei(PLAFON_DEDUCERE)} lei, la locul de muncă de bază. E cea mai mare la salariul minim, scade pe măsură ce brutul crește și urcă pentru fiecare persoană pe care o ai în întreținere.`,
   },
   {
-    q: "Care este salariul minim brut în România în 2026?",
-    a: "Salariul minim brut pe economie este 4.325 lei din 1 iulie 2026, conform HG 146/2026. În prima jumătate a anului a fost 4.050 lei brut. Calculul net complet, pe fiecare semestru, este explicat pe pagina dedicată salariului minim.",
+    q: "Cum se taxează tichetele de masă?",
+    a: "Tichetul ajunge întreg pe card, dar pe valoarea lui se plătesc CASS și impozit, care se opresc din salariul în bani. De aceea, cu tichete, suma din cont iese puțin mai mică decât netul fără ele. Pensia (CAS) nu se plătește pe tichete.",
   },
   {
-    q: "Ce este deducerea personală și cui se aplică?",
-    a: "Deducerea personală este o sumă scăzută din baza de calcul a impozitului pe venit. Se aplică salariaților cu venituri brute de până la 6.325 lei, doar pe funcția de bază. Suma depinde de venit și de numărul de persoane în întreținere. La salariul minim, deducerea de bază este de aproximativ 865 lei și crește cu numărul persoanelor în întreținere. Scade treptat pe măsură ce salariul urcă spre 6.325 lei, iar peste acest prag devine zero. În plus, se adaugă o deducere pentru tinerii sub 26 de ani (15% din salariul minim, circa 649 lei) și 100 lei pentru fiecare copil minor aflat în școlarizare.",
-  },
-  {
-    q: "Ce facilități fiscale au angajații din IT și construcții?",
-    a: "Începând cu 1 ianuarie 2025, facilitățile fiscale pentru sectoarele IT, construcții și agricultură/industrie alimentară au fost ELIMINATE conform OUG 156/2024. Anterior, acești angajați erau scutiți de impozit pe venit pentru salarii brute de până la 10.000 lei. Acum plătesc impozit ca în sectorul standard.",
-  },
-  {
-    q: "Cât plătește total angajatorul pe lângă salariul brut?",
-    a: "În plus față de salariul brut, angajatorul plătește Contribuția Asiguratorie pentru Muncă (CAM) de 2,25% din salariul brut. Aceasta nu afectează salariul net al angajatului. De exemplu, pentru un brut de 5.000 lei, costul total al firmei este 5.113 lei (5.000 + 113 lei CAM).",
-  },
-  {
-    q: "Se trece salariul brut sau net în contractul de muncă?",
-    a: "În contractul individual de muncă (CIM) se trece întotdeauna salariul brut – este suma negociată și declarată la ANAF. Salariul net, banii primiți efectiv „în mână”, nu apare ca atare în contract: rezultă din brut după reținerea CAS (25%), CASS (10%) și a impozitului pe venit (10%). De aceea, la negociere, clarifică mereu dacă suma discutată este brută sau netă, fiindcă diferența este semnificativă – pentru un salariu standard, contribuțiile și impozitul înseamnă circa 41% din brut.",
-  },
-  {
-    q: "Ce sunt tichetele de masă din punct de vedere fiscal?",
-    a: "Tichetele de masă sunt un beneficiu extrasalarial: cel mult un tichet pe zi lucrată, cu valoare nominală de maximum 45 lei (Legea 201/2025). Pentru angajat, tichetele sunt supuse CASS (10%) și impozitului pe venit (10%), dar NU și CAS – iar aceste taxe se rețin din salariul în bani, cardul de tichete primind valoarea integrală. Angajatorul nu datorează contribuții pentru tichete (nici CAM); costul lui este valoarea nominală. De aceea, cu tichete, suma din cont poate coborî puțin sub netul standard – calculatorul le afișează separat, exact ca pe fluturaș.",
+    q: "Mai există scutirea de impozit în IT și construcții?",
+    a: "Nu. Scutirile pentru IT, construcții, agricultură și industria alimentară au dispărut din ianuarie 2025. Acum salariile din aceste domenii se taxează la fel ca oricare altele.",
   },
 ];
 
@@ -152,23 +140,9 @@ const homepageJsonLd = {
   ],
 };
 
-// Conținutul „Cum funcționează calculul" – definit O SINGURĂ DATĂ și folosit
-// atât în layout-ul mobil (secțiune always-open), cât și ca primul tab pe desktop.
-const cumFunctioneazaTitlu = "Calculator salariu net: cum funcționează calculul";
 const calculeBrutPopulare = [4325, 5000, 7000, 10000, 20000] as const;
-const cumFunctioneazaBody = (
-  <>
-    <p className="mb-4 text-base leading-normal tracking-[-0.01em] text-stone-600">
-      Din salariul brut se rețin trei contribuții obligatorii: <strong>CAS</strong> (25% pentru pensie), <strong>CASS</strong> (10% pentru sănătate) și <strong>impozitul pe venit</strong> (10%). Pentru salariile sub 6.325 lei brut se aplică o deducere personală care reduce baza de calcul a impozitului.
-    </p>
-    <p className="mb-4 text-base leading-normal tracking-[-0.01em] text-stone-600">
-      Salariații plătiți la nivelul <Link href="/salariu-minim">salariului minim pe economie (4.325 lei brut / 2.699 lei net)</Link> au o sumă fixă de 200 lei scutită de contribuții (OUG 89/2025). Salariul minim brut este <strong>4.325 lei din 1 iulie 2026</strong> (HG 146/2026). Separat, indicatorul BASS pentru 2026 este 9.192 lei; vezi <Link href="/salariu-mediu">diferența față de câștigul salarial mediu lunar publicat de INS</Link>.
-    </p>
-    <p className="mb-4 text-base leading-normal tracking-[-0.01em] text-stone-600">
-      Pe lângă salariul brut, angajatorul mai plătește o contribuție de 2,25% (CAM, Contribuția Asiguratorie pentru Muncă), care nu afectează salariul net al angajatului dar crește costul total al firmei.
-    </p>
-  </>
-);
+const paragraf = "mb-4 text-base leading-normal tracking-[-0.01em] text-stone-600";
+
 
 export default function Page() {
   return (
@@ -188,35 +162,53 @@ export default function Page() {
         <section className="rule-t py-8 sm:py-12">
           <div className="mx-auto max-w-6xl space-y-8 px-4 sm:space-y-12 sm:px-6">
 
-            {/* Rândul 1 – articol „Cum funcționează" + repere fiscale */}
+            {/* Rândul 1 – explicația și formula */}
             <div className="md:grid md:grid-cols-5 md:gap-6">
-              <div className="md:col-span-3 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-600 [&_strong]:font-bold">
-                <h2 className="mb-4 text-2xl font-bold tracking-[-0.02em] text-stone-900 sm:text-3xl">{cumFunctioneazaTitlu}</h2>
-                <div className="max-w-prose">{cumFunctioneazaBody}</div>
+              <div className="md:col-span-3 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-600 [&_strong]:font-semibold [&_strong]:text-stone-900">
+                <h2 className="mb-4 text-2xl font-bold tracking-[-0.02em] text-stone-900 sm:text-3xl">Cum se calculează salariul net</h2>
+                <div className="max-w-prose">
+                  <p className={paragraf}>
+                    Înainte să-ți intre banii în cont, firma oprește din brut trei taxe și le trimite la stat:
+                    contribuția la pensie, cea pentru sănătate și impozitul. Primele două se calculează din brut,
+                    impozitul din ce rămâne după ele.
+                  </p>
+
+                  <Formula
+                    eticheta="Formula salariului net"
+                    randuri={[
+                      "CAS     = brut × 25%",
+                      "CASS    = brut × 10%",
+                      "Impozit = (brut − CAS − CASS − deducere) × 10%",
+                      "Net     = brut − CAS − CASS − impozit",
+                    ]}
+                  />
+
+                  <p className={paragraf}>
+                    Formula e aceeași pentru toată lumea. Ce diferă de la om la om e deducerea, adică partea din
+                    venit pe care nu se plătește impozit. Peste {lei(PLAFON_DEDUCERE)} lei brut deducerea dispare,
+                    așa că netul iese mereu 58,5% din brut.
+                  </p>
+                  <p className={paragraf}>
+                    Firma mai plătește, peste brut, 2,25% pentru asigurarea de muncă (CAM). Nu se scade din banii
+                    tăi, dar arată cât costă de fapt postul.
+                  </p>
+                </div>
               </div>
 
               <aside className="mt-8 md:col-span-2 md:mt-0">
-                <div className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
-                  <h3 className="mb-3 text-xs font-medium text-stone-600">Repere fiscale · 2026</h3>
-                  <dl className="text-sm">
-                    {([
-                      ["Net la salariul minim (4.325 brut)", "2.699 lei"],
-                      ["Net estimat din indicatorul BASS", "5.377 lei"],
-                      ["Plafon deducere personală", "6.325 lei"],
-                      ["CAS (pensie)", "25%"],
-                      ["CASS (sănătate)", "10%"],
-                      ["Impozit pe venit", "10%"],
-                      ["CAM (angajator)", "2,25%"],
-                    ] as const).map(([k, v]) => (
-                      <div key={k} className="flex items-center justify-between border-b border-stone-100 py-2 last:border-b-0">
-                        <dt className="text-stone-600">{k}</dt>
-                        <dd className="font-medium tabular-nums text-stone-900">{v}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                  <p className="mt-3 text-xs text-stone-600">Net standard, funcție de bază. 9.192 lei este indicatorul brut fix din BASS 2026, nu câștigul salarial mediu lunar publicat de INS.</p>
+                <div className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-600">
+                  <h3 className="text-base font-bold tracking-[-0.01em] text-stone-900">Ce îți mărește netul</h3>
+                  <ul className="mt-3 flex flex-col gap-3 text-sm leading-normal text-stone-600">
+                    <li><strong className="font-semibold text-stone-900">Salariu sub {lei(PLAFON_DEDUCERE)} lei brut.</strong> Primești <Link href="/deducere-personala-2026">deducerea personală</Link>, mai mare cu cât brutul e mai mic.</li>
+                    <li><strong className="font-semibold text-stone-900">Persoane în întreținere.</strong> Fiecare copil sau membru al familiei cu venit mic sau fără venit mărește deducerea.</li>
+                    <li><strong className="font-semibold text-stone-900">Copii la școală.</strong> Încă 100 de lei scutiți de impozit pentru fiecare.</li>
+                    <li><strong className="font-semibold text-stone-900">Vârsta sub 26 de ani.</strong> O deducere în plus, dacă ești sub plafon.</li>
+                    <li><strong className="font-semibold text-stone-900">Salariul minim.</strong> La normă întreagă, <Link href="/salariu-minim">200 de lei din brut</Link> nu se taxează deloc.</li>
+                  </ul>
+                  <p className="mt-auto pt-4 text-xs text-stone-600">Toate se bifează în calculatorul avansat.</p>
                 </div>
               </aside>
+
             </div>
 
             {/* Rândul 2 – FAQ + surse oficiale și linkuri */}
@@ -291,8 +283,7 @@ export default function Page() {
                 Calcule salariale populare
               </h2>
               <p className="mb-4 max-w-prose text-sm leading-normal text-stone-600">
-                Alege o sumă brută pentru a vedea netul, taxele și costul angajatorului,
-                cu ipotezele explicate pentru fiecare calcul.
+                Calculele gata făcute pentru sumele căutate cel mai des.
               </p>
               <ul className="flex flex-wrap gap-2">
                 {calculeBrutPopulare.map((valoare) => (

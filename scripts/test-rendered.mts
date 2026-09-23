@@ -287,7 +287,6 @@ async function auditRenderedSite() {
     ["/calculator-salariu-constructii", "OUG 156/2024", "temeiul eliminării facilităților din construcții"],
     ["/salariu-mediu", "9.564", "brutul INS din iunie"],
     ["/salariu-mediu", "5.734", "netul INS din iunie"],
-    ["/", "indicatorul BASS", "eticheta BASS de pe homepage"],
     ["/metodologie", "D112", "validarea D112"],
     ["/noutati/cosul-minim-de-consum", "11.370", "cosul pentru doi adulti si doi copii"],
     // Clusterul de meserii. Verificam eticheta, nu cifra: cifrele se schimba la
@@ -342,6 +341,15 @@ async function auditRenderedSite() {
     const html = rendered.get(pathname) ?? "";
     if (!html.includes(expected) && !visibleTextFrom(html).includes(expected)) {
       failures.push(`${pathname}: lipseste ${label}`);
+    }
+  }
+
+  // Indicatorul BASS nu e câștigul salarial mediu INS. Homepage-ul nu îl mai
+  // afișează din 24 septembrie 2026 (nu ajută la calculul netului), dar dacă
+  // cifra revine pe vreo pagină, trebuie să poarte eticheta corectă.
+  for (const [pathname, html] of rendered) {
+    if (visibleTextFrom(html).includes("9.192") && !/BASS|bugetul asigurărilor sociale/.test(visibleTextFrom(html))) {
+      failures.push(`${pathname}: 9.192 lei apare fără eticheta de indicator BASS`);
     }
   }
 
