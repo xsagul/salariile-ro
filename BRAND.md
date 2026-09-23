@@ -83,8 +83,11 @@ nu se redesenează de mână.
   litere albe, `.ro` în #9A958C, iar „ii” **galben, fără căsuță**. Decis de
   proprietar pe 23 septembrie 2026: în kit, „ii” era negru în căsuță și alb unde
   ieșea din ea; la dimensiuni mici părea rupt. Pe negru, galbenul ca literă are
-  11,6:1 — regula „galbenul nu e text” privește fundalul deschis.
-- Interzis: rotire, umbră, contur, gradient, recolorare, alt font, „ii” fără marcaj.
+  11,6:1 — regula „galbenul nu e text” privește fundalul deschis. Fără căsuță,
+  „le.ro” se apropie cu 169 de unități (din 9.852), ca golul după „ii” să fie
+  egal cu cel dinainte; altfel rămâne locul gol al căsuței.
+- Interzis: rotire, umbră, contur, gradient, recolorare, alt font, „ii” fără
+  marcaj pe fundal deschis.
 
 ## 5. Culoare — monocrom cald, cu un singur marcaj
 
