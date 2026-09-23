@@ -15,8 +15,14 @@ culoarea de marcaj. Secțiunile 3, 4, 5, 11, 15 și 16 descriu starea de după.
 ## 1. Poziționare
 
 Portal despre salarii și fiscalitate în România, întreținut de o singură persoană.
-Fără reclame, fără cont, fără formulare, fără colectare de date. Nu e o listă de
+Fără cont, fără formulare, fără colectare de date. Nu e o listă de
 funcționalități lipsă — e poziționarea.
+
+**Reclamele nu mai sunt excluse.** Decis de proprietar pe 23 septembrie 2026:
+site-ul va avea reclame în viitor, deci „fără reclame” și „fără tracker” nu se
+mai folosesc ca promisiune în textele de prezentare (OG, meta description,
+`llms.txt`). Paginile legale descriu starea curentă și se actualizează în ziua în
+care reclamele pornesc, nu înainte.
 
 **Promisiunea:** de la cifra afișată se poate ajunge întotdeauna la formulă, la
 actul normativ și la data de la care regula se aplică.
@@ -284,7 +290,7 @@ tehnică a generatorului și singura excepție acceptată de la regula diacritic
 
 - Nu adăugăm altă culoare și nu extindem galbenul dincolo de rolurile din §5 fără
   decizie explicită a proprietarului, documentată aici.
-- Nu punem reclame, popupuri, interstițiale sau bannere de newsletter. `/despre`
+- Nu punem popupuri proprii, interstițiale sau bannere de newsletter. `/despre`
   promite public că nu există formulare, conturi sau newsletter — orice element
   care contrazice promisiunea cere întâi actualizarea promisiunii.
 - Nu introducem un al doilea font.

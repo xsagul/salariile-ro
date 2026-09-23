@@ -30,7 +30,7 @@
   <text x="555" y="505"
         font-family="Inter, Arial, sans-serif"
         font-size="20" font-weight="400"
-        fill="#BBBBBB" letter-spacing="-0.25">Date oficiale. Fără reclame, fără tracker.</text>
+        fill="#BBBBBB" letter-spacing="-0.25">Date oficiale, cu sursa la fiecare cifră.</text>
 
   <!-- Wordmark invers: „ii” galben, fără marcaj (BRAND.md §4), înălțime 36 px -->
   <svg x="72" y="560" width="154.1" height="36" viewBox="-80 98 9683 2262">

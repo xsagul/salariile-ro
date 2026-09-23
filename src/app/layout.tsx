@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     template: "%s | Salariile",
   },
   description:
-    "Calculează salariul net din brut în 2026: CAS, CASS, impozit și cost angajator, conform HG 146/2026. Pentru angajații din România. Fără reclame, fără cont.",
+    "Calculează salariul net din brut în 2026: CAS, CASS, impozit și cost angajator, conform HG 146/2026. Pentru angajații din România.",
   authors: [{ name: "Știuriuc Sorin-Marian", url: "https://salariile.ro/despre" }],
   creator: "Știuriuc Sorin-Marian",
   publisher: NUME_SITE,
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     siteName: NUME_SITE,
     title: "Calculator Salariu Net 2026 | Salariile",
     description:
-      "Calculează salariul net din brut sau brutul din net, cu regulile fiscale 2026. Fără reclame, fără cont.",
+      "Calculează salariul net din brut sau brutul din net, cu regulile fiscale 2026.",
     images: [
       {
         url: "/og-image.png",

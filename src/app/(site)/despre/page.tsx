@@ -10,7 +10,7 @@ import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow } from "@/app/components/u
 export const metadata: Metadata = {
   title: "Despre proiect: cine întreține site-ul",
   description:
-    "salariile.ro este un proiect independent despre salarii și fiscalitate în România: calculator brut-net, surse legislative și actualizări fără reclame.",
+    "salariile.ro este un proiect independent despre salarii și fiscalitate în România: calculator brut-net, surse legislative și actualizări verificabile.",
   alternates: { canonical: "https://salariile.ro/despre" },
   openGraph: ogPage({
     title: "Despre proiect: cine întreține site-ul",
