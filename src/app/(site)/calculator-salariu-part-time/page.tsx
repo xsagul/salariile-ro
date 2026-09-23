@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import CalculatorPartTime from "@/app/components/CalculatorPartTime";
-import { Breadcrumb, CardCompanion, Faq, H1, Hero, Lead, PaginiConexe, Prose, Repere, Section } from "@/app/components/ui";
+import { Breadcrumb, CardCompanion, Faq, Formula, H1, Hero, Lead, PaginiConexe, Prose, Repere, Section } from "@/app/components/ui";
 import TabelArticol from "@/app/components/TabelArticol";
 import {
   calculeazaPartTime,
@@ -48,27 +48,15 @@ const scenariu4h = SCENARII.find((scenariu) => scenariu.ore === 4)!;
 const FAQ = [
   {
     q: "Cât este salariul net la 4 ore în 2026?",
-    a: `La minimul proporțional pentru 4 ore pe zi, rezultatul standard este ${fmt(scenariu4h.faraExceptie.netBani)} lei net (la 2.163 lei brut). Calculul presupune funcția de bază, o lună completă și zero persoane în întreținere.`,
+    a: `${fmt(scenariu4h.faraExceptie.netBani)} lei net, din ${fmt(scenariu4h.brut)} lei brut, cât e minimul pentru 4 ore pe zi. Calculul presupune că e locul de muncă de bază și că nu ai persoane în întreținere.`,
   },
   {
-    q: "Cât este salariul net la 2 ore sau 6 ore în 2026?",
-    a: `La 2 ore/zi, salariul minim proporțional este ${fmt(SCENARII[0].brut)} lei brut, adică ${fmt(SCENARII[0].faraExceptie.netBani)} lei net. La 6 ore/zi, minimul este ${fmt(SCENARII[2].brut)} lei brut, adică ${fmt(SCENARII[2].faraExceptie.netBani)} lei net. Aceste valori presupun funcția de bază; dacă part-time-ul este încheiat în afara funcției de bază, deducerea personală este 0, iar netul scade proporțional.`,
+    q: "Cine nu intră la regula bazei minime?",
+    a: "Elevii și studenții de până la 26 de ani, ucenicii de până la 18 ani, unele persoane cu dizabilități, pensionarii pentru limită de vârstă și cei care strâng cel puțin salariul minim din mai multe contracte. Pentru ei, firma nu mai completează contribuțiile, dar excepția trebuie dovedită cu acte.",
   },
   {
-    q: "Cât costă firma un contract de 4 ore?",
-    a: `Fără excepție de la baza minimă CAS/CASS, costul total este ${fmt(scenariu4h.faraExceptie.costTotalCuDiferente)} lei. Cu o excepție legală documentată, costul este ${fmt(scenariu4h.cuExceptie.costTotalCuDiferente)} lei. Diferența nu schimbă netul angajatului.`,
-  },
-  {
-    q: "Cine plătește diferența CAS și CASS la part-time?",
-    a: "Angajatorul suportă diferența dintre contribuțiile calculate la venitul realizat și nivelul minim prevăzut de Codul fiscal. Diferența se plătește în numele angajatului și nu se reține încă o dată din salariul net.",
-  },
-  {
-    q: "Cine este exceptat de la baza minimă a contribuțiilor?",
-    a: "Codul fiscal prevede excepții pentru elevi sau studenți de până la 26 de ani, ucenici de până la 18 ani, anumite persoane cu dizabilități, pensionari pentru limită de vârstă și persoane cu mai multe contracte care cumulează cel puțin salariul minim. Excepția trebuie justificată cu documentele cerute.",
-  },
-  {
-    q: "Excepția de student schimbă salariul net?",
-    a: "Excepția de la baza minimă schimbă costul angajatorului, nu formula contribuțiilor reținute din brutul angajatului. Deducerea suplimentară pentru persoanele sub 26 de ani este o regulă separată și se aplică numai dacă sunt îndeplinite propriile condiții.",
+    q: "Dacă sunt student, primesc mai mult în mână?",
+    a: "Nu din cauza excepției. Ea scade doar costul firmei. Netul tău poate crește din alt motiv: deducerea în plus pentru cei sub 26 de ani, dacă îndeplinești condițiile ei.",
   },
 ];
 
@@ -119,7 +107,7 @@ export default function Page() {
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Calculator salariu part-time" }]} />
         <H1>Calculator salariu part-time 2026</H1>
         <Lead>
-          Alege orele din contract și vezi netul, costul firmei și diferența de CAS și CASS plătită de angajator.
+          Alege câte ore pe zi scrie în contract și vezi cât primești în mână și cât plătește firma.
         </Lead>
       </Hero>
 
@@ -130,9 +118,8 @@ export default function Page() {
           <Prose className="min-w-0 md:col-span-3">
             <h2 id="scenarii-part-time" className="scroll-mt-20">Salariul la 2, 4 și 6 ore</h2>
             <p>
-              Brutul minim scade proporțional cu timpul din contract. Netul nu scade exact în aceeași proporție,
-              deoarece deducerea personală se calculează după propriile reguli. Costul firmei urmează încă o regulă:
-              dacă nu există o excepție, angajatorul completează CAS și CASS până la baza minimă a lunii.
+              Brutul minim scade proporțional cu orele. Netul scade ceva mai puțin, pentru că deducerea personală nu se
+              micșorează odată cu programul.
             </p>
             <TabelArticol numeric>
               <thead>
@@ -161,48 +148,51 @@ export default function Page() {
               </tbody>
             </TabelArticol>
             <p className="source-note">
-              Scenarii pentru iulie–decembrie 2026, contract activ toată luna, funcție de bază, fără persoane în
-              întreținere. Sumele sunt calculate de motorul fiscal al site-ului și rotunjite la leu.
+              Pentru o lună întreagă, la locul de muncă de bază, fără persoane în întreținere. „Cu excepție” înseamnă un
+              angajat scutit de regula bazei minime, explicată mai jos.
             </p>
 
-            <h2>De ce firma plătește mai mult decât brutul plus CAM</h2>
+            <h2>Cum se calculează</h2>
             <p>
-              Angajatului i se rețin CAS și CASS la venitul realizat. Separat, art. 146 alin. (5^6) și art. 168
-              alin. (6^1) din Codul fiscal cer un nivel minim al contribuțiilor pentru contractele cu venit sub prag.
-              Art. 146 alin. (5^9) pune diferența în sarcina angajatorului.
+              Tu plătești taxele obișnuite, doar pe salariul tău. Legea cere însă ca pentru orice contract să ajungă la
+              stat contribuții de pensie și sănătate cel puțin cât pentru un salariu minim. Diferența o pune firma, peste
+              brut, și nu se scade din banii tăi.
             </p>
+            <Formula
+              eticheta="Calculul unui salariu part-time"
+              randuri={[
+                "Brut minim   = salariul minim × ore pe zi ÷ 8",
+                "Net          = brut − CAS − CASS − impozit",
+                "Diferență    = contribuțiile la baza minimă − cele reținute",
+                "Cost firmă   = brut + CAM + diferență",
+              ]}
+            />
             <p>
-              Pentru perioada curentă, OUG 89/2025 reduce reperul folosit la această regulă cu suma stabilită pentru
-              semestrul al doilea. Reducerea bazei minime și facilitatea contractului full-time sunt mecanisme juridice
-              diferite. Un contract part-time nu primește automat facilitatea rezervată normei întregi.
+              Cei 200 de lei netaxați de la salariul minim nu se dau la part-time: sunt doar pentru norma întreagă.
+              Pentru regula bazei minime, legea scade însă tot 200 de lei din minim.
             </p>
 
-            <h2>Excepția trebuie dovedită, nu doar bifată</h2>
+            <h2>Excepția se dovedește cu acte</h2>
             <p>
-              Selectorul din calculator arată efectul unei excepții, dar nu decide dacă ești eligibil. Pentru contracte
-              multiple, procedura este stabilită prin Ordinul MF 1.855/2022 și implică o declarație pe propria răspundere.
-              Pentru celelalte categorii, angajatorul păstrează documentele justificative potrivite situației.
+              Butonul pentru excepție din calculator îți arată doar efectul ei. Dacă ai dreptul la ea o decide situația
+              ta: cine are mai multe contracte dă o declarație pe propria răspundere, iar pentru celelalte cazuri
+              angajatorul păstrează actele care o dovedesc.
             </p>
           </Prose>
 
           <aside className="min-w-0 md:col-span-2">
-            <div className="rounded-md border border-stone-200 bg-surface p-5 shadow-soft sm:p-6">
-              <h2 className="text-lg font-bold tracking-[-0.02em] text-stone-900">Surse oficiale</h2>
-              <ul className="mt-4 space-y-3 text-sm leading-normal text-stone-600 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2">
-                <li><a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/308231" target="_blank" rel="noopener noreferrer">HG 146/2026</a> — salariul minim și media de ore</li>
-                <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/305817" target="_blank" rel="noopener noreferrer">OUG 89/2025</a> — reducerea bazei minime în 2026</li>
-                <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/291539" target="_blank" rel="noopener noreferrer">Codul fiscal consolidat</a> — art. 146 și 168</li>
-                <li><a href="https://static.anaf.ro/static/10/Anaf/legislatie/OPANAF_605_2026.pdf" target="_blank" rel="noopener noreferrer">Instrucțiunile D112 din 2026</a> — câmpurile diferențelor suportate de firmă</li>
-                <li><a href="https://legislatie.just.ro/public/DetaliiDocument/258471" target="_blank" rel="noopener noreferrer">Ordinul MF 1.855/2022</a> — procedura pentru mai multe contracte</li>
-              </ul>
-              <p className="mt-5 text-xs leading-normal text-stone-600">
-                Calculatorul acoperă o lună completă. Pentru un contract început sau încheiat în cursul lunii, baza
-                minimă se ajustează după zilele în care contractul a fost activ.
-              </p>
-              <p className="mt-4 text-xs text-stone-600">
-                Reguli verificate la 28 august 2026.
-              </p>
-            </div>
+            <CardCompanion
+              titlu="Baza minimă pentru contribuții"
+              nota="Pentru o lună întreagă. La un contract început în cursul lunii, baza scade proporțional cu zilele."
+            >
+              <Repere
+                randuri={[
+                  ["Salariul minim", "4.325 lei"],
+                  ["Minus suma scăzută", "− 200 lei"],
+                  ["Baza minimă", "4.125 lei"],
+                ]}
+              />
+            </CardCompanion>
           </aside>
         </div>
       </Section>
@@ -210,30 +200,24 @@ export default function Page() {
       <Faq
         items={FAQ}
         companion={
-          <CardCompanion
-            titlu="Baza minimă de contribuții · 2026"
-            nota="Diferența o suportă firma, peste brut. Nu se scade din netul angajatului."
-          >
-            <Repere
-              randuri={[
-                ["Salariu minim, normă întreagă", "4.325 lei"],
-                ["Reducere OUG 89/2025", "− 200 lei"],
-                ["Bază minimă CAS și CASS", "4.125 lei"],
-                ["Minim proporțional, 2 ore", `${fmt(SCENARII[0].brut)} lei`],
-                ["Minim proporțional, 4 ore", `${fmt(SCENARII[1].brut)} lei`],
-                ["Minim proporțional, 6 ore", `${fmt(SCENARII[2].brut)} lei`],
-              ]}
-            />
+          <CardCompanion titlu="Surse oficiale">
+            <ul className="space-y-3 text-sm leading-normal text-stone-600 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2">
+              <li><a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/308231" target="_blank" rel="noopener noreferrer">HG 146/2026</a>: salariul minim și media de ore</li>
+              <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/305817" target="_blank" rel="noopener noreferrer">OUG 89/2025</a>: suma scăzută din baza minimă</li>
+              <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/291539" target="_blank" rel="noopener noreferrer">Codul fiscal</a>, art. 146 și 168: baza minimă și cine plătește diferența</li>
+              <li><a href="https://static.anaf.ro/static/10/Anaf/legislatie/OPANAF_605_2026.pdf" target="_blank" rel="noopener noreferrer">Instrucțiunile D112 din 2026</a>: diferențele plătite de firmă</li>
+              <li><a href="https://legislatie.just.ro/public/DetaliiDocument/258471" target="_blank" rel="noopener noreferrer">Ordinul MF 1.855/2022</a>: procedura pentru mai multe contracte</li>
+            </ul>
           </CardCompanion>
         }
       />
 
       <PaginiConexe
         linkuri={[
-          { href: "/", label: "Calculator salariu net", descriere: "Calcul complet brut–net, tichete, deduceri și fluturaș PDF." },
-          { href: "/salariu-minim", label: "Salariul minim 2026", descriere: "Brut, net, tarif orar și regulile aplicabile din iulie." },
-          { href: "/deducere-personala-2026", label: "Deducerea personală", descriere: "Cum schimbă persoanele în întreținere și vârsta netul lunar." },
-          { href: "/metodologie", label: "Metodologia de calcul", descriere: "Formule, rotunjiri și validarea în Declarația 112." },
+          { href: "/", label: "Calculator salariu net", descriere: "Brut în net pentru orice salariu, cu tichete și fluturaș PDF." },
+          { href: "/salariu-minim", label: "Salariul minim 2026", descriere: "Cât e minimul, pe lună și pe oră." },
+          { href: "/deducere-personala-2026", label: "Deducerea personală", descriere: "Cât îți mărește netul fiecare persoană în întreținere." },
+          { href: "/metodologie", label: "Metodologia de calcul", descriere: "Formulele complete și cum le verificăm." },
         ]}
       />
     </>

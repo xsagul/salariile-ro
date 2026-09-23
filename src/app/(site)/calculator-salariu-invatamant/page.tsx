@@ -7,12 +7,12 @@
 
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
-import { Breadcrumb, CardCompanion, Faq, H1, Hero, Lead, PaginiConexe, Prose, Repere, Section } from "@/app/components/ui";
+import { Breadcrumb, CardCompanion, Faq, Formula, H1, Hero, Lead, PaginiConexe, Prose, Repere, Section } from "@/app/components/ui";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
 import CalculatorInvatamant from "@/app/components/CalculatorInvatamant";
 import GrilaInvatamant from "@/app/components/GrilaInvatamant";
-import { GRILA, SURSA_GRILA, GRADATII, calculeazaInvatamantComplet, INDEMNIZATIE_HRANA, INDEMNIZATIE_DOCTORAT_2026, MAJORARI } from "@/lib/invatamant";
+import { GRADATII, calculeazaInvatamantComplet, MAJORARI } from "@/lib/invatamant";
 
 const TITLU = "Calculator Salarii Învățământ 2026 - Vezi net și grilă";
 const DESC =
@@ -26,43 +26,49 @@ export const metadata: Metadata = {
   twitter: twPage({ title: TITLU, description: DESC }),
 };
 
-const MIN_GRILA = Math.min(...GRILA.map((g) => g.iun2024));
-const MAX_GRILA = Math.max(...GRILA.map((g) => g.iun2024));
 const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(n);
-const EXEMPLE = [
-  { label: "Profesor, studii superioare, grad I, peste 25 de ani în învățământ și în muncă, cu dirigenție", href: "/salarii/profesor", input: { functie: 1, vechimeInvatamant: "peste 25 ani", aniMunca: 26, majorari: ["dirigentie"] } },
-  { label: "Învățător, studii liceale, grad I, 10–15 ani în învățământ și 12 ani în muncă, cu majorarea pentru învățători", href: "/salarii/invatator", input: { functie: 17, vechimeInvatamant: "10-15 ani", aniMunca: 12, majorari: ["dirigentie"] } },
-  { label: "Educatoare debutantă, studii liceale, sub un an de vechime, cu majorarea pentru educatoare", href: "/salarii/educator", input: { functie: 20, vechimeInvatamant: "până la 1 an", aniMunca: 0, majorari: ["dirigentie"] } },
-].map(exemplu => {
-  const rezultat = calculeazaInvatamantComplet(exemplu.input);
-  if (!rezultat) throw new Error(`Exemplu de învățământ fără încadrare: ${exemplu.label}`);
-  return { ...exemplu, rezultat };
+const cota = (cod: string) => fmt(MAJORARI.find((m) => m.cod === cod)!.cota * 100);
+
+// Trei trepte din cariera aceluiași profesor, cu studii superioare, fără
+// dirigenție. Cititorul vrea să știe cât ia în mână și cât crește salariul cu
+// anii, nu defalcarea fiecărei linii, pe care o dă calculatorul.
+const TREPTE = [
+  { eticheta: "Debutant", input: { functie: 4, vechimeInvatamant: "până la 1 an", aniMunca: 0, majorari: [] } },
+  { eticheta: "Definitivat, 7 ani vechime", input: { functie: 3, vechimeInvatamant: "5-10 ani", aniMunca: 7, majorari: [] } },
+  { eticheta: "Gradul I, peste 25 de ani", input: { functie: 1, vechimeInvatamant: "peste 25 ani", aniMunca: 26, majorari: [] } },
+].map((treapta) => {
+  const rezultat = calculeazaInvatamantComplet(treapta.input);
+  if (!rezultat) throw new Error(`Treaptă de învățământ fără încadrare: ${treapta.eticheta}`);
+  return { eticheta: treapta.eticheta, net: rezultat.fiscal.netBani };
 });
+const [DEBUTANT, , VARF] = TREPTE;
+// Rotunjit la zeci în proză, ca un om care povestește; tabelul din card dă leul exact.
+const aprox = (n: number) => fmt(Math.round(n / 10) * 10);
 
 const FAQ = [
   {
     q: "Ce salariu are un profesor în 2026?",
-    a: `În tabelul personalului didactic de predare, salariile de bază sunt între ${fmt(MIN_GRILA)} și ${fmt(MAX_GRILA)} lei brut, la gradația 0. Intervalul cuprinde funcții și niveluri de studii diferite; nu este salariul net al unui profesor. Pentru încadrarea ta, alege funcția, studiile și vechimea, apoi aplică gradația de vechime în muncă și majorările la care ai dreptul.`,
+    a: `Depinde de grad și de vechime. Un profesor debutant cu studii superioare ia în mână cam ${aprox(DEBUTANT.net)} de lei, iar unul cu gradul I și peste 25 de ani de vechime, cam ${aprox(VARF.net)}. Dirigenția adaugă ${cota("dirigentie")}% la salariul de bază.`,
   },
   {
-    q: "De ce sunt două feluri de vechime?",
-    a: "Sunt criterii diferite și se combină. Vechimea în învățământ alege rândul din grilă — cât timp ai lucrat efectiv în sistem. Vechimea în muncă dă gradația, aplicată peste valoarea din grilă, și include toată cariera. Un profesor cu 22 de ani în învățământ și 25 în muncă e pe rândul „20-25 ani” și primește gradația 5.",
+    q: "De ce contează două feluri de vechime?",
+    a: "Anii lucrați în învățământ aleg rândul din grilă. Anii de muncă, toți, inclusiv cei de dinainte de catedră, dau gradația. Cine vine la școală după zece ani în privat pornește de jos în grilă, dar cu o gradație mai mare.",
   },
   {
     q: "Cum se calculează gradația de vechime?",
-    a: "Cotele se compun, nu se adună. Gradația 1 adaugă 7,5%, gradația 2 încă 5% peste rezultatul anterior, gradația 3 alți 5%, gradațiile 4 și 5 câte 2,5%. Cumulat, gradația 5 înseamnă +24,52% față de valoarea din grilă, nu +22,5% cum ar da adunarea simplă. Temeiul e art. 10 alin. (4) din Legea 153/2017.",
+    a: "Fiecare treaptă adaugă un procent peste salariul deja crescut de treapta dinainte, deci procentele se înmulțesc, nu se adună. La gradația 5, salariul e cu 24,52% peste suma din grilă.",
   },
   {
-    q: "De ce folosiți valorile din iunie 2024?",
-    a: "Pentru că sunt cele în plată. Anexa are două coloane, ianuarie și iunie 2024. Salariile de bază din sectorul public au fost menținute prin lege: în 2025 la nivelul lunii decembrie 2024, iar în 2026 la nivelul lunii decembrie 2025. Deci coloana din iunie 2024 este grila aplicabilă în 2026.",
+    q: "Cât valorează dirigenția?",
+    a: `${cota("dirigentie")}% din salariul de bază, calculat după gradație, deci crește odată cu vechimea. O primesc diriginții și, fără să fie diriginți, învățătorii, educatoarele și institutorii.`,
   },
   {
-    q: "Cât e majorarea pentru dirigenție?",
-    a: "10% din salariul de bază, conform Anexei I, cap. I, lit. B, art. 8. Beneficiază personalul didactic care îndeplinește funcția de diriginte, precum și învățătorii, educatoarele, institutorii și profesorii pentru învățământul primar și preșcolar. Se aplică la salariul de bază deținut, adică după gradație — nu la valoarea brută din grilă.",
+    q: "De ce grila în plată e cea din 2024?",
+    a: "Pentru că salariile de bază din sectorul public au fost înghețate prin lege, în 2025 și din nou în 2026. Coloana din iunie 2024 a anexei a rămas cea după care se plătește.",
   },
   {
-    q: "Tabelul grilei arată salariul net sau brut?",
-    a: "Tabelul arată salariul de bază brut la gradația 0 pentru personalul didactic de predare. Pentru net trebuie calculate gradația de vechime în muncă, majorările și indemnizațiile aplicabile, apoi contribuțiile și impozitul. Folosește calculatorul pentru încadrarea completă; nu transforma întregul interval al grilei într-un salariu mediu.",
+    q: "Grila arată salariul brut sau net?",
+    a: "Brut, și doar salariul de pornire, înainte de gradație și de sporuri. Cât primești în mână afli din calculatorul de mai sus.",
   },
 ];
 
@@ -109,16 +115,6 @@ const jsonLd = {
   ],
 };
 
-const REPERE_INVATAMANT = [
-  ["Salariu de bază, minim în grilă", `${fmt(MIN_GRILA)} lei`],
-  ["Salariu de bază, maxim în grilă", `${fmt(MAX_GRILA)} lei`],
-  ["Gradația 5, cumulat", "+24,52%"],
-  ["Dirigenție", `+${fmt(MAJORARI.find(m => m.cod === "dirigentie")!.cota * 100)}%`],
-  ["Gradație de merit", `+${fmt(MAJORARI.find(m => m.cod === "gradatie-merit")!.cota * 100)}%`],
-  ["Indemnizație de hrană", `${fmt(INDEMNIZATIE_HRANA)} lei brut`],
-  ["Indemnizație doctorat", `${fmt(INDEMNIZATIE_DOCTORAT_2026)} lei brut`],
-] as const;
-
 export default function Page() {
   return (
     <>
@@ -131,7 +127,8 @@ export default function Page() {
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Calculator salariu învățământ" }]} />
         <H1>Calculator salariu învățământ 2026</H1>
         <Lead>
-          Alege-ți încadrarea și vezi salariul de bază, gradația și netul, după grila în plată.
+          Alegi funcția, gradul și vechimea, iar calculatorul îți arată cât primești în mână, după
+          grila în vigoare.
         </Lead>
       </Hero>
 
@@ -146,41 +143,44 @@ export default function Page() {
       <Section
         companion={
           <CardCompanion
-            titlu="Repere · Legea 153/2017"
-            nota="Sume brute, la gradația 0. Peste ele se aplică gradația de vechime în muncă și majorările bifate."
+            titlu="Cât ia un profesor în mână"
+            nota="Net lunar, studii superioare, cu indemnizația de hrană, fără dirigenție."
           >
-            <Repere randuri={REPERE_INVATAMANT} />
+            <Repere randuri={TREPTE.map((t) => [t.eticheta, `${fmt(t.net)} lei`] as const)} />
           </CardCompanion>
         }
       >
         <Prose>
-          <h2>Cum se construiește salariul unui cadru didactic</h2>
+          <h2>Cum se calculează salariul unui profesor</h2>
           <p>
-            Salariul de bază nu e o singură cifră citită dintr-un tabel. Se compune în trei pași,
-            iar ordinea lor schimbă rezultatul:
+            Salariul nu se citește direct din grilă. Pornește de la suma din grilă, crește cu vechimea,
+            apoi cu sporurile, iar la final se scad taxele obișnuite ale oricărui salariu.
           </p>
-          <ol>
-            <li>
-              <strong>Salariul din grilă.</strong> Se alege după funcția didactică, gradul didactic,
-              nivelul studiilor și vechimea în învățământ. Valorile din anexă sunt la gradația 0 și
-              merg de la {fmt(MIN_GRILA)} la {fmt(MAX_GRILA)} lei brut.
-            </li>
-            <li>
-              <strong>Gradația de vechime în muncă.</strong> Se aplică peste valoarea din grilă și
-              produce salariul de bază deținut. Cotele se compun.
-            </li>
-            <li>
-              <strong>Majorările.</strong> Dirigenția, gradația de merit și predarea simultană se
-              aplică la salariul de bază <em>deținut</em>, nu la valoarea din grilă. Diferența e
-              reală: în primul exemplu de mai jos, majorarea pentru dirigenție este calculată
-              după aplicarea gradației.
-            </li>
-          </ol>
+          <Formula
+            eticheta="Formula salariului în învățământ"
+            randuri={[
+              "Salariu de bază = suma din grilă × (1 + gradația)",
+              "Sporuri        = salariu de bază × procentul sporului",
+              "Brut           = salariu de bază + sporuri + hrană",
+              "Net            = brut − CAS − CASS − impozit",
+            ]}
+          />
+          <p>
+            <strong>Suma din grilă</strong> o dau funcția, gradul didactic, studiile și anii lucrați în
+            învățământ. <strong>Gradația</strong> vine din anii de muncă, toți, nu doar cei de la catedră.
+            <strong> Sporurile</strong>, ca dirigenția sau gradația de merit, se calculează din salariul
+            de după gradație, deci cresc și ele cu vechimea. <strong>Hrana</strong> e o sumă fixă, aceeași
+            pentru toți. Taxele se calculează ca la <Link href="/">orice salariu</Link>.
+          </p>
+          <p>
+            Pe scurt, un profesor ia în mână cam {aprox(DEBUTANT.net)} de lei la debut și cam{" "}
+            {aprox(VARF.net)} după 25 de ani cu gradul I.
+          </p>
 
           <h2>Gradațiile de vechime</h2>
           <p>
-            Art. 10 alin. (4) din Legea 153/2017 stabilește cinci gradații. Fiecare se aplică la
-            salariul de bază avut, nu la cel din anexă — de aceea efectul lor se compune:
+            Sunt cinci trepte. Fiecare procent se aplică peste salariul deja crescut de treapta
+            dinainte, așa că la ultima gradație creșterea totală trece puțin de suma procentelor.
           </p>
         </Prose>
 
@@ -215,59 +215,17 @@ export default function Page() {
         </div>
 
         <Prose>
-          <h2>Exemple practice: profesor, învățător, educator</h2>
+          <h2>Ce nu intră în calcul</h2>
           <p>
-            Trei încadrări distincte, calculate cu aceleași formule ca instrumentul de mai sus:
-            normă întreagă, funcție de bază, fără persoane în întreținere, fără deducerea
-            suplimentară pentru vârsta sub 26 de ani și fără doctorat. Indemnizația de hrană
-            este inclusă când se îndeplinește pragul legal. Exemplele nu sunt medii salariale.
-          </p>
-          <ul>
-            {EXEMPLE.map(({ label, href, rezultat: r }) => (
-              <li key={href}>
-                <strong>{label}:</strong> {fmt(r.salariuGrila)} lei brut în grilă;
-                gradația {r.gradatie} produce {fmt(r.salariuDeBaza)} lei salariu de bază brut.
-                {r.linii.map(l => ` ${l.eticheta}: ${fmt(l.suma)} lei brut.`).join("")}
-                {" "}Total: {fmt(r.brutTotal)} lei brut, <strong>{fmt(r.fiscal.netBani)} lei net</strong>.
-                {" "}<Link href={href}>Vezi reperele și sursele pentru meserie</Link>.
-              </li>
-            ))}
-          </ul>
-
-          <h2>De unde vin cifrele</h2>
-          <p>
-            Grila are {GRILA.length} de combinații de funcție, nivel de studii și vechime în
-            învățământ, extrase din {SURSA_GRILA.act}, {SURSA_GRILA.anexa}, formă consolidată la{" "}
-            {new Date(SURSA_GRILA.formaConsolidata).toLocaleDateString("ro-RO")}. Textul integral e
-            pe{" "}
-            <a href={SURSA_GRILA.url} rel="nofollow noopener" target="_blank">
-              portalul legislativ
-            </a>
-            .
-          </p>
-          <p>
-            Calculatorul acoperă salariul de bază și majorările bifate. Nu include sporurile de
-            condiții de muncă, plata cu ora, premiile sau norma didactică sub ori peste normă.
-            Metodologia completă e pe pagina de <Link href="/metodologie">metodologie</Link>.
+            Calculatorul acoperă salariul din grilă, gradația, sporurile din listă și indemnizația de
+            hrană. Nu include sporurile pentru condiții de muncă, orele plătite separat, premiile sau
+            orele peste normă. Personalul didactic auxiliar, de la secretară la bibliotecar, are o
+            grilă separată. Detaliile sunt pe pagina de <Link href="/metodologie">metodologie</Link>.
           </p>
         </Prose>
       </Section>
 
-      <Faq
-        items={FAQ}
-        companion={
-          <CardCompanion titlu="Cine e acoperit" nota="Personalul didactic auxiliar — contabil, secretară, bibliotecar — are altă secțiune în anexă și nu e inclus aici.">
-            <Repere
-              randuri={[
-                ["Funcții didactice de predare", "21"],
-                ["Combinații din grilă", `${GRILA.length}`],
-                ["Funcții de conducere", "6"],
-                ["Trepte de gradație", "6"],
-              ]}
-            />
-          </CardCompanion>
-        }
-      />
+      <Faq items={FAQ} />
 
       <PaginiConexe
         linkuri={[

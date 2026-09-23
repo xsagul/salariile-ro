@@ -9,15 +9,12 @@ export default function GrilaInvatamant() {
       <div className="mx-auto max-w-3xl px-4 sm:px-6">
         <h2 className="text-2xl font-bold tracking-tight text-stone-900">Grila de salarizare în învățământ: tabel pentru 2026</h2>
         <p className="mt-3 text-stone-600">
-          Consultă cele {GRILA.length} de rânduri pentru personalul didactic de predare din
-          învățământul preuniversitar. Sumele sunt salarii de bază brute la gradația 0,
-          din coloana iunie 2024 menținută în plată. Nu sunt salarii nete și nu includ
-          gradația de vechime în muncă, majorările sau indemnizația de hrană.
+          Toate cele {GRILA.length} de rânduri ale grilei pentru cadrele didactice din
+          învățământul preuniversitar. Sumele sunt brute și reprezintă salariul de pornire, înainte
+          de gradația de vechime și de sporuri.
         </p>
         <p className="mt-3 text-sm text-stone-600">
-          S = studii superioare de lungă durată; SSD = studii superioare de scurtă durată;
-          M = studii de nivel liceal. Încadrarea exactă este cea din denumirea funcției.
-          Personalul auxiliar și funcțiile de conducere au grile distincte.
+          S înseamnă studii superioare de lungă durată, SSD de scurtă durată, iar M studii liceale.
         </p>
         <a href="/date/grila-invatamant.csv" download className="my-4 inline-flex min-h-11 items-center rounded border border-stone-300 bg-surface px-4 text-sm font-medium text-stone-900 underline underline-offset-2">
           Descarcă grila în CSV, pentru Excel
@@ -49,8 +46,8 @@ export default function GrilaInvatamant() {
           ))}
         </div>
         <p className="mt-4 text-xs text-stone-600">
-          Sursă: <a className="underline" href={SURSA_GRILA.url}>{SURSA_GRILA.act}, {SURSA_GRILA.anexa}</a>.
-          Pentru suma încasată, aplică în calculator gradația și drepturile corespunzătoare încadrării tale.
+          Sursă: <a className="underline" href={SURSA_GRILA.url}>Legea-cadru 153/2017, anexa I</a>, coloana
+          din iunie 2024, rămasă în plată.
         </p>
       </div>
     </section>

@@ -27,6 +27,10 @@ const PROSE = [
   "[&_tbody_th]:border-b [&_tbody_th]:border-stone-100 [&_tbody_th]:px-3 [&_tbody_th]:py-3 [&_tbody_th]:text-left [&_tbody_th]:font-medium [&_tbody_th]:text-stone-900",
   "[&_tbody_tr:last-child_td]:border-b-0",
   "[&_tbody_tr:last-child_th]:border-b-0",
+  // Blocul de cod din Markdown (```) devine cardul de formulă din articole, cu
+  // același aspect ca <Formula>. Doar `div > pre`, ca să nu dubleze bordura
+  // cardului <Formula>, al cărui <pre> stă într-un <figure>.
+  "[&_div>pre]:my-5 [&_div>pre]:overflow-x-auto [&_div>pre]:rounded-md [&_div>pre]:border [&_div>pre]:border-stone-200 [&_div>pre]:border-l-4 [&_div>pre]:border-l-stone-900 [&_div>pre]:bg-surface [&_div>pre]:px-4 [&_div>pre]:py-3 [&_div>pre]:font-mono [&_div>pre]:text-[13px] [&_div>pre]:leading-7 [&_div>pre]:text-stone-900 [&_div>pre]:shadow-soft sm:[&_div>pre]:text-sm",
   // .source-note (specificitate 0,2,0) bate variantele de element 0,1,1
   "[&_.source-note]:mt-4 [&_.source-note]:text-xs [&_.source-note]:leading-normal [&_.source-note]:text-stone-600",
 ].join(" ");

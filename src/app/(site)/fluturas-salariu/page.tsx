@@ -6,7 +6,7 @@
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
 import CalculatorSalariu from "@/app/components/CalculatorSalariu";
-import { PaginiConexe, Section } from "@/app/components/ui";
+import { Formula, PaginiConexe, Section } from "@/app/components/ui";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 
@@ -30,40 +30,24 @@ export const metadata: Metadata = {
 
 const FAQ = [
   {
-    q: "Ce este fluturașul de salariu?",
-    a: "Fluturașul de salariu este documentul lunar care detaliază cum s-a ajuns de la salariul brut la suma primită în cont: reținerile de CAS (25%), CASS (10%), impozit pe venit (10%), deducerea personală, tichetele de masă și eventualele sporuri sau rețineri. Este oglinda lunară a contractului tău de muncă.",
-  },
-  {
-    q: "Este angajatorul obligat să îmi dea fluturaș de salariu?",
-    a: "Codul Muncii (art. 168) obligă angajatorul să poată dovedi plata salariului prin statele de plată și documente justificative, iar tu ai dreptul să ceri detaliile calculului. Fluturașul, ca document numit așa, nu e impus explicit de lege, dar este practica standard, iar multe contracte colective de muncă îl prevăd expres. Dacă nu îl primești, cere-l în scris.",
-  },
-  {
-    q: "Care este diferența dintre fluturaș și statul de plată?",
-    a: "Sunt două documente diferite, cu același calcul în spate. Statul de plată este documentul angajatorului: cuprinde toți salariații, se semnează ca dovadă a plății și se arhivează în aceleași condiții ca actele contabile, conform art. 168 din Codul Muncii. Fluturașul este extrasul tău individual din acel stat — aceleași rânduri, dar numai pentru tine. De aceea generatorul de aici îți dă, practic, propriul rând din statul de plată: brut, contribuții, deduceri, net.",
-  },
-  {
-    q: "Pot folosi generatorul ca model de stat de plată?",
-    a: "Pentru un singur salariat, da: rândurile sunt aceleași și le poți transcrie într-un model de stat de plată. Documentul generat aici rămâne însă un fluturaș individual și orientativ, nu un stat de plată oficial — acela se întocmește de angajator pentru toți salariații, se semnează și se arhivează. Folosește-l ca să verifici cifrele, nu ca să înlocuiești evidența contabilă.",
+    q: "Este angajatorul obligat să-mi dea fluturaș?",
+    a: "Legea nu numește fluturașul, dar îi cere angajatorului să poată dovedi plata salariului, iar tu ai dreptul să vezi cum s-a calculat. În practică, aproape toate firmele îl dau, iar multe contracte colective îl prevăd. Dacă nu-l primești, cere-l în scris.",
   },
   {
     q: "Ce verific prima dată pe fluturaș?",
-    a: "Trei lucruri: brutul să fie cel din contract sau din documentul individual de modificare (act adițional ori decizie individuală, în condițiile legii), deducerea personală să fie aplicată dacă ai sub 6.325 lei brut pe funcția de bază, iar la salariul minim, facilitatea de 200 lei netaxabili (OUG 89/2025) să apară în calcul. Lipsa ei înseamnă un net mai mic cu circa 80-100 lei pe lună.",
+    a: "Trei lucruri. Brutul să fie cel din contract. Deducerea personală să apară, dacă ai sub 6.325 lei brut la locul de muncă de bază. Iar la salariul minim, cei 200 de lei netaxați să fie scăzuți din baza taxelor, altfel pierzi cam 80–100 de lei pe lună.",
   },
   {
-    q: "Fluturașul generat aici este valabil oficial?",
-    a: "Nu. Generatorul produce un fluturaș demonstrativ, calculat corect pe legislația 2026 (același calcul validat cu Declarația 112 ANAF), în formatul folosit de programele de salarizare. E util ca să verifici fluturașul primit de la angajator sau să înțelegi o ofertă salarială, dar nu înlocuiește documentul oficial emis de firmă.",
+    q: "Fluturașul generat aici e valabil oficial?",
+    a: "Nu. E un document orientativ, calculat după regulile fiscale în vigoare, bun ca să verifici fluturașul primit sau o ofertă de salariu. Documentul oficial îl emite doar angajatorul.",
   },
   {
-    q: "Pot adăuga ore suplimentare, sporuri, rețineri sau o lună parțial lucrată?",
-    a: "Da, pe toate. Generatorul acceptă normă lunară și ore lucrate (pentru angajare la mijloc de lună sau concediu fără plată, salariul de bază se plătește proporțional), ore suplimentare (la tariful orar, cu sporul procentual ales, minim legal 75%), sporuri și prime brute, tichete de masă și rețineri (avans, popriri), plus numele firmei pe document. Un detaliu pe care multe softuri îl greșesc: dacă salariul de bază e minimul pe economie și sporurile nu duc venitul brut peste plafonul de 4.600 lei, facilitatea de 200 lei netaxabili (OUG 89/2025) se păstrează — calculatorul o aplică corect.",
-  },
-  {
-    q: "Care e diferența dintre fluturaș și statul de plată?",
-    a: "Statul de plată e documentul contabil al firmei, cu toți salariații pe același tabel, semnat și arhivat ca dovadă a plății (Codul Muncii art. 168). Fluturașul e extrasul individual al unui singur angajat din acel stat: aceleași cifre, dar doar ale tale. De aceea formatul fluturașului variază de la un program de salarizare la altul, în timp ce statul de plată are cerințe contabile fixe.",
+    q: "Pot adăuga ore suplimentare, sporuri sau o lună lucrată parțial?",
+    a: "Da. În opțiunile avansate poți pune orele lucrate, orele suplimentare cu sporul lor, sporurile și primele, tichetele de masă, avansul sau popririle și numele firmei. Dacă ai salariul minim și sporurile nu trec brutul peste 4.600 de lei, cei 200 de lei netaxați se păstrează.",
   },
   {
     q: "De ce ar putea diferi fluturașul meu de calculul de aici?",
-    a: "Cazurile neacoperite de generator: concediu medical în lună (indemnizația se calculează pe alte reguli), concediu de odihnă plătit la medie, cumul de funcții sau deduceri speciale negociate. Pentru acestea, fluturașul oficial al angajatorului rămâne referința.",
+    a: "Generatorul nu acoperă concediul medical, concediul de odihnă plătit la medie, cumulul de funcții sau deducerile negociate separat. Dacă ai avut ceva din astea în lună, fluturașul angajatorului rămâne referința.",
   },
 ];
 
@@ -120,98 +104,77 @@ export default function FluturasSalariuPage() {
           titluCustom={<>Generator fluturaș de salariu</>}
           subtitluCustom={
             <>
-              Completează salariul de bază și, dacă e cazul, orele lucrate, orele suplimentare, sporurile, tichetele
-              și reținerile. Apasă Calculează, apoi descarcă fluturașul în PDF cu butonul de sub tabel. Calcul conform
-              legislației 2026, în formatul programelor de salarizare.
+              Scrie salariul de bază, apasă Calculează și descarcă fluturașul în PDF, în formatul programelor de
+              salarizare. Orele suplimentare, sporurile, tichetele și avansul sunt în opțiunile avansate.
             </>
           }
         />
       </div>
 
       <Section>
-        <h2>Ce conține fluturașul generat</h2>
+        <h2>Cum se calculează un fluturaș</h2>
         <p>
-          PDF-ul reproduce structura fluturașului emis de programele de salarizare folosite de firmele din România:
-          numele firmei (dacă îl completezi), pontajul lunii (norma, orele lucrate, tariful orar), salariul de bază
-          plătit proporțional cu orele lucrate, orele suplimentare cu sporul lor, sporurile și primele, reținerile
-          individuale (CAS 25%, CASS 10%, impozit 10%), deducerea personală, tichetele de masă cu taxarea lor separată,
-          reținerile din net (avans, popriri) și restul de plată. Fiecare cifră vine din același modul de calcul folosit
-          de <Link href="/">calculatorul de salariu</Link>, sincronizat cu Declarația 112 ANAF.
+          Orice fluturaș are trei părți: ce ți se cuvine în luna respectivă, ce se reține din asta și ce rămâne de
+          plată. PDF-ul generat aici le așază în aceeași ordine ca programele de salarizare ale firmelor.
         </p>
-
-        <div className="my-6 rounded-md border border-stone-200 bg-surface p-5 shadow-soft sm:p-6">
-          <h3 className="text-xs font-semibold uppercase tracking-wide text-stone-600">Model fluturaș orientativ · 5.000 lei brut (normă întreagă)</h3>
-          <dl className="mt-3 grid grid-cols-1 gap-2 text-sm sm:grid-cols-2">
-            <div className="flex justify-between border-b border-stone-100 py-1.5"><dt className="text-stone-600">Salariu de bază brut:</dt><dd className="font-semibold text-stone-900">5.000 lei</dd></div>
-            <div className="flex justify-between border-b border-stone-100 py-1.5"><dt className="text-stone-600">CAS (25% pensie):</dt><dd className="tabular-nums text-stone-700">1.250 lei</dd></div>
-            <div className="flex justify-between border-b border-stone-100 py-1.5"><dt className="text-stone-600">CASS (10% sănătate):</dt><dd className="tabular-nums text-stone-700">500 lei</dd></div>
-            <div className="flex justify-between border-b border-stone-100 py-1.5"><dt className="text-stone-600">Deducere personală:</dt><dd className="tabular-nums text-stone-700">562 lei</dd></div>
-            <div className="flex justify-between border-b border-stone-100 py-1.5"><dt className="text-stone-600">Impozit pe venit (10%):</dt><dd className="tabular-nums text-stone-700">269 lei</dd></div>
-            <div className="flex justify-between border-b border-stone-100 py-1.5 bg-stone-50 px-2 rounded sm:col-span-2"><dt className="font-bold text-stone-900">Rest de plată (net în cont):</dt><dd className="font-bold text-stone-900">2.981 lei</dd></div>
-          </dl>
-          <p className="mt-3 text-xs text-stone-600">
-            Document orientativ demonstrativ generat pentru verificare. Pe fluturașul emis oficial de angajator pot apărea componente specifice contractului tău.
-          </p>
-        </div>
-
-        <p className="source-note">
-          Pentru înțelegerea fiecărui rând de pe fluturașul primit de la firmă, citește ghidul:{" "}
-          <Link href="/noutati/cum-citesti-fluturasul-de-salariu">cum îți citești fluturașul de salariu</Link>.
+        <Formula
+          eticheta="Structura unui fluturaș de salariu"
+          randuri={[
+            "Drepturi      = salariu de bază + ore suplimentare + sporuri",
+            "Rețineri      = CAS + CASS + impozit",
+            "Net           = drepturi − rețineri",
+            "Rest de plată = net − avans − popriri",
+          ]}
+        />
+        <p>
+          Taxele se calculează ca la <Link href="/">orice salariu</Link>. Tichetele de masă intră întregi pe card,
+          dar taxele pe ele se opresc din salariul în bani, așa că apar pe un rând separat.
         </p>
         <p className="source-note">
-          Dacă luna include zile de boală, verifică separat procentele, baza și excepțiile din ghidul despre{" "}
-          <Link href="/noutati/concediu-medical-2026">plata concediului medical în 2026</Link>.
-        </p>
-        <p className="source-note">
-          Pentru tichetele de masă și modul în care sunt impozitate pe fluturaș, consultă ghidul despre{" "}
-          <Link href="/noutati/tichete-de-masa-2026">taxele și valoarea netă a tichetelor de masă în 2026</Link>.
+          Ca să înțelegi fiecare rând de pe fluturașul primit de la firmă, citește{" "}
+          <Link href="/noutati/cum-citesti-fluturasul-de-salariu">cum îți citești fluturașul</Link>. Pentru lunile cu
+          zile de boală sau cu tichete, vezi ghidurile despre{" "}
+          <Link href="/noutati/concediu-medical-2026">concediul medical</Link> și{" "}
+          <Link href="/noutati/tichete-de-masa-2026">tichetele de masă</Link>.
         </p>
       </Section>
 
       <Section>
         <h2>Fluturaș, stat de plată sau adeverință de salariu</h2>
         <p>
-          Trei nume pentru aceleași cifre, cu roluri diferite. Confuzia dintre ele e firească,
-          pentru că toate pornesc din același calcul lunar.
+          Toate trei pornesc din același calcul lunar, dar servesc la lucruri diferite.
         </p>
         <ul>
           <li>
-            <strong>Statul de plată</strong> este documentul angajatorului, cu toți salariații pe
-            el. Se semnează ca dovadă a plății și se arhivează în aceleași condiții ca actele
-            contabile — <a href="https://legislatie.just.ro/Public/DetaliiDocument/128647" target="_blank" rel="noopener">Codul Muncii, art. 168</a>.
-            Un model de stat de plată are, pentru fiecare salariat, exact rândurile de mai jos.
+            <strong>Statul de plată</strong> e documentul firmei, cu toți salariații pe el. Se semnează ca
+            dovadă a plății și se arhivează ca orice act contabil.
           </li>
           <li>
-            <strong>Fluturașul</strong> este extrasul tău individual din statul de plată: aceleași
-            rânduri, dar numai ale tale. Generatorul de aici îl produce în PDF.
+            <strong>Fluturașul</strong> e rândul tău din statul de plată: aceleași cifre, dar numai ale tale.
           </li>
           <li>
-            <strong>Adeverința de salariu</strong> este un document emis la cerere, pentru bancă
-            sau pentru o instituție, și atestă de obicei venitul pe mai multe luni, nu defalcarea
-            unei singure luni.
+            <strong>Adeverința de salariu</strong> o ceri pentru bancă sau pentru o instituție. Arată de obicei
+            venitul pe mai multe luni, nu calculul unei singure luni.
           </li>
         </ul>
         <p>
-          Dacă ai nevoie de un model de stat de plată pentru un singur salariat, calculul de aici
-          îți dă toate rândurile de completat. Documentul generat rămâne orientativ: statul de
-          plată oficial se întocmește de angajator, se semnează și se arhivează.
+          Pentru un singur salariat, calculul de aici îți dă toate rândurile unui stat de plată. Rămâne însă un
+          model: statul oficial îl întocmește și îl semnează angajatorul.
         </p>
       </Section>
 
       <Section>
-        <h2>La ce e util un fluturaș generat de tine</h2>
+        <h2>La ce îți folosește</h2>
         <ul>
           <li>
-            <strong>Verifici fluturașul de la angajator.</strong> Generezi varianta corectă pentru brutul tău și compari
-            rând cu rând. Diferențele nejustificate (deducere lipsă, facilitate neaplicată) se văd imediat.
+            <strong>Verifici fluturașul primit.</strong> Îl generezi pe al tău și compari rând cu rând. O deducere
+            lipsă sau o scutire neaplicată se văd imediat.
           </li>
           <li>
-            <strong>Evaluezi o ofertă de muncă.</strong> Oferta e în brut; fluturașul îți arată exact ce înseamnă în
-            mână, cu toate reținerile, înainte să semnezi.
+            <strong>Înțelegi o ofertă de muncă.</strong> Oferta vine în brut, fluturașul îți arată cât rămâne în mână.
           </li>
           <li>
-            <strong>Negociezi în cunoștință de cauză.</strong> Vezi exact unde se duce fiecare sută de lei negociată în
-            plus: cât ajunge în cont și cât se oprește la stat.
+            <strong>Negociezi o mărire.</strong> Vezi cât din fiecare sută de lei în plus ajunge la tine și cât la stat.
           </li>
         </ul>
       </Section>
@@ -231,16 +194,16 @@ export default function FluturasSalariuPage() {
           ))}
         </div>
         <p className="source-note">
-          Surse: Codul Muncii (Legea 53/2003, art. 166-168), Codul Fiscal (Legea 227/2015), HG 146/2026, OUG 89/2025.
-          Ultima actualizare: 16 august 2026.
+          Surse: Codul Muncii (Legea 53/2003, art. 166–168), Codul Fiscal (Legea 227/2015), HG 146/2026, OUG 89/2025.
+          Ultima actualizare: {PAGE_LAST_MODIFIED["/fluturas-salariu"].toLocaleDateString("ro-RO", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })}.
         </p>
       </Section>
       <PaginiConexe
         linkuri={[
-          { href: "/salarii", label: "Salarii pe meserii", descriere: "Cât se câștigă în 132 de meserii, cu datele INS și netul calculat." },
-          { href: "/salariu-minim", label: "Salariul minim 2026", descriere: "4.325 lei brut din 1 iulie. Calculul net, pas cu pas." },
+          { href: "/salarii", label: "Salarii pe meserii", descriere: "Cât se câștigă în fiecare meserie." },
+          { href: "/salariu-minim", label: "Salariul minim 2026", descriere: "Cât e minimul și cum se ajunge la net." },
           { href: "/widget", label: "Widget pentru site-ul tău", descriere: "Pune calculatorul pe propriul site, gratuit și fără cont." },
-          { href: "/metodologie", label: "Metodologia de calcul", descriere: "Formula completă, sursele normative și limitările declarate." },
+          { href: "/metodologie", label: "Metodologia de calcul", descriere: "Formula completă, sursele și limitele calculului." },
           { href: "/smartbill", label: "SmartBill și salarizare", descriere: "Prețuri, SmartBill Conta, D112 și funcțiile pentru salarii." },
           { href: "/saga", label: "SAGA pentru salarii", descriere: "SAGA C, SAGA WEB, D112 și licențiere." },
         ]}

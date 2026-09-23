@@ -6,13 +6,14 @@
 // întrebările neacoperite în corp, carduri aditive pe fiecare rând.
 
 import type { Metadata } from "next";
-import { PaginiConexe } from "@/app/components/ui";
+import { Formula, PaginiConexe } from "@/app/components/ui";
 import Image from "next/image";
 import Link from "@/app/components/Link";
 import { LATEST_INS_EARNINGS } from "@/lib/date-salarii";
 import { LUNA_REFERINTA, TOTAL_ECONOMIE } from "@/lib/ins-date";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
+import { calculStandard, SALARIU_MINIM } from "@/lib/fiscal";
 
 const INS_PERIOD_LABEL = LUNA_REFERINTA.replace(/^Luna\s+/, "");
 const INS_MONTH_NAME = INS_PERIOD_LABEL.split(" ")[0];
@@ -35,6 +36,9 @@ if (
 
 const INS_BRUT_LABEL = INS_BRUT_VALUE.toLocaleString("ro-RO");
 const INS_NET_LABEL = INS_NET_VALUE.toLocaleString("ro-RO");
+const NET_MINIM = calculStandard(SALARIU_MINIM)!.netBani;
+const PROCENT_MINIM_DIN_MEDIE = Math.round((NET_MINIM / INS_NET_VALUE) * 100);
+const DATA_ACTUALIZARE = PAGE_LAST_MODIFIED["/salariu-mediu"].toLocaleDateString("ro-RO", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
 
 // Imaginea de share a paginii: crop 1200×630 din hero (nu brandul generic).
 const OG_SALARIU_MEDIU = {
@@ -82,20 +86,20 @@ const ISTORIC = [
 // stătătoare, pentru schema FAQPage).
 const FAQ = [
   {
-    q: "Cât este salariul mediu pe economie în 2026 (net și brut)?",
-    a: `Cea mai recentă valoare lunară publicată de INS este pentru ${INS_PERIOD_LABEL}: ${INS_BRUT_LABEL} lei brut și ${INS_NET_LABEL} lei net, cu o creștere a netului de ${LATEST_INS_EARNINGS.monthlyNetChangePercent.toLocaleString("ro-RO")}% față de ${LATEST_INS_EARNINGS.previousPeriodLabel}. Separat, Legea 44/2026 fixează la 9.192 lei câștigul salarial mediu brut folosit la fundamentarea bugetului asigurărilor sociale; din acesta rezultă aproximativ 5.377 lei net într-un calcul salarial standard.`,
+    q: "Cât este salariul mediu pe economie în 2026?",
+    a: `Potrivit INS, în ${INS_PERIOD_LABEL} salariul mediu a fost de ${INS_NET_LABEL} lei net, adică ${INS_BRUT_LABEL} lei brut. Pentru pensii și ajutorul de deces, statul folosește o altă cifră, fixă pe tot anul: 9.192 lei brut.`,
   },
   {
-    q: "Care este diferența dintre salariul mediu și cel minim?",
-    a: "Salariul minim (4.325 lei brut din iulie 2026) este pragul legal pentru un contract cu normă întreagă. Câștigul salarial mediu publicat lunar de INS este un indicator statistic, nu o obligație de plată. Valoarea bugetară separată de 9.192 lei este folosită la pensii, ajutorul de deces și alte calcule prevăzute de lege.",
+    q: "Care e diferența dintre salariul mediu și salariul minim?",
+    a: "Minimul e o obligație: nimeni nu poate fi plătit sub el la normă întreagă. Media e doar o statistică, calculată din salariile plătite efectiv, și nu obligă pe nimeni la nimic.",
   },
   {
-    q: "Cine stabilește valoarea oficială a salariului mediu?",
-    a: "Valoarea folosită la pensii, ajutoare și plafoane se fixează anual prin Legea bugetului asigurărilor sociale de stat, pe baza prognozelor Comisiei Naționale de Strategie și Prognoză (CNSP) și a datelor INS. Pentru 2026, Legea 44/2026 a fixat-o la 9.192 lei.",
+    q: "Cine stabilește salariul mediu folosit la pensii?",
+    a: "Parlamentul, o dată pe an, prin legea bugetului asigurărilor sociale, pe baza prognozelor Comisiei Naționale de Strategie și Prognoză. Pentru 2026, cifra e 9.192 lei brut.",
   },
   {
     q: "Cât este ajutorul de deces în 2026?",
-    a: "Din 30 martie 2026, ajutorul de deces este 9.192 lei pentru un asigurat sau pensionar și 4.596 lei pentru un membru de familie, corelat direct cu salariul mediu brut. Până atunci (1 ianuarie – 29 martie 2026) valorile erau 8.620, respectiv 4.310 lei.",
+    a: "9.192 de lei pentru un asigurat sau pensionar și 4.596 de lei pentru un membru al familiei, din 30 martie 2026. Până atunci au fost 8.620 și 4.310 lei.",
   },
 ];
 
@@ -204,27 +208,25 @@ export default function SalariuMediuPage() {
           <div className="md:col-span-3">
             <h1 className="text-3xl font-bold tracking-[-0.02em] text-stone-900 sm:text-4xl">Salariul mediu pe economie în 2026</h1>
             <p className="mt-4 text-xs text-stone-600 [&_a]:font-medium [&_a]:text-stone-700 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-900">
-              Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat 25 august 2026
+              Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat {DATA_ACTUALIZARE}
             </p>
             <p className={`mt-5 max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600 ${strong}`}>
-              Cea mai recentă valoare publicată de INS este pentru {INS_PERIOD_LABEL}: <strong>{INS_NET_LABEL} lei net</strong> și{" "}
-              <strong>{INS_BRUT_LABEL} lei brut</strong>. Netul a crescut cu <strong>{LATEST_INS_EARNINGS.monthlyNetChangePercent.toLocaleString("ro-RO")}%</strong> față de {LATEST_INS_EARNINGS.previousPeriodLabel}. Valoarea bugetară
-              pentru 2026, folosită la pensii și ajutoare, e alta:{" "}
-              <strong>9.192 lei brut</strong> (Legea 44/2026). În continuare vezi de ce sunt două cifre, la ce se
-              folosește cea oficială, cât rămâne net și de ce media nu descrie venitul fiecărui angajat.
+              În {INS_PERIOD_LABEL}, salariul mediu din România a fost de <strong>{INS_NET_LABEL} lei net</strong>, adică{" "}
+              <strong>{INS_BRUT_LABEL} lei brut</strong>, potrivit INS. E cea mai nouă cifră: institutul o publică în fiecare
+              lună. Pentru pensii și ajutorul de deces, statul folosește altă cifră, fixă pe tot anul.
             </p>
 
             {/* Separare vizuală imediată INS vs BASS */}
             <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
               <div className="rounded-md border border-stone-200 bg-surface p-3.5 shadow-soft">
-                <p className="text-xs font-semibold uppercase tracking-wide text-stone-600">1. Cifra statistică INS ({INS_PERIOD_LABEL})</p>
+                <p className="text-xs font-semibold uppercase tracking-wide text-stone-600">Cât se câștigă în medie</p>
                 <div className="mt-1 text-xl font-bold tabular-nums text-stone-900">{INS_NET_LABEL} lei <span className="text-sm font-normal text-stone-600">net</span></div>
-                <p className="mt-0.5 text-xs text-stone-600">{INS_BRUT_LABEL} lei brut · variație lunară</p>
+                <p className="mt-0.5 text-xs text-stone-600">{INS_BRUT_LABEL} lei brut · INS, {INS_PERIOD_LABEL}</p>
               </div>
               <div className="rounded-md border border-stone-200 bg-surface p-3.5 shadow-soft">
-                <p className="text-xs font-semibold uppercase tracking-wide text-stone-600">2. Cifra oficială BASS (pensii 2026)</p>
+                <p className="text-xs font-semibold uppercase tracking-wide text-stone-600">Cifra folosită la pensie</p>
                 <div className="mt-1 text-xl font-bold tabular-nums text-stone-900">9.192 lei <span className="text-sm font-normal text-stone-600">brut</span></div>
-                <p className="mt-0.5 text-xs text-stone-600">Legea 44/2026 · fix tot anul · ~5.377 net</p>
+                <p className="mt-0.5 text-xs text-stone-600">fixă pe tot anul 2026</p>
               </div>
             </div>
           </div>
@@ -246,152 +248,83 @@ export default function SalariuMediuPage() {
 
         <div className="[&>div]:mt-10 [&>div]:border-t [&>div]:border-stone-200 [&>div]:pt-10 sm:[&>div]:mt-14 sm:[&>div]:pt-14">
 
-          {/* RÂND 1 — de ce sunt două cifre (fără repetarea valorilor din lede) */}
+          {/* RÂND 1 — de ce sunt două cifre și la ce folosește cea fixă */}
           <div className={row}>
             <div className="md:col-span-3">
               <div className={`max-w-prose ${articol}`}>
                 <h2 id="de-ce-sunt-doua-cifre" className="scroll-mt-20">De ce sunt două cifre</h2>
                 <p>
-                  <strong>Cifra reală</strong> o măsoară INS în fiecare lună, din salariile efectiv plătite, și se
-                  mișcă în sus și în jos (în iunie a crescut față de mai). <strong>Cifra oficială</strong>{" "}
-                  se fixează o dată pe an prin legea bugetului de asigurări sociale, nu se schimbă în cursul anului și
-                  e cea de care statul leagă pensii, ajutoare și plafoane.
+                  Prima o măsoară INS în fiecare lună, din salariile plătite efectiv, așa că urcă și coboară de la o lună
+                  la alta. A doua o fixează Parlamentul o dată pe an, prin legea bugetului de asigurări sociale, și nu se
+                  mai schimbă până în ianuarie.
+                </p>
+                <p id="calcul-pensie" className="scroll-mt-20">
+                  Cifra fixă, numită oficial <strong>câștigul salarial mediu brut utilizat la fundamentarea bugetului
+                  asigurărilor sociale de stat</strong>, e de 9.192 lei în 2026. De ea depind pensia ta, ajutorul de deces
+                  și plafoanele mai multor ajutoare sociale.
                 </p>
                 <p>
-                  Atenție, nu e ca salariul minim. <strong>Minimul</strong> e un prag legal: nimeni nu poate plăti sub
-                  el. <strong>Media</strong> e doar o statistică: nu obligă niciun angajator să plătească atât. E un
-                  indicator de care statul leagă alte sume, nu un salariu pe care-l ia cineva anume.
-                </p>
-              </div>
-            </div>
-            <aside className={aside}>
-              <div className={card}>
-                <h3 className="mb-3 text-xs font-medium text-stone-600">Cifre · 2026 (lei / lună)</h3>
-                <table className="w-full text-sm tabular-nums">
-                  <tbody className="[&_td]:py-2">
-                    <tr className="border-b border-stone-100">
-                      <td className="text-left text-stone-600">Net (real, INS · {INS_PERIOD_LABEL})</td>
-                      <td className="text-right font-bold text-stone-900">{fmt(INS_NET_VALUE)}</td>
-                    </tr>
-                    <tr className="border-b border-stone-100">
-                      <td className="text-left text-stone-600">Brut (real, INS · {INS_PERIOD_LABEL})</td>
-                      <td className="text-right font-medium text-stone-900">{fmt(INS_BRUT_VALUE)}</td>
-                    </tr>
-                    <tr>
-                      <td className="text-left text-stone-600">Brut oficial (BASS, la pensii)</td>
-                      <td className="text-right text-stone-700">{fmt(9192)}</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <p className="mt-auto pt-4 text-xs text-stone-600">Real = ce măsoară INS lunar (5.518 net în ian., 5.557 în feb., 5.938 în mar., 5.843 în apr., 5.684 în mai, 5.734 în iun.). Oficial = valoare fixă (Legea 44/2026), folosită la pensii și ajutoare.</p>
-              </div>
-            </aside>
-          </div>
-
-          {/* RÂND 2 — intenția nr. 1 din GSC: pensia și valoarea oficială */}
-          <div className={row}>
-            <div className="md:col-span-3">
-              <div className={`max-w-prose ${articol}`}>
-                <h2 id="calcul-pensie" className="scroll-mt-20">Salariul mediu brut 2026 pentru calculul pensiei și plafoane</h2>
-                <p>
-                  Numele complet al cifrei oficiale e <strong>câștigul salarial mediu brut utilizat la fundamentarea
-                  bugetului asigurărilor sociale de stat</strong>: 9.192 lei pentru 2026. De ea se leagă:
-                </p>
-                <ul>
-                  <li>
-                    <strong>Punctajul de pensie</strong>: se calculează raportând salariul tău brut la media anului.
-                    Ca să faci un punct de pensie pe 2026, trebuie să fi câștigat exact media, 9.192 lei brut pe lună;
-                    la jumătate din medie faci o jumătate de punct.
-                  </li>
-                  <li><strong>Ajutorul de deces</strong> din sistemul public de pensii.</li>
-                  <li><strong>Plafoane</strong> pentru prestații și indemnizații sociale.</li>
-                  <li><strong>Fundamentarea bugetului</strong> de pensii, șomaj și accidente de muncă.</li>
-                </ul>
-                <p>
-                  Pentru toate astea contează valoarea oficială, nu cifra reală INS care se schimbă lună de lună.
+                  La pensie, mecanismul e simplu: salariul tău brut se împarte la această cifră. Dacă ai câștigat exact
+                  media tot anul, strângi un punct de pensie. La jumătate din medie, jumătate de punct.
                 </p>
               </div>
             </div>
             <aside className={aside}>
               <div className={`${card} ${strong}`}>
-                <h3 className="text-base font-bold tracking-[-0.01em] text-stone-900">Valoarea oficială · 2026</h3>
-                <p className="mt-2 text-sm leading-normal tracking-[-0.01em] text-stone-600">Cifra fixă (Legea 44/2026) pe care o folosește statul:</p>
+                <h3 className="text-base font-bold tracking-[-0.01em] text-stone-900">Cifrele fixe din 2026</h3>
                 <table className="mt-3 w-full text-sm tabular-nums">
                   <tbody className="[&_td]:py-2">
                     <tr className="border-b border-stone-100">
-                      <td className="text-left text-stone-600">Câștig mediu brut (la pensii)</td>
-                      <td className="text-right font-bold text-stone-900">{fmt(9192)}</td>
+                      <td className="text-left text-stone-600">Salariul mediu, la pensie</td>
+                      <td className="text-right font-bold text-stone-900">{fmt(9192)} lei</td>
                     </tr>
                     <tr className="border-b border-stone-100">
-                      <td className="text-left text-stone-600">Ajutor deces, asigurat</td>
-                      <td className="text-right text-stone-700">{fmt(9192)}</td>
+                      <td className="text-left text-stone-600">Ajutor de deces, asigurat</td>
+                      <td className="text-right text-stone-700">{fmt(9192)} lei</td>
                     </tr>
                     <tr>
-                      <td className="text-left text-stone-600">Ajutor deces, membru familie</td>
-                      <td className="text-right text-stone-700">{fmt(4596)}</td>
+                      <td className="text-left text-stone-600">Ajutor de deces, familie</td>
+                      <td className="text-right text-stone-700">{fmt(4596)} lei</td>
                     </tr>
                   </tbody>
                 </table>
-                <p className="mt-auto pt-4 text-xs text-stone-600">Din 30 martie 2026. Înainte: 8.620 lei (ajutor 8.620 / 4.310).</p>
+                <p className="mt-auto pt-4 text-xs text-stone-600">Valabile din 30 martie 2026. Până atunci, cifra era 8.620 de lei.</p>
               </div>
             </aside>
           </div>
 
-          {/* RÂND 3 — netul, pas cu pas */}
+          {/* RÂND 2 — cât rămâne în mână */}
           <div className={row}>
             <div className="md:col-span-3">
               <div className={`max-w-prose ${articol}`}>
-                <h2 id="net" className="scroll-mt-24">Netul, pas cu pas</h2>
+                <h2 id="net" className="scroll-mt-24">Cât rămâne în mână din salariul mediu</h2>
                 <p>
-                  Calculul pe valoarea oficială de 9.192 lei. La acest nivel <strong>nu se aplică deducerea
-                  personală</strong> (ea se dă doar sub 6.325 lei brut), așa că reținerile se calculează la brutul
-                  întreg. Raportul agregat net/brut publicat de INS este de aproximativ 60%, dar nu reprezintă
-                  conversia unui salariu individual: media include angajați cu situații fiscale și componente salariale diferite.
+                  Netul mediu nu trebuie calculat: INS îl publică direct, iar în {INS_PERIOD_LABEL} a fost de{" "}
+                  {INS_NET_LABEL} lei. Dacă vrei totuși să treci singur din brut în net, la salariile de acest nivel
+                  calculul e scurt, pentru că deducerea personală nu se mai aplică:
                 </p>
-                <div className="my-6 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
-                  <table className="w-full text-sm tabular-nums [&_td]:py-2.5 [&_th]:pb-2 [&_td:first-child]:pr-2 [&_td:not(:first-child)]:whitespace-nowrap [&_td:not(:first-child)]:pl-3 [&_td:not(:first-child)]:text-right">
-                    <tbody>
-                      <tr className="border-b border-stone-100">
-                        <td className="text-stone-600">Salariu brut</td>
-                        <td className="font-medium text-stone-900">9.192</td>
-                      </tr>
-                      <tr className="border-b border-stone-100">
-                        <td className="text-stone-600">− CAS 25% <span className="text-stone-600">(pensie)</span></td>
-                        <td className="text-stone-700">2.298</td>
-                      </tr>
-                      <tr className="border-b border-stone-100">
-                        <td className="text-stone-600">− CASS 10% <span className="text-stone-600">(sănătate)</span></td>
-                        <td className="text-stone-700">919</td>
-                      </tr>
-                      <tr className="border-b border-stone-100 bg-stone-50">
-                        <td className="font-medium text-stone-900">= Bază impozabilă</td>
-                        <td className="font-medium text-stone-900">5.975</td>
-                      </tr>
-                      <tr className="border-b border-stone-100">
-                        <td className="text-stone-600">− Impozit 10% <span className="text-stone-600">(fără deducere)</span></td>
-                        <td className="text-stone-700">598</td>
-                      </tr>
-                      <tr className="[&_td]:pt-3 [&_td]:font-bold [&_td]:text-stone-900">
-                        <td>= Net în mână</td>
-                        <td>~5.377</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+                <Formula
+                  eticheta="Netul unui salariu peste 6.325 lei brut"
+                  randuri={[
+                    "Net = brut − 25% − 10% − impozit",
+                    "    = brut × 0,585",
+                  ]}
+                />
                 <p>
-                  Peste brut, firma mai adaugă doar contribuția asiguratorie pentru muncă (CAM 2,25% = 207 lei), așa că un
-                  salariu mediu o costă în total ~<strong>9.399 lei</strong>. Pentru orice altă sumă, ai{" "}
-                  <Link href="/">calculatorul</Link>.
+                  Pe cifra de la pensie, 9.192 lei brut, rezultă cam 5.380 de lei în mână. Pentru salariul tău exact,
+                  folosește <Link href="/">calculatorul</Link>.
                 </p>
               </div>
             </div>
             <aside className={aside}>
-              <div className={`${card} ${strong}`}>
-                <h3 className="text-base font-bold tracking-[-0.01em] text-stone-900">Cât păstrezi din brut</h3>
+              <div className={`${card} ${links} ${strong}`}>
+                <h3 className="text-base font-bold tracking-[-0.01em] text-stone-900">Media față de minim</h3>
                 <p className="mt-2 text-sm leading-normal tracking-[-0.01em] text-stone-600">
-                  La indicatorul bugetar, din fiecare 100 de lei bruți ajung la tine ~<strong>58</strong> (5.377 din 9.192),
-                  restul, la stat. E mai puțin decât la salariul minim (~62%), pentru că aici dispar facilitatea netaxabilă
-                  și deducerea personală.
+                  Cine e plătit cu salariul minim primește în mână {fmt(NET_MINIM)} de lei, adică <strong>{PROCENT_MINIM_DIN_MEDIE}%</strong> din
+                  netul mediu. Pe brut distanța e și mai mare, pentru că la minim taxele sunt mai mici.
+                </p>
+                <p className="mt-auto pt-4 text-sm">
+                  <Link href="/salariu-minim">Salariul minim, în detaliu →</Link>
                 </p>
               </div>
             </aside>
@@ -403,25 +336,23 @@ export default function SalariuMediuPage() {
               <div className={`max-w-prose ${articol}`}>
                 <h2>Media nu e cât câștigi tu</h2>
                 <p>
-                  Aici e capcana cuvântului „mediu&quot;. Media se calculează adunând toate valorile și împărțind la numărul de
-                  salariați, astfel că un grup de salarii foarte mari poate influența rezultatul. Doar din valoarea mediei
-                  nu putem deduce câți angajați se află sub sau peste ea.
+                  Media adună toate salariile și le împarte la numărul de oameni. Câteva salarii foarte mari o trag în sus,
+                  așa că majoritatea oamenilor câștigă sub medie. Din cifra ei nu poți afla câți sunt deasupra și câți
+                  dedesubt.
                 </p>
                 <p>
-                  <strong>Mediana</strong> este valoarea de la mijloc: jumătate dintre observații sunt sub ea și jumătate
-                  peste ea. Pentru o comparație corectă este nevoie însă de o mediană calculată pentru aceeași populație,
-                  aceeași perioadă și aceeași definiție a venitului ca seria INS folosită aici.
+                  Pentru asta e nevoie de <strong>mediană</strong>, salariul de la mijloc: jumătate câștigă mai puțin,
+                  jumătate mai mult.
                 </p>
               </div>
             </div>
             <aside className={aside}>
               <div className={`${card} ${strong}`}>
-                <h3 className="text-base font-bold tracking-[-0.01em] text-stone-900">Ce arată mediana</h3>
+                <h3 className="text-base font-bold tracking-[-0.01em] text-stone-900">De ce nu vezi aici mediana</h3>
                 <p className="mt-2 text-sm leading-normal tracking-[-0.01em] text-stone-600">
-                  Mediana, adică salariul de la mijloc, arată pragul sub care se află jumătate dintre angajați. INS nu
-                  publică o mediană salarială lunară în același comunicat cu media.
+                  INS nu o publică lunar, alături de medie. N-o estimăm noi, pentru că o cifră fără date compatibile și
+                  fără o metodă verificabilă ar fi o ghicitoare.
                 </p>
-                <p className="mt-auto pt-4 text-xs text-stone-600">Nu publicăm o estimare numerică fără un set de date compatibil, o perioadă clară și o metodologie verificabilă.</p>
               </div>
             </aside>
           </div>
@@ -431,7 +362,7 @@ export default function SalariuMediuPage() {
             <div className="md:col-span-3">
               <div className={`max-w-prose ${articol}`}>
                 <h2>Cum a crescut în timp</h2>
-                <p>În șase ani, indicatorul BASS brut a crescut de la 5.429 lei în 2020 la 9.192 lei în 2026. Întâi cifrele, apoi aceeași evoluție pe grafic:</p>
+                <p>Cifra fixă folosită la pensie, adică indicatorul BASS, a crescut cu aproape 70% în șase ani.</p>
                 <div className="my-6 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
                   <table className="w-full text-sm tabular-nums [&_td]:py-2 [&_tbody_th]:py-2 [&_tbody_th]:pr-2 [&_tbody_th]:text-left [&_td:not(:first-child)]:pl-3 [&_th:not(:first-child)]:pl-3 [&_td:not(:first-child)]:text-right [&_th:not(:first-child)]:text-right">
                     <thead>
@@ -439,8 +370,7 @@ export default function SalariuMediuPage() {
                         <th scope="col" className="pb-2 text-left">An</th>
                         <th scope="col" className="pb-2">Brut</th>
                         <th scope="col" className="pb-2">Net</th>
-                        <th scope="col" className="hidden pb-2 sm:table-cell">Creștere</th>
-                        <th scope="col" className="hidden pb-2 md:table-cell">Stabilit prin</th>
+
                       </tr>
                     </thead>
                     <tbody>
@@ -449,8 +379,7 @@ export default function SalariuMediuPage() {
                           <th scope="row" className="font-normal text-stone-600">{r.an}</th>
                           <td className="text-stone-900">{fmt(r.brut)}</td>
                           <td className="text-stone-700">{fmt(r.net)}</td>
-                          <td className="hidden text-stone-600 sm:table-cell">{r.crestere}</td>
-                          <td className="hidden text-stone-600 md:table-cell">{r.lege}</td>
+
                         </tr>
                       ))}
                     </tbody>
@@ -520,7 +449,7 @@ export default function SalariuMediuPage() {
                       })}
                     </div>
                   </div>
-                  <p className="mt-4 text-xs text-stone-600">Brut = valoarea oficială folosită la buget; net = estimat (~58% din brut). Treci cu mouse-ul (sau atinge) un an pentru cifre.</p>
+                  <p className="mt-4 text-xs text-stone-600">Netul e estimat din brut, cu taxele obișnuite. Treci cu mouse-ul sau atinge un an ca să vezi cifrele.</p>
                 </figure>
               </div>
             </div>
@@ -529,20 +458,8 @@ export default function SalariuMediuPage() {
                 <div className={`${card} ${strong}`}>
                   <h3 className="text-base font-bold tracking-[-0.01em] text-stone-900">Ce urmează</h3>
                   <p className="mt-2 text-sm leading-normal tracking-[-0.01em] text-stone-600">
-                    Prognoza CNSP (toamna 2025) estimează salariul mediu brut la <strong>9.786 lei</strong> în 2027 și{" "}
-                    <strong>10.381 lei</strong> în 2028. Sunt doar estimări, iar valoarea fiecărui an se fixează prin legea
-                    bugetului de asigurări sociale.
-                  </p>
-                </div>
-                <div className={`${card} ${links} ${strong}`}>
-                  <h3 className="text-base font-bold tracking-[-0.01em] text-stone-900">Media față de minim</h3>
-                  <p className="mt-2 text-sm leading-normal tracking-[-0.01em] text-stone-600">
-                    Indicatorul BASS (9.192 lei) e de peste două ori minimul (4.325). Pe net, distanța e mai mică:
-                    5.377 față de 2.699, aproape exact dublu, pentru că la minim taxele sunt îndulcite de facilitate și
-                    de deducerea personală.
-                  </p>
-                  <p className="mt-auto pt-4 text-sm">
-                    <Link href="/salariu-minim">Salariul minim, în detaliu →</Link>
+                    Comisia de Prognoză estimează că media brută ajunge la <strong>9.786 lei</strong> în 2027 și la{" "}
+                    <strong>10.381 lei</strong> în 2028. Sunt doar estimări: cifra fiecărui an o fixează legea bugetului.
                   </p>
                 </div>
               </div>
@@ -582,7 +499,7 @@ export default function SalariuMediuPage() {
                   <li><Link href="/">Calculator salariu net</Link></li>
                   <li><Link href="/zile-libere-2026">Zile libere 2026</Link></li>
                 </ul>
-                <p className="mt-auto pt-6 text-xs text-stone-600">Ultima actualizare: 25 august 2026.</p>
+
               </div>
             </aside>
           </div>
@@ -593,7 +510,7 @@ export default function SalariuMediuPage() {
               <div className={card}>
                 <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900">Unde te situezi față de medie?</h2>
                 <p className="mt-2 text-base leading-normal tracking-[-0.01em] text-stone-600">
-                  Pune-ți salariul în calculator și vezi exact unde ești față de medie, ce reține statul și cât costă firma.
+                  Scrie-ți salariul în calculator și compară-l cu media.
                 </p>
                 <Link
                   href="/"
@@ -610,11 +527,11 @@ export default function SalariuMediuPage() {
     </div>
       <PaginiConexe
         linkuri={[
-          { href: "/salarii", label: "Salarii pe meserii", descriere: "Media pe economie e una; pe meserie, alta. Toate meseriile cu date INS." },
+          { href: "/salarii", label: "Salarii pe meserii", descriere: "Media pe economie ascunde diferențe mari între meserii." },
           { href: "/salarii/locuri-vacante", label: "Locuri de muncă vacante", descriere: "Cât se caută în economie: posturi vacante și rata pe grupe de ocupații." },
           { href: "/salarii/judete", label: "Salarii pe județe", descriere: "Unde se câștigă mai mult: toate cele 42 de județe." },
-          { href: "/salarii/clasament", label: "Cele mai bine plătite meserii", descriere: "Clasamentul complet al celor 132 de meserii, după salariul net." },
-          { href: "/salariu-minim", label: "Salariul minim 2026", descriere: "Celălalt pilon: 4.325 lei brut din 1 iulie." },
+          { href: "/salarii/clasament", label: "Cele mai bine plătite meserii", descriere: "Clasamentul meseriilor după salariul net." },
+          { href: "/salariu-minim", label: "Salariul minim 2026", descriere: "Cât e minimul și cum se calculează netul." },
         ]}
       />
     </>

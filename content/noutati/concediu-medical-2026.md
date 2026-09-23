@@ -2,196 +2,123 @@
 title: "Concediu medical 2026: calcul, coduri și plată"
 description: "Cum se calculează concediul medical în 2026: procente pe cod de indemnizație, brut sau net, prima zi neplătită, durata și actele pentru plată."
 date: "2026-08-05"
-updated: "2026-09-09"
+updated: "2026-09-24"
 hero: "/noutati/concediu-medical-2026.webp"
 heroAlt: "Calendar, certificat medical, termometru și monede, ilustrație pentru concediul medical 2026"
 ---
 
-**Concediul medical se plătește în funcție de codul de indemnizație, baza de calcul și zilele lucrătoare indemnizabile.** La codul 01, boală obișnuită, procentele sunt 55%, 65% sau 75% în funcție de durata episodului. Pentru multe certificate din 2026 se scade și o zi lucrătoare, cu excepțiile explicate mai jos.
+**Concediul medical obișnuit se plătește cu 55%, 65% sau 75% din venitul tău mediu, după cât durează boala.** Din februarie 2026 mai e o regulă: prima zi lucrătoare a concediului nu se plătește. Suma exactă depinde de trei lucruri, pe care merită să le verifici separat: codul de pe certificat, venitul din ultimele luni și câte zile lucrătoare intră în concediu.
 
-Pentru un concediu medical scurt, diferența poate fi vizibilă. De aceea merită să separăm trei lucruri: **procentul aplicat**, **baza de calcul** și **numărul de zile efectiv plătite**.
+## Codul de pe certificat spune cât se plătește
 
-## Coduri de concediu medical: ce procent se plătește
+Pe certificat, uită-te la rubrica **„Cod indemnizație”**. Ea stabilește tipul concediului și procentul. „Cod diagnostic” e altceva: descrie boala, nu suma.
 
-Pe certificat, citește rubrica **„Cod indemnizație”**. Aceasta identifică tipul concediului și regulile de plată. Rubrica **„Cod diagnostic”** descrie afecțiunea; un cod de diagnostic, luat separat, nu este un procent de indemnizație.
-
-| Cod indemnizație | Tip de concediu | Procent din baza de calcul, înainte de rețineri |
+| Cod indemnizație | Tip de concediu | Cât se plătește din baza de calcul |
 |---|---|---:|
-| 01 | Boală obișnuită sau accident în afara muncii | 55%, 65% sau 75%, după durata episodului |
+| 01 | Boală obișnuită sau accident în afara muncii | 55%, 65% sau 75%, după durată |
 | 06 | Urgență medico-chirurgicală | 100% |
-| 08 | Sarcină și lăuzie — concediu de maternitate | 85% |
+| 08 | Sarcină și lăuzie (maternitate) | 85% |
 | 09 | Îngrijirea copilului bolnav | 85% |
 | 15 | Risc maternal | 75% |
 
-Acestea sunt tipuri frecvente, nu lista tuturor codurilor. Procentele provin din **art. 17, 25, 30 și 31 din OUG 158/2005**; identificarea codurilor, din **Ordinul 1.192/745/2020**. Aplicarea unei cote de 100% nu înseamnă automat salariul net obișnuit integral: baza de calcul, zilele plătite și tratamentul fiscal rămân de verificat.
+Acestea sunt codurile cele mai des întâlnite, nu toate. Chiar și la 100%, nu primești neapărat cât salariul net obișnuit, pentru că baza de calcul și zilele plătite se socotesc separat.
 
-**Codul 06 nu înseamnă că orice concediu după o operație se plătește cu 100%.** Medicul stabilește încadrarea. Pentru urgența care nu impune internare, art. 26 din norme prevede maximum 5 zile calendaristice; dacă incapacitatea continuă, prelungirea pentru aceeași afecțiune nu se acordă tot pe codul de urgență 06.
+Codul 06 nu acoperă orice concediu de după o operație. Încadrarea o face medicul, iar o urgență fără internare se dă pe acest cod cel mult 5 zile. Dacă boala continuă, prelungirea nu mai e pe codul de urgență.
 
-**Codul 08 și codul 15 sunt diferite.** Primul privește maternitatea, al doilea riscul maternal. Iar concediul pentru îngrijirea copilului bolnav, cod 09, este diferit de concediul de creștere a copilului: nu le aplica aceeași bază și aceleași reguli.
+Nu confunda codul 08, maternitatea, cu codul 15, riscul maternal. La fel, concediul pentru copilul bolnav (codul 09) nu e același lucru cu concediul de creștere a copilului.
 
-## Concediul medical se calculează din brut sau din net?
+## Se calculează din brut, nu din netul din cont
 
-**Procentul se aplică bazei de calcul prevăzute de lege, nu salariului net primit în cont.** Rezultatul formulei este o indemnizație brută. Pentru un salariat, baza pornește în mod obișnuit de la veniturile brute eligibile din perioada de referință, cu plafonul legal.
+Procentul se aplică unei baze de calcul fixate de lege, adică media veniturilor brute din ultimele luni, nu netului primit în cont. Rezultatul e o indemnizație brută, din care se opresc apoi taxele.
 
-Așadar, „75% din salariu” este o prescurtare care poate induce în eroare: nu înseamnă 75% din ultimul net și nici neapărat 75% din ultimul brut lunar. Veniturile din lunile anterioare și numărul zilelor din baza de calcul pot fi diferite. Netul final se stabilește după reținerile aplicabile tipului de indemnizație.
+De aceea „75% din salariu” e o prescurtare care induce în eroare. Nu înseamnă 75% din ultimul net și nici neapărat 75% din ultimul brut, fiindcă media acoperă mai multe luni, cu venituri diferite.
 
-## Cod 01: procentele pe durata episodului în 2026
+## Cât se plătește la boala obișnuită
 
-Pentru incapacitate temporară de muncă din **boală obișnuită sau accident în afara muncii — cod 01**, procentul se stabilește **raportat la fiecare episod de boală**, nu la fiecare certificat:
+La codul 01, procentul depinde de cât durează **tot episodul de boală**, nu fiecare certificat în parte:
 
-| Durata episodului de boală | Procent din baza de calcul |
+| Durata episodului | Cât se plătește |
 |---|---:|
 | până la 7 zile | 55% |
 | între 8 și 14 zile | 65% |
 | peste 15 zile | 75% |
 
-Aceste procente nu sunt o noutate din 2026: ele se aplică **din 1 august 2025**, prin Legea nr. 141/2025, care a rescris art. 17 alin. (1) din OUG nr. 158/2005. Reproducem formularea legii; observă că textul spune „între 8 și 14" și „peste 15", deci exact 15 zile cade într-o zonă pe care legea nu o acoperă explicit.
+Procentele se aplică din 1 august 2025. Textul legii nu spune explicit ce se întâmplă la exact 15 zile, iar tabelul reproduce formularea ei.
 
-Separat, pentru certificatele medicale eliberate în perioada **1 februarie 2026 – 31 decembrie 2027**, indemnizația se diminuează cu **o zi lucrătoare**. Regula nu este în OUG nr. 158/2005, ci în **art. II din OUG nr. 91/2025**, și se raportează la data eliberării certificatului, nu la zilele de concediu.
+Dacă medicul îți prelungește concediul pentru aceeași boală, zilele se adună. Un concediu început cu 6 zile, la 55%, și prelungit până la 10 zile trece la procentul pentru 10 zile. Din 1 iulie 2026, dacă prelungirea sare în altă lună, zilele deja plătite se recalculează, iar diferența vine în luna recalculării.
 
-Cu alte cuvinte, un certificat de 5 zile nu înseamnă neapărat 5 zile indemnizate.
+## De ce prima zi nu se plătește
 
-> Procentele de 55%, 65% și 75% de mai sus se referă la codul 01. Alte tipuri de concediu medical pot avea procente și reguli diferite.
+Pentru certificatele eliberate între **1 februarie 2026 și 31 decembrie 2027**, din concediu se scade o zi lucrătoare. Un certificat de 5 zile înseamnă, de obicei, 4 zile plătite.
 
-## De ce prima zi poate fi neplătită
+Dacă același episod continuă pe mai multe certificate, ziua se scade **o singură dată**. Regula asta a apărut abia din 18 mai 2026. Pentru certificatele din februarie până la jumătatea lui mai, legea nu o prevedea.
 
-Regula introdusă pentru perioada 2026–2027 spune că indemnizația se calculează cu scăderea unei zile din numărul de zile lucrătoare aferente concediului medical.
+Mai contează cine plătește. Până la sfârșitul lui 2027, angajatorul plătește din ziua a 2-a până în ziua a 6-a, iar de acolo plata trece la fondul de sănătate. Din 2028 se revine la vechea regulă, cu zilele 1–5 în sarcina firmei.
 
-La boala obișnuită, pentru certificatele eliberate în fereastra 2026–2027:
+Ziua scăzută și zilele plătite de firmă se numără diferit. Prima se socotește în zile lucrătoare, celelalte în zile de boală. Dacă certificatul începe într-o sâmbătă, cele două nu mai coincid.
 
-- angajatorul suportă indemnizația începând cu **ziua a 2-a și până inclusiv în ziua a 6-a** de incapacitate;
-- de la ziua următoare, plata intră în sarcina Fondului național unic de asigurări sociale de sănătate, în condițiile legii;
-- dacă același episod de boală este prelungit prin mai multe certificate „în continuare”, diminuarea se aplică **o singură dată pentru episodul continuu**, nu la fiecare certificat.
+### Când nu pierzi prima zi
 
-Asta este important. Dacă medicul îți prelungește același concediu, nu pierzi câte o zi la fiecare certificat succesiv care aparține aceluiași episod. Regula „o singură zi pe episod” nu a existat însă de la început: a fost introdusă prin **Legea nr. 64/2026, în vigoare din 18 mai 2026**. Pentru certificatele din februarie–mijlocul lui mai 2026, textul nu o conținea.
+Ziua nu se scade la:
 
-Un lucru care se înțelege des greșit: **zilele 2–6 sunt o derogare temporară**, nu regula permanentă. Art. 12 din OUG nr. 158/2005, care prevede zilele 1–5, nu a fost modificat și redevine aplicabil de la 1 ianuarie 2028. Sarcina angajatorului rămâne de cinci zile în ambele variante — este decalată, nu mărită.
-
-Atenție și la două numărători diferite: partajarea costului se numără în **zile de incapacitate**, iar diminuarea scade **prima zi lucrătoare**. Când certificatul începe într-o zi nelucrătoare, cele două nu coincid.
-
-## Cum se stabilește procentul: contează durata totală a episodului
-
-La boala obișnuită, procentul nu se alege doar după numărul de zile înscris pe o singură hârtie.
-
-Dacă există certificate succesive pentru același episod, trebuie urmărită **durata cumulată**.
-
-De la 1 iulie 2026 există și o regulă explicită pentru situația în care concediul trece dintr-o lună în alta și durata totală ajunge într-o tranșă cu procent mai mare. În acest caz, indemnizația aferentă perioadei anterioare poate fi **recalculată**, iar diferența se include în luna în care se face recalcularea.
-
-Exemplu simplificat:
-
-- primul certificat: 6 zile → episodul intră inițial în tranșa de 55%;
-- concediul se prelungește și episodul ajunge, de exemplu, la 10 zile;
-- pentru episodul continuu se aplică regulile aferente duratei totale, nu tratăm fiecare certificat ca pe o boală complet separată.
-
-## Formula de calcul pentru concediul medical
-
-Pentru situația obișnuită, baza de calcul pornește de la veniturile din perioada prevăzută de lege, în mod uzual **ultimele 6 luni** din cele 12 luni care formează stagiul de asigurare, **până la limita a 12 salarii minime brute pe țară lunar**. Plafonul acesta este ușor de ratat și taie baza pentru salariile mari.
-
-În practică se determină o medie zilnică a bazei de calcul, apoi se aplică:
-
-1. procentul corespunzător tipului și duratei concediului;
-2. numărul de zile lucrătoare indemnizabile;
-3. regula de diminuare cu o zi, acolo unde este aplicabilă.
-
-Forma simplificată este:
-
-**indemnizație brută ≈ media zilnică × procent × zilele indemnizabile**
-
-Nu este corect să iei pur și simplu salariul lunar, să aplici 55% sau 75% și să presupui că aceea este suma finală.
-
-## Exemplu: concediu medical scurt la cod 01
-
-Normele includ, în forma dată de **Ordinul nr. 506/1.030/2026** (publicat în Monitorul Oficial nr. 507 din 19 iunie 2026), un exemplu pentru un salariat cu o bază de calcul formată din câte **4.050 lei pe lună timp de 6 luni**.
-
-În exemplul oficial:
-
-- baza totală pentru cele 6 luni: 24.300 lei;
-- zile folosite la calcul: 121;
-- media zilnică a bazei: aproximativ 200,82 lei;
-- concediu medical: 5 zile lucrătoare;
-- procent: 55%;
-- o zi este diminuată din calcul.
-
-Calcul orientativ:
-
-**200,82 × 55% × (5 − 1) ≈ 442 lei brut**
-
-Diferența față de un calcul „5 zile × 55%” vine exact din regula zilei neindemnizate.
-
-Exemplul este util pentru mecanism, nu pentru a estima automat cazul tău: baza reală depinde de veniturile tale și de zilele luate în calcul.
-
-## Există situații în care nu pierzi prima zi?
-
-Da, și lista este mai lungă decât se spune de obicei. Diminuarea cu o zi **nu se aplică** pentru:
-
-- concediul și indemnizația de **maternitate**;
-- concediul pentru **îngrijirea pacientului cu afecțiuni oncologice**;
+- concediul de **maternitate**;
+- concediul pentru **îngrijirea unui pacient cu cancer**;
 - concediul de **risc maternal**;
-- concediile medicale acordate **bolnavilor incluși în programele naționale de sănătate**;
-- certificatele eliberate pentru **bolnavii care beneficiază de servicii medicale în regim de spitalizare**.
+- bolnavii din **programele naționale de sănătate**;
+- certificatele date **în timpul internării în spital**.
 
-Temeiul este art. II alin. (4)–(5) din OUG nr. 91/2025, preluat în normele de aplicare. Aceste excepții se aplică concediilor medicale acordate **începând cu 1 iunie 2026**, nu de la 1 februarie.
+Excepțiile se aplică doar concediilor acordate din 1 iunie 2026. Concediul pentru **copilul bolnav nu e exceptat**, deși mulți cred asta.
 
-Atenție la cea mai frecventă confuzie: **concediul pentru îngrijirea copilului bolnav NU este exceptat**. Acolo diminuarea cu o zi se aplică.
+## Cum se calculează suma
 
-De aceea, dacă pe certificatul tău nu este cod 01 sau există o situație specială, nu aplica automat exemplul de mai sus.
+Baza de calcul e media veniturilor brute din **ultimele 6 luni**, dar fiecare lună intră cel mult cu 12 salarii minime. La salariile foarte mari, plafonul taie din bază.
 
-## De ce suma de pe fluturaș poate părea mai mică decât te aștepți
+```
+Media zilnică = venituri brute din 6 luni ÷ zilele din acele luni
+Indemnizație  = media zilnică × procent × zile lucrătoare plătite
+```
 
-Cele mai frecvente confuzii apar când angajatul compară indemnizația cu salariul net obișnuit.
+Pe exemplul oficial din normele de aplicare, un salariat cu 4.050 lei brut pe lună, timp de 6 luni, bolnav 5 zile lucrătoare:
 
-În concediu medical se schimbă simultan:
+```
+Media zilnică = 24.300 lei ÷ 121 zile     ≈ 200,82 lei
+Indemnizație  = 200,82 × 55% × (5 − 1)    ≈ 442 lei brut
+```
 
-- numărul de zile lucrate;
-- numărul de zile de concediu medical;
-- baza și procentul indemnizației;
-- contribuțiile și impozitarea aplicabile tipului de indemnizație;
-- eventual, o zi care nu este indemnizată.
+Cele 4 zile, nu 5, vin din ziua neplătită. Exemplul arată mecanismul. Suma ta depinde de veniturile și de zilele tale.
 
-De aceea este mai util să verifici separat zilele și componentele de pe statul de plată decât să compari doar totalul primit în cont.
+## De ce fluturașul pare mai mic decât te aștepți
 
-Dacă vrei să înțelegi fiecare rând sau să generezi un model cu rețineri defalcate, consultă generatorul de [fluturaș de salariu](/fluturas-salariu) și ghidul dedicat despre [cum citești fluturașul de salariu](/noutati/cum-citesti-fluturasul-de-salariu).
+Într-o lună cu concediu medical se schimbă mai multe lucruri deodată: zilele lucrate, zilele de concediu, procentul, taxele pe indemnizație și, poate, ziua neplătită. Compară fiecare rând de pe [fluturaș](/fluturas-salariu), nu doar totalul din cont. Ghidul despre [cum citești fluturașul](/noutati/cum-citesti-fluturasul-de-salariu) explică fiecare rând.
 
-## Ce să verifici dacă ai concediu medical în 2026
-
-Înainte să presupui că suma este greșită, verifică:
+Dacă suma ți se pare greșită, verifică în ordinea asta:
 
 - codul de indemnizație de pe certificat;
-- dacă certificatul este inițial sau „în continuare”;
-- durata totală a episodului de boală;
-- câte zile lucrătoare intră efectiv în perioada certificatului (vezi [calendarul zilelor lucrătoare 2026](/zile-lucratoare-2026) pentru norma lunară de ore);
-- veniturile folosite pentru baza de calcul;
-- dacă situația ta intră într-o excepție de la diminuarea cu o zi.
+- dacă certificatul e inițial sau „în continuare”;
+- câte zile are, în total, episodul de boală;
+- câte zile lucrătoare cad în concediu (vezi [zilele lucrătoare 2026](/zile-lucratoare-2026));
+- veniturile din ultimele 6 luni;
+- dacă ești într-una dintre excepțiile de la ziua neplătită.
 
-Pentru salariul aferent zilelor efectiv lucrate poți folosi [calculatorul de salariu](/), iar pentru formulele fiscale generale poți consulta [metodologia salariile.ro](/metodologie).
+## Câte zile poate da medicul de familie
 
-## Câte zile de concediu medical poate da medicul de familie?
+Medicul de familie poate da **cel mult 7 zile pentru un episod**, în cel puțin două etape, iar prima are cel mult 4 zile. În total, nu mai mult de **28 de zile într-un an**, socotit de la prima zi de boală. Peste atât, certificatele le dă specialistul sau spitalul. Bolile infecțioase grave și izolarea au reguli separate.
 
-Pentru incapacitatea temporară de muncă obișnuită, medicul de familie poate acorda **cel mult 7 zile calendaristice pentru un episod**, în cel puțin două etape, iar prima etapă are **maximum 4 zile**. Acestea sunt limite legale; numărul efectiv se stabilește medical. Pentru bolile infectocontagioase din grupa A și izolare există reguli speciale.
+## Ce se întâmplă după 90 de zile
 
-Durata cumulată acordată de medicul de familie nu poate depăși, în regula generală, **28 de zile calendaristice în ultimul an, socotite de la prima zi de îmbolnăvire**. După acest prag, certificatele se acordă de specialist sau de spital, în condițiile legii. Unele categorii de concediu nu intră în acest total. Temei: **art. 20 din normele OUG 158/2005**, forma consolidată din 24 iulie 2026.
+Concediul nu se oprește automat. Regula generală permite **cel mult 183 de zile într-un an**. De la ziua 91, prelungirea cere avizul medicului expert al asigurărilor sociale. Peste 183 de zile se mai pot da, după o evaluare separată, cel mult încă 90, dar nu e un drept automat.
 
-## Ce se întâmplă după 90 de zile de concediu medical?
+Limitele se socotesc în zile calendaristice. Plata, în schimb, se face doar pentru zilele lucrătoare.
 
-Regula generală pentru incapacitate temporară este de **cel mult 183 de zile în interval de un an, calculat din prima zi de îmbolnăvire**. Din ziua 91, prelungirea de către specialist până la 183 de zile cere aprobarea medicului expert al asigurărilor sociale. Nu înseamnă că după 90 de zile concediul încetează automat.
+## După externare
 
-Bolile speciale pot avea alte durate. Prelungirea peste 183 de zile, în situațiile prevăzute de art. 14, presupune o evaluare distinctă și poate fi de cel mult încă 90 de zile. Nu este un drept automat la 273 de zile. Temei: **art. 13–14 din OUG 158/2005**.
+Medicul din spital dă certificatul pentru perioada internării. La externare, poate da încă 1–7 zile, iar în cazuri speciale, cu aprobarea șefului de secție, până la 21. Dacă nici atunci nu te poți întoarce la muncă, medicul de familie poate prelungi cu cel mult 7 zile, pe baza scrisorii medicale. O anumită operație nu înseamnă automat un anumit număr de zile.
 
-Zilele din aceste limite sunt calendaristice. **Plata se raportează la zilele lucrătoare indemnizabile**, după regulile programului de muncă. Pentru program luni–vineri, poți verifica intervalul în [calendarul zilelor lucrătoare](/zile-lucratoare-2026).
+## Actele și termenul de plată
 
-## Cum se prelungește concediul medical după externare?
+Ca să primești bani, ai nevoie de **cel puțin 6 luni lucrate în ultimele 12**, nu neapărat la același angajator. Urgențele și riscul maternal nu cer această condiție.
 
-Certificatul pentru perioada internării este acordat de medicul curant din spital. La externare, inclusiv după spitalizare de zi, se pot acorda **1–7 zile calendaristice**, iar în cazuri speciale, cu aprobarea medicului-șef de secție, până la **21 de zile**.
-
-Dacă starea de sănătate nu permite reluarea activității, medicul de familie poate prelungi cu maximum 7 zile pentru aceeași afecțiune, pe baza scrisorii medicale. Dacă incapacitatea se menține, urmează evaluarea specialistului. Există reguli distincte pentru unele boli; o anumită operație nu garantează un număr fix de zile. Temei: **art. 25 din norme**.
-
-## Adeverință, stagiu de asigurare și termenul de plată
-
-Pentru regula generală este necesar un **stagiu minim de 6 luni în ultimele 12 luni** anterioare lunii concediului. Există situații exceptate, între care urgențele medico-chirurgicale, în condițiile art. 9; riscul maternal se acordă fără condiție de stagiu, conform art. 31. Stagiul de asigurare nu înseamnă obligatoriu 6 luni la angajatorul actual.
-
-De regulă, medicului i se prezintă **adeverința de la plătitorul indemnizației**, cu zilele de incapacitate temporară de muncă avute în ultimele 12/24 de luni. Art. 8 din norme prevede excepțiile și situațiile în care se eliberează adeverința. Aceasta nu este certificatul de concediu medical și nu înlocuiește consultația.
-
-**Certificatul se prezintă plătitorului cel târziu pe 5 ale lunii următoare** celei pentru care s-a acordat concediul. Pentru salariați, angajatorul plătește indemnizația lunar, cel târziu odată cu lichidarea drepturilor salariale ale lunii respective, conform **art. 36 din OUG 158/2005**. Partea suportată din fondul de sănătate și procedura de recuperare de către angajator sunt distincte de data plății către salariat.
+La medic duci, de regulă, o **adeverință de la angajator** cu zilele de concediu medical din ultimul an sau ultimii doi ani. Certificatul îl predai la firmă **până pe 5 ale lunii următoare**. Angajatorul plătește indemnizația odată cu salariul lunii respective, chiar dacă o parte din bani îi recuperează apoi de la fondul de sănătate.
 
 ## Surse oficiale
 
@@ -203,4 +130,4 @@ De regulă, medicului i se prezintă **adeverința de la plătitorul indemnizaț
 - [Normele OUG nr. 158/2005 – forma consolidată din 24 iulie 2026, inclusiv art. 8, 20, 25 și 26](https://legislatie.just.ro/Public/DetaliiDocument/311827)
 - [Ordinul nr. 1.192/745/2020 – codurile și completarea certificatului de concediu medical](https://legislatie.just.ro/Public/DetaliiDocument/310789)
 
-Legislația privind concediile medicale are multe situații speciale. Articolul explică mecanismul general și nu înlocuiește verificarea certificatului și a situației concrete de salarizare.
+Concediile medicale au multe situații speciale. Articolul explică regula generală și nu înlocuiește verificarea certificatului tău și a salarizării tale concrete.

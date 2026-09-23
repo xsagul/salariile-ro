@@ -3,7 +3,7 @@ import Link from "@/app/components/Link";
 import { personSchema } from "@/lib/person";
 import { SARBATORI_LEGALE_2026, zileLucratoareLuna } from "@/lib/sarbatori";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
-import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow } from "@/app/components/ui";
+import { Hero, Section, Breadcrumb, H1, Lead, Formula } from "@/app/components/ui";
 import TabelArticol from "@/app/components/TabelArticol";
 import CalculatorIntervalZile from '@/app/components/CalculatorIntervalZile';
 
@@ -116,18 +116,14 @@ function faqLuna() {
 }
 
 const faqList = () => [
-  {
-    q: "Câte zile lucrătoare are anul 2026?",
-    a: "Anul 2026 are 250 de zile lucrătoare în România, calculat pentru program luni-vineri și cu sărbătorile legale scăzute.",
-  },
-  {
-    q: "Câte ore lucrătoare sunt în 2026?",
-    a: "La program standard de 8 ore pe zi, 2026 are 2.000 de ore lucrătoare.",
-  },
   faqLuna(),
   {
-    q: "Zilele lucrătoare schimbă salariul lunar?",
-    a: "Nu pentru un salariu lunar fix. Salariul brut negociat se plătește lunar, dar numărul de zile lucrătoare contează pentru tarif orar, pontaj, part-time și tichete.",
+    q: "Primesc mai puțin salariu într-o lună cu mai puține zile lucrătoare?",
+    a: "Nu, dacă ai salariu lunar fix. Primești aceeași sumă în februarie ca în octombrie. Numărul de zile contează doar pentru plata pe oră, pontaj, part-time și tichetele de masă.",
+  },
+  {
+    q: "Se recuperează o sărbătoare legală care pică în weekend?",
+    a: "Nu. O sărbătoare care cade sâmbăta sau duminica nu îți dă o zi liberă în altă parte, decât dacă angajatorul hotărăște asta.",
   },
 ];
 
@@ -197,12 +193,12 @@ export default function ZileLucratoare2026Page() {
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Zile lucrătoare 2026" }]} />
         <H1>Zile lucrătoare 2026</H1>
         <p className="mt-3 text-sm text-stone-600 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2">
-          Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat 21 august 2026
+          Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat {PAGE_LAST_MODIFIED[PATH].toLocaleDateString("ro-RO", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })}
         </p>
         <Lead>
-          În 2026 sunt <strong>{TOTAL_LUCRATOARE} zile lucrătoare</strong> și <strong>{TOTAL_ORE.toLocaleString("ro-RO")} ore de lucru</strong> la program standard de 8 ore pe zi.
+          În 2026 sunt <strong>{TOTAL_LUCRATOARE} de zile lucrătoare</strong>, adică {TOTAL_ORE.toLocaleString("ro-RO")} de ore la
+          program de 8 ore pe zi. Restul de {TOTAL_LIBERE} de zile sunt weekenduri și sărbători legale.
         </Lead>
-        <Eyebrow>Calendar luni-vineri · sărbători legale scăzute</Eyebrow>
       </Hero>
 
       <div>
@@ -210,7 +206,7 @@ export default function ZileLucratoare2026Page() {
           <CalculatorIntervalZile />
           <Link href="/zile-lucratoare-2027" className="mt-4 inline-flex min-h-11 items-center underline">Zile lucrătoare 2027 și export CSV</Link>
           <div className="rounded-md border border-stone-300 bg-surface p-5 shadow-soft sm:p-6">
-            <p className="text-xs font-medium uppercase tracking-wide text-stone-600">Răspuns rapid pentru luna curentă</p>
+            <p className="text-xs font-medium uppercase tracking-wide text-stone-600">Luna aceasta</p>
             <h2 id="luna-curenta" className="mt-2">
               {lunaCurenta ? `Zile lucrătoare ${lunaCurenta.name.toLowerCase()} ${YEAR}` : `Zile lucrătoare în ${YEAR}`}
             </h2>
@@ -220,8 +216,8 @@ export default function ZileLucratoare2026Page() {
                   {lunaCurenta.name} {YEAR} are <strong>{lunaCurenta.lucratoare} de zile lucrătoare</strong> și{" "}
                   <strong>{lunaCurenta.ore} de ore de lucru</strong> la program de 8 ore pe zi.{" "}
                   {lunaCurenta.holidays.filter((h) => !h.weekend).length === 0
-                    ? "Luna nu are nicio sărbătoare legală care să reducă norma de lucru."
-                    : `Norma lunară este redusă de ${lunaCurenta.holidays.filter((h) => !h.weekend).length === 1 ? "o sărbătoare legală care cade" : `${lunaCurenta.holidays.filter((h) => !h.weekend).length} sărbători legale care cad`} în zile lucrătoare.`}
+                    ? "Nicio sărbătoare legală nu pică în timpul săptămânii."
+                    : `${lunaCurenta.holidays.filter((h) => !h.weekend).length === 1 ? "O sărbătoare legală pică" : `${lunaCurenta.holidays.filter((h) => !h.weekend).length} sărbători legale pică`} în timpul săptămânii, așa că se lucrează mai puțin.`}
                 </>
               ) : (
                 <>
@@ -234,28 +230,12 @@ export default function ZileLucratoare2026Page() {
           </div>
         </Section>
 
-        <Section wide>
-          <div className="grid gap-4 sm:grid-cols-3">
-            <div className="rounded-md border border-stone-200 bg-surface p-5 shadow-soft">
-              <div className="text-3xl font-bold tabular-nums text-stone-900">{TOTAL_LUCRATOARE}</div>
-              <p className="mt-1 text-xs uppercase tracking-wide text-stone-600">Zile lucrătoare</p>
-            </div>
-            <div className="rounded-md border border-stone-200 bg-surface p-5 shadow-soft">
-              <div className="text-3xl font-bold tabular-nums text-stone-900">{TOTAL_ORE.toLocaleString("ro-RO")}</div>
-              <p className="mt-1 text-xs uppercase tracking-wide text-stone-600">Ore de lucru</p>
-            </div>
-            <div className="rounded-md border border-stone-200 bg-surface p-5 shadow-soft">
-              <div className="text-3xl font-bold tabular-nums text-stone-900">{TOTAL_LIBERE}</div>
-              <p className="mt-1 text-xs uppercase tracking-wide text-stone-600">Zile libere total</p>
-            </div>
-          </div>
-        </Section>
 
         <Section>
           <div id="tabel-2026" className="scroll-mt-24" />
           <h2>Tabel zile lucrătoare 2026</h2>
           <p>
-            Tabelul scade weekendurile și sărbătorile legale care cad în zile de luni-vineri. Este util pentru pontaj, tarif orar, tichete de masă și contracte part-time.
+            Weekendurile și sărbătorile care pică de luni până vineri sunt deja scăzute.
           </p>
 
           <div className="my-4 flex flex-wrap items-center justify-between gap-3">
@@ -315,14 +295,15 @@ export default function ZileLucratoare2026Page() {
               </tbody>
           </TabelArticol>
           <p className="source-note">
-            Dacă ai nevoie de calendar vizual și minivacanțe, vezi pagina completă de <Link href="/zile-libere-2026">zile libere 2026</Link>.
+            Calendarul cu toate zilele libere și punțile e pe pagina <Link href="/zile-libere-2026">zile libere 2026</Link>.
           </p>
         </Section>
 
         <Section>
           <h2>Sărbători legale scăzute din zilele lucrătoare</h2>
           <p>
-            În 2026 sunt 16 sărbători legale în calendar, dar doar cele care cad în zile lucrătoare reduc norma de lucru lunară. Cele care cad sâmbăta sau duminica nu se recuperează automat.
+            Doar sărbătorile care pică în timpul săptămânii scad din zilele de lucru. Cele care pică sâmbăta sau
+            duminica se pierd, fără o zi liberă în schimb.
           </p>
           <TabelArticol>
               <thead>
@@ -347,18 +328,22 @@ export default function ZileLucratoare2026Page() {
         </Section>
 
         <Section>
-          <h2>De ce contează pentru salarii</h2>
+          <h2>Ce faci cu numărul de zile lucrătoare</h2>
           <p>
-            Pentru un salariat cu salariu lunar fix, numărul de zile lucrătoare nu schimbă salariul brut sau net al lunii. Totuși, contează în calcule operaționale:
+            Dacă ai salariu lunar fix, nimic nu se schimbă: primești aceeași sumă într-o lună scurtă ca într-una
+            lungă. Numărul de zile contează când plata sau un beneficiu se calculează pe zi ori pe oră:
           </p>
-          <ul>
-            <li>tarif orar și normă lunară de lucru;</li>
-            <li>contracte part-time și pontaj;</li>
-            <li>număr de tichete de masă acordate;</li>
-            <li>comparații între luni cu 18 zile lucrătoare și luni cu 23 zile lucrătoare.</li>
-          </ul>
+          <Formula
+            eticheta="Calcule pe baza zilelor lucrătoare"
+            randuri={[
+              "Ore de lucru  = zile lucrătoare × 8",
+              "Plata pe oră  = salariu brut ÷ ore de lucru din lună",
+              "Tichete       = cel mult unul pe zi lucrată",
+            ]}
+          />
           <p>
-            Pentru netul lunar exact, cu taxe defalcate, folosește <Link href="/">calculatorul salariu net 2026</Link>.
+            De aceea, aceeași oră de muncă valorează mai mult într-o lună cu puține zile lucrătoare. Pentru netul
+            lunar, cu taxele pe rând, folosește <Link href="/">calculatorul de salariu net</Link>.
           </p>
         </Section>
 
@@ -382,7 +367,6 @@ export default function ZileLucratoare2026Page() {
             <li><Link href="/fluturas-salariu">Generator fluturaș salariu</Link>, pentru fluturaș PDF orientativ</li>
             <li><Link href="/calculator-ore-suplimentare">Calculator ore suplimentare</Link>, pentru sporul de 75%, cel de noapte și cel de sărbători</li>
           </ul>
-          <p className="source-note">Pagina actualizată: 15 iulie 2026.</p>
         </Section>
       </div>
     </>

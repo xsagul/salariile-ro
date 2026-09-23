@@ -50,6 +50,30 @@ precis fără să fie birocratic, niciodată alarmist.
 - Limita se declară în text, nu în termeni și condiții.
 - Nu scriem niciodată public despre defectele concurenței.
 
+### Textul servește intenția — decis de proprietar pe 24 septembrie 2026
+
+Utilizatorii s-au plâns că site-ul pare un almanah: CAS și CASS repetate peste
+tot, cifre aruncate în fiecare paragraf, în loc de o formulă și o explicație.
+
+- **Întâi intenția.** Omul a venit pentru ceva anume: pe o pagină-calculator,
+  pentru instrument; pe un articol, pentru știre. Asta primește sus, iar tot ce
+  urmează îl ajută să înțeleagă sau să decidă, nu umple pagina.
+- **Sub calculator: explicație scurtă, apoi formula într-un card** (`Formula` din
+  `src/app/components/ui.tsx`). Nu tabele cu un exemplu calculat pe o sumă pe care
+  nu a cerut-o.
+- **O idee pe paragraf, cel mult două-trei cifre.** Cifrele multe stau într-un
+  tabel, nu în proză. Un card lateral nu repetă corpul paginii.
+- **CAS, CASS și impozitul se explică o singură dată pe pagină.** În rest,
+  „taxele” sau linkul către formulă.
+- **Actul normativ stă lângă surse**, nu în paranteză după fiecare frază. În text
+  apare doar când omul are ceva de făcut cu el (o plângere la ITM, un drept).
+- **Voce umană.** Cum ar explica un prieten care se pricepe: propoziții scurte, fără
+  „Iată”, „de fapt”, „Cheia e”, „Atenție la”, fără construcții „nu e X, ci Y”
+  în serie, fără titluri-întrebare retorice și fără bold pe jumătate de paragraf.
+- **Articolele se scriu ca la o publicație bună de știri:** titlu informativ, primul
+  paragraf spune ce s-a întâmplat și ce înseamnă pentru cititor, apoi contextul.
+- **FAQ-ul răspunde doar la ce nu a acoperit pagina**, în două-trei propoziții.
+
 ## 3. Nume
 
 | Formă | Rol |
