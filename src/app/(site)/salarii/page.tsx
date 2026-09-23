@@ -34,7 +34,7 @@ const NET_STANDARD_ECONOMIE = calculStandard(TOTAL_ECONOMIE.brutCurent)?.net ?? 
 const DESCRIERE = `Repere salariale pentru ${MESERII.length} meserii în România: medii declarate, grile de bază și context INS. Surse, perioade și comparații explicate.`;
 
 export const metadata: Metadata = {
-  title: { absolute: `Salarii pe meserii în România 2026 | Salariile.ro` },
+  title: { absolute: `Salarii pe meserii în România 2026 | Salariile` },
   description: DESCRIERE,
   alternates: { canonical: "https://salariile.ro/salarii" },
   openGraph: ogPage({
@@ -90,8 +90,8 @@ const jsonLd = {
       author: personSchema,
       publisher: {
         "@type": "Organization",
-        name: "Salariile.ro",
-        logo: { "@type": "ImageObject", url: "https://salariile.ro/og-image.png", width: 1200, height: 630 },
+        name: "Salariile",
+        logo: { "@type": "ImageObject", url: "https://salariile.ro/icon-512.png", width: 512, height: 512 },
       },
       mainEntity: {
         "@type": "ItemList",

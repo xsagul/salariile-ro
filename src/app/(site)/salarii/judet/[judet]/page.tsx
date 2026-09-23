@@ -42,7 +42,7 @@ export function generateStaticParams() {
 }
 
 const AN = AN_JUDETE.replace("Anul ", "");
-const BRAND = " | Salariile.ro";
+const BRAND = " | Salariile";
 const TITLU_MAX = 60;
 const URL_FOM107E = INS_SURSA.url;
 const URL_HG_900_2023 = "https://legislatie.just.ro/Public/DetaliiDocumentAfis/274843";
@@ -140,8 +140,8 @@ export default async function JudetPage({ params }: Props) {
         author: personSchema,
         publisher: {
           "@type": "Organization",
-          name: "Salariile.ro",
-          logo: { "@type": "ImageObject", url: "https://salariile.ro/og-image.png", width: 1200, height: 630 },
+          name: "Salariile",
+          logo: { "@type": "ImageObject", url: "https://salariile.ro/icon-512.png", width: 512, height: 512 },
         },
       },
       {

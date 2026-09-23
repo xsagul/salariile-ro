@@ -21,7 +21,7 @@ const ACTUALIZAT = PAGE_LAST_MODIFIED[PATH].toLocaleDateString("ro-RO", {
 });
 
 export const metadata: Metadata = {
-  title: { absolute: "SAGA Web și SAGA C: salarii, contabilitate | Salariile.ro" },
+  title: { absolute: "SAGA Web și SAGA C: salarii, contabilitate | Salariile" },
   description:
     "SAGA C și SAGA WEB în 2026: contabilitate, salarizare, D112, licență freeware și diferențele față de SmartBill. Surse oficiale SAGA.",
   alternates: { canonical: "https://salariile.ro/saga" },
@@ -77,7 +77,7 @@ const jsonLd = {
       description:
         "Ghid despre SAGA C și SAGA WEB: salarizare, D112, licențiere și comparație cu SmartBill.",
       author: personSchema,
-      publisher: { "@type": "Organization", name: "Salariile.ro", url: "https://salariile.ro" },
+      publisher: { "@type": "Organization", name: "Salariile", url: "https://salariile.ro" },
       mainEntityOfPage: "https://salariile.ro/saga",
       datePublished: "2026-09-22",
       dateModified: PAGE_LAST_MODIFIED[PATH].toISOString().slice(0, 10),

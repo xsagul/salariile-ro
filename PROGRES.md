@@ -3436,3 +3436,41 @@ nevoie de zile ca să calibreze plasările.
 **Contul nu poate încă încasa:** lipsesc informațiile fiscale, verificarea de
 identitate și metoda de plată. Sunt ale proprietarului; agentul nu le completează.
 Pragul de plată e 70 €.
+
+## 23 septembrie 2026 — Rebranding: „Salariile”, marca „ii” pe galben
+
+Din kitul de identitate dat de proprietar (`salariile-identitate`): logo cu „ii”
+pe marcaj galben #FFC61A, favicon rotund, simbol pătrat, manifest și numele
+mărcii pentru Google.
+
+**Ce s-a schimbat:**
+
+- Iconuri: `src/app/icon.svg` (rotund), `favicon.ico` 16/32/48, `apple-icon.png`,
+  `public/icon-192.png`, `icon-512.png` și un `icon-maskable-512.png` separat
+  (până acum maskable refolosea iconul obișnuit, care se tăia în cerc pe Android).
+- Header și footer: wordmarkul text „salariile.ro” devine logoul SVG, inline, în
+  `src/app/components/Logo.tsx` — fără cerere în plus, fără salt de layout.
+- Numele în metadate: `Salariile`, cu o singură sursă, `NUME_SITE` din
+  `src/lib/seo.ts`. `og:site_name`, sufixul titlurilor (`%s | Salariile`),
+  `WebSite` și `Organization` din schema.org spun același lucru;
+  `alternateName` păstrează `salariile.ro`. Proza care citează „Salariile.ro” ca
+  sursă a rămas neschimbată.
+- `logo` din schema.org trece de la `og-image.png` (1200×630, dreptunghi) la
+  `icon-512.png` (pătrat), cum cere Google pentru logo.
+- `theme-color` galben, în manifest și în `<meta>`. Splash-ul PWA rămâne pe
+  canvas #f8f5ef, nu pe alb ca în kit, ca să nu clipească la prima pagină.
+- OG implicit refăcut: simbolul „ii” în locul lui „S.”, wordmark invers jos,
+  randat cu Inter (înainte, Arial de sistem).
+- Galbenul pe cifra principală: netul din rândul de total al calculatoarelor de
+  salariu, part-time, învățământ și „rămâne la tine” la PFA. Utilitara `marcaj`
+  din `globals.css`; nicăieri ca text.
+- `BRAND.md` rescris la §3, §4, §5, §11, §15, §16: vechile reguli interziceau
+  exact numele „Salariile” și orice accent de culoare.
+
+**Verificat:** `npm test` trece, `npm run lint` 0 erori, `npm run build` trece,
+`npm run test:rendered` — 326 de rute, 323 de blocuri JSON-LD valide. Capturi pe
+desktop și mobil: header, rezultat, footer.
+
+**Neatins, de urmărit:** `og-salariu-minim.jpg` și `og-salariu-mediu.jpg` sunt
+ilustrații fără marcă. Titlurile se schimbă pe toate paginile; în GSC nu se
+atribuie efecte CTR schimbării de sufix înainte de 28 de zile complete.

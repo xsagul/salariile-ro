@@ -53,8 +53,8 @@ function isCalculIstoricS1(mod: CalculatorMode, cifra: string) {
 
 const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(n);
 
-/** Sufixul de titlu adăugat automat de layout: `%s | Salariile.ro`. */
-const BRAND_SUFFIX_LENGTH = " | Salariile.ro".length;
+/** Sufixul de titlu adăugat automat de layout: `%s | Salariile`. */
+const BRAND_SUFFIX_LENGTH = " | Salariile".length;
 const TITLE_MAX_LENGTH = 60;
 
 /**

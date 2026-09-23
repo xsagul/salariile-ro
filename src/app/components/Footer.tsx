@@ -6,6 +6,7 @@
 
 import Link from "@/app/components/Link";
 import ButonPreferinteGoogle from "@/app/components/ButonPreferinteGoogle";
+import Logo from "@/app/components/Logo";
 
 // Set centralizat: aici adăugăm rutele pe măsură ce le construim
 const IMPLEMENTED_PAGES = new Set<string>([
@@ -95,11 +96,8 @@ export default function Footer() {
     <footer className="hairline-t bg-canvas pt-8 pb-6 text-stone-600 sm:pt-12">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="mb-8 flex flex-col items-start gap-8 border-b border-stone-200 pb-8 sm:flex-row">
-          <Link
-            href="/"
-            className="mr-auto text-xl font-bold tracking-[-0.02em] text-stone-900"
-          >
-            salariile.ro
+          <Link href="/" aria-label="Salariile, pagina principală" className="mr-auto inline-flex min-h-11 items-center">
+            <Logo className="h-7 w-auto" />
           </Link>
           <p className="max-w-[400px] text-sm leading-normal tracking-[-0.01em] text-stone-600">
             Informații și instrumente despre salariile din România.
@@ -144,7 +142,7 @@ export default function Footer() {
 
         <div className="flex flex-col flex-wrap items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
           <p className="m-0 text-xs text-stone-600">
-            © {new Date().getFullYear()} Salariile.ro – Actualizat conform
+            © {new Date().getFullYear()} Salariile – Actualizat conform
             legislației fiscale în vigoare
           </p>
           <ButonPreferinteGoogle />

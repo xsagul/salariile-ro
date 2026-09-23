@@ -8,7 +8,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getArticle, getAllSlugs, getAllArticles, formatDateRo } from "@/lib/noutati";
 import { personSchema } from "@/lib/person";
-import { OG_IMAGE } from "@/lib/seo";
+import { NUME_SITE, OG_IMAGE } from "@/lib/seo";
 import { Prose } from "@/app/components/ui";
 
 export function generateStaticParams() {
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     openGraph: {
       type: "article",
       locale: "ro_RO",
-      siteName: "Salariile.ro",
+      siteName: NUME_SITE,
       title: a.title,
       description: a.description,
       url,

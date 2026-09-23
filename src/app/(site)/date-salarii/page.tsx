@@ -86,13 +86,13 @@ const jsonLd = {
       creator: personSchema,
       publisher: {
         "@type": "Organization",
-        name: "Salariile.ro",
+        name: "Salariile",
         url: SITE_URL,
         logo: {
           "@type": "ImageObject",
-          url: SITE_URL + "/og-image.png",
-          width: 1200,
-          height: 630,
+          url: SITE_URL + "/icon-512.png",
+          width: 512,
+          height: 512,
         },
       },
       mainEntityOfPage: SITE_URL + PAGE_PATH,

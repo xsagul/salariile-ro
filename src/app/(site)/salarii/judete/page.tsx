@@ -28,7 +28,7 @@ const TITLU = `Câștig salarial mediu brut pe județe ${AN}`;
 const DESCRIERE = `Câștig salarial mediu brut lunar pe județe, media întregului an ${AN} (INS FOM107E). Valorile nu sunt nete și nu reprezintă salariul minim din 2026.`;
 
 export const metadata: Metadata = {
-  title: { absolute: `${TITLU} | Salariile.ro` },
+  title: { absolute: `${TITLU} | Salariile` },
   description: DESCRIERE,
   alternates: { canonical: "https://salariile.ro/salarii/judete" },
   openGraph: ogPage({
@@ -88,8 +88,8 @@ const jsonLd = {
       author: personSchema,
       publisher: {
         "@type": "Organization",
-        name: "Salariile.ro",
-        logo: { "@type": "ImageObject", url: "https://salariile.ro/og-image.png", width: 1200, height: 630 },
+        name: "Salariile",
+        logo: { "@type": "ImageObject", url: "https://salariile.ro/icon-512.png", width: 512, height: 512 },
       },
       mainEntity: {
         "@type": "ItemList",

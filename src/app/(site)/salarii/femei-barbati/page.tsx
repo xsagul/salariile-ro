@@ -52,7 +52,7 @@ const DESCRIERE = TOTAL
   : `Diferența de câștig între femei și bărbați în România, pe grupe de ocupații și pe vârste, din ancheta INS.`;
 
 export const metadata: Metadata = {
-  title: { absolute: `Diferența de salariu femei-bărbați ${AN} | Salariile.ro` },
+  title: { absolute: `Diferența de salariu femei-bărbați ${AN} | Salariile` },
   description: DESCRIERE,
   alternates: { canonical: "https://salariile.ro/salarii/femei-barbati" },
   openGraph: ogPage({
@@ -111,8 +111,8 @@ const jsonLd = {
       author: personSchema,
       publisher: {
         "@type": "Organization",
-        name: "Salariile.ro",
-        logo: { "@type": "ImageObject", url: "https://salariile.ro/og-image.png", width: 1200, height: 630 },
+        name: "Salariile",
+        logo: { "@type": "ImageObject", url: "https://salariile.ro/icon-512.png", width: 512, height: 512 },
       },
       mainEntityOfPage: "https://salariile.ro/salarii/femei-barbati",
       dateModified: PAGE_LAST_MODIFIED["/salarii/femei-barbati"].toISOString().slice(0, 10),
@@ -129,7 +129,7 @@ const jsonLd = {
       isAccessibleForFree: true,
       spatialCoverage: { "@type": "Place", name: "România" },
       creator: personSchema,
-      publisher: { "@type": "Organization", name: "Salariile.ro", url: SITE_URL },
+      publisher: { "@type": "Organization", name: "Salariile", url: SITE_URL },
       license: "https://data.gov.ro/base/images/logoinst/OGL-ROU-1.0.pdf",
       isBasedOn: "http://statistici.insse.ro:8077/tempo-online/",
       variableMeasured: [

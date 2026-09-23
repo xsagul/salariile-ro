@@ -102,7 +102,7 @@ const jsonLd = {
     {
       "@type": "Organization",
       "@id": "https://salariile.ro/#organization",
-      name: "Salariile.ro",
+      name: "Salariile",
       url: "https://salariile.ro",
       founder: { "@id": "https://salariile.ro/#person" },
     },

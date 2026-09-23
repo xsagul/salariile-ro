@@ -155,7 +155,7 @@ const jsonLd = {
       isAccessibleForFree: true,
       description:
         "Calculator pentru taxele unui PFA în sistem real, 2026: CAS, CASS, impozit pe venit și venitul rămas.",
-      publisher: { "@type": "Organization", name: "Salariile.ro", url: "https://salariile.ro" },
+      publisher: { "@type": "Organization", name: "Salariile", url: "https://salariile.ro" },
       author: personSchema,
       // Aceeasi sursa ca lastmod-ul din sitemap, ca sa nu apara doua date
       // diferite pentru aceeasi pagina. Tiparul e luat de la /fluturas-salariu.

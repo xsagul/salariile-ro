@@ -138,8 +138,8 @@ const jsonLd = {
       author: personSchema,
       publisher: {
         "@type": "Organization",
-        name: "Salariile.ro",
-        logo: { "@type": "ImageObject", url: "https://salariile.ro/og-image.png", width: 1200, height: 630 },
+        name: "Salariile",
+        logo: { "@type": "ImageObject", url: "https://salariile.ro/icon-512.png", width: 512, height: 512 },
       },
       image: { "@type": "ImageObject", url: "https://salariile.ro/og-image.png", width: 1200, height: 630 },
       mainEntityOfPage: "https://salariile.ro/zile-libere-2026",

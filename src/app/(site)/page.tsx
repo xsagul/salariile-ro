@@ -79,11 +79,14 @@ const homepageJsonLd = {
     {
       "@type": "Organization",
       "@id": "https://salariile.ro/#organization",
-      name: "Salariile.ro",
+      name: "Salariile",
+      alternateName: "Salariile.ro",
       url: "https://salariile.ro",
       logo: {
         "@type": "ImageObject",
-        url: "https://salariile.ro/og-image.png",
+        url: "https://salariile.ro/icon-512.png",
+        width: 512,
+        height: 512,
       },
       founder: { "@id": "https://salariile.ro/#person" },
     },
@@ -92,8 +95,10 @@ const homepageJsonLd = {
       "@type": "WebSite",
       "@id": "https://salariile.ro/#website",
       url: "https://salariile.ro/",
-      name: "Salariile.ro",
-      alternateName: "Calculator salariu net România",
+      // Numele mărcii afișat de Google deasupra URL-ului. Trebuie să coincidă
+      // cu og:site_name și cu sufixul titlurilor (NUME_SITE din src/lib/seo.ts).
+      name: "Salariile",
+      alternateName: ["salariile.ro", "Salariile.ro"],
       inLanguage: "ro-RO",
       publisher: { "@id": "https://salariile.ro/#organization" },
     },

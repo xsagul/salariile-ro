@@ -8,7 +8,9 @@ conține regulile care trebuie să fie în repo, lângă cod.
 și documentul se corectează — cu excepția secțiunii „Datorii de identitate”, unde
 codul e cel semnalat.
 
-Auditat pe 27 august 2026, pe `main`.
+Auditat pe 27 august 2026, pe `main`. **Rebranding pe 23 septembrie 2026**, din
+kitul de identitate dat de proprietar: numele „Salariile”, marca „ii” pe galben și
+culoarea de marcaj. Secțiunile 3, 4, 5, 11, 15 și 16 descriu starea de după.
 
 ## 1. Poziționare
 
@@ -46,12 +48,14 @@ precis fără să fie birocratic, niciodată alarmist.
 
 | Formă | Rol |
 |---|---|
-| `salariile.ro` | Wordmark. Header, footer, semnătură OG, atribuire widget. Mereu minuscule. |
-| `Salariile.ro` | Numele entității în propoziție și în metadate (`siteName`, `publisher`, sufix de titlu, schema.org). |
-| `SALARIILE.RO` | Interzis. |
-| `Salariile` | Interzis. Numele include TLD-ul. |
+| `Salariile` | Numele mărcii în metadate: `og:site_name`, `publisher`, sufixul de titlu, schema.org `WebSite` și `Organization`, manifestul. Sursa unică: `NUME_SITE` din `src/lib/seo.ts`. |
+| `salariile.ro` / `Salariile.ro` | Domeniul și `alternateName` în schema.org. În proză rămâne acceptat ca nume al entității („calcul Salariile.ro”), iar în atribuirea widgetului, ca adresă. |
+| `SALARIILE` / `SALARIILE.RO` | Interzis. |
 
-Sufix SEO: `%s | Salariile.ro`, cu titlul complet sub 60 de caractere *cu* sufix.
+Numele din `WebSite` (doar pe homepage), `og:site_name` și sufixul titlurilor
+trebuie să fie identice: din ele alege Google numele afișat deasupra URL-ului.
+
+Sufix SEO: `%s | Salariile`, cu titlul complet sub 60 de caractere *cu* sufix.
 Autorul se scrie complet, cu diacritice: Știuriuc Sorin-Marian.
 
 Licența Apache-2.0 acoperă codul, **nu** numele, domeniul, logo-ul sau
@@ -59,23 +63,40 @@ identitatea vizuală (vezi [LICENSING.md](LICENSING.md)).
 
 ## 4. Marcă
 
-Litera **S urmată de punct**, albă pe pătrat închis. Punctul face parte din marcă
-și nu se elimină. Wordmarkul se folosește în chrome-ul site-ului; marca „S.”
-acolo unde nu încape cuvântul (favicon, iconuri, colț OG).
+Semnul e **„ii”-ul din „Salariile”**: două tije rotunjite cu punct, în cerneală,
+pe un dreptunghi galben de marcaj — ca un cuvânt subliniat cu markerul. În
+wordmark, „ii” stă pe marcaj în interiorul cuvântului; singur, devine simbolul.
 
-Fișiere: `src/app/icon.svg`, `src/app/apple-icon.png`, `public/icon-192.png`,
-`public/icon-512.png`, `public/og-image.svg`.
+| Formă | Unde | Fișier |
+|---|---|---|
+| Wordmark cu `.ro` | Header, footer, colțul OG | `src/app/components/Logo.tsx` (inline) |
+| Favicon rotund | Browser și rezultatele Google | `src/app/icon.svg`, `src/app/favicon.ico` (16/32/48) |
+| Simbol pătrat, colțuri rotunjite | Aplicație, rețele sociale, OG | `src/app/apple-icon.png`, `public/icon-192.png`, `public/icon-512.png`, `public/icon-maskable-512.png` |
 
-- Spațiu liber: minimum înălțimea literei „S” pe toate laturile.
-- Minim: 24 px marca, 96 px lățime wordmarkul.
-- Două variante: alb pe închis (implicit), tuș pe deschis. Nu există variantă colorată.
-- Interzis: rotire, umbră, contur, gradient, recolorare, siglă compusă, alt font,
-  wordmark cu altă greutate decât 700.
+Literele sunt Inter ExtraBold convertit în contur; „ii” e desenat separat.
+Sursa tuturor fișierelor e kitul de identitate din 23 septembrie 2026; path-urile
+nu se redesenează de mână.
 
-## 5. Culoare — monocrom cald, fără accent
+- Spațiu liber: minimum înălțimea marcajului „ii” pe toate laturile.
+- Minim: 28 px înălțime wordmarkul în chrome, 16 px faviconul.
+- Pe fundal deschis: varianta normală. Pe fundal închis: varianta „invers”
+  (litere albe, `.ro` în #9A958C, „ii” rămâne cerneală pe galben).
+- Interzis: rotire, umbră, contur, gradient, recolorare, alt font, „ii” fără marcaj.
 
-O singură familie: **stone**, plus două fundaluri proprii. Măsurat pe 27 aug 2026,
-în `src/` nu există nicio utilitară de culoare în afara familiei stone.
+## 5. Culoare — monocrom cald, cu un singur marcaj
+
+O singură familie pentru interfață: **stone**, plus două fundaluri proprii. Din 23
+septembrie 2026 se adaugă culorile mărcii, cu rol strict limitat:
+
+| Token | Hex | Rol |
+|---|---|---|
+| `--color-marcaj` | #FFC61A | Fundalul „ii” din marcă, favicon, bara browserului (`theme-color`) și utilitara `marcaj` pe cifra principală a unui calcul |
+| `--color-cerneala` | #121212 | Semnul „ii” și textul scris peste galben |
+| — | #8A857C / #9A958C | Sufixul `.ro` din logo, pe deschis / pe închis. Nu e token de interfață. |
+
+**Galbenul nu e niciodată text** — pe alb are 1,6:1. Se folosește doar ca fundal,
+cu cerneală peste (12,1:1). Pe ecran apare o singură cifră marcată: netul (sau
+„rămâne la tine” la PFA) din rândul de total al calculatoarelor.
 
 Tokenii proprii trăiesc în `src/app/globals.css` → `@theme`:
 
@@ -88,9 +109,10 @@ Tokenii proprii trăiesc în `src/app/globals.css` → `@theme`:
 
 Tușul e `stone-900` / `#1c1917` — nu negru pur.
 
-**De ce fără accent:** într-un tabel fiscal, singurul lucru care are voie să iasă
-în evidență e o sumă. O culoare de accent ar concura cu ea și ar semnala „bine”
-sau „rău” despre salariul cuiva.
+**De ce un singur marcaj și nu un accent:** într-un tabel fiscal, singurul lucru
+care are voie să iasă în evidență e o sumă. Galbenul e pus chiar pe ea, nu pe
+butoane, linkuri sau titluri. Nu semnalează „bine” sau „rău” — e același pe orice
+salariu.
 
 ### Contrast pe `canvas` (#f8f5ef), WCAG 2.x
 
@@ -156,7 +178,7 @@ Textul curent stă în `max-w-prose` (~65 caractere) sau `max-w-3xl`.
 ## 8. Linia punctată — semnătura
 
 1 px, liniuțe de 14 px separate de goluri de 12 px, în `#d6d3d1`. Într-o identitate
-fără accent cromatic, ea e diferențiatorul.
+fără accent cromatic în interfață, ea e diferențiatorul — galbenul aparține mărcii și cifrei, nu layoutului.
 
 **Regula:** punctatul (`hairline-t` / `hairline-b`) marchează limita site-ului —
 sub header și deasupra footerului, două apariții pe pagină. Interiorul se separă
@@ -209,9 +231,11 @@ Distincții care nu se pierd niciodată:
 
 ## 11. Imagini
 
-OG: fundal închis (invers față de site, ca să iasă din fluxul alb al rețelei),
-marca „S.” la stânga, eyebrow majuscule, titlu pe max. trei rânduri ~61 px / 750,
-linie de 1 px, promisiunea într-un rând, jos wordmark + referință legală în mono.
+OG: fundal cerneală #121212 (invers față de site, ca să iasă din fluxul alb al
+rețelei), simbolul „ii” pe galben la stânga, eyebrow majuscule, titlu pe max. trei
+rânduri ~61 px / 800, linie de 1 px, promisiunea într-un rând, jos wordmarkul
+„invers” + referință legală în mono. `public/og-image.png` se randează din
+`public/og-image.svg` cu Inter instalat local; fără el, `sharp` cade pe Arial.
 
 Editorial: ilustrație în paletă caldă, `.webp` în `public/noutati/`, declarate în
 frontmatter prin `hero:` / `heroAlt:` (nu `image:` / `imageAlt:` — motorul nu le
@@ -251,7 +275,8 @@ tehnică a generatorului și singura excepție acceptată de la regula diacritic
 
 ## 14. Ce nu facem
 
-- Nu adăugăm culoare de accent fără decizie explicită a proprietarului, documentată aici.
+- Nu adăugăm altă culoare și nu extindem galbenul dincolo de rolurile din §5 fără
+  decizie explicită a proprietarului, documentată aici.
 - Nu punem reclame, popupuri, interstițiale sau bannere de newsletter. `/despre`
   promite public că nu există formulare, conturi sau newsletter — orice element
   care contrazice promisiunea cere întâi actualizarea promisiunii.
@@ -270,11 +295,7 @@ Locuri unde codul se contrazice pe el însuși. Nu sunt propuneri de redesign.
 
 | Ce | Unde | Impact | Corecția |
 |---|---|---|---|
-| `theme_color: "#52565f"` — gri-albastru rece, inexistent în restul identității | `src/app/manifest.ts:16` | Vizibil: bara browserului pe Android, fereastra PWA | `#1c1917` sau `#f8f5ef` |
-| `background_color: "#faf8f5"` ≠ `--color-canvas: #f8f5ef` | `src/app/manifest.ts:15` | Vizibil: splash-ul PWA nu se potrivește cu prima pagină | `#f8f5ef` |
-| Iconul și OG folosesc `#111111` / `#FAFAF7`, site-ul `#1c1917` / `#f8f5ef` | `src/app/icon.svg`, `public/og-image.svg` | Minor: negru rece lângă un sistem cald | Aliniere la tușul cald |
-| `<body>` are `bg-white`, dar fiecare secțiune randează pe `bg-canvas` | `src/app/layout.tsx:92` | Minor: alb pur la overscroll și pe pagini scurte | `bg-canvas` |
-| Comentariul descrie paleta ca „slate + accent emerald”; nu există nici slate, nici emerald | `src/app/globals.css:7` | Documentație: trimite pe pistă greșită orice contribuitor | Rescriere: stone monocrom |
+| Tușul interfeței e stone-900 #1c1917, marca folosește cerneală #121212 | `src/app/components/Logo.tsx`, `ui.tsx` | Minor: diferență abia perceptibilă lângă logo | Decizie deschisă: se aliniază interfața la #121212 sau rămâne tușul cald |
 | `text-stone-500` pe `bg-canvas` = 4,41:1, sub AA | `src/app/components/ui.tsx:96`, 127 apariții | Accesibilitate: eyebrow + indicații sub câmpuri | `stone-600` pe canvas |
 | Rază amestecată: 67× `rounded` (4 px), 78× `rounded-md` (6 px), fără regulă | tot `src/` | Minor: buton lângă card | 4 px controale, 6 px suprafețe (§7) |
 
@@ -289,8 +310,9 @@ raza de colț la urmă, ca trecere unică.
 | Tokeni de culoare, font, umbră, hairline | `src/app/globals.css` → `@theme` |
 | Primitive de tipografie și layout | `src/app/components/ui.tsx` |
 | Navigație și footer | `src/app/components/Header.tsx`, `Footer.tsx` |
-| Iconuri, culori PWA | `src/app/manifest.ts`, `src/app/icon.svg` |
-| Metadate, OG, titluri | `src/app/layout.tsx`, `src/lib/seo.ts` |
+| Iconuri, culori PWA | `src/app/manifest.ts`, `src/app/icon.svg`, `src/app/layout.tsx` (`viewport.themeColor`) |
+| Wordmark | `src/app/components/Logo.tsx` |
+| Numele mărcii, metadate, OG, titluri | `src/lib/seo.ts` (`NUME_SITE`), `src/app/layout.tsx` |
 | Constante fiscale și context de proiect | `CLAUDE.md` |
 | Drepturi asupra mărcii și conținutului | `LICENSING.md` |
 

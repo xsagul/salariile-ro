@@ -20,7 +20,7 @@ const LUNA = lunaLunga(LUNA_REFERINTA);
 const DESCRIERE = `Compară oricare două meserii: surse salariale, grile publice, perioade și responsabilități. Reperele despre ocupație sunt separate de contextul INS.`;
 
 export const metadata: Metadata = {
-  title: { absolute: "Compară salarii între meserii 2026 | Salariile.ro" },
+  title: { absolute: "Compară salarii între meserii 2026 | Salariile" },
   description: DESCRIERE,
   alternates: { canonical: "https://salariile.ro/compara" },
   openGraph: ogPage({ title: "Compară salarii între meserii 2026", description: DESCRIERE, path: "/compara" }),

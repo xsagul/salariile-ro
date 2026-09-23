@@ -23,7 +23,9 @@
 
 import { Inter } from "next/font/google";
 import Script from "next/script";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+
+import { NUME_SITE } from "@/lib/seo";
 
 import "./globals.css";
 
@@ -38,20 +40,20 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://salariile.ro"),
   title: {
-    default: "Calculator Salariu Net 2026: Brut în Net | Salariile.ro",
-    template: "%s | Salariile.ro",
+    default: "Calculator Salariu Net 2026: Brut în Net | Salariile",
+    template: "%s | Salariile",
   },
   description:
     "Calculează salariul net din brut în 2026: CAS, CASS, impozit și cost angajator, conform HG 146/2026. Pentru angajații din România. Fără reclame, fără cont.",
   authors: [{ name: "Știuriuc Sorin-Marian", url: "https://salariile.ro/despre" }],
   creator: "Știuriuc Sorin-Marian",
-  publisher: "Salariile.ro",
+  publisher: NUME_SITE,
   openGraph: {
     type: "website",
     locale: "ro_RO",
     url: "https://salariile.ro",
-    siteName: "Salariile.ro",
-    title: "Calculator Salariu Net 2026 | Salariile.ro",
+    siteName: NUME_SITE,
+    title: "Calculator Salariu Net 2026 | Salariile",
     description:
       "Calculează salariul net din brut sau brutul din net, cu regulile fiscale 2026. Fără reclame, fără cont.",
     images: [
@@ -59,13 +61,13 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Salariile.ro, calculator salariu net",
+        alt: "Salariile, calculator salariu net",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Calculator Salariu Net 2026 | Salariile.ro",
+    title: "Calculator Salariu Net 2026 | Salariile",
     description: "Calculează salariul net din brut sau brutul din net, cu regulile fiscale 2026.",
     images: ["/og-image.png"],
   },
@@ -83,6 +85,11 @@ export const metadata: Metadata = {
       seobility: "341f6613f4c3739772cc254cbb6f6102",
     },
   },
+};
+
+// Culoarea barei browserului pe mobil: galbenul mărcii, ca în manifest.
+export const viewport: Viewport = {
+  themeColor: "#FFC61A",
 };
 
 export default function RootLayout({

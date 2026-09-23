@@ -45,7 +45,7 @@ const jsonLd = {
       mainEntity: personSchema,
       isPartOf: {
         "@type": "WebSite",
-        name: "Salariile.ro",
+        name: "Salariile",
         url: "https://salariile.ro",
       },
     },

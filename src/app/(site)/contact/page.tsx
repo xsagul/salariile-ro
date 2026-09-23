@@ -37,7 +37,7 @@ const jsonLd = {
     },
     {
       "@type": "ContactPage",
-      name: "Contact Salariile.ro",
+      name: "Contact Salariile",
       description:
         "Pagina de contact pentru salariile.ro: email, subiecte potrivite și limitări declarate.",
       url: "https://salariile.ro/contact",

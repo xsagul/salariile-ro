@@ -59,7 +59,7 @@ const FAQ = [
 ];
 
 export const metadata: Metadata = {
-  // Absolut: cu sufixul „| Salariile.ro" titlul ar trece de 60 de caractere și s-ar
+  // Absolut: cu sufixul „| Salariile" titlul ar trece de 60 de caractere și s-ar
   // trunchia în SERP exact peste cifra de net.
   title: { absolute: TITLE },
   description: DESCRIPTION,
@@ -88,8 +88,8 @@ const jsonLd = {
       author: personSchema,
       publisher: {
         "@type": "Organization",
-        name: "Salariile.ro",
-        logo: { "@type": "ImageObject", url: "https://salariile.ro/og-image.png", width: 1200, height: 630 },
+        name: "Salariile",
+        logo: { "@type": "ImageObject", url: "https://salariile.ro/icon-512.png", width: 512, height: 512 },
       },
       image: { "@type": "ImageObject", url: "https://salariile.ro/og-image.png", width: 1200, height: 630 },
       datePublished: "2026-07-26",

@@ -70,7 +70,7 @@ export function generateStaticParams() {
 const LUNA = lunaLunga(LUNA_REFERINTA);
 const AN_ANCHETA = AN_OCUPATII.replace("Anul ", "");
 const AN_JUDETE_SCURT = AN_JUDETE.replace("Anul ", "");
-const BRAND = " | Salariile.ro";
+const BRAND = " | Salariile";
 const TITLU_MAX = 60;
 
 /**
@@ -241,8 +241,8 @@ export default async function MeseriePage({ params }: Props) {
         author: personSchema,
         publisher: {
           "@type": "Organization",
-          name: "Salariile.ro",
-          logo: { "@type": "ImageObject", url: "https://salariile.ro/og-image.png", width: 1200, height: 630 },
+          name: "Salariile",
+          logo: { "@type": "ImageObject", url: "https://salariile.ro/icon-512.png", width: 512, height: 512 },
         },
         mainEntityOfPage: `https://salariile.ro/salarii/${slug}`,
         dateModified: MESERII_LAST_MODIFIED.toISOString().slice(0, 10),

@@ -83,7 +83,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const titlu = `Salarii în ${numeInFraza(categorie.nume)}`;
 
   return {
-    title: { absolute: `${titlu} | Salariile.ro` },
+    title: { absolute: `${titlu} | Salariile` },
     description: descriere,
     alternates: { canonical: `https://salariile.ro/salarii/domeniu/${slug}` },
     openGraph: ogPage({ title: titlu, description: descriere, path: `/salarii/domeniu/${slug}` }),
@@ -141,8 +141,8 @@ export default async function DomeniuPage({ params }: Props) {
         author: personSchema,
         publisher: {
           "@type": "Organization",
-          name: "Salariile.ro",
-          logo: { "@type": "ImageObject", url: "https://salariile.ro/og-image.png", width: 1200, height: 630 },
+          name: "Salariile",
+          logo: { "@type": "ImageObject", url: "https://salariile.ro/icon-512.png", width: 512, height: 512 },
         },
         mainEntity: {
           "@type": "ItemList",

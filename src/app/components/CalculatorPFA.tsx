@@ -599,7 +599,7 @@ export default function CalculatorPFA() {
                       <Row label="Total taxe la stat" value={fmtP(rezultatSrl.totalTaxe)} bold />
                       <tr className="bg-stone-900">
                         <td className="border-r border-r-stone-600 px-3 py-3 text-left text-sm font-bold text-white">Rămâne la tine</td>
-                        <td className="px-3 py-3 text-right text-sm font-bold tabular-nums whitespace-nowrap text-white">{fmtP(rezultatSrl.ramas)}</td>
+                        <td className="px-3 py-3 text-right text-sm font-bold tabular-nums whitespace-nowrap text-white"><span className="marcaj">{fmtP(rezultatSrl.ramas)}</span></td>
                       </tr>
                     </>
                   ) : (
@@ -634,7 +634,7 @@ export default function CalculatorPFA() {
                           )}
                         </td>
                         <td className="px-3 py-3 text-right text-sm font-bold tabular-nums whitespace-nowrap text-white">
-                          {fmtP(rez.tip === "real" ? rez.r.ramas : rez.ramas)}
+                          <span className="marcaj">{fmtP(rez.tip === "real" ? rez.r.ramas : rez.ramas)}</span>
                         </td>
                       </tr>
                     </>

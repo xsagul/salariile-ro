@@ -2,6 +2,7 @@
 
 // src/app/components/Header.tsx
 import Link from "@/app/components/Link";
+import Logo from "@/app/components/Logo";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 
@@ -134,8 +135,8 @@ export default function Header() {
 
     <header className="hairline-b relative w-full bg-canvas">
       <div className="flex h-16 items-center gap-2 px-4 sm:px-6">
-        <Link href="/" className="mr-auto text-xl font-bold tracking-[-0.02em] text-stone-900">
-          salariile.ro
+        <Link href="/" aria-label="Salariile, pagina principală" className="mr-auto inline-flex min-h-11 items-center">
+          <Logo className="h-7 w-auto sm:h-8" />
         </Link>
 
         {/* Desktop nav */}

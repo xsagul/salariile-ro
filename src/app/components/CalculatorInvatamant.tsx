@@ -356,7 +356,7 @@ export default function CalculatorInvatamant() {
                     Salariu net
                   </td>
                   <td className="whitespace-nowrap px-3 py-3 text-right text-sm font-bold tabular-nums text-white">
-                    {r ? `${fmt(r.fiscal.netBani)} lei` : "–"}
+                    {r ? <span className="marcaj">{fmt(r.fiscal.netBani)} lei</span> : "–"}
                   </td>
                 </tr>
 

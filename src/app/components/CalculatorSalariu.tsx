@@ -1077,7 +1077,7 @@ export default function CalculatorSalariu({
                   <tbody>
                     <tr className="bg-stone-900">
                       <td className="border-r border-r-stone-600 px-3 py-3 text-left text-sm font-bold text-white">{t.salariuNetRand}</td>
-                      <td className="px-3 py-3 text-right text-sm font-bold tabular-nums whitespace-nowrap text-white">{fmt(rezAfisat.rez.netBani)}</td>
+                      <td className="px-3 py-3 text-right text-sm font-bold tabular-nums whitespace-nowrap text-white"><span className="marcaj">{fmt(rezAfisat.rez.netBani)}</span></td>
                     </tr>
                     {rezAfisat.rez.tichete > 0 && (
                       <tr>
@@ -1152,7 +1152,7 @@ export default function CalculatorSalariu({
                       intră integral pe card, la valoarea nominală, pe rând separat. */}
                   <tr className="bg-stone-900">
                     <td className="border-r border-r-stone-600 px-3 py-3 text-left text-sm font-bold text-white">{t.salariuNetRand}</td>
-                    <td className="px-3 py-3 text-right text-sm font-bold tabular-nums whitespace-nowrap text-white">{fmt(rezAfisat.rez.netBani)}</td>
+                    <td className="px-3 py-3 text-right text-sm font-bold tabular-nums whitespace-nowrap text-white"><span className="marcaj">{fmt(rezAfisat.rez.netBani)}</span></td>
                   </tr>
                   {rezAfisat.rez.tichete > 0 && (
                     <tr>

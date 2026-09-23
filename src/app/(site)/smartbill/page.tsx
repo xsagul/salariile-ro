@@ -21,7 +21,7 @@ const ACTUALIZAT = PAGE_LAST_MODIFIED[PATH].toLocaleDateString("ro-RO", {
 });
 
 export const metadata: Metadata = {
-  title: { absolute: "SmartBill 2026: prețuri, facturare și Conta | Salariile.ro" },
+  title: { absolute: "SmartBill 2026: prețuri, facturare și Conta | Salariile" },
   description:
     "SmartBill în 2026: prețuri actuale, Facturare, Gestiune, Conta, POS, e-Factura, login și salarizare. Ghid independent cu surse oficiale.",
   alternates: { canonical: "https://salariile.ro/smartbill" },
@@ -81,7 +81,7 @@ const jsonLd = {
       description:
         "Ghid independent despre SmartBill: produse, prețuri, e-Factura, Conta, salarizare și comparație cu SAGA.",
       author: personSchema,
-      publisher: { "@type": "Organization", name: "Salariile.ro", url: "https://salariile.ro" },
+      publisher: { "@type": "Organization", name: "Salariile", url: "https://salariile.ro" },
       mainEntityOfPage: "https://salariile.ro/smartbill",
       datePublished: "2026-09-22",
       dateModified: PAGE_LAST_MODIFIED[PATH].toISOString().slice(0, 10),

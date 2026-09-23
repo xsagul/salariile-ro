@@ -390,7 +390,7 @@ export default function CalculatorPartTime() {
                   <tr className="bg-stone-900">
                     <th scope="row" className="border-r border-stone-600 px-3 py-3 text-left font-bold text-white">Salariu net</th>
                     <td className="hidden border-r border-stone-600 px-3 py-3 text-right text-white/80 sm:table-cell">în mână</td>
-                    <td className="px-3 py-3 text-right font-bold whitespace-nowrap text-white">{fmt(rezultat.netBani)} lei</td>
+                    <td className="px-3 py-3 text-right font-bold whitespace-nowrap text-white"><span className="marcaj">{fmt(rezultat.netBani)} lei</span></td>
                   </tr>
 
                   <RandRezultat eticheta="CAM (contribuția firmei – 2,25%)" suportatDe="firmă" valoare={rezultat.cam} />

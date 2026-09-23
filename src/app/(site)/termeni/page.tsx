@@ -44,7 +44,7 @@ const jsonLd = {
       dateModified: PAGE_LAST_MODIFIED["/termeni"].toISOString().slice(0, 10),
       isPartOf: {
         "@type": "WebSite",
-        name: "Salariile.ro",
+        name: "Salariile",
         url: "https://salariile.ro",
       },
     },

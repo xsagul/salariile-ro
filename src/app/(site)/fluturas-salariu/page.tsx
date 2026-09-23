@@ -87,7 +87,7 @@ const jsonLd = {
       applicationCategory: "FinanceApplication",
       operatingSystem: "All",
       isAccessibleForFree: true,
-      publisher: { "@type": "Organization", name: "Salariile.ro", url: "https://salariile.ro" },
+      publisher: { "@type": "Organization", name: "Salariile", url: "https://salariile.ro" },
       author: personSchema,
     },
     {
