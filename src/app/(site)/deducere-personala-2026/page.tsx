@@ -74,8 +74,8 @@ export default function DeducerePersonalaPage() {
         </p>
         <Lead>
           Deducerea personală e partea din salariu pe care nu plătești impozit. La salariul minim, e de{" "}
-          <strong>{fmt(maxFaraPersoane)} lei</strong> fără persoane în întreținere și urcă până la{" "}
-          <strong>{fmt(maxCuPatruPersoane)} lei</strong> cu patru sau mai multe. Scade pe măsură ce salariul crește și
+          <strong>{fmt(maxFaraPersoane)}&nbsp;lei</strong> fără persoane în întreținere și urcă până la{" "}
+          <strong>{fmt(maxCuPatruPersoane)}&nbsp;lei</strong> cu patru sau mai multe. Scade pe măsură ce salariul crește și
           dispare peste <strong>{fmt(PLAFON)} lei brut</strong>.
         </Lead>
       </Hero>
@@ -85,13 +85,13 @@ export default function DeducerePersonalaPage() {
           <CardCompanion titlu="Cine are dreptul">
             <ul className="flex flex-col gap-3 text-sm leading-normal text-stone-600">
               <li>
-                Salariații cu brut de cel mult <strong className="font-semibold text-stone-900">{fmt(PLAFON)} lei</strong>,
+                Salariații cu brut de cel mult <strong className="font-semibold text-stone-900">{fmt(PLAFON)}&nbsp;lei</strong>,
                 la locul de muncă de bază. La al doilea contract nu se acordă.
               </li>
               <li>
                 În întreținere intră soțul sau soția, copiii și rudele până la gradul al doilea, ale tale sau ale
                 partenerului, dacă au venituri de cel mult{" "}
-                <strong className="font-semibold text-stone-900">{fmt(Math.round(SALARIU_MINIM * 0.2))} lei</strong> pe lună.
+                <strong className="font-semibold text-stone-900">{fmt(Math.round(SALARIU_MINIM * 0.2))}&nbsp;lei</strong> pe lună.
               </li>
               <li>
                 Un copil se trece la un singur părinte. Dacă lucrați amândoi, alegeți care dintre voi îl declară.
@@ -116,9 +116,9 @@ export default function DeducerePersonalaPage() {
               <tbody>
                 {BRUTURI.map((brut) => (
                   <tr key={brut}>
-                    <td className="font-medium text-stone-900">{fmt(brut)} lei</td>
+                    <td className="font-medium text-stone-900">{fmt(brut)}&nbsp;lei</td>
                     {PERSOANE.map((p) => (
-                      <td key={p} className="text-right tabular-nums">{fmt(calculeazaDeducerePersonala(brut, p))} lei</td>
+                      <td key={p} className="text-right tabular-nums">{fmt(calculeazaDeducerePersonala(brut, p))}&nbsp;lei</td>
                     ))}
                   </tr>
                 ))}

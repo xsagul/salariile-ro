@@ -178,9 +178,9 @@ export default function CalculatorSalariuConstructiiPage() {
           <tbody>
             {BRUT_IN_NET.map((rand) => (
               <tr key={rand.brut}>
-                <th scope="row">{fmt(rand.brut)} lei</th>
-                <td><strong>{fmt(rand.netBani)} lei</strong></td>
-                <td>{fmt(rand.costTotal)} lei</td>
+                <th scope="row">{fmt(rand.brut)}&nbsp;lei</th>
+                <td><strong>{fmt(rand.netBani)}&nbsp;lei</strong></td>
+                <td>{fmt(rand.costTotal)}&nbsp;lei</td>
               </tr>
             ))}
           </tbody>
@@ -202,9 +202,9 @@ export default function CalculatorSalariuConstructiiPage() {
           <tbody>
             {NET_IN_BRUT.map((rand) => (
               <tr key={rand.netDorit}>
-                <th scope="row">{fmt(rand.netDorit)} lei</th>
-                <td><strong>{fmt(rand.brut)} lei</strong></td>
-                <td>{fmt(rand.costTotal)} lei</td>
+                <th scope="row">{fmt(rand.netDorit)}&nbsp;lei</th>
+                <td><strong>{fmt(rand.brut)}&nbsp;lei</strong></td>
+                <td>{fmt(rand.costTotal)}&nbsp;lei</td>
               </tr>
             ))}
           </tbody>

@@ -152,10 +152,10 @@ export default function Page() {
                     {scenariu.ore} ore/zi
                   </a>
                 </th>
-                <td>{fmt(scenariu.brut)} lei</td>
-                <td><strong>{fmt(scenariu.faraExceptie.netBani)} lei</strong></td>
-                <td>{fmt(scenariu.faraExceptie.costTotalCuDiferente)} lei</td>
-                <td>{fmt(scenariu.cuExceptie.costTotalCuDiferente)} lei</td>
+                <td>{fmt(scenariu.brut)}&nbsp;lei</td>
+                <td><strong>{fmt(scenariu.faraExceptie.netBani)}&nbsp;lei</strong></td>
+                <td>{fmt(scenariu.faraExceptie.costTotalCuDiferente)}&nbsp;lei</td>
+                <td>{fmt(scenariu.cuExceptie.costTotalCuDiferente)}&nbsp;lei</td>
               </tr>
             ))}
           </tbody>

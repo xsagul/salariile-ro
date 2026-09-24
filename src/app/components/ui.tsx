@@ -307,10 +307,32 @@ export function CardCompanion({
  * formula, nu un tabel cu un exemplu pe care cititorul nu l-a cerut.
  */
 export function Formula({ randuri, eticheta }: { randuri: readonly string[]; eticheta?: string }) {
+  // Pe telefon, un rând de formulă are până la ~57 de caractere, iar cardul arată
+  // ~37: fără rupere, omul trăgea lateral ca să vadă rezultatul. Rândul se rupe
+  // acum, iar continuarea se aliniază după „= ” (sau după spațiile de început ale
+  // unui rând de continuare), cu o indentare atârnată în `ch`. Pe desktop
+  // rândurile încap și arată la fel ca înainte.
+  const indentare = (rand: string) => {
+    const egal = rand.indexOf("= ");
+    if (egal >= 0) return egal + 2;
+    // „Plus:       15% din…”: o etichetă urmată de spații de aliniere
+    const eticheta = rand.match(/^\s*\S+:?\s{2,}/);
+    if (eticheta) return eticheta[0].length;
+    return rand.length - rand.trimStart().length;
+  };
   return (
     <figure className="my-5 max-w-full overflow-x-auto rounded-md border border-stone-200 border-l-4 border-l-stone-900 bg-surface px-4 py-3 shadow-soft">
       {eticheta ? <figcaption className="sr-only">{eticheta}</figcaption> : null}
-      <pre className="font-mono text-[13px] leading-7 text-stone-900 sm:text-sm">{randuri.join("\n")}</pre>
+      <pre className="whitespace-pre-wrap break-words font-mono text-[13px] leading-7 text-stone-900 sm:text-sm">
+        {randuri.map((rand, i) => {
+          const n = indentare(rand);
+          return (
+            <span key={i} className="block" style={{ paddingLeft: `${n}ch`, textIndent: `-${n}ch` }}>
+              {rand}
+            </span>
+          );
+        })}
+      </pre>
     </figure>
   );
 }
