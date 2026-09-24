@@ -213,8 +213,8 @@ export default function ZileLibere2026Page() {
                 Google. Formulat după Codul Muncii, art. 142: întâi zi liberă în 30 de zile,
                 abia apoi sporul de cel puțin 100% („plătită dublu” e doar a doua variantă). */}
             <p className="text-base leading-normal tracking-[-0.01em] text-stone-700">
-              Dacă lucrezi într-o zi de sărbătoare legală, primești în schimb o zi liberă în următoarele 30 de zile.
-              Dacă angajatorul nu ți-o poate da, îți plătește ziua cu un spor de cel puțin 100%, adică cel puțin dublu.
+              Potrivit Codului Muncii, angajații care lucrează într-o zi de sărbătoare legală primesc o zi liberă în
+              următoarele 30 de zile sau, dacă aceasta nu poate fi acordată, ziua lucrată plătită cel puțin dublu.
             </p>
           </div>
 
