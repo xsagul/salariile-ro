@@ -92,25 +92,26 @@ const PIERDERE_PRAG = SUB_PRAG.ramas - PESTE_PRAG.ramas;
 // „Bază CAS maximă" era greșit: art. 148 alin. (2) definește 12 și 24 de salarii
 // minime ca praguri sub care baza aleasă nu poate coborî, nu ca plafon superior.
 //
-// Cardul spune ce se schimbă la fiecare prag, nu doar cifra: o listă de sume fără
+// Cardul spune ce se schimbă la fiecare prag, cu efectul întâi (varianta C aleasă
+// de proprietar pe 24 septembrie 2026), nu doar cifra: o listă de sume fără
 // efect nu-i spunea nimic cititorului (semnalat de proprietar, 24 septembrie 2026).
 // Sumele pe an vin din aceleași constante ca motorul de calcul.
-const PRAGURI: { prag: number; ce: string }[] = [
+const PRAGURI: { efect: string; rest: string }[] = [
   {
-    prag: PLAFON_CASS_MINIM_2026,
-    ce: `Sub el, sănătatea (CASS) se plătește tot ca pentru ${lei(PLAFON_CASS_MINIM_2026)}: ${lei(PLAFON_CASS_MINIM_2026 * 0.1)} lei pe an.`,
+    efect: "Sănătatea are un minim",
+    rest: `: sub ${lei(PLAFON_CASS_MINIM_2026)} lei plătești tot ${lei(PLAFON_CASS_MINIM_2026 * 0.1)} lei pe an.`,
   },
   {
-    prag: PLAFON_CAS_12_2026,
-    ce: `De aici plătești și pensie (CAS): ${lei(PLAFON_CAS_12_2026 * 0.25)} lei pe an.`,
+    efect: "Pensia apare",
+    rest: ` de la ${lei(PLAFON_CAS_12_2026)} lei: ${lei(PLAFON_CAS_12_2026 * 0.25)} lei pe an.`,
   },
   {
-    prag: PLAFON_CAS_24_2026,
-    ce: `De aici pensia se dublează: ${lei(PLAFON_CAS_24_2026 * 0.25)} lei pe an.`,
+    efect: "Pensia se dublează",
+    rest: ` de la ${lei(PLAFON_CAS_24_2026)} lei: ${lei(PLAFON_CAS_24_2026 * 0.25)} lei pe an.`,
   },
   {
-    prag: PLAFON_CASS_MAXIM_2026,
-    ce: `Peste el, CASS nu mai crește: cel mult ${lei(PLAFON_CASS_MAXIM_2026 * 0.1)} lei pe an.`,
+    efect: "Sănătatea se plafonează",
+    rest: ` peste ${lei(PLAFON_CASS_MAXIM_2026)} lei: cel mult ${lei(PLAFON_CASS_MAXIM_2026 * 0.1)} lei pe an.`,
   },
 ];
 
@@ -222,18 +223,18 @@ export default function CalculatorPfaPage() {
 
               <aside className="mt-8 md:col-span-2 md:mt-0 md:self-start">
                 <div className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
-                  <h3 className="mb-2 text-base font-bold tracking-[-0.01em] text-stone-900">Pragurile care schimbă taxele</h3>
-                  <ul className="text-sm">
-                    {PRAGURI.map(({ prag, ce }) => (
-                      <li key={prag} className="flex gap-3 border-b border-stone-100 py-2.5 last:border-b-0">
-                        <span className="w-24 shrink-0 font-semibold tabular-nums text-stone-900">{lei(prag)} lei</span>
-                        <span className="leading-snug text-stone-600">{ce}</span>
+                  <h3 className="mb-2 text-base font-bold tracking-[-0.01em] text-stone-900">Unde se schimbă taxele</h3>
+                  <ul className="flex list-disc flex-col gap-2 pl-5 text-sm leading-normal text-stone-600">
+                    {PRAGURI.map(({ efect, rest }) => (
+                      <li key={efect}>
+                        <strong className="font-semibold text-stone-900">{efect}</strong>
+                        {rest}
                       </li>
                     ))}
                   </ul>
                   <p className="mt-3 text-xs text-stone-600">
-                    Venit net pe an, adică încasări minus cheltuieli. Pragurile sunt salarii minime de{" "}
-                    {lei(SALARIU_MINIM_PFA_2026)} lei, minimul de la 1 ianuarie.
+                    Venit net pe an: încasări minus cheltuieli. Pragurile folosesc minimul de{" "}
+                    {lei(SALARIU_MINIM_PFA_2026)} lei, cel de la 1 ianuarie.
                   </p>
                 </div>
               </aside>
