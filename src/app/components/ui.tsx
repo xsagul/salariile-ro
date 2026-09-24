@@ -307,34 +307,80 @@ export function CardCompanion({
  * formula, nu un tabel cu un exemplu pe care cititorul nu l-a cerut.
  */
 export function Formula({ randuri, eticheta }: { randuri: readonly string[]; eticheta?: string }) {
-  // Pe telefon, un rând de formulă are până la ~57 de caractere, iar cardul arată
-  // ~37: fără rupere, omul trăgea lateral ca să vadă rezultatul. Rândul se rupe
-  // acum, iar continuarea se aliniază după „= ” (sau după spațiile de început ale
-  // unui rând de continuare), cu o indentare atârnată în `ch`. Pe desktop
-  // rândurile încap și arată la fel ca înainte.
-  const indentare = (rand: string) => {
-    const egal = rand.indexOf("= ");
-    if (egal >= 0) return egal + 2;
-    // „Plus:       15% din…”: o etichetă urmată de spații de aliniere
-    const eticheta = rand.match(/^\s*\S+:?\s{2,}/);
-    if (eticheta) return eticheta[0].length;
-    return rand.length - rand.trimStart().length;
-  };
+  // Pe ecran lat: rândurile monospațiate, aliniate la „=”, ca până acum.
+  // Pe ecran îngust (sub `lg`, unde coloana are sub ~570 px) un rând de până la
+  // ~57 de caractere nu încape. Ruperea lui cu indentare arăta ca o formulă
+  // stricată (respinsă de proprietar pe 24 septembrie 2026), așa că acolo
+  // aceleași rânduri se citesc ca un bon: eticheta și rezultatul pe un rând,
+  // calculul dedesubt. Ambele variante vin din aceleași `randuri`.
+  const pasi = pasiFormula(randuri);
   return (
-    <figure className="my-5 max-w-full overflow-x-auto rounded-md border border-stone-200 border-l-4 border-l-stone-900 bg-surface px-4 py-3 shadow-soft">
+    <figure className="my-5 max-w-full rounded-md border border-stone-200 border-l-4 border-l-stone-900 bg-surface px-4 py-3 shadow-soft">
       {eticheta ? <figcaption className="sr-only">{eticheta}</figcaption> : null}
-      <pre className="whitespace-pre-wrap break-words font-mono text-[13px] leading-7 text-stone-900 sm:text-sm">
-        {randuri.map((rand, i) => {
-          const n = indentare(rand);
-          return (
-            <span key={i} className="block" style={{ paddingLeft: `${n}ch`, textIndent: `-${n}ch` }}>
-              {rand}
-            </span>
-          );
-        })}
-      </pre>
+      <pre className="hidden overflow-x-auto font-mono text-sm leading-7 text-stone-900 lg:block">{randuri.join("\n")}</pre>
+      <dl className="text-sm lg:hidden">
+        {pasi.map((pas, i) => (
+          <div key={i} className="border-b border-stone-100 py-2 last:border-b-0">
+            {(pas.eticheta || pas.rezultat) && (
+              <div className="flex items-baseline justify-between gap-3">
+                <dt className="font-medium text-stone-900">{pas.eticheta}</dt>
+                {pas.rezultat ? (
+                  <dd className="whitespace-nowrap font-semibold tabular-nums text-stone-900">{pas.rezultat}</dd>
+                ) : null}
+              </div>
+            )}
+            {pas.calcul.map((linie, j) => (
+              <dd key={j} className="mt-0.5 leading-snug tabular-nums text-stone-600">{linie}</dd>
+            ))}
+          </div>
+        ))}
+      </dl>
     </figure>
   );
+}
+
+type PasFormula = { eticheta: string; calcul: string[]; rezultat: string | null };
+
+/** Desface rândurile unei formule în pași: „Etichetă = calcul = rezultat”. */
+function pasiFormula(randuri: readonly string[]): PasFormula[] {
+  const pasi: PasFormula[] = [];
+  const curat = (t: string) => t.replace(/\s+/g, " ").trim();
+  for (const rand of randuri) {
+    // Rând de continuare (începe cu spații): se lipește de pasul anterior.
+    if (/^\s/.test(rand) && pasi.length) {
+      pasi[pasi.length - 1].calcul.push(curat(rand));
+      continue;
+    }
+    const egal = rand.indexOf(" = ");
+    let eticheta = "";
+    let rest = rand;
+    if (egal >= 0) {
+      eticheta = curat(rand.slice(0, egal));
+      rest = rand.slice(egal + 3);
+    } else {
+      // „Plus:       15% din…”: etichetă urmată de spații de aliniere
+      const m = rand.match(/^(\S+?):?\s{2,}(.*)$/);
+      if (m) {
+        eticheta = m[1];
+        rest = m[2];
+      }
+    }
+    let rezultat: string | null = null;
+    const ultimEgal = rest.lastIndexOf(" = ");
+    if (ultimEgal >= 0) {
+      rezultat = rest.slice(ultimEgal + 3);
+      rest = rest.slice(0, ultimEgal);
+    }
+    const calcul = [curat(rest)].filter(Boolean);
+    // „182   (deducere 865)”: ce vine după spațiile de aliniere e o notă, nu rezultat.
+    if (rezultat) {
+      const [principal, ...nota] = rezultat.trim().split(/\s{2,}/);
+      rezultat = principal;
+      if (nota.length) calcul.push(curat(nota.join(" ")));
+    }
+    pasi.push({ eticheta, calcul, rezultat });
+  }
+  return pasi;
 }
 
 /** Lista de perechi cheie-valoare pentru cardul companion. */
