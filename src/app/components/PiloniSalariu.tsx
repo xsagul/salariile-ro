@@ -1,6 +1,7 @@
 import Link from "@/app/components/Link";
 import type { DateMeserie } from '@/lib/meserii';
 import { piloniMeserie, convergentaPiloni, type Pilon } from '@/lib/repere-meserii';
+import { TITLU_SECTIUNE } from "@/app/components/ui";
 
 const lei = (n: number) => `${Math.round(n).toLocaleString('ro-RO')} lei`;
 
@@ -46,7 +47,7 @@ export default function PiloniSalariu({ date }: { date: DateMeserie }) {
     <section className="mt-8" id="piloni" data-piloni={piloni.filter(p => p.stare !== 'lipsa').length}>
       {cuDate.length > 1 && (
         <>
-          <h2 className="text-xl font-bold text-stone-900 sm:text-2xl">Ce spun sursele despre salariul de {nume}</h2>
+          <h2 className={TITLU_SECTIUNE}>Ce spun sursele despre salariul de {nume}</h2>
           <p className="mt-2 max-w-3xl text-sm leading-relaxed text-stone-700">
             Fiecare măsoară altceva, așa că le arătăm separat.
           </p>

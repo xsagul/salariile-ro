@@ -1,5 +1,6 @@
 import data from '@/data/transparenta-constanta.json';
 import { calculStandard } from '@/lib/fiscal';
+import { TITLU_CARD } from "@/app/components/ui";
 
 /**
  * Un exemplu real, publicat de un angajator: salariile de bază și cele cu
@@ -12,7 +13,7 @@ export default function TransparentaSalariu({slug}:{slug:string}) {
   if(!r) return null;
   const f=(n:number)=>n.toLocaleString('ro-RO');
   return <section className="mt-8 rounded-md border border-stone-200 bg-surface p-5" aria-labelledby="salarii-institutie">
-    <h2 id="salarii-institutie" className="text-xl font-bold">Un exemplu real: {data.source}</h2>
+    <h2 id="salarii-institutie" className={TITLU_CARD}>Un exemplu real: {data.source}</h2>
     <p className="mt-3 text-sm text-stone-600">Salariile publicate de angajator în {data.period}, pentru {r.roles.join(', ').toLocaleLowerCase('ro-RO')}.</p>
     <dl className="mt-4 space-y-3 text-sm">
       <div><dt className="font-medium">Salariul de bază</dt><dd>{f(r.baseMin)}–{f(r.baseMax)} lei brut pe lună</dd></div>

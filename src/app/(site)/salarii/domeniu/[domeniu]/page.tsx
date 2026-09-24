@@ -14,7 +14,7 @@
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
 import { notFound } from "next/navigation";
-import { Breadcrumb, Faq, H1, Lead } from "@/app/components/ui";
+import { Breadcrumb, Faq, H1, Lead, TITLU_SECTIUNE } from "@/app/components/ui";
 import { CardCifra, LinkCard, NotaSursa, lei, lunaLunga, procent } from "@/app/components/Salarii";
 import { denumireScurtaCaen } from "@/lib/caen-denumiri";
 import { AN_JUDETE, LUNA_REFERINTA, MATRICE_BRUT, MATRICE_JUDETE, MATRICE_NET, TOTAL_ECONOMIE } from "@/lib/ins-date";
@@ -214,7 +214,7 @@ export default async function DomeniuPage({ params }: Props) {
           </div>
 
           <section className="mt-12">
-            <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">
+            <h2 className={TITLU_SECTIUNE}>
               Toate meseriile din {numeMic}
             </h2>
             <p className="mt-4 max-w-3xl text-base leading-normal text-stone-600">
@@ -276,7 +276,7 @@ export default async function DomeniuPage({ params }: Props) {
           </section>
 
           <section className="mt-12 max-w-3xl">
-            <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">
+            <h2 className={TITLU_SECTIUNE}>
               Ce activități economice acoperă domeniul
             </h2>
             <p className="mt-4 text-base leading-normal text-stone-600">
@@ -306,7 +306,7 @@ export default async function DomeniuPage({ params }: Props) {
 
           {comparatii.length > 0 && (
             <section className="mt-12">
-              <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">
+              <h2 className={TITLU_SECTIUNE}>
                 Comparații care ating domeniul
               </h2>
               <div className="mt-4 grid gap-3 sm:grid-cols-2">
@@ -322,7 +322,7 @@ export default async function DomeniuPage({ params }: Props) {
           )}
 
           <section className="mt-12">
-            <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">Celelalte domenii</h2>
+            <h2 className={TITLU_SECTIUNE}>Celelalte domenii</h2>
             <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {alteDomenii.map((alta) => (
                 <LinkCard

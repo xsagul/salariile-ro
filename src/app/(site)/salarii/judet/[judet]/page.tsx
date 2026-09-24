@@ -13,7 +13,7 @@
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
 import { notFound } from "next/navigation";
-import { Breadcrumb, Faq, H1, Lead } from "@/app/components/ui";
+import { Breadcrumb, Faq, H1, Lead, TITLU_SECTIUNE } from "@/app/components/ui";
 import { CardCifra, LinkCard, NotaSursa, lei, procent } from "@/app/components/Salarii";
 import { denumireScurtaCaenRev2 } from "@/lib/caen-denumiri";
 import {
@@ -214,7 +214,7 @@ export default async function JudetPage({ params }: Props) {
           </div>
 
           <section className="mt-12">
-            <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">
+            <h2 className={TITLU_SECTIUNE}>
               Câștiguri medii brute lunare pe activități în {judet.nume} — media {AN}
             </h2>
             <p className="mt-4 max-w-3xl text-base leading-normal text-stone-600">
@@ -312,7 +312,7 @@ export default async function JudetPage({ params }: Props) {
           </section>
 
           <section className="mt-12">
-            <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">Județe din jurul lui</h2>
+            <h2 className={TITLU_SECTIUNE}>Județe din jurul lui</h2>
             <p className="mt-1 text-sm text-stone-600">Vecinii din clasament, nu vecinii geografici.</p>
             <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {vecine.map((alt) => (

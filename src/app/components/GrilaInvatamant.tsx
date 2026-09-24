@@ -1,5 +1,5 @@
 import { COLOANA_IN_PLATA, GRILA, functiiDisponibile, SURSA_GRILA } from "@/lib/invatamant";
-import { CardCompanion, GrilaPagina } from "@/app/components/ui";
+import { CardCompanion, GrilaPagina, TITLU_SECTIUNE } from "@/app/components/ui";
 import { TABEL_STANDARD } from "@/app/components/TabelArticol";
 
 const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(n);
@@ -10,7 +10,7 @@ export default function GrilaInvatamant() {
     <section id="grila-salarizare" className="rule-t bg-canvas py-10 sm:py-12">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <GrilaPagina continut={<>
-        <h2 className="text-2xl font-bold tracking-tight text-stone-900">Grila de salarizare în învățământ: tabel pentru 2026</h2>
+        <h2 className={TITLU_SECTIUNE}>Grila de salarizare în învățământ: tabel pentru 2026</h2>
         <p className="mt-3 text-stone-600">
           Toate cele {GRILA.length} de rânduri ale grilei pentru cadrele didactice din
           învățământul preuniversitar. Sumele sunt brute și reprezintă salariul de pornire, înainte

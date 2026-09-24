@@ -6,8 +6,25 @@
 import Link from "@/app/components/Link";
 import type { ReactNode } from "react";
 
+// Scara titlurilor, decisă de proprietar pe 25 septembrie 2026, după mărimile
+// GOV.UK Design System (titlu de pagină 27/36, secțiune 21/24), pe trei trepte:
+// telefonul și tableta (sub 1024 px) au aceleași mărimi, laptopul mic
+// (1024–1535 px, inclusiv 1920 px cu scalare 125%) o treaptă intermediară,
+// iar monitorul mare mărimile întregi. Măsurat înainte: 5 mărimi de titlu de
+// pagină și două de secțiune amestecate pe aceeași pagină.
+//   titlul paginii:      26 · 30 · 36 px
+//   titlul de secțiune:  20 · 22 · 24 px
+//   subtitlu în text:    18 px peste tot
+//   titlul de card:      16 px bold peste tot
+export const TITLU_PAGINA =
+  "text-[26px] font-bold leading-tight tracking-[-0.02em] text-stone-900 lg:text-[30px] 2xl:text-4xl";
+export const TITLU_SECTIUNE =
+  "text-xl font-bold leading-tight tracking-[-0.02em] text-stone-900 lg:text-[22px] 2xl:text-2xl";
+/** Titlul de card fără margine, pentru cardurile care își pun singure spațierea. */
+export const TITLU_CARD = "text-base font-bold tracking-[-0.01em] text-stone-900";
+
 const PROSE = [
-  "[&_h2]:mt-10 [&_h2]:mb-4 [&_h2]:text-xl [&_h2]:font-bold [&_h2]:tracking-[-0.02em] [&_h2]:text-stone-900 sm:[&_h2]:text-2xl",
+  "[&_h2]:mt-10 [&_h2]:mb-4 [&_h2]:text-xl [&_h2]:font-bold [&_h2]:leading-tight [&_h2]:tracking-[-0.02em] [&_h2]:text-stone-900 lg:[&_h2]:text-[22px] 2xl:[&_h2]:text-2xl",
   "[&>h2:first-child]:mt-0",
   "[&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:tracking-[-0.01em] [&_h3]:text-stone-900",
   "[&_p]:mb-4 [&_p]:text-base [&_p]:leading-normal [&_p]:tracking-[-0.01em] [&_p]:text-stone-600",
@@ -55,7 +72,7 @@ export function Hero({
   if (peGrila) {
     return (
       <section className="bg-canvas pt-6 sm:pt-10">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 [&_h1]:text-[1.625rem] [&_h1]:leading-tight sm:[&_h1]:text-4xl [&_nav]:mb-3">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 [&_nav]:mb-3">
           <GrilaPagina continut={children} />
         </div>
       </section>
@@ -116,7 +133,7 @@ export function Breadcrumb({ items }: { items: { href?: string; label: string }[
 
 export function H1({ children }: { children: ReactNode }) {
   return (
-    <h1 className="text-3xl font-bold tracking-[-0.02em] text-stone-900 sm:text-4xl [&_em]:not-italic [&_em]:text-stone-900">
+    <h1 className={`${TITLU_PAGINA} [&_em]:not-italic [&_em]:text-stone-900`}>
       {children}
     </h1>
   );
@@ -151,7 +168,7 @@ export function Faq({
         <GrilaPagina
           companion={companion}
           continut={<>
-        <h2 className="mb-6 text-2xl font-bold tracking-[-0.02em] text-stone-900 sm:text-3xl">{title}</h2>
+        <h2 className={`mb-6 ${TITLU_SECTIUNE}`}>{title}</h2>
         <div className="flex flex-col">
           {items.map((item, i) => (
             <details key={i} name="faq" className="group border-b border-stone-200">
@@ -194,7 +211,7 @@ export function PaginiConexe({
   return (
     <section className="border-t border-stone-200 bg-canvas py-10 sm:py-12">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <h2 className="mb-5 text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">{titlu}</h2>
+        <h2 className={`mb-5 ${TITLU_SECTIUNE}`}>{titlu}</h2>
         <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {linkuri.map((link) => (
             <li key={link.href}>
@@ -229,7 +246,7 @@ export function CtaCard({
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <GrilaPagina continut={
         <div className="rounded-md border border-stone-200 bg-surface p-6 shadow-soft sm:p-8">
-          <h2 className="mb-2 text-2xl font-bold tracking-[-0.02em] text-stone-900">{title}</h2>
+          <h2 className={CARD_TITLU}>{title}</h2>
           <p className="mb-5 leading-normal tracking-[-0.01em] text-stone-600">{children}</p>
           <Link
             href={href}
@@ -280,7 +297,7 @@ export function GrilaPagina({
  * dar sub titlul secțiunii de alături. Textul cardului rămâne `text-sm
  * text-stone-600`, notele `text-xs`.
  */
-export const CARD_TITLU = "mb-2 text-base font-bold tracking-[-0.01em] text-stone-900";
+export const CARD_TITLU = `mb-2 ${TITLU_CARD}`;
 
 /** Cardul din coloana din dreapta: `surface`, bordura stone-200, umbra unica. */
 export function CardCompanion({

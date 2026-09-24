@@ -9,6 +9,7 @@ import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 import { SARBATORI_LEGALE_2026 as HOLIDAYS } from "@/lib/sarbatori";
 import TabelArticol from "@/app/components/TabelArticol";
+import { TITLU_CARD, TITLU_PAGINA, TITLU_SECTIUNE } from "@/app/components/ui";
 
 // ─── Metadata SEO ────────────────────────────────────────────────────────────
 
@@ -172,7 +173,7 @@ export default function ZileLibere2026Page() {
               Tabelul urmează modelul Pluxee: zilele libere lucrătoare îngroșate, cele din
               weekend estompate, fiindcă pe ele nu primești o zi liberă. */}
           <div className="max-w-3xl">
-            <h1 className="text-3xl font-bold tracking-[-0.02em] text-stone-900 sm:text-4xl">Zile libere 2026</h1>
+            <h1 className={TITLU_PAGINA}>Zile libere 2026</h1>
             {/* Fără autor și dată sus: e pagină-instrument, nu articol (proprietar, 24 sept. 2026). */}
             <p className="mt-4 text-base leading-normal tracking-[-0.01em] text-stone-700">
               În 2026 sunt <strong className="font-semibold text-stone-900">{HOLIDAY_LIST.length} sărbători legale</strong>:{" "}
@@ -220,7 +221,7 @@ export default function ZileLibere2026Page() {
 
           {/* CALENDAR — 12 luni */}
           <div className="mt-12 border-t border-stone-200 pt-10 sm:mt-16 sm:pt-14">
-            <h2 className="text-2xl font-bold tracking-[-0.02em] text-stone-900 sm:text-3xl">Calendarul anului 2026</h2>
+            <h2 className={TITLU_SECTIUNE}>Calendarul anului 2026</h2>
             {/* Legendă */}
             <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-xs text-stone-600">
               <span className="flex items-center gap-2"><span className="inline-block h-3 w-3 rounded-sm bg-stone-100 ring-1 ring-inset ring-stone-300" aria-hidden="true" />Zi lucrătoare</span>
@@ -274,7 +275,7 @@ export default function ZileLibere2026Page() {
           <div className="mt-12 border-t border-stone-200 pt-10 sm:mt-16 sm:pt-14">
             <div className={`${card} max-w-3xl`}>
               <p className="text-xs font-medium uppercase tracking-wide text-stone-600">Tabel separat</p>
-              <h2 className="mt-2 text-2xl font-bold tracking-[-0.02em] text-stone-900">Ai nevoie de zilele și orele lucrătoare pe lună?</h2>
+              <h2 className={`mt-2 ${TITLU_CARD}`}>Ai nevoie de zilele și orele lucrătoare pe lună?</h2>
               <p className="mt-3 max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600">
                 Pagina dedicată centralizează pentru fiecare lună numărul de zile lucrătoare și orele la norme de 8, 6 și 4 ore,
                 plus totalurile anuale. Aici păstrăm calendarul sărbătorilor și al minivacanțelor.
@@ -290,7 +291,7 @@ export default function ZileLibere2026Page() {
 
           {/* PUNȚI */}
           <div className="mt-12 border-t border-stone-200 pt-10 sm:mt-16 sm:pt-14">
-            <h2 className="text-2xl font-bold tracking-[-0.02em] text-stone-900 sm:text-3xl">Minivacanțe și punți 2026</h2>
+            <h2 className={TITLU_SECTIUNE}>Minivacanțe și punți 2026</h2>
             <p className="mt-3 max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600">
               Combinații de sărbători și weekend care îți dau pauze mai lungi. Unele vin natural; la altele iei o zi din
               concediu („punte&quot;) și transformi câteva zile într-o minivacanță.
@@ -311,7 +312,7 @@ export default function ZileLibere2026Page() {
           {/* FAQ + SURSE */}
           <div className="mt-12 border-t border-stone-200 pt-10 sm:mt-16 sm:pt-14 md:grid md:grid-cols-5 md:gap-8 lg:gap-10">
             <div className="md:col-span-3">
-              <h2 className="mb-4 text-2xl font-bold tracking-[-0.02em] text-stone-900 sm:text-3xl">Întrebări frecvente</h2>
+              <h2 className={`mb-4 ${TITLU_SECTIUNE}`}>Întrebări frecvente</h2>
               <div className="flex flex-col">
                 {FAQ.map((item, i) => (
                   <details key={i} name="faq-zile" className="group border-b border-stone-200">
@@ -347,7 +348,7 @@ export default function ZileLibere2026Page() {
           {/* CTA */}
           <div className="mt-12 border-t border-stone-200 pt-10 sm:mt-16 sm:pt-14">
             <div className={`max-w-prose ${card}`}>
-              <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900">Calculează-ți salariul pe 2026</h2>
+              <h2 className={TITLU_CARD}>Calculează-ți salariul pe 2026</h2>
               <p className="mt-2 text-base leading-normal tracking-[-0.01em] text-stone-600">
                 Scrie brutul și vezi cât primești în mână.
               </p>

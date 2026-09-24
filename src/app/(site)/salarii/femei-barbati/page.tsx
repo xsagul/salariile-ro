@@ -15,7 +15,7 @@
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
 import DataAssetCard from "@/app/components/DataAssetCard";
-import { Breadcrumb, Faq, H1, Lead } from "@/app/components/ui";
+import { Breadcrumb, Faq, H1, Lead, TITLU_SECTIUNE } from "@/app/components/ui";
 import { CardCifra, NotaSursa, lei, procent } from "@/app/components/Salarii";
 import {
   AN_OCUPATII,
@@ -266,7 +266,7 @@ export default function FemeiBarbatiPage() {
           </p>
 
           <section className="mt-12">
-            <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">
+            <h2 className={TITLU_SECTIUNE}>
               Diferența pe grupe de ocupații
             </h2>
             <p className="mt-4 max-w-3xl text-base leading-normal text-stone-600">
@@ -327,7 +327,7 @@ export default function FemeiBarbatiPage() {
           </section>
 
           <section className="mt-12">
-            <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">
+            <h2 className={TITLU_SECTIUNE}>
               Cum se schimbă diferența cu vârsta
             </h2>
             <p className="mt-4 max-w-3xl text-base leading-normal text-stone-600">
@@ -389,7 +389,7 @@ export default function FemeiBarbatiPage() {
           </section>
 
           <section className="mt-12 max-w-3xl">
-            <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">
+            <h2 className={TITLU_SECTIUNE}>
               Ce se schimbă odată cu transparența salarială
             </h2>
             <p className="mt-4 text-base leading-normal text-stone-600">

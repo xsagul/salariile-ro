@@ -8,7 +8,7 @@
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
 import { notFound } from "next/navigation";
-import { Breadcrumb, Faq, H1, Lead } from "@/app/components/ui";
+import { Breadcrumb, Faq, H1, Lead, TITLU_CARD, TITLU_SECTIUNE } from "@/app/components/ui";
 import {
   GraficSerie,
   LinkCard,
@@ -283,7 +283,7 @@ export default async function MeseriePage({ params }: Props) {
           <PiloniSalariu date={date} />
           <TransparentaSalariu slug={slug} />
           {grilaDidactica.length > 0 && <section className="mt-8 rounded-md border border-stone-200 bg-surface p-5">
-            <h2 className="text-xl font-bold">Grad didactic, studii și vechime în învățământ</h2>
+            <h2 className={TITLU_CARD}>Grad didactic, studii și vechime în învățământ</h2>
             <p className="mt-3 text-sm text-stone-600">Net standard pe trepte didactice.</p>
             <div className="mt-4 max-h-96 overflow-auto"><table className={`${TABEL_STANDARD} min-w-[32rem]`}>
               <caption className="sr-only">Grila didactică: funcție, studii, vechime și net standard</caption>
@@ -382,7 +382,7 @@ export default async function MeseriePage({ params }: Props) {
             <div className="min-w-0 lg:col-span-3">
               {grila && (
                 <section className="mb-12">
-                  <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">
+                  <h2 className={TITLU_SECTIUNE}>
                     Grila pentru {numeMic}: funcții și trepte
                   </h2>
                   <p className="mt-4 text-sm text-stone-600">Net standard pe trepte, în {grila.domeniu}.</p>
@@ -401,7 +401,7 @@ export default async function MeseriePage({ params }: Props) {
               )}
 
               <section id="profil">
-                <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">
+                <h2 className={TITLU_SECTIUNE}>
                   Ce face un {numeMic}
                 </h2>
                 <p className="mt-4 text-base leading-normal text-stone-600">
@@ -416,7 +416,7 @@ export default async function MeseriePage({ params }: Props) {
               </section>
 
               <section className="mt-12" id="piata">
-                <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">
+                <h2 className={TITLU_SECTIUNE}>
                   Cum a evoluat sectorul în ultimele {LUNI_SERIE.length} luni
                 </h2>
                 <p className="mt-4 text-base leading-normal text-stone-600">
@@ -439,7 +439,7 @@ export default async function MeseriePage({ params }: Props) {
 
               {isco && isco.varste.length > 0 && (
                 <details className="mt-8"><summary className="min-h-11 cursor-pointer py-3 text-lg font-semibold">Venituri pe grupe de vârstă</summary>
-                  <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">
+                  <h2 className={TITLU_SECTIUNE}>
                     Vârsta și veniturile grupei ISCO
                   </h2>
                   <p className="mt-4 text-base leading-normal text-stone-600">
@@ -539,7 +539,7 @@ export default async function MeseriePage({ params }: Props) {
 
               {judete.length > 0 && (
                 <details className="mt-8"><summary className="min-h-11 cursor-pointer py-3 text-lg font-semibold">Date regionale INS</summary>
-                  <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">
+                  <h2 className={TITLU_SECTIUNE}>
                     Câștigul mediu brut lunar al sectorului pe județe — media {AN_JUDETE_SCURT}
                   </h2>
                   <p className="mt-4 text-base leading-normal text-stone-600">
@@ -575,7 +575,7 @@ export default async function MeseriePage({ params }: Props) {
 
             <aside id="oferta" className="min-w-0 lg:col-span-2">
               <div className="rounded-md border border-stone-200 bg-surface p-6 shadow-soft">
-                <h2 className="text-base font-bold tracking-[-0.01em] text-stone-900">Calculează-ți net-ul</h2>
+                <h2 className={TITLU_CARD}>Calculează-ți net-ul</h2>
                 <p className="mt-2 text-sm leading-normal text-stone-600">
                   Scrie brutul din oferta ta și vezi cât primești în mână.
                 </p>
@@ -589,7 +589,7 @@ export default async function MeseriePage({ params }: Props) {
 
               {comparatii.length > 0 && (
                 <div className="mt-8">
-                  <h2 className="text-base font-bold tracking-[-0.01em] text-stone-900">Comparații</h2>
+                  <h2 className={TITLU_CARD}>Comparații</h2>
                   <div className="mt-3 grid gap-2">
                     {comparatii.map((comparatie) => (
                       <LinkCard
@@ -604,7 +604,7 @@ export default async function MeseriePage({ params }: Props) {
 
               {similare.length > 0 && (
                 <div className="mt-8">
-                  <h2 className="text-base font-bold tracking-[-0.01em] text-stone-900">
+                  <h2 className={TITLU_CARD}>
                     Meserii apropiate de {numeMic}
                   </h2>
                   <div className="mt-3 grid gap-2">

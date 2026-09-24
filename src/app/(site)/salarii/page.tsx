@@ -7,7 +7,7 @@
 
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
-import { Breadcrumb, Faq, H1, Lead, CtaCard } from "@/app/components/ui";
+import { Breadcrumb, Faq, H1, Lead, CtaCard, TITLU_SECTIUNE } from "@/app/components/ui";
 import FiltruMeserii from "@/app/components/FiltruMeserii";
 import { NotaSursa, lei, lunaLunga } from "@/app/components/Salarii";
 
@@ -173,7 +173,7 @@ export default function SalariiPage() {
 
           {categorii.map(({ categorie, meserii }) => (
             <section key={categorie.slug} id={categorie.slug} data-sectiune-meserii className="mt-12 scroll-mt-20">
-              <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">
+              <h2 className={TITLU_SECTIUNE}>
                 <Link href={`/salarii/domeniu/${categorie.slug}`} className="hover:underline hover:underline-offset-4">
                   {categorie.nume}
                 </Link>
@@ -212,7 +212,7 @@ export default function SalariiPage() {
           ))}
 
           <section className="mt-14 max-w-3xl">
-            <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">
+            <h2 className={TITLU_SECTIUNE}>
               Metodologia din spatele reperelor salariale
             </h2>
             <p className="mt-4 text-base leading-normal text-stone-600">

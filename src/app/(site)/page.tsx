@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
 import CalculatorSalariu from "@/app/components/CalculatorSalariu";
-import { Formula } from "@/app/components/ui";
+import { Formula, TITLU_SECTIUNE } from "@/app/components/ui";
 import { personSchema } from "@/lib/person";
 import { calculatorSlugBrut, PAGE_LAST_MODIFIED } from "@/lib/seo";
 import { calculStandard, SALARIU_MINIM } from "@/lib/fiscal";
@@ -165,7 +165,7 @@ export default function Page() {
             {/* Rândul 1 – explicația și formula */}
             <div className="md:grid md:grid-cols-5 md:gap-6">
               <div className="md:col-span-3 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-600 [&_strong]:font-semibold [&_strong]:text-stone-900">
-                <h2 className="mb-4 text-2xl font-bold tracking-[-0.02em] text-stone-900 sm:text-3xl">Cum se calculează salariul net</h2>
+                <h2 className={`mb-4 ${TITLU_SECTIUNE}`}>Cum se calculează salariul net</h2>
                 <div className="max-w-prose">
                   <p className={paragraf}>
                     Înainte să-ți intre banii în cont, firma oprește din brut trei taxe și le trimite la stat:
@@ -215,7 +215,7 @@ export default function Page() {
             {/* Rândul 2 – FAQ + surse oficiale și linkuri */}
             <div className="md:grid md:grid-cols-5 md:gap-6">
               <div className="md:col-span-3">
-                <h2 className="mb-6 text-2xl font-bold tracking-[-0.02em] text-stone-900 sm:text-3xl">Întrebări frecvente</h2>
+                <h2 className={`mb-6 ${TITLU_SECTIUNE}`}>Întrebări frecvente</h2>
                 <div className="flex flex-col">
                   {faqData.map((item, i) => (
                     <details key={i} name="faq" className="group border-b border-stone-200">
@@ -280,7 +280,7 @@ export default function Page() {
             </div>
 
             <div className="border-t border-stone-200 pt-8">
-              <h2 className="mb-3 text-lg font-bold tracking-[-0.02em] text-stone-900">
+              <h2 className={`mb-3 ${TITLU_SECTIUNE}`}>
                 Calcule salariale populare
               </h2>
               <p className="mb-4 max-w-prose text-sm leading-normal text-stone-600">

@@ -6,6 +6,7 @@ import { ogPage, twPage } from '@/lib/seo';
 import reports from '@/data/repere-piata-verificate.json';
 import { ACOPERIRE_ANUNTURI } from '@/lib/acoperire-anunturi';
 import { TABEL_STANDARD } from "@/app/components/TabelArticol";
+import { TITLU_CARD } from "@/app/components/ui";
 
 // Clasamentul compara o singura masura, din aceeasi editie a aceleiasi surse.
 // De aceea porneste din inregistrarile Salario, nu din reperul principal al
@@ -69,7 +70,7 @@ export default function Clasament() {
         </Lead>
 
         <div className="mt-4 rounded-md border border-stone-200 bg-surface p-4 text-sm text-stone-700">
-          <h2 className="font-semibold text-stone-900">Cum se citește clasamentul</h2>
+          <h2 className={TITLU_CARD}>Cum se citește clasamentul</h2>
           <p className="mt-1 leading-relaxed">
             Comparăm aceeași măsură și perioadă: media națională declarată de angajați în Salario. Eșantioanele pe meserie nu sunt publicate, iar raportările voluntare pot avea dezechilibre. Ordinea este orientativă; valorile egale au același loc. Nu avem o mediană națională verificată pentru fiecare meserie.
           </p>

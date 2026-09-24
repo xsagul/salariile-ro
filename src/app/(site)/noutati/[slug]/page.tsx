@@ -9,7 +9,7 @@ import { notFound } from "next/navigation";
 import { getArticle, getAllSlugs, getAllArticles, formatDateRo } from "@/lib/noutati";
 import { personSchema } from "@/lib/person";
 import { NUME_SITE, OG_IMAGE } from "@/lib/seo";
-import { Prose } from "@/app/components/ui";
+import { Prose, TITLU_CARD, TITLU_PAGINA } from "@/app/components/ui";
 
 export function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
@@ -139,7 +139,7 @@ export default async function ArticolPage({ params }: { params: Promise<{ slug: 
             {a.updated && <> · Actualizat {formatDateRo(a.updated)}</>}
             {" "}· {a.readingMin} min citire
           </div>
-          <h1 className="text-3xl font-bold tracking-[-0.02em] text-stone-900 sm:text-4xl">{a.title}</h1>
+          <h1 className={TITLU_PAGINA}>{a.title}</h1>
           {a.description && (
             <p className="mt-3 max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600">{a.description}</p>
           )}
@@ -161,7 +161,7 @@ export default async function ArticolPage({ params }: { params: Promise<{ slug: 
           {/* Articole conexe — funnel intern, ține cititorul în cluster */}
           {related.length > 0 && (
             <aside className="mt-12 border-t border-stone-200 pt-8" aria-label="Articole conexe">
-              <h2 className="mb-4 text-sm font-medium uppercase tracking-wide text-stone-600">Citește și</h2>
+              <h2 className={`mb-3 ${TITLU_CARD}`}>Citește și</h2>
               <ul className="grid gap-4 sm:grid-cols-2">
                 {related.map((r) => (
                   <li key={r.slug}>

@@ -20,6 +20,7 @@ import FeedbackContextual from "@/app/components/FeedbackContextual";
 import { TEXTE, type Limba, type TexteCalculator } from "@/lib/calculator-texte";
 import { CURS_DATA, EUR_RON, converteste, cursVechi, inEuro, inLei, type Moneda } from "@/lib/curs";
 import IconCalculeaza from "@/app/components/IconCalculeaza";
+import { TITLU_PAGINA } from "@/app/components/ui";
 
 type SelectOption = { v: number; l: string };
 
@@ -769,7 +770,7 @@ export default function CalculatorSalariu({
 
                 {/* Titlul Dinamic */}
                 {/* Pe telefon titlul „Calculator salariu net 2026" încape pe un rând. */}
-                <h1 className="mb-2 text-[1.625rem] font-bold leading-tight tracking-[-0.02em] text-stone-900 sm:text-4xl">
+                <h1 className={`mb-2 ${TITLU_PAGINA}`}>
                   {titluCustom || <>{t.titlu}</>}
                 </h1>
 

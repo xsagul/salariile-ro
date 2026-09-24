@@ -1,3 +1,4 @@
+import { TITLU_CARD } from "@/app/components/ui";
 type DataAssetCardProps = {
   href: string;
   title: string;
@@ -9,7 +10,7 @@ export default function DataAssetCard({ href, title, description, updated }: Dat
   return (
     <aside className="mt-8 max-w-3xl rounded-md border border-stone-300 bg-surface p-5 shadow-soft">
       <p className="text-xs font-semibold uppercase tracking-wide text-stone-600">Set de date reutilizabil</p>
-      <h2 className="mt-2 text-lg font-bold tracking-[-0.02em] text-stone-900">{title}</h2>
+      <h2 className={`mt-2 ${TITLU_CARD}`}>{title}</h2>
       <p className="mt-2 text-sm leading-normal text-stone-700">{description}</p>
       <div className="mt-4 flex flex-wrap items-center gap-3">
         <a

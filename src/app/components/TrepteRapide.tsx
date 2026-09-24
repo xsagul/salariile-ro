@@ -2,6 +2,7 @@ import type { DateMeserie } from '@/lib/meserii';
 import { grilaPublica } from '@/lib/grile-publice';
 import { grilaEducatie } from '@/lib/repere-meserii';
 import { calculStandard } from '@/lib/fiscal';
+import { TITLU_CARD } from "@/app/components/ui";
 
 /**
  * Treptele grilei, imediat sub cifra principala. Cea mai cautata intrebare la o
@@ -40,7 +41,7 @@ export default function TrepteRapide({ date }: { date: DateMeserie }) {
 
   return (
     <section className="mt-4 rounded-md border border-stone-300 bg-surface p-5" data-trepte={trepte.length}>
-      <h2 className="text-sm font-semibold text-stone-900">
+      <h2 className={TITLU_CARD}>
         Cât câștigă un {date.meserie.de} la început și la vârf
       </h2>
       <dl className="mt-3 grid gap-4 sm:grid-cols-2">

@@ -3,14 +3,7 @@ import Image from "next/image";
 import Link from "@/app/components/Link";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
-import {
-  Section,
-  Breadcrumb,
-  CardCompanion,
-  Repere,
-  PaginiConexe,
-  Faq,
-} from "@/app/components/ui";
+import { Section, Breadcrumb, CardCompanion, Repere, PaginiConexe, Faq, TITLU_PAGINA } from "@/app/components/ui";
 
 const PATH = "/saga";
 const ACTUALIZAT = PAGE_LAST_MODIFIED[PATH].toLocaleDateString("ro-RO", {
@@ -104,7 +97,7 @@ export default function SagaPage() {
           <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "SAGA" }]} />
           <div className="md:grid md:grid-cols-5 md:items-center md:gap-8 lg:gap-10">
             <div className="md:col-span-3">
-              <h1 className="max-w-xl text-[1.625rem] font-bold leading-[1.08] tracking-[-0.025em] text-stone-900 sm:text-4xl">
+              <h1 className={`max-w-xl ${TITLU_PAGINA}`}>
                 SAGA: desktop sau web pentru contabilitate?
               </h1>
               <p className="mt-4 text-xs text-stone-600 [&_a]:font-medium [&_a]:text-stone-700 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-900">

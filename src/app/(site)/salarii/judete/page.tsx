@@ -6,7 +6,7 @@
 
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
-import { Breadcrumb, Faq, H1, Lead } from "@/app/components/ui";
+import { Breadcrumb, Faq, H1, Lead, TITLU_SECTIUNE } from "@/app/components/ui";
 import { CardCifra, NotaSursa, lei, procent } from "@/app/components/Salarii";
 import { AN_JUDETE, JUDETE, MATRICE_JUDETE, NATIONAL_JUDETE, INS_SURSA } from "@/lib/ins-date";
 import { personSchema } from "@/lib/person";
@@ -227,7 +227,7 @@ export default function JudetePage() {
           </div>
 
           <section className="max-w-3xl">
-            <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">
+            <h2 className={TITLU_SECTIUNE}>
               Ce spune și ce nu spune harta
             </h2>
             <p className="mt-4 text-base leading-normal text-stone-600">

@@ -3,7 +3,7 @@
 // (hero pe grilă + calculator + zonă-articol 3+2 cu carduri-companion).
 
 import type { Metadata } from "next";
-import { Formula, PaginiConexe } from "@/app/components/ui";
+import { Formula, PaginiConexe, TITLU_PAGINA, TITLU_SECTIUNE } from "@/app/components/ui";
 import Link from "@/app/components/Link";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
@@ -178,7 +178,7 @@ export default function CalculatorPfaPage() {
         <div className="mx-auto max-w-6xl px-4 pt-6 sm:px-6 sm:pt-10">
           <div className="md:grid md:grid-cols-5 md:gap-6">
             <div className="md:col-span-3">
-              <h1 className="mb-2 text-[1.625rem] font-bold leading-tight tracking-[-0.02em] text-stone-900 sm:text-4xl">Calculator taxe PFA 2026</h1>
+              <h1 className={`mb-2 ${TITLU_PAGINA}`}>Calculator taxe PFA 2026</h1>
               <p className="max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600">
                 Cât plătești ca PFA în sistem real și cât îți rămâne, comparat cu SRL micro și SRL pe profit.
               </p>
@@ -197,7 +197,7 @@ export default function CalculatorPfaPage() {
             {/* Rândul 1 — Cum se calculează + card Plafoane */}
             <div className="md:grid md:grid-cols-5 md:gap-6">
               <div className={`md:col-span-3 ${proseLinks}`}>
-                <h2 className="mb-4 text-2xl font-bold tracking-[-0.02em] text-stone-900 sm:text-3xl">Cum se calculează taxele unui PFA</h2>
+                <h2 className={`mb-4 ${TITLU_SECTIUNE}`}>Cum se calculează taxele unui PFA</h2>
                 <div className="max-w-prose">
                   <p className={p}>
                     Totul pornește de la <strong>venitul net</strong>: ce ai încasat într-un an, minus cheltuielile
@@ -240,7 +240,7 @@ export default function CalculatorPfaPage() {
             {/* Rândul 1b — Tabel pe tranșe + cardul pragului */}
             <div className="md:grid md:grid-cols-5 md:gap-6">
               <div className={`md:col-span-3 ${proseLinks}`}>
-                <h2 className="mb-4 text-2xl font-bold tracking-[-0.02em] text-stone-900 sm:text-3xl">
+                <h2 className={`mb-4 ${TITLU_SECTIUNE}`}>
                   Cât plătește un PFA, pe tranșe de venit
                 </h2>
                 <p className={p}>
@@ -297,7 +297,7 @@ export default function CalculatorPfaPage() {
             {/* Rândul 1c — Sistem real vs normă de venit */}
             <div className="md:grid md:grid-cols-5 md:gap-6">
               <div className={`md:col-span-3 ${proseLinks}`}>
-                <h2 className="mb-4 text-2xl font-bold tracking-[-0.02em] text-stone-900 sm:text-3xl">
+                <h2 className={`mb-4 ${TITLU_SECTIUNE}`}>
                   Sistem real sau normă de venit
                 </h2>
                 <p className={p}>
@@ -351,7 +351,7 @@ export default function CalculatorPfaPage() {
             {/* Rândul 1d — PFA sau SRL */}
             <div className="md:grid md:grid-cols-5 md:gap-6">
               <div className={`md:col-span-3 ${proseLinks}`}>
-                <h2 className="mb-4 text-2xl font-bold tracking-[-0.02em] text-stone-900 sm:text-3xl">
+                <h2 className={`mb-4 ${TITLU_SECTIUNE}`}>
                   PFA sau SRL: ce diferă, dincolo de taxe
                 </h2>
                 <p className={p}>
@@ -469,7 +469,7 @@ export default function CalculatorPfaPage() {
             {/* Rândul 2 — FAQ + card Surse */}
             <div className="md:grid md:grid-cols-5 md:gap-6">
               <div className="md:col-span-3">
-                <h2 className="mb-6 text-2xl font-bold tracking-[-0.02em] text-stone-900 sm:text-3xl">Întrebări frecvente</h2>
+                <h2 className={`mb-6 ${TITLU_SECTIUNE}`}>Întrebări frecvente</h2>
                 <div className="flex flex-col">
                   {FAQ.map((item, i) => (
                     <details key={i} name="faq-pfa" className="group border-b border-stone-200">

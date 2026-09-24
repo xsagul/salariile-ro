@@ -8,7 +8,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "@/app/components/Link";
-import { Formula } from "@/app/components/ui";
+import { Formula, TITLU_CARD, TITLU_PAGINA, TITLU_SECTIUNE } from "@/app/components/ui";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 import { calculStandard, calculStandardCuRegim, PLAFON_FACILITATE, SALARIU_MINIM, SALARIU_MINIM_CONSTRUCTII } from "@/lib/fiscal";
@@ -181,7 +181,7 @@ const jsonLd = {
 // ─── Stiluri ─────────────────────────────────────────────────────────────────
 
 const articol =
-  "[&>h2]:mt-10 [&>h2]:mb-4 [&>h2]:text-2xl [&>h2]:font-bold [&>h2]:tracking-[-0.02em] [&>h2]:text-stone-900 sm:[&>h2]:text-3xl [&>h2:first-child]:mt-0 " +
+  "[&>h2]:mt-10 [&>h2]:mb-4 [&>h2]:text-xl [&>h2]:font-bold [&>h2]:leading-tight [&>h2]:tracking-[-0.02em] [&>h2]:text-stone-900 lg:[&>h2]:text-[22px] 2xl:[&>h2]:text-2xl [&>h2:first-child]:mt-0 " +
   "[&_p]:mb-4 [&_p]:text-base [&_p]:leading-normal [&_p]:tracking-[-0.01em] [&_p]:text-stone-600 " +
   "[&_ul]:mb-5 [&_ul]:list-disc [&_ul]:pl-5 [&_li]:mb-2 [&_li]:leading-normal [&_li]:tracking-[-0.01em] [&_li]:text-stone-600 " +
   "[&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-600 " +
@@ -457,7 +457,7 @@ export default function SalariuMinimPage() {
           {/* HERO — răspunsul, o singură dată */}
           <div className={`${row} md:items-center`}>
             <div className="md:col-span-3">
-              <h1 className="text-3xl font-bold tracking-[-0.02em] text-stone-900 sm:text-4xl">Salariul minim pe economie 2026: brut și net</h1>
+              <h1 className={TITLU_PAGINA}>Salariul minim pe economie 2026: brut și net</h1>
               <p className="mt-4 text-xs text-stone-600 [&_a]:font-medium [&_a]:text-stone-700 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-900">
                 Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat {dataActualizare}
               </p>
@@ -650,7 +650,7 @@ export default function SalariuMinimPage() {
             {/* FAQ */}
             <div className={row}>
               <div className="md:col-span-3">
-                <h2 className="mb-4 text-2xl font-bold tracking-[-0.02em] text-stone-900 sm:text-3xl">Întrebări frecvente</h2>
+                <h2 className={`mb-4 ${TITLU_SECTIUNE}`}>Întrebări frecvente</h2>
                 <div className="flex flex-col">
                   {FAQ.map((item, i) => (
                     <details key={i} name="faq-minim" className="group border-b border-stone-200">
@@ -673,7 +673,7 @@ export default function SalariuMinimPage() {
             <div className={row}>
               <div className="md:col-span-3">
                 <div className={card}>
-                  <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900">Calculează orice salariu</h2>
+                  <h2 className={TITLU_CARD}>Calculează orice salariu</h2>
                   <p className="mt-2 text-base leading-normal tracking-[-0.01em] text-stone-600">
                     Scrie brutul sau netul și vezi taxele și costul firmei.
                   </p>

@@ -6,7 +6,7 @@
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
 import { notFound } from "next/navigation";
-import { Breadcrumb, Faq, H1, Lead } from "@/app/components/ui";
+import { Breadcrumb, Faq, H1, Lead, TITLU_CARD, TITLU_SECTIUNE } from "@/app/components/ui";
 import { LinkCard, NotaSursa, lei, lunaLunga } from "@/app/components/Salarii";
 import {
   AN_OCUPATII,
@@ -168,7 +168,7 @@ export default async function ComparatiePage({ params }: Props) {
           </H1>
           <Lead>Salariile nete, unul lângă altul. Deschide detaliile pentru surse și informații despre cele două meserii.</Lead>
           <div className="mt-6 grid gap-6 sm:grid-cols-2">
-            {[a,b].map(d=><div key={d.meserie.slug}><h2 className="text-lg font-semibold">{d.meserie.nume}</h2><ReperSalariu date={d}/></div>)}
+            {[a,b].map(d=><div key={d.meserie.slug}><h2 className={TITLU_CARD}>{d.meserie.nume}</h2><ReperSalariu date={d}/></div>)}
           </div>
 
           {ra.label !== rb.label || ra.period !== rb.period ? (
@@ -183,7 +183,7 @@ export default async function ComparatiePage({ params }: Props) {
 
 
           <details className="mt-8"><summary className="min-h-11 cursor-pointer py-3 text-lg font-semibold">Detalii ale comparației</summary><p className="mt-3 text-sm text-stone-600">Mediile de sector și reperele ISCO nu sunt un minim și un maxim salarial.</p>
-            <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">Net, brut și context statistic</h2>
+            <h2 className={TITLU_SECTIUNE}>Net, brut și context statistic</h2>
             <div className="my-6 overflow-x-auto">
               <table className={`${TABEL_STANDARD} min-w-[34rem]`}>
                 <caption className="sr-only">
@@ -218,7 +218,7 @@ export default async function ComparatiePage({ params }: Props) {
           </details>
 
           <section className="mt-12">
-            <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">Cum se citește comparația</h2>
+            <h2 className={TITLU_SECTIUNE}>Cum se citește comparația</h2>
             <p className="mt-4 text-base leading-normal text-stone-600">
               Rândurile CAEN arată mediile nete și brute din activitățile economice asociate, de la debutanți la
               conducere. Rândurile ISCO adaugă perspectiva grupelor majore de ocupații din întreaga economie. Împreună
@@ -245,7 +245,7 @@ export default async function ComparatiePage({ params }: Props) {
 
           {inrudite.length > 0 && (
             <section className="mt-12">
-              <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">Alte comparații</h2>
+              <h2 className={TITLU_SECTIUNE}>Alte comparații</h2>
               <div className="mt-4 grid gap-2 sm:grid-cols-2">
                 {inrudite.map((alta) => (
                   <LinkCard

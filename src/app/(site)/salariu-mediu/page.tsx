@@ -6,7 +6,7 @@
 // întrebările neacoperite în corp, carduri aditive pe fiecare rând.
 
 import type { Metadata } from "next";
-import { Formula, PaginiConexe } from "@/app/components/ui";
+import { Formula, PaginiConexe, TITLU_CARD, TITLU_PAGINA, TITLU_SECTIUNE } from "@/app/components/ui";
 import Image from "next/image";
 import Link from "@/app/components/Link";
 import { LATEST_INS_EARNINGS } from "@/lib/date-salarii";
@@ -181,7 +181,7 @@ const jsonLd = {
 // ─── Stiluri (limbajul pilonului) ─────────────────────────────────────────────
 
 const articol =
-  "[&>h2]:mt-10 [&>h2]:mb-4 [&>h2]:text-2xl [&>h2]:font-bold [&>h2]:tracking-[-0.02em] [&>h2]:text-stone-900 sm:[&>h2]:text-3xl [&>h2:first-child]:mt-0 " +
+  "[&>h2]:mt-10 [&>h2]:mb-4 [&>h2]:text-xl [&>h2]:font-bold [&>h2]:leading-tight [&>h2]:tracking-[-0.02em] [&>h2]:text-stone-900 lg:[&>h2]:text-[22px] 2xl:[&>h2]:text-2xl [&>h2:first-child]:mt-0 " +
   "[&_p]:mb-4 [&_p]:text-base [&_p]:leading-normal [&_p]:tracking-[-0.01em] [&_p]:text-stone-600 " +
   "[&_ul]:mb-5 [&_ul]:list-disc [&_ul]:pl-5 [&_li]:mb-2 [&_li]:leading-normal [&_li]:tracking-[-0.01em] [&_li]:text-stone-600 " +
   "[&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-600 " +
@@ -207,7 +207,7 @@ export default function SalariuMediuPage() {
         {/* HERO — lede = răspunsul, o singură dată (cele două cifre) */}
         <div className={`${row} md:items-center`}>
           <div className="md:col-span-3">
-            <h1 className="text-3xl font-bold tracking-[-0.02em] text-stone-900 sm:text-4xl">Salariul mediu pe economie în 2026</h1>
+            <h1 className={TITLU_PAGINA}>Salariul mediu pe economie în 2026</h1>
             <p className="mt-4 text-xs text-stone-600 [&_a]:font-medium [&_a]:text-stone-700 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-900">
               Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat {DATA_ACTUALIZARE}
             </p>
@@ -470,7 +470,7 @@ export default function SalariuMediuPage() {
           {/* RÂND 6 — FAQ, fără întrebările acoperite în corp */}
           <div className={row}>
             <div className="md:col-span-3">
-              <h2 className="mb-4 text-2xl font-bold tracking-[-0.02em] text-stone-900 sm:text-3xl">Întrebări frecvente</h2>
+              <h2 className={`mb-4 ${TITLU_SECTIUNE}`}>Întrebări frecvente</h2>
               <div className="flex flex-col">
                 {FAQ.map((item, i) => (
                   <details key={i} name="faq-mediu" className="group border-b border-stone-200">
@@ -509,7 +509,7 @@ export default function SalariuMediuPage() {
           <div className={row}>
             <div className="md:col-span-3">
               <div className={card}>
-                <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900">Unde te situezi față de medie?</h2>
+                <h2 className={TITLU_CARD}>Unde te situezi față de medie?</h2>
                 <p className="mt-2 text-base leading-normal tracking-[-0.01em] text-stone-600">
                   Scrie-ți salariul în calculator și compară-l cu media.
                 </p>

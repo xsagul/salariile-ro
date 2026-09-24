@@ -12,7 +12,7 @@
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
 import DataAssetCard from "@/app/components/DataAssetCard";
-import { Breadcrumb, Faq, H1, Lead } from "@/app/components/ui";
+import { Breadcrumb, Faq, H1, Lead, TITLU_SECTIUNE } from "@/app/components/ui";
 import { CardCifra, NotaSursa, lei, procent, trimestruScurt } from "@/app/components/Salarii";
 import {
   AN_OCUPATII,
@@ -282,14 +282,14 @@ export default function LocuriVacantePage() {
           />
 
           <section className="mt-12">
-            <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">
+            <h2 className={TITLU_SECTIUNE}>
               Cum a evoluat cererea
             </h2>
             <SerieTrimestre valori={TOTAL.serie} etichete={PERIOADE_VACANTE} />
           </section>
 
           <section className="mt-12">
-            <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">
+            <h2 className={TITLU_SECTIUNE}>
               Cerere și plată, pe aceleași grupe
             </h2>
             <p className="mt-4 max-w-3xl text-base leading-normal text-stone-600">
@@ -355,7 +355,7 @@ export default function LocuriVacantePage() {
           </section>
 
           <section className="mt-12 max-w-3xl">
-            <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">Ce nu măsoară cifrele</h2>
+            <h2 className={TITLU_SECTIUNE}>Ce nu măsoară cifrele</h2>
             <ul className="mt-4 flex flex-col gap-2 text-base leading-normal text-stone-600">
               <li>
                 <strong className="font-semibold text-stone-900">Nu sunt anunțuri de angajare.</strong> INS numără

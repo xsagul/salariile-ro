@@ -170,6 +170,19 @@ for (const f of fisiereSrc) {
     `${f} importă next/link direct; folosește @/app/components/Link`,
   );
 }
+// Scara titlurilor are un singur proprietar: TITLU_PAGINA și TITLU_SECTIUNE din
+// ui.tsx (26/30/36 și 20/22/24 px). Un h1 sau h2 cu mărime scrisă de mână
+// reintroduce amestecul măsurat pe 25 septembrie 2026.
+const marimiVechi = /<h[12][^>]*className="[^"]*(?:sm:)?text-(?:3xl|4xl|\[1\.625rem\])/;
+for (const f of fisiereSrc) {
+  const sursa = await read(`src/${f}`);
+  assert.ok(!marimiVechi.test(sursa), `${f} are un titlu cu mărime proprie; folosește TITLU_PAGINA / TITLU_SECTIUNE din ui.tsx`);
+}
+const ui = await read("src/app/components/ui.tsx");
+assert.ok(
+  ui.includes('"text-[26px] font-bold leading-tight tracking-[-0.02em] text-stone-900 lg:text-[30px] 2xl:text-4xl"'),
+  "TITLU_PAGINA trebuie să rămână 26 px pe telefon și tabletă, 30 pe laptop mic, 36 pe ecran mare",
+);
 assert.ok(
   (await read("src/app/components/Link.tsx")).includes("prefetch = false"),
   "Wrapperul Link trebuie să oprească pre-încărcarea implicit",
