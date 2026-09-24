@@ -173,33 +173,39 @@ export default function ZileLibere2026Page() {
               weekend estompate, fiindcă pe ele nu primești o zi liberă. */}
           <div className="max-w-3xl">
             <h1 className="text-3xl font-bold tracking-[-0.02em] text-stone-900 sm:text-4xl">Zile libere 2026</h1>
-            <p className="mt-3 text-xs text-stone-600 [&_a]:font-medium [&_a]:text-stone-700 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-900">
-              Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat {PAGE_LAST_MODIFIED["/zile-libere-2026"].toLocaleDateString("ro-RO", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })}
-            </p>
-            <p className="mt-5 text-lg leading-normal tracking-[-0.01em] text-stone-700">
+            {/* Fără autor și dată sus: e pagină-instrument, nu articol (proprietar, 24 sept. 2026). */}
+            <p className="mt-4 text-base leading-normal tracking-[-0.01em] text-stone-700 sm:text-[17px]">
               În 2026 sunt <strong className="font-semibold text-stone-900">{HOLIDAY_LIST.length} sărbători legale</strong>:{" "}
-              <strong className="font-semibold text-stone-900">{SARBATORI_IN_SAPTAMANA} în timpul săptămânii</strong>, care îți dau
-              o zi liberă, și {HOLIDAY_LIST.length - SARBATORI_IN_SAPTAMANA} în weekend.
+              <strong className="font-semibold text-stone-900">{SARBATORI_IN_SAPTAMANA} în timpul săptămânii</strong> și{" "}
+              {HOLIDAY_LIST.length - SARBATORI_IN_SAPTAMANA} în weekend.
             </p>
 
+            {/* Pe telefon două coloane: data cu ziua săptămânii dedesubt și sărbătoarea,
+                care primește tot restul lățimii. Cu trei coloane înguste, numele lungi
+                treceau pe două-trei rânduri și rândurile ieșeau inegale. De la `sm` în sus,
+                ziua are coloana ei. */}
             <TabelArticol>
               <thead>
                 <tr>
-                  <th scope="col">Data</th>
-                  <th scope="col">Ziua</th>
+                  <th scope="col" className="w-32 sm:w-auto">Data</th>
+                  <th scope="col" className="hidden sm:table-cell">Ziua</th>
                   <th scope="col">Sărbătoarea</th>
                 </tr>
               </thead>
               <tbody>
-                {HOLIDAY_LIST.map((h) => (
-                  <tr key={`${h.m}-${h.d}`}>
-                    <th scope="row" className={`whitespace-nowrap ${h.weekend ? "!font-normal !text-stone-600" : "!font-semibold"}`}>
-                      {h.d} {LUNI_NUME[h.m - 1].toLowerCase()}
-                    </th>
-                    <td className={h.weekend ? "text-stone-600" : "font-semibold text-stone-900"}>{h.zi}</td>
-                    <td className={h.weekend ? "text-stone-600" : "font-semibold text-stone-900"}>{h.nume}</td>
-                  </tr>
-                ))}
+                {HOLIDAY_LIST.map((h) => {
+                  const ton = h.weekend ? "text-stone-600" : "font-semibold text-stone-900";
+                  return (
+                    <tr key={`${h.m}-${h.d}`}>
+                      <th scope="row" className={`whitespace-nowrap align-top ${h.weekend ? "!font-normal !text-stone-600" : "!font-semibold"}`}>
+                        {h.d} {LUNI_NUME[h.m - 1].toLowerCase()}
+                        <span className="mt-0.5 block text-xs font-normal text-stone-600 sm:hidden">{h.zi}</span>
+                      </th>
+                      <td className={`hidden align-top sm:table-cell ${ton}`}>{h.zi}</td>
+                      <td className={`align-top ${ton}`}>{h.nume}</td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </TabelArticol>
 
