@@ -174,7 +174,7 @@ export default function ZileLibere2026Page() {
           <div className="max-w-3xl">
             <h1 className="text-3xl font-bold tracking-[-0.02em] text-stone-900 sm:text-4xl">Zile libere 2026</h1>
             {/* Fără autor și dată sus: e pagină-instrument, nu articol (proprietar, 24 sept. 2026). */}
-            <p className="mt-4 text-base leading-normal tracking-[-0.01em] text-stone-700 sm:text-[17px]">
+            <p className="mt-4 text-base leading-normal tracking-[-0.01em] text-stone-700">
               În 2026 sunt <strong className="font-semibold text-stone-900">{HOLIDAY_LIST.length} sărbători legale</strong>:{" "}
               <strong className="font-semibold text-stone-900">{SARBATORI_IN_SAPTAMANA} în timpul săptămânii</strong> și{" "}
               {HOLIDAY_LIST.length - SARBATORI_IN_SAPTAMANA} în weekend.

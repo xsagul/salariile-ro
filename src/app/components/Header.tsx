@@ -390,7 +390,7 @@ export default function Header() {
                       key={c.href}
                       href={c.href}
                       aria-current={isActive(c.href) ? "page" : undefined}
-                      className={`flex min-h-11 items-center py-2 pl-9 pr-5 text-[15px] ${
+                      className={`flex min-h-11 items-center py-2 pl-9 pr-5 text-sm ${
                         isActive(c.href) ? "bg-stone-100 font-semibold text-stone-900" : "text-stone-600"
                       }`}
                     >
