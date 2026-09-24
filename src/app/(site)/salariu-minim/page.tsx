@@ -631,9 +631,9 @@ export default function SalariuMinimPage() {
                   <GraficIstoric />
                   <TabelIstoric />
                   <p>
-                    Două sectoare au reguli proprii. În construcții, minimul e mai mare, de {fmt(SALARIU_MINIM_CONSTRUCTII)} lei
-                    brut, și are <Link href="/salariu-minim-constructii-2026">pagina lui separată</Link>. Agricultura și
-                    industria alimentară au trecut la minimul general din 1 iulie 2026.
+                    Un singur sector mai are un minim propriu: construcțiile, cu {fmt(SALARIU_MINIM_CONSTRUCTII)} lei brut,
+                    explicat pe <Link href="/salariu-minim-constructii-2026">pagina lui separată</Link>. Agricultura și
+                    industria alimentară au avut și ele reguli separate, dar din 1 iulie 2026 plătesc minimul general.
                   </p>
                   <p>
                     Minimul mai servește și ca unitate de măsură pentru contribuțiile unui PFA. Acolo contează valoarea
