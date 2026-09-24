@@ -36,7 +36,7 @@ export default function TabelArticol({
   numeric?: boolean;
 }) {
   const aliniere = numeric
-    ? "[&_thead_th:not(:first-child)]:text-right [&_tbody_td]:text-right [&_tbody_td]:whitespace-nowrap"
+    ? "[&_thead_th:not(:first-child)]:text-right [&_tbody_td]:text-right [&_tbody_td]:whitespace-nowrap [&_tbody_th]:whitespace-nowrap"
     : "[&_td]:align-top [&_th]:align-top";
 
   return (

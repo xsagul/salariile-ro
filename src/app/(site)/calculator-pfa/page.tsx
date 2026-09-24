@@ -14,6 +14,8 @@ import {
   calculeazaPfaNormaVenit,
   PLAFON_CAS_12_2026,
   PLAFON_CAS_24_2026,
+  PLAFON_CASS_MAXIM_2026,
+  PLAFON_CASS_MINIM_2026,
   PLAFON_NORMA_VENIT_LEI,
   SALARIU_MINIM_PFA_2026,
 } from "@/lib/pfa";
@@ -89,12 +91,27 @@ const PIERDERE_PRAG = SUB_PRAG.ramas - PESTE_PRAG.ramas;
 
 // „Bază CAS maximă" era greșit: art. 148 alin. (2) definește 12 și 24 de salarii
 // minime ca praguri sub care baza aleasă nu poate coborî, nu ca plafon superior.
-const PLAFOANE: [string, string][] = [
-  ["Prag CASS (6 minime)", "24.300 lei"],
-  ["Prag CAS (12 minime)", "48.600 lei"],
-  ["Prag CAS superior (24 minime)", "97.200 lei"],
-  ["Plafon CASS (72 minime)", "291.600 lei"],
-  ["CASS maximă / an", "29.160 lei"],
+//
+// Cardul spune ce se schimbă la fiecare prag, nu doar cifra: o listă de sume fără
+// efect nu-i spunea nimic cititorului (semnalat de proprietar, 24 septembrie 2026).
+// Sumele pe an vin din aceleași constante ca motorul de calcul.
+const PRAGURI: { prag: number; ce: string }[] = [
+  {
+    prag: PLAFON_CASS_MINIM_2026,
+    ce: `Sub el, sănătatea (CASS) se plătește tot ca pentru ${lei(PLAFON_CASS_MINIM_2026)}: ${lei(PLAFON_CASS_MINIM_2026 * 0.1)} lei pe an.`,
+  },
+  {
+    prag: PLAFON_CAS_12_2026,
+    ce: `De aici plătești și pensie (CAS): ${lei(PLAFON_CAS_12_2026 * 0.25)} lei pe an.`,
+  },
+  {
+    prag: PLAFON_CAS_24_2026,
+    ce: `De aici pensia se dublează: ${lei(PLAFON_CAS_24_2026 * 0.25)} lei pe an.`,
+  },
+  {
+    prag: PLAFON_CASS_MAXIM_2026,
+    ce: `Peste el, CASS nu mai crește: cel mult ${lei(PLAFON_CASS_MAXIM_2026 * 0.1)} lei pe an.`,
+  },
 ];
 
 // Data vizibila iese din ACEEASI sursa ca lastmod-ul din sitemap si ca
@@ -205,16 +222,19 @@ export default function CalculatorPfaPage() {
 
               <aside className="mt-8 md:col-span-2 md:mt-0 md:self-start">
                 <div className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
-                  <h3 className="mb-2 text-base font-bold tracking-[-0.01em] text-stone-900">Plafoane PFA · 2026</h3>
-                  <dl className="text-sm">
-                    {PLAFOANE.map(([k, v]) => (
-                      <div key={k} className="flex items-center justify-between border-b border-stone-100 py-2 last:border-b-0">
-                        <dt className="text-stone-600">{k}</dt>
-                        <dd className="font-medium tabular-nums text-stone-900">{v}</dd>
-                      </div>
+                  <h3 className="mb-2 text-base font-bold tracking-[-0.01em] text-stone-900">Pragurile care schimbă taxele</h3>
+                  <ul className="text-sm">
+                    {PRAGURI.map(({ prag, ce }) => (
+                      <li key={prag} className="flex gap-3 border-b border-stone-100 py-2.5 last:border-b-0">
+                        <span className="w-24 shrink-0 font-semibold tabular-nums text-stone-900">{lei(prag)} lei</span>
+                        <span className="leading-snug text-stone-600">{ce}</span>
+                      </li>
                     ))}
-                  </dl>
-                  <p className="mt-3 text-xs text-stone-600">Plafoane anuale pentru anul fiscal 2026.</p>
+                  </ul>
+                  <p className="mt-3 text-xs text-stone-600">
+                    Venit net pe an, adică încasări minus cheltuieli. Pragurile sunt salarii minime de{" "}
+                    {lei(SALARIU_MINIM_PFA_2026)} lei, minimul de la 1 ianuarie.
+                  </p>
                 </div>
               </aside>
             </div>
