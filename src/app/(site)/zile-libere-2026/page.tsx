@@ -8,6 +8,7 @@ import Link from "@/app/components/Link";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 import { SARBATORI_LEGALE_2026 as HOLIDAYS } from "@/lib/sarbatori";
+import TabelArticol from "@/app/components/TabelArticol";
 
 // ─── Metadata SEO ────────────────────────────────────────────────────────────
 
@@ -62,23 +63,13 @@ const MONTHS = Array.from({ length: 12 }, (_, m) => buildMonth(m));
 const TOTAL_LUCR = MONTHS.reduce((s, x) => s + x.lucr, 0); // 250
 const TOTAL_LIBERE = 365 - TOTAL_LUCR; // 115
 
-// Numărări pentru stat-carduri.
-let WEEKEND_DAYS = 0;
-let HOLIDAY_WORKDAYS = 0;
-for (let m = 0; m < 12; m++) {
-  for (const c of MONTHS[m].cells) {
-    if (!c) continue;
-    if (c.weekend) WEEKEND_DAYS++;
-    if (c.holiday && !c.weekend) HOLIDAY_WORKDAYS++;
-  }
-}
-
 // Lista sărbătorilor (în ordine), cu ziua săptămânii calculată.
 const HOLIDAY_LIST = Object.entries(HOLIDAYS).map(([key, nume]) => {
   const [m, d] = key.split("-").map(Number);
   const dow = dowMonday(YEAR, m - 1, d);
   return { d, m, nume, zi: ZILE_LUNG[dow], weekend: dow >= 5 };
 });
+const SARBATORI_IN_SAPTAMANA = HOLIDAY_LIST.filter((h) => !h.weekend).length;
 
 // Punți / minivacanțe 2026 (derivate manual din calendar, dar verificabile pe el).
 const PUNTI = [
@@ -94,7 +85,7 @@ const PUNTI = [
 const FAQ = [
   {
     q: "Câte zile libere are 2026 în România?",
-    a: "115: cele 104 zile de weekend și 11 sărbători legale care pică în timpul săptămânii.",
+    a: `${TOTAL_LIBERE}: cele ${TOTAL_LIBERE - SARBATORI_IN_SAPTAMANA} zile de weekend și ${SARBATORI_IN_SAPTAMANA} sărbători legale care pică în timpul săptămânii.`,
   },
   {
     q: "Când este Paștele ortodox în 2026?",
@@ -175,40 +166,51 @@ export default function ZileLibere2026Page() {
       <div className="bg-canvas">
         <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
 
-          {/* HERO */}
-          <div className="max-w-prose">
-            <p className="text-xs font-medium uppercase tracking-wide text-stone-600">Calendar 2026</p>
-            <nav className="mb-4 flex flex-wrap gap-4 text-sm"><Link href="/zile-libere-2027" className="min-h-11 py-3 underline">Calendar zile libere 2027</Link><a download href="/date/calendar/2026.ics" className="min-h-11 py-3 underline">Importă sărbătorile 2026 (ICS)</a></nav>
-            <h1 className="mt-2 text-3xl font-bold tracking-[-0.02em] text-stone-900 sm:text-4xl">Zile libere 2026</h1>
+          {/* PRIMA PARTE — ce caută omul: care zile sunt libere. Decis de proprietar pe
+              24 septembrie 2026, după primele două rezultate din Google (zilelibere.com,
+              zileliberelegale.ro): răspunsul într-o frază, apoi tabelul, apoi calendarul.
+              Tabelul urmează modelul Pluxee: zilele libere lucrătoare îngroșate, cele din
+              weekend estompate, fiindcă pe ele nu primești o zi liberă. */}
+          <div className="max-w-3xl">
+            <h1 className="text-3xl font-bold tracking-[-0.02em] text-stone-900 sm:text-4xl">Zile libere 2026</h1>
             <p className="mt-3 text-xs text-stone-600 [&_a]:font-medium [&_a]:text-stone-700 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-900">
               Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat {PAGE_LAST_MODIFIED["/zile-libere-2026"].toLocaleDateString("ro-RO", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })}
             </p>
-            <p className="mt-5 text-base leading-normal tracking-[-0.01em] text-stone-600">
-              Toate sărbătorile legale din 2026, calendarul anului și punțile prin care îți poți face minivacanțe.
+            <p className="mt-5 text-lg leading-normal tracking-[-0.01em] text-stone-700">
+              În 2026 sunt <strong className="font-semibold text-stone-900">{HOLIDAY_LIST.length} sărbători legale</strong>:{" "}
+              <strong className="font-semibold text-stone-900">{SARBATORI_IN_SAPTAMANA} în timpul săptămânii</strong>, care îți dau
+              o zi liberă, și {HOLIDAY_LIST.length - SARBATORI_IN_SAPTAMANA} în weekend.
             </p>
-            <div className="mt-5 border-l-2 border-stone-900 pl-4 text-sm leading-normal tracking-[-0.01em] text-stone-700">
-              <p className="font-semibold text-stone-900">Pe scurt</p>
-              <p className="mt-1">
-                În 2026 sunt <strong>16 zile de sărbătoare legală</strong>. <strong>11</strong> pică în timpul săptămânii
-                și îți dau o zi liberă, 5 pică în weekend. Legea are 17 sărbători, dar anul acesta a doua zi de Rusalii a
-                căzut chiar pe 1 iunie, de Ziua Copilului, așa că două sărbători au împărțit aceeași zi.
-              </p>
-            </div>
-          </div>
 
-          {/* STAT-CARDURI */}
-          <div className="mt-8 grid grid-cols-2 gap-3 sm:mt-10 sm:grid-cols-4 sm:gap-4">
-            {([
-              [TOTAL_LUCR, "Zile lucrătoare"],
-              [TOTAL_LIBERE, "Zile libere total"],
-              [HOLIDAY_WORKDAYS, "Sărbători în zile lucrătoare"],
-              [WEEKEND_DAYS, "Zile de weekend"],
-            ] as const).map(([n, label]) => (
-              <div key={label} className={card}>
-                <div className="text-3xl font-bold tabular-nums tracking-[-0.02em] text-stone-900">{n}</div>
-                <div className="mt-1 text-xs uppercase tracking-wide text-stone-600">{label}</div>
-              </div>
-            ))}
+            <TabelArticol>
+              <thead>
+                <tr>
+                  <th scope="col">Data</th>
+                  <th scope="col">Ziua</th>
+                  <th scope="col">Sărbătoarea</th>
+                </tr>
+              </thead>
+              <tbody>
+                {HOLIDAY_LIST.map((h) => (
+                  <tr key={`${h.m}-${h.d}`}>
+                    <th scope="row" className={`whitespace-nowrap ${h.weekend ? "!font-normal !text-stone-600" : "!font-semibold"}`}>
+                      {h.d} {LUNI_NUME[h.m - 1].toLowerCase()}
+                    </th>
+                    <td className={h.weekend ? "text-stone-600" : "font-semibold text-stone-900"}>{h.zi}</td>
+                    <td className={h.weekend ? "text-stone-600" : "font-semibold text-stone-900"}>{h.nume}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </TabelArticol>
+
+            <p className="text-sm leading-normal text-stone-600">
+              Sărbătorile din weekend nu se recuperează în altă zi. Legea numără 17 sărbători, dar în 2026 a doua zi de
+              Rusalii a căzut chiar pe 1 iunie, de Ziua Copilului, așa că au împărțit aceeași zi.
+            </p>
+            <nav className={`mt-3 flex flex-wrap gap-x-5 text-sm ${links}`} aria-label="Legături pentru calendar">
+              <a download href="/date/calendar/2026.ics" className="inline-flex min-h-11 items-center">Adaugă sărbătorile în calendarul tău (ICS)</a>
+              <Link href="/zile-libere-2027" className="inline-flex min-h-11 items-center">Zile libere 2027</Link>
+            </nav>
           </div>
 
           {/* CALENDAR — 12 luni */}
@@ -278,27 +280,6 @@ export default function ZileLibere2026Page() {
               >
                 Vezi tabelul zilelor lucrătoare 2026
               </Link>
-            </div>
-          </div>
-
-          {/* SĂRBĂTORI — listă */}
-          <div className="mt-12 border-t border-stone-200 pt-10 sm:mt-16 sm:pt-14">
-            <h2 className="text-2xl font-bold tracking-[-0.02em] text-stone-900 sm:text-3xl">Sărbătorile legale din 2026</h2>
-            <p className="mt-3 max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600">
-              Cele care pică în weekend sunt marcate: pe ele nu primești o zi liberă în altă parte.
-            </p>
-            <div className={`mt-6 ${card}`}>
-              <ul className="grid grid-cols-1 gap-x-10 sm:grid-cols-2 [&>li:last-child]:border-b-0 sm:[&>li:nth-last-child(2)]:border-b-0">
-                {HOLIDAY_LIST.map((h) => (
-                  <li key={`${h.m}-${h.d}-${h.nume}`} className="flex items-baseline justify-between gap-4 border-b border-stone-100 py-2.5">
-                    <span className="text-sm text-stone-800">
-                      {h.nume}
-                      {h.weekend && <span className="ml-2 text-xs text-stone-600">(weekend)</span>}
-                    </span>
-                    <span className="flex-shrink-0 text-sm tabular-nums text-stone-600">{h.d} {LUNI_NUME[h.m - 1].toLowerCase()} · {h.zi}</span>
-                  </li>
-                ))}
-              </ul>
             </div>
           </div>
 
