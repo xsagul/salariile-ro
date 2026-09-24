@@ -42,6 +42,7 @@ import {
   type Grad,
   type NivelGradatie,
 } from "@/lib/invatamant";
+import IconCalculeaza from "@/app/components/IconCalculeaza";
 
 const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(Math.round(n));
 
@@ -295,8 +296,9 @@ export default function CalculatorInvatamant() {
           <button
             type="button"
             onClick={calculeaza}
-            className="block min-h-12 w-full rounded bg-stone-900 px-4 py-3 text-sm font-medium text-white shadow-soft transition-colors hover:bg-stone-800 active:translate-y-px"
+            className="flex items-center justify-center gap-2 min-h-12 w-full rounded bg-stone-900 px-4 py-3 text-sm font-medium text-white shadow-soft transition-colors hover:bg-stone-800 active:translate-y-px"
           >
+            <IconCalculeaza />
             Calculează
           </button>
         </div>

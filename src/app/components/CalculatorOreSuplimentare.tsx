@@ -29,6 +29,7 @@ import {
 } from "@/lib/ore-suplimentare";
 import { deruleazaLaRezultat } from "@/lib/deruleaza-la-rezultat";
 import { masoaraCalcul } from "@/lib/analytics";
+import IconCalculeaza from "@/app/components/IconCalculeaza";
 
 const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(Math.round(n));
 const fmt2 = (n: number) =>
@@ -195,8 +196,9 @@ export default function CalculatorOreSuplimentare() {
           <button
             type="button"
             onClick={calculeaza}
-            className="min-h-11 w-full rounded bg-stone-900 px-4 py-3 text-sm font-medium text-white transition hover:bg-stone-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-stone-400 focus-visible:ring-offset-2"
+            className="flex min-h-11 w-full items-center justify-center gap-2 rounded bg-stone-900 px-4 py-3 text-sm font-medium text-white transition hover:bg-stone-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-stone-400 focus-visible:ring-offset-2"
           >
+            <IconCalculeaza />
             Calculează
           </button>
         </div>

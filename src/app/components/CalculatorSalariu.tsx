@@ -19,6 +19,7 @@ import { compuneFluturas } from "@/lib/fluturas";
 import FeedbackContextual from "@/app/components/FeedbackContextual";
 import { TEXTE, type Limba, type TexteCalculator } from "@/lib/calculator-texte";
 import { CURS_DATA, EUR_RON, converteste, cursVechi, inEuro, inLei, type Moneda } from "@/lib/curs";
+import IconCalculeaza from "@/app/components/IconCalculeaza";
 
 type SelectOption = { v: number; l: string };
 
@@ -948,9 +949,10 @@ export default function CalculatorSalariu({
 
           <button
             type="submit"
-            className={`${avansat ? "mt-5 " : ""}block min-h-12 w-full rounded bg-stone-900 px-4 py-3 text-sm font-medium text-white shadow-soft transition-colors hover:bg-stone-800 active:translate-y-px`}
+            className={`${avansat ? "mt-5 " : ""}flex items-center justify-center gap-2 min-h-12 w-full rounded bg-stone-900 px-4 py-3 text-sm font-medium text-white shadow-soft transition-colors hover:bg-stone-800 active:translate-y-px`}
             aria-label={t.ariaCalculeaza}
           >
+            <IconCalculeaza />
             {t.calculeaza}
           </button>
         </form>

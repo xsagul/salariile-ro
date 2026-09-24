@@ -8,6 +8,7 @@ import {
   type InputState,
   type RezultatPartTime,
 } from "@/lib/fiscal";
+import IconCalculeaza from "@/app/components/IconCalculeaza";
 
 const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(Math.round(n));
 const fmtOre = (n: number) =>
@@ -340,9 +341,10 @@ export default function CalculatorPartTime() {
 
           <button
             type="submit"
-            className="block min-h-12 w-full rounded bg-stone-900 px-4 py-3 text-sm font-medium text-white shadow-soft transition-colors hover:bg-stone-800 active:translate-y-px"
+            className="flex items-center justify-center gap-2 min-h-12 w-full rounded bg-stone-900 px-4 py-3 text-sm font-medium text-white shadow-soft transition-colors hover:bg-stone-800 active:translate-y-px"
             aria-label="Calculează salariul part-time și navighează la rezultat"
           >
+            <IconCalculeaza />
             Calculează
           </button>
         </form>

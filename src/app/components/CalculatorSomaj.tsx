@@ -23,6 +23,7 @@ import {
 } from "@/lib/somaj";
 import { deruleazaLaRezultat } from "@/lib/deruleaza-la-rezultat";
 import { masoaraCalcul } from "@/lib/analytics";
+import IconCalculeaza from "@/app/components/IconCalculeaza";
 
 const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(Math.round(n));
 const colHeader = "mb-4 border-b border-stone-200 pb-2 text-lg font-medium text-stone-900";
@@ -130,8 +131,9 @@ export default function CalculatorSomaj() {
             type="button"
             onClick={calculeaza}
             disabled={fara}
-            className="min-h-11 w-full rounded bg-stone-900 px-4 py-3 text-sm font-medium text-white transition hover:bg-stone-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-stone-400 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:bg-stone-300"
+            className="flex min-h-11 w-full items-center justify-center gap-2 rounded bg-stone-900 px-4 py-3 text-sm font-medium text-white transition hover:bg-stone-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-stone-400 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:bg-stone-300"
           >
+            <IconCalculeaza />
             Calculează
           </button>
 

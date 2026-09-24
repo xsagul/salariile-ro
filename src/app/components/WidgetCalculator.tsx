@@ -14,6 +14,7 @@ import {
   SALARIU_MINIM,
   type InputState,
 } from "@/lib/fiscal";
+import IconCalculeaza from "@/app/components/IconCalculeaza";
 
 const fmt = (n: number) => n.toLocaleString("ro-RO");
 const doarCifre = (s: string) => s.replace(/\D/g, "");
@@ -375,10 +376,11 @@ export default function WidgetCalculator({ initialBrut }: { initialBrut?: string
 
         <button
           type="button"
-          className="block min-h-11 w-full rounded bg-stone-900 px-4 py-2.5 text-sm font-medium text-white shadow-soft transition-colors hover:bg-stone-800 active:translate-y-px"
+          className="flex items-center justify-center gap-2 min-h-11 w-full rounded bg-stone-900 px-4 py-2.5 text-sm font-medium text-white shadow-soft transition-colors hover:bg-stone-800 active:translate-y-px"
           onClick={handleCalculeaza}
         >
-          Calculează
+          <IconCalculeaza />
+            Calculează
         </button>
       </div>
 
