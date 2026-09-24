@@ -189,13 +189,17 @@ export function Faq({
 export function PaginiConexe({
   titlu = "Mai departe",
   linkuri,
+  peGrila = false,
 }: {
   titlu?: string;
   linkuri: { href: string; label: string; descriere: string }[];
+  /** Aliniază secțiunea la marginea stângă a paginilor-instrument (grila 3+2),
+   *  în loc s-o centreze îngust. */
+  peGrila?: boolean;
 }) {
   return (
     <section className="border-t border-stone-200 bg-canvas py-10 sm:py-12">
-      <div className="mx-auto max-w-3xl px-4 sm:px-6">
+      <div className={peGrila ? "mx-auto max-w-6xl px-4 sm:px-6 md:[&>*]:max-w-[calc(60%-0.6rem)]" : "mx-auto max-w-3xl px-4 sm:px-6"}>
         <h2 className="mb-5 text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">{titlu}</h2>
         <ul className="grid gap-3 sm:grid-cols-2">
           {linkuri.map((link) => (

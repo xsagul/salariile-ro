@@ -134,20 +134,22 @@ export default function Page() {
 
       <CalculatorInvatamant />
 
-      <div className="mx-auto max-w-3xl px-4 py-4 sm:px-6">
-        <a href="#grila-salarizare" className="inline-flex min-h-11 items-center text-sm font-medium text-stone-900 underline underline-offset-2">Vezi grila de salarizare pe funcții și vechime</a>
+      {/* Cine a venit pentru grilă (cam 10% din căutări) o găsește dintr-un click;
+          restul citește întâi cum se calculează. */}
+      <div className="mx-auto -mt-4 max-w-6xl px-4 pb-4 sm:px-6">
+        <a href="#grila-salarizare" className="inline-flex min-h-11 items-center text-sm font-medium text-stone-900 underline underline-offset-2">Vezi grila completă, pe funcții și vechime</a>
       </div>
-
-      <GrilaInvatamant />
 
       <Section
         companion={
+          <div className="md:sticky md:top-24">
           <CardCompanion
             titlu="Cât ia un profesor în mână"
             nota="Net lunar, studii superioare, cu indemnizația de hrană, fără dirigenție."
           >
             <Repere randuri={TREPTE.map((t) => [t.eticheta, `${fmt(t.net)} lei`] as const)} />
           </CardCompanion>
+          </div>
         }
       >
         <Prose>
@@ -184,7 +186,7 @@ export default function Page() {
           </p>
         </Prose>
 
-        <div className="mx-auto mt-4 max-w-3xl overflow-x-auto px-4 sm:px-6">
+        <div className="mt-4 overflow-x-auto">
           <table className="w-full border-collapse text-xs sm:text-sm">
             <thead>
               <tr className="bg-canvas">
@@ -225,9 +227,25 @@ export default function Page() {
         </Prose>
       </Section>
 
-      <Faq items={FAQ} />
+      <GrilaInvatamant />
+
+      <Faq
+        items={FAQ}
+        companion={
+          <CardCompanion titlu="Alte salarii din sectorul public">
+            <ul className="flex flex-col gap-3 text-sm leading-normal [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2">
+              <li><Link href="/calculator-salariu-sanatate">Calculator salariu în sănătate</Link>, pentru medici, asistenți și infirmieri.</li>
+              <li><Link href="/noutati/legea-salarizarii-2026">Ce s-a întâmplat cu noua lege a salarizării</Link> și de ce grila de acum rămâne în plată.</li>
+            </ul>
+            <p className="mt-auto pt-4 text-xs text-stone-600">
+              Personalul didactic auxiliar, cum ar fi secretarul sau bibliotecarul, are o grilă separată, care nu e în acest calculator.
+            </p>
+          </CardCompanion>
+        }
+      />
 
       <PaginiConexe
+        peGrila
         linkuri={[
           { href: "/salarii/profesor", label: "Salariu profesor", descriere: "Grila și reperele din sectorul de educație." },
           { href: "/salarii/invatator", label: "Salariu învățător", descriere: "Grila pentru cadrele din învățământul primar." },
