@@ -141,7 +141,7 @@ export default async function ArticolPage({ params }: { params: Promise<{ slug: 
           </div>
           <h1 className="text-3xl font-bold tracking-[-0.02em] text-stone-900 sm:text-4xl">{a.title}</h1>
           {a.description && (
-            <p className="mt-3 max-w-prose text-lg leading-normal tracking-[-0.01em] text-stone-600">{a.description}</p>
+            <p className="mt-3 max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600">{a.description}</p>
           )}
 
           {/* Imagine principală */}

@@ -237,7 +237,7 @@ export default function ZileLibere2026Page() {
                   </div>
                   <div className="mt-3 grid grid-cols-7 gap-1 text-center">
                     {ZILE_SCURT.map((z) => (
-                      <div key={z} className="text-[10px] font-medium uppercase text-stone-600">{z}</div>
+                      <div key={z} className="text-xs font-medium uppercase text-stone-600">{z}</div>
                     ))}
                     {mo.cells.map((c, i) => {
                       if (c === null) return <div key={i} />;

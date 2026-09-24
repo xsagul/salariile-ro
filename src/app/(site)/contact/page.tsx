@@ -86,7 +86,7 @@ export default function ContactPage() {
         }
       >
         <h2>Scrie-mi</h2>
-        <p className="text-lg">
+        <p className="text-base">
           <strong><a href="mailto:contact@salariile.ro">contact@salariile.ro</a></strong>
         </p>
         <p>
