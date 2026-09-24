@@ -14,6 +14,7 @@ import { LUNA_REFERINTA, TOTAL_ECONOMIE } from "@/lib/ins-date";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 import { calculStandard, SALARIU_MINIM } from "@/lib/fiscal";
+import { TABEL_STANDARD } from "@/app/components/TabelArticol";
 
 const INS_PERIOD_LABEL = LUNA_REFERINTA.replace(/^Luna\s+/, "");
 const INS_MONTH_NAME = INS_PERIOD_LABEL.split(" ")[0];
@@ -363,8 +364,8 @@ export default function SalariuMediuPage() {
               <div className={`max-w-prose ${articol}`}>
                 <h2>Cum a crescut în timp</h2>
                 <p>Cifra fixă folosită la pensie, adică indicatorul BASS, a crescut cu aproape 70% în șase ani.</p>
-                <div className="my-6 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
-                  <table className="w-full text-sm tabular-nums [&_td]:py-2 [&_tbody_th]:py-2 [&_tbody_th]:pr-2 [&_tbody_th]:text-left [&_td:not(:first-child)]:pl-3 [&_th:not(:first-child)]:pl-3 [&_td:not(:first-child)]:text-right [&_th:not(:first-child)]:text-right">
+                <div className="table-wrap my-6 overflow-x-auto">
+                  <table className={`${TABEL_STANDARD} [&_td:not(:first-child)]:text-right [&_th:not(:first-child)]:text-right`}>
                     <thead>
                       <tr className="border-b border-stone-300 text-xs font-medium uppercase tracking-wide text-stone-600">
                         <th scope="col" className="pb-2 text-left">An</th>

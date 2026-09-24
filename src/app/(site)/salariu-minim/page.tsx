@@ -12,6 +12,7 @@ import { Formula } from "@/app/components/ui";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 import { calculStandard, calculStandardCuRegim, PLAFON_FACILITATE, SALARIU_MINIM, SALARIU_MINIM_CONSTRUCTII } from "@/lib/fiscal";
+import { TABEL_STANDARD } from "@/app/components/TabelArticol";
 
 // Imaginea de share a paginii: crop 1200×630 din hero (nu brandul generic).
 const OG_SALARIU_MINIM = {
@@ -199,8 +200,8 @@ const titluCard = "text-base font-bold tracking-[-0.01em] text-stone-900";
 
 function TabelPartTime() {
   return (
-    <div className="my-6 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
-      <table className="w-full text-sm tabular-nums [&_td]:py-2.5 [&_tbody_th]:py-2.5 [&_tbody_th]:pr-2 [&_tbody_th]:text-left [&_td:not(:first-child)]:pl-3 [&_th:not(:first-child)]:pl-3 [&_td:not(:first-child)]:text-right [&_th:not(:first-child)]:text-right">
+    <div className="table-wrap my-6 overflow-x-auto">
+      <table className={`${TABEL_STANDARD} [&_td:not(:first-child)]:text-right [&_th:not(:first-child)]:text-right`}>
         <thead>
           <tr className="border-b border-stone-300 text-xs font-medium uppercase tracking-wide text-stone-600">
             <th scope="col" className="pb-2 text-left">Normă</th>
@@ -224,8 +225,8 @@ function TabelPartTime() {
 
 function TabelIstoric() {
   return (
-    <div className="my-6 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
-      <table className="w-full text-sm tabular-nums [&_td]:py-2 [&_tbody_th]:py-2 [&_tbody_th]:pr-2 [&_tbody_th]:text-left [&_td:not(:first-child)]:pl-3 [&_th:not(:first-child)]:pl-3 [&_td:not(:first-child)]:text-right [&_th:not(:first-child)]:text-right">
+    <div className="table-wrap my-6 overflow-x-auto">
+      <table className={`${TABEL_STANDARD} [&_td:not(:first-child)]:text-right [&_th:not(:first-child)]:text-right`}>
         <thead>
           <tr className="border-b border-stone-300 text-xs font-medium uppercase tracking-wide text-stone-600">
             <th scope="col" className="pb-2 text-left">Din</th>

@@ -11,6 +11,7 @@ import { CardCifra, NotaSursa, lei, procent } from "@/app/components/Salarii";
 import { AN_JUDETE, JUDETE, MATRICE_JUDETE, NATIONAL_JUDETE, INS_SURSA } from "@/lib/ins-date";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
+import { TABEL_STANDARD } from "@/app/components/TabelArticol";
 
 const AN = AN_JUDETE.replace("Anul ", "");
 const PRIMUL = JUDETE[0];
@@ -163,7 +164,7 @@ export default function JudetePage() {
           </div>
 
           <div className="my-8 overflow-x-auto">
-            <table className="w-full min-w-[34rem] border-separate border-spacing-0 overflow-hidden rounded-md border border-stone-200 bg-surface text-sm shadow-soft tabular-nums">
+            <table className={`${TABEL_STANDARD} min-w-[34rem]`}>
               <caption className="sr-only">
                 Câștigul salarial mediu brut lunar pe județe, media întregului an {AN}, ordonat descrescător
               </caption>

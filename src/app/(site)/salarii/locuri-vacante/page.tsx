@@ -29,6 +29,7 @@ import {
 } from "@/lib/ins-date";
 import { personSchema } from "@/lib/person";
 import { ogPage, SITE_URL, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
+import { TABEL_STANDARD } from "@/app/components/TabelArticol";
 
 const PAGE_PATH = "/salarii/locuri-vacante";
 const CSV_PATH = "/date-locuri-vacante-romania.csv";
@@ -298,7 +299,7 @@ export default function LocuriVacantePage() {
               lucruri adevărate despre aceeași grupă, puse unul lângă altul.
             </p>
             <div className="my-6 overflow-x-auto">
-              <table className="w-full min-w-[44rem] border-separate border-spacing-0 overflow-hidden rounded-md border border-stone-200 bg-surface text-sm shadow-soft">
+              <table className={`${TABEL_STANDARD} min-w-[44rem]`}>
                 <caption className="sr-only">
                   Locuri de muncă vacante și câștig brut pe grupe majore de ocupații
                 </caption>

@@ -30,6 +30,7 @@ import {
 import { MESERII } from "@/lib/meserii";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, JUDETE_LAST_MODIFIED } from "@/lib/seo";
+import { TABEL_STANDARD } from "@/app/components/TabelArticol";
 
 interface Props {
   params: Promise<{ judet: string }>;
@@ -222,7 +223,7 @@ export default async function JudetPage({ params }: Props) {
               <Link href="/salarii">catalogul de salarii pe meserii</Link>.
             </p>
             <div className="my-6 overflow-x-auto">
-              <table className="w-full min-w-[44rem] border-separate border-spacing-0 overflow-hidden rounded-md border border-stone-200 bg-surface text-sm shadow-soft tabular-nums">
+              <table className={`${TABEL_STANDARD} min-w-[44rem]`}>
                 <caption className="sr-only">
                   Câștigul salarial mediu brut lunar pe activități economice în {judet.nume}, media întregului an {AN}
                 </caption>
@@ -265,7 +266,7 @@ export default async function JudetPage({ params }: Props) {
                             {denumireScurtaCaenRev2(activitate.cheie, activitate.denumire)}
                           </span>
                         </th>
-                        <td className="border-b border-stone-100 px-3 py-2 text-left text-xs text-stone-600">
+                        <td className="border-b border-stone-100 px-3 py-2 text-left text-stone-600">
                           {/* Nume, nu linkuri, decis pe 15 septembrie 2026: 89 de linkuri
                               spre meserii pe fiecare din cele 43 de pagini de județ țineau
                               autoritatea învârtindu-se în clusterul de meserii. */}

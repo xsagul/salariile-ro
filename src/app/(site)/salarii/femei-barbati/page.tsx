@@ -26,6 +26,7 @@ import {
 } from "@/lib/ins-date";
 import { personSchema } from "@/lib/person";
 import { ogPage, SITE_URL, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
+import { TABEL_STANDARD } from "@/app/components/TabelArticol";
 
 const PAGE_PATH = "/salarii/femei-barbati";
 const CSV_PATH = "/date-diferente-salariale-femei-barbati-romania.csv";
@@ -274,7 +275,7 @@ export default function FemeiBarbatiPage() {
               concentrate în grupe mai bine plătite — mai ales printre specialiști, unde sunt majoritare.
             </p>
             <div className="my-6 overflow-x-auto">
-              <table className="w-full min-w-[42rem] border-separate border-spacing-0 overflow-hidden rounded-md border border-stone-200 bg-surface text-sm shadow-soft">
+              <table className={`${TABEL_STANDARD} min-w-[42rem]`}>
                 <caption className="sr-only">
                   Venit brut realizat pe grupe majore de ocupații și sexe, octombrie {AN}
                 </caption>
@@ -342,7 +343,7 @@ export default function FemeiBarbatiPage() {
               prin cine rămâne în activitate la vârsta aceea, nu printr-un avantaj real.
             </p>
             <div className="my-6 overflow-x-auto">
-              <table className="w-full min-w-[36rem] border-separate border-spacing-0 overflow-hidden rounded-md border border-stone-200 bg-surface text-sm shadow-soft">
+              <table className={`${TABEL_STANDARD} min-w-[36rem]`}>
                 <caption className="sr-only">
                   Venit brut realizat pe grupe de vârstă și sexe, toate ocupațiile, octombrie {AN}
                 </caption>

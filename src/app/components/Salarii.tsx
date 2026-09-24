@@ -6,6 +6,7 @@ import Link from "@/app/components/Link";
 import type { ReactNode } from "react";
 import type { GrilaPublica } from "@/lib/grile-publice";
 import { INS_SURSA, type ValoareJudet } from "@/lib/ins-date";
+import { TABEL_STANDARD } from "@/app/components/TabelArticol";
 
 export const lei = (valoare: number) => new Intl.NumberFormat("ro-RO").format(Math.round(valoare));
 
@@ -220,7 +221,7 @@ export function TabelJudete({
         )}
       </div>
       <div className="mt-4 overflow-x-auto">
-        <table className="w-full min-w-[32rem] border-separate border-spacing-0 overflow-hidden rounded-md border border-stone-200 bg-surface text-sm shadow-soft tabular-nums">
+        <table className={`${TABEL_STANDARD} min-w-[32rem]`}>
           <caption className="sr-only">
             {`Câștig salarial nominal mediu brut lunar pe județe, media anului ${an}, activitatea CAEN Rev.2 ${numeActivitate}.${areMedieNationala ? ` Media brută națională a aceleiași activități: ${lei(media)} lei.` : ""}`}
           </caption>
@@ -360,7 +361,7 @@ export function TabelGrila({grila,meserie}:{grila:GrilaPublica;meserie:string}) 
   const calculator = CALCULATOR_ANEXA[grila.anexa];
   return <div className="mt-6">
     <p className="mb-3 text-sm text-stone-600">Net standard</p>
-    <table className="w-full rounded-md border border-stone-200 bg-surface text-sm tabular-nums">
+    <table className={`${TABEL_STANDARD}`}>
       <caption className="sr-only">Net standard pentru {meserie}, pe trepte din {grila.anexa}</caption>
       <thead><tr><th scope="col" className="border-b p-3 text-left">Treaptă</th><th scope="col" className="border-b p-3 text-right">Net lunar</th></tr></thead>
       <tbody>{grila.trepte.map(t=><tr key={t.eticheta}>

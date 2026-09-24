@@ -13,6 +13,7 @@ import { ogPage, twPage } from "@/lib/seo";
 import CalculatorInvatamant from "@/app/components/CalculatorInvatamant";
 import GrilaInvatamant from "@/app/components/GrilaInvatamant";
 import { GRADATII, calculeazaInvatamantComplet, MAJORARI } from "@/lib/invatamant";
+import { TABEL_STANDARD } from "@/app/components/TabelArticol";
 
 const TITLU = "Calculator Salarii Învățământ 2026 - Vezi net și grilă";
 const DESC =
@@ -187,7 +188,7 @@ export default function Page() {
         </Prose>
 
         <div className="mt-4 overflow-x-auto">
-          <table className="w-full border-collapse text-xs sm:text-sm">
+          <table className={`${TABEL_STANDARD}`}>
             <thead>
               <tr className="bg-canvas">
                 <th className="border-b border-stone-300 px-2 py-2 text-left font-medium sm:px-3">Gradație</th>

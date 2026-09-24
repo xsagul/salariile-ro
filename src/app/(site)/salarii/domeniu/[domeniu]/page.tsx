@@ -21,6 +21,7 @@ import { AN_JUDETE, LUNA_REFERINTA, MATRICE_BRUT, MATRICE_JUDETE, MATRICE_NET, T
 import { CATEGORII, COMPARATII, dateMeserie, getCategorie, meseriiDinCategorie, type DateMeserie } from "@/lib/meserii";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
+import { TABEL_STANDARD } from "@/app/components/TabelArticol";
 
 interface Props {
   params: Promise<{ domeniu: string }>;
@@ -221,7 +222,7 @@ export default async function DomeniuPage({ params }: Props) {
               cel mai bine plătit, în {AN_JUDETE_SCURT}.
             </p>
             <div className="my-6 overflow-x-auto">
-              <table className="w-full min-w-[46rem] border-separate border-spacing-0 overflow-hidden rounded-md border border-stone-200 bg-surface text-sm shadow-soft">
+              <table className={`${TABEL_STANDARD} min-w-[46rem]`}>
                 <caption className="sr-only">
                   Meseriile din {numeMic}, cu activitatea CAEN, câștigul mediu brut și intervalul pe județe
                 </caption>

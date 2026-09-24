@@ -27,6 +27,7 @@ import ReperSalariu from '@/app/components/ReperSalariu';
 import { reperMeserie, textReper } from '@/lib/repere-meserii';
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, MESERII_LAST_MODIFIED } from "@/lib/seo";
+import { TABEL_STANDARD } from "@/app/components/TabelArticol";
 
 interface Props {
   params: Promise<{ pereche: string }>;
@@ -184,7 +185,7 @@ export default async function ComparatiePage({ params }: Props) {
           <details className="mt-8"><summary className="min-h-11 cursor-pointer py-3 text-lg font-semibold">Detalii ale comparației</summary><p className="mt-3 text-sm text-stone-600">Mediile de sector și reperele ISCO nu sunt un minim și un maxim salarial.</p>
             <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">Net, brut și context statistic</h2>
             <div className="my-6 overflow-x-auto">
-              <table className="w-full min-w-[34rem] border-separate border-spacing-0 overflow-hidden rounded-md border border-stone-200 bg-surface text-sm shadow-soft tabular-nums">
+              <table className={`${TABEL_STANDARD} min-w-[34rem]`}>
                 <caption className="sr-only">
                   Repere statistice pentru {comparatie.a.nume} și {comparatie.b.nume}
                 </caption>

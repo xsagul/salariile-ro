@@ -1,5 +1,6 @@
 import { COLOANA_IN_PLATA, GRILA, functiiDisponibile, SURSA_GRILA } from "@/lib/invatamant";
 import { CardCompanion, GrilaPagina } from "@/app/components/ui";
+import { TABEL_STANDARD } from "@/app/components/TabelArticol";
 
 const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(n);
 
@@ -22,7 +23,7 @@ export default function GrilaInvatamant() {
                 {functie.functie}
               </summary>
               <div className="overflow-x-auto pb-4">
-                <table className="w-full text-sm" data-grila-functie={functie.nr}>
+                <table className={`${TABEL_STANDARD}`} data-grila-functie={functie.nr}>
                   <caption className="sr-only">{functie.functie}: salariu de bază brut, gradația 0</caption>
                   <thead><tr className="bg-canvas">
                     <th scope="col" className="p-3 text-left">Vechime în învățământ</th>

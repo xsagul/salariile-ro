@@ -5,6 +5,7 @@ import { MESERII, CATEGORII, dateMeserieSauEroare } from '@/lib/meserii';
 import { ogPage, twPage } from '@/lib/seo';
 import reports from '@/data/repere-piata-verificate.json';
 import { ACOPERIRE_ANUNTURI } from '@/lib/acoperire-anunturi';
+import { TABEL_STANDARD } from "@/app/components/TabelArticol";
 
 // Clasamentul compara o singura masura, din aceeasi editie a aceleiasi surse.
 // De aceea porneste din inregistrarile Salario, nu din reperul principal al
@@ -78,7 +79,7 @@ export default function Clasament() {
         </div>
 
         <div className="my-8 overflow-x-auto">
-          <table className="w-full text-sm">
+          <table className={`${TABEL_STANDARD}`}>
             <caption className="sr-only">Repere salariale pe meserii și tipul sursei</caption>
             <thead>
               <tr className="border-b border-stone-300 text-stone-700">
@@ -95,7 +96,7 @@ export default function Clasament() {
                 const cat = CATEGORII.find(c => c.slug === x.m.categorie);
                 return (
                   <tr key={x.m.slug} className="hover:bg-stone-50/60 border-b border-stone-100">
-                    <td className="p-3 font-mono text-xs font-medium text-stone-600">#{x.d.clasament?.loc}</td>
+                    <td className="p-3 font-medium text-stone-600">#{x.d.clasament?.loc}</td>
                     <th scope="row" className="p-3 text-left font-medium text-stone-900">
                       <Link
                         className="inline-flex min-h-11 items-center underline hover:text-stone-700"
@@ -104,7 +105,7 @@ export default function Clasament() {
                         {x.m.nume}
                       </Link>
                     </th>
-                    <td className="p-3 text-xs text-stone-600">
+                    <td className="p-3 text-stone-600">
                       <span className="inline-block rounded bg-stone-100 px-2 py-0.5 font-medium text-stone-700">
                         {x.rec.role ?? cat?.nume}
                       </span>
@@ -112,10 +113,10 @@ export default function Clasament() {
                     <td className="whitespace-nowrap p-3 text-right font-bold text-stone-900">
                       {x.rec.net.toLocaleString('ro-RO')} lei net
                     </td>
-                    <td className="whitespace-nowrap p-3 text-right text-xs text-stone-600">
+                    <td className="whitespace-nowrap p-3 text-right text-stone-600">
                       {x.a?.n ?? 0}
                     </td>
-                    <td className="p-3 text-xs text-stone-600">
+                    <td className="p-3 text-stone-600">
                       {x.a?.medianBounds ? (
                         <Link className="font-medium text-stone-800 underline" href={`/salarii/${x.m.slug}`}>
                           Avem și cifră proprie
