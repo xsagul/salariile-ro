@@ -12,8 +12,9 @@
 
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
+import ButonPreferinteGoogle from "@/app/components/ButonPreferinteGoogle";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
-import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow, PaginaCuCuprins } from "@/app/components/ui";
+import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow, CardCompanion } from "@/app/components/ui";
 
 export const metadata: Metadata = {
   title: "Politica de cookies și analiză",
@@ -74,8 +75,17 @@ export default function CookiesPage() {
         <Eyebrow>CONSENT MODE · ZERO RECLAME · ÎN VIGOARE: 17 SEPTEMBRIE 2026</Eyebrow>
       </Hero>
 
-      <PaginaCuCuprins cta={null}>
-        <Section>
+      <div>
+        <Section
+          companion={
+            <CardCompanion titlu="Alegerea ta">
+              <p className="text-sm leading-normal text-stone-600">
+                Poți da sau retrage oricând acordul pentru Google Analytics. Site-ul funcționează la fel, orice ai alege.
+              </p>
+              <ButonPreferinteGoogle className="mt-4 inline-flex min-h-11 items-center self-start rounded border border-stone-900 bg-stone-900 px-5 text-sm font-medium text-white transition-colors hover:bg-stone-700">Schimbă setările cookies</ButonPreferinteGoogle>
+            </CardCompanion>
+          }
+        >
             <h2>Ce sunt cookies</h2>
             <p>
               Cookies sunt fișiere mici de text pe care un site le poate salva în browser-ul tău pentru a păstra informații între vizite (preferințe de afișare, autentificare, sesiuni de cumpărături etc.).
@@ -188,7 +198,7 @@ export default function CookiesPage() {
             </p>
             <p className="source-note">Ultima actualizare: 18 septembrie 2026 — GA4 măsoară folosirea paginilor și a calculatoarelor, fără sumele introduse; bannerul standard Google și Consent Mode rămân neschimbate; AdSense este fără reclame.</p>
         </Section>
-      </PaginaCuCuprins>
+      </div>
     </>
   );
 }

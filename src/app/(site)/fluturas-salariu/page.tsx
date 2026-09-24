@@ -6,7 +6,8 @@
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
 import CalculatorSalariu from "@/app/components/CalculatorSalariu";
-import { Formula, PaginiConexe, Section, PaginaCuCuprins } from "@/app/components/ui";
+import { CardCompanion, Faq, Formula, PaginiConexe, Section } from "@/app/components/ui";
+import { DEDUCERE_MINIM, PLAFON_FACILITATE, SALARIU_MINIM } from "@/lib/fiscal";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 
@@ -28,26 +29,18 @@ export const metadata: Metadata = {
   }),
 };
 
+const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(n);
+// Deducerea personală se acordă până la salariul minim + 2.000 de lei (Codul Fiscal, art. 77).
+const PLAFON_DEDUCERE = SALARIU_MINIM + 2000;
+
 const FAQ = [
-  {
-    q: "Este angajatorul obligat să-mi dea fluturaș?",
-    a: "Legea nu numește fluturașul, dar îi cere angajatorului să poată dovedi plata salariului, iar tu ai dreptul să vezi cum s-a calculat. În practică, aproape toate firmele îl dau, iar multe contracte colective îl prevăd. Dacă nu-l primești, cere-l în scris.",
-  },
-  {
-    q: "Ce verific prima dată pe fluturaș?",
-    a: "Trei lucruri. Brutul să fie cel din contract. Deducerea personală să apară, dacă ai sub 6.325 lei brut la locul de muncă de bază. Iar la salariul minim, cei 200 de lei netaxați să fie scăzuți din baza taxelor, altfel pierzi cam 80–100 de lei pe lună.",
-  },
   {
     q: "Fluturașul generat aici e valabil oficial?",
     a: "Nu. E un document orientativ, calculat după regulile fiscale în vigoare, bun ca să verifici fluturașul primit sau o ofertă de salariu. Documentul oficial îl emite doar angajatorul.",
   },
   {
     q: "Pot adăuga ore suplimentare, sporuri sau o lună lucrată parțial?",
-    a: "Da. În opțiunile avansate poți pune orele lucrate, orele suplimentare cu sporul lor, sporurile și primele, tichetele de masă, avansul sau popririle și numele firmei. Dacă ai salariul minim și sporurile nu trec brutul peste 4.600 de lei, cei 200 de lei netaxați se păstrează.",
-  },
-  {
-    q: "De ce ar putea diferi fluturașul meu de calculul de aici?",
-    a: "Generatorul nu acoperă concediul medical, concediul de odihnă plătit la medie, cumulul de funcții sau deducerile negociate separat. Dacă ai avut ceva din astea în lună, fluturașul angajatorului rămâne referința.",
+    a: `Da. În opțiunile avansate poți pune orele lucrate, orele suplimentare cu sporul lor, sporurile și primele, tichetele de masă, avansul sau popririle și numele firmei. Dacă ai salariul minim și sporurile nu trec brutul peste ${fmt(PLAFON_FACILITATE)} de lei, cei ${DEDUCERE_MINIM} de lei netaxați se păstrează.`,
   },
 ];
 
@@ -111,8 +104,26 @@ export default function FluturasSalariuPage() {
         />
       </div>
 
-      <PaginaCuCuprins cta={{ titlu: "Generează-ți fluturașul", text: "Scrie salariul de bază și descarcă PDF-ul.", href: "#calc-layout", eticheta: "Înapoi la generator" }}>
-      <Section>
+      <Section
+        companion={
+          <CardCompanion titlu="Ce verifici prima dată pe fluturaș">
+            <ol className="flex list-decimal flex-col gap-2 pl-5 text-sm leading-normal text-stone-600">
+              <li>Brutul să fie cel din contract.</li>
+              <li>
+                Deducerea personală să apară, dacă ai sub {fmt(PLAFON_DEDUCERE)} lei brut la locul de muncă de bază.
+              </li>
+              <li>
+                La salariul minim, cei {DEDUCERE_MINIM} de lei netaxați să fie scăzuți din baza taxelor. Altfel pierzi
+                cam 80–100 de lei pe lună.
+              </li>
+            </ol>
+            <p className="mt-3 text-sm leading-normal text-stone-600">
+              Fiecare rând, explicat:{" "}
+              <Link href="/noutati/cum-citesti-fluturasul-de-salariu" className="font-medium text-stone-900 underline underline-offset-2 hover:text-stone-600">cum îți citești fluturașul</Link>.
+            </p>
+          </CardCompanion>
+        }
+      >
         <h2>Cum se calculează un fluturaș</h2>
         <p>
           Orice fluturaș are trei părți: ce ți se cuvine în luna respectivă, ce se reține din asta și ce rămâne de
@@ -129,18 +140,24 @@ export default function FluturasSalariuPage() {
         />
         <p>
           Taxele se calculează ca la <Link href="/">orice salariu</Link>. Tichetele de masă intră întregi pe card,
-          dar taxele pe ele se opresc din salariul în bani, așa că apar pe un rând separat.
-        </p>
-        <p className="source-note">
-          Ca să înțelegi fiecare rând de pe fluturașul primit de la firmă, citește{" "}
-          <Link href="/noutati/cum-citesti-fluturasul-de-salariu">cum îți citești fluturașul</Link>. Pentru lunile cu
-          zile de boală sau cu tichete, vezi ghidurile despre{" "}
-          <Link href="/noutati/concediu-medical-2026">concediul medical</Link> și{" "}
-          <Link href="/noutati/tichete-de-masa-2026">tichetele de masă</Link>.
+          dar taxele pe ele se opresc din salariul în bani, așa că apar pe un rând separat. Pentru lunile cu zile de
+          boală sau cu tichete, vezi ghidurile despre <Link href="/noutati/concediu-medical-2026">concediul medical</Link>{" "}
+          și <Link href="/noutati/tichete-de-masa-2026">tichetele de masă</Link>.
         </p>
       </Section>
 
-      <Section>
+      <Section
+        companion={
+          <CardCompanion titlu="Dacă nu primești fluturaș">
+            <p className="text-sm leading-normal text-stone-600">
+              Legea nu numește fluturașul, dar îi cere angajatorului să poată dovedi plata salariului, iar tu ai
+              dreptul să vezi cum s-a calculat. Aproape toate firmele îl dau, iar multe contracte colective îl prevăd.
+              Dacă nu-l primești, cere-l în scris.
+            </p>
+            <p className="mt-3 text-xs text-stone-600">Codul Muncii, art. 166–168.</p>
+          </CardCompanion>
+        }
+      >
         <h2>Fluturaș, stat de plată sau adeverință de salariu</h2>
         <p>
           Toate trei pornesc din același calcul lunar, dar servesc la lucruri diferite.
@@ -164,42 +181,23 @@ export default function FluturasSalariuPage() {
         </p>
       </Section>
 
-      <Section>
-        <h2>La ce îți folosește</h2>
-        <ul>
-          <li>
-            <strong>Verifici fluturașul primit.</strong> Îl generezi pe al tău și compari rând cu rând. O deducere
-            lipsă sau o scutire neaplicată se văd imediat.
-          </li>
-          <li>
-            <strong>Înțelegi o ofertă de muncă.</strong> Oferta vine în brut, fluturașul îți arată cât rămâne în mână.
-          </li>
-          <li>
-            <strong>Negociezi o mărire.</strong> Vezi cât din fiecare sută de lei în plus ajunge la tine și cât la stat.
-          </li>
-        </ul>
-      </Section>
+      <Faq
+        items={FAQ}
+        companion={
+          <CardCompanion titlu="Când iese altfel decât la firmă">
+            <p className="text-sm leading-normal text-stone-600">
+              Generatorul nu acoperă concediul medical, concediul de odihnă plătit la medie, cumulul de funcții sau
+              deducerile negociate separat. Dacă ai avut ceva din astea în lună, fluturașul angajatorului rămâne
+              referința.
+            </p>
+            <p className="mt-3 text-xs text-stone-600">
+              Calculat după Codul Fiscal, HG 146/2026 și OUG 89/2025. Actualizat{" "}
+              {PAGE_LAST_MODIFIED["/fluturas-salariu"].toLocaleDateString("ro-RO", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })}.
+            </p>
+          </CardCompanion>
+        }
+      />
 
-      <Section>
-        <h2>Întrebări frecvente</h2>
-        <div className="flex flex-col">
-          {FAQ.map((item, i) => (
-            <details key={i} name="faq-fluturas" className="group border-b border-stone-200">
-              <summary className="flex min-h-11 cursor-pointer items-center justify-between gap-4 py-4 text-base font-medium tracking-[-0.01em] text-stone-900 [&::-webkit-details-marker]:hidden">
-                {item.q}
-                <span className="flex-shrink-0 text-xl text-stone-900 group-open:hidden">+</span>
-                <span className="hidden flex-shrink-0 text-xl text-stone-900 group-open:inline">−</span>
-              </summary>
-              <p className="mb-4 max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600">{item.a}</p>
-            </details>
-          ))}
-        </div>
-        <p className="source-note">
-          Surse: Codul Muncii (Legea 53/2003, art. 166–168), Codul Fiscal (Legea 227/2015), HG 146/2026, OUG 89/2025.
-          Ultima actualizare: {PAGE_LAST_MODIFIED["/fluturas-salariu"].toLocaleDateString("ro-RO", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })}.
-        </p>
-      </Section>
-      </PaginaCuCuprins>
       <PaginiConexe
         linkuri={[
           { href: "/salarii", label: "Salarii pe meserii", descriere: "Cât se câștigă în fiecare meserie." },

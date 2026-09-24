@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
-import { Breadcrumb, CtaCard, Faq, Formula, H1, Hero, Lead, Section, PaginaCuCuprins } from "@/app/components/ui";
-import { calculStandardCuRegim, SALARIU_MINIM_CONSTRUCTII } from "@/lib/fiscal";
+import { Breadcrumb, CardCompanion, Faq, Formula, H1, Hero, Lead, PaginiConexe, Section } from "@/app/components/ui";
+import { calculStandardCuRegim, SALARIU_MINIM, SALARIU_MINIM_CONSTRUCTII } from "@/lib/fiscal";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 
@@ -25,26 +25,18 @@ function calculStandard(brut: number, regim: Regim) {
 
 const CONSTRUCTII_S1 = calculStandard(MINIM_CONSTRUCTII, "2026-S1");
 const CONSTRUCTII_S2 = calculStandard(MINIM_CONSTRUCTII, "2026-S2");
-const GENERAL_S2 = calculStandard(4325, "2026-S2");
+const GENERAL_S2 = calculStandard(SALARIU_MINIM, "2026-S2");
 
 const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(n);
 
 const FAQ = [
   {
     q: "Creșterea minimului general din iulie a schimbat minimul din construcții?",
-    a: `Nu. Minimul general a urcat la 4.325 lei, dar pragul din construcții are o lege separată și a rămas ${fmt(MINIM_CONSTRUCTII)} lei brut tot anul.`,
-  },
-  {
-    q: "Se aplică în construcții suma de 200 de lei netaxați?",
-    a: "Nu la minimul din construcții. Scutirea e doar pentru cei plătiți exact cu salariul minim general, iar 4.582 lei e peste el.",
+    a: `Nu. Minimul general a urcat la ${fmt(SALARIU_MINIM)} lei, dar pragul din construcții are o lege separată și a rămas ${fmt(MINIM_CONSTRUCTII)} lei brut tot anul.`,
   },
   {
     q: "De ce a crescut netul din iulie, dacă brutul a rămas același?",
     a: `Pentru că deducerea personală se calculează din salariul minim general, care a crescut. Deducerea mai mare a scăzut impozitul, iar netul a urcat de la ${fmt(CONSTRUCTII_S1.netBani)} la ${fmt(CONSTRUCTII_S2.netBani)} lei.`,
-  },
-  {
-    q: "Mai există scutirea de impozit în construcții?",
-    a: "Nu, din ianuarie 2025. De atunci, salariile din construcții se taxează ca oricare altele. A rămas doar minimul mai mare.",
   },
 ];
 
@@ -121,110 +113,125 @@ export default function SalariuMinimConstructii2026Page() {
         </Lead>
       </Hero>
 
-      <PaginaCuCuprins cta={{ titlu: "Calculează salariul în construcții", text: "Pornește de la minimul din construcții sau de la netul dorit.", href: "/calculator-salariu-constructii", eticheta: "Deschide calculatorul" }}>
-        <Section noTopBorder>
-          <h2>Cum se ajunge de la {fmt(MINIM_CONSTRUCTII)} la {fmt(CONSTRUCTII_S2.netBani)} lei</h2>
-          <p>
-            Din 2025, un salariu din construcții se taxează exact ca oricare altul. Din brut pleacă 25% pentru pensie,
-            10% pentru sănătate și impozitul de 10%, calculat după deducerea personală:
-          </p>
-          <Formula
-            eticheta={`Calculul netului la ${fmt(MINIM_CONSTRUCTII)} lei brut`}
-            randuri={[
-              `CAS     = ${fmt(MINIM_CONSTRUCTII)} × 25%          = ${fmt(CONSTRUCTII_S2.cas)}`,
-              `CASS    = ${fmt(MINIM_CONSTRUCTII)} × 10%          = ${fmt(CONSTRUCTII_S2.cass)}`,
-              `Impozit = 10%, după deducere     = ${fmt(CONSTRUCTII_S2.impozit)}`,
-              `Net     = ${fmt(MINIM_CONSTRUCTII)} − ${fmt(CONSTRUCTII_S2.cas)} − ${fmt(CONSTRUCTII_S2.cass)} − ${fmt(CONSTRUCTII_S2.impozit)} = ${fmt(CONSTRUCTII_S2.netBani)} lei`,
-            ]}
-          />
-          <p>
-            Firma mai plătește peste brut 2,25% pentru asigurarea de muncă, așa că un muncitor la minim o costă{" "}
-            {fmt(CONSTRUCTII_S2.costTotal)} de lei pe lună. Dacă ai persoane în întreținere, sub 26 de ani sau tichete,
-            netul tău iese altfel: îl afli din <Link href="/calculator-salariu-constructii">calculatorul pentru construcții</Link>.
-          </p>
-        </Section>
+      <Section
+        noTopBorder
+        companion={
+          <CardCompanion titlu="Față de minimul general">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="text-xs text-stone-600">
+                  <th scope="col" className="pb-2 text-left font-medium"><span className="sr-only">Sumă</span></th>
+                  <th scope="col" className="pb-2 text-right font-medium">General</th>
+                  <th scope="col" className="pb-2 text-right font-medium">Construcții</th>
+                </tr>
+              </thead>
+              <tbody className="tabular-nums text-stone-900">
+                <tr>
+                  <th scope="row" className="py-1 text-left font-normal text-stone-600">Brut</th>
+                  <td className="py-1 text-right">{fmt(SALARIU_MINIM)}</td>
+                  <td className="py-1 text-right">{fmt(MINIM_CONSTRUCTII)}</td>
+                </tr>
+                <tr>
+                  <th scope="row" className="py-1 text-left font-normal text-stone-600">În mână</th>
+                  <td className="py-1 text-right">{fmt(GENERAL_S2.netBani)}</td>
+                  <td className="py-1 text-right font-semibold">{fmt(CONSTRUCTII_S2.netBani)}</td>
+                </tr>
+              </tbody>
+            </table>
+            <p className="mt-4 text-sm leading-normal text-stone-600">
+              Cu {fmt(MINIM_CONSTRUCTII - SALARIU_MINIM)} de lei mai mult la brut, în mână ajung doar{" "}
+              {fmt(CONSTRUCTII_S2.netBani - GENERAL_S2.netBani)} de lei în plus. La minimul general, 200 de lei din
+              brut nu se taxează deloc; în construcții salariul e peste acel minim, așa că se taxează tot.
+            </p>
+          </CardCompanion>
+        }
+      >
+        <h2>Cum se ajunge de la {fmt(MINIM_CONSTRUCTII)} la {fmt(CONSTRUCTII_S2.netBani)} lei</h2>
+        <p>
+          Din 2025, un salariu din construcții se taxează exact ca oricare altul. Din brut pleacă 25% pentru pensie,
+          10% pentru sănătate și impozitul de 10%, calculat după deducerea personală:
+        </p>
+        <Formula
+          eticheta={`Calculul netului la ${fmt(MINIM_CONSTRUCTII)} lei brut`}
+          randuri={[
+            `CAS     = ${fmt(MINIM_CONSTRUCTII)} × 25%          = ${fmt(CONSTRUCTII_S2.cas)}`,
+            `CASS    = ${fmt(MINIM_CONSTRUCTII)} × 10%          = ${fmt(CONSTRUCTII_S2.cass)}`,
+            `Impozit = 10%, după deducere     = ${fmt(CONSTRUCTII_S2.impozit)}`,
+            `Net     = ${fmt(MINIM_CONSTRUCTII)} − ${fmt(CONSTRUCTII_S2.cas)} − ${fmt(CONSTRUCTII_S2.cass)} − ${fmt(CONSTRUCTII_S2.impozit)} = ${fmt(CONSTRUCTII_S2.netBani)} lei`,
+          ]}
+        />
+        <p>
+          Firma mai plătește peste brut 2,25% pentru asigurarea de muncă, așa că un muncitor la minim o costă{" "}
+          {fmt(CONSTRUCTII_S2.costTotal)} de lei pe lună. Dacă ai persoane în întreținere, sub 26 de ani sau tichete,
+          netul tău iese altfel: îl afli din <Link href="/calculator-salariu-constructii">calculatorul pentru construcții</Link>.
+        </p>
+      </Section>
 
-        <Section>
-          <h2>{fmt(MINIM_CONSTRUCTII - 4325)} de lei în plus la brut, doar {fmt(CONSTRUCTII_S2.netBani - GENERAL_S2.netBani)} în mână</h2>
-          <p>
-            Minimul din construcții e cu {fmt(MINIM_CONSTRUCTII - 4325)} de lei mai mare decât minimul general. Pe
-            fluturaș, diferența se topește: în mână, un muncitor din construcții primește doar cu{" "}
-            {fmt(CONSTRUCTII_S2.netBani - GENERAL_S2.netBani)} de lei mai mult.
-          </p>
-          <p>
-            Motivul e scutirea de la salariul minim general: acolo, 200 de lei din brut nu se taxează deloc. În
-            construcții, salariul e peste acel minim, așa că se taxează tot.
-          </p>
-        </Section>
+      <Section
+        companion={
+          <CardCompanion titlu="Temeiul legal">
+            <ul className="flex flex-col gap-2 text-sm leading-normal text-stone-600">
+              <li>
+                <a href="https://legislatie.just.ro/Public/DetaliiDocument/293109" target="_blank" rel="noopener" className="font-medium text-stone-900 underline underline-offset-2 hover:text-stone-600">OUG 156/2024</a>,
+                art. LXIX: minimul de {fmt(MINIM_CONSTRUCTII)} lei, tariful de {TARIF_ORAR} lei pe oră și sfârșitul scutirilor
+              </li>
+              <li>
+                <a href="https://legislatie.just.ro/Public/DetaliiDocument/308231" target="_blank" rel="noopener" className="font-medium text-stone-900 underline underline-offset-2 hover:text-stone-600">HG 146/2026</a>:
+                minimul general de la 1 iulie
+              </li>
+              <li>
+                <a href="https://legislatie.just.ro/Public/DetaliiDocument/305817" target="_blank" rel="noopener" className="font-medium text-stone-900 underline underline-offset-2 hover:text-stone-600">OUG 89/2025</a>:
+                cei 200 de lei netaxați de la minimul general
+              </li>
+              <li>
+                <a href="https://legislatie.just.ro/Public/DetaliiDocument/257144" target="_blank" rel="noopener" className="font-medium text-stone-900 underline underline-offset-2 hover:text-stone-600">Codul Fiscal</a>:
+                contribuțiile, impozitul și deducerea
+              </li>
+              <li>
+                <a href="https://reges.inspectiamuncii.ro/informatii-utile/informatii-salariati/salarizarea/" target="_blank" rel="noopener" className="font-medium text-stone-900 underline underline-offset-2 hover:text-stone-600">Inspecția Muncii</a>:
+                valorile minime publicate pentru salariați
+              </li>
+            </ul>
+          </CardCompanion>
+        }
+      >
+        <h2>Cui i se aplică</h2>
+        <p>
+          Pragul e pentru firmele care au ca activitate construcțiile, în domeniile definite de legislația fiscală.
+          Contează activitatea angajatorului, nu doar numele postului din contract.
+        </p>
+        <ul>
+          <li>{fmt(MINIM_CONSTRUCTII)} lei e <strong>salariul de bază</strong>. Sporurile și primele vin peste el, nu intră în prag.</li>
+          <li>{TARIF_ORAR} lei pe oră e o medie legală. Nu e un motiv ca salariul lunar să scadă în lunile cu mai puține ore.</li>
+          <li>La part-time, salariul scade proporțional cu orele, dar nu sub tariful minim pe oră.</li>
+        </ul>
+      </Section>
 
-        <Section>
-          <h2>Cui i se aplică</h2>
-          <p>
-            Pragul e pentru firmele care au ca activitate construcțiile, în domeniile definite de legislația fiscală.
-            Contează activitatea angajatorului, nu doar numele postului din contract.
-          </p>
-          <ul>
-            <li>{fmt(MINIM_CONSTRUCTII)} lei e <strong>salariul de bază</strong>. Sporurile și primele vin peste el, nu intră în prag.</li>
-            <li>{TARIF_ORAR} lei pe oră e o medie legală. Nu e un motiv ca salariul lunar să scadă în lunile cu mai puține ore.</li>
-            <li>La part-time, salariul scade proporțional cu orele, dar nu sub tariful minim pe oră.</li>
-          </ul>
-        </Section>
+      <Faq
+        items={FAQ}
+        title="Întrebări despre salariul minim în construcții"
+        companion={
+          <CardCompanion titlu="Salariul tău exact">
+            <p className="text-sm leading-normal text-stone-600">
+              Scrie brutul sau netul dorit și adaugă ce se aplică la tine: persoane în întreținere, tichete, vârsta.
+            </p>
+            <Link
+              href="/calculator-salariu-constructii"
+              className="mt-4 inline-flex min-h-11 items-center self-start rounded border border-stone-900 bg-stone-900 px-5 text-sm font-medium text-white transition-colors hover:bg-stone-700"
+            >
+              Calculator salariu construcții
+            </Link>
+          </CardCompanion>
+        }
+      />
 
-        <Section>
-          <h2>Surse oficiale</h2>
-          <ul>
-            <li>
-              <a href="https://legislatie.just.ro/Public/DetaliiDocument/293109" target="_blank" rel="noopener">
-                OUG 156/2024
-              </a>
-              , art. LXIX: minimul de {fmt(MINIM_CONSTRUCTII)} lei și tariful de {TARIF_ORAR} lei pe oră; eliminarea scutirilor
-            </li>
-            <li>
-              <a href="https://legislatie.just.ro/Public/DetaliiDocument/308231" target="_blank" rel="noopener">
-                HG 146/2026
-              </a>
-              : minimul general de la 1 iulie
-            </li>
-            <li>
-              <a href="https://legislatie.just.ro/Public/DetaliiDocument/305817" target="_blank" rel="noopener">
-                OUG 89/2025
-              </a>
-              : scutirea de 200 de lei de la minimul general
-            </li>
-            <li>
-              <a href="https://legislatie.just.ro/Public/DetaliiDocument/257144" target="_blank" rel="noopener">
-                Codul Fiscal
-              </a>
-              : contribuții, impozit și deducerea personală
-            </li>
-            <li>
-              <a href="https://reges.inspectiamuncii.ro/informatii-utile/informatii-salariati/salarizarea/" target="_blank" rel="noopener">
-                Inspecția Muncii
-              </a>
-              : valorile minime publicate pentru salariați
-            </li>
-          </ul>
-          <h3>Pagini conexe</h3>
-          <ul>
-            <li><Link href="/salariu-minim">Salariul minim general în 2026</Link></li>
-            <li><Link href="/deducere-personala-2026">Deducerea personală 2026</Link></li>
-            <li><Link href="/metodologie">Metodologia calculatorului brut-net</Link></li>
-            <li><Link href="/noutati/salariul-minim-1-iulie-2026">Ce s-a schimbat la 1 iulie 2026</Link></li>
-          </ul>
-        </Section>
-      </PaginaCuCuprins>
-
-        <Faq items={FAQ} title="Întrebări despre salariul minim în construcții" />
-
-        <CtaCard
-          title="Calculează salariul tău exact"
-          href="/calculator-salariu-constructii"
-          label="Calculator salariu construcții"
-        >
-          Scrie brutul sau netul dorit și adaugă ce se aplică la tine: persoane în întreținere, tichete, vârsta.
-          Calculul complet pentru {fmt(MINIM_CONSTRUCTII)} lei brut e și pe{" "}
-          <Link href="/calculator/calcul-salariu-net-4582-brut">pagina lui separată</Link>.
-        </CtaCard>
+      <PaginiConexe
+        linkuri={[
+          { href: "/salariu-minim", label: "Salariul minim general", descriere: "Cât rămâne în mână la minimul din restul economiei." },
+          { href: "/deducere-personala-2026", label: "Deducerea personală", descriere: "Cât scade impozitul, după salariu și persoane în întreținere." },
+          { href: "/noutati/salariul-minim-1-iulie-2026", label: "Ce s-a schimbat la 1 iulie", descriere: "Noul minim general și efectul lui asupra netului." },
+        ]}
+      />
     </>
   );
 }

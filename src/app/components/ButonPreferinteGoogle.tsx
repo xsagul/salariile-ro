@@ -9,7 +9,13 @@ declare global {
   }
 }
 
-export default function ButonPreferinteGoogle() {
+export default function ButonPreferinteGoogle({
+  className = "text-xs text-stone-600 underline decoration-stone-400 underline-offset-2 hover:text-stone-900",
+  children = "Setări cookies",
+}: {
+  className?: string;
+  children?: React.ReactNode;
+}) {
   const deschidePreferintele = () => {
     window.googlefc = window.googlefc || {};
     window.googlefc.callbackQueue = window.googlefc.callbackQueue || [];
@@ -19,12 +25,8 @@ export default function ButonPreferinteGoogle() {
   };
 
   return (
-    <button
-      type="button"
-      onClick={deschidePreferintele}
-      className="text-xs text-stone-600 underline decoration-stone-400 underline-offset-2 hover:text-stone-900"
-    >
-      Setări cookies
+    <button type="button" onClick={deschidePreferintele} className={className}>
+      {children}
     </button>
   );
 }

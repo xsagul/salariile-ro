@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
-import { Breadcrumb, CtaCard, Eyebrow, H1, Hero, Lead, Section, PaginaCuCuprins } from "@/app/components/ui";
+import { Breadcrumb, CtaCard, Eyebrow, H1, Hero, Lead, Section, CardCompanion } from "@/app/components/ui";
 import {
   LATEST_INS_EARNINGS,
   SALARY_DATA_2026,
@@ -177,8 +177,20 @@ export default function DateSalariiPage() {
         </div>
       </Hero>
 
-      <PaginaCuCuprins cta={null}>
-      <Section wide>
+      <Section
+        companion={
+          <CardCompanion titlu="Reutilizare și citare">
+            <div id="reutilizare" className="scroll-mt-24 flex flex-col gap-3 text-sm leading-normal text-stone-600">
+              <p>{SALARY_DATASET_USAGE_TERMS}</p>
+              <p>
+                Citează așa: <strong className="font-semibold text-stone-900">Salariile.ro, „Date salariale România
+                2026”, versiunea {SALARY_DATASET_VERSION}, accesată la data utilizării</strong>. Într-o analiză fiscală,
+                adaugă și actul normativ sau comunicatul INS al valorii folosite.
+              </p>
+            </div>
+          </CardCompanion>
+        }
+      >
         <h2>Setul de date, pe scurt</h2>
         <p>
           Tabelul nu pune semnul egal între indicatori diferiți. <strong>Pragul legal</strong>,{" "}
@@ -237,8 +249,25 @@ export default function DateSalariiPage() {
         </p>
       </Section>
 
-      <Section>
-          <BuletinSalarii />
+      <Section
+        companion={
+          <CardCompanion titlu="Cum se actualizează">
+            <ul className="flex flex-col gap-2 text-sm leading-normal text-stone-600">
+              <li>Pragurile legale sunt transcrise din actele de pe Portalul Legislativ.</li>
+              <li>Cifrele statistice vin din comunicatul lunar INS indicat la fiecare rând.</li>
+              <li>
+                Calculele și estimările sunt etichetate separat și urmează{" "}
+                <Link href="/metodologie" className="font-medium text-stone-900 underline underline-offset-2 hover:text-stone-600">metodologia</Link>.
+              </li>
+              <li>Setul se schimbă când intră în vigoare un prag nou sau când INS publică o lună nouă.</li>
+            </ul>
+            <p className="mt-3 text-sm leading-normal text-stone-600">
+              Ultima lună INS inclusă e {LATEST_INS_EARNINGS.periodLabel}: statisticile lunare apar la câteva
+              săptămâni după luna măsurată. Câmpul <code>reference_date</code> spune până când a fost verificat setul.
+            </p>
+          </CardCompanion>
+        }
+      >
         <h2>De ce 9.192 lei nu este același lucru cu {formatLei(LATEST_INS_EARNINGS.grossLei)} lei</h2>
         <p>
           <strong>9.192 lei brut</strong> este câștigul salarial mediu brut utilizat la fundamentarea bugetului
@@ -256,22 +285,29 @@ export default function DateSalariiPage() {
         </p>
       </Section>
 
-      <Section>
-        <h2>Metodologie și ritm de actualizare</h2>
-        <ul>
-          <li>Valorile legislative sunt transcrise din actele publicate pe Portalul Legislativ.</li>
-          <li>Valorile statistice sunt transcrise din comunicatul lunar INS indicat la fiecare înregistrare.</li>
-          <li>Calculele și estimările sunt etichetate separat și urmează <Link href="/metodologie">metodologia calculatorului</Link>.</li>
-          <li>Setul se actualizează când intră în vigoare un prag nou sau când INS publică o lună mai recentă.</li>
-          <li>Câmpul <code>reference_date</code> arată până la ce dată a fost verificată versiunea descărcată.</li>
-        </ul>
-        <p>
-          Cea mai recentă lună INS inclusă este {LATEST_INS_EARNINGS.periodLabel}, chiar dacă data de referință a setului este 25 august 2026.
-          Diferența există fiindcă statisticile lunare se publică ulterior perioadei măsurate.
-        </p>
+      <Section wide>
+        <BuletinSalarii />
       </Section>
 
-      <Section>
+      <Section
+        companion={
+          <CardCompanion titlu="Surse oficiale">
+            <ul className="flex flex-col gap-2 text-sm leading-normal text-stone-600">
+              {Object.entries(SALARY_DATASET_SOURCES).map(([sourceId, source]) => (
+                <li key={sourceId}>
+                  <a href={source.official_url} target="_blank" rel="noopener noreferrer" className="font-medium text-stone-900 underline underline-offset-2 hover:text-stone-600">
+                    {source.name}
+                  </a>{" "}
+                  · {source.institution}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-3 text-xs text-stone-600">
+              Salariile.ro e un proiect independent, fără legătură cu instituțiile care publică sursele.
+            </p>
+          </CardCompanion>
+        }
+      >
         <h2>Dicționar de date</h2>
         <TabelArticol>
             <thead>
@@ -290,36 +326,6 @@ export default function DateSalariiPage() {
             </tbody>
         </TabelArticol>
       </Section>
-
-      <Section>
-        <h2>Surse oficiale</h2>
-        <ul>
-          {Object.entries(SALARY_DATASET_SOURCES).map(([sourceId, source]) => (
-            <li key={sourceId}>
-              <a href={source.official_url} target="_blank" rel="noopener noreferrer">
-                <strong>{source.name}</strong>
-              </a>{" "}
-              — {source.institution}
-            </li>
-          ))}
-        </ul>
-        <p className="source-note">
-          Salariile.ro este un proiect independent și nu este afiliat instituțiilor care publică sursele de mai sus.
-        </p>
-      </Section>
-
-      <Section>
-        <div id="reutilizare" className="scroll-mt-24">
-          <h2>Reutilizare și citare</h2>
-          <p>{SALARY_DATASET_USAGE_TERMS}</p>
-          <p>
-            Pentru o citare reproductibilă, folosește: <strong>Salariile.ro, „Date salariale România 2026”,
-            versiunea {SALARY_DATASET_VERSION}, accesată la data utilizării</strong>. Într-o analiză fiscală, indică
-            și actul normativ sau comunicatul INS asociat valorii folosite.
-          </p>
-        </div>
-      </Section>
-      </PaginaCuCuprins>
 
       <CtaCard title="Ai nevoie de formulele din spatele valorilor?" href="/metodologie" label="Vezi metodologia completă">
         Documentația explică separat CAS, CASS, impozitul, deducerea personală, facilitatea salariului minim și

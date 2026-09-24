@@ -5,7 +5,14 @@ import type { Metadata } from "next";
 import Link from "@/app/components/Link";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
-import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow, PaginaCuCuprins } from "@/app/components/ui";
+import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow, CardCompanion, Formula } from "@/app/components/ui";
+import { calculStandardCuRegim, DEDUCERE_MINIM, REGIM_FISCAL_CURENT, SALARIU_MINIM } from "@/lib/fiscal";
+
+const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(n);
+const fmt2 = (n: number) => new Intl.NumberFormat("ro-RO", { maximumFractionDigits: 4 }).format(n);
+// Exemplul de rotunjire vine din motorul de calcul, ca să nu rămână în urmă la următorul minim.
+const EX = calculStandardCuRegim(SALARIU_MINIM, REGIM_FISCAL_CURENT)!;
+const BAZA_EX = SALARIU_MINIM - EX.facilitate;
 
 export const metadata: Metadata = {
   title: "Metodologie de calcul salariu net 2026",
@@ -81,269 +88,221 @@ export default function MetodologiePage() {
         <Eyebrow>VERIFICAT SEPARAT PRIN FORMULARUL D112</Eyebrow>
       </Hero>
 
-      <PaginaCuCuprins>
-        <Section>
-            <h2>Principiul general</h2>
-            <p>
-              Calculul salariului net pornește de la salariul brut (de încadrare, conform contractului individual de muncă) și aplică, în ordine, contribuțiile obligatorii reținute la sursă:
-            </p>
-            <ul>
-              <li><strong>CAS</strong> (Contribuția de Asigurări Sociale, „pensie”): 25% din baza de calcul</li>
-              <li><strong>CASS</strong> (Contribuția de Asigurări Sociale de Sănătate): 10% din baza de calcul</li>
-              <li><strong>Impozit pe venit</strong>: 10% din baza impozabilă</li>
-            </ul>
-            <p>
-              Pe lângă reținerile angajatului, angajatorul mai plătește:
-            </p>
-            <ul>
-              <li><strong>CAM</strong> (Contribuția Asiguratorie pentru Muncă): 2,25% din baza CAM; pentru salariul minim eligibil, suma netaxabilă se exclude și din această bază</li>
-            </ul>
-            <p>
-              CAM nu reduce salariul net al angajatului, dar crește costul total suportat de angajator.
-            </p>
-        </Section>
-
-        <Section>
-            <h2>Formula completă brut → net</h2>
-            <p>
-              Pentru un salariu brut B, deducere personală D (calculată conform regulilor) și o eventuală sumă netaxabilă F (facilitate OUG 89/2025 aplicabilă doar salariului minim):
-            </p>
-            <div className="overflow-x-auto"><table>
-              <thead>
-                <tr>
-                  <th>Pas</th>
-                  <th>Calcul</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1. Bază pentru CAS, CASS și CAM</td>
-                  <td>Bază = B − F</td>
-                </tr>
-                <tr>
-                  <td>2. CAS (25%)</td>
-                  <td>CAS = rotund(Bază × 0,25)</td>
-                </tr>
-                <tr>
-                  <td>3. CASS (10%)</td>
-                  <td>CASS = rotund(Bază × 0,10)</td>
-                </tr>
-                <tr>
-                  <td>4. Bază impozabilă</td>
-                  <td>Bază_imp = B − F − CAS − CASS − D</td>
-                </tr>
-                <tr>
-                  <td>5. Impozit pe venit (10%)</td>
-                  <td>Impozit = rotund(max(0, Bază_imp × 0,10))</td>
-                </tr>
-                <tr className="font-semibold [&_td]:text-stone-900">
-                  <td>6. Salariu net</td>
-                  <td>Net = B − CAS − CASS − Impozit</td>
-                </tr>
-                <tr aria-hidden="true"><td colSpan={2} className="h-3 border-0 p-0"></td></tr>
-                <tr>
-                  <td>7. CAM angajator (2,25%)</td>
-                  <td>CAM = rotund((B − F) × 0,0225)</td>
-                </tr>
-                <tr className="font-semibold [&_td]:text-stone-900">
-                  <td>8. Cost total angajator</td>
-                  <td>Cost = B + CAM</td>
-                </tr>
+      <Section
+        companion={
+          <CardCompanion titlu="Cotele și temeiul lor">
+            <table className="w-full text-sm">
+              <tbody className="text-stone-600 [&_td]:py-1 [&_th]:py-1">
+                <tr><th scope="row" className="text-left font-normal">CAS, pensie</th><td className="text-right text-stone-900">25%</td><td className="pl-3 text-xs">CF art. 138</td></tr>
+                <tr><th scope="row" className="text-left font-normal">CASS, sănătate</th><td className="text-right text-stone-900">10%</td><td className="pl-3 text-xs">CF art. 156</td></tr>
+                <tr><th scope="row" className="text-left font-normal">Impozit</th><td className="text-right text-stone-900">10%</td><td className="pl-3 text-xs">CF art. 64</td></tr>
+                <tr><th scope="row" className="text-left font-normal">CAM, angajator</th><td className="text-right text-stone-900">2,25%</td><td className="pl-3 text-xs">CF art. 220^3</td></tr>
+                <tr><th scope="row" className="text-left font-normal">Deducere</th><td className="text-right text-stone-900">variabilă</td><td className="pl-3 text-xs">CF art. 77</td></tr>
+                <tr><th scope="row" className="text-left font-normal">Sumă netaxată la minim</th><td className="text-right text-stone-900">{DEDUCERE_MINIM} lei</td><td className="pl-3 text-xs">OUG 89/2025</td></tr>
+                <tr><th scope="row" className="text-left font-normal">Salariul minim</th><td className="text-right text-stone-900">{fmt(SALARIU_MINIM)} lei</td><td className="pl-3 text-xs">HG 146/2026</td></tr>
               </tbody>
-            </table></div>
-            <p className="source-note">
-              „rotund” înseamnă rotunjire la cel mai apropiat leu. Suma netaxabilă F este 0 când facilitatea nu se aplică. Pentru salariul minim brut eligibil în 2026, OUG 89/2025 stabilește 300 lei (ianuarie – iunie) și 200 lei (iulie – decembrie). Tabelul descrie cazul standard fără tichete; când există tichete, ele intră în baza CASS și a impozitului, dar nu în baza CAS sau CAM.
-            </p>
-        </Section>
+            </table>
+            <p className="mt-3 text-xs text-stone-600">CF = Codul Fiscal. Minimul și suma netaxată sunt cele din 1 iulie 2026.</p>
+          </CardCompanion>
+        }
+      >
+        <h2>Formula completă brut → net</h2>
+        <p>
+          Din salariul brut B din contract se rețin pensia, sănătatea și impozitul. Deducerea personală D scade doar
+          baza impozitului. Suma netaxată F se aplică numai la salariul minim și scoate o parte din brut de sub toate
+          taxele. Angajatorul plătește în plus CAM, care nu atinge netul.
+        </p>
+        <div className="overflow-x-auto"><table>
+          <thead>
+            <tr>
+              <th>Pas</th>
+              <th>Calcul</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1. Bază pentru CAS, CASS și CAM</td>
+              <td>Bază = B − F</td>
+            </tr>
+            <tr>
+              <td>2. CAS (25%)</td>
+              <td>CAS = rotund(Bază × 0,25)</td>
+            </tr>
+            <tr>
+              <td>3. CASS (10%)</td>
+              <td>CASS = rotund(Bază × 0,10)</td>
+            </tr>
+            <tr>
+              <td>4. Bază impozabilă</td>
+              <td>Bază_imp = B − F − CAS − CASS − D</td>
+            </tr>
+            <tr>
+              <td>5. Impozit pe venit (10%)</td>
+              <td>Impozit = rotund(max(0, Bază_imp × 0,10))</td>
+            </tr>
+            <tr className="font-semibold [&_td]:text-stone-900">
+              <td>6. Salariu net</td>
+              <td>Net = B − CAS − CASS − Impozit</td>
+            </tr>
+            <tr aria-hidden="true"><td colSpan={2} className="h-3 border-0 p-0"></td></tr>
+            <tr>
+              <td>7. CAM angajator (2,25%)</td>
+              <td>CAM = rotund((B − F) × 0,0225)</td>
+            </tr>
+            <tr className="font-semibold [&_td]:text-stone-900">
+              <td>8. Cost total angajator</td>
+              <td>Cost = B + CAM</td>
+            </tr>
+          </tbody>
+        </table></div>
+        <p className="source-note">
+          „rotund” înseamnă rotunjire la cel mai apropiat leu. Suma netaxabilă F este 0 când facilitatea nu se aplică. Pentru salariul minim brut eligibil în 2026, OUG 89/2025 stabilește 300 lei (ianuarie – iunie) și 200 lei (iulie – decembrie). Tabelul descrie cazul standard fără tichete; când există tichete, ele intră în baza CASS și a impozitului, dar nu în baza CAS sau CAM.
+        </p>
+      </Section>
 
-        <Section>
-            <h2>Sursele normative pentru fiecare componentă</h2>
-            <div className="overflow-x-auto"><table>
-              <thead>
-                <tr>
-                  <th>Componentă</th>
-                  <th>Cotă 2026</th>
-                  <th>Bază legală</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>CAS (pensie)</td>
-                  <td>25%</td>
-                  <td>Codul Fiscal art. 138 lit. a)</td>
-                </tr>
-                <tr>
-                  <td>CASS (sănătate)</td>
-                  <td>10%</td>
-                  <td>Codul Fiscal art. 156</td>
-                </tr>
-                <tr>
-                  <td>Impozit pe venit</td>
-                  <td>10%</td>
-                  <td>Codul Fiscal art. 64 alin. (1)</td>
-                </tr>
-                <tr>
-                  <td>Deducere personală</td>
-                  <td>variabilă</td>
-                  <td>Codul Fiscal art. 77</td>
-                </tr>
-                <tr>
-                  <td>CAM (angajator)</td>
-                  <td>2,25%</td>
-                  <td>Codul Fiscal art. 220^3</td>
-                </tr>
-                <tr>
-                  <td>Sumă netaxabilă (salariu minim)</td>
-                  <td>300 / 200 lei</td>
-                  <td>OUG 89/2025</td>
-                </tr>
-                <tr>
-                  <td>Salariu minim brut 2026 (S1)</td>
-                  <td>4.050 lei</td>
-                  <td>HG 1506/2024</td>
-                </tr>
-                <tr>
-                  <td>Salariu minim brut 2026 (S2)</td>
-                  <td>4.325 lei</td>
-                  <td>HG 146/2026 (MO 196/13.03.2026)</td>
-                </tr>
-              </tbody>
-            </table></div>
-        </Section>
+      <Section
+        companion={
+          <CardCompanion titlu="Suma netaxată de la salariul minim">
+            <p className="text-sm leading-normal text-stone-600">
+              La salariul minim, cu normă întreagă și la locul de muncă de bază, {DEDUCERE_MINIM} de lei pe lună nu
+              plătesc nici contribuții, nici impozit (300 de lei până în iunie). Suma se scade din brut înaintea
+              oricărui calcul, deci baza devine {fmt(SALARIU_MINIM - DEDUCERE_MINIM)} lei.
+            </p>
+            <p className="mt-3 text-sm leading-normal text-stone-600">
+              Nu se aplică peste salariul minim, la program parțial sau la un al doilea contract.
+            </p>
+            <p className="mt-3 text-xs text-stone-600">OUG 89/2025.</p>
+          </CardCompanion>
+        }
+      >
+        <h2>Deducerea personală</h2>
+        <p>
+          Deducerea se scade din baza impozitului, numai la locul de muncă de bază (Codul Fiscal, art. 77). Are două
+          părți, care se adună:
+        </p>
+        <ul>
+          <li>
+            <strong>Deducerea de bază</strong> pornește de la 20% din salariul minim fără persoane în întreținere și
+            ajunge la 45% cu patru sau mai multe. Scade cu 0,5 puncte pentru fiecare 50 de lei peste minim și devine
+            zero peste {fmt(SALARIU_MINIM + 2000)} lei brut.
+          </li>
+          <li>
+            <strong>Deducerea suplimentară</strong>: 15% din salariul minim pentru cei sub 26 de ani, cu brut de cel
+            mult {fmt(SALARIU_MINIM + 2000)} lei, și 100 de lei pentru fiecare copil la școală.
+          </li>
+        </ul>
+        <p>
+          Calculatorul ia persoanele în întreținere din „Calculator avansat”. Valorile pe salariu și persoane sunt
+          în <Link href="/deducere-personala-2026">tabelul deducerii personale</Link>.
+        </p>
+      </Section>
 
-        <Section>
-            <h2>Deducerea personală, în detaliu</h2>
-            <p>
-              Deducerea personală este o sumă scăzută din baza impozabilă, conform Codului Fiscal art. 77. Se aplică numai pentru venituri din salarii la locul unde se află funcția de bază.
+      <Section
+        companion={
+          <CardCompanion titlu="Verificat prin Declarația 112">
+            <p className="text-sm leading-normal text-stone-600">
+              Declarația 112 e formularul lunar prin care firmele raportează la ANAF impozitul și contribuțiile
+              salariaților. Motorul calculatorului leagă CAS, CASS, impozitul, deducerea și CAM de câmpurile din
+              formular.
             </p>
-            <p>
-              Pentru 2026, deducerea personală are două componente:
+            <p className="mt-3 text-sm leading-normal text-stone-600">
+              Pentru cazul standard, calculul a fost verificat separat, prin completarea formularului D112 și prin
+              validatorul ANAF. Sumele au coincis. Cazurile speciale rămân sub limitările de mai jos.
             </p>
-            <ul>
-              <li>
-                <strong>Deducerea personală de bază</strong>: depinde de salariul brut lunar, de numărul de persoane aflate în întreținere și de plafonul calculat ca <em>salariul minim brut + 2.000 lei</em>. Pentru 2026: plafon = 6.050 lei (S1) sau 6.325 lei (S2). Peste acest plafon, deducerea de bază este 0.
-              </li>
-              <li>
-                <strong>Deducerea personală suplimentară</strong>: 15% din salariul minim pentru salariații sub 26 de ani, cu venit brut de cel mult salariul minim plus 2.000 lei, și 100 lei pentru fiecare copil minor aflat la școală. Se adaugă la deducerea de bază.
-              </li>
-            </ul>
-            <p>
-              Deducerea de bază pornește de la un procent din salariul minim (20% fără persoane în întreținere, până la 45% cu patru sau mai multe) și scade cu 0,5 puncte pentru fiecare tranșă de 50 lei peste minim. Calculatorul folosește persoanele în întreținere alese în „Calculator avansat”.
-            </p>
-            <p>
-              Pentru veniturile peste plafonul de 6.050/6.325 lei, deducerea de bază nu se aplică, deci toată suma după contribuții se impozitează cu 10%.
-            </p>
-            <p>
-              Pentru valori pe salariu brut și număr de persoane în întreținere, vezi și <Link href="/deducere-personala-2026">tabelul dedicat pentru deducerea personală 2026</Link>.
-            </p>
-        </Section>
+          </CardCompanion>
+        }
+      >
+        <h2>Rotunjirile</h2>
+        <p>
+          Fiecare obligație declarată se rotunjește la cel mai apropiat leu: CAS, CASS, impozitul și CAM. La fel
+          deducerea personală. Pașii următori folosesc valorile rotunjite; calculatorul nu duce zecimale de la un
+          pas la altul. Pentru salariul minim:
+        </p>
+        <Formula
+          eticheta={`Rotunjirile la ${fmt(SALARIU_MINIM)} lei brut`}
+          randuri={[
+            `Bază     = ${fmt(SALARIU_MINIM)} − ${EX.facilitate} netaxați = ${fmt(BAZA_EX)}`,
+            `CAS      = rotund(${fmt2(BAZA_EX * 0.25)})  = ${fmt(EX.cas)}`,
+            `CASS     = rotund(${fmt2(BAZA_EX * 0.1)})    = ${fmt(EX.cass)}`,
+            `Impozit  = rotund(${fmt2((BAZA_EX - EX.cas - EX.cass - EX.deducerePersonala) * 0.1)})    = ${fmt(EX.impozit)}   (deducere ${fmt(EX.deducerePersonala)})`,
+            `Net      = ${fmt(SALARIU_MINIM)} − ${fmt(EX.cas)} − ${fmt(EX.cass)} − ${fmt(EX.impozit)} = ${fmt(EX.netBani)} lei`,
+            `CAM      = rotund(${fmt2(BAZA_EX * 0.0225)})    = ${fmt(EX.cam)}   → cost firmă ${fmt(EX.costTotal)} lei`,
+          ]}
+        />
+      </Section>
 
-        <Section>
-            <h2>Facilitatea fiscală pentru salariul minim (OUG 89/2025)</h2>
-            <p>
-              Pentru salariații încadrați la nivelul salariului minim brut, cu funcția de bază și normă întreagă, o sumă fixă este scutită de impozit și contribuții sociale:
-            </p>
-            <ul>
-              <li>1 ianuarie – 30 iunie 2026: 300 lei lunar netaxabili</li>
-              <li>1 iulie – 31 decembrie 2026: 200 lei lunar netaxabili</li>
-            </ul>
-            <p>
-              Suma netaxabilă se scade din salariul brut <em>înainte</em> de calculul CAS, CASS și impozit. Practic, baza de calcul pentru contribuții devine 3.750 lei (S1) sau 4.125 lei (S2), iar netul efectiv este mai mare decât dacă facilitatea nu ar fi existat.
-            </p>
-            <p>
-              Facilitatea nu se aplică pentru salarii peste nivelul minim brut, nici pentru programe parțiale, nici pentru cumul de funcții (când postul nu este funcția de bază).
-            </p>
-        </Section>
+      <Section
+        companion={
+          <CardCompanion titlu="Jurnal de corecții">
+            <div id="corectii" className="scroll-mt-24 text-sm leading-normal text-stone-600 [&_time]:font-medium [&_time]:text-stone-900">
+              <p><time dateTime="2026-09-07">7 septembrie 2026</time>: am retras afirmațiile despre eșantioane de anunțuri și scoruri de încredere fără înregistrări verificabile, am înlocuit reperele de piață cu valori atribuite punctual și am separat intervalele din grile de salariile declarate. Am adăugat raportări de angajator cu baza și componentele lunare distincte. Revizia de date și implementarea aparțin autorului site-ului; nu declarăm o revizie contabilă externă.</p>
+            </div>
+          </CardCompanion>
+        }
+      >
+        <h2 id="salarii">Cum verificăm salariile pe meserii</h2>
+        <p>Fiecare reper din <Link href="/salarii">catalog</Link> păstrează sursa, perioada, populația și natura sumei. Sursele independente sunt prezentate alături, cu diferențele explicate. Nu calculăm o medie între un sondaj, o ofertă și o grilă.</p>
+        <h3>Salarii declarate de angajați</h3>
+        <p>Folosim mediile nete publicate în <a href="https://cariera.ejobs.ro/salarii-romania-ghidul-salarial-ejobs-2026/">Ghidul Salarial eJobs 2026</a>, pentru raportări între 31 martie 2025 și 31 martie 2026. Eșantionul este voluntar. Numărul total de răspunsuri din ghid nu reprezintă numărul de răspunsuri al fiecărei meserii. Păstrăm denumirea exactă a rolului sursei și semnalăm asocierile mai largi.</p>
+        <h3>Raportări de angajator și grile</h3>
+        <p>Pentru ofertele de angajare, <Link href="/salarii/acoperire">pagina de acoperire</Link> arată câte anunțuri am verificat pe meserie și cât am parcurs din fiecare sursă. Registrul păstrează sumele originale, conversiile și ipotezele. Un reper central al ofertelor se publică numai după verificarea volumului, diversității și sensibilității rezultatului; nu este mediana salariilor tuturor angajaților.</p>
+        <p>Documentele de transparență salarială permit separarea bazei de sporuri. Publicăm intervale ale funcțiilor din instituția citată. Conversia brut/net este standard, fără presupuneri despre deducerile persoanelor. Rândurile nu sunt tratate automat ca angajați distincți. Componentele anuale nu se adună la salariul lunar.</p>
+        <p>Grilele Legii 153/2017 indică trepte ale bazei legale, nu media salariilor încasate. Afișăm intervalul treptelor disponibile. Fără ponderile angajaților pe trepte nu putem calcula o mediană a personalului.</p>
+        <h3>Estimări INS și limite ocupaționale</h3>
+        <p>FOM121A încrucișează activitatea economică și grupa majoră ISCO. Corelarea cu seria lunară FOM106G produce o estimare de grupă, nu salariul unui cod COR. Datele pe județe descriu activități economice, iar vârsta nu este echivalentul experienței profesionale.</p>
+        <h3>Controlul surselor</h3>
+        <p>Nu inventăm numere de anunțuri, percentile sau scoruri de încredere. Două meserii pot avea aceeași valoare raportată. Nu modificăm cifrele pentru a obține salarii distincte și nu eliminăm observații istorice folosind pragul legal dintr-o altă perioadă.</p>
+      </Section>
 
-        <Section>
-            <h2>Tratamentul rotunjirilor</h2>
-            <p>
-              Motorul rotunjește la cel mai apropiat leu fiecare obligație declarată: CAS, CASS, impozitul pe venit și CAM. Deducerea personală calculată procentual este, de asemenea, rotunjită la leu. Valorile astfel obținute sunt folosite în pașii următori; calculatorul nu păstrează contribuțiile intermediare la două zecimale.
+      <Section
+        companion={
+          <CardCompanion titlu="Cum se ține la zi">
+            <p className="text-sm leading-normal text-stone-600">
+              Urmăresc Monitorul Oficial și comunicările Ministerului Finanțelor, ANAF și Ministerului Muncii. Când
+              apare un act nou, schimb formulele, valorile de referință și paginile care le folosesc, inclusiv pe
+              aceasta. Data ultimei revizuiri e sub titlul fiecărei pagini.
             </p>
-            <p>
-              Exemplu pentru 4.325 lei brut, cu facilitatea de 200 lei: baza este 4.125 lei; CAS = rotund(1.031,25) = 1.031 lei, CASS = rotund(412,50) = 413 lei, deducerea personală de bază = 865 lei, impozitul = rotund(181,60) = 182 lei, iar netul este 2.699 lei. CAM = rotund(92,8125) = 93 lei, deci costul total al angajatorului este 4.418 lei.
+            <p className="mt-3 text-sm leading-normal text-stone-600">
+              Ai găsit o diferență față de o sursă oficială? Scrie-mi, adresa e la{" "}
+              <Link href="/contact" className="font-medium text-stone-900 underline underline-offset-2 hover:text-stone-600">contact</Link>.
             </p>
-        </Section>
+          </CardCompanion>
+        }
+      >
+        <h2>Limitări declarate</h2>
+        <p>
+          Calculatorul reproduce formula standard pentru un salariu lunar tipic, dar <strong>nu poate înlocui</strong> un calcul personalizat făcut de un contabil pentru cazuri speciale. În particular, calculatorul:
+        </p>
+        <ul>
+          <li><strong>Nu integrează sporuri și beneficii nesalariale</strong> tratate diferențiat (tichete de masă peste plafon, tichete cadou, prime ocazionale, indemnizații de delegare etc.)</li>
+          <li><strong>Nu calculează concediile medicale</strong> (alte reguli de calcul, plată împărțită între angajator și fondul de sănătate; vezi <Link href="/noutati/concediu-medical-2026">ghidul despre concediul medical</Link>)</li>
+          <li><strong>Nu acoperă cazurile de cumul de funcții</strong> (mai multe contracte simultane, funcție de bază vs locuri suplimentare de muncă)</li>
+          <li><strong>Nu aplică scutirile sectoriale</strong> care erau în vigoare înainte de 2025 (IT, construcții, agroalimentar), eliminate prin OUG 156/2024</li>
+          <li><strong>Nu calculează contribuțiile angajatorilor speciali</strong> (entități non-profit, cooperative agricole etc.)</li>
+          <li><strong>Nu înlocuiește fluturașul oficial</strong>: <Link href="/fluturas-salariu">generatorul de fluturaș</Link> include ore lucrate, ore suplimentare, sporuri și rețineri, dar documentul oficial îl emite doar angajatorul</li>
+        </ul>
+        <p>
+          Pentru aceste situații, recomand consultarea unui contabil autorizat sau a unui expert fiscal. Calculatorul este util pentru a obține o estimare rapidă și acurată pentru cazul standard.
+        </p>
+      </Section>
 
-        <Section>
-            <h2>Validarea separată prin Declarația 112 ANAF</h2>
-            <p>
-              Declarația 112 este declarația lunară prin care angajatorii raportează la ANAF impozitul și contribuțiile aferente salariaților. Motorul calculatorului mapează CAS, CASS, impozitul, deducerea personală și CAM la bazele și câmpurile corespunzătoare din formular.
-            </p>
-            <p>
-              Pentru cazul salarial standard, proprietarul proiectului a verificat separat calculul prin completarea formularului D112 și prin validatorul ANAF. Câmpurile și sumele validate au coincis cu rezultatele calculatorului. Cazurile speciale rămân supuse limitărilor declarate mai jos.
-            </p>
-        </Section>
-
-        <Section>
-            <h2 id="salarii">Cum verificăm salariile pe meserii</h2>
-            <p>Fiecare reper din <Link href="/salarii">catalog</Link> păstrează sursa, perioada, populația și natura sumei. Sursele independente sunt prezentate alături, cu diferențele explicate. Nu calculăm o medie între un sondaj, o ofertă și o grilă.</p>
-            <h3>Salarii declarate de angajați</h3>
-            <p>Folosim mediile nete publicate în <a href="https://cariera.ejobs.ro/salarii-romania-ghidul-salarial-ejobs-2026/">Ghidul Salarial eJobs 2026</a>, pentru raportări între 31 martie 2025 și 31 martie 2026. Eșantionul este voluntar. Numărul total de răspunsuri din ghid nu reprezintă numărul de răspunsuri al fiecărei meserii. Păstrăm denumirea exactă a rolului sursei și semnalăm asocierile mai largi.</p>
-            <h3>Raportări de angajator și grile</h3>
-            <p>Pentru ofertele de angajare, <Link href="/salarii/acoperire">pagina de acoperire</Link> arată câte anunțuri am verificat pe meserie și cât am parcurs din fiecare sursă. Registrul păstrează sumele originale, conversiile și ipotezele. Un reper central al ofertelor se publică numai după verificarea volumului, diversității și sensibilității rezultatului; nu este mediana salariilor tuturor angajaților.</p>
-            <p>Documentele de transparență salarială permit separarea bazei de sporuri. Publicăm intervale ale funcțiilor din instituția citată. Conversia brut/net este standard, fără presupuneri despre deducerile persoanelor. Rândurile nu sunt tratate automat ca angajați distincți. Componentele anuale nu se adună la salariul lunar.</p>
-            <p>Grilele Legii 153/2017 indică trepte ale bazei legale, nu media salariilor încasate. Afișăm intervalul treptelor disponibile. Fără ponderile angajaților pe trepte nu putem calcula o mediană a personalului.</p>
-            <h3>Estimări INS și limite ocupaționale</h3>
-            <p>FOM121A încrucișează activitatea economică și grupa majoră ISCO. Corelarea cu seria lunară FOM106G produce o estimare de grupă, nu salariul unui cod COR. Datele pe județe descriu activități economice, iar vârsta nu este echivalentul experienței profesionale.</p>
-            <h3>Controlul surselor</h3>
-            <p>Nu inventăm numere de anunțuri, percentile sau scoruri de încredere. Două meserii pot avea aceeași valoare raportată. Nu modificăm cifrele pentru a obține salarii distincte și nu eliminăm observații istorice folosind pragul legal dintr-o altă perioadă.</p>
-            <h3 id="corectii">Jurnal de corecții</h3>
-            <p><time dateTime="2026-09-07">7 septembrie 2026</time>: am retras afirmațiile despre eșantioane de anunțuri și scoruri de încredere fără înregistrări verificabile, am înlocuit reperele de piață cu valori atribuite punctual și am separat intervalele din grile de salariile declarate. Am adăugat raportări de angajator cu baza și componentele lunare distincte. Revizia de date și implementarea aparțin autorului site-ului; nu declarăm o revizie contabilă externă.</p>
-        </Section>
-
-        <Section>
-            <h2>Limitări declarate</h2>
-            <p>
-              Calculatorul reproduce formula standard pentru un salariu lunar tipic, dar <strong>nu poate înlocui</strong> un calcul personalizat făcut de un contabil pentru cazuri speciale. În particular, calculatorul:
-            </p>
-            <ul>
-              <li><strong>Nu integrează sporuri și beneficii nesalariale</strong> tratate diferențiat (tichete de masă peste plafon, tichete cadou, prime ocazionale, indemnizații de delegare etc.)</li>
-              <li><strong>Nu calculează concediile medicale</strong> (alte reguli de calcul, plată împărțită între angajator și fondul de sănătate; vezi <Link href="/noutati/concediu-medical-2026">ghidul despre concediul medical</Link>)</li>
-              <li><strong>Nu acoperă cazurile de cumul de funcții</strong> (mai multe contracte simultane, funcție de bază vs locuri suplimentare de muncă)</li>
-              <li><strong>Nu aplică scutirile sectoriale</strong> care erau în vigoare înainte de 2025 (IT, construcții, agroalimentar), eliminate prin OUG 156/2024</li>
-              <li><strong>Nu calculează contribuțiile angajatorilor speciali</strong> (entități non-profit, cooperative agricole etc.)</li>
-              <li><strong>Nu înlocuiește fluturașul oficial</strong>: <Link href="/fluturas-salariu">generatorul de fluturaș</Link> include ore lucrate, ore suplimentare, sporuri și rețineri, dar documentul oficial îl emite doar angajatorul</li>
-            </ul>
-            <p>
-              Pentru aceste situații, recomand consultarea unui contabil autorizat sau a unui expert fiscal. Calculatorul este util pentru a obține o estimare rapidă și acurată pentru cazul standard.
-            </p>
-        </Section>
-
-        <Section>
-            <h2>Cum se actualizează calculatorul</h2>
-            <p>
-              Modificările legislative privind salariile sunt urmărite lunar prin Monitorul Oficial și comunicările Ministerului Finanțelor, ANAF și Ministerului Muncii. La fiecare modificare semnificativă (publicare HG, OUG, lege nouă) actualizez:
-            </p>
-            <ul>
-              <li>Formulele calculatorului, dacă se modifică o cotă sau o regulă de aplicare</li>
-              <li>Valorile de referință folosite (salariu minim, plafon deducere), la fiecare actualizare anunțată oficial</li>
-              <li>Paginile editoriale aferente (<Link href="/salariu-minim">salariu minim</Link>, <Link href="/salariu-mediu">salariu mediu</Link>), cu noile cifre și surse</li>
-              <li>Această pagină, pentru a reflecta noile articole din Codul Fiscal sau noile acte normative</li>
-            </ul>
-            <p>
-              În antetul fiecărei pagini este afișată data ultimei revizuiri. Dacă observi o discrepanță între ce afișează calculatorul și o sursă oficială pe care o ai, scrie-mi la adresa de pe pagina de <Link href="/contact">contact</Link>.
-            </p>
-        </Section>
-
-        <Section>
-            <h2>Surse oficiale folosite</h2>
-            <ul>
-              <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/257144" target="_blank" rel="noopener"><strong>Codul Fiscal</strong>, Legea 227/2015</a>, cu modificările ulterioare</li>
-              <li><a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/128646" target="_blank" rel="noopener"><strong>Codul Muncii</strong>, Legea 53/2003</a>, cu modificările ulterioare</li>
-              <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/308231" target="_blank" rel="noopener"><strong>HG 146/2026</strong></a>: salariu minim de la 1 iulie 2026 (MO nr. 196 din 13 martie 2026)</li>
-              <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/291450" target="_blank" rel="noopener"><strong>HG 1506/2024</strong></a>: salariu minim de la 1 ianuarie 2025 (MO nr. 1185 din 28 noiembrie 2024)</li>
-              <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/305817" target="_blank" rel="noopener"><strong>OUG 89/2025</strong></a>: facilitate fiscală 300/200 lei pentru salariul minim</li>
-              <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/293109" target="_blank" rel="noopener"><strong>OUG 156/2024</strong></a>: eliminarea scutirilor sectoriale IT, construcții, agroalimentar</li>
-              <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/294600" target="_blank" rel="noopener"><strong>HG 35/2025</strong></a>: mecanismul tehnic de stabilire a salariului minim</li>
-              <li><strong>Legea 44/2026</strong>: bugetul asigurărilor sociale, valoarea salariului mediu</li>
-              <li><strong>Ministerul Muncii</strong>: <a href="https://mmuncii.gov.ro" target="_blank" rel="noopener">mmuncii.gov.ro</a></li>
-              <li><strong>ANAF</strong>: <a href="https://www.anaf.ro" target="_blank" rel="noopener">anaf.ro</a> (template Declarația 112)</li>
-              <li><strong>Monitorul Oficial</strong>: <a href="https://legislatie.just.ro" target="_blank" rel="noopener">legislatie.just.ro</a> (portal căutare generală)</li>
-              <li><strong>Institutul Național de Statistică</strong>: <a href="https://insse.ro" target="_blank" rel="noopener">insse.ro</a></li>
-            </ul>
-        </Section>
-      </PaginaCuCuprins>
+      <Section wide>
+        <h2>Surse oficiale folosite</h2>
+        <ul>
+          <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/257144" target="_blank" rel="noopener"><strong>Codul Fiscal</strong>, Legea 227/2015</a>, cu modificările ulterioare</li>
+          <li><a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/128646" target="_blank" rel="noopener"><strong>Codul Muncii</strong>, Legea 53/2003</a>, cu modificările ulterioare</li>
+          <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/308231" target="_blank" rel="noopener"><strong>HG 146/2026</strong></a>: salariu minim de la 1 iulie 2026 (MO nr. 196 din 13 martie 2026)</li>
+          <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/291450" target="_blank" rel="noopener"><strong>HG 1506/2024</strong></a>: salariu minim de la 1 ianuarie 2025 (MO nr. 1185 din 28 noiembrie 2024)</li>
+          <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/305817" target="_blank" rel="noopener"><strong>OUG 89/2025</strong></a>: facilitate fiscală 300/200 lei pentru salariul minim</li>
+          <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/293109" target="_blank" rel="noopener"><strong>OUG 156/2024</strong></a>: eliminarea scutirilor sectoriale IT, construcții, agroalimentar</li>
+          <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/294600" target="_blank" rel="noopener"><strong>HG 35/2025</strong></a>: mecanismul tehnic de stabilire a salariului minim</li>
+          <li><strong>Legea 44/2026</strong>: bugetul asigurărilor sociale, valoarea salariului mediu</li>
+          <li><strong>Ministerul Muncii</strong>: <a href="https://mmuncii.gov.ro" target="_blank" rel="noopener">mmuncii.gov.ro</a></li>
+          <li><strong>ANAF</strong>: <a href="https://www.anaf.ro" target="_blank" rel="noopener">anaf.ro</a> (template Declarația 112)</li>
+          <li><strong>Monitorul Oficial</strong>: <a href="https://legislatie.just.ro" target="_blank" rel="noopener">legislatie.just.ro</a> (portal căutare generală)</li>
+          <li><strong>Institutul Național de Statistică</strong>: <a href="https://insse.ro" target="_blank" rel="noopener">insse.ro</a></li>
+        </ul>
+      </Section>
     </>
   );
 }

@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 import Link from "@/app/components/Link";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
-import { Hero, Section, Breadcrumb, H1, Lead, PaginaCuCuprins } from "@/app/components/ui";
+import { Hero, Section, Breadcrumb, H1, Lead, CardCompanion } from "@/app/components/ui";
 
 export const metadata: Metadata = {
   title: "Contact: raportează erori sau sugestii",
@@ -63,69 +63,59 @@ export default function ContactPage() {
         </Lead>
       </Hero>
 
-      <PaginaCuCuprins cta={null}>
-        <Section>
-            <h2>Adresă de email</h2>
-            <p>
-              Pentru orice subiect legat de site, scrie la:
-            </p>
-            <p>
-              <strong><a href="mailto:contact@salariile.ro">contact@salariile.ro</a></strong>
-            </p>
-            <p>
-              Răspund la toate mesajele primite, deși timpul de răspuns poate varia de la câteva ore la câteva zile, fiind un proiect personal întreținut în timpul liber. Mesajele primite în weekend sau în zile aglomerate la jobul principal pot avea răspuns mai târziu.
-            </p>
-        </Section>
-
-        <Section>
-            <h2>Ce subiecte sunt potrivite</h2>
-            <ul>
+      <Section
+        noTopBorder
+        companion={
+          <CardCompanion titlu="Ce nu pot face">
+            <ul className="flex flex-col gap-3 text-sm leading-normal text-stone-600">
               <li>
-                <strong>Raportarea erorilor de calcul.</strong> Dacă observi o cifră care nu se potrivește cu fluturașul tău sau cu o sursă oficială, scrie-mi cu detalii (brutul folosit, cifra obținută pe site, cifra corectă, sursa pe care o ai). Erorile concrete au prioritate maximă, de regulă le corectez în aceeași zi.
+                <strong className="font-semibold text-stone-900">Consultanță fiscală.</strong> Nu sunt contabil sau
+                expert fiscal. Pentru sporuri, beneficii sau venituri cumulate, Camera Consultanților Fiscali și Corpul
+                Experților Contabili au liste publice de specialiști.
               </li>
               <li>
-                <strong>Idei de pagini sau calculatoare noi.</strong> Un calculator care îți lipsește, o meserie pe care n-o găsești, o prestație socială pe care vrei s-o înțelegi. Sugestiile mă ajută să aleg ce fac mai întâi.
+                <strong className="font-semibold text-stone-900">Dispute cu angajatorul.</strong> Dacă salariul plătit
+                nu se potrivește cu legea, mergi la Inspectoratul Teritorial de Muncă sau la un avocat de dreptul muncii.
               </li>
               <li>
-                <strong>Întrebări despre metodologia de calcul.</strong> Dacă o cifră afișată nu îți este clară sau vrei să înțelegi cum se aplică o regulă fiscală specifică, întreabă. Pagina <Link href="/metodologie">metodologie</Link> acoperă cazurile principale, dar răspund cu plăcere și pe email pentru cazuri specifice.
-              </li>
-              <li>
-                <strong>Cereri privind datele personale (GDPR).</strong> Acces, ștergere, opoziție: vezi pagina <Link href="/politica-confidentialitate">politica de confidențialitate</Link>. Răspund în maximum 30 de zile conform termenului GDPR.
-              </li>
-              <li>
-                <strong>Citarea sau utilizarea conținutului.</strong> Pentru publicații, articole sau resurse educaționale care vor să folosească extinse pasaje din site, scrie-mi pentru clarificarea drepturilor de utilizare.
+                <strong className="font-semibold text-stone-900">Verificarea unui fluturaș real.</strong> Pot explica
+                o formulă, dar fără toate elementele lunii nu pot confirma un fluturaș anume.
               </li>
             </ul>
-        </Section>
-
-        <Section>
-            <h2>Ce nu pot face</h2>
-            <p>
-              Pentru claritate, există subiecte la care nu pot răspunde util prin email:
-            </p>
-            <ul>
-              <li>
-                <strong>Consultanță fiscală individuală.</strong> Nu sunt contabil sau expert fiscal autorizat. Pentru calcule personalizate care țin cont de sporuri, beneficii, scutiri sau cumul de venituri, consultă un specialist autorizat. Camera Consultanților Fiscali sau Corpul Experților Contabili au directoare publice de profesioniști.
-              </li>
-              <li>
-                <strong>Interpretarea juridică a unei dispute cu angajatorul.</strong> Calculatorul îți arată ce ar trebui să rezulte conform legii pentru un caz standard, dar pentru dispute reale (ex. salariul efectiv plătit nu corespunde cu cel calculat) recomand consultarea unui avocat de drept al muncii sau a Inspectoratului Teritorial de Muncă (ITM).
-              </li>
-              <li>
-                <strong>Verificarea individuală a unui fluturaș de plată.</strong> Pot explica de ce o formulă dă un anumit rezultat, dar nu pot verifica detaliat un fluturaș real fără să cunosc toate elementele (sporuri specifice, ore suplimentare, deduceri speciale etc.).
-              </li>
-            </ul>
-        </Section>
-
-        <Section>
-            <h2>Mai multe informații</h2>
-            <p>
-              Despre cine întreține site-ul: <Link href="/despre">pagina Despre</Link>.<br />
-              Cum funcționează calculele: <Link href="/metodologie">pagina Metodologie</Link>.<br />
-              Datele tale personale: <Link href="/politica-confidentialitate">politica de confidențialitate</Link>.<br />
-              Termenii de utilizare: <Link href="/termeni">pagina Termeni</Link>.
-            </p>
-        </Section>
-      </PaginaCuCuprins>
+          </CardCompanion>
+        }
+      >
+        <h2>Scrie-mi</h2>
+        <p className="text-lg">
+          <strong><a href="mailto:contact@salariile.ro">contact@salariile.ro</a></strong>
+        </p>
+        <p>
+          Răspund la toate mesajele, de obicei în câteva ore, uneori în câteva zile: site-ul e un proiect personal,
+          întreținut în timpul liber.
+        </p>
+        <ul>
+          <li>
+            <strong>O eroare de calcul.</strong> Trimite brutul folosit, cifra de pe site, cifra corectă și sursa ta.
+            Erorile concrete au prioritate și de regulă le corectez în aceeași zi.
+          </li>
+          <li>
+            <strong>O idee de calculator sau de pagină.</strong> Un calcul care îți lipsește, o meserie pe care n-o
+            găsești. Sugestiile mă ajută să aleg ce fac mai întâi.
+          </li>
+          <li>
+            <strong>O întrebare despre cum calculăm.</strong> Cazurile principale sunt în{" "}
+            <Link href="/metodologie">metodologie</Link>; pentru restul, întreabă.
+          </li>
+          <li>
+            <strong>Datele tale personale.</strong> Acces, ștergere sau opoziție, după{" "}
+            <Link href="/politica-confidentialitate">politica de confidențialitate</Link>. Răspund în cel mult 30 de zile.
+          </li>
+          <li>
+            <strong>Preluarea conținutului.</strong> Dacă vrei să folosești pasaje întregi într-o publicație sau un
+            material educațional, scrie-mi înainte.
+          </li>
+        </ul>
+      </Section>
     </>
   );
 }

@@ -3,8 +3,9 @@
 
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
+import ButonPreferinteGoogle from "@/app/components/ButonPreferinteGoogle";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
-import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow, PaginaCuCuprins } from "@/app/components/ui";
+import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow, CardCompanion } from "@/app/components/ui";
 
 export const metadata: Metadata = {
   title: "Politica de confidențialitate",
@@ -71,8 +72,22 @@ export default function PoliticaConfidentialitatePage() {
         <Eyebrow>ÎN VIGOARE: 17 SEPTEMBRIE 2026 · CONSENT MODE · ZERO ANUNȚURI</Eyebrow>
       </Hero>
 
-      <PaginaCuCuprins cta={null}>
-        <Section>
+      <div>
+        <Section
+          companion={
+            <CardCompanion titlu="Cereri despre datele tale">
+              <p className="text-sm leading-normal text-stone-600">
+                Pentru acces, ștergere sau opoziție, scrie la{" "}
+                <a href="mailto:contact@salariile.ro" className="font-medium text-stone-900 underline underline-offset-2 hover:text-stone-600">contact@salariile.ro</a>. Răspunsul vine în cel
+                mult 30 de zile.
+              </p>
+              <p className="mt-3 text-sm leading-normal text-stone-600">
+                Acordul pentru Google Analytics îl retragi direct de aici, fără niciun mesaj.
+              </p>
+              <ButonPreferinteGoogle className="mt-4 inline-flex min-h-11 items-center self-start rounded border border-stone-900 bg-stone-900 px-5 text-sm font-medium text-white transition-colors hover:bg-stone-700">Schimbă setările cookies</ButonPreferinteGoogle>
+            </CardCompanion>
+          }
+        >
             <h2>1. Operatorul de date</h2>
             <p>
               Acest site este întreținut individual ca proiect personal de către Știuriuc Sorin-Marian, persoană fizică din România. Pentru orice cerere privind datele tale personale, poți folosi adresa de email de pe pagina de <Link href="/contact">contact</Link>.
@@ -205,7 +220,7 @@ Salariile.ro nu afișează reclame. Cookies de analiză GA4 apar numai după aco
             </p>
             <p className="source-note">Ultima actualizare: 18 septembrie 2026 — GA4 măsoară folosirea paginilor și a calculatoarelor, fără sumele introduse; CMP-ul Google și Consent Mode rămân neschimbate.</p>
         </Section>
-      </PaginaCuCuprins>
+      </div>
     </>
   );
 }

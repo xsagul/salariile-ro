@@ -3,7 +3,7 @@ import Link from "@/app/components/Link";
 import { personSchema } from "@/lib/person";
 import { calculeazaDeducerePersonala, SALARIU_MINIM } from "@/lib/fiscal";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
-import { Hero, Section, Breadcrumb, H1, Lead, Formula, PaginiConexe, PaginaCuCuprins } from "@/app/components/ui";
+import { Hero, Section, Breadcrumb, H1, Lead, Formula, PaginiConexe, CardCompanion } from "@/app/components/ui";
 import TabelArticol from "@/app/components/TabelArticol";
 
 // Titlul vechi („tabel și calcul pentru salariu") depășea 60 de caractere cu brandul și
@@ -19,21 +19,6 @@ const PERSOANE = [0, 1, 2, 3, 4] as const;
 const BRUTURI = [4325, 4500, 5000, 5500, 6000, 6325, 6500] as const;
 
 const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(n);
-
-const FAQ = [
-  {
-    q: "Cine primește deducerea personală?",
-    a: `Salariații cu brut de cel mult ${fmt(PLAFON)} lei pe lună, adică salariul minim plus 2.000 de lei. Doar la locul de muncă de bază, nu și la al doilea contract.`,
-  },
-  {
-    q: "Cine se socotește persoană în întreținere?",
-    a: `Soțul sau soția, copiii și alte rude până la gradul al doilea, ale tale sau ale partenerului, dacă au venituri de cel mult 20% din salariul minim, adică ${fmt(Math.round(SALARIU_MINIM * 0.2))} de lei pe lună.`,
-  },
-  {
-    q: "Pot primi deducerea și eu, și partenerul, pentru același copil?",
-    a: "Nu. O persoană în întreținere se trece la un singur contribuabil. Dacă amândoi părinții lucrează, se înțeleg care dintre ei o declară.",
-  },
-];
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -70,14 +55,6 @@ const jsonLd = {
       dateModified: PAGE_LAST_MODIFIED["/deducere-personala-2026"].toISOString().slice(0, 10),
       mainEntityOfPage: `https://salariile.ro${PATH}`,
     },
-    {
-      "@type": "FAQPage",
-      mainEntity: FAQ.map((item) => ({
-        "@type": "Question",
-        name: item.q,
-        acceptedAnswer: { "@type": "Answer", text: item.a },
-      })),
-    },
   ],
 };
 
@@ -103,13 +80,30 @@ export default function DeducerePersonalaPage() {
         </Lead>
       </Hero>
 
-      <PaginaCuCuprins>
-
-        <Section>
-          <h2>Tabel deducere personală 2026</h2>
-          <p>
-            Caută-ți salariul brut pe rând și numărul de persoane în întreținere pe coloană.
-          </p>
+      <Section
+        companion={
+          <CardCompanion titlu="Cine are dreptul">
+            <ul className="flex flex-col gap-3 text-sm leading-normal text-stone-600">
+              <li>
+                Salariații cu brut de cel mult <strong className="font-semibold text-stone-900">{fmt(PLAFON)} lei</strong>,
+                la locul de muncă de bază. La al doilea contract nu se acordă.
+              </li>
+              <li>
+                În întreținere intră soțul sau soția, copiii și rudele până la gradul al doilea, ale tale sau ale
+                partenerului, dacă au venituri de cel mult{" "}
+                <strong className="font-semibold text-stone-900">{fmt(Math.round(SALARIU_MINIM * 0.2))} lei</strong> pe lună.
+              </li>
+              <li>
+                Un copil se trece la un singur părinte. Dacă lucrați amândoi, alegeți care dintre voi îl declară.
+              </li>
+            </ul>
+          </CardCompanion>
+        }
+      >
+        <h2>Tabel deducere personală 2026</h2>
+        <p>
+          Caută-ți salariul brut pe rând și numărul de persoane în întreținere pe coloană.
+        </p>
           <TabelArticol>
               <thead>
                 <tr>
@@ -130,61 +124,50 @@ export default function DeducerePersonalaPage() {
                 ))}
               </tbody>
           </TabelArticol>
-          <p className="source-note">
-            Valabil din 1 iulie 2026. Dacă ai sub 26 de ani sau copii la școală, deducerea e mai mare, ca mai jos.
-          </p>
-        </Section>
+        <p className="source-note">
+          Valabil din 1 iulie 2026. Dacă ai sub 26 de ani sau copii la școală, deducerea e mai mare, ca mai jos.
+        </p>
+      </Section>
 
-        <Section>
-          <h2>Cum se calculează</h2>
-          <p>
-            Deducerea pornește de la un procent din salariul minim, mai mare cu cât ai mai multe persoane în întreținere.
-            Pentru fiecare 50 de lei peste minim, procentul scade puțin, până dispare la plafon.
-          </p>
-          <Formula
-            eticheta="Formula deducerii personale"
-            randuri={[
-              "Deducere  = salariul minim × procent",
-              "Procent   = 20% | 25% | 30% | 35% | 45%",
-              "            (0 | 1 | 2 | 3 | 4+ persoane în întreținere)",
-              "          − 0,5% pentru fiecare 50 lei peste salariul minim",
-              "Plus:       15% din salariul minim, dacă ai sub 26 de ani",
-              "            100 lei pentru fiecare copil la școală",
-            ]}
-          />
-          <p>
-            Deducerea nu e bani în plus pe fluturaș. E suma pe care nu se plătește impozitul de 10%, așa că netul crește
-            cu a zecea parte din ea: la o deducere de {fmt(maxFaraPersoane)} lei, primești cu{" "}
-            {fmt(Math.round(maxFaraPersoane * 0.1))} de lei mai mult în mână. Pentru calculul tău exact, deschide
-            opțiunile avansate din <Link href="/">calculatorul de salariu net</Link>.
-          </p>
-        </Section>
+      <Section
+        companion={
+          <CardCompanion titlu="Separat: 200 de lei la salariul minim">
+            <p className="text-sm leading-normal text-stone-600">
+              La salariul minim, 200 de lei din brut nu plătesc nicio taxă: nici pensie, nici sănătate, nici impozit.
+              Deducerea scade doar impozitul. La minim le primești pe amândouă, de aceea netul de acolo e relativ mai
+              mare. Calculul complet e la <Link href="/salariu-minim" className="font-medium text-stone-900 underline underline-offset-2">salariul minim</Link>.
+            </p>
+          </CardCompanion>
+        }
+      >
+        <h2>Cum se calculează</h2>
+        <p>
+          Deducerea pornește de la un procent din salariul minim, mai mare cu cât ai mai multe persoane în întreținere.
+          Pentru fiecare 50 de lei peste minim, procentul scade puțin, până dispare la plafon.
+        </p>
+        <Formula
+          eticheta="Formula deducerii personale"
+          randuri={[
+            "Deducere  = salariul minim × procent",
+            "Procent   = 20% | 25% | 30% | 35% | 45%",
+            "            (0 | 1 | 2 | 3 | 4+ persoane în întreținere)",
+            "          − 0,5% pentru fiecare 50 lei peste salariul minim",
+            "Plus:       15% din salariul minim, dacă ai sub 26 de ani",
+            "            100 lei pentru fiecare copil la școală",
+          ]}
+        />
+        <p>
+          Deducerea nu e bani în plus pe fluturaș. E suma pe care nu se plătește impozitul de 10%, așa că netul crește
+          cu a zecea parte din ea: la o deducere de {fmt(maxFaraPersoane)} lei, primești cu{" "}
+          {fmt(Math.round(maxFaraPersoane * 0.1))} de lei mai mult în mână. Pentru calculul tău exact, deschide
+          opțiunile avansate din <Link href="/">calculatorul de salariu net</Link>.
+        </p>
+        <p className="source-note">
+          Sursa: <a href="https://legislatie.just.ro/Public/DetaliiDocument/257144" target="_blank" rel="noopener">Codul Fiscal</a>, art. 77.
+          Formulele complete sunt în <Link href="/metodologie">metodologie</Link>.
+        </p>
+      </Section>
 
-
-        <Section>
-          <h2>Nu e același lucru cu cei 200 de lei de la salariul minim</h2>
-          <p>
-            La salariul minim mai există o scutire, separată de deducere: 200 de lei din brut nu plătesc deloc taxe, nici
-            pensie, nici sănătate, nici impozit. Deducerea scade doar impozitul. La salariul minim le primești pe amândouă,
-            de aceea netul de acolo e relativ mai mare. Calculul complet e pe pagina despre{" "}
-            <Link href="/salariu-minim">salariul minim</Link>.
-          </p>
-        </Section>
-
-        <Section>
-          <h2>Întrebări frecvente</h2>
-          {FAQ.map((item) => (
-            <section key={item.q}>
-              <h3>{item.q}</h3>
-              <p>{item.a}</p>
-            </section>
-          ))}
-          <p className="source-note">
-            Sursa: <a href="https://legislatie.just.ro/Public/DetaliiDocument/257144" target="_blank" rel="noopener">Codul Fiscal</a>, art. 77.
-            Formulele complete sunt în <Link href="/metodologie">metodologie</Link>.
-          </p>
-        </Section>
-      </PaginaCuCuprins>
       <PaginiConexe
         linkuri={[
           { href: "/salarii", label: "Salarii pe meserii", descriere: "Cât se câștigă în fiecare meserie." },
