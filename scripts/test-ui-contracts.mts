@@ -34,12 +34,15 @@ assert.doesNotMatch(pfa, /<label[^>]*>[\s\S]{0,500}<button[^>]*role="switch"/, "
 assert.match(header, /aria-expanded=\{desktopOpen === item\.label\}/, "Starea dropdownului trebuie sa fie per grup");
 assert.match(header, /aria-controls=\{idGrup\(item\.label\)\}/, "aria-controls trebuie derivat din eticheta grupului");
 assert.doesNotMatch(header, /id="desktop-[a-z-]+-menu"/, "Meniurile nu pot avea id hardcodat");
-// Meniul mobil (24 septembrie 2026): fără acordeon — cu 12 linkuri doar ascundea
-// pagini, iar două grupuri deschise depășeau ecranul fără scroll, cu pagina din
-// spate blocată. Acum totul e vizibil, iar lista are scroll propriu, cât ecranul.
-assert.doesNotMatch(header, /groupsOpen/, "Meniul mobil nu mai ascunde grupurile în acordeon");
-assert.match(header, /id="meniu-mobil"[\s\S]*max-h-\[calc\(100dvh-4rem\)\][\s\S]*overflow-y-auto[\s\S]*overscroll-contain/, "Meniul mobil trebuie să aibă scroll propriu, cât ecranul");
-assert.match(header, /aria-controls="meniu-mobil"/, "Butonul de meniu trebuie legat de meniul mobil");
+// Meniul mobil (24 septembrie 2026): sertar din dreapta, cu fundal întunecat.
+// Două grupuri deschise depășeau cândva ecranul fără scroll, cu pagina din spate
+// blocată. Acum lista are scroll propriu, iar acordeonul ține un singur grup
+// deschis odată (o singură stare, nu una pe grup).
+assert.match(header, /id="meniu-mobil"[\s\S]*role="dialog"[\s\S]*aria-modal="true"[\s\S]*inert=\{!open\}/, "Sertarul mobil trebuie să fie dialog modal, inert când e închis");
+assert.match(header, /<nav aria-label="Meniu principal" className="[^"]*overflow-y-auto[^"]*overscroll-contain/, "Lista din sertar trebuie să aibă scroll propriu");
+assert.match(header, /useState<string \| null>\(\s*\(\) => NAV\.filter\(isGroup\)/, "Acordeonul mobil ține un singur grup deschis");
+assert.doesNotMatch(header, /groupsOpen/, "Nu reveni la o stare pe grup: se deschideau mai multe odată");
+assert.match(header, /aria-controls="meniu-mobil"/, "Butonul de meniu trebuie legat de sertar");
 assert.match(header, /event\.key === "Escape"/);
 assert.doesNotMatch(embedLayout, /stats\.js|umami/i, "Layout-ul embed nu trebuie să activeze analytics");
 assert.doesNotMatch(embedLayout, /adsbygoogle|googlesyndication|googletagmanager|google-analytics/i, "Layout-ul embed nu trebuie să activeze AdSense sau GA4");

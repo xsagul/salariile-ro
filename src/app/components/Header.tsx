@@ -64,6 +64,13 @@ export default function Header() {
   const desktopMenuRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const desktopTriggerRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const hamburgerRef = useRef<HTMLButtonElement | null>(null);
+  const sertarRef = useRef<HTMLDivElement | null>(null);
+  const inchideRef = useRef<HTMLButtonElement | null>(null);
+  // Sertarul mobil: un singur grup deschis odată (cerut de proprietar pe 24
+  // septembrie 2026). La deschidere e deschis grupul paginii curente.
+  const [grupDeschis, setGrupDeschis] = useState<string | null>(
+    () => NAV.filter(isGroup).find((g) => g.children.some((c) => pathname.startsWith(c.href)))?.label ?? null,
+  );
 
   const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
   const groupActive = (g: Group) => g.children.some((c) => isActive(c.href));
@@ -73,6 +80,8 @@ export default function Header() {
     const frame = requestAnimationFrame(() => {
       setOpen(false);
       setDesktopOpen(null);
+      // După navigare, la redeschidere e deschis grupul noii pagini.
+      setGrupDeschis(NAV.filter(isGroup).find((g) => g.children.some((c) => pathname.startsWith(c.href)))?.label ?? null);
     });
     return () => cancelAnimationFrame(frame);
   }, [pathname]);
@@ -93,14 +102,34 @@ export default function Header() {
     if (label) desktopTriggerRefs.current[label]?.focus();
   };
 
+  const inchideSertarul = () => {
+    setOpen(false);
+    hamburgerRef.current?.focus();
+  };
+
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     if (!open) return;
-    // Escape închide meniul și duce focusul înapoi pe buton.
+    inchideRef.current?.focus();
     const onKey = (event: KeyboardEvent) => {
+      // Escape închide sertarul și duce focusul înapoi pe butonul de meniu.
       if (event.key === "Escape") {
         setOpen(false);
         hamburgerRef.current?.focus();
+        return;
+      }
+      // Focusul rămâne în sertar cât e deschis (dialog modal).
+      if (event.key === "Tab" && sertarRef.current) {
+        const focusabile = sertarRef.current.querySelectorAll<HTMLElement>("a[href], button");
+        const primul = focusabile[0];
+        const ultimul = focusabile[focusabile.length - 1];
+        if (event.shiftKey && document.activeElement === primul) {
+          event.preventDefault();
+          ultimul?.focus();
+        } else if (!event.shiftKey && document.activeElement === ultimul) {
+          event.preventDefault();
+          primul?.focus();
+        }
       }
     };
     document.addEventListener("keydown", onKey);
@@ -116,7 +145,7 @@ export default function Header() {
     }`;
 
   const mobileLink = (active: boolean) =>
-    `block min-h-12 px-4 py-3 text-base ${active ? "font-medium bg-stone-100 text-stone-900" : "text-stone-700"}`;
+    `flex min-h-12 items-center px-5 text-base ${active ? "bg-stone-100 font-semibold text-stone-900" : "text-stone-800"}`;
 
   const bar = "block h-0.5 w-5 bg-stone-900 transition duration-[250ms]";
 
@@ -128,14 +157,14 @@ export default function Header() {
 
   return (
     <>
-      {/* Backdrop blur — apare doar pe mobil când meniul e deschis */}
-      {open && (
-        <div
-          className="fixed inset-x-0 bottom-0 top-16 z-30 bg-stone-900/25 backdrop-blur-sm md:hidden"
-          aria-hidden="true"
-          onClick={() => setOpen(false)}
-        />
-      )}
+      {/* Fundalul întunecat din spatele sertarului; o atingere pe el închide meniul. */}
+      <div
+        className={`fixed inset-0 z-40 bg-stone-900/40 transition-opacity duration-300 motion-reduce:transition-none md:hidden ${
+          open ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
+        aria-hidden="true"
+        onClick={inchideSertarul}
+      />
 
     <header className="hairline-b relative w-full bg-canvas">
       <div className="flex h-16 items-center gap-2 px-4 sm:px-6">
@@ -217,63 +246,94 @@ export default function Header() {
         <button
           ref={hamburgerRef}
           className="ml-auto flex h-11 w-11 cursor-pointer flex-col items-center justify-center gap-[5px] rounded p-0 hover:bg-stone-200/60 md:hidden"
-          aria-label={open ? "Închide meniul" : "Deschide meniul"}
+          aria-label="Deschide meniul"
           aria-expanded={open}
           aria-controls="meniu-mobil"
           onClick={() => setOpen(!open)}
         >
-          <span className={`${bar} ${open ? "translate-y-[7px] rotate-45" : ""}`} />
-          <span className={`${bar} ${open ? "opacity-0" : ""}`} />
-          <span className={`${bar} ${open ? "-translate-y-[7px] -rotate-45" : ""}`} />
+          <span className={bar} />
+          <span className={bar} />
+          <span className={bar} />
         </button>
       </div>
 
-      {/* Meniul mobil, refăcut pe 24 septembrie 2026. Înainte: acordeoane care,
-          deschise amândouă, depășeau ecranul, fără scroll (pagina din spate e
-          blocată). Cu doar 12 linkuri, acordeonul nu economisea spațiu, doar
-          ascundea pagini (NN/g: acordeoanele se evită când omul are nevoie de
-          aproape tot). Acum totul e vizibil: grupurile au un titlu mic, iar
-          linkurile lor stau pe două coloane, deci meniul încape pe un ecran de
-          telefon. Pe ecranele foarte mici are scroll propriu, fără să miște
-          pagina (`overscroll-contain`). */}
-      <nav
+    </header>
+
+      {/* Sertarul mobil, refăcut pe 24 septembrie 2026 după modelul cerut de
+          proprietar: vine din dreapta, ocupă 85% din lățime, iar pagina rămâne
+          vizibilă și întunecată în stânga. Lista are scroll propriu, cât
+          ecranul (înainte, două grupuri deschise treceau de margine fără scroll),
+          iar grupurile sunt acordeoane cu un singur grup deschis odată. */}
+      <div
         id="meniu-mobil"
-        aria-label="Meniu principal"
-        className={`${open ? "flex" : "hidden"} absolute left-0 right-0 top-full z-40 max-h-[calc(100dvh-4rem)] flex-col overflow-y-auto overscroll-contain border-t border-stone-200 bg-canvas shadow-md md:hidden`}
+        ref={sertarRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Meniu"
+        inert={!open}
+        className={`fixed inset-y-0 right-0 z-50 flex w-[85%] max-w-sm flex-col bg-canvas shadow-2xl transition-transform duration-300 ease-out motion-reduce:transition-none md:hidden ${
+          open ? "translate-x-0" : "translate-x-full"
+        }`}
       >
-        {NAV.map((item) =>
-          isGroup(item) ? (
-            <div key={item.label} className="border-b border-stone-200 px-4 pb-2 pt-3">
-              <p className="text-xs font-medium uppercase tracking-wide text-stone-600">{item.label}</p>
-              <ul className="mt-1 grid grid-cols-2 gap-x-4">
-                {item.children.map((c) => (
-                  <li key={c.href}>
+        <div className="flex h-16 shrink-0 items-center justify-end border-b border-stone-200 px-3">
+          <button
+            ref={inchideRef}
+            type="button"
+            aria-label="Închide meniul"
+            onClick={inchideSertarul}
+            className="flex h-11 w-11 items-center justify-center rounded text-stone-900 hover:bg-stone-200/60"
+          >
+            <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" aria-hidden="true">
+              <path d="M6 6l12 12M18 6L6 18" />
+            </svg>
+          </button>
+        </div>
+        <nav aria-label="Meniu principal" className="flex-1 overflow-y-auto overscroll-contain pb-6">
+          {NAV.map((item) =>
+            isGroup(item) ? (
+              <div key={item.label} className="border-b border-stone-200">
+                <button
+                  type="button"
+                  className={`flex min-h-12 w-full items-center justify-between px-5 text-base ${
+                    groupActive(item) ? "font-semibold text-stone-900" : "text-stone-800"
+                  }`}
+                  aria-expanded={grupDeschis === item.label}
+                  aria-controls={`sertar-${idGrup(item.label)}`}
+                  onClick={() => setGrupDeschis((g) => (g === item.label ? null : item.label))}
+                >
+                  {item.label}
+                  <span className={`transition-transform duration-200 ${grupDeschis === item.label ? "rotate-180" : ""}`}>
+                    {chevron}
+                  </span>
+                </button>
+                <div id={`sertar-${idGrup(item.label)}`} hidden={grupDeschis !== item.label} className="pb-2">
+                  {item.children.map((c) => (
                     <Link
+                      key={c.href}
                       href={c.href}
                       aria-current={isActive(c.href) ? "page" : undefined}
-                      className={`flex min-h-11 items-center text-[15px] leading-snug ${
-                        isActive(c.href) ? "font-semibold text-stone-900 underline underline-offset-4" : "text-stone-700"
+                      className={`flex min-h-11 items-center py-2 pl-9 pr-5 text-[15px] ${
+                        isActive(c.href) ? "bg-stone-100 font-semibold text-stone-900" : "text-stone-600"
                       }`}
                     >
                       {c.label}
                     </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ) : (
-            <Link
-              key={item.href}
-              href={item.href}
-              aria-current={isActive(item.href) ? "page" : undefined}
-              className={`${mobileLink(isActive(item.href))} border-b border-stone-200`}
-            >
-              {item.label}
-            </Link>
-          )
-        )}
-      </nav>
-    </header>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <Link
+                key={item.href}
+                href={item.href}
+                aria-current={isActive(item.href) ? "page" : undefined}
+                className={`${mobileLink(isActive(item.href))} border-b border-stone-200`}
+              >
+                {item.label}
+              </Link>
+            )
+          )}
+        </nav>
+      </div>
     </>
   );
 }
