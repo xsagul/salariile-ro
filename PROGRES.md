@@ -3520,3 +3520,25 @@ homepage a devenit o regulă pe tot site-ul (dacă apare 9.192, trebuie eticheta
 
 **De urmărit:** efectul în GSC pe homepage, `/salariu-minim` și
 `/calculator-salariu-invatamant` abia după 28 de zile complete de la 24 septembrie.
+
+## 25 septembrie 2026 — Scara de text, pe cinci ecrane
+
+Măsurat înainte pe 32 de pagini la 375/768/1366/1536/1920 px: titlul paginii avea
+26 sau 30 px pe telefon, secțiunile 24 și 30 px amestecate pe aceeași pagină,
+cardurile cinci mărimi de titlu. Comparat apoi cu GOV.UK, BBC GEL, IBM Carbon,
+Material 3, Tailwind Typography, Primer, USWDS și Apple (tabelul:
+https://claude.ai/artifact/RVhgXEjfqrP8J3NVyjqujB).
+
+Scara aleasă de proprietar, publicată în `1c6765f`:
+
+| | telefon | tabletă 768 | laptop mic 1024 | laptop 1536 | PC mare |
+|---|---|---|---|---|---|
+| titlul paginii | 26 | 28 | 30 | 36 | 36 |
+| titlul de secțiune | 20 | 22 | 24 | 24 | 24 |
+| subtitlu / card / text / mic | 18 / 16 bold / 16 / 14 | la fel | la fel | la fel | la fel |
+
+Proprietari: `TITLU_PAGINA`, `TITLU_SECTIUNE`, `TITLU_CARD` din `ui.tsx`;
+`test-ui-contracts` pică la un h1/h2 cu mărime scrisă de mână. Textul de 12 px
+(`text-xs`, notele și etichetele) rămâne, decizia proprietarului. Textul de citit
+rămâne 16 px, deși GOV.UK are 19 și Tailwind 18 pe desktop: pe Inter proprietarul
+îl consideră bun așa.
