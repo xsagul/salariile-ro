@@ -34,7 +34,12 @@ assert.doesNotMatch(pfa, /<label[^>]*>[\s\S]{0,500}<button[^>]*role="switch"/, "
 assert.match(header, /aria-expanded=\{desktopOpen === item\.label\}/, "Starea dropdownului trebuie sa fie per grup");
 assert.match(header, /aria-controls=\{idGrup\(item\.label\)\}/, "aria-controls trebuie derivat din eticheta grupului");
 assert.doesNotMatch(header, /id="desktop-[a-z-]+-menu"/, "Meniurile nu pot avea id hardcodat");
-assert.match(header, /groupsOpen\[item\.label\]/, "Accordeonul mobil trebuie sa fie per grup");
+// Meniul mobil (24 septembrie 2026): fără acordeon — cu 12 linkuri doar ascundea
+// pagini, iar două grupuri deschise depășeau ecranul fără scroll, cu pagina din
+// spate blocată. Acum totul e vizibil, iar lista are scroll propriu, cât ecranul.
+assert.doesNotMatch(header, /groupsOpen/, "Meniul mobil nu mai ascunde grupurile în acordeon");
+assert.match(header, /id="meniu-mobil"[\s\S]*max-h-\[calc\(100dvh-4rem\)\][\s\S]*overflow-y-auto[\s\S]*overscroll-contain/, "Meniul mobil trebuie să aibă scroll propriu, cât ecranul");
+assert.match(header, /aria-controls="meniu-mobil"/, "Butonul de meniu trebuie legat de meniul mobil");
 assert.match(header, /event\.key === "Escape"/);
 assert.doesNotMatch(embedLayout, /stats\.js|umami/i, "Layout-ul embed nu trebuie să activeze analytics");
 assert.doesNotMatch(embedLayout, /adsbygoogle|googlesyndication|googletagmanager|google-analytics/i, "Layout-ul embed nu trebuie să activeze AdSense sau GA4");

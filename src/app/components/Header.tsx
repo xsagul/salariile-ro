@@ -63,17 +63,11 @@ export default function Header() {
   const [desktopOpen, setDesktopOpen] = useState<string | null>(null);
   const desktopMenuRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const desktopTriggerRefs = useRef<Record<string, HTMLButtonElement | null>>({});
+  const hamburgerRef = useRef<HTMLButtonElement | null>(null);
 
   const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
   const groupActive = (g: Group) => g.children.some((c) => isActive(c.href));
 
-  // Accordeon mobil: deschis implicit doar grupul din care face parte pagina
-  // curentă, nu toate deodată.
-  const [groupsOpen, setGroupsOpen] = useState<Record<string, boolean>>(() =>
-    Object.fromEntries(
-      NAV.filter(isGroup).map((g) => [g.label, g.children.some((c) => pathname.startsWith(c.href))]),
-    )
-  );
 
   useEffect(() => {
     const frame = requestAnimationFrame(() => {
@@ -101,8 +95,18 @@ export default function Header() {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
+    if (!open) return;
+    // Escape închide meniul și duce focusul înapoi pe buton.
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        hamburgerRef.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = "";
+      document.removeEventListener("keydown", onKey);
     };
   }, [open]);
 
@@ -211,9 +215,11 @@ export default function Header() {
 
         {/* Mobile hamburger */}
         <button
+          ref={hamburgerRef}
           className="ml-auto flex h-11 w-11 cursor-pointer flex-col items-center justify-center gap-[5px] rounded p-0 hover:bg-stone-200/60 md:hidden"
           aria-label={open ? "Închide meniul" : "Deschide meniul"}
           aria-expanded={open}
+          aria-controls="meniu-mobil"
           onClick={() => setOpen(!open)}
         >
           <span className={`${bar} ${open ? "translate-y-[7px] rotate-45" : ""}`} />
@@ -222,43 +228,44 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile dropdown — overlay absolut sub header, nu împinge pagina */}
-      <nav className={`${open ? "flex" : "hidden"} absolute left-0 right-0 top-full z-40 flex-col border-t border-stone-200 bg-canvas shadow-md md:hidden`}>
+      {/* Meniul mobil, refăcut pe 24 septembrie 2026. Înainte: acordeoane care,
+          deschise amândouă, depășeau ecranul, fără scroll (pagina din spate e
+          blocată). Cu doar 12 linkuri, acordeonul nu economisea spațiu, doar
+          ascundea pagini (NN/g: acordeoanele se evită când omul are nevoie de
+          aproape tot). Acum totul e vizibil: grupurile au un titlu mic, iar
+          linkurile lor stau pe două coloane, deci meniul încape pe un ecran de
+          telefon. Pe ecranele foarte mici are scroll propriu, fără să miște
+          pagina (`overscroll-contain`). */}
+      <nav
+        id="meniu-mobil"
+        aria-label="Meniu principal"
+        className={`${open ? "flex" : "hidden"} absolute left-0 right-0 top-full z-40 max-h-[calc(100dvh-4rem)] flex-col overflow-y-auto overscroll-contain border-t border-stone-200 bg-canvas shadow-md md:hidden`}
+      >
         {NAV.map((item) =>
           isGroup(item) ? (
-            <div key={item.label} className="border-b border-stone-200">
-              <button
-                className="flex min-h-12 w-full items-center justify-between px-4 py-3 text-base text-stone-700"
-                aria-expanded={Boolean(groupsOpen[item.label])}
-                onClick={() =>
-                  setGroupsOpen((v) => ({ ...v, [item.label]: !v[item.label] }))
-                }
-              >
-                {item.label}
-                <span className={`transition-transform duration-200 ${groupsOpen[item.label] ? "rotate-180" : ""}`}>
-                  {chevron}
-                </span>
-              </button>
-              {groupsOpen[item.label] && (
-                <div className="bg-stone-50">
-                  {item.children.map((c) => (
+            <div key={item.label} className="border-b border-stone-200 px-4 pb-2 pt-3">
+              <p className="text-xs font-medium uppercase tracking-wide text-stone-600">{item.label}</p>
+              <ul className="mt-1 grid grid-cols-2 gap-x-4">
+                {item.children.map((c) => (
+                  <li key={c.href}>
                     <Link
-                      key={c.href}
                       href={c.href}
-                      className={`block min-h-12 py-3 pl-8 pr-4 text-base ${
-                        isActive(c.href) ? "font-medium text-stone-900" : "text-stone-600"
+                      aria-current={isActive(c.href) ? "page" : undefined}
+                      className={`flex min-h-11 items-center text-[15px] leading-snug ${
+                        isActive(c.href) ? "font-semibold text-stone-900 underline underline-offset-4" : "text-stone-700"
                       }`}
                     >
                       {c.label}
                     </Link>
-                  ))}
-                </div>
-              )}
+                  </li>
+                ))}
+              </ul>
             </div>
           ) : (
             <Link
               key={item.href}
               href={item.href}
+              aria-current={isActive(item.href) ? "page" : undefined}
               className={`${mobileLink(isActive(item.href))} border-b border-stone-200`}
             >
               {item.label}
