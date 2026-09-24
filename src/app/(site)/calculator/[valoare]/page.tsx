@@ -6,14 +6,14 @@ import type { Metadata } from "next";
 import Link from "@/app/components/Link";
 import { notFound } from "next/navigation";
 import CalculatorSalariu from "@/app/components/CalculatorSalariu";
-import { Section } from "@/app/components/ui";
+import { Formula, Section } from "@/app/components/ui";
 import {
   brutDinNetStandardCuRegim,
   calculStandard,
   calculStandardCuRegim,
   REGIM_FISCAL_CURENT,
-  REGIMURI_FISCALE_SALARIU,
   SALARIU_MINIM,
+  SALARIU_MINIM_CONSTRUCTII,
   type RegimFiscalSalariu,
   type Rezultat,
 } from "@/lib/fiscal";
@@ -221,153 +221,67 @@ function getCalculatorLinks(
   return [...new Map(linkuri.map((link) => [link.href, link])).values()];
 }
 
-// ─── Context editorial per tranșă salarială ──────────────────────────────────
-// Aceste 3 secțiuni (poziție, sectoare, insight) sunt informații de NIVEL DE
-// CATEGORIE — legitim partajate de salariile din aceeași bandă. Unicitatea per
-// pagină vine din secțiunea "Defalcare fiscală", care folosește cifrele REALE
-// calculate de modulul fiscal (diferite pentru fiecare valoare).
+// ─── O singură observație utilă, după unde cade suma ─────────────────────────
+// Rescris pe 24 septembrie 2026: paginile comparau suma cu indicatorul BASS și
+// cu „netul standard la brutul minim", cifre care nu răspundeau la nimic din ce
+// căutase omul. Acum rămâne o frază, doar când spune ceva ce tabelul nu spune.
 
-type Context = {
-  pozitie: React.ReactNode;
-  insight: React.ReactNode;
-};
-
-const CASTIG_MEDIU_BRUT_BUGETAR_2026 = 9192;
+const PLAFON_DEDUCERE = SALARIU_MINIM + 2000;
 const REZULTAT_MINIM_S1_2026 = calculStandardCuRegim(4050, "2026-S1");
 const NET_MINIM_S1_2026 = REZULTAT_MINIM_S1_2026?.net ?? 2574;
 const REZULTAT_MINIM_CURENT = calculStandard(SALARIU_MINIM);
 
-function getContextBrut(v: number): Context {
-  if (v === 4325) {
-    return {
-      pozitie: <>Brutul de <strong>4.325 lei</strong> este <Link href="/salariu-minim">salariul minim pe economie în 2026 (4.325 brut, 2.699 net)</Link> în vigoare din 1 iulie 2026, conform HG 146/2026.</>,
-      insight: <>În cazul standard folosit pe această pagină — funcție de bază, normă întreagă, fără tichete și fără persoane în întreținere — rezultatul include facilitatea de 200 lei și deducerea personală (2.699 lei net). Fără facilitate, netul devine 2.530 lei. Vezi calculul complet și toate scenariile pe pagina de referință pentru <Link href="/salariu-minim">salariul minim 2026</Link>.</>,
-    };
-  }
-
+function observatieBrut(v: number): React.ReactNode {
   if (v === 4050) {
-    return {
-      pozitie: <>Brutul de <strong>4.050 lei</strong> a fost <Link href="/salariu-minim">salariul minim brut pe economie</Link> între 1 ianuarie și 30 iunie 2026, conform HG 1506/2024. În cazul standard, grila fiscală S1 produce un net de <strong>{fmt(REZULTAT_MINIM_S1_2026?.net ?? 0)} lei</strong>.</>,
-      insight: <>Acesta este un calcul istoric: folosește facilitatea de 300 lei, plafonul de 4.300 lei și deducerea personală raportată la minimul de 4.050 lei. Din 1 iulie 2026, minimul brut este 4.325 lei, iar facilitatea este 200 lei.</>,
-    };
+    return <>Acesta a fost <Link href="/salariu-minim">salariul minim</Link> până la 30 iunie 2026. Calculul folosește regulile de atunci, cu o facilitate de 300 lei netaxați. Din iulie, minimul e {fmt(SALARIU_MINIM)} lei brut.</>;
   }
-
   if (v < SALARIU_MINIM) {
-    return {
-      pozitie: <>Brutul de <strong>{fmt(v)} lei</strong> este sub <Link href="/salariu-minim">salariul minim brut</Link> de 4.325 lei aplicabil din iulie 2026. Pentru un contract individual de muncă cu normă întreagă, reperul legal este salariul de bază brut minim/oră; contractele part-time și lunile lucrate parțial necesită calcul separat.</>,
-      insight: <>Valoarea netă nu poate stabili singură dacă un contract respectă salariul minim. Trebuie verificate norma, salariul de bază brut, timpul efectiv lucrat și eventualele excepții privind contribuțiile.</>,
-    };
+    return <>Suma e sub <Link href="/salariu-minim">salariul minim</Link>, deci e legală doar la un contract part-time. Pentru calculul corect, cu contribuțiile completate de firmă, folosește <Link href="/calculator-salariu-part-time">calculatorul de part-time</Link>.</>;
   }
-
   if (v === SALARIU_MINIM) {
-    return {
-      pozitie: <>Brutul de <strong>4.325 lei</strong> este <Link href="/salariu-minim">salariul minim brut pe economie</Link> aplicabil în România din 1 iulie 2026 (HG nr. 598/2024). În cazul standard la funcția de bază, produce un net de <strong>{fmt(REZULTAT_MINIM_CURENT?.net ?? 0)} lei</strong> cu facilitatea de 200 lei scutită (OUG nr. 89/2025).</>,
-      insight: <>Fără aplicarea facilității (de exemplu dacă nu este funcția de bază sau dacă venitul brut depășește plafonul de 4.325 lei prin sporuri), netul este de <strong>2.530 lei</strong>. Pentru detalii complete despre condiții și excepții, consultă <Link href="/salariu-minim">ghidul despre salariul minim 2026</Link>.</>,
-    };
+    return <>E <Link href="/salariu-minim">salariul minim</Link> din 1 iulie 2026. La normă întreagă și la locul de muncă de bază, 200 de lei din brut nu se taxează deloc, de aceea netul iese relativ mare.</>;
   }
-
-  if (v <= SALARIU_MINIM + 2000) {
-    return {
-      pozitie: <>Brutul de <strong>{fmt(v)} lei</strong> este peste salariul minim actual și se află în intervalul în care deducerea personală de bază poate fi acordată la funcția de bază.</>,
-      insight: <>Deducerea depinde de brut și de numărul persoanelor în întreținere și scade gradual până la plafonul de {fmt(SALARIU_MINIM + 2000)} lei. Calculatorul avansat permite introducerea situației individuale.</>,
-    };
+  if (v === SALARIU_MINIM_CONSTRUCTII) {
+    return <>E <Link href="/salariu-minim-constructii-2026">salariul minim din construcții</Link>. Se taxează ca orice salariu: scutirea de 200 de lei e doar pentru minimul general.</>;
   }
-
-  if (v > 15000) {
-    return {
-      pozitie: <>Brutul de <strong>{fmt(v)} lei</strong> depășește atât salariul minim, cât și indicatorul salarial brut de 9.192 lei folosit la fundamentarea bugetului asigurărilor sociale de stat pentru 2026. Acest indicator nu este salariul mediu lunar publicat de INS.</>,
-      insight: <>Dacă analizezi alternative precum PFA sau microîntreprindere, compară obligațiile și protecția juridică, nu doar taxele. În 2026, <a href="https://legislatie.just.ro/Public/DetaliiDocument/307580" target="_blank" rel="noopener noreferrer">plafonul de venit pentru regimul microîntreprinderilor este 100.000 euro</a>, iar eligibilitatea depinde și de celelalte condiții legale.</>,
-    };
+  if (v <= PLAFON_DEDUCERE) {
+    return <>Sub {fmt(PLAFON_DEDUCERE)} lei brut primești <Link href="/deducere-personala-2026">deducerea personală</Link>. Cu persoane în întreținere, e mai mare și netul crește: le bifezi în opțiunile avansate de sus.</>;
   }
-
-  return {
-    pozitie: <>Brutul de <strong>{fmt(v)} lei</strong> depășește plafonul deducerii personale de bază. Raportarea la salariul minim sau la indicatorul bugetar oferă context, dar nu descrie distribuția salariilor din România.</>,
-    insight: <>La acest nivel, netul standard este determinat în principal de CAS, CASS și impozitul pe venit. Tichetele, scutirile aplicabile și deducerea suplimentară pentru copii pot modifica rezultatul individual.</>,
-  };
+  return <>Peste {fmt(PLAFON_DEDUCERE)} lei brut nu mai există deducere personală, așa că netul e mereu 58,5% din brut, oricât de mare ar fi salariul. Doar tichetele sau o scutire de impozit îl mai schimbă.</>;
 }
 
-function getContextNet(v: number): Context {
-  const netMinimStandard = REZULTAT_MINIM_CURENT?.net ?? 0;
-
+function observatieNet(v: number): React.ReactNode {
+  const netMinim = REZULTAT_MINIM_CURENT?.net ?? 0;
   if (v === NET_MINIM_S1_2026) {
-    return {
-      pozitie: <>Netul standard de <strong>{fmt(v)} lei</strong> corespunde brutului minim istoric de <strong>4.050 lei</strong>, aplicabil între 1 ianuarie și 30 iunie 2026.</>,
-      insight: <>Acesta este un calcul istoric în grila S1 2026: facilitate de 300 lei și deducere personală raportată la salariul minim de 4.050 lei. Pentru perioada de după 1 iulie se folosește regimul fiscal curent.</>,
-    };
+    return <>Acesta a fost netul la salariul minim până la 30 iunie 2026. Calculul folosește regulile de atunci, cu o facilitate de 300 lei netaxați.</>;
   }
-
-  if (v === netMinimStandard) {
-    return {
-      pozitie: <>Netul standard de <strong>{fmt(v)} lei</strong> corespunde salariului minim brut de <strong>4.325 lei</strong> în vigoare din 1 iulie 2026, cu aplicarea facilității de 200 lei netaxabili la funcția de bază.</>,
-      insight: <>Aceasta este suma efectivă primită în mână în cazul standard. Fără facilitate, brutul de 4.325 lei generează 2.530 lei net. Pentru calculul detaliat și condiții, vezi <Link href="/salariu-minim">pagina dedicată salariului minim</Link>.</>,
-    };
+  if (v < netMinim) {
+    return <>Suma e sub netul de la <Link href="/salariu-minim">salariul minim</Link>, deci e posibilă doar la un contract part-time. Vezi <Link href="/calculator-salariu-part-time">calculatorul de part-time</Link>.</>;
   }
-
-  if (v < netMinimStandard) {
-    return {
-      pozitie: <>Netul de <strong>{fmt(v)} lei</strong> este sub estimarea standard de {fmt(netMinimStandard)} lei obținută din brutul minim actual de 4.325 lei. Aceasta este o comparație fiscală, nu un prag legal net.</>,
-      insight: <>Legea stabilește salariul minim în termeni de brut și tarif orar. Netul depinde de funcția de bază, facilitate, deduceri, tichete și situația contractului; o valoare mai mică nu dovedește singură o încălcare.</>,
-    };
+  if (v === netMinim) {
+    return <>E netul de la <Link href="/salariu-minim">salariul minim</Link> din 1 iulie 2026.</>;
   }
-
-  if (v <= netMinimStandard + 100) {
-    return {
-      pozitie: <>Netul de <strong>{fmt(v)} lei</strong> este apropiat de estimarea standard de {fmt(netMinimStandard)} lei pentru un brut de 4.325 lei, la funcția de bază și fără alte venituri sau beneficii.</>,
-      insight: <>Nu există un „salariu minim net” unic stabilit prin hotărâre. Pentru verificarea unui fluturaș trebuie pornit de la brutul contractual și de la condițiile fiscale efectiv aplicabile.</>,
-    };
-  }
-
-  return {
-    pozitie: <>Pentru a obține <strong>{fmt(v)} lei net</strong>, brutul necesar trebuie calculat din condițiile fiscale concrete. Rezultatul standard al paginii presupune funcție de bază, fără tichete și fără persoane în întreținere.</>,
-    insight: <>Negocierea pe net trebuie transpusă într-un brut contractual clar. Folosește opțiunile avansate pentru situația individuală și verifică separat beneficiile extrasalariale.</>,
-  };
+  return <>Când negociezi pe net, cere ca în contract să fie trecut brutul. Taxele se pot schimba, iar atunci netul se schimbă odată cu ele. Brutul din contract rămâne.</>;
 }
 
-// ─── Defalcare fiscală cu CIFRE REALE — unică per pagină ──────────────────────
-// Folosește rezultatul calculat de modulul fiscal: fiecare valoare produce
-// numere complet diferite (CAS, CASS, impozit, net, CAM, cost) → conținut unic.
+// ─── Formula cu cifrele acestei pagini ───────────────────────────────────────
 
-function DefalcareFiscala({
-  brut,
-  rez,
-  regimFiscal,
-}: {
-  brut: number;
-  rez: Rezultat;
-  regimFiscal: RegimFiscalSalariu;
-}) {
-  const regim = REGIMURI_FISCALE_SALARIU[regimFiscal];
-  const netStandardMinim = calculStandardCuRegim(regim.salariuMinim, regimFiscal)?.net ?? 0;
-  const ratieNetStandard = netStandardMinim > 0 ? rez.net / netStandardMinim : 0;
-  const comparatieNetStandard =
-    ratieNetStandard >= 1
-      ? <>este de {ratieNetStandard.toFixed(1)}× mai mare decât netul standard calculat la brutul minim ({fmt(netStandardMinim)} lei)</>
-      : <>este <strong>sub</strong> netul standard calculat la brutul minim ({fmt(netStandardMinim)} lei), reprezentând {Math.round(ratieNetStandard * 100)}% din acesta</>;
-
-  return (
-    <p>
-      Pentru un salariu brut de <strong>{fmt(brut)} lei</strong>, reținerile obligatorii ale
-      angajatului sunt: <strong>CAS</strong> (pensie, 25%) de {fmt(rez.cas)} lei,{" "}
-      <strong>CASS</strong> (sănătate, 10%) de {fmt(rez.cass)} lei și{" "}
-      <strong>impozit pe venit</strong> (10%) de {fmt(rez.impozit)} lei.{" "}
-      {rez.deducerePersonala > 0 ? (
-        <>
-          Se aplică o deducere personală de {fmt(rez.deducerePersonala)} lei, care reduce
-          impozitul datorat.{" "}
-        </>
-      ) : (
-        <>
-          La acest nivel deducerea personală nu se aplică, deoarece brutul depășește plafonul
-          de 6.325 lei.{" "}
-        </>
-      )}
-      Rezultă un salariu <strong>net de {fmt(rez.net)} lei</strong>, adică {rez.brutNet}% din brut.
-      În plus, angajatorul plătește contribuția CAM de 2,25% ({fmt(rez.cam)} lei), deci{" "}
-      <strong>costul total al firmei</strong> pentru acest post este {fmt(rez.costTotal)} lei lunar.
-      Ca reper fiscal, acest venit {comparatieNetStandard}. Reperul net este un calcul
-      standard, nu o valoare minimă garantată de lege.
-    </p>
+function randuriFormula(brut: number, rez: Rezultat): string[] {
+  const baza = brut - rez.facilitate;
+  const bazaImpozit = baza - rez.cas - rez.cass;
+  const randuri: string[] = [];
+  if (rez.facilitate > 0) {
+    randuri.push(`Bază    = ${fmt(brut)} − ${fmt(rez.facilitate)} netaxați = ${fmt(baza)}`);
+  }
+  randuri.push(`CAS     = ${fmt(baza)} × 25% = ${fmt(rez.cas)}`);
+  randuri.push(`CASS    = ${fmt(baza)} × 10% = ${fmt(rez.cass)}`);
+  randuri.push(
+    rez.deducerePersonala > 0
+      ? `Impozit = (${fmt(bazaImpozit)} − ${fmt(rez.deducerePersonala)} deducere) × 10% = ${fmt(rez.impozit)}`
+      : `Impozit = ${fmt(bazaImpozit)} × 10% = ${fmt(rez.impozit)}`,
   );
+  randuri.push(`Net     = ${fmt(brut)} − ${fmt(rez.cas)} − ${fmt(rez.cass)} − ${fmt(rez.impozit)} = ${fmt(rez.netBani)} lei`);
+  return randuri;
 }
 
 // ─── Componenta paginii ──────────────────────────────────────────────────────
@@ -389,69 +303,36 @@ export default async function CalculatorDinamic({ params }: Props) {
     isNetDinBrut ? (rez?.net ?? cifraNum) : brutEfectiv,
   );
 
-  // H1 și <title> spun acum același lucru: întrebarea ȘI răspunsul, cu cifra.
+  // H1 și <title> spun același lucru: întrebarea ȘI răspunsul, cu cifra.
   const titluText = titluSeo(date);
   const rezultatH1 = isNetDinBrut ? (rez?.net ?? 0) : brutEfectiv;
   const titluDinamic = isNetDinBrut
     ? <>{fmt(cifraNum)} lei brut în net = <em>{fmt(rezultatH1)} lei</em></>
     : <>{fmt(cifraNum)} lei net în brut = <em>{fmt(rezultatH1)} lei</em></>;
 
-  // Paragraf-răspuns (~40 de cuvinte) ÎNAINTE de calculator: cifra rezultat plus
-  // defalcarea completă, ca să existe un răspuns extractabil pentru featured
-  // snippets și pentru LLM-uri. Vechiul lead („Află exact cât reprezintă…") nu
-  // conținea nicio cifră, deci nu putea fi citat de nimeni.
+  // Paragraful-răspuns de deasupra calculatorului: cifra și taxele, într-o frază
+  // care se poate cita singură (featured snippets, LLM-uri). E răspunsul la
+  // căutare, deci singurul loc de pe pagină unde taxele apar în proză.
   const perioadaFraza = esteCalculIstoricS1 ? "între 1 ianuarie și 30 iunie 2026" : "în 2026";
   const subtitluDinamic = rez ? (
     isNetDinBrut ? (
       <>
-        Un salariu brut de <strong>{fmt(cifraNum)} lei</strong> înseamnă{" "}
-        <strong>{fmt(rez.net)} lei net</strong> în mână {perioadaFraza}, adică {rez.brutNet}% din brut.
-        Se rețin CAS {fmt(rez.cas)} lei (25%), CASS {fmt(rez.cass)} lei (10%) și impozit{" "}
-        {fmt(rez.impozit)} lei (10%), iar costul total al angajatorului este{" "}
-        <strong>{fmt(rez.costTotal)} lei</strong> pe lună.
+        Din <strong>{fmt(cifraNum)} lei brut</strong> îți rămân <strong>{fmt(rez.net)} lei net</strong>{" "}
+        {perioadaFraza}. Se opresc CAS {fmt(rez.cas)} lei, CASS {fmt(rez.cass)} lei și impozit {fmt(rez.impozit)} lei,
+        iar costul total al angajatorului e <strong>{fmt(rez.costTotal)} lei</strong> pe lună.
       </>
     ) : (
       <>
-        <strong>{fmt(brutEfectiv)} lei brut</strong> pe lună sunt necesari pentru{" "}
-        <strong>{fmt(cifraNum)} lei net</strong> în mână {perioadaFraza}. Din acest brut se rețin CAS{" "}
-        {fmt(rez.cas)} lei (25%), CASS {fmt(rez.cass)} lei (10%) și impozit {fmt(rez.impozit)} lei (10%),
-        iar costul total al angajatorului ajunge la <strong>{fmt(rez.costTotal)} lei</strong>.
+        Ca să primești <strong>{fmt(cifraNum)} lei net</strong> {perioadaFraza}, ai nevoie de{" "}
+        <strong>{fmt(brutEfectiv)} lei brut</strong>. Din el se opresc CAS {fmt(rez.cas)} lei, CASS {fmt(rez.cass)} lei
+        și impozit {fmt(rez.impozit)} lei, iar costul total al angajatorului e <strong>{fmt(rez.costTotal)} lei</strong>.
       </>
     )
   ) : (
     descriereSeo(date)
   );
 
-  const ctx = isNetDinBrut ? getContextBrut(cifraNum) : getContextNet(cifraNum);
-
-  // Frază introductivă generată din cifrele REALE ale acestei valori — diferită de la
-  // o pagină la alta (procent din salariul mediu brut + procent peste salariul minim).
-  // Totul rămâne în aceeași unitate (brut lunar) ca restul paginii, ca să nu deruteze.
-  // Rolul ei e să ancoreze fiecare pagină în date proprii, astfel încât paginile din
-  // aceeași bandă de venit (care împart contextul de categorie) să rămână unice.
-  const pctDinIndicatorBugetar = Math.round((brutEfectiv / CASTIG_MEDIU_BRUT_BUGETAR_2026) * 100);
-  const pctPesteMinim = Math.round((brutEfectiv / SALARIU_MINIM - 1) * 100);
-  const fataDeMinim = esteCalculIstoricS1
-    ? <>era exact <Link href="/salariu-minim">salariul minim brut</Link> aplicabil între 1 ianuarie și 30 iunie 2026</>
-    : pctPesteMinim < 0
-      ? <>este <strong>sub</strong> <Link href="/salariu-minim">salariul minim brut</Link> ({fmt(SALARIU_MINIM)} lei), nivel întâlnit de regulă la contracte cu normă redusă (part-time)</>
-      : pctPesteMinim === 0
-        ? <>se situează exact la nivelul <Link href="/salariu-minim">salariului minim brut</Link> ({fmt(SALARIU_MINIM)} lei)</>
-        : <>este cu <strong>{pctPesteMinim}%</strong> peste <Link href="/salariu-minim">salariul minim brut</Link> ({fmt(SALARIU_MINIM)} lei)</>;
-
-  const leadPozitie = isNetDinBrut ? (
-    <>
-      Un salariu brut de <strong>{fmt(cifraNum)} lei</strong> reprezintă aproximativ{" "}
-      <strong>{pctDinIndicatorBugetar}%</strong> din indicatorul salarial brut de{" "}
-      <Link href="/salariu-mediu">{fmt(CASTIG_MEDIU_BRUT_BUGETAR_2026)} lei folosit la bugetul asigurărilor sociale</Link> și {fataDeMinim}.
-    </>
-  ) : (
-    <>
-      Pentru a primi <strong>{fmt(cifraNum)} lei</strong> net pe lună, salariul brut negociat trebuie să fie
-      aproximativ <strong>{fmt(brutEfectiv)} lei</strong>, adică circa <strong>{pctDinIndicatorBugetar}%</strong> din indicatorul salarial brut de{" "}
-      <Link href="/salariu-mediu">{fmt(CASTIG_MEDIU_BRUT_BUGETAR_2026)} lei folosit la bugetul asigurărilor sociale</Link>. Acest brut {fataDeMinim}.
-    </>
-  );
+  const observatie = isNetDinBrut ? observatieBrut(cifraNum) : observatieNet(cifraNum);
 
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
@@ -488,56 +369,32 @@ export default async function CalculatorDinamic({ params }: Props) {
         />
       </div>
 
-      {/* Conținut editorial — poziție (categorie) + defalcare reală (unică) */}
-      <Section>
-          <h2>Ce înseamnă {fmt(cifraNum)} lei {isNetDinBrut ? "brut" : "net"}?</h2>
-          <p>{leadPozitie}</p>
-          <p>{ctx.pozitie}</p>
-      </Section>
-
-      {/* Defalcarea fiscală cu cifre reale — unică pentru fiecare valoare */}
       {rez && (
         <Section>
-            <h2>
-              Defalcarea fiscală pentru {isNetDinBrut ? `${fmt(cifraNum)} lei brut` : `un net de ${fmt(cifraNum)} lei`}
-            </h2>
-            {!isNetDinBrut && (
-              <p className="source-note">
-                Pentru un net de {fmt(cifraNum)} lei, salariul brut necesar este aproximativ{" "}
-                <strong>{fmt(brutEfectiv)} lei</strong>. Mai jos, defalcarea completă pornind de la acest brut.
-              </p>
-            )}
-            <DefalcareFiscala brut={brutEfectiv} rez={rez} regimFiscal={regimFiscal} />
-            <p className="source-note">
-              {esteCalculIstoricS1
-                ? <>Calcul istoric pentru funcția de bază, fără tichete sau persoane în întreținere, în regimul aplicabil între 1 ianuarie și 30 iunie 2026. Conform Codului Fiscal, HG 1506/2024 și OUG 89/2025.</>
-                : <>Calcul standard pentru funcția de bază, fără tichete sau persoane în întreținere. Vezi tabelul interactiv de mai sus pentru scenarii personalizate. Conform Codului Fiscal (Legea 227/2015), HG 146/2026 și OUG 89/2025.</>}
-            </p>
+          <h2>Cum se ajunge la {isNetDinBrut ? `${fmt(rez.netBani)} lei net` : `${fmt(brutEfectiv)} lei brut`}</h2>
+          <p>
+            Din brut se opresc 25% pentru pensie și 10% pentru sănătate, apoi impozitul de 10% pe ce rămâne
+            {rez.deducerePersonala > 0 ? ", după deducerea personală" : ""}.
+          </p>
+          <Formula eticheta={`Calculul pentru ${fmt(brutEfectiv)} lei brut`} randuri={randuriFormula(brutEfectiv, rez)} />
+          <p>{observatie}</p>
+          <p className="source-note">
+            {esteCalculIstoricS1
+              ? "Pentru ianuarie–iunie 2026, la locul de muncă de bază, fără tichete sau persoane în întreținere."
+              : "La locul de muncă de bază, fără tichete sau persoane în întreținere. Pentru situația ta, folosește opțiunile avansate de sus."}
+          </p>
         </Section>
       )}
 
       <Section>
-          <h2>Calcule salariale apropiate și repere populare</h2>
-          <p>
-            Compară această valoare cu salariile învecinate și cu repere pentru care există
-            semnal real de căutare. Legăturile rămân în lista editorială verificată, fără
-            pagini generate automat pentru fiecare număr posibil.
-          </p>
-          <ul aria-label="Calcule salariale apropiate">
-            {linkuriCalculatoare.map((link) => (
-              <li key={link.href}>
-                <Link href={link.href}>{link.label}</Link>
-              </li>
-            ))}
-          </ul>
-      </Section>
-
-      <Section>
-          <h2>Ce trebuie să știi</h2>
-          <p>{ctx.insight}</p>
-          <p className="source-note">
-            Pentru context legislativ complet, consultă <Link href="/salariu-minim">analiza salariului minim 2026</Link> și <Link href="/salariu-mediu">datele salariale medii</Link>. {esteCalculIstoricS1 ? "Această pagină păstrează regimul fiscal S1 2026." : "Calculul folosește regimul în vigoare din 1 iulie 2026."} Ultima actualizare: 26 iulie 2026.
-          </p>
+        <h2>Alte sume căutate des</h2>
+        <ul aria-label="Calcule salariale apropiate">
+          {linkuriCalculatoare.map((link) => (
+            <li key={link.href}>
+              <Link href={link.href}>{link.label}</Link>
+            </li>
+          ))}
+        </ul>
       </Section>
     </>
   );

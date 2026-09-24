@@ -20,13 +20,14 @@
 // IT ar pica testul — acolo calculul e identic cu cel standard din 2025.
 
 import type { Metadata } from "next";
-import { Breadcrumb, CardCompanion, Faq, H1, Hero, Lead, PaginiConexe, Prose, Repere, Section } from "@/app/components/ui";
+import Link from "@/app/components/Link";
+import { Breadcrumb, CardCompanion, Faq, Formula, H1, Hero, Lead, PaginiConexe, Prose, Section } from "@/app/components/ui";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
 import CalculatorSanatate from "@/app/components/CalculatorSanatate";
-import { MESERII_SANATATE, TOTAL_TREPTE } from "@/lib/sanatate";
+import { MESERII_SANATATE } from "@/lib/sanatate";
 import { SURSA_GRILE } from "@/lib/grile-publice";
-import { INDEMNIZATIE_HRANA, PLAFON_HRANA_NET, INDEMNIZATIE_DOCTORAT_2026 } from "@/lib/lege153";
+import { INDEMNIZATIE_HRANA, PLAFON_HRANA_NET } from "@/lib/lege153";
 
 const TITLU = "Calculator Salarii Sănătate 2026 - Vezi net și grilă";
 const DESC =
@@ -42,42 +43,28 @@ export const metadata: Metadata = {
 
 const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(n);
 
-const TOATE = MESERII_SANATATE.flatMap((m) => m.trepte.map((t) => t.brut));
-const MIN_GRILA = Math.min(...TOATE);
-const MAX_GRILA = Math.max(...TOATE);
-
 const FAQ = [
   {
     q: "Cât câștigă un asistent medical în 2026?",
-    a: `Salariul de bază din grilă pornește de la ${fmt(
+    a: `Un asistent debutant cu studii postliceale pornește de la ${fmt(
       MESERII_SANATATE.find((m) => m.slug === "asistent-medical")?.trepte[0]?.brut ?? 0,
-    )} lei brut pentru un debutant cu studii postliceale și urcă pe treapta de principal. Peste suma din grilă se aplică gradația de vechime în muncă, care poate adăuga până la 24,52%, iar sub plafonul de ${fmt(
-      PLAFON_HRANA_NET,
-    )} lei net se adaugă și indemnizația de hrană de ${fmt(INDEMNIZATIE_HRANA)} lei.`,
+    )} lei brut în grilă. Salariul crește cu treapta, de la debutant la principal, și cu vechimea în muncă. Cât iei în mână pentru situația ta afli din calculatorul de sus.`,
   },
   {
     q: "Cum se calculează gradația de vechime?",
-    a: "Cotele se compun, nu se adună. Gradația 1 adaugă 7,5%, gradația 2 încă 5% peste rezultatul anterior, gradația 3 alți 5%, gradațiile 4 și 5 câte 2,5%. Cumulat, gradația 5 înseamnă +24,52% față de valoarea din grilă, nu +22,5% cum ar da adunarea simplă. Temeiul e art. 10 alin. (4) din Legea 153/2017, iar regula e generală: se aplică la fel în sănătate, în învățământ și în administrație.",
+    a: "Sunt cinci trepte, după anii de muncă, toți, nu doar cei din sănătate. Fiecare procent se aplică peste salariul deja crescut de treapta dinainte, așa că la ultima gradație salariul e cu 24,52% peste suma din grilă.",
   },
   {
-    q: "De ce un medic primar nu primește indemnizația de hrană?",
-    a: `Art. 18 alin. (1) o acordă numai personalului „ale cărui salarii lunare sunt de până la ${fmt(
-      PLAFON_HRANA_NET,
-    )} lei net inclusiv". Salariul de bază al unui medic primar depășește plafonul, deci cei ${fmt(
-      INDEMNIZATIE_HRANA,
-    )} de lei nu se cuvin. La treptele de început ale aceleiași profesii plafonul nu se atinge, iar indemnizația apare în calcul. Tot art. 18 exclude și personalul căruia i se acordă alte drepturi de hrană potrivit legislației specifice — de aceea calculatorul are un comutator, nu o presupunere.`,
+    q: "Sunt incluse gărzile și sporurile?",
+    a: "Nu. Sporurile pentru condiții grele depind de locul de muncă și diferă între două spitale pentru aceeași funcție, iar gărzile și orele de noapte depind de graficul lunii. O cifră care le-ar ghici ar ieși mai mare, dar falsă.",
   },
   {
-    q: "Sunt incluse gărzile și sporurile pentru condiții deosebite?",
-    a: "Nu, și e o alegere deliberată. Sporurile pentru condiții deosebite, vătămătoare sau periculoase din Anexa nr. II, cap. II depind de încadrarea concretă a locului de muncă, stabilită prin regulament intern și buletine de determinare, nu prin lege. Gărzile și sporul de noapte depind de graficul lunar. O cifră care le-ar presupune ar ieși mai mare și mai falsă, așa că salariul de aici este cel de bază plus drepturile generale ale legii.",
+    q: "Sumele din grilă sunt brute sau nete?",
+    a: "Brute, și reprezintă salariul de pornire, înainte de vechime și de orice spor. Calculatorul le transformă în net.",
   },
   {
-    q: "Salariile din grilă sunt brute sau nete?",
-    a: "Sumele din anexă sunt salariu de bază brut, la gradația 0 — adică înainte de vechime și înainte de orice spor. Calculatorul le convertește în net aplicând CAS 25%, CASS 10% și impozitul pe venit de 10%, aceleași cote ca pentru orice salariat.",
-  },
-  {
-    q: "Ce se întâmplă dacă apare noua lege a salarizării?",
-    a: "Până la publicarea în Monitorul Oficial nu se schimbă nimic aici. Un proiect se modifică până la adoptare, iar publicarea unor cifre neadoptate ar însemna un an de sume false. Personalul sanitar este plătit azi după grila din Legea 153/2017, în forma consolidată citată mai jos.",
+    q: "Se schimbă ceva cu noua lege a salarizării?",
+    a: "Nu până nu apare în Monitorul Oficial. Proiectul s-a schimbat de mai multe ori, iar personalul sanitar e plătit azi după grila în vigoare. Actualizăm calculatorul în ziua publicării.",
   },
 ];
 
@@ -124,15 +111,6 @@ const jsonLd = {
   ],
 };
 
-const REPERE_SANATATE = [
-  ["Salariu de bază, minim în grilă", `${fmt(MIN_GRILA)} lei`],
-  ["Salariu de bază, maxim în grilă", `${fmt(MAX_GRILA)} lei`],
-  ["Gradația 5, cumulat", "+24,52%"],
-  ["Indemnizație de hrană", `${fmt(INDEMNIZATIE_HRANA)} lei`],
-  ["Plafon indemnizație de hrană", `${fmt(PLAFON_HRANA_NET)} lei net`],
-  ["Indemnizație doctorat", `${fmt(INDEMNIZATIE_DOCTORAT_2026)} lei`],
-] as const;
-
 export default function Page() {
   return (
     <>
@@ -145,7 +123,8 @@ export default function Page() {
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Calculator salariu sănătate" }]} />
         <H1>Calculator salariu sănătate 2026</H1>
         <Lead>
-          Alege-ți încadrarea și vezi salariul de bază, gradația de vechime și netul, după grila în plată.
+          Alegi meseria, treapta și vechimea, iar calculatorul îți arată cât primești în mână, după grila în
+          vigoare.
         </Lead>
       </Hero>
 
@@ -153,54 +132,47 @@ export default function Page() {
 
       <Section
         companion={
-          <CardCompanion
-            titlu="Repere · Anexa nr. II"
-            nota="Sume brute, la gradația 0. Peste ele se aplică gradația de vechime în muncă și indemnizațiile generale ale legii."
-          >
-            <Repere randuri={REPERE_SANATATE} />
+          <CardCompanion titlu="Ce nu intră în calcul">
+            <p className="text-sm leading-normal text-stone-600">
+              Sporurile pentru condiții grele, gărzile și orele de noapte. Primele depind de locul de muncă și diferă
+              între două spitale pentru aceeași funcție, celelalte de graficul fiecărei luni.
+            </p>
+            <p className="mt-3 text-sm leading-normal text-stone-600">
+              Nici funcțiile de conducere nu sunt aici: au tabele separate, după mărimea spitalului.
+            </p>
           </CardCompanion>
         }
       >
         <Prose>
-          <h2>Cum se construiește salariul din sistemul sanitar</h2>
+          <h2>Cum se calculează salariul în sănătate</h2>
           <p>
-            Salariul de bază nu e o singură cifră citită dintr-un tabel. Se compune în pași, iar
-            ordinea lor schimbă rezultatul:
+            Pornește de la suma din grilă pentru meseria și treapta ta, crește cu vechimea, primește peste ea
+            indemnizațiile legii, iar din brutul care iese se scad taxele obișnuite.
           </p>
-          <ol>
-            <li>
-              <strong>Salariul din grilă.</strong> Se alege după funcție și treaptă profesională —
-              debutant, specialist, principal. Valorile din anexă sunt la gradația 0 și sunt brute.
-            </li>
-            <li>
-              <strong>Gradația de vechime în muncă.</strong> Se aplică peste valoarea din grilă și
-              ține de toată cariera, nu doar de anii lucrați în sănătate. Cele cinci gradații se
-              compun între ele, iar la vârf adaugă 24,52%.
-            </li>
-            <li>
-              <strong>Indemnizațiile generale.</strong> Hrana și titlul de doctor se adaugă peste
-              salariul de bază deținut, fiecare cu propria condiție.
-            </li>
-          </ol>
-
-          <h2>Unde diferă sănătatea de învățământ</h2>
+          <Formula
+            eticheta="Formula salariului în sănătate"
+            randuri={[
+              "Salariu de bază = suma din grilă × (1 + gradația)",
+              "Brut            = salariu de bază + hrană + doctorat",
+              "Net             = brut − CAS − CASS − impozit",
+            ]}
+          />
           <p>
-            Regulile de bază sunt aceleași — sunt articole din corpul legii, nu din anexă. Diferența
-            practică e plafonul indemnizației de hrană. În învățământ el nu se atinge niciodată: cea
-            mai mare valoare din grilă, cu gradația maximă, rămâne sub {fmt(PLAFON_HRANA_NET)} lei
-            net. În sănătate se atinge, pentru că un medic specialist sau primar depășește plafonul
-            și pierde cei {fmt(INDEMNIZATIE_HRANA)} de lei. Calculatorul o spune explicit când se
-            întâmplă, în loc să lase linia să lipsească fără explicație.
+            <strong>Suma din grilă</strong> o dau meseria și treapta, de la debutant la principal.{" "}
+            <strong>Gradația</strong> vine din anii de muncă, toți, nu doar cei din sănătate.{" "}
+            <strong>Doctoratul</strong> adaugă o sumă fixă, dacă ai titlul și îl folosești în activitate. Taxele se
+            calculează ca la <Link href="/">orice salariu</Link>.
           </p>
 
-          <h2>Ce nu intră în calcul</h2>
+          <h2>De ce un medic nu primește bani de hrană</h2>
           <p>
-            Sporurile pentru condiții deosebite, vătămătoare sau periculoase din Anexa nr. II,
-            cap. II nu sunt incluse. Ele se stabilesc pe locul de muncă, prin buletine de
-            determinare și regulament intern, și pot varia mult între două spitale pentru aceeași
-            funcție. Nici gărzile și nici sporul de noapte nu intră, pentru că depind de graficul
-            lunar. Cifra de aici este salariul de bază plus drepturile pe care legea le acordă
-            general — adică partea care se poate verifica în act, linie cu linie.
+            Indemnizația de hrană, {fmt(INDEMNIZATIE_HRANA)} de lei pe lună, se dă doar celor care câștigă cel mult{" "}
+            {fmt(PLAFON_HRANA_NET)} de lei net. Un asistent sau un infirmier o primesc. Un medic specialist sau primar
+            trece de plafon și o pierde.
+          </p>
+          <p>
+            În învățământ, plafonul nu se atinge niciodată, așa că orice profesor o primește. În sănătate, calculatorul
+            îți spune când ai trecut de el, ca să nu cauți degeaba rândul lipsă.
           </p>
         </Prose>
       </Section>
@@ -208,18 +180,12 @@ export default function Page() {
       <Faq
         items={FAQ}
         companion={
-          <CardCompanion
-            titlu="Cine e acoperit"
-            nota="Funcțiile de conducere din unitățile sanitare au tabele separate în anexă, cu coloane pe mărimea spitalului, și nu sunt incluse aici."
-          >
-            <Repere
-              randuri={[
-                ["Meserii acoperite", `${MESERII_SANATATE.length}`],
-                ["Trepte profesionale", `${TOTAL_TREPTE}`],
-                ["Trepte de gradație", "6"],
-                ["Formă consolidată", new Date(SURSA_GRILE.dataExtragerii).toLocaleDateString("ro-RO")],
-              ]}
-            />
+          <CardCompanion titlu="Sursa grilei">
+            <p className="text-sm leading-normal text-stone-600 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2">
+              <a href={SURSA_GRILE.url} target="_blank" rel="noopener">Legea-cadru 153/2017</a>, anexa II, în forma
+              consolidată la {new Date(SURSA_GRILE.dataExtragerii).toLocaleDateString("ro-RO", { day: "numeric", month: "long", year: "numeric" })}.
+              Calculatorul acoperă {MESERII_SANATATE.length} de meserii din sistemul sanitar public.
+            </p>
           </CardCompanion>
         }
       />

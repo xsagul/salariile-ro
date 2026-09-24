@@ -18,11 +18,11 @@
 // lună dintr-o indemnizație de 660.
 
 import type { Metadata } from "next";
-import { Breadcrumb, CardCompanion, Faq, H1, Hero, Lead, PaginiConexe, Prose, Repere, Section } from "@/app/components/ui";
+import { Breadcrumb, CardCompanion, Faq, Formula, H1, Hero, Lead, PaginiConexe, Prose, Repere, Section } from "@/app/components/ui";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
 import CalculatorSomaj from "@/app/components/CalculatorSomaj";
-import { COTE, ISR, ISR_AN, SURSA_ISR, TEMEI, URL_LEGE, calculeazaSomaj } from "@/lib/somaj";
+import { ISR, SURSA_ISR, URL_LEGE, calculeazaSomaj } from "@/lib/somaj";
 
 const TITLU = "Calculator Ajutor Șomaj 2026 - Cât primești și cât timp";
 const DESC =
@@ -47,31 +47,23 @@ const EX_ABS = calculeazaSomaj({ aniStagiu: 0, mediaBruta: 0, absolvent: true })
 const FAQ = [
   {
     q: "Cât este ajutorul de șomaj în 2026?",
-    a: `Pornește de la ${fmt(ISR)} lei pe lună — valoarea integrală a indicatorului social de referință — pentru oricine are cel puțin un an de stagiu de cotizare. Peste 3 ani de stagiu se adaugă un procent din media salariului brut pe ultimele 12 luni: 3%, 5%, 7% sau 10%, după vechime. La ${fmt(5000)} de lei brut și 7 ani de stagiu, indemnizația este ${fmt(EX_MEDIU.brut)} lei brut, adică ${fmt(EX_MEDIU.net)} lei după reținerea CASS.`,
+    a: `Cel puțin ${fmt(ISR)} lei brut pe lună, dacă ai minimum un an lucrat cu contribuții. După trei ani se adaugă un procent din salariul tău brut mediu. De exemplu, cu 7 ani de stagiu și ${fmt(5000)} de lei brut, primești ${fmt(EX_MEDIU.net)} lei în mână.`,
   },
   {
-    q: "Cât e șomajul în România, ca sumă minimă?",
-    a: `Minimul unui ajutor de șomaj acordat pe stagiu de cotizare este ${fmt(ISR)} lei brut pe lună, adică ${fmt(EX_MIC.net)} lei după CASS — atât primește cineva cu între unu și trei ani de vechime, la care nu se adaugă nicio cotă. Sub un an de stagiu nu se acordă nimic pe acest temei. Cea mai mică sumă din sistem este cea a absolventului: ${fmt(EX_ABS.brut)} lei brut, jumătate din indicatorul social de referință.`,
+    q: "Care e cel mai mic ajutor de șomaj?",
+    a: `Pentru cine a lucrat între unu și trei ani, ${fmt(ISR)} lei brut, adică ${fmt(EX_MIC.net)} lei în mână. Absolvenții fără stagiu primesc jumătate: ${fmt(EX_ABS.brut)} lei.`,
   },
   {
-    q: "Partea fixă este 75% din ISR sau ISR întreg?",
-    a: `Este ISR-ul întreg, ${fmt(ISR)} lei. Procentul de 75% a fost eliminat prin Legea nr. 273 din 29 septembrie 2022, în vigoare de la 3 octombrie 2022, care a modificat art. 39 alin. (2) lit. a) din Legea 76/2002. Calculatoarele care încă folosesc 75% dau un rezultat mai mic cu ${fmt(Math.round(ISR * 0.25))} de lei pe lună doar pe partea fixă.`,
+    q: "Partea fixă e 75% din indicatorul social sau întreg?",
+    a: `Întreg, ${fmt(ISR)} lei. Procentul de 75% a fost eliminat în octombrie 2022. Dacă dai peste un calcul cu 75%, e după regula veche.`,
   },
   {
-    q: "Cât timp se primește indemnizația de șomaj?",
-    a: "Șase luni la un stagiu de cotizare de cel puțin un an, nouă luni la cel puțin cinci ani și douăsprezece luni la un stagiu mai mare de zece ani, conform art. 39 alin. (1). Atenție la exact zece ani: durata rămâne de nouă luni, pentru că legea cere un stagiu mai mare de 10 ani, dar cota variabilă urcă deja la 7%, unde legea cere doar un stagiu de cel puțin 10 ani. Pragurile sunt diferite, iar diferența este intenționată.",
+    q: "Ce primesc dacă am lucrat mai puțin de un an?",
+    a: `Nu ai dreptul la ajutorul de șomaj obișnuit. Excepție fac absolvenții, care primesc ${fmt(EX_ABS.brut)} lei pe lună, timp de 6 luni, o singură dată pentru fiecare școală sau facultate terminată.`,
   },
   {
-    q: "Se rețin taxe din indemnizația de șomaj?",
-    a: `Se reține doar CASS, 10%, pentru că indemnizația de șomaj este în baza contribuției de sănătate — ${TEMEI.cass}. Nu se reține CAS: contribuția la pensie o plătește Agenția Națională pentru Ocuparea Forței de Muncă din bugetul asigurărilor pentru șomaj (${TEMEI.cas}), deci stagiul de pensie curge mai departe fără să scadă suma primită. Impozit pe venit nu se aplică.`,
-  },
-  {
-    q: "Ce primesc dacă am sub un an de stagiu de cotizare?",
-    a: "Pe temeiul art. 39 nu se deschide dreptul la indemnizație. Excepția este situația de absolvent al unei instituții de învățământ, care are temei separat, art. 40 alin. (1): o sumă fixă egală cu 50% din ISR, adică " + fmt(EX_ABS.brut) + " lei pe lună, timp de 6 luni, o singură dată pentru fiecare formă de învățământ absolvită.",
-  },
-  {
-    q: "Cum se calculează media veniturilor din ultimele 12 luni?",
-    a: "Este media veniturilor care au constituit baza de calcul al contribuției de asigurări pentru șomaj, pe ultimele 12 luni în care s-a realizat stagiu de cotizare — practic, media salariului brut. Contează doar dacă ai peste 3 ani de stagiu: sub acest prag nu există cotă, iar indemnizația este exact partea fixă.",
+    q: "Ce salariu se ia în calcul?",
+    a: "Media salariului brut din ultimele 12 luni lucrate. Contează doar dacă ai peste trei ani de stagiu. Sub acest prag primești exact partea fixă, oricât ai fi câștigat.",
   },
 ];
 
@@ -118,16 +110,6 @@ const jsonLd = {
   ],
 };
 
-const REPERE = [
-  [`Indicator social de referință ${ISR_AN}`, `${fmt(ISR)} lei`],
-  ["Partea fixă", "ISR integral"],
-  ["Cote pe stagiu", "3% · 5% · 7% · 10%"],
-  ["Durata", "6, 9 sau 12 luni"],
-  ["Absolvenți", `${fmt(EX_ABS.brut)} lei, 6 luni`],
-  ["Reținere", "CASS 10%"],
-  ["CAS", "plătit de ANOFM"],
-] as const;
-
 export default function Page() {
   return (
     <>
@@ -137,7 +119,7 @@ export default function Page() {
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Calculator indemnizație șomaj" }]} />
         <H1>Calculator indemnizație șomaj 2026</H1>
         <Lead>
-          Alege stagiul de cotizare și salariul brut mediu și vezi indemnizația lunară, câte luni o primești și netul.
+          Alege câți ani ai lucrat și salariul brut mediu, și vezi cât primești pe lună și câte luni.
         </Lead>
       </Hero>
 
@@ -145,80 +127,54 @@ export default function Page() {
 
       <Section
         companion={
-          <CardCompanion
-            titlu={`Repere · Legea 76/2002`}
-            nota={`Indicatorul social de referință este menținut pentru ${ISR_AN}. ${SURSA_ISR.nota}`}
-          >
-            <Repere randuri={REPERE} />
+          <CardCompanion titlu="Ce se reține din ajutor">
+            <p className="text-sm leading-normal text-stone-600">
+              Doar <strong className="font-semibold text-stone-900">10% pentru sănătate</strong>. Nu plătești impozit.
+            </p>
+            <p className="mt-3 text-sm leading-normal text-stone-600">
+              Contribuția la pensie o plătește agenția de ocupare, nu tu. Lunile de șomaj se socotesc la pensie, fără să
+              scadă suma primită.
+            </p>
           </CardCompanion>
         }
       >
         <Prose>
           <h2>Cum se calculează ajutorul de șomaj</h2>
           <p>
-            Indemnizația are două componente, iar a doua apare abia după trei ani de stagiu de
-            cotizare:
+            Are o parte fixă, aceeași pentru toți, și o parte care crește cu anii lucrați și cu salariul. A doua apare
+            abia după trei ani de stagiu.
           </p>
-          <ol>
-            <li>
-              <strong>Partea fixă</strong> — valoarea integrală a indicatorului social de referință,{" "}
-              {fmt(ISR)} lei în {ISR_AN}. Se cuvine oricui are cel puțin un an de stagiu de cotizare
-              ({TEMEI.parteFixa}).
-            </li>
-            <li>
-              <strong>Partea variabilă</strong> — un procent din media veniturilor brute pe ultimele
-              12 luni în care s-a realizat stagiu: {COTE.slice().reverse().map((c) => `${Math.round(c.cota * 100)}% de la ${c.minAni} ani`).join(", ")} ({TEMEI.cote}).
-            </li>
-          </ol>
+          <Formula
+            eticheta="Formula ajutorului de șomaj"
+            randuri={[
+              `Ajutor = ${fmt(ISR)} lei + cotă × salariul brut mediu`,
+              "Cotă   = 3% după 3 ani | 5% după 5 | 7% după 10 | 10% după 20",
+              "Net    = ajutor − 10% sănătate",
+              "Durată = 6 luni | 9 după 5 ani | 12 peste 10 ani",
+            ]}
+          />
           <p>
-            La un stagiu de doi ani și un salariu brut de 5.000 de lei, indemnizația este{" "}
-            {fmt(EX_MIC.brut)} lei pe lună — doar partea fixă, pentru că sub trei ani nu există
-            cotă. La șapte ani de stagiu și același salariu urcă la {fmt(EX_MEDIU.brut)} lei, iar la
-            peste douăzeci de ani și 8.000 de lei brut ajunge la {fmt(EX_MARE.brut)} lei.
-          </p>
-
-          <h2>Greșeala de 75% pe care o fac calculatoarele</h2>
-          <p>
-            Până în octombrie 2022, partea fixă era 75% din indicatorul social de referință. Legea
-            nr. 273 din 29 septembrie 2022 a modificat art. 39 alin. (2) lit. a) și a înlocuit
-            procentul cu valoarea integrală. Diferența este de {fmt(Math.round(ISR * 0.25))} de lei
-            pe lună, iar pe o perioadă de douăsprezece luni înseamnă{" "}
-            {fmt(Math.round(ISR * 0.25 * 12))} de lei.
+            Cei {fmt(ISR)} lei sunt indicatorul social de referință, o sumă fixată de stat. Salariul brut mediu e media
+            din ultimele 12 luni lucrate. Cu 7 ani de stagiu și {fmt(5000)} de lei brut, ajutorul e de{" "}
+            {fmt(EX_MEDIU.brut)} lei. Cu 25 de ani și {fmt(8000)} de lei, urcă la {fmt(EX_MARE.brut)} lei.
           </p>
           <p>
-            Verificat pe 9 septembrie 2026: două dintre site-urile care apar pe prima pagină la
-            „calculator indemnizație șomaj” folosesc încă formula veche.
+            Dacă dai peste calcule în care partea fixă e 75% din indicator, sunt după regula veche. Din octombrie 2022,
+            partea fixă e indicatorul întreg.
           </p>
 
-          <h2>Ce se reține și ce nu</h2>
+          <h2>Ce nu verifică un calculator</h2>
           <p>
-            Din indemnizație se reține <strong>doar CASS, 10%</strong>. Indemnizațiile de șomaj
-            acordate potrivit Legii nr. 76/2002 sunt enumerate expres în baza contribuției de
-            sănătate ({TEMEI.cass}).
+            Dacă ai dreptul la ajutor: contractul trebuie să se fi încheiat fără vina ta, iar tu trebuie să te
+            înscrii la agenția de ocupare și să-ți îndeplinești obligațiile lunare. Plata se oprește când te angajezi.
+            Cifra de aici e suma prevăzută de lege, nu confirmarea că o primești.
           </p>
-          <p>
-            <strong>CAS nu se reține.</strong> Contribuția la pensie pentru perioada de șomaj o
-            plătește Agenția Națională pentru Ocuparea Forței de Muncă, prin agențiile județene,
-            din bugetul asigurărilor pentru șomaj ({TEMEI.cas}). Perioada contează ca stagiu de
-            pensie, iar suma primită nu scade din cauza ei. Impozit pe venit nu se aplică:
-            indemnizația nu este venit salarial și nu apare între veniturile impozabile.
-          </p>
-          <p>
-            Temeiul complet:{" "}
+          <p className="source-note">
+            Sursa:{" "}
             <a href={URL_LEGE} target="_blank" rel="noopener">
               Legea nr. 76/2002, art. 39, 40 și 43
             </a>
-            .
-          </p>
-
-          <h2>Ce nu acoperă calculatorul</h2>
-          <p>
-            Condițiile de eligibilitate — încetarea raporturilor de muncă din motive neimputabile,
-            înregistrarea la agenția județeană, obligațiile lunare de la art. 41 — nu se pot deduce
-            dintr-un formular. Nici situațiile speciale: fracțiunile de lună se calculează
-            proporțional cu zilele calendaristice (art. 43 alin. (2)), iar plata încetează la
-            angajare sau la depășirea unor praguri de venit din activități autorizate (art. 44).
-            Cifra de aici este cuantumul stabilit potrivit legii, nu o confirmare a dreptului.
+            . {SURSA_ISR.nota}
           </p>
         </Prose>
       </Section>
@@ -227,8 +183,8 @@ export default function Page() {
         items={FAQ}
         companion={
           <CardCompanion
-            titlu="Pragurile care schimbă rezultatul"
-            nota="La exact 10 ani durata rămâne 9 luni, dar cota urcă la 7% — legea folosește praguri diferite pentru cele două."
+            titlu="Pragurile care schimbă suma"
+            nota="La exact 10 ani, durata rămâne 9 luni, dar cota urcă deja la 7%. Legea folosește praguri diferite pentru cele două."
           >
             <Repere
               randuri={[

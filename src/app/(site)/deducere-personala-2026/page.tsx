@@ -3,7 +3,7 @@ import Link from "@/app/components/Link";
 import { personSchema } from "@/lib/person";
 import { calculeazaDeducerePersonala, SALARIU_MINIM } from "@/lib/fiscal";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
-import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow, PaginiConexe } from "@/app/components/ui";
+import { Hero, Section, Breadcrumb, H1, Lead, Formula, PaginiConexe } from "@/app/components/ui";
 import TabelArticol from "@/app/components/TabelArticol";
 
 // Titlul vechi („tabel și calcul pentru salariu") depășea 60 de caractere cu brandul și
@@ -22,20 +22,16 @@ const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(n);
 
 const FAQ = [
   {
-    q: "Ce este deducerea personală?",
-    a: "Deducerea personală este o sumă care se scade din baza de calcul a impozitului pe venit. Nu se scade din CAS sau CASS, ci doar reduce impozitul de 10%.",
+    q: "Cine primește deducerea personală?",
+    a: `Salariații cu brut de cel mult ${fmt(PLAFON)} lei pe lună, adică salariul minim plus 2.000 de lei. Doar la locul de muncă de bază, nu și la al doilea contract.`,
   },
   {
-    q: "Cine primește deducere personală în 2026?",
-    a: "Se acordă salariaților care au funcția de bază la acel angajator și venit brut lunar de cel mult salariul minim plus 2.000 lei. Din 1 iulie 2026 plafonul este 6.325 lei brut.",
+    q: "Cine se socotește persoană în întreținere?",
+    a: `Soțul sau soția, copiii și alte rude până la gradul al doilea, ale tale sau ale partenerului, dacă au venituri de cel mult 20% din salariul minim, adică ${fmt(Math.round(SALARIU_MINIM * 0.2))} de lei pe lună.`,
   },
   {
-    q: "Deducerea personală crește salariul net?",
-    a: "Da, dar indirect. Pentru fiecare 100 lei deducere, impozitul scade cu 10 lei, deci netul crește cu aproximativ 10 lei.",
-  },
-  {
-    q: "Deducerea personală este același lucru cu facilitatea de 200 lei pentru salariul minim?",
-    a: "Nu. Deducerea personală reduce doar baza impozitului pe venit. Facilitatea OUG 89/2025 reduce baza pentru CAS, CASS și impozit doar în cazul salariului minim eligibil.",
+    q: "Pot primi deducerea și eu, și partenerul, pentru același copil?",
+    a: "Nu. O persoană în întreținere se trece la un singur contribuabil. Dacă amândoi părinții lucrează, se înțeleg care dintre ei o declară.",
   },
 ];
 
@@ -97,39 +93,22 @@ export default function DeducerePersonalaPage() {
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Deducere personală 2026" }]} />
         <H1>Deducere personală 2026</H1>
         <p className="mt-3 text-sm text-stone-600 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2">
-          Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat 16 august 2026
+          Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat {PAGE_LAST_MODIFIED[PATH].toLocaleDateString("ro-RO", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })}
         </p>
         <Lead>
-          La salariul minim de {fmt(SALARIU_MINIM)} lei brut, deducerea personală de bază în 2026 este de{" "}
+          Deducerea personală e partea din salariu pe care nu plătești impozit. La salariul minim, e de{" "}
           <strong>{fmt(maxFaraPersoane)} lei</strong> fără persoane în întreținere și urcă până la{" "}
-          <strong>{fmt(maxCuPatruPersoane)} lei</strong> cu 4 sau mai multe persoane. Peste plafonul de{" "}
-          <strong>{fmt(PLAFON)} lei brut</strong> (salariul minim plus 2.000 lei) deducerea devine 0.
+          <strong>{fmt(maxCuPatruPersoane)} lei</strong> cu patru sau mai multe. Scade pe măsură ce salariul crește și
+          dispare peste <strong>{fmt(PLAFON)} lei brut</strong>.
         </Lead>
-        <Eyebrow>Codul Fiscal art. 77 · regim valabil din 1 iulie 2026</Eyebrow>
       </Hero>
 
       <div>
-        <Section wide>
-          <div className="grid gap-4 sm:grid-cols-3">
-            <div className="rounded-md border border-stone-200 bg-surface p-5 shadow-soft">
-              <div className="text-3xl font-bold tabular-nums text-stone-900">{fmt(PLAFON)} lei</div>
-              <p className="mt-1 text-xs uppercase tracking-wide text-stone-600">Plafon brut</p>
-            </div>
-            <div className="rounded-md border border-stone-200 bg-surface p-5 shadow-soft">
-              <div className="text-3xl font-bold tabular-nums text-stone-900">{fmt(maxFaraPersoane)} lei</div>
-              <p className="mt-1 text-xs uppercase tracking-wide text-stone-600">Deducere maximă fără persoane</p>
-            </div>
-            <div className="rounded-md border border-stone-200 bg-surface p-5 shadow-soft">
-              <div className="text-3xl font-bold tabular-nums text-stone-900">{fmt(maxCuPatruPersoane)} lei</div>
-              <p className="mt-1 text-xs uppercase tracking-wide text-stone-600">Deducere maximă cu 4+ persoane</p>
-            </div>
-          </div>
-        </Section>
 
         <Section>
           <h2>Tabel deducere personală 2026</h2>
           <p>
-            Valorile de mai jos sunt calculate pentru regimul fiscal aplicabil din 1 iulie 2026. Peste {fmt(PLAFON)} lei brut, deducerea personală de bază devine 0.
+            Caută-ți salariul brut pe rând și numărul de persoane în întreținere pe coloană.
           </p>
           <TabelArticol>
               <thead>
@@ -152,71 +131,66 @@ export default function DeducerePersonalaPage() {
               </tbody>
           </TabelArticol>
           <p className="source-note">
-            Tabelul folosește aceeași funcție fiscală ca <Link href="/">calculatorul de salariu net</Link>. Pentru copii școlari sau salariat sub 26 de ani, se adaugă deduceri suplimentare în calculatorul avansat.
+            Valabil din 1 iulie 2026. Dacă ai sub 26 de ani sau copii la școală, deducerea e mai mare, ca mai jos.
           </p>
         </Section>
 
         <Section>
           <h2>Cum se calculează</h2>
           <p>
-            Deducerea personală de bază pleacă de la un procent din salariul minim brut și scade pe măsură ce brutul se apropie de plafonul de {fmt(PLAFON)} lei. Procentul depinde de numărul total de persoane în întreținere:
+            Deducerea pornește de la un procent din salariul minim, mai mare cu cât ai mai multe persoane în întreținere.
+            Pentru fiecare 50 de lei peste minim, procentul scade puțin, până dispare la plafon.
           </p>
-          <ul>
-            <li>0 persoane: 20% din salariul minim brut</li>
-            <li>1 persoană: 25% din salariul minim brut</li>
-            <li>2 persoane: 30% din salariul minim brut</li>
-            <li>3 persoane: 35% din salariul minim brut</li>
-            <li>4 sau mai multe persoane: 45% din salariul minim brut</li>
-          </ul>
+          <Formula
+            eticheta="Formula deducerii personale"
+            randuri={[
+              "Deducere  = salariul minim × procent",
+              "Procent   = 20% | 25% | 30% | 35% | 45%",
+              "            (0 | 1 | 2 | 3 | 4+ persoane în întreținere)",
+              "          − 0,5% pentru fiecare 50 lei peste salariul minim",
+              "Plus:       15% din salariul minim, dacă ai sub 26 de ani",
+              "            100 lei pentru fiecare copil la școală",
+            ]}
+          />
           <p>
-            Pentru fiecare tranșă de 50 lei peste salariul minim brut, procentul scade cu 0,5 puncte procentuale. Deducerea nu poate depăși baza impozabilă rămasă după CAS și CASS.
+            Deducerea nu e bani în plus pe fluturaș. E suma pe care nu se plătește impozitul de 10%, așa că netul crește
+            cu a zecea parte din ea: la o deducere de {fmt(maxFaraPersoane)} lei, primești cu{" "}
+            {fmt(Math.round(maxFaraPersoane * 0.1))} de lei mai mult în mână. Pentru calculul tău exact, deschide
+            opțiunile avansate din <Link href="/">calculatorul de salariu net</Link>.
+          </p>
+        </Section>
+
+
+        <Section>
+          <h2>Nu e același lucru cu cei 200 de lei de la salariul minim</h2>
+          <p>
+            La salariul minim mai există o scutire, separată de deducere: 200 de lei din brut nu plătesc deloc taxe, nici
+            pensie, nici sănătate, nici impozit. Deducerea scade doar impozitul. La salariul minim le primești pe amândouă,
+            de aceea netul de acolo e relativ mai mare. Calculul complet e pe pagina despre{" "}
+            <Link href="/salariu-minim">salariul minim</Link>.
           </p>
         </Section>
 
         <Section>
-          <h2>Impactul asupra salariului net</h2>
-          <p>
-            Deducerea personală nu este bani primiți separat. Ea reduce doar suma pe care se aplică impozitul pe venit de 10%. De aceea, efectul în net este aproximativ 10% din deducerea aplicată.
+          <h2>Întrebări frecvente</h2>
+          {FAQ.map((item) => (
+            <section key={item.q}>
+              <h3>{item.q}</h3>
+              <p>{item.a}</p>
+            </section>
+          ))}
+          <p className="source-note">
+            Sursa: <a href="https://legislatie.just.ro/Public/DetaliiDocument/257144" target="_blank" rel="noopener">Codul Fiscal</a>, art. 77.
+            Formulele complete sunt în <Link href="/metodologie">metodologie</Link>.
           </p>
-          <p>
-            Exemplu: dacă deducerea aplicată este {fmt(maxFaraPersoane)} lei, impozitul scade cu aproximativ {fmt(Math.round(maxFaraPersoane * 0.1))} lei. Netul crește cu aceeași sumă.
-          </p>
-          <p>
-            Pentru calculul exact al netului, cu persoane în întreținere, copii școlari, tichete sau scutire de impozit, folosește <Link href="/">calculatorul salariu net</Link> și deschide opțiunile avansate.
-          </p>
-        </Section>
-
-        <Section>
-          <h2>Deducere personală vs facilitatea de 200 lei</h2>
-          <p>
-            În 2026 există două mecanisme diferite care pot reduce taxele la salariile mici:
-          </p>
-          <ul>
-            <li><strong>Deducerea personală</strong> reduce baza pentru impozitul pe venit.</li>
-            <li><strong>Facilitatea OUG 89/2025</strong> scade 200 lei din baza pentru CAS, CASS și impozit, dar se aplică doar la salariul minim eligibil.</li>
-          </ul>
-          <p>
-            Cele două se pot cumula la salariul minim, motiv pentru care netul de la {fmt(SALARIU_MINIM)} lei brut este {fmt(2699)} lei în regimul de după 1 iulie 2026. Vezi calculul complet pe pagina despre <Link href="/salariu-minim">salariul minim 2026</Link>.
-          </p>
-        </Section>
-
-        <Section>
-          <h2>Surse și pagini conexe</h2>
-          <ul>
-            <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/257144" target="_blank" rel="noopener">Codul Fiscal, Legea 227/2015</a> · art. 77 pentru deducerea personală</li>
-            <li><Link href="/metodologie">Metodologia de calcul salariu net</Link>, cu formulele complete</li>
-            <li><Link href="/salariu-minim">Salariul minim pe economie 2026</Link>, cu facilitatea OUG 89/2025</li>
-            <li><Link href="/">Calculator salariu net 2026</Link>, pentru calculul complet brut-net</li>
-          </ul>
-          <p className="source-note">Pagina actualizată: 6 iulie 2026.</p>
         </Section>
       </div>
       <PaginiConexe
         linkuri={[
-          { href: "/salarii", label: "Salarii pe meserii", descriere: "Cât se câștigă în 123 de meserii, cu datele INS și netul calculat." },
-          { href: "/salariu-minim", label: "Salariul minim 2026", descriere: "4.325 lei brut din 1 iulie. Deducerea se aplică integral aici." },
-          { href: "/fluturas-salariu", label: "Generator de fluturaș", descriere: "Fluturaș PDF cu deducerea inclusă, fără să ceri date personale." },
-          { href: "/metodologie", label: "Metodologia de calcul", descriere: "Cum se calculează deducerea, cu sursele normative." },
+          { href: "/salarii", label: "Salarii pe meserii", descriere: "Cât se câștigă în fiecare meserie." },
+          { href: "/salariu-minim", label: "Salariul minim 2026", descriere: "Unde deducerea e cea mai mare." },
+          { href: "/fluturas-salariu", label: "Generator de fluturaș", descriere: "Fluturaș PDF cu deducerea inclusă." },
+          { href: "/metodologie", label: "Metodologia de calcul", descriere: "Toate formulele, cu sursele lor." },
         ]}
       />
     </>

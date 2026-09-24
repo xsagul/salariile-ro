@@ -15,7 +15,7 @@
 // din calculatoarele existente.
 
 import type { Metadata } from "next";
-import { Breadcrumb, CardCompanion, Faq, H1, Hero, Lead, PaginiConexe, Prose, Repere, Section } from "@/app/components/ui";
+import { Breadcrumb, CardCompanion, Faq, Formula, H1, Hero, Lead, PaginiConexe, Prose, Repere, Section } from "@/app/components/ui";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
 import CalculatorOreSuplimentare from "@/app/components/CalculatorOreSuplimentare";
@@ -24,7 +24,6 @@ import {
   COTA_MINIMA_SARBATOARE,
   COTA_MINIMA_SUPLIMENTARE,
   INTERVAL_NOAPTE,
-  ORE_PE_ZI,
   PRAG_ORE_NOAPTE_ZI,
   URL_COD_MUNCII,
   oreNormaleLuna,
@@ -50,30 +49,20 @@ const ORE_PE_LUNA = Array.from({ length: 12 }, (_, i) => oreNormaleLuna(2026, i)
 const ORE_MIN = Math.min(...ORE_PE_LUNA);
 const ORE_MAX = Math.max(...ORE_PE_LUNA);
 
+const DIFERENTA_TARIF = Math.round((ORE_MAX / ORE_MIN - 1) * 100);
+
 const FAQ = [
   {
-    q: "Cât este sporul pentru ore suplimentare în 2026?",
-    a: `Minimum ${pct(COTA_MINIMA_SUPLIMENTARE)} din salariul de bază, conform art. 123 alin. (2) din Codul Muncii. Este un prag, nu o valoare fixă: contractul colectiv sau cel individual pot stabili mai mult, niciodată mai puțin. Ora suplimentară se plătește integral, iar sporul se adaugă peste ea — la cota minimă, o oră suplimentară valorează 1,75 × tariful orar.`,
+    q: "Sunt obligat să primesc bani pentru orele suplimentare?",
+    a: "Nu neapărat. Legea cere întâi timp liber plătit, în următoarele 90 de zile. Doar dacă asta nu e posibil, orele se plătesc cu spor. Un angajator care îți dă zile libere în loc de bani respectă legea.",
   },
   {
-    q: "Orele suplimentare se plătesc obligatoriu?",
-    a: "Nu în primul rând. Art. 122 spune că munca suplimentară se compensează întâi cu ore libere plătite; plata cu spor vine abia dacă acea compensare nu este posibilă în termenul prevăzut de lege. Un angajator care îți dă timp liber în locul banilor respectă legea.",
+    q: "De la câte ore de noapte primesc spor?",
+    a: `De la cel puțin ${PRAG_ORE_NOAPTE_ZI} ore lucrate noaptea într-o zi de lucru, sau dacă cel puțin 30% din timpul tău lunar de lucru e noaptea. Sub aceste praguri, sporul poate exista doar dacă îl prevede contractul.`,
   },
   {
-    q: "Cât este sporul de noapte?",
-    a: `Minimum ${pct(COTA_MINIMA_NOAPTE)} din salariul de bază, dar legea oferă angajatorului o alternativă: art. 126 spune că salariatul de noapte beneficiază fie de program redus cu o oră fără scăderea salariului, fie de sporul de ${pct(COTA_MINIMA_NOAPTE)}. Munca de noapte este cea prestată între ${INTERVAL_NOAPTE}.`,
-  },
-  {
-    q: "De la câte ore se cuvine sporul de noapte?",
-    a: `Art. 125 alin. (2) definește salariatul de noapte ca fiind cel care lucrează cel puțin ${PRAG_ORE_NOAPTE_ZI} ore de noapte din ziua sa de lucru, sau cel puțin 30% din timpul său lunar de lucru. Sub aceste praguri, sporul nu decurge din lege — poate exista din contractul colectiv, dar nu se poate presupune.`,
-  },
-  {
-    q: "Cât se plătește munca în zi de sărbătoare legală?",
-    a: `Dacă nu se acordă zile libere în compensare, art. 142 alin. (2) prevede un spor de minimum ${pct(COTA_MINIMA_SARBATOARE)} din salariul de bază corespunzător muncii prestate. Ziua de sărbătoare este deja plătită prin salariul lunar, așa că sporul se adaugă peste ea.`,
-  },
-  {
-    q: "De ce contează în ce lună am făcut orele?",
-    a: `Pentru că tariful orar se obține împărțind salariul de bază la orele de program normal din luna respectivă, iar acestea variază: în 2026 lunile au între ${ORE_MIN} și ${ORE_MAX} ore. Aceeași oră suplimentară valorează mai mult într-o lună scurtă. Un calculator care folosește o medie fixă de 168 de ore greșește în aproape fiecare lună.`,
+    q: "Cât pot lucra peste program?",
+    a: "Cel mult 48 de ore pe săptămână cu tot cu orele suplimentare, socotit ca medie pe câteva luni. Tinerii sub 18 ani nu pot face deloc ore suplimentare.",
   },
 ];
 
@@ -121,13 +110,10 @@ const jsonLd = {
 };
 
 const REPERE = [
-  ["Spor ore suplimentare, minim", pct(COTA_MINIMA_SUPLIMENTARE)],
-  ["Spor de noapte, minim", pct(COTA_MINIMA_NOAPTE)],
-  ["Spor sărbători legale, minim", pct(COTA_MINIMA_SARBATOARE)],
-  ["Munca de noapte", INTERVAL_NOAPTE],
-  ["Prag ore de noapte pe zi", `${PRAG_ORE_NOAPTE_ZI} ore`],
-  ["Normă întreagă", `${ORE_PE_ZI} ore/zi, 40/săptămână`],
-  ["Ore de program în 2026", `${ORE_MIN}–${ORE_MAX} pe lună`],
+  ["Oră suplimentară", `spor de ${pct(COTA_MINIMA_SUPLIMENTARE)}`],
+  ["Oră de noapte", `spor de ${pct(COTA_MINIMA_NOAPTE)}`],
+  ["Zi de sărbătoare", `spor de ${pct(COTA_MINIMA_SARBATOARE)}`],
+  ["Noaptea înseamnă", INTERVAL_NOAPTE],
 ] as const;
 
 export default function Page() {
@@ -139,7 +125,7 @@ export default function Page() {
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Calculator ore suplimentare" }]} />
         <H1>Calculator ore suplimentare 2026</H1>
         <Lead>
-          Pune salariul de bază și orele lucrate peste program, noaptea sau de sărbători, și vezi sporul și netul.
+          Scrie salariul de bază și orele lucrate peste program, noaptea sau de sărbători, și vezi cât primești în plus.
         </Lead>
       </Hero>
 
@@ -148,85 +134,56 @@ export default function Page() {
       <Section
         companion={
           <CardCompanion
-            titlu="Repere · Codul Muncii"
-            nota="Toate cotele sunt minime legale. Contractul colectiv sau cel individual pot da mai mult, niciodată mai puțin."
+            titlu="Sporurile minime din lege"
+            nota="Contractul colectiv sau cel individual pot da mai mult, niciodată mai puțin."
           >
             <Repere randuri={REPERE} />
           </CardCompanion>
         }
       >
         <Prose>
-          <h2>Cele două reguli care se confundă</h2>
+          <h2>Cum se calculează</h2>
           <p>
-            Ora suplimentară și ora de noapte se plătesc după logici diferite, iar amestecul lor
-            este cea mai frecventă eroare din calculatoarele de pe piață.
+            Totul pornește de la cât valorează o oră din salariul tău. Apoi fiecare fel de oră primește sporul ei:
           </p>
-          <ul>
-            <li>
-              <strong>Ora suplimentară nu este cuprinsă în salariul lunar.</strong> Ea se plătește
-              integral, la tariful orar, iar peste ea se adaugă sporul de minimum{" "}
-              {pct(COTA_MINIMA_SUPLIMENTARE)}. La cota minimă, o oră suplimentară valorează 1,75 ×
-              tariful orar.
-            </li>
-            <li>
-              <strong>Ora de noapte este deja cuprinsă în salariul lunar.</strong> Este parte din
-              programul normal, doar că se prestează între {INTERVAL_NOAPTE}. Se adaugă numai sporul
-              de {pct(COTA_MINIMA_NOAPTE)}, nu încă o plată a orei.
-            </li>
-          </ul>
+          <Formula
+            eticheta="Formulele pentru ore suplimentare, noapte și sărbători"
+            randuri={[
+              "Tarif orar       = salariu de bază ÷ ore de program din lună",
+              "Oră suplimentară = tarif orar × 1,75",
+              "Spor de noapte   = tarif orar × 25% × ore de noapte",
+              "Zi de sărbătoare = tarif orar × 100% × ore lucrate",
+            ]}
+          />
           <p>
-            Un calculator care tratează ora de noapte ca pe una suplimentară supraestimează câștigul
-            cu zeci de procente.
+            Diferența care se pierde cel mai des: ora suplimentară e în plus față de program, așa că se plătește
+            întreagă și primește și spor. Ora de noapte face parte din programul tău, e deja plătită prin salariu,
+            deci primești doar sporul.
           </p>
 
-          <h2>De ce tariful orar diferă de la lună la lună</h2>
+          <h2>De ce contează luna</h2>
           <p>
-            Tariful orar este salariul de bază împărțit la orele de program normal din luna
-            respectivă, iar acestea nu sunt constante. În 2026, lunile au între {ORE_MIN} și{" "}
-            {ORE_MAX} ore de program. Aceeași oră suplimentară, cu același salariu, valorează mai
-            mult într-o lună scurtă decât într-una lungă — pentru că salariul se împarte la mai
-            puține ore. Calculatorul de aici folosește calendarul real al lunii alese, nu o medie.
+            Lunile nu au același număr de ore de program: în 2026, între {ORE_MIN} și {ORE_MAX}. Salariul e același,
+            dar se împarte la mai puține ore, așa că într-o lună scurtă ora ta valorează cu până la{" "}
+            {DIFERENTA_TARIF}% mai mult. Odată cu ea, și ora suplimentară. Calculatorul folosește calendarul lunii
+            alese, nu o medie.
           </p>
 
-          <h2>Formula tarifului orar</h2>
+          <h2>Timp liber sau bani</h2>
           <p>
-            Tot calculul pornește de aici, iar formula are un singur pas:
-          </p>
-          <p>
-            <strong>tarif orar = salariul de bază brut ÷ orele de program normal ale lunii</strong>
-          </p>
-          <p>
-            La un salariu de bază de 5.000 de lei în septembrie 2026, luna are 22 de zile
-            lucrătoare, adică 176 de ore, deci tariful orar este 28,41 lei. Aceeași persoană, în
-            ianuarie, are 144 de ore de program și un tarif orar de 34,72 lei — cu 22% mai mult, la
-            același salariu. Ora suplimentară urmează tariful, așa că valorează și ea mai mult.
-          </p>
-
-          <h2>Cum se calculează sporul de noapte</h2>
-          <p>
-            Sporul de noapte se aplică la tariful orar, pentru orele efectiv prestate între{" "}
-            {INTERVAL_NOAPTE}, și este de minimum {pct(COTA_MINIMA_NOAPTE)} din salariul de bază.
-            Calculul unui spor de noapte are trei intrări: tariful orar, numărul de ore de noapte și
-            cota. La 40 de ore de noapte și un tarif de 28,41 lei, sporul de noapte este 284 de lei
-            brut, nu 1.420 — pentru că orele sunt deja plătite prin salariul lunar.
-          </p>
-          <p>
-            Legea îi lasă însă angajatorului o alegere: art. 126 spune că salariatul de noapte
-            beneficiază <em>fie</em> de program redus cu o oră fără scăderea salariului,{" "}
-            <em>fie</em> de sporul de {pct(COTA_MINIMA_NOAPTE)}. Dacă primești program redus, sporul
-            nu se mai cuvine din acest temei.
+            Pentru orele suplimentare, legea preferă timpul liber: angajatorul îți dă ore libere plătite în
+            următoarele 90 de zile, iar sporul vine doar dacă asta nu se poate. La munca de noapte, angajatorul poate
+            alege între spor și un program mai scurt cu o oră, fără să-ți scadă salariul.
           </p>
 
           <h2>Ce nu intră în calcul</h2>
           <p>
-            Sporurile stabilite prin contractul colectiv peste minimele legale — de condiții
-            deosebite, de vechime, de fidelitate — nu sunt incluse, pentru că nu decurg din lege și
-            diferă de la un angajator la altul. Poți însă ridica procentele din calculator dacă
-            știi ce cotă îți dă contractul: câmpurile pornesc de la pragul legal, dar nu se pot
-            coborî sub el.
+            Sporurile din contractul colectiv, cum ar fi cele pentru condiții grele sau pentru vechime, depind de
+            fiecare angajator. Procentele din calculator pornesc de la minimul legal, dar le poți urca dacă
+            contractul tău dă mai mult.
           </p>
-          <p>
-            Temeiul complet:{" "}
+          <p className="source-note">
+            Sursa:{" "}
             <a href={URL_COD_MUNCII} target="_blank" rel="noopener">
               Codul Muncii, art. 112, 122–126 și 142
             </a>
@@ -235,23 +192,7 @@ export default function Page() {
         </Prose>
       </Section>
 
-      <Faq
-        items={FAQ}
-        companion={
-          <CardCompanion
-            titlu="Limitele muncii suplimentare"
-            nota="Munca suplimentară nu poate depăși limitele din art. 114–115, cu excepția forței majore sau a lucrărilor urgente."
-          >
-            <Repere
-              randuri={[
-                ["Compensare preferată de lege", "ore libere plătite"],
-                ["Plata cu spor", "doar dacă timpul liber nu e posibil"],
-                ["Tinerii sub 18 ani", "nu pot presta muncă suplimentară"],
-              ]}
-            />
-          </CardCompanion>
-        }
-      />
+      <Faq items={FAQ} />
 
       <PaginiConexe
         linkuri={[
