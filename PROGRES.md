@@ -3542,3 +3542,8 @@ Proprietari: `TITLU_PAGINA`, `TITLU_SECTIUNE`, `TITLU_CARD` din `ui.tsx`;
 (`text-xs`, notele și etichetele) rămâne, decizia proprietarului. Textul de citit
 rămâne 16 px, deși GOV.UK are 19 și Tailwind 18 pe desktop: pe Inter proprietarul
 îl consideră bun așa.
+
+Ajustare în aceeași zi, la cererea proprietarului: titlul de secțiune pe telefon
+urcă de la 20 la 22 px (scara devine 22 · 22 · 24 · 24 · 24). Măsurat după build:
+31 de pagini la 22 px pe telefon; doar titlul lung „Câștigul mediu brut lunar al
+sectorului…” de pe paginile de meserie trece pe 3 rânduri.

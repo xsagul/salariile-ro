@@ -171,7 +171,7 @@ for (const f of fisiereSrc) {
   );
 }
 // Scara titlurilor are un singur proprietar: TITLU_PAGINA și TITLU_SECTIUNE din
-// ui.tsx (26/28/30/36 și 20/22/24 px). Un h1 sau h2 cu mărime scrisă de mână
+// ui.tsx (26/28/30/36 și 22/24 px). Un h1 sau h2 cu mărime scrisă de mână
 // reintroduce amestecul măsurat pe 25 septembrie 2026.
 const marimiVechi = /<h[12][^>]*className="[^"]*(?:sm:)?text-(?:3xl|4xl|\[1\.625rem\])/;
 for (const f of fisiereSrc) {
@@ -180,8 +180,8 @@ for (const f of fisiereSrc) {
 }
 const ui = await read("src/app/components/ui.tsx");
 assert.ok(
-  ui.includes('"text-xl font-bold leading-tight tracking-[-0.02em] text-stone-900 md:text-[22px] lg:text-2xl"'),
-  "TITLU_SECTIUNE trebuie să rămână 20 · 22 · 24 px (telefon, tabletă, de la laptop mic)",
+  ui.includes('"text-[22px] font-bold leading-tight tracking-[-0.02em] text-stone-900 lg:text-2xl"'),
+  "TITLU_SECTIUNE trebuie să rămână 22 px pe telefon și tabletă, 24 de la laptopul mic",
 );
 assert.ok(
   ui.includes('"text-[26px] font-bold leading-tight tracking-[-0.02em] text-stone-900 md:text-[28px] lg:text-[30px] 2xl:text-4xl"'),

@@ -12,20 +12,22 @@ import type { ReactNode } from "react";
 // de la 1536 (inclusiv 1920 px cu scalare 125%) și monitor mare.
 //                        telefon  tabletă  laptop mic  laptop  PC mare
 //   titlul paginii:        26       28        30         36      36
-//   titlul de secțiune:    20       22        24         24      24
+//   titlul de secțiune:    22       22        24         24      24
 //   subtitlu în text:      18 peste tot
 //   titlul de card:        16 bold peste tot
 //   text de citit:         16 peste tot
 //   text mic:              14 peste tot
+// Secțiunea pe telefon a urcat de la 20 la 22 px în aceeași zi, la cererea
+// proprietarului, după ce a privit homepage-ul pe telefon.
 export const TITLU_PAGINA =
   "text-[26px] font-bold leading-tight tracking-[-0.02em] text-stone-900 md:text-[28px] lg:text-[30px] 2xl:text-4xl";
 export const TITLU_SECTIUNE =
-  "text-xl font-bold leading-tight tracking-[-0.02em] text-stone-900 md:text-[22px] lg:text-2xl";
+  "text-[22px] font-bold leading-tight tracking-[-0.02em] text-stone-900 lg:text-2xl";
 /** Titlul de card fără margine, pentru cardurile care își pun singure spațierea. */
 export const TITLU_CARD = "text-base font-bold tracking-[-0.01em] text-stone-900";
 
 const PROSE = [
-  "[&_h2]:mt-10 [&_h2]:mb-4 [&_h2]:text-xl [&_h2]:font-bold [&_h2]:leading-tight [&_h2]:tracking-[-0.02em] [&_h2]:text-stone-900 md:[&_h2]:text-[22px] lg:[&_h2]:text-2xl",
+  "[&_h2]:mt-10 [&_h2]:mb-4 [&_h2]:text-[22px] [&_h2]:font-bold [&_h2]:leading-tight [&_h2]:tracking-[-0.02em] [&_h2]:text-stone-900 lg:[&_h2]:text-2xl",
   "[&>h2:first-child]:mt-0",
   "[&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:tracking-[-0.01em] [&_h3]:text-stone-900",
   "[&_p]:mb-4 [&_p]:text-base [&_p]:leading-normal [&_p]:tracking-[-0.01em] [&_p]:text-stone-600",
