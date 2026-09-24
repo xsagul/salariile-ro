@@ -45,6 +45,11 @@ assert.match(header, /useState<string \| null>\(\s*\(\) => NAV\.filter\(isGroup\
 assert.doesNotMatch(header, /groupsOpen/, "Nu reveni la o stare pe grup: se deschideau mai multe odată");
 assert.match(header, /aria-controls="meniu-mobil"/, "Butonul de meniu trebuie legat de sertar");
 assert.match(header, /event\.key === "Escape"/);
+// Testul A/B/C al barei de sus (24 septembrie – 8 octombrie 2026): varianta vine
+// doar din cookie-ul `_ga`, care există numai după acord. Nimic nou pe dispozitiv.
+assert.match(header, /variantaNavbarDinCookie\(document\.cookie\)/, "Varianta barei se citește din cookie-ul GA4");
+assert.doesNotMatch(header, /localStorage|sessionStorage|document\.cookie\s*=/, "Testul barei nu scrie nimic pe dispozitiv");
+assert.match(header, /useState<VariantaNavbar>\("a"\)/, "Fără acord și la randarea statică, bara rămâne ca până acum");
 assert.doesNotMatch(embedLayout, /stats\.js|umami/i, "Layout-ul embed nu trebuie să activeze analytics");
 assert.doesNotMatch(embedLayout, /adsbygoogle|googlesyndication|googletagmanager|google-analytics/i, "Layout-ul embed nu trebuie să activeze AdSense sau GA4");
 assert.match(siteLayout, /ca-pub-5894290637571256[\s\S]*google-adsense-account/, "Verificarea AdSense trebuie să rămână în meta tag");
@@ -75,6 +80,13 @@ assert.equal(adresaFaraSume(""), "");
 assert.equal(clasaViewport(393), "360-399");
 assert.equal(clasaViewport(768), "768-1023");
 assert.equal(clasaViewport(1920), ">=1536");
+{
+  const { variantaNavbarDinCookie } = (await import(analyticsPath)) as typeof import("../src/lib/analytics");
+  assert.equal(variantaNavbarDinCookie("alt=1"), null, "Fără cookie GA4 nu există test");
+  const numar = { a: 0, b: 0, c: 0 };
+  for (let i = 0; i < 3000; i++) numar[variantaNavbarDinCookie(`_ga=GA1.1.${1000000 + i * 7919}.${1790000000 + i}`)!]++;
+  for (const n of Object.values(numar)) assert.ok(n > 900 && n < 1100, `Variantele barei trebuie împărțite egal: ${JSON.stringify(numar)}`);
+}
 
 const [masurare, analytics] = await Promise.all([read("src/app/components/Masurare.tsx"), read("src/lib/analytics.ts")]);
 assert.match(masurare, /const adresa = adresaFaraSume\(window\.location\.href\)/, "Adresa trimisă la GA4 trebuie curățată de sume");

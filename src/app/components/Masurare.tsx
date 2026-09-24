@@ -92,6 +92,8 @@ function seteazaViewport() {
 }
 
 function zona(element: Element): string {
+  // Sertarul mobil stă în afara <header> (e fix, peste pagină), dar e tot meniul.
+  if (element.closest("#meniu-mobil")) return "meniu_mobil";
   if (element.closest("header")) return "header";
   if (element.closest("footer")) return "footer";
   if (element.closest("main")) return "continut";

@@ -5,6 +5,7 @@ import Link from "@/app/components/Link";
 import Logo from "@/app/components/Logo";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
+import { raporteazaVariantaNavbar, variantaNavbarDinCookie, type VariantaNavbar } from "@/lib/analytics";
 
 type Leaf = { href: string; label: string };
 type Group = { label: string; children: Leaf[] };
@@ -70,6 +71,12 @@ export default function Header() {
   // logoul și cu X-ul în locul butonului de meniu. Bara nu e fixă, așa că
   // marginea se măsoară la deschidere.
   const [susSertar, setSusSertar] = useState(64);
+  // Testul A/B/C al barei de sus (vezi analytics.ts). Randarea statică e mereu
+  // varianta a; b și c se aplică după încărcare, doar vizitatorilor cu acord.
+  // Trecerea de la `relative` la `sticky` nu mută nimic în pagină: bara își
+  // păstrează locul, deci nu există salt de layout.
+  const [navbar, setNavbar] = useState<VariantaNavbar>("a");
+  const [baraAscunsa, setBaraAscunsa] = useState(false);
   // Sertarul mobil: un singur grup deschis odată (cerut de proprietar pe 24
   // septembrie 2026). La deschidere e deschis grupul paginii curente.
   const [grupDeschis, setGrupDeschis] = useState<string | null>(
@@ -89,6 +96,39 @@ export default function Header() {
     });
     return () => cancelAnimationFrame(frame);
   }, [pathname]);
+
+  useEffect(() => {
+    // Acordul poate veni în timpul vizitei, deci varianta se recitește la
+    // fiecare navigare și o dată la câteva secunde după încărcare.
+    const citeste = () => {
+      const varianta = variantaNavbarDinCookie(document.cookie);
+      if (!varianta) return;
+      setNavbar(varianta);
+      raporteazaVariantaNavbar(varianta);
+    };
+    const frame = requestAnimationFrame(citeste);
+    const intarziat = setTimeout(citeste, 6000);
+    return () => {
+      cancelAnimationFrame(frame);
+      clearTimeout(intarziat);
+    };
+  }, [pathname]);
+
+  useEffect(() => {
+    if (navbar !== "c") return;
+    // Varianta c: bara pleacă la derulare în jos și revine la prima derulare în
+    // sus. Pragul de 6 px ignoră tremuratul degetului; sus de tot e mereu vizibilă.
+    let ultim = window.scrollY;
+    const laDerulare = () => {
+      const y = window.scrollY;
+      if (y < 64) setBaraAscunsa(false);
+      else if (y > ultim + 6) setBaraAscunsa(true);
+      else if (y < ultim - 6) setBaraAscunsa(false);
+      ultim = y;
+    };
+    window.addEventListener("scroll", laDerulare, { passive: true });
+    return () => window.removeEventListener("scroll", laDerulare);
+  }, [navbar]);
 
   useEffect(() => {
     const onPointerDown = (event: MouseEvent) => {
@@ -178,7 +218,19 @@ export default function Header() {
         onClick={inchideSertarul}
       />
 
-    <header ref={headerRef} className="hairline-b relative w-full bg-canvas">
+    <header
+      ref={headerRef}
+      data-navbar={navbar}
+      className={`hairline-b w-full bg-canvas ${
+        navbar === "a"
+          ? "relative"
+          : `sticky top-0 z-40 ${
+              navbar === "c"
+                ? `transition-transform duration-200 motion-reduce:transition-none ${baraAscunsa && !open ? "-translate-y-full" : ""}`
+                : ""
+            }`
+      }`}
+    >
       <div className="flex h-16 items-center gap-2 px-4 sm:px-6">
         <Link href="/" aria-label="Salariile, pagina principală" className="mr-auto inline-flex min-h-11 items-center">
           <Logo className="h-7 w-auto sm:h-8" />
