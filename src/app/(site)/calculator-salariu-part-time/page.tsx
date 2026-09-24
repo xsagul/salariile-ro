@@ -180,7 +180,7 @@ export default function Page() {
             </p>
           </Prose>
 
-          <aside className="min-w-0 md:col-span-2">
+          <aside className="min-w-0 md:col-span-2 md:self-start">
             <CardCompanion
               titlu="Baza minimă pentru contribuții"
               nota="Pentru o lună întreagă. La un contract început în cursul lunii, baza scade proporțional cu zilele."

@@ -339,7 +339,7 @@ export default function ZileLibere2026Page() {
                 ))}
               </div>
             </div>
-            <aside className="mt-8 md:col-span-2 md:mt-0">
+            <aside className="mt-8 md:col-span-2 md:mt-0 md:self-start">
               <div className={`flex h-full flex-col ${card}`}>
                 <h3 className="mb-3 text-xs font-medium text-stone-600">Surse oficiale</h3>
                 <ul className={`flex flex-col gap-2 text-sm leading-normal text-stone-600 ${links}`}>

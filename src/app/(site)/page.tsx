@@ -195,7 +195,7 @@ export default function Page() {
                 </div>
               </div>
 
-              <aside className="mt-8 md:col-span-2 md:mt-0">
+              <aside className="mt-8 md:col-span-2 md:mt-0 md:self-start">
                 <div className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-600">
                   <h3 className="text-base font-bold tracking-[-0.01em] text-stone-900">Ce mai modifică netul</h3>
                   <p className="mt-2 text-sm leading-normal text-stone-600">La același brut, doi oameni pot primi sume diferite în mână. Contează:</p>
@@ -232,7 +232,7 @@ export default function Page() {
                 </div>
               </div>
 
-              <aside className="mt-8 md:col-span-2 md:mt-0">
+              <aside className="mt-8 md:col-span-2 md:mt-0 md:self-start">
                 <div className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
                   <h3 className="mb-3 text-xs font-medium text-stone-600">Surse oficiale</h3>
                   <ul className="flex flex-col gap-2 text-sm [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-600">

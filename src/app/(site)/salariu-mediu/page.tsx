@@ -191,7 +191,7 @@ const links =
   "[&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-600";
 const strong = "[&_strong]:font-semibold [&_strong]:text-stone-900";
 const row = "md:grid md:grid-cols-5 md:gap-8 lg:gap-10";
-const aside = "mt-8 md:col-span-2 md:mt-0";
+const aside = "mt-8 md:col-span-2 md:mt-0 md:self-start";
 
 // ─── Pagina ──────────────────────────────────────────────────────────────────
 

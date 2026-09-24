@@ -266,7 +266,10 @@ export function GrilaPagina({
   return (
     <div className="md:grid md:grid-cols-5 md:gap-6">
       <div className="md:col-span-3">{continut}</div>
-      {companion ? <aside className="mt-8 md:col-span-2 md:mt-0">{companion}</aside> : null}
+      {/* `self-start`: cardul ia doar înălțimea conținutului, nu a textului din
+          stânga — decis de proprietar pe 24 septembrie 2026, după ce cardurile
+          întinse lăsau cutii goale lângă secțiunile lungi. */}
+      {companion ? <aside className="mt-8 md:col-span-2 md:mt-0 md:self-start">{companion}</aside> : null}
     </div>
   );
 }

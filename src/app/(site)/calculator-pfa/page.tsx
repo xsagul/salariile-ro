@@ -203,7 +203,7 @@ export default function CalculatorPfaPage() {
                 </div>
               </div>
 
-              <aside className="mt-8 md:col-span-2 md:mt-0">
+              <aside className="mt-8 md:col-span-2 md:mt-0 md:self-start">
                 <div className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
                   <h3 className="mb-3 text-xs font-medium text-stone-600">Plafoane PFA · 2026</h3>
                   <dl className="text-sm">
@@ -256,7 +256,7 @@ export default function CalculatorPfaPage() {
                 <p className="mt-3 text-xs text-stone-600">Pentru anul fiscal 2026.</p>
               </div>
 
-              <aside className="mt-8 md:col-span-2 md:mt-0">
+              <aside className="mt-8 md:col-span-2 md:mt-0 md:self-start">
                 <div className="flex h-full flex-col rounded-md border border-stone-300 bg-surface p-4 shadow-soft sm:p-6">
                   <h3 className="mb-3 text-xs font-medium text-stone-600">Pragul care te costă</h3>
                   <p className="text-sm leading-normal text-stone-700">
@@ -311,7 +311,7 @@ export default function CalculatorPfaPage() {
                 </p>
               </div>
 
-              <aside className="mt-8 md:col-span-2 md:mt-0">
+              <aside className="mt-8 md:col-span-2 md:mt-0 md:self-start">
                 <div className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
                   <h3 className="mb-3 text-xs font-medium text-stone-600">Cheltuieli deductibile uzuale</h3>
                   <ul className="list-disc pl-4 text-sm leading-normal text-stone-600 [&_li]:mb-1.5">
@@ -417,7 +417,7 @@ export default function CalculatorPfaPage() {
                 </p>
               </div>
 
-              <aside className="mt-8 md:col-span-2 md:mt-0">
+              <aside className="mt-8 md:col-span-2 md:mt-0 md:self-start">
                 <div className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
                   <h3 className="mb-3 text-xs font-medium text-stone-600">Calendarul unui PFA</h3>
                   <dl className="text-sm">
@@ -466,7 +466,7 @@ export default function CalculatorPfaPage() {
                 </div>
               </div>
 
-              <aside className="mt-8 md:col-span-2 md:mt-0">
+              <aside className="mt-8 md:col-span-2 md:mt-0 md:self-start">
                 <div className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
                   <h3 className="mb-3 text-xs font-medium text-stone-600">Surse oficiale</h3>
                   <ul className="flex flex-col gap-2 text-sm leading-normal text-stone-600 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-600">
