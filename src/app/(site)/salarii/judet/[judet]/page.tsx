@@ -179,8 +179,8 @@ export default async function JudetPage({ params }: Props) {
                 {procent(Math.abs(abatereJudet), 0)}%
               </>
             ) : null}
-            . Județul e pe locul {loc} din {JUDETE.length}. Valoarea nu este netă și nu reprezintă salariul minim din
-            2026; seria județeană este anuală și separată de datele curente ale site-ului.
+            . Județul e pe locul {loc} din {JUDETE.length}. Suma e brută, nu netă, și nu are legătură cu salariul
+            minim din 2026.
           </Lead>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -217,10 +217,9 @@ export default async function JudetPage({ params }: Props) {
               Câștiguri medii brute lunare pe activități în {judet.nume} — media {AN}
             </h2>
             <p className="mt-4 max-w-3xl text-base leading-normal text-stone-600">
-              Toate sumele sunt brute lunare, calculate ca medie pentru întregul an {AN}; nu sunt nete și nu sunt
-              salariul minim din 2026. Coloana din dreapta compară județul cu media națională a <em>aceleiași</em>{" "}
-              activități. Unde o activitate găzduiește meserii din catalogul nostru, le găsești numite, iar
-              toate sunt în <Link href="/salarii">catalogul de salarii pe meserii</Link>.
+              Coloana din dreapta compară județul cu media din toată țara a <em>aceleiași</em> activități. Unde
+              o activitate are meserii în catalogul nostru, le găsești numite. Toate sunt în{" "}
+              <Link href="/salarii">catalogul de salarii pe meserii</Link>.
             </p>
             <div className="my-6 overflow-x-auto">
               <table className="w-full min-w-[44rem] border-separate border-spacing-0 overflow-hidden rounded-md border border-stone-200 bg-surface text-sm shadow-soft tabular-nums">

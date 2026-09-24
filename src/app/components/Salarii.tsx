@@ -180,29 +180,28 @@ export function TabelJudete({
     <div className="my-6">
       <div className="rounded-md border border-stone-200 bg-surface p-4 text-sm leading-normal text-stone-600 shadow-soft">
         <p>
-          <strong className="font-semibold text-stone-900">Brut lunar, media anului {an}:</strong> fiecare sumă este
-          câștigul salarial nominal mediu brut lunar al activității CAEN Rev.2 „{numeActivitate}”, calculat pentru
-          întregul an. Nu este salariu net și nu reprezintă salariul minim din 2026. Vezi{" "}
+          <strong className="font-semibold text-stone-900">Brut lunar, media anului {an}.</strong> Nu este salariu net și
+          nu reprezintă salariul minim din 2026, ci media salariilor brute din sectorul „{numeActivitate}”, după{" "}
           <a
             href={INS_SURSA.url}
             target="_blank"
             rel="noopener"
             className="font-medium text-stone-900 underline underline-offset-2 hover:text-stone-600"
           >
-            definiția INS (FOM107E)
+            INS (FOM107E)
           </a>
           .
         </p>
         {este2024 && (
           <p className="mt-2">
-            În 2024, salariul de bază minim brut pentru normă întreagă a fost{" "}
+            Pentru comparație, salariul minim din 2024 a fost în medie 3.500 lei brut pe lună:{" "}
             <a
               href="https://legislatie.just.ro/Public/DetaliiDocument/274843"
               target="_blank"
               rel="noopener"
               className="font-medium text-stone-900 underline underline-offset-2 hover:text-stone-600"
             >
-              3.300 lei în ianuarie–iunie
+              3.300 lei până în iunie
             </a>{" "}
             și{" "}
             <a
@@ -211,14 +210,12 @@ export function TabelJudete({
               rel="noopener"
               className="font-medium text-stone-900 underline underline-offset-2 hover:text-stone-600"
             >
-              3.700 lei din 1 iulie
+              3.700 lei din iulie
             </a>
-            . Reperul calendaristic simplu pentru cele 12 luni este 3.500 lei; o medie anuală nu se compară doar cu
-            nivelul din semestrul al doilea.
+            .
             {minim.brut >= 3_500
-              ? ` În acest tabel, chiar valoarea minimă — ${lei(minim.brut)} lei în ${minim.judet} — este peste acel reper.`
-              : ""}{" "}
-            Câștigul mediu și salariul de bază minim rămân indicatori diferiți.
+              ? ` Chiar și în ${minim.judet}, ultimul din tabel, media e peste el.`
+              : ""}
           </p>
         )}
       </div>

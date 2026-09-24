@@ -14,7 +14,6 @@ import { useState } from "react";
 import FeedbackContextual from "@/app/components/FeedbackContextual";
 import { SelectorPastile, type OptiunePastila } from "@/app/components/SelectorPastile";
 import {
-  COTE,
   ISR,
   ISR_AN,
   TEMEI,
@@ -213,15 +212,6 @@ export default function CalculatorSomaj() {
           </p>
         )}
 
-        <div className="mt-5 border-t border-stone-200 pt-4 text-xs leading-relaxed text-stone-600">
-          <p>
-            Partea fixă este <strong className="text-stone-800">valoarea integrală a ISR</strong>,
-            nu 75% din ea. Procentul a fost eliminat prin Legea nr. 273/2022, în vigoare din 3
-            octombrie 2022, iar calculatoarele care încă îl folosesc dau un rezultat mai mic cu
-            un sfert din partea fixă. Cotele variabile sunt cele de la {TEMEI.cote}:{" "}
-            {COTE.slice().reverse().map((c) => `${Math.round(c.cota * 100)}% de la ${c.minAni} ani`).join(", ")}.
-          </p>
-        </div>
 
         {r ? (
           <div className="mt-4">

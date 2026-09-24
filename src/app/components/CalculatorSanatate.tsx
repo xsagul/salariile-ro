@@ -251,15 +251,6 @@ export default function CalculatorSanatate({ meserii }: { meserii: MeserieSanata
           </p>
         ) : null}
 
-        <div className="mt-5 border-t border-stone-200 pt-4 text-xs leading-relaxed text-stone-600">
-          <p>
-            Calculul acoperă salariul de bază din grilă, gradația de vechime și indemnizațiile
-            generale din corpul legii. <strong className="text-stone-800">Nu include</strong>{" "}
-            sporurile pentru condiții deosebite, vătămătoare sau periculoase din Anexa nr. II
-            cap. II, gărzile și sporul de noapte: procentele depind de încadrarea concretă a
-            postului și de graficul lunar, care nu se pot deduce din lege.
-          </p>
-        </div>
 
         {r ? (
           <div className="mt-4">

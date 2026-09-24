@@ -178,8 +178,12 @@ function faqPentru(date: DateMeserie) {
   intrebari.push(
     {
       q: `Care sunt treptele de salarizare pentru ${numeMic}?`,
-      a: trepte.length
-        ? `Grila legală prevede ${trepte.length} trepte: ${trepte.map(t => `${t.eticheta.toLocaleLowerCase("ro-RO")} ${lei(t.net)}`).join("; ")}. Sumele sunt salarii de bază la gradația 0, înainte de vechime și sporuri.`
+      // Cu multe trepte (la învățământ sunt zeci), lista întreagă devenea un
+      // paragraf cu zeci de cifre. Răspunsul dă capetele; tabelul are restul.
+      a: trepte.length > 4
+        ? `Grila legală are ${trepte.length} de trepte, de la ${lei(dupaSuma[0].net)} la ${lei(dupaSuma[dupaSuma.length - 1].net)}, înainte de vechime și sporuri. Toate sunt în tabelul de pe pagină.`
+        : trepte.length
+        ? `Grila legală prevede ${trepte.length} trepte: ${trepte.map(t => `${t.eticheta.toLocaleLowerCase("ro-RO")} ${lei(t.net)}`).join("; ")}. Sumele sunt salariile de pornire, înainte de vechime și sporuri.`
         : "Pentru rolurile din sectorul public, grilele legale prevăd trepte explicite după grad și vechime. În sectorul privat remunerația variază după experiență, competențe și responsabilități, iar reperul de pe pagină este însoțit de tipul sursei și de populația pe care o descrie.",
     },
     {
@@ -272,7 +276,7 @@ export default async function MeseriePage({ params }: Props) {
             ]}
           />
           <H1>Salariu {numeMic} în 2026</H1>
-          <Lead>{meserie.ceFace} Vezi reperul salarial, sursa și limitele lui. Compară meserii înrudite.</Lead>
+          <Lead>{meserie.ceFace}</Lead>
           <ReperSalariu date={date} />
           <TrepteRapide date={date} />
           <PiloniSalariu date={date} />
@@ -399,13 +403,14 @@ export default async function MeseriePage({ params }: Props) {
                 <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">
                   Ce face un {numeMic}
                 </h2>
-                <p className="mt-4 text-base leading-normal text-stone-600">{meserie.ceFace}</p>
                 <p className="mt-4 text-base leading-normal text-stone-600">
-                  Activitatea angajatorului este CAEN {sector.cheie} — {sector.denumire}. Grupa ocupațională folosită pentru contextul statistic este {isco?.nume ?? 'ISCO-08'}. Aceste clasificări descriu populații mai largi decât meseria.
+                  În statisticile INS, meseria intră la activitatea CAEN {sector.cheie}, {sector.denumire.toLocaleLowerCase("ro-RO")},
+                  și în grupa de ocupații „{isco?.nume ?? 'ISCO-08'}”. Amândouă cuprind mai mulți oameni decât meseria, de aceea
+                  cifrele lor sunt doar context.
                 </p>
                 <p className="mt-4 text-sm leading-relaxed text-stone-600">
-                  {meserie.cor ? <>Exemplu de specializare COR: <strong>{meserie.cor}</strong> — {corCatalogue.occupations[meserie.slug as keyof typeof corCatalogue.occupations]?.name}. Verifică dacă denumirea și atribuțiile corespund postului tău. </> : <>Titlul acestei pagini poate acoperi mai multe încadrări; codul exact se stabilește după atribuțiile postului. </>}
-                  Referință: <a href={corCatalogue.source} className="underline">catalogul oficial COR, instantaneul din 22 aprilie 2024</a>. Modificările ulterioare trebuie verificate înaintea unei încadrări contractuale; acesta nu este un registru consolidat la zi.
+                  {meserie.cor ? <>Codul COR: <strong>{meserie.cor}</strong>, {corCatalogue.occupations[meserie.slug as keyof typeof corCatalogue.occupations]?.name}. Verifică dacă atribuțiile se potrivesc cu postul tău. </> : <>Meseria poate avea mai multe coduri COR; cel corect se alege după atribuțiile postului. </>}
+                  Sursa: <a href={corCatalogue.source} className="underline">catalogul COR din aprilie 2024</a>.
                 </p>
               </section>
 
@@ -416,13 +421,12 @@ export default async function MeseriePage({ params }: Props) {
                 <p className="mt-4 text-base leading-normal text-stone-600">
                   {variatie !== null ? (
                     <>
-                      Față de aceeași lună a anului trecut, câștigul mediu net din CAEN {sector.cheie}{" "}
+                      Într-un an, câștigul mediu net din CAEN {sector.cheie}{" "}
                       {variatie >= 0 ? "a crescut" : "a scăzut"} cu{" "}
-                      <strong>{procent(Math.abs(variatie))}%</strong>. Seria de mai jos este lunară și nedeflatată:
-                      arată lei nominali, nu putere de cumpărare.
+                      <strong>{procent(Math.abs(variatie))}%</strong>. Sumele nu țin cont de inflație.
                     </>
                   ) : (
-                    <>Seria de mai jos este lunară și nedeflatată: arată lei nominali, nu putere de cumpărare.</>
+                    <>Sumele nu țin cont de inflație.</>
                   )}
                 </p>
                 <GraficSerie
@@ -438,10 +442,9 @@ export default async function MeseriePage({ params }: Props) {
                     Vârsta și veniturile grupei ISCO
                   </h2>
                   <p className="mt-4 text-base leading-normal text-stone-600">
-                    Aceste date descriu grupa majoră de ocupații, nu experiența în meseria individuală. Ancheta INS din octombrie {AN_ANCHETA}{" "}
-                    publică, pentru grupa „{isco.nume}”, atât salariul de bază de încadrare, cât și venitul brut
-                    realizat — adică baza plus sporuri, prime și ore suplimentare. Diferența dintre coloane arată cât
-                    din câștig vine din afara încadrării.
+                    Datele sunt pentru toată grupa „{isco.nume}”, nu doar pentru această meserie, din ancheta INS
+                    din octombrie {AN_ANCHETA}. Arată salariul de bază din contract și cât s-a câștigat de fapt, cu
+                    sporuri, prime și ore suplimentare.
                   </p>
                   {/* Cifra explica o confuzie reala: omul isi vede salariul de
                       baza in contract, vede media de pe site mai mare si crede
@@ -449,10 +452,9 @@ export default async function MeseriePage({ params }: Props) {
                       din afara incadrarii. */}
                   {pesteBaza !== null && (
                     <p className="mt-4 text-base leading-normal text-stone-600">
-                      În această grupă, venitul realizat este cu{" "}
-                      <strong className="font-semibold text-stone-900">{procent(pesteBaza, 0)}% peste</strong> salariul
-                      de bază de încadrare. Contractul trece salariul de bază, iar statistica măsoară ce s-a plătit
-                      efectiv, cu tot cu sporuri și ore suplimentare.
+                      În această grupă, oamenii câștigă de fapt cu{" "}
+                      <strong className="font-semibold text-stone-900">{procent(pesteBaza, 0)}% mai mult</strong> decât
+                      salariul de bază din contract.
                     </p>
                   )}
                   <div className="my-6 overflow-x-auto">
@@ -540,10 +542,8 @@ export default async function MeseriePage({ params }: Props) {
                     Câștigul mediu brut lunar al sectorului pe județe — media {AN_JUDETE_SCURT}
                   </h2>
                   <p className="mt-4 text-base leading-normal text-stone-600">
-                    Seria județeană INS este separată de cifrele nete din 2026 afișate mai sus. Fiecare sumă din tabel
-                    este câștigul salarial nominal mediu <strong>brut lunar</strong> al activității CAEN Rev.2
-                    „{etichetaSectorJudete}”, calculat ca medie pentru întregul an {AN_JUDETE_SCURT}. Primul județ a
-                    avut o medie de{" "}
+                    Media salariului brut din sectorul „{etichetaSectorJudete}”, în fiecare județ, pe tot anul{" "}
+                    {AN_JUDETE_SCURT}. În primul județ se câștigă de{" "}
                     <strong>
                       {(interval?.raport ?? judete[0].brut / judete[judete.length - 1].brut).toLocaleString("ro-RO", {
                         minimumFractionDigits: 1,
@@ -551,8 +551,7 @@ export default async function MeseriePage({ params }: Props) {
                       })}{" "}
                       ori
                     </strong>{" "}
-                    mai mare decât ultimul. Valorile sunt pe județ, nu pe oraș, nu sunt nete și nu reprezintă
-                    salariul minim din 2026.
+                    mai mult decât în ultimul.
                   </p>
                   {/* Baza de comparație este valoarea NAȚIONALĂ a aceleiași serii
                       anuale, nu media lunară pe CAEN Rev.3 — altfel toate județele
@@ -571,21 +570,13 @@ export default async function MeseriePage({ params }: Props) {
                 </details>
               )}
 
-              <section className="mt-10">
-                <h2 className="text-xl font-bold text-stone-900">Ce contează când compari două oferte</h2>
-                <ul className="mt-4 space-y-3 text-stone-600">
-                  <li><strong className="text-stone-900">Suma garantată.</strong> Separă netul lunar fix de bonusuri, bacșișuri, diurnă și beneficii.</li>
-                  <li><strong className="text-stone-900">Programul.</strong> Compară același număr de ore și verifică turele, orele suplimentare și timpul de deplasare.</li>
-                  <li><strong className="text-stone-900">Responsabilitățile.</strong> Titlul postului poate fi același, dar atribuțiile și nivelul de autonomie pot fi diferite.</li>
-                </ul>
-              </section>
             </div>
 
             <aside id="oferta" className="min-w-0 lg:col-span-1">
               <div className="rounded-md border border-stone-200 bg-surface p-6 shadow-soft">
                 <h2 className="text-lg font-semibold tracking-[-0.01em] text-stone-900">Calculează-ți net-ul</h2>
                 <p className="mt-2 text-sm leading-normal text-stone-600">
-                  Pune brutul tău, nu media sectorului, și vezi exact CAS, CASS, impozit și costul angajatorului.
+                  Scrie brutul din oferta ta și vezi cât primești în mână.
                 </p>
                 <Link
                   href="/"

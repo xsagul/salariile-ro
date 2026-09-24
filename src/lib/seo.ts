@@ -76,7 +76,7 @@ export const PAGE_LAST_MODIFIED: Record<string, Date> = {
   "/salariu-mediu": new Date("2026-09-24T00:00:00.000Z"),
   "/smartbill": new Date("2026-09-22T00:00:00.000Z"),
   "/saga": new Date("2026-09-22T00:00:00.000Z"),
-  "/salarii": new Date("2026-09-07T00:00:00.000Z"),
+  "/salarii": new Date("2026-09-24T00:00:00.000Z"),
   "/salarii/acoperire": new Date("2026-09-07"),
   "/salarii/clasament": new Date("2026-09-07T00:00:00.000Z"),
   "/salarii/judete": new Date("2026-08-25T00:00:00.000Z"),
@@ -102,12 +102,12 @@ export const PAGE_LAST_MODIFIED: Record<string, Date> = {
 
 import { INS_GENERAT_LA } from "@/lib/ins-date";
 
-export const MESERII_EDITORIAL_UPDATE = new Date("2026-09-09T00:00:00.000Z");
+export const MESERII_EDITORIAL_UPDATE = new Date("2026-09-24T00:00:00.000Z");
 export const MESERII_LAST_MODIFIED = new Date(
   Math.max(new Date(INS_GENERAT_LA).getTime(), MESERII_EDITORIAL_UPDATE.getTime()),
 );
 
-export const JUDETE_EDITORIAL_UPDATE = new Date("2026-09-09T00:00:00.000Z");
+export const JUDETE_EDITORIAL_UPDATE = new Date("2026-09-24T00:00:00.000Z");
 export const JUDETE_LAST_MODIFIED = new Date(
   Math.max(new Date(INS_GENERAT_LA).getTime(), JUDETE_EDITORIAL_UPDATE.getTime()),
 );

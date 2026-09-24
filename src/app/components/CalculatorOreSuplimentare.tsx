@@ -274,14 +274,6 @@ export default function CalculatorOreSuplimentare() {
           </p>
         ) : null}
 
-        <div className="mt-5 border-t border-stone-200 pt-4 text-xs leading-relaxed text-stone-600">
-          <p>
-            <strong className="text-stone-800">Sporul nu e prima opțiune a legii.</strong> Munca
-            suplimentară se compensează întâi cu ore libere plătite ({TEMEI.compensare}); sporul se
-            plătește abia dacă asta nu e posibilă. Cotele de mai sus sunt minimele legale — contractul
-            colectiv sau cel individual pot da mai mult, niciodată mai puțin.
-          </p>
-        </div>
 
         {r ? (
           <div className="mt-4">

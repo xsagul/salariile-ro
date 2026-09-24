@@ -99,7 +99,7 @@ export function reperMeserie(d: DateMeserie): ReperMeserie {
       value: minVal,
       upper: maxVal,
       n: null,
-      label: 'Interval net calculat din grila de bază',
+      label: 'Cât iei în mână, după grila legală',
       period: teaching.length ? 'coloana iunie 2024' : grid!.coloana,
       population: teaching.length ? 'Funcții didactice din învățământul public' : grid!.domeniu,
       source: teaching.length ? 'Legea 153/2017, Anexa I, învățământ preuniversitar' : `${SURSA_GRILE.act}, ${grid!.anexa}`,

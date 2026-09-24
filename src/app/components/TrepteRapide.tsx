@@ -60,8 +60,7 @@ export default function TrepteRapide({ date }: { date: DateMeserie }) {
         )}
       </dl>
       <p className="mt-3 text-xs leading-relaxed text-stone-600">
-        Salariu de bază la gradația 0, convertit în net. Peste el vin gradațiile de vechime și sporurile.
-        Toate cele {trepte.length} trepte sunt mai jos în pagină.
+        Salariul de pornire, în mână. Vechimea și sporurile vin peste el. Toate treptele sunt în tabelul de mai jos.
       </p>
     </section>
   );

@@ -52,7 +52,7 @@ const FAQ = [
   },
   {
     q: "Publică INS salariul mediu pentru fiecare meserie?",
-    a: `INS publică date agregate pe activități economice CAEN și grupe majore ISCO, inclusiv intersecția structurală dintre ele, nu statistici individuale pe fiecare cod COR. Salariile.ro combină aceste date oficiale cu rapoartele salariale din piața privată și grilele legale pentru a oferi salariul net specific al fiecărei profesii.`,
+    a: `INS publică date agregate pe activități economice CAEN și grupe majore ISCO, inclusiv intersecția structurală dintre ele, nu statistici individuale pe fiecare cod COR. De aceea, pe fiecare pagină de meserie arătăm separat datele INS, salariile declarate de angajați și grilele legale.`,
   },
   {
     q: "Cât este câștigul salarial mediu pe economie acum?",
@@ -68,7 +68,7 @@ const FAQ = [
   },
   {
     q: "Cât de des se actualizează datele?",
-    a: `Seria lunară pe activități se actualizează de INS în fiecare lună, cu aproximativ două luni întârziere; ultima lună disponibilă aici este ${LUNA}. Defalcarea pe județe și ancheta pe ocupații sunt anuale. Datele se descarcă din TEMPO-Online printr-un script din repository, nu se transcriu manual.`,
+    a: `Seria lunară pe activități se actualizează de INS în fiecare lună, cu aproximativ două luni întârziere; ultima lună disponibilă aici este ${LUNA}. Defalcarea pe județe și ancheta pe ocupații sunt anuale. Le preluăm automat din TEMPO-Online, nu le copiem de mână.`,
   },
 ];
 

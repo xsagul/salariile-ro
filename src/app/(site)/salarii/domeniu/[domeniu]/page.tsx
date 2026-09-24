@@ -111,11 +111,11 @@ export default async function DomeniuPage({ params }: Props) {
   const intrebari = [
     {
       q: `Cât se câștigă în ${numeMic} în România?`,
-      a: `Cele ${date.length} meserii urmărite aici se împart pe ${activitati.length} ${activitati.length === 1 ? "activitate economică" : "activități economice"} din clasificarea CAEN. În ${LUNA}, câștigul salarial mediu brut al acestor activități a mers de la ${lei(ceaMaiProst.sector.brutCurent)} lei (${ceaMaiProst.sector.denumire.toLocaleLowerCase("ro-RO")}) până la ${lei(ceaMaiBine.sector.brutCurent)} lei (${ceaMaiBine.sector.denumire.toLocaleLowerCase("ro-RO")}). Media aritmetică neponderată a activităților selectate, care nu este salariul mediu al domeniului, este ${lei(mediaDomeniu)} lei brut, ${fataDeEconomie >= 0 ? "peste" : "sub"} media pe economie cu ${procent(Math.abs(fataDeEconomie), 0)}%.`,
+      a: `Cele ${date.length} meserii urmărite aici se împart pe ${activitati.length} ${activitati.length === 1 ? "activitate economică" : "activități economice"} din clasificarea CAEN. În ${LUNA}, câștigul salarial mediu brut al acestor activități a mers de la ${lei(ceaMaiProst.sector.brutCurent)} lei (${ceaMaiProst.sector.denumire.toLocaleLowerCase("ro-RO")}) până la ${lei(ceaMaiBine.sector.brutCurent)} lei (${ceaMaiBine.sector.denumire.toLocaleLowerCase("ro-RO")}). Media lor simplă e ${lei(mediaDomeniu)} lei brut, ${fataDeEconomie >= 0 ? "peste" : "sub"} media pe economie cu ${procent(Math.abs(fataDeEconomie), 0)}%.`,
     },
     {
       q: `Care este cea mai bine plătită meserie din ${numeMic}?`,
-      a: `Datele INS disponibile aici nu stabilesc meseria cu cel mai mare salariu. Ele permit compararea activităților economice. Paginile individuale adaugă surse specifice meseriei și grile publice, unde acestea sunt documentate.`,
+      a: `Datele INS nu spun asta, pentru că se publică pe activități economice, nu pe meserii. Pe pagina fiecărei meserii găsești sursele ei proprii, acolo unde există.`,
     },
     {
       q: `De ce mai multe meserii din ${numeMic} au aceeași cifră?`,
@@ -183,8 +183,8 @@ export default async function DomeniuPage({ params }: Props) {
           <Lead>
             {categorie.descriere} Sunt <strong>{date.length} meserii</strong>, împărțite pe {activitati.length}{" "}
             {activitati.length === 1 ? "activitate economică" : "activități economice"} din clasificarea CAEN, cu
-            datele INS din <strong>{LUNA}</strong>. Fiecare cifră de mai jos este media activității în care lucrează
-            angajatori asociați editorial meseriei — nu salariul unei persoane.
+            datele INS din <strong>{LUNA}</strong>. Cifrele sunt mediile acestor activități, nu salariul unei anumite
+            persoane.
           </Lead>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -192,7 +192,7 @@ export default async function DomeniuPage({ params }: Props) {
               accent
               eticheta={`Medie neponderată CAEN, ${LUNA}`}
               valoare={lei(mediaDomeniu)}
-              nota={`Indicator calculat, nu media salariaților domeniului. Cele ${activitati.length} activități au pondere egală. ${fataDeEconomie >= 0 ? "Peste" : "Sub"} media pe economie cu ${procent(Math.abs(fataDeEconomie), 0)}%.`}
+              nota={`Media simplă a celor ${activitati.length} activități. ${fataDeEconomie >= 0 ? "Peste" : "Sub"} media pe economie cu ${procent(Math.abs(fataDeEconomie), 0)}%.`}
             />
             <CardCifra
               eticheta="Cel mai bine plătit sector"
@@ -217,9 +217,8 @@ export default async function DomeniuPage({ params }: Props) {
               Toate meseriile din {numeMic}
             </h2>
             <p className="mt-4 max-w-3xl text-base leading-normal text-stone-600">
-              Ordonate după câștigul mediu brut al activității. Coloana „ce face” e fișa scurtă a meseriei, iar
-              intervalul arată capetele reale ale defalcării INS pe județe din {AN_JUDETE_SCURT} — județul cel mai
-              bine plătit și cel mai prost plătit din aceeași activitate.
+              De la cea mai bine plătită activitate în jos. Intervalul arată media din județul cel mai prost și din
+              cel mai bine plătit, în {AN_JUDETE_SCURT}.
             </p>
             <div className="my-6 overflow-x-auto">
               <table className="w-full min-w-[46rem] border-separate border-spacing-0 overflow-hidden rounded-md border border-stone-200 bg-surface text-sm shadow-soft">
@@ -280,9 +279,8 @@ export default async function DomeniuPage({ params }: Props) {
               Ce activități economice acoperă domeniul
             </h2>
             <p className="mt-4 text-base leading-normal text-stone-600">
-              Domeniul e o grupare editorială a noastră, făcută ca să poți naviga. Statistica, în schimb, se publică
-              pe activități CAEN, iar acestea sunt cele atinse aici. Unde mai multe meserii cad în aceeași activitate,
-              ele împart inevitabil aceeași medie lunară.
+              Domeniile sunt grupările noastre, ca să găsești ușor meseriile. INS publică însă salariile pe activități
+              economice, așa că meseriile din aceeași activitate au aceeași medie.
             </p>
             <ul className="mt-4 list-disc pl-5 text-base leading-normal text-stone-600 [&_li]:mb-2">
               {activitati.map((activitate) => (

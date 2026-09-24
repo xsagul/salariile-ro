@@ -15,7 +15,7 @@ export default function IndicatorSalariu({ reper: r, slug }: { reper: ReperMeser
   const explanation = r.kind === 'salariile-ro'
     ? `Construit din ${c?.surse} repere independente care descriu această meserie: ${c?.intrari.map(i => `${i.titlu.toLowerCase()} ${Math.round(i.valoare).toLocaleString('ro-RO')} lei`).join(' și ')}.`
     : r.kind === 'public-grid'
-    ? 'Trepte din grila de salarizare, convertite în net. Fără sporuri și fără vechime individuală.'
+    ? 'Salariul de pornire din grila legală, în mână, înainte de vechime și sporuri.'
     : r.kind === 'sector-context'
     ? 'Reper pentru o grupă largă de ocupații din acest sector. INS nu publică salarii pe meseria exactă.'
     : r.kind === 'external-advertised'
@@ -25,7 +25,8 @@ export default function IndicatorSalariu({ reper: r, slug }: { reper: ReperMeser
     <div data-salary-primary={indicator.metric ?? 'unavailable'}>
       <p className="text-xs font-medium text-stone-700">{r.label}</p>
       <p className="mt-3 text-3xl font-bold tracking-tight text-stone-900 sm:text-4xl">{textIndicator(r)}</p>
-      <p className="mt-1 text-sm text-stone-600">pe lună · {r.period}</p>
+      {/* Grila în plată e cea din iunie 2024; sus scriem „în plată", anul stă la surse (regula din 15 septembrie 2026). */}
+      <p className="mt-1 text-sm text-stone-600">pe lună · {r.kind === 'public-grid' ? 'grila în plată' : r.period}</p>
       <p className="mt-2 text-sm leading-relaxed text-stone-600">{explanation}</p>
       {!!c?.verificareOficiala && <p className="mt-2 text-xs leading-relaxed text-stone-600">
         Verificat față de statistica oficială pe grupa de ocupații: {c.verificareOficiala.valoare.toLocaleString('ro-RO')} lei.
@@ -40,7 +41,7 @@ export default function IndicatorSalariu({ reper: r, slug }: { reper: ReperMeser
           : <Link className="underline underline-offset-2" href="/salarii/acoperire">{r.source}</Link>}
         {' · '}
         <Link className="underline underline-offset-2" href={`/salarii/acoperire#${slug}`}>
-          {a?.n ? `anunțurile din spate (${a.n})` : 'cum verificăm anunțurile'}
+          {a?.n ? `anunțurile din spate (${a.n})` : 'cum verificăm cifrele'}
         </Link>
       </p>
     </div>

@@ -4,62 +4,87 @@ import { piloniMeserie, convergentaPiloni, type Pilon } from '@/lib/repere-meser
 
 const lei = (n: number) => `${Math.round(n).toLocaleString('ro-RO')} lei`;
 
+const areDate = (p: Pilon) => p.valoare !== null || !!p.interval;
+
 function cifra(p: Pilon) {
   if (p.valoare !== null) return lei(p.valoare);
   if (p.interval) return `${lei(p.interval.min)} – ${lei(p.interval.max)}`;
-  // „Nu avem" spune ca am incercat si n-am reusit. Cand meseria e platita dupa
-  // grila legala, anuntul e instrumentul gresit, iar asta se scrie pe fata.
-  // Fara niciun anunt, fraza spune ca instrumentul nu se aplica. Cu cateva
-  // anunturi sub prag, cifra ramane „date insuficiente", iar motivul apare
-  // dedesubt: altfel am nega anunturile pe care chiar le-am citit.
-  if (p.motivLipsa && !p.n) return 'nu se măsoară aici';
-  if (p.stare === 'insuficient') return 'date insuficiente';
-  // Pentru anunturi lipsa e a colectarii noastre, care continua; pentru o sursa
-  // externa pe care doar o citam, nu.
-  return p.cheie === 'anunturi' ? 'încă necolectat' : 'nu avem';
+  return '';
 }
 
 /**
- * Trei surse care raspund la trei intrebari diferite. Nu se pondereaza intr-o
- * singura cifra: o medie a lor nu ar avea nicio sursa care s-o sustina.
+ * De ce lipsește o sursă, într-o frază. Regulile rămân cele de dinainte: când
+ * meseria e plătită după grila legală, anunțul e instrumentul greșit și asta se
+ * spune pe față; cu câteva anunțuri sub prag, „prea puține"; la o sursă externă
+ * pe care doar o citam, „nu are încă date". Nicăieri „0 anunțuri".
+ */
+function lipsa(p: Pilon) {
+  if (p.motivLipsa && !p.n) return p.motivLipsa;
+  if (p.stare === 'insuficient') return 'Sunt încă prea puține date ca să dăm o cifră.';
+  return p.cheie === 'anunturi' ? 'Nu le-am colectat încă.' : 'Sursa nu are încă date pentru această meserie.';
+}
+
+/**
+ * Sursele care răspund la întrebări diferite: cât se oferă la angajare, cât
+ * declară cine lucrează deja, cât prevede legea. Nu se amestecă într-o singură
+ * cifră: o medie a lor n-ar avea nicio sursă care s-o susțină.
+ *
+ * Rescris pe 24 septembrie 2026: pe majoritatea meseriilor, două din trei
+ * carduri spuneau doar „nu se măsoară aici" și „nu avem". Acum apar doar
+ * sursele cu date; celelalte primesc un rând. Dacă rămâne o singură sursă, ea e
+ * deja cifra din partea de sus a paginii și nu se mai repetă.
  */
 export default function PiloniSalariu({ date }: { date: DateMeserie }) {
   const piloni = piloniMeserie(date);
+  const cuDate = piloni.filter(areDate);
+  const faraDate = piloni.filter((p) => !areDate(p));
   const c = convergentaPiloni(piloni);
   const nume = date.meserie.nume.toLowerCase();
+  if (cuDate.length < 2 && faraDate.length === 0) return null;
+
   return (
     <section className="mt-8" id="piloni" data-piloni={piloni.filter(p => p.stare !== 'lipsa').length}>
-      <h2 className="text-xl font-bold text-stone-900 sm:text-2xl">Trei surse despre cât se câștigă ca {nume}</h2>
-      <p className="mt-2 max-w-3xl text-sm leading-relaxed text-stone-700">
-        Fiecare răspunde la altă întrebare: cât se oferă la angajare, cât declară cine lucrează deja acolo, cât s-a
-        plătit efectiv. Le arătăm separat, ca să vezi unde sunt de acord și unde nu.
-      </p>
-      <div className="mt-5 grid gap-4 sm:grid-cols-3">
-        {piloni.map((p, i) => (
-          <div key={p.cheie} className="rounded-md border border-stone-300 bg-surface p-4" data-pilon={p.cheie} data-stare={p.stare}>
-            <p className="text-xs font-semibold uppercase tracking-wide text-stone-500">Pilonul {i + 1}</p>
-            <p className="mt-1 text-sm font-medium text-stone-700">{p.titlu}</p>
-            <p className={`mt-2 font-bold tracking-tight text-stone-900 ${p.valoare !== null ? 'text-2xl' : 'text-lg'}`}>{cifra(p)}</p>
-            <p className="mt-1 text-xs text-stone-600">net / lună · {p.concept}</p>
-            {p.n !== null && p.n > 0 && <p className="mt-1 text-xs text-stone-600">{p.n} anunțuri verificate</p>}
-            {p.motivLipsa && <p className="mt-1 text-xs text-stone-600">{p.motivLipsa}</p>}
-            <p className="mt-2 text-xs text-stone-600">
-              {p.url.startsWith('/')
-                ? <Link className="underline underline-offset-2" href={p.url}>{p.sursa}</Link>
-                : <a className="underline underline-offset-2" href={p.url} rel="nofollow noopener">{p.sursa}</a>}
-            </p>
+      {cuDate.length > 1 && (
+        <>
+          <h2 className="text-xl font-bold text-stone-900 sm:text-2xl">Ce spun sursele despre salariul de {nume}</h2>
+          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-stone-700">
+            Fiecare măsoară altceva, așa că le arătăm separat.
+          </p>
+          <div className={`mt-5 grid gap-4 ${cuDate.length === 3 ? 'sm:grid-cols-3' : 'sm:grid-cols-2'}`}>
+            {cuDate.map((p) => (
+              <div key={p.cheie} className="rounded-md border border-stone-300 bg-surface p-4" data-pilon={p.cheie} data-stare={p.stare}>
+                <p className="text-sm font-medium text-stone-700">{p.titlu}</p>
+                <p className={`mt-2 font-bold tracking-tight text-stone-900 ${p.valoare !== null ? 'text-2xl' : 'text-lg'}`}>{cifra(p)}</p>
+                <p className="mt-1 text-xs text-stone-600">net pe lună · {p.concept}</p>
+                {p.n !== null && p.n > 0 && <p className="mt-1 text-xs text-stone-600">din {p.n} anunțuri verificate</p>}
+                <p className="mt-2 text-xs text-stone-600">
+                  {p.url.startsWith('/')
+                    ? <Link className="underline underline-offset-2" href={p.url}>{p.sursa}</Link>
+                    : <a className="underline underline-offset-2" href={p.url} rel="nofollow noopener">{p.sursa}</a>}
+                </p>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-      {c && (
-        <p className="mt-4 max-w-3xl rounded-md border border-stone-200 bg-canvas p-4 text-sm leading-relaxed text-stone-700">
-          {c.raspandire <= 0.15
-            ? <>Cele {c.puncte.length} repere comparabile cad între <strong>{lei(c.min)}</strong> și <strong>{lei(c.max)}</strong> net pe lună.
-              Surse independente, cu metode diferite, ajung aproximativ în același loc — este cel mai puternic semnal pe care îl putem da.</>
-            : <>Cele {c.puncte.length} repere comparabile se întind de la <strong>{lei(c.min)}</strong> la <strong>{lei(c.max)}</strong> net pe lună,
-              o diferență de {Math.round(c.raspandire * 100)}%. Nu este o eroare de măsurare: dacă ofertele sunt sub ce arată statistica,
-              postul se scoate la angajare mai jos decât câștigă cine e deja acolo. Exact asta e util de știut înainte de a accepta o ofertă.</>}
-        </p>
+          {c && (
+            <p className="mt-4 max-w-3xl rounded-md border border-stone-200 bg-canvas p-4 text-sm leading-relaxed text-stone-700">
+              {c.raspandire <= 0.15
+                ? <>Sursele ajung aproape în același loc, între <strong>{lei(c.min)}</strong> și <strong>{lei(c.max)}</strong> net
+                  pe lună. Când metode diferite dau aceeași cifră, e cel mai sigur semn că e aproape de realitate.</>
+                : <>Sursele se întind de la <strong>{lei(c.min)}</strong> la <strong>{lei(c.max)}</strong> net pe lună, cu{" "}
+                  {Math.round(c.raspandire * 100)}% diferență. Dacă ofertele sunt sub ce câștigă cei care lucrează deja, merită
+                  să negociezi: postul se scoate la angajare mai jos decât se plătește după câțiva ani.</>}
+            </p>
+          )}
+        </>
+      )}
+      {faraDate.length > 0 && (
+        <ul className="mt-4 max-w-3xl space-y-1 text-sm leading-relaxed text-stone-600">
+          {faraDate.map((p) => (
+            <li key={p.cheie} data-pilon={p.cheie} data-stare={p.stare}>
+              <span className="font-medium text-stone-700">{p.titlu}:</span> {lipsa(p)}
+            </li>
+          ))}
+        </ul>
       )}
     </section>
   );
