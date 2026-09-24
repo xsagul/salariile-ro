@@ -125,6 +125,19 @@ export default function Header() {
   }, [pathname]);
 
   useEffect(() => {
+    // Varianta b: bara lipită ar acoperi începutul oricărei ținte derulate cu
+    // `scrollIntoView` (rezultatul după „Calculează”, ancorele din pagină).
+    // `scroll-padding-top` pe pagină le oprește pe toate exact sub bară. La c nu
+    // se aplică: derularea spre rezultat merge în jos, iar bara se ascunde singură.
+    if (navbar !== "b") return;
+    const radacina = document.documentElement;
+    radacina.style.scrollPaddingTop = `${headerRef.current?.offsetHeight ?? 64}px`;
+    return () => {
+      radacina.style.scrollPaddingTop = "";
+    };
+  }, [navbar]);
+
+  useEffect(() => {
     if (navbar !== "c") return;
     // Varianta c: bara pleacă la derulare în jos și revine la prima derulare în
     // sus. Pragul de 6 px ignoră tremuratul degetului; sus de tot e mereu vizibilă.

@@ -50,6 +50,7 @@ assert.match(header, /event\.key === "Escape"/);
 assert.match(header, /variantaNavbarDinCookie\(document\.cookie\)/, "Varianta barei se citește din cookie-ul GA4");
 assert.doesNotMatch(header, /localStorage|sessionStorage|document\.cookie\s*=/, "Testul barei nu scrie nimic pe dispozitiv");
 assert.match(header, /useState<VariantaNavbar>\("a"\)/, "Fără acord și la randarea statică, bara rămâne ca până acum");
+assert.match(header, /if \(navbar !== "b"\) return;\s*const radacina = document\.documentElement;\s*radacina\.style\.scrollPaddingTop/, "Cu bara lipită, derularea la rezultat se oprește sub bară");
 assert.match(header, /if \(previzualizare\) \{\s*setNavbar\(previzualizare\);[^\n]*\n\s*return;/, "Previzualizarea `?navbar=` nu se raportează la GA4");
 assert.doesNotMatch(embedLayout, /stats\.js|umami/i, "Layout-ul embed nu trebuie să activeze analytics");
 assert.doesNotMatch(embedLayout, /adsbygoogle|googlesyndication|googletagmanager|google-analytics/i, "Layout-ul embed nu trebuie să activeze AdSense sau GA4");
