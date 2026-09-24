@@ -5,7 +5,12 @@ import Link from "@/app/components/Link";
 import Logo from "@/app/components/Logo";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
-import { raporteazaVariantaNavbar, variantaNavbarDinCookie, type VariantaNavbar } from "@/lib/analytics";
+import {
+  raporteazaVariantaNavbar,
+  variantaNavbarDinAdresa,
+  variantaNavbarDinCookie,
+  type VariantaNavbar,
+} from "@/lib/analytics";
 
 type Leaf = { href: string; label: string };
 type Group = { label: string; children: Leaf[] };
@@ -101,6 +106,11 @@ export default function Header() {
     // Acordul poate veni în timpul vizitei, deci varianta se recitește la
     // fiecare navigare și o dată la câteva secunde după încărcare.
     const citeste = () => {
+      const previzualizare = variantaNavbarDinAdresa(window.location.search);
+      if (previzualizare) {
+        setNavbar(previzualizare); // doar pe ecran, nu intră în test
+        return;
+      }
       const varianta = variantaNavbarDinCookie(document.cookie);
       if (!varianta) return;
       setNavbar(varianta);
@@ -226,7 +236,11 @@ export default function Header() {
           ? "relative"
           : `sticky top-0 z-40 ${
               navbar === "c"
-                ? `transition-transform duration-200 motion-reduce:transition-none ${baraAscunsa && !open ? "-translate-y-full" : ""}`
+                ? // Durate Material Design: intrarea 225 ms cu încetinire la final,
+                  // ieșirea 195 ms cu accelerare — ce pleacă e puțin mai rapid.
+                  `transition-transform motion-reduce:transition-none ${
+                    baraAscunsa && !open ? "-translate-y-full duration-[195ms] ease-in" : "duration-[225ms] ease-out"
+                  }`
                 : ""
             }`
       }`}

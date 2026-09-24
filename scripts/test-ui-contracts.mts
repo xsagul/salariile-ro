@@ -50,6 +50,7 @@ assert.match(header, /event\.key === "Escape"/);
 assert.match(header, /variantaNavbarDinCookie\(document\.cookie\)/, "Varianta barei se citește din cookie-ul GA4");
 assert.doesNotMatch(header, /localStorage|sessionStorage|document\.cookie\s*=/, "Testul barei nu scrie nimic pe dispozitiv");
 assert.match(header, /useState<VariantaNavbar>\("a"\)/, "Fără acord și la randarea statică, bara rămâne ca până acum");
+assert.match(header, /if \(previzualizare\) \{\s*setNavbar\(previzualizare\);[^\n]*\n\s*return;/, "Previzualizarea `?navbar=` nu se raportează la GA4");
 assert.doesNotMatch(embedLayout, /stats\.js|umami/i, "Layout-ul embed nu trebuie să activeze analytics");
 assert.doesNotMatch(embedLayout, /adsbygoogle|googlesyndication|googletagmanager|google-analytics/i, "Layout-ul embed nu trebuie să activeze AdSense sau GA4");
 assert.match(siteLayout, /ca-pub-5894290637571256[\s\S]*google-adsense-account/, "Verificarea AdSense trebuie să rămână în meta tag");
@@ -83,6 +84,7 @@ assert.equal(clasaViewport(1920), ">=1536");
 {
   const { variantaNavbarDinCookie } = (await import(analyticsPath)) as typeof import("../src/lib/analytics");
   assert.equal(variantaNavbarDinCookie("alt=1"), null, "Fără cookie GA4 nu există test");
+  assert.equal(adresaFaraSume("https://salariile.ro/?navbar=c"), "https://salariile.ro/", "Previzualizarea variantei nu ajunge în GA4");
   const numar = { a: 0, b: 0, c: 0 };
   for (let i = 0; i < 3000; i++) numar[variantaNavbarDinCookie(`_ga=GA1.1.${1000000 + i * 7919}.${1790000000 + i}`)!]++;
   for (const n of Object.values(numar)) assert.ok(n > 900 && n < 1100, `Variantele barei trebuie împărțite egal: ${JSON.stringify(numar)}`);

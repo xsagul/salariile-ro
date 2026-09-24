@@ -53,6 +53,7 @@ export function adresaFaraSume(adresa: string): string {
   try {
     const url = new URL(adresa);
     for (const parametru of PARAMETRI_CU_SUMA) url.searchParams.delete(parametru);
+    for (const parametru of PARAMETRI_DE_PREVIZUALIZARE) url.searchParams.delete(parametru);
     url.hash = "";
     return url.toString();
   } catch {
@@ -104,6 +105,16 @@ export function trimiteEveniment(nume: string, parametri: Record<string, Valoare
 // acordul pentru măsurare. Fără acord nu există test: vizitatorul vede varianta a.
 // Testul nu scrie nimic nou pe dispozitiv și rămâne același pe orice pagină.
 export type VariantaNavbar = "a" | "b" | "c";
+
+// `?navbar=a|b|c` forțează o variantă doar pe ecran, ca să poată fi verificate
+// toate trei în taburi alăturate (cookie-ul e comun tuturor taburilor). Nu se
+// raportează la GA4 și iese din adresa trimisă.
+export const PARAMETRI_DE_PREVIZUALIZARE = ["navbar"] as const;
+
+export function variantaNavbarDinAdresa(cautare: string): VariantaNavbar | null {
+  const valoare = new URLSearchParams(cautare).get("navbar");
+  return valoare === "a" || valoare === "b" || valoare === "c" ? valoare : null;
+}
 
 export function variantaNavbarDinCookie(cookie: string): VariantaNavbar | null {
   const potrivire = cookie.match(/(?:^|;\s*)_ga=GA\d+\.\d+\.(\d+\.\d+)/);
