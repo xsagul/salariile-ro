@@ -3474,3 +3474,49 @@ desktop și mobil: header, rezultat, footer.
 **Neatins, de urmărit:** `og-salariu-minim.jpg` și `og-salariu-mediu.jpg` sunt
 ilustrații fără marcă. Titlurile se schimbă pe toate paginile; în GSC nu se
 atribuie efecte CTR schimbării de sufix înainte de 28 de zile complete.
+
+## 24 septembrie 2026 — Textul întregului site, rescris pe înțelesul oamenilor
+
+**Cererea proprietarului:** utilizatorii se plângeau că site-ul pare un almanah:
+CAS și CASS repetate peste tot, cifre aruncate în fiecare paragraf, în loc de o
+formulă simplă și o explicație. Fiecare text trebuie să servească intenția cu care
+a venit omul, să sune scris de un om care se pricepe și să nu pară scris de AI.
+
+**Regulile rezultate** sunt în `BRAND.md` §2 („Textul servește intenția”). Pe scurt:
+sub calculator, explicație scurtă plus formula într-un card (componenta `Formula`
+din `ui.tsx`; în Markdown, un bloc de cod devine același card), nu un tabel cu un
+exemplu pe o sumă necerută. Proprietarul a oprit un astfel de tabel pe homepage.
+
+**Publicat în șase commituri pe `main`** (`456cdd6`, `2956069`, `3e97dd6`,
+`47469c6`, `2967297`, `cb51ba7`): homepage, toate calculatoarele, cele 40 de pagini
+„X lei brut în net”, salariul minim și mediu, zile libere și lucrătoare, 11 articole,
+SmartBill, SAGA, Despre, metodologie, pagina engleză și clusterul de meserii.
+
+**Măsurat pe cele 326 de pagini din `out/`**, text din `<main>` fără tabele și formulare:
+
+| | înainte | după |
+|---|---:|---:|
+| cuvinte | 289.931 | 227.841 |
+| cifre în proză | 19.379 | 16.084 |
+| paragrafe cu ≥5 cifre | 951 | 560 |
+| apariții „CAS” / „CASS” | 370 / 372 | 95 / 132 |
+| cele mai multe cifre într-un paragraf | 39 | 14 |
+
+**Corecturi de fapt găsite pe drum:** pagina de calcul pentru 4.325 lei cita HG
+598/2024 într-o ramură moartă; metodologia cerea „primul loc de muncă” la deducerea
+sub 26 de ani, vorbea de „tabele în anexă” și de FAAMBP; Despre numea legislatie.just.ro
+„Monitorul Oficial” și promitea „fără publicitate” (contrar deciziei din 23 septembrie).
+Pagina de șomaj și calculatorul ei scriau despre greșelile altor calculatoare (BRAND
+§14) — scos. Cuvinte lipite de JSX: „SAGA WEBeste”, „Ambeleau”, „2.25%work”,
+„5,850RON”. FAQ-ul deducerii personale exista doar în JSON-LD, acum e vizibil.
+Transparența salarială: stadiul L445/2026 verificat pe senat.ro la 24 septembrie
+(la comisii, adoptare tacită pe 17 octombrie 2026).
+
+**Ce a rămas mai încărcat, deliberat:** paginile de județ și FAQ-urile paginilor de
+meserie (cifrele răspund acolo exact la întrebare), tabelele cu date și paginile legale,
+care n-au fost rescrise de ton. Testele `test-rendered` care cer formulările despre
+sursă și limita cifrei au rămas neatinse, cu o excepție: cerința „indicatorul BASS” pe
+homepage a devenit o regulă pe tot site-ul (dacă apare 9.192, trebuie etichetat).
+
+**De urmărit:** efectul în GSC pe homepage, `/salariu-minim` și
+`/calculator-salariu-invatamant` abia după 28 de zile complete de la 24 septembrie.
