@@ -341,12 +341,12 @@ export default function ZileLibere2026Page() {
             </div>
             <aside className="mt-8 md:col-span-2 md:mt-0 md:self-start">
               <div className={`flex h-full flex-col ${card}`}>
-                <h3 className="mb-3 text-xs font-medium text-stone-600">Surse oficiale</h3>
+                <h3 className="mb-2 text-base font-bold tracking-[-0.01em] text-stone-900">Surse oficiale</h3>
                 <ul className={`flex flex-col gap-2 text-sm leading-normal text-stone-600 ${links}`}>
                   <li><a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/128646" target="_blank" rel="noopener">Codul Muncii (Legea 53/2003)</a>: art. 139 (sărbători) și 142 (compensare)</li>
                   <li>Calendar ortodox 2026: datele de Paște și Rusalii</li>
                 </ul>
-                <h3 className="mb-3 mt-6 text-xs font-medium text-stone-600">Pagini conexe</h3>
+                <h3 className="mt-6 mb-2 text-base font-bold tracking-[-0.01em] text-stone-900">Pagini conexe</h3>
                 <ul className={`flex flex-col gap-2 text-sm ${links}`}>
                   <li><Link href="/zile-lucratoare-2026">Zile și ore lucrătoare 2026</Link></li>
                   <li><Link href="/noutati/zile-libere-ramase-2026-minivacante">Zile libere rămase și minivacanțe în 2026</Link></li>

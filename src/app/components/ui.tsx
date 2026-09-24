@@ -274,6 +274,14 @@ export function GrilaPagina({
   );
 }
 
+/**
+ * Titlul cardurilor din dreapta, același pe tot site-ul (decis de proprietar pe
+ * 24 septembrie 2026): mai mare decât textul cardului și în culoarea titlurilor,
+ * dar sub titlul secțiunii de alături. Textul cardului rămâne `text-sm
+ * text-stone-600`, notele `text-xs`.
+ */
+export const CARD_TITLU = "mb-2 text-base font-bold tracking-[-0.01em] text-stone-900";
+
 /** Cardul din coloana din dreapta: `surface`, bordura stone-200, umbra unica. */
 export function CardCompanion({
   titlu,
@@ -286,7 +294,7 @@ export function CardCompanion({
 }) {
   return (
     <div className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
-      <h3 className="mb-3 text-xs font-medium text-stone-600">{titlu}</h3>
+      <h3 className={CARD_TITLU}>{titlu}</h3>
       {children}
       {nota ? <p className="mt-3 text-xs text-stone-600">{nota}</p> : null}
     </div>

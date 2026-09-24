@@ -234,7 +234,7 @@ export default function Page() {
 
               <aside className="mt-8 md:col-span-2 md:mt-0 md:self-start">
                 <div className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
-                  <h3 className="mb-3 text-xs font-medium text-stone-600">Surse oficiale</h3>
+                  <h3 className="mb-2 text-base font-bold tracking-[-0.01em] text-stone-900">Surse oficiale</h3>
                   <ul className="flex flex-col gap-2 text-sm [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-600">
                     <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/308231" target="_blank" rel="noopener">HG 146/2026 – salariul minim</a></li>
                     <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/305817" target="_blank" rel="noopener">OUG 89/2025 – facilitate salariu minim</a></li>
@@ -244,7 +244,7 @@ export default function Page() {
                     <li className="text-stone-600">ANAF – Declarația 112</li>
                   </ul>
 
-                  <h3 className="mb-3 mt-6 text-xs font-medium text-stone-600">Pagini conexe</h3>
+                  <h3 className="mt-6 mb-2 text-base font-bold tracking-[-0.01em] text-stone-900">Pagini conexe</h3>
                   <ul className="flex flex-col gap-2 text-sm">
                     {/* Legături editoriale către instrumentele și paginile
                         principale care altfel ar fi accesibile mai ales din

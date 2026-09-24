@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import CalculatorPartTime from "@/app/components/CalculatorPartTime";
-import { Breadcrumb, CardCompanion, Faq, Formula, H1, Hero, Lead, PaginiConexe, Prose, Repere, Section } from "@/app/components/ui";
+import { Breadcrumb, CardCompanion, Faq, Formula, H1, Hero, Lead, PaginiConexe, Repere, Section } from "@/app/components/ui";
 import TabelArticol from "@/app/components/TabelArticol";
 import {
   calculeazaPartTime,
@@ -113,88 +113,84 @@ export default function Page() {
 
       <CalculatorPartTime />
 
-      <Section wide>
-        <div className="md:grid md:grid-cols-5 md:gap-6">
-          <Prose className="min-w-0 md:col-span-3">
-            <h2 id="scenarii-part-time" className="scroll-mt-20">Salariul la 2, 4 și 6 ore</h2>
-            <p>
-              Brutul minim scade proporțional cu orele. Netul scade ceva mai puțin, pentru că deducerea personală nu se
-              micșorează odată cu programul.
-            </p>
-            <TabelArticol numeric>
-              <thead>
-                <tr>
-                  <th scope="col">Program</th>
-                  <th scope="col">Brut minim</th>
-                  <th scope="col">Net</th>
-                  <th scope="col">Cost fără excepție</th>
-                  <th scope="col">Cost cu excepție</th>
-                </tr>
-              </thead>
-              <tbody>
-                {SCENARII.map((scenariu) => (
-                  <tr key={scenariu.ore} id={`scenariu-${scenariu.ore}-ore`} className="scroll-mt-20">
-                    <th scope="row">
-                      <a href={`#scenariu-${scenariu.ore}-ore`} className="hover:underline">
-                        {scenariu.ore} ore/zi
-                      </a>
-                    </th>
-                    <td>{fmt(scenariu.brut)} lei</td>
-                    <td><strong>{fmt(scenariu.faraExceptie.netBani)} lei</strong></td>
-                    <td>{fmt(scenariu.faraExceptie.costTotalCuDiferente)} lei</td>
-                    <td>{fmt(scenariu.cuExceptie.costTotalCuDiferente)} lei</td>
-                  </tr>
-                ))}
-              </tbody>
-            </TabelArticol>
-            <p className="source-note">
-              Pentru o lună întreagă, la locul de muncă de bază, fără persoane în întreținere. „Cu excepție” înseamnă un
-              angajat scutit de regula bazei minime, explicată mai jos.
-            </p>
-
-            <h2>Cum se calculează</h2>
-            <p>
-              Tu plătești taxele obișnuite, doar pe salariul tău. Legea cere însă ca pentru orice contract să ajungă la
-              stat contribuții de pensie și sănătate cel puțin cât pentru un salariu minim. Diferența o pune firma, peste
-              brut, și nu se scade din banii tăi.
-            </p>
-            <Formula
-              eticheta="Calculul unui salariu part-time"
+      <Section
+        companion={
+          <CardCompanion
+            titlu="Baza minimă pentru contribuții"
+            nota="Pentru o lună întreagă. La un contract început în cursul lunii, baza scade proporțional cu zilele."
+          >
+            <Repere
               randuri={[
-                "Brut minim   = salariul minim × ore pe zi ÷ 8",
-                "Net          = brut − CAS − CASS − impozit",
-                "Diferență    = contribuțiile la baza minimă − cele reținute",
-                "Cost firmă   = brut + CAM + diferență",
+                ["Salariul minim", "4.325 lei"],
+                ["Minus suma scăzută", "− 200 lei"],
+                ["Baza minimă", "4.125 lei"],
               ]}
             />
-            <p>
-              Cei 200 de lei netaxați de la salariul minim nu se dau la part-time: sunt doar pentru norma întreagă.
-              Pentru regula bazei minime, legea scade însă tot 200 de lei din minim.
-            </p>
+          </CardCompanion>
+        }
+      >
+        <h2 id="scenarii-part-time" className="scroll-mt-20">Salariul la 2, 4 și 6 ore</h2>
+        <p>
+          Brutul minim scade proporțional cu orele. Netul scade ceva mai puțin, pentru că deducerea personală nu se
+          micșorează odată cu programul.
+        </p>
+        <TabelArticol numeric>
+          <thead>
+            <tr>
+              <th scope="col">Program</th>
+              <th scope="col">Brut minim</th>
+              <th scope="col">Net</th>
+              <th scope="col">Cost fără excepție</th>
+              <th scope="col">Cost cu excepție</th>
+            </tr>
+          </thead>
+          <tbody>
+            {SCENARII.map((scenariu) => (
+              <tr key={scenariu.ore} id={`scenariu-${scenariu.ore}-ore`} className="scroll-mt-20">
+                <th scope="row">
+                  <a href={`#scenariu-${scenariu.ore}-ore`} className="hover:underline">
+                    {scenariu.ore} ore/zi
+                  </a>
+                </th>
+                <td>{fmt(scenariu.brut)} lei</td>
+                <td><strong>{fmt(scenariu.faraExceptie.netBani)} lei</strong></td>
+                <td>{fmt(scenariu.faraExceptie.costTotalCuDiferente)} lei</td>
+                <td>{fmt(scenariu.cuExceptie.costTotalCuDiferente)} lei</td>
+              </tr>
+            ))}
+          </tbody>
+        </TabelArticol>
+        <p className="source-note">
+          Pentru o lună întreagă, la locul de muncă de bază, fără persoane în întreținere. „Cu excepție” înseamnă un
+          angajat scutit de regula bazei minime, explicată mai jos.
+        </p>
 
-            <h2>Excepția se dovedește cu acte</h2>
-            <p>
-              Butonul pentru excepție din calculator îți arată doar efectul ei. Dacă ai dreptul la ea o decide situația
-              ta: cine are mai multe contracte dă o declarație pe propria răspundere, iar pentru celelalte cazuri
-              angajatorul păstrează actele care o dovedesc.
-            </p>
-          </Prose>
+        <h2>Cum se calculează</h2>
+        <p>
+          Tu plătești taxele obișnuite, doar pe salariul tău. Legea cere însă ca pentru orice contract să ajungă la
+          stat contribuții de pensie și sănătate cel puțin cât pentru un salariu minim. Diferența o pune firma, peste
+          brut, și nu se scade din banii tăi.
+        </p>
+        <Formula
+          eticheta="Calculul unui salariu part-time"
+          randuri={[
+            "Brut minim   = salariul minim × ore pe zi ÷ 8",
+            "Net          = brut − CAS − CASS − impozit",
+            "Diferență    = contribuțiile la baza minimă − cele reținute",
+            "Cost firmă   = brut + CAM + diferență",
+          ]}
+        />
+        <p>
+          Cei 200 de lei netaxați de la salariul minim nu se dau la part-time: sunt doar pentru norma întreagă.
+          Pentru regula bazei minime, legea scade însă tot 200 de lei din minim.
+        </p>
 
-          <aside className="min-w-0 md:col-span-2 md:self-start">
-            <CardCompanion
-              titlu="Baza minimă pentru contribuții"
-              nota="Pentru o lună întreagă. La un contract început în cursul lunii, baza scade proporțional cu zilele."
-            >
-              <Repere
-                randuri={[
-                  ["Salariul minim", "4.325 lei"],
-                  ["Minus suma scăzută", "− 200 lei"],
-                  ["Baza minimă", "4.125 lei"],
-                ]}
-              />
-            </CardCompanion>
-          </aside>
-        </div>
+        <h2>Excepția se dovedește cu acte</h2>
+        <p>
+          Butonul pentru excepție din calculator îți arată doar efectul ei. Dacă ai dreptul la ea o decide situația
+          ta: cine are mai multe contracte dă o declarație pe propria răspundere, iar pentru celelalte cazuri
+          angajatorul păstrează actele care o dovedesc.
+        </p>
       </Section>
 
       <Faq

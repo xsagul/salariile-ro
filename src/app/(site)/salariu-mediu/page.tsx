@@ -485,14 +485,14 @@ export default function SalariuMediuPage() {
             </div>
             <aside className={aside}>
               <div className={card}>
-                <h3 className="mb-3 text-xs font-medium text-stone-600">Surse oficiale</h3>
+                <h3 className="mb-2 text-base font-bold tracking-[-0.01em] text-stone-900">Surse oficiale</h3>
                 <ul className={`flex flex-col gap-2 text-sm leading-normal text-stone-600 ${links}`}>
                   <li><strong className="font-medium text-stone-900">Legea 44/2026</strong>: bugetul asigurărilor sociale 2026</li>
                   <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/276927" target="_blank" rel="noopener">Legea 360/2023</a>: sistemul public de pensii și ajutorul de deces</li>
                   <li><a href={LATEST_INS_EARNINGS.officialUrl} target="_blank" rel="noopener">INS, comunicatul pentru {INS_PERIOD_LABEL}</a>: {INS_BRUT_LABEL} lei brut, {INS_NET_LABEL} lei net, publicat {LATEST_INS_EARNINGS.publicationDateLabel}</li>
                   <li><a href="https://cnp.ro" target="_blank" rel="noopener">CNSP</a>: prognoze 2026–2028</li>
                 </ul>
-                <h3 className="mb-3 mt-6 text-xs font-medium text-stone-600">Pagini conexe</h3>
+                <h3 className="mt-6 mb-2 text-base font-bold tracking-[-0.01em] text-stone-900">Pagini conexe</h3>
                 <ul className={`flex flex-col gap-2 text-sm ${links}`}>
                   <li><Link href="/salariu-minim">Salariul minim 2026</Link></li>
                   <li><Link href="/salarii/locuri-vacante">Locuri de muncă vacante în economie</Link></li>

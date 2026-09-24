@@ -410,7 +410,7 @@ function CardPartTimeGri() {
 function CardSurse() {
   return (
     <div className={card}>
-      <h3 className="mb-3 text-xs font-medium text-stone-600">Surse oficiale</h3>
+      <h3 className="mb-2 text-base font-bold tracking-[-0.01em] text-stone-900">Surse oficiale</h3>
       <ul className={`flex flex-col gap-2 text-sm leading-normal text-stone-600 ${links}`}>
         <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/308231" target="_blank" rel="noopener">HG 146/2026</a>: salariul minim din 1 iulie 2026</li>
         <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/291450" target="_blank" rel="noopener">HG 1506/2024</a>: salariul minim din 1 ianuarie 2025</li>
@@ -427,7 +427,7 @@ function CardSurse() {
 function CardConexe() {
   return (
     <div className={card}>
-      <h3 className="mb-3 text-xs font-medium text-stone-600">Pagini conexe</h3>
+      <h3 className="mb-2 text-base font-bold tracking-[-0.01em] text-stone-900">Pagini conexe</h3>
       <ul className={`flex flex-col gap-2 text-sm ${links}`}>
         <li><Link href="/noutati/salariul-minim-1-iulie-2026">Ce s-a schimbat de la 1 iulie 2026</Link></li>
         <li><Link href="/noutati/salariu-peste-minim-1-iulie-2026">Salariile puțin peste minim</Link></li>

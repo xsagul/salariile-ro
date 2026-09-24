@@ -574,7 +574,7 @@ export default async function MeseriePage({ params }: Props) {
 
             <aside id="oferta" className="min-w-0 lg:col-span-2">
               <div className="rounded-md border border-stone-200 bg-surface p-6 shadow-soft">
-                <h2 className="text-lg font-semibold tracking-[-0.01em] text-stone-900">Calculează-ți net-ul</h2>
+                <h2 className="text-base font-bold tracking-[-0.01em] text-stone-900">Calculează-ți net-ul</h2>
                 <p className="mt-2 text-sm leading-normal text-stone-600">
                   Scrie brutul din oferta ta și vezi cât primești în mână.
                 </p>
@@ -588,7 +588,7 @@ export default async function MeseriePage({ params }: Props) {
 
               {comparatii.length > 0 && (
                 <div className="mt-8">
-                  <h2 className="text-sm font-medium uppercase tracking-wide text-stone-600">Comparații</h2>
+                  <h2 className="text-base font-bold tracking-[-0.01em] text-stone-900">Comparații</h2>
                   <div className="mt-3 grid gap-2">
                     {comparatii.map((comparatie) => (
                       <LinkCard
@@ -603,7 +603,7 @@ export default async function MeseriePage({ params }: Props) {
 
               {similare.length > 0 && (
                 <div className="mt-8">
-                  <h2 className="text-sm font-medium uppercase tracking-wide text-stone-600">
+                  <h2 className="text-base font-bold tracking-[-0.01em] text-stone-900">
                     Meserii apropiate de {numeMic}
                   </h2>
                   <div className="mt-3 grid gap-2">
