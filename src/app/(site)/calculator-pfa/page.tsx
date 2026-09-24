@@ -232,10 +232,7 @@ export default function CalculatorPfaPage() {
                       </li>
                     ))}
                   </ul>
-                  <p className="mt-3 text-xs text-stone-600">
-                    Venit net pe an: încasări minus cheltuieli. Pragurile folosesc minimul de{" "}
-                    {lei(SALARIU_MINIM_PFA_2026)} lei, cel de la 1 ianuarie.
-                  </p>
+                  <p className="mt-3 text-xs text-stone-600">Venit net pe an: încasări minus cheltuieli.</p>
                 </div>
               </aside>
             </div>
