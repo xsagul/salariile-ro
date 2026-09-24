@@ -63,7 +63,7 @@ export default function DesprePage() {
         <Lead>
           Salariile.ro e un proiect independent de transparență fiscală pentru România, întreținut individual. Aici găsești cine îl menține și pe ce surse se bazează fiecare calcul.
         </Lead>
-        <Eyebrow>PROIECT INDEPENDENT · LANSAT APRILIE 2026 · FĂRĂ PUBLICITATE</Eyebrow>
+        <Eyebrow>PROIECT INDEPENDENT · LANSAT ÎN APRILIE 2026</Eyebrow>
       </Hero>
 
       <div>
@@ -96,7 +96,7 @@ export default function DesprePage() {
               Legislația fiscală română se modifică frecvent, uneori prin ordonanțe de urgență publicate cu efect imediat. Pentru ca site-ul să rămână relevant, monitorizez lunar:
             </p>
             <ul>
-              <li>Monitorul Oficial (versiunea online a publicației legislative.just.ro)</li>
+              <li>Monitorul Oficial și portalul legislativ legislatie.just.ro</li>
               <li>Comunicările Ministerului Finanțelor și ANAF</li>
               <li>Comunicările Ministerului Muncii pentru actele normative ce privesc salariul minim</li>
               <li>Publicațiile Institutului Național de Statistică pentru date macroeconomice</li>
@@ -112,10 +112,10 @@ export default function DesprePage() {
         <Section>
             <h2>Cum este finanțat proiectul</h2>
             <p>
-              Salariile.ro nu afișează reclame, nu folosește programe de afiliere și nu vinde date despre utilizatori. Singurele costuri sunt domeniul anual și hostingul (Cloudflare, plan gratuit), pe care le acopăr personal.
+              Costurile sunt mici: domeniul, plătit anual, și găzduirea, pe planul gratuit Cloudflare. Le acopăr personal. Site-ul nu folosește programe de afiliere și nu vinde date despre utilizatori.
             </p>
             <p>
-              Pentru transparență totală: site-ul nu colectează date personale despre vizitatori dincolo de informațiile tehnice strict necesare funcționării (vezi <Link href="/politica-confidentialitate">politica de confidențialitate</Link>). Nu există formulare, conturi de utilizator sau newsletter.
+              Nu există formulare, conturi de utilizator sau newsletter. Ce date tehnice se folosesc pentru statisticile de trafic, și doar cu acordul tău, e scris în <Link href="/politica-confidentialitate">politica de confidențialitate</Link>.
             </p>
         </Section>
 
@@ -132,11 +132,17 @@ export default function DesprePage() {
         <Section>
             <h2>Jurnal de corecții și actualizări</h2>
             <p>
-              Pentru transparență totală, fiecare schimbare legislativă majoră sau revizie metodologică este documentată public:
+              Fiecare schimbare de lege importantă și fiecare corectură de metodă e notată aici:
             </p>
             <ul>
               <li>
-                <Link href="/metodologie#corectii">Corecțiile datelor pe meserii din 7 septembrie 2026</Link>. <strong>5 septembrie 2026</strong> — Verificare și aliniere a metadatelor și etichetării pe toate calculatoarele; consolidarea distincției dintre datele statistice agregate INS (CAEN × ISCO) și salariile individuale; audit tehnic și SEO complet.
+                <strong>24 septembrie 2026</strong> — Textele site-ului rescrise pe înțelesul tuturor: sub fiecare calculator stă acum formula, iar cifrele apar doar unde răspund la o întrebare.
+              </li>
+              <li>
+                <strong>7 septembrie 2026</strong> — <Link href="/metodologie#corectii">Corecțiile datelor pe meserii</Link>.
+              </li>
+              <li>
+                <strong>5 septembrie 2026</strong> — Etichete verificate pe toate calculatoarele și o distincție mai clară între mediile INS pe domenii și salariile individuale.
               </li>
               <li>
                 <strong>28 august 2026</strong> — Actualizare a metadatelor și corelare a formulelor fiscale pentru semestrul II 2026; revizie a calculatoarelor specializate (învățământ, part-time, PFA).

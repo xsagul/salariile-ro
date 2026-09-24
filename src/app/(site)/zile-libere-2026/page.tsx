@@ -94,27 +94,23 @@ const PUNTI = [
 const FAQ = [
   {
     q: "Câte zile libere are 2026 în România?",
-    a: "În 2026 sunt 115 zile libere: 104 zile de weekend plus 11 sărbători legale care cad în zile lucrătoare. Restul de 250 de zile sunt lucrătoare (echivalent cu 2.000 de ore la 8 ore/zi).",
+    a: "115: cele 104 zile de weekend și 11 sărbători legale care pică în timpul săptămânii.",
   },
   {
     q: "Când este Paștele ortodox în 2026?",
-    a: "Paștele ortodox este duminică, 12 aprilie 2026. Vinerea Mare cade pe 10 aprilie, iar a doua zi de Paște pe 13 aprilie (luni). Rusaliile sunt pe 31 mai, iar a doua zi de Rusalii pe 1 iunie, aceeași zi cu Ziua Copilului.",
-  },
-  {
-    q: "Câte zile lucrătoare are anul 2026?",
-    a: "2026 are 250 de zile lucrătoare, adică 2.000 de ore la program de 8 ore/zi. Iulie are cele mai multe zile lucrătoare (23), iar ianuarie cele mai puține (18), din cauza sărbătorilor de la început de an.",
+    a: "Duminică, 12 aprilie 2026. Vinerea Mare a fost pe 10 aprilie, iar a doua zi de Paște luni, 13 aprilie. Rusaliile au fost pe 31 mai, iar a doua zi de Rusalii a căzut pe 1 iunie, chiar de Ziua Copilului.",
   },
   {
     q: "Ce sărbători legale cad în weekend în 2026?",
-    a: "Cinci sărbători cad în weekend și nu aduc o zi liberă în plus: 24 ianuarie (sâmbătă), 12 aprilie, Paștele (duminică), 31 mai, Rusalii (duminică), 15 august (sâmbătă) și 26 decembrie (sâmbătă). Codul Muncii nu prevede recuperarea lor.",
+    a: "Cinci: Ziua Unirii (sâmbătă, 24 ianuarie), Paștele (duminică, 12 aprilie), Rusaliile (duminică, 31 mai), Adormirea Maicii Domnului (sâmbătă, 15 august) și a doua zi de Crăciun (sâmbătă, 26 decembrie). Nu se recuperează în altă zi.",
   },
   {
     q: "Cum se plătește lucrul în zilele de sărbătoare?",
-    a: "Conform Codului Muncii (art. 142), pentru munca în zilele de sărbătoare legală angajatorul acordă zile libere plătite în următoarele 30 de zile. Dacă nu poate, plătește un spor de minimum 100% din salariul de bază pentru orele lucrate.",
+    a: "Primești o zi liberă plătită în următoarele 30 de zile. Dacă angajatorul nu ți-o poate da, îți plătește orele lucrate cu un spor de cel puțin 100%.",
   },
   {
     q: "Numărul zilelor lucrătoare din lună îmi schimbă salariul?",
-    a: "Nu. Salariul lunar negociat (brut) se plătește integral, indiferent dacă luna are 18 sau 23 de zile lucrătoare. Diferă doar tariful pe oră, relevant la contractele part-time sau plătite la oră.",
+    a: "Nu, dacă ai salariu lunar. Primești aceeași sumă într-o lună cu 18 zile lucrătoare ca într-una cu 23. Diferă doar cât valorează o oră, lucru care contează la plata cu ora și la orele suplimentare.",
   },
 ];
 
@@ -185,19 +181,17 @@ export default function ZileLibere2026Page() {
             <nav className="mb-4 flex flex-wrap gap-4 text-sm"><Link href="/zile-libere-2027" className="min-h-11 py-3 underline">Calendar zile libere 2027</Link><a download href="/date/calendar/2026.ics" className="min-h-11 py-3 underline">Importă sărbătorile 2026 (ICS)</a></nav>
             <h1 className="mt-2 text-3xl font-bold tracking-[-0.02em] text-stone-900 sm:text-4xl">Zile libere 2026</h1>
             <p className="mt-3 text-xs text-stone-600 [&_a]:font-medium [&_a]:text-stone-700 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-900">
-              Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat 6 iulie 2026
+              Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat {PAGE_LAST_MODIFIED["/zile-libere-2026"].toLocaleDateString("ro-RO", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })}
             </p>
             <p className="mt-5 text-base leading-normal tracking-[-0.01em] text-stone-600">
-              Calendarul complet al zilelor libere legale din România în 2026: sărbătorile (Codul Muncii art. 139),
-              calendarul vizual al anului și punțile prin care îți faci minivacanțe.
+              Toate sărbătorile legale din 2026, calendarul anului și punțile prin care îți poți face minivacanțe.
             </p>
             <div className="mt-5 border-l-2 border-stone-900 pl-4 text-sm leading-normal tracking-[-0.01em] text-stone-700">
-              <p className="font-semibold text-stone-900">Răspuns scurt</p>
+              <p className="font-semibold text-stone-900">Pe scurt</p>
               <p className="mt-1">
-                În 2026 sunt <strong>250 zile lucrătoare</strong>, <strong>2.000 ore de lucru</strong> la normă standard și{" "}
-                <strong>16 zile libere de sărbătoare legală</strong>, dintre care 11 pică în zile lucrătoare. Codul Muncii
-                enumeră 17 sărbători, dar în 2026 a doua zi de Rusalii cade chiar pe 1 iunie, Ziua Copilului, așa că se
-                suprapun într-o singură zi liberă.
+                În 2026 sunt <strong>16 zile de sărbătoare legală</strong>. <strong>11</strong> pică în timpul săptămânii
+                și îți dau o zi liberă, 5 pică în weekend. Legea are 17 sărbători, dar anul acesta a doua zi de Rusalii a
+                căzut chiar pe 1 iunie, de Ziua Copilului, așa că două sărbători au împărțit aceeași zi.
               </p>
             </div>
           </div>
@@ -291,9 +285,7 @@ export default function ZileLibere2026Page() {
           <div className="mt-12 border-t border-stone-200 pt-10 sm:mt-16 sm:pt-14">
             <h2 className="text-2xl font-bold tracking-[-0.02em] text-stone-900 sm:text-3xl">Sărbătorile legale din 2026</h2>
             <p className="mt-3 max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600">
-              Cele 16 zile de sărbătoare legală recunoscute de{" "}
-              <a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/128646" target="_blank" rel="noopener" className="font-medium text-stone-900 underline underline-offset-2 hover:text-stone-600">Codul Muncii (art. 139)</a>.
-              Cele 11 care cad în zile lucrătoare îți aduc o zi liberă în plus; 5 cad în weekend.
+              Cele care pică în weekend sunt marcate: pe ele nu primești o zi liberă în altă parte.
             </p>
             <div className={`mt-6 ${card}`}>
               <ul className="grid grid-cols-1 gap-x-10 sm:grid-cols-2 [&>li:last-child]:border-b-0 sm:[&>li:nth-last-child(2)]:border-b-0">
@@ -362,7 +354,6 @@ export default function ZileLibere2026Page() {
                   <li><Link href="/salariu-mediu">Salariul mediu pe economie</Link></li>
                   <li><Link href="/">Calculator salariu net</Link></li>
                 </ul>
-                <p className="mt-auto pt-6 text-xs text-stone-600">Ultima actualizare: 2 iulie 2026.</p>
               </div>
             </aside>
           </div>
@@ -372,8 +363,7 @@ export default function ZileLibere2026Page() {
             <div className={`max-w-prose ${card}`}>
               <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900">Calculează-ți salariul pe 2026</h2>
               <p className="mt-2 text-base leading-normal tracking-[-0.01em] text-stone-600">
-                Numărul zilelor lucrătoare nu-ți schimbă salariul lunar, dar vezi exact cât primești net, ce reține statul
-                și cât costă firma.
+                Scrie brutul și vezi cât primești în mână.
               </p>
               <Link
                 href="/"

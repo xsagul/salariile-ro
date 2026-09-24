@@ -195,8 +195,7 @@ export default function SmartBillPage() {
           </table>
         </div>
         <p>
-          Dacă ai căutat „Smart Bill” scris separat, este aceeași entitate: forma folosită oficial de companie
-          este <strong>SmartBill</strong>.
+          „Smart Bill”, scris separat, e același produs. Numele oficial se scrie legat: <strong>SmartBill</strong>.
         </p>
         <p className="source-note">
           Surse:{" "}
@@ -241,8 +240,7 @@ export default function SmartBillPage() {
           contabilitatea internă se adaugă 25 € + TVA/lună per cont.
         </p>
         <p>
-          Prețurile se pot schimba. De aceea păstrăm data verificării vizibilă și trimitem la paginile
-          oficiale, nu la capturi sau tarife istorice.
+          Prețurile se pot schimba, așa că verifică-le și pe paginile oficiale înainte să cumperi.
         </p>
         <p className="source-note">
           Surse:{" "}
@@ -262,11 +260,6 @@ export default function SmartBillPage() {
           Zona de Facturare acoperă emiterea și trimiterea facturilor, proformelor și chitanțelor, precum și
           integrarea cu RO e-Factura. Planurile superioare adaugă trimitere automată sau în masă, facturare
           recurentă, notificări către clienți și funcții pentru magazine online.
-        </p>
-        <p>
-          Pentru un utilizator care caută pur și simplu „SmartBill”, aceasta este una dintre intențiile
-          dominante din rezultatele Google: acces rapid la facturare și e-Factura, nu salarizare. Din acest
-          motiv ghidul începe cu produsele și prețurile și abia apoi intră în SmartBill Conta.
         </p>
       </Section>
 
@@ -343,10 +336,6 @@ export default function SmartBillPage() {
           Dacă ai deja cont și intenția este doar autentificarea, intrarea corectă este serviciul oficial
           SmartBill Cloud. Salariile.ro nu reproduce formularul de login și nu cere date de acces.
         </p>
-        <p>
-          Pentru utilizatorii care caută informații înainte de a cumpăra, pagina de față rămâne separată de
-          autentificare: explică produsele, prețurile și funcțiile, apoi te trimite la serviciul oficial.
-        </p>
         <p className="source-note">
           Login oficial: <a href="https://cloud.smartbill.ro/auth/login/">cloud.smartbill.ro/auth/login</a>.
         </p>
@@ -378,8 +367,7 @@ export default function SmartBillPage() {
           absența calculului salarial.
         </p>
         <p>
-          Detaliile despre SAGA sunt într-o pagină separată, ca fiecare pagină să aibă o entitate și o
-          intenție principală clară: <Link href="/saga">SAGA C și SAGA WEB</Link>.
+          Despre SAGA, cu variantele și licențele ei, am scris separat: <Link href="/saga">SAGA C și SAGA WEB</Link>.
         </p>
       </Section>
 

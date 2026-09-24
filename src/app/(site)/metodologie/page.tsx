@@ -73,7 +73,7 @@ export default function MetodologiePage() {
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Metodologie" }]} />
         <H1>Metodologie de calcul</H1>
         <p className="mt-3 text-sm text-stone-600 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2">
-          Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Publicat 1 aprilie 2026 · Actualizat 26 iulie 2026
+          Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Publicat 1 aprilie 2026 · Actualizat {PAGE_LAST_MODIFIED["/metodologie"].toLocaleDateString("ro-RO", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })}
         </p>
         <Lead>
           Documentația completă a formulelor folosite de calculator. Fiecare componentă este însoțită de articolul exact din Codul Fiscal sau actul normativ aplicabil în 2026.
@@ -224,11 +224,11 @@ export default function MetodologiePage() {
                 <strong>Deducerea personală de bază</strong>: depinde de salariul brut lunar, de numărul de persoane aflate în întreținere și de plafonul calculat ca <em>salariul minim brut + 2.000 lei</em>. Pentru 2026: plafon = 6.050 lei (S1) sau 6.325 lei (S2). Peste acest plafon, deducerea de bază este 0.
               </li>
               <li>
-                <strong>Deducerea personală suplimentară</strong>: pentru persoane cu vârsta sub 26 ani aflate la primul loc de muncă, sau pentru salariați cu copii minori în întreținere. Se cumulează cu deducerea de bază.
+                <strong>Deducerea personală suplimentară</strong>: 15% din salariul minim pentru salariații sub 26 de ani, cu venit brut de cel mult salariul minim plus 2.000 lei, și 100 lei pentru fiecare copil minor aflat la școală. Se adaugă la deducerea de bază.
               </li>
             </ul>
             <p>
-              Calculatorul aplică deducerea conform tabelelor publicate în anexa la Codul Fiscal, ținând cont de numărul de persoane în întreținere selectate în secțiunea „Calculator avansat”.
+              Deducerea de bază pornește de la un procent din salariul minim (20% fără persoane în întreținere, până la 45% cu patru sau mai multe) și scade cu 0,5 puncte pentru fiecare tranșă de 50 lei peste minim. Calculatorul folosește persoanele în întreținere alese în „Calculator avansat”.
             </p>
             <p>
               Pentru veniturile peste plafonul de 6.050/6.325 lei, deducerea de bază nu se aplică, deci toată suma după contribuții se impozitează cu 10%.
@@ -299,11 +299,11 @@ export default function MetodologiePage() {
             </p>
             <ul>
               <li><strong>Nu integrează sporuri și beneficii nesalariale</strong> tratate diferențiat (tichete de masă peste plafon, tichete cadou, prime ocazionale, indemnizații de delegare etc.)</li>
-              <li><strong>Nu calculează concediile medicale</strong> (alt tratament fiscal, indemnizație din FAAMBP sau de la angajator)</li>
+              <li><strong>Nu calculează concediile medicale</strong> (alte reguli de calcul, plată împărțită între angajator și fondul de sănătate; vezi <Link href="/noutati/concediu-medical-2026">ghidul despre concediul medical</Link>)</li>
               <li><strong>Nu acoperă cazurile de cumul de funcții</strong> (mai multe contracte simultane, funcție de bază vs locuri suplimentare de muncă)</li>
               <li><strong>Nu aplică scutirile sectoriale</strong> care erau în vigoare înainte de 2025 (IT, construcții, agroalimentar), eliminate prin OUG 156/2024</li>
               <li><strong>Nu calculează contribuțiile angajatorilor speciali</strong> (entități non-profit, cooperative agricole etc.)</li>
-              <li><strong>Nu generează fluturașul oficial de plată</strong>: afișează doar componentele de bază; fluturașul oficial poate conține mai multe rânduri (ore lucrate, ore suplimentare, sporuri, deduceri specifice etc.)</li>
+              <li><strong>Nu înlocuiește fluturașul oficial</strong>: <Link href="/fluturas-salariu">generatorul de fluturaș</Link> include ore lucrate, ore suplimentare, sporuri și rețineri, dar documentul oficial îl emite doar angajatorul</li>
             </ul>
             <p>
               Pentru aceste situații, recomand consultarea unui contabil autorizat sau a unui expert fiscal. Calculatorul este util pentru a obține o estimare rapidă și acurată pentru cazul standard.
@@ -342,7 +342,6 @@ export default function MetodologiePage() {
               <li><strong>Monitorul Oficial</strong>: <a href="https://legislatie.just.ro" target="_blank" rel="noopener">legislatie.just.ro</a> (portal căutare generală)</li>
               <li><strong>Institutul Național de Statistică</strong>: <a href="https://insse.ro" target="_blank" rel="noopener">insse.ro</a></li>
             </ul>
-            <p className="source-note">Pagină actualizată: 26 iulie 2026.</p>
         </Section>
       </div>
     </>

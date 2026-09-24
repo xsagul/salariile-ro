@@ -84,7 +84,7 @@ export default function ContactPage() {
                 <strong>Raportarea erorilor de calcul.</strong> Dacă observi o cifră care nu se potrivește cu fluturașul tău sau cu o sursă oficială, scrie-mi cu detalii (brutul folosit, cifra obținută pe site, cifra corectă, sursa pe care o ai). Erorile concrete au prioritate maximă, de regulă le corectez în aceeași zi.
               </li>
               <li>
-                <strong>Sugerări de pagini sau funcționalități noi.</strong> Calculator PFA, calculator concediu medical, pagină dedicată unei prestații sociale specifice etc. Toate sugestiile sunt binevenite și ajută la prioritizarea dezvoltării.
+                <strong>Idei de pagini sau calculatoare noi.</strong> Un calculator care îți lipsește, o meserie pe care n-o găsești, o prestație socială pe care vrei s-o înțelegi. Sugestiile mă ajută să aleg ce fac mai întâi.
               </li>
               <li>
                 <strong>Întrebări despre metodologia de calcul.</strong> Dacă o cifră afișată nu îți este clară sau vrei să înțelegi cum se aplică o regulă fiscală specifică, întreabă. Pagina <Link href="/metodologie">metodologie</Link> acoperă cazurile principale, dar răspund cu plăcere și pe email pentru cazuri specifice.

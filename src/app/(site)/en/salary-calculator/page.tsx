@@ -26,7 +26,7 @@
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
 import CalculatorSalariu from "@/app/components/CalculatorSalariu";
-import { PaginiConexe, Section } from "@/app/components/ui";
+import { Formula, PaginiConexe, Section } from "@/app/components/ui";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
 import { CAM_PROCENT, CASS_PROCENT, CAS_PROCENT, IMPOZIT_PROCENT, SALARIU_MINIM, calculStandard } from "@/lib/fiscal";
@@ -174,11 +174,20 @@ export default function Page() {
             after those contributions and after the personal deduction. There are no brackets.
           </li>
           <li>
-            <strong>Paid by the employer, above the gross:</strong> the {pct(CAM_PROCENT)} work
+            <strong>Paid by the employer, above the gross:</strong> the {pct(CAM_PROCENT)}{" "}work
             insurance contribution (CAM). This is the only employer-side contribution left after the
             2018 reform moved almost everything onto the employee&rsquo;s side.
           </li>
         </ul>
+        <Formula
+          eticheta="Romanian net salary formula"
+          randuri={[
+            `CAS        = gross × ${pct(CAS_PROCENT)}`,
+            `CASS       = gross × ${pct(CASS_PROCENT)}`,
+            `Income tax = (gross − CAS − CASS − deduction) × ${pct(IMPOZIT_PROCENT)}`,
+            "Net        = gross − CAS − CASS − income tax",
+          ]}
+        />
         <p>
           The abbreviations are kept in Romanian on purpose. CAS, CASS and CAM are what appear on a
           real payslip and in the employer&rsquo;s monthly D112 declaration, so recognising them is
@@ -207,7 +216,7 @@ export default function Page() {
           ) : null}{" "}
           {EX ? (
             <>
-              At {money(10000)} RON gross, the net is roughly {money(EX.netBani)} RON and the
+              At {money(10000)} RON gross, the net is roughly {money(EX.netBani)}{" "}RON and the
               employer&rsquo;s total cost {money(EX.costTotal)} RON — about {EX.brutNet}% of the
               gross reaches the employee.
             </>
@@ -239,6 +248,7 @@ export default function Page() {
       </Section>
 
       <PaginiConexe
+        titlu="Further reading"
         linkuri={[
           { href: "/", label: "Calculator salariu net", descriere: "The same calculator, in Romanian." },
           { href: "/salariu-minim", label: "Salariul minim 2026", descriere: "Minimum wage figures and the rules behind them." },

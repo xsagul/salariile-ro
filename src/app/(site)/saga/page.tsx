@@ -159,7 +159,7 @@ export default function SagaPage() {
         <h2>SAGA C, SAGA WEB și SAGA P.S.</h2>
         <p>
           <strong>SAGA C</strong> este aplicația desktop pentru evidență contabilă, salarială și de
-          stocuri în partidă dublă. Pentru partidă simplă există SAGA P.S. <strong>SAGA WEB</strong>
+          stocuri în partidă dublă. Pentru partidă simplă există SAGA P.S. <strong>SAGA WEB</strong>{" "}
           este versiunea online a produselor și oferă acces prin browser.
         </p>
         <p>
@@ -242,8 +242,8 @@ export default function SagaPage() {
         </p>
         <p>
           Prețul curent este calculat în formularul oficial de achiziție în funcție de pachet și numărul
-          de accesări/CIF-uri incluse. Nu publicăm aici o sumă preluată din forum sau dintr-o factură veche,
-          pentru că nu ar reprezenta neapărat oferta disponibilă pentru firma ta astăzi.
+          de accesări/CIF-uri incluse. Nu dăm aici o sumă luată de pe un forum sau de pe o factură veche,
+          pentru că probabil n-ar fi oferta pe care o primește firma ta azi.
         </p>
         <p className="source-note">
           Surse:{" "}
@@ -271,7 +271,7 @@ export default function SagaPage() {
       >
         <h2>SAGA vs SmartBill pentru salarizare</h2>
         <p>
-          Nu există o diferență de tipul „unul calculează salarii, celălalt nu”. <strong>Ambele</strong>
+          Nu există o diferență de tipul „unul calculează salarii, celălalt nu”. <strong>Ambele</strong>{" "}
           au fluxuri de salarizare și D112. Diferența este în modul în care lucrezi cu ele.
         </p>
         <div className="table-wrap">
