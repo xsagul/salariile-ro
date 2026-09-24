@@ -377,8 +377,8 @@ export default async function MeseriePage({ params }: Props) {
             </div></details>
           )}
 
-          <div className="mt-12 grid gap-10 lg:grid-cols-3">
-            <div className="min-w-0 lg:col-span-2">
+          <div className="mt-12 grid gap-10 lg:grid-cols-5 lg:gap-6">
+            <div className="min-w-0 lg:col-span-3">
               {grila && (
                 <section className="mb-12">
                   <h2 className="text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">
@@ -572,7 +572,7 @@ export default async function MeseriePage({ params }: Props) {
 
             </div>
 
-            <aside id="oferta" className="min-w-0 lg:col-span-1">
+            <aside id="oferta" className="min-w-0 lg:col-span-2">
               <div className="rounded-md border border-stone-200 bg-surface p-6 shadow-soft">
                 <h2 className="text-lg font-semibold tracking-[-0.01em] text-stone-900">Calculează-ți net-ul</h2>
                 <p className="mt-2 text-sm leading-normal text-stone-600">

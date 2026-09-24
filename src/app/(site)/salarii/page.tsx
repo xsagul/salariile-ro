@@ -7,7 +7,7 @@
 
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
-import { Breadcrumb, Faq, H1, Lead } from "@/app/components/ui";
+import { Breadcrumb, Faq, H1, Lead, CtaCard } from "@/app/components/ui";
 import FiltruMeserii from "@/app/components/FiltruMeserii";
 import { NotaSursa, lei, lunaLunga } from "@/app/components/Salarii";
 
@@ -233,22 +233,9 @@ export default function SalariiPage() {
 
       <Faq items={FAQ} />
 
-      <section className="border-t border-stone-200 bg-canvas py-10 sm:py-12">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6">
-          <div className="rounded-md border border-stone-200 bg-surface p-6 shadow-soft sm:p-8">
-            <h2 className="mb-2 text-2xl font-bold tracking-[-0.02em] text-stone-900">Compară două meserii</h2>
-            <p className="mb-5 leading-normal text-stone-600">
-              Repere salariale, atribuții și contextul pieței, cu sursa fiecărei valori la vedere.
-            </p>
-            <Link
-              href="/compara"
-              className="inline-flex min-h-11 items-center rounded border border-stone-900 bg-stone-900 px-5 text-sm font-medium text-white transition-colors hover:bg-stone-700"
-            >
-              Vezi comparațiile
-            </Link>
-          </div>
-        </div>
-      </section>
+      <CtaCard title="Compară două meserii" href="/compara" label="Vezi comparațiile">
+        Repere salariale, atribuții și contextul pieței, cu sursa fiecărei valori la vedere.
+      </CtaCard>
     </>
   );
 }

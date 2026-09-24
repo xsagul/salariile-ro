@@ -4,7 +4,7 @@
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
-import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow } from "@/app/components/ui";
+import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow, PaginaCuCuprins } from "@/app/components/ui";
 
 export const metadata: Metadata = {
   title: "Politica de confidențialitate",
@@ -71,7 +71,7 @@ export default function PoliticaConfidentialitatePage() {
         <Eyebrow>ÎN VIGOARE: 17 SEPTEMBRIE 2026 · CONSENT MODE · ZERO ANUNȚURI</Eyebrow>
       </Hero>
 
-      <div>
+      <PaginaCuCuprins cta={null}>
         <Section>
             <h2>1. Operatorul de date</h2>
             <p>
@@ -205,7 +205,7 @@ Salariile.ro nu afișează reclame. Cookies de analiză GA4 apar numai după aco
             </p>
             <p className="source-note">Ultima actualizare: 18 septembrie 2026 — GA4 măsoară folosirea paginilor și a calculatoarelor, fără sumele introduse; CMP-ul Google și Consent Mode rămân neschimbate.</p>
         </Section>
-      </div>
+      </PaginaCuCuprins>
     </>
   );
 }

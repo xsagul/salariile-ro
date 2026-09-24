@@ -3,7 +3,7 @@ import Link from "@/app/components/Link";
 import { personSchema } from "@/lib/person";
 import { SARBATORI_LEGALE_2026, zileLucratoareLuna } from "@/lib/sarbatori";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
-import { Hero, Section, Breadcrumb, H1, Lead, Formula } from "@/app/components/ui";
+import { Hero, Section, Breadcrumb, H1, Lead, Formula, PaginaCuCuprins } from "@/app/components/ui";
 import TabelArticol from "@/app/components/TabelArticol";
 import CalculatorIntervalZile from '@/app/components/CalculatorIntervalZile';
 
@@ -201,7 +201,7 @@ export default function ZileLucratoare2026Page() {
         </Lead>
       </Hero>
 
-      <div>
+      <PaginaCuCuprins>
         <Section wide>
           <CalculatorIntervalZile />
           <Link href="/zile-lucratoare-2027" className="mt-4 inline-flex min-h-11 items-center underline">Zile lucrătoare 2027 și export CSV</Link>
@@ -368,7 +368,7 @@ export default function ZileLucratoare2026Page() {
             <li><Link href="/calculator-ore-suplimentare">Calculator ore suplimentare</Link>, pentru sporul de 75%, cel de noapte și cel de sărbători</li>
           </ul>
         </Section>
-      </div>
+      </PaginaCuCuprins>
     </>
   );
 }

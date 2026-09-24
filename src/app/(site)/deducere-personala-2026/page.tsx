@@ -3,7 +3,7 @@ import Link from "@/app/components/Link";
 import { personSchema } from "@/lib/person";
 import { calculeazaDeducerePersonala, SALARIU_MINIM } from "@/lib/fiscal";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
-import { Hero, Section, Breadcrumb, H1, Lead, Formula, PaginiConexe } from "@/app/components/ui";
+import { Hero, Section, Breadcrumb, H1, Lead, Formula, PaginiConexe, PaginaCuCuprins } from "@/app/components/ui";
 import TabelArticol from "@/app/components/TabelArticol";
 
 // Titlul vechi („tabel și calcul pentru salariu") depășea 60 de caractere cu brandul și
@@ -103,7 +103,7 @@ export default function DeducerePersonalaPage() {
         </Lead>
       </Hero>
 
-      <div>
+      <PaginaCuCuprins>
 
         <Section>
           <h2>Tabel deducere personală 2026</h2>
@@ -184,7 +184,7 @@ export default function DeducerePersonalaPage() {
             Formulele complete sunt în <Link href="/metodologie">metodologie</Link>.
           </p>
         </Section>
-      </div>
+      </PaginaCuCuprins>
       <PaginiConexe
         linkuri={[
           { href: "/salarii", label: "Salarii pe meserii", descriere: "Cât se câștigă în fiecare meserie." },

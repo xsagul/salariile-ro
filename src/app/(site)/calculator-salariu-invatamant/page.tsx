@@ -245,7 +245,6 @@ export default function Page() {
       />
 
       <PaginiConexe
-        peGrila
         linkuri={[
           { href: "/salarii/profesor", label: "Salariu profesor", descriere: "Grila și reperele din sectorul de educație." },
           { href: "/salarii/invatator", label: "Salariu învățător", descriere: "Grila pentru cadrele din învățământul primar." },

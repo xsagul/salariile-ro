@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
-import { Breadcrumb, CtaCard, Eyebrow, H1, Hero, Lead, Section } from "@/app/components/ui";
+import { Breadcrumb, CtaCard, Eyebrow, H1, Hero, Lead, Section, PaginaCuCuprins } from "@/app/components/ui";
 import {
   LATEST_INS_EARNINGS,
   SALARY_DATA_2026,
@@ -177,6 +177,7 @@ export default function DateSalariiPage() {
         </div>
       </Hero>
 
+      <PaginaCuCuprins cta={null}>
       <Section wide>
         <h2>Setul de date, pe scurt</h2>
         <p>
@@ -318,6 +319,7 @@ export default function DateSalariiPage() {
           </p>
         </div>
       </Section>
+      </PaginaCuCuprins>
 
       <CtaCard title="Ai nevoie de formulele din spatele valorilor?" href="/metodologie" label="Vezi metodologia completă">
         Documentația explică separat CAS, CASS, impozitul, deducerea personală, facilitatea salariului minim și

@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 import Link from "@/app/components/Link";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
-import { Hero, Section, Breadcrumb, H1, Lead } from "@/app/components/ui";
+import { Hero, Section, Breadcrumb, H1, Lead, PaginaCuCuprins } from "@/app/components/ui";
 
 export const metadata: Metadata = {
   title: "Contact: raportează erori sau sugestii",
@@ -63,7 +63,7 @@ export default function ContactPage() {
         </Lead>
       </Hero>
 
-      <div>
+      <PaginaCuCuprins cta={null}>
         <Section>
             <h2>Adresă de email</h2>
             <p>
@@ -125,7 +125,7 @@ export default function ContactPage() {
               Termenii de utilizare: <Link href="/termeni">pagina Termeni</Link>.
             </p>
         </Section>
-      </div>
+      </PaginaCuCuprins>
     </>
   );
 }

@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 import Link from "@/app/components/Link";
 import { notFound } from "next/navigation";
 import CalculatorSalariu from "@/app/components/CalculatorSalariu";
-import { Formula, Section } from "@/app/components/ui";
+import { Formula, Section, CardCompanion } from "@/app/components/ui";
 import {
   brutDinNetStandardCuRegim,
   calculStandard,
@@ -356,6 +356,22 @@ export default async function CalculatorDinamic({ params }: Props) {
     ]
   };
 
+  // Sumele apropiate stau lângă formulă: cine a ajuns aici din căutarea unei
+  // sume vrea adesea s-o compare cu vecinele ei, nu să citească mai departe.
+  const sumeApropiate = (
+    <CardCompanion titlu="Alte sume căutate des">
+      <ul aria-label="Calcule salariale apropiate" className="flex flex-col gap-2 text-sm">
+        {linkuriCalculatoare.map((link) => (
+          <li key={link.href}>
+            <Link href={link.href} className="font-medium text-stone-900 underline underline-offset-2 hover:text-stone-600">
+              {link.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </CardCompanion>
+  );
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
@@ -369,8 +385,8 @@ export default async function CalculatorDinamic({ params }: Props) {
         />
       </div>
 
-      {rez && (
-        <Section>
+      {rez ? (
+        <Section companion={sumeApropiate}>
           <h2>Cum se ajunge la {isNetDinBrut ? `${fmt(rez.netBani)} lei net` : `${fmt(brutEfectiv)} lei brut`}</h2>
           <p>
             Din brut se opresc 25% pentru pensie și 10% pentru sănătate, apoi impozitul de 10% pe ce rămâne
@@ -384,18 +400,19 @@ export default async function CalculatorDinamic({ params }: Props) {
               : "La locul de muncă de bază, fără tichete sau persoane în întreținere. Pentru situația ta, folosește opțiunile avansate de sus."}
           </p>
         </Section>
+      ) : (
+        <Section>
+          <h2>Alte sume căutate des</h2>
+          <ul aria-label="Calcule salariale apropiate">
+            {linkuriCalculatoare.map((link) => (
+              <li key={link.href}>
+                <Link href={link.href}>{link.label}</Link>
+              </li>
+            ))}
+          </ul>
+        </Section>
       )}
 
-      <Section>
-        <h2>Alte sume căutate des</h2>
-        <ul aria-label="Calcule salariale apropiate">
-          {linkuriCalculatoare.map((link) => (
-            <li key={link.href}>
-              <Link href={link.href}>{link.label}</Link>
-            </li>
-          ))}
-        </ul>
-      </Section>
     </>
   );
 }

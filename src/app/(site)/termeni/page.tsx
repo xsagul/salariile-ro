@@ -4,7 +4,7 @@
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
-import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow } from "@/app/components/ui";
+import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow, PaginaCuCuprins } from "@/app/components/ui";
 
 export const metadata: Metadata = {
   title: "Termeni și condiții de utilizare",
@@ -65,7 +65,7 @@ export default function TermeniPage() {
         <Eyebrow>ÎN VIGOARE: 29 IULIE 2026</Eyebrow>
       </Hero>
 
-      <div>
+      <PaginaCuCuprins cta={null}>
         <Section>
             <h2>1. Acceptarea termenilor</h2>
             <p>
@@ -162,7 +162,7 @@ export default function TermeniPage() {
             </p>
             <p className="source-note">Ultima actualizare: 11 mai 2026.</p>
         </Section>
-      </div>
+      </PaginaCuCuprins>
     </>
   );
 }

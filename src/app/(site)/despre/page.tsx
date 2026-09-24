@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 import Link from "@/app/components/Link";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
-import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow } from "@/app/components/ui";
+import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow, PaginaCuCuprins } from "@/app/components/ui";
 
 export const metadata: Metadata = {
   title: "Despre proiect: cine întreține site-ul",
@@ -66,7 +66,7 @@ export default function DesprePage() {
         <Eyebrow>PROIECT INDEPENDENT · LANSAT ÎN APRILIE 2026</Eyebrow>
       </Hero>
 
-      <div>
+      <PaginaCuCuprins>
         <Section>
             <h2>Cine întreține site-ul</h2>
             <p>
@@ -155,7 +155,7 @@ export default function DesprePage() {
               </li>
             </ul>
         </Section>
-      </div>
+      </PaginaCuCuprins>
     </>
   );
 }

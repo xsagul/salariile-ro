@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
-import { Breadcrumb, CtaCard, Faq, Formula, H1, Hero, Lead, Section } from "@/app/components/ui";
+import { Breadcrumb, CtaCard, Faq, Formula, H1, Hero, Lead, Section, PaginaCuCuprins } from "@/app/components/ui";
 import { calculStandardCuRegim, SALARIU_MINIM_CONSTRUCTII } from "@/lib/fiscal";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
@@ -121,7 +121,7 @@ export default function SalariuMinimConstructii2026Page() {
         </Lead>
       </Hero>
 
-      <div>
+      <PaginaCuCuprins cta={{ titlu: "Calculează salariul în construcții", text: "Pornește de la minimul din construcții sau de la netul dorit.", href: "/calculator-salariu-constructii", eticheta: "Deschide calculatorul" }}>
         <Section noTopBorder>
           <h2>Cum se ajunge de la {fmt(MINIM_CONSTRUCTII)} la {fmt(CONSTRUCTII_S2.netBani)} lei</h2>
           <p>
@@ -212,6 +212,7 @@ export default function SalariuMinimConstructii2026Page() {
             <li><Link href="/noutati/salariul-minim-1-iulie-2026">Ce s-a schimbat la 1 iulie 2026</Link></li>
           </ul>
         </Section>
+      </PaginaCuCuprins>
 
         <Faq items={FAQ} title="Întrebări despre salariul minim în construcții" />
 
@@ -224,7 +225,6 @@ export default function SalariuMinimConstructii2026Page() {
           Calculul complet pentru {fmt(MINIM_CONSTRUCTII)} lei brut e și pe{" "}
           <Link href="/calculator/calcul-salariu-net-4582-brut">pagina lui separată</Link>.
         </CtaCard>
-      </div>
     </>
   );
 }

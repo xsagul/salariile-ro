@@ -4,6 +4,7 @@
 // <Prose> stilează automat h2/h3/p/ul/a/strong/table prin variante descendente.
 
 import Link from "@/app/components/Link";
+import CuprinsPagina from "@/app/components/CuprinsPagina";
 import type { ReactNode } from "react";
 
 const PROSE = [
@@ -77,23 +78,20 @@ export function Section({
   children: ReactNode;
   wide?: boolean;
   noTopBorder?: boolean;
-  /** Cardul din dreapta. Cu el, secțiunea intră pe grila 3+2 a paginii. */
+  /** Cardul din dreapta, pe grila 3+2 a paginii. */
   companion?: ReactNode;
 }) {
+  // Din 24 septembrie 2026 toate secțiunile stau de la aceeași margine ca titlul
+  // și calculatorul. Până atunci, o secțiune fără card lateral se centra pe
+  // `max-w-3xl` și pagina avea două margini. Paginile fără carduri proprii își
+  // pun secțiunile în <PaginaCuCuprins>. `wide` rămâne pentru tabelele late.
   const clase = `${noTopBorder ? "border-t-0" : "border-t border-stone-200 first:border-t-0"} bg-canvas py-10 sm:py-12`;
-  if (companion) {
-    return (
-      <section className={clase}>
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <GrilaPagina continut={<Prose>{children}</Prose>} companion={companion} />
-        </div>
-      </section>
-    );
-  }
   return (
     <section className={clase}>
-      <div className={`mx-auto px-4 sm:px-6 ${wide ? "max-w-6xl" : "max-w-3xl"}`}>
-        <Prose>{children}</Prose>
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        {wide && !companion
+          ? <Prose>{children}</Prose>
+          : <GrilaPagina continut={<Prose>{children}</Prose>} companion={companion} />}
       </div>
     </section>
   );
@@ -144,12 +142,12 @@ export function Faq({
 }: {
   items: { q: string; a: string }[];
   title?: string;
-  /** Cardul din dreapta. Cu el, FAQ-ul intră pe grila 3+2, ca pe homepage. */
+  /** Cardul din dreapta, pe grila 3+2, ca pe homepage. */
   companion?: ReactNode;
 }) {
   return (
     <section className="border-t border-stone-200 bg-canvas py-10 sm:py-12">
-      <div className={`mx-auto px-4 sm:px-6 ${companion ? "max-w-6xl" : "max-w-3xl"}`}>
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <GrilaPagina
           companion={companion}
           continut={<>
@@ -189,19 +187,15 @@ export function Faq({
 export function PaginiConexe({
   titlu = "Mai departe",
   linkuri,
-  peGrila = false,
 }: {
   titlu?: string;
   linkuri: { href: string; label: string; descriere: string }[];
-  /** Aliniază secțiunea la marginea stângă a paginilor-instrument (grila 3+2),
-   *  în loc s-o centreze îngust. */
-  peGrila?: boolean;
 }) {
   return (
     <section className="border-t border-stone-200 bg-canvas py-10 sm:py-12">
-      <div className={peGrila ? "mx-auto max-w-6xl px-4 sm:px-6 md:[&>*]:max-w-[calc(60%-0.6rem)]" : "mx-auto max-w-3xl px-4 sm:px-6"}>
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <h2 className="mb-5 text-xl font-bold tracking-[-0.02em] text-stone-900 sm:text-2xl">{titlu}</h2>
-        <ul className="grid gap-3 sm:grid-cols-2">
+        <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {linkuri.map((link) => (
             <li key={link.href}>
               <Link
@@ -232,7 +226,8 @@ export function CtaCard({
 }) {
   return (
     <section className="border-t border-stone-200 bg-canvas py-10 sm:py-12">
-      <div className="mx-auto max-w-3xl px-4 sm:px-6">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <GrilaPagina continut={
         <div className="rounded-md border border-stone-200 bg-surface p-6 shadow-soft sm:p-8">
           <h2 className="mb-2 text-2xl font-bold tracking-[-0.02em] text-stone-900">{title}</h2>
           <p className="mb-5 leading-normal tracking-[-0.01em] text-stone-600">{children}</p>
@@ -242,7 +237,7 @@ export function CtaCard({
           >
             {label}
           </Link>
-        </div>
+        </div>} />
       </div>
     </section>
   );
@@ -272,6 +267,57 @@ export function GrilaPagina({
     <div className="md:grid md:grid-cols-5 md:gap-6">
       <div className="md:col-span-3">{continut}</div>
       {companion ? <aside className="mt-8 md:col-span-2 md:mt-0">{companion}</aside> : null}
+    </div>
+  );
+}
+
+/**
+ * Varianta A, aleasă de proprietar pe 24 septembrie 2026, pentru paginile ale
+ * căror secțiuni n-au un card lateral cu informație proprie: textul stă pe
+ * coloana din stânga (3 din 5), iar în dreapta un singur card rămâne în vedere
+ * la derulare, cu cuprinsul paginii și drumul înapoi la calculator. Înlocuiește
+ * cardurile de umplutură pe care le-ar fi cerut o grilă 3+2 pe fiecare secțiune.
+ *
+ * Secțiunile din interior își pierd containerul propriu (`max-w-6xl`, grila),
+ * ca să nu se îngusteze de două ori; un eventual card al lor coboară sub text.
+ * Pe mobil cuprinsul nu apare: acolo pagina se citește oricum de sus în jos.
+ */
+export function PaginaCuCuprins({
+  children,
+  cta = { titlu: "Calculează-ți salariul", text: "Scrie brutul și vezi cât primești în mână.", href: "/", eticheta: "Mergi la calculator" },
+}: {
+  children: ReactNode;
+  cta?: { titlu: string; text: string; href: string; eticheta: string } | null;
+}) {
+  return (
+    <div className="bg-canvas">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 md:grid md:grid-cols-5 md:gap-6">
+        <div
+          data-cuprins
+          className="min-w-0 md:col-span-3 [&_section>div]:max-w-none [&_section>div]:px-0 [&_section>div>div]:block"
+        >
+          {children}
+        </div>
+        <aside className="hidden md:col-span-2 md:block">
+          <div className="sticky top-24 mt-10 flex flex-col gap-6 sm:mt-12">
+            <div className="rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
+              <CuprinsPagina />
+            </div>
+            {cta && (
+              <div className="rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
+                <p className="text-base font-bold tracking-[-0.01em] text-stone-900">{cta.titlu}</p>
+                <p className="mt-2 text-sm leading-normal text-stone-600">{cta.text}</p>
+                <Link
+                  href={cta.href}
+                  className="mt-4 inline-flex min-h-11 items-center rounded border border-stone-900 bg-stone-900 px-5 text-sm font-medium text-white transition-colors hover:bg-stone-700"
+                >
+                  {cta.eticheta}
+                </Link>
+              </div>
+            )}
+          </div>
+        </aside>
+      </div>
     </div>
   );
 }

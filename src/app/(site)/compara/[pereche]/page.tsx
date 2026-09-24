@@ -154,7 +154,7 @@ export default async function ComparatiePage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <div className="bg-canvas">
-        <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 sm:py-14">
+        <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14 [&>*]:max-w-4xl">
           <Breadcrumb
             items={[
               { href: "/", label: "Acasă" },

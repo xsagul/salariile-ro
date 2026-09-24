@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 import Link from "@/app/components/Link";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
-import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow } from "@/app/components/ui";
+import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow, PaginaCuCuprins } from "@/app/components/ui";
 
 export const metadata: Metadata = {
   title: "Metodologie de calcul salariu net 2026",
@@ -81,7 +81,7 @@ export default function MetodologiePage() {
         <Eyebrow>VERIFICAT SEPARAT PRIN FORMULARUL D112</Eyebrow>
       </Hero>
 
-      <div>
+      <PaginaCuCuprins>
         <Section>
             <h2>Principiul general</h2>
             <p>
@@ -343,7 +343,7 @@ export default function MetodologiePage() {
               <li><strong>Institutul Național de Statistică</strong>: <a href="https://insse.ro" target="_blank" rel="noopener">insse.ro</a></li>
             </ul>
         </Section>
-      </div>
+      </PaginaCuCuprins>
     </>
   );
 }

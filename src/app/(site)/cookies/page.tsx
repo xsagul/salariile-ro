@@ -13,7 +13,7 @@
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
-import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow } from "@/app/components/ui";
+import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow, PaginaCuCuprins } from "@/app/components/ui";
 
 export const metadata: Metadata = {
   title: "Politica de cookies și analiză",
@@ -74,7 +74,7 @@ export default function CookiesPage() {
         <Eyebrow>CONSENT MODE · ZERO RECLAME · ÎN VIGOARE: 17 SEPTEMBRIE 2026</Eyebrow>
       </Hero>
 
-      <div>
+      <PaginaCuCuprins cta={null}>
         <Section>
             <h2>Ce sunt cookies</h2>
             <p>
@@ -188,7 +188,7 @@ export default function CookiesPage() {
             </p>
             <p className="source-note">Ultima actualizare: 18 septembrie 2026 — GA4 măsoară folosirea paginilor și a calculatoarelor, fără sumele introduse; bannerul standard Google și Consent Mode rămân neschimbate; AdSense este fără reclame.</p>
         </Section>
-      </div>
+      </PaginaCuCuprins>
     </>
   );
 }

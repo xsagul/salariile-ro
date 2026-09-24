@@ -6,7 +6,7 @@
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
 import CalculatorSalariu from "@/app/components/CalculatorSalariu";
-import { Formula, PaginiConexe, Section } from "@/app/components/ui";
+import { Formula, PaginiConexe, Section, PaginaCuCuprins } from "@/app/components/ui";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 
@@ -111,6 +111,7 @@ export default function FluturasSalariuPage() {
         />
       </div>
 
+      <PaginaCuCuprins cta={{ titlu: "Generează-ți fluturașul", text: "Scrie salariul de bază și descarcă PDF-ul.", href: "#calc-layout", eticheta: "Înapoi la generator" }}>
       <Section>
         <h2>Cum se calculează un fluturaș</h2>
         <p>
@@ -198,6 +199,7 @@ export default function FluturasSalariuPage() {
           Ultima actualizare: {PAGE_LAST_MODIFIED["/fluturas-salariu"].toLocaleDateString("ro-RO", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })}.
         </p>
       </Section>
+      </PaginaCuCuprins>
       <PaginiConexe
         linkuri={[
           { href: "/salarii", label: "Salarii pe meserii", descriere: "Cât se câștigă în fiecare meserie." },
