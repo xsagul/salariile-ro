@@ -2,6 +2,7 @@
 title: "Indexarea salariului cu inflația în 2026"
 description: "Ai primit o mărire, dar banii par mai puțini? Vezi cum se calculează indexarea salariului cu inflația și când angajatorul este obligat să o acorde."
 date: "2026-09-11"
+updated: "2026-09-24"
 hero: "/noutati/indexarea-salariului-inflatie-2026.webp"
 heroAlt: "Plic de salariu și monede lângă un coș cu alimente, legate de un bon de cumpărături, într-o ilustrație în tonuri calde."
 ---
@@ -26,28 +27,23 @@ Presupunem că, între aceleași două momente, prețurile au crescut cu 8%.
 
 > Exemplu ipotetic: sumele și procentele de aici sunt alese pentru explicație. Cei 8% nu reprezintă rata inflației publicată pentru septembrie 2026.
 
-| Ce compari | Sumă lunară |
-| :--- | ---: |
-| Salariul net înainte de mărire | 5.000 lei |
-| Salariul net după mărire | 5.250 lei |
-| Netul necesar pentru aceeași putere de cumpărare | 5.400 lei |
-| Cât lipsește după mărire | 150 lei |
+```
+Net necesar  = 5.000 × 1,08       = 5.400 lei
+Ai primit                          5.250 lei
+Îți lipsesc  = 5.400 − 5.250      =   150 lei pe lună
+```
 
-Calculul este **5.000 × 1,08 = 5.400 de lei net**. Ai primit 250 de lei în plus, dar aceleași cumpărături ar cere încă 400 de lei față de înainte.
-
-Raportat la prețurile vechi, cei 5.250 de lei cumpără cât aproximativ 4.861 de lei. Puterea de cumpărare a scăzut cu circa **2,8%**, deși pe fluturaș apare o creștere.
-
-Calcul propriu: 5.250 ÷ 1,08 ≈ 4.861; apoi comparăm rezultatul cu netul inițial. Pentru această comparație presupunem că păstrezi același coș de consum.
+Ai primit 250 de lei în plus, dar aceleași cumpărături cer acum 400 de lei în plus. La prețurile de dinainte, cei 5.250 de lei cumpără cât 4.861, deci puterea ta de cumpărare a scăzut cu aproape 3%, deși pe fluturaș apare o creștere.
 
 ## Cum calculezi indexarea salariului
 
-Formula de actualizare este simplă:
+```
+Salariu indexat = salariul de atunci × (1 + inflația ÷ 100)
+```
 
-**Suma actualizată = suma inițială × (1 + rata inflației ÷ 100).**
+E formula folosită de [INS pentru indicii prețurilor de consum](https://statistici.insse.ro/shop/?page=ipca1). Dacă lucrezi direct cu indicele, înmulțești suma cu el și împarți la 100.
 
-Este formula explicată de [INS în baza de date a indicilor prețurilor de consum](https://statistici.insse.ro/shop/?page=ipca1). Dacă folosești direct indicele IPC, înmulțești suma cu indicele și împarți la 100.
-
-Atenție la perioadă. Dacă ultima mărire a fost acum doi ani, inflația din ultima lună nu îți spune cât ai pierdut de atunci. Ai nevoie de evoluția prețurilor între lunile pe care le compari. Nici rata anuală, nici media anuală nu se aleg la întâmplare: sunt indicatori diferiți.
+Contează perioada. Dacă ultima mărire a fost acum doi ani, inflația din ultima lună nu îți spune cât ai pierdut de atunci. Ai nevoie de creșterea prețurilor între cele două luni pe care le compari.
 
 Pentru bugetul tău, compară **net cu net**. Pentru aplicarea unei clauze din contract, urmează baza scrisă acolo, de exemplu salariul de bază brut. O creștere procentuală a brutului nu produce întotdeauna aceeași creștere procentuală a netului.
 

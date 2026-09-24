@@ -2,15 +2,16 @@
 title: "Cum citești fluturașul de salariu"
 description: "Explicăm fiecare rând din fluturașul de salariu: brut, CAS, CASS, impozit, deducere, tichete și cum se ajunge la suma din cont."
 date: "2026-06-15"
+updated: "2026-09-24"
 hero: "/noutati/fluturas-salariu.jpg"
 heroAlt: "Un fluturaș de salariu pe o masă cu față de in, lângă câteva monede, un pix și o cană de cafea, în lumină naturală."
 ---
 
-Prima dată când m-am uitat cu atenție pe un fluturaș de salariu, am rămas blocat: o grămadă de rânduri, prescurtări și sume care nu se potriveau cu ce-mi intra în cont. Mi-am promis să-l înțeleg până la capăt, și a fost mai simplu decât părea. Hai să-l citim împreună, rând cu rând.
+**Orice fluturaș de salariu are trei părți: cât ai câștigat, ce ți se reține și ce rămâne.** Prescurtările și rândurile multe îl fac să pară complicat, dar odată ce recunoști cele trei părți, îl poți verifica în câteva minute.
 
-## Ce e, de fapt, fluturașul
+## Ce e fluturașul
 
-Fluturașul de salariu este extrasul individual prin care vezi cum s-a ajuns de la venitul brut la suma de plată. Nu este același document cu **statul de plată**: statul este evidența centralizată întocmită de angajator pentru salarizare, iar fluturașul prezintă salariatului propriile elemente de calcul. Pe scurt, fluturașul are trei zone: **cât ai câștigat** (brutul), **ce se reține** (contribuții și impozit) și **ce rămâne** (netul, banii din cont).
+E rândul tău din **statul de plată**, documentul în care firma calculează salariile tuturor angajaților. Îți arată drumul de la brut la banii din cont.
 
 ## 1. Venitul brut: de aici pleacă totul
 
@@ -19,7 +20,7 @@ Sus găsești salariul **brut**. De obicei e împărțit în:
 - **Salariul de bază**: suma din contractul tău, înainte de orice taxă.
 - **Sporuri și adaosuri**: spor de noapte, de weekend, de vechime, bonusuri, ore suplimentare. Se adună la salariul de bază.
 
-Totul însumat dă **venitul brut total**. Atenție: brutul nu e suma pe care o iei acasă. E suma de la care se calculează tot restul.
+Adunate, dau **venitul brut**. Nu e suma pe care o iei acasă, ci cea de la care se calculează tot restul.
 
 ## 2. Ce se reține din brut: cele trei rețineri
 
@@ -29,30 +30,26 @@ Din brut se opresc trei lucruri, în această ordine:
 - **CASS 10%** (contribuția la sănătate).
 - **Impozitul pe venit 10%**.
 
-Diferența importantă: CAS și CASS se calculează direct pe brut, dar **impozitul nu**. Impozitul se aplică pe ce rămâne după ce scazi CAS, CASS și deducerea personală (despre care vorbesc imediat). De-aia procentele nu se adună pur și simplu la 45%.
+CAS și CASS se calculează direct din brut. **Impozitul nu**: el se aplică pe ce rămâne după CAS, CASS și deducerea personală. De aceea cele trei procente nu se adună la 45%.
 
-Hai pe un exemplu concret, un salariu de **7.000 lei brut**, fără persoane în întreținere:
+La un salariu de 7.000 de lei brut, fără persoane în întreținere, calculul arată așa:
 
-| Rând pe fluturaș | Sumă |
-| :--- | ---: |
-| Salariu brut | 7.000 lei |
-| − CAS 25% (pensie) | 1.750 lei |
-| − CASS 10% (sănătate) | 700 lei |
-| = Bază pentru impozit | 4.550 lei |
-| − Impozit 10% | 455 lei |
-| **= Net (în cont)** | **4.095 lei** |
-
-Deci din 7.000 lei brut, în cont ajung 4.095. Restul de 2.905 lei se duce în contribuții și impozit.
+```
+CAS     = 7.000 × 25%                  = 1.750
+CASS    = 7.000 × 10%                  =   700
+Impozit = (7.000 − 1.750 − 700) × 10%  =   455
+Net     = 7.000 − 1.750 − 700 − 455    = 4.095 lei
+```
 
 ## 3. Deducerea personală: rândul care îți crește netul
 
-Pe mulți fluturași apare un rând numit **deducere personală**. E o sumă care se scade din baza de impozitare *înainte* de a calcula impozitul, deci îți lasă mai mulți bani în mână. Cât primești depinde de salariu și de câte persoane ai în întreținere (copii, soț/soție fără venit).
+Pe mulți fluturași apare un rând numit **deducere personală**: o parte din venit pe care nu se plătește impozit. Cât de mare e depinde de salariu și de câte persoane ai în întreținere.
 
-În exemplul de sus deducerea era zero, fiindcă venitul depășește plafonul de **6.325 lei** brut, peste care deducerea nu se mai acordă. Dacă ești sub plafon sau ai persoane în întreținere, deducerea îți reduce impozitul și îți crește netul. La salariul minim există în plus o facilitate specială (o sumă fixă scutită complet de taxe), pe care o explic în detaliu la [salariul minim pe economie](/salariu-minim).
+În exemplul de sus nu există deducere, pentru că peste **6.325 de lei** brut ea dispare. Sub acest prag, îți scade impozitul și îți crește netul. La salariul minim mai există o scutire: 200 de lei din brut nu se taxează deloc, explicat pe pagina despre [salariul minim](/salariu-minim).
 
 ## 4. Tichetele de masă: bani pe alt card, alte taxe
 
-Dacă primești tichete de masă, ele apar separat, fiindcă nu intră în net ca atare: ajung pe un card dedicat. Important de știut: tichetele **se impozitează** (impozit 10% și CASS 10%), dar **nu se plătește CAS** pe ele. De-aia valoarea nominală a tichetului și ce rămâne din el diferă. Pe fluturaș vei vedea taxele aferente tichetelor oprite separat de salariu.
+Tichetele apar separat, pentru că ajung pe un card, nu în cont. Pe ele se plătesc impozit și sănătate, dar **nu pensie**. Taxele lor se opresc din salariul în bani, așa că pe fluturaș le vezi pe un rând separat. Detaliile sunt în articolul despre [tichetele de masă](/noutati/tichete-de-masa-2026).
 
 ## 5. Netul și restul de plată
 
@@ -60,14 +57,12 @@ Jos de tot ajungi la **venitul net**, adică banii care îți rămân după toat
 
 ## Ce NU iese din banii tăi: contribuția firmei
 
-O confuzie des întâlnită: oamenii cred că firma plătește 45% taxe „pe lângă" salariu. Nu e așa. CAS, CASS și impozitul se rețin **din** brutul tău, nu se adaugă peste el. Singura taxă pe care o pune firma din buzunarul ei, peste brut, este **CAM 2,25%** (contribuția asiguratorie pentru muncă). Uneori apare și ea pe fluturaș, la secțiunea de costuri ale angajatorului, dar nu îți afectează netul.
+Mulți cred că firma plătește taxe mari „pe lângă” salariu. De fapt, CAS, CASS și impozitul se rețin **din** brutul tău. Firma pune peste brut doar **2,25%**, contribuția pentru muncă (CAM). Uneori apare și ea pe fluturaș, dar nu îți schimbă netul.
 
 ## Cum verifici că totul e corect
 
-Cel mai simplu mod de a verifica aritmetica fluturașului e să pui brutul tău în [calculatorul de salariu net](/), cu sporurile, tichetele și persoanele în întreținere pe care le ai. Îți arată aceleași componente fiscale de bază: CAS, CASS, impozit, deducere și net. Dacă sumele coincid, ai confirmat calculul pentru datele introduse, dar nu automat și corectitudinea tuturor datelor de intrare — de exemplu orele lucrate, concediile, sporurile, reținerile sau încadrarea din contract. Pentru situații atipice, verificarea finală o face departamentul de salarizare sau un specialist. Iar dacă vrei o variantă orientativă pe hârtie, poți [genera un fluturaș PDF](/fluturas-salariu) și compara rândurile acoperite de generator.
+Pune brutul tău în [calculatorul de salariu net](/), cu sporurile, tichetele și persoanele în întreținere pe care le ai. Dacă sumele se potrivesc, aritmetica e corectă. Calculatorul nu poate verifica însă datele de pornire, cum ar fi orele lucrate, concediile sau sporurile: pe acestea le confirmi cu departamentul de salarizare. Poți și [genera un fluturaș PDF](/fluturas-salariu), ca să compari rând cu rând.
 
 ## De reținut
 
-Fluturașul nu e un cod secret. E drumul de la brut la net, scris pas cu pas: brut, minus CAS, minus CASS, minus impozit (calculat pe ce rămâne), egal net. Odată ce vezi logica, poți urmări aritmetica lunii și poți înțelege de ce o mărire de brut nu se simte integral în cont.
-
-> De la 1 iulie 2026 unele cifre se schimbă pentru salariul minim. Detaliile, în articolul despre [ce se schimbă la salariul minim din iulie](/noutati/salariul-minim-1-iulie-2026).
+Fluturașul e drumul de la brut la net, scris pas cu pas: brut, minus pensie, minus sănătate, minus impozit, egal net. Odată ce vezi logica, înțelegi și de ce o mărire de brut nu se simte întreagă în cont: cam 40% din ea pleacă la stat.

@@ -2,167 +2,72 @@
 title: "Tichete de masă 2026: taxe și cât rămâne net"
 description: "Tichetele de masă pot fi de până la 45 lei/zi până în septembrie 2026. Vezi CASS, impozitul, calculul net și cum afectează salariul minim."
 date: "2026-08-05"
+updated: "2026-09-24"
 hero: "/noutati/tichete-de-masa-2026.webp"
 heroAlt: "Card de masă, bonuri și monede, ilustrație pentru tichetele de masă în 2026"
 ---
 
-În 2026, valoarea maximă a unui tichet de masă este de **45 lei**, iar pentru un angajat care primește tichete în fiecare zi lucrată suma lunară poate ajunge ușor la câteva sute de lei.
+**Un tichet de masă poate valora cel mult 45 de lei în 2026, iar din el îți rămân cam 36,50.** Pe tichete nu se plătește contribuția la pensie, dar se plătesc sănătatea și impozitul, cam 19% în total. Taxele se opresc din salariul în bani, nu de pe card.
 
-Dar 45 lei pe zi nu înseamnă 45 lei complet net. Tichetele de masă sunt taxate cu **CASS și impozit pe venit**, chiar dacă nu se datorează CAS pentru ele.
+## Cât valorează un tichet
 
-## Cât este valoarea maximă a tichetului de masă în 2026
+Legea permite cel mult **45 de lei** pe tichet, pentru drepturile lunilor de până în septembrie 2026 inclusiv. E un maxim, nu o obligație: angajatorul poate da și 25, 35 sau 40 de lei, sau poate să nu dea deloc.
 
-Legea a stabilit valoarea nominală maximă de **45 lei pentru un tichet de masă**.
+Pentru lunile de după septembrie nu a apărut încă o valoare nouă. Când plafonul temporar expiră, legea prevede ca valoarea să se actualizeze de două ori pe an, după prețurile la alimente, fără să poată scădea. Actualizăm articolul când apare ordinul.
 
-Plafonul este stabilit de **Legea nr. 201/2025**, care a modificat art. 14 din Legea nr. 165/2018. Legea lucrează pe **drepturile aferente lunii**, nu pe date calendaristice, și acoperă:
+## Cât rămâne din tichete
 
-- drepturile aferente lunilor noiembrie și decembrie 2025;
-- semestrul I din 2026;
-- **drepturile aferente lunilor iulie, august și septembrie 2026**.
+Pe tichete se plătesc două taxe, nu trei:
 
-Așadar, la data publicării acestui articol, 45 lei este valoarea maximă confirmată prin **drepturile aferente lunii septembrie 2026**.
-
-Pentru lunile de după septembrie 2026 **nu există încă o valoare publicată**. După expirarea derogării revine regula generală din art. 32 din Legea nr. 165/2018: valoarea se indexează semestrial cu indicele prețurilor la alimente, prin ordin comun al ministrului finanțelor și al ministrului de resort. Un astfel de ordin nu era publicat la 5 august 2026. Legea garantează însă că valoarea **nu poate scădea** sub nivelul atins.
-
-## 45 lei este plafonul, nu o sumă obligatorie
-
-Angajatorul nu este obligat să acorde valoarea maximă.
-
-Poate acorda, de exemplu:
-
-- 25 lei/tichet;
-- 35 lei/tichet;
-- 40 lei/tichet;
-- 45 lei/tichet.
-
-De asemenea, acordarea tichetelor de masă depinde de politica și condițiile aplicabile la angajator. Plafonul legal spune **cât poate valora cel mult un tichet**, nu că fiecare salariat trebuie să primească automat 45 lei.
-
-## Ce taxe se plătesc pentru tichetele de masă
-
-În regimul fiscal actual, pentru tichetele de masă se datorează:
-
-| Taxă | Se aplică tichetelor de masă? |
+| Taxă | Pe tichete? |
 |---|---|
-| CAS 25% | Nu |
-| CASS 10% | Da |
-| Impozit pe venit 10% | Da |
-| CAM 2,25% | Nu |
+| Pensie (CAS, 25%) | Nu |
+| Sănătate (CASS, 10%) | Da |
+| Impozit (10%) | Da |
+| Contribuția firmei (CAM, 2,25%) | Nu |
 
-De aici apare o confuzie frecventă: uneori se spune că tichetele sunt „taxate cu 20%”.
+Impozitul se calculează după ce se scade contribuția de sănătate, așa că taxele iau în total cam 19%, nu 20%:
 
-Într-un calcul standard, efectul marginal este de fapt de aproximativ **19%**, deoarece impozitul pe venit se calculează după scăderea CASS din baza impozabilă (art. 78 alin. (2) din Codul fiscal).
+```
+Valoare pe lună = zile lucrate × valoarea unui tichet
+Taxe            = 10% sănătate + 10% impozit pe rest  ≈ 19%
+Îți rămâne      ≈ valoarea pe lună × 0,81
+```
 
-O precizare care lipsește de obicei: cei 19% sunt valabili atunci când **deducerea personală nu se modifică**. Tichetele intră în venitul brut lunar, iar deducerea personală scade pe tranșe de venit brut și dispare peste plafonul de 6.325 lei (art. 77 alin. (3)–(4)). Pentru un salariat cu venit mic, tichetele pot împinge venitul brut într-o tranșă cu deducere mai mică, iar efectul real depășește atunci 19%.
+La 20 de zile lucrate și tichete de 45 de lei, primești pe card 900 de lei, iar taxele sunt 90 de lei pentru sănătate și 81 de lei impozit. Beneficiul real e de 729 de lei.
 
-## Exemplu: 20 de zile × 45 lei
+Dacă ai un salariu mic, efectul poate trece de 19%. Tichetele se adună la venitul brut al lunii, iar un venit mai mare înseamnă o deducere personală mai mică.
 
-Presupunem că ai lucrat 20 de zile și primești tichetul maxim de 45 lei.
+## De ce ai mai puțini bani în cont când primești tichete
 
-Valoarea nominală este:
+Pe card primești tichetele întregi, iar taxele pentru ele se opresc din salariul în bani. De aceea, suma din contul bancar iese mai mică decât ar fi fost fără tichete. Angajatorul nu ți-a luat nimic din ele: doar a oprit taxele de acolo de unde se putea. Pe [fluturaș](/fluturas-salariu) apar pe rânduri separate.
 
-**20 × 45 = 900 lei**
+## Câte tichete primești într-o lună
 
-Calcul orientativ al taxelor:
-
-- CASS 10%: **90 lei**;
-- bază rămasă pentru impozit: **810 lei**;
-- impozit 10%: **81 lei**.
-
-Efectul economic net al tichetelor este astfel aproximativ:
-
-**900 − 90 − 81 = 729 lei**
-
-Asta înseamnă o taxare efectivă de aproximativ **19%** în exemplul izolat.
-
-În statul real de salarii, tichetele sunt integrate în calculul lunar împreună cu salariul și celelalte elemente, astfel încât valoarea exactă a reținerilor trebuie verificată în contextul întregului fluturaș.
-
-## De ce pare că primești mai puțini bani în cont când ai tichete
-
-Aici apare una dintre cele mai mari confuzii.
-
-Tichetele sunt încărcate separat pe cardul de masă, dar taxele aferente lor sunt reținute de regulă din salariul plătit în bani.
-
-De exemplu:
-
-- pe cardul de masă vezi 900 lei;
-- în contul bancar, salariul în bani poate fi mai mic decât într-un calcul fără tichete;
-- diferența vine din CASS și impozitul datorate pentru beneficiul primit pe card.
-
-Nu înseamnă că angajatorul „ți-a luat” tichetele. Înseamnă că ai primit beneficiul separat, iar taxele au fost reținute din componenta salarială în bani.
-
-## Câte tichete poți primi într-o lună
-
-Regula generală este legată de **zilele efectiv lucrate**.
-
-Lista zilelor care **nu** se consideră lucrate este la art. 10 din normele aprobate prin HG nr. 1.045/2018, nu în legea propriu-zisă:
+Câte unul pentru fiecare zi lucrată efectiv. Nu primești tichete pentru:
 
 - concediul de odihnă;
 - concediul medical;
-- zilele de sărbătoare legală și celelalte zile libere plătite;
-- zilele libere pentru evenimente familiale deosebite;
-- perioadele de delegare sau detașare în afara localității, când primești indemnizație de delegare ori de detașare;
-- absențele de la locul de muncă.
+- sărbătorile legale și celelalte zile libere plătite;
+- zilele libere pentru evenimente de familie;
+- delegările sau detașările în altă localitate, plătite cu diurnă;
+- absențe.
 
-Numărul de tichete dintr-o lună nu poate depăși nici numărul de zile lucrătoare din acea lună. Separat, nu se acordă tichete de masă personalului care primește **indemnizație de hrană** în baza Legii-cadru nr. 153/2017 — cele două nu se cumulează.
+De aceea, două luni cu același salariu pot avea sume diferite pe card. Numărul de zile lucrătoare al fiecărei luni e în [calendarul pe 2026](/zile-lucratoare-2026).
 
-De aceea, două luni cu același salariu pot avea valori diferite ale tichetelor dacă au un număr diferit de zile efectiv lucrate.
+Bugetarii care primesc indemnizație de hrană nu primesc și tichete: cele două nu se cumulează.
 
-## Tichetele de masă și salariul minim de 4.325 lei
+## Tichetele nu îți iau scutirea de la salariul minim
 
-De la 1 iulie 2026, salariul minim brut pe țară este de **4.325 lei**.
+La salariul minim cu normă întreagă, 200 de lei din brut nu se taxează, dar doar dacă brutul lunii nu trece de 4.600 de lei. La acest plafon **tichetele nu se socotesc**, și nici voucherele de vacanță. Deci poți primi tichete fără să pierzi scutirea. Toate condițiile ei sunt explicate pe pagina despre [salariul minim](/salariu-minim).
 
-Facilitatea fiscală din OUG nr. 89/2025 scutește de impozit și de contribuții o sumă lunară de **300 lei în perioada 1 ianuarie–30 iunie 2026** și de **200 lei în perioada 1 iulie–31 decembrie 2026**. Ea vine la pachet cu un plafon de venit brut, care se schimbă la mijlocul anului:
+## Ce poți cumpăra cu ele
 
-| Perioadă | Sumă scutită | Plafon venit brut |
-|---|---:|---:|
-| 1 ianuarie – 30 iunie 2026 | 300 lei/lună | 4.300 lei inclusiv |
-| 1 iulie – 31 decembrie 2026 | 200 lei/lună | 4.600 lei inclusiv |
+Alimente și mese. Nu pot fi schimbate în bani și nu merg pentru alcool sau țigări. Controlul îl fac, în practică, terminalele comercianților acceptați de emitentul cardului.
 
-Un detaliu important: la verificarea plafonului **nu se iau în calcul tichetele de masă, voucherele de vacanță și indemnizația de hrană** (art. III alin. (1) lit. b) din OUG nr. 89/2025).
+## Tichete sau aceeași sumă în salariu?
 
-Asta înseamnă că un salariat încadrat la minim nu pierde facilitatea doar pentru că primește tichete de masă care duc valoarea totală a pachetului peste plafon.
-
-Cealaltă condiție este ca **salariul de bază brut lunar, fără sporuri și adaosuri**, să fie exact la nivelul minimului, cu normă întreagă și la funcția de bază.
-
-Bonusurile și alte componente salariale pot avea însă un tratament diferit.
-
-Am explicat separat regula în pagina despre [salariul minim 2026](/salariu-minim).
-
-## Pot folosi tichetele pentru orice?
-
-Nu. Tichetele de masă sunt destinate achiziției de alimente și mese, în condițiile Legii nr. 165/2018.
-
-Nu pot fi folosite ca numerar și există restricții pentru produse care nu intră în scopul lor, inclusiv alcool și produse din tutun.
-
-În practică, plata este controlată prin comercianții și terminalele acceptate de emitentul cardului.
-
-## Sunt tichetele mai avantajoase decât aceeași sumă dată ca salariu?
-
-Din punct de vedere fiscal, de regulă da.
-
-Motivul principal este simplu: pentru tichetele de masă nu se datorează CAS de 25%, în timp ce pentru salariul obișnuit CAS face parte din taxarea standard.
-
-Totuși, comparația corectă depinde de ce anume compari:
-
-- aceeași sumă nominală oferită de angajator;
-- același cost total pentru firmă;
-- aceeași valoare netă pentru angajat.
-
-Dacă vrei să compari două oferte de muncă, nu te uita doar la salariul net. Un pachet cu tichete poate avea o valoare totală diferită față de o ofertă fără beneficii.
-
-## Cum verifici corect un pachet salarial cu tichete
-
-Notează separat:
-
-1. salariul brut;
-2. salariul net;
-3. numărul estimat de zile lucrate;
-4. valoarea unui tichet;
-5. valoarea nominală lunară a tichetelor;
-6. taxele aferente tichetelor;
-7. alte bonusuri sau beneficii.
-
-Pentru a vedea cum apar tichetele și reținerile pe documentul lunar, generează un [fluturaș de salariu PDF](/fluturas-salariu). Pentru numărul exact de zile lucrătoare din fiecare lună folosite la pontajul tichetelor, consultă [calendarul zilelor lucrătoare 2026](/zile-lucratoare-2026), iar pentru calculul complet introdu valoarea tichetelor direct în [calculatorul salariu net](/). Detaliile formulelor sunt documentate în [metodologie](/metodologie).
+Pentru tine, tichetele ies de obicei mai bine: nu plătești pensie pe ele, deci din aceeași sumă îți rămâne mai mult. Când compari două oferte de muncă, adună la net și valoarea lunară a tichetelor. Pentru calculul complet, pune tichetele în [calculatorul de salariu net](/), în opțiunile avansate.
 
 ## Surse oficiale
 
@@ -171,5 +76,3 @@ Pentru a vedea cum apar tichetele și reținerile pe documentul lunar, genereaz�
 - [HG nr. 1.045/2018 – normele de aplicare (zilele care nu se consideră lucrate)](https://legislatie.just.ro/Public/DetaliiDocument/209698)
 - [OUG nr. 89/2025 – facilitatea de 300/200 lei și plafonul de venit brut](https://legislatie.just.ro/Public/DetaliiDocumentAfis/305817)
 - [Codul fiscal – Legea nr. 227/2015, forma actualizată](https://legislatie.just.ro/Public/DetaliiDocument/171282)
-
-Articolul folosește regulile cunoscute la 5 august 2026. Valoarea maximă a tichetelor poate fi actualizată ulterior prin act normativ.
