@@ -6,25 +6,26 @@
 import Link from "@/app/components/Link";
 import type { ReactNode } from "react";
 
-// Scara titlurilor, decisă de proprietar pe 25 septembrie 2026, după mărimile
-// GOV.UK Design System (titlu de pagină 27/36, secțiune 21/24), pe trei trepte:
-// telefonul și tableta (sub 1024 px) au aceleași mărimi, laptopul mic
-// (1024–1535 px, inclusiv 1920 px cu scalare 125%) o treaptă intermediară,
-// iar monitorul mare mărimile întregi. Măsurat înainte: 5 mărimi de titlu de
-// pagină și două de secțiune amestecate pe aceeași pagină.
-//   titlul paginii:      26 · 30 · 36 px
-//   titlul de secțiune:  20 · 22 · 24 px
-//   subtitlu în text:    18 px peste tot
-//   titlul de card:      16 px bold peste tot
+// Scara de text, decisă de proprietar pe 25 septembrie 2026, după comparația cu
+// GOV.UK, BBC GEL, Carbon, Material 3, Tailwind, Primer, USWDS și Apple.
+// Trepte: telefon sub 768 px, tabletă 768–1023, laptop mic 1024–1535, laptop
+// de la 1536 (inclusiv 1920 px cu scalare 125%) și monitor mare.
+//                        telefon  tabletă  laptop mic  laptop  PC mare
+//   titlul paginii:        26       28        30         36      36
+//   titlul de secțiune:    20       22        24         24      24
+//   subtitlu în text:      18 peste tot
+//   titlul de card:        16 bold peste tot
+//   text de citit:         16 peste tot
+//   text mic:              14 peste tot
 export const TITLU_PAGINA =
-  "text-[26px] font-bold leading-tight tracking-[-0.02em] text-stone-900 lg:text-[30px] 2xl:text-4xl";
+  "text-[26px] font-bold leading-tight tracking-[-0.02em] text-stone-900 md:text-[28px] lg:text-[30px] 2xl:text-4xl";
 export const TITLU_SECTIUNE =
-  "text-xl font-bold leading-tight tracking-[-0.02em] text-stone-900 lg:text-[22px] 2xl:text-2xl";
+  "text-xl font-bold leading-tight tracking-[-0.02em] text-stone-900 md:text-[22px] lg:text-2xl";
 /** Titlul de card fără margine, pentru cardurile care își pun singure spațierea. */
 export const TITLU_CARD = "text-base font-bold tracking-[-0.01em] text-stone-900";
 
 const PROSE = [
-  "[&_h2]:mt-10 [&_h2]:mb-4 [&_h2]:text-xl [&_h2]:font-bold [&_h2]:leading-tight [&_h2]:tracking-[-0.02em] [&_h2]:text-stone-900 lg:[&_h2]:text-[22px] 2xl:[&_h2]:text-2xl",
+  "[&_h2]:mt-10 [&_h2]:mb-4 [&_h2]:text-xl [&_h2]:font-bold [&_h2]:leading-tight [&_h2]:tracking-[-0.02em] [&_h2]:text-stone-900 md:[&_h2]:text-[22px] lg:[&_h2]:text-2xl",
   "[&>h2:first-child]:mt-0",
   "[&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:tracking-[-0.01em] [&_h3]:text-stone-900",
   "[&_p]:mb-4 [&_p]:text-base [&_p]:leading-normal [&_p]:tracking-[-0.01em] [&_p]:text-stone-600",
