@@ -209,14 +209,13 @@ export default function ZileLibere2026Page() {
               </tbody>
             </TabelArticol>
 
-            <p className="text-sm leading-normal text-stone-600">
-              Sărbătorile din weekend nu se recuperează în altă zi. Legea numără 17 sărbători, dar în 2026 a doua zi de
-              Rusalii a căzut chiar pe 1 iunie, de Ziua Copilului, așa că au împărțit aceeași zi.
+            {/* Sub tabel, ce primești dacă lucrezi de sărbătoare, ca la primul rezultat din
+                Google. Formulat după Codul Muncii, art. 142: întâi zi liberă în 30 de zile,
+                abia apoi sporul de cel puțin 100% („plătită dublu” e doar a doua variantă). */}
+            <p className="text-base leading-normal tracking-[-0.01em] text-stone-700">
+              Dacă lucrezi într-o zi de sărbătoare legală, primești în schimb o zi liberă în următoarele 30 de zile.
+              Dacă angajatorul nu ți-o poate da, îți plătește ziua cu un spor de cel puțin 100%, adică cel puțin dublu.
             </p>
-            <nav className={`mt-3 flex flex-wrap gap-x-5 text-sm ${links}`} aria-label="Legături pentru calendar">
-              <a download href="/date/calendar/2026.ics" className="inline-flex min-h-11 items-center">Adaugă sărbătorile în calendarul tău (ICS)</a>
-              <Link href="/zile-libere-2027" className="inline-flex min-h-11 items-center">Zile libere 2027</Link>
-            </nav>
           </div>
 
           {/* CALENDAR — 12 luni */}
