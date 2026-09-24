@@ -65,7 +65,11 @@ export default function Header() {
   const desktopTriggerRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const hamburgerRef = useRef<HTMLButtonElement | null>(null);
   const sertarRef = useRef<HTMLDivElement | null>(null);
-  const inchideRef = useRef<HTMLButtonElement | null>(null);
+  const headerRef = useRef<HTMLElement | null>(null);
+  // Sertarul și fundalul pornesc de sub bara de sus, care rămâne neumbrită, cu
+  // logoul și cu X-ul în locul butonului de meniu. Bara nu e fixă, așa că
+  // marginea se măsoară la deschidere.
+  const [susSertar, setSusSertar] = useState(64);
   // Sertarul mobil: un singur grup deschis odată (cerut de proprietar pe 24
   // septembrie 2026). La deschidere e deschis grupul paginii curente.
   const [grupDeschis, setGrupDeschis] = useState<string | null>(
@@ -107,10 +111,14 @@ export default function Header() {
     hamburgerRef.current?.focus();
   };
 
+  const deschideSertarul = () => {
+    setSusSertar(Math.max(0, Math.round(headerRef.current?.getBoundingClientRect().bottom ?? 64)));
+    setOpen(true);
+  };
+
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     if (!open) return;
-    inchideRef.current?.focus();
     const onKey = (event: KeyboardEvent) => {
       // Escape închide sertarul și duce focusul înapoi pe butonul de meniu.
       if (event.key === "Escape") {
@@ -118,9 +126,12 @@ export default function Header() {
         hamburgerRef.current?.focus();
         return;
       }
-      // Focusul rămâne în sertar cât e deschis (dialog modal).
+      // Cât e deschis, focusul circulă între butonul X și sertar.
       if (event.key === "Tab" && sertarRef.current) {
-        const focusabile = sertarRef.current.querySelectorAll<HTMLElement>("a[href], button");
+        const focusabile = [
+          hamburgerRef.current,
+          ...sertarRef.current.querySelectorAll<HTMLElement>("a[href], button"),
+        ].filter((el): el is HTMLElement => Boolean(el));
         const primul = focusabile[0];
         const ultimul = focusabile[focusabile.length - 1];
         if (event.shiftKey && document.activeElement === primul) {
@@ -159,14 +170,15 @@ export default function Header() {
     <>
       {/* Fundalul întunecat din spatele sertarului; o atingere pe el închide meniul. */}
       <div
-        className={`fixed inset-0 z-40 bg-stone-900/40 transition-opacity duration-300 motion-reduce:transition-none md:hidden ${
+        style={{ top: susSertar }}
+        className={`fixed inset-x-0 bottom-0 z-40 bg-stone-900/40 transition-opacity duration-300 motion-reduce:transition-none md:hidden ${
           open ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
         aria-hidden="true"
         onClick={inchideSertarul}
       />
 
-    <header className="hairline-b relative w-full bg-canvas">
+    <header ref={headerRef} className="hairline-b relative w-full bg-canvas">
       <div className="flex h-16 items-center gap-2 px-4 sm:px-6">
         <Link href="/" aria-label="Salariile, pagina principală" className="mr-auto inline-flex min-h-11 items-center">
           <Logo className="h-7 w-auto sm:h-8" />
@@ -246,14 +258,14 @@ export default function Header() {
         <button
           ref={hamburgerRef}
           className="ml-auto flex h-11 w-11 cursor-pointer flex-col items-center justify-center gap-[5px] rounded p-0 hover:bg-stone-200/60 md:hidden"
-          aria-label="Deschide meniul"
+          aria-label={open ? "Închide meniul" : "Deschide meniul"}
           aria-expanded={open}
           aria-controls="meniu-mobil"
-          onClick={() => setOpen(!open)}
+          onClick={() => (open ? inchideSertarul() : deschideSertarul())}
         >
-          <span className={bar} />
-          <span className={bar} />
-          <span className={bar} />
+          <span className={`${bar} ${open ? "translate-y-[7px] rotate-45" : ""}`} />
+          <span className={`${bar} ${open ? "opacity-0" : ""}`} />
+          <span className={`${bar} ${open ? "-translate-y-[7px] -rotate-45" : ""}`} />
         </button>
       </div>
 
@@ -263,31 +275,18 @@ export default function Header() {
           proprietar: vine din dreapta, ocupă 85% din lățime, iar pagina rămâne
           vizibilă și întunecată în stânga. Lista are scroll propriu, cât
           ecranul (înainte, două grupuri deschise treceau de margine fără scroll),
-          iar grupurile sunt acordeoane cu un singur grup deschis odată. */}
+          iar grupurile sunt acordeoane cu un singur grup deschis odată. Bara de
+          sus rămâne deasupra, neumbrită: logoul se vede, iar butonul de meniu
+          devine X exact unde a fost apăsat. */}
       <div
         id="meniu-mobil"
         ref={sertarRef}
-        role="dialog"
-        aria-modal="true"
-        aria-label="Meniu"
         inert={!open}
-        className={`fixed inset-y-0 right-0 z-50 flex w-[85%] max-w-sm flex-col bg-canvas shadow-2xl transition-transform duration-300 ease-out motion-reduce:transition-none md:hidden ${
+        style={{ top: susSertar }}
+        className={`fixed bottom-0 right-0 z-50 flex w-[85%] max-w-sm flex-col bg-canvas shadow-2xl transition-transform duration-300 ease-out motion-reduce:transition-none md:hidden ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="flex h-16 shrink-0 items-center justify-end border-b border-stone-200 px-3">
-          <button
-            ref={inchideRef}
-            type="button"
-            aria-label="Închide meniul"
-            onClick={inchideSertarul}
-            className="flex h-11 w-11 items-center justify-center rounded text-stone-900 hover:bg-stone-200/60"
-          >
-            <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" aria-hidden="true">
-              <path d="M6 6l12 12M18 6L6 18" />
-            </svg>
-          </button>
-        </div>
         <nav aria-label="Meniu principal" className="flex-1 overflow-y-auto overscroll-contain pb-6">
           {NAV.map((item) =>
             isGroup(item) ? (

@@ -38,7 +38,8 @@ assert.doesNotMatch(header, /id="desktop-[a-z-]+-menu"/, "Meniurile nu pot avea 
 // Două grupuri deschise depășeau cândva ecranul fără scroll, cu pagina din spate
 // blocată. Acum lista are scroll propriu, iar acordeonul ține un singur grup
 // deschis odată (o singură stare, nu una pe grup).
-assert.match(header, /id="meniu-mobil"[\s\S]*role="dialog"[\s\S]*aria-modal="true"[\s\S]*inert=\{!open\}/, "Sertarul mobil trebuie să fie dialog modal, inert când e închis");
+assert.match(header, /id="meniu-mobil"[\s\S]*inert=\{!open\}[\s\S]*style=\{\{ top: susSertar \}\}/, "Sertarul mobil e inert când e închis și pornește de sub bara de sus");
+assert.match(header, /aria-label=\{open \? "Închide meniul" : "Deschide meniul"\}/, "Butonul de meniu devine X pe loc");
 assert.match(header, /<nav aria-label="Meniu principal" className="[^"]*overflow-y-auto[^"]*overscroll-contain/, "Lista din sertar trebuie să aibă scroll propriu");
 assert.match(header, /useState<string \| null>\(\s*\(\) => NAV\.filter\(isGroup\)/, "Acordeonul mobil ține un singur grup deschis");
 assert.doesNotMatch(header, /groupsOpen/, "Nu reveni la o stare pe grup: se deschideau mai multe odată");
