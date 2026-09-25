@@ -143,14 +143,14 @@ function RandRezultat({ eticheta, suportatDe, valoare, bold, ultim }: {
   const b = ultim ? "" : "border-b ";
   return (
     <tr>
-      <th scope="row" className={`${b}border-r border-stone-200 px-3 py-3 text-left ${bold ? "font-bold text-stone-900" : "font-normal text-stone-700"}`}>
+      <th scope="row" className={`${b}border-r border-stone-300 px-3 py-3 text-left ${bold ? "font-bold text-stone-900" : "font-normal text-stone-700"}`}>
         {eticheta}
         <span className="mt-0.5 block text-xs text-stone-600 sm:hidden">{suportatDe}</span>
       </th>
-      <td className={`hidden ${b}border-r border-stone-200 px-3 py-3 text-right text-stone-600 sm:table-cell`}>
+      <td className={`hidden ${b}border-r border-stone-300 px-3 py-3 text-right text-stone-600 sm:table-cell`}>
         {suportatDe}
       </td>
-      <td className={`${b}border-stone-200 px-3 py-3 text-right whitespace-nowrap ${bold ? "font-bold text-stone-900" : "font-medium text-stone-900"}`}>
+      <td className={`${b}border-stone-300 px-3 py-3 text-right whitespace-nowrap ${bold ? "font-bold text-stone-900" : "font-medium text-stone-900"}`}>
         {valoare === null ? "—" : `${fmt(valoare)} lei`}
       </td>
     </tr>

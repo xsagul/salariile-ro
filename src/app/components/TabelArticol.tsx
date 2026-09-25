@@ -13,16 +13,19 @@
 import type { ReactNode } from "react";
 
 export const TABEL_STANDARD = [
-  "w-full overflow-hidden rounded-md border border-stone-200 bg-surface shadow-soft",
+  // Liniile: stone-300 peste tot, ca în tabelul de rezultat al calculatorului
+  // (proprietar, 26 septembrie 2026). Cu stone-200 la contur și stone-100 între
+  // rânduri, pe ecran liniile aproape dispăreau.
+  "w-full overflow-hidden rounded-md border border-stone-300 bg-surface shadow-soft",
   "border-separate border-spacing-0 text-left text-sm tabular-nums text-stone-700",
   // Alinierea stă pe tabel, nu pe celule: o regulă `[&_th]:text-left` ar fi mai
   // specifică decât `text-right` pus pe o celulă cu sume și l-ar anula.
   // Antet
-  "[&_thead_th]:border-b [&_thead_th]:border-stone-200 [&_thead_th]:bg-antet [&_thead_th]:px-3 [&_thead_th]:py-3",
+  "[&_thead_th]:border-b [&_thead_th]:border-stone-300 [&_thead_th]:bg-antet [&_thead_th]:px-3 [&_thead_th]:py-3",
   "[&_thead_th]:text-xs [&_thead_th]:font-medium [&_thead_th]:uppercase [&_thead_th]:tracking-wide [&_thead_th]:text-stone-600",
   // Rânduri
-  "[&_tbody_td]:border-b [&_tbody_td]:border-stone-100 [&_tbody_td]:px-3 [&_tbody_td]:py-3",
-  "[&_tbody_th]:border-b [&_tbody_th]:border-stone-100 [&_tbody_th]:px-3 [&_tbody_th]:py-3 [&_tbody_th]:font-medium [&_tbody_th]:text-stone-900",
+  "[&_tbody_td]:border-b [&_tbody_td]:border-stone-300 [&_tbody_td]:px-3 [&_tbody_td]:py-3",
+  "[&_tbody_th]:border-b [&_tbody_th]:border-stone-300 [&_tbody_th]:px-3 [&_tbody_th]:py-3 [&_tbody_th]:font-medium [&_tbody_th]:text-stone-900",
   "[&_tbody_tr:last-child_td]:border-b-0 [&_tbody_tr:last-child_th]:border-b-0",
 ].join(" ");
 
