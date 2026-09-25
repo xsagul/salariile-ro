@@ -3802,3 +3802,17 @@ regimului se schimbă și suma netaxabilă cu plafonul ei. Acum: „Reguli fisca
 ianuarie–iunie”, „Reguli fiscale: iulie–decembrie”, „Reguli fiscale: tot anul” (2025).
 Minimul lunii rămâne vizibil ca exemplu în câmpul de salariu. Explicația de la „?” de
 lângă „Anul” spunea deja ce se schimbă (minimul și suma scutită).
+
+Tot 26 septembrie, cerut de proprietar: brut sub salariul minim al lunii. Calculul NU se
+oprește (poate fi o lună lucrată parțial, de exemplu la angajare), dar după calcul câmpul se
+marchează ca la eroare (chenar stone-500 și umbra de la focus), iar sub el apare: „Sub
+salariul minim, de 4.325 lei: rezultatul e pentru o lună lucrată parțial. Pentru normă
+parțială, folosește calculatorul part-time.” Motivul trimiterii: la normă parțială
+contribuțiile se plătesc de regulă la nivelul minimului, iar calculatorul principal le ia pe
+suma reală; cel part-time aplică regula (`reducereBazaMinimaContributii`). Se compară
+brutul calculat (și la „Net → brut”) cu minimul lunii alese; nota dispare cât rezultatul e
+învechit. Nu apare în fluturaș; în widget, fără link. Verificat în browser: 300, 3.000 și
+4.200 lei în septembrie 2026 → nota cu 4.325; 4.200 în mai 2026 → fără notă; net 1.500 în
+mai → nota cu 4.050; 5.000 și net 3.000 → fără notă. La 1280×607, cu nota afișată,
+„Calculează” coboară la 614 px (sub ecran cu 7 px), dar nota apare doar după calcul, cu
+rezultatul deja în ecran.

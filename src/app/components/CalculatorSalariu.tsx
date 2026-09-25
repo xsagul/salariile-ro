@@ -34,11 +34,13 @@ type InputNumberProps = {
   hint?: string;
   onEnter?: () => void;
   tall?: boolean;
-  /** Eticheta în stânga câmpului, pe rând, ca „Anul” (doar salariul de pe homepage). */
+  /** Eticheta de 14 px, ca „Anul”, cu semnul „?” (doar salariul de pe homepage). */
   inline?: boolean;
   /** Semnul „?” de lângă etichetă și explicația care se deschide sub rând. */
   ajutor?: { text: string; titlu: string; deschis: boolean; onToggle: () => void };
   error?: string;
+  /** Notă sub câmp, fără să oprească calculul (brut sub salariul minim). */
+  aviz?: React.ReactNode;
   unit?: string;
 };
 
@@ -239,7 +241,9 @@ const colHeader =
   "mb-4 border-b border-stone-200 pb-2 text-lg font-medium text-stone-900";
 
 // Am adăugat 'id' în paranteze și am legat label-ul de input
-function InputNumber({ id, label, value, onChange, placeholder, hint, onEnter, tall, inline, ajutor, error, unit = "lei / lună" }: InputNumberProps) {
+function InputNumber({ id, label, value, onChange, placeholder, hint, onEnter, tall, inline, ajutor, error, aviz, unit = "lei / lună" }: InputNumberProps) {
+  // Eroarea și avizul marchează câmpul la fel: chenar mai închis și umbra de la focus.
+  const semnalat = Boolean(error || aviz);
   return (
     <div className="mb-5">
       {inline ? (
@@ -251,7 +255,7 @@ function InputNumber({ id, label, value, onChange, placeholder, hint, onEnter, t
         <label htmlFor={id} className={fieldLabel}>{label}</label>
       )}
       {hint && <span className="mb-2 block text-xs text-stone-600">{hint}</span>}
-      <div className={`flex w-full overflow-hidden rounded border transition focus-within:border-stone-400 focus-within:shadow-[0_0_6px_rgba(28,25,23,0.12)] ${error ? "border-stone-500" : "border-stone-300"}`}>
+      <div className={`flex w-full overflow-hidden rounded border transition focus-within:border-stone-400 focus-within:shadow-[0_0_6px_rgba(28,25,23,0.12)] ${semnalat ? "border-stone-500 shadow-[0_0_6px_rgba(28,25,23,0.12)]" : "border-stone-300"}`}>
         <input
           id={id}
           name={id}
@@ -262,12 +266,13 @@ function InputNumber({ id, label, value, onChange, placeholder, hint, onEnter, t
           onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); onEnter?.(); } }}
           placeholder={placeholder || "0"}
           aria-invalid={error ? true : undefined}
-          aria-describedby={error ? `${id}-error` : undefined}
+          aria-describedby={error ? `${id}-error` : aviz ? `${id}-aviz` : undefined}
           className={`min-w-0 flex-1 bg-transparent px-3 py-2 text-base text-stone-900 outline-none${tall ? " leading-7" : ""}`}
         />
         {unit && <span className="flex items-center whitespace-nowrap border-l border-stone-200 px-3 text-xs font-medium text-stone-600">{unit}</span>}
       </div>
       {error && <span id={`${id}-error`} role="alert" className="mt-2 block text-xs font-medium text-stone-900">{error}</span>}
+      {!error && aviz && <p id={`${id}-aviz`} role="status" className="mt-2 text-xs text-stone-700">{aviz}</p>}
     </div>
   );
 }
@@ -889,6 +894,13 @@ export default function CalculatorSalariu({
   // Rezultatul afișat e „învechit" dacă datele curente diferă de cele de la ultimul calcul.
   // Și alegerea altei luni, dacă are alte reguli fiscale.
   const stale = rezAfisat !== null && (rezKey !== inputKey(pregatesteInput(input), mod) || rezRegim !== regimActiv);
+  // Brutul calculat sub salariul minim al lunii: calculul rămâne (poate fi o lună lucrată
+  // parțial), dar câmpul se marchează și nota de sub el spune ce acoperă rezultatul și
+  // trimite la calculatorul part-time: la normă parțială contribuțiile se plătesc de regulă
+  // la nivelul minimului, iar calculul de aici nu face asta (proprietar, 26 septembrie 2026). Doar după calcul și cât rezultatul e la zi, ca
+  // nota să nu apară la fiecare cifră tastată. Fluturașul își compune singur brutul din ore.
+  const minimRezultat = REGIMURI_FISCALE_SALARIU[rezRegim].salariuMinim;
+  const subMinim = !fluturas && rezAfisat !== null && !stale && parseFloat(rezAfisat.brutEfectiv) < minimRezultat;
   // Reținerile se aplică live pe net (scădere simplă, fără recalcul fiscal).
   const retineriNum = fluturas ? Math.max(0, parseInt(retineri) || 0) : 0;
   const handleDescarcaPdf = async () => {
@@ -1055,7 +1067,13 @@ export default function CalculatorSalariu({
           </div>
           )}
 
-          <InputNumber id="salariu-input" unit={etMonedaLuna} label={fluturas ? t.salariuDeBazaBrut : mod === "brut" ? t.salariuBrut : t.salariuNet} value={input.brut} onChange={(v) => { set("brut", v); if (emptyWarn) setEmptyWarn(false); }} placeholder={`${t.exemplu} ${exemplu(exempluMinim(regimActiv)[mod])}`} onEnter={handleCalculeaza} error={emptyWarn ? t.eroareSalariuGol : undefined} tall inline={cuPerioada && !fluturas}
+          <InputNumber id="salariu-input" unit={etMonedaLuna} label={fluturas ? t.salariuDeBazaBrut : mod === "brut" ? t.salariuBrut : t.salariuNet} value={input.brut} onChange={(v) => { set("brut", v); if (emptyWarn) setEmptyWarn(false); }} placeholder={`${t.exemplu} ${exemplu(exempluMinim(regimActiv)[mod])}`} onEnter={handleCalculeaza} error={emptyWarn ? t.eroareSalariuGol : undefined}
+            aviz={subMinim ? (
+              <>
+                {t.subMinim(fmt(minimRezultat))}
+                {!embedded && <> {t.subMinimPartTime} <Link href="/calculator-salariu-part-time" className="font-medium text-stone-900 underline underline-offset-2">{t.subMinimLink}</Link>.</>}
+              </>
+            ) : undefined} tall inline={cuPerioada && !fluturas}
             ajutor={cuPerioada && !fluturas ? { text: mod === "brut" ? t.ajutorBrut : t.ajutorNet, titlu: mod === "brut" ? t.ajutorBrutTitlu : t.ajutorNetTitlu, deschis: ajutor === "salariu", onToggle: () => comutaAjutor("salariu") } : undefined} />
 
           {/* Anul și luna salariului, pe un rând sub etichetă (cerut de proprietar, 25 septembrie

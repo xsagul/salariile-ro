@@ -59,6 +59,10 @@ export type TexteCalculator = {
   salariuNet: string;
   exemplu: string;
   eroareSalariuGol: string;
+  /** Nota de sub câmp când brutul calculat e sub salariul minim al lunii. */
+  subMinim: (minim: string) => string;
+  subMinimPartTime: string;
+  subMinimLink: string;
   ascundeAvansate: string;
   calculatorAvansat: string;
   calculeaza: string;
@@ -206,6 +210,9 @@ const RO: TexteCalculator = {
   salariuNet: "Salariu net",
   exemplu: "ex:",
   eroareSalariuGol: "Scrie mai întâi un salariu.",
+  subMinim: (minim) => `Sub salariul minim, de ${minim}: rezultatul e pentru o lună lucrată parțial.`,
+  subMinimPartTime: "Pentru normă parțială, folosește",
+  subMinimLink: "calculatorul part-time",
   ascundeAvansate: "▲ Ascunde opțiuni avansate",
   calculatorAvansat: "▼ Calculator avansat",
   calculeaza: "Calculează",
@@ -350,6 +357,9 @@ const EN: TexteCalculator = {
   salariuNet: "Net salary",
   exemplu: "e.g.",
   eroareSalariuGol: "Enter a salary first.",
+  subMinim: (minim) => `Below the minimum wage of ${minim}: the result is for a partly worked month.`,
+  subMinimPartTime: "For a part-time contract, use the",
+  subMinimLink: "part-time calculator",
   ascundeAvansate: "▲ Hide advanced options",
   calculatorAvansat: "▼ Advanced calculator",
   calculeaza: "Calculate",
