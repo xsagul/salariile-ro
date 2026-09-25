@@ -3547,3 +3547,23 @@ Ajustare în aceeași zi, la cererea proprietarului: titlul de secțiune pe tele
 urcă de la 20 la 22 px (scara devine 22 · 22 · 24 · 24 · 24). Măsurat după build:
 31 de pagini la 22 px pe telefon; doar titlul lung „Câștigul mediu brut lunar al
 sectorului…” de pe paginile de meserie trece pe 3 rânduri.
+
+## 25 septembrie 2026 — Spațierea pe verticală
+
+Măsurat distanța PERCEPUTĂ (ultimul semn vizibil → vârful literelor următoare) pe
+32 de pagini, la 5 ecrane, și comparat cu GOV.UK, USWDS, Tailwind Typography și
+GitHub, randate cu Inter pe aceeași pagină de test
+(https://claude.ai/artifact/VPB6kEJVGSxgitzZx9d6TW). Înainte: 8 distanțe între bara
+de sus și titlu (30–114 px), 21 deasupra secțiunilor, 7 până la subsol.
+
+Aleasă de proprietar, publicată în `be17173` (telefon / de la 640 px): bara → titlu
+30/44, titlu → text 24/28, deasupra secțiunii 44/48, deasupra subtitlului 30/38,
+paragraf → paragraf 24/26, ultimul conținut → subsol 38/44. Cu breadcrumb: 28/40
+până la el, 17/19–22 până la titlu (ales de agent, proprietarul a lăsat scala acolo
+la latitudinea lui). Măsurat după: 100% la bara → titlu și la subtitluri, 70–90%
+deasupra secțiunilor, restul sunt texte de 12–14 px și paginile de meserie.
+Neatins: titlul secțiunii → conținut (28) și titlul cardului → text (20, 16
+variante), pe care proprietarul nu le-a fixat.
+
+Reparat pe drum: contractul pentru titluri din `42adb47` avea un caracter
+backspace în regex în loc de `` și nu verifica nimic.
