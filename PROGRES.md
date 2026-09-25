@@ -3572,3 +3572,8 @@ Completare în aceeași zi: titlul secțiunii → text 24 / 28 px și titlul car
 20 px, alese de proprietar. Măsurat după, cu toleranță de 1 px: 94–95% dintre secțiuni și
 80% dintre carduri (fără panourile calculatoarelor); restul sunt paginile de meserie,
 lunile din calendarul Zile libere 2026 (22 px) și două carduri cu tabel.
+
+A doua completare, la cererea proprietarului: paragraf → paragraf 22 px pe toate ecranele
+(era 24 / 26), și în carduri, ca textul să fie vizibil mai strâns decât titlu → text
+(24 / 28). Măsurat: 22 px la 79% din perechile de paragrafe de 16 px și 75% din cele din
+carduri; restul sunt paginile de meserie și comparația de meserii.

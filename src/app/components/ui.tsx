@@ -36,7 +36,7 @@ export const TITLU_CARD = "text-base font-bold tracking-[-0.01em] text-stone-900
 //   titlul paginii → text                    24          28
 //   deasupra unei secțiuni                   44          48
 //   deasupra subtitlului                     30          38
-//   paragraf → paragraf                      24          26
+//   paragraf → paragraf                      22          22   (și în carduri)
 //   ultimul conținut → subsol                38          44
 //   titlul secțiunii → text                  24          28
 //   titlul cardului → text                   20          20
@@ -58,7 +58,7 @@ export const SUB_BREADCRUMB = "mb-1.5 sm:mb-2";
 /** Între titlul paginii și fraza de sub el. */
 export const SUB_TITLU = "mt-[11px] sm:mt-3.5 2xl:mt-3";
 /** Sub un paragraf de text de 16 px, până la următorul. */
-export const SPATIU_PARAGRAF = "mb-3 sm:mb-3.5";
+export const SPATIU_PARAGRAF = "mb-2.5";
 /** Sub titlul unei secțiuni, când urmează text. */
 export const SUB_TITLU_SECTIUNE = "mb-3 sm:mb-4";
 /** Sub titlul unei secțiuni, când urmează direct carduri sau un tabel. */
@@ -75,10 +75,10 @@ const PROSE = [
   // Și invers: un tabel direct sub titlu stă la distanța de card, nu de text.
   "[&_h2+:is(table,.table-wrap)]:mt-[18px] sm:[&_h2+:is(table,.table-wrap)]:mt-[22px]",
   "[&_h3]:mt-4 sm:[&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:tracking-[-0.01em] [&_h3]:text-stone-900",
-  "[&_p]:mb-3 sm:[&_p]:mb-3.5 [&_p]:text-base [&_p]:leading-normal [&_p]:tracking-[-0.01em] [&_p]:text-stone-600",
-  "[&_ul]:mb-3 sm:[&_ul]:mb-3.5 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:text-stone-600 [&_li]:mb-2 [&_li]:leading-normal [&_li]:tracking-[-0.01em]",
+  "[&_p]:mb-2.5 [&_p]:text-base [&_p]:leading-normal [&_p]:tracking-[-0.01em] [&_p]:text-stone-600",
+  "[&_ul]:mb-2.5 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:text-stone-600 [&_li]:mb-2 [&_li]:leading-normal [&_li]:tracking-[-0.01em]",
   // Pașii numerotați: fără stil propriu, preflight-ul Tailwind le ștergea cifrele.
-  "[&_ol]:mb-3 sm:[&_ol]:mb-3.5 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:text-stone-600",
+  "[&_ol]:mb-2.5 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:text-stone-600",
   "[&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 hover:[&_a]:text-stone-600",
   "[&_strong]:font-semibold [&_strong]:text-stone-900",
   "[&_em]:not-italic [&_em]:font-medium [&_em]:text-stone-900",
@@ -358,7 +358,7 @@ export function CardCompanion({
   nota?: string;
 }) {
   return (
-    <div className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 [&>dl>div:first-child]:pt-0">
+    <div className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 [&>dl>div:first-child]:pt-0 [&>p+p]:mt-[11px]">
       <h3 className={CARD_TITLU}>{titlu}</h3>
       {children}
       {nota ? <p className="mt-3 text-xs text-stone-600">{nota}</p> : null}
