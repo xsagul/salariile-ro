@@ -120,7 +120,10 @@ function lunaCalculator(d: Date) {
   const l = new Date(ziRo(d)).toISOString().slice(0, 7);
   return l < PRIMA_LUNA ? PRIMA_LUNA : l > ULTIMA_LUNA ? ULTIMA_LUNA : l;
 }
-// Lunile unui an, grupate pe regimul fiscal: „Ianuarie–iunie · minim 4.050 lei”.
+// Lunile unui an, grupate pe regimul fiscal: „Reguli fiscale: ianuarie–iunie”. Până pe
+// 26 septembrie 2026 titlul arăta salariul minim, dar la schimbarea regimului se schimbă și
+// suma netaxabilă cu plafonul ei; titlul spune doar că de aici se aplică alte reguli
+// (proprietar). Salariul minim al lunii apare ca exemplu în câmpul de salariu.
 // Ca la calculator-salarii.ro, care colorează lunile cu aceleași reguli; aici grupul
 // are titlu, nu culoare: interfața e monocromă (BRAND.md), iar selectorul nativ de
 // pe telefon ignoră culoarea opțiunilor, dar arată titlurile grupurilor.
@@ -135,9 +138,8 @@ function grupuriRegim(an: string, t: TexteCalculator) {
   return grupuri.map((g) => {
     const a = Number(g.luni[0].slice(5, 7)) - 1;
     const b = Number(g.luni[g.luni.length - 1].slice(5, 7)) - 1;
-    const luni = a === 0 && b === 11 ? t.totAnul : `${t.luni[a][0].toUpperCase()}${t.luni[a].slice(1)}–${t.luni[b]}`;
-    const minim = new Intl.NumberFormat(t.locale).format(REGIMURI_FISCALE_SALARIU[g.regim].salariuMinim);
-    return { ...g, titlu: `${luni} · ${t.minimBrut} ${minim} ${t.moneda}` };
+    const luni = a === 0 && b === 11 ? t.totAnul : `${t.luni[a]}–${t.luni[b]}`;
+    return { ...g, titlu: `${t.reguliFiscale}: ${luni}` };
   });
 }
 

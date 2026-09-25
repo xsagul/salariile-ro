@@ -3795,3 +3795,10 @@ Tot 26 septembrie, observat de proprietar: exemplul din câmpul de salariu răm�
 (`exempluMinim(regimActiv)`, din fiscal.ts), în ambele direcții. Verificat în browser:
 mai 2026 → 4.050 / net 2.574; septembrie 2026 → net 2.699; martie 2024 → 3.300 / net 2.079;
 septembrie 2024 → 3.700. HTML-ul static rămâne pe luna build-ului.
+
+Tot 26 septembrie, cerut de proprietar: titlurile grupurilor din lista lunilor nu mai
+arată salariul minim („Ianuarie–iunie · minim 4.050 lei”), fiindcă la schimbarea
+regimului se schimbă și suma netaxabilă cu plafonul ei. Acum: „Reguli fiscale:
+ianuarie–iunie”, „Reguli fiscale: iulie–decembrie”, „Reguli fiscale: tot anul” (2025).
+Minimul lunii rămâne vizibil ca exemplu în câmpul de salariu. Explicația de la „?” de
+lângă „Anul” spunea deja ce se schimbă (minimul și suma scutită).

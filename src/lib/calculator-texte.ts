@@ -159,9 +159,9 @@ export type TexteCalculator = {
   ajutorNetTitlu: string;
   ajutorAnul: string;
   ajutorAnulTitlu: string;
-  /** Titlul grupului de luni cu aceleași reguli: „Tot anul”, „minim 4.050 lei”. */
+  /** Titlul grupului de luni cu aceleași reguli: „Reguli fiscale: ianuarie–iunie”. */
   totAnul: string;
-  minimBrut: string;
+  reguliFiscale: string;
   /** Lunile, cu literă mică, pentru „martie 2025” și „ianuarie–iunie 2026”. */
   luni: readonly string[];
 
@@ -306,8 +306,8 @@ const RO: TexteCalculator = {
   ajutorNetTitlu: "Ce este salariul net",
   ajutorAnul: "Luna pentru care calculezi. Salariul minim și suma scutită de taxe se schimbă de la an la an, uneori și în iulie, iar calculul folosește regulile lunii alese.",
   ajutorAnulTitlu: "De ce contează luna",
-  totAnul: "Tot anul",
-  minimBrut: "minim",
+  totAnul: "tot anul",
+  reguliFiscale: "Reguli fiscale",
   luni: ["ianuarie", "februarie", "martie", "aprilie", "mai", "iunie", "iulie", "august", "septembrie", "octombrie", "noiembrie", "decembrie"],
 
   pdfTitlu: "FLUTURAS DE SALARIU",
@@ -451,8 +451,8 @@ const EN: TexteCalculator = {
   ajutorNetTitlu: "What net salary means",
   ajutorAnul: "The month you are calculating for. The minimum wage and the tax-free amount change from year to year, sometimes in July too, and the calculation uses the rules of the chosen month.",
   ajutorAnulTitlu: "Why the month matters",
-  totAnul: "Whole year",
-  minimBrut: "minimum wage",
+  totAnul: "whole year",
+  reguliFiscale: "Tax rules",
   luni: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
 
   pdfTitlu: "PAYSLIP",
