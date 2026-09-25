@@ -1279,10 +1279,19 @@ export default function CalculatorSalariu({
                   </tr>
                 </thead>
                 <tbody>
+                  {/* Rândul negru, cu marcajul pe sumă, e cifra căutată: netul la „Brut → net”,
+                      brutul la „Net → brut” (proprietar, 26 septembrie 2026). */}
+                  {rezAfisat.snapshotMod === "net" ? (
+                    <tr className="bg-stone-900">
+                      <td className="border-b border-r border-b-stone-300 border-r-stone-600 px-3 py-3 text-left text-sm font-bold text-white">{t.salariuIncadrareBrut}</td>
+                      <td className="border-b border-b-stone-300 px-3 py-3 text-right text-sm font-bold tabular-nums whitespace-nowrap text-white"><span className="marcaj">{fmt(parseFloat(rezAfisat.brutEfectiv))}</span></td>
+                    </tr>
+                  ) : (
                   <tr>
                     <td className={`${cellL} font-medium text-stone-900`}>{t.salariuIncadrareBrut}</td>
                     <td className={`${cellR} font-medium text-stone-900`}>{fmt(parseFloat(rezAfisat.brutEfectiv))}</td>
                   </tr>
+                  )}
                   {rezAfisat.rez.facilitate > 0 && (
                     <tr>
                       <td className={`${cellL} pl-4 sm:pl-8`}>{t.facilitateFiscala}</td>
@@ -1314,10 +1323,17 @@ export default function CalculatorSalariu({
                   {/* „Salariu net" = banii care intră în cont, după toate reținerile (inclusiv
                       taxele pe tichete, oprite din bani — ca pe fluturașul real). Tichetele
                       intră integral pe card, la valoarea nominală, pe rând separat. */}
+                  {rezAfisat.snapshotMod === "net" ? (
+                    <tr>
+                      <td className={`${cellL} font-bold text-stone-900 ${rezAfisat.rez.tichete > 0 ? "" : "border-b-0"}`}>{t.salariuNetRand}</td>
+                      <td className={`${cellR} font-bold text-stone-900 ${rezAfisat.rez.tichete > 0 ? "" : "border-b-0"}`}>{fmt(rezAfisat.rez.netBani)}</td>
+                    </tr>
+                  ) : (
                   <tr className="bg-stone-900">
                     <td className="border-r border-r-stone-600 px-3 py-3 text-left text-sm font-bold text-white">{t.salariuNetRand}</td>
                     <td className="px-3 py-3 text-right text-sm font-bold tabular-nums whitespace-nowrap text-white"><span className="marcaj">{fmt(rezAfisat.rez.netBani)}</span></td>
                   </tr>
+                  )}
                   {rezAfisat.rez.tichete > 0 && (
                     <tr>
                       <td className={cellL}>{t.tichete}</td>
@@ -1447,10 +1463,17 @@ export default function CalculatorSalariu({
                   </tr>
                 </thead>
                 <tbody>
+                  {mod === "net" ? (
+                    <tr className="bg-stone-900">
+                      <td className="border-b border-r border-b-stone-300 border-r-stone-600 px-3 py-3 text-left text-sm font-bold text-white">{t.salariuIncadrareBrut}</td>
+                      <td className="border-b border-b-stone-300 px-3 py-3 text-right text-sm font-bold text-white/80" aria-hidden="true">–</td>
+                    </tr>
+                  ) : (
                   <tr>
                     <td className={cellL}>{t.salariuIncadrareBrut}</td>
                     <td className={cellR} aria-hidden="true">–</td>
                   </tr>
+                  )}
                   <tr>
                     <td className={`${cellL} pl-4 sm:pl-8`}>{t.casPensii}</td>
                     <td className={cellR} aria-hidden="true">–</td>
@@ -1467,10 +1490,17 @@ export default function CalculatorSalariu({
                     <td className={`${cellL} font-bold`}>{t.totalRetineriAngajat}</td>
                     <td className={cellR} aria-hidden="true">–</td>
                   </tr>
+                  {mod === "net" ? (
+                    <tr>
+                      <td className={`${cellL} border-b-0 font-bold`}>{t.salariuNetRand}</td>
+                      <td className={`${cellR} border-b-0`} aria-hidden="true">–</td>
+                    </tr>
+                  ) : (
                   <tr className="bg-stone-900">
                     <td className="border-r border-r-stone-600 px-3 py-3 text-left text-sm font-bold text-white">{t.salariuNetRand}</td>
                     <td className="px-3 py-3 text-right text-sm font-bold text-white/80" aria-hidden="true">–</td>
                   </tr>
+                  )}
                 </tbody>
               </table>
             </div>

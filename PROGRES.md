@@ -3739,3 +3739,8 @@ prezentare mai bună”; butoanele de direcție „se văd cam mici”):
   „Gross → net” depășea cu ~15 px.
 - „Septembrie” cere 124 px în lista lunii; are 128 (an 78 px, săgeata în 24 px).
 Butonul „Calculează” pe 375×812: 462 px (576 dimineață, 512 înainte de rândul cu anul).
+
+Tot 26 septembrie: la „Net → brut”, rândul negru cu marcajul galben trece pe „Salariu brut”,
+cifra căutată; netul rămâne îngroșat, fără fundal (observat de proprietar). Direcția vine
+din calculul afișat (`snapshotMod`), nu din butonul apăsat după; tabelul gol de dinainte
+de calcul urmează butonul. Se aplică și paginilor /calculator/…-net cu modul „net”.
