@@ -38,6 +38,8 @@ type InputNumberProps = {
   tall?: boolean;
   /** Eticheta în stânga câmpului, pe rând, ca „Anul” (doar salariul de pe homepage). */
   inline?: boolean;
+  /** Semnul „?” de lângă etichetă și explicația care se deschide sub rând. */
+  ajutor?: { text: string; titlu: string; deschis: boolean; onToggle: () => void };
   error?: string;
   unit?: string;
 };
@@ -184,13 +186,36 @@ const fieldLabel =
 const controlBox =
   "w-full rounded border border-stone-300 bg-surface px-3 py-2 text-base sm:text-sm text-stone-900 outline-none transition focus:border-stone-400 focus:shadow-[0_0_6px_rgba(28,25,23,0.12)]";
 
-// Rândurile cu eticheta în stânga (salariul și anul, pe homepage): aceeași coloană de
-// etichete, ca și câmpurile să înceapă din același loc. Eticheta are 14 px, mărimea
-// butoanelor din formular: la 12 px, lângă un câmp de 16 px, arăta stinsă
-// (proprietar, 26 septembrie 2026). Nu e o mărime nouă în formular.
-// Coloana de 84 px încape „Salariu brut” (76 px la 14 px) și „Gross salary” (83 px).
-const randEticheta = "grid grid-cols-[5.25rem_minmax(0,1fr)] items-center gap-3";
+// Rândurile salariului și anului, pe homepage. De la 640 px, eticheta stă în stânga, pe
+// aceeași coloană, ca și câmpurile să înceapă din același loc. Pe telefon stă deasupra și
+// câmpurile iau toată lățimea: cu eticheta în stânga, formularul arăta înghesuit față de
+// impozitsalariu.ro (proprietar, 26 septembrie 2026). Eticheta are 14 px, mărimea
+// butoanelor din formular, nu o mărime nouă. Coloana de 104 px încape „Salariu brut”
+// (76 px) cu semnul „?” (6 + 18 px).
+const randEticheta = "sm:grid sm:grid-cols-[6.5rem_minmax(0,1fr)] sm:items-center sm:gap-3";
 const etichetaRand = "text-sm text-stone-700";
+
+// Semnul „?” de lângă o etichetă. „?” și nu „i”: întreabă „ce e asta?”, exact ce explică;
+// „!” ar fi avertisment. Explicația se deschide sub rând, nu într-o bulă: pe telefon o
+// bulă acoperă câmpurile și se închide greu. 18 px vizibil, 44 px de apăsat prin `after:`.
+function ButonAjutor({ id, deschis, onClick, titlu }: { id: string; deschis: boolean; onClick: () => void; titlu: string }) {
+  return (
+    <button
+      type="button"
+      aria-expanded={deschis}
+      aria-controls={id}
+      aria-label={titlu}
+      onClick={onClick}
+      className={`relative ml-1.5 inline-flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full border text-xs font-medium leading-none transition-colors after:absolute after:-inset-[14px] after:content-[''] ${
+        deschis ? "border-stone-900 bg-stone-900 text-white" : "border-stone-300 text-stone-600 hover:border-stone-500 hover:text-stone-900"
+      }`}
+    >
+      ?
+    </button>
+  );
+}
+
+const textAjutor = "mt-2 max-w-prose text-sm text-stone-600";
 
 // Celule tabel-fluturaș
 const cellL = "border-b border-r border-stone-300 px-3 py-3 text-left";
@@ -199,11 +224,18 @@ const colHeader =
   "mb-4 border-b border-stone-200 pb-2 text-lg font-medium text-stone-900";
 
 // Am adăugat 'id' în paranteze și am legat label-ul de input
-function InputNumber({ id, label, value, onChange, placeholder, hint, onEnter, tall, inline, error, unit = "lei / lună" }: InputNumberProps) {
+function InputNumber({ id, label, value, onChange, placeholder, hint, onEnter, tall, inline, ajutor, error, unit = "lei / lună" }: InputNumberProps) {
   return (
     <div className="mb-5">
       <div className={inline ? randEticheta : undefined}>
-      <label htmlFor={id} className={inline ? etichetaRand : fieldLabel}>{label}</label>
+      {inline ? (
+        <div className="mb-2 flex items-center sm:mb-0">
+          <label htmlFor={id} className={etichetaRand}>{label}</label>
+          {ajutor && <ButonAjutor id={`${id}-ajutor`} deschis={ajutor.deschis} onClick={ajutor.onToggle} titlu={ajutor.titlu} />}
+        </div>
+      ) : (
+        <label htmlFor={id} className={fieldLabel}>{label}</label>
+      )}
       {hint && <span className="mb-2 block text-xs text-stone-600">{hint}</span>}
       <div className={`flex w-full overflow-hidden rounded border transition focus-within:border-stone-400 focus-within:shadow-[0_0_6px_rgba(28,25,23,0.12)] ${error ? "border-stone-500" : "border-stone-300"}`}>
         <input
@@ -222,7 +254,8 @@ function InputNumber({ id, label, value, onChange, placeholder, hint, onEnter, t
         {unit && <span className="flex items-center whitespace-nowrap border-l border-stone-200 px-3 text-xs font-medium text-stone-600">{unit}</span>}
       </div>
       </div>
-      {error && <span id={`${id}-error`} role="alert" className={`mt-2 block text-xs font-medium text-stone-900 ${inline ? "pl-24" : ""}`}>{error}</span>}
+      {ajutor?.deschis && <p id={`${id}-ajutor`} className={textAjutor}>{ajutor.text}</p>}
+      {error && <span id={`${id}-error`} role="alert" className={`mt-2 block text-xs font-medium text-stone-900 ${inline ? "sm:pl-[7.25rem]" : ""}`}>{error}</span>}
     </div>
   );
 }
@@ -586,6 +619,9 @@ export default function CalculatorSalariu({
   // la server, cât timp omul n-a ales alta.
   const [perioada, setPerioada] = useState(() => lunaCalculator(dataBuild ? new Date(dataBuild) : new Date()));
   const perioadaAleasa = useRef(false);
+  // Explicația deschisă de semnul „?”: cel mult una odată.
+  const [ajutor, setAjutor] = useState<null | "salariu" | "anul">(null);
+  const comutaAjutor = (care: "salariu" | "anul") => setAjutor((a) => (a === care ? null : care));
   const regimActiv: RegimFiscalSalariu = cuPerioada ? regimLunii(perioada) : regimFiscal;
   // Avertisment scurt când se apasă Calculează fără un salariu valid (Nielsen h1/h9).
   const [emptyWarn, setEmptyWarn] = useState(false);
@@ -912,13 +948,16 @@ export default function CalculatorSalariu({
           {fluturas ? (
             <h2 className={colHeader}>{t.dateSalariale}</h2>
           ) : (
-            <div className={`${colHeader} flex items-center justify-between gap-2`}>
+            // Pe telefon, direcția stă pe tot rândul, sub titlu, cu butoane de 44 px; lipită de
+            // titlu umplea rândul (15 px între ele). Coloanele stau una sub alta, deci alinierea
+            // cu „Rezultat calcul” contează doar de la 640 px, unde revine în dreptul titlului.
+            <div className={`${colHeader} sm:flex sm:items-center sm:justify-between sm:gap-2`}>
               <h2>{t.dateSalariale}</h2>
-              <div role="group" aria-label={t.directieCalcul} className="flex shrink-0 overflow-hidden rounded border border-stone-300">
+              <div role="group" aria-label={t.directieCalcul} className="mt-3 flex w-full overflow-hidden rounded border border-stone-300 sm:mt-0 sm:w-auto sm:shrink-0">
                 <button
                   type="button"
                   aria-pressed={mod === "brut"}
-                  className={`relative inline-flex h-[26px] items-center px-2 text-sm font-medium transition-colors after:absolute after:inset-x-0 after:-inset-y-[9px] after:content-[''] ${mod === "brut" ? "bg-stone-900 text-white" : "text-stone-600 hover:bg-canvas"}`}
+                  className={`relative inline-flex h-11 flex-1 items-center justify-center px-2 text-sm font-medium transition-colors sm:h-[26px] sm:flex-none sm:after:absolute sm:after:inset-x-0 sm:after:-inset-y-[9px] sm:after:content-[''] ${mod === "brut" ? "bg-stone-900 text-white" : "text-stone-600 hover:bg-canvas"}`}
                   onClick={() => {
                     if (mod === "brut") return;
                     if (mod === "net") {
@@ -933,7 +972,7 @@ export default function CalculatorSalariu({
                 <button
                   type="button"
                   aria-pressed={mod === "net"}
-                  className={`border-l border-stone-300 relative inline-flex h-[26px] items-center px-2 text-sm font-medium transition-colors after:absolute after:inset-x-0 after:-inset-y-[9px] after:content-[''] ${mod === "net" ? "bg-stone-900 text-white" : "text-stone-600 hover:bg-canvas"}`}
+                  className={`border-l border-stone-300 relative inline-flex h-11 flex-1 items-center justify-center px-2 text-sm font-medium transition-colors sm:h-[26px] sm:flex-none sm:after:absolute sm:after:inset-x-0 sm:after:-inset-y-[9px] sm:after:content-[''] ${mod === "net" ? "bg-stone-900 text-white" : "text-stone-600 hover:bg-canvas"}`}
                   onClick={() => {
                     if (mod === "net") return;
                     if (mod === "brut") {
@@ -982,17 +1021,22 @@ export default function CalculatorSalariu({
           </div>
           )}
 
-          <InputNumber id="salariu-input" unit={etMonedaLuna} label={fluturas ? t.salariuDeBazaBrut : mod === "brut" ? t.salariuBrut : t.salariuNet} value={input.brut} onChange={(v) => { set("brut", v); if (emptyWarn) setEmptyWarn(false); }} placeholder={mod === "brut" ? `${t.exemplu} ${exemplu(Number(EX_PLACEHOLDER_BRUT))}` : `${t.exemplu} ${exemplu(Number(EX_PLACEHOLDER_NET))}`} onEnter={handleCalculeaza} error={emptyWarn ? t.eroareSalariuGol : undefined} tall inline={cuPerioada && !fluturas} />
+          <InputNumber id="salariu-input" unit={etMonedaLuna} label={fluturas ? t.salariuDeBazaBrut : mod === "brut" ? t.salariuBrut : t.salariuNet} value={input.brut} onChange={(v) => { set("brut", v); if (emptyWarn) setEmptyWarn(false); }} placeholder={mod === "brut" ? `${t.exemplu} ${exemplu(Number(EX_PLACEHOLDER_BRUT))}` : `${t.exemplu} ${exemplu(Number(EX_PLACEHOLDER_NET))}`} onEnter={handleCalculeaza} error={emptyWarn ? t.eroareSalariuGol : undefined} tall inline={cuPerioada && !fluturas}
+            ajutor={cuPerioada && !fluturas ? { text: mod === "brut" ? t.ajutorBrut : t.ajutorNet, titlu: mod === "brut" ? t.ajutorBrutTitlu : t.ajutorNetTitlu, deschis: ajutor === "salariu", onToggle: () => comutaAjutor("salariu") } : undefined} />
 
           {/* Anul și luna salariului, ca la impozitsalariu.ro: eticheta în stânga, anul și
               luna în dreapta, pe un rând (cerut de proprietar, 25 septembrie 2026). Pornește
               pe luna de azi; fiecare lună se calculează cu regulile ei (src/lib/fiscal.ts).
               Pe 375 px: 84 etichetă + 78 an + 129 lună; „septembrie” cere 124 px. */}
           {cuPerioada && !fluturas && (
-            <div className={`mb-5 ${randEticheta}`}>
-              <label htmlFor="anul-salariului" className={etichetaRand}>{t.anul}</label>
+            <div className="mb-5">
+            <div className={randEticheta}>
+              <div className="mb-2 flex items-center sm:mb-0">
+                <label htmlFor="anul-salariului" className={etichetaRand}>{t.anul}</label>
+                <ButonAjutor id="anul-ajutor" deschis={ajutor === "anul"} onClick={() => comutaAjutor("anul")} titlu={t.ajutorAnulTitlu} />
+              </div>
               <div className="flex min-w-0 gap-2">
-                <div className="relative w-[4.875rem] shrink-0">
+                <div className="relative w-2/5 shrink-0 sm:w-[4.875rem]">
                   <select
                     id="anul-salariului"
                     name="anul-salariului"
@@ -1037,6 +1081,8 @@ export default function CalculatorSalariu({
                   </svg>
                 </div>
               </div>
+            </div>
+            {ajutor === "anul" && <p id="anul-ajutor" className={textAjutor}>{t.ajutorAnul}</p>}
             </div>
           )}
 

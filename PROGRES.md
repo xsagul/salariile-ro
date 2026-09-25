@@ -3744,3 +3744,15 @@ Tot 26 septembrie: la „Net → brut”, rândul negru cu marcajul galben trece
 cifra căutată; netul rămâne îngroșat, fără fundal (observat de proprietar). Direcția vine
 din calculul afișat (`snapshotMod`), nu din butonul apăsat după; tabelul gol de dinainte
 de calcul urmează butonul. Se aplică și paginilor /calculator/…-net cu modul „net”.
+
+Tot 26 septembrie, după capturi de pe telefon (impozitsalariu.ro alături): pe telefon
+formularul arăta înghesuit. Sub 640 px eticheta stă iar deasupra, câmpurile iau toată
+lățimea (anul 2/5, luna restul), iar direcția de calcul trece pe tot rândul, sub titlu,
+cu butoane de 44 px. De la 640 px rămâne așezarea pe rând și butoanele mici lângă titlu
+(pe telefon coloanele sunt una sub alta, deci alinierea cu „Rezultat calcul” nu contează
+acolo). „Calculează” pe 375×812: 576 px (462 cu eticheta în stânga).
+
+Semnul „?” lângă „Salariu brut” și „Anul”, ales de agent la întrebarea proprietarului:
+„?” întreabă „ce e asta?”, „i” e pentru informație în plus, „!” e avertisment. Explicația
+se deschide sub rând (nu bulă: pe telefon acoperă câmpurile), cel mult una odată, 14 px.
+Textele sunt în calculator-texte.ts; cea despre lună nu scrie date, ca să nu se învechească.

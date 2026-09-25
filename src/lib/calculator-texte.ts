@@ -152,6 +152,13 @@ export type TexteCalculator = {
   lunaSalariului: string;
   /** Eticheta rândului cu anul și luna salariului. */
   anul: string;
+  /** Explicațiile semnului „?” și eticheta lui pentru cititoarele de ecran. */
+  ajutorBrut: string;
+  ajutorBrutTitlu: string;
+  ajutorNet: string;
+  ajutorNetTitlu: string;
+  ajutorAnul: string;
+  ajutorAnulTitlu: string;
   /** Titlul grupului de luni cu aceleași reguli: „Tot anul”, „minim 4.050 lei”. */
   totAnul: string;
   minimBrut: string;
@@ -293,6 +300,12 @@ const RO: TexteCalculator = {
     `Calcul pentru ${perioada}, cu regulile fiscale de atunci. Fluturașul PDF este disponibil numai pentru grila fiscală curentă.`,
   lunaSalariului: "Luna salariului",
   anul: "Anul",
+  ajutorBrut: "Salariul din contract, înainte de taxe. Îl găsești în contractul de muncă sau pe fluturaș, la „salariu brut”.",
+  ajutorBrutTitlu: "Ce este salariul brut",
+  ajutorNet: "Suma care îți intră în cont în fiecare lună, după taxe. Calculatorul află brutul din care rezultă.",
+  ajutorNetTitlu: "Ce este salariul net",
+  ajutorAnul: "Luna pentru care calculezi. Salariul minim și suma scutită de taxe se schimbă de la an la an, uneori și în iulie, iar calculul folosește regulile lunii alese.",
+  ajutorAnulTitlu: "De ce contează luna",
   totAnul: "Tot anul",
   minimBrut: "minim",
   luni: ["ianuarie", "februarie", "martie", "aprilie", "mai", "iunie", "iulie", "august", "septembrie", "octombrie", "noiembrie", "decembrie"],
@@ -432,6 +445,12 @@ const EN: TexteCalculator = {
     `Calculation for ${perioada}, with the tax rules in force then. The PDF payslip is available only for the current tax rules.`,
   lunaSalariului: "Salary month",
   anul: "Year",
+  ajutorBrut: "The salary in your contract, before taxes. You find it in your employment contract or on your payslip.",
+  ajutorBrutTitlu: "What gross salary means",
+  ajutorNet: "The amount paid into your account each month, after taxes. The calculator finds the gross salary behind it.",
+  ajutorNetTitlu: "What net salary means",
+  ajutorAnul: "The month you are calculating for. The minimum wage and the tax-free amount change from year to year, sometimes in July too, and the calculation uses the rules of the chosen month.",
+  ajutorAnulTitlu: "Why the month matters",
   totAnul: "Whole year",
   minimBrut: "minimum wage",
   luni: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
