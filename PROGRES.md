@@ -3843,3 +3843,41 @@ notă. Pe un rând la 360 și 1280 px.
 Observat la test, NEREPARAT: la „Net → brut”, netul din tabel iese adesea cu 1 leu sub cel
 scris (2.698 → 2.697, 2.500 → 2.499, 1.500 → 1.499). `calculeazaBrutDinNetCuRegim` rotunjește
 brutul la mijlocul intervalului, care poate cădea sub țintă.
+
+## 26 septembrie 2026 — Verificarea calculatorului pe toate perioadele (2024–2026)
+
+Cerut de proprietar: „verifică foarte bine”, pe lunile trecute cu alte reguli. Surse: Codul
+fiscal consolidat de pe legislatie.just.ro (consolidare 08.08.2026, descărcat integral și
+căutat local), notele cu OUG 115/2023, OUG 87/2024, OUG 156/2024, OUG 89/2025, OUG 8/2026,
+Legea 141/2025. Confirmate, fără schimbări: salariile minime, suma netaxabilă și plafonul pe
+fiecare perioadă (200/4.000 cu tichete; 300/4.000 fără; 300/4.300 fără tichete și vouchere;
+300/4.300; 200/4.600), normă întreagă, CAS fără tichete (art. 142 lit. r), CASS cu tichete
+(art. 157 alin. 2), art. 77 neschimbat din 1 ianuarie 2023 (tabel, sub 26 de ani, 100 lei
+pe copil), scutirea pentru handicap nelimitată (art. 60), OUG 8/2026 atinge doar pensiile
+facultative/ocupaționale, Legea 141/2025 doar CASS pe alte venituri decât salariul.
+
+**Trei erori găsite și reparate:**
+1. Deducerea personală se calcula pe brut FĂRĂ tichete. Venitul lunar brut din art. 77 le
+   cuprinde (sunt venit din salarii; legea le exclude explicit doar din plafonul sumei
+   netaxabile). Confirmat pe exemplul infotva.manager.ro din 12.02.2025 (4.050 + 500 →
+   deducere 608, impozit 228), acum identic. Impact: la 43% din calculele cu tichete netul
+   era prea mare, până la 82 lei/lună (5.400 + 945 tichete + 2 persoane: 3.061 → 2.979);
+   la minimul de acum cu 945 lei tichete, 2.520 → 2.479. Tot aici: deducerea se limitează la
+   tot venitul impozabil, cu tichetele, nu doar la partea din salariu.
+2. Rotunjire în virgulă mobilă la deducere: 0,35 − 0,02 = 0,32999…, deci 1.336,5 lei ieșea
+   1.336. Procentele sunt acum în zecimi de procent, numere întregi.
+3. Calculul invers („Net → brut”) dădea în 24% din cazuri un net cu 1 leu sub cel cerut
+   (12.310 din 51.030): brutul se rotunjea la mijlocul intervalului. Acum se urcă leu cu
+   leu până la netul cerut; 0 cazuri sub țintă.
+
+Test nou `scripts/test-referinta-lege.mts`: referință scrisă direct din lege (tabelul art. 77
+căutat rând cu rând, aritmetică întreagă), comparată cu motorul pe 468.864 de combinații (5
+perioade × bruturi 100–15.000 cu toate pragurile × tichete × 0–5 persoane × copii × sub 26 ×
+funcție de bază × scutire): zero diferențe. Pe codul vechi: 64.462. Plus regresii în
+test-fiscal-periods (exemplul publicat, sub 26 cu tichete, calculul invers). Testul
+„plafon dinamic” din test-facilitate folosea 840 lei tichete, care dădeau brut > 300 doar cu
+limita greșită; acum 1.200 lei. Pagina /deducere-personala-2026 spune că tichetele se adună
+la brut când cauți în tabel.
+
+Rămâne nemodelat, ca înainte: facilitățile sectoriale din 2024 (IT, construcții,
+agricultură; abrogate din 2025), avantajele în natură, pensiile facultative.

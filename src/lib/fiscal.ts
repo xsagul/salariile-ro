@@ -19,7 +19,8 @@
 //     └ copii (100 lei buc.) E1_422 / E3_1222   subset al persoanelor în întreținere (≤ E1_3)
 //   bazaCalculImpozit        E3_14 / E1_6
 //   facilitate (200 lei S2; 300 lei S1) reduce A_13/A_11/A_5 (OUG 89/2025; derogare art.220⁴ ⇒ reduce ȘI CAM)
-//   tichete                  excluse din baza CAS/CAM, INCLUSE în baza CASS
+//   tichete                  excluse din baza CAS/CAM, INCLUSE în baza CASS și în venitul
+//                            brut după care se stabilește deducerea personală (art. 77)
 //
 //   Rotunjiri (identice cu Soft A): CAS=round(bază×25%); CASS=round(bază×10%) O SINGURĂ dată;
 //   CAM=round(bază×2,25%); deducere de bază=round(procent×minim) LA LEU (nu la 10).
@@ -195,16 +196,20 @@ export function calculeazaDeducerePersonalaCuRegim(
   // Procentul de bază după numărul TOTAL de persoane în întreținere (D112: câmpul E1_3).
   // Copiii minori sunt și ei persoane în întreținere (art. 77 alin. 7), deci se numără AICI;
   // suplimentul de 100 lei/copil (E1_422) se adaugă SEPARAT în calculeaza().
-  const procenteBaza = [0.20, 0.25, 0.30, 0.35, 0.45];
-  const procentBaza = persoane >= 4 ? 0.45 : (procenteBaza[persoane] ?? 0.20);
+  // Procentele în zecimi de procent (200 = 20%), ca produsul cu minimul să fie exact: în
+  // virgulă mobilă, 0,35 − 0,02 dădea 0,32999…, iar 33% × 4.050 = 1.336,5 ieșea 1.336 în loc
+  // de 1.337 (găsit la verificarea contra tabelului din lege, 26 septembrie 2026).
+  const procenteBaza = [200, 250, 300, 350, 450];
+  const procentBaza = persoane >= 4 ? 450 : (procenteBaza[persoane] ?? 200);
 
-  // Procentul scade cu 0,5 puncte (0,005) la fiecare tranșă de 50 lei peste salariul minim.
+  // Procentul scade cu 0,5 puncte (5 zecimi) la fiecare tranșă de 50 lei peste salariul minim:
+  // „salariul minim + 1 leu … + 50 lei” e prima tranșă.
   const transe = brut <= salariuMinim ? 0 : Math.ceil((brut - salariuMinim) / 50);
-  const procent = Math.max(0, procentBaza - 0.005 * transe);
+  const procent = Math.max(0, procentBaza - 5 * transe);
 
   // Rotunjire la leu. Art. 77 NU prevede rotunjirea la 10 (aceea era regula veche, pre-2023);
   // textul actual spune „se aplică suma rezultată din calcul" (ex. oficial ANAF: 0,195×4325=843,375).
-  return Math.round(procent * salariuMinim);
+  return Math.round((procent * salariuMinim) / 1000);
 }
 
 export function calculeazaDeducerePersonala(brut: number, persoane: number): number {
@@ -253,23 +258,32 @@ export function calculeazaCuRegim(
   const cassTotal = Math.round((bazaCasCassSalariu + tichete) * CASS_PROCENT);
   const cassTichete = cassTotal - cassSalariu;
 
+  // Venitul lunar brut din salarii pentru deducere (art. 77 alin. 3-4 și 10) cuprinde și
+  // valoarea nominală a tichetelor de masă: sunt venituri din salarii (art. 76, Norme pct. 68),
+  // iar art. 77 nu le exclude. Legea le exclude explicit doar din plafonul sumei netaxabile
+  // (OUG 87/2024 art. V, OUG 156/2024 art. LXVI), deci fără excludere ele intră. Ex. publicat
+  // (infotva.manager.ro, feb. 2025): 4.050 lei + 500 lei tichete → deducere 608 lei, nu 810.
+  // Până pe 26 septembrie 2026 deducerea se calcula aici doar pe brut.
+  const venitBrutDeducere = brut + tichete;
+
   let deducere = 0;
   if (functieDeBAza) {
     // Deducerea de bază (E1_41) — pe numărul TOTAL de persoane în întreținere (copiii incluși).
-    deducere = calculeazaDeducerePersonalaCuRegim(brut, persoanePretretinere, regimFiscal);
+    deducere = calculeazaDeducerePersonalaCuRegim(venitBrutDeducere, persoanePretretinere, regimFiscal);
     // Sub-26: 15% din minim, DOAR pentru venit brut ≤ salariul minim + 2000 (Cod Fiscal art. 77 alin. 10).
-    if (varstaSub26 && brut <= regim.salariuMinim + 2000) deducere += Math.round(0.15 * regim.salariuMinim);
+    if (varstaSub26 && venitBrutDeducere <= regim.salariuMinim + 2000) deducere += Math.round((15 * regim.salariuMinim) / 100);
     // Supliment copii (E1_422): 100 lei/copil școlar, INDIFERENT de venit. Copiii sunt un
     // SUBSET al persoanelor în întreținere (copiiScolarizati ≤ persoanePretretinere).
     deducere += copiiScolarizati * 100;
   }
 
-  // Deducerea se acordă ÎN LIMITA venitului impozabil din salariu (Cod Fiscal art. 77) — nu poate
-  // depăși baza. Ex: la 100 lei brut, deducerea efectiv aplicată e ~65, nu 865.
+  // Deducerea se acordă ÎN LIMITA venitului impozabil lunar realizat (art. 77 alin. 2) — nu
+  // poate depăși baza. Venitul impozabil cuprinde și tichetele, după CASS-ul lor.
+  // Ex: la 100 lei brut fără tichete, deducerea efectiv aplicată e ~65, nu 865.
   const venitImpozabilSalariu = Math.max(0, brut - cas - cassSalariu - facilitate);
-  const deducereAplicata = Math.min(deducere, venitImpozabilSalariu);
   const bazaImpozitTichete = Math.max(0, tichete - cassTichete);
-  const bazaImpozitTotala = (venitImpozabilSalariu - deducereAplicata) + bazaImpozitTichete;
+  const deducereAplicata = Math.min(deducere, venitImpozabilSalariu + bazaImpozitTichete);
+  const bazaImpozitTotala = venitImpozabilSalariu + bazaImpozitTichete - deducereAplicata;
   const impozit = scutitImpozit ? 0 : Math.round(bazaImpozitTotala * IMPOZIT_PROCENT);
 
   // Pe fluturașul real, taxele aferente tichetelor (CASS + impozit) se rețin din
@@ -414,7 +428,16 @@ export function calculeazaBrutDinNetCuRegim(
     if (rez.netBani < net) lo = mid;
     else hi = mid;
   }
-  return Math.round((lo + hi) / 2);
+  // Rotunjirea la leu a mijlocului poate cădea sub țintă: netul 2.500 dădea brutul 4.125, cu
+  // netul 2.499 (găsit pe 26 septembrie 2026). Se urcă leu cu leu până la netul cerut;
+  // un brut care îl atingea deja rămâne neschimbat.
+  let brut = Math.round((lo + hi) / 2);
+  for (let i = 0; i < 10; i++) {
+    const rez = calculeazaCuRegim({ ...input, brut: String(brut) }, regimFiscal);
+    if (rez && rez.netBani >= net) break;
+    brut++;
+  }
+  return brut;
 }
 
 export function calculeazaBrutDinNet(net: number, input: Omit<InputState, "brut">): number {

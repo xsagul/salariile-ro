@@ -88,11 +88,14 @@ const roundTrip = calculeazaBrutDinNet(cuTichete.netBani, cuTicheteInput);
 check("round-trip cu tichete", roundTrip === 5000, `brut ${roundTrip}, net cash ${cuTichete.netBani}, total ${cuTichete.net}`);
 
 // 12. Pentru o țintă cash mică și tichete mari, intervalul net × 3 era insuficient.
-const brutCashMic = calculeazaBrutDinNet(100, { ...std, tichete: "840" });
-const cashMic = calculeaza({ ...std, brut: String(brutCashMic), tichete: "840" })!;
+// Cu 840 lei tichete brutul ieșea peste 300 doar cât deducerea se limita, greșit, la partea
+// din salariu; din 26 septembrie 2026 se limitează la tot venitul impozabil (art. 77 alin. 2),
+// deci 840 lei cer doar 296. Cu 1.200 lei brutul trece iar de net × 3 (412 lei).
+const brutCashMic = calculeazaBrutDinNet(100, { ...std, tichete: "1200" });
+const cashMic = calculeaza({ ...std, brut: String(brutCashMic), tichete: "1200" })!;
 check(
   "plafon dinamic net-brut",
-  brutCashMic > 300 && Math.abs(cashMic.netBani - 100) <= 1,
+  brutCashMic > 300 && cashMic.netBani === 100,
   `brut ${brutCashMic}, net cash ${cashMic.netBani}`,
 );
 

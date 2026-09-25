@@ -102,7 +102,9 @@ export default function DeducerePersonalaPage() {
       >
         <h2>Tabel deducere personală 2026</h2>
         <p>
-          Caută-ți salariul brut pe rând și numărul de persoane în întreținere pe coloană.
+          Caută-ți salariul brut pe rând și numărul de persoane în întreținere pe coloană. Dacă
+          primești tichete de masă, adună-le la brut: și ele intră în venitul după care se
+          stabilește deducerea.
         </p>
           <TabelArticol>
               <thead>
