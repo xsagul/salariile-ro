@@ -186,13 +186,12 @@ const fieldLabel =
 const controlBox =
   "w-full rounded border border-stone-300 bg-surface px-3 py-2 text-base sm:text-sm text-stone-900 outline-none transition focus:border-stone-400 focus:shadow-[0_0_6px_rgba(28,25,23,0.12)]";
 
-// Rândurile salariului și anului, pe homepage. De la 640 px, eticheta stă în stânga, pe
-// aceeași coloană, ca și câmpurile să înceapă din același loc. Pe telefon stă deasupra și
-// câmpurile iau toată lățimea: cu eticheta în stânga, formularul arăta înghesuit față de
-// impozitsalariu.ro (proprietar, 26 septembrie 2026). Eticheta are 14 px, mărimea
-// butoanelor din formular, nu o mărime nouă. Coloana de 104 px încape „Salariu brut”
-// (76 px) cu semnul „?” (6 + 18 px).
-const randEticheta = "sm:grid sm:grid-cols-[6.5rem_minmax(0,1fr)] sm:items-center sm:gap-3";
+// Rândurile salariului și anului, pe homepage. Eticheta stă deasupra și câmpurile iau toată
+// lățimea, pe telefon și pe desktop: cu eticheta în stânga, formularul arăta înghesuit față
+// de impozitsalariu.ro (proprietar, 26 septembrie 2026). Pe desktop, la 1280×607 (1920 px cu
+// scalare 150%), „Calculează” coboară de la 520 la 576 px și rămâne în ecran; direcția de
+// calcul mutată și ea sub titlu l-ar fi dus la 632 px, deci stă în dreptul titlului.
+// Eticheta are 14 px, mărimea butoanelor din formular, nu o mărime nouă.
 const etichetaRand = "text-sm text-stone-700";
 
 // Semnul „?” de lângă o etichetă. „?” și nu „i”: întreabă „ce e asta?”, exact ce explică;
@@ -240,9 +239,8 @@ const colHeader =
 function InputNumber({ id, label, value, onChange, placeholder, hint, onEnter, tall, inline, ajutor, error, unit = "lei / lună" }: InputNumberProps) {
   return (
     <div className="mb-5">
-      <div className={inline ? randEticheta : undefined}>
       {inline ? (
-        <div className="relative mb-2 flex items-center sm:mb-0">
+        <div className="relative mb-2 flex items-center">
           <label htmlFor={id} className={etichetaRand}>{label}</label>
           {ajutor && <ButonAjutor id={`${id}-ajutor`} deschis={ajutor.deschis} onClick={ajutor.onToggle} titlu={ajutor.titlu} text={ajutor.text} />}
         </div>
@@ -266,8 +264,7 @@ function InputNumber({ id, label, value, onChange, placeholder, hint, onEnter, t
         />
         {unit && <span className="flex items-center whitespace-nowrap border-l border-stone-200 px-3 text-xs font-medium text-stone-600">{unit}</span>}
       </div>
-      </div>
-      {error && <span id={`${id}-error`} role="alert" className={`mt-2 block text-xs font-medium text-stone-900 ${inline ? "sm:pl-[7.25rem]" : ""}`}>{error}</span>}
+      {error && <span id={`${id}-error`} role="alert" className="mt-2 block text-xs font-medium text-stone-900">{error}</span>}
     </div>
   );
 }
@@ -1051,14 +1048,12 @@ export default function CalculatorSalariu({
           <InputNumber id="salariu-input" unit={etMonedaLuna} label={fluturas ? t.salariuDeBazaBrut : mod === "brut" ? t.salariuBrut : t.salariuNet} value={input.brut} onChange={(v) => { set("brut", v); if (emptyWarn) setEmptyWarn(false); }} placeholder={mod === "brut" ? `${t.exemplu} ${exemplu(Number(EX_PLACEHOLDER_BRUT))}` : `${t.exemplu} ${exemplu(Number(EX_PLACEHOLDER_NET))}`} onEnter={handleCalculeaza} error={emptyWarn ? t.eroareSalariuGol : undefined} tall inline={cuPerioada && !fluturas}
             ajutor={cuPerioada && !fluturas ? { text: mod === "brut" ? t.ajutorBrut : t.ajutorNet, titlu: mod === "brut" ? t.ajutorBrutTitlu : t.ajutorNetTitlu, deschis: ajutor === "salariu", onToggle: () => comutaAjutor("salariu") } : undefined} />
 
-          {/* Anul și luna salariului, ca la impozitsalariu.ro: eticheta în stânga, anul și
-              luna în dreapta, pe un rând (cerut de proprietar, 25 septembrie 2026). Pornește
-              pe luna de azi; fiecare lună se calculează cu regulile ei (src/lib/fiscal.ts).
-              Pe 375 px: 84 etichetă + 78 an + 129 lună; „septembrie” cere 124 px. */}
+          {/* Anul și luna salariului, pe un rând sub etichetă (cerut de proprietar, 25 septembrie
+              2026). Pornește pe luna de azi; fiecare lună se calculează cu regulile ei
+              (src/lib/fiscal.ts). */}
           {cuPerioada && !fluturas && (
             <div className="mb-5">
-            <div className={randEticheta}>
-              <div className="relative mb-2 flex items-center sm:mb-0">
+              <div className="relative mb-2 flex items-center">
                 <label htmlFor="anul-salariului" className={etichetaRand}>{t.anul}</label>
                 <ButonAjutor id="anul-ajutor" deschis={ajutor === "anul"} onClick={() => comutaAjutor("anul")} titlu={t.ajutorAnulTitlu} text={t.ajutorAnul} />
               </div>
@@ -1108,7 +1103,6 @@ export default function CalculatorSalariu({
                   </svg>
                 </div>
               </div>
-            </div>
             </div>
           )}
 

@@ -3762,3 +3762,11 @@ Semnul „?”: explicația devine bulă deasupra (ca la impozitsalariu.ro), fă
 săgeata sub „?”. Apare la mouse pe desktop (`peer-hover`, doar pe ecrane cu hover), la Tab
 (`focus-visible`) și la atingere pe telefon; se închide la atingere în afară, la Esc și la a
 doua atingere. Măsurat: deschiderea nu mișcă butonul „Calculează”.
+
+Tot 26 septembrie, pe desktop (captură de la 1920 px cu scalare 150%, adică 1280×607 în
+pagină, impozitsalariu.ro alături): proprietarul a întrebat dacă formularul pare înghesuit.
+Măsurat, nu e mai strâns decât al lor (card 427 px față de ~413, rânduri mai înalte), dar
+eticheta lipită de câmp dădea impresia. Eticheta stă acum deasupra și pe desktop, ca pe
+telefon; condiția proprietarului era ca „Calculează” să rămână în ecran. La 1280×607:
+520 px înainte, 574 după (598 cu mesajul „Scrie mai întâi un salariu”), din 607. Direcția
+de calcul rămâne lângă titlu: mutată și ea sub titlu, butonul cobora la 632 px, sub ecran.
