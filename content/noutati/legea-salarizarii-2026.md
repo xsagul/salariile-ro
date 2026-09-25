@@ -18,7 +18,7 @@ Partidele și-au respectat înțelegerea de a nu depune separat câte un proiect
 
 Termenul era 31 august 2026. Era un jalon din PNRR: reforma salarizării bugetarilor trebuia adoptată până atunci, altfel banii se pierd. S-au pierdut.
 
-Partidele s-au angajat să adopte legea **până la sfârșitul acestui an**, în limita de cheltuieli convenită cu Comisia Europeană: cel mult 12,1 miliarde de lei în plus în 2027 față de 2026.
+Partidele s-au angajat să adopte legea până la sfârșitul acestui an, în limita de cheltuieli convenită cu Comisia Europeană: cel mult 12,1 miliarde de lei în plus în 2027 față de 2026.
 
 ## Grila pe care ai văzut-o nu e salariul tău
 
@@ -28,7 +28,7 @@ Toate au fost proiecte. Niciunul nu a ajuns la vot.
 
 Ce se știe despre arhitectura variantei discutate de Guvern: o valoare de referință unică, 12 grade de salarizare, un raport de 1 la 8 între cel mai mic și cel mai mare salariu de bază, sporuri plafonate la nivel de instituție și o clauză care ar fi împiedicat scăderea salariilor aflate în plată. Ar fi înlocuit Legea 153/2017.
 
-**Sumele pe funcții din proiect nu le publicăm.** Proiectul s-a schimbat de mai multe ori în trei luni și acum nu mai e nici măcar pe masă. Un an de calcule făcute pe o grilă care nu s-a votat e mai rău decât niciun calcul.
+Sumele pe funcții din proiect nu le publicăm. Proiectul s-a schimbat de mai multe ori în trei luni și acum nu mai e nici măcar pe masă. Un an de calcule făcute pe o grilă care nu s-a votat e mai rău decât niciun calcul.
 
 ## Cât iei de fapt în septembrie
 

@@ -11,7 +11,7 @@ heroAlt: "Card de masă, bonuri și monede, ilustrație pentru tichetele de mas�
 
 ## Cât valorează un tichet
 
-Legea permite cel mult **45 de lei** pe tichet, pentru drepturile lunilor de până în septembrie 2026 inclusiv. E un maxim, nu o obligație: angajatorul poate da și 25, 35 sau 40 de lei, sau poate să nu dea deloc.
+Legea permite cel mult 45 de lei pe tichet, pentru drepturile lunilor de până în septembrie 2026 inclusiv. E un maxim, nu o obligație: angajatorul poate da și 25, 35 sau 40 de lei, sau poate să nu dea deloc.
 
 Pentru lunile de după septembrie nu a apărut încă o valoare nouă. Când plafonul temporar expiră, legea prevede ca valoarea să se actualizeze de două ori pe an, după prețurile la alimente, fără să poată scădea. Actualizăm articolul când apare ordinul.
 
@@ -59,7 +59,7 @@ Bugetarii care primesc indemnizație de hrană nu primesc și tichete: cele dou�
 
 ## Tichetele nu îți iau scutirea de la salariul minim
 
-La salariul minim cu normă întreagă, 200 de lei din brut nu se taxează, dar doar dacă brutul lunii nu trece de 4.600 de lei. La acest plafon **tichetele nu se socotesc**, și nici voucherele de vacanță. Deci poți primi tichete fără să pierzi scutirea. Toate condițiile ei sunt explicate pe pagina despre [salariul minim](/salariu-minim).
+La salariul minim cu normă întreagă, 200 de lei din brut nu se taxează, dar doar dacă brutul lunii nu trece de 4.600 de lei. La acest plafon tichetele nu se socotesc, și nici voucherele de vacanță. Deci poți primi tichete fără să pierzi scutirea. Toate condițiile ei sunt explicate pe pagina despre [salariul minim](/salariu-minim).
 
 ## Ce poți cumpăra cu ele
 

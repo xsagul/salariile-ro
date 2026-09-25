@@ -35,7 +35,7 @@ De aceea „75% din salariu” e o prescurtare care induce în eroare. Nu însea
 
 ## Cât se plătește la boala obișnuită
 
-La codul 01, procentul depinde de cât durează **tot episodul de boală**, nu fiecare certificat în parte:
+La codul 01, procentul depinde de cât durează tot episodul de boală, nu fiecare certificat în parte:
 
 | Durata episodului | Cât se plătește |
 |---|---:|
@@ -49,9 +49,9 @@ Dacă medicul îți prelungește concediul pentru aceeași boală, zilele se adu
 
 ## De ce prima zi nu se plătește
 
-Pentru certificatele eliberate între **1 februarie 2026 și 31 decembrie 2027**, din concediu se scade o zi lucrătoare. Un certificat de 5 zile înseamnă, de obicei, 4 zile plătite.
+Pentru certificatele eliberate între 1 februarie 2026 și 31 decembrie 2027, din concediu se scade o zi lucrătoare. Un certificat de 5 zile înseamnă, de obicei, 4 zile plătite.
 
-Dacă același episod continuă pe mai multe certificate, ziua se scade **o singură dată**. Regula asta a apărut abia din 18 mai 2026. Pentru certificatele din februarie până la jumătatea lui mai, legea nu o prevedea.
+Dacă același episod continuă pe mai multe certificate, ziua se scade o singură dată. Regula asta a apărut abia din 18 mai 2026. Pentru certificatele din februarie până la jumătatea lui mai, legea nu o prevedea.
 
 Mai contează cine plătește. Până la sfârșitul lui 2027, angajatorul plătește din ziua a 2-a până în ziua a 6-a, iar de acolo plata trece la fondul de sănătate. Din 2028 se revine la vechea regulă, cu zilele 1–5 în sarcina firmei.
 
@@ -61,17 +61,17 @@ Ziua scăzută și zilele plătite de firmă se numără diferit. Prima se socot
 
 Ziua nu se scade la:
 
-- concediul de **maternitate**;
-- concediul pentru **îngrijirea unui pacient cu cancer**;
-- concediul de **risc maternal**;
-- bolnavii din **programele naționale de sănătate**;
-- certificatele date **în timpul internării în spital**.
+- concediul de maternitate;
+- concediul pentru îngrijirea unui pacient cu cancer;
+- concediul de risc maternal;
+- bolnavii din programele naționale de sănătate;
+- certificatele date în timpul internării în spital.
 
-Excepțiile se aplică doar concediilor acordate din 1 iunie 2026. Concediul pentru **copilul bolnav nu e exceptat**, deși mulți cred asta.
+Excepțiile se aplică doar concediilor acordate din 1 iunie 2026. Concediul pentru copilul bolnav nu e exceptat, deși mulți cred asta.
 
 ## Cum se calculează suma
 
-Baza de calcul e media veniturilor brute din **ultimele 6 luni**, dar fiecare lună intră cel mult cu 12 salarii minime. La salariile foarte mari, plafonul taie din bază.
+Baza de calcul e media veniturilor brute din ultimele 6 luni, dar fiecare lună intră cel mult cu 12 salarii minime. La salariile foarte mari, plafonul taie din bază.
 
 ```
 Media zilnică = venituri brute din 6 luni ÷ zilele din acele luni
@@ -102,11 +102,11 @@ Dacă suma ți se pare greșită, verifică în ordinea asta:
 
 ## Câte zile poate da medicul de familie
 
-Medicul de familie poate da **cel mult 7 zile pentru un episod**, în cel puțin două etape, iar prima are cel mult 4 zile. În total, nu mai mult de **28 de zile într-un an**, socotit de la prima zi de boală. Peste atât, certificatele le dă specialistul sau spitalul. Bolile infecțioase grave și izolarea au reguli separate.
+Medicul de familie poate da cel mult 7 zile pentru un episod, în cel puțin două etape, iar prima are cel mult 4 zile. În total, nu mai mult de 28 de zile într-un an, socotit de la prima zi de boală. Peste atât, certificatele le dă specialistul sau spitalul. Bolile infecțioase grave și izolarea au reguli separate.
 
 ## Ce se întâmplă după 90 de zile
 
-Concediul nu se oprește automat. Regula generală permite **cel mult 183 de zile într-un an**. De la ziua 91, prelungirea cere avizul medicului expert al asigurărilor sociale. Peste 183 de zile se mai pot da, după o evaluare separată, cel mult încă 90, dar nu e un drept automat.
+Concediul nu se oprește automat. Regula generală permite cel mult 183 de zile într-un an. De la ziua 91, prelungirea cere avizul medicului expert al asigurărilor sociale. Peste 183 de zile se mai pot da, după o evaluare separată, cel mult încă 90, dar nu e un drept automat.
 
 Limitele se socotesc în zile calendaristice. Plata, în schimb, se face doar pentru zilele lucrătoare.
 
@@ -116,9 +116,9 @@ Medicul din spital dă certificatul pentru perioada internării. La externare, p
 
 ## Actele și termenul de plată
 
-Ca să primești bani, ai nevoie de **cel puțin 6 luni lucrate în ultimele 12**, nu neapărat la același angajator. Urgențele și riscul maternal nu cer această condiție.
+Ca să primești bani, ai nevoie de cel puțin 6 luni lucrate în ultimele 12, nu neapărat la același angajator. Urgențele și riscul maternal nu cer această condiție.
 
-La medic duci, de regulă, o **adeverință de la angajator** cu zilele de concediu medical din ultimul an sau ultimii doi ani. Certificatul îl predai la firmă **până pe 5 ale lunii următoare**. Angajatorul plătește indemnizația odată cu salariul lunii respective, chiar dacă o parte din bani îi recuperează apoi de la fondul de sănătate.
+La medic duci, de regulă, o adeverință de la angajator cu zilele de concediu medical din ultimul an sau ultimii doi ani. Certificatul îl predai la firmă până pe 5 ale lunii următoare. Angajatorul plătește indemnizația odată cu salariul lunii respective, chiar dacă o parte din bani îi recuperează apoi de la fondul de sănătate.
 
 ## Surse oficiale
 

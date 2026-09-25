@@ -24,8 +24,8 @@ A doua zi de Crăciun pică sâmbătă și se pierde: sărbătorile care cad în
 
 E cea mai bună combinație rămasă. Sfântul Andrei pică luni și Ziua Națională marți, lipite de weekend:
 
-- **Fără niciun concediu**: sâmbătă 28 noiembrie – marți 1 decembrie, **4 zile libere legate**.
-- **Cu 3 zile de concediu** (miercuri 2 – vineri 4 decembrie): sâmbătă 28 noiembrie – duminică 6 decembrie, **9 zile libere**.
+- **Fără niciun concediu**: sâmbătă 28 noiembrie – marți 1 decembrie, 4 zile libere legate.
+- **Cu 3 zile de concediu** (miercuri 2 – vineri 4 decembrie): sâmbătă 28 noiembrie – duminică 6 decembrie, 9 zile libere.
 
 Trei zile de concediu pentru nouă zile libere e cel mai bun raport al anului. Cere-le din timp: la 1 Decembrie se gândesc mulți colegi la aceeași punte.
 
@@ -33,8 +33,8 @@ Trei zile de concediu pentru nouă zile libere e cel mai bun raport al anului. C
 
 Crăciunul 2026 cade vineri, iar a doua zi sâmbătă:
 
-- **Fără concediu**: vineri 25 – duminică 27 decembrie, **3 zile**.
-- **Cu 4 zile de concediu** (luni 28 – joi 31 decembrie): vineri 25 decembrie 2026 – duminică 3 ianuarie 2027, **10 zile libere legate**. Anul Nou 2027 cade vineri, așa că puntea se închide singură cu weekendul următor.
+- **Fără concediu**: vineri 25 – duminică 27 decembrie, 3 zile.
+- **Cu 4 zile de concediu** (luni 28 – joi 31 decembrie): vineri 25 decembrie 2026 – duminică 3 ianuarie 2027, 10 zile libere legate. Anul Nou 2027 cade vineri, așa că puntea se închide singură cu weekendul următor.
 
 Ajunul, 24 decembrie, și 31 decembrie nu sunt zile libere legale. Dacă firma ta dă liber atunci, e alegerea ei, nu o obligație.
 

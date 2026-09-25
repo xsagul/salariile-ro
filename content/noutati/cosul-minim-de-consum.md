@@ -13,7 +13,7 @@ heroAlt: "Coș de cumpărături cu produse de bază, pe fundal neutru."
 
 E o listă cu tot ce îi trebuie unui om sau unei familii într-o lună: mâncare, chirie sau rată, întreținere, curent, transport, haine, sănătate, școala copiilor și puțin timp liber. Fiecare lucru primește un preț, iar suma lor e coșul.
 
-Varianta despre care vorbim aici e cea pentru un **trai decent**, nu pentru supraviețuire. Pe lângă strictul necesar, ea lasă loc și pentru o cheltuială neprevăzută.
+Varianta despre care vorbim aici e cea pentru un trai decent, nu pentru supraviețuire. Pe lângă strictul necesar, ea lasă loc și pentru o cheltuială neprevăzută.
 
 ## Cât costă, pe tipuri de familie
 

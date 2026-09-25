@@ -3,7 +3,7 @@
 // (hero pe grilă + calculator + zonă-articol 3+2 cu carduri-companion).
 
 import type { Metadata } from "next";
-import { Formula, PaginiConexe, TITLU_PAGINA, TITLU_SECTIUNE, SPATIU_SECTIUNE, SPATIU_SUS, SUB_TITLU, SPATIU_PARAGRAF, SUB_TITLU_SECTIUNE, LISTA_FAQ, LISTA_CARD } from "@/app/components/ui";
+import { Formula, PaginiConexe, TITLU_PAGINA, TITLU_SECTIUNE, SPATIU_SECTIUNE, SPATIU_SUS, SUB_TITLU, SPATIU_PARAGRAF, SUB_TITLU_SECTIUNE, LISTA_FAQ, LISTA_CARD, CARD_TITLU } from "@/app/components/ui";
 import Link from "@/app/components/Link";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
@@ -223,8 +223,8 @@ export default function CalculatorPfaPage() {
 
               <aside className="mt-8 md:col-span-2 md:mt-0 md:self-start">
                 <div className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
-                  <h3 className="mb-2 text-base font-bold tracking-[-0.01em] text-stone-900">Unde se schimbă taxele</h3>
-                  <ul className="flex list-disc flex-col gap-2 pl-5 text-sm text-stone-600">
+                  <h3 className={CARD_TITLU}>Unde se schimbă taxele</h3>
+                  <ul className={`${LISTA_CARD} text-stone-600`}>
                     {PRAGURI.map(({ efect, rest }) => (
                       <li key={efect}>
                         <strong className="font-semibold text-stone-900">{efect}</strong>

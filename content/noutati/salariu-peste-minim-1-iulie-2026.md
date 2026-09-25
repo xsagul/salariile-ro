@@ -24,7 +24,7 @@ Imaginează-ți doi colegi în iunie 2026. Unul e pe minim, 4.050 lei brut. Cel�
 
 De la 1 iulie, primul coleg a urcat obligatoriu la 4.325 lei. Al doilea a rămas pe 4.350 lei, fiindcă era deja peste noul minim. Diferența dintre ei s-a topit de la 300 de lei la 25. Experiența în plus aproape că nu se mai vede în salariu.
 
-Asta se numește **tasarea grilei de salarizare**: când minimul urcă, salariile aflate puțin peste el sunt prinse din urmă. Nu e ilegal, dar e frustrant, iar singura cale de a o corecta e o discuție cu angajatorul.
+Asta se numește tasarea grilei de salarizare: când minimul urcă, salariile aflate puțin peste el sunt prinse din urmă. Nu e ilegal, dar e frustrant, iar singura cale de a o corecta e o discuție cu angajatorul.
 
 ## Ce se schimbă concret la net
 
@@ -32,11 +32,11 @@ Aici e o surpriză pentru cei aflați puțin peste minim. La salariul minim, 200
 
 Colegul de pe 4.350 de lei nu o primește, așa că plătește taxe pe tot salariul. În mână, el ia mai puțin decât colegul de la minim: 2.629 de lei, față de 2.699. Cu 25 de lei mai mult la brut, ajunge să primească mai puțin.
 
-Scutirea rămâne și dacă ai sporuri sau bonusuri, cât timp salariul de bază e minimul și brutul lunii nu trece de **4.600 de lei**. Înainte de orice negociere, verifică netul exact, ca să știi despre ce sume vorbești în mână.
+Scutirea rămâne și dacă ai sporuri sau bonusuri, cât timp salariul de bază e minimul și brutul lunii nu trece de 4.600 de lei. Înainte de orice negociere, verifică netul exact, ca să știi despre ce sume vorbești în mână.
 
 ## Și la normă parțială?
 
-La jumătate de normă sau cu ore variabile, contează tariful minim pe oră, care a urcat la **25,949 lei** din 1 iulie. Plata se face proporțional cu orele lucrate, dar niciodată sub acest tarif.
+La jumătate de normă sau cu ore variabile, contează tariful minim pe oră, care a urcat la 25,949 lei din 1 iulie. Plata se face proporțional cu orele lucrate, dar niciodată sub acest tarif.
 
 ## Ce poți face dacă te-a prins tasarea
 

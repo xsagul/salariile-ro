@@ -3588,3 +3588,11 @@ erau 3 variante la 14 px (20 · 21 · 22,8) și 3 la 12 px (16 · 18 · 19,5), d
 și `leading-relaxed` puse pe text mic. Acum 16/24, 14/20, 12/16 fără excepții, ca Material 3,
 Carbon și Tailwind (măsurat: 814 · 1.887 · 472 de elemente, zero abateri). Spațiul din carduri
 recalibrat pe rândul de 20: 16 px între puncte, 20 sub titlu (CARD_TITLU mb 9 px).
+
+Îngroșat și forme de listă, cu mână liberă de la proprietar. Regula, după ghidul GOV.UK („Use bold
+sparingly”): îngroșat rămâne doar fraza-răspuns de la începutul articolului, etichetele de la
+începutul unui punct dintr-o serie și rezultatele din tabele; scoase 46 de îngroșări din mijlocul
+textului în 8 articole (indexare 12% → 2%, concediu medical 8% → 2%). Cardul PFA „Unde se schimbă
+taxele” trece la forma cardului de pe homepage (fără buline, etichetă îngroșată). Textul din
+calculatorul de interval și din alegerea comparației se oprește la ~65 de caractere pe rând.
+Culorile textului și linkurile rămân cum sunt: proprietarul consideră site-ul decent așa.
