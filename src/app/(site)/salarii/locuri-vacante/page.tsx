@@ -305,19 +305,19 @@ export default function LocuriVacantePage() {
                 </caption>
                 <thead>
                   <tr>
-                    <th className="border-b border-stone-200 bg-canvas px-3 py-3 text-left text-xs font-medium uppercase tracking-wide text-stone-600">
+                    <th className="border-b border-stone-200 bg-antet px-3 py-3 text-left text-xs font-medium uppercase tracking-wide text-stone-600">
                       Grupa de ocupații
                     </th>
-                    <th className="border-b border-stone-200 bg-canvas px-3 py-3 text-right text-xs font-medium uppercase tracking-wide text-stone-600">
+                    <th className="border-b border-stone-200 bg-antet px-3 py-3 text-right text-xs font-medium uppercase tracking-wide text-stone-600">
                       Posturi vacante, {PERIOADA}
                     </th>
-                    <th className="border-b border-stone-200 bg-canvas px-3 py-3 text-right text-xs font-medium uppercase tracking-wide text-stone-600">
+                    <th className="border-b border-stone-200 bg-antet px-3 py-3 text-right text-xs font-medium uppercase tracking-wide text-stone-600">
                       Rata
                     </th>
-                    <th className="border-b border-stone-200 bg-canvas px-3 py-3 text-right text-xs font-medium uppercase tracking-wide text-stone-600">
+                    <th className="border-b border-stone-200 bg-antet px-3 py-3 text-right text-xs font-medium uppercase tracking-wide text-stone-600">
                       Brut estimat, la zi
                     </th>
-                    <th className="border-b border-stone-200 bg-canvas px-3 py-3 text-right text-xs font-medium uppercase tracking-wide text-stone-600">
+                    <th className="border-b border-stone-200 bg-antet px-3 py-3 text-right text-xs font-medium uppercase tracking-wide text-stone-600">
                       Față de anul trecut
                     </th>
                   </tr>

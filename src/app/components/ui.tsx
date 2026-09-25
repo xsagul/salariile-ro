@@ -94,7 +94,7 @@ const PROSE = [
   // .table-wrap (adăugat de noutati.ts în jurul tabelelor din markdown): scroll
   // orizontal propriu pe ecrane înguste, ca tabelul lat să nu lărgească pagina.
   "[&_.table-wrap]:my-6 [&_.table-wrap]:overflow-x-auto [&_.table-wrap>table]:my-0",
-  "[&_thead_th]:border-b [&_thead_th]:border-stone-200 [&_thead_th]:bg-canvas [&_thead_th]:px-3 [&_thead_th]:py-3 [&_thead_th]:text-xs [&_thead_th]:font-medium [&_thead_th]:uppercase [&_thead_th]:tracking-wide [&_thead_th]:text-stone-600",
+  "[&_thead_th]:border-b [&_thead_th]:border-stone-200 [&_thead_th]:bg-antet [&_thead_th]:px-3 [&_thead_th]:py-3 [&_thead_th]:text-xs [&_thead_th]:font-medium [&_thead_th]:uppercase [&_thead_th]:tracking-wide [&_thead_th]:text-stone-600",
   "[&_tbody_td]:border-b [&_tbody_td]:border-stone-100 [&_tbody_td]:px-3 [&_tbody_td]:py-3",
   "[&_tbody_th]:border-b [&_tbody_th]:border-stone-100 [&_tbody_th]:px-3 [&_tbody_th]:py-3 [&_tbody_th]:font-medium [&_tbody_th]:text-stone-900",
   "[&_tbody_tr:last-child_td]:border-b-0",

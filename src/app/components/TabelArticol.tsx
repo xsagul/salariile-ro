@@ -18,7 +18,7 @@ export const TABEL_STANDARD = [
   // Alinierea stă pe tabel, nu pe celule: o regulă `[&_th]:text-left` ar fi mai
   // specifică decât `text-right` pus pe o celulă cu sume și l-ar anula.
   // Antet
-  "[&_thead_th]:border-b [&_thead_th]:border-stone-200 [&_thead_th]:bg-canvas [&_thead_th]:px-3 [&_thead_th]:py-3",
+  "[&_thead_th]:border-b [&_thead_th]:border-stone-200 [&_thead_th]:bg-antet [&_thead_th]:px-3 [&_thead_th]:py-3",
   "[&_thead_th]:text-xs [&_thead_th]:font-medium [&_thead_th]:uppercase [&_thead_th]:tracking-wide [&_thead_th]:text-stone-600",
   // Rânduri
   "[&_tbody_td]:border-b [&_tbody_td]:border-stone-100 [&_tbody_td]:px-3 [&_tbody_td]:py-3",

@@ -281,19 +281,19 @@ export default function FemeiBarbatiPage() {
                 </caption>
                 <thead>
                   <tr>
-                    <th className="border-b border-stone-200 bg-canvas px-3 py-3 text-left text-xs font-medium uppercase tracking-wide text-stone-600">
+                    <th className="border-b border-stone-200 bg-antet px-3 py-3 text-left text-xs font-medium uppercase tracking-wide text-stone-600">
                       Grupa de ocupații
                     </th>
-                    <th className="border-b border-stone-200 bg-canvas px-3 py-3 text-right text-xs font-medium uppercase tracking-wide text-stone-600">
+                    <th className="border-b border-stone-200 bg-antet px-3 py-3 text-right text-xs font-medium uppercase tracking-wide text-stone-600">
                       Bărbați
                     </th>
-                    <th className="border-b border-stone-200 bg-canvas px-3 py-3 text-right text-xs font-medium uppercase tracking-wide text-stone-600">
+                    <th className="border-b border-stone-200 bg-antet px-3 py-3 text-right text-xs font-medium uppercase tracking-wide text-stone-600">
                       Femei
                     </th>
-                    <th className="border-b border-stone-200 bg-canvas px-3 py-3 text-left text-xs font-medium uppercase tracking-wide text-stone-600">
+                    <th className="border-b border-stone-200 bg-antet px-3 py-3 text-left text-xs font-medium uppercase tracking-wide text-stone-600">
                       Diferență
                     </th>
-                    <th className="border-b border-stone-200 bg-canvas px-3 py-3 text-right text-xs font-medium uppercase tracking-wide text-stone-600">
+                    <th className="border-b border-stone-200 bg-antet px-3 py-3 text-right text-xs font-medium uppercase tracking-wide text-stone-600">
                       Femei în grupă
                     </th>
                   </tr>
@@ -349,16 +349,16 @@ export default function FemeiBarbatiPage() {
                 </caption>
                 <thead>
                   <tr>
-                    <th className="border-b border-stone-200 bg-canvas px-3 py-3 text-left text-xs font-medium uppercase tracking-wide text-stone-600">
+                    <th className="border-b border-stone-200 bg-antet px-3 py-3 text-left text-xs font-medium uppercase tracking-wide text-stone-600">
                       Vârstă
                     </th>
-                    <th className="border-b border-stone-200 bg-canvas px-3 py-3 text-right text-xs font-medium uppercase tracking-wide text-stone-600">
+                    <th className="border-b border-stone-200 bg-antet px-3 py-3 text-right text-xs font-medium uppercase tracking-wide text-stone-600">
                       Bărbați
                     </th>
-                    <th className="border-b border-stone-200 bg-canvas px-3 py-3 text-right text-xs font-medium uppercase tracking-wide text-stone-600">
+                    <th className="border-b border-stone-200 bg-antet px-3 py-3 text-right text-xs font-medium uppercase tracking-wide text-stone-600">
                       Femei
                     </th>
-                    <th className="border-b border-stone-200 bg-canvas px-3 py-3 text-left text-xs font-medium uppercase tracking-wide text-stone-600">
+                    <th className="border-b border-stone-200 bg-antet px-3 py-3 text-left text-xs font-medium uppercase tracking-wide text-stone-600">
                       Diferență
                     </th>
                   </tr>

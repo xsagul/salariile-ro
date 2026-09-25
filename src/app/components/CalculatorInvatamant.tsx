@@ -315,10 +315,10 @@ export default function CalculatorInvatamant() {
               <colgroup><col /><col className="w-28 sm:w-36" /></colgroup>
               <thead>
                 <tr>
-                  <th className="border-b border-r border-b-stone-300 border-r-stone-300 bg-canvas px-3 py-3 text-left text-sm font-medium text-stone-700">
+                  <th className="border-b border-r border-b-stone-300 border-r-stone-300 bg-antet px-3 py-3 text-left text-sm font-medium text-stone-700">
                     Element de salarizare
                   </th>
-                  <th className="border-b border-stone-300 bg-canvas px-3 py-3 text-right text-sm font-medium text-stone-700">
+                  <th className="border-b border-stone-300 bg-antet px-3 py-3 text-right text-sm font-medium text-stone-700">
                     Sumă
                   </th>
                 </tr>

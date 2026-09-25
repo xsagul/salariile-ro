@@ -378,7 +378,7 @@ export default function CalculatorPartTime() {
                   <col className="w-24 sm:w-28" />
                 </colgroup>
                 <thead>
-                  <tr className="bg-canvas">
+                  <tr className="bg-antet">
                     <th scope="col" className="border-b border-r border-stone-300 px-3 py-3 text-left font-medium">Componentă</th>
                     <th scope="col" className="hidden border-b border-r border-stone-300 px-3 py-3 text-right font-medium sm:table-cell">Suportată de</th>
                     <th scope="col" className="border-b border-stone-300 px-3 py-3 text-right font-medium">Sumă</th>

@@ -190,7 +190,7 @@ export default function Page() {
         <div className="mt-4 overflow-x-auto">
           <table className={`${TABEL_STANDARD}`}>
             <thead>
-              <tr className="bg-canvas">
+              <tr className="bg-antet">
                 <th className="border-b border-stone-300 px-2 py-2 text-left font-medium sm:px-3">Gradație</th>
                 <th className="border-b border-stone-300 px-2 py-2 text-left font-medium sm:px-3"><span className="sm:hidden">Vechime</span><span className="hidden sm:inline">Vechime în muncă</span></th>
                 <th className="hidden border-b border-stone-300 px-2 py-2 text-right font-medium sm:table-cell sm:px-3">Cotă</th>
