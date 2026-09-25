@@ -3596,3 +3596,23 @@ textului în 8 articole (indexare 12% → 2%, concediu medical 8% → 2%). Cardu
 taxele” trece la forma cardului de pe homepage (fără buline, etichetă îngroșată). Textul din
 calculatorul de interval și din alegerea comparației se oprește la ~65 de caractere pe rând.
 Culorile textului și linkurile rămân cum sunt: proprietarul consideră site-ul decent așa.
+
+## 25 septembrie 2026 — Zile libere 2026: calendarul
+
+Alese de proprietar dintr-o listă de patru probleme observate pe pagină:
+- Legenda arăta același pătrățel pentru „Zi lucrătoare” și „Weekend”, iar în grilă
+  sâmbăta și duminica abia se deosebeau (stone-600 față de 700). Weekendul are acum
+  fundal stone-100, iar legenda arată exact asta.
+- Numele sărbătorilor apăreau doar la hover, deci pe telefon nu se vedeau nicăieri.
+  Acum stau sub fiecare lună („1 Anul Nou”, „24 Ziua Unirii Principatelor”), în HTML-ul
+  static. Tooltipul a fost scos, iar grila de numere e `aria-hidden`: lista are numele.
+- Ziua de azi încadrată și lunile trecute estompate (opacitate 0,55), prin
+  `CalendarAzi.tsx`: o regulă CSS pe `data-zi` / `data-luna`, scrisă abia după ce
+  serverul spune ce zi e. Nu apare nimic în HTML-ul static, ca data build-ului să nu
+  marcheze o zi greșită. Aflarea zilei s-a mutat în `src/lib/azi-ro.ts`, comună cu
+  cardurile, cu o singură cerere pe pagină.
+- Nealeasă: sărbătorile din weekend rămân negre în calendar, deși în tabel sunt estompate.
+
+Măsurat după build: 365 de zile cu `data-zi`, 12 luni, zero reguli de „azi” în HTML-ul
+static; `npm test` și `test:rendered` trec. Corectat pe drum: comentariile din commiturile
+de azi scriau „26 septembrie”.

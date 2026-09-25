@@ -10,6 +10,7 @@ import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 import { SARBATORI_LEGALE_2026 as HOLIDAYS } from "@/lib/sarbatori";
 import TabelArticol from "@/app/components/TabelArticol";
 import UrmatoareaZiLibera from "@/app/components/UrmatoareaZiLibera";
+import CalendarAzi from "@/app/components/CalendarAzi";
 import { TITLU_CARD, TITLU_PAGINA, TITLU_SECTIUNE, SEPARATOR_SECTIUNE, SPATIU_JOS, SPATIU_SUS, SUB_TITLU, LISTA_FAQ } from "@/app/components/ui";
 
 // ─── Metadata SEO ────────────────────────────────────────────────────────────
@@ -58,7 +59,8 @@ function buildMonth(m: number) {
     cells.push({ day: d, weekend, holiday, name });
     if (!weekend && !holiday) lucr++;
   }
-  return { nume: LUNI_NUME[m], cells, lucr, libere: daysInMonth - lucr };
+  const sarbatori = cells.flatMap((c) => (c?.name ? [{ day: c.day, name: c.name }] : []));
+  return { luna: m + 1, nume: LUNI_NUME[m], cells, sarbatori, lucr, libere: daysInMonth - lucr };
 }
 
 const MONTHS = Array.from({ length: 12 }, (_, m) => buildMonth(m));
@@ -152,11 +154,14 @@ const card = "rounded-md border border-stone-200 bg-surface p-5 shadow-soft sm:p
 const links =
   "[&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-600";
 
+// Weekendul are fundal propriu, ca legenda să arate ce se vede în grilă.
 function dayClass(c: NonNullable<Cell>) {
   if (c.holiday) return "bg-stone-900 font-semibold text-white";
-  if (c.weekend) return "text-stone-600";
+  if (c.weekend) return "bg-stone-100 text-stone-600";
   return "text-stone-700";
 }
+
+const dataIso = (luna: number, zi: number) => `${YEAR}-${String(luna).padStart(2, "0")}-${String(zi).padStart(2, "0")}`;
 
 // ─── Pagina ──────────────────────────────────────────────────────────────────
 
@@ -182,7 +187,7 @@ export default function ZileLibere2026Page() {
           </p>
           {/* Grila începe la tabel: titlul și fraza stau deasupra, pe toată lățimea,
               iar cardurile din dreapta pornesc de la nivelul tabelului, nu de lângă
-              titlu (proprietar, 26 septembrie 2026). În HTML cardurile vin după
+              titlu (proprietar, 25 septembrie 2026). În HTML cardurile vin după
               calendar: tabel → calendar → carduri. */}
           <div className="md:grid md:grid-cols-5 md:gap-6">
           <div className="md:col-span-3">
@@ -228,50 +233,53 @@ export default function ZileLibere2026Page() {
           {/* CALENDAR — 12 luni */}
           <div className={`${SEPARATOR_SECTIUNE} md:col-span-5`}>
             <h2 className={TITLU_SECTIUNE}>Calendarul anului 2026</h2>
-            {/* Legendă */}
+            {/* Legendă: fiecare pătrățel arată exact cum apare ziua în grilă. „Azi” apare
+                abia după ce serverul spune ce zi e (CalendarAzi). */}
             <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-xs text-stone-600">
-              <span className="flex items-center gap-2"><span className="inline-block h-3 w-3 rounded-sm bg-stone-100 ring-1 ring-inset ring-stone-300" aria-hidden="true" />Zi lucrătoare</span>
-              <span className="flex items-center gap-2"><span className="inline-block h-3 w-3 rounded-sm bg-stone-100 ring-1 ring-inset ring-stone-300" aria-hidden="true" /><span className="text-stone-600">Weekend</span></span>
+              <span className="flex items-center gap-2"><span className="inline-block h-3 w-3 rounded-sm bg-surface ring-1 ring-inset ring-stone-300" aria-hidden="true" />Zi lucrătoare</span>
+              <span className="flex items-center gap-2"><span className="inline-block h-3 w-3 rounded-sm bg-stone-100 ring-1 ring-inset ring-stone-300" aria-hidden="true" />Weekend</span>
               <span className="flex items-center gap-2"><span className="inline-block h-3 w-3 rounded-sm bg-stone-900" aria-hidden="true" />Sărbătoare legală</span>
+              <CalendarAzi an={YEAR} dataBuild={new Date().toISOString()} />
             </div>
 
             <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {MONTHS.map((mo) => (
-                <div key={mo.nume} className={card}>
+                <div key={mo.nume} data-luna={mo.luna} className={`${card} transition-opacity`}>
                   <div className="flex items-baseline justify-between">
                     <h3 className="text-base font-semibold tracking-[-0.01em] text-stone-900">{mo.nume}</h3>
                     <span className="text-xs text-stone-600">{mo.lucr} lucr. · {mo.libere} libere</span>
                   </div>
-                  <div className="mt-3 grid grid-cols-7 gap-1 text-center">
+                  <div className="mt-3 grid grid-cols-7 gap-1 text-center" aria-hidden="true">
                     {ZILE_SCURT.map((z) => (
                       <div key={z} className="text-xs font-medium uppercase text-stone-600">{z}</div>
                     ))}
-                    {mo.cells.map((c, i) => {
-                      if (c === null) return <div key={i} />;
-                      if (!c.holiday) {
-                        return (
-                          <div key={i} className={`flex h-7 items-center justify-center rounded text-xs tabular-nums ${dayClass(c)}`}>
-                            {c.day}
-                          </div>
-                        );
-                      }
-                      const col = i % 7;
-                      const pos = col <= 1 ? "left-0" : col >= 5 ? "right-0" : "left-1/2 -translate-x-1/2";
-                      return (
+                    {mo.cells.map((c, i) =>
+                      c === null ? (
+                        <div key={i} />
+                      ) : (
                         <div
                           key={i}
-                          tabIndex={0}
-                          aria-label={`${c.day} ${mo.nume}, ${c.name}`}
-                          className="group relative flex h-7 items-center justify-center rounded bg-stone-900 text-xs font-semibold tabular-nums text-white outline-none"
+                          data-zi={dataIso(mo.luna, c.day)}
+                          data-sarbatoare={c.holiday ? "" : undefined}
+                          className={`flex h-7 items-center justify-center rounded text-xs tabular-nums ${dayClass(c)}`}
                         >
                           {c.day}
-                          <span className={`pointer-events-none absolute bottom-full z-20 mb-1 hidden whitespace-nowrap rounded-md border border-stone-200 bg-surface px-2 py-1 text-xs font-normal text-stone-700 shadow-soft group-hover:block group-focus:block ${pos}`}>
-                            {c.name}
-                          </span>
                         </div>
-                      );
-                    })}
+                      ),
+                    )}
                   </div>
+                  {/* Numele sărbătorilor, sub grilă: până pe 25 septembrie 2026 apăreau doar
+                      la hover, deci pe telefon nu se vedeau nicăieri. */}
+                  {mo.sarbatori.length ? (
+                    <ul className="mt-4 flex flex-col gap-1 border-t border-stone-100 pt-3 text-xs text-stone-600">
+                      {mo.sarbatori.map((h) => (
+                        <li key={h.day} className="flex gap-2">
+                          <span className="w-5 shrink-0 text-right font-semibold tabular-nums text-stone-900">{h.day}</span>
+                          <span>{h.name}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
                 </div>
               ))}
             </div>

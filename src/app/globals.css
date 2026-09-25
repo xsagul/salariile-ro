@@ -18,7 +18,7 @@
      surface = card off-white cald, puțin mai deschis decât fundalul */
   --color-canvas: #f8f5ef;
   --color-surface: #fffdf9;
-  /* antet   = capul de tabel. Până pe 26 septembrie 2026 era `canvas`, adică
+  /* antet   = capul de tabel. Până pe 25 septembrie 2026 era `canvas`, adică
      exact fundalul paginii, iar pe pagină capul de tabel nu se mai vedea
      (observat de proprietar). Un ton mai închis din aceeași paletă caldă. */
   --color-antet: #efe9de;

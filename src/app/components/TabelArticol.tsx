@@ -14,7 +14,7 @@ import type { ReactNode } from "react";
 
 export const TABEL_STANDARD = [
   // Liniile: stone-300 peste tot, ca în tabelul de rezultat al calculatorului
-  // (proprietar, 26 septembrie 2026). Cu stone-200 la contur și stone-100 între
+  // (proprietar, 25 septembrie 2026). Cu stone-200 la contur și stone-100 între
   // rânduri, pe ecran liniile aproape dispăreau.
   "w-full overflow-hidden rounded-md border border-stone-300 bg-surface shadow-soft",
   "border-separate border-spacing-0 text-left text-sm tabular-nums text-stone-700",
@@ -30,7 +30,7 @@ export const TABEL_STANDARD = [
 ].join(" ");
 
 // Capul de tabel are două culori, după ce stă în spatele tabelului (decis de
-// proprietar pe 26 septembrie 2026): `antet` când tabelul stă direct pe fundalul
+// proprietar pe 25 septembrie 2026): `antet` când tabelul stă direct pe fundalul
 // paginii, altfel s-ar confunda cu el; `canvas` când tabelul stă într-un card alb,
 // ca rezultatele calculatoarelor.
 export const TABEL_IN_CARD = TABEL_STANDARD.replace("[&_thead_th]:bg-antet", "[&_thead_th]:bg-canvas");

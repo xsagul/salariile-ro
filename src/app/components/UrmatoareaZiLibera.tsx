@@ -1,18 +1,17 @@
 "use client";
 
 // Cardurile de lângă tabelul sărbătorilor, fără nimic de completat (decis de
-// proprietar pe 26 septembrie 2026, după ce un câmp de dată a încărcat cardul):
+// proprietar pe 25 septembrie 2026, după ce un câmp de dată a încărcat cardul):
 //   1. următoarea zi liberă și câte zile ies la rând cu weekendul;
 //   2. punțile care urmează: câte zile de concediu iei și câte zile libere obții.
 //
 // Site-ul e static, deci HTML-ul se generează la publicare, cu data build-ului.
-// În browser, cardurile se recalculează pe ziua de azi, luată de la server, nu
-// din ceasul telefonului, care poate fi dat greșit (cerut de proprietar pe 26
-// septembrie 2026): antetul `Date` al răspunsului Cloudflare, prezent și pe
-// fișierele servite din cache, transformat în ziua calendaristică din România.
+// În browser, cardurile se recalculează pe ziua de azi din România, luată de la
+// server de `oraServer` (src/lib/azi-ro.ts).
 
 import { useEffect, useState } from "react";
 import { sarbatoriAn } from "@/lib/sarbatori";
+import { oraServer, ziRo } from "@/lib/azi-ro";
 import { CARD_TITLU } from "@/app/components/ui";
 
 const LUNI = ["ianuarie", "februarie", "martie", "aprilie", "mai", "iunie", "iulie", "august", "septembrie", "octombrie", "noiembrie", "decembrie"];
@@ -47,27 +46,6 @@ const ziSapt = (t: number) => new Date(t).getUTCDay();
 const eWeekend = (t: number) => ziSapt(t) === 0 || ziSapt(t) === 6;
 const liber = (t: number) => eWeekend(t) || NUME.has(t);
 const data = (t: number) => `${new Date(t).getUTCDate()} ${LUNI[new Date(t).getUTCMonth()]}`;
-const ZI_RO = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Bucharest", year: "numeric", month: "2-digit", day: "2-digit" });
-// Ziua calendaristică din România pentru un moment dat, ca miezul nopții UTC.
-function ziRo(d: Date) {
-  const [y, m, z] = ZI_RO.format(d).split("-").map(Number);
-  return Date.UTC(y, m - 1, z);
-}
-
-// Ora exactă, de la server. Dacă cererea eșuează, ceasul telefonului e folosit doar
-// dacă pare plauzibil (după build și în cel mult doi ani); altfel rămâne data build-ului.
-async function oraServer(dataBuild: number): Promise<Date | null> {
-  try {
-    const r = await fetch("/robots.txt", { method: "HEAD", cache: "no-store" });
-    const h = r.headers.get("date");
-    const d = h ? new Date(h) : null;
-    if (d && !Number.isNaN(d.getTime())) return d;
-  } catch {
-    // fără rețea: cade pe verificarea de mai jos
-  }
-  const acum = Date.now();
-  return acum >= dataBuild && acum - dataBuild < 2 * 365 * ZI_MS ? new Date(acum) : null;
-}
 
 // „o zi”, „2 zile”, „20 de zile”: în română, de la 20 în sus numărul cere „de”.
 function zile(n: number) {
