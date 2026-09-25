@@ -6,7 +6,7 @@
 
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
-import { Breadcrumb, Faq, H1, Lead, TITLU_SECTIUNE } from "@/app/components/ui";
+import { Breadcrumb, Faq, H1, Lead, TITLU_SECTIUNE, SPATIU_JOS, SPATIU_SUS, SECTIUNE_DUPA_TEXT } from "@/app/components/ui";
 import { NotaSursa, lunaLunga } from "@/app/components/Salarii";
 import { AN_OCUPATII, LUNA_REFERINTA, MATRICE_BRUT, MATRICE_NET, MATRICE_OCUPATII } from "@/lib/ins-date";
 import { MESERII, COMPARATII, dateMeserieSauEroare } from "@/lib/meserii";
@@ -108,7 +108,7 @@ export default function ComparaPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <div className="bg-canvas">
-        <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
+        <div className={`mx-auto max-w-6xl px-4 sm:px-6 ${SPATIU_SUS} ${SPATIU_JOS}`}>
           <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Compară salarii" }]} />
           <H1>Compară salarii între meserii</H1>
           <Lead>Alege două meserii și vezi salariile nete, unul lângă altul.</Lead>
@@ -117,7 +117,7 @@ export default function ComparaPage() {
             Oferta e în brut? Vezi cât rămâne în mână cu{" "}
             <Link href="/" className="font-medium text-stone-900 underline underline-offset-2">calculatorul de salariu net</Link>.
           </p>
-          <h2 className={`mt-12 ${TITLU_SECTIUNE}`}>Comparații detaliate</h2>
+          <h2 className={`${SECTIUNE_DUPA_TEXT} ${TITLU_SECTIUNE}`}>Comparații detaliate</h2>
 
           <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {comparatii.map(({ comparatie, a, b }) => (

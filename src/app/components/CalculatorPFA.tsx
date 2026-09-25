@@ -35,6 +35,7 @@ import {
   type RezultatSrl,
 } from "@/lib/forme-juridice";
 import IconCalculeaza from "@/app/components/IconCalculeaza";
+import { SPATIU_JOS } from "@/app/components/ui";
 
 const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(Math.round(n));
 const doarCifre = (s: string) => s.replace(/\D/g, "");
@@ -358,7 +359,7 @@ export default function CalculatorPFA() {
   const fmtP = (v: number) => fmt(perioada === "luna" ? v / luniActive : v);
 
   return (
-    <div id="pfa-layout" className="mx-auto grid max-w-6xl gap-6 px-4 pt-5 pb-8 sm:px-6 sm:pt-6 sm:pb-12 md:grid-cols-5">
+    <div id="pfa-layout" className={`mx-auto grid max-w-6xl gap-6 px-4 pt-5 sm:px-6 sm:pt-6 ${SPATIU_JOS} md:grid-cols-5`}>
       {/* FORMULAR */}
       <div className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-2">
         <h2 className={colHeader}>Date</h2>

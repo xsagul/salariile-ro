@@ -6,7 +6,7 @@
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
 import { notFound } from "next/navigation";
-import { Breadcrumb, Faq, H1, Lead, TITLU_CARD, TITLU_SECTIUNE } from "@/app/components/ui";
+import { Breadcrumb, Faq, H1, Lead, TITLU_CARD, TITLU_SECTIUNE, SPATIU_JOS, SPATIU_SUS } from "@/app/components/ui";
 import { LinkCard, NotaSursa, lei, lunaLunga } from "@/app/components/Salarii";
 import {
   AN_OCUPATII,
@@ -155,7 +155,7 @@ export default async function ComparatiePage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <div className="bg-canvas">
-        <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14 [&>*]:max-w-4xl">
+        <div className={`mx-auto max-w-6xl px-4 sm:px-6 ${SPATIU_SUS} ${SPATIU_JOS} [&>*]:max-w-4xl`}>
           <Breadcrumb
             items={[
               { href: "/", label: "Acasă" },

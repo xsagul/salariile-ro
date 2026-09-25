@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 import Link from "@/app/components/Link";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
-import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow, CardCompanion, Formula } from "@/app/components/ui";
+import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow, CardCompanion, Formula, SUB_TITLU } from "@/app/components/ui";
 import { calculStandardCuRegim, DEDUCERE_MINIM, REGIM_FISCAL_CURENT, SALARIU_MINIM } from "@/lib/fiscal";
 
 const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(n);
@@ -79,7 +79,7 @@ export default function MetodologiePage() {
       <Hero>
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Metodologie" }]} />
         <H1>Metodologie de calcul</H1>
-        <p className="mt-3 text-sm text-stone-600 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2">
+        <p className={`${SUB_TITLU} text-sm text-stone-600 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2`}>
           Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Publicat 1 aprilie 2026 · Actualizat {PAGE_LAST_MODIFIED["/metodologie"].toLocaleDateString("ro-RO", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })}
         </p>
         <Lead>

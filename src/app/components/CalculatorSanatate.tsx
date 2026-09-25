@@ -31,6 +31,7 @@ import { GRADATII, INDEMNIZATIE_DOCTORAT_2026, type NivelGradatie } from "@/lib/
 import { deruleazaLaRezultat } from "@/lib/deruleaza-la-rezultat";
 import { masoaraCalcul } from "@/lib/analytics";
 import IconCalculeaza from "@/app/components/IconCalculeaza";
+import { SPATIU_JOS } from "@/app/components/ui";
 
 const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(Math.round(n));
 const colHeader = "mb-4 border-b border-stone-200 pb-2 text-lg font-medium text-stone-900";
@@ -123,7 +124,7 @@ export default function CalculatorSanatate({ meserii }: { meserii: MeserieSanata
   const sporGradatie = r ? r.salariuDeBaza - r.salariuGrila : null;
 
   return (
-    <div id="calc-sanatate" className="mx-auto grid max-w-6xl gap-6 px-4 pt-5 pb-8 sm:px-6 sm:pt-6 sm:pb-12 md:grid-cols-5">
+    <div id="calc-sanatate" className={`mx-auto grid max-w-6xl gap-6 px-4 pt-5 sm:px-6 sm:pt-6 ${SPATIU_JOS} md:grid-cols-5`}>
       {/* ─── Opțiuni ─────────────────────────────────────────────────── */}
       <div className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-2">
         <h2 className={colHeader}>Încadrarea</h2>

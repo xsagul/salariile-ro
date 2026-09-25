@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
 import CalculatorSalariu from "@/app/components/CalculatorSalariu";
-import { Formula, TITLU_SECTIUNE } from "@/app/components/ui";
+import { Formula, TITLU_SECTIUNE, SPATIU_SECTIUNE, SPATIU_PARAGRAF } from "@/app/components/ui";
 import { personSchema } from "@/lib/person";
 import { calculatorSlugBrut, PAGE_LAST_MODIFIED } from "@/lib/seo";
 import { calculStandard, SALARIU_MINIM } from "@/lib/fiscal";
@@ -141,7 +141,7 @@ const homepageJsonLd = {
 };
 
 const calculeBrutPopulare = [4325, 5000, 7000, 10000, 20000] as const;
-const paragraf = "mb-4 text-base leading-normal tracking-[-0.01em] text-stone-600";
+const paragraf = `${SPATIU_PARAGRAF} text-base leading-normal tracking-[-0.01em] text-stone-600 last:mb-0`;
 
 
 export default function Page() {
@@ -159,8 +159,8 @@ export default function Page() {
             col-span-3, aliniat la grila calculatorului) + companion (dreapta,
             col-span-2) de aceeași înălțime prin grid-stretch. Fără sticky —
             totul scrollează împreună. Pe mobil se stivuiește. ── */}
-        <section className="rule-t py-8 sm:py-12">
-          <div className="mx-auto max-w-6xl space-y-8 px-4 sm:space-y-12 sm:px-6">
+        <section className={`rule-t ${SPATIU_SECTIUNE}`}>
+          <div className="mx-auto max-w-6xl space-y-8 px-4 sm:space-y-9 sm:px-6">
 
             {/* Rândul 1 – explicația și formula */}
             <div className="md:grid md:grid-cols-5 md:gap-6">
@@ -279,7 +279,7 @@ export default function Page() {
               </aside>
             </div>
 
-            <div className="border-t border-stone-200 pt-8">
+            <div className="border-t border-stone-200 pt-[38px] sm:pt-[42px]">
               <h2 className={`mb-3 ${TITLU_SECTIUNE}`}>
                 Calcule salariale populare
               </h2>

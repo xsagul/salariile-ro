@@ -7,7 +7,7 @@
 
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
-import { Breadcrumb, Faq, H1, Lead, CtaCard, TITLU_SECTIUNE } from "@/app/components/ui";
+import { Breadcrumb, Faq, H1, Lead, CtaCard, TITLU_SECTIUNE, SPATIU_JOS, SPATIU_SUS, INAINTE_DE_SECTIUNE } from "@/app/components/ui";
 import FiltruMeserii from "@/app/components/FiltruMeserii";
 import { NotaSursa, lei, lunaLunga } from "@/app/components/Salarii";
 
@@ -128,7 +128,7 @@ export default function SalariiPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <div className="bg-canvas">
-        <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
+        <div className={`mx-auto max-w-6xl px-4 sm:px-6 ${SPATIU_SUS} ${SPATIU_JOS}`}>
           <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Salarii pe meserii" }]} />
           <H1>Salarii pe meserii în România</H1>
           <Lead>Cât se câștigă în mână? Caută meseria și vezi salariul net, apoi compară cu alte ocupații.</Lead>
@@ -172,7 +172,7 @@ export default function SalariiPage() {
           <p className="mt-6 text-sm text-stone-600">Sume nete lunare cu sursa și perioada alături. Mediile declarate, intervalele din grile și estimările de grupă au semnificații diferite.</p>
 
           {categorii.map(({ categorie, meserii }) => (
-            <section key={categorie.slug} id={categorie.slug} data-sectiune-meserii className="mt-12 scroll-mt-20">
+            <section key={categorie.slug} id={categorie.slug} data-sectiune-meserii className={`${INAINTE_DE_SECTIUNE} scroll-mt-20`}>
               <h2 className={TITLU_SECTIUNE}>
                 <Link href={`/salarii/domeniu/${categorie.slug}`} className="hover:underline hover:underline-offset-4">
                   {categorie.nume}
@@ -211,7 +211,7 @@ export default function SalariiPage() {
             </section>
           ))}
 
-          <section className="mt-14 max-w-3xl">
+          <section className={`${INAINTE_DE_SECTIUNE} max-w-3xl`}>
             <h2 className={TITLU_SECTIUNE}>
               Metodologia din spatele reperelor salariale
             </h2>

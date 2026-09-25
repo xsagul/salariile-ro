@@ -7,7 +7,7 @@
 
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
-import { Breadcrumb, CardCompanion, Faq, Formula, H1, Hero, Lead, PaginiConexe, Prose, Repere, Section } from "@/app/components/ui";
+import { Breadcrumb, CardCompanion, Faq, Formula, H1, Hero, Lead, PaginiConexe, Prose, Repere, Section, INAINTE_DE_SECTIUNE } from "@/app/components/ui";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
 import CalculatorInvatamant from "@/app/components/CalculatorInvatamant";
@@ -217,7 +217,7 @@ export default function Page() {
           </table>
         </div>
 
-        <Prose>
+        <Prose className={INAINTE_DE_SECTIUNE}>
           <h2>Ce nu intră în calcul</h2>
           <p>
             Calculatorul acoperă salariul din grilă, gradația, sporurile din listă și indemnizația de

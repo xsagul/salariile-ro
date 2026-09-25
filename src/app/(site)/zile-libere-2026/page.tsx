@@ -9,7 +9,7 @@ import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 import { SARBATORI_LEGALE_2026 as HOLIDAYS } from "@/lib/sarbatori";
 import TabelArticol from "@/app/components/TabelArticol";
-import { TITLU_CARD, TITLU_PAGINA, TITLU_SECTIUNE } from "@/app/components/ui";
+import { TITLU_CARD, TITLU_PAGINA, TITLU_SECTIUNE, SEPARATOR_SECTIUNE, SPATIU_JOS, SPATIU_SUS, SUB_TITLU } from "@/app/components/ui";
 
 // ─── Metadata SEO ────────────────────────────────────────────────────────────
 
@@ -165,7 +165,7 @@ export default function ZileLibere2026Page() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <div className="bg-canvas">
-        <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
+        <div className={`mx-auto max-w-6xl px-4 sm:px-6 ${SPATIU_SUS} ${SPATIU_JOS}`}>
 
           {/* PRIMA PARTE — ce caută omul: care zile sunt libere. Decis de proprietar pe
               24 septembrie 2026, după primele două rezultate din Google (zilelibere.com,
@@ -175,7 +175,7 @@ export default function ZileLibere2026Page() {
           <div className="max-w-3xl">
             <h1 className={TITLU_PAGINA}>Zile libere 2026</h1>
             {/* Fără autor și dată sus: e pagină-instrument, nu articol (proprietar, 24 sept. 2026). */}
-            <p className="mt-4 text-base leading-normal tracking-[-0.01em] text-stone-700">
+            <p className={`${SUB_TITLU} text-base leading-normal tracking-[-0.01em] text-stone-700`}>
               În 2026 sunt <strong className="font-semibold text-stone-900">{HOLIDAY_LIST.length} sărbători legale</strong>:{" "}
               <strong className="font-semibold text-stone-900">{SARBATORI_IN_SAPTAMANA} în timpul săptămânii</strong> și{" "}
               {HOLIDAY_LIST.length - SARBATORI_IN_SAPTAMANA} în weekend.
@@ -220,7 +220,7 @@ export default function ZileLibere2026Page() {
           </div>
 
           {/* CALENDAR — 12 luni */}
-          <div className="mt-12 border-t border-stone-200 pt-10 sm:mt-16 sm:pt-14">
+          <div className={`${SEPARATOR_SECTIUNE}`}>
             <h2 className={TITLU_SECTIUNE}>Calendarul anului 2026</h2>
             {/* Legendă */}
             <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-xs text-stone-600">
@@ -272,7 +272,7 @@ export default function ZileLibere2026Page() {
           </div>
 
           {/* ZILE LUCRĂTOARE — trimitere spre pagina dedicată */}
-          <div className="mt-12 border-t border-stone-200 pt-10 sm:mt-16 sm:pt-14">
+          <div className={`${SEPARATOR_SECTIUNE}`}>
             <div className={`${card} max-w-3xl`}>
               <p className="text-xs font-medium uppercase tracking-wide text-stone-600">Tabel separat</p>
               <h2 className={`mt-2 ${TITLU_CARD}`}>Ai nevoie de zilele și orele lucrătoare pe lună?</h2>
@@ -290,7 +290,7 @@ export default function ZileLibere2026Page() {
           </div>
 
           {/* PUNȚI */}
-          <div className="mt-12 border-t border-stone-200 pt-10 sm:mt-16 sm:pt-14">
+          <div className={`${SEPARATOR_SECTIUNE}`}>
             <h2 className={TITLU_SECTIUNE}>Minivacanțe și punți 2026</h2>
             <p className="mt-3 max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600">
               Combinații de sărbători și weekend care îți dau pauze mai lungi. Unele vin natural; la altele iei o zi din
@@ -310,7 +310,7 @@ export default function ZileLibere2026Page() {
           </div>
 
           {/* FAQ + SURSE */}
-          <div className="mt-12 border-t border-stone-200 pt-10 sm:mt-16 sm:pt-14 md:grid md:grid-cols-5 md:gap-8 lg:gap-10">
+          <div className={`${SEPARATOR_SECTIUNE} md:grid md:grid-cols-5 md:gap-8 lg:gap-10`}>
             <div className="md:col-span-3">
               <h2 className={`mb-4 ${TITLU_SECTIUNE}`}>Întrebări frecvente</h2>
               <div className="flex flex-col">
@@ -346,7 +346,7 @@ export default function ZileLibere2026Page() {
           </div>
 
           {/* CTA */}
-          <div className="mt-12 border-t border-stone-200 pt-10 sm:mt-16 sm:pt-14">
+          <div className={`${SEPARATOR_SECTIUNE}`}>
             <div className={`max-w-prose ${card}`}>
               <h2 className={TITLU_CARD}>Calculează-ți salariul pe 2026</h2>
               <p className="mt-2 text-base leading-normal tracking-[-0.01em] text-stone-600">

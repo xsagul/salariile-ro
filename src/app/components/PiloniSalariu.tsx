@@ -1,7 +1,7 @@
 import Link from "@/app/components/Link";
 import type { DateMeserie } from '@/lib/meserii';
 import { piloniMeserie, convergentaPiloni, type Pilon } from '@/lib/repere-meserii';
-import { TITLU_SECTIUNE } from "@/app/components/ui";
+import { TITLU_SECTIUNE, INAINTE_DE_SECTIUNE } from "@/app/components/ui";
 
 const lei = (n: number) => `${Math.round(n).toLocaleString('ro-RO')} lei`;
 
@@ -44,7 +44,7 @@ export default function PiloniSalariu({ date }: { date: DateMeserie }) {
   if (cuDate.length < 2 && faraDate.length === 0) return null;
 
   return (
-    <section className="mt-8" id="piloni" data-piloni={piloni.filter(p => p.stare !== 'lipsa').length}>
+    <section className={INAINTE_DE_SECTIUNE} id="piloni" data-piloni={piloni.filter(p => p.stare !== 'lipsa').length}>
       {cuDate.length > 1 && (
         <>
           <h2 className={TITLU_SECTIUNE}>Ce spun sursele despre salariul de {nume}</h2>

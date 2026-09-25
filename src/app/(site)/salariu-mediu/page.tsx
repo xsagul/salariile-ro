@@ -6,7 +6,7 @@
 // întrebările neacoperite în corp, carduri aditive pe fiecare rând.
 
 import type { Metadata } from "next";
-import { Formula, PaginiConexe, TITLU_CARD, TITLU_PAGINA, TITLU_SECTIUNE } from "@/app/components/ui";
+import { Formula, PaginiConexe, TITLU_CARD, TITLU_PAGINA, TITLU_SECTIUNE, SPATIU_JOS, SPATIU_SUS, SUB_TITLU } from "@/app/components/ui";
 import Image from "next/image";
 import Link from "@/app/components/Link";
 import { LATEST_INS_EARNINGS } from "@/lib/date-salarii";
@@ -181,9 +181,9 @@ const jsonLd = {
 // ─── Stiluri (limbajul pilonului) ─────────────────────────────────────────────
 
 const articol =
-  "[&>h2]:mt-10 [&>h2]:mb-4 [&>h2]:text-[22px] [&>h2]:font-bold [&>h2]:leading-tight [&>h2]:tracking-[-0.02em] [&>h2]:text-stone-900 lg:[&>h2]:text-2xl [&>h2:first-child]:mt-0 " +
-  "[&_p]:mb-4 [&_p]:text-base [&_p]:leading-normal [&_p]:tracking-[-0.01em] [&_p]:text-stone-600 " +
-  "[&_ul]:mb-5 [&_ul]:list-disc [&_ul]:pl-5 [&_li]:mb-2 [&_li]:leading-normal [&_li]:tracking-[-0.01em] [&_li]:text-stone-600 " +
+  "[&>h2]:mt-8 sm:[&>h2]:mt-9 [&>h2]:mb-4 [&>h2]:text-[22px] [&>h2]:font-bold [&>h2]:leading-tight [&>h2]:tracking-[-0.02em] [&>h2]:text-stone-900 lg:[&>h2]:text-2xl [&>h2:first-child]:mt-0 [&>:last-child]:mb-0 " +
+  "[&_p]:mb-3 sm:[&_p]:mb-3.5 [&_p]:text-base [&_p]:leading-normal [&_p]:tracking-[-0.01em] [&_p]:text-stone-600 " +
+  "[&_ul]:mb-3 sm:[&_ul]:mb-3.5 [&_ul]:list-disc [&_ul]:pl-5 [&_li]:mb-2 [&_li]:leading-normal [&_li]:tracking-[-0.01em] [&_li]:text-stone-600 " +
   "[&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-600 " +
   "[&_strong]:font-semibold [&_strong]:text-stone-900";
 
@@ -202,13 +202,13 @@ export default function SalariuMediuPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <div className="bg-canvas">
-      <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
+      <div className={`mx-auto max-w-6xl px-4 sm:px-6 ${SPATIU_SUS} ${SPATIU_JOS}`}>
 
         {/* HERO — lede = răspunsul, o singură dată (cele două cifre) */}
         <div className={`${row} md:items-center`}>
           <div className="md:col-span-3">
             <h1 className={TITLU_PAGINA}>Salariul mediu pe economie în 2026</h1>
-            <p className="mt-4 text-xs text-stone-600 [&_a]:font-medium [&_a]:text-stone-700 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-900">
+            <p className={`${SUB_TITLU} text-xs text-stone-600 [&_a]:font-medium [&_a]:text-stone-700 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-900`}>
               Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat {DATA_ACTUALIZARE}
             </p>
             <p className={`mt-5 max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600 ${strong}`}>
@@ -247,7 +247,7 @@ export default function SalariuMediuPage() {
           </figure>
         </div>
 
-        <div className="[&>div]:mt-10 [&>div]:border-t [&>div]:border-stone-200 [&>div]:pt-10 sm:[&>div]:mt-14 sm:[&>div]:pt-14">
+        <div className="[&>div]:mt-[38px] [&>div]:border-t [&>div]:border-stone-200 [&>div]:pt-[38px] sm:[&>div]:mt-[42px] sm:[&>div]:pt-[42px]">
 
           {/* RÂND 1 — de ce sunt două cifre și la ce folosește cea fixă */}
           <div className={row}>

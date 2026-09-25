@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
-import { Breadcrumb, CtaCard, Eyebrow, H1, Hero, Lead, Section, CardCompanion } from "@/app/components/ui";
+import { Breadcrumb, CtaCard, Eyebrow, H1, Hero, Lead, Section, CardCompanion, SUB_TITLU } from "@/app/components/ui";
 import {
   LATEST_INS_EARNINGS,
   SALARY_DATA_2026,
@@ -147,7 +147,7 @@ export default function DateSalariiPage() {
       <Hero>
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Date salariale 2026" }]} />
         <H1>Date salariale România 2026</H1>
-        <p className="mt-3 text-sm text-stone-600 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2">
+        <p className={`${SUB_TITLU} text-sm text-stone-600 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2`}>
           Compilat și verificat de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Publicat 29 iulie 2026 · Actualizat 25 august 2026
         </p>
         <Lead>

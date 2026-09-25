@@ -26,14 +26,49 @@ export const TITLU_SECTIUNE =
 /** Titlul de card fără margine, pentru cardurile care își pun singure spațierea. */
 export const TITLU_CARD = "text-base font-bold tracking-[-0.01em] text-stone-900";
 
+// Spațierea pe verticală, decisă de proprietar pe 25 septembrie 2026. Cifrele
+// proprietarului sunt distanțe PERCEPUTE: de la ultimul semn vizibil (linie,
+// margine de card, linia de bază a textului) la vârful literelor următoare.
+// Marginile de aici sunt calculate din ele pentru Inter (vârful literei mari
+// stă la lh/2 − 0,36·mărimea de marginea cutiei), apoi verificate prin măsurare.
+//                                         telefon   de la 640 px
+//   bara de sus → titlul paginii             30          44
+//   titlul paginii → text                    24          28
+//   deasupra unei secțiuni                   44          48
+//   deasupra subtitlului                     30          38
+//   paragraf → paragraf                      24          26
+//   ultimul conținut → subsol                38          44
+// Cu breadcrumb, el ia locul titlului sub bară, iar titlul vine la ~16/20 px
+// sub el. Rândurile de pe salariu-minim și salariu-mediu repetă 38/42 ca
+// variantă de copil (`[&>div]:`), pe care o constantă n-o poate exprima.
+export const SPATIU_SUS = "pt-6 sm:pt-9 2xl:pt-[35px]";
+export const SPATIU_JOS = "pb-[38px] sm:pb-[44px]";
+const SECTIUNE_SUS = "pt-[38px] sm:pt-[42px]";
+const SECTIUNE_JOS = "pb-[38px] sm:pb-[42px]";
+export const SPATIU_SECTIUNE = `${SECTIUNE_SUS} ${SECTIUNE_JOS} sm:last:pb-[44px]`;
+export const SEPARATOR_SECTIUNE = "mt-[38px] border-t border-stone-200 pt-[38px] sm:mt-[42px] sm:pt-[42px]";
+/** O secțiune fără linie deasupra, după un card, tabel sau calculator. */
+export const INAINTE_DE_SECTIUNE = "mt-[38px] sm:mt-[42px]";
+/** O secțiune fără linie deasupra, direct după un paragraf. */
+export const SECTIUNE_DUPA_TEXT = "mt-8 sm:mt-9";
+/** Sub breadcrumb, până la titlul paginii. */
+export const SUB_BREADCRUMB = "mb-1.5 sm:mb-2";
+/** Între titlul paginii și fraza de sub el. */
+export const SUB_TITLU = "mt-[11px] sm:mt-3.5 2xl:mt-3";
+/** Sub un paragraf de text de 16 px, până la următorul. */
+export const SPATIU_PARAGRAF = "mb-3 sm:mb-3.5";
+
 const PROSE = [
-  "[&_h2]:mt-10 [&_h2]:mb-4 [&_h2]:text-[22px] [&_h2]:font-bold [&_h2]:leading-tight [&_h2]:tracking-[-0.02em] [&_h2]:text-stone-900 lg:[&_h2]:text-2xl",
-  "[&>h2:first-child]:mt-0",
-  "[&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:tracking-[-0.01em] [&_h3]:text-stone-900",
-  "[&_p]:mb-4 [&_p]:text-base [&_p]:leading-normal [&_p]:tracking-[-0.01em] [&_p]:text-stone-600",
-  "[&_ul]:mb-4 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:text-stone-600 [&_li]:mb-2 [&_li]:leading-normal [&_li]:tracking-[-0.01em]",
+  "[&_h2]:mt-8 sm:[&_h2]:mt-9 [&_h2]:mb-4 [&_h2]:text-[22px] [&_h2]:font-bold [&_h2]:leading-tight [&_h2]:tracking-[-0.02em] [&_h2]:text-stone-900 lg:[&_h2]:text-2xl",
+  "[&>h2:first-child]:mt-0 [&>:last-child]:mb-0 [&_li:last-child]:mb-0",
+  // După un card, un tabel sau o formulă, marginea de sus a titlului e marginea
+  // vizibilă, deci distanța se ia de acolo, nu de la un rând de text.
+  "[&>:is(figure,table,.table-wrap,section)+h2]:mt-[38px] sm:[&>:is(figure,table,.table-wrap,section)+h2]:mt-[42px]",
+  "[&_h3]:mt-4 sm:[&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:tracking-[-0.01em] [&_h3]:text-stone-900",
+  "[&_p]:mb-3 sm:[&_p]:mb-3.5 [&_p]:text-base [&_p]:leading-normal [&_p]:tracking-[-0.01em] [&_p]:text-stone-600",
+  "[&_ul]:mb-3 sm:[&_ul]:mb-3.5 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:text-stone-600 [&_li]:mb-2 [&_li]:leading-normal [&_li]:tracking-[-0.01em]",
   // Pașii numerotați: fără stil propriu, preflight-ul Tailwind le ștergea cifrele.
-  "[&_ol]:mb-4 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:text-stone-600",
+  "[&_ol]:mb-3 sm:[&_ol]:mb-3.5 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:text-stone-600",
   "[&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 hover:[&_a]:text-stone-600",
   "[&_strong]:font-semibold [&_strong]:text-stone-900",
   "[&_em]:not-italic [&_em]:font-medium [&_em]:text-stone-900",
@@ -74,15 +109,15 @@ export function Hero({
   // împingea primul control la 425–509 px. Paginile de conținut rămân neschimbate.
   if (peGrila) {
     return (
-      <section className="bg-canvas pt-6 sm:pt-10">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 [&_nav]:mb-3">
+      <section className={`bg-canvas ${SPATIU_SUS}`}>
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <GrilaPagina continut={children} />
         </div>
       </section>
     );
   }
   return (
-    <section className="border-b border-stone-200 bg-canvas py-10 sm:py-12">
+    <section className={`border-b border-stone-200 bg-canvas ${SPATIU_SUS} ${SECTIUNE_JOS}`}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6">{children}</div>
     </section>
   );
@@ -105,7 +140,7 @@ export function Section({
   // `max-w-3xl` și pagina avea două margini. Cardul din dreapta se pune doar
   // când aduce ceva propriu: un cuprins care urmărește cititorul a fost încercat
   // și respins de proprietar pe 24 septembrie 2026. `wide` e pentru tabelele late.
-  const clase = `${noTopBorder ? "border-t-0" : "border-t border-stone-200 first:border-t-0"} bg-canvas py-10 sm:py-12`;
+  const clase = `${noTopBorder ? "border-t-0" : "border-t border-stone-200 first:border-t-0"} bg-canvas ${SPATIU_SECTIUNE}`;
   return (
     <section className={clase}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -119,7 +154,7 @@ export function Section({
 
 export function Breadcrumb({ items }: { items: { href?: string; label: string }[] }) {
   return (
-    <nav className="mb-4 flex flex-wrap gap-2 text-xs text-stone-600" aria-label="Breadcrumb">
+    <nav className={`${SUB_BREADCRUMB} flex flex-wrap gap-2 text-xs text-stone-600`} aria-label="Breadcrumb">
       {items.map((it, i) => (
         <span key={i} className="flex gap-2">
           {it.href ? (
@@ -144,7 +179,7 @@ export function H1({ children }: { children: ReactNode }) {
 
 export function Lead({ children }: { children: ReactNode }) {
   return (
-    <p className="mt-3 max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 hover:[&_a]:text-stone-600">
+    <p className={`${SUB_TITLU} max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 hover:[&_a]:text-stone-600`}>
       {children}
     </p>
   );
@@ -166,7 +201,7 @@ export function Faq({
   companion?: ReactNode;
 }) {
   return (
-    <section className="border-t border-stone-200 bg-canvas py-10 sm:py-12">
+    <section className={`border-t border-stone-200 bg-canvas ${SPATIU_SECTIUNE}`}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <GrilaPagina
           companion={companion}
@@ -212,7 +247,7 @@ export function PaginiConexe({
   linkuri: { href: string; label: string; descriere: string }[];
 }) {
   return (
-    <section className="border-t border-stone-200 bg-canvas py-10 sm:py-12">
+    <section className={`border-t border-stone-200 bg-canvas ${SPATIU_SECTIUNE}`}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <h2 className={`mb-5 ${TITLU_SECTIUNE}`}>{titlu}</h2>
         <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -245,7 +280,7 @@ export function CtaCard({
   label: string;
 }) {
   return (
-    <section className="border-t border-stone-200 bg-canvas py-10 sm:py-12">
+    <section className={`border-t border-stone-200 bg-canvas ${SPATIU_SECTIUNE}`}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <GrilaPagina continut={
         <div className="rounded-md border border-stone-200 bg-surface p-6 shadow-soft sm:p-8">

@@ -9,7 +9,7 @@ import { notFound } from "next/navigation";
 import { getArticle, getAllSlugs, getAllArticles, formatDateRo } from "@/lib/noutati";
 import { personSchema } from "@/lib/person";
 import { NUME_SITE, OG_IMAGE } from "@/lib/seo";
-import { Prose, TITLU_CARD, TITLU_PAGINA } from "@/app/components/ui";
+import { Prose, TITLU_CARD, TITLU_PAGINA, SPATIU_JOS, SPATIU_SUS, SUB_BREADCRUMB, SUB_TITLU, SEPARATOR_SECTIUNE } from "@/app/components/ui";
 
 export function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
@@ -118,9 +118,9 @@ export default async function ArticolPage({ params }: { params: Promise<{ slug: 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <article className="bg-canvas">
-        <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6 sm:py-12">
+        <div className={`mx-auto max-w-3xl px-4 sm:px-6 ${SPATIU_SUS} ${SPATIU_JOS}`}>
           {/* Antet articol */}
-          <nav className="mb-4 flex flex-wrap gap-2 text-xs text-stone-600" aria-label="Breadcrumb">
+          <nav className={`${SUB_BREADCRUMB} flex flex-wrap gap-2 text-xs text-stone-600`} aria-label="Breadcrumb">
             <Link href="/noutati" className="hover:text-stone-700">Noutăți</Link>
             <span aria-hidden="true">/</span>
             <span aria-current="page" className="text-stone-600">Articol</span>
@@ -134,14 +134,14 @@ export default async function ArticolPage({ params }: { params: Promise<{ slug: 
               Opinie
             </p>
           )}
-          <div className="mb-3 text-xs uppercase tracking-wide text-stone-600">
+          <div className={`${SUB_BREADCRUMB} text-xs uppercase tracking-wide text-stone-600`}>
             {formatDateRo(a.date)}
             {a.updated && <> · Actualizat {formatDateRo(a.updated)}</>}
             {" "}· {a.readingMin} min citire
           </div>
           <h1 className={TITLU_PAGINA}>{a.title}</h1>
           {a.description && (
-            <p className="mt-3 max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600">{a.description}</p>
+            <p className={`${SUB_TITLU} max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600`}>{a.description}</p>
           )}
 
           {/* Imagine principală */}
@@ -160,7 +160,7 @@ export default async function ArticolPage({ params }: { params: Promise<{ slug: 
 
           {/* Articole conexe — funnel intern, ține cititorul în cluster */}
           {related.length > 0 && (
-            <aside className="mt-12 border-t border-stone-200 pt-8" aria-label="Articole conexe">
+            <aside className={SEPARATOR_SECTIUNE} aria-label="Articole conexe">
               <h2 className={`mb-3 ${TITLU_CARD}`}>Citește și</h2>
               <ul className="grid gap-4 sm:grid-cols-2">
                 {related.map((r) => (

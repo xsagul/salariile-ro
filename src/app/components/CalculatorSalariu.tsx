@@ -20,7 +20,7 @@ import FeedbackContextual from "@/app/components/FeedbackContextual";
 import { TEXTE, type Limba, type TexteCalculator } from "@/lib/calculator-texte";
 import { CURS_DATA, EUR_RON, converteste, cursVechi, inEuro, inLei, type Moneda } from "@/lib/curs";
 import IconCalculeaza from "@/app/components/IconCalculeaza";
-import { TITLU_PAGINA } from "@/app/components/ui";
+import { TITLU_PAGINA, SPATIU_JOS, SPATIU_SUS, SUB_BREADCRUMB, SUB_TITLU } from "@/app/components/ui";
 
 type SelectOption = { v: number; l: string };
 
@@ -755,13 +755,13 @@ export default function CalculatorSalariu({
         // dată, spațiu de 48 px sus și jos) câmpul de salariu începea la 558 px pe orice
         // ecran, iar pe 360×800 butonul „Calculează" ieșea sub primul ecran.
         <section className="bg-canvas">
-          <div className={`mx-auto ${wrap} px-4 pt-6 sm:px-6 sm:pt-10`}>
+          <div className={`mx-auto ${wrap} px-4 sm:px-6 ${SPATIU_SUS}`}>
             {/* Hero pe aceeași grilă (col-span-3) = exact lățimea cardului „Rezultat calcul", la orice viewport. */}
             <div className="md:grid md:grid-cols-5 md:gap-6">
               <div className="md:col-span-3">
                 {/* Breadcrumb doar pe pagini dinamice, nu pe homepage */}
                 {titluCustom && (
-                  <nav className="mb-4 flex gap-2 text-xs text-stone-600" aria-label="Breadcrumb">
+                  <nav className={`${SUB_BREADCRUMB} flex gap-2 text-xs text-stone-600`} aria-label="Breadcrumb">
                     <Link href="/" className="hover:text-stone-700">{t.acasa}</Link>
                     <span>/</span>
                     <span aria-current="page">{fluturas ? t.breadcrumbFluturas : t.breadcrumbCalculator}</span>
@@ -770,11 +770,11 @@ export default function CalculatorSalariu({
 
                 {/* Titlul Dinamic */}
                 {/* Pe telefon titlul „Calculator salariu net 2026" încape pe un rând. */}
-                <h1 className={`mb-2 ${TITLU_PAGINA}`}>
+                <h1 className={TITLU_PAGINA}>
                   {titluCustom || <>{t.titlu}</>}
                 </h1>
 
-                <p className="max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600 [&_a]:font-medium [&_a]:text-stone-700 [&_a]:underline [&_a]:underline-offset-2 hover:[&_a]:text-stone-900">
+                <p className={`${SUB_TITLU} max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600 [&_a]:font-medium [&_a]:text-stone-700 [&_a]:underline [&_a]:underline-offset-2 hover:[&_a]:text-stone-900`}>
                   {subtitluCustom || t.subtitlu}
                 </p>
               </div>
@@ -784,7 +784,7 @@ export default function CalculatorSalariu({
       )}
 
       {/* ── Calculator ── */}
-      <div className={`mx-auto grid ${wrap} gap-6 px-4 sm:px-6 ${embedded ? "py-8 sm:py-12" : "pt-5 pb-8 sm:pt-6 sm:pb-12"} md:grid-cols-5`} id="calc-layout">
+      <div className={`mx-auto grid ${wrap} gap-6 px-4 sm:px-6 ${embedded ? "py-8 sm:py-12" : `pt-5 sm:pt-6 ${SPATIU_JOS}`} md:grid-cols-5`} id="calc-layout">
         {/* Coloana Stângă – formular */}
         <form
           className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-2"

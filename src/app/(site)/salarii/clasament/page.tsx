@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from "@/app/components/Link";
-import { Breadcrumb, H1, Lead } from '@/app/components/ui';
+import { Breadcrumb, H1, Lead, SPATIU_JOS, SPATIU_SUS } from '@/app/components/ui';
 import { MESERII, CATEGORII, dateMeserieSauEroare } from '@/lib/meserii';
 import { ogPage, twPage } from '@/lib/seo';
 import reports from '@/data/repere-piata-verificate.json';
@@ -52,7 +52,7 @@ export default function Clasament() {
 
   return (
     <div className="bg-canvas">
-      <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+      <div className={`mx-auto max-w-6xl px-4 sm:px-6 ${SPATIU_SUS} ${SPATIU_JOS}`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}

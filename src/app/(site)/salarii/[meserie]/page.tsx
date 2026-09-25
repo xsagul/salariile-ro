@@ -8,7 +8,7 @@
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
 import { notFound } from "next/navigation";
-import { Breadcrumb, Faq, H1, Lead, TITLU_CARD, TITLU_SECTIUNE } from "@/app/components/ui";
+import { Breadcrumb, Faq, H1, Lead, TITLU_CARD, TITLU_SECTIUNE, SPATIU_JOS, SPATIU_SUS, INAINTE_DE_SECTIUNE } from "@/app/components/ui";
 import {
   GraficSerie,
   LinkCard,
@@ -268,7 +268,7 @@ export default async function MeseriePage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <div className="bg-canvas">
-        <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
+        <div className={`mx-auto max-w-6xl px-4 sm:px-6 ${SPATIU_SUS} ${SPATIU_JOS}`}>
           <Breadcrumb
             items={[
               { href: "/", label: "Acasă" },
@@ -378,7 +378,7 @@ export default async function MeseriePage({ params }: Props) {
             </div></details>
           )}
 
-          <div className="mt-12 grid gap-10 lg:grid-cols-5 lg:gap-6">
+          <div className={`${INAINTE_DE_SECTIUNE} grid gap-10 lg:grid-cols-5 lg:gap-6`}>
             <div className="min-w-0 lg:col-span-3">
               {grila && (
                 <section className="mb-12">
@@ -415,7 +415,7 @@ export default async function MeseriePage({ params }: Props) {
                 </p>
               </section>
 
-              <section className="mt-12" id="piata">
+              <section className={INAINTE_DE_SECTIUNE} id="piata">
                 <h2 className={TITLU_SECTIUNE}>
                   Cum a evoluat sectorul în ultimele {LUNI_SERIE.length} luni
                 </h2>

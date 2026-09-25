@@ -43,6 +43,7 @@ import {
   type NivelGradatie,
 } from "@/lib/invatamant";
 import IconCalculeaza from "@/app/components/IconCalculeaza";
+import { SPATIU_JOS } from "@/app/components/ui";
 
 const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(Math.round(n));
 
@@ -190,7 +191,7 @@ export default function CalculatorInvatamant() {
     // Secțiunea stă pe `canvas`, cardurile pe `surface` deasupra ei — altfel
     // cardurile (#fffdf9) cad pe `<body>`-ul alb și dispar.
     <section className="border-b border-stone-200 bg-canvas">
-      <div id="calc-invatamant" className="mx-auto grid max-w-6xl gap-6 px-4 pt-5 pb-8 sm:px-6 sm:pt-6 sm:pb-12 md:grid-cols-5">
+      <div id="calc-invatamant" className={`mx-auto grid max-w-6xl gap-6 px-4 pt-5 sm:px-6 sm:pt-6 ${SPATIU_JOS} md:grid-cols-5`}>
         {/* ─── Formular ───────────────────────────────────────────────── */}
         <div className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-2">
           <h2 className={colHeader}>Încadrarea ta</h2>

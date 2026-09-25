@@ -3,7 +3,7 @@
 // (hero pe grilă + calculator + zonă-articol 3+2 cu carduri-companion).
 
 import type { Metadata } from "next";
-import { Formula, PaginiConexe, TITLU_PAGINA, TITLU_SECTIUNE } from "@/app/components/ui";
+import { Formula, PaginiConexe, TITLU_PAGINA, TITLU_SECTIUNE, SPATIU_SECTIUNE, SPATIU_SUS, SUB_TITLU, SPATIU_PARAGRAF } from "@/app/components/ui";
 import Link from "@/app/components/Link";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
@@ -163,7 +163,7 @@ const jsonLd = {
 
 const proseLinks =
   "[&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-600 [&_strong]:font-bold";
-const p = "mb-4 text-base leading-normal tracking-[-0.01em] text-stone-600";
+const p = `${SPATIU_PARAGRAF} text-base leading-normal tracking-[-0.01em] text-stone-600 last:mb-0`;
 
 export default function CalculatorPfaPage() {
   return (
@@ -175,11 +175,11 @@ export default function CalculatorPfaPage() {
             septembrie 2026: primul câmp începea la 432–468 px pe telefon, iar
             butonul „Calculează" era sub primul ecran. Data a trecut lângă surse. */}
         <section className="bg-canvas">
-        <div className="mx-auto max-w-6xl px-4 pt-6 sm:px-6 sm:pt-10">
+        <div className={`mx-auto max-w-6xl px-4 sm:px-6 ${SPATIU_SUS}`}>
           <div className="md:grid md:grid-cols-5 md:gap-6">
             <div className="md:col-span-3">
-              <h1 className={`mb-2 ${TITLU_PAGINA}`}>Calculator taxe PFA 2026</h1>
-              <p className="max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600">
+              <h1 className={TITLU_PAGINA}>Calculator taxe PFA 2026</h1>
+              <p className={`${SUB_TITLU} max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600`}>
                 Cât plătești ca PFA în sistem real și cât îți rămâne, comparat cu SRL micro și SRL pe profit.
               </p>
             </div>
@@ -191,8 +191,8 @@ export default function CalculatorPfaPage() {
         <CalculatorPFA />
 
         {/* ZONĂ ARTICOL — 3+2, ca pe homepage */}
-        <section className="rule-t py-8 sm:py-12">
-          <div className="mx-auto max-w-6xl space-y-8 px-4 sm:space-y-12 sm:px-6">
+        <section className={`rule-t ${SPATIU_SECTIUNE}`}>
+          <div className="mx-auto max-w-6xl space-y-8 px-4 sm:space-y-9 sm:px-6">
 
             {/* Rândul 1 — Cum se calculează + card Plafoane */}
             <div className="md:grid md:grid-cols-5 md:gap-6">

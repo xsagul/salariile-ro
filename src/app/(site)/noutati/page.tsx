@@ -8,7 +8,7 @@ import Image from "next/image";
 import { getAllArticles, formatDateRo } from "@/lib/noutati";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
-import { TITLU_PAGINA } from "@/app/components/ui";
+import { TITLU_PAGINA, SPATIU_JOS, SPATIU_SECTIUNE, SPATIU_SUS, SUB_TITLU } from "@/app/components/ui";
 
 const NOUTATI_TITLU = "Noutăți despre salarii și taxe în România";
 const NOUTATI_DESC =
@@ -57,16 +57,16 @@ export default function NoutatiPage() {
       <div className="bg-canvas">
         {/* HERO */}
         <section className="border-b border-stone-200 bg-canvas">
-          <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
-            <h1 className={`mb-3 ${TITLU_PAGINA}`}>Noutăți</h1>
-            <p className="max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600">
+          <div className={`mx-auto max-w-6xl px-4 sm:px-6 ${SPATIU_SUS} ${SPATIU_JOS}`}>
+            <h1 className={TITLU_PAGINA}>Noutăți</h1>
+            <p className={`${SUB_TITLU} max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600`}>
               Articole scrise pe înțelesul tuturor despre salarii, taxe, costul vieții și alte curiozități despre banii din România – pe măsură ce le descopăr și le înțeleg.
             </p>
           </div>
         </section>
 
         {/* LISTĂ */}
-        <section className="py-8 sm:py-12">
+        <section className={SPATIU_SECTIUNE}>
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             {articles.length === 0 ? (
               <p className="text-base text-stone-600">Încă nu am publicat niciun articol. Revino curând.</p>

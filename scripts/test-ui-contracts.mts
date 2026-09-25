@@ -173,10 +173,21 @@ for (const f of fisiereSrc) {
 // Scara titlurilor are un singur proprietar: TITLU_PAGINA și TITLU_SECTIUNE din
 // ui.tsx (26/28/30/36 și 22/24 px). Un h1 sau h2 cu mărime scrisă de mână
 // reintroduce amestecul măsurat pe 25 septembrie 2026.
-const marimiVechi = /<h[12][^>]*className="[^"]*(?:sm:)?text-(?:3xl|4xl|\[1\.625rem\])/;
+const marimiVechi = /<h[12]\b[^>]*className="[^"]*\b(?:sm:)?text-(?:3xl|4xl|\[1\.625rem\])/;
 for (const f of fisiereSrc) {
   const sursa = await read(`src/${f}`);
   assert.ok(!marimiVechi.test(sursa), `${f} are un titlu cu mărime proprie; folosește TITLU_PAGINA / TITLU_SECTIUNE din ui.tsx`);
+}
+// Spațierea pe verticală are și ea un singur proprietar: SPATIU_SUS, SPATIU_JOS,
+// SPATIU_SECTIUNE, SEPARATOR_SECTIUNE și rudele lor din ui.tsx, calculate din
+// distanțele percepute decise pe 25 septembrie 2026. Paddingurile vechi de
+// secțiune și de început de pagină nu se mai scriu de mână.
+// Excepție: calculatorul integrat pe site-uri terțe (`embedded`) își păstrează
+// spațierea proprie, pentru că stă în pagina altcuiva.
+const spatiiVechi = /(?<!embedded \? ")\b(?:py-10 sm:py-12|py-8 sm:py-12|sm:py-14|pt-6 sm:pt-10|sm:pt-14|sm:mt-16)\b/;
+for (const f of fisiereSrc) {
+  const sursa = await read(`src/${f}`);
+  assert.ok(!spatiiVechi.test(sursa), `${f} are o spațiere de secțiune scrisă de mână; folosește constantele de spațiere din ui.tsx`);
 }
 const ui = await read("src/app/components/ui.tsx");
 assert.ok(

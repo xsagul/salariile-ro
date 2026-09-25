@@ -14,7 +14,7 @@
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
 import { notFound } from "next/navigation";
-import { Breadcrumb, Faq, H1, Lead, TITLU_SECTIUNE } from "@/app/components/ui";
+import { Breadcrumb, Faq, H1, Lead, TITLU_SECTIUNE, SPATIU_JOS, SPATIU_SUS } from "@/app/components/ui";
 import { CardCifra, LinkCard, NotaSursa, lei, lunaLunga, procent } from "@/app/components/Salarii";
 import { denumireScurtaCaen } from "@/lib/caen-denumiri";
 import { AN_JUDETE, LUNA_REFERINTA, MATRICE_BRUT, MATRICE_JUDETE, MATRICE_NET, TOTAL_ECONOMIE } from "@/lib/ins-date";
@@ -172,7 +172,7 @@ export default async function DomeniuPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <div className="bg-canvas">
-        <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
+        <div className={`mx-auto max-w-6xl px-4 sm:px-6 ${SPATIU_SUS} ${SPATIU_JOS}`}>
           <Breadcrumb
             items={[
               { href: "/", label: "Acasă" },
