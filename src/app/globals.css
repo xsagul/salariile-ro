@@ -39,6 +39,15 @@
    „Calculează” din ecran; pragul e măsurat în CalculatorSalariu.tsx. */
 @custom-variant pc-inalt (@media (min-width: 48rem) and (min-height: 700px));
 
+/* Direcția de calcul sub titlul „Date salariale”: pe PC înalt (butoane mari) și pe
+   fereastra îngustă de PC, 768–1023 px, unde coloana formularului n-are loc de titlu
+   (116 px) și butoane (180 px) pe același rând. */
+@custom-variant directie-sub {
+  @media (min-width: 48rem) and (min-height: 700px), (min-width: 48rem) and (max-width: 63.99rem) {
+    @slot;
+  }
+}
+
 /* Cifra principală a unui calcul — singurul loc din interfață unde apare
    galbenul, în afara mărcii. Una pe ecran; dacă apare peste tot, nu mai
    marchează nimic. */

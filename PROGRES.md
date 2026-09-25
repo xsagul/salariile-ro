@@ -3779,3 +3779,13 @@ Rândul stă sub linia titlului, deci linia rămâne în dreptul celei de la „
 642 px (664 cu mesajul de eroare). Sub 700 px — inclusiv ecranul proprietarului, 1920 px cu
 scalare 150%, adică 1280×607 — butoanele rămân mici, lângă titlu, și „Calculează” la 576 px;
 cu rândul în plus ar fi ieșit din ecran (632 px).
+
+Tot 26 septembrie, observat de proprietar cu fereastra de browser îngustată (~773 px): pe
+PC îngust, coloana formularului n-are loc de „Date salariale” (116 px) și de butoanele de
+direcție (180 px) pe un rând. Titlul se rupea pe două rânduri, iar butoanele ieșeau din card.
+Între 768 și 1023 px, butoanele trec sub linia titlului, pe tot rândul, dar mici (26 px,
+zona de apăsare rămâne de 44 px). Varianta `directie-sub` din globals.css reunește cazul ăsta
+cu `pc-inalt`; forma scurtă a `@custom-variant` nu acceptă o listă de media queries cu
+virgulă (Tailwind a ignorat-o fără eroare), de aceea e scrisă cu bloc și `@slot`.
+Măsurat: nu mai iese din card la 773, 900, 1023 px; liniile titlurilor aliniate (282/282);
+de la 1024 px butoanele încap lângă titlu. La 1280×607 nu s-a schimbat nimic (574 px).

@@ -979,13 +979,16 @@ export default function CalculatorSalariu({
             // rândul, dar sub linia titlului, ca linia să rămână în dreptul celei de la „Rezultat
             // calcul” (proprietar, 26 septembrie 2026). Pe 1280×607 (1920 px cu scalare 150%)
             // rândul în plus ar scoate „Calculează” din ecran, deci acolo rămân lângă titlu.
-            <div className={`${colHeader} sm:flex sm:items-center sm:justify-between sm:gap-2 pc-inalt:mb-5 pc-inalt:block pc-inalt:border-b-0 pc-inalt:pb-0`}>
-              <h2 className="pc-inalt:mb-4 pc-inalt:border-b pc-inalt:border-stone-200 pc-inalt:pb-2">{t.dateSalariale}</h2>
-              <div role="group" aria-label={t.directieCalcul} className="mt-3 flex w-full overflow-hidden rounded border border-stone-300 sm:mt-0 sm:w-auto sm:shrink-0 pc-inalt:w-full">
+            // Pe fereastra îngustă de PC (768–1023 px) coloana n-are loc de titlu și butoane pe
+            // un rând: titlul se rupea pe două rânduri, iar butoanele ieșeau din card. Acolo
+            // trec tot sub linie, dar mici, de 26 px (`directie-sub`, globals.css).
+            <div className={`${colHeader} sm:flex sm:items-center sm:justify-between sm:gap-2 directie-sub:mb-5 directie-sub:block directie-sub:border-b-0 directie-sub:pb-0`}>
+              <h2 className="directie-sub:mb-4 directie-sub:border-b directie-sub:border-stone-200 directie-sub:pb-2">{t.dateSalariale}</h2>
+              <div role="group" aria-label={t.directieCalcul} className="mt-3 flex w-full overflow-hidden rounded border border-stone-300 sm:mt-0 sm:w-auto sm:shrink-0 directie-sub:w-full">
                 <button
                   type="button"
                   aria-pressed={mod === "brut"}
-                  className={`relative inline-flex h-11 flex-1 items-center justify-center px-2 text-sm font-medium transition-colors sm:h-[26px] sm:flex-none sm:after:absolute sm:after:inset-x-0 sm:after:-inset-y-[9px] sm:after:content-[''] pc-inalt:h-11 pc-inalt:flex-1 pc-inalt:after:content-none ${mod === "brut" ? "bg-stone-900 text-white" : "text-stone-600 hover:bg-canvas"}`}
+                  className={`relative inline-flex h-11 flex-1 items-center justify-center px-2 text-sm font-medium transition-colors sm:h-[26px] sm:flex-none sm:after:absolute sm:after:inset-x-0 sm:after:-inset-y-[9px] sm:after:content-[''] directie-sub:flex-1 pc-inalt:h-11 pc-inalt:after:content-none ${mod === "brut" ? "bg-stone-900 text-white" : "text-stone-600 hover:bg-canvas"}`}
                   onClick={() => {
                     if (mod === "brut") return;
                     if (mod === "net") {
@@ -1000,7 +1003,7 @@ export default function CalculatorSalariu({
                 <button
                   type="button"
                   aria-pressed={mod === "net"}
-                  className={`border-l border-stone-300 relative inline-flex h-11 flex-1 items-center justify-center px-2 text-sm font-medium transition-colors sm:h-[26px] sm:flex-none sm:after:absolute sm:after:inset-x-0 sm:after:-inset-y-[9px] sm:after:content-[''] pc-inalt:h-11 pc-inalt:flex-1 pc-inalt:after:content-none ${mod === "net" ? "bg-stone-900 text-white" : "text-stone-600 hover:bg-canvas"}`}
+                  className={`border-l border-stone-300 relative inline-flex h-11 flex-1 items-center justify-center px-2 text-sm font-medium transition-colors sm:h-[26px] sm:flex-none sm:after:absolute sm:after:inset-x-0 sm:after:-inset-y-[9px] sm:after:content-[''] directie-sub:flex-1 pc-inalt:h-11 pc-inalt:after:content-none ${mod === "net" ? "bg-stone-900 text-white" : "text-stone-600 hover:bg-canvas"}`}
                   onClick={() => {
                     if (mod === "net") return;
                     if (mod === "brut") {
