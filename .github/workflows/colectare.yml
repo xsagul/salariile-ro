@@ -1,0 +1,37 @@
+name: Colectare zilnică
+
+# Colectare continuă din mai multe surse (decizia proprietarului, 26 septembrie 2026;
+# CLAUDE.md). Adaugă în `colectare/` doar ofertele noi și lista celor active din zi.
+# Commit-ul poartă [skip ci]: datele nu schimbă site-ul până nu sunt agregate și
+# publicate separat, după verificare.
+on:
+  schedule:
+    - cron: "41 4 * * *" # 07:41 ora României (vara)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: colectare
+  cancel-in-progress: false
+
+jobs:
+  anofm:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: node scripts/colectare/anofm.mjs
+      - name: Salvează ziua
+        run: |
+          git config user.name "salariile-colectare"
+          git config user.email "colectare@users.noreply.github.com"
+          git add colectare
+          if git diff --cached --quiet; then echo "Nimic nou"; exit 0; fi
+          git commit -m "Colectare ANOFM $(TZ=Europe/Bucharest date +%F) [skip ci]"
+          git pull --rebase origin main
+          git push origin HEAD:main

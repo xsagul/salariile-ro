@@ -1,0 +1,2922 @@
+{
+ "generatLa": "2026-09-25T23:14:27.244Z",
+ "oferteUnice": 8759,
+ "meserii": [
+  {
+   "slug": "sofer-tir",
+   "nume": "Șofer TIR",
+   "cor": "833201",
+   "oferte": 301,
+   "posturi": 3013,
+   "angajatori": 242,
+   "judete": 35,
+   "baza": {
+    "brut": 177,
+    "net": 19,
+    "nedeclarata": 105
+   },
+   "brutNormaIntreaga": {
+    "n": 172,
+    "laSalariulMinim": 121,
+    "p25": 4325,
+    "mediana": 4325,
+    "p75": 4330,
+    "cuInterval": 75,
+    "medianaPeExperienta": {
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 97,
+      "mediana": 4325
+     },
+     "Fără experiență - 0 ani": {
+      "n": 28,
+      "mediana": 4325
+     },
+     "Avansat - între 5 și 7 ani": {
+      "n": 5,
+      "mediana": 4325
+     },
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 38,
+      "mediana": 4325
+     },
+     "Experimentat - mai mult de 7 ani": {
+      "n": 4,
+      "mediana": 4325
+     }
+    }
+   }
+  },
+  {
+   "slug": "manipulant-marfa",
+   "nume": "Manipulant mărfuri",
+   "cor": "933303",
+   "oferte": 217,
+   "posturi": 2134,
+   "angajatori": 187,
+   "judete": 37,
+   "baza": {
+    "brut": 129,
+    "net": 17,
+    "nedeclarata": 71
+   },
+   "brutNormaIntreaga": {
+    "n": 116,
+    "laSalariulMinim": 85,
+    "p25": 4325,
+    "mediana": 4325,
+    "p75": 4330,
+    "cuInterval": 37,
+    "medianaPeExperienta": {
+     "Fără experiență - 0 ani": {
+      "n": 67,
+      "mediana": 4325
+     },
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 39,
+      "mediana": 4325
+     },
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 8,
+      "mediana": 4325
+     },
+     "Experimentat - mai mult de 7 ani": {
+      "n": 2,
+      "mediana": 4325
+     }
+    }
+   }
+  },
+  {
+   "slug": "agent-vanzari",
+   "nume": "Agent de vânzări",
+   "cor": "332203",
+   "oferte": 184,
+   "posturi": 266,
+   "angajatori": 64,
+   "judete": 42,
+   "baza": {
+    "brut": 119,
+    "net": 12,
+    "nedeclarata": 53
+   },
+   "brutNormaIntreaga": {
+    "n": 116,
+    "laSalariulMinim": 16,
+    "p25": 4350,
+    "mediana": 4350,
+    "p75": 4350,
+    "cuInterval": 94,
+    "medianaPeExperienta": {
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 96,
+      "mediana": 4350
+     },
+     "Fără experiență - 0 ani": {
+      "n": 14,
+      "mediana": 4325
+     },
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 5,
+      "mediana": 5000
+     },
+     "Avansat - între 5 și 7 ani": {
+      "n": 1,
+      "mediana": 10000
+     }
+    }
+   }
+  },
+  {
+   "slug": "taximetrist",
+   "nume": "Taximetrist",
+   "cor": "832201",
+   "oferte": 164,
+   "posturi": 1036,
+   "angajatori": 150,
+   "judete": 36,
+   "baza": {
+    "brut": 96,
+    "net": 14,
+    "nedeclarata": 54
+   },
+   "brutNormaIntreaga": {
+    "n": 91,
+    "laSalariulMinim": 63,
+    "p25": 4325,
+    "mediana": 4325,
+    "p75": 4350,
+    "cuInterval": 43,
+    "medianaPeExperienta": {
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 21,
+      "mediana": 4325
+     },
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 39,
+      "mediana": 4325
+     },
+     "Fără experiență - 0 ani": {
+      "n": 24,
+      "mediana": 4325
+     },
+     "Avansat - între 5 și 7 ani": {
+      "n": 5,
+      "mediana": 4422
+     },
+     "Experimentat - mai mult de 7 ani": {
+      "n": 2,
+      "mediana": 4325
+     }
+    }
+   }
+  },
+  {
+   "slug": "sofer-ridesharing",
+   "nume": "Șofer ridesharing",
+   "cor": "832201",
+   "oferte": 164,
+   "posturi": 1036,
+   "angajatori": 150,
+   "judete": 36,
+   "baza": {
+    "brut": 96,
+    "net": 14,
+    "nedeclarata": 54
+   },
+   "brutNormaIntreaga": {
+    "n": 91,
+    "laSalariulMinim": 63,
+    "p25": 4325,
+    "mediana": 4325,
+    "p75": 4350,
+    "cuInterval": 43,
+    "medianaPeExperienta": {
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 21,
+      "mediana": 4325
+     },
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 39,
+      "mediana": 4325
+     },
+     "Fără experiență - 0 ani": {
+      "n": 24,
+      "mediana": 4325
+     },
+     "Avansat - între 5 și 7 ani": {
+      "n": 5,
+      "mediana": 4422
+     },
+     "Experimentat - mai mult de 7 ani": {
+      "n": 2,
+      "mediana": 4325
+     }
+    }
+   }
+  },
+  {
+   "slug": "sofer-distributie",
+   "nume": "Șofer distribuție",
+   "cor": "832201",
+   "oferte": 164,
+   "posturi": 1036,
+   "angajatori": 150,
+   "judete": 36,
+   "baza": {
+    "brut": 96,
+    "net": 14,
+    "nedeclarata": 54
+   },
+   "brutNormaIntreaga": {
+    "n": 91,
+    "laSalariulMinim": 63,
+    "p25": 4325,
+    "mediana": 4325,
+    "p75": 4350,
+    "cuInterval": 43,
+    "medianaPeExperienta": {
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 21,
+      "mediana": 4325
+     },
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 39,
+      "mediana": 4325
+     },
+     "Fără experiență - 0 ani": {
+      "n": 24,
+      "mediana": 4325
+     },
+     "Avansat - între 5 și 7 ani": {
+      "n": 5,
+      "mediana": 4422
+     },
+     "Experimentat - mai mult de 7 ani": {
+      "n": 2,
+      "mediana": 4325
+     }
+    }
+   }
+  },
+  {
+   "slug": "agent-paza",
+   "nume": "Agent de pază",
+   "cor": "541401",
+   "oferte": 148,
+   "posturi": 1447,
+   "angajatori": 83,
+   "judete": 34,
+   "baza": {
+    "brut": 71,
+    "net": 6,
+    "nedeclarata": 71
+   },
+   "brutNormaIntreaga": {
+    "n": 69,
+    "laSalariulMinim": 57,
+    "p25": 4325,
+    "mediana": 4325,
+    "p75": 4325,
+    "cuInterval": 14,
+    "medianaPeExperienta": {
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 9,
+      "mediana": 4325
+     },
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 31,
+      "mediana": 4325
+     },
+     "Fără experiență - 0 ani": {
+      "n": 29,
+      "mediana": 4325
+     }
+    }
+   }
+  },
+  {
+   "slug": "agent-curatenie",
+   "nume": "Agent de curățenie",
+   "cor": "911201",
+   "oferte": 144,
+   "posturi": 408,
+   "angajatori": 133,
+   "judete": 29,
+   "baza": {
+    "brut": 94,
+    "net": 6,
+    "nedeclarata": 44
+   },
+   "brutNormaIntreaga": {
+    "n": 83,
+    "laSalariulMinim": 63,
+    "p25": 4325,
+    "mediana": 4325,
+    "p75": 4325,
+    "cuInterval": 22,
+    "medianaPeExperienta": {
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 32,
+      "mediana": 4325
+     },
+     "Fără experiență - 0 ani": {
+      "n": 44,
+      "mediana": 4325
+     },
+     "Avansat - între 5 și 7 ani": {
+      "n": 2,
+      "mediana": 4325
+     },
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 4,
+      "mediana": 4400
+     },
+     "Experimentat - mai mult de 7 ani": {
+      "n": 1,
+      "mediana": 4325
+     }
+    }
+   }
+  },
+  {
+   "slug": "sudor",
+   "nume": "Sudor",
+   "cor": "721208",
+   "oferte": 123,
+   "posturi": 472,
+   "angajatori": 110,
+   "judete": 33,
+   "baza": {
+    "brut": 41,
+    "net": 20,
+    "nedeclarata": 62
+   },
+   "brutNormaIntreaga": {
+    "n": 39,
+    "laSalariulMinim": 8,
+    "p25": 4330,
+    "mediana": 4582,
+    "p75": 5000,
+    "cuInterval": 24,
+    "medianaPeExperienta": {
+     "Fără experiență - 0 ani": {
+      "n": 9,
+      "mediana": 4582
+     },
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 18,
+      "mediana": 4582
+     },
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 8,
+      "mediana": 4582
+     },
+     "Avansat - între 5 și 7 ani": {
+      "n": 3,
+      "mediana": 4325
+     },
+     "Experimentat - mai mult de 7 ani": {
+      "n": 1,
+      "mediana": 4600
+     }
+    }
+   }
+  },
+  {
+   "slug": "bucatar",
+   "nume": "Bucătar",
+   "cor": "512001",
+   "oferte": 119,
+   "posturi": 218,
+   "angajatori": 83,
+   "judete": 35,
+   "baza": {
+    "brut": 46,
+    "net": 4,
+    "nedeclarata": 69
+   },
+   "brutNormaIntreaga": {
+    "n": 44,
+    "laSalariulMinim": 34,
+    "p25": 4325,
+    "mediana": 4325,
+    "p75": 4325,
+    "cuInterval": 20,
+    "medianaPeExperienta": {
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 11,
+      "mediana": 4325
+     },
+     "Experimentat - mai mult de 7 ani": {
+      "n": 4,
+      "mediana": 4325
+     },
+     "Fără experiență - 0 ani": {
+      "n": 14,
+      "mediana": 4325
+     },
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 12,
+      "mediana": 4325
+     },
+     "Avansat - între 5 și 7 ani": {
+      "n": 3,
+      "mediana": 4325
+     }
+    }
+   }
+  },
+  {
+   "slug": "mecanic-auto",
+   "nume": "Mecanic auto",
+   "cor": "723103",
+   "oferte": 109,
+   "posturi": 218,
+   "angajatori": 97,
+   "judete": 35,
+   "baza": {
+    "brut": 60,
+    "net": 11,
+    "nedeclarata": 38
+   },
+   "brutNormaIntreaga": {
+    "n": 53,
+    "laSalariulMinim": 31,
+    "p25": 4325,
+    "mediana": 4325,
+    "p75": 4350,
+    "cuInterval": 25,
+    "medianaPeExperienta": {
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 18,
+      "mediana": 4325
+     },
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 14,
+      "mediana": 4325
+     },
+     "Fără experiență - 0 ani": {
+      "n": 13,
+      "mediana": 4325
+     },
+     "Experimentat - mai mult de 7 ani": {
+      "n": 5,
+      "mediana": 4325
+     },
+     "Avansat - între 5 și 7 ani": {
+      "n": 3,
+      "mediana": 4350
+     }
+    }
+   }
+  },
+  {
+   "slug": "curier",
+   "nume": "Curier",
+   "cor": "962101",
+   "oferte": 106,
+   "posturi": 1974,
+   "angajatori": 68,
+   "judete": 22,
+   "baza": {
+    "brut": 59,
+    "net": 2,
+    "nedeclarata": 45
+   },
+   "brutNormaIntreaga": {
+    "n": 49,
+    "laSalariulMinim": 36,
+    "p25": 4325,
+    "mediana": 4325,
+    "p75": 4325,
+    "cuInterval": 12,
+    "medianaPeExperienta": {
+     "Fără experiență - 0 ani": {
+      "n": 39,
+      "mediana": 4325
+     },
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 9,
+      "mediana": 4325
+     },
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 1,
+      "mediana": 4350
+     }
+    }
+   }
+  },
+  {
+   "slug": "vanzator",
+   "nume": "Vânzător",
+   "cor": "522101",
+   "oferte": 98,
+   "posturi": 157,
+   "angajatori": 84,
+   "judete": 32,
+   "baza": {
+    "brut": 60,
+    "net": 6,
+    "nedeclarata": 32
+   },
+   "brutNormaIntreaga": {
+    "n": 57,
+    "laSalariulMinim": 45,
+    "p25": 4325,
+    "mediana": 4325,
+    "p75": 4325,
+    "cuInterval": 12,
+    "medianaPeExperienta": {
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 22,
+      "mediana": 4325
+     },
+     "Fără experiență - 0 ani": {
+      "n": 23,
+      "mediana": 4325
+     },
+     "Avansat - între 5 și 7 ani": {
+      "n": 1,
+      "mediana": 4325
+     },
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 11,
+      "mediana": 4325
+     }
+    }
+   }
+  },
+  {
+   "slug": "operator-cnc",
+   "nume": "Operator CNC",
+   "cor": "722323",
+   "oferte": 89,
+   "posturi": 322,
+   "angajatori": 77,
+   "judete": 25,
+   "baza": {
+    "brut": 34,
+    "net": 10,
+    "nedeclarata": 45
+   },
+   "brutNormaIntreaga": {
+    "n": 27,
+    "laSalariulMinim": 9,
+    "p25": 4325,
+    "mediana": 4350,
+    "p75": 5000,
+    "cuInterval": 12,
+    "medianaPeExperienta": {
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 6,
+      "mediana": 5000
+     },
+     "Fără experiență - 0 ani": {
+      "n": 6,
+      "mediana": 4325
+     },
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 14,
+      "mediana": 4350
+     },
+     "Avansat - între 5 și 7 ani": {
+      "n": 1,
+      "mediana": 4325
+     }
+    }
+   }
+  },
+  {
+   "slug": "electrician",
+   "nume": "Electrician",
+   "cor": "741101",
+   "oferte": 75,
+   "posturi": 263,
+   "angajatori": 61,
+   "judete": 33,
+   "baza": {
+    "brut": 29,
+    "net": 13,
+    "nedeclarata": 33
+   },
+   "brutNormaIntreaga": {
+    "n": 26,
+    "laSalariulMinim": 1,
+    "p25": 4582,
+    "mediana": 4582,
+    "p75": 5000,
+    "cuInterval": 14,
+    "medianaPeExperienta": {
+     "Avansat - între 5 și 7 ani": {
+      "n": 1,
+      "mediana": 7000
+     },
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 13,
+      "mediana": 4582
+     },
+     "Fără experiență - 0 ani": {
+      "n": 2,
+      "mediana": 4520
+     },
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 9,
+      "mediana": 4600
+     },
+     "Experimentat - mai mult de 7 ani": {
+      "n": 1,
+      "mediana": 4600
+     }
+    }
+   }
+  },
+  {
+   "slug": "chelner",
+   "nume": "Chelner",
+   "cor": "513102",
+   "oferte": 73,
+   "posturi": 175,
+   "angajatori": 67,
+   "judete": 23,
+   "baza": {
+    "brut": 39,
+    "net": 7,
+    "nedeclarata": 27
+   },
+   "brutNormaIntreaga": {
+    "n": 37,
+    "laSalariulMinim": 27,
+    "p25": 4325,
+    "mediana": 4325,
+    "p75": 4325,
+    "cuInterval": 8,
+    "medianaPeExperienta": {
+     "Fără experiență - 0 ani": {
+      "n": 12,
+      "mediana": 4325
+     },
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 19,
+      "mediana": 4325
+     },
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 4,
+      "mediana": 4400
+     },
+     "Experimentat - mai mult de 7 ani": {
+      "n": 2,
+      "mediana": 4325
+     }
+    }
+   }
+  },
+  {
+   "slug": "tamplar",
+   "nume": "Tâmplar",
+   "cor": "752201",
+   "oferte": 62,
+   "posturi": 170,
+   "angajatori": 62,
+   "judete": 31,
+   "baza": {
+    "brut": 27,
+    "net": 8,
+    "nedeclarata": 27
+   },
+   "brutNormaIntreaga": {
+    "n": 25,
+    "laSalariulMinim": 9,
+    "p25": 4325,
+    "mediana": 4350,
+    "p75": 4582,
+    "cuInterval": 10,
+    "medianaPeExperienta": {
+     "Fără experiență - 0 ani": {
+      "n": 5,
+      "mediana": 4325
+     },
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 8,
+      "mediana": 4335
+     },
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 10,
+      "mediana": 4582
+     },
+     "Avansat - între 5 și 7 ani": {
+      "n": 1,
+      "mediana": 4325
+     },
+     "Experimentat - mai mult de 7 ani": {
+      "n": 1,
+      "mediana": 4600
+     }
+    }
+   }
+  },
+  {
+   "slug": "dulgher",
+   "nume": "Dulgher",
+   "cor": "711501",
+   "oferte": 58,
+   "posturi": 543,
+   "angajatori": 53,
+   "judete": 23,
+   "baza": {
+    "brut": 27,
+    "net": 6,
+    "nedeclarata": 25
+   },
+   "brutNormaIntreaga": {
+    "n": 25,
+    "laSalariulMinim": 0,
+    "p25": 4582,
+    "mediana": 4582,
+    "p75": 4759,
+    "cuInterval": 8,
+    "medianaPeExperienta": {
+     "Fără experiență - 0 ani": {
+      "n": 4,
+      "mediana": 4582
+     },
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 15,
+      "mediana": 4582
+     },
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 6,
+      "mediana": 4759
+     }
+    }
+   }
+  },
+  {
+   "slug": "asistent-medical",
+   "nume": "Asistent medical",
+   "cor": "325901",
+   "oferte": 55,
+   "posturi": 103,
+   "angajatori": 26,
+   "judete": 20,
+   "baza": {
+    "brut": 44,
+    "net": 2,
+    "nedeclarata": 9
+   },
+   "brutNormaIntreaga": {
+    "n": 44,
+    "laSalariulMinim": 13,
+    "p25": 4325,
+    "mediana": 5250,
+    "p75": 5459,
+    "cuInterval": 25,
+    "medianaPeExperienta": {
+     "Fără experiență - 0 ani": {
+      "n": 16,
+      "mediana": 4325
+     },
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 16,
+      "mediana": 5200
+     },
+     "Avansat - între 5 și 7 ani": {
+      "n": 2,
+      "mediana": 5460
+     },
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 10,
+      "mediana": 5273
+     }
+    }
+   }
+  },
+  {
+   "slug": "stivuitorist",
+   "nume": "Stivuitorist",
+   "cor": "834403",
+   "oferte": 53,
+   "posturi": 88,
+   "angajatori": 51,
+   "judete": 28,
+   "baza": {
+    "brut": 18,
+    "net": 5,
+    "nedeclarata": 30
+   },
+   "brutNormaIntreaga": {
+    "n": 18,
+    "laSalariulMinim": 5,
+    "p25": 4325,
+    "mediana": 4500,
+    "p75": 5771,
+    "cuInterval": 9,
+    "medianaPeExperienta": {
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 10,
+      "mediana": 4500
+     },
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 4,
+      "mediana": 4400
+     },
+     "Fără experiență - 0 ani": {
+      "n": 4,
+      "mediana": 4325
+     }
+    }
+   }
+  },
+  {
+   "slug": "zidar",
+   "nume": "Zidar",
+   "cor": "711205",
+   "oferte": 51,
+   "posturi": 258,
+   "angajatori": 47,
+   "judete": 27,
+   "baza": {
+    "brut": 28,
+    "net": 8,
+    "nedeclarata": 15
+   },
+   "brutNormaIntreaga": {
+    "n": 28,
+    "laSalariulMinim": 1,
+    "p25": 4582,
+    "mediana": 4600,
+    "p75": 4682,
+    "cuInterval": 9,
+    "medianaPeExperienta": {
+     "Fără experiență - 0 ani": {
+      "n": 5,
+      "mediana": 4600
+     },
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 14,
+      "mediana": 4582
+     },
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 8,
+      "mediana": 4600
+     },
+     "Experimentat - mai mult de 7 ani": {
+      "n": 1,
+      "mediana": 4600
+     }
+    }
+   }
+  },
+  {
+   "slug": "contabil",
+   "nume": "Contabil",
+   "cor": "331302",
+   "oferte": 46,
+   "posturi": 61,
+   "angajatori": 46,
+   "judete": 24,
+   "baza": {
+    "brut": 17,
+    "net": 7,
+    "nedeclarata": 22
+   },
+   "brutNormaIntreaga": {
+    "n": 16,
+    "laSalariulMinim": 10,
+    "p25": 4325,
+    "mediana": 4325,
+    "p75": 4400,
+    "cuInterval": 10,
+    "medianaPeExperienta": {
+     "Fără experiență - 0 ani": {
+      "n": 4,
+      "mediana": 4325
+     },
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 2,
+      "mediana": 4325
+     },
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 5,
+      "mediana": 4325
+     },
+     "Experimentat - mai mult de 7 ani": {
+      "n": 3,
+      "mediana": 4500
+     },
+     "Avansat - între 5 și 7 ani": {
+      "n": 2,
+      "mediana": 4325
+     }
+    }
+   }
+  },
+  {
+   "slug": "instalator",
+   "nume": "Instalator",
+   "cor": "712609",
+   "oferte": 43,
+   "posturi": 148,
+   "angajatori": 43,
+   "judete": 23,
+   "baza": {
+    "brut": 15,
+    "net": 6,
+    "nedeclarata": 22
+   },
+   "brutNormaIntreaga": {
+    "n": 15,
+    "laSalariulMinim": 0,
+    "p25": 4550,
+    "mediana": 4582,
+    "p75": 4582,
+    "cuInterval": 6,
+    "medianaPeExperienta": {
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 8,
+      "mediana": 4582
+     },
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 2,
+      "mediana": 4400
+     },
+     "Experimentat - mai mult de 7 ani": {
+      "n": 1,
+      "mediana": 4582
+     },
+     "Fără experiență - 0 ani": {
+      "n": 4,
+      "mediana": 4582
+     }
+    }
+   }
+  },
+  {
+   "slug": "economist",
+   "nume": "Economist",
+   "cor": "263102",
+   "oferte": 42,
+   "posturi": 58,
+   "angajatori": 39,
+   "judete": 17,
+   "baza": {
+    "brut": 22,
+    "net": 2,
+    "nedeclarata": 18
+   },
+   "brutNormaIntreaga": {
+    "n": 17,
+    "laSalariulMinim": 9,
+    "p25": 4325,
+    "mediana": 4325,
+    "p75": 5000,
+    "cuInterval": 9,
+    "medianaPeExperienta": {
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 7,
+      "mediana": 4325
+     },
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 6,
+      "mediana": 4582
+     },
+     "Fără experiență - 0 ani": {
+      "n": 3,
+      "mediana": 4325
+     },
+     "Avansat - între 5 și 7 ani": {
+      "n": 1,
+      "mediana": 4325
+     }
+    }
+   }
+  },
+  {
+   "slug": "sofer-autobuz",
+   "nume": "Șofer de autobuz",
+   "cor": "833101",
+   "oferte": 38,
+   "posturi": 246,
+   "angajatori": 31,
+   "judete": 19,
+   "baza": {
+    "brut": 25,
+    "net": 3,
+    "nedeclarata": 10
+   },
+   "brutNormaIntreaga": {
+    "n": 23,
+    "laSalariulMinim": 15,
+    "p25": 4325,
+    "mediana": 4325,
+    "p75": 4400,
+    "cuInterval": 7,
+    "medianaPeExperienta": {
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 7,
+      "mediana": 4325
+     },
+     "Fără experiență - 0 ani": {
+      "n": 6,
+      "mediana": 5335
+     },
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 8,
+      "mediana": 4325
+     },
+     "Avansat - între 5 și 7 ani": {
+      "n": 1,
+      "mediana": 4325
+     },
+     "Experimentat - mai mult de 7 ani": {
+      "n": 1,
+      "mediana": 4050
+     }
+    }
+   }
+  },
+  {
+   "slug": "casier",
+   "nume": "Casier",
+   "cor": "523003",
+   "oferte": 35,
+   "posturi": 122,
+   "angajatori": 30,
+   "judete": 21,
+   "baza": {
+    "brut": 22,
+    "net": 1,
+    "nedeclarata": 12
+   },
+   "brutNormaIntreaga": {
+    "n": 20,
+    "laSalariulMinim": 16,
+    "p25": 4325,
+    "mediana": 4325,
+    "p75": 4325,
+    "cuInterval": 8,
+    "medianaPeExperienta": {
+     "Fără experiență - 0 ani": {
+      "n": 6,
+      "mediana": 4325
+     },
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 11,
+      "mediana": 4325
+     },
+     "Avansat - între 5 și 7 ani": {
+      "n": 1,
+      "mediana": 4325
+     },
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 2,
+      "mediana": 4325
+     }
+    }
+   }
+  },
+  {
+   "slug": "infirmier",
+   "nume": "Infirmier",
+   "cor": "532103",
+   "oferte": 32,
+   "posturi": 98,
+   "angajatori": 29,
+   "judete": 19,
+   "baza": {
+    "brut": 18,
+    "net": 0,
+    "nedeclarata": 14
+   },
+   "brutNormaIntreaga": {
+    "n": 18,
+    "laSalariulMinim": 8,
+    "p25": 4325,
+    "mediana": 4325,
+    "p75": 4615,
+    "cuInterval": 8,
+    "medianaPeExperienta": {
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 9,
+      "mediana": 4615
+     },
+     "Fără experiență - 0 ani": {
+      "n": 8,
+      "mediana": 4325
+     },
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 1,
+      "mediana": 4325
+     }
+    }
+   }
+  },
+  {
+   "slug": "zugrav",
+   "nume": "Zugrav",
+   "cor": "713102",
+   "oferte": 31,
+   "posturi": 330,
+   "angajatori": 29,
+   "judete": 18,
+   "baza": {
+    "brut": 14,
+    "net": 3,
+    "nedeclarata": 14
+   },
+   "brutNormaIntreaga": {
+    "n": 14,
+    "laSalariulMinim": 0,
+    "p25": 4582,
+    "mediana": 4582,
+    "p75": 4600,
+    "cuInterval": 5,
+    "medianaPeExperienta": {
+     "Avansat - între 5 și 7 ani": {
+      "n": 1,
+      "mediana": 4582
+     },
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 8,
+      "mediana": 4582
+     },
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 2,
+      "mediana": 4582
+     },
+     "Fără experiență - 0 ani": {
+      "n": 2,
+      "mediana": 4582
+     },
+     "Experimentat - mai mult de 7 ani": {
+      "n": 1,
+      "mediana": 4600
+     }
+    }
+   }
+  },
+  {
+   "slug": "programator",
+   "nume": "Programator",
+   "cor": "251202",
+   "oferte": 29,
+   "posturi": 68,
+   "angajatori": 21,
+   "judete": 10,
+   "baza": {
+    "brut": 13,
+    "net": 6,
+    "nedeclarata": 10
+   },
+   "brutNormaIntreaga": {
+    "n": 13,
+    "laSalariulMinim": 2,
+    "p25": 9200,
+    "mediana": 14000,
+    "p75": 15000,
+    "cuInterval": 13,
+    "medianaPeExperienta": {
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 10,
+      "mediana": 15000
+     },
+     "Avansat - între 5 și 7 ani": {
+      "n": 2,
+      "mediana": 9192
+     },
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 1,
+      "mediana": 4325
+     }
+    }
+   }
+  },
+  {
+   "slug": "electrician-centrala",
+   "nume": "Electrician centrală electrică",
+   "cor": "741301",
+   "oferte": 26,
+   "posturi": 36,
+   "angajatori": 9,
+   "judete": 12,
+   "baza": {
+    "brut": 23,
+    "net": 1,
+    "nedeclarata": 2
+   },
+   "brutNormaIntreaga": {
+    "n": 23,
+    "laSalariulMinim": 9,
+    "p25": 4325,
+    "mediana": 4677,
+    "p75": 4703,
+    "cuInterval": 23,
+    "medianaPeExperienta": {
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 6,
+      "mediana": 4677
+     },
+     "Fără experiență - 0 ani": {
+      "n": 17,
+      "mediana": 4325
+     }
+    }
+   }
+  },
+  {
+   "slug": "consilier-juridic",
+   "nume": "Consilier juridic",
+   "cor": "261103",
+   "oferte": 21,
+   "posturi": 24,
+   "angajatori": 21,
+   "judete": 10,
+   "baza": {
+    "brut": 10,
+    "net": 3,
+    "nedeclarata": 8
+   },
+   "brutNormaIntreaga": {
+    "n": 10,
+    "laSalariulMinim": 2,
+    "p25": 5139,
+    "mediana": 6018,
+    "p75": 8136,
+    "cuInterval": 9,
+    "medianaPeExperienta": {
+     "Avansat - între 5 și 7 ani": {
+      "n": 3,
+      "mediana": 6018
+     },
+     "Experimentat - mai mult de 7 ani": {
+      "n": 1,
+      "mediana": 10321
+     },
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 2,
+      "mediana": 4325
+     },
+     "Fără experiență - 0 ani": {
+      "n": 3,
+      "mediana": 8136
+     },
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 1,
+      "mediana": 5139
+     }
+    }
+   }
+  },
+  {
+   "slug": "secretar",
+   "nume": "Secretar",
+   "cor": "412001",
+   "oferte": 20,
+   "posturi": 25,
+   "angajatori": 19,
+   "judete": 13,
+   "baza": {
+    "brut": 11,
+    "net": 2,
+    "nedeclarata": 7
+   },
+   "brutNormaIntreaga": {
+    "n": 11,
+    "laSalariulMinim": 6,
+    "p25": 4325,
+    "mediana": 4325,
+    "p75": 4582,
+    "cuInterval": 3,
+    "medianaPeExperienta": {
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 4,
+      "mediana": 4325
+     },
+     "Fără experiență - 0 ani": {
+      "n": 6,
+      "mediana": 4325
+     },
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 1,
+      "mediana": 4350
+     }
+    }
+   }
+  },
+  {
+   "slug": "medic-veterinar",
+   "nume": "Medic veterinar",
+   "cor": "225002",
+   "oferte": 18,
+   "posturi": 32,
+   "angajatori": 17,
+   "judete": 14,
+   "baza": {
+    "brut": 6,
+    "net": 2,
+    "nedeclarata": 10
+   },
+   "brutNormaIntreaga": {
+    "n": 6,
+    "laSalariulMinim": 2,
+    "p25": 4325,
+    "mediana": 4400,
+    "p75": 6000,
+    "cuInterval": 1,
+    "medianaPeExperienta": {
+     "Fără experiență - 0 ani": {
+      "n": 3,
+      "mediana": 6000
+     },
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 1,
+      "mediana": 4400
+     },
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 2,
+      "mediana": 4325
+     }
+    }
+   }
+  },
+  {
+   "slug": "cofetar",
+   "nume": "Cofetar",
+   "cor": "751202",
+   "oferte": 18,
+   "posturi": 48,
+   "angajatori": 18,
+   "judete": 13,
+   "baza": {
+    "brut": 8,
+    "net": 1,
+    "nedeclarata": 9
+   },
+   "brutNormaIntreaga": {
+    "n": 7,
+    "laSalariulMinim": 3,
+    "p25": 4325,
+    "mediana": 4327,
+    "p75": 4500,
+    "cuInterval": 4,
+    "medianaPeExperienta": {
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 4,
+      "mediana": 4325
+     },
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 2,
+      "mediana": 4500
+     },
+     "Fără experiență - 0 ani": {
+      "n": 1,
+      "mediana": 4325
+     }
+    }
+   }
+  },
+  {
+   "slug": "faiantar",
+   "nume": "Faianțar",
+   "cor": "712201",
+   "oferte": 15,
+   "posturi": 50,
+   "angajatori": 15,
+   "judete": 9,
+   "baza": {
+    "brut": 9,
+    "net": 0,
+    "nedeclarata": 6
+   },
+   "brutNormaIntreaga": {
+    "n": 9,
+    "laSalariulMinim": 0,
+    "p25": 4582,
+    "mediana": 4582,
+    "p75": 4600,
+    "cuInterval": 2,
+    "medianaPeExperienta": {
+     "Fără experiență - 0 ani": {
+      "n": 3,
+      "mediana": 4600
+     },
+     "Avansat - între 5 și 7 ani": {
+      "n": 1,
+      "mediana": 4582
+     },
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 3,
+      "mediana": 4582
+     },
+     "Experimentat - mai mult de 7 ani": {
+      "n": 1,
+      "mediana": 4600
+     },
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 1,
+      "mediana": 5000
+     }
+    }
+   }
+  },
+  {
+   "slug": "electromecanic",
+   "nume": "Electromecanic",
+   "cor": "742214",
+   "oferte": 15,
+   "posturi": 36,
+   "angajatori": 15,
+   "judete": 14,
+   "baza": {
+    "brut": 4,
+    "net": 3,
+    "nedeclarata": 8
+   },
+   "brutNormaIntreaga": {
+    "n": 3,
+    "laSalariulMinim": 0,
+    "p25": 4000,
+    "mediana": 6200,
+    "p75": 6263,
+    "cuInterval": 2,
+    "medianaPeExperienta": {
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 1,
+      "mediana": 6263
+     },
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 2,
+      "mediana": 4000
+     }
+    }
+   }
+  },
+  {
+   "slug": "frizer",
+   "nume": "Frizer",
+   "cor": "514102",
+   "oferte": 14,
+   "posturi": 22,
+   "angajatori": 12,
+   "judete": 11,
+   "baza": {
+    "brut": 7,
+    "net": 1,
+    "nedeclarata": 6
+   },
+   "brutNormaIntreaga": {
+    "n": 6,
+    "laSalariulMinim": 6,
+    "p25": 4325,
+    "mediana": 4325,
+    "p75": 4325,
+    "cuInterval": 1,
+    "medianaPeExperienta": {
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 3,
+      "mediana": 4325
+     },
+     "Fără experiență - 0 ani": {
+      "n": 3,
+      "mediana": 4325
+     }
+    }
+   }
+  },
+  {
+   "slug": "magaziner",
+   "nume": "Magaziner",
+   "cor": "432102",
+   "oferte": 13,
+   "posturi": 17,
+   "angajatori": 13,
+   "judete": 10,
+   "baza": {
+    "brut": 5,
+    "net": 0,
+    "nedeclarata": 8
+   },
+   "brutNormaIntreaga": {
+    "n": 4,
+    "laSalariulMinim": 2,
+    "p25": 4325,
+    "mediana": 4325,
+    "p75": 4350,
+    "cuInterval": 3,
+    "medianaPeExperienta": {
+     "Fără experiență - 0 ani": {
+      "n": 2,
+      "mediana": 4325
+     },
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 2,
+      "mediana": 4325
+     }
+    }
+   }
+  },
+  {
+   "slug": "specialist-marketing",
+   "nume": "Specialist marketing",
+   "cor": "243103",
+   "oferte": 13,
+   "posturi": 15,
+   "angajatori": 13,
+   "judete": 9,
+   "baza": {
+    "brut": 7,
+    "net": 2,
+    "nedeclarata": 4
+   },
+   "brutNormaIntreaga": {
+    "n": 7,
+    "laSalariulMinim": 5,
+    "p25": 4325,
+    "mediana": 4325,
+    "p75": 5000,
+    "cuInterval": 2,
+    "medianaPeExperienta": {
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 5,
+      "mediana": 4325
+     },
+     "Fără experiență - 0 ani": {
+      "n": 1,
+      "mediana": 4325
+     },
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 1,
+      "mediana": 5000
+     }
+    }
+   }
+  },
+  {
+   "slug": "operator-mase-plastice",
+   "nume": "Operator mase plastice",
+   "cor": "814209",
+   "oferte": 13,
+   "posturi": 44,
+   "angajatori": 11,
+   "judete": 10,
+   "baza": {
+    "brut": 8,
+    "net": 1,
+    "nedeclarata": 4
+   },
+   "brutNormaIntreaga": {
+    "n": 7,
+    "laSalariulMinim": 7,
+    "p25": 4325,
+    "mediana": 4325,
+    "p75": 4325,
+    "cuInterval": 0,
+    "medianaPeExperienta": {
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 5,
+      "mediana": 4325
+     },
+     "Fără experiență - 0 ani": {
+      "n": 2,
+      "mediana": 4325
+     }
+    }
+   }
+  },
+  {
+   "slug": "arhitect",
+   "nume": "Arhitect",
+   "cor": "216101",
+   "oferte": 11,
+   "posturi": 12,
+   "angajatori": 6,
+   "judete": 4,
+   "baza": {
+    "brut": 3,
+    "net": 1,
+    "nedeclarata": 7
+   },
+   "brutNormaIntreaga": {
+    "n": 3,
+    "laSalariulMinim": 2,
+    "p25": 4325,
+    "mediana": 4325,
+    "p75": 4582,
+    "cuInterval": 0,
+    "medianaPeExperienta": {
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 2,
+      "mediana": 4325
+     },
+     "Fără experiență - 0 ani": {
+      "n": 1,
+      "mediana": 4325
+     }
+    }
+   }
+  },
+  {
+   "slug": "asistent-social",
+   "nume": "Asistent social",
+   "cor": "263501",
+   "oferte": 11,
+   "posturi": 11,
+   "angajatori": 10,
+   "judete": 7,
+   "baza": {
+    "brut": 5,
+    "net": 3,
+    "nedeclarata": 3
+   },
+   "brutNormaIntreaga": {
+    "n": 3,
+    "laSalariulMinim": 1,
+    "p25": 4325,
+    "mediana": 5008,
+    "p75": 5473,
+    "cuInterval": 3,
+    "medianaPeExperienta": {
+     "Experimentat - mai mult de 7 ani": {
+      "n": 1,
+      "mediana": 5473
+     },
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 2,
+      "mediana": 4325
+     }
+    }
+   }
+  },
+  {
+   "slug": "receptioner-hotel",
+   "nume": "Recepționer hotel",
+   "cor": "422401",
+   "oferte": 10,
+   "posturi": 12,
+   "angajatori": 9,
+   "judete": 8,
+   "baza": {
+    "brut": 3,
+    "net": 2,
+    "nedeclarata": 5
+   },
+   "brutNormaIntreaga": {
+    "n": 3,
+    "laSalariulMinim": 2,
+    "p25": 4325,
+    "mediana": 4325,
+    "p75": 4700,
+    "cuInterval": 1,
+    "medianaPeExperienta": {
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 3,
+      "mediana": 4325
+     }
+    }
+   }
+  },
+  {
+   "slug": "analist-financiar",
+   "nume": "Analist financiar",
+   "cor": "241305",
+   "oferte": 9,
+   "posturi": 9,
+   "angajatori": 7,
+   "judete": 5,
+   "baza": {
+    "brut": 2,
+    "net": 0,
+    "nedeclarata": 7
+   },
+   "brutNormaIntreaga": null
+  },
+  {
+   "slug": "specialist-resurse-umane",
+   "nume": "Specialist resurse umane",
+   "cor": "242314",
+   "oferte": 9,
+   "posturi": 9,
+   "angajatori": 9,
+   "judete": 6,
+   "baza": {
+    "brut": 4,
+    "net": 0,
+    "nedeclarata": 5
+   },
+   "brutNormaIntreaga": {
+    "n": 3,
+    "laSalariulMinim": 0,
+    "p25": 5000,
+    "mediana": 6000,
+    "p75": 14166,
+    "cuInterval": 2,
+    "medianaPeExperienta": {
+     "Fără experiență - 0 ani": {
+      "n": 1,
+      "mediana": 5000
+     },
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 1,
+      "mediana": 14166
+     },
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 1,
+      "mediana": 6000
+     }
+    }
+   }
+  },
+  {
+   "slug": "farmacist",
+   "nume": "Farmacist",
+   "cor": "226201",
+   "oferte": 8,
+   "posturi": 10,
+   "angajatori": 8,
+   "judete": 5,
+   "baza": {
+    "brut": 3,
+    "net": 1,
+    "nedeclarata": 4
+   },
+   "brutNormaIntreaga": {
+    "n": 3,
+    "laSalariulMinim": 1,
+    "p25": 4300,
+    "mediana": 4325,
+    "p75": 4500,
+    "cuInterval": 3,
+    "medianaPeExperienta": {
+     "Fără experiență - 0 ani": {
+      "n": 2,
+      "mediana": 4325
+     },
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 1,
+      "mediana": 4300
+     }
+    }
+   }
+  },
+  {
+   "slug": "kinetoterapeut",
+   "nume": "Kinetoterapeut",
+   "cor": "226401",
+   "oferte": 8,
+   "posturi": 15,
+   "angajatori": 6,
+   "judete": 5,
+   "baza": {
+    "brut": 4,
+    "net": 2,
+    "nedeclarata": 2
+   },
+   "brutNormaIntreaga": {
+    "n": 4,
+    "laSalariulMinim": 1,
+    "p25": 4325,
+    "mediana": 5100,
+    "p75": 5100,
+    "cuInterval": 0,
+    "medianaPeExperienta": {
+     "Fără experiență - 0 ani": {
+      "n": 1,
+      "mediana": 4325
+     },
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 3,
+      "mediana": 5100
+     }
+    }
+   }
+  },
+  {
+   "slug": "tapiter",
+   "nume": "Tapițer",
+   "cor": "753401",
+   "oferte": 8,
+   "posturi": 14,
+   "angajatori": 8,
+   "judete": 5,
+   "baza": {
+    "brut": 5,
+    "net": 0,
+    "nedeclarata": 3
+   },
+   "brutNormaIntreaga": {
+    "n": 5,
+    "laSalariulMinim": 3,
+    "p25": 4325,
+    "mediana": 4325,
+    "p75": 4330,
+    "cuInterval": 0,
+    "medianaPeExperienta": {
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 2,
+      "mediana": 4325
+     },
+     "Fără experiență - 0 ani": {
+      "n": 2,
+      "mediana": 4330
+     },
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 1,
+      "mediana": 4325
+     }
+    }
+   }
+  },
+  {
+   "slug": "inginer-telecomunicatii",
+   "nume": "Inginer telecomunicații",
+   "cor": "215204",
+   "oferte": 7,
+   "posturi": 8,
+   "angajatori": 7,
+   "judete": 3,
+   "baza": {
+    "brut": 3,
+    "net": 0,
+    "nedeclarata": 4
+   },
+   "brutNormaIntreaga": {
+    "n": 3,
+    "laSalariulMinim": 0,
+    "p25": 8500,
+    "mediana": 9192,
+    "p75": 9564,
+    "cuInterval": 2,
+    "medianaPeExperienta": {
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 1,
+      "mediana": 9564
+     },
+     "Fără experiență - 0 ani": {
+      "n": 1,
+      "mediana": 9192
+     },
+     "Avansat - între 5 și 7 ani": {
+      "n": 1,
+      "mediana": 8500
+     }
+    }
+   }
+  },
+  {
+   "slug": "psiholog",
+   "nume": "Psiholog",
+   "cor": "263401",
+   "oferte": 6,
+   "posturi": 6,
+   "angajatori": 3,
+   "judete": 3,
+   "baza": {
+    "brut": 5,
+    "net": 0,
+    "nedeclarata": 1
+   },
+   "brutNormaIntreaga": {
+    "n": 5,
+    "laSalariulMinim": 0,
+    "p25": 5214,
+    "mediana": 5509,
+    "p75": 5509,
+    "cuInterval": 5,
+    "medianaPeExperienta": {
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 2,
+      "mediana": 5509
+     },
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 1,
+      "mediana": 7714
+     },
+     "Fără experiență - 0 ani": {
+      "n": 2,
+      "mediana": 4740
+     }
+    }
+   }
+  },
+  {
+   "slug": "croitor",
+   "nume": "Croitor",
+   "cor": "753101",
+   "oferte": 6,
+   "posturi": 7,
+   "angajatori": 6,
+   "judete": 5,
+   "baza": {
+    "brut": 3,
+    "net": 0,
+    "nedeclarata": 3
+   },
+   "brutNormaIntreaga": {
+    "n": 3,
+    "laSalariulMinim": 3,
+    "p25": 4050,
+    "mediana": 4325,
+    "p75": 4325,
+    "cuInterval": 0,
+    "medianaPeExperienta": {
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 3,
+      "mediana": 4325
+     }
+    }
+   }
+  },
+  {
+   "slug": "inginer-auto",
+   "nume": "Inginer auto",
+   "cor": "214412",
+   "oferte": 5,
+   "posturi": 7,
+   "angajatori": 4,
+   "judete": 5,
+   "baza": {
+    "brut": 1,
+    "net": 0,
+    "nedeclarata": 4
+   },
+   "brutNormaIntreaga": {
+    "n": 1,
+    "laSalariulMinim": 0,
+    "p25": 5506,
+    "mediana": 5506,
+    "p75": 5506,
+    "cuInterval": 1,
+    "medianaPeExperienta": {
+     "Fără experiență - 0 ani": {
+      "n": 1,
+      "mediana": 5506
+     }
+    }
+   }
+  },
+  {
+   "slug": "stomatolog",
+   "nume": "Stomatolog",
+   "cor": "226101",
+   "oferte": 4,
+   "posturi": 5,
+   "angajatori": 4,
+   "judete": 4,
+   "baza": {
+    "brut": 2,
+    "net": 1,
+    "nedeclarata": 1
+   },
+   "brutNormaIntreaga": {
+    "n": 1,
+    "laSalariulMinim": 1,
+    "p25": 4325,
+    "mediana": 4325,
+    "p75": 4325,
+    "cuInterval": 0,
+    "medianaPeExperienta": {
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 1,
+      "mediana": 4325
+     }
+    }
+   }
+  },
+  {
+   "slug": "tehnician-dentar",
+   "nume": "Tehnician dentar",
+   "cor": "325101",
+   "oferte": 4,
+   "posturi": 5,
+   "angajatori": 4,
+   "judete": 4,
+   "baza": {
+    "brut": 2,
+    "net": 1,
+    "nedeclarata": 1
+   },
+   "brutNormaIntreaga": {
+    "n": 2,
+    "laSalariulMinim": 2,
+    "p25": 4325,
+    "mediana": 4325,
+    "p75": 4325,
+    "cuInterval": 1,
+    "medianaPeExperienta": {
+     "Fără experiență - 0 ani": {
+      "n": 1,
+      "mediana": 4325
+     },
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 1,
+      "mediana": 4325
+     }
+    }
+   }
+  },
+  {
+   "slug": "invatator",
+   "nume": "Învățător",
+   "cor": "234101",
+   "oferte": 4,
+   "posturi": 9,
+   "angajatori": 4,
+   "judete": 4,
+   "baza": {
+    "brut": 3,
+    "net": 0,
+    "nedeclarata": 1
+   },
+   "brutNormaIntreaga": {
+    "n": 1,
+    "laSalariulMinim": 0,
+    "p25": 18384,
+    "mediana": 18384,
+    "p75": 18384,
+    "cuInterval": 0,
+    "medianaPeExperienta": {
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 1,
+      "mediana": 18384
+     }
+    }
+   }
+  },
+  {
+   "slug": "inginer-energetician",
+   "nume": "Inginer energetician",
+   "cor": "215108",
+   "oferte": 4,
+   "posturi": 7,
+   "angajatori": 3,
+   "judete": 2,
+   "baza": {
+    "brut": 1,
+    "net": 0,
+    "nedeclarata": 3
+   },
+   "brutNormaIntreaga": {
+    "n": 1,
+    "laSalariulMinim": 0,
+    "p25": 6497,
+    "mediana": 6497,
+    "p75": 6497,
+    "cuInterval": 1,
+    "medianaPeExperienta": {
+     "Fără experiență - 0 ani": {
+      "n": 1,
+      "mediana": 6497
+     }
+    }
+   }
+  },
+  {
+   "slug": "barman",
+   "nume": "Barman",
+   "cor": "513202",
+   "oferte": 4,
+   "posturi": 7,
+   "angajatori": 4,
+   "judete": 2,
+   "baza": {
+    "brut": 3,
+    "net": 0,
+    "nedeclarata": 1
+   },
+   "brutNormaIntreaga": {
+    "n": 3,
+    "laSalariulMinim": 2,
+    "p25": 4050,
+    "mediana": 4325,
+    "p75": 5000,
+    "cuInterval": 1,
+    "medianaPeExperienta": {
+     "Fără experiență - 0 ani": {
+      "n": 3,
+      "mediana": 4325
+     }
+    }
+   }
+  },
+  {
+   "slug": "actor",
+   "nume": "Actor",
+   "cor": "265501",
+   "oferte": 4,
+   "posturi": 5,
+   "angajatori": 1,
+   "judete": 1,
+   "baza": {
+    "brut": 0,
+    "net": 0,
+    "nedeclarata": 4
+   },
+   "brutNormaIntreaga": null
+  },
+  {
+   "slug": "tesator",
+   "nume": "Țesător",
+   "cor": "731816",
+   "oferte": 4,
+   "posturi": 5,
+   "angajatori": 3,
+   "judete": 3,
+   "baza": {
+    "brut": 0,
+    "net": 0,
+    "nedeclarata": 4
+   },
+   "brutNormaIntreaga": null
+  },
+  {
+   "slug": "tipograf",
+   "nume": "Tipograf",
+   "cor": "732207",
+   "oferte": 4,
+   "posturi": 5,
+   "angajatori": 4,
+   "judete": 4,
+   "baza": {
+    "brut": 0,
+    "net": 1,
+    "nedeclarata": 3
+   },
+   "brutNormaIntreaga": null
+  },
+  {
+   "slug": "tehnician-calculatoare",
+   "nume": "Tehnician service IT",
+   "cor": "351103",
+   "oferte": 4,
+   "posturi": 24,
+   "angajatori": 4,
+   "judete": 3,
+   "baza": {
+    "brut": 2,
+    "net": 1,
+    "nedeclarata": 1
+   },
+   "brutNormaIntreaga": {
+    "n": 1,
+    "laSalariulMinim": 0,
+    "p25": 6496,
+    "mediana": 6496,
+    "p75": 6496,
+    "cuInterval": 1,
+    "medianaPeExperienta": {
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 1,
+      "mediana": 6496
+     }
+    }
+   }
+  },
+  {
+   "slug": "medic",
+   "nume": "Medic",
+   "cor": "221101",
+   "oferte": 3,
+   "posturi": 4,
+   "angajatori": 3,
+   "judete": 3,
+   "baza": {
+    "brut": 2,
+    "net": 1,
+    "nedeclarata": 0
+   },
+   "brutNormaIntreaga": {
+    "n": 1,
+    "laSalariulMinim": 0,
+    "p25": 9847,
+    "mediana": 9847,
+    "p75": 9847,
+    "cuInterval": 0,
+    "medianaPeExperienta": {
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 1,
+      "mediana": 9847
+     }
+    }
+   }
+  },
+  {
+   "slug": "inginer-petrol",
+   "nume": "Inginer petrolist",
+   "cor": "214616",
+   "oferte": 3,
+   "posturi": 18,
+   "angajatori": 3,
+   "judete": 3,
+   "baza": {
+    "brut": 1,
+    "net": 0,
+    "nedeclarata": 2
+   },
+   "brutNormaIntreaga": {
+    "n": 1,
+    "laSalariulMinim": 0,
+    "p25": 9192,
+    "mediana": 9192,
+    "p75": 9192,
+    "cuInterval": 1,
+    "medianaPeExperienta": {
+     "Fără experiență - 0 ani": {
+      "n": 1,
+      "mediana": 9192
+     }
+    }
+   }
+  },
+  {
+   "slug": "operator-salubritate",
+   "nume": "Operator salubritate",
+   "cor": "961301",
+   "oferte": 3,
+   "posturi": 9,
+   "angajatori": 3,
+   "judete": 3,
+   "baza": {
+    "brut": 2,
+    "net": 0,
+    "nedeclarata": 1
+   },
+   "brutNormaIntreaga": {
+    "n": 2,
+    "laSalariulMinim": 1,
+    "p25": 4325,
+    "mediana": 4325,
+    "p75": 4327,
+    "cuInterval": 0,
+    "medianaPeExperienta": {
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 1,
+      "mediana": 4325
+     },
+     "Fără experiență - 0 ani": {
+      "n": 1,
+      "mediana": 4327
+     }
+    }
+   }
+  },
+  {
+   "slug": "cosmetician",
+   "nume": "Cosmetician",
+   "cor": "514201",
+   "oferte": 3,
+   "posturi": 4,
+   "angajatori": 3,
+   "judete": 3,
+   "baza": {
+    "brut": 2,
+    "net": 0,
+    "nedeclarata": 1
+   },
+   "brutNormaIntreaga": {
+    "n": 2,
+    "laSalariulMinim": 2,
+    "p25": 4325,
+    "mediana": 4325,
+    "p75": 4325,
+    "cuInterval": 0,
+    "medianaPeExperienta": {
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 1,
+      "mediana": 4325
+     },
+     "Fără experiență - 0 ani": {
+      "n": 1,
+      "mediana": 4325
+     }
+    }
+   }
+  },
+  {
+   "slug": "consultant-management",
+   "nume": "Consultant în management",
+   "cor": "263107",
+   "oferte": 3,
+   "posturi": 6,
+   "angajatori": 3,
+   "judete": 2,
+   "baza": {
+    "brut": 2,
+    "net": 1,
+    "nedeclarata": 0
+   },
+   "brutNormaIntreaga": {
+    "n": 2,
+    "laSalariulMinim": 0,
+    "p25": 6837,
+    "mediana": 6837,
+    "p75": 19000,
+    "cuInterval": 2,
+    "medianaPeExperienta": {
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 2,
+      "mediana": 6837
+     }
+    }
+   }
+  },
+  {
+   "slug": "web-developer",
+   "nume": "Web developer",
+   "cor": "251208",
+   "oferte": 2,
+   "posturi": 4,
+   "angajatori": 2,
+   "judete": 1,
+   "baza": {
+    "brut": 1,
+    "net": 0,
+    "nedeclarata": 1
+   },
+   "brutNormaIntreaga": {
+    "n": 1,
+    "laSalariulMinim": 0,
+    "p25": 9192,
+    "mediana": 9192,
+    "p75": 9192,
+    "cuInterval": 0,
+    "medianaPeExperienta": {
+     "Avansat - între 5 și 7 ani": {
+      "n": 1,
+      "mediana": 9192
+     }
+    }
+   }
+  },
+  {
+   "slug": "asistent-farmacie",
+   "nume": "Asistent de farmacie",
+   "cor": "321301",
+   "oferte": 2,
+   "posturi": 2,
+   "angajatori": 2,
+   "judete": 2,
+   "baza": {
+    "brut": 1,
+    "net": 1,
+    "nedeclarata": 0
+   },
+   "brutNormaIntreaga": {
+    "n": 1,
+    "laSalariulMinim": 1,
+    "p25": 4325,
+    "mediana": 4325,
+    "p75": 4325,
+    "cuInterval": 0,
+    "medianaPeExperienta": {
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 1,
+      "mediana": 4325
+     }
+    }
+   }
+  },
+  {
+   "slug": "fizioterapeut",
+   "nume": "Fizioterapeut",
+   "cor": "226402",
+   "oferte": 2,
+   "posturi": 4,
+   "angajatori": 2,
+   "judete": 2,
+   "baza": {
+    "brut": 0,
+    "net": 0,
+    "nedeclarata": 2
+   },
+   "brutNormaIntreaga": null
+  },
+  {
+   "slug": "agent-asigurari",
+   "nume": "Agent de asigurări",
+   "cor": "332101",
+   "oferte": 2,
+   "posturi": 10,
+   "angajatori": 2,
+   "judete": 2,
+   "baza": {
+    "brut": 1,
+    "net": 0,
+    "nedeclarata": 1
+   },
+   "brutNormaIntreaga": {
+    "n": 1,
+    "laSalariulMinim": 1,
+    "p25": 4325,
+    "mediana": 4325,
+    "p75": 4325,
+    "cuInterval": 0,
+    "medianaPeExperienta": {
+     "Fără experiență - 0 ani": {
+      "n": 1,
+      "mediana": 4325
+     }
+    }
+   }
+  },
+  {
+   "slug": "inginer-electronist",
+   "nume": "Inginer electronist",
+   "cor": "215213",
+   "oferte": 2,
+   "posturi": 2,
+   "angajatori": 2,
+   "judete": 2,
+   "baza": {
+    "brut": 0,
+    "net": 0,
+    "nedeclarata": 2
+   },
+   "brutNormaIntreaga": null
+  },
+  {
+   "slug": "sofer-ambulanta",
+   "nume": "Șofer de ambulanță",
+   "cor": "832203",
+   "oferte": 2,
+   "posturi": 2,
+   "angajatori": 2,
+   "judete": 2,
+   "baza": {
+    "brut": 1,
+    "net": 0,
+    "nedeclarata": 1
+   },
+   "brutNormaIntreaga": {
+    "n": 1,
+    "laSalariulMinim": 1,
+    "p25": 4325,
+    "mediana": 4325,
+    "p75": 4325,
+    "cuInterval": 0,
+    "medianaPeExperienta": {
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 1,
+      "mediana": 4325
+     }
+    }
+   }
+  },
+  {
+   "slug": "logistician",
+   "nume": "Logistician",
+   "cor": "214955",
+   "oferte": 2,
+   "posturi": 2,
+   "angajatori": 2,
+   "judete": 2,
+   "baza": {
+    "brut": 2,
+    "net": 0,
+    "nedeclarata": 0
+   },
+   "brutNormaIntreaga": {
+    "n": 2,
+    "laSalariulMinim": 1,
+    "p25": 4325,
+    "mediana": 4325,
+    "p75": 7671,
+    "cuInterval": 1,
+    "medianaPeExperienta": {
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 1,
+      "mediana": 7671
+     },
+     "Experiență medie - între 3 și 5 ani": {
+      "n": 1,
+      "mediana": 4325
+     }
+    }
+   }
+  },
+  {
+   "slug": "agent-imobiliar",
+   "nume": "Agent imobiliar",
+   "cor": "333401",
+   "oferte": 2,
+   "posturi": 2,
+   "angajatori": 2,
+   "judete": 2,
+   "baza": {
+    "brut": 2,
+    "net": 0,
+    "nedeclarata": 0
+   },
+   "brutNormaIntreaga": {
+    "n": 2,
+    "laSalariulMinim": 2,
+    "p25": 4325,
+    "mediana": 4325,
+    "p75": 4325,
+    "cuInterval": 1,
+    "medianaPeExperienta": {
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 1,
+      "mediana": 4325
+     },
+     "Fără experiență - 0 ani": {
+      "n": 1,
+      "mediana": 4325
+     }
+    }
+   }
+  },
+  {
+   "slug": "sondor",
+   "nume": "Sondor",
+   "cor": "811310",
+   "oferte": 2,
+   "posturi": 20,
+   "angajatori": 1,
+   "judete": 1,
+   "baza": {
+    "brut": 0,
+    "net": 2,
+    "nedeclarata": 0
+   },
+   "brutNormaIntreaga": null
+  },
+  {
+   "slug": "operator-epurare",
+   "nume": "Operator stație de epurare",
+   "cor": "818902",
+   "oferte": 2,
+   "posturi": 3,
+   "angajatori": 2,
+   "judete": 2,
+   "baza": {
+    "brut": 0,
+    "net": 0,
+    "nedeclarata": 2
+   },
+   "brutNormaIntreaga": null
+  },
+  {
+   "slug": "profesor",
+   "nume": "Profesor",
+   "cor": "233002",
+   "oferte": 1,
+   "posturi": 5,
+   "angajatori": 1,
+   "judete": 1,
+   "baza": {
+    "brut": 1,
+    "net": 0,
+    "nedeclarata": 0
+   },
+   "brutNormaIntreaga": {
+    "n": 1,
+    "laSalariulMinim": 0,
+    "p25": 18379,
+    "mediana": 18379,
+    "p75": 18379,
+    "cuInterval": 0,
+    "medianaPeExperienta": {
+     "Experiență puțină - mai puțin de 3 ani": {
+      "n": 1,
+      "mediana": 18379
+     }
+    }
+   }
+  },
+  {
+   "slug": "ofiter-credite",
+   "nume": "Ofițer de credite",
+   "cor": "241230",
+   "oferte": 1,
+   "posturi": 2,
+   "angajatori": 1,
+   "judete": 1,
+   "baza": {
+    "brut": 0,
+    "net": 0,
+    "nedeclarata": 1
+   },
+   "brutNormaIntreaga": null
+  },
+  {
+   "slug": "postas",
+   "nume": "Poștaș",
+   "cor": "441206",
+   "oferte": 1,
+   "posturi": 2,
+   "angajatori": 1,
+   "judete": 1,
+   "baza": {
+    "brut": 1,
+    "net": 0,
+    "nedeclarata": 0
+   },
+   "brutNormaIntreaga": {
+    "n": 1,
+    "laSalariulMinim": 1,
+    "p25": 4325,
+    "mediana": 4325,
+    "p75": 4325,
+    "cuInterval": 0,
+    "medianaPeExperienta": {
+     "Fără experiență - 0 ani": {
+      "n": 1,
+      "mediana": 4325
+     }
+    }
+   }
+  },
+  {
+   "slug": "jandarm",
+   "nume": "Jandarm",
+   "cor": "541101",
+   "oferte": 1,
+   "posturi": 1,
+   "angajatori": 1,
+   "judete": 1,
+   "baza": {
+    "brut": 0,
+    "net": 0,
+    "nedeclarata": 1
+   },
+   "brutNormaIntreaga": null
+  },
+  {
+   "slug": "traducator",
+   "nume": "Traducător",
+   "cor": "264306",
+   "oferte": 1,
+   "posturi": 1,
+   "angajatori": 1,
+   "judete": 1,
+   "baza": {
+    "brut": 1,
+    "net": 0,
+    "nedeclarata": 0
+   },
+   "brutNormaIntreaga": {
+    "n": 1,
+    "laSalariulMinim": 1,
+    "p25": 4325,
+    "mediana": 4325,
+    "p75": 4325,
+    "cuInterval": 1,
+    "medianaPeExperienta": {
+     "Fără experiență - 0 ani": {
+      "n": 1,
+      "mediana": 4325
+     }
+    }
+   }
+  },
+  {
+   "slug": "administrator-bloc",
+   "nume": "Administrator de bloc",
+   "cor": "515102",
+   "oferte": 1,
+   "posturi": 1,
+   "angajatori": 1,
+   "judete": 1,
+   "baza": {
+    "brut": 0,
+    "net": 0,
+    "nedeclarata": 1
+   },
+   "brutNormaIntreaga": null
+  },
+  {
+   "slug": "ingrijitor-batrani",
+   "nume": "Îngrijitor de bătrâni",
+   "cor": "532201",
+   "oferte": 1,
+   "posturi": 2,
+   "angajatori": 1,
+   "judete": 1,
+   "baza": {
+    "brut": 0,
+    "net": 1,
+    "nedeclarata": 0
+   },
+   "brutNormaIntreaga": null
+  },
+  {
+   "slug": "cizmar",
+   "nume": "Cizmar",
+   "cor": "753601",
+   "oferte": 1,
+   "posturi": 1,
+   "angajatori": 1,
+   "judete": 1,
+   "baza": {
+    "brut": 1,
+    "net": 0,
+    "nedeclarata": 0
+   },
+   "brutNormaIntreaga": {
+    "n": 1,
+    "laSalariulMinim": 0,
+    "p25": 4330,
+    "mediana": 4330,
+    "p75": 4330,
+    "cuInterval": 1,
+    "medianaPeExperienta": {
+     "Experimentat - mai mult de 7 ani": {
+      "n": 1,
+      "mediana": 4330
+     }
+    }
+   }
+  },
+  {
+   "slug": "tester-qa",
+   "nume": "Tester QA",
+   "cor": "351108",
+   "oferte": 0
+  },
+  {
+   "slug": "medic-rezident",
+   "nume": "Medic rezident",
+   "cor": "221102",
+   "oferte": 0
+  },
+  {
+   "slug": "registrator-medical",
+   "nume": "Registrator medical",
+   "cor": "422207",
+   "oferte": 0
+  },
+  {
+   "slug": "educator",
+   "nume": "Educator",
+   "cor": "234201",
+   "oferte": 0
+  },
+  {
+   "slug": "profesor-universitar",
+   "nume": "Profesor universitar",
+   "cor": "231005",
+   "oferte": 0
+  },
+  {
+   "slug": "instructor-auto",
+   "nume": "Instructor auto",
+   "cor": "516502",
+   "oferte": 0
+  },
+  {
+   "slug": "auditor",
+   "nume": "Auditor financiar",
+   "cor": "241107",
+   "oferte": 0
+  },
+  {
+   "slug": "avocat",
+   "nume": "Avocat",
+   "cor": "261101",
+   "oferte": 0
+  },
+  {
+   "slug": "notar",
+   "nume": "Notar",
+   "cor": "261906",
+   "oferte": 0
+  },
+  {
+   "slug": "judecator",
+   "nume": "Judecător",
+   "cor": "261202",
+   "oferte": 0
+  },
+  {
+   "slug": "procuror",
+   "nume": "Procuror",
+   "cor": "261201",
+   "oferte": 0
+  },
+  {
+   "slug": "grefier",
+   "nume": "Grefier",
+   "cor": "343102",
+   "oferte": 0
+  },
+  {
+   "slug": "inginer-agronom",
+   "nume": "Inginer agronom",
+   "cor": "213201",
+   "oferte": 0
+  },
+  {
+   "slug": "miner",
+   "nume": "Miner",
+   "cor": "811101",
+   "oferte": 0
+  },
+  {
+   "slug": "mecanic-locomotiva",
+   "nume": "Mecanic de locomotivă",
+   "cor": "831101",
+   "oferte": 0
+  },
+  {
+   "slug": "insotitor-de-bord",
+   "nume": "Însoțitor de bord (stewardesă)",
+   "cor": "511101",
+   "oferte": 0
+  },
+  {
+   "slug": "agent-turism",
+   "nume": "Agent de turism",
+   "cor": "422101",
+   "oferte": 0
+  },
+  {
+   "slug": "editor",
+   "nume": "Editor",
+   "cor": "264211",
+   "oferte": 0
+  },
+  {
+   "slug": "cameraman",
+   "nume": "Cameraman",
+   "cor": "352131",
+   "oferte": 0
+  },
+  {
+   "slug": "regizor",
+   "nume": "Regizor",
+   "cor": "265410",
+   "oferte": 0
+  },
+  {
+   "slug": "designer-grafic",
+   "nume": "Designer grafic",
+   "cor": "216601",
+   "oferte": 0
+  },
+  {
+   "slug": "fermier",
+   "nume": "Fermier",
+   "cor": "613001",
+   "oferte": 0
+  },
+  {
+   "slug": "silvicultor",
+   "nume": "Silvicultor",
+   "cor": "213234",
+   "oferte": 0
+  },
+  {
+   "slug": "operator-statie-apa",
+   "nume": "Operator stație de apă",
+   "cor": "313202",
+   "oferte": 0
+  },
+  {
+   "slug": "bibliotecar",
+   "nume": "Bibliotecar",
+   "cor": "262202",
+   "oferte": 0
+  },
+  {
+   "slug": "antrenor-sportiv",
+   "nume": "Antrenor sportiv",
+   "cor": "342201",
+   "oferte": 0
+  },
+  {
+   "slug": "preot",
+   "nume": "Preot",
+   "cor": "263627",
+   "oferte": 0
+  },
+  {
+   "slug": "bijutier",
+   "nume": "Bijutier",
+   "cor": "731302",
+   "oferte": 0
+  },
+  {
+   "slug": "marinar",
+   "nume": "Marinar",
+   "cor": "835001",
+   "oferte": 0
+  },
+  {
+   "slug": "inginer-aeronautic",
+   "nume": "Inginer aeronautic",
+   "cor": "214437",
+   "oferte": 0
+  },
+  {
+   "slug": "crupier",
+   "nume": "Crupier",
+   "cor": "421201",
+   "oferte": 0
+  },
+  {
+   "slug": "pescar",
+   "nume": "Pescar",
+   "cor": "622201",
+   "oferte": 0
+  }
+ ]
+}

@@ -3907,3 +3907,17 @@ acolo unde legea spune 15%: se calculează pe o bază veche, deci grila × proce
 Următorul pas: colectarea fișierelor din 30 septembrie 2026 (spitale județene, DGASPC), un
 cititor pe modele de fișiere cu teste, agregare pe meserie × județ × gradație cu praguri, apoi
 noul prim ecran pe primele meserii peste prag. Pe site nu s-a schimbat nimic azi.
+
+Tot 26 septembrie, decizia proprietarului: colectare **continuă** din mai multe surse, fără
+cereri către instituții (CLAUDE.md actualizat; pauza de șase luni din 7 septembrie e
+înlocuită). Sursa nouă: ANOFM (`mediere.anofm.ro`, declarare obligatorie prin Legea 76/2002)
+— 8.759 de oferte active, 949 de coduri COR, 4.101 angajatori, 42 de județe, fiecare cu
+COR, brut/net declarat, minim și maxim, normă, experiență cerută, CUI. Colector:
+`scripts/colectare/anofm.mjs` (doar oferte noi, fără contacte, fără cod/nume pentru
+persoane fizice), programat zilnic în `.github/workflows/colectare.yml`, date în
+`colectare/anofm/`. Rezumat pe catalog: `scripts/colectare/anofm-rezumat.mjs` — 84 din 116
+meserii cu COR au oferte; la normă întreagă cu brut, 43% declară exact salariul minim (pază
+81%, casier 80%, șofer TIR 69%), deci ANOFM e salariul de bază declarat, afișat ca atare.
+Găsit: taximetrist, șofer ridesharing și șofer de distribuție au același COR (832201).
+Arhitectura: `research/meserii-2026-09-26/ARHITECTURA-COLECTARE.md`. Confirmate ca surse
+de construit: site-urile de cariere Lidl și Kaufland (salariu pe post și magazin).

@@ -101,13 +101,33 @@ noastră de a oferi un răspuns verificabil. Nu limita cercetarea la cuvinte uș
 și nu relua auditul tehnic general. Volumele SE Ranking sunt estimări de căutări,
 nu impresii sau clicuri garantate; variantele aceleiași intenții se pot suprapune.
 
-### Salarii pe meserii — colectarea decisă pe 7 septembrie 2026
+### Salarii pe meserii — decizia proprietarului din 26 septembrie 2026
+
+Înlocuiește pauza de șase luni de mai jos. Proprietarul vrea **colectare continuă, din
+mai multe surse**, ca fiecare job să aibă un salariu de referință mai granular decât la
+orice concurent. Arhitectura: `research/meserii-2026-09-26/`.
+
+- **Sursa principală pe meseriile de la stat:** listele de transparență salarială (art. 33
+  din Legea 153/2017), publicate de instituții pe 31 martie și 30 septembrie; la multe
+  spitale, un rând pe post ocupat, cu sumele plătite. Aprobată ca cifră principală unde
+  trece pragurile.
+- **Ofertele:** ANOFM (`mediere.anofm.ro`, obligatoriu prin lege, cod COR, bază net/brut
+  declarată, experiență cerută, CUI) zilnic, plus platformele existente și site-urile de
+  cariere ale angajatorilor mari. Aceeași ofertă din mai multe surse se leagă prin
+  angajator + COR + localitate, nu se numără de două ori.
+- **Salario coboară** din primul ecran la surse secundare și iese acolo unde avem date
+  proprii peste prag. E concurent.
+- **Nu propune cereri către instituții** (Ministerul Muncii, INS, REGES): proprietarul nu
+  trimite asemenea mesaje. Datele vin din ce e publicat.
+- Nu se păstrează date de contact, iar pentru angajatorii persoane fizice (cod fiscal de 13
+  cifre, PFA, II, IF) nici codul, nici numele.
+
+### Salarii pe meserii — colectarea decisă pe 7 septembrie 2026 (înlocuită parțial)
 
 Proprietarul cere o colectare amplă a anunțurilor active la momentul verificării,
-cât mai completă pe fiecare sursă, pentru toate meseriile din catalog. După această
-perioadă de colectare intenționează o pauză de aproximativ șase luni. Nu programa
-recrawl automat; data fotografiei pieței rămâne vizibilă și nu devine o promisiune
-că ofertele vor fi actuale pe toată durata pauzei.
+cât mai completă pe fiecare sursă, pentru toate meseriile din catalog. Pauza de șase luni
+și interdicția de recrawl automat au fost înlocuite pe 26 septembrie 2026 (mai sus); data
+fotografiei pieței rămâne vizibilă pe fiecare cifră.
 
 Scopul cifrei orientative este compararea remunerației și alegerea carierei.
 Preferința este pentru un indicator central, rezistent la extreme. Ofertele,
