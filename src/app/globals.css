@@ -34,6 +34,11 @@
   --color-cerneala: #121212;
 }
 
+/* PC cu ecran destul de înalt: două coloane (md) și cel puțin 700 px în înălțime.
+   Ce se adaugă pe verticală sub varianta asta nu are voie să scoată butonul
+   „Calculează” din ecran; pragul e măsurat în CalculatorSalariu.tsx. */
+@custom-variant pc-inalt (@media (min-width: 48rem) and (min-height: 700px));
+
 /* Cifra principală a unui calcul — singurul loc din interfață unde apare
    galbenul, în afara mărcii. Una pe ecran; dacă apare peste tot, nu mai
    marchează nimic. */

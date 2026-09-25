@@ -975,13 +975,17 @@ export default function CalculatorSalariu({
             // Pe telefon, direcția stă pe tot rândul, sub titlu, cu butoane de 44 px; lipită de
             // titlu umplea rândul (15 px între ele). Coloanele stau una sub alta, deci alinierea
             // cu „Rezultat calcul” contează doar de la 640 px, unde revine în dreptul titlului.
-            <div className={`${colHeader} sm:flex sm:items-center sm:justify-between sm:gap-2`}>
-              <h2>{t.dateSalariale}</h2>
-              <div role="group" aria-label={t.directieCalcul} className="mt-3 flex w-full overflow-hidden rounded border border-stone-300 sm:mt-0 sm:w-auto sm:shrink-0">
+            // Pe PC cu ecran înalt (`pc-inalt`, globals.css), butoanele de 44 px revin pe tot
+            // rândul, dar sub linia titlului, ca linia să rămână în dreptul celei de la „Rezultat
+            // calcul” (proprietar, 26 septembrie 2026). Pe 1280×607 (1920 px cu scalare 150%)
+            // rândul în plus ar scoate „Calculează” din ecran, deci acolo rămân lângă titlu.
+            <div className={`${colHeader} sm:flex sm:items-center sm:justify-between sm:gap-2 pc-inalt:mb-5 pc-inalt:block pc-inalt:border-b-0 pc-inalt:pb-0`}>
+              <h2 className="pc-inalt:mb-4 pc-inalt:border-b pc-inalt:border-stone-200 pc-inalt:pb-2">{t.dateSalariale}</h2>
+              <div role="group" aria-label={t.directieCalcul} className="mt-3 flex w-full overflow-hidden rounded border border-stone-300 sm:mt-0 sm:w-auto sm:shrink-0 pc-inalt:w-full">
                 <button
                   type="button"
                   aria-pressed={mod === "brut"}
-                  className={`relative inline-flex h-11 flex-1 items-center justify-center px-2 text-sm font-medium transition-colors sm:h-[26px] sm:flex-none sm:after:absolute sm:after:inset-x-0 sm:after:-inset-y-[9px] sm:after:content-[''] ${mod === "brut" ? "bg-stone-900 text-white" : "text-stone-600 hover:bg-canvas"}`}
+                  className={`relative inline-flex h-11 flex-1 items-center justify-center px-2 text-sm font-medium transition-colors sm:h-[26px] sm:flex-none sm:after:absolute sm:after:inset-x-0 sm:after:-inset-y-[9px] sm:after:content-[''] pc-inalt:h-11 pc-inalt:flex-1 pc-inalt:after:content-none ${mod === "brut" ? "bg-stone-900 text-white" : "text-stone-600 hover:bg-canvas"}`}
                   onClick={() => {
                     if (mod === "brut") return;
                     if (mod === "net") {
@@ -996,7 +1000,7 @@ export default function CalculatorSalariu({
                 <button
                   type="button"
                   aria-pressed={mod === "net"}
-                  className={`border-l border-stone-300 relative inline-flex h-11 flex-1 items-center justify-center px-2 text-sm font-medium transition-colors sm:h-[26px] sm:flex-none sm:after:absolute sm:after:inset-x-0 sm:after:-inset-y-[9px] sm:after:content-[''] ${mod === "net" ? "bg-stone-900 text-white" : "text-stone-600 hover:bg-canvas"}`}
+                  className={`border-l border-stone-300 relative inline-flex h-11 flex-1 items-center justify-center px-2 text-sm font-medium transition-colors sm:h-[26px] sm:flex-none sm:after:absolute sm:after:inset-x-0 sm:after:-inset-y-[9px] sm:after:content-[''] pc-inalt:h-11 pc-inalt:flex-1 pc-inalt:after:content-none ${mod === "net" ? "bg-stone-900 text-white" : "text-stone-600 hover:bg-canvas"}`}
                   onClick={() => {
                     if (mod === "net") return;
                     if (mod === "brut") {

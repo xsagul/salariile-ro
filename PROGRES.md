@@ -3770,3 +3770,12 @@ eticheta lipită de câmp dădea impresia. Eticheta stă acum deasupra și pe de
 telefon; condiția proprietarului era ca „Calculează” să rămână în ecran. La 1280×607:
 520 px înainte, 574 după (598 cu mesajul „Scrie mai întâi un salariu”), din 607. Direcția
 de calcul rămâne lângă titlu: mutată și ea sub titlu, butonul cobora la 632 px, sub ecran.
+
+Tot 26 septembrie: pe PC cu ecran înalt, direcția de calcul revine pe tot rândul, cu
+butoane de 44 px, ca pe telefon (cerut de proprietar: „să nu pară gol și să fie mai ușor de
+apăsat”). Variantă nouă `pc-inalt` în globals.css: de la 768 px lățime ȘI 700 px înălțime.
+Rândul stă sub linia titlului, deci linia rămâne în dreptul celei de la „Rezultat calcul”
+(261/261 px, măsurat). Pragul de înălțime e măsurat: la 1280×700 „Calculează” ajunge la
+642 px (664 cu mesajul de eroare). Sub 700 px — inclusiv ecranul proprietarului, 1920 px cu
+scalare 150%, adică 1280×607 — butoanele rămân mici, lângă titlu, și „Calculează” la 576 px;
+cu rândul în plus ar fi ieșit din ecran (632 px).
