@@ -59,12 +59,10 @@ export type TexteCalculator = {
   salariuNet: string;
   exemplu: string;
   eroareSalariuGol: string;
-  /** Nota de sub câmp când brutul calculat e sub salariul minim al lunii, pe un rând:
-   *  „Sub minimul de 4.325 lei · Calculator part-time” are 266 px la 12 px, iar câmpul
-   *  are 294 px pe un telefon de 360 px (proprietar, 26 septembrie 2026). Cu „salariul
-   *  minim” întreg avea 300 px și se rupea pe 360 px. */
+  /** Nota de sub câmp când brutul calculat e sub salariul minim al lunii, pe un rând.
+   *  Fără link spre calculatorul part-time: cine lucrează cu normă parțială îl caută
+   *  direct (proprietar, 26 septembrie 2026). */
   subMinim: (minim: string) => string;
-  subMinimLink: string;
   ascundeAvansate: string;
   calculatorAvansat: string;
   calculeaza: string;
@@ -212,8 +210,7 @@ const RO: TexteCalculator = {
   salariuNet: "Salariu net",
   exemplu: "ex:",
   eroareSalariuGol: "Scrie mai întâi un salariu.",
-  subMinim: (minim) => `Sub minimul de ${minim}`,
-  subMinimLink: "Calculator part-time",
+  subMinim: (minim) => `Sub salariul minim de ${minim}.`,
   ascundeAvansate: "▲ Ascunde opțiuni avansate",
   calculatorAvansat: "▼ Calculator avansat",
   calculeaza: "Calculează",
@@ -358,8 +355,7 @@ const EN: TexteCalculator = {
   salariuNet: "Net salary",
   exemplu: "e.g.",
   eroareSalariuGol: "Enter a salary first.",
-  subMinim: (minim) => `Under the ${minim} minimum`,
-  subMinimLink: "Part-time calculator",
+  subMinim: (minim) => `Below the minimum wage of ${minim}.`,
   ascundeAvansate: "▲ Hide advanced options",
   calculatorAvansat: "▼ Advanced calculator",
   calculeaza: "Calculate",

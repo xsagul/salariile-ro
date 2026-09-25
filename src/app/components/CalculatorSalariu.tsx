@@ -895,10 +895,10 @@ export default function CalculatorSalariu({
   // Și alegerea altei luni, dacă are alte reguli fiscale.
   const stale = rezAfisat !== null && (rezKey !== inputKey(pregatesteInput(input), mod) || rezRegim !== regimActiv);
   // Brutul calculat sub salariul minim al lunii: calculul rămâne (poate fi o lună lucrată
-  // parțial), dar câmpul se marchează și nota de sub el spune ce acoperă rezultatul și
-  // trimite la calculatorul part-time: la normă parțială contribuțiile se plătesc de regulă
-  // la nivelul minimului, iar calculul de aici nu face asta (proprietar, 26 septembrie 2026). Doar după calcul și cât rezultatul e la zi, ca
-  // nota să nu apară la fiecare cifră tastată. Fluturașul își compune singur brutul din ore.
+  // parțial), dar câmpul se marchează și nota de sub el spune minimul lunii, fără link:
+  // cine lucrează cu normă parțială caută direct calculatorul part-time (proprietar,
+  // 26 septembrie 2026). Doar după calcul și cât rezultatul e la zi, ca nota să nu apară
+  // la fiecare cifră tastată. Fluturașul își compune singur brutul din ore.
   const minimRezultat = REGIMURI_FISCALE_SALARIU[rezRegim].salariuMinim;
   const subMinim = !fluturas && rezAfisat !== null && !stale && parseFloat(rezAfisat.brutEfectiv) < minimRezultat;
   // Reținerile se aplică live pe net (scădere simplă, fără recalcul fiscal).
@@ -1068,12 +1068,7 @@ export default function CalculatorSalariu({
           )}
 
           <InputNumber id="salariu-input" unit={etMonedaLuna} label={fluturas ? t.salariuDeBazaBrut : mod === "brut" ? t.salariuBrut : t.salariuNet} value={input.brut} onChange={(v) => { set("brut", v); if (emptyWarn) setEmptyWarn(false); }} placeholder={`${t.exemplu} ${exemplu(exempluMinim(regimActiv)[mod])}`} onEnter={handleCalculeaza} error={emptyWarn ? t.eroareSalariuGol : undefined}
-            aviz={subMinim ? (
-              <>
-                {t.subMinim(fmt(minimRezultat))}
-                {embedded ? "." : <> · <Link href="/calculator-salariu-part-time" className="whitespace-nowrap font-medium text-stone-900 underline underline-offset-2">{t.subMinimLink}</Link></>}
-              </>
-            ) : undefined} tall inline={cuPerioada && !fluturas}
+            aviz={subMinim ? t.subMinim(fmt(minimRezultat)) : undefined} tall inline={cuPerioada && !fluturas}
             ajutor={cuPerioada && !fluturas ? { text: mod === "brut" ? t.ajutorBrut : t.ajutorNet, titlu: mod === "brut" ? t.ajutorBrutTitlu : t.ajutorNetTitlu, deschis: ajutor === "salariu", onToggle: () => comutaAjutor("salariu") } : undefined} />
 
           {/* Anul și luna salariului, pe un rând sub etichetă (cerut de proprietar, 25 septembrie

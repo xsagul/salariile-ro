@@ -3823,3 +3823,8 @@ Măsurat la 12 px: 266 px; încape pe un rând la 360, 375, 1024 și 1280 px (c�
 pe 360). „Sub salariul minim de …” avea 300 px și se rupea pe 360. Pe fereastra îngustă de
 PC (768–1023 px, câmp de ~220 px) trece pe două rânduri. Cu nota, „Calculează” stă la 600 px
 din 607 pe 1280×607, deci rămâne în ecran.
+
+Tot 26 septembrie, decis de proprietar: nota de sub-minim NU are link spre calculatorul
+part-time („dacă voia part-time, era pe calculatorul part-time”). Textul e acum doar „Sub
+salariul minim de 4.325 lei.”, pe un rând la 360, 773 și 1280 px, fără niciun link.
+Nu reintroduce trimiteri din explicațiile de sub câmpuri.
