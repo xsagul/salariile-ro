@@ -15,7 +15,7 @@ Un fișier gol de fapte nu poate diverge.
 |---|---|---|
 | Strategie, priorități, decizii luate | `CLAUDE.md` | nicăieri altundeva |
 | Constante fiscale (salariu minim, cote, plafoane) | `src/lib/fiscal.ts` | proza documentelor |
-| Cifre INS (câștig mediu, date pe județ/CAEN) | `src/lib/ins-date.ts` | proza documentelor |
+| Cifre INS (câștig mediu, date pe județ/CAEN) | `src/lib/date-salarii.ts`, `src/lib/ins-date.ts` | proza documentelor |
 | Identitate vizuală, voce, reguli de scriere | `BRAND.md` | — |
 | Ce s-a făcut și ce a eșuat, cronologic | `PROGRES.md` (append-only) | — |
 | Cercetare și audituri datate | fișierele cu dată în nume — **arhivă, nu se editează** | — |
