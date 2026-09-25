@@ -32,11 +32,13 @@ export const SARBATORI_LEGALE_2027: Record<string,string> = {
   '11-30':'Sfântul Andrei','12-1':'Ziua Națională','12-25':'Crăciunul','12-26':'A doua zi de Crăciun',
 };
 // Anii cu pagină de zile libere (cerut de proprietar pe 25 septembrie 2026, după
-// zileliberelegale.ro, care are file pe ani). 2026 și 2027 au listele verificate
-// mai sus; ceilalți se calculează din Codul Muncii, art. 139, în vigoare, și din
-// data Paștelui ortodox. `scripts/test-calendar.mts` cere ca listele calculate
-// pentru 2026 și 2027 să fie identice cu cele verificate.
-export const ANI_CALENDAR = [2026, 2027, 2028, 2029, 2030, 2031] as const;
+// zileliberelegale.ro, care are file pe ani). 2025 a intrat în locul lui 2031 în
+// aceeași zi: „zile libere 2025” are încă 33.100 de căutări pe lună, 2031 nimic.
+// 2026 și 2027 au listele verificate mai sus; ceilalți se calculează din Codul
+// Muncii, art. 139 (6 și 7 ianuarie sunt în lege din 2024), și din data Paștelui
+// ortodox. `scripts/test-calendar.mts` cere ca listele calculate pentru 2026 și 2027
+// să fie identice cu cele verificate.
+export const ANI_CALENDAR = [2025, 2026, 2027, 2028, 2029, 2030] as const;
 
 const ZI_MS = 86_400_000;
 

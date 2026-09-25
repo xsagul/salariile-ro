@@ -53,8 +53,9 @@ export default function CalendarAn({ an, luni, dataBuild }: { an: number; luni: 
 
   const d = azi === null ? null : new Date(azi);
   const anAzi = d?.getUTCFullYear();
-  // Lunile dinaintea celei curente; toate, dacă anul calendarului a trecut.
-  const trecute = d === null ? 0 : anAzi! > an ? 12 : anAzi! < an ? 0 : d.getUTCMonth();
+  // Lunile dinaintea celei curente, doar în anul în curs. Un an încheiat (pagina 2025)
+  // rămâne neestompat: acolo nu e nimic „de urmat”, ar fi doar greu de citit.
+  const trecute = d !== null && anAzi === an ? d.getUTCMonth() : 0;
   const ziAzi = d !== null && anAzi === an ? `${d.getUTCMonth() + 1}-${d.getUTCDate()}` : null;
 
   return (

@@ -3665,3 +3665,11 @@ Zile libere pe ani, cerut de proprietar după zileliberelegale.ro (locul 2), car
 - Cerere măsurată în SE Ranking (RO), 25 sept.: „zile libere 2025” încă 33.100/lună, vârf
   110.000 în martie–aprilie 2026; 2027–2031 fără date încă. 2028–2031 sunt în sitemap cu
   prioritate 0,5; nu au trafic de așteptat înainte de anul lor.
+
+Aceeași zi, la propunerea proprietarului: 2031 scos, 2025 adăugat (filele: 2025–2030).
+„Zile libere 2025” are încă 33.100 de căutări pe lună, 2031 nimic. 2025 se calculează
+(Paștele 20 aprilie, Rusaliile 8–9 iunie, 17 sărbători; 6–7 ianuarie sunt în art. 139
+din 2024). Regula „niciun an vechi sus” nu e încălcată: fila 2025 stă într-un `<nav>`,
+pe care testul o exclude explicit, iar pe fiecare pagină e selectat anul ei. Pe o pagină
+de an încheiat lunile nu se mai estompează. /zile-libere-2031 a fost public ~20 de minute;
+nu are redirect.

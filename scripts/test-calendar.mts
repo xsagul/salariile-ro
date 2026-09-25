@@ -17,7 +17,9 @@ assert.deepEqual(Object.entries(sarbatoriCalculate(2026)),Object.entries(SARBATO
 assert.deepEqual(Object.entries(sarbatoriCalculate(2027)),Object.entries(SARBATORI_LEGALE_2027));
 // Paștele ortodox, după paschalia publicată: 2026–2031.
 const paste=(an:number)=>new Date(pasteOrtodox(an)).toISOString().slice(0,10);
-assert.deepEqual([2026,2027,2028,2029,2030,2031].map(paste),['2026-04-12','2027-05-02','2028-04-16','2029-04-08','2030-04-28','2031-04-13']);
-assert.equal(sarbatoriAn(2031)['6-1'],'Rusalii / Ziua Copilului'); // Paștele pe 13 aprilie: Rusaliile cad de 1 iunie
-assert.throws(()=>sarbatoriAn(2032));
+assert.deepEqual([2025,2026,2027,2028,2029,2030,2031].map(paste),['2025-04-20','2026-04-12','2027-05-02','2028-04-16','2029-04-08','2030-04-28','2031-04-13']);
+assert.equal(sarbatoriCalculate(2031)['6-1'],'Rusalii / Ziua Copilului'); // Paștele pe 13 aprilie: Rusaliile cad de 1 iunie
+assert.equal(Object.keys(sarbatoriAn(2025)).length,17);
+assert.throws(()=>sarbatoriAn(2031));
+assert.throws(()=>sarbatoriAn(2024));
 console.log('OK: calendare, Paște/Rusalii, intervale incluzive, suprapuneri, DST și date invalide.');

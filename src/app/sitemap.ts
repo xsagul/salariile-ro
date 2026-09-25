@@ -23,10 +23,10 @@ const STATIC_ENTRIES: {
 }[] = [
   { path: "/zile-libere-2027", priority: 0.8, changeFrequency: "yearly" },
   { path: "/zile-lucratoare-2027", priority: 0.8, changeFrequency: "yearly" },
+  { path: "/zile-libere-2025", priority: 0.7, changeFrequency: "yearly" },
   { path: "/zile-libere-2028", priority: 0.5, changeFrequency: "yearly" },
   { path: "/zile-libere-2029", priority: 0.5, changeFrequency: "yearly" },
   { path: "/zile-libere-2030", priority: 0.5, changeFrequency: "yearly" },
-  { path: "/zile-libere-2031", priority: 0.5, changeFrequency: "yearly" },
   { path: "/", priority: 1, changeFrequency: "monthly" },
   { path: "/salariu-minim", priority: 0.9, changeFrequency: "monthly" },
   { path: "/salariu-minim-constructii-2026", priority: 0.85, changeFrequency: "monthly" },
