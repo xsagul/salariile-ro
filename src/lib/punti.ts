@@ -1,6 +1,7 @@
-// Zilele libere legate și punțile, calculate din calendarul legal (src/lib/sarbatori.ts).
-// O singură regulă pentru cardurile de lângă tabelul sărbătorilor și pentru hașura
-// din calendarul de pe Zile libere, ca cele două să nu se contrazică.
+// Zilele libere legate și punțile, calculate din calendarul legal (src/lib/sarbatori.ts),
+// pentru cardurile de lângă tabelul sărbătorilor. Calendarul nu marchează punțile:
+// o hașură a fost încercată și scoasă pe 25 septembrie 2026 (proprietar), cardul le
+// arată deja, iar „punți 2026” nu are volum de căutare măsurabil în SE Ranking.
 //
 // Zilele sunt momente UTC la miezul nopții: `Date.UTC(an, luna, zi)`.
 

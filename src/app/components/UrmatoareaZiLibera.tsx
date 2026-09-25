@@ -12,12 +12,12 @@
 
 import { useEffect, useState } from "react";
 import { oraServer, ziRo } from "@/lib/azi-ro";
-import { ZILE, data, interval, punti, urmatoarea, ziSapt, zile } from "@/lib/punti";
+import { ZILE, ZI_MS, data, interval, punti, urmatoarea, ziSapt, zile } from "@/lib/punti";
 import { CARD_TITLU } from "@/app/components/ui";
 
 const CARD = "rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6";
 
-export default function UrmatoareaZiLibera({ dataBuild }: { dataBuild: string }) {
+export default function UrmatoareaZiLibera({ an, dataBuild }: { an: number; dataBuild: string }) {
   const [azi, setAzi] = useState(() => ziRo(new Date(dataBuild)));
   useEffect(() => {
     let activ = true;
@@ -29,8 +29,15 @@ export default function UrmatoareaZiLibera({ dataBuild }: { dataBuild: string })
     };
   }, [dataBuild]);
   const u = urmatoarea(azi);
-  const p = punti(azi).slice(0, 3);
   const anAzi = new Date(azi).getUTCFullYear();
+  // Cât ține anul paginii: următoarele 3 punți, inclusiv cele de la începutul anului
+  // următor. După ce anul s-a terminat, pagina lui arată toate punțile acelui an, nu
+  // pe ale anului în curs (proprietar, 25 septembrie 2026).
+  const anTrecut = anAzi > an;
+  const p = anTrecut
+    ? punti(Date.UTC(an, 0, 1) - ZI_MS).filter((x) => new Date(x.concediu[0]).getUTCFullYear() === an)
+    : punti(azi).slice(0, 3);
+  const anText = anTrecut ? an : anAzi;
 
   return (
     <div className="flex flex-col gap-6">
@@ -53,15 +60,15 @@ export default function UrmatoareaZiLibera({ dataBuild }: { dataBuild: string })
 
       {p.length ? (
         <div className={CARD}>
-          <h2 className={CARD_TITLU}>Punțile care urmează</h2>
+          <h2 className={CARD_TITLU}>{anTrecut ? `Punțile din ${an}` : "Punțile care urmează"}</h2>
           <ul className="flex flex-col divide-y divide-stone-100 text-sm">
             {p.map((x) => (
               <li key={x.s} className="py-3 first:pt-0 last:pb-0">
                 <p className="font-semibold text-stone-900">
-                  {zile(x.total)} libere: {interval(x.s, x.e, anAzi)}
+                  {zile(x.total)} libere: {interval(x.s, x.e, anText)}
                 </p>
                 <p className="text-stone-600">
-                  {x.concediu.length === 1 ? "o zi de concediu" : `${x.concediu.length} zile de concediu`}: {interval(x.concediu[0], x.concediu[x.concediu.length - 1], anAzi)}
+                  {x.concediu.length === 1 ? "o zi de concediu" : `${x.concediu.length} zile de concediu`}: {interval(x.concediu[0], x.concediu[x.concediu.length - 1], anText)}
                 </p>
               </li>
             ))}

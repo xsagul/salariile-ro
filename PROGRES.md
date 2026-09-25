@@ -3630,3 +3630,15 @@ nu mai dă de două ori aceeași punte, când două sărbători duc la ea.
 
 Rămas: secțiunea „Minivacanțe și punți 2026” de mai jos e scrisă de mână și spune
 „3–7 ianuarie, 5 zile” pentru ziua de 5 ianuarie; calculul dă 1–7 ianuarie, 7 zile.
+
+A doua zi de lucru pe calendar, tot 25 septembrie, după ce proprietarul a văzut rezultatul:
+- Hașura cu punți scoasă din calendar: cardul le arată deja, iar în SE Ranking (RO) nicio
+  variantă cu „punte”/„minivacanțe 2026” nu are volum măsurabil; „zile libere 2026” are
+  74.000. Calculul rămâne în `src/lib/punti.ts`, pentru card.
+- Textul de sub luni scos, fiindcă lungea cardurile. Numele sărbătorii apare la atingere
+  (sau la mouse, doar pe ecrane cu hover), iar pe ziua de azi scrie „Azi”. Grila e acum
+  componenta client `CalendarAn.tsx`, care înlocuiește `CalendarAzi.tsx`; HTML-ul static
+  rămâne complet, fără „azi” marcat.
+- Cardul „Punțile care urmează”: cât ține 2026, următoarele 3, inclusiv din ianuarie 2027
+  (ca înainte). De la 1 ianuarie 2027, pagina 2026 arată „Punțile din 2026”, toate cele 6,
+  nu pe cele din 2027. Simulat pe 25.09.2026, 20.12.2026 și 01.03.2027.
