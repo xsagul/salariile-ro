@@ -9,7 +9,7 @@ import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 import { SARBATORI_LEGALE_2026 as HOLIDAYS } from "@/lib/sarbatori";
 import TabelArticol from "@/app/components/TabelArticol";
-import { TITLU_CARD, TITLU_PAGINA, TITLU_SECTIUNE, SEPARATOR_SECTIUNE, SPATIU_JOS, SPATIU_SUS, SUB_TITLU } from "@/app/components/ui";
+import { TITLU_CARD, TITLU_PAGINA, TITLU_SECTIUNE, SEPARATOR_SECTIUNE, SPATIU_JOS, SPATIU_SUS, SUB_TITLU, LISTA_FAQ } from "@/app/components/ui";
 
 // ─── Metadata SEO ────────────────────────────────────────────────────────────
 
@@ -276,7 +276,7 @@ export default function ZileLibere2026Page() {
             <div className={`${card} max-w-3xl`}>
               <p className="text-xs font-medium uppercase tracking-wide text-stone-600">Tabel separat</p>
               <h2 className={`mt-2 ${TITLU_CARD}`}>Ai nevoie de zilele și orele lucrătoare pe lună?</h2>
-              <p className="mt-3 max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600">
+              <p className="mt-2 max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600">
                 Pagina dedicată centralizează pentru fiecare lună numărul de zile lucrătoare și orele la norme de 8, 6 și 4 ore,
                 plus totalurile anuale. Aici păstrăm calendarul sărbătorilor și al minivacanțelor.
               </p>
@@ -312,8 +312,8 @@ export default function ZileLibere2026Page() {
           {/* FAQ + SURSE */}
           <div className={`${SEPARATOR_SECTIUNE} md:grid md:grid-cols-5 md:gap-8 lg:gap-10`}>
             <div className="md:col-span-3">
-              <h2 className={`mb-4 ${TITLU_SECTIUNE}`}>Întrebări frecvente</h2>
-              <div className="flex flex-col">
+              <h2 className={TITLU_SECTIUNE}>Întrebări frecvente</h2>
+              <div className={LISTA_FAQ}>
                 {FAQ.map((item, i) => (
                   <details key={i} name="faq-zile" className="group border-b border-stone-200">
                     <summary className="flex min-h-11 cursor-pointer items-center justify-between gap-4 py-4 text-base font-medium tracking-[-0.01em] text-stone-900 [&::-webkit-details-marker]:hidden">

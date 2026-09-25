@@ -6,7 +6,7 @@
 
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
-import { Breadcrumb, Faq, H1, Lead, TITLU_SECTIUNE, SPATIU_JOS, SPATIU_SUS, SECTIUNE_DUPA_TEXT } from "@/app/components/ui";
+import { Breadcrumb, Faq, H1, Lead, TITLU_SECTIUNE, SPATIU_JOS, SPATIU_SUS, SECTIUNE_DUPA_TEXT, SUB_TITLU_SECTIUNE_CUTIE } from "@/app/components/ui";
 import { NotaSursa, lunaLunga } from "@/app/components/Salarii";
 import { AN_OCUPATII, LUNA_REFERINTA, MATRICE_BRUT, MATRICE_NET, MATRICE_OCUPATII } from "@/lib/ins-date";
 import { MESERII, COMPARATII, dateMeserieSauEroare } from "@/lib/meserii";
@@ -117,9 +117,9 @@ export default function ComparaPage() {
             Oferta e în brut? Vezi cât rămâne în mână cu{" "}
             <Link href="/" className="font-medium text-stone-900 underline underline-offset-2">calculatorul de salariu net</Link>.
           </p>
-          <h2 className={`${SECTIUNE_DUPA_TEXT} ${TITLU_SECTIUNE}`}>Comparații detaliate</h2>
+          <h2 className={`${SECTIUNE_DUPA_TEXT} ${SUB_TITLU_SECTIUNE_CUTIE} ${TITLU_SECTIUNE}`}>Comparații detaliate</h2>
 
-          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {comparatii.map(({ comparatie, a, b }) => (
               <Link
                 key={comparatie.slug}

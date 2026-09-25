@@ -9,7 +9,7 @@ import { notFound } from "next/navigation";
 import { getArticle, getAllSlugs, getAllArticles, formatDateRo } from "@/lib/noutati";
 import { personSchema } from "@/lib/person";
 import { NUME_SITE, OG_IMAGE } from "@/lib/seo";
-import { Prose, TITLU_CARD, TITLU_PAGINA, SPATIU_JOS, SPATIU_SUS, SUB_BREADCRUMB, SUB_TITLU, SEPARATOR_SECTIUNE } from "@/app/components/ui";
+import { Prose, TITLU_CARD, TITLU_PAGINA, SPATIU_JOS, SPATIU_SUS, SUB_BREADCRUMB, SUB_TITLU, SEPARATOR_SECTIUNE, SUB_TITLU_SECTIUNE_CUTIE } from "@/app/components/ui";
 
 export function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
@@ -161,7 +161,7 @@ export default async function ArticolPage({ params }: { params: Promise<{ slug: 
           {/* Articole conexe — funnel intern, ține cititorul în cluster */}
           {related.length > 0 && (
             <aside className={SEPARATOR_SECTIUNE} aria-label="Articole conexe">
-              <h2 className={`mb-3 ${TITLU_CARD}`}>Citește și</h2>
+              <h2 className={`${SUB_TITLU_SECTIUNE_CUTIE} ${TITLU_CARD}`}>Citește și</h2>
               <ul className="grid gap-4 sm:grid-cols-2">
                 {related.map((r) => (
                   <li key={r.slug}>

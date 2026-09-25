@@ -38,6 +38,8 @@ export const TITLU_CARD = "text-base font-bold tracking-[-0.01em] text-stone-900
 //   deasupra subtitlului                     30          38
 //   paragraf → paragraf                      24          26
 //   ultimul conținut → subsol                38          44
+//   titlul secțiunii → text                  24          28
+//   titlul cardului → text                   20          20
 // Cu breadcrumb, el ia locul titlului sub bară, iar titlul vine la ~16/20 px
 // sub el. Rândurile de pe salariu-minim și salariu-mediu repetă 38/42 ca
 // variantă de copil (`[&>div]:`), pe care o constantă n-o poate exprima.
@@ -57,13 +59,21 @@ export const SUB_BREADCRUMB = "mb-1.5 sm:mb-2";
 export const SUB_TITLU = "mt-[11px] sm:mt-3.5 2xl:mt-3";
 /** Sub un paragraf de text de 16 px, până la următorul. */
 export const SPATIU_PARAGRAF = "mb-3 sm:mb-3.5";
+/** Sub titlul unei secțiuni, când urmează text. */
+export const SUB_TITLU_SECTIUNE = "mb-3 sm:mb-4";
+/** Sub titlul unei secțiuni, când urmează direct carduri sau un tabel. */
+export const SUB_TITLU_SECTIUNE_CUTIE = "mb-[18px] sm:mb-[22px]";
+/** Lista de întrebări: prima întrebare stă la distanța de text sub titlu. */
+export const LISTA_FAQ = "flex flex-col [&>details:first-child>summary]:pt-3 sm:[&>details:first-child>summary]:pt-4";
 
 const PROSE = [
-  "[&_h2]:mt-8 sm:[&_h2]:mt-9 [&_h2]:mb-4 [&_h2]:text-[22px] [&_h2]:font-bold [&_h2]:leading-tight [&_h2]:tracking-[-0.02em] [&_h2]:text-stone-900 lg:[&_h2]:text-2xl",
+  "[&_h2]:mt-8 sm:[&_h2]:mt-9 [&_h2]:mb-3 sm:[&_h2]:mb-4 [&_h2]:text-[22px] [&_h2]:font-bold [&_h2]:leading-tight [&_h2]:tracking-[-0.02em] [&_h2]:text-stone-900 lg:[&_h2]:text-2xl",
   "[&>h2:first-child]:mt-0 [&>:last-child]:mb-0 [&_li:last-child]:mb-0",
   // După un card, un tabel sau o formulă, marginea de sus a titlului e marginea
   // vizibilă, deci distanța se ia de acolo, nu de la un rând de text.
   "[&>:is(figure,table,.table-wrap,section)+h2]:mt-[38px] sm:[&>:is(figure,table,.table-wrap,section)+h2]:mt-[42px]",
+  // Și invers: un tabel direct sub titlu stă la distanța de card, nu de text.
+  "[&_h2+:is(table,.table-wrap)]:mt-[18px] sm:[&_h2+:is(table,.table-wrap)]:mt-[22px]",
   "[&_h3]:mt-4 sm:[&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:tracking-[-0.01em] [&_h3]:text-stone-900",
   "[&_p]:mb-3 sm:[&_p]:mb-3.5 [&_p]:text-base [&_p]:leading-normal [&_p]:tracking-[-0.01em] [&_p]:text-stone-600",
   "[&_ul]:mb-3 sm:[&_ul]:mb-3.5 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:text-stone-600 [&_li]:mb-2 [&_li]:leading-normal [&_li]:tracking-[-0.01em]",
@@ -206,8 +216,8 @@ export function Faq({
         <GrilaPagina
           companion={companion}
           continut={<>
-        <h2 className={`mb-6 ${TITLU_SECTIUNE}`}>{title}</h2>
-        <div className="flex flex-col">
+        <h2 className={TITLU_SECTIUNE}>{title}</h2>
+        <div className={LISTA_FAQ}>
           {items.map((item, i) => (
             <details key={i} name="faq" className="group border-b border-stone-200">
               {/* min-h-11 = 44px, pragul de zona de atingere. Cu `py-4` pe
@@ -249,7 +259,7 @@ export function PaginiConexe({
   return (
     <section className={`border-t border-stone-200 bg-canvas ${SPATIU_SECTIUNE}`}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <h2 className={`mb-5 ${TITLU_SECTIUNE}`}>{titlu}</h2>
+        <h2 className={`${SUB_TITLU_SECTIUNE_CUTIE} ${TITLU_SECTIUNE}`}>{titlu}</h2>
         <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {linkuri.map((link) => (
             <li key={link.href}>
@@ -348,7 +358,7 @@ export function CardCompanion({
   nota?: string;
 }) {
   return (
-    <div className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
+    <div className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 [&>dl>div:first-child]:pt-0">
       <h3 className={CARD_TITLU}>{titlu}</h3>
       {children}
       {nota ? <p className="mt-3 text-xs text-stone-600">{nota}</p> : null}
@@ -443,7 +453,7 @@ export function Repere({ randuri }: { randuri: readonly (readonly [string, strin
   return (
     <dl className="text-sm">
       {randuri.map(([k, v]) => (
-        <div key={k} className="flex items-center justify-between gap-3 border-b border-stone-100 py-2 last:border-b-0">
+        <div key={k} className="flex items-center justify-between gap-3 border-b border-stone-100 py-2 first:pt-0 last:border-b-0">
           <dt className="text-stone-600">{k}</dt>
           <dd className="font-medium tabular-nums whitespace-nowrap text-stone-900">{v}</dd>
         </div>

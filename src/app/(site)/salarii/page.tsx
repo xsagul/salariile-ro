@@ -178,7 +178,7 @@ export default function SalariiPage() {
                   {categorie.nume}
                 </Link>
               </h2>
-              <p className="mt-1 text-sm text-stone-600">
+              <p className="mt-[13px] text-sm text-stone-600 sm:mt-[17px]">
                 {categorie.descriere}{" "}
                 <Link
                   href={`/salarii/domeniu/${categorie.slug}`}

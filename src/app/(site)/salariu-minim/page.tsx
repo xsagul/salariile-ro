@@ -8,7 +8,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "@/app/components/Link";
-import { Formula, TITLU_CARD, TITLU_PAGINA, TITLU_SECTIUNE, SPATIU_JOS, SPATIU_SUS, SUB_TITLU } from "@/app/components/ui";
+import { Formula, TITLU_CARD, TITLU_PAGINA, TITLU_SECTIUNE, SPATIU_JOS, SPATIU_SUS, SUB_TITLU, LISTA_FAQ } from "@/app/components/ui";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 import { calculStandard, calculStandardCuRegim, PLAFON_FACILITATE, SALARIU_MINIM, SALARIU_MINIM_CONSTRUCTII } from "@/lib/fiscal";
@@ -181,7 +181,7 @@ const jsonLd = {
 // ─── Stiluri ─────────────────────────────────────────────────────────────────
 
 const articol =
-  "[&>h2]:mt-8 sm:[&>h2]:mt-9 [&>h2]:mb-4 [&>h2]:text-[22px] [&>h2]:font-bold [&>h2]:leading-tight [&>h2]:tracking-[-0.02em] [&>h2]:text-stone-900 lg:[&>h2]:text-2xl [&>h2:first-child]:mt-0 [&>:last-child]:mb-0 " +
+  "[&>h2]:mt-8 sm:[&>h2]:mt-9 [&>h2]:mb-3 sm:[&>h2]:mb-4 [&>h2]:text-[22px] [&>h2]:font-bold [&>h2]:leading-tight [&>h2]:tracking-[-0.02em] [&>h2]:text-stone-900 lg:[&>h2]:text-2xl [&>h2:first-child]:mt-0 [&>:last-child]:mb-0 " +
   "[&_p]:mb-3 sm:[&_p]:mb-3.5 [&_p]:text-base [&_p]:leading-normal [&_p]:tracking-[-0.01em] [&_p]:text-stone-600 " +
   "[&_ul]:mb-3 sm:[&_ul]:mb-3.5 [&_ul]:list-disc [&_ul]:pl-5 [&_li]:mb-2 [&_li]:leading-normal [&_li]:tracking-[-0.01em] [&_li]:text-stone-600 " +
   "[&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-600 " +
@@ -650,8 +650,8 @@ export default function SalariuMinimPage() {
             {/* FAQ */}
             <div className={row}>
               <div className="md:col-span-3">
-                <h2 className={`mb-4 ${TITLU_SECTIUNE}`}>Întrebări frecvente</h2>
-                <div className="flex flex-col">
+                <h2 className={TITLU_SECTIUNE}>Întrebări frecvente</h2>
+                <div className={LISTA_FAQ}>
                   {FAQ.map((item, i) => (
                     <details key={i} name="faq-minim" className="group border-b border-stone-200">
                       <summary className="flex min-h-11 cursor-pointer items-center justify-between gap-4 py-4 text-base font-medium tracking-[-0.01em] text-stone-900 [&::-webkit-details-marker]:hidden">

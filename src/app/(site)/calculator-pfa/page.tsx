@@ -3,7 +3,7 @@
 // (hero pe grilă + calculator + zonă-articol 3+2 cu carduri-companion).
 
 import type { Metadata } from "next";
-import { Formula, PaginiConexe, TITLU_PAGINA, TITLU_SECTIUNE, SPATIU_SECTIUNE, SPATIU_SUS, SUB_TITLU, SPATIU_PARAGRAF } from "@/app/components/ui";
+import { Formula, PaginiConexe, TITLU_PAGINA, TITLU_SECTIUNE, SPATIU_SECTIUNE, SPATIU_SUS, SUB_TITLU, SPATIU_PARAGRAF, SUB_TITLU_SECTIUNE, LISTA_FAQ } from "@/app/components/ui";
 import Link from "@/app/components/Link";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
@@ -197,7 +197,7 @@ export default function CalculatorPfaPage() {
             {/* Rândul 1 — Cum se calculează + card Plafoane */}
             <div className="md:grid md:grid-cols-5 md:gap-6">
               <div className={`md:col-span-3 ${proseLinks}`}>
-                <h2 className={`mb-4 ${TITLU_SECTIUNE}`}>Cum se calculează taxele unui PFA</h2>
+                <h2 className={`${SUB_TITLU_SECTIUNE} ${TITLU_SECTIUNE}`}>Cum se calculează taxele unui PFA</h2>
                 <div className="max-w-prose">
                   <p className={p}>
                     Totul pornește de la <strong>venitul net</strong>: ce ai încasat într-un an, minus cheltuielile
@@ -240,7 +240,7 @@ export default function CalculatorPfaPage() {
             {/* Rândul 1b — Tabel pe tranșe + cardul pragului */}
             <div className="md:grid md:grid-cols-5 md:gap-6">
               <div className={`md:col-span-3 ${proseLinks}`}>
-                <h2 className={`mb-4 ${TITLU_SECTIUNE}`}>
+                <h2 className={`${SUB_TITLU_SECTIUNE} ${TITLU_SECTIUNE}`}>
                   Cât plătește un PFA, pe tranșe de venit
                 </h2>
                 <p className={p}>
@@ -297,7 +297,7 @@ export default function CalculatorPfaPage() {
             {/* Rândul 1c — Sistem real vs normă de venit */}
             <div className="md:grid md:grid-cols-5 md:gap-6">
               <div className={`md:col-span-3 ${proseLinks}`}>
-                <h2 className={`mb-4 ${TITLU_SECTIUNE}`}>
+                <h2 className={`${SUB_TITLU_SECTIUNE} ${TITLU_SECTIUNE}`}>
                   Sistem real sau normă de venit
                 </h2>
                 <p className={p}>
@@ -351,7 +351,7 @@ export default function CalculatorPfaPage() {
             {/* Rândul 1d — PFA sau SRL */}
             <div className="md:grid md:grid-cols-5 md:gap-6">
               <div className={`md:col-span-3 ${proseLinks}`}>
-                <h2 className={`mb-4 ${TITLU_SECTIUNE}`}>
+                <h2 className={`${SUB_TITLU_SECTIUNE} ${TITLU_SECTIUNE}`}>
                   PFA sau SRL: ce diferă, dincolo de taxe
                 </h2>
                 <p className={p}>
@@ -438,7 +438,7 @@ export default function CalculatorPfaPage() {
               <aside className="mt-8 md:col-span-2 md:mt-0 md:self-start">
                 <div className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
                   <h3 className="mb-2 text-base font-bold tracking-[-0.01em] text-stone-900">Calendarul unui PFA</h3>
-                  <dl className="text-sm">
+                  <dl className="text-sm [&>div:first-child]:pt-0">
                     <div className="border-b border-stone-100 py-2">
                       <dt className="font-medium text-stone-900">Declarația unică (D212)</dt>
                       <dd className="text-stone-600">
@@ -469,8 +469,8 @@ export default function CalculatorPfaPage() {
             {/* Rândul 2 — FAQ + card Surse */}
             <div className="md:grid md:grid-cols-5 md:gap-6">
               <div className="md:col-span-3">
-                <h2 className={`mb-6 ${TITLU_SECTIUNE}`}>Întrebări frecvente</h2>
-                <div className="flex flex-col">
+                <h2 className={TITLU_SECTIUNE}>Întrebări frecvente</h2>
+                <div className={LISTA_FAQ}>
                   {FAQ.map((item, i) => (
                     <details key={i} name="faq-pfa" className="group border-b border-stone-200">
                       <summary className="flex min-h-11 cursor-pointer items-center justify-between gap-4 py-4 text-base font-medium tracking-[-0.01em] text-stone-900 [&::-webkit-details-marker]:hidden">

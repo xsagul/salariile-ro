@@ -3567,3 +3567,8 @@ variante), pe care proprietarul nu le-a fixat.
 
 Reparat pe drum: contractul pentru titluri din `42adb47` avea un caracter
 backspace în regex în loc de `` și nu verifica nimic.
+
+Completare în aceeași zi: titlul secțiunii → text 24 / 28 px și titlul cardului → text
+20 px, alese de proprietar. Măsurat după, cu toleranță de 1 px: 94–95% dintre secțiuni și
+80% dintre carduri (fără panourile calculatoarelor); restul sunt paginile de meserie,
+lunile din calendarul Zile libere 2026 (22 px) și două carduri cu tabel.

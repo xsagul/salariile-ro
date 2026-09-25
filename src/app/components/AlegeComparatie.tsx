@@ -12,7 +12,7 @@ export default function AlegeComparatie({options}:{options:OptiuneComparatie[]})
   if(!a||!b) return null;
   return <section className="mt-8 rounded-md border border-stone-300 bg-surface p-5 sm:p-6" aria-labelledby="alege-comparatie">
     <h2 id="alege-comparatie" className={TITLU_CARD}>Alege oricare două meserii</h2>
-    <div className="mt-5 grid gap-4 sm:grid-cols-2">
+    <div className="mt-2 grid gap-4 sm:grid-cols-2">
       {([{id:'meserie-a',label:'Prima meserie',value:first,change:setFirst},{id:'meserie-b',label:'A doua meserie',value:second,change:setSecond}]).map(x=><div key={x.id}>
         <label htmlFor={x.id} className="block text-sm font-medium">{x.label}</label>
         <select id={x.id} value={x.value} onChange={e=>x.change(e.target.value)} className="mt-2 min-h-11 w-full rounded border border-stone-300 bg-surface px-3 text-base">
