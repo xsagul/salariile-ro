@@ -3789,3 +3789,9 @@ cu `pc-inalt`; forma scurtă a `@custom-variant` nu acceptă o listă de media q
 virgulă (Tailwind a ignorat-o fără eroare), de aceea e scrisă cu bloc și `@slot`.
 Măsurat: nu mai iese din card la 773, 900, 1023 px; liniile titlurilor aliniate (282/282);
 de la 1024 px butoanele încap lângă titlu. La 1280×607 nu s-a schimbat nimic (574 px).
+
+Tot 26 septembrie, observat de proprietar: exemplul din câmpul de salariu rămânea „ex: 4.325”
+și după alegerea unei luni cu alt salariu minim. Acum urmează regimul lunii alese
+(`exempluMinim(regimActiv)`, din fiscal.ts), în ambele direcții. Verificat în browser:
+mai 2026 → 4.050 / net 2.574; septembrie 2026 → net 2.699; martie 2024 → 3.300 / net 2.079;
+septembrie 2024 → 3.700. HTML-ul static rămâne pe luna build-ului.

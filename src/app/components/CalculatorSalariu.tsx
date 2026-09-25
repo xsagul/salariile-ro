@@ -5,12 +5,10 @@ import { usePathname } from "next/navigation";
 import Link from "@/app/components/Link";
 import { masoaraCalcul, trimiteEveniment } from "@/lib/analytics";
 import {
-  calculeaza,
   calculeazaCuRegim,
   calculeazaBrutDinNetCuRegim,
   REGIM_FISCAL_CURENT,
   REGIMURI_FISCALE_SALARIU,
-  SALARIU_MINIM,
   regimPentruLuna,
   type InputState,
   type RegimFiscalSalariu,
@@ -163,19 +161,22 @@ function inputKey(inp: InputState, m: "brut" | "net") {
   ]);
 }
 
-// Exemple pentru placeholder – derivate din fiscal.ts (NU hardcodate).
-const EX_PLACEHOLDER_BRUT = String(SALARIU_MINIM); // 4325
-const EX_PLACEHOLDER_NET = String(
-  calculeaza({
-    brut: String(SALARIU_MINIM),
+// Exemplele din câmpul de salariu: salariul minim al lunii alese și netul lui, în cazul
+// standard, derivate din fiscal.ts (NU hardcodate). Urmează luna: pentru mai 2026 scrie
+// 4.050, nu 4.325 (observat de proprietar, 26 septembrie 2026).
+function exempluMinim(regim: RegimFiscalSalariu): { brut: number; net: number } {
+  const brut = REGIMURI_FISCALE_SALARIU[regim].salariuMinim;
+  const net = calculeazaCuRegim({
+    brut: String(brut),
     tichete: "",
     functieDeBAza: true,
     persoanePretretinere: 0,
     varstaSub26: false,
     copiiScolarizati: 0,
     scutitImpozit: false,
-  })?.net ?? ""
-); // = 2699 (salariul minim net, caz standard, din 1 iulie 2026)
+  }, regim)?.net ?? 0;
+  return { brut, net };
+}
 
 // ─── Componente UI ────────────────────────────────────────────────────────────
 
@@ -1052,7 +1053,7 @@ export default function CalculatorSalariu({
           </div>
           )}
 
-          <InputNumber id="salariu-input" unit={etMonedaLuna} label={fluturas ? t.salariuDeBazaBrut : mod === "brut" ? t.salariuBrut : t.salariuNet} value={input.brut} onChange={(v) => { set("brut", v); if (emptyWarn) setEmptyWarn(false); }} placeholder={mod === "brut" ? `${t.exemplu} ${exemplu(Number(EX_PLACEHOLDER_BRUT))}` : `${t.exemplu} ${exemplu(Number(EX_PLACEHOLDER_NET))}`} onEnter={handleCalculeaza} error={emptyWarn ? t.eroareSalariuGol : undefined} tall inline={cuPerioada && !fluturas}
+          <InputNumber id="salariu-input" unit={etMonedaLuna} label={fluturas ? t.salariuDeBazaBrut : mod === "brut" ? t.salariuBrut : t.salariuNet} value={input.brut} onChange={(v) => { set("brut", v); if (emptyWarn) setEmptyWarn(false); }} placeholder={`${t.exemplu} ${exemplu(exempluMinim(regimActiv)[mod])}`} onEnter={handleCalculeaza} error={emptyWarn ? t.eroareSalariuGol : undefined} tall inline={cuPerioada && !fluturas}
             ajutor={cuPerioada && !fluturas ? { text: mod === "brut" ? t.ajutorBrut : t.ajutorNet, titlu: mod === "brut" ? t.ajutorBrutTitlu : t.ajutorNetTitlu, deschis: ajutor === "salariu", onToggle: () => comutaAjutor("salariu") } : undefined} />
 
           {/* Anul și luna salariului, pe un rând sub etichetă (cerut de proprietar, 25 septembrie
