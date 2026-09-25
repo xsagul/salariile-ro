@@ -3921,3 +3921,25 @@ meserii cu COR au oferte; la normă întreagă cu brut, 43% declară exact salar
 Găsit: taximetrist, șofer ridesharing și șofer de distribuție au același COR (832201).
 Arhitectura: `research/meserii-2026-09-26/ARHITECTURA-COLECTARE.md`. Confirmate ca surse
 de construit: site-urile de cariere Lidl și Kaufland (salariu pe post și magazin).
+
+Tot 26 septembrie, noaptea — **arhitectura salariului-concluzie, prima versiune funcțională.**
+- `scripts/colectare/art33/`: cititor de liste art. 33 pe coordonatele reale din PDF (pdf.js)
+  și din XLSX (exceljs); recunoaște bază, baze de calcul, procente, ore, sporuri fixe,
+  variabile, hrană, total; pagini rotite, text dublat, cuvinte rupte; perioada din document;
+  poartă de calitate pe fișier (≥ 90% rânduri valide, mediană plauzibilă) — ce pică merge la
+  „de verificat”, nu în calcule. `descopera.mjs` găsește singur cel mai recent fișier pornind
+  de la pagina instituției (28 din 35 din prima rulare). `functii.mjs`: dicționarul funcție →
+  meserie, fără funcții de conducere. Teste: `scripts/test-art33.mjs` (17 etichete reale).
+- 44 de surse în `colectare/art33/surse.json`; 15 acceptate (spitale județene Alba, Cluj,
+  Bacău, Miercurea Ciuc, Constanța, Sibiu, Buzău, Iași Boli Infecțioase, Turda, Titan
+  București, DGASPC Sector 1 și Călărași, Biblioteca Alba), 13 scanate (fără text — OCR
+  nefăcut), 4 de verificat (Gorj multi-linie, Timișoara antet complex, DGASPC Sector 2, DSP
+  Vaslui), Calafat prea vechi (martie 2024).
+- `scripts/colectare/agregare.mjs`: pe meserie, plătit (art. 33, fiecare instituție cântărește
+  egal, netul calculat pe rând cu regulile lunii), declarat (ANOFM), oferit (anunțuri);
+  concluzia = prima sursă peste prag în ordinea plătit → oferit → declarat, verificată de
+  celelalte. ANOFM intră drept concluzie numai sub 25% oferte la minim.
+- Greșeli prinse pe drum: proba de ieri (Alba, coloană greșită prin poziție); Sibiu „Salariu
+  spor” = bază de calcul (dubla sporul); „veniTURI” citit ca tură; hrana inclusă în total.
+- Rezultat: asistent medical 4.797 lei net fix (P25–P75 4.209–5.806), 5.028 de posturi, 11
+  instituții, 10 județe; anunțurile 4.750 (−1%), ANOFM 3.116 (−35%, minimul formal).

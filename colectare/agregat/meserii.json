@@ -1,0 +1,4709 @@
+{
+ "generatLa": "2026-09-25T23:46:31.906Z",
+ "praguri": {
+  "platit": {
+   "institutii": 5,
+   "judete": 3,
+   "randuri": 50,
+   "vechimeLuniMax": 18
+  },
+  "platitJudet": {
+   "randuri": 30,
+   "institutii": 1
+  },
+  "declarat": {
+   "oferte": 30,
+   "angajatori": 10,
+   "laMinimMax": 0.25
+  }
+ },
+ "observatiiPlatite": 12654,
+ "oferteAnofm": 8759,
+ "meserii": [
+  {
+   "slug": "programator",
+   "nume": "Programator",
+   "cor": "251202",
+   "concluzie": null,
+   "platit": {
+    "randuri": 7,
+    "institutii": 3,
+    "judete": 3,
+    "trece": false,
+    "perioade": [
+     "2026-02",
+     "2026-03"
+    ],
+    "surse": [
+     "Spitalul Clinic Județean de Urgență Sibiu",
+     "Spitalul Județean de Urgență Bacău",
+     "Spitalul Județean de Urgență Miercurea Ciuc"
+    ],
+    "netFix": {
+     "p25": 3925,
+     "mediana": 4153,
+     "p75": 5630
+    },
+    "brutFix": {
+     "p25": 6710,
+     "mediana": 7099,
+     "p75": 9626
+    },
+    "netBaza": {
+     "p25": 3838,
+     "mediana": 3977,
+     "p75": 5455
+    },
+    "debutant": null,
+    "variabil": null,
+    "peJudet": {},
+    "peStudii": {}
+   },
+   "oferit": {
+    "anunturi": 5,
+    "angajatori": 5,
+    "judete": 0,
+    "status": "insufficient",
+    "netCentral": 10000,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 29,
+    "brutNormaIntreaga": 13,
+    "angajatori": 8,
+    "judete": 6,
+    "laMinim": 0.15,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 5382,
+     "mediana": 8190,
+     "p75": 8775
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "web-developer",
+   "nume": "Web developer",
+   "cor": "251208",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 2,
+    "brutNormaIntreaga": 1,
+    "angajatori": 1,
+    "judete": 1,
+    "laMinim": 0,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 5377,
+     "mediana": 5377,
+     "p75": 5377
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "tester-qa",
+   "nume": "Tester QA",
+   "cor": "351108",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 0,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "inginer-telecomunicatii",
+   "nume": "Inginer telecomunicații",
+   "cor": "215204",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 7,
+    "brutNormaIntreaga": 3,
+    "angajatori": 3,
+    "judete": 1,
+    "laMinim": 0,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 4972,
+     "mediana": 5377,
+     "p75": 5595
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "medic",
+   "nume": "Medic",
+   "cor": "221101",
+   "concluzie": {
+    "sursa": "platit",
+    "net": 7601,
+    "interval": [
+     4107,
+     11020
+    ],
+    "ce": "salariul fix plătit la angajatorii publici (bază + sporuri permanente, fără ture și gărzi)",
+    "verificare": {
+     "platit": null,
+     "oferit": {
+      "net": 20000,
+      "diferenta": 163,
+      "trece": false
+     },
+     "declarat": {
+      "net": 5760,
+      "diferenta": -24,
+      "laMinim": 0,
+      "trece": false
+     }
+    }
+   },
+   "platit": {
+    "randuri": 2788,
+    "institutii": 12,
+    "judete": 10,
+    "trece": true,
+    "perioade": [
+     "2026-02",
+     "2026-03"
+    ],
+    "surse": [
+     "DGASPC Călărași",
+     "DGASPC Sector 1",
+     "Spitalul Clinic de Boli Infecțioase Iași",
+     "Spitalul Clinic Județean de Urgență Cluj-Napoca",
+     "Spitalul Clinic Județean de Urgență Constanța",
+     "Spitalul Clinic Județean de Urgență Sibiu",
+     "Spitalul Județean de Urgență Alba Iulia",
+     "Spitalul Județean de Urgență Bacău",
+     "Spitalul Județean de Urgență Buzău",
+     "Spitalul Județean de Urgență Miercurea Ciuc",
+     "Spitalul Municipal Turda",
+     "Spitalul de Psihiatrie Titan Dr. Constantin Gorgos"
+    ],
+    "netFix": {
+     "p25": 4107,
+     "mediana": 7601,
+     "p75": 11020
+    },
+    "brutFix": {
+     "p25": 7020,
+     "mediana": 12993,
+     "p75": 18839
+    },
+    "netBaza": {
+     "p25": 3992,
+     "mediana": 6906,
+     "p75": 10039
+    },
+    "debutant": null,
+    "variabil": {
+     "cota": 0.38,
+     "netCuVariabil": {
+      "p25": 5277,
+      "mediana": 6979,
+      "p75": 10485
+     }
+    },
+    "peJudet": {
+     "IS": {
+      "randuri": 76,
+      "institutii": 1,
+      "net": {
+       "p25": 4271,
+       "mediana": 9168,
+       "p75": 12475
+      }
+     },
+     "CJ": {
+      "randuri": 231,
+      "institutii": 2,
+      "net": {
+       "p25": 3723,
+       "mediana": 5332,
+       "p75": 9741
+      }
+     },
+     "CT": {
+      "randuri": 750,
+      "institutii": 1,
+      "net": {
+       "p25": 4007,
+       "mediana": 4692,
+       "p75": 11904
+      }
+     },
+     "SB": {
+      "randuri": 507,
+      "institutii": 1,
+      "net": {
+       "p25": 4167,
+       "mediana": 5463,
+       "p75": 11674
+      }
+     },
+     "AB": {
+      "randuri": 280,
+      "institutii": 1,
+      "net": {
+       "p25": 4494,
+       "mediana": 7758,
+       "p75": 11218
+      }
+     },
+     "BC": {
+      "randuri": 343,
+      "institutii": 1,
+      "net": {
+       "p25": 2550,
+       "mediana": 8684,
+       "p75": 12340
+      }
+     },
+     "BZ": {
+      "randuri": 262,
+      "institutii": 1,
+      "net": {
+       "p25": 4107,
+       "mediana": 4963,
+       "p75": 11109
+      }
+     },
+     "HR": {
+      "randuri": 333,
+      "institutii": 1,
+      "net": {
+       "p25": 3909,
+       "mediana": 7771,
+       "p75": 11111
+      }
+     }
+    },
+    "peStudii": {
+     "S": {
+      "randuri": 1593,
+      "net": {
+       "p25": 3512,
+       "mediana": 6413,
+       "p75": 11020
+      }
+     }
+    }
+   },
+   "oferit": {
+    "anunturi": 1,
+    "angajatori": 1,
+    "judete": 0,
+    "status": "insufficient",
+    "netCentral": 20000,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 3,
+    "brutNormaIntreaga": 1,
+    "angajatori": 1,
+    "judete": 1,
+    "laMinim": 0,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 5760,
+     "mediana": 5760,
+     "p75": 5760
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "medic-rezident",
+   "nume": "Medic rezident",
+   "cor": "221102",
+   "concluzie": {
+    "sursa": "platit",
+    "net": 5341,
+    "interval": [
+     2579,
+     6844
+    ],
+    "ce": "salariul fix plătit la angajatorii publici (bază + sporuri permanente, fără ture și gărzi)",
+    "verificare": {
+     "platit": null,
+     "oferit": null,
+     "declarat": null
+    }
+   },
+   "platit": {
+    "randuri": 1928,
+    "institutii": 8,
+    "judete": 7,
+    "trece": true,
+    "perioade": [
+     "2026-02",
+     "2026-03"
+    ],
+    "surse": [
+     "Spitalul Clinic Județean de Urgență Cluj-Napoca",
+     "Spitalul Clinic Județean de Urgență Constanța",
+     "Spitalul Clinic Județean de Urgență Sibiu",
+     "Spitalul Județean de Urgență Alba Iulia",
+     "Spitalul Județean de Urgență Bacău",
+     "Spitalul Județean de Urgență Buzău",
+     "Spitalul Județean de Urgență Miercurea Ciuc",
+     "Spitalul Municipal Turda"
+    ],
+    "netFix": {
+     "p25": 2579,
+     "mediana": 5341,
+     "p75": 6844
+    },
+    "brutFix": {
+     "p25": 4288,
+     "mediana": 9129,
+     "p75": 11700
+    },
+    "netBaza": {
+     "p25": 2457,
+     "mediana": 4460,
+     "p75": 5530
+    },
+    "debutant": null,
+    "variabil": {
+     "cota": 0.09,
+     "netCuVariabil": {
+      "p25": 3439,
+      "mediana": 4498,
+      "p75": 7456
+     }
+    },
+    "peJudet": {
+     "CJ": {
+      "randuri": 89,
+      "institutii": 2,
+      "net": {
+       "p25": 2380,
+       "mediana": 4214,
+       "p75": 6427
+      }
+     },
+     "CT": {
+      "randuri": 1069,
+      "institutii": 1,
+      "net": {
+       "p25": 4795,
+       "mediana": 5745,
+       "p75": 7002
+      }
+     },
+     "SB": {
+      "randuri": 604,
+      "institutii": 1,
+      "net": {
+       "p25": 4460,
+       "mediana": 5035,
+       "p75": 5738
+      }
+     },
+     "BC": {
+      "randuri": 55,
+      "institutii": 1,
+      "net": {
+       "p25": 4601,
+       "mediana": 5782,
+       "p75": 7731
+      }
+     },
+     "BZ": {
+      "randuri": 65,
+      "institutii": 1,
+      "net": {
+       "p25": 2499,
+       "mediana": 4996,
+       "p75": 6604
+      }
+     }
+    },
+    "peStudii": {
+     "S": {
+      "randuri": 1696,
+      "net": {
+       "p25": 1427,
+       "mediana": 4568,
+       "p75": 6025
+      }
+     }
+    }
+   },
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 0,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "asistent-medical",
+   "nume": "Asistent medical",
+   "cor": "325901",
+   "concluzie": {
+    "sursa": "platit",
+    "net": 4797,
+    "interval": [
+     4209,
+     5806
+    ],
+    "ce": "salariul fix plătit la angajatorii publici (bază + sporuri permanente, fără ture și gărzi)",
+    "verificare": {
+     "platit": null,
+     "oferit": {
+      "net": 4750,
+      "diferenta": -1,
+      "trece": false
+     },
+     "declarat": {
+      "net": 3116,
+      "diferenta": -35,
+      "laMinim": 0.3,
+      "trece": false
+     }
+    }
+   },
+   "platit": {
+    "randuri": 5028,
+    "institutii": 11,
+    "judete": 10,
+    "trece": true,
+    "perioade": [
+     "2026-02",
+     "2026-03"
+    ],
+    "surse": [
+     "DGASPC Călărași",
+     "DGASPC Sector 1",
+     "Spitalul Clinic de Boli Infecțioase Iași",
+     "Spitalul Clinic Județean de Urgență Cluj-Napoca",
+     "Spitalul Clinic Județean de Urgență Constanța",
+     "Spitalul Clinic Județean de Urgență Sibiu",
+     "Spitalul Județean de Urgență Alba Iulia",
+     "Spitalul Județean de Urgență Bacău",
+     "Spitalul Județean de Urgență Buzău",
+     "Spitalul Județean de Urgență Miercurea Ciuc",
+     "Spitalul Municipal Turda"
+    ],
+    "netFix": {
+     "p25": 4209,
+     "mediana": 4797,
+     "p75": 5806
+    },
+    "brutFix": {
+     "p25": 7196,
+     "mediana": 8200,
+     "p75": 9925
+    },
+    "netBaza": {
+     "p25": 3615,
+     "mediana": 3988,
+     "p75": 4209
+    },
+    "debutant": {
+     "randuri": 86,
+     "net": {
+      "p25": 3220,
+      "mediana": 4323,
+      "p75": 5100
+     }
+    },
+    "variabil": {
+     "cota": 0.71,
+     "netCuVariabil": {
+      "p25": 5444,
+      "mediana": 5846,
+      "p75": 6905
+     }
+    },
+    "peJudet": {
+     "CJ": {
+      "randuri": 269,
+      "institutii": 2,
+      "net": {
+       "p25": 4397,
+       "mediana": 4677,
+       "p75": 5196
+      }
+     },
+     "CT": {
+      "randuri": 1093,
+      "institutii": 1,
+      "net": {
+       "p25": 4775,
+       "mediana": 5500,
+       "p75": 6735
+      }
+     },
+     "SB": {
+      "randuri": 922,
+      "institutii": 1,
+      "net": {
+       "p25": 4778,
+       "mediana": 5251,
+       "p75": 6046
+      }
+     },
+     "AB": {
+      "randuri": 531,
+      "institutii": 1,
+      "net": {
+       "p25": 4762,
+       "mediana": 5357,
+       "p75": 6365
+      }
+     },
+     "BC": {
+      "randuri": 901,
+      "institutii": 1,
+      "net": {
+       "p25": 4753,
+       "mediana": 5098,
+       "p75": 6167
+      }
+     },
+     "BZ": {
+      "randuri": 684,
+      "institutii": 1,
+      "net": {
+       "p25": 4656,
+       "mediana": 5109,
+       "p75": 6066
+      }
+     },
+     "HR": {
+      "randuri": 586,
+      "institutii": 1,
+      "net": {
+       "p25": 4457,
+       "mediana": 4709,
+       "p75": 5446
+      }
+     }
+    },
+    "peStudii": {
+     "S": {
+      "randuri": 712,
+      "net": {
+       "p25": 4419,
+       "mediana": 5161,
+       "p75": 6560
+      }
+     },
+     "SSD": {
+      "randuri": 38,
+      "net": {
+       "p25": 4397,
+       "mediana": 4670,
+       "p75": 4971
+      }
+     },
+     "PL": {
+      "randuri": 2647,
+      "net": {
+       "p25": 4197,
+       "mediana": 4763,
+       "p75": 5635
+      }
+     }
+    }
+   },
+   "oferit": {
+    "anunturi": 20,
+    "angajatori": 16,
+    "judete": 4,
+    "status": "insufficient",
+    "netCentral": 4750,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 55,
+    "brutNormaIntreaga": 44,
+    "angajatori": 19,
+    "judete": 16,
+    "laMinim": 0.3,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2699,
+     "mediana": 3116,
+     "p75": 3230
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "registrator-medical",
+   "nume": "Registrator medical",
+   "cor": "422207",
+   "concluzie": {
+    "sursa": "platit",
+    "net": 3816,
+    "interval": [
+     3550,
+     4331
+    ],
+    "ce": "salariul fix plătit la angajatorii publici (bază + sporuri permanente, fără ture și gărzi)",
+    "verificare": {
+     "platit": null,
+     "oferit": {
+      "net": 3250,
+      "diferenta": -15,
+      "trece": false
+     },
+     "declarat": null
+    }
+   },
+   "platit": {
+    "randuri": 334,
+    "institutii": 10,
+    "judete": 9,
+    "trece": true,
+    "perioade": [
+     "2026-02",
+     "2026-03"
+    ],
+    "surse": [
+     "Spitalul Clinic de Boli Infecțioase Iași",
+     "Spitalul Clinic Județean de Urgență Cluj-Napoca",
+     "Spitalul Clinic Județean de Urgență Constanța",
+     "Spitalul Clinic Județean de Urgență Sibiu",
+     "Spitalul Județean de Urgență Alba Iulia",
+     "Spitalul Județean de Urgență Bacău",
+     "Spitalul Județean de Urgență Buzău",
+     "Spitalul Județean de Urgență Miercurea Ciuc",
+     "Spitalul Municipal Turda",
+     "Spitalul de Psihiatrie Titan Dr. Constantin Gorgos"
+    ],
+    "netFix": {
+     "p25": 3550,
+     "mediana": 3816,
+     "p75": 4331
+    },
+    "brutFix": {
+     "p25": 6068,
+     "mediana": 6523,
+     "p75": 7403
+    },
+    "netBaza": {
+     "p25": 3305,
+     "mediana": 3381,
+     "p75": 3464
+    },
+    "debutant": null,
+    "variabil": {
+     "cota": 0.19,
+     "netCuVariabil": {
+      "p25": 4175,
+      "mediana": 4914,
+      "p75": 5406
+     }
+    },
+    "peJudet": {
+     "CJ": {
+      "randuri": 35,
+      "institutii": 2,
+      "net": {
+       "p25": 3379,
+       "mediana": 3551,
+       "p75": 3635
+      }
+     },
+     "CT": {
+      "randuri": 92,
+      "institutii": 1,
+      "net": {
+       "p25": 3469,
+       "mediana": 3659,
+       "p75": 4680
+      }
+     },
+     "SB": {
+      "randuri": 92,
+      "institutii": 1,
+      "net": {
+       "p25": 3606,
+       "mediana": 3742,
+       "p75": 4918
+      }
+     },
+     "AB": {
+      "randuri": 45,
+      "institutii": 1,
+      "net": {
+       "p25": 3429,
+       "mediana": 3587,
+       "p75": 4086
+      }
+     },
+     "HR": {
+      "randuri": 44,
+      "institutii": 1,
+      "net": {
+       "p25": 3451,
+       "mediana": 3533,
+       "p75": 3846
+      }
+     }
+    },
+    "peStudii": {
+     "M": {
+      "randuri": 227,
+      "net": {
+       "p25": 3530,
+       "mediana": 4127,
+       "p75": 4162
+      }
+     }
+    }
+   },
+   "oferit": {
+    "anunturi": 1,
+    "angajatori": 1,
+    "judete": 0,
+    "status": "insufficient",
+    "netCentral": 3250,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 0,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "stomatolog",
+   "nume": "Stomatolog",
+   "cor": "226101",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 4,
+    "brutNormaIntreaga": 1,
+    "angajatori": 1,
+    "judete": 1,
+    "laMinim": 1,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2699,
+     "mediana": 2699,
+     "p75": 2699
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "tehnician-dentar",
+   "nume": "Tehnician dentar",
+   "cor": "325101",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 4,
+    "brutNormaIntreaga": 2,
+    "angajatori": 2,
+    "judete": 2,
+    "laMinim": 1,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2699,
+     "mediana": 2699,
+     "p75": 2699
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "farmacist",
+   "nume": "Farmacist",
+   "cor": "226201",
+   "concluzie": {
+    "sursa": "platit",
+    "net": 5457,
+    "interval": [
+     4577,
+     6702
+    ],
+    "ce": "salariul fix plătit la angajatorii publici (bază + sporuri permanente, fără ture și gărzi)",
+    "verificare": {
+     "platit": null,
+     "oferit": {
+      "net": 5375,
+      "diferenta": -2,
+      "trece": false
+     },
+     "declarat": {
+      "net": 2699,
+      "diferenta": -51,
+      "laMinim": 0.33,
+      "trece": false
+     }
+    }
+   },
+   "platit": {
+    "randuri": 156,
+    "institutii": 7,
+    "judete": 6,
+    "trece": true,
+    "perioade": [
+     "2026-02",
+     "2026-03"
+    ],
+    "surse": [
+     "DGASPC Sector 1",
+     "Spitalul Clinic Județean de Urgență Cluj-Napoca",
+     "Spitalul Clinic Județean de Urgență Constanța",
+     "Spitalul Județean de Urgență Bacău",
+     "Spitalul Județean de Urgență Buzău",
+     "Spitalul Județean de Urgență Miercurea Ciuc",
+     "Spitalul Municipal Turda"
+    ],
+    "netFix": {
+     "p25": 4577,
+     "mediana": 5457,
+     "p75": 6702
+    },
+    "brutFix": {
+     "p25": 7826,
+     "mediana": 9328,
+     "p75": 11457
+    },
+    "netBaza": {
+     "p25": 4568,
+     "mediana": 5053,
+     "p75": 6239
+    },
+    "debutant": null,
+    "variabil": null,
+    "peJudet": {
+     "CT": {
+      "randuri": 124,
+      "institutii": 1,
+      "net": {
+       "p25": 4448,
+       "mediana": 4670,
+       "p75": 4875
+      }
+     }
+    },
+    "peStudii": {
+     "S": {
+      "randuri": 136,
+      "net": {
+       "p25": 4577,
+       "mediana": 4761,
+       "p75": 5658
+      }
+     }
+    }
+   },
+   "oferit": {
+    "anunturi": 8,
+    "angajatori": 8,
+    "judete": 1,
+    "status": "insufficient",
+    "netCentral": 5375,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 8,
+    "brutNormaIntreaga": 3,
+    "angajatori": 3,
+    "judete": 2,
+    "laMinim": 0.33,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2602,
+     "mediana": 2699,
+     "p75": 2710
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "asistent-farmacie",
+   "nume": "Asistent de farmacie",
+   "cor": "321301",
+   "concluzie": null,
+   "platit": {
+    "randuri": 35,
+    "institutii": 3,
+    "judete": 3,
+    "trece": false,
+    "perioade": [
+     "2026-02",
+     "2026-03"
+    ],
+    "surse": [
+     "Spitalul Clinic Județean de Urgență Constanța",
+     "Spitalul Județean de Urgență Buzău",
+     "Spitalul Municipal Turda"
+    ],
+    "netFix": {
+     "p25": 4469,
+     "mediana": 4536,
+     "p75": 4779
+    },
+    "brutFix": {
+     "p25": 7640,
+     "mediana": 7754,
+     "p75": 8169
+    },
+    "netBaza": {
+     "p25": 3987,
+     "mediana": 4177,
+     "p75": 4187
+    },
+    "debutant": null,
+    "variabil": null,
+    "peJudet": {},
+    "peStudii": {
+     "PL": {
+      "randuri": 27,
+      "net": {
+       "p25": 4469,
+       "mediana": 4536,
+       "p75": 4779
+      }
+     }
+    }
+   },
+   "oferit": {
+    "anunturi": 1,
+    "angajatori": 1,
+    "judete": 1,
+    "status": "insufficient",
+    "netCentral": 5850,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 2,
+    "brutNormaIntreaga": 1,
+    "angajatori": 1,
+    "judete": 1,
+    "laMinim": 1,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2699,
+     "mediana": 2699,
+     "p75": 2699
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "psiholog",
+   "nume": "Psiholog",
+   "cor": "263401",
+   "concluzie": {
+    "sursa": "platit",
+    "net": 6379,
+    "interval": [
+     5944,
+     7065
+    ],
+    "ce": "salariul fix plătit la angajatorii publici (bază + sporuri permanente, fără ture și gărzi)",
+    "verificare": {
+     "platit": null,
+     "oferit": {
+      "net": 4000,
+      "diferenta": -37,
+      "trece": false
+     },
+     "declarat": {
+      "net": 3243,
+      "diferenta": -49,
+      "laMinim": 0,
+      "trece": false
+     }
+    }
+   },
+   "platit": {
+    "randuri": 69,
+    "institutii": 10,
+    "judete": 9,
+    "trece": true,
+    "perioade": [
+     "2026-02",
+     "2026-03"
+    ],
+    "surse": [
+     "DGASPC Sector 1",
+     "Spitalul Clinic de Boli Infecțioase Iași",
+     "Spitalul Clinic Județean de Urgență Cluj-Napoca",
+     "Spitalul Clinic Județean de Urgență Constanța",
+     "Spitalul Clinic Județean de Urgență Sibiu",
+     "Spitalul Județean de Urgență Alba Iulia",
+     "Spitalul Județean de Urgență Bacău",
+     "Spitalul Județean de Urgență Buzău",
+     "Spitalul Județean de Urgență Miercurea Ciuc",
+     "Spitalul de Psihiatrie Titan Dr. Constantin Gorgos"
+    ],
+    "netFix": {
+     "p25": 5944,
+     "mediana": 6379,
+     "p75": 7065
+    },
+    "brutFix": {
+     "p25": 10161,
+     "mediana": 10905,
+     "p75": 12077
+    },
+    "netBaza": {
+     "p25": 4513,
+     "mediana": 5233,
+     "p75": 6092
+    },
+    "debutant": null,
+    "variabil": null,
+    "peJudet": {},
+    "peStudii": {
+     "S": {
+      "randuri": 38,
+      "net": {
+       "p25": 4855,
+       "mediana": 6232,
+       "p75": 6806
+      }
+     }
+    }
+   },
+   "oferit": {
+    "anunturi": 2,
+    "angajatori": 2,
+    "judete": 0,
+    "status": "insufficient",
+    "netCentral": 4000,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 6,
+    "brutNormaIntreaga": 5,
+    "angajatori": 2,
+    "judete": 2,
+    "laMinim": 0,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 3098,
+     "mediana": 3243,
+     "p75": 3257
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "fizioterapeut",
+   "nume": "Fizioterapeut",
+   "cor": "226402",
+   "concluzie": null,
+   "platit": {
+    "randuri": 14,
+    "institutii": 5,
+    "judete": 4,
+    "trece": false,
+    "perioade": [
+     "2026-02",
+     "2026-03"
+    ],
+    "surse": [
+     "Spitalul Clinic Județean de Urgență Cluj-Napoca",
+     "Spitalul Clinic Județean de Urgență Constanța",
+     "Spitalul Județean de Urgență Alba Iulia",
+     "Spitalul Județean de Urgență Buzău",
+     "Spitalul Municipal Turda"
+    ],
+    "netFix": {
+     "p25": 4051,
+     "mediana": 4878,
+     "p75": 6160
+    },
+    "brutFix": {
+     "p25": 6924,
+     "mediana": 8339,
+     "p75": 10529
+    },
+    "netBaza": {
+     "p25": 4048,
+     "mediana": 4229,
+     "p75": 4548
+    },
+    "debutant": null,
+    "variabil": null,
+    "peJudet": {},
+    "peStudii": {}
+   },
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 2,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "kinetoterapeut",
+   "nume": "Kinetoterapeut",
+   "cor": "226401",
+   "concluzie": {
+    "sursa": "platit",
+    "net": 5107,
+    "interval": [
+     3940,
+     5690
+    ],
+    "ce": "salariul fix plătit la angajatorii publici (bază + sporuri permanente, fără ture și gărzi)",
+    "verificare": {
+     "platit": null,
+     "oferit": {
+      "net": 3000,
+      "diferenta": -41,
+      "trece": false
+     },
+     "declarat": {
+      "net": 3035,
+      "diferenta": -41,
+      "laMinim": 0.25,
+      "trece": false
+     }
+    }
+   },
+   "platit": {
+    "randuri": 91,
+    "institutii": 12,
+    "judete": 10,
+    "trece": true,
+    "perioade": [
+     "2026-02",
+     "2026-03"
+    ],
+    "surse": [
+     "DGASPC Călărași",
+     "DGASPC Sector 1",
+     "Spitalul Clinic de Boli Infecțioase Iași",
+     "Spitalul Clinic Județean de Urgență Cluj-Napoca",
+     "Spitalul Clinic Județean de Urgență Constanța",
+     "Spitalul Clinic Județean de Urgență Sibiu",
+     "Spitalul Județean de Urgență Alba Iulia",
+     "Spitalul Județean de Urgență Bacău",
+     "Spitalul Județean de Urgență Buzău",
+     "Spitalul Județean de Urgență Miercurea Ciuc",
+     "Spitalul Municipal Turda",
+     "Spitalul de Psihiatrie Titan Dr. Constantin Gorgos"
+    ],
+    "netFix": {
+     "p25": 3940,
+     "mediana": 5107,
+     "p75": 5690
+    },
+    "brutFix": {
+     "p25": 6736,
+     "mediana": 8731,
+     "p75": 9727
+    },
+    "netBaza": {
+     "p25": 3855,
+     "mediana": 4577,
+     "p75": 5179
+    },
+    "debutant": {
+     "randuri": 10,
+     "net": {
+      "p25": 3457,
+      "mediana": 3510,
+      "p75": 3857
+     }
+    },
+    "variabil": null,
+    "peJudet": {},
+    "peStudii": {
+     "S": {
+      "randuri": 33,
+      "net": {
+       "p25": 3647,
+       "mediana": 5301,
+       "p75": 5497
+      }
+     }
+    }
+   },
+   "oferit": {
+    "anunturi": 1,
+    "angajatori": 1,
+    "judete": 0,
+    "status": "insufficient",
+    "netCentral": 3000,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 8,
+    "brutNormaIntreaga": 4,
+    "angajatori": 2,
+    "judete": 3,
+    "laMinim": 0.25,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2699,
+     "mediana": 3035,
+     "p75": 3035
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "infirmier",
+   "nume": "Infirmier",
+   "cor": "532103",
+   "concluzie": {
+    "sursa": "platit",
+    "net": 3644,
+    "interval": [
+     3373,
+     3992
+    ],
+    "ce": "salariul fix plătit la angajatorii publici (bază + sporuri permanente, fără ture și gărzi)",
+    "verificare": {
+     "platit": null,
+     "oferit": {
+      "net": 4100,
+      "diferenta": 13,
+      "trece": false
+     },
+     "declarat": {
+      "net": 2699,
+      "diferenta": -26,
+      "laMinim": 0.44,
+      "trece": false
+     }
+    }
+   },
+   "platit": {
+    "randuri": 1778,
+    "institutii": 11,
+    "judete": 10,
+    "trece": true,
+    "perioade": [
+     "2026-02",
+     "2026-03"
+    ],
+    "surse": [
+     "DGASPC Călărași",
+     "DGASPC Sector 1",
+     "Spitalul Clinic de Boli Infecțioase Iași",
+     "Spitalul Clinic Județean de Urgență Cluj-Napoca",
+     "Spitalul Clinic Județean de Urgență Constanța",
+     "Spitalul Clinic Județean de Urgență Sibiu",
+     "Spitalul Județean de Urgență Alba Iulia",
+     "Spitalul Județean de Urgență Bacău",
+     "Spitalul Județean de Urgență Buzău",
+     "Spitalul Județean de Urgență Miercurea Ciuc",
+     "Spitalul Municipal Turda"
+    ],
+    "netFix": {
+     "p25": 3373,
+     "mediana": 3644,
+     "p75": 3992
+    },
+    "brutFix": {
+     "p25": 5746,
+     "mediana": 6230,
+     "p75": 6824
+    },
+    "netBaza": {
+     "p25": 3081,
+     "mediana": 3373,
+     "p75": 3375
+    },
+    "debutant": {
+     "randuri": 68,
+     "net": {
+      "p25": 3157,
+      "mediana": 3381,
+      "p75": 3592
+     }
+    },
+    "variabil": {
+     "cota": 0.88,
+     "netCuVariabil": {
+      "p25": 4018,
+      "mediana": 4216,
+      "p75": 4641
+     }
+    },
+    "peJudet": {
+     "IS": {
+      "randuri": 70,
+      "institutii": 1,
+      "net": {
+       "p25": 3559,
+       "mediana": 3668,
+       "p75": 3676
+      }
+     },
+     "CJ": {
+      "randuri": 155,
+      "institutii": 2,
+      "net": {
+       "p25": 3390,
+       "mediana": 3536,
+       "p75": 3595
+      }
+     },
+     "CT": {
+      "randuri": 421,
+      "institutii": 1,
+      "net": {
+       "p25": 3712,
+       "mediana": 4068,
+       "p75": 4354
+      }
+     },
+     "SB": {
+      "randuri": 156,
+      "institutii": 1,
+      "net": {
+       "p25": 3847,
+       "mediana": 4183,
+       "p75": 4829
+      }
+     },
+     "AB": {
+      "randuri": 199,
+      "institutii": 1,
+      "net": {
+       "p25": 3681,
+       "mediana": 3933,
+       "p75": 4276
+      }
+     },
+     "BC": {
+      "randuri": 296,
+      "institutii": 1,
+      "net": {
+       "p25": 3681,
+       "mediana": 3853,
+       "p75": 4168
+      }
+     },
+     "BZ": {
+      "randuri": 249,
+      "institutii": 1,
+      "net": {
+       "p25": 3554,
+       "mediana": 3688,
+       "p75": 4068
+      }
+     },
+     "HR": {
+      "randuri": 218,
+      "institutii": 1,
+      "net": {
+       "p25": 3511,
+       "mediana": 3552,
+       "p75": 3950
+      }
+     }
+    },
+    "peStudii": {
+     "M": {
+      "randuri": 144,
+      "net": {
+       "p25": 2563,
+       "mediana": 3552,
+       "p75": 3974
+      }
+     }
+    }
+   },
+   "oferit": {
+    "anunturi": 4,
+    "angajatori": 4,
+    "judete": 4,
+    "status": "insufficient",
+    "netCentral": 4100,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 32,
+    "brutNormaIntreaga": 18,
+    "angajatori": 16,
+    "judete": 14,
+    "laMinim": 0.44,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2699,
+     "mediana": 2699,
+     "p75": 2773
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "medic-veterinar",
+   "nume": "Medic veterinar",
+   "cor": "225002",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 5,
+    "angajatori": 5,
+    "judete": 1,
+    "status": "insufficient",
+    "netCentral": 4750,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 18,
+    "brutNormaIntreaga": 6,
+    "angajatori": 5,
+    "judete": 3,
+    "laMinim": 0.33,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2699,
+     "mediana": 2699,
+     "p75": 3523
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "profesor",
+   "nume": "Profesor",
+   "cor": "233002",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 1,
+    "angajatori": 1,
+    "judete": 0,
+    "status": "insufficient",
+    "netCentral": 3500,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 1,
+    "brutNormaIntreaga": 1,
+    "angajatori": 1,
+    "judete": 1,
+    "laMinim": 0,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 10751,
+     "mediana": 10751,
+     "p75": 10751
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "invatator",
+   "nume": "Învățător",
+   "cor": "234101",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 1,
+    "angajatori": 1,
+    "judete": 0,
+    "status": "insufficient",
+    "netCentral": 4093,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 4,
+    "brutNormaIntreaga": 1,
+    "angajatori": 1,
+    "judete": 1,
+    "laMinim": 0,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 10755,
+     "mediana": 10755,
+     "p75": 10755
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "educator",
+   "nume": "Educator",
+   "cor": "234201",
+   "concluzie": null,
+   "platit": {
+    "randuri": 43,
+    "institutii": 3,
+    "judete": 2,
+    "trece": false,
+    "perioade": [
+     "2026-03"
+    ],
+    "surse": [
+     "DGASPC Călărași",
+     "DGASPC Sector 1",
+     "Spitalul de Psihiatrie Titan Dr. Constantin Gorgos"
+    ],
+    "netFix": {
+     "p25": 2826,
+     "mediana": 3149,
+     "p75": 5029
+    },
+    "brutFix": {
+     "p25": 4740,
+     "mediana": 5334,
+     "p75": 8598
+    },
+    "netBaza": {
+     "p25": 2826,
+     "mediana": 3149,
+     "p75": 3989
+    },
+    "debutant": {
+     "randuri": 13,
+     "net": {
+      "p25": 2826,
+      "mediana": 2826,
+      "p75": 3040
+     }
+    },
+    "variabil": null,
+    "peJudet": {
+     "CL": {
+      "randuri": 36,
+      "institutii": 1,
+      "net": {
+       "p25": 2940,
+       "mediana": 3149,
+       "p75": 3303
+      }
+     }
+    },
+    "peStudii": {
+     "S": {
+      "randuri": 21,
+      "net": {
+       "p25": 2871,
+       "mediana": 2940,
+       "p75": 3290
+      }
+     }
+    }
+   },
+   "oferit": {
+    "anunturi": 3,
+    "angajatori": 2,
+    "judete": 1,
+    "status": "insufficient",
+    "netCentral": 4093,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 0,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "profesor-universitar",
+   "nume": "Profesor universitar",
+   "cor": "231005",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 0,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "instructor-auto",
+   "nume": "Instructor auto",
+   "cor": "516502",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 0,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "contabil",
+   "nume": "Contabil",
+   "cor": "331302",
+   "concluzie": {
+    "sursa": "oferit",
+    "net": 5500,
+    "interval": null,
+    "ce": "salariul oferit la angajare în anunțurile verificate",
+    "verificare": {
+     "platit": {
+      "net": 4308,
+      "diferenta": -22,
+      "trece": false
+     },
+     "oferit": null,
+     "declarat": {
+      "net": 2699,
+      "diferenta": -51,
+      "laMinim": 0.63,
+      "trece": false
+     }
+    }
+   },
+   "platit": {
+    "randuri": 5,
+    "institutii": 5,
+    "judete": 5,
+    "trece": false,
+    "perioade": [
+     "2026-02",
+     "2026-03"
+    ],
+    "surse": [
+     "Biblioteca Județeană Lucian Blaga Alba",
+     "Spitalul Clinic Județean de Urgență Cluj-Napoca",
+     "Spitalul Județean de Urgență Buzău",
+     "Spitalul Județean de Urgență Miercurea Ciuc",
+     "Spitalul de Psihiatrie Titan Dr. Constantin Gorgos"
+    ],
+    "netFix": {
+     "p25": 4080,
+     "mediana": 4308,
+     "p75": 4606
+    },
+    "brutFix": {
+     "p25": 6974,
+     "mediana": 7364,
+     "p75": 7873
+    },
+    "netBaza": {
+     "p25": 4080,
+     "mediana": 4150,
+     "p75": 4606
+    },
+    "debutant": null,
+    "variabil": null,
+    "peJudet": {},
+    "peStudii": {}
+   },
+   "oferit": {
+    "anunturi": 75,
+    "angajatori": 68,
+    "judete": 10,
+    "status": "advertised_interval",
+    "netCentral": 5500,
+    "trece": true
+   },
+   "declarat": {
+    "oferte": 46,
+    "brutNormaIntreaga": 16,
+    "angajatori": 16,
+    "judete": 13,
+    "laMinim": 0.63,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2699,
+     "mediana": 2699,
+     "p75": 2699
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "auditor",
+   "nume": "Auditor financiar",
+   "cor": "241107",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 3,
+    "angajatori": 3,
+    "judete": 0,
+    "status": "insufficient",
+    "netCentral": 3800,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 0,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "analist-financiar",
+   "nume": "Analist financiar",
+   "cor": "241305",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 9,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "economist",
+   "nume": "Economist",
+   "cor": "263102",
+   "concluzie": {
+    "sursa": "platit",
+    "net": 5404,
+    "interval": [
+     4934,
+     5734
+    ],
+    "ce": "salariul fix plătit la angajatorii publici (bază + sporuri permanente, fără ture și gărzi)",
+    "verificare": {
+     "platit": null,
+     "oferit": {
+      "net": 4800,
+      "diferenta": -11,
+      "trece": false
+     },
+     "declarat": {
+      "net": 2699,
+      "diferenta": -50,
+      "laMinim": 0.53,
+      "trece": false
+     }
+    }
+   },
+   "platit": {
+    "randuri": 154,
+    "institutii": 9,
+    "judete": 8,
+    "trece": true,
+    "perioade": [
+     "2026-02",
+     "2026-03"
+    ],
+    "surse": [
+     "Spitalul Clinic de Boli Infecțioase Iași",
+     "Spitalul Clinic Județean de Urgență Cluj-Napoca",
+     "Spitalul Clinic Județean de Urgență Constanța",
+     "Spitalul Clinic Județean de Urgență Sibiu",
+     "Spitalul Județean de Urgență Bacău",
+     "Spitalul Județean de Urgență Buzău",
+     "Spitalul Județean de Urgență Miercurea Ciuc",
+     "Spitalul Municipal Turda",
+     "Spitalul de Psihiatrie Titan Dr. Constantin Gorgos"
+    ],
+    "netFix": {
+     "p25": 4934,
+     "mediana": 5404,
+     "p75": 5734
+    },
+    "brutFix": {
+     "p25": 8434,
+     "mediana": 9239,
+     "p75": 9802
+    },
+    "netBaza": {
+     "p25": 4695,
+     "mediana": 5152,
+     "p75": 5455
+    },
+    "debutant": null,
+    "variabil": null,
+    "peJudet": {
+     "BC": {
+      "randuri": 32,
+      "institutii": 1,
+      "net": {
+       "p25": 5472,
+       "mediana": 5587,
+       "p75": 5630
+      }
+     }
+    },
+    "peStudii": {
+     "S": {
+      "randuri": 76,
+      "net": {
+       "p25": 5196,
+       "mediana": 5634,
+       "p75": 6124
+      }
+     }
+    }
+   },
+   "oferit": {
+    "anunturi": 25,
+    "angajatori": 23,
+    "judete": 2,
+    "status": "insufficient",
+    "netCentral": 4800,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 42,
+    "brutNormaIntreaga": 17,
+    "angajatori": 17,
+    "judete": 11,
+    "laMinim": 0.53,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2699,
+     "mediana": 2699,
+     "p75": 2981
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "ofiter-credite",
+   "nume": "Ofițer de credite",
+   "cor": "241230",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 1,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "agent-asigurari",
+   "nume": "Agent de asigurări",
+   "cor": "332101",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 2,
+    "brutNormaIntreaga": 1,
+    "angajatori": 1,
+    "judete": 1,
+    "laMinim": 1,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2699,
+     "mediana": 2699,
+     "p75": 2699
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "avocat",
+   "nume": "Avocat",
+   "cor": "261101",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 1,
+    "angajatori": 1,
+    "judete": 0,
+    "status": "insufficient",
+    "netCentral": 4000,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 0,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "notar",
+   "nume": "Notar",
+   "cor": "261906",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 0,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "consilier-juridic",
+   "nume": "Consilier juridic",
+   "cor": "261103",
+   "concluzie": null,
+   "platit": {
+    "randuri": 47,
+    "institutii": 10,
+    "judete": 10,
+    "trece": false,
+    "perioade": [
+     "2026-02",
+     "2026-03",
+     "2026-09"
+    ],
+    "surse": [
+     "Consiliul Județean Sălaj",
+     "DGASPC Călărași",
+     "Spitalul Clinic de Boli Infecțioase Iași",
+     "Spitalul Clinic Județean de Urgență Cluj-Napoca",
+     "Spitalul Clinic Județean de Urgență Constanța",
+     "Spitalul Clinic Județean de Urgență Sibiu",
+     "Spitalul Județean de Urgență Alba Iulia",
+     "Spitalul Județean de Urgență Bacău",
+     "Spitalul Județean de Urgență Buzău",
+     "Spitalul Județean de Urgență Miercurea Ciuc"
+    ],
+    "netFix": {
+     "p25": 4846,
+     "mediana": 5455,
+     "p75": 5734
+    },
+    "brutFix": {
+     "p25": 8285,
+     "mediana": 9326,
+     "p75": 9802
+    },
+    "netBaza": {
+     "p25": 4723,
+     "mediana": 5455,
+     "p75": 5558
+    },
+    "debutant": null,
+    "variabil": null,
+    "peJudet": {},
+    "peStudii": {}
+   },
+   "oferit": {
+    "anunturi": 7,
+    "angajatori": 6,
+    "judete": 2,
+    "status": "insufficient",
+    "netCentral": 6750,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 21,
+    "brutNormaIntreaga": 10,
+    "angajatori": 10,
+    "judete": 7,
+    "laMinim": 0.2,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 3056,
+     "mediana": 3533,
+     "p75": 4759
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "judecator",
+   "nume": "Judecător",
+   "cor": "261202",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 0,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "procuror",
+   "nume": "Procuror",
+   "cor": "261201",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 0,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "grefier",
+   "nume": "Grefier",
+   "cor": "343102",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 0,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "arhitect",
+   "nume": "Arhitect",
+   "cor": "216101",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 2,
+    "angajatori": 2,
+    "judete": 0,
+    "status": "insufficient",
+    "netCentral": 5375,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 11,
+    "brutNormaIntreaga": 3,
+    "angajatori": 3,
+    "judete": 2,
+    "laMinim": 0.67,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2699,
+     "mediana": 2699,
+     "p75": 2754
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "inginer-electronist",
+   "nume": "Inginer electronist",
+   "cor": "215213",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 1,
+    "angajatori": 1,
+    "judete": 0,
+    "status": "insufficient",
+    "netCentral": 9191,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 2,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "inginer-auto",
+   "nume": "Inginer auto",
+   "cor": "214412",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 2,
+    "angajatori": 2,
+    "judete": 0,
+    "status": "insufficient",
+    "netCentral": 5000,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 5,
+    "brutNormaIntreaga": 1,
+    "angajatori": 1,
+    "judete": 1,
+    "laMinim": 0,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 3255,
+     "mediana": 3255,
+     "p75": 3255
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "inginer-energetician",
+   "nume": "Inginer energetician",
+   "cor": "215108",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 4,
+    "brutNormaIntreaga": 1,
+    "angajatori": 1,
+    "judete": 1,
+    "laMinim": 0,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 3801,
+     "mediana": 3801,
+     "p75": 3801
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "inginer-petrol",
+   "nume": "Inginer petrolist",
+   "cor": "214616",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 3,
+    "brutNormaIntreaga": 1,
+    "angajatori": 1,
+    "judete": 1,
+    "laMinim": 0,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 5377,
+     "mediana": 5377,
+     "p75": 5377
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "inginer-agronom",
+   "nume": "Inginer agronom",
+   "cor": "213201",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 0,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "zidar",
+   "nume": "Zidar",
+   "cor": "711205",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 51,
+    "brutNormaIntreaga": 28,
+    "angajatori": 26,
+    "judete": 21,
+    "laMinim": 0.04,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2754,
+     "mediana": 2764,
+     "p75": 2808
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "dulgher",
+   "nume": "Dulgher",
+   "cor": "711501",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 16,
+    "angajatori": 15,
+    "judete": 9,
+    "status": "insufficient",
+    "netCentral": 6250,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 58,
+    "brutNormaIntreaga": 25,
+    "angajatori": 23,
+    "judete": 16,
+    "laMinim": 0,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2754,
+     "mediana": 2754,
+     "p75": 2851
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "electrician",
+   "nume": "Electrician",
+   "cor": "741101",
+   "concluzie": {
+    "sursa": "oferit",
+    "net": 5500,
+    "interval": null,
+    "ce": "salariul oferit la angajare în anunțurile verificate",
+    "verificare": {
+     "platit": {
+      "net": 3787,
+      "diferenta": -31,
+      "trece": false
+     },
+     "oferit": null,
+     "declarat": {
+      "net": 2754,
+      "diferenta": -50,
+      "laMinim": 0.04,
+      "trece": false
+     }
+    }
+   },
+   "platit": {
+    "randuri": 3,
+    "institutii": 1,
+    "judete": 1,
+    "trece": false,
+    "perioade": [
+     "2026-03"
+    ],
+    "surse": [
+     "Spitalul Municipal Turda"
+    ],
+    "netFix": {
+     "p25": 3492,
+     "mediana": 3787,
+     "p75": 3787
+    },
+    "brutFix": {
+     "p25": 5967,
+     "mediana": 6473,
+     "p75": 6473
+    },
+    "netBaza": {
+     "p25": 3492,
+     "mediana": 3787,
+     "p75": 3787
+    },
+    "debutant": null,
+    "variabil": null,
+    "peJudet": {},
+    "peStudii": {}
+   },
+   "oferit": {
+    "anunturi": 115,
+    "angajatori": 82,
+    "judete": 19,
+    "status": "advertised_interval",
+    "netCentral": 5500,
+    "trece": true
+   },
+   "declarat": {
+    "oferte": 75,
+    "brutNormaIntreaga": 26,
+    "angajatori": 25,
+    "judete": 16,
+    "laMinim": 0.04,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2750,
+     "mediana": 2754,
+     "p75": 2967
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "instalator",
+   "nume": "Instalator",
+   "cor": "712609",
+   "concluzie": {
+    "sursa": "oferit",
+    "net": 5558,
+    "interval": null,
+    "ce": "salariul oferit la angajare în anunțurile verificate",
+    "verificare": {
+     "platit": {
+      "net": 3470,
+      "diferenta": -38,
+      "trece": false
+     },
+     "oferit": null,
+     "declarat": {
+      "net": 2754,
+      "diferenta": -50,
+      "laMinim": 0,
+      "trece": false
+     }
+    }
+   },
+   "platit": {
+    "randuri": 7,
+    "institutii": 2,
+    "judete": 2,
+    "trece": false,
+    "perioade": [
+     "2026-03"
+    ],
+    "surse": [
+     "Spitalul Clinic de Boli Infecțioase Iași",
+     "Spitalul Municipal Turda"
+    ],
+    "netFix": {
+     "p25": 3338,
+     "mediana": 3470,
+     "p75": 3492
+    },
+    "brutFix": {
+     "p25": 5681,
+     "mediana": 5926,
+     "p75": 5967
+    },
+    "netBaza": {
+     "p25": 3338,
+     "mediana": 3470,
+     "p75": 3492
+    },
+    "debutant": null,
+    "variabil": null,
+    "peJudet": {},
+    "peStudii": {}
+   },
+   "oferit": {
+    "anunturi": 59,
+    "angajatori": 44,
+    "judete": 11,
+    "status": "advertised_interval",
+    "netCentral": 5558,
+    "trece": true
+   },
+   "declarat": {
+    "oferte": 43,
+    "brutNormaIntreaga": 15,
+    "angajatori": 15,
+    "judete": 12,
+    "laMinim": 0,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2737,
+     "mediana": 2754,
+     "p75": 2754
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "zugrav",
+   "nume": "Zugrav",
+   "cor": "713102",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 1,
+    "angajatori": 1,
+    "judete": 1,
+    "status": "insufficient",
+    "netCentral": 5750,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 31,
+    "brutNormaIntreaga": 14,
+    "angajatori": 13,
+    "judete": 9,
+    "laMinim": 0,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2754,
+     "mediana": 2754,
+     "p75": 2764
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "faiantar",
+   "nume": "Faianțar",
+   "cor": "712201",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 2,
+    "angajatori": 1,
+    "judete": 2,
+    "status": "insufficient",
+    "netCentral": 8900,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 15,
+    "brutNormaIntreaga": 9,
+    "angajatori": 9,
+    "judete": 7,
+    "laMinim": 0,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2754,
+     "mediana": 2754,
+     "p75": 2764
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "sudor",
+   "nume": "Sudor",
+   "cor": "721208",
+   "concluzie": {
+    "sursa": "oferit",
+    "net": 5125,
+    "interval": null,
+    "ce": "salariul oferit la angajare în anunțurile verificate",
+    "verificare": {
+     "platit": null,
+     "oferit": null,
+     "declarat": {
+      "net": 2754,
+      "diferenta": -46,
+      "laMinim": 0.21,
+      "trece": true
+     }
+    }
+   },
+   "platit": null,
+   "oferit": {
+    "anunturi": 34,
+    "angajatori": 23,
+    "judete": 14,
+    "status": "advertised_interval",
+    "netCentral": 5125,
+    "trece": true
+   },
+   "declarat": {
+    "oferte": 123,
+    "brutNormaIntreaga": 39,
+    "angajatori": 37,
+    "judete": 24,
+    "laMinim": 0.21,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2699,
+     "mediana": 2754,
+     "p75": 2981
+    },
+    "trece": true
+   }
+  },
+  {
+   "slug": "tamplar",
+   "nume": "Tâmplar",
+   "cor": "752201",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 18,
+    "angajatori": 15,
+    "judete": 9,
+    "status": "insufficient",
+    "netCentral": 5625,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 62,
+    "brutNormaIntreaga": 25,
+    "angajatori": 25,
+    "judete": 16,
+    "laMinim": 0.36,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2656,
+     "mediana": 2699,
+     "p75": 2754
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "mecanic-auto",
+   "nume": "Mecanic auto",
+   "cor": "723103",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 17,
+    "angajatori": 16,
+    "judete": 5,
+    "status": "insufficient",
+    "netCentral": 5500,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 109,
+    "brutNormaIntreaga": 53,
+    "angajatori": 52,
+    "judete": 27,
+    "laMinim": 0.58,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2669,
+     "mediana": 2699,
+     "p75": 2699
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "miner",
+   "nume": "Miner",
+   "cor": "811101",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 0,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "croitor",
+   "nume": "Croitor",
+   "cor": "753101",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 6,
+    "angajatori": 4,
+    "judete": 3,
+    "status": "insufficient",
+    "netCentral": 2675,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 6,
+    "brutNormaIntreaga": 3,
+    "angajatori": 3,
+    "judete": 3,
+    "laMinim": 1,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2574,
+     "mediana": 2699,
+     "p75": 2699
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "cofetar",
+   "nume": "Cofetar",
+   "cor": "751202",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 8,
+    "angajatori": 7,
+    "judete": 5,
+    "status": "insufficient",
+    "netCentral": 3776,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 18,
+    "brutNormaIntreaga": 7,
+    "angajatori": 7,
+    "judete": 7,
+    "laMinim": 0.43,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2699,
+     "mediana": 2699,
+     "p75": 2710
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "sofer-tir",
+   "nume": "Șofer TIR",
+   "cor": "833201",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 27,
+    "angajatori": 17,
+    "judete": 17,
+    "status": "insufficient",
+    "netCentral": 7000,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 301,
+    "brutNormaIntreaga": 172,
+    "angajatori": 139,
+    "judete": 30,
+    "laMinim": 0.7,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2699,
+     "mediana": 2699,
+     "p75": 2699
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "sofer-autobuz",
+   "nume": "Șofer de autobuz",
+   "cor": "833101",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 38,
+    "brutNormaIntreaga": 23,
+    "angajatori": 20,
+    "judete": 12,
+    "laMinim": 0.65,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2629,
+     "mediana": 2699,
+     "p75": 2699
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "taximetrist",
+   "nume": "Taximetrist",
+   "cor": "832201",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 164,
+    "brutNormaIntreaga": 91,
+    "angajatori": 84,
+    "judete": 29,
+    "laMinim": 0.69,
+    "codComun": true,
+    "netMinimDeclarat": {
+     "p25": 2699,
+     "mediana": 2699,
+     "p75": 2699
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "mecanic-locomotiva",
+   "nume": "Mecanic de locomotivă",
+   "cor": "831101",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 0,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "curier",
+   "nume": "Curier",
+   "cor": "962101",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 11,
+    "angajatori": 6,
+    "judete": 4,
+    "status": "insufficient",
+    "netCentral": 4465,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 106,
+    "brutNormaIntreaga": 49,
+    "angajatori": 41,
+    "judete": 16,
+    "laMinim": 0.73,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2602,
+     "mediana": 2699,
+     "p75": 2699
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "sofer-ridesharing",
+   "nume": "Șofer ridesharing",
+   "cor": "832201",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 164,
+    "brutNormaIntreaga": 91,
+    "angajatori": 84,
+    "judete": 29,
+    "laMinim": 0.69,
+    "codComun": true,
+    "netMinimDeclarat": {
+     "p25": 2699,
+     "mediana": 2699,
+     "p75": 2699
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "postas",
+   "nume": "Poștaș",
+   "cor": "441206",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 1,
+    "brutNormaIntreaga": 1,
+    "angajatori": 1,
+    "judete": 1,
+    "laMinim": 1,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2699,
+     "mediana": 2699,
+     "p75": 2699
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "insotitor-de-bord",
+   "nume": "Însoțitor de bord (stewardesă)",
+   "cor": "511101",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 0,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "sofer-ambulanta",
+   "nume": "Șofer de ambulanță",
+   "cor": "832203",
+   "concluzie": null,
+   "platit": {
+    "randuri": 12,
+    "institutii": 5,
+    "judete": 5,
+    "trece": false,
+    "perioade": [
+     "2026-02",
+     "2026-03"
+    ],
+    "surse": [
+     "DGASPC Sector 1",
+     "Spitalul Clinic de Boli Infecțioase Iași",
+     "Spitalul Clinic Județean de Urgență Cluj-Napoca",
+     "Spitalul Clinic Județean de Urgență Constanța",
+     "Spitalul Județean de Urgență Buzău"
+    ],
+    "netFix": {
+     "p25": 3473,
+     "mediana": 3682,
+     "p75": 4069
+    },
+    "brutFix": {
+     "p25": 5929,
+     "mediana": 6293,
+     "p75": 6956
+    },
+    "netBaza": {
+     "p25": 3349,
+     "mediana": 3508,
+     "p75": 3508
+    },
+    "debutant": null,
+    "variabil": null,
+    "peJudet": {},
+    "peStudii": {}
+   },
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 2,
+    "brutNormaIntreaga": 1,
+    "angajatori": 1,
+    "judete": 1,
+    "laMinim": 1,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2699,
+     "mediana": 2699,
+     "p75": 2699
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "logistician",
+   "nume": "Logistician",
+   "cor": "214955",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 12,
+    "angajatori": 9,
+    "judete": 4,
+    "status": "insufficient",
+    "netCentral": 4388,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 2,
+    "brutNormaIntreaga": 2,
+    "angajatori": 2,
+    "judete": 2,
+    "laMinim": 0.5,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2699,
+     "mediana": 2699,
+     "p75": 4487
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "magaziner",
+   "nume": "Magaziner",
+   "cor": "432102",
+   "concluzie": {
+    "sursa": "oferit",
+    "net": 3800,
+    "interval": null,
+    "ce": "salariul oferit la angajare în anunțurile verificate",
+    "verificare": {
+     "platit": {
+      "net": 3977,
+      "diferenta": 5,
+      "trece": false
+     },
+     "oferit": null,
+     "declarat": {
+      "net": 2669,
+      "diferenta": -30,
+      "laMinim": 0.5,
+      "trece": false
+     }
+    }
+   },
+   "platit": {
+    "randuri": 25,
+    "institutii": 10,
+    "judete": 9,
+    "trece": false,
+    "perioade": [
+     "2026-02",
+     "2026-03"
+    ],
+    "surse": [
+     "DGASPC Călărași",
+     "Spitalul Clinic de Boli Infecțioase Iași",
+     "Spitalul Clinic Județean de Urgență Cluj-Napoca",
+     "Spitalul Clinic Județean de Urgență Constanța",
+     "Spitalul Clinic Județean de Urgență Sibiu",
+     "Spitalul Județean de Urgență Alba Iulia",
+     "Spitalul Județean de Urgență Bacău",
+     "Spitalul Județean de Urgență Buzău",
+     "Spitalul Municipal Turda",
+     "Spitalul de Psihiatrie Titan Dr. Constantin Gorgos"
+    ],
+    "netFix": {
+     "p25": 3783,
+     "mediana": 3977,
+     "p75": 4180
+    },
+    "brutFix": {
+     "p25": 6467,
+     "mediana": 6799,
+     "p75": 7147
+    },
+    "netBaza": {
+     "p25": 3783,
+     "mediana": 3933,
+     "p75": 4039
+    },
+    "debutant": null,
+    "variabil": null,
+    "peJudet": {},
+    "peStudii": {}
+   },
+   "oferit": {
+    "anunturi": 53,
+    "angajatori": 47,
+    "judete": 12,
+    "status": "advertised_interval",
+    "netCentral": 3800,
+    "trece": true
+   },
+   "declarat": {
+    "oferte": 13,
+    "brutNormaIntreaga": 4,
+    "angajatori": 4,
+    "judete": 4,
+    "laMinim": 0.5,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2629,
+     "mediana": 2669,
+     "p75": 2699
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "stivuitorist",
+   "nume": "Stivuitorist",
+   "cor": "834403",
+   "concluzie": {
+    "sursa": "oferit",
+    "net": 3700,
+    "interval": null,
+    "ce": "salariul oferit la angajare în anunțurile verificate",
+    "verificare": {
+     "platit": null,
+     "oferit": null,
+     "declarat": {
+      "net": 2710,
+      "diferenta": -27,
+      "laMinim": 0.28,
+      "trece": false
+     }
+    }
+   },
+   "platit": null,
+   "oferit": {
+    "anunturi": 53,
+    "angajatori": 32,
+    "judete": 15,
+    "status": "advertised_interval",
+    "netCentral": 3700,
+    "trece": true
+   },
+   "declarat": {
+    "oferte": 53,
+    "brutNormaIntreaga": 18,
+    "angajatori": 17,
+    "judete": 12,
+    "laMinim": 0.28,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2699,
+     "mediana": 2710,
+     "p75": 3400
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "manipulant-marfa",
+   "nume": "Manipulant mărfuri",
+   "cor": "933303",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 35,
+    "angajatori": 26,
+    "judete": 18,
+    "status": "insufficient",
+    "netCentral": 3350,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 217,
+    "brutNormaIntreaga": 116,
+    "angajatori": 101,
+    "judete": 33,
+    "laMinim": 0.73,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2699,
+     "mediana": 2699,
+     "p75": 2699
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "sofer-distributie",
+   "nume": "Șofer distribuție",
+   "cor": "832201",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 27,
+    "angajatori": 19,
+    "judete": 11,
+    "status": "insufficient",
+    "netCentral": 4250,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 164,
+    "brutNormaIntreaga": 91,
+    "angajatori": 84,
+    "judete": 29,
+    "laMinim": 0.69,
+    "codComun": true,
+    "netMinimDeclarat": {
+     "p25": 2699,
+     "mediana": 2699,
+     "p75": 2699
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "vanzator",
+   "nume": "Vânzător",
+   "cor": "522101",
+   "concluzie": {
+    "sursa": "oferit",
+    "net": 3344,
+    "interval": null,
+    "ce": "salariul oferit la angajare în anunțurile verificate",
+    "verificare": {
+     "platit": null,
+     "oferit": null,
+     "declarat": {
+      "net": 2699,
+      "diferenta": -19,
+      "laMinim": 0.79,
+      "trece": false
+     }
+    }
+   },
+   "platit": null,
+   "oferit": {
+    "anunturi": 128,
+    "angajatori": 64,
+    "judete": 22,
+    "status": "advertised_interval",
+    "netCentral": 3344,
+    "trece": true
+   },
+   "declarat": {
+    "oferte": 98,
+    "brutNormaIntreaga": 57,
+    "angajatori": 55,
+    "judete": 26,
+    "laMinim": 0.79,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2699,
+     "mediana": 2699,
+     "p75": 2699
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "casier",
+   "nume": "Casier",
+   "cor": "523003",
+   "concluzie": {
+    "sursa": "oferit",
+    "net": 3400,
+    "interval": null,
+    "ce": "salariul oferit la angajare în anunțurile verificate",
+    "verificare": {
+     "platit": null,
+     "oferit": null,
+     "declarat": {
+      "net": 2699,
+      "diferenta": -21,
+      "laMinim": 0.8,
+      "trece": false
+     }
+    }
+   },
+   "platit": null,
+   "oferit": {
+    "anunturi": 50,
+    "angajatori": 26,
+    "judete": 10,
+    "status": "advertised_interval",
+    "netCentral": 3400,
+    "trece": true
+   },
+   "declarat": {
+    "oferte": 35,
+    "brutNormaIntreaga": 20,
+    "angajatori": 16,
+    "judete": 14,
+    "laMinim": 0.8,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2699,
+     "mediana": 2699,
+     "p75": 2699
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "agent-vanzari",
+   "nume": "Agent de vânzări",
+   "cor": "332203",
+   "concluzie": {
+    "sursa": "oferit",
+    "net": 4500,
+    "interval": null,
+    "ce": "salariul oferit la angajare în anunțurile verificate",
+    "verificare": {
+     "platit": null,
+     "oferit": null,
+     "declarat": {
+      "net": 2629,
+      "diferenta": -42,
+      "laMinim": 0.14,
+      "trece": true
+     }
+    }
+   },
+   "platit": null,
+   "oferit": {
+    "anunturi": 119,
+    "angajatori": 104,
+    "judete": 14,
+    "status": "advertised_interval",
+    "netCentral": 4500,
+    "trece": true
+   },
+   "declarat": {
+    "oferte": 184,
+    "brutNormaIntreaga": 116,
+    "angajatori": 31,
+    "judete": 42,
+    "laMinim": 0.14,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2629,
+     "mediana": 2629,
+     "p75": 2656
+    },
+    "trece": true
+   }
+  },
+  {
+   "slug": "bucatar",
+   "nume": "Bucătar",
+   "cor": "512001",
+   "concluzie": {
+    "sursa": "oferit",
+    "net": 4500,
+    "interval": null,
+    "ce": "salariul oferit la angajare în anunțurile verificate",
+    "verificare": {
+     "platit": {
+      "net": 3712,
+      "diferenta": -18,
+      "trece": false
+     },
+     "oferit": null,
+     "declarat": {
+      "net": 2699,
+      "diferenta": -40,
+      "laMinim": 0.77,
+      "trece": false
+     }
+    }
+   },
+   "platit": {
+    "randuri": 3,
+    "institutii": 2,
+    "judete": 2,
+    "trece": false,
+    "perioade": [
+     "2026-03"
+    ],
+    "surse": [
+     "Spitalul Clinic de Boli Infecțioase Iași",
+     "Spitalul Municipal Turda"
+    ],
+    "netFix": {
+     "p25": 3392,
+     "mediana": 3712,
+     "p75": 3752
+    },
+    "brutFix": {
+     "p25": 5781,
+     "mediana": 6345,
+     "p75": 6413
+    },
+    "netBaza": {
+     "p25": 3392,
+     "mediana": 3712,
+     "p75": 3752
+    },
+    "debutant": null,
+    "variabil": null,
+    "peJudet": {},
+    "peStudii": {}
+   },
+   "oferit": {
+    "anunturi": 35,
+    "angajatori": 24,
+    "judete": 15,
+    "status": "advertised_interval",
+    "netCentral": 4500,
+    "trece": true
+   },
+   "declarat": {
+    "oferte": 119,
+    "brutNormaIntreaga": 44,
+    "angajatori": 39,
+    "judete": 23,
+    "laMinim": 0.77,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2699,
+     "mediana": 2699,
+     "p75": 2699
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "chelner",
+   "nume": "Chelner",
+   "cor": "513102",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 26,
+    "angajatori": 19,
+    "judete": 9,
+    "status": "insufficient",
+    "netCentral": 3500,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 73,
+    "brutNormaIntreaga": 37,
+    "angajatori": 37,
+    "judete": 17,
+    "laMinim": 0.73,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2641,
+     "mediana": 2699,
+     "p75": 2699
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "barman",
+   "nume": "Barman",
+   "cor": "513202",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 10,
+    "angajatori": 8,
+    "judete": 5,
+    "status": "insufficient",
+    "netCentral": 3500,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 4,
+    "brutNormaIntreaga": 3,
+    "angajatori": 3,
+    "judete": 2,
+    "laMinim": 0.67,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2574,
+     "mediana": 2699,
+     "p75": 2981
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "receptioner-hotel",
+   "nume": "Recepționer hotel",
+   "cor": "422401",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 3,
+    "angajatori": 2,
+    "judete": 2,
+    "status": "insufficient",
+    "netCentral": 3600,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 10,
+    "brutNormaIntreaga": 3,
+    "angajatori": 3,
+    "judete": 3,
+    "laMinim": 0.67,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2699,
+     "mediana": 2699,
+     "p75": 2819
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "agent-turism",
+   "nume": "Agent de turism",
+   "cor": "422101",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 1,
+    "angajatori": 1,
+    "judete": 0,
+    "status": "insufficient",
+    "netCentral": 3000,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 0,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "jandarm",
+   "nume": "Jandarm",
+   "cor": "541101",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 1,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "editor",
+   "nume": "Editor",
+   "cor": "264211",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 1,
+    "angajatori": 1,
+    "judete": 0,
+    "status": "insufficient",
+    "netCentral": 4500,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 0,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "cameraman",
+   "nume": "Cameraman",
+   "cor": "352131",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 0,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "regizor",
+   "nume": "Regizor",
+   "cor": "265410",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 0,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "designer-grafic",
+   "nume": "Designer grafic",
+   "cor": "216601",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 5,
+    "angajatori": 4,
+    "judete": 2,
+    "status": "insufficient",
+    "netCentral": 4500,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 0,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "specialist-marketing",
+   "nume": "Specialist marketing",
+   "cor": "243103",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 2,
+    "angajatori": 2,
+    "judete": 0,
+    "status": "insufficient",
+    "netCentral": 5626,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 13,
+    "brutNormaIntreaga": 7,
+    "angajatori": 7,
+    "judete": 7,
+    "laMinim": 0.71,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2699,
+     "mediana": 2699,
+     "p75": 2981
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "traducator",
+   "nume": "Traducător",
+   "cor": "264306",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 1,
+    "brutNormaIntreaga": 1,
+    "angajatori": 1,
+    "judete": 1,
+    "laMinim": 1,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2699,
+     "mediana": 2699,
+     "p75": 2699
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "actor",
+   "nume": "Actor",
+   "cor": "265501",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 4,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "fermier",
+   "nume": "Fermier",
+   "cor": "613001",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 0,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "silvicultor",
+   "nume": "Silvicultor",
+   "cor": "213234",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 0,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "electrician-centrala",
+   "nume": "Electrician centrală electrică",
+   "cor": "741301",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 26,
+    "brutNormaIntreaga": 23,
+    "angajatori": 7,
+    "judete": 10,
+    "laMinim": 0.39,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2699,
+     "mediana": 2805,
+     "p75": 2820
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "operator-statie-apa",
+   "nume": "Operator stație de apă",
+   "cor": "313202",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 0,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "operator-salubritate",
+   "nume": "Operator salubritate",
+   "cor": "961301",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 3,
+    "brutNormaIntreaga": 2,
+    "angajatori": 2,
+    "judete": 2,
+    "laMinim": 0.5,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2615,
+     "mediana": 2615,
+     "p75": 2699
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "agent-paza",
+   "nume": "Agent de pază",
+   "cor": "541401",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 37,
+    "angajatori": 10,
+    "judete": 13,
+    "status": "insufficient",
+    "netCentral": 3450,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 148,
+    "brutNormaIntreaga": 69,
+    "angajatori": 39,
+    "judete": 28,
+    "laMinim": 0.83,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2699,
+     "mediana": 2699,
+     "p75": 2699
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "agent-curatenie",
+   "nume": "Agent de curățenie",
+   "cor": "911201",
+   "concluzie": {
+    "sursa": "oferit",
+    "net": 3125,
+    "interval": null,
+    "ce": "salariul oferit la angajare în anunțurile verificate",
+    "verificare": {
+     "platit": null,
+     "oferit": null,
+     "declarat": {
+      "net": 2699,
+      "diferenta": -14,
+      "laMinim": 0.76,
+      "trece": false
+     }
+    }
+   },
+   "platit": null,
+   "oferit": {
+    "anunturi": 46,
+    "angajatori": 28,
+    "judete": 13,
+    "status": "advertised_interval",
+    "netCentral": 3125,
+    "trece": true
+   },
+   "declarat": {
+    "oferte": 144,
+    "brutNormaIntreaga": 83,
+    "angajatori": 79,
+    "judete": 25,
+    "laMinim": 0.76,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2699,
+     "mediana": 2699,
+     "p75": 2699
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "secretar",
+   "nume": "Secretar",
+   "cor": "412001",
+   "concluzie": {
+    "sursa": "oferit",
+    "net": 4000,
+    "interval": null,
+    "ce": "salariul oferit la angajare în anunțurile verificate",
+    "verificare": {
+     "platit": null,
+     "oferit": null,
+     "declarat": {
+      "net": 2699,
+      "diferenta": -33,
+      "laMinim": 0.55,
+      "trece": false
+     }
+    }
+   },
+   "platit": null,
+   "oferit": {
+    "anunturi": 37,
+    "angajatori": 28,
+    "judete": 8,
+    "status": "advertised_interval",
+    "netCentral": 4000,
+    "trece": true
+   },
+   "declarat": {
+    "oferte": 20,
+    "brutNormaIntreaga": 11,
+    "angajatori": 11,
+    "judete": 10,
+    "laMinim": 0.55,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2699,
+     "mediana": 2699,
+     "p75": 2739
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "specialist-resurse-umane",
+   "nume": "Specialist resurse umane",
+   "cor": "242314",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 9,
+    "angajatori": 8,
+    "judete": 1,
+    "status": "insufficient",
+    "netCentral": 5500,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 9,
+    "brutNormaIntreaga": 3,
+    "angajatori": 3,
+    "judete": 2,
+    "laMinim": 0,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2981,
+     "mediana": 3523,
+     "p75": 8286
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "agent-imobiliar",
+   "nume": "Agent imobiliar",
+   "cor": "333401",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 1,
+    "angajatori": 1,
+    "judete": 0,
+    "status": "insufficient",
+    "netCentral": 10504,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 2,
+    "brutNormaIntreaga": 2,
+    "angajatori": 2,
+    "judete": 2,
+    "laMinim": 1,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2699,
+     "mediana": 2699,
+     "p75": 2699
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "administrator-bloc",
+   "nume": "Administrator de bloc",
+   "cor": "515102",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 1,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "frizer",
+   "nume": "Frizer",
+   "cor": "514102",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 2,
+    "angajatori": 1,
+    "judete": 1,
+    "status": "insufficient",
+    "netCentral": 4875,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 14,
+    "brutNormaIntreaga": 6,
+    "angajatori": 6,
+    "judete": 6,
+    "laMinim": 1,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2699,
+     "mediana": 2699,
+     "p75": 2699
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "cosmetician",
+   "nume": "Cosmetician",
+   "cor": "514201",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 7,
+    "angajatori": 6,
+    "judete": 1,
+    "status": "insufficient",
+    "netCentral": 4250,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 3,
+    "brutNormaIntreaga": 2,
+    "angajatori": 2,
+    "judete": 2,
+    "laMinim": 1,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2699,
+     "mediana": 2699,
+     "p75": 2699
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "bibliotecar",
+   "nume": "Bibliotecar",
+   "cor": "262202",
+   "concluzie": null,
+   "platit": {
+    "randuri": 16,
+    "institutii": 2,
+    "judete": 2,
+    "trece": false,
+    "perioade": [
+     "2026-03"
+    ],
+    "surse": [
+     "Biblioteca Județeană Lucian Blaga Alba",
+     "Spitalul Județean de Urgență Miercurea Ciuc"
+    ],
+    "netFix": {
+     "p25": 3470,
+     "mediana": 3522,
+     "p75": 3522
+    },
+    "brutFix": {
+     "p25": 5925,
+     "mediana": 6020,
+     "p75": 6020
+    },
+    "netBaza": {
+     "p25": 3470,
+     "mediana": 3489,
+     "p75": 3489
+    },
+    "debutant": null,
+    "variabil": null,
+    "peJudet": {},
+    "peStudii": {}
+   },
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 0,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "antrenor-sportiv",
+   "nume": "Antrenor sportiv",
+   "cor": "342201",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 0,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "preot",
+   "nume": "Preot",
+   "cor": "263627",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 0,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "ingrijitor-batrani",
+   "nume": "Îngrijitor de bătrâni",
+   "cor": "532201",
+   "concluzie": null,
+   "platit": {
+    "randuri": 8,
+    "institutii": 2,
+    "judete": 2,
+    "trece": false,
+    "perioade": [
+     "2026-03"
+    ],
+    "surse": [
+     "DGASPC Călărași",
+     "DGASPC Sector 1"
+    ],
+    "netFix": {
+     "p25": 2157,
+     "mediana": 2574,
+     "p75": 2857
+    },
+    "brutFix": {
+     "p25": 3550,
+     "mediana": 4050,
+     "p75": 4797
+    },
+    "netBaza": {
+     "p25": 2157,
+     "mediana": 2574,
+     "p75": 2857
+    },
+    "debutant": null,
+    "variabil": null,
+    "peJudet": {},
+    "peStudii": {}
+   },
+   "oferit": {
+    "anunturi": 1,
+    "angajatori": 1,
+    "judete": 1,
+    "status": "insufficient",
+    "netCentral": 3000,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 1,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "asistent-social",
+   "nume": "Asistent social",
+   "cor": "263501",
+   "concluzie": {
+    "sursa": "platit",
+    "net": 5219,
+    "interval": [
+     5033,
+     6561
+    ],
+    "ce": "salariul fix plătit la angajatorii publici (bază + sporuri permanente, fără ture și gărzi)",
+    "verificare": {
+     "platit": null,
+     "oferit": null,
+     "declarat": {
+      "net": 2986,
+      "diferenta": -43,
+      "laMinim": 0.33,
+      "trece": false
+     }
+    }
+   },
+   "platit": {
+    "randuri": 84,
+    "institutii": 12,
+    "judete": 10,
+    "trece": true,
+    "perioade": [
+     "2026-02",
+     "2026-03"
+    ],
+    "surse": [
+     "DGASPC Călărași",
+     "DGASPC Sector 1",
+     "Spitalul Clinic de Boli Infecțioase Iași",
+     "Spitalul Clinic Județean de Urgență Cluj-Napoca",
+     "Spitalul Clinic Județean de Urgență Constanța",
+     "Spitalul Clinic Județean de Urgență Sibiu",
+     "Spitalul Județean de Urgență Alba Iulia",
+     "Spitalul Județean de Urgență Bacău",
+     "Spitalul Județean de Urgență Buzău",
+     "Spitalul Județean de Urgență Miercurea Ciuc",
+     "Spitalul Municipal Turda",
+     "Spitalul de Psihiatrie Titan Dr. Constantin Gorgos"
+    ],
+    "netFix": {
+     "p25": 5033,
+     "mediana": 5219,
+     "p75": 6561
+    },
+    "brutFix": {
+     "p25": 8603,
+     "mediana": 8922,
+     "p75": 11216
+    },
+    "netBaza": {
+     "p25": 4085,
+     "mediana": 5086,
+     "p75": 5345
+    },
+    "debutant": null,
+    "variabil": null,
+    "peJudet": {},
+    "peStudii": {
+     "S": {
+      "randuri": 31,
+      "net": {
+       "p25": 5033,
+       "mediana": 5702,
+       "p75": 6638
+      }
+     }
+    }
+   },
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 11,
+    "brutNormaIntreaga": 3,
+    "angajatori": 3,
+    "judete": 3,
+    "laMinim": 0.33,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2699,
+     "mediana": 2986,
+     "p75": 3239
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "operator-cnc",
+   "nume": "Operator CNC",
+   "cor": "722323",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 26,
+    "angajatori": 17,
+    "judete": 10,
+    "status": "insufficient",
+    "netCentral": 4500,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 89,
+    "brutNormaIntreaga": 27,
+    "angajatori": 26,
+    "judete": 16,
+    "laMinim": 0.33,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2699,
+     "mediana": 2699,
+     "p75": 2981
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "electromecanic",
+   "nume": "Electromecanic",
+   "cor": "742214",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 20,
+    "angajatori": 18,
+    "judete": 6,
+    "status": "insufficient",
+    "netCentral": 5750,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 15,
+    "brutNormaIntreaga": 3,
+    "angajatori": 3,
+    "judete": 3,
+    "laMinim": 0,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2421,
+     "mediana": 3631,
+     "p75": 3666
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "operator-mase-plastice",
+   "nume": "Operator mase plastice",
+   "cor": "814209",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 4,
+    "angajatori": 4,
+    "judete": 4,
+    "status": "insufficient",
+    "netCentral": 3700,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 13,
+    "brutNormaIntreaga": 7,
+    "angajatori": 7,
+    "judete": 5,
+    "laMinim": 1,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2699,
+     "mediana": 2699,
+     "p75": 2699
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "sondor",
+   "nume": "Sondor",
+   "cor": "811310",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 2,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "tesator",
+   "nume": "Țesător",
+   "cor": "731816",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 4,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "cizmar",
+   "nume": "Cizmar",
+   "cor": "753601",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 1,
+    "brutNormaIntreaga": 1,
+    "angajatori": 1,
+    "judete": 1,
+    "laMinim": 0,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2617,
+     "mediana": 2617,
+     "p75": 2617
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "tapiter",
+   "nume": "Tapițer",
+   "cor": "753401",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 1,
+    "angajatori": 1,
+    "judete": 1,
+    "status": "insufficient",
+    "netCentral": 5500,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 8,
+    "brutNormaIntreaga": 5,
+    "angajatori": 5,
+    "judete": 4,
+    "laMinim": 0.6,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2699,
+     "mediana": 2699,
+     "p75": 2699
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "bijutier",
+   "nume": "Bijutier",
+   "cor": "731302",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 1,
+    "angajatori": 1,
+    "judete": 1,
+    "status": "insufficient",
+    "netCentral": 7000,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 0,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "tipograf",
+   "nume": "Tipograf",
+   "cor": "732207",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 1,
+    "angajatori": 1,
+    "judete": 1,
+    "status": "insufficient",
+    "netCentral": 5950,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 4,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "marinar",
+   "nume": "Marinar",
+   "cor": "835001",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 1,
+    "angajatori": 1,
+    "judete": 1,
+    "status": "insufficient",
+    "netCentral": 4750,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 0,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "inginer-aeronautic",
+   "nume": "Inginer aeronautic",
+   "cor": "214437",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 0,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "operator-epurare",
+   "nume": "Operator stație de epurare",
+   "cor": "818902",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 1,
+    "angajatori": 1,
+    "judete": 0,
+    "status": "insufficient",
+    "netCentral": 4241,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 2,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "crupier",
+   "nume": "Crupier",
+   "cor": "421201",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 0,
+    "brutNormaIntreaga": 0
+   }
+  },
+  {
+   "slug": "tehnician-calculatoare",
+   "nume": "Tehnician service IT",
+   "cor": "351103",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 4,
+    "brutNormaIntreaga": 1,
+    "angajatori": 1,
+    "judete": 1,
+    "laMinim": 0,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 3800,
+     "mediana": 3800,
+     "p75": 3800
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "consultant-management",
+   "nume": "Consultant în management",
+   "cor": "263107",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 3,
+    "brutNormaIntreaga": 2,
+    "angajatori": 2,
+    "judete": 1,
+    "laMinim": 0,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 4000,
+     "mediana": 4000,
+     "p75": 11115
+    },
+    "trece": false
+   }
+  },
+  {
+   "slug": "pescar",
+   "nume": "Pescar",
+   "cor": "622201",
+   "concluzie": null,
+   "platit": null,
+   "oferit": {
+    "anunturi": 0,
+    "angajatori": 0,
+    "judete": 0,
+    "status": "no_verified_ads",
+    "netCentral": null,
+    "trece": false
+   },
+   "declarat": {
+    "oferte": 0,
+    "brutNormaIntreaga": 0
+   }
+  }
+ ]
+}

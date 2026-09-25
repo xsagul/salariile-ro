@@ -1,0 +1,607 @@
+{
+ "sju-alba": {
+  "stare": "acceptat",
+  "perioada": "2026-03",
+  "sha256": "1c3be885efa94851ec2d14ab96640084349905b6316f8bc5439711d157c47646",
+  "bytes": 4670141,
+  "cititLa": "2026-09-25",
+  "randuri": 1107,
+  "valide": 1107,
+  "peMeserie": {
+   "asistent-medical": 531,
+   "medic": 280,
+   "infirmier": 199,
+   "registrator-medical": 45,
+   "asistent-social": 10,
+   "psiholog": 6,
+   "kinetoterapeut": 5,
+   "fizioterapeut": 4,
+   "magaziner": 1,
+   "consilier-juridic": 2,
+   "medic-rezident": 24
+  },
+  "coloaneNecunoscute": [
+   "Nr.crt",
+   "Transparenţa veniturilor salariale pentru funcțiile din cadrul Spitalului Județean de Urgență Alba I",
+   "Transparenţa veniturilor salariale pentru funcțiile din cadrul Spitalului Județean de Urgență Alba I",
+   "Transparenţa veniturilor salariale pentru funcțiile din cadrul Spitalului Județean de Urgență Alba I",
+   "Sumă proiect ****** *****"
+  ]
+ },
+ "scju-cluj": {
+  "stare": "acceptat",
+  "perioada": "2026-03",
+  "sha256": "303cfe71a3821c72a5db99c366bb2341efd38a84d19e2afb21f0d4dd5b421096",
+  "bytes": 651866,
+  "cititLa": "2026-09-25",
+  "randuri": 601,
+  "valide": 601,
+  "peMeserie": {
+   "medic": 135,
+   "asistent-medical": 234,
+   "asistent-social": 11,
+   "consilier-juridic": 3,
+   "contabil": 1,
+   "economist": 7,
+   "farmacist": 8,
+   "fizioterapeut": 2,
+   "infirmier": 73,
+   "kinetoterapeut": 11,
+   "magaziner": 3,
+   "medic-rezident": 71,
+   "psiholog": 9,
+   "registrator-medical": 31,
+   "sofer-ambulanta": 2
+  },
+  "coloaneNecunoscute": []
+ },
+ "sju-bacau": {
+  "stare": "acceptat",
+  "perioada": "2026-02",
+  "sha256": "3767edaa4f5dbb8b080e03738b6121bb1fc7646fce29e25f0302faff6b9c5ff2",
+  "bytes": 2647234,
+  "cititLa": "2026-09-25",
+  "randuri": 1729,
+  "valide": 1686,
+  "peMeserie": {
+   "asistent-medical": 904,
+   "infirmier": 296,
+   "medic": 377,
+   "kinetoterapeut": 20,
+   "psiholog": 11,
+   "farmacist": 4,
+   "medic-rezident": 61,
+   "asistent-social": 5,
+   "magaziner": 6,
+   "economist": 32,
+   "consilier-juridic": 3,
+   "programator": 3,
+   "registrator-medical": 7
+  },
+  "coloaneNecunoscute": []
+ },
+ "sju-gorj": {
+  "stare": "de verificat: baza ghicită la peste 30% din rânduri",
+  "perioada": "2026-02",
+  "sha256": "617a375560a01dc06eba721a5f71816ef32e1a7a86031f50dd8cfe870a6bee12",
+  "bytes": 2767830,
+  "cititLa": "2026-09-25",
+  "randuri": 238,
+  "valide": 237,
+  "peMeserie": {
+   "medic": 151,
+   "psiholog": 2,
+   "asistent-medical": 1,
+   "economist": 10,
+   "fizioterapeut": 1,
+   "kinetoterapeut": 6,
+   "infirmier": 67
+  },
+  "coloaneNecunoscute": [
+   "Salariu de",
+   "calcul sp.",
+   "Sp cond Gr II AMB/ Lg.153/",
+   "TRANSPARENTA SALARIALA Sp cond HGR 153/ 2018 / Lg.153/",
+   "TRANSPARENTA SALARIALA Sp cond Amb / Lg.153/",
+   "TRANSPARENTA SALARIALA Ind. Detasare / Lg. 136/",
+   "Sp cond Gr II % / Lg.153/",
+   "Sp cond gest inf",
+   "Sp ind.comisii % / Lg.153/",
+   "12 Mar 2026, 10:19:00 Sentinte jud. / Lg.153/",
+   "Sentinte"
+  ]
+ },
+ "sju-mciuc": {
+  "stare": "acceptat",
+  "perioada": "2026-03",
+  "sha256": "e1e9458779a318f5c494b236fb399782f58431b100b02bd18a2fd40a11a8de05",
+  "bytes": 153005,
+  "cititLa": "2026-09-25",
+  "randuri": 1277,
+  "valide": 1276,
+  "peMeserie": {
+   "medic": 334,
+   "asistent-medical": 586,
+   "infirmier": 218,
+   "medic-rezident": 22,
+   "psiholog": 11,
+   "registrator-medical": 44,
+   "kinetoterapeut": 11,
+   "asistent-social": 9,
+   "farmacist": 9,
+   "economist": 19,
+   "consilier-juridic": 10,
+   "bibliotecar": 1,
+   "contabil": 1,
+   "programator": 2
+  },
+  "coloaneNecunoscute": [
+   "luna martie 2026 Gradație/ grad"
+  ]
+ },
+ "scju-ilfov": {
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "f43bb6f748753987b6a29c451c50aa982eef7966ff885f1c83dcf819bb5caed6"
+ },
+ "scju-constanta": {
+  "stare": "acceptat",
+  "perioada": "2026-03",
+  "sha256": "0e759ae7a04a4499c33b6a22588c2905e9e066a7f9cc06624d8dddcec0ee9927",
+  "bytes": 433692,
+  "cititLa": "2026-09-25",
+  "randuri": 3654,
+  "valide": 3642,
+  "peMeserie": {
+   "asistent-farmacie": 19,
+   "asistent-medical": 1093,
+   "asistent-social": 13,
+   "consilier-juridic": 2,
+   "economist": 29,
+   "farmacist": 124,
+   "fizioterapeut": 5,
+   "infirmier": 421,
+   "kinetoterapeut": 5,
+   "magaziner": 3,
+   "medic": 760,
+   "medic-rezident": 1069,
+   "psiholog": 13,
+   "registrator-medical": 94,
+   "sofer-ambulanta": 4
+  },
+  "coloaneNecunoscute": []
+ },
+ "pm-sinaia": {
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "92e5d0f0fea327968acf9470b6b1bb33650e9cd519a195614452385eb60de5d1"
+ },
+ "dnp": {
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "6ca5b38486c37ad43494c5929b341649f1822dc0b51aa8018df4aac7a6418e74"
+ },
+ "scju-sibiu": {
+  "stare": "acceptat",
+  "perioada": "2026-03",
+  "sha256": "16b4acdf677948c14d22955c6507aae88d62c97ddf1d9f37713cd6fe5c2161eb",
+  "bytes": 316123,
+  "cititLa": "2026-09-25",
+  "randuri": 2337,
+  "valide": 2337,
+  "peMeserie": {
+   "medic": 507,
+   "asistent-medical": 922,
+   "registrator-medical": 92,
+   "infirmier": 156,
+   "kinetoterapeut": 13,
+   "medic-rezident": 604,
+   "psiholog": 5,
+   "consilier-juridic": 6,
+   "economist": 25,
+   "programator": 2,
+   "asistent-social": 2,
+   "magaziner": 3
+  },
+  "coloaneNecunoscute": [
+   "TABEL CU FUNCȚIILE ȘI SALARIILE PERSONALULUI S.C.J.U.S. SIBIU PENTRU LUNA MARTIE 206 Gradatie Gradat"
+  ]
+ },
+ "dgaspc-s1": {
+  "stare": "acceptat",
+  "perioada": "2026-03",
+  "sha256": "f0a6bef86c381ed02d3a2635100a0f0790dfe45ddd4e4945205f005eb89600b6",
+  "bytes": 660917,
+  "cititLa": "2026-09-25",
+  "randuri": 33,
+  "valide": 33,
+  "peMeserie": {
+   "ingrijitor-batrani": 3,
+   "medic": 2,
+   "asistent-social": 4,
+   "psiholog": 7,
+   "kinetoterapeut": 1,
+   "educator": 6,
+   "asistent-medical": 3,
+   "farmacist": 3,
+   "infirmier": 2,
+   "sofer-ambulanta": 2
+  },
+  "coloaneNecunoscute": []
+ },
+ "dgaspc-s2": {
+  "stare": "de verificat: numai 12% rânduri valide",
+  "perioada": "2026-03",
+  "sha256": "4c0065b2881cba61f413dca22aacaf94da1e06ece412edfb3f8dba0739b0f75c",
+  "bytes": 1091363,
+  "cititLa": "2026-09-25",
+  "randuri": 107,
+  "valide": 13,
+  "peMeserie": {
+   "consilier-juridic": 5,
+   "magaziner": 1,
+   "ingrijitor-batrani": 22,
+   "kinetoterapeut": 7,
+   "fizioterapeut": 1,
+   "asistent-social": 11,
+   "psiholog": 17,
+   "asistent-medical": 27,
+   "infirmier": 16
+  },
+  "coloaneNecunoscute": [
+   "Familia ocupațională „Administrație” - funcții publice",
+   "Familia ocupațională „Administrație” - funcții publice",
+   "Familia ocupațională „Administrație” - funcții publice Funcția publică Nr. crt.",
+   "Familia ocupațională „Administrație” - funcții publice",
+   "Familia ocupațională „Administrație” - funcții publice Clasa Grad profesional",
+   "Gradatia Grad profesional",
+   "TRANSPARENȚA VENITURILOR SALARIALE"
+  ]
+ },
+ "dgaspc-if": {
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "4161f7fd06fc937ac97fd8607d797631dcc4b8de36fbd6af1ea6032d888853bb"
+ },
+ "dgaspc-sv": {
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "40064b2de27e28ab377df1943316b90e470c32f467a614e74e8de70feebf1e16"
+ },
+ "dgaspc-gj": {
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "073be15ced5496e3320ab94b4b173732420d725af689ac0f5094c10fca7273d6"
+ },
+ "dgaspc-bt": {
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "6eeec8e214dc4f4cc74c6704d1110d63b0d1ae6c7e828ea5b7fc066531f0e857"
+ },
+ "dgaspc-cl": {
+  "stare": "acceptat",
+  "perioada": "2026-03",
+  "sha256": "94a66757fc49c30c387d22ea437ba1aaa8ce146a6e26fe9e7c509febc12abeea",
+  "bytes": 587729,
+  "cititLa": "2026-09-25",
+  "randuri": 132,
+  "valide": 132,
+  "peMeserie": {
+   "consilier-juridic": 13,
+   "ingrijitor-batrani": 5,
+   "medic": 3,
+   "asistent-social": 24,
+   "kinetoterapeut": 18,
+   "educator": 36,
+   "asistent-medical": 18,
+   "infirmier": 12,
+   "magaziner": 3
+  },
+  "coloaneNecunoscute": [
+   "Nr. crt.",
+   "CONSILIUL JUDEŢEAN CĂLĂRAŞI Direcția Generală de Asistență Socială și Protecția Copilului Călărași C",
+   "CONSILIUL JUDEŢEAN CĂLĂRAŞI Direcția Generală de Asistență Socială și Protecția Copilului Călărași C",
+   "CONSILIUL JUDEŢEAN CĂLĂRAŞI Direcția Generală de Asistență Socială și Protecția Copilului Călărași C"
+  ]
+ },
+ "dgaspc-sm": {
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "1c12377ba9b749d90ec174ca820e1593e9d1d86d4238007c0dcce6329742114a"
+ },
+ "bj-alba": {
+  "stare": "acceptat",
+  "perioada": "2026-03",
+  "sha256": "89e71c0baeeefe25cef7d209c42080e8f31860799c8a2f03a60e7041a920fb19",
+  "bytes": 1061028,
+  "cititLa": "2026-09-25",
+  "randuri": 16,
+  "valide": 16,
+  "peMeserie": {
+   "contabil": 1,
+   "bibliotecar": 15
+  },
+  "coloaneNecunoscute": [
+   "Nr. crt.",
+   "BIBLIOTECA Trandafirilor, 0258 811 bjalba@gmail.com pentru conform art.",
+   "JUDEȚEANĂ„LUCIAN Alba Iulia, jud. Alba, 0258 817 204 • managerbiblioteca@yahoo.com veniturilor exist"
+  ]
+ },
+ "bj-valcea": {
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "15f7355644cbdbcaf5ac740ea241509a4c03db467a6df6839986da76097f0dab"
+ },
+ "bj-vrancea": {
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "723efb270cf41f458164270ca4c8c72f023d781eaa038b3758fa91c49df1cb69"
+ },
+ "bj-calarasi": {
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "4cebdbca5ad1dc7bddb128d6ae8480da1eb4e8904ea2d8f035f874df6344966e"
+ },
+ "pm-timisoara": {
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "586b10970a66433cf4a976b106a69d3584940ea807c0cb5dfe7b7d6f58aaa5c6"
+ },
+ "pm-suceava": {
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "99668d8e5dcfc655772adcbf290eb40461aeda79cd7eaebd1a9bacebe31e258b"
+ },
+ "ps4": {
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "777321bd6ce5b58f0bee22460e6c224d535c94c4f67971a4d70fe109f77e5c18"
+ },
+ "ps6": {
+  "stare": "de verificat: baza ghicită la peste 30% din rânduri",
+  "perioada": "2026-03",
+  "sha256": "4442f05b09b82161b7acc3166a58f06a360769df2f81e70fb6a4d9a2e844ec27",
+  "bytes": 255687,
+  "cititLa": "2026-09-25",
+  "randuri": 15,
+  "valide": 15,
+  "peMeserie": {
+   "functionar-public": 15
+  },
+  "coloaneNecunoscute": [
+   "Număr intrare: 49578/31.03.2026 Coeficient gradaţie 0 3",
+   "Număr intrare: 49578/31.03.2026 ÎN PLATĂ Gradaţia 0 4=3*3700 lei",
+   "Gradaţia 1 5=4+(4*7,5%)",
+   "Gradaţia 2 6=5+(5*5%)",
+   "Gradaţia 3 7=5+(5*5%)",
+   "Gradaţia 4 8=7+(7*2,5%)",
+   "Gradaţia 5 9=8+(8*2,5%)"
+  ]
+ },
+ "cj-salaj": {
+  "stare": "acceptat",
+  "perioada": "2026-09",
+  "sha256": "6e024386d4c5a05067905ec5884ac46953ff816588b72ba7f386c343bfb9436c",
+  "bytes": 351514,
+  "cititLa": "2026-09-25",
+  "randuri": 23,
+  "valide": 23,
+  "peMeserie": {
+   "functionar-public": 19,
+   "consilier-juridic": 4
+  },
+  "coloaneNecunoscute": []
+ },
+ "sju-buzau": {
+  "stare": "acceptat",
+  "perioada": "2026-02",
+  "sha256": "024c7802ff14709ddd60364e656fd289bad09cc58f1018135f7263162512d146",
+  "bytes": 301770,
+  "cititLa": "2026-09-25",
+  "randuri": 1398,
+  "valide": 1328,
+  "peMeserie": {
+   "asistent-medical": 708,
+   "medic": 299,
+   "registrator-medical": 10,
+   "farmacist": 7,
+   "consilier-juridic": 2,
+   "medic-rezident": 74,
+   "asistent-farmacie": 13,
+   "psiholog": 2,
+   "asistent-social": 2,
+   "kinetoterapeut": 4,
+   "fizioterapeut": 1,
+   "infirmier": 249,
+   "economist": 21,
+   "contabil": 1,
+   "magaziner": 2,
+   "sofer-ambulanta": 3
+  },
+  "coloaneNecunoscute": [
+   "Luna: August 2025 Nr. Crt.",
+   "SPITALUL JUDETEAN DE URGENTA BUZAU, CF 4055750 SPITALUL JUDETEAN DE URGENTA BUZAU, CF 4055750 BUZAU,",
+   "SPITALUL JUDETEAN DE URGENTA BUZAU, CF 4055750 BUZAU, Str.Stadionului, Nr. 7 Tel: 0238720689; Fax. 0",
+   "SPITALUL JUDETEAN DE URGENTA BUZAU, CF 4055750 BUZAU, Str.Stadionului, Nr. 7 Tel: 0238720689; Fax. 0",
+   "SPITALUL JUDETEAN DE URGENTA BUZAU, CF 4055750 BUZAU, Str.Stadionului, Nr. 7 Tel: 0238720689; Fax. 0"
+  ]
+ },
+ "scju-mures": {
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "ea5e30aaa75a16660b5185164a56e06ccae09df7427cf951285c9efe98fe2ea0"
+ },
+ "sbi-iasi": {
+  "stare": "acceptat",
+  "perioada": "2026-03",
+  "sha256": "09bc6ca06eb70b19991537694f889efbf40210ffaf5849b3c62f67157c436385",
+  "bytes": 139145,
+  "cititLa": "2026-09-25",
+  "randuri": 195,
+  "valide": 195,
+  "peMeserie": {
+   "medic": 76,
+   "asistent-social": 1,
+   "kinetoterapeut": 1,
+   "psiholog": 2,
+   "asistent-medical": 21,
+   "registrator-medical": 8,
+   "infirmier": 70,
+   "sofer-ambulanta": 1,
+   "consilier-juridic": 2,
+   "economist": 6,
+   "magaziner": 2,
+   "bucatar": 2,
+   "instalator": 3
+  },
+  "coloaneNecunoscute": [
+   "153/2017 LA DATA DE 31.03.2026 Valoare bruta OUG 36/2025 OUG 36/2025 OUG 36/2025",
+   "153/2017 LA DATA DE 31.03.2026 Valoare bruta ore S/D Reglementări specifice sistemului Sp.SL"
+  ]
+ },
+ "scju-timisoara": {
+  "stare": "de verificat: numai 36% rânduri valide",
+  "perioada": "2026-03",
+  "sha256": "2c48e2873d147c4ddc0003e0bcf04e71012520dc43a569766b839e24a20563d3",
+  "bytes": 2334011,
+  "cititLa": "2026-09-25",
+  "randuri": 3895,
+  "valide": 1411,
+  "peMeserie": {
+   "programator": 3,
+   "medic": 651,
+   "asistent-medical": 1122,
+   "asistent-farmacie": 12,
+   "asistent-social": 11,
+   "consilier-juridic": 2,
+   "contabil": 1,
+   "economist": 28,
+   "farmacist": 118,
+   "fizioterapeut": 7,
+   "infirmier": 355,
+   "kinetoterapeut": 13,
+   "magaziner": 5,
+   "medic-rezident": 1438,
+   "electrician": 12,
+   "instalator": 12,
+   "psiholog": 10,
+   "registrator-medical": 95
+  },
+  "coloaneNecunoscute": [
+   "SPITALUL CLINIC JUDEȚEAN DE URGENȚĂ „PIUS BRÎNZEU” TIMIȘOARA 1",
+   "SPITALUL CLINIC JUDEȚEAN DE URGENȚĂ „PIUS BRÎNZEU” TIMIȘOARA Nr.crt. 2 3",
+   "Functia, gradul/treapta profesionala,conform Legii cadru nr. 153/2017 Grad/ 4 5",
+   "9",
+   "10",
+   "10 11",
+   "11 12",
+   "12 13",
+   "13 14",
+   "14 15"
+  ]
+ },
+ "sbi-constanta": {
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "5bff8a47839e23c9e01b3131a0a4de7337e4c2da45486b6085c172d896ea5ee5"
+ },
+ "sm-calafat": {
+  "stare": "acceptat",
+  "perioada": "2024-03",
+  "sha256": "5d300d261e87b8c837af8f20c19b1fdf12b896e4c5ab068a6e11e0fbd87cc6d2",
+  "bytes": 83320,
+  "cititLa": "2026-09-25",
+  "randuri": 304,
+  "valide": 304,
+  "peMeserie": {
+   "programator": 1,
+   "asistent-medical": 171,
+   "bucatar": 5,
+   "consilier-juridic": 1,
+   "economist": 6,
+   "electrician": 2,
+   "farmacist": 2,
+   "infirmier": 53,
+   "instalator": 3,
+   "kinetoterapeut": 1,
+   "magaziner": 1,
+   "medic": 49,
+   "psiholog": 1,
+   "registrator-medical": 8
+  },
+  "coloaneNecunoscute": [
+   "0",
+   "Gradatia Functia de Nr. Crt. Vechime 1 2"
+  ]
+ },
+ "sm-turda": {
+  "stare": "acceptat",
+  "perioada": "2026-03",
+  "sha256": "8d4dda56697a3a6dce13f80b16fe45362944c935d76e547e08f2373b505d6bcf",
+  "bytes": 55699,
+  "cititLa": "2026-09-25",
+  "randuri": 265,
+  "valide": 265,
+  "peMeserie": {
+   "medic": 96,
+   "asistent-medical": 35,
+   "infirmier": 82,
+   "medic-rezident": 18,
+   "asistent-social": 2,
+   "registrator-medical": 4,
+   "bucatar": 1,
+   "farmacist": 1,
+   "asistent-farmacie": 3,
+   "kinetoterapeut": 1,
+   "fizioterapeut": 2,
+   "economist": 12,
+   "electrician": 3,
+   "instalator": 4,
+   "magaziner": 1
+  },
+  "coloaneNecunoscute": [
+   "Anexa 1",
+   "Anexa 2",
+   "Anexa 5",
+   "Anexa 8",
+   "Anexa TESA"
+  ]
+ },
+ "sp-titan": {
+  "stare": "acceptat",
+  "perioada": "2026-03",
+  "sha256": "32cadcc03440517feb41c7195c5f12b330350412cfcaefc8de74274530e464f9",
+  "bytes": 1199566,
+  "cititLa": "2026-09-25",
+  "randuri": 14,
+  "valide": 13,
+  "peMeserie": {
+   "contabil": 1,
+   "medic": 1,
+   "kinetoterapeut": 1,
+   "farmacist": 1,
+   "registrator-medical": 1,
+   "psiholog": 3,
+   "asistent-social": 1,
+   "educator": 1,
+   "economist": 3,
+   "magaziner": 1
+  },
+  "coloaneNecunoscute": [
+   "NR. ('RT",
+   "SPITALUL DE PSIHIATRIE TITAN \"DR. CONSTANTIN TRANSPARENTA VENITURILOR SALARIALE CONF ART.33 FUNCTIE ",
+   "GORGOS DIN LEGEA CADRU GRAD- SAL TREAPTA ATIE DE",
+   "PSIHIATRIE Gorgos\" a,J'3/C3~~c .irntc..1ţ11",
+   "TITAN Gorgos\" a,J'3/C3~~c INDEMNI- ('F."
+  ]
+ },
+ "dsp-vaslui": {
+  "stare": "de verificat: baza ghicită la peste 30% din rânduri",
+  "perioada": "2026-09",
+  "sha256": "cfd3f202008b0f311f68bf8bf0837d660e29e2beb01f7f252b73fc15dcf171df",
+  "bytes": 2728113,
+  "cititLa": "2026-09-25",
+  "randuri": 34,
+  "valide": 34,
+  "peMeserie": {
+   "medic": 6,
+   "medic-rezident": 1,
+   "asistent-medical": 24,
+   "psiholog": 1,
+   "infirmier": 1,
+   "consilier-juridic": 1
+  },
+  "coloaneNecunoscute": [
+   "Serviciul Resurse Umane, Normare, TRANSPARENTA VENITllRILOR",
+   "Organizare SALARlALE",
+   "DIRECTIA DE SANATATE PUBLiCA JUDETEANA VASLUI Telefon Strada Republicii, bloc nr.367, parter, C.P.73",
+   "DIRECTIA PUBLICA INTRARE IE$IRE' ROMANIA MINISTERUL sANATATn DIRECTIA DE SANATATE PUBLiCA JUDETEANA ",
+   "DIRECTIA DE SANATATE A JUDE NR.205r95d~J DIRECTIA DE SANATATE PUBLiCA JUDETEANA VASLUI 0235/317351 R",
+   "ULJJI VAStUI b. SEP. 2026 ata_"
+  ]
+ }
+}
