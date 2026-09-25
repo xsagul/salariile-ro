@@ -7,7 +7,7 @@
 
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
-import { Breadcrumb, CardCompanion, Faq, Formula, H1, Hero, Lead, PaginiConexe, Prose, Repere, Section, INAINTE_DE_SECTIUNE } from "@/app/components/ui";
+import { Breadcrumb, CardCompanion, Faq, Formula, H1, Hero, Lead, PaginiConexe, Prose, Repere, Section, INAINTE_DE_SECTIUNE, LISTA_CARD } from "@/app/components/ui";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
 import CalculatorInvatamant from "@/app/components/CalculatorInvatamant";
@@ -234,7 +234,7 @@ export default function Page() {
         items={FAQ}
         companion={
           <CardCompanion titlu="Alte salarii din sectorul public">
-            <ul className="flex flex-col gap-3 text-sm leading-normal [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2">
+            <ul className={`${LISTA_CARD} [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2`}>
               <li><Link href="/calculator-salariu-sanatate">Calculator salariu în sănătate</Link>, pentru medici, asistenți și infirmieri.</li>
               <li><Link href="/noutati/legea-salarizarii-2026">Ce s-a întâmplat cu noua lege a salarizării</Link> și de ce grila de acum rămâne în plată.</li>
             </ul>

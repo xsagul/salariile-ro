@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import CalculatorPartTime from "@/app/components/CalculatorPartTime";
-import { Breadcrumb, CardCompanion, Faq, Formula, H1, Hero, Lead, PaginiConexe, Repere, Section } from "@/app/components/ui";
+import { Breadcrumb, CardCompanion, Faq, Formula, H1, Hero, Lead, PaginiConexe, Repere, Section, LISTA_CARD } from "@/app/components/ui";
 import TabelArticol from "@/app/components/TabelArticol";
 import {
   calculeazaPartTime,
@@ -197,7 +197,7 @@ export default function Page() {
         items={FAQ}
         companion={
           <CardCompanion titlu="Surse oficiale">
-            <ul className="space-y-3 text-sm leading-normal text-stone-600 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2">
+            <ul className={`${LISTA_CARD} text-stone-600 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2`}>
               <li><a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/308231" target="_blank" rel="noopener noreferrer">HG 146/2026</a>: salariul minim și media de ore</li>
               <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/305817" target="_blank" rel="noopener noreferrer">OUG 89/2025</a>: suma scăzută din baza minimă</li>
               <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/291539" target="_blank" rel="noopener noreferrer">Codul fiscal</a>, art. 146 și 168: baza minimă și cine plătește diferența</li>

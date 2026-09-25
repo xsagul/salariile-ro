@@ -187,7 +187,7 @@ const articol =
   "[&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-600 " +
   "[&_strong]:font-semibold [&_strong]:text-stone-900";
 
-const card = "flex h-full flex-col rounded-md border border-stone-200 bg-surface p-5 shadow-soft sm:p-6 [&>p+p]:mt-[11px]";
+const card = "flex h-full flex-col rounded-md border border-stone-200 bg-surface p-5 shadow-soft sm:p-6 [&>p+p]:mt-[5px]";
 const links =
   "[&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-600";
 const strong = "[&_strong]:font-semibold [&_strong]:text-stone-900";

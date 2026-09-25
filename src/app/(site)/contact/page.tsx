@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 import Link from "@/app/components/Link";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
-import { Hero, Section, Breadcrumb, H1, Lead, CardCompanion } from "@/app/components/ui";
+import { Hero, Section, Breadcrumb, H1, Lead, CardCompanion, LISTA_CARD } from "@/app/components/ui";
 
 export const metadata: Metadata = {
   title: "Contact: raportează erori sau sugestii",
@@ -67,7 +67,7 @@ export default function ContactPage() {
         noTopBorder
         companion={
           <CardCompanion titlu="Ce nu pot face">
-            <ul className="flex flex-col gap-3 text-sm leading-normal text-stone-600">
+            <ul className={`${LISTA_CARD} text-stone-600`}>
               <li>
                 <strong className="font-semibold text-stone-900">Consultanță fiscală.</strong> Nu sunt contabil sau
                 expert fiscal. Pentru sporuri, beneficii sau venituri cumulate, Camera Consultanților Fiscali și Corpul

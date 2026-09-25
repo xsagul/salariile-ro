@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
 import CalculatorSalariu from "@/app/components/CalculatorSalariu";
-import { Formula, TITLU_SECTIUNE, SPATIU_SECTIUNE, SPATIU_PARAGRAF, SUB_TITLU_SECTIUNE, LISTA_FAQ } from "@/app/components/ui";
+import { Formula, TITLU_SECTIUNE, SPATIU_SECTIUNE, SPATIU_PARAGRAF, SUB_TITLU_SECTIUNE, LISTA_FAQ, LISTA_CARD, SPATIU_TEXT_CARD } from "@/app/components/ui";
 import { personSchema } from "@/lib/person";
 import { calculatorSlugBrut, PAGE_LAST_MODIFIED } from "@/lib/seo";
 import { calculStandard, SALARIU_MINIM } from "@/lib/fiscal";
@@ -199,7 +199,7 @@ export default function Page() {
                 <div className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-600">
                   <h3 className="text-base font-bold tracking-[-0.01em] text-stone-900">Ce mai modifică netul</h3>
                   <p className="mt-2 text-sm leading-normal text-stone-600">La același brut, doi oameni pot primi sume diferite în mână. Contează:</p>
-                  <ul className="mt-3 flex flex-col gap-3 text-sm leading-normal text-stone-600">
+                  <ul className={`${SPATIU_TEXT_CARD} ${LISTA_CARD} text-stone-600`}>
                     <li><strong className="font-semibold text-stone-900">Brutul, față de {lei(PLAFON_DEDUCERE)} lei.</strong> Sub acest prag primești <Link href="/deducere-personala-2026">deducerea personală</Link>, mai mare cu cât salariul e mai mic. Peste el, nu mai există.</li>
                     <li><strong className="font-semibold text-stone-900">Persoanele în întreținere.</strong> Măresc deducerea, dar doar sub {lei(PLAFON_DEDUCERE)} lei brut.</li>
                     <li><strong className="font-semibold text-stone-900">Vârsta sub 26 de ani.</strong> O deducere în plus, tot sub {lei(PLAFON_DEDUCERE)} lei brut.</li>
@@ -235,7 +235,7 @@ export default function Page() {
               <aside className="mt-8 md:col-span-2 md:mt-0 md:self-start">
                 <div className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
                   <h3 className="mb-2 text-base font-bold tracking-[-0.01em] text-stone-900">Surse oficiale</h3>
-                  <ul className="flex flex-col gap-2 text-sm [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-600">
+                  <ul className={`${LISTA_CARD} [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-600`}>
                     <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/308231" target="_blank" rel="noopener">HG 146/2026 – salariul minim</a></li>
                     <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/305817" target="_blank" rel="noopener">OUG 89/2025 – facilitate salariu minim</a></li>
                     <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/293109" target="_blank" rel="noopener">OUG 156/2024 – eliminare facilități IT/construcții</a></li>
@@ -245,7 +245,7 @@ export default function Page() {
                   </ul>
 
                   <h3 className="mt-6 mb-2 text-base font-bold tracking-[-0.01em] text-stone-900">Pagini conexe</h3>
-                  <ul className="flex flex-col gap-2 text-sm">
+                  <ul className={`${LISTA_CARD}`}>
                     {/* Legături editoriale către instrumentele și paginile
                         principale care altfel ar fi accesibile mai ales din
                         meniu sau footer. */}

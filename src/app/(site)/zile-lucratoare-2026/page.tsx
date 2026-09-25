@@ -3,7 +3,7 @@ import Link from "@/app/components/Link";
 import { personSchema } from "@/lib/person";
 import { SARBATORI_LEGALE_2026, zileLucratoareLuna } from "@/lib/sarbatori";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
-import { Hero, Section, Breadcrumb, H1, Lead, Formula, CardCompanion, SUB_TITLU } from "@/app/components/ui";
+import { Hero, Section, Breadcrumb, H1, Lead, Formula, CardCompanion, SUB_TITLU, LISTA_CARD } from "@/app/components/ui";
 import TabelArticol from "@/app/components/TabelArticol";
 import CalculatorIntervalZile from '@/app/components/CalculatorIntervalZile';
 
@@ -195,7 +195,7 @@ export default function ZileLucratoare2026Page() {
       <Section
         companion={
           <CardCompanion titlu="Sărbătorile care scad o zi de lucru">
-            <ul className="flex flex-col gap-1.5 text-sm leading-normal text-stone-600">
+            <ul className={`${LISTA_CARD} text-stone-600`}>
               {SARBATORI_IN_SAPTAMANA.map((h) => (
                 <li key={h.data}>
                   <span className="font-medium text-stone-900">{h.data}</span> · {h.label}
@@ -252,7 +252,7 @@ export default function ZileLucratoare2026Page() {
       <Section
         companion={
           <CardCompanion titlu="Unde se folosește numărul">
-            <ul className="flex flex-col gap-3 text-sm leading-normal text-stone-600">
+            <ul className={`${LISTA_CARD} text-stone-600`}>
               <li>
                 <Link href="/calculator-ore-suplimentare" className="font-medium text-stone-900 underline underline-offset-2 hover:text-stone-600">Ore suplimentare</Link>: plata pe oră, cu
                 sporul pentru ore în plus, noapte și sărbători.

@@ -36,7 +36,8 @@ export const TITLU_CARD = "text-base font-bold tracking-[-0.01em] text-stone-900
 //   titlul paginii → text                    24          28
 //   deasupra unei secțiuni                   44          48
 //   deasupra subtitlului                     30          38
-//   paragraf → paragraf                      22          22   (și în carduri)
+//   paragraf → paragraf                      22          22
+//   în carduri (text de 14 px):  titlu → text 20, paragraf sau punct → următorul 16
 //   ultimul conținut → subsol                38          44
 //   titlul secțiunii → text                  24          28
 //   titlul cardului → text                   20          20
@@ -59,6 +60,10 @@ export const SUB_BREADCRUMB = "mb-1.5 sm:mb-2";
 export const SUB_TITLU = "mt-[11px] sm:mt-3.5 2xl:mt-3";
 /** Sub un paragraf de text de 16 px, până la următorul. */
 export const SPATIU_PARAGRAF = "mb-2.5";
+/** Lista dintr-un card: text de 14 px, 16 px percepuți între puncte, sub cei 20 de sub titlu. */
+export const LISTA_CARD = "flex flex-col gap-[5px] text-sm leading-normal";
+/** Între două blocuri de text de 14 px dintr-un card. */
+export const SPATIU_TEXT_CARD = "mt-[5px]";
 /** Sub titlul unei secțiuni, când urmează text. */
 export const SUB_TITLU_SECTIUNE = "mb-3 sm:mb-4";
 /** Sub titlul unei secțiuni, când urmează direct carduri sau un tabel. */
@@ -358,7 +363,7 @@ export function CardCompanion({
   nota?: string;
 }) {
   return (
-    <div className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 [&>dl>div:first-child]:pt-0 [&>p+p]:mt-[11px]">
+    <div className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 [&>dl>div:first-child]:pt-0 [&>p+p]:mt-[5px] [&>p+ul]:mt-[5px] [&>ul+p]:mt-[5px]">
       <h3 className={CARD_TITLU}>{titlu}</h3>
       {children}
       {nota ? <p className="mt-3 text-xs text-stone-600">{nota}</p> : null}

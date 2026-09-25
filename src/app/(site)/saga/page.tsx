@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "@/app/components/Link";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
-import { Section, Breadcrumb, CardCompanion, Repere, PaginiConexe, Faq, TITLU_PAGINA, SPATIU_JOS, SPATIU_SUS } from "@/app/components/ui";
+import { Section, Breadcrumb, CardCompanion, Repere, PaginiConexe, Faq, TITLU_PAGINA, SPATIU_JOS, SPATIU_SUS, LISTA_CARD } from "@/app/components/ui";
 
 const PATH = "/saga";
 const ACTUALIZAT = PAGE_LAST_MODIFIED[PATH].toLocaleDateString("ro-RO", {
@@ -126,7 +126,7 @@ export default function SagaPage() {
       <Section
         companion={
           <CardCompanion titlu="Verdict rapid">
-            <ul className="space-y-3 text-sm leading-normal text-stone-600 [&_strong]:font-semibold [&_strong]:text-stone-900">
+            <ul className={`${LISTA_CARD} text-stone-600 [&_strong]:font-semibold [&_strong]:text-stone-900`}>
               <li><strong>SAGA C:</strong> pentru contabilitate în partidă dublă și lucru local pe PC.</li>
               <li><strong>SAGA WEB:</strong> dacă vrei să intri în program direct din browser.</li>
               <li><strong>Pentru salarii:</strong> ambele variante includ fluxuri de salarizare și D112.</li>
@@ -175,7 +175,7 @@ export default function SagaPage() {
       <Section
         companion={
           <CardCompanion titlu="Salarizare în SAGA">
-            <ul className="space-y-2 text-sm text-stone-600">
+            <ul className={`${LISTA_CARD} text-stone-600`}>
               <li>configurare salarii</li>
               <li>evidență salariați</li>
               <li>state de salarii</li>

@@ -3,7 +3,7 @@ import Link from "@/app/components/Link";
 import { personSchema } from "@/lib/person";
 import { calculeazaDeducerePersonala, SALARIU_MINIM } from "@/lib/fiscal";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
-import { Hero, Section, Breadcrumb, H1, Lead, Formula, PaginiConexe, CardCompanion, SUB_TITLU } from "@/app/components/ui";
+import { Hero, Section, Breadcrumb, H1, Lead, Formula, PaginiConexe, CardCompanion, SUB_TITLU, LISTA_CARD } from "@/app/components/ui";
 import TabelArticol from "@/app/components/TabelArticol";
 
 // Titlul vechi („tabel și calcul pentru salariu") depășea 60 de caractere cu brandul și
@@ -83,7 +83,7 @@ export default function DeducerePersonalaPage() {
       <Section
         companion={
           <CardCompanion titlu="Cine are dreptul">
-            <ul className="flex flex-col gap-3 text-sm leading-normal text-stone-600">
+            <ul className={`${LISTA_CARD} text-stone-600`}>
               <li>
                 Salariații cu brut de cel mult <strong className="font-semibold text-stone-900">{fmt(PLAFON)}&nbsp;lei</strong>,
                 la locul de muncă de bază. La al doilea contract nu se acordă.

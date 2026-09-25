@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
-import { Breadcrumb, CtaCard, Eyebrow, H1, Hero, Lead, Section, CardCompanion, SUB_TITLU } from "@/app/components/ui";
+import { Breadcrumb, CtaCard, Eyebrow, H1, Hero, Lead, Section, CardCompanion, SUB_TITLU, LISTA_CARD } from "@/app/components/ui";
 import {
   LATEST_INS_EARNINGS,
   SALARY_DATA_2026,
@@ -252,7 +252,7 @@ export default function DateSalariiPage() {
       <Section
         companion={
           <CardCompanion titlu="Cum se actualizează">
-            <ul className="flex flex-col gap-2 text-sm leading-normal text-stone-600">
+            <ul className={`${LISTA_CARD} text-stone-600`}>
               <li>Pragurile legale sunt transcrise din actele de pe Portalul Legislativ.</li>
               <li>Cifrele statistice vin din comunicatul lunar INS indicat la fiecare rând.</li>
               <li>
@@ -292,7 +292,7 @@ export default function DateSalariiPage() {
       <Section
         companion={
           <CardCompanion titlu="Surse oficiale">
-            <ul className="flex flex-col gap-2 text-sm leading-normal text-stone-600">
+            <ul className={`${LISTA_CARD} text-stone-600`}>
               {Object.entries(SALARY_DATASET_SOURCES).map(([sourceId, source]) => (
                 <li key={sourceId}>
                   <a href={source.official_url} target="_blank" rel="noopener noreferrer" className="font-medium text-stone-900 underline underline-offset-2 hover:text-stone-600">

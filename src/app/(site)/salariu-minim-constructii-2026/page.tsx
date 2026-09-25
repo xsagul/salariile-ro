@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
-import { Breadcrumb, CardCompanion, Faq, Formula, H1, Hero, Lead, PaginiConexe, Section, SUB_TITLU } from "@/app/components/ui";
+import { Breadcrumb, CardCompanion, Faq, Formula, H1, Hero, Lead, PaginiConexe, Section, SUB_TITLU, LISTA_CARD } from "@/app/components/ui";
 import { calculStandardCuRegim, SALARIU_MINIM, SALARIU_MINIM_CONSTRUCTII } from "@/lib/fiscal";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
@@ -170,7 +170,7 @@ export default function SalariuMinimConstructii2026Page() {
       <Section
         companion={
           <CardCompanion titlu="Temeiul legal">
-            <ul className="flex flex-col gap-2 text-sm leading-normal text-stone-600">
+            <ul className={`${LISTA_CARD} text-stone-600`}>
               <li>
                 <a href="https://legislatie.just.ro/Public/DetaliiDocument/293109" target="_blank" rel="noopener" className="font-medium text-stone-900 underline underline-offset-2 hover:text-stone-600">OUG 156/2024</a>,
                 art. LXIX: minimul de {fmt(MINIM_CONSTRUCTII)} lei, tariful de {TARIF_ORAR} lei pe oră și sfârșitul scutirilor

@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "@/app/components/Link";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
-import { Section, Breadcrumb, CardCompanion, Repere, PaginiConexe, Faq, TITLU_PAGINA, SPATIU_JOS, SPATIU_SUS } from "@/app/components/ui";
+import { Section, Breadcrumb, CardCompanion, Repere, PaginiConexe, Faq, TITLU_PAGINA, SPATIU_JOS, SPATIU_SUS, LISTA_CARD } from "@/app/components/ui";
 
 const PATH = "/smartbill";
 const ACTUALIZAT = PAGE_LAST_MODIFIED[PATH].toLocaleDateString("ro-RO", {
@@ -130,7 +130,7 @@ export default function SmartBillPage() {
       <Section
         companion={
           <CardCompanion titlu="Verdict rapid">
-            <ul className="space-y-3 text-sm leading-normal text-stone-600 [&_strong]:font-semibold [&_strong]:text-stone-900">
+            <ul className={`${LISTA_CARD} text-stone-600 [&_strong]:font-semibold [&_strong]:text-stone-900`}>
               <li><strong>Potrivit:</strong> PFA și firme care vor facturare online, e-Factura și acces de pe telefon.</li>
               <li><strong>Cu gestiune:</strong> dacă lucrezi cu stocuri, NIR, inventar sau casă de marcat.</li>
               <li><strong>Pentru salarii:</strong> ai nevoie de SmartBill Conta, nu de planul simplu de facturare.</li>
@@ -272,7 +272,7 @@ export default function SmartBillPage() {
       <Section
         companion={
           <CardCompanion titlu="Salarizare în SmartBill Conta">
-            <ul className="space-y-2 text-sm text-stone-600">
+            <ul className={`${LISTA_CARD} text-stone-600`}>
               <li>salariați și contracte</li>
               <li>salariu de bază, normă și program</li>
               <li>sporuri, contribuții și deduceri</li>

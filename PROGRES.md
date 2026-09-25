@@ -3577,3 +3577,8 @@ A doua completare, la cererea proprietarului: paragraf → paragraf 22 px pe toa
 (era 24 / 26), și în carduri, ca textul să fie vizibil mai strâns decât titlu → text
 (24 / 28). Măsurat: 22 px la 79% din perechile de paragrafe de 16 px și 75% din cele din
 carduri; restul sunt paginile de meserie și comparația de meserii.
+
+A treia completare: în carduri (text de 14 px) distanța dintre puncte și paragrafe era
+~23 px, mai mare decât titlu → text (20), deci ierarhie inversată (observat de proprietar
+pe homepage). Acum 16 px, prin LISTA_CARD și SPATIU_TEXT_CARD din ui.tsx. Măsurat: 64 din
+103 puncte și 10 din 16 paragrafe din carduri la 16 px; restul la 17–19.

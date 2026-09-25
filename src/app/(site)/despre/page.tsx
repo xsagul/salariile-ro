@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 import Link from "@/app/components/Link";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
-import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow, CardCompanion } from "@/app/components/ui";
+import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow, CardCompanion, LISTA_CARD } from "@/app/components/ui";
 
 export const metadata: Metadata = {
   title: "Despre proiect: cine întreține site-ul",
@@ -102,7 +102,7 @@ export default function DesprePage() {
       <Section
         companion={
           <CardCompanion titlu="Jurnal de corecții și actualizări">
-                <ul className="flex flex-col gap-3 text-sm leading-normal text-stone-600 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_strong]:font-semibold [&_strong]:text-stone-900">
+                <ul className={`${LISTA_CARD} text-stone-600 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_strong]:font-semibold [&_strong]:text-stone-900`}>
                   <li>
                     <strong>24 septembrie 2026</strong> — Textele site-ului rescrise pe înțelesul tuturor: sub fiecare calculator stă acum formula, iar cifrele apar doar unde răspund la o întrebare.
                   </li>

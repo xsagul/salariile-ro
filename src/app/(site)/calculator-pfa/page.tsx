@@ -3,7 +3,7 @@
 // (hero pe grilă + calculator + zonă-articol 3+2 cu carduri-companion).
 
 import type { Metadata } from "next";
-import { Formula, PaginiConexe, TITLU_PAGINA, TITLU_SECTIUNE, SPATIU_SECTIUNE, SPATIU_SUS, SUB_TITLU, SPATIU_PARAGRAF, SUB_TITLU_SECTIUNE, LISTA_FAQ } from "@/app/components/ui";
+import { Formula, PaginiConexe, TITLU_PAGINA, TITLU_SECTIUNE, SPATIU_SECTIUNE, SPATIU_SUS, SUB_TITLU, SPATIU_PARAGRAF, SUB_TITLU_SECTIUNE, LISTA_FAQ, LISTA_CARD } from "@/app/components/ui";
 import Link from "@/app/components/Link";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
@@ -487,12 +487,12 @@ export default function CalculatorPfaPage() {
               <aside className="mt-8 md:col-span-2 md:mt-0 md:self-start">
                 <div className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
                   <h3 className="mb-2 text-base font-bold tracking-[-0.01em] text-stone-900">Surse oficiale</h3>
-                  <ul className="flex flex-col gap-2 text-sm leading-normal text-stone-600 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-600">
+                  <ul className={`${LISTA_CARD} text-stone-600 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-600`}>
                     <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/257144" target="_blank" rel="noopener">Codul Fiscal (Legea 227/2015)</a> – contribuții și impozit pentru activități independente</li>
                     <li><a href="https://static.anaf.ro/static/10/Cluj/cj_DU_activ_indep_22apr2026.pdf" target="_blank" rel="noopener">ANAF – ghid Declarația Unică 2026</a> – plafoane, excepții CAS/CASS și cazuri practice</li>
                   </ul>
                   <h3 className="mt-6 mb-2 text-base font-bold tracking-[-0.01em] text-stone-900">Pagini conexe</h3>
-                  <ul className="flex flex-col gap-2 text-sm [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-600">
+                  <ul className={`${LISTA_CARD} [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-600`}>
                     <li><Link href="/noutati/pfa-sau-srl-2026">Ghid comparativ: PFA sau SRL în 2026</Link></li>
                     <li><Link href="/">Calculator salariu net</Link></li>
                     <li><Link href="/salariu-minim">Salariul minim 2026</Link></li>
