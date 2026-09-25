@@ -41,6 +41,8 @@ export const TITLU_CARD = "text-base font-bold tracking-[-0.01em] text-stone-900
 //   ultimul conținut → subsol                38          44
 //   titlul secțiunii → text                  24          28
 //   titlul cardului → text                   20          20
+// Înălțimea rândului: 16/24, 14/20, 12/16 peste tot (Material, Carbon, Tailwind);
+// textul mic nu primește `leading-normal` sau `leading-relaxed`.
 // Cu breadcrumb, el ia locul titlului sub bară, iar titlul vine la ~16/20 px
 // sub el. Rândurile de pe salariu-minim și salariu-mediu repetă 38/42 ca
 // variantă de copil (`[&>div]:`), pe care o constantă n-o poate exprima.
@@ -61,9 +63,9 @@ export const SUB_TITLU = "mt-[11px] sm:mt-3.5 2xl:mt-3";
 /** Sub un paragraf de text de 16 px, până la următorul. */
 export const SPATIU_PARAGRAF = "mb-2.5";
 /** Lista dintr-un card: text de 14 px, 16 px percepuți între puncte, sub cei 20 de sub titlu. */
-export const LISTA_CARD = "flex flex-col gap-[5px] text-sm leading-normal";
+export const LISTA_CARD = "flex flex-col gap-1.5 text-sm";
 /** Între două blocuri de text de 14 px dintr-un card. */
-export const SPATIU_TEXT_CARD = "mt-[5px]";
+export const SPATIU_TEXT_CARD = "mt-1.5";
 /** Sub titlul unei secțiuni, când urmează text. */
 export const SUB_TITLU_SECTIUNE = "mb-3 sm:mb-4";
 /** Sub titlul unei secțiuni, când urmează direct carduri sau un tabel. */
@@ -102,7 +104,7 @@ const PROSE = [
   // cardului <Formula>, al cărui <pre> stă într-un <figure>.
   "[&_div>pre]:my-5 [&_div>pre]:overflow-x-auto [&_div>pre]:rounded-md [&_div>pre]:border [&_div>pre]:border-stone-200 [&_div>pre]:border-l-4 [&_div>pre]:border-l-stone-900 [&_div>pre]:bg-surface [&_div>pre]:px-4 [&_div>pre]:py-3 [&_div>pre]:font-mono [&_div>pre]:text-sm [&_div>pre]:leading-7 [&_div>pre]:text-stone-900 [&_div>pre]:shadow-soft",
   // .source-note (specificitate 0,2,0) bate variantele de element 0,1,1
-  "[&_.source-note]:mt-4 [&_.source-note]:text-xs [&_.source-note]:leading-normal [&_.source-note]:text-stone-600",
+  "[&_.source-note]:mt-4 [&_.source-note]:text-xs [&_.source-note]:leading-4 [&_.source-note]:text-stone-600",
 ].join(" ");
 
 export function Prose({ children, className = "" }: { children: ReactNode; className?: string }) {
@@ -273,7 +275,7 @@ export function PaginiConexe({
                 className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft transition-colors hover:border-stone-300 hover:bg-canvas"
               >
                 <span className="text-sm font-medium text-stone-900">{link.label}</span>
-                <span className="mt-1 text-sm leading-normal text-stone-600">{link.descriere}</span>
+                <span className="mt-1 text-sm text-stone-600">{link.descriere}</span>
               </Link>
             </li>
           ))}
@@ -350,7 +352,8 @@ export function GrilaPagina({
  * dar sub titlul secțiunii de alături. Textul cardului rămâne `text-sm
  * text-stone-600`, notele `text-xs`.
  */
-export const CARD_TITLU = `mb-2 ${TITLU_CARD}`;
+// 9 px: cu textul cardului pe rânduri de 20 px, distanța percepută e 20.
+export const CARD_TITLU = `mb-[9px] ${TITLU_CARD}`;
 
 /** Cardul din coloana din dreapta: `surface`, bordura stone-200, umbra unica. */
 export function CardCompanion({
@@ -363,7 +366,7 @@ export function CardCompanion({
   nota?: string;
 }) {
   return (
-    <div className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 [&>dl>div:first-child]:pt-0 [&>p+p]:mt-[5px] [&>p+ul]:mt-[5px] [&>ul+p]:mt-[5px]">
+    <div className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 [&>dl>div:first-child]:pt-0 [&>p+p]:mt-1.5 [&>p+ul]:mt-1.5 [&>ul+p]:mt-1.5">
       <h3 className={CARD_TITLU}>{titlu}</h3>
       {children}
       {nota ? <p className="mt-3 text-xs text-stone-600">{nota}</p> : null}

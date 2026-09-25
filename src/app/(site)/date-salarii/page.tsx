@@ -180,7 +180,7 @@ export default function DateSalariiPage() {
       <Section
         companion={
           <CardCompanion titlu="Reutilizare și citare">
-            <div id="reutilizare" className="scroll-mt-24 flex flex-col gap-3 text-sm leading-normal text-stone-600">
+            <div id="reutilizare" className="scroll-mt-24 flex flex-col gap-3 text-sm text-stone-600">
               <p>{SALARY_DATASET_USAGE_TERMS}</p>
               <p>
                 Citează așa: <strong className="font-semibold text-stone-900">Salariile.ro, „Date salariale România
@@ -261,7 +261,7 @@ export default function DateSalariiPage() {
               </li>
               <li>Setul se schimbă când intră în vigoare un prag nou sau când INS publică o lună nouă.</li>
             </ul>
-            <p className="mt-3 text-sm leading-normal text-stone-600">
+            <p className="mt-3 text-sm text-stone-600">
               Ultima lună INS inclusă e {LATEST_INS_EARNINGS.periodLabel}: statisticile lunare apar la câteva
               săptămâni după luna măsurată. Câmpul <code>reference_date</code> spune până când a fost verificat setul.
             </p>

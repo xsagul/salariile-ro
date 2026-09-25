@@ -257,7 +257,7 @@ export default function FemeiBarbatiPage() {
             updated="25 august 2026"
           />
 
-          <p className="mt-4 rounded-md border border-stone-300 bg-surface p-4 text-sm leading-normal text-stone-700 shadow-soft">
+          <p className="mt-4 rounded-md border border-stone-300 bg-surface p-4 text-sm text-stone-700 shadow-soft">
             <strong className="font-semibold text-stone-900">Ce NU spune cifra:</strong> nu spune că femeile primesc cu{" "}
             {marime(TOTAL.diferenta)}% mai puțin <em>pentru aceeași muncă</em>. Compară câștigul mediu al tuturor
             femeilor cu al tuturor bărbaților. Grupele de ocupații sunt largi, iar în interiorul lor cele două grupuri

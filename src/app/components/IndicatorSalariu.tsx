@@ -27,8 +27,8 @@ export default function IndicatorSalariu({ reper: r, slug }: { reper: ReperMeser
       <p className="mt-3 text-3xl font-bold tracking-tight text-stone-900 sm:text-4xl">{textIndicator(r)}</p>
       {/* Grila în plată e cea din iunie 2024; sus scriem „în plată", anul stă la surse (regula din 15 septembrie 2026). */}
       <p className="mt-1 text-sm text-stone-600">pe lună · {r.kind === 'public-grid' ? 'grila în plată' : r.period}</p>
-      <p className="mt-2 text-sm leading-relaxed text-stone-600">{explanation}</p>
-      {!!c?.verificareOficiala && <p className="mt-2 text-xs leading-relaxed text-stone-600">
+      <p className="mt-2 text-sm text-stone-600">{explanation}</p>
+      {!!c?.verificareOficiala && <p className="mt-2 text-xs text-stone-600">
         Verificat față de statistica oficială pe grupa de ocupații: {c.verificareOficiala.valoare.toLocaleString('ro-RO')} lei.
         {c.verificareOficiala.inBanda
           ? ' Reperul se încadrează în banda plauzibilă.'

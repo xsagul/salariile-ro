@@ -370,7 +370,7 @@ export default function CalculatorInvatamant() {
           </div>
 
           {!r && (
-            <p className="mt-4 text-xs leading-relaxed text-stone-600">
+            <p className="mt-4 text-xs text-stone-600">
               Alege încadrarea și apasă <strong className="text-stone-900">Calculează</strong>.
               Fiecare linie își arată temeiul din lege.
             </p>

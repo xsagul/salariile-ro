@@ -70,11 +70,11 @@ export default function DesprePage() {
         noTopBorder
         companion={
           <CardCompanion titlu="Ai găsit o greșeală?">
-            <p className="text-sm leading-normal text-stone-600">
+            <p className="text-sm text-stone-600">
               O cifră greșită, o lege depășită sau un calculator care îți lipsește: scrie-mi la adresa de pe pagina de{" "}
               <Link href="/contact" className="LINK">contact</Link>. Răspund la toate mesajele, uneori în câteva zile.
             </p>
-            <p className="mt-3 text-sm leading-normal text-stone-600">
+            <p className="mt-3 text-sm text-stone-600">
               O eroare concretă de calcul are prioritate: de regulă o corectez în aceeași zi.
             </p>
           </CardCompanion>

@@ -60,7 +60,7 @@ export default function TrepteRapide({ date }: { date: DateMeserie }) {
           </div>
         )}
       </dl>
-      <p className="mt-3 text-xs leading-relaxed text-stone-600">
+      <p className="mt-3 text-xs text-stone-600">
         Salariul de pornire, în mână. Vechimea și sporurile vin peste el. Toate treptele sunt în tabelul de mai jos.
       </p>
     </section>

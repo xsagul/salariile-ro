@@ -58,7 +58,7 @@ export function SelectorPastile<T extends string | number>({
   return (
     <fieldset className="mb-3">
       <legend className="mb-1 text-xs font-medium text-stone-600">{eticheta}</legend>
-      {ajutor && <p className="mb-2 text-xs leading-normal text-stone-600">{ajutor}</p>}
+      {ajutor && <p className="mb-2 text-xs text-stone-600">{ajutor}</p>}
 
       <div className={coloane === 1 ? "flex flex-col gap-1" : "flex flex-wrap gap-1"}>
         {optiuni.map((o) => {

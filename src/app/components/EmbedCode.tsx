@@ -24,7 +24,7 @@ export default function EmbedCode({ code, tip }: { code: string; tip: "minimal" 
 
   return (
     <div className="relative">
-      <pre className="overflow-x-auto rounded-md border border-stone-200 bg-stone-900 p-4 text-xs leading-relaxed text-stone-100">
+      <pre className="overflow-x-auto rounded-md border border-stone-200 bg-stone-900 p-4 text-xs text-stone-100">
         <code>{code}</code>
       </pre>
       <button

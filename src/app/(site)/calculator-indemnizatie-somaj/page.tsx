@@ -128,10 +128,10 @@ export default function Page() {
       <Section
         companion={
           <CardCompanion titlu="Ce se reține din ajutor">
-            <p className="text-sm leading-normal text-stone-600">
+            <p className="text-sm text-stone-600">
               Doar <strong className="font-semibold text-stone-900">10% pentru sănătate</strong>. Nu plătești impozit.
             </p>
-            <p className="mt-3 text-sm leading-normal text-stone-600">
+            <p className="mt-3 text-sm text-stone-600">
               Contribuția la pensie o plătește agenția de ocupare, nu tu. Lunile de șomaj se socotesc la pensie, fără să
               scadă suma primită.
             </p>

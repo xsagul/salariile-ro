@@ -282,7 +282,7 @@ export default function WidgetCalculator({ initialBrut }: { initialBrut?: string
             </span>
           )}
           {belowMinimumWarn && (
-            <span role="status" className="mt-2 block text-xs leading-relaxed text-stone-600">
+            <span role="status" className="mt-2 block text-xs text-stone-600">
               {mod === "net"
                 ? `Brut estimat sub ${fmt(SALARIU_MINIM)} lei. Posibil la part-time sau lună incompletă.`
                 : `Brut sub ${fmt(SALARIU_MINIM)} lei. Posibil la part-time sau lună incompletă.`}

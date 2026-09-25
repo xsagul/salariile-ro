@@ -187,7 +187,7 @@ const articol =
   "[&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-600 " +
   "[&_strong]:font-semibold [&_strong]:text-stone-900";
 
-const card = "flex h-full flex-col rounded-md border border-stone-200 bg-surface p-5 shadow-soft sm:p-6 [&>p+p]:mt-[5px]";
+const card = "flex h-full flex-col rounded-md border border-stone-200 bg-surface p-5 shadow-soft sm:p-6 [&>p+p]:mt-1.5";
 const links =
   "[&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-600";
 const strong = "[&_strong]:font-semibold [&_strong]:text-stone-900";
@@ -320,7 +320,7 @@ export default function SalariuMediuPage() {
             <aside className={aside}>
               <div className={`${card} ${links} ${strong}`}>
                 <h3 className="text-base font-bold tracking-[-0.01em] text-stone-900">Media față de minim</h3>
-                <p className="mt-2 text-sm leading-normal tracking-[-0.01em] text-stone-600">
+                <p className="mt-2 text-sm tracking-[-0.01em] text-stone-600">
                   Cine e plătit cu salariul minim primește în mână {fmt(NET_MINIM)} de lei, adică <strong>{PROCENT_MINIM_DIN_MEDIE}%</strong> din
                   netul mediu. Pe brut distanța e și mai mare, pentru că la minim taxele sunt mai mici.
                 </p>
@@ -350,7 +350,7 @@ export default function SalariuMediuPage() {
             <aside className={aside}>
               <div className={`${card} ${strong}`}>
                 <h3 className="text-base font-bold tracking-[-0.01em] text-stone-900">De ce nu vezi aici mediana</h3>
-                <p className="mt-2 text-sm leading-normal tracking-[-0.01em] text-stone-600">
+                <p className="mt-2 text-sm tracking-[-0.01em] text-stone-600">
                   INS nu o publică lunar, alături de medie. N-o estimăm noi, pentru că o cifră fără date compatibile și
                   fără o metodă verificabilă ar fi o ghicitoare.
                 </p>
@@ -458,7 +458,7 @@ export default function SalariuMediuPage() {
               <div className="flex h-full flex-col gap-6">
                 <div className={`${card} ${strong}`}>
                   <h3 className="text-base font-bold tracking-[-0.01em] text-stone-900">Ce urmează</h3>
-                  <p className="mt-2 text-sm leading-normal tracking-[-0.01em] text-stone-600">
+                  <p className="mt-2 text-sm tracking-[-0.01em] text-stone-600">
                     Comisia de Prognoză estimează că media brută ajunge la <strong>9.786 lei</strong> în 2027 și la{" "}
                     <strong>10.381 lei</strong> în 2028. Sunt doar estimări: cifra fiecărui an o fixează legea bugetului.
                   </p>
@@ -487,7 +487,7 @@ export default function SalariuMediuPage() {
             <aside className={aside}>
               <div className={card}>
                 <h3 className="mb-2 text-base font-bold tracking-[-0.01em] text-stone-900">Surse oficiale</h3>
-                <ul className={`flex flex-col gap-2 text-sm leading-normal text-stone-600 ${links}`}>
+                <ul className={`flex flex-col gap-2 text-sm text-stone-600 ${links}`}>
                   <li><strong className="font-medium text-stone-900">Legea 44/2026</strong>: bugetul asigurărilor sociale 2026</li>
                   <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/276927" target="_blank" rel="noopener">Legea 360/2023</a>: sistemul public de pensii și ajutorul de deces</li>
                   <li><a href={LATEST_INS_EARNINGS.officialUrl} target="_blank" rel="noopener">INS, comunicatul pentru {INS_PERIOD_LABEL}</a>: {INS_BRUT_LABEL} lei brut, {INS_NET_LABEL} lei net, publicat {LATEST_INS_EARNINGS.publicationDateLabel}</li>

@@ -189,6 +189,15 @@ for (const f of fisiereSrc) {
   const sursa = await read(`src/${f}`);
   assert.ok(!spatiiVechi.test(sursa), `${f} are o spațiere de secțiune scrisă de mână; folosește constantele de spațiere din ui.tsx`);
 }
+// Înălțimea rândului: 16/24, 14/20, 12/16 (Material, Carbon, Tailwind), decisă pe
+// 25 septembrie 2026. Textul mic cu `leading-normal`/`leading-relaxed` dădea 21 și
+// 22,8 px la 14 px și 18–19,5 px la 12 px.
+const leadingMic = /["`][^"`]*(?:(?:^|\s|["`])text-(?:sm|xs)\s[^"`]*leading-(?:normal|relaxed)|leading-(?:normal|relaxed)\s[^"`]*(?:^|\s)text-(?:sm|xs)(?=[\s"`]))[^"`]*["`]/;
+for (const f of fisiereSrc) {
+  const sursa = await read(`src/${f}`);
+  const gasit = sursa.match(leadingMic);
+  assert.ok(!gasit || /(?:^|\s)(?:sm:|md:|lg:)?text-(?:base|lg|xl)/.test(gasit[0]), `${f}: text mic cu leading-normal/relaxed; lasă înălțimea implicită a mărimii`);
+}
 const ui = await read("src/app/components/ui.tsx");
 assert.ok(
   ui.includes('"text-[22px] font-bold leading-tight tracking-[-0.02em] text-stone-900 lg:text-2xl"'),

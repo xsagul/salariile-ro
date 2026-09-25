@@ -132,7 +132,7 @@ export default function DeducerePersonalaPage() {
       <Section
         companion={
           <CardCompanion titlu="Separat: 200 de lei la salariul minim">
-            <p className="text-sm leading-normal text-stone-600">
+            <p className="text-sm text-stone-600">
               La salariul minim, 200 de lei din brut nu plătesc nicio taxă: nici pensie, nici sănătate, nici impozit.
               Deducerea scade doar impozitul. La minim le primești pe amândouă, de aceea netul de acolo e relativ mai
               mare. Calculul complet e la <Link href="/salariu-minim" className="font-medium text-stone-900 underline underline-offset-2">salariul minim</Link>.

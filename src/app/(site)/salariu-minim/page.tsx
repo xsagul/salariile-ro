@@ -187,13 +187,13 @@ const articol =
   "[&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-600 " +
   "[&_strong]:font-semibold [&_strong]:text-stone-900";
 
-const card = "flex h-full flex-col rounded-md border border-stone-200 bg-surface p-5 shadow-soft sm:p-6 [&>p+p]:mt-[5px]";
+const card = "flex h-full flex-col rounded-md border border-stone-200 bg-surface p-5 shadow-soft sm:p-6 [&>p+p]:mt-1.5";
 const links =
   "[&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-600";
 const strong = "[&_strong]:font-semibold [&_strong]:text-stone-900";
 const row = "md:grid md:grid-cols-5 md:gap-8 lg:gap-10";
 const aside = "mt-8 md:col-span-2 md:mt-0 md:self-start";
-const textCard = "mt-2 text-sm leading-normal tracking-[-0.01em] text-stone-600";
+const textCard = "mt-2 text-sm tracking-[-0.01em] text-stone-600";
 const titluCard = "text-base font-bold tracking-[-0.01em] text-stone-900";
 
 // ─── Tabele și grafic ────────────────────────────────────────────────────────
@@ -327,7 +327,7 @@ function BaraAngajatStat() {
         <div className="flex min-w-0 items-center justify-start overflow-hidden whitespace-nowrap bg-stone-900 px-3 text-white" style={{ flexGrow: LA_ANGAJAT, flexBasis: 0 }}>Angajat {LA_ANGAJAT}%</div>
         <div className="flex min-w-0 items-center justify-end overflow-hidden whitespace-nowrap border-l border-stone-300 bg-canvas px-3 text-stone-700" style={{ flexGrow: 100 - LA_ANGAJAT, flexBasis: 0 }}>Stat {100 - LA_ANGAJAT}%</div>
       </div>
-      <p className="mt-2 text-xs leading-normal text-stone-600">
+      <p className="mt-2 text-xs text-stone-600">
         Din tot ce plătește firma pentru un salariat la minim, partea care ajunge la el și partea care merge la stat.
       </p>
     </div>
@@ -412,7 +412,7 @@ function CardSurse() {
   return (
     <div className={card}>
       <h3 className="mb-2 text-base font-bold tracking-[-0.01em] text-stone-900">Surse oficiale</h3>
-      <ul className={`flex flex-col gap-2 text-sm leading-normal text-stone-600 ${links}`}>
+      <ul className={`flex flex-col gap-2 text-sm text-stone-600 ${links}`}>
         <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/308231" target="_blank" rel="noopener">HG 146/2026</a>: salariul minim din 1 iulie 2026</li>
         <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/291450" target="_blank" rel="noopener">HG 1506/2024</a>: salariul minim din 1 ianuarie 2025</li>
         <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/305817" target="_blank" rel="noopener">OUG 89/2025</a>: suma netaxată de 300 și 200 lei</li>

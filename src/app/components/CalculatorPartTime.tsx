@@ -276,7 +276,7 @@ export default function CalculatorPartTime() {
             <p
               id="part-time-brut-ajutor"
               role={emptyWarn ? "alert" : undefined}
-              className={`mt-2 text-xs leading-normal ${emptyWarn || subMinimulLegal ? "font-medium text-stone-900" : "text-stone-600"}`}
+              className={`mt-2 text-xs ${emptyWarn || subMinimulLegal ? "font-medium text-stone-900" : "text-stone-600"}`}
             >
               {emptyWarn
                 ? "Introdu un salariu brut mai întâi."
@@ -313,7 +313,7 @@ export default function CalculatorPartTime() {
                   </select>
                   <Chevron />
                 </div>
-                <p className="mt-2 text-xs leading-normal text-stone-600">Excepția trebuie susținută cu documentele cerute de lege.</p>
+                <p className="mt-2 text-xs text-stone-600">Excepția trebuie susținută cu documentele cerute de lege.</p>
               </div>
 
               <div className="mb-4 min-w-0">
@@ -410,7 +410,7 @@ export default function CalculatorPartTime() {
               {fmt(rezultat.costTotalCuDiferente / rezultat.oreLunareEstimate)} lei
             </p>
 
-            <p className="mt-4 text-sm leading-normal text-stone-600">
+            <p className="mt-4 text-sm text-stone-600">
               {diferenteAngajator > 0
                 ? `Firma completează cu ${fmt(diferenteAngajator)} lei CAS și CASS până la baza minimă de ${fmt(rezultat.bazaMinimaContributii)} lei. Diferența nu se scade din netul tău.`
                 : rezAfisat.exceptat

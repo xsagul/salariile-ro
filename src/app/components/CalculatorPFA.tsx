@@ -529,7 +529,7 @@ export default function CalculatorPFA() {
                   <button type="button" className={tab(formaActiva === "micro", "border-l border-stone-300")} onClick={() => setForma("micro")}>SRL micro</button>
                   <button type="button" className={tab(formaActiva === "profit", "border-l border-stone-300")} onClick={() => setForma("profit")}>SRL profit</button>
                 </div>
-                <p className="mt-3 text-sm leading-normal text-stone-700">
+                <p className="mt-3 text-sm text-stone-700">
                   {clasament[0].ramas - clasament[1].ramas < 1_000 ? (
                     <>
                       La cifrele tale, <strong className="font-bold text-stone-900">{clasament[0].nume}</strong> și{" "}
@@ -547,14 +547,14 @@ export default function CalculatorPFA() {
                   )}
                 </p>
                 {srl.venituri > PLAFON_MICRO_LEI && (
-                  <p role="status" className="mt-3 rounded border border-stone-900 bg-surface px-3 py-2 text-xs leading-normal text-stone-700">
+                  <p role="status" className="mt-3 rounded border border-stone-900 bg-surface px-3 py-2 text-xs text-stone-700">
                     <strong className="font-bold text-stone-900">Peste plafonul micro.</strong> Cu {fmt(srl.venituri)} lei
                     depășești {fmt(PLAFON_MICRO_LEI)} lei (100.000 euro), deci varianta microîntreprindere nu îți este
                     accesibilă pentru anul următor.
                   </p>
                 )}
                 {rezultatSrl !== null && rezultatSrl.deficit > 0 && (
-                  <p role="status" className="mt-3 rounded border border-stone-900 bg-surface px-3 py-2 text-xs leading-normal text-stone-700">
+                  <p role="status" className="mt-3 rounded border border-stone-900 bg-surface px-3 py-2 text-xs text-stone-700">
                     <strong className="font-bold text-stone-900">Firma nu se susține la cifra asta.</strong> Salariul minim e
                     obligatoriu la micro, dar din venituri nu ies banii de plată: ar trebui să bagi{" "}
                     <strong className="font-bold text-stone-900">{fmt(rezultatSrl.deficit)} lei pe an</strong> din buzunarul tău.
@@ -651,11 +651,11 @@ export default function CalculatorPFA() {
               <div className="mt-3 rounded border border-stone-300 bg-canvas p-4">
                 <h3 className="mb-2 text-xs font-medium text-stone-600">La aceleași cifre, în sistem real</h3>
                 {rez.totalTaxeReal === rez.r.totalTaxe ? (
-                  <p className="text-sm leading-normal text-stone-700">
+                  <p className="text-sm text-stone-700">
                     Taxele ar fi identice: <strong className="font-bold text-stone-900">{fmtP(rez.totalTaxeReal)} lei</strong>.
                   </p>
                 ) : (
-                  <p className="text-sm leading-normal text-stone-700">
+                  <p className="text-sm text-stone-700">
                     Ai plăti <strong className="font-bold text-stone-900">{fmtP(rez.totalTaxeReal)} lei</strong> taxe, adică{" "}
                     {rez.totalTaxeReal > rez.r.totalTaxe ? (
                       <>
@@ -670,7 +670,7 @@ export default function CalculatorPFA() {
                     )}
                   </p>
                 )}
-                <p className="mt-2 text-xs leading-normal text-stone-600">
+                <p className="mt-2 text-xs text-stone-600">
                   Comparație orientativă la aceleași încasări și cheltuieli. Trecerea de la un regim la altul nu este
                   liberă oricând: depinde de activitate, de opțiunea depusă și de pragul de mai jos.
                 </p>
@@ -678,7 +678,7 @@ export default function CalculatorPFA() {
             )}
 
             {rez.tip === "norma" && rez.pestePragulDeIesire && (
-              <p role="status" className="mt-3 rounded border border-stone-900 bg-surface px-3 py-2 text-xs leading-normal text-stone-700">
+              <p role="status" className="mt-3 rounded border border-stone-900 bg-surface px-3 py-2 text-xs text-stone-700">
                 <strong className="font-bold text-stone-900">Ai depășit pragul de {fmt(PLAFON_NORMA_VENIT_LEI)} lei</strong>{" "}
                 (echivalentul a 25.000 euro) la încasări brute. Dacă anul se încheie așa, din anul fiscal următor treci
                 obligatoriu la determinarea venitului net în sistem real.
@@ -699,7 +699,7 @@ export default function CalculatorPFA() {
               </p>
             </div>
 
-            <p className="mt-4 text-xs leading-normal text-stone-600">
+            <p className="mt-4 text-xs text-stone-600">
               {rezultatSrl ? (
                 <>
                   Estimare pentru {rezultatSrl.tip === "micro" ? "SRL microîntreprindere" : "SRL cu impozit pe profit"},
@@ -759,7 +759,7 @@ export default function CalculatorPFA() {
                 </tbody>
               </table>
             </div>
-            <p className="mt-4 text-xs leading-relaxed text-stone-600">
+            <p className="mt-4 text-xs text-stone-600">
               Completează datele și apasă Calculează · CAS 25%, CASS 10%, impozit 10% · Plafoane 2026
             </p>
           </>

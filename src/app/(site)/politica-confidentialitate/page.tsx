@@ -76,12 +76,12 @@ export default function PoliticaConfidentialitatePage() {
         <Section
           companion={
             <CardCompanion titlu="Cereri despre datele tale">
-              <p className="text-sm leading-normal text-stone-600">
+              <p className="text-sm text-stone-600">
                 Pentru acces, ștergere sau opoziție, scrie la{" "}
                 <a href="mailto:contact@salariile.ro" className="font-medium text-stone-900 underline underline-offset-2 hover:text-stone-600">contact@salariile.ro</a>. Răspunsul vine în cel
                 mult 30 de zile.
               </p>
-              <p className="mt-3 text-sm leading-normal text-stone-600">
+              <p className="mt-3 text-sm text-stone-600">
                 Acordul pentru Google Analytics îl retragi direct de aici, fără niciun mesaj.
               </p>
               <ButonPreferinteGoogle className="mt-4 inline-flex min-h-11 items-center self-start rounded border border-stone-900 bg-stone-900 px-5 text-sm font-medium text-white transition-colors hover:bg-stone-700">Schimbă setările cookies</ButonPreferinteGoogle>

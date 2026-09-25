@@ -46,7 +46,7 @@ function Camp({ eticheta, ajutor, valoare, onChange, sufix, min = 0, pas = 1 }: 
   return (
     <label className="block">
       <span className="block text-sm font-medium text-stone-900">{eticheta}</span>
-      {ajutor ? <span className="mt-0.5 block text-xs leading-relaxed text-stone-600">{ajutor}</span> : null}
+      {ajutor ? <span className="mt-0.5 block text-xs text-stone-600">{ajutor}</span> : null}
       <span className="mt-2 flex items-center gap-2">
         <input
           type="number"
@@ -263,7 +263,7 @@ export default function CalculatorOreSuplimentare() {
         </div>
 
         {r?.avertismentNoapte ? (
-          <p className="mt-4 rounded border border-stone-300 bg-canvas p-3 text-sm leading-relaxed text-stone-700">
+          <p className="mt-4 rounded border border-stone-300 bg-canvas p-3 text-sm text-stone-700">
             <strong className="text-stone-900">Atenție la pragul de {PRAG_ORE_NOAPTE_ZI} ore.</strong>{" "}
             Sporul de noapte se cuvine salariatului care lucrează cel puțin {PRAG_ORE_NOAPTE_ZI} ore
             de noapte din ziua de lucru, sau cel puțin 30% din timpul lunar ({TEMEI.noapteDefinitie}).
@@ -272,7 +272,7 @@ export default function CalculatorOreSuplimentare() {
         ) : null}
 
         {!r ? (
-          <p className="mt-4 text-sm leading-relaxed text-stone-600">
+          <p className="mt-4 text-sm text-stone-600">
             Completează orele și apasă <strong className="text-stone-900">Calculează</strong>.
           </p>
         ) : null}

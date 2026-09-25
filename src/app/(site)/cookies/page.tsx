@@ -79,7 +79,7 @@ export default function CookiesPage() {
         <Section
           companion={
             <CardCompanion titlu="Alegerea ta">
-              <p className="text-sm leading-normal text-stone-600">
+              <p className="text-sm text-stone-600">
                 Poți da sau retrage oricând acordul pentru Google Analytics. Site-ul funcționează la fel, orice ai alege.
               </p>
               <ButonPreferinteGoogle className="mt-4 inline-flex min-h-11 items-center self-start rounded border border-stone-900 bg-stone-900 px-5 text-sm font-medium text-white transition-colors hover:bg-stone-700">Schimbă setările cookies</ButonPreferinteGoogle>

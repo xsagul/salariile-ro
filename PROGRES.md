@@ -3582,3 +3582,9 @@ A treia completare: în carduri (text de 14 px) distanța dintre puncte și para
 ~23 px, mai mare decât titlu → text (20), deci ierarhie inversată (observat de proprietar
 pe homepage). Acum 16 px, prin LISTA_CARD și SPATIU_TEXT_CARD din ui.tsx. Măsurat: 64 din
 103 puncte și 10 din 16 paragrafe din carduri la 16 px; restul la 17–19.
+
+Înălțimea rândului, la sugestia proprietarului („textul mai mic are nevoie și de rând mai mic”):
+erau 3 variante la 14 px (20 · 21 · 22,8) și 3 la 12 px (16 · 18 · 19,5), din `leading-normal`
+și `leading-relaxed` puse pe text mic. Acum 16/24, 14/20, 12/16 fără excepții, ca Material 3,
+Carbon și Tailwind (măsurat: 814 · 1.887 · 472 de elemente, zero abateri). Spațiul din carduri
+recalibrat pe rândul de 20: 16 px între puncte, 20 sub titlu (CARD_TITLU mb 9 px).

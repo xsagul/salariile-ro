@@ -109,7 +109,7 @@ export default function CalculatorSomaj() {
                 <span className="block text-sm font-medium text-stone-900">
                   Media salariului brut, ultimele 12 luni
                 </span>
-                <span className="mt-0.5 block text-xs leading-relaxed text-stone-600">
+                <span className="mt-0.5 block text-xs text-stone-600">
                   Contează doar peste 3 ani de stagiu.
                 </span>
                 <span className="mt-2 flex items-center gap-2">
@@ -139,7 +139,7 @@ export default function CalculatorSomaj() {
           </button>
 
           {fara && (
-            <p className="rounded border border-stone-300 bg-canvas p-3 text-sm leading-relaxed text-stone-700">
+            <p className="rounded border border-stone-300 bg-canvas p-3 text-sm text-stone-700">
               Cu un stagiu de cotizare sub un an, dreptul la indemnizație nu se deschide pe{" "}
               {TEMEI.durata}. Excepția este situația de absolvent, care are temei separat.
             </p>
@@ -202,14 +202,14 @@ export default function CalculatorSomaj() {
         </div>
 
         {r ? (
-          <p className="mt-4 rounded border border-stone-300 bg-canvas p-3 text-sm leading-relaxed text-stone-700">
+          <p className="mt-4 rounded border border-stone-300 bg-canvas p-3 text-sm text-stone-700">
             <strong className="text-stone-900">CAS nu se reține.</strong> Contribuția la pensie
             pentru perioada de șomaj o plătește Agenția Națională pentru Ocuparea Forței de Muncă,
             din bugetul asigurărilor pentru șomaj ({TEMEI.cas}). Suma de mai sus nu este micșorată
             de ea, iar stagiul tău de pensie curge mai departe. Indemnizația nu se impozitează.
           </p>
         ) : (
-          <p className="mt-4 text-sm leading-relaxed text-stone-600">
+          <p className="mt-4 text-sm text-stone-600">
             Alege stagiul, pune media salariului brut și apasă{" "}
             <strong className="text-stone-900">Calculează</strong>.
           </p>

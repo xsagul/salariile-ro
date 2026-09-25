@@ -224,7 +224,7 @@ export default function CalculatorPfaPage() {
               <aside className="mt-8 md:col-span-2 md:mt-0 md:self-start">
                 <div className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
                   <h3 className="mb-2 text-base font-bold tracking-[-0.01em] text-stone-900">Unde se schimbă taxele</h3>
-                  <ul className="flex list-disc flex-col gap-2 pl-5 text-sm leading-normal text-stone-600">
+                  <ul className="flex list-disc flex-col gap-2 pl-5 text-sm text-stone-600">
                     {PRAGURI.map(({ efect, rest }) => (
                       <li key={efect}>
                         <strong className="font-semibold text-stone-900">{efect}</strong>
@@ -277,11 +277,11 @@ export default function CalculatorPfaPage() {
               <aside className="mt-8 md:col-span-2 md:mt-0 md:self-start">
                 <div className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
                   <h3 className="mb-2 text-base font-bold tracking-[-0.01em] text-stone-900">Pragul care te costă</h3>
-                  <p className="text-sm leading-normal text-stone-700">
+                  <p className="text-sm text-stone-700">
                     Sub {lei(PLAFON_CAS_12_2026)} lei venit net nu datorezi CAS. La fix acest prag, CAS devine
                     obligatoriu pe o bază fixă de 12 salarii minime.
                   </p>
-                  <p className="mt-3 text-sm leading-normal text-stone-700">
+                  <p className="mt-3 text-sm text-stone-700">
                     Practic, <strong>100 de lei în plus la încasări îți scad venitul rămas cu{" "}
                     {lei(PIERDERE_PRAG)} lei</strong>. Același salt apare și la {lei(PLAFON_CAS_24_2026)} lei, unde baza
                     CAS urcă la 24 de salarii minime.
@@ -332,7 +332,7 @@ export default function CalculatorPfaPage() {
               <aside className="mt-8 md:col-span-2 md:mt-0 md:self-start">
                 <div className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6">
                   <h3 className="mb-2 text-base font-bold tracking-[-0.01em] text-stone-900">Cheltuieli deductibile uzuale</h3>
-                  <ul className="list-disc pl-4 text-sm leading-normal text-stone-600 [&_li]:mb-1.5">
+                  <ul className="list-disc pl-4 text-sm text-stone-600 [&_li]:mb-1.5">
                     <li>chirie și utilități pentru spațiul activității</li>
                     <li>echipamente, software, abonamente profesionale</li>
                     <li>transport și combustibil aferente activității</li>

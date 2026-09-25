@@ -141,7 +141,7 @@ export default function ComparaPage() {
                     
                   </span>
                 </div>
-                <p className="mt-3 border-t border-stone-200 pt-3 text-xs leading-normal text-stone-600">
+                <p className="mt-3 border-t border-stone-200 pt-3 text-xs text-stone-600">
                   Vezi comparația →
                 </p>
               </Link>

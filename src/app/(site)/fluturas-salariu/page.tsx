@@ -107,7 +107,7 @@ export default function FluturasSalariuPage() {
       <Section
         companion={
           <CardCompanion titlu="Ce verifici prima dată pe fluturaș">
-            <ol className="flex list-decimal flex-col gap-2 pl-5 text-sm leading-normal text-stone-600">
+            <ol className="flex list-decimal flex-col gap-2 pl-5 text-sm text-stone-600">
               <li>Brutul să fie cel din contract.</li>
               <li>
                 Deducerea personală să apară, dacă ai sub {fmt(PLAFON_DEDUCERE)} lei brut la locul de muncă de bază.
@@ -117,7 +117,7 @@ export default function FluturasSalariuPage() {
                 cam 80–100 de lei pe lună.
               </li>
             </ol>
-            <p className="mt-3 text-sm leading-normal text-stone-600">
+            <p className="mt-3 text-sm text-stone-600">
               Fiecare rând, explicat:{" "}
               <Link href="/noutati/cum-citesti-fluturasul-de-salariu" className="font-medium text-stone-900 underline underline-offset-2 hover:text-stone-600">cum îți citești fluturașul</Link>.
             </p>
@@ -149,7 +149,7 @@ export default function FluturasSalariuPage() {
       <Section
         companion={
           <CardCompanion titlu="Dacă nu primești fluturaș">
-            <p className="text-sm leading-normal text-stone-600">
+            <p className="text-sm text-stone-600">
               Legea nu numește fluturașul, dar îi cere angajatorului să poată dovedi plata salariului, iar tu ai
               dreptul să vezi cum s-a calculat. Aproape toate firmele îl dau, iar multe contracte colective îl prevăd.
               Dacă nu-l primești, cere-l în scris.
@@ -185,7 +185,7 @@ export default function FluturasSalariuPage() {
         items={FAQ}
         companion={
           <CardCompanion titlu="Când iese altfel decât la firmă">
-            <p className="text-sm leading-normal text-stone-600">
+            <p className="text-sm text-stone-600">
               Generatorul nu acoperă concediul medical, concediul de odihnă plătit la medie, cumulul de funcții sau
               deducerile negociate separat. Dacă ai avut ceva din astea în lună, fluturașul angajatorului rămâne
               referința.

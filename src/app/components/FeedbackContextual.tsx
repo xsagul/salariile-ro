@@ -29,7 +29,7 @@ export default function FeedbackContextual({
 }) {
   const t = TEXTE[limba];
   return (
-    <p className="mt-4 text-xs leading-relaxed text-stone-600">
+    <p className="mt-4 text-xs text-stone-600">
       {context === "pdf" ? t.pdf : t.calcul}{" "}
       <Link href={`/contact#eroare-${context}`} className="font-medium text-stone-700 underline underline-offset-2 hover:text-stone-900">
         {t.semnaleaza}

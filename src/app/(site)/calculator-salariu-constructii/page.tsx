@@ -133,13 +133,13 @@ export default function CalculatorSalariuConstructiiPage() {
         wide
         companion={
           <CardCompanion titlu="Ce s-a schimbat din 2025">
-            <p className="text-sm leading-normal text-stone-600">
+            <p className="text-sm text-stone-600">
               Până în 2024, salariații din construcții nu plăteau impozit și aveau contribuții mai mici. Din ianuarie
               2025, scutirile au dispărut (OUG 156/2024). A rămas o singură regulă proprie domeniului: un salariu
               minim mai mare, de <strong className="font-semibold text-stone-900">{fmt(SALARIU_MINIM_CONSTRUCTII)} lei brut</strong>,
               adică {TARIF_ORAR} lei pe oră.
             </p>
-            <p className="mt-3 text-sm leading-normal text-stone-600 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2">
+            <p className="mt-3 text-sm text-stone-600 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2">
               Cui i se aplică pragul e explicat pe pagina{" "}
               <Link href="/salariu-minim-constructii-2026">salariul minim în construcții</Link>.
             </p>

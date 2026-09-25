@@ -163,12 +163,12 @@ export default function MetodologiePage() {
       <Section
         companion={
           <CardCompanion titlu="Suma netaxată de la salariul minim">
-            <p className="text-sm leading-normal text-stone-600">
+            <p className="text-sm text-stone-600">
               La salariul minim, cu normă întreagă și la locul de muncă de bază, {DEDUCERE_MINIM} de lei pe lună nu
               plătesc nici contribuții, nici impozit (300 de lei până în iunie). Suma se scade din brut înaintea
               oricărui calcul, deci baza devine {fmt(SALARIU_MINIM - DEDUCERE_MINIM)} lei.
             </p>
-            <p className="mt-3 text-sm leading-normal text-stone-600">
+            <p className="mt-3 text-sm text-stone-600">
               Nu se aplică peste salariul minim, la program parțial sau la un al doilea contract.
             </p>
             <p className="mt-3 text-xs text-stone-600">OUG 89/2025.</p>
@@ -200,12 +200,12 @@ export default function MetodologiePage() {
       <Section
         companion={
           <CardCompanion titlu="Verificat prin Declarația 112">
-            <p className="text-sm leading-normal text-stone-600">
+            <p className="text-sm text-stone-600">
               Declarația 112 e formularul lunar prin care firmele raportează la ANAF impozitul și contribuțiile
               salariaților. Motorul calculatorului leagă CAS, CASS, impozitul, deducerea și CAM de câmpurile din
               formular.
             </p>
-            <p className="mt-3 text-sm leading-normal text-stone-600">
+            <p className="mt-3 text-sm text-stone-600">
               Pentru cazul standard, calculul a fost verificat separat, prin completarea formularului D112 și prin
               validatorul ANAF. Sumele au coincis. Cazurile speciale rămân sub limitările de mai jos.
             </p>
@@ -234,7 +234,7 @@ export default function MetodologiePage() {
       <Section
         companion={
           <CardCompanion titlu="Jurnal de corecții">
-            <div id="corectii" className="scroll-mt-24 text-sm leading-normal text-stone-600 [&_time]:font-medium [&_time]:text-stone-900">
+            <div id="corectii" className="scroll-mt-24 text-sm text-stone-600 [&_time]:font-medium [&_time]:text-stone-900">
               <p><time dateTime="2026-09-07">7 septembrie 2026</time>: am retras afirmațiile despre eșantioane de anunțuri și scoruri de încredere fără înregistrări verificabile, am înlocuit reperele de piață cu valori atribuite punctual și am separat intervalele din grile de salariile declarate. Am adăugat raportări de angajator cu baza și componentele lunare distincte. Revizia de date și implementarea aparțin autorului site-ului; nu declarăm o revizie contabilă externă.</p>
             </div>
           </CardCompanion>
@@ -257,12 +257,12 @@ export default function MetodologiePage() {
       <Section
         companion={
           <CardCompanion titlu="Cum se ține la zi">
-            <p className="text-sm leading-normal text-stone-600">
+            <p className="text-sm text-stone-600">
               Urmăresc Monitorul Oficial și comunicările Ministerului Finanțelor, ANAF și Ministerului Muncii. Când
               apare un act nou, schimb formulele, valorile de referință și paginile care le folosesc, inclusiv pe
               aceasta. Data ultimei revizuiri e sub titlul fiecărei pagini.
             </p>
-            <p className="mt-3 text-sm leading-normal text-stone-600">
+            <p className="mt-3 text-sm text-stone-600">
               Ai găsit o diferență față de o sursă oficială? Scrie-mi, adresa e la{" "}
               <Link href="/contact" className="font-medium text-stone-900 underline underline-offset-2 hover:text-stone-600">contact</Link>.
             </p>

@@ -1357,7 +1357,7 @@ export default function CalculatorSalariu({
               utilizatorul a văzut deja produsul. Integrarea păstrează o
               atribuire vizibilă, calificată nofollow. */}
           {rezAfisat && !embedded && (
-            <p className="mt-4 text-xs leading-relaxed text-stone-600">
+            <p className="mt-4 text-xs text-stone-600">
               {t.aiUnSite}{" "}
               <Link
                 href="/widget"
@@ -1370,11 +1370,11 @@ export default function CalculatorSalariu({
           )}
 
           {rezAfisat && regimFiscal !== REGIM_FISCAL_CURENT && (
-            <p className="mt-5 text-xs leading-relaxed text-stone-600">{t.notaIstoric}</p>
+            <p className="mt-5 text-xs text-stone-600">{t.notaIstoric}</p>
           )}
 
           {!rezAfisat && (
-            <p className="mt-4 text-xs leading-relaxed text-stone-600">
+            <p className="mt-4 text-xs text-stone-600">
               {fluturas ? t.golFluturas : t.gol}
             </p>
           )}

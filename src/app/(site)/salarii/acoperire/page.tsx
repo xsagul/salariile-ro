@@ -32,12 +32,12 @@ export default function Acoperire() {
     <Breadcrumb items={[{href:'/',label:'Acasă'},{href:'/salarii',label:'Salarii pe meserii'},{label:'Acoperirea datelor'}]} />
     <H1>Cât știm despre salariile pe meserii</H1>
     <Lead>{total.toLocaleString('ro-RO')} anunțuri eligibile după verificare și deduplicare, plus {totalNedeclarat.toLocaleString('ro-RO')} cu bază nedeclarată. {cuDate} din {MESERII.length} meserii au cel puțin o observație; {publicabile} trec toate pragurile de publicare.</Lead>
-    {!!surseIncomplete.length && <p className="mt-4 rounded-md border border-amber-300 bg-amber-50 p-4 text-sm leading-relaxed text-stone-800">
+    {!!surseIncomplete.length && <p className="mt-4 rounded-md border border-amber-300 bg-amber-50 p-4 text-sm text-stone-800">
       <strong>Colectarea este în curs.</strong> {surseIncomplete.map(([nume,s])=>`${nume} ${s.catalogChecked.toLocaleString('ro-RO')} din ${s.catalogCandidates.toLocaleString('ro-RO')}`).join(', ')}.
       Cifrele de mai jos descriu ce am verificat până acum, nu inventarul întreg. Meseriile sub praguri pot trece pe măsură ce parcurgerea avansează.
     </p>}
     <p className={`${SUB_TITLU} text-sm text-stone-600`}>Ultima colectare: {new Date(DATA_VERIFICARE_ANUNTURI).toLocaleDateString('ro-RO', {timeZone:'Europe/Bucharest'})}. Un anunț reprezintă o ofertă, nu salariul încasat de un angajat.</p>
-    <div className="mt-6 max-w-3xl space-y-3 text-sm leading-relaxed text-stone-700">
+    <div className="mt-6 max-w-3xl space-y-3 text-sm text-stone-700">
       <p>Păstrăm anunțuri cu ocupație identificabilă, normă întreagă, muncă în România și o sumă explicită. Cifra principală se calculează doar din anunțurile care precizează net sau brut; restul sunt numărate separat. Convertim brutul în net prin calculul fiscal standard și euro în lei la cursul de referință BCE datat. Registrul păstrează suma originală și fiecare conversie. Comisioanele fără salariu de bază, pachetele care includ beneficii fără defalcare și remunerațiile pe oră rămân în afara comparației.</p>
       <p>Unele anunțuri omit perioada plății. Pentru acestea păstrăm separat ipoteza unui salariu lunar la normă întreagă. Afișăm câte observații au perioada lunară explicită și verificăm cât se schimbă rezultatul fără cele cu perioadă presupusă.</p>
       <p>Pentru publicarea limitelor medianei ofertelor cerem cel puțin {PRAGURI_ANUNTURI.minAds} anunțuri, {PRAGURI_ANUNTURI.minEmployers} angajatori identificați, {PRAGURI_ANUNTURI.minCounties} județe identificate și {PRAGURI_ANUNTURI.minSources} platforme. Verificăm și concentrarea pe angajator și platformă. Aceste praguri sunt reguli operaționale; nu garantează reprezentativitatea națională.</p>

@@ -240,7 +240,7 @@ export default function CalculatorSanatate({ meserii }: { meserii: MeserieSanata
         </div>
 
         {r?.hranaPesteplafon ? (
-          <p className="mt-4 rounded border border-stone-300 bg-canvas p-3 text-sm leading-relaxed text-stone-700">
+          <p className="mt-4 rounded border border-stone-300 bg-canvas p-3 text-sm text-stone-700">
             <strong className="text-stone-900">Fără indemnizație de hrană.</strong> Salariul de bază
             depășește plafonul de 6.000 lei net din art. 18 alin. (1), așa că cei 347 de lei nu se
             acordă. La treptele de început ale aceleiași meserii, plafonul nu se atinge și
@@ -249,7 +249,7 @@ export default function CalculatorSanatate({ meserii }: { meserii: MeserieSanata
         ) : null}
 
         {!r ? (
-          <p className="mt-4 text-sm leading-relaxed text-stone-600">
+          <p className="mt-4 text-sm text-stone-600">
             Alege încadrarea și apasă <strong className="text-stone-900">Calculează</strong>.
           </p>
         ) : null}

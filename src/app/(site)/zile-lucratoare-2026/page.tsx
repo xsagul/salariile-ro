@@ -171,7 +171,7 @@ export default function ZileLucratoare2026Page() {
             <p className="text-3xl font-bold tracking-[-0.02em] text-stone-900 tabular-nums">
               {lunaCurenta ? lunaCurenta.lucratoare : TOTAL_LUCRATOARE} de zile lucrătoare
             </p>
-            <p className="mt-2 text-sm leading-normal text-stone-600">
+            <p className="mt-2 text-sm text-stone-600">
               {lunaCurenta ? (
                 <>
                   Adică {lunaCurenta.ore} de ore la program de 8 ore pe zi.{" "}
@@ -202,7 +202,7 @@ export default function ZileLucratoare2026Page() {
                 </li>
               ))}
             </ul>
-            <p className="mt-3 text-sm leading-normal text-stone-600">
+            <p className="mt-3 text-sm text-stone-600">
               Cele care pică sâmbăta sau duminica nu se recuperează în altă zi. Calendarul complet, cu punțile, e la{" "}
               <Link href="/zile-libere-2026" className="LINK">zile libere 2026</Link>.
             </p>

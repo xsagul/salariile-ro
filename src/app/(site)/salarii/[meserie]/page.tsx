@@ -300,7 +300,7 @@ export default async function MeseriePage({ params }: Props) {
           </nav>
 
           {meserie.nota && (
-            <p className="mt-4 rounded-md border border-stone-300 bg-surface p-4 text-sm leading-normal text-stone-700 shadow-soft">
+            <p className="mt-4 rounded-md border border-stone-300 bg-surface p-4 text-sm text-stone-700 shadow-soft">
               <strong className="font-semibold text-stone-900">De reținut:</strong> {meserie.nota}
             </p>
           )}
@@ -387,7 +387,7 @@ export default async function MeseriePage({ params }: Props) {
                   </h2>
                   <p className="mt-4 text-sm text-stone-600">Net standard pe trepte, în {grila.domeniu}.</p>
                   <TabelGrila grila={grila} meserie={numeMic} />
-                  {grila.nota && <p className="mt-4 text-sm leading-normal text-stone-600">{grila.nota}</p>}
+                  {grila.nota && <p className="mt-4 text-sm text-stone-600">{grila.nota}</p>}
                   <NotaSursa>
                     Sursă: {SURSA_GRILE.act}, {grila.anexa}, text consolidat pe{" "}
                     <a href={SURSA_GRILE.url} target="_blank" rel="noopener">
@@ -409,7 +409,7 @@ export default async function MeseriePage({ params }: Props) {
                   și în grupa de ocupații „{isco?.nume ?? 'ISCO-08'}”. Amândouă cuprind mai mulți oameni decât meseria, de aceea
                   cifrele lor sunt doar context.
                 </p>
-                <p className="mt-4 text-sm leading-relaxed text-stone-600">
+                <p className="mt-4 text-sm text-stone-600">
                   {meserie.cor ? <>Codul COR: <strong>{meserie.cor}</strong>, {corCatalogue.occupations[meserie.slug as keyof typeof corCatalogue.occupations]?.name}. Verifică dacă atribuțiile se potrivesc cu postul tău. </> : <>Meseria poate avea mai multe coduri COR; cel corect se alege după atribuțiile postului. </>}
                   Sursa: <a href={corCatalogue.source} className="underline">catalogul COR din aprilie 2024</a>.
                 </p>
@@ -518,7 +518,7 @@ export default async function MeseriePage({ params }: Props) {
                       E context, nu diferentiere: toate meseriile dintr-o grupa
                       ISCO au aceeasi cifra, si pagina spune asta. */}
                   {sexe && (
-                    <p className="mt-4 rounded-md border border-stone-200 bg-surface p-4 text-sm leading-normal text-stone-600 shadow-soft">
+                    <p className="mt-4 rounded-md border border-stone-200 bg-surface p-4 text-sm text-stone-600 shadow-soft">
                       <strong className="font-semibold text-stone-900">Femei și bărbați:</strong> în aceeași grupă de
                       ocupații, bărbații au avut un venit brut realizat de {lei(sexe.brutMasculin)} lei, iar femeile{" "}
                       {lei(sexe.brutFeminin)} lei — o diferență de {procent(Math.abs(sexe.diferenta))}%
@@ -576,7 +576,7 @@ export default async function MeseriePage({ params }: Props) {
             <aside id="oferta" className="min-w-0 lg:col-span-2">
               <div className="rounded-md border border-stone-200 bg-surface p-6 shadow-soft">
                 <h2 className={TITLU_CARD}>Calculează-ți net-ul</h2>
-                <p className="mt-2 text-sm leading-normal text-stone-600">
+                <p className="mt-2 text-sm text-stone-600">
                   Scrie brutul din oferta ta și vezi cât primești în mână.
                 </p>
                 <Link

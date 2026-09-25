@@ -202,7 +202,7 @@ function SerieTrimestre({ valori, etichete }: { valori: (number | null)[]; etich
         <span>{trimestruScurt(etichete[0])}</span>
         <span>{trimestruScurt(etichete[etichete.length - 1])}</span>
       </div>
-      <figcaption className="mt-2 text-xs leading-normal text-stone-600">
+      <figcaption className="mt-2 text-xs text-stone-600">
         Locuri de muncă vacante pe total economie, ultimele {etichete.length} trimestre. Sursa: INS, {MATRICE_VACANTE}.
       </figcaption>
     </figure>
@@ -347,7 +347,7 @@ export default function LocuriVacantePage() {
                 </tbody>
               </table>
             </div>
-            <p className="max-w-3xl text-sm leading-normal text-stone-600">
+            <p className="max-w-3xl text-sm text-stone-600">
               Numărul absolut și rata spun lucruri diferite. O grupă mare poate avea multe posturi vacante și totuși o
               rată mică, pentru că are și foarte multe posturi ocupate. Rata e comparația corectă între grupe de mărimi
               diferite; numărul absolut spune unde sunt, efectiv, cele mai multe oportunități.

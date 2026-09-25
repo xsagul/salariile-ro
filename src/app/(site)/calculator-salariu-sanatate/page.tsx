@@ -133,11 +133,11 @@ export default function Page() {
       <Section
         companion={
           <CardCompanion titlu="Ce nu intră în calcul">
-            <p className="text-sm leading-normal text-stone-600">
+            <p className="text-sm text-stone-600">
               Sporurile pentru condiții grele, gărzile și orele de noapte. Primele depind de locul de muncă și diferă
               între două spitale pentru aceeași funcție, celelalte de graficul fiecărei luni.
             </p>
-            <p className="mt-3 text-sm leading-normal text-stone-600">
+            <p className="mt-3 text-sm text-stone-600">
               Nici funcțiile de conducere nu sunt aici: au tabele separate, după mărimea spitalului.
             </p>
           </CardCompanion>
@@ -181,7 +181,7 @@ export default function Page() {
         items={FAQ}
         companion={
           <CardCompanion titlu="Sursa grilei">
-            <p className="text-sm leading-normal text-stone-600 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2">
+            <p className="text-sm text-stone-600 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2">
               <a href={SURSA_GRILE.url} target="_blank" rel="noopener">Legea-cadru 153/2017</a>, anexa II, în forma
               consolidată la {new Date(SURSA_GRILE.dataExtragerii).toLocaleDateString("ro-RO", { day: "numeric", month: "long", year: "numeric" })}.
               Calculatorul acoperă {MESERII_SANATATE.length} de meserii din sistemul sanitar public.

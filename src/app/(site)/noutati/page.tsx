@@ -93,7 +93,7 @@ export default function NoutatiPage() {
                           <span>{formatDateRo(a.date)} · {a.readingMin} min citire</span>
                         </div>
                         <h2 className="mb-2 text-lg font-bold leading-snug tracking-[-0.01em] text-stone-900 group-hover:text-stone-700">{a.title}</h2>
-                        <p className="text-sm leading-normal text-stone-600">{a.description}</p>
+                        <p className="text-sm text-stone-600">{a.description}</p>
                         <span className="mt-4 text-sm font-medium text-stone-900 underline underline-offset-2">Citește →</span>
                       </div>
                     </Link>

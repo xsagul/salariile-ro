@@ -303,7 +303,7 @@ export default function ZileLibere2026Page() {
                     <h3 className="text-base font-semibold tracking-[-0.01em] text-stone-900">{p.titlu}</h3>
                     <span className="text-xs font-medium text-stone-600">{p.zile}</span>
                   </div>
-                  <p className="mt-2 text-sm leading-normal text-stone-600">{p.detalii}</p>
+                  <p className="mt-2 text-sm text-stone-600">{p.detalii}</p>
                 </div>
               ))}
             </div>
@@ -329,7 +329,7 @@ export default function ZileLibere2026Page() {
             <aside className="mt-8 md:col-span-2 md:mt-0 md:self-start">
               <div className={`flex h-full flex-col ${card}`}>
                 <h3 className="mb-2 text-base font-bold tracking-[-0.01em] text-stone-900">Surse oficiale</h3>
-                <ul className={`flex flex-col gap-2 text-sm leading-normal text-stone-600 ${links}`}>
+                <ul className={`flex flex-col gap-2 text-sm text-stone-600 ${links}`}>
                   <li><a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/128646" target="_blank" rel="noopener">Codul Muncii (Legea 53/2003)</a>: art. 139 (sărbători) și 142 (compensare)</li>
                   <li>Calendar ortodox 2026: datele de Paște și Rusalii</li>
                 </ul>

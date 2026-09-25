@@ -64,7 +64,7 @@ export default function GrilaInvatamant() {
                 </div>
               ))}
             </dl>
-            <p className="mt-4 text-sm leading-normal text-stone-600">
+            <p className="mt-4 text-sm text-stone-600">
               Deschide funcția ta și caută rândul cu anii tăi în învățământ. Suma e salariul de pornire, brut.
             </p>
             <a href="/date/grila-invatamant.csv" download className="mt-4 inline-flex min-h-11 items-center self-start rounded border border-stone-300 bg-surface px-4 text-sm font-medium text-stone-900 underline underline-offset-2">

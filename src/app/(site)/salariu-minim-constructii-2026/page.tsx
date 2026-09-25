@@ -138,7 +138,7 @@ export default function SalariuMinimConstructii2026Page() {
                 </tr>
               </tbody>
             </table>
-            <p className="mt-4 text-sm leading-normal text-stone-600">
+            <p className="mt-4 text-sm text-stone-600">
               Cu {fmt(MINIM_CONSTRUCTII - SALARIU_MINIM)} de lei mai mult la brut, în mână ajung doar{" "}
               {fmt(CONSTRUCTII_S2.netBani - GENERAL_S2.netBani)} de lei în plus. La minimul general, 200 de lei din
               brut nu se taxează deloc; în construcții salariul e peste acel minim, așa că se taxează tot.
@@ -212,7 +212,7 @@ export default function SalariuMinimConstructii2026Page() {
         title="Întrebări despre salariul minim în construcții"
         companion={
           <CardCompanion titlu="Salariul tău exact">
-            <p className="text-sm leading-normal text-stone-600">
+            <p className="text-sm text-stone-600">
               Scrie brutul sau netul dorit și adaugă ce se aplică la tine: persoane în întreținere, tichete, vârsta.
             </p>
             <Link

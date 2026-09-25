@@ -99,7 +99,7 @@ export default function Footer() {
           <Link href="/" aria-label="Salariile, pagina principală" className="mr-auto inline-flex min-h-11 items-center">
             <Logo className="h-7 w-auto" />
           </Link>
-          <p className="max-w-[400px] text-sm leading-normal tracking-[-0.01em] text-stone-600">
+          <p className="max-w-[400px] text-sm tracking-[-0.01em] text-stone-600">
             Informații și instrumente despre salariile din România.
             <br />
             Calculele au caracter orientativ. Consultați un specialist contabil

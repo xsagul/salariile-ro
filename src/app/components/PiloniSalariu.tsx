@@ -48,7 +48,7 @@ export default function PiloniSalariu({ date }: { date: DateMeserie }) {
       {cuDate.length > 1 && (
         <>
           <h2 className={TITLU_SECTIUNE}>Ce spun sursele despre salariul de {nume}</h2>
-          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-stone-700">
+          <p className="mt-2 max-w-3xl text-sm text-stone-700">
             Fiecare măsoară altceva, așa că le arătăm separat.
           </p>
           <div className={`mt-5 grid gap-4 ${cuDate.length === 3 ? 'sm:grid-cols-3' : 'sm:grid-cols-2'}`}>
@@ -67,7 +67,7 @@ export default function PiloniSalariu({ date }: { date: DateMeserie }) {
             ))}
           </div>
           {c && (
-            <p className="mt-4 max-w-3xl rounded-md border border-stone-200 bg-canvas p-4 text-sm leading-relaxed text-stone-700">
+            <p className="mt-4 max-w-3xl rounded-md border border-stone-200 bg-canvas p-4 text-sm text-stone-700">
               {c.raspandire <= 0.15
                 ? <>Sursele ajung aproape în același loc, între <strong>{lei(c.min)}</strong> și <strong>{lei(c.max)}</strong> net
                   pe lună. Când metode diferite dau aceeași cifră, e cel mai sigur semn că e aproape de realitate.</>
@@ -79,7 +79,7 @@ export default function PiloniSalariu({ date }: { date: DateMeserie }) {
         </>
       )}
       {faraDate.length > 0 && (
-        <ul className="mt-4 max-w-3xl space-y-1 text-sm leading-relaxed text-stone-600">
+        <ul className="mt-4 max-w-3xl space-y-1 text-sm text-stone-600">
           {faraDate.map((p) => (
             <li key={p.cheie} data-pilon={p.cheie} data-stare={p.stare}>
               <span className="font-medium text-stone-700">{p.titlu}:</span> {lipsa(p)}

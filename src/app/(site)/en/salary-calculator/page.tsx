@@ -241,7 +241,7 @@ export default function Page() {
                 {item.q}
                 <span className="ml-4 shrink-0 text-stone-400 transition-transform group-open:rotate-45">+</span>
               </summary>
-              <p className="pb-4 text-sm leading-relaxed text-stone-600">{item.a}</p>
+              <p className="pb-4 text-sm text-stone-600">{item.a}</p>
             </details>
           ))}
         </div>

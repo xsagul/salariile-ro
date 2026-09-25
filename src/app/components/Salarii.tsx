@@ -80,7 +80,7 @@ export function CardCifra({
         {valoare}
         {unitate && <span className="ml-1 text-base font-medium">{unitate}</span>}
       </div>
-      {nota && <p className="mt-2 text-xs leading-normal text-stone-600">{nota}</p>}
+      {nota && <p className="mt-2 text-xs text-stone-600">{nota}</p>}
     </div>
   );
 }
@@ -150,7 +150,7 @@ export function GraficSerie({
           </text>
         ))}
       </svg>
-      <figcaption className="text-xs leading-normal text-stone-600">{titlu}</figcaption>
+      <figcaption className="text-xs text-stone-600">{titlu}</figcaption>
     </figure>
   );
 }
@@ -179,7 +179,7 @@ export function TabelJudete({
 
   return (
     <div className="my-6">
-      <div className="rounded-md border border-stone-200 bg-surface p-4 text-sm leading-normal text-stone-600 shadow-soft">
+      <div className="rounded-md border border-stone-200 bg-surface p-4 text-sm text-stone-600 shadow-soft">
         <p>
           <strong className="font-semibold text-stone-900">Brut lunar, media anului {an}.</strong> Nu este salariu net și
           nu reprezintă salariul minim din 2026, ci media salariilor brute din sectorul „{numeActivitate}”, după{" "}
@@ -285,7 +285,7 @@ export function TabelJudete({
 /** Nota de sursa, identica pe toate paginile din cluster. */
 export function NotaSursa({ children }: { children: ReactNode }) {
   return (
-    <p className="mt-4 rounded-md border border-stone-200 bg-surface p-4 text-xs leading-normal text-stone-600 shadow-soft [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2">
+    <p className="mt-4 rounded-md border border-stone-200 bg-surface p-4 text-xs text-stone-600 shadow-soft [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2">
       {children}
     </p>
   );

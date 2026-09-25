@@ -172,7 +172,7 @@ export default async function ComparatiePage({ params }: Props) {
           </div>
 
           {ra.label !== rb.label || ra.period !== rb.period ? (
-            <div className="mt-6 rounded-md border border-amber-200 bg-amber-50 p-4 text-xs leading-relaxed text-amber-950">
+            <div className="mt-6 rounded-md border border-amber-200 bg-amber-50 p-4 text-xs text-amber-950">
               <strong>Avertisment metodologic:</strong> Cele două meserii folosesc repere diferite ({ra.label} din {ra.period} pentru {a.meserie.nume} față de {rb.label} din {rb.period} pentru {b.meserie.nume}). Cifrele descriu cadre statistice distincte și nu reprezintă un raport salarial direct între două persoane.
             </div>
           ) : (

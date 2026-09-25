@@ -198,7 +198,7 @@ export default function Page() {
               <aside className="mt-8 md:col-span-2 md:mt-0 md:self-start">
                 <div className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-600">
                   <h3 className="text-base font-bold tracking-[-0.01em] text-stone-900">Ce mai modifică netul</h3>
-                  <p className="mt-2 text-sm leading-normal text-stone-600">La același brut, doi oameni pot primi sume diferite în mână. Contează:</p>
+                  <p className="mt-2 text-sm text-stone-600">La același brut, doi oameni pot primi sume diferite în mână. Contează:</p>
                   <ul className={`${SPATIU_TEXT_CARD} ${LISTA_CARD} text-stone-600`}>
                     <li><strong className="font-semibold text-stone-900">Brutul, față de {lei(PLAFON_DEDUCERE)} lei.</strong> Sub acest prag primești <Link href="/deducere-personala-2026">deducerea personală</Link>, mai mare cu cât salariul e mai mic. Peste el, nu mai există.</li>
                     <li><strong className="font-semibold text-stone-900">Persoanele în întreținere.</strong> Măresc deducerea, dar doar sub {lei(PLAFON_DEDUCERE)} lei brut.</li>
@@ -283,7 +283,7 @@ export default function Page() {
               <h2 className={`mb-3 ${TITLU_SECTIUNE}`}>
                 Calcule salariale populare
               </h2>
-              <p className="mb-4 max-w-prose text-sm leading-normal text-stone-600">
+              <p className="mb-4 max-w-prose text-sm text-stone-600">
                 Calculele gata făcute pentru sumele căutate cel mai des.
               </p>
               <ul className="flex flex-wrap gap-2">
