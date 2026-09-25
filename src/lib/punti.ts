@@ -5,7 +5,7 @@
 //
 // Zilele sunt momente UTC la miezul nopții: `Date.UTC(an, luna, zi)`.
 
-import { sarbatoriAn } from "@/lib/sarbatori";
+import { ANI_CALENDAR, sarbatoriAn } from "@/lib/sarbatori";
 
 export const ZI_MS = 86_400_000;
 const LUNI = ["ianuarie", "februarie", "martie", "aprilie", "mai", "iunie", "iulie", "august", "septembrie", "octombrie", "noiembrie", "decembrie"];
@@ -14,8 +14,8 @@ export const ZILE = ["duminică", "luni", "marți", "miercuri", "joi", "vineri",
 type Zi = { t: number; nume: string };
 
 function sarbatori(an: number): Zi[] {
-  // Calendarul legal e documentat doar pentru 2026 și 2027; pentru alt an, arătăm
-  // ce știm, fără să ghicim date.
+  // Calendarul legal e publicat doar pentru ANI_CALENDAR; pentru alt an, arătăm ce
+  // știm, fără să ghicim date.
   try {
     return Object.entries(sarbatoriAn(an))
       .map(([k, nume]) => {
@@ -28,7 +28,7 @@ function sarbatori(an: number): Zi[] {
   }
 }
 
-const TOATE = [2026, 2027].flatMap(sarbatori);
+const TOATE = ANI_CALENDAR.flatMap(sarbatori);
 const NUME = new Map<number, string>();
 for (const z of TOATE) NUME.set(z.t, NUME.has(z.t) ? `${NUME.get(z.t)} / ${z.nume}` : z.nume);
 // Dincolo de anii documentați nu știm sărbătorile, deci nu știm nici punțile.
@@ -117,4 +117,31 @@ export function urmatoarea(azi: number) {
   if (!urm) return null;
   const b = bloc(urm.t);
   return { t: urm.t, nume: NUME.get(urm.t) ?? urm.nume, peste: Math.round((urm.t - azi) / ZI_MS), ...b, total: Math.round((b.e - b.s) / ZI_MS) + 1 };
+}
+
+// Toate punțile care încep cu o zi de concediu în anul `an`: cardul de pe pagina unui
+// an care nu e cel curent și secțiunea „Minivacanțe și punți”.
+export function puntiAn(an: number): Punte[] {
+  return punti(Date.UTC(an, 0, 1) - ZI_MS).filter((x) => new Date(x.concediu[0]).getUTCFullYear() === an);
+}
+
+export type Minivacanta = { s: number; e: number; total: number; sarbatori: string[] };
+
+// Weekendurile prelungite fără nicio zi de concediu: blocurile de cel puțin 3 zile
+// libere legate care conțin o sărbătoare din timpul săptămânii din anul `an`.
+export function weekenduriPrelungite(an: number): Minivacanta[] {
+  const rez: Minivacanta[] = [];
+  const vazute = new Set<number>();
+  for (const z of TOATE) {
+    if (new Date(z.t).getUTCFullYear() !== an || eWeekend(z.t)) continue;
+    const b = bloc(z.t);
+    if (vazute.has(b.s)) continue;
+    vazute.add(b.s);
+    const total = Math.round((b.e - b.s) / ZI_MS) + 1;
+    if (total < 3) continue;
+    const sarbatori: string[] = [];
+    for (let t = b.s; t <= b.e; t += ZI_MS) if (NUME.has(t)) sarbatori.push(NUME.get(t)!);
+    rez.push({ ...b, total, sarbatori });
+  }
+  return rez;
 }

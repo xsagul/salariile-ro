@@ -12,7 +12,7 @@
 
 import { useEffect, useState } from "react";
 import { oraServer, ziRo } from "@/lib/azi-ro";
-import { ZILE, ZI_MS, data, interval, punti, urmatoarea, ziSapt, zile } from "@/lib/punti";
+import { ZILE, data, interval, punti, puntiAn, urmatoarea, ziSapt, zile } from "@/lib/punti";
 import { CARD_TITLU } from "@/app/components/ui";
 
 const CARD = "rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6";
@@ -28,16 +28,18 @@ export default function UrmatoareaZiLibera({ an, dataBuild }: { an: number; data
       activ = false;
     };
   }, [dataBuild]);
-  const u = urmatoarea(azi);
   const anAzi = new Date(azi).getUTCFullYear();
+  // Următoarea zi liberă apare în anul paginii, sau dacă cade în el: pe pagina 2029
+  // văzută în 2026, o sărbătoare din 2026 n-ar avea ce căuta; pe pagina 2026, la
+  // sfârșitul lui decembrie, 1 ianuarie 2027 da.
+  const urm = urmatoarea(azi);
+  const u = urm && (anAzi === an || new Date(urm.t).getUTCFullYear() === an) ? urm : null;
   // Cât ține anul paginii: următoarele 3 punți, inclusiv cele de la începutul anului
-  // următor. După ce anul s-a terminat, pagina lui arată toate punțile acelui an, nu
-  // pe ale anului în curs (proprietar, 25 septembrie 2026).
-  const anTrecut = anAzi > an;
-  const p = anTrecut
-    ? punti(Date.UTC(an, 0, 1) - ZI_MS).filter((x) => new Date(x.concediu[0]).getUTCFullYear() === an)
-    : punti(azi).slice(0, 3);
-  const anText = anTrecut ? an : anAzi;
+  // următor. Pentru un an trecut sau viitor, pagina lui arată toate punțile acelui
+  // an, nu pe ale anului în curs (proprietar, 25 septembrie 2026).
+  const altAn = anAzi !== an;
+  const p = altAn ? puntiAn(an) : punti(azi).slice(0, 3);
+  const anText = altAn ? an : anAzi;
 
   return (
     <div className="flex flex-col gap-6">
@@ -60,7 +62,7 @@ export default function UrmatoareaZiLibera({ an, dataBuild }: { an: number; data
 
       {p.length ? (
         <div className={CARD}>
-          <h2 className={CARD_TITLU}>{anTrecut ? `Punțile din ${an}` : "Punțile care urmează"}</h2>
+          <h2 className={CARD_TITLU}>{altAn ? `Punțile din ${an}` : "Punțile care urmează"}</h2>
           <ul className="flex flex-col divide-y divide-stone-100 text-sm">
             {p.map((x) => (
               <li key={x.s} className="py-3 first:pt-0 last:pb-0">

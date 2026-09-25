@@ -3642,3 +3642,26 @@ A doua zi de lucru pe calendar, tot 25 septembrie, după ce proprietarul a văzu
 - Cardul „Punțile care urmează”: cât ține 2026, următoarele 3, inclusiv din ianuarie 2027
   (ca înainte). De la 1 ianuarie 2027, pagina 2026 arată „Punțile din 2026”, toate cele 6,
   nu pe cele din 2027. Simulat pe 25.09.2026, 20.12.2026 și 01.03.2027.
+
+Zile libere pe ani, cerut de proprietar după zileliberelegale.ro (locul 2), care are file
+2026–2031 cu același șablon:
+- Un singur șablon, `src/app/components/PaginaZileLibere.tsx`, pentru /zile-libere-2026 …
+  /zile-libere-2031; fiecare pagină e un fișier de 8 rânduri. Filele cu anii stau între
+  fraza de sub titlu și tabel, ca să nu schimbe distanța bară → titlu aleasă pe 25 sept.
+  Pe telefon încap în 343 px doar cu margini de 4 px (măsurat: cu 12 px, 383 px și
+  derulare laterală).
+- Sărbătorile pentru orice an: `sarbatoriCalculate()` din Codul Muncii, art. 139 (în
+  vigoare) și `pasteOrtodox()` (calcul iulian + 13 zile). 2026 și 2027 păstrează listele
+  verificate; testul cere ca listele calculate să fie identice, iar Paștele 2026–2031 să
+  fie 12.04, 02.05, 16.04, 08.04, 28.04, 13.04. În 2031 Rusaliile cad de 1 iunie, deci
+  anul are 16 zile de sărbătoare, nu 17.
+- Tot ce era scris de mână pentru 2026 se calculează: întrebările (Paștele, sărbătorile
+  din weekend, câte zile libere, 366 de zile în 2028) și „Minivacanțe și punți”, care
+  greșea 5 ianuarie (acum 1–7 ianuarie, 7 zile, o zi de concediu). Adăugată întrebarea
+  despre zilele date de Guvern bugetarilor și despre alte culte, preluată din vechea
+  pagină 2027.
+- Cardurile: pe pagina unui an care nu e cel curent, „Punțile din <an>”, toate; „Următoarea
+  zi liberă” doar dacă e în anul paginii.
+- Cerere măsurată în SE Ranking (RO), 25 sept.: „zile libere 2025” încă 33.100/lună, vârf
+  110.000 în martie–aprilie 2026; 2027–2031 fără date încă. 2028–2031 sunt în sitemap cu
+  prioritate 0,5; nu au trafic de așteptat înainte de anul lor.
