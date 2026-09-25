@@ -899,6 +899,10 @@ export default function CalculatorSalariu({
   // cine lucrează cu normă parțială caută direct calculatorul part-time (proprietar,
   // 26 septembrie 2026). Doar după calcul și cât rezultatul e la zi, ca nota să nu apară
   // la fiecare cifră tastată. Fluturașul își compune singur brutul din ore.
+  // Pragul e brutul, și la „Net → brut”: salariul minim e o sumă brută, aceeași în orice
+  // caz, pe când netul lui depinde de opțiuni (funcție de bază, persoane în întreținere,
+  // tichete). Un net nu se compară cu 2.699: netul 2.698 cere brutul 4.474, peste minim,
+  // fiindcă suma netaxabilă se dă doar la brutul egal cu minimul (măsurat, 26 septembrie 2026).
   const minimRezultat = REGIMURI_FISCALE_SALARIU[rezRegim].salariuMinim;
   const subMinim = !fluturas && rezAfisat !== null && !stale && parseFloat(rezAfisat.brutEfectiv) < minimRezultat;
   // Reținerile se aplică live pe net (scădere simplă, fără recalcul fiscal).
@@ -1068,7 +1072,7 @@ export default function CalculatorSalariu({
           )}
 
           <InputNumber id="salariu-input" unit={etMonedaLuna} label={fluturas ? t.salariuDeBazaBrut : mod === "brut" ? t.salariuBrut : t.salariuNet} value={input.brut} onChange={(v) => { set("brut", v); if (emptyWarn) setEmptyWarn(false); }} placeholder={`${t.exemplu} ${exemplu(exempluMinim(regimActiv)[mod])}`} onEnter={handleCalculeaza} error={emptyWarn ? t.eroareSalariuGol : undefined}
-            aviz={subMinim ? t.subMinim(fmt(minimRezultat)) : undefined} tall inline={cuPerioada && !fluturas}
+            aviz={subMinim && rezAfisat ? t.subMinim(fmt(minimRezultat), rezAfisat.snapshotMod === "net") : undefined} tall inline={cuPerioada && !fluturas}
             ajutor={cuPerioada && !fluturas ? { text: mod === "brut" ? t.ajutorBrut : t.ajutorNet, titlu: mod === "brut" ? t.ajutorBrutTitlu : t.ajutorNetTitlu, deschis: ajutor === "salariu", onToggle: () => comutaAjutor("salariu") } : undefined} />
 
           {/* Anul și luna salariului, pe un rând sub etichetă (cerut de proprietar, 25 septembrie

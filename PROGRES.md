@@ -3828,3 +3828,18 @@ Tot 26 septembrie, decis de proprietar: nota de sub-minim NU are link spre calcu
 part-time („dacă voia part-time, era pe calculatorul part-time”). Textul e acum doar „Sub
 salariul minim de 4.325 lei.”, pe un rând la 360, 773 și 1280 px, fără niciun link.
 Nu reintroduce trimiteri din explicațiile de sub câmpuri.
+
+Tot 26 septembrie, întrebarea proprietarului despre brut/net la nota de sub-minim. Pragul
+rămâne brutul, și la „Net → brut”: salariul minim e o sumă brută, iar netul lui depinde de
+opțiuni (2.699 lei doar în cazul standard; fără funcție de bază, 2.530). Un net NU se
+compară cu 2.699: măsurat, netul 2.698 cere brutul 4.474, peste minim, fiindcă suma
+netaxabilă de 200 lei se dă doar la brutul egal cu minimul. Textul spune baza: „Sub
+salariul minim brut de 4.325 lei.” la „Brut → net”, „Brutul e sub salariul minim de 4.325
+lei.” la „Net → brut”; netul minimului nu se afișează. Verificat: brut 4.324 → notă, 4.325
+→ fără; net 2.699 → brut 4.325, fără notă; net 2.698 → brut 4.474, fără notă; net 2.500 →
+brut 4.125, notă; fără funcție de bază: net 2.530 → brut 4.325, fără; net 2.529 → 4.323,
+notă. Pe un rând la 360 și 1280 px.
+
+Observat la test, NEREPARAT: la „Net → brut”, netul din tabel iese adesea cu 1 leu sub cel
+scris (2.698 → 2.697, 2.500 → 2.499, 1.500 → 1.499). `calculeazaBrutDinNetCuRegim` rotunjește
+brutul la mijlocul intervalului, care poate cădea sub țintă.

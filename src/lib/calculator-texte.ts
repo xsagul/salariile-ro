@@ -61,8 +61,10 @@ export type TexteCalculator = {
   eroareSalariuGol: string;
   /** Nota de sub câmp când brutul calculat e sub salariul minim al lunii, pe un rând.
    *  Fără link spre calculatorul part-time: cine lucrează cu normă parțială îl caută
-   *  direct (proprietar, 26 septembrie 2026). */
-  subMinim: (minim: string) => string;
+   *  direct (proprietar, 26 septembrie 2026). Pragul e mereu brutul; la „Net → brut” nota
+   *  spune că brutul e sub minim, ca 4.325 să nu pară comparat cu netul scris.
+   *  Netul salariului minim nu se afișează: depinde de opțiunile alese. */
+  subMinim: (minim: string, net: boolean) => string;
   ascundeAvansate: string;
   calculatorAvansat: string;
   calculeaza: string;
@@ -210,7 +212,7 @@ const RO: TexteCalculator = {
   salariuNet: "Salariu net",
   exemplu: "ex:",
   eroareSalariuGol: "Scrie mai întâi un salariu.",
-  subMinim: (minim) => `Sub salariul minim de ${minim}.`,
+  subMinim: (minim, net) => (net ? `Brutul e sub salariul minim de ${minim}.` : `Sub salariul minim brut de ${minim}.`),
   ascundeAvansate: "▲ Ascunde opțiuni avansate",
   calculatorAvansat: "▼ Calculator avansat",
   calculeaza: "Calculează",
@@ -355,7 +357,7 @@ const EN: TexteCalculator = {
   salariuNet: "Net salary",
   exemplu: "e.g.",
   eroareSalariuGol: "Enter a salary first.",
-  subMinim: (minim) => `Below the minimum wage of ${minim}.`,
+  subMinim: (minim, net) => (net ? `The gross is below the minimum wage of ${minim}.` : `Below the gross minimum wage of ${minim}.`),
   ascundeAvansate: "▲ Hide advanced options",
   calculatorAvansat: "▼ Advanced calculator",
   calculeaza: "Calculate",
