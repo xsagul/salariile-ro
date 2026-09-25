@@ -11,6 +11,7 @@ import { SARBATORI_LEGALE_2026 as HOLIDAYS } from "@/lib/sarbatori";
 import TabelArticol from "@/app/components/TabelArticol";
 import UrmatoareaZiLibera from "@/app/components/UrmatoareaZiLibera";
 import CalendarAzi from "@/app/components/CalendarAzi";
+import { interval, punti, zile, type Punte } from "@/lib/punti";
 import { TITLU_CARD, TITLU_PAGINA, TITLU_SECTIUNE, SEPARATOR_SECTIUNE, SPATIU_JOS, SPATIU_SUS, SUB_TITLU, LISTA_FAQ } from "@/app/components/ui";
 
 // ─── Metadata SEO ────────────────────────────────────────────────────────────
@@ -44,7 +45,16 @@ const ZILE_LUNG = ["luni", "marți", "miercuri", "joi", "vineri", "sâmbătă", 
 // Index Luni-first (0=Luni … 6=Duminică) pentru o zi calendaristică.
 const dowMonday = (y: number, m: number, d: number) => (new Date(Date.UTC(y, m, d)).getUTCDay() + 6) % 7;
 
-type Cell = { day: number; weekend: boolean; holiday: boolean; name?: string } | null;
+type Cell = { day: number; weekend: boolean; holiday: boolean; name?: string; punte?: Punte } | null;
+
+// Punțile hașurate în calendar: cel mult 3 zile de concediu (proprietar, 25 septembrie
+// 2026). Cu 4, cum ia în calcul cardul din dreapta, ieșeau săptămâni întregi hașurate,
+// iar o săptămână de concediu nu mai e punte. Regula e în src/lib/punti.ts.
+const PUNTI_CALCULATE = punti(-Infinity, 3).filter((p) => p.concediu.some((t) => new Date(t).getUTCFullYear() === YEAR));
+const PUNTE_ZI = new Map<number, Punte>();
+for (const p of PUNTI_CALCULATE) for (const t of p.concediu) PUNTE_ZI.set(t, p);
+// „o zi de concediu → 7 zile libere, 1–7 ianuarie”
+const textPunte = (p: Punte) => `${zile(p.concediu.length)} de concediu → ${zile(p.total)} libere, ${interval(p.s, p.e, YEAR)}`;
 
 function buildMonth(m: number) {
   const daysInMonth = new Date(Date.UTC(YEAR, m + 1, 0)).getUTCDate();
@@ -56,11 +66,20 @@ function buildMonth(m: number) {
     const weekend = dow >= 5;
     const name = HOLIDAYS[`${m + 1}-${d}`];
     const holiday = Boolean(name);
-    cells.push({ day: d, weekend, holiday, name });
+    cells.push({ day: d, weekend, holiday, name, punte: PUNTE_ZI.get(Date.UTC(YEAR, m, d)) });
     if (!weekend && !holiday) lucr++;
   }
-  const sarbatori = cells.flatMap((c) => (c?.name ? [{ day: c.day, name: c.name }] : []));
-  return { luna: m + 1, nume: LUNI_NUME[m], cells, sarbatori, lucr, libere: daysInMonth - lucr };
+  // Sub grilă: sărbătorile și punțile care încep în luna asta, în ordinea zilelor.
+  const sarbatori = cells.flatMap((c) => (c?.name ? [{ day: c.day, zi: String(c.day), name: c.name }] : []));
+  const puntiLuna = PUNTI_CALCULATE.flatMap((p) => {
+    const a = new Date(p.concediu[0]), b = new Date(p.concediu[p.concediu.length - 1]);
+    if (a.getUTCFullYear() !== YEAR || a.getUTCMonth() !== m) return [];
+    const zi = a.getTime() === b.getTime() ? String(a.getUTCDate()) : `${a.getUTCDate()}–${b.getUTCDate()}`;
+    // Scurt, ca să încapă pe un rând: câte zile de concediu spune deja coloana cu ziua.
+    return [{ day: a.getUTCDate(), zi, name: `Punte → ${zile(p.total)} libere (${interval(p.s, p.e, YEAR)})` }];
+  });
+  const note = [...sarbatori, ...puntiLuna].sort((x, y) => x.day - y.day);
+  return { luna: m + 1, nume: LUNI_NUME[m], cells, note, lucr, libere: daysInMonth - lucr };
 }
 
 const MONTHS = Array.from({ length: 12 }, (_, m) => buildMonth(m));
@@ -154,10 +173,15 @@ const card = "rounded-md border border-stone-200 bg-surface p-5 shadow-soft sm:p
 const links =
   "[&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-600";
 
+// Hașură neagră, nu portocalie: portocaliul ar trage ochiul de la sărbători
+// (proprietar, 25 septembrie 2026).
+const HASURA = "bg-[repeating-linear-gradient(135deg,var(--color-stone-900)_0_1px,transparent_1px_5px)]";
+
 // Weekendul are fundal propriu, ca legenda să arate ce se vede în grilă.
 function dayClass(c: NonNullable<Cell>) {
   if (c.holiday) return "bg-stone-900 font-semibold text-white";
   if (c.weekend) return "bg-stone-100 text-stone-600";
+  if (c.punte) return `${HASURA} font-semibold text-stone-900`;
   return "text-stone-700";
 }
 
@@ -239,6 +263,7 @@ export default function ZileLibere2026Page() {
               <span className="flex items-center gap-2"><span className="inline-block h-3 w-3 rounded-sm bg-surface ring-1 ring-inset ring-stone-300" aria-hidden="true" />Zi lucrătoare</span>
               <span className="flex items-center gap-2"><span className="inline-block h-3 w-3 rounded-sm bg-stone-100 ring-1 ring-inset ring-stone-300" aria-hidden="true" />Weekend</span>
               <span className="flex items-center gap-2"><span className="inline-block h-3 w-3 rounded-sm bg-stone-900" aria-hidden="true" />Sărbătoare legală</span>
+              <span className="flex items-center gap-2"><span className={`inline-block h-3 w-3 rounded-sm ring-1 ring-inset ring-stone-300 ${HASURA}`} aria-hidden="true" />Punte (zi de concediu)</span>
               <CalendarAzi an={YEAR} dataBuild={new Date().toISOString()} />
             </div>
 
@@ -253,28 +278,35 @@ export default function ZileLibere2026Page() {
                     {ZILE_SCURT.map((z) => (
                       <div key={z} className="text-xs font-medium uppercase text-stone-600">{z}</div>
                     ))}
-                    {mo.cells.map((c, i) =>
-                      c === null ? (
-                        <div key={i} />
-                      ) : (
+                    {mo.cells.map((c, i) => {
+                      if (c === null) return <div key={i} />;
+                      // Pe hover, puntea spune ce câștigi; pe telefon același text stă sub grilă.
+                      const col = i % 7;
+                      const pos = col <= 1 ? "left-0" : col >= 5 ? "right-0" : "left-1/2 -translate-x-1/2";
+                      return (
                         <div
                           key={i}
                           data-zi={dataIso(mo.luna, c.day)}
                           data-sarbatoare={c.holiday ? "" : undefined}
-                          className={`flex h-7 items-center justify-center rounded text-xs tabular-nums ${dayClass(c)}`}
+                          className={`${c.punte ? "group relative" : ""} flex h-7 items-center justify-center rounded text-xs tabular-nums ${dayClass(c)}`}
                         >
-                          {c.day}
+                          {c.punte ? <span className="rounded-sm bg-surface px-0.5">{c.day}</span> : c.day}
+                          {c.punte ? (
+                            <span className={`pointer-events-none absolute bottom-full z-20 mb-1 hidden w-max max-w-56 rounded-md border border-stone-200 bg-surface px-2 py-1 text-left text-xs font-normal text-stone-700 shadow-soft group-hover:block ${pos}`}>
+                              Punte: {textPunte(c.punte)}
+                            </span>
+                          ) : null}
                         </div>
-                      ),
-                    )}
+                      );
+                    })}
                   </div>
-                  {/* Numele sărbătorilor, sub grilă: până pe 25 septembrie 2026 apăreau doar
-                      la hover, deci pe telefon nu se vedeau nicăieri. */}
-                  {mo.sarbatori.length ? (
+                  {/* Numele sărbătorilor și punțile, sub grilă: până pe 25 septembrie 2026
+                      apăreau doar la hover, deci pe telefon nu se vedeau nicăieri. */}
+                  {mo.note.length ? (
                     <ul className="mt-4 flex flex-col gap-1 border-t border-stone-100 pt-3 text-xs text-stone-600">
-                      {mo.sarbatori.map((h) => (
-                        <li key={h.day} className="flex gap-2">
-                          <span className="w-5 shrink-0 text-right font-semibold tabular-nums text-stone-900">{h.day}</span>
+                      {mo.note.map((h) => (
+                        <li key={h.zi + h.name} className="flex gap-2">
+                          <span className="w-7 shrink-0 text-right font-semibold tabular-nums text-stone-900">{h.zi}</span>
                           <span>{h.name}</span>
                         </li>
                       ))}

@@ -3616,3 +3616,17 @@ Alese de proprietar dintr-o listă de patru probleme observate pe pagină:
 Măsurat după build: 365 de zile cu `data-zi`, 12 luni, zero reguli de „azi” în HTML-ul
 static; `npm test` și `test:rendered` trec. Corectat pe drum: comentariile din commiturile
 de azi scriau „26 septembrie”.
+
+Completare: punțile hașurate în calendar, ideea proprietarului. Hașură neagră, nu
+portocalie („ar atrage prea tare atenția”). Calculate din calendarul legal, nu scrise de
+mână: calculul s-a mutat în `src/lib/punti.ts`, comun cu cardul „Punțile care urmează”.
+În 2026 aproape toate sărbătorile cad vinerea sau lunea; până la 4 zile de concediu,
+cum ia în calcul cardul, ieșeau 20 de zile, adică săptămâni întregi hașurate. Proprietarul
+a ales cel mult 3: 5 ianuarie (1 zi → 7 libere, 1–7 ian.) și 2–4 decembrie (3 zile → 9
+libere, 28 nov. – 6 dec.). Pe hover: „Punte: o zi de concediu → 7 zile libere, 1–7
+ianuarie”; sub lună, pentru telefon: „5 Punte → 7 zile libere (1–7 ianuarie)”.
+Pe drum, `punti()` nu mai ia în calcul punți spre ani fără sărbători documentate (2025) și
+nu mai dă de două ori aceeași punte, când două sărbători duc la ea.
+
+Rămas: secțiunea „Minivacanțe și punți 2026” de mai jos e scrisă de mână și spune
+„3–7 ianuarie, 5 zile” pentru ziua de 5 ianuarie; calculul dă 1–7 ianuarie, 7 zile.
