@@ -1071,7 +1071,7 @@ export default function CalculatorSalariu({
             aviz={subMinim ? (
               <>
                 {t.subMinim(fmt(minimRezultat))}
-                {!embedded && <> {t.subMinimPartTime} <Link href="/calculator-salariu-part-time" className="font-medium text-stone-900 underline underline-offset-2">{t.subMinimLink}</Link>.</>}
+                {embedded ? "." : <> · <Link href="/calculator-salariu-part-time" className="whitespace-nowrap font-medium text-stone-900 underline underline-offset-2">{t.subMinimLink}</Link></>}
               </>
             ) : undefined} tall inline={cuPerioada && !fluturas}
             ajutor={cuPerioada && !fluturas ? { text: mod === "brut" ? t.ajutorBrut : t.ajutorNet, titlu: mod === "brut" ? t.ajutorBrutTitlu : t.ajutorNetTitlu, deschis: ajutor === "salariu", onToggle: () => comutaAjutor("salariu") } : undefined} />

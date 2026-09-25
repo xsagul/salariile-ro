@@ -3816,3 +3816,10 @@ brutul calculat (și la „Net → brut”) cu minimul lunii alese; nota dispare
 mai → nota cu 4.050; 5.000 și net 3.000 → fără notă. La 1280×607, cu nota afișată,
 „Calculează” coboară la 614 px (sub ecran cu 7 px), dar nota apare doar după calcul, cu
 rezultatul deja în ecran.
+
+Tot 26 septembrie, cerut de proprietar: nota de sub-minim pe un singur rând. Acum „Sub
+minimul de 4.325 lei · Calculator part-time” (link pe ultimele două cuvinte, care nu se rup).
+Măsurat la 12 px: 266 px; încape pe un rând la 360, 375, 1024 și 1280 px (câmpul are 294 px
+pe 360). „Sub salariul minim de …” avea 300 px și se rupea pe 360. Pe fereastra îngustă de
+PC (768–1023 px, câmp de ~220 px) trece pe două rânduri. Cu nota, „Calculează” stă la 600 px
+din 607 pe 1280×607, deci rămâne în ecran.
