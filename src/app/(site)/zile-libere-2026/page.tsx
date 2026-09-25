@@ -9,7 +9,8 @@ import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 import { SARBATORI_LEGALE_2026 as HOLIDAYS } from "@/lib/sarbatori";
 import TabelArticol from "@/app/components/TabelArticol";
-import { TITLU_CARD, TITLU_PAGINA, TITLU_SECTIUNE, SEPARATOR_SECTIUNE, SPATIU_JOS, SPATIU_SUS, SUB_TITLU, LISTA_FAQ } from "@/app/components/ui";
+import UrmatoareaZiLibera from "@/app/components/UrmatoareaZiLibera";
+import { TITLU_CARD, TITLU_PAGINA, TITLU_SECTIUNE, SEPARATOR_SECTIUNE, SPATIU_JOS, SPATIU_SUS, SUB_TITLU, LISTA_FAQ, GrilaPagina } from "@/app/components/ui";
 
 // ─── Metadata SEO ────────────────────────────────────────────────────────────
 
@@ -172,7 +173,10 @@ export default function ZileLibere2026Page() {
               zileliberelegale.ro): răspunsul într-o frază, apoi tabelul, apoi calendarul.
               Tabelul urmează modelul Pluxee: zilele libere lucrătoare îngroșate, cele din
               weekend estompate, fiindcă pe ele nu primești o zi liberă. */}
-          <div className="max-w-3xl">
+          {/* Dreapta: următoarea zi liberă, calculată în browser pe data vizitatorului
+              (decis de proprietar pe 26 septembrie 2026, ca pe ecranele mari să nu rămână
+              gol lângă tabel). Pe telefon cardul coboară sub tabel. */}
+          <GrilaPagina companion={<UrmatoareaZiLibera dataBuild={new Date().toISOString()} />} continut={<>
             <h1 className={TITLU_PAGINA}>Zile libere 2026</h1>
             {/* Fără autor și dată sus: e pagină-instrument, nu articol (proprietar, 24 sept. 2026). */}
             <p className={`${SUB_TITLU} text-base leading-normal tracking-[-0.01em] text-stone-700`}>
@@ -183,13 +187,13 @@ export default function ZileLibere2026Page() {
 
             {/* Pe telefon două coloane: data cu ziua săptămânii dedesubt și sărbătoarea,
                 care primește tot restul lățimii. Cu trei coloane înguste, numele lungi
-                treceau pe două-trei rânduri și rândurile ieșeau inegale. De la `sm` în sus,
+                treceau pe două-trei rânduri și rândurile ieșeau inegale. De la `lg` în sus,
                 ziua are coloana ei. */}
             <TabelArticol>
               <thead>
                 <tr>
-                  <th scope="col" className="w-32 sm:w-auto">Data</th>
-                  <th scope="col" className="hidden sm:table-cell">Ziua</th>
+                  <th scope="col" className="w-32 lg:w-auto">Data</th>
+                  <th scope="col" className="hidden lg:table-cell">Ziua</th>
                   <th scope="col">Sărbătoarea</th>
                 </tr>
               </thead>
@@ -200,9 +204,9 @@ export default function ZileLibere2026Page() {
                     <tr key={`${h.m}-${h.d}`}>
                       <th scope="row" className={`whitespace-nowrap align-top ${h.weekend ? "!font-normal !text-stone-600" : "!font-semibold"}`}>
                         {h.d} {LUNI_NUME[h.m - 1].toLowerCase()}
-                        <span className="mt-0.5 block text-xs font-normal text-stone-600 sm:hidden">{h.zi}</span>
+                        <span className="mt-0.5 block text-xs font-normal text-stone-600 lg:hidden">{h.zi}</span>
                       </th>
-                      <td className={`hidden align-top sm:table-cell ${ton}`}>{h.zi}</td>
+                      <td className={`hidden align-top lg:table-cell ${ton}`}>{h.zi}</td>
                       <td className={`align-top ${ton}`}>{h.nume}</td>
                     </tr>
                   );
@@ -217,7 +221,7 @@ export default function ZileLibere2026Page() {
               Potrivit Codului Muncii, angajații care lucrează într-o zi de sărbătoare legală primesc o zi liberă în
               următoarele 30 de zile sau, dacă aceasta nu poate fi acordată, ziua lucrată plătită cel puțin dublu.
             </p>
-          </div>
+          </>} />
 
           {/* CALENDAR — 12 luni */}
           <div className={`${SEPARATOR_SECTIUNE}`}>
