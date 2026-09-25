@@ -173,18 +173,19 @@ export default function ZileLibere2026Page() {
               zileliberelegale.ro): răspunsul într-o frază, apoi tabelul, apoi calendarul.
               Tabelul urmează modelul Pluxee: zilele libere lucrătoare îngroșate, cele din
               weekend estompate, fiindcă pe ele nu primești o zi liberă. */}
-          {/* Primul rând al grilei: tabelul pe 3 coloane, cardul „E zi liberă?” pe 2.
-              În HTML cardul vine după calendar (tabel → calendar → carduri, ordinea
-              cerută de proprietar pe 26 septembrie 2026); pe ecran stă lângă tabel. */}
+          <h1 className={TITLU_PAGINA}>Zile libere 2026</h1>
+          {/* Fără autor și dată sus: e pagină-instrument, nu articol (proprietar, 24 sept. 2026). */}
+          <p className={`${SUB_TITLU} text-base leading-normal tracking-[-0.01em] text-stone-700`}>
+            În 2026 sunt <strong className="font-semibold text-stone-900">{HOLIDAY_LIST.length} sărbători legale</strong>:{" "}
+            <strong className="font-semibold text-stone-900">{SARBATORI_IN_SAPTAMANA} în timpul săptămânii</strong> și{" "}
+            {HOLIDAY_LIST.length - SARBATORI_IN_SAPTAMANA} în weekend.
+          </p>
+          {/* Grila începe la tabel: titlul și fraza stau deasupra, pe toată lățimea,
+              iar cardurile din dreapta pornesc de la nivelul tabelului, nu de lângă
+              titlu (proprietar, 26 septembrie 2026). În HTML cardurile vin după
+              calendar: tabel → calendar → carduri. */}
           <div className="md:grid md:grid-cols-5 md:gap-6">
           <div className="md:col-span-3">
-            <h1 className={TITLU_PAGINA}>Zile libere 2026</h1>
-            {/* Fără autor și dată sus: e pagină-instrument, nu articol (proprietar, 24 sept. 2026). */}
-            <p className={`${SUB_TITLU} text-base leading-normal tracking-[-0.01em] text-stone-700`}>
-              În 2026 sunt <strong className="font-semibold text-stone-900">{HOLIDAY_LIST.length} sărbători legale</strong>:{" "}
-              <strong className="font-semibold text-stone-900">{SARBATORI_IN_SAPTAMANA} în timpul săptămânii</strong> și{" "}
-              {HOLIDAY_LIST.length - SARBATORI_IN_SAPTAMANA} în weekend.
-            </p>
 
             {/* Pe telefon două coloane: data cu ziua săptămânii dedesubt și sărbătoarea,
                 care primește tot restul lățimii. Cu trei coloane înguste, numele lungi
@@ -275,7 +276,7 @@ export default function ZileLibere2026Page() {
               ))}
             </div>
           </div>
-          <aside className="mt-8 md:col-span-2 md:col-start-4 md:row-start-1 md:mt-0 md:self-start">
+          <aside className="mt-8 md:col-span-2 md:col-start-4 md:row-start-1 md:mt-6 md:self-start">
             <UrmatoareaZiLibera dataBuild={new Date().toISOString()} />
           </aside>
           </div>
