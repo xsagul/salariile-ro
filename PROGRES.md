@@ -3724,3 +3724,18 @@ exact aceeași înălțime cu cea de sub „Rezultat calcul” (260,8 px, măsur
 apăsare rămâne 44 px prin `after:`. Butonul „Calculează” pe 375×812: 512 px înainte de
 rândul cu anul, 576 cu el, 488 acum. Se aplică și pe /en/salary-calculator; fluturașul nu
 are direcție și păstrează titlul simplu.
+
+26 septembrie 2026 — formularul calculatorului, la cererea proprietarului („competiția are
+prezentare mai bună”; butoanele de direcție „se văd cam mici”):
+- „Salariu brut” stă în stânga căsuței, ca „Anul”, pe aceeași coloană de 84 px: căsuțele
+  încep din același loc (129 px pe 375). Doar pe homepage (cu rândul de an); celelalte
+  calculatoare păstrează eticheta deasupra.
+- Etichetele acestor două rânduri au 14 px, nu 12: e mărimea butoanelor din formular, deci
+  formularul rămâne pe trei mărimi (18 titlu, 16 căsuțe, 14 etichete și butoane). E o
+  abatere asumată de la „12 px pentru etichete”, doar aici.
+- Butoanele de direcție trec la 14 px: „Brut → net” / „Net → brut” (proprietarul a ales
+  săgeata în locul lui „Din brut”, care nu spunea ce obții). Pe 375 px încap cu 15 px
+  liberi doar cu px-2 și 8 px față de titlu. Engleza rămâne „From gross” / „From net”:
+  „Gross → net” depășea cu ~15 px.
+- „Septembrie” cere 124 px în lista lunii; are 128 (an 78 px, săgeata în 24 px).
+Butonul „Calculează” pe 375×812: 462 px (576 dimineață, 512 înainte de rândul cu anul).

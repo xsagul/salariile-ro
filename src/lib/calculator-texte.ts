@@ -330,8 +330,8 @@ const EN: TexteCalculator = {
   cursVechiNota: "The rate shown is more than a month old.",
   notaConversie:
     "Euro amounts are an indicative conversion. The salary, the contributions and the real payslip are in RON — the law sets every threshold in RON, and the calculation is done in RON.",
-  brutInNetScurt: "Gross → net",
-  netInBrutScurt: "Net → gross",
+  brutInNetScurt: "From gross",
+  netInBrutScurt: "From net",
   salariuDeBazaBrut: "Base salary (gross)",
   salariuBrut: "Gross salary",
   salariuNet: "Net salary",

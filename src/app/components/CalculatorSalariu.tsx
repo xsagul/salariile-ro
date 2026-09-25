@@ -36,6 +36,8 @@ type InputNumberProps = {
   hint?: string;
   onEnter?: () => void;
   tall?: boolean;
+  /** Eticheta în stânga câmpului, pe rând, ca „Anul” (doar salariul de pe homepage). */
+  inline?: boolean;
   error?: string;
   unit?: string;
 };
@@ -182,6 +184,14 @@ const fieldLabel =
 const controlBox =
   "w-full rounded border border-stone-300 bg-surface px-3 py-2 text-base sm:text-sm text-stone-900 outline-none transition focus:border-stone-400 focus:shadow-[0_0_6px_rgba(28,25,23,0.12)]";
 
+// Rândurile cu eticheta în stânga (salariul și anul, pe homepage): aceeași coloană de
+// etichete, ca și câmpurile să înceapă din același loc. Eticheta are 14 px, mărimea
+// butoanelor din formular: la 12 px, lângă un câmp de 16 px, arăta stinsă
+// (proprietar, 26 septembrie 2026). Nu e o mărime nouă în formular.
+// Coloana de 84 px încape „Salariu brut” (76 px la 14 px) și „Gross salary” (83 px).
+const randEticheta = "grid grid-cols-[5.25rem_minmax(0,1fr)] items-center gap-3";
+const etichetaRand = "text-sm text-stone-700";
+
 // Celule tabel-fluturaș
 const cellL = "border-b border-r border-stone-300 px-3 py-3 text-left";
 const cellR = "border-b border-stone-300 px-3 py-3 text-right tabular-nums whitespace-nowrap";
@@ -189,10 +199,11 @@ const colHeader =
   "mb-4 border-b border-stone-200 pb-2 text-lg font-medium text-stone-900";
 
 // Am adăugat 'id' în paranteze și am legat label-ul de input
-function InputNumber({ id, label, value, onChange, placeholder, hint, onEnter, tall, error, unit = "lei / lună" }: InputNumberProps) {
+function InputNumber({ id, label, value, onChange, placeholder, hint, onEnter, tall, inline, error, unit = "lei / lună" }: InputNumberProps) {
   return (
     <div className="mb-5">
-      <label htmlFor={id} className={fieldLabel}>{label}</label>
+      <div className={inline ? randEticheta : undefined}>
+      <label htmlFor={id} className={inline ? etichetaRand : fieldLabel}>{label}</label>
       {hint && <span className="mb-2 block text-xs text-stone-600">{hint}</span>}
       <div className={`flex w-full overflow-hidden rounded border transition focus-within:border-stone-400 focus-within:shadow-[0_0_6px_rgba(28,25,23,0.12)] ${error ? "border-stone-500" : "border-stone-300"}`}>
         <input
@@ -210,7 +221,8 @@ function InputNumber({ id, label, value, onChange, placeholder, hint, onEnter, t
         />
         {unit && <span className="flex items-center whitespace-nowrap border-l border-stone-200 px-3 text-xs font-medium text-stone-600">{unit}</span>}
       </div>
-      {error && <span id={`${id}-error`} role="alert" className="mt-2 block text-xs font-medium text-stone-900">{error}</span>}
+      </div>
+      {error && <span id={`${id}-error`} role="alert" className={`mt-2 block text-xs font-medium text-stone-900 ${inline ? "pl-24" : ""}`}>{error}</span>}
     </div>
   );
 }
@@ -895,17 +907,18 @@ export default function CalculatorSalariu({
           {/* Direcția de calcul, ca două butoane mici în dreptul titlului (proprietar,
               25 septembrie 2026): blocul separat „Direcție de calcul” lungea formularul.
               Grupul are 28 px (butoane de 26 + chenar), cât rândul titlului, ca linia de sub el
-              să rămână aliniată cu „Rezultat calcul”; zona de apăsare urcă la 44 px prin `after:`. */}
+              să rămână aliniată cu „Rezultat calcul”; zona de apăsare urcă la 44 px prin `after:`.
+              Pe 375 px: titlul 116 + 8 + „Brut → net / Net → brut” la 14 px, 180 = 304 din 311. */}
           {fluturas ? (
             <h2 className={colHeader}>{t.dateSalariale}</h2>
           ) : (
-            <div className={`${colHeader} flex items-center justify-between gap-3`}>
+            <div className={`${colHeader} flex items-center justify-between gap-2`}>
               <h2>{t.dateSalariale}</h2>
               <div role="group" aria-label={t.directieCalcul} className="flex shrink-0 overflow-hidden rounded border border-stone-300">
                 <button
                   type="button"
                   aria-pressed={mod === "brut"}
-                  className={`relative inline-flex h-[26px] items-center px-2.5 text-xs font-medium transition-colors after:absolute after:inset-x-0 after:-inset-y-[9px] after:content-[''] ${mod === "brut" ? "bg-stone-900 text-white" : "text-stone-600 hover:bg-canvas"}`}
+                  className={`relative inline-flex h-[26px] items-center px-2 text-sm font-medium transition-colors after:absolute after:inset-x-0 after:-inset-y-[9px] after:content-[''] ${mod === "brut" ? "bg-stone-900 text-white" : "text-stone-600 hover:bg-canvas"}`}
                   onClick={() => {
                     if (mod === "brut") return;
                     if (mod === "net") {
@@ -920,7 +933,7 @@ export default function CalculatorSalariu({
                 <button
                   type="button"
                   aria-pressed={mod === "net"}
-                  className={`border-l border-stone-300 relative inline-flex h-[26px] items-center px-2.5 text-xs font-medium transition-colors after:absolute after:inset-x-0 after:-inset-y-[9px] after:content-[''] ${mod === "net" ? "bg-stone-900 text-white" : "text-stone-600 hover:bg-canvas"}`}
+                  className={`border-l border-stone-300 relative inline-flex h-[26px] items-center px-2 text-sm font-medium transition-colors after:absolute after:inset-x-0 after:-inset-y-[9px] after:content-[''] ${mod === "net" ? "bg-stone-900 text-white" : "text-stone-600 hover:bg-canvas"}`}
                   onClick={() => {
                     if (mod === "net") return;
                     if (mod === "brut") {
@@ -969,16 +982,17 @@ export default function CalculatorSalariu({
           </div>
           )}
 
-          <InputNumber id="salariu-input" unit={etMonedaLuna} label={fluturas ? t.salariuDeBazaBrut : mod === "brut" ? t.salariuBrut : t.salariuNet} value={input.brut} onChange={(v) => { set("brut", v); if (emptyWarn) setEmptyWarn(false); }} placeholder={mod === "brut" ? `${t.exemplu} ${exemplu(Number(EX_PLACEHOLDER_BRUT))}` : `${t.exemplu} ${exemplu(Number(EX_PLACEHOLDER_NET))}`} onEnter={handleCalculeaza} error={emptyWarn ? t.eroareSalariuGol : undefined} tall />
+          <InputNumber id="salariu-input" unit={etMonedaLuna} label={fluturas ? t.salariuDeBazaBrut : mod === "brut" ? t.salariuBrut : t.salariuNet} value={input.brut} onChange={(v) => { set("brut", v); if (emptyWarn) setEmptyWarn(false); }} placeholder={mod === "brut" ? `${t.exemplu} ${exemplu(Number(EX_PLACEHOLDER_BRUT))}` : `${t.exemplu} ${exemplu(Number(EX_PLACEHOLDER_NET))}`} onEnter={handleCalculeaza} error={emptyWarn ? t.eroareSalariuGol : undefined} tall inline={cuPerioada && !fluturas} />
 
           {/* Anul și luna salariului, ca la impozitsalariu.ro: eticheta în stânga, anul și
               luna în dreapta, pe un rând (cerut de proprietar, 25 septembrie 2026). Pornește
-              pe luna de azi; fiecare lună se calculează cu regulile ei (src/lib/fiscal.ts). */}
+              pe luna de azi; fiecare lună se calculează cu regulile ei (src/lib/fiscal.ts).
+              Pe 375 px: 84 etichetă + 78 an + 129 lună; „septembrie” cere 124 px. */}
           {cuPerioada && !fluturas && (
-            <div className="mb-5 flex items-center gap-3">
-              <label htmlFor="anul-salariului" className="shrink-0 text-xs font-medium text-stone-600">{t.anul}</label>
-              <div className="ml-auto flex min-w-0 flex-1 gap-2 sm:flex-none">
-                <div className="relative w-24 shrink-0">
+            <div className={`mb-5 ${randEticheta}`}>
+              <label htmlFor="anul-salariului" className={etichetaRand}>{t.anul}</label>
+              <div className="flex min-w-0 gap-2">
+                <div className="relative w-[4.875rem] shrink-0">
                   <select
                     id="anul-salariului"
                     name="anul-salariului"
@@ -990,15 +1004,15 @@ export default function CalculatorSalariu({
                       const aceeasiLuna = `${an}-${perioada.slice(5, 7)}`;
                       setPerioada(luniAn.includes(aceeasiLuna) ? aceeasiLuna : luniAn[luniAn.length - 1]);
                     }}
-                    className={`${controlBox} min-h-11 cursor-pointer appearance-none pr-8 tabular-nums`}
+                    className={`${controlBox} min-h-11 cursor-pointer appearance-none pr-6 tabular-nums`}
                   >
                     {ANI_CALCULATOR.map((an) => (<option key={an} value={an}>{an}</option>))}
                   </select>
-                  <svg className="pointer-events-none absolute right-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-stone-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" aria-hidden="true">
+                  <svg className="pointer-events-none absolute right-2 top-1/2 h-4 w-4 -translate-y-1/2 text-stone-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" aria-hidden="true">
                     <path d="M5 7.5l5 5 5-5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
-                <div className="relative min-w-0 flex-1 sm:w-40 sm:flex-none">
+                <div className="relative min-w-0 flex-1">
                   <label htmlFor="luna-salariului" className="sr-only">{t.lunaSalariului}</label>
                   <select
                     id="luna-salariului"
@@ -1008,7 +1022,7 @@ export default function CalculatorSalariu({
                       perioadaAleasa.current = true;
                       setPerioada(e.target.value);
                     }}
-                    className={`${controlBox} min-h-11 cursor-pointer appearance-none pr-8`}
+                    className={`${controlBox} min-h-11 cursor-pointer appearance-none pr-6`}
                   >
                     {grupuriRegim(perioada.slice(0, 4), t).map((g) => (
                       <optgroup key={g.regim} label={g.titlu}>
@@ -1018,7 +1032,7 @@ export default function CalculatorSalariu({
                       </optgroup>
                     ))}
                   </select>
-                  <svg className="pointer-events-none absolute right-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-stone-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" aria-hidden="true">
+                  <svg className="pointer-events-none absolute right-2 top-1/2 h-4 w-4 -translate-y-1/2 text-stone-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" aria-hidden="true">
                     <path d="M5 7.5l5 5 5-5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
