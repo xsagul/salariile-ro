@@ -3881,3 +3881,29 @@ la brut când cauți în tabel.
 
 Rămâne nemodelat, ca înainte: facilitățile sectoriale din 2024 (IT, construcții,
 agricultură; abrogate din 2025), avantajele în natură, pensiile facultative.
+
+## 26 septembrie 2026 — Salarii pe meserii: sursa pe care n-o are nimeni
+
+Cerut de proprietar: cercetare de competiție, intenție și date, ca să fim mai exacți decât
+toți pe fiecare meserie, fără să întrebăm utilizatorii și desprinzându-ne de Salario. Totul în
+`research/meserii-2026-09-26/`: `STRATEGIE.md` (concluzii, metodă, primul ecran, plan),
+`surse.json` (32 de instituții găsite, 6 fișiere descărcate cu sha256), `proba.py` și
+`proba-asistent-medical.json`.
+
+Descoperirea: art. 33 din Legea 153/2017 obligă toate instituțiile publice (fără apărare,
+ordine publică, siguranță națională) să publice pe 31 martie și 30 septembrie lista funcțiilor
+cu baza și fiecare spor. La multe spitale e un rând pe post ocupat, cu sumele plătite în lună
+(Alba ~3.000 de rânduri, Miercurea Ciuc ~3.200). Google citează deja o asemenea listă (SCJU
+Bistrița) ca primă sursă a răspunsului AI la „salariu asistent medical”; noi nu suntem în
+primele 30. Concurenți: paylab — o cifră P10–P90 fără n și dată; meseriile.ro — cifrele pe
+orașe sunt media × coeficient fix (Deva = Hunedoara = Petroșani); undelucram — fără pagini
+publice pe meserii.
+
+Proba, asistent medical, SCJU Cluj + SJU Alba, 462 de rânduri: salariul fix (bază + spor de
+condiții, fără ture/gărzi) are mediana netă 4.416 lei (P25–P75 4.216–5.357); debutant 4.133.
+Pagina spune azi 4.000 (Salario) și 3.116–3.239 (grila). Sporul publicat e ~10,7% din bază
+acolo unde legea spune 15%: se calculează pe o bază veche, deci grila × procent greșește.
+
+Următorul pas: colectarea fișierelor din 30 septembrie 2026 (spitale județene, DGASPC), un
+cititor pe modele de fișiere cu teste, agregare pe meserie × județ × gradație cu praguri, apoi
+noul prim ecran pe primele meserii peste prag. Pe site nu s-a schimbat nimic azi.

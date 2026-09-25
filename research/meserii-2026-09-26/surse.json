@@ -1,0 +1,306 @@
+{
+  "descriere": "Registrul surselor art. 33 din Legea 153/2017 (transparența veniturilor salariale). Început pe 26 septembrie 2026. Fișierele descărcate nu se păstrează în repo; amprenta sha256 le identifică.",
+  "verificatLa": "2026-09-26",
+  "surse": [
+    {
+      "id": "sju-alba",
+      "institutie": "Spitalul Județean de Urgență Alba Iulia",
+      "tip": "spital",
+      "judet": "AB",
+      "pagina": "https://spitalalba.ro/",
+      "fisier": "https://spitalalba.ro/docs/NUSTERGE/Transparen%C8%9Ba%20veniturilor%20salariale%20la%20data%20de%2031.03.2026.pdf",
+      "perioada": "2026-02 (publicat la 31.03.2026)",
+      "format": "pdf cu text; un rând pe post; perechi procent–sumă",
+      "descarcat": {
+        "sha256": "1c3be885efa94851ec2d14ab96640084349905b6316f8bc5439711d157c47646",
+        "bytes": 4670141,
+        "la": "2026-09-26"
+      }
+    },
+    {
+      "id": "scju-cluj",
+      "institutie": "Spitalul Clinic Județean de Urgență Cluj-Napoca",
+      "tip": "spital",
+      "judet": "CJ",
+      "pagina": "https://scjucluj.ro/index.php/management/informatii-de-interes-public/transparenta-veniturilor-salariale",
+      "fisier": "https://scjucluj.ro/pdf/venituri/Venituri%20salariale%20martie%202026%20.pdf",
+      "perioada": "2026-03",
+      "format": "pdf cu text; funcție, bază, procent și sumă spor condiții",
+      "descarcat": {
+        "sha256": "303cfe71a3821c72a5db99c366bb2341efd38a84d19e2afb21f0d4dd5b421096",
+        "bytes": 651866,
+        "la": "2026-09-26"
+      }
+    },
+    {
+      "id": "sju-bacau",
+      "institutie": "Spitalul Județean de Urgență Bacău",
+      "tip": "spital",
+      "judet": "BC",
+      "pagina": "https://www.spitaluljudeteanbacau.ro/transparenta-venituri-salariale/",
+      "fisier": "https://www.spitaluljudeteanbacau.ro/storage/2026/03/SJUBC-salarii-februarie-2026.pdf",
+      "perioada": "2026-02",
+      "format": "pdf cu text; multe coloane de sporuri",
+      "descarcat": {
+        "sha256": "3767edaa4f5dbb8b080e03738b6121bb1fc7646fce29e25f0302faff6b9c5ff2",
+        "bytes": 2647234,
+        "la": "2026-09-26"
+      }
+    },
+    {
+      "id": "sju-gorj",
+      "institutie": "Spitalul Județean de Urgență Târgu Jiu",
+      "tip": "spital",
+      "judet": "GJ",
+      "pagina": "https://www.spitalgorj.ro/venituri-salariale/",
+      "fisier": "https://www.spitalgorj.ro/wp-content/uploads/2026/03/SALARII-FEBRUARIE-2026-31.03.2026-TRANSPARENTA.pdf",
+      "perioada": "2026-02",
+      "format": "pdf cu text; un rând pe post",
+      "descarcat": {
+        "sha256": "617a375560a01dc06eba721a5f71816ef32e1a7a86031f50dd8cfe870a6bee12",
+        "bytes": 2767830,
+        "la": "2026-09-26"
+      }
+    },
+    {
+      "id": "sju-mciuc",
+      "institutie": "Spitalul Județean de Urgență Miercurea Ciuc",
+      "tip": "spital",
+      "judet": "HR",
+      "pagina": "https://spitalmciuc.ro/",
+      "fisier": "https://spitalmciuc.ro/wp-content/uploads/2026/04/Transparenta-veniturilor-salariale-martie-2026.pdf",
+      "perioada": "2026-03",
+      "format": "pdf cu text; funcție, studii, gradație, sume",
+      "descarcat": {
+        "sha256": "e1e9458779a318f5c494b236fb399782f58431b100b02bd18a2fd40a11a8de05",
+        "bytes": 153005,
+        "la": "2026-09-26"
+      }
+    },
+    {
+      "id": "scju-ilfov",
+      "institutie": "Spitalul Clinic Județean de Urgență Ilfov",
+      "tip": "spital",
+      "judet": "IF",
+      "pagina": "https://scjuilfov-asec.ro/despre/transparenta-salariala/",
+      "fisier": "https://scjuilfov-asec.ro/media/135587/transparenta-veniturilor-salariale-la-31032026.pdf",
+      "perioada": "2026-03",
+      "format": "pdf scanat, fără text — nu se folosește",
+      "descarcat": {
+        "sha256": "f43bb6f748753987b6a29c451c50aa982eef7966ff885f1c83dcf819bb5caed6",
+        "bytes": 2707586,
+        "la": "2026-09-26"
+      }
+    },
+    {
+      "id": "scju-constanta",
+      "institutie": "Spitalul Clinic Județean de Urgență Constanța",
+      "tip": "spital",
+      "judet": "CT",
+      "pagina": "https://www.spitalulconstanta.ro/informatii-de-interes-public/transparenta-veniturilor-salariale/",
+      "fisier": "https://www.spitalulconstanta.ro/wp-content/uploads/2026/03/Venituri_salariale-Martie_2026.xlsx",
+      "perioada": "2026-03",
+      "format": "xlsx; importat parțial în src/data/transparenta-constanta.json"
+    },
+    {
+      "id": "scju-sibiu",
+      "institutie": "Spitalul Clinic Județean de Urgență Sibiu",
+      "tip": "spital",
+      "judet": "SB",
+      "pagina": "https://scjus.ro/transparenta-veniturilor-salariale/",
+      "nota": "pagină găsită; fișierul din 2026 de identificat"
+    },
+    {
+      "id": "sju-baia-mare",
+      "institutie": "Spitalul Județean de Urgență Baia Mare",
+      "tip": "spital",
+      "judet": "MM",
+      "pagina": "https://www.spitaljbm.ro/index.php/despre-noi/documente-sjubm/buget/transparenta-veniturilor-salariale",
+      "nota": "pagină găsită; fișierul din 2026 de identificat"
+    },
+    {
+      "id": "scju-bistrita",
+      "institutie": "Spitalul Clinic Județean de Urgență Bistrița",
+      "tip": "spital",
+      "judet": "BN",
+      "pagina": "https://sjub.ro/",
+      "nota": "pagină găsită; fișierul din 2026 de identificat"
+    },
+    {
+      "id": "dgaspc-s1",
+      "institutie": "DGASPC Sector 1",
+      "tip": "dgaspc",
+      "judet": "B",
+      "pagina": "https://www.dgaspc-sectorul1.ro/transparenta-decizionala/transparenta-veniturilor-salariale/",
+      "nota": "pagină găsită; fișierul din 2026 de identificat"
+    },
+    {
+      "id": "dgaspc-s2",
+      "institutie": "DGASPC Sector 2",
+      "tip": "dgaspc",
+      "judet": "B",
+      "pagina": "https://social2.ro/transparenta-veniturilor-salariale/",
+      "nota": "pagină găsită; fișierul din 2026 de identificat"
+    },
+    {
+      "id": "dgaspc-if",
+      "institutie": "DGASPC Ilfov",
+      "tip": "dgaspc",
+      "judet": "IF",
+      "pagina": "https://protectiacopilului.ro/transparenta-veniturilor-salariale/",
+      "nota": "pagină găsită; fișierul din 2026 de identificat"
+    },
+    {
+      "id": "dgaspc-sv",
+      "institutie": "DGASPC Suceava",
+      "tip": "dgaspc",
+      "judet": "SV",
+      "pagina": "https://dgaspcsv.ro/transparenta-veniturilor-salariale/",
+      "nota": "pagină găsită; fișierul din 2026 de identificat"
+    },
+    {
+      "id": "dgaspc-gj",
+      "institutie": "DGASPC Gorj",
+      "tip": "dgaspc",
+      "judet": "GJ",
+      "pagina": "https://www.dgaspcgorj.ro/informatii-publice/transparenta/",
+      "nota": "pagină găsită; fișierul din 2026 de identificat"
+    },
+    {
+      "id": "dgaspc-vs",
+      "institutie": "DGASPC Vaslui",
+      "tip": "dgaspc",
+      "judet": "VS",
+      "pagina": "https://www.dgaspc-vs.ro/transparenta/transparenta-veniturilor-salariale/",
+      "nota": "pagină găsită; fișierul din 2026 de identificat"
+    },
+    {
+      "id": "dgaspc-bt",
+      "institutie": "DGASPC Botoșani",
+      "tip": "dgaspc",
+      "judet": "BT",
+      "pagina": "https://dgaspcbt.ro/transparenta-veniturilor-salariale/",
+      "nota": "pagină găsită; fișierul din 2026 de identificat"
+    },
+    {
+      "id": "dgaspc-cl",
+      "institutie": "DGASPC Călărași",
+      "tip": "dgaspc",
+      "judet": "CL",
+      "pagina": "https://dgaspc-cl.ro/despre/transparenta",
+      "nota": "pagină găsită; fișierul din 2026 de identificat"
+    },
+    {
+      "id": "dgaspc-sm",
+      "institutie": "DGASPC Satu Mare",
+      "tip": "dgaspc",
+      "judet": "SM",
+      "pagina": "https://www.dgaspcsm.ro/transparenta-veniturilor-salariale",
+      "nota": "pagină găsită; fișierul din 2026 de identificat"
+    },
+    {
+      "id": "bj-alba",
+      "institutie": "Biblioteca Județeană Lucian Blaga Alba",
+      "tip": "biblioteca",
+      "judet": "AB",
+      "pagina": "https://www.bjalba.ro/despre-noi/transparenta-veniturilor-salariale/",
+      "nota": "pagină găsită; fișierul din 2026 de identificat"
+    },
+    {
+      "id": "bj-valcea",
+      "institutie": "Biblioteca Județeană Antim Ivireanul Vâlcea",
+      "tip": "biblioteca",
+      "judet": "VL",
+      "pagina": "https://www.bjai.ro/informatii-publice-bjai/",
+      "nota": "pagină găsită; fișierul din 2026 de identificat"
+    },
+    {
+      "id": "bj-vrancea",
+      "institutie": "Biblioteca Județeană Vrancea",
+      "tip": "biblioteca",
+      "judet": "VN",
+      "pagina": "https://bjvrancea.ro/informatii-publice/",
+      "nota": "pagină găsită; fișierul din 2026 de identificat"
+    },
+    {
+      "id": "bj-calarasi",
+      "institutie": "Biblioteca Județeană Alexandru Odobescu Călărași",
+      "tip": "biblioteca",
+      "judet": "CL",
+      "pagina": "https://www.bjcalarasi.ro/?page_id=2850",
+      "nota": "pagină găsită; fișierul din 2026 de identificat"
+    },
+    {
+      "id": "bcu-bucuresti",
+      "institutie": "Biblioteca Centrală Universitară București",
+      "tip": "biblioteca",
+      "judet": "B",
+      "pagina": "https://www.bcub.ro/transparenta-veniturilor-salariale/",
+      "nota": "pagină găsită; fișierul din 2026 de identificat"
+    },
+    {
+      "id": "pm-timisoara",
+      "institutie": "Primăria Timișoara",
+      "tip": "primarie",
+      "judet": "TM",
+      "pagina": "https://www.primariatm.ro/transparenta/finante-publice/transparenta-veniturilor-salariale",
+      "nota": "pagină găsită; fișierul din 2026 de identificat"
+    },
+    {
+      "id": "pm-sinaia",
+      "institutie": "Primăria Sinaia",
+      "tip": "primarie",
+      "judet": "PH",
+      "pagina": "https://www.primaria-sinaia.ro/",
+      "fisier": "https://www.primaria-sinaia.ro/wp-content/uploads/2026/03/Transparenta-veniturilor-salariale-la-data-de-31-martie-2026.pdf"
+    },
+    {
+      "id": "pm-suceava",
+      "institutie": "Primăria Suceava",
+      "tip": "primarie",
+      "judet": "SV",
+      "pagina": "https://www.primariasv.ro/dm_suceava/site.nsf/pagini/transparenta+veniturilor+salariale-0000A342",
+      "nota": "pagină găsită; fișierul din 2026 de identificat"
+    },
+    {
+      "id": "ps4",
+      "institutie": "Primăria Sectorului 4",
+      "tip": "primarie",
+      "judet": "B",
+      "pagina": "https://ps4.ro/transparenta-veniturilor-salariale/",
+      "nota": "pagină găsită; fișierul din 2026 de identificat"
+    },
+    {
+      "id": "ps6",
+      "institutie": "Primăria Sectorului 6",
+      "tip": "primarie",
+      "judet": "B",
+      "pagina": "https://www.primarie6.ro/primarie_sector6/informatii-interes-public/transparenta-venituri",
+      "nota": "pagină găsită; fișierul din 2026 de identificat"
+    },
+    {
+      "id": "cj-olt",
+      "institutie": "Consiliul Județean Olt",
+      "tip": "consiliu-judetean",
+      "judet": "OT",
+      "pagina": "https://cjolt.ro/informatii-de-interes-public/transparenta-veniturilor-salariale/",
+      "nota": "pagină găsită; fișierul din 2026 de identificat"
+    },
+    {
+      "id": "cj-salaj",
+      "institutie": "Consiliul Județean Sălaj",
+      "tip": "consiliu-judetean",
+      "judet": "SJ",
+      "pagina": "https://www.cjsj.ro/index.php/informatii-publice/transparenta-veniturilor-salariale",
+      "nota": "pagină găsită; fișierul din 2026 de identificat"
+    },
+    {
+      "id": "dnp",
+      "institutie": "Direcția Națională de Probațiune",
+      "tip": "institutie-centrala",
+      "judet": "B",
+      "pagina": "https://probatiune.just.ro/",
+      "fisier": "https://probatiune.just.ro/wp-content/uploads/2026/04/DNP_31.03.2026_transparenta_veniturilor-salariale.pdf"
+    }
+  ]
+}
