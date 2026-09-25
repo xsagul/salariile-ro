@@ -3756,3 +3756,9 @@ Semnul „?” lângă „Salariu brut” și „Anul”, ales de agent la într
 „?” întreabă „ce e asta?”, „i” e pentru informație în plus, „!” e avertisment. Explicația
 se deschide sub rând (nu bulă: pe telefon acoperă câmpurile), cel mult una odată, 14 px.
 Textele sunt în calculator-texte.ts; cea despre lună nu scrie date, ca să nu se învechească.
+
+Semnul „?”: explicația devine bulă deasupra (ca la impozitsalariu.ro), fără rând în plus
+(cerut de proprietar). Pleacă din stânga etichetei, ca să încapă pe 375 px (33–289 px), cu
+săgeata sub „?”. Apare la mouse pe desktop (`peer-hover`, doar pe ecrane cu hover), la Tab
+(`focus-visible`) și la atingere pe telefon; se închide la atingere în afară, la Esc și la a
+doua atingere. Măsurat: deschiderea nu mișcă butonul „Calculează”.

@@ -196,26 +196,39 @@ const randEticheta = "sm:grid sm:grid-cols-[6.5rem_minmax(0,1fr)] sm:items-cente
 const etichetaRand = "text-sm text-stone-700";
 
 // Semnul „?” de lângă o etichetă. „?” și nu „i”: întreabă „ce e asta?”, exact ce explică;
-// „!” ar fi avertisment. Explicația se deschide sub rând, nu într-o bulă: pe telefon o
-// bulă acoperă câmpurile și se închide greu. 18 px vizibil, 44 px de apăsat prin `after:`.
-function ButonAjutor({ id, deschis, onClick, titlu }: { id: string; deschis: boolean; onClick: () => void; titlu: string }) {
+// „!” ar fi avertisment. Explicația apare într-o bulă deasupra, ca la impozitsalariu.ro,
+// fără să împingă formularul (proprietar, 26 septembrie 2026): la mouse pe desktop, la
+// atingere pe telefon (se închide atingând în afară), la Tab de la tastatură, cu Esc.
+// Bula pleacă din stânga etichetei, ca să nu iasă din ecran pe telefon; săgeata stă sub „?”.
+// Părintele trebuie să fie `relative`. 18 px vizibil, 44 px de apăsat prin `after:`.
+function ButonAjutor({ id, deschis, onClick, titlu, text }: { id: string; deschis: boolean; onClick: () => void; titlu: string; text: string }) {
+  const vizibil = deschis ? "block" : "hidden";
   return (
-    <button
-      type="button"
-      aria-expanded={deschis}
-      aria-controls={id}
-      aria-label={titlu}
-      onClick={onClick}
-      className={`relative ml-1.5 inline-flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full border text-xs font-medium leading-none transition-colors after:absolute after:-inset-[14px] after:content-[''] ${
-        deschis ? "border-stone-900 bg-stone-900 text-white" : "border-stone-300 text-stone-600 hover:border-stone-500 hover:text-stone-900"
-      }`}
-    >
-      ?
-    </button>
+    <>
+      <button
+        type="button"
+        data-ajutor=""
+        aria-expanded={deschis}
+        aria-label={titlu}
+        aria-describedby={id}
+        onClick={onClick}
+        className={`peer/ajutor group/ajutor relative ml-1.5 inline-flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full border text-xs font-medium leading-none transition-colors after:absolute after:-inset-[14px] after:content-[''] ${
+          deschis ? "border-stone-900 bg-stone-900 text-white" : "border-stone-300 text-stone-600 hover:border-stone-500 hover:text-stone-900"
+        }`}
+      >
+        ?
+        <span aria-hidden="true" className={`${vizibil} pointer-events-none absolute bottom-full left-1/2 z-30 mb-[5px] h-2.5 w-2.5 -translate-x-1/2 rotate-45 bg-stone-900 group-hover/ajutor:block group-focus-visible/ajutor:block`} />
+      </button>
+      <span
+        id={id}
+        role="tooltip"
+        className={`${vizibil} pointer-events-none absolute bottom-full left-0 z-30 mb-[9px] w-max max-w-64 rounded-md bg-stone-900 px-3 py-2 text-sm font-normal text-white shadow-soft peer-hover/ajutor:block peer-focus-visible/ajutor:block`}
+      >
+        {text}
+      </span>
+    </>
   );
 }
-
-const textAjutor = "mt-2 max-w-prose text-sm text-stone-600";
 
 // Celule tabel-fluturaș
 const cellL = "border-b border-r border-stone-300 px-3 py-3 text-left";
@@ -229,9 +242,9 @@ function InputNumber({ id, label, value, onChange, placeholder, hint, onEnter, t
     <div className="mb-5">
       <div className={inline ? randEticheta : undefined}>
       {inline ? (
-        <div className="mb-2 flex items-center sm:mb-0">
+        <div className="relative mb-2 flex items-center sm:mb-0">
           <label htmlFor={id} className={etichetaRand}>{label}</label>
-          {ajutor && <ButonAjutor id={`${id}-ajutor`} deschis={ajutor.deschis} onClick={ajutor.onToggle} titlu={ajutor.titlu} />}
+          {ajutor && <ButonAjutor id={`${id}-ajutor`} deschis={ajutor.deschis} onClick={ajutor.onToggle} titlu={ajutor.titlu} text={ajutor.text} />}
         </div>
       ) : (
         <label htmlFor={id} className={fieldLabel}>{label}</label>
@@ -254,7 +267,6 @@ function InputNumber({ id, label, value, onChange, placeholder, hint, onEnter, t
         {unit && <span className="flex items-center whitespace-nowrap border-l border-stone-200 px-3 text-xs font-medium text-stone-600">{unit}</span>}
       </div>
       </div>
-      {ajutor?.deschis && <p id={`${id}-ajutor`} className={textAjutor}>{ajutor.text}</p>}
       {error && <span id={`${id}-error`} role="alert" className={`mt-2 block text-xs font-medium text-stone-900 ${inline ? "sm:pl-[7.25rem]" : ""}`}>{error}</span>}
     </div>
   );
@@ -622,6 +634,21 @@ export default function CalculatorSalariu({
   // Explicația deschisă de semnul „?”: cel mult una odată.
   const [ajutor, setAjutor] = useState<null | "salariu" | "anul">(null);
   const comutaAjutor = (care: "salariu" | "anul") => setAjutor((a) => (a === care ? null : care));
+  useEffect(() => {
+    if (!ajutor) return;
+    const inAfara = (e: PointerEvent) => {
+      if (!(e.target instanceof Element) || !e.target.closest("[data-ajutor]")) setAjutor(null);
+    };
+    const esc = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setAjutor(null);
+    };
+    document.addEventListener("pointerdown", inAfara);
+    document.addEventListener("keydown", esc);
+    return () => {
+      document.removeEventListener("pointerdown", inAfara);
+      document.removeEventListener("keydown", esc);
+    };
+  }, [ajutor]);
   const regimActiv: RegimFiscalSalariu = cuPerioada ? regimLunii(perioada) : regimFiscal;
   // Avertisment scurt când se apasă Calculează fără un salariu valid (Nielsen h1/h9).
   const [emptyWarn, setEmptyWarn] = useState(false);
@@ -1031,9 +1058,9 @@ export default function CalculatorSalariu({
           {cuPerioada && !fluturas && (
             <div className="mb-5">
             <div className={randEticheta}>
-              <div className="mb-2 flex items-center sm:mb-0">
+              <div className="relative mb-2 flex items-center sm:mb-0">
                 <label htmlFor="anul-salariului" className={etichetaRand}>{t.anul}</label>
-                <ButonAjutor id="anul-ajutor" deschis={ajutor === "anul"} onClick={() => comutaAjutor("anul")} titlu={t.ajutorAnulTitlu} />
+                <ButonAjutor id="anul-ajutor" deschis={ajutor === "anul"} onClick={() => comutaAjutor("anul")} titlu={t.ajutorAnulTitlu} text={t.ajutorAnul} />
               </div>
               <div className="flex min-w-0 gap-2">
                 <div className="relative w-2/5 shrink-0 sm:w-[4.875rem]">
@@ -1082,7 +1109,6 @@ export default function CalculatorSalariu({
                 </div>
               </div>
             </div>
-            {ajutor === "anul" && <p id="anul-ajutor" className={textAjutor}>{t.ajutorAnul}</p>}
             </div>
           )}
 
