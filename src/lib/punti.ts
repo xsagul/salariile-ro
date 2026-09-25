@@ -125,6 +125,13 @@ export function puntiAn(an: number): Punte[] {
   return punti(Date.UTC(an, 0, 1) - ZI_MS).filter((x) => new Date(x.concediu[0]).getUTCFullYear() === an);
 }
 
+// Numele sărbătorilor dintre două zile, inclusiv, în ordinea zilelor.
+export function sarbatoriIntre(s: number, e: number): string[] {
+  const rez: string[] = [];
+  for (let t = s; t <= e; t += ZI_MS) if (NUME.has(t)) rez.push(NUME.get(t)!);
+  return rez;
+}
+
 export type Minivacanta = { s: number; e: number; total: number; sarbatori: string[] };
 
 // Weekendurile prelungite fără nicio zi de concediu: blocurile de cel puțin 3 zile

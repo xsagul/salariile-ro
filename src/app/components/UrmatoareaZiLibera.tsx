@@ -62,7 +62,7 @@ export default function UrmatoareaZiLibera({ an, dataBuild }: { an: number; data
 
       {p.length ? (
         <div className={CARD}>
-          <h2 className={CARD_TITLU}>{altAn ? `Punțile din ${an}` : "Punțile care urmează"}</h2>
+          <h2 className={CARD_TITLU}>{altAn ? `Concediu propus în ${an}` : "Concediu propus"}</h2>
           <ul className="flex flex-col divide-y divide-stone-100 text-sm">
             {p.map((x) => (
               <li key={x.s} className="py-3 first:pt-0 last:pb-0">

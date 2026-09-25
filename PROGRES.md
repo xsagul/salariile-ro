@@ -3673,3 +3673,10 @@ din 2024). Regula „niciun an vechi sus” nu e încălcată: fila 2025 stă î
 pe care testul o exclude explicit, iar pe fiecare pagină e selectat anul ei. Pe o pagină
 de an încheiat lunile nu se mai estompează. /zile-libere-2031 a fost public ~20 de minute;
 nu are redirect.
+
+„Minivacanțe”, refăcută la cererea proprietarului: un card pe sărbătoare (6 pentru 2026, în loc
+de 12), cu „Fără concediu” și „Concediu propus” în același card; înainte, aceeași sărbătoare
+avea două carduri. Rămân variantele cu 4 zile de concediu („oamenii le iau”); limita de 3 era
+doar pentru hașura din calendar. „Punte” scos din textul vizibil: secțiunea e „Minivacanțe
+<an>”, cardul din dreapta „Concediu propus”, descrierile din metadata spun „zile de concediu
+propuse”, ca la zilelibere.com („Zi propusă pentru concediu”).

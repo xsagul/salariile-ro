@@ -9,11 +9,11 @@ import Link from "@/app/components/Link";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 import { ANI_CALENDAR, pasteOrtodox, sarbatoriAn } from "@/lib/sarbatori";
-import { interval, puntiAn, weekenduriPrelungite, zile, ZI_MS } from "@/lib/punti";
+import { interval, puntiAn, sarbatoriIntre, weekenduriPrelungite, zile, ZI_MS, type Minivacanta, type Punte } from "@/lib/punti";
 import TabelArticol from "@/app/components/TabelArticol";
 import UrmatoareaZiLibera from "@/app/components/UrmatoareaZiLibera";
 import CalendarAn, { type CelulaZi, type LunaCalendar } from "@/app/components/CalendarAn";
-import { TITLU_CARD, TITLU_PAGINA, TITLU_SECTIUNE, SEPARATOR_SECTIUNE, SPATIU_JOS, SPATIU_SUS, SUB_TITLU, LISTA_FAQ } from "@/app/components/ui";
+import { CARD_TITLU, LISTA_CARD, TITLU_CARD, TITLU_PAGINA, TITLU_SECTIUNE, SEPARATOR_SECTIUNE, SPATIU_JOS, SPATIU_SUS, SUB_TITLU, LISTA_FAQ } from "@/app/components/ui";
 
 export type AnZileLibere = (typeof ANI_CALENDAR)[number];
 type CaleAn = `/zile-libere-${AnZileLibere}`;
@@ -36,13 +36,20 @@ const dataLunga = (t: number) => `${ZILE_LUNG[(new Date(t).getUTCDay() + 6) % 7]
 const inFraza = (nume: string) => nume.replace(/(^|\/ )A doua/g, "$1a doua").replace(" (ortodox)", "");
 // „Anul Nou, a doua zi de Anul Nou și Bobotează”
 const enumerare = (xs: string[]) => (xs.length < 2 ? xs.join("") : `${xs.slice(0, -1).join(", ")} și ${xs[xs.length - 1]}`);
+// Titlul unei minivacanțe: sărbătorile principale din ea, fără „a doua zi de…”, fără
+// Vinerea Mare (merge cu Paștele) și Sfântul Ioan (merge cu Boboteaza).
+function numeMinivacanta(s: number, e: number) {
+  const toate = sarbatoriIntre(s, e).flatMap((n) => n.split(" / ")).map((n) => n.replace(" (ortodox)", ""));
+  const principale = toate.filter((n) => !n.startsWith("A doua zi") && n !== "Vinerea Mare" && n !== "Sfântul Ioan Botezătorul");
+  return enumerare([...new Set(principale.length ? principale : toate)]);
+}
 
 export function metadataZileLibere(an: AnZileLibere): Metadata {
   const titlu = `Zile libere ${an}: calendar și sărbători legale`;
-  const descriere = `Calendar ${an} cu datele sărbătorilor legale și punțile pentru weekenduri prelungite.`;
+  const descriere = `Calendar ${an} cu datele sărbătorilor legale și zilele de concediu propuse pentru minivacanțe.`;
   return {
     title: { absolute: `Zile libere ${an}: calendarul sărbătorilor legale` },
-    description: `Calendar zile libere ${an} în România: datele sărbătorilor legale, weekenduri prelungite, minivacanțe și punți utile pentru concediu.`,
+    description: `Calendar zile libere ${an} în România: datele sărbătorilor legale, weekenduri prelungite și zilele de concediu propuse pentru minivacanțe.`,
     alternates: { canonical: `https://salariile.ro${cale(an)}` },
     openGraph: ogPage({ title: titlu, description: descriere, path: cale(an) }),
     twitter: twPage({ title: titlu, description: descriere }),
@@ -76,19 +83,18 @@ function dateAn(an: AnZileLibere) {
   const inSaptamana = lista.filter((h) => !h.weekend).length;
   const inWeekend = lista.filter((h) => h.weekend);
 
-  // Minivacanțele: weekendurile prelungite fără concediu și punțile, în ordinea zilelor.
-  // Până pe 25 septembrie 2026 lista era scrisă de mână și greșea 5 ianuarie 2026
-  // („3–7 ianuarie, 5 zile”, în loc de 1–7 ianuarie, 7 zile).
-  const minivacante = [
-    ...weekenduriPrelungite(an).map((w) => ({
-      s: w.s, total: w.total, titlu: interval(w.s, w.e, an),
-      detalii: `${enumerare(w.sarbatori.map(inFraza)).replace(/^a/, "A")}, lângă weekend. Fără zile de concediu.`,
-    })),
-    ...puntiAn(an).map((p) => ({
-      s: p.s, total: p.total, titlu: interval(p.s, p.e, an),
-      detalii: `Iei ${zile(p.concediu.length)} de concediu: ${interval(p.concediu[0], p.concediu[p.concediu.length - 1], an)}.`,
-    })),
-  ].sort((a, b) => a.s - b.s || a.total - b.total);
+  // Minivacanțele: un card pe sărbătoare, cu varianta fără concediu și cu zilele de
+  // concediu propuse (proprietar, 25 septembrie 2026: „punte” nu e cuvânt pe care îl
+  // știe oricine, iar două carduri pentru aceeași sărbătoare se repetau). Rămân și
+  // variantele cu 4 zile de concediu: oamenii le iau. Până în aceeași zi lista era
+  // scrisă de mână și greșea 5 ianuarie 2026 („3–7 ianuarie, 5 zile”, în loc de 7).
+  const carduri: { s: number; e: number; fara?: Minivacanta; cu?: Punte }[] = puntiAn(an).map((p) => ({ s: p.s, e: p.e, cu: p }));
+  for (const w of weekenduriPrelungite(an)) {
+    const c = carduri.find((x) => x.cu && !x.fara && x.s <= w.s && w.e <= x.e);
+    if (c) c.fara = w;
+    else carduri.push({ s: w.s, e: w.e, fara: w });
+  }
+  const minivacante = carduri.sort((a, b) => a.s - b.s).map((c) => ({ ...c, titlu: numeMinivacanta(c.s, c.e) }));
 
   const paste = pasteOrtodox(an);
   const numeLa = (t: number) => sarbatori[`${new Date(t).getUTCMonth() + 1}-${new Date(t).getUTCDate()}`];
@@ -174,7 +180,7 @@ export default function PaginaZileLibere({ an }: { an: AnZileLibere }) {
       {
         "@type": "Article",
         headline: `Zile libere ${an} în România: calendar și sărbători legale`,
-        description: `Calendar ${an} cu sărbătorile legale prevăzute de Codul Muncii art. 139 și punțile pentru minivacanțe.`,
+        description: `Calendar ${an} cu sărbătorile legale prevăzute de Codul Muncii art. 139 și zilele de concediu propuse pentru minivacanțe.`,
         author: personSchema,
         publisher: {
           "@type": "Organization",
@@ -292,21 +298,34 @@ export default function PaginaZileLibere({ an }: { an: AnZileLibere }) {
             </div>
           ) : null}
 
-          {/* MINIVACANȚE ȘI PUNȚI — calculate din calendarul legal (src/lib/punti.ts) */}
+          {/* MINIVACANȚE — calculate din calendarul legal (src/lib/punti.ts) */}
           <div className={`${SEPARATOR_SECTIUNE}`}>
-            <h2 className={TITLU_SECTIUNE}>Minivacanțe și punți {an}</h2>
+            <h2 className={TITLU_SECTIUNE}>Minivacanțe {an}</h2>
             <p className="mt-3 max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600">
-              Combinații de sărbători și weekend care îți dau pauze mai lungi. Unele vin natural; la altele iei câteva zile
-              de concediu („punte”) și transformi câteva zile într-o minivacanță.
+              Când se leagă sărbătorile de weekend și ce zile de concediu îți propunem ca să prelungești pauza.
+              Zilele libere de la rând includ weekendurile.
             </p>
             <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {minivacante.map((p) => (
-                <div key={`${p.s}-${p.total}`} className={card}>
-                  <div className="flex items-baseline justify-between gap-3">
-                    <h3 className="text-base font-semibold tracking-[-0.01em] text-stone-900">{p.titlu}</h3>
-                    <span className="shrink-0 text-xs font-medium text-stone-600">{zile(p.total)}</span>
-                  </div>
-                  <p className="mt-2 text-sm text-stone-600">{p.detalii}</p>
+              {minivacante.map((c) => (
+                <div key={c.s} className={card}>
+                  <h3 className={CARD_TITLU}>{c.titlu}</h3>
+                  <dl className={LISTA_CARD}>
+                    {c.fara ? (
+                      <div>
+                        <dt className="text-stone-600">Fără concediu</dt>
+                        <dd className="text-stone-900">{interval(c.fara.s, c.fara.e, an)} · {zile(c.fara.total)} libere</dd>
+                      </div>
+                    ) : null}
+                    {c.cu ? (
+                      <div>
+                        <dt className="text-stone-600">
+                          Concediu propus: {interval(c.cu.concediu[0], c.cu.concediu[c.cu.concediu.length - 1], an)}
+                          {` (${zile(c.cu.concediu.length)})`}
+                        </dt>
+                        <dd className="font-semibold text-stone-900">{interval(c.cu.s, c.cu.e, an)} · {zile(c.cu.total)} libere</dd>
+                      </div>
+                    ) : null}
+                  </dl>
                 </div>
               ))}
             </div>
