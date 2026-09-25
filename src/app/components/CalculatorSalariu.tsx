@@ -892,46 +892,53 @@ export default function CalculatorSalariu({
             handleCalculeaza();
           }}
         >
-          <h2 className={colHeader}>{t.dateSalariale}</h2>
-
-          {!fluturas && (
-          <div className="mb-5">
-            <span className={fieldLabel}>{t.directieCalcul}</span>
-            <div className="flex w-full overflow-hidden rounded border border-stone-300">
-              <button
-                type="button"
-                className={`flex-1 inline-flex min-h-11 items-center justify-center px-4 text-sm font-medium transition-colors ${mod === "brut" ? "bg-stone-900 text-white" : "text-stone-600 hover:bg-canvas"}`}
-                onClick={() => {
-                  if (mod === "brut") return;
-                  if (mod === "net") {
-                    const netVal = parseFloat(input.brut);
-                    if (netVal > 0) set("brut", String(calculeazaBrutDinNetCuRegim(netVal, input, regimActiv)));
-                  }
-                  setMod("brut");
-                }}
-              >
-                {t.dinBrutInNet}
-              </button>
-              <button
-                type="button"
-                className={`border-l border-stone-300 flex-1 inline-flex min-h-11 items-center justify-center px-4 text-sm font-medium transition-colors ${mod === "net" ? "bg-stone-900 text-white" : "text-stone-600 hover:bg-canvas"}`}
-                onClick={() => {
-                  if (mod === "net") return;
-                  if (mod === "brut") {
-                    const brutVal = parseFloat(input.brut);
-                    if (brutVal > 0) {
-                      const rezTemp = calculeazaCuRegim(input, regimActiv);
-                      if (rezTemp) set("brut", String(rezTemp.netBani));
+          {/* Direcția de calcul, ca două butoane mici în dreptul titlului (proprietar,
+              25 septembrie 2026): blocul separat „Direcție de calcul” lungea formularul.
+              Grupul are 28 px (butoane de 26 + chenar), cât rândul titlului, ca linia de sub el
+              să rămână aliniată cu „Rezultat calcul”; zona de apăsare urcă la 44 px prin `after:`. */}
+          {fluturas ? (
+            <h2 className={colHeader}>{t.dateSalariale}</h2>
+          ) : (
+            <div className={`${colHeader} flex items-center justify-between gap-3`}>
+              <h2>{t.dateSalariale}</h2>
+              <div role="group" aria-label={t.directieCalcul} className="flex shrink-0 overflow-hidden rounded border border-stone-300">
+                <button
+                  type="button"
+                  aria-pressed={mod === "brut"}
+                  className={`relative inline-flex h-[26px] items-center px-2.5 text-xs font-medium transition-colors after:absolute after:inset-x-0 after:-inset-y-[9px] after:content-[''] ${mod === "brut" ? "bg-stone-900 text-white" : "text-stone-600 hover:bg-canvas"}`}
+                  onClick={() => {
+                    if (mod === "brut") return;
+                    if (mod === "net") {
+                      const netVal = parseFloat(input.brut);
+                      if (netVal > 0) set("brut", String(calculeazaBrutDinNetCuRegim(netVal, input, regimActiv)));
                     }
-                  }
-                  setMod("net");
-                }}
-              >
-                {t.dinNetInBrut}
-              </button>
+                    setMod("brut");
+                  }}
+                >
+                  {t.brutInNetScurt}
+                </button>
+                <button
+                  type="button"
+                  aria-pressed={mod === "net"}
+                  className={`border-l border-stone-300 relative inline-flex h-[26px] items-center px-2.5 text-xs font-medium transition-colors after:absolute after:inset-x-0 after:-inset-y-[9px] after:content-[''] ${mod === "net" ? "bg-stone-900 text-white" : "text-stone-600 hover:bg-canvas"}`}
+                  onClick={() => {
+                    if (mod === "net") return;
+                    if (mod === "brut") {
+                      const brutVal = parseFloat(input.brut);
+                      if (brutVal > 0) {
+                        const rezTemp = calculeazaCuRegim(input, regimActiv);
+                        if (rezTemp) set("brut", String(rezTemp.netBani));
+                      }
+                    }
+                    setMod("net");
+                  }}
+                >
+                  {t.netInBrutScurt}
+                </button>
+              </div>
             </div>
-          </div>
           )}
+
 
           {/* Comutator de monedă. Schimbă și suma tastată, ca valoarea reală să
               rămână aceeași: 5.250 lei devin 1.000 EUR, nu 5.250 EUR. */}

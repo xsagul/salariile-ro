@@ -3716,3 +3716,11 @@ nota „Calcul pentru martie 2025, cu regulile fiscale de atunci”, fără PDF.
 dimensiune personalizată în GA4 ca să apară în rapoarte. Facilitățile sectoriale din 2024
 (IT, construcții, agricultură) nu sunt modelate: calculul arată regimul general. După
 decembrie 2026, calculatorul rămâne pe ultima lună cunoscută până se adaugă regulile 2027.
+
+Aceeași zi, la cererea proprietarului: direcția de calcul urcă din blocul „Direcție de
+calcul” în dreptul titlului „Date salariale”, ca două butoane mici („Brut → net”,
+„Net → brut”). Grupul are 28 px, cât rândul titlului: linia de sub „Date salariale” stă la
+exact aceeași înălțime cu cea de sub „Rezultat calcul” (260,8 px, măsurat); zona de
+apăsare rămâne 44 px prin `after:`. Butonul „Calculează” pe 375×812: 512 px înainte de
+rândul cu anul, 576 cu el, 488 acum. Se aplică și pe /en/salary-calculator; fluturașul nu
+are direcție și păstrează titlul simplu.

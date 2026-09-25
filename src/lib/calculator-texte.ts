@@ -51,8 +51,9 @@ export type TexteCalculator = {
   cursNota: (curs: string, data: string) => string;
   cursVechiNota: string;
   notaConversie: string;
-  dinBrutInNet: string;
-  dinNetInBrut: string;
+  /** Butoanele mici de direcție din dreptul titlului „Date salariale”. */
+  brutInNetScurt: string;
+  netInBrutScurt: string;
   salariuDeBazaBrut: string;
   salariuBrut: string;
   salariuNet: string;
@@ -191,8 +192,8 @@ const RO: TexteCalculator = {
   cursVechiNota: "Cursul afișat este mai vechi de o lună.",
   notaConversie:
     "Sumele în euro sunt o conversie orientativă. Salariul, contribuțiile și fluturașul real sunt în lei — legea scrie plafoanele în lei, iar calculul se face în lei.",
-  dinBrutInNet: "Din brut în net",
-  dinNetInBrut: "Din net în brut",
+  brutInNetScurt: "Brut → net",
+  netInBrutScurt: "Net → brut",
   salariuDeBazaBrut: "Salariu de bază (brut)",
   salariuBrut: "Salariu brut",
   salariuNet: "Salariu net",
@@ -329,8 +330,8 @@ const EN: TexteCalculator = {
   cursVechiNota: "The rate shown is more than a month old.",
   notaConversie:
     "Euro amounts are an indicative conversion. The salary, the contributions and the real payslip are in RON — the law sets every threshold in RON, and the calculation is done in RON.",
-  dinBrutInNet: "Gross to net",
-  dinNetInBrut: "Net to gross",
+  brutInNetScurt: "Gross → net",
+  netInBrutScurt: "Net → gross",
   salariuDeBazaBrut: "Base salary (gross)",
   salariuBrut: "Gross salary",
   salariuNet: "Net salary",
