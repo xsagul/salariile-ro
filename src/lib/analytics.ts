@@ -144,13 +144,15 @@ export type Instrument =
 /** Un calcul cerut de vizitator. Fără sumă: doar ce instrument și ce variantă. */
 export function masoaraCalcul(
   instrument: Instrument,
-  detalii: { varianta?: string; avansat?: boolean; moneda?: string } = {},
+  detalii: { varianta?: string; avansat?: boolean; moneda?: string; perioada?: string } = {},
 ): void {
   trimiteEveniment("calcul", {
     instrument,
     varianta: detalii.varianta,
     avansat: detalii.avansat === undefined ? undefined : detalii.avansat ? "da" : "nu",
     moneda: detalii.moneda,
+    // Regimul fiscal al lunii alese pe homepage: „curenta” sau „2025”, „2024-S1”…
+    perioada: detalii.perioada,
   });
 }
 

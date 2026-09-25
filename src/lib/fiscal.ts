@@ -49,19 +49,60 @@ export const TARIF_ORAR_MINIM_CONSTRUCTII = 27.714;
 // nu depășește acest plafon. În S1 era 4.300; din 1 iulie, 4.600.
 export const PLAFON_FACILITATE = 4600;
 
-/** Regimurile salariale care au fost efectiv aplicabile în 2026.
+/** Regimurile salariale aplicabile din 2024 încoace, câte unul pentru fiecare
+ * interval în care s-a schimbat ceva în calculul brut → net.
  *
  * API-ul public existent (`calculeaza`, `calculStandard`) rămâne pe regimul
- * curent. Identificatorul explicit este folosit numai acolo unde perioada
- * trebuie păstrată, de exemplu pagina istorică pentru 4.050 lei brut.
+ * curent. Identificatorul explicit este folosit acolo unde perioada trebuie
+ * păstrată: pagina istorică pentru 4.050 lei brut și alegerea lunii din calculator.
+ *
+ * Între 2024 și 2026 cotele (CAS 25%, CASS 10%, impozit 10%, CAM 2,25%) și formula
+ * deducerii personale (art. 77) nu s-au schimbat. S-au schimbat salariul minim și
+ * suma netaxabilă de la minim, cu plafonul ei. Verificat pe legislatie.just.ro, pe
+ * forma consolidată, la 25 septembrie 2026. Suma netaxabilă e o derogare și de la
+ * art. 220^4, deci reduce și baza CAM, în toate perioadele de mai jos.
+ * `plafonCuTichete`: până în iunie 2024, tichetele de masă intrau în venitul brut
+ * comparat cu plafonul; OUG 87/2024 art. V le-a scos din iulie 2024.
  */
 export const REGIMURI_FISCALE_SALARIU = {
+  "2024-S1": {
+    validFrom: "2024-01-01",
+    validTo: "2024-06-30",
+    // HG 900/2023; OUG 115/2023 art. LXXIII.
+    salariuMinim: 3300,
+    facilitate: 200,
+    plafonFacilitate: 4000,
+    plafonCuTichete: true,
+    reducereBazaMinimaContributii: 200,
+  },
+  "2024-S2": {
+    validFrom: "2024-07-01",
+    validTo: "2024-12-31",
+    // HG 598/2024; OUG 59/2024 art. II ridică suma la 300 lei, plafonul rămâne
+    // 4.000 lei, fără tichete (OUG 87/2024 art. V).
+    salariuMinim: 3700,
+    facilitate: 300,
+    plafonFacilitate: 4000,
+    plafonCuTichete: false,
+    reducereBazaMinimaContributii: 300,
+  },
+  "2025": {
+    validFrom: "2025-01-01",
+    validTo: "2025-12-31",
+    // HG 1506/2024; OUG 156/2024 art. LXVI, nemodificat în cursul anului.
+    salariuMinim: 4050,
+    facilitate: 300,
+    plafonFacilitate: 4300,
+    plafonCuTichete: false,
+    reducereBazaMinimaContributii: 300,
+  },
   "2026-S1": {
     validFrom: "2026-01-01",
     validTo: "2026-06-30",
     salariuMinim: 4050,
     facilitate: 300,
     plafonFacilitate: 4300,
+    plafonCuTichete: false,
     // OUG 89/2025 art. III alin. (5): pentru pragul minim CAS/CASS al
     // contractelor sub minim, reperul de 4.050 lei se reduce cu 300 lei.
     reducereBazaMinimaContributii: 300,
@@ -72,6 +113,7 @@ export const REGIMURI_FISCALE_SALARIU = {
     salariuMinim: SALARIU_MINIM,
     facilitate: DEDUCERE_MINIM,
     plafonFacilitate: PLAFON_FACILITATE,
+    plafonCuTichete: false,
     // Aceeași derogare, cu reducerea de 200 lei pentru iulie–decembrie.
     // Este o regulă distinctă de facilitatea acordată contractului full-time,
     // chiar dacă în 2026 cele două reduceri au aceeași valoare.
@@ -81,6 +123,15 @@ export const REGIMURI_FISCALE_SALARIU = {
 
 export type RegimFiscalSalariu = keyof typeof REGIMURI_FISCALE_SALARIU;
 export const REGIM_FISCAL_CURENT: RegimFiscalSalariu = "2026-S2";
+
+/** Regimul aplicabil veniturilor unei luni (luna 1–12), sau null în afara perioadelor cunoscute. */
+export function regimPentruLuna(an: number, luna: number): RegimFiscalSalariu | null {
+  const zi = `${an}-${String(luna).padStart(2, "0")}-01`;
+  for (const [cheie, r] of Object.entries(REGIMURI_FISCALE_SALARIU)) {
+    if (r.validFrom <= zi && zi <= r.validTo) return cheie as RegimFiscalSalariu;
+  }
+  return null;
+}
 
 // ─── Tipuri ──────────────────────────────────────────────────────────────────
 
@@ -118,7 +169,7 @@ export interface Rezultat {
   cam: number; //               D112: C4_ct · creanța 480 (CAM angajator 2,25%)
   costTotal: number; //         brut + CAM + tichete (cost total angajator)
   brutNet: number; //           % din brut care ajunge net (afișaj)
-  facilitate: number; //        suma netaxabilă OUG 89/2025 efectiv aplicată (0–DEDUCERE_MINIM)
+  facilitate: number; //        suma netaxabilă de la salariul minim efectiv aplicată (0–regim.facilitate)
 }
 
 export interface RezultatPartTime extends Rezultat {
@@ -185,8 +236,10 @@ export function calculeazaCuRegim(
   const fractieLuna = Number.isFinite(fractieLunaRaw)
     ? Math.min(1, Math.max(0, fractieLunaRaw))
     : 1;
+  // Până în iunie 2024, tichetele intrau în venitul comparat cu plafonul.
+  const venitPentruPlafon = regim.plafonCuTichete ? brut + tichete : brut;
   const facilitate =
-    (functieDeBAza && normaIntreaga && salariuDeBaza === regim.salariuMinim && brut <= regim.plafonFacilitate)
+    (functieDeBAza && normaIntreaga && salariuDeBaza === regim.salariuMinim && venitPentruPlafon <= regim.plafonFacilitate)
       ? Math.round(regim.facilitate * fractieLuna)
       : 0;
   const bazaCasCassSalariu = Math.max(0, brut - facilitate);

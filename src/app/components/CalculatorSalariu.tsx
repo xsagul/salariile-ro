@@ -9,12 +9,15 @@ import {
   calculeazaCuRegim,
   calculeazaBrutDinNetCuRegim,
   REGIM_FISCAL_CURENT,
+  REGIMURI_FISCALE_SALARIU,
   SALARIU_MINIM,
+  regimPentruLuna,
   type InputState,
   type RegimFiscalSalariu,
   type Rezultat,
 } from "@/lib/fiscal";
 import { zileLucratoareLuna } from "@/lib/sarbatori";
+import { oraServer, ziRo } from "@/lib/azi-ro";
 import { compuneFluturas } from "@/lib/fluturas";
 import FeedbackContextual from "@/app/components/FeedbackContextual";
 import { TEXTE, type Limba, type TexteCalculator } from "@/lib/calculator-texte";
@@ -89,7 +92,60 @@ function buildResult(
     brutEfectiv,
     functieDeBAza: snapshotInput.functieDeBAza,
     scutitImpozit: snapshotInput.scutitImpozit,
+    // Datele din care a ieșit rezultatul: când luna reală sosește de la server după
+    // un calcul deschis din link, rezultatul se refece pe regimul ei.
+    snapshotInput,
+    snapshotMod,
   };
+}
+
+// ─── Luna salariului ────────────────────────────────────────────────────────
+// Cerută de proprietar pe 25 septembrie 2026, ca la impozitsalariu.ro și
+// calculator-salarii.ro: anii care încă se caută (2024–2026), cu regulile fiscale
+// ale fiecărei luni (src/lib/fiscal.ts). Lunile se aleg din primul regim cunoscut
+// până la ultimul; valoarea e „AAAA-LL”.
+const REGIMURI = Object.values(REGIMURI_FISCALE_SALARIU);
+const PRIMA_LUNA = REGIMURI.map((r) => r.validFrom.slice(0, 7)).sort()[0];
+const ULTIMA_LUNA = REGIMURI.map((r) => r.validTo.slice(0, 7)).sort().at(-1)!;
+const LUNI_CALCULATOR: string[] = [];
+for (let [an, luna] = PRIMA_LUNA.split("-").map(Number); `${an}-${String(luna).padStart(2, "0")}` <= ULTIMA_LUNA; luna === 12 ? (an++, luna = 1) : luna++) {
+  LUNI_CALCULATOR.push(`${an}-${String(luna).padStart(2, "0")}`);
+}
+const ANI_CALCULATOR = [...new Set(LUNI_CALCULATOR.map((l) => l.slice(0, 4)))].reverse();
+// Luna din România a unui moment, adusă în intervalul cunoscut: după ultima lună cu
+// reguli publicate, calculatorul rămâne pe ultima, ca înainte de alegerea lunii.
+function lunaCalculator(d: Date) {
+  const l = new Date(ziRo(d)).toISOString().slice(0, 7);
+  return l < PRIMA_LUNA ? PRIMA_LUNA : l > ULTIMA_LUNA ? ULTIMA_LUNA : l;
+}
+// Lunile unui an, grupate pe regimul fiscal: „Ianuarie–iunie · minim 4.050 lei”.
+// Ca la calculator-salarii.ro, care colorează lunile cu aceleași reguli; aici grupul
+// are titlu, nu culoare: interfața e monocromă (BRAND.md), iar selectorul nativ de
+// pe telefon ignoră culoarea opțiunilor, dar arată titlurile grupurilor.
+function grupuriRegim(an: string, t: TexteCalculator) {
+  const grupuri: { regim: RegimFiscalSalariu; luni: string[] }[] = [];
+  for (const l of LUNI_CALCULATOR.filter((x) => x.startsWith(an))) {
+    const regim = regimLunii(l);
+    const ultim = grupuri[grupuri.length - 1];
+    if (ultim && ultim.regim === regim) ultim.luni.push(l);
+    else grupuri.push({ regim, luni: [l] });
+  }
+  return grupuri.map((g) => {
+    const a = Number(g.luni[0].slice(5, 7)) - 1;
+    const b = Number(g.luni[g.luni.length - 1].slice(5, 7)) - 1;
+    const luni = a === 0 && b === 11 ? t.totAnul : `${t.luni[a][0].toUpperCase()}${t.luni[a].slice(1)}–${t.luni[b]}`;
+    const minim = new Intl.NumberFormat(t.locale).format(REGIMURI_FISCALE_SALARIU[g.regim].salariuMinim);
+    return { ...g, titlu: `${luni} · ${t.minimBrut} ${minim} ${t.moneda}` };
+  });
+}
+
+const regimLunii = (l: string) => regimPentruLuna(Number(l.slice(0, 4)), Number(l.slice(5, 7))) ?? REGIM_FISCAL_CURENT;
+const numeLuna = (l: string, luni: readonly string[]) => `${luni[Number(l.slice(5, 7)) - 1]} ${l.slice(0, 4)}`;
+// „ianuarie–iunie 2026”, „2025”: perioada unui regim, pentru nota de sub rezultat.
+function numeRegim(regim: RegimFiscalSalariu, luni: readonly string[]) {
+  const { validFrom: a, validTo: b } = REGIMURI_FISCALE_SALARIU[regim];
+  if (a.endsWith("-01-01") && b.endsWith("-12-31") && a.slice(0, 4) === b.slice(0, 4)) return a.slice(0, 4);
+  return `${luni[Number(a.slice(5, 7)) - 1]}–${luni[Number(b.slice(5, 7)) - 1]} ${b.slice(0, 4)}`;
 }
 
 // Cheie de snapshot a inputului + mod. Folosită pentru a detecta dacă datele
@@ -448,6 +504,8 @@ export default function CalculatorSalariu({
   limba = "ro",
   monedaInitiala = "RON",
   cuMoneda = false,
+  cuPerioada = false,
+  dataBuild,
 }: {
   brutInitial?: string;
   modInitial?: "brut" | "net";
@@ -482,6 +540,13 @@ export default function CalculatorSalariu({
    * trebuie atins.
    */
   cuMoneda?: boolean;
+  /**
+   * Arată alegerea lunii salariului (2024 → sfârșitul anului curent), pornită pe
+   * luna de azi. Doar pe homepage; paginile cu perioadă fixă folosesc `regimFiscal`.
+   */
+  cuPerioada?: boolean;
+  /** Momentul build-ului, pentru luna din HTML-ul static; în browser vine luna reală. */
+  dataBuild?: string;
 }) {
   const t = TEXTE[limba];
   const pathname = usePathname();
@@ -505,6 +570,11 @@ export default function CalculatorSalariu({
   const wrap = wide ? "max-w-7xl" : "max-w-6xl";
   const [mod, setMod] = useState<"brut" | "net">(modInitial);
   const [avansat, setAvansat] = useState(false);
+  // Luna salariului: în HTML-ul static, luna build-ului; în browser, luna de azi de
+  // la server, cât timp omul n-a ales alta.
+  const [perioada, setPerioada] = useState(() => lunaCalculator(dataBuild ? new Date(dataBuild) : new Date()));
+  const perioadaAleasa = useRef(false);
+  const regimActiv: RegimFiscalSalariu = cuPerioada ? regimLunii(perioada) : regimFiscal;
   // Avertisment scurt când se apasă Calculează fără un salariu valid (Nielsen h1/h9).
   const [emptyWarn, setEmptyWarn] = useState(false);
   const [pdfStatus, setPdfStatus] = useState<"idle" | "generating" | "success" | "error">("idle");
@@ -568,6 +638,27 @@ export default function CalculatorSalariu({
     brutInitial && parseFloat(brutInitial) > 0 ? buildResult(pregatesteInput(initialInput), modInitial, regimFiscal) : null
   );
 
+  // Regimul fiscal cu care s-a calculat rezultatul afișat.
+  const [rezRegim, setRezRegim] = useState<RegimFiscalSalariu>(regimActiv);
+
+  // Luna reală, de la server. Un rezultat deja afișat (link `?brut=`) se refece pe
+  // regimul ei; alegerea omului nu se suprascrie.
+  useEffect(() => {
+    if (!cuPerioada) return;
+    let viu = true;
+    oraServer(dataBuild ? Date.parse(dataBuild) : Date.now()).then((d) => {
+      if (!viu || !d || perioadaAleasa.current) return;
+      const luna = lunaCalculator(d);
+      const regim = regimLunii(luna);
+      setPerioada(luna);
+      setRezAfisat((prev) => (prev ? buildResult(prev.snapshotInput, prev.snapshotMod, regim) : prev));
+      setRezRegim(regim);
+    });
+    return () => {
+      viu = false;
+    };
+  }, [cuPerioada, dataBuild]);
+
   // Defalcarea brutului compus la momentul ultimului calcul (doar mod fluturaș).
   const [fluturasSnap, setFluturasSnap] = useState<{ baza: number; bazaRealizata: number; plataSupl: number; fixe: number; oreSupl: number; sporProc: number; oreNorma: number; oreLucrate: number; normaContract: "intreaga" | "partiala"; fractieLuna: number } | null>(
     fluturas && brutInitial && parseFloat(brutInitial) > 0
@@ -598,16 +689,17 @@ export default function CalculatorSalariu({
     setEmptyWarn(false);
     if (fluturas) {
       const c = compuneFluturas(inputInLei(input), { sporOre, sporuri, normaOre, oreLucrate }, oreNormaCurenta);
-      setRezAfisat(buildResult(c.input, mod, regimFiscal));
+      setRezAfisat(buildResult(c.input, mod, regimActiv));
       setRezKey(inputKey(c.input, mod));
       setFluturasSnap({ baza: c.baza, bazaRealizata: c.bazaRealizata, plataSupl: c.plataSupl, fixe: c.fixe, oreSupl: c.oreSupl, sporProc: parseFloat(sporOre) || 0, oreNorma: c.oreNorma, oreLucrate: c.oreLucrate, normaContract: c.normaContract, fractieLuna: c.fractieLuna });
     } else {
       // `pregatesteInput`, nu `input`: altfel cheia rezultatului s-ar calcula pe
       // suma în euro, iar verificarea de prospețime pe cea în lei — și rezultatul
       // ar apărea învechit imediat după ce a fost calculat.
-      setRezAfisat(buildResult(pregatesteInput(input), mod, regimFiscal));
+      setRezAfisat(buildResult(pregatesteInput(input), mod, regimActiv));
       setRezKey(inputKey(pregatesteInput(input), mod));
     }
+    setRezRegim(regimActiv);
     if (typeof window === "undefined") return;
 
     // Fără sumă: doar ce fel de calcul s-a cerut. În iframe nu există GA4.
@@ -616,6 +708,7 @@ export default function CalculatorSalariu({
         varianta: fluturas ? undefined : mod === "brut" ? "brut_in_net" : "net_in_brut",
         avansat,
         moneda,
+        perioada: cuPerioada ? (regimActiv === REGIM_FISCAL_CURENT ? "curenta" : regimActiv) : undefined,
       });
     }
 
@@ -640,7 +733,7 @@ export default function CalculatorSalariu({
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
     const targetId = isMobile ? "rezultat-calcul" : "calc-layout";
     document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth", block: "start" });
-  }, [input, mod, regimFiscal, fluturas, sporOre, sporuri, normaOre, oreLucrate, oreNormaCurenta, embedded, brutInitial, avansat, moneda]);
+  }, [input, mod, regimActiv, cuPerioada, fluturas, sporOre, sporuri, normaOre, oreLucrate, oreNormaCurenta, embedded, brutInitial, avansat, moneda]);
 
   // Deschiderea unui link partajat: „?brut=5000" trebuie sa arate calculul, nu
   // un formular gol.
@@ -693,8 +786,9 @@ export default function CalculatorSalariu({
     // eslint-disable-next-line react-hooks/set-state-in-effect -- citire unica din URL dupa hidratare; vezi comentariul de mai sus
     setMod(modDinLink);
     setInput(inputNou);
-    setRezAfisat(buildResult(pregatesteInput(inputNou), modDinLink, regimFiscal));
+    setRezAfisat(buildResult(pregatesteInput(inputNou), modDinLink, regimActiv));
     setRezKey(inputKey(pregatesteInput(inputNou), modDinLink));
+    setRezRegim(regimActiv);
 
     // Dupa un submit nativ, URL-ul contine numele campului din formular. Il
     // rescriem in forma partajabila, ca sa nu circule linkuri cu `salariu-input`.
@@ -702,7 +796,7 @@ export default function CalculatorSalariu({
       window.history.replaceState(null, "", `?${new URLSearchParams({ brut: String(valoare) })}`);
     }
     // Fara scroll: cine deschide linkul vede pagina de la inceput, ca oricare alta.
-  }, [embedded, brutInitial, regimFiscal]);
+  }, [embedded, brutInitial, regimActiv]);
 
   const handleCopiazaLink = async () => {
     try {
@@ -718,7 +812,8 @@ export default function CalculatorSalariu({
   };
 
   // Rezultatul afișat e „învechit" dacă datele curente diferă de cele de la ultimul calcul.
-  const stale = rezAfisat !== null && rezKey !== inputKey(pregatesteInput(input), mod);
+  // Și alegerea altei luni, dacă are alte reguli fiscale.
+  const stale = rezAfisat !== null && (rezKey !== inputKey(pregatesteInput(input), mod) || rezRegim !== regimActiv);
   // Reținerile se aplică live pe net (scădere simplă, fără recalcul fiscal).
   const retineriNum = fluturas ? Math.max(0, parseInt(retineri) || 0) : 0;
   const handleDescarcaPdf = async () => {
@@ -810,7 +905,7 @@ export default function CalculatorSalariu({
                   if (mod === "brut") return;
                   if (mod === "net") {
                     const netVal = parseFloat(input.brut);
-                    if (netVal > 0) set("brut", String(calculeazaBrutDinNetCuRegim(netVal, input, regimFiscal)));
+                    if (netVal > 0) set("brut", String(calculeazaBrutDinNetCuRegim(netVal, input, regimActiv)));
                   }
                   setMod("brut");
                 }}
@@ -825,7 +920,7 @@ export default function CalculatorSalariu({
                   if (mod === "brut") {
                     const brutVal = parseFloat(input.brut);
                     if (brutVal > 0) {
-                      const rezTemp = calculeazaCuRegim(input, regimFiscal);
+                      const rezTemp = calculeazaCuRegim(input, regimActiv);
                       if (rezTemp) set("brut", String(rezTemp.netBani));
                     }
                   }
@@ -868,6 +963,61 @@ export default function CalculatorSalariu({
           )}
 
           <InputNumber id="salariu-input" unit={etMonedaLuna} label={fluturas ? t.salariuDeBazaBrut : mod === "brut" ? t.salariuBrut : t.salariuNet} value={input.brut} onChange={(v) => { set("brut", v); if (emptyWarn) setEmptyWarn(false); }} placeholder={mod === "brut" ? `${t.exemplu} ${exemplu(Number(EX_PLACEHOLDER_BRUT))}` : `${t.exemplu} ${exemplu(Number(EX_PLACEHOLDER_NET))}`} onEnter={handleCalculeaza} error={emptyWarn ? t.eroareSalariuGol : undefined} tall />
+
+          {/* Anul și luna salariului, ca la impozitsalariu.ro: eticheta în stânga, anul și
+              luna în dreapta, pe un rând (cerut de proprietar, 25 septembrie 2026). Pornește
+              pe luna de azi; fiecare lună se calculează cu regulile ei (src/lib/fiscal.ts). */}
+          {cuPerioada && !fluturas && (
+            <div className="mb-5 flex items-center gap-3">
+              <label htmlFor="anul-salariului" className="shrink-0 text-xs font-medium text-stone-600">{t.anul}</label>
+              <div className="ml-auto flex min-w-0 flex-1 gap-2 sm:flex-none">
+                <div className="relative w-24 shrink-0">
+                  <select
+                    id="anul-salariului"
+                    name="anul-salariului"
+                    value={perioada.slice(0, 4)}
+                    onChange={(e) => {
+                      perioadaAleasa.current = true;
+                      const an = e.target.value;
+                      const luniAn = LUNI_CALCULATOR.filter((l) => l.startsWith(an));
+                      const aceeasiLuna = `${an}-${perioada.slice(5, 7)}`;
+                      setPerioada(luniAn.includes(aceeasiLuna) ? aceeasiLuna : luniAn[luniAn.length - 1]);
+                    }}
+                    className={`${controlBox} min-h-11 cursor-pointer appearance-none pr-8 tabular-nums`}
+                  >
+                    {ANI_CALCULATOR.map((an) => (<option key={an} value={an}>{an}</option>))}
+                  </select>
+                  <svg className="pointer-events-none absolute right-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-stone-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" aria-hidden="true">
+                    <path d="M5 7.5l5 5 5-5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+                <div className="relative min-w-0 flex-1 sm:w-40 sm:flex-none">
+                  <label htmlFor="luna-salariului" className="sr-only">{t.lunaSalariului}</label>
+                  <select
+                    id="luna-salariului"
+                    name="luna-salariului"
+                    value={perioada}
+                    onChange={(e) => {
+                      perioadaAleasa.current = true;
+                      setPerioada(e.target.value);
+                    }}
+                    className={`${controlBox} min-h-11 cursor-pointer appearance-none pr-8`}
+                  >
+                    {grupuriRegim(perioada.slice(0, 4), t).map((g) => (
+                      <optgroup key={g.regim} label={g.titlu}>
+                        {g.luni.map((l) => (
+                          <option key={l} value={l}>{t.luni[Number(l.slice(5, 7)) - 1]}</option>
+                        ))}
+                      </optgroup>
+                    ))}
+                  </select>
+                  <svg className="pointer-events-none absolute right-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-stone-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" aria-hidden="true">
+                    <path d="M5 7.5l5 5 5-5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          )}
 
           <button
             type="button"
@@ -1321,7 +1471,7 @@ export default function CalculatorSalariu({
             </>
           )}
 
-          {rezAfisat && regimFiscal === REGIM_FISCAL_CURENT && (
+          {rezAfisat && rezRegim === REGIM_FISCAL_CURENT && (
             <button
               type="button"
               disabled={stale || pdfStatus === "generating"}
@@ -1345,7 +1495,7 @@ export default function CalculatorSalariu({
             </button>
           )}
 
-          {rezAfisat && regimFiscal === REGIM_FISCAL_CURENT && (
+          {rezAfisat && rezRegim === REGIM_FISCAL_CURENT && (
             <>
               {pdfStatus === "success" && <p className="mt-3 text-xs text-stone-600" role="status">{t.pdfDescarcat}</p>}
               {pdfStatus === "error" && <p className="mt-3 text-xs font-medium text-stone-900" role="alert">{t.pdfEroare}</p>}
@@ -1369,8 +1519,10 @@ export default function CalculatorSalariu({
             </p>
           )}
 
-          {rezAfisat && regimFiscal !== REGIM_FISCAL_CURENT && (
-            <p className="mt-5 text-xs text-stone-600">{t.notaIstoric}</p>
+          {rezAfisat && rezRegim !== REGIM_FISCAL_CURENT && (
+            <p className="mt-5 text-xs text-stone-600">
+              {t.notaIstoric(cuPerioada ? numeLuna(perioada, t.luni) : numeRegim(rezRegim, t.luni))}
+            </p>
           )}
 
           {!rezAfisat && (

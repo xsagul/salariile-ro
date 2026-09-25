@@ -3680,3 +3680,39 @@ avea două carduri. Rămân variantele cu 4 zile de concediu („oamenii le iau�
 doar pentru hașura din calendar. „Punte” scos din textul vizibil: secțiunea e „Minivacanțe
 <an>”, cardul din dreapta „Concediu propus”, descrierile din metadata spun „zile de concediu
 propuse”, ca la zilelibere.com („Zi propusă pentru concediu”).
+
+## 25 septembrie 2026 — Calculatorul: anul și luna salariului
+
+Cerut de proprietar, după impozitsalariu.ro și calculator-salarii.ro: pe homepage, rândul
+„Anul” cu anul (2024–2026) și luna, pornit pe luna de azi (de la server, ca la Zile libere).
+Rândul coboară butonul „Calculează” cu 64 px (512 → 576 px pe 375×812; rămâne în primul
+ecran). Prima variantă, cu luna și anul într-un singur selector lângă „Calculator avansat”,
+nu cobora nimic, dar proprietarul a vrut forma lor. Lunile sunt grupate pe regimul fiscal
+(„Ianuarie–iunie · minim 4.050 lei”), nu colorate ca la ei: interfața e monocromă
+(BRAND.md), iar selectorul nativ de pe telefon ignoră culoarea opțiunilor.
+
+Regulile, verificate pe legislatie.just.ro (forma consolidată), cinci perioade:
+- ian.–iun. 2024: minim 3.300 (HG 900/2023), 200 lei netaxabili, plafon 4.000 lei CU
+  tichetele (OUG 115/2023 art. LXXIII);
+- iul.–dec. 2024: minim 3.700 (HG 598/2024), 300 lei (OUG 59/2024 art. II), plafon tot
+  4.000, dar fără tichete (OUG 87/2024 art. V);
+- 2025: minim 4.050 (HG 1506/2024), **300 lei**, plafon 4.300 fără tichete și vouchere
+  (OUG 156/2024 art. LXVI, nemodificat în cursul anului);
+- 2026 S1 / S2: ca înainte (OUG 89/2025 art. III, reverificat; restul modificărilor din
+  OUG 89/2025 la Codul fiscal nu ating salariile).
+Suma netaxabilă reduce și baza CAM în toate (derogare de la art. 220^4). Cotele și
+formula deducerii nu s-au schimbat în 2024–2026.
+
+Două lucruri pe care memoria le greșea și pe care testul le prinde: în 2025 suma a fost
+300 de lei, nu 200; plafonul din a doua jumătate a lui 2024 a rămas 4.000, iar un site
+specializat cita greșit art. VI din OUG 87/2024 (e art. V). Test: netul la minim dă cifrele
+publicate atunci — 2.079 (ian. 2024), 2.363 (iul. 2024), 2.574 (2025) — plus plafonul cu
+tichete din S1 2024 și corespondența lună → regim pentru 2024–2026.
+
+Comportament: schimbarea lunii după un calcul marchează rezultatul ca neactualizat; un link
+`?brut=` se recalculează pe luna reală când sosește data de la server. La lunile trecute,
+nota „Calcul pentru martie 2025, cu regulile fiscale de atunci”, fără PDF. GA4: evenimentul
+`calcul` poartă `perioada` („curenta”, „2025”, „2024-S1”…); trebuie înregistrat ca
+dimensiune personalizată în GA4 ca să apară în rapoarte. Facilitățile sectoriale din 2024
+(IT, construcții, agricultură) nu sunt modelate: calculul arată regimul general. După
+decembrie 2026, calculatorul rămâne pe ultima lună cunoscută până se adaugă regulile 2027.

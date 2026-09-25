@@ -145,7 +145,17 @@ export type TexteCalculator = {
 
   gol: string;
   golFluturas: string;
-  notaIstoric: string;
+  /** Nota de sub un calcul făcut cu regulile altei perioade decât cea curentă. */
+  notaIstoric: (perioada: string) => string;
+  /** Eticheta selectorului de lună (ascunsă vizual, citită de cititoarele de ecran). */
+  lunaSalariului: string;
+  /** Eticheta rândului cu anul și luna salariului. */
+  anul: string;
+  /** Titlul grupului de luni cu aceleași reguli: „Tot anul”, „minim 4.050 lei”. */
+  totAnul: string;
+  minimBrut: string;
+  /** Lunile, cu literă mică, pentru „martie 2025” și „ianuarie–iunie 2026”. */
+  luni: readonly string[];
 
   // ─── PDF ──────────────────────────────────────────────────────────────
   pdfTitlu: string;
@@ -278,8 +288,13 @@ const RO: TexteCalculator = {
 
   gol: "Rezultatul apare aici. Calculul folosește regulile fiscale în vigoare.",
   golFluturas: "Fluturașul apare aici după ce scrii salariul de bază.",
-  notaIstoric:
-    "Calcul istoric pentru ianuarie–iunie 2026. Fluturașul PDF este disponibil numai pentru grila fiscală curentă.",
+  notaIstoric: (perioada) =>
+    `Calcul pentru ${perioada}, cu regulile fiscale de atunci. Fluturașul PDF este disponibil numai pentru grila fiscală curentă.`,
+  lunaSalariului: "Luna salariului",
+  anul: "Anul",
+  totAnul: "Tot anul",
+  minimBrut: "minim",
+  luni: ["ianuarie", "februarie", "martie", "aprilie", "mai", "iunie", "iulie", "august", "septembrie", "octombrie", "noiembrie", "decembrie"],
 
   pdfTitlu: "FLUTURAS DE SALARIU",
   pdfContractIntreaga: "Contract: norma intreaga",
@@ -412,8 +427,13 @@ const EN: TexteCalculator = {
 
   gol: "The result appears here. The calculation uses the tax rules currently in force.",
   golFluturas: "The payslip appears here once you enter the base salary.",
-  notaIstoric:
-    "Historical calculation for January–June 2026. The PDF payslip is available only for the current tax rules.",
+  notaIstoric: (perioada) =>
+    `Calculation for ${perioada}, with the tax rules in force then. The PDF payslip is available only for the current tax rules.`,
+  lunaSalariului: "Salary month",
+  anul: "Year",
+  totAnul: "Whole year",
+  minimBrut: "minimum wage",
+  luni: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
 
   pdfTitlu: "PAYSLIP",
   pdfContractIntreaga: "Contract: full time",

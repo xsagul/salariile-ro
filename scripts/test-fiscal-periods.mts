@@ -83,4 +83,38 @@ assert.deepEqual(
   "4.582 lei trebuie calculat fără facilitate generală, cu deducerea fiecărui semestru",
 );
 
-console.log("OK: regresii fiscale S1/S2 2026");
+// ── 2024–2025: perioadele alese din calculator ──────────────────────────────
+// Netul la salariul minim, cifrele publicate la vremea lor: 2.079 (ian. 2024),
+// 2.363 (iul. 2024), 2.574 (2025). Cu 200 lei în loc de 300 în 2025, netul ar
+// ieși 2.544 — testul prinde exact greșeala pe care o făcea memoria.
+const minim = (brut: number, regim: string) => {
+  const r = calculStandardCuRegim(brut, regim);
+  assert.ok(r, `Calculul pentru ${brut} lei în ${regim} trebuie să producă rezultat`);
+  return { net: r.net, facilitate: r.facilitate, cam: r.cam, deducere: r.deducerePersonala };
+};
+assert.deepEqual(minim(3300, "2024-S1"), { net: 2079, facilitate: 200, cam: 70, deducere: 660 }, "Minimul din ianuarie–iunie 2024");
+assert.deepEqual(minim(3700, "2024-S2"), { net: 2363, facilitate: 300, cam: 77, deducere: 740 }, "Minimul din iulie–decembrie 2024");
+assert.deepEqual(minim(4050, "2025"), { net: 2574, facilitate: 300, cam: 84, deducere: 810 }, "Minimul din 2025");
+
+// Plafonul: 4.000 lei în 2024, 4.300 în 2025. Peste el, fără facilitate.
+const { calculeazaCuRegim, regimPentruLuna } = await import(fiscalModulePath);
+const intrare = (brut: number, tichete = 0) => ({
+  brut: String(brut), tichete: tichete ? String(tichete) : "", functieDeBAza: true,
+  persoanePretretinere: 0, varstaSub26: false, copiiScolarizati: 0, scutitImpozit: false,
+  salariuDeBaza: String(brut === 3300 || brut === 3700 ? brut : 4050),
+});
+// În ianuarie–iunie 2024 tichetele intrau în plafon: 3.300 + 800 lei tichete > 4.000.
+assert.equal(calculeazaCuRegim(intrare(3300, 800), "2024-S1").facilitate, 0, "Ian.–iun. 2024: tichetele intră în plafonul de 4.000 lei");
+assert.equal(calculeazaCuRegim(intrare(3300, 600), "2024-S1").facilitate, 200, "Ian.–iun. 2024: 3.900 lei cu tichete rămân sub plafon");
+// Din iulie 2024 nu mai intră (OUG 87/2024 art. V).
+assert.equal(calculeazaCuRegim(intrare(3700, 800), "2024-S2").facilitate, 300, "Din iulie 2024 tichetele nu mai intră în plafon");
+
+// Luna aleasă în calculator → perioada fiscală.
+assert.deepEqual(
+  [[2024, 1], [2024, 6], [2024, 7], [2024, 12], [2025, 1], [2025, 12], [2026, 1], [2026, 6], [2026, 7], [2026, 12], [2023, 12], [2027, 1]]
+    .map(([an, luna]) => regimPentruLuna(an, luna)),
+  ["2024-S1", "2024-S1", "2024-S2", "2024-S2", "2025", "2025", "2026-S1", "2026-S1", "2026-S2", "2026-S2", null, null],
+  "Fiecare lună 2024–2026 are exact o perioadă fiscală; în afara lor, niciuna",
+);
+
+console.log("OK: regresii fiscale 2024, 2025 și S1/S2 2026");

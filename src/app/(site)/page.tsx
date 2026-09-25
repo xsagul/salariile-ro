@@ -153,7 +153,7 @@ export default function Page() {
       />
 
       <div className="bg-canvas">
-        <CalculatorSalariu />
+        <CalculatorSalariu cuPerioada dataBuild={new Date().toISOString()} />
 
         {/* ── Zonă de articol: două rânduri, fiecare cu conținut (stânga,
             col-span-3, aliniat la grila calculatorului) + companion (dreapta,
