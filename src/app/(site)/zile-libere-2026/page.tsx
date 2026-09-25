@@ -10,7 +10,7 @@ import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 import { SARBATORI_LEGALE_2026 as HOLIDAYS } from "@/lib/sarbatori";
 import TabelArticol from "@/app/components/TabelArticol";
 import UrmatoareaZiLibera from "@/app/components/UrmatoareaZiLibera";
-import { TITLU_CARD, TITLU_PAGINA, TITLU_SECTIUNE, SEPARATOR_SECTIUNE, SPATIU_JOS, SPATIU_SUS, SUB_TITLU, LISTA_FAQ, GrilaPagina } from "@/app/components/ui";
+import { TITLU_CARD, TITLU_PAGINA, TITLU_SECTIUNE, SEPARATOR_SECTIUNE, SPATIU_JOS, SPATIU_SUS, SUB_TITLU, LISTA_FAQ } from "@/app/components/ui";
 
 // ─── Metadata SEO ────────────────────────────────────────────────────────────
 
@@ -173,10 +173,11 @@ export default function ZileLibere2026Page() {
               zileliberelegale.ro): răspunsul într-o frază, apoi tabelul, apoi calendarul.
               Tabelul urmează modelul Pluxee: zilele libere lucrătoare îngroșate, cele din
               weekend estompate, fiindcă pe ele nu primești o zi liberă. */}
-          {/* Dreapta: următoarea zi liberă, calculată în browser pe data vizitatorului
-              (decis de proprietar pe 26 septembrie 2026, ca pe ecranele mari să nu rămână
-              gol lângă tabel). Pe telefon cardul coboară sub tabel. */}
-          <GrilaPagina companion={<UrmatoareaZiLibera dataBuild={new Date().toISOString()} />} continut={<>
+          {/* Primul rând al grilei: tabelul pe 3 coloane, cardul „E zi liberă?” pe 2.
+              În HTML cardul vine după calendar (tabel → calendar → carduri, ordinea
+              cerută de proprietar pe 26 septembrie 2026); pe ecran stă lângă tabel. */}
+          <div className="md:grid md:grid-cols-5 md:gap-6">
+          <div className="md:col-span-3">
             <h1 className={TITLU_PAGINA}>Zile libere 2026</h1>
             {/* Fără autor și dată sus: e pagină-instrument, nu articol (proprietar, 24 sept. 2026). */}
             <p className={`${SUB_TITLU} text-base leading-normal tracking-[-0.01em] text-stone-700`}>
@@ -221,10 +222,10 @@ export default function ZileLibere2026Page() {
               Potrivit Codului Muncii, angajații care lucrează într-o zi de sărbătoare legală primesc o zi liberă în
               următoarele 30 de zile sau, dacă aceasta nu poate fi acordată, ziua lucrată plătită cel puțin dublu.
             </p>
-          </>} />
+          </div>
 
           {/* CALENDAR — 12 luni */}
-          <div className={`${SEPARATOR_SECTIUNE}`}>
+          <div className={`${SEPARATOR_SECTIUNE} md:col-span-5`}>
             <h2 className={TITLU_SECTIUNE}>Calendarul anului 2026</h2>
             {/* Legendă */}
             <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-xs text-stone-600">
@@ -273,6 +274,10 @@ export default function ZileLibere2026Page() {
                 </div>
               ))}
             </div>
+          </div>
+          <aside className="mt-8 md:col-span-2 md:col-start-4 md:row-start-1 md:mt-0 md:self-start">
+            <UrmatoareaZiLibera dataBuild={new Date().toISOString()} />
+          </aside>
           </div>
 
           {/* ZILE LUCRĂTOARE — trimitere spre pagina dedicată */}
