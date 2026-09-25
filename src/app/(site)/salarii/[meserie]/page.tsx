@@ -56,7 +56,7 @@ import corCatalogue from '@/data/cor-meserii.json';
 import { calculStandard } from '@/lib/fiscal';
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, MESERII_LAST_MODIFIED } from "@/lib/seo";
-import { TABEL_STANDARD } from "@/app/components/TabelArticol";
+import { TABEL_IN_CARD, TABEL_STANDARD } from "@/app/components/TabelArticol";
 
 interface Props {
   params: Promise<{ meserie: string }>;
@@ -285,7 +285,7 @@ export default async function MeseriePage({ params }: Props) {
           {grilaDidactica.length > 0 && <section className="mt-8 rounded-md border border-stone-200 bg-surface p-5">
             <h2 className={TITLU_CARD}>Grad didactic, studii și vechime în învățământ</h2>
             <p className="mt-3 text-sm text-stone-600">Net standard pe trepte didactice.</p>
-            <div className="mt-4 max-h-96 overflow-auto"><table className={`${TABEL_STANDARD} min-w-[32rem]`}>
+            <div className="mt-4 max-h-96 overflow-auto"><table className={`${TABEL_IN_CARD} min-w-[32rem]`}>
               <caption className="sr-only">Grila didactică: funcție, studii, vechime și net standard</caption>
               <thead><tr>{['Funcție și grad','Studii','Vechime în învățământ','Net lunar'].map(h=><th key={h} scope="col" className="border-b p-3 text-left">{h}</th>)}</tr></thead>
               <tbody>{grilaDidactica.map((r,i)=><tr key={i}><th scope="row" className="border-b border-stone-100 p-3 text-left font-normal">{r.functie}</th><td className="p-3">{r.studii}</td><td className="p-3">{r.vechime}</td><td className="whitespace-nowrap p-3 font-semibold">{lei(calculStandard(r.iun2024)!.net)} lei</td></tr>)}</tbody>

@@ -26,6 +26,12 @@ export const TABEL_STANDARD = [
   "[&_tbody_tr:last-child_td]:border-b-0 [&_tbody_tr:last-child_th]:border-b-0",
 ].join(" ");
 
+// Capul de tabel are două culori, după ce stă în spatele tabelului (decis de
+// proprietar pe 26 septembrie 2026): `antet` când tabelul stă direct pe fundalul
+// paginii, altfel s-ar confunda cu el; `canvas` când tabelul stă într-un card alb,
+// ca rezultatele calculatoarelor.
+export const TABEL_IN_CARD = TABEL_STANDARD.replace("[&_thead_th]:bg-antet", "[&_thead_th]:bg-canvas");
+
 export default function TabelArticol({
   children,
   /** Aliniază la dreapta celulele de date și le dă cifre tabulare. Pentru
