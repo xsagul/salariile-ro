@@ -28,6 +28,8 @@ Decizia care ar debloca pasul 1 e dacă se colectează salarii anonim (meserie +
 
 **Status: RIDICATĂ ȘI AMÂNATĂ de proprietar pe 24 august 2026.** Nu respinsă — amânată, cu motivul că nu e clar dacă strică poziționarea. Nu s-a construit nimic; site-ul continuă să nu colecteze absolut nimic de la vizitatori.
 
+**Reluată și amânată din nou pe 26 septembrie 2026**, cu motive noi ale proprietarului: Paylab și undelucram își obligă utilizatorii să-și dea salariul ca să vadă cifrele, deci un formular opțional nu-i ajunge la număr; calculatorul nu se atinge sub nicio formă; iar paginile de meserie aduc puțin trafic chiar și pe primul loc (SE Ranking și GSC: ~21 de clicuri la 28 de zile pe toate). Tot atunci au fost puse deoparte, din același motiv, recenziile pe companii, comunitatea și un model AI care citește anunțurile. Colectarea continuă de anunțuri (`scripts/colectare/anunturi.mjs`) rămâne, fiindcă nu cere nimic vizitatorilor.
+
 Tensiunea care a oprit-o, și care rămâne reală: `/despre` promite azi „nu există formulare, conturi de utilizator sau newsletter", iar politica de confidențialitate spune că nu colectăm date despre vizitatori individuali. Un formular de salarii, chiar anonim, schimbă contractul cu utilizatorul — și încrederea e exact activul care diferențiază site-ul de paylab și de presă.
 
 **Nu propune reluarea ei ca idee nouă.** Dacă se reia, se reia cu: bază legală GDPR, prag de k-anonimitate înainte de a publica orice cifră pe celulă (meserie × județ), text de politică actualizat și o cale de ștergere. Și cu decizia explicită a proprietarului, nu ca inițiativă de agent.
