@@ -4108,3 +4108,4 @@ ca la `/zile-libere-2026`. Build static și `test:rendered` trec (334 de rute).
   tabelului are acum fundalul și cardurile site-ului, fără fraza de sub titlu.
 - Tot pe 27 septembrie: imaginea calendarului are 1080 px lățime (aproximativ 1080×1300, aproape de formatul vertical 4:5 de telefon), în loc de 2400×2860.
 - Tot pe 27 septembrie: fraza de sus pe zile lucrătoare e scurtă, ca la zile libere: „În 2026 sunt **250 de zile lucrătoare**: **2.000 de ore** la program de 8 ore pe zi.” Partea „Restul de 115 zile…” a ieșit.
+- Tot pe 27 septembrie: descrierea paginilor de zile libere urmează modelul de la zile lucrătoare (varianta B aleasă de proprietar): „Zile libere <an> în România: sărbătorile legale pe date și zile ale săptămânii, calendarul pe luni și minivacanțele, cu zilele de concediu propuse.”

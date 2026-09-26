@@ -49,7 +49,8 @@ export function metadataZileLibere(an: AnZileLibere): Metadata {
   const descriere = `Calendar ${an} cu datele sărbătorilor legale și zilele de concediu propuse pentru minivacanțe.`;
   return {
     title: { absolute: `Zile libere ${an}: calendarul sărbătorilor legale` },
-    description: `Calendar zile libere ${an} în România: datele sărbătorilor legale, weekenduri prelungite și zilele de concediu propuse pentru minivacanțe.`,
+    // Construită ca descrierea de la zile lucrătoare (proprietar, 27 sept. 2026, varianta B).
+    description: `Zile libere ${an} în România: sărbătorile legale pe date și zile ale săptămânii, calendarul pe luni și minivacanțele, cu zilele de concediu propuse.`,
     alternates: { canonical: `https://salariile.ro${cale(an)}` },
     openGraph: ogPage({ title: titlu, description: descriere, path: cale(an) }),
     twitter: twPage({ title: titlu, description: descriere }),
