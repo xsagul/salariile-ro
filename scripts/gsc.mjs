@@ -387,7 +387,9 @@ function printCsv(rows, dimLabel) {
     const rowLimit = Number(opt.limit || 25);
 
     // `--si-pagina`: fiecare rând poartă și URL-ul care a apărut (query × pagină).
-    const body = { startDate, endDate, dimensions: flag(opt["si-pagina"]) ? [dimension, "page"] : [dimension], rowLimit };
+    // `--si=date` (sau `--si=page,date`): alte dimensiuni adăugate după cea principală.
+    const extra = [...(flag(opt["si-pagina"]) ? ["page"] : []), ...(opt.si ? String(opt.si).split(",") : [])];
+    const body = { startDate, endDate, dimensions: [dimension, ...extra], rowLimit };
 
     const filters = [];
     if (opt.country) filters.push({ dimension: "country", expression: String(opt.country) });

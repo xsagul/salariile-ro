@@ -4011,3 +4011,12 @@ deja. Rezultatul, cu volume și dificultăți: `research/seranking-2026-09-26-su
 Familiile neacoperite cu cea mai bună potrivire: concediu medical, maternitate / creștere
 copil, cerere de demisie, concediu de odihnă, pensie. Nu s-a construit încă nicio pagină;
 alegerea e la proprietar.
+
+## 26 septembrie 2026 — Ce se caută în weekend
+
+Cercetare cu Google Trends (date zilnice, 3 luni, RO) și Search Console (4 săptămâni) despre
+căderea din weekend: `research/cautari-weekend-2026-09-26.md`. Tot ce ține de salariu și taxe
+se caută în zilele lucrătoare (calculator salariu 0,26 din nivelul unei zile de lucru).
+Rezistă în weekend căutarea de joburi (locuri de muncă 0,76, de 11 ori volumul ancorei),
+paginile de meserie, zile libere 2027 și subiectele de timp liber. `gsc.mjs` primește
+`--si=date` pentru serii pe zile. Nimic construit; decizia e la proprietar.
