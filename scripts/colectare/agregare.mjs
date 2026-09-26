@@ -20,6 +20,7 @@ const { grilaPublica } = await import("../../src/lib/grile-publice.ts");
 export const PRAGURI = {
   platit: { institutii: 5, judete: 3, randuri: 50, vechimeLuniMax: 18 },
   platitJudet: { randuri: 30, institutii: 1 },
+  platitGradatie: { randuri: 30, institutii: 3 },
   declarat: { oferte: 30, angajatori: 10, laMinimMax: 0.25 }, // peste un sfert la minim, minimul declarat e formalitate, nu salariu
   // Anunțurile au pragurile lor în scripts/crawler/policy.mjs; aici doar citim statusul.
 };
@@ -76,7 +77,11 @@ for (const f of fs.readdirSync("colectare/art33/observatii").filter((f) => f.end
     if (o.invalid || !o.perioada || luniIntre(o.perioada, AZI) > PRAGURI.platit.vechimeLuniMax) continue;
     if (o.baza < pragBaza(o.meserie, o.perioada)) { subPrag[o.meserie] = (subPrag[o.meserie] ?? 0) + 1; continue; }
     const brutFix = o.baza + o.sporFix;
-    obs.push({ ...o, brutFix, netFix: net(brutFix, o.perioada), netBaza: net(o.baza, o.perioada),
+    // Gradația = vechimea în muncă (0: sub 3 ani … 5: peste 20). Din câmpul citit sau din text
+    // („Gradatia 4”); „BAZA” în locul gradației (Alba) înseamnă gradația 0.
+    const gt = /grada[tț]ia\s*(\d)/i.exec(o.text) ?? /\bgr\.?\s*([0-5])\b/i.exec(o.text);
+    const gradatie = o.gradatie ?? (gt ? Number(gt[1]) : /\bBAZA\b/.test(o.text) ? 0 : null);
+    obs.push({ ...o, gradatie, brutFix, netFix: net(brutFix, o.perioada), netBaza: net(o.baza, o.perioada),
       netCuVariabil: net(brutFix + o.variabil, o.perioada), debutant: /DEBUTANT/i.test(o.text) });
   }
 }
@@ -96,6 +101,13 @@ function platit(slug) {
     const rs = r.filter((o) => o.studii === s);
     if (rs.length >= 20) peStudii[s] = { randuri: rs.length, net: distributie(rs, (o) => o.netFix) };
   }
+  // Pe vechime: fiecare gradație cu cel puțin 30 de posturi din 3 instituții.
+  const peGradatie = {};
+  for (let g = 0; g <= 5; g++) {
+    const rg = r.filter((o) => o.gradatie === g);
+    const inst = new Set(rg.map((o) => o.sursa)).size;
+    if (rg.length >= PRAGURI.platitGradatie.randuri && inst >= PRAGURI.platitGradatie.institutii) peGradatie[g] = { randuri: rg.length, institutii: inst, net: distributie(rg, (o) => o.netFix) };
+  }
   const deb = r.filter((o) => o.debutant);
   const cuVar = r.filter((o) => o.variabil > 0);
   const trece = institutii.size >= PRAGURI.platit.institutii && judete.size >= PRAGURI.platit.judete && r.length >= PRAGURI.platit.randuri;
@@ -106,7 +118,7 @@ function platit(slug) {
     netFix: distributie(r, (o) => o.netFix), brutFix: distributie(r, (o) => o.brutFix), netBaza: distributie(r, (o) => o.netBaza),
     debutant: deb.length >= 10 ? { randuri: deb.length, net: distributie(deb, (o) => o.netFix) } : null,
     variabil: cuVar.length >= 20 ? { cota: Math.round((100 * cuVar.length) / r.length) / 100, netCuVariabil: distributie(cuVar, (o) => o.netCuVariabil) } : null,
-    peJudet, peStudii,
+    peJudet, peStudii, peGradatie,
   };
 }
 

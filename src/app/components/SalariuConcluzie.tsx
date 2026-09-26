@@ -17,6 +17,7 @@ type Concluzie = {
     randuri: number; institutii: number; judete: number; perioade: string[]; surse: string[];
     debutant: number | null; cuVariabil: { net: number; cota: number } | null;
     studii: Record<string, number>;
+    peVechime: { gradatie: number; randuri: number; net: number }[];
     peJudet: { judet: string; randuri: number; institutii: number; net: number }[];
   };
   oferit: null | { net: number; anunturi: number };
@@ -31,6 +32,8 @@ const MESERII = data.meserii as unknown as Record<string, Concluzie>;
 export const concluzieMeserie = (slug: string): Concluzie | null => (Object.hasOwn(MESERII, slug) ? MESERII[slug] : null);
 
 const lei = (n: number) => n.toLocaleString("ro-RO");
+// Gradațiile de vechime din Legea-cadru 153/2017, art. 10.
+const VECHIME = ["Sub 3 ani", "3–5 ani", "5–10 ani", "10–15 ani", "15–20 ani", "Peste 20 de ani"];
 const LUNI = ["ianuarie", "februarie", "martie", "aprilie", "mai", "iunie", "iulie", "august", "septembrie", "octombrie", "noiembrie", "decembrie"];
 const luna = (p: string) => `${LUNI[Number(p.slice(5, 7)) - 1]} ${p.slice(0, 4)}`;
 function perioada(p: string[]) {
@@ -116,6 +119,32 @@ export default function SalariuConcluzie({ slug, de }: { slug: string; de: strin
               La ANOFM, angajatorii declară adesea salariul minim ca formalitate; de aceea nu e concluzia.
             </p>
           )}
+        </section>
+      )}
+
+      {P && P.peVechime.length >= 3 && (
+        <section className="mt-4 rounded-md border border-stone-200 bg-surface p-5">
+          <h2 className="text-base font-semibold text-stone-900">Pe vechime în muncă</h2>
+          <p className="mt-1 text-xs text-stone-600">Salariul fix din mijloc, după gradația de vechime din statul de plată.</p>
+          <table className="mt-3 w-full text-sm">
+            <caption className="sr-only">Salariul fix net pe vechime în muncă</caption>
+            <thead>
+              <tr className="text-left text-xs text-stone-600">
+                <th scope="col" className="py-2 font-medium">Vechime</th>
+                <th scope="col" className="py-2 text-right font-medium">Posturi</th>
+                <th scope="col" className="py-2 text-right font-medium">Net lunar</th>
+              </tr>
+            </thead>
+            <tbody>
+              {P.peVechime.map((v) => (
+                <tr key={v.gradatie} className="border-t border-stone-100">
+                  <th scope="row" className="py-2 text-left font-normal text-stone-700">{VECHIME[v.gradatie]}</th>
+                  <td className="py-2 text-right tabular-nums text-stone-600">{lei(v.randuri)}</td>
+                  <td className="py-2 text-right font-semibold tabular-nums text-stone-900">{lei(v.net)} lei</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </section>
       )}
 

@@ -1,5 +1,5 @@
 {
- "generatLa": "2026-09-26T02:42:00.965Z",
+ "generatLa": "2026-09-26T02:49:21.950Z",
  "praguri": {
   "platit": {
    "institutii": 5,
@@ -10,6 +10,10 @@
   "platitJudet": {
    "randuri": 30,
    "institutii": 1
+  },
+  "platitGradatie": {
+   "randuri": 30,
+   "institutii": 3
   },
   "declarat": {
    "oferte": 30,
@@ -61,7 +65,8 @@
     "debutant": null,
     "variabil": null,
     "peJudet": {},
-    "peStudii": {}
+    "peStudii": {},
+    "peGradatie": {}
    },
    "oferit": {
     "anunturi": 5,
@@ -357,6 +362,44 @@
        "p75": 11814
       }
      }
+    },
+    "peGradatie": {
+     "2": {
+      "randuri": 289,
+      "institutii": 11,
+      "net": {
+       "p25": 7882,
+       "mediana": 8513,
+       "p75": 10656
+      }
+     },
+     "3": {
+      "randuri": 308,
+      "institutii": 11,
+      "net": {
+       "p25": 8853,
+       "mediana": 10660,
+       "p75": 12303
+      }
+     },
+     "4": {
+      "randuri": 257,
+      "institutii": 11,
+      "net": {
+       "p25": 10038,
+       "mediana": 11104,
+       "p75": 12513
+      }
+     },
+     "5": {
+      "randuri": 985,
+      "institutii": 11,
+      "net": {
+       "p25": 4963,
+       "mediana": 10291,
+       "p75": 12565
+      }
+     }
     }
    },
    "oferit": {
@@ -518,6 +561,44 @@
        "p25": 4996,
        "mediana": 6244,
        "p75": 7411
+      }
+     }
+    },
+    "peGradatie": {
+     "0": {
+      "randuri": 618,
+      "institutii": 6,
+      "net": {
+       "p25": 4568,
+       "mediana": 5487,
+       "p75": 6859
+      }
+     },
+     "1": {
+      "randuri": 410,
+      "institutii": 6,
+      "net": {
+       "p25": 5738,
+       "mediana": 6427,
+       "p75": 8665
+      }
+     },
+     "2": {
+      "randuri": 437,
+      "institutii": 6,
+      "net": {
+       "p25": 6026,
+       "mediana": 6613,
+       "p75": 7954
+      }
+     },
+     "3": {
+      "randuri": 87,
+      "institutii": 4,
+      "net": {
+       "p25": 5415,
+       "mediana": 6326,
+       "p75": 7505
       }
      }
     }
@@ -727,6 +808,62 @@
        "p75": 6776
       }
      }
+    },
+    "peGradatie": {
+     "0": {
+      "randuri": 84,
+      "institutii": 7,
+      "net": {
+       "p25": 3598,
+       "mediana": 3832,
+       "p75": 4564
+      }
+     },
+     "1": {
+      "randuri": 89,
+      "institutii": 7,
+      "net": {
+       "p25": 3920,
+       "mediana": 4213,
+       "p75": 4716
+      }
+     },
+     "2": {
+      "randuri": 429,
+      "institutii": 8,
+      "net": {
+       "p25": 3955,
+       "mediana": 4460,
+       "p75": 5427
+      }
+     },
+     "3": {
+      "randuri": 396,
+      "institutii": 7,
+      "net": {
+       "p25": 4195,
+       "mediana": 4589,
+       "p75": 5408
+      }
+     },
+     "4": {
+      "randuri": 508,
+      "institutii": 8,
+      "net": {
+       "p25": 4442,
+       "mediana": 5127,
+       "p75": 5818
+      }
+     },
+     "5": {
+      "randuri": 2800,
+      "institutii": 8,
+      "net": {
+       "p25": 4677,
+       "mediana": 5256,
+       "p75": 6052
+      }
+     }
     }
    },
    "oferit": {
@@ -890,6 +1027,44 @@
        "p75": 4465
       }
      }
+    },
+    "peGradatie": {
+     "2": {
+      "randuri": 39,
+      "institutii": 9,
+      "net": {
+       "p25": 3238,
+       "mediana": 3613,
+       "p75": 4025
+      }
+     },
+     "3": {
+      "randuri": 44,
+      "institutii": 7,
+      "net": {
+       "p25": 3428,
+       "mediana": 3631,
+       "p75": 4162
+      }
+     },
+     "4": {
+      "randuri": 53,
+      "institutii": 9,
+      "net": {
+       "p25": 3467,
+       "mediana": 3651,
+       "p75": 4297
+      }
+     },
+     "5": {
+      "randuri": 179,
+      "institutii": 10,
+      "net": {
+       "p25": 3587,
+       "mediana": 3778,
+       "p75": 4519
+      }
+     }
     }
    },
    "oferit": {
@@ -1049,7 +1224,8 @@
        "p75": 5161
       }
      }
-    }
+    },
+    "peGradatie": {}
    },
    "oferit": {
     "anunturi": 8,
@@ -1122,7 +1298,8 @@
        "p75": 4669
       }
      }
-    }
+    },
+    "peGradatie": {}
    },
    "oferit": {
     "anunturi": 1,
@@ -1229,6 +1406,17 @@
        "p75": 7391
       }
      }
+    },
+    "peGradatie": {
+     "5": {
+      "randuri": 31,
+      "institutii": 8,
+      "net": {
+       "p25": 6314,
+       "mediana": 6824,
+       "p75": 7903
+      }
+     }
     }
    },
    "oferit": {
@@ -1308,7 +1496,8 @@
        "p75": 5639
       }
      }
-    }
+    },
+    "peGradatie": {}
    },
    "oferit": {
     "anunturi": 0,
@@ -1413,7 +1602,8 @@
        "p75": 5961
       }
      }
-    }
+    },
+    "peGradatie": {}
    },
    "oferit": {
     "anunturi": 1,
@@ -1634,6 +1824,44 @@
        "p75": 4252
       }
      }
+    },
+    "peGradatie": {
+     "2": {
+      "randuri": 102,
+      "institutii": 10,
+      "net": {
+       "p25": 3340,
+       "mediana": 3524,
+       "p75": 3934
+      }
+     },
+     "3": {
+      "randuri": 171,
+      "institutii": 10,
+      "net": {
+       "p25": 3390,
+       "mediana": 3571,
+       "p75": 3929
+      }
+     },
+     "4": {
+      "randuri": 255,
+      "institutii": 10,
+      "net": {
+       "p25": 3464,
+       "mediana": 3670,
+       "p75": 4117
+      }
+     },
+     "5": {
+      "randuri": 1277,
+      "institutii": 10,
+      "net": {
+       "p25": 3550,
+       "mediana": 3802,
+       "p75": 4163
+      }
+     }
     }
    },
    "oferit": {
@@ -1810,7 +2038,8 @@
        "p75": 3290
       }
      }
-    }
+    },
+    "peGradatie": {}
    },
    "oferit": {
     "anunturi": 3,
@@ -1872,7 +2101,8 @@
       }
      }
     },
-    "peStudii": {}
+    "peStudii": {},
+    "peGradatie": {}
    },
    "oferit": {
     "anunturi": 0,
@@ -1968,7 +2198,8 @@
     "debutant": null,
     "variabil": null,
     "peJudet": {},
-    "peStudii": {}
+    "peStudii": {},
+    "peGradatie": {}
    },
    "oferit": {
     "anunturi": 75,
@@ -2146,6 +2377,17 @@
        "p25": 4934,
        "mediana": 5630,
        "p75": 6094
+      }
+     }
+    },
+    "peGradatie": {
+     "5": {
+      "randuri": 132,
+      "institutii": 9,
+      "net": {
+       "p25": 4758,
+       "mediana": 5404,
+       "p75": 5725
       }
      }
     }
@@ -2344,7 +2586,8 @@
        "p75": 5630
       }
      }
-    }
+    },
+    "peGradatie": {}
    },
    "oferit": {
     "anunturi": 7,
@@ -2695,7 +2938,8 @@
     "debutant": null,
     "variabil": null,
     "peJudet": {},
-    "peStudii": {}
+    "peStudii": {},
+    "peGradatie": {}
    },
    "oferit": {
     "anunturi": 115,
@@ -2777,7 +3021,8 @@
     "debutant": null,
     "variabil": null,
     "peJudet": {},
-    "peStudii": {}
+    "peStudii": {},
+    "peGradatie": {}
    },
    "oferit": {
     "anunturi": 59,
@@ -3292,7 +3537,8 @@
     "debutant": null,
     "variabil": null,
     "peJudet": {},
-    "peStudii": {}
+    "peStudii": {},
+    "peGradatie": {}
    },
    "oferit": {
     "anunturi": 0,
@@ -3416,7 +3662,8 @@
     "debutant": null,
     "variabil": null,
     "peJudet": {},
-    "peStudii": {}
+    "peStudii": {},
+    "peGradatie": {}
    },
    "oferit": {
     "anunturi": 53,
@@ -3741,7 +3988,8 @@
      }
     },
     "peJudet": {},
-    "peStudii": {}
+    "peStudii": {},
+    "peGradatie": {}
    },
    "oferit": {
     "anunturi": 35,
@@ -4450,7 +4698,8 @@
     "debutant": null,
     "variabil": null,
     "peJudet": {},
-    "peStudii": {}
+    "peStudii": {},
+    "peGradatie": {}
    },
    "oferit": {
     "anunturi": 0,
@@ -4540,7 +4789,8 @@
     "debutant": null,
     "variabil": null,
     "peJudet": {},
-    "peStudii": {}
+    "peStudii": {},
+    "peGradatie": {}
    },
    "oferit": {
     "anunturi": 1,
@@ -4641,7 +4891,8 @@
        "p75": 7583
       }
      }
-    }
+    },
+    "peGradatie": {}
    },
    "oferit": {
     "anunturi": 0,

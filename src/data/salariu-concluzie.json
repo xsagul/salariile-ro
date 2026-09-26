@@ -1,5 +1,5 @@
 {
- "generatLa": "2026-09-26T02:42:00.965Z",
+ "generatLa": "2026-09-26T02:49:21.950Z",
  "oferteAnofm": 8759,
  "meserii": {
   "medic": {
@@ -48,6 +48,28 @@
     "studii": {
      "S": 11020
     },
+    "peVechime": [
+     {
+      "gradatie": 2,
+      "randuri": 289,
+      "net": 8513
+     },
+     {
+      "gradatie": 3,
+      "randuri": 308,
+      "net": 10660
+     },
+     {
+      "gradatie": 4,
+      "randuri": 257,
+      "net": 11104
+     },
+     {
+      "gradatie": 5,
+      "randuri": 985,
+      "net": 10291
+     }
+    ],
     "peJudet": [
      {
       "judet": "Bacău",
@@ -156,6 +178,28 @@
     "studii": {
      "S": 6244
     },
+    "peVechime": [
+     {
+      "gradatie": 0,
+      "randuri": 618,
+      "net": 5487
+     },
+     {
+      "gradatie": 1,
+      "randuri": 410,
+      "net": 6427
+     },
+     {
+      "gradatie": 2,
+      "randuri": 437,
+      "net": 6613
+     },
+     {
+      "gradatie": 3,
+      "randuri": 87,
+      "net": 6326
+     }
+    ],
     "peJudet": [
      {
       "judet": "Brăila",
@@ -248,6 +292,38 @@
      "PL": 4631,
      "M": 5794
     },
+    "peVechime": [
+     {
+      "gradatie": 0,
+      "randuri": 84,
+      "net": 3832
+     },
+     {
+      "gradatie": 1,
+      "randuri": 89,
+      "net": 4213
+     },
+     {
+      "gradatie": 2,
+      "randuri": 429,
+      "net": 4460
+     },
+     {
+      "gradatie": 3,
+      "randuri": 396,
+      "net": 4589
+     },
+     {
+      "gradatie": 4,
+      "randuri": 508,
+      "net": 5127
+     },
+     {
+      "gradatie": 5,
+      "randuri": 2800,
+      "net": 5256
+     }
+    ],
     "peJudet": [
      {
       "judet": "Constanța",
@@ -347,6 +423,28 @@
     "studii": {
      "M": 4117
     },
+    "peVechime": [
+     {
+      "gradatie": 2,
+      "randuri": 39,
+      "net": 3613
+     },
+     {
+      "gradatie": 3,
+      "randuri": 44,
+      "net": 3631
+     },
+     {
+      "gradatie": 4,
+      "randuri": 53,
+      "net": 3651
+     },
+     {
+      "gradatie": 5,
+      "randuri": 179,
+      "net": 3778
+     }
+    ],
     "peJudet": [
      {
       "judet": "Sibiu",
@@ -422,6 +520,7 @@
     "studii": {
      "S": 4761
     },
+    "peVechime": [],
     "peJudet": [
      {
       "judet": "Constanța",
@@ -473,6 +572,13 @@
     "studii": {
      "S": 6247
     },
+    "peVechime": [
+     {
+      "gradatie": 5,
+      "randuri": 31,
+      "net": 6824
+     }
+    ],
     "peJudet": []
    },
    "oferit": null,
@@ -518,6 +624,7 @@
     "studii": {
      "S": 5497
     },
+    "peVechime": [],
     "peJudet": []
    },
    "oferit": null,
@@ -565,6 +672,28 @@
     "studii": {
      "M": 3884
     },
+    "peVechime": [
+     {
+      "gradatie": 2,
+      "randuri": 102,
+      "net": 3524
+     },
+     {
+      "gradatie": 3,
+      "randuri": 171,
+      "net": 3571
+     },
+     {
+      "gradatie": 4,
+      "randuri": 255,
+      "net": 3670
+     },
+     {
+      "gradatie": 5,
+      "randuri": 1277,
+      "net": 3802
+     }
+    ],
     "peJudet": [
      {
       "judet": "Sibiu",
@@ -686,6 +815,13 @@
     "studii": {
      "S": 5630
     },
+    "peVechime": [
+     {
+      "gradatie": 5,
+      "randuri": 132,
+      "net": 5404
+     }
+    ],
     "peJudet": [
      {
       "judet": "Bihor",
@@ -758,6 +894,7 @@
     "studii": {
      "S": 4934
     },
+    "peVechime": [],
     "peJudet": []
    },
    "oferit": null,
@@ -1004,6 +1141,7 @@
     "studii": {
      "S": 6040
     },
+    "peVechime": [],
     "peJudet": []
    },
    "oferit": null,

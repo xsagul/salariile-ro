@@ -69,6 +69,8 @@ for (const m of agregat.meserii) {
       debutant: P.debutant?.net.mediana ?? null,
       cuVariabil: P.variabil ? { net: P.variabil.netCuVariabil.mediana, cota: P.variabil.cota } : null,
       studii: Object.fromEntries(Object.entries(P.peStudii).map(([k, v]) => [k, v.net.mediana])),
+      // Gradația 0–5 = vechimea în muncă, după Legea-cadru 153/2017.
+      peVechime: Object.entries(P.peGradatie ?? {}).map(([g, v]) => ({ gradatie: Number(g), randuri: v.randuri, net: v.net.mediana })),
       peJudet: Object.entries(P.peJudet).map(([k, v]) => ({ judet: JUDETE[k] ?? k, randuri: v.randuri, institutii: v.institutii, net: v.net.mediana }))
         .sort((a, b) => b.net - a.net),
     } : null,
