@@ -48,13 +48,15 @@ async function pdfCalendar(d: Props) {
 
 // ─── PNG ─────────────────────────────────────────────────────────────────────
 
-// Calendarul de pe pagină, la aceleași mărimi (MACHETA), desenat de două ori mai mare
-// ca să fie clar și pe ecranele dense: 48 px margine, titlu, legendă, 12 carduri pe 3 coloane.
+// Calendarul de pe pagină, la aceleași proporții (MACHETA): 48 px margine, titlu, legendă,
+// 12 carduri pe 3 coloane. Lățimea e 1080 px, standardul imaginilor verticale de telefon
+// (proprietar, 27 sept. 2026: 2400 px era prea mare). Pentru tipar există PDF-ul.
 async function pngCalendar({ an, luni }: Props) {
-  const margine = 48, scara = 2;
+  const margine = 48;
   const W = MACHETA.latime + 2 * margine, H = inaltimeCalendar(luni.length) + 2 * margine + 24;
   const c = document.createElement("canvas");
-  c.width = W * scara; c.height = H * scara;
+  const scara = 1080 / W;
+  c.width = 1080; c.height = Math.round(H * scara);
   const g = c.getContext("2d")!;
   g.scale(scara, scara);
   const familie = getComputedStyle(document.body).fontFamily || "sans-serif";
