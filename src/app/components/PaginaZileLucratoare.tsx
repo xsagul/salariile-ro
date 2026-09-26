@@ -162,9 +162,9 @@ export default function PaginaZileLucratoare({ an }: { an: AnZileLucratoare }) {
           {/* Fără cale de navigare, autor și dată sus: e pagină-instrument (proprietar, 27 sept. 2026). */}
           <h1 className={TITLU_PAGINA}>Zile lucrătoare {an}</h1>
           <p className={`${SUB_TITLU} ${text}`}>
-            În {an} {trecut ? "au fost" : "sunt"} <strong className="font-semibold text-stone-900">{total} de zile lucrătoare</strong>, adică{" "}
-            {ore.toLocaleString("ro-RO")} de ore la program de 8 ore pe zi. Restul de {libere} de zile{" "}
-            {trecut ? "au fost" : "sunt"} weekenduri și sărbători legale.
+            {/* Scurtă, ca la zile libere: două cifre îngroșate (proprietar, 27 sept. 2026). */}
+            În {an} {trecut ? "au fost" : "sunt"} <strong className="font-semibold text-stone-900">{total} de zile lucrătoare</strong>:{" "}
+            <strong className="font-semibold text-stone-900">{ore.toLocaleString("ro-RO")} de ore</strong> la program de 8 ore pe zi.
           </p>
           <AniZileLucratoare an={an} />
 
