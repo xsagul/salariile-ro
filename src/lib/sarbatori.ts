@@ -85,7 +85,8 @@ export function sarbatoriAn(an:number):Record<string,string> {
 export function zileLucratoareInterval(start:string,end:string) {
   const valid=(s:string)=>/^\d{4}-\d{2}-\d{2}$/.test(s) && Number.isFinite(Date.parse(s)) && new Date(s).toISOString().slice(0,10)===s;
   if(!valid(start)||!valid(end)||start>end)throw new RangeError('Alege un interval valid, cu data de început înaintea datei de sfârșit.');
-  if(start<'2026-01-01'||end>'2027-12-31')throw new RangeError('Alege date din 2026 sau 2027.');
+  const primul=ANI_CALENDAR[0],ultimul=ANI_CALENDAR[ANI_CALENDAR.length-1];
+  if(start<`${primul}-01-01`||end>`${ultimul}-12-31`)throw new RangeError(`Alege date între ${primul} și ${ultimul}.`);
   let lucratoare=0,calendaristice=0;
   for(let t=Date.parse(start);t<=Date.parse(end);t+=86400000){
     const d=new Date(t);calendaristice++;

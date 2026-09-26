@@ -1,8 +1,8 @@
 import PaginaZileLucratoare, { metadataZileLucratoare } from "@/app/components/PaginaZileLucratoare";
 
 // Șablonul comun al anilor, în src/app/components/PaginaZileLucratoare.tsx.
-export const metadata = metadataZileLucratoare(2027);
+export const metadata = metadataZileLucratoare(2028);
 
 export default function Page() {
-  return <PaginaZileLucratoare an={2027} />;
+  return <PaginaZileLucratoare an={2028} />;
 }

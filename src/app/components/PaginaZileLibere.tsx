@@ -20,7 +20,7 @@ type CaleAn = `/zile-libere-${AnZileLibere}`;
 
 const cale = (an: AnZileLibere): CaleAn => `/zile-libere-${an}`;
 // Anii care au și tabel de zile lucrătoare.
-const ZILE_LUCRATOARE = new Set<number>([2026, 2027]);
+const ZILE_LUCRATOARE = new Set<number>(ANI_CALENDAR);
 // Prima publicare a fiecărei pagini; anii noi au apărut odată cu șablonul.
 const PUBLICAT: Partial<Record<AnZileLibere, string>> = { 2026: "2026-05-19", 2027: "2026-09-07" };
 

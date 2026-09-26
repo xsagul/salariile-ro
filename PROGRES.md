@@ -4056,3 +4056,15 @@ nu s-a adăugat; se decide separat.
   `aria-current="date"`. Sub fraza de sus au apărut butoanele cu anii (2026, 2027), ca la zile
   libere; linkul text spre 2027 a dispărut odată cu cardul. Pagina 2027 are încă alt șablon
   (`Calendar2027`) și nu are butoanele.
+
+## 27 septembrie 2026 — Zile lucrătoare pe ani, același șablon ca zile libere
+
+Cerut de proprietar: toate paginile de zile lucrătoare arată ca cele de zile libere, cu
+aceleași distanțe, fără linie între titlu și tabel și cu filele pe ani. Șablonul nou e
+`src/app/components/PaginaZileLucratoare.tsx`. Paginile 2025–2030 sunt fiecare câte
+8 rânduri; 2025, 2028, 2029 și 2030 sunt noi (în sitemap și în `PAGE_LAST_MODIFIED`).
+`Calendar2027.tsx` a fost șters, iar zile libere trimite acum spre zile lucrătoare la fiecare
+an. Calculatorul pe interval acceptă 2025–2030 (test în `test-calendar.mts`, plus 2025 = 248,
+cât publică și salariucalculator.ro). 2027 își păstrează titlul și descrierea (7,1% CTR,
+poziția 3,6). Măsurat la 1280 px: H1, frază, file, tabel și card la exact aceleași înălțimi
+ca la `/zile-libere-2026`. Build static și `test:rendered` trec (334 de rute).

@@ -10,7 +10,12 @@ assert.equal(zileLucratoareInterval('2027-03-26','2027-03-29').lucratoare,2); //
 assert.equal(zileLucratoareInterval('2026-06-01','2026-06-01').lucratoare,0); // două sărbători, o zi
 assert.throws(()=>zileLucratoareInterval('2027-02-30','2027-03-02'));
 assert.throws(()=>zileLucratoareInterval('2027-06-02','2027-06-01'));
-assert.throws(()=>zileLucratoareInterval('2028-01-01','2028-01-02'));
+// Calculatorul acoperă toți anii din ANI_CALENDAR (2025–2030), cât au și paginile.
+assert.equal(zileLucratoareInterval('2028-01-03','2028-01-04').lucratoare,2);
+assert.throws(()=>zileLucratoareInterval('2030-12-31','2031-01-02'));
+assert.throws(()=>zileLucratoareInterval('2024-12-31','2025-01-02'));
+// 2025: 248 de zile lucrătoare, cât publică și salariucalculator.ro (13 sărbători în timpul săptămânii).
+assert.equal(Array.from({length:12},(_,m)=>zileLucratoareLuna(2025,m)).reduce((a,b)=>a+b,0),248);
 assert.equal(Object.keys(sarbatoriAn(2027)).length,17);
 // Calculul din Codul Muncii dă exact listele verificate de mână, cu tot cu ordinea și numele.
 assert.deepEqual(Object.entries(sarbatoriCalculate(2026)),Object.entries(SARBATORI_LEGALE_2026));
