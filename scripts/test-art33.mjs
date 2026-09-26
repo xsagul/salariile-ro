@@ -27,6 +27,9 @@ const cazuri = [
   ["Spor sărbă-tori legale", 928, "variabil"],
   // Miercurea Ciuc
   ["Sume ore prestate in zile libere conf. Cap.II art.2", 1062, "variabil"],
+  // Brăila și Filantropia: „bază” singur și prescurtări
+  ["Baza lei grila:", 5250, "baza"],
+  ["Transparenta venituri salariale Legea 153/2017 Val. cond deoseb de peric", 3100, "sporFix"],
   // DGASPC Sector 2: total publicat
   ["TRANSPARENȚA VENITURILOR SALARIALE Total salariu brut - lei", 6639, "total"],
 ];

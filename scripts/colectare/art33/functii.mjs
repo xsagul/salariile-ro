@@ -36,6 +36,8 @@ const REGULI = [
   ["educator", /\bEDUCATOR\b/],
   ["programator", /\bPROGRAMATOR\b/],
   ["consilier-juridic", /\bCONSILIER JURIDIC\b/],
+  // Doar gradul de profesor: lectorul și conferențiarul sunt alte trepte, cu alte salarii.
+  ["profesor-universitar", /\bPROFESOR UNIVERSITAR\b|^PROFESOR\b/, ["universitate"]],
   // Funcțiile publice de execuție din primării, consilii și instituții centrale.
   ["functionar-public", /^(CONSILIER|INSPECTOR|REFERENT|AUDITOR|EXPERT)\b/, ["primarie", "consiliu-judetean", "institutie-centrala"]],
 ];

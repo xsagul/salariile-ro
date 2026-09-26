@@ -41,6 +41,11 @@ export function tipColoana(eticheta, procent, v = 0) {
   // „tură” doar ca vorbă separată: „veniTURI” nu e tură (Cluj, 26 septembrie 2026).
   if (/\btur[aei]?\b|\bture\b|noapte|gard|garzi|sarbat|nelucr|repaus|suplimentar|weekend|s\+d|domicil|sume ore|ore prestate/.test(e)) return "variabil";
   if (/(salar\w*|sal\.?)\s*(de\s*)?baz|salariul funct|indemnizat\w* de incadrare|solda/.test(e)) return "baza";
+  // „Baza lei grilă” (Brăila), „Sal de … baza” (Filantropia): „bază” singur e baza, după ce
+  // bazele de calcul au fost deja recunoscute mai sus.
+  if (/\bbaza\b/.test(e) && !/spor|val\.?\s/.test(e)) return "baza";
+  // Prescurtări: „Val. cond deoseb”, „Val. cond deoseb de peric”.
+  if (/\bval\.?\s*(cond|spor)|\bcond\.?\s*deoseb|\bdeoseb|\bperic/.test(e)) return "sporFix";
   if (/spor|indemniz|titlu|doctor|cfp|control financiar|gestiun|condit|pericul|deosebit|stres|risc|radiat|toxic|handicap|izolat|compen|19\/2024|3\^1/.test(e)) return "sporFix";
   return "necunoscut";
 }
