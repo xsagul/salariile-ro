@@ -15,6 +15,12 @@ const root=`.cercetare-privata/crawl-runs/${run}`;
 const evidenceDir=arg('evidence','.cercetare-privata/crawl-runs/verified-2026-09-07/evidence');
 const selectedSources=arg('sources','olx,ejobs,bestjobs,publi24,anuntul,hipo,undelucram').split(',');
 const includeUnknown=process.argv.includes('--include-unknown');
+// Colectarea continua (scripts/colectare/anunturi.mjs): URL-urile citite in rularile trecute se sar,
+// iar rularea se opreste curat la bugetul de timp, ca sa incapa in limita unui job GitHub Actions.
+const seenFile=arg('seen',null);
+const seenUrls=new Set(seenFile&&fs.existsSync(seenFile)?fs.readFileSync(seenFile,'utf8').split(String.fromCharCode(10)).map(x=>x.trim()).filter(Boolean):[]);
+const deadline=Number(arg('budget-min',0))?Date.now()+Number(arg('budget-min',0))*60000:Infinity;
+const timeUp=()=>Date.now()>deadline;
 fs.mkdirSync(root,{recursive:true});
 const statePath=`${root}/state.json`;
 const state=fs.existsSync(statePath)?JSON.parse(fs.readFileSync(statePath,'utf8')):{version:POLICY.version,run,startedAt:new Date().toISOString(),sources:{},results:{}};
@@ -68,6 +74,7 @@ async function olxInventory(){
   const leaves=categories.filter(u=>!categories.some(v=>v!==u&&v.startsWith(u)));
   const urls=new Set(entry.urls);const seenPages=new Set();
   for(const category of leaves){
+    if(timeUp())break;
     if(entry.maps.includes(category))continue;
     try{
       for(let n=1;n<=1000;n++){
@@ -105,6 +112,7 @@ async function ejobsInventory(){
   const reach=EJOBS_PER_PAGE*EJOBS_MAX_PAGES;
   try{
     for(const facet of facets){
+      if(timeUp())break;
       let total=null;
       for(let page=1;page<=EJOBS_MAX_PAGES;page++){
         const url=page===1?facet:`${facet}/pagina${page}`;
@@ -136,7 +144,7 @@ async function ejobsInventory(){
         const evidence={evidenceFile:doc.evidenceFile,sha256:doc.sha256,retrievedAt:doc.retrievedAt};
         for(const card of listingRecords(doc.html,url)){
           const u=canonicalUrl(card.url);
-          if(state.results[u])continue;
+          if(state.results[u]||seenUrls.has(u))continue;
           const result=assess({...card,listedAt:doc.retrievedAt,fx:state.fx},evidence,new Date(doc.retrievedAt));
           state.results[u]={...result,url:u,source:'ejobs',listedAt:doc.retrievedAt,evidence,raw:card,fromListing:true};
         }
@@ -156,6 +164,7 @@ async function undelucramInventory(){
   const urls=new Set(entry.urls);
   try{
     for(let n=1;n<=2000;n++){
+      if(timeUp())break;
       const url=`https://www.undelucram.ro/ro/locuri-de-munca?page=${n}`;
       if(entry.maps.includes(url))continue;
       const page=await fetchPage(url,evidenceDir);
@@ -185,7 +194,8 @@ async function crawl(source){
   let i=0;
   for(const {url,classification} of candidates){
     if(!classification.slugs.length&&!includeUnknown)continue;
-    if(state.results[url])continue;
+    if(state.results[url]||seenUrls.has(url))continue;
+    if(timeUp()){entry.stoppedByBudget=true;break;}
     try{
       // Every catalogue candidate is opened. An OLX listing card carries no pay field,
       // so judging the advert from the card discarded roughly half of the declared salaries.

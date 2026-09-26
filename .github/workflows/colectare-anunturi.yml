@@ -1,0 +1,49 @@
+name: Colectare anunțuri
+
+# Anunțurile cu salariu de pe platforme, citite continuu (scripts/colectare/anunturi.mjs).
+# Fiecare rulare deschide doar anunțurile necitite încă și se oprește curat după buget, ca să
+# încapă în limita de șase ore a unui job. Primele zile citesc restanța, apoi doar anunțurile noi.
+# Cifrele de pe site se schimbă abia după o trecere completă prin fiecare sursă.
+on:
+  schedule:
+    - cron: "17 21 * * *" # 00:17 ora României (vara)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: colectare
+  cancel-in-progress: false
+
+jobs:
+  anunturi:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: node scripts/colectare/anunturi.mjs --buget-min=300
+      - name: Salariul-concluzie
+        run: |
+          npx tsx scripts/colectare/agregare.mjs
+          node scripts/colectare/publica.mjs
+          npm test
+      - name: Salvează rularea
+        run: |
+          git config user.name "salariile-colectare"
+          git config user.email "colectare@users.noreply.github.com"
+          git add colectare src/data/salariu-concluzie.json src/data/acoperire-anunturi.json public/date/anunturi-verificate.json public/date/acoperire-anunturi.csv
+          if git diff --cached --quiet; then echo "Nimic nou"; exit 0; fi
+          ZI=$(TZ=Europe/Bucharest date +%F)
+          if git diff --cached --quiet -- src/data; then
+            git commit -m "Colectare anunțuri $ZI [skip ci]"
+          else
+            git commit -m "Colectare anunțuri $ZI: cifrele de pe meserii actualizate"
+          fi
+          git pull --rebase origin main
+          git push origin HEAD:main
