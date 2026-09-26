@@ -38,6 +38,8 @@ export const CASS_PROCENT = 0.10;
 export const IMPOZIT_PROCENT = 0.10;
 export const CAM_PROCENT = 0.0225;
 export const DEDUCERE_MINIM = 200;
+// Deducerea suplimentară pentru fiecare copil înscris la școală (art. 77, E1_422), la orice venit.
+export const DEDUCERE_COPIL_SCOLARIZAT = 100;
 // Salariul de bază minim brut în construcții (OUG 156/2024, art. LXIX): prag
 // sectorial cu temei separat, deci NU urmează minimul general din HG 146/2026.
 // Calculul brut-net rămâne cel standard — facilitățile sectoriale nu mai există
@@ -274,7 +276,7 @@ export function calculeazaCuRegim(
     if (varstaSub26 && venitBrutDeducere <= regim.salariuMinim + 2000) deducere += Math.round((15 * regim.salariuMinim) / 100);
     // Supliment copii (E1_422): 100 lei/copil școlar, INDIFERENT de venit. Copiii sunt un
     // SUBSET al persoanelor în întreținere (copiiScolarizati ≤ persoanePretretinere).
-    deducere += copiiScolarizati * 100;
+    deducere += copiiScolarizati * DEDUCERE_COPIL_SCOLARIZAT;
   }
 
   // Deducerea se acordă ÎN LIMITA venitului impozabil lunar realizat (art. 77 alin. 2) — nu

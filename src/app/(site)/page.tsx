@@ -5,7 +5,14 @@ import CalculatorSalariu from "@/app/components/CalculatorSalariu";
 import { Formula, TITLU_SECTIUNE, SPATIU_SECTIUNE, SPATIU_PARAGRAF, SUB_TITLU_SECTIUNE, LISTA_FAQ, LISTA_CARD, SPATIU_TEXT_CARD } from "@/app/components/ui";
 import { personSchema } from "@/lib/person";
 import { calculatorSlugBrut, PAGE_LAST_MODIFIED } from "@/lib/seo";
-import { calculStandard, SALARIU_MINIM } from "@/lib/fiscal";
+import {
+  calculStandard,
+  DEDUCERE_COPIL_SCOLARIZAT,
+  DEDUCERE_MINIM,
+  IMPOZIT_PROCENT,
+  PLAFON_FACILITATE,
+  SALARIU_MINIM,
+} from "@/lib/fiscal";
 
 const lei = (n: number) => new Intl.NumberFormat("ro-RO").format(n);
 
@@ -205,13 +212,14 @@ export default function Page() {
               <aside className="mt-8 md:col-span-2 md:mt-0 md:self-start">
                 <div className="flex h-full flex-col rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-600">
                   <h3 className="text-base font-bold tracking-[-0.01em] text-stone-900">Ce mai modifică netul</h3>
-                  <p className="mt-2 text-sm text-stone-600">La același brut, doi oameni pot primi sume diferite în mână. Contează:</p>
+                  <p className="mt-2 text-sm text-stone-600">Netul nu depinde doar de brut. Mai contează:</p>
                   <ul className={`${SPATIU_TEXT_CARD} ${LISTA_CARD} text-stone-600`}>
-                    <li><strong className="font-semibold text-stone-900">Brutul, față de {lei(PLAFON_DEDUCERE)} lei.</strong> Sub acest prag primești <Link href="/deducere-personala-2026">deducerea personală</Link>, mai mare cu cât salariul e mai mic. Peste el, nu mai există.</li>
-                    <li><strong className="font-semibold text-stone-900">Persoanele în întreținere.</strong> Măresc deducerea, dar doar sub {lei(PLAFON_DEDUCERE)} lei brut.</li>
-                    <li><strong className="font-semibold text-stone-900">Vârsta sub 26 de ani.</strong> O deducere în plus, tot sub {lei(PLAFON_DEDUCERE)} lei brut.</li>
-                    <li><strong className="font-semibold text-stone-900">Copiii la școală.</strong> 100 de lei scutiți de impozit pentru fiecare, la orice salariu.</li>
-                    <li><strong className="font-semibold text-stone-900">Salariul minim.</strong> La normă întreagă, <Link href="/salariu-minim">200 de lei din brut</Link> nu se taxează deloc.</li>
+                    <li><strong className="font-semibold text-stone-900"><Link href="/deducere-personala-2026">Deducerea personală</Link>.</strong> O primești până la {lei(PLAFON_DEDUCERE)} lei brut, cu tichetele incluse. E mai mare cu cât salariul e mai mic, iar peste prag nu mai există.</li>
+                    <li><strong className="font-semibold text-stone-900">Persoanele în întreținere.</strong> Măresc deducerea, tot până la prag.</li>
+                    <li><strong className="font-semibold text-stone-900">Vârsta sub 26 de ani.</strong> O deducere în plus, tot până la prag.</li>
+                    <li><strong className="font-semibold text-stone-900">Copiii la școală.</strong> {lei(DEDUCERE_COPIL_SCOLARIZAT)} de lei neimpozitați pentru fiecare, adică {lei(DEDUCERE_COPIL_SCOLARIZAT * IMPOZIT_PROCENT)} lei în plus în mână, la orice salariu.</li>
+                    <li><strong className="font-semibold text-stone-900">Salariul minim.</strong> La normă întreagă și un brut de cel mult {lei(PLAFON_FACILITATE)} lei, <Link href="/salariu-minim">{lei(DEDUCERE_MINIM)} de lei</Link> nu se taxează deloc.</li>
+                    <li><strong className="font-semibold text-stone-900">Funcția de bază.</strong> Deducerile și suma netaxabilă se dau la un singur loc de muncă. La al doilea contract, nu.</li>
                   </ul>
                   <p className="mt-auto pt-4 text-xs text-stone-600">Toate se bifează în calculatorul avansat.</p>
                 </div>
