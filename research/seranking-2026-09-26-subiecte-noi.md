@@ -34,4 +34,4 @@ Volumele sunt estimări SE Ranking de căutări lunare, nu clicuri. KD înseamn�
 - **Impozit dividende** (720 + 590, KD 7–8): pentru subiectul acesta avem deja
   `/calculator-dividende`, dar pagina nu apare pentru acest cuvânt. E o problemă de
   optimizare a paginii existente, nu o pagină nouă.
-Lista completă, cu volum și dificultate: `research/seranking-2026-09-26-cuvinte.csv`.
+Lista completă, ordonată după căutări lunare, cu pozițiile reale din Search Console (18–24 septembrie): `research/seranking-2026-09-26-cuvinte.csv`. Pozițiile SE Ranking s-au dovedit greșite față de GSC și nu se folosesc.
