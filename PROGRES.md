@@ -4078,3 +4078,7 @@ ca la `/zile-libere-2026`. Build static și `test:rendered` trec (334 de rute).
   la zile libere, fără cifre în titlu: „Zile lucrătoare <an>: tabel pe luni și ore de lucru”.
   Se aplică tuturor anilor, inclusiv 2026 (17.306 afișări, CTR 0,4%, poziția 5,2 pe
   „zile lucratoare 2026”, 29 aug – 25 sept). Efectul se citește în GSC după două săptămâni.
+- Tot pe 27 septembrie: sub tabelul de zile lucrătoare a apărut calendarul pe 12 luni
+  (`CalendarAn`, același ca la zile libere), cu „X lucr. · Y libere” la fiecare lună, ca la
+  Edenred, locul 1. Varianta cu luna care se deschide la clic în tabel (calculator-salarii.ro)
+  n-a fost făcută, ca aceeași lună să nu apară de două ori.

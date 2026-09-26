@@ -10,6 +10,7 @@ import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 import { ANI_CALENDAR, sarbatoriAn, zileLucratoareLuna } from "@/lib/sarbatori";
 import TabelArticol from "@/app/components/TabelArticol";
+import CalendarAn, { type CelulaZi, type LunaCalendar } from "@/app/components/CalendarAn";
 import { CARD_TITLU, Formula, LISTA_CARD, SEPARATOR_SECTIUNE, SPATIU_JOS, SPATIU_SUS, SUB_TITLU, TITLU_PAGINA, TITLU_SECTIUNE } from "@/app/components/ui";
 
 export type AnZileLucratoare = (typeof ANI_CALENDAR)[number];
@@ -43,6 +44,13 @@ function dateAn(an: AnZileLucratoare) {
       .filter(Boolean) as { day: number; label: string; weekend: boolean }[];
     return { name, zileCalendaristice, lucratoare, ore: lucratoare * 8, libere: zileCalendaristice - lucratoare, holidays };
   });
+  // Cele 12 luni pentru calendar, în formatul din PaginaZileLibere (luni primul).
+  const dowMonday = (m: number, d: number) => (new Date(Date.UTC(an, m, d)).getUTCDay() + 6) % 7;
+  const luni: LunaCalendar[] = rows.map((r, m) => {
+    const cells: CelulaZi[] = Array.from({ length: dowMonday(m, 1) }, () => null);
+    for (let d = 1; d <= r.zileCalendaristice; d++) cells.push({ day: d, weekend: dowMonday(m, d) >= 5, name: sarbatori[`${m + 1}-${d}`] });
+    return { luna: m + 1, nume: r.name, cells, lucr: r.lucratoare, libere: r.libere };
+  });
   const zileAn = rows.reduce((s, r) => s + r.zileCalendaristice, 0);
   const total = rows.reduce((s, r) => s + r.lucratoare, 0);
   // Doar ele scad zile din normă; din aceleași date ca tabelul.
@@ -57,7 +65,7 @@ function dateAn(an: AnZileLucratoare) {
     }),
     `"Total ${an}",${total},${total * 8},${zileAn - total},""`,
   ].join("\r\n");
-  return { rows, total, ore: total * 8, libere: zileAn - total, inSaptamana, csv: `data:text/csv;charset=utf-8,${encodeURIComponent(csv)}` };
+  return { rows, luni, total, ore: total * 8, libere: zileAn - total, inSaptamana, csv: `data:text/csv;charset=utf-8,${encodeURIComponent(csv)}` };
 }
 
 // Titlul și descrierea după modelul de la zile libere, fără cifre în titlu (proprietar,
@@ -104,7 +112,7 @@ function AniZileLucratoare({ an }: { an: AnZileLucratoare }) {
 // ─── Pagina ──────────────────────────────────────────────────────────────────
 
 export default function PaginaZileLucratoare({ an }: { an: AnZileLucratoare }) {
-  const { rows, total, ore, libere, inSaptamana, csv } = dateAn(an);
+  const { rows, luni, total, ore, libere, inSaptamana, csv } = dateAn(an);
   const acum = acumRo();
   const lunaCurenta = acum.an === an ? acum.luna : null;
   const trecut = an < acum.an;
@@ -199,6 +207,12 @@ export default function PaginaZileLucratoare({ an }: { an: AnZileLucratoare }) {
                 <a href={csv} download={`zile-lucratoare-${an}.csv`}>Descarcă tabelul (CSV)</a> pentru Excel sau pontaj. Temei:{" "}
                 <a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/128646" target="_blank" rel="noopener">Codul Muncii</a>, art. 139 și 142.
               </p>
+            </div>
+
+            {/* CALENDAR — 12 luni, același ca la zile libere (proprietar, 27 sept. 2026). */}
+            <div className={`${SEPARATOR_SECTIUNE} md:col-span-5`}>
+              <h2 className={TITLU_SECTIUNE}>Calendarul anului {an}</h2>
+              <CalendarAn an={an} luni={luni} dataBuild={new Date().toISOString()} />
             </div>
 
             <aside className="mt-8 md:col-span-2 md:col-start-4 md:row-start-1 md:mt-6 md:self-start">
