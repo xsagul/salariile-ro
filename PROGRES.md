@@ -3980,3 +3980,15 @@ săptămânal (azi e manual, ultima rulare 8 septembrie); (2) formatele rămase:
 cu rând numerotat), Gorj (post pe mai multe rânduri), .xls (UMF Carol Davila, Galați); (3) mai
 multe primării, DGASPC și biblioteci pentru meseriile de întreținere și îngrijire; (4) după 2
 octombrie, verificarea primei rulări automate art. 33 pe listele din 30 septembrie.
+
+## 26 septembrie 2026 — Fragmentul Google al homepage-ului
+
+Pe „calculator salariu net” Google afișa, în loc de meta description, un fragment compus:
+„Formula salariului net CAS = brut × 25% CASS = brut × 10% Romanian salary calculator
+(English)”. Cauza: descrierea nu conținea cuvântul „calculator”, așa că Google a lipit
+bucăți din pagină care îl conțin. Reparat în `a9d3e0a`: descrierea începe cu „Calculator
+salariu net 2026”, iar formula și lista „Pagini conexe” au `data-nosnippet`.
+
+**De verificat:** după recrawl (câteva zile, sau „Solicită indexarea” în GSC pe
+`https://salariile.ro/`), fragmentul pe „calculator salariu net”. Google poate rescrie și
+o descriere bună; dacă alege alt text, se vede ce anume și se decide atunci.
