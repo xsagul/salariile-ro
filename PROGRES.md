@@ -4106,4 +4106,3 @@ ca la `/zile-libere-2026`. Build static și `test:rendered` trec (334 de rute).
   `deseneazaCalendar`, printr-un „pictor” (canvas, respectiv jsPDF). Imaginea are
   2400×2860 px, adică de 2 ori mai mare decât pagina, iar PDF-ul e A4 vertical. Și PDF-ul
   tabelului are acum fundalul și cardurile site-ului, fără fraza de sub titlu.
-- Tot pe 27 septembrie: butoanele de descărcare ale calendarului stau acum pe rândul titlului „Calendarul anului <an>”, la dreapta. Pe telefon stau imediat sub titlu.
