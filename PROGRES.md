@@ -3985,9 +3985,11 @@ octombrie, verificarea primei rulări automate art. 33 pe listele din 30 septemb
 
 Pe „calculator salariu net” Google afișa, în loc de meta description, un fragment compus:
 „Formula salariului net CAS = brut × 25% CASS = brut × 10% Romanian salary calculator
-(English)”. Cauza: descrierea nu conținea cuvântul „calculator”, așa că Google a lipit
-bucăți din pagină care îl conțin. Reparat în `a9d3e0a`: descrierea începe cu „Calculator
-salariu net 2026”, iar formula și lista „Pagini conexe” au `data-nosnippet`.
+(English)”. Reparat în `a9d3e0a`: formula și lista „Pagini conexe” au `data-nosnippet`, deci
+Google nu mai poate lua text de acolo. Descrierea a fost rescrisă atunci cu „Calculator
+salariu net” la început, pe ipoteza că lipsa cuvântului „calculator” era cauza. Proprietarul a
+infirmat-o: impozitsalariu.ro, pe locul 2, își păstrează descrierea fără „calculator”
+(„Calculează rapid salariul net…”). Descrierea originală a fost restaurată, la cererea lui.
 
 **De verificat:** după recrawl (câteva zile, sau „Solicită indexarea” în GSC pe
 `https://salariile.ro/`), fragmentul pe „calculator salariu net”. Google poate rescrie și

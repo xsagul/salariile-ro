@@ -22,11 +22,11 @@ export const metadata: Metadata = {
   title: {
     absolute: "Calculator salariu net 2026 - Brut în net și invers",
   },
-  // Conține literal „calculator salariu net”. Fără el, Google compunea
-  // fragmentul din pagină ca să prindă cuvintele căutate: pe 26 septembrie 2026
-  // afișa eticheta formulei, rândurile CAS/CASS și linkul spre pagina engleză.
+  // Descrierea aleasă de proprietar. Pe 26 septembrie 2026 Google o înlocuia cu
+  // eticheta formulei, rândurile CAS/CASS și linkul spre pagina engleză; acelea
+  // au acum data-nosnippet, descrierea rămâne.
   description:
-    "Calculator salariu net 2026: vezi cât primești în mână din brut sau ce brut îți trebuie pentru netul dorit, cu taxele angajatului și costul firmei.",
+    "Calculează salariul net din brut sau brutul din net pentru 2026. Vezi taxele plătite de angajat și angajator în România.",
   alternates: { canonical: "https://salariile.ro" },
 };
 
