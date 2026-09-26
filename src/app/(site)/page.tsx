@@ -22,8 +22,11 @@ export const metadata: Metadata = {
   title: {
     absolute: "Calculator salariu net 2026 - Brut în net și invers",
   },
+  // Conține literal „calculator salariu net”. Fără el, Google compunea
+  // fragmentul din pagină ca să prindă cuvintele căutate: pe 26 septembrie 2026
+  // afișa eticheta formulei, rândurile CAS/CASS și linkul spre pagina engleză.
   description:
-    "Calculează salariul net din brut sau brutul din net pentru 2026. Vezi taxele plătite de angajat și angajator în România.",
+    "Calculator salariu net 2026: vezi cât primești în mână din brut sau ce brut îți trebuie pentru netul dorit, cu taxele angajatului și costul firmei.",
   alternates: { canonical: "https://salariile.ro" },
 };
 
@@ -173,15 +176,19 @@ export default function Page() {
                     impozitul din ce rămâne după ele.
                   </p>
 
-                  <Formula
-                    eticheta="Formula salariului net"
-                    randuri={[
-                      "CAS     = brut × 25%",
-                      "CASS    = brut × 10%",
-                      "Impozit = (brut − CAS − CASS − deducere) × 10%",
-                      "Net     = brut − CAS − CASS − impozit",
-                    ]}
-                  />
+                  {/* data-nosnippet: rândurile formulei, lipite, nu se citesc
+                      ca descriere în rezultatele Google. */}
+                  <div data-nosnippet>
+                    <Formula
+                      eticheta="Formula salariului net"
+                      randuri={[
+                        "CAS     = brut × 25%",
+                        "CASS    = brut × 10%",
+                        "Impozit = (brut − CAS − CASS − deducere) × 10%",
+                        "Net     = brut − CAS − CASS − impozit",
+                      ]}
+                    />
+                  </div>
 
                   <p className={paragraf}>
                     Formula e aceeași pentru toată lumea. Ce diferă de la om la om e deducerea, adică partea din
@@ -245,7 +252,7 @@ export default function Page() {
                   </ul>
 
                   <h3 className="mt-6 mb-2 text-base font-bold tracking-[-0.01em] text-stone-900">Pagini conexe</h3>
-                  <ul className={`${LISTA_CARD}`}>
+                  <ul data-nosnippet className={`${LISTA_CARD}`}>
                     {/* Legături editoriale către instrumentele și paginile
                         principale care altfel ar fi accesibile mai ales din
                         meniu sau footer. */}
