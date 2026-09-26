@@ -271,7 +271,7 @@ export default function PaginaZileLibere({ an }: { an: AnZileLibere }) {
           {/* CALENDAR — 12 luni */}
           <div className={`${SEPARATOR_SECTIUNE} md:col-span-5`}>
             <h2 className={TITLU_SECTIUNE}>Calendarul anului {an}</h2>
-            <CalendarAn an={an} luni={luni} dataBuild={new Date().toISOString()} />
+            <CalendarAn an={an} luni={luni} dataBuild={new Date().toISOString()} numara="libere" />
           </div>
           <aside className="mt-8 md:col-span-2 md:col-start-4 md:row-start-1 md:mt-6 md:self-start">
             <UrmatoareaZiLibera an={an} dataBuild={new Date().toISOString()} />

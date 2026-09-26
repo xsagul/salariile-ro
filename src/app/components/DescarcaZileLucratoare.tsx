@@ -7,7 +7,7 @@
 
 import { useState } from "react";
 import { trimiteEveniment } from "@/lib/analytics";
-import { CERNEALA, GRI, ZILE, deseneazaPdfCalendar, deseneazaPdfTabel, type DateZileLucratoare } from "@/lib/pdf-zile-lucratoare";
+import { CERNEALA, GRI, ZILE, zileLucratoareText, deseneazaPdfCalendar, deseneazaPdfTabel, type DateZileLucratoare } from "@/lib/pdf-zile-lucratoare";
 
 type Props = DateZileLucratoare;
 
@@ -69,7 +69,7 @@ async function pngCalendar({ an, luni, sarbatori, total, ore }: Props) {
     const x = x0 + (i % 6) * (lw + gx), y = y0 + Math.floor(i / 6) * lh;
     g.fillStyle = CERNEALA; g.font = f(26, true); g.fillText(l.nume.toUpperCase(), x + lw / 2, y);
     g.fillStyle = "#ffffff"; g.beginPath(); g.roundRect(x, y + 14, lw, 34, 17); g.fill();
-    g.fillStyle = GRI; g.font = f(19); g.fillText(`${l.lucr} zile lucrătoare`, x + lw / 2, y + 38);
+    g.fillStyle = GRI; g.font = f(19); g.fillText(zileLucratoareText(l.lucr), x + lw / 2, y + 38);
     g.font = f(18, true);
     ZILE.forEach((z, j) => { g.fillStyle = j >= 5 ? GRI : CERNEALA; g.fillText(z, x + j * celula + celula / 2 + 1, y + 82); });
     l.cells.forEach((cel, k) => {

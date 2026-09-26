@@ -27,7 +27,13 @@ function ton(c: NonNullable<CelulaZi>) {
   return "text-stone-700";
 }
 
-export default function CalendarAn({ an, luni, dataBuild }: { an: number; luni: LunaCalendar[]; dataBuild: string }) {
+// „20 de zile”, dar „18 zile”: în română, de la 20 în sus numeralul cere „de”.
+const zile = (n: number, fel: string) => `${n}${n % 100 >= 20 || n % 100 === 0 ? " de" : ""} zile ${fel}`;
+
+/** `numara`: ce scrie în colțul fiecărei luni. Pe zile libere, zilele libere; pe zile
+ *  lucrătoare, zilele lucrătoare. Aceeași lună nu arată la fel pe cele două pagini
+ *  (proprietar, 27 sept. 2026: mai puțin conținut dublat între ele). */
+export default function CalendarAn({ an, luni, dataBuild, numara }: { an: number; luni: LunaCalendar[]; dataBuild: string; numara: "libere" | "lucratoare" }) {
   const [azi, setAzi] = useState<number | null>(null);
   const [activ, setActiv] = useState<string | null>(null);
 
@@ -73,7 +79,7 @@ export default function CalendarAn({ an, luni, dataBuild }: { an: number; luni: 
           <div key={mo.luna} className={`${CARD} transition-opacity ${mo.luna <= trecute ? "opacity-55" : ""}`}>
             <div className="flex items-baseline justify-between">
               <h3 className="text-base font-semibold tracking-[-0.01em] text-stone-900">{mo.nume}</h3>
-              <span className="text-xs text-stone-600">{mo.lucr} lucr. · {mo.libere} libere</span>
+              <span className="text-xs text-stone-600">{numara === "libere" ? zile(mo.libere, "libere") : zile(mo.lucr, "lucrătoare")}</span>
             </div>
             <div className="mt-3 grid grid-cols-7 gap-1 text-center" aria-hidden="true">
               {ZILE_SCURT.map((z) => (

@@ -4092,3 +4092,8 @@ ca la `/zile-libere-2026`. Build static și `test:rendered` trec (334 de rute).
   Liberation Sans (SIL OFL, `public/fonts`, cu licența alături), fiindcă Helvetica din jsPDF
   n-are ș, ț, ă. Se încarcă doar la clic. GA4: `file_download` cu `instrument` =
   `zile_lucratoare`. Verificat pe fișierele generate: diacritice corecte, cifre ca în tabel.
+- Tot pe 27 septembrie: calendarul are aceleași carduri pe ambele pagini, dar colțul lunii
+  diferă (prop `numara` în `CalendarAn`). Pe zile libere scrie „13 zile libere”, pe zile
+  lucrătoare „18 zile lucrătoare”, cu „de” de la 20 în sus. Înainte ambele arătau
+  „18 lucr. · 13 libere”. Scopul: mai puțin conținut identic între cele două pagini. Aceeași
+  regulă pentru „de” e aplicată și în PDF și în imagine.

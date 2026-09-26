@@ -217,7 +217,7 @@ export default function PaginaZileLucratoare({ an }: { an: AnZileLucratoare }) {
             {/* CALENDAR — 12 luni, același ca la zile libere (proprietar, 27 sept. 2026). */}
             <div className={`${SEPARATOR_SECTIUNE} md:col-span-5`}>
               <h2 className={TITLU_SECTIUNE}>Calendarul anului {an}</h2>
-              <CalendarAn an={an} luni={luni} dataBuild={new Date().toISOString()} />
+              <CalendarAn an={an} luni={luni} dataBuild={new Date().toISOString()} numara="lucratoare" />
               <DescarcaZileLucratoare {...descarcari} ce="calendar" />
             </div>
 

@@ -17,6 +17,8 @@ export type DateZileLucratoare = {
 };
 
 export const ZILE = ["L", "M", "M", "J", "V", "S", "D"];
+// „20 de zile lucrătoare”, dar „18 zile lucrătoare”, ca în calendarul de pe pagină.
+export const zileLucratoareText = (n: number) => `${n}${n % 100 >= 20 || n % 100 === 0 ? " de" : ""} zile lucrătoare`;
 // Culorile calendarului de pe pagină (CalendarAn): sărbătoarea stone-900 pe alb,
 // weekendul stone-100 cu text stone-600.
 export const CERNEALA = "#1c1917";
@@ -82,7 +84,7 @@ export function deseneazaPdfCalendar(doc: jsPDF, { an, luni, total, ore }: DateZ
     const x = x0 + (i % coloane) * (lw + gx);
     const y = y0 + Math.floor(i / coloane) * lh;
     doc.setFont("Liberation", "bold").setFontSize(11).setTextColor(CERNEALA).text(l.nume, x, y + 4);
-    doc.setFont("Liberation", "normal").setFontSize(8).setTextColor(GRI).text(`${l.lucr} zile lucrătoare`, x + lw, y + 4, { align: "right" });
+    doc.setFont("Liberation", "normal").setFontSize(8).setTextColor(GRI).text(zileLucratoareText(l.lucr), x + lw, y + 4, { align: "right" });
     doc.setFontSize(7.5);
     ZILE.forEach((z, j) => doc.setTextColor(j >= 5 ? GRI : CERNEALA).text(z, x + j * celula + celula / 2 + 1, y + 10.5, { align: "center" }));
     l.cells.forEach((c, k) => {
