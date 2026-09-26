@@ -179,10 +179,10 @@ export default function ZileLucratoare2026Page() {
           </CardCompanion>
         }
       >
-        <h2 id="tabel-2026" className="scroll-mt-24">Tabel zile lucrătoare 2026</h2>
-        <p>
-          Weekendurile și sărbătorile care pică de luni până vineri sunt deja scăzute.
-        </p>
+        {/* Tabelul începe secțiunea, fără titlu deasupra, ca să fie aliniat cu cardul din
+            dreapta, ca la zile libere (proprietar, 27 sept. 2026). Fără marginea de sus a
+            tabelului, altfel pornește cu 24 px sub card. */}
+        <div className="[&>.table-wrap]:mt-0">
           <TabelArticol>
               <thead>
                 <tr>
@@ -213,6 +213,7 @@ export default function ZileLucratoare2026Page() {
                 </tr>
               </tbody>
           </TabelArticol>
+        </div>
         <p className="source-note">
           <a href={CSV_DATA_URI} download={`zile-lucratoare-${YEAR}.csv`}>Descarcă tabelul (CSV)</a> pentru Excel sau
           pontaj. Temei: <a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/128646" target="_blank" rel="noopener">Codul Muncii</a>, art. 139 și 142.
