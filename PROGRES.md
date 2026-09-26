@@ -4051,3 +4051,8 @@ S-au scos calea de navigare vizibilă și rândul „Scris de · Actualizat”, 
 BreadcrumbList și autorul rămân în JSON-LD. Ordinea e acum: titlu, frază, tabel (cu cardul
 sărbătorilor), apoi calculatorul pe interval (cu cardul lunii curente). Calendarul lunar
 nu s-a adăugat; se decide separat.
+- Tot pe 27 septembrie: cardul cu luna curentă a ieșit, fiindcă repeta rândul din tabel. Luna
+  curentă e acum marcată direct în tabel, pe fundal `antet`, cu „luna curentă” și
+  `aria-current="date"`. Sub fraza de sus au apărut butoanele cu anii (2026, 2027), ca la zile
+  libere; linkul text spre 2027 a dispărut odată cu cardul. Pagina 2027 are încă alt șablon
+  (`Calendar2027`) și nu are butoanele.

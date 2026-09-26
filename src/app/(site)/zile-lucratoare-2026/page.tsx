@@ -143,10 +143,29 @@ const buildJsonLd = () => ({
   ],
 });
 
+// Filele cu anii, ca la zile libere (PaginaZileLibere.tsx). Doar anii care au pagină.
+const ANI_ZILE_LUCRATOARE = [2026, 2027] as const;
+function AniZileLucratoare({ an }: { an: number }) {
+  return (
+    <nav aria-label="Zile lucrătoare pe ani" className="mt-5 flex w-full rounded-md border border-stone-300 bg-surface p-1 shadow-soft sm:inline-flex sm:w-auto">
+      {ANI_ZILE_LUCRATOARE.map((x) => (
+        <Link
+          key={x}
+          href={`/zile-lucratoare-${x}`}
+          aria-current={x === an ? "page" : undefined}
+          className={`flex min-h-11 min-w-0 flex-1 items-center justify-center rounded px-1 text-sm font-medium tabular-nums transition-colors sm:flex-none sm:px-4 ${
+            x === an ? "bg-stone-900 text-white" : "text-stone-700 hover:bg-stone-100 hover:text-stone-900"
+          }`}
+        >
+          {x}
+        </Link>
+      ))}
+    </nav>
+  );
+}
+
 export default function ZileLucratoare2026Page() {
   const lunaIndex = lunaCurentaIndex();
-  const lunaCurenta = lunaIndex === null ? null : rows[lunaIndex];
-  const sarbatoriInLuna = lunaCurenta ? lunaCurenta.holidays.filter((h) => !h.weekend).length : 0;
 
   return (
     <>
@@ -159,6 +178,7 @@ export default function ZileLucratoare2026Page() {
           În 2026 sunt <strong>{TOTAL_LUCRATOARE} de zile lucrătoare</strong>, adică {TOTAL_ORE.toLocaleString("ro-RO")} de ore la
           program de 8 ore pe zi. Restul de {TOTAL_LIBERE} de zile sunt weekenduri și sărbători legale.
         </Lead>
+        <AniZileLucratoare an={YEAR} />
       </Hero>
 
       <Section
@@ -193,12 +213,18 @@ export default function ZileLucratoare2026Page() {
                 </tr>
               </thead>
               <tbody>
-                {rows.map((row) => (
-                  <tr key={row.name} id={row.name.toLowerCase()} className="scroll-mt-24">
+                {rows.map((row, i) => (
+                  <tr
+                    key={row.name}
+                    id={row.name.toLowerCase()}
+                    aria-current={i === lunaIndex ? "date" : undefined}
+                    className={`scroll-mt-24 ${i === lunaIndex ? "bg-antet font-semibold text-stone-900" : ""}`}
+                  >
                     <td className="font-medium text-stone-900">
                       <a href={`#${row.name.toLowerCase()}`} className="hover:underline">
                         {row.name}
                       </a>
+                      {i === lunaIndex ? <span className="ml-2 text-xs font-normal text-stone-600">luna curentă</span> : null}
                     </td>
                     <td className="text-right tabular-nums">{row.lucratoare}</td>
                     <td className="text-right tabular-nums">{row.ore}</td>
@@ -220,30 +246,8 @@ export default function ZileLucratoare2026Page() {
         </p>
       </Section>
 
-      <Section
-        companion={
-          <CardCompanion titlu={lunaCurenta ? `${lunaCurenta.name} ${YEAR}` : `Anul ${YEAR}`}>
-            <p className="text-3xl font-bold tracking-[-0.02em] text-stone-900 tabular-nums">
-              {lunaCurenta ? lunaCurenta.lucratoare : TOTAL_LUCRATOARE} de zile lucrătoare
-            </p>
-            <p className="mt-2 text-sm text-stone-600">
-              {lunaCurenta ? (
-                <>
-                  Adică {lunaCurenta.ore} de ore la program de 8 ore pe zi.{" "}
-                  {sarbatoriInLuna === 0
-                    ? "Nicio sărbătoare legală nu pică luna asta în timpul săptămânii."
-                    : `${sarbatoriInLuna === 1 ? "O sărbătoare legală pică" : `${sarbatoriInLuna} sărbători legale pică`} în timpul săptămânii și scad din normă.`}
-                </>
-              ) : (
-                <>Adică {TOTAL_ORE.toLocaleString("ro-RO")} de ore la program de 8 ore pe zi.</>
-              )}
-            </p>
-            <Link href="/zile-lucratoare-2027" className="mt-4 inline-block text-sm LINK">
-              Zile lucrătoare 2027
-            </Link>
-          </CardCompanion>
-        }
-      >
+      {/* Cardul cu luna curentă a ieșit: repeta rândul marcat din tabel (proprietar, 27 sept. 2026). */}
+      <Section>
         <CalculatorIntervalZile />
       </Section>
 
