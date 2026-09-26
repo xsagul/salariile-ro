@@ -3,7 +3,7 @@ import Link from "@/app/components/Link";
 import { personSchema } from "@/lib/person";
 import { SARBATORI_LEGALE_2026, zileLucratoareLuna } from "@/lib/sarbatori";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
-import { Hero, Section, Breadcrumb, H1, Lead, Formula, CardCompanion, SUB_TITLU, LISTA_CARD } from "@/app/components/ui";
+import { Hero, Section, H1, Lead, Formula, CardCompanion, LISTA_CARD } from "@/app/components/ui";
 import TabelArticol from "@/app/components/TabelArticol";
 import CalculatorIntervalZile from '@/app/components/CalculatorIntervalZile';
 
@@ -153,11 +153,8 @@ export default function ZileLucratoare2026Page() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(buildJsonLd()) }} />
 
       <Hero>
-        <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Zile lucrătoare 2026" }]} />
         <H1>Zile lucrătoare 2026</H1>
-        <p className={`${SUB_TITLU} text-sm text-stone-600 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2`}>
-          Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat {PAGE_LAST_MODIFIED[PATH].toLocaleDateString("ro-RO", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })}
-        </p>
+        {/* Fără cale de navigare, autor și dată sus: e pagină-instrument, ca zile libere (proprietar, 27 sept. 2026). */}
         <Lead>
           În 2026 sunt <strong>{TOTAL_LUCRATOARE} de zile lucrătoare</strong>, adică {TOTAL_ORE.toLocaleString("ro-RO")} de ore la
           program de 8 ore pe zi. Restul de {TOTAL_LIBERE} de zile sunt weekenduri și sărbători legale.
@@ -166,33 +163,6 @@ export default function ZileLucratoare2026Page() {
 
       <Section
         noTopBorder
-        companion={
-          <CardCompanion titlu={lunaCurenta ? `${lunaCurenta.name} ${YEAR}` : `Anul ${YEAR}`}>
-            <p className="text-3xl font-bold tracking-[-0.02em] text-stone-900 tabular-nums">
-              {lunaCurenta ? lunaCurenta.lucratoare : TOTAL_LUCRATOARE} de zile lucrătoare
-            </p>
-            <p className="mt-2 text-sm text-stone-600">
-              {lunaCurenta ? (
-                <>
-                  Adică {lunaCurenta.ore} de ore la program de 8 ore pe zi.{" "}
-                  {sarbatoriInLuna === 0
-                    ? "Nicio sărbătoare legală nu pică luna asta în timpul săptămânii."
-                    : `${sarbatoriInLuna === 1 ? "O sărbătoare legală pică" : `${sarbatoriInLuna} sărbători legale pică`} în timpul săptămânii și scad din normă.`}
-                </>
-              ) : (
-                <>Adică {TOTAL_ORE.toLocaleString("ro-RO")} de ore la program de 8 ore pe zi.</>
-              )}
-            </p>
-            <Link href="/zile-lucratoare-2027" className="mt-4 inline-block text-sm LINK">
-              Zile lucrătoare 2027
-            </Link>
-          </CardCompanion>
-        }
-      >
-        <CalculatorIntervalZile />
-      </Section>
-
-      <Section
         companion={
           <CardCompanion titlu="Sărbătorile care scad o zi de lucru">
             <ul className={`${LISTA_CARD} text-stone-600`}>
@@ -247,6 +217,33 @@ export default function ZileLucratoare2026Page() {
           <a href={CSV_DATA_URI} download={`zile-lucratoare-${YEAR}.csv`}>Descarcă tabelul (CSV)</a> pentru Excel sau
           pontaj. Temei: <a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/128646" target="_blank" rel="noopener">Codul Muncii</a>, art. 139 și 142.
         </p>
+      </Section>
+
+      <Section
+        companion={
+          <CardCompanion titlu={lunaCurenta ? `${lunaCurenta.name} ${YEAR}` : `Anul ${YEAR}`}>
+            <p className="text-3xl font-bold tracking-[-0.02em] text-stone-900 tabular-nums">
+              {lunaCurenta ? lunaCurenta.lucratoare : TOTAL_LUCRATOARE} de zile lucrătoare
+            </p>
+            <p className="mt-2 text-sm text-stone-600">
+              {lunaCurenta ? (
+                <>
+                  Adică {lunaCurenta.ore} de ore la program de 8 ore pe zi.{" "}
+                  {sarbatoriInLuna === 0
+                    ? "Nicio sărbătoare legală nu pică luna asta în timpul săptămânii."
+                    : `${sarbatoriInLuna === 1 ? "O sărbătoare legală pică" : `${sarbatoriInLuna} sărbători legale pică`} în timpul săptămânii și scad din normă.`}
+                </>
+              ) : (
+                <>Adică {TOTAL_ORE.toLocaleString("ro-RO")} de ore la program de 8 ore pe zi.</>
+              )}
+            </p>
+            <Link href="/zile-lucratoare-2027" className="mt-4 inline-block text-sm LINK">
+              Zile lucrătoare 2027
+            </Link>
+          </CardCompanion>
+        }
+      >
+        <CalculatorIntervalZile />
       </Section>
 
       <Section

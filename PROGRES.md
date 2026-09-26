@@ -4042,3 +4042,12 @@ până pe 8 octombrie.
 - Web vitals: 6% dintre utilizatori au avut cel puțin o măsurătoare „poor”; CrUX pe teren e „bun”
   pe toate (LCP 1,8 s, INP 174 ms). Laboratorul PSI dă LCP 8,6 s și „Reduce unused JavaScript”.
 - Ziua testului de RPM (21 sept) apare în GA4 cu 1.736 de afișări de reclame și 6,27 lei.
+
+## 27 septembrie 2026 — Zile lucrătoare 2026: tabelul sus
+
+Cerut de proprietar după SERP-ul din `research/serp-zile-lucratoare-2026-09-27.md`, unde
+primele rezultate (Edenred, calculator-salarii.ro) pun tabelul pe lună imediat sub titlu.
+S-au scos calea de navigare vizibilă și rândul „Scris de · Actualizat”, ca la zile libere.
+BreadcrumbList și autorul rămân în JSON-LD. Ordinea e acum: titlu, frază, tabel (cu cardul
+sărbătorilor), apoi calculatorul pe interval (cu cardul lunii curente). Calendarul lunar
+nu s-a adăugat; se decide separat.
