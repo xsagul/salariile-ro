@@ -3959,3 +3959,24 @@ Descrierea din Google și primul răspuns din FAQ spun aceeași cifră.
   publici 3.787 lei” dintr-o singură instituție; scos. Test: `scripts/test-concluzie.mjs`.
 - Verificat: tsc, `npm test`, build, `test:rendered` (descriere ≤ 158 caractere, legătura către
   rândul de acoperire), telefon 375 px și 1280 × 607.
+
+Tot 26 septembrie, dimineața — **extinderea și automatizarea.**
+- 68 de surse în registru; 16.221 de posturi plătite acceptate (spitale din București, Bihor,
+  Brăila, Brașov, Cluj; DGASPC; DSP-uri; universități). 23 de meserii cu concluzie; medic 19
+  instituții în 14 județe; apare consilierul juridic (5.249 lei net fix).
+- Pe vechime: tabel din gradația statelor de plată (asistent medical 3.832 lei sub 3 ani →
+  5.256 peste 20 de ani); prag 30 de posturi din 3 instituții pe treaptă.
+- Angajatorii mari: Kaufland și Lidl (același API de cariere, grupul Schwarz) — salariul
+  structurat pe fiecare anunț; Lidl scrie separat venitul mediu brut total (cu tichete și
+  bonusuri). Secțiunea „Ce oferă marii angajatori” (vânzător, agent de curățenie).
+- Automat: `colectare.yml` zilnic (ANOFM + angajatori → agregare → publicare → teste);
+  `colectare-art33.yml` în 2–12 aprilie și octombrie (listele noi de la 31 martie și 30
+  septembrie). Arhitectura e scrisă în CLAUDE.md.
+- Încercat și abandonat: OCR cu tesseract.js pe scanări (cifrele ies stâlcite, 47 s/pagină).
+- „Cu ture și gărzi” se arată doar peste +3%: la medici gărzile sunt contracte separate.
+
+**Următorii pași:** (1) colectorul de anunțuri de pe platforme, incremental și programat
+săptămânal (azi e manual, ultima rulare 8 septembrie); (2) formatele rămase: Timișoara (antet
+cu rând numerotat), Gorj (post pe mai multe rânduri), .xls (UMF Carol Davila, Galați); (3) mai
+multe primării, DGASPC și biblioteci pentru meseriile de întreținere și îngrijire; (4) după 2
+octombrie, verificarea primei rulări automate art. 33 pe listele din 30 septembrie.
