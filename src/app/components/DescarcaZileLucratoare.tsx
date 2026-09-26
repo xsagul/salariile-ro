@@ -94,7 +94,7 @@ async function pngCalendar({ an, luni }: Props) {
 const BUTON =
   "inline-flex min-h-11 items-center rounded border border-stone-300 bg-surface px-4 text-sm font-medium text-stone-900 shadow-soft transition-colors hover:bg-stone-100 disabled:opacity-60";
 
-export default function DescarcaZileLucratoare(props: Props & { ce: "tabel" | "calendar" }) {
+export default function DescarcaZileLucratoare({ className = "mt-4", ...props }: Props & { ce: "tabel" | "calendar"; className?: string }) {
   const [lucreaza, setLucreaza] = useState<string | null>(null);
   const [eroare, setEroare] = useState(false);
   const porneste = async (tip: "pdf-tabel" | "pdf-calendar" | "png-calendar") => {
@@ -122,7 +122,7 @@ export default function DescarcaZileLucratoare(props: Props & { ce: "tabel" | "c
     </button>
   );
   return (
-    <div className="mt-4 flex flex-wrap items-center gap-3">
+    <div className={`${className} flex flex-wrap items-center gap-3`}>
       {props.ce === "tabel"
         ? buton("pdf-tabel", "Descarcă tabelul (PDF)")
         : (<>{buton("pdf-calendar", "Descarcă calendarul (PDF)")}{buton("png-calendar", "Descarcă calendarul (imagine)")}</>)}

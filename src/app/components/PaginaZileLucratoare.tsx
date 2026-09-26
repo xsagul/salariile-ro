@@ -216,9 +216,12 @@ export default function PaginaZileLucratoare({ an }: { an: AnZileLucratoare }) {
 
             {/* CALENDAR — 12 luni, același ca la zile libere (proprietar, 27 sept. 2026). */}
             <div className={`${SEPARATOR_SECTIUNE} md:col-span-5`}>
-              <h2 className={TITLU_SECTIUNE}>Calendarul anului {an}</h2>
+              {/* Descărcările stau pe rândul titlului, la dreapta (proprietar, 27 sept. 2026). */}
+              <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
+                <h2 className={TITLU_SECTIUNE}>Calendarul anului {an}</h2>
+                <DescarcaZileLucratoare {...descarcari} ce="calendar" className="" />
+              </div>
               <CalendarAn an={an} luni={luni} dataBuild={new Date().toISOString()} numara="lucratoare" />
-              <DescarcaZileLucratoare {...descarcari} ce="calendar" />
             </div>
 
             <aside className="mt-8 md:col-span-2 md:col-start-4 md:row-start-1 md:mt-6 md:self-start">
