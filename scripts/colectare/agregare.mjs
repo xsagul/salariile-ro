@@ -2,7 +2,7 @@
 // prin triangulare — nu prin medie ponderată între surse (CLAUDE.md: pilonii nu se topesc
 // într-o cifră fără sursă). Decizia proprietarului, 26 septembrie 2026.
 //
-//   node scripts/colectare/agregare.mjs [--out=colectare/agregat/meserii.json]
+//   npx tsx scripts/colectare/agregare.mjs [--out=colectare/agregat/meserii.json]
 //
 // Surse:
 //   plătit    — listele art. 33 L153/2017 (colectare/art33/observatii), fișiere acceptate
@@ -14,6 +14,8 @@ import fs from "node:fs";
 import path from "node:path";
 
 const fiscal = await import("../../src/lib/fiscal.ts");
+// Rulează cu tsx (aliasurile @/ din grile-publice.ts): npx tsx scripts/colectare/agregare.mjs
+const { grilaPublica } = await import("../../src/lib/grile-publice.ts");
 
 export const PRAGURI = {
   platit: { institutii: 5, judete: 3, randuri: 50, vechimeLuniMax: 18 },
@@ -53,6 +55,17 @@ function distributie(randuri, cheie) {
 const raport = JSON.parse(fs.readFileSync("colectare/art33/raport.json", "utf8"));
 const reg = JSON.parse(fs.readFileSync("colectare/art33/surse.json", "utf8"));
 const numeSursa = Object.fromEntries(reg.surse.map((s) => [s.id, s.institutie]));
+// Un post cu normă întreagă nu are baza sub cea mai mică treaptă legală a funcției (gradația
+// 0) și nici sub salariul minim. Rândurile de sub prag sunt contracte de gardă ale medicilor
+// („MEDIC PRIMAR 7.020” cu 9.195 lei gărzi, Miercurea Ciuc) sau normă parțială: se numără
+// separat și nu intră în salariul fix (26 septembrie 2026).
+const minimPerioada = (p) => (p < "2026-07" ? (p < "2024-07" ? 3300 : p < "2025-01" ? 3700 : 4050) : 4325);
+const pragBaza = (slug, perioada) => {
+  const g = grilaPublica(slug);
+  const trepte = g && !g.doarSectiune ? g.trepte.map((t) => t.brut).filter((x) => x > 0) : [];
+  return Math.max(0.95 * minimPerioada(perioada), trepte.length ? 0.97 * Math.min(...trepte) : 0);
+};
+const subPrag = {};
 const obs = [];
 for (const f of fs.readdirSync("colectare/art33/observatii").filter((f) => f.endsWith(".jsonl"))) {
   const id = f.replace(/\.jsonl$/, "");
@@ -61,6 +74,7 @@ for (const f of fs.readdirSync("colectare/art33/observatii").filter((f) => f.end
     if (!l.trim()) continue;
     const o = JSON.parse(l);
     if (o.invalid || !o.perioada || luniIntre(o.perioada, AZI) > PRAGURI.platit.vechimeLuniMax) continue;
+    if (o.baza < pragBaza(o.meserie, o.perioada)) { subPrag[o.meserie] = (subPrag[o.meserie] ?? 0) + 1; continue; }
     const brutFix = o.baza + o.sporFix;
     obs.push({ ...o, brutFix, netFix: net(brutFix, o.perioada), netBaza: net(o.baza, o.perioada),
       netCuVariabil: net(brutFix + o.variabil, o.perioada), debutant: /DEBUTANT/i.test(o.text) });
@@ -86,7 +100,7 @@ function platit(slug) {
   const cuVar = r.filter((o) => o.variabil > 0);
   const trece = institutii.size >= PRAGURI.platit.institutii && judete.size >= PRAGURI.platit.judete && r.length >= PRAGURI.platit.randuri;
   return {
-    randuri: r.length, institutii: institutii.size, judete: judete.size, trece,
+    randuri: r.length, subPragExclus: subPrag[slug] ?? 0, institutii: institutii.size, judete: judete.size, trece,
     perioade: [...new Set(r.map((o) => o.perioada))].sort(),
     surse: [...institutii].map((id) => numeSursa[id] ?? id),
     netFix: distributie(r, (o) => o.netFix), brutFix: distributie(r, (o) => o.brutFix), netBaza: distributie(r, (o) => o.netBaza),

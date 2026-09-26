@@ -74,6 +74,12 @@ la Alba, 15% la 6.819 = 731. Raportul e ~10,7%, constant: sporurile se calculeaz
 veche, înghețată. Grila + procente dă cifre greșite; sumele publicate dau cifra plătită.
 
 ### 4.4. Proba — asistent medical, 2 spitale județene, 462 de rânduri
+
+> **Corectat pe 26 septembrie 2026, noaptea:** proba de mai jos citea coloanele după poziția
+> în rând și la Alba a luat o coloană greșită. Cu cititorul pe coordonate (scripts/colectare/
+> art33/), pe 10 instituții din 9 județe și 4.975 de posturi, asistentul medical are **4.896
+> lei net fix** (P25–P75 4.471–5.931), debutant 4.484, cu ture și gărzi 5.848. Cifrele de mai
+> jos rămân ca istoric al probei.
 | | Median net | Jumătate între |
 |---|---|---|
 | Salariul fix (bază + spor de condiții) | **4.416 lei** | 4.216–5.357 |

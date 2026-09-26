@@ -50,6 +50,7 @@ import TransparentaSalariu from '@/app/components/TransparentaSalariu';
 import ReperSalariu from '@/app/components/ReperSalariu';
 import PiloniSalariu from '@/app/components/PiloniSalariu';
 import TrepteRapide from '@/app/components/TrepteRapide';
+import SalariuConcluzie, { concluzieMeserie } from '@/app/components/SalariuConcluzie';
 import { descriereReper, grilaEducatie, reperMeserie } from '@/lib/repere-meserii';
 import { textIndicator } from '@/lib/indicator-meserie';
 import corCatalogue from '@/data/cor-meserii.json';
@@ -97,6 +98,14 @@ function descrierePagina(date: DateMeserie) {
   const lei = (n: number) => n.toLocaleString("ro-RO");
   const r = reperMeserie(date);
   const inceput = `Cât câștigă un ${de}`;
+
+  const c = concluzieMeserie(date.meserie.slug);
+  if (c?.sursa === "platit" && c.platit) {
+    return `${inceput}: ${lei(c.net)} lei net fix la stat; jumătate au între ${lei(c.interval![0])} și ${lei(c.interval![1])} lei. Din salariile a ${c.platit.institutii} instituții, pe județe.`;
+  }
+  if (c?.sursa === "oferit" && c.oferit) {
+    return `${inceput}: ${lei(c.net)} lei net oferit la angajare, din ${c.oferit.anunturi} anunțuri verificate. Vezi cât plătește statul și ce declară angajatorii la ANOFM.`;
+  }
 
   const grilaCandidata = grilaPublica(date.meserie.slug);
   const grila = grilaCandidata?.doarSectiune ? undefined : grilaCandidata;
@@ -167,8 +176,14 @@ function faqPentru(date: DateMeserie) {
   const varf = maxim && debutant && maxim.net > debutant.net * 1.05 ? maxim : null;
   const lei = (n: number) => `${n.toLocaleString("ro-RO")} lei net pe lună`;
 
+  const c = concluzieMeserie(date.meserie.slug);
+  const raspunsPrincipal = c?.sursa === "platit" && c.platit
+    ? `La angajatorii publici, un ${de} ia în mână ${lei(c.net)} lei pe lună, salariul fix din mijloc; jumătate din posturi au între ${lei(c.interval![0])} și ${lei(c.interval![1])} lei.${c.platit.cuVariabil ? ` Cu ture și gărzi, ${lei(c.platit.cuVariabil.net)} lei.` : ""} Cifrele vin din salariile publicate de ${c.platit.institutii} instituții publice din ${c.platit.judete} județe, netul fiind calculat pentru o persoană fără persoane în întreținere.`
+    : c?.sursa === "oferit" && c.oferit
+    ? `La angajare se oferă unui ${de} în jur de ${lei(c.net)} lei net pe lună, mijlocul salariilor din ${c.oferit.anunturi} anunțuri verificate.`
+    : descriereReper(date);
   const intrebari = [
-    { q: `Cât câștigă un ${de} în România?`, a: descriereReper(date) },
+    { q: `Cât câștigă un ${de} în România?`, a: raspunsPrincipal },
   ];
   if (debutant) {
     intrebari.push({
@@ -278,10 +293,19 @@ export default async function MeseriePage({ params }: Props) {
           />
           <H1>Salariu {numeMic} în 2026</H1>
           <Lead>{meserie.ceFace}</Lead>
-          <ReperSalariu date={date} />
-          <TrepteRapide date={date} />
-          <PiloniSalariu date={date} />
-          <TransparentaSalariu slug={slug} />
+          {/* Cu salariul-concluzie (26 septembrie 2026), primul ecran e o singură cifră cu
+              proveniență; celelalte surse o verifică dedesubt. Fără concluzie, pagina rămâne pe
+              reperele de până acum. */}
+          {concluzieMeserie(slug) ? (
+            <SalariuConcluzie slug={slug} de={meserie.de} />
+          ) : (
+            <>
+              <ReperSalariu date={date} />
+              <TrepteRapide date={date} />
+              <PiloniSalariu date={date} />
+              <TransparentaSalariu slug={slug} />
+            </>
+          )}
           {grilaDidactica.length > 0 && <section className="mt-8 rounded-md border border-stone-200 bg-surface p-5">
             <h2 className={TITLU_CARD}>Grad didactic, studii și vechime în învățământ</h2>
             <p className="mt-3 text-sm text-stone-600">Net standard pe trepte didactice.</p>

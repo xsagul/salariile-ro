@@ -3943,3 +3943,19 @@ Tot 26 septembrie, noaptea — **arhitectura salariului-concluzie, prima versiun
   spor” = bază de calcul (dubla sporul); „veniTURI” citit ca tură; hrana inclusă în total.
 - Rezultat: asistent medical 4.797 lei net fix (P25–P75 4.209–5.806), 5.028 de posturi, 11
   instituții, 10 județe; anunțurile 4.750 (−1%), ANOFM 3.116 (−35%, minimul formal).
+
+Tot 26 septembrie — **noul prim ecran pe paginile de meserie** (`SalariuConcluzie.tsx`), pe
+22 de meserii cu concluzie: o cifră („4.896 lei net” la asistent medical), ce înseamnă (salariul
+fix: bază + sporuri permanente, fără ture și gărzi), „jumătate din posturi au între …”, trei
+repere (la început, cu ture și gărzi, cu studii superioare), proveniența (instituții, județe,
+lună, posturi); dedesubt „Ce spun celelalte surse” (numai surse peste pragurile lor), județele
+și „Cum am calculat”. Înlocuiește ReperSalariu + TrepteRapide + PiloniSalariu + exemplul
+Constanța, inclusiv cifra Salario din prim-plan; paginile fără concluzie rămân ca înainte.
+Descrierea din Google și primul răspuns din FAQ spun aceeași cifră.
+- Contractele de gardă ale medicilor („MEDIC PRIMAR 7.020” cu 9.195 lei gărzi) ieșeau drept
+  posturi: pragul de normă întreagă = max(treapta minimă din grilă × 0,97; salariul minim ×
+  0,95); sub el, rândul se numără separat. Medic: 7.601 → 9.717 lei net fix.
+- Sub praguri nu se arată nimic nici ca verificare: electricianul arăta „la angajatorii
+  publici 3.787 lei” dintr-o singură instituție; scos. Test: `scripts/test-concluzie.mjs`.
+- Verificat: tsc, `npm test`, build, `test:rendered` (descriere ≤ 158 caractere, legătura către
+  rândul de acoperire), telefon 375 px și 1280 × 607.

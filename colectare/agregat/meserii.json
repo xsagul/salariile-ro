@@ -1,5 +1,5 @@
 {
- "generatLa": "2026-09-25T23:46:31.906Z",
+ "generatLa": "2026-09-25T23:49:13.928Z",
  "praguri": {
   "platit": {
    "institutii": 5,
@@ -17,7 +17,7 @@
    "laMinimMax": 0.25
   }
  },
- "observatiiPlatite": 12654,
+ "observatiiPlatite": 11444,
  "oferteAnofm": 8759,
  "meserii": [
   {
@@ -27,6 +27,7 @@
    "concluzie": null,
    "platit": {
     "randuri": 7,
+    "subPragExclus": 0,
     "institutii": 3,
     "judete": 3,
     "trece": false,
@@ -165,29 +166,30 @@
    "cor": "221101",
    "concluzie": {
     "sursa": "platit",
-    "net": 7601,
+    "net": 9717,
     "interval": [
-     4107,
-     11020
+     6413,
+     11657
     ],
     "ce": "salariul fix plătit la angajatorii publici (bază + sporuri permanente, fără ture și gărzi)",
     "verificare": {
      "platit": null,
      "oferit": {
       "net": 20000,
-      "diferenta": 163,
+      "diferenta": 106,
       "trece": false
      },
      "declarat": {
       "net": 5760,
-      "diferenta": -24,
+      "diferenta": -41,
       "laMinim": 0,
       "trece": false
      }
     }
    },
    "platit": {
-    "randuri": 2788,
+    "randuri": 1841,
+    "subPragExclus": 947,
     "institutii": 12,
     "judete": 10,
     "trece": true,
@@ -210,110 +212,110 @@
      "Spitalul de Psihiatrie Titan Dr. Constantin Gorgos"
     ],
     "netFix": {
-     "p25": 4107,
-     "mediana": 7601,
-     "p75": 11020
+     "p25": 6413,
+     "mediana": 9717,
+     "p75": 11657
     },
     "brutFix": {
-     "p25": 7020,
-     "mediana": 12993,
-     "p75": 18839
+     "p25": 10963,
+     "mediana": 16611,
+     "p75": 19927
     },
     "netBaza": {
-     "p25": 3992,
-     "mediana": 6906,
-     "p75": 10039
+     "p25": 6413,
+     "mediana": 8098,
+     "p75": 10289
     },
     "debutant": null,
     "variabil": {
-     "cota": 0.38,
+     "cota": 0.26,
      "netCuVariabil": {
-      "p25": 5277,
-      "mediana": 6979,
-      "p75": 10485
+      "p25": 6979,
+      "mediana": 9994,
+      "p75": 14048
      }
     },
     "peJudet": {
      "IS": {
-      "randuri": 76,
+      "randuri": 59,
       "institutii": 1,
       "net": {
-       "p25": 4271,
-       "mediana": 9168,
-       "p75": 12475
+       "p25": 4692,
+       "mediana": 10884,
+       "p75": 12802
       }
      },
      "CJ": {
-      "randuri": 231,
+      "randuri": 139,
       "institutii": 2,
       "net": {
-       "p25": 3723,
-       "mediana": 5332,
-       "p75": 9741
+       "p25": 7239,
+       "mediana": 8891,
+       "p75": 10392
       }
      },
      "CT": {
-      "randuri": 750,
+      "randuri": 486,
       "institutii": 1,
       "net": {
-       "p25": 4007,
-       "mediana": 4692,
-       "p75": 11904
+       "p25": 4692,
+       "mediana": 10744,
+       "p75": 13768
       }
      },
      "SB": {
-      "randuri": 507,
+      "randuri": 365,
       "institutii": 1,
       "net": {
-       "p25": 4167,
-       "mediana": 5463,
-       "p75": 11674
+       "p25": 4692,
+       "mediana": 10464,
+       "p75": 12110
       }
      },
      "AB": {
-      "randuri": 280,
+      "randuri": 196,
       "institutii": 1,
       "net": {
-       "p25": 4494,
-       "mediana": 7758,
-       "p75": 11218
+       "p25": 4963,
+       "mediana": 10352,
+       "p75": 11772
       }
      },
      "BC": {
-      "randuri": 343,
+      "randuri": 197,
       "institutii": 1,
       "net": {
-       "p25": 2550,
-       "mediana": 8684,
-       "p75": 12340
+       "p25": 10657,
+       "mediana": 12021,
+       "p75": 14296
       }
      },
      "BZ": {
-      "randuri": 262,
+      "randuri": 183,
       "institutii": 1,
       "net": {
-       "p25": 4107,
-       "mediana": 4963,
-       "p75": 11109
+       "p25": 4692,
+       "mediana": 9450,
+       "p75": 11837
       }
      },
      "HR": {
-      "randuri": 333,
+      "randuri": 211,
       "institutii": 1,
       "net": {
-       "p25": 3909,
-       "mediana": 7771,
-       "p75": 11111
+       "p25": 7959,
+       "mediana": 10451,
+       "p75": 11837
       }
      }
     },
     "peStudii": {
      "S": {
-      "randuri": 1593,
+      "randuri": 1062,
       "net": {
-       "p25": 3512,
-       "mediana": 6413,
-       "p75": 11020
+       "p25": 6413,
+       "mediana": 10498,
+       "p75": 11277
       }
      }
     }
@@ -347,10 +349,10 @@
    "cor": "221102",
    "concluzie": {
     "sursa": "platit",
-    "net": 5341,
+    "net": 6025,
     "interval": [
-     2579,
-     6844
+     4996,
+     7200
     ],
     "ce": "salariul fix plătit la angajatorii publici (bază + sporuri permanente, fără ture și gărzi)",
     "verificare": {
@@ -360,7 +362,8 @@
     }
    },
    "platit": {
-    "randuri": 1928,
+    "randuri": 1734,
+    "subPragExclus": 194,
     "institutii": 8,
     "judete": 7,
     "trece": true,
@@ -379,50 +382,50 @@
      "Spitalul Municipal Turda"
     ],
     "netFix": {
-     "p25": 2579,
-     "mediana": 5341,
-     "p75": 6844
+     "p25": 4996,
+     "mediana": 6025,
+     "p75": 7200
     },
     "brutFix": {
-     "p25": 4288,
-     "mediana": 9129,
-     "p75": 11700
+     "p25": 8540,
+     "mediana": 10299,
+     "p75": 12308
     },
     "netBaza": {
-     "p25": 2457,
-     "mediana": 4460,
-     "p75": 5530
+     "p25": 4460,
+     "mediana": 4899,
+     "p75": 5738
     },
     "debutant": null,
     "variabil": {
-     "cota": 0.09,
+     "cota": 0.04,
      "netCuVariabil": {
-      "p25": 3439,
-      "mediana": 4498,
-      "p75": 7456
+      "p25": 6462,
+      "mediana": 7804,
+      "p75": 8797
      }
     },
     "peJudet": {
      "CJ": {
-      "randuri": 89,
+      "randuri": 68,
       "institutii": 2,
       "net": {
-       "p25": 2380,
-       "mediana": 4214,
-       "p75": 6427
+       "p25": 4214,
+       "mediana": 5738,
+       "p75": 6749
       }
      },
      "CT": {
-      "randuri": 1069,
+      "randuri": 956,
       "institutii": 1,
       "net": {
-       "p25": 4795,
-       "mediana": 5745,
-       "p75": 7002
+       "p25": 4996,
+       "mediana": 6194,
+       "p75": 7231
       }
      },
      "SB": {
-      "randuri": 604,
+      "randuri": 595,
       "institutii": 1,
       "net": {
        "p25": 4460,
@@ -431,31 +434,31 @@
       }
      },
      "BC": {
-      "randuri": 55,
+      "randuri": 45,
       "institutii": 1,
       "net": {
-       "p25": 4601,
-       "mediana": 5782,
-       "p75": 7731
+       "p25": 5341,
+       "mediana": 6669,
+       "p75": 7953
       }
      },
      "BZ": {
-      "randuri": 65,
+      "randuri": 38,
       "institutii": 1,
       "net": {
-       "p25": 2499,
-       "mediana": 4996,
-       "p75": 6604
+       "p25": 5369,
+       "mediana": 6244,
+       "p75": 7137
       }
      }
     },
     "peStudii": {
      "S": {
-      "randuri": 1696,
+      "randuri": 1564,
       "net": {
-       "p25": 1427,
-       "mediana": 4568,
-       "p75": 6025
+       "p25": 4747,
+       "mediana": 5738,
+       "p75": 6859
       }
      }
     }
@@ -479,31 +482,32 @@
    "cor": "325901",
    "concluzie": {
     "sursa": "platit",
-    "net": 4797,
+    "net": 4896,
     "interval": [
-     4209,
-     5806
+     4471,
+     5931
     ],
     "ce": "salariul fix plătit la angajatorii publici (bază + sporuri permanente, fără ture și gărzi)",
     "verificare": {
      "platit": null,
      "oferit": {
       "net": 4750,
-      "diferenta": -1,
+      "diferenta": -3,
       "trece": false
      },
      "declarat": {
       "net": 3116,
-      "diferenta": -35,
+      "diferenta": -36,
       "laMinim": 0.3,
       "trece": false
      }
     }
    },
    "platit": {
-    "randuri": 5028,
-    "institutii": 11,
-    "judete": 10,
+    "randuri": 4975,
+    "subPragExclus": 53,
+    "institutii": 10,
+    "judete": 9,
     "trece": true,
     "perioade": [
      "2026-02",
@@ -511,7 +515,6 @@
     ],
     "surse": [
      "DGASPC Călărași",
-     "DGASPC Sector 1",
      "Spitalul Clinic de Boli Infecțioase Iași",
      "Spitalul Clinic Județean de Urgență Cluj-Napoca",
      "Spitalul Clinic Județean de Urgență Constanța",
@@ -523,39 +526,39 @@
      "Spitalul Municipal Turda"
     ],
     "netFix": {
-     "p25": 4209,
-     "mediana": 4797,
-     "p75": 5806
+     "p25": 4471,
+     "mediana": 4896,
+     "p75": 5931
     },
     "brutFix": {
-     "p25": 7196,
-     "mediana": 8200,
-     "p75": 9925
+     "p25": 7643,
+     "mediana": 8370,
+     "p75": 10139
     },
     "netBaza": {
-     "p25": 3615,
-     "mediana": 3988,
-     "p75": 4209
+     "p25": 3840,
+     "mediana": 3989,
+     "p75": 4243
     },
     "debutant": {
-     "randuri": 86,
+     "randuri": 81,
      "net": {
-      "p25": 3220,
-      "mediana": 4323,
-      "p75": 5100
+      "p25": 3811,
+      "mediana": 4484,
+      "p75": 5339
      }
     },
     "variabil": {
-     "cota": 0.71,
+     "cota": 0.72,
      "netCuVariabil": {
       "p25": 5444,
-      "mediana": 5846,
-      "p75": 6905
+      "mediana": 5848,
+      "p75": 6907
      }
     },
     "peJudet": {
      "CJ": {
-      "randuri": 269,
+      "randuri": 268,
       "institutii": 2,
       "net": {
        "p25": 4397,
@@ -564,25 +567,25 @@
       }
      },
      "CT": {
-      "randuri": 1093,
+      "randuri": 1078,
       "institutii": 1,
       "net": {
-       "p25": 4775,
-       "mediana": 5500,
-       "p75": 6735
+       "p25": 4824,
+       "mediana": 5619,
+       "p75": 6752
       }
      },
      "SB": {
-      "randuri": 922,
+      "randuri": 898,
       "institutii": 1,
       "net": {
-       "p25": 4778,
-       "mediana": 5251,
-       "p75": 6046
+       "p25": 4797,
+       "mediana": 5277,
+       "p75": 6094
       }
      },
      "AB": {
-      "randuri": 531,
+      "randuri": 530,
       "institutii": 1,
       "net": {
        "p25": 4762,
@@ -591,7 +594,7 @@
       }
      },
      "BC": {
-      "randuri": 901,
+      "randuri": 900,
       "institutii": 1,
       "net": {
        "p25": 4753,
@@ -600,12 +603,12 @@
       }
      },
      "BZ": {
-      "randuri": 684,
+      "randuri": 683,
       "institutii": 1,
       "net": {
        "p25": 4656,
-       "mediana": 5109,
-       "p75": 6066
+       "mediana": 5116,
+       "p75": 6075
       }
      },
      "HR": {
@@ -620,15 +623,15 @@
     },
     "peStudii": {
      "S": {
-      "randuri": 712,
+      "randuri": 700,
       "net": {
-       "p25": 4419,
-       "mediana": 5161,
-       "p75": 6560
+       "p25": 4677,
+       "mediana": 5372,
+       "p75": 6808
       }
      },
      "SSD": {
-      "randuri": 38,
+      "randuri": 37,
       "net": {
        "p25": 4397,
        "mediana": 4670,
@@ -636,11 +639,11 @@
       }
      },
      "PL": {
-      "randuri": 2647,
+      "randuri": 2610,
       "net": {
-       "p25": 4197,
-       "mediana": 4763,
-       "p75": 5635
+       "p25": 4243,
+       "mediana": 4778,
+       "p75": 5655
       }
      }
     }
@@ -691,7 +694,8 @@
     }
    },
    "platit": {
-    "randuri": 334,
+    "randuri": 333,
+    "subPragExclus": 1,
     "institutii": 10,
     "judete": 9,
     "trece": true,
@@ -730,8 +734,8 @@
     "variabil": {
      "cota": 0.19,
      "netCuVariabil": {
-      "p25": 4175,
-      "mediana": 4914,
+      "p25": 4189,
+      "mediana": 4916,
       "p75": 5406
      }
     },
@@ -746,12 +750,12 @@
       }
      },
      "CT": {
-      "randuri": 92,
+      "randuri": 91,
       "institutii": 1,
       "net": {
-       "p25": 3469,
-       "mediana": 3659,
-       "p75": 4680
+       "p25": 3485,
+       "mediana": 3703,
+       "p75": 4738
       }
      },
      "SB": {
@@ -784,7 +788,7 @@
     },
     "peStudii": {
      "M": {
-      "randuri": 227,
+      "randuri": 226,
       "net": {
        "p25": 3530,
        "mediana": 4127,
@@ -893,6 +897,7 @@
    },
    "platit": {
     "randuri": 156,
+    "subPragExclus": 0,
     "institutii": 7,
     "judete": 6,
     "trece": true,
@@ -978,6 +983,7 @@
    "concluzie": null,
    "platit": {
     "randuri": 35,
+    "subPragExclus": 0,
     "institutii": 3,
     "judete": 3,
     "trece": false,
@@ -1070,7 +1076,8 @@
     }
    },
    "platit": {
-    "randuri": 69,
+    "randuri": 65,
+    "subPragExclus": 4,
     "institutii": 10,
     "judete": 9,
     "trece": true,
@@ -1101,7 +1108,7 @@
      "p75": 12077
     },
     "netBaza": {
-     "p25": 4513,
+     "p25": 4641,
      "mediana": 5233,
      "p75": 6092
     },
@@ -1110,7 +1117,7 @@
     "peJudet": {},
     "peStudii": {
      "S": {
-      "randuri": 38,
+      "randuri": 34,
       "net": {
        "p25": 4855,
        "mediana": 6232,
@@ -1149,6 +1156,7 @@
    "concluzie": null,
    "platit": {
     "randuri": 14,
+    "subPragExclus": 0,
     "institutii": 5,
     "judete": 4,
     "trece": false,
@@ -1204,7 +1212,7 @@
     "sursa": "platit",
     "net": 5107,
     "interval": [
-     3940,
+     4085,
      5690
     ],
     "ce": "salariul fix plătit la angajatorii publici (bază + sporuri permanente, fără ture și gărzi)",
@@ -1224,7 +1232,8 @@
     }
    },
    "platit": {
-    "randuri": 91,
+    "randuri": 88,
+    "subPragExclus": 3,
     "institutii": 12,
     "judete": 10,
     "trece": true,
@@ -1247,18 +1256,18 @@
      "Spitalul de Psihiatrie Titan Dr. Constantin Gorgos"
     ],
     "netFix": {
-     "p25": 3940,
+     "p25": 4085,
      "mediana": 5107,
      "p75": 5690
     },
     "brutFix": {
-     "p25": 6736,
+     "p25": 6983,
      "mediana": 8731,
      "p75": 9727
     },
     "netBaza": {
      "p25": 3855,
-     "mediana": 4577,
+     "mediana": 4618,
      "p75": 5179
     },
     "debutant": {
@@ -1273,11 +1282,11 @@
     "peJudet": {},
     "peStudii": {
      "S": {
-      "randuri": 33,
+      "randuri": 30,
       "net": {
-       "p25": 3647,
-       "mediana": 5301,
-       "p75": 5497
+       "p25": 3857,
+       "mediana": 5303,
+       "p75": 5542
       }
      }
     }
@@ -1311,31 +1320,32 @@
    "cor": "532103",
    "concluzie": {
     "sursa": "platit",
-    "net": 3644,
+    "net": 3676,
     "interval": [
-     3373,
-     3992
+     3482,
+     4068
     ],
     "ce": "salariul fix plătit la angajatorii publici (bază + sporuri permanente, fără ture și gărzi)",
     "verificare": {
      "platit": null,
      "oferit": {
       "net": 4100,
-      "diferenta": 13,
+      "diferenta": 12,
       "trece": false
      },
      "declarat": {
       "net": 2699,
-      "diferenta": -26,
+      "diferenta": -27,
       "laMinim": 0.44,
       "trece": false
      }
     }
    },
    "platit": {
-    "randuri": 1778,
-    "institutii": 11,
-    "judete": 10,
+    "randuri": 1773,
+    "subPragExclus": 5,
+    "institutii": 10,
+    "judete": 9,
     "trece": true,
     "perioade": [
      "2026-02",
@@ -1343,7 +1353,6 @@
     ],
     "surse": [
      "DGASPC Călărași",
-     "DGASPC Sector 1",
      "Spitalul Clinic de Boli Infecțioase Iași",
      "Spitalul Clinic Județean de Urgență Cluj-Napoca",
      "Spitalul Clinic Județean de Urgență Constanța",
@@ -1355,26 +1364,26 @@
      "Spitalul Municipal Turda"
     ],
     "netFix": {
-     "p25": 3373,
-     "mediana": 3644,
-     "p75": 3992
+     "p25": 3482,
+     "mediana": 3676,
+     "p75": 4068
     },
     "brutFix": {
-     "p25": 5746,
-     "mediana": 6230,
-     "p75": 6824
+     "p25": 5946,
+     "mediana": 6283,
+     "p75": 6955
     },
     "netBaza": {
-     "p25": 3081,
+     "p25": 3222,
      "mediana": 3373,
      "p75": 3375
     },
     "debutant": {
-     "randuri": 68,
+     "randuri": 66,
      "net": {
-      "p25": 3157,
-      "mediana": 3381,
-      "p75": 3592
+      "p25": 3182,
+      "mediana": 3449,
+      "p75": 3594
      }
     },
     "variabil": {
@@ -1441,7 +1450,7 @@
       }
      },
      "BZ": {
-      "randuri": 249,
+      "randuri": 248,
       "institutii": 1,
       "net": {
        "p25": 3554,
@@ -1461,11 +1470,11 @@
     },
     "peStudii": {
      "M": {
-      "randuri": 144,
+      "randuri": 142,
       "net": {
-       "p25": 2563,
-       "mediana": 3552,
-       "p75": 3974
+       "p25": 3552,
+       "mediana": 3764,
+       "p75": 4178
       }
      }
     }
@@ -1587,6 +1596,7 @@
    "concluzie": null,
    "platit": {
     "randuri": 43,
+    "subPragExclus": 0,
     "institutii": 3,
     "judete": 2,
     "trece": false,
@@ -1721,6 +1731,7 @@
    },
    "platit": {
     "randuri": 5,
+    "subPragExclus": 0,
     "institutii": 5,
     "judete": 5,
     "trece": false,
@@ -1845,6 +1856,7 @@
    },
    "platit": {
     "randuri": 154,
+    "subPragExclus": 0,
     "institutii": 9,
     "judete": 8,
     "trece": true,
@@ -2018,6 +2030,7 @@
    "concluzie": null,
    "platit": {
     "randuri": 47,
+    "subPragExclus": 0,
     "institutii": 10,
     "judete": 10,
     "trece": false,
@@ -2376,6 +2389,7 @@
    },
    "platit": {
     "randuri": 3,
+    "subPragExclus": 0,
     "institutii": 1,
     "judete": 1,
     "trece": false,
@@ -2454,6 +2468,7 @@
    },
    "platit": {
     "randuri": 7,
+    "subPragExclus": 0,
     "institutii": 2,
     "judete": 2,
     "trece": false,
@@ -2963,6 +2978,7 @@
    "concluzie": null,
    "platit": {
     "randuri": 12,
+    "subPragExclus": 0,
     "institutii": 5,
     "judete": 5,
     "trece": false,
@@ -3075,6 +3091,7 @@
    },
    "platit": {
     "randuri": 25,
+    "subPragExclus": 0,
     "institutii": 10,
     "judete": 9,
     "trece": false,
@@ -3397,6 +3414,7 @@
    },
    "platit": {
     "randuri": 3,
+    "subPragExclus": 0,
     "institutii": 2,
     "judete": 2,
     "trece": false,
@@ -4102,6 +4120,7 @@
    "concluzie": null,
    "platit": {
     "randuri": 16,
+    "subPragExclus": 0,
     "institutii": 2,
     "judete": 2,
     "trece": false,
@@ -4189,7 +4208,8 @@
    "cor": "532201",
    "concluzie": null,
    "platit": {
-    "randuri": 8,
+    "randuri": 6,
+    "subPragExclus": 2,
     "institutii": 2,
     "judete": 2,
     "trece": false,
@@ -4201,18 +4221,18 @@
      "DGASPC Sector 1"
     ],
     "netFix": {
-     "p25": 2157,
-     "mediana": 2574,
+     "p25": 2574,
+     "mediana": 2857,
      "p75": 2857
     },
     "brutFix": {
-     "p25": 3550,
-     "mediana": 4050,
+     "p25": 4050,
+     "mediana": 4797,
      "p75": 4797
     },
     "netBaza": {
-     "p25": 2157,
-     "mediana": 2574,
+     "p25": 2574,
+     "mediana": 2857,
      "p75": 2857
     },
     "debutant": null,
@@ -4239,10 +4259,10 @@
    "cor": "263501",
    "concluzie": {
     "sursa": "platit",
-    "net": 5219,
+    "net": 5364,
     "interval": [
      5033,
-     6561
+     6610
     ],
     "ce": "salariul fix plătit la angajatorii publici (bază + sporuri permanente, fără ture și gărzi)",
     "verificare": {
@@ -4250,14 +4270,15 @@
      "oferit": null,
      "declarat": {
       "net": 2986,
-      "diferenta": -43,
+      "diferenta": -44,
       "laMinim": 0.33,
       "trece": false
      }
     }
    },
    "platit": {
-    "randuri": 84,
+    "randuri": 83,
+    "subPragExclus": 1,
     "institutii": 12,
     "judete": 10,
     "trece": true,
@@ -4281,13 +4302,13 @@
     ],
     "netFix": {
      "p25": 5033,
-     "mediana": 5219,
-     "p75": 6561
+     "mediana": 5364,
+     "p75": 6610
     },
     "brutFix": {
      "p25": 8603,
-     "mediana": 8922,
-     "p75": 11216
+     "mediana": 9170,
+     "p75": 11300
     },
     "netBaza": {
      "p25": 4085,

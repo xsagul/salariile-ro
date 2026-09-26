@@ -1,0 +1,774 @@
+{
+ "generatLa": "2026-09-25T23:49:13.928Z",
+ "oferteAnofm": 8759,
+ "meserii": {
+  "medic": {
+   "sursa": "platit",
+   "net": 9717,
+   "interval": [
+    6413,
+    11657
+   ],
+   "platit": {
+    "randuri": 1841,
+    "institutii": 12,
+    "judete": 10,
+    "perioade": [
+     "2026-02",
+     "2026-03"
+    ],
+    "surse": [
+     "DGASPC Călărași",
+     "DGASPC Sector 1",
+     "Spitalul Clinic Județean de Urgență Cluj-Napoca",
+     "Spitalul Clinic Județean de Urgență Constanța",
+     "Spitalul Clinic Județean de Urgență Sibiu",
+     "Spitalul Clinic de Boli Infecțioase Iași",
+     "Spitalul Județean de Urgență Alba Iulia",
+     "Spitalul Județean de Urgență Bacău",
+     "Spitalul Județean de Urgență Buzău",
+     "Spitalul Județean de Urgență Miercurea Ciuc",
+     "Spitalul Municipal Turda",
+     "Spitalul de Psihiatrie Titan Dr. Constantin Gorgos"
+    ],
+    "debutant": null,
+    "cuVariabil": {
+     "net": 9994,
+     "cota": 0.26
+    },
+    "studii": {
+     "S": 10498
+    },
+    "peJudet": [
+     {
+      "judet": "Bacău",
+      "randuri": 197,
+      "institutii": 1,
+      "net": 12021
+     },
+     {
+      "judet": "Iași",
+      "randuri": 59,
+      "institutii": 1,
+      "net": 10884
+     },
+     {
+      "judet": "Constanța",
+      "randuri": 486,
+      "institutii": 1,
+      "net": 10744
+     },
+     {
+      "judet": "Sibiu",
+      "randuri": 365,
+      "institutii": 1,
+      "net": 10464
+     },
+     {
+      "judet": "Harghita",
+      "randuri": 211,
+      "institutii": 1,
+      "net": 10451
+     },
+     {
+      "judet": "Alba",
+      "randuri": 196,
+      "institutii": 1,
+      "net": 10352
+     },
+     {
+      "judet": "Buzău",
+      "randuri": 183,
+      "institutii": 1,
+      "net": 9450
+     },
+     {
+      "judet": "Cluj",
+      "randuri": 139,
+      "institutii": 2,
+      "net": 8891
+     }
+    ]
+   },
+   "oferit": null,
+   "declarat": null
+  },
+  "medic-rezident": {
+   "sursa": "platit",
+   "net": 6025,
+   "interval": [
+    4996,
+    7200
+   ],
+   "platit": {
+    "randuri": 1734,
+    "institutii": 8,
+    "judete": 7,
+    "perioade": [
+     "2026-02",
+     "2026-03"
+    ],
+    "surse": [
+     "Spitalul Clinic Județean de Urgență Cluj-Napoca",
+     "Spitalul Clinic Județean de Urgență Constanța",
+     "Spitalul Clinic Județean de Urgență Sibiu",
+     "Spitalul Județean de Urgență Alba Iulia",
+     "Spitalul Județean de Urgență Bacău",
+     "Spitalul Județean de Urgență Buzău",
+     "Spitalul Județean de Urgență Miercurea Ciuc",
+     "Spitalul Municipal Turda"
+    ],
+    "debutant": null,
+    "cuVariabil": {
+     "net": 7804,
+     "cota": 0.04
+    },
+    "studii": {
+     "S": 5738
+    },
+    "peJudet": [
+     {
+      "judet": "Bacău",
+      "randuri": 45,
+      "institutii": 1,
+      "net": 6669
+     },
+     {
+      "judet": "Buzău",
+      "randuri": 38,
+      "institutii": 1,
+      "net": 6244
+     },
+     {
+      "judet": "Constanța",
+      "randuri": 956,
+      "institutii": 1,
+      "net": 6194
+     },
+     {
+      "judet": "Cluj",
+      "randuri": 68,
+      "institutii": 2,
+      "net": 5738
+     },
+     {
+      "judet": "Sibiu",
+      "randuri": 595,
+      "institutii": 1,
+      "net": 5035
+     }
+    ]
+   },
+   "oferit": null,
+   "declarat": null
+  },
+  "asistent-medical": {
+   "sursa": "platit",
+   "net": 4896,
+   "interval": [
+    4471,
+    5931
+   ],
+   "platit": {
+    "randuri": 4975,
+    "institutii": 10,
+    "judete": 9,
+    "perioade": [
+     "2026-02",
+     "2026-03"
+    ],
+    "surse": [
+     "DGASPC Călărași",
+     "Spitalul Clinic Județean de Urgență Cluj-Napoca",
+     "Spitalul Clinic Județean de Urgență Constanța",
+     "Spitalul Clinic Județean de Urgență Sibiu",
+     "Spitalul Clinic de Boli Infecțioase Iași",
+     "Spitalul Județean de Urgență Alba Iulia",
+     "Spitalul Județean de Urgență Bacău",
+     "Spitalul Județean de Urgență Buzău",
+     "Spitalul Județean de Urgență Miercurea Ciuc",
+     "Spitalul Municipal Turda"
+    ],
+    "debutant": 4484,
+    "cuVariabil": {
+     "net": 5848,
+     "cota": 0.72
+    },
+    "studii": {
+     "S": 5372,
+     "SSD": 4670,
+     "PL": 4778
+    },
+    "peJudet": [
+     {
+      "judet": "Constanța",
+      "randuri": 1078,
+      "institutii": 1,
+      "net": 5619
+     },
+     {
+      "judet": "Alba",
+      "randuri": 530,
+      "institutii": 1,
+      "net": 5357
+     },
+     {
+      "judet": "Sibiu",
+      "randuri": 898,
+      "institutii": 1,
+      "net": 5277
+     },
+     {
+      "judet": "Buzău",
+      "randuri": 683,
+      "institutii": 1,
+      "net": 5116
+     },
+     {
+      "judet": "Bacău",
+      "randuri": 900,
+      "institutii": 1,
+      "net": 5098
+     },
+     {
+      "judet": "Harghita",
+      "randuri": 586,
+      "institutii": 1,
+      "net": 4709
+     },
+     {
+      "judet": "Cluj",
+      "randuri": 268,
+      "institutii": 2,
+      "net": 4677
+     }
+    ]
+   },
+   "oferit": null,
+   "declarat": {
+    "net": 3116,
+    "oferte": 44,
+    "laMinim": 0.3
+   }
+  },
+  "registrator-medical": {
+   "sursa": "platit",
+   "net": 3816,
+   "interval": [
+    3550,
+    4331
+   ],
+   "platit": {
+    "randuri": 333,
+    "institutii": 10,
+    "judete": 9,
+    "perioade": [
+     "2026-02",
+     "2026-03"
+    ],
+    "surse": [
+     "Spitalul Clinic Județean de Urgență Cluj-Napoca",
+     "Spitalul Clinic Județean de Urgență Constanța",
+     "Spitalul Clinic Județean de Urgență Sibiu",
+     "Spitalul Clinic de Boli Infecțioase Iași",
+     "Spitalul Județean de Urgență Alba Iulia",
+     "Spitalul Județean de Urgență Bacău",
+     "Spitalul Județean de Urgență Buzău",
+     "Spitalul Județean de Urgență Miercurea Ciuc",
+     "Spitalul Municipal Turda",
+     "Spitalul de Psihiatrie Titan Dr. Constantin Gorgos"
+    ],
+    "debutant": null,
+    "cuVariabil": {
+     "net": 4916,
+     "cota": 0.19
+    },
+    "studii": {
+     "M": 4127
+    },
+    "peJudet": [
+     {
+      "judet": "Sibiu",
+      "randuri": 92,
+      "institutii": 1,
+      "net": 3742
+     },
+     {
+      "judet": "Constanța",
+      "randuri": 91,
+      "institutii": 1,
+      "net": 3703
+     },
+     {
+      "judet": "Alba",
+      "randuri": 45,
+      "institutii": 1,
+      "net": 3587
+     },
+     {
+      "judet": "Cluj",
+      "randuri": 35,
+      "institutii": 2,
+      "net": 3551
+     },
+     {
+      "judet": "Harghita",
+      "randuri": 44,
+      "institutii": 1,
+      "net": 3533
+     }
+    ]
+   },
+   "oferit": null,
+   "declarat": null
+  },
+  "farmacist": {
+   "sursa": "platit",
+   "net": 5457,
+   "interval": [
+    4577,
+    6702
+   ],
+   "platit": {
+    "randuri": 156,
+    "institutii": 7,
+    "judete": 6,
+    "perioade": [
+     "2026-02",
+     "2026-03"
+    ],
+    "surse": [
+     "DGASPC Sector 1",
+     "Spitalul Clinic Județean de Urgență Cluj-Napoca",
+     "Spitalul Clinic Județean de Urgență Constanța",
+     "Spitalul Județean de Urgență Bacău",
+     "Spitalul Județean de Urgență Buzău",
+     "Spitalul Județean de Urgență Miercurea Ciuc",
+     "Spitalul Municipal Turda"
+    ],
+    "debutant": null,
+    "cuVariabil": null,
+    "studii": {
+     "S": 4761
+    },
+    "peJudet": [
+     {
+      "judet": "Constanța",
+      "randuri": 124,
+      "institutii": 1,
+      "net": 4670
+     }
+    ]
+   },
+   "oferit": null,
+   "declarat": null
+  },
+  "psiholog": {
+   "sursa": "platit",
+   "net": 6379,
+   "interval": [
+    5944,
+    7065
+   ],
+   "platit": {
+    "randuri": 65,
+    "institutii": 10,
+    "judete": 9,
+    "perioade": [
+     "2026-02",
+     "2026-03"
+    ],
+    "surse": [
+     "DGASPC Sector 1",
+     "Spitalul Clinic Județean de Urgență Cluj-Napoca",
+     "Spitalul Clinic Județean de Urgență Constanța",
+     "Spitalul Clinic Județean de Urgență Sibiu",
+     "Spitalul Clinic de Boli Infecțioase Iași",
+     "Spitalul Județean de Urgență Alba Iulia",
+     "Spitalul Județean de Urgență Bacău",
+     "Spitalul Județean de Urgență Buzău",
+     "Spitalul Județean de Urgență Miercurea Ciuc",
+     "Spitalul de Psihiatrie Titan Dr. Constantin Gorgos"
+    ],
+    "debutant": null,
+    "cuVariabil": null,
+    "studii": {
+     "S": 6232
+    },
+    "peJudet": []
+   },
+   "oferit": null,
+   "declarat": null
+  },
+  "kinetoterapeut": {
+   "sursa": "platit",
+   "net": 5107,
+   "interval": [
+    4085,
+    5690
+   ],
+   "platit": {
+    "randuri": 88,
+    "institutii": 12,
+    "judete": 10,
+    "perioade": [
+     "2026-02",
+     "2026-03"
+    ],
+    "surse": [
+     "DGASPC Călărași",
+     "DGASPC Sector 1",
+     "Spitalul Clinic Județean de Urgență Cluj-Napoca",
+     "Spitalul Clinic Județean de Urgență Constanța",
+     "Spitalul Clinic Județean de Urgență Sibiu",
+     "Spitalul Clinic de Boli Infecțioase Iași",
+     "Spitalul Județean de Urgență Alba Iulia",
+     "Spitalul Județean de Urgență Bacău",
+     "Spitalul Județean de Urgență Buzău",
+     "Spitalul Județean de Urgență Miercurea Ciuc",
+     "Spitalul Municipal Turda",
+     "Spitalul de Psihiatrie Titan Dr. Constantin Gorgos"
+    ],
+    "debutant": 3510,
+    "cuVariabil": null,
+    "studii": {
+     "S": 5303
+    },
+    "peJudet": []
+   },
+   "oferit": null,
+   "declarat": null
+  },
+  "infirmier": {
+   "sursa": "platit",
+   "net": 3676,
+   "interval": [
+    3482,
+    4068
+   ],
+   "platit": {
+    "randuri": 1773,
+    "institutii": 10,
+    "judete": 9,
+    "perioade": [
+     "2026-02",
+     "2026-03"
+    ],
+    "surse": [
+     "DGASPC Călărași",
+     "Spitalul Clinic Județean de Urgență Cluj-Napoca",
+     "Spitalul Clinic Județean de Urgență Constanța",
+     "Spitalul Clinic Județean de Urgență Sibiu",
+     "Spitalul Clinic de Boli Infecțioase Iași",
+     "Spitalul Județean de Urgență Alba Iulia",
+     "Spitalul Județean de Urgență Bacău",
+     "Spitalul Județean de Urgență Buzău",
+     "Spitalul Județean de Urgență Miercurea Ciuc",
+     "Spitalul Municipal Turda"
+    ],
+    "debutant": 3449,
+    "cuVariabil": {
+     "net": 4216,
+     "cota": 0.88
+    },
+    "studii": {
+     "M": 3764
+    },
+    "peJudet": [
+     {
+      "judet": "Sibiu",
+      "randuri": 156,
+      "institutii": 1,
+      "net": 4183
+     },
+     {
+      "judet": "Constanța",
+      "randuri": 421,
+      "institutii": 1,
+      "net": 4068
+     },
+     {
+      "judet": "Alba",
+      "randuri": 199,
+      "institutii": 1,
+      "net": 3933
+     },
+     {
+      "judet": "Bacău",
+      "randuri": 296,
+      "institutii": 1,
+      "net": 3853
+     },
+     {
+      "judet": "Buzău",
+      "randuri": 248,
+      "institutii": 1,
+      "net": 3688
+     },
+     {
+      "judet": "Iași",
+      "randuri": 70,
+      "institutii": 1,
+      "net": 3668
+     },
+     {
+      "judet": "Harghita",
+      "randuri": 218,
+      "institutii": 1,
+      "net": 3552
+     },
+     {
+      "judet": "Cluj",
+      "randuri": 155,
+      "institutii": 2,
+      "net": 3536
+     }
+    ]
+   },
+   "oferit": null,
+   "declarat": null
+  },
+  "contabil": {
+   "sursa": "oferit",
+   "net": 5500,
+   "interval": null,
+   "platit": null,
+   "oferit": {
+    "net": 5500,
+    "anunturi": 75
+   },
+   "declarat": null
+  },
+  "economist": {
+   "sursa": "platit",
+   "net": 5404,
+   "interval": [
+    4934,
+    5734
+   ],
+   "platit": {
+    "randuri": 154,
+    "institutii": 9,
+    "judete": 8,
+    "perioade": [
+     "2026-02",
+     "2026-03"
+    ],
+    "surse": [
+     "Spitalul Clinic Județean de Urgență Cluj-Napoca",
+     "Spitalul Clinic Județean de Urgență Constanța",
+     "Spitalul Clinic Județean de Urgență Sibiu",
+     "Spitalul Clinic de Boli Infecțioase Iași",
+     "Spitalul Județean de Urgență Bacău",
+     "Spitalul Județean de Urgență Buzău",
+     "Spitalul Județean de Urgență Miercurea Ciuc",
+     "Spitalul Municipal Turda",
+     "Spitalul de Psihiatrie Titan Dr. Constantin Gorgos"
+    ],
+    "debutant": null,
+    "cuVariabil": null,
+    "studii": {
+     "S": 5634
+    },
+    "peJudet": [
+     {
+      "judet": "Bacău",
+      "randuri": 32,
+      "institutii": 1,
+      "net": 5587
+     }
+    ]
+   },
+   "oferit": null,
+   "declarat": null
+  },
+  "electrician": {
+   "sursa": "oferit",
+   "net": 5500,
+   "interval": null,
+   "platit": null,
+   "oferit": {
+    "net": 5500,
+    "anunturi": 115
+   },
+   "declarat": {
+    "net": 2754,
+    "oferte": 26,
+    "laMinim": 0.04
+   }
+  },
+  "instalator": {
+   "sursa": "oferit",
+   "net": 5558,
+   "interval": null,
+   "platit": null,
+   "oferit": {
+    "net": 5558,
+    "anunturi": 59
+   },
+   "declarat": null
+  },
+  "sudor": {
+   "sursa": "oferit",
+   "net": 5125,
+   "interval": null,
+   "platit": null,
+   "oferit": {
+    "net": 5125,
+    "anunturi": 34
+   },
+   "declarat": {
+    "net": 2754,
+    "oferte": 39,
+    "laMinim": 0.21
+   }
+  },
+  "magaziner": {
+   "sursa": "oferit",
+   "net": 3800,
+   "interval": null,
+   "platit": null,
+   "oferit": {
+    "net": 3800,
+    "anunturi": 53
+   },
+   "declarat": null
+  },
+  "stivuitorist": {
+   "sursa": "oferit",
+   "net": 3700,
+   "interval": null,
+   "platit": null,
+   "oferit": {
+    "net": 3700,
+    "anunturi": 53
+   },
+   "declarat": null
+  },
+  "vanzator": {
+   "sursa": "oferit",
+   "net": 3344,
+   "interval": null,
+   "platit": null,
+   "oferit": {
+    "net": 3344,
+    "anunturi": 128
+   },
+   "declarat": {
+    "net": 2699,
+    "oferte": 57,
+    "laMinim": 0.79
+   }
+  },
+  "casier": {
+   "sursa": "oferit",
+   "net": 3400,
+   "interval": null,
+   "platit": null,
+   "oferit": {
+    "net": 3400,
+    "anunturi": 50
+   },
+   "declarat": {
+    "net": 2699,
+    "oferte": 20,
+    "laMinim": 0.8
+   }
+  },
+  "agent-vanzari": {
+   "sursa": "oferit",
+   "net": 4500,
+   "interval": null,
+   "platit": null,
+   "oferit": {
+    "net": 4500,
+    "anunturi": 119
+   },
+   "declarat": {
+    "net": 2629,
+    "oferte": 116,
+    "laMinim": 0.14
+   }
+  },
+  "bucatar": {
+   "sursa": "oferit",
+   "net": 4500,
+   "interval": null,
+   "platit": null,
+   "oferit": {
+    "net": 4500,
+    "anunturi": 35
+   },
+   "declarat": {
+    "net": 2699,
+    "oferte": 44,
+    "laMinim": 0.77
+   }
+  },
+  "agent-curatenie": {
+   "sursa": "oferit",
+   "net": 3125,
+   "interval": null,
+   "platit": null,
+   "oferit": {
+    "net": 3125,
+    "anunturi": 46
+   },
+   "declarat": {
+    "net": 2699,
+    "oferte": 83,
+    "laMinim": 0.76
+   }
+  },
+  "secretar": {
+   "sursa": "oferit",
+   "net": 4000,
+   "interval": null,
+   "platit": null,
+   "oferit": {
+    "net": 4000,
+    "anunturi": 37
+   },
+   "declarat": null
+  },
+  "asistent-social": {
+   "sursa": "platit",
+   "net": 5364,
+   "interval": [
+    5033,
+    6610
+   ],
+   "platit": {
+    "randuri": 83,
+    "institutii": 12,
+    "judete": 10,
+    "perioade": [
+     "2026-02",
+     "2026-03"
+    ],
+    "surse": [
+     "DGASPC Călărași",
+     "DGASPC Sector 1",
+     "Spitalul Clinic Județean de Urgență Cluj-Napoca",
+     "Spitalul Clinic Județean de Urgență Constanța",
+     "Spitalul Clinic Județean de Urgență Sibiu",
+     "Spitalul Clinic de Boli Infecțioase Iași",
+     "Spitalul Județean de Urgență Alba Iulia",
+     "Spitalul Județean de Urgență Bacău",
+     "Spitalul Județean de Urgență Buzău",
+     "Spitalul Județean de Urgență Miercurea Ciuc",
+     "Spitalul Municipal Turda",
+     "Spitalul de Psihiatrie Titan Dr. Constantin Gorgos"
+    ],
+    "debutant": null,
+    "cuVariabil": null,
+    "studii": {
+     "S": 5702
+    },
+    "peJudet": []
+   },
+   "oferit": null,
+   "declarat": null
+  }
+ }
+}
