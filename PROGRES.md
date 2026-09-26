@@ -4042,14 +4042,3 @@ până pe 8 octombrie.
 - Web vitals: 6% dintre utilizatori au avut cel puțin o măsurătoare „poor”; CrUX pe teren e „bun”
   pe toate (LCP 1,8 s, INP 174 ms). Laboratorul PSI dă LCP 8,6 s și „Reduce unused JavaScript”.
 - Ziua testului de RPM (21 sept) apare în GA4 cu 1.736 de afișări de reclame și 6,27 lei.
-
-## 27 septembrie 2026 — Homepage: „Ce mai modifică netul”, aliniat cu calculul
-
-Textul din dreapta calculatorului rămăsese în urma codului. Acum spune că pragul deducerii
-(6.325 lei) se compară cu brutul plus tichetele, cum face `fiscal.ts` din 26 septembrie. Mai
-spune că deducerea de 100 lei pentru copil înseamnă ~10 lei în plus în mână și că suma
-netaxabilă de 200 lei are plafonul de 4.600 lei brut. Am adăugat și rândul despre funcția de
-bază. Introducerea e acum „Netul nu depinde doar de brut”. Varianta veche spunea „la același
-brut” și apoi dădea brutul ca prim factor. Cifrele vin din constante (`DEDUCERE_MINIM`,
-`PLAFON_FACILITATE`, `IMPOZIT_PROCENT` și `DEDUCERE_COPIL_SCOLARIZAT`, cea din urmă nouă în
-`fiscal.ts`). Calculatorul nu s-a schimbat.
