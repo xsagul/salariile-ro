@@ -4094,6 +4094,6 @@ ca la `/zile-libere-2026`. Build static și `test:rendered` trec (334 de rute).
   `zile_lucratoare`. Verificat pe fișierele generate: diacritice corecte, cifre ca în tabel.
 - Tot pe 27 septembrie: calendarul are aceleași carduri pe ambele pagini, dar colțul lunii
   diferă (prop `numara` în `CalendarAn`). Pe zile libere scrie „13 zile libere”, pe zile
-  lucrătoare „18 zile lucrătoare”, cu „de” de la 20 în sus. Înainte ambele arătau
+  lucrătoare „18 zile lucrătoare”, fără „de” la 20 și peste, la cererea proprietarului (forma scurtă de pe calendare). Înainte ambele arătau
   „18 lucr. · 13 libere”. Scopul: mai puțin conținut identic între cele două pagini. Aceeași
   regulă pentru „de” e aplicată și în PDF și în imagine.

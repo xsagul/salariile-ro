@@ -17,8 +17,8 @@ export type DateZileLucratoare = {
 };
 
 export const ZILE = ["L", "M", "M", "J", "V", "S", "D"];
-// „20 de zile lucrătoare”, dar „18 zile lucrătoare”, ca în calendarul de pe pagină.
-export const zileLucratoareText = (n: number) => `${n}${n % 100 >= 20 || n % 100 === 0 ? " de" : ""} zile lucrătoare`;
+// Fără „de”: „20 zile lucrătoare”, ca în calendarul de pe pagină (proprietar, 27 sept. 2026).
+export const zileLucratoareText = (n: number) => `${n} zile lucrătoare`;
 // Culorile calendarului de pe pagină (CalendarAn): sărbătoarea stone-900 pe alb,
 // weekendul stone-100 cu text stone-600.
 export const CERNEALA = "#1c1917";

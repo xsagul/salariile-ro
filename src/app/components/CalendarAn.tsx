@@ -27,8 +27,8 @@ function ton(c: NonNullable<CelulaZi>) {
   return "text-stone-700";
 }
 
-// „20 de zile”, dar „18 zile”: în română, de la 20 în sus numeralul cere „de”.
-const zile = (n: number, fel: string) => `${n}${n % 100 >= 20 || n % 100 === 0 ? " de" : ""} zile ${fel}`;
+// Fără „de”: „20 zile lucrătoare”, forma scurtă de pe calendare (proprietar, 27 sept. 2026).
+const zile = (n: number, fel: string) => `${n} zile ${fel}`;
 
 /** `numara`: ce scrie în colțul fiecărei luni. Pe zile libere, zilele libere; pe zile
  *  lucrătoare, zilele lucrătoare. Aceeași lună nu arată la fel pe cele două pagini
