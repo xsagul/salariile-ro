@@ -4082,3 +4082,13 @@ ca la `/zile-libere-2026`. Build static și `test:rendered` trec (334 de rute).
   (`CalendarAn`, același ca la zile libere), cu „X lucr. · Y libere” la fiecare lună, ca la
   Edenred, locul 1. Varianta cu luna care se deschide la clic în tabel (calculator-salarii.ro)
   n-a fost făcută, ca aceeași lună să nu apară de două ori.
+- Tot pe 27 septembrie: descărcări pe paginile de zile lucrătoare, cerute de proprietar după
+  Edenred (calendar PNG) și calculator-salarii.ro (tabel PDF), cu „oamenii nu știu de CSV”.
+  CSV-ul a ieșit. Sub tabel e „Descarcă tabelul (PDF)” (A4, tabelul și lista sărbătorilor),
+  iar sub calendar „Descarcă calendarul (PDF)” (A4 orizontal, 12 luni) și „(imagine)”
+  (PNG 1920×1080, 6 luni pe rând și sărbătorile în dreapta). Fișierele se desenează direct
+  (jsPDF, respectiv `<canvas>`), fără captură de pagină. Desenul PDF stă în
+  `src/lib/pdf-zile-lucratoare.ts`, butoanele în `DescarcaZileLucratoare.tsx`. Fontul PDF e
+  Liberation Sans (SIL OFL, `public/fonts`, cu licența alături), fiindcă Helvetica din jsPDF
+  n-are ș, ț, ă. Se încarcă doar la clic. GA4: `file_download` cu `instrument` =
+  `zile_lucratoare`. Verificat pe fișierele generate: diacritice corecte, cifre ca în tabel.

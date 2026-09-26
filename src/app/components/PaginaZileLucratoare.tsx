@@ -11,6 +11,7 @@ import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 import { ANI_CALENDAR, sarbatoriAn, zileLucratoareLuna } from "@/lib/sarbatori";
 import TabelArticol from "@/app/components/TabelArticol";
 import CalendarAn, { type CelulaZi, type LunaCalendar } from "@/app/components/CalendarAn";
+import DescarcaZileLucratoare from "@/app/components/DescarcaZileLucratoare";
 import { CARD_TITLU, Formula, LISTA_CARD, SEPARATOR_SECTIUNE, SPATIU_JOS, SPATIU_SUS, SUB_TITLU, TITLU_PAGINA, TITLU_SECTIUNE } from "@/app/components/ui";
 
 export type AnZileLucratoare = (typeof ANI_CALENDAR)[number];
@@ -57,15 +58,9 @@ function dateAn(an: AnZileLucratoare) {
   const inSaptamana = rows.flatMap((r) =>
     r.holidays.filter((h) => !h.weekend).map((h) => ({ data: `${h.day} ${r.name.toLowerCase()}`, label: h.label })),
   );
-  const csv = [
-    "Luna,Zile lucratoare,Ore lucratoare (8h/zi),Zile libere,Sarbatori legale",
-    ...rows.map((r) => {
-      const s = r.holidays.map((h) => `${h.day} ${r.name.toLowerCase()} (${h.label}${h.weekend ? " - weekend" : ""})`).join("; ");
-      return `"${r.name}",${r.lucratoare},${r.ore},${r.libere},"${s}"`;
-    }),
-    `"Total ${an}",${total},${total * 8},${zileAn - total},""`,
-  ].join("\r\n");
-  return { rows, luni, total, ore: total * 8, libere: zileAn - total, inSaptamana, csv: `data:text/csv;charset=utf-8,${encodeURIComponent(csv)}` };
+  // Toate sărbătorile, și cele din weekend, pentru lista din PDF și din imagine.
+  const toate = rows.flatMap((r) => r.holidays.map((h) => ({ data: `${h.day} ${r.name.toLowerCase()}`, label: h.label, weekend: h.weekend })));
+  return { rows, luni, total, ore: total * 8, libere: zileAn - total, inSaptamana, toate };
 }
 
 // Titlul și descrierea după modelul de la zile libere, fără cifre în titlu (proprietar,
@@ -112,7 +107,16 @@ function AniZileLucratoare({ an }: { an: AnZileLucratoare }) {
 // ─── Pagina ──────────────────────────────────────────────────────────────────
 
 export default function PaginaZileLucratoare({ an }: { an: AnZileLucratoare }) {
-  const { rows, luni, total, ore, libere, inSaptamana, csv } = dateAn(an);
+  const { rows, luni, total, ore, libere, inSaptamana, toate } = dateAn(an);
+  const descarcari = {
+    an,
+    rows: rows.map(({ name, zileCalendaristice, lucratoare, ore, libere }) => ({ name, zileCalendaristice, lucratoare, ore, libere })),
+    luni,
+    sarbatori: toate,
+    total,
+    ore,
+    libere,
+  };
   const acum = acumRo();
   const lunaCurenta = acum.an === an ? acum.luna : null;
   const trecut = an < acum.an;
@@ -203,9 +207,10 @@ export default function PaginaZileLucratoare({ an }: { an: AnZileLucratoare }) {
                   </tr>
                 </tbody>
               </TabelArticol>
-              <p className="text-sm text-stone-600 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2">
-                <a href={csv} download={`zile-lucratoare-${an}.csv`}>Descarcă tabelul (CSV)</a> pentru Excel sau pontaj. Temei:{" "}
-                <a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/128646" target="_blank" rel="noopener">Codul Muncii</a>, art. 139 și 142.
+              {/* PDF în locul CSV-ului: „oamenii nu știu de CSV” (proprietar, 27 sept. 2026). */}
+              <DescarcaZileLucratoare {...descarcari} ce="tabel" />
+              <p className="mt-3 text-sm text-stone-600 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2">
+                Temei: <a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/128646" target="_blank" rel="noopener">Codul Muncii</a>, art. 139 și 142.
               </p>
             </div>
 
@@ -213,6 +218,7 @@ export default function PaginaZileLucratoare({ an }: { an: AnZileLucratoare }) {
             <div className={`${SEPARATOR_SECTIUNE} md:col-span-5`}>
               <h2 className={TITLU_SECTIUNE}>Calendarul anului {an}</h2>
               <CalendarAn an={an} luni={luni} dataBuild={new Date().toISOString()} />
+              <DescarcaZileLucratoare {...descarcari} ce="calendar" />
             </div>
 
             <aside className="mt-8 md:col-span-2 md:col-start-4 md:row-start-1 md:mt-6 md:self-start">
