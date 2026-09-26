@@ -47,8 +47,9 @@ type FooterLink = { href: string; label: string; external?: boolean };
 // autoritatea întregului site. Pe 15 septembrie 2026 au rămas doar paginile cu
 // cerere măsurată și cele trei pagini de încredere (despre, contact,
 // confidențialitate). Scoase, dar legate din textul paginilor înrudite: /widget,
-// /compara, /date-salarii, /metodologie, /cookies, /termeni, /zile-libere-2026,
+// /compara, /date-salarii, /metodologie, /cookies, /termeni,
 // /calculator-ore-suplimentare și /en/salary-calculator (legată de pe homepage).
+// /zile-libere-2026 a revenit pe 26 septembrie 2026, la cererea proprietarului.
 const FOOTER_GROUPS: Array<{ title: string; links: FooterLink[] }> = [
   {
     title: "Instrumente",
@@ -70,6 +71,7 @@ const FOOTER_GROUPS: Array<{ title: string; links: FooterLink[] }> = [
       { href: "/salariu-minim-constructii-2026", label: "Salariu minim construcții" },
       { href: "/salariu-mediu", label: "Salariu mediu 2026" },
       { href: "/deducere-personala-2026", label: "Deducere personală 2026" },
+      { href: "/zile-libere-2026", label: "Zile libere 2026" },
       { href: "/zile-lucratoare-2026", label: "Zile lucrătoare 2026" },
       { href: "/salarii", label: "Salarii pe meserii" },
       { href: "/noutati", label: "Noutăți legislative" },

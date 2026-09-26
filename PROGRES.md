@@ -3994,3 +3994,11 @@ infirmat-o: impozitsalariu.ro, pe locul 2, își păstrează descrierea fără �
 **De verificat:** după recrawl (câteva zile, sau „Solicită indexarea” în GSC pe
 `https://salariile.ro/`), fragmentul pe „calculator salariu net”. Google poate rescrie și
 o descriere bună; dacă alege alt text, se vede ce anume și se decide atunci.
+
+## 26 septembrie 2026 — Zile libere 2026 înapoi în meniu și în subsol
+
+La cererea proprietarului, mulțumit de calendarul refăcut: `/zile-libere-2026` intră în
+„Ghiduri” (bara de sus) și în „Informații” (subsol), lângă Zile lucrătoare 2026. Ieșise pe
+15 septembrie pentru cerere mică (5 clicuri în 28 de zile). Testul A/B/C al barei de sus
+rulează până pe 8 octombrie; intrarea nouă e aceeași în toate cele trei variante, deci
+comparația dintre ele rămâne validă, dar clickurile `zona=header` se compară doar de azi încolo.

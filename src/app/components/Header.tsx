@@ -22,9 +22,11 @@ type Item = Leaf | Group;
 // Meniul apare pe fiecare pagină, deci fiecare intrare primește o parte din
 // autoritatea TUTUROR paginilor. Pe 15 septembrie 2026 au rămas doar paginile cu
 // cerere măsurată în Search Console. Au ieșit /compara (6 clicuri în 28 de zile),
-// /widget (1), /calculator-ore-suplimentare (6) și /zile-libere-2026 (5, sezon
-// trecut); toate rămân legate din textul paginilor înrudite. Nu adăuga o pagină
-// aici fără cerere: fiecare intrare nouă scade partea tuturor celorlalte.
+// /widget (1) și /calculator-ore-suplimentare (6); ambele rămân legate din textul
+// paginilor înrudite. /zile-libere-2026 a ieșit atunci (5, sezon trecut) și a
+// revenit pe 26 septembrie 2026, la cererea proprietarului, după refacerea
+// calendarului. Nu adăuga o pagină aici fără cerere: fiecare intrare nouă scade
+// partea tuturor celorlalte.
 const NAV: Item[] = [
   { href: "/", label: "Calculator salariu" },
   { href: "/salarii", label: "Meserii" },
@@ -47,6 +49,7 @@ const NAV: Item[] = [
       { href: "/salariu-minim-constructii-2026", label: "Minim construcții" },
       { href: "/salariu-mediu", label: "Salariu mediu" },
       { href: "/deducere-personala-2026", label: "Deducere personală" },
+      { href: "/zile-libere-2026", label: "Zile libere 2026" },
       { href: "/zile-lucratoare-2026", label: "Zile lucrătoare 2026" },
     ],
   },
