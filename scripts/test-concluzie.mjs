@@ -20,6 +20,10 @@ for (const [slug, c] of Object.entries(date.meserii)) {
   }
   if (c.sursa === "oferit") assert.equal(c.platit, null, `${slug}: fără salarii plătite peste prag, nu arătăm detaliile lor`);
   if (c.declarat) assert.ok(c.declarat.oferte >= 20, `${slug}: ANOFM sub 20 de oferte nu se arată`);
+  for (const a of c.angajatori ?? []) {
+    assert.ok(a.min >= 4325 && a.min <= a.max, `${slug}: ${a.firma} — normă întreagă sub salariul minim sau interval inversat`);
+    assert.ok(a.anunturi >= 3, `${slug}: ${a.firma} — sub trei anunțuri nu se citează`);
+  }
   assert.ok(!("platitSubPrag" in c), `${slug}: salariile plătite sub prag nu se publică nici ca verificare`);
 }
 assert.ok(n >= 10, "Cel puțin zece meserii cu concluzie");

@@ -27,6 +27,7 @@ jobs:
           node-version: 24
           cache: npm
       - run: node scripts/colectare/anofm.mjs
+      - run: node scripts/colectare/angajatori.mjs
       - run: npm ci
       - name: Salariul-concluzie
         run: |

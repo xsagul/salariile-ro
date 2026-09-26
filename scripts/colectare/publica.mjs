@@ -17,9 +17,48 @@ const JUDETE = {
 };
 
 const agregat = JSON.parse(fs.readFileSync("colectare/agregat/meserii.json", "utf8"));
+
+// Ofertele marilor angajatori, citate ca atare (nu statistici): anunțurile active în ultimele
+// 30 de zile, pe șablonul de post al angajatorului. Dicționar strict, ca la art. 33.
+const SABLON = [
+  ["vanzator", "Lidl", /^vânzător$/i],
+  ["agent-curatenie", "Kaufland", /personal curățenie/i],
+  ["agent-curatenie", "Lidl", /^personal de serviciu$/i],
+];
+const capete = (_, s) => (s.length >= 20
+  ? { min: s[Math.floor(0.05 * s.length)], max: s[Math.ceil(0.95 * s.length) - 1] }
+  : { min: s[0], max: s[s.length - 1] });
+const angajatori = {};
+for (const site of ["kaufland", "lidl"]) {
+  const dir = `colectare/angajatori/${site}`;
+  if (!fs.existsSync(dir)) continue;
+  const index = JSON.parse(fs.readFileSync(`${dir}/index.json`, "utf8"));
+  const limita = new Date(Date.now() - 30 * 864e5).toISOString().slice(0, 10);
+  const anunturi = fs.readdirSync(`${dir}/oferte`).flatMap((f) => fs.readFileSync(`${dir}/oferte/${f}`, "utf8").split("\n").filter(Boolean).map((l) => JSON.parse(l)))
+    .filter((o) => (index[o.id]?.[1] ?? "") >= limita);
+  const nume = site === "lidl" ? "Lidl" : "Kaufland";
+  for (const [slug, firma, re] of SABLON) {
+    if (firma !== nume) continue;
+    // Lidl: după titlu — „Responsabil de tură” are tot șablonul „Vânzător”. Sub salariul minim
+    // nu poate fi normă întreagă, oricum ar fi etichetat anunțul („Personal de Serviciu” 2.650).
+    const lot = anunturi.filter((o) => re.test(site === "lidl" ? o.titlu.replace(/\s*\(.*$/, "").replace(/\s+[A-ZĂÂÎȘȚ][\wăâîșț-]*(,.*)?$/u, "") : o.sablon ?? "")
+      && /full/i.test(o.norma ?? "") && o.salariu?.min >= 4325);
+    if (lot.length < 3) continue;
+    const sume = lot.map((o) => o.salariu.min).sort((a, b) => a - b);
+    const venit = lot.map((o) => o.venitMediuBrut).filter(Boolean).sort((a, b) => a - b);
+    (angajatori[slug] ??= []).push({
+      firma, post: lot[0].sablon.replace(/^\d+_RO_[^_]+_/, ""), anunturi: lot.length, orase: new Set(lot.map((o) => o.oras)).size,
+      // Peste 20 de anunțuri, fără cele mai extreme 5% din fiecare capăt: un singur anunț din
+      // București (7.120) întindea altfel intervalul celorlalte 77 (5.300–5.830).
+      ...capete("", sume), baza: lot.every((o) => o.salariu.baza === "brut") ? "brut" : null,
+      venitMediuBrut: venit.length ? capete("", venit) : null,
+    });
+  }
+}
 const out = {};
 for (const m of agregat.meserii) {
   if (!m.concluzie) continue;
+  const mari = angajatori[m.slug] ?? null;
   const P = m.platit;
   out[m.slug] = {
     sursa: m.concluzie.sursa,
@@ -39,6 +78,7 @@ for (const m of agregat.meserii) {
     oferit: m.oferit?.netCentral && m.oferit.trece ? { net: m.oferit.netCentral, anunturi: m.oferit.anunturi } : null,
     declarat: m.declarat?.netMinimDeclarat && m.declarat.brutNormaIntreaga >= 20 && m.declarat.angajatori >= 10 && !m.declarat.codComun
       ? { net: m.declarat.netMinimDeclarat.mediana, oferte: m.declarat.brutNormaIntreaga, laMinim: m.declarat.laMinim } : null,
+    angajatori: mari,
   };
 }
 fs.writeFileSync("src/data/salariu-concluzie.json", JSON.stringify({ generatLa: agregat.generatLa, oferteAnofm: agregat.oferteAnofm, meserii: out }, null, 1) + "\n");

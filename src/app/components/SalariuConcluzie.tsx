@@ -21,6 +21,10 @@ type Concluzie = {
   };
   oferit: null | { net: number; anunturi: number };
   declarat: null | { net: number; oferte: number; laMinim: number };
+  angajatori: null | {
+    firma: string; post: string; anunturi: number; orase: number; min: number; max: number;
+    baza: "brut" | null; venitMediuBrut: { min: number; max: number } | null;
+  }[];
 };
 
 const MESERII = data.meserii as unknown as Record<string, Concluzie>;
@@ -112,6 +116,28 @@ export default function SalariuConcluzie({ slug, de }: { slug: string; de: strin
               La ANOFM, angajatorii declară adesea salariul minim ca formalitate; de aceea nu e concluzia.
             </p>
           )}
+        </section>
+      )}
+
+      {c.angajatori && c.angajatori.length > 0 && (
+        <section className="mt-4 rounded-md border border-stone-200 bg-surface p-5">
+          <h2 className="text-base font-semibold text-stone-900">Ce oferă marii angajatori</h2>
+          <p className="mt-1 text-xs text-stone-600">Sumele publicate chiar de angajator în anunțurile de pe site-ul lui, pentru normă întreagă.</p>
+          <ul className="mt-3 divide-y divide-stone-100">
+            {c.angajatori.map((a) => (
+              <li key={`${a.firma}-${a.post}`} className="py-2 text-sm text-stone-700">
+                <span className="font-semibold text-stone-900">{a.firma}</span>, {a.post.toLocaleLowerCase("ro-RO")}:{" "}
+                <span className="font-semibold text-stone-900">
+                  {a.min === a.max ? lei(a.min) : `${lei(a.min)}–${lei(a.max)}`} lei{a.baza === "brut" ? " brut" : ""}
+                </span>
+                {a.baza === null && <span className="text-xs text-stone-600"> (anunțul nu spune dacă e brut sau net)</span>}
+                {a.venitMediuBrut && (
+                  <>; venit mediu brut total {a.venitMediuBrut.min === a.venitMediuBrut.max ? lei(a.venitMediuBrut.min) : `${lei(a.venitMediuBrut.min)}–${lei(a.venitMediuBrut.max)}`} lei, cu tichete, bonusuri și sporuri</>
+                )}
+                <span className="text-xs text-stone-600"> · {a.anunturi} anunțuri, {a.orase} {a.orase === 1 ? "oraș" : "orașe"}</span>
+              </li>
+            ))}
+          </ul>
         </section>
       )}
 

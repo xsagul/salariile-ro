@@ -118,7 +118,8 @@
     ]
    },
    "oferit": null,
-   "declarat": null
+   "declarat": null,
+   "angajatori": null
   },
   "medic-rezident": {
    "sursa": "platit",
@@ -201,7 +202,8 @@
     ]
    },
    "oferit": null,
-   "declarat": null
+   "declarat": null,
+   "angajatori": null
   },
   "asistent-medical": {
    "sursa": "platit",
@@ -302,7 +304,8 @@
     "net": 3116,
     "oferte": 44,
     "laMinim": 0.3
-   }
+   },
+   "angajatori": null
   },
   "registrator-medical": {
    "sursa": "platit",
@@ -384,7 +387,8 @@
     ]
    },
    "oferit": null,
-   "declarat": null
+   "declarat": null,
+   "angajatori": null
   },
   "farmacist": {
    "sursa": "platit",
@@ -428,7 +432,8 @@
     ]
    },
    "oferit": null,
-   "declarat": null
+   "declarat": null,
+   "angajatori": null
   },
   "psiholog": {
    "sursa": "platit",
@@ -471,7 +476,8 @@
     "peJudet": []
    },
    "oferit": null,
-   "declarat": null
+   "declarat": null,
+   "angajatori": null
   },
   "kinetoterapeut": {
    "sursa": "platit",
@@ -515,7 +521,8 @@
     "peJudet": []
    },
    "oferit": null,
-   "declarat": null
+   "declarat": null,
+   "angajatori": null
   },
   "infirmier": {
    "sursa": "platit",
@@ -628,7 +635,8 @@
     ]
    },
    "oferit": null,
-   "declarat": null
+   "declarat": null,
+   "angajatori": null
   },
   "contabil": {
    "sursa": "oferit",
@@ -639,7 +647,8 @@
     "net": 5500,
     "anunturi": 75
    },
-   "declarat": null
+   "declarat": null,
+   "angajatori": null
   },
   "economist": {
    "sursa": "platit",
@@ -705,7 +714,8 @@
     ]
    },
    "oferit": null,
-   "declarat": null
+   "declarat": null,
+   "angajatori": null
   },
   "consilier-juridic": {
    "sursa": "platit",
@@ -751,7 +761,8 @@
     "peJudet": []
    },
    "oferit": null,
-   "declarat": null
+   "declarat": null,
+   "angajatori": null
   },
   "electrician": {
    "sursa": "oferit",
@@ -766,7 +777,8 @@
     "net": 2754,
     "oferte": 26,
     "laMinim": 0.04
-   }
+   },
+   "angajatori": null
   },
   "instalator": {
    "sursa": "oferit",
@@ -777,7 +789,8 @@
     "net": 5558,
     "anunturi": 59
    },
-   "declarat": null
+   "declarat": null,
+   "angajatori": null
   },
   "sudor": {
    "sursa": "oferit",
@@ -792,7 +805,8 @@
     "net": 2754,
     "oferte": 39,
     "laMinim": 0.21
-   }
+   },
+   "angajatori": null
   },
   "magaziner": {
    "sursa": "oferit",
@@ -803,7 +817,8 @@
     "net": 3800,
     "anunturi": 53
    },
-   "declarat": null
+   "declarat": null,
+   "angajatori": null
   },
   "stivuitorist": {
    "sursa": "oferit",
@@ -814,7 +829,8 @@
     "net": 3700,
     "anunturi": 53
    },
-   "declarat": null
+   "declarat": null,
+   "angajatori": null
   },
   "vanzator": {
    "sursa": "oferit",
@@ -829,7 +845,22 @@
     "net": 2699,
     "oferte": 57,
     "laMinim": 0.79
-   }
+   },
+   "angajatori": [
+    {
+     "firma": "Lidl",
+     "post": "Vânzător",
+     "anunturi": 78,
+     "orase": 62,
+     "min": 5300,
+     "max": 5550,
+     "baza": null,
+     "venitMediuBrut": {
+      "min": 7300,
+      "max": 7600
+     }
+    }
+   ]
   },
   "casier": {
    "sursa": "oferit",
@@ -844,7 +875,8 @@
     "net": 2699,
     "oferte": 20,
     "laMinim": 0.8
-   }
+   },
+   "angajatori": null
   },
   "agent-vanzari": {
    "sursa": "oferit",
@@ -859,7 +891,8 @@
     "net": 2629,
     "oferte": 116,
     "laMinim": 0.14
-   }
+   },
+   "angajatori": null
   },
   "bucatar": {
    "sursa": "oferit",
@@ -874,7 +907,8 @@
     "net": 2699,
     "oferte": 44,
     "laMinim": 0.77
-   }
+   },
+   "angajatori": null
   },
   "agent-curatenie": {
    "sursa": "oferit",
@@ -889,7 +923,32 @@
     "net": 2699,
     "oferte": 83,
     "laMinim": 0.76
-   }
+   },
+   "angajatori": [
+    {
+     "firma": "Kaufland",
+     "post": "Personal Curățenie",
+     "anunturi": 7,
+     "orase": 7,
+     "min": 4700,
+     "max": 4700,
+     "baza": "brut",
+     "venitMediuBrut": null
+    },
+    {
+     "firma": "Lidl",
+     "post": "Personal de Serviciu",
+     "anunturi": 4,
+     "orase": 4,
+     "min": 5300,
+     "max": 5550,
+     "baza": null,
+     "venitMediuBrut": {
+      "min": 7300,
+      "max": 7600
+     }
+    }
+   ]
   },
   "secretar": {
    "sursa": "oferit",
@@ -900,7 +959,8 @@
     "net": 4000,
     "anunturi": 37
    },
-   "declarat": null
+   "declarat": null,
+   "angajatori": null
   },
   "asistent-social": {
    "sursa": "platit",
@@ -947,7 +1007,8 @@
     "peJudet": []
    },
    "oferit": null,
-   "declarat": null
+   "declarat": null,
+   "angajatori": null
   }
  }
 }
