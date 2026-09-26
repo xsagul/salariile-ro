@@ -26,7 +26,8 @@
    "Transparenţa veniturilor salariale pentru funcțiile din cadrul Spitalului Județean de Urgență Alba I",
    "Transparenţa veniturilor salariale pentru funcțiile din cadrul Spitalului Județean de Urgență Alba I",
    "Sumă proiect ****** *****"
-  ]
+  ],
+  "fisier": "https://spitalalba.ro/docs/NUSTERGE/Transparen%C8%9Ba%20veniturilor%20salariale%20la%20data%20de%2031.03.2026.pdf"
  },
  "scju-cluj": {
   "stare": "acceptat",
@@ -53,7 +54,8 @@
    "registrator-medical": 31,
    "sofer-ambulanta": 2
   },
-  "coloaneNecunoscute": []
+  "coloaneNecunoscute": [],
+  "fisier": "https://scjucluj.ro/pdf/venituri/Venituri%20salariale%20martie%202026%20.pdf"
  },
  "sju-bacau": {
   "stare": "acceptat",
@@ -78,7 +80,8 @@
    "programator": 3,
    "registrator-medical": 7
   },
-  "coloaneNecunoscute": []
+  "coloaneNecunoscute": [],
+  "fisier": "https://www.spitaluljudeteanbacau.ro/storage/2026/03/SJUBC-salarii-februarie-2026.pdf"
  },
  "sju-gorj": {
   "stare": "de verificat: baza ghicită la peste 30% din rânduri",
@@ -109,7 +112,8 @@
    "Sp ind.comisii % / Lg.153/",
    "12 Mar 2026, 10:19:00 Sentinte jud. / Lg.153/",
    "Sentinte"
-  ]
+  ],
+  "fisier": "https://www.spitalgorj.ro/wp-content/uploads/2026/03/SALARII-FEBRUARIE-2026-31.03.2026-TRANSPARENTA.pdf"
  },
  "sju-mciuc": {
   "stare": "acceptat",
@@ -137,11 +141,13 @@
   },
   "coloaneNecunoscute": [
    "luna martie 2026 Gradație/ grad"
-  ]
+  ],
+  "fisier": "https://spitalmciuc.ro/wp-content/uploads/2026/04/Transparenta-veniturilor-salariale-martie-2026.pdf"
  },
  "scju-ilfov": {
   "stare": "fără rânduri (scanat sau alt format)",
-  "sha256": "f43bb6f748753987b6a29c451c50aa982eef7966ff885f1c83dcf819bb5caed6"
+  "sha256": "f43bb6f748753987b6a29c451c50aa982eef7966ff885f1c83dcf819bb5caed6",
+  "fisier": "https://scjuilfov-asec.ro/media/135587/transparenta-veniturilor-salariale-la-31032026.pdf"
  },
  "scju-constanta": {
   "stare": "acceptat",
@@ -168,15 +174,18 @@
    "registrator-medical": 94,
    "sofer-ambulanta": 4
   },
-  "coloaneNecunoscute": []
+  "coloaneNecunoscute": [],
+  "fisier": "https://www.spitalulconstanta.ro/wp-content/uploads/2026/03/Venituri_salariale-Martie_2026.xlsx"
  },
  "pm-sinaia": {
   "stare": "fără rânduri (scanat sau alt format)",
-  "sha256": "92e5d0f0fea327968acf9470b6b1bb33650e9cd519a195614452385eb60de5d1"
+  "sha256": "92e5d0f0fea327968acf9470b6b1bb33650e9cd519a195614452385eb60de5d1",
+  "fisier": "https://www.primaria-sinaia.ro/wp-content/uploads/2026/03/Transparenta-veniturilor-salariale-la-data-de-31-martie-2026.pdf"
  },
  "dnp": {
   "stare": "fără rânduri (scanat sau alt format)",
-  "sha256": "6ca5b38486c37ad43494c5929b341649f1822dc0b51aa8018df4aac7a6418e74"
+  "sha256": "6ca5b38486c37ad43494c5929b341649f1822dc0b51aa8018df4aac7a6418e74",
+  "fisier": "https://probatiune.just.ro/wp-content/uploads/2026/04/DNP_31.03.2026_transparenta_veniturilor-salariale.pdf"
  },
  "scju-sibiu": {
   "stare": "acceptat",
@@ -202,7 +211,8 @@
   },
   "coloaneNecunoscute": [
    "TABEL CU FUNCȚIILE ȘI SALARIILE PERSONALULUI S.C.J.U.S. SIBIU PENTRU LUNA MARTIE 206 Gradatie Gradat"
-  ]
+  ],
+  "fisier": "https://scjus.ro/storage/2026/03/Venituri-Martie-2026.xlsx"
  },
  "dgaspc-s1": {
   "stare": "acceptat",
@@ -224,7 +234,8 @@
    "infirmier": 2,
    "sofer-ambulanta": 2
   },
-  "coloaneNecunoscute": []
+  "coloaneNecunoscute": [],
+  "fisier": "https://www.dgaspc-sectorul1.ro/wp-content/uploads/2026/06/Transparenta-venituri-salariale_-MARTIE-2026.pdf"
  },
  "dgaspc-s2": {
   "stare": "de verificat: numai 12% rânduri valide",
@@ -253,23 +264,28 @@
    "Familia ocupațională „Administrație” - funcții publice Clasa Grad profesional",
    "Gradatia Grad profesional",
    "TRANSPARENȚA VENITURILOR SALARIALE"
-  ]
+  ],
+  "fisier": "https://social2.ro/wp-content/uploads/2026/03/Transparenta-veniturilor-salariale-31.03.2026.pdf"
  },
  "dgaspc-if": {
   "stare": "fără rânduri (scanat sau alt format)",
-  "sha256": "4161f7fd06fc937ac97fd8607d797631dcc4b8de36fbd6af1ea6032d888853bb"
+  "sha256": "4161f7fd06fc937ac97fd8607d797631dcc4b8de36fbd6af1ea6032d888853bb",
+  "fisier": "https://protectiacopilului.ro/wp-content/uploads/2016/01/TABEL-SALARII-DE-BAZA-LA-31.03.2026.pdf"
  },
  "dgaspc-sv": {
   "stare": "fără rânduri (scanat sau alt format)",
-  "sha256": "40064b2de27e28ab377df1943316b90e470c32f467a614e74e8de70feebf1e16"
+  "sha256": "40064b2de27e28ab377df1943316b90e470c32f467a614e74e8de70feebf1e16",
+  "fisier": "https://dgaspcsv.ro/wp-content/uploads/2026/03/Transparenta-veniturilor_30.03.2026.pdf"
  },
  "dgaspc-gj": {
   "stare": "fără rânduri (scanat sau alt format)",
-  "sha256": "073be15ced5496e3320ab94b4b173732420d725af689ac0f5094c10fca7273d6"
+  "sha256": "073be15ced5496e3320ab94b4b173732420d725af689ac0f5094c10fca7273d6",
+  "fisier": "https://www.dgaspcgorj.ro/wp-content/uploads/2026/09/transparenta-veniturilor-salariale-DGASPC-Gorj-septembrie-2026.pdf"
  },
  "dgaspc-bt": {
   "stare": "fără rânduri (scanat sau alt format)",
-  "sha256": "6eeec8e214dc4f4cc74c6704d1110d63b0d1ae6c7e828ea5b7fc066531f0e857"
+  "sha256": "6eeec8e214dc4f4cc74c6704d1110d63b0d1ae6c7e828ea5b7fc066531f0e857",
+  "fisier": "https://dgaspcbt.ro/wp-content/uploads/2024/09/Transparen%C8%9B%C4%83-salarial%C4%83-sept-2024.pdf"
  },
  "dgaspc-cl": {
   "stare": "acceptat",
@@ -295,11 +311,13 @@
    "CONSILIUL JUDEŢEAN CĂLĂRAŞI Direcția Generală de Asistență Socială și Protecția Copilului Călărași C",
    "CONSILIUL JUDEŢEAN CĂLĂRAŞI Direcția Generală de Asistență Socială și Protecția Copilului Călărași C",
    "CONSILIUL JUDEŢEAN CĂLĂRAŞI Direcția Generală de Asistență Socială și Protecția Copilului Călărași C"
-  ]
+  ],
+  "fisier": "https://dgaspc-cl.ro/images/2026/Transparenta%20veniturilor%2031%20martie%202026.pdf"
  },
  "dgaspc-sm": {
   "stare": "fără rânduri (scanat sau alt format)",
-  "sha256": "1c12377ba9b749d90ec174ca820e1593e9d1d86d4238007c0dcce6329742114a"
+  "sha256": "1c12377ba9b749d90ec174ca820e1593e9d1d86d4238007c0dcce6329742114a",
+  "fisier": "https://www.dgaspcsm.ro/storage/resurse-umane/transparenta-martie-2026.pdf"
  },
  "bj-alba": {
   "stare": "acceptat",
@@ -317,31 +335,38 @@
    "Nr. crt.",
    "BIBLIOTECA Trandafirilor, 0258 811 bjalba@gmail.com pentru conform art.",
    "JUDEȚEANĂ„LUCIAN Alba Iulia, jud. Alba, 0258 817 204 • managerbiblioteca@yahoo.com veniturilor exist"
-  ]
+  ],
+  "fisier": "https://www.bjalba.ro/wp-content/uploads/2026/03/Transparenta-veniturilor-salariale.pdf"
  },
  "bj-valcea": {
   "stare": "fără rânduri (scanat sau alt format)",
-  "sha256": "15f7355644cbdbcaf5ac740ea241509a4c03db467a6df6839986da76097f0dab"
+  "sha256": "15f7355644cbdbcaf5ac740ea241509a4c03db467a6df6839986da76097f0dab",
+  "fisier": "https://www.bjai.ro/informatii-publice/informatii-publice/Transparenta%20Veniturilor%20Salariale%20la%2010%20Martie%202026.pdf"
  },
  "bj-vrancea": {
   "stare": "fără rânduri (scanat sau alt format)",
-  "sha256": "723efb270cf41f458164270ca4c8c72f023d781eaa038b3758fa91c49df1cb69"
+  "sha256": "723efb270cf41f458164270ca4c8c72f023d781eaa038b3758fa91c49df1cb69",
+  "fisier": "https://bjvrancea.ro/wp-content/uploads/2026/03/Scan2026-03-25_090522.pdf"
  },
  "bj-calarasi": {
   "stare": "fără rânduri (scanat sau alt format)",
-  "sha256": "4cebdbca5ad1dc7bddb128d6ae8480da1eb4e8904ea2d8f035f874df6344966e"
+  "sha256": "4cebdbca5ad1dc7bddb128d6ae8480da1eb4e8904ea2d8f035f874df6344966e",
+  "fisier": "https://www.bjcalarasi.ro/wp-content/uploads/2025/04/Raport-anual-privind-transparenta-decizionala-pe-anul-2024.pdf"
  },
  "pm-timisoara": {
   "stare": "fără rânduri (scanat sau alt format)",
-  "sha256": "586b10970a66433cf4a976b106a69d3584940ea807c0cb5dfe7b7d6f58aaa5c6"
+  "sha256": "586b10970a66433cf4a976b106a69d3584940ea807c0cb5dfe7b7d6f58aaa5c6",
+  "fisier": "https://assets.primariatm.ro/0b82431c-323b-42e1-856e-f930c032893d/31.03.2026%20R.pdf"
  },
  "pm-suceava": {
   "stare": "fără rânduri (scanat sau alt format)",
-  "sha256": "99668d8e5dcfc655772adcbf290eb40461aeda79cd7eaebd1a9bacebe31e258b"
+  "sha256": "99668d8e5dcfc655772adcbf290eb40461aeda79cd7eaebd1a9bacebe31e258b",
+  "fisier": "https://www.primariasv.ro/dm_suceava/site.nsf/atasament/FB164BA39544D2D1C2258DC70030413B/$FILE/Transparenta%20veniturilor%20la%2031%20martie%202026.pdf?Open"
  },
  "ps4": {
   "stare": "fără rânduri (scanat sau alt format)",
-  "sha256": "777321bd6ce5b58f0bee22460e6c224d535c94c4f67971a4d70fe109f77e5c18"
+  "sha256": "777321bd6ce5b58f0bee22460e6c224d535c94c4f67971a4d70fe109f77e5c18",
+  "fisier": "https://ps4.ro/wp-content/uploads/2026/04/Transparenta-veniturilor-salariale-Martie-2026.pdf"
  },
  "ps6": {
   "stare": "de verificat: baza ghicită la peste 30% din rânduri",
@@ -362,7 +387,8 @@
    "Gradaţia 3 7=5+(5*5%)",
    "Gradaţia 4 8=7+(7*2,5%)",
    "Gradaţia 5 9=8+(8*2,5%)"
-  ]
+  ],
+  "fisier": "https://www.primarie6.ro/primarie_sector6/sites/default/files/2026-03/Transparen%C8%9Ba%20veniturilor%20salariale%20-%20execu%C8%9Bie%20-%2031%20martie%202026.pdf"
  },
  "cj-salaj": {
   "stare": "acceptat",
@@ -376,7 +402,8 @@
    "functionar-public": 19,
    "consilier-juridic": 4
   },
-  "coloaneNecunoscute": []
+  "coloaneNecunoscute": [],
+  "fisier": "https://www.cjsj.ro/date/pdfuri/Transparenta%20venituri%20salariale/Lista24.09.2026.pdf"
  },
  "sju-buzau": {
   "stare": "acceptat",
@@ -410,11 +437,13 @@
    "SPITALUL JUDETEAN DE URGENTA BUZAU, CF 4055750 BUZAU, Str.Stadionului, Nr. 7 Tel: 0238720689; Fax. 0",
    "SPITALUL JUDETEAN DE URGENTA BUZAU, CF 4055750 BUZAU, Str.Stadionului, Nr. 7 Tel: 0238720689; Fax. 0",
    "SPITALUL JUDETEAN DE URGENTA BUZAU, CF 4055750 BUZAU, Str.Stadionului, Nr. 7 Tel: 0238720689; Fax. 0"
-  ]
+  ],
+  "fisier": "https://www.spitalulbuzau.ro/docs/economic/venituri/2026/transparenta%20februarie%202026.xlsx"
  },
  "scju-mures": {
   "stare": "fără rânduri (scanat sau alt format)",
-  "sha256": "ea5e30aaa75a16660b5185164a56e06ccae09df7427cf951285c9efe98fe2ea0"
+  "sha256": "ea5e30aaa75a16660b5185164a56e06ccae09df7427cf951285c9efe98fe2ea0",
+  "fisier": "https://www.spitalmures.ro/wp-content/uploads/2026/04/transparenta-veniturilor-salariale-la-31.03.2026.pdf"
  },
  "sbi-iasi": {
   "stare": "acceptat",
@@ -442,7 +471,8 @@
   "coloaneNecunoscute": [
    "153/2017 LA DATA DE 31.03.2026 Valoare bruta OUG 36/2025 OUG 36/2025 OUG 36/2025",
    "153/2017 LA DATA DE 31.03.2026 Valoare bruta ore S/D Reglementări specifice sistemului Sp.SL"
-  ]
+  ],
+  "fisier": "https://www.infectioase.ro/wp-content/uploads/2026/03/Transparenta-veniturilor-salariale-MARTIE-2026-.pdf"
  },
  "scju-timisoara": {
   "stare": "de verificat: numai 36% rânduri valide",
@@ -483,11 +513,13 @@
    "12 13",
    "13 14",
    "14 15"
-  ]
+  ],
+  "fisier": "https://www.hosptm.ro/files/venituri/2026/Transparenta-venituri-MARTIE-2026.pdf"
  },
  "sbi-constanta": {
   "stare": "fără rânduri (scanat sau alt format)",
-  "sha256": "5bff8a47839e23c9e01b3131a0a4de7337e4c2da45486b6085c172d896ea5ee5"
+  "sha256": "5bff8a47839e23c9e01b3131a0a4de7337e4c2da45486b6085c172d896ea5ee5",
+  "fisier": "https://infectioaseconstanta.ro/wp-content/uploads/2026/03/SCBI-CT-CT14-Raport-transparenta-informatii-publice_T4-AN-2025.pdf"
  },
  "sm-calafat": {
   "stare": "acceptat",
@@ -516,7 +548,8 @@
   "coloaneNecunoscute": [
    "0",
    "Gradatia Functia de Nr. Crt. Vechime 1 2"
-  ]
+  ],
+  "fisier": "https://spitalcalafat.ro/wp-content/uploads/2024/04/Lista-functii-site-SMC-martie-2024-.pdf"
  },
  "sm-turda": {
   "stare": "acceptat",
@@ -549,7 +582,8 @@
    "Anexa 5",
    "Anexa 8",
    "Anexa TESA"
-  ]
+  ],
+  "fisier": "https://spitalturda.ro/wp-content/uploads/2026/03/transparenta-veniturilor-salariale-2026_03.xlsx"
  },
  "sp-titan": {
   "stare": "acceptat",
@@ -577,7 +611,8 @@
    "GORGOS DIN LEGEA CADRU GRAD- SAL TREAPTA ATIE DE",
    "PSIHIATRIE Gorgos\" a,J'3/C3~~c .irntc..1ţ11",
    "TITAN Gorgos\" a,J'3/C3~~c INDEMNI- ('F."
-  ]
+  ],
+  "fisier": "https://spitalulgorgos.ro/wp-content/uploads/2025/09/Transparenta-veniturilor-salariale-31.03.2026_Redacted.pdf"
  },
  "dsp-vaslui": {
   "stare": "de verificat: baza ghicită la peste 30% din rânduri",
@@ -602,11 +637,13 @@
    "DIRECTIA PUBLICA INTRARE IE$IRE' ROMANIA MINISTERUL sANATATn DIRECTIA DE SANATATE PUBLiCA JUDETEANA ",
    "DIRECTIA DE SANATATE A JUDE NR.205r95d~J DIRECTIA DE SANATATE PUBLiCA JUDETEANA VASLUI 0235/317351 R",
    "ULJJI VAStUI b. SEP. 2026 ata_"
-  ]
+  ],
+  "fisier": "https://dspvs.ro/wp-content/uploads/2026/09/TRANSPARENTA-VENITURILOR-SALARIALE-SEPTEMBRIE-2026.pdf"
  },
  "bcu-bucuresti": {
   "stare": "fără rânduri (scanat sau alt format)",
-  "sha256": "9d1284235fd28ffd7a893c96657c14c91efaf79705e9693d41369f8ab1183f61"
+  "sha256": "9d1284235fd28ffd7a893c96657c14c91efaf79705e9693d41369f8ab1183f61",
+  "fisier": "https://www.bcub.ro/wp-content/uploads/2022/03/Transparenta-Veniturilor-Salariale.pdf"
  },
  "scju-galati": {
   "stare": "format neacceptat încă (PDF și XLSX)"
@@ -636,7 +673,8 @@
   },
   "coloaneNecunoscute": [
    "Nr. Crt."
-  ]
+  ],
+  "fisier": "https://spitalgiurgiu.ro/documents/jdownloads/825-transparenta-veniturilor-salariale-septembrie-2022.pdf"
  },
  "assmb": {
   "stare": "de verificat: baza ghicită la peste 30% din rânduri",
@@ -665,7 +703,8 @@
    "coroborată cu Ordonanței de Urgență nr. 156/2024 și cu modificările și Gr4",
    "cu modificările și",
    "cu modificările și Gr5"
-  ]
+  ],
+  "fisier": "https://assmb.ro/storage/transparenta/2026/salarii/martie.pdf"
  },
  "sco-filantropia": {
   "stare": "acceptat",
@@ -690,7 +729,8 @@
    "Valoare bloc op",
    "Val. CO",
    "Val. CO"
-  ]
+  ],
+  "fisier": "https://spitalulfilantropia.ro/wp-content/uploads/2026/03/transparenta-salariala-la-luna-martie-2026.pdf"
  },
  "scju-bihor": {
   "stare": "acceptat",
@@ -721,7 +761,8 @@
    "instalator": 14,
    "sofer-ambulanta": 2
   },
-  "coloaneNecunoscute": []
+  "coloaneNecunoscute": [],
+  "fisier": "https://spitaljudetean-oradea.ro/wp-content/uploads/2026/04/tansparenta-salariala-martie-2026-2.pdf"
  },
  "scpn-brasov": {
   "stare": "de verificat: baza ghicită la peste 30% din rânduri",
@@ -761,7 +802,8 @@
    "de date Cu",
    "caracter personal nr.",
    "9275"
-  ]
+  ],
+  "fisier": "https://www.scpnbv.ro/wp-content/uploads/2026/04/Transparenta-veniturilor-salariale-martie-2026.pdf"
  },
  "scju-braila": {
   "stare": "acceptat",
@@ -791,11 +833,13 @@
    "Doct",
    "AP, BO, TBC %",
    "AP, BO, TBC %"
-  ]
+  ],
+  "fisier": "https://www.spitalbraila.ro/assets/docs/Venituri/Transparenta%20Martie%202026.pdf"
  },
  "sm-blaj": {
   "stare": "fără rânduri (scanat sau alt format)",
-  "sha256": "d6ac3b73c3066567308cbd951d2884f81035967679d5a136c123f918eb6e2ac4"
+  "sha256": "d6ac3b73c3066567308cbd951d2884f81035967679d5a136c123f918eb6e2ac4",
+  "fisier": "https://spitalblaj.ro/wp-content/uploads/2026/07/raport-venit-net-luna-Iunie-2026.pdf"
  },
  "scm-cluj": {
   "stare": "acceptat",
@@ -823,11 +867,13 @@
   },
   "coloaneNecunoscute": [
    "IND.UMF"
-  ]
+  ],
+  "fisier": "https://spitalclujana.ro/wp-content/uploads/2025/05/salarii-Martie_2025.pdf"
  },
  "dgaspc-s3": {
   "stare": "fără rânduri (scanat sau alt format)",
-  "sha256": "58bb9db0b70b7bb0e88cbae9a0f14d7402ca540601b7cacf2562dd835c9040a5"
+  "sha256": "58bb9db0b70b7bb0e88cbae9a0f14d7402ca540601b7cacf2562dd835c9040a5",
+  "fisier": "https://dgaspc3.ro/wp-content/uploads/Transparenta-salariala-AP-31.03.2025.pdf"
  },
  "dgaspc-bn": {
   "stare": "format neacceptat încă (PDF și XLSX)"
@@ -857,7 +903,8 @@
    "Nr. crt.",
    "DIRECŢIA DE ASISTENŢĂ SOCIALĂ BRAŞOV SERVICIUL RESURSE UMANE Funcţia nivel minim Funcţii publice/adm",
    "Anexă la Referatul nr. 52/31815(RI34)2890 din 30.03.2026 nivel minim"
-  ]
+  ],
+  "fisier": "http://www.dasbv.ro/wp-content/uploads/2018/01/Transparenta-salariala-31.03.2026.pdf"
  },
  "dsp-bucuresti": {
   "stare": "acceptat",
@@ -873,15 +920,18 @@
   "coloaneNecunoscute": [
    "Nr. Crt. ,J. 2",
    "Grad Functie Gradatia DIRECTOR EXECUTIV r/s MEDIC SEF t/s"
-  ]
+  ],
+  "fisier": "https://dspb.ro/pdf/salarii/2026/VENITURI-SALARIALE-MARTIE-2026.pdf"
  },
  "dsp-prahova": {
   "stare": "fără rânduri (scanat sau alt format)",
-  "sha256": "e0cc749955ddfbf8cd0b17f830fe212911784d1a54770bfd81b700d43a507bda"
+  "sha256": "e0cc749955ddfbf8cd0b17f830fe212911784d1a54770bfd81b700d43a507bda",
+  "fisier": "https://www.dspph.ro/wp-content/uploads/2026/04/VENITURI-SALARIALE-31.03.2026-1.pdf"
  },
  "dsp-braila": {
   "stare": "fără rânduri (scanat sau alt format)",
-  "sha256": "12257429434a137751184ae59252ff3b1142c1986585df9353a80490153e8d71"
+  "sha256": "12257429434a137751184ae59252ff3b1142c1986585df9353a80490153e8d71",
+  "fisier": "https://dspbr.ro/wp-content/uploads/2020/07/DSP-Brila-3046_Transparena-veniturilor-salariale-la-data-de-31032026.pdf"
  },
  "umfst": {
   "stare": "acceptat",
@@ -907,7 +957,8 @@
    "Nr. Crt. 0",
    "Transparenţa veniturilor salariale - 31 martie 2026 Grad de merit, Legea nr.153/201 7,art.5,Anex a 1",
    "Salar diferentiat Legea nr.153/201 7,art.9,Ane xa 1 8"
-  ]
+  ],
+  "fisier": "https://www.umfst.ro/fileadmin/directia_adm/personal/2026/Transparenta_veniturilor_salariale_31_martie_2026.pdf"
  },
  "ovidius": {
   "stare": "eroare: fetch failed"
@@ -933,7 +984,8 @@
    "Transparenţa veniturilor salariale -Art. 33 din Legea 153/2017 Gradaţie de Legea 153/2017 Anexa I ca",
    "art 15 din 153/2017",
    "Majorare salariu de activitati proiecte"
-  ]
+  ],
+  "fisier": "https://www.ub.ro/storage/1774866100transparenta_martie_2026.pdf"
  },
  "umfcd": {
   "stare": "format neacceptat încă (PDF și XLSX)"
@@ -951,7 +1003,8 @@
    "bibliotecar": 3,
    "magaziner": 2
   },
-  "coloaneNecunoscute": []
+  "coloaneNecunoscute": [],
+  "fisier": "https://unarte.org/wp-content/uploads/2026/03/transparenta-veniturilor-din-UNAB-martie-2026-.pdf"
  },
  "uauim": {
   "stare": "acceptat",
@@ -970,6 +1023,7 @@
   },
   "coloaneNecunoscute": [
    "Transparenta veniturilor salariale cf. L153/2017 - MARTIE 2026 TIP Procent"
-  ]
+  ],
+  "fisier": "https://www.uauim.ro/universitatea/personal/2025-2026/Transparenta%20veniturilor%20salariale%20cf.%20L153-2017%20martie%202026.xlsx"
  }
 }

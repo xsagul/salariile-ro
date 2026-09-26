@@ -41,7 +41,8 @@ async function main() {
     if (!s.fisier || (doar && !doar.includes(s.id))) continue;
     if (!/\.(pdf|xlsx)$/i.test(new URL(s.fisier).pathname)) { raport[s.id] = { ...raport[s.id], stare: "format neacceptat încă (PDF și XLSX)" }; continue; }
     const out = path.join(OBS, `${s.id}.jsonl`);
-    if (fs.existsSync(out) && !arg("refa")) continue;
+    // Se recitește când instituția a publicat alt fișier (martie, septembrie), nu doar când lipsește.
+    if (fs.existsSync(out) && !arg("refa") && raport[s.id]?.fisier === s.fisier) continue;
     try {
       const d = await descarca(s.fisier);
       const { randuri, coloane, perioadaDocument } = await citestePdf(d.fisier, { potrivire: (t) => meserie(t, s.tip) !== null });
@@ -60,7 +61,7 @@ async function main() {
       const peMeserie = {};
       for (const o of obs) peMeserie[o.meserie] = (peMeserie[o.meserie] ?? 0) + 1;
       raport[s.id] = {
-        stare: respins ? `de verificat: ${respins}` : "acceptat", perioada, sha256: d.sha256, bytes: d.bytes, cititLa: new Date().toISOString().slice(0, 10),
+        stare: respins ? `de verificat: ${respins}` : "acceptat", fisier: s.fisier, perioada, sha256: d.sha256, bytes: d.bytes, cititLa: new Date().toISOString().slice(0, 10),
         randuri: obs.length, valide: obs.filter((o) => !o.invalid).length, peMeserie,
         coloaneNecunoscute: coloane.filter((c) => c.tip === "necunoscut" && c.n > 5 && c.eticheta).map((c) => c.eticheta.slice(0, 100)),
       };

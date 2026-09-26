@@ -1,12 +1,12 @@
-name: Colectare zilnică
+name: Colectare art. 33 (semestrial)
 
-# Colectare continuă din mai multe surse (decizia proprietarului, 26 septembrie 2026;
-# CLAUDE.md). Zilnic: ofertele noi ANOFM, apoi salariul-concluzie recalculat și publicat numai
-# dacă trec testele. Commit-ul are [skip ci] când s-au schimbat doar datele brute; când se
-# schimbă cifrele publicate, rulează CI-ul, iar Cloudflare publică site-ul.
+# Instituțiile publice își publică listele de salarii pe 31 martie și 30 septembrie (art. 33
+# din Legea 153/2017). În primele zile din aprilie și octombrie: descoperirea fișierelor noi
+# pentru toate sursele din colectare/art33/surse.json, citirea lor (poarta de calitate lasă pe
+# dinafară ce nu se citește sigur), apoi salariul-concluzie, publicat numai dacă trec testele.
 on:
   schedule:
-    - cron: "41 4 * * *" # 07:41 ora României (vara)
+    - cron: "17 5 2-12 4,10 *"
   workflow_dispatch:
 
 permissions:
@@ -17,33 +17,29 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  anofm:
+  art33:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 24
           cache: npm
-      - run: node scripts/colectare/anofm.mjs
       - run: npm ci
+      - run: node scripts/colectare/art33/descopera.mjs --toate
+      - run: node scripts/colectare/art33/colecteaza.mjs
       - name: Salariul-concluzie
         run: |
           npx tsx scripts/colectare/agregare.mjs
           node scripts/colectare/publica.mjs
           npm test
-      - name: Salvează ziua
+      - name: Salvează
         run: |
           git config user.name "salariile-colectare"
           git config user.email "colectare@users.noreply.github.com"
           git add colectare src/data/salariu-concluzie.json
           if git diff --cached --quiet; then echo "Nimic nou"; exit 0; fi
-          ZI=$(TZ=Europe/Bucharest date +%F)
-          if git diff --cached --quiet -- src/data/salariu-concluzie.json; then
-            git commit -m "Colectare ANOFM $ZI [skip ci]"
-          else
-            git commit -m "Colectare ANOFM $ZI: salariul-concluzie actualizat"
-          fi
+          git commit -m "Colectare art. 33 $(TZ=Europe/Bucharest date +%F): liste noi și salariul-concluzie"
           git pull --rebase origin main
           git push origin HEAD:main
