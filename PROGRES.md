@@ -4030,3 +4030,15 @@ c 5,2. Diferențele la calcule sunt în marja de zgomot; navigarea (~20 de oamen
 nu se poate compara încă. Varianta se atașează după prima afișare, deci prima pagină a vizitei
 nu poartă variantă. Proprietarul a navigat și el de pe PC în perioada testului. Testul continuă
 până pe 8 octombrie.
+
+## 26 septembrie 2026 — GA4, 18–25 septembrie: ce iese în afară de testul barei
+
+- Trimiteri: LinkedIn 195 de sesiuni (21–22 sept, pe homepage, aproape toate implicate), zoso.ro 76
+  (de pe 23 sept, homepage), ChatGPT 24 (aproape numai pagini de meserie), Bing 170.
+- `/noutati/concediu-medical-2026`: cel mai lung timp pe om din site (~3m20s), după 1m10s pe homepage.
+- Filtrul de meserii: căutări de roluri de birou care lipsesc din catalog (manager, director,
+  analist, marketing, securitate, achiziții); volume mici, 1–6 pe termen.
+- Erori JS: neglijabile (ResizeObserver, o eroare de sintaxă la un singur utilizator).
+- Web vitals: 6% dintre utilizatori au avut cel puțin o măsurătoare „poor”; CrUX pe teren e „bun”
+  pe toate (LCP 1,8 s, INP 174 ms). Laboratorul PSI dă LCP 8,6 s și „Reduce unused JavaScript”.
+- Ziua testului de RPM (21 sept) apare în GA4 cu 1.736 de afișări de reclame și 6,27 lei.
