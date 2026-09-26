@@ -178,7 +178,7 @@ function faqPentru(date: DateMeserie) {
 
   const c = concluzieMeserie(date.meserie.slug);
   const raspunsPrincipal = c?.sursa === "platit" && c.platit
-    ? `La angajatorii publici, un ${de} ia în mână ${lei(c.net)} lei pe lună, salariul fix din mijloc; jumătate din posturi au între ${lei(c.interval![0])} și ${lei(c.interval![1])} lei.${c.platit.cuVariabil ? ` Cu ture și gărzi, ${lei(c.platit.cuVariabil.net)} lei.` : ""} Cifrele vin din salariile publicate de ${c.platit.institutii} instituții publice din ${c.platit.judete} județe, netul fiind calculat pentru o persoană fără persoane în întreținere.`
+    ? `La angajatorii publici, un ${de} ia în mână ${lei(c.net)} lei pe lună, salariul fix din mijloc; jumătate din posturi au între ${lei(c.interval![0])} și ${lei(c.interval![1])} lei.${c.platit.cuVariabil && c.platit.cuVariabil.net > c.net * 1.03 ? ` Cu ture și gărzi, ${lei(c.platit.cuVariabil.net)} lei.` : ""} Cifrele vin din salariile publicate de ${c.platit.institutii} instituții publice din ${c.platit.judete} județe, netul fiind calculat pentru o persoană fără persoane în întreținere.`
     : c?.sursa === "oferit" && c.oferit
     ? `La angajare se oferă unui ${de} în jur de ${lei(c.net)} lei net pe lună, mijlocul salariilor din ${c.oferit.anunturi} anunțuri verificate.`
     : descriereReper(date);

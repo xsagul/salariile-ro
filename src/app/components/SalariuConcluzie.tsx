@@ -52,7 +52,9 @@ export default function SalariuConcluzie({ slug, de }: { slug: string; de: strin
   const P = c.platit;
   const repere: { eticheta: string; valoare: string }[] = [];
   if (P?.debutant) repere.push({ eticheta: "La început", valoare: `${lei(P.debutant)} lei` });
-  if (P?.cuVariabil) repere.push({ eticheta: "Cu ture și gărzi", valoare: `${lei(P.cuVariabil.net)} lei` });
+  // Gărzile medicilor se plătesc pe contracte separate, excluse din posturi: acolo „cu ture și
+  // gărzi” ar ieși aproape egal cu salariul fix și ar induce în eroare. Doar peste +3%.
+  if (P?.cuVariabil && P.cuVariabil.net > c.net * 1.03) repere.push({ eticheta: "Cu ture și gărzi", valoare: `${lei(P.cuVariabil.net)} lei` });
   if (P?.studii.S && P.studii.PL) repere.push({ eticheta: "Cu studii superioare", valoare: `${lei(P.studii.S)} lei` });
 
   const alte: { eticheta: string; net: number; nota: string }[] = [];
