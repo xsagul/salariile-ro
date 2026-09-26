@@ -7,7 +7,7 @@
 
 import { useState } from "react";
 import { trimiteEveniment } from "@/lib/analytics";
-import { CERNEALA, GRI, ZILE, zileLucratoareText, deseneazaPdfCalendar, deseneazaPdfTabel, type DateZileLucratoare } from "@/lib/pdf-zile-lucratoare";
+import { CULORI as C, MACHETA, deseneazaCalendar, deseneazaPdfCalendar, deseneazaPdfTabel, inaltimeCalendar, type DateZileLucratoare, type Pictor } from "@/lib/pdf-zile-lucratoare";
 
 type Props = DateZileLucratoare;
 
@@ -41,60 +41,45 @@ async function pdfTabel(d: Props) {
 }
 
 async function pdfCalendar(d: Props) {
-  const doc = await documentNou("landscape");
+  const doc = await documentNou("portrait");
   deseneazaPdfCalendar(doc, d);
   doc.save(`calendar-zile-lucratoare-${d.an}.pdf`);
 }
 
 // ─── PNG ─────────────────────────────────────────────────────────────────────
 
-// Aceeași așezare ca la Edenred: 6 luni pe rând, două rânduri, lista sărbătorilor în dreapta.
-async function pngCalendar({ an, luni, sarbatori, total, ore }: Props) {
-  const W = 1920, H = 1080;
+// Calendarul de pe pagină, la aceleași mărimi (MACHETA), desenat de două ori mai mare
+// ca să fie clar și pe ecranele dense: 48 px margine, titlu, legendă, 12 carduri pe 3 coloane.
+async function pngCalendar({ an, luni }: Props) {
+  const margine = 48, scara = 2;
+  const W = MACHETA.latime + 2 * margine, H = inaltimeCalendar(luni.length) + 2 * margine + 24;
   const c = document.createElement("canvas");
-  c.width = W; c.height = H;
+  c.width = W * scara; c.height = H * scara;
   const g = c.getContext("2d")!;
-  const font = getComputedStyle(document.body).fontFamily || "sans-serif";
-  const f = (px: number, bold = false) => `${bold ? 700 : 400} ${px}px ${font}`;
+  g.scale(scara, scara);
+  const familie = getComputedStyle(document.body).fontFamily || "sans-serif";
+  const font = (px: number, gros?: boolean) => `${gros ? 600 : 400} ${px}px ${familie}`;
   await document.fonts?.ready;
 
-  g.fillStyle = "#f8f5ef"; g.fillRect(0, 0, W, H);
-  g.fillStyle = CERNEALA; g.font = f(30, true); g.fillText("salariile.ro", 90, 100);
-  g.font = f(64, true); g.fillText(`Calendar zile lucrătoare ${an}`, 90, 190);
-  g.fillStyle = GRI; g.font = f(28); g.fillText(`${total} de zile lucrătoare · ${ore.toLocaleString("ro-RO")} de ore la 8 ore pe zi`, 90, 240);
-
-  const lw = 212, gx = 28, x0 = 90, y0 = 320, lh = 350, celula = 30;
-  g.textAlign = "center";
-  luni.forEach((l, i) => {
-    const x = x0 + (i % 6) * (lw + gx), y = y0 + Math.floor(i / 6) * lh;
-    g.fillStyle = CERNEALA; g.font = f(26, true); g.fillText(l.nume.toUpperCase(), x + lw / 2, y);
-    g.fillStyle = "#ffffff"; g.beginPath(); g.roundRect(x, y + 14, lw, 34, 17); g.fill();
-    g.fillStyle = GRI; g.font = f(19); g.fillText(zileLucratoareText(l.lucr), x + lw / 2, y + 38);
-    g.font = f(18, true);
-    ZILE.forEach((z, j) => { g.fillStyle = j >= 5 ? GRI : CERNEALA; g.fillText(z, x + j * celula + celula / 2 + 1, y + 82); });
-    l.cells.forEach((cel, k) => {
-      if (!cel) return;
-      const cx = x + (k % 7) * celula + 1, cy = y + 96 + Math.floor(k / 7) * 36;
-      if (cel.name || cel.weekend) {
-        // Pe fundalul crem al imaginii, stone-100 nu se vede; aici weekendul e un ton mai închis.
-        g.fillStyle = cel.name ? CERNEALA : "#e9e4dc";
-        g.beginPath(); g.roundRect(cx + 2, cy, celula - 4, 30, 5); g.fill();
-      }
-      g.fillStyle = cel.name ? "#ffffff" : cel.weekend ? GRI : CERNEALA;
-      g.font = f(18, Boolean(cel.name));
-      g.fillText(String(cel.day), cx + celula / 2, cy + 21);
-    });
-  });
-
-  g.textAlign = "left";
-  const xl = x0 + 6 * (lw + gx) + 20;
-  g.fillStyle = CERNEALA; g.font = f(26, true); g.fillText("Sărbători legale", xl, y0);
-  sarbatori.forEach((s, i) => {
-    const y = y0 + 46 + i * 36;
-    g.fillStyle = s.weekend ? GRI : CERNEALA; g.font = f(18, true); g.fillText(s.data, xl, y);
-    g.font = f(18); g.fillText(s.label.length > 21 ? `${s.label.slice(0, 20)}…` : s.label, xl + 150, y);
-  });
-  g.fillStyle = GRI; g.font = f(20); g.fillText(`salariile.ro/zile-lucratoare-${an} · program luni–vineri, sărbătorile din Codul Muncii, art. 139`, 90, H - 50);
+  g.fillStyle = C.canvas; g.fillRect(0, 0, W, H);
+  g.save();
+  g.translate(margine, margine);
+  const pictor: Pictor = {
+    dreptunghi(x, y, w, h, r, umplere, contur) {
+      g.beginPath(); g.roundRect(x, y, w, h, r);
+      g.fillStyle = umplere; g.fill();
+      if (contur) { g.strokeStyle = contur; g.lineWidth = 1; g.stroke(); }
+    },
+    text(t, x, y, o) {
+      g.font = font(o.px, o.gros); g.fillStyle = o.culoare; g.textAlign = o.aliniere ?? "left"; g.textBaseline = "middle";
+      g.fillText(t, x, y);
+    },
+    latime(t, px, gros) { g.font = font(px, gros); return g.measureText(t).width; },
+  };
+  deseneazaCalendar(pictor, an, luni);
+  g.restore();
+  g.font = font(12); g.fillStyle = C.gri; g.textAlign = "right"; g.textBaseline = "alphabetic";
+  g.fillText("salariile.ro", W - margine, H - margine / 2);
 
   const blob: Blob = await new Promise((r, e) => c.toBlob((b) => (b ? r(b) : e(new Error("png"))), "image/png"));
   const a = document.createElement("a");

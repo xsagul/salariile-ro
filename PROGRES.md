@@ -4097,3 +4097,12 @@ ca la `/zile-libere-2026`. Build static și `test:rendered` trec (334 de rute).
   lucrătoare „18 zile lucrătoare”, fără „de” la 20 și peste, la cererea proprietarului (forma scurtă de pe calendare). Înainte ambele arătau
   „18 lucr. · 13 libere”. Scopul: mai puțin conținut identic între cele două pagini. Aceeași
   regulă pentru „de” e aplicată și în PDF și în imagine.
+- Tot pe 27 septembrie: PDF-ul și imaginea calendarului reproduc acum calendarul de pe
+  pagină. Au fundalul crem, cardurile de 357×294 px câte 3 pe rând, căsuțele de 41×28 px,
+  titlul „Calendarul anului <an>” și legenda. Nu mai au subtitlu, frază de subsol sau lista
+  de sărbători în imagine (proprietarul: „nu ar trebui să arate întocmai ca pe site?”).
+  Mărimile, măsurate pe /zile-lucratoare-2025 la 1280 px, stau în `MACHETA`, în
+  `src/lib/pdf-zile-lucratoare.ts`. Imaginea și PDF-ul desenează prin același
+  `deseneazaCalendar`, printr-un „pictor” (canvas, respectiv jsPDF). Imaginea are
+  2400×2860 px, adică de 2 ori mai mare decât pagina, iar PDF-ul e A4 vertical. Și PDF-ul
+  tabelului are acum fundalul și cardurile site-ului, fără fraza de sub titlu.
