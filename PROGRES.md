@@ -4074,3 +4074,7 @@ ca la `/zile-libere-2026`. Build static și `test:rendered` trec (334 de rute).
   `sarbatori.ts`, cu testele ei. 2027 a trecut pe titlul comun, fiindcă cel vechi promitea
   „calcul pe interval”. Urmează alegerea între calendarul pe tot anul (ca la Edenred) și luna
   care se deschide la clic în tabel (ca la calculator-salarii.ro).
+- Tot pe 27 septembrie: titlul și descrierea paginilor de zile lucrătoare urmează modelul de
+  la zile libere, fără cifre în titlu: „Zile lucrătoare <an>: tabel pe luni și ore de lucru”.
+  Se aplică tuturor anilor, inclusiv 2026 (17.306 afișări, CTR 0,4%, poziția 5,2 pe
+  „zile lucratoare 2026”, 29 aug – 25 sept). Efectul se citește în GSC după două săptămâni.

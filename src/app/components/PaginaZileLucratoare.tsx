@@ -60,24 +60,12 @@ function dateAn(an: AnZileLucratoare) {
   return { rows, total, ore: total * 8, libere: zileAn - total, inSaptamana, csv: `data:text/csv;charset=utf-8,${encodeURIComponent(csv)}` };
 }
 
-// Titlul rămâne anual tot anul; luna curentă trăiește în descriere. Măsurat în GSC pe
-// 21 august 2026: potrivirea titlului cu luna nu ridica CTR-ul pe căutările lunare
-// (iulie 0,2%, august 0,2%), iar căutarea anuală e cea mai mare a paginii.
-// 2027 a avut până pe 27 sept. 2026 titlul „tabel lunar și calcul pe interval” (7,1% CTR,
-// poziția 3,6); a trecut pe titlul comun când calculatorul pe interval a ieșit.
-const TITLU_PROPRIU: Partial<Record<AnZileLucratoare, { title: string; description: string }>> = {};
-
+// Titlul și descrierea după modelul de la zile libere, fără cifre în titlu (proprietar,
+// 27 sept. 2026). Până atunci titlul era „Zile lucrătoare <an>: <zile> de zile și <ore> ore”,
+// iar 2027 a avut „tabel lunar și calcul pe interval” (7,1% CTR, poziția 3,6).
 export function metadataZileLucratoare(an: AnZileLucratoare): Metadata {
-  const { rows, total, ore } = dateAn(an);
-  const acum = acumRo();
-  const propriu = TITLU_PROPRIU[an];
-  const title = propriu?.title ?? `Zile lucrătoare ${an}: ${total} de zile și ${ore.toLocaleString("ro-RO")} ore`;
-  const luna = acum.an === an ? rows[acum.luna] : null;
-  const description =
-    propriu?.description ??
-    (luna
-      ? `${title}. ${luna.name}: ${luna.lucratoare} de zile și ${luna.ore} de ore. Tabel complet pe toate lunile, cu sărbătorile legale scăzute din normă.`
-      : `${title}. Tabel lunar cu zilele lucrătoare, sărbătorile legale scăzute din normă și totalul anual.`);
+  const title = `Zile lucrătoare ${an}: tabel pe luni și ore de lucru`;
+  const description = `Zile lucrătoare ${an} în România: numărul de zile și de ore de lucru pentru fiecare lună, cu sărbătorile legale scăzute din normă și totalul anului.`;
   return {
     title: { absolute: title },
     description,
