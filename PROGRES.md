@@ -4020,3 +4020,13 @@ se caută în zilele lucrătoare (calculator salariu 0,26 din nivelul unei zile 
 Rezistă în weekend căutarea de joburi (locuri de muncă 0,76, de 11 ori volumul ancorei),
 paginile de meserie, zile libere 2027 și subiectele de timp liber. `gsc.mjs` primește
 `--si=date` pentru serii pe zile. Nimic construit; decizia e la proprietar.
+
+## 26 septembrie 2026 — Testul barei de sus, citire intermediară (nu decizie)
+
+GA4, 24–26 septembrie (2 zile complete + parțial), utilizatori cu variantă: a 259, b 242, c 273.
+Telefon: timp activ a 1m08s, b 1m08s, c 1m23s; calcule pe utilizator a 1,03, b 0,95, c 1,00.
+Desktop (~65 pe variantă): calcule a 1,30, b 0,78, c 0,91. Secțiuni văzute pe om a 4,6, b 4,5,
+c 5,2. Diferențele la calcule sunt în marja de zgomot; navigarea (~20 de oameni pe variantă)
+nu se poate compara încă. Varianta se atașează după prima afișare, deci prima pagină a vizitei
+nu poartă variantă. Proprietarul a navigat și el de pe PC în perioada testului. Testul continuă
+până pe 8 octombrie.
