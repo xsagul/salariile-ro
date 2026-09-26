@@ -4068,3 +4068,9 @@ an. Calculatorul pe interval acceptă 2025–2030 (test în `test-calendar.mts`,
 cât publică și salariucalculator.ro). 2027 își păstrează titlul și descrierea (7,1% CTR,
 poziția 3,6). Măsurat la 1280 px: H1, frază, file, tabel și card la exact aceleași înălțimi
 ca la `/zile-libere-2026`. Build static și `test:rendered` trec (334 de rute).
+- Tot pe 27 septembrie: calculatorul pe interval a ieșit de pe paginile de zile lucrătoare, la
+  cererea proprietarului (`CalculatorIntervalZile.tsx` șters, instrumentul `interval_zile` scos
+  din `analytics.ts` și din `test-ui-contracts.mts`). Funcția `zileLucratoareInterval` rămâne în
+  `sarbatori.ts`, cu testele ei. 2027 a trecut pe titlul comun, fiindcă cel vechi promitea
+  „calcul pe interval”. Urmează alegerea între calendarul pe tot anul (ca la Edenred) și luna
+  care se deschide la clic în tabel (ca la calculator-salarii.ro).

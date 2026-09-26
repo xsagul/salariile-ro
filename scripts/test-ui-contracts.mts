@@ -106,7 +106,7 @@ assert.match(salary, /action=\{embedded \? undefined : pathname\}/, "Formularul 
 // Fiecare calculator raportează calculul, iar niciun eveniment nu poartă suma.
 const calculatoare = [
   "CalculatorSalariu", "CalculatorPFA", "CalculatorInvatamant", "CalculatorSanatate", "CalculatorSomaj",
-  "CalculatorOreSuplimentare", "CalculatorPartTime", "CalculatorIntervalZile",
+  "CalculatorOreSuplimentare", "CalculatorPartTime",
 ];
 for (const nume of calculatoare) {
   const sursa = await read(`src/app/components/${nume}.tsx`);

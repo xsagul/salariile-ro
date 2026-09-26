@@ -10,7 +10,6 @@ import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 import { ANI_CALENDAR, sarbatoriAn, zileLucratoareLuna } from "@/lib/sarbatori";
 import TabelArticol from "@/app/components/TabelArticol";
-import CalculatorIntervalZile from "@/app/components/CalculatorIntervalZile";
 import { CARD_TITLU, Formula, LISTA_CARD, SEPARATOR_SECTIUNE, SPATIU_JOS, SPATIU_SUS, SUB_TITLU, TITLU_PAGINA, TITLU_SECTIUNE } from "@/app/components/ui";
 
 export type AnZileLucratoare = (typeof ANI_CALENDAR)[number];
@@ -64,13 +63,9 @@ function dateAn(an: AnZileLucratoare) {
 // Titlul rămâne anual tot anul; luna curentă trăiește în descriere. Măsurat în GSC pe
 // 21 august 2026: potrivirea titlului cu luna nu ridica CTR-ul pe căutările lunare
 // (iulie 0,2%, august 0,2%), iar căutarea anuală e cea mai mare a paginii.
-// 2027 își păstrează titlul de dinainte: face 7,1% CTR pe poziția 3,6 (GSC, 29 aug – 25 sept 2026).
-const TITLU_PROPRIU: Partial<Record<AnZileLucratoare, { title: string; description: string }>> = {
-  2027: {
-    title: "Zile lucrătoare 2027: tabel lunar și calcul pe interval",
-    description: "Zile și ore lucrătoare în 2027, pe luni. Descarcă tabelul CSV și calculează norma pe un interval. Sărbători ortodoxe, program luni–vineri.",
-  },
-};
+// 2027 a avut până pe 27 sept. 2026 titlul „tabel lunar și calcul pe interval” (7,1% CTR,
+// poziția 3,6); a trecut pe titlul comun când calculatorul pe interval a ieșit.
+const TITLU_PROPRIU: Partial<Record<AnZileLucratoare, { title: string; description: string }>> = {};
 
 export function metadataZileLucratoare(an: AnZileLucratoare): Metadata {
   const { rows, total, ore } = dateAn(an);
@@ -236,12 +231,8 @@ export default function PaginaZileLucratoare({ an }: { an: AnZileLucratoare }) {
             </aside>
           </div>
 
-          {/* CALCUL PE INTERVAL */}
-          <div className={`${SEPARATOR_SECTIUNE} md:grid md:grid-cols-5 md:gap-6`}>
-            <div className="md:col-span-3 [&>section]:mt-0">
-              <CalculatorIntervalZile an={an} />
-            </div>
-          </div>
+          {/* Calculatorul pe interval a ieșit pe 27 sept. 2026: proprietarul nu i-a văzut rostul,
+              iar pe 18–26 sept. l-au folosit 10 din 88 de vizitatori măsurați. */}
 
           {/* CE FACI CU NUMĂRUL */}
           <div className={`${SEPARATOR_SECTIUNE} md:grid md:grid-cols-5 md:gap-6`}>
