@@ -122,6 +122,20 @@ orice concurent. Arhitectura: `research/meserii-2026-09-26/`.
 - Nu se păstrează date de contact, iar pentru angajatorii persoane fizice (cod fiscal de 13
   cifre, PFA, II, IF) nici codul, nici numele.
 
+**Salariul-concluzie (arhitectura, 26 septembrie 2026).** Pe fiecare meserie, o singură cifră
+în primul ecran (`SalariuConcluzie.tsx`), obținută prin **triangulare, nu prin medie între
+surse**: prima sursă care trece pragurile, în ordinea plătit (art. 33) → oferit (anunțuri) →
+declarat (ANOFM, numai sub 25% oferte la minim), iar celelalte o verifică dedesubt, numai peste
+pragurile lor. Regula „pilonii nu se topesc într-o cifră” rămâne: concluzia e cifra unui pilon,
+cu ceilalți alături. Fluxul: `scripts/colectare/` (anofm, angajatori, art33/{descopera,
+colecteaza,citeste,functii}) → `agregare.mjs` (deține `PRAGURI`) → `publica.mjs` →
+`src/data/salariu-concluzie.json`. Teste: `test-art33.mjs` (etichete reale citite cândva
+greșit), `test-concluzie.mjs` (pragurile publicării). Rulare automată: `.github/workflows/
+colectare.yml` (zilnic) și `colectare-art33.yml` (2–12 aprilie și octombrie). Salariul fix =
+baza + sporurile permanente; turele și gărzile separat; contractele de gardă și normele
+parțiale (baza sub treapta minimă din grilă) nu sunt posturi. Netul se calculează pe rând, cu
+regulile fiscale ale lunii rândului; fiecare instituție cântărește egal.
+
 ### Salarii pe meserii — colectarea decisă pe 7 septembrie 2026 (înlocuită parțial)
 
 Proprietarul cere o colectare amplă a anunțurilor active la momentul verificării,
