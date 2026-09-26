@@ -4002,3 +4002,12 @@ La cererea proprietarului, mulțumit de calendarul refăcut: `/zile-libere-2026`
 15 septembrie pentru cerere mică (5 clicuri în 28 de zile). Testul A/B/C al barei de sus
 rulează până pe 8 octombrie; intrarea nouă e aceeași în toate cele trei variante, deci
 comparația dintre ele rămâne validă, dar clickurile `zona=header` se compară doar de azi încolo.
+
+## 26 septembrie 2026 — Subiecte noi din SE Ranking
+
+Cercetare pornită de la semințe largi (calculator, concediu, impozit, pensie, indemnizație,
+șomaj, demisie, contract de muncă), apoi filtrată contra cuvintelor pe care site-ul le are
+deja. Rezultatul, cu volume și dificultăți: `research/seranking-2026-09-26-subiecte-noi.md`.
+Familiile neacoperite cu cea mai bună potrivire: concediu medical, maternitate / creștere
+copil, cerere de demisie, concediu de odihnă, pensie. Nu s-a construit încă nicio pagină;
+alegerea e la proprietar.
