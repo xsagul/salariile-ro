@@ -191,8 +191,8 @@ export default function Page() {
                   </div>
 
                   <p className={paragraf}>
-                    Formula e aceeași pentru toată lumea. Ce diferă de la om la om e deducerea, adică partea din
-                    venit pe care nu se plătește impozit. Peste {lei(PLAFON_DEDUCERE)} lei brut deducerea dispare,
+                    Ce diferă de la om la om e mai ales deducerea, adică partea din venit pe care nu se plătește
+                    impozit. Peste {lei(PLAFON_DEDUCERE)} lei brut deducerea dispare,
                     așa că netul iese mereu 58,5% din brut.
                   </p>
                   <p className={paragraf}>
