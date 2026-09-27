@@ -157,8 +157,93 @@ const eDate = (l) => {
  * Citește rândurile căutate dintr-un PDF. `potrivire(text)` alege rândurile (funcția);
  * `profil.dupaEticheta(eticheta, numar)` poate fixa manual tipul unei coloane.
  */
+/**
+ * Rândurile unei liste scanate, din cuvintele recunoscute de OCR (scripts/colectare/art33/ocr.ps1),
+ * în aceeași formă ca la PDF: y crește în sus, cuvintele pe același rând când centrele lor verticale
+ * sunt la mai puțin de jumătate de înălțime de literă. Cuvintele se păstrează separat; cititorul
+ * unește oricum textul unui rând, iar numerele rămân în coloanele lor.
+ */
+export function randuriOcr(fisier) {
+  const d = JSON.parse(fs.readFileSync(fisier, "utf8"));
+  const out = [];
+  for (const p of [d.pagini].flat()) {
+    const brute = [p.cuvinte ?? []].flat().filter((c) => c && String(c.t).trim());
+    // Scanările sunt ușor strâmbe (Tribunalul Sălaj: ~1°, 45 px pe 2.500 px de rând): se alege
+    // înclinarea la care cuvintele se strâng în cele mai puține rânduri și se îndreaptă y-ul.
+    const randuriLa = (panta) => {
+      const ys = brute.map((c) => c.y + c.h / 2 - panta * c.x).sort((a, b) => a - b);
+      let n = 0, ultim = -Infinity;
+      for (const y of ys) { if (y - ultim > 18) n++; ultim = y; }
+      return n;
+    };
+    let panta = 0, cel = Infinity;
+    for (let s = -0.035; s <= 0.035001; s += 0.0025) { const n = randuriLa(s); if (n < cel) { cel = n; panta = s; } }
+    for (let s = panta - 0.002; s <= panta + 0.002001; s += 0.00025) { const n = randuriLa(s); if (n < cel) { cel = n; panta = s; } }
+    const grupeaza = (s) => {
+      const cuvinte = brute
+        .map((c) => ({ x0: c.x, x1: c.x + c.w, xc: c.x + c.w / 2, yc: c.y + c.h / 2 - s * (c.x + c.w / 2), h: c.h, t: String(c.t).trim() }))
+        .sort((a, b) => a.yc - b.yc || a.x0 - b.x0);
+      const linii = [];
+      for (const c of cuvinte) {
+        const l = linii.find((l) => Math.abs(l.yc - c.yc) <= Math.max(4, 0.5 * Math.min(l.h, c.h)));
+        if (l) { l.items.push(c); l.yc = (l.yc * (l.items.length - 1) + c.yc) / l.items.length; }
+        else linii.push({ yc: c.yc, h: c.h, items: [c] });
+      }
+      return linii;
+    };
+    // Înclinarea rămasă se măsoară pe rândurile lungi (pantă prin cele mai mici pătrate) și se
+    // corectează de două ori: la capătul din dreapta al tabelului, o eroare de 0,2° mută sporul
+    // în rândul vecin.
+    const latimePagina = Math.max(1, ...brute.map((c) => c.x + c.w));
+    let linii = grupeaza(panta);
+    for (let k = 0; k < 2; k++) {
+      const pante = linii.filter((l) => l.items.length >= 3 && Math.max(...l.items.map((i) => i.xc)) - Math.min(...l.items.map((i) => i.xc)) > 0.4 * latimePagina)
+        .map((l) => {
+          const n = l.items.length, mx = l.items.reduce((a, i) => a + i.xc, 0) / n, my = l.items.reduce((a, i) => a + i.yc, 0) / n;
+          const num = l.items.reduce((a, i) => a + (i.xc - mx) * (i.yc - my), 0), den = l.items.reduce((a, i) => a + (i.xc - mx) ** 2, 0);
+          return den ? num / den : 0;
+        }).sort((a, b) => a - b);
+      if (!pante.length) break;
+      panta += pante[Math.floor(pante.length / 2)];
+      linii = grupeaza(panta);
+    }
+    // Hârtia scanată e și curbată, nu doar rotită: fiecare cuvânt primește înclinarea celui mai
+    // apropiat rând lung (pe verticală), nu una singură pe toată pagina.
+    const lungi = linii.filter((l) => l.items.length >= 3 && Math.max(...l.items.map((i) => i.xc)) - Math.min(...l.items.map((i) => i.xc)) > 0.4 * latimePagina)
+      .map((l) => {
+        const n = l.items.length, mx = l.items.reduce((a, i) => a + i.xc, 0) / n, my = l.items.reduce((a, i) => a + i.yc, 0) / n;
+        const num = l.items.reduce((a, i) => a + (i.xc - mx) * (i.yc - my), 0), den = l.items.reduce((a, i) => a + (i.xc - mx) ** 2, 0);
+        return { yc: my, panta: panta + (den ? num / den : 0) };
+      });
+    if (lungi.length >= 3) {
+      const pantaLa = (y) => lungi.reduce((best, l) => (Math.abs(l.yc - y) < Math.abs(best.yc - y) ? l : best)).panta;
+      const cuvinte = brute
+        .map((c) => { const xc = c.x + c.w / 2, y0 = c.y + c.h / 2 - panta * xc; return { x0: c.x, x1: c.x + c.w, xc, yc: c.y + c.h / 2 - pantaLa(y0) * xc, h: c.h, t: String(c.t).trim() }; })
+        .sort((a, b) => a.yc - b.yc || a.x0 - b.x0);
+      linii = [];
+      for (const c of cuvinte) {
+        const l = linii.find((l) => Math.abs(l.yc - c.yc) <= Math.max(4, 0.5 * Math.min(l.h, c.h)));
+        if (l) { l.items.push(c); l.yc = (l.yc * (l.items.length - 1) + c.yc) / l.items.length; }
+        else linii.push({ yc: c.yc, h: c.h, items: [c] });
+      }
+    }
+    for (const l of linii) {
+      l.items.sort((a, b) => a.x0 - b.x0);
+      // OCR desparte uneori miile: „25. 311” sau „25 311” → o singură sumă, când bucățile se ating.
+      const unite = [];
+      for (const i of l.items) {
+        const u = unite[unite.length - 1];
+        if (u && /^\d{1,3}[.,]?$/.test(u.t) && /^\d{3}([.,]\d{1,2})?$/.test(i.t) && i.x0 - u.x1 < 0.6 * i.h) { u.t = u.t.replace(/[.,]$/, "") + "." + i.t; u.x1 = i.x1; }
+        else unite.push({ x0: i.x0, x1: i.x1, t: i.t });
+      }
+      out.push({ pagina: p.pagina, y: -l.yc, items: unite });
+    }
+  }
+  return out.sort((a, b) => a.pagina - b.pagina || b.y - a.y);
+}
+
 export async function citestePdf(fisier, { potrivire, profil = {} }) {
-  const linii = /\.xlsx$/i.test(fisier) ? await randuriXlsx(fisier) : await randuriPdf(fisier);
+  const linii = /\.xlsx$/i.test(fisier) ? await randuriXlsx(fisier) : /\.ocr\.json$/i.test(fisier) ? randuriOcr(fisier) : await randuriPdf(fisier);
   const date = linii.filter(eDate);
   if (!date.length) return { randuri: [], coloane: [] };
 

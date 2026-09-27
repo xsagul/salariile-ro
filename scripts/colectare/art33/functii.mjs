@@ -9,10 +9,15 @@
 
 const norm = (s) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toUpperCase().replace(/[^A-Z0-9 ]/g, " ").replace(/\s+/g, " ").trim();
 
-const CONDUCERE = /\b(SEF|SEFA|COORDONATOR|COORDONATOARE|DIRECTOR|MANAGER|ADJUNCT|INLOCUITOR|PRESEDINTE)\b/;
+const CONDUCERE = /\b(SEF|SEFA|COORDONATOR|COORDONATOARE|DIRECTOR|MANAGER|ADJUNCT|INLOCUITOR|PRESEDINTE|VICEPRESEDINTE|PRIM PROCUROR)\b/;
 
 /** [slug, regex pe textul normalizat, tipuri de instituții permise (opțional)] */
 const REGULI = [
+  // Instanțele și parchetele (liste scanate, citite prin OCR din 27 septembrie 2026). Rândul
+  // începe cu funcția; „Președinte judecătorie”, „prim-procuror” sunt conducere și ies mai sus.
+  ["judecator", /^JUDECATOR\b/, ["instanta"]],
+  ["procuror", /^PROCUROR\b/, ["parchet"]],
+  ["grefier", /\bGREFIER\b/, ["instanta", "parchet"]],
   ["asistent-farmacie", /\bASISTENT (MEDICAL )?(DE )?FARMACIE\b/],
   ["asistent-medical", /\bASISTENT MEDICAL\b|\bSORA MEDICALA\b/],
   ["asistent-social", /\bASISTENT SOCIAL\b/],
