@@ -4196,3 +4196,12 @@ a rămas doar `LEI` = `RON` în `extract.mjs`. Tot pe 27 septembrie: transpunere
 2023/970 (salariul în anunț) e încă proiect, deci nu contează (regula „numai legislație în vigoare”).
 Au mai intrat în registrul art. 33: Suceava (917 posturi, după ce poarta nouă a prins prima citire
 greșită), Vaslui și Brașov-psihiatrie (sporurile erau 0), Transilvania Brașov, Sighișoara.
+
+**A doua rulare locală (27 septembrie, după-amiază):** 2.697 de anunțuri citite, 824 de
+observații noi, 2.686 de profiluri; s-a oprit singură când s-au terminat anunțurile necitite din
+inventarele de azi (19.960). Baza: 4.207 anunțuri cu salariu, 3.374 de profiluri, 3.219 oferte
+ANOFM, 23.721 de posturi publice. Verificat pe text la electrician: ANRE cerut în 75 de anunțuri,
+dat ca avantaj în 28 (acum separat). eJobs a rămas în pauză 429 (doar listarea), OLX blocat de
+robots. Colectarea de noapte din GitHub pornește de la `vazute.txt` actualizat, deci citește
+numai anunțurile apărute între timp. Pagina privată a bazei:
+https://claude.ai/artifact/RGhLWE2qpJy4xz3NyER96J (generator: `scripts/colectare/pagina-baza.mjs`).
