@@ -4188,6 +4188,11 @@ primește concluzie (4.469 lei net la stat).
 Rămase: 16 surse art. 33 sunt PDF-uri scanate (Mureș 164 de pagini, Ilfov, DGASPC-uri) — ar
 cere OCR, cu risc de cifre greșite; Gorj are un antet pe zece rânduri cu subcoloane suprapuse.
 
-**Sursă nouă, de decis de proprietar:** lajumate.ro (mică publicitate; robots permite; fiecare
-anunț de muncă are JobPosting cu `baseSalary`). Conectorul există (`census.mjs`, `lajumate`),
-dar nu e în colectarea de noapte: proba rulează într-un depozit separat.
+**lajumate.ro, verificat și respins:** robots permite, anunțurile au JobPosting cu `baseSalary`,
+dar categoria „Locuri de muncă” are **64 de anunțuri active** (3 pagini, 27 septembrie 2026), iar
+hărțile site-ului amestecă 292.025 de anunțuri din toate categoriile: filtrul pe titlu lua scaune de
+bar drept barman și mașinuțe de pompieri drept pompier. Nu merită o sursă. Conectorul a fost scos;
+a rămas doar `LEI` = `RON` în `extract.mjs`. Tot pe 27 septembrie: transpunerea directivei UE
+2023/970 (salariul în anunț) e încă proiect, deci nu contează (regula „numai legislație în vigoare”).
+Au mai intrat în registrul art. 33: Suceava (917 posturi, după ce poarta nouă a prins prima citire
+greșită), Vaslui și Brașov-psihiatrie (sporurile erau 0), Transilvania Brașov, Sighișoara.

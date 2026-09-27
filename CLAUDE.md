@@ -241,7 +241,8 @@ că nu se măsoară prin anunț; nicăieri pe site nu apare „0 anunțuri".
 undelucram.ro (ultima permisă explicit de proprietar pe 8 septembrie 2026).
 Verificate și respinse cu motiv, nu din lipsă de timp: `posturi.gov.ro` — paginile
 de concurs nu conțin sume, un conector acolo ar returna zero; `ro.indeed.com` —
-robots.txt interzice `/viewjob`. Nu le repropune fără o verificare nouă.
+robots.txt interzice `/viewjob`; `lajumate.ro` — 64 de anunțuri active de muncă (27 septembrie
+2026), restul hărții site-ului sunt alte categorii. Nu le repropune fără o verificare nouă.
 
 - Planul verificat pe 90 de zile este în `ROADMAP-90-ZILE.md`; baseline-ul pre-P0 se termină la 24 iulie 2026
 - Snapshotul reproductibil se rulează cu `npm run gsc:weekly`; nu se atribuie efecte P0/P1 înainte de date post-deploy complete
