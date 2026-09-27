@@ -24,6 +24,7 @@ import PiloniSalariu from '@/app/components/PiloniSalariu';
 import TrepteRapide from '@/app/components/TrepteRapide';
 import SalariuConcluzie, { concluzieMeserie } from '@/app/components/SalariuConcluzie';
 import SalariuGrila, { netDeStart, trepteGrila } from '@/app/components/SalariuGrila';
+import SalariuOficial, { netOficialDeStart, venitOficial } from '@/app/components/SalariuOficial';
 import { descriereReper, grilaEducatie, reperMeserie } from '@/lib/repere-meserii';
 import { textIndicator } from '@/lib/indicator-meserie';
 import corCatalogue from '@/data/cor-meserii.json';
@@ -83,6 +84,11 @@ function descrierePagina(date: DateMeserie) {
   const trepte = didactic.length
     ? didactic.map(x => calculStandard(x.iun2024)!.net)
     : grila?.trepte.map(t => t.net) ?? [];
+  const v = venitOficial(date.meserie.slug);
+  if (v) {
+    const s = v.categorii.find(x => x.categorie === v.start) ?? v.categorii[0];
+    return `${inceput}: de la ${lei(s.min)} lei net pe lună, venitul plătit în ${v.luna}. Pe categorii, de la soldat la ofițer, din tabelul oficial.`;
+  }
   if (trepte.length > 1) {
     const min = Math.min(...trepte), max = Math.max(...trepte);
     return `${inceput}: ${lei(min)}–${lei(max)} lei net calculat pe treptele grilei publice afișate. Vezi funcțiile, studiile și componentele incluse.`;
@@ -145,12 +151,16 @@ function faqPentru(date: DateMeserie) {
   const maxim = dupaSuma[dupaSuma.length - 1];
   const varf = maxim && debutant && maxim.net > debutant.net * 1.05 ? maxim : null;
   const lei = (n: number) => `${n.toLocaleString("ro-RO")} lei net pe lună`;
+  const nr = (n: number) => n.toLocaleString("ro-RO");
 
   const c = concluzieMeserie(date.meserie.slug);
   const raspunsPrincipal = c?.sursa === "platit" && c.platit
-    ? `La angajatorii publici, un ${de} ia în mână ${lei(c.net)} lei pe lună, salariul fix din mijloc; jumătate din posturi au între ${lei(c.interval![0])} și ${lei(c.interval![1])} lei.${c.platit.cuVariabil && c.platit.cuVariabil.net > c.net * 1.03 ? ` Cu ture și gărzi, ${lei(c.platit.cuVariabil.net)} lei.` : ""} Cifrele vin din salariile publicate de ${c.platit.institutii} instituții publice din ${c.platit.judete} județe, netul fiind calculat pentru o persoană fără persoane în întreținere.`
+    ? `La angajatorii publici, un ${de} ia în mână ${lei(c.net)}, salariul fix din mijloc; jumătate din posturi au între ${nr(c.interval![0])} și ${nr(c.interval![1])} lei.${c.platit.cuVariabil && c.platit.cuVariabil.net > c.net * 1.03 ? ` Cu ture și gărzi, ${lei(c.platit.cuVariabil.net)}.` : ""} Cifrele vin din salariile publicate de ${c.platit.institutii} instituții publice din ${c.platit.judete} județe, netul fiind calculat pentru o persoană fără persoane în întreținere.`
     : c?.sursa === "oferit" && c.oferit
-    ? `La angajare se oferă unui ${de} în jur de ${lei(c.net)} lei net pe lună, mijlocul salariilor din ${c.oferit.anunturi} anunțuri verificate.`
+    ? `La angajare se oferă unui ${de} în jur de ${lei(c.net)}, mijlocul salariilor din ${c.oferit.anunturi} anunțuri verificate.`
+    : venitOficial(date.meserie.slug)
+    ? (() => { const v = venitOficial(date.meserie.slug)!; const s = v.categorii.find(x => x.categorie === v.start) ?? v.categorii[0];
+        return `${s.categorie} iau în mână între ${nr(s.min)} și ${nr(s.max)} lei net pe lună, la program normal, după tabelul publicat de ${v.angajator} pentru ${v.luna}. Cu grad și funcție, venitul net ajunge până la ${nr(Math.max(...v.categorii.map(x => x.max)))} lei la ofițerii cu funcții de comandă.`; })()
     : candidata?.veche
     // Grila veche (2022) nu e salariul de azi, iar media INS a sectorului nu e a meseriei.
     ? `Salariul unui ${de} e stabilit prin lege, cu gradații de vechime, sporuri și, unde e cazul, indemnizație de hrană. Nu afișăm încă o cifră: tabelele din lege sunt la nivelul din 2022 și nu cuprind majorările date de atunci prin ordonanțe.`
@@ -238,7 +248,7 @@ export default async function MeseriePage({ params }: Props) {
     const c = concluzieMeserie(alta.slug);
     const r = reperMeserie(dateMeserieSauEroare(alta));
     // Meseriile plătite după lege: cifra de început din grilă, ca în cardul paginii lor.
-    const start = c ? null : netDeStart(alta.slug);
+    const start = c ? null : netDeStart(alta.slug) ?? netOficialDeStart(alta.slug);
     // Grilele rămase la 2022 nu sunt salariul de azi, iar media INS a sectorului nu e a meseriei.
     if (!c && !start && grilaPublica(alta.slug)?.veche) return { alta, cifra: undefined };
     return { alta, cifra: c ? `${lei(c.net)} lei net` : start ? `de la ${lei(start)} lei net` : r.value ? textIndicator(r) : undefined };
@@ -268,6 +278,9 @@ export default async function MeseriePage({ params }: Props) {
                 // Meseriile plătite după lege: cifra din grilă, fără rândurile goale ale surselor
                 // care nu se aplică („meserie plătită după grilă, nu prin ofertă”).
                 <SalariuGrila slug={slug} de={meserie.de} />
+              ) : venitOficial(slug) ? (
+                // Venitul net plătit, publicat lunar de angajatorul public (MApN), pe categorii.
+                <SalariuOficial slug={slug} de={meserie.de} />
               ) : grilaPublica(slug)?.veche ? (
                 // Meseriile plătite după o grilă rămasă la nivelul din 2022 (armată, poliție,
                 // magistrați...): nici grila veche, nici media INS a sectorului nu sunt salariul

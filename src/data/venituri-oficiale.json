@@ -1,0 +1,18 @@
+{
+  "descriere": "Venitul salarial net lunar plătit, minim și maxim, publicat de angajatorul public pentru fiecare categorie de personal. Minimele sunt pentru program normal de lucru; nu cuprind drepturile nepermanente.",
+  "militar": {
+    "angajator": "Ministerul Apărării Naționale",
+    "luna": "august 2026",
+    "platitIn": "septembrie 2026",
+    "url": "https://www.mapn.ro/buget/documente/2026/venit_09_2026.doc",
+    "pagina": "https://www.mapn.ro/buget/",
+    "start": "Soldați și gradați profesioniști",
+    "categorii": [
+      { "categorie": "Soldați și gradați profesioniști", "min": 4348, "max": 5970 },
+      { "categorie": "Subofițeri", "min": 4597, "max": 6942 },
+      { "categorie": "Maiștri militari", "min": 4612, "max": 7061 },
+      { "categorie": "Ofițeri, funcții de execuție", "min": 5527, "max": 12486 },
+      { "categorie": "Ofițeri, funcții de comandă", "min": 5679, "max": 28426 }
+    ]
+  }
+}
