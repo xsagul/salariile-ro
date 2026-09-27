@@ -1,41 +1,24 @@
 // src/app/(site)/salarii/page.tsx
-// Hub-ul clusterului de meserii. Server Component pur — zero JS la client.
+// Hubul meseriilor. Server Component pur — zero JS la client în afara filtrului.
 //
-// Pozitia editoriala a paginii: raspundem net-first la „cat se castiga ca X?".
-// Suma mare este netul observat de INS in sectorul asociat meseriei; contextul
-// CAEN/ISCO ramane vizibil, fara a transforma cele doua surse intr-un interval.
+// Refăcut pe 27 septembrie 2026, pe principiile paginilor de zile libere: titlul, căutarea,
+// apoi lista pe domenii, cu o singură cifră verificată pe meserie (salariul-concluzie, grila în
+// plată sau venitul oficial al angajatorului), meseriile cu cifră primele. Au ieșit calea de
+// navigare, butoanele spre paginile INS din fața listei, avertismentul despre „semnificații
+// diferite” și întrebările despre INS: nu erau ce caută omul aici.
 
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
-import { Breadcrumb, Faq, H1, Lead, CtaCard, TITLU_SECTIUNE, SPATIU_JOS, SPATIU_SUS, INAINTE_DE_SECTIUNE } from "@/app/components/ui";
+import { Faq, H1, Lead, TITLU_SECTIUNE, SPATIU_JOS, SPATIU_SUS, INAINTE_DE_SECTIUNE } from "@/app/components/ui";
 import FiltruMeserii from "@/app/components/FiltruMeserii";
-import { NotaSursa, lei, lunaLunga } from "@/app/components/Salarii";
-
-import { calculStandard } from "@/lib/fiscal";
-import {
-  AN_OCUPATII,
-  LUNA_REFERINTA,
-  MATRICE_BRUT,
-  MATRICE_NET,
-  MATRICE_OCUPATII,
-  TOTAL_ECONOMIE,
-
-} from "@/lib/ins-date";
 import { CATEGORII, MESERII, dateMeserie, meseriiDinCategorie } from "@/lib/meserii";
-import { reperMeserie } from '@/lib/repere-meserii';
-import { indicatorMeserie } from '@/lib/indicator-meserie';
-// Aceeași cifră ca pe pagina meseriei: concluzia, unde există (27 sept. 2026).
-import { concluzieMeserie } from '@/app/components/SalariuConcluzie';
-import { netDeStart } from '@/app/components/SalariuGrila';
-import { netOficialDeStart } from '@/app/components/SalariuOficial';
+import { concluzieMeserie } from "@/app/components/SalariuConcluzie";
+import { netDeStart } from "@/app/components/SalariuGrila";
+import { netOficialDeStart } from "@/app/components/SalariuOficial";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
 
-const LUNA = lunaLunga(LUNA_REFERINTA);
-const NET_STANDARD_ECONOMIE = calculStandard(TOTAL_ECONOMIE.brutCurent)?.net ?? 0;
-
-
-const DESCRIERE = `Repere salariale pentru ${MESERII.length} meserii în România: medii declarate, grile de bază și context INS. Surse, perioade și comparații explicate.`;
+const DESCRIERE = `Salarii pe ${MESERII.length} de meserii în România: cât se câștigă în mână, din salariile plătite la stat, anunțuri verificate și grila legii în plată.`;
 
 export const metadata: Metadata = {
   title: { absolute: `Salarii pe meserii în România 2026 | Salariile` },
@@ -51,41 +34,37 @@ export const metadata: Metadata = {
 
 const FAQ = [
   {
-    q: "Cum documentează Salariile.ro salariul pentru fiecare meserie?",
-    a: `Pentru fiecare meserie indicăm tipul datelor disponibile: medie declarată de angajați în Salario, interval din grila legală sau context statistic INS. Sursele de angajator sunt prezentate separat. Nu combinăm populații și perioade diferite într-o medie națională.`,
+    q: "De unde vin salariile de pe fiecare meserie?",
+    a: "Din patru surse, fiecare scrisă pe pagina meseriei: salariile plătite pe fiecare post, publicate de spitale, primării și alte instituții publice; ofertele din anunțurile de angajare verificate; grila legii salarizării, acolo unde e în plată; tabelele de venituri publicate de angajatorii publici, cum e Ministerul Apărării. Nu facem medii între surse.",
   },
   {
-    q: "Publică INS salariul mediu pentru fiecare meserie?",
-    a: `INS publică date agregate pe activități economice CAEN și grupe majore ISCO, inclusiv intersecția structurală dintre ele, nu statistici individuale pe fiecare cod COR. De aceea, pe fiecare pagină de meserie arătăm separat datele INS, salariile declarate de angajați și grilele legale.`,
+    q: "Sumele sunt nete sau brute?",
+    a: "Nete, adică ce ajunge în mână, pe lună. Unde salariul se impozitează ca unul obișnuit, pagina meseriei arată și brutul echivalent, ca să îl poți compara cu o ofertă.",
   },
   {
-    q: "Cât este câștigul salarial mediu pe economie acum?",
-    a: `În ${LUNA}, câștigul mediu net observat de INS pe economie a fost ${TOTAL_ECONOMIE.netCurent ? `${lei(TOTAL_ECONOMIE.netCurent)} lei` : "indisponibil"}, iar brutul mediu ${lei(TOTAL_ECONOMIE.brutCurent)} lei. Transformat fiscal în condiții standard, acest brut dă ${lei(NET_STANDARD_ECONOMIE)} lei net.`,
+    q: "De ce unele meserii au o cifră și altele nu?",
+    a: "Punem o cifră doar când o sursă măsoară chiar meseria aceea, pe destule posturi sau anunțuri. Unde nu e încă așa, pagina meseriei arată ce cer angajatorii: experiența, studiile, programul și beneficiile din anunțuri.",
   },
   {
-    q: "De ce netul INS diferă de netul calculat de calculator?",
-    a: "Sunt două lucruri diferite. Netul INS este media a ceea ce au încasat efectiv toți salariații din sector, inclusiv cei cu scutiri, deduceri personale sau tichete. Netul calculat pornește de la un singur salariu brut și aplică regulile fiscale standard: CAS 25%, CASS 10% și impozit 10%, fără deduceri suplimentare. Când brutul e mic, deducerea personală ridică netul mediu peste calculul standard.",
-  },
-  {
-    q: "Cifrele acoperă și bonusurile sau doar salariul de bază?",
-    a: "Câștigul salarial mediu brut lunar include salariul de bază plus sporuri, prime, ore suplimentare și alte drepturi plătite în luna respectivă. De aceea este mai mare decât salariul de bază de încadrare. Ancheta din octombrie publică ambele valori separat, iar în paginile de meserii le vezi una lângă alta.",
-  },
-  {
-    q: "Cât de des se actualizează datele?",
-    a: `Seria lunară pe activități se actualizează de INS în fiecare lună, cu aproximativ două luni întârziere; ultima lună disponibilă aici este ${LUNA}. Defalcarea pe județe și ancheta pe ocupații sunt anuale. Le preluăm automat din TEMPO-Online, nu le copiem de mână.`,
+    q: "Cât de des se actualizează?",
+    a: "Anunțurile și ofertele depuse la ANOFM se adună în fiecare zi. Listele de salarii ale instituțiilor publice apar de două ori pe an, pe 31 martie și 30 septembrie, iar tabelele angajatorilor publici, lunar.",
   },
 ];
+
+/** Cifra verificată a meseriei, aceeași ca pe pagina ei; altfel nimic. */
+function cifraMeserie(slug: string): { text: string; tip: string } | null {
+  const c = concluzieMeserie(slug);
+  if (c) return { text: `${c.net.toLocaleString("ro-RO")} lei net`, tip: `concluzie-${c.sursa}` };
+  const g = netDeStart(slug);
+  if (g) return { text: `de la ${g.toLocaleString("ro-RO")} lei net`, tip: "grila-legala" };
+  const o = netOficialDeStart(slug);
+  if (o) return { text: `de la ${o.toLocaleString("ro-RO")} lei net`, tip: "venit-oficial" };
+  return null;
+}
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Acasă", item: "https://salariile.ro" },
-        { "@type": "ListItem", position: 2, name: "Salarii pe meserii", item: "https://salariile.ro/salarii" },
-      ],
-    },
     {
       "@type": "CollectionPage",
       name: "Salarii pe meserii în România 2026",
@@ -122,10 +101,15 @@ const jsonLd = {
 export default function SalariiPage() {
   const categorii = CATEGORII.map((categorie) => ({
     categorie,
+    // Meseriile cu cifră verificată primele, ca lista să se citească de sus; apoi celelalte.
     meserii: meseriiDinCategorie(categorie.slug)
-      .map((meserie) => ({ meserie, date: dateMeserie(meserie) }))
-      .filter((intrare) => intrare.date !== null),
-  })).filter((grup) => grup.meserii.length > 0);
+      .map((meserie) => ({ meserie, date: dateMeserie(meserie), cifra: cifraMeserie(meserie.slug) }))
+      .filter((intrare) => intrare.date !== null)
+      .sort((a, b) => Number(!!b.cifra) - Number(!!a.cifra)),
+  })).filter((grup) => grup.meserii.length > 0)
+    // Domeniile cu cele mai multe cifre verificate primele: primul ecran nu începe cu rânduri goale.
+    .sort((a, b) => b.meserii.filter((m) => m.cifra).length - a.meserii.filter((m) => m.cifra).length);
+  const cuCifra = categorii.reduce((n, g) => n + g.meserii.filter((m) => m.cifra).length, 0);
 
   return (
     <>
@@ -133,47 +117,10 @@ export default function SalariiPage() {
 
       <div className="bg-canvas">
         <div className={`mx-auto max-w-6xl px-4 sm:px-6 ${SPATIU_SUS} ${SPATIU_JOS}`}>
-          <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Salarii pe meserii" }]} />
           <H1>Salarii pe meserii în România</H1>
-          <Lead>Cât se câștigă în mână? Caută meseria și vezi salariul net, apoi compară cu alte ocupații.</Lead>
+          <Lead>Caută meseria și vezi cât se câștigă în mână. {cuCifra} de meserii au deja salariul verificat.</Lead>
 
-          {/* Fara banda de trei carduri cu media pe economie: impingea lista de
-              meserii — motivul pentru care omul intra pe pagina — sub fold.
-              Cifrele raman in FAQ si pe fiecare pagina de meserie, unde au rost. */}
           <FiltruMeserii total={MESERII.length} />
-
-          <nav
-            aria-label="Pagini tematice"
-            data-scurtaturi-categorii
-            className="mt-6 flex flex-wrap gap-2 data-[filtrat=da]:hidden"
-          >
-            <Link
-              href="/salarii/clasament"
-              className="inline-flex min-h-11 items-center rounded-full border border-stone-900 bg-stone-900 px-4 text-sm font-medium text-white shadow-soft transition-colors hover:bg-stone-700"
-            >
-              Clasamentul complet
-            </Link>
-            <Link
-              href="/salarii/judete"
-              className="inline-flex min-h-11 items-center rounded-full border border-stone-900 bg-stone-900 px-4 text-sm font-medium text-white shadow-soft transition-colors hover:bg-stone-700"
-            >
-              Salarii pe județe
-            </Link>
-            <Link
-              href="/salarii/femei-barbati"
-              className="inline-flex min-h-11 items-center rounded-full border border-stone-900 bg-stone-900 px-4 text-sm font-medium text-white shadow-soft transition-colors hover:bg-stone-700"
-            >
-              Femei vs bărbați
-            </Link>
-            <Link
-              href="/salarii/locuri-vacante"
-              className="inline-flex min-h-11 items-center rounded-full border border-stone-900 bg-stone-900 px-4 text-sm font-medium text-white shadow-soft transition-colors hover:bg-stone-700"
-            >
-              Locuri vacante
-            </Link>
-          </nav>
-
-          <p className="mt-6 text-sm text-stone-600">Sume nete lunare cu sursa și perioada alături. Mediile declarate, intervalele din grile și estimările de grupă au semnificații diferite.</p>
 
           {categorii.map(({ categorie, meserii }) => (
             <section key={categorie.slug} id={categorie.slug} data-sectiune-meserii className={`${INAINTE_DE_SECTIUNE} scroll-mt-20`}>
@@ -182,64 +129,39 @@ export default function SalariiPage() {
                   {categorie.nume}
                 </Link>
               </h2>
-              <p className="mt-[13px] text-sm text-stone-600 sm:mt-[17px]">
-                {categorie.descriere}{" "}
-                <Link
-                  href={`/salarii/domeniu/${categorie.slug}`}
-                  className="font-medium text-stone-900 underline underline-offset-2"
-                >
-                  Vezi domeniul
-                </Link>
-              </p>
               <div className="mt-4 grid gap-3 lg:grid-cols-2">
-                {meserii.map(({ meserie, date }) => (
+                {meserii.map(({ meserie, date, cifra }) => (
                   <Link
                     key={meserie.slug}
                     href={`/salarii/${meserie.slug}`}
                     className="flex min-h-14 items-center justify-between gap-2 rounded-md border border-stone-200 bg-surface px-3 py-3 text-sm shadow-soft hover:border-stone-400 sm:px-4 sm:text-base"
-                    data-salary-row={indicatorMeserie(reperMeserie(date!)).metric ?? "unavailable"}
-                    data-cauta={[
-                      meserie.nume,
-                      meserie.de,
-                      meserie.cor ?? "",
-                      categorie.nume,
-                      date!.sector.denumire,
-                      date!.isco?.nume ?? "",
-                    ].join(" ")}
+                    data-salary-row={cifra?.tip ?? "unavailable"}
+                    data-cauta={[meserie.nume, meserie.de, meserie.cor ?? "", categorie.nume, date!.sector.denumire, date!.isco?.nume ?? ""].join(" ")}
                   >
                     <span data-profession-name className="font-medium text-stone-900">{meserie.nume}</span>
-                    <span data-profession-salary className="shrink-0 whitespace-nowrap font-semibold text-stone-700">{concluzieMeserie(meserie.slug) ? `${concluzieMeserie(meserie.slug)!.net.toLocaleString("ro-RO")} lei net` : netDeStart(meserie.slug) ? `de la ${netDeStart(meserie.slug)!.toLocaleString("ro-RO")} lei net` : netOficialDeStart(meserie.slug) ? `de la ${netOficialDeStart(meserie.slug)!.toLocaleString("ro-RO")} lei net` : null}</span>
+                    {cifra && <span data-profession-salary className="shrink-0 whitespace-nowrap font-semibold text-stone-700">{cifra.text}</span>}
                   </Link>
                 ))}
               </div>
             </section>
           ))}
 
-          <section className={`${INAINTE_DE_SECTIUNE} max-w-3xl`}>
-            <h2 className={TITLU_SECTIUNE}>
-              Metodologia din spatele reperelor salariale
-            </h2>
-            <p className="mt-4 text-base leading-normal text-stone-600">
-              Sursele se verifică separat: raportările angajaților descriu un eșantion voluntar, documentele angajatorilor descriu o instituție, iar INS oferă context pe activități și grupe. Grilele indică baza legală. Nu transformăm o medie sectorială sau suma dintr-o grilă într-un salariu observat al meseriei.
-            </p>
-
-            <NotaSursa>
-              Sursa datelor: Institutul Național de Statistică, TEMPO-Online, matricele {MATRICE_BRUT} și{" "}
-              {MATRICE_NET} (serii lunare pe activități CAEN Rev.3, ultima lună {LUNA}) și {MATRICE_OCUPATII}{" "}
-              (ancheta din octombrie pe grupe majore de ocupații ISCO-08,{" "}
-              {AN_OCUPATII.toLowerCase().replace("anul", "anul")}). Netul standard este calculat de Salariile.ro, nu de INS. Vezi{" "}
-              <Link href="/metodologie">metodologia de calcul</Link> și{" "}
-              <Link href="/date-salarii">setul de date publicat</Link>.
-            </NotaSursa>
-          </section>
+          {/* Paginile cu statistici pe economie, la final, ca simple legături. */}
+          <nav aria-label="Alte pagini despre salarii" data-scurtaturi-categorii className={`${INAINTE_DE_SECTIUNE} data-[filtrat=da]:hidden`}>
+            <h2 className={TITLU_SECTIUNE}>Alte pagini despre salarii</h2>
+            <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+              <li><Link href="/compara" className="underline underline-offset-2">Compară două meserii</Link></li>
+              <li><Link href="/salarii/clasament" className="underline underline-offset-2">Clasamentul pe domenii</Link></li>
+              <li><Link href="/salarii/judete" className="underline underline-offset-2">Salarii pe județe</Link></li>
+              <li><Link href="/salarii/femei-barbati" className="underline underline-offset-2">Femei și bărbați</Link></li>
+              <li><Link href="/salarii/locuri-vacante" className="underline underline-offset-2">Locuri vacante</Link></li>
+              <li><Link href="/salarii/acoperire" className="underline underline-offset-2">Sursele, pe fiecare meserie</Link></li>
+            </ul>
+          </nav>
         </div>
       </div>
 
       <Faq items={FAQ} />
-
-      <CtaCard title="Compară două meserii" href="/compara" label="Vezi comparațiile">
-        Repere salariale, atribuții și contextul pieței, cu sursa fiecărei valori la vedere.
-      </CtaCard>
     </>
   );
 }

@@ -296,8 +296,9 @@ async function auditRenderedSite() {
     // fiecare rulare `npm run ins:tempo`, dar promisiunea paginii — sa spuna ce
     // masoara si de unde vine — nu are voie sa dispara.
     // Contextul INS pe sector și grupă a ieșit de pe paginile de meserie pe 27 sept. 2026.
-    ["/salarii", "TEMPO-Online", "citarea sursei INS pe hubul de meserii"],
-    ["/salarii", "grupe majore de ocupații", "a doua masuratoare, dinspre ocupatie"],
+    // Hubul refăcut pe 27 sept. 2026: sursele reale ale cifrelor, nu contextul INS.
+    ["/salarii", "salariile plătite pe fiecare post", "sursele cifrelor, în întrebările hubului"],
+    ["/salarii", "Sursele, pe fiecare meserie", "legătura spre acoperire"],
     // Netul trebuie sa raspunda primul cautarii, iar cele doua populatii CAEN
     // si ISCO raman separate, fara revenirea la intervalul derivat.
     // Rescrise pe 31 august 2026, odata cu trecerea la o singura cifra in
