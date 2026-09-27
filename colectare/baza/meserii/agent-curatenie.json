@@ -568,5 +568,86 @@
   },
   "peGradatie": {},
   "peFunctie": {}
+ },
+ "angajatori": {
+  "descriere": "Salariul publicat de angajator pe site-ul lui de cariere, pe post și oraș (lei pe lună; baza cum o scrie angajatorul).",
+  "oferte": 8,
+  "peAngajator": {
+   "kaufland": {
+    "n": 8,
+    "procent": 100
+   }
+  },
+  "baza": {
+   "brut": {
+    "n": 8,
+    "procent": 100
+   }
+  },
+  "brut": {
+   "n": 8
+  },
+  "faraBaza": {
+   "n": 0
+  },
+  "venitMediuBrutDeclarat": {
+   "n": 0
+  },
+  "peOras": {
+   "Petrosani": {
+    "n": 1
+   },
+   "Otopeni": {
+    "n": 1
+   },
+   "SALONTA": {
+    "n": 1
+   },
+   "Zalau": {
+    "n": 1
+   },
+   "Braila": {
+    "n": 1
+   },
+   "Satu Mare": {
+    "n": 1
+   },
+   "Baia Mare": {
+    "n": 1
+   },
+   "Tomești": {
+    "n": 1
+   }
+  },
+  "norma": {
+   "Full-time": {
+    "n": 7,
+    "procent": 87.5
+   },
+   "Part-time": {
+    "n": 1,
+    "procent": 12.5
+   }
+  },
+  "ore": {
+   "20": {
+    "n": 1,
+    "procent": 12.5
+   },
+   "40": {
+    "n": 6,
+    "procent": 75
+   },
+   "40/30/20": {
+    "n": 1,
+    "procent": 12.5
+   }
+  },
+  "nivel": {
+   "Posturi de execuție/specialiști": {
+    "n": 8,
+    "procent": 100
+   }
+  }
  }
 }

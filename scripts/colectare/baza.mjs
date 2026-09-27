@@ -19,6 +19,7 @@
 // nume de angajatori, contacte sau textul anunțurilor.
 import fs from "node:fs";
 import path from "node:path";
+import { classifyAll } from "../crawler/occupations.mjs";
 
 const OUT = "colectare/baza", MES = `${OUT}/meserii`;
 fs.mkdirSync(MES, { recursive: true });
@@ -61,7 +62,10 @@ const anofm = citesteJsonl("colectare/anofm/oferte");
 // Numai sursele acceptate de verificare (colectare/art33/raport.json) intră în cifre; celelalte
 // („de verificat”: baza ghicită, puține rânduri valide) se numără separat, ca să se vadă ce așteaptă.
 const RAPORT_ART33 = fs.existsSync("colectare/art33/raport.json") ? JSON.parse(fs.readFileSync("colectare/art33/raport.json", "utf8")) : {};
-const art33Toate = citesteJsonl("colectare/art33/observatii").filter((r) => !r.invalid);
+// Salariile de pe site-urile de cariere ale angajatorilor (Lidl, Kaufland), meseria din titlu.
+const angajatori = fs.existsSync("colectare/angajatori") ? fs.readdirSync("colectare/angajatori").flatMap((a) =>
+  citesteJsonl(`colectare/angajatori/${a}/oferte`).map((o) => ({ ...o, angajator: a, meserii: classifyAll(o.titlu.replace(/\(f\/m\)/i, "")).slugs }))) : [];
+const art33Toate =citesteJsonl("colectare/art33/observatii").filter((r) => !r.invalid);
 const art33 = art33Toate.filter((r) => RAPORT_ART33[r.sursa]?.stare === "acceptat");
 
 // Salariul minim brut pe lunile anului, pentru „cât din ANOFM e la minim”.
@@ -77,6 +81,7 @@ for (const m of MESERII) {
   const of = m.cor ? anofm.filter((o) => String(o.cor_name ?? "").startsWith(m.cor)) : [];
   const ofGrupa = m.cor ? anofm.filter((o) => String(o.cor_name ?? "").startsWith(m.cor.slice(0, 4))) : [];
   const st = art33.filter((r) => r.meserie === m.slug);
+  const ang = angajatori.filter((o) => o.meserii.includes(m.slug));
   const netAnofm = (o) => Number(o.salary_type === "net" ? o.minimum_salary : NaN);
 
   // Salariul oferit, pe fiecare factor prezent: „cu engleză” față de toate, „cu ture”, „senior”...
@@ -138,9 +143,19 @@ for (const m of MESERII) {
       peGradatie: peGrupe(st, (r) => (r.gradatie ?? null) === null ? null : `gradația ${r.gradatie}`, (r) => r.baza + (r.sporFix || 0)),
       peFunctie: peGrupe(st, (r) => r.text?.replace(/\s+/g, " ").slice(0, 60) || null, (r) => r.baza + (r.sporFix || 0)),
     },
+    angajatori: {
+      descriere: "Salariul publicat de angajator pe site-ul lui de cariere, pe post și oraș (lei pe lună; baza cum o scrie angajatorul).",
+      oferte: ang.length, peAngajator: frecventa(ang, (o) => o.angajator),
+      baza: frecventa(ang, (o) => o.salariu?.baza ?? "nedeclarată"),
+      brut: distributie(ang.filter((o) => o.salariu?.baza === "brut").map((o) => mijloc(o.salariu))),
+      faraBaza: distributie(ang.filter((o) => o.salariu && !o.salariu.baza).map((o) => mijloc(o.salariu))),
+      venitMediuBrutDeclarat: distributie(ang.map((o) => o.venitMediuBrut)),
+      peOras: peGrupe(ang.filter((o) => o.salariu), (o) => o.oras, (o) => mijloc(o.salariu)),
+      norma: frecventa(ang, (o) => o.norma), ore: frecventa(ang, (o) => o.ore || null), nivel: frecventa(ang, (o) => o.nivel),
+    },
   };
   fs.writeFileSync(`${MES}/${m.slug}.json`, JSON.stringify(fisa, null, 1) + "\n");
-  rezumat.push({ slug: m.slug, nume: m.nume, anunturiCuSalariu: a.length, cuBazaDeclarata: declarate.length, anunturiCitite: pr.length, anofm: of.length, anofmGrupa: ofGrupa.length, posturiPublice: st.length });
+  rezumat.push({ slug: m.slug, nume: m.nume, anunturiCuSalariu: a.length, cuBazaDeclarata: declarate.length, anunturiCitite: pr.length, anofm: of.length, anofmGrupa: ofGrupa.length, posturiPublice: st.length, angajatori: ang.length });
 }
 
 rezumat.sort((x, y) => (y.cuBazaDeclarata + y.anofm + y.posturiPublice) - (x.cuBazaDeclarata + x.anofm + x.posturiPublice));

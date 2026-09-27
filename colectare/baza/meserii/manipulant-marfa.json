@@ -561,5 +561,60 @@
   },
   "peGradatie": {},
   "peFunctie": {}
+ },
+ "angajatori": {
+  "descriere": "Salariul publicat de angajator pe site-ul lui de cariere, pe post și oraș (lei pe lună; baza cum o scrie angajatorul).",
+  "oferte": 2,
+  "peAngajator": {
+   "kaufland": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "baza": {
+   "brut": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "brut": {
+   "n": 2
+  },
+  "faraBaza": {
+   "n": 0
+  },
+  "venitMediuBrutDeclarat": {
+   "n": 0
+  },
+  "peOras": {
+   "Ploiesti": {
+    "n": 1
+   },
+   "Sat Mihai Viteazu": {
+    "n": 1
+   }
+  },
+  "norma": {
+   "Full-time": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "ore": {
+   "40": {
+    "n": 1,
+    "procent": 50
+   },
+   "8/40": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "nivel": {
+   "Posturi de execuție/specialiști": {
+    "n": 2,
+    "procent": 100
+   }
+  }
  }
 }

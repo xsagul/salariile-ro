@@ -520,5 +520,471 @@
   },
   "peGradatie": {},
   "peFunctie": {}
+ },
+ "angajatori": {
+  "descriere": "Salariul publicat de angajator pe site-ul lui de cariere, pe post și oraș (lei pe lună; baza cum o scrie angajatorul).",
+  "oferte": 174,
+  "peAngajator": {
+   "lidl": {
+    "n": 112,
+    "procent": 64.4
+   },
+   "kaufland": {
+    "n": 62,
+    "procent": 35.6
+   }
+  },
+  "baza": {
+   "nedeclarată": {
+    "n": 113,
+    "procent": 64.9
+   },
+   "brut": {
+    "n": 61,
+    "procent": 35.1
+   }
+  },
+  "brut": {
+   "n": 61,
+   "p10": 3825,
+   "p25": 5100,
+   "median": 5100,
+   "p75": 5500,
+   "p90": 5500,
+   "min": 2550,
+   "max": 5500
+  },
+  "faraBaza": {
+   "n": 113,
+   "p10": 5300,
+   "p25": 5300,
+   "median": 5300,
+   "p75": 5550,
+   "p90": 5550,
+   "min": 5300,
+   "max": 7120
+  },
+  "venitMediuBrutDeclarat": {
+   "n": 112,
+   "p10": 7300,
+   "p25": 7300,
+   "median": 7300,
+   "p75": 7600,
+   "p90": 7600,
+   "min": 7300,
+   "max": 7900
+  },
+  "peOras": {
+   "Bucureşti": {
+    "n": 6
+   },
+   "Oradea": {
+    "n": 5
+   },
+   "Bacau": {
+    "n": 5
+   },
+   "Otopeni": {
+    "n": 4
+   },
+   "Sibiu": {
+    "n": 4
+   },
+   "Targu Mures": {
+    "n": 4
+   },
+   "Satu Mare": {
+    "n": 4
+   },
+   "Baia Mare": {
+    "n": 4
+   },
+   "Iasi": {
+    "n": 4
+   },
+   "Arad": {
+    "n": 4
+   },
+   "București": {
+    "n": 4
+   },
+   "Crevedia": {
+    "n": 3
+   },
+   "Cluj-Napoca": {
+    "n": 3
+   },
+   "Bistrita": {
+    "n": 3
+   },
+   "Timișoara": {
+    "n": 3
+   },
+   "Suceava": {
+    "n": 3
+   },
+   "Giurgiu": {
+    "n": 2
+   },
+   "Pitesti": {
+    "n": 2
+   },
+   "Bucuresti": {
+    "n": 2
+   },
+   "Deva": {
+    "n": 2
+   },
+   "ORADEA": {
+    "n": 2
+   },
+   "Sovata": {
+    "n": 2
+   },
+   "1 Decembrie": {
+    "n": 2
+   },
+   "Domnești": {
+    "n": 2
+   },
+   "Bukarest": {
+    "n": 2
+   },
+   "Chișineu-Criș": {
+    "n": 2
+   },
+   "Mediaș": {
+    "n": 2
+   },
+   "Focșani": {
+    "n": 2
+   },
+   "Piatra Neamt": {
+    "n": 2
+   },
+   "Piatra Neamț": {
+    "n": 2
+   },
+   "Șcheia": {
+    "n": 2
+   },
+   "Mosnita Noua": {
+    "n": 1
+   },
+   "Lugoj": {
+    "n": 1
+   },
+   "Bragadiru": {
+    "n": 1
+   },
+   "BRAGADIRU": {
+    "n": 1
+   },
+   "Domnesti": {
+    "n": 1
+   },
+   "Calarasi": {
+    "n": 1
+   },
+   "Orastie": {
+    "n": 1
+   },
+   "SALONTA": {
+    "n": 1
+   },
+   "Ploieşti": {
+    "n": 1
+   },
+   "Mizil": {
+    "n": 1
+   },
+   "Slobozia": {
+    "n": 1
+   },
+   "Rasnov": {
+    "n": 1
+   },
+   "Fagaras": {
+    "n": 1
+   },
+   "Medgidia": {
+    "n": 1
+   },
+   "Codlea": {
+    "n": 1
+   },
+   "Brasov": {
+    "n": 1
+   },
+   "Sacele": {
+    "n": 1
+   },
+   "CONSTANTA": {
+    "n": 1
+   },
+   "Constanta": {
+    "n": 1
+   },
+   "Buzau": {
+    "n": 1
+   },
+   "Braila": {
+    "n": 1
+   },
+   "Tulcea": {
+    "n": 1
+   },
+   "Viseu de Sus": {
+    "n": 1
+   },
+   "Vaslui": {
+    "n": 1
+   },
+   "Pascani ,Judet, Iasi": {
+    "n": 1
+   },
+   "Tomești": {
+    "n": 1
+   },
+   "Calafat": {
+    "n": 1
+   },
+   "Drobeta-Turnu Severin": {
+    "n": 1
+   },
+   "Reșița": {
+    "n": 1
+   },
+   "Jimbolia": {
+    "n": 1
+   },
+   "Giroc": {
+    "n": 1
+   },
+   "Sacalaz": {
+    "n": 1
+   },
+   "Temeswar": {
+    "n": 1
+   },
+   "Moșnița Nouă": {
+    "n": 1
+   },
+   "Ghiroda": {
+    "n": 1
+   },
+   "Sânnicolau Mare": {
+    "n": 1
+   },
+   "Vladimirescu": {
+    "n": 1
+   },
+   "Bolintin-Vale": {
+    "n": 1
+   },
+   "Măgurele": {
+    "n": 1
+   },
+   "Berceni": {
+    "n": 1
+   },
+   "Popești Leordeni": {
+    "n": 1
+   },
+   "Cernica": {
+    "n": 1
+   },
+   "Tunari": {
+    "n": 1
+   },
+   "Ștefăneștii de Jos": {
+    "n": 1
+   },
+   "Cisnădie": {
+    "n": 1
+   },
+   "Selimbar": {
+    "n": 1
+   },
+   "Avrig": {
+    "n": 1
+   },
+   "Sântandrei": {
+    "n": 1
+   },
+   "Râșnov": {
+    "n": 1
+   },
+   "Medias": {
+    "n": 1
+   },
+   "Brașov": {
+    "n": 1
+   },
+   "Constanța": {
+    "n": 1
+   },
+   "Hărman": {
+    "n": 1
+   },
+   "Turda": {
+    "n": 1
+   },
+   "Luduș": {
+    "n": 1
+   },
+   "Florești": {
+    "n": 1
+   },
+   "Năvodari": {
+    "n": 1
+   },
+   "Hârșova": {
+    "n": 1
+   },
+   "Navodari": {
+    "n": 1
+   },
+   "Sighisoara": {
+    "n": 1
+   },
+   "Zalau": {
+    "n": 1
+   },
+   "Tasnad": {
+    "n": 1
+   },
+   "Gherla": {
+    "n": 1
+   },
+   "Dej": {
+    "n": 1
+   },
+   "Focsani": {
+    "n": 1
+   },
+   "Miercurea Ciuc": {
+    "n": 1
+   },
+   "Targu Lapus": {
+    "n": 1
+   },
+   "Gheorgheni": {
+    "n": 1
+   },
+   "Toplita": {
+    "n": 1
+   },
+   "Bârlad": {
+    "n": 1
+   },
+   "Roman": {
+    "n": 1
+   },
+   "Gura Humorului": {
+    "n": 1
+   },
+   "Huși": {
+    "n": 1
+   },
+   "Ipotești": {
+    "n": 1
+   },
+   "Vicovu de Sus": {
+    "n": 1
+   },
+   "Rădăuți": {
+    "n": 1
+   },
+   "Iași": {
+    "n": 1
+   },
+   "Botoschan": {
+    "n": 1
+   },
+   "Otelu Rosu": {
+    "n": 1
+   },
+   "Odorheiu Secuiesc": {
+    "n": 1
+   },
+   "Onesti": {
+    "n": 1
+   }
+  },
+  "norma": {
+   "Full-Time": {
+    "n": 112,
+    "procent": 64.4
+   },
+   "Full-time": {
+    "n": 54,
+    "procent": 31
+   },
+   "Part-time": {
+    "n": 8,
+    "procent": 4.6
+   }
+  },
+  "ore": {
+   "8": {
+    "n": 1,
+    "procent": 0.6
+   },
+   "20": {
+    "n": 2,
+    "procent": 1.1
+   },
+   "30": {
+    "n": 4,
+    "procent": 2.3
+   },
+   "35": {
+    "n": 2,
+    "procent": 1.1
+   },
+   "40": {
+    "n": 42,
+    "procent": 24.1
+   },
+   "40/30/20": {
+    "n": 4,
+    "procent": 2.3
+   },
+   "30-40": {
+    "n": 2,
+    "procent": 1.1
+   },
+   "20/40": {
+    "n": 2,
+    "procent": 1.1
+   },
+   "40h": {
+    "n": 1,
+    "procent": 0.6
+   },
+   "20/30": {
+    "n": 1,
+    "procent": 0.6
+   },
+   "20/ 30": {
+    "n": 1,
+    "procent": 0.6
+   }
+  },
+  "nivel": {
+   "Entry-level": {
+    "n": 112,
+    "procent": 64.4
+   },
+   "Posturi de execuție/specialiști": {
+    "n": 61,
+    "procent": 35.1
+   },
+   "Program ACCES": {
+    "n": 1,
+    "procent": 0.6
+   }
+  }
  }
 }

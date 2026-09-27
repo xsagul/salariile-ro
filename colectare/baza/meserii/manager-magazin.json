@@ -221,5 +221,92 @@
   },
   "peGradatie": {},
   "peFunctie": {}
+ },
+ "angajatori": {
+  "descriere": "Salariul publicat de angajator pe site-ul lui de cariere, pe post și oraș (lei pe lună; baza cum o scrie angajatorul).",
+  "oferte": 22,
+  "peAngajator": {
+   "lidl": {
+    "n": 12,
+    "procent": 54.5
+   },
+   "kaufland": {
+    "n": 10,
+    "procent": 45.5
+   }
+  },
+  "baza": {
+   "nedeclarată": {
+    "n": 22,
+    "procent": 100
+   }
+  },
+  "brut": {
+   "n": 0
+  },
+  "faraBaza": {
+   "n": 6
+  },
+  "venitMediuBrutDeclarat": {
+   "n": 6
+  },
+  "peOras": {
+   "Otelu Rosu": {
+    "n": 1
+   },
+   "Jilava": {
+    "n": 1
+   },
+   "București": {
+    "n": 1
+   },
+   "Cernica": {
+    "n": 1
+   },
+   "Miercurea Ciuc": {
+    "n": 1
+   },
+   "Iași": {
+    "n": 1
+   }
+  },
+  "norma": {
+   "Full-Time": {
+    "n": 12,
+    "procent": 54.5
+   },
+   "Full-time": {
+    "n": 10,
+    "procent": 45.5
+   }
+  },
+  "ore": {
+   "8": {
+    "n": 1,
+    "procent": 4.5
+   },
+   "40": {
+    "n": 7,
+    "procent": 31.8
+   }
+  },
+  "nivel": {
+   "Management": {
+    "n": 10,
+    "procent": 45.5
+   },
+   "Posturi cu responsabilitate managerială": {
+    "n": 8,
+    "procent": 36.4
+   },
+   "Posturi de execuție/specialiști": {
+    "n": 2,
+    "procent": 9.1
+   },
+   "Specialist": {
+    "n": 2,
+    "procent": 9.1
+   }
+  }
  }
 }

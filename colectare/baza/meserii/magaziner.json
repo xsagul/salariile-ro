@@ -612,5 +612,57 @@
     "n": 1
    }
   }
+ },
+ "angajatori": {
+  "descriere": "Salariul publicat de angajator pe site-ul lui de cariere, pe post și oraș (lei pe lună; baza cum o scrie angajatorul).",
+  "oferte": 6,
+  "peAngajator": {
+   "lidl": {
+    "n": 6,
+    "procent": 100
+   }
+  },
+  "baza": {
+   "nedeclarată": {
+    "n": 6,
+    "procent": 100
+   }
+  },
+  "brut": {
+   "n": 0
+  },
+  "faraBaza": {
+   "n": 6
+  },
+  "venitMediuBrutDeclarat": {
+   "n": 6
+  },
+  "peOras": {
+   "Lugoj": {
+    "n": 2
+   },
+   "Fundeni": {
+    "n": 2
+   },
+   "Bolintin-Deal": {
+    "n": 1
+   },
+   "Cordun": {
+    "n": 1
+   }
+  },
+  "norma": {
+   "Full-Time": {
+    "n": 6,
+    "procent": 100
+   }
+  },
+  "ore": {},
+  "nivel": {
+   "Entry-level": {
+    "n": 6,
+    "procent": 100
+   }
+  }
  }
 }

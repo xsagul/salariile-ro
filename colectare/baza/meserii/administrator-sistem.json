@@ -248,5 +248,24 @@
   },
   "peGradatie": {},
   "peFunctie": {}
+ },
+ "angajatori": {
+  "descriere": "Salariul publicat de angajator pe site-ul lui de cariere, pe post și oraș (lei pe lună; baza cum o scrie angajatorul).",
+  "oferte": 0,
+  "peAngajator": {},
+  "baza": {},
+  "brut": {
+   "n": 0
+  },
+  "faraBaza": {
+   "n": 0
+  },
+  "venitMediuBrutDeclarat": {
+   "n": 0
+  },
+  "peOras": {},
+  "norma": {},
+  "ore": {},
+  "nivel": {}
  }
 }

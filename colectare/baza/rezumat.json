@@ -1,5 +1,5 @@
 {
- "generatLa": "2026-09-27T10:28:07.462Z",
+ "generatLa": "2026-09-27T10:30:31.757Z",
  "total": {
   "anunturi": 3704,
   "citite": 531,
@@ -15,7 +15,8 @@
    "anunturiCitite": 5,
    "anofm": 55,
    "anofmGrupa": 65,
-   "posturiPublice": 8078
+   "posturiPublice": 8078,
+   "angajatori": 0
   },
   {
    "slug": "medic",
@@ -25,7 +26,8 @@
    "anunturiCitite": 5,
    "anofm": 3,
    "anofmGrupa": 3,
-   "posturiPublice": 5424
+   "posturiPublice": 5424,
+   "angajatori": 0
   },
   {
    "slug": "medic-rezident",
@@ -35,7 +37,8 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 3,
-   "posturiPublice": 4480
+   "posturiPublice": 4480,
+   "angajatori": 0
   },
   {
    "slug": "infirmier",
@@ -45,7 +48,8 @@
    "anunturiCitite": 1,
    "anofm": 32,
    "anofmGrupa": 56,
-   "posturiPublice": 3470
+   "posturiPublice": 3470,
+   "angajatori": 0
   },
   {
    "slug": "registrator-medical",
@@ -55,7 +59,8 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 0,
-   "posturiPublice": 584
+   "posturiPublice": 584,
+   "angajatori": 0
   },
   {
    "slug": "economist",
@@ -65,7 +70,8 @@
    "anunturiCitite": 6,
    "anofm": 42,
    "anofmGrupa": 67,
-   "posturiPublice": 327
+   "posturiPublice": 327,
+   "angajatori": 0
   },
   {
    "slug": "sofer-tir",
@@ -75,7 +81,8 @@
    "anunturiCitite": 9,
    "anofm": 301,
    "anofmGrupa": 316,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "farmacist",
@@ -85,7 +92,8 @@
    "anunturiCitite": 2,
    "anofm": 8,
    "anofmGrupa": 8,
-   "posturiPublice": 287
+   "posturiPublice": 287,
+   "angajatori": 0
   },
   {
    "slug": "agent-vanzari",
@@ -95,7 +103,8 @@
    "anunturiCitite": 39,
    "anofm": 184,
    "anofmGrupa": 199,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "manipulant-marfa",
@@ -105,7 +114,8 @@
    "anunturiCitite": 1,
    "anofm": 217,
    "anofmGrupa": 240,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 2
   },
   {
    "slug": "electrician",
@@ -115,7 +125,8 @@
    "anunturiCitite": 38,
    "anofm": 76,
    "anofmGrupa": 106,
-   "posturiPublice": 47
+   "posturiPublice": 47,
+   "angajatori": 0
   },
   {
    "slug": "vanzator",
@@ -125,7 +136,8 @@
    "anunturiCitite": 10,
    "anofm": 99,
    "anofmGrupa": 102,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 174
   },
   {
    "slug": "bucatar",
@@ -135,7 +147,8 @@
    "anunturiCitite": 4,
    "anofm": 119,
    "anofmGrupa": 132,
-   "posturiPublice": 65
+   "posturiPublice": 65,
+   "angajatori": 0
   },
   {
    "slug": "agent-curatenie",
@@ -145,7 +158,8 @@
    "anunturiCitite": 4,
    "anofm": 144,
    "anofmGrupa": 155,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 8
   },
   {
    "slug": "sofer-distributie",
@@ -155,7 +169,8 @@
    "anunturiCitite": 3,
    "anofm": 164,
    "anofmGrupa": 167,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "agent-paza",
@@ -165,7 +180,8 @@
    "anunturiCitite": 0,
    "anofm": 148,
    "anofmGrupa": 169,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "taximetrist",
@@ -175,7 +191,8 @@
    "anunturiCitite": 0,
    "anofm": 164,
    "anofmGrupa": 167,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "sofer-ridesharing",
@@ -185,7 +202,8 @@
    "anunturiCitite": 0,
    "anofm": 164,
    "anofmGrupa": 167,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "sudor",
@@ -195,7 +213,8 @@
    "anunturiCitite": 3,
    "anofm": 123,
    "anofmGrupa": 146,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "psiholog",
@@ -205,7 +224,8 @@
    "anunturiCitite": 0,
    "anofm": 6,
    "anofmGrupa": 21,
-   "posturiPublice": 139
+   "posturiPublice": 139,
+   "angajatori": 0
   },
   {
    "slug": "kinetoterapeut",
@@ -215,7 +235,8 @@
    "anunturiCitite": 5,
    "anofm": 8,
    "anofmGrupa": 23,
-   "posturiPublice": 135
+   "posturiPublice": 135,
+   "angajatori": 0
   },
   {
    "slug": "contabil",
@@ -225,7 +246,8 @@
    "anunturiCitite": 20,
    "anofm": 46,
    "anofmGrupa": 60,
-   "posturiPublice": 16
+   "posturiPublice": 16,
+   "angajatori": 0
   },
   {
    "slug": "asistent-social",
@@ -235,7 +257,8 @@
    "anunturiCitite": 0,
    "anofm": 11,
    "anofmGrupa": 14,
-   "posturiPublice": 128
+   "posturiPublice": 128,
+   "angajatori": 0
   },
   {
    "slug": "instalator",
@@ -245,7 +268,8 @@
    "anunturiCitite": 13,
    "anofm": 43,
    "anofmGrupa": 78,
-   "posturiPublice": 46
+   "posturiPublice": 46,
+   "angajatori": 0
   },
   {
    "slug": "mecanic-auto",
@@ -255,7 +279,8 @@
    "anunturiCitite": 5,
    "anofm": 109,
    "anofmGrupa": 134,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "curier",
@@ -265,7 +290,8 @@
    "anunturiCitite": 15,
    "anofm": 106,
    "anofmGrupa": 108,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "magaziner",
@@ -275,7 +301,8 @@
    "anunturiCitite": 7,
    "anofm": 13,
    "anofmGrupa": 137,
-   "posturiPublice": 49
+   "posturiPublice": 49,
+   "angajatori": 6
   },
   {
    "slug": "operator-cnc",
@@ -285,7 +312,8 @@
    "anunturiCitite": 7,
    "anofm": 89,
    "anofmGrupa": 137,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "stivuitorist",
@@ -295,7 +323,8 @@
    "anunturiCitite": 3,
    "anofm": 54,
    "anofmGrupa": 57,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "consilier-juridic",
@@ -305,7 +334,8 @@
    "anunturiCitite": 2,
    "anofm": 21,
    "anofmGrupa": 21,
-   "posturiPublice": 74
+   "posturiPublice": 74,
+   "angajatori": 0
   },
   {
    "slug": "inginer",
@@ -315,7 +345,8 @@
    "anunturiCitite": 38,
    "anofm": 0,
    "anofmGrupa": 0,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "profesor-universitar",
@@ -325,7 +356,8 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 0,
-   "posturiPublice": 99
+   "posturiPublice": 99,
+   "angajatori": 0
   },
   {
    "slug": "chelner",
@@ -335,7 +367,8 @@
    "anunturiCitite": 1,
    "anofm": 73,
    "anofmGrupa": 126,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "operator-productie",
@@ -345,7 +378,8 @@
    "anunturiCitite": 2,
    "anofm": 0,
    "anofmGrupa": 0,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "tamplar",
@@ -355,7 +389,8 @@
    "anunturiCitite": 2,
    "anofm": 62,
    "anofmGrupa": 87,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "dulgher",
@@ -365,7 +400,8 @@
    "anunturiCitite": 2,
    "anofm": 58,
    "anofmGrupa": 65,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "casier",
@@ -375,7 +411,8 @@
    "anunturiCitite": 9,
    "anofm": 35,
    "anofmGrupa": 38,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "bibliotecar",
@@ -385,7 +422,8 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 0,
-   "posturiPublice": 60
+   "posturiPublice": 60,
+   "angajatori": 0
   },
   {
    "slug": "asistent-farmacie",
@@ -395,7 +433,8 @@
    "anunturiCitite": 0,
    "anofm": 2,
    "anofmGrupa": 3,
-   "posturiPublice": 55
+   "posturiPublice": 55,
+   "angajatori": 0
   },
   {
    "slug": "secretar",
@@ -405,7 +444,8 @@
    "anunturiCitite": 6,
    "anofm": 20,
    "anofmGrupa": 21,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "programator",
@@ -415,7 +455,8 @@
    "anunturiCitite": 102,
    "anofm": 29,
    "anofmGrupa": 65,
-   "posturiPublice": 17
+   "posturiPublice": 17,
+   "angajatori": 0
   },
   {
    "slug": "fizioterapeut",
@@ -425,7 +466,8 @@
    "anunturiCitite": 1,
    "anofm": 2,
    "anofmGrupa": 23,
-   "posturiPublice": 51
+   "posturiPublice": 51,
+   "angajatori": 0
   },
   {
    "slug": "zidar",
@@ -435,7 +477,8 @@
    "anunturiCitite": 3,
    "anofm": 51,
    "anofmGrupa": 69,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "educator",
@@ -445,7 +488,8 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 5,
-   "posturiPublice": 44
+   "posturiPublice": 44,
+   "angajatori": 0
   },
   {
    "slug": "sofer-autobuz",
@@ -455,7 +499,8 @@
    "anunturiCitite": 0,
    "anofm": 38,
    "anofmGrupa": 40,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "constructor",
@@ -465,7 +510,8 @@
    "anunturiCitite": 13,
    "anofm": 0,
    "anofmGrupa": 0,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "zugrav",
@@ -475,7 +521,8 @@
    "anunturiCitite": 0,
    "anofm": 31,
    "anofmGrupa": 32,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "cofetar",
@@ -485,7 +532,8 @@
    "anunturiCitite": 1,
    "anofm": 18,
    "anofmGrupa": 94,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "electrician-centrala",
@@ -495,7 +543,8 @@
    "anunturiCitite": 0,
    "anofm": 26,
    "anofmGrupa": 110,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "medic-veterinar",
@@ -505,7 +554,8 @@
    "anunturiCitite": 4,
    "anofm": 18,
    "anofmGrupa": 18,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "electromecanic",
@@ -515,7 +565,8 @@
    "anunturiCitite": 5,
    "anofm": 15,
    "anofmGrupa": 21,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "sofer-ambulanta",
@@ -525,7 +576,8 @@
    "anunturiCitite": 0,
    "anofm": 2,
    "anofmGrupa": 167,
-   "posturiPublice": 17
+   "posturiPublice": 17,
+   "angajatori": 0
   },
   {
    "slug": "functionar-public",
@@ -535,7 +587,8 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 0,
-   "posturiPublice": 19
+   "posturiPublice": 19,
+   "angajatori": 0
   },
   {
    "slug": "operator-call-center",
@@ -545,7 +598,8 @@
    "anunturiCitite": 9,
    "anofm": 0,
    "anofmGrupa": 0,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "specialist-resurse-umane",
@@ -555,7 +609,8 @@
    "anunturiCitite": 3,
    "anofm": 9,
    "anofmGrupa": 16,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "faiantar",
@@ -565,7 +620,8 @@
    "anunturiCitite": 0,
    "anofm": 15,
    "anofmGrupa": 22,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "operator-mase-plastice",
@@ -575,7 +631,8 @@
    "anunturiCitite": 0,
    "anofm": 13,
    "anofmGrupa": 28,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "frizer",
@@ -585,7 +642,8 @@
    "anunturiCitite": 1,
    "anofm": 14,
    "anofmGrupa": 24,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "specialist-marketing",
@@ -595,7 +653,8 @@
    "anunturiCitite": 0,
    "anofm": 13,
    "anofmGrupa": 17,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "logistician",
@@ -605,7 +664,8 @@
    "anunturiCitite": 3,
    "anofm": 2,
    "anofmGrupa": 8,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "arhitect",
@@ -615,7 +675,8 @@
    "anunturiCitite": 6,
    "anofm": 11,
    "anofmGrupa": 14,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "tehnician-mentenanta",
@@ -625,7 +686,8 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 0,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "croitor",
@@ -635,7 +697,8 @@
    "anunturiCitite": 0,
    "anofm": 6,
    "anofmGrupa": 39,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "receptioner-hotel",
@@ -645,7 +708,8 @@
    "anunturiCitite": 0,
    "anofm": 10,
    "anofmGrupa": 12,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "manager-magazin",
@@ -655,7 +719,8 @@
    "anunturiCitite": 4,
    "anofm": 0,
    "anofmGrupa": 0,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 22
   },
   {
    "slug": "barman",
@@ -665,7 +730,8 @@
    "anunturiCitite": 0,
    "anofm": 4,
    "anofmGrupa": 46,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "cosmetician",
@@ -675,7 +741,8 @@
    "anunturiCitite": 1,
    "anofm": 3,
    "anofmGrupa": 21,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "ingrijitor-batrani",
@@ -685,7 +752,8 @@
    "anunturiCitite": 1,
    "anofm": 1,
    "anofmGrupa": 8,
-   "posturiPublice": 10
+   "posturiPublice": 10,
+   "angajatori": 0
   },
   {
    "slug": "analist-financiar",
@@ -695,7 +763,8 @@
    "anunturiCitite": 0,
    "anofm": 9,
    "anofmGrupa": 11,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "tapiter",
@@ -705,7 +774,8 @@
    "anunturiCitite": 0,
    "anofm": 8,
    "anofmGrupa": 8,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "inginer-telecomunicatii",
@@ -715,7 +785,8 @@
    "anunturiCitite": 0,
    "anofm": 7,
    "anofmGrupa": 54,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "inginer-auto",
@@ -725,7 +796,8 @@
    "anunturiCitite": 0,
    "anofm": 5,
    "anofmGrupa": 91,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "invatator",
@@ -735,7 +807,8 @@
    "anunturiCitite": 0,
    "anofm": 4,
    "anofmGrupa": 4,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "tipograf",
@@ -745,7 +818,8 @@
    "anunturiCitite": 0,
    "anofm": 4,
    "anofmGrupa": 13,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "stomatolog",
@@ -755,7 +829,8 @@
    "anunturiCitite": 2,
    "anofm": 4,
    "anofmGrupa": 4,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "tehnician-dentar",
@@ -765,7 +840,8 @@
    "anunturiCitite": 0,
    "anofm": 4,
    "anofmGrupa": 5,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "broker",
@@ -775,7 +851,8 @@
    "anunturiCitite": 2,
    "anofm": 0,
    "anofmGrupa": 0,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "inginer-energetician",
@@ -785,7 +862,8 @@
    "anunturiCitite": 1,
    "anofm": 4,
    "anofmGrupa": 72,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "designer-grafic",
@@ -795,7 +873,8 @@
    "anunturiCitite": 2,
    "anofm": 0,
    "anofmGrupa": 4,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "actor",
@@ -805,7 +884,8 @@
    "anunturiCitite": 0,
    "anofm": 4,
    "anofmGrupa": 4,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "tesator",
@@ -815,7 +895,8 @@
    "anunturiCitite": 0,
    "anofm": 4,
    "anofmGrupa": 7,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "tehnician-calculatoare",
@@ -825,7 +906,8 @@
    "anunturiCitite": 0,
    "anofm": 4,
    "anofmGrupa": 17,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "auditor",
@@ -835,7 +917,8 @@
    "anunturiCitite": 3,
    "anofm": 0,
    "anofmGrupa": 17,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "inginer-electronist",
@@ -845,7 +928,8 @@
    "anunturiCitite": 0,
    "anofm": 2,
    "anofmGrupa": 54,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "inginer-petrol",
@@ -855,7 +939,8 @@
    "anunturiCitite": 0,
    "anofm": 3,
    "anofmGrupa": 6,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "operator-salubritate",
@@ -865,7 +950,8 @@
    "anunturiCitite": 0,
    "anofm": 3,
    "anofmGrupa": 7,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "agent-imobiliar",
@@ -875,7 +961,8 @@
    "anunturiCitite": 6,
    "anofm": 2,
    "anofmGrupa": 2,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "operator-epurare",
@@ -885,7 +972,8 @@
    "anunturiCitite": 0,
    "anofm": 2,
    "anofmGrupa": 21,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "consultant-management",
@@ -895,7 +983,8 @@
    "anunturiCitite": 0,
    "anofm": 3,
    "anofmGrupa": 67,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "web-developer",
@@ -905,7 +994,8 @@
    "anunturiCitite": 3,
    "anofm": 2,
    "anofmGrupa": 65,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "profesor",
@@ -915,7 +1005,8 @@
    "anunturiCitite": 0,
    "anofm": 1,
    "anofmGrupa": 3,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "agent-asigurari",
@@ -925,7 +1016,8 @@
    "anunturiCitite": 1,
    "anofm": 2,
    "anofmGrupa": 2,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "consultant-financiar",
@@ -935,7 +1027,8 @@
    "anunturiCitite": 6,
    "anofm": 0,
    "anofmGrupa": 0,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "sondor",
@@ -945,7 +1038,8 @@
    "anunturiCitite": 0,
    "anofm": 2,
    "anofmGrupa": 10,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "administrator-sistem",
@@ -955,7 +1049,8 @@
    "anunturiCitite": 5,
    "anofm": 0,
    "anofmGrupa": 0,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "analist-date",
@@ -965,7 +1060,8 @@
    "anunturiCitite": 11,
    "anofm": 0,
    "anofmGrupa": 0,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "ofiter-credite",
@@ -975,7 +1071,8 @@
    "anunturiCitite": 0,
    "anofm": 1,
    "anofmGrupa": 32,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "avocat",
@@ -985,7 +1082,8 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 21,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "metalurgist",
@@ -995,7 +1093,8 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 0,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "postas",
@@ -1005,7 +1104,8 @@
    "anunturiCitite": 0,
    "anofm": 1,
    "anofmGrupa": 18,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "agent-turism",
@@ -1015,7 +1115,8 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 4,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "jandarm",
@@ -1025,7 +1126,8 @@
    "anunturiCitite": 0,
    "anofm": 1,
    "anofmGrupa": 16,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "pompier",
@@ -1035,7 +1137,8 @@
    "anunturiCitite": 1,
    "anofm": 0,
    "anofmGrupa": 0,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "militar",
@@ -1045,7 +1148,8 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 0,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "editor",
@@ -1055,7 +1159,8 @@
    "anunturiCitite": 2,
    "anofm": 0,
    "anofmGrupa": 0,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "traducator",
@@ -1065,7 +1170,8 @@
    "anunturiCitite": 0,
    "anofm": 1,
    "anofmGrupa": 1,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "administrator-bloc",
@@ -1075,7 +1181,8 @@
    "anunturiCitite": 0,
    "anofm": 1,
    "anofmGrupa": 3,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "sticlar",
@@ -1085,7 +1192,8 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 0,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "cizmar",
@@ -1095,7 +1203,8 @@
    "anunturiCitite": 0,
    "anofm": 1,
    "anofmGrupa": 22,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "bijutier",
@@ -1105,7 +1214,8 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 0,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "constructor-drumuri",
@@ -1115,7 +1225,8 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 0,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "marinar",
@@ -1125,7 +1236,8 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 4,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "tester-qa",
@@ -1135,7 +1247,8 @@
    "anunturiCitite": 13,
    "anofm": 0,
    "anofmGrupa": 17,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "devops-engineer",
@@ -1145,7 +1258,8 @@
    "anunturiCitite": 48,
    "anofm": 0,
    "anofmGrupa": 0,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "farmacist-industrie",
@@ -1155,7 +1269,8 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 0,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "cercetator",
@@ -1165,7 +1280,8 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 0,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "instructor-auto",
@@ -1175,7 +1291,8 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 0,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "notar",
@@ -1185,7 +1302,8 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 0,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "judecator",
@@ -1195,7 +1313,8 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 0,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "procuror",
@@ -1205,7 +1324,8 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 0,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "grefier",
@@ -1215,7 +1335,8 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 1,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "inginer-agronom",
@@ -1225,7 +1346,8 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 17,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "miner",
@@ -1235,7 +1357,8 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 7,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "muncitor-industria-alimentara",
@@ -1245,7 +1368,8 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 0,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "mecanic-locomotiva",
@@ -1255,7 +1379,8 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 0,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "pilot",
@@ -1265,7 +1390,8 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 0,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "insotitor-de-bord",
@@ -1275,7 +1401,8 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 0,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "politist",
@@ -1285,7 +1412,8 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 0,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "jurnalist",
@@ -1295,7 +1423,8 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 0,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "cameraman",
@@ -1305,7 +1434,8 @@
    "anunturiCitite": 1,
    "anofm": 0,
    "anofmGrupa": 19,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "regizor",
@@ -1315,7 +1445,8 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 0,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "muzician",
@@ -1325,7 +1456,8 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 0,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "fermier",
@@ -1335,7 +1467,8 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 1,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "silvicultor",
@@ -1345,7 +1478,8 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 17,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "operator-statie-apa",
@@ -1355,7 +1489,8 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 1,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "antrenor-sportiv",
@@ -1365,7 +1500,8 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 2,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "preot",
@@ -1375,7 +1511,8 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 0,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "operator-chimist",
@@ -1385,7 +1522,8 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 0,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "operator-rafinarie",
@@ -1395,7 +1533,8 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 0,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "inginer-aeronautic",
@@ -1405,7 +1544,8 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 91,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "crupier",
@@ -1415,7 +1555,8 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 0,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   },
   {
    "slug": "pescar",
@@ -1425,7 +1566,8 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 0,
-   "posturiPublice": 0
+   "posturiPublice": 0,
+   "angajatori": 0
   }
  ]
 }
