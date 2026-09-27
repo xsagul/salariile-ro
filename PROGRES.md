@@ -4109,3 +4109,16 @@ ca la `/zile-libere-2026`. Build static și `test:rendered` trec (334 de rute).
 - Tot pe 27 septembrie: imaginea calendarului are 1080 px lățime (aproximativ 1080×1300, aproape de formatul vertical 4:5 de telefon), în loc de 2400×2860.
 - Tot pe 27 septembrie: fraza de sus pe zile lucrătoare e scurtă, ca la zile libere: „În 2026 sunt **250 de zile lucrătoare**: **2.000 de ore** la program de 8 ore pe zi.” Partea „Restul de 115 zile…” a ieșit.
 - Tot pe 27 septembrie: descrierea paginilor de zile libere urmează modelul de la zile lucrătoare (varianta B aleasă de proprietar): „Zile libere <an> în România: sărbătorile legale pe date și zile ale săptămânii, calendarul pe luni și minivacanțele, cu zilele de concediu propuse.”
+
+## 27 septembrie 2026 — Colectarea de anunțuri: prima rulare automată a picat
+
+Rularea de noapte (GitHub Actions, 26 sept. 23:39 UTC) s-a oprit după 30 de secunde. OLX
+răspunde acum cu 403 la `robots.txt` pentru user-agentul colectorului (pentru un browser
+răspunde cu 200), iar inventarul OLX nu prindea eroarea, deci cădea toată rularea. Acum o sursă
+care pică se notează în `state.sources[sursă].events` și celelalte continuă (`census.mjs`).
+Blocajul OLX nu se ocolește: nu schimbăm user-agentul. Test pe o clonă curată, cu 2 minute
+de buget: 720 de anunțuri citite, 284 de observații. OLX și eJobs (429, pauză) au căzut, iar
+celelalte cinci surse au mers.
+
+De decis: `anunturi.mjs` înlocuiește cifrele de pe site abia după o trecere completă prin
+toate cele 7 surse. Cu OLX blocat, condiția nu se mai îndeplinește niciodată.

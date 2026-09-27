@@ -208,7 +208,13 @@ async function crawl(source){
   }
   entry.finishedAt=new Date().toISOString();save();console.log(`${source}: inventory ${ids.length}, pass complete`);
 }
-await Promise.all(selectedSources.map(crawl));
+// O sursă care pică (de ex. robots.txt cu 403 la OLX, 27 sept. 2026) se notează și se sare;
+// până atunci eroarea oprea toată colectarea, cu toate cele șapte surse.
+await Promise.all(selectedSources.map((source)=>crawl(source).catch((e)=>{
+  const entry=state.sources[source]||(state.sources[source]={urls:[],maps:[],events:[]});
+  noteEvent(entry,{stage:'source',error:e.message});save();
+  console.log(`${source}: sursa a picat (${e.message}), celelalte continuă`);
+})));
 state.collectionStoppedAt=new Date().toISOString();
 save();
 const payload=exportRun(state,root);
