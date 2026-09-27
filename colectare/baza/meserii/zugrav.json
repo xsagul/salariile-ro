@@ -4,27 +4,31 @@
  "cor": "713102",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
-  "cuSalariu": 9,
+  "cuSalariu": 10,
   "cuBazaDeclarata": 0,
-  "faraBazaDeclarata": 9,
+  "faraBazaDeclarata": 10,
   "surse": {
    "olx": {
     "n": 5,
-    "procent": 55.6
+    "procent": 50
    },
    "anuntul": {
-    "n": 3,
-    "procent": 33.3
+    "n": 4,
+    "procent": 40
    },
    "publi24": {
     "n": 1,
-    "procent": 11.1
+    "procent": 10
    }
   },
   "colectari": {
    "8 septembrie 2026": {
-    "n": 9,
-    "procent": 100
+    "n": 7,
+    "procent": 70
+   },
+   "continuă": {
+    "n": 3,
+    "procent": 30
    }
   },
   "net": {
@@ -37,45 +41,67 @@
    "n": 0
   },
   "faraBazaDeclarata_valori": {
-   "n": 9
+   "n": 10,
+   "p10": 373,
+   "p25": 5038,
+   "median": 6000,
+   "p75": 6704,
+   "p90": 6895,
+   "min": 350,
+   "max": 7750
   },
   "peOras": {},
   "peJudet": {},
   "peLuna": {
    "2026-08": {
-    "n": 5,
-    "procent": 55.6
+    "n": 4,
+    "procent": 40
+   },
+   "2026-09": {
+    "n": 3,
+    "procent": 30
    },
    "2025-12": {
     "n": 1,
-    "procent": 11.1
+    "procent": 10
    },
    "2026-04": {
     "n": 1,
-    "procent": 11.1
+    "procent": 10
    },
    "2026-05": {
     "n": 1,
-    "procent": 11.1
-   },
-   "2026-07": {
-    "n": 1,
-    "procent": 11.1
+    "procent": 10
    }
   }
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 0,
+  "anunturiCitite": 11,
   "cuSalariu": 0,
   "nivel": {},
-  "experienta": {},
+  "experienta": {
+   "avantaj": {
+    "n": 1,
+    "procent": 9.1
+   }
+  },
   "experientaPortal": {},
-  "studii": {},
+  "studii": {
+   "superioare": {
+    "n": 1,
+    "procent": 9.1
+   }
+  },
   "limbi": {},
   "permis": {},
   "atestate": {},
-  "program": {},
+  "program": {
+   "luni–vineri": {
+    "n": 1,
+    "procent": 9.1
+   }
+  },
   "mod": {},
   "norma": {},
   "durata": {},
@@ -83,10 +109,46 @@
   "tehnologii": {},
   "negociabil": {},
   "strainatate": {},
-  "limbaAnuntului": {},
-  "surse": {},
-  "peJudet": {},
-  "motiveFaraSalariu": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 11,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "anuntul": {
+    "n": 9,
+    "procent": 81.8
+   },
+   "publi24": {
+    "n": 2,
+    "procent": 18.2
+   }
+  },
+  "peJudet": {
+   "bucuresti": {
+    "n": 8,
+    "procent": 72.7
+   },
+   "brasov": {
+    "n": 1,
+    "procent": 9.1
+   },
+   "Bacau": {
+    "n": 1,
+    "procent": 9.1
+   },
+   "Bucuresti": {
+    "n": 1,
+    "procent": 9.1
+   }
+  },
+  "motiveFaraSalariu": {
+   "salary_evidence_incomplete": {
+    "n": 6,
+    "procent": 100
+   }
+  },
   "salariuPeFactor": {}
  },
  "anofm": {

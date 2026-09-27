@@ -42,27 +42,104 @@
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 0,
+  "anunturiCitite": 2,
   "cuSalariu": 0,
   "nivel": {},
-  "experienta": {},
+  "experienta": {
+   "da": {
+    "n": 2,
+    "procent": 100
+   }
+  },
   "experientaPortal": {},
-  "studii": {},
-  "limbi": {},
-  "permis": {},
+  "studii": {
+   "superioare": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "limbi": {
+   "engleza": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "permis": {
+   "B": {
+    "n": 1,
+    "procent": 50
+   }
+  },
   "atestate": {},
   "program": {},
   "mod": {},
   "norma": {},
   "durata": {},
-  "beneficii": {},
-  "tehnologii": {},
+  "beneficii": {
+   "tichete de masă": {
+    "n": 1,
+    "procent": 50
+   },
+   "transport": {
+    "n": 1,
+    "procent": 50
+   },
+   "bonus": {
+    "n": 1,
+    "procent": 50
+   },
+   "prime": {
+    "n": 1,
+    "procent": 50
+   },
+   "asigurare medicală": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "tehnologii": {
+   "PLC": {
+    "n": 1,
+    "procent": 50
+   },
+   "SCADA": {
+    "n": 1,
+    "procent": 50
+   }
+  },
   "negociabil": {},
   "strainatate": {},
-  "limbaAnuntului": {},
-  "surse": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "undelucram": {
+    "n": 1,
+    "procent": 50
+   },
+   "bestjobs": {
+    "n": 1,
+    "procent": 50
+   }
+  },
   "peJudet": {},
-  "motiveFaraSalariu": {},
+  "motiveFaraSalariu": {
+   "salary_evidence_incomplete": {
+    "n": 1,
+    "procent": 50
+   },
+   "foreign_or_noncomparable_work": {
+    "n": 1,
+    "procent": 50
+   },
+   "multiple_unresolved_amounts": {
+    "n": 1,
+    "procent": 50
+   }
+  },
   "salariuPeFactor": {}
  },
  "anofm": {

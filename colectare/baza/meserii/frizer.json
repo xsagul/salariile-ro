@@ -77,15 +77,20 @@
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 1,
+  "anunturiCitite": 4,
   "cuSalariu": 0,
   "nivel": {
    "junior": {
     "n": 1,
-    "procent": 100
+    "procent": 25
    }
   },
-  "experienta": {},
+  "experienta": {
+   "da": {
+    "n": 1,
+    "procent": 25
+   }
+  },
   "experientaPortal": {},
   "studii": {},
   "limbi": {},
@@ -101,30 +106,54 @@
   "strainatate": {},
   "limbaAnuntului": {
    "ro": {
-    "n": 1,
+    "n": 4,
     "procent": 100
    }
   },
   "surse": {
+   "publi24": {
+    "n": 1,
+    "procent": 25
+   },
+   "anuntul": {
+    "n": 1,
+    "procent": 25
+   },
+   "bestjobs": {
+    "n": 1,
+    "procent": 25
+   },
    "ejobs": {
     "n": 1,
-    "procent": 100
+    "procent": 25
    }
   },
   "peJudet": {
    "10": {
     "n": 1,
-    "procent": 100
+    "procent": 25
+   },
+   "Bucuresti": {
+    "n": 1,
+    "procent": 25
+   },
+   "bucuresti": {
+    "n": 1,
+    "procent": 25
    }
   },
   "motiveFaraSalariu": {
+   "salary_evidence_incomplete": {
+    "n": 3,
+    "procent": 75
+   },
    "expired": {
     "n": 1,
-    "procent": 100
+    "procent": 25
    },
    "wide_range_review": {
     "n": 1,
-    "procent": 100
+    "procent": 25
    }
   },
   "salariuPeFactor": {}

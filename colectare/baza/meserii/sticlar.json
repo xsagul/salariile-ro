@@ -46,14 +46,19 @@
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 0,
+  "anunturiCitite": 1,
   "cuSalariu": 0,
   "nivel": {},
   "experienta": {},
   "experientaPortal": {},
   "studii": {},
   "limbi": {},
-  "permis": {},
+  "permis": {
+   "B": {
+    "n": 1,
+    "procent": 100
+   }
+  },
   "atestate": {},
   "program": {},
   "mod": {},
@@ -63,10 +68,30 @@
   "tehnologii": {},
   "negociabil": {},
   "strainatate": {},
-  "limbaAnuntului": {},
-  "surse": {},
-  "peJudet": {},
-  "motiveFaraSalariu": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "publi24": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "peJudet": {
+   "Covasna": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "motiveFaraSalariu": {
+   "salary_evidence_incomplete": {
+    "n": 1,
+    "procent": 100
+   }
+  },
   "salariuPeFactor": {}
  },
  "anofm": {

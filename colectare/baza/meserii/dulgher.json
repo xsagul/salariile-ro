@@ -99,49 +99,193 @@
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 2,
+  "anunturiCitite": 29,
   "cuSalariu": 0,
   "nivel": {},
-  "experienta": {},
+  "experienta": {
+   "da": {
+    "n": 10,
+    "procent": 34.5
+   },
+   "avantaj": {
+    "n": 2,
+    "procent": 6.9
+   }
+  },
   "experientaPortal": {},
   "studii": {},
-  "limbi": {},
+  "limbi": {
+   "germana": {
+    "n": 1,
+    "procent": 3.4
+   },
+   "engleza": {
+    "n": 1,
+    "procent": 3.4
+   }
+  },
   "permis": {},
   "atestate": {},
-  "program": {},
+  "program": {
+   "luni–vineri": {
+    "n": 1,
+    "procent": 3.4
+   }
+  },
   "mod": {},
-  "norma": {},
-  "durata": {},
-  "beneficii": {},
+  "norma": {
+   "full-time": {
+    "n": 2,
+    "procent": 6.9
+   }
+  },
+  "durata": {
+   "nedeterminată": {
+    "n": 1,
+    "procent": 3.4
+   }
+  },
+  "beneficii": {
+   "cazare": {
+    "n": 7,
+    "procent": 24.1
+   },
+   "transport": {
+    "n": 5,
+    "procent": 17.2
+   },
+   "masă": {
+    "n": 2,
+    "procent": 6.9
+   },
+   "tichete de masă": {
+    "n": 1,
+    "procent": 3.4
+   },
+   "bonus": {
+    "n": 1,
+    "procent": 3.4
+   },
+   "asigurare medicală": {
+    "n": 1,
+    "procent": 3.4
+   }
+  },
   "tehnologii": {},
-  "negociabil": {},
+  "negociabil": {
+   "salariu negociabil": {
+    "n": 6,
+    "procent": 20.7
+   }
+  },
   "strainatate": {
    "lucru în străinătate": {
-    "n": 1,
-    "procent": 50
+    "n": 5,
+    "procent": 17.2
    }
   },
   "limbaAnuntului": {
    "ro": {
-    "n": 2,
+    "n": 29,
     "procent": 100
    }
   },
   "surse": {
+   "publi24": {
+    "n": 22,
+    "procent": 75.9
+   },
+   "anuntul": {
+    "n": 3,
+    "procent": 10.3
+   },
+   "bestjobs": {
+    "n": 2,
+    "procent": 6.9
+   },
    "ejobs": {
     "n": 2,
-    "procent": 100
+    "procent": 6.9
    }
   },
-  "peJudet": {},
-  "motiveFaraSalariu": {
-   "country_unconfirmed": {
+  "peJudet": {
+   "Cluj": {
+    "n": 4,
+    "procent": 13.8
+   },
+   "Bucuresti": {
+    "n": 3,
+    "procent": 10.3
+   },
+   "Timis": {
+    "n": 2,
+    "procent": 6.9
+   },
+   "Dolj": {
+    "n": 2,
+    "procent": 6.9
+   },
+   "Iasi": {
+    "n": 2,
+    "procent": 6.9
+   },
+   "Brasov": {
+    "n": 2,
+    "procent": 6.9
+   },
+   "Valcea": {
+    "n": 2,
+    "procent": 6.9
+   },
+   "bucuresti": {
+    "n": 2,
+    "procent": 6.9
+   },
+   "strainatate": {
     "n": 1,
-    "procent": 100
+    "procent": 3.4
+   },
+   "Bacau": {
+    "n": 1,
+    "procent": 3.4
+   },
+   "Ilfov": {
+    "n": 1,
+    "procent": 3.4
+   },
+   "Prahova": {
+    "n": 1,
+    "procent": 3.4
+   },
+   "Sibiu": {
+    "n": 1,
+    "procent": 3.4
+   },
+   "Constanta": {
+    "n": 1,
+    "procent": 3.4
+   }
+  },
+  "motiveFaraSalariu": {
+   "salary_evidence_incomplete": {
+    "n": 22,
+    "procent": 78.6
    },
    "foreign_or_noncomparable_work": {
+    "n": 11,
+    "procent": 39.3
+   },
+   "wide_range_review": {
+    "n": 2,
+    "procent": 7.1
+   },
+   "multiple_unresolved_amounts": {
     "n": 1,
-    "procent": 100
+    "procent": 3.6
+   },
+   "country_unconfirmed": {
+    "n": 1,
+    "procent": 3.6
    }
   },
   "salariuPeFactor": {}

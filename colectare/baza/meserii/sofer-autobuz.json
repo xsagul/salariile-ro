@@ -27,27 +27,81 @@
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 0,
+  "anunturiCitite": 1,
   "cuSalariu": 0,
   "nivel": {},
-  "experienta": {},
+  "experienta": {
+   "1+ ani": {
+    "n": 1,
+    "procent": 100
+   }
+  },
   "experientaPortal": {},
   "studii": {},
-  "limbi": {},
-  "permis": {},
-  "atestate": {},
+  "limbi": {
+   "engleza": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "permis": {
+   "D": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "atestate": {
+   "card tahograf": {
+    "n": 1,
+    "procent": 100
+   }
+  },
   "program": {},
   "mod": {},
-  "norma": {},
+  "norma": {
+   "full-time": {
+    "n": 1,
+    "procent": 100
+   }
+  },
   "durata": {},
-  "beneficii": {},
+  "beneficii": {
+   "bonus": {
+    "n": 1,
+    "procent": 100
+   },
+   "asigurare medicală": {
+    "n": 1,
+    "procent": 100
+   }
+  },
   "tehnologii": {},
   "negociabil": {},
-  "strainatate": {},
-  "limbaAnuntului": {},
-  "surse": {},
+  "strainatate": {
+   "lucru în străinătate": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "limbaAnuntului": {
+   "ro": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "bestjobs": {
+    "n": 1,
+    "procent": 100
+   }
+  },
   "peJudet": {},
-  "motiveFaraSalariu": {},
+  "motiveFaraSalariu": {
+   "foreign_or_noncomparable_work": {
+    "n": 1,
+    "procent": 100
+   }
+  },
   "salariuPeFactor": {}
  },
  "anofm": {

@@ -4,31 +4,35 @@
  "cor": "732207",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
-  "cuSalariu": 5,
+  "cuSalariu": 6,
   "cuBazaDeclarata": 1,
-  "faraBazaDeclarata": 4,
+  "faraBazaDeclarata": 5,
   "surse": {
+   "bestjobs": {
+    "n": 2,
+    "procent": 33.3
+   },
    "olx": {
     "n": 2,
-    "procent": 40
+    "procent": 33.3
    },
    "anuntul": {
     "n": 1,
-    "procent": 20
+    "procent": 16.7
    },
    "publi24": {
     "n": 1,
-    "procent": 20
-   },
-   "bestjobs": {
-    "n": 1,
-    "procent": 20
+    "procent": 16.7
    }
   },
   "colectari": {
    "8 septembrie 2026": {
     "n": 5,
-    "procent": 100
+    "procent": 83.3
+   },
+   "continuă": {
+    "n": 1,
+    "procent": 16.7
    }
   },
   "net": {
@@ -41,48 +45,159 @@
    "n": 1
   },
   "faraBazaDeclarata_valori": {
-   "n": 4
+   "n": 5
   },
   "peOras": {},
   "peJudet": {},
   "peLuna": {
+   "2026-09": {
+    "n": 3,
+    "procent": 50
+   },
    "2026-08": {
     "n": 2,
-    "procent": 40
-   },
-   "2026-09": {
-    "n": 2,
-    "procent": 40
+    "procent": 33.3
    },
    "2026-04": {
     "n": 1,
-    "procent": 20
+    "procent": 16.7
    }
   }
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 0,
+  "anunturiCitite": 6,
   "cuSalariu": 0,
   "nivel": {},
-  "experienta": {},
+  "experienta": {
+   "da": {
+    "n": 2,
+    "procent": 33.3
+   },
+   "fara": {
+    "n": 1,
+    "procent": 16.7
+   },
+   "1+ ani": {
+    "n": 1,
+    "procent": 16.7
+   },
+   "avantaj": {
+    "n": 1,
+    "procent": 16.7
+   },
+   "2+ ani": {
+    "n": 1,
+    "procent": 16.7
+   }
+  },
   "experientaPortal": {},
-  "studii": {},
+  "studii": {
+   "medii": {
+    "n": 1,
+    "procent": 16.7
+   }
+  },
   "limbi": {},
   "permis": {},
   "atestate": {},
-  "program": {},
+  "program": {
+   "ture": {
+    "n": 2,
+    "procent": 33.3
+   },
+   "luni–vineri": {
+    "n": 2,
+    "procent": 33.3
+   }
+  },
   "mod": {},
-  "norma": {},
-  "durata": {},
-  "beneficii": {},
-  "tehnologii": {},
+  "norma": {
+   "full-time": {
+    "n": 1,
+    "procent": 16.7
+   }
+  },
+  "durata": {
+   "nedeterminată": {
+    "n": 1,
+    "procent": 16.7
+   }
+  },
+  "beneficii": {
+   "bonus": {
+    "n": 2,
+    "procent": 33.3
+   },
+   "prime": {
+    "n": 2,
+    "procent": 33.3
+   },
+   "tichete de masă": {
+    "n": 1,
+    "procent": 16.7
+   },
+   "telefon / laptop": {
+    "n": 1,
+    "procent": 16.7
+   }
+  },
+  "tehnologii": {
+   "CNC": {
+    "n": 2,
+    "procent": 33.3
+   },
+   "Excel": {
+    "n": 1,
+    "procent": 16.7
+   },
+   "AutoCAD": {
+    "n": 1,
+    "procent": 16.7
+   }
+  },
   "negociabil": {},
   "strainatate": {},
-  "limbaAnuntului": {},
-  "surse": {},
-  "peJudet": {},
-  "motiveFaraSalariu": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 5,
+    "procent": 83.3
+   },
+   "en": {
+    "n": 1,
+    "procent": 16.7
+   }
+  },
+  "surse": {
+   "bestjobs": {
+    "n": 4,
+    "procent": 66.7
+   },
+   "anuntul": {
+    "n": 2,
+    "procent": 33.3
+   }
+  },
+  "peJudet": {
+   "ilfov": {
+    "n": 1,
+    "procent": 16.7
+   },
+   "bucuresti": {
+    "n": 1,
+    "procent": 16.7
+   }
+  },
+  "motiveFaraSalariu": {
+   "salary_evidence_incomplete": {
+    "n": 3,
+    "procent": 60
+   },
+   "foreign_or_noncomparable_work": {
+    "n": 2,
+    "procent": 40
+   }
+  },
   "salariuPeFactor": {}
  },
  "anofm": {

@@ -42,27 +42,103 @@
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 0,
+  "anunturiCitite": 4,
   "cuSalariu": 0,
-  "nivel": {},
-  "experienta": {},
-  "experientaPortal": {},
-  "studii": {},
+  "nivel": {
+   "senior": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "experienta": {
+   "avantaj": {
+    "n": 2,
+    "procent": 50
+   },
+   "2+ ani": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "experientaPortal": {
+   "1–5 ani": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "studii": {
+   "superioare": {
+    "n": 2,
+    "procent": 50
+   }
+  },
   "limbi": {},
   "permis": {},
   "atestate": {},
   "program": {},
-  "mod": {},
+  "mod": {
+   "hibrid": {
+    "n": 1,
+    "procent": 25
+   }
+  },
   "norma": {},
-  "durata": {},
-  "beneficii": {},
-  "tehnologii": {},
+  "durata": {
+   "nedeterminată": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "beneficii": {
+   "asigurare medicală": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "tehnologii": {
+   "Excel": {
+    "n": 3,
+    "procent": 75
+   }
+  },
   "negociabil": {},
   "strainatate": {},
-  "limbaAnuntului": {},
-  "surse": {},
-  "peJudet": {},
-  "motiveFaraSalariu": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 3,
+    "procent": 75
+   },
+   "en": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "surse": {
+   "bestjobs": {
+    "n": 2,
+    "procent": 50
+   },
+   "undelucram": {
+    "n": 1,
+    "procent": 25
+   },
+   "hipo": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "peJudet": {
+   "RO": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "motiveFaraSalariu": {
+   "salary_evidence_incomplete": {
+    "n": 4,
+    "procent": 100
+   }
+  },
   "salariuPeFactor": {}
  },
  "anofm": {

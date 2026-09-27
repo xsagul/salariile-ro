@@ -4,35 +4,35 @@
  "cor": "225002",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
-  "cuSalariu": 12,
+  "cuSalariu": 16,
   "cuBazaDeclarata": 5,
-  "faraBazaDeclarata": 7,
+  "faraBazaDeclarata": 11,
   "surse": {
    "ejobs": {
     "n": 7,
-    "procent": 58.3
+    "procent": 43.8
    },
    "bestjobs": {
-    "n": 3,
-    "procent": 25
+    "n": 7,
+    "procent": 43.8
    },
    "publi24": {
     "n": 1,
-    "procent": 8.3
+    "procent": 6.3
    },
    "anuntul": {
     "n": 1,
-    "procent": 8.3
+    "procent": 6.3
    }
   },
   "colectari": {
-   "8 septembrie 2026": {
-    "n": 9,
-    "procent": 75
-   },
    "continuă": {
-    "n": 3,
-    "procent": 25
+    "n": 8,
+    "procent": 50
+   },
+   "8 septembrie 2026": {
+    "n": 8,
+    "procent": 50
    }
   },
   "net": {
@@ -45,77 +45,195 @@
    "n": 5
   },
   "faraBazaDeclarata_valori": {
-   "n": 7
+   "n": 11,
+   "p10": 4250,
+   "p25": 4875,
+   "median": 6000,
+   "p75": 7033,
+   "p90": 7915,
+   "min": 1609,
+   "max": 7915
   },
-  "peOras": {},
+  "peOras": {
+   "Strada Brânduşelor 66": {
+    "n": 1
+   }
+  },
   "peJudet": {},
   "peLuna": {
    "2026-09": {
-    "n": 8,
-    "procent": 66.7
+    "n": 12,
+    "procent": 75
    },
    "2026-08": {
     "n": 4,
-    "procent": 33.3
+    "procent": 25
    }
   }
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 4,
-  "cuSalariu": 0,
+  "anunturiCitite": 17,
+  "cuSalariu": 1,
   "nivel": {},
-  "experienta": {},
+  "experienta": {
+   "da": {
+    "n": 2,
+    "procent": 11.8
+   },
+   "1+ ani": {
+    "n": 1,
+    "procent": 5.9
+   }
+  },
   "experientaPortal": {},
-  "studii": {},
-  "limbi": {},
-  "permis": {},
+  "studii": {
+   "superioare": {
+    "n": 2,
+    "procent": 11.8
+   }
+  },
+  "limbi": {
+   "engleza": {
+    "n": 3,
+    "procent": 17.6
+   },
+   "germana": {
+    "n": 1,
+    "procent": 5.9
+   }
+  },
+  "permis": {
+   "B": {
+    "n": 3,
+    "procent": 17.6
+   }
+  },
   "atestate": {},
-  "program": {},
+  "program": {
+   "weekend": {
+    "n": 1,
+    "procent": 5.9
+   }
+  },
   "mod": {},
   "norma": {},
   "durata": {},
-  "beneficii": {},
+  "beneficii": {
+   "bonus": {
+    "n": 5,
+    "procent": 29.4
+   },
+   "cursuri / training": {
+    "n": 5,
+    "procent": 29.4
+   },
+   "asigurare medicală": {
+    "n": 2,
+    "procent": 11.8
+   },
+   "tichete de masă": {
+    "n": 2,
+    "procent": 11.8
+   },
+   "prime": {
+    "n": 1,
+    "procent": 5.9
+   }
+  },
   "tehnologii": {},
   "negociabil": {},
   "strainatate": {},
   "limbaAnuntului": {
    "ro": {
-    "n": 4,
+    "n": 17,
     "procent": 100
    }
   },
   "surse": {
+   "bestjobs": {
+    "n": 8,
+    "procent": 47.1
+   },
+   "undelucram": {
+    "n": 5,
+    "procent": 29.4
+   },
    "ejobs": {
     "n": 4,
-    "procent": 100
+    "procent": 23.5
    }
   },
   "peJudet": {
    "2": {
     "n": 1,
-    "procent": 25
+    "procent": 5.9
    },
    "24": {
     "n": 1,
-    "procent": 25
+    "procent": 5.9
    },
    "36": {
     "n": 1,
-    "procent": 25
+    "procent": 5.9
    },
    "38": {
     "n": 1,
-    "procent": 25
+    "procent": 5.9
    }
   },
   "motiveFaraSalariu": {
+   "salary_evidence_incomplete": {
+    "n": 7,
+    "procent": 77.8
+   },
+   "foreign_or_noncomparable_work": {
+    "n": 1,
+    "procent": 11.1
+   },
+   "expired": {
+    "n": 1,
+    "procent": 11.1
+   },
    "full_time_unconfirmed": {
     "n": 1,
-    "procent": 100
+    "procent": 11.1
    }
   },
-  "salariuPeFactor": {}
+  "salariuPeFactor": {
+   "experienta": {
+    "1+ ani": {
+     "n": 1
+    }
+   },
+   "studii": {
+    "superioare": {
+     "n": 1
+    }
+   },
+   "program": {
+    "weekend": {
+     "n": 1
+    }
+   },
+   "beneficii": {
+    "tichete de masă": {
+     "n": 1
+    },
+    "bonus": {
+     "n": 1
+    },
+    "prime": {
+     "n": 1
+    },
+    "asigurare medicală": {
+     "n": 1
+    },
+    "cursuri / training": {
+     "n": 1
+    }
+   }
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",

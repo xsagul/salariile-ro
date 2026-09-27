@@ -4,23 +4,27 @@
  "cor": "234101",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
-  "cuSalariu": 3,
+  "cuSalariu": 4,
   "cuBazaDeclarata": 1,
-  "faraBazaDeclarata": 2,
+  "faraBazaDeclarata": 3,
   "surse": {
    "bestjobs": {
-    "n": 2,
-    "procent": 66.7
+    "n": 3,
+    "procent": 75
    },
    "ejobs": {
     "n": 1,
-    "procent": 33.3
+    "procent": 25
    }
   },
   "colectari": {
+   "continuă": {
+    "n": 2,
+    "procent": 50
+   },
    "8 septembrie 2026": {
-    "n": 3,
-    "procent": 100
+    "n": 2,
+    "procent": 50
    }
   },
   "net": {
@@ -33,40 +37,111 @@
    "n": 1
   },
   "faraBazaDeclarata_valori": {
-   "n": 2
+   "n": 3
   },
   "peOras": {},
   "peJudet": {},
   "peLuna": {
    "2026-09": {
-    "n": 3,
+    "n": 4,
     "procent": 100
    }
   }
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 0,
+  "anunturiCitite": 4,
   "cuSalariu": 0,
   "nivel": {},
-  "experienta": {},
+  "experienta": {
+   "da": {
+    "n": 1,
+    "procent": 25
+   }
+  },
   "experientaPortal": {},
-  "studii": {},
-  "limbi": {},
-  "permis": {},
+  "studii": {
+   "medii": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "limbi": {
+   "engleza": {
+    "n": 2,
+    "procent": 50
+   }
+  },
+  "permis": {
+   "B": {
+    "n": 1,
+    "procent": 25
+   }
+  },
   "atestate": {},
-  "program": {},
+  "program": {
+   "luni–vineri": {
+    "n": 1,
+    "procent": 25
+   }
+  },
   "mod": {},
-  "norma": {},
+  "norma": {
+   "full-time": {
+    "n": 1,
+    "procent": 25
+   }
+  },
   "durata": {},
-  "beneficii": {},
+  "beneficii": {
+   "bonus": {
+    "n": 1,
+    "procent": 25
+   },
+   "cursuri / training": {
+    "n": 1,
+    "procent": 25
+   },
+   "masă": {
+    "n": 1,
+    "procent": 25
+   },
+   "asigurare medicală": {
+    "n": 1,
+    "procent": 25
+   }
+  },
   "tehnologii": {},
   "negociabil": {},
   "strainatate": {},
-  "limbaAnuntului": {},
-  "surse": {},
-  "peJudet": {},
-  "motiveFaraSalariu": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 4,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "bestjobs": {
+    "n": 3,
+    "procent": 75
+   },
+   "anuntul": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "peJudet": {
+   "bucuresti": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "motiveFaraSalariu": {
+   "salary_evidence_incomplete": {
+    "n": 2,
+    "procent": 100
+   }
+  },
   "salariuPeFactor": {}
  },
  "anofm": {

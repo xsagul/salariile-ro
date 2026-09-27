@@ -50,27 +50,83 @@
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 0,
+  "anunturiCitite": 5,
   "cuSalariu": 0,
   "nivel": {},
-  "experienta": {},
+  "experienta": {
+   "2+ ani": {
+    "n": 2,
+    "procent": 40
+   }
+  },
   "experientaPortal": {},
   "studii": {},
   "limbi": {},
   "permis": {},
   "atestate": {},
-  "program": {},
+  "program": {
+   "luni–vineri": {
+    "n": 1,
+    "procent": 20
+   }
+  },
   "mod": {},
   "norma": {},
   "durata": {},
-  "beneficii": {},
+  "beneficii": {
+   "cazare": {
+    "n": 2,
+    "procent": 40
+   }
+  },
   "tehnologii": {},
   "negociabil": {},
-  "strainatate": {},
-  "limbaAnuntului": {},
-  "surse": {},
-  "peJudet": {},
-  "motiveFaraSalariu": {},
+  "strainatate": {
+   "lucru în străinătate": {
+    "n": 2,
+    "procent": 40
+   }
+  },
+  "limbaAnuntului": {
+   "ro": {
+    "n": 5,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "anuntul": {
+    "n": 2,
+    "procent": 40
+   },
+   "bestjobs": {
+    "n": 2,
+    "procent": 40
+   },
+   "publi24": {
+    "n": 1,
+    "procent": 20
+   }
+  },
+  "peJudet": {
+   "bucuresti": {
+    "n": 2,
+    "procent": 40
+   },
+   "Constanta": {
+    "n": 1,
+    "procent": 20
+   }
+  },
+  "motiveFaraSalariu": {
+   "salary_evidence_incomplete": {
+    "n": 3,
+    "procent": 60
+   },
+   "foreign_or_noncomparable_work": {
+    "n": 2,
+    "procent": 40
+   }
+  },
   "salariuPeFactor": {}
  },
  "anofm": {

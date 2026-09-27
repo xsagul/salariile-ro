@@ -39,6 +39,8 @@ eq(a("Permis cat. C+E și atestat CPC").permis, ["CE"], "C+E");
 eq(a("Posesor permis de conducere").permis, ["da"], "permis fără categorie");
 ok(a("Permis cat. C+E și atestat CPC").atestate.includes("atestat transport (CPC)"), "atestat CPC");
 ok(a("Electrician autorizat ANRE").atestate.includes("ANRE"), "ANRE");
+eq(a("Certificare ANRE (grad IIB) constituie un avantaj.").atestate, ["ANRE (avantaj)"], "ANRE ca avantaj, nu cerință");
+eq(a("Autorizare ANRE obligatorie. Experiența constituie un avantaj.").atestate, ["ANRE"], "avantajul din propoziția următoare nu e al atestatului");
 // Program și mod
 ok(a("Program în ture, inclusiv tura de noapte").program.includes("ture"), "ture");
 ok(a("Program în ture, inclusiv tura de noapte").program.includes("noapte"), "noapte");

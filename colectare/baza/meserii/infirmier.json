@@ -4,27 +4,31 @@
  "cor": "532103",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
-  "cuSalariu": 13,
+  "cuSalariu": 15,
   "cuBazaDeclarata": 3,
-  "faraBazaDeclarata": 10,
+  "faraBazaDeclarata": 12,
   "surse": {
+   "anuntul": {
+    "n": 6,
+    "procent": 40
+   },
    "publi24": {
     "n": 6,
-    "procent": 46.2
-   },
-   "anuntul": {
-    "n": 4,
-    "procent": 30.8
+    "procent": 40
    },
    "olx": {
     "n": 3,
-    "procent": 23.1
+    "procent": 20
    }
   },
   "colectari": {
    "8 septembrie 2026": {
-    "n": 13,
-    "procent": 100
+    "n": 9,
+    "procent": 60
+   },
+   "continuă": {
+    "n": 6,
+    "procent": 40
    }
   },
   "net": {
@@ -37,71 +41,200 @@
    "n": 3
   },
   "faraBazaDeclarata_valori": {
-   "n": 10,
-   "p10": 3975,
-   "p25": 4013,
-   "median": 4225,
-   "p75": 4638,
-   "p90": 4825,
-   "min": 3750,
+   "n": 12,
+   "p10": 3775,
+   "p25": 4000,
+   "median": 4100,
+   "p75": 4413,
+   "p90": 4750,
+   "min": 3500,
    "max": 5500
   },
-  "peOras": {},
-  "peJudet": {},
+  "peOras": {
+   "Busteni": {
+    "n": 1
+   }
+  },
+  "peJudet": {
+   "Prahova": {
+    "n": 1
+   }
+  },
   "peLuna": {
    "2026-09": {
-    "n": 7,
-    "procent": 53.8
+    "n": 10,
+    "procent": 66.7
    },
    "2026-08": {
-    "n": 5,
-    "procent": 38.5
+    "n": 4,
+    "procent": 26.7
    },
    "2026-04": {
     "n": 1,
-    "procent": 7.7
+    "procent": 6.7
    }
   }
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 1,
-  "cuSalariu": 0,
+  "anunturiCitite": 19,
+  "cuSalariu": 1,
   "nivel": {},
-  "experienta": {},
-  "experientaPortal": {},
-  "studii": {},
+  "experienta": {
+   "da": {
+    "n": 3,
+    "procent": 15.8
+   },
+   "fara": {
+    "n": 3,
+    "procent": 15.8
+   },
+   "avantaj": {
+    "n": 3,
+    "procent": 15.8
+   }
+  },
+  "experientaPortal": {
+   "1–5 ani": {
+    "n": 1,
+    "procent": 5.3
+   }
+  },
+  "studii": {
+   "medii": {
+    "n": 2,
+    "procent": 10.5
+   },
+   "postliceale": {
+    "n": 1,
+    "procent": 5.3
+   }
+  },
   "limbi": {},
   "permis": {},
   "atestate": {},
-  "program": {},
+  "program": {
+   "ture": {
+    "n": 5,
+    "procent": 26.3
+   },
+   "weekend": {
+    "n": 1,
+    "procent": 5.3
+   }
+  },
   "mod": {},
-  "norma": {},
+  "norma": {
+   "full-time": {
+    "n": 3,
+    "procent": 15.8
+   }
+  },
   "durata": {},
-  "beneficii": {},
+  "beneficii": {
+   "tichete de masă": {
+    "n": 3,
+    "procent": 15.8
+   },
+   "transport": {
+    "n": 2,
+    "procent": 10.5
+   },
+   "masă": {
+    "n": 2,
+    "procent": 10.5
+   },
+   "cazare": {
+    "n": 2,
+    "procent": 10.5
+   },
+   "cursuri / training": {
+    "n": 2,
+    "procent": 10.5
+   }
+  },
   "tehnologii": {},
   "negociabil": {},
   "strainatate": {},
   "limbaAnuntului": {
    "ro": {
-    "n": 1,
+    "n": 19,
     "procent": 100
    }
   },
   "surse": {
+   "anuntul": {
+    "n": 11,
+    "procent": 57.9
+   },
+   "bestjobs": {
+    "n": 4,
+    "procent": 21.1
+   },
+   "publi24": {
+    "n": 2,
+    "procent": 10.5
+   },
+   "hipo": {
+    "n": 1,
+    "procent": 5.3
+   },
    "ejobs": {
     "n": 1,
-    "procent": 100
+    "procent": 5.3
    }
   },
-  "peJudet": {},
+  "peJudet": {
+   "ilfov": {
+    "n": 6,
+    "procent": 31.6
+   },
+   "bucuresti": {
+    "n": 4,
+    "procent": 21.1
+   },
+   "Buzau": {
+    "n": 1,
+    "procent": 5.3
+   },
+   "Prahova": {
+    "n": 1,
+    "procent": 5.3
+   },
+   "dambovita": {
+    "n": 1,
+    "procent": 5.3
+   },
+   "RO": {
+    "n": 1,
+    "procent": 5.3
+   }
+  },
   "motiveFaraSalariu": {
+   "salary_evidence_incomplete": {
+    "n": 12,
+    "procent": 92.3
+   },
    "country_unconfirmed": {
     "n": 1,
-    "procent": 100
+    "procent": 7.7
    }
   },
-  "salariuPeFactor": {}
+  "salariuPeFactor": {
+   "experienta": {
+    "da": {
+     "n": 1
+    }
+   },
+   "beneficii": {
+    "transport": {
+     "n": 1
+    },
+    "masă": {
+     "n": 1
+    }
+   }
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",

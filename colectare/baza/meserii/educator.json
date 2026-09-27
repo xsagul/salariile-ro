@@ -8,11 +8,11 @@
   "cuBazaDeclarata": 2,
   "faraBazaDeclarata": 3,
   "surse": {
-   "ejobs": {
+   "bestjobs": {
     "n": 2,
     "procent": 40
    },
-   "bestjobs": {
+   "ejobs": {
     "n": 2,
     "procent": 40
    },
@@ -23,8 +23,12 @@
   },
   "colectari": {
    "8 septembrie 2026": {
-    "n": 5,
-    "procent": 100
+    "n": 4,
+    "procent": 80
+   },
+   "continuă": {
+    "n": 1,
+    "procent": 20
    }
   },
   "net": {
@@ -54,27 +58,90 @@
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 0,
+  "anunturiCitite": 4,
   "cuSalariu": 0,
   "nivel": {},
   "experienta": {},
   "experientaPortal": {},
-  "studii": {},
-  "limbi": {},
-  "permis": {},
+  "studii": {
+   "medii": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "limbi": {
+   "engleza": {
+    "n": 2,
+    "procent": 50
+   }
+  },
+  "permis": {
+   "B": {
+    "n": 1,
+    "procent": 25
+   }
+  },
   "atestate": {},
-  "program": {},
+  "program": {
+   "luni–vineri": {
+    "n": 1,
+    "procent": 25
+   }
+  },
   "mod": {},
-  "norma": {},
-  "durata": {},
-  "beneficii": {},
+  "norma": {
+   "full-time": {
+    "n": 2,
+    "procent": 50
+   }
+  },
+  "durata": {
+   "nedeterminată": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "beneficii": {
+   "bonus": {
+    "n": 1,
+    "procent": 25
+   },
+   "cursuri / training": {
+    "n": 1,
+    "procent": 25
+   }
+  },
   "tehnologii": {},
   "negociabil": {},
   "strainatate": {},
-  "limbaAnuntului": {},
-  "surse": {},
-  "peJudet": {},
-  "motiveFaraSalariu": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 4,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "bestjobs": {
+    "n": 3,
+    "procent": 75
+   },
+   "anuntul": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "peJudet": {
+   "bucuresti": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "motiveFaraSalariu": {
+   "salary_evidence_incomplete": {
+    "n": 1,
+    "procent": 100
+   }
+  },
   "salariuPeFactor": {}
  },
  "anofm": {

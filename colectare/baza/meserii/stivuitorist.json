@@ -4,103 +4,117 @@
  "cor": "834403",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
-  "cuSalariu": 81,
-  "cuBazaDeclarata": 49,
-  "faraBazaDeclarata": 32,
+  "cuSalariu": 84,
+  "cuBazaDeclarata": 50,
+  "faraBazaDeclarata": 34,
   "surse": {
    "olx": {
     "n": 42,
-    "procent": 51.9
+    "procent": 50
    },
    "ejobs": {
     "n": 18,
-    "procent": 22.2
+    "procent": 21.4
    },
    "publi24": {
     "n": 16,
-    "procent": 19.8
+    "procent": 19
    },
    "bestjobs": {
-    "n": 4,
-    "procent": 4.9
+    "n": 6,
+    "procent": 7.1
    },
    "anuntul": {
-    "n": 1,
-    "procent": 1.2
+    "n": 2,
+    "procent": 2.4
    }
   },
   "colectari": {
    "8 septembrie 2026": {
-    "n": 80,
-    "procent": 98.8
+    "n": 78,
+    "procent": 92.9
    },
    "continuă": {
-    "n": 1,
-    "procent": 1.2
+    "n": 6,
+    "procent": 7.1
    }
   },
   "net": {
-   "n": 49,
+   "n": 50,
    "p10": 3285,
-   "p25": 3439,
+   "p25": 3454,
    "median": 3700,
    "p75": 4000,
-   "p90": 4540,
+   "p90": 4520,
    "min": 2980,
    "max": 6725
   },
   "netMinimOferit": {
-   "n": 49,
+   "n": 50,
    "p10": 3200,
-   "p25": 3300,
+   "p25": 3302,
    "median": 3600,
-   "p75": 3950,
-   "p90": 4540,
+   "p75": 3987,
+   "p90": 4520,
    "min": 2980,
    "max": 5530
   },
   "netMaximOferit": {
-   "n": 49,
+   "n": 50,
    "p10": 3285,
    "p25": 3500,
-   "median": 3800,
+   "median": 3850,
    "p75": 4000,
-   "p90": 4540,
+   "p90": 4520,
    "min": 2980,
    "max": 7920
   },
   "faraBazaDeclarata_valori": {
-   "n": 32,
-   "p10": 3410,
-   "p25": 3732,
-   "median": 4325,
-   "p75": 4663,
+   "n": 34,
+   "p10": 3409,
+   "p25": 3681,
+   "median": 4175,
+   "p75": 4590,
    "p90": 5000,
    "min": 2700,
    "max": 5777
   },
-  "peOras": {},
-  "peJudet": {},
+  "peOras": {
+   "dragomiresti-vale": {
+    "n": 1
+   },
+   "ploiesti": {
+    "n": 1
+   }
+  },
+  "peJudet": {
+   "ilfov": {
+    "n": 1
+   },
+   "prahova": {
+    "n": 1
+   }
+  },
   "peLuna": {
    "2026-09": {
-    "n": 38,
-    "procent": 46.9
+    "n": 41,
+    "procent": 48.8
    },
    "2026-08": {
     "n": 26,
-    "procent": 32.1
+    "procent": 31
    },
    "2026-06": {
     "n": 5,
-    "procent": 6.2
+    "procent": 6
    },
    "2026-04": {
     "n": 3,
-    "procent": 3.7
+    "procent": 3.6
    },
    "2026-07": {
     "n": 2,
-    "procent": 2.5
+    "procent": 2.4
    },
    "2026-01": {
     "n": 1,
@@ -134,98 +148,359 @@
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 3,
-  "cuSalariu": 0,
-  "nivel": {},
+  "anunturiCitite": 45,
+  "cuSalariu": 3,
+  "nivel": {
+   "stagiar": {
+    "n": 1,
+    "procent": 2.2
+   },
+   "lead": {
+    "n": 1,
+    "procent": 2.2
+   }
+  },
   "experienta": {
+   "da": {
+    "n": 15,
+    "procent": 33.3
+   },
    "avantaj": {
-    "n": 2,
-    "procent": 66.7
+    "n": 8,
+    "procent": 17.8
+   },
+   "1+ ani": {
+    "n": 5,
+    "procent": 11.1
+   },
+   "2+ ani": {
+    "n": 4,
+    "procent": 8.9
+   },
+   "fara": {
+    "n": 1,
+    "procent": 2.2
    }
   },
   "experientaPortal": {
    "1–5 ani": {
-    "n": 2,
-    "procent": 66.7
+    "n": 4,
+    "procent": 8.9
+   },
+   "0–1 an": {
+    "n": 1,
+    "procent": 2.2
    }
   },
-  "studii": {},
-  "limbi": {},
-  "permis": {},
-  "atestate": {
-   "ISCIR": {
+  "studii": {
+   "medii": {
+    "n": 14,
+    "procent": 31.1
+   },
+   "generale": {
+    "n": 3,
+    "procent": 6.7
+   },
+   "profesionale": {
     "n": 1,
-    "procent": 33.3
+    "procent": 2.2
+   }
+  },
+  "limbi": {
+   "engleza": {
+    "n": 1,
+    "procent": 2.2
+   },
+   "spaniola": {
+    "n": 1,
+    "procent": 2.2
+   }
+  },
+  "permis": {
+   "B": {
+    "n": 2,
+    "procent": 4.4
+   },
+   "da": {
+    "n": 1,
+    "procent": 2.2
+   }
+  },
+  "atestate": {
+   "autorizare stivuitorist": {
+    "n": 27,
+    "procent": 60
+   },
+   "ISCIR": {
+    "n": 24,
+    "procent": 53.3
    },
    "autorizare sudor": {
-    "n": 1,
-    "procent": 33.3
+    "n": 17,
+    "procent": 37.8
    },
-   "autorizare stivuitorist": {
+   "autorizare stivuitorist (avantaj)": {
+    "n": 2,
+    "procent": 4.4
+   },
+   "ISCIR (avantaj)": {
     "n": 1,
-    "procent": 33.3
+    "procent": 2.2
+   },
+   "autorizare sudor (avantaj)": {
+    "n": 1,
+    "procent": 2.2
    }
   },
   "program": {
    "ture": {
+    "n": 16,
+    "procent": 35.6
+   },
+   "luni–vineri": {
+    "n": 6,
+    "procent": 13.3
+   },
+   "weekend": {
     "n": 1,
-    "procent": 33.3
+    "procent": 2.2
+   },
+   "noapte": {
+    "n": 1,
+    "procent": 2.2
+   },
+   "12/24": {
+    "n": 1,
+    "procent": 2.2
    }
   },
   "mod": {},
-  "norma": {},
-  "durata": {},
+  "norma": {
+   "full-time": {
+    "n": 1,
+    "procent": 2.2
+   }
+  },
+  "durata": {
+   "nedeterminată": {
+    "n": 8,
+    "procent": 17.8
+   }
+  },
   "beneficii": {
    "tichete de masă": {
-    "n": 1,
-    "procent": 33.3
+    "n": 19,
+    "procent": 42.2
+   },
+   "bonus": {
+    "n": 8,
+    "procent": 17.8
+   },
+   "asigurare medicală": {
+    "n": 8,
+    "procent": 17.8
+   },
+   "transport": {
+    "n": 7,
+    "procent": 15.6
    },
    "cursuri / training": {
+    "n": 6,
+    "procent": 13.3
+   },
+   "prime": {
+    "n": 5,
+    "procent": 11.1
+   },
+   "spor": {
+    "n": 5,
+    "procent": 11.1
+   },
+   "ore suplimentare plătite": {
+    "n": 4,
+    "procent": 8.9
+   },
+   "masă": {
     "n": 1,
-    "procent": 33.3
+    "procent": 2.2
+   },
+   "echipament de lucru": {
+    "n": 1,
+    "procent": 2.2
+   },
+   "cazare": {
+    "n": 1,
+    "procent": 2.2
+   },
+   "vouchere de vacanță": {
+    "n": 1,
+    "procent": 2.2
+   },
+   "telefon / laptop": {
+    "n": 1,
+    "procent": 2.2
    }
   },
   "tehnologii": {
    "SAP": {
+    "n": 5,
+    "procent": 11.1
+   },
+   "SCADA": {
     "n": 1,
-    "procent": 33.3
+    "procent": 2.2
+   },
+   "Excel": {
+    "n": 1,
+    "procent": 2.2
    }
   },
-  "negociabil": {},
+  "negociabil": {
+   "salariu negociabil": {
+    "n": 1,
+    "procent": 2.2
+   }
+  },
   "strainatate": {},
   "limbaAnuntului": {
    "ro": {
-    "n": 3,
+    "n": 45,
     "procent": 100
    }
   },
   "surse": {
+   "bestjobs": {
+    "n": 27,
+    "procent": 60
+   },
+   "anuntul": {
+    "n": 8,
+    "procent": 17.8
+   },
    "hipo": {
+    "n": 5,
+    "procent": 11.1
+   },
+   "publi24": {
     "n": 2,
-    "procent": 66.7
+    "procent": 4.4
+   },
+   "undelucram": {
+    "n": 2,
+    "procent": 4.4
    },
    "ejobs": {
     "n": 1,
-    "procent": 33.3
+    "procent": 2.2
    }
   },
   "peJudet": {
    "44": {
     "n": 1,
-    "procent": 33.3
+    "procent": 2.2
    },
    "RO": {
-    "n": 2,
-    "procent": 66.7
+    "n": 5,
+    "procent": 11.1
+   },
+   "bucuresti": {
+    "n": 3,
+    "procent": 6.7
+   },
+   "ilfov": {
+    "n": 3,
+    "procent": 6.7
+   },
+   "Timis": {
+    "n": 1,
+    "procent": 2.2
+   },
+   "Bucuresti": {
+    "n": 1,
+    "procent": 2.2
+   },
+   "prahova": {
+    "n": 1,
+    "procent": 2.2
+   },
+   "constanta": {
+    "n": 1,
+    "procent": 2.2
    }
   },
   "motiveFaraSalariu": {
    "salary_evidence_incomplete": {
-    "n": 2,
-    "procent": 100
+    "n": 32,
+    "procent": 84.2
+   },
+   "multiple_unresolved_amounts": {
+    "n": 6,
+    "procent": 15.8
+   },
+   "foreign_or_noncomparable_work": {
+    "n": 1,
+    "procent": 2.6
    }
   },
-  "salariuPeFactor": {}
+  "salariuPeFactor": {
+   "experienta": {
+    "avantaj": {
+     "n": 1
+    },
+    "da": {
+     "n": 1
+    },
+    "1+ ani": {
+     "n": 1
+    }
+   },
+   "limbi": {
+    "engleza": {
+     "n": 1
+    },
+    "spaniola": {
+     "n": 1
+    }
+   },
+   "program": {
+    "luni–vineri": {
+     "n": 1
+    },
+    "ture": {
+     "n": 1
+    }
+   },
+   "beneficii": {
+    "tichete de masă": {
+     "n": 1
+    },
+    "transport": {
+     "n": 1
+    },
+    "bonus": {
+     "n": 1
+    },
+    "asigurare medicală": {
+     "n": 1
+    },
+    "spor": {
+     "n": 1
+    }
+   },
+   "permis": {
+    "B": {
+     "n": 1
+    }
+   },
+   "atestate": {
+    "autorizare stivuitorist": {
+     "n": 2
+    },
+    "ISCIR": {
+     "n": 1
+    }
+   }
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",

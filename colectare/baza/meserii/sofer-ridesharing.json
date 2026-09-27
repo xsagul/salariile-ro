@@ -4,19 +4,27 @@
  "cor": "832201",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
-  "cuSalariu": 2,
+  "cuSalariu": 3,
   "cuBazaDeclarata": 0,
-  "faraBazaDeclarata": 2,
+  "faraBazaDeclarata": 3,
   "surse": {
    "olx": {
     "n": 2,
-    "procent": 100
+    "procent": 66.7
+   },
+   "anuntul": {
+    "n": 1,
+    "procent": 33.3
    }
   },
   "colectari": {
    "8 septembrie 2026": {
     "n": 2,
-    "procent": 100
+    "procent": 66.7
+   },
+   "continuă": {
+    "n": 1,
+    "procent": 33.3
    }
   },
   "net": {
@@ -29,32 +37,46 @@
    "n": 0
   },
   "faraBazaDeclarata_valori": {
-   "n": 2
+   "n": 3
   },
   "peOras": {},
   "peJudet": {},
   "peLuna": {
+   "2026-09": {
+    "n": 1,
+    "procent": 33.3
+   },
    "2025-11": {
     "n": 1,
-    "procent": 50
+    "procent": 33.3
    },
    "2026-01": {
     "n": 1,
-    "procent": 50
+    "procent": 33.3
    }
   }
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 0,
+  "anunturiCitite": 3,
   "cuSalariu": 0,
   "nivel": {},
   "experienta": {},
   "experientaPortal": {},
   "studii": {},
   "limbi": {},
-  "permis": {},
-  "atestate": {},
+  "permis": {
+   "da": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
+  "atestate": {
+   "atestat transport (CPC)": {
+    "n": 2,
+    "procent": 66.7
+   }
+  },
   "program": {},
   "mod": {},
   "norma": {},
@@ -63,10 +85,30 @@
   "tehnologii": {},
   "negociabil": {},
   "strainatate": {},
-  "limbaAnuntului": {},
-  "surse": {},
-  "peJudet": {},
-  "motiveFaraSalariu": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 3,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "anuntul": {
+    "n": 3,
+    "procent": 100
+   }
+  },
+  "peJudet": {
+   "bucuresti": {
+    "n": 3,
+    "procent": 100
+   }
+  },
+  "motiveFaraSalariu": {
+   "salary_evidence_incomplete": {
+    "n": 2,
+    "procent": 100
+   }
+  },
   "salariuPeFactor": {}
  },
  "anofm": {

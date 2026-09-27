@@ -4,31 +4,39 @@
  "cor": "422401",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
-  "cuSalariu": 12,
+  "cuSalariu": 13,
   "cuBazaDeclarata": 2,
-  "faraBazaDeclarata": 10,
+  "faraBazaDeclarata": 11,
   "surse": {
    "olx": {
     "n": 9,
-    "procent": 75
+    "procent": 69.2
+   },
+   "bestjobs": {
+    "n": 1,
+    "procent": 7.7
    },
    "ejobs": {
     "n": 1,
-    "procent": 8.3
+    "procent": 7.7
    },
    "publi24": {
     "n": 1,
-    "procent": 8.3
+    "procent": 7.7
    },
    "anuntul": {
     "n": 1,
-    "procent": 8.3
+    "procent": 7.7
    }
   },
   "colectari": {
    "8 septembrie 2026": {
     "n": 12,
-    "procent": 100
+    "procent": 92.3
+   },
+   "continuă": {
+    "n": 1,
+    "procent": 7.7
    }
   },
   "net": {
@@ -41,12 +49,12 @@
    "n": 2
   },
   "faraBazaDeclarata_valori": {
-   "n": 10,
-   "p10": 2925,
-   "p25": 3288,
-   "median": 3625,
-   "p75": 3863,
-   "p90": 4005,
+   "n": 11,
+   "p10": 2950,
+   "p25": 3325,
+   "median": 3700,
+   "p75": 3836,
+   "p90": 3950,
    "min": 2700,
    "max": 4500
   },
@@ -55,47 +63,72 @@
   "peLuna": {
    "2026-08": {
     "n": 7,
-    "procent": 58.3
+    "procent": 53.8
+   },
+   "2026-09": {
+    "n": 2,
+    "procent": 15.4
    },
    "2026-07": {
     "n": 2,
-    "procent": 16.7
-   },
-   "2026-09": {
-    "n": 1,
-    "procent": 8.3
+    "procent": 15.4
    },
    "2026-01": {
     "n": 1,
-    "procent": 8.3
+    "procent": 7.7
    },
    "2026-05": {
     "n": 1,
-    "procent": 8.3
+    "procent": 7.7
    }
   }
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 0,
+  "anunturiCitite": 1,
   "cuSalariu": 0,
   "nivel": {},
-  "experienta": {},
+  "experienta": {
+   "da": {
+    "n": 1,
+    "procent": 100
+   }
+  },
   "experientaPortal": {},
   "studii": {},
-  "limbi": {},
+  "limbi": {
+   "engleza": {
+    "n": 1,
+    "procent": 100
+   }
+  },
   "permis": {},
   "atestate": {},
   "program": {},
   "mod": {},
   "norma": {},
   "durata": {},
-  "beneficii": {},
+  "beneficii": {
+   "tichete de masă": {
+    "n": 1,
+    "procent": 100
+   }
+  },
   "tehnologii": {},
   "negociabil": {},
   "strainatate": {},
-  "limbaAnuntului": {},
-  "surse": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "bestjobs": {
+    "n": 1,
+    "procent": 100
+   }
+  },
   "peJudet": {},
   "motiveFaraSalariu": {},
   "salariuPeFactor": {}

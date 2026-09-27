@@ -42,27 +42,86 @@
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 0,
+  "anunturiCitite": 4,
   "cuSalariu": 0,
   "nivel": {},
-  "experienta": {},
+  "experienta": {
+   "da": {
+    "n": 1,
+    "procent": 25
+   }
+  },
   "experientaPortal": {},
   "studii": {},
   "limbi": {},
   "permis": {},
   "atestate": {},
-  "program": {},
+  "program": {
+   "ture": {
+    "n": 2,
+    "procent": 50
+   },
+   "luni–vineri": {
+    "n": 1,
+    "procent": 25
+   },
+   "weekend": {
+    "n": 1,
+    "procent": 25
+   }
+  },
   "mod": {},
   "norma": {},
   "durata": {},
-  "beneficii": {},
+  "beneficii": {
+   "tichete de masă": {
+    "n": 2,
+    "procent": 50
+   },
+   "bonus": {
+    "n": 2,
+    "procent": 50
+   },
+   "asigurare medicală": {
+    "n": 2,
+    "procent": 50
+   },
+   "vouchere de vacanță": {
+    "n": 2,
+    "procent": 50
+   }
+  },
   "tehnologii": {},
   "negociabil": {},
   "strainatate": {},
-  "limbaAnuntului": {},
-  "surse": {},
-  "peJudet": {},
-  "motiveFaraSalariu": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 4,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "anuntul": {
+    "n": 2,
+    "procent": 50
+   },
+   "undelucram": {
+    "n": 2,
+    "procent": 50
+   }
+  },
+  "peJudet": {
+   "bucuresti": {
+    "n": 2,
+    "procent": 50
+   }
+  },
+  "motiveFaraSalariu": {
+   "salary_evidence_incomplete": {
+    "n": 3,
+    "procent": 100
+   }
+  },
   "salariuPeFactor": {}
  },
  "anofm": {

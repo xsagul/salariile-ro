@@ -46,13 +46,37 @@
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 0,
+  "anunturiCitite": 3,
   "cuSalariu": 0,
   "nivel": {},
-  "experienta": {},
-  "experientaPortal": {},
-  "studii": {},
-  "limbi": {},
+  "experienta": {
+   "avantaj": {
+    "n": 2,
+    "procent": 66.7
+   },
+   "da": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
+  "experientaPortal": {
+   "1–5 ani": {
+    "n": 2,
+    "procent": 66.7
+   }
+  },
+  "studii": {
+   "superioare": {
+    "n": 2,
+    "procent": 66.7
+   }
+  },
+  "limbi": {
+   "engleza": {
+    "n": 2,
+    "procent": 66.7
+   }
+  },
   "permis": {},
   "atestate": {},
   "program": {},
@@ -63,10 +87,34 @@
   "tehnologii": {},
   "negociabil": {},
   "strainatate": {},
-  "limbaAnuntului": {},
-  "surse": {},
-  "peJudet": {},
-  "motiveFaraSalariu": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 3,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "hipo": {
+    "n": 2,
+    "procent": 66.7
+   },
+   "bestjobs": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
+  "peJudet": {
+   "RO": {
+    "n": 2,
+    "procent": 66.7
+   }
+  },
+  "motiveFaraSalariu": {
+   "salary_evidence_incomplete": {
+    "n": 3,
+    "procent": 100
+   }
+  },
   "salariuPeFactor": {}
  },
  "anofm": {

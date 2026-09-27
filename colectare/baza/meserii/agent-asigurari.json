@@ -42,7 +42,7 @@
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 1,
+  "anunturiCitite": 2,
   "cuSalariu": 0,
   "nivel": {},
   "experienta": {},
@@ -61,29 +61,37 @@
   "strainatate": {},
   "limbaAnuntului": {
    "ro": {
-    "n": 1,
+    "n": 2,
     "procent": 100
    }
   },
   "surse": {
+   "bestjobs": {
+    "n": 1,
+    "procent": 50
+   },
    "ejobs": {
     "n": 1,
-    "procent": 100
+    "procent": 50
    }
   },
   "peJudet": {},
   "motiveFaraSalariu": {
+   "salary_evidence_incomplete": {
+    "n": 1,
+    "procent": 50
+   },
    "country_unconfirmed": {
     "n": 1,
-    "procent": 100
+    "procent": 50
    },
    "full_time_unconfirmed": {
     "n": 1,
-    "procent": 100
+    "procent": 50
    },
    "wide_range_review": {
     "n": 1,
-    "procent": 100
+    "procent": 50
    }
   },
   "salariuPeFactor": {}

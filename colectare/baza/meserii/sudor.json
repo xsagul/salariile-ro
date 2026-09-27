@@ -4,29 +4,29 @@
  "cor": "721208",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
-  "cuSalariu": 88,
+  "cuSalariu": 93,
   "cuBazaDeclarata": 33,
-  "faraBazaDeclarata": 55,
+  "faraBazaDeclarata": 60,
   "surse": {
    "olx": {
     "n": 45,
-    "procent": 51.1
+    "procent": 48.4
    },
    "ejobs": {
     "n": 14,
-    "procent": 15.9
+    "procent": 15.1
    },
    "publi24": {
     "n": 14,
-    "procent": 15.9
+    "procent": 15.1
    },
    "anuntul": {
-    "n": 9,
-    "procent": 10.2
+    "n": 10,
+    "procent": 10.8
    },
    "bestjobs": {
-    "n": 5,
-    "procent": 5.7
+    "n": 9,
+    "procent": 9.7
    },
    "hipo": {
     "n": 1,
@@ -35,12 +35,12 @@
   },
   "colectari": {
    "8 septembrie 2026": {
-    "n": 87,
-    "procent": 98.9
+    "n": 80,
+    "procent": 86
    },
    "continuă": {
-    "n": 1,
-    "procent": 1.1
+    "n": 13,
+    "procent": 14
    }
   },
   "net": {
@@ -74,41 +74,41 @@
    "max": 12000
   },
   "faraBazaDeclarata_valori": {
-   "n": 55,
-   "p10": 4850,
-   "p25": 5125,
-   "median": 5750,
+   "n": 60,
+   "p10": 4725,
+   "p25": 5188,
+   "median": 5646,
    "p75": 6500,
-   "p90": 7950,
+   "p90": 7575,
    "min": 2950,
-   "max": 31511.5
+   "max": 31659.5
   },
   "peOras": {},
   "peJudet": {},
   "peLuna": {
    "2026-08": {
-    "n": 40,
-    "procent": 45.5
+    "n": 37,
+    "procent": 39.8
    },
    "2026-09": {
-    "n": 26,
-    "procent": 29.5
+    "n": 34,
+    "procent": 36.6
    },
    "2026-07": {
     "n": 6,
-    "procent": 6.8
+    "procent": 6.5
    },
    "2026-06": {
     "n": 4,
-    "procent": 4.5
+    "procent": 4.3
    },
    "2026-01": {
     "n": 3,
-    "procent": 3.4
+    "procent": 3.2
    },
    "2026-04": {
     "n": 3,
-    "procent": 3.4
+    "procent": 3.2
    },
    "2026-03": {
     "n": 1,
@@ -138,57 +138,270 @@
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 3,
+  "anunturiCitite": 62,
   "cuSalariu": 0,
   "nivel": {},
-  "experienta": {},
+  "experienta": {
+   "da": {
+    "n": 15,
+    "procent": 24.2
+   },
+   "3+ ani": {
+    "n": 6,
+    "procent": 9.7
+   },
+   "avantaj": {
+    "n": 4,
+    "procent": 6.5
+   },
+   "2+ ani": {
+    "n": 3,
+    "procent": 4.8
+   },
+   "1+ ani": {
+    "n": 3,
+    "procent": 4.8
+   },
+   "fara": {
+    "n": 1,
+    "procent": 1.6
+   },
+   "5+ ani": {
+    "n": 1,
+    "procent": 1.6
+   }
+  },
   "experientaPortal": {},
-  "studii": {},
+  "studii": {
+   "medii": {
+    "n": 11,
+    "procent": 17.7
+   },
+   "superioare": {
+    "n": 1,
+    "procent": 1.6
+   },
+   "profesionale": {
+    "n": 1,
+    "procent": 1.6
+   }
+  },
   "limbi": {},
-  "permis": {},
-  "atestate": {},
-  "program": {},
+  "permis": {
+   "B": {
+    "n": 2,
+    "procent": 3.2
+   }
+  },
+  "atestate": {
+   "ANRE": {
+    "n": 1,
+    "procent": 1.6
+   },
+   "ISCIR": {
+    "n": 1,
+    "procent": 1.6
+   }
+  },
+  "program": {
+   "luni–vineri": {
+    "n": 5,
+    "procent": 8.1
+   },
+   "ture": {
+    "n": 5,
+    "procent": 8.1
+   }
+  },
   "mod": {},
-  "norma": {},
-  "durata": {},
-  "beneficii": {},
+  "norma": {
+   "full-time": {
+    "n": 2,
+    "procent": 3.2
+   }
+  },
+  "durata": {
+   "nedeterminată": {
+    "n": 3,
+    "procent": 4.8
+   }
+  },
+  "beneficii": {
+   "tichete de masă": {
+    "n": 15,
+    "procent": 24.2
+   },
+   "transport": {
+    "n": 12,
+    "procent": 19.4
+   },
+   "cazare": {
+    "n": 8,
+    "procent": 12.9
+   },
+   "bonus": {
+    "n": 6,
+    "procent": 9.7
+   },
+   "prime": {
+    "n": 5,
+    "procent": 8.1
+   },
+   "ore suplimentare plătite": {
+    "n": 4,
+    "procent": 6.5
+   },
+   "masă": {
+    "n": 3,
+    "procent": 4.8
+   },
+   "asigurare medicală": {
+    "n": 3,
+    "procent": 4.8
+   },
+   "spor": {
+    "n": 1,
+    "procent": 1.6
+   }
+  },
   "tehnologii": {},
-  "negociabil": {},
+  "negociabil": {
+   "salariu negociabil": {
+    "n": 7,
+    "procent": 11.3
+   }
+  },
   "strainatate": {},
   "limbaAnuntului": {
    "ro": {
-    "n": 3,
+    "n": 62,
     "procent": 100
    }
   },
   "surse": {
+   "anuntul": {
+    "n": 19,
+    "procent": 30.6
+   },
+   "publi24": {
+    "n": 18,
+    "procent": 29
+   },
+   "bestjobs": {
+    "n": 17,
+    "procent": 27.4
+   },
+   "undelucram": {
+    "n": 5,
+    "procent": 8.1
+   },
    "ejobs": {
     "n": 3,
-    "procent": 100
+    "procent": 4.8
    }
   },
   "peJudet": {
    "5": {
     "n": 1,
-    "procent": 33.3
+    "procent": 1.6
    },
    "21": {
     "n": 1,
-    "procent": 33.3
+    "procent": 1.6
+   },
+   "bucuresti": {
+    "n": 12,
+    "procent": 19.4
+   },
+   "ilfov": {
+    "n": 7,
+    "procent": 11.3
+   },
+   "Cluj": {
+    "n": 4,
+    "procent": 6.5
+   },
+   "Caras-Severin": {
+    "n": 1,
+    "procent": 1.6
+   },
+   "Braila": {
+    "n": 1,
+    "procent": 1.6
+   },
+   "Bacau": {
+    "n": 1,
+    "procent": 1.6
+   },
+   "Valcea": {
+    "n": 1,
+    "procent": 1.6
+   },
+   "Olt": {
+    "n": 1,
+    "procent": 1.6
+   },
+   "Constanta": {
+    "n": 1,
+    "procent": 1.6
+   },
+   "Vrancea": {
+    "n": 1,
+    "procent": 1.6
+   },
+   "Teleorman": {
+    "n": 1,
+    "procent": 1.6
+   },
+   "Vaslui": {
+    "n": 1,
+    "procent": 1.6
+   },
+   "Timis": {
+    "n": 1,
+    "procent": 1.6
+   },
+   "Ilfov": {
+    "n": 1,
+    "procent": 1.6
+   },
+   "Mehedinti": {
+    "n": 1,
+    "procent": 1.6
+   },
+   "Maramures": {
+    "n": 1,
+    "procent": 1.6
+   },
+   "Buzau": {
+    "n": 1,
+    "procent": 1.6
    }
   },
   "motiveFaraSalariu": {
-   "country_unconfirmed": {
-    "n": 1,
-    "procent": 50
+   "salary_evidence_incomplete": {
+    "n": 39,
+    "procent": 81.3
    },
    "foreign_or_noncomparable_work": {
+    "n": 21,
+    "procent": 43.8
+   },
+   "multiple_unresolved_amounts": {
+    "n": 3,
+    "procent": 6.3
+   },
+   "wide_range_review": {
+    "n": 2,
+    "procent": 4.2
+   },
+   "country_unconfirmed": {
     "n": 1,
-    "procent": 50
+    "procent": 2.1
    },
    "expired": {
     "n": 1,
-    "procent": 50
+    "procent": 2.1
    }
   },
   "salariuPeFactor": {}

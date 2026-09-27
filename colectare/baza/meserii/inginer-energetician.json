@@ -27,92 +27,151 @@
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 1,
+  "anunturiCitite": 18,
   "cuSalariu": 0,
   "nivel": {},
   "experienta": {
    "2+ ani": {
+    "n": 5,
+    "procent": 27.8
+   },
+   "1+ ani": {
+    "n": 4,
+    "procent": 22.2
+   },
+   "3+ ani": {
+    "n": 3,
+    "procent": 16.7
+   },
+   "da": {
     "n": 1,
-    "procent": 100
+    "procent": 5.6
    }
   },
   "experientaPortal": {
+   "0–1 an": {
+    "n": 5,
+    "procent": 27.8
+   },
    "1–5 ani": {
-    "n": 1,
-    "procent": 100
+    "n": 3,
+    "procent": 16.7
    }
   },
   "studii": {
    "superioare": {
-    "n": 1,
+    "n": 18,
     "procent": 100
    }
   },
   "limbi": {
    "engleza": {
-    "n": 1,
-    "procent": 100
+    "n": 5,
+    "procent": 27.8
    }
   },
-  "permis": {},
-  "atestate": {},
-  "program": {},
+  "permis": {
+   "B": {
+    "n": 2,
+    "procent": 11.1
+   }
+  },
+  "atestate": {
+   "ANRE": {
+    "n": 5,
+    "procent": 27.8
+   }
+  },
+  "program": {
+   "ture": {
+    "n": 6,
+    "procent": 33.3
+   }
+  },
   "mod": {
    "hibrid": {
-    "n": 1,
-    "procent": 100
+    "n": 9,
+    "procent": 50
    }
   },
   "norma": {},
   "durata": {
    "nedeterminată": {
-    "n": 1,
+    "n": 18,
     "procent": 100
    }
   },
   "beneficii": {
    "tichete de masă": {
-    "n": 1,
+    "n": 18,
     "procent": 100
    },
    "bonus": {
-    "n": 1,
-    "procent": 100
+    "n": 17,
+    "procent": 94.4
    },
    "asigurare medicală": {
+    "n": 17,
+    "procent": 94.4
+   },
+   "echipament de lucru": {
     "n": 1,
-    "procent": 100
+    "procent": 5.6
+   },
+   "telefon / laptop": {
+    "n": 1,
+    "procent": 5.6
    }
   },
   "tehnologii": {
+   "Excel": {
+    "n": 6,
+    "procent": 33.3
+   },
    "SAP": {
+    "n": 5,
+    "procent": 27.8
+   },
+   "Salesforce": {
+    "n": 2,
+    "procent": 11.1
+   },
+   "SCADA": {
     "n": 1,
-    "procent": 100
+    "procent": 5.6
    }
   },
   "negociabil": {},
   "strainatate": {},
   "limbaAnuntului": {
    "ro": {
-    "n": 1,
+    "n": 18,
     "procent": 100
    }
   },
   "surse": {
    "hipo": {
-    "n": 1,
-    "procent": 100
+    "n": 8,
+    "procent": 44.4
+   },
+   "undelucram": {
+    "n": 7,
+    "procent": 38.9
+   },
+   "bestjobs": {
+    "n": 3,
+    "procent": 16.7
    }
   },
   "peJudet": {
    "RO": {
-    "n": 1,
-    "procent": 100
+    "n": 8,
+    "procent": 44.4
    }
   },
   "motiveFaraSalariu": {
    "salary_evidence_incomplete": {
-    "n": 1,
+    "n": 18,
     "procent": 100
    }
   },

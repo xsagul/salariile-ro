@@ -4,23 +4,27 @@
  "cor": "216101",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
-  "cuSalariu": 7,
+  "cuSalariu": 10,
   "cuBazaDeclarata": 2,
-  "faraBazaDeclarata": 5,
+  "faraBazaDeclarata": 8,
   "surse": {
+   "bestjobs": {
+    "n": 5,
+    "procent": 50
+   },
    "ejobs": {
     "n": 5,
-    "procent": 71.4
-   },
-   "bestjobs": {
-    "n": 2,
-    "procent": 28.6
+    "procent": 50
    }
   },
   "colectari": {
    "8 septembrie 2026": {
     "n": 7,
-    "procent": 100
+    "procent": 70
+   },
+   "continuă": {
+    "n": 3,
+    "procent": 30
    }
   },
   "net": {
@@ -33,132 +37,326 @@
    "n": 2
   },
   "faraBazaDeclarata_valori": {
-   "n": 5
+   "n": 8
   },
   "peOras": {},
   "peJudet": {},
   "peLuna": {
    "2026-09": {
-    "n": 5,
-    "procent": 71.4
+    "n": 8,
+    "procent": 80
    },
    "2026-08": {
     "n": 2,
-    "procent": 28.6
+    "procent": 20
    }
   }
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 6,
+  "anunturiCitite": 57,
   "cuSalariu": 0,
-  "nivel": {},
-  "experienta": {
-   "7+ ani": {
-    "n": 2,
-    "procent": 33.3
+  "nivel": {
+   "senior": {
+    "n": 4,
+    "procent": 7
    },
+   "lead": {
+    "n": 2,
+    "procent": 3.5
+   }
+  },
+  "experienta": {
    "5+ ani": {
+    "n": 13,
+    "procent": 22.8
+   },
+   "7+ ani": {
+    "n": 5,
+    "procent": 8.8
+   },
+   "da": {
+    "n": 4,
+    "procent": 7
+   },
+   "3+ ani": {
+    "n": 3,
+    "procent": 5.3
+   },
+   "8+ ani": {
     "n": 1,
-    "procent": 16.7
+    "procent": 1.8
+   },
+   "15+ ani": {
+    "n": 1,
+    "procent": 1.8
+   },
+   "4+ ani": {
+    "n": 1,
+    "procent": 1.8
+   },
+   "10+ ani": {
+    "n": 1,
+    "procent": 1.8
    }
   },
   "experientaPortal": {
+   "1–5 ani": {
+    "n": 13,
+    "procent": 22.8
+   },
    "peste 5 ani": {
     "n": 3,
-    "procent": 50
-   },
-   "1–5 ani": {
-    "n": 1,
-    "procent": 16.7
+    "procent": 5.3
    }
   },
   "studii": {
    "superioare": {
-    "n": 4,
-    "procent": 66.7
+    "n": 16,
+    "procent": 28.1
+   },
+   "medii": {
+    "n": 1,
+    "procent": 1.8
    }
   },
   "limbi": {
    "engleza": {
-    "n": 1,
-    "procent": 16.7
+    "n": 5,
+    "procent": 8.8
+   },
+   "germana": {
+    "n": 2,
+    "procent": 3.5
    }
   },
-  "permis": {},
+  "permis": {
+   "B": {
+    "n": 1,
+    "procent": 1.8
+   }
+  },
   "atestate": {},
-  "program": {},
+  "program": {
+   "ture": {
+    "n": 1,
+    "procent": 1.8
+   }
+  },
   "mod": {
    "remote": {
-    "n": 2,
+    "n": 19,
     "procent": 33.3
+   },
+   "hibrid": {
+    "n": 12,
+    "procent": 21.1
    }
   },
-  "norma": {},
-  "durata": {},
-  "beneficii": {},
-  "tehnologii": {
-   "AutoCAD": {
-    "n": 2,
+  "norma": {
+   "full-time": {
+    "n": 1,
+    "procent": 1.8
+   }
+  },
+  "durata": {
+   "nedeterminată": {
+    "n": 3,
+    "procent": 5.3
+   }
+  },
+  "beneficii": {
+   "cursuri / training": {
+    "n": 19,
     "procent": 33.3
    },
-   "AWS": {
-    "n": 1,
-    "procent": 16.7
+   "asigurare medicală": {
+    "n": 7,
+    "procent": 12.3
    },
+   "bonus": {
+    "n": 4,
+    "procent": 7
+   },
+   "tichete de masă": {
+    "n": 2,
+    "procent": 3.5
+   }
+  },
+  "tehnologii": {
    "Azure": {
-    "n": 1,
-    "procent": 16.7
+    "n": 16,
+    "procent": 28.1
+   },
+   "AWS": {
+    "n": 14,
+    "procent": 24.6
    },
    "GCP": {
+    "n": 10,
+    "procent": 17.5
+   },
+   "SQL": {
+    "n": 10,
+    "procent": 17.5
+   },
+   "Python": {
+    "n": 8,
+    "procent": 14
+   },
+   "Kubernetes": {
+    "n": 8,
+    "procent": 14
+   },
+   "AutoCAD": {
+    "n": 7,
+    "procent": 12.3
+   },
+   "Git": {
+    "n": 6,
+    "procent": 10.5
+   },
+   "Java": {
+    "n": 6,
+    "procent": 10.5
+   },
+   "NoSQL": {
+    "n": 6,
+    "procent": 10.5
+   },
+   "SAP": {
+    "n": 5,
+    "procent": 8.8
+   },
+   "JavaScript": {
+    "n": 3,
+    "procent": 5.3
+   },
+   "Spring": {
+    "n": 3,
+    "procent": 5.3
+   },
+   "Docker": {
+    "n": 3,
+    "procent": 5.3
+   },
+   "Jira": {
+    "n": 3,
+    "procent": 5.3
+   },
+   "TypeScript": {
+    "n": 2,
+    "procent": 3.5
+   },
+   "Salesforce": {
+    "n": 2,
+    "procent": 3.5
+   },
+   "Scala": {
+    "n": 2,
+    "procent": 3.5
+   },
+   "ABAP": {
+    "n": 2,
+    "procent": 3.5
+   },
+   "React": {
     "n": 1,
-    "procent": 16.7
+    "procent": 1.8
+   },
+   "C++": {
+    "n": 1,
+    "procent": 1.8
+   },
+   "Excel": {
+    "n": 1,
+    "procent": 1.8
+   },
+   "PLC": {
+    "n": 1,
+    "procent": 1.8
+   },
+   "Angular": {
+    "n": 1,
+    "procent": 1.8
+   },
+   "Power BI": {
+    "n": 1,
+    "procent": 1.8
+   },
+   "Figma": {
+    "n": 1,
+    "procent": 1.8
+   },
+   "Linux": {
+    "n": 1,
+    "procent": 1.8
+   },
+   ".NET": {
+    "n": 1,
+    "procent": 1.8
+   },
+   "Node.js": {
+    "n": 1,
+    "procent": 1.8
    }
   },
   "negociabil": {},
   "strainatate": {},
   "limbaAnuntului": {
    "en": {
-    "n": 4,
-    "procent": 66.7
+    "n": 46,
+    "procent": 80.7
    },
    "ro": {
-    "n": 2,
-    "procent": 33.3
+    "n": 11,
+    "procent": 19.3
    }
   },
   "surse": {
+   "undelucram": {
+    "n": 31,
+    "procent": 54.4
+   },
    "hipo": {
-    "n": 4,
-    "procent": 66.7
+    "n": 16,
+    "procent": 28.1
+   },
+   "bestjobs": {
+    "n": 8,
+    "procent": 14
    },
    "ejobs": {
     "n": 2,
-    "procent": 33.3
+    "procent": 3.5
    }
   },
   "peJudet": {
    "RO": {
-    "n": 4,
-    "procent": 66.7
+    "n": 16,
+    "procent": 28.1
    }
   },
   "motiveFaraSalariu": {
    "salary_evidence_incomplete": {
-    "n": 4,
-    "procent": 66.7
+    "n": 52,
+    "procent": 96.3
+   },
+   "country_unconfirmed": {
+    "n": 15,
+    "procent": 27.8
+   },
+   "foreign_or_noncomparable_work": {
+    "n": 1,
+    "procent": 1.9
    },
    "full_time_unconfirmed": {
     "n": 1,
-    "procent": 16.7
+    "procent": 1.9
    },
    "wide_range_review": {
     "n": 1,
-    "procent": 16.7
-   },
-   "country_unconfirmed": {
-    "n": 1,
-    "procent": 16.7
+    "procent": 1.9
    }
   },
   "salariuPeFactor": {}

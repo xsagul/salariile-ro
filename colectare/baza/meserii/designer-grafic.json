@@ -4,31 +4,35 @@
  "cor": "216601",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
-  "cuSalariu": 7,
+  "cuSalariu": 9,
   "cuBazaDeclarata": 4,
-  "faraBazaDeclarata": 3,
+  "faraBazaDeclarata": 5,
   "surse": {
    "ejobs": {
     "n": 3,
-    "procent": 42.9
+    "procent": 33.3
    },
    "olx": {
     "n": 3,
-    "procent": 42.9
+    "procent": 33.3
    },
    "bestjobs": {
+    "n": 2,
+    "procent": 22.2
+   },
+   "hipo": {
     "n": 1,
-    "procent": 14.3
+    "procent": 11.1
    }
   },
   "colectari": {
    "8 septembrie 2026": {
     "n": 6,
-    "procent": 85.7
+    "procent": 66.7
    },
    "continuă": {
-    "n": 1,
-    "procent": 14.3
+    "n": 3,
+    "procent": 33.3
    }
   },
   "net": {
@@ -41,42 +45,52 @@
    "n": 4
   },
   "faraBazaDeclarata_valori": {
-   "n": 3
+   "n": 5
   },
   "peOras": {},
   "peJudet": {},
   "peLuna": {
    "2026-09": {
-    "n": 4,
-    "procent": 57.1
+    "n": 6,
+    "procent": 66.7
    },
    "2026-08": {
     "n": 1,
-    "procent": 14.3
+    "procent": 11.1
    },
    "2026-03": {
     "n": 1,
-    "procent": 14.3
+    "procent": 11.1
    },
    "2026-01": {
     "n": 1,
-    "procent": 14.3
+    "procent": 11.1
    }
   }
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 2,
+  "anunturiCitite": 4,
   "cuSalariu": 0,
   "nivel": {},
-  "experienta": {},
+  "experienta": {
+   "da": {
+    "n": 1,
+    "procent": 25
+   }
+  },
   "experientaPortal": {
    "1–5 ani": {
     "n": 1,
-    "procent": 50
+    "procent": 25
    }
   },
-  "studii": {},
+  "studii": {
+   "medii": {
+    "n": 1,
+    "procent": 25
+   }
+  },
   "limbi": {},
   "permis": {},
   "atestate": {},
@@ -90,27 +104,36 @@
   "strainatate": {},
   "limbaAnuntului": {
    "ro": {
-    "n": 2,
+    "n": 4,
     "procent": 100
    }
   },
   "surse": {
-   "ejobs": {
-    "n": 1,
+   "bestjobs": {
+    "n": 2,
     "procent": 50
    },
    "hipo": {
     "n": 1,
-    "procent": 50
+    "procent": 25
+   },
+   "ejobs": {
+    "n": 1,
+    "procent": 25
    }
   },
   "peJudet": {
    "RO": {
     "n": 1,
-    "procent": 50
+    "procent": 25
    }
   },
-  "motiveFaraSalariu": {},
+  "motiveFaraSalariu": {
+   "salary_evidence_incomplete": {
+    "n": 1,
+    "procent": 100
+   }
+  },
   "salariuPeFactor": {}
  },
  "anofm": {

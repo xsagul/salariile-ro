@@ -1,5 +1,9 @@
 {
- "surse": {},
+ "surse": {
+  "anuntul": {
+   "trecereCompletaLa": "2026-09-27T10:35:53.545Z"
+  }
+ },
  "rulari": [
   {
    "run": "continuu-2026-09-27",
@@ -15,6 +19,22 @@
     "duplicates": 3,
     "rejected": 444,
     "errors": 2
+   }
+  },
+  {
+   "run": "continuu-2026-09-27-b",
+   "la": "2026-09-27T10:35:53.545Z",
+   "citite": 2697,
+   "acceptate": 824,
+   "stats": {
+    "inventoried": 19960,
+    "read": 2697,
+    "acceptedAds": 828,
+    "acceptedBeforeDedup": 888,
+    "accepted": 824,
+    "duplicates": 64,
+    "rejected": 1869,
+    "errors": 3
    }
   }
  ]

@@ -14,7 +14,7 @@
    }
   },
   "colectari": {
-   "8 septembrie 2026": {
+   "continuă": {
     "n": 1,
     "procent": 100
    }
@@ -42,27 +42,77 @@
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 0,
+  "anunturiCitite": 5,
   "cuSalariu": 0,
   "nivel": {},
-  "experienta": {},
-  "experientaPortal": {},
-  "studii": {},
-  "limbi": {},
+  "experienta": {
+   "fara": {
+    "n": 2,
+    "procent": 40
+   }
+  },
+  "experientaPortal": {
+   "0–1 an": {
+    "n": 5,
+    "procent": 100
+   }
+  },
+  "studii": {
+   "superioare": {
+    "n": 1,
+    "procent": 20
+   }
+  },
+  "limbi": {
+   "engleza": {
+    "n": 4,
+    "procent": 80
+   }
+  },
   "permis": {},
   "atestate": {},
-  "program": {},
+  "program": {
+   "ture": {
+    "n": 3,
+    "procent": 60
+   }
+  },
   "mod": {},
-  "norma": {},
+  "norma": {
+   "full-time": {
+    "n": 1,
+    "procent": 20
+   }
+  },
   "durata": {},
   "beneficii": {},
   "tehnologii": {},
   "negociabil": {},
   "strainatate": {},
-  "limbaAnuntului": {},
-  "surse": {},
-  "peJudet": {},
-  "motiveFaraSalariu": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 5,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "hipo": {
+    "n": 5,
+    "procent": 100
+   }
+  },
+  "peJudet": {
+   "RO": {
+    "n": 5,
+    "procent": 100
+   }
+  },
+  "motiveFaraSalariu": {
+   "salary_evidence_incomplete": {
+    "n": 2,
+    "procent": 100
+   }
+  },
   "salariuPeFactor": {}
  },
  "anofm": {

@@ -4,27 +4,31 @@
  "cor": "814209",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
-  "cuSalariu": 6,
+  "cuSalariu": 7,
   "cuBazaDeclarata": 4,
-  "faraBazaDeclarata": 2,
+  "faraBazaDeclarata": 3,
   "surse": {
    "publi24": {
     "n": 3,
-    "procent": 50
+    "procent": 42.9
+   },
+   "bestjobs": {
+    "n": 2,
+    "procent": 28.6
    },
    "olx": {
     "n": 2,
-    "procent": 33.3
-   },
-   "bestjobs": {
-    "n": 1,
-    "procent": 16.7
+    "procent": 28.6
    }
   },
   "colectari": {
    "8 septembrie 2026": {
-    "n": 6,
-    "procent": 100
+    "n": 5,
+    "procent": 71.4
+   },
+   "continuă": {
+    "n": 2,
+    "procent": 28.6
    }
   },
   "net": {
@@ -37,50 +41,92 @@
    "n": 4
   },
   "faraBazaDeclarata_valori": {
-   "n": 2
+   "n": 3
   },
   "peOras": {},
   "peJudet": {},
   "peLuna": {
+   "2026-09": {
+    "n": 3,
+    "procent": 42.9
+   },
    "2026-08": {
     "n": 2,
-    "procent": 33.3
-   },
-   "2026-09": {
-    "n": 2,
-    "procent": 33.3
+    "procent": 28.6
    },
    "2025-03": {
     "n": 1,
-    "procent": 16.7
+    "procent": 14.3
    },
    "2026-04": {
     "n": 1,
-    "procent": 16.7
+    "procent": 14.3
    }
   }
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 0,
+  "anunturiCitite": 2,
   "cuSalariu": 0,
   "nivel": {},
-  "experienta": {},
+  "experienta": {
+   "avantaj": {
+    "n": 1,
+    "procent": 50
+   },
+   "da": {
+    "n": 1,
+    "procent": 50
+   }
+  },
   "experientaPortal": {},
   "studii": {},
   "limbi": {},
   "permis": {},
   "atestate": {},
-  "program": {},
+  "program": {
+   "ture": {
+    "n": 1,
+    "procent": 50
+   }
+  },
   "mod": {},
   "norma": {},
-  "durata": {},
-  "beneficii": {},
+  "durata": {
+   "nedeterminată": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "beneficii": {
+   "tichete de masă": {
+    "n": 1,
+    "procent": 50
+   },
+   "transport": {
+    "n": 1,
+    "procent": 50
+   },
+   "bonus": {
+    "n": 1,
+    "procent": 50
+   }
+  },
   "tehnologii": {},
   "negociabil": {},
   "strainatate": {},
-  "limbaAnuntului": {},
-  "surse": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "bestjobs": {
+    "n": 2,
+    "procent": 100
+   }
+  },
   "peJudet": {},
   "motiveFaraSalariu": {},
   "salariuPeFactor": {}

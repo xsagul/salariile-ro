@@ -19,8 +19,12 @@
   },
   "colectari": {
    "8 septembrie 2026": {
-    "n": 3,
-    "procent": 100
+    "n": 2,
+    "procent": 66.7
+   },
+   "continuă": {
+    "n": 1,
+    "procent": 33.3
    }
   },
   "net": {
@@ -50,12 +54,22 @@
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 0,
+  "anunturiCitite": 1,
   "cuSalariu": 0,
   "nivel": {},
-  "experienta": {},
+  "experienta": {
+   "2+ ani": {
+    "n": 1,
+    "procent": 100
+   }
+  },
   "experientaPortal": {},
-  "studii": {},
+  "studii": {
+   "superioare": {
+    "n": 1,
+    "procent": 100
+   }
+  },
   "limbi": {},
   "permis": {},
   "atestate": {},
@@ -63,12 +77,27 @@
   "mod": {},
   "norma": {},
   "durata": {},
-  "beneficii": {},
+  "beneficii": {
+   "bonus": {
+    "n": 1,
+    "procent": 100
+   }
+  },
   "tehnologii": {},
   "negociabil": {},
   "strainatate": {},
-  "limbaAnuntului": {},
-  "surse": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "bestjobs": {
+    "n": 1,
+    "procent": 100
+   }
+  },
   "peJudet": {},
   "motiveFaraSalariu": {},
   "salariuPeFactor": {}

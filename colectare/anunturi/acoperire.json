@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-27T09:52:46.388Z",
+ "generatedAt": "2026-09-27T10:35:53.581Z",
  "run": "colectare-continua",
  "policy": {
   "version": 4,
@@ -171,10 +171,12 @@
   "method": "public_source_inventories_accumulated"
  },
  "stats": {
-  "observatii": 164,
-  "valabile": 164,
-  "accepted": 164,
-  "surseCuTrecereCompleta": []
+  "observatii": 988,
+  "valabile": 988,
+  "accepted": 988,
+  "surseCuTrecereCompleta": [
+   "anuntul"
+  ]
  },
  "sourceInventory": {},
  "coverage": {
@@ -510,63 +512,83 @@
   },
   "medic": {
    "name": "Medic",
-   "read": 2,
-   "withoutSalary": 0,
-   "n": 0,
-   "ads": 0,
+   "read": 30,
+   "withoutSalary": 22,
+   "n": 1,
+   "ads": 1,
    "basisNearAmount": 0,
-   "basisFromDocument": 0,
+   "basisFromDocument": 1,
    "basisFromPlatform": 0,
-   "employers": 0,
+   "employers": 1,
    "counties": 0,
-   "sourceCounts": {},
-   "employerShare": 0,
-   "sourceShare": 0,
+   "sourceCounts": {
+    "bestjobs": 1
+   },
+   "employerShare": 1,
+   "sourceShare": 1,
    "gaps": [
     "too_few_ads",
     "too_few_known_employers",
     "too_few_known_counties",
     "single_source",
+    "employer_concentration",
+    "source_concentration",
     "too_few_explicit_monthly"
    ],
-   "explicitMonthly": 0,
+   "explicitMonthly": 1,
    "assumedMonthly": 0,
-   "periodSensitivity": null,
+   "periodSensitivity": 0,
    "sourceSensitivity": null,
    "midpointEstimate": null,
-   "centralEstimate": null,
-   "status": "no_verified_ads",
+   "centralEstimate": 7915,
+   "status": "insufficient",
    "medianBounds": null,
-   "observedRange": null,
+   "observedRange": {
+    "min": 5277,
+    "max": 10553
+   },
    "undeclaredBasis": {
-    "n": 3,
+    "n": 9,
     "sourceCounts": {
+     "bestjobs": 6,
      "ejobs": 3
     },
     "observedRange": {
-     "min": 4221,
+     "min": 1688,
      "max": 52765
     },
     "midpointEstimate": 15000
    },
    "examples": [
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/medic-de-familie/1983388",
-     "source": "ejobs",
-     "min": 15000,
-     "max": 15000
+     "url": "https://www.bestjobs.eu/loc-de-munca/medic-medicina-de-laborator-29",
+     "source": "bestjobs",
+     "min": 1688,
+     "max": 1688
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/medic-stomatolog-parodontolog-clinica-piatra-neamt/1985725",
-     "source": "ejobs",
-     "min": 36936,
-     "max": 52765
+     "url": "https://www.bestjobs.eu/loc-de-munca/medic-dermatolog-pentru-consultatii-proceduri-1",
+     "source": "bestjobs",
+     "min": 9498,
+     "max": 13191
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/medic-tehnician-veterinar-pentru-farmacie-veterinara/1983015",
-     "source": "ejobs",
-     "min": 4221,
-     "max": 6332
+     "url": "https://www.bestjobs.eu/loc-de-munca/medic-specialist-diabetolog-4",
+     "source": "bestjobs",
+     "min": 16885,
+     "max": 26383
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/medic-specialist-oncolog",
+     "source": "bestjobs",
+     "min": 21106,
+     "max": 23744
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/angajare-colaborare-medic-de-familie",
+     "source": "bestjobs",
+     "min": 15830,
+     "max": 15830
     }
    ]
   },
@@ -610,64 +632,90 @@
   },
   "asistent-medical": {
    "name": "Asistent medical",
-   "read": 2,
-   "withoutSalary": 0,
-   "n": 0,
-   "ads": 0,
-   "basisNearAmount": 0,
+   "read": 50,
+   "withoutSalary": 48,
+   "n": 1,
+   "ads": 1,
+   "basisNearAmount": 1,
    "basisFromDocument": 0,
    "basisFromPlatform": 0,
    "employers": 0,
-   "counties": 0,
-   "sourceCounts": {},
+   "counties": 1,
+   "sourceCounts": {
+    "anuntul": 1
+   },
    "employerShare": 0,
-   "sourceShare": 0,
+   "sourceShare": 1,
    "gaps": [
     "too_few_ads",
     "too_few_known_employers",
     "too_few_known_counties",
     "single_source",
+    "source_concentration",
     "too_few_explicit_monthly"
    ],
    "explicitMonthly": 0,
-   "assumedMonthly": 0,
+   "assumedMonthly": 1,
    "periodSensitivity": null,
    "sourceSensitivity": null,
    "midpointEstimate": null,
-   "centralEstimate": null,
-   "status": "no_verified_ads",
+   "centralEstimate": 4200,
+   "status": "insufficient",
    "medianBounds": null,
-   "observedRange": null,
+   "observedRange": {
+    "min": 4200,
+    "max": 4200
+   },
    "undeclaredBasis": {
-    "n": 2,
+    "n": 14,
     "sourceCounts": {
+     "bestjobs": 8,
+     "anuntul": 4,
      "ejobs": 2
     },
     "observedRange": {
-     "min": 3600,
-     "max": 5300
+     "min": 2638,
+     "max": 8000
     },
     "midpointEstimate": 4550
    },
    "examples": [
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/asistent-medical-generalist-imagistica-dentara/1984284",
-     "source": "ejobs",
-     "min": 3600,
-     "max": 5000
+     "url": "https://www.bestjobs.eu/loc-de-munca/asistent-medical-generalist-1064",
+     "source": "bestjobs",
+     "min": 4221,
+     "max": 4221
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/asistent-medical-stomatologie/1987778",
-     "source": "ejobs",
-     "min": 4300,
-     "max": 5300
+     "url": "https://www.bestjobs.eu/loc-de-munca/asistenta-medicala-generalista-74",
+     "source": "bestjobs",
+     "min": 5277,
+     "max": 5277
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/asistent-medical-generalist-1067",
+     "source": "bestjobs",
+     "min": 3694,
+     "max": 3694
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/asistent-medical-generalist-dermatologie-estetica-2",
+     "source": "bestjobs",
+     "min": 4221,
+     "max": 4221
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/asistent-medical-generalist-1068",
+     "source": "bestjobs",
+     "min": 3166,
+     "max": 3694
     }
    ]
   },
   "registrator-medical": {
    "name": "Registrator medical",
-   "read": 0,
-   "withoutSalary": 0,
+   "read": 3,
+   "withoutSalary": 3,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -704,46 +752,66 @@
   },
   "stomatolog": {
    "name": "Stomatolog",
-   "read": 1,
-   "withoutSalary": 0,
-   "n": 0,
-   "ads": 0,
+   "read": 7,
+   "withoutSalary": 5,
+   "n": 1,
+   "ads": 1,
    "basisNearAmount": 0,
-   "basisFromDocument": 0,
+   "basisFromDocument": 1,
    "basisFromPlatform": 0,
-   "employers": 0,
+   "employers": 1,
    "counties": 0,
-   "sourceCounts": {},
-   "employerShare": 0,
-   "sourceShare": 0,
+   "sourceCounts": {
+    "bestjobs": 1
+   },
+   "employerShare": 1,
+   "sourceShare": 1,
    "gaps": [
     "too_few_ads",
     "too_few_known_employers",
     "too_few_known_counties",
     "single_source",
+    "employer_concentration",
+    "source_concentration",
     "too_few_explicit_monthly"
    ],
-   "explicitMonthly": 0,
+   "explicitMonthly": 1,
    "assumedMonthly": 0,
-   "periodSensitivity": null,
+   "periodSensitivity": 0,
    "sourceSensitivity": null,
    "midpointEstimate": null,
-   "centralEstimate": null,
-   "status": "no_verified_ads",
+   "centralEstimate": 7915,
+   "status": "insufficient",
    "medianBounds": null,
-   "observedRange": null,
+   "observedRange": {
+    "min": 5277,
+    "max": 10553
+   },
    "undeclaredBasis": {
-    "n": 1,
+    "n": 2,
     "sourceCounts": {
+     "bestjobs": 1,
      "ejobs": 1
     },
     "observedRange": {
-     "min": 36936,
+     "min": 5277,
      "max": 52765
     },
-    "midpointEstimate": 44850.5
+    "midpointEstimate": 25459.25
    },
    "examples": [
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/asistenta-medicina-dentara-asistenta-stomatologie-7",
+     "source": "bestjobs",
+     "min": 5277,
+     "max": 6859
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/medic-stomatolog-generalist-full-time",
+     "source": "bestjobs",
+     "min": 5277,
+     "max": 10553
+    },
     {
      "url": "https://www.ejobs.ro/user/locuri-de-munca/medic-stomatolog-parodontolog-clinica-piatra-neamt/1985725",
      "source": "ejobs",
@@ -792,64 +860,90 @@
   },
   "farmacist": {
    "name": "Farmacist",
-   "read": 0,
-   "withoutSalary": 0,
-   "n": 0,
-   "ads": 0,
-   "basisNearAmount": 0,
+   "read": 75,
+   "withoutSalary": 75,
+   "n": 1,
+   "ads": 1,
+   "basisNearAmount": 1,
    "basisFromDocument": 0,
    "basisFromPlatform": 0,
-   "employers": 0,
+   "employers": 1,
    "counties": 0,
-   "sourceCounts": {},
-   "employerShare": 0,
-   "sourceShare": 0,
+   "sourceCounts": {
+    "bestjobs": 1
+   },
+   "employerShare": 1,
+   "sourceShare": 1,
    "gaps": [
     "too_few_ads",
     "too_few_known_employers",
     "too_few_known_counties",
     "single_source",
+    "employer_concentration",
+    "source_concentration",
     "too_few_explicit_monthly"
    ],
    "explicitMonthly": 0,
-   "assumedMonthly": 0,
+   "assumedMonthly": 1,
    "periodSensitivity": null,
    "sourceSensitivity": null,
    "midpointEstimate": null,
-   "centralEstimate": null,
-   "status": "no_verified_ads",
+   "centralEstimate": 6859.5,
+   "status": "insufficient",
    "medianBounds": null,
-   "observedRange": null,
+   "observedRange": {
+    "min": 5804,
+    "max": 7915
+   },
    "undeclaredBasis": {
-    "n": 2,
+    "n": 5,
     "sourceCounts": {
+     "bestjobs": 3,
      "ejobs": 2
     },
     "observedRange": {
-     "min": 4500,
+     "min": 2823,
      "max": 7915
     },
-    "midpointEstimate": 5857
+    "midpointEstimate": 5277
    },
    "examples": [
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/farmacist-in-slatina-4",
+     "source": "bestjobs",
+     "min": 4749,
+     "max": 6332
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/asistent-farmacist-121",
+     "source": "bestjobs",
+     "min": 2823,
+     "max": 3245
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/farmacist-cluj-napoca-5",
+     "source": "bestjobs",
+     "min": 5277,
+     "max": 5277
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/farmacist-farmacie-non-stop",
+     "source": "bestjobs",
+     "min": 5804,
+     "max": 7915
+    },
     {
      "url": "https://www.ejobs.ro/user/locuri-de-munca/farmacist-slatina/1988248",
      "source": "ejobs",
      "min": 4500,
      "max": 6000
-    },
-    {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/farmacist-farmacist-diriginte-balotesti/1987007",
-     "source": "ejobs",
-     "min": 5013,
-     "max": 7915
     }
    ]
   },
   "asistent-farmacie": {
    "name": "Asistent de farmacie",
-   "read": 0,
-   "withoutSalary": 0,
+   "read": 10,
+   "withoutSalary": 10,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -924,8 +1018,8 @@
   },
   "psiholog": {
    "name": "Psiholog",
-   "read": 0,
-   "withoutSalary": 0,
+   "read": 3,
+   "withoutSalary": 3,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -962,8 +1056,8 @@
   },
   "fizioterapeut": {
    "name": "Fizioterapeut",
-   "read": 1,
-   "withoutSalary": 0,
+   "read": 2,
+   "withoutSalary": 1,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -1000,8 +1094,8 @@
   },
   "kinetoterapeut": {
    "name": "Kinetoterapeut",
-   "read": 3,
-   "withoutSalary": 0,
+   "read": 10,
+   "withoutSalary": 5,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -1029,17 +1123,24 @@
    "medianBounds": null,
    "observedRange": null,
    "undeclaredBasis": {
-    "n": 1,
+    "n": 2,
     "sourceCounts": {
+     "bestjobs": 1,
      "ejobs": 1
     },
     "observedRange": {
-     "min": 4000,
+     "min": 3694,
      "max": 5500
     },
-    "midpointEstimate": 4750
+    "midpointEstimate": 4617.75
    },
    "examples": [
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/kinetoterapeut-295",
+     "source": "bestjobs",
+     "min": 3694,
+     "max": 5277
+    },
     {
      "url": "https://www.ejobs.ro/user/locuri-de-munca/kinetoterapeut-pediatric/1986340",
      "source": "ejobs",
@@ -1050,8 +1151,171 @@
   },
   "infirmier": {
    "name": "Infirmier",
-   "read": 1,
-   "withoutSalary": 0,
+   "read": 13,
+   "withoutSalary": 12,
+   "n": 1,
+   "ads": 1,
+   "basisNearAmount": 1,
+   "basisFromDocument": 0,
+   "basisFromPlatform": 0,
+   "employers": 1,
+   "counties": 1,
+   "sourceCounts": {
+    "publi24": 1
+   },
+   "employerShare": 1,
+   "sourceShare": 1,
+   "gaps": [
+    "too_few_ads",
+    "too_few_known_employers",
+    "too_few_known_counties",
+    "single_source",
+    "employer_concentration",
+    "source_concentration",
+    "too_few_explicit_monthly"
+   ],
+   "explicitMonthly": 1,
+   "assumedMonthly": 0,
+   "periodSensitivity": 0,
+   "sourceSensitivity": null,
+   "midpointEstimate": null,
+   "centralEstimate": 3000,
+   "status": "insufficient",
+   "medianBounds": null,
+   "observedRange": {
+    "min": 3000,
+    "max": 3000
+   },
+   "undeclaredBasis": {
+    "n": 5,
+    "sourceCounts": {
+     "anuntul": 5
+    },
+    "observedRange": {
+     "min": 3000,
+     "max": 5000
+    },
+    "midpointEstimate": 4000
+   },
+   "examples": [
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-infirmiera-calificata-centru-be9qV7",
+     "source": "anuntul",
+     "min": 3000,
+     "max": 5000
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-infirmiera-ingrijitoare-pentru-ml31E0",
+     "source": "anuntul",
+     "min": 4000,
+     "max": 4001
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-ingrijitoare-infirmiere-VeKVoG",
+     "source": "anuntul",
+     "min": 3000,
+     "max": 4000
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-infirmiere-pentru-camin-de-Z0k878",
+     "source": "anuntul",
+     "min": 3500,
+     "max": 4500
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-infirmiere-2MQeV0",
+     "source": "anuntul",
+     "min": 4000,
+     "max": 4300
+    }
+   ]
+  },
+  "medic-veterinar": {
+   "name": "Medic veterinar",
+   "read": 9,
+   "withoutSalary": 7,
+   "n": 1,
+   "ads": 1,
+   "basisNearAmount": 0,
+   "basisFromDocument": 1,
+   "basisFromPlatform": 0,
+   "employers": 1,
+   "counties": 0,
+   "sourceCounts": {
+    "bestjobs": 1
+   },
+   "employerShare": 1,
+   "sourceShare": 1,
+   "gaps": [
+    "too_few_ads",
+    "too_few_known_employers",
+    "too_few_known_counties",
+    "single_source",
+    "employer_concentration",
+    "source_concentration",
+    "too_few_explicit_monthly"
+   ],
+   "explicitMonthly": 1,
+   "assumedMonthly": 0,
+   "periodSensitivity": 0,
+   "sourceSensitivity": null,
+   "midpointEstimate": null,
+   "centralEstimate": 5540.5,
+   "status": "insufficient",
+   "medianBounds": null,
+   "observedRange": {
+    "min": 3694,
+    "max": 7387
+   },
+   "undeclaredBasis": {
+    "n": 7,
+    "sourceCounts": {
+     "bestjobs": 4,
+     "ejobs": 3
+    },
+    "observedRange": {
+     "min": 1609,
+     "max": 10553
+    },
+    "midpointEstimate": 6000
+   },
+   "examples": [
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/medic-veterinar-402",
+     "source": "bestjobs",
+     "min": 3694,
+     "max": 7387
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/medic-veterinar-reprezentant-medical-7",
+     "source": "bestjobs",
+     "min": 5277,
+     "max": 10553
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/medic-veterinar-reprezentant-medical-9",
+     "source": "bestjobs",
+     "min": 5277,
+     "max": 10553
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/angajam-tehnician-veterinar-doctor-veterinar-1",
+     "source": "bestjobs",
+     "min": 1609,
+     "max": 1609
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/reprezentant-consultant-vanzari-medic-veterinar-6",
+     "source": "bestjobs",
+     "min": 4749,
+     "max": 6859
+    }
+   ]
+  },
+  "profesor": {
+   "name": "Profesor",
+   "read": 13,
+   "withoutSalary": 12,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -1079,17 +1343,91 @@
    "medianBounds": null,
    "observedRange": null,
    "undeclaredBasis": {
-    "n": 0,
-    "observedRange": null,
-    "midpointEstimate": null,
-    "sourceCounts": {}
+    "n": 2,
+    "sourceCounts": {
+     "bestjobs": 2
+    },
+    "observedRange": {
+     "min": 4907,
+     "max": 10553
+    },
+    "midpointEstimate": 7202.5
    },
-   "examples": []
+   "examples": [
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/profesor-de-matematica-in-invatamantul-secundar",
+     "source": "bestjobs",
+     "min": 7915,
+     "max": 10553
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/profesor-de-fizica-22",
+     "source": "bestjobs",
+     "min": 4907,
+     "max": 5435
+    }
+   ]
   },
-  "medic-veterinar": {
-   "name": "Medic veterinar",
+  "invatator": {
+   "name": "Învățător",
+   "read": 2,
+   "withoutSalary": 2,
+   "n": 0,
+   "ads": 0,
+   "basisNearAmount": 0,
+   "basisFromDocument": 0,
+   "basisFromPlatform": 0,
+   "employers": 0,
+   "counties": 0,
+   "sourceCounts": {},
+   "employerShare": 0,
+   "sourceShare": 0,
+   "gaps": [
+    "too_few_ads",
+    "too_few_known_employers",
+    "too_few_known_counties",
+    "single_source",
+    "too_few_explicit_monthly"
+   ],
+   "explicitMonthly": 0,
+   "assumedMonthly": 0,
+   "periodSensitivity": null,
+   "sourceSensitivity": null,
+   "midpointEstimate": null,
+   "centralEstimate": null,
+   "status": "no_verified_ads",
+   "medianBounds": null,
+   "observedRange": null,
+   "undeclaredBasis": {
+    "n": 2,
+    "sourceCounts": {
+     "bestjobs": 2
+    },
+    "observedRange": {
+     "min": 3694,
+     "max": 4749
+    },
+    "midpointEstimate": 4089.5
+   },
+   "examples": [
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/invatator-educator-6",
+     "source": "bestjobs",
+     "min": 3694,
+     "max": 4749
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/invatatoare-educatoare-after-school-5",
+     "source": "bestjobs",
+     "min": 3694,
+     "max": 4221
+    }
+   ]
+  },
+  "educator": {
+   "name": "Educator",
    "read": 1,
-   "withoutSalary": 0,
+   "withoutSalary": 1,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -1119,148 +1457,34 @@
    "undeclaredBasis": {
     "n": 3,
     "sourceCounts": {
-     "ejobs": 3
+     "bestjobs": 3
     },
     "observedRange": {
-     "min": 4000,
-     "max": 10000
+     "min": 3694,
+     "max": 6332
     },
-    "midpointEstimate": 6000
+    "midpointEstimate": 4221.5
    },
    "examples": [
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/medic-veterinar-ploiesti/1988847",
-     "source": "ejobs",
-     "min": 4000,
-     "max": 6000
+     "url": "https://www.bestjobs.eu/loc-de-munca/rawr-kindergarten-angajeaza-educator-educatoare-2",
+     "source": "bestjobs",
+     "min": 5277,
+     "max": 6332
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/medic-veterinar/1982538",
-     "source": "ejobs",
-     "min": 5000,
-     "max": 10000
+     "url": "https://www.bestjobs.eu/loc-de-munca/invatator-educator-6",
+     "source": "bestjobs",
+     "min": 3694,
+     "max": 4749
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/medic-veterinar/1984241",
-     "source": "ejobs",
-     "min": 5000,
-     "max": 7000
+     "url": "https://www.bestjobs.eu/loc-de-munca/invatatoare-educatoare-after-school-5",
+     "source": "bestjobs",
+     "min": 3694,
+     "max": 4221
     }
    ]
-  },
-  "profesor": {
-   "name": "Profesor",
-   "read": 0,
-   "withoutSalary": 0,
-   "n": 0,
-   "ads": 0,
-   "basisNearAmount": 0,
-   "basisFromDocument": 0,
-   "basisFromPlatform": 0,
-   "employers": 0,
-   "counties": 0,
-   "sourceCounts": {},
-   "employerShare": 0,
-   "sourceShare": 0,
-   "gaps": [
-    "too_few_ads",
-    "too_few_known_employers",
-    "too_few_known_counties",
-    "single_source",
-    "too_few_explicit_monthly"
-   ],
-   "explicitMonthly": 0,
-   "assumedMonthly": 0,
-   "periodSensitivity": null,
-   "sourceSensitivity": null,
-   "midpointEstimate": null,
-   "centralEstimate": null,
-   "status": "no_verified_ads",
-   "medianBounds": null,
-   "observedRange": null,
-   "undeclaredBasis": {
-    "n": 0,
-    "observedRange": null,
-    "midpointEstimate": null,
-    "sourceCounts": {}
-   },
-   "examples": []
-  },
-  "invatator": {
-   "name": "Învățător",
-   "read": 0,
-   "withoutSalary": 0,
-   "n": 0,
-   "ads": 0,
-   "basisNearAmount": 0,
-   "basisFromDocument": 0,
-   "basisFromPlatform": 0,
-   "employers": 0,
-   "counties": 0,
-   "sourceCounts": {},
-   "employerShare": 0,
-   "sourceShare": 0,
-   "gaps": [
-    "too_few_ads",
-    "too_few_known_employers",
-    "too_few_known_counties",
-    "single_source",
-    "too_few_explicit_monthly"
-   ],
-   "explicitMonthly": 0,
-   "assumedMonthly": 0,
-   "periodSensitivity": null,
-   "sourceSensitivity": null,
-   "midpointEstimate": null,
-   "centralEstimate": null,
-   "status": "no_verified_ads",
-   "medianBounds": null,
-   "observedRange": null,
-   "undeclaredBasis": {
-    "n": 0,
-    "observedRange": null,
-    "midpointEstimate": null,
-    "sourceCounts": {}
-   },
-   "examples": []
-  },
-  "educator": {
-   "name": "Educator",
-   "read": 0,
-   "withoutSalary": 0,
-   "n": 0,
-   "ads": 0,
-   "basisNearAmount": 0,
-   "basisFromDocument": 0,
-   "basisFromPlatform": 0,
-   "employers": 0,
-   "counties": 0,
-   "sourceCounts": {},
-   "employerShare": 0,
-   "sourceShare": 0,
-   "gaps": [
-    "too_few_ads",
-    "too_few_known_employers",
-    "too_few_known_counties",
-    "single_source",
-    "too_few_explicit_monthly"
-   ],
-   "explicitMonthly": 0,
-   "assumedMonthly": 0,
-   "periodSensitivity": null,
-   "sourceSensitivity": null,
-   "midpointEstimate": null,
-   "centralEstimate": null,
-   "status": "no_verified_ads",
-   "medianBounds": null,
-   "observedRange": null,
-   "undeclaredBasis": {
-    "n": 0,
-    "observedRange": null,
-    "midpointEstimate": null,
-    "sourceCounts": {}
-   },
-   "examples": []
   },
   "profesor-universitar": {
    "name": "Profesor universitar",
@@ -1340,8 +1564,8 @@
   },
   "instructor-auto": {
    "name": "Instructor auto",
-   "read": 0,
-   "withoutSalary": 0,
+   "read": 1,
+   "withoutSalary": 1,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -1369,98 +1593,112 @@
    "medianBounds": null,
    "observedRange": null,
    "undeclaredBasis": {
-    "n": 0,
-    "observedRange": null,
-    "midpointEstimate": null,
-    "sourceCounts": {}
+    "n": 1,
+    "sourceCounts": {
+     "bestjobs": 1
+    },
+    "observedRange": {
+     "min": 6305,
+     "max": 6991
+    },
+    "midpointEstimate": 6648
    },
-   "examples": []
+   "examples": [
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/angajam-instructor-auto-cat-b-bucuresti",
+     "source": "bestjobs",
+     "min": 6305,
+     "max": 6991
+    }
+   ]
   },
   "contabil": {
    "name": "Contabil",
-   "read": 1,
-   "withoutSalary": 0,
-   "n": 2,
-   "ads": 2,
+   "read": 74,
+   "withoutSalary": 62,
+   "n": 21,
+   "ads": 21,
    "basisNearAmount": 0,
-   "basisFromDocument": 2,
+   "basisFromDocument": 21,
    "basisFromPlatform": 0,
-   "employers": 2,
-   "counties": 1,
+   "employers": 19,
+   "counties": 3,
    "sourceCounts": {
+    "bestjobs": 17,
+    "anuntul": 1,
+    "hipo": 1,
     "ejobs": 2
    },
-   "employerShare": 0.5,
-   "sourceShare": 1,
+   "employerShare": 0.047619047619047616,
+   "sourceShare": 0.8095238095238095,
    "gaps": [
     "too_few_ads",
-    "too_few_known_employers",
     "too_few_known_counties",
-    "single_source",
-    "employer_concentration",
-    "source_concentration",
-    "too_few_explicit_monthly"
+    "source_concentration"
    ],
-   "explicitMonthly": 2,
-   "assumedMonthly": 0,
+   "explicitMonthly": 20,
+   "assumedMonthly": 1,
    "periodSensitivity": 0,
-   "sourceSensitivity": null,
+   "sourceSensitivity": 0.055215780859677835,
    "midpointEstimate": null,
-   "centralEstimate": 6250,
+   "centralEstimate": 5804.5,
    "status": "insufficient",
    "medianBounds": null,
    "observedRange": {
-    "min": 5000,
-    "max": 8000
+    "min": 3166,
+    "max": 10553
    },
    "undeclaredBasis": {
-    "n": 14,
+    "n": 36,
     "sourceCounts": {
+     "bestjobs": 19,
+     "anuntul": 2,
+     "hipo": 1,
      "ejobs": 14
     },
     "observedRange": {
-     "min": 3700,
+     "min": 1609,
      "max": 15000
     },
     "midpointEstimate": 5875
    },
    "examples": [
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/contabil/1987596",
-     "source": "ejobs",
-     "min": 5000,
-     "max": 5000
+     "url": "https://www.bestjobs.eu/loc-de-munca/contabil-sef-958",
+     "source": "bestjobs",
+     "min": 8970,
+     "max": 12136
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/senior-accountant-brasov/1986414",
-     "source": "ejobs",
-     "min": 4500,
-     "max": 9000
+     "url": "https://www.bestjobs.eu/loc-de-munca/contabil-saga-8",
+     "source": "bestjobs",
+     "min": 6015,
+     "max": 6648
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/contabil/1988643",
-     "source": "ejobs",
-     "min": 5500,
-     "max": 6000
+     "url": "https://www.bestjobs.eu/loc-de-munca/junior-accountant-664",
+     "source": "bestjobs",
+     "min": 3694,
+     "max": 5277
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/contabil/1987406",
-     "source": "ejobs",
-     "min": 5000,
-     "max": 5000
+     "url": "https://www.bestjobs.eu/loc-de-munca/contabil-expert-contabil-32",
+     "source": "bestjobs",
+     "min": 5277,
+     "max": 5804
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/economist-contabil/1987213",
-     "source": "ejobs",
-     "min": 4000,
-     "max": 6000
+     "url": "https://www.bestjobs.eu/loc-de-munca/contabil-entry-level-6",
+     "source": "bestjobs",
+     "min": 4749,
+     "max": 5804
     }
    ]
   },
   "auditor": {
    "name": "Auditor financiar",
-   "read": 1,
-   "withoutSalary": 0,
+   "read": 21,
+   "withoutSalary": 20,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -1488,17 +1726,36 @@
    "medianBounds": null,
    "observedRange": null,
    "undeclaredBasis": {
-    "n": 0,
-    "observedRange": null,
-    "midpointEstimate": null,
-    "sourceCounts": {}
+    "n": 2,
+    "sourceCounts": {
+     "bestjobs": 1,
+     "hipo": 1
+    },
+    "observedRange": {
+     "min": 6500,
+     "max": 10025
+    },
+    "midpointEstimate": 7985
    },
-   "examples": []
+   "examples": [
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/auditor-financiar-statutar",
+     "source": "bestjobs",
+     "min": 7915,
+     "max": 10025
+    },
+    {
+     "url": "https://www.hipo.ro/locuri-de-munca/locuri_de_munca/252193/Grant-Thornton-Romania/Senior-Internal-Auditor--",
+     "source": "hipo",
+     "min": 6500,
+     "max": 7500
+    }
+   ]
   },
   "analist-financiar": {
    "name": "Analist financiar",
-   "read": 0,
-   "withoutSalary": 0,
+   "read": 4,
+   "withoutSalary": 4,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -1535,75 +1792,82 @@
   },
   "economist": {
    "name": "Economist",
-   "read": 1,
-   "withoutSalary": 0,
-   "n": 0,
-   "ads": 0,
+   "read": 32,
+   "withoutSalary": 30,
+   "n": 5,
+   "ads": 5,
    "basisNearAmount": 0,
-   "basisFromDocument": 0,
+   "basisFromDocument": 5,
    "basisFromPlatform": 0,
-   "employers": 0,
+   "employers": 5,
    "counties": 0,
-   "sourceCounts": {},
-   "employerShare": 0,
-   "sourceShare": 0,
+   "sourceCounts": {
+    "bestjobs": 5
+   },
+   "employerShare": 0.2,
+   "sourceShare": 1,
    "gaps": [
     "too_few_ads",
     "too_few_known_employers",
     "too_few_known_counties",
     "single_source",
+    "source_concentration",
     "too_few_explicit_monthly"
    ],
-   "explicitMonthly": 0,
+   "explicitMonthly": 5,
    "assumedMonthly": 0,
-   "periodSensitivity": null,
+   "periodSensitivity": 0,
    "sourceSensitivity": null,
    "midpointEstimate": null,
-   "centralEstimate": null,
-   "status": "no_verified_ads",
+   "centralEstimate": 5804.5,
+   "status": "insufficient",
    "medianBounds": null,
-   "observedRange": null,
+   "observedRange": {
+    "min": 3273,
+    "max": 7915
+   },
    "undeclaredBasis": {
-    "n": 5,
+    "n": 12,
     "sourceCounts": {
+     "bestjobs": 7,
      "ejobs": 5
     },
     "observedRange": {
-     "min": 4000,
-     "max": 8000
+     "min": 3430,
+     "max": 10553
     },
-    "midpointEstimate": 6250
+    "midpointEstimate": 5738.25
    },
    "examples": [
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/economist-contabil/1987213",
-     "source": "ejobs",
-     "min": 4000,
-     "max": 6000
+     "url": "https://www.bestjobs.eu/loc-de-munca/economist-4040",
+     "source": "bestjobs",
+     "min": 5277,
+     "max": 10553
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/economist-accountant-specialist/1985642",
-     "source": "ejobs",
-     "min": 5000,
-     "max": 6000
+     "url": "https://www.bestjobs.eu/loc-de-munca/economist-4041",
+     "source": "bestjobs",
+     "min": 4749,
+     "max": 5303
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/economist-contabil/1988128",
-     "source": "ejobs",
-     "min": 5500,
-     "max": 7000
+     "url": "https://www.bestjobs.eu/loc-de-munca/contabil-4896",
+     "source": "bestjobs",
+     "min": 6859,
+     "max": 7915
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/contabil-economist/1986542",
-     "source": "ejobs",
-     "min": 5500,
-     "max": 8000
+     "url": "https://www.bestjobs.eu/loc-de-munca/economist-in-cadrul-servicii-publice-iasi-sa-1",
+     "source": "bestjobs",
+     "min": 3694,
+     "max": 3694
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/inginer-economist-cu-experienta/1984669",
-     "source": "ejobs",
-     "min": 5000,
-     "max": 8000
+     "url": "https://www.bestjobs.eu/loc-de-munca/rubix-ro-cauta-economist",
+     "source": "bestjobs",
+     "min": 3430,
+     "max": 3694
     }
    ]
   },
@@ -1638,17 +1902,29 @@
    "medianBounds": null,
    "observedRange": null,
    "undeclaredBasis": {
-    "n": 0,
-    "observedRange": null,
-    "midpointEstimate": null,
-    "sourceCounts": {}
+    "n": 1,
+    "sourceCounts": {
+     "bestjobs": 1
+    },
+    "observedRange": {
+     "min": 4221,
+     "max": 4221
+    },
+    "midpointEstimate": 4221
    },
-   "examples": []
+   "examples": [
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/ofiter-credite-agent-comercial-17",
+     "source": "bestjobs",
+     "min": 4221,
+     "max": 4221
+    }
+   ]
   },
   "agent-asigurari": {
    "name": "Agent de asigurări",
-   "read": 1,
-   "withoutSalary": 0,
+   "read": 2,
+   "withoutSalary": 1,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -1685,8 +1961,8 @@
   },
   "broker": {
    "name": "Broker",
-   "read": 2,
-   "withoutSalary": 0,
+   "read": 5,
+   "withoutSalary": 2,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -1714,17 +1990,29 @@
    "medianBounds": null,
    "observedRange": null,
    "undeclaredBasis": {
-    "n": 0,
-    "observedRange": null,
-    "midpointEstimate": null,
-    "sourceCounts": {}
+    "n": 1,
+    "sourceCounts": {
+     "bestjobs": 1
+    },
+    "observedRange": {
+     "min": 10553,
+     "max": 10553
+    },
+    "midpointEstimate": 10553
    },
-   "examples": []
+   "examples": [
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/broker-imobiliar-242",
+     "source": "bestjobs",
+     "min": 10553,
+     "max": 10553
+    }
+   ]
   },
   "consultant-financiar": {
    "name": "Consultant financiar",
-   "read": 5,
-   "withoutSalary": 0,
+   "read": 9,
+   "withoutSalary": 3,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -1752,50 +2040,93 @@
    "medianBounds": null,
    "observedRange": null,
    "undeclaredBasis": {
-    "n": 0,
-    "observedRange": null,
-    "midpointEstimate": null,
-    "sourceCounts": {}
+    "n": 2,
+    "sourceCounts": {
+     "bestjobs": 2
+    },
+    "observedRange": {
+     "min": 4221,
+     "max": 6332
+    },
+    "midpointEstimate": 5276.75
    },
-   "examples": []
+   "examples": [
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/consultant-financiar-440",
+     "source": "bestjobs",
+     "min": 5277,
+     "max": 6332
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/consultant-financiar-442",
+     "source": "bestjobs",
+     "min": 4221,
+     "max": 5277
+    }
+   ]
   },
   "avocat": {
    "name": "Avocat",
    "read": 0,
    "withoutSalary": 0,
-   "n": 0,
-   "ads": 0,
+   "n": 1,
+   "ads": 1,
    "basisNearAmount": 0,
-   "basisFromDocument": 0,
+   "basisFromDocument": 1,
    "basisFromPlatform": 0,
-   "employers": 0,
+   "employers": 1,
    "counties": 0,
-   "sourceCounts": {},
-   "employerShare": 0,
-   "sourceShare": 0,
+   "sourceCounts": {
+    "bestjobs": 1
+   },
+   "employerShare": 1,
+   "sourceShare": 1,
    "gaps": [
     "too_few_ads",
     "too_few_known_employers",
     "too_few_known_counties",
     "single_source",
+    "employer_concentration",
+    "source_concentration",
     "too_few_explicit_monthly"
    ],
-   "explicitMonthly": 0,
+   "explicitMonthly": 1,
    "assumedMonthly": 0,
-   "periodSensitivity": null,
+   "periodSensitivity": 0,
    "sourceSensitivity": null,
    "midpointEstimate": null,
-   "centralEstimate": null,
-   "status": "no_verified_ads",
+   "centralEstimate": 5804.5,
+   "status": "insufficient",
    "medianBounds": null,
-   "observedRange": null,
-   "undeclaredBasis": {
-    "n": 0,
-    "observedRange": null,
-    "midpointEstimate": null,
-    "sourceCounts": {}
+   "observedRange": {
+    "min": 5277,
+    "max": 6332
    },
-   "examples": []
+   "undeclaredBasis": {
+    "n": 1,
+    "sourceCounts": {
+     "bestjobs": 1
+    },
+    "observedRange": {
+     "min": 10553,
+     "max": 13191
+    },
+    "midpointEstimate": 11872
+   },
+   "examples": [
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/asistent-secretariat-birou-avocat-2",
+     "source": "bestjobs",
+     "min": 5277,
+     "max": 6332
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/avocat-definitiv-96",
+     "source": "bestjobs",
+     "min": 10553,
+     "max": 13191
+    }
+   ]
   },
   "notar": {
    "name": "Notar",
@@ -1837,51 +2168,83 @@
   },
   "consilier-juridic": {
    "name": "Consilier juridic",
-   "read": 0,
-   "withoutSalary": 0,
-   "n": 0,
-   "ads": 0,
+   "read": 10,
+   "withoutSalary": 10,
+   "n": 1,
+   "ads": 1,
    "basisNearAmount": 0,
-   "basisFromDocument": 0,
+   "basisFromDocument": 1,
    "basisFromPlatform": 0,
-   "employers": 0,
-   "counties": 0,
-   "sourceCounts": {},
-   "employerShare": 0,
-   "sourceShare": 0,
+   "employers": 1,
+   "counties": 1,
+   "sourceCounts": {
+    "hipo": 1
+   },
+   "employerShare": 1,
+   "sourceShare": 1,
    "gaps": [
     "too_few_ads",
     "too_few_known_employers",
     "too_few_known_counties",
     "single_source",
+    "employer_concentration",
+    "source_concentration",
     "too_few_explicit_monthly"
    ],
-   "explicitMonthly": 0,
+   "explicitMonthly": 1,
    "assumedMonthly": 0,
-   "periodSensitivity": null,
+   "periodSensitivity": 0,
    "sourceSensitivity": null,
    "midpointEstimate": null,
-   "centralEstimate": null,
-   "status": "no_verified_ads",
+   "centralEstimate": 7000,
+   "status": "insufficient",
    "medianBounds": null,
-   "observedRange": null,
+   "observedRange": {
+    "min": 7000,
+    "max": 7000
+   },
    "undeclaredBasis": {
-    "n": 1,
+    "n": 7,
     "sourceCounts": {
+     "bestjobs": 6,
      "ejobs": 1
     },
     "observedRange": {
      "min": 2700,
-     "max": 3100
+     "max": 7915
     },
-    "midpointEstimate": 2900
+    "midpointEstimate": 4485
    },
    "examples": [
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/jurist-a-secretar-a/1988634",
-     "source": "ejobs",
-     "min": 2700,
-     "max": 3100
+     "url": "https://www.bestjobs.eu/loc-de-munca/consilier-juridic-experienta-in-executare-silita",
+     "source": "bestjobs",
+     "min": 6859,
+     "max": 7915
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/consilier-juridic-1538",
+     "source": "bestjobs",
+     "min": 5303,
+     "max": 5303
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/consilier-juridic-1543",
+     "source": "bestjobs",
+     "min": 5277,
+     "max": 5277
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/consilier-juridic-executare-silita-69",
+     "source": "bestjobs",
+     "min": 3166,
+     "max": 4749
+    },
+    {
+     "url": "https://www.hipo.ro/locuri-de-munca/locuri_de_munca/271193/ABC-Human-Capital/Consilier-Juridic-dreptul-muncii",
+     "source": "hipo",
+     "min": 7000,
+     "max": 7000
     }
    ]
   },
@@ -1954,12 +2317,24 @@
    "medianBounds": null,
    "observedRange": null,
    "undeclaredBasis": {
-    "n": 0,
-    "observedRange": null,
-    "midpointEstimate": null,
-    "sourceCounts": {}
+    "n": 1,
+    "sourceCounts": {
+     "bestjobs": 1
+    },
+    "observedRange": {
+     "min": 7915,
+     "max": 8442
+    },
+    "midpointEstimate": 8178.5
    },
-   "examples": []
+   "examples": [
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/specialist-procurare-3",
+     "source": "bestjobs",
+     "min": 7915,
+     "max": 8442
+    }
+   ]
   },
   "grefier": {
    "name": "Grefier",
@@ -2001,82 +2376,88 @@
   },
   "inginer": {
    "name": "Inginer",
-   "read": 6,
-   "withoutSalary": 2,
-   "n": 0,
-   "ads": 0,
-   "basisNearAmount": 0,
-   "basisFromDocument": 0,
+   "read": 192,
+   "withoutSalary": 172,
+   "n": 12,
+   "ads": 12,
+   "basisNearAmount": 1,
+   "basisFromDocument": 11,
    "basisFromPlatform": 0,
-   "employers": 0,
-   "counties": 0,
-   "sourceCounts": {},
-   "employerShare": 0,
-   "sourceShare": 0,
+   "employers": 10,
+   "counties": 1,
+   "sourceCounts": {
+    "bestjobs": 9,
+    "hipo": 3
+   },
+   "employerShare": 0.25,
+   "sourceShare": 0.75,
    "gaps": [
     "too_few_ads",
-    "too_few_known_employers",
     "too_few_known_counties",
-    "single_source",
-    "too_few_explicit_monthly"
+    "employer_concentration"
    ],
-   "explicitMonthly": 0,
+   "explicitMonthly": 12,
    "assumedMonthly": 0,
-   "periodSensitivity": null,
-   "sourceSensitivity": null,
+   "periodSensitivity": 0,
+   "sourceSensitivity": 0.03375963611660809,
    "midpointEstimate": null,
-   "centralEstimate": null,
-   "status": "no_verified_ads",
+   "centralEstimate": 8464.25,
+   "status": "insufficient",
    "medianBounds": null,
-   "observedRange": null,
+   "observedRange": {
+    "min": 10,
+    "max": 15830
+   },
    "undeclaredBasis": {
-    "n": 23,
+    "n": 97,
     "sourceCounts": {
+     "bestjobs": 72,
+     "anuntul": 2,
      "ejobs": 23
     },
     "observedRange": {
-     "min": 4000,
+     "min": 3166,
      "max": 20000
     },
-    "midpointEstimate": 6900
+    "midpointEstimate": 6991
    },
    "examples": [
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/inginer-proiectant-structuri-de-rezistenta/1986368",
-     "source": "ejobs",
-     "min": 6000,
-     "max": 7800
+     "url": "https://www.bestjobs.eu/loc-de-munca/inginer-mecanic-634",
+     "source": "bestjobs",
+     "min": 5277,
+     "max": 7915
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/inginer-proiectant/1986328",
-     "source": "ejobs",
-     "min": 9498,
+     "url": "https://www.bestjobs.eu/loc-de-munca/inginer-instalatii-executie-14",
+     "source": "bestjobs",
+     "min": 5804,
+     "max": 6859
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/inginer-mecanic-635",
+     "source": "bestjobs",
+     "min": 6068,
+     "max": 6068
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/inginner-auto-inginer-mecanic",
+     "source": "bestjobs",
+     "min": 8442,
      "max": 10553
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/inginer-tehnician-service-imprimante-copiatoare/1988363",
-     "source": "ejobs",
-     "min": 4000,
-     "max": 6000
-    },
-    {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/tehnician-inginer-electromecanic-service-stivuitoare/1987768",
-     "source": "ejobs",
-     "min": 5277,
-     "max": 7387
-    },
-    {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/inginer-proiectant-inginer-proces-slatina-olt/1984372",
-     "source": "ejobs",
-     "min": 5000,
-     "max": 7000
+     "url": "https://www.bestjobs.eu/loc-de-munca/inginer-electric-energetic-12",
+     "source": "bestjobs",
+     "min": 7123,
+     "max": 7123
     }
    ]
   },
   "arhitect": {
    "name": "Arhitect",
-   "read": 2,
-   "withoutSalary": 0,
+   "read": 54,
+   "withoutSalary": 52,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -2104,17 +2485,41 @@
    "medianBounds": null,
    "observedRange": null,
    "undeclaredBasis": {
-    "n": 0,
-    "observedRange": null,
-    "midpointEstimate": null,
-    "sourceCounts": {}
+    "n": 3,
+    "sourceCounts": {
+     "bestjobs": 3
+    },
+    "observedRange": {
+     "min": 7915,
+     "max": 13191
+    },
+    "midpointEstimate": 9761.5
    },
-   "examples": []
+   "examples": [
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/arhitect-product-manager-1",
+     "source": "bestjobs",
+     "min": 8970,
+     "max": 10553
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/senior-arhitect-2",
+     "source": "bestjobs",
+     "min": 7915,
+     "max": 13191
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/arhitect-cu-drept-de-semnatura-47",
+     "source": "bestjobs",
+     "min": 7915,
+     "max": 7915
+    }
+   ]
   },
   "inginer-electronist": {
    "name": "Inginer electronist",
-   "read": 0,
-   "withoutSalary": 0,
+   "read": 2,
+   "withoutSalary": 1,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -2180,17 +2585,29 @@
    "medianBounds": null,
    "observedRange": null,
    "undeclaredBasis": {
-    "n": 0,
-    "observedRange": null,
-    "midpointEstimate": null,
-    "sourceCounts": {}
+    "n": 1,
+    "sourceCounts": {
+     "bestjobs": 1
+    },
+    "observedRange": {
+     "min": 5277,
+     "max": 10553
+    },
+    "midpointEstimate": 7915
    },
-   "examples": []
+   "examples": [
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/inginer-auto-rutiere-ofertare-tehnica-si-licitatii",
+     "source": "bestjobs",
+     "min": 5277,
+     "max": 10553
+    }
+   ]
   },
   "inginer-energetician": {
    "name": "Inginer energetician",
-   "read": 0,
-   "withoutSalary": 0,
+   "read": 18,
+   "withoutSalary": 18,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -2265,120 +2682,154 @@
   },
   "inginer-agronom": {
    "name": "Inginer agronom",
-   "read": 0,
-   "withoutSalary": 0,
-   "n": 0,
-   "ads": 0,
+   "read": 1,
+   "withoutSalary": 1,
+   "n": 1,
+   "ads": 1,
    "basisNearAmount": 0,
-   "basisFromDocument": 0,
+   "basisFromDocument": 1,
    "basisFromPlatform": 0,
-   "employers": 0,
+   "employers": 1,
    "counties": 0,
-   "sourceCounts": {},
-   "employerShare": 0,
-   "sourceShare": 0,
+   "sourceCounts": {
+    "bestjobs": 1
+   },
+   "employerShare": 1,
+   "sourceShare": 1,
    "gaps": [
     "too_few_ads",
     "too_few_known_employers",
     "too_few_known_counties",
     "single_source",
+    "employer_concentration",
+    "source_concentration",
     "too_few_explicit_monthly"
    ],
-   "explicitMonthly": 0,
+   "explicitMonthly": 1,
    "assumedMonthly": 0,
-   "periodSensitivity": null,
+   "periodSensitivity": 0,
    "sourceSensitivity": null,
    "midpointEstimate": null,
-   "centralEstimate": null,
-   "status": "no_verified_ads",
+   "centralEstimate": 7915,
+   "status": "insufficient",
    "medianBounds": null,
-   "observedRange": null,
-   "undeclaredBasis": {
-    "n": 0,
-    "observedRange": null,
-    "midpointEstimate": null,
-    "sourceCounts": {}
+   "observedRange": {
+    "min": 5277,
+    "max": 10553
    },
-   "examples": []
+   "undeclaredBasis": {
+    "n": 1,
+    "sourceCounts": {
+     "bestjobs": 1
+    },
+    "observedRange": {
+     "min": 5277,
+     "max": 6332
+    },
+    "midpointEstimate": 5804.5
+   },
+   "examples": [
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/inginer-agronom-189",
+     "source": "bestjobs",
+     "min": 5277,
+     "max": 10553
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/inginer-horticultor-agronom-6",
+     "source": "bestjobs",
+     "min": 5277,
+     "max": 6332
+    }
+   ]
   },
   "constructor": {
    "name": "Muncitor în construcții",
-   "read": 0,
-   "withoutSalary": 0,
-   "n": 0,
-   "ads": 0,
+   "read": null,
+   "withoutSalary": null,
+   "n": 2,
+   "ads": 2,
    "basisNearAmount": 0,
-   "basisFromDocument": 0,
+   "basisFromDocument": 2,
    "basisFromPlatform": 0,
-   "employers": 0,
-   "counties": 0,
-   "sourceCounts": {},
-   "employerShare": 0,
-   "sourceShare": 0,
+   "employers": 2,
+   "counties": 1,
+   "sourceCounts": {
+    "hipo": 2
+   },
+   "employerShare": 0.5,
+   "sourceShare": 1,
    "gaps": [
     "too_few_ads",
     "too_few_known_employers",
     "too_few_known_counties",
     "single_source",
+    "employer_concentration",
+    "source_concentration",
     "too_few_explicit_monthly"
    ],
-   "explicitMonthly": 0,
+   "explicitMonthly": 2,
    "assumedMonthly": 0,
-   "periodSensitivity": null,
+   "periodSensitivity": 0,
    "sourceSensitivity": null,
    "midpointEstimate": null,
-   "centralEstimate": null,
-   "status": "no_verified_ads",
+   "centralEstimate": 6125,
+   "status": "insufficient",
    "medianBounds": null,
-   "observedRange": null,
+   "observedRange": {
+    "min": 5500,
+    "max": 7000
+   },
    "undeclaredBasis": {
-    "n": 6,
+    "n": 21,
     "sourceCounts": {
+     "bestjobs": 9,
+     "anuntul": 6,
      "ejobs": 6
     },
     "observedRange": {
      "min": 3000,
      "max": 13000
     },
-    "midpointEstimate": 7250
+    "midpointEstimate": 7000
    },
    "examples": [
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/manager-proiect-constructii-junior/1987673",
-     "source": "ejobs",
-     "min": 8000,
-     "max": 10000
+     "url": "https://www.bestjobs.eu/loc-de-munca/mecanic-utilaje-constructii-17",
+     "source": "bestjobs",
+     "min": 5277,
+     "max": 5277
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/manager-proiect-constructii-craiova/1987664",
-     "source": "ejobs",
-     "min": 10000,
-     "max": 13000
+     "url": "https://www.bestjobs.eu/loc-de-munca/expert-licitatii-publice-constructii-7",
+     "source": "bestjobs",
+     "min": 6859,
+     "max": 8442
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/referent-tehnic-devizier-birou-firma-de-constructii/1988695",
-     "source": "ejobs",
-     "min": 3000,
-     "max": 5000
+     "url": "https://www.bestjobs.eu/loc-de-munca/area-sales-manager-b2b-constructii-2",
+     "source": "bestjobs",
+     "min": 7915,
+     "max": 9498
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/gestionar-constructii/1988024",
-     "source": "ejobs",
-     "min": 5000,
-     "max": 6000
+     "url": "https://www.bestjobs.eu/loc-de-munca/sef-de-santier-constructii-3",
+     "source": "bestjobs",
+     "min": 8179,
+     "max": 10025
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/sef-santier-maistru-constructii/1987683",
-     "source": "ejobs",
-     "min": 8970,
-     "max": 10553
+     "url": "https://www.bestjobs.eu/loc-de-munca/manager-de-proiect-constructii-pardoseli",
+     "source": "bestjobs",
+     "min": 6596,
+     "max": 8179
     }
    ]
   },
   "zidar": {
    "name": "Zidar",
-   "read": 3,
-   "withoutSalary": 0,
+   "read": 31,
+   "withoutSalary": 24,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -2406,17 +2857,35 @@
    "medianBounds": null,
    "observedRange": null,
    "undeclaredBasis": {
-    "n": 0,
-    "observedRange": null,
-    "midpointEstimate": null,
-    "sourceCounts": {}
+    "n": 2,
+    "sourceCounts": {
+     "anuntul": 2
+    },
+    "observedRange": {
+     "min": 6000,
+     "max": 8000
+    },
+    "midpointEstimate": 7000
    },
-   "examples": []
+   "examples": [
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-muncitori-tencuitori-zugravi-kjlRoK",
+     "source": "anuntul",
+     "min": 6000,
+     "max": 8000
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-zidari-zugravi-muncitori-x7bbNQ",
+     "source": "anuntul",
+     "min": 6000,
+     "max": 8000
+    }
+   ]
   },
   "dulgher": {
    "name": "Dulgher",
-   "read": 1,
-   "withoutSalary": 0,
+   "read": 28,
+   "withoutSalary": 22,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -2465,156 +2934,172 @@
   },
   "electrician": {
    "name": "Electrician",
-   "read": 5,
-   "withoutSalary": 0,
-   "n": 0,
-   "ads": 0,
-   "basisNearAmount": 0,
-   "basisFromDocument": 0,
+   "read": 229,
+   "withoutSalary": 197,
+   "n": 13,
+   "ads": 13,
+   "basisNearAmount": 5,
+   "basisFromDocument": 8,
    "basisFromPlatform": 0,
-   "employers": 0,
-   "counties": 0,
-   "sourceCounts": {},
-   "employerShare": 0,
-   "sourceShare": 0,
+   "employers": 9,
+   "counties": 2,
+   "sourceCounts": {
+    "bestjobs": 7,
+    "anuntul": 3,
+    "publi24": 3
+   },
+   "employerShare": 0.15384615384615385,
+   "sourceShare": 0.5384615384615384,
    "gaps": [
     "too_few_ads",
     "too_few_known_employers",
     "too_few_known_counties",
-    "single_source",
     "too_few_explicit_monthly"
    ],
-   "explicitMonthly": 0,
-   "assumedMonthly": 0,
-   "periodSensitivity": null,
-   "sourceSensitivity": null,
+   "explicitMonthly": 6,
+   "assumedMonthly": 7,
+   "periodSensitivity": 0.04251195244863677,
+   "sourceSensitivity": 0.09343229869545659,
    "midpointEstimate": null,
-   "centralEstimate": null,
-   "status": "no_verified_ads",
+   "centralEstimate": 5557.5,
+   "status": "insufficient",
    "medianBounds": null,
-   "observedRange": null,
+   "observedRange": {
+    "min": 4095,
+    "max": 10289
+   },
    "undeclaredBasis": {
-    "n": 17,
+    "n": 62,
     "sourceCounts": {
+     "bestjobs": 32,
+     "anuntul": 13,
      "ejobs": 17
     },
     "observedRange": {
-     "min": 2500,
-     "max": 10000
+     "min": 1615,
+     "max": 13191
     },
-    "midpointEstimate": 5999.5
+    "midpointEstimate": 5777
    },
    "examples": [
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/electrician-tablotier/1986304",
-     "source": "ejobs",
-     "min": 5000,
-     "max": 6000
+     "url": "https://www.bestjobs.eu/loc-de-munca/electrician-mentenanta-fabrica-1",
+     "source": "bestjobs",
+     "min": 4500,
+     "max": 4500
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/electrician-industrial-montaj-si-instalatii-electrice/1988288",
-     "source": "ejobs",
-     "min": 6000,
-     "max": 10000
+     "url": "https://www.bestjobs.eu/loc-de-munca/electrician-automatist-139",
+     "source": "bestjobs",
+     "min": 5804,
+     "max": 5804
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/tehnician-electrician/1987009",
-     "source": "ejobs",
-     "min": 5500,
-     "max": 7000
+     "url": "https://www.bestjobs.eu/loc-de-munca/electrician-2697",
+     "source": "bestjobs",
+     "min": 6332,
+     "max": 7915
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/coordonator-electrician-fotovoltaic-anre-a-b-bucuresti/1986963",
-     "source": "ejobs",
-     "min": 4000,
-     "max": 7999
+     "url": "https://www.bestjobs.eu/loc-de-munca/electrician-2699",
+     "source": "bestjobs",
+     "min": 4749,
+     "max": 5277
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/electrician-mentenanta/1984356",
-     "source": "ejobs",
-     "min": 5300,
-     "max": 5500
+     "url": "https://www.bestjobs.eu/loc-de-munca/electrician-echipe-mobile",
+     "source": "bestjobs",
+     "min": 5277,
+     "max": 5804
     }
    ]
   },
   "instalator": {
    "name": "Instalator",
-   "read": 2,
-   "withoutSalary": 0,
-   "n": 0,
-   "ads": 0,
-   "basisNearAmount": 0,
-   "basisFromDocument": 0,
+   "read": 66,
+   "withoutSalary": 55,
+   "n": 12,
+   "ads": 12,
+   "basisNearAmount": 4,
+   "basisFromDocument": 8,
    "basisFromPlatform": 0,
-   "employers": 0,
-   "counties": 0,
-   "sourceCounts": {},
-   "employerShare": 0,
-   "sourceShare": 0,
+   "employers": 10,
+   "counties": 3,
+   "sourceCounts": {
+    "bestjobs": 7,
+    "publi24": 3,
+    "anuntul": 1,
+    "hipo": 1
+   },
+   "employerShare": 0.16666666666666666,
+   "sourceShare": 0.5833333333333334,
    "gaps": [
     "too_few_ads",
-    "too_few_known_employers",
     "too_few_known_counties",
-    "single_source",
     "too_few_explicit_monthly"
    ],
-   "explicitMonthly": 0,
-   "assumedMonthly": 0,
-   "periodSensitivity": null,
-   "sourceSensitivity": null,
+   "explicitMonthly": 7,
+   "assumedMonthly": 5,
+   "periodSensitivity": 0.045144416647714354,
+   "sourceSensitivity": 0.04727879004406336,
    "midpointEstimate": null,
-   "centralEstimate": null,
-   "status": "no_verified_ads",
+   "centralEstimate": 6297.75,
+   "status": "insufficient",
    "medianBounds": null,
-   "observedRange": null,
+   "observedRange": {
+    "min": 4095,
+    "max": 26383
+   },
    "undeclaredBasis": {
-    "n": 8,
+    "n": 33,
     "sourceCounts": {
+     "bestjobs": 7,
+     "anuntul": 18,
      "ejobs": 8
     },
     "observedRange": {
      "min": 3500,
-     "max": 10000
+     "max": 10553
     },
-    "midpointEstimate": 6625
+    "midpointEstimate": 6000
    },
    "examples": [
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/instalator/1983217",
-     "source": "ejobs",
-     "min": 3500,
-     "max": 5000
+     "url": "https://www.bestjobs.eu/loc-de-munca/instalator-323",
+     "source": "bestjobs",
+     "min": 5804,
+     "max": 5883
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/maistru-instalatii-bucuresti/1988922",
-     "source": "ejobs",
-     "min": 7000,
-     "max": 8000
+     "url": "https://www.bestjobs.eu/loc-de-munca/angajam-instalator-climatizare-si-frigotehnist",
+     "source": "bestjobs",
+     "min": 4221,
+     "max": 7915
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/instalator-calificat-bucuresti/1988921",
-     "source": "ejobs",
-     "min": 6000,
-     "max": 7000
+     "url": "https://www.bestjobs.eu/loc-de-munca/instalator-gpl-cu-sau-fara-experienta",
+     "source": "bestjobs",
+     "min": 4960,
+     "max": 9498
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/buyer-instalatii-electrice-energie-regenerabila/1989184",
-     "source": "ejobs",
-     "min": 5000,
-     "max": 8500
+     "url": "https://www.bestjobs.eu/loc-de-munca/instalator-in-brasov",
+     "source": "bestjobs",
+     "min": 5277,
+     "max": 6332
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/tehnicieni-instalare-si-mentenanta-sisteme-de-securitate/1987895",
-     "source": "ejobs",
-     "min": 6000,
-     "max": 10000
+     "url": "https://www.bestjobs.eu/loc-de-munca/instalator-tehnico-sanitar-56",
+     "source": "bestjobs",
+     "min": 5277,
+     "max": 6332
     }
    ]
   },
   "zugrav": {
    "name": "Zugrav",
-   "read": 0,
-   "withoutSalary": 0,
+   "read": 6,
+   "withoutSalary": 6,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -2642,17 +3127,53 @@
    "medianBounds": null,
    "observedRange": null,
    "undeclaredBasis": {
-    "n": 0,
-    "observedRange": null,
-    "midpointEstimate": null,
-    "sourceCounts": {}
+    "n": 5,
+    "sourceCounts": {
+     "anuntul": 5
+    },
+    "observedRange": {
+     "min": 5000,
+     "max": 8000
+    },
+    "midpointEstimate": 6800
    },
-   "examples": []
+   "examples": [
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-zugravi-si-necalificati-6YLzJO",
+     "source": "anuntul",
+     "min": 5000,
+     "max": 5000
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-zugravi-facultatea-jxbzkz",
+     "source": "anuntul",
+     "min": 5000,
+     "max": 6000
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-muncitori-tencuitori-zugravi-kjlRoK",
+     "source": "anuntul",
+     "min": 6000,
+     "max": 8000
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-rigipsari-zugravi-x0eQy0",
+     "source": "anuntul",
+     "min": 6000,
+     "max": 7600
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-zidari-zugravi-muncitori-x7bbNQ",
+     "source": "anuntul",
+     "min": 6000,
+     "max": 8000
+    }
+   ]
   },
   "faiantar": {
    "name": "Faianțar",
-   "read": 0,
-   "withoutSalary": 0,
+   "read": 5,
+   "withoutSalary": 3,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -2689,8 +3210,8 @@
   },
   "sudor": {
    "name": "Sudor",
-   "read": 2,
-   "withoutSalary": 0,
+   "read": 48,
+   "withoutSalary": 39,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -2718,194 +3239,378 @@
    "medianBounds": null,
    "observedRange": null,
    "undeclaredBasis": {
-    "n": 1,
+    "n": 14,
     "sourceCounts": {
+     "bestjobs": 5,
+     "anuntul": 8,
      "ejobs": 1
     },
     "observedRange": {
-     "min": 4500,
-     "max": 5500
+     "min": 3008,
+     "max": 36936
     },
-    "midpointEstimate": 5000
+    "midpointEstimate": 6159
    },
    "examples": [
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/sudor-lacatus-clasic/1987227",
-     "source": "ejobs",
-     "min": 4500,
-     "max": 5500
+     "url": "https://www.bestjobs.eu/loc-de-munca/sudor-596",
+     "source": "bestjobs",
+     "min": 26383,
+     "max": 36936
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/sudor-mig-mag-151",
+     "source": "bestjobs",
+     "min": 5277,
+     "max": 6332
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/sudori-lucrari-in-domeniul-energetic",
+     "source": "bestjobs",
+     "min": 3008,
+     "max": 5804
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-mari-vila-angajeaza-sudori-m3dPE8",
+     "source": "anuntul",
+     "min": 5277,
+     "max": 5277
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-sudori-lacatusi-rqlw87",
+     "source": "anuntul",
+     "min": 5500,
+     "max": 7000
     }
    ]
   },
   "tamplar": {
    "name": "Tâmplar",
-   "read": 2,
-   "withoutSalary": 0,
-   "n": 0,
-   "ads": 0,
+   "read": 21,
+   "withoutSalary": 17,
+   "n": 1,
+   "ads": 1,
    "basisNearAmount": 0,
-   "basisFromDocument": 0,
+   "basisFromDocument": 1,
    "basisFromPlatform": 0,
    "employers": 0,
-   "counties": 0,
-   "sourceCounts": {},
+   "counties": 1,
+   "sourceCounts": {
+    "anuntul": 1
+   },
    "employerShare": 0,
-   "sourceShare": 0,
+   "sourceShare": 1,
    "gaps": [
     "too_few_ads",
     "too_few_known_employers",
     "too_few_known_counties",
     "single_source",
+    "source_concentration",
     "too_few_explicit_monthly"
    ],
    "explicitMonthly": 0,
-   "assumedMonthly": 0,
+   "assumedMonthly": 1,
    "periodSensitivity": null,
    "sourceSensitivity": null,
    "midpointEstimate": null,
-   "centralEstimate": null,
-   "status": "no_verified_ads",
+   "centralEstimate": 5750,
+   "status": "insufficient",
    "medianBounds": null,
-   "observedRange": null,
-   "undeclaredBasis": {
-    "n": 0,
-    "observedRange": null,
-    "midpointEstimate": null,
-    "sourceCounts": {}
+   "observedRange": {
+    "min": 5500,
+    "max": 6000
    },
-   "examples": []
+   "undeclaredBasis": {
+    "n": 8,
+    "sourceCounts": {
+     "bestjobs": 2,
+     "anuntul": 6
+    },
+    "observedRange": {
+     "min": 4000,
+     "max": 8000
+    },
+    "midpointEstimate": 5882.75
+   },
+   "examples": [
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/tamplar-210",
+     "source": "bestjobs",
+     "min": 5013,
+     "max": 7018
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-montator-tamplarie-pvc-26XVME",
+     "source": "anuntul",
+     "min": 4000,
+     "max": 5000
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-montator-termopane-tamplarie-eeWjxy",
+     "source": "anuntul",
+     "min": 4500,
+     "max": 7000
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-montatori-tamplarie-pvc-B9ZZXk",
+     "source": "anuntul",
+     "min": 5000,
+     "max": 7500
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/executant-si-montator-tamplarie-pvc-si-aluminiu",
+     "source": "bestjobs",
+     "min": 4221,
+     "max": 5277
+    }
+   ]
   },
   "operator-productie": {
    "name": "Operator producție",
-   "read": 0,
-   "withoutSalary": 0,
-   "n": 0,
-   "ads": 0,
+   "read": 29,
+   "withoutSalary": 15,
+   "n": 2,
+   "ads": 2,
    "basisNearAmount": 0,
-   "basisFromDocument": 0,
+   "basisFromDocument": 2,
    "basisFromPlatform": 0,
-   "employers": 0,
-   "counties": 0,
-   "sourceCounts": {},
-   "employerShare": 0,
-   "sourceShare": 0,
+   "employers": 1,
+   "counties": 1,
+   "sourceCounts": {
+    "anuntul": 1,
+    "bestjobs": 1
+   },
+   "employerShare": 0.5,
+   "sourceShare": 0.5,
    "gaps": [
     "too_few_ads",
     "too_few_known_employers",
     "too_few_known_counties",
-    "single_source",
-    "too_few_explicit_monthly"
+    "employer_concentration",
+    "too_few_explicit_monthly",
+    "pay_period_sensitivity",
+    "source_sensitivity"
    ],
-   "explicitMonthly": 0,
-   "assumedMonthly": 0,
-   "periodSensitivity": null,
-   "sourceSensitivity": null,
+   "explicitMonthly": 1,
+   "assumedMonthly": 1,
+   "periodSensitivity": 0.2579672695951766,
+   "sourceSensitivity": 0.20506675795960289,
    "midpointEstimate": null,
-   "centralEstimate": null,
-   "status": "no_verified_ads",
+   "centralEstimate": 3651.25,
+   "status": "insufficient",
    "medianBounds": null,
-   "observedRange": null,
-   "undeclaredBasis": {
-    "n": 0,
-    "observedRange": null,
-    "midpointEstimate": null,
-    "sourceCounts": {}
+   "observedRange": {
+    "min": 2797,
+    "max": 4500
    },
-   "examples": []
+   "undeclaredBasis": {
+    "n": 8,
+    "sourceCounts": {
+     "bestjobs": 7,
+     "anuntul": 1
+    },
+    "observedRange": {
+     "min": 2638,
+     "max": 6332
+    },
+    "midpointEstimate": 3429.75
+   },
+   "examples": [
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/operator-productie-mase-plastice-16",
+     "source": "bestjobs",
+     "min": 5277,
+     "max": 6332
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/angajam-operator-productie-11",
+     "source": "bestjobs",
+     "min": 3694,
+     "max": 4749
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/operator-productie-brasov-8",
+     "source": "bestjobs",
+     "min": 2902,
+     "max": 3166
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/operator-productie-imprimare-2",
+     "source": "bestjobs",
+     "min": 3166,
+     "max": 3694
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-operatori-productie-in-fabrica-rmB0d1",
+     "source": "anuntul",
+     "min": 4300,
+     "max": 4500
+    }
+   ]
   },
   "mecanic-auto": {
    "name": "Mecanic auto",
-   "read": 3,
-   "withoutSalary": 0,
-   "n": 0,
-   "ads": 0,
+   "read": 8,
+   "withoutSalary": 4,
+   "n": 1,
+   "ads": 1,
    "basisNearAmount": 0,
-   "basisFromDocument": 0,
+   "basisFromDocument": 1,
    "basisFromPlatform": 0,
-   "employers": 0,
+   "employers": 1,
    "counties": 0,
-   "sourceCounts": {},
-   "employerShare": 0,
-   "sourceShare": 0,
+   "sourceCounts": {
+    "bestjobs": 1
+   },
+   "employerShare": 1,
+   "sourceShare": 1,
    "gaps": [
     "too_few_ads",
     "too_few_known_employers",
     "too_few_known_counties",
     "single_source",
+    "employer_concentration",
+    "source_concentration",
     "too_few_explicit_monthly"
    ],
-   "explicitMonthly": 0,
+   "explicitMonthly": 1,
    "assumedMonthly": 0,
-   "periodSensitivity": null,
+   "periodSensitivity": 0,
    "sourceSensitivity": null,
    "midpointEstimate": null,
-   "centralEstimate": null,
-   "status": "no_verified_ads",
+   "centralEstimate": 10553,
+   "status": "insufficient",
    "medianBounds": null,
-   "observedRange": null,
+   "observedRange": {
+    "min": 7915,
+    "max": 13191
+   },
    "undeclaredBasis": {
-    "n": 2,
+    "n": 7,
     "sourceCounts": {
+     "bestjobs": 3,
+     "anuntul": 2,
      "ejobs": 2
     },
     "observedRange": {
      "min": 2500,
      "max": 9000
     },
-    "midpointEstimate": 5375
+    "midpointEstimate": 5870.5
    },
    "examples": [
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/mecanic-auto-dacia-bmw/1986990",
-     "source": "ejobs",
-     "min": 5500,
-     "max": 9000
+     "url": "https://www.bestjobs.eu/loc-de-munca/mecanic-auto-1371",
+     "source": "bestjobs",
+     "min": 5567,
+     "max": 6174
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/mecanic-auto-electrician-auto-vulcanizator-auto/1984201",
-     "source": "ejobs",
-     "min": 2500,
-     "max": 4500
+     "url": "https://www.bestjobs.eu/loc-de-munca/mecanic-auto-1374",
+     "source": "bestjobs",
+     "min": 7915,
+     "max": 13191
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/mecanic-auto-1376",
+     "source": "bestjobs",
+     "min": 6332,
+     "max": 7387
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/mecanic-auto-1377",
+     "source": "bestjobs",
+     "min": 4248,
+     "max": 4248
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-mecanic-auto-sector-6-xPa0Y8",
+     "source": "anuntul",
+     "min": 5000,
+     "max": 8000
     }
    ]
   },
   "tehnician-mentenanta": {
    "name": "Tehnician mentenanță",
-   "read": 0,
-   "withoutSalary": 0,
-   "n": 0,
-   "ads": 0,
-   "basisNearAmount": 0,
-   "basisFromDocument": 0,
+   "read": 21,
+   "withoutSalary": 18,
+   "n": 3,
+   "ads": 3,
+   "basisNearAmount": 2,
+   "basisFromDocument": 1,
    "basisFromPlatform": 0,
-   "employers": 0,
-   "counties": 0,
-   "sourceCounts": {},
-   "employerShare": 0,
-   "sourceShare": 0,
+   "employers": 3,
+   "counties": 1,
+   "sourceCounts": {
+    "bestjobs": 2,
+    "publi24": 1
+   },
+   "employerShare": 0.3333333333333333,
+   "sourceShare": 0.6666666666666666,
    "gaps": [
     "too_few_ads",
     "too_few_known_employers",
     "too_few_known_counties",
-    "single_source",
+    "employer_concentration",
     "too_few_explicit_monthly"
    ],
-   "explicitMonthly": 0,
-   "assumedMonthly": 0,
-   "periodSensitivity": null,
-   "sourceSensitivity": null,
+   "explicitMonthly": 1,
+   "assumedMonthly": 2,
+   "periodSensitivity": 0.12231522425773847,
+   "sourceSensitivity": 0.016464237516869096,
    "midpointEstimate": null,
-   "centralEstimate": null,
-   "status": "no_verified_ads",
+   "centralEstimate": 5557.5,
+   "status": "insufficient",
    "medianBounds": null,
-   "observedRange": null,
-   "undeclaredBasis": {
-    "n": 0,
-    "observedRange": null,
-    "midpointEstimate": null,
-    "sourceCounts": {}
+   "observedRange": {
+    "min": 4095,
+    "max": 7915
    },
-   "examples": []
+   "undeclaredBasis": {
+    "n": 6,
+    "sourceCounts": {
+     "bestjobs": 5,
+     "anuntul": 1
+    },
+    "observedRange": {
+     "min": 3694,
+     "max": 9498
+    },
+    "midpointEstimate": 5923
+   },
+   "examples": [
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/sef-atelier-electric-electrician-automatist",
+     "source": "bestjobs",
+     "min": 5593,
+     "max": 6490
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/tehnician-mentenanta-instalatii-7",
+     "source": "bestjobs",
+     "min": 5277,
+     "max": 6332
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/tehnician-mentenanta-electrica-17",
+     "source": "bestjobs",
+     "min": 3694,
+     "max": 3694
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/tehnician-mentenanta-sisteme-de-securitate-13",
+     "source": "bestjobs",
+     "min": 4749,
+     "max": 7915
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-tehnician-mentenanta--ee3V81",
+     "source": "anuntul",
+     "min": 5000,
+     "max": 6500
+    }
+   ]
   },
   "metalurgist": {
    "name": "Metalurgist",
@@ -2985,41 +3690,84 @@
   },
   "croitor": {
    "name": "Croitor",
-   "read": 0,
-   "withoutSalary": 0,
-   "n": 0,
-   "ads": 0,
-   "basisNearAmount": 0,
-   "basisFromDocument": 0,
+   "read": 9,
+   "withoutSalary": 4,
+   "n": 2,
+   "ads": 2,
+   "basisNearAmount": 1,
+   "basisFromDocument": 1,
    "basisFromPlatform": 0,
-   "employers": 0,
-   "counties": 0,
-   "sourceCounts": {},
-   "employerShare": 0,
-   "sourceShare": 0,
+   "employers": 1,
+   "counties": 1,
+   "sourceCounts": {
+    "bestjobs": 1,
+    "anuntul": 1
+   },
+   "employerShare": 0.5,
+   "sourceShare": 0.5,
    "gaps": [
     "too_few_ads",
     "too_few_known_employers",
     "too_few_known_counties",
-    "single_source",
+    "employer_concentration",
     "too_few_explicit_monthly"
    ],
-   "explicitMonthly": 0,
-   "assumedMonthly": 0,
-   "periodSensitivity": null,
-   "sourceSensitivity": null,
+   "explicitMonthly": 1,
+   "assumedMonthly": 1,
+   "periodSensitivity": 0.10251334136684455,
+   "sourceSensitivity": 0.09298149738465142,
    "midpointEstimate": null,
-   "centralEstimate": null,
-   "status": "no_verified_ads",
+   "centralEstimate": 3202.25,
+   "status": "insufficient",
    "medianBounds": null,
-   "observedRange": null,
-   "undeclaredBasis": {
-    "n": 0,
-    "observedRange": null,
-    "midpointEstimate": null,
-    "sourceCounts": {}
+   "observedRange": {
+    "min": 2902,
+    "max": 3500
    },
-   "examples": []
+   "undeclaredBasis": {
+    "n": 7,
+    "sourceCounts": {
+     "bestjobs": 2,
+     "anuntul": 5
+    },
+    "observedRange": {
+     "min": 3000,
+     "max": 7387
+    },
+    "midpointEstimate": 4881
+   },
+   "examples": [
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/croitor-retusier-1",
+     "source": "bestjobs",
+     "min": 3694,
+     "max": 7387
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/croitor-croitoreasa-24",
+     "source": "bestjobs",
+     "min": 2902,
+     "max": 2907
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/croitor-retusier-mall-baneasa",
+     "source": "bestjobs",
+     "min": 4485,
+     "max": 5277
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-croitoreasa-cu-experienta-VeNlKX",
+     "source": "anuntul",
+     "min": 4000,
+     "max": 5500
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-croitoreasa-7Xrav9",
+     "source": "anuntul",
+     "min": 4400,
+     "max": 6400
+    }
+   ]
   },
   "muncitor-industria-alimentara": {
    "name": "Muncitor în industria alimentară",
@@ -3061,46 +3809,71 @@
   },
   "cofetar": {
    "name": "Cofetar",
-   "read": 0,
-   "withoutSalary": 0,
-   "n": 0,
-   "ads": 0,
-   "basisNearAmount": 0,
-   "basisFromDocument": 0,
+   "read": 2,
+   "withoutSalary": 2,
+   "n": 2,
+   "ads": 2,
+   "basisNearAmount": 1,
+   "basisFromDocument": 1,
    "basisFromPlatform": 0,
-   "employers": 0,
-   "counties": 0,
-   "sourceCounts": {},
-   "employerShare": 0,
-   "sourceShare": 0,
+   "employers": 1,
+   "counties": 1,
+   "sourceCounts": {
+    "bestjobs": 1,
+    "anuntul": 1
+   },
+   "employerShare": 0.5,
+   "sourceShare": 0.5,
    "gaps": [
     "too_few_ads",
     "too_few_known_employers",
     "too_few_known_counties",
-    "single_source",
+    "employer_concentration",
     "too_few_explicit_monthly"
    ],
-   "explicitMonthly": 0,
-   "assumedMonthly": 0,
-   "periodSensitivity": null,
-   "sourceSensitivity": null,
+   "explicitMonthly": 1,
+   "assumedMonthly": 1,
+   "periodSensitivity": 0,
+   "sourceSensitivity": 0,
    "midpointEstimate": null,
-   "centralEstimate": null,
-   "status": "no_verified_ads",
+   "centralEstimate": 5804.5,
+   "status": "insufficient",
    "medianBounds": null,
-   "observedRange": null,
+   "observedRange": {
+    "min": 5277,
+    "max": 6332
+   },
    "undeclaredBasis": {
-    "n": 1,
+    "n": 2,
     "sourceCounts": {
+     "anuntul": 1,
      "ejobs": 1
     },
     "observedRange": {
      "min": 3700,
-     "max": 4100
+     "max": 6000
     },
-    "midpointEstimate": 3900
+    "midpointEstimate": 4950
    },
    "examples": [
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/cofetar-patiser-111",
+     "source": "bestjobs",
+     "min": 5277,
+     "max": 6332
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-cofetar-patiser-bucate-pe-36Jy2z",
+     "source": "anuntul",
+     "min": 5277,
+     "max": 6332
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-cofetar-rm3mq8",
+     "source": "anuntul",
+     "min": 6000,
+     "max": 6000
+    },
     {
      "url": "https://www.ejobs.ro/user/locuri-de-munca/cofetaria-zoomserie-iulius-vivo-mall-isi-mareste-echipa/1987019",
      "source": "ejobs",
@@ -3111,75 +3884,90 @@
   },
   "sofer-tir": {
    "name": "Șofer TIR",
-   "read": 5,
-   "withoutSalary": 0,
-   "n": 0,
-   "ads": 0,
-   "basisNearAmount": 0,
+   "read": 22,
+   "withoutSalary": 9,
+   "n": 1,
+   "ads": 1,
+   "basisNearAmount": 1,
    "basisFromDocument": 0,
    "basisFromPlatform": 0,
-   "employers": 0,
+   "employers": 1,
    "counties": 0,
-   "sourceCounts": {},
-   "employerShare": 0,
-   "sourceShare": 0,
+   "sourceCounts": {
+    "bestjobs": 1
+   },
+   "employerShare": 1,
+   "sourceShare": 1,
    "gaps": [
     "too_few_ads",
     "too_few_known_employers",
     "too_few_known_counties",
     "single_source",
+    "employer_concentration",
+    "source_concentration",
     "too_few_explicit_monthly"
    ],
    "explicitMonthly": 0,
-   "assumedMonthly": 0,
+   "assumedMonthly": 1,
    "periodSensitivity": null,
    "sourceSensitivity": null,
    "midpointEstimate": null,
-   "centralEstimate": null,
-   "status": "no_verified_ads",
+   "centralEstimate": 5804.5,
+   "status": "insufficient",
    "medianBounds": null,
-   "observedRange": null,
+   "observedRange": {
+    "min": 5277,
+    "max": 6332
+   },
    "undeclaredBasis": {
-    "n": 4,
+    "n": 10,
     "sourceCounts": {
+     "bestjobs": 3,
+     "anuntul": 3,
      "ejobs": 4
     },
     "observedRange": {
-     "min": 5000,
+     "min": 2700,
      "max": 16885
     },
-    "midpointEstimate": 10125
+    "midpointEstimate": 8457.5
    },
    "examples": [
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/sofer-categoria-c-e/1988591",
-     "source": "ejobs",
-     "min": 7000,
-     "max": 8500
+     "url": "https://www.bestjobs.eu/loc-de-munca/sofer-camion-cat-c-ce",
+     "source": "bestjobs",
+     "min": 15830,
+     "max": 15830
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/sofer-profesionist/1984204",
-     "source": "ejobs",
-     "min": 5000,
-     "max": 8000
+     "url": "https://www.bestjobs.eu/loc-de-munca/sofer-profesionist-c-e-56",
+     "source": "bestjobs",
+     "min": 5277,
+     "max": 6332
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/sofer-profesionist-transport-marfa/1987071",
-     "source": "ejobs",
-     "min": 10000,
-     "max": 15000
+     "url": "https://www.bestjobs.eu/loc-de-munca/sofer-tir-c-e-2",
+     "source": "bestjobs",
+     "min": 7915,
+     "max": 7915
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/soferi-profesionisti-categoria-c-e/1983428",
-     "source": "ejobs",
-     "min": 16885,
-     "max": 16885
+     "url": "https://www.bestjobs.eu/loc-de-munca/angajam-sofer-profesionist-categoria-c-e-prelata",
+     "source": "bestjobs",
+     "min": 15830,
+     "max": 15830
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-soferi-profesionisti-categoria-xP9qr8",
+     "source": "anuntul",
+     "min": 2700,
+     "max": 2700
     }
    ]
   },
   "sofer-autobuz": {
    "name": "Șofer de autobuz",
-   "read": 0,
+   "read": 1,
    "withoutSalary": 0,
    "n": 0,
    "ads": 0,
@@ -3293,46 +4081,91 @@
   },
   "curier": {
    "name": "Curier",
-   "read": 5,
-   "withoutSalary": 0,
-   "n": 0,
-   "ads": 0,
+   "read": 24,
+   "withoutSalary": 14,
+   "n": 6,
+   "ads": 6,
    "basisNearAmount": 0,
-   "basisFromDocument": 0,
+   "basisFromDocument": 6,
    "basisFromPlatform": 0,
-   "employers": 0,
-   "counties": 0,
-   "sourceCounts": {},
-   "employerShare": 0,
-   "sourceShare": 0,
+   "employers": 1,
+   "counties": 1,
+   "sourceCounts": {
+    "bestjobs": 4,
+    "anuntul": 2
+   },
+   "employerShare": 0.6666666666666666,
+   "sourceShare": 0.6666666666666666,
    "gaps": [
     "too_few_ads",
     "too_few_known_employers",
     "too_few_known_counties",
-    "single_source",
-    "too_few_explicit_monthly"
+    "employer_concentration",
+    "too_few_explicit_monthly",
+    "source_sensitivity"
    ],
-   "explicitMonthly": 0,
-   "assumedMonthly": 0,
-   "periodSensitivity": null,
-   "sourceSensitivity": null,
+   "explicitMonthly": 4,
+   "assumedMonthly": 2,
+   "periodSensitivity": 0.06248149244891916,
+   "sourceSensitivity": 0.8394648829431438,
    "midpointEstimate": null,
-   "centralEstimate": null,
-   "status": "no_verified_ads",
+   "centralEstimate": 4485,
+   "status": "insufficient",
    "medianBounds": null,
-   "observedRange": null,
-   "undeclaredBasis": {
-    "n": 0,
-    "observedRange": null,
-    "midpointEstimate": null,
-    "sourceCounts": {}
+   "observedRange": {
+    "min": 3694,
+    "max": 10000
    },
-   "examples": []
+   "undeclaredBasis": {
+    "n": 4,
+    "sourceCounts": {
+     "bestjobs": 1,
+     "anuntul": 1,
+     "hipo": 2
+    },
+    "observedRange": {
+     "min": 3000,
+     "max": 5500
+    },
+    "midpointEstimate": 4150
+   },
+   "examples": [
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/coordonator-curieri-bacau-6",
+     "source": "bestjobs",
+     "min": 4221,
+     "max": 4749
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/coordonator-curieri-bistrita-3",
+     "source": "bestjobs",
+     "min": 3694,
+     "max": 4221
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/coordonator-curieri-sm",
+     "source": "bestjobs",
+     "min": 3694,
+     "max": 4221
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/curier-178",
+     "source": "bestjobs",
+     "min": 3694,
+     "max": 4221
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-curier-sameday-rmkeLW",
+     "source": "anuntul",
+     "min": 8000,
+     "max": 8000
+    }
+   ]
   },
   "sofer-ridesharing": {
    "name": "Șofer ridesharing",
-   "read": 0,
-   "withoutSalary": 0,
+   "read": 2,
+   "withoutSalary": 2,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -3360,12 +4193,24 @@
    "medianBounds": null,
    "observedRange": null,
    "undeclaredBasis": {
-    "n": 0,
-    "observedRange": null,
-    "midpointEstimate": null,
-    "sourceCounts": {}
+    "n": 1,
+    "sourceCounts": {
+     "anuntul": 1
+    },
+    "observedRange": {
+     "min": 7000,
+     "max": 12000
+    },
+    "midpointEstimate": 9500
    },
-   "examples": []
+   "examples": [
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-sofer-uber-sau-bolt-cu-sau-zMvRod",
+     "source": "anuntul",
+     "min": 7000,
+     "max": 12000
+    }
+   ]
   },
   "postas": {
    "name": "Poștaș",
@@ -3445,8 +4290,8 @@
   },
   "insotitor-de-bord": {
    "name": "Însoțitor de bord (stewardesă)",
-   "read": 0,
-   "withoutSalary": 0,
+   "read": 1,
+   "withoutSalary": 1,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -3521,8 +4366,8 @@
   },
   "logistician": {
    "name": "Logistician",
-   "read": 1,
-   "withoutSalary": 0,
+   "read": 16,
+   "withoutSalary": 14,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -3550,439 +4395,301 @@
    "medianBounds": null,
    "observedRange": null,
    "undeclaredBasis": {
-    "n": 0,
-    "observedRange": null,
-    "midpointEstimate": null,
-    "sourceCounts": {}
-   },
-   "examples": []
-  },
-  "magaziner": {
-   "name": "Magaziner",
-   "read": 1,
-   "withoutSalary": 0,
-   "n": 0,
-   "ads": 0,
-   "basisNearAmount": 0,
-   "basisFromDocument": 0,
-   "basisFromPlatform": 0,
-   "employers": 0,
-   "counties": 0,
-   "sourceCounts": {},
-   "employerShare": 0,
-   "sourceShare": 0,
-   "gaps": [
-    "too_few_ads",
-    "too_few_known_employers",
-    "too_few_known_counties",
-    "single_source",
-    "too_few_explicit_monthly"
-   ],
-   "explicitMonthly": 0,
-   "assumedMonthly": 0,
-   "periodSensitivity": null,
-   "sourceSensitivity": null,
-   "midpointEstimate": null,
-   "centralEstimate": null,
-   "status": "no_verified_ads",
-   "medianBounds": null,
-   "observedRange": null,
-   "undeclaredBasis": {
-    "n": 6,
+    "n": 5,
     "sourceCounts": {
-     "ejobs": 6
+     "bestjobs": 5
     },
     "observedRange": {
-     "min": 2500,
-     "max": 8000
+     "min": 3166,
+     "max": 5277
     },
-    "midpointEstimate": 3950
+    "midpointEstimate": 4221
    },
    "examples": [
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/operator-depozit-si-magazin-online/1987626",
-     "source": "ejobs",
-     "min": 4000,
-     "max": 4500
+     "url": "https://www.bestjobs.eu/loc-de-munca/responsabil-logistica-gestiune-4",
+     "source": "bestjobs",
+     "min": 5013,
+     "max": 5277
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/lucrator-gestionar-depozit-hvac-si-pet-food/1986193",
-     "source": "ejobs",
-     "min": 6000,
+     "url": "https://www.bestjobs.eu/loc-de-munca/manager-logistica-102",
+     "source": "bestjobs",
+     "min": 4221,
+     "max": 4221
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/asistent-logistica-98",
+     "source": "bestjobs",
+     "min": 3166,
+     "max": 5013
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/customer-service-logistica-1",
+     "source": "bestjobs",
+     "min": 4221,
+     "max": 5277
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/angajam-operator-logistica-si-depozit",
+     "source": "bestjobs",
+     "min": 3694,
+     "max": 4221
+    }
+   ]
+  },
+  "magaziner": {
+   "name": "Magaziner",
+   "read": 42,
+   "withoutSalary": 29,
+   "n": 3,
+   "ads": 3,
+   "basisNearAmount": 1,
+   "basisFromDocument": 2,
+   "basisFromPlatform": 0,
+   "employers": 2,
+   "counties": 0,
+   "sourceCounts": {
+    "bestjobs": 3
+   },
+   "employerShare": 0.3333333333333333,
+   "sourceShare": 1,
+   "gaps": [
+    "too_few_ads",
+    "too_few_known_employers",
+    "too_few_known_counties",
+    "single_source",
+    "employer_concentration",
+    "source_concentration",
+    "too_few_explicit_monthly"
+   ],
+   "explicitMonthly": 3,
+   "assumedMonthly": 0,
+   "periodSensitivity": 0,
+   "sourceSensitivity": null,
+   "midpointEstimate": null,
+   "centralEstimate": 5276.5,
+   "status": "insufficient",
+   "medianBounds": null,
+   "observedRange": {
+    "min": 4221,
+    "max": 7915
+   },
+   "undeclaredBasis": {
+    "n": 29,
+    "sourceCounts": {
+     "bestjobs": 18,
+     "anuntul": 5,
+     "ejobs": 6
+    },
+    "observedRange": {
+     "min": 1609,
      "max": 8000
     },
+    "midpointEstimate": 3825.5
+   },
+   "examples": [
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/gestionar-depozit-receptie-marfa/1988015",
-     "source": "ejobs",
-     "min": 4500,
-     "max": 4500
+     "url": "https://www.bestjobs.eu/loc-de-munca/picker-magaziner-depozit-produse-alimentare-4",
+     "source": "bestjobs",
+     "min": 5277,
+     "max": 7915
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/lucrator-depozit-otopeni-program-dimineata-ups/1986752",
-     "source": "ejobs",
-     "min": 2500,
-     "max": 2500
+     "url": "https://www.bestjobs.eu/loc-de-munca/gestionar-depozit-echipamente-instalatii",
+     "source": "bestjobs",
+     "min": 4221,
+     "max": 5277
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/picker-lucrator-depozit/1986560",
-     "source": "ejobs",
-     "min": 3500,
-     "max": 3500
+     "url": "https://www.bestjobs.eu/loc-de-munca/operator-depozit-291",
+     "source": "bestjobs",
+     "min": 3694,
+     "max": 4221
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/gestionar-depozit-2286",
+     "source": "bestjobs",
+     "min": 4485,
+     "max": 5277
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/gestionar-depozit-2287",
+     "source": "bestjobs",
+     "min": 3166,
+     "max": 3694
     }
    ]
   },
   "stivuitorist": {
    "name": "Stivuitorist",
-   "read": 0,
-   "withoutSalary": 0,
-   "n": 0,
-   "ads": 0,
-   "basisNearAmount": 0,
+   "read": 38,
+   "withoutSalary": 32,
+   "n": 3,
+   "ads": 3,
+   "basisNearAmount": 3,
    "basisFromDocument": 0,
    "basisFromPlatform": 0,
-   "employers": 0,
-   "counties": 0,
-   "sourceCounts": {},
-   "employerShare": 0,
-   "sourceShare": 0,
+   "employers": 1,
+   "counties": 2,
+   "sourceCounts": {
+    "anuntul": 2,
+    "bestjobs": 1
+   },
+   "employerShare": 0.3333333333333333,
+   "sourceShare": 0.6666666666666666,
    "gaps": [
     "too_few_ads",
     "too_few_known_employers",
     "too_few_known_counties",
-    "single_source",
-    "too_few_explicit_monthly"
+    "employer_concentration",
+    "too_few_explicit_monthly",
+    "source_sensitivity"
    ],
-   "explicitMonthly": 0,
+   "explicitMonthly": 3,
    "assumedMonthly": 0,
-   "periodSensitivity": null,
-   "sourceSensitivity": null,
+   "periodSensitivity": 0,
+   "sourceSensitivity": 0.319125,
    "midpointEstimate": null,
-   "centralEstimate": null,
-   "status": "no_verified_ads",
+   "centralEstimate": 4000,
+   "status": "insufficient",
    "medianBounds": null,
-   "observedRange": null,
+   "observedRange": {
+    "min": 3260,
+    "max": 5804
+   },
    "undeclaredBasis": {
-    "n": 1,
+    "n": 4,
     "sourceCounts": {
+     "bestjobs": 3,
      "ejobs": 1
     },
     "observedRange": {
-     "min": 3399,
-     "max": 3700
+     "min": 3166,
+     "max": 4221
     },
-    "midpointEstimate": 3549.5
+    "midpointEstimate": 3489.75
    },
    "examples": [
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/stivuitorist-non-bat-timisoara/1984087",
-     "source": "ejobs",
-     "min": 3399,
-     "max": 3700
+     "url": "https://www.bestjobs.eu/loc-de-munca/stivuitorist-cu-iscir-8",
+     "source": "bestjobs",
+     "min": 3166,
+     "max": 3166
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/stivuitorist-1552",
+     "source": "bestjobs",
+     "min": 3166,
+     "max": 3694
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-stivuitorist-vna-depozit-Bqkr96",
+     "source": "anuntul",
+     "min": 3260,
+     "max": 3618
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/stivuitorist-1558",
+     "source": "bestjobs",
+     "min": 3166,
+     "max": 4221
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-stivuitorist-depozit-materiale-lOP0k2",
+     "source": "anuntul",
+     "min": 4000,
+     "max": 4000
     }
    ]
   },
   "manipulant-marfa": {
    "name": "Manipulant mărfuri",
-   "read": 0,
-   "withoutSalary": 0,
-   "n": 0,
-   "ads": 0,
-   "basisNearAmount": 0,
-   "basisFromDocument": 0,
+   "read": 24,
+   "withoutSalary": 17,
+   "n": 3,
+   "ads": 3,
+   "basisNearAmount": 2,
+   "basisFromDocument": 1,
    "basisFromPlatform": 0,
-   "employers": 0,
-   "counties": 0,
-   "sourceCounts": {},
-   "employerShare": 0,
-   "sourceShare": 0,
+   "employers": 1,
+   "counties": 1,
+   "sourceCounts": {
+    "undelucram": 2,
+    "anuntul": 1
+   },
+   "employerShare": 0.6666666666666666,
+   "sourceShare": 0.6666666666666666,
    "gaps": [
     "too_few_ads",
     "too_few_known_employers",
     "too_few_known_counties",
-    "single_source",
-    "too_few_explicit_monthly"
+    "employer_concentration",
+    "too_few_explicit_monthly",
+    "source_sensitivity"
    ],
    "explicitMonthly": 0,
-   "assumedMonthly": 0,
+   "assumedMonthly": 3,
    "periodSensitivity": null,
-   "sourceSensitivity": null,
+   "sourceSensitivity": 0.19047619047619047,
    "midpointEstimate": null,
-   "centralEstimate": null,
-   "status": "no_verified_ads",
+   "centralEstimate": 3360,
+   "status": "insufficient",
    "medianBounds": null,
-   "observedRange": null,
+   "observedRange": {
+    "min": 3360,
+    "max": 4000
+   },
    "undeclaredBasis": {
-    "n": 1,
+    "n": 9,
     "sourceCounts": {
+     "bestjobs": 4,
+     "anuntul": 4,
      "ejobs": 1
     },
     "observedRange": {
-     "min": 2500,
-     "max": 3500
+     "min": 1609,
+     "max": 9000
     },
-    "midpointEstimate": 3000
+    "midpointEstimate": 3442.5
    },
    "examples": [
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/manipulant-marfa-vanzator-mobila-vanzator-decoratiuni-info/1987663",
-     "source": "ejobs",
-     "min": 2500,
-     "max": 3500
+     "url": "https://www.bestjobs.eu/loc-de-munca/manipulant-marfuri-depozit-farmaceutic",
+     "source": "bestjobs",
+     "min": 3694,
+     "max": 4221
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/manipulant-marfa-933",
+     "source": "bestjobs",
+     "min": 3271,
+     "max": 3614
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/line-feeder-manipulant-marfa-brasov",
+     "source": "bestjobs",
+     "min": 2902,
+     "max": 3166
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-manipulant-marfuri-zMkOXe",
+     "source": "anuntul",
+     "min": 4325,
+     "max": 4325
+    },
+    {
+     "url": "https://www.undelucram.ro/ro/locuri-de-munca/manipulant-marfuri-depozit-ploiesti-fm/99112",
+     "source": "undelucram",
+     "min": 3360,
+     "max": 3360
     }
    ]
   },
   "sofer-distributie": {
    "name": "Șofer distribuție",
-   "read": 1,
-   "withoutSalary": 0,
-   "n": 0,
-   "ads": 0,
-   "basisNearAmount": 0,
-   "basisFromDocument": 0,
-   "basisFromPlatform": 0,
-   "employers": 0,
-   "counties": 0,
-   "sourceCounts": {},
-   "employerShare": 0,
-   "sourceShare": 0,
-   "gaps": [
-    "too_few_ads",
-    "too_few_known_employers",
-    "too_few_known_counties",
-    "single_source",
-    "too_few_explicit_monthly"
-   ],
-   "explicitMonthly": 0,
-   "assumedMonthly": 0,
-   "periodSensitivity": null,
-   "sourceSensitivity": null,
-   "midpointEstimate": null,
-   "centralEstimate": null,
-   "status": "no_verified_ads",
-   "medianBounds": null,
-   "observedRange": null,
-   "undeclaredBasis": {
-    "n": 2,
-    "sourceCounts": {
-     "ejobs": 2
-    },
-    "observedRange": {
-     "min": 4000,
-     "max": 5500
-    },
-    "midpointEstimate": 4875
-   },
-   "examples": [
-    {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/sofer-distributie-categoria-b/1988853",
-     "source": "ejobs",
-     "min": 5500,
-     "max": 5500
-    },
-    {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/sofer-categoria-b-furgon-lh-pentru-livrari-buc-if/1989134",
-     "source": "ejobs",
-     "min": 4000,
-     "max": 4500
-    }
-   ]
-  },
-  "vanzator": {
-   "name": "Vânzător",
-   "read": 4,
-   "withoutSalary": 0,
-   "n": 0,
-   "ads": 0,
-   "basisNearAmount": 0,
-   "basisFromDocument": 0,
-   "basisFromPlatform": 0,
-   "employers": 0,
-   "counties": 0,
-   "sourceCounts": {},
-   "employerShare": 0,
-   "sourceShare": 0,
-   "gaps": [
-    "too_few_ads",
-    "too_few_known_employers",
-    "too_few_known_counties",
-    "single_source",
-    "too_few_explicit_monthly"
-   ],
-   "explicitMonthly": 0,
-   "assumedMonthly": 0,
-   "periodSensitivity": null,
-   "sourceSensitivity": null,
-   "midpointEstimate": null,
-   "centralEstimate": null,
-   "status": "no_verified_ads",
-   "medianBounds": null,
-   "observedRange": null,
-   "undeclaredBasis": {
-    "n": 6,
-    "sourceCounts": {
-     "ejobs": 6
-    },
-    "observedRange": {
-     "min": 2500,
-     "max": 6000
-    },
-    "midpointEstimate": 3500
-   },
-   "examples": [
-    {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/decorator-magazin-vanzatori-mobila-si-decoratiuni-bucuresti/1986526",
-     "source": "ejobs",
-     "min": 2600,
-     "max": 4000
-    },
-    {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/proiectant-vanzator-bucatarii-cluj-napoca-si-ploiesti/1986719",
-     "source": "ejobs",
-     "min": 3000,
-     "max": 6000
-    },
-    {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/lucrator-comercial/1988765",
-     "source": "ejobs",
-     "min": 3000,
-     "max": 4000
-    },
-    {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/lucrator-comercial-mcdonald-s-craiova-promenada/1985699",
-     "source": "ejobs",
-     "min": 3300,
-     "max": 3700
-    },
-    {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/manipulant-marfa-vanzator-mobila-vanzator-decoratiuni-info/1987663",
-     "source": "ejobs",
-     "min": 2500,
-     "max": 3500
-    }
-   ]
-  },
-  "casier": {
-   "name": "Casier",
-   "read": 0,
-   "withoutSalary": 0,
-   "n": 0,
-   "ads": 0,
-   "basisNearAmount": 0,
-   "basisFromDocument": 0,
-   "basisFromPlatform": 0,
-   "employers": 0,
-   "counties": 0,
-   "sourceCounts": {},
-   "employerShare": 0,
-   "sourceShare": 0,
-   "gaps": [
-    "too_few_ads",
-    "too_few_known_employers",
-    "too_few_known_counties",
-    "single_source",
-    "too_few_explicit_monthly"
-   ],
-   "explicitMonthly": 0,
-   "assumedMonthly": 0,
-   "periodSensitivity": null,
-   "sourceSensitivity": null,
-   "midpointEstimate": null,
-   "centralEstimate": null,
-   "status": "no_verified_ads",
-   "medianBounds": null,
-   "observedRange": null,
-   "undeclaredBasis": {
-    "n": 2,
-    "sourceCounts": {
-     "ejobs": 2
-    },
-    "observedRange": {
-     "min": 2902,
-     "max": 4600
-    },
-    "midpointEstimate": 3808
-   },
-   "examples": [
-    {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/casier-casier-barista/1988762",
-     "source": "ejobs",
-     "min": 4300,
-     "max": 4600
-    },
-    {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/casier-benzinarie-oradea/1988730",
-     "source": "ejobs",
-     "min": 2902,
-     "max": 3430
-    }
-   ]
-  },
-  "manager-magazin": {
-   "name": "Manager de magazin",
-   "read": 0,
-   "withoutSalary": 0,
-   "n": 0,
-   "ads": 0,
-   "basisNearAmount": 0,
-   "basisFromDocument": 0,
-   "basisFromPlatform": 0,
-   "employers": 0,
-   "counties": 0,
-   "sourceCounts": {},
-   "employerShare": 0,
-   "sourceShare": 0,
-   "gaps": [
-    "too_few_ads",
-    "too_few_known_employers",
-    "too_few_known_counties",
-    "single_source",
-    "too_few_explicit_monthly"
-   ],
-   "explicitMonthly": 0,
-   "assumedMonthly": 0,
-   "periodSensitivity": null,
-   "sourceSensitivity": null,
-   "midpointEstimate": null,
-   "centralEstimate": null,
-   "status": "no_verified_ads",
-   "medianBounds": null,
-   "observedRange": null,
-   "undeclaredBasis": {
-    "n": 3,
-    "sourceCounts": {
-     "ejobs": 3
-    },
-    "observedRange": {
-     "min": 4000,
-     "max": 6500
-    },
-    "midpointEstimate": 4800
-   },
-   "examples": [
-    {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/sef-magazin-august-zona-biotera/1989065",
-     "source": "ejobs",
-     "min": 4000,
-     "max": 5000
-    },
-    {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/manager-magazin-d-s-damat-baneasa-feeria/1988923",
-     "source": "ejobs",
-     "min": 4800,
-     "max": 4800
-    },
-    {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/manager-magazin-action-sibiu/1986488",
-     "source": "ejobs",
-     "min": 6100,
-     "max": 6500
-    }
-   ]
-  },
-  "agent-vanzari": {
-   "name": "Agent de vânzări",
-   "read": 14,
-   "withoutSalary": 0,
+   "read": 12,
+   "withoutSalary": 8,
    "n": 1,
    "ads": 1,
    "basisNearAmount": 0,
@@ -3991,7 +4698,7 @@
    "employers": 1,
    "counties": 0,
    "sourceCounts": {
-    "ejobs": 1
+    "bestjobs": 1
    },
    "employerShare": 1,
    "sourceShare": 1,
@@ -4009,200 +4716,637 @@
    "periodSensitivity": 0,
    "sourceSensitivity": null,
    "midpointEstimate": null,
-   "centralEstimate": 11250,
+   "centralEstimate": 4485,
    "status": "insufficient",
    "medianBounds": null,
    "observedRange": {
-    "min": 7500,
+    "min": 4432,
+    "max": 4538
+   },
+   "undeclaredBasis": {
+    "n": 12,
+    "sourceCounts": {
+     "bestjobs": 5,
+     "anuntul": 5,
+     "ejobs": 2
+    },
+    "observedRange": {
+     "min": 3000,
+     "max": 6332
+    },
+    "midpointEstimate": 4301.75
+   },
+   "examples": [
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/sofer-distributie-agent-livrator-12",
+     "source": "bestjobs",
+     "min": 4432,
+     "max": 4538
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/lonamad-ro-angajeaza-sofer-cat-b-livrari-tara",
+     "source": "bestjobs",
+     "min": 3166,
+     "max": 5277
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/sofer-distributie-si-depozit-cat-b",
+     "source": "bestjobs",
+     "min": 3430,
+     "max": 5277
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/sofer-livrator-306",
+     "source": "bestjobs",
+     "min": 3957,
+     "max": 6332
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/angajam-sofer-distributie-categoria-b-2",
+     "source": "bestjobs",
+     "min": 4274,
+     "max": 4775
+    }
+   ]
+  },
+  "vanzator": {
+   "name": "Vânzător",
+   "read": 187,
+   "withoutSalary": 163,
+   "n": 20,
+   "ads": 20,
+   "basisNearAmount": 14,
+   "basisFromDocument": 6,
+   "basisFromPlatform": 0,
+   "employers": 4,
+   "counties": 1,
+   "sourceCounts": {
+    "bestjobs": 5,
+    "undelucram": 6,
+    "anuntul": 8,
+    "publi24": 1
+   },
+   "employerShare": 0.4,
+   "sourceShare": 0.4,
+   "gaps": [
+    "too_few_ads",
+    "too_few_known_employers",
+    "too_few_known_counties",
+    "employer_concentration",
+    "too_few_explicit_monthly"
+   ],
+   "explicitMonthly": 4,
+   "assumedMonthly": 16,
+   "periodSensitivity": 0.05970796588116235,
+   "sourceSensitivity": 0.014837023370233703,
+   "midpointEstimate": null,
+   "centralEstimate": 3252,
+   "status": "insufficient",
+   "medianBounds": null,
+   "observedRange": {
+    "min": 2791,
+    "max": 4000
+   },
+   "undeclaredBasis": {
+    "n": 76,
+    "sourceCounts": {
+     "bestjobs": 14,
+     "anuntul": 54,
+     "hipo": 1,
+     "publi24": 1,
+     "ejobs": 6
+    },
+    "observedRange": {
+     "min": 2111,
+     "max": 6332
+    },
+    "midpointEstimate": 3500
+   },
+   "examples": [
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/vanzatoare-cofetarie-66",
+     "source": "bestjobs",
+     "min": 3957,
+     "max": 4010
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/lucrator-comercial-otopeni-f-m-1",
+     "source": "bestjobs",
+     "min": 3252,
+     "max": 3252
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/lucrator-comercial-2506",
+     "source": "bestjobs",
+     "min": 2111,
+     "max": 2111
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/vanzatoare-magazin-23",
+     "source": "bestjobs",
+     "min": 2797,
+     "max": 2955
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/lucrator-comercial-satu-mare-carpati-f-m-2",
+     "source": "bestjobs",
+     "min": 3035,
+     "max": 3035
+    }
+   ]
+  },
+  "casier": {
+   "name": "Casier",
+   "read": 28,
+   "withoutSalary": 25,
+   "n": 7,
+   "ads": 7,
+   "basisNearAmount": 6,
+   "basisFromDocument": 1,
+   "basisFromPlatform": 0,
+   "employers": 1,
+   "counties": 2,
+   "sourceCounts": {
+    "anuntul": 6,
+    "publi24": 1
+   },
+   "employerShare": 0.14285714285714285,
+   "sourceShare": 0.8571428571428571,
+   "gaps": [
+    "too_few_ads",
+    "too_few_known_employers",
+    "too_few_known_counties",
+    "source_concentration",
+    "too_few_explicit_monthly",
+    "pay_period_sensitivity",
+    "source_sensitivity"
+   ],
+   "explicitMonthly": 1,
+   "assumedMonthly": 6,
+   "periodSensitivity": 0.2,
+   "sourceSensitivity": 0.16666666666666666,
+   "midpointEstimate": null,
+   "centralEstimate": 3900,
+   "status": "insufficient",
+   "medianBounds": null,
+   "observedRange": {
+    "min": 3000,
+    "max": 5000
+   },
+   "undeclaredBasis": {
+    "n": 20,
+    "sourceCounts": {
+     "bestjobs": 6,
+     "anuntul": 11,
+     "publi24": 1,
+     "ejobs": 2
+    },
+    "observedRange": {
+     "min": 2638,
+     "max": 5000
+    },
+    "midpointEstimate": 3600
+   },
+   "examples": [
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/casieri-catering-industrial-program-in-ture-1",
+     "source": "bestjobs",
+     "min": 3166,
+     "max": 3694
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/casiera-magazin-alimentar-2",
+     "source": "bestjobs",
+     "min": 4037,
+     "max": 4459
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-casiera-debarasare-pentru-kDrleX",
+     "source": "anuntul",
+     "min": 5000,
+     "max": 5000
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/casier-restaurant-autoservire",
+     "source": "bestjobs",
+     "min": 3509,
+     "max": 4010
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-casiera-pentru-la-doi-pasi-4RlRxn",
+     "source": "anuntul",
+     "min": 3700,
+     "max": 4200
+    }
+   ]
+  },
+  "manager-magazin": {
+   "name": "Manager de magazin",
+   "read": 47,
+   "withoutSalary": 47,
+   "n": 2,
+   "ads": 2,
+   "basisNearAmount": 0,
+   "basisFromDocument": 2,
+   "basisFromPlatform": 0,
+   "employers": 2,
+   "counties": 0,
+   "sourceCounts": {
+    "bestjobs": 2
+   },
+   "employerShare": 0.5,
+   "sourceShare": 1,
+   "gaps": [
+    "too_few_ads",
+    "too_few_known_employers",
+    "too_few_known_counties",
+    "single_source",
+    "employer_concentration",
+    "source_concentration",
+    "too_few_explicit_monthly"
+   ],
+   "explicitMonthly": 2,
+   "assumedMonthly": 0,
+   "periodSensitivity": 0,
+   "sourceSensitivity": null,
+   "midpointEstimate": null,
+   "centralEstimate": 13587,
+   "status": "insufficient",
+   "medianBounds": null,
+   "observedRange": {
+    "min": 6859,
+    "max": 21106
+   },
+   "undeclaredBasis": {
+    "n": 5,
+    "sourceCounts": {
+     "bestjobs": 2,
+     "ejobs": 3
+    },
+    "observedRange": {
+     "min": 4000,
+     "max": 6500
+    },
+    "midpointEstimate": 5936
+   },
+   "examples": [
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/manager-magazin-action-falticeni-5",
+     "source": "bestjobs",
+     "min": 6332,
+     "max": 6332
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/store-manager-mac-cosmetics-16",
+     "source": "bestjobs",
+     "min": 5540,
+     "max": 6332
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/manager-magazin-lems-ploiesti",
+     "source": "bestjobs",
+     "min": 6859,
+     "max": 7915
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/operator-magazin-in-sistem-codo-manager-magazin-49",
+     "source": "bestjobs",
+     "min": 18468,
+     "max": 21106
+    },
+    {
+     "url": "https://www.ejobs.ro/user/locuri-de-munca/sef-magazin-august-zona-biotera/1989065",
+     "source": "ejobs",
+     "min": 4000,
+     "max": 5000
+    }
+   ]
+  },
+  "agent-vanzari": {
+   "name": "Agent de vânzări",
+   "read": 179,
+   "withoutSalary": 141,
+   "n": 14,
+   "ads": 14,
+   "basisNearAmount": 3,
+   "basisFromDocument": 11,
+   "basisFromPlatform": 0,
+   "employers": 13,
+   "counties": 0,
+   "sourceCounts": {
+    "bestjobs": 13,
+    "ejobs": 1
+   },
+   "employerShare": 0.07142857142857142,
+   "sourceShare": 0.9285714285714286,
+   "gaps": [
+    "too_few_ads",
+    "too_few_known_counties",
+    "source_concentration",
+    "source_sensitivity"
+   ],
+   "explicitMonthly": 12,
+   "assumedMonthly": 2,
+   "periodSensitivity": 0,
+   "sourceSensitivity": 1.131994125171744,
+   "midpointEstimate": null,
+   "centralEstimate": 5276.75,
+   "status": "insufficient",
+   "medianBounds": null,
+   "observedRange": {
+    "min": 3166,
     "max": 15000
    },
    "undeclaredBasis": {
-    "n": 15,
+    "n": 83,
     "sourceCounts": {
+     "bestjobs": 66,
+     "anuntul": 1,
+     "hipo": 1,
      "ejobs": 15
     },
     "observedRange": {
      "min": 2600,
-     "max": 10000
+     "max": 10553
     },
-    "midpointEstimate": 4400
+    "midpointEstimate": 5303
    },
    "examples": [
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/consultant-vanzari-concept-store-vetter/1984391",
-     "source": "ejobs",
-     "min": 3300,
-     "max": 4500
+     "url": "https://www.bestjobs.eu/loc-de-munca/agent-de-vanzari-1070",
+     "source": "bestjobs",
+     "min": 3694,
+     "max": 3694
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/reprezentant-vanzari-agentii-pariuri-stanleybet/1986263",
-     "source": "ejobs",
-     "min": 3000,
-     "max": 3500
+     "url": "https://www.bestjobs.eu/loc-de-munca/reprezentant-vanzari-directe-101",
+     "source": "bestjobs",
+     "min": 5277,
+     "max": 5277
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/agent-vanzari-call-center/1986246",
-     "source": "ejobs",
-     "min": 3000,
-     "max": 3500
+     "url": "https://www.bestjobs.eu/loc-de-munca/consultant-vanzari-servicii-consultanta-8",
+     "source": "bestjobs",
+     "min": 5277,
+     "max": 5277
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/sales-advisor-vodafone-store-alexandria/1988419",
-     "source": "ejobs",
-     "min": 3000,
-     "max": 6000
+     "url": "https://www.bestjobs.eu/loc-de-munca/agent-de-vanzari-b2b-vopsele-si-consumabile-auto",
+     "source": "bestjobs",
+     "min": 4749,
+     "max": 4749
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/consilier-vanzari/1986746",
-     "source": "ejobs",
-     "min": 2700,
-     "max": 4000
+     "url": "https://www.bestjobs.eu/loc-de-munca/consultant-vanzari-11597",
+     "source": "bestjobs",
+     "min": 5277,
+     "max": 5277
     }
    ]
   },
   "bucatar": {
    "name": "Bucătar",
-   "read": 0,
-   "withoutSalary": 0,
-   "n": 0,
-   "ads": 0,
-   "basisNearAmount": 0,
-   "basisFromDocument": 0,
+   "read": 26,
+   "withoutSalary": 19,
+   "n": 5,
+   "ads": 5,
+   "basisNearAmount": 3,
+   "basisFromDocument": 2,
    "basisFromPlatform": 0,
-   "employers": 0,
-   "counties": 0,
-   "sourceCounts": {},
-   "employerShare": 0,
-   "sourceShare": 0,
+   "employers": 2,
+   "counties": 1,
+   "sourceCounts": {
+    "bestjobs": 2,
+    "anuntul": 3
+   },
+   "employerShare": 0.2,
+   "sourceShare": 0.6,
    "gaps": [
     "too_few_ads",
     "too_few_known_employers",
     "too_few_known_counties",
-    "single_source",
-    "too_few_explicit_monthly"
+    "too_few_explicit_monthly",
+    "source_sensitivity"
    ],
-   "explicitMonthly": 0,
-   "assumedMonthly": 0,
-   "periodSensitivity": null,
-   "sourceSensitivity": null,
+   "explicitMonthly": 2,
+   "assumedMonthly": 3,
+   "periodSensitivity": 0.04267053701015965,
+   "sourceSensitivity": 0.16237113402061856,
    "midpointEstimate": null,
-   "centralEstimate": null,
-   "status": "no_verified_ads",
+   "centralEstimate": 6596,
+   "status": "insufficient",
    "medianBounds": null,
-   "observedRange": null,
+   "observedRange": {
+    "min": 3000,
+    "max": 7915
+   },
    "undeclaredBasis": {
-    "n": 4,
+    "n": 31,
     "sourceCounts": {
+     "bestjobs": 8,
+     "anuntul": 19,
      "ejobs": 4
     },
     "observedRange": {
-     "min": 3500,
+     "min": 3000,
      "max": 10000
     },
-    "midpointEstimate": 5500
+    "midpointEstimate": 5277
    },
    "examples": [
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/bucatar-cu-experienta-relevanta-executive-chef/1983099",
-     "source": "ejobs",
-     "min": 4500,
-     "max": 9000
+     "url": "https://www.bestjobs.eu/loc-de-munca/gratargiu-bucatar-iscusit-dorobanti",
+     "source": "bestjobs",
+     "min": 4749,
+     "max": 5277
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/coordonator-bucatarie-shift-leader/1988902",
-     "source": "ejobs",
-     "min": 3500,
-     "max": 5000
+     "url": "https://www.bestjobs.eu/loc-de-munca/angajam-bucatar-cu-experienta-18",
+     "source": "bestjobs",
+     "min": 6859,
+     "max": 6859
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/lucrator-in-bucatarie-fast-food-megamall/1988623",
-     "source": "ejobs",
-     "min": 4000,
-     "max": 4500
+     "url": "https://www.bestjobs.eu/loc-de-munca/bucatar-979",
+     "source": "bestjobs",
+     "min": 3694,
+     "max": 6332
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/bucatar-chef-bucatarie/1989374",
-     "source": "ejobs",
-     "min": 5000,
-     "max": 10000
+     "url": "https://www.bestjobs.eu/loc-de-munca/bucatar-evenimente-catering-premium",
+     "source": "bestjobs",
+     "min": 5277,
+     "max": 7915
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/lucrator-bucatarie-preparare-burgeri",
+     "source": "bestjobs",
+     "min": 5277,
+     "max": 5277
     }
    ]
   },
   "chelner": {
    "name": "Chelner",
-   "read": 0,
-   "withoutSalary": 0,
-   "n": 0,
-   "ads": 0,
+   "read": 18,
+   "withoutSalary": 13,
+   "n": 1,
+   "ads": 1,
    "basisNearAmount": 0,
-   "basisFromDocument": 0,
+   "basisFromDocument": 1,
    "basisFromPlatform": 0,
    "employers": 0,
-   "counties": 0,
-   "sourceCounts": {},
+   "counties": 1,
+   "sourceCounts": {
+    "anuntul": 1
+   },
    "employerShare": 0,
-   "sourceShare": 0,
+   "sourceShare": 1,
    "gaps": [
     "too_few_ads",
     "too_few_known_employers",
     "too_few_known_counties",
     "single_source",
+    "source_concentration",
     "too_few_explicit_monthly"
    ],
    "explicitMonthly": 0,
-   "assumedMonthly": 0,
+   "assumedMonthly": 1,
    "periodSensitivity": null,
    "sourceSensitivity": null,
    "midpointEstimate": null,
-   "centralEstimate": null,
-   "status": "no_verified_ads",
+   "centralEstimate": 2750,
+   "status": "insufficient",
    "medianBounds": null,
-   "observedRange": null,
-   "undeclaredBasis": {
-    "n": 0,
-    "observedRange": null,
-    "midpointEstimate": null,
-    "sourceCounts": {}
+   "observedRange": {
+    "min": 2750,
+    "max": 2750
    },
-   "examples": []
+   "undeclaredBasis": {
+    "n": 9,
+    "sourceCounts": {
+     "bestjobs": 4,
+     "anuntul": 5
+    },
+    "observedRange": {
+     "min": 2638,
+     "max": 10000
+    },
+    "midpointEstimate": 3300
+   },
+   "examples": [
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/ospatar-681",
+     "source": "bestjobs",
+     "min": 3166,
+     "max": 4221
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-ospatar-xwen6M",
+     "source": "anuntul",
+     "min": 2750,
+     "max": 2750
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/ospatar-mic-dejun-14",
+     "source": "bestjobs",
+     "min": 2902,
+     "max": 2902
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-ospatar-ospatarite-BJDykv",
+     "source": "anuntul",
+     "min": 10000,
+     "max": 10000
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-ospatari-ospatarite-kLwoDG",
+     "source": "anuntul",
+     "min": 2800,
+     "max": 2800
+    }
+   ]
   },
   "barman": {
    "name": "Barman",
-   "read": 0,
-   "withoutSalary": 0,
-   "n": 0,
-   "ads": 0,
-   "basisNearAmount": 0,
-   "basisFromDocument": 0,
+   "read": 5,
+   "withoutSalary": 5,
+   "n": 2,
+   "ads": 2,
+   "basisNearAmount": 1,
+   "basisFromDocument": 1,
    "basisFromPlatform": 0,
    "employers": 0,
-   "counties": 0,
-   "sourceCounts": {},
+   "counties": 1,
+   "sourceCounts": {
+    "anuntul": 2
+   },
    "employerShare": 0,
-   "sourceShare": 0,
+   "sourceShare": 1,
    "gaps": [
     "too_few_ads",
     "too_few_known_employers",
     "too_few_known_counties",
     "single_source",
+    "source_concentration",
     "too_few_explicit_monthly"
    ],
    "explicitMonthly": 0,
-   "assumedMonthly": 0,
+   "assumedMonthly": 2,
    "periodSensitivity": null,
    "sourceSensitivity": null,
    "midpointEstimate": null,
-   "centralEstimate": null,
-   "status": "no_verified_ads",
+   "centralEstimate": 3234,
+   "status": "insufficient",
    "medianBounds": null,
-   "observedRange": null,
-   "undeclaredBasis": {
-    "n": 0,
-    "observedRange": null,
-    "midpointEstimate": null,
-    "sourceCounts": {}
+   "observedRange": {
+    "min": 2455,
+    "max": 4000
    },
-   "examples": []
+   "undeclaredBasis": {
+    "n": 3,
+    "sourceCounts": {
+     "bestjobs": 2,
+     "anuntul": 1
+    },
+    "observedRange": {
+     "min": 2638,
+     "max": 4500
+    },
+    "midpointEstimate": 3060.5
+   },
+   "examples": [
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/barman-bartender-8",
+     "source": "bestjobs",
+     "min": 2955,
+     "max": 3166
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-barista-barman-pentru-kjGXEN",
+     "source": "anuntul",
+     "min": 3500,
+     "max": 4000
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-barista-barman-michaels-N0Ennw",
+     "source": "anuntul",
+     "min": 3200,
+     "max": 4500
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-barman-barista-cofetarie-rmBx06",
+     "source": "anuntul",
+     "min": 2455,
+     "max": 2981
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/ospatar-barman-in-echipa-caro-7",
+     "source": "bestjobs",
+     "min": 2638,
+     "max": 2902
+    }
+   ]
   },
   "receptioner-hotel": {
    "name": "Recepționer hotel",
@@ -4235,12 +5379,24 @@
    "medianBounds": null,
    "observedRange": null,
    "undeclaredBasis": {
-    "n": 0,
-    "observedRange": null,
-    "midpointEstimate": null,
-    "sourceCounts": {}
+    "n": 1,
+    "sourceCounts": {
+     "bestjobs": 1
+    },
+    "observedRange": {
+     "min": 3588,
+     "max": 3957
+    },
+    "midpointEstimate": 3772.5
    },
-   "examples": []
+   "examples": [
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/receptioner-hotel-500",
+     "source": "bestjobs",
+     "min": 3588,
+     "max": 3957
+    }
+   ]
   },
   "agent-turism": {
    "name": "Agent de turism",
@@ -4273,12 +5429,24 @@
    "medianBounds": null,
    "observedRange": null,
    "undeclaredBasis": {
-    "n": 0,
-    "observedRange": null,
-    "midpointEstimate": null,
-    "sourceCounts": {}
+    "n": 1,
+    "sourceCounts": {
+     "bestjobs": 1
+    },
+    "observedRange": {
+     "min": 3166,
+     "max": 3166
+    },
+    "midpointEstimate": 3166
    },
-   "examples": []
+   "examples": [
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/agent-turism-junior-1",
+     "source": "bestjobs",
+     "min": 3166,
+     "max": 3166
+    }
+   ]
   },
   "functionar-public": {
    "name": "Funcționar public",
@@ -4396,8 +5564,8 @@
   },
   "pompier": {
    "name": "Pompier",
-   "read": 0,
-   "withoutSalary": 0,
+   "read": 2,
+   "withoutSalary": 2,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -4434,8 +5602,8 @@
   },
   "militar": {
    "name": "Militar",
-   "read": 0,
-   "withoutSalary": 0,
+   "read": 3,
+   "withoutSalary": 3,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -4463,12 +5631,24 @@
    "medianBounds": null,
    "observedRange": null,
    "undeclaredBasis": {
-    "n": 0,
-    "observedRange": null,
-    "midpointEstimate": null,
-    "sourceCounts": {}
+    "n": 1,
+    "sourceCounts": {
+     "anuntul": 1
+    },
+    "observedRange": {
+     "min": 5000,
+     "max": 5000
+    },
+    "midpointEstimate": 5000
    },
-   "examples": []
+   "examples": [
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-magazioner-pentru-santierul-BJb6O3",
+     "source": "anuntul",
+     "min": 5000,
+     "max": 5000
+    }
+   ]
   },
   "jurnalist": {
    "name": "Jurnalist",
@@ -4501,17 +5681,29 @@
    "medianBounds": null,
    "observedRange": null,
    "undeclaredBasis": {
-    "n": 0,
-    "observedRange": null,
-    "midpointEstimate": null,
-    "sourceCounts": {}
+    "n": 1,
+    "sourceCounts": {
+     "hipo": 1
+    },
+    "observedRange": {
+     "min": 4000,
+     "max": 5000
+    },
+    "midpointEstimate": 4500
    },
-   "examples": []
+   "examples": [
+    {
+     "url": "https://www.hipo.ro/locuri-de-munca/locuri_de_munca/270047/Aleph-News/Editor/Jurnalist-Aleph-Business",
+     "source": "hipo",
+     "min": 4000,
+     "max": 5000
+    }
+   ]
   },
   "editor": {
    "name": "Editor",
-   "read": 0,
-   "withoutSalary": 0,
+   "read": 1,
+   "withoutSalary": 1,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -4539,17 +5731,42 @@
    "medianBounds": null,
    "observedRange": null,
    "undeclaredBasis": {
-    "n": 0,
-    "observedRange": null,
-    "midpointEstimate": null,
-    "sourceCounts": {}
+    "n": 3,
+    "sourceCounts": {
+     "bestjobs": 2,
+     "hipo": 1
+    },
+    "observedRange": {
+     "min": 3008,
+     "max": 7097
+    },
+    "midpointEstimate": 4500
    },
-   "examples": []
+   "examples": [
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/video-editor-videograf-reclame-meta-tiktok-1",
+     "source": "bestjobs",
+     "min": 3008,
+     "max": 4221
+    },
+    {
+     "url": "https://www.hipo.ro/locuri-de-munca/locuri_de_munca/270047/Aleph-News/Editor/Jurnalist-Aleph-Business",
+     "source": "hipo",
+     "min": 4000,
+     "max": 5000
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/video-editor-promo-editor",
+     "source": "bestjobs",
+     "min": 6411,
+     "max": 7097
+    }
+   ]
   },
   "cameraman": {
    "name": "Cameraman",
-   "read": 0,
-   "withoutSalary": 0,
+   "read": 1,
+   "withoutSalary": 1,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -4624,8 +5841,8 @@
   },
   "designer-grafic": {
    "name": "Designer grafic",
-   "read": 0,
-   "withoutSalary": 0,
+   "read": 1,
+   "withoutSalary": 1,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -4653,17 +5870,31 @@
    "medianBounds": null,
    "observedRange": null,
    "undeclaredBasis": {
-    "n": 1,
+    "n": 3,
     "sourceCounts": {
+     "bestjobs": 1,
+     "hipo": 1,
      "ejobs": 1
     },
     "observedRange": {
-     "min": 5277,
-     "max": 5277
+     "min": 4000,
+     "max": 6000
     },
-    "midpointEstimate": 5277
+    "midpointEstimate": 5171
    },
    "examples": [
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/grafician-designer-6",
+     "source": "bestjobs",
+     "min": 4907,
+     "max": 5435
+    },
+    {
+     "url": "https://www.hipo.ro/locuri-de-munca/locuri_de_munca/271621/Aleph-News/Graphic-Designer",
+     "source": "hipo",
+     "min": 4000,
+     "max": 6000
+    },
     {
      "url": "https://www.ejobs.ro/user/locuri-de-munca/grafician-operator-imprimante/1986237",
      "source": "ejobs",
@@ -4674,8 +5905,8 @@
   },
   "specialist-marketing": {
    "name": "Specialist marketing",
-   "read": 0,
-   "withoutSalary": 0,
+   "read": 3,
+   "withoutSalary": 1,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -4703,12 +5934,36 @@
    "medianBounds": null,
    "observedRange": null,
    "undeclaredBasis": {
-    "n": 0,
-    "observedRange": null,
-    "midpointEstimate": null,
-    "sourceCounts": {}
+    "n": 3,
+    "sourceCounts": {
+     "bestjobs": 3
+    },
+    "observedRange": {
+     "min": 4907,
+     "max": 6332
+    },
+    "midpointEstimate": 5276.5
    },
-   "examples": []
+   "examples": [
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/specialist-marketing-1045",
+     "source": "bestjobs",
+     "min": 4907,
+     "max": 5435
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/specialist-marketing-1047",
+     "source": "bestjobs",
+     "min": 5013,
+     "max": 5540
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/specialist-marketing-1048",
+     "source": "bestjobs",
+     "min": 5804,
+     "max": 6332
+    }
+   ]
   },
   "traducator": {
    "name": "Traducător",
@@ -5016,158 +6271,416 @@
   },
   "agent-paza": {
    "name": "Agent de pază",
-   "read": 0,
-   "withoutSalary": 0,
-   "n": 0,
-   "ads": 0,
-   "basisNearAmount": 0,
-   "basisFromDocument": 0,
+   "read": 45,
+   "withoutSalary": 43,
+   "n": 6,
+   "ads": 6,
+   "basisNearAmount": 2,
+   "basisFromDocument": 4,
    "basisFromPlatform": 0,
    "employers": 0,
-   "counties": 0,
-   "sourceCounts": {},
-   "employerShare": 0,
-   "sourceShare": 0,
-   "gaps": [
-    "too_few_ads",
-    "too_few_known_employers",
-    "too_few_known_counties",
-    "single_source",
-    "too_few_explicit_monthly"
-   ],
-   "explicitMonthly": 0,
-   "assumedMonthly": 0,
-   "periodSensitivity": null,
-   "sourceSensitivity": null,
-   "midpointEstimate": null,
-   "centralEstimate": null,
-   "status": "no_verified_ads",
-   "medianBounds": null,
-   "observedRange": null,
-   "undeclaredBasis": {
-    "n": 0,
-    "observedRange": null,
-    "midpointEstimate": null,
-    "sourceCounts": {}
+   "counties": 1,
+   "sourceCounts": {
+    "anuntul": 6
    },
-   "examples": []
-  },
-  "agent-curatenie": {
-   "name": "Agent de curățenie",
-   "read": 2,
-   "withoutSalary": 0,
-   "n": 0,
-   "ads": 0,
-   "basisNearAmount": 0,
-   "basisFromDocument": 0,
-   "basisFromPlatform": 0,
-   "employers": 0,
-   "counties": 0,
-   "sourceCounts": {},
    "employerShare": 0,
-   "sourceShare": 0,
+   "sourceShare": 1,
    "gaps": [
     "too_few_ads",
     "too_few_known_employers",
     "too_few_known_counties",
     "single_source",
+    "source_concentration",
     "too_few_explicit_monthly"
    ],
    "explicitMonthly": 0,
-   "assumedMonthly": 0,
+   "assumedMonthly": 6,
    "periodSensitivity": null,
    "sourceSensitivity": null,
    "midpointEstimate": null,
-   "centralEstimate": null,
-   "status": "no_verified_ads",
+   "centralEstimate": 3549.75,
+   "status": "insufficient",
    "medianBounds": null,
-   "observedRange": null,
+   "observedRange": {
+    "min": 2900,
+    "max": 4560
+   },
    "undeclaredBasis": {
-    "n": 1,
+    "n": 9,
     "sourceCounts": {
-     "ejobs": 1
+     "anuntul": 9
     },
     "observedRange": {
-     "min": 3600,
-     "max": 3600
+     "min": 2500,
+     "max": 4550
     },
-    "midpointEstimate": 3600
+    "midpointEstimate": 3625
    },
    "examples": [
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/personal-curatenie/1987018",
-     "source": "ejobs",
-     "min": 3600,
-     "max": 3600
+     "url": "https://www.anuntul.ro/anunt-angajare-agenti-de-securitate-zona-ZWJ3o3",
+     "source": "anuntul",
+     "min": 3000,
+     "max": 3000
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-agent-securitate-pentru-BJ7Qlk",
+     "source": "anuntul",
+     "min": 2750,
+     "max": 3750
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-agenti-de-securitate-VeKarb",
+     "source": "anuntul",
+     "min": 3500,
+     "max": 3500
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-agent-securitate-zona-eeEmx1",
+     "source": "anuntul",
+     "min": 3240,
+     "max": 4320
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-agenti-de-securitate-Z0nYWM",
+     "source": "anuntul",
+     "min": 2900,
+     "max": 3200
+    }
+   ]
+  },
+  "agent-curatenie": {
+   "name": "Agent de curățenie",
+   "read": 32,
+   "withoutSalary": 25,
+   "n": 5,
+   "ads": 5,
+   "basisNearAmount": 3,
+   "basisFromDocument": 2,
+   "basisFromPlatform": 0,
+   "employers": 1,
+   "counties": 1,
+   "sourceCounts": {
+    "bestjobs": 1,
+    "anuntul": 4
+   },
+   "employerShare": 0.2,
+   "sourceShare": 0.8,
+   "gaps": [
+    "too_few_ads",
+    "too_few_known_employers",
+    "too_few_known_counties",
+    "too_few_explicit_monthly"
+   ],
+   "explicitMonthly": 0,
+   "assumedMonthly": 5,
+   "periodSensitivity": null,
+   "sourceSensitivity": 0.1192001249804718,
+   "midpointEstimate": null,
+   "centralEstimate": 3200.5,
+   "status": "insufficient",
+   "medianBounds": null,
+   "observedRange": {
+    "min": 2819,
+    "max": 6000
+   },
+   "undeclaredBasis": {
+    "n": 18,
+    "sourceCounts": {
+     "anuntul": 14,
+     "bestjobs": 3,
+     "ejobs": 1
+    },
+    "observedRange": {
+     "min": 800,
+     "max": 5277
+    },
+    "midpointEstimate": 3333
+   },
+   "examples": [
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/personal-curatenie-satu-mare-carpati-f-m-2",
+     "source": "bestjobs",
+     "min": 2819,
+     "max": 2819
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-femeie-de-serviciu-rm3798",
+     "source": "anuntul",
+     "min": 3000,
+     "max": 4000
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-femeie-de-serviciu-N0EnGk",
+     "source": "anuntul",
+     "min": 800,
+     "max": 800
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-femeie-de-serviciu-piata-VeLPwZ",
+     "source": "anuntul",
+     "min": 3000,
+     "max": 3000
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-menajera-E0z0v4",
+     "source": "anuntul",
+     "min": 3500,
+     "max": 6000
     }
    ]
   },
   "operator-call-center": {
    "name": "Operator call center",
-   "read": 2,
-   "withoutSalary": 0,
-   "n": 0,
-   "ads": 0,
+   "read": 36,
+   "withoutSalary": 32,
+   "n": 3,
+   "ads": 3,
    "basisNearAmount": 0,
-   "basisFromDocument": 0,
+   "basisFromDocument": 3,
    "basisFromPlatform": 0,
-   "employers": 0,
+   "employers": 2,
    "counties": 0,
-   "sourceCounts": {},
-   "employerShare": 0,
-   "sourceShare": 0,
+   "sourceCounts": {
+    "bestjobs": 3
+   },
+   "employerShare": 0.6666666666666666,
+   "sourceShare": 1,
    "gaps": [
     "too_few_ads",
     "too_few_known_employers",
     "too_few_known_counties",
     "single_source",
+    "employer_concentration",
+    "source_concentration",
     "too_few_explicit_monthly"
    ],
-   "explicitMonthly": 0,
+   "explicitMonthly": 3,
    "assumedMonthly": 0,
-   "periodSensitivity": null,
+   "periodSensitivity": 0,
    "sourceSensitivity": null,
    "midpointEstimate": null,
-   "centralEstimate": null,
-   "status": "no_verified_ads",
+   "centralEstimate": 5277,
+   "status": "insufficient",
    "medianBounds": null,
-   "observedRange": null,
+   "observedRange": {
+    "min": 2058,
+    "max": 7915
+   },
    "undeclaredBasis": {
-    "n": 3,
+    "n": 12,
     "sourceCounts": {
+     "bestjobs": 8,
+     "hipo": 1,
      "ejobs": 3
     },
     "observedRange": {
      "min": 2600,
-     "max": 3800
+     "max": 8706
     },
-    "midpointEstimate": 3250
+    "midpointEstimate": 4008.5
    },
    "examples": [
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/agent-vanzari-call-center/1986246",
-     "source": "ejobs",
-     "min": 3000,
-     "max": 3500
+     "url": "https://www.bestjobs.eu/loc-de-munca/operator-call-center-1051",
+     "source": "bestjobs",
+     "min": 3245,
+     "max": 3430
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/operator-call-center/1988722",
-     "source": "ejobs",
-     "min": 3000,
-     "max": 3800
+     "url": "https://www.bestjobs.eu/loc-de-munca/customer-support-italian-dutch-czech-serbian",
+     "source": "bestjobs",
+     "min": 5277,
+     "max": 5277
     },
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/receptionist-operator-call-center/1988369",
-     "source": "ejobs",
-     "min": 2600,
-     "max": 3500
+     "url": "https://www.bestjobs.eu/loc-de-munca/customer-support-limba-olandeza-dutch",
+     "source": "bestjobs",
+     "min": 6596,
+     "max": 8706
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/agent-call-center-full-time-14",
+     "source": "bestjobs",
+     "min": 3166,
+     "max": 3166
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/operator-call-center-1053",
+     "source": "bestjobs",
+     "min": 4485,
+     "max": 4749
     }
    ]
   },
   "secretar": {
    "name": "Secretar",
-   "read": 1,
-   "withoutSalary": 0,
+   "read": 28,
+   "withoutSalary": 23,
+   "n": 1,
+   "ads": 1,
+   "basisNearAmount": 0,
+   "basisFromDocument": 1,
+   "basisFromPlatform": 0,
+   "employers": 0,
+   "counties": 1,
+   "sourceCounts": {
+    "anuntul": 1
+   },
+   "employerShare": 0,
+   "sourceShare": 1,
+   "gaps": [
+    "too_few_ads",
+    "too_few_known_employers",
+    "too_few_known_counties",
+    "single_source",
+    "source_concentration",
+    "too_few_explicit_monthly"
+   ],
+   "explicitMonthly": 0,
+   "assumedMonthly": 1,
+   "periodSensitivity": null,
+   "sourceSensitivity": null,
+   "midpointEstimate": null,
+   "centralEstimate": 11500,
+   "status": "insufficient",
+   "medianBounds": null,
+   "observedRange": {
+    "min": 8000,
+    "max": 15000
+   },
+   "undeclaredBasis": {
+    "n": 24,
+    "sourceCounts": {
+     "bestjobs": 15,
+     "anuntul": 4,
+     "ejobs": 5
+    },
+    "observedRange": {
+     "min": 2638,
+     "max": 10000
+    },
+    "midpointEstimate": 4353.25
+   },
+   "examples": [
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/secretara-1575",
+     "source": "bestjobs",
+     "min": 3166,
+     "max": 3166
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/secretara-cabinet-avocatura-4",
+     "source": "bestjobs",
+     "min": 3166,
+     "max": 4221
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/asistent-manager-comert-online-e-commerce",
+     "source": "bestjobs",
+     "min": 3166,
+     "max": 4221
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/asistent-manager-junior-5",
+     "source": "bestjobs",
+     "min": 2638,
+     "max": 3166
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/asistent-manager-agentie-imobiliara-9",
+     "source": "bestjobs",
+     "min": 4168,
+     "max": 4221
+    }
+   ]
+  },
+  "specialist-resurse-umane": {
+   "name": "Specialist resurse umane",
+   "read": 18,
+   "withoutSalary": 15,
+   "n": 1,
+   "ads": 1,
+   "basisNearAmount": 0,
+   "basisFromDocument": 1,
+   "basisFromPlatform": 0,
+   "employers": 1,
+   "counties": 0,
+   "sourceCounts": {
+    "bestjobs": 1
+   },
+   "employerShare": 1,
+   "sourceShare": 1,
+   "gaps": [
+    "too_few_ads",
+    "too_few_known_employers",
+    "too_few_known_counties",
+    "single_source",
+    "employer_concentration",
+    "source_concentration",
+    "too_few_explicit_monthly"
+   ],
+   "explicitMonthly": 1,
+   "assumedMonthly": 0,
+   "periodSensitivity": 0,
+   "sourceSensitivity": null,
+   "midpointEstimate": null,
+   "centralEstimate": 6596,
+   "status": "insufficient",
+   "medianBounds": null,
+   "observedRange": {
+    "min": 5277,
+    "max": 7915
+   },
+   "undeclaredBasis": {
+    "n": 14,
+    "sourceCounts": {
+     "bestjobs": 11,
+     "ejobs": 3
+    },
+    "observedRange": {
+     "min": 3500,
+     "max": 23744
+    },
+    "midpointEstimate": 5804.25
+   },
+   "examples": [
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/specialist-resurse-umane-per-det-2-ani",
+     "source": "bestjobs",
+     "min": 5277,
+     "max": 6332
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/hr-specialist-398",
+     "source": "bestjobs",
+     "min": 5277,
+     "max": 7915
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/specialist-resurse-umane-884",
+     "source": "bestjobs",
+     "min": 6859,
+     "max": 6859
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/angajam-recrutor-campanie-trendyol-4500lei-luna",
+     "source": "bestjobs",
+     "min": 23744,
+     "max": 23744
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/specialist-resurse-umane-cim-determinat-2-ani",
+     "source": "bestjobs",
+     "min": 4010,
+     "max": 5277
+    }
+   ]
+  },
+  "agent-imobiliar": {
+   "name": "Agent imobiliar",
+   "read": 7,
+   "withoutSalary": 2,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -5197,151 +6710,34 @@
    "undeclaredBasis": {
     "n": 5,
     "sourceCounts": {
-     "ejobs": 5
-    },
-    "observedRange": {
-     "min": 2700,
-     "max": 6000
-    },
-    "midpointEstimate": 4000
-   },
-   "examples": [
-    {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/secretara-asistenta-cabinet-de-avocatura/1986415",
-     "source": "ejobs",
-     "min": 3166,
-     "max": 4221
-    },
-    {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/asistent-manager/1988324",
-     "source": "ejobs",
-     "min": 6000,
-     "max": 6000
-    },
-    {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/jurist-a-secretar-a/1988634",
-     "source": "ejobs",
-     "min": 2700,
-     "max": 3100
-    },
-    {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/asistent-manager-back-office-clinceni-ilfov/1986725",
-     "source": "ejobs",
-     "min": 6000,
-     "max": 6000
-    },
-    {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/asistent-manager/1988030",
-     "source": "ejobs",
-     "min": 4000,
-     "max": 4000
-    }
-   ]
-  },
-  "specialist-resurse-umane": {
-   "name": "Specialist resurse umane",
-   "read": 0,
-   "withoutSalary": 0,
-   "n": 0,
-   "ads": 0,
-   "basisNearAmount": 0,
-   "basisFromDocument": 0,
-   "basisFromPlatform": 0,
-   "employers": 0,
-   "counties": 0,
-   "sourceCounts": {},
-   "employerShare": 0,
-   "sourceShare": 0,
-   "gaps": [
-    "too_few_ads",
-    "too_few_known_employers",
-    "too_few_known_counties",
-    "single_source",
-    "too_few_explicit_monthly"
-   ],
-   "explicitMonthly": 0,
-   "assumedMonthly": 0,
-   "periodSensitivity": null,
-   "sourceSensitivity": null,
-   "midpointEstimate": null,
-   "centralEstimate": null,
-   "status": "no_verified_ads",
-   "medianBounds": null,
-   "observedRange": null,
-   "undeclaredBasis": {
-    "n": 3,
-    "sourceCounts": {
-     "ejobs": 3
-    },
-    "observedRange": {
-     "min": 3500,
-     "max": 7500
-    },
-    "midpointEstimate": 5750
-   },
-   "examples": [
-    {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/recruiter-tehnic/1987447",
-     "source": "ejobs",
-     "min": 6000,
-     "max": 7500
-    },
-    {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/hr-specialist/1986929",
-     "source": "ejobs",
-     "min": 5000,
-     "max": 6500
-    },
-    {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/suport-recrutare-bucuresti/1986691",
-     "source": "ejobs",
-     "min": 3500,
-     "max": 3800
-    }
-   ]
-  },
-  "agent-imobiliar": {
-   "name": "Agent imobiliar",
-   "read": 4,
-   "withoutSalary": 0,
-   "n": 0,
-   "ads": 0,
-   "basisNearAmount": 0,
-   "basisFromDocument": 0,
-   "basisFromPlatform": 0,
-   "employers": 0,
-   "counties": 0,
-   "sourceCounts": {},
-   "employerShare": 0,
-   "sourceShare": 0,
-   "gaps": [
-    "too_few_ads",
-    "too_few_known_employers",
-    "too_few_known_counties",
-    "single_source",
-    "too_few_explicit_monthly"
-   ],
-   "explicitMonthly": 0,
-   "assumedMonthly": 0,
-   "periodSensitivity": null,
-   "sourceSensitivity": null,
-   "midpointEstimate": null,
-   "centralEstimate": null,
-   "status": "no_verified_ads",
-   "medianBounds": null,
-   "observedRange": null,
-   "undeclaredBasis": {
-    "n": 2,
-    "sourceCounts": {
+     "bestjobs": 3,
      "ejobs": 2
     },
     "observedRange": {
-     "min": 7915,
-     "max": 15830
+     "min": 5277,
+     "max": 26383
     },
-    "midpointEstimate": 11212.75
+    "midpointEstimate": 10553
    },
    "examples": [
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/agent-imobiliar-791",
+     "source": "bestjobs",
+     "min": 5277,
+     "max": 10553
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/agent-imobiliar-792",
+     "source": "bestjobs",
+     "min": 5277,
+     "max": 5277
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/agent-imobiliar-793",
+     "source": "bestjobs",
+     "min": 15830,
+     "max": 26383
+    },
     {
      "url": "https://www.ejobs.ro/user/locuri-de-munca/agent-imobiliar/1986985",
      "source": "ejobs",
@@ -5358,8 +6754,8 @@
   },
   "administrator-bloc": {
    "name": "Administrator de bloc",
-   "read": 0,
-   "withoutSalary": 0,
+   "read": 2,
+   "withoutSalary": 1,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -5396,8 +6792,8 @@
   },
   "frizer": {
    "name": "Frizer",
-   "read": 1,
-   "withoutSalary": 0,
+   "read": 4,
+   "withoutSalary": 3,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -5434,8 +6830,8 @@
   },
   "cosmetician": {
    "name": "Cosmetician",
-   "read": 0,
-   "withoutSalary": 0,
+   "read": 3,
+   "withoutSalary": 3,
    "n": 1,
    "ads": 1,
    "basisNearAmount": 1,
@@ -5470,12 +6866,23 @@
     "max": 6000
    },
    "undeclaredBasis": {
-    "n": 0,
-    "observedRange": null,
-    "midpointEstimate": null,
-    "sourceCounts": {}
+    "n": 1,
+    "sourceCounts": {
+     "bestjobs": 1
+    },
+    "observedRange": {
+     "min": 4749,
+     "max": 4749
+    },
+    "midpointEstimate": 4749
    },
    "examples": [
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/cosmeticiana-terapeut-corporal-1",
+     "source": "bestjobs",
+     "min": 4749,
+     "max": 4749
+    },
     {
      "url": "https://www.ejobs.ro/user/locuri-de-munca/beauty-advisor-cosmetician-cluj-salariul-ron-net/1987220",
      "source": "ejobs",
@@ -5600,46 +7007,60 @@
   },
   "ingrijitor-batrani": {
    "name": "Îngrijitor de bătrâni",
-   "read": 1,
-   "withoutSalary": 0,
-   "n": 0,
-   "ads": 0,
-   "basisNearAmount": 0,
+   "read": 2,
+   "withoutSalary": 1,
+   "n": 1,
+   "ads": 1,
+   "basisNearAmount": 1,
    "basisFromDocument": 0,
    "basisFromPlatform": 0,
-   "employers": 0,
-   "counties": 0,
-   "sourceCounts": {},
-   "employerShare": 0,
-   "sourceShare": 0,
+   "employers": 1,
+   "counties": 1,
+   "sourceCounts": {
+    "publi24": 1
+   },
+   "employerShare": 1,
+   "sourceShare": 1,
    "gaps": [
     "too_few_ads",
     "too_few_known_employers",
     "too_few_known_counties",
     "single_source",
+    "employer_concentration",
+    "source_concentration",
     "too_few_explicit_monthly"
    ],
-   "explicitMonthly": 0,
+   "explicitMonthly": 1,
    "assumedMonthly": 0,
-   "periodSensitivity": null,
+   "periodSensitivity": 0,
    "sourceSensitivity": null,
    "midpointEstimate": null,
-   "centralEstimate": null,
-   "status": "no_verified_ads",
+   "centralEstimate": 3000,
+   "status": "insufficient",
    "medianBounds": null,
-   "observedRange": null,
+   "observedRange": {
+    "min": 3000,
+    "max": 3000
+   },
    "undeclaredBasis": {
     "n": 0,
     "observedRange": null,
     "midpointEstimate": null,
     "sourceCounts": {}
    },
-   "examples": []
+   "examples": [
+    {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/menaj-ingrijire-persoane/ingrijitori-batrani/anunt/ingrijitor-batrani-infirmier/3i8d5h5ihidi7119260d23f8i855f97d.html",
+     "source": "publi24",
+     "min": 3000,
+     "max": 3000
+    }
+   ]
   },
   "asistent-social": {
    "name": "Asistent social",
-   "read": 0,
-   "withoutSalary": 0,
+   "read": 1,
+   "withoutSalary": 1,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -5676,8 +7097,8 @@
   },
   "operator-cnc": {
    "name": "Operator CNC",
-   "read": 2,
-   "withoutSalary": 2,
+   "read": 29,
+   "withoutSalary": 27,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -5705,29 +7126,55 @@
    "medianBounds": null,
    "observedRange": null,
    "undeclaredBasis": {
-    "n": 1,
+    "n": 7,
     "sourceCounts": {
+     "bestjobs": 5,
+     "hipo": 1,
      "ejobs": 1
     },
     "observedRange": {
-     "min": 3500,
-     "max": 4500
+     "min": 3430,
+     "max": 7941
     },
-    "midpointEstimate": 4000
+    "midpointEstimate": 4749
    },
    "examples": [
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/operator-cnc-abkant-debitare/1985729",
-     "source": "ejobs",
-     "min": 3500,
-     "max": 4500
+     "url": "https://www.bestjobs.eu/loc-de-munca/strungar-cnc-33",
+     "source": "bestjobs",
+     "min": 7941,
+     "max": 7941
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/operator-cnc-956",
+     "source": "bestjobs",
+     "min": 3694,
+     "max": 5277
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/operator-cnc-freza-okuma",
+     "source": "bestjobs",
+     "min": 5277,
+     "max": 5277
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/operator-cnc-957",
+     "source": "bestjobs",
+     "min": 3430,
+     "max": 3430
+    },
+    {
+     "url": "https://www.hipo.ro/locuri-de-munca/locuri_de_munca/270918/Trenkwalder-Romania/ANGAJ%C4%82M-OPERATOR-CNC-%E2%80%93-DEBITARE-CU-PLASMA",
+     "source": "hipo",
+     "min": 5000,
+     "max": 5500
     }
    ]
   },
   "electromecanic": {
    "name": "Electromecanic",
-   "read": 2,
-   "withoutSalary": 0,
+   "read": 26,
+   "withoutSalary": 19,
    "n": 1,
    "ads": 1,
    "basisNearAmount": 0,
@@ -5762,34 +7209,48 @@
     "max": 10553
    },
    "undeclaredBasis": {
-    "n": 2,
+    "n": 7,
     "sourceCounts": {
+     "bestjobs": 4,
+     "hipo": 1,
      "ejobs": 2
     },
     "observedRange": {
-     "min": 5277,
-     "max": 7387
+     "min": 3166,
+     "max": 8000
     },
-    "midpointEstimate": 6416
+    "midpointEstimate": 6041.5
    },
    "examples": [
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/tehnician-electromecanic-departament-service/1988579",
-     "source": "ejobs",
+     "url": "https://www.bestjobs.eu/loc-de-munca/lucrator-electromecanic",
+     "source": "bestjobs",
+     "min": 3166,
+     "max": 3166
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/sef-atelier-electric-electrician-automatist",
+     "source": "bestjobs",
+     "min": 5593,
+     "max": 6490
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/mecanic-electromecanic-20",
+     "source": "bestjobs",
+     "min": 5013,
+     "max": 5804
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/electromecanic-intretinere-38",
+     "source": "bestjobs",
+     "min": 3694,
+     "max": 5277
+    },
+    {
+     "url": "https://www.hipo.ro/locuri-de-munca/locuri_de_munca/270536/Working4U/Electromecanic-Service",
+     "source": "hipo",
      "min": 6000,
-     "max": 7000
-    },
-    {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/tehnician-inginer-electromecanic-service-stivuitoare/1987768",
-     "source": "ejobs",
-     "min": 5277,
-     "max": 7387
-    },
-    {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/electromecanic-utilaje-euro-net/1984487",
-     "source": "ejobs",
-     "min": 5277,
-     "max": 10553
+     "max": 8000
     }
    ]
   },
@@ -5824,12 +7285,24 @@
    "medianBounds": null,
    "observedRange": null,
    "undeclaredBasis": {
-    "n": 0,
-    "observedRange": null,
-    "midpointEstimate": null,
-    "sourceCounts": {}
+    "n": 1,
+    "sourceCounts": {
+     "bestjobs": 1
+    },
+    "observedRange": {
+     "min": 4221,
+     "max": 4221
+    },
+    "midpointEstimate": 4221
    },
-   "examples": []
+   "examples": [
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/cautam-operator-chimist-lucrator-depozit",
+     "source": "bestjobs",
+     "min": 4221,
+     "max": 4221
+    }
+   ]
   },
   "operator-mase-plastice": {
    "name": "Operator mase plastice",
@@ -5862,12 +7335,30 @@
    "medianBounds": null,
    "observedRange": null,
    "undeclaredBasis": {
-    "n": 0,
-    "observedRange": null,
-    "midpointEstimate": null,
-    "sourceCounts": {}
+    "n": 2,
+    "sourceCounts": {
+     "bestjobs": 2
+    },
+    "observedRange": {
+     "min": 3430,
+     "max": 4063
+    },
+    "midpointEstimate": 3713.5
    },
-   "examples": []
+   "examples": [
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/operator-mase-plastice-tehnician-5",
+     "source": "bestjobs",
+     "min": 3667,
+     "max": 4063
+    },
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/operator-mase-plastice-152",
+     "source": "bestjobs",
+     "min": 3430,
+     "max": 3694
+    }
+   ]
   },
   "operator-rafinarie": {
    "name": "Operator rafinărie",
@@ -5947,8 +7438,8 @@
   },
   "sticlar": {
    "name": "Sticlar",
-   "read": 0,
-   "withoutSalary": 0,
+   "read": 1,
+   "withoutSalary": 1,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -6061,8 +7552,8 @@
   },
   "tapiter": {
    "name": "Tapițer",
-   "read": 0,
-   "withoutSalary": 0,
+   "read": 1,
+   "withoutSalary": 1,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -6099,8 +7590,8 @@
   },
   "bijutier": {
    "name": "Bijutier",
-   "read": 0,
-   "withoutSalary": 0,
+   "read": 2,
+   "withoutSalary": 2,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -6137,8 +7628,8 @@
   },
   "tipograf": {
    "name": "Tipograf",
-   "read": 0,
-   "withoutSalary": 0,
+   "read": 5,
+   "withoutSalary": 3,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -6166,17 +7657,29 @@
    "medianBounds": null,
    "observedRange": null,
    "undeclaredBasis": {
-    "n": 0,
-    "observedRange": null,
-    "midpointEstimate": null,
-    "sourceCounts": {}
+    "n": 1,
+    "sourceCounts": {
+     "bestjobs": 1
+    },
+    "observedRange": {
+     "min": 4221,
+     "max": 4221
+    },
+    "midpointEstimate": 4221
    },
-   "examples": []
+   "examples": [
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/angajam-tipograf-offset-ploiesti",
+     "source": "bestjobs",
+     "min": 4221,
+     "max": 4221
+    }
+   ]
   },
   "constructor-drumuri": {
    "name": "Constructor de drumuri",
-   "read": 0,
-   "withoutSalary": 0,
+   "read": 1,
+   "withoutSalary": 1,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -6213,7 +7716,7 @@
   },
   "marinar": {
    "name": "Marinar",
-   "read": 0,
+   "read": 1,
    "withoutSalary": 0,
    "n": 0,
    "ads": 0,
@@ -6289,8 +7792,8 @@
   },
   "operator-epurare": {
    "name": "Operator stație de epurare",
-   "read": 0,
-   "withoutSalary": 0,
+   "read": 1,
+   "withoutSalary": 1,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -6318,17 +7821,29 @@
    "medianBounds": null,
    "observedRange": null,
    "undeclaredBasis": {
-    "n": 0,
-    "observedRange": null,
-    "midpointEstimate": null,
-    "sourceCounts": {}
+    "n": 1,
+    "sourceCounts": {
+     "bestjobs": 1
+    },
+    "observedRange": {
+     "min": 5936,
+     "max": 6543
+    },
+    "midpointEstimate": 6239.5
    },
-   "examples": []
+   "examples": [
+    {
+     "url": "https://www.bestjobs.eu/loc-de-munca/operator-statie-de-epurare-18",
+     "source": "bestjobs",
+     "min": 5936,
+     "max": 6543
+    }
+   ]
   },
   "crupier": {
    "name": "Crupier",
-   "read": 0,
-   "withoutSalary": 0,
+   "read": 2,
+   "withoutSalary": 2,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -6356,12 +7871,24 @@
    "medianBounds": null,
    "observedRange": null,
    "undeclaredBasis": {
-    "n": 0,
-    "observedRange": null,
-    "midpointEstimate": null,
-    "sourceCounts": {}
+    "n": 1,
+    "sourceCounts": {
+     "hipo": 1
+    },
+    "observedRange": {
+     "min": 3000,
+     "max": 4200
+    },
+    "midpointEstimate": 3600
    },
-   "examples": []
+   "examples": [
+    {
+     "url": "https://www.hipo.ro/locuri-de-munca/locuri_de_munca/243633/Randstad-Romania/Crupier-Blackjack-Bucuresti",
+     "source": "hipo",
+     "min": 3000,
+     "max": 4200
+    }
+   ]
   },
   "tehnician-calculatoare": {
    "name": "Tehnician service IT",
@@ -6403,8 +7930,8 @@
   },
   "consultant-management": {
    "name": "Consultant în management",
-   "read": 0,
-   "withoutSalary": 0,
+   "read": 1,
+   "withoutSalary": 1,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,

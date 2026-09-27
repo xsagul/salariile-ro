@@ -42,10 +42,19 @@
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 1,
-  "cuSalariu": 0,
+  "anunturiCitite": 3,
+  "cuSalariu": 1,
   "nivel": {},
-  "experienta": {},
+  "experienta": {
+   "da": {
+    "n": 1,
+    "procent": 33.3
+   },
+   "fara": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
   "experientaPortal": {},
   "studii": {},
   "limbi": {},
@@ -53,32 +62,89 @@
   "atestate": {},
   "program": {},
   "mod": {},
-  "norma": {},
+  "norma": {
+   "full-time": {
+    "n": 1,
+    "procent": 33.3
+   },
+   "part-time": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
   "durata": {},
-  "beneficii": {},
+  "beneficii": {
+   "transport": {
+    "n": 1,
+    "procent": 33.3
+   },
+   "masă": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
   "tehnologii": {},
   "negociabil": {},
   "strainatate": {},
   "limbaAnuntului": {
    "ro": {
-    "n": 1,
+    "n": 3,
     "procent": 100
    }
   },
   "surse": {
+   "publi24": {
+    "n": 1,
+    "procent": 33.3
+   },
+   "anuntul": {
+    "n": 1,
+    "procent": 33.3
+   },
    "ejobs": {
     "n": 1,
-    "procent": 100
+    "procent": 33.3
    }
   },
-  "peJudet": {},
+  "peJudet": {
+   "Prahova": {
+    "n": 1,
+    "procent": 33.3
+   },
+   "bucuresti": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
   "motiveFaraSalariu": {
+   "contract_or_variable_income": {
+    "n": 1,
+    "procent": 50
+   },
+   "salary_evidence_incomplete": {
+    "n": 1,
+    "procent": 50
+   },
    "country_unconfirmed": {
     "n": 1,
-    "procent": 100
+    "procent": 50
    }
   },
-  "salariuPeFactor": {}
+  "salariuPeFactor": {
+   "experienta": {
+    "da": {
+     "n": 1
+    }
+   },
+   "beneficii": {
+    "transport": {
+     "n": 1
+    },
+    "masă": {
+     "n": 1
+    }
+   }
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",

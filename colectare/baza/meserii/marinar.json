@@ -42,7 +42,7 @@
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 0,
+  "anunturiCitite": 1,
   "cuSalariu": 0,
   "nivel": {},
   "experienta": {},
@@ -54,15 +54,60 @@
   "program": {},
   "mod": {},
   "norma": {},
-  "durata": {},
-  "beneficii": {},
+  "durata": {
+   "nedeterminată": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "beneficii": {
+   "transport": {
+    "n": 1,
+    "procent": 100
+   },
+   "masă": {
+    "n": 1,
+    "procent": 100
+   },
+   "bonus": {
+    "n": 1,
+    "procent": 100
+   },
+   "prime": {
+    "n": 1,
+    "procent": 100
+   },
+   "asigurare medicală": {
+    "n": 1,
+    "procent": 100
+   },
+   "telefon / laptop": {
+    "n": 1,
+    "procent": 100
+   }
+  },
   "tehnologii": {},
   "negociabil": {},
   "strainatate": {},
-  "limbaAnuntului": {},
-  "surse": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "bestjobs": {
+    "n": 1,
+    "procent": 100
+   }
+  },
   "peJudet": {},
-  "motiveFaraSalariu": {},
+  "motiveFaraSalariu": {
+   "multiple_unresolved_amounts": {
+    "n": 1,
+    "procent": 100
+   }
+  },
   "salariuPeFactor": {}
  },
  "anofm": {

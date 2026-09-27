@@ -97,6 +97,19 @@ const ATESTATE = [
   ["certificat ECDL", /\becdl\b/], ["atestat pază", /atestat (de )?paza|agent de paza atestat/],
 ];
 
+// Un atestat „constituie un avantaj” / „opțional” nu e cerință: „certificare ANRE (grad IIB)
+// constituie un avantaj” (PPC, 27 septembrie 2026) intră ca „ANRE (avantaj)”.
+function atestate(t) {
+  return ATESTATE.flatMap(([nume, re]) => {
+    const g = new RegExp(re.source, "g"), m = [...t.matchAll(g)];
+    if (!m.length) return [];
+    // Numai în propoziția atestatului: „avantaj” din propoziția următoare nu se lipește de el.
+    const propozitie = (x) => t.slice(Math.max(0, x.index - 40), x.index).split(/[.;!?]/).pop() + t.slice(x.index, x.index + x[0].length + 70).split(/[.;!?]/)[0];
+    const cerut = m.some((x) => !/avantaj|optional|de preferat|constituie un plus|reprezinta un plus|is a plus|nice to have/.test(propozitie(x)));
+    return [cerut ? nume : `${nume} (avantaj)`];
+  });
+}
+
 // ─── Program și mod de lucru ────────────────────────────────────────────────
 const PROGRAM = [
   ["ture", /\b(in |pe )?ture\b|doua schimburi|trei schimburi|\b[23] schimburi|program in schimburi|tura (de zi|de noapte|i|ii|iii)/],
@@ -173,7 +186,7 @@ export function atributeAnunt({ title = "", description = "", extra = "", struct
     studii: studii(t),
     limbi: limbi(t),
     permis: permis(t),
-    atestate: lista(t, ATESTATE),
+    atestate: atestate(t),
     program: lista(t, PROGRAM),
     mod: [...new Set([...lista(t, MOD), ...(structurat?.remote ? ["remote"] : [])])],
     // Treapta aleasă de angajator dintr-o listă a portalului (hipo.ro), separat de cerința scrisă.

@@ -62,64 +62,100 @@
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 1,
+  "anunturiCitite": 2,
   "cuSalariu": 0,
   "nivel": {
    "stagiar": {
     "n": 1,
-    "procent": 100
+    "procent": 50
    }
   },
-  "experienta": {},
+  "experienta": {
+   "2+ ani": {
+    "n": 1,
+    "procent": 50
+   }
+  },
   "experientaPortal": {},
-  "studii": {},
+  "studii": {
+   "profesionale": {
+    "n": 1,
+    "procent": 50
+   }
+  },
   "limbi": {},
   "permis": {},
-  "atestate": {},
-  "program": {},
+  "atestate": {
+   "autorizare stivuitorist (avantaj)": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "program": {
+   "ture": {
+    "n": 1,
+    "procent": 50
+   }
+  },
   "mod": {},
   "norma": {},
   "durata": {},
   "beneficii": {
    "tichete de masă": {
-    "n": 1,
+    "n": 2,
     "procent": 100
    },
    "asigurare medicală": {
-    "n": 1,
+    "n": 2,
     "procent": 100
+   },
+   "bonus": {
+    "n": 1,
+    "procent": 50
+   },
+   "prime": {
+    "n": 1,
+    "procent": 50
    }
   },
   "tehnologii": {
    "Excel": {
     "n": 1,
-    "procent": 100
+    "procent": 50
    }
   },
   "negociabil": {},
   "strainatate": {},
   "limbaAnuntului": {
    "ro": {
-    "n": 1,
+    "n": 2,
     "procent": 100
    }
   },
   "surse": {
    "hipo": {
     "n": 1,
-    "procent": 100
+    "procent": 50
+   },
+   "bestjobs": {
+    "n": 1,
+    "procent": 50
    }
   },
   "peJudet": {
    "RO": {
     "n": 1,
-    "procent": 100
+    "procent": 50
    }
   },
   "motiveFaraSalariu": {
    "salary_evidence_incomplete": {
-    "n": 1,
+    "n": 2,
     "procent": 100
+   },
+   "foreign_or_noncomparable_work": {
+    "n": 1,
+    "procent": 50
    }
   },
   "salariuPeFactor": {}
