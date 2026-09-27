@@ -4122,3 +4122,26 @@ celelalte cinci surse au mers.
 
 De decis: `anunturi.mjs` înlocuiește cifrele de pe site abia după o trecere completă prin
 toate cele 7 surse. Cu OLX blocat, condiția nu se mai îndeplinește niciodată.
+
+## 27 septembrie 2026 — Pagina de meserie, refăcută după modelul paginilor de zile
+
+Proprietarul era mulțumit „7%” de paginile de meserie și cerea simplitate, încărcătură
+cognitivă mică și intenția rezolvată. Comparația cu Paylab (locul 2 la „salariu
+electrician”) arăta că răspunsul nostru se pierdea sub statistici despre sector și grupa ISCO.
+Acum pagina are, în ordine:
+- H1 și fraza „ce face”, fără cale de navigare;
+- cifra (salariul-concluzie sau reperele vechi), cu brutul echivalent (`brutDinNetStandard`,
+  rotunjit la 10);
+- tabelele meseriei: vechime, județe, angajatori, grila;
+- în dreapta, „Meserii apropiate” cu cifra lor și „Ai o ofertă?”;
+- codul COR și FAQ-ul.
+
+Ce a ieșit: navigarea în pagină, „Contextul pieței muncii”, paragraful CAEN/ISCO, graficul
+sectorului CAEN, tabelul pe vârste al grupei ISCO, mediile județene ale sectorului și nota
+INS lungă. ANOFM și metoda au trecut în „Alte surse și cum am calculat”, închis, la final:
+pilonii rămân separați, dar nu mai stau în primul ecran. Întrebarea despre trepte apare doar
+unde există grilă. Pe `/salarii`, cifra e acum concluzia, unde există, ca să coincidă cu
+pagina meseriei (electrician: 5.500, nu 5.250). `test-rendered.mts` a fost actualizat: nu mai
+cere TEMPO/CAEN și ancorele pe paginile de meserie. Electrician: 1.293 → 138 de cuvinte.
+Rămase de discutat: „Legea 153/2017” în primul ecran la profesor (regula anului vechi) și
+rândurile „prea puține date” / „sursa nu are încă date” la paginile fără concluzie.

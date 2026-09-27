@@ -218,8 +218,11 @@ async function auditRenderedSite() {
           if (linkuriCluster.length < 3) {
             failures.push(`${location}: link graph insuficient (${linkuriCluster.length} linkuri in cluster)`);
           }
+          // Din 27 sept. 2026 pagina unei meserii nu mai poartă contextul INS pe sector și grupă
+          // (cerut de proprietar): acolo cifra e a meseriei, cu proveniența ei, nu TEMPO/CAEN.
+          const eMeserie = /^\/salarii\/[^/]+$/.test(pathname) && !["/salarii/acoperire", "/salarii/clasament", "/salarii/judete", "/salarii/femei-barbati", "/salarii/locuri-vacante"].includes(pathname);
           const sursaCeruta = pathname === '/salarii/acoperire' ? 'registrul observațiilor' : pathname === '/salarii/clasament' ? 'Salario' : 'TEMPO-Online';
-          if (!html.includes(sursaCeruta)) {
+          if (!eMeserie && !html.includes(sursaCeruta)) {
             failures.push(`${location}: nu citeaza sursa ${sursaCeruta}`);
           }
           // Regula cere ca o cifra sa aiba clasificarea declarata. Majoritatea
@@ -228,7 +231,7 @@ async function auditRenderedSite() {
           // majore ISCO-08. Le cerem ISCO, nu le exceptam de la regula.
           const PAGINI_ISCO = ["/salarii/femei-barbati", "/salarii/locuri-vacante"];
           const clasificareCeruta = pathname === '/salarii/acoperire' ? /ocupație identificabilă/ : pathname === '/salarii/clasament' ? /Rolul din sursă/ : PAGINI_ISCO.includes(pathname) ? /ISCO/ : /CAEN\s/;
-          if (!clasificareCeruta.test(html)) {
+          if (!eMeserie && !clasificareCeruta.test(html)) {
             failures.push(`${location}: nu declara clasificarea din spatele cifrei`);
           }
         }
@@ -292,9 +295,9 @@ async function auditRenderedSite() {
     // Clusterul de meserii. Verificam eticheta, nu cifra: cifrele se schimba la
     // fiecare rulare `npm run ins:tempo`, dar promisiunea paginii — sa spuna ce
     // masoara si de unde vine — nu are voie sa dispara.
+    // Contextul INS pe sector și grupă a ieșit de pe paginile de meserie pe 27 sept. 2026.
     ["/salarii", "TEMPO-Online", "citarea sursei INS pe hubul de meserii"],
     ["/salarii", "grupe majore de ocupații", "a doua masuratoare, dinspre ocupatie"],
-    ["/salarii/programator", "CAEN 62", "activitatea din spatele cifrei de programator"],
     // Netul trebuie sa raspunda primul cautarii, iar cele doua populatii CAEN
     // si ISCO raman separate, fara revenirea la intervalul derivat.
     // Rescrise pe 31 august 2026, odata cu trecerea la o singura cifra in
@@ -304,17 +307,11 @@ async function auditRenderedSite() {
     ["/salarii/programator", "Medie netă declarată în Salario", "netul principal, afisat primul"],
     ["/salarii/programator", "lei net", "unitatea de masura"],
     ["/salarii/programator", "raportări voluntare", "limita cifrei, declarata in pagina"],
-    ["/salarii/programator", `Brut lunar pe județe · media ${AN_JUDETE}`, "perioada tabelului judetean"],
-    ["/salarii/programator", "Nu este salariu net", "separarea tabelului judetean de net"],
-    ["/salarii/programator", "salariul minim din 2026", "separarea tabelului judetean de minimul curent"],
-    ["/salarii/programator", "3.500 lei", "reperul calendaristic pentru anul 2024"],
     ["/salarii/judete", `media întregului an ${AN_JUDETE}`, "perioada explicita a hubului judetean"],
     ["/salarii/judet/giurgiu", `media întregului an ${AN_JUDETE}`, "perioada explicita a paginii Giurgiu"],
     ["/salarii/judet/giurgiu", "CAEN P · Învățământ", "eticheta CAEN Rev.2 P"],
     ["/salarii/judet/giurgiu", "CAEN Q · Sănătate și asistență socială", "eticheta CAEN Rev.2 Q"],
     ["/salarii/judet/giurgiu", "CAEN M · Activități profesionale", "eticheta CAEN Rev.2 M"],
-    ["/salarii/asistent-medical", "Tehnicieni", "grupa de ocupatii a asistentului medical"],
-    ["/salarii/medic", "Specialiști", "grupa de ocupatii a medicului"],
     // Diferenta pe sexe: date care existau in matricea INS de la inceput, dar
     // pe care importul le arunca. Verificam eticheta si avertismentul de
     // interpretare, nu cifra — cifra se schimba la fiecare `npm run ins:tempo`,
@@ -323,15 +320,10 @@ async function auditRenderedSite() {
     ["/salarii/femei-barbati", "Ce NU spune cifra", "avertismentul de interpretare"],
     ["/salarii/femei-barbati", "post egal", "precizarea ca nu se masoara diferenta la post egal"],
     ["/salarii/femei-barbati", "FOM121B", "citarea matricei INS"],
-    ["/salarii/medic", "Femei și bărbați", "contextul pe sexe pe pagina de meserie"],
     // Locuri de munca vacante: singura serie TRIMESTRIALA din set. Pagina
     // raspundea doar la „cat se castiga"; asta raspunde la „cat se cauta".
-    ["/salarii/programator", "Posturi vacante", "semnalul de cerere pe pagina de meserie"],
-    ["/salarii/programator", "LMV102D", "citarea matricei de locuri vacante"],
-    ["/salarii/programator", "Cifra e a grupei", "precizarea ca vacantele sunt ale grupei, nu ale meseriei"],
     ["/salarii/locuri-vacante", "Nu sunt anunțuri de angajare", "precizarea ca vacantele INS nu sunt anunturi"],
     ["/salarii/locuri-vacante", "LMV101D", "citarea matricei de rate"],
-    ["/salarii/medic", "Vârsta și veniturile grupei ISCO", "progresia pe varste din ancheta din octombrie"],
     ["/compara", "nu declarăm un câștigător", "limita metodologica a hubului de comparatii"],
     ["/compara/programator-vs-medic", "Net, brut și context statistic", "tabelul cu netul inaintea brutului"],
     ["/compara/programator-vs-medic", "nu sunt un minim și un maxim", "avertismentul impotriva intervalului"],
@@ -367,9 +359,6 @@ async function auditRenderedSite() {
   const copyIntervalVechi = /Estimare net, pe lună|Cum citești intervalul|câștigă, estimativ, între|capetele sunt cele două/i;
   for (const pathname of paginiMeserii) {
     const html = rendered.get(pathname) ?? "";
-    for (const id of ['profil', 'piata', 'oferta']) {
-      if (!html.includes(`id="${id}"`)) failures.push(`${pathname}: ancora #${id} nu are destinație`);
-    }
     const title = titleFrom(html);
     const descriere = metaDescriptionFrom(html);
     const textVizibil = visibleTextFrom(html);
@@ -384,14 +373,11 @@ async function auditRenderedSite() {
     // din pagina meseriei trebuie sa ajungi la randul ei de acoperire dintr-un click.
     const slugMeserie = pathname.split("/").pop();
     if (!html.includes(`/salarii/acoperire#${slugMeserie}`)) failures.push(`${pathname}: lipsește legătura către rândul de acoperire`);
-    if (!/nu a meseriei în sine|repere la nivel de grupă și sector/.test(html))
-      failures.push(`${pathname}: lipseste limita declarata a cifrei`);
     if (html.includes("Interval pe județe")) failures.push(`${pathname}: tabelul judetean foloseste eticheta ambigua de interval`);
-    if (!textVizibil.includes(`Brut lunar · media ${AN_JUDETE}`)) {
-      failures.push(`${pathname}: tabelul judetean nu declara brutul lunar si media anului ${AN_JUDETE}`);
-    }
-    if (!textVizibil.includes("Nu este salariu net") || !textVizibil.includes("salariul minim din 2026")) {
-      failures.push(`${pathname}: lipseste separarea cifrelor judetene de net si minimul 2026`);
+    // Contextul INS pe sector (media județeană CAEN, CAEN/ISCO) a ieșit pe 27 sept. 2026. Dacă
+    // revine, trebuie să poarte din nou eticheta că nu e salariu net.
+    if (textVizibil.includes(`Brut lunar · media ${AN_JUDETE}`) && !textVizibil.includes("Nu este salariu net")) {
+      failures.push(`${pathname}: media județeană a sectorului a revenit fără eticheta că nu e salariu net`);
     }
     if (copyIntervalVechi.test(html)) failures.push(`${pathname}: a reaparut copy-ul vechi despre interval`);
     if (/[\d.]+ lei (net|brut)/i.test(title)) failures.push(`${pathname}: titlul atribuie o cifră nesusținută meseriei`);
