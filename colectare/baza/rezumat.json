@@ -1,10 +1,10 @@
 {
- "generatLa": "2026-09-27T10:24:50.657Z",
+ "generatLa": "2026-09-27T10:27:43.658Z",
  "total": {
   "anunturi": 3704,
   "citite": 531,
   "anofm": 3219,
-  "publice": 23693
+  "publice": 23721
  },
  "meserii": [
   {
@@ -205,7 +205,7 @@
    "anunturiCitite": 0,
    "anofm": 6,
    "anofmGrupa": 21,
-   "posturiPublice": 138
+   "posturiPublice": 139
   },
   {
    "slug": "kinetoterapeut",
@@ -305,7 +305,7 @@
    "anunturiCitite": 2,
    "anofm": 21,
    "anofmGrupa": 21,
-   "posturiPublice": 72
+   "posturiPublice": 74
   },
   {
    "slug": "inginer",
@@ -316,6 +316,16 @@
    "anofm": 0,
    "anofmGrupa": 0,
    "posturiPublice": 0
+  },
+  {
+   "slug": "profesor-universitar",
+   "nume": "Profesor universitar",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 99
   },
   {
    "slug": "chelner",
@@ -336,16 +346,6 @@
    "anofm": 0,
    "anofmGrupa": 0,
    "posturiPublice": 0
-  },
-  {
-   "slug": "profesor-universitar",
-   "nume": "Profesor universitar",
-   "anunturiCuSalariu": 0,
-   "cuBazaDeclarata": 0,
-   "anunturiCitite": 0,
-   "anofm": 0,
-   "anofmGrupa": 0,
-   "posturiPublice": 84
   },
   {
    "slug": "tamplar",
@@ -376,6 +376,16 @@
    "anofm": 35,
    "anofmGrupa": 38,
    "posturiPublice": 0
+  },
+  {
+   "slug": "bibliotecar",
+   "nume": "Bibliotecar",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 60
   },
   {
    "slug": "asistent-farmacie",
@@ -426,16 +436,6 @@
    "anofm": 51,
    "anofmGrupa": 69,
    "posturiPublice": 0
-  },
-  {
-   "slug": "bibliotecar",
-   "nume": "Bibliotecar",
-   "anunturiCuSalariu": 0,
-   "cuBazaDeclarata": 0,
-   "anunturiCitite": 0,
-   "anofm": 0,
-   "anofmGrupa": 0,
-   "posturiPublice": 50
   },
   {
    "slug": "educator",

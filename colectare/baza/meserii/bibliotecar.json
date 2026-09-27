@@ -2,7 +2,7 @@
  "slug": "bibliotecar",
  "nume": "Bibliotecar",
  "cor": "262202",
- "generatLa": "2026-09-27T10:24:50.571Z",
+ "generatLa": "2026-09-27T10:27:43.558Z",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
   "cuSalariu": 0,
@@ -75,84 +75,91 @@
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
-  "posturi": 50,
-  "institutii": 5,
+  "posturi": 60,
+  "institutii": 6,
   "posturiDinSurseDeVerificat": 4,
   "judete": {
    "MS": {
     "n": 23,
-    "procent": 46
+    "procent": 38.3
    },
    "AB": {
     "n": 15,
-    "procent": 30
+    "procent": 25
    },
    "B": {
     "n": 11,
-    "procent": 22
+    "procent": 18.3
+   },
+   "BV": {
+    "n": 10,
+    "procent": 16.7
    },
    "HR": {
     "n": 1,
-    "procent": 2
+    "procent": 1.7
    }
   },
   "tipInstitutie": {
    "universitate": {
-    "n": 34,
-    "procent": 68
+    "n": 44,
+    "procent": 73.3
    },
    "biblioteca": {
     "n": 15,
-    "procent": 30
+    "procent": 25
    },
    "spital": {
     "n": 1,
-    "procent": 2
+    "procent": 1.7
    }
   },
   "perioade": {
    "2026-03": {
-    "n": 50,
+    "n": 60,
     "procent": 100
    }
   },
   "studii": {
    "S": {
-    "n": 10,
-    "procent": 20
-   },
-   "M": {
-    "n": 2,
-    "procent": 4
+    "n": 15,
+    "procent": 25
    },
    "SSD": {
-    "n": 1,
-    "procent": 2
+    "n": 4,
+    "procent": 6.7
+   },
+   "M": {
+    "n": 4,
+    "procent": 6.7
    }
   },
   "bazaBruta": {
-   "n": 50,
-   "p10": 5151,
-   "p25": 6010,
-   "median": 7206,
-   "p75": 8075,
+   "n": 60,
+   "p10": 5295,
+   "p25": 6278,
+   "median": 7286,
+   "p75": 7931,
    "p90": 8351,
    "min": 3643,
    "max": 8351
   },
   "bazaCuSporuriFixe": {
-   "n": 50,
-   "p10": 5151,
-   "p25": 6013,
-   "median": 7254,
+   "n": 60,
+   "p10": 5295,
+   "p25": 6296,
+   "median": 7384,
    "p75": 8274,
-   "p90": 8478,
+   "p90": 8400,
    "min": 3643,
    "max": 8492
   },
   "peGradatie": {
    "gradația 5": {
-    "n": 5
+    "n": 8
+   },
+   "gradația 0": {
+    "n": 7
    }
   },
   "peFunctie": {
@@ -185,6 +192,12 @@
     "n": 3
    },
    "Bibliotecar gradul II, gradația ocupat": {
+    "n": 2
+   },
+   "BIBLIOTECAR I S pana la 800 pana la 4164": {
+    "n": 2
+   },
+   "BIBLIOTECAR III SSD pana la 800 pana la 4164": {
     "n": 2
    },
    "Bibliotecar gradul l, gradația SSD ocupat": {
@@ -224,6 +237,24 @@
     "n": 1
    },
    "Bibliotecar ISSD": {
+    "n": 1
+   },
+   "BIBLIOTECAR I A S pana la 800 pana la 4164": {
+    "n": 1
+   },
+   "BIBLIOTECAR I A S": {
+    "n": 1
+   },
+   "BIBLIOTECAR I A M pana la 800 pana la 4164": {
+    "n": 1
+   },
+   "BIBLIOTECAR I SSD pana la 800 pana la 4164": {
+    "n": 1
+   },
+   "BIBLIOTECAR I M pana la 800 pana la 4164": {
+    "n": 1
+   },
+   "BIBLIOTECAR II S pana la 800 pana la 4164": {
     "n": 1
    }
   }

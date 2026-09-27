@@ -2,7 +2,7 @@
  "slug": "profesor-universitar",
  "nume": "Profesor universitar",
  "cor": "231005",
- "generatLa": "2026-09-27T10:24:50.132Z",
+ "generatLa": "2026-09-27T10:27:43.238Z",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
   "cuSalariu": 0,
@@ -75,35 +75,44 @@
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
-  "posturi": 84,
-  "institutii": 3,
+  "posturi": 99,
+  "institutii": 4,
   "posturiDinSurseDeVerificat": 0,
   "judete": {
    "MS": {
     "n": 75,
-    "procent": 89.3
+    "procent": 75.8
+   },
+   "BV": {
+    "n": 15,
+    "procent": 15.2
    },
    "B": {
     "n": 9,
-    "procent": 10.7
+    "procent": 9.1
    }
   },
   "tipInstitutie": {
    "universitate": {
-    "n": 84,
+    "n": 99,
     "procent": 100
    }
   },
   "perioade": {
    "2026-03": {
-    "n": 84,
+    "n": 99,
     "procent": 100
    }
   },
-  "studii": {},
+  "studii": {
+   "S": {
+    "n": 15,
+    "procent": 15.2
+   }
+  },
   "bazaBruta": {
-   "n": 84,
-   "p10": 15087,
+   "n": 99,
+   "p10": 13664,
    "p25": 17482,
    "median": 17482,
    "p75": 17482,
@@ -112,16 +121,29 @@
    "max": 17482
   },
   "bazaCuSporuriFixe": {
-   "n": 84,
-   "p10": 15825,
-   "p25": 18163,
-   "median": 19039,
+   "n": 99,
+   "p10": 13971,
+   "p25": 17482,
+   "median": 18890,
    "p75": 19337,
-   "p90": 19348,
+   "p90": 19337,
    "min": 2083,
    "max": 21370
   },
-  "peGradatie": {},
+  "peGradatie": {
+   "gradația 5": {
+    "n": 7
+   },
+   "gradația 0": {
+    "n": 5
+   },
+   "gradația 3": {
+    "n": 2
+   },
+   "gradația 4": {
+    "n": 1
+   }
+  },
   "peFunctie": {
    "Profesor univ.": {
     "n": 72,
@@ -133,11 +155,20 @@
     "min": 10939,
     "max": 21370
    },
+   "PROFESOR UNIVERSITAR S peste 25 ani": {
+    "n": 9
+   },
    "Profesor Indemnizatie doctorat Sal.minim 12.2018 * procent %": {
     "n": 6
    },
    "Profesor Gradatie merit Sal.baza * procent % Anexa nr.I, Cap": {
     "n": 3
+   },
+   "PROFESOR UNIVERSITAR S 15-20 ani": {
+    "n": 3
+   },
+   "PROFESOR UNIVERSITAR S 20-25 ani": {
+    "n": 2
    },
    "Profesor inv liceal": {
     "n": 1
@@ -146,6 +177,9 @@
     "n": 1
    },
    "Profesor inv.liceal": {
+    "n": 1
+   },
+   "PROFESOR UNIVERSITAR S 10-15 ani": {
     "n": 1
    }
   }

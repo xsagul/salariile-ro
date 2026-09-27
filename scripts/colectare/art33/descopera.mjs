@@ -70,7 +70,9 @@ async function descopera(sursa) {
     // o formulare de listă de salarii, nu orice cuvânt înrudit.
     .filter((l) => DOC.test(l.href) && /transparen|venitur|salarii|salarial|salarizare|drepturi|art[\s._-]*33|state[\s_-]*de[\s_-]*plata/i.test(norm(`${decodeURIComponent(l.href)} ${l.text}`)))
     // Transparența decizională, rapoartele anuale, regulamentele și concursurile nu sunt liste de salarii.
-    .filter((l) => !/decizional|informatii[\s_-]*publice|raport[\s_-]*anual|buget|cheltuieli|regulament|evaluare|concurs|bibliografie|tematica/i.test(norm(`${decodeURIComponent(l.href)} ${l.text}`)))
+    // Pe numele fișierului și textul linkului, nu pe foldere: la Transilvania Brașov listele stau
+    // în „…/buget-bilanturi-contabile/Salarii_site_31.03.2026.pdf”.
+    .filter((l) => !/decizional|informatii[\s_-]*publice|raport[\s_-]*anual|buget|cheltuieli|regulament|evaluare|concurs|bibliografie|tematica|executie|bilant/i.test(norm(`${decodeURIComponent(new URL(l.href).pathname.split("/").pop())} ${l.text}`)))
     .map((l) => ({ ...l, luna: lunaDocument(l.href, l.text) }))
     .filter((l) => l.luna);
   docs.sort((a, b) => (a.luna < b.luna ? 1 : -1));

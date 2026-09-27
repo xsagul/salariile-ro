@@ -561,7 +561,7 @@
    "institutie": "Direcția de Sănătate Publică Hunedoara",
    "tip": "dsp",
    "judet": "HD",
-   "pagina": "https://asphd.ro/category/venituri-salariale/"
+   "pagina": "https://asphd.ro/transparenta-veniturilor-salariale-la-data-de-31-03-2026-conf-art-33-din-legea-153-2017/"
   },
   {
    "id": "dsp-prahova",
@@ -588,7 +588,10 @@
    "institutie": "Universitatea Dunărea de Jos Galați",
    "tip": "universitate",
    "judet": "GL",
-   "pagina": "https://www.ugal.ro/informatii/informatii-publice/transparenta-veniturilor-salariale"
+   "pagina": "https://www.ugal.ro/informatii/informatii-publice/transparenta-veniturilor-salariale",
+   "fisier": "https://www.ugal.ro/files/resurese_umane/2026/Transparenta_veniturilor_salariale_art_33_L._153_31.03.2026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
   },
   {
    "id": "umfst",
@@ -710,6 +713,33 @@
    "pagina": "https://www.cjhunedoara.ro/index.php/9-uncategorised/373-drepturi-salariale",
    "fisier": "https://www.cjhunedoara.ro/documente/2026/Personal/Transparenta%20veniturilor%20salariale%2030%20septembrie%202026.pdf",
    "perioada": "2026-09",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "unitbv",
+   "institutie": "Universitatea Transilvania din Brașov",
+   "tip": "universitate",
+   "judet": "BV",
+   "pagina": "https://www.unitbv.ro/despre-unitbv/informatii-de-interes-public/transparenta-institutionala/buget-bilanturi-contabile/aplicarea-art-33.html",
+   "fisier": "https://www.unitbv.ro/documente/despre-unitbv/info-interes-public/transparenta-insitutionala/buget-bilanturi-conta/Salarii_site_31.03.2026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "umf-iasi",
+   "institutie": "Universitatea de Medicină și Farmacie „Grigore T. Popa” Iași",
+   "tip": "universitate",
+   "judet": "IS",
+   "pagina": "https://www.umfiasi.ro/ro/universitate/informatii-de-interes-public/Pagini/Transparenta-salariilor.aspx"
+  },
+  {
+   "id": "pm-sighisoara",
+   "institutie": "Primăria Municipiului Sighișoara",
+   "tip": "primarie",
+   "judet": "MS",
+   "pagina": "https://primariasighisoara.ro/portal/mures/sighisoara/portal.nsf/pagini/transparenta+veniturilor+salariale+conform+art+33+din+legea+1532017-00019B42",
+   "fisier": "https://primariasighisoara.ro/portal/mures/sighisoara/portal.nsf/atasament/9ECE471E0F6F4FFEC2258DCB003D9750/$FILE/Transparenta%20venituri%20salariale%2031%20martie%202026.pdf",
+   "perioada": "2026-03",
    "gasitLa": "2026-09-27"
   }
  ]

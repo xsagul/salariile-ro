@@ -1020,5 +1020,32 @@
    "%",
    "Alte drepturi L.95/2006"
   ]
+ },
+ "ugal": {
+  "stare": "eroare: fetch failed"
+ },
+ "unitbv": {
+  "stare": "acceptat",
+  "fisier": "https://www.unitbv.ro/documente/despre-unitbv/info-interes-public/transparenta-insitutionala/buget-bilanturi-conta/Salarii_site_31.03.2026.pdf",
+  "perioada": "2026-03",
+  "sha256": "2775335748a9b453354c597220dd90ea2c467b6bd5922fc272af8ed76d2d4250",
+  "bytes": 1194295,
+  "cititLa": "2026-09-27",
+  "randuri": 28,
+  "valide": 28,
+  "peMeserie": {
+   "profesor-universitar": 15,
+   "bibliotecar": 10,
+   "consilier-juridic": 2,
+   "psiholog": 1
+  },
+  "coloaneNecunoscute": [
+   "NR. CRT.",
+   "GRADATIE (corespunz VECHIME IN FUNCTIE STUDII atoare INVATAMANT vechimii in munca)"
+  ]
+ },
+ "pm-sighisoara": {
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "936c454a49253ea2251ef954e23d5c76c2ed7aaa3e2b7c3aa8490c3bbf28aca1"
  }
 }
