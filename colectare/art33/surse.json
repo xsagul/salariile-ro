@@ -890,7 +890,7 @@
       "tip": "cultura",
       "judet": "BC",
       "pagina": "https://filarmonicabacau.ro/",
-      "fisier": "https://filarmonicabacau.ro/storage/2026/03/Salarii-de-baza-afisate-martie-2026.pdf",
+      "fisier": "https://filarmonicabacau.ro/wp-content/uploads/2026/03/Salarii-de-baza-afisate-martie-2026.pdf",
       "perioada": "2026-03",
       "gasitLa": "2026-09-27"
     },
@@ -1622,6 +1622,26 @@
       "tip": "consiliu-judetean",
       "judet": "SV",
       "pagina": "https://www.cjsuceava.ro/"
+    },
+    {
+      "id": "t-bacovia",
+      "institutie": "Teatrul Municipal „George Bacovia” Bacău",
+      "tip": "cultura",
+      "judet": "BC",
+      "pagina": "https://teatrulbacovia.ro/",
+      "fisier": "https://teatrulbacovia.ro/wp-content/uploads/2024/09/salarizare-31.03.2026.pdf",
+      "perioada": "2026-03",
+      "gasitLa": "2026-09-27"
+    },
+    {
+      "id": "opera-comica",
+      "institutie": "Opera Comică pentru Copii București",
+      "tip": "cultura",
+      "judet": "B",
+      "pagina": "https://operacomica.ro/transparenta/",
+      "fisier": "https://operacomica.ro/wp-content/uploads/2026/08/Transparenta-venituri-31-martie-2026.pdf",
+      "perioada": "2026-03",
+      "gasitLa": "2026-09-27"
     }
   ]
 }

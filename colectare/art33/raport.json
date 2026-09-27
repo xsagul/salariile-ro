@@ -1072,7 +1072,7 @@
   "sha256": "21da6eb5cf986626d0e523880409a27252b5d1aea1a06768d79da1fd8a7e6e78"
  },
  "fil-arad": {
-  "stare": "de verificat: baza ghicită la peste 30% din rânduri",
+  "stare": "acceptat",
   "fisier": "https://www.filarmonicaarad.ro/wp-content/uploads/2025/10/SALARIILE-la-data-de-30.09.2025-.pdf",
   "perioada": "2025-09",
   "sha256": "cff6df9144b6037385e8c8b6b3f9559e0e12108a4c9a6f12eaa6ad7300362e3f",
@@ -1085,8 +1085,7 @@
   },
   "coloaneNecunoscute": [
    "Nr. Crt",
-   "SITUAȚIE FUNCȚII- PERSONAL PLĂTIT DIN Denumirea Gradul Gradația funcţiei profesional / de Treapta ve",
-   "SITUAȚIE FUNCȚII- PERSONAL PLĂTIT DIN LA DATA DE 30.09.2025 Salariul de incadrare"
+   "SITUAȚIE FUNCȚII- PERSONAL PLĂTIT DIN Denumirea Gradul Gradația funcţiei profesional / de Treapta ve"
   ]
  },
  "tn-sibiu": {
@@ -1622,5 +1621,13 @@
    "din care aproximativ net",
    "din care aproximativ net"
   ]
+ },
+ "t-bacovia": {
+  "stare": "fără rânduri verificabile după OCR",
+  "sha256": "84c289421d3e81d988a6c3dcd23da795820fd24aa0dd26c4f5274cea4bdf89da"
+ },
+ "opera-comica": {
+  "stare": "fără rânduri verificabile după OCR",
+  "sha256": "ee4dc641072ef224c0c95f306ba0f664a9a244a8bf2a90b932d9b8d3d0a35f13"
  }
 }

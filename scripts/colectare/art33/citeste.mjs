@@ -47,7 +47,8 @@ export function tipColoana(eticheta, procent, v = 0) {
   if (/(^|\s)(ore|nr\.?\s*ore|zile|numar ore)(\s|$)/.test(e) && !/valoare|suma|sume|spor 100|spor 75|spor 40/.test(e)) return "ore";
   // „tură” doar ca vorbă separată: „veniTURI” nu e tură (Cluj, 26 septembrie 2026).
   if (/\btur[aei]?\b|\bture\b|noapte|gard|garzi|sarbat|\bsarb\b|\bsamb|duminic|nelucr|repaus|suplimentar|weekend|s\+d|domicil|sume ore|ore prestate/.test(e)) return "variabil";
-  if (/(salar\w*|sal\.?)\s*(de\s*)?baz|salariul funct|indemnizat\w* de incadrare|solda/.test(e)) return "baza";
+  // „Salariul de încadrare” (Filarmonica Arad) e baza, ca indemnizația de încadrare.
+  if (/(salar\w*|sal\.?)\s*(de\s*)?baz|salariul funct|indemnizat\w* de incadrare|salariul? de incadrare|solda/.test(e)) return "baza";
   // „Baza lei grilă” (Brăila), „Sal de … baza” (Filantropia): „bază” singur e baza, după ce
   // bazele de calcul au fost deja recunoscute mai sus.
   if (/\bbaza\b/.test(e) && !/spor|val\.?\s/.test(e)) return "baza";
