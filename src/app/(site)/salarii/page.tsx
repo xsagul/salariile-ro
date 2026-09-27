@@ -15,6 +15,7 @@ import { CATEGORII, MESERII, dateMeserie, meseriiDinCategorie } from "@/lib/mese
 import { concluzieMeserie } from "@/app/components/SalariuConcluzie";
 import { netDeStart } from "@/app/components/SalariuGrila";
 import { netOficialDeStart } from "@/app/components/SalariuOficial";
+import { netDeclarat } from "@/app/components/SalariuDeclarat";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
 
@@ -59,6 +60,8 @@ function cifraMeserie(slug: string): { text: string; tip: string } | null {
   if (g) return { text: `de la ${g.toLocaleString("ro-RO")} lei net`, tip: "grila-legala" };
   const o = netOficialDeStart(slug);
   if (o) return { text: `de la ${o.toLocaleString("ro-RO")} lei net`, tip: "venit-oficial" };
+  const d = netDeclarat(slug);
+  if (d) return { text: `${d.toLocaleString("ro-RO")} lei net`, tip: "declarat" };
   return null;
 }
 

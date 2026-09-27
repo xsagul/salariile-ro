@@ -1,0 +1,261 @@
+{
+ "luna": "septembrie 2026",
+ "meserii": {
+  "programator": {
+   "oferte": 13,
+   "angajatori": 8,
+   "brutMedian": 14000,
+   "brutP25": 9200,
+   "brutP75": 15000,
+   "laMinim": 15
+  },
+  "asistent-medical": {
+   "oferte": 44,
+   "angajatori": 19,
+   "brutMedian": 5250,
+   "brutP25": 4325,
+   "brutP75": 5459,
+   "laMinim": 30
+  },
+  "infirmier": {
+   "oferte": 18,
+   "angajatori": 16,
+   "brutMedian": 4338,
+   "brutP25": 4325,
+   "brutP75": 4615,
+   "laMinim": 44
+  },
+  "contabil": {
+   "oferte": 17,
+   "angajatori": 17,
+   "brutMedian": 4325,
+   "brutP25": 4325,
+   "brutP75": 4400,
+   "laMinim": 71
+  },
+  "economist": {
+   "oferte": 19,
+   "angajatori": 19,
+   "brutMedian": 4325,
+   "brutP25": 4325,
+   "brutP75": 5000,
+   "laMinim": 74
+  },
+  "consilier-juridic": {
+   "oferte": 10,
+   "angajatori": 10,
+   "brutMedian": 6018,
+   "brutP25": 5359,
+   "brutP75": 7746,
+   "laMinim": 20
+  },
+  "zidar": {
+   "oferte": 28,
+   "angajatori": 26,
+   "brutMedian": 4600,
+   "brutP25": 4582,
+   "brutP75": 4682,
+   "laMinim": 4
+  },
+  "dulgher": {
+   "oferte": 25,
+   "angajatori": 23,
+   "brutMedian": 4582,
+   "brutP25": 4582,
+   "brutP75": 4759,
+   "laMinim": 8
+  },
+  "electrician": {
+   "oferte": 27,
+   "angajatori": 26,
+   "brutMedian": 4582,
+   "brutP25": 4582,
+   "brutP75": 4800,
+   "laMinim": 15
+  },
+  "instalator": {
+   "oferte": 15,
+   "angajatori": 15,
+   "brutMedian": 4582,
+   "brutP25": 4566,
+   "brutP75": 4582,
+   "laMinim": 0
+  },
+  "zugrav": {
+   "oferte": 14,
+   "angajatori": 13,
+   "brutMedian": 4582,
+   "brutP25": 4582,
+   "brutP75": 4600,
+   "laMinim": 0
+  },
+  "sudor": {
+   "oferte": 39,
+   "angajatori": 37,
+   "brutMedian": 4582,
+   "brutP25": 4415,
+   "brutP75": 5000,
+   "laMinim": 26
+  },
+  "tamplar": {
+   "oferte": 26,
+   "angajatori": 26,
+   "brutMedian": 4343,
+   "brutP25": 4325,
+   "brutP75": 4582,
+   "laMinim": 46
+  },
+  "mecanic-auto": {
+   "oferte": 57,
+   "angajatori": 56,
+   "brutMedian": 4325,
+   "brutP25": 4325,
+   "brutP75": 4350,
+   "laMinim": 68
+  },
+  "sofer-tir": {
+   "oferte": 174,
+   "angajatori": 141,
+   "brutMedian": 4325,
+   "brutP25": 4325,
+   "brutP75": 4329,
+   "laMinim": 75
+  },
+  "sofer-autobuz": {
+   "oferte": 25,
+   "angajatori": 21,
+   "brutMedian": 4325,
+   "brutP25": 4325,
+   "brutP75": 4350,
+   "laMinim": 68
+  },
+  "taximetrist": {
+   "oferte": 92,
+   "angajatori": 85,
+   "brutMedian": 4325,
+   "brutP25": 4325,
+   "brutP75": 4350,
+   "laMinim": 76
+  },
+  "curier": {
+   "oferte": 50,
+   "angajatori": 41,
+   "brutMedian": 4325,
+   "brutP25": 4325,
+   "brutP75": 4325,
+   "laMinim": 98
+  },
+  "sofer-ridesharing": {
+   "oferte": 92,
+   "angajatori": 85,
+   "brutMedian": 4325,
+   "brutP25": 4325,
+   "brutP75": 4350,
+   "laMinim": 76
+  },
+  "stivuitorist": {
+   "oferte": 18,
+   "angajatori": 17,
+   "brutMedian": 4500,
+   "brutP25": 4344,
+   "brutP75": 5578,
+   "laMinim": 28
+  },
+  "manipulant-marfa": {
+   "oferte": 117,
+   "angajatori": 102,
+   "brutMedian": 4325,
+   "brutP25": 4325,
+   "brutP75": 4330,
+   "laMinim": 85
+  },
+  "sofer-distributie": {
+   "oferte": 92,
+   "angajatori": 85,
+   "brutMedian": 4325,
+   "brutP25": 4325,
+   "brutP75": 4350,
+   "laMinim": 76
+  },
+  "vanzator": {
+   "oferte": 58,
+   "angajatori": 56,
+   "brutMedian": 4325,
+   "brutP25": 4325,
+   "brutP75": 4325,
+   "laMinim": 84
+  },
+  "casier": {
+   "oferte": 22,
+   "angajatori": 18,
+   "brutMedian": 4325,
+   "brutP25": 4325,
+   "brutP75": 4325,
+   "laMinim": 82
+  },
+  "agent-vanzari": {
+   "oferte": 117,
+   "angajatori": 32,
+   "brutMedian": 4350,
+   "brutP25": 4350,
+   "brutP75": 4350,
+   "laMinim": 17
+  },
+  "bucatar": {
+   "oferte": 45,
+   "angajatori": 40,
+   "brutMedian": 4325,
+   "brutP25": 4325,
+   "brutP75": 4325,
+   "laMinim": 80
+  },
+  "chelner": {
+   "oferte": 39,
+   "angajatori": 39,
+   "brutMedian": 4325,
+   "brutP25": 4325,
+   "brutP75": 4325,
+   "laMinim": 74
+  },
+  "electrician-centrala": {
+   "oferte": 23,
+   "angajatori": 7,
+   "brutMedian": 4677,
+   "brutP25": 4325,
+   "brutP75": 4690,
+   "laMinim": 39
+  },
+  "agent-paza": {
+   "oferte": 69,
+   "angajatori": 39,
+   "brutMedian": 4325,
+   "brutP25": 4325,
+   "brutP75": 4325,
+   "laMinim": 91
+  },
+  "agent-curatenie": {
+   "oferte": 90,
+   "angajatori": 85,
+   "brutMedian": 4325,
+   "brutP25": 4325,
+   "brutP75": 4325,
+   "laMinim": 86
+  },
+  "secretar": {
+   "oferte": 11,
+   "angajatori": 11,
+   "brutMedian": 4325,
+   "brutP25": 4325,
+   "brutP75": 4491,
+   "laMinim": 55
+  },
+  "operator-cnc": {
+   "oferte": 27,
+   "angajatori": 26,
+   "brutMedian": 4350,
+   "brutP25": 4325,
+   "brutP75": 5000,
+   "laMinim": 63
+  }
+ }
+}

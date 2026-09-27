@@ -37,7 +37,7 @@ jobs:
         run: |
           git config user.name "salariile-colectare"
           git config user.email "colectare@users.noreply.github.com"
-          git add colectare src/data/salariu-concluzie.json src/data/cerinte-meserii.json src/data/acoperire-anunturi.json public/date/anunturi-verificate.json public/date/acoperire-anunturi.csv
+          git add colectare src/data/salariu-concluzie.json src/data/cerinte-meserii.json src/data/anofm-meserii.json src/data/acoperire-anunturi.json public/date/anunturi-verificate.json public/date/acoperire-anunturi.csv
           if git diff --cached --quiet; then echo "Nimic nou"; exit 0; fi
           ZI=$(TZ=Europe/Bucharest date +%F)
           if git diff --cached --quiet -- src/data; then

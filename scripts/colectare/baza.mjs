@@ -74,6 +74,7 @@ const MINIM = (luna) => (luna >= "2026-07" ? 4325 : luna >= "2025-01" ? 4050 : 3
 // ─── Fișa unei meserii ──────────────────────────────────────────────────────
 const rezumat = [];
 const cerinte = {};
+const anofmSite = {};
 for (const m of MESERII) {
   const a = anunturi.filter((o) => o.slug === m.slug);
   const declarate = a.filter((o) => o.basisDeclared);
@@ -163,6 +164,16 @@ for (const m of MESERII) {
   };
   fs.writeFileSync(`${MES}/${m.slug}.json`, JSON.stringify(fisa, null, 1) + "\n");
 
+  // Pentru site: salariul declarat la ANOFM (brut), unde sunt cel puțin 10 oferte cu brut declarat.
+  const bruteAnofm = of.filter((o) => ["brut", "gross"].includes(o.salary_type) && Number(o.minimum_salary) >= 1000).map((o) => Number(o.minimum_salary)).sort((a, b) => a - b);
+  if (bruteAnofm.length >= 10) {
+    anofmSite[m.slug] = {
+      oferte: bruteAnofm.length,
+      angajatori: new Set(of.filter((o) => ["brut", "gross"].includes(o.salary_type) && Number(o.minimum_salary) >= 1000).map((o) => (o.employer_individual ? `pf-${o.id}` : o.employer_tax_code))).size,
+      brutMedian: percentile(bruteAnofm, 0.5), brutP25: percentile(bruteAnofm, 0.25), brutP75: percentile(bruteAnofm, 0.75),
+      laMinim: Math.round((100 * of.filter((o) => ["brut", "gross"].includes(o.salary_type) && Number(o.minimum_salary) <= MINIM(String(o.created_at).slice(0, 7))).length) / bruteAnofm.length),
+    };
+  }
   // Pentru site: ce cer angajatorii, din anunțurile citite (≥ 20) sau, altfel, din ofertele ANOFM
   // (≥ 15). Numai ce apare în cel puțin 10% din anunțuri și în cel puțin 3.
   const top = (o, nume, max = 4) => Object.entries(o || {}).filter(([, v]) => v.procent >= 10 && v.n >= 3).slice(0, max)
@@ -204,6 +215,7 @@ fs.writeFileSync(`${OUT}/rezumat.json`, JSON.stringify({ generatLa: new Date().t
 const LUNI_RO = ["ianuarie", "februarie", "martie", "aprilie", "mai", "iunie", "iulie", "august", "septembrie", "octombrie", "noiembrie", "decembrie"];
 const acum = new Date();
 fs.writeFileSync("src/data/cerinte-meserii.json", JSON.stringify({ luna: `${LUNI_RO[acum.getMonth()]} ${acum.getFullYear()}`, meserii: cerinte }, null, 1) + "\n");
+fs.writeFileSync("src/data/anofm-meserii.json", JSON.stringify({ luna: `${LUNI_RO[acum.getMonth()]} ${acum.getFullYear()}`, meserii: anofmSite }, null, 1) + "\n");
 
 // ─── SQLite local, pentru interogări ────────────────────────────────────────
 try {
