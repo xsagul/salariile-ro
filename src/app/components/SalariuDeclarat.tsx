@@ -1,6 +1,7 @@
 import Link from "@/app/components/Link";
 import ghid from "@/data/repere-piata-verificate.json";
 import anofm from "@/data/anofm-meserii.json";
+import salario from "@/data/salario-pagini.json";
 import { brutDinNetStandard, calculStandard } from "@/lib/fiscal";
 
 /**
@@ -12,10 +13,15 @@ import { brutDinNetStandard, calculStandard } from "@/lib/fiscal";
  * Cifra mare e a ghidului, unde există (e mai aproape de ce se ia în mână); altfel, ANOFM.
  */
 
-type Ghid = { slug: string; role: string; net: number };
+type Ghid = { slug: string; role: string; net: number; n?: number | null; url?: string; pagina?: boolean };
 type Anofm = { oferte: number; angajatori: number; brutMedian: number; brutP25: number; brutP75: number; laMinim: number };
 
-const G = Object.fromEntries((ghid.records as Ghid[]).map((r) => [r.slug, r]));
+// Ghidul eJobs 2026 întâi; altfel pagina meseriei pe Salario (verificată pe 7 septembrie 2026).
+const G: Record<string, Ghid> = {
+  // Numai cu cel puțin 20 de salarii introduse: un regizor cu o singură declarație nu e o sumă.
+  ...Object.fromEntries((salario.records as Ghid[]).filter((r) => (r.n ?? 0) >= 20).map((r) => [r.slug, { ...r, pagina: true }])),
+  ...Object.fromEntries((ghid.records as Ghid[]).map((r) => [r.slug, r])),
+};
 const A = (anofm as unknown as { luna: string; meserii: Record<string, Anofm> });
 const ghidMeserie = (slug: string): Ghid | null => (Object.hasOwn(G, slug) ? G[slug] : null);
 const anofmMeserie = (slug: string): Anofm | null => (Object.hasOwn(A.meserii, slug) ? A.meserii[slug] : null);
@@ -34,7 +40,7 @@ export const areSalariuDeclarat = (slug: string) => netDeclarat(slug) !== null;
 export function frazaDeclarat(slug: string, de: string): string | null {
   const g = ghidMeserie(slug), a = anofmMeserie(slug);
   const f = (n: number) => n.toLocaleString("ro-RO");
-  if (g) return `Cei care lucrează ca ${de} declară în medie ${f(g.net)} lei net pe lună, după Ghidul salarial eJobs 2026.${a ? ` În ofertele depuse la ANOFM, angajatorii declară ${f(a.brutMedian)} lei brut (mediana din ${a.oferte} de oferte).` : ""}`;
+  if (g) return `Cei care lucrează ca ${de} declară în medie ${f(g.net)} lei net pe lună, după ${g.pagina ? "salariile introduse pe Salario (eJobs)" : "Ghidul salarial eJobs 2026"}.${a ? ` În ofertele depuse la ANOFM, angajatorii declară ${f(a.brutMedian)} lei brut (mediana din ${a.oferte} de oferte).` : ""}`;
   if (a) return `În ofertele depuse la ANOFM, angajatorii declară pentru un ${de} ${f(a.brutMedian)} lei brut, adică ${f(netDin(a.brutMedian)!)} lei net (mediana din ${a.oferte} de oferte).`;
   return null;
 }
@@ -55,7 +61,7 @@ export default function SalariuDeclarat({ slug, de }: { slug: string; de: string
       <p className="mt-1 text-base text-stone-700">≈ {lei(g ? Math.round(brutDinNetStandard(principal) / 10) * 10 : a!.brutMedian)} lei brut pe lună</p>
       <p className="mt-1 text-sm text-stone-600">
         {g
-          ? `Media salariilor declarate de angajați pentru „${g.role}”, din toată țara și toate nivelurile de experiență.`
+          ? `Media salariilor declarate de angajați pentru „${g.role}”${g.n ? `, din ${lei(g.n)} de salarii introduse` : ""}, din toată țara și toate nivelurile de experiență.`
           : `Mediana din ${a!.oferte} de oferte cu salariul brut declarat de ${a!.angajatori} de angajatori.`}
       </p>
       {g && a && (
@@ -70,7 +76,7 @@ export default function SalariuDeclarat({ slug, de }: { slug: string; de: string
         </p>
       )}
       <p className="mt-4 text-xs text-stone-600">
-        {g && <>Ghidul salarial eJobs 2026, salarii raportate pe Salario · </>}
+        {g && (g.pagina ? <>Salario (eJobs), salariile introduse de angajați · </> : <>Ghidul salarial eJobs 2026, salarii raportate pe Salario · </>)}
         {a && <>Ofertele ANOFM active în {A.luna} · </>}
         <Link href={`/salarii/acoperire#${slug}`} className="underline underline-offset-2">sursele</Link>
       </p>

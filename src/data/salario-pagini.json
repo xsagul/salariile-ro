@@ -1,0 +1,238 @@
+{
+ "sursa": "eJobs Salario, pagina fiecărei meserii",
+ "verificatLa": "2026-09-07",
+ "metoda": "Salariul mediu net introdus de angajați pe Salario; perioada raportărilor nu e publicată.",
+ "records": [
+  {
+   "slug": "analist-date",
+   "role": "Analist date",
+   "net": 5500,
+   "n": 312,
+   "url": "https://www.ejobs.ro/salario/salarii-analist-date"
+  },
+  {
+   "slug": "antrenor-sportiv",
+   "role": "Antrenor sportiv",
+   "net": 5000,
+   "n": 10,
+   "url": "https://www.ejobs.ro/salario/salarii-antrenor-sportiv"
+  },
+  {
+   "slug": "bijutier",
+   "role": "bijutier",
+   "net": 6000,
+   "n": 5,
+   "url": "https://www.ejobs.ro/salario/salarii-bijutier"
+  },
+  {
+   "slug": "cercetator",
+   "role": "Cercetator",
+   "net": 5100,
+   "n": 42,
+   "url": "https://www.ejobs.ro/salario/salarii-cercetator"
+  },
+  {
+   "slug": "cofetar",
+   "role": "Cofetar",
+   "net": 4000,
+   "n": 47,
+   "url": "https://www.ejobs.ro/salario/salarii-cofetar"
+  },
+  {
+   "slug": "constructor",
+   "role": "Constructor",
+   "net": 7000,
+   "n": 471,
+   "url": "https://www.ejobs.ro/salario/salarii-constructor"
+  },
+  {
+   "slug": "consultant-financiar",
+   "role": "Consultant financiar",
+   "net": 5000,
+   "n": 104,
+   "url": "https://www.ejobs.ro/salario/salarii-consultant-financiar"
+  },
+  {
+   "slug": "consultant-management",
+   "role": "Consultant management",
+   "net": 5500,
+   "n": 21,
+   "url": "https://www.ejobs.ro/salario/salarii-consultant-management"
+  },
+  {
+   "slug": "dulgher",
+   "role": "Dulgher",
+   "net": 6000,
+   "n": 3,
+   "url": "https://www.ejobs.ro/salario/salarii-dulgher"
+  },
+  {
+   "slug": "faiantar",
+   "role": "faiantar",
+   "net": 5500,
+   "n": 3,
+   "url": "https://www.ejobs.ro/salario/salarii-faiantar"
+  },
+  {
+   "slug": "inginer",
+   "role": "inginer",
+   "net": 6200,
+   "n": 6520,
+   "url": "https://www.ejobs.ro/salario/salarii-inginer"
+  },
+  {
+   "slug": "inginer-electronist",
+   "role": "Inginer electronist",
+   "net": 5350,
+   "n": 64,
+   "url": "https://www.ejobs.ro/salario/salarii-inginer-electronist"
+  },
+  {
+   "slug": "inginer-petrol",
+   "role": "inginer petrol",
+   "net": 7000,
+   "n": 18,
+   "url": "https://www.ejobs.ro/salario/salarii-inginer-petrol"
+  },
+  {
+   "slug": "instructor-auto",
+   "role": "Instructor auto",
+   "net": 4250,
+   "n": 8,
+   "url": "https://www.ejobs.ro/salario/salarii-instructor-auto"
+  },
+  {
+   "slug": "marinar",
+   "role": "Marinar",
+   "net": 11500,
+   "n": 4,
+   "url": "https://www.ejobs.ro/salario/salarii-marinar"
+  },
+  {
+   "slug": "mecanic-locomotiva",
+   "role": "Mecanic locomotiva",
+   "net": 8000,
+   "n": 3,
+   "url": "https://www.ejobs.ro/salario/salarii-mecanic-locomotiva"
+  },
+  {
+   "slug": "miner",
+   "role": "Miner",
+   "net": 4000,
+   "n": 2,
+   "url": "https://www.ejobs.ro/salario/salarii-miner"
+  },
+  {
+   "slug": "notar",
+   "role": "Notar",
+   "net": 3800,
+   "n": 5,
+   "url": "https://www.ejobs.ro/salario/salarii-notar"
+  },
+  {
+   "slug": "operator-chimist",
+   "role": "Operator chimist",
+   "net": 4177,
+   "n": 87,
+   "url": "https://www.ejobs.ro/salario/salarii-operator-chimist"
+  },
+  {
+   "slug": "operator-mase-plastice",
+   "role": "Operator mase plastice",
+   "net": 3800,
+   "n": 8,
+   "url": "https://www.ejobs.ro/salario/salarii-operator-mase-plastice"
+  },
+  {
+   "slug": "pescar",
+   "role": "pescar",
+   "net": 9000,
+   "n": 1,
+   "url": "https://www.ejobs.ro/salario/salarii-pescar"
+  },
+  {
+   "slug": "pilot",
+   "role": "Pilot",
+   "net": 6500,
+   "n": 5,
+   "url": "https://www.ejobs.ro/salario/salarii-pilot"
+  },
+  {
+   "slug": "receptioner-hotel",
+   "role": "Receptioner hotel",
+   "net": 3500,
+   "n": 267,
+   "url": "https://www.ejobs.ro/salario/salarii-receptioner-hotel"
+  },
+  {
+   "slug": "regizor",
+   "role": "Regizor",
+   "net": 8000,
+   "n": 1,
+   "url": "https://www.ejobs.ro/salario/salarii-regizor"
+  },
+  {
+   "slug": "silvicultor",
+   "role": "Silvicultor",
+   "net": 4300,
+   "n": 6,
+   "url": "https://www.ejobs.ro/salario/salarii-silvicultor"
+  },
+  {
+   "slug": "sofer-ambulanta",
+   "role": "Șofer ambulanță",
+   "net": 5250,
+   "n": 6,
+   "url": "https://www.ejobs.ro/salario/salarii-sofer-ambulanta"
+  },
+  {
+   "slug": "specialist-resurse-umane",
+   "role": "Specialist Resurse Umane",
+   "net": 5500,
+   "n": 609,
+   "url": "https://www.ejobs.ro/salario/salarii-specialist-resurse-umane"
+  },
+  {
+   "slug": "tamplar",
+   "role": "Tâmplar",
+   "net": 5000,
+   "n": 28,
+   "url": "https://www.ejobs.ro/salario/salarii-tamplar"
+  },
+  {
+   "slug": "tapiter",
+   "role": "Tapițer",
+   "net": 4350,
+   "n": 4,
+   "url": "https://www.ejobs.ro/salario/salarii-tapiter"
+  },
+  {
+   "slug": "tehnician-mentenanta",
+   "role": "Tehnician mentenanta",
+   "net": 5500,
+   "n": 58,
+   "url": "https://www.ejobs.ro/salario/salarii-tehnician-mentenanta"
+  },
+  {
+   "slug": "tipograf",
+   "role": "Tipograf",
+   "net": 3925,
+   "n": 6,
+   "url": "https://www.ejobs.ro/salario/salarii-tipograf"
+  },
+  {
+   "slug": "zidar",
+   "role": "Zidar",
+   "net": 4706,
+   "n": 4,
+   "url": "https://www.ejobs.ro/salario/salarii-zidar"
+  },
+  {
+   "slug": "zugrav",
+   "role": "Zugrav",
+   "net": 5500,
+   "n": 5,
+   "url": "https://www.ejobs.ro/salario/salarii-zugrav"
+  }
+ ]
+}
