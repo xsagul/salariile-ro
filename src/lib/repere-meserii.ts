@@ -11,8 +11,10 @@ import { cifreMeserie } from '@/lib/ocupatii-caen';
 
 export function grilaEducatie(slug: string) {
   if (slug === 'profesor') return education.randuri.filter(r => r.nr >= 1 && r.nr <= 8);
-  if (slug === 'invatator') return education.randuri.filter(r => r.nr === 17);
-  if (slug === 'educator') return education.randuri.filter(r => r.nr >= 19 && r.nr <= 20);
+  // Rândurile 17–20 sunt aceeași funcție (învățător, educatoare, cu studii de nivel liceal) pe
+  // toate gradele: I, II, definitiv și debutant. Până pe 27 septembrie 2026 învățătorul avea doar
+  // gradul I, iar educatorul doar definitiv și debutant.
+  if (slug === 'invatator' || slug === 'educator') return education.randuri.filter(r => r.nr >= 17 && r.nr <= 20);
   return [];
 }
 

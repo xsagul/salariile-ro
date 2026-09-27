@@ -23,6 +23,7 @@ import ReperSalariu from '@/app/components/ReperSalariu';
 import PiloniSalariu from '@/app/components/PiloniSalariu';
 import TrepteRapide from '@/app/components/TrepteRapide';
 import SalariuConcluzie, { concluzieMeserie } from '@/app/components/SalariuConcluzie';
+import SalariuGrila, { trepteGrila } from '@/app/components/SalariuGrila';
 import { descriereReper, grilaEducatie, reperMeserie } from '@/lib/repere-meserii';
 import { textIndicator } from '@/lib/indicator-meserie';
 import corCatalogue from '@/data/cor-meserii.json';
@@ -256,6 +257,10 @@ export default async function MeseriePage({ params }: Props) {
                   pagina rămâne pe reperele de până acum. */}
               {concluzieMeserie(slug) ? (
                 <SalariuConcluzie slug={slug} de={meserie.de} />
+              ) : trepteGrila(slug) ? (
+                // Meseriile plătite după lege: cifra din grilă, fără rândurile goale ale surselor
+                // care nu se aplică („meserie plătită după grilă, nu prin ofertă”).
+                <SalariuGrila slug={slug} de={meserie.de} />
               ) : (
                 <>
                   <ReperSalariu date={date} />
