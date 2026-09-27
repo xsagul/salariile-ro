@@ -13,7 +13,9 @@ import { TITLU_CARD } from "@/app/components/ui";
  */
 export default function TrepteRapide({ date }: { date: DateMeserie }) {
   const didactic = grilaEducatie(date.meserie.slug);
-  const grila = grilaPublica(date.meserie.slug);
+  // O grilă doar-secțiune (alt fel de angajator, sau rămasă la nivelul din 2022) nu dă trepte aici.
+  const candidata = grilaPublica(date.meserie.slug);
+  const grila = candidata?.doarSectiune ? null : candidata;
   const trepte = didactic.length
     ? didactic.map(r => ({ eticheta: r.functie, net: calculStandard(r.iun2024)!.net }))
     : grila?.trepte.map(t => ({ eticheta: t.eticheta, net: t.net })) ?? [];

@@ -291,7 +291,7 @@ export default async function MeseriePage({ params }: Props) {
                 </section>
               )}
 
-              {grila && (
+              {grila && !grila.veche && (
                 <section className="mt-4 rounded-md border border-stone-200 bg-surface p-5 shadow-soft">
                   <h2 className={TITLU_CARD}>Grila pentru {numeMic}: funcții și trepte</h2>
                   <p className="mt-1 text-xs text-stone-600">Net standard pe trepte, în {grila.domeniu}.</p>

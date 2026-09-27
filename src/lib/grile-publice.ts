@@ -575,6 +575,8 @@ export type GrilaPublica = {
   nota?: string;
   /** Grila acopera doar un fel de angajator: se arata, dar nu devine cifra paginii. */
   doarSectiune?: boolean;
+  /** Rămasă la nivelul din 2022, sub sumele plătite azi: nu se afișează deloc ca tabel de salarii. */
+  veche?: boolean;
 };
 
 const cuNet = (brut: number, rest: Omit<TreaptaPublica, "brut" | "net">): TreaptaPublica | null => {
@@ -656,6 +658,17 @@ function grilaMilitara(cheie: string): GrilaPublica | null {
  * ramane estimarea statistica din `ocupatii-caen.ts`.
  */
 export function grilaPublica(slug: string): GrilaPublica | null {
+  const g = grilaBruta(slug);
+  // O grilă rămasă la nivelul din 2022 nu e salariul plătit azi: majorările de după au venit
+  // prin ordonanțe, în procente, fără să rescrie anexele, iar unele trepte ies sub salariul
+  // minim (jandarm, soldat: 4.084 lei brut). Pe 27 septembrie 2026 cifra asta ajunsese în
+  // primul ecran ca „cât ia în mână” — fals. Până la o sursă a sumelor plătite (listele de
+  // transparență ale instituțiilor), grila veche se arată doar ca secțiune, cu anul ei.
+  if (g && g.coloana !== D.coloanaInPlata) return { ...g, doarSectiune: true, veche: true };
+  return g;
+}
+
+function grilaBruta(slug: string): GrilaPublica | null {
   // `Object.hasOwn`, nu `in` si nu `DEFINITII[slug]`. Catalogul are o meserie cu
   // slugul „constructor", iar `DEFINITII["constructor"]` intoarce constructorul
   // mostenit din Object.prototype — un obiect adevarat, fara `trepte`. Cu `in`
