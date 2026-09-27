@@ -38,12 +38,21 @@ export function trepteGrila(slug: string): { trepte: Treapta[]; domeniu: string;
   return { trepte: g.trepte.map((t) => ({ eticheta: t.eticheta, brut: t.brut, net: t.net })), domeniu: g.domeniu, numeSuma: g.numeSuma };
 }
 
+/** Pornirea: treapta de debut, dacă grila o are; altfel cea mai mică sumă. */
+const treaptaDeStart = (trepte: Treapta[]) =>
+  trepte.find((t) => /debutant|stagiar|anul i\b|soldat/i.test(t.eticheta)) ?? [...trepte].sort((a, b) => a.net - b.net)[0];
+
+/** Cifra de început a grilei, aceeași în cardul paginii, la „Meserii apropiate” și pe /salarii. */
+export function netDeStart(slug: string): number | null {
+  const g = trepteGrila(slug);
+  return g?.trepte.length ? treaptaDeStart(g.trepte).net : null;
+}
+
 export default function SalariuGrila({ slug, de }: { slug: string; de: string }) {
   const g = trepteGrila(slug);
   if (!g || !g.trepte.length) return null;
   const dupaSuma = [...g.trepte].sort((a, b) => a.net - b.net);
-  // Pornirea: treapta de debut, dacă grila o are; altfel cea mai mică sumă.
-  const start = g.trepte.find((t) => /debutant|stagiar|anul i\b|soldat/i.test(t.eticheta)) ?? dupaSuma[0];
+  const start = treaptaDeStart(g.trepte);
   const varf = dupaSuma[dupaSuma.length - 1];
   const mijloc = dupaSuma[Math.floor(dupaSuma.length / 2)];
   const repere = [start, mijloc, varf].filter((t, i, a) => a.findIndex((x) => x.eticheta === t.eticheta) === i);

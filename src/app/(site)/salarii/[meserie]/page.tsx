@@ -23,7 +23,7 @@ import ReperSalariu from '@/app/components/ReperSalariu';
 import PiloniSalariu from '@/app/components/PiloniSalariu';
 import TrepteRapide from '@/app/components/TrepteRapide';
 import SalariuConcluzie, { concluzieMeserie } from '@/app/components/SalariuConcluzie';
-import SalariuGrila, { trepteGrila } from '@/app/components/SalariuGrila';
+import SalariuGrila, { netDeStart, trepteGrila } from '@/app/components/SalariuGrila';
 import { descriereReper, grilaEducatie, reperMeserie } from '@/lib/repere-meserii';
 import { textIndicator } from '@/lib/indicator-meserie';
 import corCatalogue from '@/data/cor-meserii.json';
@@ -234,7 +234,9 @@ export default async function MeseriePage({ params }: Props) {
   const apropiate = meseriiInrudite(meserie).map((alta) => {
     const c = concluzieMeserie(alta.slug);
     const r = reperMeserie(dateMeserieSauEroare(alta));
-    return { alta, cifra: c ? `${lei(c.net)} lei net` : r.value ? textIndicator(r) : undefined };
+    // Meseriile plătite după lege: cifra de început din grilă, ca în cardul paginii lor.
+    const start = c ? null : netDeStart(alta.slug);
+    return { alta, cifra: c ? `${lei(c.net)} lei net` : start ? `de la ${lei(start)} lei net` : r.value ? textIndicator(r) : undefined };
   });
   const cor = meserie.cor ? corCatalogue.occupations[meserie.slug as keyof typeof corCatalogue.occupations] : undefined;
 
