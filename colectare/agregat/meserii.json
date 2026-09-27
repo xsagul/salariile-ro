@@ -1,5 +1,5 @@
 {
- "generatLa": "2026-09-26T09:32:30.965Z",
+ "generatLa": "2026-09-27T10:13:37.031Z",
  "praguri": {
   "platit": {
    "institutii": 5,
@@ -22,7 +22,7 @@
   }
  },
  "observatiiPlatite": 16221,
- "oferteAnofm": 8767,
+ "oferteAnofm": 8776,
  "meserii": [
   {
    "slug": "programator",
@@ -3820,9 +3820,9 @@
     "trece": true
    },
    "declarat": {
-    "oferte": 98,
-    "brutNormaIntreaga": 57,
-    "angajatori": 55,
+    "oferte": 99,
+    "brutNormaIntreaga": 58,
+    "angajatori": 56,
     "judete": 26,
     "laMinim": 0.79,
     "codComun": false,
