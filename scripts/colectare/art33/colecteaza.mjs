@@ -10,6 +10,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
+import { execFileSync } from "node:child_process";
 import { citestePdf, randValid, fisierAcceptat } from "./citeste.mjs";
 import { meserie, studii } from "./functii.mjs";
 
@@ -48,8 +49,21 @@ async function main() {
     if (fs.existsSync(out) && !arg("refa") && raport[s.id]?.fisier === s.fisier) continue;
     try {
       const d = await descarca(s.fisier);
-      const { randuri, coloane, perioadaDocument } = await citestePdf(d.fisier, { potrivire: (t) => meserie(t, s.tip) !== null });
-      if (!randuri.length) { raport[s.id] = { stare: "fără rânduri (scanat sau alt format)", sha256: d.sha256 }; continue; }
+      const potrivire = (t) => meserie(t, s.tip) !== null;
+      let citit = await citestePdf(d.fisier, { potrivire });
+      // Lista scanată (fără text): OCR-ul din Windows (ocr.ps1), cu rezultatul păstrat lângă PDF.
+      // Pe alt sistem, sau fără OCR, rămâne „fără rânduri”.
+      let ocr = false;
+      if (!citit.randuri.length && /\.pdf$/i.test(d.fisier) && process.platform === "win32") {
+        const json = d.fisier.replace(/\.pdf$/i, ".ocr.json");
+        if (!fs.existsSync(json)) execFileSync("powershell", ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "scripts/colectare/art33/ocr.ps1", "-Pdf", d.fisier, "-Out", json], { stdio: "inherit" });
+        citit = await citestePdf(json, { potrivire });
+        ocr = true;
+      }
+      const { randuri, coloane, perioadaDocument } = citit;
+      // Fără rânduri, observațiile vechi ale sursei nu mai sunt adevărate: se șterg.
+      if (!randuri.length) fs.rmSync(out, { force: true });
+      if (!randuri.length) { raport[s.id] = { stare: ocr ? "fără rânduri verificabile după OCR" : "fără rânduri (scanat sau alt format)", sha256: d.sha256 }; continue; }
       // Luna datelor se ia din document („Luna: August 2025”), nu din numele fișierului:
       // Buzău a publicat „februarie 2026” cu datele din august 2025.
       const perioada = perioadaDocument ?? s.perioada;
@@ -66,6 +80,7 @@ async function main() {
       raport[s.id] = {
         stare: respins ? `de verificat: ${respins}` : "acceptat", fisier: s.fisier, perioada, sha256: d.sha256, bytes: d.bytes, cititLa: new Date().toISOString().slice(0, 10),
         randuri: obs.length, valide: obs.filter((o) => !o.invalid).length, peMeserie,
+        ...(ocr ? { ocr: true, respinseOcr: citit.respinseOcr } : {}),
         coloaneNecunoscute: coloane.filter((c) => c.tip === "necunoscut" && c.n > 5 && c.eticheta).map((c) => c.eticheta.slice(0, 100)),
       };
       console.log(`${s.id}: ${obs.length} rânduri, ${raport[s.id].valide} valide`, peMeserie);

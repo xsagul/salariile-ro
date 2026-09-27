@@ -7,6 +7,23 @@ import { grilaPublica } from '@/lib/grile-publice';
 import { grilaEducatie } from '@/lib/repere-meserii';
 import { TABEL_STANDARD } from "@/app/components/TabelArticol";
 import { TITLU_SECTIUNE } from "@/app/components/ui";
+import { concluzieMeserie } from "@/app/components/SalariuConcluzie";
+import { netDeStart } from "@/app/components/SalariuGrila";
+import { venitOficial } from "@/app/components/SalariuOficial";
+import { netDeclarat } from "@/app/components/SalariuDeclarat";
+
+// Sursa cifrei din primul ecran al paginii meseriei, în aceeași ordine ca acolo.
+function sursaCifrei(slug: string): string {
+  const c = concluzieMeserie(slug);
+  if (c?.sursa === "platit") return "Salariile plătite la stat (art. 33)";
+  if (c?.sursa === "oferit") return "Anunțurile verificate";
+  if (c) return "Ofertele ANOFM";
+  if (netDeStart(slug)) return "Grila legii în plată";
+  const v = venitOficial(slug);
+  if (v) return `Tabelul oficial, ${v.angajator.replace(/ \(.*\)$/, "")}`;
+  if (netDeclarat(slug)) return "Salarii declarate (Salario, ANOFM)";
+  return "Încă fără cifră";
+}
 
 export const metadata: Metadata = {
   title: 'Acoperirea datelor salariale pe meserii',
@@ -52,8 +69,8 @@ export default function Acoperire() {
     {!!Object.keys(INVENTAR_SURSE).length && <section className="mt-8"><h2 className={TITLU_SECTIUNE}>Cât am parcurs din fiecare sursă</h2><div className="mt-3 overflow-x-auto"><table className={`${TABEL_STANDARD}`}><thead><tr className="border-b border-stone-300 text-left"><th className="p-3">Sursă</th><th className="p-3">URL-uri în inventar</th><th className="p-3">Candidate pentru catalog verificate</th><th className="p-3">Starea parcurgerii</th></tr></thead><tbody>{Object.entries(INVENTAR_SURSE).map(([source,s])=><tr key={source} className="border-b border-stone-200"><th className="p-3 text-left">{source}</th><td className="p-3">{s.inventoryUrls.toLocaleString('ro-RO')}</td><td className="p-3">{s.catalogChecked.toLocaleString('ro-RO')} / {s.catalogCandidates.toLocaleString('ro-RO')}</td><td className="p-3">{s.catalogPassComplete?'Inventarul accesibil parcurs':'Parcurgere incompletă'}{s.events.some(e=>e.error.includes('429') || e.error.includes('403') || e.error.includes('challenge'))?' · limitare de acces întâlnită':''}</td></tr>)}</tbody></table></div></section>}
     <div className="mt-8 overflow-x-auto"><table className={`${TABEL_STANDARD}`}>
       <caption className="sr-only">Acoperirea anunțurilor salariale pentru fiecare meserie</caption>
-      <thead className="text-left text-stone-700"><tr className="border-b border-stone-300"><th className="p-3">Meserie</th><th className="p-3 text-right">Citite</th><th className="p-3 text-right">Fără sumă</th><th className="p-3 text-right">Anunțuri / lunar explicit</th><th className="p-3 text-right">Bază lângă sumă</th><th className="p-3 text-right">Bază nedeclarată</th><th className="p-3 text-right">Angajatori</th><th className="p-3 text-right">Județe</th><th className="p-3">Surse</th><th className="p-3">Publicarea medianei ofertelor</th></tr></thead>
-      <tbody>{rows.map(({m,a})=><tr key={m.slug} id={m.slug} className="scroll-mt-24 border-b border-stone-200 target:bg-amber-50"><th scope="row" className="p-3 text-left font-medium"><Link className="inline-flex min-h-11 items-center underline" href={`/salarii/${m.slug}`}>{m.nume}</Link></th><td className="p-3 text-right text-stone-600">{nr(a?.read)}</td><td className="p-3 text-right text-stone-600">{nr(a?.withoutSalary)}</td><td className="p-3 text-right">{a?.n ? `${a.n} / ${a.explicitMonthly ?? 0}` : '—'}</td><td className="p-3 text-right text-stone-600">{nr(a?.basisNearAmount)}</td><td className="p-3 text-right text-stone-600">{nr(a?.undeclaredBasis?.n)}</td><td className="p-3 text-right">{nr(a?.employers)}</td><td className="p-3 text-right">{nr(a?.counties)}</td><td className="p-3 text-stone-600">{a ? Object.entries(a.sourceCounts).map(([s,n])=>`${s}: ${n}`).join(' · ') || '—' : '—'}</td><td className="p-3 text-stone-600">{a?.medianBounds ? 'Limite calculabile' : a?.n ? 'Acoperire insuficientă' : peGrila(m.slug) ? 'Salarizare pe grilă legală' : 'Fără anunțuri eligibile'}</td></tr>)}</tbody>
+      <thead className="text-left text-stone-700"><tr className="border-b border-stone-300"><th className="p-3">Meserie</th><th className="p-3 text-right">Citite</th><th className="p-3 text-right">Fără sumă</th><th className="p-3 text-right">Anunțuri / lunar explicit</th><th className="p-3 text-right">Bază lângă sumă</th><th className="p-3 text-right">Bază nedeclarată</th><th className="p-3 text-right">Angajatori</th><th className="p-3 text-right">Județe</th><th className="p-3">Surse</th><th className="p-3">Publicarea medianei ofertelor</th><th className="p-3">Cifra de pe pagina meseriei</th></tr></thead>
+      <tbody>{rows.map(({m,a})=><tr key={m.slug} id={m.slug} className="scroll-mt-24 border-b border-stone-200 target:bg-amber-50"><th scope="row" className="p-3 text-left font-medium"><Link className="inline-flex min-h-11 items-center underline" href={`/salarii/${m.slug}`}>{m.nume}</Link></th><td className="p-3 text-right text-stone-600">{nr(a?.read)}</td><td className="p-3 text-right text-stone-600">{nr(a?.withoutSalary)}</td><td className="p-3 text-right">{a?.n ? `${a.n} / ${a.explicitMonthly ?? 0}` : '—'}</td><td className="p-3 text-right text-stone-600">{nr(a?.basisNearAmount)}</td><td className="p-3 text-right text-stone-600">{nr(a?.undeclaredBasis?.n)}</td><td className="p-3 text-right">{nr(a?.employers)}</td><td className="p-3 text-right">{nr(a?.counties)}</td><td className="p-3 text-stone-600">{a ? Object.entries(a.sourceCounts).map(([s,n])=>`${s}: ${n}`).join(' · ') || '—' : '—'}</td><td className="p-3 text-stone-600">{a?.medianBounds ? 'Limite calculabile' : a?.n ? 'Acoperire insuficientă' : peGrila(m.slug) ? 'Salarizare pe grilă legală' : 'Fără anunțuri eligibile'}</td><td className="p-3 text-stone-700">{sursaCifrei(m.slug)}</td></tr>)}</tbody>
     </table></div>
   </div></div>;
 }

@@ -7,8 +7,9 @@
    "slug": "analist-date",
    "role": "Analist date",
    "net": 5500,
-   "n": 312,
-   "url": "https://www.ejobs.ro/salario/salarii-analist-date"
+   "n": 303,
+   "url": "https://www.ejobs.ro/salario/salarii-analist-date",
+   "verificatLa": "2026-09-27"
   },
   {
    "slug": "antrenor-sportiv",
@@ -16,6 +17,14 @@
    "net": 5000,
    "n": 10,
    "url": "https://www.ejobs.ro/salario/salarii-antrenor-sportiv"
+  },
+  {
+   "slug": "bibliotecar",
+   "role": "Bibliotecar",
+   "n": 28,
+   "net": 4750,
+   "url": "https://www.ejobs.ro/salario/salarii-bibliotecar",
+   "verificatLa": "2026-09-27"
   },
   {
    "slug": "bijutier",
@@ -28,36 +37,41 @@
    "slug": "cercetator",
    "role": "Cercetator",
    "net": 5100,
-   "n": 42,
-   "url": "https://www.ejobs.ro/salario/salarii-cercetator"
+   "n": 33,
+   "url": "https://www.ejobs.ro/salario/salarii-cercetator",
+   "verificatLa": "2026-09-27"
   },
   {
    "slug": "cofetar",
    "role": "Cofetar",
    "net": 4000,
-   "n": 47,
-   "url": "https://www.ejobs.ro/salario/salarii-cofetar"
+   "n": 48,
+   "url": "https://www.ejobs.ro/salario/salarii-cofetar",
+   "verificatLa": "2026-09-27"
   },
   {
    "slug": "constructor",
    "role": "Constructor",
    "net": 7000,
-   "n": 471,
-   "url": "https://www.ejobs.ro/salario/salarii-constructor"
+   "n": 447,
+   "url": "https://www.ejobs.ro/salario/salarii-constructor",
+   "verificatLa": "2026-09-27"
   },
   {
    "slug": "consultant-financiar",
    "role": "Consultant financiar",
-   "net": 5000,
-   "n": 104,
-   "url": "https://www.ejobs.ro/salario/salarii-consultant-financiar"
+   "net": 4900,
+   "n": 95,
+   "url": "https://www.ejobs.ro/salario/salarii-consultant-financiar",
+   "verificatLa": "2026-09-27"
   },
   {
    "slug": "consultant-management",
    "role": "Consultant management",
    "net": 5500,
-   "n": 21,
-   "url": "https://www.ejobs.ro/salario/salarii-consultant-management"
+   "n": 19,
+   "url": "https://www.ejobs.ro/salario/salarii-consultant-management",
+   "verificatLa": "2026-09-27"
   },
   {
    "slug": "dulgher",
@@ -74,18 +88,28 @@
    "url": "https://www.ejobs.ro/salario/salarii-faiantar"
   },
   {
+   "slug": "functionar-public",
+   "role": "Funcționar public",
+   "n": 432,
+   "net": 4100,
+   "url": "https://www.ejobs.ro/salario/salarii-functionar-public",
+   "verificatLa": "2026-09-27"
+  },
+  {
    "slug": "inginer",
    "role": "inginer",
-   "net": 6200,
-   "n": 6520,
-   "url": "https://www.ejobs.ro/salario/salarii-inginer"
+   "net": 6300,
+   "n": 6205,
+   "url": "https://www.ejobs.ro/salario/salarii-inginer",
+   "verificatLa": "2026-09-27"
   },
   {
    "slug": "inginer-electronist",
    "role": "Inginer electronist",
-   "net": 5350,
-   "n": 64,
-   "url": "https://www.ejobs.ro/salario/salarii-inginer-electronist"
+   "net": 5300,
+   "n": 60,
+   "url": "https://www.ejobs.ro/salario/salarii-inginer-electronist",
+   "verificatLa": "2026-09-27"
   },
   {
    "slug": "inginer-petrol",
@@ -132,9 +156,10 @@
   {
    "slug": "operator-chimist",
    "role": "Operator chimist",
-   "net": 4177,
-   "n": 87,
-   "url": "https://www.ejobs.ro/salario/salarii-operator-chimist"
+   "net": 4200,
+   "n": 82,
+   "url": "https://www.ejobs.ro/salario/salarii-operator-chimist",
+   "verificatLa": "2026-09-27"
   },
   {
    "slug": "operator-mase-plastice",
@@ -161,8 +186,9 @@
    "slug": "receptioner-hotel",
    "role": "Receptioner hotel",
    "net": 3500,
-   "n": 267,
-   "url": "https://www.ejobs.ro/salario/salarii-receptioner-hotel"
+   "n": 266,
+   "url": "https://www.ejobs.ro/salario/salarii-receptioner-hotel",
+   "verificatLa": "2026-09-27"
   },
   {
    "slug": "regizor",
@@ -189,15 +215,17 @@
    "slug": "specialist-resurse-umane",
    "role": "Specialist Resurse Umane",
    "net": 5500,
-   "n": 609,
-   "url": "https://www.ejobs.ro/salario/salarii-specialist-resurse-umane"
+   "n": 586,
+   "url": "https://www.ejobs.ro/salario/salarii-specialist-resurse-umane",
+   "verificatLa": "2026-09-27"
   },
   {
    "slug": "tamplar",
    "role": "Tâmplar",
    "net": 5000,
-   "n": 28,
-   "url": "https://www.ejobs.ro/salario/salarii-tamplar"
+   "n": 24,
+   "url": "https://www.ejobs.ro/salario/salarii-tamplar",
+   "verificatLa": "2026-09-27"
   },
   {
    "slug": "tapiter",
@@ -210,8 +238,9 @@
    "slug": "tehnician-mentenanta",
    "role": "Tehnician mentenanta",
    "net": 5500,
-   "n": 58,
-   "url": "https://www.ejobs.ro/salario/salarii-tehnician-mentenanta"
+   "n": 55,
+   "url": "https://www.ejobs.ro/salario/salarii-tehnician-mentenanta",
+   "verificatLa": "2026-09-27"
   },
   {
    "slug": "tipograf",

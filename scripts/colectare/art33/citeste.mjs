@@ -229,16 +229,63 @@ export function randuriOcr(fisier) {
         else linii.push({ yc: c.yc, h: c.h, items: [c] });
       }
     }
+    // Corecția pe coloane: rândurile tabelului se recunosc după denumirea funcției din stânga, iar
+    // fiecare coloană de numere primește propria deplasare verticală față de ele (mediana
+    // diferențelor). Hârtia strâmbă sau curbată mută o coloană întreagă cu câțiva pixeli; o
+    // deplasare pe coloană o readuce în rândul ei (Tribunalul Sălaj: sporul de risc, x ≈ 3.300).
+    // Un rând de tabel ocupă adesea două rânduri de text (Sălaj: „Judecător” sus, „S grad
+    // tribunal 10-15 ani” dedesubt, cu sporurile pe al doilea): rândul începe la funcția din
+    // prima coloană și ține până la următoarea funcție.
+    const numeric = (t) => /^[\d.,]+%?$/.test(t) && /\d/.test(t);
+    const cuSuma = (l) => l.items.some((i) => numeric(i.t) && Number(i.t.replace(/[.,]\d{1,2}$/, "").replace(/[.,]/g, "")) >= 1000);
+    const minX = Math.min(...linii.map((l) => Math.min(...l.items.map((i) => i.x0))));
+    const primaSuma = Math.min(...linii.filter(cuSuma).map((l) => l.yc));
+    const eAncora = (l) => {
+      const st = l.items.reduce((a, i) => (i.x0 < a.x0 ? i : a));
+      return !numeric(st.t) && /[a-zăâîșț]{2}/i.test(st.t) && st.x0 < minX + 0.04 * latimePagina && l.yc >= primaSuma - 60;
+    };
+    const ancore = linii.filter(eAncora).sort((a, b) => a.yc - b.yc);
+    if (ancore.length >= 5) {
+      const pasi = ancore.slice(1).map((l, i) => l.yc - ancore[i].yc).filter((d) => d > 5).sort((a, b) => a - b);
+      const pas = pasi[Math.floor(pasi.length / 2)];
+      const dedesupra = (y) => { let a = null; for (const l of ancore) if (l.yc <= y) a = l; return a; };
+      const cuvinte = linii.filter((l) => l.yc >= ancore[0].yc - 0.3 * pas && l.yc <= ancore[ancore.length - 1].yc + 1.3 * pas).flatMap((l) => l.items);
+      const cuvNumerice = cuvinte.filter((i) => numeric(i.t));
+      const hMed = [...cuvNumerice.map((c) => c.h)].sort((a, b) => a - b)[Math.floor(cuvNumerice.length / 2)] || 30;
+      // Coloanele de numere, după centru; fiecare primește deplasarea ei față de începutul
+      // rândului (mediana), ca o coloană coborâtă de hârtia strâmbă să nu treacă în rândul următor.
+      const coloaneX = [];
+      for (const c of [...cuvNumerice].sort((a, b) => a.xc - b.xc)) {
+        const k = coloaneX[coloaneX.length - 1];
+        if (k && c.xc - k.xmax < 1.5 * hMed) { k.cuv.push(c); k.xmax = c.xc; } else coloaneX.push({ xmax: c.xc, cuv: [c] });
+      }
+      const alocate = new Map(ancore.map((l) => [l, []]));
+      const alocat = new Set();
+      const pune = (c, y) => { const a = dedesupra(y); if (a && y - a.yc < 1.3 * pas) { alocate.get(a).push(c); alocat.add(c); } };
+      for (const k of coloaneX) {
+        const dif = k.cuv.map((c) => { const a = dedesupra(c.yc + 0.3 * pas); return a ? c.yc - a.yc : null; }).filter((d) => d !== null && d < pas).sort((a, b) => a - b);
+        const dep = dif.length ? dif[Math.floor(dif.length / 2)] : 0;
+        for (const c of k.cuv) pune(c, c.yc - dep + 0.3 * pas);
+      }
+      for (const c of cuvinte) if (!numeric(c.t) && !alocat.has(c)) pune(c, c.yc + 0.3 * hMed);
+      linii = linii.map((l) => ({ ...l, items: [...l.items.filter((i) => !alocat.has(i)), ...(alocate.get(l) ?? [])] }))
+        .filter((l) => l.items.length);
+    }
     for (const l of linii) {
       l.items.sort((a, b) => a.x0 - b.x0);
       // OCR desparte uneori miile: „25. 311” sau „25 311” → o singură sumă, când bucățile se ating.
       const unite = [];
       for (const i of l.items) {
         const u = unite[unite.length - 1];
-        if (u && /^\d{1,3}[.,]?$/.test(u.t) && /^\d{3}([.,]\d{1,2})?$/.test(i.t) && i.x0 - u.x1 < 0.6 * i.h) { u.t = u.t.replace(/[.,]$/, "") + "." + i.t; u.x1 = i.x1; }
-        else unite.push({ x0: i.x0, x1: i.x1, t: i.t });
+        // Numai bucățile de pe același rând de text: după unirea rândurilor duble, „460” și „477”
+        // din rânduri diferite ajung alăturate (Sălaj).
+        if (u && /^\d{1,3}[.,]?$/.test(u.t) && /^\d{3}([.,]\d{1,2})?$/.test(i.t) && i.x0 - u.x1 < 0.6 * i.h && Math.abs(u.yc - i.yc) < 0.5 * i.h) { u.t = u.t.replace(/[.,]$/, "") + "." + i.t; u.x1 = i.x1; }
+        else unite.push({ x0: i.x0, x1: i.x1, yc: i.yc, t: i.t });
       }
-      out.push({ pagina: p.pagina, y: -l.yc, items: unite });
+      // Pixelii scanării se aduc la scara unei pagini PDF (842 de puncte pe lățime), ca pragurile
+      // cititorului (coloane la 6 unități, antete late de 400) să însemne același lucru.
+      const k = 842 / latimePagina;
+      out.push({ pagina: p.pagina, y: -l.yc * k, items: unite.map((i) => ({ x0: i.x0 * k, x1: i.x1 * k, t: i.t })), ocr: true });
     }
   }
   return out.sort((a, b) => a.pagina - b.pagina || b.y - a.y);
@@ -246,6 +293,7 @@ export function randuriOcr(fisier) {
 
 export async function citestePdf(fisier, { potrivire, profil = {} }) {
   const linii = /\.xlsx$/i.test(fisier) ? await randuriXlsx(fisier) : /\.ocr\.json$/i.test(fisier) ? randuriOcr(fisier) : await randuriPdf(fisier);
+  const ocr = linii.some((l) => l.ocr);
   const date = linii.filter(eDate);
   if (!date.length) return { randuri: [], coloane: [] };
 
@@ -322,7 +370,9 @@ export async function citestePdf(fisier, { potrivire, profil = {} }) {
       // „Grad/” singur (Timișoara) e coloana gradației: valori 0–5, lângă funcție.
       if ((/grada/i.test(faraDiacritice(et)) || /^grad\s*\/?$/i.test(et.trim())) && n.v <= 10) { r.gradatie = n.v; r.sume[r.sume.length - 1].tip = "gradatie"; continue; }
       if (tip === "total") { r.total = n.v; continue; }
-      if (tip === "baza" && r.baza === null) r.baza = n.v;
+      // O coloană de bază cu 0 (Curtea de Apel Bacău: indemnizația magistraților și salariul
+      // personalului auxiliar, în coloane separate) nu e baza rândului.
+      if (tip === "baza" && !r.baza) r.baza = n.v;
       else if (tip === "sporFix") r.sporFix += n.v;
       else if (tip === "variabil") r.variabil += n.v;
       else if (tip === "hrana") r.hrana += n.v;
@@ -333,12 +383,58 @@ export async function citestePdf(fisier, { potrivire, profil = {} }) {
     // 347), deci hrana publicată se scade: mai bine un spor subestimat decât hrana luată drept spor.
     if (r.total && r.baza && r.total > r.baza && r.sporFix === 0 && r.variabil === 0) r.sporFix = Math.max(0, r.total - r.baza - r.hrana);
     if (r.baza === null) {
-      const p = r.sume.find((x) => !["procent", "ore", "bazaCalcul"].includes(x.tip) && x.v >= 1000);
-      if (p) { r.baza = p.v; if (p.tip === "sporFix") r.sporFix -= p.v; p.tip = "baza?"; }
+      // Sub 100.000: codul COR din coloana funcției (341103, Tribunalul Cluj) nu e o sumă.
+      const p = r.sume.find((x) => !["procent", "ore", "bazaCalcul"].includes(x.tip) && x.v >= 1000 && x.v < 100000);
+      if (p) {
+        r.baza = p.v; if (p.tip === "sporFix") r.sporFix -= p.v;
+        // Ghicitul se confirmă când rândul are și sporul de 5% din bază (confidențialitatea, la
+        // instanțe și parchete, Anexa V): antetele verticale din listele instanțelor (Argeș,
+        // Mehedinți) nu se citesc, dar aritmetica rândului arată care e baza.
+        p.tip = r.sume.some((x) => x !== p && Math.abs(x.v - 0.05 * p.v) <= 2) ? "baza" : "baza?";
+      }
+    }
+    // În listele scanate, o sumă din coloană necunoscută care e exact 5% din bază e sporul de
+    // confidențialitate (instanțele, Anexa V), când antetul nu se citește (Maramureș). Numai la OCR:
+    // în listele spitalelor, o coloană necunoscută de 5% nu e neapărat un spor permanent.
+    if (r.baza && ocr) for (const x of r.sume) {
+      if (x.tip === "necunoscut" && x.v >= 100 && Math.abs(x.v - 0.05 * r.baza) <= 2) {
+        x.tip = "sporFix"; r.sporFix += x.v; r.necunoscut = r.necunoscut.filter((v) => v !== x.v);
+      }
     }
     randuri.push(r);
   }
-  return { randuri, perioadaDocument: perioadaDin(antet), coloane: coloane.map(({ x1max, n, eticheta }) => ({ x: Math.round(x1max), n, eticheta, tip: tipColoana(eticheta, false, 1000) })) };
+  const verificate = ocr ? verificaOcr(randuri) : randuri;
+  return { randuri: verificate, respinseOcr: randuri.length - verificate.length, perioadaDocument: perioadaDin(antet), coloane:coloane.map(({ x1max, n, eticheta }) => ({ x: Math.round(x1max), n, eticheta, tip: tipColoana(eticheta, false, 1000) })) };
+}
+
+/**
+ * Rândurile citite prin OCR trec numai dacă se verifică singure, pe structura propriei liste:
+ *  - câte sume are rândul (fără gradație și coeficient) e exact numărul obișnuit din listă: o
+ *    sumă lipsă sau în plus înseamnă că un spor a căzut în rândul vecin;
+ *  - nicio sumă nu depășește baza (două numere lipite, „460477”);
+ *  - fiecare rând are sporul de 5% din bază (confidențialitatea la instanțe, Sălaj), la ±2 lei:
+ *    e singura verificare aritmetică a rândului; o listă fără ea nu intră deloc prin OCR;
+ *  - sporurile, ca parte din bază, sunt la ±20% de mediana listei.
+ * Un rând respins nu se corectează: se pierde, ca la orice listă ilizibilă.
+ */
+function verificaOcr(randuri) {
+  const sume = (r) => r.sume.filter((s) => s.tip !== "gradatie" && s.v >= 100 && s.v < 100000 && s.v !== r.baza);
+  const n = {};
+  for (const r of randuri) { const k = sume(r).length; n[k] = (n[k] ?? 0) + 1; }
+  const obisnuit = Number(Object.entries(n).sort((a, b) => b[1] - a[1])[0]?.[0] ?? 0);
+  const cinci = (r) => sume(r).some((s) => Math.abs(s.v - 0.05 * r.baza) <= 2);
+  const bune = randuri.filter((r) => r.baza && sume(r).length === obisnuit && !sume(r).some((s) => s.v > r.baza));
+  const cota5 = bune.filter(cinci).length / (bune.length || 1);
+  // Sub 40% din rânduri cu sporul de 5%, fie coloana e decalată (Tribunalul Cluj), fie lista
+  // n-are coloana care verifică rândul: la Spitalul Mureș (164 de pagini) medicii primari ieșeau
+  // cu baze de 5.000–8.800 lei și fără sporuri. Fără verificare aritmetică, nu intră niciun rând.
+  if (cota5 < 0.4) return [];
+  const trecute = bune.filter(cinci);
+  // Sporurile, ca parte din bază, apropiate de mediana listei (±20%): un spor mare căzut în alt
+  // rând lasă în urmă un rând cu numărul corect de sume, dar cu un spor mic în locul lui.
+  const cote = trecute.map((r) => r.sporFix / r.baza).sort((a, b) => a - b);
+  const med = cote[Math.floor(cote.length / 2)] ?? 0;
+  return trecute.filter((r) => Math.abs(r.sporFix / r.baza - med) <= 0.2 * med);
 }
 
 const LUNI = ["ianuarie", "februarie", "martie", "aprilie", "mai", "iunie", "iulie", "august", "septembrie", "octombrie", "noiembrie", "decembrie"];

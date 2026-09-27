@@ -30,7 +30,8 @@ const REGULI = [
   ["kinetoterapeut", /\bKINETOTERAPEUT\b/],
   ["medic-rezident", /\bMEDIC REZIDENT\b/],
   ["medic", /\bMEDIC (PRIMAR|SPECIALIST)\b/],
-  ["farmacist", /^FARMACIST\b/],
+  // Rezidentul e în pregătire, cu altă salarizare: nu intră, ca la medic (medic-rezident).
+  ["farmacist", /^FARMACIST\b(?! REZIDENT)/],
   ["bucatar", /\bBUCATAR\b/],
   ["electrician", /\bELECTRICIAN\b/],
   ["instalator", /\bINSTALATOR\b/],
@@ -65,7 +66,8 @@ export function studii(text) {
 
 /** Meseria din catalog pentru un rând, sau null. `tip` = tipul instituției. */
 export function meserie(text, tip) {
-  const t = norm(text);
+  // Numărul curent din fața funcției („7 Judecator”, Mehedinți) nu face parte din denumire.
+  const t = norm(text).replace(/^\d{1,3} /, "");
   if (CONDUCERE.test(t)) return null;
   for (const [slug, re, tipuri] of REGULI) {
     if (re.test(t) && (!tipuri || tipuri.includes(tip))) return slug;

@@ -56,6 +56,12 @@ assert.equal(meserie("INGRIJITOR", "dgaspc"), "ingrijitor-batrani");
 assert.equal(meserie("CONSILIER JURIDIC", "primarie"), "consilier-juridic");
 assert.equal(meserie("Consilier clasa I grad superior", "primarie"), "functionar-public");
 assert.equal(meserie("Consilier clasa I grad superior", "spital"), null);
+// Instanțe (27 septembrie 2026): numărul curent din fața funcției (Mehedinți), conducerea iese.
+assert.equal(meserie("7 Judecator tribunal peste 20 ani Nu", "instanta"), "judecator");
+assert.equal(meserie("213 Farmacist rezident an II Gradatia 2", "spital"), null, "Rezidentul nu e farmacist, ca la medic");
+assert.equal(meserie("Presedinte sectie tribunal", "instanta"), null);
+assert.equal(meserie("Prim procuror adjunct", "parchet"), null);
+assert.equal(meserie("Procuror, vechime în funcție 15 - 20 ani", "parchet"), "procuror");
 assert.equal(studii("ASISTENT MEDICAL (PL) Gradatia 3"), "PL");
 assert.equal(studii("ASISTENT MEDICAL S PRINCIPAL"), "S");
 

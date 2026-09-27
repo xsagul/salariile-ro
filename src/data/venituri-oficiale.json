@@ -1,5 +1,5 @@
 {
-  "descriere": "Venitul salarial net lunar plătit, minim și maxim, publicat de angajatorul public pentru fiecare categorie de personal. Minimele sunt pentru program normal de lucru; nu cuprind drepturile nepermanente.",
+  "descriere": "Venitul salarial lunar publicat de angajatorul public pentru fiecare categorie de personal: net plătit (MApN) sau brut pe funcție (Ministerul Public), din care netul se calculează cu regulile obișnuite. Nu cuprinde drepturile nepermanente.",
   "militar": {
     "angajator": "Ministerul Apărării Naționale",
     "luna": "august 2026",
@@ -8,11 +8,72 @@
     "pagina": "https://www.mapn.ro/buget/",
     "start": "Soldați și gradați profesioniști",
     "categorii": [
-      { "categorie": "Soldați și gradați profesioniști", "min": 4348, "max": 5970 },
-      { "categorie": "Subofițeri", "min": 4597, "max": 6942 },
-      { "categorie": "Maiștri militari", "min": 4612, "max": 7061 },
-      { "categorie": "Ofițeri, funcții de execuție", "min": 5527, "max": 12486 },
-      { "categorie": "Ofițeri, funcții de comandă", "min": 5679, "max": 28426 }
+      {
+        "categorie": "Soldați și gradați profesioniști",
+        "min": 4348,
+        "max": 5970
+      },
+      {
+        "categorie": "Subofițeri",
+        "min": 4597,
+        "max": 6942
+      },
+      {
+        "categorie": "Maiștri militari",
+        "min": 4612,
+        "max": 7061
+      },
+      {
+        "categorie": "Ofițeri, funcții de execuție",
+        "min": 5527,
+        "max": 12486
+      },
+      {
+        "categorie": "Ofițeri, funcții de comandă",
+        "min": 5679,
+        "max": 28426
+      }
+    ],
+    "varf": "la ofițerii cu funcții de comandă",
+    "ierarhie": "de la soldat la ofițer"
+  },
+  "procuror": {
+    "angajator": "Ministerul Public (Parchetul de pe lângă Înalta Curte de Casație și Justiție)",
+    "luna": "martie 2026",
+    "platitIn": "martie 2026",
+    "url": "https://old.mpublic.ro/sites/default/files/PDF/i._procurori_31.03.2026_mp.pdf",
+    "pagina": "https://old.mpublic.ro/ro/content/functii-si-venituri",
+    "start": "Procurori stagiari",
+    "varf": "la procurorii Parchetului de pe lângă Înalta Curte",
+    "ierarhie": "de la stagiar la Parchetul de pe lângă Înalta Curte",
+    "brut": true,
+    "nota": "indemnizația de încadrare, sporul de risc și suprasolicitare neuropsihică, sporul de confidențialitate și sporul pentru condiții de muncă, pe funcțiile de execuție, cu gradația 0–5.",
+    "categorii": [
+      {
+        "categorie": "Procurori stagiari",
+        "brutMin": 11949,
+        "brutMax": 14162
+      },
+      {
+        "categorie": "Procurori la parchetele de pe lângă judecătorii",
+        "brutMin": 17925,
+        "brutMax": 27619
+      },
+      {
+        "categorie": "Procurori la parchetele de pe lângă tribunale",
+        "brutMin": 24599,
+        "brutMax": 30681
+      },
+      {
+        "categorie": "Procurori la parchetele de pe lângă curțile de apel",
+        "brutMin": 27879,
+        "brutMax": 34779
+      },
+      {
+        "categorie": "Procurori la Parchetul de pe lângă Înalta Curte",
+        "brutMin": 31158,
+        "brutMax": 38868
+      }
     ]
   }
 }

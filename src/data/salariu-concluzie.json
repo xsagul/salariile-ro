@@ -1,5 +1,5 @@
 {
- "generatLa": "2026-09-27T10:24:19.433Z",
+ "generatLa": "2026-09-27T19:13:24.094Z",
  "oferteAnofm": 8776,
  "meserii": {
   "medic": {
@@ -565,13 +565,13 @@
   },
   "farmacist": {
    "sursa": "platit",
-   "net": 5521,
+   "net": 5963,
    "interval": [
-    4577,
-    6625
+    5053,
+    6737
    ],
    "platit": {
-    "randuri": 282,
+    "randuri": 58,
     "institutii": 12,
     "judete": 10,
     "perioade": [
@@ -596,32 +596,13 @@
     "debutant": null,
     "cuVariabil": {
      "net": 6445,
-     "cota": 0.08
+     "cota": 0.4
     },
     "studii": {
-     "S": 5053
+     "S": 5408
     },
-    "peVechime": [
-     {
-      "gradatie": 2,
-      "randuri": 58,
-      "net": 5879
-     }
-    ],
-    "peJudet": [
-     {
-      "judet": "Constanța",
-      "randuri": 124,
-      "institutii": 1,
-      "net": 4670
-     },
-     {
-      "judet": "Timiș",
-      "randuri": 118,
-      "institutii": 1,
-      "net": 4491
-     }
-    ]
+    "peVechime": [],
+    "peJudet": []
    },
    "oferit": null,
    "declarat": null,
@@ -669,11 +650,11 @@
    "net": 6279,
    "interval": [
     5116,
-    7089
+    7065
    ],
    "platit": {
-    "randuri": 126,
-    "institutii": 19,
+    "randuri": 128,
+    "institutii": 21,
     "judete": 16,
     "perioade": [
      "2025-03",
@@ -682,6 +663,7 @@
      "2026-09"
     ],
     "surse": [
+     "Curtea de Apel Târgu Mureş",
      "DGASPC Sector 1",
      "Direcția de Asistență Socială Brașov",
      "Direcția de Sănătate Publică Vaslui",
@@ -700,6 +682,7 @@
      "Spitalul Județean de Urgență Buzău",
      "Spitalul Județean de Urgență Miercurea Ciuc",
      "Spitalul de Psihiatrie Titan Dr. Constantin Gorgos",
+     "Universitatea Transilvania din Brașov",
      "Universitatea de Medicină, Farmacie, Științe și Tehnologie Târgu Mureș"
     ],
     "debutant": null,
@@ -978,14 +961,14 @@
   },
   "economist": {
    "sursa": "platit",
-   "net": 5368,
+   "net": 5313,
    "interval": [
-    4826,
-    5731
+    4758,
+    5699
    ],
    "platit": {
-    "randuri": 300,
-    "institutii": 16,
+    "randuri": 302,
+    "institutii": 17,
     "judete": 13,
     "perioade": [
      "2025-03",
@@ -993,6 +976,7 @@
      "2026-03"
     ],
     "surse": [
+     "Filarmonica Banatul Timișoara",
      "Spitalul Clinic Județean de Urgență Bihor",
      "Spitalul Clinic Județean de Urgență Brăila",
      "Spitalul Clinic Județean de Urgență Cluj-Napoca",
@@ -1013,18 +997,18 @@
     "debutant": null,
     "cuVariabil": null,
     "studii": {
-     "S": 5409
+     "S": 5282
     },
     "peVechime": [
      {
       "gradatie": 4,
-      "randuri": 33,
-      "net": 5498
+      "randuri": 34,
+      "net": 5468
      },
      {
       "gradatie": 5,
-      "randuri": 168,
-      "net": 5584
+      "randuri": 169,
+      "net": 5404
      }
     ],
     "peJudet": [
@@ -1051,6 +1035,12 @@
       "randuri": 34,
       "institutii": 1,
       "net": 4704
+     },
+     {
+      "judet": "Timiș",
+      "randuri": 30,
+      "institutii": 2,
+      "net": 3996
      }
     ]
    },
@@ -1060,15 +1050,15 @@
   },
   "consilier-juridic": {
    "sursa": "platit",
-   "net": 5453,
+   "net": 5378,
    "interval": [
     4757,
-    5789
+    5935
    ],
    "platit": {
-    "randuri": 69,
-    "institutii": 20,
-    "judete": 18,
+    "randuri": 86,
+    "institutii": 27,
+    "judete": 20,
     "perioade": [
      "2025-03",
      "2026-02",
@@ -1076,10 +1066,15 @@
      "2026-09"
     ],
     "surse": [
+     "Consiliul Județean Bistrița-Năsăud",
      "Consiliul Județean Sălaj",
+     "Curtea de Apel Bacău",
+     "Curtea de Apel Târgu Mureş",
      "DGASPC Călărași",
      "Direcția de Asistență Socială Brașov",
      "Direcția de Sănătate Publică Vaslui",
+     "Filarmonica Banatul Timișoara",
+     "Filarmonica Paul Constantinescu Ploiești",
      "Spitalul Clinic Județean de Urgență Bihor",
      "Spitalul Clinic Județean de Urgență Brăila",
      "Spitalul Clinic Județean de Urgență Cluj-Napoca",
@@ -1094,6 +1089,8 @@
      "Spitalul Județean de Urgență Bacău",
      "Spitalul Județean de Urgență Buzău",
      "Spitalul Județean de Urgență Miercurea Ciuc",
+     "Teatrul Național Radu Stanca Sibiu",
+     "Universitatea Transilvania din Brașov",
      "Universitatea de Arhitectură și Urbanism Ion Mincu",
      "Universitatea de Medicină, Farmacie, Științe și Tehnologie Târgu Mureș"
     ],
@@ -1104,6 +1101,135 @@
     },
     "peVechime": [],
     "peJudet": []
+   },
+   "oferit": null,
+   "declarat": null,
+   "angajatori": null
+  },
+  "judecator": {
+   "sursa": "platit",
+   "net": 15634,
+   "interval": [
+    12428,
+    18779
+   ],
+   "platit": {
+    "randuri": 119,
+    "institutii": 9,
+    "judete": 8,
+    "perioade": [
+     "2026-03"
+    ],
+    "surse": [
+     "Curtea de Apel Bacău",
+     "Curtea de Apel Târgu Mureş",
+     "Tribunalul Argeş",
+     "Tribunalul Botoşani",
+     "Tribunalul Harghita",
+     "Tribunalul Maramureş",
+     "Tribunalul Mureş",
+     "Tribunalul Sălaj",
+     "Tribunalul Vaslui"
+    ],
+    "debutant": null,
+    "cuVariabil": null,
+    "studii": {
+     "S": 16157
+    },
+    "peVechime": [
+     {
+      "gradatie": 5,
+      "randuri": 33,
+      "net": 18727
+     }
+    ],
+    "peJudet": [
+     {
+      "judet": "Mureș",
+      "randuri": 30,
+      "institutii": 2,
+      "net": 18192
+     },
+     {
+      "judet": "Maramureș",
+      "randuri": 34,
+      "institutii": 1,
+      "net": 14293
+     }
+    ]
+   },
+   "oferit": null,
+   "declarat": null,
+   "angajatori": null
+  },
+  "grefier": {
+   "sursa": "platit",
+   "net": 7042,
+   "interval": [
+    6077,
+    7762
+   ],
+   "platit": {
+    "randuri": 278,
+    "institutii": 9,
+    "judete": 8,
+    "perioade": [
+     "2026-03"
+    ],
+    "surse": [
+     "Curtea de Apel Bacău",
+     "Curtea de Apel Târgu Mureş",
+     "Tribunalul Argeş",
+     "Tribunalul Botoşani",
+     "Tribunalul Harghita",
+     "Tribunalul Maramureş",
+     "Tribunalul Mureş",
+     "Tribunalul Sălaj",
+     "Tribunalul Vaslui"
+    ],
+    "debutant": null,
+    "cuVariabil": null,
+    "studii": {
+     "S": 7391,
+     "M": 6952
+    },
+    "peVechime": [
+     {
+      "gradatie": 2,
+      "randuri": 31,
+      "net": 6250
+     },
+     {
+      "gradatie": 4,
+      "randuri": 35,
+      "net": 7391
+     },
+     {
+      "gradatie": 5,
+      "randuri": 66,
+      "net": 7762
+     }
+    ],
+    "peJudet": [
+     {
+      "judet": "Maramureș",
+      "randuri": 83,
+      "institutii": 1,
+      "net": 7391
+     },
+     {
+      "judet": "Mureș",
+      "randuri": 73,
+      "institutii": 2,
+      "net": 7293
+     },
+     {
+      "judet": "Argeș",
+      "randuri": 65,
+      "institutii": 1,
+      "net": 6698
+     }
+    ]
    },
    "oferit": null,
    "declarat": null,
@@ -1304,6 +1430,38 @@
     "net": 4000,
     "anunturi": 37
    },
+   "declarat": null,
+   "angajatori": null
+  },
+  "bibliotecar": {
+   "sursa": "platit",
+   "net": 4064,
+   "interval": [
+    3522,
+    4586
+   ],
+   "platit": {
+    "randuri": 58,
+    "institutii": 6,
+    "judete": 5,
+    "perioade": [
+     "2026-03"
+    ],
+    "surse": [
+     "Biblioteca Județeană Lucian Blaga Alba",
+     "Spitalul Județean de Urgență Miercurea Ciuc",
+     "Universitatea Națională de Arte București",
+     "Universitatea Transilvania din Brașov",
+     "Universitatea de Arhitectură și Urbanism Ion Mincu",
+     "Universitatea de Medicină, Farmacie, Științe și Tehnologie Târgu Mureș"
+    ],
+    "debutant": null,
+    "cuVariabil": null,
+    "studii": {},
+    "peVechime": [],
+    "peJudet": []
+   },
+   "oferit": null,
    "declarat": null,
    "angajatori": null
   },

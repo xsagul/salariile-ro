@@ -83,7 +83,7 @@ function descrierePagina(date: DateMeserie) {
   const v = venitOficial(date.meserie.slug);
   if (v) {
     const s = v.categorii.find(x => x.categorie === v.start) ?? v.categorii[0];
-    return `${inceput}: de la ${lei(s.min)} lei net pe lună, venitul plătit în ${v.luna}. Pe categorii, de la soldat la ofițer, din tabelul oficial.`;
+    return `${inceput}: de la ${lei(s.min)} lei net pe lună, ${v.brut ? `după tabelul oficial din ${v.luna}. Pe categorii, ${v.ierarhie}.` : `venitul plătit în ${v.luna}. Pe categorii, ${v.ierarhie}, din tabelul oficial.`}`;
   }
   const start = netDeStart(date.meserie.slug);
   if (start && trepte.length > 1) {
@@ -146,7 +146,7 @@ function faqPentru(date: DateMeserie) {
     ? `La angajare se oferă unui ${de} în jur de ${lei(c.net)}, mijlocul salariilor din ${c.oferit.anunturi} anunțuri verificate.`
     : venitOficial(date.meserie.slug)
     ? (() => { const v = venitOficial(date.meserie.slug)!; const s = v.categorii.find(x => x.categorie === v.start) ?? v.categorii[0];
-        return `${s.categorie} iau în mână între ${nr(s.min)} și ${nr(s.max)} lei net pe lună, la program normal, după tabelul publicat de ${v.angajator} pentru ${v.luna}. Cu grad și funcție, venitul net ajunge până la ${nr(Math.max(...v.categorii.map(x => x.max)))} lei la ofițerii cu funcții de comandă.`; })()
+        return `${s.categorie} iau în mână între ${nr(s.min)} și ${nr(s.max)} lei net pe lună${v.brut ? '' : ', la program normal'}, după tabelul publicat de ${v.angajator} pentru ${v.luna}. Cu grad și funcție, venitul net ajunge până la ${nr(Math.max(...v.categorii.map(x => x.max)))} lei ${v.varf}.`; })()
     : frazaDeclarat(date.meserie.slug, de)
     ? frazaDeclarat(date.meserie.slug, de)!
     : candidata?.veche

@@ -4205,3 +4205,37 @@ dat ca avantaj în 28 (acum separat). eJobs a rămas în pauză 429 (doar listar
 robots. Colectarea de noapte din GitHub pornește de la `vazute.txt` actualizat, deci citește
 numai anunțurile apărute între timp. Pagina privată a bazei:
 https://claude.ai/artifact/RGhLWE2qpJy4xz3NyER96J (generator: `scripts/colectare/pagina-baza.mjs`).
+
+## 27 septembrie 2026, seara — instanțe prin OCR, procurorul din tabelul Ministerului Public
+
+**Judecător, grefier, procuror au sumă.** Pe portal.just.ro, pagina `/<id>/SitePages/informatii.aspx`
+a fiecărei instanțe listează documentele; din 400 de id-uri, 36 au lista din martie 2026 (34 în
+registru, tip `instanta`). Numai 5 au text; restul sunt scanate. Acceptate: 9 instanțe din 8 județe
+(CA Bacău, CA Târgu Mureș, tribunalele Argeș, Botoșani, Harghita, Maramureș, Mureș, Sălaj, Vaslui).
+Judecător 15.634 lei net (119 posturi), grefier 7.042 (278). Procurorul: `i._procurori_31.03.2026_mp.pdf`
+(PÎCCJ, pe old.mpublic.ro; site-ul nou dă 404) e tabelul brut pe funcție și gradație pentru tot
+Ministerul Public → `venituri-oficiale.json`, `brut: true`, netul calculat standard. De la 6.990 lei
+net (stagiar) la 22.738 (PÎCCJ). `SalariuOficial.tsx` acceptă acum și tabele brute.
+
+**OCR legat de colectare.** `colecteaza.mjs`: PDF fără rânduri → `ocr.ps1` (numai pe Windows) →
+`.ocr.json` lângă PDF → același cititor. `randuriOcr`: rândul de tabel începe la funcția din prima
+coloană și ține până la următoarea (Sălaj: două rânduri de text pe post), fiecare coloană de numere
+cu deplasarea ei verticală, coordonatele aduse la 842 de puncte. **Un rând OCR intră numai dacă se
+verifică aritmetic:** numărul obișnuit de sume, nicio sumă peste bază, sporul de 5% din bază
+(confidențialitatea, Anexa V) la ±2 lei, sporurile la ±20% de mediana listei. O listă fără coloana
+de 5% la cel puțin 40% din rânduri nu dă nimic: la Spitalul Mureș (164 de pagini) medicii primari
+ieșeau cu baze de 5.000–8.800 lei. Deci OCR-ul ajută azi doar la instanțe; bibliotecile, teatrele,
+filarmonicile și primăriile scanate rămân „fără rânduri verificabile”.
+
+Tot azi: numărul curent din fața funcției („7 Judecator”) nu mai blochează potrivirea; farmacistul
+rezident nu mai intră la farmacist (ca la medic): farmacist 5.408 → 5.963 lei net, 224 de rânduri
+scoase la Constanța și Timișoara. Diff sursă cu sursă: nicio altă sursă veche nu s-a schimbat.
+Bibliotecar trece pragul (58 de posturi, 6 instituții). Salario reverificat: bibliotecar (28) și
+funcționar public (432) intră; consultant-management a scăzut la 19 salarii și iese.
+`/salarii/acoperire` are coloana „Cifra de pe pagina meseriei”.
+
+**Poliție, jandarmi, pompieri: tabelele MAI nu dau începutul.** Poliția de Frontieră, 8 luni din
+2026: minimul agenților e 1.235–1.975 lei net în fiecare lună (lună parțială, suspendări), deci nu
+e salariul de început; nota spune că și maximele cuprind restanțe din hotărâri. Rămân fără sumă.
+Rămase fără sumă (38): vezi `npx tsx` pe lista din `/salarii` (cifra lipsește la meseriile private
+fără oferte ANOFM, la MAI, preot, notar, pescar, fermier, regizor).
