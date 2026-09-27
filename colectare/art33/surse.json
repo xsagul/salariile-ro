@@ -741,6 +741,221 @@
    "fisier": "https://primariasighisoara.ro/portal/mures/sighisoara/portal.nsf/atasament/9ECE471E0F6F4FFEC2258DCB003D9750/$FILE/Transparenta%20venituri%20salariale%2031%20martie%202026.pdf",
    "perioada": "2026-03",
    "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "fil-banatul",
+   "institutie": "Filarmonica Banatul Timișoara",
+   "tip": "cultura",
+   "judet": "TM",
+   "pagina": "https://filarmonicabanatul.ro/transparenta-bugetara/",
+   "fisier": "https://filarmonicabanatul.ro/wp-content/uploads/2026/03/Transparenta-veniturilor-31.03.2026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "fil-iasi",
+   "institutie": "Filarmonica Moldova Iași",
+   "tip": "cultura",
+   "judet": "IS",
+   "pagina": "https://www.filarmonicais.ro/index.php/ro/despre-noi/informatii-de-interes-public/transparenta-veniturilor-salariale",
+   "fisier": "https://www.filarmonicais.ro/images/pdf/Salarii-site-31.03.2026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "fil-arad",
+   "institutie": "Filarmonica Arad",
+   "tip": "cultura",
+   "judet": "AR",
+   "pagina": "https://www.filarmonicaarad.ro/informatii-publice/",
+   "fisier": "https://www.filarmonicaarad.ro/wp-content/uploads/2025/10/SALARIILE-la-data-de-30.09.2025-.pdf",
+   "perioada": "2025-09",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "fil-transilvania",
+   "institutie": "Filarmonica de Stat Transilvania Cluj",
+   "tip": "cultura",
+   "judet": "CJ",
+   "pagina": "https://filarmonicatransilvania.ro/"
+  },
+  {
+   "id": "tn-sibiu",
+   "institutie": "Teatrul Național Radu Stanca Sibiu",
+   "tip": "cultura",
+   "judet": "SB",
+   "pagina": "https://www.tnrs.ro/ro/situatia-drepturilor-salariale",
+   "fisier": "https://tnrs.ro/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBK2w3RVE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--5fd579c8849f3727c344e8de206c4144e604da62/Situatie%20drepturi%20salariale%20martie%202026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "t-comedie",
+   "institutie": "Teatrul de Comedie București",
+   "tip": "cultura",
+   "judet": "B",
+   "pagina": "https://comedie.ro/catinfopub/transparenta-venituri-salariale/"
+  },
+  {
+   "id": "tn-iasi",
+   "institutie": "Teatrul Național Vasile Alecsandri Iași",
+   "tip": "cultura",
+   "judet": "IS",
+   "pagina": "https://teatrulnationaliasi.ro/"
+  },
+  {
+   "id": "tn-bucuresti",
+   "institutie": "Teatrul Național București",
+   "tip": "cultura",
+   "judet": "B",
+   "pagina": "https://www.tnb.ro/"
+  },
+  {
+   "id": "t-tineretului-pn",
+   "institutie": "Teatrul Tineretului Piatra-Neamț",
+   "tip": "cultura",
+   "judet": "NT",
+   "pagina": "https://www.teatrultineretului.ro/?page_id=12672"
+  },
+  {
+   "id": "tn-targu-mures",
+   "institutie": "Teatrul Național Târgu-Mureș",
+   "tip": "cultura",
+   "judet": "MS",
+   "pagina": "https://teatrunational.ro/public_information/the-situation-of-salary-rights/",
+   "fisier": "https://teatrunational.ro/wp-content/uploads/2026/03/Situatia-drepturilor-salariale_martie-2026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "tn-craiova",
+   "institutie": "Teatrul Național Marin Sorescu Craiova",
+   "tip": "cultura",
+   "judet": "DJ",
+   "pagina": "https://tncms.ro/",
+   "fisier": "https://tncms.ro/zip/achizitii/situatiasalariilor.pdf",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "opera-timisoara",
+   "institutie": "Opera Națională Română Timișoara",
+   "tip": "cultura",
+   "judet": "TM",
+   "pagina": "https://www.ort.ro/informatii/ro/212/Drepturi-salariale.html"
+  },
+  {
+   "id": "tn-cluj",
+   "institutie": "Teatrul Național Lucian Blaga Cluj-Napoca",
+   "tip": "cultura",
+   "judet": "CJ",
+   "pagina": "https://www.teatrulnationalcluj.ro/pagina-69/situatia-drepturilor-salariale/"
+  },
+  {
+   "id": "fil-brasov",
+   "institutie": "Filarmonica Brașov",
+   "tip": "cultura",
+   "judet": "BV",
+   "pagina": "https://filarmonicabrasov.ro/"
+  },
+  {
+   "id": "fil-oltenia",
+   "institutie": "Filarmonica Oltenia Craiova",
+   "tip": "cultura",
+   "judet": "DJ",
+   "pagina": "https://filarmonicaoltenia.ro/"
+  },
+  {
+   "id": "fil-sibiu",
+   "institutie": "Filarmonica de Stat Sibiu",
+   "tip": "cultura",
+   "judet": "SB",
+   "pagina": "https://filarmonicasibiu.ro/"
+  },
+  {
+   "id": "fil-ploiesti",
+   "institutie": "Filarmonica Paul Constantinescu Ploiești",
+   "tip": "cultura",
+   "judet": "PH",
+   "pagina": "https://filarmonicaploiesti.ro/",
+   "fisier": "https://filarmonicaploiesti.ro/wp-content/uploads/2026/09/Lista-functii-Filarmonica-Ploiesti-septembrie-2026.pdf",
+   "perioada": "2026-09",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "fil-bacau",
+   "institutie": "Filarmonica Mihail Jora Bacău",
+   "tip": "cultura",
+   "judet": "BC",
+   "pagina": "https://filarmonicabacau.ro/",
+   "fisier": "https://filarmonicabacau.ro/storage/2026/03/Salarii-de-baza-afisate-martie-2026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "fil-oradea",
+   "institutie": "Filarmonica Oradea",
+   "tip": "cultura",
+   "judet": "BH",
+   "pagina": "https://filarmonicaoradea.ro/",
+   "fisier": "https://filarmonicaoradea.ro/wp-content/uploads/2026/03/Salarii-de-baza-conform-art.-33-din-legea-1532017-la-31.03.2026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "fil-pitesti",
+   "institutie": "Filarmonica Pitești",
+   "tip": "cultura",
+   "judet": "AG",
+   "pagina": "https://filarmonicapitesti.ro/"
+  },
+  {
+   "id": "fil-botosani",
+   "institutie": "Filarmonica George Enescu Botoșani",
+   "tip": "cultura",
+   "judet": "BT",
+   "pagina": "https://filarmonicabotosani.ro/informatii-publice"
+  },
+  {
+   "id": "opera-bucuresti",
+   "institutie": "Opera Națională București",
+   "tip": "cultura",
+   "judet": "B",
+   "pagina": "https://www.operanb.ro/"
+  },
+  {
+   "id": "opera-iasi",
+   "institutie": "Opera Națională Română Iași",
+   "tip": "cultura",
+   "judet": "IS",
+   "pagina": "https://www.operaiasi.ro/"
+  },
+  {
+   "id": "t-bulandra",
+   "institutie": "Teatrul Bulandra",
+   "tip": "cultura",
+   "judet": "B",
+   "pagina": "https://www.bulandra.ro/"
+  },
+  {
+   "id": "t-odeon",
+   "institutie": "Teatrul Odeon",
+   "tip": "cultura",
+   "judet": "B",
+   "pagina": "https://www.teatrul-odeon.ro/"
+  },
+  {
+   "id": "t-mic",
+   "institutie": "Teatrul Mic",
+   "tip": "cultura",
+   "judet": "B",
+   "pagina": "https://www.teatrulmic.ro/"
+  },
+  {
+   "id": "t-nottara",
+   "institutie": "Teatrul Nottara",
+   "tip": "cultura",
+   "judet": "B",
+   "pagina": "https://www.nottara.ro/"
   }
  ]
 }

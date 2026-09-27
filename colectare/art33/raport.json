@@ -1047,5 +1047,126 @@
  "pm-sighisoara": {
   "stare": "fără rânduri (scanat sau alt format)",
   "sha256": "936c454a49253ea2251ef954e23d5c76c2ed7aaa3e2b7c3aa8490c3bbf28aca1"
+ },
+ "fil-banatul": {
+  "stare": "acceptat",
+  "fisier": "https://filarmonicabanatul.ro/wp-content/uploads/2026/03/Transparenta-veniturilor-31.03.2026.pdf",
+  "perioada": "2026-03",
+  "sha256": "6a43aa0d359f94ac407f66e494c14620c1fd31ab71127224b2b513271146efc4",
+  "bytes": 352892,
+  "cititLa": "2026-09-27",
+  "randuri": 54,
+  "valide": 54,
+  "peMeserie": {
+   "muzician": 50,
+   "economist": 2,
+   "consilier-juridic": 2
+  },
+  "coloaneNecunoscute": [
+   "Nr. crt.",
+   "PENTRU PERSONALUL DIN CADRUL FILARMONICII ÎN CONFORMITATE CU ART.33 DIN LEGEA CADRU nr.153/2017 Grad"
+  ]
+ },
+ "fil-iasi": {
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "21da6eb5cf986626d0e523880409a27252b5d1aea1a06768d79da1fd8a7e6e78"
+ },
+ "fil-arad": {
+  "stare": "de verificat: baza ghicită la peste 30% din rânduri",
+  "fisier": "https://www.filarmonicaarad.ro/wp-content/uploads/2025/10/SALARIILE-la-data-de-30.09.2025-.pdf",
+  "perioada": "2025-09",
+  "sha256": "cff6df9144b6037385e8c8b6b3f9559e0e12108a4c9a6f12eaa6ad7300362e3f",
+  "bytes": 315252,
+  "cititLa": "2026-09-27",
+  "randuri": 11,
+  "valide": 11,
+  "peMeserie": {
+   "muzician": 11
+  },
+  "coloaneNecunoscute": [
+   "Nr. Crt",
+   "SITUAȚIE FUNCȚII- PERSONAL PLĂTIT DIN Denumirea Gradul Gradația funcţiei profesional / de Treapta ve",
+   "SITUAȚIE FUNCȚII- PERSONAL PLĂTIT DIN LA DATA DE 30.09.2025 Salariul de incadrare"
+  ]
+ },
+ "tn-sibiu": {
+  "stare": "acceptat",
+  "fisier": "https://tnrs.ro/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBK2w3RVE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--5fd579c8849f3727c344e8de206c4144e604da62/Situatie%20drepturi%20salariale%20martie%202026.pdf",
+  "perioada": "2026-03",
+  "sha256": "d19281ded8a48ffc17866f94c0c8300e9a1a036d86d3fe9563b77f80cdc12f0f",
+  "bytes": 271768,
+  "cititLa": "2026-09-27",
+  "randuri": 50,
+  "valide": 50,
+  "peMeserie": {
+   "consilier-juridic": 2,
+   "regizor": 3,
+   "actor": 45
+  },
+  "coloaneNecunoscute": [
+   "nr. Crt",
+   "TEATRUL NAȚIONAL RADU STANCA SIBIU Funcția Grad Gradație CONDUCERE"
+  ]
+ },
+ "tn-targu-mures": {
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "22b333219a3012694549644993e41e6ac42a02f6a59ccea1d45470302ec1760c"
+ },
+ "tn-craiova": {
+  "stare": "de verificat: prea puține rânduri",
+  "fisier": "https://tncms.ro/zip/achizitii/situatiasalariilor.pdf",
+  "sha256": "d52607ae35704537b46ab240754c26ab648df0c500b8b1c658b4523fb192c4dc",
+  "bytes": 194389,
+  "cititLa": "2026-09-27",
+  "randuri": 4,
+  "valide": 4,
+  "peMeserie": {
+   "consilier-juridic": 1,
+   "economist": 1,
+   "magaziner": 1,
+   "regizor": 1
+  },
+  "coloaneNecunoscute": [
+   "Nr. Crt. 0",
+   "TEATRUL NAȚIONAL ”MARIN SORESCU” CRAIOVA SITUAȚIA DREPTURILOR SALARIALE stabilite potrivit legii, pr"
+  ]
+ },
+ "fil-ploiesti": {
+  "stare": "acceptat",
+  "fisier": "https://filarmonicaploiesti.ro/wp-content/uploads/2026/09/Lista-functii-Filarmonica-Ploiesti-septembrie-2026.pdf",
+  "perioada": "2026-09",
+  "sha256": "034b6a9e90dbb49856004e3fdddfe991549d76fbc8d9386a4e1124cb4f692cb6",
+  "bytes": 151242,
+  "cititLa": "2026-09-27",
+  "randuri": 41,
+  "valide": 41,
+  "peMeserie": {
+   "muzician": 40,
+   "consilier-juridic": 1
+  },
+  "coloaneNecunoscute": [
+   "Nr. crt 0"
+  ]
+ },
+ "fil-bacau": {
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "8d2d40ae626d03d87c1683a4277b7a9b889c2862c72265ce8a3bd68fb20bfcd8"
+ },
+ "fil-oradea": {
+  "stare": "de verificat: prea puține rânduri",
+  "fisier": "https://filarmonicaoradea.ro/wp-content/uploads/2026/03/Salarii-de-baza-conform-art.-33-din-legea-1532017-la-31.03.2026.pdf",
+  "perioada": "2026-03",
+  "sha256": "a89fbcd13cef2359bcc5db555f7ee5b2fba4029b78d8ba5148f89ce9781b9940",
+  "bytes": 487491,
+  "cititLa": "2026-09-27",
+  "randuri": 3,
+  "valide": 3,
+  "peMeserie": {
+   "muzician": 3
+  },
+  "coloaneNecunoscute": [
+   "I Nr. 1 r. (t1.",
+   "nr.5; 4253790//09.07.1993 Oradea Salariu de"
+  ]
  }
 }

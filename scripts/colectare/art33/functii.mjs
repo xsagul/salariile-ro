@@ -38,6 +38,11 @@ const REGULI = [
   ["contabil", /\bCONTABIL\b/],
   ["magaziner", /\bMAGAZINER\b/],
   ["bibliotecar", /\bBIBLIOTECAR\b/],
+  // Instituțiile de spectacole și concerte (teatre, filarmonici, opere). „Regizor scenă” e
+  // conducătorul de spectacol din culise, altă meserie decât regizorul artistic.
+  ["muzician", /\bARTIST (INSTRUMENTIST|LIRIC)\b|\bINSTRUMENTIST\b|\bCORIST\b|\bSOLIST (VOCAL|INSTRUMENTIST)\b/, ["cultura"]],
+  ["regizor", /\bREGIZOR ARTISTIC\b/, ["cultura"]],
+  ["actor", /^ACTOR\b|\bACTOR (I|II|III|IA|DEBUTANT|PAPUSAR|MANUIT)/, ["cultura"]],
   ["educator", /\bEDUCATOR\b/],
   ["programator", /\bPROGRAMATOR\b/],
   ["consilier-juridic", /\bCONSILIER JURIDIC\b/],

@@ -37,6 +37,8 @@ export function tipColoana(eticheta, procent, v = 0) {
   // din decembrie 2023 (5.775) și „cf. L153/2017 și bază de calcul pentru sporuri” (8.084) —
   // ultima e baza. Fișa veche nu e baza de acum.
   if (/\(fisa\)/.test(e)) return "necunoscut";
+  // O coloană numită doar „Salariul” (Teatrul Radu Stanca Sibiu) e salariul de bază al postului.
+  if (/^salariul?$/.test(e.trim())) return "baza";
   if (/salar\w*\s*baza\s*cf\.?\s*l\.?\s*153/.test(e)) return "baza";
   if (/baza\s*(de\s*|pt\.?\s*|pentru\s*)?calcul|baz\w*\s+calcul/.test(e)) return "bazaCalcul";
   // „Total salariu brut”: cel mai sigur număr, când instituția îl publică (DGASPC Sector 2).
