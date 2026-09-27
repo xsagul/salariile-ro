@@ -1,18 +1,18 @@
 {
- "generatLa": "2026-09-27T10:13:37.031Z",
+ "generatLa": "2026-09-27T10:16:51.366Z",
  "oferteAnofm": 8776,
  "meserii": {
   "medic": {
    "sursa": "platit",
-   "net": 9974,
+   "net": 10083,
    "interval": [
-    7240,
-    11657
+    7386,
+    11818
    ],
    "platit": {
-    "randuri": 2698,
-    "institutii": 19,
-    "judete": 14,
+    "randuri": 3194,
+    "institutii": 20,
+    "judete": 15,
     "perioade": [
      "2025-03",
      "2025-08",
@@ -28,6 +28,7 @@
      "Spitalul Clinic Județean de Urgență Brăila",
      "Spitalul Clinic Județean de Urgență Cluj-Napoca",
      "Spitalul Clinic Județean de Urgență Constanța",
+     "Spitalul Clinic Județean de Urgență Pius Brînzeu Timișoara",
      "Spitalul Clinic Județean de Urgență Sibiu",
      "Spitalul Clinic Municipal Cluj-Napoca",
      "Spitalul Clinic de Boli Infecțioase Iași",
@@ -42,8 +43,8 @@
     ],
     "debutant": null,
     "cuVariabil": {
-     "net": 9994,
-     "cota": 0.24
+     "net": 10425,
+     "cota": 0.29
     },
     "studii": {
      "S": 11020
@@ -51,26 +52,32 @@
     "peVechime": [
      {
       "gradatie": 2,
-      "randuri": 289,
-      "net": 8513
+      "randuri": 362,
+      "net": 8576
      },
      {
       "gradatie": 3,
-      "randuri": 308,
-      "net": 10660
+      "randuri": 398,
+      "net": 10768
      },
      {
       "gradatie": 4,
-      "randuri": 257,
-      "net": 11104
+      "randuri": 325,
+      "net": 11118
      },
      {
       "gradatie": 5,
-      "randuri": 985,
-      "net": 10291
+      "randuri": 1250,
+      "net": 10896
      }
     ],
     "peJudet": [
+     {
+      "judet": "Timiș",
+      "randuri": 496,
+      "institutii": 1,
+      "net": 12736
+     },
      {
       "judet": "Bacău",
       "randuri": 197,
@@ -145,15 +152,15 @@
   },
   "medic-rezident": {
    "sursa": "platit",
-   "net": 6193,
+   "net": 6174,
    "interval": [
-    5174,
-    7411
+    5035,
+    7345
    ],
    "platit": {
-    "randuri": 2661,
-    "institutii": 10,
-    "judete": 9,
+    "randuri": 4029,
+    "institutii": 11,
+    "judete": 10,
     "perioade": [
      "2026-02",
      "2026-03"
@@ -163,6 +170,7 @@
      "Spitalul Clinic Județean de Urgență Brăila",
      "Spitalul Clinic Județean de Urgență Cluj-Napoca",
      "Spitalul Clinic Județean de Urgență Constanța",
+     "Spitalul Clinic Județean de Urgență Pius Brînzeu Timișoara",
      "Spitalul Clinic Județean de Urgență Sibiu",
      "Spitalul Județean de Urgență Alba Iulia",
      "Spitalul Județean de Urgență Bacău",
@@ -173,7 +181,7 @@
     "debutant": null,
     "cuVariabil": {
      "net": 8221,
-     "cota": 0.04
+     "cota": 0.06
     },
     "studii": {
      "S": 6244
@@ -181,23 +189,28 @@
     "peVechime": [
      {
       "gradatie": 0,
-      "randuri": 618,
-      "net": 5487
+      "randuri": 1268,
+      "net": 5374
      },
      {
       "gradatie": 1,
-      "randuri": 410,
+      "randuri": 759,
       "net": 6427
      },
      {
       "gradatie": 2,
-      "randuri": 437,
+      "randuri": 732,
       "net": 6613
      },
      {
       "gradatie": 3,
-      "randuri": 87,
+      "randuri": 134,
       "net": 6326
+     },
+     {
+      "gradatie": 5,
+      "randuri": 40,
+      "net": 6647
      }
     ],
     "peJudet": [
@@ -232,6 +245,12 @@
       "net": 6025
      },
      {
+      "judet": "Timiș",
+      "randuri": 1368,
+      "institutii": 1,
+      "net": 5806
+     },
+     {
       "judet": "Cluj",
       "randuri": 68,
       "institutii": 2,
@@ -251,15 +270,15 @@
   },
   "asistent-medical": {
    "sursa": "platit",
-   "net": 4775,
+   "net": 4765,
    "interval": [
     4209,
-    5694
+    5690
    ],
    "platit": {
-    "randuri": 6542,
-    "institutii": 14,
-    "judete": 12,
+    "randuri": 7660,
+    "institutii": 15,
+    "judete": 13,
     "perioade": [
      "2025-03",
      "2026-02",
@@ -271,6 +290,7 @@
      "Spitalul Clinic Județean de Urgență Bihor",
      "Spitalul Clinic Județean de Urgență Cluj-Napoca",
      "Spitalul Clinic Județean de Urgență Constanța",
+     "Spitalul Clinic Județean de Urgență Pius Brînzeu Timișoara",
      "Spitalul Clinic Județean de Urgență Sibiu",
      "Spitalul Clinic Municipal Cluj-Napoca",
      "Spitalul Clinic de Boli Infecțioase Iași",
@@ -281,47 +301,47 @@
      "Spitalul Municipal Turda",
      "Universitatea de Medicină, Farmacie, Științe și Tehnologie Târgu Mureș"
     ],
-    "debutant": 4444,
+    "debutant": 4255,
     "cuVariabil": {
-     "net": 5746,
-     "cota": 0.73
+     "net": 5750,
+     "cota": 0.76
     },
     "studii": {
      "S": 5080,
      "SSD": 4397,
-     "PL": 4631,
+     "PL": 4624,
      "M": 5794
     },
     "peVechime": [
      {
       "gradatie": 0,
-      "randuri": 84,
+      "randuri": 102,
       "net": 3832
      },
      {
       "gradatie": 1,
-      "randuri": 89,
+      "randuri": 116,
       "net": 4213
      },
      {
       "gradatie": 2,
-      "randuri": 429,
+      "randuri": 579,
       "net": 4460
      },
      {
       "gradatie": 3,
-      "randuri": 396,
+      "randuri": 595,
       "net": 4589
      },
      {
       "gradatie": 4,
-      "randuri": 508,
-      "net": 5127
+      "randuri": 646,
+      "net": 5095
      },
      {
       "gradatie": 5,
-      "randuri": 2800,
-      "net": 5256
+      "randuri": 3386,
+      "net": 5194
      }
     ],
     "peJudet": [
@@ -372,6 +392,12 @@
       "randuri": 570,
       "institutii": 3,
       "net": 4677
+     },
+     {
+      "judet": "Timiș",
+      "randuri": 1118,
+      "institutii": 1,
+      "net": 4671
      }
     ]
    },
@@ -385,15 +411,15 @@
   },
   "registrator-medical": {
    "sursa": "platit",
-   "net": 3798,
+   "net": 3778,
    "interval": [
     3498,
-    4331
+    4312
    ],
    "platit": {
-    "randuri": 473,
-    "institutii": 14,
-    "judete": 11,
+    "randuri": 568,
+    "institutii": 15,
+    "judete": 12,
     "perioade": [
      "2025-03",
      "2026-02",
@@ -404,6 +430,7 @@
      "Spitalul Clinic Județean de Urgență Brăila",
      "Spitalul Clinic Județean de Urgență Cluj-Napoca",
      "Spitalul Clinic Județean de Urgență Constanța",
+     "Spitalul Clinic Județean de Urgență Pius Brînzeu Timișoara",
      "Spitalul Clinic Județean de Urgență Sibiu",
      "Spitalul Clinic Municipal Cluj-Napoca",
      "Spitalul Clinic de Boli Infecțioase Iași",
@@ -415,9 +442,9 @@
      "Spitalul Municipal Turda",
      "Spitalul de Psihiatrie Titan Dr. Constantin Gorgos"
     ],
-    "debutant": null,
+    "debutant": 3096,
     "cuVariabil": {
-     "net": 4910,
+     "net": 4900,
      "cota": 0.2
     },
     "studii": {
@@ -426,23 +453,23 @@
     "peVechime": [
      {
       "gradatie": 2,
-      "randuri": 39,
-      "net": 3613
+      "randuri": 46,
+      "net": 3577
      },
      {
       "gradatie": 3,
-      "randuri": 44,
-      "net": 3631
+      "randuri": 58,
+      "net": 3551
      },
      {
       "gradatie": 4,
-      "randuri": 53,
+      "randuri": 66,
       "net": 3651
      },
      {
       "gradatie": 5,
-      "randuri": 179,
-      "net": 3778
+      "randuri": 235,
+      "net": 3742
      }
     ],
     "peJudet": [
@@ -457,6 +484,12 @@
       "randuri": 91,
       "institutii": 1,
       "net": 3703
+     },
+     {
+      "judet": "Timiș",
+      "randuri": 95,
+      "institutii": 1,
+      "net": 3627
      },
      {
       "judet": "Bihor",
@@ -490,15 +523,15 @@
   },
   "farmacist": {
    "sursa": "platit",
-   "net": 5457,
+   "net": 5161,
    "interval": [
-    4577,
+    4568,
     6736
    ],
    "platit": {
-    "randuri": 161,
-    "institutii": 9,
-    "judete": 7,
+    "randuri": 279,
+    "institutii": 10,
+    "judete": 8,
     "perioade": [
      "2025-03",
      "2026-02",
@@ -508,6 +541,7 @@
      "DGASPC Sector 1",
      "Spitalul Clinic Județean de Urgență Cluj-Napoca",
      "Spitalul Clinic Județean de Urgență Constanța",
+     "Spitalul Clinic Județean de Urgență Pius Brînzeu Timișoara",
      "Spitalul Clinic Municipal Cluj-Napoca",
      "Spitalul Județean de Urgență Bacău",
      "Spitalul Județean de Urgență Buzău",
@@ -516,7 +550,10 @@
      "Universitatea de Medicină, Farmacie, Științe și Tehnologie Târgu Mureș"
     ],
     "debutant": null,
-    "cuVariabil": null,
+    "cuVariabil": {
+     "net": 6635,
+     "cota": 0.08
+    },
     "studii": {
      "S": 4761
     },
@@ -527,6 +564,12 @@
       "randuri": 124,
       "institutii": 1,
       "net": 4670
+     },
+     {
+      "judet": "Timiș",
+      "randuri": 118,
+      "institutii": 1,
+      "net": 4491
      }
     ]
    },
@@ -534,17 +577,54 @@
    "declarat": null,
    "angajatori": null
   },
-  "psiholog": {
+  "asistent-farmacie": {
    "sursa": "platit",
-   "net": 6314,
+   "net": 4469,
    "interval": [
-    5233,
-    7185
+    4428,
+    4779
    ],
    "platit": {
-    "randuri": 95,
-    "institutii": 15,
-    "judete": 13,
+    "randuri": 55,
+    "institutii": 5,
+    "judete": 5,
+    "perioade": [
+     "2026-02",
+     "2026-03"
+    ],
+    "surse": [
+     "Spitalul Clinic Județean de Urgență Bihor",
+     "Spitalul Clinic Județean de Urgență Constanța",
+     "Spitalul Clinic Județean de Urgență Pius Brînzeu Timișoara",
+     "Spitalul Județean de Urgență Buzău",
+     "Spitalul Municipal Turda"
+    ],
+    "debutant": null,
+    "cuVariabil": {
+     "net": 5390,
+     "cota": 0.42
+    },
+    "studii": {
+     "PL": 4469
+    },
+    "peVechime": [],
+    "peJudet": []
+   },
+   "oferit": null,
+   "declarat": null,
+   "angajatori": null
+  },
+  "psiholog": {
+   "sursa": "platit",
+   "net": 6297,
+   "interval": [
+    5104,
+    7065
+   ],
+   "platit": {
+    "randuri": 105,
+    "institutii": 16,
+    "judete": 14,
     "perioade": [
      "2025-03",
      "2026-02",
@@ -557,6 +637,7 @@
      "Spitalul Clinic Județean de Urgență Brăila",
      "Spitalul Clinic Județean de Urgență Cluj-Napoca",
      "Spitalul Clinic Județean de Urgență Constanța",
+     "Spitalul Clinic Județean de Urgență Pius Brînzeu Timișoara",
      "Spitalul Clinic Județean de Urgență Sibiu",
      "Spitalul Clinic Municipal Cluj-Napoca",
      "Spitalul Clinic de Boli Infecțioase Iași",
@@ -575,8 +656,8 @@
     "peVechime": [
      {
       "gradatie": 5,
-      "randuri": 31,
-      "net": 6824
+      "randuri": 36,
+      "net": 6790
      }
     ],
     "peJudet": []
@@ -587,15 +668,15 @@
   },
   "kinetoterapeut": {
    "sursa": "platit",
-   "net": 5301,
+   "net": 5413,
    "interval": [
-    4085,
-    5863
+    4290,
+    6079
    ],
    "platit": {
-    "randuri": 109,
-    "institutii": 16,
-    "judete": 13,
+    "randuri": 122,
+    "institutii": 17,
+    "judete": 14,
     "perioade": [
      "2025-03",
      "2026-02",
@@ -609,6 +690,7 @@
      "Spitalul Clinic Județean de Urgență Brăila",
      "Spitalul Clinic Județean de Urgență Cluj-Napoca",
      "Spitalul Clinic Județean de Urgență Constanța",
+     "Spitalul Clinic Județean de Urgență Pius Brînzeu Timișoara",
      "Spitalul Clinic Județean de Urgență Sibiu",
      "Spitalul Clinic Municipal Cluj-Napoca",
      "Spitalul Clinic de Boli Infecțioase Iași",
@@ -633,15 +715,15 @@
   },
   "infirmier": {
    "sursa": "platit",
-   "net": 3675,
+   "net": 3671,
    "interval": [
-    3454,
-    4057
+    3458,
+    4053
    ],
    "platit": {
-    "randuri": 2632,
-    "institutii": 15,
-    "judete": 13,
+    "randuri": 2987,
+    "institutii": 16,
+    "judete": 14,
     "perioade": [
      "2025-03",
      "2026-02",
@@ -654,6 +736,7 @@
      "Spitalul Clinic Județean de Urgență Brăila",
      "Spitalul Clinic Județean de Urgență Cluj-Napoca",
      "Spitalul Clinic Județean de Urgență Constanța",
+     "Spitalul Clinic Județean de Urgență Pius Brînzeu Timișoara",
      "Spitalul Clinic Județean de Urgență Sibiu",
      "Spitalul Clinic Municipal Cluj-Napoca",
      "Spitalul Clinic de Boli Infecțioase Iași",
@@ -666,8 +749,8 @@
     ],
     "debutant": 3449,
     "cuVariabil": {
-     "net": 4150,
-     "cota": 0.9
+     "net": 4169,
+     "cota": 0.91
     },
     "studii": {
      "M": 3884
@@ -675,22 +758,22 @@
     "peVechime": [
      {
       "gradatie": 2,
-      "randuri": 102,
-      "net": 3524
+      "randuri": 128,
+      "net": 3518
      },
      {
       "gradatie": 3,
-      "randuri": 171,
+      "randuri": 222,
       "net": 3571
      },
      {
       "gradatie": 4,
-      "randuri": 255,
+      "randuri": 316,
       "net": 3670
      },
      {
       "gradatie": 5,
-      "randuri": 1277,
+      "randuri": 1491,
       "net": 3802
      }
     ],
@@ -750,6 +833,12 @@
       "net": 3668
      },
      {
+      "judet": "Timiș",
+      "randuri": 355,
+      "institutii": 1,
+      "net": 3641
+     },
+     {
       "judet": "Harghita",
       "randuri": 218,
       "institutii": 1,
@@ -781,15 +870,15 @@
   },
   "economist": {
    "sursa": "platit",
-   "net": 5323,
+   "net": 5404,
    "interval": [
     4758,
-    5725
+    5708
    ],
    "platit": {
-    "randuri": 254,
-    "institutii": 13,
-    "judete": 10,
+    "randuri": 282,
+    "institutii": 14,
+    "judete": 11,
     "perioade": [
      "2025-03",
      "2026-02",
@@ -800,6 +889,7 @@
      "Spitalul Clinic Județean de Urgență Brăila",
      "Spitalul Clinic Județean de Urgență Cluj-Napoca",
      "Spitalul Clinic Județean de Urgență Constanța",
+     "Spitalul Clinic Județean de Urgență Pius Brînzeu Timișoara",
      "Spitalul Clinic Județean de Urgență Sibiu",
      "Spitalul Clinic Municipal Cluj-Napoca",
      "Spitalul Clinic de Boli Infecțioase Iași",
@@ -817,9 +907,14 @@
     },
     "peVechime": [
      {
+      "gradatie": 4,
+      "randuri": 30,
+      "net": 5498
+     },
+     {
       "gradatie": 5,
-      "randuri": 132,
-      "net": 5404
+      "randuri": 154,
+      "net": 5584
      }
     ],
     "peJudet": [
@@ -855,15 +950,15 @@
   },
   "consilier-juridic": {
    "sursa": "platit",
-   "net": 5249,
+   "net": 5453,
    "interval": [
     4757,
     5734
    ],
    "platit": {
-    "randuri": 62,
-    "institutii": 17,
-    "judete": 15,
+    "randuri": 64,
+    "institutii": 18,
+    "judete": 16,
     "perioade": [
      "2025-03",
      "2026-02",
@@ -878,6 +973,7 @@
      "Spitalul Clinic Județean de Urgență Brăila",
      "Spitalul Clinic Județean de Urgență Cluj-Napoca",
      "Spitalul Clinic Județean de Urgență Constanța",
+     "Spitalul Clinic Județean de Urgență Pius Brînzeu Timișoara",
      "Spitalul Clinic Județean de Urgență Sibiu",
      "Spitalul Clinic Municipal Cluj-Napoca",
      "Spitalul Clinic de Boli Infecțioase Iași",
@@ -1104,12 +1200,12 @@
    "net": 5702,
    "interval": [
     5033,
-    7068
+    7021
    ],
    "platit": {
-    "randuri": 109,
-    "institutii": 16,
-    "judete": 13,
+    "randuri": 120,
+    "institutii": 17,
+    "judete": 14,
     "perioade": [
      "2025-03",
      "2026-02",
@@ -1123,6 +1219,7 @@
      "Spitalul Clinic Județean de Urgență Brăila",
      "Spitalul Clinic Județean de Urgență Cluj-Napoca",
      "Spitalul Clinic Județean de Urgență Constanța",
+     "Spitalul Clinic Județean de Urgență Pius Brînzeu Timișoara",
      "Spitalul Clinic Județean de Urgență Sibiu",
      "Spitalul Clinic Municipal Cluj-Napoca",
      "Spitalul Clinic de Boli Infecțioase Iași",
@@ -1135,8 +1232,8 @@
     ],
     "debutant": null,
     "cuVariabil": {
-     "net": 7898,
-     "cota": 0.21
+     "net": 7355,
+     "cota": 0.22
     },
     "studii": {
      "S": 6040

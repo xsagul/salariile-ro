@@ -2,7 +2,7 @@
  "slug": "zidar",
  "nume": "Zidar",
  "cor": "711205",
- "generatLa": "2026-09-27T10:01:09.017Z",
+ "generatLa": "2026-09-27T10:16:52.083Z",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
   "cuSalariu": 19,
@@ -388,6 +388,7 @@
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
   "posturi": 0,
   "institutii": 0,
+  "posturiDinSurseDeVerificat": 0,
   "judete": {},
   "tipInstitutie": {},
   "perioade": {},

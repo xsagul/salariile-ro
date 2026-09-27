@@ -2,7 +2,7 @@
  "slug": "functionar-public",
  "nume": "Funcționar public",
  "cor": null,
- "generatLa": "2026-09-27T10:01:09.118Z",
+ "generatLa": "2026-09-27T10:16:52.234Z",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
   "cuSalariu": 0,
@@ -75,103 +75,59 @@
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
-  "posturi": 34,
-  "institutii": 2,
+  "posturi": 19,
+  "institutii": 1,
+  "posturiDinSurseDeVerificat": 15,
   "judete": {
    "SJ": {
     "n": 19,
-    "procent": 55.9
-   },
-   "B": {
-    "n": 15,
-    "procent": 44.1
+    "procent": 100
    }
   },
   "tipInstitutie": {
    "consiliu-judetean": {
     "n": 19,
-    "procent": 55.9
-   },
-   "primarie": {
-    "n": 15,
-    "procent": 44.1
+    "procent": 100
    }
   },
   "perioade": {
    "2026-09": {
     "n": 19,
-    "procent": 55.9
-   },
-   "2026-03": {
-    "n": 15,
-    "procent": 44.1
+    "procent": 100
    }
   },
-  "studii": {
-   "M": {
-    "n": 8,
-    "procent": 23.5
-   },
-   "S": {
-    "n": 7,
-    "procent": 20.6
-   }
-  },
+  "studii": {},
   "bazaBruta": {
-   "n": 34,
-   "p10": 5863,
-   "p25": 6336,
-   "median": 8093,
-   "p75": 9873,
+   "n": 19,
+   "p10": 5936,
+   "p25": 6580,
+   "median": 8939,
+   "p75": 10144,
    "p90": 10144,
-   "min": 5180,
-   "max": 10767
+   "min": 5769,
+   "max": 10211
   },
   "bazaCuSporuriFixe": {
-   "n": 34,
-   "p10": 5863,
-   "p25": 6336,
-   "median": 8093,
-   "p75": 9873,
-   "p90": 10191,
-   "min": 5180,
+   "n": 19,
+   "p10": 5936,
+   "p25": 6580,
+   "median": 8939,
+   "p75": 10144,
+   "p90": 10333,
+   "min": 5769,
    "max": 10838
   },
   "peGradatie": {
-   "gradația 1.9": {
+   "gradația 2": {
     "n": 2
    },
-   "gradația 1.7": {
+   "gradația 4": {
     "n": 2
    },
-   "gradația 1.4": {
-    "n": 2
-   },
-   "gradația 2.91": {
+   "gradația 3": {
     "n": 1
    },
-   "gradația 2.65": {
-    "n": 1
-   },
-   "gradația 2.48": {
-    "n": 1
-   },
-   "gradația 1.78": {
-    "n": 1
-   },
-   "gradația 2.6": {
-    "n": 1
-   },
-   "gradația 2.45": {
-    "n": 1
-   },
-   "gradația 2.25": {
-    "n": 1
-   },
-   "gradația 1.75": {
-    "n": 1
-   },
-   "gradația 1.6800000000000002": {
+   "gradația 5": {
     "n": 1
    }
   },
@@ -213,51 +169,6 @@
     "n": 1
    },
    "Referent IA, gradaţia 5": {
-    "n": 1
-   },
-   "Auditor S Superior": {
-    "n": 1
-   },
-   "Auditor S Principal": {
-    "n": 1
-   },
-   "Auditor S Asistent": {
-    "n": 1
-   },
-   "Referent, polițist local M Superior": {
-    "n": 1
-   },
-   "Referent, polițist local M Principal": {
-    "n": 1
-   },
-   "Referent, polițist local M Asistent": {
-    "n": 1
-   },
-   "Referent, polițist local M Debutant": {
-    "n": 1
-   },
-   "Inspector de specialitate S IA": {
-    "n": 1
-   },
-   "Inspector de specialitate S I": {
-    "n": 1
-   },
-   "Inspector de specialitate S II": {
-    "n": 1
-   },
-   "Inspector de specialitate S Debutant": {
-    "n": 1
-   },
-   "Referent/Arhivar M IA": {
-    "n": 1
-   },
-   "Referent/Arhivar M I": {
-    "n": 1
-   },
-   "Referent/Arhivar M II": {
-    "n": 1
-   },
-   "Referent/Arhivar M Debutant": {
     "n": 1
    }
   }

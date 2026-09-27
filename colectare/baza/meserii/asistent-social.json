@@ -2,7 +2,7 @@
  "slug": "asistent-social",
  "nume": "Asistent social",
  "cor": "263501",
- "generatLa": "2026-09-27T10:01:09.192Z",
+ "generatLa": "2026-09-27T10:16:52.323Z",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
   "cuSalariu": 0,
@@ -188,56 +188,57 @@
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
-  "posturi": 122,
+  "posturi": 124,
   "institutii": 18,
+  "posturiDinSurseDeVerificat": 0,
   "judete": {
    "CL": {
     "n": 24,
-    "procent": 19.7
+    "procent": 19.4
    },
    "CJ": {
     "n": 14,
-    "procent": 11.5
+    "procent": 11.3
    },
    "BH": {
     "n": 13,
-    "procent": 10.7
+    "procent": 10.5
    },
    "CT": {
     "n": 13,
-    "procent": 10.7
+    "procent": 10.5
+   },
+   "TM": {
+    "n": 11,
+    "procent": 8.9
    },
    "AB": {
     "n": 10,
-    "procent": 8.2
-   },
-   "TM": {
-    "n": 9,
-    "procent": 7.4
+    "procent": 8.1
    },
    "HR": {
     "n": 9,
-    "procent": 7.4
+    "procent": 7.3
    },
    "BV": {
     "n": 6,
-    "procent": 4.9
+    "procent": 4.8
    },
    "BR": {
     "n": 6,
-    "procent": 4.9
+    "procent": 4.8
    },
    "B": {
     "n": 5,
-    "procent": 4.1
+    "procent": 4
    },
    "BC": {
     "n": 5,
-    "procent": 4.1
+    "procent": 4
    },
    "GR": {
     "n": 3,
-    "procent": 2.5
+    "procent": 2.4
    },
    "SB": {
     "n": 2,
@@ -254,26 +255,26 @@
   },
   "tipInstitutie": {
    "spital": {
-    "n": 88,
-    "procent": 72.1
+    "n": 90,
+    "procent": 72.6
    },
    "dgaspc": {
     "n": 34,
-    "procent": 27.9
+    "procent": 27.4
    }
   },
   "perioade": {
    "2026-03": {
-    "n": 111,
-    "procent": 91
+    "n": 113,
+    "procent": 91.1
    },
    "2026-02": {
     "n": 7,
-    "procent": 5.7
+    "procent": 5.6
    },
    "2022-09": {
     "n": 3,
-    "procent": 2.5
+    "procent": 2.4
    },
    "2025-03": {
     "n": 1,
@@ -283,39 +284,62 @@
   "studii": {
    "S": {
     "n": 48,
-    "procent": 39.3
+    "procent": 38.7
    },
    "PL": {
     "n": 3,
-    "procent": 2.5
+    "procent": 2.4
    }
   },
   "bazaBruta": {
-   "n": 122,
-   "p10": 5008,
-   "p25": 5798,
-   "median": 7890,
+   "n": 124,
+   "p10": 5411,
+   "p25": 6201,
+   "median": 8351,
    "p75": 9138,
-   "p90": 9723,
-   "min": 1661,
+   "p90": 9676,
+   "min": 4569,
    "max": 9749
   },
   "bazaCuSporuriFixe": {
-   "n": 122,
-   "p10": 5008,
-   "p25": 5888,
-   "median": 9352,
-   "p75": 11300,
-   "p90": 12963,
-   "min": 1661,
+   "n": 124,
+   "p10": 5473,
+   "p25": 6278,
+   "median": 9788,
+   "p75": 11314,
+   "p90": 12962,
+   "min": 4740,
    "max": 15440
   },
   "peGradatie": {
-   "gradația 4": {
-    "n": 7
-   },
    "gradația 5": {
-    "n": 5
+    "n": 28,
+    "p10": 9352,
+    "p25": 9954,
+    "median": 11282,
+    "p75": 12745,
+    "p90": 13355,
+    "min": 8518,
+    "max": 15440
+   },
+   "gradația 4": {
+    "n": 17,
+    "p10": 8680,
+    "p25": 9985,
+    "median": 11658,
+    "p75": 13314,
+    "p90": 13695,
+    "min": 7712,
+    "max": 13778
+   },
+   "gradația 2": {
+    "n": 6
+   },
+   "gradația 3": {
+    "n": 4
+   },
+   "gradația 0": {
+    "n": 1
    },
    "gradația 1": {
     "n": 1
@@ -349,6 +373,9 @@
    },
    "UNITATE PRIMIRE URGENTE ASISTENT SOCIAL PRINCIPAL UPU Gradat": {
     "n": 4
+   },
+   "ASISTENT SOCIAL Legea nr. 153 art. 33": {
+    "n": 3
    },
    "ASISTENT SOCIAL PRINCIPAL SUPERIOARE Gradatia": {
     "n": 3
@@ -504,9 +531,6 @@
     "n": 1
    },
    "Unitate Primire Urgente(UPU)-SMURD ASISTENT SOCIAL - PRINCIP": {
-    "n": 1
-   },
-   "ASISTENT SOCIAL Legea nr. 153 art. 33": {
     "n": 1
    },
    "ASISTENT SOCIAL PR S Gradatia 5": {

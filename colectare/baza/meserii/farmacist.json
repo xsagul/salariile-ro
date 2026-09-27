@@ -2,7 +2,7 @@
  "slug": "farmacist",
  "nume": "Farmacist",
  "cor": "226201",
- "generatLa": "2026-09-27T10:01:08.921Z",
+ "generatLa": "2026-09-27T10:16:51.941Z",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
   "cuSalariu": 15,
@@ -222,135 +222,170 @@
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
-  "posturi": 168,
-  "institutii": 13,
+  "posturi": 284,
+  "institutii": 12,
+  "posturiDinSurseDeVerificat": 1,
   "judete": {
    "CT": {
     "n": 124,
-    "procent": 73.8
+    "procent": 43.7
+   },
+   "TM": {
+    "n": 118,
+    "procent": 41.5
    },
    "CJ": {
     "n": 12,
-    "procent": 7.1
+    "procent": 4.2
    },
    "HR": {
     "n": 9,
-    "procent": 5.4
+    "procent": 3.2
    },
    "BZ": {
     "n": 7,
-    "procent": 4.2
+    "procent": 2.5
    },
    "BC": {
     "n": 4,
-    "procent": 2.4
+    "procent": 1.4
    },
    "B": {
     "n": 3,
-    "procent": 1.8
+    "procent": 1.1
    },
    "GR": {
     "n": 3,
-    "procent": 1.8
+    "procent": 1.1
    },
    "DJ": {
     "n": 2,
-    "procent": 1.2
+    "procent": 0.7
    },
    "MS": {
     "n": 2,
-    "procent": 1.2
-   },
-   "TM": {
-    "n": 1,
-    "procent": 0.6
-   },
-   "BV": {
-    "n": 1,
-    "procent": 0.6
+    "procent": 0.7
    }
   },
   "tipInstitutie": {
    "spital": {
-    "n": 163,
-    "procent": 97
+    "n": 279,
+    "procent": 98.2
    },
    "dgaspc": {
     "n": 3,
-    "procent": 1.8
+    "procent": 1.1
    },
    "universitate": {
     "n": 2,
-    "procent": 1.2
+    "procent": 0.7
    }
   },
   "perioade": {
    "2026-03": {
-    "n": 149,
-    "procent": 88.7
+    "n": 265,
+    "procent": 93.3
    },
    "2026-02": {
     "n": 11,
-    "procent": 6.5
+    "procent": 3.9
    },
    "2025-03": {
     "n": 3,
-    "procent": 1.8
+    "procent": 1.1
    },
    "2022-09": {
     "n": 3,
-    "procent": 1.8
+    "procent": 1.1
    },
    "2024-03": {
     "n": 2,
-    "procent": 1.2
+    "procent": 0.7
    }
   },
   "studii": {
    "S": {
     "n": 138,
-    "procent": 82.1
+    "procent": 48.6
    },
    "G": {
     "n": 1,
-    "procent": 0.6
+    "procent": 0.4
    }
   },
   "bazaBruta": {
-   "n": 168,
+   "n": 284,
    "p10": 7312,
    "p25": 7603,
-   "median": 8061,
-   "p75": 8437,
-   "p90": 10664,
+   "median": 7903,
+   "p75": 8272,
+   "p90": 10366,
    "min": 2031,
    "max": 13871
   },
   "bazaCuSporuriFixe": {
-   "n": 168,
-   "p10": 7463,
-   "p25": 7677,
-   "median": 8061,
-   "p75": 9598,
-   "p90": 11528,
+   "n": 284,
+   "p10": 7312,
+   "p25": 7603,
+   "median": 7983,
+   "p75": 8469,
+   "p90": 11087,
    "min": 2031,
    "max": 20360
   },
   "peGradatie": {
-   "gradația 4": {
-    "n": 5
-   },
-   "gradația 5": {
-    "n": 4
-   },
    "gradația 2": {
-    "n": 4
+    "n": 58,
+    "p10": 7527,
+    "p25": 7603,
+    "median": 7677,
+    "p75": 7677,
+    "p90": 8421,
+    "min": 6246,
+    "max": 15990
    },
    "gradația 3": {
-    "n": 3
+    "n": 24,
+    "p10": 7903,
+    "p25": 7983,
+    "median": 8061,
+    "p75": 8563,
+    "p90": 10414,
+    "min": 7809,
+    "max": 11517
+   },
+   "gradația 5": {
+    "n": 21,
+    "p10": 8303,
+    "p25": 8387,
+    "median": 10578,
+    "p75": 11862,
+    "p90": 13354,
+    "min": 8303,
+    "max": 17594
+   },
+   "gradația 4": {
+    "n": 16,
+    "p10": 8182,
+    "p25": 8242,
+    "median": 8580,
+    "p75": 10269,
+    "p90": 11629,
+    "min": 8101,
+    "max": 19737
    },
    "gradația 1": {
-    "n": 1
+    "n": 11,
+    "p10": 7241,
+    "p25": 7241,
+    "median": 7241,
+    "p75": 7312,
+    "p90": 7735,
+    "min": 7241,
+    "max": 9437
+   },
+   "gradația 0": {
+    "n": 9
    }
   },
   "peFunctie": {
@@ -364,6 +399,16 @@
     "min": 6801,
     "max": 11956
    },
+   "FARMACIST REZIDENT AN III Legea nr. 153 art. 33": {
+    "n": 47,
+    "p10": 7531,
+    "p25": 7677,
+    "median": 7677,
+    "p75": 8061,
+    "p90": 8326,
+    "min": 6801,
+    "max": 8842
+   },
    "Farmacist rezident anul II SUPERIOARE ( S )": {
     "n": 44,
     "p10": 7603,
@@ -373,6 +418,26 @@
     "p90": 10356,
     "min": 6735,
     "max": 11229
+   },
+   "FARMACIST REZIDENT AN II Legea nr. 153 art. 33": {
+    "n": 34,
+    "p10": 7241,
+    "p25": 7332,
+    "median": 7603,
+    "p75": 7988,
+    "p90": 8352,
+    "min": 6735,
+    "max": 8387
+   },
+   "FARMACIST REZIDENT AN I Legea nr. 153 art. 33": {
+    "n": 25,
+    "p10": 7194,
+    "p25": 7527,
+    "median": 7527,
+    "p75": 7903,
+    "p90": 8303,
+    "min": 6668,
+    "max": 8958
    },
    "Farmacist rezident anul I SUPERIOARE ( S )": {
     "n": 17,
@@ -384,6 +449,9 @@
     "min": 6668,
     "max": 10761
    },
+   "FARMACIST SPECIALIST Legea nr. 153 art. 33": {
+    "n": 7
+   },
    "FARMACIST SPECIALIST SUPERIOARE Gradatia": {
     "n": 6
    },
@@ -391,6 +459,9 @@
     "n": 4
    },
    "farmacist primar": {
+    "n": 3
+   },
+   "FARMACIST PRIMAR Legea nr. 153 art. 33": {
     "n": 3
    },
    "FARMACIST PRIMAR": {
@@ -406,6 +477,9 @@
     "n": 2
    },
    "Farmacist specialist SUPERIOARE ( S )": {
+    "n": 2
+   },
+   "FARMACIST Legea nr. 153 art. 33": {
     "n": 2
    },
    "FARMACIST PRIMAR Gradatia 5": {
@@ -429,13 +503,7 @@
    "FARMACIST S": {
     "n": 1
    },
-   "FARMACIST SPECIALIST Legea nr. 153 art. 33": {
-    "n": 1
-   },
    "FARMACIST PRIMAR Gradatia 3": {
-    "n": 1
-   },
-   "Farmacist Gradatia": {
     "n": 1
    },
    "FARMACIST FARMACIA NR.43": {

@@ -8,6 +8,7 @@
 // martie și 30 septembrie, deci rularea de la începutul lui aprilie și octombrie găsește
 // fișierele noi fără căutări manuale. Fără `--toate`, sare peste sursele care au deja fișier.
 import fs from "node:fs";
+import { pathToFileURL } from "node:url";
 
 const REG = "colectare/art33/surse.json";
 const arg = (k) => process.argv.find((a) => a.startsWith(`--${k}`))?.split("=")[1] ?? (process.argv.includes(`--${k}`) ? true : null);
@@ -43,12 +44,14 @@ export function lunaDocument(href, text) {
   return lunaDin(`${nume} ${text}`) ?? lunaDin(cale);
 }
 
-function lunaDin(s) {
+export function lunaDin(s) {
   const t = norm(s);
   let best = null;
   const pune = (an, luna) => { if (an >= 2015 && an <= 2035 && luna >= 1 && luna <= 12) { const v = `${an}-${String(luna).padStart(2, "0")}`; if (!best || v > best) best = v; } };
   for (const m of t.matchAll(/(\d{1,2})[._-](\d{1,2})[._-](20\d{2})/g)) pune(+m[3], +m[2]);
   for (const m of t.matchAll(/(20\d{2})[._/-](\d{1,2})(?!\d)/g)) pune(+m[1], +m[2]);
+  // „_032024_”: luna și anul lipite, cum le scot unele programe de salarizare (Ploiești).
+  for (const m of t.matchAll(/(?<!\d)(0[1-9]|1[0-2])(20\d{2})(?!\d)/g)) pune(+m[2], +m[1]);
   LUNI.forEach((l, i) => { for (const m of t.matchAll(new RegExp(`${l}[^0-9]{0,12}(20\\d{2})`, "g"))) pune(+m[1], i + 1); });
   return best;
 }
@@ -63,9 +66,11 @@ async function descopera(sursa) {
     await new Promise((res) => setTimeout(res, 800));
   }
   const docs = candidati
-    .filter((l) => DOC.test(l.href) && /transparen|venit|salari|salar|drepturi/i.test(norm(`${decodeURIComponent(l.href)} ${l.text}`)))
-    // Transparența decizională și rapoartele anuale nu sunt liste de salarii.
-    .filter((l) => !/decizional|informatii[\s_-]*publice|raport[\s_-]*anual|buget|cheltuieli/i.test(norm(`${decodeURIComponent(l.href)} ${l.text}`)))
+    // „salariaților” apare și în regulamentele de evaluare (Suceava, septembrie 2026): se cere
+    // o formulare de listă de salarii, nu orice cuvânt înrudit.
+    .filter((l) => DOC.test(l.href) && /transparen|venitur|salarii|salarial|salarizare|drepturi|art[\s._-]*33|state[\s_-]*de[\s_-]*plata/i.test(norm(`${decodeURIComponent(l.href)} ${l.text}`)))
+    // Transparența decizională, rapoartele anuale, regulamentele și concursurile nu sunt liste de salarii.
+    .filter((l) => !/decizional|informatii[\s_-]*publice|raport[\s_-]*anual|buget|cheltuieli|regulament|evaluare|concurs|bibliografie|tematica/i.test(norm(`${decodeURIComponent(l.href)} ${l.text}`)))
     .map((l) => ({ ...l, luna: lunaDocument(l.href, l.text) }))
     .filter((l) => l.luna);
   docs.sort((a, b) => (a.luna < b.luna ? 1 : -1));
@@ -90,4 +95,4 @@ async function main() {
   fs.writeFileSync(REG, JSON.stringify(reg, null, 1));
 }
 
-main().catch((e) => { console.error(e); process.exit(1); });
+if (import.meta.url === pathToFileURL(process.argv[1]).href) main().catch((e) => { console.error(e); process.exit(1); });

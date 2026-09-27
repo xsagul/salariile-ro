@@ -2,7 +2,7 @@
  "slug": "cizmar",
  "nume": "Cizmar",
  "cor": "753601",
- "generatLa": "2026-09-27T10:01:09.209Z",
+ "generatLa": "2026-09-27T10:16:52.349Z",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
   "cuSalariu": 0,
@@ -134,6 +134,7 @@
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
   "posturi": 0,
   "institutii": 0,
+  "posturiDinSurseDeVerificat": 0,
   "judete": {},
   "tipInstitutie": {},
   "perioade": {},

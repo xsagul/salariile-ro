@@ -2,7 +2,7 @@
  "slug": "sofer-ambulanta",
  "nume": "Șofer de ambulanță",
  "cor": "832203",
- "generatLa": "2026-09-27T10:01:09.077Z",
+ "generatLa": "2026-09-27T10:16:52.180Z",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
   "cuSalariu": 0,
@@ -150,6 +150,7 @@
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
   "posturi": 14,
   "institutii": 6,
+  "posturiDinSurseDeVerificat": 0,
   "judete": {
    "CT": {
     "n": 4,
@@ -227,10 +228,13 @@
    "max": 9589
   },
   "peGradatie": {
+   "gradația 5": {
+    "n": 3
+   },
    "gradația 3": {
     "n": 2
    },
-   "gradația 5": {
+   "gradația 4": {
     "n": 1
    }
   },

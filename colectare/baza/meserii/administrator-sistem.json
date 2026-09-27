@@ -2,7 +2,7 @@
  "slug": "administrator-sistem",
  "nume": "Administrator de sistem",
  "cor": null,
- "generatLa": "2026-09-27T10:01:08.815Z",
+ "generatLa": "2026-09-27T10:16:51.818Z",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
   "cuSalariu": 5,
@@ -236,6 +236,7 @@
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
   "posturi": 0,
   "institutii": 0,
+  "posturiDinSurseDeVerificat": 0,
   "judete": {},
   "tipInstitutie": {},
   "perioade": {},

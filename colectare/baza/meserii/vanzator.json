@@ -2,7 +2,7 @@
  "slug": "vanzator",
  "nume": "Vânzător",
  "cor": "522101",
- "generatLa": "2026-09-27T10:01:09.093Z",
+ "generatLa": "2026-09-27T10:16:52.204Z",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
   "cuSalariu": 351,
@@ -220,17 +220,17 @@
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
-  "oferte": 98,
-  "posturi": 157,
-  "ofertePeGrupaCor": 101,
+  "oferte": 99,
+  "posturi": 158,
+  "ofertePeGrupaCor": 102,
   "tipSalariu": {
    "gross": {
-    "n": 60,
-    "procent": 61.2
+    "n": 61,
+    "procent": 61.6
    },
    "none": {
     "n": 32,
-    "procent": 32.7
+    "procent": 32.3
    },
    "net": {
     "n": 6,
@@ -241,32 +241,32 @@
    "n": 6
   },
   "brutMinimDeclarat": {
-   "n": 58,
+   "n": 59,
    "p10": 4325,
    "p25": 4325,
    "median": 4325,
    "p75": 4325,
-   "p90": 4479,
+   "p90": 4476,
    "min": 545,
    "max": 5200
   },
-  "laSalariulMinim": 48,
+  "laSalariulMinim": 49,
   "studii": {
    "Liceal - LICEU TEORETIC": {
     "n": 36,
-    "procent": 36.7
+    "procent": 36.4
    },
    "Gimnazial - ȘCOALĂ GENERALĂ": {
     "n": 24,
-    "procent": 24.5
+    "procent": 24.2
    },
    "Liceal - LICEU DE SPECIALITATE": {
     "n": 16,
-    "procent": 16.3
+    "procent": 16.2
    },
    "Profesional - ȘCOALĂ PROFESIONALĂ": {
-    "n": 14,
-    "procent": 14.3
+    "n": 15,
+    "procent": 15.2
    },
    "Primar - FĂRĂ STUDII": {
     "n": 6,
@@ -284,15 +284,15 @@
   "experienta": {
    "Fără experiență - 0 ani": {
     "n": 40,
-    "procent": 40.8
+    "procent": 40.4
    },
    "Experiență puțină - mai puțin de 3 ani": {
-    "n": 37,
-    "procent": 37.8
+    "n": 38,
+    "procent": 38.4
    },
    "Experiență medie - între 3 și 5 ani": {
     "n": 17,
-    "procent": 17.3
+    "procent": 17.2
    },
    "Avansat - între 5 și 7 ani": {
     "n": 2,
@@ -305,7 +305,7 @@
   },
   "contract": {
    "Cu durată nedeterminată": {
-    "n": 96,
+    "n": 97,
     "procent": 98
    },
    "Cu durată determinată": {
@@ -315,7 +315,7 @@
   },
   "norma": {
    "Cu normă întreagă": {
-    "n": 96,
+    "n": 97,
     "procent": 98
    },
    "Cu timp parțial": {
@@ -325,14 +325,14 @@
   },
   "regim": {
    "Sediu": {
-    "n": 98,
+    "n": 99,
     "procent": 100
    }
   },
   "judete": {
    "Iași": {
     "n": 11,
-    "procent": 11.2
+    "procent": 11.1
    },
    "Argeș": {
     "n": 6,
@@ -364,31 +364,31 @@
    },
    "Municipiul București": {
     "n": 4,
-    "procent": 4.1
+    "procent": 4
+   },
+   "Bistrița-Năsăud": {
+    "n": 4,
+    "procent": 4
    },
    "Maramureș": {
     "n": 4,
-    "procent": 4.1
+    "procent": 4
    },
    "Bihor": {
     "n": 3,
-    "procent": 3.1
+    "procent": 3
    },
    "Brăila": {
     "n": 3,
-    "procent": 3.1
-   },
-   "Bistrița-Năsăud": {
-    "n": 3,
-    "procent": 3.1
+    "procent": 3
    },
    "Prahova": {
     "n": 3,
-    "procent": 3.1
+    "procent": 3
    },
    "Tulcea": {
     "n": 3,
-    "procent": 3.1
+    "procent": 3
    },
    "Galați": {
     "n": 2,
@@ -461,20 +461,20 @@
   },
   "domenii": {
    "COMERT": {
-    "n": 53,
-    "procent": 54.1
+    "n": 54,
+    "procent": 54.5
    },
    "Turism / Alimentație": {
     "n": 11,
-    "procent": 11.2
+    "procent": 11.1
    },
    "Altele": {
     "n": 10,
-    "procent": 10.2
+    "procent": 10.1
    },
    "Vânzări": {
     "n": 10,
-    "procent": 10.2
+    "procent": 10.1
    },
    "RESTAURANTE": {
     "n": 5,
@@ -486,7 +486,7 @@
    },
    "Producție / Logistică": {
     "n": 3,
-    "procent": 3.1
+    "procent": 3
    },
    "Construcții / Instalații": {
     "n": 1,
@@ -495,12 +495,12 @@
   },
   "coduriCorInGrupa": {
    "522101 - VÂNZATOR": {
-    "n": 98,
-    "procent": 97
+    "n": 99,
+    "procent": 97.1
    },
    "522102 - Comerciant vanzator marfuri nealimentare": {
     "n": 3,
-    "procent": 3
+    "procent": 2.9
    }
   }
  },
@@ -508,6 +508,7 @@
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
   "posturi": 0,
   "institutii": 0,
+  "posturiDinSurseDeVerificat": 0,
   "judete": {},
   "tipInstitutie": {},
   "perioade": {},

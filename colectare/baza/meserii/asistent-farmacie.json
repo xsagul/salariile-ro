@@ -2,7 +2,7 @@
  "slug": "asistent-farmacie",
  "nume": "Asistent de farmacie",
  "cor": "321301",
- "generatLa": "2026-09-27T10:01:08.925Z",
+ "generatLa": "2026-09-27T10:16:51.946Z",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
   "cuSalariu": 1,
@@ -159,85 +159,103 @@
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
-  "posturi": 43,
-  "institutii": 4,
+  "posturi": 55,
+  "institutii": 5,
+  "posturiDinSurseDeVerificat": 0,
   "judete": {
    "CT": {
     "n": 19,
-    "procent": 44.2
+    "procent": 34.5
    },
    "BZ": {
     "n": 13,
-    "procent": 30.2
+    "procent": 23.6
+   },
+   "TM": {
+    "n": 12,
+    "procent": 21.8
    },
    "BH": {
     "n": 8,
-    "procent": 18.6
+    "procent": 14.5
    },
    "CJ": {
     "n": 3,
-    "procent": 7
+    "procent": 5.5
    }
   },
   "tipInstitutie": {
    "spital": {
-    "n": 43,
+    "n": 55,
     "procent": 100
    }
   },
   "perioade": {
    "2026-03": {
-    "n": 30,
-    "procent": 69.8
+    "n": 42,
+    "procent": 76.4
    },
    "2026-02": {
     "n": 13,
-    "procent": 30.2
+    "procent": 23.6
    }
   },
   "studii": {
    "PL": {
-    "n": 35,
-    "procent": 81.4
+    "n": 37,
+    "procent": 67.3
    },
    "S": {
-    "n": 7,
-    "procent": 16.3
+    "n": 17,
+    "procent": 30.9
    },
    "M": {
     "n": 1,
-    "procent": 2.3
+    "procent": 1.8
    }
   },
   "bazaBruta": {
-   "n": 43,
-   "p10": 6488,
+   "n": 55,
+   "p10": 6553,
    "p25": 6816,
-   "median": 7065,
-   "p75": 7158,
+   "median": 7158,
+   "p75": 7666,
    "p90": 7954,
    "min": 6099,
    "max": 7954
   },
   "bazaCuSporuriFixe": {
-   "n": 43,
-   "p10": 7243,
+   "n": 55,
+   "p10": 7282,
    "p25": 7613,
-   "median": 7803,
-   "p75": 8307,
-   "p90": 9262,
+   "median": 8010,
+   "p75": 8445,
+   "p90": 8978,
    "min": 6535,
    "max": 9322
   },
   "peGradatie": {
    "gradația 5": {
-    "n": 9
+    "n": 21,
+    "p10": 7570,
+    "p25": 7640,
+    "median": 7779,
+    "p75": 8393,
+    "p90": 8470,
+    "min": 7483,
+    "max": 8522
    },
    "gradația 4": {
-    "n": 2
+    "n": 6
    },
    "gradația 3": {
-    "n": 2
+    "n": 5
+   },
+   "gradația 2": {
+    "n": 3
+   },
+   "gradația 1": {
+    "n": 1
    }
   },
   "peFunctie": {
@@ -250,6 +268,9 @@
     "p90": 8469,
     "min": 7982,
     "max": 8469
+   },
+   "ASISTENT MEDICAL FARMACIE PRINCIPAL (S) Legea nr. 153 art. 3": {
+    "n": 9
    },
    "ASISTENT FARMACIE PRINCIPAL PL Farmacie Spital": {
     "n": 8
@@ -266,6 +287,9 @@
    "ASISTENT MEDICAL DE FARMACIE PR PL Gradatia 5 Sporurile din ": {
     "n": 3
    },
+   "ASISTENT MEDICAL FARMACIE PRINCIPAL (PL) Legea nr. 153 art. ": {
+    "n": 2
+   },
    "ASISTENT FARMACIE PRINCIPAL PL Farmacie Maternitate": {
     "n": 2
    },
@@ -279,6 +303,9 @@
     "n": 1
    },
    "Asistent farmacie principal SUPERIOARE ( S )": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL FARMACIE (S) Legea nr. 153 art. 33": {
     "n": 1
    },
    "ASISTENT FARMACIE PRINCIPAL PL Farmacia TBC": {

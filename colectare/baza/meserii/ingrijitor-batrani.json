@@ -2,7 +2,7 @@
  "slug": "ingrijitor-batrani",
  "nume": "Îngrijitor de bătrâni",
  "cor": "532201",
- "generatLa": "2026-09-27T10:01:09.190Z",
+ "generatLa": "2026-09-27T10:16:52.320Z",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
   "cuSalariu": 1,
@@ -154,69 +154,64 @@
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
-  "posturi": 17,
-  "institutii": 4,
+  "posturi": 10,
+  "institutii": 3,
+  "posturiDinSurseDeVerificat": 7,
   "judete": {
-   "B": {
-    "n": 10,
-    "procent": 58.8
-   },
    "CL": {
     "n": 5,
-    "procent": 29.4
+    "procent": 50
+   },
+   "B": {
+    "n": 3,
+    "procent": 30
    },
    "BV": {
     "n": 2,
-    "procent": 11.8
+    "procent": 20
    }
   },
   "tipInstitutie": {
    "dgaspc": {
-    "n": 17,
+    "n": 10,
     "procent": 100
    }
   },
   "perioade": {
    "2026-03": {
-    "n": 17,
+    "n": 10,
     "procent": 100
    }
   },
   "studii": {
    "M": {
-    "n": 10,
-    "procent": 58.8
+    "n": 3,
+    "procent": 30
    }
   },
   "bazaBruta": {
-   "n": 17,
-   "p10": 3550,
-   "p25": 4050,
-   "median": 4797,
-   "p75": 6035,
-   "p90": 6339,
+   "n": 10,
+   "p10": 3411,
+   "p25": 3675,
+   "median": 4050,
+   "p75": 4169,
+   "p90": 4842,
    "min": 2158,
-   "max": 6339
+   "max": 5245
   },
   "bazaCuSporuriFixe": {
-   "n": 17,
-   "p10": 3550,
-   "p25": 4050,
-   "median": 4797,
-   "p75": 6335,
-   "p90": 6848,
+   "n": 10,
+   "p10": 3458,
+   "p25": 3675,
+   "median": 4050,
+   "p75": 4169,
+   "p90": 4842,
    "min": 2631,
-   "max": 7174
+   "max": 5245
   },
   "peGradatie": {},
   "peFunctie": {
-   "Ingrijitor M/G spor pentru condiții periculoase sau vătămăto": {
-    "n": 5
-   },
    "Îngrijitor, gradație vechime 5": {
-    "n": 2
-   },
-   "Ingrijitor copii M/G spor pentru condiții periculoase sau vă": {
     "n": 2
    },
    "îngrijitoare": {

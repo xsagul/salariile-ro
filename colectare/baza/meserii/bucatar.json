@@ -2,7 +2,7 @@
  "slug": "bucatar",
  "nume": "Bucătar",
  "cor": "512001",
- "generatLa": "2026-09-27T10:01:09.105Z",
+ "generatLa": "2026-09-27T10:16:52.219Z",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
   "cuSalariu": 128,
@@ -518,105 +518,115 @@
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
-  "posturi": 60,
-  "institutii": 10,
+  "posturi": 49,
+  "institutii": 8,
+  "posturiDinSurseDeVerificat": 12,
   "judete": {
    "BH": {
     "n": 16,
-    "procent": 26.7
+    "procent": 32.7
    },
    "GR": {
     "n": 12,
-    "procent": 20
+    "procent": 24.5
    },
    "CJ": {
     "n": 11,
-    "procent": 18.3
-   },
-   "BC": {
-    "n": 7,
-    "procent": 11.7
-   },
-   "BV": {
-    "n": 6,
-    "procent": 10
+    "procent": 22.4
    },
    "DJ": {
     "n": 5,
-    "procent": 8.3
+    "procent": 10.2
    },
    "IS": {
-    "n": 2,
-    "procent": 3.3
+    "n": 3,
+    "procent": 6.1
+   },
+   "BV": {
+    "n": 1,
+    "procent": 2
    },
    "MS": {
     "n": 1,
-    "procent": 1.7
+    "procent": 2
    }
   },
   "tipInstitutie": {
    "spital": {
-    "n": 51,
-    "procent": 85
-   },
-   "universitate": {
-    "n": 8,
-    "procent": 13.3
+    "n": 47,
+    "procent": 95.9
    },
    "dgaspc": {
     "n": 1,
-    "procent": 1.7
+    "procent": 2
+   },
+   "universitate": {
+    "n": 1,
+    "procent": 2
    }
   },
   "perioade": {
    "2026-03": {
-    "n": 33,
-    "procent": 55
+    "n": 22,
+    "procent": 44.9
    },
    "2022-09": {
     "n": 12,
-    "procent": 20
+    "procent": 24.5
    },
    "2025-03": {
     "n": 10,
-    "procent": 16.7
+    "procent": 20.4
    },
    "2024-03": {
     "n": 5,
-    "procent": 8.3
+    "procent": 10.2
    }
   },
   "studii": {
    "G": {
-    "n": 24,
-    "procent": 40
+    "n": 17,
+    "procent": 34.7
    }
   },
   "bazaBruta": {
-   "n": 60,
-   "p10": 3615,
-   "p25": 5410,
-   "median": 5973,
-   "p75": 6353,
+   "n": 49,
+   "p10": 3580,
+   "p25": 3878,
+   "median": 5887,
+   "p75": 6345,
    "p90": 6498,
    "min": 2212,
    "max": 6969
   },
   "bazaCuSporuriFixe": {
-   "n": 60,
-   "p10": 3615,
-   "p25": 5590,
-   "median": 6266,
-   "p75": 6516,
-   "p90": 7598,
+   "n": 49,
+   "p10": 3580,
+   "p25": 3878,
+   "median": 6052,
+   "p75": 6407,
+   "p90": 6757,
    "min": 3078,
-   "max": 8125
+   "max": 6969
   },
   "peGradatie": {
    "gradația 5": {
-    "n": 4
+    "n": 21,
+    "p10": 6037,
+    "p25": 6200,
+    "median": 6498,
+    "p75": 6757,
+    "p90": 6757,
+    "min": 5679,
+    "max": 6969
+   },
+   "gradația 4": {
+    "n": 7
    },
    "gradația 2": {
+    "n": 6
+   },
+   "gradația 3": {
     "n": 1
    }
   },
@@ -632,9 +642,6 @@
    },
    "BUCATAR": {
     "n": 5
-   },
-   "Bucatar I Gradatia": {
-    "n": 3
    },
    "MUNCITOR II BUCATAR": {
     "n": 3
@@ -666,6 +673,9 @@
    "580 Munc. calif.-Bucatar III Gradatia 4 Contractual": {
     "n": 1
    },
+   "581 Muncitor calificat II- Bucatar Gradatia 5 Contractual": {
+    "n": 1
+   },
    "BLOC ALIMENTAR Muncitor calificat III‐bucatar Gradatia 2 GEN": {
     "n": 1
    },
@@ -684,37 +694,10 @@
    "MUNCITOR BUCATAR II Gradatia 4": {
     "n": 1
    },
-   "Bucatar II Gradatia o": {
-    "n": 1
-   },
-   "Bucatar Gradatia o": {
-    "n": 1
-   },
    "MUNCITOR I BUCATAR": {
     "n": 1
    },
    "BUCATAR CALIFICAT Gradatia 5 Sporurile din anexele 1, 2,3,5,": {
-    "n": 1
-   },
-   "59 MUNCITOR CALIFICAT-BUCATAR G II": {
-    "n": 1
-   },
-   "61 MUNCITOR CALIFICAT-BUCATAR G II": {
-    "n": 1
-   },
-   "62 MUNCITOR CALIFICAT-BUCATAR G II": {
-    "n": 1
-   },
-   "63 MUNCITOR CALIFICAT-BUCATAR G II": {
-    "n": 1
-   },
-   "64 MUNCITOR CALIFICAT-BUCATAR G IV": {
-    "n": 1
-   },
-   "78 MUNCITOR CALIFICAT-BUCATAR G IV": {
-    "n": 1
-   },
-   "80 MUNCITOR CALIFICAT-BUCATAR G IV": {
     "n": 1
    },
    "Bucatar": {

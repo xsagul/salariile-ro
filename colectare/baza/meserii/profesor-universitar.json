@@ -2,7 +2,7 @@
  "slug": "profesor-universitar",
  "nume": "Profesor universitar",
  "cor": "231005",
- "generatLa": "2026-09-27T10:01:08.964Z",
+ "generatLa": "2026-09-27T10:16:51.995Z",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
   "cuSalariu": 0,
@@ -77,6 +77,7 @@
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
   "posturi": 84,
   "institutii": 3,
+  "posturiDinSurseDeVerificat": 0,
   "judete": {
    "MS": {
     "n": 75,

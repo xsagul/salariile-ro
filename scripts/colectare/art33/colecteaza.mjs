@@ -18,6 +18,9 @@ const REG = "colectare/art33/surse.json";
 const CACHE = ".cercetare-privata/art33";
 const OBS = "colectare/art33/observatii";
 const RAPORT = "colectare/art33/raport.json";
+// Gradația scrisă în textul funcției („Asistent medical licențiat pr. Gradatia 5”, Iași), când
+// lista n-o are într-o coloană proprie.
+const gradatieDinText = (t) => { const m = String(t).normalize("NFD").replace(/[̀-ͯ]/g, "").match(/\bgradatia\s*([0-5])\b/i); return m ? Number(m[1]) : null; };
 
 async function descarca(url) {
   fs.mkdirSync(CACHE, { recursive: true });
@@ -53,7 +56,7 @@ async function main() {
       const respins = fisierAcceptat(randuri);
       const obs = randuri.map((r) => ({
         sursa: s.id, judet: s.judet, tip: s.tip, perioada,
-        meserie: meserie(r.text, s.tip), studii: studii(r.text), gradatie: r.gradatie ?? null,
+        meserie: meserie(r.text, s.tip), studii: studii(r.text), gradatie: r.gradatie ?? gradatieDinText(r.text),
         text: r.text.slice(0, 160), baza: r.baza, sporFix: r.sporFix, variabil: r.variabil, hrana: r.hrana,
         invalid: randValid(r),
       }));

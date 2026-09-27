@@ -2,7 +2,7 @@
  "slug": "bibliotecar",
  "nume": "Bibliotecar",
  "cor": "262202",
- "generatLa": "2026-09-27T10:01:09.183Z",
+ "generatLa": "2026-09-27T10:16:52.311Z",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
   "cuSalariu": 0,
@@ -75,87 +75,84 @@
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
-  "posturi": 54,
-  "institutii": 6,
+  "posturi": 50,
+  "institutii": 5,
+  "posturiDinSurseDeVerificat": 4,
   "judete": {
    "MS": {
     "n": 23,
-    "procent": 42.6
+    "procent": 46
    },
    "AB": {
     "n": 15,
-    "procent": 27.8
+    "procent": 30
    },
    "B": {
     "n": 11,
-    "procent": 20.4
-   },
-   "BC": {
-    "n": 4,
-    "procent": 7.4
+    "procent": 22
    },
    "HR": {
     "n": 1,
-    "procent": 1.9
+    "procent": 2
    }
   },
   "tipInstitutie": {
    "universitate": {
-    "n": 38,
-    "procent": 70.4
+    "n": 34,
+    "procent": 68
    },
    "biblioteca": {
     "n": 15,
-    "procent": 27.8
+    "procent": 30
    },
    "spital": {
     "n": 1,
-    "procent": 1.9
+    "procent": 2
    }
   },
   "perioade": {
    "2026-03": {
-    "n": 54,
+    "n": 50,
     "procent": 100
    }
   },
   "studii": {
    "S": {
-    "n": 14,
-    "procent": 25.9
+    "n": 10,
+    "procent": 20
    },
    "M": {
     "n": 2,
-    "procent": 3.7
+    "procent": 4
    },
    "SSD": {
     "n": 1,
-    "procent": 1.9
+    "procent": 2
    }
   },
   "bazaBruta": {
-   "n": 54,
-   "p10": 5205,
-   "p25": 6064,
-   "median": 7286,
-   "p75": 7859,
+   "n": 50,
+   "p10": 5151,
+   "p25": 6010,
+   "median": 7206,
+   "p75": 8075,
    "p90": 8351,
    "min": 3643,
    "max": 8351
   },
   "bazaCuSporuriFixe": {
-   "n": 54,
-   "p10": 5205,
-   "p25": 6089,
-   "median": 7385,
-   "p75": 8351,
-   "p90": 8492,
+   "n": 50,
+   "p10": 5151,
+   "p25": 6013,
+   "median": 7254,
+   "p75": 8274,
+   "p90": 8478,
    "min": 3643,
-   "max": 10222
+   "max": 8492
   },
   "peGradatie": {
    "gradația 5": {
-    "n": 1
+    "n": 5
    }
   },
   "peFunctie": {
@@ -218,18 +215,6 @@
     "n": 1
    },
    "Bibliotecar tr.I": {
-    "n": 1
-   },
-   "49 BIBLIOTECAR S I": {
-    "n": 1
-   },
-   "50 BIBLIOTECAR S I": {
-    "n": 1
-   },
-   "51 BIBLIOTECAR S I": {
-    "n": 1
-   },
-   "52 BIBLIOTECAR S II": {
     "n": 1
    },
    "Bibliotecar deb.S": {

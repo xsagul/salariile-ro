@@ -2,7 +2,7 @@
  "slug": "contabil",
  "nume": "Contabil",
  "cor": "331302",
- "generatLa": "2026-09-27T10:01:08.970Z",
+ "generatLa": "2026-09-27T10:16:52.002Z",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
   "cuSalariu": 147,
@@ -554,95 +554,113 @@
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
-  "posturi": 15,
-  "institutii": 8,
+  "posturi": 16,
+  "institutii": 9,
+  "posturiDinSurseDeVerificat": 0,
   "judete": {
    "B": {
     "n": 7,
-    "procent": 46.7
+    "procent": 43.8
    },
    "BR": {
     "n": 3,
-    "procent": 20
+    "procent": 18.8
    },
    "AB": {
     "n": 1,
-    "procent": 6.7
+    "procent": 6.3
    },
    "BH": {
     "n": 1,
-    "procent": 6.7
+    "procent": 6.3
    },
    "CJ": {
     "n": 1,
-    "procent": 6.7
+    "procent": 6.3
+   },
+   "TM": {
+    "n": 1,
+    "procent": 6.3
    },
    "BZ": {
     "n": 1,
-    "procent": 6.7
+    "procent": 6.3
    },
    "HR": {
     "n": 1,
-    "procent": 6.7
+    "procent": 6.3
    }
   },
   "tipInstitutie": {
    "spital": {
-    "n": 14,
-    "procent": 93.3
+    "n": 15,
+    "procent": 93.8
    },
    "biblioteca": {
     "n": 1,
-    "procent": 6.7
+    "procent": 6.3
    }
   },
   "perioade": {
    "2026-03": {
-    "n": 14,
-    "procent": 93.3
+    "n": 15,
+    "procent": 93.8
    },
    "2026-02": {
     "n": 1,
-    "procent": 6.7
+    "procent": 6.3
    }
   },
   "studii": {
    "M": {
     "n": 3,
-    "procent": 20
+    "procent": 18.8
    },
    "S": {
     "n": 2,
-    "procent": 13.3
+    "procent": 12.5
    },
    "PL": {
     "n": 2,
-    "procent": 13.3
+    "procent": 12.5
    }
   },
   "bazaBruta": {
-   "n": 15,
-   "p10": 6256,
-   "p25": 6547,
-   "median": 6667,
-   "p75": 7299,
-   "p90": 8028,
+   "n": 16,
+   "p10": 6271,
+   "p25": 6567,
+   "median": 6818,
+   "p75": 7197,
+   "p90": 8003,
    "min": 6094,
    "max": 14876
   },
   "bazaCuSporuriFixe": {
-   "n": 15,
-   "p10": 6256,
-   "p25": 6547,
-   "median": 6837,
-   "p75": 7434,
-   "p90": 8028,
+   "n": 16,
+   "p10": 6271,
+   "p25": 6567,
+   "median": 6904,
+   "p75": 7399,
+   "p90": 8003,
    "min": 6094,
    "max": 14876
   },
   "peGradatie": {
    "gradația 5": {
-    "n": 2
+    "n": 11,
+    "p10": 6198,
+    "p25": 6588,
+    "median": 6837,
+    "p75": 7316,
+    "p90": 7504,
+    "min": 6094,
+    "max": 8132
+   },
+   "gradația 1": {
+    "n": 1
+   },
+   "gradația 3": {
+    "n": 1
    }
   },
   "peFunctie": {
@@ -659,6 +677,9 @@
     "n": 1
    },
    "contabil IA": {
+    "n": 1
+   },
+   "CONTABIL IA Legea nr. 153 art. 33": {
     "n": 1
    },
    "CONTABIL III Gradatia 5": {

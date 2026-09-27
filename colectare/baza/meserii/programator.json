@@ -2,7 +2,7 @@
  "slug": "programator",
  "nume": "Programator",
  "cor": "251202",
- "generatLa": "2026-09-27T10:01:08.796Z",
+ "generatLa": "2026-09-27T10:16:51.794Z",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
   "cuSalariu": 16,
@@ -631,99 +631,104 @@
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
-  "posturi": 13,
-  "institutii": 8,
+  "posturi": 16,
+  "institutii": 9,
+  "posturiDinSurseDeVerificat": 0,
   "judete": {
+   "TM": {
+    "n": 3,
+    "procent": 18.8
+   },
    "BC": {
     "n": 3,
-    "procent": 23.1
+    "procent": 18.8
    },
    "BH": {
     "n": 2,
-    "procent": 15.4
+    "procent": 12.5
    },
    "SB": {
     "n": 2,
-    "procent": 15.4
+    "procent": 12.5
    },
    "HR": {
     "n": 2,
-    "procent": 15.4
+    "procent": 12.5
    },
    "BR": {
     "n": 1,
-    "procent": 7.7
+    "procent": 6.3
    },
    "DJ": {
     "n": 1,
-    "procent": 7.7
+    "procent": 6.3
    },
    "B": {
     "n": 1,
-    "procent": 7.7
+    "procent": 6.3
    },
    "MS": {
     "n": 1,
-    "procent": 7.7
+    "procent": 6.3
    }
   },
   "tipInstitutie": {
    "spital": {
-    "n": 11,
-    "procent": 84.6
+    "n": 14,
+    "procent": 87.5
    },
    "universitate": {
     "n": 2,
-    "procent": 15.4
+    "procent": 12.5
    }
   },
   "perioade": {
    "2026-03": {
-    "n": 9,
-    "procent": 69.2
+    "n": 12,
+    "procent": 75
    },
    "2026-02": {
     "n": 3,
-    "procent": 23.1
+    "procent": 18.8
    },
    "2024-03": {
     "n": 1,
-    "procent": 7.7
+    "procent": 6.3
    }
   },
   "studii": {
    "M": {
     "n": 5,
-    "procent": 38.5
+    "procent": 31.3
    },
    "S": {
     "n": 2,
-    "procent": 15.4
+    "procent": 12.5
    }
   },
   "bazaBruta": {
-   "n": 13,
-   "p10": 5688,
-   "p25": 6560,
-   "median": 6932,
-   "p75": 6969,
-   "p90": 8855,
+   "n": 16,
+   "p10": 5734,
+   "p25": 6739,
+   "median": 6968,
+   "p75": 6971,
+   "p90": 8149,
    "min": 3130,
    "max": 12081
   },
   "bazaCuSporuriFixe": {
-   "n": 13,
-   "p10": 5740,
-   "p25": 6710,
-   "median": 7194,
-   "p75": 7269,
-   "p90": 9200,
+   "n": 16,
+   "p10": 5864,
+   "p25": 6877,
+   "median": 7217,
+   "p75": 7292,
+   "p90": 8561,
    "min": 3130,
    "max": 12381
   },
   "peGradatie": {
    "gradația 5": {
-    "n": 3
+    "n": 8
    },
    "gradația 4": {
     "n": 1
@@ -733,6 +738,9 @@
    }
   },
   "peFunctie": {
+   "ANALIST PROGRAMATOR AJUTOR IA Legea nr. 153 art. 33": {
+    "n": 3
+   },
    "SERVICIUL INFORMATICA Analist (programator) ajutor IA Gradat": {
     "n": 2
    },

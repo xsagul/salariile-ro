@@ -2,7 +2,7 @@
  "slug": "instalator",
  "nume": "Instalator",
  "cor": "712609",
- "generatLa": "2026-09-27T10:01:09.027Z",
+ "generatLa": "2026-09-27T10:16:52.097Z",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
   "cuSalariu": 116,
@@ -520,96 +520,117 @@
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
-  "posturi": 32,
+  "posturi": 42,
   "institutii": 7,
+  "posturiDinSurseDeVerificat": 4,
   "judete": {
    "BH": {
     "n": 14,
-    "procent": 43.8
+    "procent": 33.3
+   },
+   "TM": {
+    "n": 12,
+    "procent": 28.6
    },
    "GR": {
     "n": 5,
-    "procent": 15.6
+    "procent": 11.9
    },
    "CJ": {
     "n": 4,
-    "procent": 12.5
+    "procent": 9.5
    },
    "IS": {
     "n": 3,
-    "procent": 9.4
+    "procent": 7.1
    },
    "DJ": {
     "n": 3,
-    "procent": 9.4
-   },
-   "BV": {
-    "n": 2,
-    "procent": 6.3
+    "procent": 7.1
    },
    "B": {
     "n": 1,
-    "procent": 3.1
+    "procent": 2.4
    }
   },
   "tipInstitutie": {
    "spital": {
-    "n": 32,
+    "n": 42,
     "procent": 100
    }
   },
   "perioade": {
    "2026-03": {
-    "n": 24,
-    "procent": 75
+    "n": 34,
+    "procent": 81
    },
    "2022-09": {
     "n": 5,
-    "procent": 15.6
+    "procent": 11.9
    },
    "2024-03": {
     "n": 3,
-    "procent": 9.4
+    "procent": 7.1
    }
   },
   "studii": {
    "G": {
     "n": 18,
-    "procent": 56.3
+    "procent": 42.9
    }
   },
   "bazaBruta": {
-   "n": 32,
-   "p10": 3764,
-   "p25": 5405,
-   "median": 5969,
-   "p75": 6187,
-   "p90": 6498,
+   "n": 42,
+   "p10": 3870,
+   "p25": 5680,
+   "median": 6131,
+   "p75": 6498,
+   "p90": 6515,
    "min": 3462,
-   "max": 6498
+   "max": 6515
   },
   "bazaCuSporuriFixe": {
-   "n": 32,
-   "p10": 3991,
-   "p25": 5660,
-   "median": 6059,
-   "p75": 6384,
-   "p90": 6757,
+   "n": 42,
+   "p10": 4202,
+   "p25": 5800,
+   "median": 6345,
+   "p75": 6757,
+   "p90": 6815,
    "min": 3657,
-   "max": 6757
+   "max": 6940
   },
   "peGradatie": {
    "gradația 5": {
-    "n": 1
-   },
-   "gradația 3": {
-    "n": 1
+    "n": 26,
+    "p10": 6123,
+    "p25": 6384,
+    "median": 6757,
+    "p75": 6815,
+    "p90": 6815,
+    "min": 5911,
+    "max": 6940
    },
    "gradația 2": {
-    "n": 1
+    "n": 5
+   },
+   "gradația 4": {
+    "n": 4
+   },
+   "gradația 3": {
+    "n": 2
    }
   },
   "peFunctie": {
+   "MUNCITOR CALIFICAT I - INSTALATOR SANITAR Legea nr. 153 art.": {
+    "n": 10,
+    "p10": 6785,
+    "p25": 6815,
+    "median": 6815,
+    "p75": 6815,
+    "p90": 6828,
+    "min": 6515,
+    "max": 6940
+   },
    "SERVICIUL TEHNIC SI APARATURA MEDICALA Muncitor calificat II": {
     "n": 6
    },
@@ -625,25 +646,22 @@
    "instalator": {
     "n": 3
    },
+   "MUNCITOR CALIFICAT II - INSTALATOR SANITAR Legea nr. 153 art": {
+    "n": 2
+   },
    "MUNCITOR II INSTALATOR": {
     "n": 2
    },
-   "571 Munc. calif. III -Instalator sanitarGradatia 4 Contractu": {
+   "571 Munc. calif. III -Instalator sanitar Gradatia 4 Contract": {
     "n": 1
    },
-   "576 Munc. calif. IV-Instalator sanitarGradatia 5 Contractual": {
+   "576 Munc. calif. IV-Instalator sanitar Gradatia 5 Contractua": {
     "n": 1
    },
-   "577 Munc. calif. IV-Instalator sanitarGradatia 2 Contractual": {
+   "577 Munc. calif. IV-Instalator sanitar Gradatia 2 Contractua": {
     "n": 1
    },
    "TEHNIC INSTALATOR Gradatia 4": {
-    "n": 1
-   },
-   "Instalator II Gradatia": {
-    "n": 1
-   },
-   "Instalator III Gradatia": {
     "n": 1
    },
    "MUNCITOR CALIFICAT II - INSTALATOR Gradatia 5 Sporurile din ": {

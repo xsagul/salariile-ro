@@ -55,9 +55,14 @@ const obs8sept = fs.existsSync("public/date/anunturi-verificate.json") ? JSON.pa
 const vazut = new Set();
 const anunturi = [...obsContinuu.map((o) => ({ ...o, colectare: "continuă" })), ...obs8sept.map((o) => ({ ...o, colectare: "8 septembrie 2026" }))]
   .filter((o) => { const k = o.url || o.id; if (vazut.has(k)) return false; vazut.add(k); return true; });
-const profil = citesteJsonl("colectare/anunturi/profil");
+// Același anunț poate fi citit de două rulări (local și în GitHub Actions): rămâne ultima citire.
+const profil = [...new Map(citesteJsonl("colectare/anunturi/profil").map((p) => [p.k, p])).values()];
 const anofm = citesteJsonl("colectare/anofm/oferte");
-const art33 = citesteJsonl("colectare/art33/observatii").filter((r) => !r.invalid);
+// Numai sursele acceptate de verificare (colectare/art33/raport.json) intră în cifre; celelalte
+// („de verificat”: baza ghicită, puține rânduri valide) se numără separat, ca să se vadă ce așteaptă.
+const RAPORT_ART33 = fs.existsSync("colectare/art33/raport.json") ? JSON.parse(fs.readFileSync("colectare/art33/raport.json", "utf8")) : {};
+const art33Toate = citesteJsonl("colectare/art33/observatii").filter((r) => !r.invalid);
+const art33 = art33Toate.filter((r) => RAPORT_ART33[r.sursa]?.stare === "acceptat");
 
 // Salariul minim brut pe lunile anului, pentru „cât din ANOFM e la minim”.
 const MINIM = (luna) => (luna >= "2026-07" ? 4325 : luna >= "2025-01" ? 4050 : 3700);
@@ -126,7 +131,8 @@ for (const m of MESERII) {
     },
     institutiiPublice: {
       descriere: "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
-      posturi: st.length, institutii: new Set(st.map((r) => r.sursa)).size, judete: frecventa(st, (r) => r.judet),
+      posturi: st.length, institutii: new Set(st.map((r) => r.sursa)).size,
+      posturiDinSurseDeVerificat: art33Toate.filter((r) => r.meserie === m.slug && RAPORT_ART33[r.sursa]?.stare !== "acceptat").length, judete: frecventa(st, (r) => r.judet),
       tipInstitutie: frecventa(st, (r) => r.tip), perioade: frecventa(st, (r) => r.perioada), studii: frecventa(st, (r) => r.studii),
       bazaBruta: distributie(st.map((r) => r.baza)), bazaCuSporuriFixe: distributie(st.map((r) => r.baza + (r.sporFix || 0))),
       peGradatie: peGrupe(st, (r) => (r.gradatie ?? null) === null ? null : `gradația ${r.gradatie}`, (r) => r.baza + (r.sporFix || 0)),

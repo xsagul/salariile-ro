@@ -2,7 +2,7 @@
  "slug": "asistent-medical",
  "nume": "Asistent medical",
  "cor": "325901",
- "generatLa": "2026-09-27T10:01:08.869Z",
+ "generatLa": "2026-09-27T10:16:51.881Z",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
   "cuSalariu": 65,
@@ -397,64 +397,57 @@
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
-  "posturi": 7339,
-  "institutii": 21,
+  "posturi": 7935,
+  "institutii": 18,
+  "posturiDinSurseDeVerificat": 40,
   "judete": {
    "BH": {
     "n": 1252,
-    "procent": 17.1
+    "procent": 15.8
+   },
+   "TM": {
+    "n": 1121,
+    "procent": 14.1
    },
    "CT": {
     "n": 1093,
-    "procent": 14.9
+    "procent": 13.8
    },
    "SB": {
     "n": 922,
-    "procent": 12.6
+    "procent": 11.6
    },
    "BC": {
     "n": 901,
-    "procent": 12.3
+    "procent": 11.4
    },
    "BZ": {
     "n": 684,
-    "procent": 9.3
+    "procent": 8.6
    },
    "HR": {
     "n": 586,
-    "procent": 8
+    "procent": 7.4
    },
    "CJ": {
     "n": 571,
-    "procent": 7.8
+    "procent": 7.2
    },
    "AB": {
     "n": 531,
-    "procent": 7.2
-   },
-   "TM": {
-    "n": 485,
-    "procent": 6.6
+    "procent": 6.7
    },
    "DJ": {
     "n": 171,
-    "procent": 2.3
+    "procent": 2.2
    },
    "GR": {
     "n": 47,
     "procent": 0.6
    },
-   "VS": {
-    "n": 24,
-    "procent": 0.3
-   },
    "IS": {
     "n": 21,
     "procent": 0.3
-   },
-   "B": {
-    "n": 18,
-    "procent": 0.2
    },
    "CL": {
     "n": 18,
@@ -468,23 +461,19 @@
     "n": 7,
     "procent": 0.1
    },
-   "GJ": {
-    "n": 1,
+   "B": {
+    "n": 3,
     "procent": 0
    }
   },
   "tipInstitutie": {
    "spital": {
-    "n": 7280,
-    "procent": 99.2
+    "n": 7900,
+    "procent": 99.6
    },
    "dgaspc": {
     "n": 28,
     "procent": 0.4
-   },
-   "dsp": {
-    "n": 24,
-    "procent": 0.3
    },
    "universitate": {
     "n": 7,
@@ -493,128 +482,124 @@
   },
   "perioade": {
    "2026-03": {
-    "n": 5209,
-    "procent": 71
+    "n": 5830,
+    "procent": 73.5
    },
    "2026-02": {
-    "n": 1586,
-    "procent": 21.6
+    "n": 1585,
+    "procent": 20
    },
    "2025-03": {
     "n": 302,
-    "procent": 4.1
+    "procent": 3.8
    },
    "2024-03": {
     "n": 171,
-    "procent": 2.3
+    "procent": 2.2
    },
    "2022-09": {
     "n": 47,
     "procent": 0.6
-   },
-   "2026-09": {
-    "n": 24,
-    "procent": 0.3
    }
   },
   "studii": {
    "PL": {
-    "n": 4120,
-    "procent": 56.1
+    "n": 4593,
+    "procent": 57.9
    },
    "S": {
-    "n": 1344,
-    "procent": 18.3
+    "n": 1447,
+    "procent": 18.2
    },
    "SSD": {
-    "n": 44,
-    "procent": 0.6
+    "n": 42,
+    "procent": 0.5
    },
    "M": {
-    "n": 26,
-    "procent": 0.4
+    "n": 20,
+    "procent": 0.3
    }
   },
   "bazaBruta": {
-   "n": 7339,
-   "p10": 5663,
-   "p25": 6489,
-   "median": 6816,
-   "p75": 7157,
-   "p90": 7574,
-   "min": 1511,
+   "n": 7935,
+   "p10": 6179,
+   "p25": 6650,
+   "median": 6817,
+   "p75": 7253,
+   "p90": 7575,
+   "min": 1701,
    "max": 15485
   },
   "bazaCuSporuriFixe": {
-   "n": 7339,
-   "p10": 6488,
-   "p25": 7558,
-   "median": 8402,
-   "p75": 10103,
-   "p90": 11478,
-   "min": 1511,
+   "n": 7935,
+   "p10": 7060,
+   "p25": 7648,
+   "median": 8520,
+   "p75": 10178,
+   "p90": 11417,
+   "min": 2313,
    "max": 22766
   },
   "peGradatie": {
    "gradația 5": {
-    "n": 1451,
-    "p10": 7638,
-    "p25": 8050,
-    "median": 8916,
-    "p75": 10294,
-    "p90": 11445,
+    "n": 3467,
+    "p10": 7400,
+    "p25": 7805,
+    "median": 8590,
+    "p75": 10182,
+    "p90": 11256,
     "min": 3132,
-    "max": 17065.5
+    "max": 22766
    },
    "gradația 4": {
-    "n": 287,
-    "p10": 7297,
-    "p25": 7633,
-    "median": 8400,
-    "p75": 9831,
-    "p90": 10914,
+    "n": 679,
+    "p10": 7127,
+    "p25": 7390,
+    "median": 8313,
+    "p75": 9948,
+    "p90": 10868,
     "min": 3608,
     "max": 13881.65
    },
    "gradația 3": {
-    "n": 278,
-    "p10": 7123,
-    "p25": 7482,
-    "median": 8275,
-    "p75": 9455,
-    "p90": 10417,
+    "n": 628,
+    "p10": 6904,
+    "p25": 7210,
+    "median": 8038,
+    "p75": 9516,
+    "p90": 10603,
     "min": 3174,
-    "max": 13054
+    "max": 13464
    },
    "gradația 2": {
-    "n": 266,
-    "p10": 6726,
-    "p25": 7251,
-    "median": 7959,
-    "p75": 9328,
-    "p90": 10336,
+    "n": 607,
+    "p10": 6434,
+    "p25": 6867,
+    "median": 7739,
+    "p75": 9403,
+    "p90": 10204,
     "min": 3013,
     "max": 12641.2
    },
    "gradația 1": {
-    "n": 42,
-    "p10": 6297,
-    "p25": 6740,
-    "median": 7469,
-    "p75": 8062,
-    "p90": 8892,
+    "n": 122,
+    "p10": 6128,
+    "p25": 6455,
+    "median": 6929,
+    "p75": 8343,
+    "p90": 9284,
     "min": 4139,
-    "max": 10047
+    "max": 10292
    },
    "gradația 0": {
-    "n": 18,
-    "p10": 6037,
-    "p25": 6333,
-    "median": 7127,
-    "p75": 7695,
-    "p90": 8863,
-    "min": 4986,
-    "max": 9483.15
+    "n": 40,
+    "p10": 5097,
+    "p25": 5932,
+    "median": 6546,
+    "p75": 7416,
+    "p90": 9303,
+    "min": 4901,
+    "max": 9574
    }
   },
   "peFunctie": {
@@ -627,6 +612,16 @@
     "p90": 11940,
     "min": 2313,
     "max": 15417
+   },
+   "ASISTENT MEDICAL PRINCIPAL (PL) Legea nr. 153 art. 33": {
+    "n": 526,
+    "p10": 6926,
+    "p25": 7116,
+    "median": 7450,
+    "p75": 8430,
+    "p90": 9252,
+    "min": 3699,
+    "max": 11140
    },
    "ASISTENT MEDICAL PRINCIPAL POST LICEALE Gradatia": {
     "n": 306,
@@ -658,6 +653,16 @@
     "min": 2679,
     "max": 14992
    },
+   "ASISTENT MEDICAL PRINCIPAL (PL) (UPU, ATI) Legea nr. 153 art": {
+    "n": 169,
+    "p10": 8227,
+    "p25": 9778,
+    "median": 10433,
+    "p75": 10963,
+    "p90": 11140,
+    "min": 5097,
+    "max": 13546
+   },
    "ASISTENT MEDICAL POST LICEALE Gradatia": {
     "n": 164,
     "p10": 6917,
@@ -667,26 +672,6 @@
     "p90": 9195,
     "min": 6101,
     "max": 12704
-   },
-   "ASISTENT MEDICAL PRINCIPAL (PL) Legea nr. 153 art. 33": {
-    "n": 154,
-    "p10": 1660,
-    "p25": 1727,
-    "median": 2317,
-    "p75": 2579,
-    "p90": 3311,
-    "min": 1511,
-    "max": 3886
-   },
-   "ASISTENT MEDICAL PRINCIPAL (PL) (UPU, ATI) Legea nr. 153 art": {
-    "n": 150,
-    "p10": 2511,
-    "p25": 3003,
-    "median": 3600,
-    "p75": 3880,
-    "p90": 3886,
-    "min": 1723,
-    "max": 3886
    },
    "Asistent medical principal SUPERIOARE ( S )": {
     "n": 144,
@@ -698,6 +683,16 @@
     "min": 2612,
     "max": 15874
    },
+   "ASISTENT MEDICAL PRINCIPAL (S) Legea nr. 153 art. 33": {
+    "n": 141,
+    "p10": 7444,
+    "p25": 7846,
+    "median": 8278,
+    "p75": 9468,
+    "p90": 10427,
+    "min": 6867,
+    "max": 13328
+   },
    "asistent medical": {
     "n": 113,
     "p10": 6411,
@@ -707,6 +702,16 @@
     "p90": 10192,
     "min": 4139,
     "max": 11311
+   },
+   "ASISTENT MEDICAL (PL) Legea nr. 153 art. 33": {
+    "n": 112,
+    "p10": 6319,
+    "p25": 6639,
+    "median": 7000,
+    "p75": 8195,
+    "p90": 8952,
+    "min": 5810,
+    "max": 10101
    },
    "ASISTENT MEDICAL PR PL Gradatia 5": {
     "n": 77,
@@ -748,6 +753,16 @@
     "min": 6575,
     "max": 11939
    },
+   "ASISTENT MEDICAL PRINCIPAL (S) (UPU, ATI) Legea nr. 153 art.": {
+    "n": 56,
+    "p10": 9809,
+    "p25": 10314,
+    "median": 11383,
+    "p75": 12076,
+    "p90": 12412,
+    "min": 7326,
+    "max": 14034
+   },
    "ASISTENT MEDICAL PR. Sectia ANESTEZIE-TERAPIE INTENSIVA": {
     "n": 56,
     "p10": 10643,
@@ -758,25 +773,15 @@
     "min": 6905,
     "max": 13793
    },
-   "ASISTENT MEDICAL PRINCIPAL (S) (UPU, ATI) Legea nr. 153 art.": {
-    "n": 51,
-    "p10": 2362,
-    "p25": 2952,
-    "median": 3621,
-    "p75": 4168,
-    "p90": 4330,
-    "min": 1968,
-    "max": 4336
-   },
-   "ASISTENT MEDICAL PRINCIPAL (S) Legea nr. 153 art. 33": {
+   "ASISTENT MEDICAL LICENTIAT Legea nr. 153 art. 33": {
     "n": 45,
-    "p10": 1816,
-    "p25": 2141,
-    "median": 2597,
-    "p75": 3479,
-    "p90": 3918,
-    "min": 1716,
-    "max": 4330
+    "p10": 6562,
+    "p25": 6758,
+    "median": 7511,
+    "p75": 9574,
+    "p90": 10601,
+    "min": 6003,
+    "max": 11348
    },
    "UPU‐SMURD‐str.Gh.Doja nr.65 Asistent medical principal ** Gr": {
     "n": 43,
@@ -858,6 +863,16 @@
     "min": 7253,
     "max": 11680
    },
+   "ASISTENT MEDICAL (PL) (UPU, ATI) Legea nr. 153 art. 33": {
+    "n": 33,
+    "p10": 6082,
+    "p25": 8324,
+    "median": 8940,
+    "p75": 9862,
+    "p90": 10450,
+    "min": 4901,
+    "max": 10712
+   },
    "ASISTENT MEDICAL PR. Sectia PEDIATRIE": {
     "n": 32,
     "p10": 8047,
@@ -877,16 +892,6 @@
     "p90": 12475,
     "min": 2612,
     "max": 12475
-   },
-   "ASISTENT MEDICAL (PL) Legea nr. 153 art. 33": {
-    "n": 31,
-    "p10": 1641,
-    "p25": 1982,
-    "median": 2345,
-    "p75": 2893,
-    "p90": 3297,
-    "min": 1601,
-    "max": 3462
    },
    "ASISTENT MEDICAL PR PL Gradatia 4": {
     "n": 31,
@@ -1037,16 +1042,6 @@
     "p90": 10294,
     "min": 9493.95,
     "max": 10293.95
-   },
-   "ASISTENT MEDICAL (PL) (UPU, ATI) Legea nr. 153 art. 33": {
-    "n": 25,
-    "p10": 2100,
-    "p25": 2617,
-    "median": 3148,
-    "p75": 3557,
-    "p90": 3700,
-    "min": 1698,
-    "max": 3737
    },
    "ASISTENT MEDICAL PR. Sectia OBSTETRICA-GINECOLOGIE I": {
     "n": 25,
@@ -1398,16 +1393,6 @@
     "min": 9158,
     "max": 10589
    },
-   "ASISTENT MEDICAL LICENTIAT Legea nr. 153 art. 33": {
-    "n": 17,
-    "p10": 1935,
-    "p25": 2699,
-    "median": 3340,
-    "p75": 3770,
-    "p90": 3959,
-    "min": 1733,
-    "max": 3959
-   },
    "ASISTENT MEDICAL PRINCIPAL PL Sectia Boli infectioase": {
     "n": 17,
     "p10": 8405,
@@ -1708,16 +1693,6 @@
     "min": 9792,
     "max": 13211
    },
-   "Asistent medical PL": {
-    "n": 12,
-    "p10": 6101,
-    "p25": 6101,
-    "median": 6101,
-    "p75": 6447,
-    "p90": 6717,
-    "min": 5810,
-    "max": 6733
-   },
    "COMPARTIMENT ANESTEZIE ASISTENT MEDICAL PRINCIPAL (S) Gradat": {
     "n": 12,
     "p10": 11009,
@@ -1928,16 +1903,6 @@
     "min": 8940,
     "max": 10464
    },
-   "Asistent medical principal PL": {
-    "n": 10,
-    "p10": 6755,
-    "p25": 6819,
-    "median": 6819,
-    "p75": 6819,
-    "p90": 6819,
-    "min": 6179,
-    "max": 6819
-   },
    "AMBULATORIUL INTEGRAT‐str.C.Coposu nr.12 Asistent medical Gr": {
     "n": 10,
     "p10": 6017,
@@ -2017,6 +1982,16 @@
     "p90": 10904,
     "min": 10416.6,
     "max": 10903.55
+   },
+   "ASISTENT MEDICAL RADIOLOGIE (PL) Legea nr. 153 art. 33": {
+    "n": 10,
+    "p10": 6382,
+    "p25": 6637,
+    "median": 7189,
+    "p75": 7472,
+    "p90": 8377,
+    "min": 6176,
+    "max": 9836
    },
    "ASISTENT MEDICAL PR. Sectia O.R.L.": {
     "n": 10,
@@ -2153,6 +2128,9 @@
    "Serviciul Judetean de Medicina Legala IML CLUJ ASISTENT MEDI": {
     "n": 8
    },
+   "ASISTENT MEDICAL PRINCIPAL (S) (LABORATOR) Legea nr. 153 art": {
+    "n": 8
+   },
    "ASISTENT MEDICAL S BAZA": {
     "n": 8
    },
@@ -2256,6 +2234,9 @@
     "n": 7
    },
    "Comp. radiologie, imagistica medicala neurologie ASISTENT ME": {
+    "n": 7
+   },
+   "ASISTENT MEDICAL RADIOLOGIE PRINCIPAL (PL) Legea nr. 153 art": {
     "n": 7
    },
    "ASISTENT MEDICAL PL Gradatia 3": {
@@ -2501,6 +2482,9 @@
    "Ambulatoriu integrat - ALTII ASISTENT MEDICAL PL M": {
     "n": 5
    },
+   "ASISTENT MEDICAL LABORATOR PRINCIPAL (PL) Legea nr. 153 art.": {
+    "n": 5
+   },
    "COMP. O.R.L ASISTENT MEDICAL PRINCIPAL Gradatia 5": {
     "n": 5
    },
@@ -2648,9 +2632,6 @@
    "Cab. Diabet Zaharat,Nutritie si Boli Metab.- ALTII ASISTENT ": {
     "n": 4
    },
-   "ASISTENT MEDICAL PRINCIPAL (S) (LABORATOR) Legea nr. 153 art": {
-    "n": 4
-   },
    "ASISTENT MEDICAL PL Gradatia 5": {
     "n": 4
    },
@@ -2743,9 +2724,6 @@
    },
    "asistent medical principal de farm": {
     "n": 4
-   },
-   "Asistent medical SSD": {
-    "n": 3
    },
    "AMBULATORIUL INTEGRAT‐str.C.Coposu nr.12 ASISTENT MEDICAL PR": {
     "n": 3
@@ -2986,9 +2964,6 @@
    },
    "Asistent medical": {
     "n": 3
-   },
-   "Asistent medical S": {
-    "n": 2
    },
    "asistent medical PL": {
     "n": 2
@@ -3260,10 +3235,7 @@
    "ASISTENT MEDICAL (PL) (ANAPAT) Legea nr. 153 art. 33": {
     "n": 2
    },
-   "ASISTENT MEDICAL LABORATOR PRINCIPAL (PL) Legea nr. 153 art.": {
-    "n": 2
-   },
-   "ASISTENT MEDICAL RADIOLOGIE (PL) Legea nr. 153 art. 33": {
+   "ASISTENT MEDICAL DEBUTANT (PL) Legea nr. 153 art. 33": {
     "n": 2
    },
    "ASISTENT MEDICAL PL Gradatia 1": {
@@ -3464,44 +3436,8 @@
    "ASISTENT MEDICAL S Gradatia 1 Sporurile din anexele 1, 2,3,5": {
     "n": 2
    },
-   "Asistent medical principal S": {
-    "n": 1
-   },
-   "Asistent medical debutant S": {
-    "n": 1
-   },
-   "Asistent medical principal SSD": {
-    "n": 1
-   },
-   "Asistent medical debutant SSD": {
-    "n": 1
-   },
-   "Asistent medical principal *2) PL": {
-    "n": 1
-   },
-   "Asistent medical *2) PL": {
-    "n": 1
-   },
-   "Asistent medical debutant *2) PL": {
-    "n": 1
-   },
-   "Asistent medical principal *2) M": {
-    "n": 1
-   },
-   "Asistent medical *2) M": {
-    "n": 1
-   },
-   "Asistent medical debutant *2) M": {
-    "n": 1
-   },
-   "Sora medicala principala *4) M": {
-    "n": 1
-   },
-   "Sora medicala *4) M": {
-    "n": 1
-   },
-   "Sora medicala debutant *4) M": {
-    "n": 1
+   "Asistent medical SSD": {
+    "n": 2
    },
    "asistent medical S principal": {
     "n": 1
@@ -3527,12 +3463,6 @@
    "ASISTENT MEDICAL debutant S": {
     "n": 1
    },
-   "II Asistent medical principal PL": {
-    "n": 1
-   },
-   "Asistent medical debutant PL I": {
-    "n": 1
-   },
    "247 Asistent medical lic. pr. TIGradatia 5 Contractual": {
     "n": 1
    },
@@ -3548,52 +3478,52 @@
    "251 Asistent medical lic. pr. TIGradatia 5 Contractual": {
     "n": 1
    },
-   "252 Asistent medical licentiat pr.Gradatia 2 Contractual": {
+   "252 Asistent medical licentiat pr. Gradatia 2 Contractual": {
     "n": 1
    },
-   "253 Asistent medical licentiat pr.Gradatia 5 Contractual": {
+   "253 Asistent medical licentiat pr. Gradatia 5 Contractual": {
     "n": 1
    },
-   "254 Asistent medical licentiat pr.Gradatia 4 Contractual": {
+   "254 Asistent medical licentiat pr. Gradatia 4 Contractual": {
     "n": 1
    },
-   "255 Asistent medical licentiat pr.Gradatia 4 Contractual": {
+   "255 Asistent medical licentiat pr. Gradatia 4 Contractual": {
     "n": 1
    },
-   "256 Asistent medical licentiat pr.Gradatia 5 Contractual": {
+   "256 Asistent medical licentiat pr. Gradatia 5 Contractual": {
     "n": 1
    },
-   "257 Asistent medical licentiat pr.Gradatia 4 Contractual": {
+   "257 Asistent medical licentiat pr. Gradatia 4 Contractual": {
     "n": 1
    },
-   "258 Asistent medical licentiat pr.Gradatia 5 Contractual": {
+   "258 Asistent medical licentiat pr. Gradatia 5 Contractual": {
     "n": 1
    },
-   "259 Asistent medical licentiat pr.Gradatia 2 Contractual": {
+   "259 Asistent medical licentiat pr. Gradatia 2 Contractual": {
     "n": 1
    },
-   "260 Asistent medical licentiat pr.Gradatia 4 Contractual": {
+   "260 Asistent medical licentiat pr. Gradatia 4 Contractual": {
     "n": 1
    },
-   "261 Asistent medical licentiat pr.Gradatia 4 Contractual": {
+   "261 Asistent medical licentiat pr. Gradatia 4 Contractual": {
     "n": 1
    },
-   "262 Asistent medical licentiat pr.Gradatia 5 Contractual": {
+   "262 Asistent medical licentiat pr. Gradatia 5 Contractual": {
     "n": 1
    },
-   "263 Asistent medical licentiat pr.Gradatia 5 Contractual": {
+   "263 Asistent medical licentiat pr. Gradatia 5 Contractual": {
     "n": 1
    },
-   "264 Asistent medical licentiat pr.Gradatia 4 Contractual": {
+   "264 Asistent medical licentiat pr. Gradatia 4 Contractual": {
     "n": 1
    },
-   "265 Asistent medical licentiat pr.Gradatia 5 Contractual": {
+   "265 Asistent medical licentiat pr. Gradatia 5 Contractual": {
     "n": 1
    },
-   "266 Asistent medical licentiat pr.Gradatia 5 Contractual": {
+   "266 Asistent medical licentiat pr. Gradatia 5 Contractual": {
     "n": 1
    },
-   "267 Asistent medical licentiat pr.Gradatia 5 Contractual": {
+   "267 Asistent medical licentiat pr. Gradatia 5 Contractual": {
     "n": 1
    },
    "AMBULATORIUL INTEGRAT‐str.C.Coposu nr.12 ASISTENT MEDICAL DE": {
@@ -4247,7 +4177,16 @@
    "Cab. Ambulator Oncologie ASISTENT MEDICAL SS - PRINCIPAL S": {
     "n": 1
    },
-   "ASISTENT MEDICAL RADIOLOGIE PRINCIPAL (PL) Legea nr. 153 art": {
+   "ASISTENT MEDICAL (SSD) Legea nr. 153 art. 33": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL DEBUTANT (S) Legea nr. 153 art. 33": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL LABORATOR (S) Legea nr. 153 art. 33": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL LABORATOR (PL) Legea nr. 153 art. 33": {
     "n": 1
    },
    "ASISTENT MEDICAL PRINCIPAL (S) (ANAPAT) Legea nr. 153 art. 3": {
@@ -4784,9 +4723,6 @@
    "ASISTENT MEDICAL LICENTIAT(S)": {
     "n": 1
    },
-   "2026-02 ASISTENT MEDICAL S": {
-    "n": 1
-   },
    "ASISTENT MEDICAL nespecificat BAZA": {
     "n": 1
    },
@@ -4815,6 +4751,9 @@
     "n": 1
    },
    "Asistent medical pr.": {
+    "n": 1
+   },
+   "Asistent medical S": {
     "n": 1
    }
   }

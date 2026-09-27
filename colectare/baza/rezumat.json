@@ -1,10 +1,10 @@
 {
- "generatLa": "2026-09-27T10:01:09.229Z",
+ "generatLa": "2026-09-27T10:16:52.385Z",
  "total": {
   "anunturi": 3704,
   "citite": 531,
-  "anofm": 3218,
-  "publice": 20601
+  "anofm": 3219,
+  "publice": 22610
  },
  "meserii": [
   {
@@ -15,7 +15,7 @@
    "anunturiCitite": 5,
    "anofm": 55,
    "anofmGrupa": 65,
-   "posturiPublice": 7339
+   "posturiPublice": 7935
   },
   {
    "slug": "medic",
@@ -25,7 +25,7 @@
    "anunturiCitite": 5,
    "anofm": 3,
    "anofmGrupa": 3,
-   "posturiPublice": 4799
+   "posturiPublice": 4945
   },
   {
    "slug": "medic-rezident",
@@ -35,7 +35,7 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 3,
-   "posturiPublice": 3555
+   "posturiPublice": 4434
   },
   {
    "slug": "infirmier",
@@ -45,7 +45,7 @@
    "anunturiCitite": 1,
    "anofm": 32,
    "anofmGrupa": 56,
-   "posturiPublice": 2962
+   "posturiPublice": 3167
   },
   {
    "slug": "registrator-medical",
@@ -55,7 +55,7 @@
    "anunturiCitite": 0,
    "anofm": 0,
    "anofmGrupa": 0,
-   "posturiPublice": 496
+   "posturiPublice": 577
   },
   {
    "slug": "economist",
@@ -65,7 +65,7 @@
    "anunturiCitite": 6,
    "anofm": 42,
    "anofmGrupa": 67,
-   "posturiPublice": 303
+   "posturiPublice": 309
   },
   {
    "slug": "sofer-tir",
@@ -88,6 +88,16 @@
    "posturiPublice": 0
   },
   {
+   "slug": "farmacist",
+   "nume": "Farmacist",
+   "anunturiCuSalariu": 15,
+   "cuBazaDeclarata": 8,
+   "anunturiCitite": 2,
+   "anofm": 8,
+   "anofmGrupa": 8,
+   "posturiPublice": 284
+  },
+  {
    "slug": "manipulant-marfa",
    "nume": "Manipulant mărfuri",
    "anunturiCuSalariu": 78,
@@ -98,16 +108,6 @@
    "posturiPublice": 0
   },
   {
-   "slug": "vanzator",
-   "nume": "Vânzător",
-   "anunturiCuSalariu": 351,
-   "cuBazaDeclarata": 128,
-   "anunturiCitite": 10,
-   "anofm": 98,
-   "anofmGrupa": 101,
-   "posturiPublice": 0
-  },
-  {
    "slug": "electrician",
    "nume": "Electrician",
    "anunturiCuSalariu": 249,
@@ -115,7 +115,17 @@
    "anunturiCitite": 38,
    "anofm": 76,
    "anofmGrupa": 106,
-   "posturiPublice": 28
+   "posturiPublice": 40
+  },
+  {
+   "slug": "vanzator",
+   "nume": "Vânzător",
+   "anunturiCuSalariu": 351,
+   "cuBazaDeclarata": 128,
+   "anunturiCitite": 10,
+   "anofm": 99,
+   "anofmGrupa": 102,
+   "posturiPublice": 0
   },
   {
    "slug": "bucatar",
@@ -125,7 +135,7 @@
    "anunturiCitite": 4,
    "anofm": 119,
    "anofmGrupa": 132,
-   "posturiPublice": 60
+   "posturiPublice": 49
   },
   {
    "slug": "agent-curatenie",
@@ -158,16 +168,6 @@
    "posturiPublice": 0
   },
   {
-   "slug": "farmacist",
-   "nume": "Farmacist",
-   "anunturiCuSalariu": 15,
-   "cuBazaDeclarata": 8,
-   "anunturiCitite": 2,
-   "anofm": 8,
-   "anofmGrupa": 8,
-   "posturiPublice": 168
-  },
-  {
    "slug": "taximetrist",
    "nume": "Taximetrist",
    "anunturiCuSalariu": 2,
@@ -198,16 +198,6 @@
    "posturiPublice": 0
   },
   {
-   "slug": "kinetoterapeut",
-   "nume": "Kinetoterapeut",
-   "anunturiCuSalariu": 6,
-   "cuBazaDeclarata": 1,
-   "anunturiCitite": 5,
-   "anofm": 8,
-   "anofmGrupa": 23,
-   "posturiPublice": 131
-  },
-  {
    "slug": "contabil",
    "nume": "Contabil",
    "anunturiCuSalariu": 147,
@@ -215,17 +205,17 @@
    "anunturiCitite": 20,
    "anofm": 46,
    "anofmGrupa": 60,
-   "posturiPublice": 15
+   "posturiPublice": 16
   },
   {
-   "slug": "psiholog",
-   "nume": "Psiholog",
-   "anunturiCuSalariu": 3,
-   "cuBazaDeclarata": 2,
-   "anunturiCitite": 0,
-   "anofm": 6,
-   "anofmGrupa": 21,
-   "posturiPublice": 127
+   "slug": "kinetoterapeut",
+   "nume": "Kinetoterapeut",
+   "anunturiCuSalariu": 6,
+   "cuBazaDeclarata": 1,
+   "anunturiCitite": 5,
+   "anofm": 8,
+   "anofmGrupa": 23,
+   "posturiPublice": 129
   },
   {
    "slug": "asistent-social",
@@ -235,7 +225,27 @@
    "anunturiCitite": 0,
    "anofm": 11,
    "anofmGrupa": 14,
-   "posturiPublice": 122
+   "posturiPublice": 124
+  },
+  {
+   "slug": "instalator",
+   "nume": "Instalator",
+   "anunturiCuSalariu": 116,
+   "cuBazaDeclarata": 40,
+   "anunturiCitite": 13,
+   "anofm": 43,
+   "anofmGrupa": 78,
+   "posturiPublice": 42
+  },
+  {
+   "slug": "psiholog",
+   "nume": "Psiholog",
+   "anunturiCuSalariu": 3,
+   "cuBazaDeclarata": 2,
+   "anunturiCitite": 0,
+   "anofm": 6,
+   "anofmGrupa": 21,
+   "posturiPublice": 116
   },
   {
    "slug": "mecanic-auto",
@@ -258,16 +268,6 @@
    "posturiPublice": 0
   },
   {
-   "slug": "instalator",
-   "nume": "Instalator",
-   "anunturiCuSalariu": 116,
-   "cuBazaDeclarata": 40,
-   "anunturiCitite": 13,
-   "anofm": 43,
-   "anofmGrupa": 78,
-   "posturiPublice": 32
-  },
-  {
    "slug": "operator-cnc",
    "nume": "Operator CNC",
    "anunturiCuSalariu": 45,
@@ -284,18 +284,8 @@
    "cuBazaDeclarata": 53,
    "anunturiCitite": 7,
    "anofm": 13,
-   "anofmGrupa": 136,
+   "anofmGrupa": 137,
    "posturiPublice": 42
-  },
-  {
-   "slug": "consilier-juridic",
-   "nume": "Consilier juridic",
-   "anunturiCuSalariu": 14,
-   "cuBazaDeclarata": 7,
-   "anunturiCitite": 2,
-   "anofm": 21,
-   "anofmGrupa": 21,
-   "posturiPublice": 75
   },
   {
    "slug": "stivuitorist",
@@ -326,6 +316,16 @@
    "anofm": 73,
    "anofmGrupa": 126,
    "posturiPublice": 0
+  },
+  {
+   "slug": "consilier-juridic",
+   "nume": "Consilier juridic",
+   "anunturiCuSalariu": 14,
+   "cuBazaDeclarata": 7,
+   "anunturiCitite": 2,
+   "anofm": 21,
+   "anofmGrupa": 21,
+   "posturiPublice": 67
   },
   {
    "slug": "operator-productie",
@@ -378,6 +378,16 @@
    "posturiPublice": 0
   },
   {
+   "slug": "asistent-farmacie",
+   "nume": "Asistent de farmacie",
+   "anunturiCuSalariu": 1,
+   "cuBazaDeclarata": 1,
+   "anunturiCitite": 0,
+   "anofm": 2,
+   "anofmGrupa": 3,
+   "posturiPublice": 55
+  },
+  {
    "slug": "secretar",
    "nume": "Secretar",
    "anunturiCuSalariu": 68,
@@ -388,14 +398,14 @@
    "posturiPublice": 0
   },
   {
-   "slug": "bibliotecar",
-   "nume": "Bibliotecar",
-   "anunturiCuSalariu": 0,
-   "cuBazaDeclarata": 0,
-   "anunturiCitite": 0,
-   "anofm": 0,
-   "anofmGrupa": 0,
-   "posturiPublice": 54
+   "slug": "programator",
+   "nume": "Programator",
+   "anunturiCuSalariu": 16,
+   "cuBazaDeclarata": 7,
+   "anunturiCitite": 102,
+   "anofm": 29,
+   "anofmGrupa": 65,
+   "posturiPublice": 16
   },
   {
    "slug": "zidar",
@@ -408,34 +418,14 @@
    "posturiPublice": 0
   },
   {
-   "slug": "programator",
-   "nume": "Programator",
-   "anunturiCuSalariu": 16,
-   "cuBazaDeclarata": 7,
-   "anunturiCitite": 102,
-   "anofm": 29,
-   "anofmGrupa": 65,
-   "posturiPublice": 13
-  },
-  {
-   "slug": "asistent-farmacie",
-   "nume": "Asistent de farmacie",
-   "anunturiCuSalariu": 1,
-   "cuBazaDeclarata": 1,
-   "anunturiCitite": 0,
-   "anofm": 2,
-   "anofmGrupa": 3,
-   "posturiPublice": 43
-  },
-  {
-   "slug": "fizioterapeut",
-   "nume": "Fizioterapeut",
-   "anunturiCuSalariu": 2,
+   "slug": "bibliotecar",
+   "nume": "Bibliotecar",
+   "anunturiCuSalariu": 0,
    "cuBazaDeclarata": 0,
-   "anunturiCitite": 1,
-   "anofm": 2,
-   "anofmGrupa": 23,
-   "posturiPublice": 44
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 50
   },
   {
    "slug": "educator",
@@ -448,6 +438,16 @@
    "posturiPublice": 44
   },
   {
+   "slug": "fizioterapeut",
+   "nume": "Fizioterapeut",
+   "anunturiCuSalariu": 2,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 1,
+   "anofm": 2,
+   "anofmGrupa": 23,
+   "posturiPublice": 42
+  },
+  {
    "slug": "sofer-autobuz",
    "nume": "Șofer de autobuz",
    "anunturiCuSalariu": 0,
@@ -456,16 +456,6 @@
    "anofm": 38,
    "anofmGrupa": 40,
    "posturiPublice": 0
-  },
-  {
-   "slug": "functionar-public",
-   "nume": "Funcționar public",
-   "anunturiCuSalariu": 0,
-   "cuBazaDeclarata": 0,
-   "anunturiCitite": 0,
-   "anofm": 0,
-   "anofmGrupa": 0,
-   "posturiPublice": 34
   },
   {
    "slug": "constructor",
@@ -494,7 +484,7 @@
    "cuBazaDeclarata": 8,
    "anunturiCitite": 1,
    "anofm": 18,
-   "anofmGrupa": 92,
+   "anofmGrupa": 94,
    "posturiPublice": 0
   },
   {
@@ -528,6 +518,16 @@
    "posturiPublice": 0
   },
   {
+   "slug": "functionar-public",
+   "nume": "Funcționar public",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 19
+  },
+  {
    "slug": "operator-call-center",
    "nume": "Operator call center",
    "anunturiCuSalariu": 49,
@@ -546,16 +546,6 @@
    "anofm": 9,
    "anofmGrupa": 16,
    "posturiPublice": 0
-  },
-  {
-   "slug": "ingrijitor-batrani",
-   "nume": "Îngrijitor de bătrâni",
-   "anunturiCuSalariu": 1,
-   "cuBazaDeclarata": 0,
-   "anunturiCitite": 1,
-   "anofm": 1,
-   "anofmGrupa": 8,
-   "posturiPublice": 17
   },
   {
    "slug": "faiantar",
@@ -684,8 +674,18 @@
    "cuBazaDeclarata": 8,
    "anunturiCitite": 1,
    "anofm": 3,
-   "anofmGrupa": 20,
+   "anofmGrupa": 21,
    "posturiPublice": 0
+  },
+  {
+   "slug": "ingrijitor-batrani",
+   "nume": "Îngrijitor de bătrâni",
+   "anunturiCuSalariu": 1,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 1,
+   "anofm": 1,
+   "anofmGrupa": 8,
+   "posturiPublice": 10
   },
   {
    "slug": "analist-financiar",

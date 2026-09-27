@@ -2,7 +2,7 @@
  "slug": "cofetar",
  "nume": "Cofetar",
  "cor": "751202",
- "generatLa": "2026-09-27T10:01:09.053Z",
+ "generatLa": "2026-09-27T10:16:52.140Z",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
   "cuSalariu": 19,
@@ -132,7 +132,7 @@
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
   "oferte": 18,
   "posturi": 48,
-  "ofertePeGrupaCor": 92,
+  "ofertePeGrupaCor": 94,
   "tipSalariu": {
    "none": {
     "n": 9,
@@ -298,28 +298,28 @@
   },
   "coduriCorInGrupa": {
    "751201 - BRUTAR": {
-    "n": 41,
-    "procent": 44.6
+    "n": 42,
+    "procent": 44.7
    },
    "751203 - PATISER": {
-    "n": 23,
-    "procent": 25
+    "n": 24,
+    "procent": 25.5
    },
    "751202 - COFETAR": {
     "n": 18,
-    "procent": 19.6
+    "procent": 19.1
    },
    "751204 - PREPARATOR DE SEMIFABRICATE SI PREPARATE CULINARE": {
     "n": 5,
-    "procent": 5.4
+    "procent": 5.3
    },
    "751205 - OPERATOR LA FABRICAREA PRODUSELOR CONGELATE DE PATISERIE SI PANIFICATIE": {
     "n": 3,
-    "procent": 3.3
+    "procent": 3.2
    },
    "751206 - DECORATOR PRODUSE COFETARIE": {
     "n": 2,
-    "procent": 2.2
+    "procent": 2.1
    }
   }
  },
@@ -327,6 +327,7 @@
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
   "posturi": 0,
   "institutii": 0,
+  "posturiDinSurseDeVerificat": 0,
   "judete": {},
   "tipInstitutie": {},
   "perioade": {},

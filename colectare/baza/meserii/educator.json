@@ -2,7 +2,7 @@
  "slug": "educator",
  "nume": "Educator",
  "cor": "234201",
- "generatLa": "2026-09-27T10:01:08.962Z",
+ "generatLa": "2026-09-27T10:16:51.991Z",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
   "cuSalariu": 5,
@@ -109,6 +109,7 @@
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
   "posturi": 44,
   "institutii": 4,
+  "posturiDinSurseDeVerificat": 0,
   "judete": {
    "CL": {
     "n": 36,

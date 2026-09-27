@@ -2,7 +2,7 @@
  "slug": "psiholog",
  "nume": "Psiholog",
  "cor": "263401",
- "generatLa": "2026-09-27T10:01:08.928Z",
+ "generatLa": "2026-09-27T10:16:51.951Z",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
   "cuSalariu": 3,
@@ -199,175 +199,167 @@
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
-  "posturi": 127,
-  "institutii": 22,
+  "posturi": 116,
+  "institutii": 18,
+  "posturiDinSurseDeVerificat": 18,
   "judete": {
-   "BV": {
-    "n": 17,
-    "procent": 13.4
-   },
    "BH": {
     "n": 15,
-    "procent": 11.8
+    "procent": 12.9
    },
    "CJ": {
     "n": 14,
-    "procent": 11
+    "procent": 12.1
    },
    "CT": {
     "n": 13,
-    "procent": 10.2
+    "procent": 11.2
    },
    "BC": {
-    "n": 13,
-    "procent": 10.2
+    "n": 11,
+    "procent": 9.5
    },
    "HR": {
     "n": 11,
-    "procent": 8.7
+    "procent": 9.5
    },
    "B": {
     "n": 10,
-    "procent": 7.9
+    "procent": 8.6
+   },
+   "TM": {
+    "n": 10,
+    "procent": 8.6
    },
    "AB": {
     "n": 6,
-    "procent": 4.7
+    "procent": 5.2
    },
    "SB": {
     "n": 5,
-    "procent": 3.9
+    "procent": 4.3
    },
    "GR": {
     "n": 5,
-    "procent": 3.9
+    "procent": 4.3
+   },
+   "BV": {
+    "n": 4,
+    "procent": 3.4
    },
    "BR": {
     "n": 4,
-    "procent": 3.1
-   },
-   "TM": {
-    "n": 3,
-    "procent": 2.4
+    "procent": 3.4
    },
    "MS": {
     "n": 3,
-    "procent": 2.4
+    "procent": 2.6
    },
    "IS": {
     "n": 2,
-    "procent": 1.6
+    "procent": 1.7
    },
    "BZ": {
     "n": 2,
-    "procent": 1.6
-   },
-   "GJ": {
-    "n": 2,
-    "procent": 1.6
-   },
-   "VS": {
-    "n": 1,
-    "procent": 0.8
+    "procent": 1.7
    },
    "DJ": {
     "n": 1,
-    "procent": 0.8
+    "procent": 0.9
    }
   },
   "tipInstitutie": {
    "spital": {
-    "n": 110,
-    "procent": 86.6
+    "n": 102,
+    "procent": 87.9
    },
    "dgaspc": {
     "n": 11,
-    "procent": 8.7
+    "procent": 9.5
    },
    "universitate": {
-    "n": 5,
-    "procent": 3.9
-   },
-   "dsp": {
-    "n": 1,
-    "procent": 0.8
+    "n": 3,
+    "procent": 2.6
    }
   },
   "perioade": {
    "2026-03": {
-    "n": 100,
-    "procent": 78.7
+    "n": 92,
+    "procent": 79.3
    },
    "2026-02": {
-    "n": 15,
-    "procent": 11.8
+    "n": 13,
+    "procent": 11.2
    },
    "2025-03": {
     "n": 5,
-    "procent": 3.9
+    "procent": 4.3
    },
    "2022-09": {
     "n": 5,
-    "procent": 3.9
-   },
-   "2026-09": {
-    "n": 1,
-    "procent": 0.8
+    "procent": 4.3
    },
    "2024-03": {
     "n": 1,
-    "procent": 0.8
+    "procent": 0.9
    }
   },
   "studii": {
    "S": {
-    "n": 59,
-    "procent": 46.5
+    "n": 57,
+    "procent": 49.1
    },
    "M": {
     "n": 1,
-    "procent": 0.8
+    "procent": 0.9
    }
   },
   "bazaBruta": {
-   "n": 127,
-   "p10": 5962,
-   "p25": 7609,
-   "median": 9170,
-   "p75": 10414,
-   "p90": 10417,
-   "min": 1661,
+   "n": 116,
+   "p10": 6667,
+   "p25": 7692,
+   "median": 9169,
+   "p75": 10226,
+   "p90": 10415,
+   "min": 3712,
    "max": 11116
   },
   "bazaCuSporuriFixe": {
-   "n": 127,
-   "p10": 6740,
-   "p25": 8656,
-   "median": 10417,
-   "p75": 12041,
-   "p90": 12920,
-   "min": 1661,
+   "n": 116,
+   "p10": 7119,
+   "p25": 8700,
+   "median": 10707,
+   "p75": 12222,
+   "p90": 12982,
+   "min": 3712,
    "max": 15947
   },
   "peGradatie": {
    "gradația 5": {
-    "n": 10,
-    "p10": 8855,
-    "p25": 9875,
-    "median": 10510,
-    "p75": 10861,
-    "p90": 11638,
-    "min": 8300,
-    "max": 11663.5
+    "n": 36,
+    "p10": 9195,
+    "p25": 9876,
+    "median": 11499,
+    "p75": 12797,
+    "p90": 13713,
+    "min": 8086,
+    "max": 15947
    },
    "gradația 4": {
-    "n": 4
-   },
-   "gradația 3": {
-    "n": 3
+    "n": 10,
+    "p10": 8293,
+    "p25": 9166,
+    "median": 11932,
+    "p75": 12434,
+    "p90": 12983,
+    "min": 7914,
+    "max": 13434
    },
    "gradația 2": {
-    "n": 1
+    "n": 7
+   },
+   "gradația 3": {
+    "n": 7
    },
    "gradația 1": {
     "n": 1
@@ -387,13 +379,13 @@
    "psiholog principal": {
     "n": 7
    },
-   "Psiholog principal Gradatia": {
-    "n": 7
-   },
    "PSIHOLOG PRACTICANT SUPERIOARE Gradatia": {
     "n": 5
    },
    "psiholog specialist": {
+    "n": 4
+   },
+   "PSIHOLOG SPECIALIST Legea nr. 153 art. 33": {
     "n": 4
    },
    "PSIHOLOG PR. CENTRU DE SANATATE MINTALA (CSM)": {
@@ -402,19 +394,19 @@
    "Psiholog specialist SUPERIOARE ( S )": {
     "n": 3
    },
-   "Psiholog specialist Gradatia": {
+   "PSIHOLOG PRACTICANT Legea nr. 153 art. 33": {
     "n": 3
    },
    "psiholog practicant": {
-    "n": 2
-   },
-   "Psiholog practicant": {
     "n": 2
    },
    "Centrul de Sanatate Mintala Adulti (CSM) Psiholog principal ": {
     "n": 2
    },
    "Centrul de Sanatate Mintala Copii (CSM) Psiholog principal G": {
+    "n": 2
+   },
+   "PSIHOLOG PRINCIPAL Legea nr. 153 art. 33": {
     "n": 2
    },
    "PSIHOLOG SPECIALIST Gradatia 5": {
@@ -525,12 +517,6 @@
    "Ambulatoriu integrat - ALTII PSIHOLOG SPECIALIST S": {
     "n": 1
    },
-   "PSIHOLOG PRACTICANT Legea nr. 153 art. 33": {
-    "n": 1
-   },
-   "PSIHOLOG SPECIALIST Legea nr. 153 art. 33": {
-    "n": 1
-   },
    "PSIHOLOG STAGIAR Legea nr. 153 art. 33": {
     "n": 1
    },
@@ -541,15 +527,6 @@
     "n": 1
    },
    "PSIHOLOG SPECIALIST Gradatia 3": {
-    "n": 1
-   },
-   "Psiholog practicant Gradatia": {
-    "n": 1
-   },
-   "Psiholog principal Gradatia 1m": {
-    "n": 1
-   },
-   "Psiholog principal (Gradatia": {
     "n": 1
    },
    "SECTIA ONCOLOGIE MEDICALA-COMP.INGRIJIRI PALIATIVE PSIHOLOG ": {
@@ -594,12 +571,6 @@
    "PSIHOLOG PRINCIPAL": {
     "n": 1
    },
-   "2026-02 PSIHOLOG PRINC.": {
-    "n": 1
-   },
-   "2026-02 PSIHOLOG CLINICIAN STAGIAR": {
-    "n": 1
-   },
    "PSIHOLOG PRACTICANT (ATI) SUPERIOARE Gradatia": {
     "n": 1
    },
@@ -615,10 +586,7 @@
    "PSIHOLOG SPECIALIST s I SPECIALIS'I": {
     "n": 1
    },
-   "54 PSIHOLOG S": {
-    "n": 1
-   },
-   "55 PSIHOLOG S": {
+   "Psiholog practicant": {
     "n": 1
    },
    "Psiholog practicant-0,5 n": {

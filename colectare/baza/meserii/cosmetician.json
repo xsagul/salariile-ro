@@ -2,7 +2,7 @@
  "slug": "cosmetician",
  "nume": "Cosmetician",
  "cor": "514201",
- "generatLa": "2026-09-27T10:01:09.181Z",
+ "generatLa": "2026-09-27T10:16:52.308Z",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
   "cuSalariu": 12,
@@ -129,7 +129,7 @@
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
   "oferte": 3,
   "posturi": 4,
-  "ofertePeGrupaCor": 20,
+  "ofertePeGrupaCor": 21,
   "tipSalariu": {
    "gross": {
     "n": 2,
@@ -214,29 +214,29 @@
    }
   },
   "coduriCorInGrupa": {
+   "514204 - MASEUR DE ÎNTRETINERE SI RELAXARE": {
+    "n": 6,
+    "procent": 28.6
+   },
    "514202 - MANICHIURIST": {
     "n": 6,
-    "procent": 30
-   },
-   "514204 - MASEUR DE ÎNTRETINERE SI RELAXARE": {
-    "n": 5,
-    "procent": 25
+    "procent": 28.6
    },
    "514208 - STILIST PROTEZIST DE UNGHII": {
     "n": 3,
-    "procent": 15
+    "procent": 14.3
    },
    "514201 - COSMETICIAN": {
     "n": 3,
-    "procent": 15
+    "procent": 14.3
    },
    "514209 - OPERATOR INTRETINERE CORPORALA": {
     "n": 2,
-    "procent": 10
+    "procent": 9.5
    },
    "514203 - PEDICHIURIST": {
     "n": 1,
-    "procent": 5
+    "procent": 4.8
    }
   }
  },
@@ -244,6 +244,7 @@
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
   "posturi": 0,
   "institutii": 0,
+  "posturiDinSurseDeVerificat": 0,
   "judete": {},
   "tipInstitutie": {},
   "perioade": {},

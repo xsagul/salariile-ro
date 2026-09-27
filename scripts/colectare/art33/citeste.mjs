@@ -39,7 +39,7 @@ export function tipColoana(eticheta, procent, v = 0) {
   if (/hran|voucher|vacant|vacan/.test(e)) return "hrana";
   if (/(^|\s)(ore|nr\.?\s*ore|zile|numar ore)(\s|$)/.test(e) && !/valoare|suma|sume|spor 100|spor 75|spor 40/.test(e)) return "ore";
   // „tură” doar ca vorbă separată: „veniTURI” nu e tură (Cluj, 26 septembrie 2026).
-  if (/\btur[aei]?\b|\bture\b|noapte|gard|garzi|sarbat|nelucr|repaus|suplimentar|weekend|s\+d|domicil|sume ore|ore prestate/.test(e)) return "variabil";
+  if (/\btur[aei]?\b|\bture\b|noapte|gard|garzi|sarbat|\bsarb\b|\bsamb|duminic|nelucr|repaus|suplimentar|weekend|s\+d|domicil|sume ore|ore prestate/.test(e)) return "variabil";
   if (/(salar\w*|sal\.?)\s*(de\s*)?baz|salariul funct|indemnizat\w* de incadrare|solda/.test(e)) return "baza";
   // „Baza lei grilă” (Brăila), „Sal de … baza” (Filantropia): „bază” singur e baza, după ce
   // bazele de calcul au fost deja recunoscute mai sus.
@@ -89,7 +89,10 @@ export async function randuriPdf(fisier) {
       const unite = [];
       for (const i of l.items) {
         const u = unite[unite.length - 1];
-        if (u && i.x0 - u.x1 < 0.6 && !/^\d/.test(i.t) && !/\d$/.test(u.t)) { u.t += i.t; u.x1 = i.x1; }
+        // Numai bucățile care se ating; textele suprapuse sunt antete diferite care trec unul
+        // peste altul (Timișoara), nu bucăți ale aceluiași cuvânt.
+        const gol = u ? i.x0 - u.x1 : 0;
+        if (u && gol < 0.6 && gol > -1 && !/^\d/.test(i.t) && !/\d$/.test(u.t)) { u.t += i.t; u.x1 = i.x1; }
         else unite.push({ ...i });
       }
       l.items = unite;
@@ -181,6 +184,28 @@ export async function citestePdf(fisier, { potrivire, profil = {} }) {
   for (const c of coloane) {
     c.eticheta = antet.map((l) => l.items.filter((i) => inZona(i, c)).map((i) => i.t).join(" ")).filter(Boolean).join(" ").replace(/\s+/g, " ");
   }
+  // Rândul de numerotare a coloanelor („1 2 3 … 15”), când există, fixează celulele exact.
+  // La Timișoara (septembrie 2026) antetele sunt texte lungi, pe un rând, care trec peste
+  // coloanele vecine: „Salariul de bază…” (x 357–486) acoperea și coloana sporului de condiții
+  // (x 480–493), așa că sporul era citit drept bază. Antetul unei celule începe la stânga
+  // numărului ei, cel mult 25 de unități, niciodată în celula vecină.
+  const numerotare = antet.find((l) => {
+    const n = l.items.map((i) => (/^\d{1,2}$/.test(i.t) ? Number(i.t) : null));
+    return n.length >= 5 && n.every((x, k) => x === k + 1);
+  });
+  if (numerotare) {
+    const potrivite = coloane.map((c) => numerotare.items.reduce((best, i) => (Math.abs(i.x1 - c.x1max) < Math.abs((best?.x1 ?? Infinity) - c.x1max) ? i : best), null))
+      .map((i, k) => (i && Math.abs(i.x1 - coloane[k].x1max) <= 12 ? i : null));
+    if (potrivite.filter(Boolean).length >= 0.6 * coloane.length) {
+      coloane.forEach((c, k) => {
+        const nr = potrivite[k];
+        if (!nr) return;
+        c.eticheta = antet.filter((l) => l !== numerotare)
+          .map((l) => l.items.filter((i) => i.x0 >= nr.x0 - 25 && i.x0 <= nr.x0 + 5 && i.x1 - i.x0 <= 400).map((i) => i.t).join(" "))
+          .filter(Boolean).join(" ").replace(/\s+/g, " ");
+      });
+    }
+  }
   const coloanaPentru = (i) => coloane.find((c) => i.x1 >= c.x1min - 0.5 && i.x1 <= c.x1max + 0.5) ?? coloane.find((c) => i.x1 >= c.L && i.x1 <= c.R);
   const etichetaText = (i) => antet.map((l) => l.items.filter((h) => h.x1 >= i.x0 - 2 && h.x0 <= i.x1 + 2).map((h) => h.t).join(" ")).filter(Boolean).join(" ");
 
@@ -196,7 +221,8 @@ export async function citestePdf(fisier, { potrivire, profil = {} }) {
       const et = c?.eticheta ?? "";
       const tip = profil.dupaEticheta?.(et, n) ?? tipColoana(et, n.procent, n.v);
       r.sume.push({ v: n.v, tip, eticheta: et });
-      if (/grada/i.test(faraDiacritice(et)) && n.v <= 10) { r.gradatie = n.v; r.sume[r.sume.length - 1].tip = "gradatie"; continue; }
+      // „Grad/” singur (Timișoara) e coloana gradației: valori 0–5, lângă funcție.
+      if ((/grada/i.test(faraDiacritice(et)) || /^grad\s*\/?$/i.test(et.trim())) && n.v <= 10) { r.gradatie = n.v; r.sume[r.sume.length - 1].tip = "gradatie"; continue; }
       if (tip === "total") { r.total = n.v; continue; }
       if (tip === "baza" && r.baza === null) r.baza = n.v;
       else if (tip === "sporFix") r.sporFix += n.v;

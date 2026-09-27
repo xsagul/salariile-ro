@@ -2,7 +2,7 @@
  "slug": "magaziner",
  "nume": "Magaziner",
  "cor": "432102",
- "generatLa": "2026-09-27T10:01:09.081Z",
+ "generatLa": "2026-09-27T10:16:52.188Z",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
   "cuSalariu": 98,
@@ -174,7 +174,7 @@
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
   "oferte": 13,
   "posturi": 17,
-  "ofertePeGrupaCor": 136,
+  "ofertePeGrupaCor": 137,
   "tipSalariu": {
    "none": {
     "n": 8,
@@ -328,20 +328,20 @@
   },
   "coduriCorInGrupa": {
    "432111 - LUCRATOR GESTIONAR": {
-    "n": 54,
-    "procent": 39.7
+    "n": 55,
+    "procent": 40.1
    },
    "432101 - GESTIONAR DEPOZIT": {
     "n": 44,
-    "procent": 32.4
+    "procent": 32.1
    },
    "432102 - MAGAZINER": {
     "n": 13,
-    "procent": 9.6
+    "procent": 9.5
    },
    "432112 - SEF RAION/ADJUNCT MARFURI ALIMENTARE/NEALIMENTARE": {
     "n": 8,
-    "procent": 5.9
+    "procent": 5.8
    },
    "432104 - PRIMITOR-DISTRIBUITOR MATERIALE SI SCULE": {
     "n": 6,
@@ -368,12 +368,9 @@
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
   "posturi": 42,
-  "institutii": 20,
+  "institutii": 18,
+  "posturiDinSurseDeVerificat": 5,
   "judete": {
-   "B": {
-    "n": 6,
-    "procent": 14.3
-   },
    "BC": {
     "n": 6,
     "procent": 14.3
@@ -386,6 +383,14 @@
     "n": 5,
     "procent": 11.9
    },
+   "TM": {
+    "n": 5,
+    "procent": 11.9
+   },
+   "B": {
+    "n": 4,
+    "procent": 9.5
+   },
    "CL": {
     "n": 3,
     "procent": 7.1
@@ -395,10 +400,6 @@
     "procent": 7.1
    },
    "SB": {
-    "n": 3,
-    "procent": 7.1
-   },
-   "BV": {
     "n": 3,
     "procent": 7.1
    },
@@ -429,12 +430,12 @@
   },
   "tipInstitutie": {
    "spital": {
-    "n": 35,
-    "procent": 83.3
+    "n": 36,
+    "procent": 85.7
    },
    "dgaspc": {
-    "n": 4,
-    "procent": 9.5
+    "n": 3,
+    "procent": 7.1
    },
    "universitate": {
     "n": 3,
@@ -465,8 +466,8 @@
   },
   "studii": {
    "M": {
-    "n": 17,
-    "procent": 40.5
+    "n": 15,
+    "procent": 35.7
    },
    "G": {
     "n": 1,
@@ -479,37 +480,53 @@
   },
   "bazaBruta": {
    "n": 42,
-   "p10": 4889,
-   "p25": 5836,
-   "median": 6486,
-   "p75": 6918,
+   "p10": 5219,
+   "p25": 6190,
+   "median": 6654,
+   "p75": 6969,
    "p90": 6969,
    "min": 3549,
-   "max": 7634
+   "max": 7094
   },
   "bazaCuSporuriFixe": {
    "n": 42,
-   "p10": 4889,
-   "p25": 5847,
-   "median": 6670,
-   "p75": 6969,
+   "p10": 5249,
+   "p25": 6190,
+   "median": 6764,
+   "p75": 7148,
    "p90": 7269,
    "min": 3828,
    "max": 8267
   },
   "peGradatie": {
    "gradația 5": {
-    "n": 3
+    "n": 13,
+    "p10": 6305,
+    "p25": 6305,
+    "median": 6969,
+    "p75": 7176,
+    "p90": 7309,
+    "min": 6305,
+    "max": 7367
    },
    "gradația 4": {
-    "n": 2
+    "n": 4
+   },
+   "gradația 2": {
+    "n": 3
    },
    "gradația 3": {
+    "n": 1
+   },
+   "gradația 0": {
     "n": 1
    }
   },
   "peFunctie": {
    "COMPARTIMENT APROVIZIONARE-CONTRACTARE MAGAZINER MEDII Grada": {
+    "n": 5
+   },
+   "MAGAZINER Legea nr. 153 art. 33": {
     "n": 5
    },
    "magaziner": {
@@ -519,9 +536,6 @@
     "n": 3
    },
    "Serviciul Administrativ MAGAZINER M": {
-    "n": 3
-   },
-   "Magaziner I Gradatia": {
     "n": 3
    },
    "MAGAZINER SERVICIU APROVIZIONARE,TRANSPORT SI ACHIZITII PUB.": {
@@ -536,9 +550,6 @@
    "Magaziner Indemnizatie hrana 2*Sal.minim/12 Cap.II Salarizar": {
     "n": 2
    },
-   "Casier, magaziner M;G": {
-    "n": 1
-   },
    "Magaziner M, gradație vechime 5": {
     "n": 1
    },
@@ -546,9 +557,6 @@
     "n": 1
    },
    "Magaziner M, gradație vechime": {
-    "n": 1
-   },
-   "Magaziner M/G spor pentru condiții periculoase sau vătămătoa": {
     "n": 1
    },
    "548 Magaziner I Gradatia 5 Contractual": {

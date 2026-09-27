@@ -43,7 +43,7 @@ function curata(o) {
 }
 
 function colecteaza() {
-  const run = `continuu-${new Date().toISOString().slice(0, 10)}`;
+  const run = arg("rulare", `continuu-${new Date().toISOString().slice(0, 10)}`); // --rulare= pentru a doua rulare în aceeași zi
   const root = `.cercetare-privata/crawl-runs/${run}`;
   const r = spawnSync(process.execPath, ["scripts/crawler/census.mjs", `--run=${run}`, `--seen=${VAZUTE}`,
     `--evidence=${root}/evidence`, `--budget-min=${arg("buget-min", "300")}`, ...(arg("surse") ? [`--sources=${arg("surse")}`] : []), ...(arg("meserii") ? [`--slugs=${arg("meserii")}`] : [])], { stdio: "inherit" });

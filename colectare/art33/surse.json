@@ -645,6 +645,69 @@
    "fisier": "https://www.uauim.ro/universitatea/personal/2025-2026/Transparenta%20veniturilor%20salariale%20cf.%20L153-2017%20martie%202026.xlsx",
    "perioada": "2026-03",
    "gasitLa": "2026-09-26"
+  },
+  {
+   "id": "sju-ploiesti",
+   "institutie": "Spitalul Județean de Urgență Ploiești",
+   "tip": "spital",
+   "judet": "PH",
+   "pagina": "https://sjup.ro/transparenta-drepturilor-salariale/",
+   "fisier": "https://sjup.ro/wp-content/uploads/2026/01/AUGUST-2025_transparenta-venituri-1.xls",
+   "perioada": "2025-08",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "scju-suceava",
+   "institutie": "Spitalul Clinic Județean de Urgență „Sf. Ioan cel Nou” Suceava",
+   "tip": "spital",
+   "judet": "SV",
+   "pagina": "https://spitaluljudeteansuceava.ro/venituri/",
+   "nota": "pagina /venituri/ nu listează fișierele în HTML; de verificat manual"
+  },
+  {
+   "id": "scju-arad",
+   "institutie": "Spitalul Clinic Județean de Urgență Arad",
+   "tip": "spital",
+   "judet": "AR",
+   "pagina": "https://www.scjarad.ro/administrativ/serviciul-resurse-umane/"
+  },
+  {
+   "id": "sju-pitesti",
+   "institutie": "Spitalul Județean de Urgență Pitești",
+   "tip": "spital",
+   "judet": "AG",
+   "pagina": "https://www.sjupitesti.ro/"
+  },
+  {
+   "id": "sju-botosani",
+   "institutie": "Spitalul Județean de Urgență „Mavromati” Botoșani",
+   "tip": "spital",
+   "judet": "BT",
+   "pagina": "https://www.spitalulmavromati.ro/situatia-drepturilor-salariale"
+  },
+  {
+   "id": "sju-valcea",
+   "institutie": "Spitalul Județean de Urgență Vâlcea",
+   "tip": "spital",
+   "judet": "VL",
+   "pagina": "https://www.sjv.ro/"
+  },
+  {
+   "id": "scju-brasov",
+   "institutie": "Spitalul Clinic Județean de Urgență Brașov",
+   "tip": "spital",
+   "judet": "BV",
+   "pagina": "https://www.hospbv.ro/Home/ResurseUmane/Transparentaveniturisalariale/tabid/211/language/ro-RO/Default.aspx"
+  },
+  {
+   "id": "cj-hunedoara",
+   "institutie": "Consiliul Județean Hunedoara",
+   "tip": "consiliu-judetean",
+   "judet": "HD",
+   "pagina": "https://www.cjhunedoara.ro/index.php/9-uncategorised/373-drepturi-salariale",
+   "fisier": "https://www.cjhunedoara.ro/documente/2026/Personal/Transparenta%20veniturilor%20salariale%2030%20septembrie%202026.pdf",
+   "perioada": "2026-09",
+   "gasitLa": "2026-09-27"
   }
  ]
 }

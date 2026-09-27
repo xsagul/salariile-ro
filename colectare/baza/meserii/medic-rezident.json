@@ -2,7 +2,7 @@
  "slug": "medic-rezident",
  "nume": "Medic rezident",
  "cor": "221102",
- "generatLa": "2026-09-27T10:01:08.851Z",
+ "generatLa": "2026-09-27T10:16:51.858Z",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
   "cuSalariu": 0,
@@ -80,166 +80,165 @@
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
-  "posturi": 3555,
-  "institutii": 14,
+  "posturi": 4434,
+  "institutii": 12,
+  "posturiDinSurseDeVerificat": 40,
   "judete": {
+   "TM": {
+    "n": 1438,
+    "procent": 32.4
+   },
    "CT": {
     "n": 1069,
-    "procent": 30.1
+    "procent": 24.1
    },
    "BH": {
     "n": 880,
-    "procent": 24.8
+    "procent": 19.8
    },
    "SB": {
     "n": 604,
-    "procent": 17
-   },
-   "TM": {
-    "n": 519,
-    "procent": 14.6
+    "procent": 13.6
    },
    "CJ": {
     "n": 181,
-    "procent": 5.1
+    "procent": 4.1
    },
    "BR": {
     "n": 96,
-    "procent": 2.7
+    "procent": 2.2
    },
    "BZ": {
     "n": 65,
-    "procent": 1.8
+    "procent": 1.5
    },
    "BC": {
     "n": 55,
-    "procent": 1.5
-   },
-   "BV": {
-    "n": 39,
-    "procent": 1.1
+    "procent": 1.2
    },
    "AB": {
     "n": 24,
-    "procent": 0.7
+    "procent": 0.5
    },
    "HR": {
     "n": 22,
-    "procent": 0.6
-   },
-   "VS": {
-    "n": 1,
-    "procent": 0
+    "procent": 0.5
    }
   },
   "tipInstitutie": {
    "spital": {
-    "n": 3554,
+    "n": 4434,
     "procent": 100
-   },
-   "dsp": {
-    "n": 1,
-    "procent": 0
    }
   },
   "perioade": {
    "2026-03": {
-    "n": 3342,
-    "procent": 94
+    "n": 4222,
+    "procent": 95.2
    },
    "2026-02": {
     "n": 120,
-    "procent": 3.4
+    "procent": 2.7
    },
    "2025-03": {
     "n": 92,
-    "procent": 2.6
-   },
-   "2026-09": {
-    "n": 1,
-    "procent": 0
+    "procent": 2.1
    }
   },
   "studii": {
    "S": {
     "n": 2668,
-    "procent": 75
+    "procent": 60.2
    },
    "G": {
     "n": 18,
-    "procent": 0.5
+    "procent": 0.4
    },
    "PL": {
     "n": 2,
-    "procent": 0.1
+    "procent": 0
    }
   },
   "bazaBruta": {
-   "n": 3555,
-   "p10": 3823,
+   "n": 4434,
+   "p10": 7125,
    "p25": 7125,
-   "median": 8043,
+   "median": 8375,
    "p75": 9809,
    "p90": 10300,
-   "min": 1508,
+   "min": 1546,
    "max": 13473
   },
   "bazaCuSporuriFixe": {
-   "n": 3555,
-   "p10": 3890,
-   "p25": 7125,
-   "median": 9003,
-   "p75": 10987,
-   "p90": 13512,
-   "min": 1508,
+   "n": 4434,
+   "p10": 7125,
+   "p25": 8043,
+   "median": 9760,
+   "p75": 11476,
+   "p90": 14068,
+   "min": 1546,
    "max": 21819
   },
   "peGradatie": {
    "gradația 0": {
-    "n": 246,
+    "n": 914,
     "p10": 7125,
-    "p25": 7125,
-    "median": 7625,
-    "p75": 8375,
-    "p90": 8375,
-    "min": 3431,
-    "max": 13560
-   },
-   "gradația 2": {
-    "n": 221,
-    "p10": 7659,
-    "p25": 8607,
-    "median": 10299,
-    "p75": 10299,
-    "p90": 11289,
-    "min": 3823,
-    "max": 21819
+    "p25": 7625,
+    "median": 8375,
+    "p75": 9699,
+    "p90": 11550,
+    "min": 3294,
+    "max": 14070
    },
    "gradația 1": {
-    "n": 163,
-    "p10": 4140,
-    "p25": 7659,
-    "median": 9809,
-    "p75": 9809,
-    "p90": 10309,
-    "min": 3541,
-    "max": 15695
+    "n": 901,
+    "p10": 4050,
+    "p25": 8984,
+    "median": 10059,
+    "p75": 12556,
+    "p90": 14358,
+    "min": 1546,
+    "max": 16481
+   },
+   "gradația 2": {
+    "n": 795,
+    "p10": 8042,
+    "p25": 9335,
+    "median": 10300,
+    "p75": 12050,
+    "p90": 14605,
+    "min": 1598,
+    "max": 21819
    },
    "gradația 3": {
-    "n": 39,
+    "n": 143,
     "p10": 8444,
-    "p25": 8741,
-    "median": 9926,
-    "p75": 10814,
-    "p90": 10814,
-    "min": 4014,
-    "max": 12204
-   },
-   "gradația 4": {
-    "n": 9
+    "p25": 9256,
+    "median": 10814,
+    "p75": 11846,
+    "p90": 15496,
+    "min": 1640,
+    "max": 17304
    },
    "gradația 5": {
-    "n": 7
+    "n": 41,
+    "p10": 9495,
+    "p25": 9937,
+    "median": 11361,
+    "p75": 13349,
+    "p90": 14601,
+    "min": 4388,
+    "max": 19092
+   },
+   "gradația 4": {
+    "n": 31,
+    "p10": 8656,
+    "p25": 9831,
+    "median": 11084,
+    "p75": 13701,
+    "p90": 15659,
+    "min": 2448,
+    "max": 17292
    }
   },
   "peFunctie": {
@@ -252,6 +251,46 @@
     "p90": 16480,
     "min": 3640,
     "max": 18169
+   },
+   "MEDIC REZIDENT AN I Legea nr. 153 art. 33": {
+    "n": 342,
+    "p10": 7125,
+    "p25": 7649,
+    "median": 8043,
+    "p75": 9554,
+    "p90": 11389,
+    "min": 7125,
+    "max": 13841
+   },
+   "MEDIC REZIDENT AN III Legea nr. 153 art. 33": {
+    "n": 334,
+    "p10": 8375,
+    "p25": 9244,
+    "median": 9916,
+    "p75": 11982,
+    "p90": 13902,
+    "min": 3294,
+    "max": 17103
+   },
+   "MEDIC REZIDENT AN II Legea nr. 153 art. 33": {
+    "n": 316,
+    "p10": 7795,
+    "p25": 8357,
+    "median": 8872,
+    "p75": 10633,
+    "p90": 12200,
+    "min": 7625,
+    "max": 14063
+   },
+   "MEDIC REZIDENT AN IV Legea nr. 153 art. 33": {
+    "n": 280,
+    "p10": 3773,
+    "p25": 9810,
+    "median": 10830,
+    "p75": 14358,
+    "p90": 15696,
+    "min": 3294,
+    "max": 17304
    },
    "Medic rezident anul I SUPERIOARE ( S )": {
     "n": 262,
@@ -293,15 +332,15 @@
     "min": 7125,
     "max": 8871
    },
-   "MEDIC REZIDENT AN III Legea nr. 153 art. 33": {
-    "n": 124,
-    "p10": 2075,
-    "p25": 2854,
-    "median": 4506,
-    "p75": 5025,
-    "p90": 5695,
-    "min": 1513,
-    "max": 6918
+   "MEDIC REZIDENT AN V Legea nr. 153 art. 33": {
+    "n": 144,
+    "p10": 9810,
+    "p25": 10402,
+    "median": 11396,
+    "p75": 14915,
+    "p90": 15903,
+    "min": 3640,
+    "max": 17304
    },
    "Medici Rezidenti MEDIC REZIDENT ANUL III S": {
     "n": 123,
@@ -323,16 +362,6 @@
     "min": 7125,
     "max": 10830
    },
-   "MEDIC REZIDENT AN II Legea nr. 153 art. 33": {
-    "n": 110,
-    "p10": 1936,
-    "p25": 2501,
-    "median": 3639,
-    "p75": 4575,
-    "p90": 4589,
-    "min": 1508,
-    "max": 5574
-   },
    "Medici Rezidenti MEDIC - REZIDENT AN II S": {
     "n": 108,
     "p10": 7625,
@@ -342,26 +371,6 @@
     "p90": 8607,
     "min": 7625,
     "max": 9495
-   },
-   "MEDIC REZIDENT AN IV Legea nr. 153 art. 33": {
-    "n": 108,
-    "p10": 2210,
-    "p25": 3753,
-    "median": 4851,
-    "p75": 5737,
-    "p90": 5886,
-    "min": 1570,
-    "max": 7004
-   },
-   "MEDIC REZIDENT AN I Legea nr. 153 art. 33": {
-    "n": 105,
-    "p10": 1995,
-    "p25": 2850,
-    "median": 3990,
-    "p75": 4275,
-    "p90": 4504,
-    "min": 1516,
-    "max": 4969
    },
    "Medici Rezidenti MEDIC REZIDENT ANUL IV S": {
     "n": 98,
@@ -392,16 +401,6 @@
     "p90": 10814,
     "min": 9809,
     "max": 11584
-   },
-   "MEDIC REZIDENT AN V Legea nr. 153 art. 33": {
-    "n": 71,
-    "p10": 2055,
-    "p25": 3880,
-    "median": 4994,
-    "p75": 5603,
-    "p90": 5886,
-    "min": 1511,
-    "max": 7004
    },
    "MEDICI REZIDENTI anul III ‐ VI Medic rezident anul III BAZA ": {
     "n": 68,
@@ -543,6 +542,16 @@
     "min": 9129,
     "max": 15884
    },
+   "MEDIC REZIDENT AN VI Legea nr. 153 art. 33": {
+    "n": 21,
+    "p10": 4603,
+    "p25": 4833,
+    "median": 12079,
+    "p75": 12306,
+    "p90": 12351,
+    "min": 4078,
+    "max": 13484
+   },
    "REZIDENTI 2023 Medic rezident anul I Gradatia 2 SUPERIOARE P": {
     "n": 19,
     "p10": 8042,
@@ -673,16 +682,6 @@
     "min": 7625,
     "max": 15954
    },
-   "Medic rezident anul I BAZA": {
-    "n": 11,
-    "p10": 7125,
-    "p25": 7125,
-    "median": 7125,
-    "p75": 7125,
-    "p90": 7125,
-    "min": 7125,
-    "max": 7125
-   },
    "MEDIC REZIDENT ANUL I MEDICI REZIDENTI AN I-VII": {
     "n": 11,
     "p10": 7809,
@@ -749,9 +748,6 @@
    "MEDICI REZIDENTI ANUL II MEDIC REZIDENT AN II ATI SUPERIOARE": {
     "n": 6
    },
-   "Medic rezident anul II": {
-    "n": 6
-   },
    "MEDIC REZIDENT AN V Medici rezidenti": {
     "n": 6
    },
@@ -786,9 +782,6 @@
     "n": 4
    },
    "Sectia Clinica Neurochirurgie MEDIC REZIDENT ANUL VI S": {
-    "n": 4
-   },
-   "Medic rezident anul V Gradatia I": {
     "n": 4
    },
    "MEDIC REZIDENT AN I Medici rezidenti": {
@@ -837,9 +830,6 @@
     "n": 3
    },
    "MEDIC REZIDENT AN V Gradatia 2": {
-    "n": 3
-   },
-   "Medic rezident anul Gradatia": {
     "n": 3
    },
    "MEDICI REZIDENTI MEDIC REZIDENT AN IV Gradatia 2": {
@@ -938,12 +928,6 @@
    "medic rezident an V - garzi": {
     "n": 2
    },
-   "Medic rezident anul II BAZA": {
-    "n": 2
-   },
-   "Medic rezident anul III": {
-    "n": 2
-   },
    "MEDICI REZIDENTI MEDIC REZIDENT AN I BAZA": {
     "n": 2
    },
@@ -970,9 +954,6 @@
    },
    "MEDIC REZIDENT AN V Gradatia 2 Sporurile din anexele 1, 2,3,": {
     "n": 2
-   },
-   "Medic rezident": {
-    "n": 1
    },
    "MEDICI REZIDENTI anul I ‐II Medic rezident anul II BAZA SUPE": {
     "n": 1
@@ -1124,43 +1105,10 @@
    "Unitate Primire Urgente(UPU)-SMURD MEDIC REZIDENT ANUL IV S": {
     "n": 1
    },
-   "MEDIC REZIDENT AN VI Legea nr. 153 art. 33": {
+   "MEDIC REZIDENT AN V Legea nr. 153 art. 33 -15": {
     "n": 1
    },
    "MEDIC REZIDENT AN IV Gradatia 3": {
-    "n": 1
-   },
-   "Medic rezident anul I BAZA o": {
-    "n": 1
-   },
-   "Medic rezident anul I Gradatia I OOO": {
-    "n": 1
-   },
-   "Medic rezident anul I I OOO": {
-    "n": 1
-   },
-   "Medic rezident anul I Gradatia": {
-    "n": 1
-   },
-   "Medic rezident anul I Gradatia I": {
-    "n": 1
-   },
-   "Medic rezident anul II Gradatia I": {
-    "n": 1
-   },
-   "Medic rezident anul Ill BAZA": {
-    "n": 1
-   },
-   "Medic rezident anul Ill Gradatia I": {
-    "n": 1
-   },
-   "Medic rezident anul IV": {
-    "n": 1
-   },
-   "Medic rezident anul V Gradatia": {
-    "n": 1
-   },
-   "Medic rezident anul V Gradatia *240": {
     "n": 1
    },
    "GARZI - BOLI INFECTIOASE MEDIC REZIDENT AN IV Gradatia 1": {

@@ -4,8 +4,13 @@
 import assert from "node:assert/strict";
 import { tipColoana, randValid, fisierAcceptat } from "./colectare/art33/citeste.mjs";
 import { meserie, studii } from "./colectare/art33/functii.mjs";
+import { lunaDocument } from "./colectare/art33/descopera.mjs";
 
 const cazuri = [
+  // Timișoara: antete lungi, suprapuse; munca în zilele de repaus e variabilă, nu fixă
+  ["Cuantum spor acordat pt. munca prestata in zilele de samb., dum. si sarb. legale", 683, "variabil"],
+  ["Salariul de baza conform Legii cadru nr.153/2017 la luna sept 2024", 6817, "baza"],
+  ["Cuantum spor conditii de munca (suma din Sp_PERIC si Sp_SECTIE )", 974, "sporFix"],
   // Bacău: baza, bazele de calcul, valoare vs. procent, sume variabile cu „100%” în nume
   ["Salariu de baza Legea 153/2017", 6407, "baza"],
   ["Baza calcul spor", 4576, "bazaCalcul"],
@@ -53,5 +58,10 @@ assert.equal(randValid({ baza: 6819, sporFix: 1200, variabil: 400 }), null);
 const rand = (baza) => ({ baza, sporFix: 0, variabil: 0, sume: [] });
 assert.equal(fisierAcceptat([rand(6000), rand(6100), rand(6200), rand(6300), rand(6400)]), null);
 assert.match(fisierAcceptat([rand(6000), rand(5), rand(5), rand(5), rand(5)]), /rânduri valide/);
+
+// Descoperirea: luna din numele fișierului bate folderul de încărcare (Ploiești, septembrie 2026)
+assert.equal(lunaDocument("https://sjup.ro/wp-content/uploads/2026/01/Generare_venituri-salariale_032024_cu-luna-022024.pdf", ""), "2024-03");
+assert.equal(lunaDocument("https://sjup.ro/wp-content/uploads/2026/01/AUGUST-2025_transparenta-venituri-1.xls", ""), "2025-08");
+assert.equal(lunaDocument("https://x.ro/documente/2026/Transparenta%20veniturilor%20salariale%2030%20septembrie%202026.pdf", ""), "2026-09");
 
 console.log(`OK: cititorul art. 33 — ${cazuri.length} etichete reale, dicționarul de funcții, validarea`);

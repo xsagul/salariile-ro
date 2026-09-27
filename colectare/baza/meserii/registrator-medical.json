@@ -2,7 +2,7 @@
  "slug": "registrator-medical",
  "nume": "Registrator medical",
  "cor": "422207",
- "generatLa": "2026-09-27T10:01:08.910Z",
+ "generatLa": "2026-09-27T10:16:51.926Z",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
   "cuSalariu": 2,
@@ -98,94 +98,95 @@
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
-  "posturi": 496,
+  "posturi": 577,
   "institutii": 16,
+  "posturiDinSurseDeVerificat": 0,
   "judete": {
    "BH": {
     "n": 105,
-    "procent": 21.2
+    "procent": 18.2
+   },
+   "TM": {
+    "n": 95,
+    "procent": 16.5
    },
    "CT": {
     "n": 92,
-    "procent": 18.5
+    "procent": 15.9
    },
    "SB": {
     "n": 92,
-    "procent": 18.5
+    "procent": 15.9
    },
    "CJ": {
     "n": 62,
-    "procent": 12.5
+    "procent": 10.7
    },
    "AB": {
     "n": 45,
-    "procent": 9.1
+    "procent": 7.8
    },
    "HR": {
     "n": 44,
-    "procent": 8.9
-   },
-   "TM": {
-    "n": 14,
-    "procent": 2.8
+    "procent": 7.6
    },
    "BZ": {
     "n": 10,
-    "procent": 2
+    "procent": 1.7
    },
    "IS": {
     "n": 8,
-    "procent": 1.6
+    "procent": 1.4
    },
    "DJ": {
     "n": 8,
-    "procent": 1.6
+    "procent": 1.4
    },
    "BC": {
     "n": 7,
-    "procent": 1.4
+    "procent": 1.2
    },
    "B": {
     "n": 6,
-    "procent": 1.2
+    "procent": 1
    },
    "BR": {
     "n": 3,
-    "procent": 0.6
+    "procent": 0.5
    }
   },
   "tipInstitutie": {
    "spital": {
-    "n": 496,
+    "n": 577,
     "procent": 100
    }
   },
   "perioade": {
    "2026-03": {
-    "n": 444,
-    "procent": 89.5
+    "n": 525,
+    "procent": 91
    },
    "2025-03": {
     "n": 27,
-    "procent": 5.4
+    "procent": 4.7
    },
    "2026-02": {
     "n": 17,
-    "procent": 3.4
+    "procent": 2.9
    },
    "2024-03": {
     "n": 8,
-    "procent": 1.6
+    "procent": 1.4
    }
   },
   "studii": {
    "M": {
     "n": 335,
-    "procent": 67.5
+    "procent": 58.1
    },
    "G": {
     "n": 5,
-    "procent": 1
+    "procent": 0.9
    },
    "PL": {
     "n": 1,
@@ -193,71 +194,78 @@
    }
   },
   "bazaBruta": {
-   "n": 496,
-   "p10": 4972,
-   "p25": 5483,
-   "median": 5762,
+   "n": 577,
+   "p10": 5221,
+   "p25": 5556,
+   "median": 5771,
    "p75": 5838,
    "p90": 6227,
-   "min": 1532,
+   "min": 1557,
    "max": 7591
   },
   "bazaCuSporuriFixe": {
-   "n": 496,
-   "p10": 5341,
-   "p25": 5887,
-   "median": 6242,
-   "p75": 7349,
-   "p90": 8416,
-   "min": 1532,
+   "n": 577,
+   "p10": 5539,
+   "p25": 5920,
+   "median": 6243,
+   "p75": 7291,
+   "p90": 8388,
+   "min": 2102,
    "max": 11729
   },
   "peGradatie": {
    "gradația 5": {
-    "n": 81,
-    "p10": 5971,
-    "p25": 6165,
+    "n": 240,
+    "p10": 5965,
+    "p25": 6132,
     "median": 6398,
-    "p75": 8123,
-    "p90": 10348,
+    "p75": 7370,
+    "p90": 8407,
     "min": 5589,
-    "max": 11443.7
+    "max": 11729
    },
    "gradația 4": {
-    "n": 25,
-    "p10": 5920,
-    "p25": 5934,
+    "n": 66,
+    "p10": 5872,
+    "p25": 5936,
     "median": 6243,
-    "p75": 7346,
-    "p90": 8149,
-    "min": 5865,
+    "p75": 7331,
+    "p90": 7774,
+    "min": 5619,
     "max": 10871.9
    },
+   "gradația 3": {
+    "n": 58,
+    "p10": 5740,
+    "p25": 5849,
+    "median": 6079,
+    "p75": 7323,
+    "p90": 8556,
+    "min": 5482,
+    "max": 10400.9
+   },
    "gradația 2": {
-    "n": 17,
-    "p10": 5210,
-    "p25": 5449,
-    "median": 6115,
-    "p75": 6825,
-    "p90": 7856,
+    "n": 48,
+    "p10": 5232,
+    "p25": 5374,
+    "median": 5573,
+    "p75": 6559,
+    "p90": 6953,
     "min": 4075,
     "max": 9107.8
    },
-   "gradația 3": {
-    "n": 17,
-    "p10": 5786,
-    "p25": 6008,
-    "median": 7017,
-    "p75": 8466,
-    "p90": 9898,
-    "min": 5734,
-    "max": 10400.9
-   },
    "gradația 1": {
-    "n": 7
+    "n": 13,
+    "p10": 5116,
+    "p25": 5236,
+    "median": 5286,
+    "p75": 5568,
+    "p90": 6966,
+    "min": 4972,
+    "max": 7978.85
    },
    "gradația 0": {
-    "n": 4
+    "n": 9
    }
   },
   "peFunctie": {
@@ -270,6 +278,16 @@
     "p90": 7231,
     "min": 4727,
     "max": 9085
+   },
+   "REGISTRATOR MEDICAL PRINCIPAL Legea nr. 153 art. 33": {
+    "n": 69,
+    "p10": 5852,
+    "p25": 5965,
+    "median": 6200,
+    "p75": 7022,
+    "p90": 7575,
+    "min": 5292,
+    "max": 10860
    },
    "Registrator medical principal MEDII ( M )": {
     "n": 52,
@@ -311,6 +329,16 @@
     "min": 5215,
     "max": 11169
    },
+   "REGISTRATOR MEDICAL Legea nr. 153 art. 33": {
+    "n": 23,
+    "p10": 4943,
+    "p25": 5738,
+    "median": 5992,
+    "p75": 6440,
+    "p90": 6878,
+    "min": 4625,
+    "max": 7262
+   },
    "registrator medical": {
     "n": 14,
     "p10": 5191,
@@ -320,16 +348,6 @@
     "p90": 6554,
     "min": 5137,
     "max": 8329
-   },
-   "REGISTRATOR MEDICAL PRINCIPAL Legea nr. 153 art. 33": {
-    "n": 14,
-    "p10": 1533,
-    "p25": 1533,
-    "median": 1641,
-    "p75": 1852,
-    "p90": 2504,
-    "min": 1532,
-    "max": 3271
    },
    "UPU‐SMURD‐str.Gh.Doja nr.65 Registrator medical principal **": {
     "n": 12,
@@ -387,6 +405,9 @@
     "n": 3
    },
    "Laborator Analize Medicale REGISTRATOR MEDICAL - PRINCIPAL M": {
+    "n": 3
+   },
+   "REGISTRATOR MEDICAL DEBUTANT Legea nr. 153 art. 33": {
     "n": 3
    },
    "REGISTRATOR MEDICAL Gradatia 5": {

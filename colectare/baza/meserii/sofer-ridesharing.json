@@ -2,7 +2,7 @@
  "slug": "sofer-ridesharing",
  "nume": "Șofer ridesharing",
  "cor": "832201",
- "generatLa": "2026-09-27T10:01:09.069Z",
+ "generatLa": "2026-09-27T10:16:52.167Z",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
   "cuSalariu": 2,
@@ -427,6 +427,7 @@
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
   "posturi": 0,
   "institutii": 0,
+  "posturiDinSurseDeVerificat": 0,
   "judete": {},
   "tipInstitutie": {},
   "perioade": {},
