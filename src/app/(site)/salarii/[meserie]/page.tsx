@@ -151,6 +151,9 @@ function faqPentru(date: DateMeserie) {
     ? `La angajatorii publici, un ${de} ia în mână ${lei(c.net)} lei pe lună, salariul fix din mijloc; jumătate din posturi au între ${lei(c.interval![0])} și ${lei(c.interval![1])} lei.${c.platit.cuVariabil && c.platit.cuVariabil.net > c.net * 1.03 ? ` Cu ture și gărzi, ${lei(c.platit.cuVariabil.net)} lei.` : ""} Cifrele vin din salariile publicate de ${c.platit.institutii} instituții publice din ${c.platit.judete} județe, netul fiind calculat pentru o persoană fără persoane în întreținere.`
     : c?.sursa === "oferit" && c.oferit
     ? `La angajare se oferă unui ${de} în jur de ${lei(c.net)} lei net pe lună, mijlocul salariilor din ${c.oferit.anunturi} anunțuri verificate.`
+    : candidata?.veche
+    // Grila veche (2022) nu e salariul de azi, iar media INS a sectorului nu e a meseriei.
+    ? `Salariul unui ${de} e stabilit prin lege, cu gradații de vechime, sporuri și, unde e cazul, indemnizație de hrană. Nu afișăm încă o cifră: tabelele din lege sunt la nivelul din 2022 și nu cuprind majorările date de atunci prin ordonanțe.`
     : descriereReper(date);
   const intrebari = [
     { q: `Cât câștigă un ${de} în România?`, a: raspunsPrincipal },
@@ -236,6 +239,8 @@ export default async function MeseriePage({ params }: Props) {
     const r = reperMeserie(dateMeserieSauEroare(alta));
     // Meseriile plătite după lege: cifra de început din grilă, ca în cardul paginii lor.
     const start = c ? null : netDeStart(alta.slug);
+    // Grilele rămase la 2022 nu sunt salariul de azi, iar media INS a sectorului nu e a meseriei.
+    if (!c && !start && grilaPublica(alta.slug)?.veche) return { alta, cifra: undefined };
     return { alta, cifra: c ? `${lei(c.net)} lei net` : start ? `de la ${lei(start)} lei net` : r.value ? textIndicator(r) : undefined };
   });
   const cor = meserie.cor ? corCatalogue.occupations[meserie.slug as keyof typeof corCatalogue.occupations] : undefined;
@@ -263,6 +268,15 @@ export default async function MeseriePage({ params }: Props) {
                 // Meseriile plătite după lege: cifra din grilă, fără rândurile goale ale surselor
                 // care nu se aplică („meserie plătită după grilă, nu prin ofertă”).
                 <SalariuGrila slug={slug} de={meserie.de} />
+              ) : grilaPublica(slug)?.veche ? (
+                // Meseriile plătite după o grilă rămasă la nivelul din 2022 (armată, poliție,
+                // magistrați...): nici grila veche, nici media INS a sectorului nu sunt salariul
+                // lor (decizia proprietarului, 27 septembrie 2026). Până la sumele plătite azi,
+                // primul ecran rămâne fără cifră.
+                <p className="mt-6 text-sm text-stone-600" data-salary-kind="grila-legala-neactualizata">
+                  Salariul se stabilește prin lege, pe grade și vechime, cu sporurile prevăzute de lege ·{" "}
+                  <Link href={`/salarii/acoperire#${slug}`} className="underline underline-offset-2">sursele</Link>
+                </p>
               ) : (
                 <>
                   <ReperSalariu date={date} />
