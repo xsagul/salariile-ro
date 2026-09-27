@@ -2,7 +2,7 @@
  "slug": "economist",
  "nume": "Economist",
  "cor": "263102",
- "generatLa": "2026-09-27T10:16:52.013Z",
+ "generatLa": "2026-09-27T10:24:50.154Z",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
   "cuSalariu": 22,
@@ -400,99 +400,107 @@
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
-  "posturi": 309,
-  "institutii": 16,
-  "posturiDinSurseDeVerificat": 22,
+  "posturi": 327,
+  "institutii": 18,
+  "posturiDinSurseDeVerificat": 16,
   "judete": {
    "BH": {
     "n": 49,
-    "procent": 15.9
+    "procent": 15
    },
    "BR": {
     "n": 34,
-    "procent": 11
+    "procent": 10.4
    },
    "CJ": {
     "n": 34,
-    "procent": 11
+    "procent": 10.4
    },
    "BC": {
     "n": 32,
-    "procent": 10.4
+    "procent": 9.8
    },
    "CT": {
     "n": 29,
-    "procent": 9.4
+    "procent": 8.9
    },
    "TM": {
     "n": 28,
-    "procent": 9.1
+    "procent": 8.6
    },
    "SB": {
     "n": 25,
-    "procent": 8.1
+    "procent": 7.6
    },
    "BZ": {
     "n": 21,
-    "procent": 6.8
+    "procent": 6.4
    },
    "GR": {
     "n": 21,
-    "procent": 6.8
+    "procent": 6.4
    },
    "HR": {
     "n": 19,
-    "procent": 6.1
+    "procent": 5.8
+   },
+   "SV": {
+    "n": 12,
+    "procent": 3.7
    },
    "IS": {
     "n": 6,
-    "procent": 1.9
+    "procent": 1.8
+   },
+   "BV": {
+    "n": 6,
+    "procent": 1.8
    },
    "DJ": {
     "n": 6,
-    "procent": 1.9
+    "procent": 1.8
    },
    "B": {
     "n": 5,
-    "procent": 1.6
+    "procent": 1.5
    }
   },
   "tipInstitutie": {
    "spital": {
-    "n": 309,
+    "n": 327,
     "procent": 100
    }
   },
   "perioade": {
    "2026-03": {
-    "n": 214,
-    "procent": 69.3
+    "n": 220,
+    "procent": 67.3
    },
    "2026-02": {
     "n": 53,
-    "procent": 17.2
+    "procent": 16.2
+   },
+   "2025-03": {
+    "n": 27,
+    "procent": 8.3
    },
    "2022-09": {
     "n": 21,
-    "procent": 6.8
-   },
-   "2025-03": {
-    "n": 15,
-    "procent": 4.9
+    "procent": 6.4
    },
    "2024-03": {
     "n": 6,
-    "procent": 1.9
+    "procent": 1.8
    }
   },
   "studii": {
    "S": {
-    "n": 158,
-    "procent": 51.1
+    "n": 170,
+    "procent": 52
    },
    "G": {
     "n": 12,
-    "procent": 3.9
+    "procent": 3.7
    },
    "M": {
     "n": 1,
@@ -500,43 +508,43 @@
    }
   },
   "bazaBruta": {
-   "n": 309,
-   "p10": 6814,
+   "n": 327,
+   "p10": 6835,
    "p25": 8042,
-   "median": 9098,
-   "p75": 9327,
-   "p90": 9960,
+   "median": 8947,
+   "p75": 9326,
+   "p90": 9720,
    "min": 2277,
    "max": 12362
   },
   "bazaCuSporuriFixe": {
-   "n": 309,
-   "p10": 7031,
+   "n": 327,
+   "p10": 7035,
    "p25": 8133,
-   "median": 9398,
+   "median": 9348,
    "p75": 9628,
-   "p90": 10468,
+   "p90": 10460,
    "min": 2397,
    "max": 13786
   },
   "peGradatie": {
    "gradația 5": {
-    "n": 156,
+    "n": 170,
     "p10": 8042,
-    "p25": 8220,
+    "p25": 8795,
     "median": 9626,
     "p75": 9631,
-    "p90": 10431,
+    "p90": 10293,
     "min": 6941,
     "max": 12381
    },
    "gradația 4": {
-    "n": 30,
-    "p10": 7382,
-    "p25": 8553,
+    "n": 33,
+    "p10": 7391,
+    "p25": 8579,
     "median": 9399,
-    "p75": 9531,
-    "p90": 10456,
+    "p75": 9497,
+    "p90": 10409,
     "min": 5994,
     "max": 12081
    },
@@ -551,12 +559,12 @@
     "max": 12381
    },
    "gradația 2": {
-    "n": 11,
-    "p10": 6187,
-    "p25": 6578,
-    "median": 7222,
-    "p75": 8129,
-    "p90": 8358,
+    "n": 12,
+    "p10": 6202,
+    "p25": 6354,
+    "median": 7040,
+    "p75": 8035,
+    "p90": 8354,
     "min": 6150,
     "max": 8681
    },
@@ -675,6 +683,9 @@
     "min": 8133,
     "max": 8946
    },
+   "economist spec. IA SUPERIOARE Legea nr.153 art.33 Gradatia 5": {
+    "n": 9
+   },
    "ECONOMIST SPECIALIST IA SERVICIU RESURSE UMANE": {
     "n": 9
    },
@@ -718,6 +729,12 @@
     "n": 3
    },
    "Comp. Contabilitate si Buget ECONOMIST - SPECIALIST IA S": {
+    "n": 3
+   },
+   "economist spec. IA SUPERIOARE Legea nr.153 art.33 Gradatia 4": {
+    "n": 3
+   },
+   "Economist Gradatia": {
     "n": 3
    },
    "ECONOMIST SPECIALIST IA COMPARTIMENT AUDIT": {
@@ -862,6 +879,15 @@
     "n": 1
    },
    "PERSONAL ECONOMIST IA Gradatia 5": {
+    "n": 1
+   },
+   "Economist IA Gradatia": {
+    "n": 1
+   },
+   "Economist II Gradatia": {
+    "n": 1
+   },
+   "Tchnieian economist II Gradatia 491S": {
     "n": 1
    },
    "ECONOMIST I SERVICIU ADMINISTRATIV, GOSPODARIRE-DESERVIRE": {

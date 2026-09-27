@@ -2,7 +2,7 @@
  "slug": "educator",
  "nume": "Educator",
  "cor": "234201",
- "generatLa": "2026-09-27T10:16:51.991Z",
+ "generatLa": "2026-09-27T10:24:50.128Z",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
   "cuSalariu": 5,
@@ -176,7 +176,7 @@
    "p75": 5644,
    "p90": 5976,
    "min": 4332,
-   "max": 8598
+   "max": 9098
   },
   "peGradatie": {},
   "peFunctie": {

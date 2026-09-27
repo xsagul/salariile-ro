@@ -33,7 +33,12 @@ export function tipColoana(eticheta, procent, v = 0) {
   // sumă, oricât de aproape ar fi cuvântul „procent”.
   const cuvantProcent = /(^|[\s(])(%|procent\w*|cota)([\s)]|$)/.test(e) && !/(^|\s)(valoare|suma|sume)(\s|$)/.test(e);
   if (v <= 100 && (procent || cuvantProcent)) return "procent";
-  if (/baza\s*(de\s*)?calcul|baz\w*\s+calcul/.test(e)) return "bazaCalcul";
+  // Suceava are trei „salar bază”: pentru calculul sporului de ture (4.304), din fișa postului
+  // din decembrie 2023 (5.775) și „cf. L153/2017 și bază de calcul pentru sporuri” (8.084) —
+  // ultima e baza. Fișa veche nu e baza de acum.
+  if (/\(fisa\)/.test(e)) return "necunoscut";
+  if (/salar\w*\s*baza\s*cf\.?\s*l\.?\s*153/.test(e)) return "baza";
+  if (/baza\s*(de\s*|pt\.?\s*|pentru\s*)?calcul|baz\w*\s+calcul/.test(e)) return "bazaCalcul";
   // „Total salariu brut”: cel mai sigur număr, când instituția îl publică (DGASPC Sector 2).
   if (/\btotal\b/.test(e) && !/ore|zile/.test(e)) return "total";
   if (/hran|voucher|vacant|vacan/.test(e)) return "hrana";
@@ -47,6 +52,9 @@ export function tipColoana(eticheta, procent, v = 0) {
   // Prescurtări: „Val. cond deoseb”, „Val. cond deoseb de peric”.
   if (/\bval\.?\s*(cond|spor)|\bcond\.?\s*deoseb|\bdeoseb|\bperic/.test(e)) return "sporFix";
   if (/spor|indemniz|titlu|doctor|cfp|control financiar|gestiun|condit|pericul|deosebit|stres|risc|radiat|toxic|handicap|izolat|compen|19\/2024|3\^1/.test(e)) return "sporFix";
+  // Sub-coloanele sporurilor de condiții pe anexele HG 153/2018 („Anexa 5 Suma”), sporul de
+  // handicap prescurtat („hand … Suma”) și cel după HG 917 (Suceava).
+  if (/\banexa\s*\d+\b[^%]*\bsuma\b|\bhand\b[^%]*\bsuma\b|\bhg\s*917\b[^%]*\bsuma\b/.test(e)) return "sporFix";
   return "necunoscut";
 }
 
@@ -139,7 +147,10 @@ export async function randuriXlsx(fisier) {
 // are un singur număr și nu e rând de date (Miercurea Ciuc, 26 septembrie 2026).
 const eDate = (l) => {
   const nr = l.items.map((i) => valoare(i.t)).filter(Boolean);
-  return nr.length >= 2 && nr.some((n) => n.v >= 1000 && !n.procent) && l.items.some((i) => /[a-zăâîșț]{3}/i.test(i.t));
+  // Un an din antet („Decembrie 2023”, „L153/2,017”, Suceava) nu e o sumă: altfel antetul de
+  // sub el ar fi luat drept primul rând de date, iar etichetele coloanelor s-ar pierde.
+  const an = (n) => Number.isInteger(n.v) && n.v >= 1990 && n.v <= 2035;
+  return nr.length >= 2 && nr.some((n) => n.v >= 1000 && !n.procent && !an(n)) && l.items.some((i) => /[a-zăâîșț]{3}/i.test(i.t));
 };
 
 /**
@@ -262,6 +273,11 @@ export function fisierAcceptat(randuri) {
   const baze = valide.map((r) => r.baza).sort((a, b) => a - b);
   const med = baze[Math.floor(baze.length / 2)];
   if (med < 3000 || med > 25000) return `mediana bazelor neplauzibilă (${med})`;
+  // Sub 3.700 lei (salariul minim din 2024, cel mai mic al perioadelor citite) o bază de post
+  // cu normă întreagă nu există. Printre sursele citite corect, cel mult 11% din rânduri (norme
+  // parțiale); la Suceava, unde se citise „baza pentru calculul sporului de ture”, peste 40%.
+  const sub = valide.filter((r) => r.baza < 3700).length / valide.length;
+  if (sub > 0.25) return `baze sub salariul minim la ${Math.round(100 * sub)}% din rânduri`;
   if (randuri.filter((r) => r.sume.some((x) => x.tip === "baza?")).length / randuri.length > 0.3) return "baza ghicită la peste 30% din rânduri";
   return null;
 }

@@ -662,7 +662,10 @@
    "tip": "spital",
    "judet": "SV",
    "pagina": "https://spitaluljudeteansuceava.ro/venituri/",
-   "nota": "pagina /venituri/ nu listează fișierele în HTML; de verificat manual"
+   "nota": "pagina /venituri/ nu listează fișierele în HTML; fișierul găsit după tiparul adreselor din 2023–2024",
+   "fisier": "https://spitaluljudeteansuceava.ro/documente/Uz%20intern/Venituri/Transparenta%20salariala%20(Legea%20153-art.33)/2025/TRANSPARENTA%20SALARIALA%20-%2031%20MARTIE%202025.pdf",
+   "perioada": "2025-03",
+   "gasitLa": "2026-09-27"
   },
   {
    "id": "scju-arad",

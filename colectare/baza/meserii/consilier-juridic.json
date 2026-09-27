@@ -2,7 +2,7 @@
  "slug": "consilier-juridic",
  "nume": "Consilier juridic",
  "cor": "261103",
- "generatLa": "2026-09-27T10:16:52.038Z",
+ "generatLa": "2026-09-27T10:24:50.180Z",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
   "cuSalariu": 14,
@@ -319,166 +319,178 @@
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
-  "posturi": 67,
-  "institutii": 20,
-  "posturiDinSurseDeVerificat": 10,
+  "posturi": 72,
+  "institutii": 22,
+  "posturiDinSurseDeVerificat": 9,
   "judete": {
    "CL": {
     "n": 13,
-    "procent": 19.4
+    "procent": 18.1
    },
    "HR": {
     "n": 10,
-    "procent": 14.9
+    "procent": 13.9
    },
    "SB": {
     "n": 6,
-    "procent": 9
+    "procent": 8.3
    },
    "BR": {
     "n": 5,
-    "procent": 7.5
+    "procent": 6.9
    },
    "SJ": {
     "n": 4,
-    "procent": 6
+    "procent": 5.6
    },
    "BH": {
     "n": 4,
-    "procent": 6
+    "procent": 5.6
    },
    "CJ": {
     "n": 4,
-    "procent": 6
+    "procent": 5.6
+   },
+   "SV": {
+    "n": 4,
+    "procent": 5.6
    },
    "B": {
     "n": 3,
-    "procent": 4.5
+    "procent": 4.2
    },
    "BC": {
     "n": 3,
-    "procent": 4.5
+    "procent": 4.2
    },
    "IS": {
     "n": 2,
-    "procent": 3
+    "procent": 2.8
    },
    "CT": {
     "n": 2,
-    "procent": 3
+    "procent": 2.8
    },
    "TM": {
     "n": 2,
-    "procent": 3
+    "procent": 2.8
    },
    "AB": {
     "n": 2,
-    "procent": 3
+    "procent": 2.8
    },
    "BZ": {
     "n": 2,
-    "procent": 3
+    "procent": 2.8
    },
    "MS": {
     "n": 2,
-    "procent": 3
+    "procent": 2.8
    },
    "BV": {
     "n": 1,
-    "procent": 1.5
+    "procent": 1.4
+   },
+   "VS": {
+    "n": 1,
+    "procent": 1.4
    },
    "GR": {
     "n": 1,
-    "procent": 1.5
+    "procent": 1.4
    },
    "DJ": {
     "n": 1,
-    "procent": 1.5
+    "procent": 1.4
    }
   },
   "tipInstitutie": {
    "spital": {
-    "n": 45,
-    "procent": 67.2
+    "n": 49,
+    "procent": 68.1
    },
    "dgaspc": {
     "n": 14,
-    "procent": 20.9
+    "procent": 19.4
    },
    "consiliu-judetean": {
     "n": 4,
-    "procent": 6
+    "procent": 5.6
    },
    "universitate": {
     "n": 4,
-    "procent": 6
+    "procent": 5.6
+   },
+   "dsp": {
+    "n": 1,
+    "procent": 1.4
    }
   },
   "perioade": {
    "2026-03": {
     "n": 55,
-    "procent": 82.1
+    "procent": 76.4
+   },
+   "2026-09": {
+    "n": 5,
+    "procent": 6.9
+   },
+   "2025-03": {
+    "n": 5,
+    "procent": 6.9
    },
    "2026-02": {
     "n": 5,
-    "procent": 7.5
-   },
-   "2026-09": {
-    "n": 4,
-    "procent": 6
-   },
-   "2025-03": {
-    "n": 1,
-    "procent": 1.5
+    "procent": 6.9
    },
    "2022-09": {
     "n": 1,
-    "procent": 1.5
+    "procent": 1.4
    },
    "2024-03": {
     "n": 1,
-    "procent": 1.5
+    "procent": 1.4
    }
   },
   "studii": {
    "S": {
-    "n": 27,
-    "procent": 40.3
+    "n": 31,
+    "procent": 43.1
    }
   },
   "bazaBruta": {
-   "n": 67,
-   "p10": 7163,
-   "p25": 8014,
-   "median": 8808,
-   "p75": 9417,
-   "p90": 11091,
+   "n": 72,
+   "p10": 6967,
+   "p25": 8028,
+   "median": 8699,
+   "p75": 9374,
+   "p90": 11012,
    "min": 2386,
    "max": 12081
   },
   "bazaCuSporuriFixe": {
-   "n": 67,
-   "p10": 7409,
+   "n": 72,
+   "p10": 7389,
    "p25": 8042,
-   "median": 8826,
-   "p75": 9642,
-   "p90": 11091,
+   "median": 8795,
+   "p75": 9636,
+   "p90": 11042,
    "min": 2386,
    "max": 12381
   },
   "peGradatie": {
    "gradația 5": {
-    "n": 23,
+    "n": 26,
     "p10": 8042,
-    "p25": 8307,
-    "median": 9626,
-    "p75": 9702,
-    "p90": 11543,
+    "p25": 8430,
+    "median": 9176,
+    "p75": 9631,
+    "p90": 11375,
     "min": 8042,
     "max": 12381
    },
    "gradația 2": {
-    "n": 5
+    "n": 6
    },
    "gradația 4": {
     "n": 4
@@ -519,6 +531,9 @@
    "COMPARTIMENT JURIDIC Consilier juridic gradul IA Gradatia 5 ": {
     "n": 3
    },
+   "consilier juridic gradul IA SUPERIOARE Legea nr.153 art.33 G": {
+    "n": 3
+   },
    "Consilier juridic gradul IA SUPERIOARE ( S )": {
     "n": 2
    },
@@ -532,6 +547,9 @@
     "n": 2
    },
    "consilier juridic superior": {
+    "n": 1
+   },
+   "Consilier juridic superior": {
     "n": 1
    },
    "539 Consilier juridic grad II Gradatia 4 Contractual": {
@@ -559,6 +577,9 @@
     "n": 1
    },
    "Serviciul de Achizitii Publice CONSILIER JURIDIC - IA S": {
+    "n": 1
+   },
+   "consilier juridic II SUPERIOARE Legea nr.153 art.33 Gradatia": {
     "n": 1
    },
    "CONSILIER JURIDIC IA Gradatia 5": {

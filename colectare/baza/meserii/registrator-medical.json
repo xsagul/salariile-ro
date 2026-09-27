@@ -2,7 +2,7 @@
  "slug": "registrator-medical",
  "nume": "Registrator medical",
  "cor": "422207",
- "generatLa": "2026-09-27T10:16:51.926Z",
+ "generatLa": "2026-09-27T10:24:50.055Z",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
   "cuSalariu": 2,
@@ -98,37 +98,37 @@
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
-  "posturi": 577,
-  "institutii": 16,
+  "posturi": 584,
+  "institutii": 17,
   "posturiDinSurseDeVerificat": 0,
   "judete": {
    "BH": {
     "n": 105,
-    "procent": 18.2
+    "procent": 18
    },
    "TM": {
     "n": 95,
-    "procent": 16.5
+    "procent": 16.3
    },
    "CT": {
     "n": 92,
-    "procent": 15.9
+    "procent": 15.8
    },
    "SB": {
     "n": 92,
-    "procent": 15.9
+    "procent": 15.8
    },
    "CJ": {
     "n": 62,
-    "procent": 10.7
+    "procent": 10.6
    },
    "AB": {
     "n": 45,
-    "procent": 7.8
+    "procent": 7.7
    },
    "HR": {
     "n": 44,
-    "procent": 7.6
+    "procent": 7.5
    },
    "BZ": {
     "n": 10,
@@ -141,6 +141,10 @@
    "DJ": {
     "n": 8,
     "procent": 1.4
+   },
+   "SV": {
+    "n": 7,
+    "procent": 1.2
    },
    "BC": {
     "n": 7,
@@ -157,18 +161,18 @@
   },
   "tipInstitutie": {
    "spital": {
-    "n": 577,
+    "n": 584,
     "procent": 100
    }
   },
   "perioade": {
    "2026-03": {
     "n": 525,
-    "procent": 91
+    "procent": 89.9
    },
    "2025-03": {
-    "n": 27,
-    "procent": 4.7
+    "n": 34,
+    "procent": 5.8
    },
    "2026-02": {
     "n": 17,
@@ -181,8 +185,8 @@
   },
   "studii": {
    "M": {
-    "n": 335,
-    "procent": 58.1
+    "n": 342,
+    "procent": 58.6
    },
    "G": {
     "n": 5,
@@ -194,7 +198,7 @@
    }
   },
   "bazaBruta": {
-   "n": 577,
+   "n": 584,
    "p10": 5221,
    "p25": 5556,
    "median": 5771,
@@ -204,18 +208,18 @@
    "max": 7591
   },
   "bazaCuSporuriFixe": {
-   "n": 577,
-   "p10": 5539,
+   "n": 584,
+   "p10": 5553,
    "p25": 5920,
-   "median": 6243,
-   "p75": 7291,
-   "p90": 8388,
+   "median": 6255,
+   "p75": 7346,
+   "p90": 8393,
    "min": 2102,
    "max": 11729
   },
   "peGradatie": {
    "gradația 5": {
-    "n": 240,
+    "n": 241,
     "p10": 5965,
     "p25": 6132,
     "median": 6398,
@@ -225,42 +229,42 @@
     "max": 11729
    },
    "gradația 4": {
-    "n": 66,
-    "p10": 5872,
-    "p25": 5936,
+    "n": 67,
+    "p10": 5873,
+    "p25": 5938,
     "median": 6243,
-    "p75": 7331,
-    "p90": 7774,
+    "p75": 7345,
+    "p90": 7937,
     "min": 5619,
-    "max": 10871.9
+    "max": 10895
    },
    "gradația 3": {
-    "n": 58,
-    "p10": 5740,
-    "p25": 5849,
-    "median": 6079,
-    "p75": 7323,
-    "p90": 8556,
+    "n": 60,
+    "p10": 5742,
+    "p25": 5853,
+    "median": 6148,
+    "p75": 7532,
+    "p90": 8496,
     "min": 5482,
     "max": 10400.9
    },
    "gradația 2": {
-    "n": 48,
-    "p10": 5232,
-    "p25": 5374,
-    "median": 5573,
-    "p75": 6559,
-    "p90": 6953,
+    "n": 50,
+    "p10": 5235,
+    "p25": 5402,
+    "median": 5639,
+    "p75": 6677,
+    "p90": 7219,
     "min": 4075,
     "max": 9107.8
    },
    "gradația 1": {
-    "n": 13,
-    "p10": 5116,
+    "n": 14,
+    "p10": 5120,
     "p25": 5236,
-    "median": 5286,
-    "p75": 5568,
-    "p90": 6966,
+    "median": 5316,
+    "p75": 6036,
+    "p90": 7180,
     "min": 4972,
     "max": 7978.85
    },
@@ -366,6 +370,9 @@
     "n": 8
    },
    "Ambulatoriu integrat - ALTII REGISTRATOR MEDICAL - PRINCIPAL": {
+    "n": 6
+   },
+   "operator registrator medical de urgenta UPU MEDII Legea nr.1": {
     "n": 6
    },
    "REGISTRATOR MEDICAL (UPU) MEDII Gradatia": {
@@ -618,6 +625,9 @@
     "n": 1
    },
    "Serviciul Judetean de Medicina Legala IML CLUJ REGISTRATOR M": {
+    "n": 1
+   },
+   "registrator medical din AP si L MEDII Legea nr.153 art.33 Gr": {
     "n": 1
    },
    "REGISTRATOR MEDICAL Gradatia 1": {

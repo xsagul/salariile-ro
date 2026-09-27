@@ -2,7 +2,7 @@
  "slug": "electrician",
  "nume": "Electrician",
  "cor": "741101",
- "generatLa": "2026-09-27T10:16:52.091Z",
+ "generatLa": "2026-09-27T10:24:50.234Z",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
   "cuSalariu": 249,
@@ -669,102 +669,110 @@
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
-  "posturi": 40,
-  "institutii": 7,
+  "posturi": 47,
+  "institutii": 8,
   "posturiDinSurseDeVerificat": 1,
   "judete": {
    "BH": {
     "n": 13,
-    "procent": 32.5
+    "procent": 27.7
    },
    "TM": {
     "n": 12,
-    "procent": 30
+    "procent": 25.5
+   },
+   "SV": {
+    "n": 7,
+    "procent": 14.9
    },
    "GR": {
     "n": 6,
-    "procent": 15
+    "procent": 12.8
    },
    "BR": {
     "n": 3,
-    "procent": 7.5
+    "procent": 6.4
    },
    "CJ": {
     "n": 3,
-    "procent": 7.5
+    "procent": 6.4
    },
    "DJ": {
     "n": 2,
-    "procent": 5
+    "procent": 4.3
    },
    "B": {
     "n": 1,
-    "procent": 2.5
+    "procent": 2.1
    }
   },
   "tipInstitutie": {
    "spital": {
-    "n": 40,
+    "n": 47,
     "procent": 100
    }
   },
   "perioade": {
    "2026-03": {
     "n": 32,
-    "procent": 80
+    "procent": 68.1
+   },
+   "2025-03": {
+    "n": 7,
+    "procent": 14.9
    },
    "2022-09": {
     "n": 6,
-    "procent": 15
+    "procent": 12.8
    },
    "2024-03": {
     "n": 2,
-    "procent": 5
+    "procent": 4.3
    }
   },
   "studii": {
    "G": {
-    "n": 16,
-    "procent": 40
+    "n": 21,
+    "procent": 44.7
    },
    "M": {
-    "n": 3,
-    "procent": 7.5
+    "n": 5,
+    "procent": 10.6
    }
   },
   "bazaBruta": {
-   "n": 40,
+   "n": 47,
    "p10": 3878,
-   "p25": 5679,
-   "median": 6054,
+   "p25": 5714,
+   "median": 5967,
    "p75": 6498,
    "p90": 6515,
    "min": 3615,
    "max": 6515
   },
   "bazaCuSporuriFixe": {
-   "n": 40,
+   "n": 47,
    "p10": 3878,
-   "p25": 5948,
-   "median": 6387,
-   "p75": 6757,
-   "p90": 6772,
+   "p25": 5973,
+   "median": 6200,
+   "p75": 6753,
+   "p90": 6763,
    "min": 3615,
    "max": 6772
   },
   "peGradatie": {
    "gradația 5": {
-    "n": 25,
-    "p10": 6046,
-    "p25": 6300,
-    "median": 6749,
+    "n": 30,
+    "p10": 6038,
+    "p25": 6129,
+    "median": 6655,
     "p75": 6757,
     "p90": 6772,
-    "min": 5891,
+    "min": 5609,
     "max": 6772
    },
    "gradația 4": {
-    "n": 4
+    "n": 6
    },
    "gradația 2": {
     "n": 3
@@ -788,6 +796,9 @@
     "n": 7
    },
    "SERVICIUL TEHNIC SI APARATURA MEDICALA Muncitor calificat IV": {
+    "n": 4
+   },
+   "munc.I(electrician) GENERALE Legea nr.153 art.33 Gradatia 5": {
     "n": 4
    },
    "MUNCITOR I ELECTRICIAN": {
@@ -815,6 +826,15 @@
     "n": 1
    },
    "SERV. TEHNIC MUNCIT.I/ELECTRICIAN MEDII Gradatia 4": {
+    "n": 1
+   },
+   "munc.I(electrician) GENERALE Legea nr.153 art.33 Gradatia 4": {
+    "n": 1
+   },
+   "munc.I(electrician) MEDII Legea nr.153 art.33 Gradatia 4": {
+    "n": 1
+   },
+   "munc.IV(electrician) MEDII Legea nr.153 art.33 Gradatia 5": {
     "n": 1
    },
    "TEHNIC ELECTRICIAN Gradatia 4": {

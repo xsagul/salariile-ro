@@ -2,7 +2,7 @@
  "slug": "kinetoterapeut",
  "nume": "Kinetoterapeut",
  "cor": "226401",
- "generatLa": "2026-09-27T10:16:51.959Z",
+ "generatLa": "2026-09-27T10:24:50.090Z",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
   "cuSalariu": 6,
@@ -258,145 +258,149 @@
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
-  "posturi": 129,
-  "institutii": 19,
-  "posturiDinSurseDeVerificat": 7,
+  "posturi": 135,
+  "institutii": 21,
+  "posturiDinSurseDeVerificat": 6,
   "judete": {
    "CJ": {
     "n": 20,
-    "procent": 15.5
+    "procent": 14.8
    },
    "BC": {
     "n": 20,
-    "procent": 15.5
+    "procent": 14.8
    },
    "CL": {
     "n": 18,
-    "procent": 14
+    "procent": 13.3
    },
    "SB": {
     "n": 13,
-    "procent": 10.1
+    "procent": 9.6
    },
    "TM": {
     "n": 13,
-    "procent": 10.1
+    "procent": 9.6
    },
    "HR": {
     "n": 11,
-    "procent": 8.5
+    "procent": 8.1
    },
    "BH": {
     "n": 8,
-    "procent": 6.2
+    "procent": 5.9
    },
    "CT": {
     "n": 5,
-    "procent": 3.9
+    "procent": 3.7
+   },
+   "SV": {
+    "n": 5,
+    "procent": 3.7
    },
    "AB": {
     "n": 5,
-    "procent": 3.9
+    "procent": 3.7
    },
    "BR": {
     "n": 4,
-    "procent": 3.1
+    "procent": 3
    },
    "BZ": {
     "n": 4,
-    "procent": 3.1
+    "procent": 3
    },
    "GR": {
     "n": 3,
-    "procent": 2.3
+    "procent": 2.2
+   },
+   "BV": {
+    "n": 2,
+    "procent": 1.5
    },
    "B": {
     "n": 2,
-    "procent": 1.6
-   },
-   "BV": {
-    "n": 1,
-    "procent": 0.8
+    "procent": 1.5
    },
    "IS": {
     "n": 1,
-    "procent": 0.8
+    "procent": 0.7
    },
    "DJ": {
     "n": 1,
-    "procent": 0.8
+    "procent": 0.7
    }
   },
   "tipInstitutie": {
    "spital": {
-    "n": 109,
-    "procent": 84.5
+    "n": 115,
+    "procent": 85.2
    },
    "dgaspc": {
     "n": 20,
-    "procent": 15.5
+    "procent": 14.8
    }
   },
   "perioade": {
    "2026-03": {
-    "n": 93,
-    "procent": 72.1
+    "n": 94,
+    "procent": 69.6
    },
    "2026-02": {
     "n": 24,
-    "procent": 18.6
+    "procent": 17.8
    },
    "2025-03": {
-    "n": 8,
-    "procent": 6.2
+    "n": 13,
+    "procent": 9.6
    },
    "2022-09": {
     "n": 3,
-    "procent": 2.3
+    "procent": 2.2
    },
    "2024-03": {
     "n": 1,
-    "procent": 0.8
+    "procent": 0.7
    }
   },
   "studii": {
    "S": {
-    "n": 45,
-    "procent": 34.9
+    "n": 50,
+    "procent": 37
    },
    "G": {
     "n": 1,
-    "procent": 0.8
+    "procent": 0.7
    }
   },
   "bazaBruta": {
-   "n": 129,
-   "p10": 5511,
-   "p25": 6731,
-   "median": 8281,
+   "n": 135,
+   "p10": 5556,
+   "p25": 6734,
+   "median": 8282,
    "p75": 9135,
    "p90": 9138,
    "min": 3666,
    "max": 10434
   },
   "bazaCuSporuriFixe": {
-   "n": 129,
-   "p10": 5602,
-   "p25": 7262,
+   "n": 135,
+   "p10": 5632,
+   "p25": 7436,
    "median": 9315,
-   "p75": 10189,
-   "p90": 11858,
+   "p75": 10112,
+   "p90": 11831,
    "min": 4017.96,
    "max": 14366.4
   },
   "peGradatie": {
    "gradația 5": {
-    "n": 20,
-    "p10": 9022,
-    "p25": 9596,
-    "median": 10147,
+    "n": 23,
+    "p10": 9059,
+    "p25": 9646,
+    "median": 10035,
     "p75": 11300,
-    "p90": 12363,
+    "p90": 12182,
     "min": 8357,
     "max": 13190
    },
@@ -421,12 +425,12 @@
     "max": 14366.4
    },
    "gradația 3": {
-    "n": 11,
+    "n": 13,
     "p10": 9315,
-    "p25": 9496,
-    "median": 10189,
-    "p75": 11615,
-    "p90": 12555,
+    "p25": 9402,
+    "median": 9981,
+    "p75": 10831,
+    "p90": 12524,
     "min": 9253,
     "max": 13254
    },
@@ -475,6 +479,9 @@
    },
    "KINETOTERAPEUT PR. LAB. RECUPERARE,MEDICINA FIZICA SI BALNEO": {
     "n": 5
+   },
+   "kinetoterapeut principal SUPERIOARE Legea nr.153 art.33 Grad": {
+    "n": 4
    },
    "kinetoterapeut principal": {
     "n": 3
@@ -557,7 +564,13 @@
    "Sectia Clinica A.T.I. KINETOTERAPEUT PRINCIPAL S": {
     "n": 1
    },
+   "kinetoterapeut SUPERIOARE Legea nr.153 art.33 Baza": {
+    "n": 1
+   },
    "KINETOTERAPEUT Gradatia 5": {
+    "n": 1
+   },
+   "Kinetoterapeut Gradatia": {
     "n": 1
    },
    "SECTIA ORTOPEDIE SI TRAUMATOLOGIE KINETOTERAPEUT PRINCIPAL G": {

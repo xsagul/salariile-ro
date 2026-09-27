@@ -2,7 +2,7 @@
  "slug": "bucatar",
  "nume": "Bucătar",
  "cor": "512001",
- "generatLa": "2026-09-27T10:16:52.219Z",
+ "generatLa": "2026-09-27T10:24:50.420Z",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
   "cuSalariu": 128,
@@ -518,116 +518,124 @@
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
-  "posturi": 49,
-  "institutii": 8,
-  "posturiDinSurseDeVerificat": 12,
+  "posturi": 65,
+  "institutii": 10,
+  "posturiDinSurseDeVerificat": 7,
   "judete": {
    "BH": {
     "n": 16,
-    "procent": 32.7
+    "procent": 24.6
    },
    "GR": {
     "n": 12,
-    "procent": 24.5
+    "procent": 18.5
+   },
+   "SV": {
+    "n": 11,
+    "procent": 16.9
    },
    "CJ": {
     "n": 11,
-    "procent": 22.4
+    "procent": 16.9
+   },
+   "BV": {
+    "n": 6,
+    "procent": 9.2
    },
    "DJ": {
     "n": 5,
-    "procent": 10.2
+    "procent": 7.7
    },
    "IS": {
     "n": 3,
-    "procent": 6.1
-   },
-   "BV": {
-    "n": 1,
-    "procent": 2
+    "procent": 4.6
    },
    "MS": {
     "n": 1,
-    "procent": 2
+    "procent": 1.5
    }
   },
   "tipInstitutie": {
    "spital": {
-    "n": 47,
-    "procent": 95.9
+    "n": 63,
+    "procent": 96.9
    },
    "dgaspc": {
     "n": 1,
-    "procent": 2
+    "procent": 1.5
    },
    "universitate": {
     "n": 1,
-    "procent": 2
+    "procent": 1.5
    }
   },
   "perioade": {
    "2026-03": {
-    "n": 22,
-    "procent": 44.9
+    "n": 27,
+    "procent": 41.5
+   },
+   "2025-03": {
+    "n": 21,
+    "procent": 32.3
    },
    "2022-09": {
     "n": 12,
-    "procent": 24.5
-   },
-   "2025-03": {
-    "n": 10,
-    "procent": 20.4
+    "procent": 18.5
    },
    "2024-03": {
     "n": 5,
-    "procent": 10.2
+    "procent": 7.7
    }
   },
   "studii": {
    "G": {
-    "n": 17,
-    "procent": 34.7
+    "n": 26,
+    "procent": 40
+   },
+   "M": {
+    "n": 2,
+    "procent": 3.1
    }
   },
   "bazaBruta": {
-   "n": 49,
-   "p10": 3580,
-   "p25": 3878,
+   "n": 65,
+   "p10": 3615,
+   "p25": 5271,
    "median": 5887,
-   "p75": 6345,
+   "p75": 6338,
    "p90": 6498,
    "min": 2212,
    "max": 6969
   },
   "bazaCuSporuriFixe": {
-   "n": 49,
-   "p10": 3580,
-   "p25": 3878,
+   "n": 65,
+   "p10": 3615,
+   "p25": 5475,
    "median": 6052,
    "p75": 6407,
-   "p90": 6757,
+   "p90": 6623,
    "min": 3078,
    "max": 6969
   },
   "peGradatie": {
    "gradația 5": {
-    "n": 21,
-    "p10": 6037,
-    "p25": 6200,
-    "median": 6498,
-    "p75": 6757,
+    "n": 32,
+    "p10": 5952,
+    "p25": 6129,
+    "median": 6344,
+    "p75": 6516,
     "p90": 6757,
-    "min": 5679,
+    "min": 5609,
     "max": 6969
    },
    "gradația 4": {
-    "n": 7
+    "n": 9
    },
    "gradația 2": {
-    "n": 6
+    "n": 8
    },
    "gradația 3": {
-    "n": 1
+    "n": 2
    }
   },
   "peFunctie": {
@@ -643,6 +651,12 @@
    "BUCATAR": {
     "n": 5
    },
+   "munc.I(bucatar) GENERALE Legea nr.153 art.33 Gradatia 5": {
+    "n": 4
+   },
+   "Bucatar I Gradatia": {
+    "n": 3
+   },
    "MUNCITOR II BUCATAR": {
     "n": 3
    },
@@ -656,6 +670,9 @@
     "n": 2
    },
    "BLOC ALIMENTAR Muncitor calificat IV‐bucatar Gradatia 5 GENE": {
+    "n": 2
+   },
+   "munc.IV(bucatar) GENERALE Legea nr.153 art.33 Gradatia 5": {
     "n": 2
    },
    "MUNCITOR BUCATAR II Gradatia 2": {
@@ -685,6 +702,21 @@
    "BLOC ALIMENTAR Muncitor calificat IV‐bucatar Gradatia 4 GENE": {
     "n": 1
    },
+   "munc.IV(bucatar) GENERALE Legea nr.153 art.33 Gradatia 4": {
+    "n": 1
+   },
+   "munc.II(bucatar) GENERALE Legea nr.153 art.33 Gradatia 5": {
+    "n": 1
+   },
+   "munc.III(bucatar) MEDII Legea nr.153 art.33 Gradatia 2": {
+    "n": 1
+   },
+   "munc.II(bucatar) GENERALE Legea nr.153 art.33 Gradatia 4": {
+    "n": 1
+   },
+   "munc.IV(bucatar) MEDII Legea nr.153 art.33 Gradatia 3": {
+    "n": 1
+   },
    "MUNCITOR BUCATAR I Gradatia 3": {
     "n": 1
    },
@@ -692,6 +724,12 @@
     "n": 1
    },
    "MUNCITOR BUCATAR II Gradatia 4": {
+    "n": 1
+   },
+   "Bucatar II Gradatia o": {
+    "n": 1
+   },
+   "Bucatar Gradatia o": {
     "n": 1
    },
    "MUNCITOR I BUCATAR": {

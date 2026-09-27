@@ -7,6 +7,13 @@ import { meserie, studii } from "./colectare/art33/functii.mjs";
 import { lunaDocument } from "./colectare/art33/descopera.mjs";
 
 const cazuri = [
+  // Suceava: trei coloane „salar bază”, numai ultima e baza după lege
+  ["Salar baza pt.calcul spor ture si sarb.legale garzi", 4304, "bazaCalcul"],
+  ["Salar baza (fisa) Decembrie 2023", 5775, "necunoscut"],
+  ["Salar baza cf.L153/2017 si baza de calcul pentru sporuri cond de munca", 8084, "baza"],
+  ["Anexa 5 Suma", 1200, "sporFix"],
+  ["hand L153/ 2,017 Suma", 700, "sporFix"],
+  ["HG 917 Suma", 400, "sporFix"],
   // Timișoara: antete lungi, suprapuse; munca în zilele de repaus e variabilă, nu fixă
   ["Cuantum spor acordat pt. munca prestata in zilele de samb., dum. si sarb. legale", 683, "variabil"],
   ["Salariul de baza conform Legii cadru nr.153/2017 la luna sept 2024", 6817, "baza"],

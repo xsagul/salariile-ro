@@ -4145,3 +4145,49 @@ pagina meseriei (electrician: 5.500, nu 5.250). `test-rendered.mts` a fost actua
 cere TEMPO/CAEN și ancorele pe paginile de meserie. Electrician: 1.293 → 138 de cuvinte.
 Rămase de discutat: „Legea 153/2017” în primul ecran la profesor (regula anului vechi) și
 rândurile „prea puține date” / „sursa nu are încă date” la paginile fără concluzie.
+
+## 27 septembrie 2026 — Baza de date pe meserii (cererea proprietarului: date, nu design)
+
+Proprietarul face el designul; până atunci cere cât mai multe date verificate pe fiecare
+meserie, începând cu programator.
+
+**Baza:** `scripts/colectare/baza.mjs` scrie `colectare/baza/meserii/<slug>.json` (fișa
+fiecărei meserii) și `.cercetare-privata/baza.sqlite` (rânduri, pentru interogări). Surse:
+anunțuri cu salariu (8 septembrie + colectarea continuă), profilurile anunțurilor citite
+(`colectare/anunturi/profil/`, cu sau fără salariu), ANOFM pe COR exact și pe grupa COR,
+art. 33 (numai sursele acceptate; restul numărate separat). Percentilele cer ≥ 10 valori,
+defalcările ≥ 5. Rulează în `colectare-anunturi.yml` după agregare.
+
+**Factorii din anunț** (`scripts/crawler/atribute.mjs`, 64 de verificări în
+`test-atribute.mjs`): experiență (și în engleză), studii, limbi (numai cu context de cerință),
+permis, atestate, program, mod, normă, durată, beneficii, tehnologii, nivel. Verificat pe text
+real; reparat pe parcurs:
+- hipo.ro publică textul cu codare dublă („dezvoltÄ”) — `reparaCodare` în `extract.mjs`;
+- descrierea hipo e doar prezentarea firmei; cerințele sunt în `qualifications`;
+- „1 - 5 ani experienta” de pe hipo e o listă cu trei trepte bifată de angajator (156 din 195
+  de anunțuri au „1 - 5”), nu cerința: stă separat, ca `experientaPortal`;
+- „programare CNC”, „ITP… Programări”, „Curățenie… Programări” erau numărate la programator.
+eJobs a răspuns 429, deci profilurile de acolo n-au descriere (doar listarea).
+
+**Programator, adevărul:** din 102 anunțuri citite, 2 au salariu. Anunțurile IT nu publică
+sume. Ce avem: ANOFM 13 oferte brute (mediana 14.000 lei brut), 13 posturi plătite la stat
+(analist programator, mediana bazei 6.932), 16 anunțuri cu sumă din 8 septembrie; factorii pe
+102 anunțuri (hibrid 56, remote 33, Java 60, SQL 58, Kubernetes 45 — verificat în text, real;
+engleză cerută 15; 91 din 102 anunțuri sunt scrise în engleză).
+
+**Art. 33:** Timișoara (Pius Brînzeu) era citit greșit: antetele suprapuse se lipeau într-un
+singur text, iar cititorul lua sporul de condiții drept bază (asistent medical 1.872 în loc de
+6.817). Reparat în `citeste.mjs`: textele suprapuse nu se mai unesc, rândul „1 2 3 …” fixează
+celulele, munca în zilele de repaus e variabilă, „Grad/” e gradația. +3.894 de posturi
+acceptate; nicio altă sursă nu și-a schimbat medianele (comparat sursă cu sursă înainte și
+după). Gradația se citește și din textul funcției (Iași). `descopera.mjs`: luna din „032024”,
+regulamentele de evaluare nu mai trec drept liste (Suceava). Registru: +8 instituții pentru
+rularea din 2–12 octombrie. Posturi publice acceptate: 18.715 → 22.610. Asistent de farmacie
+primește concluzie (4.469 lei net la stat).
+
+Rămase: 16 surse art. 33 sunt PDF-uri scanate (Mureș 164 de pagini, Ilfov, DGASPC-uri) — ar
+cere OCR, cu risc de cifre greșite; Gorj are un antet pe zece rânduri cu subcoloane suprapuse.
+
+**Sursă nouă, de decis de proprietar:** lajumate.ro (mică publicitate; robots permite; fiecare
+anunț de muncă are JobPosting cu `baseSalary`). Conectorul există (`census.mjs`, `lajumate`),
+dar nu e în colectarea de noapte: proba rulează într-un depozit separat.

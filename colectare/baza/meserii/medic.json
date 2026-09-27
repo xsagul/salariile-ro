@@ -2,7 +2,7 @@
  "slug": "medic",
  "nume": "Medic",
  "cor": "221101",
- "generatLa": "2026-09-27T10:16:51.826Z",
+ "generatLa": "2026-09-27T10:24:49.935Z",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
   "cuSalariu": 10,
@@ -195,72 +195,80 @@
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
-  "posturi": 4945,
-  "institutii": 22,
-  "posturiDinSurseDeVerificat": 190,
+  "posturi": 5424,
+  "institutii": 25,
+  "posturiDinSurseDeVerificat": 152,
   "judete": {
    "CT": {
     "n": 750,
-    "procent": 15.2
+    "procent": 13.8
    },
    "TM": {
     "n": 651,
-    "procent": 13.2
+    "procent": 12
    },
    "BH": {
     "n": 607,
-    "procent": 12.3
+    "procent": 11.2
    },
    "SB": {
     "n": 507,
-    "procent": 10.3
+    "procent": 9.3
    },
    "CJ": {
     "n": 483,
-    "procent": 9.8
+    "procent": 8.9
+   },
+   "SV": {
+    "n": 442,
+    "procent": 8.1
    },
    "BR": {
     "n": 350,
-    "procent": 7.1
+    "procent": 6.5
    },
    "BC": {
     "n": 343,
-    "procent": 6.9
+    "procent": 6.3
    },
    "HR": {
     "n": 333,
-    "procent": 6.7
+    "procent": 6.1
    },
    "AB": {
     "n": 280,
-    "procent": 5.7
+    "procent": 5.2
    },
    "BZ": {
     "n": 262,
-    "procent": 5.3
+    "procent": 4.8
    },
    "GR": {
     "n": 170,
-    "procent": 3.4
+    "procent": 3.1
    },
    "IS": {
     "n": 76,
-    "procent": 1.5
+    "procent": 1.4
    },
    "B": {
     "n": 64,
-    "procent": 1.3
+    "procent": 1.2
    },
    "DJ": {
     "n": 49,
-    "procent": 1
+    "procent": 0.9
+   },
+   "BV": {
+    "n": 36,
+    "procent": 0.7
    },
    "MS": {
     "n": 12,
     "procent": 0.2
    },
-   "BV": {
-    "n": 5,
+   "VS": {
+    "n": 6,
     "procent": 0.1
    },
    "CL": {
@@ -270,12 +278,12 @@
   },
   "tipInstitutie": {
    "spital": {
-    "n": 4906,
+    "n": 5379,
     "procent": 99.2
    },
    "dsp": {
-    "n": 17,
-    "procent": 0.3
+    "n": 23,
+    "procent": 0.4
    },
    "universitate": {
     "n": 12,
@@ -288,38 +296,42 @@
   },
   "perioade": {
    "2026-03": {
-    "n": 3852,
-    "procent": 77.9
+    "n": 3883,
+    "procent": 71.6
+   },
+   "2025-03": {
+    "n": 694,
+    "procent": 12.8
    },
    "2026-02": {
     "n": 605,
-    "procent": 12.2
-   },
-   "2025-03": {
-    "n": 252,
-    "procent": 5.1
+    "procent": 11.2
    },
    "2022-09": {
     "n": 170,
-    "procent": 3.4
+    "procent": 3.1
    },
    "2024-03": {
     "n": 49,
-    "procent": 1
+    "procent": 0.9
    },
    "2025-08": {
     "n": 17,
     "procent": 0.3
+   },
+   "2026-09": {
+    "n": 6,
+    "procent": 0.1
    }
   },
   "studii": {
    "S": {
-    "n": 2550,
-    "procent": 51.6
+    "n": 2992,
+    "procent": 55.2
    },
    "G": {
     "n": 96,
-    "procent": 1.9
+    "procent": 1.8
    },
    "M": {
     "n": 2,
@@ -327,65 +339,65 @@
    }
   },
   "bazaBruta": {
-   "n": 4945,
+   "n": 5424,
    "p10": 5000,
-   "p25": 6315,
-   "median": 12374,
+   "p25": 6630,
+   "median": 12320,
    "p75": 17162,
    "p90": 17592,
    "min": 1500,
    "max": 24012
   },
   "bazaCuSporuriFixe": {
-   "n": 4945,
+   "n": 5424,
    "p10": 5000,
-   "p25": 6681,
+   "p25": 6682,
    "median": 13968,
-   "p75": 20234,
-   "p90": 25968,
+   "p75": 20196,
+   "p90": 25877,
    "min": 1500,
    "max": 42416
   },
   "peGradatie": {
    "gradația 5": {
-    "n": 1395,
-    "p10": 6691,
-    "p25": 8020,
-    "median": 18976,
+    "n": 1559,
+    "p10": 7020,
+    "p25": 7520,
+    "median": 18885,
     "p75": 23150,
-    "p90": 28096,
+    "p90": 28136,
     "min": 1528,
     "max": 42071
    },
    "gradația 2": {
-    "n": 877,
+    "n": 979,
     "p10": 5000,
     "p25": 5000,
     "median": 6000,
     "p75": 14305,
-    "p90": 19422,
+    "p90": 19733,
     "min": 1517,
     "max": 30817
    },
    "gradația 3": {
-    "n": 649,
+    "n": 782,
     "p10": 5250,
-    "p25": 6681,
-    "median": 14787,
-    "p75": 19748,
-    "p90": 24527,
+    "p25": 6682,
+    "median": 14714,
+    "p75": 19352,
+    "p90": 24463,
     "min": 1500,
-    "max": 34729
+    "max": 38138
    },
    "gradația 4": {
-    "n": 497,
-    "p10": 5381,
+    "n": 562,
+    "p10": 5617,
     "p25": 6849,
-    "median": 17919,
-    "p75": 21559,
-    "p90": 26270,
+    "median": 17774,
+    "p75": 22156,
+    "p90": 26273,
     "min": 1543,
-    "max": 37902
+    "max": 39093
    },
    "gradația 0": {
     "n": 79,
@@ -398,12 +410,12 @@
     "max": 16608
    },
    "gradația 1": {
-    "n": 17,
+    "n": 18,
     "p10": 4763,
     "p25": 4763,
     "median": 4763,
-    "p75": 7020,
-    "p90": 14823,
+    "p75": 6569,
+    "p90": 14523,
     "min": 1938,
     "max": 19477
    }
@@ -529,6 +541,16 @@
     "min": 4427,
     "max": 26048
    },
+   "medic primar SUPERIOARE Legea nr.153 art.33 Gradatia 5 Garzi": {
+    "n": 62,
+    "p10": 7020,
+    "p25": 7020,
+    "median": 7020,
+    "p75": 7020,
+    "p90": 7438,
+    "min": 7020,
+    "max": 7484
+   },
    "MEDIC SPECIALIST Gradatia 2": {
     "n": 55,
     "p10": 5000,
@@ -538,6 +560,16 @@
     "p90": 13031,
     "min": 5000,
     "max": 22415
+   },
+   "medic primar SUPERIOARE Legea nr.153 art.33 Gradatia 5": {
+    "n": 53,
+    "p10": 19927,
+    "p25": 19927,
+    "median": 20705,
+    "p75": 26154,
+    "p90": 32889,
+    "min": 18137,
+    "max": 32889
    },
    "MEDIC SPECIALIST (UPU, ATI) Legea nr. 153 art. 33": {
     "n": 50,
@@ -549,6 +581,26 @@
     "min": 5278,
     "max": 23536
    },
+   "medic specialist SUPERIOARE Legea nr.153 art.33 Gradatia 2 G": {
+    "n": 45,
+    "p10": 5000,
+    "p25": 5000,
+    "median": 5000,
+    "p75": 5000,
+    "p90": 5278,
+    "min": 5000,
+    "max": 8410
+   },
+   "medic primar SUPERIOARE Legea nr.153 art.33 Gradatia 3 Garzi": {
+    "n": 43,
+    "p10": 6682,
+    "p25": 6682,
+    "median": 6682,
+    "p75": 6682,
+    "p90": 6682,
+    "min": 6364,
+    "max": 6682
+   },
    "MEDIC PRIMAR Gradatia 3": {
     "n": 40,
     "p10": 6682,
@@ -558,6 +610,16 @@
     "p90": 27575,
     "min": 6682,
     "max": 29720
+   },
+   "medic primar SUPERIOARE Legea nr.153 art.33 Gradatia 3": {
+    "n": 34,
+    "p10": 18965,
+    "p25": 18965,
+    "median": 18965,
+    "p75": 18965,
+    "p90": 21929,
+    "min": 17780,
+    "max": 26373
    },
    "MEDIC PRIMAR Gradatia 4": {
     "n": 33,
@@ -599,6 +661,16 @@
     "min": 6849,
     "max": 22907
    },
+   "medic specialist SUPERIOARE Legea nr.153 art.33 Gradatia 2": {
+    "n": 24,
+    "p10": 14305,
+    "p25": 14305,
+    "median": 15982,
+    "p75": 18217,
+    "p90": 23609,
+    "min": 14305,
+    "max": 28765
+   },
    "SECTIA CLINICA OBSTETRICA GINECOLOGIE I Medic primar Gradati": {
     "n": 23,
     "p10": 1852,
@@ -618,6 +690,16 @@
     "p90": 21032,
     "min": 5278,
     "max": 21558.6
+   },
+   "medic specialist UPU SUPERIOARE Legea nr.153 art.33 Gradatia": {
+    "n": 21,
+    "p10": 5278,
+    "p25": 5278,
+    "median": 5542,
+    "p75": 5679,
+    "p90": 24791,
+    "min": 5278,
+    "max": 25412
    },
    "MEDIC PRIMAR Sectia Obstretica Ginecologie": {
     "n": 21,
@@ -648,6 +730,26 @@
     "p90": 31476,
     "min": 1671,
     "max": 32673
+   },
+   "medic primar SUPERIOARE Legea nr.153 art.33 Gradatia 4 Garzi": {
+    "n": 20,
+    "p10": 6682,
+    "p25": 6849,
+    "median": 6849,
+    "p75": 6849,
+    "p90": 6849,
+    "min": 6682,
+    "max": 7302
+   },
+   "Medic primar Gradatia": {
+    "n": 20,
+    "p10": 22749,
+    "p25": 23075,
+    "median": 24789,
+    "p75": 25425,
+    "p90": 26572,
+    "min": 8060,
+    "max": 27532
    },
    "MEDIC SPECIALIST (UPU) SUPERIOARE Gradatia": {
     "n": 20,
@@ -719,6 +821,16 @@
     "min": 5278,
     "max": 21032.45
    },
+   "medic primar SUPERIOARE Legea nr.153 art.33 Gradatia 4": {
+    "n": 15,
+    "p10": 18711,
+    "p25": 19440,
+    "median": 20199,
+    "p75": 25515,
+    "p90": 25515,
+    "min": 17694,
+    "max": 32086
+   },
    "MEDIC PRIMAR (ATI) SUPERIOARE Gradatia": {
     "n": 15,
     "p10": 7123,
@@ -749,6 +861,16 @@
     "min": 7020,
     "max": 20856.8
    },
+   "medic primar UPU SUPERIOARE Legea nr.153 art.33 Gradatia 5 G": {
+    "n": 14,
+    "p10": 7484,
+    "p25": 7484,
+    "median": 7484,
+    "p75": 7484,
+    "p90": 7484,
+    "min": 7484,
+    "max": 7484
+   },
    "MEDIC SPECIALIST Gradatia 3": {
     "n": 14,
     "p10": 5250,
@@ -778,6 +900,26 @@
     "p90": 7448,
     "min": 6060,
     "max": 7486
+   },
+   "medic specialist ATI SUPERIOARE Legea nr.153 art.33 Gradatia": {
+    "n": 13,
+    "p10": 5278,
+    "p25": 5278,
+    "median": 5542,
+    "p75": 23609,
+    "p90": 23609,
+    "min": 5278,
+    "max": 24791
+   },
+   "medic specialist SUPERIOARE Legea nr.153 art.33 Gradatia 3 G": {
+    "n": 13,
+    "p10": 5250,
+    "p25": 5250,
+    "median": 5250,
+    "p75": 5250,
+    "p90": 5250,
+    "min": 5250,
+    "max": 5250
    },
    "MEDIC PRIMAR (ANAPAT) Legea nr. 153 art. 33": {
     "n": 13,
@@ -999,6 +1141,26 @@
     "min": 7181,
     "max": 24187.4
    },
+   "medic specialist SUPERIOARE Legea nr.153 art.33 Gradatia 3": {
+    "n": 10,
+    "p10": 15021,
+    "p25": 15021,
+    "median": 15021,
+    "p75": 17075,
+    "p90": 19188,
+    "min": 15021,
+    "max": 19715
+   },
+   "medic primar UPU SUPERIOARE Legea nr.153 art.33 Gradatia 4 G": {
+    "n": 10,
+    "p10": 7302,
+    "p25": 7302,
+    "median": 7302,
+    "p75": 7302,
+    "p90": 7302,
+    "min": 7302,
+    "max": 7302
+   },
    "MEDIC PRIMAR Sectia CHIRURGIE GENERALA": {
     "n": 10,
     "p10": 19168,
@@ -1060,6 +1222,12 @@
    "Ambulatoriu integrat - ALTII MEDIC - PRIMAR S": {
     "n": 9
    },
+   "medic primar din AP si ML SUPERIOARE Legea nr.153 art.33 Gra": {
+    "n": 9
+   },
+   "Medic specialist Gradatia": {
+    "n": 9
+   },
    "MEDIC PRIMAR Sectia Pneumologie": {
     "n": 9
    },
@@ -1108,6 +1276,9 @@
    "Sectia Clinica Gastroenterologie MEDIC - SPECIALIST S": {
     "n": 8
    },
+   "medic primar UPU SUPERIOARE Legea nr.153 art.33 Gradatia 5": {
+    "n": 8
+   },
    "GARZI - RADIOLOGIE SI IMAGISTICA MEDICAL MEDIC PRIMAR Gradat": {
     "n": 8
    },
@@ -1144,6 +1315,9 @@
    "ATI MEDIC SPECIALIST": {
     "n": 8
    },
+   "Medic specialist": {
+    "n": 7
+   },
    "SECTIA CLINICA PEDIATRIE I Medic primar Gradatia 5 SUPERIOAR": {
     "n": 7
    },
@@ -1166,6 +1340,9 @@
     "n": 7
    },
    "Compartiment Chirurgie Vasculara MEDIC - SPECIALIST S": {
+    "n": 7
+   },
+   "medic specialist SUPERIOARE Legea nr.153 art.33 Baza Garzi d": {
     "n": 7
    },
    "UNITATE PRIMIRE URGENTE MEDIC PRIMAR UPU Gradatia 5": {
@@ -1325,6 +1502,9 @@
     "n": 5
    },
    "Cab.Diabet Zaharat,Nutritie si Boli Metab.-MEDICI MEDIC - PR": {
+    "n": 5
+   },
+   "medic specialist SUPERIOARE Legea nr.153 art.33 Gradatia 2 C": {
     "n": 5
    },
    "ASISTENT DE CERCETARE MEDIC SPECIALIST Legea nr. 153 art. 33": {
@@ -1514,6 +1694,9 @@
     "n": 4
    },
    "Compartiment Chirurgie Orala si Maxilo-Faciala MEDIC - SPECI": {
+    "n": 4
+   },
+   "medic specialist SUPERIOARE Legea nr.153 art.33 Gradatia 4": {
     "n": 4
    },
    "MEDIC SPECIALIST Gradatia 5": {
@@ -1727,6 +1910,15 @@
     "n": 3
    },
    "Comp. radiologie, imagistica medicala neurologie MEDIC - SPE": {
+    "n": 3
+   },
+   "medic primar SUPERIOARE Legea nr.153 art.33 Gradatia 3 CIC": {
+    "n": 3
+   },
+   "medic primar UPU SUPERIOARE Legea nr.153 art.33 Gradatia 3": {
+    "n": 3
+   },
+   "medic primar UPU SUPERIOARE Legea nr.153 art.33 Gradatia 4": {
     "n": 3
    },
    "GINECOLOGIE MEDIC PRIMAR Gradatia 3": {
@@ -2189,6 +2381,27 @@
     "n": 2
    },
    "Ambulatoriu integrat - ALTII MEDIC - SPECIALIST S": {
+    "n": 2
+   },
+   "medic primar ATI SUPERIOARE Legea nr.153 art.33 Gradatia 3 G": {
+    "n": 2
+   },
+   "medic specialist SUPERIOARE Legea nr.153 art.33 Gradatia 3 C": {
+    "n": 2
+   },
+   "medic primar SUPERIOARE Legea nr.153 art.33 Gradatia 3 Comis": {
+    "n": 2
+   },
+   "medic primar SUPERIOARE Legea nr.153 art.33 Gradatia 5 Comis": {
+    "n": 2
+   },
+   "medic primar UPU SUPERIOARE Legea nr.153 art.33 Gradatia 3 G": {
+    "n": 2
+   },
+   "medic specialist SUPERIOARE Legea nr.153 art.33 Gradatia 4 G": {
+    "n": 2
+   },
+   "Medic specialist din AP si ML SUPERIOARE Legea nr.153 art.33": {
     "n": 2
    },
    "GINECOLOGIE MEDIC PRIMAR Gradatia 5": {
@@ -3127,6 +3340,33 @@
    "Cabinet de Planificare Familiala-Medici MEDIC - PRIMAR S": {
     "n": 1
    },
+   "medic primar ATI SUPERIOARE Legea nr.153 art.33 Gradatia 5 G": {
+    "n": 1
+   },
+   "medic primar ATI SUPERIOARE Legea nr.153 art.33 Gradatia 3": {
+    "n": 1
+   },
+   "medic primar ATI SUPERIOARE Legea nr.153 art.33 Gradatia 5": {
+    "n": 1
+   },
+   "medic primar SUPERIOARE Legea nr.153 art.33 Gradatia 2": {
+    "n": 1
+   },
+   "medic specialist SUPERIOARE Legea nr.153 art.33 Gradatia 5 G": {
+    "n": 1
+   },
+   "medic specialist SUPERIOARE Legea nr.153 art.33 Gradatia 5": {
+    "n": 1
+   },
+   "medic primar SUPERIOARE Legea nr.153 art.33 Baza Garzi din a": {
+    "n": 1
+   },
+   "medic primar UPU SUPERIOARE Legea nr.153 art.33 Gradatia 5 S": {
+    "n": 1
+   },
+   "medic specialist SUPERIOARE Legea nr.153 art.33 Gradatia 1 G": {
+    "n": 1
+   },
    "MEDIC PRIMAR COORD DELEG Legea nr. 153 art. 33": {
     "n": 1
    },
@@ -3167,6 +3407,12 @@
     "n": 1
    },
    "FAMILIAL MEDIC SPECIALIST Gradatia 5": {
+    "n": 1
+   },
+   "Medic primar Gradatia ooo": {
+    "n": 1
+   },
+   "Medic primar Gradatia I OOO": {
     "n": 1
    },
    "SECTIA MEDICINA INTERNA MEDIC PRIMAR Gradatia 4": {
@@ -3608,9 +3854,6 @@
     "n": 1
    },
    "MEDIC PRIMAR PSIHIATRIE S I PRIMAR": {
-    "n": 1
-   },
-   "Medic specialist": {
     "n": 1
    }
   }

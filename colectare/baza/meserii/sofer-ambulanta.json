@@ -2,7 +2,7 @@
  "slug": "sofer-ambulanta",
  "nume": "Șofer de ambulanță",
  "cor": "832203",
- "generatLa": "2026-09-27T10:16:52.180Z",
+ "generatLa": "2026-09-27T10:24:50.349Z",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
   "cuSalariu": 0,
@@ -148,93 +148,104 @@
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
-  "posturi": 14,
-  "institutii": 6,
+  "posturi": 17,
+  "institutii": 7,
   "posturiDinSurseDeVerificat": 0,
   "judete": {
    "CT": {
     "n": 4,
-    "procent": 28.6
+    "procent": 23.5
+   },
+   "SV": {
+    "n": 3,
+    "procent": 17.6
    },
    "BZ": {
     "n": 3,
-    "procent": 21.4
+    "procent": 17.6
    },
    "B": {
     "n": 2,
-    "procent": 14.3
+    "procent": 11.8
    },
    "BH": {
     "n": 2,
-    "procent": 14.3
+    "procent": 11.8
    },
    "CJ": {
     "n": 2,
-    "procent": 14.3
+    "procent": 11.8
    },
    "IS": {
     "n": 1,
-    "procent": 7.1
+    "procent": 5.9
    }
   },
   "tipInstitutie": {
    "spital": {
-    "n": 12,
-    "procent": 85.7
+    "n": 15,
+    "procent": 88.2
    },
    "dgaspc": {
     "n": 2,
-    "procent": 14.3
+    "procent": 11.8
    }
   },
   "perioade": {
    "2026-03": {
     "n": 11,
-    "procent": 78.6
+    "procent": 64.7
+   },
+   "2025-03": {
+    "n": 3,
+    "procent": 17.6
    },
    "2026-02": {
     "n": 3,
-    "procent": 21.4
+    "procent": 17.6
    }
   },
   "studii": {
    "M": {
-    "n": 7,
-    "procent": 50
+    "n": 8,
+    "procent": 47.1
    },
    "G": {
-    "n": 1,
-    "procent": 7.1
+    "n": 3,
+    "procent": 17.6
    }
   },
   "bazaBruta": {
-   "n": 14,
-   "p10": 5080,
-   "p25": 5740,
+   "n": 17,
+   "p10": 5185,
+   "p25": 5704,
    "median": 5993,
    "p75": 5994,
-   "p90": 6320,
+   "p90": 6181,
    "min": 4688,
    "max": 6620
   },
   "bazaCuSporuriFixe": {
-   "n": 14,
-   "p10": 5148,
-   "p25": 6187,
-   "median": 6264,
-   "p75": 6872,
-   "p90": 8674,
+   "n": 17,
+   "p10": 5303,
+   "p25": 6052,
+   "median": 6234,
+   "p75": 6620,
+   "p90": 7993,
    "min": 4688,
    "max": 9589
   },
   "peGradatie": {
    "gradația 5": {
-    "n": 3
+    "n": 5
    },
    "gradația 3": {
     "n": 2
    },
    "gradația 4": {
+    "n": 1
+   },
+   "gradația 2": {
     "n": 1
    }
   },
@@ -264,6 +275,15 @@
     "n": 1
    },
    "Sofer autosanitara III GENERALE ( G )": {
+    "n": 1
+   },
+   "Sofer autosanitara II MEDII Legea nr.153 art.33 Gradatia 5": {
+    "n": 1
+   },
+   "Sofer autosanitara II GENERALE Legea nr.153 art.33 Gradatia ": {
+    "n": 1
+   },
+   "Sofer autosanitara III GENERALE Legea nr.153 art.33 Gradatia": {
     "n": 1
    },
    "SOFER AUTOSANITARA II Serviciul Judetean de Medicina Legala": {

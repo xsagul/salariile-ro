@@ -2,7 +2,7 @@
  "slug": "infirmier",
  "nume": "Infirmier",
  "cor": "532103",
- "generatLa": "2026-09-27T10:16:51.963Z",
+ "generatLa": "2026-09-27T10:24:50.095Z",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
   "cuSalariu": 13,
@@ -308,127 +308,143 @@
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
-  "posturi": 3167,
-  "institutii": 19,
-  "posturiDinSurseDeVerificat": 95,
+  "posturi": 3470,
+  "institutii": 22,
+  "posturiDinSurseDeVerificat": 67,
   "judete": {
    "BH": {
     "n": 423,
-    "procent": 13.4
+    "procent": 12.2
    },
    "CT": {
     "n": 421,
-    "procent": 13.3
+    "procent": 12.1
    },
    "TM": {
     "n": 355,
-    "procent": 11.2
+    "procent": 10.2
    },
    "CJ": {
     "n": 296,
-    "procent": 9.3
+    "procent": 8.5
    },
    "BC": {
     "n": 296,
-    "procent": 9.3
+    "procent": 8.5
+   },
+   "SV": {
+    "n": 276,
+    "procent": 8
    },
    "BZ": {
     "n": 249,
-    "procent": 7.9
+    "procent": 7.2
    },
    "HR": {
     "n": 218,
-    "procent": 6.9
+    "procent": 6.3
    },
    "BR": {
     "n": 212,
-    "procent": 6.7
+    "procent": 6.1
    },
    "AB": {
     "n": 199,
-    "procent": 6.3
+    "procent": 5.7
    },
    "SB": {
     "n": 156,
-    "procent": 4.9
+    "procent": 4.5
    },
    "GR": {
     "n": 122,
-    "procent": 3.9
+    "procent": 3.5
    },
    "B": {
     "n": 84,
-    "procent": 2.7
+    "procent": 2.4
    },
    "IS": {
     "n": 70,
-    "procent": 2.2
+    "procent": 2
    },
    "DJ": {
     "n": 53,
-    "procent": 1.7
+    "procent": 1.5
+   },
+   "BV": {
+    "n": 27,
+    "procent": 0.8
    },
    "CL": {
     "n": 12,
-    "procent": 0.4
+    "procent": 0.3
    },
-   "BV": {
+   "VS": {
     "n": 1,
     "procent": 0
    }
   },
   "tipInstitutie": {
    "spital": {
-    "n": 3152,
+    "n": 3454,
     "procent": 99.5
    },
    "dgaspc": {
     "n": 15,
-    "procent": 0.5
+    "procent": 0.4
+   },
+   "dsp": {
+    "n": 1,
+    "procent": 0
    }
   },
   "perioade": {
    "2026-03": {
-    "n": 2306,
-    "procent": 72.8
+    "n": 2332,
+    "procent": 67.2
    },
    "2026-02": {
     "n": 545,
-    "procent": 17.2
+    "procent": 15.7
    },
    "2025-03": {
-    "n": 141,
-    "procent": 4.5
+    "n": 417,
+    "procent": 12
    },
    "2022-09": {
     "n": 122,
-    "procent": 3.9
+    "procent": 3.5
    },
    "2024-03": {
     "n": 53,
-    "procent": 1.7
+    "procent": 1.5
+   },
+   "2026-09": {
+    "n": 1,
+    "procent": 0
    }
   },
   "studii": {
    "G": {
-    "n": 1283,
-    "procent": 40.5
+    "n": 1557,
+    "procent": 44.9
    },
    "M": {
-    "n": 228,
-    "procent": 7.2
-   },
-   "S": {
-    "n": 1,
-    "procent": 0
+    "n": 229,
+    "procent": 6.6
    },
    "PL": {
+    "n": 2,
+    "procent": 0.1
+   },
+   "S": {
     "n": 1,
     "procent": 0
    }
   },
   "bazaBruta": {
-   "n": 3167,
+   "n": 3470,
    "p10": 5210,
    "p25": 5563,
    "median": 5747,
@@ -438,63 +454,63 @@
    "max": 5846
   },
   "bazaCuSporuriFixe": {
-   "n": 3167,
-   "p10": 5738,
-   "p25": 6005,
-   "median": 6420,
-   "p75": 7078,
-   "p90": 7577,
+   "n": 3470,
+   "p10": 5743,
+   "p25": 6008,
+   "median": 6414,
+   "p75": 7080,
+   "p90": 7579,
    "min": 3422,
    "max": 9007.4
   },
   "peGradatie": {
    "gradația 5": {
-    "n": 1512,
+    "n": 1678,
     "p10": 6005,
-    "p25": 6069,
-    "median": 6536,
+    "p25": 6072,
+    "median": 6528,
     "p75": 7115,
-    "p90": 7579,
+    "p90": 7593,
     "min": 4641,
     "max": 9007.4
    },
    "gradația 4": {
-    "n": 325,
+    "n": 383,
     "p10": 5857,
-    "p25": 5914,
+    "p25": 5921,
     "median": 6339,
     "p75": 6941,
-    "p90": 7394,
+    "p90": 7579,
     "min": 5556,
     "max": 8413.3
    },
    "gradația 3": {
-    "n": 233,
-    "p10": 5559,
-    "p25": 5777,
-    "median": 6021,
-    "p75": 6500,
-    "p90": 7039,
+    "n": 263,
+    "p10": 5570,
+    "p25": 5779,
+    "median": 6076,
+    "p75": 6544,
+    "p90": 7212,
     "min": 3849,
     "max": 8215.45
    },
    "gradația 2": {
-    "n": 138,
-    "p10": 5358,
-    "p25": 5646,
-    "median": 5918,
-    "p75": 6483,
+    "n": 169,
+    "p10": 5442,
+    "p25": 5616,
+    "median": 5938,
+    "p75": 6512,
     "p90": 6869,
     "min": 5205,
-    "max": 7320
+    "max": 7343
    },
    "gradația 1": {
-    "n": 20,
-    "p10": 4956,
-    "p25": 5202,
-    "median": 5483,
-    "p75": 5858,
-    "p90": 6405,
+    "n": 33,
+    "p10": 5007,
+    "p25": 5247,
+    "median": 5476,
+    "p75": 5912,
+    "p90": 6534,
     "min": 4901,
     "max": 6778
    },
@@ -522,6 +538,16 @@
     "p90": 7346,
     "min": 4962,
     "max": 7577
+   },
+   "infirmiera GENERALE Legea nr.153 art.33 Gradatia 5": {
+    "n": 130,
+    "p10": 6072,
+    "p25": 6072,
+    "median": 6287,
+    "p75": 6824,
+    "p90": 7576,
+    "min": 6072,
+    "max": 7810
    },
    "INFIRMIER MEDII Gradatia": {
     "n": 111,
@@ -593,6 +619,16 @@
     "min": 4641,
     "max": 6144
    },
+   "infirmiera GENERALE Legea nr.153 art.33 Gradatia 4": {
+    "n": 40,
+    "p10": 5923,
+    "p25": 5923,
+    "median": 6133,
+    "p75": 6657,
+    "p90": 6661,
+    "min": 5923,
+    "max": 7619
+   },
    "INFIRMIERA UNITATE DE PRIMIRE URGENTE - SMURD": {
     "n": 29,
     "p10": 6913,
@@ -613,6 +649,16 @@
     "min": 5832,
     "max": 8281
    },
+   "Infirmiera Gradatia": {
+    "n": 23,
+    "p10": 6563,
+    "p25": 6841,
+    "median": 7174,
+    "p75": 7174,
+    "p90": 7174,
+    "min": 5959,
+    "max": 7174
+   },
    "INFIRMIERA Sectia ATI": {
     "n": 23,
     "p10": 6514,
@@ -622,6 +668,16 @@
     "p90": 7761,
     "min": 3849,
     "max": 7761
+   },
+   "infirmiera GENERALE Legea nr.153 art.33 Gradatia 2": {
+    "n": 22,
+    "p10": 5503,
+    "p25": 5503,
+    "median": 5698,
+    "p75": 6185,
+    "p90": 6185,
+    "min": 5503,
+    "max": 6867
    },
    "INFIRMIERA Gradatia 4": {
     "n": 22,
@@ -662,6 +718,16 @@
     "p90": 7387,
     "min": 5730,
     "max": 7444
+   },
+   "infirmiera GENERALE Legea nr.153 art.33 Gradatia 3": {
+    "n": 19,
+    "p10": 5779,
+    "p25": 5779,
+    "median": 6086,
+    "p75": 6495,
+    "p90": 6720,
+    "min": 5779,
+    "max": 7432
    },
    "UPU INFIRMIERA": {
     "n": 19,
@@ -959,6 +1025,15 @@
    "SECTIE RECUPERARE NEUROLOGICA Infirmiera Gradatia 5 GENERALE": {
     "n": 9
    },
+   "infirmiera GENERALE Legea nr.153 art.33 Gradatia 1": {
+    "n": 9
+   },
+   "infirmiera UPU GENERALE Legea nr.153 art.33 Gradatia 5": {
+    "n": 9
+   },
+   "infirmiera UPU GENERALE Legea nr.153 art.33 Gradatia 4": {
+    "n": 9
+   },
    "SECTIA A.T.I INFIRMIERA A.T.I. Gradatia 5": {
     "n": 9
    },
@@ -1178,6 +1253,9 @@
    "Sectia Clinica Chirurgie Generala I INFIRMIERA G": {
     "n": 5
    },
+   "infirmiera ATI GENERALE Legea nr.153 art.33 Gradatia 5": {
+    "n": 5
+   },
    "INFIRMIERA DEBUTANTA Legea nr. 153 art. 33": {
     "n": 5
    },
@@ -1301,6 +1379,15 @@
    "Sectia Chirurgie Plastica,Estetica si Microchirurgie Re INFI": {
     "n": 4
    },
+   "infirmiera ATI GENERALE Legea nr.153 art.33 Gradatia 4": {
+    "n": 4
+   },
+   "infirmiera ATI GENERALE Legea nr.153 art.33 Gradatia 3": {
+    "n": 4
+   },
+   "infirmiera UPU GENERALE Legea nr.153 art.33 Gradatia 2": {
+    "n": 4
+   },
    "OBSTETRICA INFIRMIERA Gradatia 4": {
     "n": 4
    },
@@ -1410,6 +1497,12 @@
     "n": 3
    },
    "Sectia Clinica Chirurg. Generala II INFIRMIERA G": {
+    "n": 3
+   },
+   "infirmier GENERALE Legea nr.153 art.33 Gradatia 5": {
+    "n": 3
+   },
+   "infirmiera UPU GENERALE Legea nr.153 art.33 Gradatia 3": {
     "n": 3
    },
    "INFIRMIER Gradatia 5": {
@@ -1664,6 +1757,12 @@
    "Compartiment Terapie Intensiva - Neurologie,Chir.plasti INFI": {
     "n": 2
    },
+   "infirmiera GENERALE Legea nr.153 art.33 Baza": {
+    "n": 2
+   },
+   "infirmier GENERALE Legea nr.153 art.33 Gradatia 3": {
+    "n": 2
+   },
    "INFIRMIERA Gradatia 1": {
     "n": 2
    },
@@ -1761,6 +1860,9 @@
     "n": 1
    },
    "INFIRMIERA debutant M,G": {
+    "n": 1
+   },
+   "Infirmiera": {
     "n": 1
    },
    "420 Infirmier Gradatia 5 Contractual": {
@@ -2516,6 +2618,39 @@
    "Compartiment Arsi INFIRMIERA G": {
     "n": 1
    },
+   "infirmiera ATI GENERALE Legea nr.153 art.33 Gradatia 2": {
+    "n": 1
+   },
+   "infirmiera ATI GENERALE Legea nr.153 art.33 Gradatia 1": {
+    "n": 1
+   },
+   "infirmiera ATI GENERALE Legea nr.153 art.33 Gradatia 1 CIC": {
+    "n": 1
+   },
+   "infirmiera deb. GENERALE Legea nr.153 art.33 Gradatia 1": {
+    "n": 1
+   },
+   "infirmiera POSTLICEALE Legea nr.153 art.33 Gradatia 3": {
+    "n": 1
+   },
+   "infirmier GENERALE Legea nr.153 art.33 Gradatia 4": {
+    "n": 1
+   },
+   "infirmiera MEDII Legea nr.153 art.33 Baza": {
+    "n": 1
+   },
+   "infirmiera GENERALE Legea nr.153 art.33 Gradatia 5 CIC": {
+    "n": 1
+   },
+   "infirmier GENERALE Legea nr.153 art.33 Gradatia 2": {
+    "n": 1
+   },
+   "infirmiera temporara GENERALE Legea nr.153 art.33 Gradatia 2": {
+    "n": 1
+   },
+   "infirmiera UPU GENERALE Legea nr.153 art.33 Gradatia 1 CIC": {
+    "n": 1
+   },
    "INFIRMIERA BAZA": {
     "n": 1
    },
@@ -2541,6 +2676,15 @@
     "n": 1
    },
    "INTEGRAT INFIRMIERA Gradatia 5": {
+    "n": 1
+   },
+   "Infirmiera Gradatia I": {
+    "n": 1
+   },
+   "Infirmiera Gradatia 30s": {
+    "n": 1
+   },
+   "41S Infirmiera (Gradatia": {
     "n": 1
    },
    "SECTIA MEDICINA INTERNA INFIRMIER/A Gradatia 2": {

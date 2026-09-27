@@ -2,7 +2,7 @@
  "slug": "fizioterapeut",
  "nume": "Fizioterapeut",
  "cor": "226402",
- "generatLa": "2026-09-27T10:16:51.955Z",
+ "generatLa": "2026-09-27T10:24:50.086Z",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
   "cuSalariu": 2,
@@ -170,100 +170,104 @@
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
-  "posturi": 42,
-  "institutii": 11,
-  "posturiDinSurseDeVerificat": 7,
+  "posturi": 51,
+  "institutii": 13,
+  "posturiDinSurseDeVerificat": 1,
   "judete": {
    "BH": {
     "n": 16,
-    "procent": 38.1
+    "procent": 31.4
+   },
+   "BV": {
+    "n": 7,
+    "procent": 13.7
    },
    "TM": {
     "n": 7,
-    "procent": 16.7
+    "procent": 13.7
    },
    "CJ": {
     "n": 5,
-    "procent": 11.9
+    "procent": 9.8
    },
    "CT": {
     "n": 5,
-    "procent": 11.9
+    "procent": 9.8
    },
    "AB": {
     "n": 4,
-    "procent": 9.5
+    "procent": 7.8
+   },
+   "SV": {
+    "n": 3,
+    "procent": 5.9
    },
    "BR": {
     "n": 2,
-    "procent": 4.8
-   },
-   "BV": {
-    "n": 1,
-    "procent": 2.4
+    "procent": 3.9
    },
    "BZ": {
     "n": 1,
-    "procent": 2.4
+    "procent": 2
    },
    "MS": {
     "n": 1,
-    "procent": 2.4
+    "procent": 2
    }
   },
   "tipInstitutie": {
    "spital": {
-    "n": 40,
-    "procent": 95.2
+    "n": 49,
+    "procent": 96.1
    },
    "dgaspc": {
     "n": 1,
-    "procent": 2.4
+    "procent": 2
    },
    "universitate": {
     "n": 1,
-    "procent": 2.4
+    "procent": 2
    }
   },
   "perioade": {
    "2026-03": {
-    "n": 40,
-    "procent": 95.2
+    "n": 46,
+    "procent": 90.2
    },
    "2025-03": {
-    "n": 1,
-    "procent": 2.4
+    "n": 4,
+    "procent": 7.8
    },
    "2026-02": {
     "n": 1,
-    "procent": 2.4
+    "procent": 2
    }
   },
   "studii": {
    "S": {
-    "n": 23,
-    "procent": 54.8
+    "n": 26,
+    "procent": 51
    },
    "G": {
     "n": 2,
-    "procent": 4.8
+    "procent": 3.9
    }
   },
   "bazaBruta": {
-   "n": 42,
+   "n": 51,
    "p10": 5679,
-   "p25": 7238,
-   "median": 8167,
+   "p25": 6920,
+   "median": 8145,
    "p75": 9075,
    "p90": 9302,
    "min": 5272,
    "max": 9769
   },
   "bazaCuSporuriFixe": {
-   "n": 42,
-   "p10": 6501,
-   "p25": 7506,
-   "median": 8895,
+   "n": 51,
+   "p10": 6508,
+   "p25": 7828,
+   "median": 9089,
    "p75": 9881,
    "p90": 10723,
    "min": 5272,
@@ -271,27 +275,30 @@
   },
   "peGradatie": {
    "gradația 5": {
-    "n": 11,
-    "p10": 8573,
-    "p25": 9651,
+    "n": 14,
+    "p10": 8827,
+    "p25": 9752,
     "median": 9881,
-    "p75": 9881,
-    "p90": 10992,
+    "p75": 9991,
+    "p90": 10703,
     "min": 8492,
     "max": 11040
    },
    "gradația 4": {
+    "n": 9
+   },
+   "gradația 2": {
     "n": 8
    },
    "gradația 3": {
-    "n": 4
-   },
-   "gradația 2": {
     "n": 4
    }
   },
   "peFunctie": {
    "Laborator recup,medicina fizica si balne‐L.Pasteur Fiziokine": {
+    "n": 5
+   },
+   "Fiziokinetoterapeut Gradatia": {
     "n": 5
    },
    "Laborator recup,medicina fizica si balne‐C.Coposu Fiziokinet": {
@@ -307,6 +314,9 @@
     "n": 2
    },
    "Fiziokinetoterapeut specialist SUPERIOARE ( S )": {
+    "n": 2
+   },
+   "fiziokinetoterapeut principal SUPERIOARE Legea nr.153 art.33": {
     "n": 2
    },
    "FIZIOKINETOTERAPEUT SPECIALIST Legea nr. 153 art. 33": {
@@ -345,10 +355,16 @@
    "Fiziokinetoterapeut specialist COORDONATORI SUPERIOARE ( S )": {
     "n": 1
    },
+   "fiziokinetoterapeut SUPERIOARE Legea nr.153 art.33 Baza": {
+    "n": 1
+   },
    "FIZIOKINETOTERAPEUT Legea nr. 153 art. 33": {
     "n": 1
    },
    "FIZIOKINETOTERAPEUT BAZA": {
+    "n": 1
+   },
+   "30s Fiziokinetoterapeut Gradatia": {
     "n": 1
    },
    "SECTIA NEUROLOGIE FIZIOKINETOTERAPEUT PRINCIPAL Gradatia 5": {

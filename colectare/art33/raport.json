@@ -102,17 +102,10 @@
    "infirmier": 67
   },
   "coloaneNecunoscute": [
-   "Salariu de",
-   "calcul sp.",
-   "Sp cond Gr II AMB/ Lg.153/",
-   "TRANSPARENTA SALARIALA Sp cond HGR 153/ 2018 / Lg.153/",
-   "TRANSPARENTA SALARIALA Sp cond Amb / Lg.153/",
-   "TRANSPARENTA SALARIALA Ind. Detasare / Lg. 136/",
-   "Sp cond Gr II % / Lg.153/",
-   "Sp cond gest inf",
-   "Sp ind.comisii % / Lg.153/",
-   "12 Mar 2026, 10:19:00 Sentinte jud. / Lg.153/",
-   "Sentinte"
+   "Sp cond Gr II AMB/ Lg.153/ 2017-% Val Sp cond Gr II AMB",
+   "TRANSPARENTA SALARIALA Ind. Detasare / Lg. 136/ 2020",
+   "Sp cond gest inf clasif % Val Sp cond gest inf clasif",
+   "Sp ind.comisii % / Lg.153/ 2017 Val Sp ind. comisii"
   ]
  },
  "sju-mciuc": {
@@ -585,13 +578,11 @@
   "coloaneNecunoscute": [
    "NR. ('RT",
    "SPITALUL DE PSIHIATRIE TITAN \"DR. CONSTANTIN TRANSPARENTA VENITURILOR SALARIALE CONF ART.33 FUNCTIE ",
-   "GORGOS DIN LEGEA CADRU GRAD- SAL TREAPTA ATIE DE",
-   "PSIHIATRIE Gorgos\" '3/C3~~c .irntc..1ţ11",
-   "TITAN Gorgos\" '3/C3~~c INDEMNI- ('F."
+   "GORGOS DIN LEGEA CADRU GRAD- SAL TREAPTA ATIE DE"
   ]
  },
  "dsp-vaslui": {
-  "stare": "de verificat: baza ghicită la peste 30% din rânduri",
+  "stare": "acceptat",
   "fisier": "https://dspvs.ro/wp-content/uploads/2026/09/TRANSPARENTA-VENITURILOR-SALARIALE-SEPTEMBRIE-2026.pdf",
   "perioada": "2026-09",
   "sha256": "cfd3f202008b0f311f68bf8bf0837d660e29e2beb01f7f252b73fc15dcf171df",
@@ -608,12 +599,9 @@
    "consilier-juridic": 1
   },
   "coloaneNecunoscute": [
-   "Serviciul Resurse Umane, Normare, TRANSPARENTA VENITllRILOR",
-   "Organizare SALARlALE",
-   "DIRECTIA DE SANATATE PUBLiCA JUDETEANA VASLUI Telefon Strada Republicii, bloc nr.367, parter, C.P.73",
-   "DIRECTIA PUBLICA INTRARE IE$IRE' ROMANIA MINISTERUL sANATATn DIRECTIA DE SANATATE PUBLiCA JUDETEANA ",
-   "DIRECTIA DE SANATATE A JUDE NR.205r95d~ DIRECTIA DE SANATATE PUBLiCA JUDETEANA VASLUI 0235/317351 Re",
-   "ULJJI VAStUI J b. SEP. 2026 ata_"
+   "Nr. crt 0",
+   "Serviciul Resurse Umane, Normare, TRANSPARENTA VENITllRILOR ! Functia, gradul/treapta \"0 '\" profesio",
+   "DIRECTIA DE SANATATE A JUDE NR.205r95d~ DIRECTIA DE SANATATE PUBLiCA JUDETEANA VASLUI 0235/317351 Re"
   ]
  },
  "bcu-bucuresti": {
@@ -740,14 +728,14 @@
   "coloaneNecunoscute": []
  },
  "scpn-brasov": {
-  "stare": "de verificat: baza ghicită la peste 30% din rânduri",
+  "stare": "acceptat",
   "fisier": "https://www.scpnbv.ro/wp-content/uploads/2026/04/Transparenta-veniturilor-salariale-martie-2026.pdf",
   "perioada": "2026-03",
   "sha256": "5a022301777275d9df8f88a5d4c7ca25af5d85be264464f820742ec676cc5bf7",
   "bytes": 8741913,
   "cititLa": "2026-09-27",
   "randuri": 135,
-  "valide": 135,
+  "valide": 132,
   "peMeserie": {
    "bucatar": 5,
    "economist": 6,
@@ -762,22 +750,11 @@
    "psiholog": 13
   },
   "coloaneNecunoscute": [
-   "Tel. e-mail:",
-   "JUDETEAN BRASOV DE PSIHIATRIE 7-9, 500123 0724224015; Fax. relatiicupublicul@spnbrasov.ro",
-   "$1 0268/410205;",
+   "Tel. e-mail: Crt",
+   "JUDETEAN BRASOV DE PSIHIATRIE 7-9, 500123 0724224015; Fax. relatiicupublicul@spnbrasov.ro Gradatia",
    "NEUROLOGIE 0268/410205;",
-   "NEUROLOGIE 0268/410205;",
-   "NEUROLOGIE 511609",
-   "BRASOV",
-   "BRASOV",
-   "TRANSPARENTA CONF.",
-   "VENITURILOR SALARIALE LEGII",
-   "VENITURILOR SALARIALE NR. 153/2017",
-   "VENITURILOR SALARIALE",
-   "SPITALL!L Ziuo€-",
-   "de date Cu",
-   "caracter personal nr.",
-   "9275"
+   "VENITURILOR SALARIALE 153/2017 de din de pt.",
+   "Stimulent financiare HCJ / 31.07.202"
   ]
  },
  "scju-braila": {
@@ -1005,5 +982,43 @@
  "cj-hunedoara": {
   "stare": "fără rânduri (scanat sau alt format)",
   "sha256": "e81650967901fc3f5f82e32d6cd76b7e5ce1a0915d5ad0a9fea236b2f8772c88"
+ },
+ "scju-suceava": {
+  "stare": "acceptat",
+  "fisier": "https://spitaluljudeteansuceava.ro/documente/Uz%20intern/Venituri/Transparenta%20salariala%20(Legea%20153-art.33)/2025/TRANSPARENTA%20SALARIALA%20-%2031%20MARTIE%202025.pdf",
+  "perioada": "2025-03",
+  "sha256": "c782cfefd43b7ef1c73904c9279ffdb4c191db3c4c7067d389b8a49b78cbf930",
+  "bytes": 3161138,
+  "cititLa": "2026-09-27",
+  "randuri": 917,
+  "valide": 917,
+  "peMeserie": {
+   "asistent-medical": 119,
+   "infirmier": 276,
+   "medic": 442,
+   "electrician": 7,
+   "sofer-ambulanta": 3,
+   "instalator": 2,
+   "bucatar": 11,
+   "psiholog": 9,
+   "programator": 1,
+   "farmacist": 2,
+   "registrator-medical": 7,
+   "medic-rezident": 6,
+   "kinetoterapeut": 5,
+   "asistent-social": 4,
+   "fizioterapeut": 3,
+   "economist": 12,
+   "magaziner": 4,
+   "consilier-juridic": 4
+  },
+  "coloaneNecunoscute": [
+   "Salar baza (fisa) Decembrie 2023",
+   "Transparenta salariala conform Legii 153 din 2017 - 31 martie 2025 Ind. Grada- doct. datie L153 art.",
+   "Transparenta salariala conform Legii 153 din 2017 - 31 martie 2025 %",
+   "%",
+   "%",
+   "Alte drepturi L.95/2006"
+  ]
  }
 }

@@ -93,7 +93,7 @@ export function detailRecord(page, source) {
     // Some publishers put the country code in addressRegion and omit addressCountry.
     country: locations.length && locations.every(l => ['RO','Romania','România'].includes(l.addressCountry?.name || l.addressCountry) || l.addressRegion === 'RO') ? 'RO' : null,
     contract: [j.employmentType].flat().length === 1 ? [j.employmentType].flat()[0] : null, date: j.datePosted, expires: j.validThrough,
-    salaryText, salary: j.baseSalary ? { from: j.baseSalary.value?.minValue || j.baseSalary.value?.value, to: j.baseSalary.value?.maxValue || j.baseSalary.value?.value, currencyCode: j.baseSalary.currency, period: j.baseSalary.value?.unitText } : null };
+    salaryText, salary: j.baseSalary ? { from: j.baseSalary.value?.minValue || j.baseSalary.value?.value, to: j.baseSalary.value?.maxValue || j.baseSalary.value?.value, currencyCode: /^(lei|ron)$/i.test(j.baseSalary.currency || '') ? 'RON' : j.baseSalary.currency, period: j.baseSalary.value?.unitText } : null };
 }
 const amount = '(?:\\d{1,3}(?:[ .]\\d{3})+|\\d{3,6})';
 const salaryPattern = new RegExp(`(${amount})(?:\\s*(?:[-–—]|si|și|la)\\s*(${amount}))?\\s*(lei|ron|eur|euro|€)`, 'gi');

@@ -2,7 +2,7 @@
  "slug": "instalator",
  "nume": "Instalator",
  "cor": "712609",
- "generatLa": "2026-09-27T10:16:52.097Z",
+ "generatLa": "2026-09-27T10:24:50.242Z",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
   "cuSalariu": 116,
@@ -520,80 +520,92 @@
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
-  "posturi": 42,
-  "institutii": 7,
-  "posturiDinSurseDeVerificat": 4,
+  "posturi": 46,
+  "institutii": 9,
+  "posturiDinSurseDeVerificat": 2,
   "judete": {
    "BH": {
     "n": 14,
-    "procent": 33.3
+    "procent": 30.4
    },
    "TM": {
     "n": 12,
-    "procent": 28.6
+    "procent": 26.1
    },
    "GR": {
     "n": 5,
-    "procent": 11.9
+    "procent": 10.9
    },
    "CJ": {
     "n": 4,
-    "procent": 9.5
+    "procent": 8.7
    },
    "IS": {
     "n": 3,
-    "procent": 7.1
+    "procent": 6.5
    },
    "DJ": {
     "n": 3,
-    "procent": 7.1
+    "procent": 6.5
+   },
+   "SV": {
+    "n": 2,
+    "procent": 4.3
+   },
+   "BV": {
+    "n": 2,
+    "procent": 4.3
    },
    "B": {
     "n": 1,
-    "procent": 2.4
+    "procent": 2.2
    }
   },
   "tipInstitutie": {
    "spital": {
-    "n": 42,
+    "n": 46,
     "procent": 100
    }
   },
   "perioade": {
    "2026-03": {
-    "n": 34,
-    "procent": 81
+    "n": 36,
+    "procent": 78.3
    },
    "2022-09": {
     "n": 5,
-    "procent": 11.9
+    "procent": 10.9
    },
    "2024-03": {
     "n": 3,
-    "procent": 7.1
+    "procent": 6.5
+   },
+   "2025-03": {
+    "n": 2,
+    "procent": 4.3
    }
   },
   "studii": {
    "G": {
-    "n": 18,
-    "procent": 42.9
+    "n": 20,
+    "procent": 43.5
    }
   },
   "bazaBruta": {
-   "n": 42,
-   "p10": 3870,
+   "n": 46,
+   "p10": 4293,
    "p25": 5680,
-   "median": 6131,
+   "median": 6093,
    "p75": 6498,
    "p90": 6515,
    "min": 3462,
    "max": 6515
   },
   "bazaCuSporuriFixe": {
-   "n": 42,
-   "p10": 4202,
+   "n": 46,
+   "p10": 4604,
    "p25": 5800,
-   "median": 6345,
+   "median": 6263,
    "p75": 6757,
    "p90": 6815,
    "min": 3657,
@@ -601,13 +613,13 @@
   },
   "peGradatie": {
    "gradația 5": {
-    "n": 26,
-    "p10": 6123,
-    "p25": 6384,
-    "median": 6757,
+    "n": 30,
+    "p10": 6038,
+    "p25": 6226,
+    "median": 6494,
     "p75": 6815,
     "p90": 6815,
-    "min": 5911,
+    "min": 5705,
     "max": 6940
    },
    "gradația 2": {
@@ -661,7 +673,19 @@
    "577 Munc. calif. IV-Instalator sanitar Gradatia 2 Contractua": {
     "n": 1
    },
+   "munc.I(instalator sanitar) GENERALE Legea nr.153 art.33 Grad": {
+    "n": 1
+   },
+   "munc.III(instalator sanitar) GENERALE Legea nr.153 art.33 Gr": {
+    "n": 1
+   },
    "TEHNIC INSTALATOR Gradatia 4": {
+    "n": 1
+   },
+   "Instalator II Gradatia": {
+    "n": 1
+   },
+   "Instalator III Gradatia": {
     "n": 1
    },
    "MUNCITOR CALIFICAT II - INSTALATOR Gradatia 5 Sporurile din ": {

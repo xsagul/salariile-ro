@@ -44,6 +44,9 @@ const roots={
   anuntul:['https://www.anuntul.ro/sitemap-category_1.xml',null],
   ejobs:['https://www.ejobs.ro/sitemap-listings-index.xml',/sitemap-listings-.*\.xml$/],
   hipo:['https://www.hipo.ro/sitemap_lastjobs.xml',null],
+  // Anunțuri de mică publicitate, toate categoriile în aceleași hărți; titlul din adresă alege
+  // candidații, iar pagina de detaliu trebuie să aibă un singur JobPosting (proba, 27 sept. 2026).
+  lajumate:['https://lajumate.ro/sitemap.xml',/sitemap-anunt-\d+\.xml$/],
 };
 function titleFromUrl(url,source){const parts=new URL(url).pathname.split('/').filter(Boolean);return safeDecode(['publi24','ejobs','undelucram'].includes(source)?parts.at(-2):parts.at(-1)).replaceAll('-',' ');}
 async function fxRate(){
