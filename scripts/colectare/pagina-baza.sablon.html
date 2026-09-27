@@ -1,0 +1,232 @@
+<title>Baza pe meserii</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --canvas:#f8f5ef; --surface:#fffdf9; --antet:#efe9de; --cerneala:#121212; --text:#3a3632;
+  --gri:#6b645d; --linie:#e2ddd4; --linie-tare:#cfc8bd; --marcaj:#ffc61a; --marcaj-slab:#fff1c2;
+  --bara:#d9d1c3; --sub:#8a8279; --focus:#b07d00;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --canvas:#161412; --surface:#1e1b18; --antet:#2a2622; --cerneala:#f4f0e9; --text:#dcd6cd;
+  --gri:#a39b91; --linie:#35302b; --linie-tare:#4a433c; --marcaj:#e8b10f; --marcaj-slab:#3d3212;
+  --bara:#4a433c; --sub:#8f877d; --focus:#e8b10f; color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --canvas:#161412; --surface:#1e1b18; --antet:#2a2622; --cerneala:#f4f0e9; --text:#dcd6cd;
+  --gri:#a39b91; --linie:#35302b; --linie-tare:#4a433c; --marcaj:#e8b10f; --marcaj-slab:#3d3212;
+  --bara:#4a433c; --sub:#8f877d; --focus:#e8b10f; color-scheme:dark;}
+*{box-sizing:border-box}
+body{background:var(--canvas);color:var(--text);font-family:Inter,"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
+  font-size:14px;line-height:1.5;font-feature-settings:"cv11","ss01","ss03";padding-inline:16px;padding-block:20px 48px}
+.tab{font-variant-numeric:tabular-nums}
+.inner{max-width:1240px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+header{display:flex;flex-direction:column;gap:6px}
+h1{font-size:24px;line-height:1.2;font-weight:700;color:var(--cerneala);margin:0;text-wrap:balance}
+h1 .ii{background:var(--marcaj);color:#121212;padding:0 4px;border-radius:3px}
+.sub{color:var(--gri);margin:0;max-width:70ch}
+.totaluri{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:6px}
+.totaluri div{display:flex;flex-direction:column}
+.totaluri b{font-size:18px;color:var(--cerneala);font-weight:600}
+.totaluri span{font-size:12px;color:var(--gri)}
+.grid{display:grid;grid-template-columns:300px minmax(0,1fr);gap:20px;align-items:start}
+@media (max-width:820px){.grid{grid-template-columns:minmax(0,1fr)}}
+aside{background:var(--surface);border:1px solid var(--linie);border-radius:8px;display:flex;flex-direction:column;
+  position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px);max-height:calc(100vh - 24px)}
+@media (max-width:820px){aside{position:static;max-height:46vh}}
+.cauta{padding:10px;border-bottom:1px solid var(--linie);display:flex;flex-direction:column;gap:8px}
+.cauta input,.cauta select{width:100%;font:inherit;padding:7px 10px;border:1px solid var(--linie-tare);border-radius:6px;background:var(--canvas);color:var(--cerneala)}
+.lista{overflow-y:auto;list-style:none;margin:0;padding:4px}
+.lista button{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:2px;width:100%;box-sizing:border-box;padding:7px 10px;border-radius:6px}
+.lista button:hover{background:var(--antet)}
+.lista button[aria-current="true"]{background:var(--marcaj-slab)}
+.lista button:focus-visible{outline:2px solid var(--focus);outline-offset:-2px}
+.lista .nume{color:var(--cerneala);font-weight:500}
+.lista .mic{font-size:12px;color:var(--gri)}
+main{display:flex;flex-direction:column;gap:16px;min-width:0}
+.cap{display:flex;flex-direction:column;gap:4px}
+.cap h2{font-size:22px;margin:0;color:var(--cerneala);font-weight:700}
+.cap .cor{font-size:12px;color:var(--gri)}
+.surse{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1px;background:var(--linie);border:1px solid var(--linie);border-radius:8px;overflow:hidden}
+.surse a{background:var(--surface);padding:10px 12px;display:flex;flex-direction:column;gap:2px;text-decoration:none;color:inherit}
+.surse a:hover{background:var(--antet)}
+.surse b{font-size:20px;font-weight:600;color:var(--cerneala)}
+.surse b.zero{color:var(--sub)}
+.surse span{font-size:12px;color:var(--gri)}
+section{background:var(--surface);border:1px solid var(--linie);border-radius:8px;padding:14px 16px;display:flex;flex-direction:column;gap:12px;scroll-margin-top:12px}
+section h3{margin:0;font-size:16px;color:var(--cerneala);font-weight:600}
+section .desc{margin:0;font-size:12px;color:var(--gri);max-width:80ch}
+.gol{color:var(--sub);font-size:13px;margin:0}
+.eticheta{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--gri);font-weight:600;margin:0}
+.bloc{display:flex;flex-direction:column;gap:6px}
+.doi{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:16px 24px}
+.dist{display:grid;grid-template-columns:minmax(0,1fr);gap:4px}
+.dist .rand{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.dist .rand .ce{color:var(--cerneala);font-weight:500}
+.dist .rand .n{color:var(--gri);font-size:12px}
+.scala{position:relative;height:18px;background:var(--antet);border-radius:3px}
+.scala .ext{position:absolute;top:8px;height:2px;background:var(--linie-tare)}
+.scala .cut{position:absolute;top:3px;height:12px;background:var(--marcaj);border-radius:2px}
+.scala .med{position:absolute;top:0;width:2px;height:18px;background:var(--cerneala)}
+.valori{display:flex;justify-content:space-between;font-size:12px;color:var(--gri);gap:6px;flex-wrap:wrap}
+.valori b{color:var(--cerneala);font-weight:600}
+.sub-prag{font-size:12px;color:var(--sub)}
+.frec{display:grid;grid-template-columns:minmax(110px,48%) minmax(40px,1fr) auto;gap:3px 10px;align-items:center;font-size:13px}
+.frec .k{color:var(--text);overflow-wrap:anywhere}
+.frec .b{height:8px;background:var(--antet);border-radius:2px;overflow:hidden}
+.frec .b i{display:block;height:100%;background:var(--bara)}
+.frec .v{color:var(--gri);font-size:12px;text-align:right;white-space:nowrap}
+.tabel{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th{background:var(--antet);text-align:left;font-weight:600;color:var(--cerneala);padding:6px 8px;font-size:12px}
+td{padding:5px 8px;border-top:1px solid var(--linie);vertical-align:top}
+td.nr,th.nr{text-align:right;white-space:nowrap}
+td.slab{color:var(--sub)}
+.nota{font-size:12px;color:var(--gri);margin:0}
+footer{font-size:12px;color:var(--gri);max-width:80ch}
+@media (prefers-reduced-motion:no-preference){.lista button{transition:background .12s}}
+</style>
+
+<div class="inner">
+  <header>
+    <h1>Baza pe meserii</h1>
+    <p class="sub">Tot ce s-a adunat pe fiecare meserie din catalog, pe surse separate. Sursele nu se amestecă: anunțurile arată ce se oferă, ANOFM ce se declară oficial, instituțiile publice ce se plătește. Percentilele apar numai de la 10 valori în sus, defalcările de la 5.</p>
+    <div class="totaluri tab" id="totaluri"></div>
+  </header>
+  <div class="grid">
+    <aside aria-label="Meserii">
+      <div class="cauta">
+        <label class="eticheta" for="cauta">Caută meseria</label>
+        <input id="cauta" type="search" placeholder="programator, asistent…" autocomplete="off">
+        <label class="eticheta" for="ordine">Ordine</label>
+        <select id="ordine">
+          <option value="date">cele mai multe date întâi</option>
+          <option value="anunturi">anunțuri cu salariu</option>
+          <option value="citite">anunțuri citite (factori)</option>
+          <option value="anofm">oferte ANOFM</option>
+          <option value="publice">posturi publice</option>
+          <option value="alfabetic">alfabetic</option>
+        </select>
+      </div>
+      <ul class="lista tab" id="lista"></ul>
+    </aside>
+    <main id="fisa" aria-live="polite"></main>
+  </div>
+  <footer id="subsol"></footer>
+</div>
+
+<script>
+const D = /*DATE*/null;
+const fmt = (v) => (v == null || !Number.isFinite(+v) ? "–" : Math.round(+v).toLocaleString("ro-RO"));
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const FISE = Object.fromEntries(D.fise.map((f) => [f.slug, f]));
+const total = (r) => (r.cuBazaDeclarata || 0) + (r.anunturiCitite || 0) + (r.anofm || 0) + (r.posturiPublice || 0) + (r.angajatori || 0);
+
+document.getElementById("totaluri").innerHTML = [
+  [D.total.anunturi, "anunțuri cu salariu"], [D.total.citite, "profiluri de anunțuri (factori)"],
+  [D.total.anofm, "oferte ANOFM pe COR exact"], [D.total.publice, "posturi publice plătite"], [D.rezumat.length, "meserii"],
+].map(([v, t]) => `<div><b>${fmt(v)}</b><span>${t}</span></div>`).join("");
+document.getElementById("subsol").textContent = `Generat din colectare/baza pe ${new Date(D.generatLa).toLocaleString("ro-RO", { dateStyle: "long", timeStyle: "short" })}. Sumele sunt lei pe lună. La anunțuri: net, mijlocul intervalului publicat; la ANOFM: suma minimă declarată; la instituții: baza brută și baza cu sporurile fixe.`;
+
+// ── Listă ──────────────────────────────────────────────────────────────────
+const lista = document.getElementById("lista"), cauta = document.getElementById("cauta"), ordine = document.getElementById("ordine");
+let curent = null;
+function norm(s) { return s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase(); }
+function deseneazaLista() {
+  const q = norm(cauta.value.trim()), o = ordine.value;
+  const cheie = { date: total, anunturi: (r) => r.cuBazaDeclarata, citite: (r) => r.anunturiCitite, anofm: (r) => r.anofm, publice: (r) => r.posturiPublice };
+  let rows = D.rezumat.filter((r) => !q || norm(r.nume).includes(q) || r.slug.includes(q));
+  rows = o === "alfabetic" ? rows.sort((a, b) => a.nume.localeCompare(b.nume, "ro")) : rows.sort((a, b) => (cheie[o](b) || 0) - (cheie[o](a) || 0));
+  lista.innerHTML = rows.map((r) => {
+    const parti = [r.cuBazaDeclarata && `${r.cuBazaDeclarata} anunțuri`, r.anunturiCitite && `${r.anunturiCitite} citite`, r.anofm && `${r.anofm} ANOFM`, r.posturiPublice && `${fmt(r.posturiPublice)} stat`, r.angajatori && `${r.angajatori} angajatori`].filter(Boolean);
+    return `<li><button type="button" data-slug="${r.slug}" aria-current="${r.slug === curent}"><span class="nume">${esc(r.nume)}</span><span class="mic">${parti.join(" · ") || "fără date încă"}</span></button></li>`;
+  }).join("") || `<li class="gol" style="padding:10px">Nicio meserie nu se potrivește.</li>`;
+}
+lista.addEventListener("click", (e) => { const b = e.target.closest("button[data-slug]"); if (b) arata(b.dataset.slug, true); });
+cauta.addEventListener("input", deseneazaLista);
+ordine.addEventListener("change", () => { deseneazaLista(); try { localStorage.setItem("ordine", ordine.value); } catch {} });
+try { const o = localStorage.getItem("ordine"); if (o) ordine.value = o; } catch {}
+
+// ── Componente ─────────────────────────────────────────────────────────────
+function distributii(randuri) {
+  // Toate distribuțiile unei secțiuni pe aceeași scară, ca să se poată compara între ele.
+  const cu = randuri.filter(([, d]) => d && d.p10 != null);
+  const max = Math.max(1, ...cu.map(([, d]) => d.p90)), min = Math.min(...cu.map(([, d]) => d.p10), max) * 0.9;
+  const x = (v) => (((v - min) / (max - min)) * 100).toFixed(2) + "%";
+  return `<div class="bloc">${randuri.map(([ce, d]) => {
+    if (!d || !d.n) return "";
+    if (d.p10 == null) return `<div class="dist"><div class="rand"><span class="ce">${ce}</span><span class="n tab">n = ${d.n}</span></div><span class="sub-prag">Sub pragul de 10 valori: fără percentile.</span></div>`;
+    return `<div class="dist"><div class="rand"><span class="ce">${ce}</span><span class="n tab">n = ${fmt(d.n)}</span></div>
+      <div class="scala" role="img" aria-label="${ce}: mediana ${fmt(d.median)} lei, jumătate între ${fmt(d.p25)} și ${fmt(d.p75)}">
+        <div class="ext" style="left:${x(d.p10)};width:calc(${x(d.p90)} - ${x(d.p10)})"></div>
+        <div class="cut" style="left:${x(d.p25)};width:calc(${x(d.p75)} - ${x(d.p25)})"></div>
+        <div class="med" style="left:${x(d.median)}"></div></div>
+      <div class="valori tab"><span>p10 ${fmt(d.p10)}</span><span>p25 ${fmt(d.p25)}</span><span>mediana <b>${fmt(d.median)}</b></span><span>p75 ${fmt(d.p75)}</span><span>p90 ${fmt(d.p90)}</span></div></div>`;
+  }).join("")}</div>`;
+}
+const ETICHETE = { gross: "brut", brut: "brut", net: "net", none: "nedeclarat", salary_evidence_incomplete: "anunțul nu scrie suma", country_unconfirmed: "țara nu reiese din anunț",
+  full_time_unconfirmed: "norma nu reiese din anunț", foreign_or_noncomparable_work: "muncă în străinătate sau necomparabilă", wide_range: "interval prea larg",
+  stale: "anunț prea vechi", en: "engleză", ro: "română" };
+function frecventa(titlu, o, max = 12, cronologic = false) {
+  let e = Object.entries(o || {}).map(([k, v]) => [ETICHETE[k] ?? k, v]); if (!e.length) return "";
+  if (cronologic) e = e.sort((a, b) => (a[0] < b[0] ? 1 : -1));
+  const top = Math.max(...e.map(([, v]) => v.n));
+  return `<div class="bloc"><p class="eticheta">${titlu}</p><div class="frec tab">${e.slice(0, max).map(([k, v]) =>
+    `<span class="k">${esc(k)}</span><span class="b"><i style="width:${(100 * v.n / top).toFixed(1)}%"></i></span><span class="v">${fmt(v.n)} · ${v.procent.toLocaleString("ro-RO")}%</span>`).join("")}</div></div>`;
+}
+function grupe(titlu, o, cap = "grupa", max = 20) {
+  const e = Object.entries(o || {}); if (!e.length) return "";
+  return `<div class="bloc"><p class="eticheta">${titlu}</p><div class="tabel"><table class="tab"><thead><tr><th>${cap}</th><th class="nr">n</th><th class="nr">mediana</th><th class="nr">p25–p75</th></tr></thead><tbody>${e.slice(0, max).map(([k, d]) =>
+    `<tr><td>${esc(k)}</td><td class="nr">${fmt(d.n)}</td>${d.median != null ? `<td class="nr">${fmt(d.median)}</td><td class="nr">${fmt(d.p25)}–${fmt(d.p75)}</td>` : `<td class="nr slab" colspan="2">sub 10 valori</td>`}</tr>`).join("")}</tbody></table></div></div>`;
+}
+const sectiune = (id, titlu, desc, corp) => `<section id="${id}"><h3>${titlu}</h3><p class="desc">${esc(desc)}</p>${corp}</section>`;
+const gol = (t) => `<p class="gol">${t}</p>`;
+
+// ── Fișa ───────────────────────────────────────────────────────────────────
+function arata(slug, istoric) {
+  const f = FISE[slug]; if (!f) return;
+  curent = slug; deseneazaLista();
+  if (istoric) { try { history.replaceState(null, "", "#" + slug); } catch {} }
+  const a = f.anunturi, x = f.factori, n = f.anofm, p = f.institutiiPublice, g = f.angajatori || { oferte: 0 };
+  const surse = [["anunturi", a.cuBazaDeclarata, "anunțuri cu salariu și bază"], ["factori", x.anunturiCitite, "anunțuri citite (factori)"],
+    ["anofm", n.oferte, "oferte ANOFM, COR exact"], ["publice", p.posturi, "posturi publice"], ["angajatori", g.oferte, "oferte de la angajatori"]];
+  let h = `<div class="cap"><h2>${esc(f.nume)}</h2><span class="cor tab">${f.cor ? "COR " + f.cor : "fără cod COR în catalog"} · ${esc(f.slug)}</span></div>
+    <nav class="surse tab" aria-label="Surse">${surse.map(([id, v, t]) => `<a href="#s-${id}"><b class="${v ? "" : "zero"}">${fmt(v || 0)}</b><span>${t}</span></a>`).join("")}</nav>`;
+
+  h += sectiune("s-anunturi", "Anunțuri cu salariu", a.descriere, a.cuSalariu ? `
+    ${distributii([["Net oferit (mijlocul intervalului)", a.net], ["Capătul de jos al intervalului", a.netMinimOferit], ["Capătul de sus al intervalului", a.netMaximOferit]])}
+    <p class="nota tab">${fmt(a.cuBazaDeclarata)} cu bază declarată; ${fmt(a.faraBazaDeclarata)} fără net/brut scris, numărate separat și ținute afară din cifre.</p>
+    <div class="doi">${grupe("Pe oraș", a.peOras, "oraș", 15)}${grupe("Pe județ", a.peJudet, "județ", 15)}</div>
+    <div class="doi">${frecventa("Platforme", a.surse)}${frecventa("Luna anunțului", a.peLuna, 12, true)}</div>` : gol("Niciun anunț cu salariu încă."));
+
+  const fk = [["Nivel (din titlu)", x.nivel], ["Experiența cerută", x.experienta], ["Treapta de experiență a portalului", x.experientaPortal], ["Studii", x.studii], ["Limbi cerute", x.limbi],
+    ["Mod de lucru", x.mod], ["Program", x.program], ["Normă", x.norma], ["Durata contractului", x.durata], ["Beneficii", x.beneficii], ["Tehnologii și unelte", x.tehnologii, 20],
+    ["Permis", x.permis], ["Atestate", x.atestate], ["Limba anunțului", x.limbaAnuntului], ["Platforme", x.surse], ["De ce n-a intrat salariul", x.motiveFaraSalariu]];
+  const pf = Object.entries(x.salariuPeFactor || {}).map(([k, o]) => grupe(`Salariul oferit, după ${k}`, o, k, 12)).join("");
+  h += sectiune("s-factori", "Ce cer și ce oferă anunțurile", x.descriere, x.anunturiCitite ? `
+    <p class="nota tab">${fmt(x.anunturiCitite)} anunțuri citite, dintre care ${fmt(x.cuSalariu)} cu salariu și bază declarată.</p>
+    <div class="doi">${fk.map(([t, o, m]) => frecventa(t, o, m)).join("")}</div>${pf ? `<div class="doi">${pf}</div>` : ""}` : gol("Niciun anunț citit încă pentru meseria asta."));
+
+  h += sectiune("s-anofm", "ANOFM", n.descriere, n.oferte ? `
+    ${distributii([["Brut minim declarat", n.brutMinimDeclarat], ["Net minim declarat", n.netMinimDeclarat]])}
+    <p class="nota tab">${fmt(n.oferte)} oferte, ${fmt(n.posturi)} posturi; ${fmt(n.laSalariulMinim)} declarate exact la salariul minim. Pe grupa COR (primele 4 cifre): ${fmt(n.ofertePeGrupaCor)} oferte.</p>
+    <div class="doi">${frecventa("Tipul salariului declarat", n.tipSalariu)}${frecventa("Experiența cerută", n.experienta)}${frecventa("Studii", n.studii)}${frecventa("Contract", n.contract)}${frecventa("Normă", n.norma)}${frecventa("Regim", n.regim)}${frecventa("Județe", n.judete, 15)}${frecventa("Coduri COR din grupă", n.coduriCorInGrupa)}</div>` : gol(`Nicio ofertă ANOFM pe codul exact${n.ofertePeGrupaCor ? `; ${fmt(n.ofertePeGrupaCor)} pe grupa COR` : ""}.`));
+
+  h += sectiune("s-publice", "Instituții publice (plătit)", p.descriere, p.posturi ? `
+    ${distributii([["Baza brută", p.bazaBruta], ["Baza cu sporurile fixe", p.bazaCuSporuriFixe]])}
+    <p class="nota tab">${fmt(p.posturi)} posturi din ${fmt(p.institutii)} instituții${p.posturiDinSurseDeVerificat ? `; alte ${fmt(p.posturiDinSurseDeVerificat)} din surse încă de verificat, ținute afară` : ""}.</p>
+    <div class="doi">${grupe("Pe gradație (vechime)", p.peGradatie, "gradație")}${frecventa("Județe", p.judete, 15)}${frecventa("Tipul instituției", p.tipInstitutie)}${frecventa("Studii", p.studii)}${frecventa("Perioada listei", p.perioade)}</div>
+    ${grupe("Pe funcție, cum e scrisă în listă", p.peFunctie, "funcție", 25)}` : gol(p.posturiDinSurseDeVerificat ? `${fmt(p.posturiDinSurseDeVerificat)} posturi, toate din surse încă de verificat.` : "Niciun post public citit încă."));
+
+  h += sectiune("s-angajatori", "Site-urile de cariere ale angajatorilor", g.descriere || "Salariul publicat de angajator pe site-ul lui de cariere.", g.oferte ? `
+    ${distributii([["Brut scris de angajator", g.brut], ["Fără bază scrisă", g.faraBaza], ["Venit mediu brut declarat (alt concept)", g.venitMediuBrutDeclarat]])}
+    <div class="doi">${frecventa("Angajator", g.peAngajator)}${frecventa("Baza", g.baza)}${frecventa("Normă", g.norma)}${frecventa("Ore", g.ore)}</div>
+    ${grupe("Pe oraș", g.peOras, "oraș", 12)}` : gol("Niciun angajator din cei colectați (Lidl, Kaufland) nu are posturi pentru meseria asta."));
+
+  document.getElementById("fisa").innerHTML = h;
+}
+window.addEventListener("hashchange", () => { const s = location.hash.slice(1); if (FISE[s]) arata(s, false); });
+deseneazaLista();
+arata(FISE[location.hash.slice(1)] ? location.hash.slice(1) : "programator", false);
+</script>
