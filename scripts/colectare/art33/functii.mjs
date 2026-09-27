@@ -44,6 +44,8 @@ const REGULI = [
   ["muzician", /\bARTIST (INSTRUMENTIST|LIRIC)\b|\bINSTRUMENTIST\b|\bCORIST\b|\bSOLIST (VOCAL|INSTRUMENTIST)\b/, ["cultura"]],
   ["regizor", /\bREGIZOR ARTISTIC\b/, ["cultura"]],
   ["actor", /^ACTOR\b|\bACTOR (I|II|III|IA|DEBUTANT|PAPUSAR|MANUIT)/, ["cultura"]],
+  // Cluburile sportive ale primăriilor (CSM): antrenorul de execuție; coordonatorul iese mai sus.
+  ["antrenor-sportiv", /\bANTRENOR\b/, ["club-sportiv"]],
   ["educator", /\bEDUCATOR\b/],
   ["programator", /\bPROGRAMATOR\b/],
   ["consilier-juridic", /\bCONSILIER JURIDIC\b/],

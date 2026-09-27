@@ -1642,6 +1642,56 @@
       "fisier": "https://operacomica.ro/wp-content/uploads/2026/08/Transparenta-venituri-31-martie-2026.pdf",
       "perioada": "2026-03",
       "gasitLa": "2026-09-27"
+    },
+    {
+      "id": "csm-oradea",
+      "institutie": "Clubul Sportiv Municipal Oradea",
+      "tip": "club-sportiv",
+      "judet": "BH",
+      "pagina": "https://csmoradea.ro/",
+      "fisier": "https://csmoradea.ro/wp-content/uploads/2025/09/TransparentaVenituriSalariale.pdf",
+      "perioada": "2025-09",
+      "gasitLa": "2026-09-27"
+    },
+    {
+      "id": "csm-sibiu",
+      "institutie": "Clubul Sportiv Municipal Sibiu",
+      "tip": "club-sportiv",
+      "judet": "SB",
+      "pagina": "https://csmsibiu.ro/",
+      "fisier": "https://csmsibiu.ro/wp-content/uploads/2026/03/Salarii-si-functii-luna-martie-2026.pdf",
+      "perioada": "2026-03",
+      "gasitLa": "2026-09-27"
+    },
+    {
+      "id": "csm-constanta",
+      "institutie": "Clubul Sportiv Municipal Constanța",
+      "tip": "club-sportiv",
+      "judet": "CT",
+      "pagina": "https://www.csmconstanta.ro/",
+      "fisier": "https://www.csmconstanta.ro/wp-content/uploads/2026/03/00.DREPTURI-SALARIALE.pdf",
+      "perioada": "2026-03",
+      "gasitLa": "2026-09-27"
+    },
+    {
+      "id": "csm-bistrita",
+      "institutie": "Clubul Sportiv Municipal Bistrița",
+      "tip": "club-sportiv",
+      "judet": "BN",
+      "pagina": "https://www.csmbistrita.ro/",
+      "fisier": "https://www.csmbistrita.ro/wp-content/uploads/2026/09/TRANSPARENTA-VENITURILOR-SEPTEMBRIE-2026.pdf",
+      "perioada": "2026-09",
+      "gasitLa": "2026-09-27"
+    },
+    {
+      "id": "csm-targoviste",
+      "institutie": "Clubul Sportiv Municipal Târgoviște",
+      "tip": "club-sportiv",
+      "judet": "DB",
+      "pagina": "https://www.csmtargoviste.ro/",
+      "fisier": "https://www.csmtargoviste.ro/wp-content/uploads/2025/10/transparenta-veniturilor-salariale-30.09.2025-CSM-TARGOVISTE.pdf",
+      "perioada": "2025-09",
+      "gasitLa": "2026-09-27"
     }
   ]
 }

@@ -1629,5 +1629,25 @@
  "opera-comica": {
   "stare": "fără rânduri verificabile după OCR",
   "sha256": "ee4dc641072ef224c0c95f306ba0f664a9a244a8bf2a90b932d9b8d3d0a35f13"
+ },
+ "csm-oradea": {
+  "stare": "fără rânduri verificabile după OCR",
+  "sha256": "dbbc1a1ee073cbddd7a5661f53a6a15ac3e66be9fa7e8a04e24009e1360b3fc6"
+ },
+ "csm-sibiu": {
+  "stare": "fără rânduri verificabile după OCR",
+  "sha256": "df677f550016221c1825bc2d95298c99400f0397286d4c9ab73aa15c8c457e61"
+ },
+ "csm-constanta": {
+  "stare": "fără rânduri verificabile după OCR",
+  "sha256": "080b54f8c803168e87de4f432433fe4eeb2cab80685ee200e16a5f447e7667bd"
+ },
+ "csm-bistrita": {
+  "stare": "fără rânduri verificabile după OCR",
+  "sha256": "7554ed444bc87a9d434414e26ba11fdac52820e38f0e6eb5c3ea8fa87a9e2d5d"
+ },
+ "csm-targoviste": {
+  "stare": "fără rânduri verificabile după OCR",
+  "sha256": "ba5a7e4205cc7604082d0b21a88d3b8cceb7b9eb318127f4c2e1590a8eb074c9"
  }
 }
