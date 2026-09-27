@@ -1,0 +1,257 @@
+{
+ "slug": "electrician-centrala",
+ "nume": "Electrician centrală electrică",
+ "cor": "741301",
+ "generatLa": "2026-09-27T10:01:09.151Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 0,
+  "cuBazaDeclarata": 0,
+  "faraBazaDeclarata": 0,
+  "surse": {},
+  "colectari": {},
+  "net": {
+   "n": 0
+  },
+  "netMinimOferit": {
+   "n": 0
+  },
+  "netMaximOferit": {
+   "n": 0
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 0
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {}
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 0,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {},
+  "surse": {},
+  "peJudet": {},
+  "motiveFaraSalariu": {},
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 26,
+  "posturi": 36,
+  "ofertePeGrupaCor": 110,
+  "tipSalariu": {
+   "gross": {
+    "n": 23,
+    "procent": 88.5
+   },
+   "none": {
+    "n": 2,
+    "procent": 7.7
+   },
+   "net": {
+    "n": 1,
+    "procent": 3.8
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 1
+  },
+  "brutMinimDeclarat": {
+   "n": 23,
+   "p10": 4325,
+   "p25": 4325,
+   "median": 4677,
+   "p75": 4690,
+   "p90": 5488,
+   "min": 4325,
+   "max": 5626
+  },
+  "laSalariulMinim": 9,
+  "studii": {
+   "Profesional - ȘCOALĂ PROFESIONALĂ": {
+    "n": 21,
+    "procent": 80.8
+   },
+   "Liceal - LICEU DE SPECIALITATE": {
+    "n": 5,
+    "procent": 19.2
+   }
+  },
+  "experienta": {
+   "Fără experiență - 0 ani": {
+    "n": 17,
+    "procent": 65.4
+   },
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 8,
+    "procent": 30.8
+   },
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 1,
+    "procent": 3.8
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 25,
+    "procent": 96.2
+   },
+   "Cu durată determinată": {
+    "n": 1,
+    "procent": 3.8
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 26,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 25,
+    "procent": 96.2
+   },
+   "Telemuncă": {
+    "n": 1,
+    "procent": 3.8
+   }
+  },
+  "judete": {
+   "Argeș": {
+    "n": 6,
+    "procent": 23.1
+   },
+   "Neamț": {
+    "n": 5,
+    "procent": 19.2
+   },
+   "Bihor": {
+    "n": 3,
+    "procent": 11.5
+   },
+   "Hunedoara": {
+    "n": 2,
+    "procent": 7.7
+   },
+   "Buzău": {
+    "n": 2,
+    "procent": 7.7
+   },
+   "Vâlcea": {
+    "n": 2,
+    "procent": 7.7
+   },
+   "Harghita": {
+    "n": 1,
+    "procent": 3.8
+   },
+   "Cluj": {
+    "n": 1,
+    "procent": 3.8
+   },
+   "Sibiu": {
+    "n": 1,
+    "procent": 3.8
+   },
+   "Bacău": {
+    "n": 1,
+    "procent": 3.8
+   },
+   "Bistrița-Năsăud": {
+    "n": 1,
+    "procent": 3.8
+   },
+   "Brăila": {
+    "n": 1,
+    "procent": 3.8
+   }
+  },
+  "domenii": {
+   "Altele": {
+    "n": 13,
+    "procent": 50
+   },
+   "Producție / Logistică": {
+    "n": 9,
+    "procent": 34.6
+   },
+   "Specialiști / Tehnicieni": {
+    "n": 2,
+    "procent": 7.7
+   },
+   "Construcții / Instalații": {
+    "n": 2,
+    "procent": 7.7
+   }
+  },
+  "coduriCorInGrupa": {
+   "741307 - ELECTRICIAN DE ÎNTRETINERE SI REPARATII": {
+    "n": 67,
+    "procent": 60.9
+   },
+   "741301 - ELECTRICIAN EXPLOATARE CENTRALE SI STATII ELECTRICE": {
+    "n": 26,
+    "procent": 23.6
+   },
+   "741304 - ELECTRICIAN MONTARE SI REPARATII LINII ELECTRICE AERIENE": {
+    "n": 5,
+    "procent": 4.5
+   },
+   "741302 - ELECTRICIAN EXPLOATARE RETELE ELECTRICE": {
+    "n": 4,
+    "procent": 3.6
+   },
+   "741306 - ELECTRICIAN PROTECTIE RELEE, AUTOMATIZARI SI MASURATORI ELECTRICE": {
+    "n": 3,
+    "procent": 2.7
+   },
+   "741308 - ELECTRICIAN MONTATOR DE INSTALATII AUTOMATIZATE": {
+    "n": 2,
+    "procent": 1.8
+   },
+   "741309 - ELECTRICIAN MONTATOR DE INSTALATII ELECTRICE LA MIJLOACE DE TRANSPORT": {
+    "n": 2,
+    "procent": 1.8
+   },
+   "741313 - ELECTRICIAN PENTRU UTILIZAREA ENERGIEI ELECTRICE": {
+    "n": 1,
+    "procent": 0.9
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 0,
+  "institutii": 0,
+  "judete": {},
+  "tipInstitutie": {},
+  "perioade": {},
+  "studii": {},
+  "bazaBruta": {
+   "n": 0
+  },
+  "bazaCuSporuriFixe": {
+   "n": 0
+  },
+  "peGradatie": {},
+  "peFunctie": {}
+ }
+}

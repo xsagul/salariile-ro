@@ -1,0 +1,246 @@
+{
+ "slug": "bibliotecar",
+ "nume": "Bibliotecar",
+ "cor": "262202",
+ "generatLa": "2026-09-27T10:01:09.183Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 0,
+  "cuBazaDeclarata": 0,
+  "faraBazaDeclarata": 0,
+  "surse": {},
+  "colectari": {},
+  "net": {
+   "n": 0
+  },
+  "netMinimOferit": {
+   "n": 0
+  },
+  "netMaximOferit": {
+   "n": 0
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 0
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {}
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 0,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {},
+  "surse": {},
+  "peJudet": {},
+  "motiveFaraSalariu": {},
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 0,
+  "posturi": 0,
+  "ofertePeGrupaCor": 0,
+  "tipSalariu": {},
+  "netMinimDeclarat": {
+   "n": 0
+  },
+  "brutMinimDeclarat": {
+   "n": 0
+  },
+  "laSalariulMinim": 0,
+  "studii": {},
+  "experienta": {},
+  "contract": {},
+  "norma": {},
+  "regim": {},
+  "judete": {},
+  "domenii": {},
+  "coduriCorInGrupa": {}
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 54,
+  "institutii": 6,
+  "judete": {
+   "MS": {
+    "n": 23,
+    "procent": 42.6
+   },
+   "AB": {
+    "n": 15,
+    "procent": 27.8
+   },
+   "B": {
+    "n": 11,
+    "procent": 20.4
+   },
+   "BC": {
+    "n": 4,
+    "procent": 7.4
+   },
+   "HR": {
+    "n": 1,
+    "procent": 1.9
+   }
+  },
+  "tipInstitutie": {
+   "universitate": {
+    "n": 38,
+    "procent": 70.4
+   },
+   "biblioteca": {
+    "n": 15,
+    "procent": 27.8
+   },
+   "spital": {
+    "n": 1,
+    "procent": 1.9
+   }
+  },
+  "perioade": {
+   "2026-03": {
+    "n": 54,
+    "procent": 100
+   }
+  },
+  "studii": {
+   "S": {
+    "n": 14,
+    "procent": 25.9
+   },
+   "M": {
+    "n": 2,
+    "procent": 3.7
+   },
+   "SSD": {
+    "n": 1,
+    "procent": 1.9
+   }
+  },
+  "bazaBruta": {
+   "n": 54,
+   "p10": 5205,
+   "p25": 6064,
+   "median": 7286,
+   "p75": 7859,
+   "p90": 8351,
+   "min": 3643,
+   "max": 8351
+  },
+  "bazaCuSporuriFixe": {
+   "n": 54,
+   "p10": 5205,
+   "p25": 6089,
+   "median": 7385,
+   "p75": 8351,
+   "p90": 8492,
+   "min": 3643,
+   "max": 10222
+  },
+  "peGradatie": {
+   "gradația 5": {
+    "n": 1
+   }
+  },
+  "peFunctie": {
+   "Bibliotecar IAS": {
+    "n": 11,
+    "p10": 8274,
+    "p25": 8351,
+    "median": 8478,
+    "p75": 8492,
+    "p90": 8492,
+    "min": 8274,
+    "max": 8492
+   },
+   "Bibliotecar gr.II Indemnizatie hrana 2*Sal.minim/12 Cap.II S": {
+    "n": 6
+   },
+   "Bibliotecar I": {
+    "n": 6
+   },
+   "Bibliotecar gradul IA, gradația 5 S ocupat": {
+    "n": 3
+   },
+   "Bibliotecar gradul IA, gradația S ocupat": {
+    "n": 3
+   },
+   "Bibliotecar gradul l, gradația S ocupat": {
+    "n": 3
+   },
+   "Bibliotecar IS": {
+    "n": 3
+   },
+   "Bibliotecar gradul II, gradația ocupat": {
+    "n": 2
+   },
+   "Bibliotecar gradul l, gradația SSD ocupat": {
+    "n": 1
+   },
+   "Bibliotecar treapta l, gradația": {
+    "n": 1
+   },
+   "Bibliotecar treapta IA, gradația 5 M ocupat": {
+    "n": 1
+   },
+   "Bibliotecar gradul II, gradația O": {
+    "n": 1
+   },
+   "BIBLIOTECAR IA. MEDII Gradatia": {
+    "n": 1
+   },
+   "Bibliotecar gr.IA Indemnizatie hrana 2*Sal.minim/12 Cap.II S": {
+    "n": 1
+   },
+   "Bibliotecar gr.IA Gradatie merit Sal.baza * procent % Anexa ": {
+    "n": 1
+   },
+   "Bibliotecar gr.I Indemnizatie hrana 2*Sal.minim/12 Cap.II Sa": {
+    "n": 1
+   },
+   "Bibliotecar gr.II": {
+    "n": 1
+   },
+   "Bibliotecar tr.I": {
+    "n": 1
+   },
+   "49 BIBLIOTECAR S I": {
+    "n": 1
+   },
+   "50 BIBLIOTECAR S I": {
+    "n": 1
+   },
+   "51 BIBLIOTECAR S I": {
+    "n": 1
+   },
+   "52 BIBLIOTECAR S II": {
+    "n": 1
+   },
+   "Bibliotecar deb.S": {
+    "n": 1
+   },
+   "Bibliotecar IIS": {
+    "n": 1
+   },
+   "Bibliotecar ISSD": {
+    "n": 1
+   }
+  }
+ }
+}

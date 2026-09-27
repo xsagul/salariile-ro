@@ -1,0 +1,249 @@
+{
+ "slug": "inginer-auto",
+ "nume": "Inginer auto",
+ "cor": "214412",
+ "generatLa": "2026-09-27T10:01:09.007Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 3,
+  "cuBazaDeclarata": 2,
+  "faraBazaDeclarata": 1,
+  "surse": {
+   "ejobs": {
+    "n": 2,
+    "procent": 66.7
+   },
+   "bestjobs": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 3,
+    "procent": 100
+   }
+  },
+  "net": {
+   "n": 2
+  },
+  "netMinimOferit": {
+   "n": 2
+  },
+  "netMaximOferit": {
+   "n": 2
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 1
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-08": {
+    "n": 2,
+    "procent": 66.7
+   },
+   "2026-09": {
+    "n": 1,
+    "procent": 33.3
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 0,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {},
+  "surse": {},
+  "peJudet": {},
+  "motiveFaraSalariu": {},
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 5,
+  "posturi": 7,
+  "ofertePeGrupaCor": 91,
+  "tipSalariu": {
+   "none": {
+    "n": 4,
+    "procent": 80
+   },
+   "gross": {
+    "n": 1,
+    "procent": 20
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 0
+  },
+  "brutMinimDeclarat": {
+   "n": 1
+  },
+  "laSalariulMinim": 0,
+  "studii": {
+   "Universitar - ÎNVĂȚĂMÂNT SUPERIOR": {
+    "n": 5,
+    "procent": 100
+   }
+  },
+  "experienta": {
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 3,
+    "procent": 60
+   },
+   "Fără experiență - 0 ani": {
+    "n": 1,
+    "procent": 20
+   },
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 1,
+    "procent": 20
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 5,
+    "procent": 100
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 5,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 4,
+    "procent": 80
+   },
+   "Hibrid - sediu + telemuncă": {
+    "n": 1,
+    "procent": 20
+   }
+  },
+  "judete": {
+   "Vâlcea": {
+    "n": 1,
+    "procent": 20
+   },
+   "Dolj": {
+    "n": 1,
+    "procent": 20
+   },
+   "Harghita": {
+    "n": 1,
+    "procent": 20
+   },
+   "Covasna": {
+    "n": 1,
+    "procent": 20
+   },
+   "Municipiul București": {
+    "n": 1,
+    "procent": 20
+   }
+  },
+  "domenii": {
+   "Inginerie": {
+    "n": 3,
+    "procent": 60
+   },
+   "Altele": {
+    "n": 2,
+    "procent": 40
+   }
+  },
+  "coduriCorInGrupa": {
+   "214401 - INGINER MECANIC": {
+    "n": 51,
+    "procent": 56
+   },
+   "214438 - PROIECTANT INGINER MECANIC": {
+    "n": 11,
+    "procent": 12.1
+   },
+   "214496 - inginer sudor": {
+    "n": 6,
+    "procent": 6.6
+   },
+   "214412 - INGINER AUTOVEHICULE RUTIERE": {
+    "n": 5,
+    "procent": 5.5
+   },
+   "214408 - INGINER MASINI-UNELTE": {
+    "n": 4,
+    "procent": 4.4
+   },
+   "214467 - INGINER DE CERCETARE ÎN TEHNOLOGIA CONSTRUCTIILOR DE MASINI": {
+    "n": 2,
+    "procent": 2.2
+   },
+   "214443 - SPECIALIST MENTENANTA MECANICA ECHIPAMENTE INDUSTRIALE": {
+    "n": 2,
+    "procent": 2.2
+   },
+   "214461 - INGINER DE CERCETARE ÎN ECHIPAMENTE DE PROCES": {
+    "n": 2,
+    "procent": 2.2
+   },
+   "214444 - INGINER/SUBINGINER TEHNOLOG PRELUCRARI MECANICE": {
+    "n": 2,
+    "procent": 2.2
+   },
+   "214406 - INGINER AVIATIE": {
+    "n": 2,
+    "procent": 2.2
+   },
+   "214407 - INGINER NAVE": {
+    "n": 1,
+    "procent": 1.1
+   },
+   "214405 - INGINER MECANICA AGRICOLA": {
+    "n": 1,
+    "procent": 1.1
+   },
+   "214410 - INGINER MASINI TERMICE": {
+    "n": 1,
+    "procent": 1.1
+   },
+   "214491 - Inginer mecatronist": {
+    "n": 1,
+    "procent": 1.1
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 0,
+  "institutii": 0,
+  "judete": {},
+  "tipInstitutie": {},
+  "perioade": {},
+  "studii": {},
+  "bazaBruta": {
+   "n": 0
+  },
+  "bazaCuSporuriFixe": {
+   "n": 0
+  },
+  "peGradatie": {},
+  "peFunctie": {}
+ }
+}

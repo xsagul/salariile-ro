@@ -1,0 +1,230 @@
+{
+ "slug": "inginer-telecomunicatii",
+ "nume": "Inginer telecomunicații",
+ "cor": "215204",
+ "generatLa": "2026-09-27T10:01:08.819Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 0,
+  "cuBazaDeclarata": 0,
+  "faraBazaDeclarata": 0,
+  "surse": {},
+  "colectari": {},
+  "net": {
+   "n": 0
+  },
+  "netMinimOferit": {
+   "n": 0
+  },
+  "netMaximOferit": {
+   "n": 0
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 0
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {}
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 0,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {},
+  "surse": {},
+  "peJudet": {},
+  "motiveFaraSalariu": {},
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 7,
+  "posturi": 8,
+  "ofertePeGrupaCor": 54,
+  "tipSalariu": {
+   "none": {
+    "n": 4,
+    "procent": 57.1
+   },
+   "gross": {
+    "n": 3,
+    "procent": 42.9
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 0
+  },
+  "brutMinimDeclarat": {
+   "n": 3
+  },
+  "laSalariulMinim": 0,
+  "studii": {
+   "Universitar - ÎNVĂȚĂMÂNT SUPERIOR": {
+    "n": 6,
+    "procent": 85.7
+   },
+   "Postliceal - COLEGIU": {
+    "n": 1,
+    "procent": 14.3
+   }
+  },
+  "experienta": {
+   "Fără experiență - 0 ani": {
+    "n": 3,
+    "procent": 42.9
+   },
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 2,
+    "procent": 28.6
+   },
+   "Avansat - între 5 și 7 ani": {
+    "n": 2,
+    "procent": 28.6
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 5,
+    "procent": 71.4
+   },
+   "Cu durată determinată": {
+    "n": 2,
+    "procent": 28.6
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 7,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 5,
+    "procent": 71.4
+   },
+   "Hibrid - sediu + la domiciliu": {
+    "n": 1,
+    "procent": 14.3
+   },
+   "Hibrid - sediu + telemuncă": {
+    "n": 1,
+    "procent": 14.3
+   }
+  },
+  "judete": {
+   "Municipiul București": {
+    "n": 5,
+    "procent": 71.4
+   },
+   "Timiș": {
+    "n": 1,
+    "procent": 14.3
+   },
+   "Brașov": {
+    "n": 1,
+    "procent": 14.3
+   }
+  },
+  "domenii": {
+   "Inginerie": {
+    "n": 3,
+    "procent": 42.9
+   },
+   "Altele": {
+    "n": 2,
+    "procent": 28.6
+   },
+   "IT / Telecomunicații": {
+    "n": 1,
+    "procent": 14.3
+   },
+   "Specialiști / Tehnicieni": {
+    "n": 1,
+    "procent": 14.3
+   }
+  },
+  "coduriCorInGrupa": {
+   "215205 - INGINER PRODUCTIE": {
+    "n": 16,
+    "procent": 29.6
+   },
+   "215202 - INGINER AUTOMATIST": {
+    "n": 14,
+    "procent": 25.9
+   },
+   "215204 - INGINER ELECTRONIST TRANSPORTURI, TELECOMUNICATII": {
+    "n": 7,
+    "procent": 13
+   },
+   "215216 - INGINER ELECTROMECANIC": {
+    "n": 4,
+    "procent": 7.4
+   },
+   "215215 - PROIECTANT INGINER ELECTROMECANIC": {
+    "n": 3,
+    "procent": 5.6
+   },
+   "215222 - INGINER SISTEME DE SECURITATE": {
+    "n": 2,
+    "procent": 3.7
+   },
+   "215201 - INGINER ELECTROMECANIC SCB": {
+    "n": 2,
+    "procent": 3.7
+   },
+   "215213 - PROIECTANT INGINER ELECTRONIST": {
+    "n": 2,
+    "procent": 3.7
+   },
+   "215224 - INGINER DE CERCETARE ÎN ELECTRONICA APLICATA": {
+    "n": 1,
+    "procent": 1.9
+   },
+   "215225 - ASISTENT DE CERCETARE ÎN ELECTRONICA APLICATA": {
+    "n": 1,
+    "procent": 1.9
+   },
+   "215236 - INGINER DE CERCETARE ÎN CALCULATOARE": {
+    "n": 1,
+    "procent": 1.9
+   },
+   "215220 - SPECIALIST MENTENANTA ELECTROMECANICA-AUTOMATICA ECHIPAMENTE INDUSTRIALE": {
+    "n": 1,
+    "procent": 1.9
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 0,
+  "institutii": 0,
+  "judete": {},
+  "tipInstitutie": {},
+  "perioade": {},
+  "studii": {},
+  "bazaBruta": {
+   "n": 0
+  },
+  "bazaCuSporuriFixe": {
+   "n": 0
+  },
+  "peGradatie": {},
+  "peFunctie": {}
+ }
+}

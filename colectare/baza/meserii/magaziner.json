@@ -1,0 +1,589 @@
+{
+ "slug": "magaziner",
+ "nume": "Magaziner",
+ "cor": "432102",
+ "generatLa": "2026-09-27T10:01:09.081Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 98,
+  "cuBazaDeclarata": 53,
+  "faraBazaDeclarata": 45,
+  "surse": {
+   "olx": {
+    "n": 35,
+    "procent": 35.7
+   },
+   "ejobs": {
+    "n": 25,
+    "procent": 25.5
+   },
+   "bestjobs": {
+    "n": 20,
+    "procent": 20.4
+   },
+   "publi24": {
+    "n": 14,
+    "procent": 14.3
+   },
+   "anuntul": {
+    "n": 4,
+    "procent": 4.1
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 92,
+    "procent": 93.9
+   },
+   "continuă": {
+    "n": 6,
+    "procent": 6.1
+   }
+  },
+  "net": {
+   "n": 53,
+   "p10": 3000,
+   "p25": 3200,
+   "median": 3800,
+   "p75": 4100,
+   "p90": 4960,
+   "min": 2700,
+   "max": 6565
+  },
+  "netMinimOferit": {
+   "n": 53,
+   "p10": 2840,
+   "p25": 3100,
+   "median": 3500,
+   "p75": 4000,
+   "p90": 4960,
+   "min": 2500,
+   "max": 5252
+  },
+  "netMaximOferit": {
+   "n": 53,
+   "p10": 3014,
+   "p25": 3500,
+   "median": 4000,
+   "p75": 4500,
+   "p90": 5000,
+   "min": 2700,
+   "max": 7878
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 45,
+   "p10": 3414,
+   "p25": 3550,
+   "median": 3873,
+   "p75": 4500,
+   "p90": 4937,
+   "min": 2500,
+   "max": 11554
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-09": {
+    "n": 46,
+    "procent": 46.9
+   },
+   "2026-08": {
+    "n": 42,
+    "procent": 42.9
+   },
+   "2026-05": {
+    "n": 2,
+    "procent": 2
+   },
+   "2026-06": {
+    "n": 2,
+    "procent": 2
+   },
+   "2026-02": {
+    "n": 2,
+    "procent": 2
+   },
+   "2026-03": {
+    "n": 1,
+    "procent": 1
+   },
+   "2025-04": {
+    "n": 1,
+    "procent": 1
+   },
+   "2026-01": {
+    "n": 1,
+    "procent": 1
+   },
+   "2026-07": {
+    "n": 1,
+    "procent": 1
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 7,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 7,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "ejobs": {
+    "n": 7,
+    "procent": 100
+   }
+  },
+  "peJudet": {
+   "10": {
+    "n": 2,
+    "procent": 28.6
+   },
+   "38": {
+    "n": 1,
+    "procent": 14.3
+   }
+  },
+  "motiveFaraSalariu": {
+   "wide_range_review": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 13,
+  "posturi": 17,
+  "ofertePeGrupaCor": 136,
+  "tipSalariu": {
+   "none": {
+    "n": 8,
+    "procent": 61.5
+   },
+   "gross": {
+    "n": 5,
+    "procent": 38.5
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 0
+  },
+  "brutMinimDeclarat": {
+   "n": 5
+  },
+  "laSalariulMinim": 3,
+  "studii": {
+   "Liceal - LICEU DE SPECIALITATE": {
+    "n": 3,
+    "procent": 23.1
+   },
+   "Postliceal - ȘCOALĂ POSTLICEALĂ": {
+    "n": 3,
+    "procent": 23.1
+   },
+   "Liceal - LICEU TEORETIC": {
+    "n": 2,
+    "procent": 15.4
+   },
+   "Gimnazial - ȘCOALĂ GENERALĂ": {
+    "n": 2,
+    "procent": 15.4
+   },
+   "Profesional - ȘCOALĂ PROFESIONALĂ": {
+    "n": 2,
+    "procent": 15.4
+   },
+   "Postliceal - COLEGIU": {
+    "n": 1,
+    "procent": 7.7
+   }
+  },
+  "experienta": {
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 7,
+    "procent": 53.8
+   },
+   "Fără experiență - 0 ani": {
+    "n": 3,
+    "procent": 23.1
+   },
+   "Avansat - între 5 și 7 ani": {
+    "n": 3,
+    "procent": 23.1
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 11,
+    "procent": 84.6
+   },
+   "Cu durată determinată": {
+    "n": 2,
+    "procent": 15.4
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 13,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 13,
+    "procent": 100
+   }
+  },
+  "judete": {
+   "Brașov": {
+    "n": 2,
+    "procent": 15.4
+   },
+   "Cluj": {
+    "n": 2,
+    "procent": 15.4
+   },
+   "Hunedoara": {
+    "n": 2,
+    "procent": 15.4
+   },
+   "Ilfov": {
+    "n": 1,
+    "procent": 7.7
+   },
+   "Dolj": {
+    "n": 1,
+    "procent": 7.7
+   },
+   "Mureș": {
+    "n": 1,
+    "procent": 7.7
+   },
+   "Sibiu": {
+    "n": 1,
+    "procent": 7.7
+   },
+   "Timiș": {
+    "n": 1,
+    "procent": 7.7
+   },
+   "Bihor": {
+    "n": 1,
+    "procent": 7.7
+   },
+   "Bacău": {
+    "n": 1,
+    "procent": 7.7
+   }
+  },
+  "domenii": {
+   "Producție / Logistică": {
+    "n": 4,
+    "procent": 30.8
+   },
+   "Construcții / Instalații": {
+    "n": 3,
+    "procent": 23.1
+   },
+   "Altele": {
+    "n": 2,
+    "procent": 15.4
+   },
+   "Servicii transport / curierat": {
+    "n": 1,
+    "procent": 7.7
+   },
+   "COMERT": {
+    "n": 1,
+    "procent": 7.7
+   },
+   "PRODUCTIE MOBILA": {
+    "n": 1,
+    "procent": 7.7
+   },
+   "Turism / Alimentație": {
+    "n": 1,
+    "procent": 7.7
+   }
+  },
+  "coduriCorInGrupa": {
+   "432111 - LUCRATOR GESTIONAR": {
+    "n": 54,
+    "procent": 39.7
+   },
+   "432101 - GESTIONAR DEPOZIT": {
+    "n": 44,
+    "procent": 32.4
+   },
+   "432102 - MAGAZINER": {
+    "n": 13,
+    "procent": 9.6
+   },
+   "432112 - SEF RAION/ADJUNCT MARFURI ALIMENTARE/NEALIMENTARE": {
+    "n": 8,
+    "procent": 5.9
+   },
+   "432104 - PRIMITOR-DISTRIBUITOR MATERIALE SI SCULE": {
+    "n": 6,
+    "procent": 4.4
+   },
+   "432114 - logistician responsabil comenzi": {
+    "n": 4,
+    "procent": 2.9
+   },
+   "432106 - SORTATOR PRODUSE": {
+    "n": 3,
+    "procent": 2.2
+   },
+   "432113 - Receptioner-distribuitor": {
+    "n": 2,
+    "procent": 1.5
+   },
+   "432103 - OPERATOR SILOZ (SILOZAR)": {
+    "n": 2,
+    "procent": 1.5
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 42,
+  "institutii": 20,
+  "judete": {
+   "B": {
+    "n": 6,
+    "procent": 14.3
+   },
+   "BC": {
+    "n": 6,
+    "procent": 14.3
+   },
+   "BR": {
+    "n": 5,
+    "procent": 11.9
+   },
+   "CJ": {
+    "n": 5,
+    "procent": 11.9
+   },
+   "CL": {
+    "n": 3,
+    "procent": 7.1
+   },
+   "CT": {
+    "n": 3,
+    "procent": 7.1
+   },
+   "SB": {
+    "n": 3,
+    "procent": 7.1
+   },
+   "BV": {
+    "n": 3,
+    "procent": 7.1
+   },
+   "IS": {
+    "n": 2,
+    "procent": 4.8
+   },
+   "BZ": {
+    "n": 2,
+    "procent": 4.8
+   },
+   "BH": {
+    "n": 1,
+    "procent": 2.4
+   },
+   "AB": {
+    "n": 1,
+    "procent": 2.4
+   },
+   "GR": {
+    "n": 1,
+    "procent": 2.4
+   },
+   "DJ": {
+    "n": 1,
+    "procent": 2.4
+   }
+  },
+  "tipInstitutie": {
+   "spital": {
+    "n": 35,
+    "procent": 83.3
+   },
+   "dgaspc": {
+    "n": 4,
+    "procent": 9.5
+   },
+   "universitate": {
+    "n": 3,
+    "procent": 7.1
+   }
+  },
+  "perioade": {
+   "2026-03": {
+    "n": 31,
+    "procent": 73.8
+   },
+   "2026-02": {
+    "n": 8,
+    "procent": 19
+   },
+   "2025-03": {
+    "n": 1,
+    "procent": 2.4
+   },
+   "2022-09": {
+    "n": 1,
+    "procent": 2.4
+   },
+   "2024-03": {
+    "n": 1,
+    "procent": 2.4
+   }
+  },
+  "studii": {
+   "M": {
+    "n": 17,
+    "procent": 40.5
+   },
+   "G": {
+    "n": 1,
+    "procent": 2.4
+   },
+   "S": {
+    "n": 1,
+    "procent": 2.4
+   }
+  },
+  "bazaBruta": {
+   "n": 42,
+   "p10": 4889,
+   "p25": 5836,
+   "median": 6486,
+   "p75": 6918,
+   "p90": 6969,
+   "min": 3549,
+   "max": 7634
+  },
+  "bazaCuSporuriFixe": {
+   "n": 42,
+   "p10": 4889,
+   "p25": 5847,
+   "median": 6670,
+   "p75": 6969,
+   "p90": 7269,
+   "min": 3828,
+   "max": 8267
+  },
+  "peGradatie": {
+   "gradația 5": {
+    "n": 3
+   },
+   "gradația 4": {
+    "n": 2
+   },
+   "gradația 3": {
+    "n": 1
+   }
+  },
+  "peFunctie": {
+   "COMPARTIMENT APROVIZIONARE-CONTRACTARE MAGAZINER MEDII Grada": {
+    "n": 5
+   },
+   "magaziner": {
+    "n": 3
+   },
+   "Magaziner MEDII ( M )": {
+    "n": 3
+   },
+   "Serviciul Administrativ MAGAZINER M": {
+    "n": 3
+   },
+   "Magaziner I Gradatia": {
+    "n": 3
+   },
+   "MAGAZINER SERVICIU APROVIZIONARE,TRANSPORT SI ACHIZITII PUB.": {
+    "n": 3
+   },
+   "MAGAZINER Serviciul Aprovizionare, Transport": {
+    "n": 2
+   },
+   "MAGAZINER": {
+    "n": 2
+   },
+   "Magaziner Indemnizatie hrana 2*Sal.minim/12 Cap.II Salarizar": {
+    "n": 2
+   },
+   "Casier, magaziner M;G": {
+    "n": 1
+   },
+   "Magaziner M, gradație vechime 5": {
+    "n": 1
+   },
+   "Magaziner M, gradație vechime 3": {
+    "n": 1
+   },
+   "Magaziner M, gradație vechime": {
+    "n": 1
+   },
+   "Magaziner M/G spor pentru condiții periculoase sau vătămătoa": {
+    "n": 1
+   },
+   "548 Magaziner I Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "549 Magaziner I Gradatia 4 Contractual": {
+    "n": 1
+   },
+   "SERVICIUL ACHIZ.PUBLICE,CONTRACT.,APROV. SI TR Magaziner Gra": {
+    "n": 1
+   },
+   "MAGAZINER I Gradatia 5": {
+    "n": 1
+   },
+   "SERVICIU FINANCIAR - CONTABILITATE MUNCITOR CALIFICAT I - MA": {
+    "n": 1
+   },
+   "MAGAZINER SERVICIUL BLOC ALIMENTAR": {
+    "n": 1
+   },
+   "MAGAZINER DEB. SERVICIUL BLOC ALIMENTAR": {
+    "n": 1
+   },
+   "MAGAZINER SERVICIUL APARATURA MEDICALA": {
+    "n": 1
+   },
+   "MAGAZINER Gradatia 0 Sporurile din anexele 1, 2,3,5,8 sunt a": {
+    "n": 1
+   },
+   "MAGAZINER M I I s so": {
+    "n": 1
+   },
+   "Magaziner Salariu diferentiat Sal.baza * procent % Anexa nr.": {
+    "n": 1
+   }
+  }
+ }
+}

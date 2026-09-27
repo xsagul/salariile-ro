@@ -1,0 +1,4822 @@
+{
+ "slug": "asistent-medical",
+ "nume": "Asistent medical",
+ "cor": "325901",
+ "generatLa": "2026-09-27T10:01:08.869Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 65,
+  "cuBazaDeclarata": 20,
+  "faraBazaDeclarata": 45,
+  "surse": {
+   "olx": {
+    "n": 26,
+    "procent": 40
+   },
+   "ejobs": {
+    "n": 20,
+    "procent": 30.8
+   },
+   "bestjobs": {
+    "n": 9,
+    "procent": 13.8
+   },
+   "publi24": {
+    "n": 7,
+    "procent": 10.8
+   },
+   "anuntul": {
+    "n": 2,
+    "procent": 3.1
+   },
+   "hipo": {
+    "n": 1,
+    "procent": 1.5
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 63,
+    "procent": 96.9
+   },
+   "continuă": {
+    "n": 2,
+    "procent": 3.1
+   }
+  },
+  "net": {
+   "n": 20,
+   "p10": 3950,
+   "p25": 4189,
+   "median": 4750,
+   "p75": 6100,
+   "p90": 12552,
+   "min": 3151,
+   "max": 27500
+  },
+  "netMinimOferit": {
+   "n": 20,
+   "p10": 3136,
+   "p25": 3725,
+   "median": 4500,
+   "p75": 5665,
+   "p90": 11974,
+   "min": 3000,
+   "max": 25000
+  },
+  "netMaximOferit": {
+   "n": 20,
+   "p10": 4400,
+   "p25": 5000,
+   "median": 5259,
+   "p75": 7000,
+   "p90": 13130,
+   "min": 3151,
+   "max": 30000
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 45,
+   "p10": 3440,
+   "p25": 3650,
+   "median": 4202,
+   "p75": 5100,
+   "p90": 6000,
+   "min": 3150,
+   "max": 8215.5
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-09": {
+    "n": 29,
+    "procent": 44.6
+   },
+   "2026-08": {
+    "n": 26,
+    "procent": 40
+   },
+   "2026-06": {
+    "n": 3,
+    "procent": 4.6
+   },
+   "2026-04": {
+    "n": 3,
+    "procent": 4.6
+   },
+   "2026-02": {
+    "n": 1,
+    "procent": 1.5
+   },
+   "2025-07": {
+    "n": 1,
+    "procent": 1.5
+   },
+   "2026-05": {
+    "n": 1,
+    "procent": 1.5
+   },
+   "2026-03": {
+    "n": 1,
+    "procent": 1.5
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 5,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {
+   "avantaj": {
+    "n": 1,
+    "procent": 20
+   }
+  },
+  "experientaPortal": {
+   "1–5 ani": {
+    "n": 1,
+    "procent": 20
+   }
+  },
+  "studii": {
+   "superioare": {
+    "n": 1,
+    "procent": 20
+   }
+  },
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 5,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "ejobs": {
+    "n": 4,
+    "procent": 80
+   },
+   "hipo": {
+    "n": 1,
+    "procent": 20
+   }
+  },
+  "peJudet": {
+   "10": {
+    "n": 1,
+    "procent": 20
+   },
+   "RO": {
+    "n": 1,
+    "procent": 20
+   }
+  },
+  "motiveFaraSalariu": {
+   "country_unconfirmed": {
+    "n": 2,
+    "procent": 66.7
+   },
+   "foreign_or_noncomparable_work": {
+    "n": 1,
+    "procent": 33.3
+   },
+   "salary_evidence_incomplete": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 55,
+  "posturi": 103,
+  "ofertePeGrupaCor": 65,
+  "tipSalariu": {
+   "gross": {
+    "n": 44,
+    "procent": 80
+   },
+   "none": {
+    "n": 9,
+    "procent": 16.4
+   },
+   "net": {
+    "n": 2,
+    "procent": 3.6
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 2
+  },
+  "brutMinimDeclarat": {
+   "n": 44,
+   "p10": 4325,
+   "p25": 4325,
+   "median": 5250,
+   "p75": 5459,
+   "p90": 6113,
+   "min": 4050,
+   "max": 6496
+  },
+  "laSalariulMinim": 13,
+  "studii": {
+   "Postliceal - ȘCOALĂ POSTLICEALĂ": {
+    "n": 54,
+    "procent": 98.2
+   },
+   "Profesional - ȘCOALĂ PROFESIONALĂ": {
+    "n": 1,
+    "procent": 1.8
+   }
+  },
+  "experienta": {
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 23,
+    "procent": 41.8
+   },
+   "Fără experiență - 0 ani": {
+    "n": 20,
+    "procent": 36.4
+   },
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 10,
+    "procent": 18.2
+   },
+   "Avansat - între 5 și 7 ani": {
+    "n": 2,
+    "procent": 3.6
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 54,
+    "procent": 98.2
+   },
+   "Cu durată determinată": {
+    "n": 1,
+    "procent": 1.8
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 55,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 55,
+    "procent": 100
+   }
+  },
+  "judete": {
+   "Municipiul București": {
+    "n": 10,
+    "procent": 18.2
+   },
+   "Cluj": {
+    "n": 6,
+    "procent": 10.9
+   },
+   "Botoșani": {
+    "n": 5,
+    "procent": 9.1
+   },
+   "Brașov": {
+    "n": 5,
+    "procent": 9.1
+   },
+   "Hunedoara": {
+    "n": 4,
+    "procent": 7.3
+   },
+   "Suceava": {
+    "n": 3,
+    "procent": 5.5
+   },
+   "Galați": {
+    "n": 3,
+    "procent": 5.5
+   },
+   "Vaslui": {
+    "n": 2,
+    "procent": 3.6
+   },
+   "Bihor": {
+    "n": 2,
+    "procent": 3.6
+   },
+   "Timiș": {
+    "n": 2,
+    "procent": 3.6
+   },
+   "Constanța": {
+    "n": 2,
+    "procent": 3.6
+   },
+   "Iași": {
+    "n": 2,
+    "procent": 3.6
+   },
+   "Bacău": {
+    "n": 2,
+    "procent": 3.6
+   },
+   "Caraș-Severin": {
+    "n": 1,
+    "procent": 1.8
+   },
+   "Mureș": {
+    "n": 1,
+    "procent": 1.8
+   },
+   "Neamț": {
+    "n": 1,
+    "procent": 1.8
+   },
+   "Argeș": {
+    "n": 1,
+    "procent": 1.8
+   },
+   "Sibiu": {
+    "n": 1,
+    "procent": 1.8
+   },
+   "Gorj": {
+    "n": 1,
+    "procent": 1.8
+   },
+   "Prahova": {
+    "n": 1,
+    "procent": 1.8
+   }
+  },
+  "domenii": {
+   "Medicină / Sănătate /Psihoterapie": {
+    "n": 52,
+    "procent": 94.5
+   },
+   "ASISTENTA SOCIALA": {
+    "n": 2,
+    "procent": 3.6
+   },
+   "Altele": {
+    "n": 1,
+    "procent": 1.8
+   }
+  },
+  "coduriCorInGrupa": {
+   "325901 - ASISTENT MEDICAL GENERALIST": {
+    "n": 55,
+    "procent": 84.6
+   },
+   "325910 - ASISTENT MEDICAL RADIOLOGIE": {
+    "n": 5,
+    "procent": 7.7
+   },
+   "325909 - ASISTENT MEDICAL BALNEOFIZIOTERAPIE, BALNEOFIZIOKINETOTERAPIE ȘI RECUPERARE": {
+    "n": 3,
+    "procent": 4.6
+   },
+   "325904 - ASISTENT MEDICAL LABORATOR": {
+    "n": 2,
+    "procent": 3.1
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 7339,
+  "institutii": 21,
+  "judete": {
+   "BH": {
+    "n": 1252,
+    "procent": 17.1
+   },
+   "CT": {
+    "n": 1093,
+    "procent": 14.9
+   },
+   "SB": {
+    "n": 922,
+    "procent": 12.6
+   },
+   "BC": {
+    "n": 901,
+    "procent": 12.3
+   },
+   "BZ": {
+    "n": 684,
+    "procent": 9.3
+   },
+   "HR": {
+    "n": 586,
+    "procent": 8
+   },
+   "CJ": {
+    "n": 571,
+    "procent": 7.8
+   },
+   "AB": {
+    "n": 531,
+    "procent": 7.2
+   },
+   "TM": {
+    "n": 485,
+    "procent": 6.6
+   },
+   "DJ": {
+    "n": 171,
+    "procent": 2.3
+   },
+   "GR": {
+    "n": 47,
+    "procent": 0.6
+   },
+   "VS": {
+    "n": 24,
+    "procent": 0.3
+   },
+   "IS": {
+    "n": 21,
+    "procent": 0.3
+   },
+   "B": {
+    "n": 18,
+    "procent": 0.2
+   },
+   "CL": {
+    "n": 18,
+    "procent": 0.2
+   },
+   "BV": {
+    "n": 7,
+    "procent": 0.1
+   },
+   "MS": {
+    "n": 7,
+    "procent": 0.1
+   },
+   "GJ": {
+    "n": 1,
+    "procent": 0
+   }
+  },
+  "tipInstitutie": {
+   "spital": {
+    "n": 7280,
+    "procent": 99.2
+   },
+   "dgaspc": {
+    "n": 28,
+    "procent": 0.4
+   },
+   "dsp": {
+    "n": 24,
+    "procent": 0.3
+   },
+   "universitate": {
+    "n": 7,
+    "procent": 0.1
+   }
+  },
+  "perioade": {
+   "2026-03": {
+    "n": 5209,
+    "procent": 71
+   },
+   "2026-02": {
+    "n": 1586,
+    "procent": 21.6
+   },
+   "2025-03": {
+    "n": 302,
+    "procent": 4.1
+   },
+   "2024-03": {
+    "n": 171,
+    "procent": 2.3
+   },
+   "2022-09": {
+    "n": 47,
+    "procent": 0.6
+   },
+   "2026-09": {
+    "n": 24,
+    "procent": 0.3
+   }
+  },
+  "studii": {
+   "PL": {
+    "n": 4120,
+    "procent": 56.1
+   },
+   "S": {
+    "n": 1344,
+    "procent": 18.3
+   },
+   "SSD": {
+    "n": 44,
+    "procent": 0.6
+   },
+   "M": {
+    "n": 26,
+    "procent": 0.4
+   }
+  },
+  "bazaBruta": {
+   "n": 7339,
+   "p10": 5663,
+   "p25": 6489,
+   "median": 6816,
+   "p75": 7157,
+   "p90": 7574,
+   "min": 1511,
+   "max": 15485
+  },
+  "bazaCuSporuriFixe": {
+   "n": 7339,
+   "p10": 6488,
+   "p25": 7558,
+   "median": 8402,
+   "p75": 10103,
+   "p90": 11478,
+   "min": 1511,
+   "max": 22766
+  },
+  "peGradatie": {
+   "gradația 5": {
+    "n": 1451,
+    "p10": 7638,
+    "p25": 8050,
+    "median": 8916,
+    "p75": 10294,
+    "p90": 11445,
+    "min": 3132,
+    "max": 17065.5
+   },
+   "gradația 4": {
+    "n": 287,
+    "p10": 7297,
+    "p25": 7633,
+    "median": 8400,
+    "p75": 9831,
+    "p90": 10914,
+    "min": 3608,
+    "max": 13881.65
+   },
+   "gradația 3": {
+    "n": 278,
+    "p10": 7123,
+    "p25": 7482,
+    "median": 8275,
+    "p75": 9455,
+    "p90": 10417,
+    "min": 3174,
+    "max": 13054
+   },
+   "gradația 2": {
+    "n": 266,
+    "p10": 6726,
+    "p25": 7251,
+    "median": 7959,
+    "p75": 9328,
+    "p90": 10336,
+    "min": 3013,
+    "max": 12641.2
+   },
+   "gradația 1": {
+    "n": 42,
+    "p10": 6297,
+    "p25": 6740,
+    "median": 7469,
+    "p75": 8062,
+    "p90": 8892,
+    "min": 4139,
+    "max": 10047
+   },
+   "gradația 0": {
+    "n": 18,
+    "p10": 6037,
+    "p25": 6333,
+    "median": 7127,
+    "p75": 7695,
+    "p90": 8863,
+    "min": 4986,
+    "max": 9483.15
+   }
+  },
+  "peFunctie": {
+   "Asistent medical principal POST LICEALE ( PL )": {
+    "n": 625,
+    "p10": 7917,
+    "p25": 8347,
+    "median": 9605,
+    "p75": 11403,
+    "p90": 11940,
+    "min": 2313,
+    "max": 15417
+   },
+   "ASISTENT MEDICAL PRINCIPAL POST LICEALE Gradatia": {
+    "n": 306,
+    "p10": 7551,
+    "p25": 7771,
+    "median": 7904,
+    "p75": 9255,
+    "p90": 9892,
+    "min": 6489,
+    "max": 13854
+   },
+   "asistent medical principal": {
+    "n": 244,
+    "p10": 6797,
+    "p25": 7186,
+    "median": 7776,
+    "p75": 9405,
+    "p90": 10614,
+    "min": 3132,
+    "max": 12993
+   },
+   "Asistent medical POST LICEALE ( PL )": {
+    "n": 244,
+    "p10": 6783,
+    "p25": 7471,
+    "median": 8097,
+    "p75": 10311,
+    "p90": 11034,
+    "min": 2679,
+    "max": 14992
+   },
+   "ASISTENT MEDICAL POST LICEALE Gradatia": {
+    "n": 164,
+    "p10": 6917,
+    "p25": 7331,
+    "median": 7673,
+    "p75": 8675,
+    "p90": 9195,
+    "min": 6101,
+    "max": 12704
+   },
+   "ASISTENT MEDICAL PRINCIPAL (PL) Legea nr. 153 art. 33": {
+    "n": 154,
+    "p10": 1660,
+    "p25": 1727,
+    "median": 2317,
+    "p75": 2579,
+    "p90": 3311,
+    "min": 1511,
+    "max": 3886
+   },
+   "ASISTENT MEDICAL PRINCIPAL (PL) (UPU, ATI) Legea nr. 153 art": {
+    "n": 150,
+    "p10": 2511,
+    "p25": 3003,
+    "median": 3600,
+    "p75": 3880,
+    "p90": 3886,
+    "min": 1723,
+    "max": 3886
+   },
+   "Asistent medical principal SUPERIOARE ( S )": {
+    "n": 144,
+    "p10": 9117,
+    "p25": 10506,
+    "median": 11892,
+    "p75": 13212,
+    "p90": 13212,
+    "min": 2612,
+    "max": 15874
+   },
+   "asistent medical": {
+    "n": 113,
+    "p10": 6411,
+    "p25": 6775,
+    "median": 7626,
+    "p75": 9370,
+    "p90": 10192,
+    "min": 4139,
+    "max": 11311
+   },
+   "ASISTENT MEDICAL PR PL Gradatia 5": {
+    "n": 77,
+    "p10": 7142,
+    "p25": 7478,
+    "median": 7918,
+    "p75": 9367,
+    "p90": 10400,
+    "min": 6817,
+    "max": 13134
+   },
+   "ASISTENT MEDICAL PR S Gradatia 5": {
+    "n": 72,
+    "p10": 8197,
+    "p25": 8613,
+    "median": 10138,
+    "p75": 10762,
+    "p90": 11587,
+    "min": 7936,
+    "max": 22766
+   },
+   "ASISTENT MEDICAL PR. UNITATE DE PRIMIRE URGENTE - SMURD": {
+    "n": 61,
+    "p10": 11102,
+    "p25": 11235,
+    "median": 11580,
+    "p75": 12461,
+    "p90": 12461,
+    "min": 9702,
+    "max": 13793
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL UPU - smurd": {
+    "n": 59,
+    "p10": 10382,
+    "p25": 10727,
+    "median": 10968,
+    "p75": 11380,
+    "p90": 11939,
+    "min": 6575,
+    "max": 11939
+   },
+   "ASISTENT MEDICAL PR. Sectia ANESTEZIE-TERAPIE INTENSIVA": {
+    "n": 56,
+    "p10": 10643,
+    "p25": 11212,
+    "median": 11447,
+    "p75": 12461,
+    "p90": 12461,
+    "min": 6905,
+    "max": 13793
+   },
+   "ASISTENT MEDICAL PRINCIPAL (S) (UPU, ATI) Legea nr. 153 art.": {
+    "n": 51,
+    "p10": 2362,
+    "p25": 2952,
+    "median": 3621,
+    "p75": 4168,
+    "p90": 4330,
+    "min": 1968,
+    "max": 4336
+   },
+   "ASISTENT MEDICAL PRINCIPAL (S) Legea nr. 153 art. 33": {
+    "n": 45,
+    "p10": 1816,
+    "p25": 2141,
+    "median": 2597,
+    "p75": 3479,
+    "p90": 3918,
+    "min": 1716,
+    "max": 4330
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 Asistent medical principal ** Gr": {
+    "n": 43,
+    "p10": 10362,
+    "p25": 10615,
+    "median": 10621,
+    "p75": 10880,
+    "p90": 11139,
+    "min": 10098,
+    "max": 11139
+   },
+   "Unitate Primire Urgente(UPU)-SMURD ASISTENT MEDICAL PL - PRI": {
+    "n": 43,
+    "p10": 3608,
+    "p25": 4314,
+    "median": 10657,
+    "p75": 10904,
+    "p90": 10904,
+    "min": 3353,
+    "max": 10903.55
+   },
+   "ASISTENT MEDICAL PR. Sectia NEONATOLOGIE": {
+    "n": 43,
+    "p10": 8232,
+    "p25": 8532,
+    "median": 8715,
+    "p75": 8837,
+    "p90": 11581,
+    "min": 6819,
+    "max": 11686
+   },
+   "ASISTENT MEDICAL PR. BLOC OPERATOR": {
+    "n": 42,
+    "p10": 10010,
+    "p25": 10359,
+    "median": 10724,
+    "p75": 11272,
+    "p90": 11406,
+    "min": 6819,
+    "max": 12436
+   },
+   "UNITATE PRIMIRE URGENTE ASISTENT MEDICAL PRINCIPAL UPU Grada": {
+    "n": 38,
+    "p10": 10061,
+    "p25": 10971,
+    "median": 11256,
+    "p75": 11878,
+    "p90": 11943,
+    "min": 7255,
+    "max": 11943
+   },
+   "SECTIA A.T.I ASISTENT MEDICAL PRINCIPAL A.T.I. Gradatia 5": {
+    "n": 37,
+    "p10": 9899,
+    "p25": 10871,
+    "median": 10971,
+    "p75": 11354,
+    "p90": 11943,
+    "min": 7255,
+    "max": 11943
+   },
+   "Sectia Clinica Obstetrica-Ginecologie I ASISTENT MEDICAL PL ": {
+    "n": 35,
+    "p10": 7823,
+    "p25": 8060,
+    "median": 8200,
+    "p75": 8711,
+    "p90": 10051,
+    "min": 7107,
+    "max": 10635.76
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL Sectia ATI": {
+    "n": 34,
+    "p10": 9667,
+    "p25": 9767,
+    "median": 11197,
+    "p75": 11680,
+    "p90": 11680,
+    "min": 7253,
+    "max": 11680
+   },
+   "ASISTENT MEDICAL PR. Sectia PEDIATRIE": {
+    "n": 32,
+    "p10": 8047,
+    "p25": 8165,
+    "median": 8350,
+    "p75": 9074,
+    "p90": 9883,
+    "min": 6180,
+    "max": 10268
+   },
+   "Asistent medical principal SUPERIOARE DE SCURTA DURATA ( SSD": {
+    "n": 31,
+    "p10": 8197,
+    "p25": 8497,
+    "median": 9197,
+    "p75": 12283,
+    "p90": 12475,
+    "min": 2612,
+    "max": 12475
+   },
+   "ASISTENT MEDICAL (PL) Legea nr. 153 art. 33": {
+    "n": 31,
+    "p10": 1641,
+    "p25": 1982,
+    "median": 2345,
+    "p75": 2893,
+    "p90": 3297,
+    "min": 1601,
+    "max": 3462
+   },
+   "ASISTENT MEDICAL PR PL Gradatia 4": {
+    "n": 31,
+    "p10": 6967,
+    "p25": 7363,
+    "median": 8460,
+    "p75": 9852,
+    "p90": 10327,
+    "min": 6650,
+    "max": 11697
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL Sectia Pediatrie": {
+    "n": 31,
+    "p10": 7733,
+    "p25": 7961,
+    "median": 8171,
+    "p75": 8497,
+    "p90": 9320,
+    "min": 7250,
+    "max": 9320
+   },
+   "AMBULATORIUL INTEGRAT‐str.Republicii nr.37 Asistent medical ": {
+    "n": 29,
+    "p10": 6837,
+    "p25": 7059,
+    "median": 7059,
+    "p75": 7059,
+    "p90": 7116,
+    "min": 5597,
+    "max": 7789
+   },
+   "Ambulatoriu integrat - ALTII ASISTENT MEDICAL PL - PRINCIPAL": {
+    "n": 29,
+    "p10": 7312,
+    "p25": 7657,
+    "median": 7657,
+    "p75": 7657,
+    "p90": 7861,
+    "min": 6812.38,
+    "max": 9929.83
+   },
+   "ASISTENT MEDICAL PR. Sectia OBSTETRICA-GINECOLOGIE II": {
+    "n": 29,
+    "p10": 7811,
+    "p25": 8165,
+    "median": 8350,
+    "p75": 8350,
+    "p90": 8689,
+    "min": 6819,
+    "max": 10059
+   },
+   "ASISTENT MEDICAL LICENTIAT PR. (S)": {
+    "n": 28,
+    "p10": 5679,
+    "p25": 6222,
+    "median": 8349,
+    "p75": 9540,
+    "p90": 10277,
+    "min": 2926,
+    "max": 12779
+   },
+   "SECTIA CLINICA ATI I Asistent medical principal ** Gradatia ": {
+    "n": 27,
+    "p10": 9856,
+    "p25": 10103,
+    "median": 10103,
+    "p75": 10103,
+    "p90": 10103,
+    "min": 9617,
+    "max": 10103
+   },
+   "Asistent medical SUPERIOARE ( S )": {
+    "n": 27,
+    "p10": 7703,
+    "p25": 8102,
+    "median": 8854,
+    "p75": 10591,
+    "p90": 11649,
+    "min": 7268,
+    "max": 12148
+   },
+   "ASISTENT MEDICAL PR. LAB. RADIOLOGIE SI IMAGISTICA MEDICALA": {
+    "n": 27,
+    "p10": 8066,
+    "p25": 8250,
+    "median": 8398,
+    "p75": 8545,
+    "p90": 8971,
+    "min": 6652,
+    "max": 9459
+   },
+   "SECTIA CLINICA OBSTETRICA GINECOLOGIE I Asistent medical pri": {
+    "n": 26,
+    "p10": 7400,
+    "p25": 7400,
+    "median": 7400,
+    "p75": 7400,
+    "p90": 7400,
+    "min": 6709,
+    "max": 7400
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 ASISTENT MEDICAL PRINCIPAL (S) G": {
+    "n": 26,
+    "p10": 11542,
+    "p25": 11826,
+    "median": 11978,
+    "p75": 12122,
+    "p90": 12306,
+    "min": 10727,
+    "max": 12411
+   },
+   "asistent medical debutant": {
+    "n": 26,
+    "p10": 5968,
+    "p25": 6596,
+    "median": 7471,
+    "p75": 8786,
+    "p90": 9522,
+    "min": 5530,
+    "max": 10707
+   },
+   "Laborator Radiologie si Imagistica Medicala ASISTENT MEDICAL": {
+    "n": 26,
+    "p10": 7819,
+    "p25": 8052,
+    "median": 8290,
+    "p75": 8290,
+    "p90": 8884,
+    "min": 7536,
+    "max": 10292.3
+   },
+   "Sectia Clinica A.T.I. ASISTENT MEDICAL PL - PRINCIPAL M": {
+    "n": 26,
+    "p10": 10037,
+    "p25": 10417,
+    "median": 10657,
+    "p75": 10904,
+    "p90": 10904,
+    "min": 9958.35,
+    "max": 13919.65
+   },
+   "Laborator Analize Medicale ASISTENT MEDICAL PL - PRINCIPAL M": {
+    "n": 26,
+    "p10": 9813,
+    "p25": 9994,
+    "median": 9994,
+    "p75": 10244,
+    "p90": 10294,
+    "min": 9493.95,
+    "max": 10293.95
+   },
+   "ASISTENT MEDICAL (PL) (UPU, ATI) Legea nr. 153 art. 33": {
+    "n": 25,
+    "p10": 2100,
+    "p25": 2617,
+    "median": 3148,
+    "p75": 3557,
+    "p90": 3700,
+    "min": 1698,
+    "max": 3737
+   },
+   "ASISTENT MEDICAL PR. Sectia OBSTETRICA-GINECOLOGIE I": {
+    "n": 25,
+    "p10": 7723,
+    "p25": 7984,
+    "median": 8240,
+    "p75": 8575,
+    "p90": 9452,
+    "min": 6180,
+    "max": 12136
+   },
+   "ASISTENT MEDICAL.PR.S Gradatia 5 Sporurile din anexele 1, 2,": {
+    "n": 25,
+    "p10": 7696,
+    "p25": 7996,
+    "median": 7996,
+    "p75": 7996,
+    "p90": 7996,
+    "min": 7196,
+    "max": 8881
+   },
+   "Sectia Clinica Recuperare, Medicina fizica si Balneo.II ASIS": {
+    "n": 23,
+    "p10": 7488,
+    "p25": 7824,
+    "median": 7900,
+    "p75": 8620,
+    "p90": 9003,
+    "min": 6627.72,
+    "max": 10635.76
+   },
+   "ASISTENT MEDICAL PR. Sectia CHIRURGIE GENERALA": {
+    "n": 23,
+    "p10": 7756,
+    "p25": 7984,
+    "median": 8165,
+    "p75": 8350,
+    "p90": 8350,
+    "min": 6819,
+    "max": 8350
+   },
+   "ASISTENT MEDICAL PR. Sectia NEUROLOGIE": {
+    "n": 23,
+    "p10": 7203,
+    "p25": 9054,
+    "median": 9761,
+    "p75": 10055,
+    "p90": 10055,
+    "min": 6489,
+    "max": 10055
+   },
+   "Sectia Clinica Obstetrica-Ginecologie II ASISTENT MEDICAL PL": {
+    "n": 22,
+    "p10": 8200,
+    "p25": 8200,
+    "median": 8419,
+    "p75": 8833,
+    "p90": 8833,
+    "min": 7900.28,
+    "max": 8833.25
+   },
+   "Sectia Clinica A.T.I. ASISTENT MEDICAL SS - PRINCIPAL S": {
+    "n": 22,
+    "p10": 11004,
+    "p25": 11289,
+    "median": 11756,
+    "p75": 11838,
+    "p90": 12056,
+    "min": 10204.15,
+    "max": 13948.45
+   },
+   "Unitate Primire Urgente(UPU)-SMURD ASISTENT MEDICAL SS - PRI": {
+    "n": 22,
+    "p10": 4096,
+    "p25": 10204,
+    "median": 11648,
+    "p75": 12056,
+    "p90": 12056,
+    "min": 3901,
+    "max": 14148.45
+   },
+   "ASISTENT MEDICAL PR. LAB. RECUPERARE,MEDICINA FIZICA SI BALN": {
+    "n": 22,
+    "p10": 7684,
+    "p25": 7940,
+    "median": 8050,
+    "p75": 8050,
+    "p90": 8205,
+    "min": 7044,
+    "max": 8781
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL RADIOLOGIE – Laborator Radiolo": {
+    "n": 22,
+    "p10": 8123,
+    "p25": 8246,
+    "median": 8322,
+    "p75": 8590,
+    "p90": 8590,
+    "min": 6816,
+    "max": 8590
+   },
+   "ASISTENT MEDICAL PRINCIPAL (ATI) POST LICEALE Gradatia": {
+    "n": 21,
+    "p10": 9310,
+    "p25": 9727,
+    "median": 10606,
+    "p75": 10606,
+    "p90": 10606,
+    "min": 9095,
+    "max": 13522
+   },
+   "AMBULATORIUL INTEGRAT‐str.C.Coposu nr.12 Asistent medical pr": {
+    "n": 20,
+    "p10": 7042,
+    "p25": 7059,
+    "median": 7059,
+    "p75": 7059,
+    "p90": 7059,
+    "min": 6720,
+    "max": 7789
+   },
+   "Unitate Primire Urgente(UPU)-SMURD ASISTENT MEDICAL PL M": {
+    "n": 20,
+    "p10": 3174,
+    "p25": 3334,
+    "median": 9206,
+    "p75": 10046,
+    "p90": 10515,
+    "min": 3023,
+    "max": 10514.65
+   },
+   "SECTIA NEUROLOGIE ASISTENT MEDICAL PRINCIPAL Gradatia 5": {
+    "n": 20,
+    "p10": 9273,
+    "p25": 9464,
+    "median": 9782,
+    "p75": 9857,
+    "p90": 9857,
+    "min": 8839,
+    "max": 9957
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL Sectia Neurologie": {
+    "n": 20,
+    "p10": 7049,
+    "p25": 8233,
+    "median": 8589,
+    "p75": 8898,
+    "p90": 9134,
+    "min": 6650,
+    "max": 9320
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL Sectia Obstretica Ginecologie": {
+    "n": 20,
+    "p10": 7742,
+    "p25": 7898,
+    "median": 8127,
+    "p75": 8200,
+    "p90": 8200,
+    "min": 7509,
+    "max": 8200
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL Sectia Chirurgie generala": {
+    "n": 20,
+    "p10": 7505,
+    "p25": 7891,
+    "median": 8186,
+    "p75": 9077,
+    "p90": 9320,
+    "min": 6992,
+    "max": 9320
+   },
+   "ASISTENT MEDICAL PRINCIPAL S Sectia ATI": {
+    "n": 20,
+    "p10": 10792,
+    "p25": 11703,
+    "median": 12720,
+    "p75": 12922,
+    "p90": 12922,
+    "min": 7692,
+    "max": 13543
+   },
+   "ASISTENT MEDICAL PRINCIPAL S Sectia Neonatologie": {
+    "n": 20,
+    "p10": 8315,
+    "p25": 8656,
+    "median": 8934,
+    "p75": 9457,
+    "p90": 11186,
+    "min": 8134,
+    "max": 11782
+   },
+   "Sectia Clinica Recuperare, Medicina fizica si Balneo. I ASIS": {
+    "n": 19,
+    "p10": 7881,
+    "p25": 7900,
+    "median": 8200,
+    "p75": 8566,
+    "p90": 8763,
+    "min": 7208.5599999999995,
+    "max": 10435.76
+   },
+   "ASISTENT MEDICAL PL Gradatia 2": {
+    "n": 19,
+    "p10": 6100,
+    "p25": 6212,
+    "median": 6754,
+    "p75": 8730,
+    "p90": 9710,
+    "min": 6100,
+    "max": 9710
+   },
+   "SECTIA OBSTETRICA GINECOLOGIE ASISTENT MEDICAL PRINCIPAL Gra": {
+    "n": 19,
+    "p10": 7822,
+    "p25": 8059,
+    "median": 8167,
+    "p75": 8350,
+    "p90": 8350,
+    "min": 7642,
+    "max": 8350
+   },
+   "ASISTENT MEDICAL PR. Sectia CARDIOLOGIE": {
+    "n": 19,
+    "p10": 8466,
+    "p25": 9228,
+    "median": 9688,
+    "p75": 9944,
+    "p90": 10191,
+    "min": 7867,
+    "max": 10395
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL Sectia Cardiologie": {
+    "n": 19,
+    "p10": 7867,
+    "p25": 7967,
+    "median": 8083,
+    "p75": 9381,
+    "p90": 9632,
+    "min": 7376,
+    "max": 10051
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL AMBULATORIUL INTEGRAT CU CABIN": {
+    "n": 19,
+    "p10": 7211,
+    "p25": 7444,
+    "median": 7547,
+    "p75": 7559,
+    "p90": 7559,
+    "min": 7002,
+    "max": 8140
+   },
+   "ASISTENT MEDICAL PRINCIPAL (UPU) POST LICEALE Gradatia": {
+    "n": 19,
+    "p10": 9267,
+    "p25": 9392,
+    "median": 9699,
+    "p75": 10606,
+    "p90": 10606,
+    "min": 8885,
+    "max": 13522
+   },
+   "BLOC OPERATOR‐str,Gh.Doja nr.65 Asistent medical principal G": {
+    "n": 18,
+    "p10": 8959,
+    "p25": 9082,
+    "median": 9251,
+    "p75": 9251,
+    "p90": 9251,
+    "min": 8805,
+    "max": 9251
+   },
+   "LABORATOR ANALIZE MEDICALE‐str.Gh.Doja nr.65 Asistent medica": {
+    "n": 18,
+    "p10": 7512,
+    "p25": 7546,
+    "median": 7546,
+    "p75": 7546,
+    "p90": 7888,
+    "min": 7363,
+    "max": 7888
+   },
+   "Asistent medical debutant POST LICEALE ( PL )": {
+    "n": 18,
+    "p10": 6474,
+    "p25": 7295,
+    "median": 7989,
+    "p75": 8926,
+    "p90": 10574,
+    "min": 4561,
+    "max": 12917
+   },
+   "ASISTENT MEDICAL PR PL Gradatia 3": {
+    "n": 18,
+    "p10": 6488,
+    "p25": 7059,
+    "median": 8750,
+    "p75": 9535,
+    "p90": 10197,
+    "min": 6488,
+    "max": 12053
+   },
+   "ASISTENT MEDICAL PR. LAB. ANALIZE MEDICALE": {
+    "n": 18,
+    "p10": 8068,
+    "p25": 8305,
+    "median": 8563,
+    "p75": 9046,
+    "p90": 9046,
+    "min": 7749,
+    "max": 9520
+   },
+   "ASISTENT MEDICAL PR. Sectia BOLI INFECTIOASE ADULTI": {
+    "n": 18,
+    "p10": 8198,
+    "p25": 8365,
+    "median": 8687,
+    "p75": 11248,
+    "p90": 11249,
+    "min": 6819,
+    "max": 11467
+   },
+   "ASISTENT MEDICAL PR. Sectia MEDICINA INTERNA": {
+    "n": 18,
+    "p10": 8371,
+    "p25": 8623,
+    "median": 8883,
+    "p75": 9198,
+    "p90": 9372,
+    "min": 8165,
+    "max": 9513
+   },
+   "ASISTENT MEDICAL PR. STERILIZARE": {
+    "n": 18,
+    "p10": 7619,
+    "p25": 7775,
+    "median": 7889,
+    "p75": 7919,
+    "p90": 8138,
+    "min": 7280,
+    "max": 8650
+   },
+   "SECTIA CLINICA ATI II Asistent medical principal ** Gradatia": {
+    "n": 17,
+    "p10": 9760,
+    "p25": 9856,
+    "median": 10103,
+    "p75": 10103,
+    "p90": 10103,
+    "min": 9158,
+    "max": 10589
+   },
+   "ASISTENT MEDICAL LICENTIAT Legea nr. 153 art. 33": {
+    "n": 17,
+    "p10": 1935,
+    "p25": 2699,
+    "median": 3340,
+    "p75": 3770,
+    "p90": 3959,
+    "min": 1733,
+    "max": 3959
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL Sectia Boli infectioase": {
+    "n": 17,
+    "p10": 8405,
+    "p25": 8529,
+    "median": 8590,
+    "p75": 8833,
+    "p90": 9861,
+    "min": 6650,
+    "max": 10294
+   },
+   "ASISTENT MEDICAL PR. FARMACIA NR.43": {
+    "n": 16,
+    "p10": 8043,
+    "p25": 8155,
+    "median": 8254,
+    "p75": 8282,
+    "p90": 8411,
+    "min": 7160,
+    "max": 8447
+   },
+   "ASISTENT MEDICAL PR. Sectia CHIRURGIE PLASTICA-MICROCHIR.REC": {
+    "n": 16,
+    "p10": 8883,
+    "p25": 9393,
+    "median": 9629,
+    "p75": 10054,
+    "p90": 10054,
+    "min": 6652,
+    "max": 10054
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL Sectia Ortopedie si Traumatolo": {
+    "n": 16,
+    "p10": 7785,
+    "p25": 7878,
+    "median": 8020,
+    "p75": 8091,
+    "p90": 8200,
+    "min": 7376,
+    "max": 8200
+   },
+   "SECTIA CLINICA PSIHIATRIE I Asistent medical principal Grada": {
+    "n": 15,
+    "p10": 9251,
+    "p25": 9251,
+    "median": 9251,
+    "p75": 9251,
+    "p90": 9251,
+    "min": 9025,
+    "max": 9251
+   },
+   "ASISTENT MEDICAL PR. COMPARTIMENT A.T.I. copii": {
+    "n": 15,
+    "p10": 10098,
+    "p25": 10510,
+    "median": 12461,
+    "p75": 12461,
+    "p90": 12883,
+    "min": 10033,
+    "max": 13793
+   },
+   "ASISTENT MEDICAL PR. Sectia ONCOLOGIE MEDICALA": {
+    "n": 15,
+    "p10": 7326,
+    "p25": 8848,
+    "median": 9607,
+    "p75": 9881,
+    "p90": 10266,
+    "min": 6180,
+    "max": 10786
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL Bloc operator": {
+    "n": 15,
+    "p10": 8616,
+    "p25": 8817,
+    "median": 9629,
+    "p75": 9990,
+    "p90": 10051,
+    "min": 7191,
+    "max": 10051
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL Sectia Neonatologie": {
+    "n": 15,
+    "p10": 7697,
+    "p25": 7983,
+    "median": 8346,
+    "p75": 10140,
+    "p90": 10621,
+    "min": 7641,
+    "max": 10903
+   },
+   "ASISTENT MEDICAL PL UPU - smurd": {
+    "n": 15,
+    "p10": 8973,
+    "p25": 9402,
+    "median": 10338,
+    "p75": 10577,
+    "p90": 10826,
+    "min": 6021,
+    "max": 11042
+   },
+   "FARMACIE‐str.Gh.Doja nr.65 Asistent medical principal‐farmac": {
+    "n": 14,
+    "p10": 7668,
+    "p25": 7668,
+    "median": 7668,
+    "p75": 7668,
+    "p90": 7911,
+    "min": 7668,
+    "max": 10077
+   },
+   "SECTIA CLINICA ATI I ASISTENT MEDICAL PRINCIPAL (S) Gradatia": {
+    "n": 14,
+    "p10": 10794,
+    "p25": 11256,
+    "median": 11256,
+    "p75": 11256,
+    "p90": 11256,
+    "min": 10204,
+    "max": 11256
+   },
+   "SECTIA CLINICA PNEUMOLOGIE II Asistent medical principal Gra": {
+    "n": 14,
+    "p10": 7220,
+    "p25": 7400,
+    "median": 7400,
+    "p75": 7400,
+    "p90": 7400,
+    "min": 7220,
+    "max": 7400
+   },
+   "SECTIA CLINICA PSIHIATRIE II Asistent medical principal Grad": {
+    "n": 14,
+    "p10": 9093,
+    "p25": 9251,
+    "median": 9251,
+    "p75": 9251,
+    "p90": 9251,
+    "min": 8805,
+    "max": 9251
+   },
+   "SECTIA CLINICA PSIHIATRIE III Asistent medical principal Gra": {
+    "n": 14,
+    "p10": 9093,
+    "p25": 9251,
+    "median": 9251,
+    "p75": 9251,
+    "p90": 9251,
+    "min": 9025,
+    "max": 9981
+   },
+   "ASISTENT MEDICAL PR S Gradatia 4": {
+    "n": 14,
+    "p10": 7963,
+    "p25": 8182,
+    "median": 9502,
+    "p75": 10970,
+    "p90": 11103,
+    "min": 7707,
+    "max": 11908
+   },
+   "SECTIA ORTOPEDIE SI TRAUMATOLOGIE ASISTENT MEDICAL PRINCIPAL": {
+    "n": 14,
+    "p10": 7990,
+    "p25": 8084,
+    "median": 8245,
+    "p75": 8350,
+    "p90": 8800,
+    "min": 7940,
+    "max": 9008
+   },
+   "ASISTENT MEDICAL PR. ANESTEZIE-TERAPIE INTENSIVA - MATERNITA": {
+    "n": 14,
+    "p10": 10694,
+    "p25": 11194,
+    "median": 12209,
+    "p75": 12461,
+    "p90": 13015,
+    "min": 7255,
+    "max": 13793
+   },
+   "ASISTENT MEDICAL PR. Sectia CHIRURGIE SI ORTOPEDIE PEDIATRIC": {
+    "n": 14,
+    "p10": 7984,
+    "p25": 8021,
+    "median": 8166,
+    "p75": 8350,
+    "p90": 8350,
+    "min": 7867,
+    "max": 8643
+   },
+   "ASISTENT MEDICAL PR. Sectia PSIHIATRIE": {
+    "n": 14,
+    "p10": 10359,
+    "p25": 10598,
+    "median": 11217,
+    "p75": 11272,
+    "p90": 11831,
+    "min": 10244,
+    "max": 12136
+   },
+   "BLOC DE NASTERI‐str.Clujului nr.50 Asistent medical principa": {
+    "n": 13,
+    "p10": 9251,
+    "p25": 9251,
+    "median": 9251,
+    "p75": 9251,
+    "p90": 9251,
+    "min": 9251,
+    "max": 9251
+   },
+   "SECTIA CLINICA ATI III Asistent medical principal ** Gradati": {
+    "n": 13,
+    "p10": 9856,
+    "p25": 10103,
+    "median": 10103,
+    "p75": 10103,
+    "p90": 10103,
+    "min": 9617,
+    "max": 10103
+   },
+   "SECTIA CLINICA ATI II ASISTENT MEDICAL PRINCIPAL (S) Gradati": {
+    "n": 13,
+    "p10": 10306,
+    "p25": 11256,
+    "median": 11256,
+    "p75": 11256,
+    "p90": 11256,
+    "min": 10204,
+    "max": 11256
+   },
+   "SECTIA CLINICA MEDICINA INTERNA I Asistent medical principal": {
+    "n": 13,
+    "p10": 7256,
+    "p25": 7400,
+    "median": 7400,
+    "p75": 7400,
+    "p90": 7400,
+    "min": 7220,
+    "max": 7400
+   },
+   "SECTIA CLINICA OBSTETRICA GINECOLOGIE I ASISTENT MEDICAL PRI": {
+    "n": 13,
+    "p10": 7866,
+    "p25": 8223,
+    "median": 8223,
+    "p75": 8223,
+    "p90": 8223,
+    "min": 7827,
+    "max": 8223
+   },
+   "Sectia Clinica Neonatologie I ASISTENT MEDICAL PL - PRINCIPA": {
+    "n": 13,
+    "p10": 8163,
+    "p25": 8346,
+    "median": 8346,
+    "p75": 8346,
+    "p90": 8346,
+    "min": 7983.1,
+    "max": 8346.35
+   },
+   "Sectia Clinica Neurologie ASISTENT MEDICAL PL - PRINCIPAL M": {
+    "n": 13,
+    "p10": 8932,
+    "p25": 9020,
+    "median": 9320,
+    "p75": 9320,
+    "p90": 9320,
+    "min": 8909.9,
+    "max": 9320.15
+   },
+   "ASISTENT MEDICAL PR. Sectia ORTOPEDIE-TRAUMATOLOGIE": {
+    "n": 13,
+    "p10": 8008,
+    "p25": 8165,
+    "median": 8167,
+    "p75": 8350,
+    "p90": 9760,
+    "min": 7377,
+    "max": 11083
+   },
+   "ASISTENT MEDICAL PRINCIPAL S Sectia Pneumologie": {
+    "n": 13,
+    "p10": 10530,
+    "p25": 10887,
+    "median": 11012,
+    "p75": 11539,
+    "p90": 11539,
+    "min": 9329,
+    "max": 11621
+   },
+   "ASISTENT MEDICAL PRINCIPAL S UPU - smurd": {
+    "n": 13,
+    "p10": 11152,
+    "p25": 11852,
+    "median": 12129,
+    "p75": 12613,
+    "p90": 13150,
+    "min": 9792,
+    "max": 13211
+   },
+   "Asistent medical PL": {
+    "n": 12,
+    "p10": 6101,
+    "p25": 6101,
+    "median": 6101,
+    "p75": 6447,
+    "p90": 6717,
+    "min": 5810,
+    "max": 6733
+   },
+   "COMPARTIMENT ANESTEZIE ASISTENT MEDICAL PRINCIPAL (S) Gradat": {
+    "n": 12,
+    "p10": 11009,
+    "p25": 11256,
+    "median": 11256,
+    "p75": 11256,
+    "p90": 11256,
+    "min": 10204,
+    "max": 11256
+   },
+   "COMPARTIMENT USTACC ASISTENT MEDICAL PRINCIPAL (S) Gradatia ": {
+    "n": 12,
+    "p10": 10727,
+    "p25": 10968,
+    "median": 10968,
+    "p75": 10968,
+    "p90": 10968,
+    "min": 10440,
+    "max": 13017
+   },
+   "FARMACIE‐str.C.Coposu nr.12 Asistent medical principal‐farma": {
+    "n": 12,
+    "p10": 7668,
+    "p25": 7668,
+    "median": 7668,
+    "p75": 7694,
+    "p90": 7770,
+    "min": 7668,
+    "max": 8015
+   },
+   "SERVICIU CENTRAL DE STERILIZARE Asistent medical principal G": {
+    "n": 12,
+    "p10": 7116,
+    "p25": 7116,
+    "median": 7116,
+    "p75": 7193,
+    "p90": 7425,
+    "min": 6479,
+    "max": 7425
+   },
+   "Sectia Clinica Prematuri ASISTENT MEDICAL SS - PRINCIPAL S": {
+    "n": 12,
+    "p10": 8440,
+    "p25": 9085,
+    "median": 9186,
+    "p75": 9186,
+    "p90": 9186,
+    "min": 8385.65,
+    "max": 10522.45
+   },
+   "Sectia Clinica Boli Infectioase ASISTENT MEDICAL PL - PRINCI": {
+    "n": 12,
+    "p10": 9406,
+    "p25": 9406,
+    "median": 10294,
+    "p75": 10294,
+    "p90": 10294,
+    "min": 9406.15,
+    "max": 13011.65
+   },
+   "Sectia Clinica Ortopedie si Traumatologie ASISTENT MEDICAL P": {
+    "n": 12,
+    "p10": 7762,
+    "p25": 7884,
+    "median": 8062,
+    "p75": 8200,
+    "p90": 8200,
+    "min": 7044.08,
+    "max": 8200.28
+   },
+   "Compartiment Terapie Intensiva - Neurologie,Chir.plasti ASIS": {
+    "n": 12,
+    "p10": 9303,
+    "p25": 9840,
+    "median": 10709,
+    "p75": 10904,
+    "p90": 10904,
+    "min": 9105.8,
+    "max": 11004.15
+   },
+   "Sectia Chirurgie Plastica,Estetica si Microchirurgie Re ASIS": {
+    "n": 12,
+    "p10": 7431,
+    "p25": 7509,
+    "median": 8200,
+    "p75": 9280,
+    "p90": 10051,
+    "min": 7159.2,
+    "max": 10635.76
+   },
+   "ASISTENT MEDICAL PR PL Gradatia 2": {
+    "n": 12,
+    "p10": 6229,
+    "p25": 6730,
+    "median": 7304,
+    "p75": 8775,
+    "p90": 9897,
+    "min": 6179,
+    "max": 10098
+   },
+   "ASISTENT MEDICAL PR. Sectia GASTROENTEROLOGIE": {
+    "n": 12,
+    "p10": 7031,
+    "p25": 8310,
+    "median": 8977,
+    "p75": 9278,
+    "p90": 9428,
+    "min": 6891,
+    "max": 9564
+   },
+   "ASISTENT MEDICAL POST LICEALE BAZA": {
+    "n": 12,
+    "p10": 6134,
+    "p25": 6357,
+    "median": 6367,
+    "p75": 6483,
+    "p90": 7012,
+    "min": 6097,
+    "max": 7834
+   },
+   "ASISTENT MEDICAL (ATI) POST LICEALE Gradatia": {
+    "n": 12,
+    "p10": 8821,
+    "p25": 9309,
+    "median": 9600,
+    "p75": 9808,
+    "p90": 9983,
+    "min": 8524,
+    "max": 10221
+   },
+   "ASISTENT MEDICAL (UPU) POST LICEALE Gradatia": {
+    "n": 12,
+    "p10": 8767,
+    "p25": 8974,
+    "median": 9191,
+    "p75": 9309,
+    "p90": 9706,
+    "min": 8179,
+    "max": 9750
+   },
+   "Sectia Clinica NEUROCHIRURGIE ASISTENT MEDICAL PRINCIPAL (S)": {
+    "n": 11,
+    "p10": 9012,
+    "p25": 9237,
+    "median": 9467,
+    "p75": 9467,
+    "p90": 9467,
+    "min": 8582,
+    "max": 9467
+   },
+   "SECTIA CLINICA ONCOLOGIE MEDICALA Asistent medical principal": {
+    "n": 11,
+    "p10": 8520,
+    "p25": 8520,
+    "median": 8520,
+    "p75": 8520,
+    "p90": 8520,
+    "min": 8313,
+    "max": 8520
+   },
+   "SECTIE RECUPERARE NEUROLOGICA Asistent medical principal Gra": {
+    "n": 11,
+    "p10": 9251,
+    "p25": 9251,
+    "median": 9251,
+    "p75": 9251,
+    "p90": 9251,
+    "min": 9251,
+    "max": 9251
+   },
+   "Sectia Clinic Medicina-Interna II ASISTENT MEDICAL PL - PRIN": {
+    "n": 11,
+    "p10": 7509,
+    "p25": 8020,
+    "median": 8200,
+    "p75": 8200,
+    "p90": 8200,
+    "min": 6708.5599999999995,
+    "max": 10335.76
+   },
+   "SECTIA ONCOLOGIE MEDICALA ASISTENT MEDICAL PRINCIPAL Gradati": {
+    "n": 11,
+    "p10": 9214,
+    "p25": 9256,
+    "median": 9373,
+    "p75": 9670,
+    "p90": 9957,
+    "min": 9073,
+    "max": 9957
+   },
+   "ASISTENT MEDICAL PR. LAB. DE MICROBIOLOGIE MEDICALA": {
+    "n": 11,
+    "p10": 8158,
+    "p25": 8415,
+    "median": 8837,
+    "p75": 8837,
+    "p90": 8837,
+    "min": 7444,
+    "max": 8837
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL Sectia Pneumologie": {
+    "n": 11,
+    "p10": 9915,
+    "p25": 9990,
+    "median": 9990,
+    "p75": 10230,
+    "p90": 10464,
+    "min": 8940,
+    "max": 10464
+   },
+   "Asistent medical principal PL": {
+    "n": 10,
+    "p10": 6755,
+    "p25": 6819,
+    "median": 6819,
+    "p75": 6819,
+    "p90": 6819,
+    "min": 6179,
+    "max": 6819
+   },
+   "AMBULATORIUL INTEGRAT‐str.C.Coposu nr.12 Asistent medical Gr": {
+    "n": 10,
+    "p10": 6017,
+    "p25": 6339,
+    "median": 6634,
+    "p75": 6927,
+    "p90": 6969,
+    "min": 6017,
+    "max": 6969
+   },
+   "COMPARTIMENT ANESTEZIE Asistent medical principal ** Gradati": {
+    "n": 10,
+    "p10": 10103,
+    "p25": 10103,
+    "median": 10103,
+    "p75": 10103,
+    "p90": 10103,
+    "min": 10103,
+    "max": 10103
+   },
+   "SECTIA CLINICA HEMATOLOGIE Asistent medical principal Gradat": {
+    "n": 10,
+    "p10": 8479,
+    "p25": 8520,
+    "median": 8520,
+    "p75": 8520,
+    "p90": 8520,
+    "min": 8110,
+    "max": 8520
+   },
+   "UNITATE DE TRANSFUZIE SANGUINA‐str.C.Coposu n Asistent medic": {
+    "n": 10,
+    "p10": 8208,
+    "p25": 8365,
+    "median": 8520,
+    "p75": 8810,
+    "p90": 8906,
+    "min": 7262,
+    "max": 8906
+   },
+   "Sectia A.T.I. Obstetrica-Ginecologie ASISTENT MEDICAL PL - P": {
+    "n": 10,
+    "p10": 10337,
+    "p25": 10463,
+    "median": 10754,
+    "p75": 10904,
+    "p90": 10904,
+    "min": 9616.6,
+    "max": 10903.55
+   },
+   "Sectia Clinica Urologie ASISTENT MEDICAL PL - PRINCIPAL M": {
+    "n": 10,
+    "p10": 7834,
+    "p25": 7888,
+    "median": 8200,
+    "p75": 8200,
+    "p90": 8444,
+    "min": 7744.08,
+    "max": 10635.76
+   },
+   "Farmacia 1 ASISTENT MEDICAL PL - PRINCIPAL M": {
+    "n": 10,
+    "p10": 8168,
+    "p25": 8168,
+    "median": 8218,
+    "p75": 8343,
+    "p90": 8618,
+    "min": 8168.2,
+    "max": 10865.3
+   },
+   "Compartiment T.I. Coronarieni ASISTENT MEDICAL PL - PRINCIPA": {
+    "n": 10,
+    "p10": 10417,
+    "p25": 10694,
+    "median": 10904,
+    "p75": 10904,
+    "p90": 10904,
+    "min": 10416.6,
+    "max": 10903.55
+   },
+   "ASISTENT MEDICAL PR. Sectia O.R.L.": {
+    "n": 10,
+    "p10": 8056,
+    "p25": 8188,
+    "median": 8419,
+    "p75": 8616,
+    "p90": 9085,
+    "min": 7658,
+    "max": 10041
+   },
+   "ASISTENT MEDICAL PR. Sectia OFTALMOLOGIE": {
+    "n": 10,
+    "p10": 7877,
+    "p25": 8213,
+    "median": 8508,
+    "p75": 8782,
+    "p90": 9266,
+    "min": 6652,
+    "max": 10025
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL Sectia Medicina interna": {
+    "n": 10,
+    "p10": 6816,
+    "p25": 7478,
+    "median": 7792,
+    "p75": 8047,
+    "p90": 8200,
+    "min": 6816,
+    "max": 8200
+   },
+   "BLOC OPERATOR‐str,Gh.Doja nr.65 ASISTENT MEDICAL PRINCIPAL (": {
+    "n": 9
+   },
+   "CAMERA DE GARDA OBSTETRICA‐GINECOLOGIE‐St. Asistent medical ": {
+    "n": 9
+   },
+   "Compartiment Neurologie II Asistent medical principal Gradat": {
+    "n": 9
+   },
+   "SECTIA CLINICA BOLI INFECTIOASE II ASISTENT MEDICAL PRINCIPA": {
+    "n": 9
+   },
+   "Sectia Clinica CHIRURGIE PLASTICA, MICROCHIR. RE Asistent me": {
+    "n": 9
+   },
+   "Sectia Clinica MEDICINA INTERNA III Asistent medical princip": {
+    "n": 9
+   },
+   "SECTIA CLINICA PNEUMOLOGIE III Asistent medical principal Gr": {
+    "n": 9
+   },
+   "SECTIA INGRIJIRI PALEATIVE Asistent medical principal Gradat": {
+    "n": 9
+   },
+   "Farmacia 2 ASISTENT MEDICAL PL - PRINCIPAL M": {
+    "n": 9
+   },
+   "Sectia Clinica Gastroenterologie ASISTENT MEDICAL PL - PRINC": {
+    "n": 9
+   },
+   "Sectia Clinica Chirurgie Generala I ASISTENT MEDICAL PL - PR": {
+    "n": 9
+   },
+   "Sectia Clinica A.T.I. ASISTENT MEDICAL PL M": {
+    "n": 9
+   },
+   "ASISTENT MEDICAL PL Gradatia 4": {
+    "n": 9
+   },
+   "ASISTENT MEDICAL PR S Gradatia 2": {
+    "n": 9
+   },
+   "SECTIA MEDICINA INTERNA ASISTENT MEDICAL PRINCIPAL Gradatia ": {
+    "n": 9
+   },
+   "COMP.CARDIOLOGIE ASISTENT MEDICAL PRINCIPAL Gradatia 5": {
+    "n": 9
+   },
+   "SECTIA CHIRURGIE GENERALA ASISTENT MEDICAL PRINCIPAL Gradati": {
+    "n": 9
+   },
+   "BLOC OPERATOR - ORTOPEDIE SI TRAUMATOLOGIE ASISTENT MEDICAL ": {
+    "n": 9
+   },
+   "FARMACIA SPITALULUI ASISTENT MEDICAL PRINCIPAL Gradatia 5": {
+    "n": 9
+   },
+   "LABORATOR RAD.SI IMAGISTICA MED.COMPART.SPITAL ASISTENT MEDI": {
+    "n": 9
+   },
+   "ASISTENT MEDICAL PR. SERVICIUL ANATOMIE PATOLOGICA": {
+    "n": 9
+   },
+   "ASISTENT MEDICAL PR. SERVICIUL JUDETEAN DE MEDICINA LEGALA": {
+    "n": 9
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL Sectia ORL": {
+    "n": 9
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL Serviciul Judetean de Medicina": {
+    "n": 9
+   },
+   "BLOC OPERATOR‐str.C.Coposu nr.12 Asistent medical principal ": {
+    "n": 8
+   },
+   "Sectia Clinica DERMATOVENEROLOGIE Asistent medical principal": {
+    "n": 8
+   },
+   "SECTIA CLINICA NEONATOLOGIE Asistent medical principal Grada": {
+    "n": 8
+   },
+   "Sectia Clinica NEUROLOGIE I Asistent medical principal Grada": {
+    "n": 8
+   },
+   "SERVICIUL JUDETEAN DE MEDICINA LEGALA BIHOR Asistent medical": {
+    "n": 8
+   },
+   "Sectia Hematologie ASISTENT MEDICAL PL - PRINCIPAL M": {
+    "n": 8
+   },
+   "Sectia Clinica Obstetrica-Ginecologie II ASISTENT MEDICAL SS": {
+    "n": 8
+   },
+   "Sectia Clinica Ortopedie si Traumatologie ASISTENT MEDICAL S": {
+    "n": 8
+   },
+   "Sectia Clinica Neurochirurgie ASISTENT MEDICAL PL - PRINCIPA": {
+    "n": 8
+   },
+   "Sectia Clinica Chirurg. Generala II ASISTENT MEDICAL PL - PR": {
+    "n": 8
+   },
+   "Serviciul Judetean de Medicina Legala IML CLUJ ASISTENT MEDI": {
+    "n": 8
+   },
+   "ASISTENT MEDICAL S BAZA": {
+    "n": 8
+   },
+   "SECTIA CARDIOLOGIE -COMP.TERAPIE INTENSIVA CORONA. ASISTENT ": {
+    "n": 8
+   },
+   "SECTIA ONCOLOGIE MEDICALA-COMP.INGRIJIRI PALIATIVE ASISTENT ": {
+    "n": 8
+   },
+   "SECTIA NEONATOLOGIE-COMP.TERAPIE INTENSIVA ASISTENT MEDICAL ": {
+    "n": 8
+   },
+   "COMP.PEDIATRIE ASISTENT MEDICAL PRINCIPAL Gradatia 5": {
+    "n": 8
+   },
+   "COMP.BOLI INFECTIOASE ASISTENT MEDICAL PRINCIPAL Gradatia 5": {
+    "n": 8
+   },
+   "SECTIA PSIHIATRIE ACUTI ASISTENT MEDICAL PRINCIPAL Gradatia ": {
+    "n": 8
+   },
+   "ASISTENT MEDICAL PR. Sectia BOLI INFECTIOASE COPII": {
+    "n": 8
+   },
+   "ASISTENT MEDICAL PR. Sectia DERMATO-VENEROLOGIE": {
+    "n": 8
+   },
+   "ASISTENT MEDICAL PR. SECTIA NEUROCHIRURGIE": {
+    "n": 8
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL Sterilizare": {
+    "n": 8
+   },
+   "ASISTENT MEDICAL PR.(PL) RADIOLOGIE": {
+    "n": 8
+   },
+   "ASISTENT MEDICAL SUPERIOARE Gradatia": {
+    "n": 8
+   },
+   "AMBULATORIUL INTEGRAT‐str.Republicii nr.37 ASISTENT MEDICAL ": {
+    "n": 7
+   },
+   "LAB. ANGIOGRAFIE,CATETERISM CARDIAC SI CARD.I Asistent medic": {
+    "n": 7
+   },
+   "LAB. ANGIOGRAFIE,CATETERISM CARDIAC SI CARD.I ASISTENT MEDIC": {
+    "n": 7
+   },
+   "Laborator de radiologie si imag.med‐C.Coposu (p.l) Asistent ": {
+    "n": 7
+   },
+   "Laborator recup,medicina fizica si balne‐L.Pasteur Asistent ": {
+    "n": 7
+   },
+   "SECTIA CLINICA ATI III ASISTENT MEDICAL PRINCIPAL (S) Gradat": {
+    "n": 7
+   },
+   "Sectia Clinica CARDIOLOGIE I Asistent medical principal Grad": {
+    "n": 7
+   },
+   "SECTIA CLINICA PEDIATRIE II Asistent medical principal Grada": {
+    "n": 7
+   },
+   "SECTIA CLINICA PSIHIATRIE II ASISTENT MEDICAL PRINCIPAL (S) ": {
+    "n": 7
+   },
+   "SERVICIUL DE ANATOMIE PATOLOGICA‐str.Gh.Doja Asistent medica": {
+    "n": 7
+   },
+   "UNITATE DE TRANSFUZIE SANGUINA‐str.Ghe.Doja n Asistent medic": {
+    "n": 7
+   },
+   "Sectia Clinica Cardiologie II ASISTENT MEDICAL PL - PRINCIPA": {
+    "n": 7
+   },
+   "Comp. Cl. Diabet Zaharat, Nutritie si Boli Metabolice ASISTE": {
+    "n": 7
+   },
+   "Bloc Clinic Operator ASISTENT MEDICAL PL - PRINCIPAL M": {
+    "n": 7
+   },
+   "Sectia Clinica Medicina Interna I ASISTENT MEDICAL SS - PRIN": {
+    "n": 7
+   },
+   "Sectia Clinica Cardiologie I ASISTENT MEDICAL SS - PRINCIPAL": {
+    "n": 7
+   },
+   "Compartiment T.I. Neonatologie ASISTENT MEDICAL PL - PRINCIP": {
+    "n": 7
+   },
+   "Sectia Clinica Oncologie Medicala ASISTENT MEDICAL PL - PRIN": {
+    "n": 7
+   },
+   "Compartiment Endoscopie Digestiva ASISTENT MEDICAL PL - PRIN": {
+    "n": 7
+   },
+   "Sectia Clinica O.R.L. ASISTENT MEDICAL PL - PRINCIPAL M": {
+    "n": 7
+   },
+   "Sectia Clinica A.T.I. ASISTENT MEDICAL SS S": {
+    "n": 7
+   },
+   "Comp. radiologie, imagistica medicala neurologie ASISTENT ME": {
+    "n": 7
+   },
+   "ASISTENT MEDICAL PL Gradatia 3": {
+    "n": 7
+   },
+   "SECTIA GASTROENTEROLOGIE ASISTENT MEDICAL PRINCIPAL Gradatia": {
+    "n": 7
+   },
+   "COMPARTIMENT NEFROLOGIE ASISTENT MEDICAL PRINCIPAL Gradatia ": {
+    "n": 7
+   },
+   "COMPARTIMENT UROLOGIE ASISTENT MEDICAL PRINCIPAL Gradatia 5": {
+    "n": 7
+   },
+   "SECTIA PSIHIATRIE ACUTI ASISTENT MEDICAL PRINCIPAL S Gradati": {
+    "n": 7
+   },
+   "SECTIA RECUPERARE,MEDICINA FIZICA SI BALNEOLOGIE ASISTENT ME": {
+    "n": 7
+   },
+   "BLOC OPERATOR OBSTETRICA GINECOLOGIE ASISTENT MEDICAL PRINCI": {
+    "n": 7
+   },
+   "BLOC OPERATOR - CHIRURGIE ASISTENT MEDICAL PRINCIPAL Gradati": {
+    "n": 7
+   },
+   "UNITATE PRIMIRE URGENTE ASISTENT MEDICAL PRINCIPAL S UPU Gra": {
+    "n": 7
+   },
+   "ASISTENT MEDICAL PR. COMPARTIMENT CHIRURGIE CARDIOVASCULARA": {
+    "n": 7
+   },
+   "ASISTENT MEDICAL PR. LABORATOR EXPLORARI FUNCTIONALE": {
+    "n": 7
+   },
+   "ASISTENT MEDICAL Sectia ANESTEZIE-TERAPIE INTENSIVA": {
+    "n": 7
+   },
+   "ASISTENT MEDICAL PR. UNITATE DE TRANSFUZII SANGUINE": {
+    "n": 7
+   },
+   "ASISTENT MEDICAL PR. Sectia DIABET ZAHARAT, NUTRITIE SI BOLI": {
+    "n": 7
+   },
+   "ASISTENT MEDICAL PR. Sectia PEDIATRIE (RECUPERARE PEDIATRICA": {
+    "n": 7
+   },
+   "ASISTENT MEDICAL PR. Sectia UROLOGIE": {
+    "n": 7
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL Compartiment Chirurgie plastic": {
+    "n": 7
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL Dispensar TBC": {
+    "n": 7
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL Sectia Oncologie Medicala": {
+    "n": 7
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL Sectia Gastroenterologie": {
+    "n": 7
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL U.T.S. - ATI": {
+    "n": 7
+   },
+   "Asistent medical, educator/instructor educație principal PL,": {
+    "n": 6
+   },
+   "Asistent medical, educator/instructor educație bază PL,": {
+    "n": 6
+   },
+   "Asistent medical, educator/instructor educație debutant PL,": {
+    "n": 6
+   },
+   "Camera de garda Psihiatrie Asistent medical principal Gradat": {
+    "n": 6
+   },
+   "Compartiment RADIOTERAPIE Asistent medical principal Gradati": {
+    "n": 6
+   },
+   "Dispensar TBC (Str. Alea Strandului nr. 18) Asistent medical": {
+    "n": 6
+   },
+   "Laborator de radiologie si imag.med‐str.Doja nr.65 Asistent ": {
+    "n": 6
+   },
+   "SECTIA CLINICA CHIRURGIE GENERALA SI ONCOLOG Asistent medica": {
+    "n": 6
+   },
+   "Sectia Clinica NEUROCHIRURGIE Asistent medical principal Gra": {
+    "n": 6
+   },
+   "Sectia Clinica ORTOPEDIE‐TRAUMATOLOGIE I Asistent medical pr": {
+    "n": 6
+   },
+   "SECTIA CLINICA PEDIATRIE I Asistent medical principal Gradat": {
+    "n": 6
+   },
+   "SECTIA CLINICA PEDIATRIE III Asistent medical principal Grad": {
+    "n": 6
+   },
+   "SECTIA CLINICA PSIHIATRIE III ASISTENT MEDICAL PRINCIPAL (S)": {
+    "n": 6
+   },
+   "Sectia Clinica UROLOGIE ASISTENT MEDICAL PRINCIPAL (S) Grada": {
+    "n": 6
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 ASISTENT MEDICAL (S) ** Gradatia": {
+    "n": 6
+   },
+   "asistent medical laborator clinic licentiat principal anatom": {
+    "n": 6
+   },
+   "Sectia A.T.I. Obstetrica-Ginecologie ASISTENT MEDICAL SS - P": {
+    "n": 6
+   },
+   "Unitatea de Transfuzii Sanguine ASISTENT MEDICAL PL - PRINCI": {
+    "n": 6
+   },
+   "Sectia Clinica Prematuri ASISTENT MEDICAL PL - PRINCIPAL M": {
+    "n": 6
+   },
+   "Compartiment Clinic Oftalmologie ASISTENT MEDICAL PL - PRINC": {
+    "n": 6
+   },
+   "Bloc Operator Ortopedie si Traumatologie ASISTENT MEDICAL SS": {
+    "n": 6
+   },
+   "Sectia Clinica Neurochirurgie ASISTENT MEDICAL PL M": {
+    "n": 6
+   },
+   "Serviciul de Anatomie Patologica ASISTENT MEDICAL SS - PRINC": {
+    "n": 6
+   },
+   "Sectia Clinica Medicina Interna I ASISTENT MEDICAL PL - PRIN": {
+    "n": 6
+   },
+   "Sectia Clinica Cardiologie I ASISTENT MEDICAL PL - PRINCIPAL": {
+    "n": 6
+   },
+   "Sectia Clinica Neonatologie I ASISTENT MEDICAL SS - PRINCIPA": {
+    "n": 6
+   },
+   "Compartiment T.I. Neonatologie ASISTENT MEDICAL SS - PRINCIP": {
+    "n": 6
+   },
+   "Serviciul de sterilizare ASISTENT MEDICAL PL - PRINCIPAL M": {
+    "n": 6
+   },
+   "ASISTENT MEDICAL S Gradatia 2": {
+    "n": 6
+   },
+   "COMP. DIABET ZAHARAT,NUTRITIE SI BOLI METABOLICE ASISTENT ME": {
+    "n": 6
+   },
+   "SECTIA A.T.I ASISTENT MEDICAL PRINCIPAL S A.T.I. Gradatia 5": {
+    "n": 6
+   },
+   "ASISTENT MEDICAL PR. LAB. RADIOTERAPIE": {
+    "n": 6
+   },
+   "ASISTENT MEDICAL PR. COMPARTIMENT REUMATOLOGIE": {
+    "n": 6
+   },
+   "ASISTENT MEDICAL PR. SECTIA INGRIJIRI PALIATIVE": {
+    "n": 6
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL Serviciul Anatomie patologica": {
+    "n": 6
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL Compartiment ATI Obstetrica Gi": {
+    "n": 6
+   },
+   "ASISTENT MEDICAL PL Sectia Medicina interna": {
+    "n": 6
+   },
+   "ASISTENT MEDICAL PRINCIPAL S Sectia Chirurgie generala": {
+    "n": 6
+   },
+   "UPU ASISTENT MEDICAL LICENTIAT PR(S)": {
+    "n": 6
+   },
+   "ASISTENT MEDICAL PRINCIPAL DIN A POST LICEALE Gradatia": {
+    "n": 6
+   },
+   "ASISTENT MEDICAL DIN AN. PAT. SI MPOST LICEALE Gradatia": {
+    "n": 6
+   },
+   "Compartiment Clinic OFTALMOLOGIE Asistent medical principal ": {
+    "n": 5
+   },
+   "Compartiment TBC adulti Asistent medical principal Gradatia ": {
+    "n": 5
+   },
+   "Compartiment Terapie acuta pneumologie Asistent medical prin": {
+    "n": 5
+   },
+   "SECTIA CLINICA ATI II ASISTENT MEDICAL (S) ** Gradatia 2 SUP": {
+    "n": 5
+   },
+   "Sectia Clinica CHIRURGIE GENERALA II Asistent medical princi": {
+    "n": 5
+   },
+   "SECTIA CLINICA NEFROLOGIE Asistent medical principal Gradati": {
+    "n": 5
+   },
+   "Sectia Clinica ORTOPEDIE‐TRAUMATOLOGIE II Asistent medical p": {
+    "n": 5
+   },
+   "SECTIA CLINICA PEDIATRIE II ASISTENT MEDICAL PRINCIPAL (S) G": {
+    "n": 5
+   },
+   "Sectia Clinica PNEUMOLOGIE I Asistent medical principal Grad": {
+    "n": 5
+   },
+   "SECTIA CLINICA PSIHIATRIE I ASISTENT MEDICAL PRINCIPAL (S) G": {
+    "n": 5
+   },
+   "SECTIE RECUPERARE NEUROLOGICA ASISTENT MEDICAL PRINCIPAL (S)": {
+    "n": 5
+   },
+   "UNITATE DE TRANSFUZIE SANGUINA‐str.Clujului nr.5 Asistent me": {
+    "n": 5
+   },
+   "Sectia Clinica Dermato-Venerologie ASISTENT MEDICAL PL M": {
+    "n": 5
+   },
+   "Bloc Clinic Operator ASISTENT MEDICAL SS - PRINCIPAL S": {
+    "n": 5
+   },
+   "Compartiment Nefrologie ASISTENT MEDICAL PL - PRINCIPAL M": {
+    "n": 5
+   },
+   "Sectia Clinica Oncologie Medicala ASISTENT MEDICAL PL M": {
+    "n": 5
+   },
+   "Unitate Primire Urgente(UPU)-SMURD ASISTENT MEDICAL SS S": {
+    "n": 5
+   },
+   "Cabinet Medicina Dentara de Urgenta ASISTENT MEDICAL PL - PR": {
+    "n": 5
+   },
+   "Ambulatoriu integrat - ALTII ASISTENT MEDICAL PL M": {
+    "n": 5
+   },
+   "COMP. O.R.L ASISTENT MEDICAL PRINCIPAL Gradatia 5": {
+    "n": 5
+   },
+   "COMP.DERMATO-VENEROLOGIE ASISTENT MEDICAL PRINCIPAL Gradatia": {
+    "n": 5
+   },
+   "BLOC OPERATOR - CHIRURGIE ASISTENT MEDICAL PRINCIPAL S Grada": {
+    "n": 5
+   },
+   "DISPENSAR TBC ASISTENT MEDICAL PRINCIPAL Gradatia 5": {
+    "n": 5
+   },
+   "ASISTENT MEDICAL BLOC OPERATOR": {
+    "n": 5
+   },
+   "ASISTENT MEDICAL PR. CENTRU DE SANATATE MINTALA (CSM)": {
+    "n": 5
+   },
+   "ASISTENT MEDICAL CENTRUL DE HEMODIALIZA": {
+    "n": 5
+   },
+   "ASISTENT MEDICAL PR. COMPARTIMENT NEFROLOGIE": {
+    "n": 5
+   },
+   "ASISTENT MEDICAL PR. Sectia ENDOCRINOLOGIE": {
+    "n": 5
+   },
+   "ASISTENT MEDICAL PR. SERVICIU INFORMATICA, EVALUARE SI STATI": {
+    "n": 5
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL Sectia Chirurgie si ortopedie ": {
+    "n": 5
+   },
+   "ASISTENT MEDICAL PL Sectia Oncologie Medicala": {
+    "n": 5
+   },
+   "ASISTENT MEDICAL PL Sectia Gastroenterologie": {
+    "n": 5
+   },
+   "ASISTENT MEDICAL PL Sectia Obstretica Ginecologie": {
+    "n": 5
+   },
+   "ASISTENT MEDICAL PRINCIPAL S Sectia Urologie": {
+    "n": 5
+   },
+   "ASISTENT MEDICAL PRINCIPAL S Compartiment ATI Obstetrica Gin": {
+    "n": 5
+   },
+   "ASISTENT MEDICAL SUPERIOARE BAZA": {
+    "n": 5
+   },
+   "BLOC OPERATOR‐str. Clujului nr.50 ASISTENT MEDICAL PRINCIPAL": {
+    "n": 4
+   },
+   "Bucatarie de lapte/biberonerie/ditetica‐Clujului ASISTENT ME": {
+    "n": 4
+   },
+   "COMPARTIMENT DIABET ZAHARAT,NUTRITIE SI BOL Asistent medical": {
+    "n": 4
+   },
+   "Compartiment ORL adulti Asistent medical principal Gradatia ": {
+    "n": 4
+   },
+   "COMPARTIMENT PSIHIATRIE PEDIATRICA Asistent medical principa": {
+    "n": 4
+   },
+   "Compartiment TBC copii Asistent medical principal Gradatia 5": {
+    "n": 4
+   },
+   "Compartiment UAVCA Asistent medical principal Gradatia 5 POS": {
+    "n": 4
+   },
+   "FARMACIE‐str.Clujului nr.50 Asistent medical principal‐farma": {
+    "n": 4
+   },
+   "Laborator de explorari functionale‐C.Coposu (p.l) Asistent m": {
+    "n": 4
+   },
+   "SECTIA CLINICA BOLI INFECTIOASE I Asistent medical principal": {
+    "n": 4
+   },
+   "SECTIA CLINICA BOLI INFECTIOASE I ASISTENT MEDICAL PRINCIPAL": {
+    "n": 4
+   },
+   "Sectia Clinica CARDIOLOGIE I ASISTENT MEDICAL PRINCIPAL (S) ": {
+    "n": 4
+   },
+   "SECTIA CLINICA CHIRURGIE GENERALA SI ONCOLOG ASISTENT MEDICA": {
+    "n": 4
+   },
+   "Sectia Clinica MEDICINA INTERNA I Asistent medical principal": {
+    "n": 4
+   },
+   "Sectia Clinica UROLOGIE Asistent medical principal Gradatia ": {
+    "n": 4
+   },
+   "SECTIA INGRIJIRI PALEATIVE ASISTENT MEDICAL PRINCIPAL (S) Gr": {
+    "n": 4
+   },
+   "Spitalizare de zi‐centrul oncologic ASISTENT MEDICAL PRINCIP": {
+    "n": 4
+   },
+   "Spitalizare de zi‐str.C.Coposu Asistent medical principal Gr": {
+    "n": 4
+   },
+   "STATIA DE HEMODIALIZA I Asistent medical principal Gradatia ": {
+    "n": 4
+   },
+   "Sectia Hematologie ASISTENT MEDICAL PL M": {
+    "n": 4
+   },
+   "Sectia Clinica Obstetrica-Ginecologie I ASISTENT MEDICAL SS ": {
+    "n": 4
+   },
+   "Sectia Clinica Dermato-Venerologie ASISTENT MEDICAL PL - PRI": {
+    "n": 4
+   },
+   "Compartiment Clinic Oftalmologie ASISTENT MEDICAL PL M": {
+    "n": 4
+   },
+   "Sectia Clinica Boli Infectioase ASISTENT MEDICAL SS S": {
+    "n": 4
+   },
+   "Bloc Operator Ortopedie si Traumatologie ASISTENT MEDICAL PL": {
+    "n": 4
+   },
+   "Sectia Clinica Neurochirurgie ASISTENT MEDICAL SS - PRINCIPA": {
+    "n": 4
+   },
+   "Bloc Operator Urologie ASISTENT MEDICAL SS - PRINCIPAL S": {
+    "n": 4
+   },
+   "Compartiment Clinic Endocrinologie ASISTENT MEDICAL PL - PRI": {
+    "n": 4
+   },
+   "Centrul de Hemodializa ASISTENT MEDICAL PL - PRINCIPAL M": {
+    "n": 4
+   },
+   "Compartiment Computer Tomograf ASISTENT MEDICAL SS - PRINCIP": {
+    "n": 4
+   },
+   "Compartiment Chirurgie Orala si Maxilo-Faciala ASISTENT MEDI": {
+    "n": 4
+   },
+   "Cab. Diabet Zaharat,Nutritie si Boli Metab.- ALTII ASISTENT ": {
+    "n": 4
+   },
+   "ASISTENT MEDICAL PRINCIPAL (S) (LABORATOR) Legea nr. 153 art": {
+    "n": 4
+   },
+   "ASISTENT MEDICAL PL Gradatia 5": {
+    "n": 4
+   },
+   "SECTIA CHIRURGIE GENERALA ASISTENT MEDICAL PRINCIPAL S Grada": {
+    "n": 4
+   },
+   "COMP.NEUROCHIRURGIE ASISTENT MEDICAL PRINCIPAL Gradatia 5": {
+    "n": 4
+   },
+   "SECTIA A.T.I ASISTENT MEDICAL PRINCIPAL A.T.I. Gradatia 4": {
+    "n": 4
+   },
+   "COMP.RECUPERARE NEUROLOGICA ASISTENT MEDICAL PRINCIPAL Grada": {
+    "n": 4
+   },
+   "COMPARTIMENT PSIHIATRIE CRONICI BAIA DE ARIES ASISTENT MEDIC": {
+    "n": 4
+   },
+   "LABORATOR ANALIZE MEDICALE ASISTENT MEDICAL PRINCIPAL Gradat": {
+    "n": 4
+   },
+   "LABORATOR ANALIZE MEDICALE-LABORATOR BACTERIOLOGIE ASISTENT ": {
+    "n": 4
+   },
+   "LABORATOR RAD.SI IMAGISTICA MED.-COMP. T -SPITAL ASISTENT ME": {
+    "n": 4
+   },
+   "LABORATOR DE ENDOSCOPIE DIAGNOSTICA SI TERAPEUTICA ASISTENT ": {
+    "n": 4
+   },
+   "SERVICIUL JUDETEAN DE MEDICINA LEGALA ASISTENT MEDICAL PRINC": {
+    "n": 4
+   },
+   "ASISTENT MEDICAL PR. Cabinet O.R.L.": {
+    "n": 4
+   },
+   "ASISTENT MEDICAL PR. Cabinet ORTOPEDIE SI TRAUMATOLOGIE": {
+    "n": 4
+   },
+   "ASISTENT MEDICAL PR. CENTRUL DE HEMODIALIZA": {
+    "n": 4
+   },
+   "ASISTENT MEDICAL PR. COMPARTIMENT DE PREV. A INF. ASOCIATE A": {
+    "n": 4
+   },
+   "ASISTENT MEDICAL PR. COMPARTIMENT RADIOTERAPIE": {
+    "n": 4
+   },
+   "ASISTENT MEDICAL UNITATE DE PRIMIRE URGENTE - SMURD": {
+    "n": 4
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL Compartiment Dermato-Venerolog": {
+    "n": 4
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL Compartiment Diabet zaharat nu": {
+    "n": 4
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL Compartiment Oftalmologie": {
+    "n": 4
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL Sterilizare Maternitate": {
+    "n": 4
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL Compartiment Nefrologie": {
+    "n": 4
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL Statia de dializa": {
+    "n": 4
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL Sectia Urologie": {
+    "n": 4
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL CENTRU DE SANATATE MULTIFUNCTI": {
+    "n": 4
+   },
+   "ASISTENT MEDICAL PL Sectia Pediatrie": {
+    "n": 4
+   },
+   "ASISTENT MEDICAL PL Sectia ATI": {
+    "n": 4
+   },
+   "ASISTENT MEDICAL PRINCIPAL S Compartiment Chirurgie plastica": {
+    "n": 4
+   },
+   "ASISTENT MEDICAL PRINCIPAL S Sectia Obstretica Ginecologie": {
+    "n": 4
+   },
+   "ATI ASISTENT MEDICAL LICENTIAT PR.(S)": {
+    "n": 4
+   },
+   "asistent medical principal de farm": {
+    "n": 4
+   },
+   "Asistent medical SSD": {
+    "n": 3
+   },
+   "AMBULATORIUL INTEGRAT‐str.C.Coposu nr.12 ASISTENT MEDICAL PR": {
+    "n": 3
+   },
+   "AMBULATORIUL INTEGRAT‐str.Izvorului nr.57 Asistent medical p": {
+    "n": 3
+   },
+   "BLOC DE NASTERI‐str.Clujului nr.50 ASISTENT MEDICAL PRINCIPA": {
+    "n": 3
+   },
+   "BLOC OPERATOR‐str.C.Coposu nr.12 ASISTENT MEDICAL PRINCIPAL ": {
+    "n": 3
+   },
+   "COMPARTIMENT ANESTEZIE ASISTENT MEDICAL (S) ** Gradatia 1 SU": {
+    "n": 3
+   },
+   "COMPARTIMENT CARDIOLOGIE INTERVENTIONALA Asistent medical pr": {
+    "n": 3
+   },
+   "COMPARTIMENT NEUROLOGIE PEDIATRICA Asistent medical principa": {
+    "n": 3
+   },
+   "COMPARTIMENT PREMATURI Asistent medical principal Gradatia 5": {
+    "n": 3
+   },
+   "Laborator de explorari functionale‐Republicii(p.l) Asistent ": {
+    "n": 3
+   },
+   "LABORATOR MEDICINA NUCLEARA‐str.Republicii nr.Asistent medic": {
+    "n": 3
+   },
+   "SECTIA CARDIOLOGIE II Asistent medical principal Gradatia 5 ": {
+    "n": 3
+   },
+   "SECTIA CARDIOLOGIE II ASISTENT MEDICAL PRINCIPAL (S) Gradati": {
+    "n": 3
+   },
+   "SECTIA CLINICA ATI I Asistent medical ** Gradatia 2 POSTLICE": {
+    "n": 3
+   },
+   "SECTIA CLINICA BOLI INFECTIOASE I Asistent medical Gradatia ": {
+    "n": 3
+   },
+   "Sectia Clinica CHIRURGIE GENERALA I Asistent medical princip": {
+    "n": 3
+   },
+   "Sectia Clinica CHIRURGIE GENERALA I Asistent medical Gradati": {
+    "n": 3
+   },
+   "Sectia Clinica CHIRURGIE GENERALA I ASISTENT MEDICAL PRINCIP": {
+    "n": 3
+   },
+   "Sectia Clinica GASTROENTEROLOGIE Asistent medical debutant G": {
+    "n": 3
+   },
+   "Sectia Clinica GASTROENTEROLOGIE ASISTENT MEDICAL DEBUTANT (": {
+    "n": 3
+   },
+   "SECTIA CLINICA PNEUMOLOGIE II ASISTENT MEDICAL PRINCIPAL (S)": {
+    "n": 3
+   },
+   "SERVICIUL ANATOMIE PATOLOGICA‐str.Clujului (p.l) ASISTENT ME": {
+    "n": 3
+   },
+   "Spitalizare de zi‐centrul oncologic Asistent medical Gradati": {
+    "n": 3
+   },
+   "asistent medical anatomie patologica": {
+    "n": 3
+   },
+   "Sectia Hematologie ASISTENT MEDICAL SS - PRINCIPAL S": {
+    "n": 3
+   },
+   "Sectia Clinica Cardiologie II ASISTENT MEDICAL SS - PRINCIPA": {
+    "n": 3
+   },
+   "Sectia Clinica Boli Infectioase ASISTENT MEDICAL PL M": {
+    "n": 3
+   },
+   "Sectia Clinica Boli Infectioase ASISTENT MEDICAL SS - PRINCI": {
+    "n": 3
+   },
+   "Bloc Clinic Operator ASISTENT MEDICAL PL M": {
+    "n": 3
+   },
+   "Bloc Operator Urologie ASISTENT MEDICAL PL - PRINCIPAL M": {
+    "n": 3
+   },
+   "Centrul de Hemodializa ASISTENT MEDICAL SS - PRINCIPAL S": {
+    "n": 3
+   },
+   "Serviciul de Anatomie Patologica ASISTENT MEDICAL PL - PRINC": {
+    "n": 3
+   },
+   "CVASIC ASISTENT MEDICAL PL - PRINCIPAL M": {
+    "n": 3
+   },
+   "CVASIC ASISTENT MEDICAL SS - PRINCIPAL S": {
+    "n": 3
+   },
+   "DISP.POL.MED. SPORTIVA ASISTENT MEDICAL PL - PRINCIPAL M": {
+    "n": 3
+   },
+   "Sectia Clinica Medicina Interna I ASISTENT MEDICAL PL M": {
+    "n": 3
+   },
+   "Sectia Clinic Medicina-Interna II ASISTENT MEDICAL SS - PRIN": {
+    "n": 3
+   },
+   "Laborator angiograf ASISTENT MEDICAL PL - PRINCIPAL M": {
+    "n": 3
+   },
+   "Sectia Oncologie Medicala-Spitalizare Zi ASISTENT MEDICAL PL": {
+    "n": 3
+   },
+   "Sectia Clinica O.R.L. ASISTENT MEDICAL SS S": {
+    "n": 3
+   },
+   "Sectia Clinica Chirurgie Generala I ASISTENT MEDICAL PL M": {
+    "n": 3
+   },
+   "Sectia Clinica Chirurgie Generala I ASISTENT MEDICAL SS S": {
+    "n": 3
+   },
+   "Sectia Clinica Chirurg. Generala II ASISTENT MEDICAL PL M": {
+    "n": 3
+   },
+   "Sectia Clinica Chirurg. Generala II ASISTENT MEDICAL SS - PR": {
+    "n": 3
+   },
+   "Sectia Clinica Neurologie ASISTENT MEDICAL SS - PRINCIPAL S": {
+    "n": 3
+   },
+   "Laborator Analize Medicale ASISTENT MEDICAL PL M": {
+    "n": 3
+   },
+   "ASISTENT MEDICAL PL BAZA": {
+    "n": 3
+   },
+   "SECTIA OBSTETRICA GINECOLOGIE ASISTENT MEDICAL PRINCIPAL S G": {
+    "n": 3
+   },
+   "SECTIA PEDIATRIE - COMP.TERAPIE ACUTA ASISTENT MEDICAL PRINC": {
+    "n": 3
+   },
+   "COMP.BOLI INFECTIOASE ASISTENT MEDICAL PRINCIPAL S Gradatia ": {
+    "n": 3
+   },
+   "COMP.RECUPERARE NEUROLOGICA ASISTENT MEDICAL PRINCIPAL S Gra": {
+    "n": 3
+   },
+   "LABORATOR ANALIZE MEDICALE-LABORATOR HEMATOLOGIE ASISTENT ME": {
+    "n": 3
+   },
+   "SERV.DE PREVENIRE A INFECTIILOR ASOCIATE ASIST.MED ASISTENT ": {
+    "n": 3
+   },
+   "UNITATE PRIMIRE URGENTE ASISTENT MEDICAL DEBUTANT UPU Gradat": {
+    "n": 3
+   },
+   "ASISTENT MEDICAL PR. Cabinet CARDIOLOGIE": {
+    "n": 3
+   },
+   "ASISTENT MEDICAL PR. Cabinet DIABET ZAHARAT,NUTRITIE SI BOLI": {
+    "n": 3
+   },
+   "ASISTENT MEDICAL PR. Cabinet MEDICINA INTERNA": {
+    "n": 3
+   },
+   "ASISTENT MEDICAL PR. COMPARTIMENT RECUPERARE, MED.FIZICA SI ": {
+    "n": 3
+   },
+   "ASISTENT MEDICAL PR. FARMACIA NR.79": {
+    "n": 3
+   },
+   "ASISTENT MEDICAL LAB. RADIOLOGIE SI IMAGISTICA MEDICALA": {
+    "n": 3
+   },
+   "ASISTENT MEDICAL Sectia BOLI INFECTIOASE COPII": {
+    "n": 3
+   },
+   "ASISTENT MEDICAL Sectia CHIRURGIE GENERALA": {
+    "n": 3
+   },
+   "ASISTENT MEDICAL Sectia UROLOGIE": {
+    "n": 3
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL Cabinet Medicina Sportiva": {
+    "n": 3
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL Compartiment Explorari functio": {
+    "n": 3
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL AMBULATORIUL, INTEGRAT CU CABI": {
+    "n": 3
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL Cabinet diabet zaharat, nutrit": {
+    "n": 3
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL RMN - Laborator Radiologie si ": {
+    "n": 3
+   },
+   "ASISTENT MEDICAL PL Sectia Cardiologie": {
+    "n": 3
+   },
+   "ASISTENT MEDICAL PL Sectia Boli infectioase": {
+    "n": 3
+   },
+   "ASISTENT MEDICAL PL Bloc operator": {
+    "n": 3
+   },
+   "ASISTENT MEDICAL PL Sectia Neurologie": {
+    "n": 3
+   },
+   "ASISTENT MEDICAL PRINCIPAL S SPIAAM": {
+    "n": 3
+   },
+   "ASISTENT MEDICAL PRINCIPAL S Bloc operator OG": {
+    "n": 3
+   },
+   "ASISTENT MEDICAL PRINCIPAL S Sterilizare": {
+    "n": 3
+   },
+   "ASISTENT MEDICAL PRINCIPAL S Sectia Cardiologie": {
+    "n": 3
+   },
+   "ASISTENT MEDICAL PRINCIPAL S Serviciul Judetean de Medicina ": {
+    "n": 3
+   },
+   "ASISTENT MEDICAL PRINCIPAL S AMBULATORIUL INTEGRAT CU CABINE": {
+    "n": 3
+   },
+   "ASISTENT MEDICAL PRINCIPAL SUPERIOARE Gradatia": {
+    "n": 3
+   },
+   "ASISTENT MEDICAL PRINCIP. SSD Gradatia 4 Sporurile din anexe": {
+    "n": 3
+   },
+   "Asistent medical": {
+    "n": 3
+   },
+   "Asistent medical S": {
+    "n": 2
+   },
+   "asistent medical PL": {
+    "n": 2
+   },
+   "AMBULATORIUL DE SPECIALITATE PENTRU SPORTIV Asistent medical": {
+    "n": 2
+   },
+   "AMBULATORIUL INTEGRAT‐str.Clujului nr.50 Asistent medical pr": {
+    "n": 2
+   },
+   "AMBULATORIUL INTEGRAT‐str.L.Pasteur nr.26 Asistent medical p": {
+    "n": 2
+   },
+   "AMBULATORIUL INTEGRAT‐str.L.Pasteur nr.26 Asistent medical G": {
+    "n": 2
+   },
+   "BLOC ALIMENTAR Asistent medical principal Gradatia 5 POSTLIC": {
+    "n": 2
+   },
+   "BLOC OPERATOR UROLOGIE‐str.Gh.Doja nr.65 Asistent medical pr": {
+    "n": 2
+   },
+   "BLOC OPERATOR‐str,Gh.Doja nr.65 ASISTENT MEDICAL (S) Gradati": {
+    "n": 2
+   },
+   "BLOC OPERATOR‐str. Clujului nr.50 Asistent medical principal": {
+    "n": 2
+   },
+   "CABINET PLANIFICARE FAMILIALA Asistent medical principal Gra": {
+    "n": 2
+   },
+   "Camera de garda Boli Infectioase Asistent medical principal ": {
+    "n": 2
+   },
+   "Camera de garda Boli Infectioase Asistent medical Gradatia 3": {
+    "n": 2
+   },
+   "Camera de garda Boli Infectioase ASISTENT MEDICAL PRINCIPAL ": {
+    "n": 2
+   },
+   "Camera de garda Psihiatrie ASISTENT MEDICAL PRINCIPAL (S) Gr": {
+    "n": 2
+   },
+   "Centrul de Sanatate Mintala Adulti (CSM) Asistent medical pr": {
+    "n": 2
+   },
+   "Centrul de Sanatate Mintala Copii (CSM) Asistent medical pri": {
+    "n": 2
+   },
+   "COMPARTIMENT ANESTEZIE Asistent medical debutant ** BAZA POS": {
+    "n": 2
+   },
+   "COMPARTIMENT CARDIOLOGIE INTERVENTIONALA Asistent medical Gr": {
+    "n": 2
+   },
+   "Compartiment CHIRURGIE CARDIO‐VASCULARA Asistent medical pri": {
+    "n": 2
+   },
+   "Compartiment CHIRURGIE CARDIO‐VASCULARA Asistent medical Gra": {
+    "n": 2
+   },
+   "Compartiment CHIRURGIE TORACICA Asistent medical principal G": {
+    "n": 2
+   },
+   "Compartiment CHIRURGIE VASCULARA Asistent medical Gradatia 2": {
+    "n": 2
+   },
+   "Compartiment CHIRURGIE VASCULARA Asistent medical debutant G": {
+    "n": 2
+   },
+   "Compartiment Endocrinologie Asistent medical principal Grada": {
+    "n": 2
+   },
+   "COMPARTIMENT PREMATURI ASISTENT MEDICAL PRINCIPAL (S) Gradat": {
+    "n": 2
+   },
+   "Compartiment RADIOTERAPIE Asistent medical Gradatia 2 POSTLI": {
+    "n": 2
+   },
+   "Compartiment UAVCA ASISTENT MEDICAL PRINCIPAL (S) Gradatia 5": {
+    "n": 2
+   },
+   "COMPARTIMENT USTACC Asistent medical principal ** Gradatia 5": {
+    "n": 2
+   },
+   "Dispensar TBC (Str. Alea Strandului nr. 18) ASISTENT MEDICAL": {
+    "n": 2
+   },
+   "LABORATOR DE MICROBIOLOGIE MEDICALA Asistent medical princip": {
+    "n": 2
+   },
+   "Laborator de radiologie si imag.med‐str.Izvorului Asistent m": {
+    "n": 2
+   },
+   "Laborator endoscopie bronsica diagnostica si terap ASISTENT ": {
+    "n": 2
+   },
+   "Laborator radioterapie ‐ str.C. Coposu nr.12 Asistent medica": {
+    "n": 2
+   },
+   "Laborator radioterapie ‐ str.C. Coposu nr.12 ASISTENT MEDICA": {
+    "n": 2
+   },
+   "SECTIA CLINICA ATI I ASISTENT MEDICAL (S) ** Gradatia 2 SUPE": {
+    "n": 2
+   },
+   "SECTIA CLINICA ATI II Asistent medical ** Gradatia 4 POSTLIC": {
+    "n": 2
+   },
+   "SECTIA CLINICA BOLI INFECTIOASE II Asistent medical Gradatia": {
+    "n": 2
+   },
+   "Sectia Clinica CARDIOLOGIE I Asistent medical debutant Grada": {
+    "n": 2
+   },
+   "Sectia Clinica CARDIOLOGIE I ASISTENT MEDICAL (S) Gradatia 1": {
+    "n": 2
+   },
+   "Sectia Clinica GASTROENTEROLOGIE Asistent medical principal ": {
+    "n": 2
+   },
+   "SECTIA CLINICA HEMATOLOGIE Asistent medical Gradatia 2 POSTL": {
+    "n": 2
+   },
+   "Sectia Clinica MEDICINA INTERNA I Asistent medical debutant ": {
+    "n": 2
+   },
+   "SECTIA CLINICA NEFROLOGIE Asistent medical Gradatia 5 POSTLI": {
+    "n": 2
+   },
+   "SECTIA CLINICA NEFROLOGIE ASISTENT MEDICAL (S) Gradatia 2 SU": {
+    "n": 2
+   },
+   "SECTIA CLINICA OBSTETRICA GINECOLOGIE I Asistent medical Gra": {
+    "n": 2
+   },
+   "SECTIA CLINICA OBSTETRICA GINECOLOGIE I Asistent medical deb": {
+    "n": 2
+   },
+   "Sectia Clinica ORTOPEDIE‐TRAUMATOLOGIE I Asistent medical Gr": {
+    "n": 2
+   },
+   "SECTIA CLINICA PEDIATRIE I Asistent medical Gradatia 5 POSTL": {
+    "n": 2
+   },
+   "SECTIA CLINICA PEDIATRIE I Asistent medical debutant Gradati": {
+    "n": 2
+   },
+   "SECTIA CLINICA PEDIATRIE I ASISTENT MEDICAL (S) Gradatia 2 S": {
+    "n": 2
+   },
+   "SECTIA CLINICA PEDIATRIE II Asistent medical Gradatia 5 POST": {
+    "n": 2
+   },
+   "SECTIA CLINICA PNEUMOLOGIE III Asistent medical Gradatia 4 P": {
+    "n": 2
+   },
+   "SECTIA CLINICA PNEUMOLOGIE III ASISTENT MEDICAL PRINCIPAL (S": {
+    "n": 2
+   },
+   "Sectia Clinica UROLOGIE Asistent medical Gradatia 4 POSTLICE": {
+    "n": 2
+   },
+   "SECTIA INGRIJIRI PALEATIVE Asistent medical Gradatia 5 POSTL": {
+    "n": 2
+   },
+   "SERVICIU CENTRAL DE STERILIZARE Asistent medical Gradatia 5 ": {
+    "n": 2
+   },
+   "Spitalizare de zi‐centrul oncologic Asistent medical princip": {
+    "n": 2
+   },
+   "STATIA DE HEMODIALIZA II Asistent medical principal Gradatia": {
+    "n": 2
+   },
+   "UNITATE DE TRANSFUZIE SANGUINA‐str.C.Coposu n ASISTENT MEDIC": {
+    "n": 2
+   },
+   "UNITATE DE TRANSFUZIE SANGUINA‐str.Ghe.Doja n ASISTENT MEDIC": {
+    "n": 2
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 Asistent medical Gradatia 5 POST": {
+    "n": 2
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 ASISTENT MEDICAL DEBUTANT (S BAZ": {
+    "n": 2
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 ASISTENT MEDICAL DEBUTANT (S Gra": {
+    "n": 2
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 Asistent medical ** Gradatia 2 P": {
+    "n": 2
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 Asistent medical ** Gradatia 3 P": {
+    "n": 2
+   },
+   "asistent medical laborator clinic licentiat principal": {
+    "n": 2
+   },
+   "asistent medical licentiat in nutritie si dietetica": {
+    "n": 2
+   },
+   "Asistent medical SUPERIOARE DE SCURTA DURATA ( SSD )": {
+    "n": 2
+   },
+   "Sectia Clinica Dermato-Venerologie ASISTENT MEDICAL SS - PRI": {
+    "n": 2
+   },
+   "Sectia Clinica Neurochirurgie ASISTENT MEDICAL SS S": {
+    "n": 2
+   },
+   "Sectia Clinica Urologie ASISTENT MEDICAL PL M": {
+    "n": 2
+   },
+   "Compartiment Computer Tomograf ASISTENT MEDICAL PL - PRINCIP": {
+    "n": 2
+   },
+   "Ambulatoriu de Specialitate Stomatologie ASISTENT MEDICAL PL": {
+    "n": 2
+   },
+   "Comp. de Prevenire si Control al Infectiilor Nozocomial ASIS": {
+    "n": 2
+   },
+   "Personal Normat ASISTENT MEDICAL PL - PRINCIPAL M": {
+    "n": 2
+   },
+   "Compartiment Nefrologie ASISTENT MEDICAL PL M": {
+    "n": 2
+   },
+   "Sectia Clinica Cardiologie I ASISTENT MEDICAL SS S": {
+    "n": 2
+   },
+   "Compartiment T.I. Coronarieni ASISTENT MEDICAL PL M": {
+    "n": 2
+   },
+   "Laborator angiograf ASISTENT MEDICAL PL M": {
+    "n": 2
+   },
+   "Sectia Clinica Oncologie Medicala ASISTENT MEDICAL SS - PRIN": {
+    "n": 2
+   },
+   "Sectia Clinica Oncologie Medicala ASISTENT MEDICAL SS S": {
+    "n": 2
+   },
+   "Sectia Clinica Gastroenterologie ASISTENT MEDICAL PL M": {
+    "n": 2
+   },
+   "Compartiment Chirurgie Vasculara ASISTENT MEDICAL PL - PRINC": {
+    "n": 2
+   },
+   "Compartiment Chirurgie Vasculara ASISTENT MEDICAL SS - PRINC": {
+    "n": 2
+   },
+   "Serviciul de sterilizare ASISTENT MEDICAL SS - PRINCIPAL S": {
+    "n": 2
+   },
+   "Sectia Clinica Neurologie ASISTENT MEDICAL PL M": {
+    "n": 2
+   },
+   "Sectia Clinica Neurologie ASISTENT MEDICAL SS S": {
+    "n": 2
+   },
+   "Compartiment Arsi ASISTENT MEDICAL PL - PRINCIPAL M": {
+    "n": 2
+   },
+   "Laborator Analize Medicale ASISTENT MEDICAL SS - PRINCIPAL S": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL (PL) (ANAPAT) Legea nr. 153 art. 33": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL LABORATOR PRINCIPAL (PL) Legea nr. 153 art.": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL RADIOLOGIE (PL) Legea nr. 153 art. 33": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL PL Gradatia 1": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL PR S Gradatia 3": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL S Gradatia 1": {
+    "n": 2
+   },
+   "SECTIA MEDICINA INTERNA - COMP.REUMATOLOGIE ASISTENT MEDICAL": {
+    "n": 2
+   },
+   "COMP.CARDIOLOGIE ASISTENT MEDICAL PRINCIPAL Gradatia 4": {
+    "n": 2
+   },
+   "COMP.CARDIOLOGIE ASISTENT MEDICAL PRINCIPAL S Gradatia 5": {
+    "n": 2
+   },
+   "SECTIA ONCOLOGIE MEDICALA ASISTENT MEDICAL PRINCIPAL S Grada": {
+    "n": 2
+   },
+   "SECTIA ONCOLOGIE MEDICALA-COMPARTIMENT HEMATOLOGIE ASISTENT ": {
+    "n": 2
+   },
+   "COMP.CHIRURGIE PLASTICA MICROCHIR ASISTENT MEDICAL PRINCIPAL": {
+    "n": 2
+   },
+   "COMP. CHIRURGIE VASCULARA ASISTENT MEDICAL PRINCIPAL Gradati": {
+    "n": 2
+   },
+   "COMP.NEONATOLOGIE ASISTENT MEDICAL PRINCIPAL Gradatia 5": {
+    "n": 2
+   },
+   "COMP.NEONATOLOGIE ASISTENT MEDICAL PRINCIPAL Gradatia 3": {
+    "n": 2
+   },
+   "COMP.OFTALMOLOGIE ASISTENT MEDICAL PRINCIPAL Gradatia 5": {
+    "n": 2
+   },
+   "COMP.OFTALMOLOGIE ASISTENT MEDICAL PRINCIPAL Gradatia 2": {
+    "n": 2
+   },
+   "SECTIA ORTOPEDIE SI TRAUMATOLOGIE ASISTENT MEDICAL Gradatia ": {
+    "n": 2
+   },
+   "SECTIA A.T.I ASISTENT MEDICAL A.T.I. Gradatia 5": {
+    "n": 2
+   },
+   "SECTIA NEUROLOGIE ASISTENT MEDICAL PRINCIPAL Gradatia 4": {
+    "n": 2
+   },
+   "SECTIA NEUROLOGIE ASISTENT MEDICAL Gradatia 3": {
+    "n": 2
+   },
+   "FARMACIA SPITALULUI ASISTENT MEDICAL Gradatia 5": {
+    "n": 2
+   },
+   "HISTOPATOLOGIE ASISTENT MEDICAL PRINCIPAL A.P. Gradatia 5": {
+    "n": 2
+   },
+   "LABORATOR DE GENETICA SI DIAGNOSTIC MOLECULAR ASISTENT MEDIC": {
+    "n": 2
+   },
+   "CENTRUL DE SANATATE MULTIFUNCTIONAL OCNA MURES ASISTENT MEDI": {
+    "n": 2
+   },
+   "CAB.ORTOPEDIE TRAUMA ASISTENT MEDICAL PRINCIPAL Gradatia 5": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL PR. Cabinet ALERGOLOGIE SI IMUNOLOGIE CLINI": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL PR. Cabinet CHIRURGIE GENERALA": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL PR. Cabinet CHIRURGIE SI ORTOPEDIE PEDIATRI": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL PR. Cabinet DERMATO-VENEROLOGIE - copii": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL PR. Cabinet MEDICINA MUNCII": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL PR. Cabinet NEUROLOGIE": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL PR. Cabinet OBSTETRICA-GINECOLOGIE": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL PR. Cabinet OFTALMOLOGIE": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL PR. Cabinet ONCOLOGIE MEDICALA": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL PR. Cabinet PEDIATRIE": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL PR. Cabinet PLANIFICARE FAMILIALA": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL LAB. RADIOTERAPIE": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL PR. FISIER": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL LAB. RECUPERARE,MEDICINA FIZICA SI BALNEOLO": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL Sectia GASTROENTEROLOGIE": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL Sectia MEDICINA INTERNA": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL Sectia NEONATOLOGIE": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL Sectia OBSTETRICA-GINECOLOGIE I": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL Sectia PSIHIATRIE": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL Dietetica": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL Dispensar TBC Pogoanele": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL Laborator Bk": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL S Serviciul Judetean de Medicina Legala": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL S Sectia Neonatologie": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL S Sectia Chirurgie generala": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL S Sectia Obstretica Ginecologie": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL PL Sectia Chirurgie generala": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL PL AMBULATORIUL INTEGRAT CU CABINETE IN SPE": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL PL Sterilizare": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL PL Sectia Urologie": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL PL Sectia Pneumologie": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL PRINCIPAL S Compartiment Explorari function": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL PRINCIPAL S Sectia Gastroenterologie": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL PRINCIPAL S Serviciul Anatomie patologica": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL PRINCIPAL S Bloc operator": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL PRINCIPAL S Sterilizare Maternitate": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL PRINCIPAL S Dispensar TBC": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL PRINCIPAL S Compartiment Oftalmologie": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL PRINCIPAL STUDII DE SCURTA D Gradatia": {
+    "n": 2
+   },
+   "SORA MEDICALA PRINCIPALA MEDII Gradatia": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL (UPU) POST LICEALE BAZA": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL DEB. (S) Gradatia 0 Sporurile din anexele 1": {
+    "n": 2
+   },
+   "ASISTENT MEDICAL S Gradatia 1 Sporurile din anexele 1, 2,3,5": {
+    "n": 2
+   },
+   "Asistent medical principal S": {
+    "n": 1
+   },
+   "Asistent medical debutant S": {
+    "n": 1
+   },
+   "Asistent medical principal SSD": {
+    "n": 1
+   },
+   "Asistent medical debutant SSD": {
+    "n": 1
+   },
+   "Asistent medical principal *2) PL": {
+    "n": 1
+   },
+   "Asistent medical *2) PL": {
+    "n": 1
+   },
+   "Asistent medical debutant *2) PL": {
+    "n": 1
+   },
+   "Asistent medical principal *2) M": {
+    "n": 1
+   },
+   "Asistent medical *2) M": {
+    "n": 1
+   },
+   "Asistent medical debutant *2) M": {
+    "n": 1
+   },
+   "Sora medicala principala *4) M": {
+    "n": 1
+   },
+   "Sora medicala *4) M": {
+    "n": 1
+   },
+   "Sora medicala debutant *4) M": {
+    "n": 1
+   },
+   "asistent medical S principal": {
+    "n": 1
+   },
+   "asistent medical S": {
+    "n": 1
+   },
+   "asistent medical SSD principal": {
+    "n": 1
+   },
+   "asistent medical PL principal coordon": {
+    "n": 1
+   },
+   "asistent medical PL principal": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL principal S": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL S": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL debutant S": {
+    "n": 1
+   },
+   "II Asistent medical principal PL": {
+    "n": 1
+   },
+   "Asistent medical debutant PL I": {
+    "n": 1
+   },
+   "247 Asistent medical lic. pr. TIGradatia 5 Contractual": {
+    "n": 1
+   },
+   "248 Asistent medical lic. pr. TIGradatia 5 Contractual": {
+    "n": 1
+   },
+   "249 Asistent medical lic. pr. TIGradatia 5 Contractual": {
+    "n": 1
+   },
+   "250 Asistent medical lic. pr. TIGradatia 2 Contractual": {
+    "n": 1
+   },
+   "251 Asistent medical lic. pr. TIGradatia 5 Contractual": {
+    "n": 1
+   },
+   "252 Asistent medical licentiat pr.Gradatia 2 Contractual": {
+    "n": 1
+   },
+   "253 Asistent medical licentiat pr.Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "254 Asistent medical licentiat pr.Gradatia 4 Contractual": {
+    "n": 1
+   },
+   "255 Asistent medical licentiat pr.Gradatia 4 Contractual": {
+    "n": 1
+   },
+   "256 Asistent medical licentiat pr.Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "257 Asistent medical licentiat pr.Gradatia 4 Contractual": {
+    "n": 1
+   },
+   "258 Asistent medical licentiat pr.Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "259 Asistent medical licentiat pr.Gradatia 2 Contractual": {
+    "n": 1
+   },
+   "260 Asistent medical licentiat pr.Gradatia 4 Contractual": {
+    "n": 1
+   },
+   "261 Asistent medical licentiat pr.Gradatia 4 Contractual": {
+    "n": 1
+   },
+   "262 Asistent medical licentiat pr.Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "263 Asistent medical licentiat pr.Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "264 Asistent medical licentiat pr.Gradatia 4 Contractual": {
+    "n": 1
+   },
+   "265 Asistent medical licentiat pr.Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "266 Asistent medical licentiat pr.Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "267 Asistent medical licentiat pr.Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "AMBULATORIUL INTEGRAT‐str.C.Coposu nr.12 ASISTENT MEDICAL DE": {
+    "n": 1
+   },
+   "AMBULATORIUL INTEGRAT‐str.Clujului nr.50 Asistent medical Gr": {
+    "n": 1
+   },
+   "AMBULATORIUL INTEGRAT‐str.Clujului nr.50 ASISTENT MEDICAL (S": {
+    "n": 1
+   },
+   "BIROU INTERNARI ‐ EXTERNARI, STR.GH.DOJA Asistent medical pr": {
+    "n": 1
+   },
+   "BIROU INTERNARI ‐ EXTERNARI, STR.IZVORULUI ASISTENT MEDICAL ": {
+    "n": 1
+   },
+   "BLOC ALIMENTAR ASISTENT MEDICAL (S) Gradatia 1 SUPERIOARE Pe": {
+    "n": 1
+   },
+   "BLOC ALIMENTAR ASISTENT MEDICAL PRINCIPAL (S) Gradatia 5 SUP": {
+    "n": 1
+   },
+   "BLOC OPERATOR UROLOGIE‐str.Gh.Doja nr.65 Asistent medical Gr": {
+    "n": 1
+   },
+   "BLOC OPERATOR UROLOGIE‐str.Gh.Doja nr.65 ASISTENT MEDICAL DE": {
+    "n": 1
+   },
+   "BLOC OPERATOR‐str,Gh.Doja nr.65 Asistent medical Gradatia 3 ": {
+    "n": 1
+   },
+   "BLOC OPERATOR‐str,Gh.Doja nr.65 Asistent medical Gradatia 4 ": {
+    "n": 1
+   },
+   "BLOC OPERATOR‐str,Gh.Doja nr.65 Asistent medical Gradatia 2 ": {
+    "n": 1
+   },
+   "BLOC OPERATOR‐str,Gh.Doja nr.65 ASISTENT MEDICAL DEBUTANT (S": {
+    "n": 1
+   },
+   "BLOC OPERATOR‐str.C.Coposu nr.12 Asistent medical Gradatia 1": {
+    "n": 1
+   },
+   "Bucatarie de lapte/biberonerie/ditetica‐C.Coposu Asistent me": {
+    "n": 1
+   },
+   "Bucatarie de lapte/biberonerie/ditetica‐C.Coposu ASISTENT ME": {
+    "n": 1
+   },
+   "Bucatarie de lapte/biberonerie/ditetica‐Clujului Asistent me": {
+    "n": 1
+   },
+   "Camera de garda Boli Infectioase ASISTENT MEDICAL (S) Gradat": {
+    "n": 1
+   },
+   "Camera de garda Boli Infectioase ASISTENT MEDICAL COORDONATO": {
+    "n": 1
+   },
+   "CAMERA DE GARDA OBSTETRICA‐GINECOLOGIE‐St. ASISTENT MEDICAL ": {
+    "n": 1
+   },
+   "Camera de garda Psihiatrie Asistent medical Gradatia 2 POSTL": {
+    "n": 1
+   },
+   "Camera de garda Psihiatrie ASISTENT MEDICAL COORDONATOGradat": {
+    "n": 1
+   },
+   "Centrul de Sanatate Mintala Adulti (CSM) Asistent medical Gr": {
+    "n": 1
+   },
+   "Centrul de Sanatate Mintala Adulti (CSM) ASISTENT MEDICAL PR": {
+    "n": 1
+   },
+   "Centrul de Sanatate Mintala Copii (CSM) Asistent medical Gra": {
+    "n": 1
+   },
+   "Centrul de Sanatate Mintala Copii (CSM) Asistent medical deb": {
+    "n": 1
+   },
+   "COMPARTIMENT ANESTEZIE Asistent medical debutant Gradatia 3 ": {
+    "n": 1
+   },
+   "COMPARTIMENT ANESTEZIE Asistent medical debutant Gradatia 2 ": {
+    "n": 1
+   },
+   "COMPARTIMENT ANESTEZIE ASISTENT MEDICAL (S) ** Gradatia 2 SU": {
+    "n": 1
+   },
+   "COMPARTIMENT ANESTEZIE ASISTENT MEDICAL DEBUTANT (S BAZA SUP": {
+    "n": 1
+   },
+   "COMPARTIMENT ANESTEZIE Asistent medical ** Gradatia 3 POSTLI": {
+    "n": 1
+   },
+   "Compartiment ARSI Asistent medical principal Gradatia 3 POST": {
+    "n": 1
+   },
+   "Compartiment ARSI Asistent medical principal Gradatia 5 POST": {
+    "n": 1
+   },
+   "Compartiment ARSI ASISTENT MEDICAL (S) Gradatia 1 SUPERIOARE": {
+    "n": 1
+   },
+   "COMPARTIMENT ASISTENTA SOCIALA Asistent medical principal Gr": {
+    "n": 1
+   },
+   "COMPARTIMENT CARDIOLOGIE INTERVENTIONALA ASISTENT MEDICAL PR": {
+    "n": 1
+   },
+   "Compartiment CHIRURGIE CARDIO‐VASCULARA ASISTENT MEDICAL (S)": {
+    "n": 1
+   },
+   "Compartiment CHIRURGIE TORACICA Asistent medical Gradatia 3 ": {
+    "n": 1
+   },
+   "Compartiment CHIRURGIE TORACICA ASISTENT MEDICAL DEBUTANT (S": {
+    "n": 1
+   },
+   "Compartiment CHIRURGIE VASCULARA Asistent medical principal ": {
+    "n": 1
+   },
+   "Compartiment CHIRURGIE VASCULARA Asistent medical Gradatia 4": {
+    "n": 1
+   },
+   "Compartiment CHIRURGIE VASCULARA ASISTENT MEDICAL (S) Gradat": {
+    "n": 1
+   },
+   "Compartiment Clinic OFTALMOLOGIE ASISTENT MEDICAL PRINCIPAL ": {
+    "n": 1
+   },
+   "Compartiment Endocrinologie ASISTENT MEDICAL PRINCIPAL (S) G": {
+    "n": 1
+   },
+   "Compartiment endoscopie digestiva‐str.C.Coposu 12 Asistent m": {
+    "n": 1
+   },
+   "COMPARTIMENT NEFROLOGIE Asistent medical BAZA POSTLICEALE Pe": {
+    "n": 1
+   },
+   "Compartiment Neurologie II Asistent medical Gradatia 2 POSTL": {
+    "n": 1
+   },
+   "Compartiment Neurologie II ASISTENT MEDICAL PRINCIPAL (S) Gr": {
+    "n": 1
+   },
+   "COMPARTIMENT NEUROLOGIE PEDIATRICA Asistent medical Gradatia": {
+    "n": 1
+   },
+   "COMPARTIMENT NEUROLOGIE PEDIATRICA ASISTENT MEDICAL COORDONA": {
+    "n": 1
+   },
+   "Compartiment ORL adulti Asistent medical debutant Gradatia 5": {
+    "n": 1
+   },
+   "Compartiment ORL adulti Asistent medical debutant Gradatia 1": {
+    "n": 1
+   },
+   "Compartiment ORL adulti ASISTENT MEDICAL PRINCIPAL (S) Grada": {
+    "n": 1
+   },
+   "COMPARTIMENT PREMATURI Asistent medical principal Gradatia 4": {
+    "n": 1
+   },
+   "COMPARTIMENT PREMATURI Asistent medical principal Gradatia 3": {
+    "n": 1
+   },
+   "COMPARTIMENT PREMATURI Asistent medical debutant Gradatia 3 ": {
+    "n": 1
+   },
+   "Compartiment RADIOTERAPIE ASISTENT MEDICAL (S) Gradatia 2 SU": {
+    "n": 1
+   },
+   "Compartiment RADIOTERAPIE ASISTENT MEDICAL PRINCIPAL (S) Gra": {
+    "n": 1
+   },
+   "Compartiment Reumatologie Asistent medical debutant Gradatia": {
+    "n": 1
+   },
+   "Compartiment TBC adulti ASISTENT MEDICAL PRINCIPAL (S) Grada": {
+    "n": 1
+   },
+   "Compartiment TBC adulti ASISTENT MEDICAL COORDONATOGradatia ": {
+    "n": 1
+   },
+   "Compartiment TBC copii ASISTENT MEDICAL PRINCIPAL (S) Gradat": {
+    "n": 1
+   },
+   "Compartiment TBC copii ASISTENT MEDICAL COORDONATOGradatia 5": {
+    "n": 1
+   },
+   "Compartiment Terapie acuta pneumologie ASISTENT MEDICAL PRIN": {
+    "n": 1
+   },
+   "Compartiment UAVCA Asistent medical Gradatia 2 POSTLICEALE P": {
+    "n": 1
+   },
+   "Compartiment UAVCA Asistent medical debutant Gradatia 2 POST": {
+    "n": 1
+   },
+   "COMPARTIMENT USTACC ASISTENT MEDICAL (S) ** Gradatia 5 SUPER": {
+    "n": 1
+   },
+   "COMPARTIMENT USTACC ASISTENT MEDICAL (S) ** Gradatia 2 SUPER": {
+    "n": 1
+   },
+   "Laborator de explorari functionale‐C.Coposu (p.l) ASISTENT M": {
+    "n": 1
+   },
+   "Laborator de explorari functionale‐L.Pasteur (p.l) Asistent ": {
+    "n": 1
+   },
+   "Laborator de radiologie si imag.med‐str.L Pasteur Asistent m": {
+    "n": 1
+   },
+   "Laborator endoscopie bronsica diagnostica si terap Asistent ": {
+    "n": 1
+   },
+   "LABORATOR MEDICINA NUCLEARA‐str.Republicii nr.ASISTENT MEDIC": {
+    "n": 1
+   },
+   "Laborator recup,medicina fizica si balne‐C.Coposu Asistent m": {
+    "n": 1
+   },
+   "Laborator recup,medicina fizica si balne‐C.Coposu ASISTENT M": {
+    "n": 1
+   },
+   "Laborator recup,medicina fizica si balne‐L.Pasteur Sora medi": {
+    "n": 1
+   },
+   "SECTIA CARDIOLOGIE II Asistent medical principal Gradatia 4 ": {
+    "n": 1
+   },
+   "SECTIA CARDIOLOGIE II Asistent medical Gradatia 2 POSTLICEAL": {
+    "n": 1
+   },
+   "SECTIA CARDIOLOGIE II ASISTENT MEDICAL DEBUTANT (S BAZA SUPE": {
+    "n": 1
+   },
+   "SECTIA CLINICA ATI III ASISTENT MEDICAL DEBUTANT (S Gradatia": {
+    "n": 1
+   },
+   "SECTIA CLINICA ATI I Asistent medical Gradatia 5 POSTLICEALE": {
+    "n": 1
+   },
+   "SECTIA CLINICA ATI I Asistent medical ** Gradatia 4 POSTLICE": {
+    "n": 1
+   },
+   "SECTIA CLINICA ATI I Asistent medical ** Gradatia 5 POSTLICE": {
+    "n": 1
+   },
+   "SECTIA CLINICA ATI I Asistent medical ** Gradatia 1 POSTLICE": {
+    "n": 1
+   },
+   "SECTIA CLINICA ATI I Asistent medical ** Gradatia 3 POSTLICE": {
+    "n": 1
+   },
+   "SECTIA CLINICA ATI II Asistent medical ** Gradatia 3 POSTLIC": {
+    "n": 1
+   },
+   "SECTIA CLINICA ATI II Asistent medical debutant ** Gradatia ": {
+    "n": 1
+   },
+   "SECTIA CLINICA BOLI INFECTIOASE I ASISTENT MEDICAL (S) Grada": {
+    "n": 1
+   },
+   "SECTIA CLINICA BOLI INFECTIOASE II ASISTENT MEDICAL DEBUTANT": {
+    "n": 1
+   },
+   "SECTIA CLINICA BOLI INFECTIOASE II ASISTENT MEDICAL (S) BAZA": {
+    "n": 1
+   },
+   "Sectia Clinica CARDIOLOGIE I Asistent medical Gradatia 2 POS": {
+    "n": 1
+   },
+   "Sectia Clinica CHIRURGIE GENERALA I Asistent medical debutan": {
+    "n": 1
+   },
+   "Sectia Clinica CHIRURGIE GENERALA I ASISTENT MEDICAL DEBUTAN": {
+    "n": 1
+   },
+   "Sectia Clinica CHIRURGIE GENERALA II Asistent medical Gradat": {
+    "n": 1
+   },
+   "Sectia Clinica CHIRURGIE GENERALA II Asistent medical debuta": {
+    "n": 1
+   },
+   "Sectia Clinica CHIRURGIE GENERALA II ASISTENT MEDICAL DEBUTA": {
+    "n": 1
+   },
+   "Sectia Clinica CHIRURGIE GENERALA II ASISTENT MEDICAL PRINCI": {
+    "n": 1
+   },
+   "Sectia Clinica DERMATOVENEROLOGIE ASISTENT MEDICAL DEBUTANT ": {
+    "n": 1
+   },
+   "Sectia Clinica GASTROENTEROLOGIE Asistent medical Gradatia 3": {
+    "n": 1
+   },
+   "Sectia Clinica GASTROENTEROLOGIE ASISTENT MEDICAL (S) Gradat": {
+    "n": 1
+   },
+   "Sectia Clinica GASTROENTEROLOGIE ASISTENT MEDICAL PRINCIPAL ": {
+    "n": 1
+   },
+   "SECTIA CLINICA HEMATOLOGIE Asistent medical Gradatia 4 POSTL": {
+    "n": 1
+   },
+   "SECTIA CLINICA HEMATOLOGIE ASISTENT MEDICAL (S) Gradatia 2 S": {
+    "n": 1
+   },
+   "Sectia Clinica MEDICINA INTERNA I Asistent medical Gradatia ": {
+    "n": 1
+   },
+   "Sectia Clinica MEDICINA INTERNA I ASISTENT MEDICAL (S) Grada": {
+    "n": 1
+   },
+   "SECTIA CLINICA MEDICINA INTERNA I Asistent medical Gradatia ": {
+    "n": 1
+   },
+   "SECTIA CLINICA MEDICINA INTERNA I Asistent medical debutant ": {
+    "n": 1
+   },
+   "Sectia Clinica MEDICINA INTERNA III Asistent medical Gradati": {
+    "n": 1
+   },
+   "Sectia Clinica MEDICINA INTERNA III Asistent medical debutan": {
+    "n": 1
+   },
+   "SECTIA CLINICA NEFROLOGIE Asistent medical Gradatia 4 POSTLI": {
+    "n": 1
+   },
+   "SECTIA CLINICA NEONATOLOGIE Asistent medical Gradatia 2 POST": {
+    "n": 1
+   },
+   "SECTIA CLINICA NEONATOLOGIE Asistent medical debutant Gradat": {
+    "n": 1
+   },
+   "SECTIA CLINICA NEONATOLOGIE ASISTENT MEDICAL (S) Gradatia 1 ": {
+    "n": 1
+   },
+   "SECTIA CLINICA NEONATOLOGIE ASISTENT MEDICAL PRINCIPAL (S) G": {
+    "n": 1
+   },
+   "Sectia Clinica NEUROLOGIE I Asistent medical Gradatia 5 POST": {
+    "n": 1
+   },
+   "Sectia Clinica NEUROLOGIE I Asistent medical Gradatia 3 POST": {
+    "n": 1
+   },
+   "SECTIA CLINICA OBSTETRICA GINECOLOGIE I ASISTENT MEDICAL DEB": {
+    "n": 1
+   },
+   "SECTIA CLINICA ONCOLOGIE MEDICALA Asistent medical Gradatia ": {
+    "n": 1
+   },
+   "SECTIA CLINICA ONCOLOGIE MEDICALA Asistent medical debutant ": {
+    "n": 1
+   },
+   "Sectia Clinica ORTOPEDIE‐TRAUMATOLOGIE I ASISTENT MEDICAL DE": {
+    "n": 1
+   },
+   "Sectia Clinica ORTOPEDIE‐TRAUMATOLOGIE II Asistent medical G": {
+    "n": 1
+   },
+   "Sectia Clinica ORTOPEDIE‐TRAUMATOLOGIE II Asistent medical d": {
+    "n": 1
+   },
+   "Sectia Clinica ORTOPEDIE‐TRAUMATOLOGIE II ASISTENT MEDICAL D": {
+    "n": 1
+   },
+   "Sectia Clinica ORTOPEDIE‐TRAUMATOLOGIE II ASISTENT MEDICAL P": {
+    "n": 1
+   },
+   "SECTIA CLINICA PEDIATRIE I ASISTENT MEDICAL DEBUTANT (S BAZA": {
+    "n": 1
+   },
+   "SECTIA CLINICA PEDIATRIE I ASISTENT MEDICAL PRINCIPAL (S) Gr": {
+    "n": 1
+   },
+   "SECTIA CLINICA PEDIATRIE III ASISTENT MEDICAL (S) Gradatia 5": {
+    "n": 1
+   },
+   "Sectia Clinica PNEUMOLOGIE I Asistent medical Gradatia 3 POS": {
+    "n": 1
+   },
+   "Sectia Clinica PNEUMOLOGIE I Asistent medical Gradatia 1 POS": {
+    "n": 1
+   },
+   "Sectia Clinica PNEUMOLOGIE I ASISTENT MEDICAL PRINCIPAL (S) ": {
+    "n": 1
+   },
+   "SECTIA CLINICA PNEUMOLOGIE II Asistent medical Gradatia 5 PO": {
+    "n": 1
+   },
+   "SECTIA CLINICA PNEUMOLOGIE III Asistent medical Gradatia 3 P": {
+    "n": 1
+   },
+   "SECTIA CLINICA PNEUMOLOGIE III Asistent medical Gradatia 5 P": {
+    "n": 1
+   },
+   "SECTIA CLINICA PNEUMOLOGIE III Asistent medical Gradatia 2 P": {
+    "n": 1
+   },
+   "SECTIA CLINICA PSIHIATRIE I Asistent medical Gradatia 4 POST": {
+    "n": 1
+   },
+   "SECTIA CLINICA PSIHIATRIE II Asistent medical Gradatia 5 POS": {
+    "n": 1
+   },
+   "SECTIA CLINICA PSIHIATRIE II Asistent medical Gradatia 2 POS": {
+    "n": 1
+   },
+   "SECTIA CLINICA PSIHIATRIE III Asistent medical Gradatia 4 PO": {
+    "n": 1
+   },
+   "Sectia Clinica UROLOGIE Asistent medical debutant Gradatia 2": {
+    "n": 1
+   },
+   "Sectia Clinica UROLOGIE Asistent medical debutant Gradatia 3": {
+    "n": 1
+   },
+   "SECTIA INGRIJIRI PALEATIVE Asistent medical Gradatia 1 POSTL": {
+    "n": 1
+   },
+   "SECTIA INGRIJIRI PALEATIVE Asistent medical Gradatia 2 POSTL": {
+    "n": 1
+   },
+   "SECTIA INGRIJIRI PALEATIVE Asistent medical Gradatia 3 POSTL": {
+    "n": 1
+   },
+   "SERVICIU CENTRAL DE STERILIZARE Asistent medical Gradatia 2 ": {
+    "n": 1
+   },
+   "SERVICIU CENTRAL DE STERILIZARE Asistent medical debutant Gr": {
+    "n": 1
+   },
+   "SERVICIUL ANATOMIE PATOLOGICA‐str.Clujului (p.l) Asistent me": {
+    "n": 1
+   },
+   "SERVICIUL DE ANATOMIE PATOLOGICA‐str.Gh.Doja ASISTENT MEDICA": {
+    "n": 1
+   },
+   "SERVICIUL DE EVALUARE SI STATISTICA MEDICALA Asistent medica": {
+    "n": 1
+   },
+   "Spitalizare de zi‐centrul oncologic ASISTENT MEDICAL COORDON": {
+    "n": 1
+   },
+   "Spitalizare de zi‐str.C.Coposu Asistent medical Gradatia 4 P": {
+    "n": 1
+   },
+   "STATIA DE HEMODIALIZA I ASISTENT MEDICAL (S) Gradatia 2 SUPE": {
+    "n": 1
+   },
+   "STATIA DE HEMODIALIZA I ASISTENT MEDICAL PRINCIPAL (S) Grada": {
+    "n": 1
+   },
+   "STATIA DE HEMODIALIZA II Asistent medical Gradatia 2 POSTLIC": {
+    "n": 1
+   },
+   "STATIA DE HEMODIALIZA II ASISTENT MEDICAL (S) Gradatia 2 SUP": {
+    "n": 1
+   },
+   "UNITATE DE TRANSFUZIE SANGUINA‐str.Clujului nr.5 ASISTENT ME": {
+    "n": 1
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 Asistent medical principal Grada": {
+    "n": 1
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 Asistent medical BAZA POSTLICEAL": {
+    "n": 1
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 Asistent medical Gradatia 3 POST": {
+    "n": 1
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 Asistent medical Gradatia 2 POST": {
+    "n": 1
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 ASISTENT MEDICAL (S) Gradatia 2 ": {
+    "n": 1
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 ASISTENT MEDICAL (S) BAZA SUPERI": {
+    "n": 1
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 Asistent medical ** Gradatia 5 P": {
+    "n": 1
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 Asistent medical ** BAZA POSTLIC": {
+    "n": 1
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 Asistent medical ** Gradatia 1 P": {
+    "n": 1
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 Asistent medical ** Gradatia 4 P": {
+    "n": 1
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 Asistent medical debutant ** Gra": {
+    "n": 1
+   },
+   "asistent medical laborator clinic licentiat": {
+    "n": 1
+   },
+   "asistent medical labrorator clinic licentiat anatomie patolo": {
+    "n": 1
+   },
+   "asistent medical licentiat in nutritie si dietetica pr.coodo": {
+    "n": 1
+   },
+   "asistent medical principal cu gestiune": {
+    "n": 1
+   },
+   "asistent medical specializat principal": {
+    "n": 1
+   },
+   "Asistent medical MEDII ( M )": {
+    "n": 1
+   },
+   "Sora medicala MEDII ( M )": {
+    "n": 1
+   },
+   "Sectia Hematologie ASISTENT MEDICAL SS S": {
+    "n": 1
+   },
+   "Sectia Clinica Cardiologie II ASISTENT MEDICAL PL - DEBUTANT": {
+    "n": 1
+   },
+   "Sectia A.T.I. Obstetrica-Ginecologie ASISTENT MEDICAL SS S": {
+    "n": 1
+   },
+   "Unitatea de Transfuzii Sanguine ASISTENT MEDICAL SS - PRINCI": {
+    "n": 1
+   },
+   "Sectia Clinica Dermato-Venerologie ASISTENT MEDICAL SS S": {
+    "n": 1
+   },
+   "Compartiment Clinic Oftalmologie ASISTENT MEDICAL SS - PRINC": {
+    "n": 1
+   },
+   "Sectia Clinica Urologie ASISTENT MEDICAL SS - PRINCIPAL S": {
+    "n": 1
+   },
+   "Sectia Clinica Urologie ASISTENT MEDICAL SS S": {
+    "n": 1
+   },
+   "Compartiment Clinic Endocrinologie ASISTENT MEDICAL PL M": {
+    "n": 1
+   },
+   "Compartiment Clinic Endocrinologie ASISTENT MEDICAL SS - PRI": {
+    "n": 1
+   },
+   "Centrul de Hemodializa ASISTENT MEDICAL PL M": {
+    "n": 1
+   },
+   "Laborator Medicina Nucleara ASISTENT MEDICAL PL - PRINCIPAL ": {
+    "n": 1
+   },
+   "Laborator Explorari Functionale ASISTENT MEDICAL PL - PRINCI": {
+    "n": 1
+   },
+   "Laborator Explorari Functionale ASISTENT MEDICAL SS - PRINCI": {
+    "n": 1
+   },
+   "Serviciul de Anatomie Patologica ASISTENT MEDICAL PL M": {
+    "n": 1
+   },
+   "Serviciul de Anatomie Patologica ASISTENT MEDICAL SS S": {
+    "n": 1
+   },
+   "Ambulatoriu de Specialitate Stomatologie ASISTENT MEDICAL SS": {
+    "n": 1
+   },
+   "Personal Normat ASISTENT MEDICAL SS - PRINCIPAL S": {
+    "n": 1
+   },
+   "Sectia Clinica Medicina Interna I ASISTENT MEDICAL SS S": {
+    "n": 1
+   },
+   "Compartiment Nefrologie ASISTENT MEDICAL SS S": {
+    "n": 1
+   },
+   "Sectia Clinic Medicina-Interna II ASISTENT MEDICAL PL M": {
+    "n": 1
+   },
+   "Sectia Clinic Medicina-Interna II ASISTENT MEDICAL PL - DEBU": {
+    "n": 1
+   },
+   "Compartiment T.I. Coronarieni ASISTENT MEDICAL SS - PRINCIPA": {
+    "n": 1
+   },
+   "Compartiment T.I. Coronarieni ASISTENT MEDICAL SS S": {
+    "n": 1
+   },
+   "Laborator angiograf ASISTENT MEDICAL SS - PRINCIPAL S": {
+    "n": 1
+   },
+   "Compartiment T.I. Neonatologie ASISTENT MEDICAL PL M": {
+    "n": 1
+   },
+   "Sectia Clinica Gastroenterologie ASISTENT MEDICAL SS - PRINC": {
+    "n": 1
+   },
+   "Sectia Clinica O.R.L. ASISTENT MEDICAL SS - PRINCIPAL S": {
+    "n": 1
+   },
+   "Sectia Clinica Chirurgie Generala I ASISTENT MEDICAL SS - PR": {
+    "n": 1
+   },
+   "Compartiment Chirurg.Toracica si Esofagiana ASISTENT MEDICAL": {
+    "n": 1
+   },
+   "Sectia Clinica Chirurg. Generala II ASISTENT MEDICAL PL - DE": {
+    "n": 1
+   },
+   "Serviciul de sterilizare SORA MEDICALA - PRINCIPAL M": {
+    "n": 1
+   },
+   "Sectia Clinica A.T.I. ASISTENT MEDICAL PL - DEBUTANT M": {
+    "n": 1
+   },
+   "Sectia Clinica Neurologie ASISTENT MEDICAL M M": {
+    "n": 1
+   },
+   "Compartiment Arsi ASISTENT MEDICAL PL M": {
+    "n": 1
+   },
+   "Unitate Primire Urgente(UPU)-SMURD ASISTENT MEDICAL PL - DEB": {
+    "n": 1
+   },
+   "Unitate Primire Urgente(UPU)-SMURD ASISTENT MEDICAL M M": {
+    "n": 1
+   },
+   "Laborator Analize Medicale ASISTENT MEDICAL SS S": {
+    "n": 1
+   },
+   "Ambulatoriu integrat - ALTII ASISTENT MEDICAL PL - DEBUTANT ": {
+    "n": 1
+   },
+   "Ambulatoriu integrat - ALTII ASISTENT MEDICAL SS - PRINCIPAL": {
+    "n": 1
+   },
+   "Ambulatoriu integrat - ALTII ASISTENT MEDICAL SS S": {
+    "n": 1
+   },
+   "Cabinet de Planificare Familiala-Asistente ASISTENT MEDICAL ": {
+    "n": 1
+   },
+   "Cab. Ambulator Oncologie ASISTENT MEDICAL PL - PRINCIPAL M": {
+    "n": 1
+   },
+   "Cab. Ambulator Oncologie ASISTENT MEDICAL SS - PRINCIPAL S": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL RADIOLOGIE PRINCIPAL (PL) Legea nr. 153 art": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL PRINCIPAL (S) (ANAPAT) Legea nr. 153 art. 3": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL PL DEB BAZA": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL PL DEB Gradatia 2": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL PL DEB Gradatia 3": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL PL DEB Gradatia 4": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL S Gradatia 3": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL S Gradatia 5": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL S DEB BAZA": {
+    "n": 1
+   },
+   "SECTIA MEDICINA INTERNA ASISTENT MEDICAL Gradatia 4": {
+    "n": 1
+   },
+   "SECTIA MEDICINA INTERNA ASISTENT MEDICAL DEBUTANT BAZA": {
+    "n": 1
+   },
+   "SECTIA MEDICINA INTERNA ASISTENT MEDICAL Gradatia 3": {
+    "n": 1
+   },
+   "SECTIA MEDICINA INTERNA ASISTENT MEDICAL PRINCIPAL S Gradati": {
+    "n": 1
+   },
+   "SECTIA MEDICINA INTERNA ASISTENT MEDICAL Gradatia 2": {
+    "n": 1
+   },
+   "SECTIA MEDICINA INTERNA - PNEUMOLOGIE ASISTENT MEDICAL DEBUT": {
+    "n": 1
+   },
+   "SECTIA MEDICINA INTERNA - COMP.ENDOCRINOLOGIE ASISTENT MEDIC": {
+    "n": 1
+   },
+   "SECTIA GASTROENTEROLOGIE ASISTENT MEDICAL Gradatia 4": {
+    "n": 1
+   },
+   "SECTIA GASTROENTEROLOGIE ASISTENT MEDICAL DEBUTANT Gradatia ": {
+    "n": 1
+   },
+   "SECTIA GASTROENTEROLOGIE ASISTENT MEDICAL Gradatia 5": {
+    "n": 1
+   },
+   "COMPARTIMENT NEFROLOGIE ASISTENT MEDICAL DEBUTANT Gradatia 3": {
+    "n": 1
+   },
+   "COMPARTIMENT NEFROLOGIE ASISTENT MEDICAL PRINCIPAL SSD Grada": {
+    "n": 1
+   },
+   "COMPARTIMENT NEFROLOGIE ASISTENT MEDICAL DEBUTANT Gradatia 5": {
+    "n": 1
+   },
+   "COMPARTIMENT NEFROLOGIE ASISTENT MEDICAL PRINCIPAL S Gradati": {
+    "n": 1
+   },
+   "COMP.CARDIOLOGIE ASISTENT MEDICAL BAZA": {
+    "n": 1
+   },
+   "SECTIA ONCOLOGIE MEDICALA ASISTENT MEDICAL Gradatia 2": {
+    "n": 1
+   },
+   "SECTIA CHIRURGIE GENERALA ASISTENT MEDICAL Gradatia 3": {
+    "n": 1
+   },
+   "COMP.NEUROCHIRURGIE ASISTENT MEDICAL PRINCIPAL Gradatia 3": {
+    "n": 1
+   },
+   "COMP.NEUROCHIRURGIE ASISTENT MEDICAL PRINCIPAL S Gradatia 5": {
+    "n": 1
+   },
+   "COMP.CHIRURGIE PLASTICA MICROCHIR ASISTENT MEDICAL Gradatia ": {
+    "n": 1
+   },
+   "COMP.CHIRURGIE PLASTICA MICROCHIR ASISTENT MEDICAL BAZA": {
+    "n": 1
+   },
+   "SECTIA OBSTETRICA GINECOLOGIE ASISTENT MEDICAL Gradatia 1": {
+    "n": 1
+   },
+   "SECTIA OBSTETRICA GINECOLOGIE ASISTENT MEDICAL DEBUTANT BAZA": {
+    "n": 1
+   },
+   "COMP.NEONATOLOGIE ASISTENT MEDICAL PRINCIPAL Gradatia 4": {
+    "n": 1
+   },
+   "COMP.NEONATOLOGIE ASISTENT MEDICAL Gradatia 5": {
+    "n": 1
+   },
+   "COMP.NEONATOLOGIE ASISTENT MEDICAL Gradatia 2": {
+    "n": 1
+   },
+   "SECTIA NEONATOLOGIE-COMP.PREMATURI ASISTENT MEDICAL PRINCIPA": {
+    "n": 1
+   },
+   "COMP.PEDIATRIE ASISTENT MEDICAL PRINCIPAL Gradatia 4": {
+    "n": 1
+   },
+   "SECTIA PEDIATRIE - COMP.TERAPIE ACUTA ASISTENT MEDICAL Grada": {
+    "n": 1
+   },
+   "COMP.OFTALMOLOGIE ASISTENT MEDICAL PRINCIPAL S Gradatia 5": {
+    "n": 1
+   },
+   "SECTIA ORTOPEDIE SI TRAUMATOLOGIE ASISTENT MEDICAL DEBUTANT ": {
+    "n": 1
+   },
+   "COMP. O.R.L ASISTENT MEDICAL PRINCIPAL Gradatia 3": {
+    "n": 1
+   },
+   "SECTIA A.T.I ASISTENT MEDICAL PRINCIPAL S A.T.I. Gradatia 4": {
+    "n": 1
+   },
+   "SECTIA A.T.I ASISTENT MEDICAL PRINCIPAL A.T.I. Gradatia 3": {
+    "n": 1
+   },
+   "SECTIA A.T.I ASISTENT MEDICAL DEBUTANT A.T.I. Gradatia 3": {
+    "n": 1
+   },
+   "SECTIA A.T.I ASISTENT MEDICAL PRINCIPAL A.T.I. Gradatia 2": {
+    "n": 1
+   },
+   "SECTIA A.T.I ASISTENT MEDICAL A.T.I. Gradatia 2": {
+    "n": 1
+   },
+   "SECTIA A.T.I ASISTENT MEDICAL A.T.I. Gradatia 3": {
+    "n": 1
+   },
+   "SECTIA NEUROLOGIE ASISTENT MEDICAL DEBUTANT Gradatia 3": {
+    "n": 1
+   },
+   "COMP.BOLI INFECTIOASE ASISTENT MEDICAL PRINCIPAL Gradatia 3": {
+    "n": 1
+   },
+   "COMP.BOLI INFECTIOASE ASISTENT MEDICAL PRINCIPAL Gradatia 2": {
+    "n": 1
+   },
+   "COMP.BOLI INFECTIOASE ASISTENT MEDICAL Gradatia 3": {
+    "n": 1
+   },
+   "COMP.BOLI INFECTIOASE ASISTENT MEDICAL PRINCIPAL Gradatia 4": {
+    "n": 1
+   },
+   "SECTIA PSIHIATRIE ACUTI ASISTENT MEDICAL Gradatia 3": {
+    "n": 1
+   },
+   "COMP.RECUPERARE NEUROLOGICA ASISTENT MEDICAL DEBUTANT Gradat": {
+    "n": 1
+   },
+   "BLOC OPERATOR - CHIRURGIE ASISTENT MEDICAL Gradatia 1": {
+    "n": 1
+   },
+   "BLOC OPERATOR - CHIRURGIE ASISTENT MEDICAL DEBUTANT Gradatia": {
+    "n": 1
+   },
+   "BLOC OPERATOR - CHIRURGIE ASISTENT MEDICAL PRINCIPAL AP. MED": {
+    "n": 1
+   },
+   "BLOC OPERATOR - CHIRURGIE ASISTENT MEDICAL Gradatia 3": {
+    "n": 1
+   },
+   "BLOC OPERATOR - CHIRURGIE ASISTENT MEDICAL DEBUTANT BAZA": {
+    "n": 1
+   },
+   "STERILIZARE ASISTENT MEDICAL DEBUTANT Gradatia 2": {
+    "n": 1
+   },
+   "STERILIZARE ASISTENT MEDICAL PRINCIPAL Gradatia 3": {
+    "n": 1
+   },
+   "STERILIZARE ASISTENT MEDICAL PRINCIPAL Gradatia 5": {
+    "n": 1
+   },
+   "FARMACIA SPITALULUI ASISTENT MEDICAL PRINCIPAL Gradatia 3": {
+    "n": 1
+   },
+   "FARMACIA SPITALULUI ASISTENT MEDICAL DEBUTANT Gradatia 5": {
+    "n": 1
+   },
+   "LABORATOR ANALIZE MEDICALE-LABORATOR BIOCHIMIE ASISTENT MEDI": {
+    "n": 1
+   },
+   "CITOLOGIE ASISTENT MEDICAL PRINCIPAL A.P. Gradatia 5": {
+    "n": 1
+   },
+   "SERVICIUL DE ANATOMIE PATOLOGICA-PROSECTURA ASISTENT MEDICAL": {
+    "n": 1
+   },
+   "COMP.DIETETICA ASISTENT MEDICAL PRINCIPAL Gradatia 5": {
+    "n": 1
+   },
+   "LABORATOR ENDOSCOPIE BRONSICA ASISTENT MEDICAL PRINCIPAL Gra": {
+    "n": 1
+   },
+   "LABORATOR EXPLORARI FUNCTIONALE ASISTENT MEDICAL PRINCIPAL S": {
+    "n": 1
+   },
+   "CABINET MEDICINA MUNCII ASISTENT MEDICAL PRINCIPAL Gradatia ": {
+    "n": 1
+   },
+   "CABINET MEDICINA MUNCII ASISTENT MEDICAL PRINCIPAL SSD Grada": {
+    "n": 1
+   },
+   "CAB.ONCOLOGIE MEDICALA ASISTENT MEDICAL PRINCIPAL S Gradatia": {
+    "n": 1
+   },
+   "CAB.ONCOLOGIE MEDICALA ASISTENT MEDICAL Gradatia 3": {
+    "n": 1
+   },
+   "CAB.ONCOLOGIE MEDICALA ASISTENT MEDICAL PRINCIPAL Gradatia 5": {
+    "n": 1
+   },
+   "CAB.DIABET ZAHARAT,NUTIRITE SI BOLI METABOLICE ASISTENT MEDI": {
+    "n": 1
+   },
+   "CAB.CARDIOLOGIE ASISTENT MEDICAL PRINCIPAL Gradatia 4": {
+    "n": 1
+   },
+   "CAB.CARDIOLOGIE ASISTENT MEDICAL PRINCIPAL Gradatia 5": {
+    "n": 1
+   },
+   "CABINET INTERNE ASISTENT MEDICAL PRINCIPAL Gradatia 5": {
+    "n": 1
+   },
+   "CAB.GASTROENTEROLOGI ASISTENT MEDICAL PRINCIPAL Gradatia 5": {
+    "n": 1
+   },
+   "CABINET NEFROLOGIE ASISTENT MEDICAL PRINCIPAL S Gradatia 5": {
+    "n": 1
+   },
+   "CAB.PEDIATRIE ASISTENT MEDICAL PRINCIPAL Gradatia 5": {
+    "n": 1
+   },
+   "CAB.CHIRURGIE GEN. ASISTENT MEDICAL Gradatia 2": {
+    "n": 1
+   },
+   "CAB.CHIRURGIE GEN. ASISTENT MEDICAL PRINCIPAL Gradatia 5": {
+    "n": 1
+   },
+   "CAB.CHIRURGIE GEN. ASISTENT MEDICAL PRINCIPAL S Gradatia 4": {
+    "n": 1
+   },
+   "CAB.NEUROLOGIE ASISTENT MEDICAL PRINCIPAL Gradatia 5": {
+    "n": 1
+   },
+   "CAB. NEUROCHIRURGIE ASISTENT MEDICAL PRINCIPAL Gradatia 5": {
+    "n": 1
+   },
+   "CAB.PSIHIATRIE ASISTENT MEDICAL PRINCIPAL S Gradatia 5": {
+    "n": 1
+   },
+   "CAB.PSIHIATRIE UNIRII 1-3 ASISTENT MEDICAL PRINCIPAL S Grada": {
+    "n": 1
+   },
+   "CAB.UROLOGIE ASISTENT MEDICAL PRINCIPAL Gradatia 5": {
+    "n": 1
+   },
+   "CAB.OFTALMOLOGIE ASISTENT MEDICAL PRINCIPAL S Gradatia 5": {
+    "n": 1
+   },
+   "CAB.O.R.L ASISTENT MEDICAL PRINCIPAL Gradatia 5": {
+    "n": 1
+   },
+   "CAB.RECUPERARE,MED.FIZICA SI BALNE ASISTENT MEDICAL PRINCIPA": {
+    "n": 1
+   },
+   "CAB.ALERGOLOGIE ASISTENT MEDICAL PRINCIPAL Gradatia 5": {
+    "n": 1
+   },
+   "CAB. PNEUMOLOGIE ASISTENT MEDICAL PRINCIPAL Gradatia 5": {
+    "n": 1
+   },
+   "PUNCT DE RECOLTARE ASISTENT MEDICAL PRINCIPAL Gradatia 5": {
+    "n": 1
+   },
+   "CAB.ENDOCRINOLOGIE ASISTENT MEDICAL PRINCIPAL Gradatia 5": {
+    "n": 1
+   },
+   "CABINET GINECOLOGIE ASISTENT MEDICAL PRINCIPAL S Gradatia 5": {
+    "n": 1
+   },
+   "CAB.CHIRURGIE VASCULARA ASISTENT MEDICAL PRINCIPAL Gradatia ": {
+    "n": 1
+   },
+   "CAB.REUMATOLOGIE ASISTENT MEDICAL PRINCIPAL Gradatia 5": {
+    "n": 1
+   },
+   "UNITATE PRIMIRE URGENTE ASISTENT MEDICAL UPU Gradatia 2": {
+    "n": 1
+   },
+   "UNITATE PRIMIRE URGENTE ASISTENT MEDICAL UPU Gradatia 3": {
+    "n": 1
+   },
+   "UNITATE PRIMIRE URGENTE ASISTENT MEDICAL UPU Gradatia 4": {
+    "n": 1
+   },
+   "UNITATE PRIMIRE URGENTE ASISTENT MEDICAL UPU BAZA": {
+    "n": 1
+   },
+   "UNITATE PRIMIRE URGENTE ASISTENT MEDICAL DEBUTANT UPU BAZA": {
+    "n": 1
+   },
+   "DISPENSAR TBC ASISTENT MEDICAL PRINCIPAL Gradatia 4": {
+    "n": 1
+   },
+   "CSM ADULTI CU STATIONAR DE ZI ASISTENT MEDICAL Gradatia 2": {
+    "n": 1
+   },
+   "CSM COPII ASISTENT MEDICAL DEBUTANT Gradatia 1": {
+    "n": 1
+   },
+   "CSM COPII ASISTENT MEDICAL PRINCIPAL Gradatia 5": {
+    "n": 1
+   },
+   "SERVICIUL JUDETEAN DE MEDICINA LEGALA ASISTENT MEDICAL DEBUT": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL Cabinet CHIRURGIE GENERALA": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL PR. Cabinet CHIRURGIE PLASTICA-MICROCHIR. R": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL Cabinet CHIRURGIE SI ORTOPEDIE PEDIATRICA": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL Cabinet DERMATO-VENEROLOGIE": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL PR. Cabinet DERMATO-VENEROLOGIE": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL PR. Cabinet ENDOCRINOLOGIE": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL Cabinet GASTROENTEROLOGIE": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL PR. Cabinet GASTROENTEROLOGIE": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL CABINET GENETICA MEDICALA": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL PR. Cabinet GERIATRIE SI GERONTOLOGIE": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL PR. Cabinet MEDICINA DENTARA - copii (as. s": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL PR. Cabinet NEFROLOGIE": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL PR. Cabinet NEUROCHIRURGIE": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL Cabinet O.R.L. - copii": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL PR. Cabinet O.R.L. - copii": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL Cabinet OBSTETRICA-GINECOLOGIE": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL PR. Cabinet OFTALMOLOGIE - copii": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL Cabinet ONCOLOGIE MEDICALA": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL Cabinet PEDIATRIE": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL PR. Cabinet UROLOGIE": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL COMPARTIMENT CHIRURGIE CARDIOVASCULARA": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL DEB. COMPARTIMENT CHIRURGIE CARDIOVASCULARA": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL COMPARTIMENT NEFROLOGIE": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL FARMACIA NR.43": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL LABORATOR EXPLORARI FUNCTIONALE": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL PUNCT DIETETIC": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL PR. PUNCT DIETETIC": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL Sectia CARDIOLOGIE": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL Sectia CHIRURGIE SI ORTOPEDIE PEDIATRICA": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL SECTIA INGRIJIRI PALIATIVE": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL SECTIA NEUROCHIRURGIE": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL Sectia O.R.L.": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL Sectia OBSTETRICA-GINECOLOGIE II": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL Sectia OFTALMOLOGIE": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL Sectia ORTOPEDIE-TRAUMATOLOGIE": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL SERVICIUL ANATOMIE PATOLOGICA": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL DEB. SERVICIUL ANATOMIE PATOLOGICA": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL SERVICIUL JUDETEAN DE MEDICINA LEGALA": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL STERILIZARE": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL SPIAAM": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL Bloc operator OG": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL Cabinet Planificare familiala": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL Cabinet oncologie medicala": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL PRINCIPAL PL Compartiment endoscopie digest": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL S Bloc operator": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL S Sectia Neurologie": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL S SPIAAM": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL S Compartiment Chirurgie plastica, microchi": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL S Sectia ATI": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL S Sectia Chirurgie si ortopedie infantila": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL S UPU - smurd": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL S Sectia Cardiologie": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL Cabinet Medicina Sportiva": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL PL Sectia Neonatologie": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL PL AMBULATORIUL, INTEGRAT CU CABINETE IN SP": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL PL Compartiment Diabet zaharat nutritie si ": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL PL Sectia Ortopedie si Traumatologie": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL PL Sectia Chirurgie si ortopedie infantila": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL PL RMN - Laborator Radiologie si Imagistica": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL PL Farmacia TBC": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL PL Compartiment Nefrologie": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL PRINCIPAL S Compartiment Diabet zaharat nut": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL PRINCIPAL S Sectia Boli infectioase": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL PRINCIPAL S Sectia ORL": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL PRINCIPAL S Statia de dializa": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL PRINCIPAL S Laborator microbiologie medical": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL PRINCIPAL S Compartiment Nefrologie": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL PRINCIPAL S Sectia Chirurgie si ortopedie i": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL LICENTIAT(S)": {
+    "n": 1
+   },
+   "2026-02 ASISTENT MEDICAL S": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL nespecificat BAZA": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL PRINCIPAL (ATI) SUPERIOARE Gradatia": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL (ATI) SUPERIOARE Gradatia": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL DEBUTANT (UPU POST LICEALE Gradatia": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL DEBUTANT SUPERIOARE BAZA": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL (UPU) SUPERIOARE Gradatia": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL S Gradatia 2 Sporurile din anexele 1, 2,3,5": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL NUTRITIE SI DIETETICA S. Gradatia 3 Sporuri": {
+    "n": 1
+   },
+   "ASISTENT MEDICAL.PR.S Gradatia 4 Sporurile din anexele 1, 2,": {
+    "n": 1
+   },
+   "Asistent medical pr.": {
+    "n": 1
+   }
+  }
+ }
+}

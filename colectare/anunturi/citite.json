@@ -1,0 +1,174 @@
+{
+ "fizioterapeut": {
+  "read": 1,
+  "withoutSalary": 0
+ },
+ "kinetoterapeut": {
+  "read": 3,
+  "withoutSalary": 0
+ },
+ "broker": {
+  "read": 2,
+  "withoutSalary": 0
+ },
+ "electrician": {
+  "read": 5,
+  "withoutSalary": 0
+ },
+ "sudor": {
+  "read": 2,
+  "withoutSalary": 0
+ },
+ "tamplar": {
+  "read": 2,
+  "withoutSalary": 0
+ },
+ "asistent-medical": {
+  "read": 2,
+  "withoutSalary": 0
+ },
+ "dulgher": {
+  "read": 1,
+  "withoutSalary": 0
+ },
+ "mecanic-auto": {
+  "read": 3,
+  "withoutSalary": 0
+ },
+ "zidar": {
+  "read": 3,
+  "withoutSalary": 0
+ },
+ "instalator": {
+  "read": 2,
+  "withoutSalary": 0
+ },
+ "medic-veterinar": {
+  "read": 1,
+  "withoutSalary": 0
+ },
+ "agent-vanzari": {
+  "read": 14,
+  "withoutSalary": 0
+ },
+ "programator": {
+  "read": 104,
+  "withoutSalary": 103
+ },
+ "devops-engineer": {
+  "read": 48,
+  "withoutSalary": 48
+ },
+ "inginer": {
+  "read": 6,
+  "withoutSalary": 2
+ },
+ "electromecanic": {
+  "read": 2,
+  "withoutSalary": 0
+ },
+ "analist-date": {
+  "read": 11,
+  "withoutSalary": 11
+ },
+ "operator-cnc": {
+  "read": 2,
+  "withoutSalary": 2
+ },
+ "medic": {
+  "read": 2,
+  "withoutSalary": 0
+ },
+ "stomatolog": {
+  "read": 1,
+  "withoutSalary": 0
+ },
+ "sofer-tir": {
+  "read": 5,
+  "withoutSalary": 0
+ },
+ "curier": {
+  "read": 5,
+  "withoutSalary": 0
+ },
+ "vanzator": {
+  "read": 4,
+  "withoutSalary": 0
+ },
+ "administrator-sistem": {
+  "read": 2,
+  "withoutSalary": 2
+ },
+ "web-developer": {
+  "read": 3,
+  "withoutSalary": 3
+ },
+ "consultant-financiar": {
+  "read": 5,
+  "withoutSalary": 0
+ },
+ "magaziner": {
+  "read": 1,
+  "withoutSalary": 0
+ },
+ "agent-imobiliar": {
+  "read": 4,
+  "withoutSalary": 0
+ },
+ "tester-qa": {
+  "read": 13,
+  "withoutSalary": 13
+ },
+ "contabil": {
+  "read": 1,
+  "withoutSalary": 0
+ },
+ "economist": {
+  "read": 1,
+  "withoutSalary": 0
+ },
+ "agent-curatenie": {
+  "read": 2,
+  "withoutSalary": 0
+ },
+ "logistician": {
+  "read": 1,
+  "withoutSalary": 0
+ },
+ "infirmier": {
+  "read": 1,
+  "withoutSalary": 0
+ },
+ "ingrijitor-batrani": {
+  "read": 1,
+  "withoutSalary": 0
+ },
+ "frizer": {
+  "read": 1,
+  "withoutSalary": 0
+ },
+ "sofer-distributie": {
+  "read": 1,
+  "withoutSalary": 0
+ },
+ "arhitect": {
+  "read": 2,
+  "withoutSalary": 0
+ },
+ "secretar": {
+  "read": 1,
+  "withoutSalary": 0
+ },
+ "auditor": {
+  "read": 1,
+  "withoutSalary": 0
+ },
+ "agent-asigurari": {
+  "read": 1,
+  "withoutSalary": 0
+ },
+ "operator-call-center": {
+  "read": 2,
+  "withoutSalary": 0
+ }
+}

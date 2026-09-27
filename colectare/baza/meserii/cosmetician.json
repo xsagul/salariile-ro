@@ -1,0 +1,260 @@
+{
+ "slug": "cosmetician",
+ "nume": "Cosmetician",
+ "cor": "514201",
+ "generatLa": "2026-09-27T10:01:09.181Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 12,
+  "cuBazaDeclarata": 8,
+  "faraBazaDeclarata": 4,
+  "surse": {
+   "olx": {
+    "n": 7,
+    "procent": 58.3
+   },
+   "ejobs": {
+    "n": 5,
+    "procent": 41.7
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 11,
+    "procent": 91.7
+   },
+   "continuă": {
+    "n": 1,
+    "procent": 8.3
+   }
+  },
+  "net": {
+   "n": 8
+  },
+  "netMinimOferit": {
+   "n": 8
+  },
+  "netMaximOferit": {
+   "n": 8
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 4
+  },
+  "peOras": {
+   "Cluj-Napoca": {
+    "n": 1
+   }
+  },
+  "peJudet": {
+   "21": {
+    "n": 1
+   }
+  },
+  "peLuna": {
+   "2026-08": {
+    "n": 3,
+    "procent": 25
+   },
+   "2026-09": {
+    "n": 2,
+    "procent": 16.7
+   },
+   "2026-06": {
+    "n": 2,
+    "procent": 16.7
+   },
+   "2026-03": {
+    "n": 1,
+    "procent": 8.3
+   },
+   "2025-03": {
+    "n": 1,
+    "procent": 8.3
+   },
+   "2026-07": {
+    "n": 1,
+    "procent": 8.3
+   },
+   "2025-09": {
+    "n": 1,
+    "procent": 8.3
+   },
+   "2025-11": {
+    "n": 1,
+    "procent": 8.3
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 1,
+  "cuSalariu": 1,
+  "nivel": {},
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "ejobs": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "peJudet": {
+   "21": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "motiveFaraSalariu": {},
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 3,
+  "posturi": 4,
+  "ofertePeGrupaCor": 20,
+  "tipSalariu": {
+   "gross": {
+    "n": 2,
+    "procent": 66.7
+   },
+   "none": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 0
+  },
+  "brutMinimDeclarat": {
+   "n": 2
+  },
+  "laSalariulMinim": 2,
+  "studii": {
+   "Primar - FĂRĂ STUDII": {
+    "n": 1,
+    "procent": 33.3
+   },
+   "Profesional - ȘCOALĂ PROFESIONALĂ": {
+    "n": 1,
+    "procent": 33.3
+   },
+   "Gimnazial - ȘCOALĂ GENERALĂ": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
+  "experienta": {
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 2,
+    "procent": 66.7
+   },
+   "Fără experiență - 0 ani": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 3,
+    "procent": 100
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 2,
+    "procent": 66.7
+   },
+   "Cu timp parțial": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 3,
+    "procent": 100
+   }
+  },
+  "judete": {
+   "Mureș": {
+    "n": 1,
+    "procent": 33.3
+   },
+   "Dolj": {
+    "n": 1,
+    "procent": 33.3
+   },
+   "Constanța": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
+  "domenii": {
+   "Servicii înfrumusețare": {
+    "n": 3,
+    "procent": 100
+   }
+  },
+  "coduriCorInGrupa": {
+   "514202 - MANICHIURIST": {
+    "n": 6,
+    "procent": 30
+   },
+   "514204 - MASEUR DE ÎNTRETINERE SI RELAXARE": {
+    "n": 5,
+    "procent": 25
+   },
+   "514208 - STILIST PROTEZIST DE UNGHII": {
+    "n": 3,
+    "procent": 15
+   },
+   "514201 - COSMETICIAN": {
+    "n": 3,
+    "procent": 15
+   },
+   "514209 - OPERATOR INTRETINERE CORPORALA": {
+    "n": 2,
+    "procent": 10
+   },
+   "514203 - PEDICHIURIST": {
+    "n": 1,
+    "procent": 5
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 0,
+  "institutii": 0,
+  "judete": {},
+  "tipInstitutie": {},
+  "perioade": {},
+  "studii": {},
+  "bazaBruta": {
+   "n": 0
+  },
+  "bazaCuSporuriFixe": {
+   "n": 0
+  },
+  "peGradatie": {},
+  "peFunctie": {}
+ }
+}

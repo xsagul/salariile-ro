@@ -1,0 +1,725 @@
+{
+ "slug": "bucatar",
+ "nume": "Bucătar",
+ "cor": "512001",
+ "generatLa": "2026-09-27T10:01:09.105Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 128,
+  "cuBazaDeclarata": 33,
+  "faraBazaDeclarata": 95,
+  "surse": {
+   "olx": {
+    "n": 77,
+    "procent": 60.2
+   },
+   "anuntul": {
+    "n": 24,
+    "procent": 18.8
+   },
+   "ejobs": {
+    "n": 14,
+    "procent": 10.9
+   },
+   "publi24": {
+    "n": 7,
+    "procent": 5.5
+   },
+   "bestjobs": {
+    "n": 6,
+    "procent": 4.7
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 124,
+    "procent": 96.9
+   },
+   "continuă": {
+    "n": 4,
+    "procent": 3.1
+   }
+  },
+  "net": {
+   "n": 33,
+   "p10": 3020,
+   "p25": 3500,
+   "median": 4500,
+   "p75": 6000,
+   "p90": 7000,
+   "min": 2800,
+   "max": 10000
+  },
+  "netMinimOferit": {
+   "n": 33,
+   "p10": 3000,
+   "p25": 3400,
+   "median": 4500,
+   "p75": 6000,
+   "p90": 7000,
+   "min": 2700,
+   "max": 10000
+  },
+  "netMaximOferit": {
+   "n": 33,
+   "p10": 3080,
+   "p25": 3600,
+   "median": 4753,
+   "p75": 6500,
+   "p90": 7000,
+   "min": 2800,
+   "max": 10504
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 95,
+   "p10": 3500,
+   "p25": 4250,
+   "median": 5150,
+   "p75": 5500,
+   "p90": 7312,
+   "min": 1000,
+   "max": 8000
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-08": {
+    "n": 56,
+    "procent": 43.8
+   },
+   "2026-09": {
+    "n": 35,
+    "procent": 27.3
+   },
+   "2026-06": {
+    "n": 8,
+    "procent": 6.3
+   },
+   "2026-05": {
+    "n": 7,
+    "procent": 5.5
+   },
+   "2026-07": {
+    "n": 7,
+    "procent": 5.5
+   },
+   "2025-11": {
+    "n": 3,
+    "procent": 2.3
+   },
+   "2026-04": {
+    "n": 3,
+    "procent": 2.3
+   },
+   "2025-08": {
+    "n": 2,
+    "procent": 1.6
+   },
+   "2025-06": {
+    "n": 2,
+    "procent": 1.6
+   },
+   "2026-03": {
+    "n": 1,
+    "procent": 0.8
+   },
+   "2025-03": {
+    "n": 1,
+    "procent": 0.8
+   },
+   "2026-02": {
+    "n": 1,
+    "procent": 0.8
+   },
+   "2025-09": {
+    "n": 1,
+    "procent": 0.8
+   },
+   "2026-01": {
+    "n": 1,
+    "procent": 0.8
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 4,
+  "cuSalariu": 0,
+  "nivel": {
+   "lead": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 4,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "ejobs": {
+    "n": 4,
+    "procent": 100
+   }
+  },
+  "peJudet": {
+   "10": {
+    "n": 1,
+    "procent": 25
+   },
+   "32": {
+    "n": 1,
+    "procent": 25
+   },
+   "42": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "motiveFaraSalariu": {},
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 119,
+  "posturi": 218,
+  "ofertePeGrupaCor": 132,
+  "tipSalariu": {
+   "none": {
+    "n": 69,
+    "procent": 58
+   },
+   "gross": {
+    "n": 46,
+    "procent": 38.7
+   },
+   "net": {
+    "n": 4,
+    "procent": 3.4
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 4
+  },
+  "brutMinimDeclarat": {
+   "n": 45,
+   "p10": 4050,
+   "p25": 4325,
+   "median": 4325,
+   "p75": 4325,
+   "p90": 4448,
+   "min": 2163,
+   "max": 6000
+  },
+  "laSalariulMinim": 36,
+  "studii": {
+   "Gimnazial - ȘCOALĂ GENERALĂ": {
+    "n": 50,
+    "procent": 42
+   },
+   "Profesional - ȘCOALĂ PROFESIONALĂ": {
+    "n": 31,
+    "procent": 26.1
+   },
+   "Liceal - LICEU DE SPECIALITATE": {
+    "n": 15,
+    "procent": 12.6
+   },
+   "Primar - FĂRĂ STUDII": {
+    "n": 9,
+    "procent": 7.6
+   },
+   "Liceal - LICEU TEORETIC": {
+    "n": 7,
+    "procent": 5.9
+   },
+   "PROFESIONAL- ÎNVĂȚĂMÂNT SPECIAL": {
+    "n": 2,
+    "procent": 1.7
+   },
+   "Universitar - ÎNV. SUPERIOR FĂRĂ LICENȚĂ": {
+    "n": 2,
+    "procent": 1.7
+   },
+   "Postliceal - ȘCOALĂ POSTLICEALĂ": {
+    "n": 1,
+    "procent": 0.8
+   },
+   "Postliceal - COLEGIU": {
+    "n": 1,
+    "procent": 0.8
+   },
+   "ȘCOALĂ DE MAIȘTRI": {
+    "n": 1,
+    "procent": 0.8
+   }
+  },
+  "experienta": {
+   "Fără experiență - 0 ani": {
+    "n": 56,
+    "procent": 47.1
+   },
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 27,
+    "procent": 22.7
+   },
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 25,
+    "procent": 21
+   },
+   "Avansat - între 5 și 7 ani": {
+    "n": 7,
+    "procent": 5.9
+   },
+   "Experimentat - mai mult de 7 ani": {
+    "n": 4,
+    "procent": 3.4
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 117,
+    "procent": 98.3
+   },
+   "Cu durată determinată": {
+    "n": 2,
+    "procent": 1.7
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 117,
+    "procent": 98.3
+   },
+   "Cu timp parțial": {
+    "n": 2,
+    "procent": 1.7
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 116,
+    "procent": 97.5
+   },
+   "La domiciliu": {
+    "n": 1,
+    "procent": 0.8
+   },
+   "Hibrid - sediu + la domiciliu": {
+    "n": 1,
+    "procent": 0.8
+   },
+   "Telemuncă": {
+    "n": 1,
+    "procent": 0.8
+   }
+  },
+  "judete": {
+   "Municipiul București": {
+    "n": 23,
+    "procent": 19.3
+   },
+   "Hunedoara": {
+    "n": 10,
+    "procent": 8.4
+   },
+   "Cluj": {
+    "n": 8,
+    "procent": 6.7
+   },
+   "Timiș": {
+    "n": 7,
+    "procent": 5.9
+   },
+   "Constanța": {
+    "n": 6,
+    "procent": 5
+   },
+   "Bistrița-Năsăud": {
+    "n": 6,
+    "procent": 5
+   },
+   "Alba": {
+    "n": 5,
+    "procent": 4.2
+   },
+   "Tulcea": {
+    "n": 5,
+    "procent": 4.2
+   },
+   "Galați": {
+    "n": 4,
+    "procent": 3.4
+   },
+   "Suceava": {
+    "n": 4,
+    "procent": 3.4
+   },
+   "Prahova": {
+    "n": 4,
+    "procent": 3.4
+   },
+   "Brașov": {
+    "n": 3,
+    "procent": 2.5
+   },
+   "Botoșani": {
+    "n": 3,
+    "procent": 2.5
+   },
+   "Maramureș": {
+    "n": 3,
+    "procent": 2.5
+   },
+   "Gorj": {
+    "n": 3,
+    "procent": 2.5
+   },
+   "Bihor": {
+    "n": 2,
+    "procent": 1.7
+   },
+   "Ilfov": {
+    "n": 2,
+    "procent": 1.7
+   },
+   "Bacău": {
+    "n": 2,
+    "procent": 1.7
+   },
+   "Iași": {
+    "n": 2,
+    "procent": 1.7
+   },
+   "Sibiu": {
+    "n": 2,
+    "procent": 1.7
+   },
+   "Ialomița": {
+    "n": 1,
+    "procent": 0.8
+   },
+   "Dolj": {
+    "n": 1,
+    "procent": 0.8
+   },
+   "Argeș": {
+    "n": 1,
+    "procent": 0.8
+   },
+   "Arad": {
+    "n": 1,
+    "procent": 0.8
+   },
+   "Vaslui": {
+    "n": 1,
+    "procent": 0.8
+   },
+   "Neamț": {
+    "n": 1,
+    "procent": 0.8
+   },
+   "Călărași": {
+    "n": 1,
+    "procent": 0.8
+   },
+   "Giurgiu": {
+    "n": 1,
+    "procent": 0.8
+   },
+   "Sălaj": {
+    "n": 1,
+    "procent": 0.8
+   },
+   "Covasna": {
+    "n": 1,
+    "procent": 0.8
+   },
+   "Buzău": {
+    "n": 1,
+    "procent": 0.8
+   },
+   "Vâlcea": {
+    "n": 1,
+    "procent": 0.8
+   },
+   "Vrancea": {
+    "n": 1,
+    "procent": 0.8
+   },
+   "Mureș": {
+    "n": 1,
+    "procent": 0.8
+   },
+   "Harghita": {
+    "n": 1,
+    "procent": 0.8
+   }
+  },
+  "domenii": {
+   "RESTAURANTE": {
+    "n": 82,
+    "procent": 68.9
+   },
+   "Turism / Alimentație": {
+    "n": 14,
+    "procent": 11.8
+   },
+   "ASISTENTA SOCIALA": {
+    "n": 7,
+    "procent": 5.9
+   },
+   "Altele": {
+    "n": 7,
+    "procent": 5.9
+   },
+   "COMERT": {
+    "n": 5,
+    "procent": 4.2
+   },
+   "Medicină / Sănătate /Psihoterapie": {
+    "n": 2,
+    "procent": 1.7
+   },
+   "Educație / Training / Coaching": {
+    "n": 1,
+    "procent": 0.8
+   },
+   "Vânzări": {
+    "n": 1,
+    "procent": 0.8
+   }
+  },
+  "coduriCorInGrupa": {
+   "512001 - BUCATAR": {
+    "n": 119,
+    "procent": 90.2
+   },
+   "512002 - PIZZAR": {
+    "n": 13,
+    "procent": 9.8
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 60,
+  "institutii": 10,
+  "judete": {
+   "BH": {
+    "n": 16,
+    "procent": 26.7
+   },
+   "GR": {
+    "n": 12,
+    "procent": 20
+   },
+   "CJ": {
+    "n": 11,
+    "procent": 18.3
+   },
+   "BC": {
+    "n": 7,
+    "procent": 11.7
+   },
+   "BV": {
+    "n": 6,
+    "procent": 10
+   },
+   "DJ": {
+    "n": 5,
+    "procent": 8.3
+   },
+   "IS": {
+    "n": 2,
+    "procent": 3.3
+   },
+   "MS": {
+    "n": 1,
+    "procent": 1.7
+   }
+  },
+  "tipInstitutie": {
+   "spital": {
+    "n": 51,
+    "procent": 85
+   },
+   "universitate": {
+    "n": 8,
+    "procent": 13.3
+   },
+   "dgaspc": {
+    "n": 1,
+    "procent": 1.7
+   }
+  },
+  "perioade": {
+   "2026-03": {
+    "n": 33,
+    "procent": 55
+   },
+   "2022-09": {
+    "n": 12,
+    "procent": 20
+   },
+   "2025-03": {
+    "n": 10,
+    "procent": 16.7
+   },
+   "2024-03": {
+    "n": 5,
+    "procent": 8.3
+   }
+  },
+  "studii": {
+   "G": {
+    "n": 24,
+    "procent": 40
+   }
+  },
+  "bazaBruta": {
+   "n": 60,
+   "p10": 3615,
+   "p25": 5410,
+   "median": 5973,
+   "p75": 6353,
+   "p90": 6498,
+   "min": 2212,
+   "max": 6969
+  },
+  "bazaCuSporuriFixe": {
+   "n": 60,
+   "p10": 3615,
+   "p25": 5590,
+   "median": 6266,
+   "p75": 6516,
+   "p90": 7598,
+   "min": 3078,
+   "max": 8125
+  },
+  "peGradatie": {
+   "gradația 5": {
+    "n": 4
+   },
+   "gradația 2": {
+    "n": 1
+   }
+  },
+  "peFunctie": {
+   "MUNCITOR III BUCATAR": {
+    "n": 6
+   },
+   "BLOC ALIMENTAR Muncitor calificat I‐bucatar Gradatia 5 GENER": {
+    "n": 5
+   },
+   "MUNCITOR BUCATAR I Gradatia 5": {
+    "n": 5
+   },
+   "BUCATAR": {
+    "n": 5
+   },
+   "Bucatar I Gradatia": {
+    "n": 3
+   },
+   "MUNCITOR II BUCATAR": {
+    "n": 3
+   },
+   "BLOC ALIMENTAR Muncitor calificat II‐bucatar Gradatia 5 GENE": {
+    "n": 2
+   },
+   "BLOC ALIMENTAR Muncitor calificat II‐bucatar Gradatia 4 GENE": {
+    "n": 2
+   },
+   "BLOC ALIMENTAR Muncitor calificat IV‐bucatar Gradatia 2 GENE": {
+    "n": 2
+   },
+   "BLOC ALIMENTAR Muncitor calificat IV‐bucatar Gradatia 5 GENE": {
+    "n": 2
+   },
+   "MUNCITOR BUCATAR II Gradatia 2": {
+    "n": 2
+   },
+   "MUNCITOR IV BUCATAR": {
+    "n": 2
+   },
+   "bucătar": {
+    "n": 1
+   },
+   "570 Munc. calif. I-Bucatar Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "580 Munc. calif.-Bucatar III Gradatia 4 Contractual": {
+    "n": 1
+   },
+   "BLOC ALIMENTAR Muncitor calificat III‐bucatar Gradatia 2 GEN": {
+    "n": 1
+   },
+   "BLOC ALIMENTAR Muncitor calificat III‐bucatar Gradatia 4 GEN": {
+    "n": 1
+   },
+   "BLOC ALIMENTAR Muncitor calificat IV‐bucatar Gradatia 4 GENE": {
+    "n": 1
+   },
+   "MUNCITOR BUCATAR I Gradatia 3": {
+    "n": 1
+   },
+   "MUNCITOR BUCATAR I Gradatia 4": {
+    "n": 1
+   },
+   "MUNCITOR BUCATAR II Gradatia 4": {
+    "n": 1
+   },
+   "Bucatar II Gradatia o": {
+    "n": 1
+   },
+   "Bucatar Gradatia o": {
+    "n": 1
+   },
+   "MUNCITOR I BUCATAR": {
+    "n": 1
+   },
+   "BUCATAR CALIFICAT Gradatia 5 Sporurile din anexele 1, 2,3,5,": {
+    "n": 1
+   },
+   "59 MUNCITOR CALIFICAT-BUCATAR G II": {
+    "n": 1
+   },
+   "61 MUNCITOR CALIFICAT-BUCATAR G II": {
+    "n": 1
+   },
+   "62 MUNCITOR CALIFICAT-BUCATAR G II": {
+    "n": 1
+   },
+   "63 MUNCITOR CALIFICAT-BUCATAR G II": {
+    "n": 1
+   },
+   "64 MUNCITOR CALIFICAT-BUCATAR G IV": {
+    "n": 1
+   },
+   "78 MUNCITOR CALIFICAT-BUCATAR G IV": {
+    "n": 1
+   },
+   "80 MUNCITOR CALIFICAT-BUCATAR G IV": {
+    "n": 1
+   },
+   "Bucatar": {
+    "n": 1
+   }
+  }
+ }
+}

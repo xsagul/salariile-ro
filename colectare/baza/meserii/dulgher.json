@@ -1,0 +1,397 @@
+{
+ "slug": "dulgher",
+ "nume": "Dulgher",
+ "cor": "711501",
+ "generatLa": "2026-09-27T10:01:09.020Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 22,
+  "cuBazaDeclarata": 14,
+  "faraBazaDeclarata": 8,
+  "surse": {
+   "olx": {
+    "n": 14,
+    "procent": 63.6
+   },
+   "publi24": {
+    "n": 5,
+    "procent": 22.7
+   },
+   "ejobs": {
+    "n": 3,
+    "procent": 13.6
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 21,
+    "procent": 95.5
+   },
+   "continuă": {
+    "n": 1,
+    "procent": 4.5
+   }
+  },
+  "net": {
+   "n": 14,
+   "p10": 5150,
+   "p25": 5713,
+   "median": 6250,
+   "p75": 7188,
+   "p90": 9407,
+   "min": 300,
+   "max": 14705.5
+  },
+  "netMinimOferit": {
+   "n": 14,
+   "p10": 5000,
+   "p25": 5000,
+   "median": 5600,
+   "p75": 6875,
+   "p90": 7615,
+   "min": 250,
+   "max": 13655
+  },
+  "netMaximOferit": {
+   "n": 14,
+   "p10": 5210,
+   "p25": 6125,
+   "median": 6750,
+   "p75": 8000,
+   "p90": 11551,
+   "min": 350,
+   "max": 15756
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 8
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-08": {
+    "n": 12,
+    "procent": 54.5
+   },
+   "2026-09": {
+    "n": 4,
+    "procent": 18.2
+   },
+   "2025-09": {
+    "n": 2,
+    "procent": 9.1
+   },
+   "2026-01": {
+    "n": 1,
+    "procent": 4.5
+   },
+   "2026-07": {
+    "n": 1,
+    "procent": 4.5
+   },
+   "2026-03": {
+    "n": 1,
+    "procent": 4.5
+   },
+   "2025-04": {
+    "n": 1,
+    "procent": 4.5
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 2,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {
+   "lucru în străinătate": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "limbaAnuntului": {
+   "ro": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "ejobs": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "peJudet": {},
+  "motiveFaraSalariu": {
+   "country_unconfirmed": {
+    "n": 1,
+    "procent": 100
+   },
+   "foreign_or_noncomparable_work": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 58,
+  "posturi": 543,
+  "ofertePeGrupaCor": 65,
+  "tipSalariu": {
+   "gross": {
+    "n": 27,
+    "procent": 46.6
+   },
+   "none": {
+    "n": 25,
+    "procent": 43.1
+   },
+   "net": {
+    "n": 6,
+    "procent": 10.3
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 5
+  },
+  "brutMinimDeclarat": {
+   "n": 25,
+   "p10": 4582,
+   "p25": 4582,
+   "median": 4582,
+   "p75": 4759,
+   "p90": 5000,
+   "min": 4582,
+   "max": 5600
+  },
+  "laSalariulMinim": 2,
+  "studii": {
+   "Gimnazial - ȘCOALĂ GENERALĂ": {
+    "n": 25,
+    "procent": 43.1
+   },
+   "Profesional - ȘCOALĂ PROFESIONALĂ": {
+    "n": 19,
+    "procent": 32.8
+   },
+   "Primar - FĂRĂ STUDII": {
+    "n": 6,
+    "procent": 10.3
+   },
+   "Liceal - LICEU TEORETIC": {
+    "n": 2,
+    "procent": 3.4
+   },
+   "Universitar - ÎNVĂȚĂMÂNT SUPERIOR": {
+    "n": 2,
+    "procent": 3.4
+   },
+   "Liceal - LICEU DE SPECIALITATE": {
+    "n": 1,
+    "procent": 1.7
+   },
+   "Profesional - INV. COMPL. DE UCENICI": {
+    "n": 1,
+    "procent": 1.7
+   },
+   "PROFESIONAL- ÎNVĂȚĂMÂNT SPECIAL": {
+    "n": 1,
+    "procent": 1.7
+   },
+   "Postliceal - ȘCOALĂ POSTLICEALĂ": {
+    "n": 1,
+    "procent": 1.7
+   }
+  },
+  "experienta": {
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 24,
+    "procent": 41.4
+   },
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 17,
+    "procent": 29.3
+   },
+   "Fără experiență - 0 ani": {
+    "n": 13,
+    "procent": 22.4
+   },
+   "Experimentat - mai mult de 7 ani": {
+    "n": 2,
+    "procent": 3.4
+   },
+   "Avansat - între 5 și 7 ani": {
+    "n": 2,
+    "procent": 3.4
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 52,
+    "procent": 89.7
+   },
+   "Cu durată determinată": {
+    "n": 6,
+    "procent": 10.3
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 58,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 58,
+    "procent": 100
+   }
+  },
+  "judete": {
+   "Vâlcea": {
+    "n": 8,
+    "procent": 13.8
+   },
+   "Ilfov": {
+    "n": 7,
+    "procent": 12.1
+   },
+   "Argeș": {
+    "n": 5,
+    "procent": 8.6
+   },
+   "Municipiul București": {
+    "n": 4,
+    "procent": 6.9
+   },
+   "Iași": {
+    "n": 4,
+    "procent": 6.9
+   },
+   "Botoșani": {
+    "n": 3,
+    "procent": 5.2
+   },
+   "Bacău": {
+    "n": 3,
+    "procent": 5.2
+   },
+   "Buzău": {
+    "n": 2,
+    "procent": 3.4
+   },
+   "Ialomița": {
+    "n": 2,
+    "procent": 3.4
+   },
+   "Brașov": {
+    "n": 2,
+    "procent": 3.4
+   },
+   "Tulcea": {
+    "n": 2,
+    "procent": 3.4
+   },
+   "Bihor": {
+    "n": 2,
+    "procent": 3.4
+   },
+   "Vaslui": {
+    "n": 2,
+    "procent": 3.4
+   },
+   "Gorj": {
+    "n": 2,
+    "procent": 3.4
+   },
+   "Cluj": {
+    "n": 2,
+    "procent": 3.4
+   },
+   "Covasna": {
+    "n": 1,
+    "procent": 1.7
+   },
+   "Harghita": {
+    "n": 1,
+    "procent": 1.7
+   },
+   "Neamț": {
+    "n": 1,
+    "procent": 1.7
+   },
+   "Dâmbovița": {
+    "n": 1,
+    "procent": 1.7
+   },
+   "Hunedoara": {
+    "n": 1,
+    "procent": 1.7
+   },
+   "Mureș": {
+    "n": 1,
+    "procent": 1.7
+   },
+   "Suceava": {
+    "n": 1,
+    "procent": 1.7
+   },
+   "Alba": {
+    "n": 1,
+    "procent": 1.7
+   }
+  },
+  "domenii": {
+   "Construcții / Instalații": {
+    "n": 51,
+    "procent": 87.9
+   },
+   "Altele": {
+    "n": 7,
+    "procent": 12.1
+   }
+  },
+  "coduriCorInGrupa": {
+   "711501 - DULGHER (EXCLUSIV RESTAURATOR)": {
+    "n": 58,
+    "procent": 89.2
+   },
+   "711502 - DULGHER RESTAURATOR": {
+    "n": 7,
+    "procent": 10.8
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 0,
+  "institutii": 0,
+  "judete": {},
+  "tipInstitutie": {},
+  "perioade": {},
+  "studii": {},
+  "bazaBruta": {
+   "n": 0
+  },
+  "bazaCuSporuriFixe": {
+   "n": 0
+  },
+  "peGradatie": {},
+  "peFunctie": {}
+ }
+}

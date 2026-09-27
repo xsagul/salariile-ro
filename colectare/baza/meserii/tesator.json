@@ -1,0 +1,162 @@
+{
+ "slug": "tesator",
+ "nume": "Țesător",
+ "cor": "731816",
+ "generatLa": "2026-09-27T10:01:09.207Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 0,
+  "cuBazaDeclarata": 0,
+  "faraBazaDeclarata": 0,
+  "surse": {},
+  "colectari": {},
+  "net": {
+   "n": 0
+  },
+  "netMinimOferit": {
+   "n": 0
+  },
+  "netMaximOferit": {
+   "n": 0
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 0
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {}
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 0,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {},
+  "surse": {},
+  "peJudet": {},
+  "motiveFaraSalariu": {},
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 4,
+  "posturi": 5,
+  "ofertePeGrupaCor": 7,
+  "tipSalariu": {
+   "none": {
+    "n": 4,
+    "procent": 100
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 0
+  },
+  "brutMinimDeclarat": {
+   "n": 0
+  },
+  "laSalariulMinim": 0,
+  "studii": {
+   "Gimnazial - ȘCOALĂ GENERALĂ": {
+    "n": 3,
+    "procent": 75
+   },
+   "Profesional - ȘCOALĂ PROFESIONALĂ": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "experienta": {
+   "Fără experiență - 0 ani": {
+    "n": 4,
+    "procent": 100
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 4,
+    "procent": 100
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 4,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 4,
+    "procent": 100
+   }
+  },
+  "judete": {
+   "Mureș": {
+    "n": 2,
+    "procent": 50
+   },
+   "Timiș": {
+    "n": 1,
+    "procent": 25
+   },
+   "Sibiu": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "domenii": {
+   "Altele": {
+    "n": 4,
+    "procent": 100
+   }
+  },
+  "coduriCorInGrupa": {
+   "731816 - TESATOR": {
+    "n": 4,
+    "procent": 57.1
+   },
+   "731824 - CONFECTIONER TRICOTAJE DUPA COMANDA": {
+    "n": 1,
+    "procent": 14.3
+   },
+   "731835 - PREGATITOR ARTICOLE MAROCHINARIE": {
+    "n": 1,
+    "procent": 14.3
+   },
+   "731825 - FINISOR TEXTILE (VOPSITOR, IMPRIMEUR)": {
+    "n": 1,
+    "procent": 14.3
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 0,
+  "institutii": 0,
+  "judete": {},
+  "tipInstitutie": {},
+  "perioade": {},
+  "studii": {},
+  "bazaBruta": {
+   "n": 0
+  },
+  "bazaCuSporuriFixe": {
+   "n": 0
+  },
+  "peGradatie": {},
+  "peFunctie": {}
+ }
+}

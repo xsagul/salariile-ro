@@ -1,0 +1,248 @@
+{
+ "slug": "ingrijitor-batrani",
+ "nume": "Îngrijitor de bătrâni",
+ "cor": "532201",
+ "generatLa": "2026-09-27T10:01:09.190Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 1,
+  "cuBazaDeclarata": 0,
+  "faraBazaDeclarata": 1,
+  "surse": {
+   "publi24": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "net": {
+   "n": 0
+  },
+  "netMinimOferit": {
+   "n": 0
+  },
+  "netMaximOferit": {
+   "n": 0
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 1
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-09": {
+    "n": 1,
+    "procent": 100
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 1,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "ejobs": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "peJudet": {},
+  "motiveFaraSalariu": {
+   "country_unconfirmed": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 1,
+  "posturi": 2,
+  "ofertePeGrupaCor": 8,
+  "tipSalariu": {
+   "net": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 1
+  },
+  "brutMinimDeclarat": {
+   "n": 0
+  },
+  "laSalariulMinim": 0,
+  "studii": {
+   "Liceal - LICEU TEORETIC": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "experienta": {
+   "Fără experiență - 0 ani": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "La domiciliu": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "judete": {
+   "Timiș": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "domenii": {
+   "Medicină / Sănătate /Psihoterapie": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "coduriCorInGrupa": {
+   "532203 - ASISTENT PERSONAL AL PERSOANEI CU HANDICAP GRAV": {
+    "n": 7,
+    "procent": 87.5
+   },
+   "532201 - ÎNGRIJITOR BATRÂNI LA DOMICILIU": {
+    "n": 1,
+    "procent": 12.5
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 17,
+  "institutii": 4,
+  "judete": {
+   "B": {
+    "n": 10,
+    "procent": 58.8
+   },
+   "CL": {
+    "n": 5,
+    "procent": 29.4
+   },
+   "BV": {
+    "n": 2,
+    "procent": 11.8
+   }
+  },
+  "tipInstitutie": {
+   "dgaspc": {
+    "n": 17,
+    "procent": 100
+   }
+  },
+  "perioade": {
+   "2026-03": {
+    "n": 17,
+    "procent": 100
+   }
+  },
+  "studii": {
+   "M": {
+    "n": 10,
+    "procent": 58.8
+   }
+  },
+  "bazaBruta": {
+   "n": 17,
+   "p10": 3550,
+   "p25": 4050,
+   "median": 4797,
+   "p75": 6035,
+   "p90": 6339,
+   "min": 2158,
+   "max": 6339
+  },
+  "bazaCuSporuriFixe": {
+   "n": 17,
+   "p10": 3550,
+   "p25": 4050,
+   "median": 4797,
+   "p75": 6335,
+   "p90": 6848,
+   "min": 2631,
+   "max": 7174
+  },
+  "peGradatie": {},
+  "peFunctie": {
+   "Ingrijitor M/G spor pentru condiții periculoase sau vătămăto": {
+    "n": 5
+   },
+   "Îngrijitor, gradație vechime 5": {
+    "n": 2
+   },
+   "Ingrijitor copii M/G spor pentru condiții periculoase sau vă": {
+    "n": 2
+   },
+   "îngrijitoare": {
+    "n": 1
+   },
+   "îngrijitor la domiciliu": {
+    "n": 1
+   },
+   "Îngrijitor, gradație vechime 4": {
+    "n": 1
+   },
+   "Îngrijitor, gradație vechime 3": {
+    "n": 1
+   },
+   "Îngrijitor, gradație vechime": {
+    "n": 1
+   },
+   "ÎNGRIJITOR M;G": {
+    "n": 1
+   },
+   "ÎNGRIJITOR LA DOMICILIU M,G": {
+    "n": 1
+   },
+   "INGRIJITOARE, SPALATOREASA M,G": {
+    "n": 1
+   }
+  }
+ }
+}

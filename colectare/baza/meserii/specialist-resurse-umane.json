@@ -1,0 +1,260 @@
+{
+ "slug": "specialist-resurse-umane",
+ "nume": "Specialist resurse umane",
+ "cor": "242314",
+ "generatLa": "2026-09-27T10:01:09.169Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 18,
+  "cuBazaDeclarata": 9,
+  "faraBazaDeclarata": 9,
+  "surse": {
+   "ejobs": {
+    "n": 12,
+    "procent": 66.7
+   },
+   "bestjobs": {
+    "n": 4,
+    "procent": 22.2
+   },
+   "olx": {
+    "n": 1,
+    "procent": 5.6
+   },
+   "hipo": {
+    "n": 1,
+    "procent": 5.6
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 15,
+    "procent": 83.3
+   },
+   "continuă": {
+    "n": 3,
+    "procent": 16.7
+   }
+  },
+  "net": {
+   "n": 9
+  },
+  "netMinimOferit": {
+   "n": 9
+  },
+  "netMaximOferit": {
+   "n": 9
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 9
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-09": {
+    "n": 11,
+    "procent": 61.1
+   },
+   "2026-08": {
+    "n": 7,
+    "procent": 38.9
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 3,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 3,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "ejobs": {
+    "n": 3,
+    "procent": 100
+   }
+  },
+  "peJudet": {
+   "10": {
+    "n": 3,
+    "procent": 100
+   }
+  },
+  "motiveFaraSalariu": {},
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 9,
+  "posturi": 9,
+  "ofertePeGrupaCor": 16,
+  "tipSalariu": {
+   "none": {
+    "n": 5,
+    "procent": 55.6
+   },
+   "gross": {
+    "n": 4,
+    "procent": 44.4
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 0
+  },
+  "brutMinimDeclarat": {
+   "n": 3
+  },
+  "laSalariulMinim": 1,
+  "studii": {
+   "Universitar - ÎNVĂȚĂMÂNT SUPERIOR": {
+    "n": 8,
+    "procent": 88.9
+   },
+   "Liceal - LICEU DE SPECIALITATE": {
+    "n": 1,
+    "procent": 11.1
+   }
+  },
+  "experienta": {
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 4,
+    "procent": 44.4
+   },
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 3,
+    "procent": 33.3
+   },
+   "Fără experiență - 0 ani": {
+    "n": 2,
+    "procent": 22.2
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 9,
+    "procent": 100
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 9,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 7,
+    "procent": 77.8
+   },
+   "Hibrid - sediu + telemuncă": {
+    "n": 2,
+    "procent": 22.2
+   }
+  },
+  "judete": {
+   "Cluj": {
+    "n": 2,
+    "procent": 22.2
+   },
+   "Municipiul București": {
+    "n": 2,
+    "procent": 22.2
+   },
+   "Prahova": {
+    "n": 2,
+    "procent": 22.2
+   },
+   "Iași": {
+    "n": 1,
+    "procent": 11.1
+   },
+   "Ilfov": {
+    "n": 1,
+    "procent": 11.1
+   },
+   "Bihor": {
+    "n": 1,
+    "procent": 11.1
+   }
+  },
+  "domenii": {
+   "Altele": {
+    "n": 3,
+    "procent": 33.3
+   },
+   "Resurse umane": {
+    "n": 2,
+    "procent": 22.2
+   },
+   "Producție / Logistică": {
+    "n": 2,
+    "procent": 22.2
+   },
+   "Construcții / Instalații": {
+    "n": 1,
+    "procent": 11.1
+   },
+   "Contabilitate / Financiar": {
+    "n": 1,
+    "procent": 11.1
+   }
+  },
+  "coduriCorInGrupa": {
+   "242314 - SPECIALIST RESURSE UMANE": {
+    "n": 9,
+    "procent": 56.3
+   },
+   "242304 - EXPERT ÎN SECURITATE SI SANATATE ÎN MUNCA": {
+    "n": 3,
+    "procent": 18.8
+   },
+   "242309 - ANALIST RECRUTARE/INTEGRARE SALARIATI": {
+    "n": 2,
+    "procent": 12.5
+   },
+   "242320 - SPECIALIST ÎN RECRUTARE": {
+    "n": 1,
+    "procent": 6.3
+   },
+   "242301 - CONSILIER FORTA DE MUNCA SI SOMAJ": {
+    "n": 1,
+    "procent": 6.3
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 0,
+  "institutii": 0,
+  "judete": {},
+  "tipInstitutie": {},
+  "perioade": {},
+  "studii": {},
+  "bazaBruta": {
+   "n": 0
+  },
+  "bazaCuSporuriFixe": {
+   "n": 0
+  },
+  "peGradatie": {},
+  "peFunctie": {}
+ }
+}

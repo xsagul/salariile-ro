@@ -1,0 +1,21 @@
+{
+ "surse": {},
+ "rulari": [
+  {
+   "run": "continuu-2026-09-27",
+   "la": "2026-09-27T09:52:46.368Z",
+   "citite": 597,
+   "acceptate": 164,
+   "stats": {
+    "inventoried": 19975,
+    "read": 597,
+    "acceptedAds": 153,
+    "acceptedBeforeDedup": 167,
+    "accepted": 164,
+    "duplicates": 3,
+    "rejected": 444,
+    "errors": 2
+   }
+  }
+ ]
+}

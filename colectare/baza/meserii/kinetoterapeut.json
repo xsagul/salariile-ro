@@ -1,0 +1,615 @@
+{
+ "slug": "kinetoterapeut",
+ "nume": "Kinetoterapeut",
+ "cor": "226401",
+ "generatLa": "2026-09-27T10:01:08.934Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 6,
+  "cuBazaDeclarata": 1,
+  "faraBazaDeclarata": 5,
+  "surse": {
+   "ejobs": {
+    "n": 3,
+    "procent": 50
+   },
+   "bestjobs": {
+    "n": 2,
+    "procent": 33.3
+   },
+   "anuntul": {
+    "n": 1,
+    "procent": 16.7
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 5,
+    "procent": 83.3
+   },
+   "continuă": {
+    "n": 1,
+    "procent": 16.7
+   }
+  },
+  "net": {
+   "n": 1
+  },
+  "netMinimOferit": {
+   "n": 1
+  },
+  "netMaximOferit": {
+   "n": 1
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 5
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-09": {
+    "n": 4,
+    "procent": 66.7
+   },
+   "2026-08": {
+    "n": 2,
+    "procent": 33.3
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 5,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {
+   "da": {
+    "n": 1,
+    "procent": 20
+   }
+  },
+  "experientaPortal": {
+   "0–1 an": {
+    "n": 1,
+    "procent": 20
+   }
+  },
+  "studii": {},
+  "limbi": {
+   "engleza": {
+    "n": 1,
+    "procent": 20
+   }
+  },
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 5,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "ejobs": {
+    "n": 4,
+    "procent": 80
+   },
+   "hipo": {
+    "n": 1,
+    "procent": 20
+   }
+  },
+  "peJudet": {
+   "10": {
+    "n": 2,
+    "procent": 40
+   },
+   "21": {
+    "n": 1,
+    "procent": 20
+   },
+   "RO": {
+    "n": 1,
+    "procent": 20
+   }
+  },
+  "motiveFaraSalariu": {
+   "country_unconfirmed": {
+    "n": 1,
+    "procent": 25
+   },
+   "foreign_or_noncomparable_work": {
+    "n": 1,
+    "procent": 25
+   },
+   "contract_or_variable_income": {
+    "n": 1,
+    "procent": 25
+   },
+   "full_time_unconfirmed": {
+    "n": 1,
+    "procent": 25
+   },
+   "salary_evidence_incomplete": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 8,
+  "posturi": 15,
+  "ofertePeGrupaCor": 23,
+  "tipSalariu": {
+   "gross": {
+    "n": 4,
+    "procent": 50
+   },
+   "net": {
+    "n": 2,
+    "procent": 25
+   },
+   "none": {
+    "n": 2,
+    "procent": 25
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 2
+  },
+  "brutMinimDeclarat": {
+   "n": 4
+  },
+  "laSalariulMinim": 1,
+  "studii": {
+   "Universitar - ÎNVĂȚĂMÂNT SUPERIOR": {
+    "n": 5,
+    "procent": 62.5
+   },
+   "Liceal - LICEU TEORETIC": {
+    "n": 3,
+    "procent": 37.5
+   }
+  },
+  "experienta": {
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 5,
+    "procent": 62.5
+   },
+   "Fără experiență - 0 ani": {
+    "n": 3,
+    "procent": 37.5
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 8,
+    "procent": 100
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 8,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 7,
+    "procent": 87.5
+   },
+   "Hibrid - sediu + la domiciliu": {
+    "n": 1,
+    "procent": 12.5
+   }
+  },
+  "judete": {
+   "Municipiul București": {
+    "n": 3,
+    "procent": 37.5
+   },
+   "Alba": {
+    "n": 2,
+    "procent": 25
+   },
+   "Hunedoara": {
+    "n": 1,
+    "procent": 12.5
+   },
+   "Brașov": {
+    "n": 1,
+    "procent": 12.5
+   },
+   "Vrancea": {
+    "n": 1,
+    "procent": 12.5
+   }
+  },
+  "domenii": {
+   "Medicină / Sănătate /Psihoterapie": {
+    "n": 8,
+    "procent": 100
+   }
+  },
+  "coduriCorInGrupa": {
+   "226405 - KINETOTERAPEUT": {
+    "n": 13,
+    "procent": 56.5
+   },
+   "226401 - FIZIOKINETOTERAPEUT": {
+    "n": 8,
+    "procent": 34.8
+   },
+   "226402 - FIZIOTERAPEUT": {
+    "n": 2,
+    "procent": 8.7
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 131,
+  "institutii": 21,
+  "judete": {
+   "CJ": {
+    "n": 20,
+    "procent": 15.3
+   },
+   "BC": {
+    "n": 20,
+    "procent": 15.3
+   },
+   "CL": {
+    "n": 18,
+    "procent": 13.7
+   },
+   "SB": {
+    "n": 13,
+    "procent": 9.9
+   },
+   "HR": {
+    "n": 11,
+    "procent": 8.4
+   },
+   "BH": {
+    "n": 8,
+    "procent": 6.1
+   },
+   "TM": {
+    "n": 8,
+    "procent": 6.1
+   },
+   "GJ": {
+    "n": 6,
+    "procent": 4.6
+   },
+   "CT": {
+    "n": 5,
+    "procent": 3.8
+   },
+   "AB": {
+    "n": 5,
+    "procent": 3.8
+   },
+   "BR": {
+    "n": 4,
+    "procent": 3.1
+   },
+   "BZ": {
+    "n": 4,
+    "procent": 3.1
+   },
+   "GR": {
+    "n": 3,
+    "procent": 2.3
+   },
+   "BV": {
+    "n": 2,
+    "procent": 1.5
+   },
+   "B": {
+    "n": 2,
+    "procent": 1.5
+   },
+   "IS": {
+    "n": 1,
+    "procent": 0.8
+   },
+   "DJ": {
+    "n": 1,
+    "procent": 0.8
+   }
+  },
+  "tipInstitutie": {
+   "spital": {
+    "n": 111,
+    "procent": 84.7
+   },
+   "dgaspc": {
+    "n": 20,
+    "procent": 15.3
+   }
+  },
+  "perioade": {
+   "2026-03": {
+    "n": 89,
+    "procent": 67.9
+   },
+   "2026-02": {
+    "n": 30,
+    "procent": 22.9
+   },
+   "2025-03": {
+    "n": 8,
+    "procent": 6.1
+   },
+   "2022-09": {
+    "n": 3,
+    "procent": 2.3
+   },
+   "2024-03": {
+    "n": 1,
+    "procent": 0.8
+   }
+  },
+  "studii": {
+   "S": {
+    "n": 48,
+    "procent": 36.6
+   },
+   "G": {
+    "n": 1,
+    "procent": 0.8
+   }
+  },
+  "bazaBruta": {
+   "n": 131,
+   "p10": 4740,
+   "p25": 6107,
+   "median": 7824,
+   "p75": 8915,
+   "p90": 9138,
+   "min": 1515,
+   "max": 10434
+  },
+  "bazaCuSporuriFixe": {
+   "n": 131,
+   "p10": 4904,
+   "p25": 6323,
+   "median": 8701,
+   "p75": 9747,
+   "p90": 11195,
+   "min": 1515,
+   "max": 14366.4
+  },
+  "peGradatie": {
+   "gradația 2": {
+    "n": 11,
+    "p10": 7333,
+    "p25": 7638,
+    "median": 8800,
+    "p75": 9727,
+    "p90": 9727,
+    "min": 4017.96,
+    "max": 9726.880000000001
+   },
+   "gradația 4": {
+    "n": 8
+   },
+   "gradația 1": {
+    "n": 4
+   },
+   "gradația 5": {
+    "n": 4
+   },
+   "gradația 3": {
+    "n": 2
+   }
+  },
+  "peFunctie": {
+   "KINETOTERAPEUT SUPERIOARE Gradatia": {
+    "n": 11,
+    "p10": 7333,
+    "p25": 7773,
+    "median": 8620,
+    "p75": 9000,
+    "p90": 9474,
+    "min": 7262,
+    "max": 10259
+   },
+   "kinetoterapeut": {
+    "n": 8
+   },
+   "KINETOTERAPEUT PRINCIPAL Legea nr. 153 art. 33": {
+    "n": 7
+   },
+   "Kinetoterapeut/logoped/terapeut ocupațional principal,": {
+    "n": 6
+   },
+   "Kinetoterapeut/logoped/terapeut ocupațional bază, gradație": {
+    "n": 6
+   },
+   "Kinetoterapeut/logoped/terapeut ocupațional debutant,": {
+    "n": 6
+   },
+   "Sectia Clinica Recuperare, Medicina fizica si Balneo. I KINE": {
+    "n": 6
+   },
+   "KINETOTERAPEUT PR Gradatia 3": {
+    "n": 5
+   },
+   "KINETOTERAPEUT PR. LAB. RECUPERARE,MEDICINA FIZICA SI BALNEO": {
+    "n": 5
+   },
+   "kinetoterapeut principal": {
+    "n": 3
+   },
+   "KINETOTERAPEUT SUPERIOARE ( S )": {
+    "n": 3
+   },
+   "Sectia Clinica Recuperare, Medicina fizica si Balneo.II KINE": {
+    "n": 3
+   },
+   "2026-02 KINETOTERAPEUT PRINC.S": {
+    "n": 3
+   },
+   "2026-02 KINETOTERAPEUT": {
+    "n": 3
+   },
+   "SECTIE RECUPERARE NEUROLOGICA Kinetoterapeut principal Grada": {
+    "n": 2
+   },
+   "Kinetoterapeut debutant SUPERIOARE ( S )": {
+    "n": 2
+   },
+   "Sectia Clinica Ortopedie si Traumatologie KINETOTERAPEUT S": {
+    "n": 2
+   },
+   "KINETOTERAPEUT Gradatia 2": {
+    "n": 2
+   },
+   "KINETOTERAPEUT PR. Cabinet RECUPERARE, MEDICINA FIZICA SI BA": {
+    "n": 2
+   },
+   "KINETOTERAPEUT PR. Sectia NEUROLOGIE": {
+    "n": 2
+   },
+   "KINETOTERAPEUT PR. Sectia ORTOPEDIE-TRAUMATOLOGIE": {
+    "n": 2
+   },
+   "KINETOTERAPEUT DEBUTANT": {
+    "n": 2
+   },
+   "KINETOTERAPEUT (servicii socio-medicale) S": {
+    "n": 1
+   },
+   "229 Kinetoterapeut pr. Gradatia 4 Contractual": {
+    "n": 1
+   },
+   "Centrul de Sanatate Mintala Copii (CSM) Kinetoterapeut princ": {
+    "n": 1
+   },
+   "Laborator recup,medicina fizica si balne‐C.Coposu Kinetotera": {
+    "n": 1
+   },
+   "Laborator recup,medicina fizica si balne‐L.Pasteur Kinetoter": {
+    "n": 1
+   },
+   "SECTIA CLINICA ATI I Kinetoterapeut principal Gradatia 5 SUP": {
+    "n": 1
+   },
+   "SECTIA CLINICA ATI II Kinetoterapeut principal Gradatia 4 SU": {
+    "n": 1
+   },
+   "Sectia Clinica NEUROLOGIE I Kinetoterapeut principal Gradati": {
+    "n": 1
+   },
+   "A.T.I. KINETOTERAPEUT SUPERIOARE Gradatia 1": {
+    "n": 1
+   },
+   "ORTOPEDIE TRAUMATOLOGIE KINETOTERAPEUT PR. SUPERIOARE Gradat": {
+    "n": 1
+   },
+   "RECUPERARE, MEDICINA FIZICA, BALNEOLOGIE KINETOTERAPEUT PR. ": {
+    "n": 1
+   },
+   "LAB. RECUPERARE MEDICINA FIZICA SI BALNEOLOGIE KINETOTERAPEU": {
+    "n": 1
+   },
+   "kinetoterapeut debutant": {
+    "n": 1
+   },
+   "Sectia Clinica A.T.I. KINETOTERAPEUT S": {
+    "n": 1
+   },
+   "Sectia Clinica A.T.I. KINETOTERAPEUT PRINCIPAL S": {
+    "n": 1
+   },
+   "KINETOTERAPEUT Legea nr. 153 art. 33": {
+    "n": 1
+   },
+   "KINETOTERAPEUT Gradatia 5": {
+    "n": 1
+   },
+   "Kinetoterapeut Gradatia": {
+    "n": 1
+   },
+   "SECTIA ORTOPEDIE SI TRAUMATOLOGIE KINETOTERAPEUT PRINCIPAL G": {
+    "n": 1
+   },
+   "SECTIA A.T.I KINETOTERAPEUT PRINCIPAL ATI Gradatia 3": {
+    "n": 1
+   },
+   "SECTIA NEUROLOGIE KINETOTERAPEUT Gradatia 2": {
+    "n": 1
+   },
+   "COMP.RECUPERARE NEUROLOGICA KINETOTERAPEUT PRINCIPAL Gradati": {
+    "n": 1
+   },
+   "CAB.RECUPERARE,MED.FIZICA SI BALNE KINETOTERAPEUT Gradatia 1": {
+    "n": 1
+   },
+   "KINETOTERAPEUT PR. CENTRU DE SANATATE MINTALA (CSM)": {
+    "n": 1
+   },
+   "KINETOTERAPEUT PR. COMPARTIMENT RECUPERARE, MED.FIZICA SI BA": {
+    "n": 1
+   },
+   "KINETOTERAPEUT PR. Sectia CARDIOLOGIE": {
+    "n": 1
+   },
+   "KINETOTERAPEUT PR. Sectia CHIRURGIE PLASTICA-MICROCHIR.RECON": {
+    "n": 1
+   },
+   "KINETOTERAPEUT PR. Sectia CHIRURGIE SI ORTOPEDIE PEDIATRICA": {
+    "n": 1
+   },
+   "KINETOTERAPEUT PR. SECTIA INGRIJIRI PALIATIVE": {
+    "n": 1
+   },
+   "KINETOTERAPEUT Sectia ONCOLOGIE MEDICALA": {
+    "n": 1
+   },
+   "KINETOTERAPEUT PR. Sectia PEDIATRIE": {
+    "n": 1
+   },
+   "KINETOTERAPEUT PR. Sectia PEDIATRIE (RECUPERARE PEDIATRICA)": {
+    "n": 1
+   },
+   "KINETOTERAPEUT PRINCIPAL (S) Sectia ATI": {
+    "n": 1
+   },
+   "KINETOTERAPEUT PRINCIPAL (S) AMBULATORIUL, INTEGRAT CU CABIN": {
+    "n": 1
+   },
+   "KINETOTERAPEUT AMBULATORIUL, INTEGRAT CU CABINETE IN SPECIAL": {
+    "n": 1
+   },
+   "KINETOTERAPEUT DEBUTANT Sectia Neurologie": {
+    "n": 1
+   },
+   "KINETOTERAPEUT": {
+    "n": 1
+   },
+   "kinetoterapeut pr": {
+    "n": 1
+   },
+   "KINETOTERAPEUT PR. Gradatia 5 Sporurile din anexele 1, 2,3,5": {
+    "n": 1
+   },
+   "KINETOTERAPEUT s l": {
+    "n": 1
+   }
+  }
+ }
+}

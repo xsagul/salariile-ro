@@ -1,0 +1,313 @@
+{
+ "slug": "educator",
+ "nume": "Educator",
+ "cor": "234201",
+ "generatLa": "2026-09-27T10:01:08.962Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 5,
+  "cuBazaDeclarata": 2,
+  "faraBazaDeclarata": 3,
+  "surse": {
+   "ejobs": {
+    "n": 2,
+    "procent": 40
+   },
+   "bestjobs": {
+    "n": 2,
+    "procent": 40
+   },
+   "olx": {
+    "n": 1,
+    "procent": 20
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 5,
+    "procent": 100
+   }
+  },
+  "net": {
+   "n": 2
+  },
+  "netMinimOferit": {
+   "n": 2
+  },
+  "netMaximOferit": {
+   "n": 2
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 3
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-09": {
+    "n": 3,
+    "procent": 60
+   },
+   "2026-08": {
+    "n": 2,
+    "procent": 40
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 0,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {},
+  "surse": {},
+  "peJudet": {},
+  "motiveFaraSalariu": {},
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 0,
+  "posturi": 0,
+  "ofertePeGrupaCor": 5,
+  "tipSalariu": {},
+  "netMinimDeclarat": {
+   "n": 0
+  },
+  "brutMinimDeclarat": {
+   "n": 0
+  },
+  "laSalariulMinim": 0,
+  "studii": {},
+  "experienta": {},
+  "contract": {},
+  "norma": {},
+  "regim": {},
+  "judete": {},
+  "domenii": {},
+  "coduriCorInGrupa": {
+   "234202 - EDUCATOARE": {
+    "n": 5,
+    "procent": 100
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 44,
+  "institutii": 4,
+  "judete": {
+   "CL": {
+    "n": 36,
+    "procent": 81.8
+   },
+   "B": {
+    "n": 7,
+    "procent": 15.9
+   },
+   "BV": {
+    "n": 1,
+    "procent": 2.3
+   }
+  },
+  "tipInstitutie": {
+   "dgaspc": {
+    "n": 43,
+    "procent": 97.7
+   },
+   "spital": {
+    "n": 1,
+    "procent": 2.3
+   }
+  },
+  "perioade": {
+   "2026-03": {
+    "n": 44,
+    "procent": 100
+   }
+  },
+  "studii": {
+   "S": {
+    "n": 21,
+    "procent": 47.7
+   },
+   "M": {
+    "n": 18,
+    "procent": 40.9
+   },
+   "PL": {
+    "n": 3,
+    "procent": 6.8
+   },
+   "SSD": {
+    "n": 1,
+    "procent": 2.3
+   }
+  },
+  "bazaBruta": {
+   "n": 44,
+   "p10": 4664,
+   "p25": 4835,
+   "median": 5295,
+   "p75": 5644,
+   "p90": 5976,
+   "min": 4332,
+   "max": 6819
+  },
+  "bazaCuSporuriFixe": {
+   "n": 44,
+   "p10": 4664,
+   "p25": 4835,
+   "median": 5295,
+   "p75": 5644,
+   "p90": 5976,
+   "min": 4332,
+   "max": 8598
+  },
+  "peGradatie": {},
+  "peFunctie": {
+   "COMUNITAR, EDUCATOR PUERICULTOR PL": {
+    "n": 2
+   },
+   "educator principal": {
+    "n": 1
+   },
+   "Educator principal S, gradație vechime 5": {
+    "n": 1
+   },
+   "Educator principal S, gradație vechime 4": {
+    "n": 1
+   },
+   "Educator principal S, gradație vechime 3": {
+    "n": 1
+   },
+   "Educator principal S, gradație vechime 2": {
+    "n": 1
+   },
+   "Educator principal S, gradație vechime 1": {
+    "n": 1
+   },
+   "Educator principal S, gradație vechime 0": {
+    "n": 1
+   },
+   "Educator bază S, gradație vechime 5": {
+    "n": 1
+   },
+   "Educator bază S, gradație vechime 4": {
+    "n": 1
+   },
+   "Educator bază S, gradație vechime 3": {
+    "n": 1
+   },
+   "Educator bază S, gradație vechime 2": {
+    "n": 1
+   },
+   "Educator bază S, gradație vechime 1": {
+    "n": 1
+   },
+   "Educator bază S, gradație vechime 0": {
+    "n": 1
+   },
+   "Educator debutant S, gradație vechime 5": {
+    "n": 1
+   },
+   "Educator debutant S, gradație vechime 4": {
+    "n": 1
+   },
+   "Educator debutant S, gradație vechime 3": {
+    "n": 1
+   },
+   "Educator debutant S, gradație vechime 2": {
+    "n": 1
+   },
+   "Educator debutant S, gradație vechime 1": {
+    "n": 1
+   },
+   "Educator debutant S, gradație vechime 0": {
+    "n": 1
+   },
+   "Educator principal M, gradație vechime 5": {
+    "n": 1
+   },
+   "Educator principal M, gradație vechime 4": {
+    "n": 1
+   },
+   "Educator principal M, gradație vechime 3": {
+    "n": 1
+   },
+   "Educator principal M, gradație vechime 2": {
+    "n": 1
+   },
+   "Educator principal M, gradație vechime 1": {
+    "n": 1
+   },
+   "Educator principal M, gradație vechime 0": {
+    "n": 1
+   },
+   "Educator bază M, gradație vechime 5": {
+    "n": 1
+   },
+   "Educator bază M, gradație vechime 4": {
+    "n": 1
+   },
+   "Educator bază M, gradație vechime 3": {
+    "n": 1
+   },
+   "Educator bază M, gradație vechime 2": {
+    "n": 1
+   },
+   "Educator bază M, gradație vechime 1": {
+    "n": 1
+   },
+   "Educator bază M, gradație vechime 0": {
+    "n": 1
+   },
+   "Educator debutant M, gradație vechime 5": {
+    "n": 1
+   },
+   "Educator debutant M, gradație vechime 4": {
+    "n": 1
+   },
+   "Educator debutant M, gradație vechime 3": {
+    "n": 1
+   },
+   "Educator debutant M, gradație vechime 2": {
+    "n": 1
+   },
+   "Educator debutant M, gradație vechime 1": {
+    "n": 1
+   },
+   "Educator debutant M, gradație vechime 0": {
+    "n": 1
+   },
+   "EDUCATOR principal S": {
+    "n": 1
+   },
+   "EDUCATOR S": {
+    "n": 1
+   },
+   "EDUCATOR debutant S": {
+    "n": 1
+   },
+   "EDUCATOR principal SSD": {
+    "n": 1
+   },
+   "EDUCATOR PRINCIPAL PL I PRINCIPAL so": {
+    "n": 1
+   }
+  }
+ }
+}

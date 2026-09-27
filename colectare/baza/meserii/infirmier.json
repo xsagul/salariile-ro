@@ -1,0 +1,2745 @@
+{
+ "slug": "infirmier",
+ "nume": "Infirmier",
+ "cor": "532103",
+ "generatLa": "2026-09-27T10:01:08.937Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 13,
+  "cuBazaDeclarata": 3,
+  "faraBazaDeclarata": 10,
+  "surse": {
+   "publi24": {
+    "n": 6,
+    "procent": 46.2
+   },
+   "anuntul": {
+    "n": 4,
+    "procent": 30.8
+   },
+   "olx": {
+    "n": 3,
+    "procent": 23.1
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 13,
+    "procent": 100
+   }
+  },
+  "net": {
+   "n": 3
+  },
+  "netMinimOferit": {
+   "n": 3
+  },
+  "netMaximOferit": {
+   "n": 3
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 10,
+   "p10": 3975,
+   "p25": 4013,
+   "median": 4225,
+   "p75": 4638,
+   "p90": 4825,
+   "min": 3750,
+   "max": 5500
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-09": {
+    "n": 7,
+    "procent": 53.8
+   },
+   "2026-08": {
+    "n": 5,
+    "procent": 38.5
+   },
+   "2026-04": {
+    "n": 1,
+    "procent": 7.7
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 1,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "ejobs": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "peJudet": {},
+  "motiveFaraSalariu": {
+   "country_unconfirmed": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 32,
+  "posturi": 98,
+  "ofertePeGrupaCor": 56,
+  "tipSalariu": {
+   "gross": {
+    "n": 18,
+    "procent": 56.3
+   },
+   "none": {
+    "n": 14,
+    "procent": 43.8
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 0
+  },
+  "brutMinimDeclarat": {
+   "n": 18,
+   "p10": 4243,
+   "p25": 4325,
+   "median": 4338,
+   "p75": 4615,
+   "p90": 5243,
+   "min": 4050,
+   "max": 5700
+  },
+  "laSalariulMinim": 8,
+  "studii": {
+   "Gimnazial - ȘCOALĂ GENERALĂ": {
+    "n": 11,
+    "procent": 34.4
+   },
+   "Profesional - ȘCOALĂ PROFESIONALĂ": {
+    "n": 8,
+    "procent": 25
+   },
+   "Liceal - LICEU TEORETIC": {
+    "n": 6,
+    "procent": 18.8
+   },
+   "Profesional - INV. COMPL. DE UCENICI": {
+    "n": 2,
+    "procent": 6.3
+   },
+   "Liceal - ȘCOALĂ SPECIALĂ": {
+    "n": 1,
+    "procent": 3.1
+   },
+   "Universitar - ÎNVĂȚĂMÂNT SUPERIOR": {
+    "n": 1,
+    "procent": 3.1
+   },
+   "Postliceal - ȘCOALĂ POSTLICEALĂ": {
+    "n": 1,
+    "procent": 3.1
+   },
+   "Liceal - LICEU DE SPECIALITATE": {
+    "n": 1,
+    "procent": 3.1
+   },
+   "Primar - FĂRĂ STUDII": {
+    "n": 1,
+    "procent": 3.1
+   }
+  },
+  "experienta": {
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 17,
+    "procent": 53.1
+   },
+   "Fără experiență - 0 ani": {
+    "n": 14,
+    "procent": 43.8
+   },
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 1,
+    "procent": 3.1
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 32,
+    "procent": 100
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 32,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 32,
+    "procent": 100
+   }
+  },
+  "judete": {
+   "Botoșani": {
+    "n": 4,
+    "procent": 12.5
+   },
+   "Alba": {
+    "n": 3,
+    "procent": 9.4
+   },
+   "Cluj": {
+    "n": 3,
+    "procent": 9.4
+   },
+   "Municipiul București": {
+    "n": 3,
+    "procent": 9.4
+   },
+   "Argeș": {
+    "n": 2,
+    "procent": 6.3
+   },
+   "Bacău": {
+    "n": 2,
+    "procent": 6.3
+   },
+   "Suceava": {
+    "n": 2,
+    "procent": 6.3
+   },
+   "Timiș": {
+    "n": 2,
+    "procent": 6.3
+   },
+   "Brașov": {
+    "n": 1,
+    "procent": 3.1
+   },
+   "Vâlcea": {
+    "n": 1,
+    "procent": 3.1
+   },
+   "Iași": {
+    "n": 1,
+    "procent": 3.1
+   },
+   "Vrancea": {
+    "n": 1,
+    "procent": 3.1
+   },
+   "Ilfov": {
+    "n": 1,
+    "procent": 3.1
+   },
+   "Neamț": {
+    "n": 1,
+    "procent": 3.1
+   },
+   "Hunedoara": {
+    "n": 1,
+    "procent": 3.1
+   },
+   "Prahova": {
+    "n": 1,
+    "procent": 3.1
+   },
+   "Galați": {
+    "n": 1,
+    "procent": 3.1
+   },
+   "Tulcea": {
+    "n": 1,
+    "procent": 3.1
+   },
+   "Sibiu": {
+    "n": 1,
+    "procent": 3.1
+   }
+  },
+  "domenii": {
+   "Medicină / Sănătate /Psihoterapie": {
+    "n": 21,
+    "procent": 65.6
+   },
+   "ASISTENTA SOCIALA": {
+    "n": 9,
+    "procent": 28.1
+   },
+   "Altele": {
+    "n": 2,
+    "procent": 6.3
+   }
+  },
+  "coduriCorInGrupa": {
+   "532103 - INFIRMIER/INFIRMIERA": {
+    "n": 32,
+    "procent": 57.1
+   },
+   "532104 - ÎNGRIJITOARE LA UNITATI DE OCROTIRE SOCIALA SI SANITARA": {
+    "n": 24,
+    "procent": 42.9
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 2962,
+  "institutii": 22,
+  "judete": {
+   "BH": {
+    "n": 423,
+    "procent": 14.3
+   },
+   "CT": {
+    "n": 421,
+    "procent": 14.2
+   },
+   "CJ": {
+    "n": 296,
+    "procent": 10
+   },
+   "BC": {
+    "n": 296,
+    "procent": 10
+   },
+   "BZ": {
+    "n": 249,
+    "procent": 8.4
+   },
+   "HR": {
+    "n": 218,
+    "procent": 7.4
+   },
+   "BR": {
+    "n": 212,
+    "procent": 7.2
+   },
+   "AB": {
+    "n": 199,
+    "procent": 6.7
+   },
+   "SB": {
+    "n": 156,
+    "procent": 5.3
+   },
+   "GR": {
+    "n": 122,
+    "procent": 4.1
+   },
+   "B": {
+    "n": 84,
+    "procent": 2.8
+   },
+   "IS": {
+    "n": 70,
+    "procent": 2.4
+   },
+   "GJ": {
+    "n": 67,
+    "procent": 2.3
+   },
+   "TM": {
+    "n": 55,
+    "procent": 1.9
+   },
+   "DJ": {
+    "n": 53,
+    "procent": 1.8
+   },
+   "BV": {
+    "n": 28,
+    "procent": 0.9
+   },
+   "CL": {
+    "n": 12,
+    "procent": 0.4
+   },
+   "VS": {
+    "n": 1,
+    "procent": 0
+   }
+  },
+  "tipInstitutie": {
+   "spital": {
+    "n": 2946,
+    "procent": 99.5
+   },
+   "dgaspc": {
+    "n": 15,
+    "procent": 0.5
+   },
+   "dsp": {
+    "n": 1,
+    "procent": 0
+   }
+  },
+  "perioade": {
+   "2026-03": {
+    "n": 2033,
+    "procent": 68.6
+   },
+   "2026-02": {
+    "n": 612,
+    "procent": 20.7
+   },
+   "2025-03": {
+    "n": 141,
+    "procent": 4.8
+   },
+   "2022-09": {
+    "n": 122,
+    "procent": 4.1
+   },
+   "2024-03": {
+    "n": 53,
+    "procent": 1.8
+   },
+   "2026-09": {
+    "n": 1,
+    "procent": 0
+   }
+  },
+  "studii": {
+   "G": {
+    "n": 1283,
+    "procent": 43.3
+   },
+   "M": {
+    "n": 228,
+    "procent": 7.7
+   },
+   "S": {
+    "n": 1,
+    "procent": 0
+   },
+   "PL": {
+    "n": 1,
+    "procent": 0
+   }
+  },
+  "bazaBruta": {
+   "n": 2962,
+   "p10": 5159,
+   "p25": 5472,
+   "median": 5747,
+   "p75": 5750,
+   "p90": 5844,
+   "min": 1502,
+   "max": 5846
+  },
+  "bazaCuSporuriFixe": {
+   "n": 2962,
+   "p10": 5559,
+   "p25": 6000,
+   "median": 6372,
+   "p75": 7069,
+   "p90": 7593,
+   "min": 1502,
+   "max": 9007.4
+  },
+  "peGradatie": {
+   "gradația 5": {
+    "n": 441,
+    "p10": 6014,
+    "p25": 6227,
+    "median": 6576,
+    "p75": 7185,
+    "p90": 7956,
+    "min": 5194,
+    "max": 9007.4
+   },
+   "gradația 4": {
+    "n": 93,
+    "p10": 5762,
+    "p25": 5923,
+    "median": 6342,
+    "p75": 7157,
+    "p90": 7579,
+    "min": 5556,
+    "max": 8413.3
+   },
+   "gradația 3": {
+    "n": 82,
+    "p10": 5533,
+    "p25": 5779,
+    "median": 6015,
+    "p75": 6286,
+    "p90": 6889,
+    "min": 3849,
+    "max": 8215.45
+   },
+   "gradația 2": {
+    "n": 48,
+    "p10": 5440,
+    "p25": 5673,
+    "median": 5759,
+    "p75": 6264,
+    "p90": 6832,
+    "min": 5209,
+    "max": 7222
+   },
+   "gradația 1": {
+    "n": 7
+   },
+   "gradația 0": {
+    "n": 3
+   }
+  },
+  "peFunctie": {
+   "Infirmiera GENERALE ( G )": {
+    "n": 403,
+    "p10": 6077,
+    "p25": 6369,
+    "median": 6971,
+    "p75": 7443,
+    "p90": 7877,
+    "min": 4900,
+    "max": 7877
+   },
+   "INFIRMIER MEDII Gradatia": {
+    "n": 111,
+    "p10": 5779,
+    "p25": 5996,
+    "median": 6072,
+    "p75": 6502,
+    "p90": 6824,
+    "min": 5211,
+    "max": 7579
+   },
+   "INFIRMIERA Gradatia 5": {
+    "n": 101,
+    "p10": 5962,
+    "p25": 6039,
+    "median": 6565,
+    "p75": 7077,
+    "p90": 7329,
+    "min": 5747,
+    "max": 7577
+   },
+   "INFIRMIERA": {
+    "n": 90,
+    "p10": 3792,
+    "p25": 4030,
+    "median": 4174,
+    "p75": 4896,
+    "p90": 5463,
+    "min": 3422,
+    "max": 5678
+   },
+   "INFIRMIER GENERALE Gradatia": {
+    "n": 82,
+    "p10": 5915,
+    "p25": 5999,
+    "median": 6072,
+    "p75": 6775,
+    "p90": 6824,
+    "min": 5750,
+    "max": 7579
+   },
+   "infirmier": {
+    "n": 58,
+    "p10": 5466,
+    "p25": 5799,
+    "median": 6093,
+    "p75": 6730,
+    "p90": 7305,
+    "min": 5099,
+    "max": 7810
+   },
+   "INFIRMIERA Legea nr. 153 art. 33": {
+    "n": 53,
+    "p10": 1515,
+    "p25": 1611,
+    "median": 1691,
+    "p75": 1733,
+    "p90": 1733,
+    "min": 1502,
+    "max": 1733
+   },
+   "infirmiera": {
+    "n": 53,
+    "p10": 5293,
+    "p25": 5545,
+    "median": 5673,
+    "p75": 6222,
+    "p90": 6606,
+    "min": 4901,
+    "max": 7273
+   },
+   "INFIRMIER Gradatia 5 Sporurile din anexele 1, 2,3,5,8 sunt a": {
+    "n": 53,
+    "p10": 5946,
+    "p25": 6046,
+    "median": 6046,
+    "p75": 6046,
+    "p90": 6046,
+    "min": 4641,
+    "max": 6144
+   },
+   "2026-02 INFIRMIERA": {
+    "n": 42,
+    "p10": 5211,
+    "p25": 5472,
+    "median": 5750,
+    "p75": 5750,
+    "p90": 5750,
+    "min": 5211,
+    "max": 5765
+   },
+   "INFIRMIERA UNITATE DE PRIMIRE URGENTE - SMURD": {
+    "n": 29,
+    "p10": 6913,
+    "p25": 7028,
+    "median": 7619,
+    "p75": 7732,
+    "p90": 8110,
+    "min": 6698,
+    "max": 8110
+   },
+   "INFIRMIERA UPU - smurd": {
+    "n": 26,
+    "p10": 6325,
+    "p25": 7119,
+    "median": 7444,
+    "p75": 7700,
+    "p90": 7877,
+    "min": 5832,
+    "max": 8281
+   },
+   "Infirmiera Gradatia": {
+    "n": 24,
+    "p10": 5289,
+    "p25": 5609,
+    "median": 5750,
+    "p75": 5750,
+    "p90": 5750,
+    "min": 1948,
+    "max": 5750
+   },
+   "INFIRMIERA Sectia ATI": {
+    "n": 23,
+    "p10": 6514,
+    "p25": 7283,
+    "median": 7579,
+    "p75": 7761,
+    "p90": 7761,
+    "min": 3849,
+    "max": 7761
+   },
+   "INFIRMIERA Gradatia 4": {
+    "n": 22,
+    "p10": 5878,
+    "p25": 5921,
+    "median": 5921,
+    "p75": 6513,
+    "p90": 6968,
+    "min": 5861,
+    "max": 7312
+   },
+   "SECTIA CLINICA ATI I Infirmiera** Gradatia 5 GENERALE Person": {
+    "n": 21,
+    "p10": 7115,
+    "p25": 7115,
+    "median": 7115,
+    "p75": 7115,
+    "p90": 7115,
+    "min": 7115,
+    "max": 7146
+   },
+   "INFIRMIERA Sectia ANESTEZIE-TERAPIE INTENSIVA": {
+    "n": 21,
+    "p10": 6388,
+    "p25": 7165,
+    "median": 7619,
+    "p75": 7732,
+    "p90": 8110,
+    "min": 5563,
+    "max": 8110
+   },
+   "INFIRMIERA Sectia PEDIATRIE": {
+    "n": 21,
+    "p10": 6011,
+    "p25": 6145,
+    "median": 6372,
+    "p75": 7081,
+    "p90": 7387,
+    "min": 5730,
+    "max": 7444
+   },
+   "UPU INFIRMIERA": {
+    "n": 19,
+    "p10": 3949,
+    "p25": 4991,
+    "median": 5288,
+    "p75": 5419,
+    "p90": 5797,
+    "min": 3949,
+    "max": 5913
+   },
+   "INFIRMIERA Sectia Neurologie": {
+    "n": 16,
+    "p10": 5722,
+    "p25": 6290,
+    "median": 6511,
+    "p75": 6643,
+    "p90": 6799,
+    "min": 5209,
+    "max": 6799
+   },
+   "infirmier debutant": {
+    "n": 15,
+    "p10": 5386,
+    "p25": 5750,
+    "median": 6220,
+    "p75": 6829,
+    "p90": 7459,
+    "min": 5107,
+    "max": 7691
+   },
+   "SECTIA CLINICA ATI II Infirmiera** Gradatia 5 GENERALE Perso": {
+    "n": 14,
+    "p10": 7115,
+    "p25": 7115,
+    "median": 7115,
+    "p75": 7115,
+    "p90": 7115,
+    "min": 7115,
+    "max": 7115
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 Infirmiera** Gradatia 5 GENERALE": {
+    "n": 14,
+    "p10": 7346,
+    "p25": 7346,
+    "median": 7346,
+    "p75": 7346,
+    "p90": 7346,
+    "min": 7346,
+    "max": 7346
+   },
+   "Infirmiera MEDII ( M )": {
+    "n": 14,
+    "p10": 6112,
+    "p25": 6236,
+    "median": 6793,
+    "p75": 7725,
+    "p90": 7877,
+    "min": 5981,
+    "max": 7877
+   },
+   "SECTIA NEUROLOGIE INFIRMIER/A Gradatia 5": {
+    "n": 14,
+    "p10": 6326,
+    "p25": 6466,
+    "median": 6723,
+    "p75": 6723,
+    "p90": 6795,
+    "min": 5750,
+    "max": 6826
+   },
+   "INFIRMIERA Sectia CHIRURGIE GENERALA": {
+    "n": 14,
+    "p10": 5365,
+    "p25": 5847,
+    "median": 6079,
+    "p75": 6217,
+    "p90": 6282,
+    "min": 5200,
+    "max": 6372
+   },
+   "INFIRMIERA Sectia NEUROLOGIE": {
+    "n": 14,
+    "p10": 6279,
+    "p25": 6511,
+    "median": 6856,
+    "p75": 6962,
+    "p90": 7124,
+    "min": 5750,
+    "max": 7124
+   },
+   "INFIRMIERA Sectia Cardiologie": {
+    "n": 14,
+    "p10": 5809,
+    "p25": 6016,
+    "median": 6221,
+    "p75": 6716,
+    "p90": 7071,
+    "min": 5470,
+    "max": 7121
+   },
+   "INFIRMIERA Sectia Obstretica Ginecologie": {
+    "n": 14,
+    "p10": 5614,
+    "p25": 5806,
+    "median": 6015,
+    "p75": 6273,
+    "p90": 6305,
+    "min": 5470,
+    "max": 6305
+   },
+   "INFIRMIERA Sectia Chirurgie generala": {
+    "n": 14,
+    "p10": 5565,
+    "p25": 5784,
+    "median": 6266,
+    "p75": 6720,
+    "p90": 6799,
+    "min": 5143,
+    "max": 6799
+   },
+   "2026-02 INFIRMIERA -UPU+ATI (upu/smurd)": {
+    "n": 14,
+    "p10": 5298,
+    "p25": 5598,
+    "median": 5846,
+    "p75": 5846,
+    "p90": 5846,
+    "min": 5045,
+    "max": 5846
+   },
+   "NEONATOLOGIE INFIRMIERA Gradatia 5": {
+    "n": 13,
+    "p10": 5747,
+    "p25": 5747,
+    "median": 5747,
+    "p75": 6230,
+    "p90": 7798,
+    "min": 5747,
+    "max": 7808
+   },
+   "INFIRMIERA Sectia OBSTETRICA-GINECOLOGIE I": {
+    "n": 13,
+    "p10": 5803,
+    "p25": 6079,
+    "median": 6324,
+    "p75": 6372,
+    "p90": 6409,
+    "min": 5547,
+    "max": 6542
+   },
+   "INFIRMIERA Sectia Pneumologie": {
+    "n": 13,
+    "p10": 6546,
+    "p25": 6928,
+    "median": 7094,
+    "p75": 7443,
+    "p90": 7443,
+    "min": 5470,
+    "max": 7593
+   },
+   "SECTIA CLINICA OBSTETRICA GINECOLOGIE I Infirmiera Gradatia ": {
+    "n": 12,
+    "p10": 5857,
+    "p25": 5857,
+    "median": 6005,
+    "p75": 6005,
+    "p90": 6005,
+    "min": 5715,
+    "max": 6005
+   },
+   "Sectia Clinica A.T.I. INFIRMIERA G": {
+    "n": 11,
+    "p10": 8317,
+    "p25": 8365,
+    "median": 8417,
+    "p75": 8617,
+    "p90": 8617,
+    "min": 8215.45,
+    "max": 8616.8
+   },
+   "UNITATE PRIMIRE URGENTE INFIRMIER/A UPU Gradatia 5": {
+    "n": 11,
+    "p10": 7445,
+    "p25": 7445,
+    "median": 7532,
+    "p75": 7749,
+    "p90": 7879,
+    "min": 7445,
+    "max": 7879
+   },
+   "INFIRMIERA Sectia OBSTETRICA-GINECOLOGIE II": {
+    "n": 11,
+    "p10": 6002,
+    "p25": 6338,
+    "median": 6372,
+    "p75": 6639,
+    "p90": 6685,
+    "min": 5503,
+    "max": 6710
+   },
+   "INFIRMIERA Sectia Pediatrie": {
+    "n": 11,
+    "p10": 6015,
+    "p25": 6066,
+    "median": 6305,
+    "p75": 6314,
+    "p90": 6548,
+    "min": 5854,
+    "max": 6799
+   },
+   "INFIRMIERA Sectia Medicina interna": {
+    "n": 11,
+    "p10": 5743,
+    "p25": 6076,
+    "median": 6305,
+    "p75": 6305,
+    "p90": 6305,
+    "min": 4638,
+    "max": 6305
+   },
+   "U.P.U. INFIRMIERA U.P.U. GENERALE Gradatia 5": {
+    "n": 10,
+    "p10": 7990,
+    "p25": 7995,
+    "median": 8092,
+    "p75": 8256,
+    "p90": 8413,
+    "min": 7943,
+    "max": 8430
+   },
+   "Sectia Clinica Obstetrica-Ginecologie II INFIRMIERA G": {
+    "n": 10,
+    "p10": 6546,
+    "p25": 6576,
+    "median": 6576,
+    "p75": 7126,
+    "p90": 7151,
+    "min": 6276.4,
+    "max": 7151
+   },
+   "SECTIA PSIHIATRIE ACUTI INFIRMIER/A Gradatia 5": {
+    "n": 10,
+    "p10": 7003,
+    "p25": 7162,
+    "median": 7162,
+    "p75": 7486,
+    "p90": 7532,
+    "min": 6913,
+    "max": 7532
+   },
+   "INFIRMIERA BLOC OPERATOR": {
+    "n": 10,
+    "p10": 6975,
+    "p25": 7258,
+    "median": 7339,
+    "p75": 7616,
+    "p90": 7661,
+    "min": 6756,
+    "max": 7661
+   },
+   "INFIRMIERA Sectia MEDICINA INTERNA": {
+    "n": 10,
+    "p10": 6450,
+    "p25": 6643,
+    "median": 6748,
+    "p75": 6936,
+    "p90": 7049,
+    "min": 6450,
+    "max": 7049
+   },
+   "INFIRMIERA Sectia NEONATOLOGIE": {
+    "n": 10,
+    "p10": 6107,
+    "p25": 6326,
+    "median": 6587,
+    "p75": 6587,
+    "p90": 6960,
+    "min": 5211,
+    "max": 7419
+   },
+   "INFIRMIERA Bloc operator": {
+    "n": 10,
+    "p10": 6571,
+    "p25": 6778,
+    "median": 6954,
+    "p75": 7121,
+    "p90": 7121,
+    "min": 6386,
+    "max": 7121
+   },
+   "2026-02 STR. PROGRESULUI NR.18- UNITATEA DE INFIRMIERA": {
+    "n": 10,
+    "p10": 5472,
+    "p25": 5542,
+    "median": 5750,
+    "p75": 5750,
+    "p90": 5750,
+    "min": 5472,
+    "max": 5750
+   },
+   "SECTIA CLINICA PSIHIATRIE I Infirmiera Gradatia 5 GENERALE P": {
+    "n": 9
+   },
+   "SECTIE RECUPERARE NEUROLOGICA Infirmiera Gradatia 5 GENERALE": {
+    "n": 9
+   },
+   "SECTIA A.T.I INFIRMIERA A.T.I. Gradatia 5": {
+    "n": 9
+   },
+   "BLOC OPERATOR - CHIRURGIE INFIRMIER/A Gradatia 5": {
+    "n": 9
+   },
+   "INFIRMIERA Sectia BOLI INFECTIOASE ADULTI": {
+    "n": 9
+   },
+   "INFIRMIERA Sectia ORTOPEDIE-TRAUMATOLOGIE": {
+    "n": 9
+   },
+   "INFIRMIERA Sectia Boli infectioase": {
+    "n": 9
+   },
+   "ATI INFIRMIERA": {
+    "n": 9
+   },
+   "Compartiment Neurologie II Infirmiera Gradatia 5 GENERALE Pe": {
+    "n": 8
+   },
+   "SECTIA CLINICA PNEUMOLOGIE II Infirmiera Gradatia 5 GENERALE": {
+    "n": 8
+   },
+   "SECTIA CLINICA PSIHIATRIE III Infirmiera Gradatia 5 GENERALE": {
+    "n": 8
+   },
+   "BLOC OPERATOR - CORP A INFIRMIERA GENERALE Gradatia 5": {
+    "n": 8
+   },
+   "Unitate Primire Urgente(UPU)-SMURD INFIRMIERA G": {
+    "n": 8
+   },
+   "A.T.I. INFIRMIERA Gradatia 5": {
+    "n": 8
+   },
+   "DE NASTERE INFIRMIERA Gradatia 5": {
+    "n": 8
+   },
+   "SECTIA ONCOLOGIE MEDICALA INFIRMIER/A Gradatia 5": {
+    "n": 8
+   },
+   "INFIRMIERA Sectia CHIRURGIE PLASTICA-MICROCHIR.RECONSTRUCTIV": {
+    "n": 8
+   },
+   "INFIRMIERA Sectia CHIRURGIE SI ORTOPEDIE PEDIATRICA": {
+    "n": 8
+   },
+   "INFIRMIERA Sectia PEDIATRIE (RECUPERARE PEDIATRICA)": {
+    "n": 8
+   },
+   "INFIRMIERA (ATI) MEDII Gradatia": {
+    "n": 8
+   },
+   "SECTIA CLINICA BOLI INFECTIOASE I Infirmiera Gradatia 5 GENE": {
+    "n": 7
+   },
+   "SECTIA CLINICA MEDICINA INTERNA II INFIRMIERA GENERALE Grada": {
+    "n": 7
+   },
+   "SECTIA PEDIATRIE INFIRMIERA GENERALE Gradatia 5": {
+    "n": 7
+   },
+   "Sectia Clinica Neurologie INFIRMIERA G": {
+    "n": 7
+   },
+   "INFIRMIERA Gradatia 2": {
+    "n": 7
+   },
+   "SECTIA CHIRURGIE GENERALA INFIRMIER/A Gradatia 5": {
+    "n": 7
+   },
+   "SECTIA OBSTETRICA GINECOLOGIE INFIRMIER/A Gradatia 5": {
+    "n": 7
+   },
+   "COMP.BOLI INFECTIOASE INFIRMIER/A Gradatia 5": {
+    "n": 7
+   },
+   "INFIRMIERA Sectia BOLI INFECTIOASE COPII": {
+    "n": 7
+   },
+   "INFIRMIERA SECTIA NEUROCHIRURGIE": {
+    "n": 7
+   },
+   "INFIRMIERA Sectia PSIHIATRIE": {
+    "n": 7
+   },
+   "INFIRMIERA Sectia Neonatologie": {
+    "n": 7
+   },
+   "INFIRMIERA Sectia Ortopedie si Traumatologie": {
+    "n": 7
+   },
+   "SECTIA CLINICA ATI I Infirmiera** Gradatia 4 GENERALE Person": {
+    "n": 6
+   },
+   "Sectia Clinica CARDIOLOGIE I Infirmiera Gradatia 5 GENERALE ": {
+    "n": 6
+   },
+   "Sectia Clinica NEUROCHIRURGIE Infirmiera Gradatia 5 GENERALE": {
+    "n": 6
+   },
+   "SECTIA CLINICA PEDIATRIE I Infirmiera Gradatia 5 GENERALE Pe": {
+    "n": 6
+   },
+   "SECTIA CLINICA PSIHIATRIE II Infirmiera Gradatia 5 GENERALE ": {
+    "n": 6
+   },
+   "A.T.I. INFIRMIERA ATI GENERALE Gradatia 5": {
+    "n": 6
+   },
+   "Bloc Clinic Operator INFIRMIERA G": {
+    "n": 6
+   },
+   "Sectia Clinica Ortopedie si Traumatologie INFIRMIERA G": {
+    "n": 6
+   },
+   "GINECOLOGIE INFIRMIERA Gradatia 5": {
+    "n": 6
+   },
+   "INFIRMIERA COMPARTIMENT CHIRURGIE CARDIOVASCULARA": {
+    "n": 6
+   },
+   "INFIRMIERA ANESTEZIE-TERAPIE INTENSIVA - MATERNITATE": {
+    "n": 6
+   },
+   "INFIRMIERA Sectia CARDIOLOGIE": {
+    "n": 6
+   },
+   "INFIRMIERA SECTIA INGRIJIRI PALIATIVE": {
+    "n": 6
+   },
+   "INFIRMIERA Sectia UROLOGIE": {
+    "n": 6
+   },
+   "INFIRMIERA Sectia Urologie": {
+    "n": 6
+   },
+   "INFIRMIERA Compartiment Chirurgie plastica, microchirurgie r": {
+    "n": 6
+   },
+   "INFIRMIERA Compartiment ATI Obstetrica Ginecologie": {
+    "n": 6
+   },
+   "INFIRMIERA Bloc operator OG": {
+    "n": 6
+   },
+   "INFIRMIERA Sectia ORL": {
+    "n": 6
+   },
+   "INFIRMIERA Sectia Oncologie Medicala": {
+    "n": 6
+   },
+   "INFIRMIERA Sectia Gastroenterologie": {
+    "n": 6
+   },
+   "Compartiment CHIRURGIE CARDIO‐VASCULARA Infirmiera Gradatia ": {
+    "n": 5
+   },
+   "COMPARTIMENT USTACC Infirmiera** Gradatia 5 GENERALE Persona": {
+    "n": 5
+   },
+   "SECTIA CLINICA ATI III Infirmiera** Gradatia 5 GENERALE Pers": {
+    "n": 5
+   },
+   "SECTIA CLINICA CHIRURGIE GENERALA SI ONCOLOG Infirmiera Grad": {
+    "n": 5
+   },
+   "Sectia Clinica GASTROENTEROLOGIE Infirmiera Gradatia 5 GENER": {
+    "n": 5
+   },
+   "SECTIA CLINICA MEDICINA INTERNA I Infirmiera Gradatia 5 GENE": {
+    "n": 5
+   },
+   "Sectia Clinica NEUROLOGIE I Infirmiera Gradatia 5 GENERALE P": {
+    "n": 5
+   },
+   "Sectia Clinica ORTOPEDIE‐TRAUMATOLOGIE I Infirmiera Gradatia": {
+    "n": 5
+   },
+   "SECTIA CLINICA PEDIATRIE II Infirmiera Gradatia 5 GENERALE P": {
+    "n": 5
+   },
+   "SECTIA CLINICA PEDIATRIE III Infirmiera Gradatia 5 GENERALE ": {
+    "n": 5
+   },
+   "SECTIA CLINICA PNEUMOLOGIE III Infirmiera Gradatia 5 GENERAL": {
+    "n": 5
+   },
+   "SECTIA INGRIJIRI PALEATIVE Infirmiera Gradatia 5 GENERALE Pe": {
+    "n": 5
+   },
+   "A.T.I. INFIRMIERA ATI MEDII Gradatia 5": {
+    "n": 5
+   },
+   "A.T.I. II INFIRMIERA ATI MEDII Gradatia 5": {
+    "n": 5
+   },
+   "SECTIA CLINICA CHIRURGIE GENERALA I INFIRMIERA GENERALE Grad": {
+    "n": 5
+   },
+   "SECTIA MEDICINA INTERNA I INFIRMIERA GENERALE Gradatia 5": {
+    "n": 5
+   },
+   "Sectia A.T.I. Obstetrica-Ginecologie INFIRMIERA G": {
+    "n": 5
+   },
+   "Sectia Clinica Medicina Interna I INFIRMIERA G": {
+    "n": 5
+   },
+   "Compartiment T.I. Neonatologie INFIRMIERA G": {
+    "n": 5
+   },
+   "Sectia Clinica O.R.L. INFIRMIERA G": {
+    "n": 5
+   },
+   "Sectia Clinica Chirurgie Generala I INFIRMIERA G": {
+    "n": 5
+   },
+   "INFIRMIERA Gradatia 3": {
+    "n": 5
+   },
+   "GINECOLOGIE INFIRMIERA Gradatia 4": {
+    "n": 5
+   },
+   "NEONATOLOGIE INFIRMIERA Gradatia 3": {
+    "n": 5
+   },
+   "COMP.PEDIATRIE INFIRMIER/A Gradatia 5": {
+    "n": 5
+   },
+   "SECTIA RECUPERARE,MEDICINA FIZICA SI BALNEOLOGIE INFIRMIER/A": {
+    "n": 5
+   },
+   "INFIRMIERA CENTRUL DE HEMODIALIZA": {
+    "n": 5
+   },
+   "INFIRMIERA Sectia DERMATO-VENEROLOGIE": {
+    "n": 5
+   },
+   "INFIRMIERA Sectia GASTROENTEROLOGIE": {
+    "n": 5
+   },
+   "INFIRMIERA Bloc sali nastere OG I + OG II": {
+    "n": 5
+   },
+   "INFIRMIERA Compartiment Oftalmologie": {
+    "n": 5
+   },
+   "INFIRMIER Gradatia 4 Sporurile din anexele 1, 2,3,5,8 sunt a": {
+    "n": 5
+   },
+   "INFIRMIERA Gradatia 5 Sporurile din anexele 1, 2,3,5,8 sunt ": {
+    "n": 5
+   },
+   "BLOC DE NASTERI‐str.Clujului nr.50 Infirmiera Gradatia 5 GEN": {
+    "n": 4
+   },
+   "BLOC OPERATOR‐str.C.Coposu nr.12 Infirmiera Gradatia 5 GENER": {
+    "n": 4
+   },
+   "Compartiment RADIOTERAPIE Infirmiera Gradatia 5 GENERALE Per": {
+    "n": 4
+   },
+   "Compartiment TBC copii Infirmiera Gradatia 5 GENERALE Person": {
+    "n": 4
+   },
+   "Compartiment UAVCA Infirmiera Gradatia 5 GENERALE Personal a": {
+    "n": 4
+   },
+   "SECTIA CARDIOLOGIE II Infirmiera Gradatia 5 GENERALE Persona": {
+    "n": 4
+   },
+   "SECTIA CLINICA BOLI INFECTIOASE II Infirmiera Gradatia 5 GEN": {
+    "n": 4
+   },
+   "Sectia Clinica CHIRURGIE PLASTICA, MICROCHIR. RE Infirmiera ": {
+    "n": 4
+   },
+   "SECTIA CLINICA ONCOLOGIE MEDICALA Infirmiera Gradatia 5 GENE": {
+    "n": 4
+   },
+   "Sectia Clinica ORTOPEDIE‐TRAUMATOLOGIE II Infirmiera Gradati": {
+    "n": 4
+   },
+   "Sectia Clinica UROLOGIE Infirmiera Gradatia 5 GENERALE Perso": {
+    "n": 4
+   },
+   "A.T.I. II INFIRMIERA ATI GENERALE Gradatia 5": {
+    "n": 4
+   },
+   "BLOC OPERATOR - CORP A INFIRMIERA MEDII Gradatia 5": {
+    "n": 4
+   },
+   "NEUROLOGIE INFIRMIERA GENERALE Gradatia 5": {
+    "n": 4
+   },
+   "SECTIA CARDIOLOGIE INFIRMIERA GENERALE Gradatia 5": {
+    "n": 4
+   },
+   "SECTIA CLINICA CHIR. PLASTICA SI MICROCHIR. RECUP. INFIRMIER": {
+    "n": 4
+   },
+   "SECTIA CLINICA CHIRURGIE GENERALA I INFIRMIERA MEDII Gradati": {
+    "n": 4
+   },
+   "SECTIA OBSTETRICA - GINECOLOGIE I INFIRMIERA MEDII Gradatia ": {
+    "n": 4
+   },
+   "SECTIA OBSTETRICA - GINECOLOGIE II INFIRMIERA GENERALE Grada": {
+    "n": 4
+   },
+   "SECTIA PEDIATRIE INFIRMIERA MEDII Gradatia 5": {
+    "n": 4
+   },
+   "U.P.U. INFIRMIERA U.P.U. MEDII Gradatia 4": {
+    "n": 4
+   },
+   "Sectia Clinica Cardiologie II INFIRMIERA G": {
+    "n": 4
+   },
+   "Sectia Clinica Obstetrica-Ginecologie I INFIRMIERA G": {
+    "n": 4
+   },
+   "Sectia Clinica Neurochirurgie INFIRMIERA G": {
+    "n": 4
+   },
+   "Sectia Clinica Recuperare, Medicina fizica si Balneo.II INFI": {
+    "n": 4
+   },
+   "Sectia Clinica Cardiologie I INFIRMIERA G": {
+    "n": 4
+   },
+   "Sectia Clinica Oncologie Medicala INFIRMIERA G": {
+    "n": 4
+   },
+   "Sectia Chirurgie Plastica,Estetica si Microchirurgie Re INFI": {
+    "n": 4
+   },
+   "OBSTETRICA INFIRMIERA Gradatia 4": {
+    "n": 4
+   },
+   "OBSTETRICA INFIRMIERA Gradatia 5": {
+    "n": 4
+   },
+   "GARDA INFIRMIERA Gradatia 5": {
+    "n": 4
+   },
+   "COMPARTIMENT NEFROLOGIE INFIRMIER/A Gradatia 5": {
+    "n": 4
+   },
+   "SECTIA A.T.I INFIRMIERA A.T.I. Gradatia 4": {
+    "n": 4
+   },
+   "COMP.RECUPERARE NEUROLOGICA INFIRMIER/A Gradatia 5": {
+    "n": 4
+   },
+   "COMPARTIMENT PSIHIATRIE CRONICI BAIA DE ARIES INFIRMIER/A Gr": {
+    "n": 4
+   },
+   "BLOC OPERATOR - ORTOPEDIE SI TRAUMATOLOGIE INFIRMIER/A Grada": {
+    "n": 4
+   },
+   "INFIRMIERA COMPARTIMENT NEFROLOGIE": {
+    "n": 4
+   },
+   "INFIRMIERA COMPARTIMENT A.T.I. copii": {
+    "n": 4
+   },
+   "INFIRMIERA Sectia O.R.L.": {
+    "n": 4
+   },
+   "INFIRMIERA Sectia ONCOLOGIE MEDICALA": {
+    "n": 4
+   },
+   "INFIRMIERA Compartiment Diabet zaharat nutritie si boli meta": {
+    "n": 4
+   },
+   "INFIRMIER (UPU) GENERALE Gradatia": {
+    "n": 4
+   },
+   "INFIRMIER Gradatia 3 Sporurile din anexele 1, 2,3,5,8 sunt a": {
+    "n": 4
+   },
+   "INFIRMIER Gradatia 2 Sporurile din anexele 1, 2,3,5,8 sunt a": {
+    "n": 4
+   },
+   "BLOC OPERATOR‐str,Gh.Doja nr.65 Infirmiera Gradatia 5 GENERA": {
+    "n": 3
+   },
+   "CAMERA DE GARDA OBSTETRICA‐GINECOLOGIE‐St. Infirmiera Gradat": {
+    "n": 3
+   },
+   "COMPARTIMENT CARDIOLOGIE INTERVENTIONALA Infirmiera Gradatia": {
+    "n": 3
+   },
+   "SECTIA CLINICA ATI II Infirmiera** Gradatia 4 GENERALE Perso": {
+    "n": 3
+   },
+   "Sectia Clinica MEDICINA INTERNA III Infirmiera Gradatia 5 GE": {
+    "n": 3
+   },
+   "SECTIA CLINICA NEFROLOGIE Infirmiera Gradatia 4 GENERALE Per": {
+    "n": 3
+   },
+   "SECTIA INGRIJIRI PALEATIVE Infirmiera debutant Gradatia 5 GE": {
+    "n": 3
+   },
+   "DIABET ZAHARAT, NUTRITIE SI BOLI METABOLICE INFIRMIERA MEDII": {
+    "n": 3
+   },
+   "ONCOLOGIE MEDICALA INFIRMIERA MEDII Gradatia 5": {
+    "n": 3
+   },
+   "SECTIA CLINICA MEDICINA INTERNA II INFIRMIERA MEDII Gradatia": {
+    "n": 3
+   },
+   "SECTIA NEONATOLOGIE INFIRMIERA ATI GENERALE Gradatia 5": {
+    "n": 3
+   },
+   "U.P.U. INFIRMIERA U.P.U. GENERALE Gradatia 4": {
+    "n": 3
+   },
+   "U.P.U. INFIRMIERA U.P.U. MEDII Gradatia 5": {
+    "n": 3
+   },
+   "Infirmiera debutant GENERALE ( G )": {
+    "n": 3
+   },
+   "Sectia Hematologie INFIRMIERA G": {
+    "n": 3
+   },
+   "Sectia Clinica Boli Infectioase INFIRMIERA G": {
+    "n": 3
+   },
+   "Sectia Clinica Urologie INFIRMIERA G": {
+    "n": 3
+   },
+   "Compartiment Clinic Endocrinologie INFIRMIERA G": {
+    "n": 3
+   },
+   "Sectia Clinic Medicina-Interna II INFIRMIERA G": {
+    "n": 3
+   },
+   "Sectia Clinica Recuperare, Medicina fizica si Balneo. I INFI": {
+    "n": 3
+   },
+   "Sectia Clinica Chirurg. Generala II INFIRMIERA G": {
+    "n": 3
+   },
+   "INFIRMIER Gradatia 5": {
+    "n": 3
+   },
+   "GINECOLOGIE INFIRMIERA Gradatia 3": {
+    "n": 3
+   },
+   "OBSTETRICA INFIRMIERA Gradatia 3": {
+    "n": 3
+   },
+   "NEONATOLOGIE INFIRMIERA Gradatia 2": {
+    "n": 3
+   },
+   "SECTIA GASTROENTEROLOGIE INFIRMIER/A Gradatia 5": {
+    "n": 3
+   },
+   "COMP.CARDIOLOGIE INFIRMIER/A Gradatia 5": {
+    "n": 3
+   },
+   "SECTIA ONCOLOGIE MEDICALA-COMP.INGRIJIRI PALIATIVE INFIRMIER": {
+    "n": 3
+   },
+   "COMP. DIABET ZAHARAT,NUTRITIE SI BOLI METABOLICE INFIRMIER/A": {
+    "n": 3
+   },
+   "COMP.NEUROCHIRURGIE INFIRMIER/A Gradatia 5": {
+    "n": 3
+   },
+   "COMPARTIMENT UROLOGIE INFIRMIER/A Gradatia 3": {
+    "n": 3
+   },
+   "COMPARTIMENT UROLOGIE INFIRMIER/A Gradatia 5": {
+    "n": 3
+   },
+   "SECTIA NEONATOLOGIE-COMP.TERAPIE INTENSIVA INFIRMIERA T.I. G": {
+    "n": 3
+   },
+   "COMP.OFTALMOLOGIE INFIRMIER/A Gradatia 5": {
+    "n": 3
+   },
+   "SECTIA ORTOPEDIE SI TRAUMATOLOGIE INFIRMIER/A Gradatia 5": {
+    "n": 3
+   },
+   "COMP. O.R.L INFIRMIER/A Gradatia 5": {
+    "n": 3
+   },
+   "COMP.DERMATO-VENEROLOGIE INFIRMIER/A Gradatia 5": {
+    "n": 3
+   },
+   "INFIRMIERA COMPARTIMENT RADIOTERAPIE": {
+    "n": 3
+   },
+   "INFIRMIERA LAB. RECUPERARE,MEDICINA FIZICA SI BALNEOLOGIE": {
+    "n": 3
+   },
+   "INFIRMIERA Sectia DIABET ZAHARAT, NUTRITIE SI BOLI METABOLIC": {
+    "n": 3
+   },
+   "INFIRMIERA Sectia OFTALMOLOGIE": {
+    "n": 3
+   },
+   "INFIRMIERA Sectia Chirurgie si ortopedie infantila": {
+    "n": 3
+   },
+   "INFIRMIERA Compartiment Nefrologie": {
+    "n": 3
+   },
+   "INFIRMIERA Statia de dializa": {
+    "n": 3
+   },
+   "INFIRMIERA DEBUTANT Sectia Ortopedie si Traumatologie": {
+    "n": 3
+   },
+   "INFIRMIERA DEB.": {
+    "n": 3
+   },
+   "INFIRMIER DEBUTANT MEDII Gradatia": {
+    "n": 3
+   },
+   "INFIRMIERA (ATI) GENERALE Gradatia": {
+    "n": 3
+   },
+   "INFIRMIER (UPU) MEDII Gradatia": {
+    "n": 3
+   },
+   "INFIRMIERA Gradatia 4 Sporurile din anexele 1, 2,3,5,8 sunt ": {
+    "n": 3
+   },
+   "INFIRMIERA Gradatia 3 Sporurile din anexele 1, 2,3,5,8 sunt ": {
+    "n": 3
+   },
+   "BIROU INTERNARI ‐ EXTERNARI, STR.CORNELIU COP Infirmiera Gra": {
+    "n": 2
+   },
+   "BLOC DE NASTERI‐str.Clujului nr.50 Infirmiera debutant Grada": {
+    "n": 2
+   },
+   "BLOC OPERATOR‐str,Gh.Doja nr.65 Infirmiera debutant Gradatia": {
+    "n": 2
+   },
+   "BLOC OPERATOR‐str. Clujului nr.50 Infirmiera Gradatia 5 GENE": {
+    "n": 2
+   },
+   "Compartiment ORL adulti Infirmiera Gradatia 5 GENERALE Perso": {
+    "n": 2
+   },
+   "Compartiment TBC adulti Infirmiera Gradatia 4 GENERALE Perso": {
+    "n": 2
+   },
+   "Compartiment Terapie acuta pneumologie Infirmiera Gradatia 4": {
+    "n": 2
+   },
+   "COMPARTIMENT USTACC Infirmiera Gradatia 5 GENERALE Personal ": {
+    "n": 2
+   },
+   "COMPARTIMENT USTACC Infirmiera** Gradatia 4 GENERALE Persona": {
+    "n": 2
+   },
+   "SECTIA CLINICA ATI II Infirmiera** Gradatia 3 GENERALE Perso": {
+    "n": 2
+   },
+   "Sectia Clinica CHIRURGIE GENERALA I Infirmiera Gradatia 5 GE": {
+    "n": 2
+   },
+   "Sectia Clinica CHIRURGIE GENERALA II Infirmiera Gradatia 5 G": {
+    "n": 2
+   },
+   "Sectia Clinica CHIRURGIE GENERALA II Infirmiera Gradatia 4 G": {
+    "n": 2
+   },
+   "Sectia Clinica DERMATOVENEROLOGIE Infirmiera Gradatia 5 GENE": {
+    "n": 2
+   },
+   "SECTIA CLINICA HEMATOLOGIE Infirmiera Gradatia 5 GENERALE Pe": {
+    "n": 2
+   },
+   "Sectia Clinica MEDICINA INTERNA I Infirmiera debutant Gradat": {
+    "n": 2
+   },
+   "SECTIA CLINICA NEONATOLOGIE Infirmiera Gradatia 5 GENERALE P": {
+    "n": 2
+   },
+   "Sectia Clinica NEUROCHIRURGIE Infirmiera Gradatia 4 GENERALE": {
+    "n": 2
+   },
+   "SECTIA CLINICA OBSTETRICA GINECOLOGIE I Infirmiera debutant ": {
+    "n": 2
+   },
+   "SECTIA CLINICA PEDIATRIE I Infirmiera debutant Gradatia 5 GE": {
+    "n": 2
+   },
+   "SECTIA CLINICA PNEUMOLOGIE III Infirmiera debutant Gradatia ": {
+    "n": 2
+   },
+   "SECTIA CLINICA PSIHIATRIE II Infirmiera Gradatia 2 GENERALE ": {
+    "n": 2
+   },
+   "Sectia Clinica UROLOGIE Infirmiera Gradatia 4 GENERALE Perso": {
+    "n": 2
+   },
+   "SECTIE RECUPERARE NEUROLOGICA Infirmiera Gradatia 4 GENERALE": {
+    "n": 2
+   },
+   "Spitalizare de zi‐centrul oncologic Infirmiera Gradatia 5 GE": {
+    "n": 2
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 Infirmiera Gradatia 5 GENERALE P": {
+    "n": 2
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 Infirmiera** Gradatia 4 GENERALE": {
+    "n": 2
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 Infirmiera debutanta** Gradatia ": {
+    "n": 2
+   },
+   "A.T.I. INFIRMIERA ATI GENERALE Gradatia 4": {
+    "n": 2
+   },
+   "A.T.I. INFIRMIERA ATI MEDII Gradatia 4": {
+    "n": 2
+   },
+   "BLOC OPERATOR - CORP B INFIRMIERA MEDII Gradatia 5": {
+    "n": 2
+   },
+   "BOLI INFECTIOASE INFIRMIERA MEDII Gradatia 5": {
+    "n": 2
+   },
+   "CAMERA DE GARDA - CORP D INFIRMIERA GENERALE Gradatia 5": {
+    "n": 2
+   },
+   "COMP. CHIRURGIE VASCULARA INFIRMIERA GENERALE Gradatia 5": {
+    "n": 2
+   },
+   "COMP. REUMATOLOGIE INFIRMIERA GENERALE Gradatia 5": {
+    "n": 2
+   },
+   "DIABET ZAHARAT, NUTRITIE SI BOLI METABOLICE INFIRMIERA GENER": {
+    "n": 2
+   },
+   "GASTROENTEROLOGIE INFIRMIERA MEDII Gradatia 5": {
+    "n": 2
+   },
+   "NEUROLOGIE INFIRMIERA MEDII Gradatia 5": {
+    "n": 2
+   },
+   "OFTALMOLOGIE INFIRMIERA GENERALE Gradatia 5": {
+    "n": 2
+   },
+   "ORTOPEDIE TRAUMATOLOGIE INFIRMIERA MEDII Gradatia 5": {
+    "n": 2
+   },
+   "ORTOPEDIE TRAUMATOLOGIE INFIRMIERA GENERALE Gradatia 5": {
+    "n": 2
+   },
+   "RECUPERARE, MEDICINA FIZICA, BALNEOLOGIE INFIRMIERA GENERALE": {
+    "n": 2
+   },
+   "SALI NASTERI INFIRMIERA GENERALE Gradatia 5": {
+    "n": 2
+   },
+   "SECTIA MEDICINA INTERNA CRONICI INFIRMIERA GENERALE Gradatia": {
+    "n": 2
+   },
+   "STATIE HEMODIALIZA INFIRMIERA MEDII Gradatia 5": {
+    "n": 2
+   },
+   "U.P.U. INFIRMIERA U.P.U. GENERALE Gradatia 3": {
+    "n": 2
+   },
+   "Sectia Clinica Obstetrica-Ginecologie I INFIRMIERA - DEBUTAN": {
+    "n": 2
+   },
+   "Sectia Clinica Prematuri INFIRMIERA G": {
+    "n": 2
+   },
+   "Sectia Clinica Prematuri INFIRMIERA - DEBUTANTA G": {
+    "n": 2
+   },
+   "Sectia Clinica Dermato-Venerologie INFIRMIERA G": {
+    "n": 2
+   },
+   "Bloc Operator Urologie INFIRMIERA G": {
+    "n": 2
+   },
+   "Compartiment T.I. Coronarieni INFIRMIERA G": {
+    "n": 2
+   },
+   "Compartiment Chirurgie Vasculara INFIRMIERA G": {
+    "n": 2
+   },
+   "Compartiment Terapie Intensiva - Neurologie,Chir.plasti INFI": {
+    "n": 2
+   },
+   "INFIRMIER Legea nr. 153 art. 33": {
+    "n": 2
+   },
+   "INFIRMIERA Gradatia 1": {
+    "n": 2
+   },
+   "A.T.I. INFIRMIERA Gradatia 2": {
+    "n": 2
+   },
+   "GARDA INFIRMIERA Gradatia 4": {
+    "n": 2
+   },
+   "DE NASTERE INFIRMIERA Gradatia 4": {
+    "n": 2
+   },
+   "DE NASTERE INFIRMIERA Gradatia 2": {
+    "n": 2
+   },
+   "SECTIA MEDICINA INTERNA INFIRMIER/A Gradatia 5": {
+    "n": 2
+   },
+   "SECTIA CARDIOLOGIE -COMP.TERAPIE INTENSIVA CORONA. INFIRMIER": {
+    "n": 2
+   },
+   "SECTIA ONCOLOGIE MEDICALA-COMPARTIMENT HEMATOLOGIE INFIRMIER": {
+    "n": 2
+   },
+   "COMP.NEONATOLOGIE INFIRMIER/A Gradatia 5": {
+    "n": 2
+   },
+   "SECTIA ORTOPEDIE SI TRAUMATOLOGIE INFIRMIER/A Gradatia 4": {
+    "n": 2
+   },
+   "SECTIA A.T.I INFIRMIERA A.T.I. Gradatia 2": {
+    "n": 2
+   },
+   "SECTIA A.T.I INFIRMIERA A.T.I. Gradatia 3": {
+    "n": 2
+   },
+   "SECTIA NEUROLOGIE INFIRMIER/A Gradatia 2": {
+    "n": 2
+   },
+   "BLOC OPERATOR - CHIRURGIE INFIRMIER/A Gradatia 4": {
+    "n": 2
+   },
+   "UNITATE PRIMIRE URGENTE INFIRMIER/A UPU Gradatia 3": {
+    "n": 2
+   },
+   "INFIRMIERA COMPARTIMENT REUMATOLOGIE": {
+    "n": 2
+   },
+   "INFIRMIERA Compartiment Dermato-Venerologie": {
+    "n": 2
+   },
+   "INFIRMIERA Gradatia 2 Sporurile din anexele 1, 2,3,5,8 sunt ": {
+    "n": 2
+   },
+   "infirmieră": {
+    "n": 1
+   },
+   "Infirmieră, gradație vechime 5": {
+    "n": 1
+   },
+   "Infirmieră, gradație vechime 4": {
+    "n": 1
+   },
+   "Infirmieră, gradație vechime 3": {
+    "n": 1
+   },
+   "Infirmieră, gradație vechime 2": {
+    "n": 1
+   },
+   "Infirmieră, gradație vechime 1": {
+    "n": 1
+   },
+   "Infirmieră, gradație vechime 0": {
+    "n": 1
+   },
+   "Infirmieră debutant, gradație vechime 5": {
+    "n": 1
+   },
+   "Infirmieră debutant, gradație vechime 4": {
+    "n": 1
+   },
+   "Infirmieră debutant, gradație vechime 3": {
+    "n": 1
+   },
+   "Infirmieră debutant, gradație vechime 2": {
+    "n": 1
+   },
+   "Infirmieră debutant, gradație vechime 1": {
+    "n": 1
+   },
+   "Infirmieră debutant, gradație vechime 0": {
+    "n": 1
+   },
+   "INFIRMIERA M,G": {
+    "n": 1
+   },
+   "INFIRMIERA debutant M,G": {
+    "n": 1
+   },
+   "Infirmiera": {
+    "n": 1
+   },
+   "420 Infirmier Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "421 Infirmier Gradatia 4 Contractual": {
+    "n": 1
+   },
+   "422 Infirmier Gradatia 4 Contractual": {
+    "n": 1
+   },
+   "423 Infirmier Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "424 Infirmier Gradatia 2 Contractual": {
+    "n": 1
+   },
+   "425 Infirmier Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "426 Infirmier Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "427 Infirmier Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "428 Infirmier Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "429 Infirmier Gradatia 4 Contractual": {
+    "n": 1
+   },
+   "430 Infirmier Gradatia 2 Contractual": {
+    "n": 1
+   },
+   "431 Infirmier Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "432 Infirmier Gradatia 3 Contractual": {
+    "n": 1
+   },
+   "433 Infirmier Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "434 Infirmier Gradatia 2 Contractual": {
+    "n": 1
+   },
+   "435 Infirmier Gradatia 3 Contractual": {
+    "n": 1
+   },
+   "436 Infirmier Gradatia 4 Contractual": {
+    "n": 1
+   },
+   "437 Infirmier Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "438 Infirmier Gradatia 4 Contractual": {
+    "n": 1
+   },
+   "439 Infirmier Gradatia 4 Contractual": {
+    "n": 1
+   },
+   "440 Infirmier Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "441 Infirmier Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "442 Infirmier Gradatia 3 Contractual": {
+    "n": 1
+   },
+   "443 Infirmier Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "444 Infirmier Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "445 Infirmier Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "446 Infirmier Gradatia 4 Contractual": {
+    "n": 1
+   },
+   "447 Infirmier Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "448 Infirmier Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "449 Infirmier Gradatia 2 Contractual": {
+    "n": 1
+   },
+   "450 Infirmier Gradatia 2 Contractual": {
+    "n": 1
+   },
+   "451 Infirmier Gradatia 2 Contractual": {
+    "n": 1
+   },
+   "452 Infirmier Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "453 Infirmier Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "454 Infirmier Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "455 Infirmier Gradatia 3 Contractual": {
+    "n": 1
+   },
+   "456 Infirmier Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "457 Infirmier Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "458 Infirmier Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "459 Infirmier Gradatia 4 Contractual": {
+    "n": 1
+   },
+   "460 Infirmier Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "461 Infirmier Gradatia 4 Contractual": {
+    "n": 1
+   },
+   "462 Infirmier Gradatia 3 Contractual": {
+    "n": 1
+   },
+   "463 Infirmier Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "464 Infirmier Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "465 Infirmier Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "466 Infirmier Gradatia 3 Contractual": {
+    "n": 1
+   },
+   "467 Infirmier Gradatia 3 Contractual": {
+    "n": 1
+   },
+   "468 Infirmier Gradatia 3 Contractual": {
+    "n": 1
+   },
+   "469 Infirmier Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "470 Infirmier Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "471 Infirmier Gradatia 2 Contractual": {
+    "n": 1
+   },
+   "472 Infirmier Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "473 Infirmier Gradatia 4 Contractual": {
+    "n": 1
+   },
+   "474 Infirmier Gradatia 3 Contractual": {
+    "n": 1
+   },
+   "475 Infirmier Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "476 Infirmier Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "477 Infirmier Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "478 Infirmier Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "479 Infirmier Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "480 Infirmier Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "481 Infirmier Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "482 Infirmier - ti Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "483 Infirmier - ti Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "484 Infirmier - ti Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "485 Infirmier - ti Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "486 Infirmier - ti Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "487 Infirmier - ti Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "488 Infirmier - ti Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "489 Infirmier - ti Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "BIROU INTERNARI ‐ EXTERNARI, STR.GH.DOJA Infirmiera Gradatia": {
+    "n": 1
+   },
+   "BLOC DE NASTERI‐str.Clujului nr.50 Infirmiera Gradatia 4 GEN": {
+    "n": 1
+   },
+   "BLOC DE NASTERI‐str.Clujului nr.50 Infirmiera Gradatia 3 GEN": {
+    "n": 1
+   },
+   "BLOC OPERATOR UROLOGIE‐str.Gh.Doja nr.65 Infirmiera Gradatia": {
+    "n": 1
+   },
+   "BLOC OPERATOR‐str,Gh.Doja nr.65 Infirmiera Gradatia 3 GENERA": {
+    "n": 1
+   },
+   "BLOC OPERATOR‐str. Clujului nr.50 Infirmiera debutant Gradat": {
+    "n": 1
+   },
+   "BLOC OPERATOR‐str.C.Coposu nr.12 Infirmiera Gradatia 3 GENER": {
+    "n": 1
+   },
+   "BLOC OPERATOR‐str.C.Coposu nr.12 Infirmiera debutant Gradati": {
+    "n": 1
+   },
+   "CAMERA DE GARDA OBSTETRICA‐GINECOLOGIE‐St. Infirmiera debuta": {
+    "n": 1
+   },
+   "Camera de garda Psihiatrie Infirmiera Gradatia 4 GENERALE Pe": {
+    "n": 1
+   },
+   "Camera de garda Psihiatrie Infirmiera debutant Gradatia 2 GE": {
+    "n": 1
+   },
+   "Compartiment ARSI Infirmiera Gradatia 5 GENERALE Personal an": {
+    "n": 1
+   },
+   "COMPARTIMENT CARDIOLOGIE INTERVENTIONALA Infirmiera debutant": {
+    "n": 1
+   },
+   "Compartiment CHIRURGIE TORACICA Infirmiera Gradatia 2 GENERA": {
+    "n": 1
+   },
+   "Compartiment CHIRURGIE TORACICA Infirmiera Gradatia 4 GENERA": {
+    "n": 1
+   },
+   "Compartiment CHIRURGIE TORACICA Infirmiera Gradatia 5 GENERA": {
+    "n": 1
+   },
+   "Compartiment CHIRURGIE VASCULARA Infirmiera Gradatia 5 GENER": {
+    "n": 1
+   },
+   "Compartiment Clinic OFTALMOLOGIE Infirmiera Gradatia 5 GENER": {
+    "n": 1
+   },
+   "Compartiment Clinic OFTALMOLOGIE Infirmiera debutant Gradati": {
+    "n": 1
+   },
+   "COMPARTIMENT DIABET ZAHARAT,NUTRITIE SI BOL Infirmiera Grada": {
+    "n": 1
+   },
+   "Compartiment Endocrinologie Infirmiera Gradatia 5 GENERALE P": {
+    "n": 1
+   },
+   "Compartiment Endocrinologie Infirmiera debutant Gradatia 3 G": {
+    "n": 1
+   },
+   "COMPARTIMENT NEFROLOGIE Infirmiera Gradatia 4 GENERALE Perso": {
+    "n": 1
+   },
+   "COMPARTIMENT NEFROLOGIE Infirmiera debutant Gradatia 5 GENER": {
+    "n": 1
+   },
+   "Compartiment Neurologie II Infirmiera Gradatia 4 GENERALE Pe": {
+    "n": 1
+   },
+   "Compartiment Neurologie II Infirmiera debutant Gradatia 3 GE": {
+    "n": 1
+   },
+   "Compartiment Neurologie II Infirmiera debutant Gradatia 5 GE": {
+    "n": 1
+   },
+   "COMPARTIMENT NEUROLOGIE PEDIATRICA Infirmiera debutant Grada": {
+    "n": 1
+   },
+   "COMPARTIMENT PREMATURI Infirmiera Gradatia 4 GENERALE Person": {
+    "n": 1
+   },
+   "COMPARTIMENT PREMATURI Infirmiera Gradatia 3 GENERALE Person": {
+    "n": 1
+   },
+   "COMPARTIMENT PREMATURI Infirmiera debutant Gradatia 5 GENERA": {
+    "n": 1
+   },
+   "COMPARTIMENT PSIHIATRIE PEDIATRICA Infirmiera Gradatia 5 GEN": {
+    "n": 1
+   },
+   "Compartiment TBC adulti Infirmiera Gradatia 5 GENERALE Perso": {
+    "n": 1
+   },
+   "Compartiment TBC adulti Infirmiera Gradatia 2 GENERALE Perso": {
+    "n": 1
+   },
+   "Compartiment Terapie acuta pneumologie Infirmiera Gradatia 5": {
+    "n": 1
+   },
+   "Compartiment UAVCA Infirmiera Gradatia 4 GENERALE Personal a": {
+    "n": 1
+   },
+   "Compartiment UAVCA Infirmiera Gradatia 2 GENERALE Personal a": {
+    "n": 1
+   },
+   "COMPARTIMENT USTACC Infirmiera debutant Gradatia 3 GENERALE ": {
+    "n": 1
+   },
+   "COMPARTIMENT USTACC Infirmiera** Gradatia 2 GENERALE Persona": {
+    "n": 1
+   },
+   "COMPARTIMENT USTACC Infirmiera** Gradatia 3 GENERALE Persona": {
+    "n": 1
+   },
+   "COMPARTIMENT USTACC Infirmiera debutanta** Gradatia 2 GENERA": {
+    "n": 1
+   },
+   "LAB. ANGIOGRAFIE,CATETERISM CARDIAC SI CARD.I Infirmiera Gra": {
+    "n": 1
+   },
+   "SECTIA CARDIOLOGIE II Infirmiera Gradatia 4 GENERALE Persona": {
+    "n": 1
+   },
+   "SECTIA CLINICA ATI I Infirmiera** Gradatia 2 GENERALE Person": {
+    "n": 1
+   },
+   "SECTIA CLINICA ATI I Infirmiera** Gradatia 3 GENERALE Person": {
+    "n": 1
+   },
+   "SECTIA CLINICA ATI II Infirmiera debutanta** Gradatia 4 GENE": {
+    "n": 1
+   },
+   "SECTIA CLINICA BOLI INFECTIOASE II Infirmiera debutant Grada": {
+    "n": 1
+   },
+   "Sectia Clinica CHIRURGIE GENERALA I Infirmiera Gradatia 3 GE": {
+    "n": 1
+   },
+   "Sectia Clinica CHIRURGIE GENERALA I Infirmiera Gradatia 1 GE": {
+    "n": 1
+   },
+   "Sectia Clinica CHIRURGIE GENERALA I Infirmiera debutant Grad": {
+    "n": 1
+   },
+   "Sectia Clinica CHIRURGIE GENERALA II Infirmiera debutant Gra": {
+    "n": 1
+   },
+   "SECTIA CLINICA CHIRURGIE GENERALA SI ONCOLOG Infirmiera debu": {
+    "n": 1
+   },
+   "Sectia Clinica DERMATOVENEROLOGIE Infirmiera Gradatia 3 GENE": {
+    "n": 1
+   },
+   "Sectia Clinica DERMATOVENEROLOGIE Infirmiera debutant Gradat": {
+    "n": 1
+   },
+   "Sectia Clinica GASTROENTEROLOGIE Infirmiera debutant Gradati": {
+    "n": 1
+   },
+   "SECTIA CLINICA HEMATOLOGIE Infirmiera Gradatia 4 GENERALE Pe": {
+    "n": 1
+   },
+   "SECTIA CLINICA HEMATOLOGIE Infirmiera debutant BAZA GENERALE": {
+    "n": 1
+   },
+   "SECTIA CLINICA HEMATOLOGIE Infirmiera debutant Gradatia 2 GE": {
+    "n": 1
+   },
+   "SECTIA CLINICA HEMATOLOGIE Infirmiera debutant Gradatia 5 GE": {
+    "n": 1
+   },
+   "Sectia Clinica MEDICINA INTERNA I Infirmiera Gradatia 5 GENE": {
+    "n": 1
+   },
+   "SECTIA CLINICA MEDICINA INTERNA I Infirmiera Gradatia 4 GENE": {
+    "n": 1
+   },
+   "Sectia Clinica MEDICINA INTERNA III Infirmiera Gradatia 1 GE": {
+    "n": 1
+   },
+   "Sectia Clinica MEDICINA INTERNA III Infirmiera Gradatia 2 GE": {
+    "n": 1
+   },
+   "Sectia Clinica MEDICINA INTERNA III Infirmiera debutant Grad": {
+    "n": 1
+   },
+   "SECTIA CLINICA NEFROLOGIE Infirmiera Gradatia 5 GENERALE Per": {
+    "n": 1
+   },
+   "SECTIA CLINICA NEFROLOGIE Infirmiera debutant Gradatia 4 GEN": {
+    "n": 1
+   },
+   "Sectia Clinica NEUROCHIRURGIE Infirmiera Gradatia 3 GENERALE": {
+    "n": 1
+   },
+   "Sectia Clinica NEUROLOGIE I Infirmiera debutant Gradatia 5 G": {
+    "n": 1
+   },
+   "SECTIA CLINICA ONCOLOGIE MEDICALA Infirmiera debutant Gradat": {
+    "n": 1
+   },
+   "SECTIA CLINICA PEDIATRIE I Infirmiera debutant Gradatia 4 GE": {
+    "n": 1
+   },
+   "SECTIA CLINICA PEDIATRIE II Infirmiera Gradatia 4 GENERALE P": {
+    "n": 1
+   },
+   "SECTIA CLINICA PEDIATRIE II Infirmiera debutant Gradatia 5 G": {
+    "n": 1
+   },
+   "SECTIA CLINICA PEDIATRIE II Infirmiera debutant Gradatia 2 G": {
+    "n": 1
+   },
+   "Sectia Clinica PNEUMOLOGIE I Infirmiera Gradatia 5 GENERALE ": {
+    "n": 1
+   },
+   "Sectia Clinica PNEUMOLOGIE I Infirmiera debutant Gradatia 3 ": {
+    "n": 1
+   },
+   "Sectia Clinica PNEUMOLOGIE I Infirmiera debutant BAZA GENERA": {
+    "n": 1
+   },
+   "Sectia Clinica PNEUMOLOGIE I Infirmiera debutant Gradatia 5 ": {
+    "n": 1
+   },
+   "SECTIA CLINICA PNEUMOLOGIE II Infirmiera Gradatia 4 GENERALE": {
+    "n": 1
+   },
+   "SECTIA CLINICA PNEUMOLOGIE II Infirmiera debutant Gradatia 5": {
+    "n": 1
+   },
+   "SECTIA CLINICA PNEUMOLOGIE III Infirmiera BAZA GENERALE Pers": {
+    "n": 1
+   },
+   "SECTIA CLINICA PSIHIATRIE I Infirmiera Gradatia 4 GENERALE P": {
+    "n": 1
+   },
+   "SECTIA CLINICA PSIHIATRIE I Infirmiera debutant Gradatia 5 G": {
+    "n": 1
+   },
+   "SECTIA CLINICA PSIHIATRIE II Infirmiera Gradatia 4 GENERALE ": {
+    "n": 1
+   },
+   "SECTIA CLINICA PSIHIATRIE II Infirmiera debutant Gradatia 2 ": {
+    "n": 1
+   },
+   "SECTIA CLINICA PSIHIATRIE III Infirmiera Gradatia 3 GENERALE": {
+    "n": 1
+   },
+   "SECTIA CLINICA PSIHIATRIE III Infirmiera Gradatia 4 GENERALE": {
+    "n": 1
+   },
+   "SECTIA CLINICA PSIHIATRIE III Infirmiera debutant Gradatia 2": {
+    "n": 1
+   },
+   "Sectia Clinica UROLOGIE Infirmiera debutant Gradatia 3 GENER": {
+    "n": 1
+   },
+   "SECTIA INGRIJIRI PALEATIVE Infirmiera debutant BAZA GENERALE": {
+    "n": 1
+   },
+   "SECTIE RECUPERARE NEUROLOGICA Infirmiera Gradatia 3 GENERALE": {
+    "n": 1
+   },
+   "SERVICIU CENTRAL DE STERILIZARE Infirmiera Gradatia 4 GENERA": {
+    "n": 1
+   },
+   "SERVICIU CENTRAL DE STERILIZARE Infirmiera Gradatia 3 GENERA": {
+    "n": 1
+   },
+   "SERVICIU CENTRAL DE STERILIZARE Infirmiera debutant Gradatia": {
+    "n": 1
+   },
+   "Spitalizare de zi‐centrul oncologic Infirmiera debutant Grad": {
+    "n": 1
+   },
+   "Spitalizare de zi‐str.C.Coposu Infirmiera Gradatia 5 GENERAL": {
+    "n": 1
+   },
+   "STATIA DE HEMODIALIZA I Infirmiera Gradatia 3 GENERALE Perso": {
+    "n": 1
+   },
+   "STATIA DE HEMODIALIZA II Infirmiera debutant Gradatia 5 GENE": {
+    "n": 1
+   },
+   "STATIA DE HEMODIALIZA II Infirmiera debutant Gradatia 4 GENE": {
+    "n": 1
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 Infirmiera Gradatia 3 GENERALE P": {
+    "n": 1
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 Infirmiera Gradatia 1 GENERALE P": {
+    "n": 1
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 Infirmiera** Gradatia 3 GENERALE": {
+    "n": 1
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 Infirmiera** Gradatia 2 GENERALE": {
+    "n": 1
+   },
+   "A.T.I. INFIRMIERA ATI MEDII Gradatia 3": {
+    "n": 1
+   },
+   "A.T.I. INFIRMIERA ATI MEDII Gradatia 2": {
+    "n": 1
+   },
+   "A.T.I. INFIRMIERA ATI GENERALE Gradatia 3": {
+    "n": 1
+   },
+   "A.T.I. II INFIRMIERA ATI MEDII Gradatia 2": {
+    "n": 1
+   },
+   "BLOC OPERATOR - CORP A INFIRMIERA GENERALE Gradatia 2": {
+    "n": 1
+   },
+   "BLOC OPERATOR - CORP A INFIRMIERA MEDII Gradatia 4": {
+    "n": 1
+   },
+   "BLOC OPERATOR - CORP B INFIRMIERA GENERALE Gradatia 5": {
+    "n": 1
+   },
+   "BLOC OPERATOR - CORP B INFIRMIERA GENERALE Gradatia 3": {
+    "n": 1
+   },
+   "BOLI INFECTIOASE INFIRMIERA GENERALE Gradatia 5": {
+    "n": 1
+   },
+   "BOLI INFECTIOASE INFIRMIERA GENERALE Gradatia 3": {
+    "n": 1
+   },
+   "CHIRURGIE GENERALA II INFIRMIERA MEDII Gradatia 5": {
+    "n": 1
+   },
+   "CHIRURGIE ORTOPEDIE INFANTILA INFIRMIERA GENERALE Gradatia 4": {
+    "n": 1
+   },
+   "CHIRURGIE ORTOPEDIE INFANTILA INFIRMIERA MEDII Gradatia 5": {
+    "n": 1
+   },
+   "CHIRURGIE ORTOPEDIE INFANTILA INFIRMIERA GENERALE Gradatia 5": {
+    "n": 1
+   },
+   "COMP. CHIRURGIE GENERALA II INFIRMIERA MEDII Gradatia 5": {
+    "n": 1
+   },
+   "COMP. CHIRURGIE GENERALA II INFIRMIERA GENERALE Gradatia 5": {
+    "n": 1
+   },
+   "COMP. ENDOCRINOLOGIE INFIRMIERA GENERALE Gradatia 5": {
+    "n": 1
+   },
+   "COMP. ENDOCRINOLOGIE INFIRMIERA GENERALE Gradatia 3": {
+    "n": 1
+   },
+   "COMP. NEFROLOGIE INFIRMIERA GENERALE Gradatia 4": {
+    "n": 1
+   },
+   "COMP. NEFROLOGIE INFIRMIERA GENERALE Gradatia 5": {
+    "n": 1
+   },
+   "COMP. NEFROLOGIE INFIRMIERA MEDII Gradatia 3": {
+    "n": 1
+   },
+   "COMP. REUMATOLOGIE INFIRMIERA MEDII Gradatia 5": {
+    "n": 1
+   },
+   "COMPARTIMENT ATI III INFIRMIERA ATI MEDII Gradatia 5": {
+    "n": 1
+   },
+   "COMPARTIMENT ATI III INFIRMIERA ATI GENERALE Gradatia 4": {
+    "n": 1
+   },
+   "COMPARTIMENT ATI III INFIRMIERA ATI GENERALE Gradatia 5": {
+    "n": 1
+   },
+   "COMPARTIMENT ATI III INFIRMIERA ATI MEDII Gradatia 4": {
+    "n": 1
+   },
+   "COMPARTIMENT DERMATOVENEROLOGIE INFIRMIERA GENERALE Gradatia": {
+    "n": 1
+   },
+   "GASTROENTEROLOGIE INFIRMIERA GENERALE Gradatia 5": {
+    "n": 1
+   },
+   "GASTROENTEROLOGIE INFIRMIERA MEDII Gradatia 3": {
+    "n": 1
+   },
+   "NEUROLOGIE INFIRMIERA MEDII Gradatia 4": {
+    "n": 1
+   },
+   "NEUROLOGIE INFIRMIERA MEDII Gradatia 1": {
+    "n": 1
+   },
+   "O.R.L. INFIRMIERA GENERALE Gradatia 4": {
+    "n": 1
+   },
+   "O.R.L. INFIRMIERA MEDII Gradatia 5": {
+    "n": 1
+   },
+   "OFTALMOLOGIE INFIRMIERA GENERALE Gradatia 4": {
+    "n": 1
+   },
+   "ONCOLOGIE MEDICALA INFIRMIERA MEDII Gradatia 4": {
+    "n": 1
+   },
+   "ONCOLOGIE MEDICALA INFIRMIERA GENERALE Gradatia 4": {
+    "n": 1
+   },
+   "ONCOLOGIE MEDICALA INFIRMIERA GENERALE Gradatia 5": {
+    "n": 1
+   },
+   "ORTOPEDIE TRAUMATOLOGIE INFIRMIERA GENERALE Gradatia 4": {
+    "n": 1
+   },
+   "ORTOPEDIE TRAUMATOLOGIE INFIRMIERA MEDII Gradatia 2": {
+    "n": 1
+   },
+   "ORTOPEDIE TRAUMATOLOGIE INFIRMIERA MEDII Gradatia 3": {
+    "n": 1
+   },
+   "SECTIA HEMATOLOGIE INFIRMIERA GENERALE Gradatia 3": {
+    "n": 1
+   },
+   "SECTIA HEMATOLOGIE INFIRMIERA GENERALE Gradatia 4": {
+    "n": 1
+   },
+   "SECTIA HEMATOLOGIE INFIRMIERA GENERALE Gradatia 5": {
+    "n": 1
+   },
+   "SECTIA HEMATOLOGIE INFIRMIERA MEDII Gradatia 5": {
+    "n": 1
+   },
+   "SECTIA MEDICINA INTERNA CRONICI INFIRMIERA necompletat Grada": {
+    "n": 1
+   },
+   "SECTIA MEDICINA INTERNA I INFIRMIERA MEDII BAZA": {
+    "n": 1
+   },
+   "SECTIA MEDICINA INTERNA I INFIRMIERA GENERALE Gradatia 2": {
+    "n": 1
+   },
+   "SECTIA MEDICINA INTERNA I INFIRMIERA GENERALE Gradatia 3": {
+    "n": 1
+   },
+   "SECTIA MEDICINA INTERNA I INFIRMIERA GENERALE Gradatia 4": {
+    "n": 1
+   },
+   "SECTIA MEDICINA INTERNA I INFIRMIERA MEDII Gradatia 5": {
+    "n": 1
+   },
+   "SECTIA NEONATOLOGIE INFIRMIERA ATI MEDII Gradatia 5": {
+    "n": 1
+   },
+   "SECTIA NEONATOLOGIE INFIRMIERA MEDII Gradatia 5": {
+    "n": 1
+   },
+   "SECTIA OBSTETRICA - GINECOLOGIE I INFIRMIERA GENERALE Gradat": {
+    "n": 1
+   },
+   "SECTIA PEDIATRIE INFIRMIERA GENERALE Gradatia 3": {
+    "n": 1
+   },
+   "SECTIA PEDIATRIE INFIRMIERA GENERALE Gradatia 4": {
+    "n": 1
+   },
+   "SPITALIZARE DE ZI INFIRMIERA MEDII Gradatia 2": {
+    "n": 1
+   },
+   "STATIE HEMODIALIZA INFIRMIERA MEDII Gradatia 4": {
+    "n": 1
+   },
+   "UROLOGIE INFIRMIERA MEDII Gradatia 5": {
+    "n": 1
+   },
+   "UROLOGIE INFIRMIERA GENERALE Gradatia 2": {
+    "n": 1
+   },
+   "U.P.U. INFIRMIERA U.P.U. MEDII Gradatia 3": {
+    "n": 1
+   },
+   "Infirmiera SUPERIOARE ( S )": {
+    "n": 1
+   },
+   "Sectia A.T.I. Obstetrica-Ginecologie INFIRMIERA - DEBUTANTA ": {
+    "n": 1
+   },
+   "Comp. Cl. Diabet Zaharat, Nutritie si Boli Metabolice INFIRM": {
+    "n": 1
+   },
+   "Compartiment Clinic Oftalmologie INFIRMIERA G": {
+    "n": 1
+   },
+   "Bloc Operator Ortopedie si Traumatologie INFIRMIERA G": {
+    "n": 1
+   },
+   "Bloc Operator Ortopedie si Traumatologie INFIRMIERA - DEBUTA": {
+    "n": 1
+   },
+   "Sectia Clinica Urologie INFIRMIERA - DEBUTANTA G": {
+    "n": 1
+   },
+   "Centrul de Hemodializa INFIRMIERA G": {
+    "n": 1
+   },
+   "Comp. de Prevenire si Control al Infectiilor Nozocomial INFI": {
+    "n": 1
+   },
+   "Sectia Clinica Medicina Interna I INFIRMIERA - DEBUTANTA G": {
+    "n": 1
+   },
+   "Compartiment Nefrologie INFIRMIERA G": {
+    "n": 1
+   },
+   "Sectia Clinic Medicina-Interna II INFIRMIERA - DEBUTANTA G": {
+    "n": 1
+   },
+   "Sectia Clinica Oncologie Medicala INFIRMIERA - DEBUTANTA G": {
+    "n": 1
+   },
+   "Sectia Clinica Gastroenterologie INFIRMIERA G": {
+    "n": 1
+   },
+   "Compartiment Endoscopie Digestiva INFIRMIERA G": {
+    "n": 1
+   },
+   "Sectia Clinica O.R.L. INFIRMIERA - DEBUTANTA G": {
+    "n": 1
+   },
+   "Sectia Clinica Chirurgie Generala I INFIRMIERA - DEBUTANTA G": {
+    "n": 1
+   },
+   "Sectia Clinica Neurologie INFIRMIERA - DEBUTANTA G": {
+    "n": 1
+   },
+   "Compartiment Arsi INFIRMIERA G": {
+    "n": 1
+   },
+   "INFIRMIERA BAZA": {
+    "n": 1
+   },
+   "OBSTETRICA INFIRMIERA Baza": {
+    "n": 1
+   },
+   "NEONATOLOGIE INFIRMIERA Gradatia 1": {
+    "n": 1
+   },
+   "A.T.I. INFIRMIERA Gradatia 3": {
+    "n": 1
+   },
+   "A.T.I. INFIRMIERA Gradatia 4": {
+    "n": 1
+   },
+   "GARDA INFIRMIERA Gradatia 3": {
+    "n": 1
+   },
+   "GINECOLOGIE INFIRMIERA Gradatia 1": {
+    "n": 1
+   },
+   "STERILIZARE INFIRMIERA Gradatia 5": {
+    "n": 1
+   },
+   "INTEGRAT INFIRMIERA Gradatia 5": {
+    "n": 1
+   },
+   "Infirmiera Gradatia I": {
+    "n": 1
+   },
+   "Infirmiera Gradatia 30s": {
+    "n": 1
+   },
+   "41S Infirmiera (Gradatia": {
+    "n": 1
+   },
+   "SECTIA MEDICINA INTERNA INFIRMIER/A Gradatia 2": {
+    "n": 1
+   },
+   "SECTIA MEDICINA INTERNA INFIRMIER/A DEBUTANT Gradatia 2": {
+    "n": 1
+   },
+   "SECTIA MEDICINA INTERNA - COMP.REUMATOLOGIE INFIRMIER/A Grad": {
+    "n": 1
+   },
+   "SECTIA MEDICINA INTERNA - PNEUMOLOGIE INFIRMIER/A Gradatia 5": {
+    "n": 1
+   },
+   "SECTIA MEDICINA INTERNA - COMP.ENDOCRINOLOGIE INFIRMIER/A DE": {
+    "n": 1
+   },
+   "SECTIA GASTROENTEROLOGIE INFIRMIER/A DEBUTANT Gradatia 5": {
+    "n": 1
+   },
+   "SECTIA GASTROENTEROLOGIE INFIRMIER/A Gradatia 3": {
+    "n": 1
+   },
+   "COMPARTIMENT NEFROLOGIE INFIRMIER/A Gradatia 4": {
+    "n": 1
+   },
+   "COMPARTIMENT NEFROLOGIE INFIRMIER/A DEBUTANT Gradatia 3": {
+    "n": 1
+   },
+   "COMP.CARDIOLOGIE INFIRMIER/A Gradatia 3": {
+    "n": 1
+   },
+   "SECTIA CHIRURGIE GENERALA INFIRMIER/A DEBUTANT Gradatia 5": {
+    "n": 1
+   },
+   "COMP.NEUROCHIRURGIE INFIRMIER/A Gradatia 4": {
+    "n": 1
+   },
+   "SECTIA OBSTETRICA GINECOLOGIE INFIRMIER/A Gradatia 4": {
+    "n": 1
+   },
+   "SECTIA OBSTETRICA GINECOLOGIE INFIRMIER/A Gradatia 1": {
+    "n": 1
+   },
+   "SECTIA NEONATOLOGIE-COMP.PREMATURI INFIRMIER/A Gradatia 5": {
+    "n": 1
+   },
+   "SECTIA PEDIATRIE - COMP.TERAPIE ACUTA INFIRMIER/A Gradatia 5": {
+    "n": 1
+   },
+   "SECTIA ORTOPEDIE SI TRAUMATOLOGIE INFIRMIER/A Gradatia 3": {
+    "n": 1
+   },
+   "SECTIA ORTOPEDIE SI TRAUMATOLOGIE INFIRMIER/A DEBUTANT Grada": {
+    "n": 1
+   },
+   "COMP. O.R.L INFIRMIER/A DEBUTANT Gradatia 3": {
+    "n": 1
+   },
+   "COMP. O.R.L INFIRMIER/A Gradatia 3": {
+    "n": 1
+   },
+   "SECTIA NEUROLOGIE INFIRMIER/A Gradatia 4": {
+    "n": 1
+   },
+   "SECTIA NEUROLOGIE INFIRMIER/A Gradatia 3": {
+    "n": 1
+   },
+   "SECTIA PSIHIATRIE ACUTI INFIRMIER/A Gradatia 4": {
+    "n": 1
+   },
+   "SECTIA PSIHIATRIE ACUTI INFIRMIER/A Gradatia 3": {
+    "n": 1
+   },
+   "SECTIA PSIHIATRIE ACUTI INFIRMIER/A DEBUTANT Gradatia 4": {
+    "n": 1
+   },
+   "COMP.RECUPERARE NEUROLOGICA INFIRMIER/A Gradatia 2": {
+    "n": 1
+   },
+   "COMP.RECUPERARE NEUROLOGICA INFIRMIER/A Gradatia 4": {
+    "n": 1
+   },
+   "COMPARTIMENT PSIHIATRIE CRONICI BAIA DE ARIES INFIRMIER/A DE": {
+    "n": 1
+   },
+   "LABORATOR DE ENDOSCOPIE DIAGNOSTICA SI TERAPEUTICA INFIRMIER": {
+    "n": 1
+   },
+   "UNITATE PRIMIRE URGENTE INFIRMIER/A UPU Gradatia 2": {
+    "n": 1
+   },
+   "UNITATE PRIMIRE URGENTE INFIRMIER/A UPU Gradatia 4": {
+    "n": 1
+   },
+   "INFIRMIERA COMPARTIMENT RECUPERARE, MED.FIZICA SI BALNEOLOGI": {
+    "n": 1
+   },
+   "INFIRMIERA DEB. Sectia CARDIOLOGIE": {
+    "n": 1
+   },
+   "INFIRMIERA Sectia ENDOCRINOLOGIE": {
+    "n": 1
+   },
+   "INFIRMIERA DEB. Sectia OBSTETRICA-GINECOLOGIE I": {
+    "n": 1
+   },
+   "INFIRMIERA DEB. Sectia OBSTETRICA-GINECOLOGIE II": {
+    "n": 1
+   },
+   "INFIRMIERA DEBUTANT Sectia Urologie": {
+    "n": 1
+   },
+   "INFIRMIERA DEBUTANT Sectia Pediatrie": {
+    "n": 1
+   },
+   "INFIRMIERA DEBUTANT Sectia Chirurgie si ortopedie infantila": {
+    "n": 1
+   },
+   "INFIRMIERA DEBUTANT Sectia Neonatologie": {
+    "n": 1
+   },
+   "UPU INFIRMIERA DEB.": {
+    "n": 1
+   },
+   "2026-02 INFIRMIERA DEB.": {
+    "n": 1
+   },
+   "INFIRMIER MEDII, GENERALE Gradatia": {
+    "n": 1
+   },
+   "INFIRMIER MEDII BAZA": {
+    "n": 1
+   },
+   "INFIRMIER DEBUTANT (UPU) MEDII, GENERALE BAZA": {
+    "n": 1
+   },
+   "INFIRMIER POST LICEALE Gradatia": {
+    "n": 1
+   },
+   "INFIRMIER DEBUTANT Gradatia 4 Sporurile din anexele 1, 2,3,5": {
+    "n": 1
+   },
+   "INFIRMIER DEBUTANT Gradatia 2 Sporurile din anexele 1, 2,3,5": {
+    "n": 1
+   },
+   "INFIRMIER DEBUTANT Gradatia 5 Sporurile din anexele 1, 2,3,5": {
+    "n": 1
+   }
+  }
+ }
+}

@@ -1,0 +1,169 @@
+{
+ "slug": "designer-grafic",
+ "nume": "Designer grafic",
+ "cor": "216601",
+ "generatLa": "2026-09-27T10:01:09.135Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 7,
+  "cuBazaDeclarata": 4,
+  "faraBazaDeclarata": 3,
+  "surse": {
+   "ejobs": {
+    "n": 3,
+    "procent": 42.9
+   },
+   "olx": {
+    "n": 3,
+    "procent": 42.9
+   },
+   "bestjobs": {
+    "n": 1,
+    "procent": 14.3
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 6,
+    "procent": 85.7
+   },
+   "continuă": {
+    "n": 1,
+    "procent": 14.3
+   }
+  },
+  "net": {
+   "n": 4
+  },
+  "netMinimOferit": {
+   "n": 4
+  },
+  "netMaximOferit": {
+   "n": 4
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 3
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-09": {
+    "n": 4,
+    "procent": 57.1
+   },
+   "2026-08": {
+    "n": 1,
+    "procent": 14.3
+   },
+   "2026-03": {
+    "n": 1,
+    "procent": 14.3
+   },
+   "2026-01": {
+    "n": 1,
+    "procent": 14.3
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 2,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {},
+  "experientaPortal": {
+   "1–5 ani": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "ejobs": {
+    "n": 1,
+    "procent": 50
+   },
+   "hipo": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "peJudet": {
+   "RO": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "motiveFaraSalariu": {},
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 0,
+  "posturi": 0,
+  "ofertePeGrupaCor": 4,
+  "tipSalariu": {},
+  "netMinimDeclarat": {
+   "n": 0
+  },
+  "brutMinimDeclarat": {
+   "n": 0
+  },
+  "laSalariulMinim": 0,
+  "studii": {},
+  "experienta": {},
+  "contract": {},
+  "norma": {},
+  "regim": {},
+  "judete": {},
+  "domenii": {},
+  "coduriCorInGrupa": {
+   "216612 - GRAFICIAN CALCULATOR (STUDII MEDII)": {
+    "n": 2,
+    "procent": 50
+   },
+   "216613 - DESIGNER PAGINI WEB (STUDII MEDII)": {
+    "n": 1,
+    "procent": 25
+   },
+   "216611 - DESIGNER GRAFICA (STUDII SUPERIOARE)": {
+    "n": 1,
+    "procent": 25
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 0,
+  "institutii": 0,
+  "judete": {},
+  "tipInstitutie": {},
+  "perioade": {},
+  "studii": {},
+  "bazaBruta": {
+   "n": 0
+  },
+  "bazaCuSporuriFixe": {
+   "n": 0
+  },
+  "peGradatie": {},
+  "peFunctie": {}
+ }
+}

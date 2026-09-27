@@ -1,0 +1,293 @@
+{
+ "slug": "sofer-autobuz",
+ "nume": "Șofer de autobuz",
+ "cor": "833101",
+ "generatLa": "2026-09-27T10:01:09.059Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 0,
+  "cuBazaDeclarata": 0,
+  "faraBazaDeclarata": 0,
+  "surse": {},
+  "colectari": {},
+  "net": {
+   "n": 0
+  },
+  "netMinimOferit": {
+   "n": 0
+  },
+  "netMaximOferit": {
+   "n": 0
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 0
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {}
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 0,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {},
+  "surse": {},
+  "peJudet": {},
+  "motiveFaraSalariu": {},
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 38,
+  "posturi": 246,
+  "ofertePeGrupaCor": 40,
+  "tipSalariu": {
+   "gross": {
+    "n": 25,
+    "procent": 65.8
+   },
+   "none": {
+    "n": 10,
+    "procent": 26.3
+   },
+   "net": {
+    "n": 3,
+    "procent": 7.9
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 3
+  },
+  "brutMinimDeclarat": {
+   "n": 25,
+   "p10": 4050,
+   "p25": 4325,
+   "median": 4325,
+   "p75": 4350,
+   "p90": 5350,
+   "min": 1050,
+   "max": 43025
+  },
+  "laSalariulMinim": 17,
+  "studii": {
+   "Profesional - ȘCOALĂ PROFESIONALĂ": {
+    "n": 20,
+    "procent": 52.6
+   },
+   "Liceal - LICEU TEORETIC": {
+    "n": 7,
+    "procent": 18.4
+   },
+   "Gimnazial - ȘCOALĂ GENERALĂ": {
+    "n": 7,
+    "procent": 18.4
+   },
+   "Primar - FĂRĂ STUDII": {
+    "n": 2,
+    "procent": 5.3
+   },
+   "Liceal - ȘCOALĂ SPECIALĂ": {
+    "n": 1,
+    "procent": 2.6
+   },
+   "Liceal - LICEU DE SPECIALITATE": {
+    "n": 1,
+    "procent": 2.6
+   }
+  },
+  "experienta": {
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 14,
+    "procent": 36.8
+   },
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 12,
+    "procent": 31.6
+   },
+   "Fără experiență - 0 ani": {
+    "n": 9,
+    "procent": 23.7
+   },
+   "Avansat - între 5 și 7 ani": {
+    "n": 2,
+    "procent": 5.3
+   },
+   "Experimentat - mai mult de 7 ani": {
+    "n": 1,
+    "procent": 2.6
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 37,
+    "procent": 97.4
+   },
+   "Cu durată determinată": {
+    "n": 1,
+    "procent": 2.6
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 35,
+    "procent": 92.1
+   },
+   "Cu timp parțial": {
+    "n": 3,
+    "procent": 7.9
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 36,
+    "procent": 94.7
+   },
+   "Hibrid - sediu + telemuncă": {
+    "n": 1,
+    "procent": 2.6
+   },
+   "Telemuncă": {
+    "n": 1,
+    "procent": 2.6
+   }
+  },
+  "judete": {
+   "Prahova": {
+    "n": 4,
+    "procent": 10.5
+   },
+   "Cluj": {
+    "n": 4,
+    "procent": 10.5
+   },
+   "Iași": {
+    "n": 4,
+    "procent": 10.5
+   },
+   "Satu Mare": {
+    "n": 4,
+    "procent": 10.5
+   },
+   "Sibiu": {
+    "n": 3,
+    "procent": 7.9
+   },
+   "Alba": {
+    "n": 2,
+    "procent": 5.3
+   },
+   "Caraș-Severin": {
+    "n": 2,
+    "procent": 5.3
+   },
+   "Tulcea": {
+    "n": 2,
+    "procent": 5.3
+   },
+   "Vâlcea": {
+    "n": 2,
+    "procent": 5.3
+   },
+   "Bistrița-Năsăud": {
+    "n": 2,
+    "procent": 5.3
+   },
+   "Municipiul București": {
+    "n": 1,
+    "procent": 2.6
+   },
+   "Ilfov": {
+    "n": 1,
+    "procent": 2.6
+   },
+   "Teleorman": {
+    "n": 1,
+    "procent": 2.6
+   },
+   "Gorj": {
+    "n": 1,
+    "procent": 2.6
+   },
+   "Timiș": {
+    "n": 1,
+    "procent": 2.6
+   },
+   "Constanța": {
+    "n": 1,
+    "procent": 2.6
+   },
+   "Dâmbovița": {
+    "n": 1,
+    "procent": 2.6
+   },
+   "Vaslui": {
+    "n": 1,
+    "procent": 2.6
+   },
+   "Brașov": {
+    "n": 1,
+    "procent": 2.6
+   }
+  },
+  "domenii": {
+   "Servicii transport / curierat": {
+    "n": 33,
+    "procent": 86.8
+   },
+   "Altele": {
+    "n": 4,
+    "procent": 10.5
+   },
+   "Educație / Training / Coaching": {
+    "n": 1,
+    "procent": 2.6
+   }
+  },
+  "coduriCorInGrupa": {
+   "833101 - Conducator auto transport rutier de persoane": {
+    "n": 38,
+    "procent": 95
+   },
+   "833103 - CONDUCATOR TRAMVAI (VATMAN)": {
+    "n": 1,
+    "procent": 2.5
+   },
+   "833102 - CONDUCATOR TROLEIBUZ": {
+    "n": 1,
+    "procent": 2.5
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 0,
+  "institutii": 0,
+  "judete": {},
+  "tipInstitutie": {},
+  "perioade": {},
+  "studii": {},
+  "bazaBruta": {
+   "n": 0
+  },
+  "bazaCuSporuriFixe": {
+   "n": 0
+  },
+  "peGradatie": {},
+  "peFunctie": {}
+ }
+}

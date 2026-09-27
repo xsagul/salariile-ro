@@ -1,0 +1,150 @@
+{
+ "slug": "inginer-aeronautic",
+ "nume": "Inginer aeronautic",
+ "cor": "214437",
+ "generatLa": "2026-09-27T10:01:09.219Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 0,
+  "cuBazaDeclarata": 0,
+  "faraBazaDeclarata": 0,
+  "surse": {},
+  "colectari": {},
+  "net": {
+   "n": 0
+  },
+  "netMinimOferit": {
+   "n": 0
+  },
+  "netMaximOferit": {
+   "n": 0
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 0
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {}
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 0,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {},
+  "surse": {},
+  "peJudet": {},
+  "motiveFaraSalariu": {},
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 0,
+  "posturi": 0,
+  "ofertePeGrupaCor": 91,
+  "tipSalariu": {},
+  "netMinimDeclarat": {
+   "n": 0
+  },
+  "brutMinimDeclarat": {
+   "n": 0
+  },
+  "laSalariulMinim": 0,
+  "studii": {},
+  "experienta": {},
+  "contract": {},
+  "norma": {},
+  "regim": {},
+  "judete": {},
+  "domenii": {},
+  "coduriCorInGrupa": {
+   "214401 - INGINER MECANIC": {
+    "n": 51,
+    "procent": 56
+   },
+   "214438 - PROIECTANT INGINER MECANIC": {
+    "n": 11,
+    "procent": 12.1
+   },
+   "214496 - inginer sudor": {
+    "n": 6,
+    "procent": 6.6
+   },
+   "214412 - INGINER AUTOVEHICULE RUTIERE": {
+    "n": 5,
+    "procent": 5.5
+   },
+   "214408 - INGINER MASINI-UNELTE": {
+    "n": 4,
+    "procent": 4.4
+   },
+   "214467 - INGINER DE CERCETARE ÎN TEHNOLOGIA CONSTRUCTIILOR DE MASINI": {
+    "n": 2,
+    "procent": 2.2
+   },
+   "214443 - SPECIALIST MENTENANTA MECANICA ECHIPAMENTE INDUSTRIALE": {
+    "n": 2,
+    "procent": 2.2
+   },
+   "214461 - INGINER DE CERCETARE ÎN ECHIPAMENTE DE PROCES": {
+    "n": 2,
+    "procent": 2.2
+   },
+   "214444 - INGINER/SUBINGINER TEHNOLOG PRELUCRARI MECANICE": {
+    "n": 2,
+    "procent": 2.2
+   },
+   "214406 - INGINER AVIATIE": {
+    "n": 2,
+    "procent": 2.2
+   },
+   "214407 - INGINER NAVE": {
+    "n": 1,
+    "procent": 1.1
+   },
+   "214405 - INGINER MECANICA AGRICOLA": {
+    "n": 1,
+    "procent": 1.1
+   },
+   "214410 - INGINER MASINI TERMICE": {
+    "n": 1,
+    "procent": 1.1
+   },
+   "214491 - Inginer mecatronist": {
+    "n": 1,
+    "procent": 1.1
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 0,
+  "institutii": 0,
+  "judete": {},
+  "tipInstitutie": {},
+  "perioade": {},
+  "studii": {},
+  "bazaBruta": {
+   "n": 0
+  },
+  "bazaCuSporuriFixe": {
+   "n": 0
+  },
+  "peGradatie": {},
+  "peFunctie": {}
+ }
+}

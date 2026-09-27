@@ -1,0 +1,196 @@
+{
+ "slug": "agent-asigurari",
+ "nume": "Agent de asigurări",
+ "cor": "332101",
+ "generatLa": "2026-09-27T10:01:08.983Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 1,
+  "cuBazaDeclarata": 0,
+  "faraBazaDeclarata": 1,
+  "surse": {
+   "bestjobs": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "net": {
+   "n": 0
+  },
+  "netMinimOferit": {
+   "n": 0
+  },
+  "netMaximOferit": {
+   "n": 0
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 1
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-09": {
+    "n": 1,
+    "procent": 100
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 1,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "ejobs": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "peJudet": {},
+  "motiveFaraSalariu": {
+   "country_unconfirmed": {
+    "n": 1,
+    "procent": 100
+   },
+   "full_time_unconfirmed": {
+    "n": 1,
+    "procent": 100
+   },
+   "wide_range_review": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 2,
+  "posturi": 10,
+  "ofertePeGrupaCor": 2,
+  "tipSalariu": {
+   "gross": {
+    "n": 1,
+    "procent": 50
+   },
+   "none": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 0
+  },
+  "brutMinimDeclarat": {
+   "n": 1
+  },
+  "laSalariulMinim": 1,
+  "studii": {
+   "Liceal - LICEU TEORETIC": {
+    "n": 1,
+    "procent": 50
+   },
+   "Liceal - LICEU DE SPECIALITATE": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "experienta": {
+   "Fără experiență - 0 ani": {
+    "n": 1,
+    "procent": 50
+   },
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "judete": {
+   "Bihor": {
+    "n": 1,
+    "procent": 50
+   },
+   "Municipiul București": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "domenii": {
+   "Administrativ / Secretariat": {
+    "n": 1,
+    "procent": 50
+   },
+   "Altele": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "coduriCorInGrupa": {
+   "332101 - AGENT DE ASIGURARE": {
+    "n": 2,
+    "procent": 100
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 0,
+  "institutii": 0,
+  "judete": {},
+  "tipInstitutie": {},
+  "perioade": {},
+  "studii": {},
+  "bazaBruta": {
+   "n": 0
+  },
+  "bazaCuSporuriFixe": {
+   "n": 0
+  },
+  "peGradatie": {},
+  "peFunctie": {}
+ }
+}

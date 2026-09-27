@@ -1,0 +1,257 @@
+{
+ "slug": "specialist-marketing",
+ "nume": "Specialist marketing",
+ "cor": "243103",
+ "generatLa": "2026-09-27T10:01:09.138Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 11,
+  "cuBazaDeclarata": 2,
+  "faraBazaDeclarata": 9,
+  "surse": {
+   "ejobs": {
+    "n": 4,
+    "procent": 36.4
+   },
+   "bestjobs": {
+    "n": 4,
+    "procent": 36.4
+   },
+   "olx": {
+    "n": 3,
+    "procent": 27.3
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 11,
+    "procent": 100
+   }
+  },
+  "net": {
+   "n": 2
+  },
+  "netMinimOferit": {
+   "n": 2
+  },
+  "netMaximOferit": {
+   "n": 2
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 9
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-09": {
+    "n": 7,
+    "procent": 63.6
+   },
+   "2026-08": {
+    "n": 4,
+    "procent": 36.4
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 0,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {},
+  "surse": {},
+  "peJudet": {},
+  "motiveFaraSalariu": {},
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 13,
+  "posturi": 15,
+  "ofertePeGrupaCor": 17,
+  "tipSalariu": {
+   "gross": {
+    "n": 7,
+    "procent": 53.8
+   },
+   "none": {
+    "n": 4,
+    "procent": 30.8
+   },
+   "net": {
+    "n": 2,
+    "procent": 15.4
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 1
+  },
+  "brutMinimDeclarat": {
+   "n": 7
+  },
+  "laSalariulMinim": 5,
+  "studii": {
+   "Universitar - ÎNVĂȚĂMÂNT SUPERIOR": {
+    "n": 11,
+    "procent": 84.6
+   },
+   "Liceal - LICEU TEORETIC": {
+    "n": 1,
+    "procent": 7.7
+   },
+   "Universitar - MASTER": {
+    "n": 1,
+    "procent": 7.7
+   }
+  },
+  "experienta": {
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 9,
+    "procent": 69.2
+   },
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 2,
+    "procent": 15.4
+   },
+   "Fără experiență - 0 ani": {
+    "n": 1,
+    "procent": 7.7
+   },
+   "Avansat - între 5 și 7 ani": {
+    "n": 1,
+    "procent": 7.7
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 12,
+    "procent": 92.3
+   },
+   "Cu durată determinată": {
+    "n": 1,
+    "procent": 7.7
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 13,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 12,
+    "procent": 92.3
+   },
+   "Hibrid - sediu + la domiciliu": {
+    "n": 1,
+    "procent": 7.7
+   }
+  },
+  "judete": {
+   "Municipiul București": {
+    "n": 4,
+    "procent": 30.8
+   },
+   "Constanța": {
+    "n": 2,
+    "procent": 15.4
+   },
+   "Tulcea": {
+    "n": 1,
+    "procent": 7.7
+   },
+   "Maramureș": {
+    "n": 1,
+    "procent": 7.7
+   },
+   "Alba": {
+    "n": 1,
+    "procent": 7.7
+   },
+   "Bistrița-Năsăud": {
+    "n": 1,
+    "procent": 7.7
+   },
+   "Timiș": {
+    "n": 1,
+    "procent": 7.7
+   },
+   "Neamț": {
+    "n": 1,
+    "procent": 7.7
+   },
+   "Ilfov": {
+    "n": 1,
+    "procent": 7.7
+   }
+  },
+  "domenii": {
+   "Marketing": {
+    "n": 6,
+    "procent": 46.2
+   },
+   "Altele": {
+    "n": 3,
+    "procent": 23.1
+   },
+   "COMERT": {
+    "n": 2,
+    "procent": 15.4
+   },
+   "Vânzări": {
+    "n": 1,
+    "procent": 7.7
+   },
+   "Producție / Logistică": {
+    "n": 1,
+    "procent": 7.7
+   }
+  },
+  "coduriCorInGrupa": {
+   "243103 - SPECIALIST MARKETING": {
+    "n": 13,
+    "procent": 76.5
+   },
+   "243105 - Specialist marketing online": {
+    "n": 2,
+    "procent": 11.8
+   },
+   "243104 - MANAGER DE PRODUS": {
+    "n": 2,
+    "procent": 11.8
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 0,
+  "institutii": 0,
+  "judete": {},
+  "tipInstitutie": {},
+  "perioade": {},
+  "studii": {},
+  "bazaBruta": {
+   "n": 0
+  },
+  "bazaCuSporuriFixe": {
+   "n": 0
+  },
+  "peGradatie": {},
+  "peFunctie": {}
+ }
+}

@@ -1,0 +1,797 @@
+{
+ "slug": "electrician",
+ "nume": "Electrician",
+ "cor": "741101",
+ "generatLa": "2026-09-27T10:01:09.023Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 249,
+  "cuBazaDeclarata": 113,
+  "faraBazaDeclarata": 136,
+  "surse": {
+   "olx": {
+    "n": 91,
+    "procent": 36.5
+   },
+   "ejobs": {
+    "n": 84,
+    "procent": 33.7
+   },
+   "publi24": {
+    "n": 34,
+    "procent": 13.7
+   },
+   "bestjobs": {
+    "n": 25,
+    "procent": 10
+   },
+   "anuntul": {
+    "n": 13,
+    "procent": 5.2
+   },
+   "hipo": {
+    "n": 2,
+    "procent": 0.8
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 232,
+    "procent": 93.2
+   },
+   "continuă": {
+    "n": 17,
+    "procent": 6.8
+   }
+  },
+  "net": {
+   "n": 113,
+   "p10": 4000,
+   "p25": 4600,
+   "median": 5500,
+   "p75": 6565,
+   "p90": 7973,
+   "min": 1400,
+   "max": 16500
+  },
+  "netMinimOferit": {
+   "n": 113,
+   "p10": 3500,
+   "p25": 4000,
+   "median": 4680,
+   "p75": 6000,
+   "p90": 7282,
+   "min": 1200,
+   "max": 14000
+  },
+  "netMaximOferit": {
+   "n": 113,
+   "p10": 4040,
+   "p25": 5000,
+   "median": 6000,
+   "p75": 7878,
+   "p90": 9975,
+   "min": 1600,
+   "max": 19000
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 136,
+   "p10": 4500,
+   "p25": 5032,
+   "median": 5975,
+   "p75": 7000,
+   "p90": 7900,
+   "min": 3500,
+   "max": 14000
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-09": {
+    "n": 107,
+    "procent": 43
+   },
+   "2026-08": {
+    "n": 96,
+    "procent": 38.6
+   },
+   "2026-07": {
+    "n": 10,
+    "procent": 4
+   },
+   "2026-06": {
+    "n": 8,
+    "procent": 3.2
+   },
+   "2026-03": {
+    "n": 6,
+    "procent": 2.4
+   },
+   "2026-05": {
+    "n": 5,
+    "procent": 2
+   },
+   "2026-04": {
+    "n": 3,
+    "procent": 1.2
+   },
+   "2025-09": {
+    "n": 3,
+    "procent": 1.2
+   },
+   "2025-08": {
+    "n": 3,
+    "procent": 1.2
+   },
+   "2025-10": {
+    "n": 2,
+    "procent": 0.8
+   },
+   "2026-02": {
+    "n": 2,
+    "procent": 0.8
+   },
+   "2026-01": {
+    "n": 1,
+    "procent": 0.4
+   },
+   "2025-12": {
+    "n": 1,
+    "procent": 0.4
+   },
+   "2025-06": {
+    "n": 1,
+    "procent": 0.4
+   },
+   "2025-04": {
+    "n": 1,
+    "procent": 0.4
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 38,
+  "cuSalariu": 0,
+  "nivel": {
+   "lead": {
+    "n": 1,
+    "procent": 2.6
+   }
+  },
+  "experienta": {
+   "2+ ani": {
+    "n": 3,
+    "procent": 7.9
+   },
+   "3+ ani": {
+    "n": 3,
+    "procent": 7.9
+   },
+   "da": {
+    "n": 3,
+    "procent": 7.9
+   },
+   "5+ ani": {
+    "n": 2,
+    "procent": 5.3
+   },
+   "fara": {
+    "n": 1,
+    "procent": 2.6
+   }
+  },
+  "experientaPortal": {
+   "1–5 ani": {
+    "n": 10,
+    "procent": 26.3
+   },
+   "0–1 an": {
+    "n": 3,
+    "procent": 7.9
+   },
+   "peste 5 ani": {
+    "n": 3,
+    "procent": 7.9
+   }
+  },
+  "studii": {
+   "medii": {
+    "n": 7,
+    "procent": 18.4
+   },
+   "superioare": {
+    "n": 4,
+    "procent": 10.5
+   },
+   "postliceale": {
+    "n": 1,
+    "procent": 2.6
+   }
+  },
+  "limbi": {
+   "engleza": {
+    "n": 1,
+    "procent": 2.6
+   }
+  },
+  "permis": {
+   "B": {
+    "n": 5,
+    "procent": 13.2
+   }
+  },
+  "atestate": {
+   "ANRE": {
+    "n": 11,
+    "procent": 28.9
+   }
+  },
+  "program": {
+   "ture": {
+    "n": 4,
+    "procent": 10.5
+   },
+   "luni–vineri": {
+    "n": 1,
+    "procent": 2.6
+   }
+  },
+  "mod": {
+   "remote": {
+    "n": 1,
+    "procent": 2.6
+   }
+  },
+  "norma": {},
+  "durata": {
+   "nedeterminată": {
+    "n": 7,
+    "procent": 18.4
+   }
+  },
+  "beneficii": {
+   "bonus": {
+    "n": 9,
+    "procent": 23.7
+   },
+   "asigurare medicală": {
+    "n": 8,
+    "procent": 21.1
+   },
+   "tichete de masă": {
+    "n": 7,
+    "procent": 18.4
+   },
+   "cursuri / training": {
+    "n": 5,
+    "procent": 13.2
+   },
+   "prime": {
+    "n": 1,
+    "procent": 2.6
+   }
+  },
+  "tehnologii": {
+   "PLC": {
+    "n": 3,
+    "procent": 7.9
+   },
+   "AutoCAD": {
+    "n": 2,
+    "procent": 5.3
+   },
+   "SCADA": {
+    "n": 2,
+    "procent": 5.3
+   },
+   "Spring": {
+    "n": 1,
+    "procent": 2.6
+   }
+  },
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 33,
+    "procent": 86.8
+   },
+   "en": {
+    "n": 5,
+    "procent": 13.2
+   }
+  },
+  "surse": {
+   "ejobs": {
+    "n": 22,
+    "procent": 57.9
+   },
+   "hipo": {
+    "n": 16,
+    "procent": 42.1
+   }
+  },
+  "peJudet": {
+   "10": {
+    "n": 4,
+    "procent": 10.5
+   },
+   "22": {
+    "n": 1,
+    "procent": 2.6
+   },
+   "41": {
+    "n": 1,
+    "procent": 2.6
+   },
+   "44": {
+    "n": 1,
+    "procent": 2.6
+   },
+   "RO": {
+    "n": 16,
+    "procent": 42.1
+   }
+  },
+  "motiveFaraSalariu": {
+   "salary_evidence_incomplete": {
+    "n": 16,
+    "procent": 76.2
+   },
+   "country_unconfirmed": {
+    "n": 3,
+    "procent": 14.3
+   },
+   "foreign_or_noncomparable_work": {
+    "n": 2,
+    "procent": 9.5
+   },
+   "full_time_unconfirmed": {
+    "n": 2,
+    "procent": 9.5
+   },
+   "invalid_amount": {
+    "n": 1,
+    "procent": 4.8
+   }
+  },
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 76,
+  "posturi": 264,
+  "ofertePeGrupaCor": 106,
+  "tipSalariu": {
+   "none": {
+    "n": 33,
+    "procent": 43.4
+   },
+   "gross": {
+    "n": 29,
+    "procent": 38.2
+   },
+   "net": {
+    "n": 14,
+    "procent": 18.4
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 13,
+   "p10": 1,
+   "p25": 3000,
+   "median": 4000,
+   "p75": 4500,
+   "p90": 4500,
+   "min": 1,
+   "max": 5500
+  },
+  "brutMinimDeclarat": {
+   "n": 29,
+   "p10": 3690,
+   "p25": 4582,
+   "median": 4582,
+   "p75": 4600,
+   "p90": 6047,
+   "min": 1,
+   "max": 7000
+  },
+  "laSalariulMinim": 4,
+  "studii": {
+   "Profesional - ȘCOALĂ PROFESIONALĂ": {
+    "n": 39,
+    "procent": 51.3
+   },
+   "Liceal - LICEU DE SPECIALITATE": {
+    "n": 19,
+    "procent": 25
+   },
+   "Gimnazial - ȘCOALĂ GENERALĂ": {
+    "n": 7,
+    "procent": 9.2
+   },
+   "Liceal - LICEU TEORETIC": {
+    "n": 4,
+    "procent": 5.3
+   },
+   "Universitar - ÎNVĂȚĂMÂNT SUPERIOR": {
+    "n": 2,
+    "procent": 2.6
+   },
+   "Postliceal - ȘCOALĂ POSTLICEALĂ": {
+    "n": 2,
+    "procent": 2.6
+   },
+   "PROFESIONAL- ÎNVĂȚĂMÂNT SPECIAL": {
+    "n": 2,
+    "procent": 2.6
+   },
+   "Profesional - INV. COMPL. DE UCENICI": {
+    "n": 1,
+    "procent": 1.3
+   }
+  },
+  "experienta": {
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 38,
+    "procent": 50
+   },
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 29,
+    "procent": 38.2
+   },
+   "Fără experiență - 0 ani": {
+    "n": 5,
+    "procent": 6.6
+   },
+   "Avansat - între 5 și 7 ani": {
+    "n": 3,
+    "procent": 3.9
+   },
+   "Experimentat - mai mult de 7 ani": {
+    "n": 1,
+    "procent": 1.3
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 72,
+    "procent": 94.7
+   },
+   "Cu durată determinată": {
+    "n": 4,
+    "procent": 5.3
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 74,
+    "procent": 97.4
+   },
+   "Cu timp parțial": {
+    "n": 2,
+    "procent": 2.6
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 73,
+    "procent": 96.1
+   },
+   "Hibrid - sediu + telemuncă": {
+    "n": 3,
+    "procent": 3.9
+   }
+  },
+  "judete": {
+   "Municipiul București": {
+    "n": 12,
+    "procent": 15.8
+   },
+   "Cluj": {
+    "n": 7,
+    "procent": 9.2
+   },
+   "Sibiu": {
+    "n": 4,
+    "procent": 5.3
+   },
+   "Constanța": {
+    "n": 3,
+    "procent": 3.9
+   },
+   "Tulcea": {
+    "n": 3,
+    "procent": 3.9
+   },
+   "Botoșani": {
+    "n": 3,
+    "procent": 3.9
+   },
+   "Ilfov": {
+    "n": 3,
+    "procent": 3.9
+   },
+   "Brașov": {
+    "n": 3,
+    "procent": 3.9
+   },
+   "Galați": {
+    "n": 3,
+    "procent": 3.9
+   },
+   "Bistrița-Năsăud": {
+    "n": 3,
+    "procent": 3.9
+   },
+   "Timiș": {
+    "n": 3,
+    "procent": 3.9
+   },
+   "Iași": {
+    "n": 3,
+    "procent": 3.9
+   },
+   "Prahova": {
+    "n": 2,
+    "procent": 2.6
+   },
+   "Mureș": {
+    "n": 2,
+    "procent": 2.6
+   },
+   "Mehedinți": {
+    "n": 2,
+    "procent": 2.6
+   },
+   "Ialomița": {
+    "n": 2,
+    "procent": 2.6
+   },
+   "Alba": {
+    "n": 2,
+    "procent": 2.6
+   },
+   "Argeș": {
+    "n": 1,
+    "procent": 1.3
+   },
+   "Bihor": {
+    "n": 1,
+    "procent": 1.3
+   },
+   "Neamț": {
+    "n": 1,
+    "procent": 1.3
+   },
+   "Gorj": {
+    "n": 1,
+    "procent": 1.3
+   },
+   "Giurgiu": {
+    "n": 1,
+    "procent": 1.3
+   },
+   "Călărași": {
+    "n": 1,
+    "procent": 1.3
+   },
+   "Brăila": {
+    "n": 1,
+    "procent": 1.3
+   },
+   "Arad": {
+    "n": 1,
+    "procent": 1.3
+   },
+   "Vrancea": {
+    "n": 1,
+    "procent": 1.3
+   },
+   "Teleorman": {
+    "n": 1,
+    "procent": 1.3
+   },
+   "Buzău": {
+    "n": 1,
+    "procent": 1.3
+   },
+   "Vaslui": {
+    "n": 1,
+    "procent": 1.3
+   },
+   "Covasna": {
+    "n": 1,
+    "procent": 1.3
+   },
+   "Dolj": {
+    "n": 1,
+    "procent": 1.3
+   },
+   "Satu Mare": {
+    "n": 1,
+    "procent": 1.3
+   },
+   "Bacău": {
+    "n": 1,
+    "procent": 1.3
+   }
+  },
+  "domenii": {
+   "Construcții / Instalații": {
+    "n": 61,
+    "procent": 80.3
+   },
+   "Altele": {
+    "n": 9,
+    "procent": 11.8
+   },
+   "Inginerie": {
+    "n": 5,
+    "procent": 6.6
+   },
+   "Producție / Logistică": {
+    "n": 1,
+    "procent": 1.3
+   }
+  },
+  "coduriCorInGrupa": {
+   "741101 - ELECTRICIAN ÎN CONSTRUCTII": {
+    "n": 76,
+    "procent": 71.7
+   },
+   "741110 - ELECTRICIAN ÎN CONSTRUCTII CIVILE SI INDUSTRIALE": {
+    "n": 12,
+    "procent": 11.3
+   },
+   "741106 - ELECTRICIAN CONSTRUCTOR MONTATOR APARATAJ SI CABLURI DE JOASA TENSIUNE": {
+    "n": 6,
+    "procent": 5.7
+   },
+   "741102 - ELECTRICIAN DE ÎNTRETINERE ÎN CONSTRUCTII": {
+    "n": 5,
+    "procent": 4.7
+   },
+   "741103 - INSTALATOR PENTRU SISTEME FOTOVOLTAICE SOLARE": {
+    "n": 3,
+    "procent": 2.8
+   },
+   "741105 - MONTATOR INSTALATII SOLARE": {
+    "n": 3,
+    "procent": 2.8
+   },
+   "741108 - ELECTRICIAN CONSTRUCTOR INSTALATOR APARATURA DE MASURA SI CONTROL": {
+    "n": 1,
+    "procent": 0.9
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 28,
+  "institutii": 6,
+  "judete": {
+   "BH": {
+    "n": 13,
+    "procent": 46.4
+   },
+   "GR": {
+    "n": 6,
+    "procent": 21.4
+   },
+   "BR": {
+    "n": 3,
+    "procent": 10.7
+   },
+   "CJ": {
+    "n": 3,
+    "procent": 10.7
+   },
+   "DJ": {
+    "n": 2,
+    "procent": 7.1
+   },
+   "B": {
+    "n": 1,
+    "procent": 3.6
+   }
+  },
+  "tipInstitutie": {
+   "spital": {
+    "n": 28,
+    "procent": 100
+   }
+  },
+  "perioade": {
+   "2026-03": {
+    "n": 20,
+    "procent": 71.4
+   },
+   "2022-09": {
+    "n": 6,
+    "procent": 21.4
+   },
+   "2024-03": {
+    "n": 2,
+    "procent": 7.1
+   }
+  },
+  "studii": {
+   "G": {
+    "n": 16,
+    "procent": 57.1
+   },
+   "M": {
+    "n": 3,
+    "procent": 10.7
+   }
+  },
+  "bazaBruta": {
+   "n": 28,
+   "p10": 3844,
+   "p25": 5612,
+   "median": 5929,
+   "p75": 6479,
+   "p90": 6498,
+   "min": 3615,
+   "max": 6498
+  },
+  "bazaCuSporuriFixe": {
+   "n": 28,
+   "p10": 3844,
+   "p25": 5823,
+   "median": 6146,
+   "p75": 6584,
+   "p90": 6757,
+   "min": 3615,
+   "max": 6757
+  },
+  "peGradatie": {
+   "gradația 5": {
+    "n": 2
+   }
+  },
+  "peFunctie": {
+   "SERVICIUL TEHNIC SI APARATURA MEDICALA Muncitor calificat I‐": {
+    "n": 7
+   },
+   "SERVICIUL TEHNIC SI APARATURA MEDICALA Muncitor calificat IV": {
+    "n": 4
+   },
+   "MUNCITOR I ELECTRICIAN": {
+    "n": 3
+   },
+   "SERVICIUL TEHNIC SI APARATURA MEDICALA Muncitor calificat II": {
+    "n": 2
+   },
+   "MUNCITOR II ELECTRICIAN": {
+    "n": 2
+   },
+   "electrician": {
+    "n": 2
+   },
+   "MUNCITOR CALIFICAT I - ELECTRICIAN Gradatia 5 Sporurile din ": {
+    "n": 2
+   },
+   "COMPARTIMENT INFORMATICA MUNCIT.I/ELECTRICIAN MEDII Gradatia": {
+    "n": 1
+   },
+   "SERV. TEHNIC MUNCIT.I/ELECTRICIAN MEDII Gradatia 5": {
+    "n": 1
+   },
+   "SERV. TEHNIC MUNCIT.I/ELECTRICIAN MEDII Gradatia 4": {
+    "n": 1
+   },
+   "TEHNIC ELECTRICIAN Gradatia 4": {
+    "n": 1
+   },
+   "MUNCITOR III ELECTRICIAN": {
+    "n": 1
+   },
+   "MUNCITOR CALIFICAT IV - ELECTRICIAN Gradatia 5 Sporurile din": {
+    "n": 1
+   }
+  }
+ }
+}

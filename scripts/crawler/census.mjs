@@ -7,6 +7,7 @@ import { detailRecord, assess, olxState } from './extract.mjs';
 import { canonicalUrl, POLICY } from './policy.mjs';
 import { exportRun } from './export-run.mjs';
 import { listingRecords } from './ejobs-listing.mjs';
+import { atributeAnunt } from './atribute.mjs';
 // Some portals percent-encode titles in a legacy charset; the raw segment still classifies.
 const safeDecode = s => { try { return decodeURIComponent(s); } catch { return s; } };
 const arg=(key,value)=>process.argv.find(a=>a.startsWith(`--${key}=`))?.slice(key.length+3)||value;
@@ -17,6 +18,8 @@ const selectedSources=arg('sources','olx,ejobs,bestjobs,publi24,anuntul,hipo,und
 const includeUnknown=process.argv.includes('--include-unknown');
 // Colectarea continua (scripts/colectare/anunturi.mjs): URL-urile citite in rularile trecute se sar,
 // iar rularea se opreste curat la bugetul de timp, ca sa incapa in limita unui job GitHub Actions.
+// --slugs=programator,web-developer: deschide doar anunțurile acestor meserii (colectare țintită).
+const onlySlugs=arg('slugs',null)?new Set(arg('slugs').split(',')):null;
 const seenFile=arg('seen',null);
 const seenUrls=new Set(seenFile&&fs.existsSync(seenFile)?fs.readFileSync(seenFile,'utf8').split(String.fromCharCode(10)).map(x=>x.trim()).filter(Boolean):[]);
 const deadline=Number(arg('budget-min',0))?Date.now()+Number(arg('budget-min',0))*60000:Infinity;
@@ -194,6 +197,7 @@ async function crawl(source){
   let i=0;
   for(const {url,classification} of candidates){
     if(!classification.slugs.length&&!includeUnknown)continue;
+    if(onlySlugs&&!classification.slugs.some(x=>onlySlugs.has(x)))continue;
     if(state.results[url]||seenUrls.has(url))continue;
     if(timeUp()){entry.stoppedByBudget=true;break;}
     try{
@@ -202,7 +206,10 @@ async function crawl(source){
       const page=await fetchPage(url,evidenceDir),raw=detailRecord(page,source);
       const result=assess(raw?{...raw,listedAt:entry.listedAt,fx:state.fx}:null,page,new Date(page.retrievedAt));
       state.results[url]={...result,url,source,listedAt:entry.listedAt,evidence:{file:page.evidenceFile,sha256:page.sha256,retrievedAt:page.retrievedAt}};
-      if(raw)state.results[url].raw=raw;
+      if(raw){state.results[url].raw=raw;
+        // Factorii anunțului (experiență, studii, program, beneficii...), și pentru anunțurile fără
+        // salariu: descriu ce cere meseria. Doar factorii, nu textul (scripts/crawler/atribute.mjs).
+        state.results[url].atribute=atributeAnunt(raw);}
     }catch(e){noteEvent(entry,{url,stage:'detail',error:e.message});if(/host_paused/.test(e.message)){save();return;}if(!transient(e.message))state.results[url]={url,source,accepted:false,reasons:[e.message]};}
     i++;if(i%20===0){save();console.log(`${source}: ${Object.values(state.results).filter(r=>r.source===source).length}/${includeUnknown?ids.length:entry.catalogCandidates} read; ${Object.values(state.results).filter(r=>r.source===source&&r.accepted).length} eligible`);}
   }

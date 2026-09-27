@@ -1,0 +1,629 @@
+{
+ "slug": "consilier-juridic",
+ "nume": "Consilier juridic",
+ "cor": "261103",
+ "generatLa": "2026-09-27T10:01:08.991Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 14,
+  "cuBazaDeclarata": 7,
+  "faraBazaDeclarata": 7,
+  "surse": {
+   "ejobs": {
+    "n": 7,
+    "procent": 50
+   },
+   "bestjobs": {
+    "n": 4,
+    "procent": 28.6
+   },
+   "olx": {
+    "n": 2,
+    "procent": 14.3
+   },
+   "hipo": {
+    "n": 1,
+    "procent": 7.1
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 13,
+    "procent": 92.9
+   },
+   "continuă": {
+    "n": 1,
+    "procent": 7.1
+   }
+  },
+  "net": {
+   "n": 7
+  },
+  "netMinimOferit": {
+   "n": 7
+  },
+  "netMaximOferit": {
+   "n": 7
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 7
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-09": {
+    "n": 8,
+    "procent": 57.1
+   },
+   "2026-08": {
+    "n": 5,
+    "procent": 35.7
+   },
+   "2026-06": {
+    "n": 1,
+    "procent": 7.1
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 2,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {},
+  "experientaPortal": {
+   "peste 5 ani": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "studii": {
+   "superioare": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "limbi": {},
+  "permis": {},
+  "atestate": {
+   "ANRE": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "program": {},
+  "mod": {
+   "hibrid": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "norma": {},
+  "durata": {},
+  "beneficii": {
+   "tichete de masă": {
+    "n": 1,
+    "procent": 50
+   },
+   "bonus": {
+    "n": 1,
+    "procent": 50
+   },
+   "asigurare medicală": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "ejobs": {
+    "n": 1,
+    "procent": 50
+   },
+   "hipo": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "peJudet": {
+   "10": {
+    "n": 1,
+    "procent": 50
+   },
+   "RO": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "motiveFaraSalariu": {
+   "salary_evidence_incomplete": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 21,
+  "posturi": 24,
+  "ofertePeGrupaCor": 21,
+  "tipSalariu": {
+   "gross": {
+    "n": 10,
+    "procent": 47.6
+   },
+   "none": {
+    "n": 8,
+    "procent": 38.1
+   },
+   "net": {
+    "n": 3,
+    "procent": 14.3
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 3
+  },
+  "brutMinimDeclarat": {
+   "n": 10,
+   "p10": 4325,
+   "p25": 5359,
+   "median": 6018,
+   "p75": 7746,
+   "p90": 9305,
+   "min": 4325,
+   "max": 10321
+  },
+  "laSalariulMinim": 2,
+  "studii": {
+   "Universitar - ÎNVĂȚĂMÂNT SUPERIOR": {
+    "n": 18,
+    "procent": 85.7
+   },
+   "Universitar - MASTER": {
+    "n": 3,
+    "procent": 14.3
+   }
+  },
+  "experienta": {
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 5,
+    "procent": 23.8
+   },
+   "Avansat - între 5 și 7 ani": {
+    "n": 4,
+    "procent": 19
+   },
+   "Experimentat - mai mult de 7 ani": {
+    "n": 4,
+    "procent": 19
+   },
+   "Fără experiență - 0 ani": {
+    "n": 4,
+    "procent": 19
+   },
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 4,
+    "procent": 19
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 21,
+    "procent": 100
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 21,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 21,
+    "procent": 100
+   }
+  },
+  "judete": {
+   "Municipiul București": {
+    "n": 11,
+    "procent": 52.4
+   },
+   "Brașov": {
+    "n": 2,
+    "procent": 9.5
+   },
+   "Argeș": {
+    "n": 1,
+    "procent": 4.8
+   },
+   "Timiș": {
+    "n": 1,
+    "procent": 4.8
+   },
+   "Iași": {
+    "n": 1,
+    "procent": 4.8
+   },
+   "Bihor": {
+    "n": 1,
+    "procent": 4.8
+   },
+   "Vâlcea": {
+    "n": 1,
+    "procent": 4.8
+   },
+   "Botoșani": {
+    "n": 1,
+    "procent": 4.8
+   },
+   "Mureș": {
+    "n": 1,
+    "procent": 4.8
+   },
+   "Galați": {
+    "n": 1,
+    "procent": 4.8
+   }
+  },
+  "domenii": {
+   "Legislativ / Juridic / Funcții Publice": {
+    "n": 7,
+    "procent": 33.3
+   },
+   "Altele": {
+    "n": 6,
+    "procent": 28.6
+   },
+   "Construcții / Instalații": {
+    "n": 3,
+    "procent": 14.3
+   },
+   "Medicină / Sănătate /Psihoterapie": {
+    "n": 1,
+    "procent": 4.8
+   },
+   "Educație / Training / Coaching": {
+    "n": 1,
+    "procent": 4.8
+   },
+   "Administrativ / Secretariat": {
+    "n": 1,
+    "procent": 4.8
+   },
+   "Producție / Logistică": {
+    "n": 1,
+    "procent": 4.8
+   },
+   "IT / Telecomunicații": {
+    "n": 1,
+    "procent": 4.8
+   }
+  },
+  "coduriCorInGrupa": {
+   "261103 - CONSILIER JURIDIC": {
+    "n": 21,
+    "procent": 100
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 75,
+  "institutii": 22,
+  "judete": {
+   "CL": {
+    "n": 13,
+    "procent": 17.3
+   },
+   "B": {
+    "n": 12,
+    "procent": 16
+   },
+   "HR": {
+    "n": 10,
+    "procent": 13.3
+   },
+   "SB": {
+    "n": 6,
+    "procent": 8
+   },
+   "BR": {
+    "n": 5,
+    "procent": 6.7
+   },
+   "SJ": {
+    "n": 4,
+    "procent": 5.3
+   },
+   "BH": {
+    "n": 4,
+    "procent": 5.3
+   },
+   "CJ": {
+    "n": 4,
+    "procent": 5.3
+   },
+   "BC": {
+    "n": 3,
+    "procent": 4
+   },
+   "IS": {
+    "n": 2,
+    "procent": 2.7
+   },
+   "CT": {
+    "n": 2,
+    "procent": 2.7
+   },
+   "AB": {
+    "n": 2,
+    "procent": 2.7
+   },
+   "BZ": {
+    "n": 2,
+    "procent": 2.7
+   },
+   "MS": {
+    "n": 2,
+    "procent": 2.7
+   },
+   "BV": {
+    "n": 1,
+    "procent": 1.3
+   },
+   "VS": {
+    "n": 1,
+    "procent": 1.3
+   },
+   "GR": {
+    "n": 1,
+    "procent": 1.3
+   },
+   "DJ": {
+    "n": 1,
+    "procent": 1.3
+   }
+  },
+  "tipInstitutie": {
+   "spital": {
+    "n": 47,
+    "procent": 62.7
+   },
+   "dgaspc": {
+    "n": 19,
+    "procent": 25.3
+   },
+   "consiliu-judetean": {
+    "n": 4,
+    "procent": 5.3
+   },
+   "universitate": {
+    "n": 4,
+    "procent": 5.3
+   },
+   "dsp": {
+    "n": 1,
+    "procent": 1.3
+   }
+  },
+  "perioade": {
+   "2026-03": {
+    "n": 62,
+    "procent": 82.7
+   },
+   "2026-09": {
+    "n": 5,
+    "procent": 6.7
+   },
+   "2026-02": {
+    "n": 5,
+    "procent": 6.7
+   },
+   "2025-03": {
+    "n": 1,
+    "procent": 1.3
+   },
+   "2022-09": {
+    "n": 1,
+    "procent": 1.3
+   },
+   "2024-03": {
+    "n": 1,
+    "procent": 1.3
+   }
+  },
+  "studii": {
+   "S": {
+    "n": 34,
+    "procent": 45.3
+   }
+  },
+  "bazaBruta": {
+   "n": 75,
+   "p10": 6793,
+   "p25": 7938,
+   "median": 8808,
+   "p75": 9653,
+   "p90": 11202,
+   "min": 2386,
+   "max": 14553
+  },
+  "bazaCuSporuriFixe": {
+   "n": 75,
+   "p10": 6904,
+   "p25": 8042,
+   "median": 8826,
+   "p75": 9787,
+   "p90": 11446,
+   "min": 2386,
+   "max": 14853
+  },
+  "peGradatie": {
+   "gradația 5": {
+    "n": 11,
+    "p10": 8375,
+    "p25": 8783,
+    "median": 9631,
+    "p75": 9702,
+    "p90": 9802,
+    "min": 8239,
+    "max": 12381
+   },
+   "gradația 2": {
+    "n": 4
+   },
+   "gradația 3": {
+    "n": 2
+   },
+   "gradația 4": {
+    "n": 1
+   },
+   "gradația 1": {
+    "n": 1
+   }
+  },
+  "peFunctie": {
+   "Consilier, consilier juridic, consilier achiziții publice,": {
+    "n": 13,
+    "p10": 7023,
+    "p25": 7808,
+    "median": 9174,
+    "p75": 10131,
+    "p90": 11299,
+    "min": 4991,
+    "max": 11640
+   },
+   "CONSILIER JURIDIC GRADUL I SUPERIOARE Gradatia": {
+    "n": 5
+   },
+   "Consilier juridic, grad profesional": {
+    "n": 4
+   },
+   "COMPARTIMENT JURIDIC CONSILIER JURIDIC IA SUPERIOARE Gradati": {
+    "n": 4
+   },
+   "Comp. Secretariat, Relatii Publice si Juridic CONSILIER JURI": {
+    "n": 4
+   },
+   "CONSILIER JURIDIC GRADUL IA SUPERIOARE Gradatia": {
+    "n": 4
+   },
+   "COMPARTIMENT JURIDIC Consilier juridic gradul IA Gradatia 5 ": {
+    "n": 3
+   },
+   "Consilier juridic S IA spor pentru condiții periculoase sau ": {
+    "n": 2
+   },
+   "Consilier juridic gradul IA SUPERIOARE ( S )": {
+    "n": 2
+   },
+   "COMP.JURIDIC CONSILIER JURIDIC GRADUL IA Gradatia 5": {
+    "n": 2
+   },
+   "CONSILIER JURIDIC 1A Compartiment juridic": {
+    "n": 2
+   },
+   "Consilier juridic IA S": {
+    "n": 1
+   },
+   "Consilier juridic I S": {
+    "n": 1
+   },
+   "Consilier juridic II S": {
+    "n": 1
+   },
+   "Consilier juridic Debutant S": {
+    "n": 1
+   },
+   "consilier juridic superior": {
+    "n": 1
+   },
+   "Consilier, consilier juridic I Principal spor pentru condiți": {
+    "n": 1
+   },
+   "Consilier, Consilier juridic I Asistent spor pentru condiții": {
+    "n": 1
+   },
+   "Consilier juridic S I spor pentru condiții periculoase sau v": {
+    "n": 1
+   },
+   "Consilier juridic superior": {
+    "n": 1
+   },
+   "539 Consilier juridic grad II Gradatia 4 Contractual": {
+    "n": 1
+   },
+   "540 Consilier juridic IA Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "COMPARTIMENT JURIDIC Consilier juridic gradul IA Gradatia 2 ": {
+    "n": 1
+   },
+   "COMPARTIMENT JURIDIC CONSILIER JURIDIC III SUPERIOARE BAZA": {
+    "n": 1
+   },
+   "consilier juridic I": {
+    "n": 1
+   },
+   "consilier juridic IA": {
+    "n": 1
+   },
+   "consilier juridic II": {
+    "n": 1
+   },
+   "Compartiment Audit CONSILIER JURIDIC - IA S": {
+    "n": 1
+   },
+   "Serviciul de Achizitii Publice CONSILIER JURIDIC - IA S": {
+    "n": 1
+   },
+   "CONSILIER JURIDIC IA Gradatia 5": {
+    "n": 1
+   },
+   "JURIDIC CONSILIER JURIDIC IA Gradatia 5": {
+    "n": 1
+   },
+   "CONSILIER JURIDIC IA COMPARTIMENT JURIDIC": {
+    "n": 1
+   },
+   "CONSILIER JURIDIC II COMPARTIMENT JURIDIC": {
+    "n": 1
+   },
+   "CONSILIER JURIDIC I SERVICIU LICITATII SI ATRIBUIRE CONTRACT": {
+    "n": 1
+   },
+   "CONSILIER JURIDIC IA": {
+    "n": 1
+   },
+   "CONSILIER JURIDIC GRADUL II SUPERIOARE Gradatia": {
+    "n": 1
+   },
+   "consilier juridic 1A": {
+    "n": 1
+   },
+   "Consilier juridic gr.I Indemnizatie doctorat Sal.minim 12.20": {
+    "n": 1
+   },
+   "Consilier juridic gr.IA Gradatie merit Sal.baza * procent % ": {
+    "n": 1
+   },
+   "Consilier juridic IAS": {
+    "n": 1
+   },
+   "Consilier juridic IS": {
+    "n": 1
+   }
+  }
+ }
+}

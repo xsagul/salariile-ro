@@ -1,0 +1,286 @@
+{
+ "slug": "logistician",
+ "nume": "Logistician",
+ "cor": "214955",
+ "generatLa": "2026-09-27T10:01:09.079Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 24,
+  "cuBazaDeclarata": 12,
+  "faraBazaDeclarata": 12,
+  "surse": {
+   "bestjobs": {
+    "n": 9,
+    "procent": 37.5
+   },
+   "ejobs": {
+    "n": 8,
+    "procent": 33.3
+   },
+   "olx": {
+    "n": 6,
+    "procent": 25
+   },
+   "publi24": {
+    "n": 1,
+    "procent": 4.2
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 24,
+    "procent": 100
+   }
+  },
+  "net": {
+   "n": 12,
+   "p10": 3440,
+   "p25": 3950,
+   "median": 4388,
+   "p75": 6999,
+   "p90": 7975,
+   "min": 3285,
+   "max": 10000
+  },
+  "netMinimOferit": {
+   "n": 12,
+   "p10": 3029,
+   "p25": 3521,
+   "median": 4232,
+   "p75": 6141,
+   "p90": 7857,
+   "min": 3000,
+   "max": 8000
+  },
+  "netMaximOferit": {
+   "n": 12,
+   "p10": 3820,
+   "p25": 4000,
+   "median": 4995,
+   "p75": 7625,
+   "p90": 8835,
+   "min": 3285,
+   "max": 12000
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 12,
+   "p10": 3365,
+   "p25": 3741,
+   "median": 4136,
+   "p75": 5337,
+   "p90": 9533,
+   "min": 3250,
+   "max": 10000
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-09": {
+    "n": 13,
+    "procent": 54.2
+   },
+   "2026-08": {
+    "n": 9,
+    "procent": 37.5
+   },
+   "2026-06": {
+    "n": 1,
+    "procent": 4.2
+   },
+   "2025-10": {
+    "n": 1,
+    "procent": 4.2
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 3,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {
+   "da": {
+    "n": 2,
+    "procent": 66.7
+   }
+  },
+  "experientaPortal": {
+   "0–1 an": {
+    "n": 1,
+    "procent": 33.3
+   },
+   "1–5 ani": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
+  "studii": {},
+  "limbi": {
+   "engleza": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
+  "permis": {
+   "B": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
+  "atestate": {},
+  "program": {
+   "ture": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 3,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "hipo": {
+    "n": 2,
+    "procent": 66.7
+   },
+   "ejobs": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
+  "peJudet": {
+   "RO": {
+    "n": 2,
+    "procent": 66.7
+   }
+  },
+  "motiveFaraSalariu": {
+   "salary_evidence_incomplete": {
+    "n": 2,
+    "procent": 66.7
+   },
+   "country_unconfirmed": {
+    "n": 1,
+    "procent": 33.3
+   },
+   "foreign_or_noncomparable_work": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 2,
+  "posturi": 2,
+  "ofertePeGrupaCor": 8,
+  "tipSalariu": {
+   "gross": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 0
+  },
+  "brutMinimDeclarat": {
+   "n": 2
+  },
+  "laSalariulMinim": 1,
+  "studii": {
+   "Universitar - ÎNVĂȚĂMÂNT SUPERIOR": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "experienta": {
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 1,
+    "procent": 50
+   },
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "judete": {
+   "Municipiul București": {
+    "n": 1,
+    "procent": 50
+   },
+   "Satu Mare": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "domenii": {
+   "Producție / Logistică": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "coduriCorInGrupa": {
+   "214946 - EXPERT ACHIZITII PUBLICE": {
+    "n": 4,
+    "procent": 50
+   },
+   "214955 - Logistician in transporturi": {
+    "n": 2,
+    "procent": 25
+   },
+   "214958 - inginer punere in functiune": {
+    "n": 1,
+    "procent": 12.5
+   },
+   "214959 - inginer specialist in robotica": {
+    "n": 1,
+    "procent": 12.5
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 0,
+  "institutii": 0,
+  "judete": {},
+  "tipInstitutie": {},
+  "perioade": {},
+  "studii": {},
+  "bazaBruta": {
+   "n": 0
+  },
+  "bazaCuSporuriFixe": {
+   "n": 0
+  },
+  "peGradatie": {},
+  "peFunctie": {}
+ }
+}

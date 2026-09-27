@@ -1,0 +1,317 @@
+{
+ "slug": "devops-engineer",
+ "nume": "Inginer DevOps",
+ "cor": null,
+ "generatLa": "2026-09-27T10:01:08.813Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 0,
+  "cuBazaDeclarata": 0,
+  "faraBazaDeclarata": 0,
+  "surse": {},
+  "colectari": {},
+  "net": {
+   "n": 0
+  },
+  "netMinimOferit": {
+   "n": 0
+  },
+  "netMaximOferit": {
+   "n": 0
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 0
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {}
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 48,
+  "cuSalariu": 0,
+  "nivel": {
+   "senior": {
+    "n": 12,
+    "procent": 25
+   },
+   "lead": {
+    "n": 2,
+    "procent": 4.2
+   },
+   "stagiar": {
+    "n": 1,
+    "procent": 2.1
+   },
+   "mid": {
+    "n": 1,
+    "procent": 2.1
+   },
+   "junior": {
+    "n": 1,
+    "procent": 2.1
+   }
+  },
+  "experienta": {
+   "5+ ani": {
+    "n": 19,
+    "procent": 39.6
+   },
+   "3+ ani": {
+    "n": 6,
+    "procent": 12.5
+   },
+   "fara": {
+    "n": 2,
+    "procent": 4.2
+   },
+   "2+ ani": {
+    "n": 2,
+    "procent": 4.2
+   },
+   "8+ ani": {
+    "n": 1,
+    "procent": 2.1
+   },
+   "4+ ani": {
+    "n": 1,
+    "procent": 2.1
+   }
+  },
+  "experientaPortal": {
+   "1–5 ani": {
+    "n": 21,
+    "procent": 43.8
+   }
+  },
+  "studii": {
+   "superioare": {
+    "n": 15,
+    "procent": 31.3
+   }
+  },
+  "limbi": {
+   "engleza": {
+    "n": 4,
+    "procent": 8.3
+   },
+   "germana": {
+    "n": 1,
+    "procent": 2.1
+   }
+  },
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {
+   "hibrid": {
+    "n": 18,
+    "procent": 37.5
+   },
+   "remote": {
+    "n": 12,
+    "procent": 25
+   }
+  },
+  "norma": {},
+  "durata": {},
+  "beneficii": {
+   "cursuri / training": {
+    "n": 14,
+    "procent": 29.2
+   },
+   "asigurare medicală": {
+    "n": 13,
+    "procent": 27.1
+   },
+   "bonus": {
+    "n": 10,
+    "procent": 20.8
+   },
+   "tichete de masă": {
+    "n": 2,
+    "procent": 4.2
+   }
+  },
+  "tehnologii": {
+   "Azure": {
+    "n": 32,
+    "procent": 66.7
+   },
+   "Python": {
+    "n": 28,
+    "procent": 58.3
+   },
+   "Docker": {
+    "n": 28,
+    "procent": 58.3
+   },
+   "Kubernetes": {
+    "n": 28,
+    "procent": 58.3
+   },
+   "Git": {
+    "n": 23,
+    "procent": 47.9
+   },
+   "Linux": {
+    "n": 21,
+    "procent": 43.8
+   },
+   "SQL": {
+    "n": 15,
+    "procent": 31.3
+   },
+   "AWS": {
+    "n": 12,
+    "procent": 25
+   },
+   "GCP": {
+    "n": 9,
+    "procent": 18.8
+   },
+   "Power BI": {
+    "n": 8,
+    "procent": 16.7
+   },
+   "Java": {
+    "n": 6,
+    "procent": 12.5
+   },
+   "NoSQL": {
+    "n": 3,
+    "procent": 6.3
+   },
+   "Excel": {
+    "n": 3,
+    "procent": 6.3
+   },
+   "PLC": {
+    "n": 3,
+    "procent": 6.3
+   },
+   "Jira": {
+    "n": 3,
+    "procent": 6.3
+   },
+   "Spring": {
+    "n": 2,
+    "procent": 4.2
+   },
+   "React": {
+    "n": 2,
+    "procent": 4.2
+   },
+   "JavaScript": {
+    "n": 1,
+    "procent": 2.1
+   },
+   "TypeScript": {
+    "n": 1,
+    "procent": 2.1
+   },
+   "C#": {
+    "n": 1,
+    "procent": 2.1
+   },
+   "Angular": {
+    "n": 1,
+    "procent": 2.1
+   },
+   "Node.js": {
+    "n": 1,
+    "procent": 2.1
+   },
+   "PHP": {
+    "n": 1,
+    "procent": 2.1
+   },
+   "Go": {
+    "n": 1,
+    "procent": 2.1
+   }
+  },
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {
+   "en": {
+    "n": 46,
+    "procent": 95.8
+   },
+   "ro": {
+    "n": 2,
+    "procent": 4.2
+   }
+  },
+  "surse": {
+   "undelucram": {
+    "n": 25,
+    "procent": 52.1
+   },
+   "hipo": {
+    "n": 22,
+    "procent": 45.8
+   },
+   "bestjobs": {
+    "n": 1,
+    "procent": 2.1
+   }
+  },
+  "peJudet": {
+   "RO": {
+    "n": 22,
+    "procent": 45.8
+   }
+  },
+  "motiveFaraSalariu": {
+   "salary_evidence_incomplete": {
+    "n": 48,
+    "procent": 100
+   },
+   "country_unconfirmed": {
+    "n": 3,
+    "procent": 6.3
+   }
+  },
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 0,
+  "posturi": 0,
+  "ofertePeGrupaCor": 0,
+  "tipSalariu": {},
+  "netMinimDeclarat": {
+   "n": 0
+  },
+  "brutMinimDeclarat": {
+   "n": 0
+  },
+  "laSalariulMinim": 0,
+  "studii": {},
+  "experienta": {},
+  "contract": {},
+  "norma": {},
+  "regim": {},
+  "judete": {},
+  "domenii": {},
+  "coduriCorInGrupa": {}
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 0,
+  "institutii": 0,
+  "judete": {},
+  "tipInstitutie": {},
+  "perioade": {},
+  "studii": {},
+  "bazaBruta": {
+   "n": 0
+  },
+  "bazaCuSporuriFixe": {
+   "n": 0
+  },
+  "peGradatie": {},
+  "peFunctie": {}
+ }
+}

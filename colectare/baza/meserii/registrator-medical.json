@@ -1,0 +1,745 @@
+{
+ "slug": "registrator-medical",
+ "nume": "Registrator medical",
+ "cor": "422207",
+ "generatLa": "2026-09-27T10:01:08.910Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 2,
+  "cuBazaDeclarata": 1,
+  "faraBazaDeclarata": 1,
+  "surse": {
+   "ejobs": {
+    "n": 1,
+    "procent": 50
+   },
+   "olx": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "net": {
+   "n": 1
+  },
+  "netMinimOferit": {
+   "n": 1
+  },
+  "netMaximOferit": {
+   "n": 1
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 1
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-09": {
+    "n": 1,
+    "procent": 50
+   },
+   "2026-08": {
+    "n": 1,
+    "procent": 50
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 0,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {},
+  "surse": {},
+  "peJudet": {},
+  "motiveFaraSalariu": {},
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 0,
+  "posturi": 0,
+  "ofertePeGrupaCor": 0,
+  "tipSalariu": {},
+  "netMinimDeclarat": {
+   "n": 0
+  },
+  "brutMinimDeclarat": {
+   "n": 0
+  },
+  "laSalariulMinim": 0,
+  "studii": {},
+  "experienta": {},
+  "contract": {},
+  "norma": {},
+  "regim": {},
+  "judete": {},
+  "domenii": {},
+  "coduriCorInGrupa": {}
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 496,
+  "institutii": 16,
+  "judete": {
+   "BH": {
+    "n": 105,
+    "procent": 21.2
+   },
+   "CT": {
+    "n": 92,
+    "procent": 18.5
+   },
+   "SB": {
+    "n": 92,
+    "procent": 18.5
+   },
+   "CJ": {
+    "n": 62,
+    "procent": 12.5
+   },
+   "AB": {
+    "n": 45,
+    "procent": 9.1
+   },
+   "HR": {
+    "n": 44,
+    "procent": 8.9
+   },
+   "TM": {
+    "n": 14,
+    "procent": 2.8
+   },
+   "BZ": {
+    "n": 10,
+    "procent": 2
+   },
+   "IS": {
+    "n": 8,
+    "procent": 1.6
+   },
+   "DJ": {
+    "n": 8,
+    "procent": 1.6
+   },
+   "BC": {
+    "n": 7,
+    "procent": 1.4
+   },
+   "B": {
+    "n": 6,
+    "procent": 1.2
+   },
+   "BR": {
+    "n": 3,
+    "procent": 0.6
+   }
+  },
+  "tipInstitutie": {
+   "spital": {
+    "n": 496,
+    "procent": 100
+   }
+  },
+  "perioade": {
+   "2026-03": {
+    "n": 444,
+    "procent": 89.5
+   },
+   "2025-03": {
+    "n": 27,
+    "procent": 5.4
+   },
+   "2026-02": {
+    "n": 17,
+    "procent": 3.4
+   },
+   "2024-03": {
+    "n": 8,
+    "procent": 1.6
+   }
+  },
+  "studii": {
+   "M": {
+    "n": 335,
+    "procent": 67.5
+   },
+   "G": {
+    "n": 5,
+    "procent": 1
+   },
+   "PL": {
+    "n": 1,
+    "procent": 0.2
+   }
+  },
+  "bazaBruta": {
+   "n": 496,
+   "p10": 4972,
+   "p25": 5483,
+   "median": 5762,
+   "p75": 5838,
+   "p90": 6227,
+   "min": 1532,
+   "max": 7591
+  },
+  "bazaCuSporuriFixe": {
+   "n": 496,
+   "p10": 5341,
+   "p25": 5887,
+   "median": 6242,
+   "p75": 7349,
+   "p90": 8416,
+   "min": 1532,
+   "max": 11729
+  },
+  "peGradatie": {
+   "gradația 5": {
+    "n": 81,
+    "p10": 5971,
+    "p25": 6165,
+    "median": 6398,
+    "p75": 8123,
+    "p90": 10348,
+    "min": 5589,
+    "max": 11443.7
+   },
+   "gradația 4": {
+    "n": 25,
+    "p10": 5920,
+    "p25": 5934,
+    "median": 6243,
+    "p75": 7346,
+    "p90": 8149,
+    "min": 5865,
+    "max": 10871.9
+   },
+   "gradația 2": {
+    "n": 17,
+    "p10": 5210,
+    "p25": 5449,
+    "median": 6115,
+    "p75": 6825,
+    "p90": 7856,
+    "min": 4075,
+    "max": 9107.8
+   },
+   "gradația 3": {
+    "n": 17,
+    "p10": 5786,
+    "p25": 6008,
+    "median": 7017,
+    "p75": 8466,
+    "p90": 9898,
+    "min": 5734,
+    "max": 10400.9
+   },
+   "gradația 1": {
+    "n": 7
+   },
+   "gradația 0": {
+    "n": 4
+   }
+  },
+  "peFunctie": {
+   "SERVICIUL DE EVALUARE SI STATISTICA MEDICALA Registrator med": {
+    "n": 86,
+    "p10": 5417,
+    "p25": 5874,
+    "median": 6129,
+    "p75": 6762,
+    "p90": 7231,
+    "min": 4727,
+    "max": 9085
+   },
+   "Registrator medical principal MEDII ( M )": {
+    "n": 52,
+    "p10": 5957,
+    "p25": 5977,
+    "median": 7144,
+    "p75": 8424,
+    "p90": 9899,
+    "min": 2102,
+    "max": 10401
+   },
+   "Registrator medical MEDII ( M )": {
+    "n": 40,
+    "p10": 5519,
+    "p25": 5594,
+    "median": 5992,
+    "p75": 7271,
+    "p90": 7894,
+    "min": 4727,
+    "max": 9833
+   },
+   "REGISTRATOR MEDICAL MEDII Gradatia": {
+    "n": 27,
+    "p10": 5873,
+    "p25": 5911,
+    "median": 5998,
+    "p75": 6130,
+    "p90": 7002,
+    "min": 5498,
+    "max": 7501
+   },
+   "registrator medical principal": {
+    "n": 24,
+    "p10": 5664,
+    "p25": 5804,
+    "median": 6215,
+    "p75": 7141,
+    "p90": 8550,
+    "min": 5215,
+    "max": 11169
+   },
+   "registrator medical": {
+    "n": 14,
+    "p10": 5191,
+    "p25": 5516,
+    "median": 5796,
+    "p75": 6089,
+    "p90": 6554,
+    "min": 5137,
+    "max": 8329
+   },
+   "REGISTRATOR MEDICAL PRINCIPAL Legea nr. 153 art. 33": {
+    "n": 14,
+    "p10": 1533,
+    "p25": 1533,
+    "median": 1641,
+    "p75": 1852,
+    "p90": 2504,
+    "min": 1532,
+    "max": 3271
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 Registrator medical principal **": {
+    "n": 12,
+    "p10": 8077,
+    "p25": 8258,
+    "median": 8258,
+    "p75": 8258,
+    "p90": 8258,
+    "min": 7860,
+    "max": 8693
+   },
+   "REGISTRATOR MEDICAL PR Gradatia 5": {
+    "n": 9
+   },
+   "Unitate Primire Urgente(UPU)-SMURD REGISTRATOR MEDICAL - PRI": {
+    "n": 8
+   },
+   "Ambulatoriu integrat - ALTII REGISTRATOR MEDICAL - PRINCIPAL": {
+    "n": 6
+   },
+   "REGISTRATOR MEDICAL (UPU) MEDII Gradatia": {
+    "n": 6
+   },
+   "Serviciul statistica medicala REGISTRATOR MEDICAL M": {
+    "n": 5
+   },
+   "Unitate Primire Urgente(UPU)-SMURD REGISTRATOR MEDICAL M": {
+    "n": 5
+   },
+   "REGISTRATOR MEDICAL Gradatia 2": {
+    "n": 5
+   },
+   "Sectia Clinica Obstetrica-Ginecologie I REGISTRATOR MEDICAL ": {
+    "n": 4
+   },
+   "Ambulatoriu integrat - ALTII REGISTRATOR MEDICAL M": {
+    "n": 4
+   },
+   "REGISTRATOR MEDICAL BAZA": {
+    "n": 4
+   },
+   "COMPARTIMENT STATISTICA MEDICALA REGISTRATOR MEDICAL PRINCIP": {
+    "n": 4
+   },
+   "UNITATE PRIMIRE URGENTE REGISTRATOR MEDICAL PRINCIPAL UPU Gr": {
+    "n": 4
+   },
+   "REGISTRATOR MEDICAL PR. UNITATE DE PRIMIRE URGENTE - SMURD": {
+    "n": 4
+   },
+   "REGISTRATOR MEDICAL UPU - smurd": {
+    "n": 4
+   },
+   "Laborator Radiologie si Imagistica Medicala REGISTRATOR MEDI": {
+    "n": 3
+   },
+   "Laborator Analize Medicale REGISTRATOR MEDICAL - PRINCIPAL M": {
+    "n": 3
+   },
+   "REGISTRATOR MEDICAL Gradatia 5": {
+    "n": 3
+   },
+   "REGISTRATOR MEDICAL UNITATE DE PRIMIRE URGENTE - SMURD": {
+    "n": 3
+   },
+   "REGISTRATOR MEDICAL PRINCIPAL UPU - smurd": {
+    "n": 3
+   },
+   "REGISTRATOR MEDICAL DEBUTANT UPU - smurd": {
+    "n": 3
+   },
+   "REGISTRATOR MEDICAL MEDII BAZA": {
+    "n": 3
+   },
+   "REGISTRATOR MEDICAL DEBUTANT MEDII Gradatia": {
+    "n": 3
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 Registrator medical ** Gradatia ": {
+    "n": 2
+   },
+   "MEDICINA LEGALA REGISTRATOR MEDICAL PRINCIPAL DIN M L MEDII ": {
+    "n": 2
+   },
+   "Sectia Hematologie REGISTRATOR MEDICAL M": {
+    "n": 2
+   },
+   "Sectia Clinica Obstetrica-Ginecologie II REGISTRATOR MEDICAL": {
+    "n": 2
+   },
+   "Sectia Clinica Ortopedie si Traumatologie REGISTRATOR MEDICA": {
+    "n": 2
+   },
+   "Sectia Clinica Recuperare, Medicina fizica si Balneo.II REGI": {
+    "n": 2
+   },
+   "Serviciul de Anatomie Patologica REGISTRATOR MEDICAL - PRINC": {
+    "n": 2
+   },
+   "Sectia Clinica Medicina Interna I REGISTRATOR MEDICAL - PRIN": {
+    "n": 2
+   },
+   "Sectia Clinica Cardiologie I REGISTRATOR MEDICAL M": {
+    "n": 2
+   },
+   "Sectia Clinica Neonatologie I REGISTRATOR MEDICAL - PRINCIPA": {
+    "n": 2
+   },
+   "Sectia Clinica Recuperare, Medicina fizica si Balneo. I REGI": {
+    "n": 2
+   },
+   "Sectia Clinica Oncologie Medicala REGISTRATOR MEDICAL - PRIN": {
+    "n": 2
+   },
+   "Sectia Clinica A.T.I. REGISTRATOR MEDICAL M": {
+    "n": 2
+   },
+   "Laborator Analize Medicale REGISTRATOR MEDICAL M": {
+    "n": 2
+   },
+   "REGISTRATOR MEDICAL Gradatia 4": {
+    "n": 2
+   },
+   "MEDICALA REGISTRATOR MEDICAL Gradatia 2": {
+    "n": 2
+   },
+   "SECTIA ONCOLOGIE MEDICALA REGISTRATOR MEDICAL PRINCIPAL Grad": {
+    "n": 2
+   },
+   "COMPARTIMENT INTERNARI EXTERNARI REGISTRATOR MEDICAL PRINCIP": {
+    "n": 2
+   },
+   "REGISTRATOR MEDICAL AN.PAT. MEDII Gradatia": {
+    "n": 2
+   },
+   "REGISTRATOR MEDICAL Gradatia 5 Sporurile din anexele 1, 2,3,": {
+    "n": 2
+   },
+   "412 Registrator medical Gradatia 4 Contractual": {
+    "n": 1
+   },
+   "413 Registrator medical Gradatia 2 Contractual": {
+    "n": 1
+   },
+   "414 Registrator medical Gradatia 4 Contractual": {
+    "n": 1
+   },
+   "415 Registrator medical pr. Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "416 Registrator medical pr. Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "417 Registrator medical pr. Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "418 Registrator medical pr. Gradatia 4 Contractual": {
+    "n": 1
+   },
+   "419 Registrator medical pr.- ti Gradatia 4 Contractual": {
+    "n": 1
+   },
+   "SECTIA CLINICA ATI I Registrator medical principal ** Gradat": {
+    "n": 1
+   },
+   "SECTIA CLINICA ATI I Registrator medical ** Gradatia 4 MEDII": {
+    "n": 1
+   },
+   "SECTIA CLINICA ATI I Registrator medical ** Gradatia 5 MEDII": {
+    "n": 1
+   },
+   "SECTIA CLINICA ATI II Registrator medical principal ** Grada": {
+    "n": 1
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 Registrator medical Gradatia 3 M": {
+    "n": 1
+   },
+   "SERVICIUL ADMINISTRATIV - TRANSPORT REGISTRATOR MEDICAL PRIN": {
+    "n": 1
+   },
+   "Sectia Clinica Cardiologie II REGISTRATOR MEDICAL - PRINCIPA": {
+    "n": 1
+   },
+   "Sectia A.T.I. Obstetrica-Ginecologie REGISTRATOR MEDICAL - P": {
+    "n": 1
+   },
+   "Unitatea de Transfuzii Sanguine REGISTRATOR MEDICAL - PRINCI": {
+    "n": 1
+   },
+   "Sectia Clinica Prematuri REGISTRATOR MEDICAL - PRINCIPAL M": {
+    "n": 1
+   },
+   "Comp. Cl. Diabet Zaharat, Nutritie si Boli Metabolice REGIST": {
+    "n": 1
+   },
+   "Sectia Clinica Dermato-Venerologie REGISTRATOR MEDICAL - PRI": {
+    "n": 1
+   },
+   "Sectia Clinica Boli Infectioase REGISTRATOR MEDICAL - PRINCI": {
+    "n": 1
+   },
+   "Sectia Clinica Boli Infectioase REGISTRATOR MEDICAL M": {
+    "n": 1
+   },
+   "Sectia Clinica Neurochirurgie REGISTRATOR MEDICAL - PRINCIPA": {
+    "n": 1
+   },
+   "Sectia Clinica Urologie REGISTRATOR MEDICAL M": {
+    "n": 1
+   },
+   "Centrul de Hemodializa REGISTRATOR MEDICAL M": {
+    "n": 1
+   },
+   "CVASIC REGISTRATOR MEDICAL M": {
+    "n": 1
+   },
+   "Ambulatoriu de Specialitate Stomatologie REGISTRATOR MEDICAL": {
+    "n": 1
+   },
+   "Farmacia 1 REGISTRATOR MEDICAL - PRINCIPAL M": {
+    "n": 1
+   },
+   "Sectia Clinica Medicina Interna I REGISTRATOR MEDICAL M": {
+    "n": 1
+   },
+   "Sectia Clinic Medicina-Interna II REGISTRATOR MEDICAL - PRIN": {
+    "n": 1
+   },
+   "Sectia Clinic Medicina-Interna II REGISTRATOR MEDICAL M": {
+    "n": 1
+   },
+   "Sectia Oncologie Medicala-Spitalizare Zi REGISTRATOR MEDICAL": {
+    "n": 1
+   },
+   "Sectia Clinica Gastroenterologie REGISTRATOR MEDICAL M": {
+    "n": 1
+   },
+   "Compartiment Endoscopie Digestiva REGISTRATOR MEDICAL - PRIN": {
+    "n": 1
+   },
+   "Sectia Clinica O.R.L. REGISTRATOR MEDICAL - PRINCIPAL M": {
+    "n": 1
+   },
+   "Sectia Clinica Chirurgie Generala I REGISTRATOR MEDICAL - PR": {
+    "n": 1
+   },
+   "Sectia Clinica Chirurg. Generala II REGISTRATOR MEDICAL M": {
+    "n": 1
+   },
+   "Sectia Clinica A.T.I. REGISTRATOR MEDICAL - PRINCIPAL M": {
+    "n": 1
+   },
+   "Sectia Clinica Neurologie REGISTRATOR MEDICAL - PRINCIPAL M": {
+    "n": 1
+   },
+   "Sectia Clinica Neurologie REGISTRATOR MEDICAL M": {
+    "n": 1
+   },
+   "Compartiment Terapie Intensiva - Neurologie,Chir.plasti REGI": {
+    "n": 1
+   },
+   "Sectia Chirurgie Plastica,Estetica si Microchirurgie Re REGI": {
+    "n": 1
+   },
+   "Cab. Ambulator Oncologie REGISTRATOR MEDICAL - PRINCIPAL M": {
+    "n": 1
+   },
+   "Serviciul Judetean de Medicina Legala IML CLUJ REGISTRATOR M": {
+    "n": 1
+   },
+   "REGISTRATOR MEDICAL Gradatia 1": {
+    "n": 1
+   },
+   "REGISTRATOR MEDICAL Gradatia 3": {
+    "n": 1
+   },
+   "REGISTRATOR MEDICAL DEB BAZA": {
+    "n": 1
+   },
+   "REGISTRATOR MEDICAL PR Gradatia 3": {
+    "n": 1
+   },
+   "MEDICALA REGISTRATOR MEDICAL Gradatia 4": {
+    "n": 1
+   },
+   "MEDICALA REGISTRATOR MEDICAL Gradatia 3": {
+    "n": 1
+   },
+   "MEDICALA REGISTRATOR MEDICAL Gradatia 5": {
+    "n": 1
+   },
+   "SECTIA MEDICINA INTERNA REGISTRATOR MEDICAL Gradatia 5": {
+    "n": 1
+   },
+   "SECTIA GASTROENTEROLOGIE REGISTRATOR MEDICAL PRINCIPAL Grada": {
+    "n": 1
+   },
+   "COMPARTIMENT NEFROLOGIE REGISTRATOR MEDICAL PRINCIPAL Gradat": {
+    "n": 1
+   },
+   "COMP.CARDIOLOGIE REGISTRATOR MEDICAL PRINCIPAL Gradatia 5": {
+    "n": 1
+   },
+   "COMP. DIABET ZAHARAT,NUTRITIE SI BOLI METABOLICE REGISTRATOR": {
+    "n": 1
+   },
+   "SECTIA CHIRURGIE GENERALA REGISTRATOR MEDICAL PRINCIPAL Grad": {
+    "n": 1
+   },
+   "SECTIA CHIRURGIE GENERALA REGISTRATOR MEDICAL Gradatia 3": {
+    "n": 1
+   },
+   "COMPARTIMENT UROLOGIE REGISTRATOR MEDICAL Gradatia 5": {
+    "n": 1
+   },
+   "SECTIA OBSTETRICA GINECOLOGIE REGISTRATOR MEDICAL PRINCIPAL ": {
+    "n": 1
+   },
+   "COMP.PEDIATRIE REGISTRATOR MEDICAL PRINCIPAL Gradatia 5": {
+    "n": 1
+   },
+   "SECTIA ORTOPEDIE SI TRAUMATOLOGIE REGISTRATOR MEDICAL PRINCI": {
+    "n": 1
+   },
+   "COMP. O.R.L REGISTRATOR MEDICAL PRINCIPAL Gradatia 5": {
+    "n": 1
+   },
+   "SECTIA NEUROLOGIE REGISTRATOR MEDICAL Gradatia 2": {
+    "n": 1
+   },
+   "SECTIA NEUROLOGIE REGISTRATOR MEDICAL Gradatia 5": {
+    "n": 1
+   },
+   "COMP.BOLI INFECTIOASE REGISTRATOR MEDICAL PRINCIPAL Gradatia": {
+    "n": 1
+   },
+   "SECTIA PSIHIATRIE ACUTI REGISTRATOR MEDICAL Gradatia 2": {
+    "n": 1
+   },
+   "SECTIA RECUPERARE,MEDICINA FIZICA SI BALNEOLOGIE REGISTRATOR": {
+    "n": 1
+   },
+   "LABORATOR ANALIZE MEDICALE REGISTRATOR MEDICAL PRINCIPAL Gra": {
+    "n": 1
+   },
+   "LABORATOR ANALIZE MEDICALE REGISTRATOR MEDICAL Gradatia 1": {
+    "n": 1
+   },
+   "LABORATOR RAD.SI IMAGISTICA MED.-COMP. T -SPITAL REGISTRATOR": {
+    "n": 1
+   },
+   "LABORATOR DE GENETICA SI DIAGNOSTIC MOLECULAR REGISTRATOR ME": {
+    "n": 1
+   },
+   "COMPARTIMENT INTERNARI EXTERNARI REGISTRATOR MEDICAL DEBUTAN": {
+    "n": 1
+   },
+   "CENTRUL DE SANATATE MULTIFUNCTIONAL OCNA MURES REGISTRATOR M": {
+    "n": 1
+   },
+   "CAB.ONCOLOGIE MEDICALA REGISTRATOR MEDICAL Gradatia 5": {
+    "n": 1
+   },
+   "CAB.DIABET ZAHARAT,NUTIRITE SI BOLI METABOLICE REGISTRATOR M": {
+    "n": 1
+   },
+   "FISIER - INFORMATII REGISTRATOR MEDICAL Gradatia 1": {
+    "n": 1
+   },
+   "FISIER - INFORMATII REGISTRATOR MEDICAL PRINCIPAL Gradatia 3": {
+    "n": 1
+   },
+   "UNITATE PRIMIRE URGENTE REGISTRATOR MEDICAL UPU Gradatia 5": {
+    "n": 1
+   },
+   "DISPENSAR TBC REGISTRATOR MEDICAL PRINCIPAL Gradatia 5": {
+    "n": 1
+   },
+   "CSM ADULTI CU STATIONAR DE ZI REGISTRATOR MEDICAL PRINCIPAL ": {
+    "n": 1
+   },
+   "CSM COPII REGISTRATOR MEDICAL Gradatia 3": {
+    "n": 1
+   },
+   "CSM COPII REGISTRATOR MEDICAL PRINCIPAL Gradatia 4": {
+    "n": 1
+   },
+   "SERVICIUL JUDETEAN DE MEDICINA LEGALA REGISTRATOR MEDICAL PR": {
+    "n": 1
+   },
+   "REGISTRATOR MEDICAL (ATI) MEDII Gradatia": {
+    "n": 1
+   },
+   "REGISTRATOR MEDICAL GENERALE Gradatia": {
+    "n": 1
+   },
+   "REGISTRATOR MEDICAL PRINCIPAL POST LICEALE Gradatia": {
+    "n": 1
+   },
+   "registrator medical debutant": {
+    "n": 1
+   },
+   "REGISTRATOR MEDICAL Gradatia 3 Sporurile din anexele 1, 2,3,": {
+    "n": 1
+   },
+   "REGISTRATOR MEDICAL Gradatia 4 Sporurile din anexele 1, 2,3,": {
+    "n": 1
+   },
+   "REGISTRATOR MEDICAL M I": {
+    "n": 1
+   }
+  }
+ }
+}

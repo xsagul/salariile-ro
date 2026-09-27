@@ -1,0 +1,131 @@
+{
+ "slug": "broker",
+ "nume": "Broker",
+ "cor": null,
+ "generatLa": "2026-09-27T10:01:08.984Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 6,
+  "cuBazaDeclarata": 4,
+  "faraBazaDeclarata": 2,
+  "surse": {
+   "ejobs": {
+    "n": 5,
+    "procent": 83.3
+   },
+   "olx": {
+    "n": 1,
+    "procent": 16.7
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 6,
+    "procent": 100
+   }
+  },
+  "net": {
+   "n": 4
+  },
+  "netMinimOferit": {
+   "n": 4
+  },
+  "netMaximOferit": {
+   "n": 4
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 2
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-08": {
+    "n": 3,
+    "procent": 50
+   },
+   "2026-09": {
+    "n": 3,
+    "procent": 50
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 2,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "ejobs": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "peJudet": {},
+  "motiveFaraSalariu": {
+   "wide_range_review": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 0,
+  "posturi": 0,
+  "ofertePeGrupaCor": 0,
+  "tipSalariu": {},
+  "netMinimDeclarat": {
+   "n": 0
+  },
+  "brutMinimDeclarat": {
+   "n": 0
+  },
+  "laSalariulMinim": 0,
+  "studii": {},
+  "experienta": {},
+  "contract": {},
+  "norma": {},
+  "regim": {},
+  "judete": {},
+  "domenii": {},
+  "coduriCorInGrupa": {}
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 0,
+  "institutii": 0,
+  "judete": {},
+  "tipInstitutie": {},
+  "perioade": {},
+  "studii": {},
+  "bazaBruta": {
+   "n": 0
+  },
+  "bazaCuSporuriFixe": {
+   "n": 0
+  },
+  "peGradatie": {},
+  "peFunctie": {}
+ }
+}

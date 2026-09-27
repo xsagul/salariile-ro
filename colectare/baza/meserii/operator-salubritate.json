@@ -1,0 +1,182 @@
+{
+ "slug": "operator-salubritate",
+ "nume": "Operator salubritate",
+ "cor": "961301",
+ "generatLa": "2026-09-27T10:01:09.156Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 0,
+  "cuBazaDeclarata": 0,
+  "faraBazaDeclarata": 0,
+  "surse": {},
+  "colectari": {},
+  "net": {
+   "n": 0
+  },
+  "netMinimOferit": {
+   "n": 0
+  },
+  "netMaximOferit": {
+   "n": 0
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 0
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {}
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 0,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {},
+  "surse": {},
+  "peJudet": {},
+  "motiveFaraSalariu": {},
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 3,
+  "posturi": 9,
+  "ofertePeGrupaCor": 7,
+  "tipSalariu": {
+   "gross": {
+    "n": 2,
+    "procent": 66.7
+   },
+   "none": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 0
+  },
+  "brutMinimDeclarat": {
+   "n": 2
+  },
+  "laSalariulMinim": 1,
+  "studii": {
+   "Gimnazial - ȘCOALĂ GENERALĂ": {
+    "n": 2,
+    "procent": 66.7
+   },
+   "Primar - FĂRĂ STUDII": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
+  "experienta": {
+   "Fără experiență - 0 ani": {
+    "n": 2,
+    "procent": 66.7
+   },
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 2,
+    "procent": 66.7
+   },
+   "Cu durată determinată": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 3,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 3,
+    "procent": 100
+   }
+  },
+  "judete": {
+   "Covasna": {
+    "n": 1,
+    "procent": 33.3
+   },
+   "Hunedoara": {
+    "n": 1,
+    "procent": 33.3
+   },
+   "Municipiul București": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
+  "domenii": {
+   "Armată / Pază/ Protecție": {
+    "n": 1,
+    "procent": 33.3
+   },
+   "Altele": {
+    "n": 1,
+    "procent": 33.3
+   },
+   "Au pair / Babysitter / Curățenie": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
+  "coduriCorInGrupa": {
+   "961301 - LUCRATOR PENTRU SALUBRIZARE CAI PUBLICE": {
+    "n": 3,
+    "procent": 42.9
+   },
+   "961304 - LUCRATOR UTILAJE SPECIALIZATE PENTRU SALUBRIZARE": {
+    "n": 2,
+    "procent": 28.6
+   },
+   "961303 - LUCRATOR PENTRU SALUBRIZARE": {
+    "n": 1,
+    "procent": 14.3
+   },
+   "961302 - LUCRATOR PENTRU SALUBRIZARE SPATII VERZI": {
+    "n": 1,
+    "procent": 14.3
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 0,
+  "institutii": 0,
+  "judete": {},
+  "tipInstitutie": {},
+  "perioade": {},
+  "studii": {},
+  "bazaBruta": {
+   "n": 0
+  },
+  "bazaCuSporuriFixe": {
+   "n": 0
+  },
+  "peGradatie": {},
+  "peFunctie": {}
+ }
+}

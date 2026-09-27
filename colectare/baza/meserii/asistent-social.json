@@ -1,0 +1,550 @@
+{
+ "slug": "asistent-social",
+ "nume": "Asistent social",
+ "cor": "263501",
+ "generatLa": "2026-09-27T10:01:09.192Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 0,
+  "cuBazaDeclarata": 0,
+  "faraBazaDeclarata": 0,
+  "surse": {},
+  "colectari": {},
+  "net": {
+   "n": 0
+  },
+  "netMinimOferit": {
+   "n": 0
+  },
+  "netMaximOferit": {
+   "n": 0
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 0
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {}
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 0,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {},
+  "surse": {},
+  "peJudet": {},
+  "motiveFaraSalariu": {},
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 11,
+  "posturi": 11,
+  "ofertePeGrupaCor": 14,
+  "tipSalariu": {
+   "gross": {
+    "n": 5,
+    "procent": 45.5
+   },
+   "net": {
+    "n": 3,
+    "procent": 27.3
+   },
+   "none": {
+    "n": 3,
+    "procent": 27.3
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 3
+  },
+  "brutMinimDeclarat": {
+   "n": 4
+  },
+  "laSalariulMinim": 3,
+  "studii": {
+   "Universitar - ÎNVĂȚĂMÂNT SUPERIOR": {
+    "n": 7,
+    "procent": 63.6
+   },
+   "Universitar - MASTER": {
+    "n": 3,
+    "procent": 27.3
+   },
+   "Liceal - LICEU TEORETIC": {
+    "n": 1,
+    "procent": 9.1
+   }
+  },
+  "experienta": {
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 4,
+    "procent": 36.4
+   },
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 4,
+    "procent": 36.4
+   },
+   "Fără experiență - 0 ani": {
+    "n": 2,
+    "procent": 18.2
+   },
+   "Experimentat - mai mult de 7 ani": {
+    "n": 1,
+    "procent": 9.1
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 9,
+    "procent": 81.8
+   },
+   "Cu durată determinată": {
+    "n": 2,
+    "procent": 18.2
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 9,
+    "procent": 81.8
+   },
+   "Cu timp parțial": {
+    "n": 2,
+    "procent": 18.2
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 11,
+    "procent": 100
+   }
+  },
+  "judete": {
+   "Alba": {
+    "n": 2,
+    "procent": 18.2
+   },
+   "Timiș": {
+    "n": 2,
+    "procent": 18.2
+   },
+   "Prahova": {
+    "n": 2,
+    "procent": 18.2
+   },
+   "Cluj": {
+    "n": 2,
+    "procent": 18.2
+   },
+   "Botoșani": {
+    "n": 1,
+    "procent": 9.1
+   },
+   "Hunedoara": {
+    "n": 1,
+    "procent": 9.1
+   },
+   "Suceava": {
+    "n": 1,
+    "procent": 9.1
+   }
+  },
+  "domenii": {
+   "ASISTENTA SOCIALA": {
+    "n": 8,
+    "procent": 72.7
+   },
+   "Altele": {
+    "n": 3,
+    "procent": 27.3
+   }
+  },
+  "coduriCorInGrupa": {
+   "263501 - ASISTENT SOCIAL NIVEL SUPERIOR": {
+    "n": 11,
+    "procent": 78.6
+   },
+   "263508 - INSTRUCTOR-EDUCATOR PENTRU ACTIVITATI DE RESOCIALIZARE": {
+    "n": 3,
+    "procent": 21.4
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 122,
+  "institutii": 18,
+  "judete": {
+   "CL": {
+    "n": 24,
+    "procent": 19.7
+   },
+   "CJ": {
+    "n": 14,
+    "procent": 11.5
+   },
+   "BH": {
+    "n": 13,
+    "procent": 10.7
+   },
+   "CT": {
+    "n": 13,
+    "procent": 10.7
+   },
+   "AB": {
+    "n": 10,
+    "procent": 8.2
+   },
+   "TM": {
+    "n": 9,
+    "procent": 7.4
+   },
+   "HR": {
+    "n": 9,
+    "procent": 7.4
+   },
+   "BV": {
+    "n": 6,
+    "procent": 4.9
+   },
+   "BR": {
+    "n": 6,
+    "procent": 4.9
+   },
+   "B": {
+    "n": 5,
+    "procent": 4.1
+   },
+   "BC": {
+    "n": 5,
+    "procent": 4.1
+   },
+   "GR": {
+    "n": 3,
+    "procent": 2.5
+   },
+   "SB": {
+    "n": 2,
+    "procent": 1.6
+   },
+   "BZ": {
+    "n": 2,
+    "procent": 1.6
+   },
+   "IS": {
+    "n": 1,
+    "procent": 0.8
+   }
+  },
+  "tipInstitutie": {
+   "spital": {
+    "n": 88,
+    "procent": 72.1
+   },
+   "dgaspc": {
+    "n": 34,
+    "procent": 27.9
+   }
+  },
+  "perioade": {
+   "2026-03": {
+    "n": 111,
+    "procent": 91
+   },
+   "2026-02": {
+    "n": 7,
+    "procent": 5.7
+   },
+   "2022-09": {
+    "n": 3,
+    "procent": 2.5
+   },
+   "2025-03": {
+    "n": 1,
+    "procent": 0.8
+   }
+  },
+  "studii": {
+   "S": {
+    "n": 48,
+    "procent": 39.3
+   },
+   "PL": {
+    "n": 3,
+    "procent": 2.5
+   }
+  },
+  "bazaBruta": {
+   "n": 122,
+   "p10": 5008,
+   "p25": 5798,
+   "median": 7890,
+   "p75": 9138,
+   "p90": 9723,
+   "min": 1661,
+   "max": 9749
+  },
+  "bazaCuSporuriFixe": {
+   "n": 122,
+   "p10": 5008,
+   "p25": 5888,
+   "median": 9352,
+   "p75": 11300,
+   "p90": 12963,
+   "min": 1661,
+   "max": 15440
+  },
+  "peGradatie": {
+   "gradația 4": {
+    "n": 7
+   },
+   "gradația 5": {
+    "n": 5
+   },
+   "gradația 1": {
+    "n": 1
+   }
+  },
+  "peFunctie": {
+   "asistent social principal": {
+    "n": 13,
+    "p10": 6556,
+    "p25": 9658,
+    "median": 10654,
+    "p75": 12373,
+    "p90": 13217,
+    "min": 6179,
+    "max": 13650
+   },
+   "Asistent social principal SUPERIOARE ( S )": {
+    "n": 9
+   },
+   "ASISTENT SOCIAL PRINCIPAL Legea nr. 153 art. 33": {
+    "n": 8
+   },
+   "ASISTENT SOCIAL PRINCIPAL(UPU) SUPERIOARE Gradatia": {
+    "n": 6
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 Asistent social principal ** Gra": {
+    "n": 4
+   },
+   "Asistent social SUPERIOARE ( S )": {
+    "n": 4
+   },
+   "UNITATE PRIMIRE URGENTE ASISTENT SOCIAL PRINCIPAL UPU Gradat": {
+    "n": 4
+   },
+   "ASISTENT SOCIAL PRINCIPAL SUPERIOARE Gradatia": {
+    "n": 3
+   },
+   "asistent social specialist": {
+    "n": 2
+   },
+   "asistent social practicant": {
+    "n": 2
+   },
+   "U.P.U. ASISTENT SOCIAL PR SS U.P.U. SUPERIOARE Gradatia 5": {
+    "n": 2
+   },
+   "ASISTENT SOCIAL PR. Sectia BOLI INFECTIOASE ADULTI": {
+    "n": 2
+   },
+   "ASISTENT SOCIAL Asistenti sociali": {
+    "n": 2
+   },
+   "ASISTENT SOCIAL PRINCIPAL": {
+    "n": 2
+   },
+   "ASISTENT SOCIAL S PR Gradatia 5 Sporurile din anexele 1, 2,3": {
+    "n": 2
+   },
+   "Asistent social/psiholog principal, gradație vechime 5": {
+    "n": 1
+   },
+   "Asistent social/psiholog principal, gradație vechime 4": {
+    "n": 1
+   },
+   "Asistent social/psiholog principal, gradație vechime 3": {
+    "n": 1
+   },
+   "Asistent social/psiholog principal, gradație vechime 2": {
+    "n": 1
+   },
+   "Asistent social/psiholog principal, gradație vechime 1": {
+    "n": 1
+   },
+   "Asistent social/psiholog principal, gradație vechime 0": {
+    "n": 1
+   },
+   "Asistent social/psiholog specialist, gradație vechime 5": {
+    "n": 1
+   },
+   "Asistent social/psiholog specialist, gradație vechime 4": {
+    "n": 1
+   },
+   "Asistent social/psiholog specialist, gradație vechime 3": {
+    "n": 1
+   },
+   "Asistent social/psiholog specialist, gradație vechime 2": {
+    "n": 1
+   },
+   "Asistent social/psiholog specialist, gradație vechime 1": {
+    "n": 1
+   },
+   "Asistent social/psiholog specialist, gradație vechime 0": {
+    "n": 1
+   },
+   "Asistent social/psiholog practicant, gradație vechime 5": {
+    "n": 1
+   },
+   "Asistent social/psiholog practicant, gradație vechime 4": {
+    "n": 1
+   },
+   "Asistent social/psiholog practicant, gradație vechime 3": {
+    "n": 1
+   },
+   "Asistent social/psiholog practicant, gradație vechime 2": {
+    "n": 1
+   },
+   "Asistent social/psiholog practicant, gradație vechime 1": {
+    "n": 1
+   },
+   "Asistent social/psiholog practicant, gradație vechime 0": {
+    "n": 1
+   },
+   "Asistent social/psiholog debutant, gradație vechime 5": {
+    "n": 1
+   },
+   "Asistent social/psiholog debutant, gradație vechime 4": {
+    "n": 1
+   },
+   "Asistent social/psiholog debutant, gradație vechime 3": {
+    "n": 1
+   },
+   "Asistent social/psiholog debutant, gradație vechime 2": {
+    "n": 1
+   },
+   "Asistent social/psiholog debutant, gradație vechime 1": {
+    "n": 1
+   },
+   "Asistent social/psiholog debutant, gradație vechime 0": {
+    "n": 1
+   },
+   "ASISTENT SOCIAL principal S": {
+    "n": 1
+   },
+   "ASISTENT SOCIAL specialist S": {
+    "n": 1
+   },
+   "ASISTENT SOCIAL practicant S": {
+    "n": 1
+   },
+   "ASISTENT SOCIAL debutant S": {
+    "n": 1
+   },
+   "218 Asistent social pr Gradatia 3 Contractual": {
+    "n": 1
+   },
+   "BIROU INTERNARI ‐ EXTERNARI, STR.GH.DOJA Asistent social pri": {
+    "n": 1
+   },
+   "Camera de garda Psihiatrie Asistent social principal Gradati": {
+    "n": 1
+   },
+   "Centrul de Sanatate Mintala Adulti (CSM) Asistent social pri": {
+    "n": 1
+   },
+   "Centrul de Sanatate Mintala Copii (CSM) Asistent social prin": {
+    "n": 1
+   },
+   "COMPARTIMENT ASISTENTA SOCIALA Asistent social principal Gra": {
+    "n": 1
+   },
+   "SECTIA CLINICA NEONATOLOGIE Asistent social principal Gradat": {
+    "n": 1
+   },
+   "SECTIA CLINICA OBSTETRICA GINECOLOGIE I Asistent social Grad": {
+    "n": 1
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 Asistent social ** Gradatia 4 SU": {
+    "n": 1
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 Asistent social ** Gradatia 2 SU": {
+    "n": 1
+   },
+   "ONCOLOGIE MEDICALA ASISTENT SOCIAL SS DEBUTANT POSTLICEALE G": {
+    "n": 1
+   },
+   "SECTIA NEONATOLOGIE ASISTENT SOCIAL POSTLICEALE Gradatia 4": {
+    "n": 1
+   },
+   "U.P.U. ASISTENT SOCIAL SS DEB U.P.U. SUPERIOARE Gradatia 2": {
+    "n": 1
+   },
+   "U.P.U. ASISTENT SOCIAL PR U.P.U. POSTLICEALE Gradatia 4": {
+    "n": 1
+   },
+   "Comp Studii Clinice si Siguranta Medicamentului ASISTENT SOC": {
+    "n": 1
+   },
+   "Unitate Primire Urgente(UPU)-SMURD ASISTENT SOCIAL - PRINCIP": {
+    "n": 1
+   },
+   "ASISTENT SOCIAL Legea nr. 153 art. 33": {
+    "n": 1
+   },
+   "ASISTENT SOCIAL PR S Gradatia 5": {
+    "n": 1
+   },
+   "SECTIA ONCOLOGIE MEDICALA-COMP.INGRIJIRI PALIATIVE ASISTENT ": {
+    "n": 1
+   },
+   "COMP.ASISTENTA SOCIALA SI RELIGIOASA ASISTENT SOCIAL PRINCIP": {
+    "n": 1
+   },
+   "UNITATE PRIMIRE URGENTE ASISTENT SOCIAL DEBUTANT UPU Gradati": {
+    "n": 1
+   },
+   "CSM ADULTI CU STATIONAR DE ZI ASISTENT SOCIAL Gradatia 3": {
+    "n": 1
+   },
+   "CSM COPII ASISTENT SOCIAL PRINCIPAL Gradatia 5": {
+    "n": 1
+   },
+   "COMPARTIMENTUL DE PREVENIRE A ADICTIILOR ASISTENT SOCIAL PRI": {
+    "n": 1
+   },
+   "ASISTENT SOCIAL PR. Sectia NEONATOLOGIE": {
+    "n": 1
+   },
+   "ASISTENT SOCIAL PR. Sectia OBSTETRICA-GINECOLOGIE II": {
+    "n": 1
+   },
+   "ASISTENT SOCIAL PR. UNITATE DE PRIMIRE URGENTE - SMURD": {
+    "n": 1
+   },
+   "ASISTENT SOCIAL PRACTICANT": {
+    "n": 1
+   },
+   "ASISTENT SOCIAL s I I": {
+    "n": 1
+   }
+  }
+ }
+}

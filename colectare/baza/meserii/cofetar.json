@@ -1,0 +1,343 @@
+{
+ "slug": "cofetar",
+ "nume": "Cofetar",
+ "cor": "751202",
+ "generatLa": "2026-09-27T10:01:09.053Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 19,
+  "cuBazaDeclarata": 8,
+  "faraBazaDeclarata": 11,
+  "surse": {
+   "olx": {
+    "n": 13,
+    "procent": 68.4
+   },
+   "ejobs": {
+    "n": 2,
+    "procent": 10.5
+   },
+   "publi24": {
+    "n": 2,
+    "procent": 10.5
+   },
+   "anuntul": {
+    "n": 2,
+    "procent": 10.5
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 18,
+    "procent": 94.7
+   },
+   "continuă": {
+    "n": 1,
+    "procent": 5.3
+   }
+  },
+  "net": {
+   "n": 8
+  },
+  "netMinimOferit": {
+   "n": 8
+  },
+  "netMaximOferit": {
+   "n": 8
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 11,
+   "p10": 3750,
+   "p25": 3950,
+   "median": 4500,
+   "p75": 5375,
+   "p90": 6000,
+   "min": 3000,
+   "max": 6500
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-08": {
+    "n": 7,
+    "procent": 36.8
+   },
+   "2026-09": {
+    "n": 5,
+    "procent": 26.3
+   },
+   "2026-07": {
+    "n": 2,
+    "procent": 10.5
+   },
+   "2026-02": {
+    "n": 2,
+    "procent": 10.5
+   },
+   "2026-06": {
+    "n": 1,
+    "procent": 5.3
+   },
+   "2026-04": {
+    "n": 1,
+    "procent": 5.3
+   },
+   "2026-03": {
+    "n": 1,
+    "procent": 5.3
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 1,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "ejobs": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "peJudet": {
+   "21": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "motiveFaraSalariu": {},
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 18,
+  "posturi": 48,
+  "ofertePeGrupaCor": 92,
+  "tipSalariu": {
+   "none": {
+    "n": 9,
+    "procent": 50
+   },
+   "gross": {
+    "n": 8,
+    "procent": 44.4
+   },
+   "net": {
+    "n": 1,
+    "procent": 5.6
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 1
+  },
+  "brutMinimDeclarat": {
+   "n": 7
+  },
+  "laSalariulMinim": 4,
+  "studii": {
+   "Profesional - ȘCOALĂ PROFESIONALĂ": {
+    "n": 6,
+    "procent": 33.3
+   },
+   "Gimnazial - ȘCOALĂ GENERALĂ": {
+    "n": 4,
+    "procent": 22.2
+   },
+   "Primar - FĂRĂ STUDII": {
+    "n": 2,
+    "procent": 11.1
+   },
+   "Liceal - LICEU DE SPECIALITATE": {
+    "n": 2,
+    "procent": 11.1
+   },
+   "Liceal - LICEU TEORETIC": {
+    "n": 2,
+    "procent": 11.1
+   },
+   "PROFESIONAL- ÎNVĂȚĂMÂNT SPECIAL": {
+    "n": 1,
+    "procent": 5.6
+   },
+   "Universitar - ÎNVĂȚĂMÂNT SUPERIOR": {
+    "n": 1,
+    "procent": 5.6
+   }
+  },
+  "experienta": {
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 10,
+    "procent": 55.6
+   },
+   "Fără experiență - 0 ani": {
+    "n": 4,
+    "procent": 22.2
+   },
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 3,
+    "procent": 16.7
+   },
+   "Avansat - între 5 și 7 ani": {
+    "n": 1,
+    "procent": 5.6
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 18,
+    "procent": 100
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 18,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 18,
+    "procent": 100
+   }
+  },
+  "judete": {
+   "Prahova": {
+    "n": 3,
+    "procent": 16.7
+   },
+   "Municipiul București": {
+    "n": 2,
+    "procent": 11.1
+   },
+   "Ilfov": {
+    "n": 2,
+    "procent": 11.1
+   },
+   "Galați": {
+    "n": 2,
+    "procent": 11.1
+   },
+   "Gorj": {
+    "n": 1,
+    "procent": 5.6
+   },
+   "Maramureș": {
+    "n": 1,
+    "procent": 5.6
+   },
+   "Giurgiu": {
+    "n": 1,
+    "procent": 5.6
+   },
+   "Argeș": {
+    "n": 1,
+    "procent": 5.6
+   },
+   "Alba": {
+    "n": 1,
+    "procent": 5.6
+   },
+   "Ialomița": {
+    "n": 1,
+    "procent": 5.6
+   },
+   "Bihor": {
+    "n": 1,
+    "procent": 5.6
+   },
+   "Suceava": {
+    "n": 1,
+    "procent": 5.6
+   },
+   "Cluj": {
+    "n": 1,
+    "procent": 5.6
+   }
+  },
+  "domenii": {
+   "Turism / Alimentație": {
+    "n": 7,
+    "procent": 38.9
+   },
+   "Producție / Logistică": {
+    "n": 3,
+    "procent": 16.7
+   },
+   "COMERT": {
+    "n": 3,
+    "procent": 16.7
+   },
+   "RESTAURANTE": {
+    "n": 3,
+    "procent": 16.7
+   },
+   "Altele": {
+    "n": 2,
+    "procent": 11.1
+   }
+  },
+  "coduriCorInGrupa": {
+   "751201 - BRUTAR": {
+    "n": 41,
+    "procent": 44.6
+   },
+   "751203 - PATISER": {
+    "n": 23,
+    "procent": 25
+   },
+   "751202 - COFETAR": {
+    "n": 18,
+    "procent": 19.6
+   },
+   "751204 - PREPARATOR DE SEMIFABRICATE SI PREPARATE CULINARE": {
+    "n": 5,
+    "procent": 5.4
+   },
+   "751205 - OPERATOR LA FABRICAREA PRODUSELOR CONGELATE DE PATISERIE SI PANIFICATIE": {
+    "n": 3,
+    "procent": 3.3
+   },
+   "751206 - DECORATOR PRODUSE COFETARIE": {
+    "n": 2,
+    "procent": 2.2
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 0,
+  "institutii": 0,
+  "judete": {},
+  "tipInstitutie": {},
+  "perioade": {},
+  "studii": {},
+  "bazaBruta": {
+   "n": 0
+  },
+  "bazaCuSporuriFixe": {
+   "n": 0
+  },
+  "peGradatie": {},
+  "peFunctie": {}
+ }
+}

@@ -1,0 +1,327 @@
+{
+ "slug": "electromecanic",
+ "nume": "Electromecanic",
+ "cor": "742214",
+ "generatLa": "2026-09-27T10:01:09.197Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 22,
+  "cuBazaDeclarata": 8,
+  "faraBazaDeclarata": 14,
+  "surse": {
+   "olx": {
+    "n": 9,
+    "procent": 40.9
+   },
+   "ejobs": {
+    "n": 6,
+    "procent": 27.3
+   },
+   "bestjobs": {
+    "n": 4,
+    "procent": 18.2
+   },
+   "publi24": {
+    "n": 2,
+    "procent": 9.1
+   },
+   "hipo": {
+    "n": 1,
+    "procent": 4.5
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 20,
+    "procent": 90.9
+   },
+   "continuă": {
+    "n": 2,
+    "procent": 9.1
+   }
+  },
+  "net": {
+   "n": 8
+  },
+  "netMinimOferit": {
+   "n": 8
+  },
+  "netMaximOferit": {
+   "n": 8
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 14,
+   "p10": 4291,
+   "p25": 5096,
+   "median": 5901,
+   "p75": 6875,
+   "p90": 7875,
+   "min": 3151,
+   "max": 10504
+  },
+  "peOras": {
+   "București": {
+    "n": 1
+   }
+  },
+  "peJudet": {},
+  "peLuna": {
+   "2026-09": {
+    "n": 10,
+    "procent": 45.5
+   },
+   "2026-08": {
+    "n": 9,
+    "procent": 40.9
+   },
+   "2025-05": {
+    "n": 2,
+    "procent": 9.1
+   },
+   "2025-08": {
+    "n": 1,
+    "procent": 4.5
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 5,
+  "cuSalariu": 1,
+  "nivel": {},
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 5,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "ejobs": {
+    "n": 5,
+    "procent": 100
+   }
+  },
+  "peJudet": {},
+  "motiveFaraSalariu": {
+   "country_unconfirmed": {
+    "n": 2,
+    "procent": 100
+   },
+   "foreign_or_noncomparable_work": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 15,
+  "posturi": 36,
+  "ofertePeGrupaCor": 21,
+  "tipSalariu": {
+   "none": {
+    "n": 8,
+    "procent": 53.3
+   },
+   "gross": {
+    "n": 4,
+    "procent": 26.7
+   },
+   "net": {
+    "n": 3,
+    "procent": 20
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 3
+  },
+  "brutMinimDeclarat": {
+   "n": 4
+  },
+  "laSalariulMinim": 2,
+  "studii": {
+   "Profesional - ȘCOALĂ PROFESIONALĂ": {
+    "n": 8,
+    "procent": 53.3
+   },
+   "Gimnazial - ȘCOALĂ GENERALĂ": {
+    "n": 3,
+    "procent": 20
+   },
+   "Liceal - LICEU DE SPECIALITATE": {
+    "n": 3,
+    "procent": 20
+   },
+   "Universitar - ÎNVĂȚĂMÂNT SUPERIOR": {
+    "n": 1,
+    "procent": 6.7
+   }
+  },
+  "experienta": {
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 7,
+    "procent": 46.7
+   },
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 6,
+    "procent": 40
+   },
+   "Fără experiență - 0 ani": {
+    "n": 2,
+    "procent": 13.3
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 14,
+    "procent": 93.3
+   },
+   "Cu durată determinată": {
+    "n": 1,
+    "procent": 6.7
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 15,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 15,
+    "procent": 100
+   }
+  },
+  "judete": {
+   "Bihor": {
+    "n": 2,
+    "procent": 13.3
+   },
+   "Maramureș": {
+    "n": 1,
+    "procent": 6.7
+   },
+   "Caraș-Severin": {
+    "n": 1,
+    "procent": 6.7
+   },
+   "Galați": {
+    "n": 1,
+    "procent": 6.7
+   },
+   "Sibiu": {
+    "n": 1,
+    "procent": 6.7
+   },
+   "Bistrița-Năsăud": {
+    "n": 1,
+    "procent": 6.7
+   },
+   "Ilfov": {
+    "n": 1,
+    "procent": 6.7
+   },
+   "Sălaj": {
+    "n": 1,
+    "procent": 6.7
+   },
+   "Timiș": {
+    "n": 1,
+    "procent": 6.7
+   },
+   "Hunedoara": {
+    "n": 1,
+    "procent": 6.7
+   },
+   "Călărași": {
+    "n": 1,
+    "procent": 6.7
+   },
+   "Municipiul București": {
+    "n": 1,
+    "procent": 6.7
+   },
+   "Tulcea": {
+    "n": 1,
+    "procent": 6.7
+   },
+   "Bacău": {
+    "n": 1,
+    "procent": 6.7
+   }
+  },
+  "domenii": {
+   "Producție / Logistică": {
+    "n": 5,
+    "procent": 33.3
+   },
+   "Altele": {
+    "n": 5,
+    "procent": 33.3
+   },
+   "Construcții / Instalații": {
+    "n": 4,
+    "procent": 26.7
+   },
+   "Inginerie": {
+    "n": 1,
+    "procent": 6.7
+   }
+  },
+  "coduriCorInGrupa": {
+   "742214 - ELECTROMECANIC": {
+    "n": 15,
+    "procent": 71.4
+   },
+   "742201 - AUTOMATIST": {
+    "n": 3,
+    "procent": 14.3
+   },
+   "742202 - ELECTROMECANIC SCB (SEMNALIZARE, CENTRALIZARE, BLOCARE)": {
+    "n": 1,
+    "procent": 4.8
+   },
+   "742208 - JONCTOR": {
+    "n": 1,
+    "procent": 4.8
+   },
+   "742215 - JONCTOR FIBRA OPTICA": {
+    "n": 1,
+    "procent": 4.8
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 0,
+  "institutii": 0,
+  "judete": {},
+  "tipInstitutie": {},
+  "perioade": {},
+  "studii": {},
+  "bazaBruta": {
+   "n": 0
+  },
+  "bazaCuSporuriFixe": {
+   "n": 0
+  },
+  "peGradatie": {},
+  "peFunctie": {}
+ }
+}

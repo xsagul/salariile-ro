@@ -1,0 +1,905 @@
+{
+ "slug": "economist",
+ "nume": "Economist",
+ "cor": "263102",
+ "generatLa": "2026-09-27T10:01:08.977Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 22,
+  "cuBazaDeclarata": 14,
+  "faraBazaDeclarata": 8,
+  "surse": {
+   "ejobs": {
+    "n": 11,
+    "procent": 50
+   },
+   "bestjobs": {
+    "n": 8,
+    "procent": 36.4
+   },
+   "olx": {
+    "n": 2,
+    "procent": 9.1
+   },
+   "publi24": {
+    "n": 1,
+    "procent": 4.5
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 21,
+    "procent": 95.5
+   },
+   "continuă": {
+    "n": 1,
+    "procent": 4.5
+   }
+  },
+  "net": {
+   "n": 14,
+   "p10": 3825,
+   "p25": 4113,
+   "median": 4900,
+   "p75": 5252,
+   "p90": 5850,
+   "min": 3413.5,
+   "max": 7000
+  },
+  "netMinimOferit": {
+   "n": 14,
+   "p10": 3256,
+   "p25": 4000,
+   "median": 4400,
+   "p75": 4875,
+   "p90": 5776,
+   "min": 3000,
+   "max": 7000
+  },
+  "netMaximOferit": {
+   "n": 14,
+   "p10": 4030,
+   "p25": 4475,
+   "median": 5176,
+   "p75": 6000,
+   "p90": 6350,
+   "min": 3676,
+   "max": 7000
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 8
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-09": {
+    "n": 13,
+    "procent": 59.1
+   },
+   "2026-08": {
+    "n": 8,
+    "procent": 36.4
+   },
+   "2026-05": {
+    "n": 1,
+    "procent": 4.5
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 6,
+  "cuSalariu": 0,
+  "nivel": {
+   "senior": {
+    "n": 1,
+    "procent": 16.7
+   }
+  },
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 6,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "ejobs": {
+    "n": 6,
+    "procent": 100
+   }
+  },
+  "peJudet": {
+   "3": {
+    "n": 1,
+    "procent": 16.7
+   },
+   "10": {
+    "n": 1,
+    "procent": 16.7
+   },
+   "21": {
+    "n": 1,
+    "procent": 16.7
+   }
+  },
+  "motiveFaraSalariu": {
+   "expired": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 42,
+  "posturi": 58,
+  "ofertePeGrupaCor": 67,
+  "tipSalariu": {
+   "gross": {
+    "n": 22,
+    "procent": 52.4
+   },
+   "none": {
+    "n": 18,
+    "procent": 42.9
+   },
+   "net": {
+    "n": 2,
+    "procent": 4.8
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 2
+  },
+  "brutMinimDeclarat": {
+   "n": 21,
+   "p10": 2163,
+   "p25": 4325,
+   "median": 4325,
+   "p75": 5000,
+   "p90": 6000,
+   "min": 1,
+   "max": 7643
+  },
+  "laSalariulMinim": 14,
+  "studii": {
+   "Universitar - ÎNVĂȚĂMÂNT SUPERIOR": {
+    "n": 35,
+    "procent": 83.3
+   },
+   "Universitar - MASTER": {
+    "n": 5,
+    "procent": 11.9
+   },
+   "Liceal - LICEU TEORETIC": {
+    "n": 2,
+    "procent": 4.8
+   }
+  },
+  "experienta": {
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 16,
+    "procent": 38.1
+   },
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 12,
+    "procent": 28.6
+   },
+   "Avansat - între 5 și 7 ani": {
+    "n": 6,
+    "procent": 14.3
+   },
+   "Fără experiență - 0 ani": {
+    "n": 5,
+    "procent": 11.9
+   },
+   "Experimentat - mai mult de 7 ani": {
+    "n": 3,
+    "procent": 7.1
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 38,
+    "procent": 90.5
+   },
+   "Cu durată determinată": {
+    "n": 4,
+    "procent": 9.5
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 39,
+    "procent": 92.9
+   },
+   "Cu timp parțial": {
+    "n": 3,
+    "procent": 7.1
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 37,
+    "procent": 88.1
+   },
+   "Hibrid - sediu + telemuncă": {
+    "n": 3,
+    "procent": 7.1
+   },
+   "La domiciliu": {
+    "n": 2,
+    "procent": 4.8
+   }
+  },
+  "judete": {
+   "Iași": {
+    "n": 7,
+    "procent": 16.7
+   },
+   "Alba": {
+    "n": 5,
+    "procent": 11.9
+   },
+   "Suceava": {
+    "n": 4,
+    "procent": 9.5
+   },
+   "Municipiul București": {
+    "n": 4,
+    "procent": 9.5
+   },
+   "Ilfov": {
+    "n": 4,
+    "procent": 9.5
+   },
+   "Bihor": {
+    "n": 3,
+    "procent": 7.1
+   },
+   "Cluj": {
+    "n": 2,
+    "procent": 4.8
+   },
+   "Olt": {
+    "n": 2,
+    "procent": 4.8
+   },
+   "Mureș": {
+    "n": 2,
+    "procent": 4.8
+   },
+   "Prahova": {
+    "n": 2,
+    "procent": 4.8
+   },
+   "Hunedoara": {
+    "n": 1,
+    "procent": 2.4
+   },
+   "Caraș-Severin": {
+    "n": 1,
+    "procent": 2.4
+   },
+   "Botoșani": {
+    "n": 1,
+    "procent": 2.4
+   },
+   "Dolj": {
+    "n": 1,
+    "procent": 2.4
+   },
+   "Ialomița": {
+    "n": 1,
+    "procent": 2.4
+   },
+   "Brașov": {
+    "n": 1,
+    "procent": 2.4
+   },
+   "Bacău": {
+    "n": 1,
+    "procent": 2.4
+   }
+  },
+  "domenii": {
+   "Contabilitate / Financiar": {
+    "n": 16,
+    "procent": 38.1
+   },
+   "Producție / Logistică": {
+    "n": 5,
+    "procent": 11.9
+   },
+   "Construcții / Instalații": {
+    "n": 5,
+    "procent": 11.9
+   },
+   "Altele": {
+    "n": 5,
+    "procent": 11.9
+   },
+   "Administrativ / Secretariat": {
+    "n": 2,
+    "procent": 4.8
+   },
+   "Specialiști / Tehnicieni": {
+    "n": 2,
+    "procent": 4.8
+   },
+   "ASISTENTA SOCIALA": {
+    "n": 1,
+    "procent": 2.4
+   },
+   "Medicină / Sănătate /Psihoterapie": {
+    "n": 1,
+    "procent": 2.4
+   },
+   "Agricultură / Zootehnie": {
+    "n": 1,
+    "procent": 2.4
+   },
+   "Management": {
+    "n": 1,
+    "procent": 2.4
+   },
+   "IT / Telecomunicații": {
+    "n": 1,
+    "procent": 2.4
+   },
+   "COMERT": {
+    "n": 1,
+    "procent": 2.4
+   },
+   "Vânzări": {
+    "n": 1,
+    "procent": 2.4
+   }
+  },
+  "coduriCorInGrupa": {
+   "263102 - CONSILIER/EXPERT/INSPECTOR/REFERENT/ECONOMIST ÎN ECONOMIE GENERALA": {
+    "n": 42,
+    "procent": 62.7
+   },
+   "263106 - CONSILIER/EXPERT/INSPECTOR/REFERENT/ECONOMIST ÎN GESTIUNEA ECONOMICA": {
+    "n": 13,
+    "procent": 19.4
+   },
+   "263101 - CONSILIER/EXPERT/INSPECTOR/REFERENT/ECONOMIST ÎN MANAGEMENT": {
+    "n": 6,
+    "procent": 9
+   },
+   "263107 - CONSULTANT ÎN MANAGEMENT": {
+    "n": 3,
+    "procent": 4.5
+   },
+   "263104 - CONSILIER/EXPERT/INSPECTOR/REFERENT/ECONOMIST ÎN COMERT SI MARKETING": {
+    "n": 2,
+    "procent": 3
+   },
+   "263120 - CERCETATOR ECONOMIST ÎN MARKETING": {
+    "n": 1,
+    "procent": 1.5
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 303,
+  "institutii": 18,
+  "judete": {
+   "BH": {
+    "n": 49,
+    "procent": 16.2
+   },
+   "BC": {
+    "n": 38,
+    "procent": 12.5
+   },
+   "BR": {
+    "n": 34,
+    "procent": 11.2
+   },
+   "CJ": {
+    "n": 34,
+    "procent": 11.2
+   },
+   "CT": {
+    "n": 29,
+    "procent": 9.6
+   },
+   "SB": {
+    "n": 25,
+    "procent": 8.3
+   },
+   "BZ": {
+    "n": 21,
+    "procent": 6.9
+   },
+   "GR": {
+    "n": 21,
+    "procent": 6.9
+   },
+   "HR": {
+    "n": 19,
+    "procent": 6.3
+   },
+   "GJ": {
+    "n": 10,
+    "procent": 3.3
+   },
+   "IS": {
+    "n": 6,
+    "procent": 2
+   },
+   "BV": {
+    "n": 6,
+    "procent": 2
+   },
+   "DJ": {
+    "n": 6,
+    "procent": 2
+   },
+   "B": {
+    "n": 5,
+    "procent": 1.7
+   }
+  },
+  "tipInstitutie": {
+   "spital": {
+    "n": 297,
+    "procent": 98
+   },
+   "universitate": {
+    "n": 6,
+    "procent": 2
+   }
+  },
+  "perioade": {
+   "2026-03": {
+    "n": 198,
+    "procent": 65.3
+   },
+   "2026-02": {
+    "n": 63,
+    "procent": 20.8
+   },
+   "2022-09": {
+    "n": 21,
+    "procent": 6.9
+   },
+   "2025-03": {
+    "n": 15,
+    "procent": 5
+   },
+   "2024-03": {
+    "n": 6,
+    "procent": 2
+   }
+  },
+  "studii": {
+   "S": {
+    "n": 164,
+    "procent": 54.1
+   },
+   "G": {
+    "n": 12,
+    "procent": 4
+   },
+   "M": {
+    "n": 1,
+    "procent": 0.3
+   }
+  },
+  "bazaBruta": {
+   "n": 303,
+   "p10": 6813,
+   "p25": 8042,
+   "median": 8846,
+   "p75": 9326,
+   "p90": 9502,
+   "min": 2277,
+   "max": 12362
+  },
+  "bazaCuSporuriFixe": {
+   "n": 303,
+   "p10": 6896,
+   "p25": 8042,
+   "median": 9108,
+   "p75": 9626,
+   "p90": 10468,
+   "min": 2397,
+   "max": 13786
+  },
+  "peGradatie": {
+   "gradația 5": {
+    "n": 43,
+    "p10": 9029,
+    "p25": 9101,
+    "median": 9631,
+    "p75": 9802,
+    "p90": 11293,
+    "min": 7540,
+    "max": 12381
+   },
+   "gradația 4": {
+    "n": 12,
+    "p10": 9404,
+    "p25": 9440,
+    "median": 9520,
+    "p75": 10458,
+    "p90": 10596,
+    "min": 9320,
+    "max": 12081
+   },
+   "gradația 3": {
+    "n": 7
+   },
+   "gradația 2": {
+    "n": 6
+   }
+  },
+  "peFunctie": {
+   "Economist specialist IA SUPERIOARE ( S )": {
+    "n": 28,
+    "p10": 8177,
+    "p25": 8434,
+    "median": 8434,
+    "p75": 8434,
+    "p90": 9094,
+    "min": 6032,
+    "max": 9654
+   },
+   "ECONOMIST IA. SUPERIOARE Gradatia": {
+    "n": 15,
+    "p10": 9056,
+    "p25": 9081,
+    "median": 9108,
+    "p75": 11129,
+    "p90": 11491,
+    "min": 9026,
+    "max": 12171
+   },
+   "SERVICIUL FINANCIAR CONTABILITATE Economist specialist IA Gr": {
+    "n": 14,
+    "p10": 9626,
+    "p25": 9626,
+    "median": 9626,
+    "p75": 9626,
+    "p90": 9626,
+    "min": 9178,
+    "max": 10560
+   },
+   "ECONOMIST IA": {
+    "n": 13,
+    "p10": 2972,
+    "p25": 4950,
+    "median": 5860,
+    "p75": 6280,
+    "p90": 6801,
+    "min": 2810,
+    "max": 12538
+   },
+   "SERVICIUL ACHIZ.PUBLICE,CONTRACT.,APROV. SI TR Economist spe": {
+    "n": 12,
+    "p10": 9422,
+    "p25": 9626,
+    "median": 9626,
+    "p75": 9626,
+    "p90": 9626,
+    "min": 9399,
+    "max": 10286
+   },
+   "Serviciul Financiar Contabil ECONOMIST - SPECIALIST IA S": {
+    "n": 10,
+    "p10": 9608,
+    "p25": 9631,
+    "median": 9631,
+    "p75": 10330,
+    "p90": 10745,
+    "min": 9404,
+    "max": 12381
+   },
+   "ECONOMIST IA Gradatia 5": {
+    "n": 10,
+    "p10": 9827,
+    "p25": 9901,
+    "median": 9924,
+    "p75": 9948,
+    "p90": 10074,
+    "min": 9798,
+    "max": 10857
+   },
+   "ECONOMIST SPECIALIST IA SERVICIU FINANCIAR CONTABILITATE": {
+    "n": 10,
+    "p10": 9307,
+    "p25": 9380,
+    "median": 9581,
+    "p75": 10492,
+    "p90": 10532,
+    "min": 9161,
+    "max": 10559
+   },
+   "ECONOMIST SPECIALIST IA Gradatia 5 Sporurile din anexele 1, ": {
+    "n": 10,
+    "p10": 8133,
+    "p25": 8133,
+    "median": 8133,
+    "p75": 8133,
+    "p90": 8214,
+    "min": 8133,
+    "max": 8946
+   },
+   "ECONOMIST SPECIALIST IA SERVICIU RESURSE UMANE": {
+    "n": 9
+   },
+   "2026-02 ECONOMIST SPECIALIST IA": {
+    "n": 9
+   },
+   "SERVICIUL ANALIZA BUGET, FINANCIAR-CONTABILITATE ECONOMIST I": {
+    "n": 8
+   },
+   "SERVICIUL EVALUARE SI STATISTICA MEDICALA ECONOMIST IA SUPER": {
+    "n": 8
+   },
+   "ECONOMIST 1A Serviciul Financiar Contabilitate": {
+    "n": 8
+   },
+   "ECONOMIST 1A Serviciul resurse Umane si Salarizare": {
+    "n": 7
+   },
+   "SERVICIUL SALARIZARE Economist specialist IA Gradatia 5 SUPE": {
+    "n": 6
+   },
+   "SERV. RUNOS - RELATII CU PUBLICUL ECONOMIST IA SUPERIOARE Gr": {
+    "n": 6
+   },
+   "SERVICIUL RESURSE UMANE Economist specialist IA Gradatia 5 S": {
+    "n": 5
+   },
+   "economist IA": {
+    "n": 5
+   },
+   "Serviciul R.U.N.O.S. ECONOMIST - SPECIALIST IA S": {
+    "n": 4
+   },
+   "ECONOMIST SPECIALIST IA SERVICIU APROVIZIONARE,TRANSPORT SI ": {
+    "n": 4
+   },
+   "ECONOMIST I": {
+    "n": 4
+   },
+   "economist 1A": {
+    "n": 4
+   },
+   "SERVICIUL ADMINISTRATIV - TRANSPORT ECONOMIST IA SUPERIOARE ": {
+    "n": 3
+   },
+   "Comp. Contabilitate si Buget ECONOMIST - SPECIALIST IA S": {
+    "n": 3
+   },
+   "Economist Gradatia": {
+    "n": 3
+   },
+   "ECONOMIST SPECIALIST IA COMPARTIMENT AUDIT": {
+    "n": 3
+   },
+   "ECONOMIST SPEC. IA": {
+    "n": 3
+   },
+   "ECONOMIST IA. SUPERIOARE GRAD II": {
+    "n": 3
+   },
+   "COMPARTIMENT BUNURI Economist specialist IA Gradatia 5 SUPER": {
+    "n": 2
+   },
+   "SERVICIUL ACHIZ.PUBLICE,CONTRACT.,APROV. SI TR Economist gra": {
+    "n": 2
+   },
+   "COMPARTIMENT ACHIZITII PUBLICE ECONOMIST IA SUPERIOARE Grada": {
+    "n": 2
+   },
+   "COMPARTIMENT APROVIZIONARE-CONTRACTARE ECONOMIST IA SUPERIOA": {
+    "n": 2
+   },
+   "Serviciul Financiar Contabil ECONOMIST - I S": {
+    "n": 2
+   },
+   "Serviciul Administrativ ECONOMIST - SPECIALIST IA S": {
+    "n": 2
+   },
+   "ECONOMIST II Gradatia 2": {
+    "n": 2
+   },
+   "ECONOMIST SPECIALIST IA SERVICIU LICITATII SI ATRIBUIRE CONT": {
+    "n": 2
+   },
+   "ECONOMIST 1A SERVICIUL ACHIZITII PUBLICE, CONTRACTE, TEHNIC": {
+    "n": 2
+   },
+   "ECONOMIST 1A Serviciul Aprovizionare, Transport": {
+    "n": 2
+   },
+   "economist 1": {
+    "n": 2
+   },
+   "541 Economist debutant Gradatia 4 Contractual": {
+    "n": 1
+   },
+   "542 Economist I Gradatia 4 Contractual": {
+    "n": 1
+   },
+   "543 Economist IA Gradatia 4 Contractual": {
+    "n": 1
+   },
+   "544 Economist IA Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "545 Economist II Gradatia 4 Contractual": {
+    "n": 1
+   },
+   "546 Economist II Gradatia 4 Contractual": {
+    "n": 1
+   },
+   "COMPARTIMENT BUNURI Economist debutant Gradatia 3 SUPERIOARE": {
+    "n": 1
+   },
+   "COMPARTIMENT RELATII PUBLICE Economist specialist IA Gradati": {
+    "n": 1
+   },
+   "SERVICIUL ADMINISTRATIV Economist specialist IA Gradatia 5 S": {
+    "n": 1
+   },
+   "SERVICIUL RESURSE UMANE Economist specialist IA Gradatia 4 S": {
+    "n": 1
+   },
+   "SERVICIUL RESURSE UMANE Economist gradul I Gradatia 2 SUPERI": {
+    "n": 1
+   },
+   "SERVICIUL SALARIZARE Economist specialist IA Gradatia 4 SUPE": {
+    "n": 1
+   },
+   "SERVICIUL TEHNIC SI APARATURA MEDICALA Economist specialist ": {
+    "n": 1
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 Economist specialist IA Gradatia": {
+    "n": 1
+   },
+   "COMPARTIMENT ACHIZITII PUBLICE ECONOMIST IA MEDII Gradatia 5": {
+    "n": 1
+   },
+   "COMPARTIMENT APROVIZIONARE-CONTRACTARE ECONOMIST I SUPERIOAR": {
+    "n": 1
+   },
+   "COMPARTIMENT INFORMATICA ECONOMIST II SUPERIOARE Gradatia 1": {
+    "n": 1
+   },
+   "SERVICIUL ADMINISTRATIV - TRANSPORT ECONOMIST I SUPERIOARE G": {
+    "n": 1
+   },
+   "U.P.U. ECONOMIST IA SUPERIOARE Gradatia 5": {
+    "n": 1
+   },
+   "economist debutant": {
+    "n": 1
+   },
+   "economist II": {
+    "n": 1
+   },
+   "Economist gradul I SUPERIOARE ( S )": {
+    "n": 1
+   },
+   "Serviciul R.U.N.O.S. ECONOMIST - I S": {
+    "n": 1
+   },
+   "Comp. Contabilitate si Buget ECONOMIST - I S": {
+    "n": 1
+   },
+   "Serviciul de Achizitii Publice ECONOMIST - SPECIALIST IA S": {
+    "n": 1
+   },
+   "Serviciul de Achizitii Publice ECONOMIST - II S": {
+    "n": 1
+   },
+   "ECONOMIST IA Gradatia 3": {
+    "n": 1
+   },
+   "ECONOMIST IA Gradatia 4": {
+    "n": 1
+   },
+   "ECONOMIST II Gradatia 4": {
+    "n": 1
+   },
+   "CONTABIL ECONOMIST IA Gradatia 5": {
+    "n": 1
+   },
+   "PERSONAL ECONOMIST IA Gradatia 5": {
+    "n": 1
+   },
+   "Economist IA Gradatia": {
+    "n": 1
+   },
+   "Economist II Gradatia": {
+    "n": 1
+   },
+   "Tchnieian economist II Gradatia 491S": {
+    "n": 1
+   },
+   "ECONOMIST I SERVICIU ADMINISTRATIV, GOSPODARIRE-DESERVIRE": {
+    "n": 1
+   },
+   "ECONOMIST SPECIALIST IA SERVICIU ADMINISTRATIV, GOSPODARIRE-": {
+    "n": 1
+   },
+   "ECONOMIST I SERVICIU APROVIZIONARE,TRANSPORT SI ACHIZITII PU": {
+    "n": 1
+   },
+   "ECONOMIST I SERVICIU INFORMATICA, EVALUARE SI STATISTICA MED": {
+    "n": 1
+   },
+   "ECONOMIST II Serviciul Aprovizionare, Transport": {
+    "n": 1
+   },
+   "ECONOMIST I Compartiment Securitatea muncii, PSI,PC si Situa": {
+    "n": 1
+   },
+   "ECONOMIST II": {
+    "n": 1
+   },
+   "2026-02 ECONOMIST II": {
+    "n": 1
+   },
+   "ECONOMIST II. SUPERIOARE Gradatia": {
+    "n": 1
+   },
+   "ECONOMIST I Gradatia 2 Sporurile din anexele 1, 2,3,5,8 sunt": {
+    "n": 1
+   },
+   "ECONOMIST I Gradatia 5 Sporurile din anexele 1, 2,3,5,8 sunt": {
+    "n": 1
+   },
+   "ECONOMIST s I IA": {
+    "n": 1
+   },
+   "ECONOMIST s I IA s": {
+    "n": 1
+   },
+   "ECONOMIST s IA s": {
+    "n": 1
+   },
+   "1 ADM.FINANCIAR-ECONOMIST S I": {
+    "n": 1
+   },
+   "2 ADM.FINANCIAR-ECONOMIST S I": {
+    "n": 1
+   },
+   "3 ADM.FINANCIAR-ECONOMIST S I": {
+    "n": 1
+   },
+   "4 ADM.FINANCIAR-ECONOMIST S I": {
+    "n": 1
+   },
+   "5 ADM.FINANCIAR-ECONOMIST S I 0-40%": {
+    "n": 1
+   },
+   "36 ADM.PATRIMONIU-ECONOMIST S II 0-40%": {
+    "n": 1
+   }
+  }
+ }
+}

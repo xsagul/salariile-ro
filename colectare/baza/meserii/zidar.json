@@ -1,0 +1,404 @@
+{
+ "slug": "zidar",
+ "nume": "Zidar",
+ "cor": "711205",
+ "generatLa": "2026-09-27T10:01:09.017Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 19,
+  "cuBazaDeclarata": 0,
+  "faraBazaDeclarata": 19,
+  "surse": {
+   "olx": {
+    "n": 10,
+    "procent": 52.6
+   },
+   "publi24": {
+    "n": 4,
+    "procent": 21.1
+   },
+   "anuntul": {
+    "n": 4,
+    "procent": 21.1
+   },
+   "ejobs": {
+    "n": 1,
+    "procent": 5.3
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 19,
+    "procent": 100
+   }
+  },
+  "net": {
+   "n": 0
+  },
+  "netMinimOferit": {
+   "n": 0
+  },
+  "netMaximOferit": {
+   "n": 0
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 19,
+   "p10": 4750,
+   "p25": 5750,
+   "median": 6500,
+   "p75": 7000,
+   "p90": 9200,
+   "min": 4582,
+   "max": 23634
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-08": {
+    "n": 6,
+    "procent": 31.6
+   },
+   "2026-06": {
+    "n": 4,
+    "procent": 21.1
+   },
+   "2026-09": {
+    "n": 3,
+    "procent": 15.8
+   },
+   "2026-07": {
+    "n": 2,
+    "procent": 10.5
+   },
+   "2026-02": {
+    "n": 1,
+    "procent": 5.3
+   },
+   "2025-12": {
+    "n": 1,
+    "procent": 5.3
+   },
+   "2025-09": {
+    "n": 1,
+    "procent": 5.3
+   },
+   "2026-04": {
+    "n": 1,
+    "procent": 5.3
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 3,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {
+   "cazare": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {
+   "lucru în străinătate": {
+    "n": 2,
+    "procent": 66.7
+   }
+  },
+  "limbaAnuntului": {
+   "ro": {
+    "n": 3,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "ejobs": {
+    "n": 3,
+    "procent": 100
+   }
+  },
+  "peJudet": {},
+  "motiveFaraSalariu": {
+   "country_unconfirmed": {
+    "n": 3,
+    "procent": 100
+   },
+   "foreign_or_noncomparable_work": {
+    "n": 2,
+    "procent": 66.7
+   }
+  },
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 51,
+  "posturi": 258,
+  "ofertePeGrupaCor": 69,
+  "tipSalariu": {
+   "gross": {
+    "n": 28,
+    "procent": 54.9
+   },
+   "none": {
+    "n": 15,
+    "procent": 29.4
+   },
+   "net": {
+    "n": 8,
+    "procent": 15.7
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 7
+  },
+  "brutMinimDeclarat": {
+   "n": 28,
+   "p10": 4582,
+   "p25": 4582,
+   "median": 4600,
+   "p75": 4682,
+   "p90": 5180,
+   "min": 4325,
+   "max": 6800
+  },
+  "laSalariulMinim": 1,
+  "studii": {
+   "Profesional - ȘCOALĂ PROFESIONALĂ": {
+    "n": 26,
+    "procent": 51
+   },
+   "Gimnazial - ȘCOALĂ GENERALĂ": {
+    "n": 17,
+    "procent": 33.3
+   },
+   "Primar - ȘCOALĂ GENERALĂ INCOMPLETĂ": {
+    "n": 6,
+    "procent": 11.8
+   },
+   "Profesional - INV. COMPL. DE UCENICI": {
+    "n": 1,
+    "procent": 2
+   },
+   "PROFESIONAL- ÎNVĂȚĂMÂNT SPECIAL": {
+    "n": 1,
+    "procent": 2
+   }
+  },
+  "experienta": {
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 23,
+    "procent": 45.1
+   },
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 20,
+    "procent": 39.2
+   },
+   "Fără experiență - 0 ani": {
+    "n": 7,
+    "procent": 13.7
+   },
+   "Experimentat - mai mult de 7 ani": {
+    "n": 1,
+    "procent": 2
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 49,
+    "procent": 96.1
+   },
+   "Cu durată determinată": {
+    "n": 2,
+    "procent": 3.9
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 51,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 49,
+    "procent": 96.1
+   },
+   "Hibrid - sediu + telemuncă": {
+    "n": 1,
+    "procent": 2
+   },
+   "Hibrid - sediu + la domiciliu": {
+    "n": 1,
+    "procent": 2
+   }
+  },
+  "judete": {
+   "Bistrița-Năsăud": {
+    "n": 4,
+    "procent": 7.8
+   },
+   "Botoșani": {
+    "n": 4,
+    "procent": 7.8
+   },
+   "Cluj": {
+    "n": 4,
+    "procent": 7.8
+   },
+   "Vâlcea": {
+    "n": 4,
+    "procent": 7.8
+   },
+   "Iași": {
+    "n": 4,
+    "procent": 7.8
+   },
+   "Prahova": {
+    "n": 3,
+    "procent": 5.9
+   },
+   "Bacău": {
+    "n": 3,
+    "procent": 5.9
+   },
+   "Buzău": {
+    "n": 2,
+    "procent": 3.9
+   },
+   "Municipiul București": {
+    "n": 2,
+    "procent": 3.9
+   },
+   "Ilfov": {
+    "n": 2,
+    "procent": 3.9
+   },
+   "Covasna": {
+    "n": 2,
+    "procent": 3.9
+   },
+   "Gorj": {
+    "n": 2,
+    "procent": 3.9
+   },
+   "Bihor": {
+    "n": 1,
+    "procent": 2
+   },
+   "Alba": {
+    "n": 1,
+    "procent": 2
+   },
+   "Dâmbovița": {
+    "n": 1,
+    "procent": 2
+   },
+   "Teleorman": {
+    "n": 1,
+    "procent": 2
+   },
+   "Brașov": {
+    "n": 1,
+    "procent": 2
+   },
+   "Brăila": {
+    "n": 1,
+    "procent": 2
+   },
+   "Mureș": {
+    "n": 1,
+    "procent": 2
+   },
+   "Constanța": {
+    "n": 1,
+    "procent": 2
+   },
+   "Sălaj": {
+    "n": 1,
+    "procent": 2
+   },
+   "Dolj": {
+    "n": 1,
+    "procent": 2
+   },
+   "Argeș": {
+    "n": 1,
+    "procent": 2
+   },
+   "Suceava": {
+    "n": 1,
+    "procent": 2
+   },
+   "Caraș-Severin": {
+    "n": 1,
+    "procent": 2
+   },
+   "Tulcea": {
+    "n": 1,
+    "procent": 2
+   },
+   "Timiș": {
+    "n": 1,
+    "procent": 2
+   }
+  },
+  "domenii": {
+   "Construcții / Instalații": {
+    "n": 50,
+    "procent": 98
+   },
+   "Altele": {
+    "n": 1,
+    "procent": 2
+   }
+  },
+  "coduriCorInGrupa": {
+   "711205 - ZIDAR ROSAR-TENCUITOR": {
+    "n": 51,
+    "procent": 73.9
+   },
+   "711203 - ZIDAR PIETRAR": {
+    "n": 16,
+    "procent": 23.2
+   },
+   "711204 - ZIDAR SAMOTOR": {
+    "n": 1,
+    "procent": 1.4
+   },
+   "711206 - ZIDAR RESTAURATOR": {
+    "n": 1,
+    "procent": 1.4
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 0,
+  "institutii": 0,
+  "judete": {},
+  "tipInstitutie": {},
+  "perioade": {},
+  "studii": {},
+  "bazaBruta": {
+   "n": 0
+  },
+  "bazaCuSporuriFixe": {
+   "n": 0
+  },
+  "peGradatie": {},
+  "peFunctie": {}
+ }
+}

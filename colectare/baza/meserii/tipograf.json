@@ -1,0 +1,229 @@
+{
+ "slug": "tipograf",
+ "nume": "Tipograf",
+ "cor": "732207",
+ "generatLa": "2026-09-27T10:01:09.215Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 5,
+  "cuBazaDeclarata": 1,
+  "faraBazaDeclarata": 4,
+  "surse": {
+   "olx": {
+    "n": 2,
+    "procent": 40
+   },
+   "anuntul": {
+    "n": 1,
+    "procent": 20
+   },
+   "publi24": {
+    "n": 1,
+    "procent": 20
+   },
+   "bestjobs": {
+    "n": 1,
+    "procent": 20
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 5,
+    "procent": 100
+   }
+  },
+  "net": {
+   "n": 1
+  },
+  "netMinimOferit": {
+   "n": 1
+  },
+  "netMaximOferit": {
+   "n": 1
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 4
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-08": {
+    "n": 2,
+    "procent": 40
+   },
+   "2026-09": {
+    "n": 2,
+    "procent": 40
+   },
+   "2026-04": {
+    "n": 1,
+    "procent": 20
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 0,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {},
+  "surse": {},
+  "peJudet": {},
+  "motiveFaraSalariu": {},
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 4,
+  "posturi": 5,
+  "ofertePeGrupaCor": 13,
+  "tipSalariu": {
+   "none": {
+    "n": 3,
+    "procent": 75
+   },
+   "net": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 1
+  },
+  "brutMinimDeclarat": {
+   "n": 0
+  },
+  "laSalariulMinim": 0,
+  "studii": {
+   "Liceal - LICEU DE SPECIALITATE": {
+    "n": 2,
+    "procent": 50
+   },
+   "Profesional - ȘCOALĂ PROFESIONALĂ": {
+    "n": 1,
+    "procent": 25
+   },
+   "Gimnazial - ȘCOALĂ GENERALĂ": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "experienta": {
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 2,
+    "procent": 50
+   },
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 1,
+    "procent": 25
+   },
+   "Fără experiență - 0 ani": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "contract": {
+   "Cu durată determinată": {
+    "n": 2,
+    "procent": 50
+   },
+   "Cu durată nedeterminată": {
+    "n": 2,
+    "procent": 50
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 4,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 4,
+    "procent": 100
+   }
+  },
+  "judete": {
+   "Iași": {
+    "n": 1,
+    "procent": 25
+   },
+   "Cluj": {
+    "n": 1,
+    "procent": 25
+   },
+   "Bihor": {
+    "n": 1,
+    "procent": 25
+   },
+   "Olt": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "domenii": {
+   "Producție / Logistică": {
+    "n": 4,
+    "procent": 100
+   }
+  },
+  "coduriCorInGrupa": {
+   "732207 - TIPOGRAF-TIPARITOR": {
+    "n": 4,
+    "procent": 30.8
+   },
+   "732206 - OPERATOR PRESA DE TRANSFER TERMIC": {
+    "n": 3,
+    "procent": 23.1
+   },
+   "732213 - OPERATOR XEROX": {
+    "n": 2,
+    "procent": 15.4
+   },
+   "732203 - IMPRIMATOR SERIGRAF": {
+    "n": 2,
+    "procent": 15.4
+   },
+   "732218 - TIPOGRAF FLEXOGRAF": {
+    "n": 1,
+    "procent": 7.7
+   },
+   "732215 - TIPOGRAF PRINT DIGITAL SI OFFSET": {
+    "n": 1,
+    "procent": 7.7
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 0,
+  "institutii": 0,
+  "judete": {},
+  "tipInstitutie": {},
+  "perioade": {},
+  "studii": {},
+  "bazaBruta": {
+   "n": 0
+  },
+  "bazaCuSporuriFixe": {
+   "n": 0
+  },
+  "peGradatie": {},
+  "peFunctie": {}
+ }
+}

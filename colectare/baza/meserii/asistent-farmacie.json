@@ -1,0 +1,289 @@
+{
+ "slug": "asistent-farmacie",
+ "nume": "Asistent de farmacie",
+ "cor": "321301",
+ "generatLa": "2026-09-27T10:01:08.925Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 1,
+  "cuBazaDeclarata": 1,
+  "faraBazaDeclarata": 0,
+  "surse": {
+   "olx": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "net": {
+   "n": 1
+  },
+  "netMinimOferit": {
+   "n": 1
+  },
+  "netMaximOferit": {
+   "n": 1
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 0
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-01": {
+    "n": 1,
+    "procent": 100
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 0,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {},
+  "surse": {},
+  "peJudet": {},
+  "motiveFaraSalariu": {},
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 2,
+  "posturi": 2,
+  "ofertePeGrupaCor": 3,
+  "tipSalariu": {
+   "gross": {
+    "n": 1,
+    "procent": 50
+   },
+   "net": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 1
+  },
+  "brutMinimDeclarat": {
+   "n": 1
+  },
+  "laSalariulMinim": 1,
+  "studii": {
+   "Postliceal - ȘCOALĂ POSTLICEALĂ": {
+    "n": 1,
+    "procent": 50
+   },
+   "Liceal - LICEU DE SPECIALITATE": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "experienta": {
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 1,
+    "procent": 50
+   },
+   "Experimentat - mai mult de 7 ani": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "judete": {
+   "Maramureș": {
+    "n": 1,
+    "procent": 50
+   },
+   "Brașov": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "domenii": {
+   "COMERT": {
+    "n": 1,
+    "procent": 50
+   },
+   "Medicină / Sănătate /Psihoterapie": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "coduriCorInGrupa": {
+   "321301 - ASISTENT FARMACIST": {
+    "n": 2,
+    "procent": 66.7
+   },
+   "321303 - ASISTENT MEDICAL DE FARMACIE": {
+    "n": 1,
+    "procent": 33.3
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 43,
+  "institutii": 4,
+  "judete": {
+   "CT": {
+    "n": 19,
+    "procent": 44.2
+   },
+   "BZ": {
+    "n": 13,
+    "procent": 30.2
+   },
+   "BH": {
+    "n": 8,
+    "procent": 18.6
+   },
+   "CJ": {
+    "n": 3,
+    "procent": 7
+   }
+  },
+  "tipInstitutie": {
+   "spital": {
+    "n": 43,
+    "procent": 100
+   }
+  },
+  "perioade": {
+   "2026-03": {
+    "n": 30,
+    "procent": 69.8
+   },
+   "2026-02": {
+    "n": 13,
+    "procent": 30.2
+   }
+  },
+  "studii": {
+   "PL": {
+    "n": 35,
+    "procent": 81.4
+   },
+   "S": {
+    "n": 7,
+    "procent": 16.3
+   },
+   "M": {
+    "n": 1,
+    "procent": 2.3
+   }
+  },
+  "bazaBruta": {
+   "n": 43,
+   "p10": 6488,
+   "p25": 6816,
+   "median": 7065,
+   "p75": 7158,
+   "p90": 7954,
+   "min": 6099,
+   "max": 7954
+  },
+  "bazaCuSporuriFixe": {
+   "n": 43,
+   "p10": 7243,
+   "p25": 7613,
+   "median": 7803,
+   "p75": 8307,
+   "p90": 9262,
+   "min": 6535,
+   "max": 9322
+  },
+  "peGradatie": {
+   "gradația 5": {
+    "n": 9
+   },
+   "gradația 4": {
+    "n": 2
+   },
+   "gradația 3": {
+    "n": 2
+   }
+  },
+  "peFunctie": {
+   "Asistent farmacie principal POST LICEALE ( PL )": {
+    "n": 11,
+    "p10": 8169,
+    "p25": 8169,
+    "median": 8169,
+    "p75": 8457,
+    "p90": 8469,
+    "min": 7982,
+    "max": 8469
+   },
+   "ASISTENT FARMACIE PRINCIPAL PL Farmacie Spital": {
+    "n": 8
+   },
+   "Asistent de farmacie licentiat principal SUPERIOARE ( S )": {
+    "n": 6
+   },
+   "FARMACIE‐str.C.Coposu nr.12 Asistent medical‐farmacie Gradat": {
+    "n": 4
+   },
+   "FARMACIE‐str.Gh.Doja nr.65 Asistent medical‐farmacie Gradati": {
+    "n": 3
+   },
+   "ASISTENT MEDICAL DE FARMACIE PR PL Gradatia 5 Sporurile din ": {
+    "n": 3
+   },
+   "ASISTENT FARMACIE PRINCIPAL PL Farmacie Maternitate": {
+    "n": 2
+   },
+   "ASISTENT FARMACIE PRINCIPAL PL Farmacie Oncologie": {
+    "n": 2
+   },
+   "FARMACIE‐str.Clujului nr.50 Asistent medical‐farmacie Gradat": {
+    "n": 1
+   },
+   "Asistent farmacie principal MEDII ( M )": {
+    "n": 1
+   },
+   "Asistent farmacie principal SUPERIOARE ( S )": {
+    "n": 1
+   },
+   "ASISTENT FARMACIE PRINCIPAL PL Farmacia TBC": {
+    "n": 1
+   }
+  }
+ }
+}

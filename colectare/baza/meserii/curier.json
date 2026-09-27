@@ -1,0 +1,507 @@
+{
+ "slug": "curier",
+ "nume": "Curier",
+ "cor": "962101",
+ "generatLa": "2026-09-27T10:01:09.067Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 31,
+  "cuBazaDeclarata": 11,
+  "faraBazaDeclarata": 20,
+  "surse": {
+   "olx": {
+    "n": 16,
+    "procent": 51.6
+   },
+   "publi24": {
+    "n": 7,
+    "procent": 22.6
+   },
+   "bestjobs": {
+    "n": 5,
+    "procent": 16.1
+   },
+   "ejobs": {
+    "n": 2,
+    "procent": 6.5
+   },
+   "anuntul": {
+    "n": 1,
+    "procent": 3.2
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 31,
+    "procent": 100
+   }
+  },
+  "net": {
+   "n": 11,
+   "p10": 3500,
+   "p25": 3675,
+   "median": 4465,
+   "p75": 4990,
+   "p90": 6828,
+   "min": 2699,
+   "max": 8500
+  },
+  "netMinimOferit": {
+   "n": 11,
+   "p10": 3000,
+   "p25": 3350,
+   "median": 4202,
+   "p75": 4727,
+   "p90": 6302,
+   "min": 2699,
+   "max": 7000
+  },
+  "netMaximOferit": {
+   "n": 11,
+   "p10": 4000,
+   "p25": 4000,
+   "median": 4727,
+   "p75": 5252,
+   "p90": 7353,
+   "min": 2699,
+   "max": 10000
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 20,
+   "p10": 3485,
+   "p25": 3825,
+   "median": 4600,
+   "p75": 5438,
+   "p90": 9500,
+   "min": 3300,
+   "max": 12000
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-09": {
+    "n": 11,
+    "procent": 35.5
+   },
+   "2026-08": {
+    "n": 9,
+    "procent": 29
+   },
+   "2026-05": {
+    "n": 2,
+    "procent": 6.5
+   },
+   "2025-09": {
+    "n": 2,
+    "procent": 6.5
+   },
+   "2026-01": {
+    "n": 2,
+    "procent": 6.5
+   },
+   "2025-11": {
+    "n": 1,
+    "procent": 3.2
+   },
+   "2025-08": {
+    "n": 1,
+    "procent": 3.2
+   },
+   "2025-10": {
+    "n": 1,
+    "procent": 3.2
+   },
+   "2026-03": {
+    "n": 1,
+    "procent": 3.2
+   },
+   "2026-04": {
+    "n": 1,
+    "procent": 3.2
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 15,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {
+   "fara": {
+    "n": 4,
+    "procent": 26.7
+   },
+   "1+ ani": {
+    "n": 3,
+    "procent": 20
+   },
+   "da": {
+    "n": 1,
+    "procent": 6.7
+   },
+   "15+ ani": {
+    "n": 1,
+    "procent": 6.7
+   }
+  },
+  "experientaPortal": {
+   "0–1 an": {
+    "n": 2,
+    "procent": 13.3
+   },
+   "1–5 ani": {
+    "n": 1,
+    "procent": 6.7
+   }
+  },
+  "studii": {
+   "superioare": {
+    "n": 2,
+    "procent": 13.3
+   }
+  },
+  "limbi": {},
+  "permis": {
+   "B": {
+    "n": 3,
+    "procent": 20
+   }
+  },
+  "atestate": {},
+  "program": {
+   "ture": {
+    "n": 1,
+    "procent": 6.7
+   }
+  },
+  "mod": {},
+  "norma": {
+   "part-time": {
+    "n": 1,
+    "procent": 6.7
+   }
+  },
+  "durata": {},
+  "beneficii": {
+   "cursuri / training": {
+    "n": 1,
+    "procent": 6.7
+   }
+  },
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 12,
+    "procent": 80
+   },
+   "en": {
+    "n": 3,
+    "procent": 20
+   }
+  },
+  "surse": {
+   "hipo": {
+    "n": 10,
+    "procent": 66.7
+   },
+   "ejobs": {
+    "n": 5,
+    "procent": 33.3
+   }
+  },
+  "peJudet": {
+   "10": {
+    "n": 1,
+    "procent": 6.7
+   },
+   "38": {
+    "n": 1,
+    "procent": 6.7
+   },
+   "RO": {
+    "n": 10,
+    "procent": 66.7
+   }
+  },
+  "motiveFaraSalariu": {
+   "full_time_unconfirmed": {
+    "n": 9,
+    "procent": 75
+   },
+   "salary_evidence_incomplete": {
+    "n": 7,
+    "procent": 58.3
+   },
+   "country_unconfirmed": {
+    "n": 2,
+    "procent": 16.7
+   },
+   "foreign_or_noncomparable_work": {
+    "n": 2,
+    "procent": 16.7
+   },
+   "wide_range_review": {
+    "n": 2,
+    "procent": 16.7
+   },
+   "contract_or_variable_income": {
+    "n": 1,
+    "procent": 8.3
+   }
+  },
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 106,
+  "posturi": 1974,
+  "ofertePeGrupaCor": 108,
+  "tipSalariu": {
+   "gross": {
+    "n": 59,
+    "procent": 55.7
+   },
+   "none": {
+    "n": 45,
+    "procent": 42.5
+   },
+   "net": {
+    "n": 2,
+    "procent": 1.9
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 2
+  },
+  "brutMinimDeclarat": {
+   "n": 51,
+   "p10": 4050,
+   "p25": 4313,
+   "median": 4325,
+   "p75": 4325,
+   "p90": 4350,
+   "min": 1,
+   "max": 4400
+  },
+  "laSalariulMinim": 49,
+  "studii": {
+   "Gimnazial - ȘCOALĂ GENERALĂ": {
+    "n": 68,
+    "procent": 64.2
+   },
+   "Primar - FĂRĂ STUDII": {
+    "n": 21,
+    "procent": 19.8
+   },
+   "Profesional - ȘCOALĂ PROFESIONALĂ": {
+    "n": 12,
+    "procent": 11.3
+   },
+   "Liceal - LICEU TEORETIC": {
+    "n": 3,
+    "procent": 2.8
+   },
+   "Postliceal - ȘCOALĂ POSTLICEALĂ": {
+    "n": 1,
+    "procent": 0.9
+   },
+   "Postliceal - COLEGIU": {
+    "n": 1,
+    "procent": 0.9
+   }
+  },
+  "experienta": {
+   "Fără experiență - 0 ani": {
+    "n": 87,
+    "procent": 82.1
+   },
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 17,
+    "procent": 16
+   },
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 2,
+    "procent": 1.9
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 98,
+    "procent": 92.5
+   },
+   "Cu durată determinată": {
+    "n": 8,
+    "procent": 7.5
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 104,
+    "procent": 98.1
+   },
+   "Cu timp parțial": {
+    "n": 2,
+    "procent": 1.9
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 86,
+    "procent": 81.1
+   },
+   "Hibrid - sediu + la domiciliu": {
+    "n": 13,
+    "procent": 12.3
+   },
+   "Telemuncă": {
+    "n": 4,
+    "procent": 3.8
+   },
+   "Hibrid - telemuncă + la domiciliu": {
+    "n": 3,
+    "procent": 2.8
+   }
+  },
+  "judete": {
+   "Municipiul București": {
+    "n": 28,
+    "procent": 26.4
+   },
+   "Cluj": {
+    "n": 14,
+    "procent": 13.2
+   },
+   "Ilfov": {
+    "n": 11,
+    "procent": 10.4
+   },
+   "Timiș": {
+    "n": 7,
+    "procent": 6.6
+   },
+   "Sibiu": {
+    "n": 7,
+    "procent": 6.6
+   },
+   "Iași": {
+    "n": 5,
+    "procent": 4.7
+   },
+   "Constanța": {
+    "n": 5,
+    "procent": 4.7
+   },
+   "Ialomița": {
+    "n": 5,
+    "procent": 4.7
+   },
+   "Prahova": {
+    "n": 4,
+    "procent": 3.8
+   },
+   "Argeș": {
+    "n": 4,
+    "procent": 3.8
+   },
+   "Teleorman": {
+    "n": 3,
+    "procent": 2.8
+   },
+   "Mureș": {
+    "n": 2,
+    "procent": 1.9
+   },
+   "Arad": {
+    "n": 2,
+    "procent": 1.9
+   },
+   "Vaslui": {
+    "n": 1,
+    "procent": 0.9
+   },
+   "Botoșani": {
+    "n": 1,
+    "procent": 0.9
+   },
+   "Brăila": {
+    "n": 1,
+    "procent": 0.9
+   },
+   "Vrancea": {
+    "n": 1,
+    "procent": 0.9
+   },
+   "Călărași": {
+    "n": 1,
+    "procent": 0.9
+   },
+   "Vâlcea": {
+    "n": 1,
+    "procent": 0.9
+   },
+   "Harghita": {
+    "n": 1,
+    "procent": 0.9
+   },
+   "Satu Mare": {
+    "n": 1,
+    "procent": 0.9
+   },
+   "Buzău": {
+    "n": 1,
+    "procent": 0.9
+   }
+  },
+  "domenii": {
+   "Servicii transport / curierat": {
+    "n": 74,
+    "procent": 69.8
+   },
+   "Altele": {
+    "n": 27,
+    "procent": 25.5
+   },
+   "RESTAURANTE": {
+    "n": 3,
+    "procent": 2.8
+   },
+   "Legislativ / Juridic / Funcții Publice": {
+    "n": 1,
+    "procent": 0.9
+   },
+   "COMERT": {
+    "n": 1,
+    "procent": 0.9
+   }
+  },
+  "coduriCorInGrupa": {
+   "962101 - CURIER": {
+    "n": 106,
+    "procent": 98.1
+   },
+   "962103 - COMISIONER": {
+    "n": 2,
+    "procent": 1.9
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 0,
+  "institutii": 0,
+  "judete": {},
+  "tipInstitutie": {},
+  "perioade": {},
+  "studii": {},
+  "bazaBruta": {
+   "n": 0
+  },
+  "bazaCuSporuriFixe": {
+   "n": 0
+  },
+  "peGradatie": {},
+  "peFunctie": {}
+ }
+}

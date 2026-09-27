@@ -1,0 +1,201 @@
+{
+ "slug": "analist-financiar",
+ "nume": "Analist financiar",
+ "cor": "241305",
+ "generatLa": "2026-09-27T10:01:08.975Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 1,
+  "cuBazaDeclarata": 0,
+  "faraBazaDeclarata": 1,
+  "surse": {
+   "bestjobs": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "net": {
+   "n": 0
+  },
+  "netMinimOferit": {
+   "n": 0
+  },
+  "netMaximOferit": {
+   "n": 0
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 1
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-09": {
+    "n": 1,
+    "procent": 100
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 0,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {},
+  "surse": {},
+  "peJudet": {},
+  "motiveFaraSalariu": {},
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 9,
+  "posturi": 9,
+  "ofertePeGrupaCor": 11,
+  "tipSalariu": {
+   "none": {
+    "n": 7,
+    "procent": 77.8
+   },
+   "gross": {
+    "n": 2,
+    "procent": 22.2
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 0
+  },
+  "brutMinimDeclarat": {
+   "n": 2
+  },
+  "laSalariulMinim": 1,
+  "studii": {
+   "Universitar - ÎNVĂȚĂMÂNT SUPERIOR": {
+    "n": 9,
+    "procent": 100
+   }
+  },
+  "experienta": {
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 6,
+    "procent": 66.7
+   },
+   "Experimentat - mai mult de 7 ani": {
+    "n": 2,
+    "procent": 22.2
+   },
+   "Avansat - între 5 și 7 ani": {
+    "n": 1,
+    "procent": 11.1
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 9,
+    "procent": 100
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 8,
+    "procent": 88.9
+   },
+   "Cu timp parțial": {
+    "n": 1,
+    "procent": 11.1
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 5,
+    "procent": 55.6
+   },
+   "Hibrid - sediu + telemuncă": {
+    "n": 4,
+    "procent": 44.4
+   }
+  },
+  "judete": {
+   "Municipiul București": {
+    "n": 5,
+    "procent": 55.6
+   },
+   "Teleorman": {
+    "n": 1,
+    "procent": 11.1
+   },
+   "Cluj": {
+    "n": 1,
+    "procent": 11.1
+   },
+   "Brașov": {
+    "n": 1,
+    "procent": 11.1
+   },
+   "Bihor": {
+    "n": 1,
+    "procent": 11.1
+   }
+  },
+  "domenii": {
+   "Contabilitate / Financiar": {
+    "n": 5,
+    "procent": 55.6
+   },
+   "Altele": {
+    "n": 2,
+    "procent": 22.2
+   },
+   "Management": {
+    "n": 2,
+    "procent": 22.2
+   }
+  },
+  "coduriCorInGrupa": {
+   "241305 - ANALIST FINANCIAR": {
+    "n": 9,
+    "procent": 81.8
+   },
+   "241306 - AUDITOR INTERN ÎN SECTORUL PUBLIC": {
+    "n": 2,
+    "procent": 18.2
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 0,
+  "institutii": 0,
+  "judete": {},
+  "tipInstitutie": {},
+  "perioade": {},
+  "studii": {},
+  "bazaBruta": {
+   "n": 0
+  },
+  "bazaCuSporuriFixe": {
+   "n": 0
+  },
+  "peGradatie": {},
+  "peFunctie": {}
+ }
+}

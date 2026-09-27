@@ -1,0 +1,225 @@
+{
+ "slug": "manager-magazin",
+ "nume": "Manager de magazin",
+ "cor": null,
+ "generatLa": "2026-09-27T10:01:09.099Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 24,
+  "cuBazaDeclarata": 11,
+  "faraBazaDeclarata": 13,
+  "surse": {
+   "ejobs": {
+    "n": 18,
+    "procent": 75
+   },
+   "olx": {
+    "n": 5,
+    "procent": 20.8
+   },
+   "bestjobs": {
+    "n": 1,
+    "procent": 4.2
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 21,
+    "procent": 87.5
+   },
+   "continuă": {
+    "n": 3,
+    "procent": 12.5
+   }
+  },
+  "net": {
+   "n": 11,
+   "p10": 4550,
+   "p25": 5050,
+   "median": 5550,
+   "p75": 6125,
+   "p90": 6500,
+   "min": 4400,
+   "max": 19695
+  },
+  "netMinimOferit": {
+   "n": 11,
+   "p10": 4400,
+   "p25": 4750,
+   "median": 5100,
+   "p75": 5900,
+   "p90": 6500,
+   "min": 3800,
+   "max": 18382
+  },
+  "netMaximOferit": {
+   "n": 11,
+   "p10": 5000,
+   "p25": 5300,
+   "median": 6000,
+   "p75": 6350,
+   "p90": 6500,
+   "min": 4700,
+   "max": 21008
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 13,
+   "p10": 4300,
+   "p25": 4500,
+   "median": 5000,
+   "p75": 6000,
+   "p90": 6250,
+   "min": 4250,
+   "max": 6300
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-09": {
+    "n": 16,
+    "procent": 66.7
+   },
+   "2026-08": {
+    "n": 8,
+    "procent": 33.3
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 4,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {
+   "3+ ani": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "experientaPortal": {
+   "1–5 ani": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "studii": {
+   "superioare": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {
+   "ture": {
+    "n": 1,
+    "procent": 25
+   },
+   "weekend": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {
+   "tichete de masă": {
+    "n": 1,
+    "procent": 25
+   },
+   "bonus": {
+    "n": 1,
+    "procent": 25
+   },
+   "asigurare medicală": {
+    "n": 1,
+    "procent": 25
+   },
+   "cursuri / training": {
+    "n": 1,
+    "procent": 25
+   },
+   "telefon / laptop": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 4,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "ejobs": {
+    "n": 3,
+    "procent": 75
+   },
+   "hipo": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "peJudet": {
+   "41": {
+    "n": 1,
+    "procent": 25
+   },
+   "RO": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "motiveFaraSalariu": {
+   "salary_evidence_incomplete": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 0,
+  "posturi": 0,
+  "ofertePeGrupaCor": 0,
+  "tipSalariu": {},
+  "netMinimDeclarat": {
+   "n": 0
+  },
+  "brutMinimDeclarat": {
+   "n": 0
+  },
+  "laSalariulMinim": 0,
+  "studii": {},
+  "experienta": {},
+  "contract": {},
+  "norma": {},
+  "regim": {},
+  "judete": {},
+  "domenii": {},
+  "coduriCorInGrupa": {}
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 0,
+  "institutii": 0,
+  "judete": {},
+  "tipInstitutie": {},
+  "perioade": {},
+  "studii": {},
+  "bazaBruta": {
+   "n": 0
+  },
+  "bazaCuSporuriFixe": {
+   "n": 0
+  },
+  "peGradatie": {},
+  "peFunctie": {}
+ }
+}

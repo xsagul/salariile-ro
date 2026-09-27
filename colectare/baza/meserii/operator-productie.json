@@ -1,0 +1,237 @@
+{
+ "slug": "operator-productie",
+ "nume": "Operator producție",
+ "cor": null,
+ "generatLa": "2026-09-27T10:01:09.040Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 117,
+  "cuBazaDeclarata": 92,
+  "faraBazaDeclarata": 25,
+  "surse": {
+   "publi24": {
+    "n": 53,
+    "procent": 45.3
+   },
+   "olx": {
+    "n": 38,
+    "procent": 32.5
+   },
+   "ejobs": {
+    "n": 18,
+    "procent": 15.4
+   },
+   "bestjobs": {
+    "n": 4,
+    "procent": 3.4
+   },
+   "anuntul": {
+    "n": 2,
+    "procent": 1.7
+   },
+   "undelucram": {
+    "n": 1,
+    "procent": 0.9
+   },
+   "hipo": {
+    "n": 1,
+    "procent": 0.9
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 117,
+    "procent": 100
+   }
+  },
+  "net": {
+   "n": 92,
+   "p10": 2632,
+   "p25": 2788,
+   "median": 2907,
+   "p75": 3355,
+   "p90": 4090,
+   "min": 503,
+   "max": 5750.5
+  },
+  "netMinimOferit": {
+   "n": 92,
+   "p10": 2629,
+   "p25": 2743,
+   "median": 2907,
+   "p75": 3223,
+   "p90": 3745,
+   "min": 503,
+   "max": 5500
+  },
+  "netMaximOferit": {
+   "n": 92,
+   "p10": 2632,
+   "p25": 2788,
+   "median": 2907,
+   "p75": 3523,
+   "p90": 4500,
+   "min": 503,
+   "max": 7000
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 25,
+   "p10": 2820,
+   "p25": 3000,
+   "median": 3500,
+   "p75": 4500,
+   "p90": 5210,
+   "min": 2650,
+   "max": 8000
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-09": {
+    "n": 63,
+    "procent": 53.8
+   },
+   "2026-08": {
+    "n": 30,
+    "procent": 25.6
+   },
+   "2026-07": {
+    "n": 8,
+    "procent": 6.8
+   },
+   "2026-06": {
+    "n": 8,
+    "procent": 6.8
+   },
+   "2026-03": {
+    "n": 4,
+    "procent": 3.4
+   },
+   "2026-05": {
+    "n": 2,
+    "procent": 1.7
+   },
+   "2026-02": {
+    "n": 1,
+    "procent": 0.9
+   },
+   "2026-01": {
+    "n": 1,
+    "procent": 0.9
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 2,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {
+   "avantaj": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "experientaPortal": {
+   "0–1 an": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "studii": {
+   "medii": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {
+   "ture": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "mod": {},
+  "norma": {},
+  "durata": {
+   "determinată": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "hipo": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "peJudet": {
+   "RO": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "motiveFaraSalariu": {
+   "foreign_or_noncomparable_work": {
+    "n": 2,
+    "procent": 100
+   },
+   "salary_evidence_incomplete": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 0,
+  "posturi": 0,
+  "ofertePeGrupaCor": 0,
+  "tipSalariu": {},
+  "netMinimDeclarat": {
+   "n": 0
+  },
+  "brutMinimDeclarat": {
+   "n": 0
+  },
+  "laSalariulMinim": 0,
+  "studii": {},
+  "experienta": {},
+  "contract": {},
+  "norma": {},
+  "regim": {},
+  "judete": {},
+  "domenii": {},
+  "coduriCorInGrupa": {}
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 0,
+  "institutii": 0,
+  "judete": {},
+  "tipInstitutie": {},
+  "perioade": {},
+  "studii": {},
+  "bazaBruta": {
+   "n": 0
+  },
+  "bazaCuSporuriFixe": {
+   "n": 0
+  },
+  "peGradatie": {},
+  "peFunctie": {}
+ }
+}

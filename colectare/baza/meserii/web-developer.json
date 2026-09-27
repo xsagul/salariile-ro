@@ -1,0 +1,264 @@
+{
+ "slug": "web-developer",
+ "nume": "Web developer",
+ "cor": "251208",
+ "generatLa": "2026-09-27T10:01:08.803Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 0,
+  "cuBazaDeclarata": 0,
+  "faraBazaDeclarata": 0,
+  "surse": {},
+  "colectari": {},
+  "net": {
+   "n": 0
+  },
+  "netMinimOferit": {
+   "n": 0
+  },
+  "netMaximOferit": {
+   "n": 0
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 0
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {}
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 3,
+  "cuSalariu": 0,
+  "nivel": {
+   "senior": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
+  "experienta": {
+   "4+ ani": {
+    "n": 1,
+    "procent": 33.3
+   },
+   "6+ ani": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
+  "experientaPortal": {
+   "1–5 ani": {
+    "n": 3,
+    "procent": 100
+   }
+  },
+  "studii": {
+   "superioare": {
+    "n": 3,
+    "procent": 100
+   }
+  },
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {
+   "asigurare medicală": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
+  "tehnologii": {
+   "JavaScript": {
+    "n": 3,
+    "procent": 100
+   },
+   "React": {
+    "n": 3,
+    "procent": 100
+   },
+   "Angular": {
+    "n": 2,
+    "procent": 66.7
+   },
+   "Vue": {
+    "n": 2,
+    "procent": 66.7
+   },
+   "Azure": {
+    "n": 2,
+    "procent": 66.7
+   },
+   "Git": {
+    "n": 2,
+    "procent": 66.7
+   },
+   "TypeScript": {
+    "n": 1,
+    "procent": 33.3
+   },
+   "Swift": {
+    "n": 1,
+    "procent": 33.3
+   },
+   "Flutter": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {
+   "en": {
+    "n": 3,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "hipo": {
+    "n": 3,
+    "procent": 100
+   }
+  },
+  "peJudet": {
+   "RO": {
+    "n": 3,
+    "procent": 100
+   }
+  },
+  "motiveFaraSalariu": {
+   "salary_evidence_incomplete": {
+    "n": 3,
+    "procent": 100
+   }
+  },
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 2,
+  "posturi": 4,
+  "ofertePeGrupaCor": 65,
+  "tipSalariu": {
+   "gross": {
+    "n": 1,
+    "procent": 50
+   },
+   "none": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 0
+  },
+  "brutMinimDeclarat": {
+   "n": 1
+  },
+  "laSalariulMinim": 0,
+  "studii": {
+   "Universitar - ÎNVĂȚĂMÂNT SUPERIOR": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "experienta": {
+   "Avansat - între 5 și 7 ani": {
+    "n": 1,
+    "procent": 50
+   },
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "judete": {
+   "Municipiul București": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "domenii": {
+   "Altele": {
+    "n": 1,
+    "procent": 50
+   },
+   "IT / Telecomunicații": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "coduriCorInGrupa": {
+   "251202 - PROGRAMATOR": {
+    "n": 29,
+    "procent": 44.6
+   },
+   "251204 - PROGRAMATOR DE SISTEM INFORMATIC": {
+    "n": 10,
+    "procent": 15.4
+   },
+   "251203 - INGINER DE SISTEM ÎN INFORMATICA": {
+    "n": 10,
+    "procent": 15.4
+   },
+   "251201 - ANALIST": {
+    "n": 8,
+    "procent": 12.3
+   },
+   "251205 - INGINER DE SISTEM SOFTWARE": {
+    "n": 3,
+    "procent": 4.6
+   },
+   "251208 - inginer în realizarea, întreținerea și dezvoltarea aplicațiilor web": {
+    "n": 2,
+    "procent": 3.1
+   },
+   "251206 - MANAGER PROIECT INFORMATIC": {
+    "n": 2,
+    "procent": 3.1
+   },
+   "251207 - Inginer de dezvoltare a produselor software": {
+    "n": 1,
+    "procent": 1.5
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 0,
+  "institutii": 0,
+  "judete": {},
+  "tipInstitutie": {},
+  "perioade": {},
+  "studii": {},
+  "bazaBruta": {
+   "n": 0
+  },
+  "bazaCuSporuriFixe": {
+   "n": 0
+  },
+  "peGradatie": {},
+  "peFunctie": {}
+ }
+}

@@ -1,0 +1,463 @@
+{
+ "slug": "chelner",
+ "nume": "Chelner",
+ "cor": "513102",
+ "generatLa": "2026-09-27T10:01:09.109Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 77,
+  "cuBazaDeclarata": 24,
+  "faraBazaDeclarata": 53,
+  "surse": {
+   "olx": {
+    "n": 53,
+    "procent": 68.8
+   },
+   "ejobs": {
+    "n": 10,
+    "procent": 13
+   },
+   "publi24": {
+    "n": 6,
+    "procent": 7.8
+   },
+   "bestjobs": {
+    "n": 5,
+    "procent": 6.5
+   },
+   "anuntul": {
+    "n": 3,
+    "procent": 3.9
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 77,
+    "procent": 100
+   }
+  },
+  "net": {
+   "n": 24,
+   "p10": 3000,
+   "p25": 3225,
+   "median": 3500,
+   "p75": 3619,
+   "p90": 3963,
+   "min": 2700,
+   "max": 4750
+  },
+  "netMinimOferit": {
+   "n": 24,
+   "p10": 2730,
+   "p25": 3000,
+   "median": 3400,
+   "p75": 3500,
+   "p90": 3705,
+   "min": 2500,
+   "max": 4700
+  },
+  "netMaximOferit": {
+   "n": 24,
+   "p10": 3150,
+   "p25": 3500,
+   "median": 3500,
+   "p75": 3775,
+   "p90": 4201,
+   "min": 2700,
+   "max": 5000
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 53,
+   "p10": 2766,
+   "p25": 3100,
+   "median": 3500,
+   "p75": 3850,
+   "p90": 5200,
+   "min": 1,
+   "max": 11500
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-08": {
+    "n": 36,
+    "procent": 46.8
+   },
+   "2026-09": {
+    "n": 19,
+    "procent": 24.7
+   },
+   "2026-03": {
+    "n": 4,
+    "procent": 5.2
+   },
+   "2025-08": {
+    "n": 3,
+    "procent": 3.9
+   },
+   "2026-06": {
+    "n": 3,
+    "procent": 3.9
+   },
+   "2026-07": {
+    "n": 2,
+    "procent": 2.6
+   },
+   "2025-10": {
+    "n": 2,
+    "procent": 2.6
+   },
+   "2026-02": {
+    "n": 2,
+    "procent": 2.6
+   },
+   "2026-04": {
+    "n": 1,
+    "procent": 1.3
+   },
+   "2025-12": {
+    "n": 1,
+    "procent": 1.3
+   },
+   "2026-05": {
+    "n": 1,
+    "procent": 1.3
+   },
+   "2025-03": {
+    "n": 1,
+    "procent": 1.3
+   },
+   "2025-04": {
+    "n": 1,
+    "procent": 1.3
+   },
+   "2025-09": {
+    "n": 1,
+    "procent": 1.3
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 1,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {
+   "2+ ani": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "experientaPortal": {
+   "1–5 ani": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "studii": {
+   "medii": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "hipo": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "peJudet": {
+   "RO": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "motiveFaraSalariu": {
+   "foreign_or_noncomparable_work": {
+    "n": 1,
+    "procent": 100
+   },
+   "salary_evidence_incomplete": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 73,
+  "posturi": 175,
+  "ofertePeGrupaCor": 126,
+  "tipSalariu": {
+   "gross": {
+    "n": 39,
+    "procent": 53.4
+   },
+   "none": {
+    "n": 27,
+    "procent": 37
+   },
+   "net": {
+    "n": 7,
+    "procent": 9.6
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 5
+  },
+  "brutMinimDeclarat": {
+   "n": 39,
+   "p10": 4050,
+   "p25": 4325,
+   "median": 4325,
+   "p75": 4325,
+   "p90": 4400,
+   "min": 2163,
+   "max": 4600
+  },
+  "laSalariulMinim": 29,
+  "studii": {
+   "Profesional - ȘCOALĂ PROFESIONALĂ": {
+    "n": 22,
+    "procent": 30.1
+   },
+   "Gimnazial - ȘCOALĂ GENERALĂ": {
+    "n": 17,
+    "procent": 23.3
+   },
+   "Liceal - LICEU TEORETIC": {
+    "n": 13,
+    "procent": 17.8
+   },
+   "Liceal - LICEU DE SPECIALITATE": {
+    "n": 12,
+    "procent": 16.4
+   },
+   "Primar - FĂRĂ STUDII": {
+    "n": 4,
+    "procent": 5.5
+   },
+   "Profesional - INV. COMPL. DE UCENICI": {
+    "n": 2,
+    "procent": 2.7
+   },
+   "Postliceal - ȘCOALĂ POSTLICEALĂ": {
+    "n": 1,
+    "procent": 1.4
+   },
+   "PROFESIONAL- ÎNVĂȚĂMÂNT SPECIAL": {
+    "n": 1,
+    "procent": 1.4
+   },
+   "Universitar - ÎNV. SUPERIOR FĂRĂ LICENȚĂ": {
+    "n": 1,
+    "procent": 1.4
+   }
+  },
+  "experienta": {
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 33,
+    "procent": 45.2
+   },
+   "Fără experiență - 0 ani": {
+    "n": 23,
+    "procent": 31.5
+   },
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 15,
+    "procent": 20.5
+   },
+   "Experimentat - mai mult de 7 ani": {
+    "n": 2,
+    "procent": 2.7
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 65,
+    "procent": 89
+   },
+   "Cu durată determinată": {
+    "n": 8,
+    "procent": 11
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 69,
+    "procent": 94.5
+   },
+   "Cu timp parțial": {
+    "n": 4,
+    "procent": 5.5
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 73,
+    "procent": 100
+   }
+  },
+  "judete": {
+   "Maramureș": {
+    "n": 7,
+    "procent": 9.6
+   },
+   "Cluj": {
+    "n": 7,
+    "procent": 9.6
+   },
+   "Bistrița-Năsăud": {
+    "n": 6,
+    "procent": 8.2
+   },
+   "Mureș": {
+    "n": 6,
+    "procent": 8.2
+   },
+   "Harghita": {
+    "n": 5,
+    "procent": 6.8
+   },
+   "Hunedoara": {
+    "n": 5,
+    "procent": 6.8
+   },
+   "Prahova": {
+    "n": 4,
+    "procent": 5.5
+   },
+   "Municipiul București": {
+    "n": 4,
+    "procent": 5.5
+   },
+   "Suceava": {
+    "n": 4,
+    "procent": 5.5
+   },
+   "Bihor": {
+    "n": 3,
+    "procent": 4.1
+   },
+   "Alba": {
+    "n": 3,
+    "procent": 4.1
+   },
+   "Sibiu": {
+    "n": 3,
+    "procent": 4.1
+   },
+   "Argeș": {
+    "n": 2,
+    "procent": 2.7
+   },
+   "Arad": {
+    "n": 2,
+    "procent": 2.7
+   },
+   "Botoșani": {
+    "n": 2,
+    "procent": 2.7
+   },
+   "Iași": {
+    "n": 2,
+    "procent": 2.7
+   },
+   "Tulcea": {
+    "n": 2,
+    "procent": 2.7
+   },
+   "Covasna": {
+    "n": 1,
+    "procent": 1.4
+   },
+   "Buzău": {
+    "n": 1,
+    "procent": 1.4
+   },
+   "Galați": {
+    "n": 1,
+    "procent": 1.4
+   },
+   "Vrancea": {
+    "n": 1,
+    "procent": 1.4
+   },
+   "Constanța": {
+    "n": 1,
+    "procent": 1.4
+   },
+   "Neamț": {
+    "n": 1,
+    "procent": 1.4
+   }
+  },
+  "domenii": {
+   "RESTAURANTE": {
+    "n": 42,
+    "procent": 57.5
+   },
+   "Turism / Alimentație": {
+    "n": 17,
+    "procent": 23.3
+   },
+   "Altele": {
+    "n": 9,
+    "procent": 12.3
+   },
+   "COMERT": {
+    "n": 3,
+    "procent": 4.1
+   },
+   "Retail": {
+    "n": 2,
+    "procent": 2.7
+   }
+  },
+  "coduriCorInGrupa": {
+   "513102 - OSPATAR (CHELNER)": {
+    "n": 73,
+    "procent": 57.9
+   },
+   "513101 - AJUTOR OSPATAR": {
+    "n": 53,
+    "procent": 42.1
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 0,
+  "institutii": 0,
+  "judete": {},
+  "tipInstitutie": {},
+  "perioade": {},
+  "studii": {},
+  "bazaBruta": {
+   "n": 0
+  },
+  "bazaCuSporuriFixe": {
+   "n": 0
+  },
+  "peGradatie": {},
+  "peFunctie": {}
+ }
+}

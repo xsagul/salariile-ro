@@ -106,6 +106,9 @@ export function classifyAll(title) {
   let hits = rules.filter(r => matches(text, r.term));
   let how = 'title_match';
   if (!hits.length) { hits = rules.filter(r => fuzzyMatches(tokens, stems, r.term)); how = 'title_fuzzy_match'; }
+  // „programare” (o activitate: „programare CNC”, „programare la medic”) e la două litere de
+  // „programator”, dar nu e meseria. Aproximarea nu o transformă în programator.
+  if (how === 'title_fuzzy_match' && tokens.some(t => /^programar[ei]/.test(t))) hits = hits.filter(r => r.slug !== 'programator');
   // Specific title wins over contained generic words: CNC/programator, medic veterinar/medic.
   hits = hits.filter(r => !hits.some(s => s.slug !== r.slug && s.term.length > r.term.length && matches(s.term, r.term)));
   const slugs = [...new Set(hits.map(r => r.slug))];

@@ -1,0 +1,252 @@
+{
+ "slug": "administrator-sistem",
+ "nume": "Administrator de sistem",
+ "cor": null,
+ "generatLa": "2026-09-27T10:01:08.815Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 5,
+  "cuBazaDeclarata": 1,
+  "faraBazaDeclarata": 4,
+  "surse": {
+   "bestjobs": {
+    "n": 3,
+    "procent": 60
+   },
+   "ejobs": {
+    "n": 2,
+    "procent": 40
+   }
+  },
+  "colectari": {
+   "continuă": {
+    "n": 3,
+    "procent": 60
+   },
+   "8 septembrie 2026": {
+    "n": 2,
+    "procent": 40
+   }
+  },
+  "net": {
+   "n": 1
+  },
+  "netMinimOferit": {
+   "n": 1
+  },
+  "netMaximOferit": {
+   "n": 1
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 4
+  },
+  "peOras": {
+   "Voluntari": {
+    "n": 1
+   }
+  },
+  "peJudet": {},
+  "peLuna": {
+   "2026-09": {
+    "n": 5,
+    "procent": 100
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 5,
+  "cuSalariu": 1,
+  "nivel": {
+   "senior": {
+    "n": 2,
+    "procent": 40
+   }
+  },
+  "experienta": {
+   "da": {
+    "n": 1,
+    "procent": 20
+   },
+   "2+ ani": {
+    "n": 1,
+    "procent": 20
+   }
+  },
+  "experientaPortal": {},
+  "studii": {
+   "superioare": {
+    "n": 1,
+    "procent": 20
+   }
+  },
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {
+   "hibrid": {
+    "n": 2,
+    "procent": 40
+   },
+   "remote": {
+    "n": 1,
+    "procent": 20
+   }
+  },
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {
+   "Linux": {
+    "n": 3,
+    "procent": 60
+   },
+   "Azure": {
+    "n": 2,
+    "procent": 40
+   },
+   "Docker": {
+    "n": 2,
+    "procent": 40
+   },
+   "Python": {
+    "n": 1,
+    "procent": 20
+   },
+   "AWS": {
+    "n": 1,
+    "procent": 20
+   },
+   "GCP": {
+    "n": 1,
+    "procent": 20
+   },
+   "Kubernetes": {
+    "n": 1,
+    "procent": 20
+   },
+   "Git": {
+    "n": 1,
+    "procent": 20
+   },
+   "Jira": {
+    "n": 1,
+    "procent": 20
+   }
+  },
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 3,
+    "procent": 60
+   },
+   "en": {
+    "n": 2,
+    "procent": 40
+   }
+  },
+  "surse": {
+   "bestjobs": {
+    "n": 3,
+    "procent": 60
+   },
+   "ejobs": {
+    "n": 1,
+    "procent": 20
+   },
+   "undelucram": {
+    "n": 1,
+    "procent": 20
+   }
+  },
+  "peJudet": {
+   "10": {
+    "n": 1,
+    "procent": 20
+   }
+  },
+  "motiveFaraSalariu": {
+   "salary_evidence_incomplete": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "salariuPeFactor": {
+   "mod": {
+    "hibrid": {
+     "n": 1
+    }
+   },
+   "tehnologii": {
+    "Python": {
+     "n": 1
+    },
+    "AWS": {
+     "n": 1
+    },
+    "Azure": {
+     "n": 1
+    },
+    "GCP": {
+     "n": 1
+    },
+    "Docker": {
+     "n": 1
+    },
+    "Kubernetes": {
+     "n": 1
+    },
+    "Linux": {
+     "n": 1
+    },
+    "Git": {
+     "n": 1
+    },
+    "Jira": {
+     "n": 1
+    }
+   }
+  }
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 0,
+  "posturi": 0,
+  "ofertePeGrupaCor": 0,
+  "tipSalariu": {},
+  "netMinimDeclarat": {
+   "n": 0
+  },
+  "brutMinimDeclarat": {
+   "n": 0
+  },
+  "laSalariulMinim": 0,
+  "studii": {},
+  "experienta": {},
+  "contract": {},
+  "norma": {},
+  "regim": {},
+  "judete": {},
+  "domenii": {},
+  "coduriCorInGrupa": {}
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 0,
+  "institutii": 0,
+  "judete": {},
+  "tipInstitutie": {},
+  "perioade": {},
+  "studii": {},
+  "bazaBruta": {
+   "n": 0
+  },
+  "bazaCuSporuriFixe": {
+   "n": 0
+  },
+  "peGradatie": {},
+  "peFunctie": {}
+ }
+}

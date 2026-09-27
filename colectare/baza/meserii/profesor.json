@@ -1,0 +1,173 @@
+{
+ "slug": "profesor",
+ "nume": "Profesor",
+ "cor": "233002",
+ "generatLa": "2026-09-27T10:01:08.957Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 5,
+  "cuBazaDeclarata": 1,
+  "faraBazaDeclarata": 4,
+  "surse": {
+   "bestjobs": {
+    "n": 3,
+    "procent": 60
+   },
+   "ejobs": {
+    "n": 1,
+    "procent": 20
+   },
+   "olx": {
+    "n": 1,
+    "procent": 20
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 5,
+    "procent": 100
+   }
+  },
+  "net": {
+   "n": 1
+  },
+  "netMinimOferit": {
+   "n": 1
+  },
+  "netMaximOferit": {
+   "n": 1
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 4
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-09": {
+    "n": 3,
+    "procent": 60
+   },
+   "2026-08": {
+    "n": 1,
+    "procent": 20
+   },
+   "2025-06": {
+    "n": 1,
+    "procent": 20
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 0,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {},
+  "surse": {},
+  "peJudet": {},
+  "motiveFaraSalariu": {},
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 1,
+  "posturi": 5,
+  "ofertePeGrupaCor": 3,
+  "tipSalariu": {
+   "gross": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 0
+  },
+  "brutMinimDeclarat": {
+   "n": 1
+  },
+  "laSalariulMinim": 0,
+  "studii": {
+   "Universitar - ÎNVĂȚĂMÂNT SUPERIOR": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "experienta": {
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "judete": {
+   "Municipiul București": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "domenii": {
+   "Educație / Training / Coaching": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "coduriCorInGrupa": {
+   "233001 - PROFESOR ÎN ÎNVATAMÂNTUL LICEAL, POSTLICEAL": {
+    "n": 2,
+    "procent": 66.7
+   },
+   "233002 - PROFESOR ÎN ÎNVATAMÂNTUL GIMNAZIAL": {
+    "n": 1,
+    "procent": 33.3
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 0,
+  "institutii": 0,
+  "judete": {},
+  "tipInstitutie": {},
+  "perioade": {},
+  "studii": {},
+  "bazaBruta": {
+   "n": 0
+  },
+  "bazaCuSporuriFixe": {
+   "n": 0
+  },
+  "peGradatie": {},
+  "peFunctie": {}
+ }
+}

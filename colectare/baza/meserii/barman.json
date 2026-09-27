@@ -1,0 +1,228 @@
+{
+ "slug": "barman",
+ "nume": "Barman",
+ "cor": "513202",
+ "generatLa": "2026-09-27T10:01:09.112Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 19,
+  "cuBazaDeclarata": 7,
+  "faraBazaDeclarata": 12,
+  "surse": {
+   "olx": {
+    "n": 10,
+    "procent": 52.6
+   },
+   "ejobs": {
+    "n": 4,
+    "procent": 21.1
+   },
+   "publi24": {
+    "n": 2,
+    "procent": 10.5
+   },
+   "anuntul": {
+    "n": 2,
+    "procent": 10.5
+   },
+   "bestjobs": {
+    "n": 1,
+    "procent": 5.3
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 19,
+    "procent": 100
+   }
+  },
+  "net": {
+   "n": 7
+  },
+  "netMinimOferit": {
+   "n": 7
+  },
+  "netMaximOferit": {
+   "n": 7
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 12,
+   "p10": 3051,
+   "p25": 3213,
+   "median": 3525,
+   "p75": 3888,
+   "p90": 4225,
+   "min": 2900,
+   "max": 4600
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-08": {
+    "n": 11,
+    "procent": 57.9
+   },
+   "2026-09": {
+    "n": 4,
+    "procent": 21.1
+   },
+   "2026-05": {
+    "n": 1,
+    "procent": 5.3
+   },
+   "2026-01": {
+    "n": 1,
+    "procent": 5.3
+   },
+   "2025-08": {
+    "n": 1,
+    "procent": 5.3
+   },
+   "2025-12": {
+    "n": 1,
+    "procent": 5.3
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 0,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {},
+  "surse": {},
+  "peJudet": {},
+  "motiveFaraSalariu": {},
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 4,
+  "posturi": 7,
+  "ofertePeGrupaCor": 46,
+  "tipSalariu": {
+   "gross": {
+    "n": 3,
+    "procent": 75
+   },
+   "none": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 0
+  },
+  "brutMinimDeclarat": {
+   "n": 3
+  },
+  "laSalariulMinim": 2,
+  "studii": {
+   "Primar - FĂRĂ STUDII": {
+    "n": 2,
+    "procent": 50
+   },
+   "Gimnazial - ȘCOALĂ GENERALĂ": {
+    "n": 2,
+    "procent": 50
+   }
+  },
+  "experienta": {
+   "Fără experiență - 0 ani": {
+    "n": 3,
+    "procent": 75
+   },
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 4,
+    "procent": 100
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 4,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 4,
+    "procent": 100
+   }
+  },
+  "judete": {
+   "Municipiul București": {
+    "n": 3,
+    "procent": 75
+   },
+   "Bistrița-Năsăud": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "domenii": {
+   "RESTAURANTE": {
+    "n": 2,
+    "procent": 50
+   },
+   "Altele": {
+    "n": 1,
+    "procent": 25
+   },
+   "Turism / Alimentație": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "coduriCorInGrupa": {
+   "513201 - BARMAN": {
+    "n": 30,
+    "procent": 65.2
+   },
+   "513203 - barman preparator de cafea (barista)": {
+    "n": 12,
+    "procent": 26.1
+   },
+   "513202 - BARMAN PREPARATOR": {
+    "n": 4,
+    "procent": 8.7
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 0,
+  "institutii": 0,
+  "judete": {},
+  "tipInstitutie": {},
+  "perioade": {},
+  "studii": {},
+  "bazaBruta": {
+   "n": 0
+  },
+  "bazaCuSporuriFixe": {
+   "n": 0
+  },
+  "peGradatie": {},
+  "peFunctie": {}
+ }
+}

@@ -1,0 +1,205 @@
+{
+ "slug": "inginer-electronist",
+ "nume": "Inginer electronist",
+ "cor": "215213",
+ "generatLa": "2026-09-27T10:01:09.005Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 1,
+  "cuBazaDeclarata": 1,
+  "faraBazaDeclarata": 0,
+  "surse": {
+   "ejobs": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "net": {
+   "n": 1
+  },
+  "netMinimOferit": {
+   "n": 1
+  },
+  "netMaximOferit": {
+   "n": 1
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 0
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-08": {
+    "n": 1,
+    "procent": 100
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 0,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {},
+  "surse": {},
+  "peJudet": {},
+  "motiveFaraSalariu": {},
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 2,
+  "posturi": 2,
+  "ofertePeGrupaCor": 54,
+  "tipSalariu": {
+   "none": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 0
+  },
+  "brutMinimDeclarat": {
+   "n": 0
+  },
+  "laSalariulMinim": 0,
+  "studii": {
+   "Universitar - ÎNVĂȚĂMÂNT SUPERIOR": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "experienta": {
+   "Avansat - între 5 și 7 ani": {
+    "n": 1,
+    "procent": 50
+   },
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "judete": {
+   "Bihor": {
+    "n": 1,
+    "procent": 50
+   },
+   "Alba": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "domenii": {
+   "Producție / Logistică": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "coduriCorInGrupa": {
+   "215205 - INGINER PRODUCTIE": {
+    "n": 16,
+    "procent": 29.6
+   },
+   "215202 - INGINER AUTOMATIST": {
+    "n": 14,
+    "procent": 25.9
+   },
+   "215204 - INGINER ELECTRONIST TRANSPORTURI, TELECOMUNICATII": {
+    "n": 7,
+    "procent": 13
+   },
+   "215216 - INGINER ELECTROMECANIC": {
+    "n": 4,
+    "procent": 7.4
+   },
+   "215215 - PROIECTANT INGINER ELECTROMECANIC": {
+    "n": 3,
+    "procent": 5.6
+   },
+   "215222 - INGINER SISTEME DE SECURITATE": {
+    "n": 2,
+    "procent": 3.7
+   },
+   "215201 - INGINER ELECTROMECANIC SCB": {
+    "n": 2,
+    "procent": 3.7
+   },
+   "215213 - PROIECTANT INGINER ELECTRONIST": {
+    "n": 2,
+    "procent": 3.7
+   },
+   "215224 - INGINER DE CERCETARE ÎN ELECTRONICA APLICATA": {
+    "n": 1,
+    "procent": 1.9
+   },
+   "215225 - ASISTENT DE CERCETARE ÎN ELECTRONICA APLICATA": {
+    "n": 1,
+    "procent": 1.9
+   },
+   "215236 - INGINER DE CERCETARE ÎN CALCULATOARE": {
+    "n": 1,
+    "procent": 1.9
+   },
+   "215220 - SPECIALIST MENTENANTA ELECTROMECANICA-AUTOMATICA ECHIPAMENTE INDUSTRIALE": {
+    "n": 1,
+    "procent": 1.9
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 0,
+  "institutii": 0,
+  "judete": {},
+  "tipInstitutie": {},
+  "perioade": {},
+  "studii": {},
+  "bazaBruta": {
+   "n": 0
+  },
+  "bazaCuSporuriFixe": {
+   "n": 0
+  },
+  "peGradatie": {},
+  "peFunctie": {}
+ }
+}

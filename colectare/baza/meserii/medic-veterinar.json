@@ -1,0 +1,301 @@
+{
+ "slug": "medic-veterinar",
+ "nume": "Medic veterinar",
+ "cor": "225002",
+ "generatLa": "2026-09-27T10:01:08.954Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 12,
+  "cuBazaDeclarata": 5,
+  "faraBazaDeclarata": 7,
+  "surse": {
+   "ejobs": {
+    "n": 7,
+    "procent": 58.3
+   },
+   "bestjobs": {
+    "n": 3,
+    "procent": 25
+   },
+   "publi24": {
+    "n": 1,
+    "procent": 8.3
+   },
+   "anuntul": {
+    "n": 1,
+    "procent": 8.3
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 9,
+    "procent": 75
+   },
+   "continuă": {
+    "n": 3,
+    "procent": 25
+   }
+  },
+  "net": {
+   "n": 5
+  },
+  "netMinimOferit": {
+   "n": 5
+  },
+  "netMaximOferit": {
+   "n": 5
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 7
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-09": {
+    "n": 8,
+    "procent": 66.7
+   },
+   "2026-08": {
+    "n": 4,
+    "procent": 33.3
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 4,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 4,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "ejobs": {
+    "n": 4,
+    "procent": 100
+   }
+  },
+  "peJudet": {
+   "2": {
+    "n": 1,
+    "procent": 25
+   },
+   "24": {
+    "n": 1,
+    "procent": 25
+   },
+   "36": {
+    "n": 1,
+    "procent": 25
+   },
+   "38": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "motiveFaraSalariu": {
+   "full_time_unconfirmed": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 18,
+  "posturi": 32,
+  "ofertePeGrupaCor": 18,
+  "tipSalariu": {
+   "none": {
+    "n": 10,
+    "procent": 55.6
+   },
+   "gross": {
+    "n": 6,
+    "procent": 33.3
+   },
+   "net": {
+    "n": 2,
+    "procent": 11.1
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 2
+  },
+  "brutMinimDeclarat": {
+   "n": 6
+  },
+  "laSalariulMinim": 2,
+  "studii": {
+   "Universitar - ÎNVĂȚĂMÂNT SUPERIOR": {
+    "n": 16,
+    "procent": 88.9
+   },
+   "Universitar - MASTER": {
+    "n": 1,
+    "procent": 5.6
+   },
+   "Universitar - DOCTORAT": {
+    "n": 1,
+    "procent": 5.6
+   }
+  },
+  "experienta": {
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 9,
+    "procent": 50
+   },
+   "Fără experiență - 0 ani": {
+    "n": 5,
+    "procent": 27.8
+   },
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 3,
+    "procent": 16.7
+   },
+   "Avansat - între 5 și 7 ani": {
+    "n": 1,
+    "procent": 5.6
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 18,
+    "procent": 100
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 18,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 18,
+    "procent": 100
+   }
+  },
+  "judete": {
+   "Giurgiu": {
+    "n": 3,
+    "procent": 16.7
+   },
+   "Cluj": {
+    "n": 2,
+    "procent": 11.1
+   },
+   "Botoșani": {
+    "n": 2,
+    "procent": 11.1
+   },
+   "Buzău": {
+    "n": 1,
+    "procent": 5.6
+   },
+   "Dolj": {
+    "n": 1,
+    "procent": 5.6
+   },
+   "Gorj": {
+    "n": 1,
+    "procent": 5.6
+   },
+   "Bacău": {
+    "n": 1,
+    "procent": 5.6
+   },
+   "Hunedoara": {
+    "n": 1,
+    "procent": 5.6
+   },
+   "Suceava": {
+    "n": 1,
+    "procent": 5.6
+   },
+   "Bihor": {
+    "n": 1,
+    "procent": 5.6
+   },
+   "Mureș": {
+    "n": 1,
+    "procent": 5.6
+   },
+   "Brașov": {
+    "n": 1,
+    "procent": 5.6
+   },
+   "Ilfov": {
+    "n": 1,
+    "procent": 5.6
+   },
+   "Galați": {
+    "n": 1,
+    "procent": 5.6
+   }
+  },
+  "domenii": {
+   "Medicină / Sănătate /Psihoterapie": {
+    "n": 8,
+    "procent": 44.4
+   },
+   "Altele": {
+    "n": 5,
+    "procent": 27.8
+   },
+   "Agricultură / Zootehnie": {
+    "n": 3,
+    "procent": 16.7
+   },
+   "Producție / Logistică": {
+    "n": 1,
+    "procent": 5.6
+   },
+   "Specialiști / Tehnicieni": {
+    "n": 1,
+    "procent": 5.6
+   }
+  },
+  "coduriCorInGrupa": {
+   "225002 - MEDIC VETERINAR": {
+    "n": 18,
+    "procent": 100
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 0,
+  "institutii": 0,
+  "judete": {},
+  "tipInstitutie": {},
+  "perioade": {},
+  "studii": {},
+  "bazaBruta": {
+   "n": 0
+  },
+  "bazaCuSporuriFixe": {
+   "n": 0
+  },
+  "peGradatie": {},
+  "peFunctie": {}
+ }
+}

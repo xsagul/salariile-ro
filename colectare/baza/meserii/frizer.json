@@ -1,0 +1,301 @@
+{
+ "slug": "frizer",
+ "nume": "Frizer",
+ "cor": "514102",
+ "generatLa": "2026-09-27T10:01:09.178Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 12,
+  "cuBazaDeclarata": 2,
+  "faraBazaDeclarata": 10,
+  "surse": {
+   "olx": {
+    "n": 11,
+    "procent": 91.7
+   },
+   "publi24": {
+    "n": 1,
+    "procent": 8.3
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 12,
+    "procent": 100
+   }
+  },
+  "net": {
+   "n": 2
+  },
+  "netMinimOferit": {
+   "n": 2
+  },
+  "netMaximOferit": {
+   "n": 2
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 10,
+   "p10": 3845,
+   "p25": 4875,
+   "median": 6000,
+   "p75": 6194,
+   "p90": 8000,
+   "min": 200,
+   "max": 8000
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-08": {
+    "n": 4,
+    "procent": 33.3
+   },
+   "2026-09": {
+    "n": 3,
+    "procent": 25
+   },
+   "2025-07": {
+    "n": 1,
+    "procent": 8.3
+   },
+   "2026-06": {
+    "n": 1,
+    "procent": 8.3
+   },
+   "2026-02": {
+    "n": 1,
+    "procent": 8.3
+   },
+   "2025-11": {
+    "n": 1,
+    "procent": 8.3
+   },
+   "2026-07": {
+    "n": 1,
+    "procent": 8.3
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 1,
+  "cuSalariu": 0,
+  "nivel": {
+   "junior": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "ejobs": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "peJudet": {
+   "10": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "motiveFaraSalariu": {
+   "expired": {
+    "n": 1,
+    "procent": 100
+   },
+   "wide_range_review": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 14,
+  "posturi": 22,
+  "ofertePeGrupaCor": 24,
+  "tipSalariu": {
+   "gross": {
+    "n": 7,
+    "procent": 50
+   },
+   "none": {
+    "n": 6,
+    "procent": 42.9
+   },
+   "net": {
+    "n": 1,
+    "procent": 7.1
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 1
+  },
+  "brutMinimDeclarat": {
+   "n": 6
+  },
+  "laSalariulMinim": 7,
+  "studii": {
+   "Gimnazial - ȘCOALĂ GENERALĂ": {
+    "n": 5,
+    "procent": 35.7
+   },
+   "Profesional - ȘCOALĂ PROFESIONALĂ": {
+    "n": 4,
+    "procent": 28.6
+   },
+   "Primar - FĂRĂ STUDII": {
+    "n": 3,
+    "procent": 21.4
+   },
+   "Liceal - LICEU TEORETIC": {
+    "n": 2,
+    "procent": 14.3
+   }
+  },
+  "experienta": {
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 10,
+    "procent": 71.4
+   },
+   "Fără experiență - 0 ani": {
+    "n": 4,
+    "procent": 28.6
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 13,
+    "procent": 92.9
+   },
+   "Cu durată determinată": {
+    "n": 1,
+    "procent": 7.1
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 14,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 13,
+    "procent": 92.9
+   },
+   "Hibrid - sediu + telemuncă": {
+    "n": 1,
+    "procent": 7.1
+   }
+  },
+  "judete": {
+   "Municipiul București": {
+    "n": 3,
+    "procent": 21.4
+   },
+   "Argeș": {
+    "n": 2,
+    "procent": 14.3
+   },
+   "Brăila": {
+    "n": 1,
+    "procent": 7.1
+   },
+   "Suceava": {
+    "n": 1,
+    "procent": 7.1
+   },
+   "Călărași": {
+    "n": 1,
+    "procent": 7.1
+   },
+   "Timiș": {
+    "n": 1,
+    "procent": 7.1
+   },
+   "Iași": {
+    "n": 1,
+    "procent": 7.1
+   },
+   "Bacău": {
+    "n": 1,
+    "procent": 7.1
+   },
+   "Buzău": {
+    "n": 1,
+    "procent": 7.1
+   },
+   "Prahova": {
+    "n": 1,
+    "procent": 7.1
+   },
+   "Maramureș": {
+    "n": 1,
+    "procent": 7.1
+   }
+  },
+  "domenii": {
+   "Servicii înfrumusețare": {
+    "n": 11,
+    "procent": 78.6
+   },
+   "Altele": {
+    "n": 3,
+    "procent": 21.4
+   }
+  },
+  "coduriCorInGrupa": {
+   "514102 - FRIZER": {
+    "n": 14,
+    "procent": 58.3
+   },
+   "514101 - COAFOR": {
+    "n": 6,
+    "procent": 25
+   },
+   "514103 - COAFOR STILIST": {
+    "n": 4,
+    "procent": 16.7
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 0,
+  "institutii": 0,
+  "judete": {},
+  "tipInstitutie": {},
+  "perioade": {},
+  "studii": {},
+  "bazaBruta": {
+   "n": 0
+  },
+  "bazaCuSporuriFixe": {
+   "n": 0
+  },
+  "peGradatie": {},
+  "peFunctie": {}
+ }
+}

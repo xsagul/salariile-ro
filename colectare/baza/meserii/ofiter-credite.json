@@ -1,0 +1,193 @@
+{
+ "slug": "ofiter-credite",
+ "nume": "Ofițer de credite",
+ "cor": "241230",
+ "generatLa": "2026-09-27T10:01:08.981Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 2,
+  "cuBazaDeclarata": 0,
+  "faraBazaDeclarata": 2,
+  "surse": {
+   "bestjobs": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "net": {
+   "n": 0
+  },
+  "netMinimOferit": {
+   "n": 0
+  },
+  "netMaximOferit": {
+   "n": 0
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 2
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-09": {
+    "n": 2,
+    "procent": 100
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 0,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {},
+  "surse": {},
+  "peJudet": {},
+  "motiveFaraSalariu": {},
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 1,
+  "posturi": 2,
+  "ofertePeGrupaCor": 32,
+  "tipSalariu": {
+   "none": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 0
+  },
+  "brutMinimDeclarat": {
+   "n": 0
+  },
+  "laSalariulMinim": 0,
+  "studii": {
+   "Liceal - LICEU DE SPECIALITATE": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "experienta": {
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "judete": {
+   "Cluj": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "domenii": {
+   "Contabilitate / Financiar": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "coduriCorInGrupa": {
+   "241206 - INSPECTOR ASIGURARI": {
+    "n": 10,
+    "procent": 31.3
+   },
+   "241245 - CONSILIER VÂNZARI ASIGURARI": {
+    "n": 9,
+    "procent": 28.1
+   },
+   "241246 - INSPECTOR COORDONATOR ASIGURARI": {
+    "n": 4,
+    "procent": 12.5
+   },
+   "241226 - MANAGER DE OPERATIUNI/PRODUS": {
+    "n": 2,
+    "procent": 6.3
+   },
+   "241257 - EXPERT CONTRACTARE ACTIVITATI INVESTITIONALE": {
+    "n": 1,
+    "procent": 3.1
+   },
+   "241231 - ADMINISTRATOR BANCAR/PRODUS LEASING": {
+    "n": 1,
+    "procent": 3.1
+   },
+   "241209 - DEALER": {
+    "n": 1,
+    "procent": 3.1
+   },
+   "241211 - ANALIST INVESTITII": {
+    "n": 1,
+    "procent": 3.1
+   },
+   "241230 - OFITER BANCAR (CREDITE, MARKETING, PRODUSE SI SERVICII BANCARE)": {
+    "n": 1,
+    "procent": 3.1
+   },
+   "241255 - PLANIFICATOR/SPECIALIST PLAN SINTEZE": {
+    "n": 1,
+    "procent": 3.1
+   },
+   "241239 - OFITER SECURITATEA INFORMATIEI (SECURITY OFFICER – SO)": {
+    "n": 1,
+    "procent": 3.1
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 0,
+  "institutii": 0,
+  "judete": {},
+  "tipInstitutie": {},
+  "perioade": {},
+  "studii": {},
+  "bazaBruta": {
+   "n": 0
+  },
+  "bazaCuSporuriFixe": {
+   "n": 0
+  },
+  "peGradatie": {},
+  "peFunctie": {}
+ }
+}

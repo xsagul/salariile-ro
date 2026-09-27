@@ -3,11 +3,19 @@ import { classifyTitle, classifyAll } from './occupations.mjs';
 import { POLICY, normalizeText, canonicalUrl } from './policy.mjs';
 import { hash } from './http.mjs';
 import { calculStandard } from '../../src/lib/fiscal.ts';
+// Unele portaluri (hipo.ro) publică textul UTF-8 decodat o dată ca Latin-1: „dezvoltÄ”, „Weâre”.
+// Se re-decodează numai când rezultatul e UTF-8 valid și are mai puține semne de corupere.
+const MOJIBAKE = /[ÃÄÅÈâ][\u0080-¿]/g;
+export function reparaCodare(s) {
+  if (!s || !(s.match(MOJIBAKE) || []).length || /[^\u0000-ÿ]/.test(s)) return s;
+  const r = Buffer.from(s, 'latin1').toString('utf8');
+  return r.includes('�') || (r.match(MOJIBAKE) || []).length >= (s.match(MOJIBAKE) || []).length ? s : r;
+}
 export const plain = html => {
   const $ = cheerio.load(html || '');
   $('br').replaceWith('\n');
   $('p,li,div,h1,h2,h3,h4,tr').append('\n');
-  return $.text().replace(/[^\S\n]+/g, ' ').replace(/\n\s*\n/g, '\n').trim();
+  return reparaCodare($.text().replace(/[^\S\n]+/g, ' ').replace(/\n\s*\n/g, '\n').trim());
 };
 export function olxState(html) {
   const m = html.match(/window\.__PRERENDERED_STATE__\s*=\s*("(?:\\.|[^"\\])*")/);
@@ -65,7 +73,21 @@ export function detailRecord(page, source) {
   const jobs = structuredJobs($); if (jobs.length !== 1) return null;
   const j = jobs[0], locations = [j.jobLocation].flat().filter(Boolean).map(l => l.address || {});
   const salaryText = source === 'ejobs' ? $('.jobs-show-main-summaries__summary-value').toArray().map(e => $(e).text()).find(s => /RON|EUR/.test(s)) : '';
-  return { title: plain(j.title), description: plain(j.description), url: page.url, source, employer: j.hiringOrganization?.name,
+  // Câmpurile JobPosting pe lângă descriere: la hipo.ro descrierea e doar prezentarea firmei, iar
+  // cerințele stau în qualifications/skills; experienceRequirements poartă uneori anii („1 - 5 ani”).
+  // La hipo.ro experienceRequirements începe cu treapta bifată de angajator dintr-o listă de trei
+  // („0 - 1 an”, „1 - 5 ani”, „peste 5 ani experienta”), lipită de textul anunțului. Treapta e un
+  // câmp separat, nu cerința scrisă, deci se scoate din text ca să nu umbrească „3+ years”.
+  const description = plain(j.description);
+  const exp = typeof j.experienceRequirements === 'string' ? plain(j.experienceRequirements) : '';
+  const treapta = exp.match(/^(0 - 1 an|1 - 5 ani|peste 5 ani) experienta/);
+  const campuri = ['qualifications', 'skills', 'responsibilities', 'educationRequirements']
+    .map(k => typeof j[k] === 'string' ? plain(j[k]) : '').concat(treapta ? exp.slice(treapta[0].length) : exp).filter(Boolean);
+  const extra = [...new Set(campuri)].filter((x, i, a) => !description.includes(x.slice(0, 200)) && !a.some((y, k) => k !== i && y.length > x.length && y.includes(x.slice(0, 200))));
+  const structurat = { remote: /TELECOMMUTE/i.test(j.jobLocationType || '') || null, ore: Number(j.workHours) || null,
+    experientaPortal: treapta ? { '0 - 1 an': '0–1 an', '1 - 5 ani': '1–5 ani', 'peste 5 ani': 'peste 5 ani' }[treapta[1]] : null,
+    industrie: typeof j.industry === 'string' ? plain(j.industry).slice(0, 120) : null, categorie: typeof j.occupationalCategory === 'string' ? plain(j.occupationalCategory).slice(0, 80) : null };
+  return { title: plain(j.title), description, extra: extra.join('\n'), structurat, url: page.url, source, employer: j.hiringOrganization?.name,
     employerId: j.hiringOrganization?.sameAs || null,
     city: locations.map(l => l.addressLocality).join('; '), county: locations.length === 1 ? locations[0].addressRegion : null,
     // Some publishers put the country code in addressRegion and omit addressCountry.

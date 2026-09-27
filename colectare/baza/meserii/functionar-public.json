@@ -1,0 +1,265 @@
+{
+ "slug": "functionar-public",
+ "nume": "Funcționar public",
+ "cor": null,
+ "generatLa": "2026-09-27T10:01:09.118Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 0,
+  "cuBazaDeclarata": 0,
+  "faraBazaDeclarata": 0,
+  "surse": {},
+  "colectari": {},
+  "net": {
+   "n": 0
+  },
+  "netMinimOferit": {
+   "n": 0
+  },
+  "netMaximOferit": {
+   "n": 0
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 0
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {}
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 0,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {},
+  "surse": {},
+  "peJudet": {},
+  "motiveFaraSalariu": {},
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 0,
+  "posturi": 0,
+  "ofertePeGrupaCor": 0,
+  "tipSalariu": {},
+  "netMinimDeclarat": {
+   "n": 0
+  },
+  "brutMinimDeclarat": {
+   "n": 0
+  },
+  "laSalariulMinim": 0,
+  "studii": {},
+  "experienta": {},
+  "contract": {},
+  "norma": {},
+  "regim": {},
+  "judete": {},
+  "domenii": {},
+  "coduriCorInGrupa": {}
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 34,
+  "institutii": 2,
+  "judete": {
+   "SJ": {
+    "n": 19,
+    "procent": 55.9
+   },
+   "B": {
+    "n": 15,
+    "procent": 44.1
+   }
+  },
+  "tipInstitutie": {
+   "consiliu-judetean": {
+    "n": 19,
+    "procent": 55.9
+   },
+   "primarie": {
+    "n": 15,
+    "procent": 44.1
+   }
+  },
+  "perioade": {
+   "2026-09": {
+    "n": 19,
+    "procent": 55.9
+   },
+   "2026-03": {
+    "n": 15,
+    "procent": 44.1
+   }
+  },
+  "studii": {
+   "M": {
+    "n": 8,
+    "procent": 23.5
+   },
+   "S": {
+    "n": 7,
+    "procent": 20.6
+   }
+  },
+  "bazaBruta": {
+   "n": 34,
+   "p10": 5863,
+   "p25": 6336,
+   "median": 8093,
+   "p75": 9873,
+   "p90": 10144,
+   "min": 5180,
+   "max": 10767
+  },
+  "bazaCuSporuriFixe": {
+   "n": 34,
+   "p10": 5863,
+   "p25": 6336,
+   "median": 8093,
+   "p75": 9873,
+   "p90": 10191,
+   "min": 5180,
+   "max": 10838
+  },
+  "peGradatie": {
+   "gradația 1.9": {
+    "n": 2
+   },
+   "gradația 1.7": {
+    "n": 2
+   },
+   "gradația 1.4": {
+    "n": 2
+   },
+   "gradația 2.91": {
+    "n": 1
+   },
+   "gradația 2.65": {
+    "n": 1
+   },
+   "gradația 2.48": {
+    "n": 1
+   },
+   "gradația 1.78": {
+    "n": 1
+   },
+   "gradația 2.6": {
+    "n": 1
+   },
+   "gradația 2.45": {
+    "n": 1
+   },
+   "gradația 2.25": {
+    "n": 1
+   },
+   "gradația 1.75": {
+    "n": 1
+   },
+   "gradația 1.6800000000000002": {
+    "n": 1
+   }
+  },
+  "peFunctie": {
+   "Consilier, grad profesional superior,": {
+    "n": 5
+   },
+   "Consilier, grad profesional principal,": {
+    "n": 2
+   },
+   "Consilier achiziții, grad profesional": {
+    "n": 2
+   },
+   "Auditor grad profesional superior,": {
+    "n": 1
+   },
+   "Consilier, grad": {
+    "n": 1
+   },
+   "Inspector, grad profesional superior,": {
+    "n": 1
+   },
+   "Referent , grad profesional superior,": {
+    "n": 1
+   },
+   "Inspector de specialitate II, gradaţia 2": {
+    "n": 1
+   },
+   "Inspector de specialitate I, gradaţia 2": {
+    "n": 1
+   },
+   "Inspector de specialitate I, gradaţia 3": {
+    "n": 1
+   },
+   "Inspector de specialitate I, gradaţia 4": {
+    "n": 1
+   },
+   "Referent IA, gradaţia 4": {
+    "n": 1
+   },
+   "Referent IA, gradaţia 5": {
+    "n": 1
+   },
+   "Auditor S Superior": {
+    "n": 1
+   },
+   "Auditor S Principal": {
+    "n": 1
+   },
+   "Auditor S Asistent": {
+    "n": 1
+   },
+   "Referent, polițist local M Superior": {
+    "n": 1
+   },
+   "Referent, polițist local M Principal": {
+    "n": 1
+   },
+   "Referent, polițist local M Asistent": {
+    "n": 1
+   },
+   "Referent, polițist local M Debutant": {
+    "n": 1
+   },
+   "Inspector de specialitate S IA": {
+    "n": 1
+   },
+   "Inspector de specialitate S I": {
+    "n": 1
+   },
+   "Inspector de specialitate S II": {
+    "n": 1
+   },
+   "Inspector de specialitate S Debutant": {
+    "n": 1
+   },
+   "Referent/Arhivar M IA": {
+    "n": 1
+   },
+   "Referent/Arhivar M I": {
+    "n": 1
+   },
+   "Referent/Arhivar M II": {
+    "n": 1
+   },
+   "Referent/Arhivar M Debutant": {
+    "n": 1
+   }
+  }
+ }
+}

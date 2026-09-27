@@ -1,0 +1,152 @@
+{
+ "slug": "profesor-universitar",
+ "nume": "Profesor universitar",
+ "cor": "231005",
+ "generatLa": "2026-09-27T10:01:08.964Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 0,
+  "cuBazaDeclarata": 0,
+  "faraBazaDeclarata": 0,
+  "surse": {},
+  "colectari": {},
+  "net": {
+   "n": 0
+  },
+  "netMinimOferit": {
+   "n": 0
+  },
+  "netMaximOferit": {
+   "n": 0
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 0
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {}
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 0,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {},
+  "surse": {},
+  "peJudet": {},
+  "motiveFaraSalariu": {},
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 0,
+  "posturi": 0,
+  "ofertePeGrupaCor": 0,
+  "tipSalariu": {},
+  "netMinimDeclarat": {
+   "n": 0
+  },
+  "brutMinimDeclarat": {
+   "n": 0
+  },
+  "laSalariulMinim": 0,
+  "studii": {},
+  "experienta": {},
+  "contract": {},
+  "norma": {},
+  "regim": {},
+  "judete": {},
+  "domenii": {},
+  "coduriCorInGrupa": {}
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 84,
+  "institutii": 3,
+  "judete": {
+   "MS": {
+    "n": 75,
+    "procent": 89.3
+   },
+   "B": {
+    "n": 9,
+    "procent": 10.7
+   }
+  },
+  "tipInstitutie": {
+   "universitate": {
+    "n": 84,
+    "procent": 100
+   }
+  },
+  "perioade": {
+   "2026-03": {
+    "n": 84,
+    "procent": 100
+   }
+  },
+  "studii": {},
+  "bazaBruta": {
+   "n": 84,
+   "p10": 15087,
+   "p25": 17482,
+   "median": 17482,
+   "p75": 17482,
+   "p90": 17482,
+   "min": 2083,
+   "max": 17482
+  },
+  "bazaCuSporuriFixe": {
+   "n": 84,
+   "p10": 15825,
+   "p25": 18163,
+   "median": 19039,
+   "p75": 19337,
+   "p90": 19348,
+   "min": 2083,
+   "max": 21370
+  },
+  "peGradatie": {},
+  "peFunctie": {
+   "Profesor univ.": {
+    "n": 72,
+    "p10": 16765,
+    "p25": 18890,
+    "median": 19120,
+    "p75": 19337,
+    "p90": 19517,
+    "min": 10939,
+    "max": 21370
+   },
+   "Profesor Indemnizatie doctorat Sal.minim 12.2018 * procent %": {
+    "n": 6
+   },
+   "Profesor Gradatie merit Sal.baza * procent % Anexa nr.I, Cap": {
+    "n": 3
+   },
+   "Profesor inv liceal": {
+    "n": 1
+   },
+   "Profesor inv liceal-0,2 n": {
+    "n": 1
+   },
+   "Profesor inv.liceal": {
+    "n": 1
+   }
+  }
+ }
+}

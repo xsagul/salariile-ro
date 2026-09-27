@@ -1,0 +1,774 @@
+{
+ "slug": "programator",
+ "nume": "Programator",
+ "cor": "251202",
+ "generatLa": "2026-09-27T10:01:08.796Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 16,
+  "cuBazaDeclarata": 7,
+  "faraBazaDeclarata": 9,
+  "surse": {
+   "ejobs": {
+    "n": 8,
+    "procent": 50
+   },
+   "bestjobs": {
+    "n": 6,
+    "procent": 37.5
+   },
+   "publi24": {
+    "n": 1,
+    "procent": 6.3
+   },
+   "olx": {
+    "n": 1,
+    "procent": 6.3
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 13,
+    "procent": 81.3
+   },
+   "continuă": {
+    "n": 3,
+    "procent": 18.8
+   }
+  },
+  "net": {
+   "n": 7
+  },
+  "netMinimOferit": {
+   "n": 7
+  },
+  "netMaximOferit": {
+   "n": 7
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 9
+  },
+  "peOras": {
+   "Baia Mare": {
+    "n": 1
+   },
+   "Calarasi": {
+    "n": 1
+   }
+  },
+  "peJudet": {
+   "33": {
+    "n": 1
+   },
+   "Calarasi": {
+    "n": 1
+   }
+  },
+  "peLuna": {
+   "2026-09": {
+    "n": 12,
+    "procent": 75
+   },
+   "2026-08": {
+    "n": 4,
+    "procent": 25
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 102,
+  "cuSalariu": 2,
+  "nivel": {
+   "senior": {
+    "n": 27,
+    "procent": 26.5
+   },
+   "junior": {
+    "n": 6,
+    "procent": 5.9
+   },
+   "lead": {
+    "n": 3,
+    "procent": 2.9
+   },
+   "stagiar": {
+    "n": 2,
+    "procent": 2
+   }
+  },
+  "experienta": {
+   "5+ ani": {
+    "n": 14,
+    "procent": 13.7
+   },
+   "3+ ani": {
+    "n": 12,
+    "procent": 11.8
+   },
+   "2+ ani": {
+    "n": 5,
+    "procent": 4.9
+   },
+   "8+ ani": {
+    "n": 5,
+    "procent": 4.9
+   },
+   "da": {
+    "n": 3,
+    "procent": 2.9
+   },
+   "10+ ani": {
+    "n": 2,
+    "procent": 2
+   },
+   "7+ ani": {
+    "n": 2,
+    "procent": 2
+   },
+   "1+ ani": {
+    "n": 1,
+    "procent": 1
+   },
+   "fara": {
+    "n": 1,
+    "procent": 1
+   }
+  },
+  "experientaPortal": {
+   "1–5 ani": {
+    "n": 54,
+    "procent": 52.9
+   }
+  },
+  "studii": {
+   "superioare": {
+    "n": 34,
+    "procent": 33.3
+   }
+  },
+  "limbi": {
+   "engleza": {
+    "n": 15,
+    "procent": 14.7
+   },
+   "franceza": {
+    "n": 1,
+    "procent": 1
+   }
+  },
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {
+   "hibrid": {
+    "n": 56,
+    "procent": 54.9
+   },
+   "remote": {
+    "n": 33,
+    "procent": 32.4
+   }
+  },
+  "norma": {
+   "full-time": {
+    "n": 3,
+    "procent": 2.9
+   }
+  },
+  "durata": {},
+  "beneficii": {
+   "cursuri / training": {
+    "n": 23,
+    "procent": 22.5
+   },
+   "bonus": {
+    "n": 14,
+    "procent": 13.7
+   },
+   "asigurare medicală": {
+    "n": 12,
+    "procent": 11.8
+   },
+   "tichete de masă": {
+    "n": 4,
+    "procent": 3.9
+   },
+   "telefon / laptop": {
+    "n": 1,
+    "procent": 1
+   },
+   "prime": {
+    "n": 1,
+    "procent": 1
+   }
+  },
+  "tehnologii": {
+   "Java": {
+    "n": 60,
+    "procent": 58.8
+   },
+   "SQL": {
+    "n": 58,
+    "procent": 56.9
+   },
+   "Git": {
+    "n": 53,
+    "procent": 52
+   },
+   "Kubernetes": {
+    "n": 45,
+    "procent": 44.1
+   },
+   "Spring": {
+    "n": 43,
+    "procent": 42.2
+   },
+   "Azure": {
+    "n": 42,
+    "procent": 41.2
+   },
+   "Python": {
+    "n": 39,
+    "procent": 38.2
+   },
+   "Docker": {
+    "n": 39,
+    "procent": 38.2
+   },
+   "JavaScript": {
+    "n": 29,
+    "procent": 28.4
+   },
+   "AWS": {
+    "n": 28,
+    "procent": 27.5
+   },
+   "React": {
+    "n": 23,
+    "procent": 22.5
+   },
+   "NoSQL": {
+    "n": 23,
+    "procent": 22.5
+   },
+   "TypeScript": {
+    "n": 22,
+    "procent": 21.6
+   },
+   "GCP": {
+    "n": 15,
+    "procent": 14.7
+   },
+   "Angular": {
+    "n": 13,
+    "procent": 12.7
+   },
+   "Django": {
+    "n": 13,
+    "procent": 12.7
+   },
+   "Excel": {
+    "n": 12,
+    "procent": 11.8
+   },
+   "Node.js": {
+    "n": 12,
+    "procent": 11.8
+   },
+   "Linux": {
+    "n": 11,
+    "procent": 10.8
+   },
+   "PLC": {
+    "n": 11,
+    "procent": 10.8
+   },
+   "Jira": {
+    "n": 9,
+    "procent": 8.8
+   },
+   "C++": {
+    "n": 9,
+    "procent": 8.8
+   },
+   "C#": {
+    "n": 8,
+    "procent": 7.8
+   },
+   ".NET": {
+    "n": 5,
+    "procent": 4.9
+   },
+   "CNC": {
+    "n": 5,
+    "procent": 4.9
+   },
+   "Kotlin": {
+    "n": 5,
+    "procent": 4.9
+   },
+   "Scala": {
+    "n": 4,
+    "procent": 3.9
+   },
+   "PHP": {
+    "n": 3,
+    "procent": 2.9
+   },
+   "Vue": {
+    "n": 3,
+    "procent": 2.9
+   },
+   "SolidWorks": {
+    "n": 2,
+    "procent": 2
+   },
+   "Selenium": {
+    "n": 2,
+    "procent": 2
+   },
+   "Figma": {
+    "n": 2,
+    "procent": 2
+   },
+   "Power BI": {
+    "n": 2,
+    "procent": 2
+   },
+   "Go": {
+    "n": 1,
+    "procent": 1
+   },
+   "Swift": {
+    "n": 1,
+    "procent": 1
+   },
+   "SAP": {
+    "n": 1,
+    "procent": 1
+   }
+  },
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {
+   "en": {
+    "n": 91,
+    "procent": 89.2
+   },
+   "ro": {
+    "n": 11,
+    "procent": 10.8
+   }
+  },
+  "surse": {
+   "hipo": {
+    "n": 54,
+    "procent": 52.9
+   },
+   "undelucram": {
+    "n": 37,
+    "procent": 36.3
+   },
+   "publi24": {
+    "n": 5,
+    "procent": 4.9
+   },
+   "bestjobs": {
+    "n": 4,
+    "procent": 3.9
+   },
+   "ejobs": {
+    "n": 2,
+    "procent": 2
+   }
+  },
+  "peJudet": {
+   "33": {
+    "n": 1,
+    "procent": 1
+   },
+   "RO": {
+    "n": 54,
+    "procent": 52.9
+   },
+   "Arges": {
+    "n": 2,
+    "procent": 2
+   },
+   "Bacau": {
+    "n": 2,
+    "procent": 2
+   },
+   "Calarasi": {
+    "n": 1,
+    "procent": 1
+   }
+  },
+  "motiveFaraSalariu": {
+   "salary_evidence_incomplete": {
+    "n": 99,
+    "procent": 99
+   },
+   "country_unconfirmed": {
+    "n": 7,
+    "procent": 7
+   },
+   "full_time_unconfirmed": {
+    "n": 1,
+    "procent": 1
+   },
+   "wide_range_review": {
+    "n": 1,
+    "procent": 1
+   }
+  },
+  "salariuPeFactor": {
+   "nivel": {
+    "senior": {
+     "n": 1
+    }
+   },
+   "tehnologii": {
+    "CNC": {
+     "n": 1
+    },
+    ".NET": {
+     "n": 1
+    }
+   }
+  }
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 29,
+  "posturi": 68,
+  "ofertePeGrupaCor": 65,
+  "tipSalariu": {
+   "gross": {
+    "n": 13,
+    "procent": 44.8
+   },
+   "none": {
+    "n": 10,
+    "procent": 34.5
+   },
+   "net": {
+    "n": 6,
+    "procent": 20.7
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 6
+  },
+  "brutMinimDeclarat": {
+   "n": 13,
+   "p10": 5298,
+   "p25": 9200,
+   "median": 14000,
+   "p75": 15000,
+   "p90": 24121,
+   "min": 4325,
+   "max": 25901
+  },
+  "laSalariulMinim": 2,
+  "studii": {
+   "Universitar - ÎNVĂȚĂMÂNT SUPERIOR": {
+    "n": 25,
+    "procent": 86.2
+   },
+   "Universitar - MASTER": {
+    "n": 3,
+    "procent": 10.3
+   },
+   "Universitar - DOCTORAT": {
+    "n": 1,
+    "procent": 3.4
+   }
+  },
+  "experienta": {
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 19,
+    "procent": 65.5
+   },
+   "Avansat - între 5 și 7 ani": {
+    "n": 6,
+    "procent": 20.7
+   },
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 2,
+    "procent": 6.9
+   },
+   "Experimentat - mai mult de 7 ani": {
+    "n": 2,
+    "procent": 6.9
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 26,
+    "procent": 89.7
+   },
+   "Cu durată determinată": {
+    "n": 3,
+    "procent": 10.3
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 29,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Hibrid - sediu + telemuncă": {
+    "n": 16,
+    "procent": 55.2
+   },
+   "Sediu": {
+    "n": 13,
+    "procent": 44.8
+   }
+  },
+  "judete": {
+   "Municipiul București": {
+    "n": 9,
+    "procent": 31
+   },
+   "Sibiu": {
+    "n": 5,
+    "procent": 17.2
+   },
+   "Cluj": {
+    "n": 3,
+    "procent": 10.3
+   },
+   "Brașov": {
+    "n": 3,
+    "procent": 10.3
+   },
+   "Timiș": {
+    "n": 3,
+    "procent": 10.3
+   },
+   "Ilfov": {
+    "n": 2,
+    "procent": 6.9
+   },
+   "Bihor": {
+    "n": 1,
+    "procent": 3.4
+   },
+   "Prahova": {
+    "n": 1,
+    "procent": 3.4
+   },
+   "Botoșani": {
+    "n": 1,
+    "procent": 3.4
+   },
+   "Dolj": {
+    "n": 1,
+    "procent": 3.4
+   }
+  },
+  "domenii": {
+   "IT / Telecomunicații": {
+    "n": 23,
+    "procent": 79.3
+   },
+   "Inginerie": {
+    "n": 2,
+    "procent": 6.9
+   },
+   "Producție / Logistică": {
+    "n": 2,
+    "procent": 6.9
+   },
+   "Altele": {
+    "n": 1,
+    "procent": 3.4
+   },
+   "STAT": {
+    "n": 1,
+    "procent": 3.4
+   }
+  },
+  "coduriCorInGrupa": {
+   "251202 - PROGRAMATOR": {
+    "n": 29,
+    "procent": 44.6
+   },
+   "251204 - PROGRAMATOR DE SISTEM INFORMATIC": {
+    "n": 10,
+    "procent": 15.4
+   },
+   "251203 - INGINER DE SISTEM ÎN INFORMATICA": {
+    "n": 10,
+    "procent": 15.4
+   },
+   "251201 - ANALIST": {
+    "n": 8,
+    "procent": 12.3
+   },
+   "251205 - INGINER DE SISTEM SOFTWARE": {
+    "n": 3,
+    "procent": 4.6
+   },
+   "251208 - inginer în realizarea, întreținerea și dezvoltarea aplicațiilor web": {
+    "n": 2,
+    "procent": 3.1
+   },
+   "251206 - MANAGER PROIECT INFORMATIC": {
+    "n": 2,
+    "procent": 3.1
+   },
+   "251207 - Inginer de dezvoltare a produselor software": {
+    "n": 1,
+    "procent": 1.5
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 13,
+  "institutii": 8,
+  "judete": {
+   "BC": {
+    "n": 3,
+    "procent": 23.1
+   },
+   "BH": {
+    "n": 2,
+    "procent": 15.4
+   },
+   "SB": {
+    "n": 2,
+    "procent": 15.4
+   },
+   "HR": {
+    "n": 2,
+    "procent": 15.4
+   },
+   "BR": {
+    "n": 1,
+    "procent": 7.7
+   },
+   "DJ": {
+    "n": 1,
+    "procent": 7.7
+   },
+   "B": {
+    "n": 1,
+    "procent": 7.7
+   },
+   "MS": {
+    "n": 1,
+    "procent": 7.7
+   }
+  },
+  "tipInstitutie": {
+   "spital": {
+    "n": 11,
+    "procent": 84.6
+   },
+   "universitate": {
+    "n": 2,
+    "procent": 15.4
+   }
+  },
+  "perioade": {
+   "2026-03": {
+    "n": 9,
+    "procent": 69.2
+   },
+   "2026-02": {
+    "n": 3,
+    "procent": 23.1
+   },
+   "2024-03": {
+    "n": 1,
+    "procent": 7.7
+   }
+  },
+  "studii": {
+   "M": {
+    "n": 5,
+    "procent": 38.5
+   },
+   "S": {
+    "n": 2,
+    "procent": 15.4
+   }
+  },
+  "bazaBruta": {
+   "n": 13,
+   "p10": 5688,
+   "p25": 6560,
+   "median": 6932,
+   "p75": 6969,
+   "p90": 8855,
+   "min": 3130,
+   "max": 12081
+  },
+  "bazaCuSporuriFixe": {
+   "n": 13,
+   "p10": 5740,
+   "p25": 6710,
+   "median": 7194,
+   "p75": 7269,
+   "p90": 9200,
+   "min": 3130,
+   "max": 12381
+  },
+  "peGradatie": {
+   "gradația 5": {
+    "n": 3
+   },
+   "gradația 4": {
+    "n": 1
+   },
+   "gradația 2": {
+    "n": 1
+   }
+  },
+  "peFunctie": {
+   "SERVICIUL INFORMATICA Analist (programator) ajutor IA Gradat": {
+    "n": 2
+   },
+   "COMPARTIMENT INFORMATICA ANALIST PROGRAMATOR II SUPERIOARE B": {
+    "n": 1
+   },
+   "Comp. Informatica si aparatura medicala ANALIST-PROGRAMATOR ": {
+    "n": 1
+   },
+   "Serviciul statistica medicala ANALIST-PROGRAMATOR - IA S": {
+    "n": 1
+   },
+   "ANALIST PROGRAMATOR AJUTOR IA SERVICIU INFORMATICA, EVALUARE": {
+    "n": 1
+   },
+   "ANALIST PROGRAMATOR IA SERVICIU INFORMATICA, EVALUARE SI STA": {
+    "n": 1
+   },
+   "ANALIST PROGRAMATOR AJUTOR IA UNITATE DE PRIMIRE URGENTE - S": {
+    "n": 1
+   },
+   "ANALIST (PROGRAMATOR) AJUTOR I MEDII Gradatia": {
+    "n": 1
+   },
+   "AJUTOR PROGRAMATOR IA. MEDII Gradatia": {
+    "n": 1
+   },
+   "analist programator 1A": {
+    "n": 1
+   },
+   "Programator gr.I": {
+    "n": 1
+   },
+   "Analist programator IIS": {
+    "n": 1
+   }
+  }
+ }
+}

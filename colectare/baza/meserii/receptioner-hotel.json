@@ -1,0 +1,252 @@
+{
+ "slug": "receptioner-hotel",
+ "nume": "Recepționer hotel",
+ "cor": "422401",
+ "generatLa": "2026-09-27T10:01:09.115Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 12,
+  "cuBazaDeclarata": 2,
+  "faraBazaDeclarata": 10,
+  "surse": {
+   "olx": {
+    "n": 9,
+    "procent": 75
+   },
+   "ejobs": {
+    "n": 1,
+    "procent": 8.3
+   },
+   "publi24": {
+    "n": 1,
+    "procent": 8.3
+   },
+   "anuntul": {
+    "n": 1,
+    "procent": 8.3
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 12,
+    "procent": 100
+   }
+  },
+  "net": {
+   "n": 2
+  },
+  "netMinimOferit": {
+   "n": 2
+  },
+  "netMaximOferit": {
+   "n": 2
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 10,
+   "p10": 2925,
+   "p25": 3288,
+   "median": 3625,
+   "p75": 3863,
+   "p90": 4005,
+   "min": 2700,
+   "max": 4500
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-08": {
+    "n": 7,
+    "procent": 58.3
+   },
+   "2026-07": {
+    "n": 2,
+    "procent": 16.7
+   },
+   "2026-09": {
+    "n": 1,
+    "procent": 8.3
+   },
+   "2026-01": {
+    "n": 1,
+    "procent": 8.3
+   },
+   "2026-05": {
+    "n": 1,
+    "procent": 8.3
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 0,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {},
+  "surse": {},
+  "peJudet": {},
+  "motiveFaraSalariu": {},
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 10,
+  "posturi": 12,
+  "ofertePeGrupaCor": 12,
+  "tipSalariu": {
+   "none": {
+    "n": 5,
+    "procent": 50
+   },
+   "gross": {
+    "n": 3,
+    "procent": 30
+   },
+   "net": {
+    "n": 2,
+    "procent": 20
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 2
+  },
+  "brutMinimDeclarat": {
+   "n": 3
+  },
+  "laSalariulMinim": 2,
+  "studii": {
+   "Liceal - LICEU TEORETIC": {
+    "n": 7,
+    "procent": 70
+   },
+   "Liceal - LICEU DE SPECIALITATE": {
+    "n": 1,
+    "procent": 10
+   },
+   "Universitar - ÎNVĂȚĂMÂNT SUPERIOR": {
+    "n": 1,
+    "procent": 10
+   },
+   "Profesional - ȘCOALĂ PROFESIONALĂ": {
+    "n": 1,
+    "procent": 10
+   }
+  },
+  "experienta": {
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 9,
+    "procent": 90
+   },
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 1,
+    "procent": 10
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 8,
+    "procent": 80
+   },
+   "Cu durată determinată": {
+    "n": 2,
+    "procent": 20
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 10,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 10,
+    "procent": 100
+   }
+  },
+  "judete": {
+   "Cluj": {
+    "n": 2,
+    "procent": 20
+   },
+   "Sibiu": {
+    "n": 2,
+    "procent": 20
+   },
+   "Prahova": {
+    "n": 1,
+    "procent": 10
+   },
+   "Galați": {
+    "n": 1,
+    "procent": 10
+   },
+   "Gorj": {
+    "n": 1,
+    "procent": 10
+   },
+   "Municipiul București": {
+    "n": 1,
+    "procent": 10
+   },
+   "Buzău": {
+    "n": 1,
+    "procent": 10
+   },
+   "Mureș": {
+    "n": 1,
+    "procent": 10
+   }
+  },
+  "domenii": {
+   "Turism / Alimentație": {
+    "n": 9,
+    "procent": 90
+   },
+   "Altele": {
+    "n": 1,
+    "procent": 10
+   }
+  },
+  "coduriCorInGrupa": {
+   "422401 - RECEPTIONER DE HOTEL": {
+    "n": 10,
+    "procent": 83.3
+   },
+   "422405 - RESPONSABIL CAZARE": {
+    "n": 2,
+    "procent": 16.7
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 0,
+  "institutii": 0,
+  "judete": {},
+  "tipInstitutie": {},
+  "perioade": {},
+  "studii": {},
+  "bazaBruta": {
+   "n": 0
+  },
+  "bazaCuSporuriFixe": {
+   "n": 0
+  },
+  "peGradatie": {},
+  "peFunctie": {}
+ }
+}

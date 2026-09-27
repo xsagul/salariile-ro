@@ -27,9 +27,10 @@ import { POLICY } from "../crawler/policy.mjs";
 
 const arg = (k, d) => process.argv.find((a) => a.startsWith(`--${k}=`))?.split("=")[1] ?? d;
 const DIR = arg("dir", "colectare/anunturi"); // --dir= doar pentru probe locale
-const VAZUTE = `${DIR}/vazute.txt`, CITITE = `${DIR}/citite.json`, STARE = `${DIR}/stare.json`, OBS = `${DIR}/observatii`;
+const VAZUTE = `${DIR}/vazute.txt`, CITITE = `${DIR}/citite.json`, STARE = `${DIR}/stare.json`, OBS = `${DIR}/observatii`, PROFIL = `${DIR}/profil`;
 const SURSE = ["olx", "ejobs", "bestjobs", "publi24", "anuntul", "hipo", "undelucram"];
 fs.mkdirSync(OBS, { recursive: true });
+fs.mkdirSync(PROFIL, { recursive: true });
 const citeste = (f, d) => (fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, "utf8")) : d);
 const cheie = (s) => (s ? crypto.createHash("sha256").update(String(s)).digest("hex").slice(0, 16) : null);
 
@@ -45,7 +46,7 @@ function colecteaza() {
   const run = `continuu-${new Date().toISOString().slice(0, 10)}`;
   const root = `.cercetare-privata/crawl-runs/${run}`;
   const r = spawnSync(process.execPath, ["scripts/crawler/census.mjs", `--run=${run}`, `--seen=${VAZUTE}`,
-    `--evidence=${root}/evidence`, `--budget-min=${arg("buget-min", "300")}`, ...(arg("surse") ? [`--sources=${arg("surse")}`] : [])], { stdio: "inherit" });
+    `--evidence=${root}/evidence`, `--budget-min=${arg("buget-min", "300")}`, ...(arg("surse") ? [`--sources=${arg("surse")}`] : []), ...(arg("meserii") ? [`--slugs=${arg("meserii")}`] : [])], { stdio: "inherit" });
   if (r.status !== 0) throw new Error(`colectorul s-a oprit cu codul ${r.status}`);
   const state = JSON.parse(fs.readFileSync(`${root}/state.json`, "utf8"));
   const verified = JSON.parse(fs.readFileSync(`${root}/verified.json`, "utf8"));
@@ -54,6 +55,23 @@ function colecteaza() {
   const luna = new Date().toISOString().slice(0, 7);
   const noi = verified.observations.map(curata);
   if (noi.length) fs.appendFileSync(`${OBS}/${luna}.jsonl`, noi.map((o) => JSON.stringify(o)).join("\n") + "\n");
+
+  // Profilul fiecărui anunț citit, cu sau fără salariu: meseria, locul, data și factorii. Fără
+  // text, fără titlu și fără angajator (poate fi o persoană fizică). Baza: scripts/colectare/baza.mjs.
+  const profil = [];
+  for (const [url, res] of Object.entries(state.results)) {
+    const meserii = res.slugs || (res.slug ? [res.slug] : res.observation?.slug ? [res.observation.slug] : []);
+    if (!meserii.length || !res.atribute) continue;
+    const o = res.accepted ? res.observation : null;
+    profil.push({
+      k: cheie(url), sursa: res.source, meserii, data: res.raw?.date || null,
+      judet: res.raw?.county || null, oras: (res.raw?.city || "").slice(0, 60) || null, contract: res.raw?.contract || null,
+      salariu: o ? { min: o.min, max: o.max, baza: o.basis, bazaDeclarata: o.basisDeclared } : null,
+      motive: res.accepted ? [] : (res.reasons || []).slice(0, 4),
+      atribute: res.atribute,
+    });
+  }
+  if (profil.length) fs.appendFileSync(`${PROFIL}/${luna}.jsonl`, profil.map((p) => JSON.stringify(p)).join("\n") + "\n");
 
   // URL-urile citite nu se mai deschid. O eroare trecătoare nu ajunge în results, deci se reîncearcă.
   const citite = Object.keys(state.results);
@@ -78,7 +96,7 @@ function colecteaza() {
   st.rulari.push({ run, la: new Date().toISOString(), citite: citite.length, acceptate: noi.length, stats: verified.stats });
   st.rulari = st.rulari.slice(-60);
   fs.writeFileSync(STARE, JSON.stringify(st, null, 1) + "\n");
-  console.log(`rulare ${run}: ${citite.length} anunțuri citite, ${noi.length} observații noi`);
+  console.log(`rulare ${run}: ${citite.length} anunțuri citite, ${noi.length} observații noi, ${profil.length} profiluri cu factori`);
 }
 
 function acoperire() {

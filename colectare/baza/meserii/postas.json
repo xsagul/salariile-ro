@@ -1,0 +1,154 @@
+{
+ "slug": "postas",
+ "nume": "Poștaș",
+ "cor": "441206",
+ "generatLa": "2026-09-27T10:01:09.072Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 0,
+  "cuBazaDeclarata": 0,
+  "faraBazaDeclarata": 0,
+  "surse": {},
+  "colectari": {},
+  "net": {
+   "n": 0
+  },
+  "netMinimOferit": {
+   "n": 0
+  },
+  "netMaximOferit": {
+   "n": 0
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 0
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {}
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 0,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {},
+  "surse": {},
+  "peJudet": {},
+  "motiveFaraSalariu": {},
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 1,
+  "posturi": 2,
+  "ofertePeGrupaCor": 18,
+  "tipSalariu": {
+   "gross": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 0
+  },
+  "brutMinimDeclarat": {
+   "n": 1
+  },
+  "laSalariulMinim": 1,
+  "studii": {
+   "Liceal - LICEU TEORETIC": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "experienta": {
+   "Fără experiență - 0 ani": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "judete": {
+   "Covasna": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "domenii": {
+   "Servicii transport / curierat": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "coduriCorInGrupa": {
+   "441208 - OFICIANT POSTA TELEGRAME": {
+    "n": 10,
+    "procent": 55.6
+   },
+   "441201 - AGENT POSTAL": {
+    "n": 3,
+    "procent": 16.7
+   },
+   "441205 - DIRIGINTE POSTA": {
+    "n": 3,
+    "procent": 16.7
+   },
+   "441206 - FACTOR POSTAL": {
+    "n": 1,
+    "procent": 5.6
+   },
+   "441202 - CARTATOR POSTAL": {
+    "n": 1,
+    "procent": 5.6
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 0,
+  "institutii": 0,
+  "judete": {},
+  "tipInstitutie": {},
+  "perioade": {},
+  "studii": {},
+  "bazaBruta": {
+   "n": 0
+  },
+  "bazaCuSporuriFixe": {
+   "n": 0
+  },
+  "peGradatie": {},
+  "peFunctie": {}
+ }
+}

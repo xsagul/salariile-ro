@@ -1,0 +1,370 @@
+{
+ "slug": "fizioterapeut",
+ "nume": "Fizioterapeut",
+ "cor": "226402",
+ "generatLa": "2026-09-27T10:01:08.931Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 2,
+  "cuBazaDeclarata": 0,
+  "faraBazaDeclarata": 2,
+  "surse": {
+   "ejobs": {
+    "n": 1,
+    "procent": 50
+   },
+   "bestjobs": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "net": {
+   "n": 0
+  },
+  "netMinimOferit": {
+   "n": 0
+  },
+  "netMaximOferit": {
+   "n": 0
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 2
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-09": {
+    "n": 2,
+    "procent": 100
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 1,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "ejobs": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "peJudet": {},
+  "motiveFaraSalariu": {
+   "country_unconfirmed": {
+    "n": 1,
+    "procent": 100
+   },
+   "foreign_or_noncomparable_work": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 2,
+  "posturi": 4,
+  "ofertePeGrupaCor": 23,
+  "tipSalariu": {
+   "none": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 0
+  },
+  "brutMinimDeclarat": {
+   "n": 0
+  },
+  "laSalariulMinim": 0,
+  "studii": {
+   "Universitar - ÎNVĂȚĂMÂNT SUPERIOR": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "experienta": {
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "judete": {
+   "Municipiul București": {
+    "n": 1,
+    "procent": 50
+   },
+   "Vâlcea": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "domenii": {
+   "Medicină / Sănătate /Psihoterapie": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "coduriCorInGrupa": {
+   "226405 - KINETOTERAPEUT": {
+    "n": 13,
+    "procent": 56.5
+   },
+   "226401 - FIZIOKINETOTERAPEUT": {
+    "n": 8,
+    "procent": 34.8
+   },
+   "226402 - FIZIOTERAPEUT": {
+    "n": 2,
+    "procent": 8.7
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 44,
+  "institutii": 13,
+  "judete": {
+   "BH": {
+    "n": 16,
+    "procent": 36.4
+   },
+   "BV": {
+    "n": 7,
+    "procent": 15.9
+   },
+   "CJ": {
+    "n": 5,
+    "procent": 11.4
+   },
+   "CT": {
+    "n": 5,
+    "procent": 11.4
+   },
+   "AB": {
+    "n": 4,
+    "procent": 9.1
+   },
+   "BR": {
+    "n": 2,
+    "procent": 4.5
+   },
+   "TM": {
+    "n": 2,
+    "procent": 4.5
+   },
+   "BZ": {
+    "n": 1,
+    "procent": 2.3
+   },
+   "GJ": {
+    "n": 1,
+    "procent": 2.3
+   },
+   "MS": {
+    "n": 1,
+    "procent": 2.3
+   }
+  },
+  "tipInstitutie": {
+   "spital": {
+    "n": 42,
+    "procent": 95.5
+   },
+   "dgaspc": {
+    "n": 1,
+    "procent": 2.3
+   },
+   "universitate": {
+    "n": 1,
+    "procent": 2.3
+   }
+  },
+  "perioade": {
+   "2026-03": {
+    "n": 41,
+    "procent": 93.2
+   },
+   "2026-02": {
+    "n": 2,
+    "procent": 4.5
+   },
+   "2025-03": {
+    "n": 1,
+    "procent": 2.3
+   }
+  },
+  "studii": {
+   "S": {
+    "n": 23,
+    "procent": 52.3
+   },
+   "G": {
+    "n": 2,
+    "procent": 4.5
+   }
+  },
+  "bazaBruta": {
+   "n": 44,
+   "p10": 5679,
+   "p25": 6920,
+   "median": 7775,
+   "p75": 9075,
+   "p90": 9302,
+   "min": 1607,
+   "max": 9769
+  },
+  "bazaCuSporuriFixe": {
+   "n": 44,
+   "p10": 5862,
+   "p25": 6920,
+   "median": 8283,
+   "p75": 9881,
+   "p90": 10704,
+   "min": 1607,
+   "max": 11428
+  },
+  "peGradatie": {
+   "gradația 2": {
+    "n": 1
+   }
+  },
+  "peFunctie": {
+   "Laborator recup,medicina fizica si balne‐L.Pasteur Fiziokine": {
+    "n": 5
+   },
+   "Fiziokinetoterapeut Gradatia": {
+    "n": 5
+   },
+   "Laborator recup,medicina fizica si balne‐C.Coposu Fiziokinet": {
+    "n": 4
+   },
+   "fiziokinetoterapeut principal": {
+    "n": 2
+   },
+   "Fiziokinetoterapeut SUPERIOARE ( S )": {
+    "n": 2
+   },
+   "Fiziokinetoterapeut specialist SUPERIOARE ( S )": {
+    "n": 2
+   },
+   "FIZIOKINETOTERAPEUT PRINCIPAL Legea nr. 153 art. 33": {
+    "n": 2
+   },
+   "fiziokinetoterapeut": {
+    "n": 1
+   },
+   "Compartiment Terapie acuta pneumologie Fiziokinetoterapeut p": {
+    "n": 1
+   },
+   "Compartiment UAVCA Fiziokinetoterapeut principal Gradatia 4 ": {
+    "n": 1
+   },
+   "SECTIA CLINICA ATI I Fiziokinetoterapeut specialist Gradatia": {
+    "n": 1
+   },
+   "Sectia Clinica NEUROCHIRURGIE Fiziokinetoterapeut principal ": {
+    "n": 1
+   },
+   "Sectia Clinica NEUROCHIRURGIE Fiziokinetoterapeut debutant B": {
+    "n": 1
+   },
+   "Sectia Clinica ORTOPEDIE‐TRAUMATOLOGIE I Fiziokinetoterapeut": {
+    "n": 1
+   },
+   "Sectia Clinica ORTOPEDIE‐TRAUMATOLOGIE II Fiziokinetoterapeu": {
+    "n": 1
+   },
+   "RECUPERARE, MEDICINA FIZICA, BALNEOLOGIE FIZIOKINETOTERAPEUT": {
+    "n": 1
+   },
+   "LAB. RECUPERARE MEDICINA FIZICA SI BALNEOLOGIE FIZIOKINETOTE": {
+    "n": 1
+   },
+   "Fiziokinetoterapeut specialist COORDONATORI SUPERIOARE ( S )": {
+    "n": 1
+   },
+   "FIZIOKINETOTERAPEUT BAZA": {
+    "n": 1
+   },
+   "30s Fiziokinetoterapeut Gradatia": {
+    "n": 1
+   },
+   "SECTIA NEUROLOGIE FIZIOKINETOTERAPEUT PRINCIPAL Gradatia 5": {
+    "n": 1
+   },
+   "SECTIA RECUPERARE,MEDICINA FIZICA SI BALNEOLOGIE FIZIOKINETO": {
+    "n": 1
+   },
+   "COMP.RECUPERARE NEUROLOGICA FIZIOKINETOTERAPEUT DEBUTANT BAZ": {
+    "n": 1
+   },
+   "CAB.RECUPERARE,MED.FIZICA SI BALNE FIZIOKINETOTERAPEUT DEBUT": {
+    "n": 1
+   },
+   "FIZIOKINETOTERAPEUT Sectia Pneumologie": {
+    "n": 1
+   },
+   "2026-02 FIZIOKINETOTERAPEUT PRINC.": {
+    "n": 1
+   },
+   "FIZIOKINETOTERAPEUT Gradatia 2 Sporurile din anexele 1, 2,3,": {
+    "n": 1
+   },
+   "FIZIOKINETOTERAPEUT SPECIALIST Gradatia 2 Sporurile din anex": {
+    "n": 1
+   },
+   "Fiziokinetoterapeut": {
+    "n": 1
+   }
+  }
+ }
+}

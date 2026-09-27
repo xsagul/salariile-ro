@@ -1,0 +1,3674 @@
+{
+ "slug": "medic",
+ "nume": "Medic",
+ "cor": "221101",
+ "generatLa": "2026-09-27T10:01:08.822Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 10,
+  "cuBazaDeclarata": 1,
+  "faraBazaDeclarata": 9,
+  "surse": {
+   "ejobs": {
+    "n": 5,
+    "procent": 50
+   },
+   "bestjobs": {
+    "n": 5,
+    "procent": 50
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 7,
+    "procent": 70
+   },
+   "continuă": {
+    "n": 3,
+    "procent": 30
+   }
+  },
+  "net": {
+   "n": 1
+  },
+  "netMinimOferit": {
+   "n": 1
+  },
+  "netMaximOferit": {
+   "n": 1
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 9
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-09": {
+    "n": 9,
+    "procent": 90
+   },
+   "2026-08": {
+    "n": 1,
+    "procent": 10
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 5,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 5,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "ejobs": {
+    "n": 5,
+    "procent": 100
+   }
+  },
+  "peJudet": {
+   "9": {
+    "n": 1,
+    "procent": 20
+   }
+  },
+  "motiveFaraSalariu": {
+   "wide_range_review": {
+    "n": 1,
+    "procent": 50
+   },
+   "country_unconfirmed": {
+    "n": 1,
+    "procent": 50
+   },
+   "foreign_or_noncomparable_work": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 3,
+  "posturi": 4,
+  "ofertePeGrupaCor": 3,
+  "tipSalariu": {
+   "gross": {
+    "n": 2,
+    "procent": 66.7
+   },
+   "net": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 1
+  },
+  "brutMinimDeclarat": {
+   "n": 2
+  },
+  "laSalariulMinim": 1,
+  "studii": {
+   "Universitar - ÎNVĂȚĂMÂNT SUPERIOR": {
+    "n": 2,
+    "procent": 66.7
+   },
+   "Universitar - MASTER": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
+  "experienta": {
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 3,
+    "procent": 100
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 3,
+    "procent": 100
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 2,
+    "procent": 66.7
+   },
+   "Cu timp parțial": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 3,
+    "procent": 100
+   }
+  },
+  "judete": {
+   "Ilfov": {
+    "n": 1,
+    "procent": 33.3
+   },
+   "Municipiul București": {
+    "n": 1,
+    "procent": 33.3
+   },
+   "Prahova": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
+  "domenii": {
+   "Medicină / Sănătate /Psihoterapie": {
+    "n": 3,
+    "procent": 100
+   }
+  },
+  "coduriCorInGrupa": {
+   "221101 - MEDIC MEDICINA GENERALA": {
+    "n": 3,
+    "procent": 100
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 4799,
+  "institutii": 26,
+  "judete": {
+   "CT": {
+    "n": 750,
+    "procent": 15.6
+   },
+   "BH": {
+    "n": 607,
+    "procent": 12.6
+   },
+   "SB": {
+    "n": 507,
+    "procent": 10.6
+   },
+   "CJ": {
+    "n": 483,
+    "procent": 10.1
+   },
+   "BR": {
+    "n": 350,
+    "procent": 7.3
+   },
+   "BC": {
+    "n": 343,
+    "procent": 7.1
+   },
+   "HR": {
+    "n": 333,
+    "procent": 6.9
+   },
+   "TM": {
+    "n": 315,
+    "procent": 6.6
+   },
+   "AB": {
+    "n": 280,
+    "procent": 5.8
+   },
+   "BZ": {
+    "n": 262,
+    "procent": 5.5
+   },
+   "GR": {
+    "n": 170,
+    "procent": 3.5
+   },
+   "GJ": {
+    "n": 150,
+    "procent": 3.1
+   },
+   "IS": {
+    "n": 76,
+    "procent": 1.6
+   },
+   "B": {
+    "n": 66,
+    "procent": 1.4
+   },
+   "DJ": {
+    "n": 49,
+    "procent": 1
+   },
+   "BV": {
+    "n": 37,
+    "procent": 0.8
+   },
+   "MS": {
+    "n": 12,
+    "procent": 0.3
+   },
+   "VS": {
+    "n": 6,
+    "procent": 0.1
+   },
+   "CL": {
+    "n": 3,
+    "procent": 0.1
+   }
+  },
+  "tipInstitutie": {
+   "spital": {
+    "n": 4754,
+    "procent": 99.1
+   },
+   "dsp": {
+    "n": 23,
+    "procent": 0.5
+   },
+   "universitate": {
+    "n": 12,
+    "procent": 0.3
+   },
+   "dgaspc": {
+    "n": 10,
+    "procent": 0.2
+   }
+  },
+  "perioade": {
+   "2026-03": {
+    "n": 3550,
+    "procent": 74
+   },
+   "2026-02": {
+    "n": 755,
+    "procent": 15.7
+   },
+   "2025-03": {
+    "n": 252,
+    "procent": 5.3
+   },
+   "2022-09": {
+    "n": 170,
+    "procent": 3.5
+   },
+   "2024-03": {
+    "n": 49,
+    "procent": 1
+   },
+   "2025-08": {
+    "n": 17,
+    "procent": 0.4
+   },
+   "2026-09": {
+    "n": 6,
+    "procent": 0.1
+   }
+  },
+  "studii": {
+   "S": {
+    "n": 2552,
+    "procent": 53.2
+   },
+   "G": {
+    "n": 96,
+    "procent": 2
+   },
+   "M": {
+    "n": 16,
+    "procent": 0.3
+   }
+  },
+  "bazaBruta": {
+   "n": 4799,
+   "p10": 5000,
+   "p25": 5822,
+   "median": 8794,
+   "p75": 16743,
+   "p90": 17592,
+   "min": 1500,
+   "max": 24012
+  },
+  "bazaCuSporuriFixe": {
+   "n": 4799,
+   "p10": 5000,
+   "p25": 6468,
+   "median": 11238,
+   "p75": 19456,
+   "p90": 24137,
+   "min": 1500,
+   "max": 42416
+  },
+  "peGradatie": {
+   "gradația 5": {
+    "n": 400,
+    "p10": 7020,
+    "p25": 8020,
+    "median": 17590,
+    "p75": 20740,
+    "p90": 27491,
+    "min": 5025,
+    "max": 36193.3
+   },
+   "gradația 2": {
+    "n": 307,
+    "p10": 5000,
+    "p25": 5427,
+    "median": 6278,
+    "p75": 14478,
+    "p90": 19448,
+    "min": 4427,
+    "max": 30817
+   },
+   "gradația 3": {
+    "n": 215,
+    "p10": 5372,
+    "p25": 6541,
+    "median": 12907,
+    "p75": 18518,
+    "p90": 21035,
+    "min": 5250,
+    "max": 32855.45
+   },
+   "gradația 4": {
+    "n": 164,
+    "p10": 5679,
+    "p25": 7301,
+    "median": 17311,
+    "p75": 20277,
+    "p90": 24434,
+    "min": 5335,
+    "max": 33170
+   },
+   "gradația 0": {
+    "n": 78,
+    "p10": 6000,
+    "p25": 7020,
+    "median": 8020,
+    "p75": 8020,
+    "p90": 11408,
+    "min": 4015,
+    "max": 16608
+   },
+   "gradația 1": {
+    "n": 4
+   }
+  },
+  "peFunctie": {
+   "Medic primar SUPERIOARE ( S )": {
+    "n": 467,
+    "p10": 7020,
+    "p25": 7653,
+    "median": 11807,
+    "p75": 21984,
+    "p90": 30462,
+    "min": 5382,
+    "max": 40066
+   },
+   "Medic specialist SUPERIOARE ( S )": {
+    "n": 282,
+    "p10": 5000,
+    "p25": 5517,
+    "median": 6042,
+    "p75": 15019,
+    "p90": 23424,
+    "min": 4430,
+    "max": 30202
+   },
+   "MEDIC PRIMAR Legea nr. 153 art. 33": {
+    "n": 192,
+    "p10": 2346,
+    "p25": 5152,
+    "median": 7071,
+    "p75": 7783,
+    "p90": 7783,
+    "min": 1511,
+    "max": 12152
+   },
+   "MEDIC PRIMAR SUPERIOARE Gradatia": {
+    "n": 145,
+    "p10": 6682,
+    "p25": 6849,
+    "median": 17462,
+    "p75": 19460,
+    "p90": 23715,
+    "min": 6364,
+    "max": 29586
+   },
+   "MEDIC SPECIALIST SUPERIOARE Gradatia": {
+    "n": 124,
+    "p10": 5000,
+    "p25": 5000,
+    "median": 12629,
+    "p75": 14573,
+    "p90": 17145,
+    "min": 5000,
+    "max": 21035
+   },
+   "MEDIC PRIMAR Gradatia 5": {
+    "n": 94,
+    "p10": 7020,
+    "p25": 7020,
+    "median": 9851,
+    "p75": 20234,
+    "p90": 24434,
+    "min": 7020,
+    "max": 33823
+   },
+   "medic primar": {
+    "n": 85,
+    "p10": 8456,
+    "p25": 9730,
+    "median": 17690,
+    "p75": 22477,
+    "p90": 29366,
+    "min": 5335,
+    "max": 32889
+   },
+   "MEDIC SPECIALIST": {
+    "n": 84,
+    "p10": 11175,
+    "p25": 11733,
+    "median": 12327,
+    "p75": 13930,
+    "p90": 16763,
+    "min": 10643,
+    "max": 23946
+   },
+   "2026-02 MEDIC PRIMAR": {
+    "n": 79,
+    "p10": 6682,
+    "p25": 7020,
+    "median": 7020,
+    "p75": 17162,
+    "p90": 17592,
+    "min": 6364,
+    "max": 17592
+   },
+   "MEDIC PRIMAR": {
+    "n": 71,
+    "p10": 15556,
+    "p25": 15565,
+    "median": 15565,
+    "p75": 17875,
+    "p90": 21933,
+    "min": 14815,
+    "max": 29574
+   },
+   "medic specialist": {
+    "n": 66,
+    "p10": 5427,
+    "p25": 6844,
+    "median": 11391,
+    "p75": 14982,
+    "p90": 20586,
+    "min": 4427,
+    "max": 26048
+   },
+   "2026-02 MEDIC SPECIALIST": {
+    "n": 57,
+    "p10": 5000,
+    "p25": 5000,
+    "median": 7644,
+    "p75": 12629,
+    "p90": 13261,
+    "min": 4430,
+    "max": 13933
+   },
+   "MEDIC SPECIALIST Gradatia 2": {
+    "n": 55,
+    "p10": 5000,
+    "p25": 5000,
+    "median": 5000,
+    "p75": 5278,
+    "p90": 13031,
+    "min": 5000,
+    "max": 22415
+   },
+   "MEDIC PRIMAR (UPU, ATI) Legea nr. 153 art. 33": {
+    "n": 54,
+    "p10": 6794,
+    "p25": 8791,
+    "median": 10471,
+    "p75": 11856,
+    "p90": 12456,
+    "min": 5379,
+    "max": 13785
+   },
+   "MEDIC SPECIALIST Legea nr. 153 art. 33": {
+    "n": 46,
+    "p10": 2861,
+    "p25": 4318,
+    "median": 5080,
+    "p75": 5588,
+    "p90": 5875,
+    "min": 1525,
+    "max": 9624
+   },
+   "MEDIC PRIMAR Gradatia 3": {
+    "n": 40,
+    "p10": 6682,
+    "p25": 6682,
+    "median": 7123,
+    "p75": 18751,
+    "p90": 27575,
+    "min": 6682,
+    "max": 29720
+   },
+   "MEDIC PRIMAR Gradatia 4": {
+    "n": 33,
+    "p10": 6849,
+    "p25": 7302,
+    "median": 19418,
+    "p75": 23229,
+    "p90": 29421,
+    "min": 6849,
+    "max": 30462
+   },
+   "MEDIC PRIMAR Gradatia 5 Sporurile din anexele 1, 2,3,5,8 sun": {
+    "n": 31,
+    "p10": 6105,
+    "p25": 6605,
+    "median": 7984,
+    "p75": 17236,
+    "p90": 17236,
+    "min": 5605,
+    "max": 18768
+   },
+   "Unitate Primire Urgente(UPU)-SMURD MEDIC - PRIMAR S": {
+    "n": 26,
+    "p10": 7484,
+    "p25": 7484,
+    "median": 17271,
+    "p75": 27902,
+    "p90": 28152,
+    "min": 7301,
+    "max": 29296.9
+   },
+   "SECTIA CLINICA CHIRURGIE GENERALA I MEDIC PRIMAR SUPERIOARE ": {
+    "n": 25,
+    "p10": 6849,
+    "p25": 7020,
+    "median": 19384,
+    "p75": 19927,
+    "p90": 21527,
+    "min": 6849,
+    "max": 22907
+   },
+   "SECTIA CLINICA OBSTETRICA GINECOLOGIE I Medic primar Gradati": {
+    "n": 23,
+    "p10": 1852,
+    "p25": 2372,
+    "median": 3813,
+    "p75": 20115,
+    "p90": 21341,
+    "min": 1528,
+    "max": 21651
+   },
+   "Unitate Primire Urgente(UPU)-SMURD MEDIC - SPECIALIST S": {
+    "n": 21,
+    "p10": 5679,
+    "p25": 5778,
+    "median": 6278,
+    "p75": 20031,
+    "p90": 21032,
+    "min": 5278,
+    "max": 21558.6
+   },
+   "Medic primar Gradatia": {
+    "n": 21,
+    "p10": 16743,
+    "p25": 17162,
+    "median": 17592,
+    "p75": 17592,
+    "p90": 17592,
+    "min": 1674.3,
+    "max": 18020
+   },
+   "MEDIC PRIMAR Sectia Obstretica Ginecologie": {
+    "n": 21,
+    "p10": 7181,
+    "p25": 8020,
+    "median": 8020,
+    "p75": 19968,
+    "p90": 20375,
+    "min": 7020,
+    "max": 21020
+   },
+   "MEDIC SPECIALIST Gradatia 2 Sporurile din anexele 1, 2,3,5,8": {
+    "n": 21,
+    "p10": 4426,
+    "p25": 4426,
+    "median": 5426,
+    "p75": 6278,
+    "p90": 12374,
+    "min": 4426,
+    "max": 13473
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 Medic primar ** Gradatia 5 SUPER": {
+    "n": 20,
+    "p10": 3138,
+    "p25": 3266,
+    "median": 29562,
+    "p75": 30393,
+    "p90": 31476,
+    "min": 1671,
+    "max": 32673
+   },
+   "MEDIC SPECIALIST (UPU) SUPERIOARE Gradatia": {
+    "n": 20,
+    "p10": 5278,
+    "p25": 5541,
+    "median": 9648,
+    "p75": 20032,
+    "p90": 20753,
+    "min": 5278,
+    "max": 23206
+   },
+   "Sectia Clinica Obstetrica-Ginecologie I MEDIC - PRIMAR S": {
+    "n": 19,
+    "p10": 7520,
+    "p25": 7765,
+    "median": 8020,
+    "p75": 19219,
+    "p90": 19456,
+    "min": 7181,
+    "max": 20428.28
+   },
+   "Laborator Analize Medicale MEDIC - PRIMAR S": {
+    "n": 19,
+    "p10": 7020,
+    "p25": 7685,
+    "median": 8020,
+    "p75": 26149,
+    "p90": 26249,
+    "min": 5025,
+    "max": 27956.2
+   },
+   "MEDIC SPECIALIST UPU - smurd": {
+    "n": 19,
+    "p10": 5278,
+    "p25": 6110,
+    "median": 6278,
+    "p75": 19063,
+    "p90": 20382,
+    "min": 5278,
+    "max": 21968
+   },
+   "Sectia Clinica A.T.I. MEDIC - PRIMAR S": {
+    "n": 18,
+    "p10": 8206,
+    "p25": 8484,
+    "median": 17521,
+    "p75": 27902,
+    "p90": 28372,
+    "min": 7123,
+    "max": 29296.9
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 Medic primar ** Gradatia 4 SUPER": {
+    "n": 16,
+    "p10": 3111,
+    "p25": 3260,
+    "median": 28842,
+    "p75": 29855,
+    "p90": 30462,
+    "min": 1543,
+    "max": 30462
+   },
+   "Sectia Clinica A.T.I. MEDIC - SPECIALIST S": {
+    "n": 16,
+    "p10": 5542,
+    "p25": 6278,
+    "median": 13286,
+    "p75": 21032,
+    "p90": 21032,
+    "min": 5278,
+    "max": 21032.45
+   },
+   "MEDIC PRIMAR (ATI) SUPERIOARE Gradatia": {
+    "n": 15,
+    "p10": 7123,
+    "p25": 7123,
+    "median": 16611,
+    "p75": 26165,
+    "p90": 27151,
+    "min": 7123,
+    "max": 27491
+   },
+   "SECTIA CLINICA ATI I Medic primar ** Gradatia 5 SUPERIOARE P": {
+    "n": 14,
+    "p10": 4163,
+    "p25": 4831,
+    "median": 27901,
+    "p75": 27901,
+    "p90": 28566,
+    "min": 3173,
+    "max": 28851
+   },
+   "Laborator Radiologie si Imagistica Medicala MEDIC - PRIMAR S": {
+    "n": 14,
+    "p10": 7123,
+    "p25": 7849,
+    "median": 13393,
+    "p75": 20575,
+    "p90": 20701,
+    "min": 7020,
+    "max": 20856.8
+   },
+   "MEDIC SPECIALIST Gradatia 3": {
+    "n": 14,
+    "p10": 5250,
+    "p25": 5250,
+    "median": 5541,
+    "p75": 12379,
+    "p90": 16036,
+    "min": 5250,
+    "max": 18842
+   },
+   "MEDIC PRIMAR Gradatia 4 Sporurile din anexele 1, 2,3,5,8 sun": {
+    "n": 14,
+    "p10": 6119,
+    "p25": 6469,
+    "median": 6469,
+    "p75": 16816,
+    "p90": 16816,
+    "min": 5469,
+    "max": 17766
+   },
+   "medic primar - garzi": {
+    "n": 13,
+    "p10": 6364,
+    "p25": 6462,
+    "median": 6784,
+    "p75": 7123,
+    "p90": 7448,
+    "min": 6060,
+    "max": 7486
+   },
+   "MEDIC PRIMAR UNITATE DE PRIMIRE URGENTE - SMURD": {
+    "n": 13,
+    "p10": 17875,
+    "p25": 25830,
+    "median": 32086,
+    "p75": 32889,
+    "p90": 32889,
+    "min": 16044,
+    "max": 34550
+   },
+   "MEDIC SPECIALIST (ATI) SUPERIOARE Gradatia": {
+    "n": 13,
+    "p10": 5278,
+    "p25": 5278,
+    "median": 5541,
+    "p75": 19734,
+    "p90": 20032,
+    "min": 5278,
+    "max": 21035
+   },
+   "BOLI INFECTIOASE MEDIC SPECIALIST SUPERIOARE Gradatia 2": {
+    "n": 12,
+    "p10": 5000,
+    "p25": 5000,
+    "median": 5000,
+    "p75": 15423,
+    "p90": 15423,
+    "min": 5000,
+    "max": 15423
+   },
+   "SECTIA OBSTETRICA - GINECOLOGIE I MEDIC PRIMAR SUPERIOARE Gr": {
+    "n": 12,
+    "p10": 6698,
+    "p25": 6849,
+    "median": 12993,
+    "p75": 19384,
+    "p90": 19873,
+    "min": 6681,
+    "max": 20924
+   },
+   "Sectia Clinica Ortopedie si Traumatologie MEDIC - PRIMAR S": {
+    "n": 12,
+    "p10": 7120,
+    "p25": 8020,
+    "median": 12765,
+    "p75": 19581,
+    "p90": 20381,
+    "min": 7020,
+    "max": 22594.12
+   },
+   "Sectia Clinica Chirurg. Generala II MEDIC - PRIMAR S": {
+    "n": 12,
+    "p10": 7698,
+    "p25": 7977,
+    "median": 11792,
+    "p75": 18752,
+    "p90": 19479,
+    "min": 7020,
+    "max": 20428.28
+   },
+   "Sectia Clinica Neurologie MEDIC - SPECIALIST S": {
+    "n": 12,
+    "p10": 6000,
+    "p25": 6000,
+    "median": 6000,
+    "p75": 6250,
+    "p90": 15509,
+    "min": 5381,
+    "max": 17864.9
+   },
+   "Serviciul Judetean de Medicina Legala IML CLUJ MEDIC - PRIMA": {
+    "n": 12,
+    "p10": 12266,
+    "p25": 12734,
+    "median": 22831,
+    "p75": 33371,
+    "p90": 33994,
+    "min": 12238,
+    "max": 35693.3
+   },
+   "MEDIC SPECIALIST Sectia ATI": {
+    "n": 12,
+    "p10": 6278,
+    "p25": 6278,
+    "median": 11885,
+    "p75": 20889,
+    "p90": 21402,
+    "min": 6278,
+    "max": 21769
+   },
+   "MEDIC SPECIALIST Gradatia 3 Sporurile din anexele 1, 2,3,5,8": {
+    "n": 12,
+    "p10": 5552,
+    "p25": 5648,
+    "median": 6095,
+    "p75": 12993,
+    "p90": 12993,
+    "min": 4648,
+    "max": 14147
+   },
+   "LABORATOR ANALIZE MEDICALE‐str.Gh.Doja nr.65 Medic primar Gr": {
+    "n": 11,
+    "p10": 4543,
+    "p25": 4866,
+    "median": 5284,
+    "p75": 19923,
+    "p90": 19923,
+    "min": 1834,
+    "max": 20873
+   },
+   "SECTIA OBSTETRICA - GINECOLOGIE II MEDIC PRIMAR SUPERIOARE G": {
+    "n": 11,
+    "p10": 6681,
+    "p25": 6849,
+    "median": 7020,
+    "p75": 19175,
+    "p90": 19927,
+    "min": 6681,
+    "max": 20354
+   },
+   "medic specialist- garzi": {
+    "n": 11,
+    "p10": 4763,
+    "p25": 5014,
+    "median": 5278,
+    "p75": 5530,
+    "p90": 5679,
+    "min": 4430,
+    "max": 5822
+   },
+   "Laborator Radiologie si Imagistica Medicala MEDIC - SPECIALI": {
+    "n": 11,
+    "p10": 6000,
+    "p25": 6000,
+    "median": 6000,
+    "p75": 14862,
+    "p90": 14862,
+    "min": 5000,
+    "max": 14862
+   },
+   "Sectia Clinica Cardiologie I MEDIC - PRIMAR S": {
+    "n": 11,
+    "p10": 6681,
+    "p25": 7015,
+    "median": 7520,
+    "p75": 18518,
+    "p90": 19456,
+    "min": 6681,
+    "max": 19481.32
+   },
+   "MEDIC PRIMAR DIN ANATOMIA PAT. SUPERIOARE Gradatia": {
+    "n": 11,
+    "p10": 11807,
+    "p25": 19615,
+    "median": 30817,
+    "p75": 32765,
+    "p90": 35699,
+    "min": 11518,
+    "max": 35699
+   },
+   "Medic primar": {
+    "n": 11,
+    "p10": 8619,
+    "p25": 8619,
+    "median": 16407,
+    "p75": 17999,
+    "p90": 18037,
+    "min": 8619,
+    "max": 21361
+   },
+   "SECTIA CLINICA MEDICINA INTERNA I Medic specialist Gradatia ": {
+    "n": 10,
+    "p10": 3026,
+    "p25": 3463,
+    "median": 4460,
+    "p75": 13968,
+    "p90": 14704,
+    "min": 2137,
+    "max": 15033
+   },
+   "Sectia Clinica Obstetrica-Ginecologie I MEDIC - SPECIALIST S": {
+    "n": 10,
+    "p10": 5450,
+    "p25": 5625,
+    "median": 6000,
+    "p75": 6000,
+    "p90": 6882,
+    "min": 5000,
+    "max": 12572.56
+   },
+   "Sectia Clinica Chirurgie Generala I MEDIC - PRIMAR S": {
+    "n": 10,
+    "p10": 7020,
+    "p25": 7645,
+    "median": 10820,
+    "p75": 15565,
+    "p90": 17803,
+    "min": 7020,
+    "max": 20428.28
+   },
+   "Sectia Clinica Neurologie MEDIC - PRIMAR S": {
+    "n": 10,
+    "p10": 7486,
+    "p25": 7520,
+    "median": 13661,
+    "p75": 23411,
+    "p90": 23601,
+    "min": 7181,
+    "max": 24187.4
+   },
+   "MEDIC PRIMAR (ANAPAT) Legea nr. 153 art. 33": {
+    "n": 10,
+    "p10": 7320,
+    "p25": 7878,
+    "median": 9657,
+    "p75": 10117,
+    "p90": 10582,
+    "min": 6041,
+    "max": 14771
+   },
+   "MEDIC SPECIALIST (UPU, ATI) Legea nr. 153 art. 33": {
+    "n": 10,
+    "p10": 7080,
+    "p25": 7519,
+    "median": 8129,
+    "p75": 8739,
+    "p90": 8987,
+    "min": 5691,
+    "max": 9389
+   },
+   "MEDIC PRIMAR Sectia CHIRURGIE GENERALA": {
+    "n": 10,
+    "p10": 19168,
+    "p25": 20407,
+    "median": 23298,
+    "p75": 23955,
+    "p90": 24079,
+    "min": 17592,
+    "max": 24934
+   },
+   "MEDIC PRIMAR ANESTEZIE-TERAPIE INTENSIVA - GARZI": {
+    "n": 10,
+    "p10": 3887,
+    "p25": 4323,
+    "median": 5385,
+    "p75": 6277,
+    "p90": 7511,
+    "min": 3077,
+    "max": 15190
+   },
+   "MEDIC PRIMAR Sectia Chirurgie generala": {
+    "n": 10,
+    "p10": 8003,
+    "p25": 8020,
+    "median": 14431,
+    "p75": 21354,
+    "p90": 21749,
+    "min": 7849,
+    "max": 22168
+   },
+   "MEDIC PRIMAR Sectia Ortopedie si Traumatologie": {
+    "n": 10,
+    "p10": 7598,
+    "p25": 8020,
+    "median": 12590,
+    "p75": 19899,
+    "p90": 20786,
+    "min": 6849,
+    "max": 21590
+   },
+   "2026-02 MEDIC PRIMAR APML (a.p./m.l.)": {
+    "n": 10,
+    "p10": 11750,
+    "p25": 11807,
+    "median": 11807,
+    "p75": 22593,
+    "p90": 22869,
+    "min": 11238,
+    "max": 22869
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 Medic specialist Gradatia 2 SUPE": {
+    "n": 9
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 Medic specialist ** Gradatia 2 S": {
+    "n": 9
+   },
+   "Sectia Clinica Obstetrica-Ginecologie II MEDIC - PRIMAR S": {
+    "n": 9
+   },
+   "Sectia Clinic Medicina-Interna II MEDIC - PRIMAR S": {
+    "n": 9
+   },
+   "Sectia Clinica Cardiologie I MEDIC - SPECIALIST S": {
+    "n": 9
+   },
+   "Sectia Chirurgie Plastica,Estetica si Microchirurgie Re MEDI": {
+    "n": 9
+   },
+   "Ambulatoriu integrat - ALTII MEDIC - PRIMAR S": {
+    "n": 9
+   },
+   "Medic specialist Gradatia": {
+    "n": 9
+   },
+   "MEDIC PRIMAR Sectia Pneumologie": {
+    "n": 9
+   },
+   "MEDIC PRIMAR RADIOLOGIE – Laborator Radiologie si Imagistica": {
+    "n": 9
+   },
+   "MEDIC SPECIALIST Sectia Medicina interna": {
+    "n": 9
+   },
+   "AP MEDIC PRIMAR": {
+    "n": 9
+   },
+   "Laborator de radiologie si imag.med‐C.Coposu (p.l) Medic pri": {
+    "n": 8
+   },
+   "Laborator de radiologie si imag.med‐str.Doja nr.65 Medic pri": {
+    "n": 8
+   },
+   "SECTIA CLINICA ATI I Medic specialist ** Gradatia 3 SUPERIOA": {
+    "n": 8
+   },
+   "ORTOPEDIE TRAUMATOLOGIE MEDIC PRIMAR SUPERIOARE Gradatia 5": {
+    "n": 8
+   },
+   "SECTIA MEDICINA INTERNA I MEDIC PRIMAR SUPERIOARE Gradatia 5": {
+    "n": 8
+   },
+   "SECTIA NEONATOLOGIE MEDIC SPECIALIST SUPERIOARE Gradatia 2": {
+    "n": 8
+   },
+   "U.P.U. MEDIC SPECIALIST U.P.U. SUPERIOARE Gradatia 2": {
+    "n": 8
+   },
+   "Sectia Hematologie MEDIC - PRIMAR S": {
+    "n": 8
+   },
+   "Compartiment Clinic Oftalmologie MEDIC - PRIMAR S": {
+    "n": 8
+   },
+   "Sectia Clinica Urologie MEDIC - PRIMAR S": {
+    "n": 8
+   },
+   "Sectia Clinica Medicina Interna I MEDIC - PRIMAR S": {
+    "n": 8
+   },
+   "Sectia Clinica Gastroenterologie MEDIC - SPECIALIST S": {
+    "n": 8
+   },
+   "GARZI - RADIOLOGIE SI IMAGISTICA MEDICAL MEDIC PRIMAR Gradat": {
+    "n": 8
+   },
+   "MEDIC PRIMAR LAB. RADIOLOGIE SI IMAGISTICA MEDICALA": {
+    "n": 8
+   },
+   "MEDIC SPECIALIST ANESTEZIE-TERAPIE INTENSIVA - GARZI": {
+    "n": 8
+   },
+   "MEDIC PRIMAR CHIRURGIE GENERALA - GARZI": {
+    "n": 8
+   },
+   "MEDIC PRIMAR NEUROLOGIE - GARZI": {
+    "n": 8
+   },
+   "MEDIC PRIMAR PEDIATRIE - GARZI": {
+    "n": 8
+   },
+   "MEDIC PRIMAR Sectia Pediatrie": {
+    "n": 8
+   },
+   "MEDIC PRIMAR UPU - smurd": {
+    "n": 8
+   },
+   "MEDIC SPECIALIST Sectia Neonatologie": {
+    "n": 8
+   },
+   "MEDIC SPECIALIST Sectia Obstretica Ginecologie": {
+    "n": 8
+   },
+   "MEDIC SPECIALIST Sectia Chirurgie generala": {
+    "n": 8
+   },
+   "ATI MEDIC SPECIALIST": {
+    "n": 8
+   },
+   "Medic specialist": {
+    "n": 7
+   },
+   "SECTIA CLINICA PEDIATRIE I Medic primar Gradatia 5 SUPERIOAR": {
+    "n": 7
+   },
+   "SECTIA CLINICA PNEUMOLOGIE III Medic specialist Gradatia 2 S": {
+    "n": 7
+   },
+   "A.T.I. MEDIC SPECIALIST ATI SUPERIOARE Gradatia 2": {
+    "n": 7
+   },
+   "NEUROLOGIE MEDIC PRIMAR SUPERIOARE Gradatia 5": {
+    "n": 7
+   },
+   "SECTIA MEDICINA INTERNA CRONICI MEDIC SPECIALIST SUPERIOARE ": {
+    "n": 7
+   },
+   "Sectia Clinica Ortopedie si Traumatologie MEDIC - SPECIALIST": {
+    "n": 7
+   },
+   "Serviciul de Anatomie Patologica MEDIC - PRIMAR S": {
+    "n": 7
+   },
+   "Compartiment Chirurgie Vasculara MEDIC - SPECIALIST S": {
+    "n": 7
+   },
+   "UNITATE PRIMIRE URGENTE MEDIC PRIMAR UPU Gradatia 5": {
+    "n": 7
+   },
+   "MEDIC PRIMAR Sectia OBSTETRICA-GINECOLOGIE I": {
+    "n": 7
+   },
+   "MEDIC PRIMAR Sectia PEDIATRIE": {
+    "n": 7
+   },
+   "MEDIC PRIMAR OBSTETRICA-GINECOLOGIE I - GARZI": {
+    "n": 7
+   },
+   "MEDIC PRIMAR Serviciul Judetean de Medicina Legala": {
+    "n": 7
+   },
+   "MEDIC PRIMAR Sectia Neurologie": {
+    "n": 7
+   },
+   "SECTIA CLINICA ATI I Medic specialist ** Gradatia 2 SUPERIOA": {
+    "n": 6
+   },
+   "SECTIA CLINICA ATI II Medic primar ** Gradatia 5 SUPERIOARE ": {
+    "n": 6
+   },
+   "Sectia Clinica CHIRURGIE GENERALA I Medic primar Gradatia 5 ": {
+    "n": 6
+   },
+   "Sectia Clinica NEUROLOGIE I Medic primar Gradatia 5 SUPERIOA": {
+    "n": 6
+   },
+   "SECTIA CLINICA PEDIATRIE II Medic specialist Gradatia 2 SUPE": {
+    "n": 6
+   },
+   "SECTIA CLINICA PSIHIATRIE II Medic primar Gradatia 5 SUPERIO": {
+    "n": 6
+   },
+   "SECTIE RECUPERARE NEUROLOGICA Medic primar Gradatia 5 SUPERI": {
+    "n": 6
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 Medic primar ** Gradatia 3 SUPER": {
+    "n": 6
+   },
+   "A.T.I. MEDIC PRIMAR ATI SUPERIOARE Gradatia 3": {
+    "n": 6
+   },
+   "CHIRURGIE ORTOPEDIE INFANTILA MEDIC SPECIALIST SUPERIOARE Gr": {
+    "n": 6
+   },
+   "OFTALMOLOGIE MEDIC PRIMAR SUPERIOARE Gradatia 5": {
+    "n": 6
+   },
+   "SECTIA CLINICA MEDICINA INTERNA II MEDIC PRIMAR SUPERIOARE G": {
+    "n": 6
+   },
+   "SECTIA MEDICINA INTERNA CRONICI MEDIC PRIMAR SUPERIOARE Grad": {
+    "n": 6
+   },
+   "UROLOGIE MEDIC PRIMAR SUPERIOARE Gradatia 5": {
+    "n": 6
+   },
+   "Sectia Clinica Cardiologie II MEDIC - PRIMAR S": {
+    "n": 6
+   },
+   "Sectia Clinica Boli Infectioase MEDIC - PRIMAR S": {
+    "n": 6
+   },
+   "Sectia Clinica Boli Infectioase MEDIC - SPECIALIST S": {
+    "n": 6
+   },
+   "Sectia Clinica Neonatologie I MEDIC - PRIMAR S": {
+    "n": 6
+   },
+   "Sectia Clinica Gastroenterologie MEDIC - PRIMAR S": {
+    "n": 6
+   },
+   "Sectia Clinica O.R.L. MEDIC - PRIMAR S": {
+    "n": 6
+   },
+   "MEDIC SPECIALIST Gradatia 4": {
+    "n": 6
+   },
+   "OBSTETRICA MEDIC PRIMAR Gradatia 3": {
+    "n": 6
+   },
+   "NEONATOLOGIE MEDIC PRIMAR Gradatia 5": {
+    "n": 6
+   },
+   "GARZI - NOU NASCUTI MEDIC SPECIALIST Gradatia 2": {
+    "n": 6
+   },
+   "GARZI - CHIRURGIE MEDIC PRIMAR Gradatia 5": {
+    "n": 6
+   },
+   "MEDIC PRIMAR Sectia CARDIOLOGIE": {
+    "n": 6
+   },
+   "MEDIC PRIMAR Sectia CHIRURGIE SI ORTOPEDIE PEDIATRICA": {
+    "n": 6
+   },
+   "MEDIC PRIMAR Sectia OBSTETRICA-GINECOLOGIE II": {
+    "n": 6
+   },
+   "MEDIC PRIMAR CARDIOLOGIE - GARZI": {
+    "n": 6
+   },
+   "MEDIC PRIMAR LAB. RADIOLOGIE SI IMAGISTICA MEDICALA - GARZI": {
+    "n": 6
+   },
+   "MEDIC PRIMAR OBSTETRICA-GINECOLOGIE II - GARZI": {
+    "n": 6
+   },
+   "MEDIC SPECIALIST Gradatia 5 Sporurile din anexele 1, 2,3,5,8": {
+    "n": 6
+   },
+   "Compartiment ORL adulti Medic primar Gradatia 5 SUPERIOARE P": {
+    "n": 5
+   },
+   "COMPARTIMENT USTACC Medic primar ** Gradatia 5 SUPERIOARE Pe": {
+    "n": 5
+   },
+   "SECTIA CLINICA ATI I Medic primar ** Gradatia 4 SUPERIOARE P": {
+    "n": 5
+   },
+   "SECTIA CLINICA ATI II Medic primar ** Gradatia 4 SUPERIOARE ": {
+    "n": 5
+   },
+   "SECTIA CLINICA ATI II Medic specialist ** Gradatia 2 SUPERIO": {
+    "n": 5
+   },
+   "Sectia Clinica CARDIOLOGIE I Medic specialist Gradatia 2 SUP": {
+    "n": 5
+   },
+   "SECTIA CLINICA OBSTETRICA GINECOLOGIE I Medic specialist Gra": {
+    "n": 5
+   },
+   "SECTIA CLINICA ONCOLOGIE MEDICALA Medic primar Gradatia 3 SU": {
+    "n": 5
+   },
+   "SERVICIUL JUDETEAN DE MEDICINA LEGALA BIHOR Medic primar* Gr": {
+    "n": 5
+   },
+   "Centrul de Hemodializa MEDIC - PRIMAR S": {
+    "n": 5
+   },
+   "Compartiment Computer Tomograf MEDIC - PRIMAR S": {
+    "n": 5
+   },
+   "Sectia Clinica Neonatologie I MEDIC - SPECIALIST S": {
+    "n": 5
+   },
+   "Sectia Clinica O.R.L. MEDIC - SPECIALIST S": {
+    "n": 5
+   },
+   "Laborator Analize Medicale MEDIC - SPECIALIST S": {
+    "n": 5
+   },
+   "Cab.Diabet Zaharat,Nutritie si Boli Metab.-MEDICI MEDIC - PR": {
+    "n": 5
+   },
+   "MEDIC PRIMAR Gradatia 2": {
+    "n": 5
+   },
+   "SECTIA CHIRURGIE GENERALA MEDIC PRIMAR Gradatia 5": {
+    "n": 5
+   },
+   "GARZI - UPU MEDIC PRIMAR UPU Gradatia 5": {
+    "n": 5
+   },
+   "MEDIC PRIMAR Sectia ANESTEZIE-TERAPIE INTENSIVA": {
+    "n": 5
+   },
+   "MEDIC PRIMAR Sectia NEONATOLOGIE": {
+    "n": 5
+   },
+   "MEDIC PRIMAR Sectia NEUROLOGIE": {
+    "n": 5
+   },
+   "MEDIC PRIMAR Sectia O.R.L.": {
+    "n": 5
+   },
+   "MEDIC PRIMAR Sectia ORTOPEDIE-TRAUMATOLOGIE": {
+    "n": 5
+   },
+   "MEDIC PRIMAR SERVICIUL JUDETEAN DE MEDICINA LEGALA": {
+    "n": 5
+   },
+   "MEDIC PRIMAR CHIRURGIE SI ORTOPEDIE PEDIATRICA - GARZI": {
+    "n": 5
+   },
+   "MEDIC PRIMAR NEONATOLOGIE - GARZI": {
+    "n": 5
+   },
+   "MEDIC PRIMAR O.R.L. - GARZI": {
+    "n": 5
+   },
+   "MEDIC PRIMAR Serviciul Anatomie patologica": {
+    "n": 5
+   },
+   "MEDIC SPECIALIST Sectia Boli infectioase": {
+    "n": 5
+   },
+   "UPU MEDIC PRIMAR": {
+    "n": 5
+   },
+   "UPU MEDIC SPECIALIST": {
+    "n": 5
+   },
+   "MEDIC PRIMAR Gradatia 3 Sporurile din anexele 1, 2,3,5,8 sun": {
+    "n": 5
+   },
+   "COMPARTIMENT DIABET ZAHARAT,NUTRITIE SI BOL Medic primar Gra": {
+    "n": 4
+   },
+   "SECTIA CARDIOLOGIE II Medic primar Gradatia 5 SUPERIOARE Per": {
+    "n": 4
+   },
+   "SECTIA CARDIOLOGIE II Medic specialist Gradatia 2 SUPERIOARE": {
+    "n": 4
+   },
+   "SECTIA CLINICA BOLI INFECTIOASE I Medic specialist Gradatia ": {
+    "n": 4
+   },
+   "Sectia Clinica CARDIOLOGIE I Medic primar Gradatia 3 SUPERIO": {
+    "n": 4
+   },
+   "Sectia Clinica CHIRURGIE GENERALA I Medic primar cu activ. i": {
+    "n": 4
+   },
+   "Sectia Clinica CHIRURGIE GENERALA II Medic primar Gradatia 5": {
+    "n": 4
+   },
+   "Sectia Clinica CHIRURGIE PLASTICA, MICROCHIR. RE Medic prima": {
+    "n": 4
+   },
+   "Sectia Clinica MEDICINA INTERNA III Medic primar Gradatia 5 ": {
+    "n": 4
+   },
+   "Sectia Clinica MEDICINA INTERNA III Medic specialist Gradati": {
+    "n": 4
+   },
+   "Sectia Clinica ORTOPEDIE‐TRAUMATOLOGIE II Medic primar Grada": {
+    "n": 4
+   },
+   "Sectia Clinica PNEUMOLOGIE I Medic specialist Gradatia 2 SUP": {
+    "n": 4
+   },
+   "SECTIA CLINICA PSIHIATRIE I Medic primar Gradatia 5 SUPERIOA": {
+    "n": 4
+   },
+   "SECTIA CLINICA PSIHIATRIE III Medic specialist Gradatia 2 SU": {
+    "n": 4
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 Medic specialist ** Gradatia 4 S": {
+    "n": 4
+   },
+   "SECTIA CLINICA MEDICINA INTERNA I Medic primar Gradatia 5 SU": {
+    "n": 4
+   },
+   "LAB. ANGIOGRAFIE,CATETERISM CARDIAC SI CARD.I Medic primar G": {
+    "n": 4
+   },
+   "CHIRURGIE GENERALA II MEDIC PRIMAR SUPERIOARE Gradatia 5": {
+    "n": 4
+   },
+   "CHIRURGIE ORTOPEDIE INFANTILA MEDIC PRIMAR SUPERIOARE Gradat": {
+    "n": 4
+   },
+   "LABORATOR RADIOLOGIE SI IMAGISTICA MEDICALA MEDIC SPECIALIST": {
+    "n": 4
+   },
+   "NEUROLOGIE MEDIC SPECIALIST SUPERIOARE Gradatia 2": {
+    "n": 4
+   },
+   "O.R.L. MEDIC SPECIALIST SUPERIOARE Gradatia 5": {
+    "n": 4
+   },
+   "O.R.L. MEDIC PRIMAR SUPERIOARE Gradatia 5": {
+    "n": 4
+   },
+   "ORTOPEDIE TRAUMATOLOGIE MEDIC PRIMAR SUPERIOARE Gradatia 3": {
+    "n": 4
+   },
+   "ORTOPEDIE TRAUMATOLOGIE MEDIC SPECIALIST SUPERIOARE Gradatia": {
+    "n": 4
+   },
+   "SECTIA CLINICA MEDICINA INTERNA II MEDIC SPECIALIST SUPERIOA": {
+    "n": 4
+   },
+   "SECTIA HEMATOLOGIE MEDIC SPECIALIST SUPERIOARE Gradatia 3": {
+    "n": 4
+   },
+   "SECTIA MEDICINA INTERNA I MEDIC SPECIALIST SUPERIOARE Gradat": {
+    "n": 4
+   },
+   "SECTIA OBSTETRICA - GINECOLOGIE II MEDIC SPECIALIST SUPERIOA": {
+    "n": 4
+   },
+   "SECTIA PEDIATRIE MEDIC SPECIALIST SUPERIOARE Gradatia 2": {
+    "n": 4
+   },
+   "SECTIA PEDIATRIE MEDIC SPECIALIST SUPERIOARE Gradatia 3": {
+    "n": 4
+   },
+   "SECTIA PEDIATRIE MEDIC PRIMAR SUPERIOARE Gradatia 5": {
+    "n": 4
+   },
+   "SERVICIUL DE ANATOMIE PATOLOGICA MEDIC PRIMAR A.P./M.L. SUPE": {
+    "n": 4
+   },
+   "MEDICINA LEGALA MEDIC SPECIALIST din AP si ML SUPERIOARE Gra": {
+    "n": 4
+   },
+   "U.P.U. MEDIC PRIMAR U.P.U. SUPERIOARE Gradatia 5": {
+    "n": 4
+   },
+   "U.P.U. MEDIC SPECIALIST U.P.U. SUPERIOARE Gradatia 4": {
+    "n": 4
+   },
+   "medic primar responsabil formare rezidenti medicina de urgen": {
+    "n": 4
+   },
+   "Sectia Hematologie MEDIC - SPECIALIST S": {
+    "n": 4
+   },
+   "Comp. Cl. Diabet Zaharat, Nutritie si Boli Metabolice MEDIC ": {
+    "n": 4
+   },
+   "Sectia Clinica Dermato-Venerologie MEDIC - PRIMAR S": {
+    "n": 4
+   },
+   "Sectia Clinic Medicina-Interna II MEDIC - SPECIALIST S": {
+    "n": 4
+   },
+   "Laborator angiograf MEDIC - PRIMAR S": {
+    "n": 4
+   },
+   "Compartiment T.I. Neonatologie MEDIC - PRIMAR S": {
+    "n": 4
+   },
+   "Compartiment Chirurgie Orala si Maxilo-Faciala MEDIC - PRIMA": {
+    "n": 4
+   },
+   "Compartiment Chirurgie Orala si Maxilo-Faciala MEDIC - SPECI": {
+    "n": 4
+   },
+   "MEDIC SPECIALIST Gradatia 5": {
+    "n": 4
+   },
+   "SECTIA ORTOPEDIE SI TRAUMATOLOGIE MEDIC PRIMAR Gradatia 4": {
+    "n": 4
+   },
+   "SECTIA A.T.I MEDIC PRIMAR A.T.I. Gradatia 5": {
+    "n": 4
+   },
+   "GARZI - ORTOPEDIE MEDIC PRIMAR Gradatia 4": {
+    "n": 4
+   },
+   "GARZI - PSIHIATRIE MEDIC PRIMAR Gradatia 5": {
+    "n": 4
+   },
+   "GARZI - MEDICINA INTERNA II MEDIC PRIMAR Gradatia 5": {
+    "n": 4
+   },
+   "GARZI - ATI MEDIC PRIMAR Gradatia 5": {
+    "n": 4
+   },
+   "GARZI - ATI MEDIC SPECIALIST A.T.I. Gradatia 2": {
+    "n": 4
+   },
+   "MEDIC PRIMAR ANESTEZIE-TERAPIE INTENSIVA - MATERNITATE": {
+    "n": 4
+   },
+   "MEDIC SPECIALIST Sectia CARDIOLOGIE": {
+    "n": 4
+   },
+   "MEDIC PRIMAR Sectia GASTROENTEROLOGIE": {
+    "n": 4
+   },
+   "MEDIC PRIMAR Sectia OFTALMOLOGIE": {
+    "n": 4
+   },
+   "MEDIC PRIMAR SERVICIUL ANATOMIE PATOLOGICA": {
+    "n": 4
+   },
+   "MEDIC PRIMAR DIABET ZAHARAT, NUTRITIE SI B. MET. - GARZI": {
+    "n": 4
+   },
+   "MEDIC PRIMAR MEDICINA INTERNA - GARZI": {
+    "n": 4
+   },
+   "MEDIC PRIMAR NEUROCHIRURGIE GARZI": {
+    "n": 4
+   },
+   "MEDIC PRIMAR ORTOPEDIE SI TRAUMATOLOGIE - GARZI": {
+    "n": 4
+   },
+   "MEDIC PRIMAR PSIHIATRIE - GARZI": {
+    "n": 4
+   },
+   "MEDIC PRIMAR Sectia ORL": {
+    "n": 4
+   },
+   "MEDIC SPECIALIST Compartiment ATI Obstetrica Ginecologie": {
+    "n": 4
+   },
+   "MEDIC SPECIALIST Sectia Chirurgie si ortopedie infantila": {
+    "n": 4
+   },
+   "2026-02 MEDIC SPECIALIST APML (a.p./m.l.)": {
+    "n": 4
+   },
+   "MEDIC SPECIALIST Gradatia 4 Sporurile din anexele 1, 2,3,5,8": {
+    "n": 4
+   },
+   "Compartiment CHIRURGIE CARDIO‐VASCULARA Medic specialist Gra": {
+    "n": 3
+   },
+   "Compartiment CHIRURGIE VASCULARA Medic specialist Gradatia 3": {
+    "n": 3
+   },
+   "Compartiment Clinic OFTALMOLOGIE Medic primar Gradatia 5 SUP": {
+    "n": 3
+   },
+   "Compartiment ORL adulti Medic primar Gradatia 3 SUPERIOARE P": {
+    "n": 3
+   },
+   "Compartiment Radiologie interventionala‐Doja nr.6 Medic prim": {
+    "n": 3
+   },
+   "LAB.DE TOXICOLOGIE,HISTOPATOLOGIE SI BIOCRIM Medic primar* G": {
+    "n": 3
+   },
+   "Laborator de radiologie si imag.med‐C.Coposu (p.l) Medic spe": {
+    "n": 3
+   },
+   "Laborator de radiologie si imag.med‐str.Doja nr.65 Medic spe": {
+    "n": 3
+   },
+   "SECTIA CLINICA ATI III Medic primar ** Gradatia 5 SUPERIOARE": {
+    "n": 3
+   },
+   "SECTIA CLINICA ATI III Medic primar ** Gradatia 3 SUPERIOARE": {
+    "n": 3
+   },
+   "SECTIA CLINICA BOLI INFECTIOASE II Medic primar Gradatia 5 S": {
+    "n": 3
+   },
+   "Sectia Clinica CARDIOLOGIE I Medic primar Gradatia 5 SUPERIO": {
+    "n": 3
+   },
+   "Sectia Clinica CARDIOLOGIE I Medic primar cu activ. integrat": {
+    "n": 3
+   },
+   "SECTIA CLINICA CHIRURGIE GENERALA SI ONCOLOG Medic specialis": {
+    "n": 3
+   },
+   "Sectia Clinica CHIRURGIE PLASTICA, MICROCHIR. RE Medic speci": {
+    "n": 3
+   },
+   "SECTIA CLINICA HEMATOLOGIE Medic primar Gradatia 5 SUPERIOAR": {
+    "n": 3
+   },
+   "Sectia Clinica MEDICINA INTERNA III Medic primar Gradatia 4 ": {
+    "n": 3
+   },
+   "Sectia Clinica MEDICINA INTERNA III Medic primar cu activ. i": {
+    "n": 3
+   },
+   "SECTIA CLINICA NEONATOLOGIE Medic specialist Gradatia 2 SUPE": {
+    "n": 3
+   },
+   "Sectia Clinica NEUROCHIRURGIE Medic primar Gradatia 4 SUPERI": {
+    "n": 3
+   },
+   "SECTIA CLINICA ONCOLOGIE MEDICALA Medic primar Gradatia 5 SU": {
+    "n": 3
+   },
+   "SECTIA CLINICA PEDIATRIE I Medic specialist Gradatia 2 SUPER": {
+    "n": 3
+   },
+   "SECTIA CLINICA PEDIATRIE III Medic specialist Gradatia 2 SUP": {
+    "n": 3
+   },
+   "SECTIA CLINICA PSIHIATRIE I Medic primar cu activ. integrata": {
+    "n": 3
+   },
+   "Sectia Clinica UROLOGIE Medic primar Gradatia 5 SUPERIOARE P": {
+    "n": 3
+   },
+   "SECTIE RECUPERARE NEUROLOGICA Medic specialist Gradatia 3 SU": {
+    "n": 3
+   },
+   "SERVICIUL DE ANATOMIE PATOLOGICA‐str.Gh.Doja Medic primar* G": {
+    "n": 3
+   },
+   "SERVICIUL DE EVALUARE SI STATISTICA MEDICALA Medic primar Gr": {
+    "n": 3
+   },
+   "SERVICIUL JUDETEAN DE MEDICINA LEGALA BIHOR Medic primar* cu": {
+    "n": 3
+   },
+   "Compartiment ORL adulti Medic specialist Gradatia 2 SUPERIOA": {
+    "n": 3
+   },
+   "Sectia Clinica MEDICINA INTERNA I Medic specialist Gradatia ": {
+    "n": 3
+   },
+   "A.T.I. II MEDIC PRIMAR ATI SUPERIOARE Gradatia 5": {
+    "n": 3
+   },
+   "BOLI INFECTIOASE MEDIC PRIMAR SUPERIOARE Gradatia 5": {
+    "n": 3
+   },
+   "COMP. CHIRURGIE GENERALA II MEDIC PRIMAR SUPERIOARE Gradatia": {
+    "n": 3
+   },
+   "COMPARTIMENT DERMATOVENEROLOGIE MEDIC PRIMAR SUPERIOARE Grad": {
+    "n": 3
+   },
+   "GASTROENTEROLOGIE MEDIC PRIMAR SUPERIOARE Gradatia 5": {
+    "n": 3
+   },
+   "SECTIA CARDIOLOGIE MEDIC PRIMAR SUPERIOARE Gradatia 5": {
+    "n": 3
+   },
+   "SECTIA CLINICA CHIRURGIE GENERALA I MEDIC SPECIALIST SUPERIO": {
+    "n": 3
+   },
+   "SECTIA NEONATOLOGIE MEDIC PRIMAR SUPERIOARE Gradatia 5": {
+    "n": 3
+   },
+   "AMBULATORIUL INTEGRAT SPITALULUI MEDIC PRIMAR SUPERIOARE Gra": {
+    "n": 3
+   },
+   "COMISIE DE EXPERTIZA - ML MEDIC PRIMAR SUPERIOARE Gradatia 5": {
+    "n": 3
+   },
+   "medic primar anatomie patologica": {
+    "n": 3
+   },
+   "Sectia Clinica Neurochirurgie MEDIC - SPECIALIST S": {
+    "n": 3
+   },
+   "Sectia Clinica Recuperare, Medicina fizica si Balneo.II MEDI": {
+    "n": 3
+   },
+   "Ambulatoriu de Specialitate Stomatologie MEDIC - PRIMAR S": {
+    "n": 3
+   },
+   "Comp. de Prevenire si Control al Infectiilor Nozocomial MEDI": {
+    "n": 3
+   },
+   "Sectia Clinica Recuperare, Medicina fizica si Balneo. I MEDI": {
+    "n": 3
+   },
+   "Sectia Clinica Oncologie Medicala MEDIC - PRIMAR S": {
+    "n": 3
+   },
+   "Comp. radiologie, imagistica medicala neurologie MEDIC - SPE": {
+    "n": 3
+   },
+   "GINECOLOGIE MEDIC PRIMAR Gradatia 3": {
+    "n": 3
+   },
+   "OBSTETRICA MEDIC PRIMAR Gradatia 5": {
+    "n": 3
+   },
+   "OBSTETRICA MEDIC PRIMAR Gradatia 4": {
+    "n": 3
+   },
+   "OBSTETRICA MEDIC SPECIALIST Gradatia 2": {
+    "n": 3
+   },
+   "NEONATOLOGIE MEDIC SPECIALIST Gradatia 3": {
+    "n": 3
+   },
+   "COMP.CARDIOLOGIE MEDIC SPECIALIST Gradatia 2": {
+    "n": 3
+   },
+   "COMPARTIMENT UROLOGIE MEDIC SPECIALIST Gradatia 2": {
+    "n": 3
+   },
+   "SECTIA OBSTETRICA GINECOLOGIE MEDIC PRIMAR Gradatia 5": {
+    "n": 3
+   },
+   "COMP.PEDIATRIE MEDIC PRIMAR Gradatia 5": {
+    "n": 3
+   },
+   "SECTIA A.T.I MEDIC SPECIALIST A.T.I. Gradatia 2": {
+    "n": 3
+   },
+   "SECTIA NEUROLOGIE MEDIC SPECIALIST Gradatia 2": {
+    "n": 3
+   },
+   "SECTIA NEUROLOGIE MEDIC PRIMAR Gradatia 5": {
+    "n": 3
+   },
+   "SECTIA PSIHIATRIE ACUTI MEDIC PRIMAR Gradatia 5": {
+    "n": 3
+   },
+   "LABORATOR RAD.SI IMAGISTICA MED.COMPART.SPITAL MEDIC PRIMAR ": {
+    "n": 3
+   },
+   "GARZI - ORTOPEDIE MEDIC SPECIALIST Gradatia 2": {
+    "n": 3
+   },
+   "GARZI - BOLI INFECTIOASE MEDIC PRIMAR Gradatia 3": {
+    "n": 3
+   },
+   "GARZI - NEUROLOGIE MEDIC SPECIALIST Gradatia 2": {
+    "n": 3
+   },
+   "GARZI - NEUROLOGIE MEDIC PRIMAR Gradatia 5": {
+    "n": 3
+   },
+   "GARZI - PEDIATRIE MEDIC PRIMAR Gradatia 5": {
+    "n": 3
+   },
+   "GARZI - CARDIOLOGIE MEDIC SPECIALIST Gradatia 2": {
+    "n": 3
+   },
+   "GARZI - MEDICINA INTERNA I MEDIC PRIMAR Gradatia 5": {
+    "n": 3
+   },
+   "GARZI - MEDICINA INTERNA II MEDIC PRIMAR Gradatia 3": {
+    "n": 3
+   },
+   "GARZI - OBSTETRICA GINECOLOGIE MEDIC PRIMAR Gradatia 5": {
+    "n": 3
+   },
+   "MEDIC PRIMAR COMPARTIMENT REUMATOLOGIE": {
+    "n": 3
+   },
+   "MEDIC SPECIALIST Sectia ANESTEZIE-TERAPIE INTENSIVA": {
+    "n": 3
+   },
+   "MEDIC SPECIALIST Sectia CHIRURGIE GENERALA": {
+    "n": 3
+   },
+   "MEDIC PRIMAR Sectia MEDICINA INTERNA": {
+    "n": 3
+   },
+   "MEDIC SPECIALIST Sectia MEDICINA INTERNA": {
+    "n": 3
+   },
+   "MEDIC PRIMAR SECTIA NEUROCHIRURGIE": {
+    "n": 3
+   },
+   "MEDIC SPECIALIST UNITATE DE PRIMIRE URGENTE - SMURD": {
+    "n": 3
+   },
+   "MEDIC PRIMAR BOLI INFECTIOASE ADULTI - GARZI": {
+    "n": 3
+   },
+   "MEDIC SPECIALIST BOLI INFECTIOASE ADULTI - GARZI": {
+    "n": 3
+   },
+   "MEDIC SPECIALIST CARDIOLOGIE - GARZI": {
+    "n": 3
+   },
+   "MEDIC SPECIALIST CH CARDIOVASCULARA- GARZI": {
+    "n": 3
+   },
+   "MEDIC SPECIALIST PEDIATRIE - GARZI": {
+    "n": 3
+   },
+   "MEDIC PRIMAR Sectia ATI": {
+    "n": 3
+   },
+   "MEDIC PRIMAR Sectia Chirurgie si ortopedie infantila": {
+    "n": 3
+   },
+   "MEDIC PRIMAR Transplant": {
+    "n": 3
+   },
+   "MEDIC PRIMAR AMBULATORIUL INTEGRAT CU CABINETE IN SPECIALITA": {
+    "n": 3
+   },
+   "MEDIC PRIMAR Sectia Neonatologie": {
+    "n": 3
+   },
+   "MEDIC PRIMAR - GARZI Sectia Ortopedie si Traumatologie": {
+    "n": 3
+   },
+   "MEDIC PRIMAR - GARZI Sectia Obstretica Ginecologie": {
+    "n": 3
+   },
+   "MEDIC SPECIALIST Sectia Oncologie Medicala": {
+    "n": 3
+   },
+   "MEDIC SPECIALIST Sectia Pediatrie": {
+    "n": 3
+   },
+   "MEDIC SPECIALIST Sectia Cardiologie": {
+    "n": 3
+   },
+   "MEDIC SPECIALIST GARZI UPU - smurd": {
+    "n": 3
+   },
+   "AMBULATORIUL INTEGRAT‐str.C.Coposu nr.12 Medic primar Gradat": {
+    "n": 2
+   },
+   "AMBULATORIUL INTEGRAT‐str.Republicii nr.37 Medic primar Grad": {
+    "n": 2
+   },
+   "Centrul de Sanatate Mintala Adulti (CSM) Medic primar Gradat": {
+    "n": 2
+   },
+   "COMPARTIMENT CARDIOLOGIE INTERVENTIONALA Medic primar cu act": {
+    "n": 2
+   },
+   "COMPARTIMENT NEFROLOGIE Medic specialist Gradatia 2 SUPERIOA": {
+    "n": 2
+   },
+   "COMPARTIMENT PSIHIATRIE PEDIATRICA Medic specialist Gradatia": {
+    "n": 2
+   },
+   "Compartiment Reumatologie Medic primar Gradatia 5 SUPERIOARE": {
+    "n": 2
+   },
+   "Compartiment UAVCA Medic primar Gradatia 5 SUPERIOARE Person": {
+    "n": 2
+   },
+   "COMPARTIMENT USTACC Medic specialist Gradatia 2 SUPERIOARE P": {
+    "n": 2
+   },
+   "Dispensar TBC (Str. Alea Strandului nr. 18) Medic primar Gra": {
+    "n": 2
+   },
+   "LABORATOR ANALIZE MEDICALE‐str.Gh.Doja nr.65 Medic primar cu": {
+    "n": 2
+   },
+   "Laborator radioterapie ‐ str.C. Coposu nr.12 Medic primar Gr": {
+    "n": 2
+   },
+   "SECTIA CARDIOLOGIE II Medic primar Gradatia 4 SUPERIOARE Per": {
+    "n": 2
+   },
+   "SECTIA CLINICA ATI I Medic primar ** Gradatia 3 SUPERIOARE P": {
+    "n": 2
+   },
+   "SECTIA CLINICA ATI I Medic specialist ** Gradatia 5 SUPERIOA": {
+    "n": 2
+   },
+   "SECTIA CLINICA ATI II Medic specialist ** Gradatia 4 SUPERIO": {
+    "n": 2
+   },
+   "SECTIA CLINICA BOLI INFECTIOASE I Medic primar Gradatia 3 SU": {
+    "n": 2
+   },
+   "SECTIA CLINICA BOLI INFECTIOASE I Medic primar Gradatia 5 SU": {
+    "n": 2
+   },
+   "Sectia Clinica CARDIOLOGIE I Medic primar Gradatia 4 SUPERIO": {
+    "n": 2
+   },
+   "Sectia Clinica CHIRURGIE GENERALA I Medic primar Gradatia 4 ": {
+    "n": 2
+   },
+   "Sectia Clinica CHIRURGIE GENERALA II Medic primar Gradatia 4": {
+    "n": 2
+   },
+   "SECTIA CLINICA CHIRURGIE GENERALA SI ONCOLOG Medic primar Gr": {
+    "n": 2
+   },
+   "SECTIA CLINICA CHIRURGIE GENERALA SI ONCOLOG Medic primar cu": {
+    "n": 2
+   },
+   "Sectia Clinica DERMATOVENEROLOGIE Medic primar Gradatia 5 SU": {
+    "n": 2
+   },
+   "Sectia Clinica DERMATOVENEROLOGIE Medic primar cu activ. int": {
+    "n": 2
+   },
+   "Sectia Clinica GASTROENTEROLOGIE Medic primar Gradatia 5 SUP": {
+    "n": 2
+   },
+   "Sectia Clinica GASTROENTEROLOGIE Medic primar cu activ. inte": {
+    "n": 2
+   },
+   "SECTIA CLINICA HEMATOLOGIE Medic primar Gradatia 4 SUPERIOAR": {
+    "n": 2
+   },
+   "Sectia Clinica MEDICINA INTERNA I Medic primar cu activ. int": {
+    "n": 2
+   },
+   "SECTIA CLINICA MEDICINA INTERNA I Medic primar cu activ. int": {
+    "n": 2
+   },
+   "SECTIA CLINICA NEONATOLOGIE Medic primar Gradatia 4 SUPERIOA": {
+    "n": 2
+   },
+   "SECTIA CLINICA NEONATOLOGIE Medic primar Gradatia 5 SUPERIOA": {
+    "n": 2
+   },
+   "Sectia Clinica NEUROCHIRURGIE Medic specialist Gradatia 3 SU": {
+    "n": 2
+   },
+   "Sectia Clinica NEUROCHIRURGIE Medic specialist Gradatia 2 SU": {
+    "n": 2
+   },
+   "Sectia Clinica NEUROLOGIE I Medic primar Gradatia 3 SUPERIOA": {
+    "n": 2
+   },
+   "SECTIA CLINICA OBSTETRICA GINECOLOGIE I Medic primar cu acti": {
+    "n": 2
+   },
+   "SECTIA CLINICA ONCOLOGIE MEDICALA Medic specialist Gradatia ": {
+    "n": 2
+   },
+   "Sectia Clinica ORTOPEDIE‐TRAUMATOLOGIE I Medic primar Gradat": {
+    "n": 2
+   },
+   "Sectia Clinica ORTOPEDIE‐TRAUMATOLOGIE I Medic primar cu act": {
+    "n": 2
+   },
+   "Sectia Clinica ORTOPEDIE‐TRAUMATOLOGIE II Medic primar cu ac": {
+    "n": 2
+   },
+   "Sectia Clinica PNEUMOLOGIE I Medic primar Gradatia 4 SUPERIO": {
+    "n": 2
+   },
+   "SECTIA CLINICA PNEUMOLOGIE II Medic primar Gradatia 4 SUPERI": {
+    "n": 2
+   },
+   "SECTIA CLINICA PNEUMOLOGIE II Medic specialist Gradatia 3 SU": {
+    "n": 2
+   },
+   "SECTIA CLINICA PNEUMOLOGIE III Medic primar Gradatia 5 SUPER": {
+    "n": 2
+   },
+   "SECTIA CLINICA PSIHIATRIE II Medic primar Gradatia 4 SUPERIO": {
+    "n": 2
+   },
+   "SECTIA CLINICA PSIHIATRIE III Medic primar Gradatia 4 SUPERI": {
+    "n": 2
+   },
+   "SECTIA CLINICA PSIHIATRIE III Medic primar Gradatia 3 SUPERI": {
+    "n": 2
+   },
+   "SERVICIUL ANATOMIE PATOLOGICA‐str.Clujului (p.l) Medic prima": {
+    "n": 2
+   },
+   "SERVICIUL DE EVALUARE SI STATISTICA MEDICALA Medic specialis": {
+    "n": 2
+   },
+   "STATIA DE HEMODIALIZA I Medic primar Gradatia 5 SUPERIOARE P": {
+    "n": 2
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 Medic specialist ** Gradatia 5 S": {
+    "n": 2
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 Medic specialist ** Gradatia 3 S": {
+    "n": 2
+   },
+   "Sectia Clinica NEUROLOGIE I Medic specialist Gradatia 2 SUPE": {
+    "n": 2
+   },
+   "Sectia Clinica CHIRURGIE GENERALA II Medic specialist Gradat": {
+    "n": 2
+   },
+   "SECTIA CLINICA PSIHIATRIE II Medic specialist Gradatia 2 SUP": {
+    "n": 2
+   },
+   "SECTIA CLINICA PEDIATRIE II Medic primar Gradatia 5 SUPERIOA": {
+    "n": 2
+   },
+   "A.T.I. II MEDIC SPECIALIST ATI SUPERIOARE Gradatia 2": {
+    "n": 2
+   },
+   "A.T.I. II MEDIC PRIMAR ATI SUPERIOARE Gradatia 3": {
+    "n": 2
+   },
+   "BOLI INFECTIOASE MEDIC SPECIALIST SUPERIOARE Gradatia 5": {
+    "n": 2
+   },
+   "CHIRURGIE GENERALA II MEDIC PRIMAR SUPERIOARE Gradatia 4": {
+    "n": 2
+   },
+   "CHIRURGIE GENERALA II MEDIC PRIMAR SUPERIOARE Gradatia 3": {
+    "n": 2
+   },
+   "COMP. CHIRURGIE VASCULARA MEDIC SPECIALIST SUPERIOARE Gradat": {
+    "n": 2
+   },
+   "COMP. ENDOCRINOLOGIE MEDIC PRIMAR SUPERIOARE Gradatia 3": {
+    "n": 2
+   },
+   "COMP. ENDOCRINOLOGIE MEDIC PRIMAR SUPERIOARE Gradatia 5": {
+    "n": 2
+   },
+   "COMPARTIMENT ATI III MEDIC PRIMAR ATI SUPERIOARE Gradatia 2": {
+    "n": 2
+   },
+   "COMPARTIMENT ATI III MEDIC SPECIALIST ATI SUPERIOARE Gradati": {
+    "n": 2
+   },
+   "COMPARTIMENT ATI III MEDIC PRIMAR ATI SUPERIOARE Gradatia 5": {
+    "n": 2
+   },
+   "DIABET ZAHARAT, NUTRITIE SI BOLI METABOLICE MEDIC PRIMAR SUP": {
+    "n": 2
+   },
+   "DIABET ZAHARAT, NUTRITIE SI BOLI METABOLICE MEDIC SPECIALIST": {
+    "n": 2
+   },
+   "GASTROENTEROLOGIE MEDIC SPECIALIST SUPERIOARE Gradatia 2": {
+    "n": 2
+   },
+   "LABORATOR RADIOLOGIE SI IMAGISTICA MEDICALA MEDIC PRIMAR SUP": {
+    "n": 2
+   },
+   "NEUROLOGIE MEDIC SPECIALIST SUPERIOARE Gradatia 5": {
+    "n": 2
+   },
+   "NEUROLOGIE MEDIC PRIMAR SUPERIOARE Gradatia 3": {
+    "n": 2
+   },
+   "O.R.L. MEDIC PRIMAR SUPERIOARE Gradatia 3": {
+    "n": 2
+   },
+   "OFTALMOLOGIE MEDIC SPECIALIST SUPERIOARE Gradatia 3": {
+    "n": 2
+   },
+   "ONCOLOGIE MEDICALA MEDIC SPECIALIST SUPERIOARE Gradatia 5": {
+    "n": 2
+   },
+   "ONCOLOGIE MEDICALA MEDIC PRIMAR SUPERIOARE Gradatia 4": {
+    "n": 2
+   },
+   "ONCOLOGIE MEDICALA MEDIC PRIMAR SUPERIOARE Gradatia 5": {
+    "n": 2
+   },
+   "RECUPERARE, MEDICINA FIZICA, BALNEOLOGIE MEDIC SPECIALIST SU": {
+    "n": 2
+   },
+   "SECTIA CLINICA CHIR. PLASTICA SI MICROCHIR. RECUP. MEDIC PRI": {
+    "n": 2
+   },
+   "SECTIA HEMATOLOGIE MEDIC SPECIALIST SUPERIOARE Gradatia 2": {
+    "n": 2
+   },
+   "SECTIA HEMATOLOGIE MEDIC PRIMAR SUPERIOARE Gradatia 4": {
+    "n": 2
+   },
+   "SECTIA MEDICINA INTERNA I MEDIC PRIMAR SUPERIOARE Gradatia 4": {
+    "n": 2
+   },
+   "SECTIA NEONATOLOGIE MEDIC PRIMAR SUPERIOARE Gradatia 4": {
+    "n": 2
+   },
+   "SECTIA NEONATOLOGIE MEDIC PRIMAR SUPERIOARE Gradatia 3": {
+    "n": 2
+   },
+   "SECTIA OBSTETRICA - GINECOLOGIE I MEDIC SPECIALIST SUPERIOAR": {
+    "n": 2
+   },
+   "SECTIA PEDIATRIE MEDIC SPECIALIST SUPERIOARE Gradatia 5": {
+    "n": 2
+   },
+   "SECTIA PEDIATRIE MEDIC PRIMAR SUPERIOARE Gradatia 3": {
+    "n": 2
+   },
+   "SERV. DE PREVENIRE A INFECTIILOR ASOCIATE AS. MED. MEDIC SPE": {
+    "n": 2
+   },
+   "UROLOGIE MEDIC SPECIALIST SUPERIOARE Gradatia 3": {
+    "n": 2
+   },
+   "MEDICINA LEGALA MEDIC PRIMAR A.P./M.L. SUPERIOARE Gradatia 5": {
+    "n": 2
+   },
+   "AMBULATORIUL INTEGRAT SPITALULUI MEDIC SPECIALIST SUPERIOARE": {
+    "n": 2
+   },
+   "Sectia A.T.I. Obstetrica-Ginecologie MEDIC - PRIMAR S": {
+    "n": 2
+   },
+   "Sectia Clinica Prematuri MEDIC - PRIMAR S": {
+    "n": 2
+   },
+   "Sectia Clinica Prematuri MEDIC - SPECIALIST S": {
+    "n": 2
+   },
+   "Sectia Clinica Neurochirurgie MEDIC - PRIMAR S": {
+    "n": 2
+   },
+   "Sectia Clinica Urologie MEDIC - SPECIALIST S": {
+    "n": 2
+   },
+   "Compartiment Clinic Endocrinologie MEDIC - PRIMAR S": {
+    "n": 2
+   },
+   "Laborator Medicina Nucleara MEDIC - PRIMAR S": {
+    "n": 2
+   },
+   "Comp Studii Clinice si Siguranta Medicamentului MEDIC - PRIM": {
+    "n": 2
+   },
+   "Compartiment Nefrologie MEDIC - PRIMAR S": {
+    "n": 2
+   },
+   "Compartiment Reumatologie MEDIC - PRIMAR S": {
+    "n": 2
+   },
+   "Laborator angiograf MEDIC - SPECIALIST S": {
+    "n": 2
+   },
+   "Sectia Clinica Chirurgie Generala I MEDIC - SPECIALIST S": {
+    "n": 2
+   },
+   "Sectia Clinica Chirurg. Generala II MEDIC - SPECIALIST S": {
+    "n": 2
+   },
+   "Compartiment Terapie Intensiva - Neurologie,Chir.plasti MEDI": {
+    "n": 2
+   },
+   "Cabinet Medicina Dentara de Urgenta MEDIC - PRIMAR S": {
+    "n": 2
+   },
+   "Ambulatoriu integrat - ALTII MEDIC - SPECIALIST S": {
+    "n": 2
+   },
+   "GINECOLOGIE MEDIC PRIMAR Gradatia 5": {
+    "n": 2
+   },
+   "GINECOLOGIE MEDIC PRIMAR Gradatia 4": {
+    "n": 2
+   },
+   "A.T.I. MEDIC PRIMAR Gradatia 5": {
+    "n": 2
+   },
+   "13 PATURI MEDIC PRIMAR Gradatia 5": {
+    "n": 2
+   },
+   "SECTIA MEDICINA INTERNA MEDIC SPECIALIST Gradatia 2": {
+    "n": 2
+   },
+   "SECTIA MEDICINA INTERNA - COMP.REUMATOLOGIE MEDIC PRIMAR Gra": {
+    "n": 2
+   },
+   "SECTIA MEDICINA INTERNA - COMP.ENDOCRINOLOGIE MEDIC SPECIALI": {
+    "n": 2
+   },
+   "SECTIA GASTROENTEROLOGIE MEDIC PRIMAR Gradatia 3": {
+    "n": 2
+   },
+   "COMPARTIMENT NEFROLOGIE MEDIC PRIMAR Gradatia 5": {
+    "n": 2
+   },
+   "SECTIA ONCOLOGIE MEDICALA MEDIC PRIMAR Gradatia 5": {
+    "n": 2
+   },
+   "COMP.NEUROCHIRURGIE MEDIC PRIMAR Gradatia 5": {
+    "n": 2
+   },
+   "COMP.CHIRURGIE PLASTICA MICROCHIR MEDIC SPECIALIST Gradatia ": {
+    "n": 2
+   },
+   "SECTIA NEONATOLOGIE-COMP.PREMATURI MEDIC SPECIALIST Gradatia": {
+    "n": 2
+   },
+   "COMP.OFTALMOLOGIE MEDIC PRIMAR 1/2N Gradatia 5": {
+    "n": 2
+   },
+   "SECTIA ORTOPEDIE SI TRAUMATOLOGIE MEDIC PRIMAR Gradatia 3": {
+    "n": 2
+   },
+   "COMP. O.R.L MEDIC SPECIALIST Gradatia 2": {
+    "n": 2
+   },
+   "SECTIA A.T.I MEDIC PRIMAR A.T.I. Gradatia 3": {
+    "n": 2
+   },
+   "SECTIA PSIHIATRIE ACUTI MEDIC SPECIALIST Gradatia 2": {
+    "n": 2
+   },
+   "GARZI - ORTOPEDIE MEDIC PRIMAR Gradatia 3": {
+    "n": 2
+   },
+   "GARZI - NOU NASCUTI MEDIC PRIMAR Gradatia 4": {
+    "n": 2
+   },
+   "GARZI - NOU NASCUTI MEDIC SPECIALIST Gradatia 3": {
+    "n": 2
+   },
+   "GARZI - BOLI INFECTIOASE MEDIC PRIMAR Gradatia 4": {
+    "n": 2
+   },
+   "GARZI - PSIHIATRIE MEDIC SPECIALIST Gradatia 2": {
+    "n": 2
+   },
+   "GARZI - NEUROLOGIE MEDIC PRIMAR Gradatia 3": {
+    "n": 2
+   },
+   "GARZI - PEDIATRIE MEDIC SPECIALIST Gradatia 2": {
+    "n": 2
+   },
+   "GARZI - MEDICINA INTERNA I MEDIC SPECIALIST Gradatia 2": {
+    "n": 2
+   },
+   "GARZI - MEDICINA INTERNA II MEDIC SPECIALIST Gradatia 2": {
+    "n": 2
+   },
+   "GARZI - OBSTETRICA GINECOLOGIE MEDIC PRIMAR Gradatia 3": {
+    "n": 2
+   },
+   "GARZI - ATI MEDIC PRIMAR A.T.I. Gradatia 3": {
+    "n": 2
+   },
+   "GARZI - LABORATOR ANALIZE MEDICALE MEDIC PRIMAR Gradatia 5": {
+    "n": 2
+   },
+   "CENTRUL DE SANATATE MULTIFUNCTIONAL OCNA MURES MEDIC SPECIAL": {
+    "n": 2
+   },
+   "CABINET MEDICINA MUNCII MEDIC PRIMAR Gradatia 5": {
+    "n": 2
+   },
+   "UNITATE PRIMIRE URGENTE MEDIC SPECIALIST UPU Gradatia 4": {
+    "n": 2
+   },
+   "UNITATE PRIMIRE URGENTE MEDIC PRIMAR UPU Gradatia 4": {
+    "n": 2
+   },
+   "UNITATE PRIMIRE URGENTE MEDIC SPECIALIST UPU Gradatia 2": {
+    "n": 2
+   },
+   "GARZI - UPU/SMURD MEDIC SPECIALIST UPU Gradatia 2": {
+    "n": 2
+   },
+   "GARZI - UPU MEDIC SPECIALIST UPU Gradatia 4": {
+    "n": 2
+   },
+   "GARZI - UPU MEDIC PRIMAR UPU Gradatia 4": {
+    "n": 2
+   },
+   "MEDIC SPECIALIST Cabinet MEDICINA MUNCII": {
+    "n": 2
+   },
+   "MEDIC PRIMAR CENTRU DE SANATATE MINTALA (CSM)": {
+    "n": 2
+   },
+   "MEDIC SPECIALIST COMPARTIMENT CHIRURGIE CARDIOVASCULARA": {
+    "n": 2
+   },
+   "MEDIC PRIMAR COMPARTIMENT DE PREV. A INF. ASOCIATE ASIST. ME": {
+    "n": 2
+   },
+   "MEDIC PRIMAR COMPARTIMENT NEFROLOGIE": {
+    "n": 2
+   },
+   "MEDIC SPECIALIST COMPARTIMENT RADIOTERAPIE": {
+    "n": 2
+   },
+   "MEDIC SPECIALIST LAB. RADIOTERAPIE": {
+    "n": 2
+   },
+   "MEDIC SPECIALIST COMPARTIMENT A.T.I. copii": {
+    "n": 2
+   },
+   "MEDIC PRIMAR Sectia BOLI INFECTIOASE ADULTI": {
+    "n": 2
+   },
+   "MEDIC SPECIALIST Sectia BOLI INFECTIOASE ADULTI": {
+    "n": 2
+   },
+   "MEDIC PRIMAR Sectia BOLI INFECTIOASE COPII": {
+    "n": 2
+   },
+   "MEDIC SPECIALIST Sectia BOLI INFECTIOASE COPII": {
+    "n": 2
+   },
+   "MEDIC PRIMAR Sectia CHIRURGIE PLASTICA-MICROCHIR.RECONSTRUCT": {
+    "n": 2
+   },
+   "MEDIC PRIMAR Sectia DERMATO-VENEROLOGIE": {
+    "n": 2
+   },
+   "MEDIC SPECIALIST Sectia ENDOCRINOLOGIE": {
+    "n": 2
+   },
+   "MEDIC PRIMAR SECTIA INGRIJIRI PALIATIVE": {
+    "n": 2
+   },
+   "MEDIC SPECIALIST Sectia ORTOPEDIE-TRAUMATOLOGIE": {
+    "n": 2
+   },
+   "MEDIC SPECIALIST Sectia PEDIATRIE": {
+    "n": 2
+   },
+   "MEDIC PRIMAR Sectia PSIHIATRIE": {
+    "n": 2
+   },
+   "MEDIC PRIMAR BOLI INFECTIOASE COPII GARZI": {
+    "n": 2
+   },
+   "MEDIC PRIMAR CHIRURGIE PLASTICA -MICROCHIRURG RECONSTRUCT GA": {
+    "n": 2
+   },
+   "MEDIC PRIMAR I.S.U. - GARZI": {
+    "n": 2
+   },
+   "MEDIC SPECIALIST I.S.U. - GARZI": {
+    "n": 2
+   },
+   "MEDIC PRIMAR LAB.MICROBIOLOGIE -GARZI": {
+    "n": 2
+   },
+   "MEDIC SPECIALIST MEDICINA INTERNA - GARZI": {
+    "n": 2
+   },
+   "MEDIC PRIMAR NEFROLOGIE GARZI": {
+    "n": 2
+   },
+   "MEDIC SPECIALIST O.R.L. - GARZI": {
+    "n": 2
+   },
+   "MEDIC SPECIALIST ORTOPEDIE SI TRAUMATOLOGIE - GARZI": {
+    "n": 2
+   },
+   "MEDIC SPECIALIST PSIHIATRIE - GARZI": {
+    "n": 2
+   },
+   "MEDIC PRIMAR SERVICIUL JUD. MEDICINA LEGALA - GARZI": {
+    "n": 2
+   },
+   "MEDIC PRIMAR U.P.U. - GARZI": {
+    "n": 2
+   },
+   "MEDIC PRIMAR Sectia Urologie": {
+    "n": 2
+   },
+   "MEDIC PRIMAR Compartiment Oftalmologie": {
+    "n": 2
+   },
+   "MEDIC PRIMAR Dispensar TBC": {
+    "n": 2
+   },
+   "MEDIC PRIMAR Compartiment Chirurgie plastica, microchirurgie": {
+    "n": 2
+   },
+   "MEDIC PRIMAR CENTRU DE SANATATE MULTIFUNCTIONAL PARSCOV": {
+    "n": 2
+   },
+   "MEDIC PRIMAR Compartiment ATI Obstetrica Ginecologie": {
+    "n": 2
+   },
+   "MEDIC PRIMAR Sectia Medicina interna": {
+    "n": 2
+   },
+   "MEDIC PRIMAR - GARZI Sectia Neurologie": {
+    "n": 2
+   },
+   "MEDIC PRIMAR - GARZI Sectia Chirurgie generala": {
+    "n": 2
+   },
+   "MEDIC PRIMAR - GARZI UPU - smurd": {
+    "n": 2
+   },
+   "MEDIC SPECIALIST RADIOLOGIE – Laborator Radiologie si Imagis": {
+    "n": 2
+   },
+   "MEDIC SPECIALIST Sectia ORL": {
+    "n": 2
+   },
+   "MEDIC SPECIALIST Sectia Gastroenterologie": {
+    "n": 2
+   },
+   "MEDIC SPECIALIST Sectia Ortopedie si Traumatologie": {
+    "n": 2
+   },
+   "MEDIC SPECIALIST Serviciul Judetean de Medicina Legala": {
+    "n": 2
+   },
+   "MEDIC SPECIALIST GARZI Sectia Obstretica Ginecologie": {
+    "n": 2
+   },
+   "MEDIC SPECIALIST GARZI Sectia Chirurgie generala": {
+    "n": 2
+   },
+   "ATI MEDIC PRIMAR": {
+    "n": 2
+   },
+   "MEDIC SPECIALIST nespecificat Gradatia": {
+    "n": 2
+   },
+   "MEDIC SPECIALIST DIN ANATOMIA PASUPERIOARE Gradatia": {
+    "n": 2
+   },
+   "MEDIC SPECIALIST Gradatia 1 Sporurile din anexele 1, 2,3,5,8": {
+    "n": 2
+   },
+   "Medic primar S": {
+    "n": 1
+   },
+   "Medic specialist S": {
+    "n": 1
+   },
+   "medic specialist 1/2 normă": {
+    "n": 1
+   },
+   "medic specialist stomatolog coordonat": {
+    "n": 1
+   },
+   "medic specialist stomatolog": {
+    "n": 1
+   },
+   "Medic primar, gradație vechime (1/2 normă)": {
+    "n": 1
+   },
+   "Medic specialist, gradație vechime 5 (1/2 normă)": {
+    "n": 1
+   },
+   "Medic specialist, gradație vechime 3": {
+    "n": 1
+   },
+   "MEDIC primar S": {
+    "n": 1
+   },
+   "MEDIC specialist S": {
+    "n": 1
+   },
+   "L84 MEDIC PRIMAR": {
+    "n": 1
+   },
+   "18s MEDIC PRIMAR": {
+    "n": 1
+   },
+   "11 Medic primar Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "12 Medic primar Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "13 Medic primar Gradatia 4 Contractual": {
+    "n": 1
+   },
+   "14 Medic primar Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "15 Medic primar Gradatia 2 Contractual": {
+    "n": 1
+   },
+   "16 Medic primar Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "17 Medic primar Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "18 Medic primar Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "19 Medic primar Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "20 Medic primar Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "21 Medic primar Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "22 Medic primar Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "23 Medic primar Gradatia 3 Contractual": {
+    "n": 1
+   },
+   "24 Medic primar Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "25 Medic primar Gradatia 3 Contractual": {
+    "n": 1
+   },
+   "26 Medic primar Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "27 Medic primar Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "28 Medic primar Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "29 Medic primar Gradatia 3 Contractual": {
+    "n": 1
+   },
+   "30 Medic primar Gradatia 3 Contractual": {
+    "n": 1
+   },
+   "31 Medic primar Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "32 Medic primar Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "33 Medic primar Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "34 Medic primar Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "35 Medic primar Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "36 Medic primar Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "37 Medic primar Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "38 Medic primar Gradatia 4 Contractual": {
+    "n": 1
+   },
+   "39 Medic primar Gradatia 4 Contractual": {
+    "n": 1
+   },
+   "40 Medic primar Gradatia 3 Contractual": {
+    "n": 1
+   },
+   "41 Medic primar Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "42 Medic primar Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "43 Medic primar Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "44 Medic primar Gradatia 3 Contractual": {
+    "n": 1
+   },
+   "45 Medic primar Gradatia 3 Contractual": {
+    "n": 1
+   },
+   "46 Medic primar Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "47 Medic primar Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "48 Medic primar Gradatia 4 Contractual": {
+    "n": 1
+   },
+   "49 Medic primar Gradatia 4 Contractual": {
+    "n": 1
+   },
+   "50 Medic primar Gradatia 4 Contractual": {
+    "n": 1
+   },
+   "51 Medic primar Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "52 Medic primar Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "53 Medic primar Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "54 Medic primar Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "55 Medic primar Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "56 Medic primar Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "57 Medic primar Gradatia 3 Contractual": {
+    "n": 1
+   },
+   "58 Medic primar Gradatia 3 Contractual": {
+    "n": 1
+   },
+   "59 Medic primar - ti Gradatia 4 Contractual": {
+    "n": 1
+   },
+   "60 Medic primar anat patol Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "61 Medic specialist Gradatia 3 Contractual": {
+    "n": 1
+   },
+   "62 Medic specialist Gradatia 3 Contractual": {
+    "n": 1
+   },
+   "63 Medic specialist Gradatia 3 Contractual": {
+    "n": 1
+   },
+   "64 Medic specialist Gradatia 3 Contractual": {
+    "n": 1
+   },
+   "65 Medic specialist Gradatia 3 Contractual": {
+    "n": 1
+   },
+   "66 Medic specialist Gradatia 2 Contractual": {
+    "n": 1
+   },
+   "67 Medic specialist Gradatia 3 Contractual": {
+    "n": 1
+   },
+   "68 Medic specialist Gradatia 3 Contractual": {
+    "n": 1
+   },
+   "69 Medic specialist Gradatia 2 Contractual": {
+    "n": 1
+   },
+   "70 Medic specialist Gradatia 2 Contractual": {
+    "n": 1
+   },
+   "71 Medic specialist Gradatia 2 Contractual": {
+    "n": 1
+   },
+   "72 Medic specialist Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "73 Medic specialist Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "74 Medic specialist Gradatia 2 Contractual": {
+    "n": 1
+   },
+   "75 Medic specialist Gradatia 2 Contractual": {
+    "n": 1
+   },
+   "76 Medic specialist Gradatia 2 Contractual": {
+    "n": 1
+   },
+   "77 Medic specialist Gradatia 2 Contractual": {
+    "n": 1
+   },
+   "78 Medic specialist - ti Gradatia 2 Contractual": {
+    "n": 1
+   },
+   "79 Medic specialist - ti Gradatia 2 Contractual": {
+    "n": 1
+   },
+   "80 Medic specialist - ti Gradatia 2 Contractual": {
+    "n": 1
+   },
+   "81 Medic specialist - ti Gradatia 5 Contractual": {
+    "n": 1
+   },
+   "82 Medic specialist - ti Gradatia 3 Contractual": {
+    "n": 1
+   },
+   "83 Medic specialist - ti Gradatia 3 Contractual": {
+    "n": 1
+   },
+   "84 Medic specialist - ti Gradatia 2 Contractual": {
+    "n": 1
+   },
+   "85 Medic specialist - ti Gradatia 3 Contractual": {
+    "n": 1
+   },
+   "86 Medic specialist - ti Gradatia 3 Contractual": {
+    "n": 1
+   },
+   "AMBULATORIUL DE SPECIALITATE PENTRU SPORTIV Medic primar Gra": {
+    "n": 1
+   },
+   "AMBULATORIUL DE SPECIALITATE PENTRU SPORTIV Medic specialist": {
+    "n": 1
+   },
+   "AMBULATORIUL INTEGRAT‐str.Clujului nr.50 Medic primar Gradat": {
+    "n": 1
+   },
+   "AMBULATORIUL INTEGRAT‐str.Republicii nr.37 Medic specialist ": {
+    "n": 1
+   },
+   "CABINET MEDICINA MUNCII Medic primar Gradatia 5 SUPERIOARE P": {
+    "n": 1
+   },
+   "CABINET PLANIFICARE FAMILIALA Medic specialist Gradatia 2 SU": {
+    "n": 1
+   },
+   "Centrul de Sanatate Mintala Adulti (CSM) Medic specialist Gr": {
+    "n": 1
+   },
+   "Compartiment Alergologie si Imunologie clinica Medic primar ": {
+    "n": 1
+   },
+   "Compartiment ARSI Medic primar cu activ. integrata Gradatia ": {
+    "n": 1
+   },
+   "COMPARTIMENT CARDIOLOGIE INTERVENTIONALA Medic primar Gradat": {
+    "n": 1
+   },
+   "COMPARTIMENT CARDIOLOGIE INTERVENTIONALA Medic specialist Gr": {
+    "n": 1
+   },
+   "Compartiment Clinic OFTALMOLOGIE Medic primar Gradatia 3 SUP": {
+    "n": 1
+   },
+   "Compartiment Clinic OFTALMOLOGIE Medic primar cu activ. inte": {
+    "n": 1
+   },
+   "COMPARTIMENT DIABET ZAHARAT,NUTRITIE SI BOL Medic primar cu ": {
+    "n": 1
+   },
+   "Compartiment Endocrinologie Medic primar Gradatia 5 SUPERIOA": {
+    "n": 1
+   },
+   "Compartiment Endocrinologie Medic primar cu activ. integrata": {
+    "n": 1
+   },
+   "Compartiment Endocrinologie Medic specialist Gradatia 4 SUPE": {
+    "n": 1
+   },
+   "Compartiment Endocrinologie Medic specialist Gradatia 3 SUPE": {
+    "n": 1
+   },
+   "COMPARTIMENT GENETICA MEDICALA Medic primar Gradatia 5 SUPER": {
+    "n": 1
+   },
+   "Compartiment Neurologie II Medic primar Gradatia 3 SUPERIOAR": {
+    "n": 1
+   },
+   "Compartiment Neurologie II Medic specialist Gradatia 3 SUPER": {
+    "n": 1
+   },
+   "COMPARTIMENT NEUROLOGIE PEDIATRICA Medic primar Gradatia 5 S": {
+    "n": 1
+   },
+   "COMPARTIMENT NEUROLOGIE PEDIATRICA Medic specialist Gradatia": {
+    "n": 1
+   },
+   "Compartiment ORL adulti Medic primar cu activ. integrata Gra": {
+    "n": 1
+   },
+   "Compartiment ORL pediatrie Medic primar Gradatia 5 SUPERIOAR": {
+    "n": 1
+   },
+   "Compartiment ORL pediatrie Medic primar cu activ. integrata ": {
+    "n": 1
+   },
+   "COMPARTIMENT PREMATURI Medic primar Gradatia 3 SUPERIOARE Pe": {
+    "n": 1
+   },
+   "COMPARTIMENT PREMATURI Medic primar cu activ. integrata Grad": {
+    "n": 1
+   },
+   "COMPARTIMENT PSIHIATRIE PEDIATRICA Medic primar Gradatia 4 S": {
+    "n": 1
+   },
+   "Compartiment RADIOTERAPIE Medic primar Gradatia 5 SUPERIOARE": {
+    "n": 1
+   },
+   "Compartiment RADIOTERAPIE Medic specialist Gradatia 5 SUPERI": {
+    "n": 1
+   },
+   "Compartiment Reumatologie Medic specialist Gradatia 2 SUPERI": {
+    "n": 1
+   },
+   "COMPARTIMENT USTACC Medic primar** cu activ. integrataGradat": {
+    "n": 1
+   },
+   "Laborator de explorari functionale‐L.Pasteur (p.l) Medic pri": {
+    "n": 1
+   },
+   "Laborator de radiologie si imag.med‐str.Clujului Medic prima": {
+    "n": 1
+   },
+   "Laborator de radiologie si imag.med‐str.Izvorului Medic prim": {
+    "n": 1
+   },
+   "Laborator de radiologie si imag.med‐str.L Pasteur Medic prim": {
+    "n": 1
+   },
+   "LABORATOR MEDICINA NUCLEARA‐str.Republicii nr.Medic primar G": {
+    "n": 1
+   },
+   "Oftalmologie pediatrica Medic primar Gradatia 5 SUPERIOARE P": {
+    "n": 1
+   },
+   "SECTIA CLINICA ATI III Medic specialist ** Gradatia 2 SUPERI": {
+    "n": 1
+   },
+   "SECTIA CLINICA ATI I Medic primar** cu activ. integrataGrada": {
+    "n": 1
+   },
+   "SECTIA CLINICA ATI II Medic specialist ** Gradatia 3 SUPERIO": {
+    "n": 1
+   },
+   "SECTIA CLINICA BOLI INFECTIOASE II Medic specialist cu activ": {
+    "n": 1
+   },
+   "Sectia Clinica DERMATOVENEROLOGIE Medic specialist Gradatia ": {
+    "n": 1
+   },
+   "Sectia Clinica GASTROENTEROLOGIE Medic specialist Gradatia 2": {
+    "n": 1
+   },
+   "Sectia Clinica GASTROENTEROLOGIE Medic specialist cu activ. ": {
+    "n": 1
+   },
+   "SECTIA CLINICA MEDICINA INTERNA I Medic primar Gradatia 3 SU": {
+    "n": 1
+   },
+   "SECTIA CLINICA NEFROLOGIE Medic primar Gradatia 4 SUPERIOARE": {
+    "n": 1
+   },
+   "SECTIA CLINICA NEFROLOGIE Medic primar Gradatia 5 SUPERIOARE": {
+    "n": 1
+   },
+   "SECTIA CLINICA NEFROLOGIE Medic primar cu activ. integrata G": {
+    "n": 1
+   },
+   "Sectia Clinica NEUROCHIRURGIE Medic primar cu activ. integra": {
+    "n": 1
+   },
+   "Sectia Clinica NEUROLOGIE I Medic primar cu activ. integrata": {
+    "n": 1
+   },
+   "SECTIA CLINICA ONCOLOGIE MEDICALA Medic primar Gradatia 4 SU": {
+    "n": 1
+   },
+   "SECTIA CLINICA PEDIATRIE I Medic specialist Gradatia 4 SUPER": {
+    "n": 1
+   },
+   "SECTIA CLINICA PEDIATRIE II Medic primar cu activ. integrata": {
+    "n": 1
+   },
+   "SECTIA CLINICA PEDIATRIE II Medic specialist Gradatia 5 SUPE": {
+    "n": 1
+   },
+   "SECTIA CLINICA PEDIATRIE III Medic primar Gradatia 5 SUPERIO": {
+    "n": 1
+   },
+   "SECTIA CLINICA PEDIATRIE III Medic primar cu activ. integrat": {
+    "n": 1
+   },
+   "Sectia Clinica PNEUMOLOGIE I Medic primar Gradatia 5 SUPERIO": {
+    "n": 1
+   },
+   "SECTIA CLINICA PNEUMOLOGIE II Medic primar Gradatia 5 SUPERI": {
+    "n": 1
+   },
+   "SECTIA CLINICA PSIHIATRIE II Medic primar Gradatia 3 SUPERIO": {
+    "n": 1
+   },
+   "SECTIA CLINICA PSIHIATRIE III Medic primar Gradatia 5 SUPERI": {
+    "n": 1
+   },
+   "Sectia Clinica UROLOGIE Medic primar Gradatia 3 SUPERIOARE P": {
+    "n": 1
+   },
+   "Sectia Clinica UROLOGIE Medic primar Gradatia 4 SUPERIOARE P": {
+    "n": 1
+   },
+   "Sectia Clinica UROLOGIE Medic primar cu activ. integrata Gra": {
+    "n": 1
+   },
+   "SECTIA INGRIJIRI PALEATIVE Medic primar Gradatia 5 SUPERIOAR": {
+    "n": 1
+   },
+   "SERVICIUL DE ANATOMIE PATOLOGICA‐str.Gh.Doja Medic primar Gr": {
+    "n": 1
+   },
+   "UNITATE DE TRANSFUZIE SANGUINA‐str.Ghe.Doja n Medic speciali": {
+    "n": 1
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 Medic primar Gradatia 5 SUPERIOA": {
+    "n": 1
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 Medic specialist Gradatia 3 SUPE": {
+    "n": 1
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 Medic primar** cu activ. integra": {
+    "n": 1
+   },
+   "Compartiment Clinic OFTALMOLOGIE Medic specialist Gradatia 1": {
+    "n": 1
+   },
+   "Compartiment ORL adulti Medic specialist Gradatia 3 SUPERIOA": {
+    "n": 1
+   },
+   "Sectia Clinica ORTOPEDIE‐TRAUMATOLOGIE II Medic specialist G": {
+    "n": 1
+   },
+   "Sectia Clinica ORTOPEDIE‐TRAUMATOLOGIE I Medic specialist Gr": {
+    "n": 1
+   },
+   "SECTIA CLINICA ATI I Medic specialist Gradatia 2 SUPERIOARE ": {
+    "n": 1
+   },
+   "Sectia Clinica CARDIOLOGIE I Medic specialist Gradatia 3 SUP": {
+    "n": 1
+   },
+   "SECTIA CLINICA HEMATOLOGIE Medic specialist Gradatia 4 SUPER": {
+    "n": 1
+   },
+   "SECTIA CLINICA HEMATOLOGIE Medic specialist Gradatia 2 SUPER": {
+    "n": 1
+   },
+   "Sectia Clinica NEUROCHIRURGIE Medic primar Gradatia 5 SUPERI": {
+    "n": 1
+   },
+   "Sectia Clinica CHIRURGIE GENERALA I Medic specialist BAZA SU": {
+    "n": 1
+   },
+   "SECTIA CLINICA PEDIATRIE II Medic primar Gradatia 4 SUPERIOA": {
+    "n": 1
+   },
+   "SECTIA CARDIOLOGIE II Medic specialist Gradatia 5 SUPERIOARE": {
+    "n": 1
+   },
+   "COMPARTIMENT PSIHIATRIE PEDIATRICA Medic primar Gradatia 5 S": {
+    "n": 1
+   },
+   "SECTIA CLINICA MEDICINA INTERNA I Medic primar Gradatia 4 SU": {
+    "n": 1
+   },
+   "SECTIA CLINICA ATI III Medic specialist Gradatia 2 SUPERIOAR": {
+    "n": 1
+   },
+   "SECTIA CLINICA ATI III Medic specialist ** Gradatia 4 SUPERI": {
+    "n": 1
+   },
+   "SECTIA CLINICA NEONATOLOGIE Medic primar Gradatia 3 SUPERIOA": {
+    "n": 1
+   },
+   "SECTIA CLINICA BOLI INFECTIOASE II Medic specialist Gradatia": {
+    "n": 1
+   },
+   "LAB. ANGIOGRAFIE,CATETERISM CARDIAC SI CARD.I Medic speciali": {
+    "n": 1
+   },
+   "SERVICIUL JUDETEAN DE MEDICINA LEGALA BIHOR Medic specialist": {
+    "n": 1
+   },
+   "A.T.I. MEDIC PRIMAR ATI SUPERIOARE Gradatia 5": {
+    "n": 1
+   },
+   "COMP. CHIRURGIE VASCULARA MEDIC PRIMAR SUPERIOARE Gradatia 5": {
+    "n": 1
+   },
+   "COMP. ENDOCRINOLOGIE MEDIC PRIMAR SUPERIOARE Gradatia 4": {
+    "n": 1
+   },
+   "COMP. NEFROLOGIE MEDIC PRIMAR SUPERIOARE Gradatia 5": {
+    "n": 1
+   },
+   "COMP. REUMATOLOGIE MEDIC PRIMAR SUPERIOARE Gradatia 4": {
+    "n": 1
+   },
+   "COMP. REUMATOLOGIE MEDIC SPECIALIST SUPERIOARE Gradatia 3": {
+    "n": 1
+   },
+   "COMP. REUMATOLOGIE MEDIC PRIMAR SUPERIOARE Gradatia 5": {
+    "n": 1
+   },
+   "COMPARTIMENT ATI III MEDIC PRIMAR SUPERIOARE Gradatia 5": {
+    "n": 1
+   },
+   "LAB.RADIOTERAPIE MEDIC PRIMAR SUPERIOARE Gradatia 4": {
+    "n": 1
+   },
+   "LABORATOR ANALIZE MEDICALE - CORP D MEDIC PRIMAR LABORATOR S": {
+    "n": 1
+   },
+   "LABORATOR ANALIZE MEDICALE - CORP D MEDIC PRIMAR SUPERIOARE ": {
+    "n": 1
+   },
+   "LABORATOR RADIOLOGIE SI IMAGISTICA MEDICALA MEDIC PRIMAR LAB": {
+    "n": 1
+   },
+   "RECUPERARE, MEDICINA FIZICA, BALNEOLOGIE MEDIC PRIMAR SUPERI": {
+    "n": 1
+   },
+   "SECTIA CARDIOLOGIE MEDIC PRIMAR ATI SUPERIOARE Gradatia 5": {
+    "n": 1
+   },
+   "SECTIA CLINICA CHIR. PLASTICA SI MICROCHIR. RECUP. MEDIC SPE": {
+    "n": 1
+   },
+   "SERV. DE PREVENIRE A INFECTIILOR ASOCIATE AS. MED. MEDIC PRI": {
+    "n": 1
+   },
+   "STATIE HEMODIALIZA MEDIC PRIMAR SUPERIOARE Gradatia 4": {
+    "n": 1
+   },
+   "SERVICIUL DE ANATOMIE PATOLOGICA MEDIC SPECIALIST din AP si ": {
+    "n": 1
+   },
+   "SERVICIUL DE ANATOMIE PATOLOGICA MEDIC PRIMAR A.P./ M.L SUPE": {
+    "n": 1
+   },
+   "MEDICINA LEGALA MEDIC PRIMAR A.P./ M.L SUPERIOARE Gradatia 5": {
+    "n": 1
+   },
+   "U.P.U. MEDIC SPECIALIST U.P.U. SUPERIOARE Gradatia 5": {
+    "n": 1
+   },
+   "U.P.U. MEDIC SPECIALIST SUPERIOARE Gradatia 5": {
+    "n": 1
+   },
+   "LAB. RECUPERARE MEDICINA FIZICA SI BALNEOLOGIE MEDIC SPECIAL": {
+    "n": 1
+   },
+   "asistent cercetare-medic primar": {
+    "n": 1
+   },
+   "asistent cercetare - medic specialist": {
+    "n": 1
+   },
+   "medic specialist responsabil formare rezidenti medicina de u": {
+    "n": 1
+   },
+   "medic specialist anatomie patologica": {
+    "n": 1
+   },
+   "Medic primar COORDONATORI SUPERIOARE ( S )": {
+    "n": 1
+   },
+   "Sectia Clinica Cardiologie II MEDIC - SPECIALIST S": {
+    "n": 1
+   },
+   "Unitatea de Transfuzii Sanguine MEDIC - SPECIALIST S": {
+    "n": 1
+   },
+   "Compartiment Clinic Endocrinologie MEDIC - SPECIALIST S": {
+    "n": 1
+   },
+   "Centrul de Hemodializa MEDIC - SPECIALIST S": {
+    "n": 1
+   },
+   "Compartiment Computer Tomograf MEDIC - SPECIALIST S": {
+    "n": 1
+   },
+   "Serviciul de Anatomie Patologica MEDIC - SPECIALIST S": {
+    "n": 1
+   },
+   "DISP.POL.MED. SPORTIVA MEDIC - PRIMAR S": {
+    "n": 1
+   },
+   "Comp. management al calitatii serviciilor medicale MEDIC - P": {
+    "n": 1
+   },
+   "Comp. management al calitatii serviciilor medicale MEDIC - S": {
+    "n": 1
+   },
+   "Sectia Clinica Medicina Interna I MEDIC - SPECIALIST S": {
+    "n": 1
+   },
+   "Comp.alerg.si imun.clinica MEDIC - PRIMAR S": {
+    "n": 1
+   },
+   "Compartiment Dializa peritoneala MEDIC - PRIMAR S": {
+    "n": 1
+   },
+   "Sectia Clinica Oncologie Medicala MEDIC - SPECIALIST S": {
+    "n": 1
+   },
+   "Compartiment Chirurg.Toracica si Esofagiana MEDIC - PRIMAR S": {
+    "n": 1
+   },
+   "Comp. radiologie, imagistica medicala neurologie MEDIC - PRI": {
+    "n": 1
+   },
+   "Cabinet Medicina Dentara de Urgenta MEDIC - SPECIALIST S": {
+    "n": 1
+   },
+   "Cabinet de Planificare Familiala-Medici MEDIC - PRIMAR S": {
+    "n": 1
+   },
+   "MEDIC PRIMAR COORD DELEG Legea nr. 153 art. 33": {
+    "n": 1
+   },
+   "MEDIC PRIMAR DELEGATIE Legea nr. 153 art. 33": {
+    "n": 1
+   },
+   "MEDIC SPECIALIST (ANAPAT) Legea nr. 153 art. 33": {
+    "n": 1
+   },
+   "MEDIC SPECIALIST Gradatia 1": {
+    "n": 1
+   },
+   "GINECOLOGIE MEDIC SPECIALIST Gradatia 2": {
+    "n": 1
+   },
+   "NEONATOLOGIE MEDIC PRIMAR Gradatia 3": {
+    "n": 1
+   },
+   "A.T.I. MEDIC PRIMAR Gradatia 3": {
+    "n": 1
+   },
+   "A.T.I. MEDIC SPECIALIST Gradatia 2": {
+    "n": 1
+   },
+   "13 PATURI MEDIC SPECIALIST Gradatia 2": {
+    "n": 1
+   },
+   "PATOLOGICA MEDIC PRIMAR Gradatia 3": {
+    "n": 1
+   },
+   "MEDICALA MEDIC PRIMAR Gradatia 5": {
+    "n": 1
+   },
+   "FAMILIAL MEDIC PRIMAR Gradatia 3": {
+    "n": 1
+   },
+   "FAMILIAL MEDIC SPECIALIST Gradatia 5": {
+    "n": 1
+   },
+   "Medic primar Gradatia ooo": {
+    "n": 1
+   },
+   "Medic primar Gradatia I OOO": {
+    "n": 1
+   },
+   "SECTIA MEDICINA INTERNA MEDIC PRIMAR Gradatia 4": {
+    "n": 1
+   },
+   "SECTIA MEDICINA INTERNA MEDIC PRIMAR Gradatia 5": {
+    "n": 1
+   },
+   "SECTIA MEDICINA INTERNA - PNEUMOLOGIE MEDIC PRIMAR Gradatia ": {
+    "n": 1
+   },
+   "SECTIA GASTROENTEROLOGIE MEDIC PRIMAR Gradatia 5": {
+    "n": 1
+   },
+   "SECTIA GASTROENTEROLOGIE MEDIC SPECIALIST Gradatia 2": {
+    "n": 1
+   },
+   "COMPARTIMENT NEFROLOGIE MEDIC SPECIALIST Gradatia 2": {
+    "n": 1
+   },
+   "COMPARTIMENT NEFROLOGIE MEDIC PRIMAR Gradatia 3": {
+    "n": 1
+   },
+   "SECTIA CARDIOLOGIE -COMP.TERAPIE INTENSIVA CORONA. MEDIC SPE": {
+    "n": 1
+   },
+   "COMP.CARDIOLOGIE MEDIC PRIMAR Gradatia 5": {
+    "n": 1
+   },
+   "COMP.CARDIOLOGIE MEDIC PRIMAR Gradatia 4": {
+    "n": 1
+   },
+   "SECTIA ONCOLOGIE MEDICALA MEDIC SPECIALIST Gradatia 2": {
+    "n": 1
+   },
+   "SECTIA ONCOLOGIE MEDICALA MEDIC SPECIALIST Gradatia 3": {
+    "n": 1
+   },
+   "SECTIA ONCOLOGIE MEDICALA-COMP.INGRIJIRI PALIATIVE MEDIC PRI": {
+    "n": 1
+   },
+   "COMP. DIABET ZAHARAT,NUTRITIE SI BOLI METABOLICE MEDIC PRIMA": {
+    "n": 1
+   },
+   "SECTIA CHIRURGIE GENERALA MEDIC SPECIALIST Gradatia 3": {
+    "n": 1
+   },
+   "SECTIA CHIRURGIE GENERALA MEDIC PRIMAR Gradatia 4": {
+    "n": 1
+   },
+   "COMP.NEUROCHIRURGIE MEDIC SPECIALIST Gradatia 5": {
+    "n": 1
+   },
+   "COMP. CHIRURGIE VASCULARA MEDIC PRIMAR Gradatia 5": {
+    "n": 1
+   },
+   "COMP. CHIRURGIE VASCULARA MEDIC PRIMAR Gradatia 3": {
+    "n": 1
+   },
+   "COMPARTIMENT UROLOGIE MEDIC PRIMAR Gradatia 5": {
+    "n": 1
+   },
+   "SECTIA OBSTETRICA GINECOLOGIE MEDIC SPECIALIST Gradatia 3": {
+    "n": 1
+   },
+   "SECTIA OBSTETRICA GINECOLOGIE MEDIC SPECIALIST Gradatia 5": {
+    "n": 1
+   },
+   "SECTIA OBSTETRICA GINECOLOGIE MEDIC SPECIALIST Gradatia 2": {
+    "n": 1
+   },
+   "SECTIA NEONATOLOGIE-COMP.TERAPIE INTENSIVA MEDIC SPECIALIST ": {
+    "n": 1
+   },
+   "COMP.NEONATOLOGIE MEDIC SPECIALIST Gradatia 2": {
+    "n": 1
+   },
+   "COMP.NEONATOLOGIE MEDIC SPECIALIST Gradatia 3": {
+    "n": 1
+   },
+   "COMP.PEDIATRIE MEDIC PRIMAR Gradatia 3": {
+    "n": 1
+   },
+   "COMP.PEDIATRIE MEDIC SPECIALIST Gradatia 2": {
+    "n": 1
+   },
+   "SECTIA PEDIATRIE - COMP.TERAPIE ACUTA MEDIC SPECIALIST Grada": {
+    "n": 1
+   },
+   "COMP. O.R.L MEDIC SPECIALIST Gradatia 3": {
+    "n": 1
+   },
+   "COMP. O.R.L MEDIC PRIMAR Gradatia 4": {
+    "n": 1
+   },
+   "SECTIA A.T.I MEDIC SPECIALIST A.T.I. Gradatia 3": {
+    "n": 1
+   },
+   "SECTIA NEUROLOGIE MEDIC PRIMAR Gradatia 3": {
+    "n": 1
+   },
+   "COMP.BOLI INFECTIOASE MEDIC PRIMAR Gradatia 5": {
+    "n": 1
+   },
+   "COMP.BOLI INFECTIOASE MEDIC PRIMAR Gradatia 4": {
+    "n": 1
+   },
+   "COMP.BOLI INFECTIOASE MEDIC PRIMAR Gradatia 3": {
+    "n": 1
+   },
+   "COMP.BOLI INFECTIOASE MEDIC SPECIALIST Gradatia 2": {
+    "n": 1
+   },
+   "COMP.DERMATO-VENEROLOGIE MEDIC PRIMAR Gradatia 4": {
+    "n": 1
+   },
+   "COMP.DERMATO-VENEROLOGIE MEDIC PRIMAR Gradatia 3": {
+    "n": 1
+   },
+   "SECTIA RECUPERARE,MEDICINA FIZICA SI BALNEOLOGIE MEDIC SPECI": {
+    "n": 1
+   },
+   "BALNEOLOGIECOMP.RECUP.POSTRAUMA MEDIC SPECIALIST Gradatia 5": {
+    "n": 1
+   },
+   "COMP.RECUPERARE NEUROLOGICA MEDIC PRIMAR Gradatia 5": {
+    "n": 1
+   },
+   "LABORATOR ANALIZE MEDICALE MEDIC PRIMAR Gradatia 5": {
+    "n": 1
+   },
+   "LABORATOR ANALIZE MEDICALE-LABORATOR BACTERIOLOGIE MEDIC SPE": {
+    "n": 1
+   },
+   "LABORATOR RAD.SI IMAGISTICA MED.COMPART.SPITAL MEDIC SPECIAL": {
+    "n": 1
+   },
+   "LABORATOR RAD.SI IMAGISTICA MED.-COMP. T -SPITAL MEDIC PRIMA": {
+    "n": 1
+   },
+   "SERVICIUL DE ANATOMIE PATOLOGICA-PROSECTURA MEDIC PRIMAR A.P": {
+    "n": 1
+   },
+   "SERV.DE PREVENIRE A INFECTIILOR ASOCIATE ASIST.MED MEDIC PRI": {
+    "n": 1
+   },
+   "GARZI - ORTOPEDIE MEDIC SPECIALIST Gradatia 4": {
+    "n": 1
+   },
+   "GARZI - ORTOPEDIE MEDIC PRIMAR Gradatia 2": {
+    "n": 1
+   },
+   "GARZI - NOU NASCUTI MEDIC PRIMAR Gradatia 5": {
+    "n": 1
+   },
+   "GARZI - BOLI INFECTIOASE MEDIC PRIMAR Gradatia 5": {
+    "n": 1
+   },
+   "GARZI - BOLI INFECTIOASE MEDIC SPECIALIST Gradatia 2": {
+    "n": 1
+   },
+   "GARZI - PSIHIATRIE MEDIC PRIMAR Gradatia 3": {
+    "n": 1
+   },
+   "GARZI - PSIHIATRIE MEDIC SPECIALIST Gradatia 4": {
+    "n": 1
+   },
+   "GARZI - NEUROLOGIE MEDIC PRIMAR Gradatia 4": {
+    "n": 1
+   },
+   "GARZI - NEUROLOGIE MEDIC SPECIALIST Gradatia 3": {
+    "n": 1
+   },
+   "GARZI - PEDIATRIE MEDIC SPECIALIST Gradatia 4": {
+    "n": 1
+   },
+   "GARZI - PEDIATRIE MEDIC PRIMAR Gradatia 3": {
+    "n": 1
+   },
+   "GARZI - CARDIOLOGIE MEDIC PRIMAR Gradatia 3": {
+    "n": 1
+   },
+   "GARZI - CARDIOLOGIE MEDIC SPECIALIST Gradatia 3": {
+    "n": 1
+   },
+   "GARZI - CARDIOLOGIE MEDIC PRIMAR Gradatia 4": {
+    "n": 1
+   },
+   "GARZI - CARDIOLOGIE MEDIC PRIMAR Gradatia 5": {
+    "n": 1
+   },
+   "GARZI - CHIRURGIE MEDIC SPECIALIST Gradatia 3": {
+    "n": 1
+   },
+   "GARZI - CHIRURGIE MEDIC PRIMAR Gradatia 4": {
+    "n": 1
+   },
+   "GARZI - MEDICINA INTERNA I MEDIC PRIMAR Gradatia 4": {
+    "n": 1
+   },
+   "GARZI - MEDICINA INTERNA I MEDIC PRIMAR Gradatia 3": {
+    "n": 1
+   },
+   "GARZI - OBSTETRICA GINECOLOGIE MEDIC SPECIALIST Gradatia 5": {
+    "n": 1
+   },
+   "GARZI - OBSTETRICA GINECOLOGIE MEDIC SPECIALIST BAZA": {
+    "n": 1
+   },
+   "GARZI - OBSTETRICA GINECOLOGIE MEDIC PRIMAR Gradatia 4": {
+    "n": 1
+   },
+   "GARZI - ATI MEDIC SPECIALIST Gradatia 3": {
+    "n": 1
+   },
+   "GARZI - ATI MEDIC PRIMAR A.T.I. Gradatia 4": {
+    "n": 1
+   },
+   "GARZI - LABORATOR ANALIZE MEDICALE MEDIC SPECIALIST Gradatia": {
+    "n": 1
+   },
+   "GARZI - RADIOLOGIE SI IMAGISTICA MEDICAL MEDIC SPECIALIST Gr": {
+    "n": 1
+   },
+   "CENTRUL DE SANATATE MULTIFUNCTIONAL OCNA MURES MEDIC PRIMAR ": {
+    "n": 1
+   },
+   "CAB.ALERGOLOGIE MEDIC PRIMAR Gradatia 5": {
+    "n": 1
+   },
+   "CAB. PNEUMOLOGIE MEDIC SPECIALIST Gradatia 4": {
+    "n": 1
+   },
+   "CAB. PNEUMOLOGIE MEDIC PRIMAR Gradatia 4": {
+    "n": 1
+   },
+   "UNITATE PRIMIRE URGENTE MEDIC SPECIALIST UPU Gradatia 5": {
+    "n": 1
+   },
+   "UNITATE PRIMIRE URGENTE MEDIC SPECIALIST UPU Gradatia 3": {
+    "n": 1
+   },
+   "GARZI - UPU/SMURD MEDIC SPECIALIST UPU Gradatia 4": {
+    "n": 1
+   },
+   "GARZI - UPU/SMURD MEDIC PRIMAR UPU Gradatia 4": {
+    "n": 1
+   },
+   "GARZI - UPU/SMURD MEDIC SPECIALIST UPU Gradatia 3": {
+    "n": 1
+   },
+   "GARZI - UPU MEDIC SPECIALIST UPU Gradatia 3": {
+    "n": 1
+   },
+   "GARZI - UPU MEDIC SPECIALIST UPU Gradatia 2": {
+    "n": 1
+   },
+   "DISPENSAR TBC MEDIC SPECIALIST Gradatia 4": {
+    "n": 1
+   },
+   "DISPENSAR TBC MEDIC PRIMAR Gradatia 3": {
+    "n": 1
+   },
+   "CSM ADULTI CU STATIONAR DE ZI MEDIC PRIMAR Gradatia 5": {
+    "n": 1
+   },
+   "CSM ADULTI CU STATIONAR DE ZI MEDIC SPECIALIST Gradatia 2": {
+    "n": 1
+   },
+   "CSM COPII MEDIC SPECIALIST Gradatia 2": {
+    "n": 1
+   },
+   "CSM COPII MEDIC SPECIALIST Gradatia 3": {
+    "n": 1
+   },
+   "SERVICIUL JUDETEAN DE MEDICINA LEGALA MEDIC PRIMAR M.L. Grad": {
+    "n": 1
+   },
+   "SERVICIUL JUDETEAN DE MEDICINA LEGALA MEDIC SPECIALIST M.L. ": {
+    "n": 1
+   },
+   "MEDIC SPECIALIST Cabinet DIABET ZAHARAT,NUTRITIE SI BOLI MET": {
+    "n": 1
+   },
+   "MEDIC PRIMAR CABINET GENETICA MEDICALA": {
+    "n": 1
+   },
+   "MEDIC PRIMAR Cabinet MEDICINA SPORTIVA": {
+    "n": 1
+   },
+   "MEDIC PRIMAR Cabinet ONCOLOGIE MEDICALA": {
+    "n": 1
+   },
+   "MEDIC PRIMAR Cabinet PLANIFICARE FAMILIALA": {
+    "n": 1
+   },
+   "MEDIC PRIMAR CENTRUL DE HEMODIALIZA": {
+    "n": 1
+   },
+   "MEDIC PRIMAR COMPARTIMENT RADIOTERAPIE": {
+    "n": 1
+   },
+   "MEDIC PRIMAR LAB. ANALIZE MEDICALE": {
+    "n": 1
+   },
+   "MEDIC PRIMAR LAB. DE MICROBIOLOGIE MEDICALA": {
+    "n": 1
+   },
+   "MEDIC SPECIALIST LAB. DE MICROBIOLOGIE MEDICALA": {
+    "n": 1
+   },
+   "MEDIC PRIMAR LAB. RECUPERARE,MEDICINA FIZICA SI BALNEOLOGIE": {
+    "n": 1
+   },
+   "MEDIC PRIMAR COMPARTIMENT A.T.I. copii": {
+    "n": 1
+   },
+   "MEDIC SPECIALIST Sectia CHIRURGIE PLASTICA-MICROCHIR.RECONST": {
+    "n": 1
+   },
+   "MEDIC SPECIALIST Sectia DERMATO-VENEROLOGIE": {
+    "n": 1
+   },
+   "MEDIC PRIMAR Sectia DIABET ZAHARAT, NUTRITIE SI BOLI METABOL": {
+    "n": 1
+   },
+   "MEDIC SPECIALIST Sectia OBSTETRICA-GINECOLOGIE II": {
+    "n": 1
+   },
+   "MEDIC SPECIALIST Sectia OFTALMOLOGIE": {
+    "n": 1
+   },
+   "MEDIC PRIMAR Sectia ONCOLOGIE MEDICALA": {
+    "n": 1
+   },
+   "MEDIC SPECIALIST Sectia ONCOLOGIE MEDICALA": {
+    "n": 1
+   },
+   "MEDIC PRIMAR Sectia PEDIATRIE (RECUPERARE PEDIATRICA)": {
+    "n": 1
+   },
+   "MEDIC SPECIALIST Sectia PSIHIATRIE": {
+    "n": 1
+   },
+   "MEDIC PRIMAR Sectia UROLOGIE": {
+    "n": 1
+   },
+   "MEDIC SPECIALIST Sectia UROLOGIE": {
+    "n": 1
+   },
+   "MEDIC SPECIALIST CHIRURGIE GENERALA - GARZI": {
+    "n": 1
+   },
+   "MEDIC SPECIALIST CHIRURGIE PLASTICA -MICROCHIRURG RECONSTRUC": {
+    "n": 1
+   },
+   "MEDIC SPECIALIST CHIRURGIE SI ORTOPEDIE PEDIATRICA - GARZI": {
+    "n": 1
+   },
+   "MEDIC PRIMAR LAB. ANALIZE MEDICALE - GARZI": {
+    "n": 1
+   },
+   "MEDIC SPECIALIST LAB.MICROBIOLOGIE -GARZI": {
+    "n": 1
+   },
+   "MEDIC SPECIALIST OBSTETRICA-GINECOLOGIE I - GARZI": {
+    "n": 1
+   },
+   "MEDIC PRIMAR OFTALMOLOGIE - GARZI": {
+    "n": 1
+   },
+   "MEDIC PRIMAR Cabinet Planificare familiala": {
+    "n": 1
+   },
+   "MEDIC PRIMAR Compartiment Diabet zaharat nutritie si boli me": {
+    "n": 1
+   },
+   "MEDIC PRIMAR Statia de dializa": {
+    "n": 1
+   },
+   "MEDIC PRIMAR Compartiment Dermato-Venerologie": {
+    "n": 1
+   },
+   "MEDIC PRIMAR SPIAAM": {
+    "n": 1
+   },
+   "MEDIC PRIMAR BMF Sectia ORL": {
+    "n": 1
+   },
+   "MEDIC PRIMAR - GARZI Sectia Boli infectioase": {
+    "n": 1
+   },
+   "MEDIC PRIMAR - GARZI Sectia Pneumologie": {
+    "n": 1
+   },
+   "MEDIC PRIMAR - GARZI Sectia Pediatrie": {
+    "n": 1
+   },
+   "MEDIC SPECIALIST Compartiment Dermato-Venerologie": {
+    "n": 1
+   },
+   "MEDIC SPECIALIST AMBULATORIUL, INTEGRAT CU CABINETE IN SPECI": {
+    "n": 1
+   },
+   "MEDIC SPECIALIST Sectia Pneumologie": {
+    "n": 1
+   },
+   "MEDIC SPECIALIST Sectia Urologie": {
+    "n": 1
+   },
+   "MEDIC SPECIALIST Cabinet Medicina Sportiva": {
+    "n": 1
+   },
+   "MEDIC SPECIALIST AMBULATORIUL INTEGRAT CU CABINETE IN SPECIA": {
+    "n": 1
+   },
+   "MEDIC SPECIALIST Dispensar TBC": {
+    "n": 1
+   },
+   "MEDIC SPECIALIST GARZI Sectia Neurologie": {
+    "n": 1
+   },
+   "MEDIC SPECIALIST GARZI Sectia Boli infectioase": {
+    "n": 1
+   },
+   "MEDIC SPECIALIST GARZI Sectia Pneumologie": {
+    "n": 1
+   },
+   "MEDIC SPECIALIST GARZI Sectia Chirurgie si ortopedie infanti": {
+    "n": 1
+   },
+   "AP MEDIC SPECIALIST": {
+    "n": 1
+   },
+   "Medic specialist SUPERIOARE Gradatia": {
+    "n": 1
+   },
+   "MEDIC PRIMAR Gradatia 2 Sporurile din anexele 1, 2,3,5,8 sun": {
+    "n": 1
+   },
+   "MEDIC PRIMAR PSIHIATRIE S I PRIMAR": {
+    "n": 1
+   }
+  }
+ }
+}

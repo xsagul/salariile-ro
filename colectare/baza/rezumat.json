@@ -1,0 +1,1431 @@
+{
+ "generatLa": "2026-09-27T10:01:09.229Z",
+ "total": {
+  "anunturi": 3704,
+  "citite": 531,
+  "anofm": 3218,
+  "publice": 20601
+ },
+ "meserii": [
+  {
+   "slug": "asistent-medical",
+   "nume": "Asistent medical",
+   "anunturiCuSalariu": 65,
+   "cuBazaDeclarata": 20,
+   "anunturiCitite": 5,
+   "anofm": 55,
+   "anofmGrupa": 65,
+   "posturiPublice": 7339
+  },
+  {
+   "slug": "medic",
+   "nume": "Medic",
+   "anunturiCuSalariu": 10,
+   "cuBazaDeclarata": 1,
+   "anunturiCitite": 5,
+   "anofm": 3,
+   "anofmGrupa": 3,
+   "posturiPublice": 4799
+  },
+  {
+   "slug": "medic-rezident",
+   "nume": "Medic rezident",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 3,
+   "posturiPublice": 3555
+  },
+  {
+   "slug": "infirmier",
+   "nume": "Infirmier",
+   "anunturiCuSalariu": 13,
+   "cuBazaDeclarata": 3,
+   "anunturiCitite": 1,
+   "anofm": 32,
+   "anofmGrupa": 56,
+   "posturiPublice": 2962
+  },
+  {
+   "slug": "registrator-medical",
+   "nume": "Registrator medical",
+   "anunturiCuSalariu": 2,
+   "cuBazaDeclarata": 1,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 496
+  },
+  {
+   "slug": "economist",
+   "nume": "Economist",
+   "anunturiCuSalariu": 22,
+   "cuBazaDeclarata": 14,
+   "anunturiCitite": 6,
+   "anofm": 42,
+   "anofmGrupa": 67,
+   "posturiPublice": 303
+  },
+  {
+   "slug": "sofer-tir",
+   "nume": "Șofer TIR",
+   "anunturiCuSalariu": 190,
+   "cuBazaDeclarata": 27,
+   "anunturiCitite": 9,
+   "anofm": 301,
+   "anofmGrupa": 316,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "agent-vanzari",
+   "nume": "Agent de vânzări",
+   "anunturiCuSalariu": 341,
+   "cuBazaDeclarata": 119,
+   "anunturiCitite": 39,
+   "anofm": 184,
+   "anofmGrupa": 199,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "manipulant-marfa",
+   "nume": "Manipulant mărfuri",
+   "anunturiCuSalariu": 78,
+   "cuBazaDeclarata": 32,
+   "anunturiCitite": 1,
+   "anofm": 217,
+   "anofmGrupa": 240,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "vanzator",
+   "nume": "Vânzător",
+   "anunturiCuSalariu": 351,
+   "cuBazaDeclarata": 128,
+   "anunturiCitite": 10,
+   "anofm": 98,
+   "anofmGrupa": 101,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "electrician",
+   "nume": "Electrician",
+   "anunturiCuSalariu": 249,
+   "cuBazaDeclarata": 113,
+   "anunturiCitite": 38,
+   "anofm": 76,
+   "anofmGrupa": 106,
+   "posturiPublice": 28
+  },
+  {
+   "slug": "bucatar",
+   "nume": "Bucătar",
+   "anunturiCuSalariu": 128,
+   "cuBazaDeclarata": 33,
+   "anunturiCitite": 4,
+   "anofm": 119,
+   "anofmGrupa": 132,
+   "posturiPublice": 60
+  },
+  {
+   "slug": "agent-curatenie",
+   "nume": "Agent de curățenie",
+   "anunturiCuSalariu": 111,
+   "cuBazaDeclarata": 46,
+   "anunturiCitite": 4,
+   "anofm": 144,
+   "anofmGrupa": 155,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "sofer-distributie",
+   "nume": "Șofer distribuție",
+   "anunturiCuSalariu": 80,
+   "cuBazaDeclarata": 25,
+   "anunturiCitite": 3,
+   "anofm": 164,
+   "anofmGrupa": 167,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "agent-paza",
+   "nume": "Agent de pază",
+   "anunturiCuSalariu": 62,
+   "cuBazaDeclarata": 37,
+   "anunturiCitite": 0,
+   "anofm": 148,
+   "anofmGrupa": 169,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "farmacist",
+   "nume": "Farmacist",
+   "anunturiCuSalariu": 15,
+   "cuBazaDeclarata": 8,
+   "anunturiCitite": 2,
+   "anofm": 8,
+   "anofmGrupa": 8,
+   "posturiPublice": 168
+  },
+  {
+   "slug": "taximetrist",
+   "nume": "Taximetrist",
+   "anunturiCuSalariu": 2,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 164,
+   "anofmGrupa": 167,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "sofer-ridesharing",
+   "nume": "Șofer ridesharing",
+   "anunturiCuSalariu": 2,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 164,
+   "anofmGrupa": 167,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "sudor",
+   "nume": "Sudor",
+   "anunturiCuSalariu": 88,
+   "cuBazaDeclarata": 33,
+   "anunturiCitite": 3,
+   "anofm": 123,
+   "anofmGrupa": 146,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "kinetoterapeut",
+   "nume": "Kinetoterapeut",
+   "anunturiCuSalariu": 6,
+   "cuBazaDeclarata": 1,
+   "anunturiCitite": 5,
+   "anofm": 8,
+   "anofmGrupa": 23,
+   "posturiPublice": 131
+  },
+  {
+   "slug": "contabil",
+   "nume": "Contabil",
+   "anunturiCuSalariu": 147,
+   "cuBazaDeclarata": 77,
+   "anunturiCitite": 20,
+   "anofm": 46,
+   "anofmGrupa": 60,
+   "posturiPublice": 15
+  },
+  {
+   "slug": "psiholog",
+   "nume": "Psiholog",
+   "anunturiCuSalariu": 3,
+   "cuBazaDeclarata": 2,
+   "anunturiCitite": 0,
+   "anofm": 6,
+   "anofmGrupa": 21,
+   "posturiPublice": 127
+  },
+  {
+   "slug": "asistent-social",
+   "nume": "Asistent social",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 11,
+   "anofmGrupa": 14,
+   "posturiPublice": 122
+  },
+  {
+   "slug": "mecanic-auto",
+   "nume": "Mecanic auto",
+   "anunturiCuSalariu": 87,
+   "cuBazaDeclarata": 13,
+   "anunturiCitite": 5,
+   "anofm": 109,
+   "anofmGrupa": 134,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "curier",
+   "nume": "Curier",
+   "anunturiCuSalariu": 31,
+   "cuBazaDeclarata": 11,
+   "anunturiCitite": 15,
+   "anofm": 106,
+   "anofmGrupa": 108,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "instalator",
+   "nume": "Instalator",
+   "anunturiCuSalariu": 116,
+   "cuBazaDeclarata": 40,
+   "anunturiCitite": 13,
+   "anofm": 43,
+   "anofmGrupa": 78,
+   "posturiPublice": 32
+  },
+  {
+   "slug": "operator-cnc",
+   "nume": "Operator CNC",
+   "anunturiCuSalariu": 45,
+   "cuBazaDeclarata": 26,
+   "anunturiCitite": 7,
+   "anofm": 89,
+   "anofmGrupa": 137,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "magaziner",
+   "nume": "Magaziner",
+   "anunturiCuSalariu": 98,
+   "cuBazaDeclarata": 53,
+   "anunturiCitite": 7,
+   "anofm": 13,
+   "anofmGrupa": 136,
+   "posturiPublice": 42
+  },
+  {
+   "slug": "consilier-juridic",
+   "nume": "Consilier juridic",
+   "anunturiCuSalariu": 14,
+   "cuBazaDeclarata": 7,
+   "anunturiCitite": 2,
+   "anofm": 21,
+   "anofmGrupa": 21,
+   "posturiPublice": 75
+  },
+  {
+   "slug": "stivuitorist",
+   "nume": "Stivuitorist",
+   "anunturiCuSalariu": 81,
+   "cuBazaDeclarata": 49,
+   "anunturiCitite": 3,
+   "anofm": 54,
+   "anofmGrupa": 57,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "inginer",
+   "nume": "Inginer",
+   "anunturiCuSalariu": 243,
+   "cuBazaDeclarata": 100,
+   "anunturiCitite": 38,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "chelner",
+   "nume": "Chelner",
+   "anunturiCuSalariu": 77,
+   "cuBazaDeclarata": 24,
+   "anunturiCitite": 1,
+   "anofm": 73,
+   "anofmGrupa": 126,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "operator-productie",
+   "nume": "Operator producție",
+   "anunturiCuSalariu": 117,
+   "cuBazaDeclarata": 92,
+   "anunturiCitite": 2,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "profesor-universitar",
+   "nume": "Profesor universitar",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 84
+  },
+  {
+   "slug": "tamplar",
+   "nume": "Tâmplar",
+   "anunturiCuSalariu": 56,
+   "cuBazaDeclarata": 18,
+   "anunturiCitite": 2,
+   "anofm": 62,
+   "anofmGrupa": 87,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "dulgher",
+   "nume": "Dulgher",
+   "anunturiCuSalariu": 22,
+   "cuBazaDeclarata": 14,
+   "anunturiCitite": 2,
+   "anofm": 58,
+   "anofmGrupa": 65,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "casier",
+   "nume": "Casier",
+   "anunturiCuSalariu": 75,
+   "cuBazaDeclarata": 30,
+   "anunturiCitite": 9,
+   "anofm": 35,
+   "anofmGrupa": 38,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "secretar",
+   "nume": "Secretar",
+   "anunturiCuSalariu": 68,
+   "cuBazaDeclarata": 35,
+   "anunturiCitite": 6,
+   "anofm": 20,
+   "anofmGrupa": 21,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "bibliotecar",
+   "nume": "Bibliotecar",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 54
+  },
+  {
+   "slug": "zidar",
+   "nume": "Zidar",
+   "anunturiCuSalariu": 19,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 3,
+   "anofm": 51,
+   "anofmGrupa": 69,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "programator",
+   "nume": "Programator",
+   "anunturiCuSalariu": 16,
+   "cuBazaDeclarata": 7,
+   "anunturiCitite": 102,
+   "anofm": 29,
+   "anofmGrupa": 65,
+   "posturiPublice": 13
+  },
+  {
+   "slug": "asistent-farmacie",
+   "nume": "Asistent de farmacie",
+   "anunturiCuSalariu": 1,
+   "cuBazaDeclarata": 1,
+   "anunturiCitite": 0,
+   "anofm": 2,
+   "anofmGrupa": 3,
+   "posturiPublice": 43
+  },
+  {
+   "slug": "fizioterapeut",
+   "nume": "Fizioterapeut",
+   "anunturiCuSalariu": 2,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 1,
+   "anofm": 2,
+   "anofmGrupa": 23,
+   "posturiPublice": 44
+  },
+  {
+   "slug": "educator",
+   "nume": "Educator",
+   "anunturiCuSalariu": 5,
+   "cuBazaDeclarata": 2,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 5,
+   "posturiPublice": 44
+  },
+  {
+   "slug": "sofer-autobuz",
+   "nume": "Șofer de autobuz",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 38,
+   "anofmGrupa": 40,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "functionar-public",
+   "nume": "Funcționar public",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 34
+  },
+  {
+   "slug": "constructor",
+   "nume": "Muncitor în construcții",
+   "anunturiCuSalariu": 170,
+   "cuBazaDeclarata": 32,
+   "anunturiCitite": 13,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "zugrav",
+   "nume": "Zugrav",
+   "anunturiCuSalariu": 9,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 31,
+   "anofmGrupa": 32,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "cofetar",
+   "nume": "Cofetar",
+   "anunturiCuSalariu": 19,
+   "cuBazaDeclarata": 8,
+   "anunturiCitite": 1,
+   "anofm": 18,
+   "anofmGrupa": 92,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "electrician-centrala",
+   "nume": "Electrician centrală electrică",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 26,
+   "anofmGrupa": 110,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "medic-veterinar",
+   "nume": "Medic veterinar",
+   "anunturiCuSalariu": 12,
+   "cuBazaDeclarata": 5,
+   "anunturiCitite": 4,
+   "anofm": 18,
+   "anofmGrupa": 18,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "electromecanic",
+   "nume": "Electromecanic",
+   "anunturiCuSalariu": 22,
+   "cuBazaDeclarata": 8,
+   "anunturiCitite": 5,
+   "anofm": 15,
+   "anofmGrupa": 21,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "operator-call-center",
+   "nume": "Operator call center",
+   "anunturiCuSalariu": 49,
+   "cuBazaDeclarata": 19,
+   "anunturiCitite": 9,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "specialist-resurse-umane",
+   "nume": "Specialist resurse umane",
+   "anunturiCuSalariu": 18,
+   "cuBazaDeclarata": 9,
+   "anunturiCitite": 3,
+   "anofm": 9,
+   "anofmGrupa": 16,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "ingrijitor-batrani",
+   "nume": "Îngrijitor de bătrâni",
+   "anunturiCuSalariu": 1,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 1,
+   "anofm": 1,
+   "anofmGrupa": 8,
+   "posturiPublice": 17
+  },
+  {
+   "slug": "faiantar",
+   "nume": "Faianțar",
+   "anunturiCuSalariu": 5,
+   "cuBazaDeclarata": 2,
+   "anunturiCitite": 0,
+   "anofm": 15,
+   "anofmGrupa": 22,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "operator-mase-plastice",
+   "nume": "Operator mase plastice",
+   "anunturiCuSalariu": 6,
+   "cuBazaDeclarata": 4,
+   "anunturiCitite": 0,
+   "anofm": 13,
+   "anofmGrupa": 28,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "sofer-ambulanta",
+   "nume": "Șofer de ambulanță",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 2,
+   "anofmGrupa": 167,
+   "posturiPublice": 14
+  },
+  {
+   "slug": "frizer",
+   "nume": "Frizer",
+   "anunturiCuSalariu": 12,
+   "cuBazaDeclarata": 2,
+   "anunturiCitite": 1,
+   "anofm": 14,
+   "anofmGrupa": 24,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "specialist-marketing",
+   "nume": "Specialist marketing",
+   "anunturiCuSalariu": 11,
+   "cuBazaDeclarata": 2,
+   "anunturiCitite": 0,
+   "anofm": 13,
+   "anofmGrupa": 17,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "logistician",
+   "nume": "Logistician",
+   "anunturiCuSalariu": 24,
+   "cuBazaDeclarata": 12,
+   "anunturiCitite": 3,
+   "anofm": 2,
+   "anofmGrupa": 8,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "arhitect",
+   "nume": "Arhitect",
+   "anunturiCuSalariu": 7,
+   "cuBazaDeclarata": 2,
+   "anunturiCitite": 6,
+   "anofm": 11,
+   "anofmGrupa": 14,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "tehnician-mentenanta",
+   "nume": "Tehnician mentenanță",
+   "anunturiCuSalariu": 18,
+   "cuBazaDeclarata": 13,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "croitor",
+   "nume": "Croitor",
+   "anunturiCuSalariu": 17,
+   "cuBazaDeclarata": 6,
+   "anunturiCitite": 0,
+   "anofm": 6,
+   "anofmGrupa": 39,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "receptioner-hotel",
+   "nume": "Recepționer hotel",
+   "anunturiCuSalariu": 12,
+   "cuBazaDeclarata": 2,
+   "anunturiCitite": 0,
+   "anofm": 10,
+   "anofmGrupa": 12,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "manager-magazin",
+   "nume": "Manager de magazin",
+   "anunturiCuSalariu": 24,
+   "cuBazaDeclarata": 11,
+   "anunturiCitite": 4,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "barman",
+   "nume": "Barman",
+   "anunturiCuSalariu": 19,
+   "cuBazaDeclarata": 7,
+   "anunturiCitite": 0,
+   "anofm": 4,
+   "anofmGrupa": 46,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "cosmetician",
+   "nume": "Cosmetician",
+   "anunturiCuSalariu": 12,
+   "cuBazaDeclarata": 8,
+   "anunturiCitite": 1,
+   "anofm": 3,
+   "anofmGrupa": 20,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "analist-financiar",
+   "nume": "Analist financiar",
+   "anunturiCuSalariu": 1,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 9,
+   "anofmGrupa": 11,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "tapiter",
+   "nume": "Tapițer",
+   "anunturiCuSalariu": 1,
+   "cuBazaDeclarata": 1,
+   "anunturiCitite": 0,
+   "anofm": 8,
+   "anofmGrupa": 8,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "inginer-telecomunicatii",
+   "nume": "Inginer telecomunicații",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 7,
+   "anofmGrupa": 54,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "inginer-auto",
+   "nume": "Inginer auto",
+   "anunturiCuSalariu": 3,
+   "cuBazaDeclarata": 2,
+   "anunturiCitite": 0,
+   "anofm": 5,
+   "anofmGrupa": 91,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "invatator",
+   "nume": "Învățător",
+   "anunturiCuSalariu": 3,
+   "cuBazaDeclarata": 1,
+   "anunturiCitite": 0,
+   "anofm": 4,
+   "anofmGrupa": 4,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "tipograf",
+   "nume": "Tipograf",
+   "anunturiCuSalariu": 5,
+   "cuBazaDeclarata": 1,
+   "anunturiCitite": 0,
+   "anofm": 4,
+   "anofmGrupa": 13,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "stomatolog",
+   "nume": "Stomatolog",
+   "anunturiCuSalariu": 2,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 2,
+   "anofm": 4,
+   "anofmGrupa": 4,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "tehnician-dentar",
+   "nume": "Tehnician dentar",
+   "anunturiCuSalariu": 1,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 4,
+   "anofmGrupa": 5,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "broker",
+   "nume": "Broker",
+   "anunturiCuSalariu": 6,
+   "cuBazaDeclarata": 4,
+   "anunturiCitite": 2,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "inginer-energetician",
+   "nume": "Inginer energetician",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 1,
+   "anofm": 4,
+   "anofmGrupa": 72,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "designer-grafic",
+   "nume": "Designer grafic",
+   "anunturiCuSalariu": 7,
+   "cuBazaDeclarata": 4,
+   "anunturiCitite": 2,
+   "anofm": 0,
+   "anofmGrupa": 4,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "actor",
+   "nume": "Actor",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 4,
+   "anofmGrupa": 4,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "tesator",
+   "nume": "Țesător",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 4,
+   "anofmGrupa": 7,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "tehnician-calculatoare",
+   "nume": "Tehnician service IT",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 4,
+   "anofmGrupa": 17,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "auditor",
+   "nume": "Auditor financiar",
+   "anunturiCuSalariu": 5,
+   "cuBazaDeclarata": 3,
+   "anunturiCitite": 3,
+   "anofm": 0,
+   "anofmGrupa": 17,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "inginer-electronist",
+   "nume": "Inginer electronist",
+   "anunturiCuSalariu": 1,
+   "cuBazaDeclarata": 1,
+   "anunturiCitite": 0,
+   "anofm": 2,
+   "anofmGrupa": 54,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "inginer-petrol",
+   "nume": "Inginer petrolist",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 3,
+   "anofmGrupa": 6,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "operator-salubritate",
+   "nume": "Operator salubritate",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 3,
+   "anofmGrupa": 7,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "agent-imobiliar",
+   "nume": "Agent imobiliar",
+   "anunturiCuSalariu": 7,
+   "cuBazaDeclarata": 1,
+   "anunturiCitite": 6,
+   "anofm": 2,
+   "anofmGrupa": 2,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "operator-epurare",
+   "nume": "Operator stație de epurare",
+   "anunturiCuSalariu": 2,
+   "cuBazaDeclarata": 1,
+   "anunturiCitite": 0,
+   "anofm": 2,
+   "anofmGrupa": 21,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "consultant-management",
+   "nume": "Consultant în management",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 3,
+   "anofmGrupa": 67,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "web-developer",
+   "nume": "Web developer",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 3,
+   "anofm": 2,
+   "anofmGrupa": 65,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "profesor",
+   "nume": "Profesor",
+   "anunturiCuSalariu": 5,
+   "cuBazaDeclarata": 1,
+   "anunturiCitite": 0,
+   "anofm": 1,
+   "anofmGrupa": 3,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "agent-asigurari",
+   "nume": "Agent de asigurări",
+   "anunturiCuSalariu": 1,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 1,
+   "anofm": 2,
+   "anofmGrupa": 2,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "consultant-financiar",
+   "nume": "Consultant financiar",
+   "anunturiCuSalariu": 3,
+   "cuBazaDeclarata": 2,
+   "anunturiCitite": 6,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "sondor",
+   "nume": "Sondor",
+   "anunturiCuSalariu": 1,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 2,
+   "anofmGrupa": 10,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "administrator-sistem",
+   "nume": "Administrator de sistem",
+   "anunturiCuSalariu": 5,
+   "cuBazaDeclarata": 1,
+   "anunturiCitite": 5,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "analist-date",
+   "nume": "Analist de date",
+   "anunturiCuSalariu": 2,
+   "cuBazaDeclarata": 1,
+   "anunturiCitite": 11,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "ofiter-credite",
+   "nume": "Ofițer de credite",
+   "anunturiCuSalariu": 2,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 1,
+   "anofmGrupa": 32,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "avocat",
+   "nume": "Avocat",
+   "anunturiCuSalariu": 2,
+   "cuBazaDeclarata": 1,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 21,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "metalurgist",
+   "nume": "Metalurgist",
+   "anunturiCuSalariu": 2,
+   "cuBazaDeclarata": 1,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "postas",
+   "nume": "Poștaș",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 1,
+   "anofmGrupa": 18,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "agent-turism",
+   "nume": "Agent de turism",
+   "anunturiCuSalariu": 5,
+   "cuBazaDeclarata": 1,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 4,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "jandarm",
+   "nume": "Jandarm",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 1,
+   "anofmGrupa": 16,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "pompier",
+   "nume": "Pompier",
+   "anunturiCuSalariu": 4,
+   "cuBazaDeclarata": 1,
+   "anunturiCitite": 1,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "militar",
+   "nume": "Militar",
+   "anunturiCuSalariu": 2,
+   "cuBazaDeclarata": 1,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "editor",
+   "nume": "Editor",
+   "anunturiCuSalariu": 5,
+   "cuBazaDeclarata": 1,
+   "anunturiCitite": 2,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "traducator",
+   "nume": "Traducător",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 1,
+   "anofmGrupa": 1,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "administrator-bloc",
+   "nume": "Administrator de bloc",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 1,
+   "anofmGrupa": 3,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "sticlar",
+   "nume": "Sticlar",
+   "anunturiCuSalariu": 3,
+   "cuBazaDeclarata": 1,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "cizmar",
+   "nume": "Cizmar",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 1,
+   "anofmGrupa": 22,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "bijutier",
+   "nume": "Bijutier",
+   "anunturiCuSalariu": 2,
+   "cuBazaDeclarata": 1,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "constructor-drumuri",
+   "nume": "Constructor de drumuri",
+   "anunturiCuSalariu": 4,
+   "cuBazaDeclarata": 1,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "marinar",
+   "nume": "Marinar",
+   "anunturiCuSalariu": 1,
+   "cuBazaDeclarata": 1,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 4,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "tester-qa",
+   "nume": "Tester QA",
+   "anunturiCuSalariu": 1,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 13,
+   "anofm": 0,
+   "anofmGrupa": 17,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "devops-engineer",
+   "nume": "Inginer DevOps",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 48,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "farmacist-industrie",
+   "nume": "Farmacist în industrie",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "cercetator",
+   "nume": "Cercetător",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "instructor-auto",
+   "nume": "Instructor auto",
+   "anunturiCuSalariu": 1,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "notar",
+   "nume": "Notar",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "judecator",
+   "nume": "Judecător",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "procuror",
+   "nume": "Procuror",
+   "anunturiCuSalariu": 1,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "grefier",
+   "nume": "Grefier",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 1,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "inginer-agronom",
+   "nume": "Inginer agronom",
+   "anunturiCuSalariu": 1,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 17,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "miner",
+   "nume": "Miner",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 7,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "muncitor-industria-alimentara",
+   "nume": "Muncitor în industria alimentară",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "mecanic-locomotiva",
+   "nume": "Mecanic de locomotivă",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "pilot",
+   "nume": "Pilot",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "insotitor-de-bord",
+   "nume": "Însoțitor de bord (stewardesă)",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "politist",
+   "nume": "Polițist",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "jurnalist",
+   "nume": "Jurnalist",
+   "anunturiCuSalariu": 1,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "cameraman",
+   "nume": "Cameraman",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 1,
+   "anofm": 0,
+   "anofmGrupa": 19,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "regizor",
+   "nume": "Regizor",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "muzician",
+   "nume": "Muzician",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "fermier",
+   "nume": "Fermier",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 1,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "silvicultor",
+   "nume": "Silvicultor",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 17,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "operator-statie-apa",
+   "nume": "Operator stație de apă",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 1,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "antrenor-sportiv",
+   "nume": "Antrenor sportiv",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 2,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "preot",
+   "nume": "Preot",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "operator-chimist",
+   "nume": "Operator chimist",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "operator-rafinarie",
+   "nume": "Operator rafinărie",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "inginer-aeronautic",
+   "nume": "Inginer aeronautic",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 91,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "crupier",
+   "nume": "Crupier",
+   "anunturiCuSalariu": 1,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 0
+  },
+  {
+   "slug": "pescar",
+   "nume": "Pescar",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 0,
+   "anofmGrupa": 0,
+   "posturiPublice": 0
+  }
+ ]
+}

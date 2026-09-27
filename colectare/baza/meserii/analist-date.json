@@ -1,0 +1,242 @@
+{
+ "slug": "analist-date",
+ "nume": "Analist de date",
+ "cor": null,
+ "generatLa": "2026-09-27T10:01:08.816Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 2,
+  "cuBazaDeclarata": 1,
+  "faraBazaDeclarata": 1,
+  "surse": {
+   "ejobs": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "net": {
+   "n": 1
+  },
+  "netMinimOferit": {
+   "n": 1
+  },
+  "netMaximOferit": {
+   "n": 1
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 1
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-08": {
+    "n": 2,
+    "procent": 100
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 11,
+  "cuSalariu": 0,
+  "nivel": {
+   "senior": {
+    "n": 6,
+    "procent": 54.5
+   }
+  },
+  "experienta": {
+   "3+ ani": {
+    "n": 2,
+    "procent": 18.2
+   },
+   "4+ ani": {
+    "n": 2,
+    "procent": 18.2
+   },
+   "2+ ani": {
+    "n": 1,
+    "procent": 9.1
+   }
+  },
+  "experientaPortal": {
+   "1–5 ani": {
+    "n": 5,
+    "procent": 45.5
+   },
+   "peste 5 ani": {
+    "n": 2,
+    "procent": 18.2
+   }
+  },
+  "studii": {
+   "superioare": {
+    "n": 8,
+    "procent": 72.7
+   }
+  },
+  "limbi": {
+   "engleza": {
+    "n": 3,
+    "procent": 27.3
+   }
+  },
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {
+   "hibrid": {
+    "n": 9,
+    "procent": 81.8
+   },
+   "remote": {
+    "n": 2,
+    "procent": 18.2
+   }
+  },
+  "norma": {
+   "full-time": {
+    "n": 2,
+    "procent": 18.2
+   }
+  },
+  "durata": {
+   "nedeterminată": {
+    "n": 1,
+    "procent": 9.1
+   }
+  },
+  "beneficii": {
+   "bonus": {
+    "n": 7,
+    "procent": 63.6
+   },
+   "cursuri / training": {
+    "n": 5,
+    "procent": 45.5
+   },
+   "asigurare medicală": {
+    "n": 4,
+    "procent": 36.4
+   },
+   "tichete de masă": {
+    "n": 2,
+    "procent": 18.2
+   }
+  },
+  "tehnologii": {
+   "Power BI": {
+    "n": 9,
+    "procent": 81.8
+   },
+   "SQL": {
+    "n": 8,
+    "procent": 72.7
+   },
+   "Python": {
+    "n": 5,
+    "procent": 45.5
+   },
+   "Excel": {
+    "n": 4,
+    "procent": 36.4
+   },
+   "SAP": {
+    "n": 2,
+    "procent": 18.2
+   },
+   "AWS": {
+    "n": 2,
+    "procent": 18.2
+   },
+   "Java": {
+    "n": 1,
+    "procent": 9.1
+   }
+  },
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {
+   "en": {
+    "n": 9,
+    "procent": 81.8
+   },
+   "ro": {
+    "n": 2,
+    "procent": 18.2
+   }
+  },
+  "surse": {
+   "hipo": {
+    "n": 7,
+    "procent": 63.6
+   },
+   "bestjobs": {
+    "n": 2,
+    "procent": 18.2
+   },
+   "undelucram": {
+    "n": 2,
+    "procent": 18.2
+   }
+  },
+  "peJudet": {
+   "RO": {
+    "n": 7,
+    "procent": 63.6
+   }
+  },
+  "motiveFaraSalariu": {
+   "salary_evidence_incomplete": {
+    "n": 11,
+    "procent": 100
+   }
+  },
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 0,
+  "posturi": 0,
+  "ofertePeGrupaCor": 0,
+  "tipSalariu": {},
+  "netMinimDeclarat": {
+   "n": 0
+  },
+  "brutMinimDeclarat": {
+   "n": 0
+  },
+  "laSalariulMinim": 0,
+  "studii": {},
+  "experienta": {},
+  "contract": {},
+  "norma": {},
+  "regim": {},
+  "judete": {},
+  "domenii": {},
+  "coduriCorInGrupa": {}
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 0,
+  "institutii": 0,
+  "judete": {},
+  "tipInstitutie": {},
+  "perioade": {},
+  "studii": {},
+  "bazaBruta": {
+   "n": 0
+  },
+  "bazaCuSporuriFixe": {
+   "n": 0
+  },
+  "peGradatie": {},
+  "peFunctie": {}
+ }
+}

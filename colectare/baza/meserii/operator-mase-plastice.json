@@ -1,0 +1,249 @@
+{
+ "slug": "operator-mase-plastice",
+ "nume": "Operator mase plastice",
+ "cor": "814209",
+ "generatLa": "2026-09-27T10:01:09.201Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 6,
+  "cuBazaDeclarata": 4,
+  "faraBazaDeclarata": 2,
+  "surse": {
+   "publi24": {
+    "n": 3,
+    "procent": 50
+   },
+   "olx": {
+    "n": 2,
+    "procent": 33.3
+   },
+   "bestjobs": {
+    "n": 1,
+    "procent": 16.7
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 6,
+    "procent": 100
+   }
+  },
+  "net": {
+   "n": 4
+  },
+  "netMinimOferit": {
+   "n": 4
+  },
+  "netMaximOferit": {
+   "n": 4
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 2
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-08": {
+    "n": 2,
+    "procent": 33.3
+   },
+   "2026-09": {
+    "n": 2,
+    "procent": 33.3
+   },
+   "2025-03": {
+    "n": 1,
+    "procent": 16.7
+   },
+   "2026-04": {
+    "n": 1,
+    "procent": 16.7
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 0,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {},
+  "surse": {},
+  "peJudet": {},
+  "motiveFaraSalariu": {},
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 13,
+  "posturi": 44,
+  "ofertePeGrupaCor": 28,
+  "tipSalariu": {
+   "gross": {
+    "n": 8,
+    "procent": 61.5
+   },
+   "none": {
+    "n": 4,
+    "procent": 30.8
+   },
+   "net": {
+    "n": 1,
+    "procent": 7.7
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 1
+  },
+  "brutMinimDeclarat": {
+   "n": 8
+  },
+  "laSalariulMinim": 8,
+  "studii": {
+   "Profesional - ȘCOALĂ PROFESIONALĂ": {
+    "n": 7,
+    "procent": 53.8
+   },
+   "Gimnazial - ȘCOALĂ GENERALĂ": {
+    "n": 4,
+    "procent": 30.8
+   },
+   "Liceal - LICEU DE SPECIALITATE": {
+    "n": 2,
+    "procent": 15.4
+   }
+  },
+  "experienta": {
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 8,
+    "procent": 61.5
+   },
+   "Fără experiență - 0 ani": {
+    "n": 3,
+    "procent": 23.1
+   },
+   "Avansat - între 5 și 7 ani": {
+    "n": 1,
+    "procent": 7.7
+   },
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 1,
+    "procent": 7.7
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 13,
+    "procent": 100
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 13,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 13,
+    "procent": 100
+   }
+  },
+  "judete": {
+   "Bistrița-Năsăud": {
+    "n": 3,
+    "procent": 23.1
+   },
+   "Arad": {
+    "n": 2,
+    "procent": 15.4
+   },
+   "Maramureș": {
+    "n": 1,
+    "procent": 7.7
+   },
+   "Cluj": {
+    "n": 1,
+    "procent": 7.7
+   },
+   "Mureș": {
+    "n": 1,
+    "procent": 7.7
+   },
+   "Buzău": {
+    "n": 1,
+    "procent": 7.7
+   },
+   "Bihor": {
+    "n": 1,
+    "procent": 7.7
+   },
+   "Vrancea": {
+    "n": 1,
+    "procent": 7.7
+   },
+   "Brăila": {
+    "n": 1,
+    "procent": 7.7
+   },
+   "Ilfov": {
+    "n": 1,
+    "procent": 7.7
+   }
+  },
+  "domenii": {
+   "Producție / Logistică": {
+    "n": 13,
+    "procent": 100
+   }
+  },
+  "coduriCorInGrupa": {
+   "814209 - OPERATOR MASE PLASTICE": {
+    "n": 13,
+    "procent": 46.4
+   },
+   "814203 - OPERATOR LA PRELUCRAREA MASELOR PLASTICE": {
+    "n": 12,
+    "procent": 42.9
+   },
+   "814210 - OPERATOR MASINI DE TERMOFORMATARE": {
+    "n": 2,
+    "procent": 7.1
+   },
+   "814201 - PREPARATOR MASE PLASTICE": {
+    "n": 1,
+    "procent": 3.6
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 0,
+  "institutii": 0,
+  "judete": {},
+  "tipInstitutie": {},
+  "perioade": {},
+  "studii": {},
+  "bazaBruta": {
+   "n": 0
+  },
+  "bazaCuSporuriFixe": {
+   "n": 0
+  },
+  "peGradatie": {},
+  "peFunctie": {}
+ }
+}

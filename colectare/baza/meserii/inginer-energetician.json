@@ -1,0 +1,266 @@
+{
+ "slug": "inginer-energetician",
+ "nume": "Inginer energetician",
+ "cor": "215108",
+ "generatLa": "2026-09-27T10:01:09.009Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 0,
+  "cuBazaDeclarata": 0,
+  "faraBazaDeclarata": 0,
+  "surse": {},
+  "colectari": {},
+  "net": {
+   "n": 0
+  },
+  "netMinimOferit": {
+   "n": 0
+  },
+  "netMaximOferit": {
+   "n": 0
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 0
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {}
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 1,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {
+   "2+ ani": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "experientaPortal": {
+   "1–5 ani": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "studii": {
+   "superioare": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "limbi": {
+   "engleza": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {
+   "hibrid": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "norma": {},
+  "durata": {
+   "nedeterminată": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "beneficii": {
+   "tichete de masă": {
+    "n": 1,
+    "procent": 100
+   },
+   "bonus": {
+    "n": 1,
+    "procent": 100
+   },
+   "asigurare medicală": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "tehnologii": {
+   "SAP": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "hipo": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "peJudet": {
+   "RO": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "motiveFaraSalariu": {
+   "salary_evidence_incomplete": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 4,
+  "posturi": 7,
+  "ofertePeGrupaCor": 72,
+  "tipSalariu": {
+   "none": {
+    "n": 3,
+    "procent": 75
+   },
+   "gross": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 0
+  },
+  "brutMinimDeclarat": {
+   "n": 1
+  },
+  "laSalariulMinim": 0,
+  "studii": {
+   "Universitar - ÎNVĂȚĂMÂNT SUPERIOR": {
+    "n": 4,
+    "procent": 100
+   }
+  },
+  "experienta": {
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 3,
+    "procent": 75
+   },
+   "Fără experiență - 0 ani": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 4,
+    "procent": 100
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 4,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 4,
+    "procent": 100
+   }
+  },
+  "judete": {
+   "Municipiul București": {
+    "n": 3,
+    "procent": 75
+   },
+   "Alba": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "domenii": {
+   "Inginerie": {
+    "n": 2,
+    "procent": 50
+   },
+   "Altele": {
+    "n": 1,
+    "procent": 25
+   },
+   "Construcții / Instalații": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "coduriCorInGrupa": {
+   "215149 - INGINER ELECTRICIAN": {
+    "n": 22,
+    "procent": 30.6
+   },
+   "215111 - PROIECTANT INGINER ENERGETICIAN": {
+    "n": 18,
+    "procent": 25
+   },
+   "215105 - INGINER ELECTROENERGETICA": {
+    "n": 12,
+    "procent": 16.7
+   },
+   "215112 - INGINER RETELE ELECTRICE": {
+    "n": 4,
+    "procent": 5.6
+   },
+   "215120 - SEF TURA DISPECER ENERGETIC": {
+    "n": 4,
+    "procent": 5.6
+   },
+   "215108 - INGINER ENERGETICA INDUSTRIALA": {
+    "n": 4,
+    "procent": 5.6
+   },
+   "215110 - PROIECTANT INGINER ELECTROTEHNIC": {
+    "n": 3,
+    "procent": 4.2
+   },
+   "215109 - INGINER TERMOENERGETICA": {
+    "n": 2,
+    "procent": 2.8
+   },
+   "215103 - DISPECER RETEA DISTRIBUTIE": {
+    "n": 1,
+    "procent": 1.4
+   },
+   "215157 - INGINER ECHIPAMENTE SI SISTEME HIDROENERGETICE": {
+    "n": 1,
+    "procent": 1.4
+   },
+   "215163 - INGINER RETELE SI SISTEME HIDRAULICE": {
+    "n": 1,
+    "procent": 1.4
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 0,
+  "institutii": 0,
+  "judete": {},
+  "tipInstitutie": {},
+  "perioade": {},
+  "studii": {},
+  "bazaBruta": {
+   "n": 0
+  },
+  "bazaCuSporuriFixe": {
+   "n": 0
+  },
+  "peGradatie": {},
+  "peFunctie": {}
+ }
+}

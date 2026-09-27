@@ -1,0 +1,1288 @@
+{
+ "slug": "medic-rezident",
+ "nume": "Medic rezident",
+ "cor": "221102",
+ "generatLa": "2026-09-27T10:01:08.851Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 0,
+  "cuBazaDeclarata": 0,
+  "faraBazaDeclarata": 0,
+  "surse": {},
+  "colectari": {},
+  "net": {
+   "n": 0
+  },
+  "netMinimOferit": {
+   "n": 0
+  },
+  "netMaximOferit": {
+   "n": 0
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 0
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {}
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 0,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {},
+  "surse": {},
+  "peJudet": {},
+  "motiveFaraSalariu": {},
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 0,
+  "posturi": 0,
+  "ofertePeGrupaCor": 3,
+  "tipSalariu": {},
+  "netMinimDeclarat": {
+   "n": 0
+  },
+  "brutMinimDeclarat": {
+   "n": 0
+  },
+  "laSalariulMinim": 0,
+  "studii": {},
+  "experienta": {},
+  "contract": {},
+  "norma": {},
+  "regim": {},
+  "judete": {},
+  "domenii": {},
+  "coduriCorInGrupa": {
+   "221101 - MEDIC MEDICINA GENERALA": {
+    "n": 3,
+    "procent": 100
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 3555,
+  "institutii": 14,
+  "judete": {
+   "CT": {
+    "n": 1069,
+    "procent": 30.1
+   },
+   "BH": {
+    "n": 880,
+    "procent": 24.8
+   },
+   "SB": {
+    "n": 604,
+    "procent": 17
+   },
+   "TM": {
+    "n": 519,
+    "procent": 14.6
+   },
+   "CJ": {
+    "n": 181,
+    "procent": 5.1
+   },
+   "BR": {
+    "n": 96,
+    "procent": 2.7
+   },
+   "BZ": {
+    "n": 65,
+    "procent": 1.8
+   },
+   "BC": {
+    "n": 55,
+    "procent": 1.5
+   },
+   "BV": {
+    "n": 39,
+    "procent": 1.1
+   },
+   "AB": {
+    "n": 24,
+    "procent": 0.7
+   },
+   "HR": {
+    "n": 22,
+    "procent": 0.6
+   },
+   "VS": {
+    "n": 1,
+    "procent": 0
+   }
+  },
+  "tipInstitutie": {
+   "spital": {
+    "n": 3554,
+    "procent": 100
+   },
+   "dsp": {
+    "n": 1,
+    "procent": 0
+   }
+  },
+  "perioade": {
+   "2026-03": {
+    "n": 3342,
+    "procent": 94
+   },
+   "2026-02": {
+    "n": 120,
+    "procent": 3.4
+   },
+   "2025-03": {
+    "n": 92,
+    "procent": 2.6
+   },
+   "2026-09": {
+    "n": 1,
+    "procent": 0
+   }
+  },
+  "studii": {
+   "S": {
+    "n": 2668,
+    "procent": 75
+   },
+   "G": {
+    "n": 18,
+    "procent": 0.5
+   },
+   "PL": {
+    "n": 2,
+    "procent": 0.1
+   }
+  },
+  "bazaBruta": {
+   "n": 3555,
+   "p10": 3823,
+   "p25": 7125,
+   "median": 8043,
+   "p75": 9809,
+   "p90": 10300,
+   "min": 1508,
+   "max": 13473
+  },
+  "bazaCuSporuriFixe": {
+   "n": 3555,
+   "p10": 3890,
+   "p25": 7125,
+   "median": 9003,
+   "p75": 10987,
+   "p90": 13512,
+   "min": 1508,
+   "max": 21819
+  },
+  "peGradatie": {
+   "gradația 0": {
+    "n": 246,
+    "p10": 7125,
+    "p25": 7125,
+    "median": 7625,
+    "p75": 8375,
+    "p90": 8375,
+    "min": 3431,
+    "max": 13560
+   },
+   "gradația 2": {
+    "n": 221,
+    "p10": 7659,
+    "p25": 8607,
+    "median": 10299,
+    "p75": 10299,
+    "p90": 11289,
+    "min": 3823,
+    "max": 21819
+   },
+   "gradația 1": {
+    "n": 163,
+    "p10": 4140,
+    "p25": 7659,
+    "median": 9809,
+    "p75": 9809,
+    "p90": 10309,
+    "min": 3541,
+    "max": 15695
+   },
+   "gradația 3": {
+    "n": 39,
+    "p10": 8444,
+    "p25": 8741,
+    "median": 9926,
+    "p75": 10814,
+    "p90": 10814,
+    "min": 4014,
+    "max": 12204
+   },
+   "gradația 4": {
+    "n": 9
+   },
+   "gradația 5": {
+    "n": 7
+   }
+  },
+  "peFunctie": {
+   "Medic rezident anul IV-V SUPERIOARE ( S )": {
+    "n": 365,
+    "p10": 3823,
+    "p25": 4478,
+    "median": 11536,
+    "p75": 14420,
+    "p90": 16480,
+    "min": 3640,
+    "max": 18169
+   },
+   "Medic rezident anul I SUPERIOARE ( S )": {
+    "n": 262,
+    "p10": 7125,
+    "p25": 7980,
+    "median": 8043,
+    "p75": 9120,
+    "p90": 11400,
+    "min": 7125,
+    "max": 14196
+   },
+   "Medic rezident anul III SUPERIOARE ( S )": {
+    "n": 238,
+    "p10": 8375,
+    "p25": 9380,
+    "median": 10259,
+    "p75": 12047,
+    "p90": 14070,
+    "min": 3294,
+    "max": 16686
+   },
+   "Medic rezident anul II SUPERIOARE ( S )": {
+    "n": 191,
+    "p10": 8357,
+    "p25": 8540,
+    "median": 9194,
+    "p75": 11017,
+    "p90": 12694,
+    "min": 7625,
+    "max": 14459
+   },
+   "Medici Rezidenti MEDIC REZIDENT - AN I S": {
+    "n": 168,
+    "p10": 7125,
+    "p25": 7125,
+    "median": 7125,
+    "p75": 7659,
+    "p90": 8042,
+    "min": 7125,
+    "max": 8871
+   },
+   "MEDIC REZIDENT AN III Legea nr. 153 art. 33": {
+    "n": 124,
+    "p10": 2075,
+    "p25": 2854,
+    "median": 4506,
+    "p75": 5025,
+    "p90": 5695,
+    "min": 1513,
+    "max": 6918
+   },
+   "Medici Rezidenti MEDIC REZIDENT ANUL III S": {
+    "n": 123,
+    "p10": 8375,
+    "p25": 8375,
+    "median": 9003,
+    "p75": 9453,
+    "p90": 9926,
+    "min": 8375,
+    "max": 10870.95
+   },
+   "REZIDENTI 2023 Medic rezident anul I BAZA SUPERIOARE Persona": {
+    "n": 112,
+    "p10": 7125,
+    "p25": 7809,
+    "median": 7809,
+    "p75": 9120,
+    "p90": 10232,
+    "min": 7125,
+    "max": 10830
+   },
+   "MEDIC REZIDENT AN II Legea nr. 153 art. 33": {
+    "n": 110,
+    "p10": 1936,
+    "p25": 2501,
+    "median": 3639,
+    "p75": 4575,
+    "p90": 4589,
+    "min": 1508,
+    "max": 5574
+   },
+   "Medici Rezidenti MEDIC - REZIDENT AN II S": {
+    "n": 108,
+    "p10": 7625,
+    "p25": 7625,
+    "median": 7652,
+    "p75": 8607,
+    "p90": 8607,
+    "min": 7625,
+    "max": 9495
+   },
+   "MEDIC REZIDENT AN IV Legea nr. 153 art. 33": {
+    "n": 108,
+    "p10": 2210,
+    "p25": 3753,
+    "median": 4851,
+    "p75": 5737,
+    "p90": 5886,
+    "min": 1570,
+    "max": 7004
+   },
+   "MEDIC REZIDENT AN I Legea nr. 153 art. 33": {
+    "n": 105,
+    "p10": 1995,
+    "p25": 2850,
+    "median": 3990,
+    "p75": 4275,
+    "p90": 4504,
+    "min": 1516,
+    "max": 4969
+   },
+   "Medici Rezidenti MEDIC REZIDENT ANUL IV S": {
+    "n": 98,
+    "p10": 9809,
+    "p25": 9809,
+    "median": 10299,
+    "p75": 10299,
+    "p90": 10814,
+    "min": 9125,
+    "max": 11314
+   },
+   "REZIDENTI 2023 Medic rezident anul II BAZA SUPERIOARE Person": {
+    "n": 96,
+    "p10": 7625,
+    "p25": 8357,
+    "median": 8529,
+    "p75": 9760,
+    "p90": 10980,
+    "min": 7625,
+    "max": 11590
+   },
+   "Medici Rezidenti MEDIC REZIDENT ANUL V S": {
+    "n": 83,
+    "p10": 9809,
+    "p25": 10054,
+    "median": 10299,
+    "p75": 10309,
+    "p90": 10814,
+    "min": 9809,
+    "max": 11584
+   },
+   "MEDIC REZIDENT AN V Legea nr. 153 art. 33": {
+    "n": 71,
+    "p10": 2055,
+    "p25": 3880,
+    "median": 4994,
+    "p75": 5603,
+    "p90": 5886,
+    "min": 1511,
+    "max": 7004
+   },
+   "MEDICI REZIDENTI anul III ‐ VI Medic rezident anul III BAZA ": {
+    "n": 68,
+    "p10": 8375,
+    "p25": 8375,
+    "median": 9205,
+    "p75": 10820,
+    "p90": 12060,
+    "min": 8375,
+    "max": 12730
+   },
+   "MEDICI REZIDENTI anul III ‐ VI Medic rezident anul V Gradati": {
+    "n": 61,
+    "p10": 10751,
+    "p25": 11289,
+    "median": 12556,
+    "p75": 14125,
+    "p90": 14832,
+    "min": 9809,
+    "max": 17292
+   },
+   "MEDICI REZIDENTI anul III ‐ VI Medic rezident anul IV Gradat": {
+    "n": 58,
+    "p10": 10751,
+    "p25": 11289,
+    "median": 12004,
+    "p75": 14346,
+    "p90": 14855,
+    "min": 9809,
+    "max": 16362
+   },
+   "MEDICI REZIDENTI anul III ‐ VI Medic rezident anul III Grada": {
+    "n": 44,
+    "p10": 9003,
+    "p25": 9453,
+    "median": 10444,
+    "p75": 12170,
+    "p90": 13469,
+    "min": 9003,
+    "max": 15088
+   },
+   "Medici Rezidenti anul I‐VI Medic rezident anul IV Gradatia 1": {
+    "n": 44,
+    "p10": 9809,
+    "p25": 10751,
+    "median": 10986,
+    "p75": 12556,
+    "p90": 13733,
+    "min": 9809,
+    "max": 14910
+   },
+   "MEDICI REZIDENTI ANUL IV-V MEDIC REZIDENT AN IV-V SUPERIOARE": {
+    "n": 42,
+    "p10": 10987,
+    "p25": 10991,
+    "median": 12382,
+    "p75": 13734,
+    "p90": 15719,
+    "min": 10202,
+    "max": 19092
+   },
+   "MEDIC REZIDENT AN III BAZA": {
+    "n": 37,
+    "p10": 4050,
+    "p25": 4050,
+    "median": 4050,
+    "p75": 4050,
+    "p90": 4050,
+    "min": 4050,
+    "max": 4050
+   },
+   "Medici Rezidenti anul I‐VI Medic rezident anul III BAZA SUPE": {
+    "n": 34,
+    "p10": 8375,
+    "p25": 9179,
+    "median": 9380,
+    "p75": 10720,
+    "p90": 10720,
+    "min": 8375,
+    "max": 11725
+   },
+   "MEDICI REZIDENTI anul I ‐II Medic rezident anul IV Gradatia ": {
+    "n": 33,
+    "p10": 10751,
+    "p25": 11289,
+    "median": 11948,
+    "p75": 14125,
+    "p90": 14125,
+    "min": 9809,
+    "max": 14832
+   },
+   "Medici Rezidenti anul I‐VI Medic rezident anul III Gradatia ": {
+    "n": 28,
+    "p10": 9453,
+    "p25": 9453,
+    "median": 10361,
+    "p75": 11187,
+    "p90": 12965,
+    "min": 9003,
+    "max": 14369
+   },
+   "MEDIC REZIDENT AN IV Gradatia 1": {
+    "n": 27,
+    "p10": 4050,
+    "p25": 4050,
+    "median": 4050,
+    "p75": 4050,
+    "p90": 4050,
+    "min": 4050,
+    "max": 4050
+   },
+   "MEDICI REZIDENTI anul III ‐ VI Medic rezident anul VI Gradat": {
+    "n": 26,
+    "p10": 12216,
+    "p25": 12709,
+    "median": 13689,
+    "p75": 14737,
+    "p90": 15532,
+    "min": 12216,
+    "max": 15659
+   },
+   "Medici Rezidenti anul I‐VI Medic rezident anul IV Gradatia 2": {
+    "n": 26,
+    "p10": 10300,
+    "p25": 10444,
+    "median": 11289,
+    "p75": 13184,
+    "p90": 14420,
+    "min": 10300,
+    "max": 14832
+   },
+   "MEDIC REZIDENT ANUL III MEDICI REZIDENTI AN I-VII": {
+    "n": 24,
+    "p10": 9715,
+    "p25": 9879,
+    "median": 12806,
+    "p75": 14070,
+    "p90": 14070,
+    "min": 9129,
+    "max": 15884
+   },
+   "REZIDENTI 2023 Medic rezident anul I Gradatia 2 SUPERIOARE P": {
+    "n": 19,
+    "p10": 8042,
+    "p25": 8653,
+    "median": 8814,
+    "p75": 9072,
+    "p90": 10551,
+    "min": 8042,
+    "max": 11581
+   },
+   "REZIDENTI 2023 Medic rezident anul II Gradatia 2 SUPERIOARE ": {
+    "n": 17,
+    "p10": 8607,
+    "p25": 8607,
+    "median": 9640,
+    "p75": 12050,
+    "p90": 12394,
+    "min": 8607,
+    "max": 13082
+   },
+   "REZIDENTI 2023 Medic rezident anul II Gradatia 1 SUPERIOARE ": {
+    "n": 17,
+    "p10": 8197,
+    "p25": 8197,
+    "median": 8984,
+    "p75": 9832,
+    "p90": 11607,
+    "min": 8197,
+    "max": 12460
+   },
+   "MEDICI REZIDENTI anul I ‐II Medic rezident anul II Gradatia ": {
+    "n": 16,
+    "p10": 8607,
+    "p25": 8890,
+    "median": 9707,
+    "p75": 10623,
+    "p90": 11476,
+    "min": 8197,
+    "max": 11804
+   },
+   "medic rezident an III": {
+    "n": 15,
+    "p10": 9074,
+    "p25": 9418,
+    "median": 10720,
+    "p75": 13568,
+    "p90": 14976,
+    "min": 8375,
+    "max": 15884
+   },
+   "Medici Rezidenti anul I‐VI Medic rezident anul V Gradatia 2 ": {
+    "n": 13,
+    "p10": 11289,
+    "p25": 11289,
+    "median": 11289,
+    "p75": 14420,
+    "p90": 14420,
+    "min": 10877,
+    "max": 14420
+   },
+   "medic rezident an I": {
+    "n": 13,
+    "p10": 7690,
+    "p25": 7980,
+    "median": 9008,
+    "p75": 10295,
+    "p90": 11799,
+    "min": 7125,
+    "max": 12869
+   },
+   "medic rezident an IV": {
+    "n": 13,
+    "p10": 10799,
+    "p25": 11537,
+    "median": 14834,
+    "p75": 15696,
+    "p90": 17141,
+    "min": 9810,
+    "max": 19095
+   },
+   "medic rezident an V": {
+    "n": 13,
+    "p10": 11097,
+    "p25": 13185,
+    "median": 14422,
+    "p75": 16070,
+    "p90": 17141,
+    "min": 9810,
+    "max": 18173
+   },
+   "Medic rezident anul VI-VII SUPERIOARE ( S )": {
+    "n": 13,
+    "p10": 4837,
+    "p25": 4853,
+    "median": 13202,
+    "p75": 15867,
+    "p90": 17835,
+    "min": 4603,
+    "max": 17835
+   },
+   "Medici Rezidenti anul I‐VI Medic rezident anul V Gradatia 1 ": {
+    "n": 12,
+    "p10": 10751,
+    "p25": 10751,
+    "median": 12556,
+    "p75": 12850,
+    "p90": 13733,
+    "min": 10751,
+    "max": 14125
+   },
+   "REZIDENTI 2023 Medic rezident anul I Gradatia 1 SUPERIOARE P": {
+    "n": 12,
+    "p10": 7659,
+    "p25": 7659,
+    "median": 8241,
+    "p75": 9301,
+    "p90": 10364,
+    "min": 7659,
+    "max": 10723
+   },
+   "medic rezident an II": {
+    "n": 12,
+    "p10": 8213,
+    "p25": 8494,
+    "median": 8942,
+    "p75": 12124,
+    "p90": 14295,
+    "min": 7625,
+    "max": 15954
+   },
+   "Medic rezident anul I BAZA": {
+    "n": 11,
+    "p10": 7125,
+    "p25": 7125,
+    "median": 7125,
+    "p75": 7125,
+    "p90": 7125,
+    "min": 7125,
+    "max": 7125
+   },
+   "MEDIC REZIDENT ANUL I MEDICI REZIDENTI AN I-VII": {
+    "n": 11,
+    "p10": 7809,
+    "p25": 7838,
+    "median": 7980,
+    "p75": 8550,
+    "p90": 11400,
+    "min": 7425,
+    "max": 11970
+   },
+   "Laborator de radiologie si imag.med‐str.Doja nr.65 Medic rez": {
+    "n": 10,
+    "p10": 1571,
+    "p25": 1607,
+    "median": 1661,
+    "p75": 2350,
+    "p90": 2613,
+    "min": 1546,
+    "max": 2707
+   },
+   "MEDIC REZIDENT AN III Medici rezidenti": {
+    "n": 10,
+    "p10": 9032,
+    "p25": 9229,
+    "median": 10394,
+    "p75": 11441,
+    "p90": 11909,
+    "min": 8375,
+    "max": 13560
+   },
+   "MEDICI REZIDENTI anul I ‐II Medic rezident anul I BAZA SUPER": {
+    "n": 9
+   },
+   "Medici Rezidenti MEDIC REZIDENT ANUL VI S": {
+    "n": 9
+   },
+   "MEDIC REZIDENT AN III Gradatia 1": {
+    "n": 9
+   },
+   "MEDIC REZIDENT AN V Gradatia 1": {
+    "n": 9
+   },
+   "MEDIC REZIDENT AN II Medici rezidenti": {
+    "n": 9
+   },
+   "MEDIC REZIDENT AN V Gradatia 1 Sporurile din anexele 1, 2,3,": {
+    "n": 9
+   },
+   "MEDICI REZIDENTI anul I ‐II Medic rezident anul III Gradatia": {
+    "n": 8
+   },
+   "Medici Rezidenti anul I‐VI Medic rezident anul IV Gradatia 3": {
+    "n": 8
+   },
+   "Unitate Primire Urgente(UPU)-SMURD MEDIC REZIDENT ANUL V S": {
+    "n": 7
+   },
+   "MEDICI REZIDENTI MEDIC REZIDENT AN II BAZA": {
+    "n": 7
+   },
+   "REZIDENTI 2023 Medic rezident anul II Gradatia 5 SUPERIOARE ": {
+    "n": 6
+   },
+   "MEDICI REZIDENTI ANUL II MEDIC REZIDENT AN II ATI SUPERIOARE": {
+    "n": 6
+   },
+   "Medic rezident anul II": {
+    "n": 6
+   },
+   "MEDIC REZIDENT AN V Medici rezidenti": {
+    "n": 6
+   },
+   "MEDIC REZIDENT AN V Sectia Medicina interna": {
+    "n": 6
+   },
+   "Medici Rezidenti anul I‐VI Medic rezident anul II Gradatia 1": {
+    "n": 5
+   },
+   "Medici Rezidenti anul I‐VI Medic rezident anul II Gradatia 2": {
+    "n": 5
+   },
+   "REZIDENTI 2023 Medic rezident anul I Gradatia 3 SUPERIOARE P": {
+    "n": 5
+   },
+   "MEDIC REZIDENT ANUL IV SUPERIOARE Gradatia": {
+    "n": 5
+   },
+   "SECTIA CLINICA ATI I Medic rezident anul IV Gradatia 1 SUPER": {
+    "n": 4
+   },
+   "MEDICI REZIDENTI ANUL II MEDIC REZIDENT AN II UPU SUPERIOARE": {
+    "n": 4
+   },
+   "MEDICI REZIDENTI ANUL III MEDIC REZIDENT AN III UPU SUPERIOA": {
+    "n": 4
+   },
+   "MEDICI REZIDENTI ANUL III MEDIC REZIDENT AN III ATI SUPERIOA": {
+    "n": 4
+   },
+   "MEDICI REZIDENTI ANUL VI-VII MEDIC REZIDENT AN VI-VII SUPERI": {
+    "n": 4
+   },
+   "Sectia Clinica Neurochirurgie MEDIC REZIDENT ANUL VI S": {
+    "n": 4
+   },
+   "Medic rezident anul V Gradatia I": {
+    "n": 4
+   },
+   "MEDIC REZIDENT AN I Medici rezidenti": {
+    "n": 4
+   },
+   "MEDIC REZIDENT GARZI AN IV Sectia Cardiologie": {
+    "n": 4
+   },
+   "MEDIC REZIDENT GARZI AN V Sectia Cardiologie": {
+    "n": 4
+   },
+   "MEDIC REZIDENT ANUL I SUPERIOARE BAZA": {
+    "n": 4
+   },
+   "MEDIC REZIDENT ANUL V (UPU) SUPERIOARE Gradatia": {
+    "n": 4
+   },
+   "MEDIC REZIDENT AN IV Gradatia 1 Sporurile din anexele 1, 2,3": {
+    "n": 4
+   },
+   "REZIDENTI 2023 Medic rezident anul I Gradatia 5 SUPERIOARE P": {
+    "n": 3
+   },
+   "REZIDENTI 2023 Medic rezident anul III Gradatia 1 SUPERIOARE": {
+    "n": 3
+   },
+   "REZIDENTI PE POST Medic rezident anul V Gradatia 1 SUPERIOAR": {
+    "n": 3
+   },
+   "Sectia Clinica NEUROCHIRURGIE Medic rezident anul VI Gradati": {
+    "n": 3
+   },
+   "Sectia Clinica CHIRURGIE PLASTICA, MICROCHIR. RE Medic rezid": {
+    "n": 3
+   },
+   "SECTIA CLINICA MEDICINA INTERNA II MEDIC REZIDENT AN IV-V SU": {
+    "n": 3
+   },
+   "MEDICI REZIDENTI ANUL IV-V MEDIC REZIDENT AN IV-V A.T.I. SUP": {
+    "n": 3
+   },
+   "MEDIC REZIDENT AN III Gradatia 2": {
+    "n": 3
+   },
+   "MEDIC REZIDENT AN IV Gradatia 2": {
+    "n": 3
+   },
+   "MEDIC REZIDENT AN V Gradatia 2": {
+    "n": 3
+   },
+   "Medic rezident anul Gradatia": {
+    "n": 3
+   },
+   "MEDICI REZIDENTI MEDIC REZIDENT AN IV Gradatia 2": {
+    "n": 3
+   },
+   "MEDICI REZIDENTI MEDIC REZIDENT AN V Gradatia 2": {
+    "n": 3
+   },
+   "MEDICI REZIDENTI MEDIC REZIDENT AN III BAZA": {
+    "n": 3
+   },
+   "MEDIC REZIDENT ANUL II MEDICI REZIDENTI AN I-VII": {
+    "n": 3
+   },
+   "MEDIC REZIDENT AN IV Medici rezidenti": {
+    "n": 3
+   },
+   "MEDICI REZIDENTI anul I ‐II Medic rezident anul I Gradatia 3": {
+    "n": 2
+   },
+   "MEDICI REZIDENTI anul I ‐II Medic rezident anul III BAZA SUP": {
+    "n": 2
+   },
+   "MEDICI REZIDENTI anul III ‐ VI Medic rezident anul III ** Gr": {
+    "n": 2
+   },
+   "Medici Rezidenti anul I‐VI Medic rezident anul II Gradatia 3": {
+    "n": 2
+   },
+   "Medici Rezidenti anul I‐VI Medic rezident anul II BAZA SUPER": {
+    "n": 2
+   },
+   "Medici Rezidenti anul I‐VI Medic rezident anul V Gradatia 3 ": {
+    "n": 2
+   },
+   "Medici Rezidenti anul I‐VI Medic rezident anul IV Gradatia 5": {
+    "n": 2
+   },
+   "Medici Rezidenti anul I‐VI Medic rezident anul IV Gradatia 4": {
+    "n": 2
+   },
+   "REZIDENTI 2023 Medic rezident anul II Gradatia 3 SUPERIOARE ": {
+    "n": 2
+   },
+   "REZIDENTI 2023 Medic rezident anul II Gradatia 4 SUPERIOARE ": {
+    "n": 2
+   },
+   "REZIDENTI 2023 Medic rezident anul II* BAZA SUPERIOARE Perso": {
+    "n": 2
+   },
+   "REZIDENTI 2023 Medic rezident anul I Gradatia 4 SUPERIOARE P": {
+    "n": 2
+   },
+   "REZIDENTI 2023 Medic rezident anul II ** BAZA SUPERIOARE Per": {
+    "n": 2
+   },
+   "REZIDENTI 2023 Medic rezident anul II ** Gradatia 1 SUPERIOA": {
+    "n": 2
+   },
+   "REZIDENTI 2023 Medic rezident anul V Gradatia 2 SUPERIOARE P": {
+    "n": 2
+   },
+   "REZIDENTI 2023 Medic rezident anul IV Gradatia 1 SUPERIOARE ": {
+    "n": 2
+   },
+   "REZIDENTI 2023 Medic rezident anul III Gradatia 2 SUPERIOARE": {
+    "n": 2
+   },
+   "REZIDENTI 2023 Medic rezident anul III Gradatia 3 SUPERIOARE": {
+    "n": 2
+   },
+   "SECTIA CLINICA PSIHIATRIE I Medic rezident anul V Gradatia 2": {
+    "n": 2
+   },
+   "Sectia Clinica CHIRURGIE GENERALA I Medic rezident anul V Gr": {
+    "n": 2
+   },
+   "SECTIA CLINICA OBSTETRICA GINECOLOGIE I Medic rezident anul ": {
+    "n": 2
+   },
+   "A.T.I. MEDIC REZIDENT AN IV-V A.T.I. SUPERIOARE Gradatia 2": {
+    "n": 2
+   },
+   "A.T.I. II MEDIC REZIDENT AN IV-V A.T.I. SUPERIOARE Gradatia ": {
+    "n": 2
+   },
+   "COMPARTIMENT ATI III MEDIC REZIDENT AN IV-V A.T.I. SUPERIOAR": {
+    "n": 2
+   },
+   "MEDICI REZIDENTI ANUL II MEDIC REZIDENT AN II SUPERIOARE BAZ": {
+    "n": 2
+   },
+   "MEDICI REZIDENTI ANUL III MEDIC REZIDENT AN III SUPERIOARE B": {
+    "n": 2
+   },
+   "medic rezident an V - garzi": {
+    "n": 2
+   },
+   "Medic rezident anul II BAZA": {
+    "n": 2
+   },
+   "Medic rezident anul III": {
+    "n": 2
+   },
+   "MEDICI REZIDENTI MEDIC REZIDENT AN I BAZA": {
+    "n": 2
+   },
+   "MEDIC REZIDENT AN V Sectia ATI": {
+    "n": 2
+   },
+   "MEDIC REZIDENT GARZI AN V UPU - smurd": {
+    "n": 2
+   },
+   "MEDIC REZIDENT GARZI AN III Sectia Cardiologie": {
+    "n": 2
+   },
+   "MEDIC REZIDENT GARZI AN IV Sectia Obstretica Ginecologie": {
+    "n": 2
+   },
+   "MEDIC REZIDENT GARZI AN V Sectia Neonatologie": {
+    "n": 2
+   },
+   "MEDIC REZIDENT ANUL I SUPERIOARE Gradatia": {
+    "n": 2
+   },
+   "MEDIC REZIDENT ANUL III SUPERIOARE Gradatia": {
+    "n": 2
+   },
+   "MEDIC REZIDENT AN V Gradatia 2 Sporurile din anexele 1, 2,3,": {
+    "n": 2
+   },
+   "Medic rezident": {
+    "n": 1
+   },
+   "MEDICI REZIDENTI anul I ‐II Medic rezident anul II BAZA SUPE": {
+    "n": 1
+   },
+   "MEDICI REZIDENTI anul III ‐ VI Medic rezident anul IV BAZA S": {
+    "n": 1
+   },
+   "MEDICI REZIDENTI anul III ‐ VI Medic rezident anul IV * Grad": {
+    "n": 1
+   },
+   "Medici Rezidenti anul I‐VI Medic rezident anul I BAZA SUPERI": {
+    "n": 1
+   },
+   "Medici Rezidenti anul I‐VI Medic rezident anul I Gradatia 2 ": {
+    "n": 1
+   },
+   "REZIDENTI 2023 Medic rezident anul II* Gradatia 1 SUPERIOARE": {
+    "n": 1
+   },
+   "REZIDENTI 2023 Medic rezident anul I BAZA nespecificat Perso": {
+    "n": 1
+   },
+   "REZIDENTI 2023 Medic rezident anul I BAZA POSTLICEALE Person": {
+    "n": 1
+   },
+   "REZIDENTI 2023 Medic rezident anul I* BAZA SUPERIOARE Person": {
+    "n": 1
+   },
+   "REZIDENTI 2023 Medic rezident anul I ** Gradatia 1 SUPERIOAR": {
+    "n": 1
+   },
+   "REZIDENTI 2023 Medic rezident anul V Gradatia 1 SUPERIOARE P": {
+    "n": 1
+   },
+   "REZIDENTI 2023 Medic rezident anul III BAZA SUPERIOARE Perso": {
+    "n": 1
+   },
+   "REZIDENTI PE POST Medic rezident anul III BAZA SUPERIOARE Pe": {
+    "n": 1
+   },
+   "REZIDENTI PE POST Medic rezident anul VI Gradatia 2 SUPERIOA": {
+    "n": 1
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 Medic rezident anul V Gradatia 2": {
+    "n": 1
+   },
+   "Sectia Clinica NEUROLOGIE I Medic rezident anul IV Gradatia ": {
+    "n": 1
+   },
+   "Sectia Clinica ORTOPEDIE‐TRAUMATOLOGIE I Medic rezident anul": {
+    "n": 1
+   },
+   "Sectia Clinica CHIRURGIE GENERALA I Medic rezident anul IV G": {
+    "n": 1
+   },
+   "Sectia Clinica MEDICINA INTERNA I Medic rezident anul IV Gra": {
+    "n": 1
+   },
+   "SECTIA CLINICA ATI I Medic rezident anul III Gradatia 3 SUPE": {
+    "n": 1
+   },
+   "Compartiment Neurologie II Medic rezident anul IV Gradatia 1": {
+    "n": 1
+   },
+   "SECTIA CLINICA PSIHIATRIE I Medic rezident anul IV Gradatia ": {
+    "n": 1
+   },
+   "SECTIA CLINICA PSIHIATRIE II Medic rezident anul IV Gradatia": {
+    "n": 1
+   },
+   "SECTIA CLINICA PSIHIATRIE II Medic rezident anul III Gradati": {
+    "n": 1
+   },
+   "SECTIA CLINICA PSIHIATRIE III Medic rezident anul IV Gradati": {
+    "n": 1
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 Medic rezident anul V Gradatia 1": {
+    "n": 1
+   },
+   "UPU‐SMURD‐str.Gh.Doja nr.65 Medic rezident anul IV Gradatia ": {
+    "n": 1
+   },
+   "A.T.I. MEDIC REZIDENT AN IV-V A.T.I. SUPERIOARE Gradatia 5": {
+    "n": 1
+   },
+   "LABORATOR RADIOLOGIE SI IMAGISTICA MEDICALA MEDIC REZIDENT A": {
+    "n": 1
+   },
+   "SECTIA CLINICA CHIRURGIE GENERALA I MEDIC REZIDENT AN IV-V S": {
+    "n": 1
+   },
+   "SECTIA HEMATOLOGIE MEDIC REZIDENT AN IV-V SUPERIOARE Gradati": {
+    "n": 1
+   },
+   "SECTIA MEDICINA INTERNA CRONICI MEDIC REZIDENT AN IV-V SUPER": {
+    "n": 1
+   },
+   "MEDICI REZIDENTI ANUL I MEDIC REZIDENT AN I SUPERIOARE Grada": {
+    "n": 1
+   },
+   "MEDICI REZIDENTI ANUL I MEDIC REZIDENT AN I UPU SUPERIOARE B": {
+    "n": 1
+   },
+   "MEDICI REZIDENTI ANUL I MEDIC REZIDENT AN I UPU SUPERIOARE G": {
+    "n": 1
+   },
+   "MEDICI REZIDENTI ANUL II MEDIC REZIDENT AN II SUPERIOARE Gra": {
+    "n": 1
+   },
+   "MEDICI REZIDENTI ANUL III MEDIC REZIDENT AN III SUPERIOARE G": {
+    "n": 1
+   },
+   "MEDICI REZIDENTI ANUL IV-V MEDIC REZIDENT AN IV-V necompleta": {
+    "n": 1
+   },
+   "MEDICI REZIDENTI ANUL IV-V MEDIC REZIDENT AN IV-V UPU SUPERI": {
+    "n": 1
+   },
+   "MEDICI REZIDENTI ANUL IV-V MEDIC REZIDENT AN IV-V A.T.I. POS": {
+    "n": 1
+   },
+   "U.P.U. MEDIC REZIDENT AN IV-V UPU SUPERIOARE Gradatia 3": {
+    "n": 1
+   },
+   "U.P.U. MEDIC REZIDENT AN IV-V UPU SUPERIOARE Gradatia 1": {
+    "n": 1
+   },
+   "U.P.U. MEDIC REZIDENT AN IV-V UPU SUPERIOARE Gradatia 2": {
+    "n": 1
+   },
+   "medic rezident an III - garzi": {
+    "n": 1
+   },
+   "medic rezident an IV - garzi": {
+    "n": 1
+   },
+   "medic rezident an VI - garzi": {
+    "n": 1
+   },
+   "Sectia Clinic Medicina-Interna II MEDIC REZIDENT ANUL IV S": {
+    "n": 1
+   },
+   "Sectia Clinic Medicina-Interna II MEDIC REZIDENT ANUL V S": {
+    "n": 1
+   },
+   "Compartiment Chirurgie Vasculara MEDIC REZIDENT ANUL III S": {
+    "n": 1
+   },
+   "Unitate Primire Urgente(UPU)-SMURD MEDIC REZIDENT ANUL IV S": {
+    "n": 1
+   },
+   "MEDIC REZIDENT AN VI Legea nr. 153 art. 33": {
+    "n": 1
+   },
+   "MEDIC REZIDENT AN IV Gradatia 3": {
+    "n": 1
+   },
+   "Medic rezident anul I BAZA o": {
+    "n": 1
+   },
+   "Medic rezident anul I Gradatia I OOO": {
+    "n": 1
+   },
+   "Medic rezident anul I I OOO": {
+    "n": 1
+   },
+   "Medic rezident anul I Gradatia": {
+    "n": 1
+   },
+   "Medic rezident anul I Gradatia I": {
+    "n": 1
+   },
+   "Medic rezident anul II Gradatia I": {
+    "n": 1
+   },
+   "Medic rezident anul Ill BAZA": {
+    "n": 1
+   },
+   "Medic rezident anul Ill Gradatia I": {
+    "n": 1
+   },
+   "Medic rezident anul IV": {
+    "n": 1
+   },
+   "Medic rezident anul V Gradatia": {
+    "n": 1
+   },
+   "Medic rezident anul V Gradatia *240": {
+    "n": 1
+   },
+   "GARZI - BOLI INFECTIOASE MEDIC REZIDENT AN IV Gradatia 1": {
+    "n": 1
+   },
+   "GARZI - NEUROLOGIE MEDIC REZIDENT AN IV Gradatia 1": {
+    "n": 1
+   },
+   "GARZI - CARDIOLOGIE MEDIC REZIDENT AN V Gradatia 1": {
+    "n": 1
+   },
+   "GARZI - MEDICINA INTERNA II MEDIC REZIDENT AN IV Gradatia 1": {
+    "n": 1
+   },
+   "GARZI - OBSTETRICA GINECOLOGIE MEDIC REZIDENT AN IV Gradatia": {
+    "n": 1
+   },
+   "MEDICI REZIDENTI MEDIC REZIDENT AN IV Gradatia 1": {
+    "n": 1
+   },
+   "MEDIC REZIDENT ANUL IV LAB. DE MICROBIOLOGIE MEDICALA": {
+    "n": 1
+   },
+   "MEDIC REZIDENT ANUL V MEDICI REZIDENTI AN I-VII": {
+    "n": 1
+   },
+   "MEDIC REZIDENT ANUL IV MEDICI REZIDENTI AN I-VII": {
+    "n": 1
+   },
+   "MEDIC REZIDENT ANUL V Sectia ANESTEZIE-TERAPIE INTENSIVA": {
+    "n": 1
+   },
+   "MEDIC REZIDENT ANUL VI Sectia CHIRURGIE GENERALA": {
+    "n": 1
+   },
+   "MEDIC REZIDENT ANUL V Sectia DERMATO-VENEROLOGIE": {
+    "n": 1
+   },
+   "MEDIC REZIDENT ANUL V UNITATE DE PRIMIRE URGENTE - SMURD": {
+    "n": 1
+   },
+   "MEDIC REZIDENT ANUL V ANESTEZIE-TERAPIE INTENSIVA - GARZI": {
+    "n": 1
+   },
+   "MEDIC REZIDENT ANUL V BOLI INFECTIOASE ADULTI - GARZI": {
+    "n": 1
+   },
+   "MEDIC REZIDENT ANUL VI CHIRURGIE GENERALA - GARZI": {
+    "n": 1
+   },
+   "MEDIC REZIDENT ANUL IV CH CARDIOVASCULARA- GARZI": {
+    "n": 1
+   },
+   "MEDIC REZIDENT ANUL III I.S.U. - GARZI": {
+    "n": 1
+   },
+   "MEDIC REZIDENT ANUL V NEONATOLOGIE - GARZI": {
+    "n": 1
+   },
+   "MEDIC REZIDENT ANUL IV OBSTETRICA-GINECOLOGIE II - GARZI": {
+    "n": 1
+   },
+   "MEDIC REZIDENT ANUL IV OFTALMOLOGIE - GARZI": {
+    "n": 1
+   },
+   "MEDIC REZIDENT ANUL V PEDIATRIE - GARZI": {
+    "n": 1
+   },
+   "MEDIC REZIDENT ANUL III U.P.U. - GARZI": {
+    "n": 1
+   },
+   "MEDIC REZIDENT AN V UPU - smurd": {
+    "n": 1
+   },
+   "MEDIC REZIDENT AN V Sectia Gastroenterologie": {
+    "n": 1
+   },
+   "MEDIC REZIDENT AN IV UPU - smurd": {
+    "n": 1
+   },
+   "MEDIC REZIDENT AN VI Sectia Cardiologie": {
+    "n": 1
+   },
+   "MEDIC REZIDENT GARZI AN III Sectia Medicina interna": {
+    "n": 1
+   },
+   "MEDIC REZIDENT GARZI AN III Sectia Chirurgie generala": {
+    "n": 1
+   },
+   "MEDIC REZIDENT GARZI AN III UPU - smurd": {
+    "n": 1
+   },
+   "MEDIC REZIDENT GARZI Sectia Neurologie": {
+    "n": 1
+   },
+   "MEDIC REZIDENT GARZI AN V Sectia Chirurgie generala": {
+    "n": 1
+   },
+   "MEDIC REZIDENT ANUL II SUPERIOARE BAZA": {
+    "n": 1
+   },
+   "MEDIC REZIDENT ANUL V SUPERIOARE Gradatia": {
+    "n": 1
+   },
+   "MEDIC REZIDENT ANUL III (UPU) SUPERIOARE BAZA": {
+    "n": 1
+   },
+   "MEDIC REZIDENT ANUL IV (ATI) SUPERIOARE Gradatia": {
+    "n": 1
+   },
+   "MEDIC REZIDENT ANUL VI SUPERIOARE Gradatia": {
+    "n": 1
+   },
+   "MEDIC REZIDENT AN IV Gradatia 2 Sporurile din anexele 1, 2,3": {
+    "n": 1
+   },
+   "MEDIC REZIDENT AN III Gradatia 3 Sporurile din anexele 1, 2,": {
+    "n": 1
+   },
+   "MEDIC REZIDENT AN III Gradatia 1 Sporurile din anexele 1, 2,": {
+    "n": 1
+   }
+  }
+ }
+}

@@ -1,0 +1,432 @@
+{
+ "slug": "agent-paza",
+ "nume": "Agent de pază",
+ "cor": "541401",
+ "generatLa": "2026-09-27T10:01:09.158Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 62,
+  "cuBazaDeclarata": 37,
+  "faraBazaDeclarata": 25,
+  "surse": {
+   "olx": {
+    "n": 30,
+    "procent": 48.4
+   },
+   "publi24": {
+    "n": 20,
+    "procent": 32.3
+   },
+   "anuntul": {
+    "n": 12,
+    "procent": 19.4
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 62,
+    "procent": 100
+   }
+  },
+  "net": {
+   "n": 37,
+   "p10": 3000,
+   "p25": 3000,
+   "median": 3450,
+   "p75": 3900,
+   "p90": 4060,
+   "min": 2700,
+   "max": 4500
+  },
+  "netMinimOferit": {
+   "n": 37,
+   "p10": 2900,
+   "p25": 3000,
+   "median": 3240,
+   "p75": 3550,
+   "p90": 4000,
+   "min": 2600,
+   "max": 4200
+  },
+  "netMaximOferit": {
+   "n": 37,
+   "p10": 3000,
+   "p25": 3000,
+   "median": 3500,
+   "p75": 4000,
+   "p90": 4392,
+   "min": 2700,
+   "max": 5000
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 25,
+   "p10": 3000,
+   "p25": 3035,
+   "median": 3150,
+   "p75": 3350,
+   "p90": 3500,
+   "min": 2600,
+   "max": 4250
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-08": {
+    "n": 39,
+    "procent": 62.9
+   },
+   "2026-09": {
+    "n": 16,
+    "procent": 25.8
+   },
+   "2026-07": {
+    "n": 3,
+    "procent": 4.8
+   },
+   "2026-05": {
+    "n": 2,
+    "procent": 3.2
+   },
+   "2025-10": {
+    "n": 1,
+    "procent": 1.6
+   },
+   "2026-03": {
+    "n": 1,
+    "procent": 1.6
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 0,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {},
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {},
+  "surse": {},
+  "peJudet": {},
+  "motiveFaraSalariu": {},
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 148,
+  "posturi": 1447,
+  "ofertePeGrupaCor": 169,
+  "tipSalariu": {
+   "gross": {
+    "n": 71,
+    "procent": 48
+   },
+   "none": {
+    "n": 71,
+    "procent": 48
+   },
+   "net": {
+    "n": 6,
+    "procent": 4.1
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 5
+  },
+  "brutMinimDeclarat": {
+   "n": 70,
+   "p10": 4293,
+   "p25": 4325,
+   "median": 4325,
+   "p75": 4325,
+   "p90": 4326,
+   "min": 1,
+   "max": 4350
+  },
+  "laSalariulMinim": 63,
+  "studii": {
+   "Gimnazial - ȘCOALĂ GENERALĂ": {
+    "n": 78,
+    "procent": 52.7
+   },
+   "Profesional - ȘCOALĂ PROFESIONALĂ": {
+    "n": 46,
+    "procent": 31.1
+   },
+   "Liceal - LICEU TEORETIC": {
+    "n": 14,
+    "procent": 9.5
+   },
+   "Primar - FĂRĂ STUDII": {
+    "n": 5,
+    "procent": 3.4
+   },
+   "Universitar - ÎNVĂȚĂMÂNT SUPERIOR": {
+    "n": 2,
+    "procent": 1.4
+   },
+   "Postliceal - ȘCOALĂ POSTLICEALĂ": {
+    "n": 1,
+    "procent": 0.7
+   },
+   "PROFESIONAL- ÎNVĂȚĂMÂNT SPECIAL": {
+    "n": 1,
+    "procent": 0.7
+   },
+   "Liceal - ȘCOALĂ SPECIALĂ": {
+    "n": 1,
+    "procent": 0.7
+   }
+  },
+  "experienta": {
+   "Fără experiență - 0 ani": {
+    "n": 76,
+    "procent": 51.4
+   },
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 58,
+    "procent": 39.2
+   },
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 13,
+    "procent": 8.8
+   },
+   "Avansat - între 5 și 7 ani": {
+    "n": 1,
+    "procent": 0.7
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 146,
+    "procent": 98.6
+   },
+   "Cu durată determinată": {
+    "n": 2,
+    "procent": 1.4
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 148,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 148,
+    "procent": 100
+   }
+  },
+  "judete": {
+   "Municipiul București": {
+    "n": 20,
+    "procent": 13.5
+   },
+   "Cluj": {
+    "n": 10,
+    "procent": 6.8
+   },
+   "Sibiu": {
+    "n": 10,
+    "procent": 6.8
+   },
+   "Constanța": {
+    "n": 9,
+    "procent": 6.1
+   },
+   "Iași": {
+    "n": 7,
+    "procent": 4.7
+   },
+   "Arad": {
+    "n": 7,
+    "procent": 4.7
+   },
+   "Galați": {
+    "n": 7,
+    "procent": 4.7
+   },
+   "Gorj": {
+    "n": 6,
+    "procent": 4.1
+   },
+   "Brașov": {
+    "n": 6,
+    "procent": 4.1
+   },
+   "Ilfov": {
+    "n": 5,
+    "procent": 3.4
+   },
+   "Prahova": {
+    "n": 5,
+    "procent": 3.4
+   },
+   "Hunedoara": {
+    "n": 4,
+    "procent": 2.7
+   },
+   "Timiș": {
+    "n": 4,
+    "procent": 2.7
+   },
+   "Vâlcea": {
+    "n": 4,
+    "procent": 2.7
+   },
+   "Alba": {
+    "n": 4,
+    "procent": 2.7
+   },
+   "Ialomița": {
+    "n": 4,
+    "procent": 2.7
+   },
+   "Mureș": {
+    "n": 4,
+    "procent": 2.7
+   },
+   "Vaslui": {
+    "n": 4,
+    "procent": 2.7
+   },
+   "Teleorman": {
+    "n": 3,
+    "procent": 2
+   },
+   "Neamț": {
+    "n": 3,
+    "procent": 2
+   },
+   "Bistrița-Năsăud": {
+    "n": 3,
+    "procent": 2
+   },
+   "Dolj": {
+    "n": 3,
+    "procent": 2
+   },
+   "Maramureș": {
+    "n": 2,
+    "procent": 1.4
+   },
+   "Covasna": {
+    "n": 2,
+    "procent": 1.4
+   },
+   "Brăila": {
+    "n": 2,
+    "procent": 1.4
+   },
+   "Suceava": {
+    "n": 2,
+    "procent": 1.4
+   },
+   "Olt": {
+    "n": 1,
+    "procent": 0.7
+   },
+   "Caraș-Severin": {
+    "n": 1,
+    "procent": 0.7
+   },
+   "Bihor": {
+    "n": 1,
+    "procent": 0.7
+   },
+   "Călărași": {
+    "n": 1,
+    "procent": 0.7
+   },
+   "Mehedinți": {
+    "n": 1,
+    "procent": 0.7
+   },
+   "Argeș": {
+    "n": 1,
+    "procent": 0.7
+   },
+   "Dâmbovița": {
+    "n": 1,
+    "procent": 0.7
+   },
+   "Giurgiu": {
+    "n": 1,
+    "procent": 0.7
+   }
+  },
+  "domenii": {
+   "Armată / Pază/ Protecție": {
+    "n": 91,
+    "procent": 61.5
+   },
+   "SERVICII DE PAZA SI PROTECTIE": {
+    "n": 49,
+    "procent": 33.1
+   },
+   "Altele": {
+    "n": 8,
+    "procent": 5.4
+   }
+  },
+  "coduriCorInGrupa": {
+   "541401 - AGENT DE SECURITATE": {
+    "n": 148,
+    "procent": 87.6
+   },
+   "541408 - DISPECER CENTRU DE ALARMA": {
+    "n": 8,
+    "procent": 4.7
+   },
+   "541406 - AGENT DE SECURITATE INTERVENȚIE": {
+    "n": 8,
+    "procent": 4.7
+   },
+   "541403 - AGENT DE SECURITATE INCINTA (MAGAZIN, HOTEL, ÎNTREPRINDERE ETC.)": {
+    "n": 2,
+    "procent": 1.2
+   },
+   "541407 - AGENT TRANSPORT VALORI": {
+    "n": 1,
+    "procent": 0.6
+   },
+   "541414 - SEF OBIECTIV SERVICII DE SECURITATE": {
+    "n": 1,
+    "procent": 0.6
+   },
+   "541402 - AGENT CONTROL ACCES": {
+    "n": 1,
+    "procent": 0.6
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 0,
+  "institutii": 0,
+  "judete": {},
+  "tipInstitutie": {},
+  "perioade": {},
+  "studii": {},
+  "bazaBruta": {
+   "n": 0
+  },
+  "bazaCuSporuriFixe": {
+   "n": 0
+  },
+  "peGradatie": {},
+  "peFunctie": {}
+ }
+}

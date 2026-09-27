@@ -1,0 +1,203 @@
+{
+ "slug": "consultant-financiar",
+ "nume": "Consultant financiar",
+ "cor": null,
+ "generatLa": "2026-09-27T10:01:08.985Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 3,
+  "cuBazaDeclarata": 2,
+  "faraBazaDeclarata": 1,
+  "surse": {
+   "ejobs": {
+    "n": 2,
+    "procent": 66.7
+   },
+   "bestjobs": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 3,
+    "procent": 100
+   }
+  },
+  "net": {
+   "n": 2
+  },
+  "netMinimOferit": {
+   "n": 2
+  },
+  "netMaximOferit": {
+   "n": 2
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 1
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-09": {
+    "n": 2,
+    "procent": 66.7
+   },
+   "2026-08": {
+    "n": 1,
+    "procent": 33.3
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 6,
+  "cuSalariu": 0,
+  "nivel": {
+   "junior": {
+    "n": 2,
+    "procent": 33.3
+   }
+  },
+  "experienta": {},
+  "experientaPortal": {
+   "1–5 ani": {
+    "n": 1,
+    "procent": 16.7
+   }
+  },
+  "studii": {
+   "superioare": {
+    "n": 1,
+    "procent": 16.7
+   }
+  },
+  "limbi": {},
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {
+   "remote": {
+    "n": 1,
+    "procent": 16.7
+   },
+   "hibrid": {
+    "n": 1,
+    "procent": 16.7
+   }
+  },
+  "norma": {
+   "part-time": {
+    "n": 1,
+    "procent": 16.7
+   }
+  },
+  "durata": {},
+  "beneficii": {
+   "cursuri / training": {
+    "n": 2,
+    "procent": 33.3
+   }
+  },
+  "tehnologii": {
+   "Python": {
+    "n": 1,
+    "procent": 16.7
+   },
+   "SQL": {
+    "n": 1,
+    "procent": 16.7
+   }
+  },
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 5,
+    "procent": 83.3
+   },
+   "en": {
+    "n": 1,
+    "procent": 16.7
+   }
+  },
+  "surse": {
+   "ejobs": {
+    "n": 5,
+    "procent": 83.3
+   },
+   "hipo": {
+    "n": 1,
+    "procent": 16.7
+   }
+  },
+  "peJudet": {
+   "RO": {
+    "n": 1,
+    "procent": 16.7
+   }
+  },
+  "motiveFaraSalariu": {
+   "full_time_unconfirmed": {
+    "n": 5,
+    "procent": 83.3
+   },
+   "country_unconfirmed": {
+    "n": 4,
+    "procent": 66.7
+   },
+   "wide_range_review": {
+    "n": 3,
+    "procent": 50
+   },
+   "contract_or_variable_income": {
+    "n": 1,
+    "procent": 16.7
+   },
+   "salary_evidence_incomplete": {
+    "n": 1,
+    "procent": 16.7
+   }
+  },
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 0,
+  "posturi": 0,
+  "ofertePeGrupaCor": 0,
+  "tipSalariu": {},
+  "netMinimDeclarat": {
+   "n": 0
+  },
+  "brutMinimDeclarat": {
+   "n": 0
+  },
+  "laSalariulMinim": 0,
+  "studii": {},
+  "experienta": {},
+  "contract": {},
+  "norma": {},
+  "regim": {},
+  "judete": {},
+  "domenii": {},
+  "coduriCorInGrupa": {}
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 0,
+  "institutii": 0,
+  "judete": {},
+  "tipInstitutie": {},
+  "perioade": {},
+  "studii": {},
+  "bazaBruta": {
+   "n": 0
+  },
+  "bazaCuSporuriFixe": {
+   "n": 0
+  },
+  "peGradatie": {},
+  "peFunctie": {}
+ }
+}

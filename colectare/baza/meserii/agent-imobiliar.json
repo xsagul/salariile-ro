@@ -1,0 +1,219 @@
+{
+ "slug": "agent-imobiliar",
+ "nume": "Agent imobiliar",
+ "cor": "333401",
+ "generatLa": "2026-09-27T10:01:09.172Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 7,
+  "cuBazaDeclarata": 1,
+  "faraBazaDeclarata": 6,
+  "surse": {
+   "ejobs": {
+    "n": 5,
+    "procent": 71.4
+   },
+   "bestjobs": {
+    "n": 2,
+    "procent": 28.6
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 5,
+    "procent": 71.4
+   },
+   "continuă": {
+    "n": 2,
+    "procent": 28.6
+   }
+  },
+  "net": {
+   "n": 1
+  },
+  "netMinimOferit": {
+   "n": 1
+  },
+  "netMaximOferit": {
+   "n": 1
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 6
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-09": {
+    "n": 5,
+    "procent": 71.4
+   },
+   "2026-08": {
+    "n": 2,
+    "procent": 28.6
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 6,
+  "cuSalariu": 0,
+  "nivel": {},
+  "experienta": {
+   "fara": {
+    "n": 1,
+    "procent": 16.7
+   }
+  },
+  "experientaPortal": {},
+  "studii": {},
+  "limbi": {},
+  "permis": {
+   "B": {
+    "n": 1,
+    "procent": 16.7
+   }
+  },
+  "atestate": {},
+  "program": {},
+  "mod": {},
+  "norma": {},
+  "durata": {},
+  "beneficii": {},
+  "tehnologii": {},
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 6,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "ejobs": {
+    "n": 6,
+    "procent": 100
+   }
+  },
+  "peJudet": {
+   "10": {
+    "n": 3,
+    "procent": 50
+   },
+   "48": {
+    "n": 1,
+    "procent": 16.7
+   }
+  },
+  "motiveFaraSalariu": {
+   "wide_range_review": {
+    "n": 4,
+    "procent": 100
+   },
+   "full_time_unconfirmed": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 2,
+  "posturi": 2,
+  "ofertePeGrupaCor": 2,
+  "tipSalariu": {
+   "gross": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "netMinimDeclarat": {
+   "n": 0
+  },
+  "brutMinimDeclarat": {
+   "n": 2
+  },
+  "laSalariulMinim": 2,
+  "studii": {
+   "Liceal - LICEU TEORETIC": {
+    "n": 1,
+    "procent": 50
+   },
+   "Liceal - LICEU DE SPECIALITATE": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "experienta": {
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 1,
+    "procent": 50
+   },
+   "Fără experiență - 0 ani": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "judete": {
+   "Gorj": {
+    "n": 1,
+    "procent": 50
+   },
+   "Bacău": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "domenii": {
+   "Altele": {
+    "n": 1,
+    "procent": 50
+   },
+   "Vânzări": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "coduriCorInGrupa": {
+   "333401 - AGENT IMOBILIAR (BROKER IMOBILIAR)": {
+    "n": 2,
+    "procent": 100
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 0,
+  "institutii": 0,
+  "judete": {},
+  "tipInstitutie": {},
+  "perioade": {},
+  "studii": {},
+  "bazaBruta": {
+   "n": 0
+  },
+  "bazaCuSporuriFixe": {
+   "n": 0
+  },
+  "peGradatie": {},
+  "peFunctie": {}
+ }
+}

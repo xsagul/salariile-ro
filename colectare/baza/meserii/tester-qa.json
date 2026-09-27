@@ -1,0 +1,310 @@
+{
+ "slug": "tester-qa",
+ "nume": "Tester QA",
+ "cor": "351108",
+ "generatLa": "2026-09-27T10:01:08.811Z",
+ "anunturi": {
+  "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
+  "cuSalariu": 1,
+  "cuBazaDeclarata": 0,
+  "faraBazaDeclarata": 1,
+  "surse": {
+   "bestjobs": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "colectari": {
+   "8 septembrie 2026": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "net": {
+   "n": 0
+  },
+  "netMinimOferit": {
+   "n": 0
+  },
+  "netMaximOferit": {
+   "n": 0
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 1
+  },
+  "peOras": {},
+  "peJudet": {},
+  "peLuna": {
+   "2026-09": {
+    "n": 1,
+    "procent": 100
+   }
+  }
+ },
+ "factori": {
+  "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
+  "anunturiCitite": 13,
+  "cuSalariu": 0,
+  "nivel": {
+   "senior": {
+    "n": 3,
+    "procent": 23.1
+   },
+   "stagiar": {
+    "n": 1,
+    "procent": 7.7
+   }
+  },
+  "experienta": {
+   "3+ ani": {
+    "n": 2,
+    "procent": 15.4
+   },
+   "1+ ani": {
+    "n": 1,
+    "procent": 7.7
+   },
+   "6+ ani": {
+    "n": 1,
+    "procent": 7.7
+   },
+   "5+ ani": {
+    "n": 1,
+    "procent": 7.7
+   },
+   "fara": {
+    "n": 1,
+    "procent": 7.7
+   }
+  },
+  "experientaPortal": {
+   "1–5 ani": {
+    "n": 8,
+    "procent": 61.5
+   }
+  },
+  "studii": {
+   "superioare": {
+    "n": 5,
+    "procent": 38.5
+   }
+  },
+  "limbi": {
+   "engleza": {
+    "n": 4,
+    "procent": 30.8
+   }
+  },
+  "permis": {},
+  "atestate": {},
+  "program": {},
+  "mod": {
+   "remote": {
+    "n": 5,
+    "procent": 38.5
+   },
+   "hibrid": {
+    "n": 4,
+    "procent": 30.8
+   }
+  },
+  "norma": {
+   "full-time": {
+    "n": 1,
+    "procent": 7.7
+   }
+  },
+  "durata": {},
+  "beneficii": {
+   "cursuri / training": {
+    "n": 4,
+    "procent": 30.8
+   },
+   "bonus": {
+    "n": 3,
+    "procent": 23.1
+   },
+   "asigurare medicală": {
+    "n": 3,
+    "procent": 23.1
+   },
+   "tichete de masă": {
+    "n": 1,
+    "procent": 7.7
+   },
+   "prime": {
+    "n": 1,
+    "procent": 7.7
+   },
+   "vouchere de vacanță": {
+    "n": 1,
+    "procent": 7.7
+   }
+  },
+  "tehnologii": {
+   "Jira": {
+    "n": 7,
+    "procent": 53.8
+   },
+   "Java": {
+    "n": 2,
+    "procent": 15.4
+   },
+   "SQL": {
+    "n": 2,
+    "procent": 15.4
+   },
+   "Docker": {
+    "n": 2,
+    "procent": 15.4
+   },
+   "Kubernetes": {
+    "n": 2,
+    "procent": 15.4
+   },
+   "Linux": {
+    "n": 2,
+    "procent": 15.4
+   },
+   "TypeScript": {
+    "n": 2,
+    "procent": 15.4
+   },
+   "Python": {
+    "n": 2,
+    "procent": 15.4
+   },
+   "AWS": {
+    "n": 2,
+    "procent": 15.4
+   },
+   "Selenium": {
+    "n": 2,
+    "procent": 15.4
+   },
+   "Angular": {
+    "n": 1,
+    "procent": 7.7
+   },
+   "Excel": {
+    "n": 1,
+    "procent": 7.7
+   },
+   "Ruby": {
+    "n": 1,
+    "procent": 7.7
+   },
+   "JavaScript": {
+    "n": 1,
+    "procent": 7.7
+   },
+   "Azure": {
+    "n": 1,
+    "procent": 7.7
+   }
+  },
+  "negociabil": {},
+  "strainatate": {},
+  "limbaAnuntului": {
+   "en": {
+    "n": 11,
+    "procent": 84.6
+   },
+   "ro": {
+    "n": 2,
+    "procent": 15.4
+   }
+  },
+  "surse": {
+   "hipo": {
+    "n": 9,
+    "procent": 69.2
+   },
+   "undelucram": {
+    "n": 3,
+    "procent": 23.1
+   },
+   "bestjobs": {
+    "n": 1,
+    "procent": 7.7
+   }
+  },
+  "peJudet": {
+   "RO": {
+    "n": 8,
+    "procent": 61.5
+   }
+  },
+  "motiveFaraSalariu": {
+   "salary_evidence_incomplete": {
+    "n": 13,
+    "procent": 100
+   },
+   "country_unconfirmed": {
+    "n": 2,
+    "procent": 15.4
+   }
+  },
+  "salariuPeFactor": {}
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 0,
+  "posturi": 0,
+  "ofertePeGrupaCor": 17,
+  "tipSalariu": {},
+  "netMinimDeclarat": {
+   "n": 0
+  },
+  "brutMinimDeclarat": {
+   "n": 0
+  },
+  "laSalariulMinim": 0,
+  "studii": {},
+  "experienta": {},
+  "contract": {},
+  "norma": {},
+  "regim": {},
+  "judete": {},
+  "domenii": {},
+  "coduriCorInGrupa": {
+   "351101 - OPERATOR CALCULATOR ELECTRONIC SI RETELE": {
+    "n": 6,
+    "procent": 35.3
+   },
+   "351107 - OPERATOR SUPORT TEHNIC PENTRU SERVICII DE COMUNICATII ELECTRONICE": {
+    "n": 4,
+    "procent": 23.5
+   },
+   "351103 - TEHNICIAN ECHIPAMENTE DE CALCUL SI RETELE": {
+    "n": 4,
+    "procent": 23.5
+   },
+   "351105 - ADMINISTRATOR SISTEM DOCUMENTAR": {
+    "n": 2,
+    "procent": 11.8
+   },
+   "351106 - OPERATOR PROMPTER": {
+    "n": 1,
+    "procent": 5.9
+   }
+  }
+ },
+ "institutiiPublice": {
+  "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
+  "posturi": 0,
+  "institutii": 0,
+  "judete": {},
+  "tipInstitutie": {},
+  "perioade": {},
+  "studii": {},
+  "bazaBruta": {
+   "n": 0
+  },
+  "bazaCuSporuriFixe": {
+   "n": 0
+  },
+  "peGradatie": {},
+  "peFunctie": {}
+ }
+}
