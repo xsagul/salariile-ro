@@ -92,7 +92,7 @@ for (const m of MESERII) {
   }
 
   const fisa = {
-    slug: m.slug, nume: m.nume, cor: m.cor, generatLa: new Date().toISOString(),
+    slug: m.slug, nume: m.nume, cor: m.cor,
     anunturi: {
       descriere: "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
       cuSalariu: a.length, cuBazaDeclarata: declarate.length, faraBazaDeclarata: a.length - declarate.length,

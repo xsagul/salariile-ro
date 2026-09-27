@@ -2,7 +2,6 @@
  "slug": "agent-turism",
  "nume": "Agent de turism",
  "cor": "422101",
- "generatLa": "2026-09-27T10:27:43.464Z",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
   "cuSalariu": 5,
