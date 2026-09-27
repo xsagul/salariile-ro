@@ -18,15 +18,11 @@ import {
   type DateMeserie,
 } from "@/lib/meserii";
 import { SURSA_GRILE, grilaPublica } from "@/lib/grile-publice";
-import TransparentaSalariu from '@/app/components/TransparentaSalariu';
-import ReperSalariu from '@/app/components/ReperSalariu';
-import PiloniSalariu from '@/app/components/PiloniSalariu';
-import TrepteRapide from '@/app/components/TrepteRapide';
 import SalariuConcluzie, { concluzieMeserie } from '@/app/components/SalariuConcluzie';
 import SalariuGrila, { netDeStart, trepteGrila } from '@/app/components/SalariuGrila';
 import SalariuOficial, { netOficialDeStart, venitOficial } from '@/app/components/SalariuOficial';
-import { descriereReper, grilaEducatie, reperMeserie } from '@/lib/repere-meserii';
-import { textIndicator } from '@/lib/indicator-meserie';
+import CeCerAngajatorii, { cerinteMeserie } from '@/app/components/CeCerAngajatorii';
+import { descriereReper, grilaEducatie } from '@/lib/repere-meserii';
 import corCatalogue from '@/data/cor-meserii.json';
 import { calculStandard } from '@/lib/fiscal';
 import { personSchema } from "@/lib/person";
@@ -67,7 +63,6 @@ function titluPagina(date: DateMeserie) {
 function descrierePagina(date: DateMeserie) {
   const de = date.meserie.de;
   const lei = (n: number) => n.toLocaleString("ro-RO");
-  const r = reperMeserie(date);
   const inceput = `Cât câștigă un ${de}`;
 
   const c = concluzieMeserie(date.meserie.slug);
@@ -89,27 +84,15 @@ function descrierePagina(date: DateMeserie) {
     const s = v.categorii.find(x => x.categorie === v.start) ?? v.categorii[0];
     return `${inceput}: de la ${lei(s.min)} lei net pe lună, venitul plătit în ${v.luna}. Pe categorii, de la soldat la ofițer, din tabelul oficial.`;
   }
-  if (trepte.length > 1) {
-    const min = Math.min(...trepte), max = Math.max(...trepte);
-    return `${inceput}: ${lei(min)}–${lei(max)} lei net calculat pe treptele grilei publice afișate. Vezi funcțiile, studiile și componentele incluse.`;
+  const start = netDeStart(date.meserie.slug);
+  if (start && trepte.length > 1) {
+    return `${inceput}: de la ${lei(start)} lei net la început, după grila legii în plată, până la ${lei(Math.max(...trepte))} lei. Treptele, pe funcții și vechime.`;
   }
-
-  const a = r.anunturi;
-  if (r.kind === "salariile-ro" && r.value) {
-    const surse = r.compus?.surse ?? 2;
-    return `${inceput}: reper ${lei(r.value)} lei net, din ${surse} surse independente. Vezi anunțurile verificate și cum se compară cu oferta ta.`;
-  }
-  if (r.kind === "external-advertised" && r.value && a?.n) {
-    return `${inceput}: ${lei(r.value)} lei net, mediana din ${a.n} anunțuri verificate. Vezi sursele, județele și cum se compară cu oferta ta.`;
-  }
-  if (r.kind === "external-reported" && r.value) {
-    return `${inceput}: ${lei(r.value)} lei net, medie declarată de angajați. Plus salarii din anunțuri verificate și context din datele INS.`;
-  }
-  if (r.kind === "public-grid" && r.value) {
-    return `${inceput}: ${lei(r.value)} lei net din grila legală, la gradația 0. Plus salarii din anunțuri verificate și context din datele INS.`;
-  }
-  // Fara reper pe meseria exacta nu se pune o cifra care ar parea masurata.
-  return `${inceput} în România: anunțuri verificate, salarii declarate și datele INS pentru sectorul în care lucrează.`;
+  // Fără o cifră a meseriei, descrierea spune ce e pe pagină, nu Salario și nici media INS.
+  const cer = cerinteMeserie(date.meserie.slug);
+  if (cer?.sursa === "anunturi") return `${inceput}: ce cer angajatorii, din ${cer.n} anunțuri citite: experiență, studii, program și beneficii. Plus meseriile apropiate.`;
+  if (cer?.sursa === "anofm") return `${inceput}: ce cer angajatorii în ${cer.n} oferte depuse la ANOFM: experiență, studii și contract. Plus meseriile apropiate.`;
+  return `${inceput} în România: ce face meseria, meseriile apropiate și sursele pe care le urmărim pentru salariu.`;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -165,9 +148,10 @@ function faqPentru(date: DateMeserie) {
     // Grila veche (2022) nu e salariul de azi, iar media INS a sectorului nu e a meseriei.
     ? `Salariul unui ${de} e stabilit prin lege, cu gradații de vechime, sporuri și, unde e cazul, indemnizație de hrană. Nu afișăm încă o cifră: tabelele din lege sunt la nivelul din 2022 și nu cuprind majorările date de atunci prin ordonanțe.`
     : descriereReper(date);
-  const intrebari = [
-    { q: `Cât câștigă un ${de} în România?`, a: raspunsPrincipal },
-  ];
+  // Fără o cifră a meseriei (concluzie, grilă în plată, venit oficial), întrebarea „cât câștigă”
+  // s-ar fi răspuns cu media INS a sectorului sau cu Salario — nu e răspunsul (27 sept. 2026).
+  const areCifra = !!c || trepte.length > 0 || !!venitOficial(date.meserie.slug) || !!candidata?.veche;
+  const intrebari = areCifra ? [{ q: `Cât câștigă un ${de} în România?`, a: raspunsPrincipal }] : [];
   if (debutant) {
     intrebari.push({
       q: `Cât câștigă un ${de} debutant?`,
@@ -246,12 +230,11 @@ export default async function MeseriePage({ params }: Props) {
   // Cifra meseriilor apropiate: concluzia, unde există, ca să fie aceeași cifră ca pe pagina lor.
   const apropiate = meseriiInrudite(meserie).map((alta) => {
     const c = concluzieMeserie(alta.slug);
-    const r = reperMeserie(dateMeserieSauEroare(alta));
     // Meseriile plătite după lege: cifra de început din grilă, ca în cardul paginii lor.
     const start = c ? null : netDeStart(alta.slug) ?? netOficialDeStart(alta.slug);
-    // Grilele rămase la 2022 nu sunt salariul de azi, iar media INS a sectorului nu e a meseriei.
-    if (!c && !start && grilaPublica(alta.slug)?.veche) return { alta, cifra: undefined };
-    return { alta, cifra: c ? `${lei(c.net)} lei net` : start ? `de la ${lei(start)} lei net` : r.value ? textIndicator(r) : undefined };
+    // Numai cifre verificate ale meseriei: concluzia, grila în plată sau venitul oficial. Salario și
+    // media INS a sectorului au ieșit și de aici (27 septembrie 2026).
+    return { alta, cifra: c ? `${lei(c.net)} lei net` : start ? `de la ${lei(start)} lei net` : undefined };
   });
   const cor = meserie.cor ? corCatalogue.occupations[meserie.slug as keyof typeof corCatalogue.occupations] : undefined;
 
@@ -290,13 +273,14 @@ export default async function MeseriePage({ params }: Props) {
                   Salariul se stabilește prin lege, pe grade și vechime, cu sporurile prevăzute de lege ·{" "}
                   <Link href={`/salarii/acoperire#${slug}`} className="underline underline-offset-2">sursele</Link>
                 </p>
+              ) : cerinteMeserie(slug) ? (
+                // Fără o cifră verificată: ce cer angajatorii, din anunțuri sau din ANOFM. Media INS
+                // a sectorului și rândurile „sursa nu are încă date” au ieșit (27 septembrie 2026).
+                <CeCerAngajatorii slug={slug} de={meserie.de} />
               ) : (
-                <>
-                  <ReperSalariu date={date} />
-                  <TrepteRapide date={date} />
-                  <PiloniSalariu date={date} />
-                  <TransparentaSalariu slug={slug} />
-                </>
+                <p className="mt-6 text-sm text-stone-600" data-salary-kind="fara-cifra-verificata">
+                  <Link href={`/salarii/acoperire#${slug}`} className="underline underline-offset-2">Sursele pe care le urmărim pentru {numeMic}</Link>
+                </p>
               )}
 
               {meserie.nota && (

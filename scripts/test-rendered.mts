@@ -304,9 +304,10 @@ async function auditRenderedSite() {
     // prim-plan. Vechile verificari cereau cardul „Net orientativ · grupa ISCO"
     // si paragraful „Cum citesti sumele" — amandoua scoase deliberat, fiindca
     // patru repere cu greutate egala nu raspundeau la intrebarea cititorului.
-    ["/salarii/programator", "Medie netă declarată în Salario", "netul principal, afisat primul"],
-    ["/salarii/programator", "lei net", "unitatea de masura"],
-    ["/salarii/programator", "raportări voluntare", "limita cifrei, declarata in pagina"],
+    // Din 27 septembrie 2026, fără o cifră verificată, primul ecran arată ce cer angajatorii
+    // (din anunțurile citite), nu media Salario sau pe cea INS a sectorului.
+    ["/salarii/programator", "Ce cer angajatorii unui programator", "cardul cerințelor, fără sumă străină"],
+    ["/salarii/programator", "anunțuri de angajare citite", "sursa cerințelor, declarată"],
     ["/salarii/judete", `media întregului an ${AN_JUDETE}`, "perioada explicita a hubului judetean"],
     ["/salarii/judet/giurgiu", `media întregului an ${AN_JUDETE}`, "perioada explicita a paginii Giurgiu"],
     ["/salarii/judet/giurgiu", "CAEN P · Învățământ", "eticheta CAEN Rev.2 P"],

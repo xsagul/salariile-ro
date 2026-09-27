@@ -73,6 +73,7 @@ const MINIM = (luna) => (luna >= "2026-07" ? 4325 : luna >= "2025-01" ? 4050 : 3
 
 // ─── Fișa unei meserii ──────────────────────────────────────────────────────
 const rezumat = [];
+const cerinte = {};
 for (const m of MESERII) {
   const a = anunturi.filter((o) => o.slug === m.slug);
   const declarate = a.filter((o) => o.basisDeclared);
@@ -121,6 +122,12 @@ for (const m of MESERII) {
       strainatate: frecventa(pr, (p) => p.atribute.strainatate ? "lucru în străinătate" : null), limbaAnuntului: frecventa(pr, (p) => p.atribute.limbaAnunt),
       surse: frecventa(pr, (p) => p.sursa), peJudet: frecventa(pr, (p) => p.judet), motiveFaraSalariu: frecventa(pr.filter((p) => !p.salariu), (p) => p.motive),
       salariuPeFactor: peFactor,
+      // „Salariul pornește de la X lei”: minimul promis, nu salariul obișnuit. Separat, pe bază.
+      pragDeJos: { anunturi: pr.filter((p) => p.prag).length, baza: frecventa(pr.filter((p) => p.prag), (p) => p.prag.baza ?? "nedeclarată"),
+        brut: distributie(pr.filter((p) => p.prag?.baza === "brut").map((p) => p.prag.min)),
+        net: distributie(pr.filter((p) => p.prag?.baza === "net").map((p) => p.prag.min)),
+        faraBaza: distributie(pr.filter((p) => p.prag && !p.prag.baza).map((p) => p.prag.min)),
+        valori: pr.filter((p) => p.prag).map((p) => `${p.prag.min} ${p.prag.baza ?? "?"}`).slice(0, 30) },
     },
     anofm: {
       descriere: "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
@@ -155,12 +162,48 @@ for (const m of MESERII) {
     },
   };
   fs.writeFileSync(`${MES}/${m.slug}.json`, JSON.stringify(fisa, null, 1) + "\n");
+
+  // Pentru site: ce cer angajatorii, din anunțurile citite (≥ 20) sau, altfel, din ofertele ANOFM
+  // (≥ 15). Numai ce apare în cel puțin 10% din anunțuri și în cel puțin 3.
+  const top = (o, nume, max = 4) => Object.entries(o || {}).filter(([, v]) => v.procent >= 10 && v.n >= 3).slice(0, max)
+    .map(([k, v]) => ({ v: nume?.[k] ?? k, p: Math.round(v.procent) }));
+  const rand = (eticheta, valori) => (valori.length ? [{ eticheta, valori }] : []);
+  if (pr.length >= 20) {
+    const x = fisa.factori;
+    const exp = Object.fromEntries(Object.entries(x.experienta).map(([k, v]) => [k, v]));
+    cerinte[m.slug] = { sursa: "anunturi", n: pr.length, randuri: [
+      ...rand("Experiență", top(exp, { fara: "fără experiență", avantaj: "experiența e un avantaj", da: "experiență cerută" }, 3)),
+      ...rand("Studii", top(x.studii, { superioare: "superioare", medii: "medii", postliceale: "postliceale", profesionale: "școală profesională", generale: "generale" }, 2)),
+      ...rand("Limbi străine", top(x.limbi, { engleza: "engleză", germana: "germană", franceza: "franceză", italiana: "italiană", spaniola: "spaniolă", maghiara: "maghiară", olandeza: "olandeză" }, 3)),
+      ...rand("Permis de conducere", top(x.permis, { da: "permis, fără categorie" }, 3)),
+      ...rand("Atestate", top(x.atestate, null, 3)),
+      ...rand("Program", top(x.program, null, 3)),
+      ...rand("Mod de lucru", top(x.mod, null, 2)),
+      ...rand("Tehnologii", top(x.tehnologii, null, 6)),
+      ...rand("Beneficii", top(x.beneficii, null, 4)),
+    ] };
+  } else if (of.length >= 15) {
+    const dupaLiniuta = (s) => { const t = String(s).split(" - ").slice(-1)[0].toLocaleLowerCase("ro-RO"); return t === "0 ani" ? "fără experiență" : t; };
+    const studiiAnofm = (s) => /^universitar/i.test(s) ? "superioare" : /^postliceal/i.test(s) ? "postliceale" : /^liceal/i.test(s) ? "liceu" : /^profesional/i.test(s) ? "școală profesională" : /^gimnazial/i.test(s) ? "gimnaziu" : /^primar/i.test(s) ? "primar sau fără studii" : dupaLiniuta(s);
+    const regrupa = (o, f) => { const r = {}; for (const [k, v] of Object.entries(o || {})) { const kk = f(k); r[kk] = { n: (r[kk]?.n || 0) + v.n, procent: (r[kk]?.procent || 0) + v.procent }; } return Object.fromEntries(Object.entries(r).sort((a, b) => b[1].n - a[1].n)); };
+    const y = fisa.anofm;
+    cerinte[m.slug] = { sursa: "anofm", n: of.length, randuri: [
+      ...rand("Experiență", top(regrupa(y.experienta, dupaLiniuta), null, 3)),
+      ...rand("Studii", top(regrupa(y.studii, studiiAnofm), null, 3)),
+      ...rand("Contract", top(regrupa(y.contract, (s) => s.toLocaleLowerCase("ro-RO")), null, 2)),
+      ...rand("Normă", top(regrupa(y.norma, (s) => s.toLocaleLowerCase("ro-RO")), null, 2)),
+    ] };
+  }
   rezumat.push({ slug: m.slug, nume: m.nume, anunturiCuSalariu: a.length, cuBazaDeclarata: declarate.length, anunturiCitite: pr.length, anofm: of.length, anofmGrupa: ofGrupa.length, posturiPublice: st.length, angajatori: ang.length });
 }
 
 rezumat.sort((x, y) => (y.cuBazaDeclarata + y.anofm + y.posturiPublice) - (x.cuBazaDeclarata + x.anofm + x.posturiPublice));
 const total = rezumat.reduce((s, r) => ({ anunturi: s.anunturi + r.anunturiCuSalariu, citite: s.citite + r.anunturiCitite, anofm: s.anofm + r.anofm, publice: s.publice + r.posturiPublice }), { anunturi: 0, citite: 0, anofm: 0, publice: 0 });
 fs.writeFileSync(`${OUT}/rezumat.json`, JSON.stringify({ generatLa: new Date().toISOString(), total, meserii: rezumat }, null, 1) + "\n");
+// Pentru site (src/app/components/CeCerAngajatorii.tsx): cerințele pe meserie, fără nicio sumă.
+const LUNI_RO = ["ianuarie", "februarie", "martie", "aprilie", "mai", "iunie", "iulie", "august", "septembrie", "octombrie", "noiembrie", "decembrie"];
+const acum = new Date();
+fs.writeFileSync("src/data/cerinte-meserii.json", JSON.stringify({ luna: `${LUNI_RO[acum.getMonth()]} ${acum.getFullYear()}`, meserii: cerinte }, null, 1) + "\n");
 
 // ─── SQLite local, pentru interogări ────────────────────────────────────────
 try {

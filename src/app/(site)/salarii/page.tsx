@@ -23,12 +23,11 @@ import {
 } from "@/lib/ins-date";
 import { CATEGORII, MESERII, dateMeserie, meseriiDinCategorie } from "@/lib/meserii";
 import { reperMeserie } from '@/lib/repere-meserii';
-import { indicatorMeserie, textIndicator } from '@/lib/indicator-meserie';
+import { indicatorMeserie } from '@/lib/indicator-meserie';
 // Aceeași cifră ca pe pagina meseriei: concluzia, unde există (27 sept. 2026).
 import { concluzieMeserie } from '@/app/components/SalariuConcluzie';
 import { netDeStart } from '@/app/components/SalariuGrila';
 import { netOficialDeStart } from '@/app/components/SalariuOficial';
-import { grilaPublica } from '@/lib/grile-publice';
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
 
@@ -209,7 +208,7 @@ export default function SalariiPage() {
                     ].join(" ")}
                   >
                     <span data-profession-name className="font-medium text-stone-900">{meserie.nume}</span>
-                    <span data-profession-salary className="shrink-0 whitespace-nowrap font-semibold text-stone-700">{concluzieMeserie(meserie.slug) ? `${concluzieMeserie(meserie.slug)!.net.toLocaleString("ro-RO")} lei net` : netDeStart(meserie.slug) ? `de la ${netDeStart(meserie.slug)!.toLocaleString("ro-RO")} lei net` : netOficialDeStart(meserie.slug) ? `de la ${netOficialDeStart(meserie.slug)!.toLocaleString("ro-RO")} lei net` : grilaPublica(meserie.slug)?.veche ? <><span aria-hidden="true">—</span><span className="sr-only">Fără cifră încă</span></> : indicatorMeserie(reperMeserie(date!)).value === null ? <><span aria-hidden="true">—</span><span className="sr-only">Date insuficiente</span></> : textIndicator(reperMeserie(date!))}</span>
+                    <span data-profession-salary className="shrink-0 whitespace-nowrap font-semibold text-stone-700">{concluzieMeserie(meserie.slug) ? `${concluzieMeserie(meserie.slug)!.net.toLocaleString("ro-RO")} lei net` : netDeStart(meserie.slug) ? `de la ${netDeStart(meserie.slug)!.toLocaleString("ro-RO")} lei net` : netOficialDeStart(meserie.slug) ? `de la ${netOficialDeStart(meserie.slug)!.toLocaleString("ro-RO")} lei net` : null}</span>
                   </Link>
                 ))}
               </div>
