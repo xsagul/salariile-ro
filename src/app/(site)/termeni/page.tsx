@@ -156,7 +156,7 @@ export default function TermeniPage() {
               <li>descrie un loc de muncă real, în România, al angajatorului care îl publică sau pentru care are dreptul să recruteze;</li>
               <li>nu cere o anumită vârstă, un anumit sex, stare civilă, etnie sau alte criterii interzise de Codul muncii (art. 5) și de OG 137/2000;</li>
               <li>nu cere bani candidaților, sub nicio formă (Legea 156/2000), și nu promovează scheme de câștig, investiții sau activități ilegale;</li>
-              <li>are cel puțin un contact al angajatorului: telefon, email sau link de aplicare.</li>
+              <li>are cel puțin un contact al angajatorului: telefon sau email.</li>
             </ul>
             <p>
               Cel care publică anunțul răspunde de adevărul lui și are acordul angajatorului pentru datele de contact afișate. Salariile.ro nu intermediază angajarea, nu primește CV-uri și nu verifică identitatea angajatorilor; verifică automat regulile de mai sus înainte de publicare. Salariul din anunțuri poate fi folosit, fără date de contact, în cifrele agregate de pe paginile meseriilor.

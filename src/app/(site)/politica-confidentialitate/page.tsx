@@ -127,7 +127,7 @@ export default function PoliticaConfidentialitatePage() {
             </p>
             <ul>
               <li><strong>Emailul celui care adaugă anunțul</strong>: numai ca să-i trimitem linkul cu care publică, modifică sau șterge anunțul și, la nevoie, motivul scoaterii lui. Nu apare în anunț și nu se folosește pentru nimic altceva. Se șterge la 30 de zile după ce anunțul expiră sau e șters.</li>
-              <li><strong>Datele de contact ale angajatorului</strong> (telefon, email, link de aplicare) și restul anunțului: se publică, cu acordul celui care îl adaugă, cât timp anunțul e activ. La ștergere, datele de contact se șterg imediat.</li>
+              <li><strong>Datele de contact ale angajatorului</strong> (telefon, email) și restul anunțului: se publică, cu acordul celui care îl adaugă, cât timp anunțul e activ. La ștergere, datele de contact se șterg imediat.</li>
               <li><strong>Adresa IP și emailul, ca amprentă criptată</strong> (SHA-256 cu sare), numai ca să limităm la cinci anunțurile noi pe zi de la aceeași persoană. Se șterg după două zile.</li>
               <li><strong>Raportările</strong>: motivul, detaliile scrise și, opțional, emailul celui care raportează, ca să-i putem răspunde.</li>
               <li><strong>Verificarea anti-spam Cloudflare Turnstile</strong> din formulare: Cloudflare analizează semnale tehnice ale browserului ca să deosebească oamenii de roboți, fără cookies de urmărire și fără imagini de ales.</li>

@@ -133,7 +133,6 @@ export async function paginaAnunt(req: Request, env: Env, id: number, slug: stri
   const contact = [
     a.telefon ? `<li><a class="font-semibold underline underline-offset-2" href="tel:${esc(a.telefon.replace(/[^\d+]/g, ""))}">${esc(a.telefon)}</a></li>` : "",
     a.email_contact ? `<li><a class="font-semibold underline underline-offset-2" href="mailto:${esc(a.email_contact)}?subject=${encodeURIComponent(`Anunț: ${a.titlu}`)}">${esc(a.email_contact)}</a></li>` : "",
-    a.link_aplicare ? `<li><a class="font-semibold underline underline-offset-2" href="${esc(a.link_aplicare)}" rel="nofollow ugc noopener" target="_blank">Aplică pe site-ul angajatorului</a></li>` : "",
   ].join("");
   const continut = `
     <nav class="mb-4 flex flex-wrap gap-2 text-xs text-stone-600" aria-label="Breadcrumb"><a class="underline underline-offset-2" href="/locuri-de-munca">Locuri de muncă</a><span>/</span><a class="underline underline-offset-2" href="${urlLista(a.oras_slug, null)}">${esc(oras(a))}</a>${a.meserie ? `<span>/</span><a class="underline underline-offset-2" href="${listaMeserie}">${esc(meserie!)}</a>` : ""}</nav>

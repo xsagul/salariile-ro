@@ -4,7 +4,7 @@
 -- Datele personale, cât de puține se poate:
 --   email          al celui care postează; nu se publică; se șterge la ZILE_PASTRARE_EMAIL după expirare
 --   token_hash     SHA-256 al linkului de gestionare; linkul în clar există numai în emailul trimis
---   telefon, email_contact, link_aplicare  contactul angajatorului, publicat cu acordul celui care postează
+--   telefon, email_contact  contactul angajatorului, publicat cu acordul celui care postează
 --   ip_hash        în limite, SHA-256 cu sare, păstrat 2 zile, numai pentru limita pe zi
 
 CREATE TABLE anunturi (
@@ -27,7 +27,6 @@ CREATE TABLE anunturi (
   descriere       TEXT NOT NULL,
   telefon         TEXT,
   email_contact   TEXT,
-  link_aplicare   TEXT,
   email           TEXT,                -- NULL după ștergerea datelor
   token_hash      TEXT NOT NULL,
   creat_la        TEXT NOT NULL,       -- ISO

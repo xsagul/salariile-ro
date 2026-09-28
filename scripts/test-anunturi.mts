@@ -8,7 +8,7 @@ const bun = {
   titlu: "Barman pentru bar în centru", meserie: "barman", angajator: "Bar Centru SRL", cui: "", judet: "B", oras: "București",
   norma: "intreaga", salariuMin: "4000", salariuMax: "", baza: "net",
   descriere: "Căutăm barman pentru program în ture, 2 zile cu 2 libere. Oferim bacșiș, o masă pe zi și contract pe perioadă nedeterminată.",
-  telefon: "0722 123 456", emailContact: "", linkAplicare: "", email: "angajator@exemplu.ro", acordPublicare: true,
+  telefon: "0722 123 456", emailContact: "", email: "angajator@exemplu.ro", acordPublicare: true,
 };
 const erori = (x: Record<string, unknown>): Eroare[] => { const r = valideaza({ ...bun, ...x }, MESERII); return "erori" in r ? r.erori : []; };
 const camp = (x: Record<string, unknown>) => erori(x).map((e) => e.camp);

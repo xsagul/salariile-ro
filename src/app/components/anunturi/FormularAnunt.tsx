@@ -13,7 +13,7 @@ const JUDETE_SORTATE = Object.entries(JUDETE).sort((a, b) => a[1].localeCompare(
 
 export type Valori = Record<string, string | boolean>;
 const GOL: Valori = { titlu: "", meserie: "", angajator: "", cui: "", judet: "", oras: "", norma: "intreaga", orePeZi: "4", salariuMin: "", salariuMax: "",
-  baza: "", descriere: "", telefon: "", emailContact: "", linkAplicare: "", email: "", acordPublicare: false };
+  baza: "", descriere: "", telefon: "", emailContact: "", email: "", acordPublicare: false };
 
 const CAMP = "mt-1 block w-full rounded-md border border-stone-300 bg-surface px-3 py-2 text-base text-stone-900 focus:border-stone-600 focus:outline-none";
 const ETICHETA = "block text-sm font-medium text-stone-800";
@@ -119,11 +119,10 @@ export default function FormularAnunt({ initial, modificare = false, trimite }: 
           {Camp({ k: "angajator", eticheta: "Numele angajatorului", placeholder: "Firma SRL" })}
           {Camp({ k: "cui", eticheta: "CUI (opțional)", placeholder: "RO12345678", nota: "Apare în anunț, ca să poată fi găsită firma." })}
         </div>
-        <p className="text-sm text-stone-700">Candidații te contactează direct. Dă cel puțin un contact:</p>
-        <div className="grid gap-4 sm:grid-cols-3">
+        <p className="text-sm text-stone-700">Candidații te contactează direct. Dă cel puțin un contact, telefon sau email:</p>
+        <div className="grid gap-4 sm:grid-cols-2">
           {Camp({ k: "telefon", eticheta: "Telefon", type: "tel", inputMode: "tel" })}
           {Camp({ k: "emailContact", eticheta: "Email pentru CV-uri", type: "email" })}
-          {Camp({ k: "linkAplicare", eticheta: "Link de aplicare", type: "url", placeholder: "https://" })}
         </div>
       </fieldset>
 

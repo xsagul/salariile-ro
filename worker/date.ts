@@ -7,7 +7,7 @@ export type Anunt = {
   titlu: string; slug: string; meserie: string | null; angajator: string; cui: string | null;
   judet: string; oras: string; oras_slug: string; norma: "intreaga" | "partiala"; ore_pe_zi: number | null;
   salariu_min: number; salariu_max: number | null; baza: "brut" | "net"; net_min: number;
-  descriere: string; telefon: string | null; email_contact: string | null; link_aplicare: string | null;
+  descriere: string; telefon: string | null; email_contact: string | null;
   email: string | null; creat_la: string; confirmat_la: string | null; expira_la: string | null;
 };
 
@@ -40,11 +40,11 @@ export async function inLimita(env: Env, email: string, ip: string): Promise<boo
 export async function adauga(env: Env, a: AnuntNou, token: string): Promise<number> {
   const r = await env.DB.prepare(
     `INSERT INTO anunturi (stare, titlu, slug, meserie, angajator, cui, judet, oras, oras_slug, norma, ore_pe_zi, salariu_min, salariu_max, baza, net_min,
-      descriere, telefon, email_contact, link_aplicare, email, token_hash, creat_la)
-     VALUES ('neconfirmat', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id`,
+      descriere, telefon, email_contact, email, token_hash, creat_la)
+     VALUES ('neconfirmat', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id`,
   ).bind(a.titlu, slugAnunt(a.titlu, a.oras), a.meserie || null, a.angajator, a.cui ?? null, a.judet, a.oras, orasSlug(a.oras), a.norma, a.orePeZi ?? null,
     a.salariuMin, a.salariuMax ?? null, a.baza, netLunar(a.salariuMin, a.baza), a.descriere, a.telefon ?? null, a.emailContact ?? null,
-    a.linkAplicare ?? null, a.email, await sha256(token), acum()).first<{ id: number }>();
+    a.email, await sha256(token), acum()).first<{ id: number }>();
   return r!.id;
 }
 
@@ -70,14 +70,14 @@ export async function prelungeste(env: Env, id: number): Promise<void> {
 export async function modifica(env: Env, id: number, a: AnuntNou): Promise<void> {
   await env.DB.prepare(
     `UPDATE anunturi SET titlu = ?, slug = ?, meserie = ?, angajator = ?, cui = ?, judet = ?, oras = ?, oras_slug = ?, norma = ?, ore_pe_zi = ?, salariu_min = ?,
-      salariu_max = ?, baza = ?, net_min = ?, descriere = ?, telefon = ?, email_contact = ?, link_aplicare = ? WHERE id = ? AND stare IN ('neconfirmat', 'activ', 'expirat')`,
+      salariu_max = ?, baza = ?, net_min = ?, descriere = ?, telefon = ?, email_contact = ? WHERE id = ? AND stare IN ('neconfirmat', 'activ', 'expirat')`,
   ).bind(a.titlu, slugAnunt(a.titlu, a.oras), a.meserie || null, a.angajator, a.cui ?? null, a.judet, a.oras, orasSlug(a.oras), a.norma, a.orePeZi ?? null, a.salariuMin,
-    a.salariuMax ?? null, a.baza, netLunar(a.salariuMin, a.baza), a.descriere, a.telefon ?? null, a.emailContact ?? null, a.linkAplicare ?? null, id).run();
+    a.salariuMax ?? null, a.baza, netLunar(a.salariuMin, a.baza), a.descriere, a.telefon ?? null, a.emailContact ?? null, id).run();
 }
 
 /** Ștergerea cerută de cel care a postat: anunțul dispare imediat, datele de contact la fel. */
 export async function sterge(env: Env, id: number): Promise<void> {
-  await env.DB.prepare("UPDATE anunturi SET stare = 'sters', sters_la = ?, telefon = NULL, email_contact = NULL, link_aplicare = NULL WHERE id = ?").bind(acum(), id).run();
+  await env.DB.prepare("UPDATE anunturi SET stare = 'sters', sters_la = ?, telefon = NULL, email_contact = NULL WHERE id = ?").bind(acum(), id).run();
 }
 
 export const PE_PAGINA = 20;

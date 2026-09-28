@@ -45,7 +45,6 @@ export type AnuntNou = {
   descriere: string;
   telefon?: string;
   emailContact?: string;
-  linkAplicare?: string;
   email: string;            // al celui care postează: primește linkul de confirmare; nu se publică
   acordPublicare: boolean;  // datele de contact ale angajatorului se publică în anunț
 };
@@ -99,7 +98,6 @@ export function verificaContinut(titlu: string, descriere: string): string | nul
 
 const telefonValid = (t: string) => /^(\+40|0040|0)[237]\d{8}$/.test(t.replace(/[\s.\-()]/g, ""));
 const emailValid = (e: string) => /^[^\s@]{1,64}@[^\s@]{1,190}\.[a-z]{2,}$/i.test(e);
-const linkValid = (l: string) => { try { const u = new URL(l); return u.protocol === "https:" || u.protocol === "http:"; } catch { return false; } };
 
 /**
  * Curăță și verifică anunțul. `meseriiValide`: sluguri din catalog (src/data/meserii-catalog.json).
@@ -122,7 +120,6 @@ export function valideaza(brut: Record<string, unknown>, meseriiValide: Set<stri
     descriere: textLung(brut.descriere),
     telefon: text(brut.telefon) || undefined,
     emailContact: text(brut.emailContact).toLowerCase() || undefined,
-    linkAplicare: text(brut.linkAplicare) || undefined,
     email: text(brut.email).toLowerCase(),
     acordPublicare: brut.acordPublicare === true || brut.acordPublicare === "true" || brut.acordPublicare === "on",
   };
@@ -156,10 +153,11 @@ export function valideaza(brut: Record<string, unknown>, meseriiValide: Set<stri
   }
 
   // Contactul angajatorului: cel puțin unul, publicat cu acordul celui care postează.
-  if (!a.telefon && !a.emailContact && !a.linkAplicare) e.push({ camp: "telefon", mesaj: "Dă cel puțin un contact: telefon, email sau link de aplicare." });
+  // Fără „link de aplicare”: îl au doar firmele cu recrutare proprie; pe OLX și anuntul.ro angajatorii
+  // dau un telefon (proprietar, 28 septembrie 2026).
+  if (!a.telefon && !a.emailContact) e.push({ camp: "telefon", mesaj: "Dă cel puțin un contact: telefon sau email." });
   if (a.telefon && !telefonValid(a.telefon)) e.push({ camp: "telefon", mesaj: "Telefonul nu pare un număr românesc valid." });
   if (a.emailContact && !emailValid(a.emailContact)) e.push({ camp: "emailContact", mesaj: "Emailul de contact nu e valid." });
-  if (a.linkAplicare && !linkValid(a.linkAplicare)) e.push({ camp: "linkAplicare", mesaj: "Linkul de aplicare trebuie să înceapă cu https://." });
   if (!emailValid(a.email)) e.push({ camp: "email", mesaj: "Scrie emailul tău: acolo primești linkul de confirmare." });
   if (!a.acordPublicare) e.push({ camp: "acordPublicare", mesaj: "Bifează acordul: datele de contact ale angajatorului apar în anunț." });
 
