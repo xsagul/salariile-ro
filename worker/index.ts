@@ -25,13 +25,17 @@ export type Env = {
 const SECURITATE: Record<string, string> = {
   "X-Content-Type-Options": "nosniff",
   "Referrer-Policy": "strict-origin-when-cross-origin",
-  "Permissions-Policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()",
+  // Ca în _headers, cu o excepție: „Sortează după apropiere” cere locația, numai pentru pagina
+  // noastră (self), niciodată pentru iframe-uri. Cu geolocation=() butonul n-ar funcționa deloc.
+  "Permissions-Policy": "camera=(), microphone=(), geolocation=(self), payment=(), usb=(), browsing-topics=()",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
 };
 
 export function cuSecuritate(r: Response, html = true): Response {
   const h = new Headers(r.headers);
   for (const [k, v] of Object.entries(SECURITATE)) if (!h.has(k)) h.set(k, v);
+  // Șablonul vine din assets cu Permissions-Policy din _headers, care blochează locația.
+  h.set("Permissions-Policy", SECURITATE["Permissions-Policy"]);
   if (html && (h.get("content-type") ?? "").includes("text/html")) {
     h.set("Content-Security-Policy", CSP_ANUNTURI);
     h.set("Link", LINK_HEADER);

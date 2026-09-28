@@ -1,14 +1,14 @@
 // Regulile anunțurilor de angajare (src/lib/anunturi/reguli.ts): ce se publică, ce se respinge și
 // adresele verificate în Google România pe 28 septembrie 2026.
 import assert from "node:assert/strict";
-import { MINIM_BRUT, MINIM_NET, cuiValid, orasSlug, slugAnunt, urlAnunt, urlLista, valideaza, type Eroare } from "../src/lib/anunturi/reguli";
+import { MINIM_BRUT, MINIM_NET, cuiValid, esteMobil, linkApel, linkWhatsApp, orasSlug, slugAnunt, telefonAfisat, telefonCurat, urlAnunt, urlLista, valideaza, type Eroare } from "../src/lib/anunturi/reguli";
 
 const MESERII = new Set(["barman", "sofer-distributie"]);
 const bun = {
   titlu: "Barman pentru bar în centru", meserie: "barman", angajator: "Bar Centru SRL", cui: "", judet: "B", oras: "București",
   norma: "intreaga", salariuMin: "4000", salariuMax: "", baza: "net",
   descriere: "Căutăm barman pentru program în ture, 2 zile cu 2 libere. Oferim bacșiș, o masă pe zi și contract pe perioadă nedeterminată.",
-  telefon: "0722 123 456", emailContact: "", email: "angajator@exemplu.ro", acordPublicare: true,
+  telefon: "0722 123 456", email: "angajator@exemplu.ro", acordPublicare: true,
 };
 const erori = (x: Record<string, unknown>): Eroare[] => { const r = valideaza({ ...bun, ...x }, MESERII); return "erori" in r ? r.erori : []; };
 const camp = (x: Record<string, unknown>) => erori(x).map((e) => e.camp);
@@ -30,6 +30,18 @@ assert.deepEqual(camp({ salariuMax: "20000" }), ["salariuMax"], "interval de pes
 // Contactul: cel puțin unul, valid; emailul celui care postează și acordul, obligatorii.
 assert.deepEqual(camp({ telefon: "" }), ["telefon"]);
 assert.deepEqual(camp({ telefon: "12345" }), ["telefon"]);
+// Contactul (proprietar, 28 septembrie 2026): numărul curățat, butonul de apel și WhatsApp la mobil.
+assert.equal(telefonCurat("+40 722-123-456"), "0722123456");
+assert.equal(telefonCurat("0264 123 456"), "0264123456");
+assert.equal(telefonCurat("12345"), null);
+assert.ok(esteMobil("0722123456") && !esteMobil("0264123456"), "WhatsApp numai la mobil");
+assert.equal(linkApel("0722123456"), "tel:+40722123456");
+assert.match(linkWhatsApp("0722123456", "Barman"), /^https:\/\/wa\.me\/40722123456\?text=/);
+assert.equal(telefonAfisat("0722123456"), "0722 123 456");
+if ("anunt" in r) assert.equal(r.anunt.telefon, "0722123456", "telefonul se păstrează curățat");
+// Adresa e opțională, dar nu nelimitată.
+assert.deepEqual(camp({ adresa: "Strada Lipscani 69" }), []);
+assert.deepEqual(camp({ adresa: "x".repeat(121) }), ["adresa"]);
 assert.deepEqual(camp({ email: "nu-e-email" }), ["email"]);
 assert.deepEqual(camp({ acordPublicare: false }), ["acordPublicare"]);
 assert.deepEqual(camp({ meserie: "astronaut" }), ["meserie"]);

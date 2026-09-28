@@ -2,7 +2,7 @@
 // Adresele (verificate în Google România, 28 septembrie 2026) sunt deținute de src/lib/anunturi/reguli.ts.
 import type { Env } from "./index";
 import catalog from "../src/data/meserii-catalog.json";
-import { JUDETE, NORME, URL_ADAUGA, urlAnunt, urlLista } from "../src/lib/anunturi/reguli";
+import { JUDETE, NORME, URL_ADAUGA, esteMobil, linkApel, linkWhatsApp, telefonAfisat, urlAnunt, urlLista } from "../src/lib/anunturi/reguli";
 import { PE_PAGINA, dupaId, lista, listeIndexabile, numeOras, toateActive, type Anunt } from "./date";
 
 const NUME_MESERIE = new Map((catalog as { meserii: { slug: string; nume: string }[] }).meserii.map((m) => [m.slug, m.nume]));
@@ -42,7 +42,8 @@ async function inSablon(req: Request, env: Env, p: Pagina): Promise<Response> {
   return new Response(out.body, { status: p.status ?? 200, headers: h });
 }
 
-function cardLista(a: Anunt): string {
+/** Cardul din liste; îl folosește și /api/anunturi/lista la „sortează după apropiere”. */
+export function cardLista(a: Anunt): string {
   const meserie = a.meserie ? NUME_MESERIE.get(a.meserie) : null;
   return `<li><a href="${urlAnunt(a)}" class="block ${CARD} hover:border-stone-400" data-anunt="${a.id}">
     <span class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
@@ -50,7 +51,7 @@ function cardLista(a: Anunt): string {
       <span class="whitespace-nowrap font-semibold text-stone-900">${suma(a)}</span>
     </span>
     <span class="mt-1 block text-sm text-stone-600">${esc(a.angajator)} · ${esc(loc(a))} · ${norma(a)}${meserie ? ` · ${esc(meserie)}` : ""}</span>
-    <span class="mt-1 block text-xs text-stone-600">Publicat pe ${data(a.confirmat_la!)}</span>
+    <span class="mt-1 block text-xs text-stone-600">Publicat pe ${data(a.confirmat_la!)}<span data-distanta class="font-semibold text-stone-900"></span></span>
   </a></li>`;
 }
 
@@ -60,6 +61,55 @@ export function redirectFiltre(req: Request): Response | null {
   if (!u.searchParams.has("meserie") && !u.searchParams.has("oras")) return null;
   const m = u.searchParams.get("meserie") ?? "", o = (u.searchParams.get("oras") ?? "").replace(/[^a-z0-9-]/g, "");
   return Response.redirect(new URL(urlLista(o || null, esteMeserie(m) ? m : null), req.url).toString(), 302);
+}
+
+/**
+ * „Sortează după apropiere” (proprietar, 28 septembrie 2026, ca pe OLX și anuntul.ro). Browserul
+ * cere poziția, ia toate anunțurile listei de la /api/anunturi/lista și le ordonează singur după
+ * distanță. Poziția nu pleacă din telefon: nici în URL, nici în cerere.
+ */
+function butonApropiere(meserie: string | null, oras: string | null): string {
+  const q = new URLSearchParams();
+  if (meserie) q.set("meserie", meserie);
+  if (oras) q.set("oras", oras);
+  return `<div class="mt-6 flex flex-wrap items-center gap-3">
+    <button type="button" data-apropiere="/api/anunturi/lista?${q}" class="inline-flex min-h-11 items-center gap-2 rounded-md border border-stone-300 bg-surface px-4 font-semibold text-stone-900 hover:border-stone-500">Sortează după apropiere</button>
+    <span data-apropiere-stare class="text-sm text-stone-600"></span>
+  </div>
+  <script>
+  (function () {
+    // Scriptul stă înaintea listei: elementele se caută la apăsare, nu acum.
+    if (!navigator.geolocation) { document.querySelectorAll("[data-apropiere]").forEach(function (x) { x.hidden = true; }); return; }
+    function km(a, b2, c, d) { var r = Math.PI / 180, x = Math.sin((c - a) * r / 2), y = Math.sin((d - b2) * r / 2); return 12742 * Math.asin(Math.sqrt(x * x + Math.cos(a * r) * Math.cos(c * r) * y * y)); }
+    document.addEventListener("click", function (ev) {
+      var b = ev.target.closest && ev.target.closest("[data-apropiere]"), stare = document.querySelector("[data-apropiere-stare]"), ul = document.querySelector("[data-lista-anunturi]");
+      if (!b || !stare || !ul) return;
+      stare.textContent = "Caut unde ești…";
+      navigator.geolocation.getCurrentPosition(function (p) {
+        var la = p.coords.latitude, lo = p.coords.longitude;
+        fetch(b.getAttribute("data-apropiere")).then(function (r) { return r.json(); }).then(function (lista) {
+          // Fără adresă, coordonatele sunt centrul localității: pe lista unui oraș nu spun cât e de
+          // aproape, deci anunțul trece la coadă; pe lista națională, orașul tot contează.
+          var peOras = /[?&]oras=/.test(b.getAttribute("data-apropiere"));
+          lista.forEach(function (x) {
+            x.d = x.lat == null ? Infinity : km(la, lo, x.lat, x.lon);
+            x.k = x.precis || !peOras ? x.d : 1e9 + x.d;
+          });
+          lista.sort(function (x, y) { return x.k - y.k; });
+          ul.innerHTML = lista.map(function (x) { return x.html; }).join("");
+          ul.querySelectorAll("li").forEach(function (li, i) {
+            var d = lista[i].d, e = li.querySelector("[data-distanta]");
+            if (!e) return;
+            if (!lista[i].precis) e.textContent = " · fără adresă exactă";
+            else if (isFinite(d)) e.textContent = " · la " + (d < 1 ? Math.round(d * 1000) + " m" : d.toLocaleString("ro-RO", { maximumFractionDigits: 1 }) + " km") + " de tine";
+          });
+          document.querySelectorAll("nav[aria-label=Pagini]").forEach(function (n) { n.hidden = true; });
+          stare.textContent = "Cele mai apropiate primele.";
+        }).catch(function () { stare.textContent = "Nu am putut încărca anunțurile. Încearcă din nou."; });
+      }, function () { stare.textContent = "Fără acces la locație, anunțurile rămân în ordinea publicării."; }, { enableHighAccuracy: false, timeout: 10000, maximumAge: 300000 });
+    });
+  })();
+  </script>`;
 }
 
 export async function paginaLista(req: Request, env: Env, orasSlug: string | null, meserie: string | null): Promise<Response> {
@@ -96,7 +146,8 @@ export async function paginaLista(req: Request, env: Env, orasSlug: string | nul
       </label>
       <button type="submit" class="min-h-11 self-end rounded-md border border-stone-300 bg-surface px-4 font-semibold text-stone-900 hover:border-stone-500">Caută</button>
     </form>
-    ${anunturi.length ? `<ul class="mt-6 grid gap-3">${anunturi.map(cardLista).join("")}</ul>` : `
+    ${anunturi.length > 1 ? butonApropiere(meserie, orasSlug) : ""}
+    ${anunturi.length ? `<ul class="mt-4 grid gap-3" data-lista-anunturi>${anunturi.map(cardLista).join("")}</ul>` : `
       <div class="mt-6 ${CARD}"><p class="text-base text-stone-800">${unde ? "Nu sunt încă anunțuri pentru căutarea asta." : "Nu sunt încă anunțuri publicate."}</p>
       <p class="mt-2 text-sm text-stone-600">Angajezi? Anunțul tău apare aici în câteva minute, gratuit și fără cont.</p></div>`}
     ${pagini > 1 ? `<nav aria-label="Pagini" class="mt-6 flex gap-4 text-sm">${pagina > 1 ? `<a class="underline underline-offset-2" href="${q(pagina - 1)}">Pagina anterioară</a>` : ""}<span class="text-stone-600">Pagina ${pagina} din ${pagini}</span>${pagina < pagini ? `<a class="underline underline-offset-2" href="${q(pagina + 1)}">Pagina următoare</a>` : ""}</nav>` : ""}`;
@@ -130,10 +181,32 @@ export async function paginaAnunt(req: Request, env: Env, id: number, slug: stri
         <p class="mt-2 text-sm"><a class="underline underline-offset-2" href="${listaMeserie}">Vezi anunțurile ${meserie ? `pentru ${esc(meserie.toLowerCase())} ` : ""}din ${esc(oras(a))}</a>${a.meserie ? ` · <a class="underline underline-offset-2" href="/salarii/${a.meserie}">Salariul unui ${esc(meserie!.toLowerCase())}</a>` : ""}</p></div>` });
   }
 
-  const contact = [
-    a.telefon ? `<li><a class="font-semibold underline underline-offset-2" href="tel:${esc(a.telefon.replace(/[^\d+]/g, ""))}">${esc(a.telefon)}</a></li>` : "",
-    a.email_contact ? `<li><a class="font-semibold underline underline-offset-2" href="mailto:${esc(a.email_contact)}?subject=${encodeURIComponent(`Anunț: ${a.titlu}`)}">${esc(a.email_contact)}</a></li>` : "",
-  ].join("");
+  // Contactul: un buton care sună, cu numărul scris pe el, și unul de WhatsApp la mobil (proprietar,
+  // 28 septembrie 2026). Fără CV prin site, fără chat, fără email.
+  const tel = a.telefon ?? "";
+  const contact = tel ? `
+    <a href="${linkApel(tel)}" class="flex min-h-12 items-center justify-center gap-2 rounded-md bg-stone-900 px-4 text-lg font-semibold text-white hover:bg-stone-700" data-contact="apel">Sună: ${telefonAfisat(tel)}</a>
+    ${esteMobil(tel) ? `<a href="${esc(linkWhatsApp(tel, a.titlu))}" rel="noopener" target="_blank" class="mt-3 flex min-h-12 items-center justify-center gap-2 rounded-md border border-stone-300 bg-surface px-4 text-lg font-semibold text-stone-900 hover:border-stone-500" data-contact="whatsapp">Scrie pe WhatsApp</a>` : ""}` : "";
+  // Locul: adresa, harta OpenStreetMap (fără cookies Google pe pagină) și linkuri spre Google Maps.
+  const adresaText = [a.adresa, loc(a)].filter(Boolean).join(", ");
+  const dest = a.adresa ? `${a.adresa}, ${oras(a)}` : oras(a);
+  let harta = "";
+  if (a.lat != null && a.lon != null) {
+    const dx = a.loc_precizie === "adresa" ? 0.008 : 0.05, dy = dx * 0.6;
+    const src = `https://www.openstreetmap.org/export/embed.html?bbox=${a.lon - dx},${a.lat - dy},${a.lon + dx},${a.lat + dy}&layer=mapnik${a.loc_precizie === "adresa" ? `&marker=${a.lat},${a.lon}` : ""}`;
+    harta = `<iframe src="${esc(src)}" title="Harta: ${esc(adresaText)}" loading="lazy" class="mt-3 h-56 w-full rounded-md border border-stone-200" referrerpolicy="no-referrer"></iframe>`;
+  }
+  const locatie = `
+        <div class="${CARD}">
+          <h2 class="text-base font-bold text-stone-900">Unde e locul de muncă</h2>
+          <p class="mt-2 text-base text-stone-800">${esc(adresaText)}</p>
+          ${a.loc_precizie !== "adresa" ? `<p class="mt-1 text-xs text-stone-600">Anunțul nu are adresa exactă; harta arată localitatea.</p>` : ""}
+          ${harta}
+          <p class="mt-3 flex flex-wrap gap-x-4 gap-y-2 text-sm">
+            <a class="underline underline-offset-2" rel="noopener" target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=${encodeURIComponent(dest)}">Deschide în Google Maps</a>
+            <a class="underline underline-offset-2" rel="noopener" target="_blank" href="https://www.google.com/maps/dir/?api=1&amp;destination=${encodeURIComponent(dest)}">Vezi drumul până acolo</a>
+          </p>
+        </div>`;
   const continut = `
     <nav class="mb-4 flex flex-wrap gap-2 text-xs text-stone-600" aria-label="Breadcrumb"><a class="underline underline-offset-2" href="/locuri-de-munca">Locuri de muncă</a><span>/</span><a class="underline underline-offset-2" href="${urlLista(a.oras_slug, null)}">${esc(oras(a))}</a>${a.meserie ? `<span>/</span><a class="underline underline-offset-2" href="${listaMeserie}">${esc(meserie!)}</a>` : ""}</nav>
     <p class="text-xs font-medium uppercase tracking-wide text-stone-600">Anunț angajare</p>
@@ -150,9 +223,10 @@ export async function paginaAnunt(req: Request, env: Env, id: number, slug: stri
       <div class="flex flex-col gap-4">
         <div class="${CARD}">
           <h2 class="text-base font-bold text-stone-900">Aplică direct la angajator</h2>
-          <ul class="mt-3 flex flex-col gap-2 text-base">${contact}</ul>
+          <div class="mt-3">${contact}</div>
           <p class="mt-3 text-xs text-stone-600">Nu plăti niciodată ca să fii angajat. Legea interzice taxele cerute candidaților.</p>
         </div>
+        ${locatie}
         <div class="${CARD}">
           <h2 class="text-base font-bold text-stone-900">Cât primești în mână</h2>
           <p class="mt-2 text-sm text-stone-600">${a.baza === "brut" ? `Din ${lei(a.salariu_min)} lei brut rămân ${lei(a.net_min)} lei net, după contribuții și impozit.` : "Suma e deja netă: atât primești pe card."}</p>

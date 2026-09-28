@@ -110,7 +110,8 @@ export const CSP_ANUNTURI = construiesteCsp({
   styleSrc: `'self' 'unsafe-inline' ${GOOGLE_FONTS_STYLE}`,
   imgSrc: `'self' blob: data: https:`,
   connectSrc: `'self' ${GOOGLE_ANALYTICS_CONNECT} ${ADSENSE_CONNECT} ${TURNSTILE}`,
-  frameSrc: `'self' ${ADSENSE_FRAME} ${TURNSTILE}`,
+  // Harta de pe pagina anunțului: OpenStreetMap, nu Google Maps încorporat (fără cookies Google).
+  frameSrc: `'self' ${ADSENSE_FRAME} ${TURNSTILE} https://www.openstreetmap.org`,
   fontSrc: `'self' data: ${GOOGLE_FONTS_ASSET}`,
 });
 

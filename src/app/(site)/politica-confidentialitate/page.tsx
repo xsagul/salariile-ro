@@ -127,9 +127,11 @@ export default function PoliticaConfidentialitatePage() {
             </p>
             <ul>
               <li><strong>Emailul celui care adaugă anunțul</strong>: numai ca să-i trimitem linkul cu care publică, modifică sau șterge anunțul și, la nevoie, motivul scoaterii lui. Nu apare în anunț și nu se folosește pentru nimic altceva. Se șterge la 30 de zile după ce anunțul expiră sau e șters.</li>
-              <li><strong>Datele de contact ale angajatorului</strong> (telefon, email) și restul anunțului: se publică, cu acordul celui care îl adaugă, cât timp anunțul e activ. La ștergere, datele de contact se șterg imediat.</li>
+              <li><strong>Telefonul angajatorului, adresa locului de muncă</strong> și restul anunțului: se publică, cu acordul celui care îl adaugă, cât timp anunțul e activ. La ștergere, telefonul și adresa se șterg imediat. Ca anunțul să apară pe hartă, adresa (a locului de muncă, nu a unei persoane) se transformă o singură dată în coordonate prin serviciul Nominatim al OpenStreetMap.</li>
               <li><strong>Adresa IP și emailul, ca amprentă criptată</strong> (SHA-256 cu sare), numai ca să limităm la cinci anunțurile noi pe zi de la aceeași persoană. Se șterg după două zile.</li>
               <li><strong>Raportările</strong>: motivul, detaliile scrise și, opțional, emailul celui care raportează, ca să-i putem răspunde.</li>
+              <li><strong>Harta din pagina anunțului</strong> se încarcă de la OpenStreetMap (OpenStreetMap Foundation, Regatul Unit), care vede adresa IP a browserului, ca orice site de la care se încarcă o imagine. Nu folosim harta Google încorporată și nu punem cookies Google. Linkurile „Deschide în Google Maps” duc la Google numai dacă le apeși.</li>
+              <li><strong>„Sortează după apropiere”</strong>: poziția ta o cere browserul, cu permisiunea ta, și rămâne în telefon. Site-ul primește lista anunțurilor, nu locul în care ești; ordonarea după distanță se face pe dispozitivul tău.</li>
               <li><strong>Verificarea anti-spam Cloudflare Turnstile</strong> din formulare: Cloudflare analizează semnale tehnice ale browserului ca să deosebească oamenii de roboți, fără cookies de urmărire și fără imagini de ales.</li>
             </ul>
             <p>

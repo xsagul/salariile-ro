@@ -28,7 +28,7 @@ export const ZILE_PASTRARE_EMAIL = 30;
 /** Anunțuri noi pe zi de la același email sau de la aceeași adresă IP. */
 export const LIMITA_PE_ZI = 5;
 
-export const LIMITE = { titlu: [8, 90], angajator: [2, 120], oras: [2, 60], descriere: [80, 6000] } as const;
+export const LIMITE = { titlu: [8, 90], angajator: [2, 120], oras: [2, 60], adresa: [0, 120], descriere: [80, 6000] } as const;
 
 export type AnuntNou = {
   titlu: string;
@@ -37,14 +37,14 @@ export type AnuntNou = {
   cui?: string;
   judet: string;            // cod din JUDETE
   oras: string;
+  adresa?: string;          // strada și numărul: harta și sortarea după apropiere (opțională)
   norma: Norma;
   orePeZi?: number;         // la normă parțială
   salariuMin: number;
   salariuMax?: number | null;
   baza: Baza;
   descriere: string;
-  telefon?: string;
-  emailContact?: string;
+  telefon: string;          // contactul: butonul de apel și, la mobil, cel de WhatsApp
   email: string;            // al celui care postează: primește linkul de confirmare; nu se publică
   acordPublicare: boolean;  // datele de contact ale angajatorului se publică în anunț
 };
@@ -92,11 +92,21 @@ export function verificaContinut(titlu: string, descriere: string): string | nul
   if (litere.length > 12 && litere === litere.toUpperCase()) return "Scrie titlul cu litere mici, nu doar cu majuscule.";
   if (/(.)\1{5,}/.test(t) || /[!?]{3,}/.test(t)) return "Anunțul are caractere repetate; scrie-l simplu.";
   const linkuri = (descriere.match(/https?:\/\//g) ?? []).length;
-  if (linkuri > 2) return "Descrierea poate avea cel mult două linkuri; pune linkul de aplicare în câmpul lui.";
+  if (linkuri > 2) return "Descrierea poate avea cel mult două linkuri.";
   return null;
 }
 
-const telefonValid = (t: string) => /^(\+40|0040|0)[237]\d{8}$/.test(t.replace(/[\s.\-()]/g, ""));
+/** „0722 123 456”, „+40722123456” → „0722123456”, sau null dacă nu e un număr românesc. */
+export function telefonCurat(t: string): string | null {
+  const c = t.replace(/[\s.\-()/]/g, "").replace(/^(\+40|0040)/, "0");
+  return /^0[237]\d{8}$/.test(c) ? c : null;
+}
+/** Contactul, decis de proprietar pe 28 septembrie 2026: un buton care sună și unul de WhatsApp. */
+export const esteMobil = (t: string) => /^07\d{8}$/.test(t);
+export const linkApel = (t: string) => `tel:+4${t}`;
+export const linkWhatsApp = (t: string, titlu: string) => `https://wa.me/4${t}?text=${encodeURIComponent(`Bună ziua, vă scriu pentru anunțul „${titlu}” de pe salariile.ro.`)}`;
+/** „0722 123 456”, ca să se citească ușor pe buton. */
+export const telefonAfisat = (t: string) => (t.startsWith("07") ? `${t.slice(0, 4)} ${t.slice(4, 7)} ${t.slice(7)}` : `${t.slice(0, 3)} ${t.slice(3, 6)} ${t.slice(6)}`);
 const emailValid = (e: string) => /^[^\s@]{1,64}@[^\s@]{1,190}\.[a-z]{2,}$/i.test(e);
 
 /**
@@ -112,14 +122,14 @@ export function valideaza(brut: Record<string, unknown>, meseriiValide: Set<stri
     cui: text(brut.cui).toUpperCase() || undefined,
     judet: text(brut.judet).toUpperCase(),
     oras: text(brut.oras),
+    adresa: text(brut.adresa) || undefined,
     norma: brut.norma === "partiala" ? "partiala" : "intreaga",
     orePeZi: brut.norma === "partiala" ? Number(brut.orePeZi) : undefined,
     salariuMin: Math.round(Number(brut.salariuMin)),
     salariuMax: brut.salariuMax === "" || brut.salariuMax == null ? null : Math.round(Number(brut.salariuMax)),
     baza: brut.baza === "net" ? "net" : brut.baza === "brut" ? "brut" : ("" as Baza),
     descriere: textLung(brut.descriere),
-    telefon: text(brut.telefon) || undefined,
-    emailContact: text(brut.emailContact).toLowerCase() || undefined,
+    telefon: telefonCurat(text(brut.telefon)) ?? text(brut.telefon),
     email: text(brut.email).toLowerCase(),
     acordPublicare: brut.acordPublicare === true || brut.acordPublicare === "true" || brut.acordPublicare === "on",
   };
@@ -131,6 +141,7 @@ export function valideaza(brut: Record<string, unknown>, meseriiValide: Set<stri
   lung("titlu", a.titlu, "Titlul");
   lung("angajator", a.angajator, "Angajatorul");
   lung("oras", a.oras, "Localitatea");
+  if (a.adresa) lung("adresa", a.adresa, "Adresa");
   lung("descriere", a.descriere, "Descrierea");
   if (a.meserie && !meseriiValide.has(a.meserie)) e.push({ camp: "meserie", mesaj: "Alege meseria din listă sau „Altă meserie”." });
   if (a.cui && !cuiValid(a.cui)) e.push({ camp: "cui", mesaj: "CUI-ul nu e valid; verifică cifrele sau lasă câmpul gol." });
@@ -152,12 +163,11 @@ export function valideaza(brut: Record<string, unknown>, meseriiValide: Set<stri
     else if (a.salariuMax === a.salariuMin) a.salariuMax = null;
   }
 
-  // Contactul angajatorului: cel puțin unul, publicat cu acordul celui care postează.
-  // Fără „link de aplicare”: îl au doar firmele cu recrutare proprie; pe OLX și anuntul.ro angajatorii
-  // dau un telefon (proprietar, 28 septembrie 2026).
-  if (!a.telefon && !a.emailContact) e.push({ camp: "telefon", mesaj: "Dă cel puțin un contact: telefon sau email." });
-  if (a.telefon && !telefonValid(a.telefon)) e.push({ camp: "telefon", mesaj: "Telefonul nu pare un număr românesc valid." });
-  if (a.emailContact && !emailValid(a.emailContact)) e.push({ camp: "emailContact", mesaj: "Emailul de contact nu e valid." });
+  // Contactul angajatorului: telefonul, publicat cu acordul celui care postează. Fără link de
+  // aplicare, email pentru CV-uri sau CV prin site: pe OLX și anuntul.ro angajatorii dau un
+  // telefon, iar candidatul sună sau scrie pe WhatsApp (proprietar, 28 septembrie 2026).
+  if (!a.telefon) e.push({ camp: "telefon", mesaj: "Scrie telefonul la care te sună candidații." });
+  else if (!telefonCurat(a.telefon)) e.push({ camp: "telefon", mesaj: "Telefonul nu pare un număr românesc valid." });
   if (!emailValid(a.email)) e.push({ camp: "email", mesaj: "Scrie emailul tău: acolo primești linkul de confirmare." });
   if (!a.acordPublicare) e.push({ camp: "acordPublicare", mesaj: "Bifează acordul: datele de contact ale angajatorului apar în anunț." });
 

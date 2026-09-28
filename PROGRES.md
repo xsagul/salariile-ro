@@ -4294,3 +4294,25 @@ contul site-ului (acum e pe „rulersquare”), `wrangler d1 create salariile-an
 (cheia publică în `src/lib/anunturi/config.ts`, secretul `TURNSTILE_SECRET`), Email Sending pe
 salariile.ro și binding-ul `send_email` (fără el, linkurile de confirmare doar se scriu în log).
 Data „în vigoare” de pe Termeni și politica de confidențialitate se schimbă la lansare.
+
+## 28 septembrie 2026, seara — locul de muncă pe hartă, sortare după apropiere, contact prin apel și WhatsApp
+
+Cerut de proprietar, după comparația cu OLX, anuntul.ro și eJobs: adresa exactă contează cel mai
+mult („foloseam anuntul.ro fix ca puteam sa vad unde e”), cine postează nu trebuie încărcat, iar
+contactul e simplu. Scoase: linkul de aplicare, emailul pentru CV-uri, numărul de posturi. Rămase:
+- **Contactul**: un singur telefon, obligatoriu. În anunț: „Sună: 0722 …” (`tel:`) și, la număr de
+  mobil, „Scrie pe WhatsApp” (`wa.me`, cu mesajul pre-scris cu titlul anunțului).
+- **Adresa** (opțională, 120 de caractere) → coordonate prin Nominatim (`worker/geocod.ts`), o dată
+  la publicare și numai la schimbarea adresei; fără adresă, centrul localității (`loc_precizie`).
+  Probat pe 5 adrese reale din București: 4 găsite pe stradă, cea fără stradă pe oraș. În anunț:
+  harta OpenStreetMap cu marcaj, „Deschide în Google Maps”, „Vezi drumul până acolo”.
+- **„Sortează după apropiere”** pe liste: telefonul își ia poziția și ordonează singur lista primită
+  de la `/api/anunturi/lista`; poziția nu pleacă din browser. Pe lista unui oraș, anunțurile fără
+  adresă trec la coadă, cu „fără adresă exactă”. Probat în Brave cu poziție simulată lângă
+  Floreasca: 417 m, 3,8 km, 3,9 km, 5,7 km, apoi anunțul fără adresă.
+
+Două buguri găsite numai la apăsarea reală a butonului: scriptul stătea înaintea listei și ascundea
+butonul, iar `Permissions-Policy: geolocation=()` (din `_headers`, moștenit de șablon) bloca locația
+— butonul ar fi răspuns mereu „fără acces”. Worker-ul pune acum `geolocation=(self)` pe paginile lui;
+restul site-ului rămâne blocat. „Uncaught (in promise) undefined” din consolă apare și pe `/salarii`,
+deci nu vine din anunțuri.

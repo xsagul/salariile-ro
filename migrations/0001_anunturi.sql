@@ -4,7 +4,8 @@
 -- Datele personale, cât de puține se poate:
 --   email          al celui care postează; nu se publică; se șterge la ZILE_PASTRARE_EMAIL după expirare
 --   token_hash     SHA-256 al linkului de gestionare; linkul în clar există numai în emailul trimis
---   telefon, email_contact  contactul angajatorului, publicat cu acordul celui care postează
+--   telefon        contactul angajatorului, publicat cu acordul celui care postează
+--   adresa, lat, lon  locul de muncă (al angajatorului), nu al vreunei persoane
 --   ip_hash        în limite, SHA-256 cu sare, păstrat 2 zile, numai pentru limita pe zi
 
 CREATE TABLE anunturi (
@@ -18,6 +19,10 @@ CREATE TABLE anunturi (
   judet           TEXT NOT NULL,
   oras            TEXT NOT NULL,
   oras_slug       TEXT NOT NULL,       -- „cluj-napoca”: /locuri-de-munca/cluj-napoca
+  adresa          TEXT,                -- strada și numărul, opțional
+  lat             REAL,                -- din adresă (sau din oraș, fără adresă), la publicare;
+  lon             REAL,                -- pentru hartă și pentru „sortează după apropiere”
+  loc_precizie    TEXT CHECK (loc_precizie IN ('adresa', 'oras')),
   norma           TEXT NOT NULL CHECK (norma IN ('intreaga', 'partiala')),
   ore_pe_zi       INTEGER,
   salariu_min     INTEGER NOT NULL,
@@ -26,7 +31,6 @@ CREATE TABLE anunturi (
   net_min         INTEGER NOT NULL,    -- netul lunar al minimului, pentru filtre și pentru cifrele meseriei
   descriere       TEXT NOT NULL,
   telefon         TEXT,
-  email_contact   TEXT,
   email           TEXT,                -- NULL după ștergerea datelor
   token_hash      TEXT NOT NULL,
   creat_la        TEXT NOT NULL,       -- ISO

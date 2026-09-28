@@ -3,7 +3,9 @@
 import type { Env } from "./index";
 import catalog from "../src/data/meserii-catalog.json";
 import { URL_ADAUGA, urlAnunt, valideaza } from "../src/lib/anunturi/reguli";
-import { adauga, confirma, dupaId, dupaToken, inLimita, modifica, prelungeste, raporteaza, sterge, tokenNou, type Anunt } from "./date";
+import { adauga, confirma, dupaId, dupaToken, inLimita, listaPentruApropiere, modifica, prelungeste, raporteaza, sterge, tokenNou, type Anunt } from "./date";
+import { localizeaza } from "./geocod";
+import { cardLista } from "./pagini";
 
 const MESERII = new Set((catalog as { meserii: { slug: string }[] }).meserii.map((m) => m.slug));
 const MOTIVE_RAPORTARE = ["țeapă sau cerere de bani", "discriminare", "salariul nu e cel real", "anunț fals sau duplicat", "conținut ilegal", "altceva"];
@@ -36,6 +38,16 @@ const public_ = (a: Anunt) => {
 };
 
 export async function api(req: Request, env: Env, ctx: ExecutionContext, cale: string): Promise<Response> {
+  // Lista pentru „sortează după apropiere”: telefonul cere anunțurile și le ordonează singur după
+  // distanță; poziția vizitatorului nu ajunge la noi. Numai câmpurile cardului, fără contact.
+  if (cale === "/api/anunturi/lista" && req.method === "GET") {
+    const u = new URL(req.url);
+    const meserie = MESERII.has(u.searchParams.get("meserie") ?? "") ? u.searchParams.get("meserie")! : undefined;
+    const oras = /^[a-z0-9-]{2,60}$/.test(u.searchParams.get("oras") ?? "") ? u.searchParams.get("oras")! : undefined;
+    const r = await listaPentruApropiere(env, { meserie, oras });
+    return new Response(JSON.stringify(r.map((a) => ({ lat: a.lat, lon: a.lon, precis: a.loc_precizie === "adresa", html: cardLista(a) }))),
+      { headers: { "content-type": "application/json; charset=utf-8", "cache-control": "public, max-age=60" } });
+  }
   if (req.method !== "POST") return json({ eroare: "Metodă nepermisă" }, 405);
   // Numai de pe site: un formular de pe alt domeniu nu poate posta în numele vizitatorului.
   const origin = req.headers.get("origin");
@@ -50,7 +62,7 @@ export async function api(req: Request, env: Env, ctx: ExecutionContext, cale: s
     if ("erori" in v) return json({ erori: v.erori }, 400);
     if (!(await inLimita(env, v.anunt.email, ip))) return json({ erori: [{ camp: "general", mesaj: "Ai publicat multe anunțuri azi. Mai încearcă mâine." }] }, 429);
     const token = tokenNou();
-    const id = await adauga(env, v.anunt, token);
+    const id = await adauga(env, v.anunt, await localizeaza(v.anunt.adresa, v.anunt.oras, v.anunt.judet), token);
     ctx.waitUntil(trimite(env, v.anunt.email, `Confirmă anunțul „${v.anunt.titlu}”`,
       `Bună ziua,\n\nCa să publici anunțul „${v.anunt.titlu}” pe salariile.ro, deschide linkul de mai jos și apasă „Publică anunțul”:\n\n${linkGestionare(env, token)}\n\n` +
       `Din același link îl poți modifica, prelungi sau șterge oricând. Păstrează emailul: linkul nu se mai trimite o dată.\n` +
@@ -69,7 +81,10 @@ export async function api(req: Request, env: Env, ctx: ExecutionContext, cale: s
       case "modifica": {
         const v = valideaza({ ...(corp.date as Record<string, unknown>), email: a.email ?? "sters@salariile.ro", acordPublicare: true }, MESERII);
         if ("erori" in v) return json({ erori: v.erori }, 400);
-        await modifica(env, a.id, v.anunt);
+        const loc = v.anunt.adresa === (a.adresa ?? undefined) && v.anunt.oras === a.oras && a.lat != null
+          ? { lat: a.lat, lon: a.lon!, precizie: a.loc_precizie ?? "oras" as const }
+          : await localizeaza(v.anunt.adresa, v.anunt.oras, v.anunt.judet);
+        await modifica(env, a.id, v.anunt, loc);
         break;
       }
       default: return json({ eroare: "Acțiune necunoscută" }, 400);

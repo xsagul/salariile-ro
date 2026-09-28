@@ -12,8 +12,8 @@ const SLUGURI = new Set(MESERII.map((m) => m.slug));
 const JUDETE_SORTATE = Object.entries(JUDETE).sort((a, b) => a[1].localeCompare(b[1], "ro"));
 
 export type Valori = Record<string, string | boolean>;
-const GOL: Valori = { titlu: "", meserie: "", angajator: "", cui: "", judet: "", oras: "", norma: "intreaga", orePeZi: "4", salariuMin: "", salariuMax: "",
-  baza: "", descriere: "", telefon: "", emailContact: "", email: "", acordPublicare: false };
+const GOL: Valori = { titlu: "", meserie: "", angajator: "", cui: "", judet: "", oras: "", adresa: "", norma: "intreaga", orePeZi: "4", salariuMin: "", salariuMax: "",
+  baza: "", descriere: "", telefon: "", email: "", acordPublicare: false };
 
 const CAMP = "mt-1 block w-full rounded-md border border-stone-300 bg-surface px-3 py-2 text-base text-stone-900 focus:border-stone-600 focus:outline-none";
 const ETICHETA = "block text-sm font-medium text-stone-800";
@@ -78,6 +78,7 @@ export default function FormularAnunt({ initial, modificare = false, trimite }: 
           </label>
           {Camp({ k: "oras", eticheta: "Localitatea", placeholder: "Cluj-Napoca" })}
         </div>
+        {Camp({ k: "adresa", eticheta: "Adresa locului de muncă (opțional)", placeholder: "Strada Lipscani 69", maxLength: 120, nota: "Cu adresa, anunțul apare pe hartă și primul pentru cei care caută aproape de ei." })}
         <div className="grid gap-4 sm:grid-cols-2">
           <label className={ETICHETA}>Programul
             <select value={String(v.norma)} onChange={set("norma")} className={CAMP}>
@@ -119,11 +120,7 @@ export default function FormularAnunt({ initial, modificare = false, trimite }: 
           {Camp({ k: "angajator", eticheta: "Numele angajatorului", placeholder: "Firma SRL" })}
           {Camp({ k: "cui", eticheta: "CUI (opțional)", placeholder: "RO12345678", nota: "Apare în anunț, ca să poată fi găsită firma." })}
         </div>
-        <p className="text-sm text-stone-700">Candidații te contactează direct. Dă cel puțin un contact, telefon sau email:</p>
-        <div className="grid gap-4 sm:grid-cols-2">
-          {Camp({ k: "telefon", eticheta: "Telefon", type: "tel", inputMode: "tel" })}
-          {Camp({ k: "emailContact", eticheta: "Email pentru CV-uri", type: "email" })}
-        </div>
+        {Camp({ k: "telefon", eticheta: "Telefonul la care te sună candidații", type: "tel", inputMode: "tel", placeholder: "0722 123 456", nota: "În anunț apare un buton care sună direct și, la un număr de mobil, unul de WhatsApp." })}
       </fieldset>
 
       {!modificare && (

@@ -10,7 +10,7 @@ import { urlAnunt } from "@/lib/anunturi/reguli";
 type Anunt = {
   id: number; stare: string; titlu: string; slug: string; meserie: string | null; angajator: string; cui: string | null; judet: string; oras: string;
   norma: string; ore_pe_zi: number | null; salariu_min: number; salariu_max: number | null; baza: string; descriere: string;
-  telefon: string | null; email_contact: string | null; expira_la: string | null;
+  telefon: string | null; adresa: string | null; expira_la: string | null;
 };
 
 const STARI: Record<string, string> = {
@@ -49,9 +49,9 @@ export default function GestioneazaAnunt() {
 
   if (!a) return <p className="text-base text-stone-700">{mesaj ?? "Se încarcă…"}</p>;
   const initial: Valori = {
-    titlu: a.titlu, meserie: a.meserie ?? "", angajator: a.angajator, cui: a.cui ?? "", judet: a.judet, oras: a.oras, norma: a.norma,
+    titlu: a.titlu, meserie: a.meserie ?? "", angajator: a.angajator, cui: a.cui ?? "", judet: a.judet, oras: a.oras, adresa: a.adresa ?? "", norma: a.norma,
     orePeZi: String(a.ore_pe_zi ?? 4), salariuMin: String(a.salariu_min), salariuMax: a.salariu_max ? String(a.salariu_max) : "", baza: a.baza,
-    descriere: a.descriere, telefon: a.telefon ?? "", emailContact: a.email_contact ?? "",
+    descriere: a.descriere, telefon: a.telefon ?? "",
   };
   const BUTON = "inline-flex min-h-11 items-center rounded-md px-4 font-semibold";
   return (

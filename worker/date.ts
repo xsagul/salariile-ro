@@ -1,13 +1,14 @@
 // Accesul la baza D1 a anunțurilor. Schema: migrations/0001_anunturi.sql.
 import type { Env } from "./index";
+import type { Loc } from "./geocod";
 import { LIMITA_PE_ZI, ZILE_PASTRARE_EMAIL, ZILE_VALABILITATE, netLunar, orasSlug, slugAnunt, type AnuntNou } from "../src/lib/anunturi/reguli";
 
 export type Anunt = {
   id: number; stare: "neconfirmat" | "activ" | "expirat" | "sters" | "suspendat";
   titlu: string; slug: string; meserie: string | null; angajator: string; cui: string | null;
-  judet: string; oras: string; oras_slug: string; norma: "intreaga" | "partiala"; ore_pe_zi: number | null;
+  judet: string; oras: string; oras_slug: string; adresa: string | null; lat: number | null; lon: number | null; loc_precizie: "adresa" | "oras" | null; norma: "intreaga" | "partiala"; ore_pe_zi: number | null;
   salariu_min: number; salariu_max: number | null; baza: "brut" | "net"; net_min: number;
-  descriere: string; telefon: string | null; email_contact: string | null;
+  descriere: string; telefon: string | null;
   email: string | null; creat_la: string; confirmat_la: string | null; expira_la: string | null;
 };
 
@@ -37,14 +38,14 @@ export async function inLimita(env: Env, email: string, ip: string): Promise<boo
   return true;
 }
 
-export async function adauga(env: Env, a: AnuntNou, token: string): Promise<number> {
+export async function adauga(env: Env, a: AnuntNou, loc: Loc | null, token: string): Promise<number> {
   const r = await env.DB.prepare(
-    `INSERT INTO anunturi (stare, titlu, slug, meserie, angajator, cui, judet, oras, oras_slug, norma, ore_pe_zi, salariu_min, salariu_max, baza, net_min,
-      descriere, telefon, email_contact, email, token_hash, creat_la)
-     VALUES ('neconfirmat', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id`,
-  ).bind(a.titlu, slugAnunt(a.titlu, a.oras), a.meserie || null, a.angajator, a.cui ?? null, a.judet, a.oras, orasSlug(a.oras), a.norma, a.orePeZi ?? null,
-    a.salariuMin, a.salariuMax ?? null, a.baza, netLunar(a.salariuMin, a.baza), a.descriere, a.telefon ?? null, a.emailContact ?? null,
-    a.email, await sha256(token), acum()).first<{ id: number }>();
+    `INSERT INTO anunturi (stare, titlu, slug, meserie, angajator, cui, judet, oras, oras_slug, adresa, lat, lon, loc_precizie, norma, ore_pe_zi,
+      salariu_min, salariu_max, baza, net_min, descriere, telefon, email, token_hash, creat_la)
+     VALUES ('neconfirmat', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id`,
+  ).bind(a.titlu, slugAnunt(a.titlu, a.oras), a.meserie || null, a.angajator, a.cui ?? null, a.judet, a.oras, orasSlug(a.oras),
+    a.adresa ?? null, loc?.lat ?? null, loc?.lon ?? null, loc?.precizie ?? null, a.norma, a.orePeZi ?? null,
+    a.salariuMin, a.salariuMax ?? null, a.baza, netLunar(a.salariuMin, a.baza), a.descriere, a.telefon, a.email, await sha256(token), acum()).first<{ id: number }>();
   return r!.id;
 }
 
@@ -67,17 +68,18 @@ export async function prelungeste(env: Env, id: number): Promise<void> {
   await env.DB.prepare("UPDATE anunturi SET stare = 'activ', expira_la = ? WHERE id = ? AND stare IN ('activ', 'expirat')").bind(peste(ZILE_VALABILITATE), id).run();
 }
 
-export async function modifica(env: Env, id: number, a: AnuntNou): Promise<void> {
+export async function modifica(env: Env, id: number, a: AnuntNou, loc: Loc | null): Promise<void> {
   await env.DB.prepare(
-    `UPDATE anunturi SET titlu = ?, slug = ?, meserie = ?, angajator = ?, cui = ?, judet = ?, oras = ?, oras_slug = ?, norma = ?, ore_pe_zi = ?, salariu_min = ?,
-      salariu_max = ?, baza = ?, net_min = ?, descriere = ?, telefon = ?, email_contact = ? WHERE id = ? AND stare IN ('neconfirmat', 'activ', 'expirat')`,
-  ).bind(a.titlu, slugAnunt(a.titlu, a.oras), a.meserie || null, a.angajator, a.cui ?? null, a.judet, a.oras, orasSlug(a.oras), a.norma, a.orePeZi ?? null, a.salariuMin,
-    a.salariuMax ?? null, a.baza, netLunar(a.salariuMin, a.baza), a.descriere, a.telefon ?? null, a.emailContact ?? null, id).run();
+    `UPDATE anunturi SET titlu = ?, slug = ?, meserie = ?, angajator = ?, cui = ?, judet = ?, oras = ?, oras_slug = ?, adresa = ?, lat = ?, lon = ?, loc_precizie = ?,
+      norma = ?, ore_pe_zi = ?, salariu_min = ?, salariu_max = ?, baza = ?, net_min = ?, descriere = ?, telefon = ? WHERE id = ? AND stare IN ('neconfirmat', 'activ', 'expirat')`,
+  ).bind(a.titlu, slugAnunt(a.titlu, a.oras), a.meserie || null, a.angajator, a.cui ?? null, a.judet, a.oras, orasSlug(a.oras),
+    a.adresa ?? null, loc?.lat ?? null, loc?.lon ?? null, loc?.precizie ?? null, a.norma, a.orePeZi ?? null, a.salariuMin,
+    a.salariuMax ?? null, a.baza, netLunar(a.salariuMin, a.baza), a.descriere, a.telefon, id).run();
 }
 
 /** Ștergerea cerută de cel care a postat: anunțul dispare imediat, datele de contact la fel. */
 export async function sterge(env: Env, id: number): Promise<void> {
-  await env.DB.prepare("UPDATE anunturi SET stare = 'sters', sters_la = ?, telefon = NULL, email_contact = NULL WHERE id = ?").bind(acum(), id).run();
+  await env.DB.prepare("UPDATE anunturi SET stare = 'sters', sters_la = ?, telefon = NULL, adresa = NULL WHERE id = ?").bind(acum(), id).run();
 }
 
 export const PE_PAGINA = 20;
@@ -91,6 +93,18 @@ export async function lista(env: Env, f: { meserie?: string; oras?: string; pagi
     env.DB.prepare(`SELECT * FROM anunturi WHERE ${where} ORDER BY confirmat_la DESC LIMIT ? OFFSET ?`).bind(...val, PE_PAGINA, (f.pagina - 1) * PE_PAGINA),
   ]);
   return { total: (n.results[0] as { n: number }).n, anunturi: r.results as Anunt[] };
+}
+
+/**
+ * Toate anunțurile unei liste, fără paginare și numai cu ce trebuie ca să le ordoneze telefonul
+ * după distanță. Poziția vizitatorului nu pleacă niciodată din browser: el cere lista, nu trimite
+ * unde e (/api/anunturi/lista).
+ */
+export async function listaPentruApropiere(env: Env, f: { meserie?: string; oras?: string }) {
+  const cond = ["stare = 'activ'"], val: unknown[] = [];
+  if (f.meserie) { cond.push("meserie = ?"); val.push(f.meserie); }
+  if (f.oras) { cond.push("oras_slug = ?"); val.push(f.oras); }
+  return (await env.DB.prepare(`SELECT * FROM anunturi WHERE ${cond.join(" AND ")} ORDER BY confirmat_la DESC LIMIT 500`).bind(...val).all<Anunt>()).results;
 }
 
 /** Numele localității cum îl scriu anunțurile („Cluj-Napoca”), pentru titlul paginii ei. */
