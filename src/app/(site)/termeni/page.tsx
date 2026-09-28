@@ -146,14 +146,35 @@ export default function TermeniPage() {
         </Section>
 
         <Section>
-            <h2>8. Modificări ale termenilor</h2>
+            <h2 id="anunturi">8. Anunțurile de angajare</h2>
+            <p>
+              Oricine angajează poate adăuga gratuit, fără cont, un anunț de angajare pe <Link href="/adauga-anunt-angajare">salariile.ro</Link>. Anunțul se publică după confirmarea din emailul primit și rămâne 30 de zile; din același link se modifică, se prelungește sau se șterge oricând.
+            </p>
+            <p>Un anunț se publică numai dacă:</p>
+            <ul>
+              <li>are salariul lunar, cu baza spusă (brut sau net), cel puțin cât salariul minim pe economie, proporțional la normă parțială;</li>
+              <li>descrie un loc de muncă real, în România, al angajatorului care îl publică sau pentru care are dreptul să recruteze;</li>
+              <li>nu cere o anumită vârstă, un anumit sex, stare civilă, etnie sau alte criterii interzise de Codul muncii (art. 5) și de OG 137/2000;</li>
+              <li>nu cere bani candidaților, sub nicio formă (Legea 156/2000), și nu promovează scheme de câștig, investiții sau activități ilegale;</li>
+              <li>are cel puțin un contact al angajatorului: telefon, email sau link de aplicare.</li>
+            </ul>
+            <p>
+              Cel care publică anunțul răspunde de adevărul lui și are acordul angajatorului pentru datele de contact afișate. Salariile.ro nu intermediază angajarea, nu primește CV-uri și nu verifică identitatea angajatorilor; verifică automat regulile de mai sus înainte de publicare. Salariul din anunțuri poate fi folosit, fără date de contact, în cifrele agregate de pe paginile meseriilor.
+            </p>
+            <p>
+              Orice anunț poate fi raportat din pagina lui. Anunțurile care încalcă regulile sau legea sunt scoase; la trei raportări nerezolvate, anunțul se suspendă automat până la verificare. Cel care l-a publicat primește motivul pe email. Punctul de contact pentru autorități și pentru utilizatori, conform Regulamentului (UE) 2022/2065 privind serviciile digitale, este <a href="mailto:contact@salariile.ro">contact@salariile.ro</a>, în română sau engleză.
+            </p>
+        </Section>
+
+        <Section>
+            <h2>9. Modificări ale termenilor</h2>
             <p>
               Acești termeni pot fi modificați periodic. Modificările semnificative vor fi marcate vizibil pe homepage înainte de a intra în vigoare. Continuarea utilizării site-ului după publicarea unei versiuni noi reprezintă acceptarea acesteia. Versiunea în vigoare este menționată în antetul paginii cu data corespunzătoare.
             </p>
         </Section>
 
         <Section>
-            <h2>9. Legislația aplicabilă și soluționarea litigiilor</h2>
+            <h2>10. Legislația aplicabilă și soluționarea litigiilor</h2>
             <p>
               Acești termeni sunt guvernați de legislația din România. Orice litigiu legat de utilizarea site-ului va fi soluționat conform procedurilor de drept român, în fața instanțelor competente teritorial conform regulilor din Codul de procedură civilă.
             </p>

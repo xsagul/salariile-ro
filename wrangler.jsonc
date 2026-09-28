@@ -9,16 +9,36 @@
   "workers_dev": false,
   "preview_urls": false,
 
-  // Site 100% static, fără script de Worker: toate cererile sunt cereri de
-  // assets, pe care Cloudflare le declară „free and unlimited" (documentație
-  // verificată pe 11 septembrie 2026). Nu adăuga "main" fără să recitești asta:
-  // un script transformă fiecare cerere într-o invocare numărată.
+  // Până pe 28 septembrie 2026 site-ul era 100% static, fără script. Hubul de anunțuri
+  // (proprietar, 28 septembrie 2026) are nevoie de un Worker, dar NUMAI pe rutele lui:
+  // `run_worker_first` trimite prin script doar /locuri-de-munca*, /anunt-angajare-* și
+  // /api/anunturi*. Toate celelalte cereri rămân cereri de assets, „free and unlimited"
+  // (documentație verificată pe 11 septembrie 2026) — calculatoarele și paginile de salarii
+  // nu devin invocări numărate. Nu lărgi lista fără să recitești asta.
+  "main": "worker/index.ts",
   "assets": {
     "directory": "./out",
+    "binding": "ASSETS",
+    "run_worker_first": ["/locuri-de-munca", "/locuri-de-munca/*", "/anunt-angajare-*", "/api/anunturi", "/api/anunturi/*"],
     // /salariu-minim servește salariu-minim.html, fără slash — exact URL-urile
     // de pe Vercel. Verificat cu `wrangler dev`.
     "html_handling": "auto-trailing-slash",
     // Pagina inexistentă întoarce 404 real cu out/404.html, nu soft-404.
     "not_found_handling": "404-page"
-  }
+  },
+
+  // Baza anunțurilor (migrations/). `database_id` se completează după `wrangler d1 create
+  // salariile-anunturi` în contul site-ului; local, `wrangler dev` folosește o copie SQLite.
+  "d1_databases": [{ "binding": "DB", "database_name": "salariile-anunturi", "database_id": "DE-COMPLETAT", "migrations_dir": "migrations" }],
+  "vars": {
+    "SITE": "https://salariile.ro",
+    "EMAIL_EXPEDITOR": "anunturi@salariile.ro",
+    "EMAIL_PROPRIETAR": "contact@salariile.ro"
+  },
+  // Secrete (wrangler secret put): SARE, TURNSTILE_SECRET. Emailul: binding-ul send_email se
+  // adaugă după activarea Email Sending pe domeniu; până atunci linkurile se scriu în log.
+  // Zilnic la 03:17 UTC: expirările și ștergerea datelor vechi (worker/date.ts → curatenie).
+  "triggers": { "crons": ["17 3 * * *"] },
+  // csp.ts citește NODE_ENV; în Worker e mereu producție.
+  "define": { "process.env.NODE_ENV": "\"production\"" }
 }

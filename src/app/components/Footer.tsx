@@ -10,6 +10,8 @@ import Logo from "@/app/components/Logo";
 
 // Set centralizat: aici adăugăm rutele pe măsură ce le construim
 const IMPLEMENTED_PAGES = new Set<string>([
+  "/locuri-de-munca",
+  "/adauga-anunt-angajare",
   "/",
   "/calculator-pfa",
   "/calculator-salariu-part-time",
@@ -74,6 +76,8 @@ const FOOTER_GROUPS: Array<{ title: string; links: FooterLink[] }> = [
       { href: "/zile-libere-2026", label: "Zile libere 2026" },
       { href: "/zile-lucratoare-2026", label: "Zile lucrătoare 2026" },
       { href: "/salarii", label: "Salarii pe meserii" },
+      { href: "/locuri-de-munca", label: "Locuri de muncă" },
+      { href: "/adauga-anunt-angajare", label: "Adaugă anunț de angajare" },
       { href: "/noutati", label: "Noutăți legislative" },
     ],
   },

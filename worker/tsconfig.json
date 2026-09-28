@@ -1,0 +1,16 @@
+{
+  // Worker-ul are tipurile runtime-ului Cloudflare (npx wrangler types → worker-configuration.d.ts),
+  // nu pe cele din browser ale site-ului; tsconfig.json din rădăcină îl exclude.
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022"],
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "types": ["./worker-configuration.d.ts"]
+  },
+  "include": ["./**/*.ts"]
+}

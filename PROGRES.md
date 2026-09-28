@@ -4267,3 +4267,30 @@ meseriei singure; „Ce cer angajatorii” din ANOFM tot numai pe COR propriu. I
 distribuție, manipulant mărfuri, electrician de centrală (acum cu cerințele din anunțuri, fără sumă).
 Sub minim nu există oferte reale: din 96 de oferte brute pe 832201, sub 4.325 sunt greșeli de
 introducere (1 leu, 6 lei, 2.699 = netul minim scris ca brut) și oferte din iunie, când minimul era 4.050.
+
+## 28 septembrie 2026, după-amiaza — hubul de anunțuri de angajare (branch `anunturi`)
+
+Pornit de proprietar: pasul 2 din strategie. Decizii: fără cont (link de gestionare pe email),
+salariul obligatoriu cu baza lui și cel puțin minimul legal, contact direct cu angajatorul (fără
+CV-uri la noi), moderare automată + raportare. Adresele, verificate în Google România cu SE Ranking:
+- „locuri de munca”, „… cluj”, „… sofer bucuresti”, „… barman”: top 3 sunt liste pe oraș și meserie
+  (`ejobs.ro/locuri-de-munca/brasov/barman-ospatar`, `olx.ro/locuri-de-munca/bucuresti/q-sofer/`,
+  `iajob.ro/locuri-de-munca/in-bucuresti/sofer`), orașul primul → `/locuri-de-munca/{oraș}/{meserie}`;
+- „anunt de angajare” (480/lună): prima pagină e numai anunțuri cu `anunt-angajare-` în adresă →
+  `/anunt-angajare-{titlu}-{oraș}-{id}`, titlul „Anunț angajare …”;
+- „adauga/publica anunt angajare”: nicio pagină de publicare în top (Facebook, anunțuri);
+  „adauga anunt gratuit” 320/lună → `/adauga-anunt-angajare`.
+
+Construit și probat local (`wrangler dev`, D1 local): postare, respingere (discriminare, sub minim,
+limita de 5/zi pe IP), confirmare din link (`#token`, nu ajunge la server), liste pe oraș/meserie
+(noindex sub 5 anunțuri), anunț cu JobPosting, modificare (301 de la slugul vechi), ștergere (410),
+3 raportări → suspendare (410), sitemap `/locuri-de-munca/sitemap.xml`. Două capcane găsite la probă:
+React golea conținutul pus de Worker la hidratare (containerul are acum `dangerouslySetInnerHTML`),
+iar `curl` din Git Bash strică diacriticele trimise (probele se fac din fișiere UTF-8).
+
+**Rămas înainte de lansare (proprietarul, în contul Cloudflare al site-ului):** `wrangler login` pe
+contul site-ului (acum e pe „rulersquare”), `wrangler d1 create salariile-anunturi` + id în
+`wrangler.jsonc` + `wrangler d1 migrations apply --remote`, secretul `SARE`, widgetul Turnstile
+(cheia publică în `src/lib/anunturi/config.ts`, secretul `TURNSTILE_SECRET`), Email Sending pe
+salariile.ro și binding-ul `send_email` (fără el, linkurile de confirmare doar se scriu în log).
+Data „în vigoare” de pe Termeni și politica de confidențialitate se schimbă la lansare.

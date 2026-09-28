@@ -117,3 +117,6 @@ gsc-key.json
 /out
 /public/_img
 /.wrangler
+
+# Secretele locale ale Worker-ului (wrangler dev)
+.dev.vars

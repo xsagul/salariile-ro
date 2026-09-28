@@ -9,7 +9,15 @@ salariile.ro este un portal despre salarii și fiscalitate în România. Scop pe
 Ținta finală este ca site-ul să producă venit cât să înlocuiască salariul de la job. Dar **secvența e deliberată și nu se scurtcircuitează**:
 
 1. **Acum:** salariile.ro devine cel mai mare hub salarial din România, acoperind ce fac paylab.ro și undelucram.ro.
-2. **Apoi:** postare de joburi, în zona ejobs / olx / anuntul.ro.
+2. **Apoi:** postare de joburi, în zona ejobs / olx / anuntul.ro. **Pornit de proprietar pe 28
+   septembrie 2026**, cu deciziile lui: fără cont (link de gestionare pe email), salariul
+   obligatoriu cu baza lui și cel puțin minimul legal, candidatul contactează direct angajatorul
+   (site-ul nu primește CV-uri), moderare automată + raportare (DSA). Regulile: `src/lib/anunturi/
+   reguli.ts`; Worker-ul: `worker/`; baza: D1, `migrations/`. Adresele, verificate în Google
+   România (SE Ranking): `/locuri-de-munca[/{oraș}][/{meserie}]` (top 3 = liste, orașul primul),
+   `/anunt-angajare-{titlu}-{oraș}-{id}` (la „anunt de angajare” rankează numai anunțuri cu acest
+   început), `/adauga-anunt-angajare` („adaugă anunț” e formularea căutată). O listă intră în
+   Google de la 5 anunțuri.
 3. **Abia după acoperirea nișei:** se decide monetizarea — vânzarea produsului, vânzarea traficului, AdSense, abonament de tip SmartBill sau altceva.
 
 **Nu propune monetizare acum.** A fost respinsă explicit. Nu e o scăpare, e o decizie: activul se construiește întâi. Versiuni anterioare ale acestui fișier spuneau că obiectivul e „tranziție profesională către front-end" — era greșit și a dus o sesiune întreagă pe direcția greșită.
@@ -30,7 +38,7 @@ Decizia care ar debloca pasul 1 e dacă se colectează salarii anonim (meserie +
 
 **Reluată și amânată din nou pe 26 septembrie 2026**, cu motive noi ale proprietarului: Paylab și undelucram își obligă utilizatorii să-și dea salariul ca să vadă cifrele, deci un formular opțional nu-i ajunge la număr; calculatorul nu se atinge sub nicio formă; iar paginile de meserie aduc puțin trafic chiar și pe primul loc (SE Ranking și GSC: ~21 de clicuri la 28 de zile pe toate). Tot atunci au fost puse deoparte, din același motiv, recenziile pe companii, comunitatea și un model AI care citește anunțurile. Colectarea continuă de anunțuri (`scripts/colectare/anunturi.mjs`) rămâne, fiindcă nu cere nimic vizitatorilor.
 
-Tensiunea care a oprit-o, și care rămâne reală: `/despre` promite azi „nu există formulare, conturi de utilizator sau newsletter", iar politica de confidențialitate spune că nu colectăm date despre vizitatori individuali. Un formular de salarii, chiar anonim, schimbă contractul cu utilizatorul — și încrederea e exact activul care diferențiază site-ul de paylab și de presă.
+Tensiunea care a oprit-o, și care rămâne reală: `/despre` promitea „nu există formulare, conturi de utilizator sau newsletter", iar politica de confidențialitate spune că nu colectăm date despre vizitatori individuali. Din 28 septembrie 2026 singurul formular e cel al anunțurilor de angajare (datele angajatorului, nu salariul vizitatorului); textele au fost actualizate strict pentru el. Un formular de salarii, chiar anonim, schimbă contractul cu utilizatorul — și încrederea e exact activul care diferențiază site-ul de paylab și de presă.
 
 **Nu propune reluarea ei ca idee nouă.** Dacă se reia, se reia cu: bază legală GDPR, prag de k-anonimitate înainte de a publica orice cifră pe celulă (meserie × județ), text de politică actualizat și o cale de ștergere. Și cu decizia explicită a proprietarului, nu ca inițiativă de agent.
 
@@ -40,7 +48,7 @@ Tensiunea care a oprit-o, și care rămâne reală: `/despre` promite azi „nu 
 ## Stack tehnic
 
 - Next.js + TypeScript (~87%) + Tailwind / CSS
-- **Deploy pe Cloudflare Workers (assets statice), din 12 septembrie 2026.** Producția NU mai e pe Vercel. Site 100% static (`output: "export"`), fără script de Worker: toate cererile sunt cereri de assets, pe care Cloudflare le declară „free and unlimited”. Nu adăuga `"main"` în `wrangler.jsonc` fără să recitești asta — un script transformă fiecare cerere într-o invocare numărată.
+- **Deploy pe Cloudflare Workers (assets statice), din 12 septembrie 2026.** Producția NU mai e pe Vercel. Site static (`output: "export"`): cererile sunt cereri de assets, pe care Cloudflare le declară „free and unlimited”. **Hubul de anunțuri (28 septembrie 2026) adaugă `"main": "worker/index.ts"`, dar numai rutele din `assets.run_worker_first` trec prin script** (`/locuri-de-munca*`, `/anunt-angajare-*`, `/api/anunturi*`); orice altă rută rămâne asset. Nu lărgi lista fără să estimezi volumul: fiecare cerere prin script e o invocare numărată. Paginile Worker-ului se pun în șablonul static `/locuri-de-munca/sablon` cu HTMLRewriter; headerele de securitate le pune Worker-ul (`_headers` nu se aplică răspunsurilor lui).
 - Arhitectură prerandată static (problemele de client-side rendering care stricau indexarea sunt rezolvate)
 - **`main` E codul servit în producție**, din 12 septembrie 2026 (merge `84e8d29`). Fișiere cheie: `next.config.ts` cu export static, `wrangler.jsonc`, `src/lib/csp.ts` (singurul proprietar al CSP + `Link`), `_headers` și `_redirects` generate la build de `scripts/genereaza-cloudflare.mts`. **Copiile `.md` ale paginilor pentru agenți AI au fost scoase pe 15 septembrie 2026**, împreună cu regula Cloudflare care le servea pe `Accept: text/markdown`: aproape niciun agent nu le cerea, iar Googlebot descărcase 974 într-o zi, fără noindex și fără canonical — copii duplicate. Agenții citesc HTML-ul; „Markdown for Agents" din Cloudflare e doar pe planul Pro. Nu le reintroduce fără o cerere măsurată. `src/proxy.ts`, `src/app/api/**` și `src/app/info/` **nu mai există** — au fost șterse la migrare; exporturile de date stau la `/date/*`.
 - **Publicarea se face automat prin Cloudflare Workers Builds**, conectat la

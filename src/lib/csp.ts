@@ -99,6 +99,22 @@ export const CSP_PAGINI_PUBLICE = construiesteCsp({
 });
 
 /**
+ * Politica pentru hubul de anunțuri (/locuri-de-munca*, servit de Worker, 28 septembrie 2026):
+ * aceeași ca a paginilor publice, plus Cloudflare Turnstile — verificarea anti-spam din
+ * formularele de postare și de raportare (script și iframe de pe challenges.cloudflare.com).
+ */
+const TURNSTILE = "https://challenges.cloudflare.com";
+export const CSP_ANUNTURI = construiesteCsp({
+  scriptSrc: `'self' 'unsafe-inline' ${CLOUDFLARE_INSIGHTS} ${GOOGLE_TAG_MANAGER} ${ADSENSE_SCRIPT} ${TURNSTILE}`,
+  frameAncestors: "'none'",
+  styleSrc: `'self' 'unsafe-inline' ${GOOGLE_FONTS_STYLE}`,
+  imgSrc: `'self' blob: data: https:`,
+  connectSrc: `'self' ${GOOGLE_ANALYTICS_CONNECT} ${ADSENSE_CONNECT} ${TURNSTILE}`,
+  frameSrc: `'self' ${ADSENSE_FRAME} ${TURNSTILE}`,
+  fontSrc: `'self' data: ${GOOGLE_FONTS_ASSET}`,
+});
+
+/**
  * Politica pentru iframe-urile /widget/frame*: încadrabile pe orice site.
  *
  * Pe Vercel aveau nonce per cerere și `'strict-dynamic'`, fiind singurele rute

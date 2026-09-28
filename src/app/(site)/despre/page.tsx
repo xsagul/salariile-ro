@@ -93,8 +93,9 @@ export default function DesprePage() {
         </p>
         <p>
           Costurile sunt mici, domeniul și găzduirea pe planul gratuit Cloudflare, și le acopăr personal. Site-ul nu
-          folosește programe de afiliere și nu vinde date despre utilizatori. Nu există formulare, conturi de utilizator
-          sau newsletter. Ce date tehnice se folosesc pentru statisticile de trafic, și doar cu acordul tău, e scris în{" "}
+          folosește programe de afiliere și nu vinde date despre utilizatori. Nu există conturi de utilizator sau
+          newsletter; singurul formular e cel pentru <Link href="/adauga-anunt-angajare">anunțurile de angajare</Link>,
+          fără cont. Ce date tehnice se folosesc pentru statisticile de trafic, și doar cu acordul tău, e scris în{" "}
           <Link href="/politica-confidentialitate">politica de confidențialitate</Link>.
         </p>
       </Section>

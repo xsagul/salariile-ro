@@ -69,7 +69,7 @@ export default function PoliticaConfidentialitatePage() {
         <Lead>
           Salariile.ro respectă Regulamentul UE 2016/679 privind protecția datelor cu caracter personal (GDPR) și Legea 190/2018. Această politică explică ce date prelucrăm, în ce scop și ce drepturi ai ca vizitator.
         </Lead>
-        <Eyebrow>ÎN VIGOARE: 17 SEPTEMBRIE 2026 · CONSENT MODE · ZERO ANUNȚURI</Eyebrow>
+        <Eyebrow>ÎN VIGOARE: 17 SEPTEMBRIE 2026 · CONSENT MODE · FĂRĂ RECLAME</Eyebrow>
       </Hero>
 
       <div>
@@ -121,9 +121,23 @@ export default function PoliticaConfidentialitatePage() {
             <p>
               Dacă afișarea reclamelor va fi activată, această pagină și pagina de cookies vor fi actualizate <strong>înainte</strong>, iar prelucrarea se va face conform alegerii din CMP.
             </p>
+            <h3 id="anunturi">Anunțurile de angajare</h3>
+            <p>
+              Singurul formular de pe site e cel de <Link href="/adauga-anunt-angajare">adăugare a unui anunț de angajare</Link>, fără cont, și cel de raportare a unui anunț. Prelucrăm:
+            </p>
+            <ul>
+              <li><strong>Emailul celui care adaugă anunțul</strong>: numai ca să-i trimitem linkul cu care publică, modifică sau șterge anunțul și, la nevoie, motivul scoaterii lui. Nu apare în anunț și nu se folosește pentru nimic altceva. Se șterge la 30 de zile după ce anunțul expiră sau e șters.</li>
+              <li><strong>Datele de contact ale angajatorului</strong> (telefon, email, link de aplicare) și restul anunțului: se publică, cu acordul celui care îl adaugă, cât timp anunțul e activ. La ștergere, datele de contact se șterg imediat.</li>
+              <li><strong>Adresa IP și emailul, ca amprentă criptată</strong> (SHA-256 cu sare), numai ca să limităm la cinci anunțurile noi pe zi de la aceeași persoană. Se șterg după două zile.</li>
+              <li><strong>Raportările</strong>: motivul, detaliile scrise și, opțional, emailul celui care raportează, ca să-i putem răspunde.</li>
+              <li><strong>Verificarea anti-spam Cloudflare Turnstile</strong> din formulare: Cloudflare analizează semnale tehnice ale browserului ca să deosebească oamenii de roboți, fără cookies de urmărire și fără imagini de ales.</li>
+            </ul>
+            <p>
+              Linkul de gestionare e secret: în baza de date păstrăm doar amprenta lui criptată, nu linkul.
+            </p>
             <h3>Date pe care NU le colectăm</h3>
             <ul>
-              <li>Nu există formulare de înregistrare, conturi de utilizator sau newsletter.</li>
+              <li>Nu există conturi de utilizator sau newsletter. Singurele formulare sunt cele ale anunțurilor de angajare, descrise mai sus.</li>
               <li>Sumele pe care le introduci în calculatoare se procesează exclusiv în browser-ul tău. Nu sunt transmise sau stocate pe server și nu ajung nici în Google Analytics: adresa paginii se trimite fără parametrii <code>brut</code> și <code>net</code>, iar evenimentele de calcul spun doar ce calculator ai folosit.</li>
               <li>Nu folosim Facebook Pixel, remarketing, programe de afiliere sau profilare publicitară. GA4 respectă alegerea transmisă de CMP prin Consent Mode.</li>
               <li>Nu vindem și nu transferăm date către terți în scopuri comerciale.</li>
@@ -134,6 +148,9 @@ export default function PoliticaConfidentialitatePage() {
             <h2>3. Baza legală a prelucrării</h2>
             <p>
               Datele colectate automat (logs de server, statistici anonime) se prelucrează în temeiul <strong>interesului legitim</strong> al operatorului (Art. 6 alin. 1 lit. f din GDPR), adică asigurarea funcționării și securității site-ului. Interesul legitim este proporțional cu impactul minim asupra vizitatorilor, datele fiind agregate sau de scurtă durată.
+            </p>
+            <p>
+              Datele anunțurilor de angajare se prelucrează pentru <strong>serviciul cerut</strong> de cel care adaugă anunțul (Art. 6 alin. 1 lit. b GDPR): publicarea și gestionarea lui. Limita pe zi, verificarea anti-spam și raportările se prelucrează în temeiul <strong>interesului legitim</strong> (lit. f) de a ține site-ul fără abuzuri și anunțuri ilegale, și al obligațiilor din Regulamentul (UE) 2022/2065 privind serviciile digitale (lit. c).
             </p>
             <p>
               Datele Google Analytics 4 se prelucrează exclusiv în baza <strong>consimțământului</strong> (Art. 6 alin. 1 lit. a GDPR și regulile ePrivacy). Refuzul nu limitează nicio funcție, iar acordul poate fi retras oricând din „Setări cookies”.
@@ -150,7 +167,7 @@ export default function PoliticaConfidentialitatePage() {
                 <strong>Google Ireland Limited</strong> (Irlanda, cu posibile transferuri către Google LLC în SUA): furnizor pentru CMP-ul AdSense și Google Analytics 4 cu Consent Mode. Google LLC este certificat în cadrul UE–SUA Data Privacy Framework. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Politica Google</a>.
               </li>
               <li>
-                <strong>Cloudflare, Inc.</strong> (SUA): furnizor de hosting și CDN și al statisticilor anonime Web Analytics. Procesează automat, ca procesator, fiecare cerere către site. Cloudflare este certificat conform mecanismului UE-SUA Data Privacy Framework. <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Politica Cloudflare</a>.
+                <strong>Cloudflare, Inc.</strong> (SUA): furnizor de hosting și CDN, al statisticilor anonime Web Analytics și, pentru anunțurile de angajare, al bazei de date (D1), al trimiterii emailurilor și al verificării anti-spam Turnstile. Procesează automat, ca procesator, fiecare cerere către site. Cloudflare este certificat conform mecanismului UE-SUA Data Privacy Framework. <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Politica Cloudflare</a>.
               </li>
               <li>
                 <strong>Google LLC</strong> (SUA) — <strong>Search Console</strong>: pentru verificarea proprietății domeniului și monitorizarea performanței în rezultatele căutării. Nu colectează date despre vizitatorii individuali, doar statistici agregate despre cum apare site-ul în rezultatele Google.
@@ -165,6 +182,7 @@ export default function PoliticaConfidentialitatePage() {
             <h2>5. Durata stocării</h2>
             <ul>
               <li>Jurnale de acces: site-ul nu păstrează jurnale proprii; Cloudflare le prelucrează ca procesator, pe durata stabilită în politica sa de confidențialitate.</li>
+              <li>Anunțuri de angajare: cât timp sunt active; emailul celui care le-a adăugat, încă 30 de zile după expirare sau ștergere; amprenta IP și email pentru limita pe zi, 2 zile; anunțurile neconfirmate se șterg după 48 de ore.</li>
               <li>Statistici Cloudflare Web Analytics: agregate, fără date de identificare a vizitatorilor, păstrate conform politicii Cloudflare.</li>
               <li>Date Google Analytics 4 asociate cu identificatori și evenimente: 14 luni, conform setării proprietății verificată la 17 septembrie 2026. Alegerea este păstrată de CMP-ul Google conform configurației mesajului.</li>
               <li>Date Google Search Console: agregate, păstrate conform politicii Google (16 luni pentru istoricul detaliat).</li>

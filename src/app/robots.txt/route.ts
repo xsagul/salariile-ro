@@ -44,6 +44,7 @@ Allow: /
 Disallow: /api/
 
 Sitemap: https://salariile.ro/sitemap.xml
+Sitemap: https://salariile.ro/locuri-de-munca/sitemap.xml
 `;
 
   return new Response(content, {

@@ -52,6 +52,8 @@ const STATIC_ENTRIES: {
   { path: "/salarii/judete", priority: 0.7, changeFrequency: "monthly" },
   { path: "/salarii/femei-barbati", priority: 0.7, changeFrequency: "yearly" },
   { path: "/salarii/locuri-vacante", priority: 0.7, changeFrequency: "monthly" },
+  // Hubul de anunțuri (28 septembrie 2026): listele și anunțurile sunt în /locuri-de-munca/sitemap.xml, generat de Worker.
+  { path: "/adauga-anunt-angajare", priority: 0.6, changeFrequency: "monthly" },
   { path: "/deducere-personala-2026", priority: 0.8, changeFrequency: "monthly" },
   { path: "/zile-libere-2026", priority: 0.8, changeFrequency: "monthly" },
   { path: "/zile-lucratoare-2026", priority: 0.8, changeFrequency: "monthly" },
