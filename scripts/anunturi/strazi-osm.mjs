@@ -34,8 +34,13 @@ async function descarca(cod) {
         signal: AbortSignal.timeout(1_000_000),
       });
       const text = await r.text();
-      if (r.ok && text.startsWith("{")) return JSON.parse(text);
-      console.log(`  ${cod}: ${server} a răspuns ${r.status}; reîncerc`);
+      // Overpass poate răspunde 200 cu o listă goală și eroarea în „remark” (timeout, memorie):
+      // pe 28 septembrie 2026, 7 județe au venit așa, cu 0 unități. Un județ fără unități e o eroare.
+      if (r.ok && text.startsWith("{")) {
+        const j = JSON.parse(text);
+        if (j.elements?.some((e) => e.type === "relation")) return j;
+        console.log(`  ${cod}: răspuns fără unități${j.remark ? ` (${j.remark.slice(0, 80)})` : ""}; reîncerc`);
+      } else console.log(`  ${cod}: ${server} a răspuns ${r.status}; reîncerc`);
     } catch (e) { console.log(`  ${cod}: ${server} ${e.message}; reîncerc`); }
     await pauza(30_000 * (incercare + 1));
   }
@@ -47,7 +52,8 @@ for (const cod of ceruti) {
   const fisier = `${DIR}/${cod}.json`;
   if (fs.existsSync(fisier)) { console.log(`${cod}: există, sar`); continue; }
   const t = Date.now();
-  const j = await descarca(cod);
+  const j = await descarca(cod).catch((e) => { console.log(e.message); return null; });
+  if (!j) continue;
   const uat = [];
   for (const e of j.elements) {
     if (e.type === "relation") uat.push({ uat: e.tags.name, strazi: new Set() });

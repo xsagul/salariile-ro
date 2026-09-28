@@ -57,19 +57,31 @@ localitati.sort((a, b) => a[3] - b[3] || a[0].localeCompare(b[0], "ro"));
 // Străzile: fiecare unitate OSM se leagă de orașul/comuna cu același nume din județ.
 fs.rmSync(`${IESIRE}/strazi`, { recursive: true, force: true });
 fs.mkdirSync(`${IESIRE}/strazi`, { recursive: true });
-// Numele din OSM care nu se potrivesc cu SIRUTA nici după regula „î”/„â”: SIRUTA scrie „Rișca”, „Covăsinț”.
-const ALIAS = { "CJ:rasca": "risca", "AR:covasant": "covasint" };
+// Numele din OSM care nu se potrivesc cu SIRUTA nici după regula „î”/„â”, nici ca sat: ortografia
+// INS („Rișca”, „Covăsinț”, „Alțina”, „Roșiori de Vede”, „Moieciu”), numele maghiar al orașului, un
+// nume scurtat. „Tega” (OSM, în Prahova) e un sat din Buzău în SIRUTA: rămâne nelegat.
+const ALIAS = { "CJ:rasca": "risca", "AR:covasant": "covasint", "SB:altana": "altina", "TR:rosiorii-de-vede": "rosiori-de-vede",
+  "BV:moeciu-de-jos": "moieciu", "CV:sepsiszentgyorgy": "sfantu-gheorghe", "DB:valeni": "valeni-dambovita" };
 const uatJudet = new Map();
 const cheieUat = ([nume, jud, comuna]) => jud === "B" ? "bucuresti" : cheie(comuna || nume);
 for (const l of localitati) (uatJudet.get(l[1]) ?? uatJudet.set(l[1], new Set()).get(l[1])).add(cheieUat(l));
+// OSM trece uneori un sat la nivelul comunelor („Moeciu de Jos”): îl legăm de comuna lui din SIRUTA,
+// dacă numele satului e unic în județ.
+const satJudet = new Map();
+for (const l of localitati) {
+  const k = `${l[1]}:${cheie(l[0])}`;
+  satJudet.set(k, satJudet.has(k) && satJudet.get(k) !== cheieUat(l) ? null : cheieUat(l));
+}
 let total = 0, legate = 0, fara = [];
 for (const [, cod] of Object.entries(COD)) {
   const f = `${OSM}/${cod}.json`;
   if (!fs.existsSync(f)) { fara.push(`${cod} (nedescărcat)`); continue; }
   const pe = {};
   for (const u of JSON.parse(fs.readFileSync(f, "utf8"))) {
-    const k = cod === "B" ? "bucuresti" : ALIAS[`${cod}:${cheie(u.uat)}`] ?? cheie(u.uat);
+    let k = cod === "B" ? "bucuresti" : ALIAS[`${cod}:${cheie(u.uat)}`] ?? cheie(u.uat);
     total++;
+    const kSat = satJudet.get(`${cod}:${k}`);
+    if (!uatJudet.get(cod)?.has(k) && kSat) k = kSat;
     if (!uatJudet.get(cod)?.has(k)) { fara.push(`${cod}: ${u.uat}`); continue; }
     legate++;
     pe[k] = [...new Set([...(pe[k] ?? []), ...u.strazi])].sort((a, b) => a.localeCompare(b, "ro"));
