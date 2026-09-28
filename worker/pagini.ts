@@ -3,6 +3,7 @@
 import type { Env } from "./index";
 import catalog from "../src/data/meserii-catalog.json";
 import { JUDETE, NORME, URL_ADAUGA, esteMobil, linkApel, linkWhatsApp, telefonAfisat, urlAnunt, urlLista } from "../src/lib/anunturi/reguli";
+import { completeazaSablon } from "../src/lib/anunturi/sablon";
 import { PE_PAGINA, dupaId, lista, listeIndexabile, numeOras, toateActive, type Anunt } from "./date";
 
 const NUME_MESERIE = new Map((catalog as { meserii: { slug: string; nume: string }[] }).meserii.map((m) => [m.slug, m.nume]));
@@ -25,17 +26,15 @@ type Pagina = { titlu: string; descriere: string; canonic: string; indexabil: bo
 
 async function inSablon(req: Request, env: Env, p: Pagina): Promise<Response> {
   const sablon = await env.ASSETS.fetch(new Request(new URL("/locuri-de-munca/sablon", req.url)));
+  const html = completeazaSablon(await sablon.text(), {
+    titlu: `${p.titlu} | Salariile`, titluScurt: p.titlu, descriere: p.descriere, canonic: p.canonic,
+    robots: p.indexabil ? "index, follow" : "noindex, follow",
+  });
   let r = new HTMLRewriter()
-    .on("title", { element(e) { e.setInnerContent(`${p.titlu} | Salariile`); } })
-    .on('meta[name="description"]', { element(e) { e.setAttribute("content", p.descriere); } })
-    .on('meta[property="og:title"]', { element(e) { e.setAttribute("content", p.titlu); } })
-    .on('meta[property="og:description"]', { element(e) { e.setAttribute("content", p.descriere); } })
-    .on('meta[property="og:url"]', { element(e) { e.setAttribute("content", p.canonic); } })
-    .on('link[rel="canonical"]', { element(e) { e.setAttribute("href", p.canonic); } })
-    .on('meta[name="robots"]', { element(e) { e.setAttribute("content", p.indexabil ? "index, follow" : "noindex, follow"); } })
     .on("[data-anunturi-continut]", { element(e) { e.setInnerContent(p.continut, { html: true }); } });
   if (p.jsonLd) r = r.on("head", { element(e) { e.append(`<script type="application/ld+json">${JSON.stringify(p.jsonLd).replace(/</g, "\\u003c")}</script>`, { html: true }); } });
-  const out = r.transform(sablon);
+  // Fără headerele șablonului: content-length și etag erau ale lui, nu ale paginii.
+  const out = r.transform(new Response(html));
   const h = new Headers(out.headers);
   h.set("content-type", "text/html; charset=utf-8");
   h.set("cache-control", "public, max-age=60, s-maxage=60");

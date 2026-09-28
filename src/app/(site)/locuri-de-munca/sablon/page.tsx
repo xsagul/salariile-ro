@@ -1,15 +1,22 @@
 // Șablonul paginilor de anunțuri (28 septembrie 2026). Nu e o pagină publică: Worker-ul
-// (worker/pagini.ts) îl ia din assets și îi pune titlul, descrierea, canonicul, robots și
-// conținutul în [data-anunturi-continut]. Cererile directe la /locuri-de-munca/sablon primesc 404.
+// (worker/pagini.ts) îl ia din assets, înlocuiește marcajele MARCAJE și pune conținutul în
+// [data-anunturi-continut]. Cererile directe la /locuri-de-munca/sablon primesc 404.
+//
+// Marcajele, nu valori obișnuite: metadatele apar de două ori în pagină, în <head> și în datele
+// din care React își refă <head> la pornire. Cu valori obișnuite, Worker-ul schimba numai prima
+// copie, iar după hidratare anunțul primea titlul șablonului, un al doilea canonical spre
+// /locuri-de-munca și „noindex” (proba în browser, 28 septembrie 2026).
 import type { Metadata } from "next";
 import { SPATIU_JOS, SPATIU_SUS } from "@/app/components/ui";
+import { MARCAJE as M } from "@/lib/anunturi/sablon";
 
 export const metadata: Metadata = {
-  title: { absolute: "Locuri de muncă | Salariile" },
-  description: "Anunțuri de angajare cu salariul scris.",
-  alternates: { canonical: "https://salariile.ro/locuri-de-munca" },
-  robots: { index: false, follow: true },
-  openGraph: { title: "Locuri de muncă", description: "Anunțuri de angajare cu salariul scris.", url: "https://salariile.ro/locuri-de-munca", siteName: "Salariile", locale: "ro_RO", type: "website" },
+  title: { absolute: M.titlu },
+  description: M.descriere,
+  alternates: { canonical: M.canonic },
+  robots: M.robots,
+  openGraph: { title: M.titluScurt, description: M.descriere, url: M.canonic, siteName: "Salariile", locale: "ro_RO", type: "website", images: [{ url: "/og-image.png", width: 1200, height: 630 }] },
+  twitter: { card: "summary_large_image", title: M.titluScurt, description: M.descriere, images: ["/og-image.png"] },
 };
 
 export default function SablonAnunturi() {

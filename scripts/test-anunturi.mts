@@ -1,6 +1,7 @@
 // Regulile anunțurilor de angajare (src/lib/anunturi/reguli.ts): ce se publică, ce se respinge și
 // adresele verificate în Google România pe 28 septembrie 2026.
 import assert from "node:assert/strict";
+import { MARCAJE, completeazaSablon } from "../src/lib/anunturi/sablon";
 import { MINIM_BRUT, MINIM_NET, cuiValid, esteMobil, linkApel, linkWhatsApp, orasSlug, slugAnunt, telefonAfisat, telefonCurat, urlAnunt, urlLista, valideaza, type Eroare } from "../src/lib/anunturi/reguli";
 
 const MESERII = new Set(["barman", "sofer-distributie"]);
@@ -73,5 +74,19 @@ assert.equal(urlAnunt({ id: 123, slug: "barman-bar-centru-bucuresti" }), "/anunt
 assert.equal(urlLista("bucuresti", "barman"), "/locuri-de-munca/bucuresti/barman");
 assert.equal(urlLista(null, "barman"), "/locuri-de-munca/barman");
 assert.equal(urlLista(null, null), "/locuri-de-munca");
+
+// Șablonul: marcajele se înlocuiesc și în <head>, și în datele React din <script>, cu escaparea locului.
+{
+  const v = { titlu: 'Barman „Floreasca” & <co> | Salariile', titluScurt: "Barman", descriere: 'Spune "da"', canonic: "https://salariile.ro/anunt-angajare-barman-bucuresti-1", robots: "index, follow" };
+  const html = `<title>${MARCAJE.titlu}</title><link rel="canonical" href="${MARCAJE.canonic}"/><script>self.__next_f.push([1,"[\\"$\\",\\"title\\",{\\"children\\":\\"${MARCAJE.titlu}\\"}]"])</script><meta name="robots" content="${MARCAJE.robots}"/>`;
+  const out = completeazaSablon(html, v);
+  assert.ok(!out.includes("ANUNTURI_MARCAJ"), "niciun marcaj rămas");
+  assert.ok(out.includes("<title>Barman „Floreasca” &amp; &lt;co&gt; | Salariile</title>"));
+  assert.ok(out.includes('href="https://salariile.ro/anunt-angajare-barman-bucuresti-1"') && out.includes('content="index, follow"'));
+  const script = out.match(/<script>([\s\S]*?)<\/script>/)![1];
+  assert.ok(!script.includes("<"), "„<” nu apare literal în script");
+  const rsc = JSON.parse(JSON.parse(script.slice("self.__next_f.push([1,".length, -2)));
+  assert.equal(rsc[2].children, v.titlu, "React primește exact titlul din <head>");
+}
 
 console.log("OK: anunțurile de angajare — salariul și minimul legal, contactul, conținutul interzis, CUI, adresele");

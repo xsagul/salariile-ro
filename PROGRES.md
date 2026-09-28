@@ -4316,3 +4316,11 @@ butonul, iar `Permissions-Policy: geolocation=()` (din `_headers`, moștenit de 
 — butonul ar fi răspuns mereu „fără acces”. Worker-ul pune acum `geolocation=(self)` pe paginile lui;
 restul site-ului rămâne blocat. „Uncaught (in promise) undefined” din consolă apare și pe `/salarii`,
 deci nu vine din anunțuri.
+
+Tot atunci, în browser, după pornirea paginii: titlul anunțului devenea „Locuri de muncă | Salariile”,
+iar în `<head>` apăreau un al doilea canonical spre `/locuri-de-munca` și `noindex`. Cauza: React
+își reface `<head>` din datele șablonului, pe care HTMLRewriter nu le atingea. Google randează
+JavaScript-ul, deci anunțurile ar fi ieșit din index. Șablonul are acum marcaje
+(`src/lib/anunturi/sablon.ts`), înlocuite de Worker și în HTML, și în datele React, cu escaparea
+fiecărui loc (test în `test-anunturi.mts`). Verificat în browser după hidratare: un singur titlu,
+canonical, robots și descriere, toate ale anunțului; Twitter și OG la fel.
