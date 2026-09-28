@@ -4337,7 +4337,9 @@ firmei opțional, CUI-ul scos de tot. Pentru stradă, proprietarul a ales lista 
 - **Străzile**: OpenStreetMap, prin Overpass, pe oraș/comună (`scripts/anunturi/strazi-osm.mjs`,
   brut în `research/strazi-osm/`), legate de SIRUTA după nume în județ (OSM nu are codul SIRUTA pe
   relații; două excepții de ortografie: Rișca, Covăsinț). Fișier pe județ în
-  `public/date/anunturi/strazi/`. Probă: București 5.161 de străzi, Cluj 2.758, Alba 2.472.
+  `public/date/anunturi/strazi/`. Toată țara: 3.177 din 3.181 de orașe și comune, 110.580 de
+  străzi (Timișoara 1.332, Cluj-Napoca 1.153, Constanța 994, Iași 971). Overpass răspunde uneori
+  200 cu listă goală: scriptul tratează un județ fără unități ca eroare și reîncearcă.
 - Căutarea se face în browser (`src/lib/anunturi/localitati.ts`, `CautaInLista.tsx`); probată în
   browser: „b” → București, Bacău…; „lipsc” → Strada Lipscani; anunț publicat cu 1.500 lei net,
   fără firmă, cu harta pe Lipscani 69. Fără numele firmei nu se emite JobPosting (Google îl cere).
