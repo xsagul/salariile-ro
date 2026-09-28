@@ -110,7 +110,7 @@ assert.equal(deduplicate([o,{...o,url:'https://second.org/job',source:'other',so
 assert.equal(deduplicate([{...o,employerKnown:false,employerKey:null},{...o,url:'https://second.org/job',employerKnown:false,employerKey:null}]).length,2);
 const many=Array.from({length:40},(_,i)=>({...o,id:`obs-${i}`,adId:`ad-${i}`,url:`https://example.org/job/${i}`,employerKey:`firm-${i%20}`,county:`county-${i%5}`,source:i%2?'a':'b',min:4000+i*10,max:6000+i*10}));
 assert.deepEqual(summarize(many).medianBounds,{min:4195,max:6195});
-assert.equal(summarize(many.slice(0,29)).medianBounds,null);
+assert.equal(summarize(many.slice(0,19)).medianBounds,null,"Sub 20 de anunturi nu se publica (POLICY v5)");
 assert.equal(summarize(many.map(o=>({...o,source:'a'}))).medianBounds,null);
 assert.equal(summarize(many.map(o=>({...o,employerKey:'same'}))).medianBounds,null);
 assert.equal(summarize(many.map(o=>({...o,periodEvidence:'assumed_monthly_full_time'}))).midpointEstimate,null,'Assumed pay periods alone cannot pass');

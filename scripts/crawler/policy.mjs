@@ -1,5 +1,8 @@
 // Operational publication gates, not a claim of population representativeness.
-export const POLICY = Object.freeze({ version: 4, snapshotWindowDays: 7, maxAdAgeDays: 548, minAds: 30, minEmployers: 10, minCounties: 5, minSources: 2, maxEmployerShare: 0.2, maxSourceShare: 0.8, minExplicitMonthly:10, maxSensitivity:0.15 });
+// Versiunea 5 (28 septembrie 2026, proprietarul: „de la 20 de rapoarte”): 20 de anunțuri, nu 30, ca la
+// salariile plătite; perioada lunară scrisă explicit la 5, nu 10 — testul de sensibilitate (maxSensitivity)
+// rămâne și oprește cifra dacă anunțurile fără „pe lună” o mută cu peste 15%.
+export const POLICY = Object.freeze({ version: 5, snapshotWindowDays: 7, maxAdAgeDays: 548, minAds: 20, minEmployers: 10, minCounties: 5, minSources: 2, maxEmployerShare: 0.2, maxSourceShare: 0.8, minExplicitMonthly:5, maxSensitivity:0.15 });
 export const normalizeText = (s = '') => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9+#]+/g, ' ').trim();
 export function canonicalUrl(value) {
   const u = new URL(value);
