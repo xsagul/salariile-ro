@@ -8,7 +8,8 @@
 //
 // Ziua de azi vine de la server (src/lib/azi-ro.ts), abia după încărcare: în HTML-ul
 // static nu e marcată nicio zi, altfel data build-ului ar rămâne „azi” până la
-// următoarea publicare. Lunile trecute se estompează, ca ochiul să ajungă la ce urmează.
+// următoarea publicare. Lunile trecute nu se mai estompează (proprietar, 28 sept. 2026):
+// pe telefon, jumătate de calendar palid părea stricat.
 
 import { useEffect, useState } from "react";
 import { oraServer, ziRo } from "@/lib/azi-ro";
@@ -59,9 +60,6 @@ export default function CalendarAn({ an, luni, dataBuild, numara }: { an: number
 
   const d = azi === null ? null : new Date(azi);
   const anAzi = d?.getUTCFullYear();
-  // Lunile dinaintea celei curente, doar în anul în curs. Un an încheiat (pagina 2025)
-  // rămâne neestompat: acolo nu e nimic „de urmat”, ar fi doar greu de citit.
-  const trecute = d !== null && anAzi === an ? d.getUTCMonth() : 0;
   const ziAzi = d !== null && anAzi === an ? `${d.getUTCMonth() + 1}-${d.getUTCDate()}` : null;
 
   return (
@@ -76,7 +74,7 @@ export default function CalendarAn({ an, luni, dataBuild, numara }: { an: number
 
       <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {luni.map((mo) => (
-          <div key={mo.luna} className={`${CARD} transition-opacity ${mo.luna <= trecute ? "opacity-55" : ""}`}>
+          <div key={mo.luna} className={CARD}>
             <div className="flex items-baseline justify-between">
               <h3 className="text-base font-semibold tracking-[-0.01em] text-stone-900">{mo.nume}</h3>
               <span className="text-xs text-stone-600">{numara === "libere" ? zile(mo.libere, "libere") : zile(mo.lucr, "lucrătoare")}</span>
