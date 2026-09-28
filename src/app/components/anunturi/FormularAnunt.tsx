@@ -2,22 +2,27 @@
 
 // Formularul unui anunț de angajare: publicare (fără cont) și modificare din linkul primit pe email.
 // Aceleași reguli ca Worker-ul (src/lib/anunturi/reguli.ts), deci erorile apar înainte de trimitere.
-import { useCallback, useMemo, useState } from "react";
+// Meseria, localitatea și strada se caută scriind (proprietar, 28 septembrie 2026): localitățile din
+// SIRUTA (INS), străzile din OpenStreetMap, ambele încărcate de pe site; căutarea rămâne în browser.
+import { useCallback, useEffect, useMemo, useState } from "react";
 import catalog from "@/data/meserii-catalog.json";
-import { JUDETE, MINIM_BRUT, MINIM_NET, netLunar, valideaza, type Eroare } from "@/lib/anunturi/reguli";
+import { faraDiacritice, netLunar, valideaza, type Eroare } from "@/lib/anunturi/reguli";
+import { cauta, detaliuLocalitate, incarcaLocalitati, numarDinText, strazileLocalitatii, type Localitate } from "@/lib/anunturi/localitati";
+import CautaInLista from "@/app/components/anunturi/CautaInLista";
 import Turnstile from "@/app/components/anunturi/Turnstile";
 
 const MESERII = (catalog as { meserii: { slug: string; nume: string }[] }).meserii.slice().sort((a, b) => a.nume.localeCompare(b.nume, "ro"));
 const SLUGURI = new Set(MESERII.map((m) => m.slug));
-const JUDETE_SORTATE = Object.entries(JUDETE).sort((a, b) => a[1].localeCompare(b[1], "ro"));
+const numeMeserie = (slug: unknown) => MESERII.find((m) => m.slug === slug)?.nume ?? "";
 
 export type Valori = Record<string, string | boolean>;
-const GOL: Valori = { titlu: "", meserie: "", angajator: "", cui: "", judet: "", oras: "", adresa: "", norma: "intreaga", orePeZi: "4", salariuMin: "", salariuMax: "",
+const GOL: Valori = { titlu: "", meserie: "", angajator: "", judet: "", oras: "", adresa: "", norma: "intreaga", orePeZi: "4", salariuMin: "", salariuMax: "",
   baza: "", descriere: "", telefon: "", email: "", acordPublicare: false };
 
 const CAMP = "mt-1 block w-full rounded-md border border-stone-300 bg-surface px-3 py-2 text-base text-stone-900 focus:border-stone-600 focus:outline-none";
 const ETICHETA = "block text-sm font-medium text-stone-800";
-const NOTA = "mt-1 text-xs text-stone-600";
+const NOTA = "mt-1 block text-xs text-stone-600";
+const cheieLoc = (l: Localitate) => `${l[0]}|${l[1]}|${l[2]}`;
 
 export default function FormularAnunt({ initial, modificare = false, trimite }: {
   initial?: Valori; modificare?: boolean;
@@ -31,6 +36,44 @@ export default function FormularAnunt({ initial, modificare = false, trimite }: 
   const set = (k: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
     setV((x) => ({ ...x, [k]: e.target.type === "checkbox" ? (e.target as HTMLInputElement).checked : e.target.value }));
   const eroare = (camp: string) => erori.find((e) => e.camp === camp)?.mesaj;
+
+  // Meseria: se alege din catalog; un nume scris întocmai se recunoaște și fără clic.
+  const [meserieText, setMeserieText] = useState(numeMeserie(initial?.meserie));
+  const optMeserii = useMemo(() => cauta(MESERII, meserieText, (m) => m.nume).map((m) => ({ cheie: m.slug, text: m.nume })), [meserieText]);
+  const scrieMeserie = (s: string) => {
+    setMeserieText(s);
+    const exact = MESERII.find((m) => faraDiacritice(m.nume) === faraDiacritice(s.trim()));
+    setV((x) => ({ ...x, meserie: exact?.slug ?? "" }));
+  };
+
+  // Localitatea: lista SIRUTA se încarcă la primul focus (~110 KB comprimat).
+  const [localitati, setLocalitati] = useState<Localitate[] | null>(null);
+  const [locText, setLocText] = useState(String(initial?.oras ?? ""));
+  const [loc, setLoc] = useState<Localitate | null>(null);
+  const incarca = useCallback(() => { if (!localitati) incarcaLocalitati().then(setLocalitati).catch(() => {}); }, [localitati]);
+  const gasite = useMemo(() => (localitati ? cauta(localitati, locText, (l) => l[0], (l) => l[3]) : []), [localitati, locText]);
+  const alegeLoc = (l: Localitate) => { setLoc(l); setLocText(l[0]); setV((x) => ({ ...x, oras: l[0], judet: l[1] })); };
+  const scrieLoc = (s: string) => {
+    setLocText(s);
+    // Un nume scris întocmai și purtat de o singură localitate se alege singur.
+    const exacte = (localitati ?? []).filter((l) => faraDiacritice(l[0]) === faraDiacritice(s.trim()));
+    if (exacte.length === 1) alegeLoc(exacte[0]);
+    else { setLoc(null); setV((x) => ({ ...x, oras: "", judet: "" })); }
+  };
+  // La modificare, localitatea salvată se regăsește în listă, ca să vină și străzile ei.
+  useEffect(() => {
+    if (!initial?.oras) return;
+    incarcaLocalitati().then((toate) => {
+      setLocalitati(toate);
+      const l = toate.find((x: Localitate) => x[0] === initial.oras && x[1] === initial.judet);
+      if (l) setLoc(l);
+    }).catch(() => {});
+  }, [initial?.oras, initial?.judet]);
+
+  // Strada: sugestii din străzile localității alese; se poate scrie și de mână.
+  const [strazi, setStrazi] = useState<string[]>([]);
+  useEffect(() => { if (loc) strazileLocalitatii(loc).then(setStrazi); else setStrazi([]); }, [loc]);
+  const optStrazi = useMemo(() => cauta(strazi, String(v.adresa), (s) => s).map((s) => ({ cheie: s, text: s })), [strazi, v.adresa]);
 
   const net = useMemo(() => {
     const s = Number(v.salariuMin);
@@ -61,24 +104,20 @@ export default function FormularAnunt({ initial, modificare = false, trimite }: 
       <fieldset className="grid gap-4">
         <legend className="text-base font-bold text-stone-900">Postul</legend>
         {Camp({ k: "titlu", eticheta: "Titlul anunțului", placeholder: "Șofer de distribuție, categoria B", maxLength: 90 })}
-        <label className={ETICHETA}>Meseria
-          <select value={String(v.meserie)} onChange={set("meserie")} className={CAMP}>
-            <option value="">Altă meserie</option>
-            {MESERII.map((m) => <option key={m.slug} value={m.slug}>{m.nume}</option>)}
-          </select>
-          <span className={NOTA}>Cu meseria aleasă, anunțul apare și pe pagina ei de salariu.</span>
-        </label>
-        <div className="grid gap-4 sm:grid-cols-2">
-          <label className={ETICHETA}>Județul
-            <select value={String(v.judet)} onChange={set("judet")} className={CAMP} aria-invalid={!!eroare("judet")}>
-              <option value="">Alege</option>
-              {JUDETE_SORTATE.map(([c, n]) => <option key={c} value={c}>{n}</option>)}
-            </select>
-            {eroare("judet") && <span className="mt-1 block text-sm text-red-700">{eroare("judet")}</span>}
-          </label>
-          {Camp({ k: "oras", eticheta: "Localitatea", placeholder: "Cluj-Napoca" })}
-        </div>
-        {Camp({ k: "adresa", eticheta: "Adresa locului de muncă (opțional)", placeholder: "Strada Lipscani 69", maxLength: 120, nota: "Cu adresa, anunțul apare pe hartă și primul pentru cei care caută aproape de ei." })}
+        <CautaInLista eticheta="Meseria (opțional)" valoare={meserieText} onText={scrieMeserie} optiuni={optMeserii}
+          onAlege={(o) => { setMeserieText(o.text); setV((x) => ({ ...x, meserie: o.cheie })); }}
+          placeholder="Scrie: barman, șofer, vânzător…" eroare={eroare("meserie")}
+          nota="Cu meseria aleasă, anunțul apare și pe pagina ei de salariu." />
+        <CautaInLista eticheta="Localitatea" valoare={locText} onText={scrieLoc} onFocus={incarca}
+          optiuni={gasite.map((l) => ({ cheie: cheieLoc(l), text: l[0], detaliu: detaliuLocalitate(l) }))}
+          onAlege={(o) => { const l = gasite.find((x) => cheieLoc(x) === o.cheie); if (l) alegeLoc(l); }}
+          placeholder="Scrie: București, Cluj-Napoca, un sat…" eroare={eroare("oras")}
+          gol={localitati ? "Nicio localitate cu acest nume. Verifică scrierea." : "Se încarcă lista localităților…"} />
+        <CautaInLista eticheta="Strada și numărul (opțional)" valoare={String(v.adresa)} maxLength={120}
+          onText={(s) => setV((x) => ({ ...x, adresa: s }))} optiuni={optStrazi}
+          onAlege={(o) => setV((x) => { const nr = numarDinText(String(x.adresa)); return { ...x, adresa: nr ? `${o.text} ${nr}` : `${o.text} ` }; })}
+          placeholder="Strada Lipscani 69" eroare={eroare("adresa")}
+          nota={<>Cu adresa, anunțul apare pe hartă și primul pentru cei care caută aproape de ei. Străzile: © <a href="https://www.openstreetmap.org/copyright" className="underline underline-offset-2">OpenStreetMap</a>.</>} />
         <div className="grid gap-4 sm:grid-cols-2">
           <label className={ETICHETA}>Programul
             <select value={String(v.norma)} onChange={set("norma")} className={CAMP}>
@@ -99,7 +138,7 @@ export default function FormularAnunt({ initial, modificare = false, trimite }: 
         </div>
         {eroare("baza") && <span className="text-sm text-red-700">{eroare("baza")}</span>}
         <div className="grid gap-4 sm:grid-cols-2">
-          {Camp({ k: "salariuMin", eticheta: "De la (lei)", type: "number", inputMode: "numeric", min: 0, nota: `Minimul legal la normă întreagă: ${MINIM_BRUT.toLocaleString("ro-RO")} lei brut, adică ${MINIM_NET.toLocaleString("ro-RO")} lei net.` })}
+          {Camp({ k: "salariuMin", eticheta: "De la (lei)", type: "number", inputMode: "numeric", min: 0 })}
           {Camp({ k: "salariuMax", eticheta: "Până la (lei, opțional)", type: "number", inputMode: "numeric", min: 0 })}
         </div>
         {net !== null && <p className="text-sm text-stone-700">Din {Number(v.salariuMin).toLocaleString("ro-RO")} lei brut, angajatul primește {net.toLocaleString("ro-RO")} lei net.</p>}
@@ -116,10 +155,7 @@ export default function FormularAnunt({ initial, modificare = false, trimite }: 
 
       <fieldset className="grid gap-4">
         <legend className="text-base font-bold text-stone-900">Angajatorul și contactul</legend>
-        <div className="grid gap-4 sm:grid-cols-2">
-          {Camp({ k: "angajator", eticheta: "Numele angajatorului", placeholder: "Firma SRL" })}
-          {Camp({ k: "cui", eticheta: "CUI (opțional)", placeholder: "RO12345678", nota: "Apare în anunț, ca să poată fi găsită firma." })}
-        </div>
+        {Camp({ k: "angajator", eticheta: "Numele firmei (opțional)", placeholder: "Firma SRL" })}
         {Camp({ k: "telefon", eticheta: "Telefonul la care te sună candidații", type: "tel", inputMode: "tel", placeholder: "0722 123 456", nota: "În anunț apare un buton care sună direct și, la un număr de mobil, unul de WhatsApp." })}
       </fieldset>
 

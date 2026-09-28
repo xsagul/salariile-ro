@@ -74,6 +74,8 @@ const headere = [
   bloc("/_next/static/*", ["Cache-Control: public, max-age=31536000, immutable"]),
   // Fișierele de date nu sunt pagini: nu se indexează, se descarcă cu numele lor.
   bloc("/date/*", ["X-Robots-Tag: noindex"]),
+  // Localitățile și străzile din formularul anunțurilor: se schimbă la regenerare, rar.
+  bloc("/date/anunturi/*", ["Cache-Control: public, max-age=86400, stale-while-revalidate=604800"]),
   ...DESCARCARI.map(([cale, nume]) => bloc(cale, [`Content-Disposition: attachment; filename="${nume}"`])),
   // Iframe-urile: încadrabile pe orice site, fără X-Frame-Options.
   ...["/widget/frame", "/widget/frame/fluturas"].map((cale) =>

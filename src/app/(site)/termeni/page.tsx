@@ -152,7 +152,7 @@ export default function TermeniPage() {
             </p>
             <p>Un anunț se publică numai dacă:</p>
             <ul>
-              <li>are salariul lunar, cu baza spusă (brut sau net), cel puțin cât salariul minim pe economie, proporțional la normă parțială;</li>
+              <li>are salariul lunar, cu baza spusă (brut sau net);</li>
               <li>descrie un loc de muncă real, în România, al angajatorului care îl publică sau pentru care are dreptul să recruteze;</li>
               <li>nu cere o anumită vârstă, un anumit sex, stare civilă, etnie sau alte criterii interzise de Codul muncii (art. 5) și de OG 137/2000;</li>
               <li>nu cere bani candidaților, sub nicio formă (Legea 156/2000), și nu promovează scheme de câștig, investiții sau activități ilegale;</li>

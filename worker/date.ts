@@ -5,7 +5,7 @@ import { LIMITA_PE_ZI, ZILE_PASTRARE_EMAIL, ZILE_VALABILITATE, netLunar, orasSlu
 
 export type Anunt = {
   id: number; stare: "neconfirmat" | "activ" | "expirat" | "sters" | "suspendat";
-  titlu: string; slug: string; meserie: string | null; angajator: string; cui: string | null;
+  titlu: string; slug: string; meserie: string | null; angajator: string;
   judet: string; oras: string; oras_slug: string; adresa: string | null; lat: number | null; lon: number | null; loc_precizie: "adresa" | "oras" | null; norma: "intreaga" | "partiala"; ore_pe_zi: number | null;
   salariu_min: number; salariu_max: number | null; baza: "brut" | "net"; net_min: number;
   descriere: string; telefon: string | null;
@@ -40,10 +40,10 @@ export async function inLimita(env: Env, email: string, ip: string): Promise<boo
 
 export async function adauga(env: Env, a: AnuntNou, loc: Loc | null, token: string): Promise<number> {
   const r = await env.DB.prepare(
-    `INSERT INTO anunturi (stare, titlu, slug, meserie, angajator, cui, judet, oras, oras_slug, adresa, lat, lon, loc_precizie, norma, ore_pe_zi,
+    `INSERT INTO anunturi (stare, titlu, slug, meserie, angajator, judet, oras, oras_slug, adresa, lat, lon, loc_precizie, norma, ore_pe_zi,
       salariu_min, salariu_max, baza, net_min, descriere, telefon, email, token_hash, creat_la)
-     VALUES ('neconfirmat', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id`,
-  ).bind(a.titlu, slugAnunt(a.titlu, a.oras), a.meserie || null, a.angajator, a.cui ?? null, a.judet, a.oras, orasSlug(a.oras),
+     VALUES ('neconfirmat', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id`,
+  ).bind(a.titlu, slugAnunt(a.titlu, a.oras), a.meserie || null, a.angajator, a.judet, a.oras, orasSlug(a.oras),
     a.adresa ?? null, loc?.lat ?? null, loc?.lon ?? null, loc?.precizie ?? null, a.norma, a.orePeZi ?? null,
     a.salariuMin, a.salariuMax ?? null, a.baza, netLunar(a.salariuMin, a.baza), a.descriere, a.telefon, a.email, await sha256(token), acum()).first<{ id: number }>();
   return r!.id;
@@ -70,9 +70,9 @@ export async function prelungeste(env: Env, id: number): Promise<void> {
 
 export async function modifica(env: Env, id: number, a: AnuntNou, loc: Loc | null): Promise<void> {
   await env.DB.prepare(
-    `UPDATE anunturi SET titlu = ?, slug = ?, meserie = ?, angajator = ?, cui = ?, judet = ?, oras = ?, oras_slug = ?, adresa = ?, lat = ?, lon = ?, loc_precizie = ?,
+    `UPDATE anunturi SET titlu = ?, slug = ?, meserie = ?, angajator = ?, judet = ?, oras = ?, oras_slug = ?, adresa = ?, lat = ?, lon = ?, loc_precizie = ?,
       norma = ?, ore_pe_zi = ?, salariu_min = ?, salariu_max = ?, baza = ?, net_min = ?, descriere = ?, telefon = ? WHERE id = ? AND stare IN ('neconfirmat', 'activ', 'expirat')`,
-  ).bind(a.titlu, slugAnunt(a.titlu, a.oras), a.meserie || null, a.angajator, a.cui ?? null, a.judet, a.oras, orasSlug(a.oras),
+  ).bind(a.titlu, slugAnunt(a.titlu, a.oras), a.meserie || null, a.angajator, a.judet, a.oras, orasSlug(a.oras),
     a.adresa ?? null, loc?.lat ?? null, loc?.lon ?? null, loc?.precizie ?? null, a.norma, a.orePeZi ?? null, a.salariuMin,
     a.salariuMax ?? null, a.baza, netLunar(a.salariuMin, a.baza), a.descriere, a.telefon, id).run();
 }

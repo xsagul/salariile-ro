@@ -14,8 +14,7 @@ CREATE TABLE anunturi (
   titlu           TEXT NOT NULL,
   slug            TEXT NOT NULL,
   meserie         TEXT,                -- slug din catalogul de meserii, NULL = altă meserie
-  angajator       TEXT NOT NULL,
-  cui             TEXT,
+  angajator       TEXT NOT NULL DEFAULT '',   -- opțional: „” când lipsește
   judet           TEXT NOT NULL,
   oras            TEXT NOT NULL,
   oras_slug       TEXT NOT NULL,       -- „cluj-napoca”: /locuri-de-munca/cluj-napoca

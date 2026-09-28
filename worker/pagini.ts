@@ -49,7 +49,7 @@ export function cardLista(a: Anunt): string {
       <span class="text-base font-semibold text-stone-900">${esc(a.titlu)}</span>
       <span class="whitespace-nowrap font-semibold text-stone-900">${suma(a)}</span>
     </span>
-    <span class="mt-1 block text-sm text-stone-600">${esc(a.angajator)} · ${esc(loc(a))} · ${norma(a)}${meserie ? ` · ${esc(meserie)}` : ""}</span>
+    <span class="mt-1 block text-sm text-stone-600">${a.angajator ? `${esc(a.angajator)} · ` : ""}${esc(loc(a))} · ${norma(a)}${meserie ? ` · ${esc(meserie)}` : ""}</span>
     <span class="mt-1 block text-xs text-stone-600">Publicat pe ${data(a.confirmat_la!)}<span data-distanta class="font-semibold text-stone-900"></span></span>
   </a></li>`;
 }
@@ -210,7 +210,7 @@ export async function paginaAnunt(req: Request, env: Env, id: number, slug: stri
     <nav class="mb-4 flex flex-wrap gap-2 text-xs text-stone-600" aria-label="Breadcrumb"><a class="underline underline-offset-2" href="/locuri-de-munca">Locuri de muncă</a><span>/</span><a class="underline underline-offset-2" href="${urlLista(a.oras_slug, null)}">${esc(oras(a))}</a>${a.meserie ? `<span>/</span><a class="underline underline-offset-2" href="${listaMeserie}">${esc(meserie!)}</a>` : ""}</nav>
     <p class="text-xs font-medium uppercase tracking-wide text-stone-600">Anunț angajare</p>
     <h1 class="mt-1 text-[28px] font-bold leading-tight tracking-[-0.02em] text-stone-900 sm:text-[34px]">${esc(a.titlu)}</h1>
-    <p class="mt-2 text-base text-stone-600">${esc(a.angajator)} · ${esc(loc(a))}</p>
+    <p class="mt-2 text-base text-stone-600">${a.angajator ? `${esc(a.angajator)} · ` : ""}${esc(loc(a))}</p>
     <div class="mt-5 grid gap-4 lg:grid-cols-[1fr_320px]">
       <div class="${CARD}">
         <p class="text-xs font-medium text-stone-700">Salariul oferit</p>
@@ -238,20 +238,20 @@ export async function paginaAnunt(req: Request, env: Env, id: number, slug: stri
       </div>
     </div>`;
 
-  // JobPosting pentru Google Jobs: numai câmpurile pe care anunțul le are de fapt.
-  const jsonLd = {
+  // JobPosting pentru Google Jobs: numai câmpurile pe care anunțul le are de fapt. Google cere
+  // firma (hiringOrganization); fără numele ei, care e opțional, anunțul rămâne doar în căutarea obișnuită.
+  const jsonLd = a.angajator ? {
     "@context": "https://schema.org", "@type": "JobPosting",
     title: a.titlu, description: descriereHtml(a.descriere), datePosted: a.confirmat_la, validThrough: a.expira_la,
     employmentType: a.norma === "partiala" ? "PART_TIME" : "FULL_TIME",
     hiringOrganization: { "@type": "Organization", name: a.angajator },
-    jobLocation: { "@type": "Place", address: { "@type": "PostalAddress", addressLocality: oras(a), addressRegion: JUDETE[a.judet], addressCountry: "RO" } },
+    jobLocation: { "@type": "Place", address: { "@type": "PostalAddress", ...(a.adresa ? { streetAddress: a.adresa } : {}), addressLocality: oras(a), addressRegion: JUDETE[a.judet], addressCountry: "RO" } },
     baseSalary: { "@type": "MonetaryAmount", currency: "RON", value: { "@type": "QuantitativeValue", unitText: "MONTH", ...(a.salariu_max ? { minValue: a.salariu_min, maxValue: a.salariu_max } : { value: a.salariu_min }) } },
-    ...(a.cui ? { identifier: { "@type": "PropertyValue", name: "CUI", value: a.cui } } : {}),
     directApply: false,
-  };
+  } : undefined;
   // Titlul începe cu „Anunț angajare”, ca paginile din top 3 la „anunt de angajare”.
   const titlu = `Anunț angajare ${a.titlu}, ${oras(a)} — ${suma(a)}`;
-  const desc = `Anunț angajare ${a.titlu}, ${oras(a)}: ${suma(a)} pe lună, ${norma(a).toLowerCase()}. ${a.angajator}. Aplici direct la angajator.`;
+  const desc = `Anunț angajare ${a.titlu}, ${oras(a)}: ${suma(a)} pe lună, ${norma(a).toLowerCase()}.${a.angajator ? ` ${a.angajator}.` : ""} Aplici direct la angajator.`;
   return inSablon(req, env, { titlu, descriere: desc.slice(0, 158), canonic, indexabil: true, continut, jsonLd });
 }
 

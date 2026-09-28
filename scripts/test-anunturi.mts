@@ -1,12 +1,14 @@
 // Regulile anunțurilor de angajare (src/lib/anunturi/reguli.ts): ce se publică, ce se respinge și
 // adresele verificate în Google România pe 28 septembrie 2026.
 import assert from "node:assert/strict";
+import fs from "node:fs";
+import { cauta, cheieUat, numarDinText, type Localitate } from "../src/lib/anunturi/localitati";
 import { MARCAJE, completeazaSablon } from "../src/lib/anunturi/sablon";
-import { MINIM_BRUT, MINIM_NET, cuiValid, esteMobil, linkApel, linkWhatsApp, orasSlug, slugAnunt, telefonAfisat, telefonCurat, urlAnunt, urlLista, valideaza, type Eroare } from "../src/lib/anunturi/reguli";
+import { esteMobil, linkApel, linkWhatsApp, orasSlug, slugAnunt, telefonAfisat, telefonCurat, urlAnunt, urlLista, valideaza, type Eroare } from "../src/lib/anunturi/reguli";
 
 const MESERII = new Set(["barman", "sofer-distributie"]);
 const bun = {
-  titlu: "Barman pentru bar în centru", meserie: "barman", angajator: "Bar Centru SRL", cui: "", judet: "B", oras: "București",
+  titlu: "Barman pentru bar în centru", meserie: "barman", angajator: "Bar Centru SRL", judet: "B", oras: "București",
   norma: "intreaga", salariuMin: "4000", salariuMax: "", baza: "net",
   descriere: "Căutăm barman pentru program în ture, 2 zile cu 2 libere. Oferim bacșiș, o masă pe zi și contract pe perioadă nedeterminată.",
   telefon: "0722 123 456", email: "angajator@exemplu.ro", acordPublicare: true,
@@ -22,11 +24,12 @@ if ("anunt" in r) { assert.equal(r.anunt.salariuMin, 4000); assert.equal(r.anunt
 // Salariul e obligatoriu, cu bază, și nu sub minimul legal (proporțional la normă parțială).
 assert.deepEqual(camp({ salariuMin: "" }), ["salariuMin"]);
 assert.deepEqual(camp({ baza: "" }), ["baza"]);
-assert.deepEqual(camp({ salariuMin: String(MINIM_NET - 1) }), ["salariuMin"], "sub netul minim");
-assert.deepEqual(camp({ salariuMin: String(MINIM_BRUT - 1), baza: "brut" }), ["salariuMin"], "sub brutul minim");
-assert.deepEqual(camp({ salariuMin: String(Math.round(MINIM_BRUT / 2)), baza: "brut", norma: "partiala", orePeZi: "4" }), [], "4 ore: jumătate din minim e legal");
+// Orice sumă (proprietar, 28 septembrie 2026): fără prag minim; numai greșelile evidente se opresc.
+assert.deepEqual(camp({ salariuMin: "1500" }), [], "sub minimul pe economie se publică");
+assert.deepEqual(camp({ salariuMin: "0" }), ["salariuMin"]);
+assert.deepEqual(camp({ salariuMin: "4000000" }), ["salariuMin"], "cifre în plus");
 assert.deepEqual(camp({ salariuMax: "3000" }), ["salariuMax"], "maxim sub minim");
-assert.deepEqual(camp({ salariuMax: "20000" }), ["salariuMax"], "interval de peste trei ori");
+assert.deepEqual(camp({ salariuMax: "20000" }), [], "interval larg: se publică");
 
 // Contactul: cel puțin unul, valid; emailul celui care postează și acordul, obligatorii.
 assert.deepEqual(camp({ telefon: "" }), ["telefon"]);
@@ -46,7 +49,10 @@ assert.deepEqual(camp({ adresa: "x".repeat(121) }), ["adresa"]);
 assert.deepEqual(camp({ email: "nu-e-email" }), ["email"]);
 assert.deepEqual(camp({ acordPublicare: false }), ["acordPublicare"]);
 assert.deepEqual(camp({ meserie: "astronaut" }), ["meserie"]);
-assert.deepEqual(camp({ judet: "XX" }), ["judet"]);
+assert.deepEqual(camp({ judet: "XX" }), ["oras"], "județul vine din localitatea aleasă");
+assert.deepEqual(camp({ oras: "" }), ["oras"]);
+// Numele firmei e opțional, CUI-ul nu se mai cere.
+assert.deepEqual(camp({ angajator: "" }), []);
 
 // Conținutul interzis se respinge cu motivul lui.
 const motiv = (descriere: string) => erori({ descriere: `${bun.descriere} ${descriere}` }).find((e) => e.camp === "general")?.mesaj ?? "";
@@ -58,10 +64,6 @@ assert.match(motiv("Câștig garantat din trading."), /schemă/);
 assert.equal(motiv("Experiența de minim 2 ani constituie avantaj."), "", "experiența nu e vârstă");
 assert.match(erori({ titlu: "ANGAJAM BARMAN URGENT ACUM" }).map((e) => e.mesaj).join(), /majuscule/);
 
-// CUI: cifra de control ANAF.
-assert.ok(cuiValid("RO14399840"));   // Dante International (eMAG)
-assert.ok(!cuiValid("RO14399841"));
-assert.deepEqual(camp({ cui: "123" }), ["cui"]);
 
 // Adresele: liste pe oraș și meserie, anunțul cu „anunt-angajare-”, adăugarea fără cont.
 assert.equal(orasSlug("București, Sectorul 3"), "bucuresti");
@@ -89,4 +91,24 @@ assert.equal(urlLista(null, null), "/locuri-de-munca");
   assert.equal(rsc[2].children, v.titlu, "React primește exact titlul din <head>");
 }
 
-console.log("OK: anunțurile de angajare — salariul și minimul legal, contactul, conținutul interzis, CUI, adresele");
+// Sugestiile: „b” aduce întâi reședințele de județ; satul poartă comuna și județul; strada se
+// găsește și după „str.” sau fără cuvântul „Strada”, iar numărul scris rămâne.
+{
+  const loc = JSON.parse(fs.readFileSync("public/date/anunturi/localitati.json", "utf8")) as Localitate[];
+  assert.ok(loc.length > 13000, `SIRUTA are peste 13.000 de localități, nu ${loc.length}`);
+  assert.deepEqual(cauta(loc, "b", (l) => l[0], (l) => l[3], 5).map((l) => l[0]), ["București", "Bacău", "Baia Mare", "Bistrița", "Botoșani"]);
+  assert.equal(cauta(loc, "bucu", (l) => l[0], (l) => l[3])[0][0], "București");
+  assert.equal(cauta(loc, "cluj", (l) => l[0], (l) => l[3])[0][0], "Cluj-Napoca");
+  const ciumbrud = loc.find((l) => l[0] === "Ciumbrud")!;
+  assert.deepEqual([ciumbrud[1], ciumbrud[2], cheieUat(ciumbrud)], ["AB", "Aiud", "aiud"]);
+  assert.equal(cheieUat(loc.find((l) => l[0] === "București, Sectorul 3")!), "bucuresti");
+  const strazi = ["Strada Lipscani", "Bulevardul Iuliu Maniu", "Calea Victoriei", "Strada Liviu Rebreanu"];
+  assert.deepEqual(cauta(strazi, "lipscani 69", (x) => x), ["Strada Lipscani"]);
+  assert.deepEqual(cauta(strazi, "str. li", (x) => x), ["Strada Lipscani", "Strada Liviu Rebreanu"]);
+  assert.deepEqual(cauta(strazi, "iuliu", (x) => x), ["Bulevardul Iuliu Maniu"]);
+  assert.equal(numarDinText("lipscani 69, bl. A"), "69, bl. A");
+  const b = JSON.parse(fs.readFileSync("public/date/anunturi/strazi/B.json", "utf8")) as Record<string, string[]>;
+  assert.ok(b.bucuresti.includes("Strada Lipscani") && b.bucuresti.length > 4000, "străzile Bucureștiului din OpenStreetMap");
+}
+
+console.log("OK: anunțurile de angajare — salariul, contactul, conținutul interzis, adresele, șablonul, sugestiile de localitate și stradă");

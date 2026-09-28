@@ -4324,3 +4324,20 @@ JavaScript-ul, deci anunțurile ar fi ieșit din index. Șablonul are acum marca
 (`src/lib/anunturi/sablon.ts`), înlocuite de Worker și în HTML, și în datele React, cu escaparea
 fiecărui loc (test în `test-anunturi.mts`). Verificat în browser după hidratare: un singur titlu,
 canonical, robots și descriere, toate ale anunțului; Twitter și OG la fel.
+
+## 28 septembrie 2026, seara târziu — formularul: meseria, localitatea și strada se caută scriind
+
+Cerut de proprietar: „daca scriu b apare bucuresti, bacau”, ca pe alte site-uri, și la stradă;
+nota cu minimul legal scoasă și orice sumă acceptată (respingerile ar încetini pornirea); numele
+firmei opțional, CUI-ul scos de tot. Pentru stradă, proprietarul a ales lista ținută pe site
+(varianta 2), nu Google Places (plătit, fiecare literă la Google) și nu Photon (serviciu extern).
+- **Localitățile**: SIRUTA 2026 (INS, data.gov.ro) — 13.755 de localități, cu satele și comuna lor;
+  `public/date/anunturi/localitati.json`, ~110 KB comprimat, încărcat la primul focus. Județul
+  vine din localitatea aleasă; câmpul „Județul” a dispărut.
+- **Străzile**: OpenStreetMap, prin Overpass, pe oraș/comună (`scripts/anunturi/strazi-osm.mjs`,
+  brut în `research/strazi-osm/`), legate de SIRUTA după nume în județ (OSM nu are codul SIRUTA pe
+  relații; două excepții de ortografie: Rișca, Covăsinț). Fișier pe județ în
+  `public/date/anunturi/strazi/`. Probă: București 5.161 de străzi, Cluj 2.758, Alba 2.472.
+- Căutarea se face în browser (`src/lib/anunturi/localitati.ts`, `CautaInLista.tsx`); probată în
+  browser: „b” → București, Bacău…; „lipsc” → Strada Lipscani; anunț publicat cu 1.500 lei net,
+  fără firmă, cu harta pe Lipscani 69. Fără numele firmei nu se emite JobPosting (Google îl cere).

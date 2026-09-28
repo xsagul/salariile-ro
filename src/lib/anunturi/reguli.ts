@@ -2,11 +2,13 @@
 // pe 28 septembrie 2026). Un singur proprietar: formularul din browser și Worker-ul care primește
 // anunțul folosesc exact aceleași verificări. Deciziile proprietarului:
 //   - fără cont: anunțul se confirmă și se gestionează dintr-un link primit pe email;
-//   - salariul e obligatoriu, cu baza (brut sau net) — diferența față de OLX și eJobs;
+//   - salariul e obligatoriu, cu baza (brut sau net) — diferența față de OLX și eJobs; orice sumă,
+//     fără prag minim (decis pe 28 septembrie 2026: respingerile ar încetini pornirea);
+//   - numele firmei e opțional, CUI-ul nu se cere deloc (tot 28 septembrie);
 //   - candidatul contactează direct angajatorul; site-ul nu primește CV-uri;
 //   - moderare automată (regulile de mai jos) și buton de raportare, cu scoatere rapidă (DSA).
 // Fără importuri cu „@/”: fișierul intră și în bundle-ul Worker-ului.
-import { SALARIU_MINIM, calculStandard } from "../fiscal";
+import { calculStandard } from "../fiscal";
 
 export const JUDETE: Record<string, string> = {
   AB: "Alba", AR: "Arad", AG: "Argeș", BC: "Bacău", BH: "Bihor", BN: "Bistrița-Năsăud", BT: "Botoșani", BV: "Brașov",
@@ -28,13 +30,12 @@ export const ZILE_PASTRARE_EMAIL = 30;
 /** Anunțuri noi pe zi de la același email sau de la aceeași adresă IP. */
 export const LIMITA_PE_ZI = 5;
 
-export const LIMITE = { titlu: [8, 90], angajator: [2, 120], oras: [2, 60], adresa: [0, 120], descriere: [80, 6000] } as const;
+export const LIMITE = { titlu: [8, 90], angajator: [0, 120], oras: [2, 60], adresa: [0, 120], descriere: [80, 6000] } as const;
 
 export type AnuntNou = {
   titlu: string;
   meserie: string;          // slug din catalog sau "" (altă meserie)
-  angajator: string;
-  cui?: string;
+  angajator: string;        // opțional; fără el anunțul nu intră în Google Jobs (JobPosting cere firma)
   judet: string;            // cod din JUDETE
   oras: string;
   adresa?: string;          // strada și numărul: harta și sortarea după apropiere (opțională)
@@ -55,21 +56,7 @@ const text = (v: unknown) => (typeof v === "string" ? v.replace(/\s+/g, " ").tri
 const textLung = (v: unknown) => (typeof v === "string" ? v.replace(/\r\n?/g, "\n").replace(/[ \t]+/g, " ").replace(/\n{3,}/g, "\n\n").trim() : "");
 // \p{M} (semnele diacritice), nu intervalul lor scris cu caracterele combinate: în Worker,
 // intervalul nu prindea nimic și „București” devenea „bucure-ti” (proba locală, 28 septembrie 2026).
-const faraDiacritice = (s: string) => s.normalize("NFD").replace(/\p{M}/gu, "").toLowerCase();
-
-/** Salariul minim pe economie, brut și net, pentru normă întreagă (proprietar: fiscal.ts). */
-export const MINIM_BRUT = SALARIU_MINIM;
-export const MINIM_NET = calculStandard(SALARIU_MINIM)?.net ?? 0;
-
-/** CUI românesc: cifra de control (algoritmul ANAF, cheia 753217532). */
-export function cuiValid(cui: string): boolean {
-  const c = cui.replace(/^RO/i, "").trim();
-  if (!/^\d{2,10}$/.test(c)) return false;
-  const cifre = c.slice(0, -1).padStart(9, "0").split("").map(Number);
-  const cheie = [7, 5, 3, 2, 1, 7, 5, 3, 2];
-  const control = ((cifre.reduce((s, x, i) => s + x * cheie[i], 0) * 10) % 11) % 10;
-  return control === Number(c.at(-1));
-}
+export const faraDiacritice = (s: string) => s.normalize("NFD").replace(/\p{M}/gu, "").toLowerCase();
 
 // Anunțuri pe care nu le publicăm, cu motivul arătat celui care postează (Codul muncii art. 5 și
 // OG 137/2000 — discriminarea; munca „în străinătate” cere agent de plasare autorizat, Legea
@@ -119,7 +106,6 @@ export function valideaza(brut: Record<string, unknown>, meseriiValide: Set<stri
     titlu: text(brut.titlu),
     meserie: text(brut.meserie),
     angajator: text(brut.angajator),
-    cui: text(brut.cui).toUpperCase() || undefined,
     judet: text(brut.judet).toUpperCase(),
     oras: text(brut.oras),
     adresa: text(brut.adresa) || undefined,
@@ -139,27 +125,22 @@ export function valideaza(brut: Record<string, unknown>, meseriiValide: Set<stri
     if (v.length > max) e.push({ camp, mesaj: `${nume}: cel mult ${max} caractere.` });
   };
   lung("titlu", a.titlu, "Titlul");
-  lung("angajator", a.angajator, "Angajatorul");
-  lung("oras", a.oras, "Localitatea");
+  lung("angajator", a.angajator, "Numele firmei");
+  if (!a.oras || !Object.hasOwn(JUDETE, a.judet)) e.push({ camp: "oras", mesaj: "Alege localitatea din listă." });
+  else lung("oras", a.oras, "Localitatea");
   if (a.adresa) lung("adresa", a.adresa, "Adresa");
   lung("descriere", a.descriere, "Descrierea");
   if (a.meserie && !meseriiValide.has(a.meserie)) e.push({ camp: "meserie", mesaj: "Alege meseria din listă sau „Altă meserie”." });
-  if (a.cui && !cuiValid(a.cui)) e.push({ camp: "cui", mesaj: "CUI-ul nu e valid; verifică cifrele sau lasă câmpul gol." });
-  if (!Object.hasOwn(JUDETE, a.judet)) e.push({ camp: "judet", mesaj: "Alege județul." });
   if (a.norma === "partiala" && !(a.orePeZi! >= 1 && a.orePeZi! <= 7)) e.push({ camp: "orePeZi", mesaj: "La normă parțială, scrie câte ore pe zi (1–7)." });
 
-  // Salariul: obligatoriu, cu baza, cel puțin minimul legal (proporțional la normă parțială).
+  // Salariul: obligatoriu, cu baza; orice sumă (fără prag minim, proprietar, 28 septembrie 2026).
+  // Rămân numai greșelile evidente: zero, un maxim sub minim, o sumă cu cifre în plus.
   if (a.baza !== "brut" && a.baza !== "net") e.push({ camp: "baza", mesaj: "Spune dacă suma e brută sau netă." });
   if (!Number.isFinite(a.salariuMin) || a.salariuMin <= 0) e.push({ camp: "salariuMin", mesaj: "Scrie salariul lunar oferit, în lei." });
-  else if (a.baza === "brut" || a.baza === "net") {
-    const fractie = a.norma === "partiala" ? (a.orePeZi ?? 8) / 8 : 1;
-    const minim = Math.round((a.baza === "net" ? MINIM_NET : MINIM_BRUT) * fractie);
-    if (a.salariuMin < minim) e.push({ camp: "salariuMin", mesaj: `Salariul nu poate fi sub minimul legal: ${minim.toLocaleString("ro-RO")} lei ${a.baza || "brut"} pe lună${a.norma === "partiala" ? " la acest număr de ore" : ""}.` });
-    if (a.salariuMin > 200000) e.push({ camp: "salariuMin", mesaj: "Suma pare greșită; scrie salariul lunar, în lei." });
-  }
+  else if (a.salariuMin > 200000) e.push({ camp: "salariuMin", mesaj: "Suma pare greșită; scrie salariul lunar, în lei." });
   if (a.salariuMax != null) {
     if (!Number.isFinite(a.salariuMax) || a.salariuMax < a.salariuMin) e.push({ camp: "salariuMax", mesaj: "Maximul trebuie să fie cel puțin cât minimul." });
-    else if (a.salariuMax > a.salariuMin * 3) e.push({ camp: "salariuMax", mesaj: "Intervalul e prea larg; maximul poate fi cel mult de trei ori minimul." });
+    else if (a.salariuMax > 200000) e.push({ camp: "salariuMax", mesaj: "Suma pare greșită; scrie salariul lunar, în lei." });
     else if (a.salariuMax === a.salariuMin) a.salariuMax = null;
   }
 
