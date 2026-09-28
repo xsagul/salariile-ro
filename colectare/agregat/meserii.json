@@ -1,5 +1,5 @@
 {
- "generatLa": "2026-09-28T09:21:09.690Z",
+ "generatLa": "2026-09-28T11:15:19.806Z",
  "praguri": {
   "platit": {
    "institutii": 5,
@@ -22,7 +22,7 @@
   }
  },
  "observatiiPlatite": 21050,
- "oferteAnofm": 8776,
+ "oferteAnofm": 9078,
  "meserii": [
   {
    "slug": "programator",
@@ -714,7 +714,7 @@
      "declarat": {
       "net": 3116,
       "diferenta": -34,
-      "laMinim": 0.3,
+      "laMinim": 0.28,
       "trece": false
      }
     }
@@ -991,16 +991,16 @@
     "trece": false
    },
    "declarat": {
-    "oferte": 55,
-    "brutNormaIntreaga": 44,
-    "angajatori": 19,
-    "judete": 16,
-    "laMinim": 0.3,
+    "oferte": 58,
+    "brutNormaIntreaga": 46,
+    "angajatori": 21,
+    "judete": 17,
+    "laMinim": 0.28,
     "codComun": false,
     "netMinimDeclarat": {
      "p25": 2699,
      "mediana": 3116,
-     "p75": 3230
+     "p75": 3231
     },
     "trece": false
    }
@@ -1267,10 +1267,10 @@
     "trece": false
    },
    "declarat": {
-    "oferte": 4,
-    "brutNormaIntreaga": 2,
-    "angajatori": 2,
-    "judete": 2,
+    "oferte": 5,
+    "brutNormaIntreaga": 3,
+    "angajatori": 3,
+    "judete": 3,
     "laMinim": 1,
     "codComun": false,
     "netMinimDeclarat": {
@@ -1483,10 +1483,10 @@
     "trece": false
    },
    "declarat": {
-    "oferte": 2,
-    "brutNormaIntreaga": 1,
-    "angajatori": 1,
-    "judete": 1,
+    "oferte": 3,
+    "brutNormaIntreaga": 2,
+    "angajatori": 2,
+    "judete": 2,
     "laMinim": 1,
     "codComun": false,
     "netMinimDeclarat": {
@@ -1729,7 +1729,7 @@
      "declarat": {
       "net": 3035,
       "diferenta": -45,
-      "laMinim": 0.25,
+      "laMinim": 0.2,
       "trece": false
      }
     }
@@ -1832,14 +1832,14 @@
     "trece": false
    },
    "declarat": {
-    "oferte": 8,
-    "brutNormaIntreaga": 4,
-    "angajatori": 2,
-    "judete": 3,
-    "laMinim": 0.25,
+    "oferte": 9,
+    "brutNormaIntreaga": 5,
+    "angajatori": 3,
+    "judete": 4,
+    "laMinim": 0.2,
     "codComun": false,
     "netMinimDeclarat": {
-     "p25": 2699,
+     "p25": 2930,
      "mediana": 3035,
      "p75": 3035
     },
@@ -2131,7 +2131,7 @@
     "trece": false
    },
    "declarat": {
-    "oferte": 32,
+    "oferte": 34,
     "brutNormaIntreaga": 18,
     "angajatori": 16,
     "judete": 14,
@@ -2362,8 +2362,18 @@
     "trece": false
    },
    "declarat": {
-    "oferte": 0,
-    "brutNormaIntreaga": 0
+    "oferte": 2,
+    "brutNormaIntreaga": 2,
+    "angajatori": 1,
+    "judete": 1,
+    "laMinim": 1,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2699,
+     "mediana": 2699,
+     "p75": 2699
+    },
+    "trece": false
    }
   },
   {
@@ -2385,7 +2395,7 @@
      "declarat": {
       "net": 2699,
       "diferenta": -51,
-      "laMinim": 0.63,
+      "laMinim": 0.59,
       "trece": false
      }
     }
@@ -2441,11 +2451,11 @@
     "trece": true
    },
    "declarat": {
-    "oferte": 46,
-    "brutNormaIntreaga": 16,
-    "angajatori": 16,
+    "oferte": 49,
+    "brutNormaIntreaga": 17,
+    "angajatori": 17,
     "judete": 13,
-    "laMinim": 0.63,
+    "laMinim": 0.59,
     "codComun": false,
     "netMinimDeclarat": {
      "p25": 2699,
@@ -2898,7 +2908,7 @@
     "trece": false
    },
    "declarat": {
-    "oferte": 21,
+    "oferte": 22,
     "brutNormaIntreaga": 10,
     "angajatori": 10,
     "judete": 7,
@@ -3420,9 +3430,9 @@
     "trece": false
    },
    "declarat": {
-    "oferte": 58,
-    "brutNormaIntreaga": 25,
-    "angajatori": 23,
+    "oferte": 59,
+    "brutNormaIntreaga": 26,
+    "angajatori": 24,
     "judete": 16,
     "laMinim": 0,
     "codComun": false,
@@ -3453,7 +3463,7 @@
      "declarat": {
       "net": 2754,
       "diferenta": -50,
-      "laMinim": 0.04,
+      "laMinim": 0.07,
       "trece": false
      }
     }
@@ -3523,16 +3533,16 @@
     "trece": true
    },
    "declarat": {
-    "oferte": 76,
-    "brutNormaIntreaga": 26,
-    "angajatori": 25,
-    "judete": 16,
-    "laMinim": 0.04,
+    "oferte": 78,
+    "brutNormaIntreaga": 28,
+    "angajatori": 26,
+    "judete": 17,
+    "laMinim": 0.07,
     "codComun": false,
     "netMinimDeclarat": {
-     "p25": 2750,
+     "p25": 2743,
      "mediana": 2754,
-     "p75": 2967
+     "p75": 2764
     },
     "trece": false
    }
@@ -3627,9 +3637,9 @@
     "trece": true
    },
    "declarat": {
-    "oferte": 43,
-    "brutNormaIntreaga": 15,
-    "angajatori": 15,
+    "oferte": 44,
+    "brutNormaIntreaga": 16,
+    "angajatori": 16,
     "judete": 12,
     "laMinim": 0,
     "codComun": false,
@@ -3729,16 +3739,16 @@
     "trece": true
    },
    "declarat": {
-    "oferte": 123,
-    "brutNormaIntreaga": 39,
-    "angajatori": 37,
+    "oferte": 126,
+    "brutNormaIntreaga": 42,
+    "angajatori": 40,
     "judete": 24,
     "laMinim": 0.21,
     "codComun": false,
     "netMinimDeclarat": {
      "p25": 2699,
      "mediana": 2754,
-     "p75": 2981
+     "p75": 2967
     },
     "trece": true
    }
@@ -3787,11 +3797,11 @@
     "trece": false
    },
    "declarat": {
-    "oferte": 109,
-    "brutNormaIntreaga": 53,
-    "angajatori": 52,
+    "oferte": 111,
+    "brutNormaIntreaga": 55,
+    "angajatori": 54,
     "judete": 27,
-    "laMinim": 0.58,
+    "laMinim": 0.6,
     "codComun": false,
     "netMinimDeclarat": {
      "p25": 2669,
@@ -3893,9 +3903,9 @@
     "trece": false
    },
    "declarat": {
-    "oferte": 301,
-    "brutNormaIntreaga": 172,
-    "angajatori": 139,
+    "oferte": 306,
+    "brutNormaIntreaga": 176,
+    "angajatori": 142,
     "judete": 30,
     "laMinim": 0.7,
     "codComun": false,
@@ -3951,11 +3961,11 @@
     "trece": false
    },
    "declarat": {
-    "oferte": 164,
-    "brutNormaIntreaga": 91,
-    "angajatori": 84,
+    "oferte": 168,
+    "brutNormaIntreaga": 94,
+    "angajatori": 87,
     "judete": 29,
-    "laMinim": 0.69,
+    "laMinim": 0.7,
     "codComun": true,
     "netMinimDeclarat": {
      "p25": 2699,
@@ -3999,10 +4009,10 @@
     "trece": false
    },
    "declarat": {
-    "oferte": 106,
-    "brutNormaIntreaga": 49,
-    "angajatori": 41,
-    "judete": 16,
+    "oferte": 109,
+    "brutNormaIntreaga": 52,
+    "angajatori": 44,
+    "judete": 17,
     "laMinim": 0.73,
     "codComun": false,
     "netMinimDeclarat": {
@@ -4028,11 +4038,11 @@
     "trece": false
    },
    "declarat": {
-    "oferte": 164,
-    "brutNormaIntreaga": 91,
-    "angajatori": 84,
+    "oferte": 168,
+    "brutNormaIntreaga": 94,
+    "angajatori": 87,
     "judete": 29,
-    "laMinim": 0.69,
+    "laMinim": 0.7,
     "codComun": true,
     "netMinimDeclarat": {
      "p25": 2699,
@@ -4224,9 +4234,9 @@
      },
      "oferit": null,
      "declarat": {
-      "net": 2669,
-      "diferenta": -30,
-      "laMinim": 0.5,
+      "net": 2699,
+      "diferenta": -29,
+      "laMinim": 0.6,
       "trece": false
      }
     }
@@ -4290,15 +4300,15 @@
     "trece": true
    },
    "declarat": {
-    "oferte": 13,
-    "brutNormaIntreaga": 4,
-    "angajatori": 4,
-    "judete": 4,
-    "laMinim": 0.5,
+    "oferte": 14,
+    "brutNormaIntreaga": 5,
+    "angajatori": 5,
+    "judete": 5,
+    "laMinim": 0.6,
     "codComun": false,
     "netMinimDeclarat": {
-     "p25": 2629,
-     "mediana": 2669,
+     "p25": 2669,
+     "mediana": 2699,
      "p75": 2699
     },
     "trece": false
@@ -4363,11 +4373,11 @@
     "trece": false
    },
    "declarat": {
-    "oferte": 217,
-    "brutNormaIntreaga": 116,
-    "angajatori": 101,
+    "oferte": 228,
+    "brutNormaIntreaga": 124,
+    "angajatori": 106,
     "judete": 33,
-    "laMinim": 0.73,
+    "laMinim": 0.71,
     "codComun": false,
     "netMinimDeclarat": {
      "p25": 2699,
@@ -4392,11 +4402,11 @@
     "trece": false
    },
    "declarat": {
-    "oferte": 164,
-    "brutNormaIntreaga": 91,
-    "angajatori": 84,
+    "oferte": 168,
+    "brutNormaIntreaga": 94,
+    "angajatori": 87,
     "judete": 29,
-    "laMinim": 0.69,
+    "laMinim": 0.7,
     "codComun": true,
     "netMinimDeclarat": {
      "p25": 2699,
@@ -4436,10 +4446,10 @@
     "trece": true
    },
    "declarat": {
-    "oferte": 99,
-    "brutNormaIntreaga": 58,
-    "angajatori": 56,
-    "judete": 26,
+    "oferte": 103,
+    "brutNormaIntreaga": 62,
+    "angajatori": 59,
+    "judete": 28,
     "laMinim": 0.79,
     "codComun": false,
     "netMinimDeclarat": {
@@ -4465,7 +4475,7 @@
      "declarat": {
       "net": 2699,
       "diferenta": -21,
-      "laMinim": 0.8,
+      "laMinim": 0.78,
       "trece": false
      }
     }
@@ -4480,11 +4490,11 @@
     "trece": true
    },
    "declarat": {
-    "oferte": 35,
-    "brutNormaIntreaga": 20,
-    "angajatori": 16,
-    "judete": 14,
-    "laMinim": 0.8,
+    "oferte": 38,
+    "brutNormaIntreaga": 23,
+    "angajatori": 19,
+    "judete": 16,
+    "laMinim": 0.78,
     "codComun": false,
     "netMinimDeclarat": {
      "p25": 2699,
@@ -4524,9 +4534,9 @@
     "trece": true
    },
    "declarat": {
-    "oferte": 184,
-    "brutNormaIntreaga": 116,
-    "angajatori": 31,
+    "oferte": 186,
+    "brutNormaIntreaga": 118,
+    "angajatori": 33,
     "judete": 42,
     "laMinim": 0.14,
     "codComun": false,
@@ -4628,10 +4638,10 @@
     "trece": true
    },
    "declarat": {
-    "oferte": 119,
-    "brutNormaIntreaga": 44,
-    "angajatori": 39,
-    "judete": 23,
+    "oferte": 122,
+    "brutNormaIntreaga": 47,
+    "angajatori": 42,
+    "judete": 24,
     "laMinim": 0.77,
     "codComun": false,
     "netMinimDeclarat": {
@@ -4657,11 +4667,11 @@
     "trece": false
    },
    "declarat": {
-    "oferte": 73,
-    "brutNormaIntreaga": 37,
-    "angajatori": 37,
-    "judete": 17,
-    "laMinim": 0.73,
+    "oferte": 74,
+    "brutNormaIntreaga": 38,
+    "angajatori": 38,
+    "judete": 18,
+    "laMinim": 0.74,
     "codComun": false,
     "netMinimDeclarat": {
      "p25": 2641,
@@ -5028,8 +5038,18 @@
     "trece": false
    },
    "declarat": {
-    "oferte": 0,
-    "brutNormaIntreaga": 0
+    "oferte": 1,
+    "brutNormaIntreaga": 1,
+    "angajatori": 1,
+    "judete": 1,
+    "laMinim": 1,
+    "codComun": false,
+    "netMinimDeclarat": {
+     "p25": 2699,
+     "mediana": 2699,
+     "p75": 2699
+    },
+    "trece": false
    }
   },
   {
@@ -5124,11 +5144,11 @@
     "trece": false
    },
    "declarat": {
-    "oferte": 148,
-    "brutNormaIntreaga": 69,
-    "angajatori": 39,
+    "oferte": 154,
+    "brutNormaIntreaga": 75,
+    "angajatori": 42,
     "judete": 28,
-    "laMinim": 0.83,
+    "laMinim": 0.84,
     "codComun": false,
     "netMinimDeclarat": {
      "p25": 2699,
@@ -5168,10 +5188,10 @@
     "trece": true
    },
    "declarat": {
-    "oferte": 144,
-    "brutNormaIntreaga": 83,
-    "angajatori": 79,
-    "judete": 25,
+    "oferte": 150,
+    "brutNormaIntreaga": 88,
+    "angajatori": 84,
+    "judete": 27,
     "laMinim": 0.76,
     "codComun": false,
     "netMinimDeclarat": {
@@ -5197,7 +5217,7 @@
      "declarat": {
       "net": 2699,
       "diferenta": -33,
-      "laMinim": 0.55,
+      "laMinim": 0.54,
       "trece": false
      }
     }
@@ -5212,16 +5232,16 @@
     "trece": true
    },
    "declarat": {
-    "oferte": 20,
-    "brutNormaIntreaga": 11,
-    "angajatori": 11,
-    "judete": 10,
-    "laMinim": 0.55,
+    "oferte": 22,
+    "brutNormaIntreaga": 13,
+    "angajatori": 13,
+    "judete": 11,
+    "laMinim": 0.54,
     "codComun": false,
     "netMinimDeclarat": {
      "p25": 2699,
      "mediana": 2699,
-     "p75": 2739
+     "p75": 2699
     },
     "trece": false
    }
@@ -5665,16 +5685,16 @@
     "trece": false
    },
    "declarat": {
-    "oferte": 89,
-    "brutNormaIntreaga": 27,
-    "angajatori": 26,
+    "oferte": 90,
+    "brutNormaIntreaga": 28,
+    "angajatori": 27,
     "judete": 16,
-    "laMinim": 0.33,
+    "laMinim": 0.32,
     "codComun": false,
     "netMinimDeclarat": {
      "p25": 2699,
      "mediana": 2699,
-     "p75": 2981
+     "p75": 2967
     },
     "trece": false
    }
@@ -5991,14 +6011,14 @@
     "trece": false
    },
    "declarat": {
-    "oferte": 3,
-    "brutNormaIntreaga": 2,
-    "angajatori": 2,
-    "judete": 1,
-    "laMinim": 0,
+    "oferte": 4,
+    "brutNormaIntreaga": 3,
+    "angajatori": 3,
+    "judete": 2,
+    "laMinim": 0.33,
     "codComun": false,
     "netMinimDeclarat": {
-     "p25": 4000,
+     "p25": 2699,
      "mediana": 4000,
      "p75": 11115
     },
