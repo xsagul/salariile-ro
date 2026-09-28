@@ -81,6 +81,9 @@ async function main() {
         stare: respins ? `de verificat: ${respins}` : "acceptat", fisier: s.fisier, perioada, sha256: d.sha256, bytes: d.bytes, cititLa: new Date().toISOString().slice(0, 10),
         randuri: obs.length, valide: obs.filter((o) => !o.invalid).length, peMeserie,
         ...(ocr ? { ocr: true, respinseOcr: citit.respinseOcr } : {}),
+        // Lista n-are nicio coloană de sporuri sau total: publică numai salariul de bază (SAJ
+        // Timiș, „Salarii de baza la data de 31.03.2026”). Salariul fix de acolo nu e cunoscut.
+        ...(!coloane.some((c) => ["sporFix", "variabil", "total", "hrana"].includes(c.tip)) && !randuri.some((r) => r.sporFix || r.variabil || r.total) ? { doarBaza: true } : {}),
         coloaneNecunoscute: coloane.filter((c) => c.tip === "necunoscut" && c.n > 5 && c.eticheta).map((c) => c.eticheta.slice(0, 100)),
       };
       console.log(`${s.id}: ${obs.length} rânduri, ${raport[s.id].valide} valide`, peMeserie);

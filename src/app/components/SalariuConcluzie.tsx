@@ -15,7 +15,7 @@ type Concluzie = {
   net: number;
   interval: [number, number] | null;
   platit: null | {
-    randuri: number; institutii: number; judete: number; perioade: string[]; surse: string[];
+    net: number; randuri: number; institutii: number; judete: number; perioade: string[]; surse: string[];
     debutant: number | null; cuVariabil: { net: number; cota: number } | null;
     studii: Record<string, number>;
     peVechime: { gradatie: number; randuri: number; net: number }[];
@@ -52,7 +52,9 @@ const diferenta = (x: number, ref: number) => {
 export default function SalariuConcluzie({ slug, de }: { slug: string; de: string }) {
   const c = concluzieMeserie(slug);
   if (!c) return null;
-  const P = c.platit;
+  // Salariile de la stat descriu cifra numai când ea vine din ele. La meseriile practicate mai
+  // ales în privat (electrician), cifra e din anunțuri, iar salariul de la stat stă la verificare.
+  const P = c.sursa === "platit" ? c.platit : null;
   const repere: { eticheta: string; valoare: string }[] = [];
   if (P?.debutant) repere.push({ eticheta: "La început", valoare: `${lei(P.debutant)} lei` });
   // Gărzile medicilor se plătesc pe contracte separate, excluse din posturi: acolo „cu ture și
@@ -61,6 +63,7 @@ export default function SalariuConcluzie({ slug, de }: { slug: string; de: strin
   if (P?.studii.S && P.studii.PL) repere.push({ eticheta: "Cu studii superioare", valoare: `${lei(P.studii.S)} lei` });
 
   const alte: { eticheta: string; net: number; nota: string }[] = [];
+  if (c.sursa === "oferit" && c.platit) alte.push({ eticheta: "Salarii plătite la stat", net: c.platit.net, nota: `${lei(c.platit.randuri)} de posturi la ${c.platit.institutii} instituții publice` });
   if (c.sursa !== "oferit" && c.oferit) alte.push({ eticheta: "Anunțuri de angajare", net: c.oferit.net, nota: `${c.oferit.anunturi} anunțuri verificate` });
   if (c.declarat) alte.push({ eticheta: "Oferte declarate la ANOFM", net: c.declarat.net, nota: `${Math.round(c.declarat.laMinim * 100)}% la salariul minim` });
 

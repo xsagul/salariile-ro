@@ -65,7 +65,7 @@ for (const m of agregat.meserii) {
     net: m.concluzie.net,
     interval: m.concluzie.interval,
     platit: P && P.trece ? {
-      randuri: P.randuri, institutii: P.institutii, judete: P.judete, perioade: P.perioade, surse: P.surse.sort(),
+      net: P.netFix.mediana, randuri: P.randuri, institutii: P.institutii, judete: P.judete, perioade: P.perioade, surse: P.surse.sort(),
       debutant: P.debutant?.net.mediana ?? null,
       cuVariabil: P.variabil ? { net: P.variabil.netCuVariabil.mediana, cota: P.variabil.cota } : null,
       studii: Object.fromEntries(Object.entries(P.peStudii).map(([k, v]) => [k, v.net.mediana])),

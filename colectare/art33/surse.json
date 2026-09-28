@@ -1692,6 +1692,76 @@
       "fisier": "https://www.csmtargoviste.ro/wp-content/uploads/2025/10/transparenta-veniturilor-salariale-30.09.2025-CSM-TARGOVISTE.pdf",
       "perioada": "2025-09",
       "gasitLa": "2026-09-27"
+    },
+    {
+      "id": "saj-timis",
+      "institutie": "Serviciul de Ambulanță Județean Timiș",
+      "tip": "ambulanta",
+      "judet": "TM",
+      "pagina": "https://ambulantatimis.ro/",
+      "fisier": "https://ambulantatimis.ro/wp-content/uploads/2026/09/Salarii-Martie-2026.pdf",
+      "perioada": "2026-03",
+      "gasitLa": "2026-09-28"
+    },
+    {
+      "id": "saj-iasi",
+      "institutie": "Serviciul de Ambulanță Județean Iași",
+      "tip": "ambulanta",
+      "judet": "IS",
+      "pagina": "https://ambulantaiasi.ro/",
+      "fisier": "https://ambulantaiasi.ro/wp-content/uploads/2026/03/LISTA-FUNCTII-PERSONAL-SAJ-IASI.pdf",
+      "perioada": "2026-03",
+      "gasitLa": "2026-09-28"
+    },
+    {
+      "id": "saj-gorj",
+      "institutie": "Serviciul de Ambulanță Județean Gorj",
+      "tip": "ambulanta",
+      "judet": "GJ",
+      "pagina": "https://ambulantagorj.ro/",
+      "fisier": "https://ambulantagorj.ro/wp-content/uploads/2026/04/Lista-functii-personal-cu-salarii-si-sporuri.pdf",
+      "perioada": "2026-03",
+      "gasitLa": "2026-09-28"
+    },
+    {
+      "id": "saj-covasna",
+      "institutie": "Serviciul de Ambulanță Județean Covasna",
+      "tip": "ambulanta",
+      "judet": "CV",
+      "pagina": "https://ambulantacovasna.ro/",
+      "fisier": "https://ambulantacovasna.ro/wp-content/uploads/2026/04/transparenta-martie-2026.pdf",
+      "perioada": "2026-03",
+      "gasitLa": "2026-09-28"
+    },
+    {
+      "id": "saj-dambovita",
+      "institutie": "Serviciul de Ambulanță Județean Dâmbovița",
+      "tip": "ambulanta",
+      "judet": "DB",
+      "pagina": "https://www.ambulantadambovita.ro/",
+      "fisier": "https://www.ambulantadambovita.ro/wp-content/uploads/2026/09/Lista-functiilor-si-veniturilor-salariale-la-data-14.09.2026-TRANSPARENTA_Redacted_compressed.pdf",
+      "perioada": "2026-09",
+      "gasitLa": "2026-09-28"
+    },
+    {
+      "id": "saj-harghita",
+      "institutie": "Serviciul Județean de Ambulanță Harghita",
+      "tip": "ambulanta",
+      "judet": "HR",
+      "pagina": "https://sajhr.ro/transparentaveniturilorsalariale/",
+      "fisier": "https://sajhr.ro/wp-content/uploads/SALAR-martie-2026.xlsx",
+      "perioada": "2026-03",
+      "gasitLa": "2026-09-28"
+    },
+    {
+      "id": "saj-neamt",
+      "institutie": "Serviciul de Ambulanță Județean Neamț",
+      "tip": "ambulanta",
+      "judet": "NT",
+      "pagina": "https://ambulantaneamt.ro/buget-dintoate-sursele-de-venituri/venituri-salariale/",
+      "fisier": "https://ambulantaneamt.ro/wp-content/uploads/2026/09/TRANSPARENTA-SEPTEMBRIE-2026.pdf",
+      "perioada": "2026-09",
+      "gasitLa": "2026-09-28"
     }
   ]
 }

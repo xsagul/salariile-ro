@@ -5,7 +5,7 @@
   "perioada": "2026-03",
   "sha256": "1c3be885efa94851ec2d14ab96640084349905b6316f8bc5439711d157c47646",
   "bytes": 4670141,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 1107,
   "valide": 1107,
   "peMeserie": {
@@ -35,7 +35,7 @@
   "perioada": "2026-03",
   "sha256": "303cfe71a3821c72a5db99c366bb2341efd38a84d19e2afb21f0d4dd5b421096",
   "bytes": 651866,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 601,
   "valide": 601,
   "peMeserie": {
@@ -63,7 +63,7 @@
   "perioada": "2026-02",
   "sha256": "3767edaa4f5dbb8b080e03738b6121bb1fc7646fce29e25f0302faff6b9c5ff2",
   "bytes": 2647234,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 1729,
   "valide": 1686,
   "peMeserie": {
@@ -89,7 +89,7 @@
   "perioada": "2026-02",
   "sha256": "617a375560a01dc06eba721a5f71816ef32e1a7a86031f50dd8cfe870a6bee12",
   "bytes": 2767830,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 238,
   "valide": 237,
   "peMeserie": {
@@ -114,7 +114,7 @@
   "perioada": "2026-03",
   "sha256": "e1e9458779a318f5c494b236fb399782f58431b100b02bd18a2fd40a11a8de05",
   "bytes": 153005,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 1277,
   "valide": 1276,
   "peMeserie": {
@@ -147,7 +147,7 @@
   "perioada": "2026-03",
   "sha256": "0e759ae7a04a4499c33b6a22588c2905e9e066a7f9cc06624d8dddcec0ee9927",
   "bytes": 433692,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 3536,
   "valide": 3524,
   "peMeserie": {
@@ -183,7 +183,7 @@
   "perioada": "2026-03",
   "sha256": "16b4acdf677948c14d22955c6507aae88d62c97ddf1d9f37713cd6fe5c2161eb",
   "bytes": 316123,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 2337,
   "valide": 2337,
   "peMeserie": {
@@ -210,7 +210,7 @@
   "perioada": "2026-03",
   "sha256": "f0a6bef86c381ed02d3a2635100a0f0790dfe45ddd4e4945205f005eb89600b6",
   "bytes": 660917,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 33,
   "valide": 33,
   "peMeserie": {
@@ -225,6 +225,7 @@
    "infirmier": 2,
    "sofer-ambulanta": 2
   },
+  "doarBaza": true,
   "coloaneNecunoscute": []
  },
  "dgaspc-s2": {
@@ -233,7 +234,7 @@
   "perioada": "2026-03",
   "sha256": "4c0065b2881cba61f413dca22aacaf94da1e06ece412edfb3f8dba0739b0f75c",
   "bytes": 1091363,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 107,
   "valide": 13,
   "peMeserie": {
@@ -279,7 +280,7 @@
   "perioada": "2026-03",
   "sha256": "94a66757fc49c30c387d22ea437ba1aaa8ce146a6e26fe9e7c509febc12abeea",
   "bytes": 587729,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 132,
   "valide": 132,
   "peMeserie": {
@@ -293,6 +294,7 @@
    "infirmier": 12,
    "magaziner": 3
   },
+  "doarBaza": true,
   "coloaneNecunoscute": [
    "Nr. crt.",
    "CONSILIUL JUDEŢEAN CĂLĂRAŞI Direcția Generală de Asistență Socială și Protecția Copilului Călărași C",
@@ -310,7 +312,7 @@
   "perioada": "2026-03",
   "sha256": "89e71c0baeeefe25cef7d209c42080e8f31860799c8a2f03a60e7041a920fb19",
   "bytes": 1061028,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 16,
   "valide": 16,
   "peMeserie": {
@@ -353,12 +355,13 @@
   "perioada": "2026-03",
   "sha256": "4442f05b09b82161b7acc3166a58f06a360769df2f81e70fb6a4d9a2e844ec27",
   "bytes": 255687,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 15,
   "valide": 15,
   "peMeserie": {
    "functionar-public": 15
   },
+  "doarBaza": true,
   "coloaneNecunoscute": [
    "Număr intrare: 49578/31.03.2026 Coeficient gradaţie 0 3",
    "Număr intrare: 49578/31.03.2026 ÎN PLATĂ Gradaţia 0 4=3*3700 lei",
@@ -375,7 +378,7 @@
   "perioada": "2026-09",
   "sha256": "6e024386d4c5a05067905ec5884ac46953ff816588b72ba7f386c343bfb9436c",
   "bytes": 351514,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 23,
   "valide": 23,
   "peMeserie": {
@@ -390,7 +393,7 @@
   "perioada": "2026-02",
   "sha256": "024c7802ff14709ddd60364e656fd289bad09cc58f1018135f7263162512d146",
   "bytes": 301770,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 1398,
   "valide": 1328,
   "peMeserie": {
@@ -429,7 +432,7 @@
   "perioada": "2026-03",
   "sha256": "09bc6ca06eb70b19991537694f889efbf40210ffaf5849b3c62f67157c436385",
   "bytes": 139145,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 196,
   "valide": 196,
   "peMeserie": {
@@ -458,7 +461,7 @@
   "perioada": "2026-03",
   "sha256": "2c48e2873d147c4ddc0003e0bcf04e71012520dc43a569766b839e24a20563d3",
   "bytes": 2334011,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 3789,
   "valide": 3788,
   "peMeserie": {
@@ -496,7 +499,7 @@
   "perioada": "2024-03",
   "sha256": "5d300d261e87b8c837af8f20c19b1fdf12b896e4c5ab068a6e11e0fbd87cc6d2",
   "bytes": 83320,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 304,
   "valide": 304,
   "peMeserie": {
@@ -526,7 +529,7 @@
   "perioada": "2026-03",
   "sha256": "8d4dda56697a3a6dce13f80b16fe45362944c935d76e547e08f2373b505d6bcf",
   "bytes": 55699,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 265,
   "valide": 265,
   "peMeserie": {
@@ -560,7 +563,7 @@
   "perioada": "2026-03",
   "sha256": "32cadcc03440517feb41c7195c5f12b330350412cfcaefc8de74274530e464f9",
   "bytes": 1199566,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 14,
   "valide": 13,
   "peMeserie": {
@@ -587,7 +590,7 @@
   "perioada": "2026-09",
   "sha256": "cfd3f202008b0f311f68bf8bf0837d660e29e2beb01f7f252b73fc15dcf171df",
   "bytes": 2728113,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 34,
   "valide": 34,
   "peMeserie": {
@@ -617,7 +620,7 @@
   "perioada": "2022-09",
   "sha256": "df26c457a39125caf1cec3bbb60b11dc47ddcdd7f838b093f26b43ea2d522bbc",
   "bytes": 900722,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 399,
   "valide": 399,
   "peMeserie": {
@@ -645,7 +648,7 @@
   "perioada": "2026-03",
   "sha256": "4bbcb307e3e063ad04482c88b05656b4e17ca7f1844b4efca07c06a97ce140ba",
   "bytes": 1008551,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 22,
   "valide": 22,
   "peMeserie": {
@@ -654,6 +657,7 @@
    "consilier-juridic": 4,
    "magaziner": 1
   },
+  "doarBaza": true,
   "coloaneNecunoscute": [
    "Nr. Crt.",
    "VENITURILE SALARIALE BRUTE ALE FUNCȚIILOR DIN CADRUL modificările și completările ulterioare, H.C.G.",
@@ -675,7 +679,7 @@
   "perioada": "2026-03",
   "sha256": "0735bd427f8c3ca82aa3ddbf35593a74583ccb40874d270aae4e3ed164349449",
   "bytes": 883148,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 142,
   "valide": 142,
   "peMeserie": {
@@ -701,7 +705,7 @@
   "perioada": "2026-03",
   "sha256": "971fa67e4704e67a00f532bea6e0103115d5f38d839a59a6740b1d9f6334ecf3",
   "bytes": 366289,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 3557,
   "valide": 3429,
   "peMeserie": {
@@ -733,7 +737,7 @@
   "perioada": "2026-03",
   "sha256": "5a022301777275d9df8f88a5d4c7ca25af5d85be264464f820742ec676cc5bf7",
   "bytes": 8741913,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 135,
   "valide": 132,
   "peMeserie": {
@@ -763,7 +767,7 @@
   "perioada": "2026-03",
   "sha256": "ea631ca6dfabc255c1ea992b15390cb39180846df9bbefc2ff079ae2f69d3623",
   "bytes": 850577,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 729,
   "valide": 728,
   "peMeserie": {
@@ -798,7 +802,7 @@
   "perioada": "2025-03",
   "sha256": "1ffac8e5c2de233365f974453404da393438d331a1b0c393973fb63e147e8b63",
   "bytes": 1029395,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 859,
   "valide": 859,
   "peMeserie": {
@@ -834,7 +838,7 @@
   "perioada": "2026-03",
   "sha256": "79c4105f83c552d061d33a2df804888e5e2766caa7801904aa70d7a7de54af9f",
   "bytes": 51430,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 30,
   "valide": 30,
   "peMeserie": {
@@ -862,7 +866,7 @@
   "perioada": "2025-08",
   "sha256": "422cf1f347a72e61cc542a8d7863907fc91077e9c96689e3e453374a43b91cb6",
   "bytes": 810923,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 17,
   "valide": 17,
   "peMeserie": {
@@ -887,7 +891,7 @@
   "perioada": "2026-03",
   "sha256": "bad52b869b64f512ea497a84498762c8d10f994653cc90047a4b44c890885d03",
   "bytes": 1567798,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 127,
   "valide": 127,
   "peMeserie": {
@@ -917,7 +921,7 @@
   "perioada": "2026-03",
   "sha256": "ff3b0b54a13d155c2ce119f84000bd6e4b3333e980fe2f8c56b092979ff4ad1c",
   "bytes": 1353110,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 22,
   "valide": 22,
   "peMeserie": {
@@ -946,7 +950,7 @@
   "perioada": "2026-03",
   "sha256": "bc593f2199ca94dbb4de9400a3710fad30742d23171c0536eb06772604e58ee7",
   "bytes": 366250,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 6,
   "valide": 6,
   "peMeserie": {
@@ -962,7 +966,7 @@
   "perioada": "2026-03",
   "sha256": "2b21b28e96a794af68c61034e2c6b4af3c11d00f8fc3221a6536621bef841810",
   "bytes": 22185,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 20,
   "valide": 20,
   "peMeserie": {
@@ -972,6 +976,7 @@
    "magaziner": 1,
    "programator": 1
   },
+  "doarBaza": true,
   "coloaneNecunoscute": [
    "Transparenta veniturilor salariale cf. L153/2017 - MARTIE 2026 TIP Procent"
   ]
@@ -989,7 +994,7 @@
   "perioada": "2025-03",
   "sha256": "c782cfefd43b7ef1c73904c9279ffdb4c191db3c4c7067d389b8a49b78cbf930",
   "bytes": 3161138,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 917,
   "valide": 917,
   "peMeserie": {
@@ -1030,7 +1035,7 @@
   "perioada": "2026-03",
   "sha256": "2775335748a9b453354c597220dd90ea2c467b6bd5922fc272af8ed76d2d4250",
   "bytes": 1194295,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 28,
   "valide": 28,
   "peMeserie": {
@@ -1054,7 +1059,7 @@
   "perioada": "2026-03",
   "sha256": "6a43aa0d359f94ac407f66e494c14620c1fd31ab71127224b2b513271146efc4",
   "bytes": 352892,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 54,
   "valide": 54,
   "peMeserie": {
@@ -1077,7 +1082,7 @@
   "perioada": "2025-09",
   "sha256": "cff6df9144b6037385e8c8b6b3f9559e0e12108a4c9a6f12eaa6ad7300362e3f",
   "bytes": 315252,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 11,
   "valide": 11,
   "peMeserie": {
@@ -1094,7 +1099,7 @@
   "perioada": "2026-03",
   "sha256": "d19281ded8a48ffc17866f94c0c8300e9a1a036d86d3fe9563b77f80cdc12f0f",
   "bytes": 271768,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 50,
   "valide": 50,
   "peMeserie": {
@@ -1116,7 +1121,7 @@
   "fisier": "https://tncms.ro/zip/achizitii/situatiasalariilor.pdf",
   "sha256": "d52607ae35704537b46ab240754c26ab648df0c500b8b1c658b4523fb192c4dc",
   "bytes": 194389,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 4,
   "valide": 4,
   "peMeserie": {
@@ -1125,6 +1130,7 @@
    "magaziner": 1,
    "regizor": 1
   },
+  "doarBaza": true,
   "coloaneNecunoscute": [
    "Nr. Crt. 0",
    "TEATRUL NAȚIONAL ”MARIN SORESCU” CRAIOVA SITUAȚIA DREPTURILOR SALARIALE stabilite potrivit legii, pr"
@@ -1136,7 +1142,7 @@
   "perioada": "2026-09",
   "sha256": "034b6a9e90dbb49856004e3fdddfe991549d76fbc8d9386a4e1124cb4f692cb6",
   "bytes": 151242,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 41,
   "valide": 41,
   "peMeserie": {
@@ -1157,12 +1163,13 @@
   "perioada": "2026-03",
   "sha256": "a89fbcd13cef2359bcc5db555f7ee5b2fba4029b78d8ba5148f89ce9781b9940",
   "bytes": 487491,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 3,
   "valide": 3,
   "peMeserie": {
    "muzician": 3
   },
+  "doarBaza": true,
   "coloaneNecunoscute": [
    "I Nr. 1 r. (t1.",
    "nr.5; 4253790//09.07.1993 Oradea Salariu de"
@@ -1171,10 +1178,10 @@
  "pm-oradea": {
   "stare": "de verificat: baza ghicită la peste 30% din rânduri",
   "fisier": "https://oradea.ro/wp-content/uploads/2026/03/transparenta-veniturilor-salariale-martie-2026.pdf",
-  "perioada": "2017-06",
+  "perioada": "2026-03",
   "sha256": "d77f5d89557008090a32f3edcc7bd4c9e12bd2ec95c8b2460ce56894097c9763",
   "bytes": 294301,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 10,
   "valide": 10,
   "peMeserie": {
@@ -1192,7 +1199,7 @@
   "perioada": "2026-03",
   "sha256": "a4791e5694e469cd67c23fff97c1a98dd7de618120147950a786f77512139808",
   "bytes": 192279,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 19,
   "valide": 19,
   "peMeserie": {
@@ -1209,12 +1216,13 @@
   "perioada": "2026-03",
   "sha256": "4c0c49730b28a0f9623b528ffbefdd6913dd1229650650c3816ff0ba6f5127cb",
   "bytes": 491306,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 3,
   "valide": 3,
   "peMeserie": {
    "functionar-public": 3
   },
+  "doarBaza": true,
   "coloaneNecunoscute": [
    "310130 Arad",
    "MUNICIPIUL ARAD – România",
@@ -1237,7 +1245,7 @@
   "perioada": "2026-03",
   "sha256": "4a3ba937242442392ad646f1437e339907bafb07375880251fb20da57d8e6131",
   "bytes": 734071,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 29,
   "valide": 29,
   "peMeserie": {
@@ -1255,7 +1263,7 @@
   "perioada": "2026-03",
   "sha256": "0d1e6d907c89e03afb0d3155d4c2d1b203d86ab5aaead77f1f1783f1a3e44fa9",
   "bytes": 224518,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 23,
   "valide": 23,
   "peMeserie": {
@@ -1276,7 +1284,7 @@
   "perioada": "2026-03",
   "sha256": "799ef995c4462e9533a58b6ca291c9216f67e3eeb05379ba443a5c127adf9f84",
   "bytes": 104804,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 21,
   "valide": 0,
   "peMeserie": {
@@ -1293,7 +1301,7 @@
   "perioada": "2026-03",
   "sha256": "614c263f5975ed620a182cf403fdfcbf1ffb2694e1cfc1c5e1324a9b02bf2bf7",
   "bytes": 247230,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 82,
   "valide": 82,
   "peMeserie": {
@@ -1310,7 +1318,7 @@
   "perioada": "2026-03",
   "sha256": "da3afa21dbd120c37fe1d6831f31f72a3016d481ecaf090521fff3f3fd266f64",
   "bytes": 84539,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 85,
   "valide": 85,
   "peMeserie": {
@@ -1336,7 +1344,7 @@
   "perioada": "2026-03",
   "sha256": "3e647fcb528d62c3c4ae7c31d699313e4465d644b0c4d56946a0152a3c049dd2",
   "bytes": 399782,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 18,
   "valide": 18,
   "peMeserie": {
@@ -1374,7 +1382,7 @@
   "perioada": "2026-03",
   "sha256": "8d498d2769394e6c18ee99c949545bd6255783bb528877661464b23ae149a526",
   "bytes": 243126,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 12,
   "valide": 12,
   "peMeserie": {
@@ -1399,7 +1407,7 @@
   "perioada": "2026-03",
   "sha256": "48a50c8c6c7fef48312552a7095bb63ecf91181bb2e8291b40048cff95e02019",
   "bytes": 347667,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 13,
   "valide": 13,
   "peMeserie": {
@@ -1429,7 +1437,7 @@
   "perioada": "2026-03",
   "sha256": "8afe893e9e637157905872881438a3210a1050dce9f19e1a9ed8e7a98ac0e465",
   "bytes": 1017807,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 21,
   "valide": 21,
   "peMeserie": {
@@ -1452,7 +1460,7 @@
   "perioada": "2026-03",
   "sha256": "7746f4477cc769a17e0cd34b6e2805e9e7a838bca7b3c6c4b8b299c8d75c4b3c",
   "bytes": 7497324,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 117,
   "valide": 117,
   "peMeserie": {
@@ -1482,7 +1490,7 @@
   "perioada": "2026-03",
   "sha256": "a91b57d519bf721e0b8d07dab338907e3d5681d6406a6601aeac22a65f29cf74",
   "bytes": 160100,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 1,
   "valide": 1,
   "peMeserie": {
@@ -1586,12 +1594,13 @@
   "perioada": "2026-03",
   "sha256": "a3f6ca0d5633c4cca535aabaafe8c931c5c313170be337baf1924172ab9b39af",
   "bytes": 325269,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 11,
   "valide": 11,
   "peMeserie": {
    "functionar-public": 11
   },
+  "doarBaza": true,
   "coloaneNecunoscute": [
    "A. Nr. crt.",
    "Situația veniturilor salariale din cadrul aparatului de specialitate al Primarului Sectorului 1 și d",
@@ -1610,7 +1619,7 @@
   "perioada": "2026-03",
   "sha256": "b1353244d945d5a5abb1d2be7af82e257d30864ff77c03131e8a9cf82f9cd3bf",
   "bytes": 300318,
-  "cititLa": "2026-09-27",
+  "cititLa": "2026-09-28",
   "randuri": 6,
   "valide": 0,
   "peMeserie": {
@@ -1649,5 +1658,90 @@
  "csm-targoviste": {
   "stare": "fără rânduri verificabile după OCR",
   "sha256": "ba5a7e4205cc7604082d0b21a88d3b8cceb7b9eb318127f4c2e1590a8eb074c9"
+ },
+ "saj-timis": {
+  "stare": "acceptat",
+  "fisier": "https://ambulantatimis.ro/wp-content/uploads/2026/09/Salarii-Martie-2026.pdf",
+  "perioada": "2026-03",
+  "sha256": "0ff5a7fce3466af3bce17d257349b0ed09efc072baa89875944c456aee3d3236",
+  "bytes": 385535,
+  "cititLa": "2026-09-28",
+  "randuri": 386,
+  "valide": 386,
+  "peMeserie": {
+   "sofer-ambulanta": 155,
+   "asistent-medical": 184,
+   "consilier-juridic": 1,
+   "economist": 8,
+   "farmacist": 1,
+   "medic": 37
+  },
+  "doarBaza": true,
+  "coloaneNecunoscute": [
+   "SERVICIUL DE AMBULANȚĂ JUDETEAN TIMIS Nr. Crt"
+  ]
+ },
+ "saj-iasi": {
+  "stare": "fără rânduri verificabile după OCR",
+  "sha256": "a4e8f7ca83d0c8f5d314974cc78dcacadb085e2b42f73e212ab11b2a04e30fe3"
+ },
+ "saj-gorj": {
+  "stare": "fără rânduri verificabile după OCR",
+  "sha256": "1497bd8d52064d78eaf0403e0b791d111a897e0e3b726b71f12391677d16c440"
+ },
+ "saj-covasna": {
+  "stare": "fără rânduri verificabile după OCR",
+  "sha256": "72240f7bb8fe4025429feb8a9befbc65d669de75a9c9df16a6394cd83a16f39c"
+ },
+ "saj-dambovita": {
+  "stare": "fără rânduri verificabile după OCR",
+  "sha256": "9a0fe091d1016fff0c8ed61112648231347c865c7fad18dc7278a9bcc034ea4e"
+ },
+ "saj-harghita": {
+  "stare": "acceptat",
+  "fisier": "https://sajhr.ro/wp-content/uploads/SALAR-martie-2026.xlsx",
+  "perioada": "2026-03",
+  "sha256": "59bd1108ba69d5c585f181f637e0d1d0be63989c78cb6d8b85b6d2b62faa0a44",
+  "bytes": 46998,
+  "cititLa": "2026-09-28",
+  "randuri": 288,
+  "valide": 288,
+  "peMeserie": {
+   "sofer-ambulanta": 133,
+   "medic-rezident": 6,
+   "farmacist": 1,
+   "consilier-juridic": 1,
+   "asistent-medical": 135,
+   "economist": 7,
+   "medic": 3,
+   "electrician": 1,
+   "contabil": 1
+  },
+  "doarBaza": true,
+  "coloaneNecunoscute": [
+   "Valoare"
+  ]
+ },
+ "saj-neamt": {
+  "stare": "acceptat",
+  "fisier": "https://ambulantaneamt.ro/wp-content/uploads/2026/09/TRANSPARENTA-SEPTEMBRIE-2026.pdf",
+  "perioada": "2026-09",
+  "sha256": "6fcbf2ad9b53b757c2911c18cf0bf3b2f576a4e254ec9259d4f93064d30de3aa",
+  "bytes": 569546,
+  "cititLa": "2026-09-28",
+  "randuri": 22,
+  "valide": 22,
+  "peMeserie": {
+   "medic": 3,
+   "asistent-medical": 5,
+   "sofer-ambulanta": 12,
+   "economist": 2
+  },
+  "coloaneNecunoscute": [
+   "Nr. crt. 0 1",
+   "SERVICIUL DE AMBULANTA JUDETEAN NEAMT NR. 30217/21.09.2026 Grad/treaptă profesională Funcție ocupată",
+   "conform art. 33 din Legea-Cadru nr. 153 din 28 iunie 2017, cu modificările și completările ulterioar",
+   "Cuantum suma conform OUG 114/2018 11 0"
+  ]
  }
 }

@@ -4239,3 +4239,22 @@ funcționar public (432) intră; consultant-management a scăzut la 19 salarii �
 e salariul de început; nota spune că și maximele cuprind restanțe din hotărâri. Rămân fără sumă.
 Rămase fără sumă (38): vezi `npx tsx` pe lista din `/salarii` (cifra lipsește la meseriile private
 fără oferte ANOFM, la MAI, preot, notar, pescar, fermier, regizor).
+
+## 28 septembrie 2026 — pragul salariilor plătite: 20 de posturi
+
+Decis de proprietar: salariul-concluzie din listele art. 33 se publică de la **20 de posturi**
+(înainte 50), tot cu 5 instituții și 3 județe; defalcările pe județ și pe vechime tot de la 20.
+Trei reguli puse odată cu el, ca pragul mai mic să nu aducă cifre greșite:
+- **Listele cu numai salariul de bază** (nicio coloană de sporuri: SAJ Timiș, SAJ Harghita citit
+  așa, DGASPC Sector 1 și Călărași, UAUIM) nu intră în cifră și nici în praguri (`doarBaza` în
+  `raport.json`). Tăiau salariul fix: asistent social 5.726 → 5.993, bibliotecar 4.064 → 3.780
+  (fără UAUIM, 5 instituții), medic 10.083 → 10.291.
+- **Meseriile practicate mai ales în privat** (secțiunea CAEN nu e O, P, Q, R): anunțurile rămân
+  cifra paginii chiar când salariile de la stat trec pragul; acestea apar dedesubt, la „Salarii
+  plătite la stat” (electrician 5.500 din anunțuri, 3.586 la spitale). `agregare.mjs` citea
+  catalogul fără `caen2`; acum îl citește.
+- Data legii („153 din 28 iunie 2017”) nu mai e luată drept luna datelor (SAJ Neamț, Oradea).
+
+Șofer de ambulanță: de la „de la 2.881” (grila, gradația 0) la **3.682 lei net**, 27 de posturi,
+7 instituții, 7 județe (+ SAJ Neamț). Registru: 7 servicii de ambulanță județene (Timiș și Harghita
+doar bază, Iași, Gorj, Covasna, Dâmbovița scanate fără verificare aritmetică).

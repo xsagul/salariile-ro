@@ -8,7 +8,8 @@
 //   plătit    — listele art. 33 L153/2017 (colectare/art33/observatii), fișiere acceptate
 //   declarat  — ofertele ANOFM (colectare/anofm/oferte), pe codul COR al meseriei
 //   oferit    — anunțurile verificate (src/data/acoperire-anunturi.json)
-// Concluzia: prima sursă, în ordinea plătit → oferit → declarat, care trece pragurile;
+// Concluzia: prima sursă, în ordinea plătit → oferit → declarat, care trece pragurile (la
+// meseriile practicate mai ales în privat, oferit înaintea lui plătit);
 // celelalte o verifică (diferența procentuală față de concluzie).
 import fs from "node:fs";
 import path from "node:path";
@@ -18,9 +19,11 @@ const fiscal = await import("../../src/lib/fiscal.ts");
 const { grilaPublica } = await import("../../src/lib/grile-publice.ts");
 
 export const PRAGURI = {
-  platit: { institutii: 5, judete: 3, randuri: 50, vechimeLuniMax: 18 },
-  platitJudet: { randuri: 30, institutii: 1 },
-  platitGradatie: { randuri: 30, institutii: 3 },
+  // 20 de posturi, nu 50: decis de proprietar pe 28 septembrie 2026 („de la 20 de posturi
+  // începem să facem mediane”). Instituțiile și județele rămân, ca cifra să nu fie a unui singur angajator.
+  platit: { institutii: 5, judete: 3, randuri: 20, vechimeLuniMax: 18 },
+  platitJudet: { randuri: 20, institutii: 1 },
+  platitGradatie: { randuri: 20, institutii: 3 },
   declarat: { oferte: 30, angajatori: 10, laMinimMax: 0.25 }, // peste un sfert la minim, minimul declarat e formalitate, nu salariu
   // Anunțurile au pragurile lor în scripts/crawler/policy.mjs; aici doar citim statusul.
 };
@@ -71,6 +74,10 @@ const obs = [];
 for (const f of fs.readdirSync("colectare/art33/observatii").filter((f) => f.endsWith(".jsonl"))) {
   const id = f.replace(/\.jsonl$/, "");
   if (raport[id]?.stare !== "acceptat") continue;
+  // Listele care publică numai salariul de bază (fără nicio coloană de sporuri) nu spun salariul
+  // fix: la SAJ Timiș ambulanțierii apar cu baza de 6.120 lei, fără sporul de ambulanță pe care
+  // listele complete îl arată. Nu intră în cifră și nici nu se numără la praguri (28 sept. 2026).
+  if (raport[id]?.doarBaza) continue;
   for (const l of fs.readFileSync(path.join("colectare/art33/observatii", f), "utf8").split("\n")) {
     if (!l.trim()) continue;
     const o = JSON.parse(l);
@@ -101,7 +108,7 @@ function platit(slug) {
     const rs = r.filter((o) => o.studii === s);
     if (rs.length >= 20) peStudii[s] = { randuri: rs.length, net: distributie(rs, (o) => o.netFix) };
   }
-  // Pe vechime: fiecare gradație cu cel puțin 30 de posturi din 3 instituții.
+  // Pe vechime: fiecare gradație cu cel puțin 20 de posturi din 3 instituții.
   const peGradatie = {};
   for (let g = 0; g <= 5; g++) {
     const rg = r.filter((o) => o.gradatie === g);
@@ -127,7 +134,7 @@ const oferte = new Map();
 for (const f of fs.readdirSync("colectare/anofm/oferte").filter((f) => f.endsWith(".jsonl"))) {
   for (const l of fs.readFileSync(path.join("colectare/anofm/oferte", f), "utf8").split("\n")) if (l.trim()) { const o = JSON.parse(l); oferte.set(o.id, o); }
 }
-const meserii = [...fs.readFileSync("src/lib/meserii.ts", "utf8").matchAll(/slug: "([^"]+)", nume: "([^"]+)".*?cor: "(\d{6})"/g)].map(([, slug, nume, cor]) => ({ slug, nume, cor }));
+const meserii = [...fs.readFileSync("src/lib/meserii.ts", "utf8").matchAll(/slug: "([^"]+)", nume: "([^"]+)".*?caen2: "([^"]+)".*?cor: "(\d{6})"/g)].map(([, slug, nume, caen2, cor]) => ({ slug, nume, caen2, cor }));
 const corComun = {};
 for (const m of meserii) corComun[m.cor] = (corComun[m.cor] ?? 0) + 1;
 const minimLa = (zi) => (zi < "2026-07-01" ? 4050 : 4325);
@@ -164,7 +171,13 @@ const rezultat = [];
 for (const m of meserii) {
   const P = platit(m.slug), O = oferit(m.slug), D = declarat(m);
   let concluzie = null;
-  if (P?.trece) concluzie = { sursa: "platit", net: P.netFix.mediana, interval: [P.netFix.p25, P.netFix.p75], ce: "salariul fix plătit la angajatorii publici (bază + sporuri permanente, fără ture și gărzi)" };
+  // Salariul de la stat e cifra paginii numai unde meseria se practică mai ales la stat
+  // (administrație, învățământ, sănătate și asistență socială, cultură). Electricianul de la
+  // spital (3.586 lei net) nu e electricianul pe care îl caută cineva: acolo, când anunțurile
+  // trec pragurile, ele sunt cifra, iar salariul de la stat stă dedesubt, ca verificare.
+  const laStat = ["O", "P", "Q", "R"].includes(m.caen2);
+  if (P?.trece && O?.trece && !laStat) concluzie = { sursa: "oferit", net: O.netCentral, interval: null, ce: "salariul oferit la angajare în anunțurile verificate" };
+  else if (P?.trece) concluzie = { sursa: "platit", net: P.netFix.mediana, interval: [P.netFix.p25, P.netFix.p75], ce: "salariul fix plătit la angajatorii publici (bază + sporuri permanente, fără ture și gărzi)" };
   else if (O?.trece) concluzie = { sursa: "oferit", net: O.netCentral, interval: null, ce: "salariul oferit la angajare în anunțurile verificate" };
   else if (D?.trece) concluzie = { sursa: "declarat", net: D.netMinimDeclarat.mediana, interval: [D.netMinimDeclarat.p25, D.netMinimDeclarat.p75], ce: "salariul minim declarat în ofertele oficiale ANOFM" };
   if (concluzie) {

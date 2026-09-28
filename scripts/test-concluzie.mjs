@@ -18,7 +18,10 @@ for (const [slug, c] of Object.entries(date.meserii)) {
     assert.ok(c.interval && c.interval[0] <= c.net && c.net <= c.interval[1], `${slug}: intervalul trebuie să conțină cifra`);
     for (const j of c.platit.peJudet) assert.ok(j.randuri >= agregat.praguri.platitJudet.randuri, `${slug}: ${j.judet} sub pragul pe județ`);
   }
-  if (c.sursa === "oferit") assert.equal(c.platit, null, `${slug}: fără salarii plătite peste prag, nu arătăm detaliile lor`);
+  // La meseriile practicate mai ales în privat, anunțurile sunt cifra chiar când salariile de la
+  // stat trec pragurile (electricianul de spital); atunci detaliile lor se arată, dar numai peste prag.
+  if (c.sursa === "oferit" && c.platit) assert.ok(c.platit.institutii >= prag.institutii && c.platit.judete >= prag.judete && c.platit.randuri >= prag.randuri,
+    `${slug}: salariile plătite sub prag nu se arată nici lângă anunțuri`);
   if (c.declarat) assert.ok(c.declarat.oferte >= 20, `${slug}: ANOFM sub 20 de oferte nu se arată`);
   for (const a of c.angajatori ?? []) {
     assert.ok(a.min >= 4325 && a.min <= a.max, `${slug}: ${a.firma} — normă întreagă sub salariul minim sau interval inversat`);

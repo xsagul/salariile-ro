@@ -1,18 +1,18 @@
 {
- "generatLa": "2026-09-28T01:54:51.745Z",
+ "generatLa": "2026-09-28T09:21:09.690Z",
  "praguri": {
   "platit": {
    "institutii": 5,
    "judete": 3,
-   "randuri": 50,
+   "randuri": 20,
    "vechimeLuniMax": 18
   },
   "platitJudet": {
-   "randuri": 30,
+   "randuri": 20,
    "institutii": 1
   },
   "platitGradatie": {
-   "randuri": 30,
+   "randuri": 20,
    "institutii": 3
   },
   "declarat": {
@@ -21,7 +21,7 @@
    "laMinimMax": 0.25
   }
  },
- "observatiiPlatite": 21189,
+ "observatiiPlatite": 21050,
  "oferteAnofm": 8776,
  "meserii": [
   {
@@ -31,7 +31,7 @@
    "concluzie": null,
    "platit": {
     "randuri": 15,
-    "subPragExclus": 1,
+    "subPragExclus": 0,
     "institutii": 8,
     "judete": 8,
     "trece": false,
@@ -177,31 +177,31 @@
    "cor": "221101",
    "concluzie": {
     "sursa": "platit",
-    "net": 10083,
+    "net": 10291,
     "interval": [
      7564,
-     11938
+     12338
     ],
     "ce": "salariul fix plătit la angajatorii publici (bază + sporuri permanente, fără ture și gărzi)",
     "verificare": {
      "platit": null,
      "oferit": {
       "net": 20000,
-      "diferenta": 98,
+      "diferenta": 94,
       "trece": false
      },
      "declarat": {
       "net": 5760,
-      "diferenta": -43,
+      "diferenta": -44,
       "laMinim": 0,
       "trece": false
      }
     }
    },
    "platit": {
-    "randuri": 3518,
-    "subPragExclus": 1687,
-    "institutii": 23,
+    "randuri": 3517,
+    "subPragExclus": 1686,
+    "institutii": 22,
     "judete": 17,
     "trece": true,
     "perioade": [
@@ -213,10 +213,9 @@
     ],
     "surse": [
      "Direcția de Asistență Socială Brașov",
-     "DGASPC Călărași",
-     "DGASPC Sector 1",
      "Direcția de Sănătate Publică București",
      "Direcția de Sănătate Publică Vaslui",
+     "Serviciul de Ambulanță Județean Neamț",
      "Spitalul Clinic de Boli Infecțioase Iași",
      "Spitalul Clinic Județean de Urgență Bihor",
      "Spitalul Clinic Județean de Urgență Brăila",
@@ -238,26 +237,26 @@
     ],
     "netFix": {
      "p25": 7564,
-     "mediana": 10083,
-     "p75": 11938
+     "mediana": 10291,
+     "p75": 12338
     },
     "brutFix": {
      "p25": 12929,
-     "mediana": 17236,
-     "p75": 20407
+     "mediana": 17592,
+     "p75": 21091
     },
     "netBaza": {
      "p25": 7386,
-     "mediana": 8151,
-     "p75": 10289
+     "mediana": 8695,
+     "p75": 10290
     },
     "debutant": null,
     "variabil": {
      "cota": 0.27,
      "netCuVariabil": {
-      "p25": 7176,
-      "mediana": 11609,
-      "p75": 16039
+      "p25": 7564,
+      "mediana": 12124,
+      "p75": 17567
      }
     },
     "peJudet": {
@@ -271,11 +270,11 @@
       }
      },
      "B": {
-      "randuri": 62,
-      "institutii": 4,
+      "randuri": 60,
+      "institutii": 3,
       "net": {
-       "p25": 8098,
-       "mediana": 10289,
+       "p25": 9794,
+       "mediana": 11020,
        "p75": 11020
       }
      },
@@ -390,11 +389,11 @@
     },
     "peStudii": {
      "S": {
-      "randuri": 1966,
+      "randuri": 1967,
       "net": {
-       "p25": 7491,
+       "p25": 5490,
        "mediana": 11020,
-       "p75": 11837
+       "p75": 12305
       }
      }
     },
@@ -427,12 +426,12 @@
       }
      },
      "5": {
-      "randuri": 1413,
-      "institutii": 14,
+      "randuri": 1416,
+      "institutii": 15,
       "net": {
-       "p25": 4963,
-       "mediana": 11076,
-       "p75": 13498
+       "p25": 5490,
+       "mediana": 10979,
+       "p75": 13791
       }
      }
     }
@@ -699,30 +698,30 @@
    "cor": "325901",
    "concluzie": {
     "sursa": "platit",
-    "net": 4677,
+    "net": 4717,
     "interval": [
-     4130,
-     5566
+     4213,
+     5662
     ],
     "ce": "salariul fix plătit la angajatorii publici (bază + sporuri permanente, fără ture și gărzi)",
     "verificare": {
      "platit": null,
      "oferit": {
       "net": 4750,
-      "diferenta": 2,
+      "diferenta": 1,
       "trece": false
      },
      "declarat": {
       "net": 3116,
-      "diferenta": -33,
+      "diferenta": -34,
       "laMinim": 0.3,
       "trece": false
      }
     }
    },
    "platit": {
-    "randuri": 7803,
-    "subPragExclus": 57,
+    "randuri": 7797,
+    "subPragExclus": 47,
     "institutii": 17,
     "judete": 15,
     "trece": true,
@@ -734,8 +733,8 @@
     ],
     "surse": [
      "Direcția de Asistență Socială Brașov",
-     "DGASPC Călărași",
      "Direcția de Sănătate Publică Vaslui",
+     "Serviciul de Ambulanță Județean Neamț",
      "Spitalul Clinic de Boli Infecțioase Iași",
      "Spitalul Clinic Județean de Urgență Bihor",
      "Spitalul Clinic Județean de Urgență Cluj-Napoca",
@@ -752,37 +751,55 @@
      "Universitatea de Medicină, Farmacie, Științe și Tehnologie Târgu Mureș"
     ],
     "netFix": {
-     "p25": 4130,
-     "mediana": 4677,
-     "p75": 5566
+     "p25": 4213,
+     "mediana": 4717,
+     "p75": 5662
     },
     "brutFix": {
-     "p25": 7060,
-     "mediana": 7996,
-     "p75": 9513
+     "p25": 7202,
+     "mediana": 8063,
+     "p75": 9679
     },
     "netBaza": {
-     "p25": 3785,
-     "mediana": 3987,
-     "p75": 4209
+     "p25": 3842,
+     "mediana": 3988,
+     "p75": 4243
     },
     "debutant": {
      "randuri": 149,
      "net": {
-      "p25": 3470,
-      "mediana": 4131,
+      "p25": 3582,
+      "mediana": 4197,
       "p75": 4940
      }
     },
     "variabil": {
      "cota": 0.76,
      "netCuVariabil": {
-      "p25": 5201,
-      "mediana": 5722,
-      "p75": 6646
+      "p25": 5252,
+      "mediana": 5752,
+      "p75": 6655
      }
     },
     "peJudet": {
+     "VS": {
+      "randuri": 24,
+      "institutii": 1,
+      "net": {
+       "p25": 3745,
+       "mediana": 4115,
+       "p75": 4164
+      }
+     },
+     "IS": {
+      "randuri": 21,
+      "institutii": 1,
+      "net": {
+       "p25": 5387,
+       "mediana": 5514,
+       "p75": 6781
+      }
+     },
      "BH": {
       "randuri": 1251,
       "institutii": 1,
@@ -876,11 +893,11 @@
     },
     "peStudii": {
      "S": {
-      "randuri": 1409,
+      "randuri": 1411,
       "net": {
-       "p25": 4300,
-       "mediana": 4952,
-       "p75": 6321
+       "p25": 4298,
+       "mediana": 4842,
+       "p75": 6172
       }
      },
      "SSD": {
@@ -892,11 +909,11 @@
       }
      },
      "PL": {
-      "randuri": 4674,
+      "randuri": 4666,
       "net": {
-       "p25": 4018,
-       "mediana": 4509,
-       "p75": 5332
+       "p25": 4164,
+       "mediana": 4656,
+       "p75": 5585
       }
      },
      "M": {
@@ -955,12 +972,12 @@
       }
      },
      "5": {
-      "randuri": 3403,
-      "institutii": 10,
+      "randuri": 3408,
+      "institutii": 11,
       "net": {
-       "p25": 4645,
-       "mediana": 5196,
-       "p75": 6141
+       "p25": 4624,
+       "mediana": 5153,
+       "p75": 6085
       }
      }
     }
@@ -1146,6 +1163,15 @@
      }
     },
     "peGradatie": {
+     "0": {
+      "randuri": 21,
+      "institutii": 6,
+      "net": {
+       "p25": 2843,
+       "mediana": 2914,
+       "p75": 3004
+      }
+     },
      "2": {
       "randuri": 48,
       "institutii": 11,
@@ -1261,32 +1287,32 @@
    "cor": "226201",
    "concluzie": {
     "sursa": "platit",
-    "net": 5963,
+    "net": 6155,
     "interval": [
-     5053,
-     6737
+     5408,
+     6758
     ],
     "ce": "salariul fix plătit la angajatorii publici (bază + sporuri permanente, fără ture și gărzi)",
     "verificare": {
      "platit": null,
      "oferit": {
       "net": 5375,
-      "diferenta": -10,
+      "diferenta": -13,
       "trece": false
      },
      "declarat": {
       "net": 2699,
-      "diferenta": -55,
+      "diferenta": -56,
       "laMinim": 0.33,
       "trece": false
      }
     }
    },
    "platit": {
-    "randuri": 58,
+    "randuri": 55,
     "subPragExclus": 0,
-    "institutii": 12,
-    "judete": 10,
+    "institutii": 11,
+    "judete": 9,
     "trece": true,
     "perioade": [
      "2025-03",
@@ -1294,7 +1320,6 @@
      "2026-03"
     ],
     "surse": [
-     "DGASPC Sector 1",
      "Spitalul Clinic Județean de Urgență Cluj-Napoca",
      "Spitalul Clinic Județean de Urgență Constanța",
      "Spitalul Clinic Județean de Urgență „Sf. Ioan cel Nou” Suceava",
@@ -1308,14 +1333,14 @@
      "Universitatea de Medicină, Farmacie, Științe și Tehnologie Târgu Mureș"
     ],
     "netFix": {
-     "p25": 5053,
-     "mediana": 5963,
-     "p75": 6737
+     "p25": 5408,
+     "mediana": 6155,
+     "p75": 6758
     },
     "brutFix": {
-     "p25": 8637,
-     "mediana": 10193,
-     "p75": 11517
+     "p25": 9246,
+     "mediana": 10522,
+     "p75": 11552
     },
     "netBaza": {
      "p25": 5053,
@@ -1324,7 +1349,7 @@
     },
     "debutant": null,
     "variabil": {
-     "cota": 0.4,
+     "cota": 0.42,
      "netCuVariabil": {
       "p25": 5860,
       "mediana": 6445,
@@ -1332,16 +1357,7 @@
      }
     },
     "peJudet": {},
-    "peStudii": {
-     "S": {
-      "randuri": 22,
-      "net": {
-       "p25": 4761,
-       "mediana": 5408,
-       "p75": 5879
-      }
-     }
-    },
+    "peStudii": {},
     "peGradatie": {}
    },
    "oferit": {
@@ -1446,7 +1462,17 @@
       }
      }
     },
-    "peGradatie": {}
+    "peGradatie": {
+     "5": {
+      "randuri": 21,
+      "institutii": 4,
+      "net": {
+       "p25": 4428,
+       "mediana": 4469,
+       "p75": 4565
+      }
+     }
+    }
    },
    "oferit": {
     "anunturi": 1,
@@ -1477,7 +1503,7 @@
    "cor": "263401",
    "concluzie": {
     "sursa": "platit",
-    "net": 6279,
+    "net": 6314,
     "interval": [
      5116,
      7065
@@ -1487,21 +1513,21 @@
      "platit": null,
      "oferit": {
       "net": 4000,
-      "diferenta": -36,
+      "diferenta": -37,
       "trece": false
      },
      "declarat": {
       "net": 3243,
-      "diferenta": -48,
+      "diferenta": -49,
       "laMinim": 0,
       "trece": false
      }
     }
    },
    "platit": {
-    "randuri": 128,
-    "subPragExclus": 6,
-    "institutii": 21,
+    "randuri": 125,
+    "subPragExclus": 2,
+    "institutii": 20,
     "judete": 16,
     "trece": true,
     "perioade": [
@@ -1513,7 +1539,6 @@
     "surse": [
      "Curtea de Apel Târgu Mureş",
      "Direcția de Asistență Socială Brașov",
-     "DGASPC Sector 1",
      "Direcția de Sănătate Publică Vaslui",
      "Spitalul Clinic de Boli Infecțioase Iași",
      "Spitalul Clinic Județean de Urgență Bihor",
@@ -1535,17 +1560,17 @@
     ],
     "netFix": {
      "p25": 5116,
-     "mediana": 6279,
+     "mediana": 6314,
      "p75": 7065
     },
     "brutFix": {
      "p25": 8744,
-     "mediana": 10735,
+     "mediana": 10793,
      "p75": 12077
     },
     "netBaza": {
-     "p25": 4402,
-     "mediana": 5273,
+     "p25": 4500,
+     "mediana": 5275,
      "p75": 6092
     },
     "debutant": null,
@@ -1553,11 +1578,11 @@
     "peJudet": {},
     "peStudii": {
      "S": {
-      "randuri": 64,
+      "randuri": 61,
       "net": {
-       "p25": 5022,
-       "mediana": 6246,
-       "p75": 7069
+       "p25": 5755,
+       "mediana": 6426,
+       "p75": 7303
       }
      }
     },
@@ -1688,10 +1713,10 @@
    "cor": "226401",
    "concluzie": {
     "sursa": "platit",
-    "net": 5493,
+    "net": 5497,
     "interval": [
-     4545,
-     5870
+     5076,
+     6174
     ],
     "ce": "salariul fix plătit la angajatorii publici (bază + sporuri permanente, fără ture și gărzi)",
     "verificare": {
@@ -1710,10 +1735,10 @@
     }
    },
    "platit": {
-    "randuri": 128,
+    "randuri": 109,
     "subPragExclus": 3,
-    "institutii": 19,
-    "judete": 15,
+    "institutii": 17,
+    "judete": 14,
     "trece": true,
     "perioade": [
      "2025-03",
@@ -1722,8 +1747,6 @@
     ],
     "surse": [
      "Direcția de Asistență Socială Brașov",
-     "DGASPC Călărași",
-     "DGASPC Sector 1",
      "Spitalul Clinic de Boli Infecțioase Iași",
      "Spitalul Clinic Județean de Urgență Bihor",
      "Spitalul Clinic Județean de Urgență Brăila",
@@ -1742,41 +1765,63 @@
      "Spitalul de Psihiatrie Titan Dr. Constantin Gorgos"
     ],
     "netFix": {
-     "p25": 4545,
-     "mediana": 5493,
-     "p75": 5870
+     "p25": 5076,
+     "mediana": 5497,
+     "p75": 6174
     },
     "brutFix": {
-     "p25": 7769,
-     "mediana": 9390,
-     "p75": 10035
+     "p25": 8678,
+     "mediana": 9398,
+     "p75": 10554
     },
     "netBaza": {
-     "p25": 4085,
-     "mediana": 4731,
+     "p25": 4359,
+     "mediana": 4848,
      "p75": 5343
     },
-    "debutant": {
-     "randuri": 10,
-     "net": {
-      "p25": 3457,
-      "mediana": 3510,
-      "p75": 3857
-     }
-    },
+    "debutant": null,
     "variabil": null,
-    "peJudet": {},
-    "peStudii": {
-     "S": {
-      "randuri": 47,
+    "peJudet": {
+     "CJ": {
+      "randuri": 20,
+      "institutii": 3,
       "net": {
-       "p25": 4653,
-       "mediana": 5497,
-       "p75": 5809
+       "p25": 4741,
+       "mediana": 5090,
+       "p75": 5696
+      }
+     },
+     "BC": {
+      "randuri": 20,
+      "institutii": 1,
+      "net": {
+       "p25": 5354,
+       "mediana": 5548,
+       "p75": 5726
       }
      }
     },
-    "peGradatie": {}
+    "peStudii": {
+     "S": {
+      "randuri": 46,
+      "net": {
+       "p25": 5148,
+       "mediana": 5497,
+       "p75": 6079
+      }
+     }
+    },
+    "peGradatie": {
+     "5": {
+      "randuri": 23,
+      "institutii": 9,
+      "net": {
+       "p25": 5298,
+       "mediana": 5726,
+       "p75": 6230
+      }
+     }
+    }
    },
    "oferit": {
     "anunturi": 1,
@@ -1807,32 +1852,32 @@
    "cor": "532103",
    "concluzie": {
     "sursa": "platit",
-    "net": 3671,
+    "net": 3688,
     "interval": [
-     3484,
-     4073
+     3518,
+     4110
     ],
     "ce": "salariul fix plătit la angajatorii publici (bază + sporuri permanente, fără ture și gărzi)",
     "verificare": {
      "platit": null,
      "oferit": {
       "net": 4100,
-      "diferenta": 12,
+      "diferenta": 11,
       "trece": false
      },
      "declarat": {
       "net": 2699,
-      "diferenta": -26,
+      "diferenta": -27,
       "laMinim": 0.44,
       "trece": false
      }
     }
    },
    "platit": {
-    "randuri": 3289,
-    "subPragExclus": 6,
-    "institutii": 19,
-    "judete": 16,
+    "randuri": 3279,
+    "subPragExclus": 2,
+    "institutii": 18,
+    "judete": 15,
     "trece": true,
     "perioade": [
      "2025-03",
@@ -1842,7 +1887,6 @@
     ],
     "surse": [
      "Direcția de Asistență Socială Brașov",
-     "DGASPC Călărași",
      "Direcția de Sănătate Publică Vaslui",
      "Spitalul Clinic de Boli Infecțioase Iași",
      "Spitalul Clinic Județean de Urgență Bihor",
@@ -1862,30 +1906,30 @@
      "Spitalul Municipal Turda"
     ],
     "netFix": {
-     "p25": 3484,
-     "mediana": 3671,
-     "p75": 4073
+     "p25": 3518,
+     "mediana": 3688,
+     "p75": 4110
     },
     "brutFix": {
-     "p25": 5950,
-     "mediana": 6276,
-     "p75": 6963
+     "p25": 6014,
+     "mediana": 6305,
+     "p75": 7027
     },
     "netBaza": {
-     "p25": 3224,
+     "p25": 3273,
      "mediana": 3374,
      "p75": 3375
     },
     "debutant": {
-     "randuri": 132,
+     "randuri": 127,
      "net": {
-      "p25": 3307,
-      "mediana": 3449,
-      "p75": 3592
+      "p25": 3347,
+      "mediana": 3459,
+      "p75": 3630
      }
     },
     "variabil": {
-     "cota": 0.91,
+     "cota": 0.92,
      "netCuVariabil": {
       "p25": 3958,
       "mediana": 4175,
@@ -1893,6 +1937,15 @@
      }
     },
     "peJudet": {
+     "BV": {
+      "randuri": 27,
+      "institutii": 2,
+      "net": {
+       "p25": 3203,
+       "mediana": 3203,
+       "p75": 4197
+      }
+     },
      "IS": {
       "randuri": 70,
       "institutii": 1,
@@ -2022,6 +2075,15 @@
      }
     },
     "peGradatie": {
+     "1": {
+      "randuri": 29,
+      "institutii": 8,
+      "net": {
+       "p25": 3116,
+       "mediana": 3233,
+       "p75": 3578
+      }
+     },
      "2": {
       "randuri": 159,
       "institutii": 13,
@@ -2176,65 +2238,37 @@
    "cor": "234201",
    "concluzie": null,
    "platit": {
-    "randuri": 44,
+    "randuri": 2,
     "subPragExclus": 0,
-    "institutii": 4,
-    "judete": 3,
+    "institutii": 2,
+    "judete": 2,
     "trece": false,
     "perioade": [
      "2026-03"
     ],
     "surse": [
      "Direcția de Asistență Socială Brașov",
-     "DGASPC Călărași",
-     "DGASPC Sector 1",
      "Spitalul de Psihiatrie Titan Dr. Constantin Gorgos"
     ],
     "netFix": {
-     "p25": 2871,
+     "p25": 3522,
      "mediana": 3522,
-     "p75": 3609
+     "p75": 5322
     },
     "brutFix": {
-     "p25": 4824,
+     "p25": 6020,
      "mediana": 6020,
-     "p75": 6169
+     "p75": 9098
     },
     "netBaza": {
-     "p25": 2871,
+     "p25": 3522,
      "mediana": 3522,
-     "p75": 3609
+     "p75": 3989
     },
-    "debutant": {
-     "randuri": 13,
-     "net": {
-      "p25": 2826,
-      "mediana": 2826,
-      "p75": 3040
-     }
-    },
+    "debutant": null,
     "variabil": null,
-    "peJudet": {
-     "CL": {
-      "randuri": 36,
-      "institutii": 1,
-      "net": {
-       "p25": 2940,
-       "mediana": 3149,
-       "p75": 3303
-      }
-     }
-    },
-    "peStudii": {
-     "S": {
-      "randuri": 21,
-      "net": {
-       "p25": 2871,
-       "mediana": 2940,
-       "p75": 3290
-      }
-     }
-    },
+    "peJudet": {},
+    "peStudii": {},
     "peGradatie": {}
    },
    "oferit": {
@@ -2256,33 +2290,32 @@
    "cor": "231005",
    "concluzie": null,
    "platit": {
-    "randuri": 98,
+    "randuri": 90,
     "subPragExclus": 1,
-    "institutii": 4,
+    "institutii": 3,
     "judete": 3,
     "trece": false,
     "perioade": [
      "2026-03"
     ],
     "surse": [
-     "Universitatea de Arhitectură și Urbanism Ion Mincu",
      "Universitatea de Medicină, Farmacie, Științe și Tehnologie Târgu Mureș",
      "Universitatea Națională de Arte București",
      "Universitatea Transilvania din Brașov"
     ],
     "netFix": {
      "p25": 5143,
-     "mediana": 10227,
-     "p75": 10519
+     "mediana": 9621,
+     "p75": 11050
     },
     "brutFix": {
      "p25": 8791,
-     "mediana": 17482,
-     "p75": 17982
+     "mediana": 16447,
+     "p75": 18890
     },
     "netBaza": {
      "p25": 5114,
-     "mediana": 10227,
+     "mediana": 8825,
      "p75": 10227
     },
     "debutant": null,
@@ -2466,17 +2499,17 @@
    "cor": "263102",
    "concluzie": {
     "sursa": "platit",
-    "net": 5313,
+    "net": 5279,
     "interval": [
-     4758,
-     5699
+     4704,
+     5634
     ],
     "ce": "salariul fix plătit la angajatorii publici (bază + sporuri permanente, fără ture și gărzi)",
     "verificare": {
      "platit": null,
      "oferit": {
       "net": 4800,
-      "diferenta": -10,
+      "diferenta": -9,
       "trece": false
      },
      "declarat": {
@@ -2488,18 +2521,20 @@
     }
    },
    "platit": {
-    "randuri": 302,
+    "randuri": 304,
     "subPragExclus": 0,
-    "institutii": 17,
-    "judete": 13,
+    "institutii": 18,
+    "judete": 14,
     "trece": true,
     "perioade": [
      "2025-03",
      "2026-02",
-     "2026-03"
+     "2026-03",
+     "2026-09"
     ],
     "surse": [
      "Filarmonica Banatul Timișoara",
+     "Serviciul de Ambulanță Județean Neamț",
      "Spitalul Clinic de Boli Infecțioase Iași",
      "Spitalul Clinic Județean de Urgență Bihor",
      "Spitalul Clinic Județean de Urgență Brăila",
@@ -2518,18 +2553,18 @@
      "Spitalul de Psihiatrie Titan Dr. Constantin Gorgos"
     ],
     "netFix": {
-     "p25": 4758,
-     "mediana": 5313,
-     "p75": 5699
+     "p25": 4704,
+     "mediana": 5279,
+     "p75": 5634
     },
     "brutFix": {
-     "p25": 8133,
-     "mediana": 9081,
-     "p75": 9742
+     "p25": 8042,
+     "mediana": 9026,
+     "p75": 9631
     },
     "netBaza": {
-     "p25": 4695,
-     "mediana": 4903,
+     "p25": 4641,
+     "mediana": 4758,
      "p75": 5455
     },
     "debutant": null,
@@ -2571,6 +2606,24 @@
        "p75": 5750
       }
      },
+     "CT": {
+      "randuri": 29,
+      "institutii": 1,
+      "net": {
+       "p25": 4934,
+       "mediana": 4934,
+       "p75": 4934
+      }
+     },
+     "SB": {
+      "randuri": 25,
+      "institutii": 1,
+      "net": {
+       "p25": 5502,
+       "mediana": 5634,
+       "p75": 5634
+      }
+     },
      "BC": {
       "randuri": 32,
       "institutii": 1,
@@ -2579,14 +2632,23 @@
        "mediana": 5587,
        "p75": 5630
       }
+     },
+     "BZ": {
+      "randuri": 21,
+      "institutii": 1,
+      "net": {
+       "p25": 5547,
+       "mediana": 5708,
+       "p75": 5734
+      }
      }
     },
     "peStudii": {
      "S": {
-      "randuri": 172,
+      "randuri": 174,
       "net": {
-       "p25": 4704,
-       "mediana": 5282,
+       "p25": 4489,
+       "mediana": 5144,
        "p75": 5634
       }
      }
@@ -2602,12 +2664,12 @@
       }
      },
      "5": {
-      "randuri": 169,
-      "institutii": 13,
+      "randuri": 171,
+      "institutii": 14,
       "net": {
-       "p25": 4758,
+       "p25": 4757,
        "mediana": 5404,
-       "p75": 5725
+       "p75": 5699
       }
      }
     }
@@ -2727,32 +2789,32 @@
    "cor": "261103",
    "concluzie": {
     "sursa": "platit",
-    "net": 5378,
+    "net": 5453,
     "interval": [
      4757,
-     5935
+     6099
     ],
     "ce": "salariul fix plătit la angajatorii publici (bază + sporuri permanente, fără ture și gărzi)",
     "verificare": {
      "platit": null,
      "oferit": {
       "net": 6750,
-      "diferenta": 26,
+      "diferenta": 24,
       "trece": false
      },
      "declarat": {
       "net": 3533,
-      "diferenta": -34,
+      "diferenta": -35,
       "laMinim": 0.2,
       "trece": false
      }
     }
    },
    "platit": {
-    "randuri": 86,
+    "randuri": 71,
     "subPragExclus": 1,
-    "institutii": 27,
-    "judete": 20,
+    "institutii": 25,
+    "judete": 19,
     "trece": true,
     "perioade": [
      "2025-03",
@@ -2766,7 +2828,6 @@
      "Consiliul Județean Bistrița-Năsăud",
      "Consiliul Județean Sălaj",
      "Direcția de Asistență Socială Brașov",
-     "DGASPC Călărași",
      "Direcția de Sănătate Publică Vaslui",
      "Filarmonica Banatul Timișoara",
      "Filarmonica Paul Constantinescu Ploiești",
@@ -2785,19 +2846,18 @@
      "Spitalul Județean de Urgență Buzău",
      "Spitalul Județean de Urgență Miercurea Ciuc",
      "Teatrul Național Radu Stanca Sibiu",
-     "Universitatea de Arhitectură și Urbanism Ion Mincu",
      "Universitatea de Medicină, Farmacie, Științe și Tehnologie Târgu Mureș",
      "Universitatea Transilvania din Brașov"
     ],
     "netFix": {
      "p25": 4757,
-     "mediana": 5378,
-     "p75": 5935
+     "mediana": 5453,
+     "p75": 6099
     },
     "brutFix": {
      "p25": 8132,
-     "mediana": 9194,
-     "p75": 10144
+     "mediana": 9321,
+     "p75": 10427
     },
     "netBaza": {
      "p25": 4704,
@@ -2817,7 +2877,17 @@
       }
      }
     },
-    "peGradatie": {}
+    "peGradatie": {
+     "5": {
+      "randuri": 27,
+      "institutii": 12,
+      "net": {
+       "p25": 4980,
+       "mediana": 5455,
+       "p75": 6490
+      }
+     }
+    }
    },
    "oferit": {
     "anunturi": 7,
@@ -2907,6 +2977,15 @@
        "p75": 18950
       }
      },
+     "AG": {
+      "randuri": 20,
+      "institutii": 1,
+      "net": {
+       "p25": 12040,
+       "mediana": 13846,
+       "p75": 15880
+      }
+     },
      "MM": {
       "randuri": 34,
       "institutii": 1,
@@ -2928,6 +3007,15 @@
      }
     },
     "peGradatie": {
+     "4": {
+      "randuri": 21,
+      "institutii": 7,
+      "net": {
+       "p25": 12040,
+       "mediana": 16722,
+       "p75": 18950
+      }
+     },
      "5": {
       "randuri": 33,
       "institutii": 7,
@@ -3027,6 +3115,15 @@
     "debutant": null,
     "variabil": null,
     "peJudet": {
+     "BC": {
+      "randuri": 22,
+      "institutii": 1,
+      "net": {
+       "p25": 5818,
+       "mediana": 6823,
+       "p75": 7711
+      }
+     },
      "MS": {
       "randuri": 73,
       "institutii": 2,
@@ -3081,6 +3178,15 @@
        "p25": 5818,
        "mediana": 6250,
        "p75": 6676
+      }
+     },
+     "3": {
+      "randuri": 24,
+      "institutii": 7,
+      "net": {
+       "p25": 6169,
+       "mediana": 6872,
+       "p75": 7033
       }
      },
      "4": {
@@ -3341,7 +3447,7 @@
      "platit": {
       "net": 3586,
       "diferenta": -35,
-      "trece": false
+      "trece": true
      },
      "oferit": null,
      "declarat": {
@@ -3357,7 +3463,7 @@
     "subPragExclus": 0,
     "institutii": 6,
     "judete": 6,
-    "trece": false,
+    "trece": true,
     "perioade": [
      "2025-03",
      "2026-03"
@@ -3396,7 +3502,17 @@
     },
     "peJudet": {},
     "peStudii": {},
-    "peGradatie": {}
+    "peGradatie": {
+     "5": {
+      "randuri": 28,
+      "institutii": 5,
+      "net": {
+       "p25": 3586,
+       "mediana": 3685,
+       "p75": 3953
+      }
+     }
+    }
    },
    "oferit": {
     "anunturi": 115,
@@ -3434,7 +3550,7 @@
      "platit": {
       "net": 3551,
       "diferenta": -36,
-      "trece": false
+      "trece": true
      },
      "oferit": null,
      "declarat": {
@@ -3450,7 +3566,7 @@
     "subPragExclus": 0,
     "institutii": 7,
     "judete": 7,
-    "trece": false,
+    "trece": true,
     "perioade": [
      "2025-03",
      "2026-03"
@@ -3490,7 +3606,17 @@
     },
     "peJudet": {},
     "peStudii": {},
-    "peGradatie": {}
+    "peGradatie": {
+     "5": {
+      "randuri": 29,
+      "institutii": 6,
+      "net": {
+       "p25": 3462,
+       "mediana": 3627,
+       "p75": 3787
+      }
+     }
+    }
    },
    "oferit": {
     "anunturi": 59,
@@ -3968,20 +4094,39 @@
    "slug": "sofer-ambulanta",
    "nume": "Șofer de ambulanță",
    "cor": "832203",
-   "concluzie": null,
+   "concluzie": {
+    "sursa": "platit",
+    "net": 3682,
+    "interval": [
+     3541,
+     4069
+    ],
+    "ce": "salariul fix plătit la angajatorii publici (bază + sporuri permanente, fără ture și gărzi)",
+    "verificare": {
+     "platit": null,
+     "oferit": null,
+     "declarat": {
+      "net": 2699,
+      "diferenta": -27,
+      "laMinim": 1,
+      "trece": false
+     }
+    }
+   },
    "platit": {
-    "randuri": 17,
+    "randuri": 27,
     "subPragExclus": 0,
     "institutii": 7,
     "judete": 7,
-    "trece": false,
+    "trece": true,
     "perioade": [
      "2025-03",
      "2026-02",
-     "2026-03"
+     "2026-03",
+     "2026-09"
     ],
     "surse": [
-     "DGASPC Sector 1",
+     "Serviciul de Ambulanță Județean Neamț",
      "Spitalul Clinic de Boli Infecțioase Iași",
      "Spitalul Clinic Județean de Urgență Bihor",
      "Spitalul Clinic Județean de Urgență Cluj-Napoca",
@@ -4000,9 +4145,9 @@
      "p75": 6956
     },
     "netBaza": {
-     "p25": 3349,
+     "p25": 3428,
      "mediana": 3508,
-     "p75": 3508
+     "p75": 3519
     },
     "debutant": null,
     "variabil": null,
@@ -4073,9 +4218,9 @@
     "ce": "salariul oferit la angajare în anunțurile verificate",
     "verificare": {
      "platit": {
-      "net": 3938,
-      "diferenta": 4,
-      "trece": false
+      "net": 3974,
+      "diferenta": 5,
+      "trece": true
      },
      "oferit": null,
      "declarat": {
@@ -4087,18 +4232,17 @@
     }
    },
    "platit": {
-    "randuri": 47,
+    "randuri": 43,
     "subPragExclus": 0,
-    "institutii": 18,
-    "judete": 14,
-    "trece": false,
+    "institutii": 16,
+    "judete": 13,
+    "trece": true,
     "perioade": [
      "2025-03",
      "2026-02",
      "2026-03"
     ],
     "surse": [
-     "DGASPC Călărași",
      "Spitalul Clinic de Boli Infecțioase Iași",
      "Spitalul Clinic Județean de Urgență Bihor",
      "Spitalul Clinic Județean de Urgență Brăila",
@@ -4114,23 +4258,22 @@
      "Spitalul Județean de Urgență Buzău",
      "Spitalul Municipal Turda",
      "Spitalul de Psihiatrie Titan Dr. Constantin Gorgos",
-     "Universitatea de Arhitectură și Urbanism Ion Mincu",
      "Universitatea Națională de Arte București"
     ],
     "netFix": {
-     "p25": 3465,
-     "mediana": 3938,
+     "p25": 3688,
+     "mediana": 3974,
      "p75": 4252
     },
     "brutFix": {
-     "p25": 5918,
-     "mediana": 6732,
+     "p25": 6305,
+     "mediana": 6795,
      "p75": 7269
     },
     "netBaza": {
-     "p25": 3465,
-     "mediana": 3805,
-     "p75": 4039
+     "p25": 3688,
+     "mediana": 3884,
+     "p75": 4049
     },
     "debutant": null,
     "variabil": null,
@@ -4408,7 +4551,7 @@
      "platit": {
       "net": 3729,
       "diferenta": -17,
-      "trece": false
+      "trece": true
      },
      "oferit": null,
      "declarat": {
@@ -4424,7 +4567,7 @@
     "subPragExclus": 1,
     "institutii": 7,
     "judete": 6,
-    "trece": false,
+    "trece": true,
     "perioade": [
      "2025-03",
      "2026-03"
@@ -4464,7 +4607,17 @@
     },
     "peJudet": {},
     "peStudii": {},
-    "peGradatie": {}
+    "peGradatie": {
+     "5": {
+      "randuri": 28,
+      "institutii": 6,
+      "net": {
+       "p25": 3649,
+       "mediana": 3752,
+       "p75": 3801
+      }
+     }
+    }
    },
    "oferit": {
     "anunturi": 35,
@@ -5214,10 +5367,10 @@
    "cor": "262202",
    "concluzie": {
     "sursa": "platit",
-    "net": 4064,
+    "net": 3780,
     "interval": [
      3522,
-     4586
+     4379
     ],
     "ce": "salariul fix plătit la angajatorii publici (bază + sporuri permanente, fără ture și gărzi)",
     "verificare": {
@@ -5227,9 +5380,9 @@
     }
    },
    "platit": {
-    "randuri": 58,
-    "subPragExclus": 2,
-    "institutii": 6,
+    "randuri": 52,
+    "subPragExclus": 0,
+    "institutii": 5,
     "judete": 5,
     "trece": true,
     "perioade": [
@@ -5238,29 +5391,38 @@
     "surse": [
      "Biblioteca Județeană Lucian Blaga Alba",
      "Spitalul Județean de Urgență Miercurea Ciuc",
-     "Universitatea de Arhitectură și Urbanism Ion Mincu",
      "Universitatea de Medicină, Farmacie, Științe și Tehnologie Târgu Mureș",
      "Universitatea Națională de Arte București",
      "Universitatea Transilvania din Brașov"
     ],
     "netFix": {
      "p25": 3522,
-     "mediana": 4064,
-     "p75": 4586
+     "mediana": 3780,
+     "p75": 4379
     },
     "brutFix": {
      "p25": 6020,
-     "mediana": 6948,
-     "p75": 7840
+     "mediana": 6461,
+     "p75": 7487
     },
     "netBaza": {
      "p25": 3489,
-     "mediana": 4064,
-     "p75": 4426
+     "mediana": 3780,
+     "p75": 4379
     },
     "debutant": null,
     "variabil": null,
-    "peJudet": {},
+    "peJudet": {
+     "MS": {
+      "randuri": 23,
+      "institutii": 1,
+      "net": {
+       "p25": 4320,
+       "mediana": 4840,
+       "p75": 4959
+      }
+     }
+    },
     "peStudii": {},
     "peGradatie": {}
    },
@@ -5321,33 +5483,31 @@
    "cor": "532201",
    "concluzie": null,
    "platit": {
-    "randuri": 7,
-    "subPragExclus": 3,
-    "institutii": 3,
-    "judete": 3,
+    "randuri": 1,
+    "subPragExclus": 1,
+    "institutii": 1,
+    "judete": 1,
     "trece": false,
     "perioade": [
      "2026-03"
     ],
     "surse": [
-     "Direcția de Asistență Socială Brașov",
-     "DGASPC Călărași",
-     "DGASPC Sector 1"
+     "Direcția de Asistență Socială Brașov"
     ],
     "netFix": {
      "p25": 2535,
-     "mediana": 2574,
-     "p75": 2857
+     "mediana": 2535,
+     "p75": 2535
     },
     "brutFix": {
-     "p25": 4050,
+     "p25": 4209,
      "mediana": 4209,
-     "p75": 4797
+     "p75": 4209
     },
     "netBaza": {
      "p25": 2535,
-     "mediana": 2574,
-     "p75": 2857
+     "mediana": 2535,
+     "p75": 2535
     },
     "debutant": null,
     "variabil": null,
@@ -5374,10 +5534,10 @@
    "cor": "263501",
    "concluzie": {
     "sursa": "platit",
-    "net": 5726,
+    "net": 5993,
     "interval": [
-     5033,
-     7068
+     5086,
+     7244
     ],
     "ce": "salariul fix plătit la angajatorii publici (bază + sporuri permanente, fără ture și gărzi)",
     "verificare": {
@@ -5385,17 +5545,17 @@
      "oferit": null,
      "declarat": {
       "net": 2986,
-      "diferenta": -48,
+      "diferenta": -50,
       "laMinim": 0.33,
       "trece": false
      }
     }
    },
    "platit": {
-    "randuri": 124,
+    "randuri": 96,
     "subPragExclus": 1,
-    "institutii": 18,
-    "judete": 15,
+    "institutii": 16,
+    "judete": 14,
     "trece": true,
     "perioade": [
      "2025-03",
@@ -5404,8 +5564,6 @@
     ],
     "surse": [
      "Direcția de Asistență Socială Brașov",
-     "DGASPC Călărași",
-     "DGASPC Sector 1",
      "Spitalul Clinic de Boli Infecțioase Iași",
      "Spitalul Clinic Județean de Urgență Bihor",
      "Spitalul Clinic Județean de Urgență Brăila",
@@ -5423,23 +5581,23 @@
      "Spitalul de Psihiatrie Titan Dr. Constantin Gorgos"
     ],
     "netFix": {
-     "p25": 5033,
-     "mediana": 5726,
-     "p75": 7068
+     "p25": 5086,
+     "mediana": 5993,
+     "p75": 7244
     },
     "brutFix": {
-     "p25": 8603,
-     "mediana": 9788,
-     "p75": 12082
+     "p25": 8695,
+     "mediana": 10244,
+     "p75": 12383
     },
     "netBaza": {
-     "p25": 4085,
-     "mediana": 5086,
+     "p25": 4503,
+     "mediana": 5215,
      "p75": 5345
     },
     "debutant": null,
     "variabil": {
-     "cota": 0.21,
+     "cota": 0.27,
      "netCuVariabil": {
       "p25": 5984,
       "mediana": 7355,
@@ -5449,10 +5607,10 @@
     "peJudet": {},
     "peStudii": {
      "S": {
-      "randuri": 52,
+      "randuri": 48,
       "net": {
-       "p25": 5090,
-       "mediana": 6094,
+       "p25": 5702,
+       "mediana": 6399,
        "p75": 7583
       }
      }

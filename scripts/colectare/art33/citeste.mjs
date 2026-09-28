@@ -441,7 +441,8 @@ function verificaOcr(randuri) {
 const LUNI = ["ianuarie", "februarie", "martie", "aprilie", "mai", "iunie", "iulie", "august", "septembrie", "octombrie", "noiembrie", "decembrie"];
 /** Luna datelor, din antetul documentului („Luna: August 2025”, „martie 2026”, „31.03.2026”). */
 function perioadaDin(antet) {
-  const t = faraDiacritice(antet.map((l) => l.items.map((i) => i.t).join(" ")).join(" ")).toLowerCase();
+  // Data legii din titlul ei („Legea-Cadru nr. 153 din 28 iunie 2017”, SAJ Neamț) nu e luna datelor.
+  const t = faraDiacritice(antet.map((l) => l.items.map((i) => i.t).join(" ")).join(" ")).toLowerCase().replace(/28\s*iunie\s*2017/g, " ");
   const m = t.match(new RegExp(`(${LUNI.join("|")})\\s*(20\\d{2})`));
   if (m) return `${m[2]}-${String(LUNI.indexOf(m[1]) + 1).padStart(2, "0")}`;
   const d = t.match(/\b\d{1,2}[.\/-](\d{1,2})[.\/-](20\d{2})\b/);
