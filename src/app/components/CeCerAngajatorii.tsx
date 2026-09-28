@@ -1,5 +1,6 @@
 import Link from "@/app/components/Link";
 import date from "@/data/cerinte-meserii.json";
+import { MESERII } from "@/lib/meserii";
 
 /**
  * Primul ecran al meseriilor fără o cifră verificată (27 septembrie 2026): ce cer și ce oferă
@@ -12,8 +13,14 @@ type Rand = { eticheta: string; valori: { v: string; p: number }[] };
 type Cerinte = { sursa: "anunturi" | "anofm"; n: number; randuri: Rand[] };
 
 const D = date as unknown as { luna: string; meserii: Record<string, Cerinte> };
+// Din ANOFM numai pe un cod COR al meseriei singure: 832201 („șofer autoturisme și camionete”) e
+// și al taximetristului, și al șoferului de ridesharing, și al celui de distribuție.
+const corComun = (slug: string) => {
+  const cor = MESERII.find((m) => m.slug === slug)?.cor;
+  return !!cor && MESERII.filter((m) => m.cor === cor).length > 1;
+};
 export const cerinteMeserie = (slug: string): Cerinte | null =>
-  Object.hasOwn(D.meserii, slug) && D.meserii[slug].randuri.length ? D.meserii[slug] : null;
+  Object.hasOwn(D.meserii, slug) && D.meserii[slug].randuri.length && !(D.meserii[slug].sursa === "anofm" && corComun(slug)) ? D.meserii[slug] : null;
 
 const CARD = "rounded-md border border-stone-200 bg-surface p-5 shadow-soft sm:p-6";
 

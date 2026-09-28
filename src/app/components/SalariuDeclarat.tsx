@@ -3,6 +3,7 @@ import ghid from "@/data/repere-piata-verificate.json";
 import anofm from "@/data/anofm-meserii.json";
 import salario from "@/data/salario-pagini.json";
 import { brutDinNetStandard, calculStandard } from "@/lib/fiscal";
+import { MESERII } from "@/lib/meserii";
 
 /**
  * Primul ecran al meseriilor fără salariu-concluzie, grilă în plată sau venit oficial
@@ -24,21 +25,30 @@ const G: Record<string, Ghid> = {
 };
 const A = (anofm as unknown as { luna: string; meserii: Record<string, Anofm> });
 const ghidMeserie = (slug: string): Ghid | null => (Object.hasOwn(G, slug) ? G[slug] : null);
-const anofmMeserie = (slug: string): Anofm | null => (Object.hasOwn(A.meserii, slug) ? A.meserii[slug] : null);
+// Un cod COR folosit de mai multe meserii din catalog (832201: taximetrist, șofer de ridesharing,
+// șofer de distribuție) nu spune a cui e oferta: ofertele lui nu se arată la niciuna.
+const corComun = (slug: string) => {
+  const cor = MESERII.find((m) => m.slug === slug)?.cor;
+  return !!cor && MESERII.filter((m) => m.cor === cor).length > 1;
+};
+const anofmMeserie = (slug: string): Anofm | null => (Object.hasOwn(A.meserii, slug) && !corComun(slug) ? A.meserii[slug] : null);
+// Cifra paginii din ANOFM numai când sub un sfert din oferte sunt la minim, ca la salariul-concluzie:
+// altfel mediana e chiar minimul, declarat ca formalitate (28 septembrie 2026, șofer de ridesharing).
+const anofmPrincipal = (slug: string): Anofm | null => { const a = anofmMeserie(slug); return a && a.laMinim < 25 ? a : null; };
 const netDin = (brut: number) => calculStandard(brut)?.net ?? null;
 
 /** Cifra de pe card: netul din ghid sau netul medianei ANOFM; aceeași pe /salarii și la „Meserii apropiate”. */
 export function netDeclarat(slug: string): number | null {
   const g = ghidMeserie(slug);
   if (g) return g.net;
-  const a = anofmMeserie(slug);
+  const a = anofmPrincipal(slug);
   return a ? netDin(a.brutMedian) : null;
 }
 export const areSalariuDeclarat = (slug: string) => netDeclarat(slug) !== null;
 
 /** Răspunsul scurt (întrebări frecvente, descrierea din Google), cu sursa în frază. */
 export function frazaDeclarat(slug: string, de: string): string | null {
-  const g = ghidMeserie(slug), a = anofmMeserie(slug);
+  const g = ghidMeserie(slug), a = g ? anofmMeserie(slug) : anofmPrincipal(slug);
   const f = (n: number) => n.toLocaleString("ro-RO");
   if (g) return `Cei care lucrează ca ${de} declară în medie ${f(g.net)} lei net pe lună, după ${g.pagina ? "salariile introduse pe Salario (eJobs)" : "Ghidul salarial eJobs 2026"}.${a ? ` În ofertele depuse la ANOFM, angajatorii declară ${f(a.brutMedian)} lei brut (mediana din ${a.oferte} de oferte).` : ""}`;
   if (a) return `În ofertele depuse la ANOFM, angajatorii declară pentru un ${de} ${f(a.brutMedian)} lei brut, adică ${f(netDin(a.brutMedian)!)} lei net (mediana din ${a.oferte} de oferte).`;
@@ -49,7 +59,7 @@ const lei = (n: number) => n.toLocaleString("ro-RO");
 const CARD = "rounded-md border border-stone-200 bg-surface p-5 shadow-soft sm:p-6";
 
 export default function SalariuDeclarat({ slug, de }: { slug: string; de: string }) {
-  const g = ghidMeserie(slug), a = anofmMeserie(slug);
+  const g = ghidMeserie(slug), a = g ? anofmMeserie(slug) : anofmPrincipal(slug);
   if (!g && !a) return null;
   const principal = g ? g.net : netDin(a!.brutMedian)!;
   return (

@@ -4258,3 +4258,12 @@ Trei reguli puse odată cu el, ca pragul mai mic să nu aducă cifre greșite:
 Șofer de ambulanță: de la „de la 2.881” (grila, gradația 0) la **3.682 lei net**, 27 de posturi,
 7 instituții, 7 județe (+ SAJ Neamț). Registru: 7 servicii de ambulanță județene (Timiș și Harghita
 doar bază, Iași, Gorj, Covasna, Dâmbovița scanate fără verificare aritmetică).
+
+**Tot 28 septembrie — ANOFM nu mai dă cifra paginii când mediana e minimul.** Șofer de ridesharing
+arăta „2.699 lei net”: mediana a 92 de oferte ANOFM, 76% la salariul minim, și nici nu erau oferte
+de ridesharing (COR 832201 e comun cu taximetristul și șoferul de distribuție). Regula nouă, aceeași
+ca la salariul-concluzie: ANOFM e cifra paginii numai sub 25% oferte la minim și pe un COR al
+meseriei singure; „Ce cer angajatorii” din ANOFM tot numai pe COR propriu. Ies: ridesharing,
+distribuție, manipulant mărfuri, electrician de centrală (acum cu cerințele din anunțuri, fără sumă).
+Sub minim nu există oferte reale: din 96 de oferte brute pe 832201, sub 4.325 sunt greșeli de
+introducere (1 leu, 6 lei, 2.699 = netul minim scris ca brut) și oferte din iunie, când minimul era 4.050.
