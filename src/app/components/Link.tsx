@@ -15,13 +15,27 @@
 // Navigarea rămâne client-side; doar datele paginii următoare se cer la click,
 // nu în avans. Pentru un link anume se poate reactiva explicit cu `prefetch`.
 // Nu importa `next/link` direct: `scripts/test-ui-contracts.mts` o interzice.
+//
+// Excepție: paginile hubului de anunțuri le face Worker-ul, nu Next, deci n-au datele de
+// pagină pe care routerul le cere la click. Măsurat pe 29 septembrie 2026: un click pe
+// „Locuri de muncă” cerea /locuri-de-munca.txt, primea 404 (o invocare de Worker în plus)
+// și abia apoi reîncărca pagina. Spre ele, un <a> simplu: navigare completă, din prima.
 
 import NextLink from "next/link";
 import type { ComponentProps } from "react";
+
+const RUTE_WORKER = /^\/(locuri-de-munca|anunt-angajare-)/;
+// Proprietățile routerului, pe care un <a> simplu nu le cunoaște.
+const DOAR_ROUTER = ["as", "replace", "scroll", "shallow", "passHref", "locale", "legacyBehavior", "onNavigate", "unstable_dynamicOnHover", "transitionTypes"];
 
 export default function Link({
   prefetch = false,
   ...props
 }: ComponentProps<typeof NextLink>) {
+  if (typeof props.href === "string" && RUTE_WORKER.test(props.href)) {
+    const a: Record<string, unknown> = { ...props };
+    for (const k of DOAR_ROUTER) delete a[k];
+    return <a {...(a as ComponentProps<"a">)} />;
+  }
   return <NextLink prefetch={prefetch} {...props} />;
 }

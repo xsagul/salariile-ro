@@ -31,7 +31,8 @@ type Item = Leaf | Group;
 // 29 septembrie 2026, cerut de proprietar: „Meserii” a coborât în „Ghiduri”, iar locul
 // lui l-a luat „Adaugă anunț” (hubul de anunțuri, pasul 2 din strategie). Tot atunci,
 // „Calculator salariu” a intrat primul în „Instrumente”, iar primul loc din bară l-a luat
-// „Locuri de muncă”. Homepage-ul rămâne calculatorul și e legat și din logo.
+// „Locuri de muncă”. Tot atunci, logoul a trecut de pe homepage pe /locuri-de-munca: site
+// de joburi, nu doar instrument. Homepage-ul rămâne calculatorul, legat de aici și din footer.
 const NAV: Item[] = [
   { href: "/locuri-de-munca", label: "Locuri de muncă" },
   {
@@ -286,7 +287,7 @@ export default function Header() {
       }`}
     >
       <div className="flex h-16 items-center gap-2 px-4 sm:px-6">
-        <Link href="/" aria-label="Salariile, pagina principală" className="mr-auto inline-flex min-h-11 items-center">
+        <Link href="/locuri-de-munca" aria-label="Salariile, locuri de muncă" className="mr-auto inline-flex min-h-11 items-center">
           <Logo className="h-7 w-auto sm:h-8" />
         </Link>
 

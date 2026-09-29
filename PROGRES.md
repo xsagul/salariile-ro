@@ -4560,3 +4560,15 @@ randat cu intrarea activă, deci browserul ajunge la aceeași stare. Probat loca
 29 septembrie, în toate variantele deodată („Adaugă anunț” în locul „Meserii”; „Locuri de muncă” în
 locul „Calculator salariu”). Comparația între variante rămâne validă; clickurile `zona=header`
 dinainte și de după 29 septembrie nu se adună ca aceeași serie.
+
+## 29 septembrie 2026 — logoul duce la locurile de muncă
+
+Cerut de proprietar, „ca să avem măcar senzația că suntem site de joburi, nu doar instrument”:
+logoul din header și din footer duce la `/locuri-de-munca`, nu la homepage. Homepage-ul (calculatorul)
+rămâne legat de pe fiecare pagină: „Calculator salariu” în „Instrumente” (desktop și sertar) și
+„Calculator salariu net” în footer — verificat în HTML-ul construit (`out/salariu-minim.html`).
+
+Găsit la probă, pe producție: un click pe „Locuri de muncă” din bară cerea întâi
+`/locuri-de-munca.txt?_rsc=…` (datele de pagină ale routerului Next), primea 404 de la Worker și abia
+apoi reîncărca pagina — o cerere și o invocare de Worker în plus pe click. Același lucru la footer și
+la breadcrumb. `Link.tsx` dă acum un `<a>` simplu spre `/locuri-de-munca*` și `/anunt-angajare-*`.
