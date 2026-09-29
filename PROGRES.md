@@ -4712,3 +4712,17 @@ sau Yahoo) i-a fost prezentat; l-a asumat.
   Dacă Googlebot pe sutele de liste noi apropie limita: Workers Paid sau numărătorile mai ieftine.
 - Neautomatizat încă: anunțurile nu dispar când oferta e retrasă la ANOFM înainte de termen, iar
   ofertele noi nu intră singure. Scriptul se poate rula din nou; sare peste ce e în `gestionare.json`.
+
+### Testul de o săptămână: 30 septembrie – 7 octombrie 2026
+
+Proprietarul: „de acum monitorizăm ce scriu ei exact în bara de căutare și măsurăm dacă vreun
+angajator postează vreun anunț pe site-ul nostru”.
+- Anunțurile puse de angajatori după import: `npm run anunturi:noi` (ID peste 790; 1–3 sunt ale
+  prietenilor proprietarului, 4–790 importul ANOFM).
+- Ce se caută: GA4, evenimentul `search` cu `zona` = `anunturi` (commit e3cfdd3). `search_term` =
+  ce s-a scris, fără cifrele de 3+ semne; `element` = ce s-a ales („meserie: Barman”, „localitate:
+  …”, „text liber”) sau „nimic” (a scris și a plecat: cererea neacoperită); `rezultate` = câte
+  anunțuri avea alegerea (-1 la text liber și la „nimic”). Numai vizitatorii cu acord au sursă;
+  termenii apar și la cei fără acord (pinguri fără cookies).
+- Probat local (wrangler dev pe copia D1 cu cele 787): „sudor 5000” și plecat → search_term „sudor”,
+  element „nimic”; „ingrij” → „meserie: Îngrijitoare bătrâni”, rezultate 1, un singur eveniment.

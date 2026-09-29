@@ -21,6 +21,7 @@
     "gsc-login": "node scripts/gsc-login.mjs",
     "psi": "node scripts/psi.mjs",
     "anunturi:raportari": "wrangler d1 execute salariile-anunturi --remote --command \"SELECT r.id AS raportare, r.creat_la, a.id AS anunt, a.titlu, a.oras, a.stare, r.motiv, r.detalii, r.email FROM raportari r JOIN anunturi a ON a.id = r.anunt_id WHERE r.rezolvat_la IS NULL ORDER BY r.creat_la\"",
+    "anunturi:noi": "wrangler d1 execute salariile-anunturi --remote --command \"SELECT id, creat_la, titlu, oras, angajator FROM anunturi WHERE id > 790 ORDER BY id\"",
     "bing": "node scripts/bing.mjs",
     "indexnow": "node scripts/indexnow.mjs",
     "vercel:analytics": "node scripts/vercel-analytics.mjs",
