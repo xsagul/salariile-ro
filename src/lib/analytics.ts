@@ -21,7 +21,8 @@
 //   detalii_deschise   element = textul din <summary> (întrebări frecvente etc.)
 //   parasire_pagina    secunde (vizibil), scroll_max, interactiune, motiv
 //   calcul             instrument, varianta, avansat, moneda — EVENIMENT CHEIE
-//   search             search_term, rezultate (filtrul de meserii)
+//   search             search_term, rezultate (filtrul de meserii); în bara anunțurilor (worker/pagini.ts)
+//                      și zona = anunturi, element = ce a ales („nimic” = a scris și a plecat)
 //   copiaza_link       instrument
 //   copiaza_embed      varianta
 //   click_link_intern  link_url, link_text, zona
@@ -30,7 +31,8 @@
 //   eroare_js          mesaj, sursa — doar scripturile noastre
 //
 // Nu se trimit niciodată: sume introduse, nume de firmă, texte libere din
-// calculatoare. Singurul text liber este termenul din filtrul de meserii.
+// calculatoare. Singurul text liber este termenul căutat (filtrul de meserii și bara
+// anunțurilor), fără cifrele de 3+ semne.
 
 export const GA_MEASUREMENT_ID = "G-2L1J64H5H9";
 

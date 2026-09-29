@@ -400,8 +400,23 @@ function filtre(p: {
           if (gasite.length) inp.setAttribute("aria-activedescendant", id + "-o" + activ); else inp.removeAttribute("aria-activedescendant");
         }
         function inchide() { ul.hidden = true; inp.setAttribute("aria-expanded", "false"); inp.removeAttribute("aria-activedescendant"); }
+        // Ce scriu oamenii în bară (proprietar, 30 septembrie 2026: „monitorizăm ce scriu ei exact”):
+        // evenimentul GA4 „search”, ca la filtrul de meserii, cu zona „anunturi”; \`element\` spune ce au
+        // ales („nimic” = au scris și au plecat: cererea pe care n-o acoperim). Cifrele de 3+ semne ies:
+        // nu trimitem sume (src/lib/analytics.ts).
+        var masurat = false;
+        function masoara(v) {
+          if (masurat || !window.gtag) return;
+          var scris = inp.value.replace(/\\d{3,}/g, "").replace(/\\s+/g, " ").trim().slice(0, 60);
+          if (scris.length < 2) return;
+          masurat = true;
+          var i = v.indexOf(":"), o = toate.filter(function (x) { return x.v === v; })[0];
+          var tip = !v ? "nimic" : i > 0 ? ({ m: "meserie", o: "localitate", d: "domeniu", q: "text liber" })[v.slice(0, i)] : sel.name;
+          try { window.gtag("event", "search", { search_term: scris, zona: "anunturi", element: tip + (o ? ": " + o.t : ""), rezultate: o && o.n >= 0 ? o.n : -1, transport_type: "beacon" }); } catch (e) {}
+        }
         // Alegerea deschide lista imediat, ca pe OLX: fără încă un clic pe „Caută”.
         function alege(v) {
+          masoara(v);
           inchide();
           if (combinat) {
             // Localitatea se adaugă la ce e ales. Meseria, domeniul și textul liber se înlocuiesc între ele:
@@ -419,6 +434,7 @@ function filtre(p: {
         inp.addEventListener("focus", function () { inp.select(); arata(); });
         inp.addEventListener("input", arata);
         inp.addEventListener("blur", function () {
+          if (inp.value !== (combinat ? initial : nume(ascuns.value))) masoara("");
           inchide();
           if (combinat) { inp.value = initial; return; }
           // Ce s-a scris fără alegere nu devine filtru: câmpul revine la alegerea de acum. Golit
