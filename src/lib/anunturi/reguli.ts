@@ -93,6 +93,13 @@ export function telefonCurat(t: string): string | null {
 export const esteMobil = (t: string) => /^07\d{8}$/.test(t);
 export const linkApel = (t: string) => `tel:+4${t}`;
 export const linkWhatsApp = (t: string, titlu: string) => `https://wa.me/4${t}?text=${encodeURIComponent(`Bună ziua, vă scriu pentru anunțul „${titlu}” de pe salariile.ro.`)}`;
+// Distribuirea anunțului (29 septembrie 2026, contra „cold start”): angajatorul își pune oricum
+// anunțul în grupurile de Facebook și pe WhatsApp; cu linkul nostru, candidații ajung la anunțul cu
+// salariul și telefonul, iar ceilalți angajatori din grup află de site. Simple linkuri, fără
+// scripturi Facebook în pagină.
+export const linkDistribuieWhatsApp = (url: string, titlu: string, suma: string) =>
+  `https://wa.me/?text=${encodeURIComponent(`Anunț angajare: ${titlu}, ${suma}. ${url}`)}`;
+export const linkDistribuieFacebook = (url: string) => `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
 /** „0722 123 456”, ca să se citească ușor pe buton. */
 export const telefonAfisat = (t: string) => (t.startsWith("07") ? `${t.slice(0, 4)} ${t.slice(4, 7)} ${t.slice(7)}` : `${t.slice(0, 3)} ${t.slice(3, 6)} ${t.slice(6)}`);
 const emailValid = (e: string) => /^[^\s@]{1,64}@[^\s@]{1,190}\.[a-z]{2,}$/i.test(e);

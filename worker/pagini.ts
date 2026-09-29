@@ -1,7 +1,7 @@
 // Paginile de anunțuri, puse în șablonul static /locuri-de-munca/sablon (header, footer, CSS).
 // Adresele (verificate în Google România, 28 septembrie 2026) sunt deținute de src/lib/anunturi/reguli.ts.
 import type { Env } from "./index";
-import { JUDETE, NORME, URL_ADAUGA, esteMobil, linkApel, linkWhatsApp, telefonAfisat, urlAnunt, urlLista } from "../src/lib/anunturi/reguli";
+import { JUDETE, NORME, URL_ADAUGA, esteMobil, linkApel, linkDistribuieFacebook, linkDistribuieWhatsApp, linkWhatsApp, telefonAfisat, urlAnunt, urlLista } from "../src/lib/anunturi/reguli";
 import { completeazaSablon } from "../src/lib/anunturi/sablon";
 import { MESERII_ANUNTURI, grupMeserie, slugurileGrupului } from "../src/lib/anunturi/meserii";
 import { PE_PAGINA, dupaId, lista, listeIndexabile, numeOras, toateActive, type Anunt } from "./date";
@@ -10,6 +10,7 @@ import { PE_PAGINA, dupaId, lista, listeIndexabile, numeOras, toateActive, type 
 const NUME_MESERIE = new Map(MESERII_ANUNTURI.map((m) => [m.slug, m.nume]));
 export const esteMeserie = (s: string) => NUME_MESERIE.has(s);
 const CARD = "rounded-md border border-stone-200 bg-surface p-5 shadow-soft sm:p-6";
+const BUTON_MIC = "inline-flex min-h-11 items-center rounded-md border border-stone-300 bg-surface px-3 font-semibold text-stone-900 hover:border-stone-500";
 /**
  * O listă intră în Google de la atâtea anunțuri (proprietar, 29 septembrie 2026: 2, nu 5, ca primul
  * angajator dintr-un oraș să nu aștepte alți patru). Cu un singur anunț lista ar fi o copie a paginii
@@ -346,6 +347,22 @@ export async function paginaAnunt(req: Request, env: Env, id: number, slug: stri
           <p class="mt-3 text-xs text-stone-600">Nu plăti niciodată ca să fii angajat. Legea interzice taxele cerute candidaților.</p>
         </div>
         ${locatie}
+        <div class="${CARD}">
+          <h2 class="text-base font-bold text-stone-900">Știi pe cineva potrivit?</h2>
+          <p class="mt-1 text-sm text-stone-600">Trimite-i anunțul: vede salariul și sună direct.</p>
+          <p class="mt-3 flex flex-wrap gap-2 text-sm">
+            <a class="${BUTON_MIC}" rel="noopener" target="_blank" href="${esc(linkDistribuieWhatsApp(canonic, a.titlu, suma(a)))}" data-distribuie="whatsapp">WhatsApp</a>
+            <a class="${BUTON_MIC}" rel="noopener" target="_blank" href="${esc(linkDistribuieFacebook(canonic))}" data-distribuie="facebook">Facebook</a>
+            <button type="button" class="${BUTON_MIC}" data-copiaza="${canonic}">Copiază linkul</button>
+          </p>
+          <script>
+          document.addEventListener("click", function (e) {
+            var b = e.target.closest && e.target.closest("[data-copiaza]");
+            if (!b || !navigator.clipboard) return;
+            navigator.clipboard.writeText(b.getAttribute("data-copiaza")).then(function () { b.textContent = "Linkul e copiat"; });
+          });
+          </script>
+        </div>
         <div class="${CARD}">
           <p class="text-sm text-stone-700">Țeapă, discriminare, salariu fals? <a class="font-semibold underline underline-offset-2" href="/locuri-de-munca/raporteaza#${a.id}">Raportează anunțul</a>. La trei raportări, se suspendă până îl verificăm.</p>
         </div>

@@ -65,6 +65,7 @@ export async function api(req: Request, env: Env, ctx: ExecutionContext, cale: s
     const a = await adauga(env, v.anunt, await localizeaza(v.anunt.adresa, v.anunt.oras, v.anunt.judet), token);
     ctx.waitUntil(trimite(env, v.anunt.email, `Anunțul „${v.anunt.titlu}” e publicat`,
       `Bună ziua,\n\nAnunțul „${v.anunt.titlu}” e publicat pe salariile.ro:\n${env.SITE}${urlAnunt(a)}\n\n` +
+      `Pune linkul anunțului și în grupurile de Facebook cu locuri de muncă din orașul tău: candidații ajung direct la el, cu salariul și telefonul.\n\n` +
       `Îl modifici, îl prelungești sau îl ștergi oricând din linkul de mai jos. Păstrează emailul: linkul nu se mai trimite o dată.\n\n${linkGestionare(env, token)}\n\n` +
       `Anunțul rămâne publicat 30 de zile. Dacă nu l-ai trimis tu, deschide linkul și apasă „Șterge anunțul”.\n\nsalariile.ro`));
     // Linkul de gestionare se dă și pe ecran: emailul nu e verificat, iar o greșeală de scriere l-ar pierde.

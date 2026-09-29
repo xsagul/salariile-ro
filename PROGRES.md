@@ -4423,3 +4423,15 @@ anunț lista rămâne `noindex`: ar fi o copie a paginii anunțului. `PRAG_INDEX
 `worker/pagini.ts`; CLAUDE.md actualizat. Probat local: al doilea anunț de ospătar în București →
 `/locuri-de-munca/bucuresti/ospatar`, `/chelner`, `/ospatarita` trec pe `index, follow` și intră în
 sitemap cu tot grupul; `/femeie-de-serviciu` (0 anunțuri) rămâne `noindex`.
+
+## 29 septembrie 2026 — contra „cold start”: distribuirea anunțului
+
+Angajatorul își pune oricum anunțul în grupurile de Facebook și pe WhatsApp; cu linkul nostru,
+candidații ajung la anunțul cu salariul și telefonul, iar ceilalți angajatori din grup află de site.
+- După publicare: „Adu mai mulți candidați” — Distribuie pe Facebook (sharer), Trimite pe WhatsApp
+  (`wa.me/?text=` cu titlul și salariul), Copiază linkul. Emailul de publicare spune același lucru.
+- Pe anunț: „Știi pe cineva potrivit?” — WhatsApp, Facebook, Copiază linkul (pentru candidați).
+- Simple linkuri (`linkDistribuieFacebook`, `linkDistribuieWhatsApp` în `reguli.ts`), fără scripturi
+  Facebook în pagină. Titlul OG al anunțului e deja „Anunț angajare {titlu}, {oraș} — {sumă}”.
+Probat în browser: anunț publicat prin formular → ecranul are cele trei butoane, cu linkul anunțului.
+Rămase pentru proprietar: primii angajatori (un oraș, câteva meserii) și postările în grupuri.
