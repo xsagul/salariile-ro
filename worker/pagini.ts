@@ -111,6 +111,115 @@ function butonApropiere(meserie: string | null, oras: string | null): string {
   </script>`;
 }
 
+type OptiuneFiltru = { s: string; n: string; c: number };
+
+/**
+ * Filtrele listei: scrii „b” și apar București, Bacău (proprietar, 29 septembrie 2026, ca pe OLX),
+ * fără să derulezi toată lista. Pagina vine cu două <select>, care merg și fără JavaScript; scriptul
+ * le înlocuiește cu câmpuri de căutare, iar alegerea deschide imediat lista filtrată. Potrivirea e
+ * cea din `cauta` (src/lib/anunturi/localitati.ts): întâi începutul, apoi începutul unui cuvânt,
+ * apoi, de la 3 litere, oriunde. Localitățile sunt numai cele cu anunțuri: altfel alegerea ar duce
+ * la o pagină 404.
+ */
+function filtre(meserii: OptiuneFiltru[], meserie: string | null, orase: OptiuneFiltru[], orasSlug: string | null): string {
+  const optiuni = (valori: OptiuneFiltru[], ales: string | null) => valori.map((o) => `<option value="${o.s}" data-n="${o.c}"${o.s === ales ? " selected" : ""}>${esc(o.n)}</option>`).join("");
+  const SELECT = "mt-1 block w-full rounded-md border border-stone-300 bg-surface px-3 py-2 text-base";
+  return `<form method="get" action="/locuri-de-munca" class="mt-6 grid gap-3 sm:grid-cols-[1fr_1fr_auto]" data-filtre>
+      <label class="text-sm text-stone-700">Meseria
+        <select name="meserie" class="${SELECT}" data-cauta="Scrie: barman, șofer, vânzător…"><option value="">Toate meseriile</option>${optiuni(meserii, meserie)}</select>
+      </label>
+      <label class="text-sm text-stone-700">Localitatea
+        <select name="oras" class="${SELECT}" data-cauta="Scrie: București, Cluj…"><option value="">Toată țara</option>${optiuni(orase, orasSlug)}</select>
+      </label>
+      <button type="submit" class="min-h-11 self-end rounded-md border border-stone-300 bg-surface px-4 font-semibold text-stone-900 hover:border-stone-500">Caută</button>
+    </form>
+    <script>
+    (function () {
+      var form = document.querySelector("[data-filtre]");
+      if (!form) return;
+      var nr = 0;
+      function fara(s) { return s.normalize("NFD").replace(/[\\u0300-\\u036f]/g, "").toLowerCase(); }
+      function cate(n) { return n === 0 ? "niciun anunț încă" : n === 1 ? "1 anunț" : n.toLocaleString("ro-RO") + (n % 100 >= 20 || n % 100 === 0 ? " de anunțuri" : " anunțuri"); }
+      form.querySelectorAll("select[data-cauta]").forEach(function (sel) {
+        var id = "filtru-" + (++nr), toate = [], ales = sel.value, activ = 0, gasite = [];
+        Array.prototype.forEach.call(sel.options, function (o) { if (o.value) toate.push({ v: o.value, t: o.text, n: Number(o.dataset.n) || 0, f: fara(o.text) }); });
+        function nume(v) { for (var i = 0; i < toate.length; i++) if (toate[i].v === v) return toate[i].t; return ""; }
+        var tot = sel.options[0].text;
+
+        var cutie = document.createElement("div"); cutie.className = "relative mt-1";
+        var inp = document.createElement("input");
+        inp.type = "text"; inp.id = id; inp.autocomplete = "off"; inp.spellcheck = false;
+        inp.setAttribute("role", "combobox"); inp.setAttribute("aria-autocomplete", "list"); inp.setAttribute("aria-expanded", "false"); inp.setAttribute("aria-controls", id + "-l");
+        inp.placeholder = sel.dataset.cauta; inp.value = nume(ales);
+        inp.className = "block w-full rounded-md border border-stone-300 bg-surface py-2 pl-3 pr-11 text-base text-stone-900 focus:border-stone-600 focus:outline-none";
+        var sterge = document.createElement("button");
+        sterge.type = "button"; sterge.textContent = "×"; sterge.setAttribute("aria-label", tot);
+        sterge.className = "absolute right-0 top-0 flex h-full w-11 items-center justify-center text-2xl leading-none text-stone-500 hover:text-stone-900";
+        sterge.hidden = !ales;
+        var ul = document.createElement("ul");
+        ul.id = id + "-l"; ul.setAttribute("role", "listbox"); ul.hidden = true;
+        ul.className = "absolute left-0 right-0 z-20 mt-1 max-h-80 overflow-auto rounded-md border border-stone-300 bg-surface py-1 shadow-lg";
+        var ascuns = document.createElement("input"); ascuns.type = "hidden"; ascuns.name = sel.name; ascuns.value = ales;
+        cutie.append(inp, sterge, ul);
+        sel.replaceWith(cutie, ascuns);
+
+        function cauta(text) {
+          var q = fara(text).replace(/\\s+/g, " ").trim();
+          // Câmpul gol sau cu alegerea de acum: arată ce are anunțuri, cele mai multe primele.
+          if (!q || text === nume(ales)) return toate.filter(function (o) { return o.n > 0; }).sort(function (a, b) { return b.n - a.n || a.t.localeCompare(b.t, "ro"); }).slice(0, 8);
+          var r = [];
+          toate.forEach(function (o) {
+            var s = o.f.startsWith(q) ? 0 : o.f.indexOf(" " + q) >= 0 || o.f.indexOf("-" + q) >= 0 ? 1 : q.length >= 3 && o.f.indexOf(q) >= 0 ? 2 : -1;
+            if (s >= 0) r.push([o, s]);
+          });
+          return r.sort(function (a, b) { return a[1] - b[1] || (b[0].n > 0) - (a[0].n > 0) || a[0].t.localeCompare(b[0].t, "ro"); }).slice(0, 8).map(function (x) { return x[0]; });
+        }
+        function arata() {
+          gasite = cauta(inp.value); activ = 0;
+          ul.innerHTML = "";
+          if (!gasite.length) { var gol = document.createElement("li"); gol.className = "px-3 py-2 text-sm text-stone-600"; gol.textContent = "Nu se potrivește nimic."; ul.append(gol); }
+          gasite.forEach(function (o, i) {
+            var li = document.createElement("li");
+            li.id = id + "-o" + i; li.setAttribute("role", "option");
+            li.className = "flex min-h-11 cursor-pointer flex-col justify-center px-3 py-1.5";
+            var a = document.createElement("span"); a.className = "text-base text-stone-900"; a.textContent = o.t;
+            var b = document.createElement("span"); b.className = "text-xs text-stone-600"; b.textContent = cate(o.n);
+            li.append(a, b);
+            // mousedown, nu click: altfel câmpul pierde focusul și lista se închide înainte de alegere.
+            li.addEventListener("mousedown", function (e) { e.preventDefault(); alege(o.v); });
+            li.addEventListener("mouseenter", function () { activ = i; marcheaza(); });
+            ul.append(li);
+          });
+          ul.hidden = false; inp.setAttribute("aria-expanded", "true"); marcheaza();
+        }
+        function marcheaza() {
+          Array.prototype.forEach.call(ul.children, function (li, i) { li.classList.toggle("bg-stone-100", i === activ && gasite.length > 0); li.setAttribute("aria-selected", String(i === activ)); });
+          if (gasite.length) inp.setAttribute("aria-activedescendant", id + "-o" + activ); else inp.removeAttribute("aria-activedescendant");
+        }
+        function inchide() { ul.hidden = true; inp.setAttribute("aria-expanded", "false"); inp.removeAttribute("aria-activedescendant"); }
+        // Alegerea deschide lista imediat, ca pe OLX: fără încă un clic pe „Caută”.
+        function alege(v) { ales = v; ascuns.value = v; inp.value = nume(v); sterge.hidden = !v; inchide(); form.submit(); }
+
+        inp.addEventListener("focus", function () { inp.select(); arata(); });
+        inp.addEventListener("input", arata);
+        inp.addEventListener("blur", function () {
+          inchide();
+          // Ce s-a scris fără alegere nu devine filtru: câmpul revine la alegerea de acum. Golit
+          // înseamnă „toate”, aplicat la „Caută”.
+          if (!inp.value.trim()) { ascuns.value = ""; sterge.hidden = true; } else inp.value = nume(ascuns.value);
+        });
+        inp.addEventListener("keydown", function (e) {
+          if (e.key === "ArrowDown" && gasite.length) { e.preventDefault(); if (ul.hidden) arata(); else { activ = (activ + 1) % gasite.length; marcheaza(); } }
+          else if (e.key === "ArrowUp" && gasite.length) { e.preventDefault(); activ = (activ - 1 + gasite.length) % gasite.length; marcheaza(); }
+          else if (e.key === "Enter") { e.preventDefault(); if (!inp.value.trim()) alege(""); else if (!ul.hidden && gasite[activ]) alege(gasite[activ].v); }
+          else if (e.key === "Escape") inchide();
+        });
+        sterge.addEventListener("click", function () { alege(""); });
+      });
+    })();
+    </script>`;
+}
+
 export async function paginaLista(req: Request, env: Env, orasSlug: string | null, meserie: string | null): Promise<Response> {
   const u = new URL(req.url);
   const pagina = Math.max(1, Math.min(500, Number(u.searchParams.get("pagina")) || 1));
@@ -128,23 +237,20 @@ export async function paginaLista(req: Request, env: Env, orasSlug: string | nul
   const titlu = `${cat}${unde ? ` ${unde}` : ""}, cu salariul scris`;
   const cale = urlLista(orasSlug, meserie);
   const q = (p: number) => `${cale}${p > 1 ? `?pagina=${p}` : ""}`;
-  const optiuni = (valori: [string, string][], ales: string) => valori.map(([v, n]) => `<option value="${v}"${v === ales ? " selected" : ""}>${esc(n)}</option>`).join("");
-  const orase = (await env.DB.prepare("SELECT oras_slug AS s, MIN(oras) AS n FROM anunturi WHERE stare = 'activ' GROUP BY oras_slug ORDER BY n").all<{ s: string; n: string }>()).results;
+  const [ro, rm] = await env.DB.batch([
+    env.DB.prepare("SELECT oras_slug AS s, MIN(oras) AS n, COUNT(*) AS c FROM anunturi WHERE stare = 'activ' GROUP BY oras_slug ORDER BY n"),
+    env.DB.prepare("SELECT meserie AS s, COUNT(*) AS c FROM anunturi WHERE stare = 'activ' AND meserie IS NOT NULL GROUP BY meserie"),
+  ]);
+  const orase = (ro.results as OptiuneFiltru[]).map((o) => ({ ...o, n: o.n.replace(/,.*$/, "") }));
+  const cateM = new Map((rm.results as { s: string; c: number }[]).map((m) => [m.s, m.c]));
+  const meserii = [...NUME_MESERIE].sort((a, b) => a[1].localeCompare(b[1], "ro")).map(([s, n]) => ({ s, n, c: cateM.get(s) ?? 0 }));
 
   const breadcrumb = (orasSlug || meserie) ? `<nav class="mb-4 flex flex-wrap gap-2 text-xs text-stone-600" aria-label="Breadcrumb"><a class="underline underline-offset-2" href="/locuri-de-munca">Locuri de muncă</a>${orasSlug && meserie ? `<span>/</span><a class="underline underline-offset-2" href="${urlLista(orasSlug, null)}">${esc(numeLoc!)}</a>` : ""}</nav>` : "";
   const continut = `${breadcrumb}
     <h1 class="text-[28px] font-bold leading-tight tracking-[-0.02em] text-stone-900 sm:text-[34px]">${esc(titlu.charAt(0).toUpperCase() + titlu.slice(1))}</h1>
     <p class="mt-3 max-w-prose text-base text-stone-600">Fiecare anunț are salariul lunar, cu brutul sau netul spus clar. Aplici direct la angajator, fără cont.${meserie ? ` <a class="underline underline-offset-2" href="/salarii/${meserie}">Cât câștigă un ${esc(numeM)}</a>.` : ""}</p>
     <div class="mt-5"><a href="${URL_ADAUGA}" class="inline-flex min-h-11 items-center rounded-md bg-stone-900 px-4 font-semibold text-white hover:bg-stone-700">Adaugă un anunț gratuit</a></div>
-    <form method="get" action="/locuri-de-munca" class="mt-6 grid gap-3 sm:grid-cols-[1fr_1fr_auto]">
-      <label class="text-sm text-stone-700">Meseria
-        <select name="meserie" class="mt-1 block w-full rounded-md border border-stone-300 bg-surface px-3 py-2 text-base"><option value="">Toate meseriile</option>${optiuni([...NUME_MESERIE].sort((a, b) => a[1].localeCompare(b[1], "ro")), meserie ?? "")}</select>
-      </label>
-      <label class="text-sm text-stone-700">Localitatea
-        <select name="oras" class="mt-1 block w-full rounded-md border border-stone-300 bg-surface px-3 py-2 text-base"><option value="">Toată țara</option>${optiuni(orase.map((o) => [o.s, o.n.replace(/,.*$/, "")]), orasSlug ?? "")}</select>
-      </label>
-      <button type="submit" class="min-h-11 self-end rounded-md border border-stone-300 bg-surface px-4 font-semibold text-stone-900 hover:border-stone-500">Caută</button>
-    </form>
+    ${filtre(meserii, meserie, orase, orasSlug)}
     ${anunturi.length > 1 ? butonApropiere(meserie, orasSlug) : ""}
     ${anunturi.length ? `<ul class="mt-4 grid gap-3" data-lista-anunturi>${anunturi.map(cardLista).join("")}</ul>` : `
       <div class="mt-6 ${CARD}"><p class="text-base text-stone-800">${unde ? "Nu sunt încă anunțuri pentru căutarea asta." : "Nu sunt încă anunțuri publicate."}</p>

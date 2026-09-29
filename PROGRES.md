@@ -4343,3 +4343,15 @@ firmei opțional, CUI-ul scos de tot. Pentru stradă, proprietarul a ales lista 
 - Căutarea se face în browser (`src/lib/anunturi/localitati.ts`, `CautaInLista.tsx`); probată în
   browser: „b” → București, Bacău…; „lipsc” → Strada Lipscani; anunț publicat cu 1.500 lei net,
   fără firmă, cu harta pe Lipscani 69. Fără numele firmei nu se emite JobPosting (Google îl cere).
+
+## 29 septembrie 2026 — filtrele listei se caută scriind, ca pe OLX
+
+Cerut de proprietar: la „Meseria” și „Localitatea” de pe `/locuri-de-munca` scrii „b” și apar
+Barman, București, fără să derulezi 142 de meserii. Pagina vine tot cu cele două `<select>` (merg
+fără JavaScript); un script mic din `worker/pagini.ts` (`filtre`) le înlocuiește cu câmpuri de
+căutare, cu aceeași potrivire ca `cauta` din formular și cu numărul de anunțuri sub fiecare opțiune.
+Câmpul gol arată ce are anunțuri, cele mai multe primele. Alegerea deschide imediat lista filtrată;
+× revine la „toate”. Localitățile rămân numai cele cu anunțuri (altfel alegerea ducea la 404).
+Probat în browser, desktop și 375 px: „b” → Barman (5 anunțuri) → `/locuri-de-munca/barman`;
+„buc” → București → `/locuri-de-munca/bucuresti/barman`; × pe meserie → `/locuri-de-munca/bucuresti`.
+React nu atinge câmpurile la hidratare.
