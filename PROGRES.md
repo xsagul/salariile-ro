@@ -4572,3 +4572,11 @@ Găsit la probă, pe producție: un click pe „Locuri de muncă” din bară ce
 `/locuri-de-munca.txt?_rsc=…` (datele de pagină ale routerului Next), primea 404 de la Worker și abia
 apoi reîncărca pagina — o cerere și o invocare de Worker în plus pe click. Același lucru la footer și
 la breadcrumb. `Link.tsx` dă acum un `<a>` simplu spre `/locuri-de-munca*` și `/anunt-angajare-*`.
+
+## 29 septembrie 2026 — titlul listelor de anunțuri, fără număr
+
+Proprietarul: „3 locuri de muncă, cu salariul scris” nu-i plăcea; la 3 anunțuri, numărul spune
+„site mic”. Ales de el: „Locuri de muncă cu salariul afișat” (general), „Locuri de muncă în
+București, cu salariul afișat”, „Locuri de muncă barman în București, cu salariul afișat” — H1,
+`<title>` și începutul descrierii. Numărul e scos de tot, nu revine peste un prag (decizia lui).
+Începe cu „Locuri de muncă”, forma căutată. Probat local cu `wrangler dev` pe cele trei variante.

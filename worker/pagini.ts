@@ -242,8 +242,9 @@ export async function paginaLista(req: Request, env: Env, orasSlug: string | nul
   // Sinonimele cumulate în listă, spuse pe față: altfel un anunț de „chelner” la „ospătar” ar părea o greșeală.
   const alteNume = meserie ? slugurileGrupului(meserie).filter((x) => x !== meserie).map((x) => NUME_MESERIE.get(x)!.toLowerCase()).join(", ") : "";
   const unde = [numeM, numeLoc ? `în ${numeLoc}` : ""].filter(Boolean).join(" ");
-  const cat = total ? `${lei(total)} ${total === 1 ? "loc de muncă" : "locuri de muncă"}` : "Locuri de muncă";
-  const titlu = `${cat}${unde ? ` ${unde}` : ""}, cu salariul scris`;
+  // Fără numărul de anunțuri (proprietar, 29 septembrie 2026): „3 locuri de muncă” spunea „site mic”.
+  // Începe cu „Locuri de muncă”, forma căutată în Google („locuri de muncă București”).
+  const titlu = unde ? `Locuri de muncă ${unde}, cu salariul afișat` : "Locuri de muncă cu salariul afișat";
   const cale = urlLista(orasSlug, meserie);
   const q = (p: number) => `${cale}${p > 1 ? `?pagina=${p}` : ""}`;
   // Numărul de sub fiecare opțiune ține cont de celălalt filtru (proprietar, 29 septembrie 2026): cu
