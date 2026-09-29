@@ -7,7 +7,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { MESERII_ANUNTURI } from "@/lib/anunturi/meserii";
 import { EMAIL_ACTIV } from "@/lib/anunturi/config";
-import { faraDiacritice, netLunar, valideaza, type Eroare } from "@/lib/anunturi/reguli";
+import { CONTRACTE, LOCURI_MUNCA, faraDiacritice, netLunar, valideaza, type Eroare } from "@/lib/anunturi/reguli";
 import { cauta, detaliuLocalitate, incarcaLocalitati, numarDinText, strazileLocalitatii, type Localitate } from "@/lib/anunturi/localitati";
 import CautaInLista from "@/app/components/anunturi/CautaInLista";
 
@@ -18,7 +18,7 @@ const numeMeserie = (slug: unknown) => MESERII.find((m) => m.slug === slug)?.num
 
 export type Valori = Record<string, string | boolean>;
 const GOL: Valori = { titlu: "", meserie: "", angajator: "", judet: "", oras: "", adresa: "", norma: "intreaga", orePeZi: "4", salariuMin: "", salariuMax: "",
-  baza: "", descriere: "", telefon: "", email: "", acordPublicare: false };
+  faraExperienta: false, contract: "", locMunca: "", baza: "", descriere: "", telefon: "", email: "", acordPublicare: false };
 
 const CAMP = "mt-1 block w-full rounded-md border border-stone-300 bg-surface px-3 py-2 text-base text-stone-900 focus:border-stone-600 focus:outline-none";
 const ETICHETA = "block text-sm font-medium text-stone-800";
@@ -128,6 +128,25 @@ export default function FormularAnunt({ initial, modificare = false, trimite }: 
           </label>
           {v.norma === "partiala" && Camp({ k: "orePeZi", eticheta: "Ore pe zi", type: "number", min: 1, max: 7, inputMode: "numeric" })}
         </div>
+        {/* Filtrele de pe OLX și eJobs (proprietar, 29 septembrie 2026): opționale, ca să nu încetinească postarea. */}
+        <div className="grid gap-4 sm:grid-cols-2">
+          <label className={ETICHETA}>Tipul contractului (opțional)
+            <select value={String(v.contract)} onChange={set("contract")} className={CAMP}>
+              <option value="">Nespecificat</option>
+              {Object.entries(CONTRACTE).map(([k, t]) => <option key={k} value={k}>{t}</option>)}
+            </select>
+          </label>
+          <label className={ETICHETA}>Unde se lucrează (opțional)
+            <select value={String(v.locMunca)} onChange={set("locMunca")} className={CAMP}>
+              <option value="">Nespecificat</option>
+              {Object.entries(LOCURI_MUNCA).map(([k, t]) => <option key={k} value={k}>{t}</option>)}
+            </select>
+          </label>
+        </div>
+        <label className="flex items-start gap-2 text-base text-stone-800">
+          <input type="checkbox" checked={v.faraExperienta === true} onChange={set("faraExperienta")} className="mt-1.5" />
+          <span>Nu cer experiență<span className={NOTA}>Anunțul apare și la filtrul „Fără experiență”.</span></span>
+        </label>
       </fieldset>
 
       <fieldset className="grid gap-4">

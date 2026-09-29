@@ -36,7 +36,7 @@ export async function api(req: Request, env: Env, ctx: ExecutionContext, cale: s
     const meserie = MESERII.has(u.searchParams.get("meserie") ?? "") ? u.searchParams.get("meserie")! : undefined;
     const oras = /^[a-z0-9-]{2,60}$/.test(u.searchParams.get("oras") ?? "") ? u.searchParams.get("oras")! : undefined;
     const e = citesteExtra(u);
-    const r = await listaPentruApropiere(env, { meserie, oras, norma: e.norma, domeniu: e.domeniu, q: e.q });
+    const r = await listaPentruApropiere(env, { meserie, oras, norma: e.norma, domeniu: e.domeniu, q: e.q, faraExperienta: Boolean(e.experienta), contract: e.contract, locMunca: e.loc });
     return new Response(JSON.stringify(r.map((a) => ({ lat: a.lat, lon: a.lon, precis: a.loc_precizie === "adresa", html: cardLista(a) }))),
       { headers: { "content-type": "application/json; charset=utf-8", "cache-control": "public, max-age=60" } });
   }

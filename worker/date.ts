@@ -1,13 +1,14 @@
 // Accesul la baza D1 a anunțurilor. Schema: migrations/0001_anunturi.sql.
 import type { Env } from "./index";
 import type { Loc } from "./geocod";
-import { LIMITA_PE_ZI, ZILE_PASTRARE_EMAIL, ZILE_VALABILITATE, netLunar, orasSlug, slugAnunt, type AnuntNou, type Norma } from "../src/lib/anunturi/reguli";
+import { LIMITA_PE_ZI, ZILE_PASTRARE_EMAIL, ZILE_VALABILITATE, netLunar, orasSlug, slugAnunt, type AnuntNou, type Contract, type LocMunca, type Norma } from "../src/lib/anunturi/reguli";
 import { MESERII_ANUNTURI, ghicesteMeserie, grupMeserie, meseriileDomeniului, pentruPotrivire, slugurileGrupului } from "../src/lib/anunturi/meserii";
 
 export type Anunt = {
   id: number; stare: "neconfirmat" | "activ" | "expirat" | "sters" | "suspendat";
   titlu: string; slug: string; meserie: string | null; angajator: string;
   judet: string; oras: string; oras_slug: string; adresa: string | null; lat: number | null; lon: number | null; loc_precizie: "adresa" | "oras" | null; norma: "intreaga" | "partiala"; ore_pe_zi: number | null;
+  fara_experienta: number; contract: Contract | null; loc_munca: LocMunca | null;
   salariu_min: number; salariu_max: number | null; baza: "brut" | "net"; net_min: number;
   descriere: string; telefon: string | null;
   email: string | null; creat_la: string; confirmat_la: string | null; expira_la: string | null;
@@ -50,10 +51,11 @@ export async function adauga(env: Env, a: AnuntNou, loc: Loc | null, token: stri
   const t = acum();
   const r = await env.DB.prepare(
     `INSERT INTO anunturi (stare, titlu, slug, meserie, angajator, judet, oras, oras_slug, adresa, lat, lon, loc_precizie, norma, ore_pe_zi,
-      salariu_min, salariu_max, baza, net_min, descriere, telefon, email, token_hash, creat_la, confirmat_la, expira_la)
-     VALUES ('activ', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id, slug`,
+      fara_experienta, contract, loc_munca, salariu_min, salariu_max, baza, net_min, descriere, telefon, email, token_hash, creat_la, confirmat_la, expira_la)
+     VALUES ('activ', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id, slug`,
   ).bind(a.titlu, slugAnunt(a.titlu, a.oras), a.meserie || ghicesteMeserie(a.titlu), a.angajator, a.judet, a.oras, orasSlug(a.oras),
     a.adresa ?? null, loc?.lat ?? null, loc?.lon ?? null, loc?.precizie ?? null, a.norma, a.orePeZi ?? null,
+    a.faraExperienta ? 1 : 0, a.contract ?? null, a.locMunca ?? null,
     a.salariuMin, a.salariuMax ?? null, a.baza, netLunar(a.salariuMin, a.baza), a.descriere, a.telefon, a.email || null, await sha256(token),
     t, t, peste(ZILE_VALABILITATE)).first<{ id: number; slug: string }>();
   return r!;
@@ -75,9 +77,10 @@ export async function prelungeste(env: Env, id: number): Promise<void> {
 export async function modifica(env: Env, id: number, a: AnuntNou, loc: Loc | null): Promise<void> {
   await env.DB.prepare(
     `UPDATE anunturi SET titlu = ?, slug = ?, meserie = ?, angajator = ?, judet = ?, oras = ?, oras_slug = ?, adresa = ?, lat = ?, lon = ?, loc_precizie = ?,
-      norma = ?, ore_pe_zi = ?, salariu_min = ?, salariu_max = ?, baza = ?, net_min = ?, descriere = ?, telefon = ? WHERE id = ? AND stare IN ('neconfirmat', 'activ', 'expirat')`,
+      norma = ?, ore_pe_zi = ?, fara_experienta = ?, contract = ?, loc_munca = ?, salariu_min = ?, salariu_max = ?, baza = ?, net_min = ?, descriere = ?, telefon = ? WHERE id = ? AND stare IN ('neconfirmat', 'activ', 'expirat')`,
   ).bind(a.titlu, slugAnunt(a.titlu, a.oras), a.meserie || ghicesteMeserie(a.titlu), a.angajator, a.judet, a.oras, orasSlug(a.oras),
-    a.adresa ?? null, loc?.lat ?? null, loc?.lon ?? null, loc?.precizie ?? null, a.norma, a.orePeZi ?? null, a.salariuMin,
+    a.adresa ?? null, loc?.lat ?? null, loc?.lon ?? null, loc?.precizie ?? null, a.norma, a.orePeZi ?? null,
+    a.faraExperienta ? 1 : 0, a.contract ?? null, a.locMunca ?? null, a.salariuMin,
     a.salariuMax ?? null, a.baza, netLunar(a.salariuMin, a.baza), a.descriere, a.telefon, id).run();
 }
 
@@ -92,7 +95,7 @@ export const PE_PAGINA = 20;
  * Filtrele unei liste: meseria și localitatea vin din adresă; norma, domeniul și căutarea liberă din
  * interogare (proprietar, 29 septembrie 2026).
  */
-export type Filtru = { meserie?: string; oras?: string; norma?: Norma; domeniu?: string; q?: string };
+export type Filtru = { meserie?: string; oras?: string; norma?: Norma; domeniu?: string; q?: string; faraExperienta?: boolean; contract?: Contract; locMunca?: LocMunca };
 
 /**
  * Textul în care caută bara, ca pe OLX: titlul, firma, localitatea și descrierea, cu litere mici și
@@ -113,12 +116,15 @@ const inSql = (sluguri: string[]) => sluguri.map((x) => `'${x.replace(/[^a-z0-9-
 
 /** Condiția SQL a filtrului. Meseria aduce tot grupul ei: la „chelner” apar și anunțurile de „ospătar”.
  *  `fara` lasă deoparte o dimensiune: numărul de lângă o opțiune ține cont de celelalte filtre, nu de al ei. */
-function unde(f: Filtru, fara?: "meserie" | "oras" | "norma" | "domeniu"): { where: string; val: unknown[] } {
+function unde(f: Filtru, fara?: "meserie" | "oras" | "norma" | "domeniu" | "contract" | "locMunca"): { where: string; val: unknown[] } {
   const cond = ["stare = 'activ'"], val: unknown[] = [];
   if (f.meserie && fara !== "meserie") cond.push(`meserie IN (${inSql(slugurileGrupului(f.meserie))})`);
   if (f.oras && fara !== "oras") { cond.push("oras_slug = ?"); val.push(f.oras); }
   if (f.norma && fara !== "norma") { cond.push("norma = ?"); val.push(f.norma); }
   if (f.domeniu && fara !== "domeniu") cond.push(`meserie IN (${inSql(meseriileDomeniului(f.domeniu))})`);
+  if (f.faraExperienta) cond.push("fara_experienta = 1");
+  if (f.contract && fara !== "contract") { cond.push("contract = ?"); val.push(f.contract); }
+  if (f.locMunca && fara !== "locMunca") { cond.push("loc_munca = ?"); val.push(f.locMunca); }
   // Fiecare cuvânt trebuie să apară în text sau să fie numele meseriei anunțului (de la 4 litere, ca
   // „bar” să nu aducă și frizerii de la „barber”).
   for (const w of f.q ? cuvinteCautate(f.q) : []) {
@@ -147,16 +153,23 @@ const DOMENIUL = new Map(MESERII_ANUNTURI.map((m) => [m.slug, m.domeniu]));
  * trebuie să ducă la o pagină 404), cu numărul potrivit celorlalte filtre; meseriile și normele,
  * numai cele care au anunțuri.
  */
-export async function fatete(env: Env, f: Filtru): Promise<{ orase: Numarare[]; meserii: { s: string; c: number }[]; norme: { s: Norma; c: number }[]; domenii: { s: string; c: number }[] }> {
+export async function fatete(env: Env, f: Filtru): Promise<{
+  orase: Numarare[]; meserii: { s: string; c: number }[]; norme: { s: Norma; c: number }[]; domenii: { s: string; c: number }[];
+  contracte: { s: Contract; c: number }[]; locuri: { s: LocMunca; c: number }[]; faraExperienta: number;
+}> {
   // Meseria și domeniul înlocuiesc căutarea liberă (în bară și în coloană), deci se numără fără ea;
   // localitatea și norma o rafinează, deci se numără cu ea.
   const faraText = { ...f, q: undefined };
   const o = unde(f, "oras"), m = unde(faraText, "meserie"), n = unde(f, "norma"), d = unde(faraText, "domeniu");
-  const [ro, rm, rn, rd] = await env.DB.batch([
+  const c = unde(f, "contract"), l = unde(f, "locMunca"), e = unde({ ...f, faraExperienta: false });
+  const [ro, rm, rn, rd, rc, rl, re] = await env.DB.batch([
     env.DB.prepare(`SELECT oras_slug AS s, MIN(oras) AS n, SUM(CASE WHEN ${o.where} THEN 1 ELSE 0 END) AS c FROM anunturi WHERE stare = 'activ' GROUP BY oras_slug ORDER BY n`).bind(...o.val),
     env.DB.prepare(`SELECT meserie AS s, COUNT(*) AS c FROM anunturi WHERE ${m.where} AND meserie IS NOT NULL GROUP BY meserie`).bind(...m.val),
     env.DB.prepare(`SELECT norma AS s, COUNT(*) AS c FROM anunturi WHERE ${n.where} GROUP BY norma`).bind(...n.val),
     env.DB.prepare(`SELECT meserie AS s, COUNT(*) AS c FROM anunturi WHERE ${d.where} AND meserie IS NOT NULL GROUP BY meserie`).bind(...d.val),
+    env.DB.prepare(`SELECT contract AS s, COUNT(*) AS c FROM anunturi WHERE ${c.where} AND contract IS NOT NULL GROUP BY contract`).bind(...c.val),
+    env.DB.prepare(`SELECT loc_munca AS s, COUNT(*) AS c FROM anunturi WHERE ${l.where} AND loc_munca IS NOT NULL GROUP BY loc_munca`).bind(...l.val),
+    env.DB.prepare(`SELECT COUNT(*) AS c FROM anunturi WHERE ${e.where} AND fara_experienta = 1`).bind(...e.val),
   ]);
   const peDomeniu = new Map<string, number>();
   for (const r of rd.results as { s: string; c: number }[]) {
@@ -166,6 +179,8 @@ export async function fatete(env: Env, f: Filtru): Promise<{ orase: Numarare[]; 
   return {
     orase: ro.results as Numarare[], meserii: rm.results as { s: string; c: number }[], norme: rn.results as { s: Norma; c: number }[],
     domenii: [...peDomeniu].map(([s, c]) => ({ s, c })),
+    contracte: rc.results as { s: Contract; c: number }[], locuri: rl.results as { s: LocMunca; c: number }[],
+    faraExperienta: (re.results[0] as { c: number } | undefined)?.c ?? 0,
   };
 }
 

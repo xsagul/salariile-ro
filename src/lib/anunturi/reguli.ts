@@ -25,6 +25,12 @@ export const NORME = { intreaga: "Normă întreagă", partiala: "Normă parțial
 export type Norma = keyof typeof NORME;
 export type Baza = "brut" | "net";
 
+/** Tipul contractului și locul muncii (proprietar, 29 septembrie 2026, ca filtrele de pe OLX și eJobs). Opționale. */
+export const CONTRACTE = { nedeterminata: "Perioadă nedeterminată", determinata: "Perioadă determinată", sezonier: "Sezonier" } as const;
+export type Contract = keyof typeof CONTRACTE;
+export const LOCURI_MUNCA = { sediu: "La sediul angajatorului", hibrid: "Hibrid", acasa: "De acasă" } as const;
+export type LocMunca = keyof typeof LOCURI_MUNCA;
+
 /** Cât stă un anunț publicat până expiră; se poate prelungi din linkul de gestionare. */
 export const ZILE_VALABILITATE = 30;
 /** Cât păstrăm emailul celui care a postat după ce anunțul a expirat sau a fost șters. */
@@ -43,6 +49,9 @@ export type AnuntNou = {
   adresa?: string;          // strada și numărul: harta și sortarea după apropiere (opțională)
   norma: Norma;
   orePeZi?: number;         // la normă parțială
+  faraExperienta: boolean;  // „Nu cer experiență”: filtrul „Fără experiență”
+  contract?: Contract;      // opțional
+  locMunca?: LocMunca;      // opțional: la sediu, hibrid sau de acasă
   salariuMin: number;
   salariuMax?: number | null;
   baza: Baza;
@@ -120,6 +129,10 @@ export function valideaza(brut: Record<string, unknown>, meseriiValide: Set<stri
     adresa: text(brut.adresa) || undefined,
     norma: brut.norma === "partiala" ? "partiala" : "intreaga",
     orePeZi: brut.norma === "partiala" ? Number(brut.orePeZi) : undefined,
+    faraExperienta: brut.faraExperienta === true || brut.faraExperienta === "true" || brut.faraExperienta === "on",
+    // O valoare necunoscută înseamnă „nespecificat”, nu o eroare: câmpurile sunt opționale.
+    contract: typeof brut.contract === "string" && Object.hasOwn(CONTRACTE, brut.contract) ? (brut.contract as Contract) : undefined,
+    locMunca: typeof brut.locMunca === "string" && Object.hasOwn(LOCURI_MUNCA, brut.locMunca) ? (brut.locMunca as LocMunca) : undefined,
     salariuMin: Math.round(Number(brut.salariuMin)),
     salariuMax: brut.salariuMax === "" || brut.salariuMax == null ? null : Math.round(Number(brut.salariuMax)),
     baza: brut.baza === "net" ? "net" : brut.baza === "brut" ? "brut" : ("" as Baza),

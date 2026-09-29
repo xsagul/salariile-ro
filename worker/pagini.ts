@@ -1,7 +1,7 @@
 // Paginile de anunțuri, puse în șablonul static /locuri-de-munca/sablon (header, footer, CSS).
 // Adresele (verificate în Google România, 28 septembrie 2026) sunt deținute de src/lib/anunturi/reguli.ts.
 import type { Env } from "./index";
-import { JUDETE, NORME, URL_ADAUGA, esteMobil, linkApel, linkDistribuieFacebook, linkDistribuieWhatsApp, linkWhatsApp, telefonAfisat, urlAnunt, urlLista, type Norma } from "../src/lib/anunturi/reguli";
+import { CONTRACTE, JUDETE, LOCURI_MUNCA, NORME, URL_ADAUGA, esteMobil, linkApel, linkDistribuieFacebook, linkDistribuieWhatsApp, linkWhatsApp, telefonAfisat, urlAnunt, urlLista, type Contract, type LocMunca, type Norma } from "../src/lib/anunturi/reguli";
 import { completeazaSablon } from "../src/lib/anunturi/sablon";
 import { DOMENII, MESERII_ANUNTURI, esteDomeniu, grupMeserie, numeDomeniu, slugurileGrupului } from "../src/lib/anunturi/meserii";
 import { PE_PAGINA, cuvinteCautate, dupaId, fatete, lista, listeIndexabile, numeOras, toateActive, type Anunt, type Filtru } from "./date";
@@ -51,15 +51,19 @@ async function inSablon(req: Request, env: Env, p: Pagina): Promise<Response> {
  * Filtrele din interogare: domeniul, căutarea liberă, norma și ordinea. O valoare necunoscută se
  * ignoră. Fără praguri de salariu: proprietarul nu le vrea (29 septembrie 2026).
  */
-export type Extra = { domeniu?: string; q?: string; norma?: Norma; ordine?: "salariu" };
+export type Extra = { domeniu?: string; q?: string; norma?: Norma; contract?: Contract; loc?: LocMunca; experienta?: "fara"; ordine?: "salariu" };
 export function citesteExtra(u: URL): Extra {
   const norma = u.searchParams.get("norma"), domeniu = u.searchParams.get("domeniu") ?? "";
+  const contract = u.searchParams.get("contract") ?? "", loc = u.searchParams.get("loc") ?? "";
   // Căutarea: cel mult 60 de caractere, cu spațiile strânse; fără niciun cuvânt de căutat nu contează.
   const q = (u.searchParams.get("q") ?? "").replace(/\s+/g, " ").trim().slice(0, 60);
   return {
     domeniu: esteDomeniu(domeniu) ? domeniu : undefined,
     q: q && cuvinteCautate(q).length ? q : undefined,
     norma: norma === "intreaga" || norma === "partiala" ? norma : undefined,
+    contract: Object.hasOwn(CONTRACTE, contract) ? (contract as Contract) : undefined,
+    loc: Object.hasOwn(LOCURI_MUNCA, loc) ? (loc as LocMunca) : undefined,
+    experienta: u.searchParams.get("experienta") === "fara" ? "fara" : undefined,
     ordine: u.searchParams.get("ordine") === "salariu" ? "salariu" : undefined,
   };
 }
@@ -70,6 +74,9 @@ function interogare(e: Extra, pagina = 1): string {
   if (e.domeniu) q.set("domeniu", e.domeniu);
   if (e.q) q.set("q", e.q);
   if (e.norma) q.set("norma", e.norma);
+  if (e.contract) q.set("contract", e.contract);
+  if (e.loc) q.set("loc", e.loc);
+  if (e.experienta) q.set("experienta", e.experienta);
   if (e.ordine) q.set("ordine", e.ordine);
   if (pagina > 1) q.set("pagina", String(pagina));
   const s = q.toString();
@@ -91,6 +98,10 @@ function publicat(iso: string): string {
 }
 const PIN = `<svg class="mt-0.5 size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>`;
 const PASTILA = "rounded-md bg-stone-100 px-2 py-1 text-xs font-medium text-stone-700";
+/** Contractul, locul muncii (fără „la sediu”, care e de la sine) și „Fără experiență”, când anunțul le spune. */
+const detalii = (a: Anunt) => [
+  a.contract ? CONTRACTE[a.contract] : "", a.loc_munca && a.loc_munca !== "sediu" ? LOCURI_MUNCA[a.loc_munca] : "", a.fara_experienta ? "Fără experiență" : "",
+].filter(Boolean);
 
 /**
  * Cardul din liste (varianta B a schițelor, aleasă de proprietar pe 29 septembrie 2026); îl
@@ -107,7 +118,7 @@ export function cardLista(a: Anunt): string {
     <span class="mt-1 flex items-start gap-1.5 text-sm text-stone-600">${PIN}<span class="min-w-0">${unde}</span></span>
     <span class="mt-3 flex flex-wrap items-center gap-1.5">
       <span class="rounded-md bg-marcaj/25 px-2 py-1 text-sm font-bold tabular-nums text-stone-900">${suma(a)}</span>${net}
-      <span class="${PASTILA}">${norma(a)}</span>${meserie ? `<span class="${PASTILA}">${esc(meserie)}</span>` : ""}
+      <span class="${PASTILA}">${norma(a)}</span>${detalii(a).map((d) => `<span class="${PASTILA}">${d}</span>`).join("")}${meserie ? `<span class="${PASTILA}">${esc(meserie)}</span>` : ""}
     </span>
     <span class="mt-2.5 block truncate text-sm text-stone-700">${esc(a.descriere.replace(/\s+/g, " ").trim().slice(0, 240))}</span>
     <span class="mt-3 flex items-center gap-3">
@@ -217,7 +228,10 @@ function optiune(href: string, text: string, n: number, ales: boolean): string {
  * `cauta` (src/lib/anunturi/localitati.ts): întâi începutul, apoi începutul unui cuvânt, apoi, de la
  * 3 litere, oriunde. Localitățile sunt numai cele cu anunțuri: altfel alegerea ar duce la un 404.
  */
-function filtre(p: { meserii: OptiuneFiltru[]; meserie: string | null; orase: OptiuneFiltru[]; orasSlug: string | null; domenii: OptiuneFiltru[]; extra: Extra; norme: Map<Norma, number> }): { cautare: string; panou: string; script: string } {
+function filtre(p: {
+  meserii: OptiuneFiltru[]; meserie: string | null; orase: OptiuneFiltru[]; orasSlug: string | null; domenii: OptiuneFiltru[]; extra: Extra;
+  norme: Map<Norma, number>; contracte: Map<Contract, number>; locuri: Map<LocMunca, number>; faraExperienta: number;
+}): { cautare: string; panou: string; script: string } {
   const { meserii, meserie, orase, orasSlug, extra } = p;
   const optiuni = (valori: OptiuneFiltru[], ales: string | null) => valori.map((o) => `<option value="${o.s}" data-n="${o.c}"${o.p === false ? "" : " data-p"}${o.s === ales ? " selected" : ""}>${esc(o.n)}</option>`).join("");
   const SELECT = "mt-2 block w-full rounded-md border border-stone-300 bg-surface px-2.5 py-1.5 text-base lg:text-sm";
@@ -233,7 +247,17 @@ function filtre(p: { meserii: OptiuneFiltru[]; meserie: string | null; orase: Op
     const ales = extra.norma === k;
     return optiune(url(orasSlug, meserie, { ...extra, norma: ales ? undefined : k }), NORME[k], p.norme.get(k) ?? 0, ales);
   }).join("");
-  const ascunse = `<input type="hidden" name="domeniu" value="${extra.domeniu ?? ""}"><input type="hidden" name="q" value="${esc(extra.q ?? "")}">${extra.norma ? `<input type="hidden" name="norma" value="${extra.norma}">` : ""}${extra.ordine ? `<input type="hidden" name="ordine" value="${extra.ordine}">` : ""}`;
+  // Filtrele de pe OLX și eJobs (proprietar, 29 septembrie 2026); câmpurile sunt opționale la postare.
+  const experienta = optiune(url(orasSlug, meserie, { ...extra, experienta: extra.experienta ? undefined : "fara" }), "Fără experiență", p.faraExperienta, Boolean(extra.experienta));
+  const contracte = (Object.keys(CONTRACTE) as Contract[]).map((k) => {
+    const ales = extra.contract === k;
+    return optiune(url(orasSlug, meserie, { ...extra, contract: ales ? undefined : k }), CONTRACTE[k], p.contracte.get(k) ?? 0, ales);
+  }).join("");
+  const locuri = (["acasa", "hibrid"] as const).map((k) => {
+    const ales = extra.loc === k;
+    return optiune(url(orasSlug, meserie, { ...extra, loc: ales ? undefined : k }), LOCURI_MUNCA[k], p.locuri.get(k) ?? 0, ales);
+  }).join("");
+  const ascunse = `<input type="hidden" name="domeniu" value="${extra.domeniu ?? ""}"><input type="hidden" name="q" value="${esc(extra.q ?? "")}">${extra.norma ? `<input type="hidden" name="norma" value="${extra.norma}">` : ""}${extra.contract ? `<input type="hidden" name="contract" value="${extra.contract}">` : ""}${extra.loc ? `<input type="hidden" name="loc" value="${extra.loc}">` : ""}${extra.experienta ? `<input type="hidden" name="experienta" value="${extra.experienta}">` : ""}${extra.ordine ? `<input type="hidden" name="ordine" value="${extra.ordine}">` : ""}`;
   // Câmpul comun de pe telefon: aceleași opțiuni, cu tipul lor. „m:” schimbă meseria, „o:” localitatea.
   const combinate = [
     ...meserii.map((o) => `<option value="m:${o.s}" data-n="${o.c}" data-tip="meserie"${o.p === false ? "" : " data-p"}>${esc(o.n)}</option>`),
@@ -260,6 +284,9 @@ function filtre(p: { meserii: OptiuneFiltru[]; meserie: string | null; orase: Op
         </div>
         <button type="submit" data-filtre-buton class="min-h-11 rounded-md border border-stone-300 bg-surface px-4 font-semibold text-stone-900 hover:border-stone-500">Caută</button>
         <div class="${BLOC}"><p class="${TITLU_BLOC}">Norma</p><div class="mt-1">${norme}</div></div>
+        <div class="${BLOC}"><p class="${TITLU_BLOC}">Experiența</p><div class="mt-1">${experienta}</div></div>
+        <div class="${BLOC}"><p class="${TITLU_BLOC}">Contractul</p><div class="mt-1">${contracte}</div></div>
+        <div class="${BLOC}"><p class="${TITLU_BLOC}">Unde se lucrează</p><div class="mt-1">${locuri}</div></div>
       </form>
       <div class="rounded-md border border-dashed border-stone-300 bg-canvas p-4 text-sm text-stone-700">
         <p class="text-base font-bold text-stone-900">Angajezi?</p>
@@ -396,7 +423,8 @@ function filtre(p: { meserii: OptiuneFiltru[]; meserie: string | null; orase: Op
 export async function paginaLista(req: Request, env: Env, orasSlug: string | null, meserie: string | null): Promise<Response> {
   const u = new URL(req.url);
   const pagina = paginaDin(u), extra = citesteExtra(u);
-  const f: Filtru = { meserie: meserie ?? undefined, oras: orasSlug ?? undefined, norma: extra.norma, domeniu: extra.domeniu, q: extra.q };
+  const f: Filtru = { meserie: meserie ?? undefined, oras: orasSlug ?? undefined, norma: extra.norma, domeniu: extra.domeniu, q: extra.q,
+    faraExperienta: Boolean(extra.experienta), contract: extra.contract, locMunca: extra.loc };
   const [{ anunturi, total }, fat, numeLoc] = await Promise.all([
     lista(env, { ...f, pagina, ordine: extra.ordine }), fatete(env, f), orasSlug ? numeOras(env, orasSlug) : Promise.resolve(null),
   ]);
@@ -427,8 +455,10 @@ export async function paginaLista(req: Request, env: Env, orasSlug: string | nul
   const norme = new Map(fat.norme.map((x) => [x.s, x.c] as const));
   const peDomeniu = new Map(fat.domenii.map((x) => [x.s, x.c] as const));
   const domenii = DOMENII.map((d) => ({ s: d.slug, n: d.nume, c: peDomeniu.get(d.slug) ?? 0 }));
-  const activ = [meserie, orasSlug, extra.norma, extra.domeniu].filter(Boolean).length;
-  const cuFiltre = Boolean(extra.norma || extra.domeniu || extra.q);
+  const contracte = new Map(fat.contracte.map((x) => [x.s, x.c] as const));
+  const locuri = new Map(fat.locuri.map((x) => [x.s, x.c] as const));
+  const activ = [meserie, orasSlug, extra.norma, extra.domeniu, extra.contract, extra.loc, extra.experienta].filter(Boolean).length;
+  const cuFiltre = Boolean(extra.norma || extra.domeniu || extra.q || extra.contract || extra.loc || extra.experienta);
 
   // Filtrele alese, ca etichete deasupra listei: un clic pe una o scoate.
   const eticheta = (href: string, text: string) => `<a href="${href}" class="inline-flex min-h-9 items-center gap-1.5 rounded-full bg-stone-900 px-3 text-sm font-medium text-white hover:bg-stone-700">${esc(text)}<span aria-hidden="true" class="text-stone-300">✕</span><span class="sr-only"> (scoate filtrul)</span></a>`;
@@ -438,6 +468,9 @@ export async function paginaLista(req: Request, env: Env, orasSlug: string | nul
     meserie ? eticheta(urlLista(orasSlug, null) + interogare(extra), NUME_MESERIE.get(meserie)!) : "",
     orasSlug ? eticheta(urlLista(null, meserie) + interogare(extra), numeLoc!) : "",
     extra.norma ? eticheta(q(1, { ...extra, norma: undefined }), NORME[extra.norma]) : "",
+    extra.experienta ? eticheta(q(1, { ...extra, experienta: undefined }), "Fără experiență") : "",
+    extra.contract ? eticheta(q(1, { ...extra, contract: undefined }), CONTRACTE[extra.contract]) : "",
+    extra.loc ? eticheta(q(1, { ...extra, loc: undefined }), LOCURI_MUNCA[extra.loc]) : "",
   ].join("");
   const qa = new URLSearchParams();
   if (meserie) qa.set("meserie", meserie);
@@ -445,8 +478,11 @@ export async function paginaLista(req: Request, env: Env, orasSlug: string | nul
   if (extra.norma) qa.set("norma", extra.norma);
   if (extra.domeniu) qa.set("domeniu", extra.domeniu);
   if (extra.q) qa.set("q", extra.q);
+  if (extra.contract) qa.set("contract", extra.contract);
+  if (extra.loc) qa.set("loc", extra.loc);
+  if (extra.experienta) qa.set("experienta", extra.experienta);
   const ordine = sortare(extra, q, anunturi.length > 1 ? `/api/anunturi/lista?${qa}` : null);
-  const { cautare, panou, script } = filtre({ meserii, meserie, orase, orasSlug, domenii, extra, norme });
+  const { cautare, panou, script } = filtre({ meserii, meserie, orase, orasSlug, domenii, extra, norme, contracte, locuri, faraExperienta: fat.faraExperienta });
   const gol = `<div class="mt-3 ${CARD}"><p class="text-base text-stone-800">${cuFiltre ? "Niciun anunț nu se potrivește căutării." : unde ? "Nu sunt încă anunțuri pentru căutarea asta." : "Nu sunt încă anunțuri publicate."}</p>
       ${cuFiltre ? `<p class="mt-2 text-sm"><a class="font-semibold underline underline-offset-2" href="${cale}">Arată toate anunțurile${unde ? ` ${esc(unde)}` : ""}</a></p>` : `<p class="mt-2 text-sm text-stone-600">Angajezi? Anunțul tău apare aici în câteva minute, gratuit și fără cont.</p>`}</div>`;
 
@@ -545,7 +581,7 @@ export async function paginaAnunt(req: Request, env: Env, id: number, slug: stri
       <div class="${CARD}">
         <p class="text-xs font-medium text-stone-700">Salariul oferit</p>
         <p class="mt-2 text-3xl font-bold tracking-tight text-stone-900">${suma(a)}</p>
-        <p class="mt-1 text-sm text-stone-600">Pe lună · ${norma(a)}</p>
+        <p class="mt-1 text-sm text-stone-600">Pe lună · ${[norma(a), ...detalii(a)].join(" · ")}</p>
         <div class="mt-5 text-base text-stone-800">${descriereHtml(a.descriere)}</div>
         <p class="mt-4 text-xs text-stone-600">Publicat pe ${data(a.confirmat_la!)} · valabil până pe ${data(a.expira_la!)}</p>
       </div>
@@ -583,7 +619,10 @@ export async function paginaAnunt(req: Request, env: Env, id: number, slug: stri
   const jsonLd = a.angajator ? {
     "@context": "https://schema.org", "@type": "JobPosting",
     title: a.titlu, description: descriereHtml(a.descriere), datePosted: a.confirmat_la, validThrough: a.expira_la,
-    employmentType: a.norma === "partiala" ? "PART_TIME" : "FULL_TIME",
+    employmentType: a.contract === "determinata" || a.contract === "sezonier" ? [a.norma === "partiala" ? "PART_TIME" : "FULL_TIME", "TEMPORARY"] : a.norma === "partiala" ? "PART_TIME" : "FULL_TIME",
+    // Google: „no requirements” când nu se cere experiență; munca de acasă cere și țara candidaților.
+    ...(a.fara_experienta ? { experienceRequirements: "no requirements" } : {}),
+    ...(a.loc_munca === "acasa" ? { jobLocationType: "TELECOMMUTE", applicantLocationRequirements: { "@type": "Country", name: "RO" } } : {}),
     hiringOrganization: { "@type": "Organization", name: a.angajator },
     jobLocation: { "@type": "Place", address: { "@type": "PostalAddress", ...(a.adresa ? { streetAddress: a.adresa } : {}), addressLocality: oras(a), addressRegion: JUDETE[a.judet], addressCountry: "RO" } },
     baseSalary: { "@type": "MonetaryAmount", currency: "RON", value: { "@type": "QuantitativeValue", unitText: "MONTH", ...(a.salariu_max ? { minValue: a.salariu_min, maxValue: a.salariu_max } : { value: a.salariu_min }) } },

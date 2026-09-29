@@ -4647,3 +4647,20 @@ barman; cere încadrarea pe domenii („HoReCa și turism”) și bara de căuta
 - Probat local (`wrangler dev`): anunț nou fără meserie → `ajutor-barman`; „barman” → 7 anunțuri,
   inclusiv ajutorul de barman; „ajutor de barman” → 1; „chelner” → ospătarii; „locuri de munca
   curatenie” în București → „Femeie de serviciu”; HoReCa → 11.
+
+## 29 septembrie 2026 — filtrele de pe OLX și eJobs: experiență, contract, de acasă/hibrid
+
+Ales de proprietar (toate trei). Câmpuri noi, opționale, în formular, sub „Programul”: „Tipul
+contractului” (nedeterminată / determinată / sezonier), „Unde se lucrează” (la sediu / hibrid / de
+acasă) și bifa „Nu cer experiență”. În liste: blocurile „Experiența”, „Contractul”, „Unde se lucrează”
+cu numere (`?experienta=fara`, `?contract=`, `?loc=`, noindex), etichete pe card (fără „la sediu”) și
+în linia de sub salariu din anunț. JobPosting: `TEMPORARY` la determinată/sezonier, `experienceRequirements:
+"no requirements"`, `TELECOMMUTE` + țara la „de acasă”.
+
+**Cer migrarea `migrations/0002_filtre_anunturi.sql` pe D1-ul de producție ÎNAINTE de publicare**:
+codul scrie și filtrează pe coloanele noi, deci fără ele postarea ar da eroare. Lucrul stă pe ramura
+`filtre-olx`, nepublicat. Terminalul agentului e în alt cont Cloudflare; migrarea o rulează
+proprietarul în consola D1 (ca 0001), cu rândul din `d1_migrations`. După confirmare: fast-forward în
+`anunturi` și push pe `main`. Probat local (migrare aplicată pe copia locală): anunț „Ospătar sezon
+estival” → meseria ghicită Ospătar, filtrele găsesc exact anunțul, JobPosting corect, formularul arată
+câmpurile. Lista citește acum D1 de ~8 ori pe anunțurile active la o adresă necacheată (numărătorile).

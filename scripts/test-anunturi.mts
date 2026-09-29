@@ -5,7 +5,7 @@ import fs from "node:fs";
 import { cauta, cheieUat, numarDinText, type Localitate } from "../src/lib/anunturi/localitati";
 import { MARCAJE, completeazaSablon } from "../src/lib/anunturi/sablon";
 import { EMAIL_ACTIV } from "../src/lib/anunturi/config";
-import { MESERII_ANUNTURI, grupMeserie, numeMeserieAnunt, slugMeserie, slugurileGrupului } from "../src/lib/anunturi/meserii";
+import { MESERII_ANUNTURI, esteDomeniu, ghicesteMeserie, grupMeserie, numeMeserieAnunt, slugMeserie, slugurileGrupului } from "../src/lib/anunturi/meserii";
 import { esteMobil, linkApel, linkWhatsApp, orasSlug, slugAnunt, telefonAfisat, telefonCurat, urlAnunt, urlLista, valideaza, type Eroare } from "../src/lib/anunturi/reguli";
 
 const MESERII = new Set(["barman", "sofer-distributie"]);
@@ -32,6 +32,23 @@ assert.deepEqual(camp({ salariuMin: "0" }), ["salariuMin"]);
 assert.deepEqual(camp({ salariuMin: "4000000" }), ["salariuMin"], "cifre în plus");
 assert.deepEqual(camp({ salariuMax: "3000" }), ["salariuMax"], "maxim sub minim");
 assert.deepEqual(camp({ salariuMax: "20000" }), [], "interval larg: se publică");
+
+// Filtrele de pe OLX și eJobs (proprietar, 29 septembrie 2026): opționale; o valoare necunoscută e „nespecificat”.
+{
+  const x = valideaza({ ...bun, faraExperienta: "on", contract: "sezonier", locMunca: "acasa" }, MESERII);
+  assert.ok("anunt" in x);
+  if ("anunt" in x) { assert.equal(x.anunt.faraExperienta, true); assert.equal(x.anunt.contract, "sezonier"); assert.equal(x.anunt.locMunca, "acasa"); }
+  const y = valideaza({ ...bun, contract: "oricare", locMunca: "pe-luna" }, MESERII);
+  assert.ok("anunt" in y, "o valoare necunoscută nu respinge anunțul");
+  if ("anunt" in y) { assert.equal(y.anunt.contract, undefined); assert.equal(y.anunt.locMunca, undefined); assert.equal(y.anunt.faraExperienta, false); }
+}
+
+// Meseria lăsată necompletată se ghicește din titlu: cea mai lungă formulare întreagă din catalog.
+assert.equal(ghicesteMeserie("Ajutor barman restaurant Beraria H"), "ajutor-barman", "anunțul care nu apărea la niciun filtru");
+assert.equal(ghicesteMeserie("Angajam ajutor de barman"), "ajutor-barman", "„de” nu contează");
+assert.equal(ghicesteMeserie("Tractorist pentru ferma"), "tractorist", "cuvinte întregi: nu „actor”");
+assert.equal(ghicesteMeserie("Angajam personal"), null);
+assert.ok(MESERII_ANUNTURI.every((m) => esteDomeniu(m.domeniu)), "fiecare meserie are un domeniu");
 
 // Contactul: telefonul, valid; acordul, obligatoriu.
 assert.deepEqual(camp({ telefon: "" }), ["telefon"]);
