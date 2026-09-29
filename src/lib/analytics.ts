@@ -23,6 +23,7 @@
 //   calcul             instrument, varianta, avansat, moneda — EVENIMENT CHEIE
 //   search             search_term, rezultate (filtrul de meserii); în bara anunțurilor (worker/pagini.ts)
 //                      și zona = anunturi, element = ce a ales („nimic” = a scris și a plecat)
+//   contact_anunt      element = apel/whatsapp, link_url = adresa anunțului (worker/pagini.ts); fără număr
 //   copiaza_link       instrument
 //   copiaza_embed      varianta
 //   click_link_intern  link_url, link_text, zona

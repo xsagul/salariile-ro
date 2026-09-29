@@ -639,6 +639,14 @@ export async function paginaAnunt(req: Request, env: Env, id: number, slug: stri
             <button type="button" class="${BUTON_MIC}" data-copiaza="${canonic}">Copiază linkul</button>
           </p>
           <script>
+          // Candidatul care sună sau scrie pe WhatsApp (proprietar, 30 septembrie 2026): evenimentul GA4
+          // „contact_anunt”, element = apel/whatsapp. Numărul de telefon nu pleacă nicăieri; ID-ul din
+          // link_url spune dacă anunțul e din importul ANOFM (4–790) sau pus de un angajator.
+          document.addEventListener("click", function (e) {
+            var c = e.target.closest && e.target.closest("[data-contact]");
+            if (!c || !window.gtag) return;
+            try { window.gtag("event", "contact_anunt", { element: c.getAttribute("data-contact"), link_url: location.pathname, zona: "anunturi", transport_type: "beacon" }); } catch (x) {}
+          });
           document.addEventListener("click", function (e) {
             var b = e.target.closest && e.target.closest("[data-copiaza]");
             if (!b || !navigator.clipboard) return;

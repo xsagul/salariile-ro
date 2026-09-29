@@ -4726,3 +4726,6 @@ angajator postează vreun anunț pe site-ul nostru”.
   termenii apar și la cei fără acord (pinguri fără cookies).
 - Probat local (wrangler dev pe copia D1 cu cele 787): „sudor 5000” și plecat → search_term „sudor”,
   element „nimic”; „ingrij” → „meserie: Îngrijitoare bătrâni”, rezultate 1, un singur eveniment.
+- Contactul: evenimentul GA4 `contact_anunt` (element = `apel` / `whatsapp`, link_url = adresa
+  anunțului, zona = `anunturi`), fără numărul de telefon. ID-ul din adresă desparte importul ANOFM
+  (4–790) de anunțurile puse de angajatori. Probat local: ambele butoane, câte un eveniment.
