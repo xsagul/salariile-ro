@@ -4604,3 +4604,18 @@ scrie **„Vezi anunțul”, nu „Sună”** — „va suna cineva fără să c
   se rupe o împingea la 856 px. `grid-cols-1` (coloană `minmax(0, 1fr)`) o ține în ecran.
 - Probat local cu `wrangler dev` (baza locală, 13 anunțuri de probă): PC 1366 px și telefon 375 px,
   filtrele, sortarea, etichetele, redirecționarea, API-ul de apropiere cu filtrele noi.
+
+**Corectat în aceeași seară, la cererea proprietarului:** „exemplul tău arată într-un fel, cu
+câmpurile și iconițele, și tu ai adăugat altceva; nu vreau să selectezi pragurile salariale”.
+Pragurile de salariu minim net (3.000 / 4.000 / 5.000) sunt scoase de tot, din pagină, din
+interogare (`net`), din `Filtru` și din API. Filtrele și bara refăcute ca în schița B:
+- telefon: un singur câmp „Meseria sau localitatea” (caută deodată în meserii și localități, cu
+  tipul și numărul lor), apoi „Filtre” și „Cele mai noi ▾” unul lângă altul, cu iconițe, apoi
+  filtrele alese ca etichete; coloana se deschide din „Filtre”;
+- PC: în coloană, „Caută meseria…” și „Caută localitatea…” (câmpuri mici) cu opțiunile bifabile,
+  norma și „Angajezi?”; deasupra listei „Toate meseriile, toată țara” (sau filtrele alese) și
+  ordinea;
+- ordinea e un singur buton cu listă: „Cele mai noi”, „Salariul cel mai mare”, „Aproape de mine”
+  (fostul buton separat).
+Probat local cu `wrangler dev`, 375 și 1366 px: căutarea comună (alegerea „Barman” păstrează
+Bucureștiul), „Filtre” deschide și închide coloana, ordinea după salariu.

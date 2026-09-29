@@ -47,16 +47,15 @@ async function inSablon(req: Request, env: Env, p: Pagina): Promise<Response> {
   return new Response(out.body, { status: p.status ?? 200, headers: h });
 }
 
-/** Treptele filtrului „Salariu minim net”, în lei pe lună. */
-const TREPTE_NET = [3000, 4000, 5000];
-
-/** Filtrele din interogare (norma, salariul minim net, ordinea). O valoare necunoscută se ignoră. */
-export type Extra = { norma?: Norma; net?: number; ordine?: "salariu" };
+/**
+ * Filtrele din interogare: norma și ordinea. O valoare necunoscută se ignoră. Fără praguri de
+ * salariu: proprietarul nu le vrea (29 septembrie 2026).
+ */
+export type Extra = { norma?: Norma; ordine?: "salariu" };
 export function citesteExtra(u: URL): Extra {
-  const norma = u.searchParams.get("norma"), net = Number(u.searchParams.get("net"));
+  const norma = u.searchParams.get("norma");
   return {
     norma: norma === "intreaga" || norma === "partiala" ? norma : undefined,
-    net: TREPTE_NET.includes(net) ? net : undefined,
     ordine: u.searchParams.get("ordine") === "salariu" ? "salariu" : undefined,
   };
 }
@@ -65,7 +64,6 @@ const paginaDin = (u: URL) => Math.max(1, Math.min(500, Number(u.searchParams.ge
 function interogare(e: Extra, pagina = 1): string {
   const q = new URLSearchParams();
   if (e.norma) q.set("norma", e.norma);
-  if (e.net) q.set("net", String(e.net));
   if (e.ordine) q.set("ordine", e.ordine);
   if (pagina > 1) q.set("pagina", String(pagina));
   const s = q.toString();
@@ -121,33 +119,55 @@ export function redirectFiltre(req: Request): Response | null {
   return Response.redirect(new URL(urlLista(o || null, esteMeserie(m) ? m : null) + interogare(citesteExtra(u)), req.url).toString(), 302);
 }
 
+/** Iconițele din bara listei (aceleași trasee ca în schițe). */
+const SVG = (cls: string, d: string) => `<svg class="${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
+const D_LUPA = '<circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/>';
+const D_FILTRE = '<path d="M4 6h16M7 12h10M10 18h4"/>';
+const D_ORDINE = '<path d="M7 4v16M4 17l3 3 3-3M17 20V4M14 7l3-3 3 3"/>';
+const D_JOS = '<path d="M6 9l6 6 6-6"/>';
+
 /**
- * „Sortează după apropiere” (proprietar, 28 septembrie 2026, ca pe OLX și anuntul.ro). Browserul
- * cere poziția, ia toate anunțurile listei de la /api/anunturi/lista și le ordonează singur după
- * distanță. Poziția nu pleacă din telefon: nici în URL, nici în cerere.
+ * Ordinea listei, ca în schița B: un singur buton „Cele mai noi ▾”. Primele două opțiuni sunt
+ * adrese. „Aproape de mine” (proprietar, 28 septembrie 2026, ca pe OLX) ordonează în telefon:
+ * browserul cere poziția, ia anunțurile listei de la /api/anunturi/lista și le ordonează singur.
+ * Poziția nu pleacă din telefon: nici în URL, nici în cerere.
  */
-function butonApropiere(meserie: string | null, oras: string | null, e: Extra): string {
-  const q = new URLSearchParams();
-  if (meserie) q.set("meserie", meserie);
-  if (oras) q.set("oras", oras);
-  if (e.norma) q.set("norma", e.norma);
-  if (e.net) q.set("net", String(e.net));
-  return `<button type="button" data-apropiere="/api/anunturi/lista?${q}" class="inline-flex min-h-10 items-center rounded-md border border-stone-300 bg-surface px-3 text-sm font-semibold text-stone-900 hover:border-stone-500">Aproape de mine</button>
-  <script>
+function sortare(extra: Extra, q: (p: number, e?: Extra) => string, apropiere: string | null): string {
+  return `<div class="relative">
+      ${SVG("pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-stone-600", D_ORDINE)}
+      <select data-ordine aria-label="Ordinea anunțurilor" class="block min-h-11 w-full appearance-none rounded-md border border-stone-300 bg-surface pl-9 pr-9 text-base font-semibold text-stone-900 hover:border-stone-500 lg:text-sm">
+        <option value="${q(1, { ...extra, ordine: undefined })}"${extra.ordine ? "" : " selected"}>Cele mai noi</option>
+        <option value="${q(1, { ...extra, ordine: "salariu" })}"${extra.ordine ? " selected" : ""}>Salariul cel mai mare</option>${apropiere ? `
+        <option value="aproape" data-apropiere="${apropiere}">Aproape de mine</option>` : ""}
+      </select>
+      ${SVG("pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-stone-600", D_JOS)}
+    </div>`;
+}
+
+const SCRIPT_ORDINE = `<script>
   (function () {
-    // Scriptul stă înaintea listei: elementele se caută la apăsare, nu acum.
-    if (!navigator.geolocation) { document.querySelectorAll("[data-apropiere]").forEach(function (x) { x.hidden = true; }); return; }
+    var sel = document.querySelectorAll("select[data-ordine]");
+    function toate(v) { sel.forEach(function (s) { s.value = v; }); }
     function km(a, b2, c, d) { var r = Math.PI / 180, x = Math.sin((c - a) * r / 2), y = Math.sin((d - b2) * r / 2); return 12742 * Math.asin(Math.sqrt(x * x + Math.cos(a * r) * Math.cos(c * r) * y * y)); }
-    document.addEventListener("click", function (ev) {
-      var b = ev.target.closest && ev.target.closest("[data-apropiere]"), stare = document.querySelector("[data-apropiere-stare]"), ul = document.querySelector("[data-lista-anunturi]");
-      if (!b || !stare || !ul) return;
+    sel.forEach(function (s) {
+      if (!navigator.geolocation) s.querySelectorAll('option[value="aproape"]').forEach(function (o) { o.remove(); });
+      var inainte = s.value;
+      s.addEventListener("change", function () {
+        if (s.value !== "aproape") { location.href = s.value; return; }
+        toate("aproape");
+        aproape(s.selectedOptions[0].getAttribute("data-apropiere"), function () { toate(inainte); });
+      });
+    });
+    function aproape(url, renunta) {
+      var stare = document.querySelector("[data-apropiere-stare]"), ul = document.querySelector("[data-lista-anunturi]");
+      if (!stare || !ul) return;
       stare.textContent = "Caut unde ești…";
       navigator.geolocation.getCurrentPosition(function (p) {
         var la = p.coords.latitude, lo = p.coords.longitude;
-        fetch(b.getAttribute("data-apropiere")).then(function (r) { return r.json(); }).then(function (lista) {
+        fetch(url).then(function (r) { return r.json(); }).then(function (lista) {
           // Fără adresă, coordonatele sunt centrul localității: pe lista unui oraș nu spun cât e de
           // aproape, deci anunțul trece la coadă; pe lista națională, orașul tot contează.
-          var peOras = /[?&]oras=/.test(b.getAttribute("data-apropiere"));
+          var peOras = /[?&]oras=/.test(url);
           lista.forEach(function (x) {
             x.d = x.lat == null ? Infinity : km(la, lo, x.lat, x.lon);
             x.k = x.precis || !peOras ? x.d : 1e9 + x.d;
@@ -161,27 +181,16 @@ function butonApropiere(meserie: string | null, oras: string | null, e: Extra): 
             else if (isFinite(d)) e.textContent = " · la " + (d < 1 ? Math.round(d * 1000) + " m" : d.toLocaleString("ro-RO", { maximumFractionDigits: 1 }) + " km") + " de tine";
           });
           document.querySelectorAll("nav[aria-label=Pagini]").forEach(function (n) { n.hidden = true; });
-          // Ordinea aleasă nu mai e cea din listă: niciun buton de ordine nu rămâne marcat.
-          document.querySelectorAll("[data-ordine] a[aria-current]").forEach(function (a) { a.removeAttribute("aria-current"); });
           stare.textContent = "Cele mai apropiate primele.";
-        }).catch(function () { stare.textContent = "Nu am putut încărca anunțurile. Încearcă din nou."; });
-      }, function () { stare.textContent = "Fără acces la locație, anunțurile rămân în ordinea publicării."; }, { enableHighAccuracy: false, timeout: 10000, maximumAge: 300000 });
-    });
+        }).catch(function () { stare.textContent = "Nu am putut încărca anunțurile. Încearcă din nou."; renunta(); });
+      }, function () { stare.textContent = "Fără acces la locație, ordinea rămâne cea de dinainte."; renunta(); }, { enableHighAccuracy: false, timeout: 10000, maximumAge: 300000 });
+    }
   })();
   </script>`;
-}
 
 /** `p`: numele principal al grupului; câmpul gol arată numai principalele, ca „Chelner” să nu dubleze „Ospătar”. */
 type OptiuneFiltru = { s: string; n: string; c: number; p?: boolean };
 
-/**
- * Filtrele listei: scrii „b” și apar București, Bacău (proprietar, 29 septembrie 2026, ca pe OLX),
- * fără să derulezi toată lista. Pagina vine cu două <select>, care merg și fără JavaScript; scriptul
- * le înlocuiește cu câmpuri de căutare, iar alegerea deschide imediat lista filtrată. Potrivirea e
- * cea din `cauta` (src/lib/anunturi/localitati.ts): întâi începutul, apoi începutul unui cuvânt,
- * apoi, de la 3 litere, oriunde. Localitățile sunt numai cele cu anunțuri: altfel alegerea ar duce
- * la o pagină 404.
- */
 const BLOC = "rounded-md border border-stone-200 bg-surface p-4";
 const TITLU_BLOC = "block text-sm font-bold text-stone-900";
 
@@ -193,14 +202,19 @@ function optiune(href: string, text: string, n: number, ales: boolean): string {
 }
 
 /**
- * Coloana de filtre (varianta B, proprietar, 29 septembrie 2026): pe PC în stânga listei, pe
- * telefon strânsă sub butonul „Filtre”. Meseria și localitatea au câmpul de căutare de mai jos plus
- * primele opțiuni cu anunțuri; norma și salariul minim net sunt linkuri, deci merg și fără script.
+ * Filtrele listei, ca în schița B (proprietar, 29 septembrie 2026). Pe PC, coloana din stânga:
+ * „Caută meseria…” și „Caută localitatea…” cu primele opțiuni bifabile, apoi norma. Pe telefon, un
+ * singur câmp „Meseria sau localitatea” deasupra listei, iar coloana se deschide din „Filtre”.
+ *
+ * Câmpurile pornesc ca <select>, care merg și fără JavaScript; scriptul le înlocuiește cu căutare
+ * pe măsură ce scrii: „b” aduce București, Bacău (proprietar, ca pe OLX). Potrivirea e cea din
+ * `cauta` (src/lib/anunturi/localitati.ts): întâi începutul, apoi începutul unui cuvânt, apoi, de la
+ * 3 litere, oriunde. Localitățile sunt numai cele cu anunțuri: altfel alegerea ar duce la un 404.
  */
-function filtre(p: { meserii: OptiuneFiltru[]; meserie: string | null; orase: OptiuneFiltru[]; orasSlug: string | null; extra: Extra; norme: Map<Norma, number>; activ: number }): string {
+function filtre(p: { meserii: OptiuneFiltru[]; meserie: string | null; orase: OptiuneFiltru[]; orasSlug: string | null; extra: Extra; norme: Map<Norma, number> }): { cautare: string; panou: string } {
   const { meserii, meserie, orase, orasSlug, extra } = p;
   const optiuni = (valori: OptiuneFiltru[], ales: string | null) => valori.map((o) => `<option value="${o.s}" data-n="${o.c}"${o.p === false ? "" : " data-p"}${o.s === ales ? " selected" : ""}>${esc(o.n)}</option>`).join("");
-  const SELECT = "mt-1.5 block w-full rounded-md border border-stone-300 bg-surface px-3 py-2 text-base";
+  const SELECT = "mt-2 block w-full rounded-md border border-stone-300 bg-surface px-2.5 py-1.5 text-base lg:text-sm";
   const url = (o: string | null, m: string | null, e: Extra) => urlLista(o, m) + interogare(e);
   // Primele opțiuni cu anunțuri, cele mai multe primele; cea aleasă rămâne mereu în listă.
   const primele = (v: OptiuneFiltru[], ales: string | null) => v.filter((o) => (o.c > 0 && o.p !== false) || o.s === ales).sort((a, b) => b.c - a.c || a.n.localeCompare(b.n, "ro")).slice(0, 6);
@@ -210,46 +224,48 @@ function filtre(p: { meserii: OptiuneFiltru[]; meserie: string | null; orase: Op
     const ales = extra.norma === k;
     return optiune(url(orasSlug, meserie, { ...extra, norma: ales ? undefined : k }), NORME[k], p.norme.get(k) ?? 0, ales);
   }).join("");
-  const trepte = [undefined, ...TREPTE_NET].map((v) => {
-    const ales = extra.net === v;
-    return `<a href="${url(orasSlug, meserie, { ...extra, net: v })}" class="py-2 ${ales ? "bg-stone-900 text-white" : "bg-surface text-stone-900 hover:bg-stone-100"}"${ales ? ' aria-current="true"' : ""}>${v ? lei(v) : "Oricât"}</a>`;
-  }).join("");
-  const ascunse = `${extra.norma ? `<input type="hidden" name="norma" value="${extra.norma}">` : ""}${extra.net ? `<input type="hidden" name="net" value="${extra.net}">` : ""}${extra.ordine ? `<input type="hidden" name="ordine" value="${extra.ordine}">` : ""}`;
-  return `<details open data-filtre-panou class="group">
-      <summary class="flex min-h-11 cursor-pointer list-none items-center justify-center gap-2 rounded-md border border-stone-300 bg-surface px-4 font-semibold text-stone-900 lg:hidden [&::-webkit-details-marker]:hidden">
-        <span class="group-open:hidden">Filtre</span><span class="hidden group-open:inline">Ascunde filtrele</span>${p.activ ? `<span class="inline-grid min-w-5 place-items-center rounded-full bg-marcaj px-1.5 text-xs font-bold text-stone-900">${p.activ}</span>` : ""}
-      </summary>
-      <form method="get" action="/locuri-de-munca" class="mt-3 grid gap-3 lg:mt-0" data-filtre>${ascunse}
+  const ascunse = `${extra.norma ? `<input type="hidden" name="norma" value="${extra.norma}">` : ""}${extra.ordine ? `<input type="hidden" name="ordine" value="${extra.ordine}">` : ""}`;
+  // Câmpul comun de pe telefon: aceleași opțiuni, cu tipul lor. „m:” schimbă meseria, „o:” localitatea.
+  const combinate = [
+    ...meserii.map((o) => `<option value="m:${o.s}" data-n="${o.c}" data-tip="meserie"${o.p === false ? "" : " data-p"}>${esc(o.n)}</option>`),
+    ...orase.map((o) => `<option value="o:${o.s}" data-n="${o.c}" data-tip="localitate" data-p>${esc(o.n)}</option>`),
+  ].join("");
+  const cautare = `<div class="relative">${SVG("pointer-events-none absolute left-3 top-1/2 z-10 size-5 -translate-y-1/2 text-stone-500", D_LUPA)}
+        <select data-cauta="Meseria sau localitatea" data-combinat aria-label="Caută meseria sau localitatea" class="block w-full rounded-md border border-stone-300 bg-surface py-2.5 pl-10 pr-3 text-base"><option value="">Meseria sau localitatea</option>${combinate}</select>
+      </div>`;
+  const panou = `<aside id="panou-filtre" class="grid gap-3">
+      <form method="get" action="/locuri-de-munca" class="grid gap-3" data-filtre>${ascunse}
         <div class="${BLOC}">
-          <label class="block text-sm text-stone-700"><span class="${TITLU_BLOC}">Meseria</span>
-            <select name="meserie" class="${SELECT}" data-cauta="Scrie: barman, șofer…"><option value="">Toate meseriile</option>${optiuni(meserii, meserie)}</select>
+          <label class="block"><span class="${TITLU_BLOC}">Meseria</span>
+            <select name="meserie" class="${SELECT}" data-cauta="Caută meseria…"><option value="">Toate meseriile</option>${optiuni(meserii, meserie)}</select>
           </label>
           ${listaMeserii ? `<div class="mt-2">${listaMeserii}</div>` : ""}
         </div>
         <div class="${BLOC}">
-          <label class="block text-sm text-stone-700"><span class="${TITLU_BLOC}">Localitatea</span>
-            <select name="oras" class="${SELECT}" data-cauta="Scrie: București, Cluj…"><option value="">Toată țara</option>${optiuni(orase, orasSlug)}</select>
+          <label class="block"><span class="${TITLU_BLOC}">Localitatea</span>
+            <select name="oras" class="${SELECT}" data-cauta="Caută localitatea…"><option value="">Toată țara</option>${optiuni(orase, orasSlug)}</select>
           </label>
           ${listaOrase ? `<div class="mt-2">${listaOrase}</div>` : ""}
         </div>
         <button type="submit" data-filtre-buton class="min-h-11 rounded-md border border-stone-300 bg-surface px-4 font-semibold text-stone-900 hover:border-stone-500">Caută</button>
         <div class="${BLOC}"><p class="${TITLU_BLOC}">Norma</p><div class="mt-1">${norme}</div></div>
-        <div class="${BLOC}"><p class="${TITLU_BLOC}">Salariu minim net</p>
-          <nav aria-label="Salariu minim net" class="mt-2 grid grid-cols-4 overflow-hidden rounded-md border border-stone-300 text-center text-sm font-semibold [&>a+a]:border-l [&>a+a]:border-stone-300">${trepte}</nav>
-          <p class="mt-2 text-xs text-stone-600">Lei pe lună, după capătul de jos al salariului. La anunțurile în brut contează netul calculat.</p>
-        </div>
       </form>
-    </details>
+      <div class="rounded-md border border-dashed border-stone-300 bg-canvas p-4 text-sm text-stone-700">
+        <p class="text-base font-bold text-stone-900">Angajezi?</p>
+        <p class="mt-1">Anunț gratuit, fără cont, publicat în câteva minute.</p>
+        <a href="${URL_ADAUGA}" class="mt-3 flex min-h-11 items-center justify-center rounded-md bg-stone-900 px-4 font-semibold text-white hover:bg-stone-700">Adaugă anunț</a>
+      </div>
+    </aside>
     <script>
-    // Pe telefon, filtrele pornesc strânse sub „Filtre”. Pagina vine cu ele deschise, ca pe PC să
-    // se vadă și fără script.
-    (function () { var d = document.querySelector("[data-filtre-panou]"); if (d && !matchMedia("(min-width: 1024px)").matches) d.open = false; })();
+    // Pe telefon, coloana stă strânsă sub „Filtre”; fără script rămâne deschisă, deci tot se poate filtra.
+    (function () {
+      var panou = document.getElementById("panou-filtre"), buton = document.querySelector("[data-filtre-comuta]");
+      document.querySelectorAll("[data-doar-cu-script]").forEach(function (x) { x.hidden = false; });
+      if (!panou || !buton) return;
+      panou.classList.add("max-lg:hidden");
+      buton.addEventListener("click", function () { var ascuns = panou.classList.toggle("max-lg:hidden"); buton.setAttribute("aria-expanded", String(!ascuns)); });
+    })();
     </script>
-    <div class="mt-3 hidden rounded-md border border-dashed border-stone-300 bg-canvas p-4 text-sm text-stone-700 lg:block">
-      <p class="text-base font-bold text-stone-900">Angajezi?</p>
-      <p class="mt-1">Anunț gratuit, fără cont, publicat în câteva minute.</p>
-      <a href="${URL_ADAUGA}" class="mt-3 flex min-h-11 items-center justify-center rounded-md bg-stone-900 px-4 font-semibold text-white hover:bg-stone-700">Adaugă anunț</a>
-    </div>
     <script>
     (function () {
       var form = document.querySelector("[data-filtre]");
@@ -260,26 +276,31 @@ function filtre(p: { meserii: OptiuneFiltru[]; meserie: string | null; orase: Op
       var nr = 0;
       function fara(s) { return s.normalize("NFD").replace(/[\\u0300-\\u036f]/g, "").toLowerCase(); }
       function cate(n) { return n === 0 ? "niciun anunț încă" : n === 1 ? "1 anunț" : n.toLocaleString("ro-RO") + (n % 100 >= 20 || n % 100 === 0 ? " de anunțuri" : " anunțuri"); }
-      form.querySelectorAll("select[data-cauta]").forEach(function (sel) {
-        var id = "filtru-" + (++nr), toate = [], ales = sel.value, activ = 0, gasite = [];
-        Array.prototype.forEach.call(sel.options, function (o) { if (o.value) toate.push({ v: o.value, t: o.text, n: Number(o.dataset.n) || 0, p: o.hasAttribute("data-p"), f: fara(o.text) }); });
+      document.querySelectorAll("select[data-cauta]").forEach(function (sel) {
+        // Câmpul de pe telefon caută deodată în meserii și în localități.
+        var combinat = sel.hasAttribute("data-combinat");
+        var id = "filtru-" + (++nr), toate = [], ales = combinat ? "" : sel.value, activ = 0, gasite = [];
+        Array.prototype.forEach.call(sel.options, function (o) { if (o.value) toate.push({ v: o.value, t: o.text, n: Number(o.dataset.n) || 0, p: o.hasAttribute("data-p"), tip: o.dataset.tip || "", f: fara(o.text) }); });
         function nume(v) { for (var i = 0; i < toate.length; i++) if (toate[i].v === v) return toate[i].t; return ""; }
         var tot = sel.options[0].text;
 
-        var cutie = document.createElement("div"); cutie.className = "relative mt-1";
+        var cutie = document.createElement("div"); cutie.className = combinat ? "relative" : "relative mt-2";
         var inp = document.createElement("input");
         inp.type = "text"; inp.id = id; inp.autocomplete = "off"; inp.spellcheck = false;
         inp.setAttribute("role", "combobox"); inp.setAttribute("aria-autocomplete", "list"); inp.setAttribute("aria-expanded", "false"); inp.setAttribute("aria-controls", id + "-l");
+        if (sel.getAttribute("aria-label")) inp.setAttribute("aria-label", sel.getAttribute("aria-label"));
         inp.placeholder = sel.dataset.cauta; inp.value = nume(ales);
-        inp.className = "block w-full rounded-md border border-stone-300 bg-surface py-2 pl-3 pr-11 text-base text-stone-900 focus:border-stone-600 focus:outline-none";
+        inp.className = combinat
+          ? "block w-full rounded-md border border-stone-300 bg-surface py-2.5 pl-10 pr-3 text-base text-stone-900 focus:border-stone-600 focus:outline-none"
+          : "block w-full rounded-md border border-stone-300 bg-surface py-1.5 pl-2.5 pr-9 text-base text-stone-900 focus:border-stone-600 focus:outline-none lg:text-sm";
         var sterge = document.createElement("button");
         sterge.type = "button"; sterge.textContent = "×"; sterge.setAttribute("aria-label", tot);
-        sterge.className = "absolute right-0 top-0 flex h-full w-11 items-center justify-center text-2xl leading-none text-stone-500 hover:text-stone-900";
-        sterge.hidden = !ales;
+        sterge.className = "absolute right-0 top-0 flex h-full w-9 items-center justify-center text-xl leading-none text-stone-500 hover:text-stone-900";
+        sterge.hidden = combinat || !ales;
         var ul = document.createElement("ul");
         ul.id = id + "-l"; ul.setAttribute("role", "listbox"); ul.hidden = true;
         ul.className = "absolute left-0 right-0 z-20 mt-1 max-h-80 overflow-auto rounded-md border border-stone-300 bg-surface py-1 shadow-lg";
-        var ascuns = document.createElement("input"); ascuns.type = "hidden"; ascuns.name = sel.name; ascuns.value = ales;
+        var ascuns = document.createElement("input"); ascuns.type = "hidden"; if (!combinat) ascuns.name = sel.name; ascuns.value = ales;
         cutie.append(inp, sterge, ul);
         sel.replaceWith(cutie, ascuns);
 
@@ -303,7 +324,7 @@ function filtre(p: { meserii: OptiuneFiltru[]; meserie: string | null; orase: Op
             li.id = id + "-o" + i; li.setAttribute("role", "option");
             li.className = "flex min-h-11 cursor-pointer flex-col justify-center px-3 py-1.5";
             var a = document.createElement("span"); a.className = "text-base text-stone-900"; a.textContent = o.t;
-            var b = document.createElement("span"); b.className = "text-xs text-stone-600"; b.textContent = cate(o.n);
+            var b = document.createElement("span"); b.className = "text-xs text-stone-600"; b.textContent = (o.tip ? o.tip.charAt(0).toUpperCase() + o.tip.slice(1) + " · " : "") + cate(o.n);
             li.append(a, b);
             // mousedown, nu click: altfel câmpul pierde focusul și lista se închide înainte de alegere.
             li.addEventListener("mousedown", function (e) { e.preventDefault(); alege(o.v); });
@@ -318,12 +339,22 @@ function filtre(p: { meserii: OptiuneFiltru[]; meserie: string | null; orase: Op
         }
         function inchide() { ul.hidden = true; inp.setAttribute("aria-expanded", "false"); inp.removeAttribute("aria-activedescendant"); }
         // Alegerea deschide lista imediat, ca pe OLX: fără încă un clic pe „Caută”.
-        function alege(v) { ales = v; ascuns.value = v; inp.value = nume(v); sterge.hidden = !v; inchide(); form.submit(); }
+        function alege(v) {
+          inchide();
+          if (combinat) {
+            // Din câmpul comun se schimbă numai meseria sau numai localitatea; restul filtrelor rămân.
+            var t = v.split(":"), h = form.querySelector('input[type="hidden"][name="' + (t[0] === "m" ? "meserie" : "oras") + '"]');
+            if (!h || !t[1]) return;
+            inp.value = nume(v); h.value = t[1]; form.submit(); return;
+          }
+          ales = v; ascuns.value = v; inp.value = nume(v); sterge.hidden = !v; form.submit();
+        }
 
         inp.addEventListener("focus", function () { inp.select(); arata(); });
         inp.addEventListener("input", arata);
         inp.addEventListener("blur", function () {
           inchide();
+          if (combinat) { inp.value = ""; return; }
           // Ce s-a scris fără alegere nu devine filtru: câmpul revine la alegerea de acum. Golit
           // înseamnă „toate”, aplicat la „Caută”.
           if (!inp.value.trim()) { ascuns.value = ""; sterge.hidden = true; } else inp.value = nume(ascuns.value);
@@ -331,19 +362,20 @@ function filtre(p: { meserii: OptiuneFiltru[]; meserie: string | null; orase: Op
         inp.addEventListener("keydown", function (e) {
           if (e.key === "ArrowDown" && gasite.length) { e.preventDefault(); if (ul.hidden) arata(); else { activ = (activ + 1) % gasite.length; marcheaza(); } }
           else if (e.key === "ArrowUp" && gasite.length) { e.preventDefault(); activ = (activ - 1 + gasite.length) % gasite.length; marcheaza(); }
-          else if (e.key === "Enter") { e.preventDefault(); if (!inp.value.trim()) alege(""); else if (!ul.hidden && gasite[activ]) alege(gasite[activ].v); }
+          else if (e.key === "Enter") { e.preventDefault(); if (!inp.value.trim()) { if (!combinat) alege(""); } else if (!ul.hidden && gasite[activ]) alege(gasite[activ].v); }
           else if (e.key === "Escape") inchide();
         });
         sterge.addEventListener("click", function () { alege(""); });
       });
     })();
     </script>`;
+  return { cautare, panou };
 }
 
 export async function paginaLista(req: Request, env: Env, orasSlug: string | null, meserie: string | null): Promise<Response> {
   const u = new URL(req.url);
   const pagina = paginaDin(u), extra = citesteExtra(u);
-  const f: Filtru = { meserie: meserie ?? undefined, oras: orasSlug ?? undefined, norma: extra.norma, netMin: extra.net };
+  const f: Filtru = { meserie: meserie ?? undefined, oras: orasSlug ?? undefined, norma: extra.norma };
   const [{ anunturi, total }, fat, numeLoc] = await Promise.all([
     lista(env, { ...f, pagina, ordine: extra.ordine }), fatete(env, f), orasSlug ? numeOras(env, orasSlug) : Promise.resolve(null),
   ]);
@@ -370,8 +402,7 @@ export async function paginaLista(req: Request, env: Env, orasSlug: string | nul
   const meserii = MESERII_ANUNTURI.map((m) => ({ s: m.slug, n: m.nume, c: peGrup.get(m.grup) ?? 0, p: m.slug === m.grup }))
     .sort((a, b) => a.n.localeCompare(b.n, "ro"));
   const norme = new Map(fat.norme.map((x) => [x.s, x.c] as const));
-  const activ = [meserie, orasSlug, extra.norma, extra.net].filter(Boolean).length;
-  const cuFiltre = Boolean(extra.norma || extra.net);
+  const activ = [meserie, orasSlug, extra.norma].filter(Boolean).length;
 
   // Filtrele alese, ca etichete deasupra listei: un clic pe una o scoate.
   const eticheta = (href: string, text: string) => `<a href="${href}" class="inline-flex min-h-9 items-center gap-1.5 rounded-full bg-stone-900 px-3 text-sm font-medium text-white hover:bg-stone-700">${esc(text)}<span aria-hidden="true" class="text-stone-300">✕</span><span class="sr-only"> (scoate filtrul)</span></a>`;
@@ -379,41 +410,49 @@ export async function paginaLista(req: Request, env: Env, orasSlug: string | nul
     meserie ? eticheta(urlLista(orasSlug, null) + interogare(extra), NUME_MESERIE.get(meserie)!) : "",
     orasSlug ? eticheta(urlLista(null, meserie) + interogare(extra), numeLoc!) : "",
     extra.norma ? eticheta(q(1, { ...extra, norma: undefined }), NORME[extra.norma]) : "",
-    extra.net ? eticheta(q(1, { ...extra, net: undefined }), `Minim ${lei(extra.net)} lei net`) : "",
   ].join("");
-  const ORDINE = "px-3 py-2 text-stone-700 hover:bg-stone-100 aria-[current=true]:bg-stone-900 aria-[current=true]:text-white";
-  const ordine = `<nav aria-label="Ordinea anunțurilor" data-ordine class="inline-flex overflow-hidden rounded-md border border-stone-300 bg-surface text-sm font-semibold [&>a+a]:border-l [&>a+a]:border-stone-300">
-      <a href="${q(1, { ...extra, ordine: undefined })}" class="${ORDINE}"${extra.ordine ? "" : ' aria-current="true"'}>Cele mai noi</a><a href="${q(1, { ...extra, ordine: "salariu" })}" class="${ORDINE}"${extra.ordine ? ' aria-current="true"' : ""}>Salariul cel mai mare</a>
-    </nav>`;
-  const gol = `<div class="mt-3 ${CARD}"><p class="text-base text-stone-800">${cuFiltre ? "Niciun anunț nu trece de filtrele alese." : unde ? "Nu sunt încă anunțuri pentru căutarea asta." : "Nu sunt încă anunțuri publicate."}</p>
-      ${cuFiltre ? `<p class="mt-2 text-sm"><a class="font-semibold underline underline-offset-2" href="${cale}">Arată toate anunțurile${unde ? ` ${esc(unde)}` : ""}</a></p>` : `<p class="mt-2 text-sm text-stone-600">Angajezi? Anunțul tău apare aici în câteva minute, gratuit și fără cont.</p>`}</div>`;
+  const qa = new URLSearchParams();
+  if (meserie) qa.set("meserie", meserie);
+  if (orasSlug) qa.set("oras", orasSlug);
+  if (extra.norma) qa.set("norma", extra.norma);
+  const ordine = sortare(extra, q, anunturi.length > 1 ? `/api/anunturi/lista?${qa}` : null);
+  const { cautare, panou } = filtre({ meserii, meserie, orase, orasSlug, extra, norme });
+  const gol = `<div class="mt-3 ${CARD}"><p class="text-base text-stone-800">${extra.norma ? "Niciun anunț nu trece de filtrele alese." : unde ? "Nu sunt încă anunțuri pentru căutarea asta." : "Nu sunt încă anunțuri publicate."}</p>
+      ${extra.norma ? `<p class="mt-2 text-sm"><a class="font-semibold underline underline-offset-2" href="${cale}">Arată toate anunțurile${unde ? ` ${esc(unde)}` : ""}</a></p>` : `<p class="mt-2 text-sm text-stone-600">Angajezi? Anunțul tău apare aici în câteva minute, gratuit și fără cont.</p>`}</div>`;
 
   const breadcrumb = (orasSlug || meserie) ? `<nav class="mb-4 flex flex-wrap gap-2 text-xs text-stone-600" aria-label="Breadcrumb"><a class="underline underline-offset-2" href="/locuri-de-munca">Locuri de muncă</a>${orasSlug && meserie ? `<span>/</span><a class="underline underline-offset-2" href="${urlLista(orasSlug, null)}">${esc(numeLoc!)}</a>` : ""}</nav>` : "";
+  // Schița B: pe telefon, câmpul comun, apoi „Filtre” și ordinea, una lângă alta, apoi filtrele alese;
+  // pe PC, coloana din stânga și, deasupra listei, filtrele alese (sau „Toate meseriile, toată țara”) și ordinea.
   const continut = `${breadcrumb}
     <h1 class="text-[28px] font-bold leading-tight tracking-[-0.02em] text-stone-900 sm:text-[34px]">${esc(titlu.charAt(0).toUpperCase() + titlu.slice(1))}</h1>
     <p class="mt-3 max-w-prose text-base text-stone-600">Fiecare anunț are salariul lunar, cu brutul sau netul spus clar. Aplici direct la angajator, fără cont.${alteNume ? ` Cuprinde și anunțurile de ${esc(alteNume)}.` : ""}</p>
-    <div class="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-[260px_minmax(0,1fr)] lg:items-start">
-      <aside>${filtre({ meserii, meserie, orase, orasSlug, extra, norme, activ })}</aside>
+    <div class="mt-5 grid gap-2 lg:hidden" data-doar-cu-script hidden>
+      ${cautare}
+      <div class="grid grid-cols-2 gap-2">
+        <button type="button" data-filtre-comuta aria-controls="panou-filtre" aria-expanded="false" class="inline-flex min-h-11 items-center justify-center gap-2 rounded-md border border-stone-300 bg-surface px-3 text-base font-semibold text-stone-900">${SVG("size-4 shrink-0", D_FILTRE)}Filtre${activ ? `<span class="inline-grid min-w-5 place-items-center rounded-full bg-marcaj px-1.5 text-xs font-bold text-stone-900">${activ}</span>` : ""}</button>
+        ${ordine}
+      </div>
+      ${etichete ? `<div class="flex flex-wrap gap-2">${etichete}</div>` : ""}
+    </div>
+    <div class="mt-4 grid grid-cols-1 gap-6 lg:mt-6 lg:grid-cols-[250px_minmax(0,1fr)] lg:items-start">
+      ${panou}
       <div class="min-w-0">
-        <div class="flex flex-wrap items-center gap-2">${etichete}
-          <div class="flex flex-wrap items-center gap-2 lg:ml-auto">${ordine}${anunturi.length > 1 ? butonApropiere(meserie, orasSlug, extra) : ""}</div>
+        <div class="hidden items-center gap-3 lg:flex">
+          ${etichete ? `<div class="flex flex-wrap gap-2">${etichete}</div>` : `<p class="text-sm text-stone-600">Toate meseriile, toată țara</p>`}
+          <div class="ml-auto w-60 shrink-0">${ordine}</div>
         </div>
         <p data-apropiere-stare class="mt-2 text-sm text-stone-600 empty:hidden"></p>
         ${anunturi.length ? `<ul class="mt-3 grid grid-cols-1 gap-3" data-lista-anunturi>${anunturi.map(cardLista).join("")}</ul>` : gol}
         ${pagini > 1 ? `<nav aria-label="Pagini" class="mt-6 flex gap-4 text-sm">${pagina > 1 ? `<a class="underline underline-offset-2" href="${q(pagina - 1)}">Pagina anterioară</a>` : ""}<span class="text-stone-600">Pagina ${pagina} din ${pagini}</span>${pagina < pagini ? `<a class="underline underline-offset-2" href="${q(pagina + 1)}">Pagina următoare</a>` : ""}</nav>` : ""}
-        <div class="mt-6 rounded-md border border-dashed border-stone-300 bg-canvas p-4 text-sm text-stone-700 lg:hidden">
-          <p class="text-base font-bold text-stone-900">Angajezi?</p>
-          <p class="mt-1">Anunț gratuit, fără cont, publicat în câteva minute.</p>
-          <a href="${URL_ADAUGA}" class="mt-3 inline-flex min-h-11 items-center rounded-md bg-stone-900 px-4 font-semibold text-white hover:bg-stone-700">Adaugă anunț</a>
-        </div>
       </div>
-    </div>`;
+    </div>
+    ${SCRIPT_ORDINE}`;
 
   return inSablon(req, env, {
     titlu, descriere: `${titlu}. Anunțuri de angajare din România, fiecare cu salariul lunar și baza lui, brut sau net. Aplici direct la angajator.`.slice(0, 158),
     canonic: `${SITE}${cale}${interogare({}, pagina)}`,
     // Filtrele din interogare nu fac pagini noi pentru Google: sunt variații ale aceleiași liste.
-    indexabil: total >= PRAG_INDEX && pagina === 1 && !extra.norma && !extra.net && !extra.ordine,
+    indexabil: total >= PRAG_INDEX && pagina === 1 && !extra.norma && !extra.ordine,
     continut,
   });
 }

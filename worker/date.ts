@@ -89,11 +89,10 @@ export async function sterge(env: Env, id: number): Promise<void> {
 export const PE_PAGINA = 20;
 
 /**
- * Filtrele unei liste: meseria și localitatea vin din adresă, norma și salariul minim net din
- * interogare (proprietar, 29 septembrie 2026). Salariul minim se compară cu `net_min`, netul
- * capătului de jos: „minim 4.000 lei net” înseamnă că anunțul pornește de la cel puțin atât.
+ * Filtrele unei liste: meseria și localitatea vin din adresă, norma din interogare (proprietar,
+ * 29 septembrie 2026).
  */
-export type Filtru = { meserie?: string; oras?: string; norma?: Norma; netMin?: number };
+export type Filtru = { meserie?: string; oras?: string; norma?: Norma };
 
 /** Condiția SQL a filtrului. Meseria aduce tot grupul ei: la „chelner” apar și anunțurile de „ospătar”.
  *  `fara` lasă deoparte o dimensiune: numărul de lângă o opțiune ține cont de celelalte filtre, nu de al ei. */
@@ -102,7 +101,6 @@ function unde(f: Filtru, fara?: "meserie" | "oras" | "norma"): { where: string; 
   if (f.meserie && fara !== "meserie") { const g = slugurileGrupului(f.meserie); cond.push(`meserie IN (${g.map(() => "?").join(", ")})`); val.push(...g); }
   if (f.oras && fara !== "oras") { cond.push("oras_slug = ?"); val.push(f.oras); }
   if (f.norma && fara !== "norma") { cond.push("norma = ?"); val.push(f.norma); }
-  if (f.netMin) { cond.push("net_min >= ?"); val.push(f.netMin); }
   return { where: cond.join(" AND "), val };
 }
 
