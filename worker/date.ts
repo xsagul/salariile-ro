@@ -2,6 +2,7 @@
 import type { Env } from "./index";
 import type { Loc } from "./geocod";
 import { LIMITA_PE_ZI, ZILE_PASTRARE_EMAIL, ZILE_VALABILITATE, netLunar, orasSlug, slugAnunt, type AnuntNou } from "../src/lib/anunturi/reguli";
+import { grupMeserie, slugurileGrupului } from "../src/lib/anunturi/meserii";
 
 export type Anunt = {
   id: number; stare: "neconfirmat" | "activ" | "expirat" | "sters" | "suspendat";
@@ -84,11 +85,17 @@ export async function sterge(env: Env, id: number): Promise<void> {
 }
 
 export const PE_PAGINA = 20;
-export async function lista(env: Env, f: { meserie?: string; oras?: string; pagina: number }): Promise<{ anunturi: Anunt[]; total: number }> {
+
+/** Filtrul unei liste. Meseria aduce tot grupul ei: la „chelner” apar și anunțurile de „ospătar”. */
+function unde(f: { meserie?: string; oras?: string }): { where: string; val: unknown[] } {
   const cond = ["stare = 'activ'"], val: unknown[] = [];
-  if (f.meserie) { cond.push("meserie = ?"); val.push(f.meserie); }
+  if (f.meserie) { const g = slugurileGrupului(f.meserie); cond.push(`meserie IN (${g.map(() => "?").join(", ")})`); val.push(...g); }
   if (f.oras) { cond.push("oras_slug = ?"); val.push(f.oras); }
-  const where = cond.join(" AND ");
+  return { where: cond.join(" AND "), val };
+}
+
+export async function lista(env: Env, f: { meserie?: string; oras?: string; pagina: number }): Promise<{ anunturi: Anunt[]; total: number }> {
+  const { where, val } = unde(f);
   const [n, r] = await env.DB.batch([
     env.DB.prepare(`SELECT COUNT(*) AS n FROM anunturi WHERE ${where}`).bind(...val),
     env.DB.prepare(`SELECT * FROM anunturi WHERE ${where} ORDER BY confirmat_la DESC LIMIT ? OFFSET ?`).bind(...val, PE_PAGINA, (f.pagina - 1) * PE_PAGINA),
@@ -102,10 +109,8 @@ export async function lista(env: Env, f: { meserie?: string; oras?: string; pagi
  * unde e (/api/anunturi/lista).
  */
 export async function listaPentruApropiere(env: Env, f: { meserie?: string; oras?: string }) {
-  const cond = ["stare = 'activ'"], val: unknown[] = [];
-  if (f.meserie) { cond.push("meserie = ?"); val.push(f.meserie); }
-  if (f.oras) { cond.push("oras_slug = ?"); val.push(f.oras); }
-  return (await env.DB.prepare(`SELECT * FROM anunturi WHERE ${cond.join(" AND ")} ORDER BY confirmat_la DESC LIMIT 500`).bind(...val).all<Anunt>()).results;
+  const { where, val } = unde(f);
+  return (await env.DB.prepare(`SELECT * FROM anunturi WHERE ${where} ORDER BY confirmat_la DESC LIMIT 500`).bind(...val).all<Anunt>()).results;
 }
 
 /** Numele localității cum îl scriu anunțurile („Cluj-Napoca”), pentru titlul paginii ei. */
@@ -114,15 +119,28 @@ export async function numeOras(env: Env, slug: string): Promise<string | null> {
   return r?.oras.replace(/,.*$/, "").trim() ?? null;
 }
 
-/** Paginile de listă cu anunțuri destule ca să intre în Google (sitemap). */
+/**
+ * Paginile de listă cu anunțuri destule ca să intre în Google (sitemap). La meserii se numără
+ * grupul, iar un grup peste prag intră cu toate formulările lui: „ospătar” și „chelner”.
+ */
 export async function listeIndexabile(env: Env, prag: number): Promise<{ oras: string | null; meserie: string | null }[]> {
-  const q = (grup: string) => env.DB.prepare(`SELECT ${grup} FROM anunturi WHERE stare = 'activ' GROUP BY ${grup} HAVING COUNT(*) >= ?`).bind(prag);
-  const [o, m, om] = await env.DB.batch([q("oras_slug"), q("meserie"), q("oras_slug, meserie")]);
-  return [
-    ...(o.results as { oras_slug: string }[]).map((r) => ({ oras: r.oras_slug, meserie: null })),
-    ...(m.results as { meserie: string | null }[]).filter((r) => r.meserie).map((r) => ({ oras: null, meserie: r.meserie })),
-    ...(om.results as { oras_slug: string; meserie: string | null }[]).filter((r) => r.meserie).map((r) => ({ oras: r.oras_slug, meserie: r.meserie })),
-  ];
+  const [o, om] = await env.DB.batch([
+    env.DB.prepare("SELECT oras_slug FROM anunturi WHERE stare = 'activ' GROUP BY oras_slug HAVING COUNT(*) >= ?").bind(prag),
+    env.DB.prepare("SELECT oras_slug, meserie, COUNT(*) AS n FROM anunturi WHERE stare = 'activ' AND meserie IS NOT NULL GROUP BY oras_slug, meserie"),
+  ]);
+  const peGrup = new Map<string, number>();
+  const aduna = (k: string, n: number) => peGrup.set(k, (peGrup.get(k) ?? 0) + n);
+  for (const r of om.results as { oras_slug: string; meserie: string; n: number }[]) {
+    aduna(`|${grupMeserie(r.meserie)}`, r.n);
+    aduna(`${r.oras_slug}|${grupMeserie(r.meserie)}`, r.n);
+  }
+  const liste: { oras: string | null; meserie: string | null }[] = (o.results as { oras_slug: string }[]).map((r) => ({ oras: r.oras_slug, meserie: null }));
+  for (const [k, n] of peGrup) {
+    if (n < prag) continue;
+    const [oras, grup] = k.split("|");
+    for (const m of slugurileGrupului(grup)) liste.push({ oras: oras || null, meserie: m });
+  }
+  return liste;
 }
 
 export async function toateActive(env: Env): Promise<Pick<Anunt, "id" | "slug" | "confirmat_la">[]> {

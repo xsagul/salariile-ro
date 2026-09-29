@@ -4388,3 +4388,29 @@ Decis de proprietar: „suntem la început și orice frână ar putea să ne sca
 Probat în browser: formular completat → „Anunțul e publicat” → anunțul primul în lista București
 (7); emailul din log are textul nou; gestionarea cu linkul merge, fără link spune „Linkul e
 incomplet”; raportarea cu `#7` arată formularul, fără id cere deschiderea din anunț.
+
+## 29 septembrie 2026 — meseriile hubului: listă proprie, cu sinonime, fiecare cu adresa ei
+
+Decis de proprietar: oamenii caută „ospătar” și „femeie de serviciu”, nu „chelner” și „agent de
+curățenie”; hubul are lista lui de meserii, separată de catalogul paginilor de salarii; sinonimele
+se cumulează în listă, dar fiecare are adresa ei, ca Google s-o găsească așa cum e căutată.
+- Cum fac concurenții (verificat azi): OLX are ~20 de categorii și ~45 de subcategorii plus pagini
+  libere pe cuvânt (`q-ospatar`, `q-ospatar-ospatarita`); eJobs pune cuvântul în adresă
+  (`/locuri-de-munca/brasov/ospatar`); Jooble și jobradar24 la fel. Primele rezultate la „locuri de
+  munca ospatar” sunt toate astfel de pagini. anuntul.ro vine din ziarul „Anunțul Telefonic” (7 iunie 1990).
+- Volume SE Ranking (RO): „locuri de munca ospatar” 320/lună, „chelner” sub prag; „femeie de
+  serviciu” 480, „agent curatenie” sub prag; „agent de paza” 390, „paznic” sub prag; „sofer” 1.100.
+- `src/lib/anunturi/meserii.ts`: 193 de grupuri, 279 de formulări, alese din 6.935 de titluri reale
+  (colectare/anunturi/vazute.txt), ocupațiile ANOFM cu cele mai multe oferte, subcategoriile OLX și
+  meseriile din catalog care se angajează prin anunț. Grupurile unesc numai aceeași muncă („Ajutor
+  ospătar” rămâne separat; „Menajeră” separat de „Femeie de serviciu”). Fără funcțiile ocupate
+  prin concurs (judecător, procuror, polițist).
+- Lista unei formulări (`/locuri-de-munca/chelner`, `/locuri-de-munca/bucuresti/ospatar`) aduce
+  tot grupul, cu titlul formulării și nota „Cuprinde și anunțurile de …”; canonicalul e al fiecărei
+  adrese. Sitemap: un grup peste prag (5) intră cu toate formulările. Filtrele numără pe grup;
+  câmpul gol arată numai numele principale. Anunțul păstrează formularea aleasă de angajator.
+- Test nou în `test-anunturi.mts`: nicio adresă dublă, nicio meserie cu slugul unei localități SIRUTA
+  sau al unei pagini existente, grupul ospătar/chelner, „Ajutor ospătar” în afara lui.
+Probat în browser: anunțul pus la „Chelner” apare pe `/locuri-de-munca/ospatar` și pe
+`/locuri-de-munca/bucuresti/chelner`; filtrul „femeie” → Femeie de serviciu; formularul „paznic” →
+Paznic; sitemap-ul are `/barman` și `/barmanita` (grupul are 5 anunțuri).

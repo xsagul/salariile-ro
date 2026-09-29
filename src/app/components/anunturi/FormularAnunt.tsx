@@ -5,13 +5,14 @@
 // Meseria, localitatea și strada se caută scriind (proprietar, 28 septembrie 2026): localitățile din
 // SIRUTA (INS), străzile din OpenStreetMap, ambele încărcate de pe site; căutarea rămâne în browser.
 import { useCallback, useEffect, useMemo, useState } from "react";
-import catalog from "@/data/meserii-catalog.json";
+import { MESERII_ANUNTURI } from "@/lib/anunturi/meserii";
 import { faraDiacritice, netLunar, valideaza, type Eroare } from "@/lib/anunturi/reguli";
 import { cauta, detaliuLocalitate, incarcaLocalitati, numarDinText, strazileLocalitatii, type Localitate } from "@/lib/anunturi/localitati";
 import CautaInLista from "@/app/components/anunturi/CautaInLista";
 import Turnstile from "@/app/components/anunturi/Turnstile";
 
-const MESERII = (catalog as { meserii: { slug: string; nume: string }[] }).meserii.slice().sort((a, b) => a.nume.localeCompare(b.nume, "ro"));
+// Meseriile hubului, cu sinonimele: „ospătar” și „chelner” se găsesc amândouă (src/lib/anunturi/meserii.ts).
+const MESERII = MESERII_ANUNTURI.slice().sort((a, b) => a.nume.localeCompare(b.nume, "ro"));
 const SLUGURI = new Set(MESERII.map((m) => m.slug));
 const numeMeserie = (slug: unknown) => MESERII.find((m) => m.slug === slug)?.nume ?? "";
 
@@ -37,7 +38,7 @@ export default function FormularAnunt({ initial, modificare = false, trimite }: 
     setV((x) => ({ ...x, [k]: e.target.type === "checkbox" ? (e.target as HTMLInputElement).checked : e.target.value }));
   const eroare = (camp: string) => erori.find((e) => e.camp === camp)?.mesaj;
 
-  // Meseria: se alege din catalog; un nume scris întocmai se recunoaște și fără clic.
+  // Meseria: se alege din listă; un nume scris întocmai se recunoaște și fără clic.
   const [meserieText, setMeserieText] = useState(numeMeserie(initial?.meserie));
   const optMeserii = useMemo(() => cauta(MESERII, meserieText, (m) => m.nume).map((m) => ({ cheie: m.slug, text: m.nume })), [meserieText]);
   const scrieMeserie = (s: string) => {

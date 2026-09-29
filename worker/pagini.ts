@@ -1,12 +1,13 @@
 // Paginile de anunțuri, puse în șablonul static /locuri-de-munca/sablon (header, footer, CSS).
 // Adresele (verificate în Google România, 28 septembrie 2026) sunt deținute de src/lib/anunturi/reguli.ts.
 import type { Env } from "./index";
-import catalog from "../src/data/meserii-catalog.json";
 import { JUDETE, NORME, URL_ADAUGA, esteMobil, linkApel, linkWhatsApp, telefonAfisat, urlAnunt, urlLista } from "../src/lib/anunturi/reguli";
 import { completeazaSablon } from "../src/lib/anunturi/sablon";
+import { MESERII_ANUNTURI, grupMeserie, slugurileGrupului } from "../src/lib/anunturi/meserii";
 import { PE_PAGINA, dupaId, lista, listeIndexabile, numeOras, toateActive, type Anunt } from "./date";
 
-const NUME_MESERIE = new Map((catalog as { meserii: { slug: string; nume: string }[] }).meserii.map((m) => [m.slug, m.nume]));
+// Meseriile hubului, cu sinonimele lor (src/lib/anunturi/meserii.ts), nu catalogul paginilor de salarii.
+const NUME_MESERIE = new Map(MESERII_ANUNTURI.map((m) => [m.slug, m.nume]));
 export const esteMeserie = (s: string) => NUME_MESERIE.has(s);
 const CARD = "rounded-md border border-stone-200 bg-surface p-5 shadow-soft sm:p-6";
 /** O listă intră în Google abia cu atâtea anunțuri: top 3 e numai al listelor pline. */
@@ -111,7 +112,8 @@ function butonApropiere(meserie: string | null, oras: string | null): string {
   </script>`;
 }
 
-type OptiuneFiltru = { s: string; n: string; c: number };
+/** `p`: numele principal al grupului; câmpul gol arată numai principalele, ca „Chelner” să nu dubleze „Ospătar”. */
+type OptiuneFiltru = { s: string; n: string; c: number; p?: boolean };
 
 /**
  * Filtrele listei: scrii „b” și apar București, Bacău (proprietar, 29 septembrie 2026, ca pe OLX),
@@ -122,7 +124,7 @@ type OptiuneFiltru = { s: string; n: string; c: number };
  * la o pagină 404.
  */
 function filtre(meserii: OptiuneFiltru[], meserie: string | null, orase: OptiuneFiltru[], orasSlug: string | null): string {
-  const optiuni = (valori: OptiuneFiltru[], ales: string | null) => valori.map((o) => `<option value="${o.s}" data-n="${o.c}"${o.s === ales ? " selected" : ""}>${esc(o.n)}</option>`).join("");
+  const optiuni = (valori: OptiuneFiltru[], ales: string | null) => valori.map((o) => `<option value="${o.s}" data-n="${o.c}"${o.p === false ? "" : " data-p"}${o.s === ales ? " selected" : ""}>${esc(o.n)}</option>`).join("");
   const SELECT = "mt-1 block w-full rounded-md border border-stone-300 bg-surface px-3 py-2 text-base";
   return `<form method="get" action="/locuri-de-munca" class="mt-6 grid gap-3 sm:grid-cols-[1fr_1fr_auto]" data-filtre>
       <label class="text-sm text-stone-700">Meseria
@@ -142,7 +144,7 @@ function filtre(meserii: OptiuneFiltru[], meserie: string | null, orase: Optiune
       function cate(n) { return n === 0 ? "niciun anunț încă" : n === 1 ? "1 anunț" : n.toLocaleString("ro-RO") + (n % 100 >= 20 || n % 100 === 0 ? " de anunțuri" : " anunțuri"); }
       form.querySelectorAll("select[data-cauta]").forEach(function (sel) {
         var id = "filtru-" + (++nr), toate = [], ales = sel.value, activ = 0, gasite = [];
-        Array.prototype.forEach.call(sel.options, function (o) { if (o.value) toate.push({ v: o.value, t: o.text, n: Number(o.dataset.n) || 0, f: fara(o.text) }); });
+        Array.prototype.forEach.call(sel.options, function (o) { if (o.value) toate.push({ v: o.value, t: o.text, n: Number(o.dataset.n) || 0, p: o.hasAttribute("data-p"), f: fara(o.text) }); });
         function nume(v) { for (var i = 0; i < toate.length; i++) if (toate[i].v === v) return toate[i].t; return ""; }
         var tot = sel.options[0].text;
 
@@ -166,7 +168,7 @@ function filtre(meserii: OptiuneFiltru[], meserie: string | null, orase: Optiune
         function cauta(text) {
           var q = fara(text).replace(/\\s+/g, " ").trim();
           // Câmpul gol sau cu alegerea de acum: arată ce are anunțuri, cele mai multe primele.
-          if (!q || text === nume(ales)) return toate.filter(function (o) { return o.n > 0; }).sort(function (a, b) { return b.n - a.n || a.t.localeCompare(b.t, "ro"); }).slice(0, 8);
+          if (!q || text === nume(ales)) return toate.filter(function (o) { return o.n > 0 && o.p; }).sort(function (a, b) { return b.n - a.n || a.t.localeCompare(b.t, "ro"); }).slice(0, 8);
           var r = [];
           toate.forEach(function (o) {
             var s = o.f.startsWith(q) ? 0 : o.f.indexOf(" " + q) >= 0 || o.f.indexOf("-" + q) >= 0 ? 1 : q.length >= 3 && o.f.indexOf(q) >= 0 ? 2 : -1;
@@ -232,6 +234,8 @@ export async function paginaLista(req: Request, env: Env, orasSlug: string | nul
   }
   const pagini = Math.max(1, Math.ceil(total / PE_PAGINA));
   const numeM = meserie ? NUME_MESERIE.get(meserie)!.toLowerCase() : "";
+  // Sinonimele cumulate în listă, spuse pe față: altfel un anunț de „chelner” la „ospătar” ar părea o greșeală.
+  const alteNume = meserie ? slugurileGrupului(meserie).filter((x) => x !== meserie).map((x) => NUME_MESERIE.get(x)!.toLowerCase()).join(", ") : "";
   const unde = [numeM, numeLoc ? `în ${numeLoc}` : ""].filter(Boolean).join(" ");
   const cat = total ? `${lei(total)} ${total === 1 ? "loc de muncă" : "locuri de muncă"}` : "Locuri de muncă";
   const titlu = `${cat}${unde ? ` ${unde}` : ""}, cu salariul scris`;
@@ -239,18 +243,22 @@ export async function paginaLista(req: Request, env: Env, orasSlug: string | nul
   const q = (p: number) => `${cale}${p > 1 ? `?pagina=${p}` : ""}`;
   // Numărul de sub fiecare opțiune ține cont de celălalt filtru (proprietar, 29 septembrie 2026): cu
   // „Barman” ales, București arată câți barmani caută, nu toate anunțurile din oraș.
+  const grup = meserie ? slugurileGrupului(meserie) : [];
+  const grupSql = grup.length ? `meserie IN (${grup.map(() => "?").join(", ")})` : "1";
   const [ro, rm] = await env.DB.batch([
-    env.DB.prepare("SELECT oras_slug AS s, MIN(oras) AS n, SUM(CASE WHEN ?1 IS NULL OR meserie = ?1 THEN 1 ELSE 0 END) AS c FROM anunturi WHERE stare = 'activ' GROUP BY oras_slug ORDER BY n").bind(meserie),
+    env.DB.prepare(`SELECT oras_slug AS s, MIN(oras) AS n, SUM(CASE WHEN ${grupSql} THEN 1 ELSE 0 END) AS c FROM anunturi WHERE stare = 'activ' GROUP BY oras_slug ORDER BY n`).bind(...grup),
     env.DB.prepare("SELECT meserie AS s, COUNT(*) AS c FROM anunturi WHERE stare = 'activ' AND meserie IS NOT NULL AND (?1 IS NULL OR oras_slug = ?1) GROUP BY meserie").bind(orasSlug),
   ]);
   const orase = (ro.results as OptiuneFiltru[]).map((o) => ({ ...o, n: o.n.replace(/,.*$/, "") }));
-  const cateM = new Map((rm.results as { s: string; c: number }[]).map((m) => [m.s, m.c]));
-  const meserii = [...NUME_MESERIE].sort((a, b) => a[1].localeCompare(b[1], "ro")).map(([s, n]) => ({ s, n, c: cateM.get(s) ?? 0 }));
+  const peGrup = new Map<string, number>();
+  for (const m of rm.results as { s: string; c: number }[]) peGrup.set(grupMeserie(m.s), (peGrup.get(grupMeserie(m.s)) ?? 0) + m.c);
+  const meserii = MESERII_ANUNTURI.map((m) => ({ s: m.slug, n: m.nume, c: peGrup.get(m.grup) ?? 0, p: m.slug === m.grup }))
+    .sort((a, b) => a.n.localeCompare(b.n, "ro"));
 
   const breadcrumb = (orasSlug || meserie) ? `<nav class="mb-4 flex flex-wrap gap-2 text-xs text-stone-600" aria-label="Breadcrumb"><a class="underline underline-offset-2" href="/locuri-de-munca">Locuri de muncă</a>${orasSlug && meserie ? `<span>/</span><a class="underline underline-offset-2" href="${urlLista(orasSlug, null)}">${esc(numeLoc!)}</a>` : ""}</nav>` : "";
   const continut = `${breadcrumb}
     <h1 class="text-[28px] font-bold leading-tight tracking-[-0.02em] text-stone-900 sm:text-[34px]">${esc(titlu.charAt(0).toUpperCase() + titlu.slice(1))}</h1>
-    <p class="mt-3 max-w-prose text-base text-stone-600">Fiecare anunț are salariul lunar, cu brutul sau netul spus clar. Aplici direct la angajator, fără cont.</p>
+    <p class="mt-3 max-w-prose text-base text-stone-600">Fiecare anunț are salariul lunar, cu brutul sau netul spus clar. Aplici direct la angajator, fără cont.${alteNume ? ` Cuprinde și anunțurile de ${esc(alteNume)}.` : ""}</p>
     <div class="mt-5"><a href="${URL_ADAUGA}" class="inline-flex min-h-11 items-center rounded-md bg-stone-900 px-4 font-semibold text-white hover:bg-stone-700">Adaugă un anunț gratuit</a></div>
     ${filtre(meserii, meserie, orase, orasSlug)}
     ${anunturi.length > 1 ? butonApropiere(meserie, orasSlug) : ""}

@@ -4,6 +4,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import { cauta, cheieUat, numarDinText, type Localitate } from "../src/lib/anunturi/localitati";
 import { MARCAJE, completeazaSablon } from "../src/lib/anunturi/sablon";
+import { MESERII_ANUNTURI, grupMeserie, numeMeserieAnunt, slugMeserie, slugurileGrupului } from "../src/lib/anunturi/meserii";
 import { esteMobil, linkApel, linkWhatsApp, orasSlug, slugAnunt, telefonAfisat, telefonCurat, urlAnunt, urlLista, valideaza, type Eroare } from "../src/lib/anunturi/reguli";
 
 const MESERII = new Set(["barman", "sofer-distributie"]);
@@ -111,4 +112,22 @@ assert.equal(urlLista(null, null), "/locuri-de-munca");
   assert.ok(b.bucuresti.includes("Strada Lipscani") && b.bucuresti.length > 4000, "străzile Bucureștiului din OpenStreetMap");
 }
 
-console.log("OK: anunțurile de angajare — salariul, contactul, conținutul interzis, adresele, șablonul, sugestiile de localitate și stradă");
+// Meseriile hubului: fiecare formulare are adresa ei, iar adresa nu poate fi a unei localități
+// (/locuri-de-munca/{x} ar fi ambiguu) și nici a unei pagini existente. Grupul cumulează sinonimele.
+{
+  const sluguri = MESERII_ANUNTURI.map((m) => m.slug);
+  assert.deepEqual(sluguri.filter((s, i) => sluguri.indexOf(s) !== i), [], "două formulări cu aceeași adresă");
+  const loc = JSON.parse(fs.readFileSync("public/date/anunturi/localitati.json", "utf8")) as Localitate[];
+  const orase = new Set(loc.flatMap((l) => [orasSlug(l[0]), orasSlug(l[2] || l[0])]));
+  const rezervate = ["sitemap-xml", "raporteaza", "sablon"];
+  assert.deepEqual(sluguri.filter((s) => orase.has(s) || rezervate.includes(s)), [], "meserie cu adresa unei localități");
+  assert.deepEqual(slugurileGrupului("chelner"), ["ospatar", "chelner", "ospatarita"]);
+  assert.equal(grupMeserie("paznic"), "agent-de-paza");
+  assert.equal(numeMeserieAnunt("femeie-de-serviciu"), "Femeie de serviciu");
+  assert.equal(slugMeserie("Șofer C+E"), "sofer-c-e");
+  // „Ajutor ospătar” e altă muncă decât „Ospătar”: nu intră în grupul lui.
+  assert.ok(!slugurileGrupului("ospatar").includes("ajutor-ospatar"));
+  assert.deepEqual(cauta(MESERII_ANUNTURI, "ospat", (m) => m.nume).map((m) => m.nume).slice(0, 2), ["Ospătar", "Ospătăriță"]);
+}
+
+console.log("OK: anunțurile de angajare — salariul, contactul, conținutul interzis, adresele, șablonul, sugestiile de localitate și stradă, meseriile");

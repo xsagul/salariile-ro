@@ -35,7 +35,7 @@ export const LIMITE = { titlu: [8, 90], angajator: [0, 120], oras: [2, 60], adre
 
 export type AnuntNou = {
   titlu: string;
-  meserie: string;          // slug din catalog sau "" (altă meserie)
+  meserie: string;          // slug din src/lib/anunturi/meserii.ts sau "" (necompletat)
   angajator: string;        // opțional; fără el anunțul nu intră în Google Jobs (JobPosting cere firma)
   judet: string;            // cod din JUDETE
   oras: string;
@@ -98,7 +98,7 @@ export const telefonAfisat = (t: string) => (t.startsWith("07") ? `${t.slice(0, 
 const emailValid = (e: string) => /^[^\s@]{1,64}@[^\s@]{1,190}\.[a-z]{2,}$/i.test(e);
 
 /**
- * Curăță și verifică anunțul. `meseriiValide`: sluguri din catalog (src/data/meserii-catalog.json).
+ * Curăță și verifică anunțul. `meseriiValide`: slugurile din src/lib/anunturi/meserii.ts.
  * Întoarce anunțul curățat sau lista erorilor, câmp cu câmp.
  */
 export function valideaza(brut: Record<string, unknown>, meseriiValide: Set<string>): { anunt: AnuntNou } | { erori: Eroare[] } {
@@ -131,7 +131,7 @@ export function valideaza(brut: Record<string, unknown>, meseriiValide: Set<stri
   else lung("oras", a.oras, "Localitatea");
   if (a.adresa) lung("adresa", a.adresa, "Adresa");
   lung("descriere", a.descriere, "Descrierea");
-  if (a.meserie && !meseriiValide.has(a.meserie)) e.push({ camp: "meserie", mesaj: "Alege meseria din listă sau „Altă meserie”." });
+  if (a.meserie && !meseriiValide.has(a.meserie)) e.push({ camp: "meserie", mesaj: "Alege meseria din listă sau lasă câmpul gol." });
   if (a.norma === "partiala" && !(a.orePeZi! >= 1 && a.orePeZi! <= 7)) e.push({ camp: "orePeZi", mesaj: "La normă parțială, scrie câte ore pe zi (1–7)." });
 
   // Salariul: obligatoriu, cu baza; orice sumă (fără prag minim, proprietar, 28 septembrie 2026).

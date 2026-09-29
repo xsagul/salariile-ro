@@ -1,13 +1,13 @@
 // API-ul anunțurilor: postare, gestionare din linkul primit pe email, raportare.
 // Toate cererile sunt JSON prin POST; răspunsurile nu conțin niciodată emailul celui care postează.
 import type { Env } from "./index";
-import catalog from "../src/data/meserii-catalog.json";
 import { URL_ADAUGA, urlAnunt, valideaza } from "../src/lib/anunturi/reguli";
+import { MESERII_ANUNTURI } from "../src/lib/anunturi/meserii";
 import { adauga, dupaId, dupaToken, inLimita, listaPentruApropiere, modifica, prelungeste, raporteaza, sterge, tokenNou, type Anunt } from "./date";
 import { localizeaza } from "./geocod";
 import { cardLista } from "./pagini";
 
-const MESERII = new Set((catalog as { meserii: { slug: string }[] }).meserii.map((m) => m.slug));
+const MESERII = new Set(MESERII_ANUNTURI.map((m) => m.slug));
 const MOTIVE_RAPORTARE = ["țeapă sau cerere de bani", "discriminare", "salariul nu e cel real", "anunț fals sau duplicat", "conținut ilegal", "altceva"];
 
 const json = (date: unknown, status = 200) => new Response(JSON.stringify(date), { status, headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" } });
