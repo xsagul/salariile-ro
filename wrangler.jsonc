@@ -29,7 +29,7 @@
 
   // Baza anunțurilor (migrations/). `database_id` se completează după `wrangler d1 create
   // salariile-anunturi` în contul site-ului; local, `wrangler dev` folosește o copie SQLite.
-  "d1_databases": [{ "binding": "DB", "database_name": "salariile-anunturi", "database_id": "DE-COMPLETAT", "migrations_dir": "migrations" }],
+  "d1_databases": [{ "binding": "DB", "database_name": "salariile-anunturi", "database_id": "1b8b8be1-2f22-4968-9f10-8855417ba366", "migrations_dir": "migrations" }],
   "vars": {
     "SITE": "https://salariile.ro",
     "EMAIL_EXPEDITOR": "anunturi@salariile.ro",

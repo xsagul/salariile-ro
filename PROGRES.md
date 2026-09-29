@@ -4462,3 +4462,9 @@ amestecă datele testului pentru zilele rămase — de decis atunci (lansare dup
   minut. **Email Sending către adrese oarecare cere Workers Paid (5 $/lună; 3.000 de emailuri
   incluse, apoi 0,35 $ la 1.000)**; pe Free se trimite numai la adresele verificate din cont.
   Decizia de plată e a proprietarului; până atunci linkul de gestionare apare pe ecran.
+- Lansare, 29 septembrie 2026: D1 `salariile-anunturi` creat în contul site-ului (Sorin.stiuriuc@gmail.com's
+  Account), **jurisdicție UE**, id `1b8b8be1-2f22-4968-9f10-8855417ba366`; migrarea 0001 rulată din
+  consola D1 (plus rândul din `d1_migrations`, ca `wrangler d1 migrations apply` să n-o repete);
+  verificat: tabelele anunturi, raportari, limite, d1_migrations; 0 anunțuri. Build-urile: 1 min 33 s
+  fiecare, ~10 pe zi → ~470 de minute pe lună din 3.000 gratuite. Butonul „Adaugă anunț” are contur,
+  nu fundal negru (proprietarul: al patrulea buton negru pe telefon strica pagina calculatorului).
