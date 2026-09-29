@@ -14,7 +14,7 @@
 // și meseriile din catalogul de salarii care se angajează prin anunț. Grupurile NU unesc munci
 // diferite: „Ajutor ospătar” nu e „Ospătar”, „Menajeră” (în casă) nu e „Femeie de serviciu”.
 // Funcțiile ocupate numai prin concurs (judecător, procuror, polițist) nu sunt aici.
-import { faraDiacritice } from "./reguli";
+import { JUDETE, faraDiacritice } from "./reguli";
 
 /**
  * Domeniile, ca rubricile de pe OLX și departamentele de pe eJobs (proprietar, 29 septembrie 2026:
@@ -288,3 +288,50 @@ export const numeMeserieAnunt = (slug: string) => DUPA_SLUG.get(slug)?.nume ?? "
 export const grupMeserie = (slug: string) => DUPA_SLUG.get(slug)?.grup ?? slug;
 /** Toate formulările grupului în care e `slug`, inclusiv el. */
 export const slugurileGrupului = (slug: string) => IN_GRUP.get(grupMeserie(slug)) ?? [slug];
+
+/**
+ * Rădăcina unui cuvânt: fără articol și fără terminația de plural, ca „barmana”, „barmanii” și
+ * „barmanului” să fie „barman” (proprietar, 29 septembrie 2026: pe OLX, „barmanA” găsea barmanii).
+ * Rămân cel puțin 4 litere; cuvintele sub 5 litere nu se ating.
+ */
+const TERMINATII = ["urilor", "iilor", "ilor", "elor", "ului", "uri", "lor", "iei", "ele", "ule", "ul", "ii", "ei", "le", "ia", "ie", "a", "e", "i", "u"];
+export function radacina(w: string): string {
+  if (w.length < 5) return w;
+  const t = TERMINATII.find((x) => w.endsWith(x) && w.length - x.length >= 4);
+  return t ? w.slice(0, -t.length) : w;
+}
+
+/** Câte litere diferă între două cuvinte: schimbate, lipsă, în plus sau două vecine inversate (Damerau–Levenshtein, varianta OSA). */
+export function distanta(a: string, b: string): number {
+  const d: number[][] = Array.from({ length: a.length + 1 }, (_, i) => [i, ...Array<number>(b.length).fill(0)]);
+  for (let j = 1; j <= b.length; j++) d[0][j] = j;
+  for (let i = 1; i <= a.length; i++) {
+    for (let j = 1; j <= b.length; j++) {
+      d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+      if (i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) d[i][j] = Math.min(d[i][j], d[i - 2][j - 2] + 1);
+    }
+  }
+  return d[a.length][b.length];
+}
+/** Greșelile iertate într-un cuvânt: una de la 4 litere, două de la 8. */
+export const greseliIertate = (w: string) => (w.length >= 8 ? 2 : w.length >= 4 ? 1 : 0);
+
+/** Un nume scris ca în titluri, cu toate cuvintele („ajutor de barman”): fără diacritice și fără semne. */
+export const formaTitlu = (s: string) => faraDiacritice(s).replace(/[^a-z0-9]+/g, " ").trim();
+
+/** Cuvintele pe care căutarea le poate corecta: meseriile, domeniile și județele. */
+const NUME_CATALOG = [...MESERII_ANUNTURI.map((m) => m.nume), ...DOMENII.map((d) => d.nume), ...Object.values(JUDETE)];
+const VOCABULAR = [...new Set(NUME_CATALOG.flatMap((x) => formaTitlu(x).split(" ")).filter((w) => w.length >= 4))];
+/** Cuvântul din catalog cu diacriticele lui, pentru „Am căutat și: „ospătar””. */
+const CU_DIACRITICE = new Map(NUME_CATALOG.flatMap((x) => x.toLowerCase().split(/[^\p{L}\p{N}]+/u)).filter(Boolean).map((w) => [formaTitlu(w), w] as const));
+export const cuvantAfisat = (w: string) => CU_DIACRITICE.get(w) ?? w;
+/**
+ * Formele căutate pentru un cuvânt, ca pe OLX: el, rădăcina lui („barmana” → „barman”) și cuvintele
+ * din catalog scrise aproape la fel („barmn” → „barman”, „bucuresit” → „bucuresti”). Se adună, deci
+ * rezultatele doar cresc.
+ */
+export function variante(w: string): string[] {
+  const r = radacina(w), max = greseliIertate(w), v = new Set([w, r]);
+  if (max) for (const x of VOCABULAR) if (Math.abs(x.length - w.length) <= max && distanta(w, x) <= max) v.add(x);
+  return [...v].slice(0, 6);
+}

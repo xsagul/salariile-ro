@@ -5,7 +5,7 @@ import fs from "node:fs";
 import { cauta, cheieUat, numarDinText, type Localitate } from "../src/lib/anunturi/localitati";
 import { MARCAJE, completeazaSablon } from "../src/lib/anunturi/sablon";
 import { EMAIL_ACTIV } from "../src/lib/anunturi/config";
-import { MESERII_ANUNTURI, esteDomeniu, ghicesteMeserie, grupMeserie, numeMeserieAnunt, slugMeserie, slugurileGrupului } from "../src/lib/anunturi/meserii";
+import { MESERII_ANUNTURI, distanta, esteDomeniu, ghicesteMeserie, grupMeserie, numeMeserieAnunt, radacina, slugMeserie, slugurileGrupului, variante } from "../src/lib/anunturi/meserii";
 import { esteMobil, linkApel, linkWhatsApp, orasSlug, slugAnunt, telefonAfisat, telefonCurat, urlAnunt, urlLista, valideaza, type Eroare } from "../src/lib/anunturi/reguli";
 
 const MESERII = new Set(["barman", "sofer-distributie"]);
@@ -42,6 +42,18 @@ assert.deepEqual(camp({ salariuMax: "20000" }), [], "interval larg: se publică"
   assert.ok("anunt" in y, "o valoare necunoscută nu respinge anunțul");
   if ("anunt" in y) { assert.equal(y.anunt.contract, undefined); assert.equal(y.anunt.locMunca, undefined); assert.equal(y.anunt.faraExperienta, false); }
 }
+
+// Căutarea iartă ca pe OLX (proprietar, 29 septembrie 2026: „barmanA” găsea barmanii).
+assert.equal(radacina("barmana"), "barman");
+assert.equal(radacina("barmanii"), "barman");
+assert.equal(radacina("barmanului"), "barman");
+assert.equal(radacina("bona"), "bona", "cuvintele scurte nu se taie");
+assert.equal(distanta("barmn", "barman"), 1);
+assert.equal(distanta("bramna", "barman"), 2, "două litere inversate de două ori");
+assert.ok(variante("barmana").includes("barman"));
+assert.ok(variante("barmn").includes("barman"));
+assert.ok(variante("bucuresit").includes("bucuresti"), "și județele");
+assert.ok(!variante("bar").some((x) => x !== "bar"), "sub 4 litere, nicio corectură");
 
 // Meseria lăsată necompletată se ghicește din titlu: cea mai lungă formulare întreagă din catalog.
 assert.equal(ghicesteMeserie("Ajutor barman restaurant Beraria H"), "ajutor-barman", "anunțul care nu apărea la niciun filtru");
