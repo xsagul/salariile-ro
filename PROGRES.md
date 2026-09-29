@@ -4580,3 +4580,27 @@ Proprietarul: „3 locuri de muncă, cu salariul scris” nu-i plăcea; la 3 anu
 București, cu salariul afișat”, „Locuri de muncă barman în București, cu salariul afișat” — H1,
 `<title>` și începutul descrierii. Numărul e scos de tot, nu revine peste un prag (decizia lui).
 Începe cu „Locuri de muncă”, forma căutată. Probat local cu `wrangler dev` pe cele trei variante.
+
+## 29 septembrie 2026 — lista de anunțuri, varianta B (coloană cu filtre)
+
+Proprietarul a comparat lista cu anuntul.ro și eJobs („cardurile noastre par cam mari, cam gol”).
+Schițe cu trei variante (artifact „Schițe listă de joburi”); a ales **B**, cu o schimbare: pe card
+scrie **„Vezi anunțul”, nu „Sună”** — „va suna cineva fără să citească anunțul”.
+
+- Cardul (`cardLista`): titlul, strada și localitatea (cu firma, când e), salariul ca etichetă
+  galbenă (`bg-marcaj/25`), ≈ netul la anunțurile în brut, norma, meseria, începutul descrierii pe
+  un rând, „Publicat azi / ieri / pe …”. Mai strâns decât înainte (p-4).
+- Coloana de filtre: pe PC în stânga (260 px), pe telefon strânsă sub „Filtre” cu numărul de filtre
+  active. Meseria și localitatea: câmpul de căutare de dinainte plus primele 6 opțiuni cu anunțuri,
+  ca linkuri cu număr. Noi: **norma** (întreagă / parțială) și **salariul minim net** (3.000 /
+  4.000 / 5.000, după `net_min`), plus sortarea **„Salariul cel mai mare”**. Filtrele alese apar ca
+  etichete deasupra listei, cu ✕. „Angajezi?” în coloană pe PC, sub listă pe telefon.
+- Numerele de lângă opțiuni țin cont de celelalte filtre (`fatete()` din `worker/date.ts`).
+- Filtrele din interogare (`?norma=&net=&ordine=`) nu fac pagini noi pentru Google: `noindex` și
+  canonical spre lista simplă. Valorile necunoscute se ignoră. Cheia de cache a listei scoate
+  parametrii ignorați (`cheieLista`): un `fbclid` unic la fiecare distribuire pe Facebook ar fi
+  citit D1 din nou. Formularul (meserie/oraș) păstrează filtrele la redirecționare.
+- Găsit la probă, pe telefon: lista era o grilă cu coloana „auto”, iar rândul de descriere care nu
+  se rupe o împingea la 856 px. `grid-cols-1` (coloană `minmax(0, 1fr)`) o ține în ecran.
+- Probat local cu `wrangler dev` (baza locală, 13 anunțuri de probă): PC 1366 px și telefon 375 px,
+  filtrele, sortarea, etichetele, redirecționarea, API-ul de apropiere cu filtrele noi.

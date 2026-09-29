@@ -8,7 +8,7 @@
 // HTMLRewriter. Headerele de securitate le pune tot el — _headers se aplică doar asseturilor.
 import { CSP_ANUNTURI, LINK_HEADER } from "../src/lib/csp";
 import { api } from "./api";
-import { esteMeserie, paginaAnunt, paginaLista, redirectFiltre, sitemap } from "./pagini";
+import { cheieLista, esteMeserie, paginaAnunt, paginaLista, redirectFiltre, sitemap } from "./pagini";
 import { curatenie } from "./date";
 
 export type Env = {
@@ -52,15 +52,15 @@ const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
  * iar D1 gratuit are 5 milioane de rânduri citite pe zi (29 septembrie 2026): fără cache, câteva
  * mii de anunțuri și un robot grăbit ar epuiza ziua. Cu cache, o adresă citește D1 cel mult o
  * dată pe minut, oricâți vizitatori ar veni. Anunțul însuși nu trece prin cache: cine tocmai l-a
- * publicat îl vede imediat.
+ * publicat îl vede imediat. `cheie` înlocuiește adresa cererii: la liste, fără parametrii ignorați.
  */
-async function dinCache(req: Request, ctx: ExecutionContext, fa: () => Promise<Response>): Promise<Response> {
+async function dinCache(req: Request, ctx: ExecutionContext, fa: () => Promise<Response>, cheie: Request | string = req): Promise<Response> {
   if (req.method !== "GET") return fa();
   const cache = caches.default;
-  const gasit = await cache.match(req);
+  const gasit = await cache.match(cheie);
   if (gasit) return gasit;
   const r = await fa();
-  if (r.status === 200) ctx.waitUntil(cache.put(req, r.clone()));
+  if (r.status === 200) ctx.waitUntil(cache.put(cheie, r.clone()));
   return r;
 }
 
@@ -82,10 +82,11 @@ export default {
       if (cale === "/locuri-de-munca/sitemap.xml") return cuSecuritate(await dinCache(req, ctx, () => sitemap(env)), false);
 
       // Listele: /locuri-de-munca[/{oraș}][/{meserie}] și /locuri-de-munca/{meserie}.
-      if (cale === "/locuri-de-munca") return cuSecuritate(redirectFiltre(req) ?? (await dinCache(req, ctx, () => paginaLista(req, env, null, null))));
+      const cheie = cheieLista(url);
+      if (cale === "/locuri-de-munca") return cuSecuritate(redirectFiltre(req) ?? (await dinCache(req, ctx, () => paginaLista(req, env, null, null), cheie)));
       const p = cale.slice("/locuri-de-munca/".length).split("/");
-      if (p.length === 1 && SLUG.test(p[0])) return cuSecuritate(await dinCache(req, ctx, () => (esteMeserie(p[0]) ? paginaLista(req, env, null, p[0]) : paginaLista(req, env, p[0], null))));
-      if (p.length === 2 && SLUG.test(p[0]) && esteMeserie(p[1])) return cuSecuritate(await dinCache(req, ctx, () => paginaLista(req, env, p[0], p[1])));
+      if (p.length === 1 && SLUG.test(p[0])) return cuSecuritate(await dinCache(req, ctx, () => (esteMeserie(p[0]) ? paginaLista(req, env, null, p[0]) : paginaLista(req, env, p[0], null)), cheie));
+      if (p.length === 2 && SLUG.test(p[0]) && esteMeserie(p[1])) return cuSecuritate(await dinCache(req, ctx, () => paginaLista(req, env, p[0], p[1]), cheie));
       return cuSecuritate(await env.ASSETS.fetch(req));
     } catch (e) {
       console.error("eroare", cale, e);

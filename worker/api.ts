@@ -5,7 +5,7 @@ import { URL_ADAUGA, urlAnunt, valideaza } from "../src/lib/anunturi/reguli";
 import { MESERII_ANUNTURI } from "../src/lib/anunturi/meserii";
 import { adauga, dupaId, dupaToken, inLimita, listaPentruApropiere, modifica, prelungeste, raporteaza, sterge, tokenNou, type Anunt } from "./date";
 import { localizeaza } from "./geocod";
-import { cardLista } from "./pagini";
+import { cardLista, citesteExtra } from "./pagini";
 
 const MESERII = new Set(MESERII_ANUNTURI.map((m) => m.slug));
 const MOTIVE_RAPORTARE = ["țeapă sau cerere de bani", "discriminare", "salariul nu e cel real", "anunț fals sau duplicat", "conținut ilegal", "altceva"];
@@ -35,7 +35,8 @@ export async function api(req: Request, env: Env, ctx: ExecutionContext, cale: s
     const u = new URL(req.url);
     const meserie = MESERII.has(u.searchParams.get("meserie") ?? "") ? u.searchParams.get("meserie")! : undefined;
     const oras = /^[a-z0-9-]{2,60}$/.test(u.searchParams.get("oras") ?? "") ? u.searchParams.get("oras")! : undefined;
-    const r = await listaPentruApropiere(env, { meserie, oras });
+    const e = citesteExtra(u);
+    const r = await listaPentruApropiere(env, { meserie, oras, norma: e.norma, netMin: e.net });
     return new Response(JSON.stringify(r.map((a) => ({ lat: a.lat, lon: a.lon, precis: a.loc_precizie === "adresa", html: cardLista(a) }))),
       { headers: { "content-type": "application/json; charset=utf-8", "cache-control": "public, max-age=60" } });
   }

@@ -1,7 +1,7 @@
 // Accesul la baza D1 a anunțurilor. Schema: migrations/0001_anunturi.sql.
 import type { Env } from "./index";
 import type { Loc } from "./geocod";
-import { LIMITA_PE_ZI, ZILE_PASTRARE_EMAIL, ZILE_VALABILITATE, netLunar, orasSlug, slugAnunt, type AnuntNou } from "../src/lib/anunturi/reguli";
+import { LIMITA_PE_ZI, ZILE_PASTRARE_EMAIL, ZILE_VALABILITATE, netLunar, orasSlug, slugAnunt, type AnuntNou, type Norma } from "../src/lib/anunturi/reguli";
 import { grupMeserie, slugurileGrupului } from "../src/lib/anunturi/meserii";
 
 export type Anunt = {
@@ -88,21 +88,49 @@ export async function sterge(env: Env, id: number): Promise<void> {
 
 export const PE_PAGINA = 20;
 
-/** Filtrul unei liste. Meseria aduce tot grupul ei: la „chelner” apar și anunțurile de „ospătar”. */
-function unde(f: { meserie?: string; oras?: string }): { where: string; val: unknown[] } {
+/**
+ * Filtrele unei liste: meseria și localitatea vin din adresă, norma și salariul minim net din
+ * interogare (proprietar, 29 septembrie 2026). Salariul minim se compară cu `net_min`, netul
+ * capătului de jos: „minim 4.000 lei net” înseamnă că anunțul pornește de la cel puțin atât.
+ */
+export type Filtru = { meserie?: string; oras?: string; norma?: Norma; netMin?: number };
+
+/** Condiția SQL a filtrului. Meseria aduce tot grupul ei: la „chelner” apar și anunțurile de „ospătar”.
+ *  `fara` lasă deoparte o dimensiune: numărul de lângă o opțiune ține cont de celelalte filtre, nu de al ei. */
+function unde(f: Filtru, fara?: "meserie" | "oras" | "norma"): { where: string; val: unknown[] } {
   const cond = ["stare = 'activ'"], val: unknown[] = [];
-  if (f.meserie) { const g = slugurileGrupului(f.meserie); cond.push(`meserie IN (${g.map(() => "?").join(", ")})`); val.push(...g); }
-  if (f.oras) { cond.push("oras_slug = ?"); val.push(f.oras); }
+  if (f.meserie && fara !== "meserie") { const g = slugurileGrupului(f.meserie); cond.push(`meserie IN (${g.map(() => "?").join(", ")})`); val.push(...g); }
+  if (f.oras && fara !== "oras") { cond.push("oras_slug = ?"); val.push(f.oras); }
+  if (f.norma && fara !== "norma") { cond.push("norma = ?"); val.push(f.norma); }
+  if (f.netMin) { cond.push("net_min >= ?"); val.push(f.netMin); }
   return { where: cond.join(" AND "), val };
 }
 
-export async function lista(env: Env, f: { meserie?: string; oras?: string; pagina: number }): Promise<{ anunturi: Anunt[]; total: number }> {
+export async function lista(env: Env, f: Filtru & { pagina: number; ordine?: "salariu" }): Promise<{ anunturi: Anunt[]; total: number }> {
   const { where, val } = unde(f);
+  const ordine = f.ordine === "salariu" ? "net_min DESC, confirmat_la DESC" : "confirmat_la DESC";
   const [n, r] = await env.DB.batch([
     env.DB.prepare(`SELECT COUNT(*) AS n FROM anunturi WHERE ${where}`).bind(...val),
-    env.DB.prepare(`SELECT * FROM anunturi WHERE ${where} ORDER BY confirmat_la DESC LIMIT ? OFFSET ?`).bind(...val, PE_PAGINA, (f.pagina - 1) * PE_PAGINA),
+    env.DB.prepare(`SELECT * FROM anunturi WHERE ${where} ORDER BY ${ordine} LIMIT ? OFFSET ?`).bind(...val, PE_PAGINA, (f.pagina - 1) * PE_PAGINA),
   ]);
   return { total: (n.results[0] as { n: number }).n, anunturi: r.results as Anunt[] };
+}
+
+export type Numarare = { s: string; n: string; c: number };
+
+/**
+ * Numerele din coloana de filtre. Localitățile sunt toate cele cu anunțuri active (căutarea nu
+ * trebuie să ducă la o pagină 404), cu numărul potrivit celorlalte filtre; meseriile și normele,
+ * numai cele care au anunțuri.
+ */
+export async function fatete(env: Env, f: Filtru): Promise<{ orase: Numarare[]; meserii: { s: string; c: number }[]; norme: { s: Norma; c: number }[] }> {
+  const o = unde(f, "oras"), m = unde(f, "meserie"), n = unde(f, "norma");
+  const [ro, rm, rn] = await env.DB.batch([
+    env.DB.prepare(`SELECT oras_slug AS s, MIN(oras) AS n, SUM(CASE WHEN ${o.where} THEN 1 ELSE 0 END) AS c FROM anunturi WHERE stare = 'activ' GROUP BY oras_slug ORDER BY n`).bind(...o.val),
+    env.DB.prepare(`SELECT meserie AS s, COUNT(*) AS c FROM anunturi WHERE ${m.where} AND meserie IS NOT NULL GROUP BY meserie`).bind(...m.val),
+    env.DB.prepare(`SELECT norma AS s, COUNT(*) AS c FROM anunturi WHERE ${n.where} GROUP BY norma`).bind(...n.val),
+  ]);
+  return { orase: ro.results as Numarare[], meserii: rm.results as { s: string; c: number }[], norme: rn.results as { s: Norma; c: number }[] };
 }
 
 /**
@@ -110,7 +138,7 @@ export async function lista(env: Env, f: { meserie?: string; oras?: string; pagi
  * după distanță. Poziția vizitatorului nu pleacă niciodată din browser: el cere lista, nu trimite
  * unde e (/api/anunturi/lista).
  */
-export async function listaPentruApropiere(env: Env, f: { meserie?: string; oras?: string }) {
+export async function listaPentruApropiere(env: Env, f: Filtru) {
   const { where, val } = unde(f);
   return (await env.DB.prepare(`SELECT * FROM anunturi WHERE ${where} ORDER BY confirmat_la DESC LIMIT 500`).bind(...val).all<Anunt>()).results;
 }

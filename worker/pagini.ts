@@ -1,10 +1,10 @@
 // Paginile de anunțuri, puse în șablonul static /locuri-de-munca/sablon (header, footer, CSS).
 // Adresele (verificate în Google România, 28 septembrie 2026) sunt deținute de src/lib/anunturi/reguli.ts.
 import type { Env } from "./index";
-import { JUDETE, NORME, URL_ADAUGA, esteMobil, linkApel, linkDistribuieFacebook, linkDistribuieWhatsApp, linkWhatsApp, telefonAfisat, urlAnunt, urlLista } from "../src/lib/anunturi/reguli";
+import { JUDETE, NORME, URL_ADAUGA, esteMobil, linkApel, linkDistribuieFacebook, linkDistribuieWhatsApp, linkWhatsApp, telefonAfisat, urlAnunt, urlLista, type Norma } from "../src/lib/anunturi/reguli";
 import { completeazaSablon } from "../src/lib/anunturi/sablon";
 import { MESERII_ANUNTURI, grupMeserie, slugurileGrupului } from "../src/lib/anunturi/meserii";
-import { PE_PAGINA, dupaId, lista, listeIndexabile, numeOras, toateActive, type Anunt } from "./date";
+import { PE_PAGINA, dupaId, fatete, lista, listeIndexabile, numeOras, toateActive, type Anunt, type Filtru } from "./date";
 
 // Meseriile hubului, cu sinonimele lor (src/lib/anunturi/meserii.ts), nu catalogul paginilor de salarii.
 const NUME_MESERIE = new Map(MESERII_ANUNTURI.map((m) => [m.slug, m.nume]));
@@ -47,16 +47,69 @@ async function inSablon(req: Request, env: Env, p: Pagina): Promise<Response> {
   return new Response(out.body, { status: p.status ?? 200, headers: h });
 }
 
-/** Cardul din liste; îl folosește și /api/anunturi/lista la „sortează după apropiere”. */
+/** Treptele filtrului „Salariu minim net”, în lei pe lună. */
+const TREPTE_NET = [3000, 4000, 5000];
+
+/** Filtrele din interogare (norma, salariul minim net, ordinea). O valoare necunoscută se ignoră. */
+export type Extra = { norma?: Norma; net?: number; ordine?: "salariu" };
+export function citesteExtra(u: URL): Extra {
+  const norma = u.searchParams.get("norma"), net = Number(u.searchParams.get("net"));
+  return {
+    norma: norma === "intreaga" || norma === "partiala" ? norma : undefined,
+    net: TREPTE_NET.includes(net) ? net : undefined,
+    ordine: u.searchParams.get("ordine") === "salariu" ? "salariu" : undefined,
+  };
+}
+const paginaDin = (u: URL) => Math.max(1, Math.min(500, Number(u.searchParams.get("pagina")) || 1));
+/** Interogarea, mereu în aceeași ordine: o listă are o singură adresă, deci o singură intrare în cache. */
+function interogare(e: Extra, pagina = 1): string {
+  const q = new URLSearchParams();
+  if (e.norma) q.set("norma", e.norma);
+  if (e.net) q.set("net", String(e.net));
+  if (e.ordine) q.set("ordine", e.ordine);
+  if (pagina > 1) q.set("pagina", String(pagina));
+  const s = q.toString();
+  return s ? `?${s}` : "";
+}
+/**
+ * Cheia de cache a unei liste, fără parametrii pe care pagina îi ignoră: un link distribuit pe
+ * Facebook primește `fbclid`, unic la fiecare distribuire, și fiecare ar fi citit D1 din nou.
+ */
+export const cheieLista = (u: URL) => `${u.origin}${u.pathname.replace(/\/+$/, "")}${interogare(citesteExtra(u), paginaDin(u))}`;
+
+const ziua = (d: Date) => d.toLocaleDateString("en-CA", { timeZone: "Europe/Bucharest" });
+/** „Publicat azi”, „ieri” sau data. */
+function publicat(iso: string): string {
+  const z = ziua(new Date(iso));
+  if (z === ziua(new Date())) return "Publicat azi";
+  if (z === ziua(new Date(Date.now() - 86400000))) return "Publicat ieri";
+  return `Publicat pe ${data(iso)}`;
+}
+const PIN = `<svg class="mt-0.5 size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>`;
+const PASTILA = "rounded-md bg-stone-100 px-2 py-1 text-xs font-medium text-stone-700";
+
+/**
+ * Cardul din liste (varianta B a schițelor, aleasă de proprietar pe 29 septembrie 2026); îl
+ * folosește și /api/anunturi/lista la „sortează după apropiere”. Salariul e eticheta galbenă de sub
+ * titlu; strada și începutul descrierii umplu cardul cu ce e deja în anunț. Pe card scrie „Vezi
+ * anunțul”, nu „Sună”: cine sună trebuie să fi citit anunțul (proprietar).
+ */
 export function cardLista(a: Anunt): string {
   const meserie = a.meserie ? NUME_MESERIE.get(a.meserie) : null;
-  return `<li><a href="${urlAnunt(a)}" class="block ${CARD} hover:border-stone-400" data-anunt="${a.id}">
-    <span class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-      <span class="text-base font-semibold text-stone-900">${esc(a.titlu)}</span>
-      <span class="whitespace-nowrap font-semibold text-stone-900">${suma(a)}</span>
+  const unde = `${a.angajator ? `${esc(a.angajator)} · ` : ""}${a.adresa ? `${esc(a.adresa)}, ` : ""}${esc(loc(a))}`;
+  const net = a.baza === "brut" ? `<span class="${PASTILA}">${a.salariu_max ? "de la " : ""}≈ ${lei(a.net_min)} lei net</span>` : "";
+  return `<li><a href="${urlAnunt(a)}" class="block rounded-md border border-stone-200 bg-surface p-4 shadow-soft hover:border-stone-400 sm:px-5" data-anunt="${a.id}">
+    <span class="block text-base font-bold leading-snug text-stone-900">${esc(a.titlu)}</span>
+    <span class="mt-1 flex items-start gap-1.5 text-sm text-stone-600">${PIN}<span class="min-w-0">${unde}</span></span>
+    <span class="mt-3 flex flex-wrap items-center gap-1.5">
+      <span class="rounded-md bg-marcaj/25 px-2 py-1 text-sm font-bold tabular-nums text-stone-900">${suma(a)}</span>${net}
+      <span class="${PASTILA}">${norma(a)}</span>${meserie ? `<span class="${PASTILA}">${esc(meserie)}</span>` : ""}
     </span>
-    <span class="mt-1 block text-sm text-stone-600">${a.angajator ? `${esc(a.angajator)} · ` : ""}${esc(loc(a))} · ${norma(a)}${meserie ? ` · ${esc(meserie)}` : ""}</span>
-    <span class="mt-1 block text-xs text-stone-600">Publicat pe ${data(a.confirmat_la!)}<span data-distanta class="font-semibold text-stone-900"></span></span>
+    <span class="mt-2.5 block truncate text-sm text-stone-700">${esc(a.descriere.replace(/\s+/g, " ").trim().slice(0, 240))}</span>
+    <span class="mt-3 flex items-center gap-3">
+      <span class="text-xs text-stone-600">${publicat(a.confirmat_la!)}<span data-distanta class="font-semibold text-stone-900"></span></span>
+      <span class="ml-auto inline-flex min-h-9 items-center rounded-md border border-stone-300 bg-surface px-3 text-sm font-semibold text-stone-900">Vezi anunțul</span>
+    </span>
   </a></li>`;
 }
 
@@ -65,7 +118,7 @@ export function redirectFiltre(req: Request): Response | null {
   const u = new URL(req.url);
   if (!u.searchParams.has("meserie") && !u.searchParams.has("oras")) return null;
   const m = u.searchParams.get("meserie") ?? "", o = (u.searchParams.get("oras") ?? "").replace(/[^a-z0-9-]/g, "");
-  return Response.redirect(new URL(urlLista(o || null, esteMeserie(m) ? m : null), req.url).toString(), 302);
+  return Response.redirect(new URL(urlLista(o || null, esteMeserie(m) ? m : null) + interogare(citesteExtra(u)), req.url).toString(), 302);
 }
 
 /**
@@ -73,14 +126,13 @@ export function redirectFiltre(req: Request): Response | null {
  * cere poziția, ia toate anunțurile listei de la /api/anunturi/lista și le ordonează singur după
  * distanță. Poziția nu pleacă din telefon: nici în URL, nici în cerere.
  */
-function butonApropiere(meserie: string | null, oras: string | null): string {
+function butonApropiere(meserie: string | null, oras: string | null, e: Extra): string {
   const q = new URLSearchParams();
   if (meserie) q.set("meserie", meserie);
   if (oras) q.set("oras", oras);
-  return `<div class="mt-6 flex flex-wrap items-center gap-3">
-    <button type="button" data-apropiere="/api/anunturi/lista?${q}" class="inline-flex min-h-11 items-center gap-2 rounded-md border border-stone-300 bg-surface px-4 font-semibold text-stone-900 hover:border-stone-500">Sortează după apropiere</button>
-    <span data-apropiere-stare class="text-sm text-stone-600"></span>
-  </div>
+  if (e.norma) q.set("norma", e.norma);
+  if (e.net) q.set("net", String(e.net));
+  return `<button type="button" data-apropiere="/api/anunturi/lista?${q}" class="inline-flex min-h-10 items-center rounded-md border border-stone-300 bg-surface px-3 text-sm font-semibold text-stone-900 hover:border-stone-500">Aproape de mine</button>
   <script>
   (function () {
     // Scriptul stă înaintea listei: elementele se caută la apăsare, nu acum.
@@ -109,6 +161,8 @@ function butonApropiere(meserie: string | null, oras: string | null): string {
             else if (isFinite(d)) e.textContent = " · la " + (d < 1 ? Math.round(d * 1000) + " m" : d.toLocaleString("ro-RO", { maximumFractionDigits: 1 }) + " km") + " de tine";
           });
           document.querySelectorAll("nav[aria-label=Pagini]").forEach(function (n) { n.hidden = true; });
+          // Ordinea aleasă nu mai e cea din listă: niciun buton de ordine nu rămâne marcat.
+          document.querySelectorAll("[data-ordine] a[aria-current]").forEach(function (a) { a.removeAttribute("aria-current"); });
           stare.textContent = "Cele mai apropiate primele.";
         }).catch(function () { stare.textContent = "Nu am putut încărca anunțurile. Încearcă din nou."; });
       }, function () { stare.textContent = "Fără acces la locație, anunțurile rămân în ordinea publicării."; }, { enableHighAccuracy: false, timeout: 10000, maximumAge: 300000 });
@@ -128,22 +182,81 @@ type OptiuneFiltru = { s: string; n: string; c: number; p?: boolean };
  * apoi, de la 3 litere, oriunde. Localitățile sunt numai cele cu anunțuri: altfel alegerea ar duce
  * la o pagină 404.
  */
-function filtre(meserii: OptiuneFiltru[], meserie: string | null, orase: OptiuneFiltru[], orasSlug: string | null): string {
+const BLOC = "rounded-md border border-stone-200 bg-surface p-4";
+const TITLU_BLOC = "block text-sm font-bold text-stone-900";
+
+/** O opțiune din coloana de filtre: link spre lista filtrată; un clic pe cea aleasă o scoate. */
+function optiune(href: string, text: string, n: number, ales: boolean): string {
+  if (!n && !ales) return `<span class="flex min-h-10 items-center gap-2.5 text-sm text-stone-400"><span class="size-4 shrink-0 rounded border border-stone-200"></span>${esc(text)}<span class="ml-auto text-xs tabular-nums">0</span></span>`;
+  const cutie = ales ? "border-stone-900 bg-stone-900 shadow-[inset_0_0_0_3px_var(--color-surface)]" : "border-stone-300 bg-surface";
+  return `<a href="${href}" class="flex min-h-10 items-center gap-2.5 text-sm ${ales ? "font-semibold text-stone-900" : "text-stone-700 hover:text-stone-900"}"${ales ? ' aria-current="true"' : ""}><span class="size-4 shrink-0 rounded border ${cutie}"></span>${esc(text)}<span class="ml-auto text-xs tabular-nums text-stone-500">${n}</span></a>`;
+}
+
+/**
+ * Coloana de filtre (varianta B, proprietar, 29 septembrie 2026): pe PC în stânga listei, pe
+ * telefon strânsă sub butonul „Filtre”. Meseria și localitatea au câmpul de căutare de mai jos plus
+ * primele opțiuni cu anunțuri; norma și salariul minim net sunt linkuri, deci merg și fără script.
+ */
+function filtre(p: { meserii: OptiuneFiltru[]; meserie: string | null; orase: OptiuneFiltru[]; orasSlug: string | null; extra: Extra; norme: Map<Norma, number>; activ: number }): string {
+  const { meserii, meserie, orase, orasSlug, extra } = p;
   const optiuni = (valori: OptiuneFiltru[], ales: string | null) => valori.map((o) => `<option value="${o.s}" data-n="${o.c}"${o.p === false ? "" : " data-p"}${o.s === ales ? " selected" : ""}>${esc(o.n)}</option>`).join("");
-  const SELECT = "mt-1 block w-full rounded-md border border-stone-300 bg-surface px-3 py-2 text-base";
-  return `<form method="get" action="/locuri-de-munca" class="mt-6 grid gap-3 sm:grid-cols-[1fr_1fr_auto]" data-filtre>
-      <label class="text-sm text-stone-700">Meseria
-        <select name="meserie" class="${SELECT}" data-cauta="Scrie: barman, șofer, vânzător…"><option value="">Toate meseriile</option>${optiuni(meserii, meserie)}</select>
-      </label>
-      <label class="text-sm text-stone-700">Localitatea
-        <select name="oras" class="${SELECT}" data-cauta="Scrie: București, Cluj…"><option value="">Toată țara</option>${optiuni(orase, orasSlug)}</select>
-      </label>
-      <button type="submit" class="min-h-11 self-end rounded-md border border-stone-300 bg-surface px-4 font-semibold text-stone-900 hover:border-stone-500">Caută</button>
-    </form>
+  const SELECT = "mt-1.5 block w-full rounded-md border border-stone-300 bg-surface px-3 py-2 text-base";
+  const url = (o: string | null, m: string | null, e: Extra) => urlLista(o, m) + interogare(e);
+  // Primele opțiuni cu anunțuri, cele mai multe primele; cea aleasă rămâne mereu în listă.
+  const primele = (v: OptiuneFiltru[], ales: string | null) => v.filter((o) => (o.c > 0 && o.p !== false) || o.s === ales).sort((a, b) => b.c - a.c || a.n.localeCompare(b.n, "ro")).slice(0, 6);
+  const listaMeserii = primele(meserii, meserie).map((o) => optiune(url(orasSlug, o.s === meserie ? null : o.s, extra), o.n, o.c, o.s === meserie)).join("");
+  const listaOrase = primele(orase, orasSlug).map((o) => optiune(url(o.s === orasSlug ? null : o.s, meserie, extra), o.n, o.c, o.s === orasSlug)).join("");
+  const norme = (["intreaga", "partiala"] as const).map((k) => {
+    const ales = extra.norma === k;
+    return optiune(url(orasSlug, meserie, { ...extra, norma: ales ? undefined : k }), NORME[k], p.norme.get(k) ?? 0, ales);
+  }).join("");
+  const trepte = [undefined, ...TREPTE_NET].map((v) => {
+    const ales = extra.net === v;
+    return `<a href="${url(orasSlug, meserie, { ...extra, net: v })}" class="py-2 ${ales ? "bg-stone-900 text-white" : "bg-surface text-stone-900 hover:bg-stone-100"}"${ales ? ' aria-current="true"' : ""}>${v ? lei(v) : "Oricât"}</a>`;
+  }).join("");
+  const ascunse = `${extra.norma ? `<input type="hidden" name="norma" value="${extra.norma}">` : ""}${extra.net ? `<input type="hidden" name="net" value="${extra.net}">` : ""}${extra.ordine ? `<input type="hidden" name="ordine" value="${extra.ordine}">` : ""}`;
+  return `<details open data-filtre-panou class="group">
+      <summary class="flex min-h-11 cursor-pointer list-none items-center justify-center gap-2 rounded-md border border-stone-300 bg-surface px-4 font-semibold text-stone-900 lg:hidden [&::-webkit-details-marker]:hidden">
+        <span class="group-open:hidden">Filtre</span><span class="hidden group-open:inline">Ascunde filtrele</span>${p.activ ? `<span class="inline-grid min-w-5 place-items-center rounded-full bg-marcaj px-1.5 text-xs font-bold text-stone-900">${p.activ}</span>` : ""}
+      </summary>
+      <form method="get" action="/locuri-de-munca" class="mt-3 grid gap-3 lg:mt-0" data-filtre>${ascunse}
+        <div class="${BLOC}">
+          <label class="block text-sm text-stone-700"><span class="${TITLU_BLOC}">Meseria</span>
+            <select name="meserie" class="${SELECT}" data-cauta="Scrie: barman, șofer…"><option value="">Toate meseriile</option>${optiuni(meserii, meserie)}</select>
+          </label>
+          ${listaMeserii ? `<div class="mt-2">${listaMeserii}</div>` : ""}
+        </div>
+        <div class="${BLOC}">
+          <label class="block text-sm text-stone-700"><span class="${TITLU_BLOC}">Localitatea</span>
+            <select name="oras" class="${SELECT}" data-cauta="Scrie: București, Cluj…"><option value="">Toată țara</option>${optiuni(orase, orasSlug)}</select>
+          </label>
+          ${listaOrase ? `<div class="mt-2">${listaOrase}</div>` : ""}
+        </div>
+        <button type="submit" data-filtre-buton class="min-h-11 rounded-md border border-stone-300 bg-surface px-4 font-semibold text-stone-900 hover:border-stone-500">Caută</button>
+        <div class="${BLOC}"><p class="${TITLU_BLOC}">Norma</p><div class="mt-1">${norme}</div></div>
+        <div class="${BLOC}"><p class="${TITLU_BLOC}">Salariu minim net</p>
+          <nav aria-label="Salariu minim net" class="mt-2 grid grid-cols-4 overflow-hidden rounded-md border border-stone-300 text-center text-sm font-semibold [&>a+a]:border-l [&>a+a]:border-stone-300">${trepte}</nav>
+          <p class="mt-2 text-xs text-stone-600">Lei pe lună, după capătul de jos al salariului. La anunțurile în brut contează netul calculat.</p>
+        </div>
+      </form>
+    </details>
+    <script>
+    // Pe telefon, filtrele pornesc strânse sub „Filtre”. Pagina vine cu ele deschise, ca pe PC să
+    // se vadă și fără script.
+    (function () { var d = document.querySelector("[data-filtre-panou]"); if (d && !matchMedia("(min-width: 1024px)").matches) d.open = false; })();
+    </script>
+    <div class="mt-3 hidden rounded-md border border-dashed border-stone-300 bg-canvas p-4 text-sm text-stone-700 lg:block">
+      <p class="text-base font-bold text-stone-900">Angajezi?</p>
+      <p class="mt-1">Anunț gratuit, fără cont, publicat în câteva minute.</p>
+      <a href="${URL_ADAUGA}" class="mt-3 flex min-h-11 items-center justify-center rounded-md bg-stone-900 px-4 font-semibold text-white hover:bg-stone-700">Adaugă anunț</a>
+    </div>
     <script>
     (function () {
       var form = document.querySelector("[data-filtre]");
       if (!form) return;
+      // Cu script, alegerea deschide lista imediat; „Caută” rămâne doar pentru browserele fără script.
+      var buton = form.querySelector("[data-filtre-buton]");
+      if (buton) buton.hidden = true;
       var nr = 0;
       function fara(s) { return s.normalize("NFD").replace(/[\\u0300-\\u036f]/g, "").toLowerCase(); }
       function cate(n) { return n === 0 ? "niciun anunț încă" : n === 1 ? "1 anunț" : n.toLocaleString("ro-RO") + (n % 100 >= 20 || n % 100 === 0 ? " de anunțuri" : " anunțuri"); }
@@ -229,9 +342,11 @@ function filtre(meserii: OptiuneFiltru[], meserie: string | null, orase: Optiune
 
 export async function paginaLista(req: Request, env: Env, orasSlug: string | null, meserie: string | null): Promise<Response> {
   const u = new URL(req.url);
-  const pagina = Math.max(1, Math.min(500, Number(u.searchParams.get("pagina")) || 1));
-  const { anunturi, total } = await lista(env, { meserie: meserie ?? undefined, oras: orasSlug ?? undefined, pagina });
-  const numeLoc = orasSlug ? (await numeOras(env, orasSlug)) : null;
+  const pagina = paginaDin(u), extra = citesteExtra(u);
+  const f: Filtru = { meserie: meserie ?? undefined, oras: orasSlug ?? undefined, norma: extra.norma, netMin: extra.net };
+  const [{ anunturi, total }, fat, numeLoc] = await Promise.all([
+    lista(env, { ...f, pagina, ordine: extra.ordine }), fatete(env, f), orasSlug ? numeOras(env, orasSlug) : Promise.resolve(null),
+  ]);
   // O localitate fără niciun anunț activ nu e o pagină: altfel orice cuvânt din URL ar deveni una.
   if (orasSlug && !numeLoc) {
     return inSablon(req, env, { titlu: "Nu sunt anunțuri aici", descriere: "Nu sunt anunțuri de angajare pentru această localitate.", canonic: `${SITE}/locuri-de-munca`, indexabil: false, status: 404,
@@ -246,37 +361,59 @@ export async function paginaLista(req: Request, env: Env, orasSlug: string | nul
   // Începe cu „Locuri de muncă”, forma căutată în Google („locuri de muncă București”).
   const titlu = unde ? `Locuri de muncă ${unde}, cu salariul afișat` : "Locuri de muncă cu salariul afișat";
   const cale = urlLista(orasSlug, meserie);
-  const q = (p: number) => `${cale}${p > 1 ? `?pagina=${p}` : ""}`;
-  // Numărul de sub fiecare opțiune ține cont de celălalt filtru (proprietar, 29 septembrie 2026): cu
-  // „Barman” ales, București arată câți barmani caută, nu toate anunțurile din oraș.
-  const grup = meserie ? slugurileGrupului(meserie) : [];
-  const grupSql = grup.length ? `meserie IN (${grup.map(() => "?").join(", ")})` : "1";
-  const [ro, rm] = await env.DB.batch([
-    env.DB.prepare(`SELECT oras_slug AS s, MIN(oras) AS n, SUM(CASE WHEN ${grupSql} THEN 1 ELSE 0 END) AS c FROM anunturi WHERE stare = 'activ' GROUP BY oras_slug ORDER BY n`).bind(...grup),
-    env.DB.prepare("SELECT meserie AS s, COUNT(*) AS c FROM anunturi WHERE stare = 'activ' AND meserie IS NOT NULL AND (?1 IS NULL OR oras_slug = ?1) GROUP BY meserie").bind(orasSlug),
-  ]);
-  const orase = (ro.results as OptiuneFiltru[]).map((o) => ({ ...o, n: o.n.replace(/,.*$/, "") }));
+  const q = (p: number, e: Extra = extra) => `${cale}${interogare(e, p)}`;
+  // Numărul de lângă fiecare opțiune ține cont de celelalte filtre (proprietar, 29 septembrie 2026):
+  // cu „Barman” ales, București arată câți barmani caută, nu toate anunțurile din oraș.
+  const orase = fat.orase.map((o) => ({ ...o, n: o.n.replace(/,.*$/, "") }));
   const peGrup = new Map<string, number>();
-  for (const m of rm.results as { s: string; c: number }[]) peGrup.set(grupMeserie(m.s), (peGrup.get(grupMeserie(m.s)) ?? 0) + m.c);
+  for (const m of fat.meserii) peGrup.set(grupMeserie(m.s), (peGrup.get(grupMeserie(m.s)) ?? 0) + m.c);
   const meserii = MESERII_ANUNTURI.map((m) => ({ s: m.slug, n: m.nume, c: peGrup.get(m.grup) ?? 0, p: m.slug === m.grup }))
     .sort((a, b) => a.n.localeCompare(b.n, "ro"));
+  const norme = new Map(fat.norme.map((x) => [x.s, x.c] as const));
+  const activ = [meserie, orasSlug, extra.norma, extra.net].filter(Boolean).length;
+  const cuFiltre = Boolean(extra.norma || extra.net);
+
+  // Filtrele alese, ca etichete deasupra listei: un clic pe una o scoate.
+  const eticheta = (href: string, text: string) => `<a href="${href}" class="inline-flex min-h-9 items-center gap-1.5 rounded-full bg-stone-900 px-3 text-sm font-medium text-white hover:bg-stone-700">${esc(text)}<span aria-hidden="true" class="text-stone-300">✕</span><span class="sr-only"> (scoate filtrul)</span></a>`;
+  const etichete = [
+    meserie ? eticheta(urlLista(orasSlug, null) + interogare(extra), NUME_MESERIE.get(meserie)!) : "",
+    orasSlug ? eticheta(urlLista(null, meserie) + interogare(extra), numeLoc!) : "",
+    extra.norma ? eticheta(q(1, { ...extra, norma: undefined }), NORME[extra.norma]) : "",
+    extra.net ? eticheta(q(1, { ...extra, net: undefined }), `Minim ${lei(extra.net)} lei net`) : "",
+  ].join("");
+  const ORDINE = "px-3 py-2 text-stone-700 hover:bg-stone-100 aria-[current=true]:bg-stone-900 aria-[current=true]:text-white";
+  const ordine = `<nav aria-label="Ordinea anunțurilor" data-ordine class="inline-flex overflow-hidden rounded-md border border-stone-300 bg-surface text-sm font-semibold [&>a+a]:border-l [&>a+a]:border-stone-300">
+      <a href="${q(1, { ...extra, ordine: undefined })}" class="${ORDINE}"${extra.ordine ? "" : ' aria-current="true"'}>Cele mai noi</a><a href="${q(1, { ...extra, ordine: "salariu" })}" class="${ORDINE}"${extra.ordine ? ' aria-current="true"' : ""}>Salariul cel mai mare</a>
+    </nav>`;
+  const gol = `<div class="mt-3 ${CARD}"><p class="text-base text-stone-800">${cuFiltre ? "Niciun anunț nu trece de filtrele alese." : unde ? "Nu sunt încă anunțuri pentru căutarea asta." : "Nu sunt încă anunțuri publicate."}</p>
+      ${cuFiltre ? `<p class="mt-2 text-sm"><a class="font-semibold underline underline-offset-2" href="${cale}">Arată toate anunțurile${unde ? ` ${esc(unde)}` : ""}</a></p>` : `<p class="mt-2 text-sm text-stone-600">Angajezi? Anunțul tău apare aici în câteva minute, gratuit și fără cont.</p>`}</div>`;
 
   const breadcrumb = (orasSlug || meserie) ? `<nav class="mb-4 flex flex-wrap gap-2 text-xs text-stone-600" aria-label="Breadcrumb"><a class="underline underline-offset-2" href="/locuri-de-munca">Locuri de muncă</a>${orasSlug && meserie ? `<span>/</span><a class="underline underline-offset-2" href="${urlLista(orasSlug, null)}">${esc(numeLoc!)}</a>` : ""}</nav>` : "";
   const continut = `${breadcrumb}
     <h1 class="text-[28px] font-bold leading-tight tracking-[-0.02em] text-stone-900 sm:text-[34px]">${esc(titlu.charAt(0).toUpperCase() + titlu.slice(1))}</h1>
     <p class="mt-3 max-w-prose text-base text-stone-600">Fiecare anunț are salariul lunar, cu brutul sau netul spus clar. Aplici direct la angajator, fără cont.${alteNume ? ` Cuprinde și anunțurile de ${esc(alteNume)}.` : ""}</p>
-    <div class="mt-5"><a href="${URL_ADAUGA}" class="inline-flex min-h-11 items-center rounded-md bg-stone-900 px-4 font-semibold text-white hover:bg-stone-700">Adaugă un anunț gratuit</a></div>
-    ${filtre(meserii, meserie, orase, orasSlug)}
-    ${anunturi.length > 1 ? butonApropiere(meserie, orasSlug) : ""}
-    ${anunturi.length ? `<ul class="mt-4 grid gap-3" data-lista-anunturi>${anunturi.map(cardLista).join("")}</ul>` : `
-      <div class="mt-6 ${CARD}"><p class="text-base text-stone-800">${unde ? "Nu sunt încă anunțuri pentru căutarea asta." : "Nu sunt încă anunțuri publicate."}</p>
-      <p class="mt-2 text-sm text-stone-600">Angajezi? Anunțul tău apare aici în câteva minute, gratuit și fără cont.</p></div>`}
-    ${pagini > 1 ? `<nav aria-label="Pagini" class="mt-6 flex gap-4 text-sm">${pagina > 1 ? `<a class="underline underline-offset-2" href="${q(pagina - 1)}">Pagina anterioară</a>` : ""}<span class="text-stone-600">Pagina ${pagina} din ${pagini}</span>${pagina < pagini ? `<a class="underline underline-offset-2" href="${q(pagina + 1)}">Pagina următoare</a>` : ""}</nav>` : ""}`;
+    <div class="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-[260px_minmax(0,1fr)] lg:items-start">
+      <aside>${filtre({ meserii, meserie, orase, orasSlug, extra, norme, activ })}</aside>
+      <div class="min-w-0">
+        <div class="flex flex-wrap items-center gap-2">${etichete}
+          <div class="flex flex-wrap items-center gap-2 lg:ml-auto">${ordine}${anunturi.length > 1 ? butonApropiere(meserie, orasSlug, extra) : ""}</div>
+        </div>
+        <p data-apropiere-stare class="mt-2 text-sm text-stone-600 empty:hidden"></p>
+        ${anunturi.length ? `<ul class="mt-3 grid grid-cols-1 gap-3" data-lista-anunturi>${anunturi.map(cardLista).join("")}</ul>` : gol}
+        ${pagini > 1 ? `<nav aria-label="Pagini" class="mt-6 flex gap-4 text-sm">${pagina > 1 ? `<a class="underline underline-offset-2" href="${q(pagina - 1)}">Pagina anterioară</a>` : ""}<span class="text-stone-600">Pagina ${pagina} din ${pagini}</span>${pagina < pagini ? `<a class="underline underline-offset-2" href="${q(pagina + 1)}">Pagina următoare</a>` : ""}</nav>` : ""}
+        <div class="mt-6 rounded-md border border-dashed border-stone-300 bg-canvas p-4 text-sm text-stone-700 lg:hidden">
+          <p class="text-base font-bold text-stone-900">Angajezi?</p>
+          <p class="mt-1">Anunț gratuit, fără cont, publicat în câteva minute.</p>
+          <a href="${URL_ADAUGA}" class="mt-3 inline-flex min-h-11 items-center rounded-md bg-stone-900 px-4 font-semibold text-white hover:bg-stone-700">Adaugă anunț</a>
+        </div>
+      </div>
+    </div>`;
 
   return inSablon(req, env, {
     titlu, descriere: `${titlu}. Anunțuri de angajare din România, fiecare cu salariul lunar și baza lui, brut sau net. Aplici direct la angajator.`.slice(0, 158),
-    canonic: `${SITE}${q(pagina)}`,
-    indexabil: total >= PRAG_INDEX && pagina === 1,
+    canonic: `${SITE}${cale}${interogare({}, pagina)}`,
+    // Filtrele din interogare nu fac pagini noi pentru Google: sunt variații ale aceleiași liste.
+    indexabil: total >= PRAG_INDEX && pagina === 1 && !extra.norma && !extra.net && !extra.ordine,
     continut,
   });
 }
