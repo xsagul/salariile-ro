@@ -247,6 +247,10 @@ export async function listeIndexabile(env: Env, prag: number): Promise<{ oras: s
   return liste;
 }
 
+export async function toateActive(env: Env): Promise<Pick<Anunt, "id" | "slug" | "confirmat_la">[]> {
+  return (await env.DB.prepare("SELECT id, slug, confirmat_la FROM anunturi WHERE stare = 'activ' ORDER BY id DESC LIMIT 45000").all<Pick<Anunt, "id" | "slug" | "confirmat_la">>()).results;
+}
+
 /**
  * Raportarea unui vizitator. Anunțul rămâne publicat: proprietarul verifică raportările în cel mult
  * 3 zile și decide el (29 septembrie 2026). Înainte, trei raportări îl suspendau automat, deci

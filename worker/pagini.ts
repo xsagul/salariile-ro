@@ -4,7 +4,7 @@ import type { Env } from "./index";
 import { CONTRACTE, JUDETE, LOCURI_MUNCA, NORME, URL_ADAUGA, esteMobil, linkApel, linkDistribuieFacebook, linkDistribuieWhatsApp, linkWhatsApp, telefonAfisat, urlAnunt, urlLista, type Contract, type LocMunca, type Norma } from "../src/lib/anunturi/reguli";
 import { completeazaSablon } from "../src/lib/anunturi/sablon";
 import { DOMENII, MESERII_ANUNTURI, esteDomeniu, grupMeserie, numeDomeniu, slugurileGrupului, variante, cuvantAfisat } from "../src/lib/anunturi/meserii";
-import { PE_PAGINA, cuvinteCautate, dupaId, fatete, lista, listeIndexabile, numeOras, type Anunt, type Filtru } from "./date";
+import { PE_PAGINA, cuvinteCautate, dupaId, fatete, lista, listeIndexabile, numeOras, toateActive, type Anunt, type Filtru } from "./date";
 
 // Meseriile hubului, cu sinonimele lor (src/lib/anunturi/meserii.ts), nu catalogul paginilor de salarii.
 const NUME_MESERIE = new Map(MESERII_ANUNTURI.map((m) => [m.slug, m.nume]));
@@ -13,9 +13,8 @@ const CARD = "rounded-md border border-stone-200 bg-surface p-5 shadow-soft sm:p
 const BUTON_MIC = "inline-flex min-h-11 items-center rounded-md border border-stone-300 bg-surface px-3 font-semibold text-stone-900 hover:border-stone-500";
 /**
  * O listă intră în Google de la atâtea anunțuri (proprietar, 29 septembrie 2026: 2, nu 5, ca primul
- * angajator dintr-un oraș să nu aștepte alți patru). De la 2, lista chiar compară oferte.
- * Anunțurile însele nu intră în Google (proprietar, 30 septembrie 2026): expiră în câteva săptămâni,
- * deci mii de pagini care apar și dispar ar consuma crawl-ul și autoritatea listelor.
+ * angajator dintr-un oraș să nu aștepte alți patru). Cu un singur anunț lista ar fi o copie a paginii
+ * lui, care e indexată oricum din prima clipă; de la 2, lista chiar compară oferte.
  */
 export const PRAG_INDEX = 2;
 const SITE = "https://salariile.ro";
@@ -678,17 +677,15 @@ export async function paginaAnunt(req: Request, env: Env, id: number, slug: stri
   // Titlul începe cu „Anunț angajare”, ca paginile din top 3 la „anunt de angajare”.
   const titlu = `Anunț angajare ${a.titlu}, ${oras(a)} — ${suma(a)}`;
   const desc = `Anunț angajare ${a.titlu}, ${oras(a)}: ${suma(a)} pe lună, ${norma(a).toLowerCase()}.${a.angajator ? ` ${a.angajator}.` : ""} Aplici direct la angajator.`;
-  // noindex, follow: Google urmează linkurile spre liste, dar pagina anunțului nu intră în index
-  // (vezi PRAG_INDEX). JobPosting rămâne, dar Google Jobs nu-l citește pe o pagină noindex.
-  return inSablon(req, env, { titlu, descriere: desc.slice(0, 158), canonic, indexabil: false, continut, jsonLd });
+  return inSablon(req, env, { titlu, descriere: desc.slice(0, 158), canonic, indexabil: true, continut, jsonLd });
 }
 
 export async function sitemap(env: Env): Promise<Response> {
-  // Numai listele: anunțurile sunt noindex, deci n-au ce căuta în sitemap.
-  const liste = await listeIndexabile(env, PRAG_INDEX);
+  const [anunturi, liste] = await Promise.all([toateActive(env), listeIndexabile(env, PRAG_INDEX)]);
   const urls = [
     `<url><loc>${SITE}/locuri-de-munca</loc></url>`,
     ...liste.map((l) => `<url><loc>${SITE}${urlLista(l.oras, l.meserie)}</loc></url>`),
+    ...anunturi.map((a) => `<url><loc>${SITE}${urlAnunt(a)}</loc><lastmod>${a.confirmat_la!.slice(0, 10)}</lastmod></url>`),
   ];
   return new Response(`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls.join("")}</urlset>`,
     { headers: { "content-type": "application/xml; charset=utf-8", "cache-control": "public, max-age=3600" } });

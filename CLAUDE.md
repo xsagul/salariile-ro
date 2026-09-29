@@ -22,11 +22,11 @@ salariile.ro este un portal despre salarii și fiscalitate în România. Scop pe
    România (SE Ranking): `/locuri-de-munca[/{oraș}][/{meserie}]` (top 3 = liste, orașul primul),
    `/anunt-angajare-{titlu}-{oraș}-{id}` (la „anunt de angajare” rankează numai anunțuri cu acest
    început), `/adauga-anunt-angajare` („adaugă anunț” e formularea căutată). O listă intră în
-   Google de la 2 anunțuri (29 septembrie). **Anunțurile însele sunt `noindex, follow` și lipsesc din
-   sitemap (proprietar, 30 septembrie 2026):** expiră în câteva săptămâni, iar mii de pagini care apar și
-   dispar consumă crawl-ul și autoritatea. În Google intră numai `/locuri-de-munca`, orașul, meseria și
-   oraș + meserie; filtrele din interogare (`?norma=`, `?contract=`, `?q=`…) rămân noindex. Costul
-   asumat: fără Google Jobs (JobPosting nu se citește pe o pagină noindex).
+   Google de la 2 anunțuri (29 septembrie); anunțul însuși e indexat din prima clipă și e în sitemap,
+   ca la eJobs și OLX (verificat pe 30 septembrie 2026: `index`, canonical spre el însuși, JobPosting).
+   Anunțurile au fost noindex câteva ore pe 30 septembrie; proprietarul a revenit la modelul eJobs.
+   Crawl-ul se economisește ca la eJobs: robots.txt blochează paginarea, ordonarea și căutarea liberă
+   din liste (`?pagina=`, `?ordine=`, `?q=`); celelalte filtre din interogare rămân noindex.
    **Pornirea din ANOFM, decisă de proprietar pe 30 septembrie 2026:** ofertele ANOFM eligibile
    (telefon, localitate, sumă cu bază, descriere originală ≥ 80 de caractere) intră ca anunțuri
    obișnuite, fără nicio diferență vizibilă, cu telefonul din ofertă și data publicării de la ANOFM;

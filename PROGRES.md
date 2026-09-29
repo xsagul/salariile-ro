@@ -4749,3 +4749,16 @@ rămân numai `/locuri-de-munca` și filtrele din adresă (oraș, meserie, oraș
 - Cost asumat: JobPosting nu mai aduce anunțurile în Google Jobs (cere pagină indexabilă).
 - Nu s-a pus `Disallow` în robots.txt: Google trebuie să poată deschide anunțurile deja
   descoperite ca să vadă noindex-ul. Se poate reconsidera după ce GSC arată că au ieșit din index.
+
+## 30 septembrie 2026 — revenire: anunțurile indexate, ca la eJobs
+
+După verificarea concurenților (curl pe câte un anunț și o listă), proprietarul a ales modelul
+eJobs în locul noindex-ului de mai sus, publicat câteva ore:
+
+- eJobs: anunțul `index` (meta și `x-robots-tag`), canonical spre el însuși, JobPosting, sitemap
+  separat pentru anunțuri și unul pentru cele expirate; robots.txt blochează `*/pagina`,
+  `*/sort-publish`, `*/sort-geo`. OLX: anunțul `index, follow`, canonical spre el însuși.
+- Anunțurile sunt din nou `index, follow` și în `/locuri-de-munca/sitemap.xml` (revert pe cod
+  al lui `99e3187`).
+- robots.txt blochează acum în liste `?pagina=`, `?ordine=` și `?q=` (căutarea liberă e un
+  spațiu nelimitat). Anunțurile de pe paginile 2+ se descoperă din sitemap.
