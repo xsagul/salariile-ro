@@ -2,21 +2,23 @@
 
 // Raportarea unui anunț (DSA, art. 16): /locuri-de-munca/raporteaza#<id>. Motivul, detalii
 // opționale și, dacă vrea, emailul celui care raportează, ca să primească răspunsul.
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
+import { useHash } from "@/app/components/anunturi/useHash";
 import Turnstile from "@/app/components/anunturi/Turnstile";
 
 const MOTIVE = ["țeapă sau cerere de bani", "discriminare", "salariul nu e cel real", "anunț fals sau duplicat", "conținut ilegal", "altceva"];
 const CAMP = "mt-1 block w-full rounded-md border border-stone-300 bg-surface px-3 py-2 text-base text-stone-900";
 
 export default function RaporteazaAnunt() {
-  const [id, setId] = useState<number | null>(null);
   const [motiv, setMotiv] = useState("");
   const [detalii, setDetalii] = useState("");
   const [email, setEmail] = useState("");
   const [token, setToken] = useState("");
   const [stare, setStare] = useState<"" | "trimis" | string>("");
   const onToken = useCallback((t: string) => setToken(t), []);
-  useEffect(() => { const n = Number(window.location.hash.slice(1)); setId(Number.isInteger(n) && n > 0 ? n : null); }, []);
+  const hash = useHash();
+  const n = Number(hash);
+  const id = hash && Number.isInteger(n) && n > 0 ? n : null;
 
   if (id === null) return <p className="text-base text-stone-700">Deschide raportarea din pagina anunțului.</p>;
   if (stare === "trimis") return <p className="text-base text-stone-800">Mulțumim. Verificăm anunțul{email ? " și îți scriem când am decis" : ""}.</p>;

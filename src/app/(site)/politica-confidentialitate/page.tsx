@@ -185,7 +185,7 @@ export default function PoliticaConfidentialitatePage() {
             <h2>5. Durata stocării</h2>
             <ul>
               <li>Jurnale de acces: site-ul nu păstrează jurnale proprii; Cloudflare le prelucrează ca procesator, pe durata stabilită în politica sa de confidențialitate.</li>
-              <li>Anunțuri de angajare: cât timp sunt active; emailul celui care le-a adăugat, încă 30 de zile după expirare sau ștergere; amprenta IP și email pentru limita pe zi, 2 zile; anunțurile neconfirmate se șterg după 48 de ore.</li>
+              <li>Anunțuri de angajare: cât timp sunt active; emailul celui care le-a adăugat, încă 30 de zile după expirare sau ștergere; amprenta IP și email pentru limita pe zi, 2 zile.</li>
               <li>Statistici Cloudflare Web Analytics: agregate, fără date de identificare a vizitatorilor, păstrate conform politicii Cloudflare.</li>
               <li>Date Google Analytics 4 asociate cu identificatori și evenimente: 14 luni, conform setării proprietății verificată la 17 septembrie 2026. Alegerea este păstrată de CMP-ul Google conform configurației mesajului.</li>
               <li>Date Google Search Console: agregate, păstrate conform politicii Google (16 luni pentru istoricul detaliat).</li>

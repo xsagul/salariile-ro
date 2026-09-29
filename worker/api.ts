@@ -3,7 +3,7 @@
 import type { Env } from "./index";
 import catalog from "../src/data/meserii-catalog.json";
 import { URL_ADAUGA, urlAnunt, valideaza } from "../src/lib/anunturi/reguli";
-import { adauga, confirma, dupaId, dupaToken, inLimita, listaPentruApropiere, modifica, prelungeste, raporteaza, sterge, tokenNou, type Anunt } from "./date";
+import { adauga, dupaId, dupaToken, inLimita, listaPentruApropiere, modifica, prelungeste, raporteaza, sterge, tokenNou, type Anunt } from "./date";
 import { localizeaza } from "./geocod";
 import { cardLista } from "./pagini";
 
@@ -62,12 +62,13 @@ export async function api(req: Request, env: Env, ctx: ExecutionContext, cale: s
     if ("erori" in v) return json({ erori: v.erori }, 400);
     if (!(await inLimita(env, v.anunt.email, ip))) return json({ erori: [{ camp: "general", mesaj: "Ai publicat multe anunțuri azi. Mai încearcă mâine." }] }, 429);
     const token = tokenNou();
-    const id = await adauga(env, v.anunt, await localizeaza(v.anunt.adresa, v.anunt.oras, v.anunt.judet), token);
-    ctx.waitUntil(trimite(env, v.anunt.email, `Confirmă anunțul „${v.anunt.titlu}”`,
-      `Bună ziua,\n\nCa să publici anunțul „${v.anunt.titlu}” pe salariile.ro, deschide linkul de mai jos și apasă „Publică anunțul”:\n\n${linkGestionare(env, token)}\n\n` +
-      `Din același link îl poți modifica, prelungi sau șterge oricând. Păstrează emailul: linkul nu se mai trimite o dată.\n` +
-      `Anunțul rămâne publicat 30 de zile. Dacă nu l-ai trimis tu, ignoră mesajul: fără confirmare, se șterge în 48 de ore.\n\nsalariile.ro`));
-    return json({ ok: true, id });
+    const a = await adauga(env, v.anunt, await localizeaza(v.anunt.adresa, v.anunt.oras, v.anunt.judet), token);
+    ctx.waitUntil(trimite(env, v.anunt.email, `Anunțul „${v.anunt.titlu}” e publicat`,
+      `Bună ziua,\n\nAnunțul „${v.anunt.titlu}” e publicat pe salariile.ro:\n${env.SITE}${urlAnunt(a)}\n\n` +
+      `Îl modifici, îl prelungești sau îl ștergi oricând din linkul de mai jos. Păstrează emailul: linkul nu se mai trimite o dată.\n\n${linkGestionare(env, token)}\n\n` +
+      `Anunțul rămâne publicat 30 de zile. Dacă nu l-ai trimis tu, deschide linkul și apasă „Șterge anunțul”.\n\nsalariile.ro`));
+    // Linkul de gestionare se dă și pe ecran: emailul nu e verificat, iar o greșeală de scriere l-ar pierde.
+    return json({ ok: true, id: a.id, url: urlAnunt(a), gestionare: `${URL_ADAUGA}/gestioneaza#${token}` });
   }
 
   if (cale === "/api/anunturi/gestioneaza") {
@@ -75,7 +76,6 @@ export async function api(req: Request, env: Env, ctx: ExecutionContext, cale: s
     if (!a) return json({ eroare: "Linkul nu mai e valid: anunțul a fost șters sau linkul e incomplet." }, 404);
     switch (corp.actiune) {
       case "citeste": return json({ anunt: public_(a) });
-      case "confirma": await confirma(env, a.id); break;
       case "prelungeste": await prelungeste(env, a.id); break;
       case "sterge": await sterge(env, a.id); return json({ ok: true, sters: true });
       case "modifica": {

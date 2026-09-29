@@ -164,7 +164,7 @@ export default function FormularAnunt({ initial, modificare = false, trimite }: 
       {!modificare && (
         <fieldset className="grid gap-4">
           <legend className="text-base font-bold text-stone-900">Emailul tău</legend>
-          {Camp({ k: "email", eticheta: "Emailul tău", type: "email", nota: "Nu apare în anunț. Primești aici linkul cu care publici, modifici sau ștergi anunțul." })}
+          {Camp({ k: "email", eticheta: "Emailul tău", type: "email", nota: "Nu apare în anunț. Primești aici linkul cu care modifici sau ștergi anunțul." })}
           <label className="flex items-start gap-2 text-sm text-stone-800">
             <input type="checkbox" checked={v.acordPublicare === true} onChange={set("acordPublicare")} className="mt-1" />
             <span>Sunt de acord ca datele de contact ale angajatorului să apară în anunț și accept <a href="/termeni#anunturi" className="underline underline-offset-2">regulile anunțurilor</a>. Datele se prelucrează ca în <a href="/politica-confidentialitate#anunturi" className="underline underline-offset-2">politica de confidențialitate</a>.</span>

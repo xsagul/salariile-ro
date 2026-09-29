@@ -1,5 +1,5 @@
 // Adăugarea unui anunț de angajare, fără cont (28 septembrie 2026). Pagina e statică; formularul
-// trimite la Worker (/api/anunturi), care trimite pe email linkul de confirmare. Adresa urmează
+// trimite la Worker (/api/anunturi), care publică anunțul și trimite pe email linkul de gestionare. Adresa urmează
 // formularea căutată („adaugă anunț”, SE Ranking); nicio pagină de publicare nu e în top 3.
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
@@ -24,7 +24,7 @@ export default function AdaugaAnunt() {
       <div className={`mx-auto max-w-3xl px-4 sm:px-6 ${SPATIU_SUS} ${SPATIU_JOS}`}>
         <Breadcrumb items={[{ href: "/locuri-de-munca", label: "Locuri de muncă" }, { label: "Adaugă anunț" }]} />
         <H1>Adaugă un anunț de angajare</H1>
-        <Lead>Gratuit și fără cont. Scrie salariul lunar: anunțurile cu salariu primesc mai mulți candidați potriviți. Primești pe email linkul cu care îl publici, îl modifici sau îl ștergi.</Lead>
+        <Lead>Gratuit și fără cont. Scrie salariul lunar: anunțurile cu salariu primesc mai mulți candidați potriviți. Apare pe site imediat; pe email primești linkul cu care îl modifici sau îl ștergi.</Lead>
         <div className="mt-6 rounded-md border border-stone-200 bg-surface p-5 shadow-soft sm:p-6">
           <PublicaAnunt />
         </div>

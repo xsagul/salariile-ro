@@ -2,8 +2,9 @@
 
 // Gestionarea unui anunț din linkul primit pe email: /adauga-anunt-angajare/gestioneaza#<token>.
 // Tokenul stă după „#”, deci nu ajunge niciodată la server în URL și nici în logurile Cloudflare;
-// nici scanerele de linkuri din email nu publică anunțul: publicarea cere apăsarea butonului.
+// nici scanerele de linkuri din email nu schimbă nimic: orice acțiune cere apăsarea unui buton.
 import { useEffect, useState } from "react";
+import { useHash } from "@/app/components/anunturi/useHash";
 import FormularAnunt, { type Valori } from "@/app/components/anunturi/FormularAnunt";
 import { urlAnunt } from "@/lib/anunturi/reguli";
 
@@ -14,7 +15,6 @@ type Anunt = {
 };
 
 const STARI: Record<string, string> = {
-  neconfirmat: "Nepublicat încă: apasă „Publică anunțul”.",
   activ: "Publicat.",
   expirat: "Expirat: nu mai apare pe site. Îl poți prelungi cu 30 de zile.",
   suspendat: "Suspendat cât timp îl verificăm, după raportări.",
@@ -26,17 +26,15 @@ async function cere(token: string, actiune: string, date?: Valori) {
 }
 
 export default function GestioneazaAnunt() {
-  const [token, setToken] = useState("");
+  const hash = useHash();
+  const token = hash ?? "";
   const [a, setA] = useState<Anunt | null>(null);
   const [mesaj, setMesaj] = useState<string | null>(null);
   const [modifica, setModifica] = useState(false);
 
   useEffect(() => {
-    const t = window.location.hash.slice(1);
-    setToken(t);
-    if (!t) { setMesaj("Linkul e incomplet. Deschide-l exact cum a venit în email."); return; }
-    cere(t, "citeste").then(({ ok, j }) => (ok ? setA(j.anunt) : setMesaj(j.eroare)));
-  }, []);
+    if (token) cere(token, "citeste").then(({ ok, j }) => (ok ? setA(j.anunt) : setMesaj(j.eroare)));
+  }, [token]);
 
   async function actiune(nume: string) {
     if (nume === "sterge" && !window.confirm("Ștergi anunțul? Nu se mai poate recupera.")) return;
@@ -44,10 +42,10 @@ export default function GestioneazaAnunt() {
     if (!ok) { setMesaj(j.eroare ?? "Nu s-a putut."); return; }
     if (j.sters) { setA(null); setMesaj("Anunțul a fost șters. Datele de contact au fost șterse odată cu el."); return; }
     setA(j.anunt);
-    setMesaj(nume === "confirma" ? "Anunțul e publicat." : nume === "prelungeste" ? "Anunțul e prelungit cu 30 de zile." : null);
+    setMesaj(nume === "prelungeste" ? "Anunțul e prelungit cu 30 de zile." : null);
   }
 
-  if (!a) return <p className="text-base text-stone-700">{mesaj ?? "Se încarcă…"}</p>;
+  if (!a) return <p className="text-base text-stone-700">{mesaj ?? (hash === "" ? "Linkul e incomplet. Deschide-l exact cum a venit în email." : "Se încarcă…")}</p>;
   const initial: Valori = {
     titlu: a.titlu, meserie: a.meserie ?? "", angajator: a.angajator, judet: a.judet, oras: a.oras, adresa: a.adresa ?? "", norma: a.norma,
     orePeZi: String(a.ore_pe_zi ?? 4), salariuMin: String(a.salariu_min), salariuMax: a.salariu_max ? String(a.salariu_max) : "", baza: a.baza,
@@ -63,7 +61,6 @@ export default function GestioneazaAnunt() {
         {a.stare === "activ" && <p className="mt-1 text-sm"><a className="underline underline-offset-2" href={urlAnunt(a)}>Vezi anunțul pe site</a></p>}
       </div>
       <div className="flex flex-wrap gap-3">
-        {a.stare === "neconfirmat" && <button onClick={() => actiune("confirma")} className={`${BUTON} bg-stone-900 text-white hover:bg-stone-700`}>Publică anunțul</button>}
         {(a.stare === "activ" || a.stare === "expirat") && <button onClick={() => actiune("prelungeste")} className={`${BUTON} border border-stone-300 bg-surface text-stone-900`}>Prelungește cu 30 de zile</button>}
         <button onClick={() => setModifica((x) => !x)} className={`${BUTON} border border-stone-300 bg-surface text-stone-900`}>{modifica ? "Renunță la modificări" : "Modifică"}</button>
         <button onClick={() => actiune("sterge")} className={`${BUTON} border border-red-300 bg-surface text-red-800`}>Șterge anunțul</button>

@@ -38,15 +38,22 @@ export async function inLimita(env: Env, email: string, ip: string): Promise<boo
   return true;
 }
 
-export async function adauga(env: Env, a: AnuntNou, loc: Loc | null, token: string): Promise<number> {
+/**
+ * Anunțul se publică pe loc, fără confirmarea din email (proprietar, 29 septembrie 2026: la pornire,
+ * orice pas în plus scade numărul de anunțuri). Emailul rămâne obligatoriu pentru linkul de
+ * gestionare; frâna rămâne Turnstile, limita pe zi, regulile de conținut și raportările.
+ */
+export async function adauga(env: Env, a: AnuntNou, loc: Loc | null, token: string): Promise<{ id: number; slug: string }> {
+  const t = acum();
   const r = await env.DB.prepare(
     `INSERT INTO anunturi (stare, titlu, slug, meserie, angajator, judet, oras, oras_slug, adresa, lat, lon, loc_precizie, norma, ore_pe_zi,
-      salariu_min, salariu_max, baza, net_min, descriere, telefon, email, token_hash, creat_la)
-     VALUES ('neconfirmat', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id`,
+      salariu_min, salariu_max, baza, net_min, descriere, telefon, email, token_hash, creat_la, confirmat_la, expira_la)
+     VALUES ('activ', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id, slug`,
   ).bind(a.titlu, slugAnunt(a.titlu, a.oras), a.meserie || null, a.angajator, a.judet, a.oras, orasSlug(a.oras),
     a.adresa ?? null, loc?.lat ?? null, loc?.lon ?? null, loc?.precizie ?? null, a.norma, a.orePeZi ?? null,
-    a.salariuMin, a.salariuMax ?? null, a.baza, netLunar(a.salariuMin, a.baza), a.descriere, a.telefon, a.email, await sha256(token), acum()).first<{ id: number }>();
-  return r!.id;
+    a.salariuMin, a.salariuMax ?? null, a.baza, netLunar(a.salariuMin, a.baza), a.descriere, a.telefon, a.email, await sha256(token),
+    t, t, peste(ZILE_VALABILITATE)).first<{ id: number; slug: string }>();
+  return r!;
 }
 
 export async function dupaToken(env: Env, token: string): Promise<Anunt | null> {
@@ -56,12 +63,6 @@ export async function dupaToken(env: Env, token: string): Promise<Anunt | null> 
 
 export async function dupaId(env: Env, id: number): Promise<Anunt | null> {
   return env.DB.prepare("SELECT * FROM anunturi WHERE id = ?").bind(id).first<Anunt>();
-}
-
-/** Confirmarea din link: prima dată publică anunțul și pornește cele 30 de zile. */
-export async function confirma(env: Env, id: number): Promise<void> {
-  await env.DB.prepare("UPDATE anunturi SET stare = 'activ', confirmat_la = COALESCE(confirmat_la, ?), expira_la = ? WHERE id = ? AND stare = 'neconfirmat'")
-    .bind(acum(), peste(ZILE_VALABILITATE), id).run();
 }
 
 export async function prelungeste(env: Env, id: number): Promise<void> {

@@ -148,7 +148,7 @@ export default function TermeniPage() {
         <Section>
             <h2 id="anunturi">8. Anunțurile de angajare</h2>
             <p>
-              Oricine angajează poate adăuga gratuit, fără cont, un anunț de angajare pe <Link href="/adauga-anunt-angajare">salariile.ro</Link>. Anunțul se publică după confirmarea din emailul primit și rămâne 30 de zile; din același link se modifică, se prelungește sau se șterge oricând.
+              Oricine angajează poate adăuga gratuit, fără cont, un anunț de angajare pe <Link href="/adauga-anunt-angajare">salariile.ro</Link>. Anunțul se publică imediat și rămâne 30 de zile; din linkul primit pe email se modifică, se prelungește sau se șterge oricând.
             </p>
             <p>Un anunț se publică numai dacă:</p>
             <ul>

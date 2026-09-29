@@ -4370,3 +4370,21 @@ Tot pe 29 septembrie, la cererea proprietarului:
   nu se întâmplă nicăieri; acum: „apare și în lista meseriei” (`/locuri-de-munca/{meserie}`).
 - Reparat un `setState` în efect din `FormularAnunt.tsx` (străzile), pe care lint-ul din CI îl
   respingea; probat în browser: București → „lipsc” → Strada Lipscani.
+
+## 29 septembrie 2026 — anunțul se publică imediat, fără confirmare pe email
+
+Decis de proprietar: „suntem la început și orice frână ar putea să ne scadă numărul de anunțuri”.
+- `adauga()` scrie anunțul direct `activ`, cu `confirmat_la` și `expira_la` (30 de zile). Emailul
+  rămâne obligatoriu: pe el vine linkul de gestionare, cu linkul anunțului și „dacă nu l-ai trimis
+  tu, șterge-l din link”. Acțiunea `confirma` și butonul „Publică anunțul” au fost scoase.
+- Ecranul de după trimitere: „Anunțul e publicat”, „Vezi anunțul”, „Modifică sau șterge” (linkul de
+  gestionare apare și pe ecran: emailul nu e verificat, o greșeală de scriere l-ar pierde). Pagina
+  urcă singură la mesaj. Termenii și politica: fără „după confirmare” / „neconfirmatele în 48 de ore”.
+- Frânele rămase: Turnstile, 5 pe zi pe email și pe IP, regulile de conținut, 3 raportări → suspendare.
+- Consecință pentru lansare: fără Email Sending, anunțurile se publică oricum; doar linkul de
+  gestionare nu mai ajunge pe email (rămâne cel de pe ecran).
+- Lint: `setState` în efect și în `GestioneazaAnunt`/`RaporteazaAnunt`, înlocuit cu `useHash`
+  (`useSyncExternalStore`). `npx eslint src worker --quiet` trece.
+Probat în browser: formular completat → „Anunțul e publicat” → anunțul primul în lista București
+(7); emailul din log are textul nou; gestionarea cu linkul merge, fără link spune „Linkul e
+incomplet”; raportarea cu `#7` arată formularul, fără id cere deschiderea din anunț.

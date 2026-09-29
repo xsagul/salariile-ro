@@ -1,7 +1,8 @@
 // Regulile unui anunț de angajare postat pe salariile.ro (hubul de anunțuri, pornit de proprietar
 // pe 28 septembrie 2026). Un singur proprietar: formularul din browser și Worker-ul care primește
 // anunțul folosesc exact aceleași verificări. Deciziile proprietarului:
-//   - fără cont: anunțul se confirmă și se gestionează dintr-un link primit pe email;
+//   - fără cont: anunțul se publică pe loc (fără confirmare pe email, decis pe 29 septembrie 2026)
+//     și se gestionează dintr-un link primit pe email;
 //   - salariul e obligatoriu, cu baza (brut sau net) — diferența față de OLX și eJobs; orice sumă,
 //     fără prag minim (decis pe 28 septembrie 2026: respingerile ar încetini pornirea);
 //   - numele firmei e opțional, CUI-ul nu se cere deloc (tot 28 septembrie);
