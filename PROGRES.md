@@ -4515,4 +4515,15 @@ verificarea din `worker/api.ts` pe `/api/anunturi`, regula `_headers` care dăde
 formularului static (fără Turnstile, `/adauga-anunt-angajare` revine pe politica publică).
 Rămân ca frână: 5 anunțuri pe zi pe IP, regulile de conținut, verificarea originii, raportările.
 **Raportarea păstrează Turnstile**: 3 raportări suspendă automat un anunț, deci fără verificare
-oricine ar putea scoate anunțurile altora. `TURNSTILE_SECRET` nu se șterge: îl folosește ea.
+oricine ar putea scoate anunțurile altora.
+
+Cauza, văzută pe producție înainte de publicare: `TURNSTILE_SECRET` nu era pus în Worker (un POST
+gol pe `/api/anunturi` primea erorile de validare, nu pe cea de Turnstile), deci blocajul era numai
+în browser — widgetul nu dădea token (câmp `cf-turnstile-response` gol după 14 s, în browserul
+de test), iar formularul refuza trimiterea până la token, cu „apasă din nou” la nesfârșit. Fără
+secret, raportarea nu e verificată nici ea; cu secret, Worker-ul o verifică numai pe ea.
+
+Verificat pe producție după publicare (~3 min, Workers Builds): CSP-ul formularului fără
+`challenges.cloudflare.com`, niciun script sau câmp Turnstile în pagină; un anunț valid completat
+în browser (cu `fetch` interceptat, deci nepublicat) a plecat din primul click, fără câmp
+`turnstile`; POST gol pe `/api/anunturi` → erorile de validare.
