@@ -332,7 +332,7 @@ export async function paginaAnunt(req: Request, env: Env, id: number, slug: stri
     <p class="text-xs font-medium uppercase tracking-wide text-stone-600">Anunț angajare</p>
     <h1 class="mt-1 text-[28px] font-bold leading-tight tracking-[-0.02em] text-stone-900 sm:text-[34px]">${esc(a.titlu)}</h1>
     <p class="mt-2 text-base text-stone-600">${a.angajator ? `${esc(a.angajator)} · ` : ""}${esc(loc(a))}</p>
-    <div class="mt-5 grid gap-4 lg:grid-cols-[1fr_320px]">
+    <div class="mt-5 grid items-start gap-4 lg:grid-cols-[1fr_320px]">
       <div class="${CARD}">
         <p class="text-xs font-medium text-stone-700">Salariul oferit</p>
         <p class="mt-2 text-3xl font-bold tracking-tight text-stone-900">${suma(a)}</p>
