@@ -4619,3 +4619,31 @@ interogare (`net`), din `Filtru` și din API. Filtrele și bara refăcute ca în
   (fostul buton separat).
 Probat local cu `wrangler dev`, 375 și 1366 px: căutarea comună (alegerea „Barman” păstrează
 Bucureștiul), „Filtre” deschide și închide coloana, ordinea după salariu.
+
+## 29 septembrie 2026 — căutare liberă ca pe OLX, domenii, „Ajutor barman”
+
+Proprietarul: „Ajutor barman restaurant Beraria H” nu apărea nici la Barman, nici la ajutor de
+barman; cere încadrarea pe domenii („HoReCa și turism”) și bara de căutare ca pe OLX („scrii orice
+și îți găsește din anunț, chiar dacă cel care a postat a denumit jobul altfel”).
+
+- Cauza: meseria e opțională în formular, iar cel care a postat n-a ales-o; „Ajutor barman” nici nu
+  era în catalog. Adăugat (grup separat de Barman, ca „Ajutor ospătar” de „Ospătar”), în HoReCa.
+- `ghicesteMeserie(titlu)` (`src/lib/anunturi/meserii.ts`): cea mai lungă formulare din catalog care
+  apare întreagă în titlu, fără diacritice și fără cuvintele mici („ajutor de barman” = „ajutor
+  barman”). Se aplică la publicare și la modificare când meseria lipsește, iar cronul de noapte
+  completează anunțurile active rămase fără meserie. **Anunțul #2 de pe producție se completează la
+  cronul de 03:17 UTC**; imediat, din consola D1: `UPDATE anunturi SET meserie = 'ajutor-barman' WHERE id = 2;`
+- Domeniile: comentariile din catalog au devenit `DOMENII_GRUPURI` (14 domenii, 281 de formulări);
+  „Poștaș” mutat din agricultură la transport. Filtrul „Domeniul” în coloană și în sugestii
+  (`?domeniu=horeca`, noindex).
+- Căutarea liberă `?q=`: fiecare cuvânt trebuie să apară în titlu, firmă, localitate sau descriere
+  (fără diacritice, prin `replace()` în SQL, fiindcă D1 n-are `unaccent`), sau să fie numele meseriei
+  anunțului prin sinonimele grupului (de la 4 litere: „chelner” aduce ospătarii). Cuvinte ignorate:
+  „locuri”, „muncă”, „angajare” etc. Primul rând din câmpul comun e „Caută „…””, iar Enter îl alege;
+  câmpul comun e acum și pe PC, deasupra listei. Meseria și domeniul înlocuiesc textul căutat și se
+  numără fără el; localitatea și norma îl rafinează.
+- Fără schimbare de schemă: nu cere migrare pe D1. La multe anunțuri, căutarea citește toate
+  anunțurile active la fiecare adresă nouă (ca numărătorile din filtre); FTS5 ar cere o migrare.
+- Probat local (`wrangler dev`): anunț nou fără meserie → `ajutor-barman`; „barman” → 7 anunțuri,
+  inclusiv ajutorul de barman; „ajutor de barman” → 1; „chelner” → ospătarii; „locuri de munca
+  curatenie” în București → „Femeie de serviciu”; HoReCa → 11.

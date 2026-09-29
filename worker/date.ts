@@ -2,7 +2,7 @@
 import type { Env } from "./index";
 import type { Loc } from "./geocod";
 import { LIMITA_PE_ZI, ZILE_PASTRARE_EMAIL, ZILE_VALABILITATE, netLunar, orasSlug, slugAnunt, type AnuntNou, type Norma } from "../src/lib/anunturi/reguli";
-import { grupMeserie, slugurileGrupului } from "../src/lib/anunturi/meserii";
+import { MESERII_ANUNTURI, ghicesteMeserie, grupMeserie, meseriileDomeniului, pentruPotrivire, slugurileGrupului } from "../src/lib/anunturi/meserii";
 
 export type Anunt = {
   id: number; stare: "neconfirmat" | "activ" | "expirat" | "sters" | "suspendat";
@@ -52,7 +52,7 @@ export async function adauga(env: Env, a: AnuntNou, loc: Loc | null, token: stri
     `INSERT INTO anunturi (stare, titlu, slug, meserie, angajator, judet, oras, oras_slug, adresa, lat, lon, loc_precizie, norma, ore_pe_zi,
       salariu_min, salariu_max, baza, net_min, descriere, telefon, email, token_hash, creat_la, confirmat_la, expira_la)
      VALUES ('activ', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id, slug`,
-  ).bind(a.titlu, slugAnunt(a.titlu, a.oras), a.meserie || null, a.angajator, a.judet, a.oras, orasSlug(a.oras),
+  ).bind(a.titlu, slugAnunt(a.titlu, a.oras), a.meserie || ghicesteMeserie(a.titlu), a.angajator, a.judet, a.oras, orasSlug(a.oras),
     a.adresa ?? null, loc?.lat ?? null, loc?.lon ?? null, loc?.precizie ?? null, a.norma, a.orePeZi ?? null,
     a.salariuMin, a.salariuMax ?? null, a.baza, netLunar(a.salariuMin, a.baza), a.descriere, a.telefon, a.email || null, await sha256(token),
     t, t, peste(ZILE_VALABILITATE)).first<{ id: number; slug: string }>();
@@ -76,7 +76,7 @@ export async function modifica(env: Env, id: number, a: AnuntNou, loc: Loc | nul
   await env.DB.prepare(
     `UPDATE anunturi SET titlu = ?, slug = ?, meserie = ?, angajator = ?, judet = ?, oras = ?, oras_slug = ?, adresa = ?, lat = ?, lon = ?, loc_precizie = ?,
       norma = ?, ore_pe_zi = ?, salariu_min = ?, salariu_max = ?, baza = ?, net_min = ?, descriere = ?, telefon = ? WHERE id = ? AND stare IN ('neconfirmat', 'activ', 'expirat')`,
-  ).bind(a.titlu, slugAnunt(a.titlu, a.oras), a.meserie || null, a.angajator, a.judet, a.oras, orasSlug(a.oras),
+  ).bind(a.titlu, slugAnunt(a.titlu, a.oras), a.meserie || ghicesteMeserie(a.titlu), a.angajator, a.judet, a.oras, orasSlug(a.oras),
     a.adresa ?? null, loc?.lat ?? null, loc?.lon ?? null, loc?.precizie ?? null, a.norma, a.orePeZi ?? null, a.salariuMin,
     a.salariuMax ?? null, a.baza, netLunar(a.salariuMin, a.baza), a.descriere, a.telefon, id).run();
 }
@@ -89,18 +89,43 @@ export async function sterge(env: Env, id: number): Promise<void> {
 export const PE_PAGINA = 20;
 
 /**
- * Filtrele unei liste: meseria și localitatea vin din adresă, norma din interogare (proprietar,
- * 29 septembrie 2026).
+ * Filtrele unei liste: meseria și localitatea vin din adresă; norma, domeniul și căutarea liberă din
+ * interogare (proprietar, 29 septembrie 2026).
  */
-export type Filtru = { meserie?: string; oras?: string; norma?: Norma };
+export type Filtru = { meserie?: string; oras?: string; norma?: Norma; domeniu?: string; q?: string };
+
+/**
+ * Textul în care caută bara, ca pe OLX: titlul, firma, localitatea și descrierea, cu litere mici și
+ * fără diacritice. D1 n-are `unaccent`, iar `lower()` din SQLite schimbă numai literele fără semne.
+ */
+const TEXT = [["ă", "a"], ["â", "a"], ["î", "i"], ["ș", "s"], ["ş", "s"], ["ț", "t"], ["ţ", "t"], ["Ă", "a"], ["Â", "a"], ["Î", "i"], ["Ș", "s"], ["Ş", "s"], ["Ț", "t"], ["Ţ", "t"]]
+  .reduce((e, [d, a]) => `replace(${e}, '${d}', '${a}')`, "lower(titlu || ' ' || angajator || ' ' || oras || ' ' || descriere)");
+/** Cuvinte care nu spun nimic despre job: „locuri de muncă barman” caută „barman”. */
+const CUVINTE_GOALE = new Set(["loc", "locuri", "munca", "job", "joburi", "angajare", "angajam", "angajez", "angajeaza", "caut", "anunt", "anunturi", "post", "posturi"]);
+export const cuvinteCautate = (q: string) => pentruPotrivire(q).trim().split(" ").filter((w) => w.length >= 2 && !CUVINTE_GOALE.has(w)).slice(0, 6);
+/** Meseriile din grupurile în care un nume începe cu `w`: „chelner” aduce și anunțurile de ospătar. */
+function sinonime(w: string): string[] {
+  const grupuri = new Set(MESERII_ANUNTURI.filter((m) => pentruPotrivire(m.nume).includes(` ${w}`)).map((m) => m.grup));
+  return MESERII_ANUNTURI.filter((m) => grupuri.has(m.grup)).map((m) => m.slug);
+}
+/** Sluguri din catalogul nostru ([a-z0-9-]), scrise direct în SQL: D1 primește cel mult 100 de parametri. */
+const inSql = (sluguri: string[]) => sluguri.map((x) => `'${x.replace(/[^a-z0-9-]/g, "")}'`).join(", ");
 
 /** Condiția SQL a filtrului. Meseria aduce tot grupul ei: la „chelner” apar și anunțurile de „ospătar”.
  *  `fara` lasă deoparte o dimensiune: numărul de lângă o opțiune ține cont de celelalte filtre, nu de al ei. */
-function unde(f: Filtru, fara?: "meserie" | "oras" | "norma"): { where: string; val: unknown[] } {
+function unde(f: Filtru, fara?: "meserie" | "oras" | "norma" | "domeniu"): { where: string; val: unknown[] } {
   const cond = ["stare = 'activ'"], val: unknown[] = [];
-  if (f.meserie && fara !== "meserie") { const g = slugurileGrupului(f.meserie); cond.push(`meserie IN (${g.map(() => "?").join(", ")})`); val.push(...g); }
+  if (f.meserie && fara !== "meserie") cond.push(`meserie IN (${inSql(slugurileGrupului(f.meserie))})`);
   if (f.oras && fara !== "oras") { cond.push("oras_slug = ?"); val.push(f.oras); }
   if (f.norma && fara !== "norma") { cond.push("norma = ?"); val.push(f.norma); }
+  if (f.domeniu && fara !== "domeniu") cond.push(`meserie IN (${inSql(meseriileDomeniului(f.domeniu))})`);
+  // Fiecare cuvânt trebuie să apară în text sau să fie numele meseriei anunțului (de la 4 litere, ca
+  // „bar” să nu aducă și frizerii de la „barber”).
+  for (const w of f.q ? cuvinteCautate(f.q) : []) {
+    const sin = w.length >= 4 ? sinonime(w) : [];
+    cond.push(sin.length ? `(${TEXT} LIKE ? OR meserie IN (${inSql(sin)}))` : `${TEXT} LIKE ?`);
+    val.push(`%${w}%`);
+  }
   return { where: cond.join(" AND "), val };
 }
 
@@ -115,20 +140,33 @@ export async function lista(env: Env, f: Filtru & { pagina: number; ordine?: "sa
 }
 
 export type Numarare = { s: string; n: string; c: number };
+const DOMENIUL = new Map(MESERII_ANUNTURI.map((m) => [m.slug, m.domeniu]));
 
 /**
  * Numerele din coloana de filtre. Localitățile sunt toate cele cu anunțuri active (căutarea nu
  * trebuie să ducă la o pagină 404), cu numărul potrivit celorlalte filtre; meseriile și normele,
  * numai cele care au anunțuri.
  */
-export async function fatete(env: Env, f: Filtru): Promise<{ orase: Numarare[]; meserii: { s: string; c: number }[]; norme: { s: Norma; c: number }[] }> {
-  const o = unde(f, "oras"), m = unde(f, "meserie"), n = unde(f, "norma");
-  const [ro, rm, rn] = await env.DB.batch([
+export async function fatete(env: Env, f: Filtru): Promise<{ orase: Numarare[]; meserii: { s: string; c: number }[]; norme: { s: Norma; c: number }[]; domenii: { s: string; c: number }[] }> {
+  // Meseria și domeniul înlocuiesc căutarea liberă (în bară și în coloană), deci se numără fără ea;
+  // localitatea și norma o rafinează, deci se numără cu ea.
+  const faraText = { ...f, q: undefined };
+  const o = unde(f, "oras"), m = unde(faraText, "meserie"), n = unde(f, "norma"), d = unde(faraText, "domeniu");
+  const [ro, rm, rn, rd] = await env.DB.batch([
     env.DB.prepare(`SELECT oras_slug AS s, MIN(oras) AS n, SUM(CASE WHEN ${o.where} THEN 1 ELSE 0 END) AS c FROM anunturi WHERE stare = 'activ' GROUP BY oras_slug ORDER BY n`).bind(...o.val),
     env.DB.prepare(`SELECT meserie AS s, COUNT(*) AS c FROM anunturi WHERE ${m.where} AND meserie IS NOT NULL GROUP BY meserie`).bind(...m.val),
     env.DB.prepare(`SELECT norma AS s, COUNT(*) AS c FROM anunturi WHERE ${n.where} GROUP BY norma`).bind(...n.val),
+    env.DB.prepare(`SELECT meserie AS s, COUNT(*) AS c FROM anunturi WHERE ${d.where} AND meserie IS NOT NULL GROUP BY meserie`).bind(...d.val),
   ]);
-  return { orase: ro.results as Numarare[], meserii: rm.results as { s: string; c: number }[], norme: rn.results as { s: Norma; c: number }[] };
+  const peDomeniu = new Map<string, number>();
+  for (const r of rd.results as { s: string; c: number }[]) {
+    const dom = DOMENIUL.get(r.s);
+    if (dom) peDomeniu.set(dom, (peDomeniu.get(dom) ?? 0) + r.c);
+  }
+  return {
+    orase: ro.results as Numarare[], meserii: rm.results as { s: string; c: number }[], norme: rn.results as { s: Norma; c: number }[],
+    domenii: [...peDomeniu].map(([s, c]) => ({ s, c })),
+  };
 }
 
 /**
@@ -195,4 +233,9 @@ export async function curatenie(env: Env): Promise<void> {
     env.DB.prepare("DELETE FROM anunturi WHERE stare = 'neconfirmat' AND creat_la < ?").bind(dupa(2)),
     env.DB.prepare("DELETE FROM limite WHERE la < ?").bind(dupa(2)),
   ]);
+  // Anunțurile rămase fără meserie o primesc din titlu, când titlul o spune (proprietar, 29 septembrie
+  // 2026: „Ajutor barman restaurant Beraria H” nu apărea la niciun filtru). Publicarea o face deja.
+  const fara = (await env.DB.prepare("SELECT id, titlu FROM anunturi WHERE meserie IS NULL AND stare = 'activ'").all<{ id: number; titlu: string }>()).results;
+  const gasite = fara.map((a) => ({ id: a.id, m: ghicesteMeserie(a.titlu) })).filter((a) => a.m);
+  if (gasite.length) await env.DB.batch(gasite.map((a) => env.DB.prepare("UPDATE anunturi SET meserie = ? WHERE id = ? AND meserie IS NULL").bind(a.m, a.id)));
 }
