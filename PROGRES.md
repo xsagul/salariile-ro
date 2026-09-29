@@ -4729,3 +4729,8 @@ angajator postează vreun anunț pe site-ul nostru”.
 - Contactul: evenimentul GA4 `contact_anunt` (element = `apel` / `whatsapp`, link_url = adresa
   anunțului, zona = `anunturi`), fără numărul de telefon. ID-ul din adresă desparte importul ANOFM
   (4–790) de anunțurile puse de angajatori. Probat local: ambele butoane, câte un eveniment.
+- Amânat de proprietar (30 septembrie 2026, „lăsăm cum e momentan”): anunțurile expirate își păstrează
+  în D1 telefonul, adresa și descrierea. Nu costă citiri (interogările merg pe indexul `stare`,
+  verificat cu EXPLAIN) și nici spațiu (~1 KB/anunț, 500 MB/bază), dar e date păstrate fără scop.
+  Propunerea respinsă deocamdată: telefon și adresă golite la expirare, pagina 410 cu anunțuri
+  asemănătoare 90 de zile, apoi ștergere.
