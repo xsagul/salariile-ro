@@ -75,6 +75,39 @@ export function adresa(o: Oferta): string | undefined {
   return a.length > 120 ? undefined : a;
 }
 
+// Acronimele care rămân cu majuscule când un rând scris numai cu majuscule trece în litere mici.
+const ACRONIME = new Set(["ANRE", "SSM", "PSI", "SU", "ISCIR", "CNC", "PLC", "IT", "HR", "CV", "SMD", "PCB", "SMT", "SCADA", "ERP", "SAP",
+  "UE", "ADR", "CPC", "ATP", "ISU", "ITM", "ANAF", "SRL", "SA", "CAEN", "COR", "AUTOCAD", "BT", "MT", "PFA", "RCA", "ITP", "CE", "B", "C", "D", "E", "BE", "HACCP", "ECDL", "EGIU"]);
+// „sa” (să) e mai des verb decât SA (societate) în descrieri: rămâne cu litere mici la început de propoziție.
+const MICI = new Set(["SA"]);
+const NUME_PROPRII: Record<string, string> = { MICROSOFT: "Microsoft", OFFICE: "Office", EXCEL: "Excel", AUTOCAD: "AutoCAD", WINDOWS: "Windows", ROMANIA: "Romania", ROMÂNIA: "România" };
+
+/**
+ * Forma descrierii, fără să se schimbe vreun cuvânt (proprietar, 30 septembrie 2026: „să nu pară
+ * anunțuri ieftine”): entitățile HTML decodate („oil &amp; gas”), ş/ţ cu sedilă → ș/ț, spațiile de la
+ * capătul rândurilor scoase, rândurile scrise numai cu majuscule trecute în litere mici (acronimele
+ * rămân), iar o listă lipită pe un rând cu „;” desfăcută câte un rând pe element.
+ */
+export function curataDescriere(text: string): string {
+  let t = text
+    .replace(/&amp;/g, "&").replace(/&quot;/g, "\"").replace(/&#0?39;|&apos;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&nbsp;/g, " ")
+    .replace(/ş/g, "ș").replace(/ţ/g, "ț").replace(/Ş/g, "Ș").replace(/Ţ/g, "Ț")
+    // Bulinele copiate din Word sunt caractere din zona privată (U+F0B7, U+F0D8…): pe telefon apar
+    // ca pătrățele goale. Devin „•”; spațiile de lățime zero și selectorii de variantă ies.
+    .replace(/[-]\s*/g, "• ").replace(/[​-‍︀-️﻿]/g, "")
+    .replace(/\r\n?/g, "\n");
+  if (!t.includes("\n") && (t.match(/;/g) ?? []).length >= 2)
+    t = t.split(/\s*;\s*/).filter(Boolean).map((x) => cuMajusculaInitiala(x.trim())).join("\n");
+  return t.split("\n").map((rand) => {
+    rand = rand.replace(/[ \t]+/g, " ").trim();
+    const litere = rand.replace(/[^\p{L}]/gu, ""), mari = litere.replace(/[^\p{Lu}]/gu, "");
+    if (litere.length < 12 || mari.length / litere.length < 0.7) return rand;
+    const mic = rand.replace(/\p{L}+/gu, (w) => NUME_PROPRII[w] ?? (ACRONIME.has(w) && !MICI.has(w) ? w : w.toLowerCase()))
+      .replace(/,(?=\p{L})/gu, ", "); // „AVANSAT,AUTOCAD,SUITA” → „avansat, AutoCAD, suita”
+    return cuMajusculaInitiala(mic);
+  }).join("\n").replace(/\n{3,}/g, "\n\n").trim();
+}
+
 /** Baza sumei: cea declarată; altfel numai ce se vede din ofertă. */
 export function baza(o: Oferta, suma: number): "brut" | "net" | null {
   if (o.salary_type === "gross") return "brut";
@@ -96,7 +129,7 @@ const persoanaFizica = (o: Oferta) => {
 export function cerere(o: Oferta): { corp: Record<string, unknown> } | { motiv: string } {
   const telefon = telefonCurat(String(o.contact_phone ?? "").replace(/^\s*40\s*(?=7)/, "0"));
   if (!telefon) return { motiv: "fără telefon românesc valid" };
-  const descriere = String(o.description ?? "").trim();
+  const descriere = curataDescriere(String(o.description ?? ""));
   if (descriere.length < 80) return { motiv: "descriere sub 80 de caractere" };
   const loc = localitate(String(o.address_locality_name ?? ""));
   if (!loc) return { motiv: "localitate negăsită" };
