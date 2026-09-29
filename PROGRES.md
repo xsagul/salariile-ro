@@ -4506,3 +4506,13 @@ Pe telefon (70% din trafic): nicio diferență. Pe desktop: c are timp mai lung,
 sesiuni cu calcul — la ~180 de sesiuni pe variantă, diferența a–c la calcule (12,6 pp) e la limita
 întâmplării, iar timpul mediu e tras de câteva sesiuni lungi. „Views per session” sub 1 nu se
 compară: prima afișare pleacă înainte ca varianta să fie setată. Clickurile `zona=header` necitite.
+
+## 29 septembrie 2026 — Turnstile scos de la postarea anunțurilor
+
+Proprietarul: oamenii i-au scris că nu pot posta anunțuri; decizia lui, scoaterea verificării
+anti-spam de la postare. Scoase: widgetul din `FormularAnunt.tsx` (și așteptarea tokenului),
+verificarea din `worker/api.ts` pe `/api/anunturi`, regula `_headers` care dădea `CSP_ANUNTURI`
+formularului static (fără Turnstile, `/adauga-anunt-angajare` revine pe politica publică).
+Rămân ca frână: 5 anunțuri pe zi pe IP, regulile de conținut, verificarea originii, raportările.
+**Raportarea păstrează Turnstile**: 3 raportări suspendă automat un anunț, deci fără verificare
+oricine ar putea scoate anunțurile altora. `TURNSTILE_SECRET` nu se șterge: îl folosește ea.

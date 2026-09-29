@@ -6,11 +6,10 @@
 // SIRUTA (INS), străzile din OpenStreetMap, ambele încărcate de pe site; căutarea rămâne în browser.
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { MESERII_ANUNTURI } from "@/lib/anunturi/meserii";
-import { EMAIL_ACTIV, TURNSTILE_SITEKEY } from "@/lib/anunturi/config";
+import { EMAIL_ACTIV } from "@/lib/anunturi/config";
 import { faraDiacritice, netLunar, valideaza, type Eroare } from "@/lib/anunturi/reguli";
 import { cauta, detaliuLocalitate, incarcaLocalitati, numarDinText, strazileLocalitatii, type Localitate } from "@/lib/anunturi/localitati";
 import CautaInLista from "@/app/components/anunturi/CautaInLista";
-import Turnstile, { reseteazaTurnstile } from "@/app/components/anunturi/Turnstile";
 
 // Meseriile hubului, cu sinonimele: „ospătar” și „chelner” se găsesc amândouă (src/lib/anunturi/meserii.ts).
 const MESERII = MESERII_ANUNTURI.slice().sort((a, b) => a.nume.localeCompare(b.nume, "ro"));
@@ -28,13 +27,11 @@ const cheieLoc = (l: Localitate) => `${l[0]}|${l[1]}|${l[2]}`;
 
 export default function FormularAnunt({ initial, modificare = false, trimite }: {
   initial?: Valori; modificare?: boolean;
-  trimite: (v: Valori & { turnstile: string }) => Promise<{ erori?: Eroare[] } | void>;
+  trimite: (v: Valori) => Promise<{ erori?: Eroare[] } | void>;
 }) {
   const [v, setV] = useState<Valori>({ ...GOL, ...initial });
   const [erori, setErori] = useState<Eroare[]>([]);
   const [trimis, setTrimis] = useState(false);
-  const [token, setToken] = useState("");
-  const onToken = useCallback((t: string) => setToken(t), []);
   const set = (k: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
     setV((x) => ({ ...x, [k]: e.target.type === "checkbox" ? (e.target as HTMLInputElement).checked : e.target.value }));
   const eroare = (camp: string) => erori.find((e) => e.camp === camp)?.mesaj;
@@ -88,16 +85,10 @@ export default function FormularAnunt({ initial, modificare = false, trimite }: 
     e.preventDefault();
     const r = valideaza({ ...v, email: modificare ? "modificare@salariile.ro" : v.email, acordPublicare: modificare || v.acordPublicare }, SLUGURI);
     if ("erori" in r) { setErori(r.erori); return; }
-    // Verificarea anti-spam durează câteva secunde după deschiderea paginii.
-    if (!modificare && TURNSTILE_SITEKEY && !token) {
-      setErori([{ camp: "general", mesaj: "Verificarea anti-spam se termină în câteva secunde. Apasă din nou „Trimite anunțul”." }]);
-      return;
-    }
     setTrimis(true);
-    const rez = await trimite({ ...v, turnstile: token }).catch(() => ({ erori: [{ camp: "general", mesaj: "Nu s-a putut trimite. Verifică internetul și încearcă din nou." }] as Eroare[] }));
+    const rez = await trimite(v).catch(() => ({ erori: [{ camp: "general", mesaj: "Nu s-a putut trimite. Verifică internetul și încearcă din nou." }] as Eroare[] }));
     setTrimis(false);
     setErori(rez?.erori ?? []);
-    if (rez?.erori?.length) { setToken(""); reseteazaTurnstile(); }
   }
 
   const Camp = ({ k, eticheta, nota, ...rest }: { k: string; eticheta: string; nota?: string } & React.InputHTMLAttributes<HTMLInputElement>) => (
@@ -181,7 +172,6 @@ export default function FormularAnunt({ initial, modificare = false, trimite }: 
         </fieldset>
       )}
 
-      <Turnstile onToken={onToken} />
       <div>
         <button type="submit" disabled={trimis} className="inline-flex min-h-11 items-center rounded-md bg-stone-900 px-5 font-semibold text-white hover:bg-stone-700 disabled:opacity-60">
           {trimis ? "Se trimite…" : modificare ? "Salvează modificările" : "Trimite anunțul"}

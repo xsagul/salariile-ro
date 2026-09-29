@@ -57,7 +57,8 @@ export async function api(req: Request, env: Env, ctx: ExecutionContext, cale: s
   const ip = req.headers.get("cf-connecting-ip") ?? "local";
 
   if (cale === "/api/anunturi") {
-    if (!(await turnstileOk(env, corp.turnstile, ip))) return json({ erori: [{ camp: "general", mesaj: "Verificarea anti-spam n-a trecut. Așteaptă câteva secunde și apasă din nou „Trimite anunțul”." }] }, 400);
+    // Fără Turnstile la postare (proprietar, 29 septembrie 2026): oamenii scriau că nu pot posta.
+    // Frâna rămâne limita pe zi, regulile de conținut și raportările; raportarea păstrează Turnstile.
     const v = valideaza(corp, MESERII);
     if ("erori" in v) return json({ erori: v.erori }, 400);
     if (!(await inLimita(env, v.anunt.email, ip))) return json({ erori: [{ camp: "general", mesaj: "Ai publicat multe anunțuri azi. Mai încearcă mâine." }] }, 429);

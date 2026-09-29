@@ -101,7 +101,8 @@ export const CSP_PAGINI_PUBLICE = construiesteCsp({
 /**
  * Politica pentru hubul de anunțuri (/locuri-de-munca*, servit de Worker, 28 septembrie 2026):
  * aceeași ca a paginilor publice, plus Cloudflare Turnstile — verificarea anti-spam din
- * formularele de postare și de raportare (script și iframe de pe challenges.cloudflare.com).
+ * formularul de raportare (script și iframe de pe challenges.cloudflare.com). Postarea nu mai are
+ * Turnstile din 29 septembrie 2026, deci formularul static de anunț rămâne pe politica publică.
  */
 const TURNSTILE = "https://challenges.cloudflare.com";
 export const CSP_ANUNTURI = construiesteCsp({

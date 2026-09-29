@@ -43,7 +43,8 @@ export async function inLimita(env: Env, email: string, ip: string): Promise<boo
 /**
  * Anunțul se publică pe loc, fără confirmarea din email (proprietar, 29 septembrie 2026: la pornire,
  * orice pas în plus scade numărul de anunțuri). Emailul rămâne obligatoriu pentru linkul de
- * gestionare; frâna rămâne Turnstile, limita pe zi, regulile de conținut și raportările.
+ * gestionare; frâna rămâne limita pe zi, regulile de conținut și raportările (Turnstile scos de la
+ * postare pe 29 septembrie 2026: oamenii nu reușeau să posteze).
  */
 export async function adauga(env: Env, a: AnuntNou, loc: Loc | null, token: string): Promise<{ id: number; slug: string }> {
   const t = acum();
