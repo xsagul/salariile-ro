@@ -4682,3 +4682,8 @@ Proprietarul a arătat OLX: „barmanA” găsea 11 barmani; la noi, o literă g
   și tăia cuvintele la „s” („ospatr” nu găsea Ospătar). Dublat.
 - Probat local: „barmanA” → 7 (cu ajutorul de barman), „barmn” → 7 + „Am căutat și: „barman””,
   „ospatr” → 4 ospătari, /locuri-de-munca/barman → 7, iar coloana spune tot 7.
+
+Migrarea 0002 rulată pe D1-ul de producție din consolă (29 septembrie 2026, seara, prin Chrome, cu
+proprietarul de față): cele trei coloane există, `d1_migrations` are 0001 și 0002; anunțul 2 are
+meseria `ajutor-barman`. Filtrele publicate după migrare. Titlul paginii nu mai conține textul căutat
+(pe telefon îl rupea pe trei rânduri, cu greșeala de tastare în el).
