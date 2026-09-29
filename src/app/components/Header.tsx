@@ -29,13 +29,15 @@ type Item = Leaf | Group;
 // partea tuturor celorlalte.
 //
 // 29 septembrie 2026, cerut de proprietar: „Meserii” a coborât în „Ghiduri”, iar locul
-// lui l-a luat „Adaugă anunț” (hubul de anunțuri, pasul 2 din strategie). Când vor fi
-// destule anunțuri, aici intră și „Locuri de muncă”, eventual într-un grup „Joburi”.
+// lui l-a luat „Adaugă anunț” (hubul de anunțuri, pasul 2 din strategie). Tot atunci,
+// „Calculator salariu” a intrat primul în „Instrumente”, iar primul loc din bară l-a luat
+// „Locuri de muncă”. Homepage-ul rămâne calculatorul și e legat și din logo.
 const NAV: Item[] = [
-  { href: "/", label: "Calculator salariu" },
+  { href: "/locuri-de-munca", label: "Locuri de muncă" },
   {
     label: "Instrumente",
     children: [
+      { href: "/", label: "Calculator salariu" },
       { href: "/calculator-pfa", label: "Calculator PFA" },
       { href: "/calculator-salariu-part-time", label: "Salariu part-time" },
       { href: "/calculator-salariu-constructii", label: "Salariu construcții" },
@@ -64,6 +66,15 @@ const NAV: Item[] = [
 const ANUNT: Leaf = { href: "/adauga-anunt-angajare", label: "Adaugă anunț" };
 
 const isGroup = (i: Item): i is Group => "children" in i;
+
+/** „/” e numai homepage-ul; celelalte adrese cuprind și subpaginile lor. Cu un simplu
+ *  `startsWith`, calculatorul din „Instrumente” ar face grupul activ pe orice pagină.
+ *  Anunțurile (/anunt-angajare-*) țin de „Locuri de muncă”: Worker-ul le pune în același
+ *  șablon static (/locuri-de-munca/sablon), randat cu intrarea activă. */
+const peRuta = (pathname: string, href: string) =>
+  href === "/" ? pathname === "/"
+  : href === "/locuri-de-munca" ? pathname.startsWith(href) || pathname.startsWith("/anunt-angajare-")
+  : pathname.startsWith(href);
 
 /** Identificator stabil pentru `id`/`aria-controls`, derivat din etichetă.
  *  Diacriticele devin cratime — nu contează cum arată, contează să fie unic și
@@ -95,10 +106,10 @@ export default function Header() {
   // Sertarul mobil: un singur grup deschis odată (cerut de proprietar pe 24
   // septembrie 2026). La deschidere e deschis grupul paginii curente.
   const [grupDeschis, setGrupDeschis] = useState<string | null>(
-    () => NAV.filter(isGroup).find((g) => g.children.some((c) => pathname.startsWith(c.href)))?.label ?? null,
+    () => NAV.filter(isGroup).find((g) => g.children.some((c) => peRuta(pathname, c.href)))?.label ?? null,
   );
 
-  const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
+  const isActive = (href: string) => peRuta(pathname, href);
   const groupActive = (g: Group) => g.children.some((c) => isActive(c.href));
 
 
@@ -107,7 +118,7 @@ export default function Header() {
       setOpen(false);
       setDesktopOpen(null);
       // După navigare, la redeschidere e deschis grupul noii pagini.
-      setGrupDeschis(NAV.filter(isGroup).find((g) => g.children.some((c) => pathname.startsWith(c.href)))?.label ?? null);
+      setGrupDeschis(NAV.filter(isGroup).find((g) => g.children.some((c) => peRuta(pathname, c.href)))?.label ?? null);
     });
     return () => cancelAnimationFrame(frame);
   }, [pathname]);

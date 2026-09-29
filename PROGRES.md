@@ -4545,3 +4545,18 @@ Terminalul agentului e logat în alt cont (`rulersquare`) și primește 7403 pe 
 comanda e probată pe copia locală (`--local`, cu o raportare de test). După verificare:
 `UPDATE raportari SET rezolvat_la = datetime('now') WHERE anunt_id = <id>`; un anunț scos:
 `UPDATE anunturi SET stare = 'suspendat', motiv_suspendare = '<motiv>' WHERE id = <id>`.
+
+## 29 septembrie 2026 — bara de sus: „Locuri de muncă” pe primul loc
+
+Cerut de proprietar: „Calculator salariu” a intrat primul în „Instrumente”, iar locul lui din bară
+l-a luat „Locuri de muncă” (`/locuri-de-munca`). Homepage-ul rămâne calculatorul, legat și din logo.
+Găsit la mutare: grupul deschis implicit se alegea cu `pathname.startsWith(href)`, iar cu „/” în
+„Instrumente” condiția era adevărată pe orice pagină — sertarul mobil ar fi deschis „Instrumente”
+peste tot. `peRuta()` din `Header.tsx` tratează „/” ca homepage exact și leagă anunțurile
+(`/anunt-angajare-*`) de „Locuri de muncă”: Worker-ul le pune în șablonul `/locuri-de-munca/sablon`,
+randat cu intrarea activă, deci browserul ajunge la aceeași stare. Probat local, desktop și 375 px.
+
+**Pentru citirea testului A/B/C (8 octombrie):** conținutul barei s-a schimbat de două ori pe
+29 septembrie, în toate variantele deodată („Adaugă anunț” în locul „Meserii”; „Locuri de muncă” în
+locul „Calculator salariu”). Comparația între variante rămâne validă; clickurile `zona=header`
+dinainte și de după 29 septembrie nu se adună ca aceeași serie.
