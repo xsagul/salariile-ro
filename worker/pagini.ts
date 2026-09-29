@@ -237,9 +237,11 @@ export async function paginaLista(req: Request, env: Env, orasSlug: string | nul
   const titlu = `${cat}${unde ? ` ${unde}` : ""}, cu salariul scris`;
   const cale = urlLista(orasSlug, meserie);
   const q = (p: number) => `${cale}${p > 1 ? `?pagina=${p}` : ""}`;
+  // Numărul de sub fiecare opțiune ține cont de celălalt filtru (proprietar, 29 septembrie 2026): cu
+  // „Barman” ales, București arată câți barmani caută, nu toate anunțurile din oraș.
   const [ro, rm] = await env.DB.batch([
-    env.DB.prepare("SELECT oras_slug AS s, MIN(oras) AS n, COUNT(*) AS c FROM anunturi WHERE stare = 'activ' GROUP BY oras_slug ORDER BY n"),
-    env.DB.prepare("SELECT meserie AS s, COUNT(*) AS c FROM anunturi WHERE stare = 'activ' AND meserie IS NOT NULL GROUP BY meserie"),
+    env.DB.prepare("SELECT oras_slug AS s, MIN(oras) AS n, SUM(CASE WHEN ?1 IS NULL OR meserie = ?1 THEN 1 ELSE 0 END) AS c FROM anunturi WHERE stare = 'activ' GROUP BY oras_slug ORDER BY n").bind(meserie),
+    env.DB.prepare("SELECT meserie AS s, COUNT(*) AS c FROM anunturi WHERE stare = 'activ' AND meserie IS NOT NULL AND (?1 IS NULL OR oras_slug = ?1) GROUP BY meserie").bind(orasSlug),
   ]);
   const orase = (ro.results as OptiuneFiltru[]).map((o) => ({ ...o, n: o.n.replace(/,.*$/, "") }));
   const cateM = new Map((rm.results as { s: string; c: number }[]).map((m) => [m.s, m.c]));
@@ -332,12 +334,6 @@ export async function paginaAnunt(req: Request, env: Env, id: number, slug: stri
           <p class="mt-3 text-xs text-stone-600">Nu plăti niciodată ca să fii angajat. Legea interzice taxele cerute candidaților.</p>
         </div>
         ${locatie}
-        <div class="${CARD}">
-          <h2 class="text-base font-bold text-stone-900">Cât primești în mână</h2>
-          <p class="mt-2 text-sm text-stone-600">${a.baza === "brut" ? `Din ${lei(a.salariu_min)} lei brut rămân ${lei(a.net_min)} lei net, după contribuții și impozit.` : "Suma e deja netă: atât primești pe card."}</p>
-          <a class="mt-3 inline-flex min-h-11 items-center rounded-md bg-stone-900 px-4 font-semibold text-white hover:bg-stone-700" href="/?${a.baza}=${a.salariu_min}">Calculează ${a.baza === "brut" ? "netul" : "brutul"}</a>
-          ${a.meserie ? `<p class="mt-3 text-sm"><a class="underline underline-offset-2" href="/salarii/${a.meserie}">Cât câștigă un ${esc(meserie!.toLowerCase())}</a></p>` : ""}
-        </div>
         <div class="${CARD}">
           <p class="text-sm text-stone-700">Țeapă, discriminare, salariu fals? <a class="font-semibold underline underline-offset-2" href="/locuri-de-munca/raporteaza#${a.id}">Raportează anunțul</a>. La trei raportări, se suspendă până îl verificăm.</p>
         </div>

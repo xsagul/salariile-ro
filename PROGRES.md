@@ -4355,3 +4355,12 @@ Câmpul gol arată ce are anunțuri, cele mai multe primele. Alegerea deschide i
 Probat în browser, desktop și 375 px: „b” → Barman (5 anunțuri) → `/locuri-de-munca/barman`;
 „buc” → București → `/locuri-de-munca/bucuresti/barman`; × pe meserie → `/locuri-de-munca/bucuresti`.
 React nu atinge câmpurile la hidratare.
+
+Tot pe 29 septembrie, la cererea proprietarului:
+- **Numărul de sub opțiuni ține cont de celălalt filtru**: pe `/locuri-de-munca/barman`, București
+  arată 5 (barmani), nu 6 (tot orașul); pe `/locuri-de-munca/bucuresti`, meseriile arată câte sunt
+  în București. Probat pe HTML-ul servit.
+- **Scos cardul „Cât primești în mână” / „Calculează brutul” din anunț.** Motivul proprietarului:
+  hubul de angajare e separat de restul site-ului ca să fie limpede că aici sunt anunțuri; ce face
+  altfel site-ul (calculatorul, paginile de salarii) nu se pune pe capul celui care caută un job.
+  Nu-l readuce ca „legătură utilă”.
