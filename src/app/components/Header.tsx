@@ -190,7 +190,12 @@ export default function Header() {
   };
 
   useEffect(() => {
+    // Fără bara de derulare, pagina se lățește și tot ce e în bara de sus sare spre dreapta
+    // (butonul „Adaugă anunț”, raportat de proprietar pe 29 septembrie 2026). Locul ei se
+    // păstrează cu padding; pe telefoanele cu bară suprapusă lățimea e 0 și nu se schimbă nimic.
+    const bara = window.innerWidth - document.documentElement.clientWidth;
     document.body.style.overflow = open ? "hidden" : "";
+    document.body.style.paddingRight = open && bara > 0 ? `${bara}px` : "";
     if (!open) return;
     const onKey = (event: KeyboardEvent) => {
       // Escape închide sertarul și duce focusul înapoi pe butonul de meniu.
@@ -219,6 +224,7 @@ export default function Header() {
     document.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = "";
+      document.body.style.paddingRight = "";
       document.removeEventListener("keydown", onKey);
     };
   }, [open]);
