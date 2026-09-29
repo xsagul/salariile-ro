@@ -62,7 +62,7 @@ export default function TermeniPage() {
         <Lead>
           Prin accesarea și utilizarea salariile.ro accepți termenii de mai jos. Te rugăm să citești această pagină înainte de a folosi calculatorul sau informațiile publicate.
         </Lead>
-        <Eyebrow>ÎN VIGOARE: 29 IULIE 2026</Eyebrow>
+        <Eyebrow>ÎN VIGOARE: 29 SEPTEMBRIE 2026</Eyebrow>
       </Hero>
 
       <div>
@@ -181,7 +181,7 @@ export default function TermeniPage() {
             <p>
               Pentru reclamații prealabile, recomand contactul direct la adresa de pe pagina de <Link href="/contact">contact</Link>. Răspund la toate reclamațiile rezonabile în maximum 30 de zile.
             </p>
-            <p className="source-note">Ultima actualizare: 11 mai 2026.</p>
+            <p className="source-note">Ultima actualizare: 29 septembrie 2026 — secțiunea 8, anunțurile de angajare.</p>
         </Section>
       </div>
     </>

@@ -69,7 +69,7 @@ export default function PoliticaConfidentialitatePage() {
         <Lead>
           Salariile.ro respectă Regulamentul UE 2016/679 privind protecția datelor cu caracter personal (GDPR) și Legea 190/2018. Această politică explică ce date prelucrăm, în ce scop și ce drepturi ai ca vizitator.
         </Lead>
-        <Eyebrow>ÎN VIGOARE: 17 SEPTEMBRIE 2026 · CONSENT MODE · FĂRĂ RECLAME</Eyebrow>
+        <Eyebrow>ÎN VIGOARE: 29 SEPTEMBRIE 2026 · CONSENT MODE · FĂRĂ RECLAME</Eyebrow>
       </Hero>
 
       <div>
@@ -239,7 +239,7 @@ Salariile.ro nu afișează reclame. Cookies de analiză GA4 apar numai după aco
             <p>
               Această politică poate fi actualizată periodic, în special dacă se modifică stack-ul tehnic al site-ului sau apar cerințe legale noi. Versiunea curentă este menționată în antetul paginii cu data intrării în vigoare. Modificările semnificative vor fi anunțate vizibil pe homepage înainte de a intra în vigoare.
             </p>
-            <p className="source-note">Ultima actualizare: 18 septembrie 2026 — GA4 măsoară folosirea paginilor și a calculatoarelor, fără sumele introduse; CMP-ul Google și Consent Mode rămân neschimbate.</p>
+            <p className="source-note">Ultima actualizare: 29 septembrie 2026 — datele din anunțurile de angajare (emailul și telefonul celui care publică, amprenta pentru limita pe zi, raportările); GA4, CMP-ul Google și Consent Mode rămân neschimbate.</p>
         </Section>
       </div>
     </>

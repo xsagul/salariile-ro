@@ -4445,3 +4445,20 @@ sertar). Când vor fi destule anunțuri: „Locuri de muncă” sau un grup „J
 **Testul A/B/C pe bara de sus merge până pe 8 octombrie**: schimbarea e numai pe `anunturi` și
 ajunge în producție odată cu hubul. Dacă hubul se lansează înainte de 8 octombrie, bara schimbată
 amestecă datele testului pentru zilele rămase — de decis atunci (lansare după 8, sau test scurtat).
+
+## 29 septembrie 2026 — pregătirea lansării hubului
+
+- Bug pe telefon: la deschiderea meniului, `overflow: hidden` scotea bara de derulare și butonul
+  „Adaugă anunț” sărea 15 px (măsurat în Chrome: 1762,4 → 1777,4). Locul barei se păstrează cu
+  `padding-right` cât e meniul deschis; după corectură 1762,4 → 1762,4.
+- `main` adus în `anunturi` (colectările din 28–29 septembrie); modificările locale necomise din
+  `colectare/` ale proprietarului refăcute identic (149 de fișiere verificate), stash păstrat.
+- Termeni și politica: „În vigoare: 29 septembrie 2026” (proprietarul: lansăm direct, fără anunț
+  prealabil pe homepage).
+- Limitele Cloudflare (documentația oficială, azi): Workers Free 100.000 de cereri/zi și 10 ms CPU;
+  prin Worker trec numai rutele hubului, restul sunt assets. D1 Free: 5 milioane de rânduri citite/
+  zi, 100.000 scrise; o listă citește ~3× anunțurile active (numărătorile din filtre). Listele și
+  sitemap-ul trec acum prin `caches.default` (60 s / o oră): o adresă citește D1 cel mult o dată pe
+  minut. **Email Sending către adrese oarecare cere Workers Paid (5 $/lună; 3.000 de emailuri
+  incluse, apoi 0,35 $ la 1.000)**; pe Free se trimite numai la adresele verificate din cont.
+  Decizia de plată e a proprietarului; până atunci linkul de gestionare apare pe ecran.
