@@ -427,8 +427,9 @@ export async function paginaLista(req: Request, env: Env, orasSlug: string | nul
   const numeM = meserie ? NUME_MESERIE.get(meserie)!.toLowerCase() : "";
   // Sinonimele cumulate în listă, spuse pe față: altfel un anunț de „chelner” la „ospătar” ar părea o greșeală.
   const alteNume = meserie ? slugurileGrupului(meserie).filter((x) => x !== meserie).map((x) => NUME_MESERIE.get(x)!.toLowerCase()).join(", ") : "";
-  // Căutarea liberă și domeniul intră în titlu, după meserie: „Locuri de muncă „barman” în București”.
-  const ce = extra.q ? `„${extra.q}”` : numeM || (extra.domeniu ? numeDomeniu(extra.domeniu) : "");
+  // Domeniul intră în titlu, după meserie. Textul căutat nu (proprietar, 29 septembrie 2026): pe telefon
+  // rupea titlul pe trei rânduri, cu greșeala de tastare în el („parman”); stă în câmp și în etichetă.
+  const ce = numeM || (extra.domeniu ? numeDomeniu(extra.domeniu) : "");
   const unde = [ce, numeLoc ? `în ${numeLoc}` : ""].filter(Boolean).join(" ");
   // Fără numărul de anunțuri (proprietar, 29 septembrie 2026): „3 locuri de muncă” spunea „site mic”.
   // Începe cu „Locuri de muncă”, forma căutată în Google („locuri de muncă București”).
