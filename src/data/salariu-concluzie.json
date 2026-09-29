@@ -1,6 +1,6 @@
 {
- "generatLa": "2026-09-28T09:21:09.690Z",
- "oferteAnofm": 8776,
+ "generatLa": "2026-09-29T01:06:10.306Z",
+ "oferteAnofm": 9078,
  "meserii": {
   "medic": {
    "sursa": "platit",
@@ -459,8 +459,8 @@
    "oferit": null,
    "declarat": {
     "net": 3116,
-    "oferte": 44,
-    "laMinim": 0.3
+    "oferte": 46,
+    "laMinim": 0.28
    },
    "angajatori": null
   },
@@ -1382,8 +1382,8 @@
    },
    "declarat": {
     "net": 2754,
-    "oferte": 26,
-    "laMinim": 0.04
+    "oferte": 28,
+    "laMinim": 0.07
    },
    "angajatori": null
   },
@@ -1442,7 +1442,7 @@
    },
    "declarat": {
     "net": 2754,
-    "oferte": 39,
+    "oferte": 42,
     "laMinim": 0.21
    },
    "angajatori": null
@@ -1552,15 +1552,15 @@
    },
    "declarat": {
     "net": 2699,
-    "oferte": 58,
+    "oferte": 62,
     "laMinim": 0.79
    },
    "angajatori": [
     {
      "firma": "Lidl",
      "post": "Vânzător",
-     "anunturi": 86,
-     "orase": 63,
+     "anunturi": 90,
+     "orase": 64,
      "min": 5300,
      "max": 5550,
      "baza": null,
@@ -1582,8 +1582,8 @@
    },
    "declarat": {
     "net": 2699,
-    "oferte": 20,
-    "laMinim": 0.8
+    "oferte": 23,
+    "laMinim": 0.78
    },
    "angajatori": null
   },
@@ -1598,7 +1598,7 @@
    },
    "declarat": {
     "net": 2629,
-    "oferte": 116,
+    "oferte": 118,
     "laMinim": 0.14
    },
    "angajatori": null
@@ -1646,7 +1646,7 @@
    },
    "declarat": {
     "net": 2699,
-    "oferte": 44,
+    "oferte": 47,
     "laMinim": 0.77
    },
    "angajatori": null
@@ -1662,7 +1662,7 @@
    },
    "declarat": {
     "net": 2699,
-    "oferte": 83,
+    "oferte": 88,
     "laMinim": 0.76
    },
    "angajatori": [
