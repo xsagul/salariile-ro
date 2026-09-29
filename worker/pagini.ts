@@ -250,7 +250,7 @@ export async function paginaLista(req: Request, env: Env, orasSlug: string | nul
   const breadcrumb = (orasSlug || meserie) ? `<nav class="mb-4 flex flex-wrap gap-2 text-xs text-stone-600" aria-label="Breadcrumb"><a class="underline underline-offset-2" href="/locuri-de-munca">Locuri de muncă</a>${orasSlug && meserie ? `<span>/</span><a class="underline underline-offset-2" href="${urlLista(orasSlug, null)}">${esc(numeLoc!)}</a>` : ""}</nav>` : "";
   const continut = `${breadcrumb}
     <h1 class="text-[28px] font-bold leading-tight tracking-[-0.02em] text-stone-900 sm:text-[34px]">${esc(titlu.charAt(0).toUpperCase() + titlu.slice(1))}</h1>
-    <p class="mt-3 max-w-prose text-base text-stone-600">Fiecare anunț are salariul lunar, cu brutul sau netul spus clar. Aplici direct la angajator, fără cont.${meserie ? ` <a class="underline underline-offset-2" href="/salarii/${meserie}">Cât câștigă un ${esc(numeM)}</a>.` : ""}</p>
+    <p class="mt-3 max-w-prose text-base text-stone-600">Fiecare anunț are salariul lunar, cu brutul sau netul spus clar. Aplici direct la angajator, fără cont.</p>
     <div class="mt-5"><a href="${URL_ADAUGA}" class="inline-flex min-h-11 items-center rounded-md bg-stone-900 px-4 font-semibold text-white hover:bg-stone-700">Adaugă un anunț gratuit</a></div>
     ${filtre(meserii, meserie, orase, orasSlug)}
     ${anunturi.length > 1 ? butonApropiere(meserie, orasSlug) : ""}
@@ -285,7 +285,7 @@ export async function paginaAnunt(req: Request, env: Env, id: number, slug: stri
     return inSablon(req, env, { titlu: `Anunț angajare ${a.titlu} — expirat`, descriere: "Anunțul nu mai e publicat.", canonic, indexabil: false, status: 410,
       continut: `<h1 class="text-[28px] font-bold leading-tight text-stone-900">${esc(a.titlu)}</h1>
         <div class="mt-5 ${CARD}"><p class="text-base text-stone-800">${a.stare === "suspendat" ? "Anunțul e suspendat cât timp îl verificăm." : "Anunțul nu mai e publicat."}</p>
-        <p class="mt-2 text-sm"><a class="underline underline-offset-2" href="${listaMeserie}">Vezi anunțurile ${meserie ? `pentru ${esc(meserie.toLowerCase())} ` : ""}din ${esc(oras(a))}</a>${a.meserie ? ` · <a class="underline underline-offset-2" href="/salarii/${a.meserie}">Salariul unui ${esc(meserie!.toLowerCase())}</a>` : ""}</p></div>` });
+        <p class="mt-2 text-sm"><a class="underline underline-offset-2" href="${listaMeserie}">Vezi anunțurile ${meserie ? `pentru ${esc(meserie.toLowerCase())} ` : ""}din ${esc(oras(a))}</a></p></div>` });
   }
 
   // Contactul: un buton care sună, cu numărul scris pe el, și unul de WhatsApp la mobil (proprietar,

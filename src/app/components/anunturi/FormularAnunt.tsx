@@ -71,8 +71,10 @@ export default function FormularAnunt({ initial, modificare = false, trimite }: 
   }, [initial?.oras, initial?.judet]);
 
   // Strada: sugestii din străzile localității alese; se poate scrie și de mână.
-  const [strazi, setStrazi] = useState<string[]>([]);
-  useEffect(() => { if (loc) strazileLocalitatii(loc).then(setStrazi); else setStrazi([]); }, [loc]);
+  // Lista ține minte localitatea ei: la schimbare, străzile vechi dispar fără setState în efect.
+  const [straziLoc, setStraziLoc] = useState<{ loc: Localitate; lista: string[] } | null>(null);
+  useEffect(() => { if (loc) strazileLocalitatii(loc).then((lista) => setStraziLoc({ loc, lista })); }, [loc]);
+  const strazi = useMemo(() => (straziLoc && straziLoc.loc === loc ? straziLoc.lista : []), [straziLoc, loc]);
   const optStrazi = useMemo(() => cauta(strazi, String(v.adresa), (s) => s).map((s) => ({ cheie: s, text: s })), [strazi, v.adresa]);
 
   const net = useMemo(() => {
@@ -107,7 +109,7 @@ export default function FormularAnunt({ initial, modificare = false, trimite }: 
         <CautaInLista eticheta="Meseria (opțional)" valoare={meserieText} onText={scrieMeserie} optiuni={optMeserii}
           onAlege={(o) => { setMeserieText(o.text); setV((x) => ({ ...x, meserie: o.cheie })); }}
           placeholder="Scrie: barman, șofer, vânzător…" eroare={eroare("meserie")}
-          nota="Cu meseria aleasă, anunțul apare și pe pagina ei de salariu." />
+          nota="Cu meseria aleasă, anunțul apare și în lista meseriei." />
         <CautaInLista eticheta="Localitatea" valoare={locText} onText={scrieLoc} onFocus={incarca}
           optiuni={gasite.map((l) => ({ cheie: cheieLoc(l), text: l[0], detaliu: detaliuLocalitate(l) }))}
           onAlege={(o) => { const l = gasite.find((x) => cheieLoc(x) === o.cheie); if (l) alegeLoc(l); }}

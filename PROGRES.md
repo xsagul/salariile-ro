@@ -4364,3 +4364,9 @@ Tot pe 29 septembrie, la cererea proprietarului:
   hubul de angajare e separat de restul site-ului ca să fie limpede că aici sunt anunțuri; ce face
   altfel site-ul (calculatorul, paginile de salarii) nu se pune pe capul celui care caută un job.
   Nu-l readuce ca „legătură utilă”.
+- **Scoase toate legăturile spre `/salarii/*` din hub** („Cât câștigă un barman” din lista pe
+  meserie, „Salariul unui …” de pe anunțul expirat). Motivul proprietarului: paginile de meserii nu
+  sunt încă sigure. Nota din formular promitea „anunțul apare și pe pagina ei de salariu”, ceea ce
+  nu se întâmplă nicăieri; acum: „apare și în lista meseriei” (`/locuri-de-munca/{meserie}`).
+- Reparat un `setState` în efect din `FormularAnunt.tsx` (străzile), pe care lint-ul din CI îl
+  respingea; probat în browser: București → „lipsc” → Strada Lipscani.
