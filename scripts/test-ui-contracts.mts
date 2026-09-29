@@ -28,7 +28,7 @@ assert.match(salary, /if \(rezTemp\) set\("brut", String\(rezTemp\.netBani\)\)/,
 assert.match(salary, /normaContract[\s\S]*fractieLuna/, "Generatorul trebuie să transmită explicit norma contractuală și fracția de lună");
 assert.match(pfa, /<button[\s\S]*role="switch"[\s\S]*aria-checked=/, "Switch-ul PFA trebuie să fie un singur buton semantic");
 assert.doesNotMatch(pfa, /<label[^>]*>[\s\S]{0,500}<button[^>]*role="switch"/, "Switch-ul nu poate fi imbricat într-un label");
-// Bara de sus are mai multe dropdownuri („Meserii", „Ghiduri"). Starea trebuie
+// Bara de sus are mai multe dropdownuri („Instrumente", „Ghiduri"). Starea trebuie
 // tinuta PE GRUP: cu un singur boolean partajat se deschideau toate odata, iar
 // un `id` hardcodat ar fi duplicat `aria-controls` intre meniuri.
 assert.match(header, /aria-expanded=\{desktopOpen === item\.label\}/, "Starea dropdownului trebuie sa fie per grup");

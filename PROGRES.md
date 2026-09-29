@@ -4435,3 +4435,13 @@ candidații ajung la anunțul cu salariul și telefonul, iar ceilalți angajator
   Facebook în pagină. Titlul OG al anunțului e deja „Anunț angajare {titlu}, {oraș} — {sumă}”.
 Probat în browser: anunț publicat prin formular → ecranul are cele trei butoane, cu linkul anunțului.
 Rămase pentru proprietar: primii angajatori (un oraș, câteva meserii) și postările în grupuri.
+
+## 29 septembrie 2026 — bara de sus: „Adaugă anunț” în locul lui „Meserii” (pe branch-ul `anunturi`)
+
+Cerut de proprietar: „Meserii” coboară în „Ghiduri” (ultimul, „Salarii pe meserii”), iar locul
+lui îl ia butonul „Adaugă anunț” (negru, în dreapta; pe telefon stă în bară, lângă meniu, nu în
+sertar). Când vor fi destule anunțuri: „Locuri de muncă” sau un grup „Joburi”. Probat: desktop;
+375 și 320 px fără derulare laterală; clicul deschide formularul, cu `aria-current`.
+**Testul A/B/C pe bara de sus merge până pe 8 octombrie**: schimbarea e numai pe `anunturi` și
+ajunge în producție odată cu hubul. Dacă hubul se lansează înainte de 8 octombrie, bara schimbată
+amestecă datele testului pentru zilele rămase — de decis atunci (lansare după 8, sau test scurtat).

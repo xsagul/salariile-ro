@@ -27,9 +27,12 @@ type Item = Leaf | Group;
 // revenit pe 26 septembrie 2026, la cererea proprietarului, după refacerea
 // calendarului. Nu adăuga o pagină aici fără cerere: fiecare intrare nouă scade
 // partea tuturor celorlalte.
+//
+// 29 septembrie 2026, cerut de proprietar: „Meserii” a coborât în „Ghiduri”, iar locul
+// lui l-a luat „Adaugă anunț” (hubul de anunțuri, pasul 2 din strategie). Când vor fi
+// destule anunțuri, aici intră și „Locuri de muncă”, eventual într-un grup „Joburi”.
 const NAV: Item[] = [
   { href: "/", label: "Calculator salariu" },
-  { href: "/salarii", label: "Meserii" },
   {
     label: "Instrumente",
     children: [
@@ -51,10 +54,14 @@ const NAV: Item[] = [
       { href: "/deducere-personala-2026", label: "Deducere personală" },
       { href: "/zile-libere-2026", label: "Zile libere 2026" },
       { href: "/zile-lucratoare-2026", label: "Zile lucrătoare 2026" },
+      { href: "/salarii", label: "Salarii pe meserii" },
     ],
   },
   { href: "/noutati", label: "Noutăți" },
 ];
+
+/** Butonul de publicare, în dreapta barei: vizibil și pe telefon, lângă meniu. */
+const ANUNT: Leaf = { href: "/adauga-anunt-angajare", label: "Adaugă anunț" };
 
 const isGroup = (i: Item): i is Group => "children" in i;
 
@@ -336,10 +343,18 @@ export default function Header() {
           )}
         </nav>
 
+        <Link
+          href={ANUNT.href}
+          aria-current={isActive(ANUNT.href) ? "page" : undefined}
+          className="ml-2 inline-flex min-h-10 items-center whitespace-nowrap rounded-md bg-stone-900 px-3 text-sm font-semibold text-white hover:bg-stone-700 md:ml-6"
+        >
+          {ANUNT.label}
+        </Link>
+
         {/* Mobile hamburger */}
         <button
           ref={hamburgerRef}
-          className="ml-auto flex h-11 w-11 cursor-pointer flex-col items-center justify-center gap-[5px] rounded p-0 hover:bg-stone-200/60 md:hidden"
+          className="flex h-11 w-11 cursor-pointer flex-col items-center justify-center gap-[5px] rounded p-0 hover:bg-stone-200/60 md:hidden"
           aria-label={open ? "Închide meniul" : "Deschide meniul"}
           aria-expanded={open}
           aria-controls="meniu-mobil"
