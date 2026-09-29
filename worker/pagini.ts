@@ -3,7 +3,7 @@
 import type { Env } from "./index";
 import { JUDETE, NORME, URL_ADAUGA, esteMobil, linkApel, linkDistribuieFacebook, linkDistribuieWhatsApp, linkWhatsApp, telefonAfisat, urlAnunt, urlLista, type Norma } from "../src/lib/anunturi/reguli";
 import { completeazaSablon } from "../src/lib/anunturi/sablon";
-import { DOMENII, MESERII_ANUNTURI, esteDomeniu, grupMeserie, numeDomeniu, slugurileGrupului } from "../src/lib/anunturi/meserii";
+import { DOMENII, MESERII_ANUNTURI, esteDomeniu, grupMeserie, numeDomeniu, slugurileGrupului, variante, cuvantAfisat } from "../src/lib/anunturi/meserii";
 import { PE_PAGINA, cuvinteCautate, dupaId, fatete, lista, listeIndexabile, numeOras, toateActive, type Anunt, type Filtru } from "./date";
 
 // Meseriile hubului, cu sinonimele lor (src/lib/anunturi/meserii.ts), nu catalogul paginilor de salarii.
@@ -288,6 +288,16 @@ function filtre(p: { meserii: OptiuneFiltru[]; meserie: string | null; orase: Op
       var nr = 0;
       function pune(nume, x) { var h = form.querySelector('input[type="hidden"][name="' + nume + '"]'); if (h) h.value = x; }
       function fara(s) { return s.normalize("NFD").replace(/[\\u0300-\\u036f]/g, "").toLowerCase(); }
+      // Distanța dintre două cuvinte (ca în src/lib/anunturi/meserii.ts): sugestiile găsesc „Barman” și la „barmn”.
+      function dist(a, b) {
+        var d = [], i, j;
+        for (i = 0; i <= a.length; i++) { d.push([i]); for (j = 1; j <= b.length; j++) d[i].push(i ? 0 : j); }
+        for (i = 1; i <= a.length; i++) for (j = 1; j <= b.length; j++) {
+          d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+          if (i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) d[i][j] = Math.min(d[i][j], d[i - 2][j - 2] + 1);
+        }
+        return d[a.length][b.length];
+      }
       function cate(n) { return n === 0 ? "niciun anunț încă" : n === 1 ? "1 anunț" : n.toLocaleString("ro-RO") + (n % 100 >= 20 || n % 100 === 0 ? " de anunțuri" : " anunțuri"); }
       document.querySelectorAll("select[data-cauta]").forEach(function (sel) {
         // Câmpul de pe telefon caută deodată în meserii și în localități.
@@ -330,6 +340,14 @@ function filtre(p: { meserii: OptiuneFiltru[]; meserie: string | null; orase: Op
             var s = o.f.startsWith(q) ? 0 : o.f.indexOf(" " + q) >= 0 || o.f.indexOf("-" + q) >= 0 ? 1 : q.length >= 3 && o.f.indexOf(q) >= 0 ? 2 : -1;
             if (s >= 0) r.push([o, s]);
           });
+          // Puține potriviri: se adaugă numele scrise aproape la fel, cu o greșeală (două de la 8 litere).
+          if (r.length < 3 && q.length >= 4) {
+            var max = q.length >= 8 ? 2 : 1;
+            toate.forEach(function (o) {
+              if (r.some(function (x) { return x[0] === o; })) return;
+              if (o.f.split(/[\\s-]+/).some(function (w) { return Math.abs(w.length - q.length) <= max && dist(q, w) <= max; })) r.push([o, 3]);
+            });
+          }
           return liber.concat(r.sort(function (a, b) { return a[1] - b[1] || (b[0].n > 0) - (a[0].n > 0) || a[0].t.localeCompare(b[0].t, "ro"); }).slice(0, 8).map(function (x) { return x[0]; }));
         }
         function arata() {
@@ -428,6 +446,8 @@ export async function paginaLista(req: Request, env: Env, orasSlug: string | nul
   const peDomeniu = new Map(fat.domenii.map((x) => [x.s, x.c] as const));
   const domenii = DOMENII.map((d) => ({ s: d.slug, n: d.nume, c: peDomeniu.get(d.slug) ?? 0 }));
   const activ = [meserie, orasSlug, extra.norma, extra.domeniu].filter(Boolean).length;
+  // Cuvintele corectate din catalog, spuse pe față: „barmn” caută și „barman”. Rădăcinile nu se arată.
+  const corectii = extra.q ? [...new Set(cuvinteCautate(extra.q).flatMap((w) => variante(w).filter((x) => !w.startsWith(x) && !x.startsWith(w))))] : [];
   const cuFiltre = Boolean(extra.norma || extra.domeniu || extra.q);
 
   // Filtrele alese, ca etichete deasupra listei: un clic pe una o scoate.
@@ -472,6 +492,7 @@ export async function paginaLista(req: Request, env: Env, orasSlug: string | nul
           <div class="w-60 shrink-0">${ordine}</div>
         </div>
         <div class="mt-3 hidden flex-wrap gap-2 lg:flex">${etichete || `<p class="text-sm text-stone-600">Toate meseriile, toată țara</p>`}</div>
+        ${corectii.length ? `<p class="mt-2 text-sm text-stone-600">Am căutat și: ${corectii.map((c) => `„${esc(cuvantAfisat(c))}”`).join(", ")}</p>` : ""}
         <p data-apropiere-stare class="mt-2 text-sm text-stone-600 empty:hidden"></p>
         ${anunturi.length ? `<ul class="mt-3 grid grid-cols-1 gap-3" data-lista-anunturi>${anunturi.map(cardLista).join("")}</ul>` : gol}
         ${pagini > 1 ? `<nav aria-label="Pagini" class="mt-6 flex gap-4 text-sm">${pagina > 1 ? `<a class="underline underline-offset-2" href="${q(pagina - 1)}">Pagina anterioară</a>` : ""}<span class="text-stone-600">Pagina ${pagina} din ${pagini}</span>${pagina < pagini ? `<a class="underline underline-offset-2" href="${q(pagina + 1)}">Pagina următoare</a>` : ""}</nav>` : ""}

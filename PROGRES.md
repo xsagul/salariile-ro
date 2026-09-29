@@ -4647,3 +4647,22 @@ barman; cere încadrarea pe domenii („HoReCa și turism”) și bara de căuta
 - Probat local (`wrangler dev`): anunț nou fără meserie → `ajutor-barman`; „barman” → 7 anunțuri,
   inclusiv ajutorul de barman; „ajutor de barman” → 1; „chelner” → ospătarii; „locuri de munca
   curatenie” în București → „Femeie de serviciu”; HoReCa → 11.
+
+## 29 septembrie 2026 — căutarea iartă greșelile; meseria cumulează
+
+Proprietarul a arătat OLX: „barmanA” găsea 11 barmani; la noi, o literă greșită dădea zero. Și:
+„cumulăm meseriile și căutarea în titlu, ca să creștem poolul de găsite, nu să-l scădem”.
+- `radacina()` (`src/lib/anunturi/meserii.ts`): articolul și pluralul scoase („barmana”, „barmanii”,
+  „barmanului” → „barman”), minim 4 litere rămase.
+- `variante()`: cuvântul, rădăcina lui și cuvintele din catalog (meserii, domenii, județe) la o
+  greșeală distanță (două de la 8 litere; Damerau–Levenshtein, `distanta()`). Toate se adaugă în SQL
+  cu OR: rezultatele doar cresc. Corecturile se spun pe față: „Am căutat și: „ospătar””.
+- Meseria cumulează: lista unei meserii = anunțurile puse la grup SAU cu numele lui în titlu (început
+  de cuvânt; întreg la numele de 4 litere, ca „bona” să nu prindă „bonus”). Numerele din coloană se
+  numără la fel, în Worker, din titluri (o interogare ușoară, `meserie, titlu`). Ajutorul de barman
+  apare și la Barman.
+- Sugestiile din bară: sub 3 potriviri, se adaugă numele la o greșeală distanță („sofre” → Șofer).
+- Găsit la probă: `/[\s-]+/` scris în șablonul TS cu un singur backslash ajungea în pagină `/[s-]+/`
+  și tăia cuvintele la „s” („ospatr” nu găsea Ospătar). Dublat.
+- Probat local: „barmanA” → 7 (cu ajutorul de barman), „barmn” → 7 + „Am căutat și: „barman””,
+  „ospatr” → 4 ospătari, /locuri-de-munca/barman → 7, iar coloana spune tot 7.
