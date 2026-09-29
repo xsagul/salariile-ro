@@ -4762,3 +4762,19 @@ eJobs în locul noindex-ului de mai sus, publicat câteva ore:
   al lui `99e3187`).
 - robots.txt blochează acum în liste `?pagina=`, `?ordine=` și `?q=` (căutarea liberă e un
   spațiu nelimitat). Anunțurile de pe paginile 2+ se descoperă din sitemap.
+
+## 30 septembrie 2026 — de la eJobs: sitemap de expirate și breadcrumbs
+
+- `/locuri-de-munca/sitemap-expirate.xml` (în robots.txt): anunțurile expirate sau șterse în
+  ultimele 7 zile, cu data scoaterii ca lastmod. Paginile lor rămân 410; sitemap-ul doar îl face pe
+  Google să le reverifice repede și să le scoată din Google Jobs. eJobs are același lucru
+  (`sitemap-expired-listings.xml`), dar își ține expiratele publicate cu 200 — noi nu.
+  Index nou `anunturi_scoase (stare, expira_la)`, migrația 0003, aplicată pe producție: fără el,
+  sitemap-ul ar citi toate expiratele vreodată (rămân în bază).
+- BreadcrumbList în JSON-LD pe liste (oraș, meserie, oraș + meserie) și pe anunțuri, aceleași
+  trepte ca breadcrumb-ul vizibil.
+- Verificat local cu `wrangler dev` pe date de test: expiratul recent și cel șters intră în
+  sitemap, cel vechi nu; anunțul fără firmă are doar BreadcrumbList (fără JobPosting, ca înainte).
+- Nu s-au făcut: numărul de anunțuri în titlu (decizia din 29 septembrie), luna în titlu
+  (proprietarul n-a văzut rostul), paginile de angajator, fluxul RSS, Indexing API (cer decizii
+  sau contul proprietarului).

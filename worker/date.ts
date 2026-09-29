@@ -252,6 +252,18 @@ export async function toateActive(env: Env): Promise<Pick<Anunt, "id" | "slug" |
 }
 
 /**
+ * Anunțurile scoase în ultimele `zile`: expirate sau șterse de angajator. Stau în sitemap-ul lor
+ * cât Google le reverifică, vede 410 și le scoate din Google Jobs (cum face eJobs cu
+ * `sitemap-expired-listings.xml`). Expiratele se caută pe indexul `anunturi_scoase`.
+ */
+export async function scoaseRecent(env: Env, zile: number): Promise<{ id: number; slug: string; la: string }[]> {
+  const din = new Date(Date.now() - zile * 86400000).toISOString();
+  return (await env.DB.prepare(
+    "SELECT id, slug, expira_la AS la FROM anunturi WHERE stare = 'expirat' AND expira_la >= ?1 UNION ALL SELECT id, slug, sters_la AS la FROM anunturi WHERE stare = 'sters' AND sters_la >= ?1 LIMIT 45000",
+  ).bind(din).all<{ id: number; slug: string; la: string }>()).results;
+}
+
+/**
  * Raportarea unui vizitator. Anunțul rămâne publicat: proprietarul verifică raportările în cel mult
  * 3 zile și decide el (29 septembrie 2026). Înainte, trei raportări îl suspendau automat, deci
  * oricine putea scoate anunțul altcuiva. Întoarce numărul raportărilor nerezolvate ale anunțului.

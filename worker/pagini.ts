@@ -4,7 +4,7 @@ import type { Env } from "./index";
 import { CONTRACTE, JUDETE, LOCURI_MUNCA, NORME, URL_ADAUGA, esteMobil, linkApel, linkDistribuieFacebook, linkDistribuieWhatsApp, linkWhatsApp, telefonAfisat, urlAnunt, urlLista, type Contract, type LocMunca, type Norma } from "../src/lib/anunturi/reguli";
 import { completeazaSablon } from "../src/lib/anunturi/sablon";
 import { DOMENII, MESERII_ANUNTURI, esteDomeniu, grupMeserie, numeDomeniu, slugurileGrupului, variante, cuvantAfisat } from "../src/lib/anunturi/meserii";
-import { PE_PAGINA, cuvinteCautate, dupaId, fatete, lista, listeIndexabile, numeOras, toateActive, type Anunt, type Filtru } from "./date";
+import { PE_PAGINA, cuvinteCautate, dupaId, fatete, lista, listeIndexabile, numeOras, scoaseRecent, toateActive, type Anunt, type Filtru } from "./date";
 
 // Meseriile hubului, cu sinonimele lor (src/lib/anunturi/meserii.ts), nu catalogul paginilor de salarii.
 const NUME_MESERIE = new Map(MESERII_ANUNTURI.map((m) => [m.slug, m.nume]));
@@ -28,7 +28,15 @@ const oras = (a: Anunt) => a.oras.replace(/,.*$/, "").trim();
 /** „Cluj-Napoca, Cluj”, dar „București”, nu „București, București”. */
 const loc = (a: Anunt) => (oras(a) === JUDETE[a.judet] ? oras(a) : `${oras(a)}, ${JUDETE[a.judet]}`);
 
-type Pagina = { titlu: string; descriere: string; canonic: string; indexabil: boolean; continut: string; jsonLd?: object; status?: number };
+type Pagina = { titlu: string; descriere: string; canonic: string; indexabil: boolean; continut: string; jsonLd?: object[]; status?: number };
+
+/** BreadcrumbList pentru Google, aceleași trepte ca breadcrumb-ul vizibil; ultima e pagina însăși, fără link. */
+function firImplicit(trepte: [string, string | null][]): object {
+  return {
+    "@context": "https://schema.org", "@type": "BreadcrumbList",
+    itemListElement: trepte.map(([name, cale], i) => ({ "@type": "ListItem", position: i + 1, name, ...(cale ? { item: `${SITE}${cale}` } : {}) })),
+  };
+}
 
 async function inSablon(req: Request, env: Env, p: Pagina): Promise<Response> {
   const sablon = await env.ASSETS.fetch(new Request(new URL("/locuri-de-munca/sablon", req.url)));
@@ -38,7 +46,10 @@ async function inSablon(req: Request, env: Env, p: Pagina): Promise<Response> {
   });
   let r = new HTMLRewriter()
     .on("[data-anunturi-continut]", { element(e) { e.setInnerContent(p.continut, { html: true }); } });
-  if (p.jsonLd) r = r.on("head", { element(e) { e.append(`<script type="application/ld+json">${JSON.stringify(p.jsonLd).replace(/</g, "\\u003c")}</script>`, { html: true }); } });
+  if (p.jsonLd?.length) {
+    const scripturi = p.jsonLd.map((o) => `<script type="application/ld+json">${JSON.stringify(o).replace(/</g, "\\u003c")}</script>`).join("");
+    r = r.on("head", { element(e) { e.append(scripturi, { html: true }); } });
+  }
   // Fără headerele șablonului: content-length și etag erau ale lui, nu ale paginii.
   const out = r.transform(new Response(html));
   const h = new Headers(out.headers);
@@ -560,6 +571,11 @@ export async function paginaLista(req: Request, env: Env, orasSlug: string | nul
     // Filtrele din interogare nu fac pagini noi pentru Google: sunt variații ale aceleiași liste.
     indexabil: total >= PRAG_INDEX && pagina === 1 && !cuFiltre && !extra.ordine,
     continut,
+    jsonLd: orasSlug || meserie ? [firImplicit([
+      ["Locuri de muncă", "/locuri-de-munca"],
+      ...(orasSlug && meserie ? [[numeLoc!, urlLista(orasSlug, null)] as [string, string]] : []),
+      [titlu.charAt(0).toUpperCase() + titlu.slice(1), null],
+    ])] : undefined,
   });
 }
 
@@ -677,7 +693,11 @@ export async function paginaAnunt(req: Request, env: Env, id: number, slug: stri
   // Titlul începe cu „Anunț angajare”, ca paginile din top 3 la „anunt de angajare”.
   const titlu = `Anunț angajare ${a.titlu}, ${oras(a)} — ${suma(a)}`;
   const desc = `Anunț angajare ${a.titlu}, ${oras(a)}: ${suma(a)} pe lună, ${norma(a).toLowerCase()}.${a.angajator ? ` ${a.angajator}.` : ""} Aplici direct la angajator.`;
-  return inSablon(req, env, { titlu, descriere: desc.slice(0, 158), canonic, indexabil: true, continut, jsonLd });
+  const fir = firImplicit([
+    ["Locuri de muncă", "/locuri-de-munca"], [oras(a), urlLista(a.oras_slug, null)],
+    ...(a.meserie ? [[meserie!, listaMeserie] as [string, string]] : []), [a.titlu, null],
+  ]);
+  return inSablon(req, env, { titlu, descriere: desc.slice(0, 158), canonic, indexabil: true, continut, jsonLd: jsonLd ? [jsonLd, fir] : [fir] });
 }
 
 export async function sitemap(env: Env): Promise<Response> {
@@ -687,6 +707,17 @@ export async function sitemap(env: Env): Promise<Response> {
     ...liste.map((l) => `<url><loc>${SITE}${urlLista(l.oras, l.meserie)}</loc></url>`),
     ...anunturi.map((a) => `<url><loc>${SITE}${urlAnunt(a)}</loc><lastmod>${a.confirmat_la!.slice(0, 10)}</lastmod></url>`),
   ];
+  return new Response(`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls.join("")}</urlset>`,
+    { headers: { "content-type": "application/xml; charset=utf-8", "cache-control": "public, max-age=3600" } });
+}
+
+/**
+ * Anunțurile scoase în ultima săptămână, cu data scoaterii ca lastmod. Google are un sitemap pe care
+ * îl reverifică și află în zile, nu în săptămâni, că anunțul dă 410; Google Jobs cere ca joburile
+ * închise să dispară repede. Anunțurile nu rămân publicate: pagina lor e tot 410.
+ */
+export async function sitemapScoase(env: Env): Promise<Response> {
+  const urls = (await scoaseRecent(env, 7)).map((a) => `<url><loc>${SITE}${urlAnunt(a)}</loc><lastmod>${a.la.slice(0, 10)}</lastmod></url>`);
   return new Response(`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls.join("")}</urlset>`,
     { headers: { "content-type": "application/xml; charset=utf-8", "cache-control": "public, max-age=3600" } });
 }

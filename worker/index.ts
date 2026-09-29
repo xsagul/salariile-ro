@@ -8,7 +8,7 @@
 // HTMLRewriter. Headerele de securitate le pune tot el — _headers se aplică doar asseturilor.
 import { CSP_ANUNTURI, LINK_HEADER } from "../src/lib/csp";
 import { api } from "./api";
-import { cheieLista, esteMeserie, paginaAnunt, paginaLista, redirectFiltre, sitemap } from "./pagini";
+import { cheieLista, esteMeserie, paginaAnunt, paginaLista, redirectFiltre, sitemap, sitemapScoase } from "./pagini";
 import { curatenie } from "./date";
 
 export type Env = {
@@ -80,6 +80,7 @@ export default {
       if (cale === "/locuri-de-munca/sablon") return cuSecuritate(new Response("Negăsit", { status: 404 }), false);
       if (STATICE.has(cale) || !cale.startsWith("/locuri-de-munca")) return cuSecuritate(await env.ASSETS.fetch(req));
       if (cale === "/locuri-de-munca/sitemap.xml") return cuSecuritate(await dinCache(req, ctx, () => sitemap(env)), false);
+      if (cale === "/locuri-de-munca/sitemap-expirate.xml") return cuSecuritate(await dinCache(req, ctx, () => sitemapScoase(env)), false);
 
       // Listele: /locuri-de-munca[/{oraș}][/{meserie}] și /locuri-de-munca/{meserie}.
       const cheie = cheieLista(url);

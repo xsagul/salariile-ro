@@ -54,6 +54,7 @@ Disallow: /locuri-de-munca*&q=
 
 Sitemap: https://salariile.ro/sitemap.xml
 Sitemap: https://salariile.ro/locuri-de-munca/sitemap.xml
+Sitemap: https://salariile.ro/locuri-de-munca/sitemap-expirate.xml
 `;
 
   return new Response(content, {
