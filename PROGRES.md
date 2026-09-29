@@ -4484,3 +4484,25 @@ amestecă datele testului pentru zilele rămase — de decis atunci (lansare dup
   mesajul cerea reîncărcarea paginii, cu textul pierdut); trimis înainte de token → „așteaptă”.
   Pe localhost se folosește cheia de test Cloudflare. Probat local: script încărcat, token primit,
   fără erori CSP. Secretul TURNSTILE_SECRET îl pune proprietarul (cheie API, nu o introduc eu).
+
+## 29 septembrie 2026 — testul A/B/C al barei de sus, citit după 5 zile (24–28 septembrie)
+
+GA4, explorare Free-form (salvată în Explore), `navbar_varianta_utilizator` × dispozitiv. Numai
+vizitatorii cu acord intră în test; ~2.200 de utilizatori fără acord sunt „(not set)”.
+
+| Telefon | utilizatori | sesiuni | implicate | timp activ/sesiune | sesiuni cu calcul |
+|---|---|---|---|---|---|
+| a (ca înainte) | 382 | 443 | 389 (88%) | 1m 05s | 51,7% |
+| b (lipită sus) | 374 | 433 | 390 (90%) | 1m 07s | 52,4% |
+| c (ascunsă la derulare) | 431 | 510 | 455 (89%) | 1m 10s | 53,1% |
+
+| Desktop | utilizatori | sesiuni | implicate | timp activ/sesiune | sesiuni cu calcul |
+|---|---|---|---|---|---|
+| a | 148 | 170 | 145 (85%) | 1m 52s | 49,4% |
+| b | 154 | 178 | 150 (84%) | 1m 42s | 41,6% |
+| c | 162 | 190 | 157 (83%) | 2m 43s | 36,8% |
+
+Pe telefon (70% din trafic): nicio diferență. Pe desktop: c are timp mai lung, dar mai puține
+sesiuni cu calcul — la ~180 de sesiuni pe variantă, diferența a–c la calcule (12,6 pp) e la limita
+întâmplării, iar timpul mediu e tras de câteva sesiuni lungi. „Views per session” sub 1 nu se
+compară: prima afișare pleacă înainte ca varianta să fie setată. Clickurile `zona=header` necitite.
