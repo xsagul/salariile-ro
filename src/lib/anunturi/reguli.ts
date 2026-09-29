@@ -2,7 +2,7 @@
 // pe 28 septembrie 2026). Un singur proprietar: formularul din browser și Worker-ul care primește
 // anunțul folosesc exact aceleași verificări. Deciziile proprietarului:
 //   - fără cont: anunțul se publică pe loc (fără confirmare pe email, decis pe 29 septembrie 2026)
-//     și se gestionează dintr-un link primit pe email;
+//     și se gestionează dintr-un link dat la publicare (și pe email, când EMAIL_ACTIV);
 //   - salariul e obligatoriu, cu baza (brut sau net) — diferența față de OLX și eJobs; orice sumă,
 //     fără prag minim (decis pe 28 septembrie 2026: respingerile ar încetini pornirea);
 //   - numele firmei e opțional, CUI-ul nu se cere deloc (tot 28 septembrie);
@@ -10,6 +10,7 @@
 //   - moderare automată (regulile de mai jos) și buton de raportare, cu scoatere rapidă (DSA).
 // Fără importuri cu „@/”: fișierul intră și în bundle-ul Worker-ului.
 import { calculStandard } from "../fiscal";
+import { EMAIL_ACTIV } from "./config";
 
 export const JUDETE: Record<string, string> = {
   AB: "Alba", AR: "Arad", AG: "Argeș", BC: "Bacău", BH: "Bihor", BN: "Bistrița-Năsăud", BT: "Botoșani", BV: "Brașov",
@@ -47,7 +48,7 @@ export type AnuntNou = {
   baza: Baza;
   descriere: string;
   telefon: string;          // contactul: butonul de apel și, la mobil, cel de WhatsApp
-  email: string;            // al celui care postează: primește linkul de confirmare; nu se publică
+  email: string;            // al celui care postează, numai cu EMAIL_ACTIV: primește linkul de gestionare; nu se publică
   acordPublicare: boolean;  // datele de contact ale angajatorului se publică în anunț
 };
 
@@ -124,7 +125,7 @@ export function valideaza(brut: Record<string, unknown>, meseriiValide: Set<stri
     baza: brut.baza === "net" ? "net" : brut.baza === "brut" ? "brut" : ("" as Baza),
     descriere: textLung(brut.descriere),
     telefon: telefonCurat(text(brut.telefon)) ?? text(brut.telefon),
-    email: text(brut.email).toLowerCase(),
+    email: EMAIL_ACTIV ? text(brut.email).toLowerCase() : "",
     acordPublicare: brut.acordPublicare === true || brut.acordPublicare === "true" || brut.acordPublicare === "on",
   };
   const lung = (camp: keyof typeof LIMITE, v: string, nume: string) => {
@@ -157,7 +158,7 @@ export function valideaza(brut: Record<string, unknown>, meseriiValide: Set<stri
   // telefon, iar candidatul sună sau scrie pe WhatsApp (proprietar, 28 septembrie 2026).
   if (!a.telefon) e.push({ camp: "telefon", mesaj: "Scrie telefonul la care te sună candidații." });
   else if (!telefonCurat(a.telefon)) e.push({ camp: "telefon", mesaj: "Telefonul nu pare un număr românesc valid." });
-  if (!emailValid(a.email)) e.push({ camp: "email", mesaj: "Scrie emailul tău: acolo primești linkul de confirmare." });
+  if (EMAIL_ACTIV && !emailValid(a.email)) e.push({ camp: "email", mesaj: "Scrie emailul tău: acolo primești linkul cu care modifici sau ștergi anunțul." });
   if (!a.acordPublicare) e.push({ camp: "acordPublicare", mesaj: "Bifează acordul: datele de contact ale angajatorului apar în anunț." });
 
   if (!e.length) {

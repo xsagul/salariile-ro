@@ -11,8 +11,9 @@ const BUTON = "inline-flex min-h-11 items-center rounded-md border border-stone-
  * 29 septembrie 2026); linkul de gestionare vine pe email și apare și aici, ca să nu se piardă.
  */
 export default function PublicaAnunt() {
-  const [gata, setGata] = useState<{ email: string; url: string; gestionare: string; titlu: string; suma: string } | null>(null);
+  const [gata, setGata] = useState<{ email: string; emailTrimis: boolean; url: string; gestionare: string; titlu: string; suma: string } | null>(null);
   const [copiat, setCopiat] = useState(false);
+  const [copiatGestionare, setCopiatGestionare] = useState(false);
   if (gata) {
     const link = `${window.location.origin}${gata.url}`;
     return (
@@ -36,9 +37,21 @@ export default function PublicaAnunt() {
             </button>
           </p>
         </div>
-        <p className="mt-4 text-sm text-stone-600">
-          Ți-am trimis la <strong>{gata.email}</strong> linkul cu care îl modifici, îl prelungești sau îl ștergi. Nu-l găsești? Uită-te și în Spam sau Promoții, ori salvează acum butonul „Modifică sau șterge”.
-        </p>
+        {gata.emailTrimis ? (
+          <p className="mt-4 text-sm text-stone-600">
+            Ți-am trimis la <strong>{gata.email}</strong> linkul cu care îl modifici, îl prelungești sau îl ștergi. Nu-l găsești? Uită-te și în Spam sau Promoții, ori salvează acum butonul „Modifică sau șterge”.
+          </p>
+        ) : (
+          // Fără emailuri (EMAIL_ACTIV oprit), linkul de pe ecran e singura lui copie: în bază stă numai amprenta lui.
+          <div className="mt-4 rounded-md border border-amber-300 bg-amber-50 p-4">
+            <p className="text-sm font-semibold text-stone-900">Salvează linkul „Modifică sau șterge”</p>
+            <p className="mt-1 text-sm text-stone-700">E singura cale să modifici, să prelungești sau să ștergi anunțul. Nu-l putem trimite din nou: pune-l în favorite sau trimite-l pe WhatsApp către tine.</p>
+            <button type="button" className={`${BUTON} mt-3`}
+              onClick={() => navigator.clipboard?.writeText(`${window.location.origin}${gata.gestionare}`).then(() => setCopiatGestionare(true), () => setCopiatGestionare(false))}>
+              {copiatGestionare ? "Linkul de modificare e copiat" : "Copiază linkul de modificare"}
+            </button>
+          </div>
+        )}
       </div>
     );
   }
@@ -49,7 +62,7 @@ export default function PublicaAnunt() {
         const j = await r.json();
         if (!r.ok) return { erori: j.erori ?? [{ camp: "general", mesaj: j.eroare ?? "Nu s-a putut trimite." }] };
         const suma = `${[v.salariuMin, v.salariuMax].filter(Boolean).map((x) => Number(x).toLocaleString("ro-RO")).join("–")} lei ${v.baza}`;
-        setGata({ email: String(v.email), url: j.url, gestionare: j.gestionare, titlu: String(v.titlu), suma });
+        setGata({ email: String(v.email), emailTrimis: j.emailTrimis === true, url: j.url, gestionare: j.gestionare, titlu: String(v.titlu), suma });
       }}
     />
   );

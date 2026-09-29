@@ -29,7 +29,8 @@ export function tokenNou(): string {
 
 /** Numără și înregistrează o postare; `false` când emailul sau IP-ul a trecut de limita pe zi. */
 export async function inLimita(env: Env, email: string, ip: string): Promise<boolean> {
-  const chei = [`email:${await sha256(env.SARE + email)}`, `ip:${await sha256(env.SARE + ip)}`];
+  // Fără email (EMAIL_ACTIV oprit) rămâne numai limita pe IP.
+  const chei = [...(email ? [`email:${await sha256(env.SARE + email)}`] : []), `ip:${await sha256(env.SARE + ip)}`];
   const ieri = new Date(Date.now() - 86400000).toISOString();
   for (const c of chei) {
     const r = await env.DB.prepare("SELECT COUNT(*) AS n FROM limite WHERE cheie = ? AND la > ?").bind(c, ieri).first<{ n: number }>();
@@ -52,7 +53,7 @@ export async function adauga(env: Env, a: AnuntNou, loc: Loc | null, token: stri
      VALUES ('activ', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id, slug`,
   ).bind(a.titlu, slugAnunt(a.titlu, a.oras), a.meserie || null, a.angajator, a.judet, a.oras, orasSlug(a.oras),
     a.adresa ?? null, loc?.lat ?? null, loc?.lon ?? null, loc?.precizie ?? null, a.norma, a.orePeZi ?? null,
-    a.salariuMin, a.salariuMax ?? null, a.baza, netLunar(a.salariuMin, a.baza), a.descriere, a.telefon, a.email, await sha256(token),
+    a.salariuMin, a.salariuMax ?? null, a.baza, netLunar(a.salariuMin, a.baza), a.descriere, a.telefon, a.email || null, await sha256(token),
     t, t, peste(ZILE_VALABILITATE)).first<{ id: number; slug: string }>();
   return r!;
 }

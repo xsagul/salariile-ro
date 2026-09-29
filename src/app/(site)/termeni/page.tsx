@@ -148,7 +148,7 @@ export default function TermeniPage() {
         <Section>
             <h2 id="anunturi">8. Anunțurile de angajare</h2>
             <p>
-              Oricine angajează poate adăuga gratuit, fără cont, un anunț de angajare pe <Link href="/adauga-anunt-angajare">salariile.ro</Link>. Anunțul se publică imediat și rămâne 30 de zile; din linkul primit pe email se modifică, se prelungește sau se șterge oricând.
+              Oricine angajează poate adăuga gratuit, fără cont, un anunț de angajare pe <Link href="/adauga-anunt-angajare">salariile.ro</Link>. Anunțul se publică imediat și rămâne 30 de zile; din linkul de gestionare, primit la publicare, se modifică, se prelungește sau se șterge oricând.
             </p>
             <p>Un anunț se publică numai dacă:</p>
             <ul>
@@ -162,7 +162,7 @@ export default function TermeniPage() {
               Cel care publică anunțul răspunde de adevărul lui și are acordul angajatorului pentru datele de contact afișate. Salariile.ro nu intermediază angajarea, nu primește CV-uri și nu verifică identitatea angajatorilor; verifică automat regulile de mai sus înainte de publicare. Salariul din anunțuri poate fi folosit, fără date de contact, în cifrele agregate de pe paginile meseriilor.
             </p>
             <p>
-              Orice anunț poate fi raportat din pagina lui. Anunțurile care încalcă regulile sau legea sunt scoase; la trei raportări nerezolvate, anunțul se suspendă automat până la verificare. Cel care l-a publicat primește motivul pe email. Punctul de contact pentru autorități și pentru utilizatori, conform Regulamentului (UE) 2022/2065 privind serviciile digitale, este <a href="mailto:contact@salariile.ro">contact@salariile.ro</a>, în română sau engleză.
+              Orice anunț poate fi raportat din pagina lui. Anunțurile care încalcă regulile sau legea sunt scoase; la trei raportări nerezolvate, anunțul se suspendă automat până la verificare. Cel care l-a publicat vede starea anunțului în linkul de gestionare. Punctul de contact pentru autorități și pentru utilizatori, conform Regulamentului (UE) 2022/2065 privind serviciile digitale, este <a href="mailto:contact@salariile.ro">contact@salariile.ro</a>, în română sau engleză.
             </p>
         </Section>
 

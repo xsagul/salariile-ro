@@ -4,6 +4,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import { cauta, cheieUat, numarDinText, type Localitate } from "../src/lib/anunturi/localitati";
 import { MARCAJE, completeazaSablon } from "../src/lib/anunturi/sablon";
+import { EMAIL_ACTIV } from "../src/lib/anunturi/config";
 import { MESERII_ANUNTURI, grupMeserie, numeMeserieAnunt, slugMeserie, slugurileGrupului } from "../src/lib/anunturi/meserii";
 import { esteMobil, linkApel, linkWhatsApp, orasSlug, slugAnunt, telefonAfisat, telefonCurat, urlAnunt, urlLista, valideaza, type Eroare } from "../src/lib/anunturi/reguli";
 
@@ -32,7 +33,7 @@ assert.deepEqual(camp({ salariuMin: "4000000" }), ["salariuMin"], "cifre în plu
 assert.deepEqual(camp({ salariuMax: "3000" }), ["salariuMax"], "maxim sub minim");
 assert.deepEqual(camp({ salariuMax: "20000" }), [], "interval larg: se publică");
 
-// Contactul: cel puțin unul, valid; emailul celui care postează și acordul, obligatorii.
+// Contactul: telefonul, valid; acordul, obligatoriu.
 assert.deepEqual(camp({ telefon: "" }), ["telefon"]);
 assert.deepEqual(camp({ telefon: "12345" }), ["telefon"]);
 // Contactul (proprietar, 28 septembrie 2026): numărul curățat, butonul de apel și WhatsApp la mobil.
@@ -47,7 +48,12 @@ if ("anunt" in r) assert.equal(r.anunt.telefon, "0722123456", "telefonul se păs
 // Adresa e opțională, dar nu nelimitată.
 assert.deepEqual(camp({ adresa: "Strada Lipscani 69" }), []);
 assert.deepEqual(camp({ adresa: "x".repeat(121) }), ["adresa"]);
-assert.deepEqual(camp({ email: "nu-e-email" }), ["email"]);
+// Emailul contează numai cu EMAIL_ACTIV; oprit, nu se cere și nu se păstrează.
+if (EMAIL_ACTIV) assert.deepEqual(camp({ email: "nu-e-email" }), ["email"]);
+else {
+  assert.deepEqual(camp({ email: "" }), [], "fără emailuri, anunțul se publică fără email");
+  if ("anunt" in r) assert.equal(r.anunt.email, "", "emailul nu se păstrează cât timp nu-l folosim");
+}
 assert.deepEqual(camp({ acordPublicare: false }), ["acordPublicare"]);
 assert.deepEqual(camp({ meserie: "astronaut" }), ["meserie"]);
 assert.deepEqual(camp({ judet: "XX" }), ["oras"], "județul vine din localitatea aleasă");

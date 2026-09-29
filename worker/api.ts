@@ -63,13 +63,14 @@ export async function api(req: Request, env: Env, ctx: ExecutionContext, cale: s
     if (!(await inLimita(env, v.anunt.email, ip))) return json({ erori: [{ camp: "general", mesaj: "Ai publicat multe anunțuri azi. Mai încearcă mâine." }] }, 429);
     const token = tokenNou();
     const a = await adauga(env, v.anunt, await localizeaza(v.anunt.adresa, v.anunt.oras, v.anunt.judet), token);
-    ctx.waitUntil(trimite(env, v.anunt.email, `Anunțul „${v.anunt.titlu}” e publicat`,
+    const trimis = Boolean(v.anunt.email && env.EMAIL);
+    if (trimis) ctx.waitUntil(trimite(env, v.anunt.email, `Anunțul „${v.anunt.titlu}” e publicat`,
       `Bună ziua,\n\nAnunțul „${v.anunt.titlu}” e publicat pe salariile.ro:\n${env.SITE}${urlAnunt(a)}\n\n` +
       `Pune linkul anunțului și în grupurile de Facebook cu locuri de muncă din orașul tău: candidații ajung direct la el, cu salariul și telefonul.\n\n` +
       `Îl modifici, îl prelungești sau îl ștergi oricând din linkul de mai jos. Păstrează emailul: linkul nu se mai trimite o dată.\n\n${linkGestionare(env, token)}\n\n` +
       `Anunțul rămâne publicat 30 de zile. Dacă nu l-ai trimis tu, deschide linkul și apasă „Șterge anunțul”.\n\nsalariile.ro`));
     // Linkul de gestionare se dă și pe ecran: emailul nu e verificat, iar o greșeală de scriere l-ar pierde.
-    return json({ ok: true, id: a.id, url: urlAnunt(a), gestionare: `${URL_ADAUGA}/gestioneaza#${token}` });
+    return json({ ok: true, id: a.id, url: urlAnunt(a), gestionare: `${URL_ADAUGA}/gestioneaza#${token}`, emailTrimis: trimis });
   }
 
   if (cale === "/api/anunturi/gestioneaza") {

@@ -1,6 +1,6 @@
 "use client";
 
-// Gestionarea unui anunț din linkul primit pe email: /adauga-anunt-angajare/gestioneaza#<token>.
+// Gestionarea unui anunț din linkul primit la publicare (și pe email, cu EMAIL_ACTIV): /adauga-anunt-angajare/gestioneaza#<token>.
 // Tokenul stă după „#”, deci nu ajunge niciodată la server în URL și nici în logurile Cloudflare;
 // nici scanerele de linkuri din email nu schimbă nimic: orice acțiune cere apăsarea unui buton.
 import { useEffect, useState } from "react";
@@ -45,7 +45,7 @@ export default function GestioneazaAnunt() {
     setMesaj(nume === "prelungeste" ? "Anunțul e prelungit cu 30 de zile." : null);
   }
 
-  if (!a) return <p className="text-base text-stone-700">{mesaj ?? (hash === "" ? "Linkul e incomplet. Deschide-l exact cum a venit în email." : "Se încarcă…")}</p>;
+  if (!a) return <p className="text-base text-stone-700">{mesaj ?? (hash === "" ? "Linkul e incomplet. Deschide-l exact cum l-ai primit la publicare." : "Se încarcă…")}</p>;
   const initial: Valori = {
     titlu: a.titlu, meserie: a.meserie ?? "", angajator: a.angajator, judet: a.judet, oras: a.oras, adresa: a.adresa ?? "", norma: a.norma,
     orePeZi: String(a.ore_pe_zi ?? 4), salariuMin: String(a.salariu_min), salariuMax: a.salariu_max ? String(a.salariu_max) : "", baza: a.baza,
