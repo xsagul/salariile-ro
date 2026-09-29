@@ -15,7 +15,7 @@ export default function Raporteaza() {
     <div className="bg-canvas">
       <div className={`mx-auto max-w-3xl px-4 sm:px-6 ${SPATIU_SUS} ${SPATIU_JOS}`}>
         <H1>Raportează un anunț</H1>
-        <Lead>Verificăm fiecare raportare. La trei raportări, anunțul se suspendă automat până îl verificăm.</Lead>
+        <Lead>Verificăm fiecare raportare în cel mult 3 zile și scoatem anunțurile care încalcă regulile sau legea.</Lead>
         <div className="mt-6 rounded-md border border-stone-200 bg-surface p-5 shadow-soft sm:p-6">
           <RaporteazaAnunt />
         </div>

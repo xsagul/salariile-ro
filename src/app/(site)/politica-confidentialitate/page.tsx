@@ -133,7 +133,6 @@ export default function PoliticaConfidentialitatePage() {
               <li><strong>Harta din pagina anunțului</strong> se încarcă de la OpenStreetMap (OpenStreetMap Foundation, Regatul Unit), care vede adresa IP a browserului, ca orice site de la care se încarcă o imagine. Nu folosim harta Google încorporată și nu punem cookies Google. Linkurile „Deschide în Google Maps” duc la Google numai dacă le apeși.</li>
               <li><strong>Sugestiile din formularul anunțului</strong> (localitatea și strada) vin din liste ținute pe salariile.ro: localitățile din nomenclatorul SIRUTA al INS, străzile din OpenStreetMap. Căutarea se face în browser; ce scrii nu pleacă la niciun serviciu până nu trimiți anunțul.</li>
               <li><strong>„Sortează după apropiere”</strong>: poziția ta o cere browserul, cu permisiunea ta, și rămâne în telefon. Site-ul primește lista anunțurilor, nu locul în care ești; ordonarea după distanță se face pe dispozitivul tău.</li>
-              <li><strong>Verificarea anti-spam Cloudflare Turnstile</strong> din formulare: Cloudflare analizează semnale tehnice ale browserului ca să deosebească oamenii de roboți, fără cookies de urmărire și fără imagini de ales.</li>
             </ul>
             <p>
               Linkul de gestionare e secret: în baza de date păstrăm doar amprenta lui criptată, nu linkul.
@@ -153,7 +152,7 @@ export default function PoliticaConfidentialitatePage() {
               Datele colectate automat (logs de server, statistici anonime) se prelucrează în temeiul <strong>interesului legitim</strong> al operatorului (Art. 6 alin. 1 lit. f din GDPR), adică asigurarea funcționării și securității site-ului. Interesul legitim este proporțional cu impactul minim asupra vizitatorilor, datele fiind agregate sau de scurtă durată.
             </p>
             <p>
-              Datele anunțurilor de angajare se prelucrează pentru <strong>serviciul cerut</strong> de cel care adaugă anunțul (Art. 6 alin. 1 lit. b GDPR): publicarea și gestionarea lui. Limita pe zi, verificarea anti-spam și raportările se prelucrează în temeiul <strong>interesului legitim</strong> (lit. f) de a ține site-ul fără abuzuri și anunțuri ilegale, și al obligațiilor din Regulamentul (UE) 2022/2065 privind serviciile digitale (lit. c).
+              Datele anunțurilor de angajare se prelucrează pentru <strong>serviciul cerut</strong> de cel care adaugă anunțul (Art. 6 alin. 1 lit. b GDPR): publicarea și gestionarea lui. Limita pe zi și raportările se prelucrează în temeiul <strong>interesului legitim</strong> (lit. f) de a ține site-ul fără abuzuri și anunțuri ilegale, și al obligațiilor din Regulamentul (UE) 2022/2065 privind serviciile digitale (lit. c).
             </p>
             <p>
               Datele Google Analytics 4 se prelucrează exclusiv în baza <strong>consimțământului</strong> (Art. 6 alin. 1 lit. a GDPR și regulile ePrivacy). Refuzul nu limitează nicio funcție, iar acordul poate fi retras oricând din „Setări cookies”.
@@ -170,7 +169,7 @@ export default function PoliticaConfidentialitatePage() {
                 <strong>Google Ireland Limited</strong> (Irlanda, cu posibile transferuri către Google LLC în SUA): furnizor pentru CMP-ul AdSense și Google Analytics 4 cu Consent Mode. Google LLC este certificat în cadrul UE–SUA Data Privacy Framework. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Politica Google</a>.
               </li>
               <li>
-                <strong>Cloudflare, Inc.</strong> (SUA): furnizor de hosting și CDN, al statisticilor anonime Web Analytics și, pentru anunțurile de angajare, al bazei de date (D1), al trimiterii emailurilor și al verificării anti-spam Turnstile. Procesează automat, ca procesator, fiecare cerere către site. Cloudflare este certificat conform mecanismului UE-SUA Data Privacy Framework. <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Politica Cloudflare</a>.
+                <strong>Cloudflare, Inc.</strong> (SUA): furnizor de hosting și CDN, al statisticilor anonime Web Analytics și, pentru anunțurile de angajare, al bazei de date (D1) și al trimiterii emailurilor. Procesează automat, ca procesator, fiecare cerere către site. Cloudflare este certificat conform mecanismului UE-SUA Data Privacy Framework. <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Politica Cloudflare</a>.
               </li>
               <li>
                 <strong>Google LLC</strong> (SUA) — <strong>Search Console</strong>: pentru verificarea proprietății domeniului și monitorizarea performanței în rezultatele căutării. Nu colectează date despre vizitatorii individuali, doar statistici agregate despre cum apare site-ul în rezultatele Google.

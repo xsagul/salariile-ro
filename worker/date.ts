@@ -43,8 +43,8 @@ export async function inLimita(env: Env, email: string, ip: string): Promise<boo
 /**
  * Anunțul se publică pe loc, fără confirmarea din email (proprietar, 29 septembrie 2026: la pornire,
  * orice pas în plus scade numărul de anunțuri). Emailul rămâne obligatoriu pentru linkul de
- * gestionare; frâna rămâne limita pe zi, regulile de conținut și raportările (Turnstile scos de la
- * postare pe 29 septembrie 2026: oamenii nu reușeau să posteze).
+ * gestionare; frâna rămâne limita pe zi, regulile de conținut și raportările (Turnstile scos pe
+ * 29 septembrie 2026: oamenii nu reușeau să posteze).
  */
 export async function adauga(env: Env, a: AnuntNou, loc: Loc | null, token: string): Promise<{ id: number; slug: string }> {
   const t = acum();
@@ -149,11 +149,14 @@ export async function toateActive(env: Env): Promise<Pick<Anunt, "id" | "slug" |
   return (await env.DB.prepare("SELECT id, slug, confirmat_la FROM anunturi WHERE stare = 'activ' ORDER BY id DESC LIMIT 45000").all<Pick<Anunt, "id" | "slug" | "confirmat_la">>()).results;
 }
 
-/** Raportarea unui vizitator; la trei raportări nerezolvate anunțul se suspendă până la verificare. */
+/**
+ * Raportarea unui vizitator. Anunțul rămâne publicat: proprietarul verifică raportările în cel mult
+ * 3 zile și decide el (29 septembrie 2026). Înainte, trei raportări îl suspendau automat, deci
+ * oricine putea scoate anunțul altcuiva. Întoarce numărul raportărilor nerezolvate ale anunțului.
+ */
 export async function raporteaza(env: Env, id: number, motiv: string, detalii: string, email: string | null): Promise<number> {
   await env.DB.prepare("INSERT INTO raportari (anunt_id, motiv, detalii, email, creat_la) VALUES (?, ?, ?, ?, ?)").bind(id, motiv, detalii || null, email, acum()).run();
   const r = await env.DB.prepare("SELECT COUNT(*) AS n FROM raportari WHERE anunt_id = ? AND rezolvat_la IS NULL").bind(id).first<{ n: number }>();
-  if ((r?.n ?? 0) >= 3) await env.DB.prepare("UPDATE anunturi SET stare = 'suspendat', motiv_suspendare = 'trei raportări, în verificare' WHERE id = ? AND stare = 'activ'").bind(id).run();
   return r?.n ?? 0;
 }
 

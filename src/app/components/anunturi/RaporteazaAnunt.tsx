@@ -2,9 +2,8 @@
 
 // Raportarea unui anunț (DSA, art. 16): /locuri-de-munca/raporteaza#<id>. Motivul, detalii
 // opționale și, dacă vrea, emailul celui care raportează, ca să primească răspunsul.
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { useHash } from "@/app/components/anunturi/useHash";
-import Turnstile from "@/app/components/anunturi/Turnstile";
 
 const MOTIVE = ["țeapă sau cerere de bani", "discriminare", "salariul nu e cel real", "anunț fals sau duplicat", "conținut ilegal", "altceva"];
 const CAMP = "mt-1 block w-full rounded-md border border-stone-300 bg-surface px-3 py-2 text-base text-stone-900";
@@ -13,9 +12,7 @@ export default function RaporteazaAnunt() {
   const [motiv, setMotiv] = useState("");
   const [detalii, setDetalii] = useState("");
   const [email, setEmail] = useState("");
-  const [token, setToken] = useState("");
   const [stare, setStare] = useState<"" | "trimis" | string>("");
-  const onToken = useCallback((t: string) => setToken(t), []);
   const hash = useHash();
   const n = Number(hash);
   const id = hash && Number.isInteger(n) && n > 0 ? n : null;
@@ -26,7 +23,7 @@ export default function RaporteazaAnunt() {
   async function trimite(e: React.FormEvent) {
     e.preventDefault();
     if (!motiv) { setStare("Alege un motiv."); return; }
-    const r = await fetch("/api/anunturi/raporteaza", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ id, motiv, detalii, email, turnstile: token }) });
+    const r = await fetch("/api/anunturi/raporteaza", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ id, motiv, detalii, email }) });
     const j = await r.json();
     setStare(r.ok ? "trimis" : j.eroare ?? "Nu s-a putut trimite.");
   }
@@ -46,7 +43,6 @@ export default function RaporteazaAnunt() {
       <label className="block text-sm font-medium text-stone-800">Emailul tău, dacă vrei răspuns (opțional)
         <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className={CAMP} />
       </label>
-      <Turnstile onToken={onToken} />
       <div><button type="submit" className="inline-flex min-h-11 items-center rounded-md bg-stone-900 px-5 font-semibold text-white hover:bg-stone-700">Trimite raportarea</button></div>
     </form>
   );

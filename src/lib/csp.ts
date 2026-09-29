@@ -100,19 +100,17 @@ export const CSP_PAGINI_PUBLICE = construiesteCsp({
 
 /**
  * Politica pentru hubul de anunțuri (/locuri-de-munca*, servit de Worker, 28 septembrie 2026):
- * aceeași ca a paginilor publice, plus Cloudflare Turnstile — verificarea anti-spam din
- * formularul de raportare (script și iframe de pe challenges.cloudflare.com). Postarea nu mai are
- * Turnstile din 29 septembrie 2026, deci formularul static de anunț rămâne pe politica publică.
+ * aceeași ca a paginilor publice, plus harta OpenStreetMap din pagina anunțului. Turnstile a fost
+ * scos din formulare pe 29 septembrie 2026 (oamenii nu reușeau să posteze).
  */
-const TURNSTILE = "https://challenges.cloudflare.com";
 export const CSP_ANUNTURI = construiesteCsp({
-  scriptSrc: `'self' 'unsafe-inline' ${CLOUDFLARE_INSIGHTS} ${GOOGLE_TAG_MANAGER} ${ADSENSE_SCRIPT} ${TURNSTILE}`,
+  scriptSrc: `'self' 'unsafe-inline' ${CLOUDFLARE_INSIGHTS} ${GOOGLE_TAG_MANAGER} ${ADSENSE_SCRIPT}`,
   frameAncestors: "'none'",
   styleSrc: `'self' 'unsafe-inline' ${GOOGLE_FONTS_STYLE}`,
   imgSrc: `'self' blob: data: https:`,
-  connectSrc: `'self' ${GOOGLE_ANALYTICS_CONNECT} ${ADSENSE_CONNECT} ${TURNSTILE}`,
+  connectSrc: `'self' ${GOOGLE_ANALYTICS_CONNECT} ${ADSENSE_CONNECT}`,
   // Harta de pe pagina anunțului: OpenStreetMap, nu Google Maps încorporat (fără cookies Google).
-  frameSrc: `'self' ${ADSENSE_FRAME} ${TURNSTILE} https://www.openstreetmap.org`,
+  frameSrc: `'self' ${ADSENSE_FRAME} https://www.openstreetmap.org`,
   fontSrc: `'self' data: ${GOOGLE_FONTS_ASSET}`,
 });
 

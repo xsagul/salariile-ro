@@ -4527,3 +4527,21 @@ Verificat pe producție după publicare (~3 min, Workers Builds): CSP-ul formula
 `challenges.cloudflare.com`, niciun script sau câmp Turnstile în pagină; un anunț valid completat
 în browser (cu `fetch` interceptat, deci nepublicat) a plecat din primul click, fără câmp
 `turnstile`; POST gol pe `/api/anunturi` → erorile de validare.
+
+## 29 septembrie 2026 — Turnstile scos și de la raportări; fără suspendare automată
+
+Decizia proprietarului: Turnstile iese de tot, iar raportările **nu mai suspendă automat**
+anunțul — le verifică el în cel mult 3 zile de la primire. Scoase: `Turnstile.tsx`,
+`TURNSTILE_SITEKEY`, `turnstileOk` și `TURNSTILE_SECRET` din Worker, `challenges.cloudflare.com`
+din `CSP_ANUNTURI`, mențiunile din politica de confidențialitate. `raporteaza()` doar înregistrează
+raportarea. Textele (pagina anunțului, `/locuri-de-munca/raporteaza`, termenii, secțiunea 8) spun
+acum „verificăm fiecare raportare în cel mult 3 zile”; DSA art. 16 cere mecanismul de notificare
+și o decizie, nu suspendarea automată.
+
+Emailurile sunt oprite, deci raportările nu ajung pe email: se văd cu
+`npm run anunturi:raportari` (nerezolvatele, cele mai vechi primele), într-un terminal autentificat
+în contul Cloudflare al site-ului — ori aceeași interogare în D1 → salariile-anunturi → Console.
+Terminalul agentului e logat în alt cont (`rulersquare`) și primește 7403 pe baza de producție;
+comanda e probată pe copia locală (`--local`, cu o raportare de test). După verificare:
+`UPDATE raportari SET rezolvat_la = datetime('now') WHERE anunt_id = <id>`; un anunț scos:
+`UPDATE anunturi SET stare = 'suspendat', motiv_suspendare = '<motiv>' WHERE id = <id>`.

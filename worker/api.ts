@@ -12,15 +12,6 @@ const MOTIVE_RAPORTARE = ["țeapă sau cerere de bani", "discriminare", "salariu
 
 const json = (date: unknown, status = 200) => new Response(JSON.stringify(date), { status, headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" } });
 
-async function turnstileOk(env: Env, raspuns: unknown, ip: string): Promise<boolean> {
-  if (!env.TURNSTILE_SECRET) return true; // local, fără cheie
-  if (typeof raspuns !== "string" || !raspuns) return false;
-  const r = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
-    method: "POST", body: new URLSearchParams({ secret: env.TURNSTILE_SECRET, response: raspuns, remoteip: ip }),
-  });
-  return ((await r.json()) as { success?: boolean }).success === true;
-}
-
 function linkGestionare(env: Env, token: string) {
   return `${env.SITE}${URL_ADAUGA}/gestioneaza#${token}`;
 }
@@ -57,8 +48,8 @@ export async function api(req: Request, env: Env, ctx: ExecutionContext, cale: s
   const ip = req.headers.get("cf-connecting-ip") ?? "local";
 
   if (cale === "/api/anunturi") {
-    // Fără Turnstile la postare (proprietar, 29 septembrie 2026): oamenii scriau că nu pot posta.
-    // Frâna rămâne limita pe zi, regulile de conținut și raportările; raportarea păstrează Turnstile.
+    // Fără Turnstile (proprietar, 29 septembrie 2026): oamenii scriau că nu pot posta. Frâna rămâne
+    // limita pe zi, regulile de conținut și raportările, verificate de proprietar.
     const v = valideaza(corp, MESERII);
     if ("erori" in v) return json({ erori: v.erori }, 400);
     if (!(await inLimita(env, v.anunt.email, ip))) return json({ erori: [{ camp: "general", mesaj: "Ai publicat multe anunțuri azi. Mai încearcă mâine." }] }, 429);
@@ -96,7 +87,6 @@ export async function api(req: Request, env: Env, ctx: ExecutionContext, cale: s
   }
 
   if (cale === "/api/anunturi/raporteaza") {
-    if (!(await turnstileOk(env, corp.turnstile, ip))) return json({ eroare: "Verificarea anti-spam n-a trecut." }, 400);
     const id = Number(corp.id), motiv = String(corp.motiv ?? "");
     const a = Number.isInteger(id) ? await dupaId(env, id) : null;
     if (!a || a.stare !== "activ") return json({ eroare: "Anunțul nu mai e publicat." }, 404);
@@ -105,7 +95,7 @@ export async function api(req: Request, env: Env, ctx: ExecutionContext, cale: s
     const email = typeof corp.email === "string" && /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(corp.email) ? corp.email : null;
     const n = await raporteaza(env, id, motiv, detalii, email);
     ctx.waitUntil(trimite(env, env.EMAIL_PROPRIETAR, `Raportare anunț ${id}: ${motiv}`,
-      `Anunțul ${env.SITE}${urlAnunt(a)}\nMotiv: ${motiv}\nDetalii: ${detalii || "—"}\nRaportări nerezolvate: ${n}${n >= 3 ? " (anunțul a fost suspendat automat)" : ""}\nContact raportor: ${email ?? "—"}`));
+      `Anunțul ${env.SITE}${urlAnunt(a)}\nMotiv: ${motiv}\nDetalii: ${detalii || "—"}\nRaportări nerezolvate: ${n}\nContact raportor: ${email ?? "—"}`));
     return json({ ok: true });
   }
 

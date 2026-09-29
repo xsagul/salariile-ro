@@ -15,7 +15,6 @@ export type Env = {
   ASSETS: Fetcher;
   DB: D1Database;
   EMAIL?: { send: (m: { to: string; from: string | { email: string; name?: string }; subject: string; text: string; html?: string }) => Promise<unknown> };
-  TURNSTILE_SECRET?: string;
   SARE: string;               // sarea pentru hash-urile de IP și email din limite
   SITE: string;               // https://salariile.ro
   EMAIL_EXPEDITOR: string;    // anunturi@salariile.ro

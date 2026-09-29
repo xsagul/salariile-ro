@@ -15,7 +15,9 @@ salariile.ro este un portal despre salarii și fiscalitate în România. Scop pe
    pe email (29 septembrie: la pornire, orice pas în plus scade numărul de anunțuri), salariul
    obligatoriu cu baza lui, orice sumă (pragul minim scos tot pe 28 septembrie, ca respingerile să
    nu încetinească pornirea), numele firmei opțional și fără CUI, candidatul contactează direct angajatorul
-   (site-ul nu primește CV-uri), moderare automată + raportare (DSA). Regulile: `src/lib/anunturi/
+   (site-ul nu primește CV-uri), moderare automată + raportare (DSA). Fără Turnstile (29 septembrie:
+   oamenii nu reușeau să posteze) și fără suspendare automată la raportări: proprietarul le verifică
+   în cel mult 3 zile (`npm run anunturi:raportari`). Regulile: `src/lib/anunturi/
    reguli.ts`; Worker-ul: `worker/`; baza: D1, `migrations/`. Adresele, verificate în Google
    România (SE Ranking): `/locuri-de-munca[/{oraș}][/{meserie}]` (top 3 = liste, orașul primul),
    `/anunt-angajare-{titlu}-{oraș}-{id}` (la „anunt de angajare” rankează numai anunțuri cu acest

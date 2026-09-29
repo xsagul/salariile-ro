@@ -364,7 +364,7 @@ export async function paginaAnunt(req: Request, env: Env, id: number, slug: stri
           </script>
         </div>
         <div class="${CARD}">
-          <p class="text-sm text-stone-700">Țeapă, discriminare, salariu fals? <a class="font-semibold underline underline-offset-2" href="/locuri-de-munca/raporteaza#${a.id}">Raportează anunțul</a>. La trei raportări, se suspendă până îl verificăm.</p>
+          <p class="text-sm text-stone-700">Țeapă, discriminare, salariu fals? <a class="font-semibold underline underline-offset-2" href="/locuri-de-munca/raporteaza#${a.id}">Raportează anunțul</a>. Verificăm fiecare raportare în cel mult 3 zile.</p>
         </div>
       </div>
     </div>`;

@@ -162,7 +162,7 @@ export default function TermeniPage() {
               Cel care publică anunțul răspunde de adevărul lui și are acordul angajatorului pentru datele de contact afișate. Salariile.ro nu intermediază angajarea, nu primește CV-uri și nu verifică identitatea angajatorilor; verifică automat regulile de mai sus înainte de publicare. Salariul din anunțuri poate fi folosit, fără date de contact, în cifrele agregate de pe paginile meseriilor.
             </p>
             <p>
-              Orice anunț poate fi raportat din pagina lui. Anunțurile care încalcă regulile sau legea sunt scoase; la trei raportări nerezolvate, anunțul se suspendă automat până la verificare. Cel care l-a publicat vede starea anunțului în linkul de gestionare. Punctul de contact pentru autorități și pentru utilizatori, conform Regulamentului (UE) 2022/2065 privind serviciile digitale, este <a href="mailto:contact@salariile.ro">contact@salariile.ro</a>, în română sau engleză.
+              Orice anunț poate fi raportat din pagina lui. Fiecare raportare e verificată de un om în cel mult 3 zile de la primire; anunțurile care încalcă regulile sau legea sunt scoase. Cel care l-a publicat vede starea anunțului în linkul de gestionare. Punctul de contact pentru autorități și pentru utilizatori, conform Regulamentului (UE) 2022/2065 privind serviciile digitale, este <a href="mailto:contact@salariile.ro">contact@salariile.ro</a>, în română sau engleză.
             </p>
         </Section>
 
