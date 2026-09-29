@@ -4734,3 +4734,18 @@ angajator postează vreun anunț pe site-ul nostru”.
   verificat cu EXPLAIN) și nici spațiu (~1 KB/anunț, 500 MB/bază), dar e date păstrate fără scop.
   Propunerea respinsă deocamdată: telefon și adresă golite la expirare, pagina 410 cu anunțuri
   asemănătoare 90 de zile, apoi ștergere.
+
+## 30 septembrie 2026 — anunțurile nu mai intră în Google, doar listele
+
+Cererea proprietarului: paginile `/anunt-angajare-*` consumă crawl și autoritate; în Google
+rămân numai `/locuri-de-munca` și filtrele din adresă (oraș, meserie, oraș + meserie).
+
+- `paginaAnunt` răspunde cu `noindex, follow`: Google urmează linkurile spre liste, dar nu
+  indexează anunțul.
+- Sitemap-ul `/locuri-de-munca/sitemap.xml` are numai listele. Înainte: 1.089 de adrese, din
+  care 790 de anunțuri; rămân ~299 de liste (prag 2, neschimbat).
+- Filtrele din interogare (`?norma=`, `?contract=`, `?q=`, `?ordine=`, paginile 2+) erau deja
+  noindex și rămân așa: combinațiile lor sunt nelimitate, adică exact risipa de crawl de evitat.
+- Cost asumat: JobPosting nu mai aduce anunțurile în Google Jobs (cere pagină indexabilă).
+- Nu s-a pus `Disallow` în robots.txt: Google trebuie să poată deschide anunțurile deja
+  descoperite ca să vadă noindex-ul. Se poate reconsidera după ce GSC arată că au ieșit din index.
