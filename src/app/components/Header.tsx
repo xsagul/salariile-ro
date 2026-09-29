@@ -352,7 +352,9 @@ export default function Header() {
         <Link
           href={ANUNT.href}
           aria-current={isActive(ANUNT.href) ? "page" : undefined}
-          className="ml-2 inline-flex min-h-10 items-center whitespace-nowrap rounded-md bg-stone-900 px-3 text-sm font-semibold text-white hover:bg-stone-700 md:ml-6"
+          // Cu contur, nu negru (proprietar, 29 septembrie 2026): pe telefon, pagina calculatorului are
+          // deja trei butoane negre, iar al patrulea, sus, fura privirea de la „Calculează”.
+          className="ml-2 inline-flex min-h-10 items-center whitespace-nowrap rounded-md border border-stone-400 px-3 text-sm font-semibold text-stone-900 hover:border-stone-900 hover:bg-stone-100 md:ml-6"
         >
           {ANUNT.label}
         </Link>
