@@ -4414,3 +4414,12 @@ se cumulează în listă, dar fiecare are adresa ei, ca Google s-o găsească a�
 Probat în browser: anunțul pus la „Chelner” apare pe `/locuri-de-munca/ospatar` și pe
 `/locuri-de-munca/bucuresti/chelner`; filtrul „femeie” → Femeie de serviciu; formularul „paznic” →
 Paznic; sitemap-ul are `/barman` și `/barmanita` (grupul are 5 anunțuri).
+
+## 29 septembrie 2026 — o listă intră în Google de la 2 anunțuri, nu de la 5
+
+Decis de proprietar: primul angajator dintr-un oraș nu trebuie să aștepte alți patru. Anunțul însuși
+era deja indexat din prima clipă (`index, follow`, în sitemap); pragul privea numai listele. La 1
+anunț lista rămâne `noindex`: ar fi o copie a paginii anunțului. `PRAG_INDEX` = 2 în
+`worker/pagini.ts`; CLAUDE.md actualizat. Probat local: al doilea anunț de ospătar în București →
+`/locuri-de-munca/bucuresti/ospatar`, `/chelner`, `/ospatarita` trec pe `index, follow` și intră în
+sitemap cu tot grupul; `/femeie-de-serviciu` (0 anunțuri) rămâne `noindex`.

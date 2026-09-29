@@ -10,8 +10,12 @@ import { PE_PAGINA, dupaId, lista, listeIndexabile, numeOras, toateActive, type 
 const NUME_MESERIE = new Map(MESERII_ANUNTURI.map((m) => [m.slug, m.nume]));
 export const esteMeserie = (s: string) => NUME_MESERIE.has(s);
 const CARD = "rounded-md border border-stone-200 bg-surface p-5 shadow-soft sm:p-6";
-/** O listă intră în Google abia cu atâtea anunțuri: top 3 e numai al listelor pline. */
-export const PRAG_INDEX = 5;
+/**
+ * O listă intră în Google de la atâtea anunțuri (proprietar, 29 septembrie 2026: 2, nu 5, ca primul
+ * angajator dintr-un oraș să nu aștepte alți patru). Cu un singur anunț lista ar fi o copie a paginii
+ * lui, care e indexată oricum din prima clipă; de la 2, lista chiar compară oferte.
+ */
+export const PRAG_INDEX = 2;
 const SITE = "https://salariile.ro";
 
 const esc = (s: string) => s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);

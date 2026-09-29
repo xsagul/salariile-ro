@@ -19,7 +19,7 @@ salariile.ro este un portal despre salarii și fiscalitate în România. Scop pe
    România (SE Ranking): `/locuri-de-munca[/{oraș}][/{meserie}]` (top 3 = liste, orașul primul),
    `/anunt-angajare-{titlu}-{oraș}-{id}` (la „anunt de angajare” rankează numai anunțuri cu acest
    început), `/adauga-anunt-angajare` („adaugă anunț” e formularea căutată). O listă intră în
-   Google de la 5 anunțuri.
+   Google de la 2 anunțuri (29 septembrie; anunțul însuși e indexat din prima clipă).
 3. **Abia după acoperirea nișei:** se decide monetizarea — vânzarea produsului, vânzarea traficului, AdSense, abonament de tip SmartBill sau altceva.
 
 **Nu propune monetizare acum.** A fost respinsă explicit. Nu e o scăpare, e o decizie: activul se construiește întâi. Versiuni anterioare ale acestui fișier spuneau că obiectivul e „tranziție profesională către front-end" — era greșit și a dus o sesiune întreagă pe direcția greșită.
