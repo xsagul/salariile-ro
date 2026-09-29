@@ -10,7 +10,8 @@ salariile.ro este un portal despre salarii și fiscalitate în România. Scop pe
 
 1. **Acum:** salariile.ro devine cel mai mare hub salarial din România, acoperind ce fac paylab.ro și undelucram.ro.
 2. **Apoi:** postare de joburi, în zona ejobs / olx / anuntul.ro. **Pornit de proprietar pe 28
-   septembrie 2026**, cu deciziile lui: fără cont (link de gestionare pe email), publicare imediată, fără confirmare
+   septembrie 2026, lansat public pe 29 septembrie 2026** (D1 `salariile-anunturi`, jurisdicție UE; emailurile
+   oprite, `EMAIL_ACTIV` în `src/lib/anunturi/config.ts`, fiindcă cer Workers Paid), cu deciziile lui: fără cont (link de gestionare pe email), publicare imediată, fără confirmare
    pe email (29 septembrie: la pornire, orice pas în plus scade numărul de anunțuri), salariul
    obligatoriu cu baza lui, orice sumă (pragul minim scos tot pe 28 septembrie, ca respingerile să
    nu încetinească pornirea), numele firmei opțional și fără CUI, candidatul contactează direct angajatorul

@@ -4468,3 +4468,10 @@ amestecă datele testului pentru zilele rămase — de decis atunci (lansare dup
   verificat: tabelele anunturi, raportari, limite, d1_migrations; 0 anunțuri. Build-urile: 1 min 33 s
   fiecare, ~10 pe zi → ~470 de minute pe lună din 3.000 gratuite. Butonul „Adaugă anunț” are contur,
   nu fundal negru (proprietarul: al patrulea buton negru pe telefon strica pagina calculatorului).
+- **Lansat public** (build `2f42b3c`, live după ~4 minute de coadă + build). Verificat numai prin
+  citire, fără anunțuri de probă: `/locuri-de-munca` 200 cu `noindex` (0 anunțuri), un oraș fără
+  anunțuri 404, `/adauga-anunt-angajare` 200 fără câmp de email, `/api/anunturi` respinge un anunț
+  incomplet cu erorile în română, `/api/anunturi/lista` = `[]`, sitemap-ul doar `/locuri-de-munca`,
+  CSP/HSTS/Permissions-Policy/cache-control prezente, homepage-ul și restul site-ului 200.
+  Rămase: secretul `SARE` (proprietarul, în dashboard), Turnstile (după lansare), Email Sending
+  (numai cu Workers Paid, neplătit acum).
