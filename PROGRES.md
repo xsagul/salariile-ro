@@ -4475,3 +4475,12 @@ amestecă datele testului pentru zilele rămase — de decis atunci (lansare dup
   CSP/HSTS/Permissions-Policy/cache-control prezente, homepage-ul și restul site-ului 200.
   Rămase: secretul `SARE` (proprietarul, în dashboard), Turnstile (după lansare), Email Sending
   (numai cu Workers Paid, neplătit acum).
+- Secretul `SARE` pus în dashboard (valoare aleatorie, 48 de caractere; „Value encrypted”).
+- Turnstile: widgetul „salariile.ro anunturi” (Managed, hostname salariile.ro); cheia publică în
+  `config.ts`. Găsit înainte de pornire: `/adauga-anunt-angajare` e pagină statică și primea CSP-ul
+  general, care bloca `challenges.cloudflare.com` — cu secretul pus, orice anunț ar fi fost respins.
+  `_headers` dă acum `CSP_ANUNTURI` pe `/adauga-anunt-angajare[/*]`. Tokenul e de unică folosință:
+  după un anunț respins, widgetul se resetează (înainte, a doua încercare pica verificarea și
+  mesajul cerea reîncărcarea paginii, cu textul pierdut); trimis înainte de token → „așteaptă”.
+  Pe localhost se folosește cheia de test Cloudflare. Probat local: script încărcat, token primit,
+  fără erori CSP. Secretul TURNSTILE_SECRET îl pune proprietarul (cheie API, nu o introduc eu).

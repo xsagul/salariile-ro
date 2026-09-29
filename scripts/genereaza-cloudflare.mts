@@ -16,7 +16,7 @@
 
 import { existsSync, writeFileSync } from "node:fs";
 import path from "node:path";
-import { CSP_PAGINI_PUBLICE, CSP_WIDGET, LINK_HEADER } from "../src/lib/csp";
+import { CSP_ANUNTURI, CSP_PAGINI_PUBLICE, CSP_WIDGET, LINK_HEADER } from "../src/lib/csp";
 import { REDIRECTURI } from "../src/lib/redirecturi";
 import { FISIERE_CALENDAR } from "../src/lib/export-calendar";
 
@@ -77,6 +77,12 @@ const headere = [
   // Localitățile și străzile din formularul anunțurilor: se schimbă la regenerare, rar.
   bloc("/date/anunturi/*", ["Cache-Control: public, max-age=86400, stale-while-revalidate=604800"]),
   ...DESCARCARI.map(([cale, nume]) => bloc(cale, [`Content-Disposition: attachment; filename="${nume}"`])),
+  // Formularul de anunț e pagină statică, deci nu primește CSP-ul pus de Worker: fără regula asta,
+  // scriptul Turnstile (challenges.cloudflare.com) era blocat și, cu secretul pus, orice anunț ar fi
+  // fost respins (găsit înainte de pornirea verificării, 29 septembrie 2026).
+  ...["/adauga-anunt-angajare", "/adauga-anunt-angajare/*"].map((cale) =>
+    bloc(cale, ["! Content-Security-Policy", `Content-Security-Policy: ${CSP_ANUNTURI}`]),
+  ),
   // Iframe-urile: încadrabile pe orice site, fără X-Frame-Options.
   ...["/widget/frame", "/widget/frame/fluturas"].map((cale) =>
     bloc(cale, ["! X-Frame-Options", "! Cross-Origin-Opener-Policy", "! Content-Security-Policy", `Content-Security-Policy: ${CSP_WIDGET}`]),

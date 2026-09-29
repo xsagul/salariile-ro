@@ -1,8 +1,8 @@
 // Cheia publică Cloudflare Turnstile (verificarea anti-spam din formulare). E publică prin
 // definiție: stă în HTML. Cheia secretă e secretul TURNSTILE_SECRET al Worker-ului.
-// Goală până la crearea widgetului în contul Cloudflare al site-ului: formularele merg fără
-// verificare, iar Worker-ul o sare când nu are secretul (numai local).
-export const TURNSTILE_SITEKEY = "";
+// Widgetul „salariile.ro anunturi” (Managed, hostname salariile.ro), creat pe 29 septembrie 2026.
+// Worker-ul sare verificarea cât nu are secretul; cu secretul pus, un token lipsă e respins.
+export const TURNSTILE_SITEKEY = "0x4AAAAAAFJPx8RlIbuSb2T_";
 
 // Emailurile către cei care postează. Trimiterea către adrese oarecare cere Workers Paid (5 $/lună),
 // pe care proprietarul nu-l plătește acum (29 septembrie 2026). Cât e `false`, formularul nu cere

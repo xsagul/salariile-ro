@@ -57,7 +57,7 @@ export async function api(req: Request, env: Env, ctx: ExecutionContext, cale: s
   const ip = req.headers.get("cf-connecting-ip") ?? "local";
 
   if (cale === "/api/anunturi") {
-    if (!(await turnstileOk(env, corp.turnstile, ip))) return json({ erori: [{ camp: "general", mesaj: "Verificarea anti-spam n-a trecut. Reîncarcă pagina și încearcă din nou." }] }, 400);
+    if (!(await turnstileOk(env, corp.turnstile, ip))) return json({ erori: [{ camp: "general", mesaj: "Verificarea anti-spam n-a trecut. Așteaptă câteva secunde și apasă din nou „Trimite anunțul”." }] }, 400);
     const v = valideaza(corp, MESERII);
     if ("erori" in v) return json({ erori: v.erori }, 400);
     if (!(await inLimita(env, v.anunt.email, ip))) return json({ erori: [{ camp: "general", mesaj: "Ai publicat multe anunțuri azi. Mai încearcă mâine." }] }, 429);
