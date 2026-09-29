@@ -4687,3 +4687,28 @@ Migrarea 0002 rulată pe D1-ul de producție din consolă (29 septembrie 2026, s
 proprietarul de față): cele trei coloane există, `d1_migrations` are 0001 și 0002; anunțul 2 are
 meseria `ajutor-barman`. Filtrele publicate după migrare. Titlul paginii nu mai conține textul căutat
 (pe telefon îl rupea pe trei rânduri, cu greșeala de tastare în el).
+
+## 30 septembrie 2026 — hubul de anunțuri pornește din ofertele ANOFM
+
+Cererea proprietarului, contra „cold start”: ofertele ANOFM cu telefon, localitate, sumă și
+descriere trec ca anunțuri obișnuite, fără nicio diferență vizibilă, cu data originală. Riscul
+(telefoane publicate fără acordul persoanei: la 245 din 500 de oferte, emailul de contact e Gmail
+sau Yahoo) i-a fost prezentat; l-a asumat.
+- `scripts/anunturi/importa-anofm.mts`: oferta → cererea formularului → `valideaza` → rândul lui
+  `adauga` (slug, meserie ghicită, net, coordonate Nominatim, o cerere la 2,2 s). `creat_la` = data
+  de la ANOFM; `expira_la` = data declarată acolo (cu 30 de zile de la publicare, 273 ar fi fost
+  deja expirate). Baza: cea declarată; fără ea, numai din ofertă (salariul minim → brut; „net”/„brut”
+  în descriere). Sub 1.000 lei = plată pe oră/zi, sărită.
+- Din 9.181 de oferte active: 787 publicate (565 brut, 222 net, 202 localități, 2.000–29.000 lei).
+  Căzute: 7.466 descriere sub 80 de caractere, 450 fără sumă lunară, 403 fără telefon românesc,
+  34 dubluri, 24 normă parțială fără ore, 14 fără bază, 2 localități negăsite, 1 limită de vârstă.
+- Probat întâi pe o copie locală a D1, apoi rulat de proprietar pe producție (`wrangler d1 execute
+  --remote --file`): 787 de interogări, 790 de anunțuri active, sitemap-ul are 1.089 de adrese.
+  Linkurile de gestionare stau numai local, în `.anunturi-import/` (ignorat de git).
+- wrangler era logat pe alt cont (rulersquare); relogat pe contul site-ului (5c021919…).
+- anuntul.ro verificat: termenii, pct. 7.4, interzic preluarea anunțurilor de către alte site-uri
+  fără acord scris. Nu se republică de acolo.
+- De urmărit: D1 gratuit, 5 mil. rânduri citite/zi; o listă necacheată citește ~8 × 790 de rânduri.
+  Dacă Googlebot pe sutele de liste noi apropie limita: Workers Paid sau numărătorile mai ieftine.
+- Neautomatizat încă: anunțurile nu dispar când oferta e retrasă la ANOFM înainte de termen, iar
+  ofertele noi nu intră singure. Scriptul se poate rula din nou; sare peste ce e în `gestionare.json`.

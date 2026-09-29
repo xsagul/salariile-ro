@@ -120,3 +120,6 @@ gsc-key.json
 
 # Secretele locale ale Worker-ului (wrangler dev)
 .dev.vars
+
+# Importul ANOFM: cererile pregătite și linkurile de gestionare ale anunțurilor publicate (numai local)
+/.anunturi-import/

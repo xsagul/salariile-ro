@@ -23,6 +23,11 @@ salariile.ro este un portal despre salarii și fiscalitate în România. Scop pe
    `/anunt-angajare-{titlu}-{oraș}-{id}` (la „anunt de angajare” rankează numai anunțuri cu acest
    început), `/adauga-anunt-angajare` („adaugă anunț” e formularea căutată). O listă intră în
    Google de la 2 anunțuri (29 septembrie; anunțul însuși e indexat din prima clipă).
+   **Pornirea din ANOFM, decisă de proprietar pe 30 septembrie 2026:** ofertele ANOFM eligibile
+   (telefon, localitate, sumă cu bază, descriere originală ≥ 80 de caractere) intră ca anunțuri
+   obișnuite, fără nicio diferență vizibilă, cu telefonul din ofertă și data publicării de la ANOFM;
+   expiră la data declarată acolo. Riscul (numere de telefon publicate fără acordul persoanei) i-a
+   fost prezentat și l-a asumat. Scriptul: `scripts/anunturi/importa-anofm.mts`.
 3. **Abia după acoperirea nișei:** se decide monetizarea — vânzarea produsului, vânzarea traficului, AdSense, abonament de tip SmartBill sau altceva.
 
 **Nu propune monetizare acum.** A fost respinsă explicit. Nu e o scăpare, e o decizie: activul se construiește întâi. Versiuni anterioare ale acestui fișier spuneau că obiectivul e „tranziție profesională către front-end" — era greșit și a dus o sesiune întreagă pe direcția greșită.
