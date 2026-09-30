@@ -62,10 +62,9 @@ const secundePanaLaMiezulNoptiiUtc = () => { const m = new Date(); m.setUTCHours
 
 /**
  * Listele și sitemap-ul, din cache-ul Cloudflare cât spune `cache-control` (60 s la liste, o oră
- * la sitemap). O listă citește din D1 de ~3 ori toate anunțurile active (numărătorile din filtre),
- * iar D1 gratuit are 5 milioane de rânduri citite pe zi (29 septembrie 2026): fără cache, câteva
- * mii de anunțuri și un robot grăbit ar epuiza ziua. Cu cache, o adresă citește D1 cel mult o
- * dată pe minut, oricâți vizitatori ar veni. Anunțul însuși nu trece prin cache: cine tocmai l-a
+ * la sitemap). D1 gratuit are 5 milioane de rânduri citite pe zi. Din 30 septembrie 2026 listele
+ * nu mai citesc D1 la fiecare cerere: anunțurile active stau un minut în memoria Worker-ului
+ * (`active` din date.ts), iar cache-ul de aici scutește și calculul. Anunțul însuși nu trece prin cache: cine tocmai l-a
  * publicat îl vede imediat. `cheie` înlocuiește adresa cererii: la liste, fără parametrii ignorați.
  */
 async function dinCache(req: Request, ctx: ExecutionContext, fa: () => Promise<Response>, cheie: Request | string = req): Promise<Response> {

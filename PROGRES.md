@@ -4799,8 +4799,12 @@ Hubul rămâne legat din „Adaugă anunț” și din subsol.
   (`bot\b|crawl|spider|slurp`) pe orice listă cu parametri; la limita D1, 503 cu Retry-After până
   la miezul nopții UTC și o pagină „Anunțurile revin în câteva ore” din șablon, fără citiri din bază.
   Verificat local cu `wrangler dev`: ClaudeBot cu filtru 403, fără filtru 200, om cu filtru 200.
-- Rămâne de făcut: o listă să citească anunțurile o singură dată, nu de 9 ori (numărătorile din
-  filtre calculate în Worker), altfel limita se atinge din nou când crește numărul de anunțuri.
+- Făcut tot atunci: listele nu mai interoghează D1 la fiecare cerere. Anunțurile active se citesc
+  o dată pe minut pe instanța Worker-ului (`active` în `worker/date.ts`, un rând pe anunț), iar
+  filtrele, căutarea, ordinea și numerele din coloană se calculează în memorie. Înainte: 9
+  interogări pe listă, ~7.000 de rânduri. Verificat local, pe cele 790 de anunțuri din
+  `.anunturi-import/import.sql`: 32 de adrese (liste, filtre, căutare cu greșeli, ordonare, pagina 2,
+  API-ul „aproape de mine”) dau HTML identic la octet cu codul vechi.
 
 ## 30 septembrie 2026 — bara de sus fără „Adaugă anunț”, „Meserii” la locul lui
 
