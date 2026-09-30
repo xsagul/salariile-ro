@@ -1,7 +1,7 @@
 // Accesul la baza D1 a anunțurilor. Schema: migrations/0001_anunturi.sql.
 import type { Env } from "./index";
 import type { Loc } from "./geocod";
-import { LIMITA_PE_ZI, ZILE_PASTRARE_EMAIL, ZILE_VALABILITATE, netLunar, orasSlug, slugAnunt, type AnuntNou, type Contract, type LocMunca, type Norma } from "../src/lib/anunturi/reguli";
+import { LIMITA_PE_ZI, ZILE_PASTRARE_EMAIL, ZILE_VALABILITATE, faraDiacritice, netLunar, orasSlug, slugAnunt, type AnuntNou, type Contract, type LocMunca, type Norma } from "../src/lib/anunturi/reguli";
 import { MESERII_ANUNTURI, formaTitlu, ghicesteMeserie, grupMeserie, meseriileDomeniului, pentruPotrivire, slugurileGrupului, variante } from "../src/lib/anunturi/meserii";
 
 export type Anunt = {
@@ -98,14 +98,32 @@ export const PE_PAGINA = 20;
 export type Filtru = { meserie?: string; oras?: string; norma?: Norma; domeniu?: string; q?: string; faraExperienta?: boolean; contract?: Contract; locMunca?: LocMunca };
 
 /**
- * Textul în care caută bara, ca pe OLX: titlul, firma, localitatea și descrierea, cu litere mici și
- * fără diacritice. D1 n-are `unaccent`, iar `lower()` din SQLite schimbă numai literele fără semne.
+ * Toate anunțurile active, citite din D1 cel mult o dată pe minut pe fiecare instanță a Worker-ului,
+ * nu la fiecare listă. Până pe 30 septembrie 2026 o listă făcea 9 interogări, fiecare prin toate
+ * anunțurile (~7.000 de rânduri la 790 de anunțuri); ClaudeBot a trecut prin combinațiile filtrelor
+ * și D1 a depășit limita gratuită de 5 milioane de rânduri citite pe zi. Acum filtrele, ordinea și
+ * numerele din coloană se calculează aici, pe lista din memorie. Un anunț nou apare în liste în cel
+ * mult un minut, cât țineau oricum listele în cache; pagina lui (dupaId) se citește direct.
  */
-const DIACRITICE = [["ă", "a"], ["â", "a"], ["î", "i"], ["ș", "s"], ["ş", "s"], ["ț", "t"], ["ţ", "t"], ["Ă", "a"], ["Â", "a"], ["Î", "i"], ["Ș", "s"], ["Ş", "s"], ["Ț", "t"], ["Ţ", "t"]];
-const TEXT = DIACRITICE.reduce((e, [d, a]) => `replace(${e}, '${d}', '${a}')`, "lower(titlu || ' ' || angajator || ' ' || oras || ' ' || descriere)");
-/** Titlul cu spații la capete și în locul semnelor, ca „Barista/barman” să aibă cuvântul „barman”. */
-const TITLU = [...DIACRITICE, ["/", " "], [",", " "], [".", " "], ["-", " "], ["(", " "], [")", " "], ["!", " "], [":", " "], ["+", " "], ["&", " "]]
-  .reduce((e, [d, a]) => `replace(${e}, '${d}', '${a}')`, "(' ' || lower(titlu) || ' ')");
+type AnuntActiv = Anunt & { titluPotrivire: string; textCautare: string };
+const MEMORIE_MS = 60_000;
+let memorie: { la: number; anunturi: Promise<AnuntActiv[]> } | null = null;
+function active(env: Env): Promise<AnuntActiv[]> {
+  if (memorie && Date.now() - memorie.la < MEMORIE_MS) return memorie.anunturi;
+  const anunturi = env.DB.prepare("SELECT * FROM anunturi WHERE stare = 'activ' ORDER BY confirmat_la DESC").all<Anunt>().then((r) =>
+    r.results.map((a) => ({
+      ...a,
+      // Titlul cu spații la capete, fără diacritice și semne, ca „Barista/barman” să aibă cuvântul „barman”.
+      titluPotrivire: ` ${formaTitlu(a.titlu)} `,
+      // Textul în care caută bara, ca pe OLX: titlul, firma, localitatea și descrierea.
+      textCautare: faraDiacritice(`${a.titlu} ${a.angajator} ${a.oras} ${a.descriere}`),
+    })));
+  const intrare = { la: Date.now(), anunturi };
+  memorie = intrare;
+  // O citire eșuată (limita D1, de exemplu) nu rămâne în memorie un minut întreg.
+  anunturi.catch(() => { if (memorie === intrare) memorie = null; });
+  return anunturi;
+}
 
 /** Formele din titlu ale grupului unei meserii: „barman”, „barmanita”. */
 const formeGrup = (slug: string) => MESERII_ANUNTURI.filter((m) => m.grup === grupMeserie(slug)).map((m) => formaTitlu(m.nume));
@@ -121,44 +139,38 @@ function sinonime(w: string): string[] {
   const grupuri = new Set(MESERII_ANUNTURI.filter((m) => pentruPotrivire(m.nume).includes(` ${w}`)).map((m) => m.grup));
   return MESERII_ANUNTURI.filter((m) => grupuri.has(m.grup)).map((m) => m.slug);
 }
-/** Sluguri din catalogul nostru ([a-z0-9-]), scrise direct în SQL: D1 primește cel mult 100 de parametri. */
-const inSql = (sluguri: string[]) => sluguri.map((x) => `'${x.replace(/[^a-z0-9-]/g, "")}'`).join(", ");
 
-/** Condiția SQL a filtrului. Meseria aduce tot grupul ei: la „chelner” apar și anunțurile de „ospătar”.
+type Dimensiune = "meserie" | "oras" | "norma" | "domeniu" | "contract" | "locMunca";
+/** Condiția filtrului. Meseria aduce tot grupul ei: la „chelner” apar și anunțurile de „ospătar”.
  *  `fara` lasă deoparte o dimensiune: numărul de lângă o opțiune ține cont de celelalte filtre, nu de al ei. */
-function unde(f: Filtru, fara?: "meserie" | "oras" | "norma" | "domeniu" | "contract" | "locMunca"): { where: string; val: unknown[] } {
-  const cond = ["stare = 'activ'"], val: unknown[] = [];
+function potrivit(f: Filtru, fara?: Dimensiune): (a: AnuntActiv) => boolean {
+  const conditii: ((a: AnuntActiv) => boolean)[] = [];
   if (f.meserie && fara !== "meserie") {
     // Meseria cumulează (proprietar, 29 septembrie 2026: „să creștem poolul de găsite, nu să-l scădem”):
     // anunțurile puse la meseria grupului și cele care o au în titlu, ca „Ajutor barman…” la Barman.
-    const forme = formeGrup(f.meserie);
-    cond.push(`(meserie IN (${inSql(slugurileGrupului(f.meserie))}) OR ${forme.map(() => `${TITLU} LIKE ?`).join(" OR ")})`);
-    val.push(...forme.map((x) => `%${inTitlu(x)}%`));
+    const sluguri = new Set(slugurileGrupului(f.meserie)), forme = formeGrup(f.meserie).map(inTitlu);
+    conditii.push((a) => (a.meserie !== null && sluguri.has(a.meserie)) || forme.some((x) => a.titluPotrivire.includes(x)));
   }
-  if (f.oras && fara !== "oras") { cond.push("oras_slug = ?"); val.push(f.oras); }
-  if (f.norma && fara !== "norma") { cond.push("norma = ?"); val.push(f.norma); }
-  if (f.domeniu && fara !== "domeniu") cond.push(`meserie IN (${inSql(meseriileDomeniului(f.domeniu))})`);
-  if (f.faraExperienta) cond.push("fara_experienta = 1");
-  if (f.contract && fara !== "contract") { cond.push("contract = ?"); val.push(f.contract); }
-  if (f.locMunca && fara !== "locMunca") { cond.push("loc_munca = ?"); val.push(f.locMunca); }
+  if (f.oras && fara !== "oras") { const o = f.oras; conditii.push((a) => a.oras_slug === o); }
+  if (f.norma && fara !== "norma") { const n = f.norma; conditii.push((a) => a.norma === n); }
+  if (f.domeniu && fara !== "domeniu") { const m = new Set(meseriileDomeniului(f.domeniu)); conditii.push((a) => a.meserie !== null && m.has(a.meserie)); }
+  if (f.faraExperienta) conditii.push((a) => a.fara_experienta === 1);
+  if (f.contract && fara !== "contract") { const c = f.contract; conditii.push((a) => a.contract === c); }
+  if (f.locMunca && fara !== "locMunca") { const l = f.locMunca; conditii.push((a) => a.loc_munca === l); }
   // Fiecare cuvânt căutat, într-una din formele lui, trebuie să apară în text sau să fie numele
   // meseriei anunțului (de la 4 litere, ca „bar” să nu aducă și frizerii de la „barber”).
   for (const w of f.q ? cuvinteCautate(f.q) : []) {
     const forme = variante(w), sin = new Set(forme.filter((x) => x.length >= 4).flatMap(sinonime));
-    cond.push(`(${[...forme.map(() => `${TEXT} LIKE ?`), ...(sin.size ? [`meserie IN (${inSql([...sin])})`] : [])].join(" OR ")})`);
-    val.push(...forme.map((x) => `%${x}%`));
+    conditii.push((a) => forme.some((x) => a.textCautare.includes(x)) || (a.meserie !== null && sin.has(a.meserie)));
   }
-  return { where: cond.join(" AND "), val };
+  return (a) => conditii.every((c) => c(a));
 }
 
 export async function lista(env: Env, f: Filtru & { pagina: number; ordine?: "salariu" }): Promise<{ anunturi: Anunt[]; total: number }> {
-  const { where, val } = unde(f);
-  const ordine = f.ordine === "salariu" ? "net_min DESC, confirmat_la DESC" : "confirmat_la DESC";
-  const [n, r] = await env.DB.batch([
-    env.DB.prepare(`SELECT COUNT(*) AS n FROM anunturi WHERE ${where}`).bind(...val),
-    env.DB.prepare(`SELECT * FROM anunturi WHERE ${where} ORDER BY ${ordine} LIMIT ? OFFSET ?`).bind(...val, PE_PAGINA, (f.pagina - 1) * PE_PAGINA),
-  ]);
-  return { total: (n.results[0] as { n: number }).n, anunturi: r.results as Anunt[] };
+  // Din memorie vin deja de la cel mai nou; sortarea e stabilă, deci la salarii egale rămâne ordinea asta.
+  const gasite = (await active(env)).filter(potrivit(f));
+  const ordonate = f.ordine === "salariu" ? [...gasite].sort((a, b) => b.net_min - a.net_min) : gasite;
+  return { total: gasite.length, anunturi: ordonate.slice((f.pagina - 1) * PE_PAGINA, f.pagina * PE_PAGINA) };
 }
 
 export type Numarare = { s: string; n: string; c: number };
@@ -176,34 +188,32 @@ export async function fatete(env: Env, f: Filtru): Promise<{
   // Meseria și domeniul înlocuiesc căutarea liberă (în bară și în coloană), deci se numără fără ea;
   // localitatea și norma o rafinează, deci se numără cu ea.
   const faraText = { ...f, q: undefined };
-  const o = unde(f, "oras"), m = unde(faraText, "meserie"), n = unde(f, "norma"), d = unde(faraText, "domeniu");
-  const c = unde(f, "contract"), l = unde(f, "locMunca"), e = unde({ ...f, faraExperienta: false });
-  const [ro, rm, rn, rd, rc, rl, re] = await env.DB.batch([
-    env.DB.prepare(`SELECT oras_slug AS s, MIN(oras) AS n, SUM(CASE WHEN ${o.where} THEN 1 ELSE 0 END) AS c FROM anunturi WHERE stare = 'activ' GROUP BY oras_slug ORDER BY n`).bind(...o.val),
-    env.DB.prepare(`SELECT meserie, titlu FROM anunturi WHERE ${m.where}`).bind(...m.val),
-    env.DB.prepare(`SELECT norma AS s, COUNT(*) AS c FROM anunturi WHERE ${n.where} GROUP BY norma`).bind(...n.val),
-    env.DB.prepare(`SELECT meserie AS s, COUNT(*) AS c FROM anunturi WHERE ${d.where} AND meserie IS NOT NULL GROUP BY meserie`).bind(...d.val),
-    env.DB.prepare(`SELECT contract AS s, COUNT(*) AS c FROM anunturi WHERE ${c.where} AND contract IS NOT NULL GROUP BY contract`).bind(...c.val),
-    env.DB.prepare(`SELECT loc_munca AS s, COUNT(*) AS c FROM anunturi WHERE ${l.where} AND loc_munca IS NOT NULL GROUP BY loc_munca`).bind(...l.val),
-    env.DB.prepare(`SELECT COUNT(*) AS c FROM anunturi WHERE ${e.where} AND fara_experienta = 1`).bind(...e.val),
-  ]);
-  const peDomeniu = new Map<string, number>();
-  for (const r of rd.results as { s: string; c: number }[]) {
-    const dom = DOMENIUL.get(r.s);
-    if (dom) peDomeniu.set(dom, (peDomeniu.get(dom) ?? 0) + r.c);
+  const po = potrivit(f, "oras"), pm = potrivit(faraText, "meserie"), pn = potrivit(f, "norma"), pd = potrivit(faraText, "domeniu");
+  const pc = potrivit(f, "contract"), pl = potrivit(f, "locMunca"), pe = potrivit({ ...f, faraExperienta: false });
+  const orase = new Map<string, Numarare>(), peGrup = new Map<string, number>(), norme = new Map<Norma, number>();
+  const peDomeniu = new Map<string, number>(), contracte = new Map<Contract, number>(), locuri = new Map<LocMunca, number>();
+  const plus = <K>(m: Map<K, number>, k: K) => m.set(k, (m.get(k) ?? 0) + 1);
+  let faraExperienta = 0;
+  for (const a of await active(env)) {
+    // Numele localității: cel mai mic alfabetic dintre formele ei, ca MIN(oras) din SQL-ul de dinainte.
+    const o = orase.get(a.oras_slug) ?? { s: a.oras_slug, n: a.oras, c: 0 };
+    if (a.oras < o.n) o.n = a.oras;
+    if (po(a)) o.c++;
+    orase.set(a.oras_slug, o);
+    // Numerele meseriilor, cumulate ca filtrul: meseria anunțului sau numele ei în titlu. Un anunț
+    // „Ajutor barman” se numără și la Barman, și la Ajutor barman.
+    if (pm(a)) for (const x of GRUPURI_TITLU) if ((a.meserie && x.sluguri.has(a.meserie)) || x.forme.some((fm) => a.titluPotrivire.includes(fm))) plus(peGrup, x.g);
+    if (pn(a)) plus(norme, a.norma);
+    if (pd(a) && a.meserie) { const dom = DOMENIUL.get(a.meserie); if (dom) plus(peDomeniu, dom); }
+    if (pc(a) && a.contract) plus(contracte, a.contract);
+    if (pl(a) && a.loc_munca) plus(locuri, a.loc_munca);
+    if (pe(a) && a.fara_experienta === 1) faraExperienta++;
   }
-  // Numerele meseriilor, cumulate ca filtrul: meseria anunțului sau numele ei în titlu. Un anunț
-  // „Ajutor barman” se numără și la Barman, și la Ajutor barman.
-  const peGrup = new Map<string, number>();
-  for (const r of rm.results as { meserie: string | null; titlu: string }[]) {
-    const t = ` ${formaTitlu(r.titlu)} `;
-    for (const x of GRUPURI_TITLU) if ((r.meserie && x.sluguri.has(r.meserie)) || x.forme.some((f) => t.includes(f))) peGrup.set(x.g, (peGrup.get(x.g) ?? 0) + 1);
-  }
+  const perechi = <K>(m: Map<K, number>) => [...m].map(([s, c]) => ({ s, c }));
   return {
-    orase: ro.results as Numarare[], meserii: [...peGrup].map(([s, c]) => ({ s, c })), norme: rn.results as { s: Norma; c: number }[],
-    domenii: [...peDomeniu].map(([s, c]) => ({ s, c })),
-    contracte: rc.results as { s: Contract; c: number }[], locuri: rl.results as { s: LocMunca; c: number }[],
-    faraExperienta: (re.results[0] as { c: number } | undefined)?.c ?? 0,
+    orase: [...orase.values()].sort((x, y) => (x.n < y.n ? -1 : x.n > y.n ? 1 : 0)),
+    meserii: perechi(peGrup), norme: perechi(norme), domenii: perechi(peDomeniu),
+    contracte: perechi(contracte), locuri: perechi(locuri), faraExperienta,
   };
 }
 
@@ -212,15 +222,16 @@ export async function fatete(env: Env, f: Filtru): Promise<{
  * după distanță. Poziția vizitatorului nu pleacă niciodată din browser: el cere lista, nu trimite
  * unde e (/api/anunturi/lista).
  */
-export async function listaPentruApropiere(env: Env, f: Filtru) {
-  const { where, val } = unde(f);
-  return (await env.DB.prepare(`SELECT * FROM anunturi WHERE ${where} ORDER BY confirmat_la DESC LIMIT 500`).bind(...val).all<Anunt>()).results;
+export async function listaPentruApropiere(env: Env, f: Filtru): Promise<Anunt[]> {
+  return (await active(env)).filter(potrivit(f)).slice(0, 500);
 }
 
-/** Numele localității cum îl scriu anunțurile („Cluj-Napoca”), pentru titlul paginii ei. */
+/** Numele localității cum îl scriu anunțurile („Cluj-Napoca”), pentru titlul paginii ei: forma cea mai des folosită. */
 export async function numeOras(env: Env, slug: string): Promise<string | null> {
-  const r = await env.DB.prepare("SELECT oras FROM anunturi WHERE oras_slug = ? AND stare = 'activ' GROUP BY oras ORDER BY COUNT(*) DESC LIMIT 1").bind(slug).first<{ oras: string }>();
-  return r?.oras.replace(/,.*$/, "").trim() ?? null;
+  const forme = new Map<string, number>();
+  for (const a of await active(env)) if (a.oras_slug === slug) forme.set(a.oras, (forme.get(a.oras) ?? 0) + 1);
+  const cea = [...forme].sort((x, y) => y[1] - x[1])[0]?.[0];
+  return cea?.replace(/,.*$/, "").trim() ?? null;
 }
 
 /**
