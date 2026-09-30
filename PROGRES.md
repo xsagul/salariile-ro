@@ -4778,3 +4778,11 @@ eJobs în locul noindex-ului de mai sus, publicat câteva ore:
 - Nu s-au făcut: numărul de anunțuri în titlu (decizia din 29 septembrie), luna în titlu
   (proprietarul n-a văzut rostul), paginile de angajator, fluxul RSS, Indexing API (cer decizii
   sau contul proprietarului).
+
+## 30 septembrie 2026 — bara de sus și logoul, înapoi la forma dinainte
+
+Proprietarul: mutările din 29 septembrie seara au fost grăbite. `Header.tsx` și `Footer.tsx`
+revin exact la versiunea din `e140ab8`: „Calculator salariu” primul în bară, fără „Locuri de
+muncă” pe primul loc, logoul (sus și în subsol) spre homepage. Rămâne din `c2a188c` doar
+`Link.tsx` (un `<a>` simplu spre rutele Worker-ului, fără 404 pe `/locuri-de-munca.txt`).
+Hubul rămâne legat din „Adaugă anunț” și din subsol.
