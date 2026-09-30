@@ -8,7 +8,7 @@
 // HTMLRewriter. Headerele de securitate le pune tot el — _headers se aplică doar asseturilor.
 import { CSP_ANUNTURI, LINK_HEADER } from "../src/lib/csp";
 import { api } from "./api";
-import { cheieLista, esteMeserie, paginaAnunt, paginaLista, redirectFiltre, sitemap, sitemapScoase } from "./pagini";
+import { cheieLista, esteMeserie, paginaAnunt, paginaIndisponibila, paginaLista, redirectFiltre, sitemap, sitemapScoase } from "./pagini";
 import { curatenie } from "./date";
 
 export type Env = {
@@ -47,6 +47,20 @@ const STATICE = new Set(["/locuri-de-munca/raporteaza"]);
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
 /**
+ * Roboții nu primesc listele cu parametri în adresă (filtre, pagini, ordine). Pe 30 septembrie 2026
+ * ClaudeBot a parcurs combinațiile filtrelor: fiecare e altă adresă, deci fără cache, și fiecare
+ * citea toate anunțurile de ~9 ori. D1 a ajuns la 10,4 milioane de rânduri citite în 24 de ore,
+ * peste limita gratuită de 5 milioane, și hubul a căzut până la miezul nopții UTC. Adresele astea
+ * sunt noindex și blocate în robots.txt; aici, pentru cine nu citește robots.txt sau îl ține în cache.
+ * Listele fără parametri (oraș, meserie) rămân deschise și vin din cache.
+ */
+const ROBOT = /bot\b|crawl|spider|slurp/i;
+
+/** D1 gratuit se reface la miezul nopții UTC; până atunci orice citire eșuează. */
+const limitaD1 = (e: unknown) => /D1_ERROR/.test(String(e)) && /limit/i.test(String(e));
+const secundePanaLaMiezulNoptiiUtc = () => { const m = new Date(); m.setUTCHours(24, 0, 0, 0); return Math.ceil((m.getTime() - Date.now()) / 1000); };
+
+/**
  * Listele și sitemap-ul, din cache-ul Cloudflare cât spune `cache-control` (60 s la liste, o oră
  * la sitemap). O listă citește din D1 de ~3 ori toate anunțurile active (numărătorile din filtre),
  * iar D1 gratuit are 5 milioane de rânduri citite pe zi (29 septembrie 2026): fără cache, câteva
@@ -82,6 +96,10 @@ export default {
       if (cale === "/locuri-de-munca/sitemap.xml") return cuSecuritate(await dinCache(req, ctx, () => sitemap(env)), false);
       if (cale === "/locuri-de-munca/sitemap-expirate.xml") return cuSecuritate(await dinCache(req, ctx, () => sitemapScoase(env)), false);
 
+      if (url.search && ROBOT.test(req.headers.get("user-agent") ?? "")) {
+        return cuSecuritate(new Response("Filtrele listelor nu sunt pentru roboți: vezi robots.txt.", { status: 403, headers: { "content-type": "text/plain; charset=utf-8", "x-robots-tag": "noindex" } }), false);
+      }
+
       // Listele: /locuri-de-munca[/{oraș}][/{meserie}] și /locuri-de-munca/{meserie}.
       const cheie = cheieLista(url);
       if (cale === "/locuri-de-munca") return cuSecuritate(redirectFiltre(req) ?? (await dinCache(req, ctx, () => paginaLista(req, env, null, null), cheie)));
@@ -91,6 +109,16 @@ export default {
       return cuSecuritate(await env.ASSETS.fetch(req));
     } catch (e) {
       console.error("eroare", cale, e);
+      if (limitaD1(e)) {
+        // 503 cu Retry-After: Google înțelege că e temporar și revine, nu scoate paginile din index.
+        const dupa = String(secundePanaLaMiezulNoptiiUtc());
+        if (cale.startsWith("/api/")) return cuSecuritate(new Response(JSON.stringify({ eroare: "Anunțurile sunt indisponibile câteva ore. Încearcă din nou mai târziu." }), { status: 503, headers: { "content-type": "application/json; charset=utf-8", "retry-after": dupa } }), false);
+        try {
+          const r = await paginaIndisponibila(req, env);
+          const h = new Headers(r.headers); h.set("retry-after", dupa); h.set("cache-control", "no-store");
+          return cuSecuritate(new Response(r.body, { status: 503, headers: h }));
+        } catch { /* cade pe textul simplu de mai jos */ }
+      }
       return cuSecuritate(new Response("A apărut o eroare. Încearcă din nou peste un minut.", { status: 500, headers: { "content-type": "text/plain; charset=utf-8" } }), false);
     }
   },

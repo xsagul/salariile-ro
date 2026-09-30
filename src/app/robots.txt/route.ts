@@ -42,15 +42,11 @@ User-agent: *
 Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Allow: /
 Disallow: /api/
-# Listele de anunturi (30 septembrie 2026), ca la eJobs: paginarea, ordonarea si
-# cautarea libera sunt variatii nelimitate ale aceleiasi liste, deja noindex.
+# Listele de anunturi cu parametri in adresa (filtre, pagini, ordine, cautare):
+# variatii nelimitate ale aceleiasi liste, toate noindex. Pe 30 septembrie 2026
+# ClaudeBot le-a parcurs combinatiile si a epuizat limita zilnica a bazei de date.
 # Anunturile de pe paginile 2+ se descopera din /locuri-de-munca/sitemap.xml.
-Disallow: /locuri-de-munca*?pagina=
-Disallow: /locuri-de-munca*&pagina=
-Disallow: /locuri-de-munca*?ordine=
-Disallow: /locuri-de-munca*&ordine=
-Disallow: /locuri-de-munca*?q=
-Disallow: /locuri-de-munca*&q=
+Disallow: /locuri-de-munca*?
 
 Sitemap: https://salariile.ro/sitemap.xml
 Sitemap: https://salariile.ro/locuri-de-munca/sitemap.xml
