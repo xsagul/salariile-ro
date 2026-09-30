@@ -4786,3 +4786,23 @@ revin exact la versiunea din `e140ab8`: „Calculator salariu” primul în bar�
 muncă” pe primul loc, logoul (sus și în subsol) spre homepage. Rămâne din `c2a188c` doar
 `Link.tsx` (un `<a>` simplu spre rutele Worker-ului, fără 404 pe `/locuri-de-munca.txt`).
 Hubul rămâne legat din „Adaugă anunț” și din subsol.
+
+## 30 septembrie 2026 — ClaudeBot a epuizat limita D1; hubul căzut până la 00:00 UTC
+
+- Dimineața, toate paginile Worker-ului dădeau 500: `D1_ERROR: ... exceeded D1's free tier daily
+  row read limit`. `wrangler d1 info`: 10.369.543 rânduri citite în 24 de ore (limita gratuită:
+  5 milioane pe zi, se reface la miezul nopții UTC). Cu o zi înainte: 322.122.
+- Cauza, din `wrangler tail`: ClaudeBot parcurgea combinațiile filtrelor
+  (`?contract=…&domeniu=…&norma=…`). Fiecare combinație e altă adresă, deci fără cache, iar o listă
+  face 9 interogări care trec fiecare prin toate cele 790 de anunțuri active (~7.000 de rânduri).
+- Oprit: robots.txt blochează `/locuri-de-munca*?` (toți parametrii); Worker-ul dă 403 roboților
+  (`bot\b|crawl|spider|slurp`) pe orice listă cu parametri; la limita D1, 503 cu Retry-After până
+  la miezul nopții UTC și o pagină „Anunțurile revin în câteva ore” din șablon, fără citiri din bază.
+  Verificat local cu `wrangler dev`: ClaudeBot cu filtru 403, fără filtru 200, om cu filtru 200.
+- Rămâne de făcut: o listă să citească anunțurile o singură dată, nu de 9 ori (numărătorile din
+  filtre calculate în Worker), altfel limita se atinge din nou când crește numărul de anunțuri.
+
+## 30 septembrie 2026 — bara de sus fără „Adaugă anunț”, „Meserii” la locul lui
+
+Proprietarul: `Header.tsx` revine la versiunea dinainte de `f2c0712` — „Meserii” din nou în bară,
+după „Calculator salariu”, nu în „Ghiduri”; butonul „Adaugă anunț” scos din bară (rămâne în subsol).

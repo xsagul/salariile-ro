@@ -27,12 +27,9 @@ type Item = Leaf | Group;
 // revenit pe 26 septembrie 2026, la cererea proprietarului, după refacerea
 // calendarului. Nu adăuga o pagină aici fără cerere: fiecare intrare nouă scade
 // partea tuturor celorlalte.
-//
-// 29 septembrie 2026, cerut de proprietar: „Meserii” a coborât în „Ghiduri”, iar locul
-// lui l-a luat „Adaugă anunț” (hubul de anunțuri, pasul 2 din strategie). Când vor fi
-// destule anunțuri, aici intră și „Locuri de muncă”, eventual într-un grup „Joburi”.
 const NAV: Item[] = [
   { href: "/", label: "Calculator salariu" },
+  { href: "/salarii", label: "Meserii" },
   {
     label: "Instrumente",
     children: [
@@ -54,14 +51,10 @@ const NAV: Item[] = [
       { href: "/deducere-personala-2026", label: "Deducere personală" },
       { href: "/zile-libere-2026", label: "Zile libere 2026" },
       { href: "/zile-lucratoare-2026", label: "Zile lucrătoare 2026" },
-      { href: "/salarii", label: "Salarii pe meserii" },
     ],
   },
   { href: "/noutati", label: "Noutăți" },
 ];
-
-/** Butonul de publicare, în dreapta barei: vizibil și pe telefon, lângă meniu. */
-const ANUNT: Leaf = { href: "/adauga-anunt-angajare", label: "Adaugă anunț" };
 
 const isGroup = (i: Item): i is Group => "children" in i;
 
@@ -190,12 +183,7 @@ export default function Header() {
   };
 
   useEffect(() => {
-    // Fără bara de derulare, pagina se lățește și tot ce e în bara de sus sare spre dreapta
-    // (butonul „Adaugă anunț”, raportat de proprietar pe 29 septembrie 2026). Locul ei se
-    // păstrează cu padding; pe telefoanele cu bară suprapusă lățimea e 0 și nu se schimbă nimic.
-    const bara = window.innerWidth - document.documentElement.clientWidth;
     document.body.style.overflow = open ? "hidden" : "";
-    document.body.style.paddingRight = open && bara > 0 ? `${bara}px` : "";
     if (!open) return;
     const onKey = (event: KeyboardEvent) => {
       // Escape închide sertarul și duce focusul înapoi pe butonul de meniu.
@@ -224,7 +212,6 @@ export default function Header() {
     document.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = "";
-      document.body.style.paddingRight = "";
       document.removeEventListener("keydown", onKey);
     };
   }, [open]);
@@ -349,20 +336,10 @@ export default function Header() {
           )}
         </nav>
 
-        <Link
-          href={ANUNT.href}
-          aria-current={isActive(ANUNT.href) ? "page" : undefined}
-          // Cu contur, nu negru (proprietar, 29 septembrie 2026): pe telefon, pagina calculatorului are
-          // deja trei butoane negre, iar al patrulea, sus, fura privirea de la „Calculează”.
-          className="ml-2 inline-flex min-h-10 items-center whitespace-nowrap rounded-md border border-stone-400 px-3 text-sm font-semibold text-stone-900 hover:border-stone-900 hover:bg-stone-100 md:ml-6"
-        >
-          {ANUNT.label}
-        </Link>
-
         {/* Mobile hamburger */}
         <button
           ref={hamburgerRef}
-          className="flex h-11 w-11 cursor-pointer flex-col items-center justify-center gap-[5px] rounded p-0 hover:bg-stone-200/60 md:hidden"
+          className="ml-auto flex h-11 w-11 cursor-pointer flex-col items-center justify-center gap-[5px] rounded p-0 hover:bg-stone-200/60 md:hidden"
           aria-label={open ? "Închide meniul" : "Deschide meniul"}
           aria-expanded={open}
           aria-controls="meniu-mobil"
