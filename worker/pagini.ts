@@ -58,6 +58,16 @@ async function inSablon(req: Request, env: Env, p: Pagina): Promise<Response> {
   return new Response(out.body, { status: p.status ?? 200, headers: h });
 }
 
+/** Când D1 nu mai răspunde (limita zilnică): pagina e șablonul static, fără nicio citire din bază. */
+export function paginaIndisponibila(req: Request, env: Env): Promise<Response> {
+  return inSablon(req, env, {
+    titlu: "Anunțurile revin în câteva ore", descriere: "Anunțurile de angajare sunt indisponibile temporar.", canonic: `${SITE}/locuri-de-munca`, indexabil: false, status: 503,
+    continut: `<h1 class="text-[28px] font-bold text-stone-900">Anunțurile revin în câteva ore</h1>
+      <p class="mt-3 max-w-prose text-base text-stone-700">Lista de anunțuri e indisponibilă temporar. Anunțurile publicate nu s-au pierdut și revin singure, fără să faci nimic.</p>
+      <p class="mt-3"><a class="underline underline-offset-2" href="/">Calculează salariul net</a></p>`,
+  });
+}
+
 /**
  * Filtrele din interogare: domeniul, căutarea liberă, norma și ordinea. O valoare necunoscută se
  * ignoră. Fără praguri de salariu: proprietarul nu le vrea (29 septembrie 2026).
