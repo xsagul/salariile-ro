@@ -4806,3 +4806,5 @@ Hubul rămâne legat din „Adaugă anunț” și din subsol.
 
 Proprietarul: `Header.tsx` revine la versiunea dinainte de `f2c0712` — „Meserii” din nou în bară,
 după „Calculator salariu”, nu în „Ghiduri”; butonul „Adaugă anunț” scos din bară (rămâne în subsol).
+Corectat tot pe 30 septembrie: „Meserii” rămâne în „Ghiduri”, ca „Salarii pe meserii”, cum era;
+din bară s-a scos numai butonul „Adaugă anunț”.

@@ -27,9 +27,11 @@ type Item = Leaf | Group;
 // revenit pe 26 septembrie 2026, la cererea proprietarului, după refacerea
 // calendarului. Nu adăuga o pagină aici fără cerere: fiecare intrare nouă scade
 // partea tuturor celorlalte.
+//
+// 30 septembrie 2026, proprietarul: „Meserii” stă în „Ghiduri”, ca „Salarii pe meserii”
+// (cum fusese mutat pe 29 septembrie), iar butonul „Adaugă anunț” nu mai e în bară.
 const NAV: Item[] = [
   { href: "/", label: "Calculator salariu" },
-  { href: "/salarii", label: "Meserii" },
   {
     label: "Instrumente",
     children: [
@@ -51,6 +53,7 @@ const NAV: Item[] = [
       { href: "/deducere-personala-2026", label: "Deducere personală" },
       { href: "/zile-libere-2026", label: "Zile libere 2026" },
       { href: "/zile-lucratoare-2026", label: "Zile lucrătoare 2026" },
+      { href: "/salarii", label: "Salarii pe meserii" },
     ],
   },
   { href: "/noutati", label: "Noutăți" },
