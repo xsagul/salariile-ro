@@ -4858,3 +4858,5 @@ după textul linkului): Meserii 124, Calculator salariu 70, „Instrumente” la
 - Corectat imediat, tot pe 2 octombrie: pe telefon „Adaugă anunț” nu stă în bară, ci e ultima
   intrare din meniu (proprietarul: un buton lângă calculator ar trage angajații spre el). Butonul
   cu contur rămâne numai pe desktop (`hidden md:inline-flex`).
+- Proprietarul s-a răzgândit tot pe 2 octombrie: butonul „Adaugă anunț” rămâne în bară și pe
+  telefon, între logo și meniu, ca pe 29 septembrie (`Header.tsx` readus la `0c7edbd`).
