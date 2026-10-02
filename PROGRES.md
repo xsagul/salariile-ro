@@ -4860,3 +4860,18 @@ după textul linkului): Meserii 124, Calculator salariu 70, „Instrumente” la
   cu contur rămâne numai pe desktop (`hidden md:inline-flex`).
 - Proprietarul s-a răzgândit tot pe 2 octombrie: butonul „Adaugă anunț” rămâne în bară și pe
   telefon, între logo și meniu, ca pe 29 septembrie (`Header.tsx` readus la `0c7edbd`).
+
+## 2 octombrie 2026 — ce știe Google despre hubul de locuri de muncă (ziua a 4-a)
+
+Search Console, prin `scripts/gsc.mjs` (în Git Bash cu `MSYS_NO_PATHCONV=1` și adrese complete;
+altfel calea `/locuri-de-munca` devine `C:/Program Files/Git/...` și inspecția minte):
+
+- `/locuri-de-munca`: „Trimisă și indexată”, crawl 1 octombrie. `/adauga-anunt-angajare`: indexată,
+  crawl 29 septembrie.
+- `/locuri-de-munca/bucuresti`, `/barman`, `/bucuresti/barman`, `/cluj-napoca` și două anunțuri:
+  „Google nu cunoaște adresa URL”. Zero afișări în căutare pe tot hubul (25 septembrie – 2 octombrie).
+- Cauza găsită: sitemap-ul hubului nu fusese trimis în Search Console, era doar în robots.txt, iar
+  `sitemap.xml` nu conține nicio adresă din hub. Pagina principală a hubului leagă 20 de anunțuri
+  și 12 liste; restul listelor se ajung numai prin căutarea cu sugestii, pe care Google n-o urmează.
+- Trimise acum: `/locuri-de-munca/sitemap.xml` (913 adrese) și `/locuri-de-munca/sitemap-expirate.xml`.
+  De recitit peste 3–5 zile: `gsc.mjs sitemaps` și inspecția acelorași adrese.
