@@ -4812,3 +4812,26 @@ Proprietarul: `Header.tsx` revine la versiunea dinainte de `f2c0712` — „Mese
 după „Calculator salariu”, nu în „Ghiduri”; butonul „Adaugă anunț” scos din bară (rămâne în subsol).
 Corectat tot pe 30 septembrie: „Meserii” rămâne în „Ghiduri”, ca „Salarii pe meserii”, cum era;
 din bară s-a scos numai butonul „Adaugă anunț”.
+
+## 2 octombrie 2026 — testul A/B/C al barei de sus, citit pe 24 septembrie – 1 octombrie
+
+Aceeași explorare GA4 (`navbar_varianta_utilizator` × dispozitiv), 8 zile. Numai vizitatorii cu
+acord; 4.003 utilizatori fără acord sunt „(not set)”.
+
+| Desktop | utilizatori | sesiuni | implicate | timp activ/sesiune | sesiuni cu calcul |
+|---|---|---|---|---|---|
+| a (ca înainte) | 358 | 431 | 361 | 1m 44s | 44,8% |
+| b (lipită sus) | 366 | 444 | 368 | 1m 42s | 42,6% |
+| c (ascunsă la derulare) | 368 | 467 | 385 | 2m 20s | 38,5% |
+
+| Toate dispozitivele | utilizatori | sesiuni | implicate | timp activ/sesiune | sesiuni cu calcul |
+|---|---|---|---|---|---|
+| a | 1.070 | 1.275 | 1.099 | 1m 17s | 49,6% |
+| b | 1.095 | 1.316 | 1.127 | 1m 16s | 49,4% |
+| c | 1.112 | 1.373 | 1.178 | 1m 29s | 48,3% |
+
+Telefonul, calculat ca total minus desktop și tabletă (coloana lui nu s-a putut citi direct):
+a 833 de sesiuni, ~51,9% cu calcul; b 870, ~52,9%; c 906, ~53,4%; timp activ ~1m 03s la toate.
+Pe telefon nicio diferență. Pe desktop c are timp mai lung și mai puține calcule decât a
+(6,3 pp, z ≈ 1,9 — la limită). Din 29 septembrie bara s-a schimbat de mai multe ori, dar la fel
+pentru toate cele trei variante. Clickurile `zona=header` pe variante, necitite.
