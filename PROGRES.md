@@ -4855,3 +4855,6 @@ după textul linkului): Meserii 124, Calculator salariu 70, „Instrumente” la
 - „Locuri de muncă” între „Calculator salariu” și „Instrumente”; activ și pe `/anunt-angajare-*`.
 - Verificat local, desktop 1280 și telefon 375: ordinea, butonul între logo și meniu, fără
   derulare pe orizontală, sertarul cu aceleași intrări.
+- Corectat imediat, tot pe 2 octombrie: pe telefon „Adaugă anunț” nu stă în bară, ci e ultima
+  intrare din meniu (proprietarul: un buton lângă calculator ar trage angajații spre el). Butonul
+  cu contur rămâne numai pe desktop (`hidden md:inline-flex`).
