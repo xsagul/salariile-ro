@@ -1,1767 +1,1796 @@
 {
-  "descriere": "Registrul viu al surselor art. 33 din Legea 153/2017. Colectorul: scripts/colectare/art33/colecteaza.mjs. Perioada = luna ale cărei sume sunt publicate.",
-  "verificatLa": "2026-09-26",
-  "surse": [
-    {
-      "id": "sju-alba",
-      "institutie": "Spitalul Județean de Urgență Alba Iulia",
-      "tip": "spital",
-      "judet": "AB",
-      "pagina": "https://spitalalba.ro/",
-      "fisier": "https://spitalalba.ro/docs/NUSTERGE/Transparen%C8%9Ba%20veniturilor%20salariale%20la%20data%20de%2031.03.2026.pdf",
-      "perioada": "2026-02 (publicat la 31.03.2026)",
-      "format": "pdf cu text; un rând pe post; perechi procent–sumă"
-    },
-    {
-      "id": "scju-cluj",
-      "institutie": "Spitalul Clinic Județean de Urgență Cluj-Napoca",
-      "tip": "spital",
-      "judet": "CJ",
-      "pagina": "https://scjucluj.ro/index.php/management/informatii-de-interes-public/transparenta-veniturilor-salariale",
-      "fisier": "https://scjucluj.ro/pdf/venituri/Venituri%20salariale%20martie%202026%20.pdf",
-      "perioada": "2026-03",
-      "format": "pdf cu text; funcție, bază, procent și sumă spor condiții"
-    },
-    {
-      "id": "sju-bacau",
-      "institutie": "Spitalul Județean de Urgență Bacău",
-      "tip": "spital",
-      "judet": "BC",
-      "pagina": "https://www.spitaluljudeteanbacau.ro/transparenta-venituri-salariale/",
-      "fisier": "https://www.spitaluljudeteanbacau.ro/storage/2026/03/SJUBC-salarii-februarie-2026.pdf",
-      "perioada": "2026-02",
-      "format": "pdf cu text; multe coloane de sporuri"
-    },
-    {
-      "id": "sju-gorj",
-      "institutie": "Spitalul Județean de Urgență Târgu Jiu",
-      "tip": "spital",
-      "judet": "GJ",
-      "pagina": "https://www.spitalgorj.ro/venituri-salariale/",
-      "fisier": "https://www.spitalgorj.ro/wp-content/uploads/2026/03/SALARII-FEBRUARIE-2026-31.03.2026-TRANSPARENTA.pdf",
-      "perioada": "2026-02",
-      "format": "pdf cu text; un rând pe post"
-    },
-    {
-      "id": "sju-mciuc",
-      "institutie": "Spitalul Județean de Urgență Miercurea Ciuc",
-      "tip": "spital",
-      "judet": "HR",
-      "pagina": "https://spitalmciuc.ro/",
-      "fisier": "https://spitalmciuc.ro/wp-content/uploads/2026/04/Transparenta-veniturilor-salariale-martie-2026.pdf",
-      "perioada": "2026-03",
-      "format": "pdf cu text; funcție, studii, gradație, sume"
-    },
-    {
-      "id": "scju-ilfov",
-      "institutie": "Spitalul Clinic Județean de Urgență Ilfov",
-      "tip": "spital",
-      "judet": "IF",
-      "pagina": "https://scjuilfov-asec.ro/despre/transparenta-salariala/",
-      "fisier": "https://scjuilfov-asec.ro/media/135587/transparenta-veniturilor-salariale-la-31032026.pdf",
-      "perioada": "2026-03",
-      "format": "pdf scanat, fără text — nu se folosește"
-    },
-    {
-      "id": "scju-constanta",
-      "institutie": "Spitalul Clinic Județean de Urgență Constanța",
-      "tip": "spital",
-      "judet": "CT",
-      "pagina": "https://www.spitalulconstanta.ro/informatii-de-interes-public/transparenta-veniturilor-salariale/",
-      "fisier": "https://www.spitalulconstanta.ro/wp-content/uploads/2026/03/Venituri_salariale-Martie_2026.xlsx",
-      "perioada": "2026-03",
-      "format": "xlsx; importat parțial în src/data/transparenta-constanta.json"
-    },
-    {
-      "id": "scju-sibiu",
-      "institutie": "Spitalul Clinic Județean de Urgență Sibiu",
-      "tip": "spital",
-      "judet": "SB",
-      "pagina": "https://scjus.ro/transparenta-veniturilor-salariale/",
-      "fisier": "https://scjus.ro/storage/2026/03/Venituri-Martie-2026.xlsx",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-25"
-    },
-    {
-      "id": "sju-baia-mare",
-      "institutie": "Spitalul Județean de Urgență Baia Mare",
-      "tip": "spital",
-      "judet": "MM",
-      "pagina": "https://www.spitaljbm.ro/index.php/despre-noi/documente-sjubm/buget/transparenta-veniturilor-salariale",
-      "nota": "pagină găsită; fișierul din 2026 de identificat"
-    },
-    {
-      "id": "scju-bistrita",
-      "institutie": "Spitalul Clinic Județean de Urgență Bistrița",
-      "tip": "spital",
-      "judet": "BN",
-      "pagina": "https://sjub.ro/",
-      "nota": "pagină găsită; fișierul din 2026 de identificat"
-    },
-    {
-      "id": "dgaspc-s1",
-      "institutie": "DGASPC Sector 1",
-      "tip": "dgaspc",
-      "judet": "B",
-      "pagina": "https://www.dgaspc-sectorul1.ro/transparenta-decizionala/transparenta-veniturilor-salariale/",
-      "fisier": "https://www.dgaspc-sectorul1.ro/wp-content/uploads/2026/06/Transparenta-venituri-salariale_-MARTIE-2026.pdf",
-      "perioada": "2026-06",
-      "gasitLa": "2026-09-25"
-    },
-    {
-      "id": "dgaspc-s2",
-      "institutie": "DGASPC Sector 2",
-      "tip": "dgaspc",
-      "judet": "B",
-      "pagina": "https://social2.ro/transparenta-veniturilor-salariale/",
-      "fisier": "https://social2.ro/wp-content/uploads/2026/03/Transparenta-veniturilor-salariale-31.03.2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-25"
-    },
-    {
-      "id": "dgaspc-if",
-      "institutie": "DGASPC Ilfov",
-      "tip": "dgaspc",
-      "judet": "IF",
-      "pagina": "https://protectiacopilului.ro/transparenta-veniturilor-salariale/",
-      "fisier": "https://protectiacopilului.ro/wp-content/uploads/2016/01/TABEL-SALARII-DE-BAZA-LA-31.03.2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-25"
-    },
-    {
-      "id": "dgaspc-sv",
-      "institutie": "DGASPC Suceava",
-      "tip": "dgaspc",
-      "judet": "SV",
-      "pagina": "https://dgaspcsv.ro/transparenta-veniturilor-salariale/",
-      "fisier": "https://dgaspcsv.ro/wp-content/uploads/2026/03/Transparenta-veniturilor_30.03.2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-25"
-    },
-    {
-      "id": "dgaspc-gj",
-      "institutie": "DGASPC Gorj",
-      "tip": "dgaspc",
-      "judet": "GJ",
-      "pagina": "https://www.dgaspcgorj.ro/informatii-publice/transparenta/",
-      "fisier": "https://www.dgaspcgorj.ro/wp-content/uploads/2026/09/transparenta-veniturilor-salariale-DGASPC-Gorj-septembrie-2026.pdf",
-      "perioada": "2026-09",
-      "gasitLa": "2026-09-25"
-    },
-    {
-      "id": "dgaspc-vs",
-      "institutie": "DGASPC Vaslui",
-      "tip": "dgaspc",
-      "judet": "VS",
-      "pagina": "https://www.dgaspc-vs.ro/transparenta/transparenta-veniturilor-salariale/",
-      "nota": "pagină găsită; fișierul din 2026 de identificat"
-    },
-    {
-      "id": "dgaspc-bt",
-      "institutie": "DGASPC Botoșani",
-      "tip": "dgaspc",
-      "judet": "BT",
-      "pagina": "https://dgaspcbt.ro/transparenta-veniturilor-salariale/",
-      "fisier": "https://dgaspcbt.ro/wp-content/uploads/2024/09/Transparen%C8%9B%C4%83-salarial%C4%83-sept-2024.pdf",
-      "perioada": "2024-09",
-      "gasitLa": "2026-09-25"
-    },
-    {
-      "id": "dgaspc-cl",
-      "institutie": "DGASPC Călărași",
-      "tip": "dgaspc",
-      "judet": "CL",
-      "pagina": "https://dgaspc-cl.ro/despre/transparenta",
-      "fisier": "https://dgaspc-cl.ro/images/2026/Transparenta%20veniturilor%2031%20martie%202026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-25"
-    },
-    {
-      "id": "dgaspc-sm",
-      "institutie": "DGASPC Satu Mare",
-      "tip": "dgaspc",
-      "judet": "SM",
-      "pagina": "https://www.dgaspcsm.ro/transparenta-veniturilor-salariale",
-      "fisier": "https://www.dgaspcsm.ro/storage/resurse-umane/transparenta-martie-2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-25"
-    },
-    {
-      "id": "bj-alba",
-      "institutie": "Biblioteca Județeană Lucian Blaga Alba",
-      "tip": "biblioteca",
-      "judet": "AB",
-      "pagina": "https://www.bjalba.ro/despre-noi/transparenta-veniturilor-salariale/",
-      "fisier": "https://www.bjalba.ro/wp-content/uploads/2026/03/Transparenta-veniturilor-salariale.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-25"
-    },
-    {
-      "id": "bj-valcea",
-      "institutie": "Biblioteca Județeană Antim Ivireanul Vâlcea",
-      "tip": "biblioteca",
-      "judet": "VL",
-      "pagina": "https://www.bjai.ro/informatii-publice-bjai/",
-      "fisier": "https://www.bjai.ro/informatii-publice/informatii-publice/Transparenta%20Veniturilor%20Salariale%20la%2010%20Martie%202026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-25"
-    },
-    {
-      "id": "bj-vrancea",
-      "institutie": "Biblioteca Județeană Vrancea",
-      "tip": "biblioteca",
-      "judet": "VN",
-      "pagina": "https://bjvrancea.ro/informatii-publice/",
-      "fisier": "https://bjvrancea.ro/wp-content/uploads/2026/03/Scan2026-03-25_090522.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-25"
-    },
-    {
-      "id": "bj-calarasi",
-      "institutie": "Biblioteca Județeană Alexandru Odobescu Călărași",
-      "tip": "biblioteca",
-      "judet": "CL",
-      "pagina": "https://www.bjcalarasi.ro/?page_id=2850",
-      "fisier": "https://www.bjcalarasi.ro/wp-content/uploads/2025/04/Raport-anual-privind-transparenta-decizionala-pe-anul-2024.pdf",
-      "perioada": "2025-04",
-      "gasitLa": "2026-09-25"
-    },
-    {
-      "id": "bcu-bucuresti",
-      "institutie": "Biblioteca Centrală Universitară București",
-      "tip": "biblioteca",
-      "judet": "B",
-      "pagina": "https://www.bcub.ro/transparenta-veniturilor-salariale/",
-      "fisier": "https://www.bcub.ro/wp-content/uploads/2022/03/Transparenta-Veniturilor-Salariale.pdf",
-      "perioada": "2022-03",
-      "gasitLa": "2026-09-26"
-    },
-    {
-      "id": "pm-timisoara",
-      "institutie": "Primăria Timișoara",
-      "tip": "primarie",
-      "judet": "TM",
-      "pagina": "https://www.primariatm.ro/transparenta/finante-publice/transparenta-veniturilor-salariale",
-      "fisier": "https://assets.primariatm.ro/0b82431c-323b-42e1-856e-f930c032893d/31.03.2026%20R.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-25"
-    },
-    {
-      "id": "pm-sinaia",
-      "institutie": "Primăria Sinaia",
-      "tip": "primarie",
-      "judet": "PH",
-      "pagina": "https://www.primaria-sinaia.ro/",
-      "fisier": "https://www.primaria-sinaia.ro/wp-content/uploads/2026/03/Transparenta-veniturilor-salariale-la-data-de-31-martie-2026.pdf"
-    },
-    {
-      "id": "pm-suceava",
-      "institutie": "Primăria Suceava",
-      "tip": "primarie",
-      "judet": "SV",
-      "pagina": "https://www.primariasv.ro/dm_suceava/site.nsf/pagini/transparenta+veniturilor+salariale-0000A342",
-      "fisier": "https://www.primariasv.ro/dm_suceava/site.nsf/atasament/FB164BA39544D2D1C2258DC70030413B/$FILE/Transparenta%20veniturilor%20la%2031%20martie%202026.pdf?Open",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-25"
-    },
-    {
-      "id": "ps4",
-      "institutie": "Primăria Sectorului 4",
-      "tip": "primarie",
-      "judet": "B",
-      "pagina": "https://ps4.ro/transparenta-veniturilor-salariale/",
-      "fisier": "https://ps4.ro/wp-content/uploads/2026/04/Transparenta-veniturilor-salariale-Martie-2026.pdf",
-      "perioada": "2026-04",
-      "gasitLa": "2026-09-25"
-    },
-    {
-      "id": "ps6",
-      "institutie": "Primăria Sectorului 6",
-      "tip": "primarie",
-      "judet": "B",
-      "pagina": "https://www.primarie6.ro/primarie_sector6/informatii-interes-public/transparenta-venituri",
-      "fisier": "https://www.primarie6.ro/primarie_sector6/sites/default/files/2026-03/Transparen%C8%9Ba%20veniturilor%20salariale%20-%20execu%C8%9Bie%20-%2031%20martie%202026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-25"
-    },
-    {
-      "id": "cj-olt",
-      "institutie": "Consiliul Județean Olt",
-      "tip": "consiliu-judetean",
-      "judet": "OT",
-      "pagina": "https://cjolt.ro/informatii-de-interes-public/transparenta-veniturilor-salariale/",
-      "nota": "pagină găsită; fișierul din 2026 de identificat"
-    },
-    {
-      "id": "cj-salaj",
-      "institutie": "Consiliul Județean Sălaj",
-      "tip": "consiliu-judetean",
-      "judet": "SJ",
-      "pagina": "https://www.cjsj.ro/index.php/informatii-publice/transparenta-veniturilor-salariale",
-      "fisier": "https://www.cjsj.ro/date/pdfuri/Transparenta%20venituri%20salariale/Lista24.09.2026.pdf",
-      "perioada": "2026-09",
-      "gasitLa": "2026-09-25"
-    },
-    {
-      "id": "dnp",
-      "institutie": "Direcția Națională de Probațiune",
-      "tip": "institutie-centrala",
-      "judet": "B",
-      "pagina": "https://probatiune.just.ro/",
-      "fisier": "https://probatiune.just.ro/wp-content/uploads/2026/04/DNP_31.03.2026_transparenta_veniturilor-salariale.pdf"
-    },
-    {
-      "id": "sju-buzau",
-      "institutie": "Spitalul Județean de Urgență Buzău",
-      "tip": "spital",
-      "judet": "BZ",
-      "pagina": "https://www.spitalulbuzau.ro/venituri-salariale",
-      "fisier": "https://www.spitalulbuzau.ro/docs/economic/venituri/2026/transparenta%20februarie%202026.xlsx",
-      "perioada": "2026-02",
-      "gasitLa": "2026-09-25"
-    },
-    {
-      "id": "scju-mures",
-      "institutie": "Spitalul Clinic Județean de Urgență Târgu Mureș",
-      "tip": "spital",
-      "judet": "MS",
-      "pagina": "https://www.spitalmures.ro/en/resurse-umane/transparenta-veniturilor-salariale/",
-      "fisier": "https://www.spitalmures.ro/wp-content/uploads/2026/04/transparenta-veniturilor-salariale-la-31.03.2026.pdf",
-      "perioada": "2026-04",
-      "gasitLa": "2026-09-25"
-    },
-    {
-      "id": "scju-galati",
-      "institutie": "Spitalul Clinic Județean de Urgență Galați",
-      "tip": "spital",
-      "judet": "GL",
-      "pagina": "https://www.spitalulurgentagalati.ro/despre_transparenta.html",
-      "fisier": "https://www.spitalulurgentagalati.ro/despre_noi/Transparenta_Venituri_Salariale-Lista_Functiilor_martie2019.xls",
-      "perioada": "2019-03",
-      "gasitLa": "2026-09-26"
-    },
-    {
-      "id": "sbi-iasi",
-      "institutie": "Spitalul Clinic de Boli Infecțioase Iași",
-      "tip": "spital",
-      "judet": "IS",
-      "pagina": "https://www.infectioase.ro/transparenta-veniturilor-salariale-martie-2026/",
-      "fisier": "https://www.infectioase.ro/wp-content/uploads/2026/03/Transparenta-veniturilor-salariale-MARTIE-2026-.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-25"
-    },
-    {
-      "id": "sju-giurgiu",
-      "institutie": "Spitalul Județean de Urgență Giurgiu",
-      "tip": "spital",
-      "judet": "GR",
-      "pagina": "https://spitalgiurgiu.ro/index.php/informatii-de-interes-public/transparenta-veniturilor-si-cheltuielilor",
-      "fisier": "https://spitalgiurgiu.ro/documents/jdownloads/825-transparenta-veniturilor-salariale-septembrie-2022.pdf",
-      "perioada": "2022-09",
-      "gasitLa": "2026-09-26"
-    },
-    {
-      "id": "scju-timisoara",
-      "institutie": "Spitalul Clinic Județean de Urgență Pius Brînzeu Timișoara",
-      "tip": "spital",
-      "judet": "TM",
-      "pagina": "https://www.hosptm.ro/venituri-nete-salariale/",
-      "fisier": "https://www.hosptm.ro/files/venituri/2026/Transparenta-venituri-MARTIE-2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-25"
-    },
-    {
-      "id": "sju-neamt",
-      "institutie": "Spitalul Județean de Urgență Piatra Neamț",
-      "tip": "spital",
-      "judet": "NT",
-      "pagina": "https://www.sjuneamt.ro/venituri-nete-realizate"
-    },
-    {
-      "id": "sbi-constanta",
-      "institutie": "Spitalul Clinic de Boli Infecțioase Constanța",
-      "tip": "spital",
-      "judet": "CT",
-      "pagina": "https://infectioaseconstanta.ro/transparenta-veniturilor-salariale/",
-      "fisier": "https://infectioaseconstanta.ro/wp-content/uploads/2026/03/SCBI-CT-CT14-Raport-transparenta-informatii-publice_T4-AN-2025.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-25"
-    },
-    {
-      "id": "sm-calafat",
-      "institutie": "Spitalul Municipal Calafat",
-      "tip": "spital",
-      "judet": "DJ",
-      "pagina": "https://spitalcalafat.ro/transparenta-veniturilor-salariale/",
-      "fisier": "https://spitalcalafat.ro/wp-content/uploads/2024/04/Lista-functii-site-SMC-martie-2024-.pdf",
-      "perioada": "2024-04",
-      "gasitLa": "2026-09-25"
-    },
-    {
-      "id": "sm-turda",
-      "institutie": "Spitalul Municipal Turda",
-      "tip": "spital",
-      "judet": "CJ",
-      "pagina": "https://spitalturda.ro/index.php/transparenta-veniturilor-salariale/",
-      "fisier": "https://spitalturda.ro/wp-content/uploads/2026/03/transparenta-veniturilor-salariale-2026_03.xlsx",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-25"
-    },
-    {
-      "id": "sp-titan",
-      "institutie": "Spitalul de Psihiatrie Titan Dr. Constantin Gorgos",
-      "tip": "spital",
-      "judet": "B",
-      "pagina": "https://spitalulgorgos.ro/transparenta-veniturilor-salariale/",
-      "fisier": "https://spitalulgorgos.ro/wp-content/uploads/2025/09/Transparenta-veniturilor-salariale-31.03.2026_Redacted.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-25"
-    },
-    {
-      "id": "dsp-vaslui",
-      "institutie": "Direcția de Sănătate Publică Vaslui",
-      "tip": "dsp",
-      "judet": "VS",
-      "pagina": "https://dspvs.ro/transparenta-veniturilor-salariale-septembrie-2026/",
-      "fisier": "https://dspvs.ro/wp-content/uploads/2026/09/TRANSPARENTA-VENITURILOR-SALARIALE-SEPTEMBRIE-2026.pdf",
-      "perioada": "2026-09",
-      "gasitLa": "2026-09-25"
-    },
-    {
-      "id": "assmb",
-      "institutie": "Administrația Spitalelor și Serviciilor Medicale București",
-      "tip": "spital",
-      "judet": "B",
-      "pagina": "https://assmb.ro/",
-      "fisier": "https://assmb.ro/storage/transparenta/2026/salarii/martie.pdf",
-      "perioada": "2026-03"
-    },
-    {
-      "id": "sco-filantropia",
-      "institutie": "Spitalul Clinic de Obstetrică și Ginecologie Filantropia",
-      "tip": "spital",
-      "judet": "B",
-      "pagina": "https://spitalulfilantropia.ro/transparenta-venituri-salariale/",
-      "fisier": "https://spitalulfilantropia.ro/wp-content/uploads/2026/03/transparenta-salariala-la-luna-martie-2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-26"
-    },
-    {
-      "id": "scju-bihor",
-      "institutie": "Spitalul Clinic Județean de Urgență Bihor",
-      "tip": "spital",
-      "judet": "BH",
-      "pagina": "https://spitaljudetean-oradea.ro/situatia-drepturilor-salariale/",
-      "fisier": "https://spitaljudetean-oradea.ro/wp-content/uploads/2026/04/tansparenta-salariala-martie-2026-2.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-26"
-    },
-    {
-      "id": "scpn-brasov",
-      "institutie": "Spitalul Clinic de Psihiatrie și Neurologie Brașov",
-      "tip": "spital",
-      "judet": "BV",
-      "pagina": "https://www.scpnbv.ro/transparenta-decizionala/",
-      "fisier": "https://www.scpnbv.ro/wp-content/uploads/2026/04/Transparenta-veniturilor-salariale-martie-2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-26"
-    },
-    {
-      "id": "scju-braila",
-      "institutie": "Spitalul Clinic Județean de Urgență Brăila",
-      "tip": "spital",
-      "judet": "BR",
-      "pagina": "https://www.spitalbraila.ro/",
-      "fisier": "https://www.spitalbraila.ro/assets/docs/Venituri/Transparenta%20Martie%202026.pdf",
-      "perioada": "2026-03"
-    },
-    {
-      "id": "sm-blaj",
-      "institutie": "Spitalul Municipal Blaj",
-      "tip": "spital",
-      "judet": "AB",
-      "pagina": "https://spitalblaj.ro/informatii-de-interes-public/transparenta-veniturilor-salariale/",
-      "fisier": "https://spitalblaj.ro/wp-content/uploads/2026/07/raport-venit-net-luna-Iunie-2026.pdf",
-      "perioada": "2026-06",
-      "gasitLa": "2026-09-26"
-    },
-    {
-      "id": "scm-cluj",
-      "institutie": "Spitalul Clinic Municipal Cluj-Napoca",
-      "tip": "spital",
-      "judet": "CJ",
-      "pagina": "https://spitalclujana.ro/informatii-publice/venituri-salariale-nete/",
-      "fisier": "https://spitalclujana.ro/wp-content/uploads/2025/05/salarii-Martie_2025.pdf",
-      "perioada": "2025-03",
-      "gasitLa": "2026-09-26"
-    },
-    {
-      "id": "so-negresti",
-      "institutie": "Spitalul Orășenesc Negrești-Oaș",
-      "tip": "spital",
-      "judet": "SM",
-      "pagina": "https://www.spitalnegrestioas.ro/index.php/ro/informatii-publice/informatii-financiare/venituri-nete"
-    },
-    {
-      "id": "dgaspc-ag",
-      "institutie": "DGASPC Argeș",
-      "tip": "dgaspc",
-      "judet": "AG",
-      "pagina": "https://www.cjarges.ro/en/web/dgaspc-arges/transparenta-veniturilor-salariale"
-    },
-    {
-      "id": "dgaspc-s3",
-      "institutie": "DGASPC Sector 3",
-      "tip": "dgaspc",
-      "judet": "B",
-      "pagina": "https://dgaspc3.ro/utile/activitate-organizare/lista-functiilor-si-a-salariului-de-baza-din-cadrul-dgaspc-sector-3/",
-      "fisier": "https://dgaspc3.ro/wp-content/uploads/Transparenta-salariala-AP-31.03.2025.pdf",
-      "perioada": "2025-03",
-      "gasitLa": "2026-09-26"
-    },
-    {
-      "id": "dgaspc-bn",
-      "institutie": "DGASPC Bistrița-Năsăud",
-      "tip": "dgaspc",
-      "judet": "BN",
-      "pagina": "https://www.dgaspcbn.ro/site/documente?id=39",
-      "fisier": "https://www.dgaspcbn.ro/site/doc-load?id=1763&doc=SALARII+DGASPC+BN-31.03.2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-26"
-    },
-    {
-      "id": "das-brasov",
-      "institutie": "Direcția de Asistență Socială Brașov",
-      "tip": "dgaspc",
-      "judet": "BV",
-      "pagina": "http://www.dasbv.ro/transparenta-veniturilor-salariale/",
-      "fisier": "http://www.dasbv.ro/wp-content/uploads/2018/01/Transparenta-salariala-31.03.2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-26"
-    },
-    {
-      "id": "dsp-sibiu",
-      "institutie": "Direcția de Sănătate Publică Sibiu",
-      "tip": "dsp",
-      "judet": "SB",
-      "pagina": "https://www.dspsibiu.ro/venituri-salariale/"
-    },
-    {
-      "id": "dsp-bucuresti",
-      "institutie": "Direcția de Sănătate Publică București",
-      "tip": "dsp",
-      "judet": "B",
-      "pagina": "https://dspb.ro/transparenta/drepturi-salariale.php",
-      "fisier": "https://dspb.ro/pdf/salarii/2026/VENITURI-SALARIALE-MARTIE-2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-26"
-    },
-    {
-      "id": "dsp-hunedoara",
-      "institutie": "Direcția de Sănătate Publică Hunedoara",
-      "tip": "dsp",
-      "judet": "HD",
-      "pagina": "https://asphd.ro/transparenta-veniturilor-salariale-la-data-de-31-03-2026-conf-art-33-din-legea-153-2017/"
-    },
-    {
-      "id": "dsp-prahova",
-      "institutie": "Direcția de Sănătate Publică Prahova",
-      "tip": "dsp",
-      "judet": "PH",
-      "pagina": "https://www.dspph.ro/transparenta-veniturilor-salariale-2026/",
-      "fisier": "https://www.dspph.ro/wp-content/uploads/2026/04/VENITURI-SALARIALE-31.03.2026-1.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-26"
-    },
-    {
-      "id": "dsp-braila",
-      "institutie": "Direcția de Sănătate Publică Brăila",
-      "tip": "dsp",
-      "judet": "BR",
-      "pagina": "https://dspbr.ro/venituri-salariale/",
-      "fisier": "https://dspbr.ro/wp-content/uploads/2020/07/DSP-Brila-3046_Transparena-veniturilor-salariale-la-data-de-31032026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-26"
-    },
-    {
-      "id": "ugal",
-      "institutie": "Universitatea Dunărea de Jos Galați",
-      "tip": "universitate",
-      "judet": "GL",
-      "pagina": "https://www.ugal.ro/informatii/informatii-publice/transparenta-veniturilor-salariale",
-      "fisier": "https://www.ugal.ro/files/resurese_umane/2026/Transparenta_veniturilor_salariale_art_33_L._153_31.03.2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "umfst",
-      "institutie": "Universitatea de Medicină, Farmacie, Științe și Tehnologie Târgu Mureș",
-      "tip": "universitate",
-      "judet": "MS",
-      "pagina": "https://www.umfst.ro/",
-      "fisier": "https://www.umfst.ro/fileadmin/directia_adm/personal/2026/Transparenta_veniturilor_salariale_31_martie_2026.pdf",
-      "perioada": "2026-03"
-    },
-    {
-      "id": "ovidius",
-      "institutie": "Universitatea Ovidius Constanța",
-      "tip": "universitate",
-      "judet": "CT",
-      "pagina": "https://www.univ-ovidius.ro/",
-      "fisier": "https://www.univ-ovidius.ro/wp-content/uploads/2026/03/Venituri-salariale-martie-2026.pdf",
-      "perioada": "2026-03"
-    },
-    {
-      "id": "ub-bacau",
-      "institutie": "Universitatea Vasile Alecsandri Bacău",
-      "tip": "universitate",
-      "judet": "BC",
-      "pagina": "https://www.ub.ro/",
-      "fisier": "https://www.ub.ro/storage/1774866100transparenta_martie_2026.pdf",
-      "perioada": "2026-03"
-    },
-    {
-      "id": "umfcd",
-      "institutie": "Universitatea de Medicină și Farmacie Carol Davila București",
-      "tip": "universitate",
-      "judet": "B",
-      "pagina": "https://umfcd.ro/despre-umfcd/resurse-umane/transparenta-veniturilor-salariale/",
-      "fisier": "https://umfcd.ro/wp-content/uploads/2026/RUNOS/TRANSPARENTA_VENITURILOR_SALARIALE/Transparenta%20veniturilor%20salariale%20UMFCD%20martie%202026.xls",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-26"
-    },
-    {
-      "id": "unarte",
-      "institutie": "Universitatea Națională de Arte București",
-      "tip": "universitate",
-      "judet": "B",
-      "pagina": "https://unarte.org/",
-      "fisier": "https://unarte.org/wp-content/uploads/2026/03/transparenta-veniturilor-din-UNAB-martie-2026-.pdf",
-      "perioada": "2026-03"
-    },
-    {
-      "id": "uauim",
-      "institutie": "Universitatea de Arhitectură și Urbanism Ion Mincu",
-      "tip": "universitate",
-      "judet": "B",
-      "pagina": "https://www.uauim.ro/informatii-interes-public/",
-      "fisier": "https://www.uauim.ro/universitatea/personal/2025-2026/Transparenta%20veniturilor%20salariale%20cf.%20L153-2017%20martie%202026.xlsx",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-26"
-    },
-    {
-      "id": "sju-ploiesti",
-      "institutie": "Spitalul Județean de Urgență Ploiești",
-      "tip": "spital",
-      "judet": "PH",
-      "pagina": "https://sjup.ro/transparenta-drepturilor-salariale/",
-      "fisier": "https://sjup.ro/wp-content/uploads/2026/01/AUGUST-2025_transparenta-venituri-1.xls",
-      "perioada": "2025-08",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "scju-suceava",
-      "institutie": "Spitalul Clinic Județean de Urgență „Sf. Ioan cel Nou” Suceava",
-      "tip": "spital",
-      "judet": "SV",
-      "pagina": "https://spitaluljudeteansuceava.ro/venituri/",
-      "nota": "pagina /venituri/ nu listează fișierele în HTML; fișierul găsit după tiparul adreselor din 2023–2024",
-      "fisier": "https://spitaluljudeteansuceava.ro/documente/Uz%20intern/Venituri/Transparenta%20salariala%20(Legea%20153-art.33)/2025/TRANSPARENTA%20SALARIALA%20-%2031%20MARTIE%202025.pdf",
-      "perioada": "2025-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "scju-arad",
-      "institutie": "Spitalul Clinic Județean de Urgență Arad",
-      "tip": "spital",
-      "judet": "AR",
-      "pagina": "https://www.scjarad.ro/administrativ/serviciul-resurse-umane/"
-    },
-    {
-      "id": "sju-pitesti",
-      "institutie": "Spitalul Județean de Urgență Pitești",
-      "tip": "spital",
-      "judet": "AG",
-      "pagina": "https://www.sjupitesti.ro/"
-    },
-    {
-      "id": "sju-botosani",
-      "institutie": "Spitalul Județean de Urgență „Mavromati” Botoșani",
-      "tip": "spital",
-      "judet": "BT",
-      "pagina": "https://www.spitalulmavromati.ro/situatia-drepturilor-salariale"
-    },
-    {
-      "id": "sju-valcea",
-      "institutie": "Spitalul Județean de Urgență Vâlcea",
-      "tip": "spital",
-      "judet": "VL",
-      "pagina": "https://www.sjv.ro/"
-    },
-    {
-      "id": "scju-brasov",
-      "institutie": "Spitalul Clinic Județean de Urgență Brașov",
-      "tip": "spital",
-      "judet": "BV",
-      "pagina": "https://www.hospbv.ro/Home/ResurseUmane/Transparentaveniturisalariale/tabid/211/language/ro-RO/Default.aspx"
-    },
-    {
-      "id": "cj-hunedoara",
-      "institutie": "Consiliul Județean Hunedoara",
-      "tip": "consiliu-judetean",
-      "judet": "HD",
-      "pagina": "https://www.cjhunedoara.ro/index.php/9-uncategorised/373-drepturi-salariale",
-      "fisier": "https://www.cjhunedoara.ro/documente/2026/Personal/Transparenta%20veniturilor%20salariale%2030%20septembrie%202026.pdf",
-      "perioada": "2026-09",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "unitbv",
-      "institutie": "Universitatea Transilvania din Brașov",
-      "tip": "universitate",
-      "judet": "BV",
-      "pagina": "https://www.unitbv.ro/despre-unitbv/informatii-de-interes-public/transparenta-institutionala/buget-bilanturi-contabile/aplicarea-art-33.html",
-      "fisier": "https://www.unitbv.ro/documente/despre-unitbv/info-interes-public/transparenta-insitutionala/buget-bilanturi-conta/Salarii_site_31.03.2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "umf-iasi",
-      "institutie": "Universitatea de Medicină și Farmacie „Grigore T. Popa” Iași",
-      "tip": "universitate",
-      "judet": "IS",
-      "pagina": "https://www.umfiasi.ro/ro/universitate/informatii-de-interes-public/Pagini/Transparenta-salariilor.aspx"
-    },
-    {
-      "id": "pm-sighisoara",
-      "institutie": "Primăria Municipiului Sighișoara",
-      "tip": "primarie",
-      "judet": "MS",
-      "pagina": "https://primariasighisoara.ro/portal/mures/sighisoara/portal.nsf/pagini/transparenta+veniturilor+salariale+conform+art+33+din+legea+1532017-00019B42",
-      "fisier": "https://primariasighisoara.ro/portal/mures/sighisoara/portal.nsf/atasament/9ECE471E0F6F4FFEC2258DCB003D9750/$FILE/Transparenta%20venituri%20salariale%2031%20martie%202026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "fil-banatul",
-      "institutie": "Filarmonica Banatul Timișoara",
-      "tip": "cultura",
-      "judet": "TM",
-      "pagina": "https://filarmonicabanatul.ro/transparenta-bugetara/",
-      "fisier": "https://filarmonicabanatul.ro/wp-content/uploads/2026/03/Transparenta-veniturilor-31.03.2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "fil-iasi",
-      "institutie": "Filarmonica Moldova Iași",
-      "tip": "cultura",
-      "judet": "IS",
-      "pagina": "https://www.filarmonicais.ro/index.php/ro/despre-noi/informatii-de-interes-public/transparenta-veniturilor-salariale",
-      "fisier": "https://www.filarmonicais.ro/images/pdf/Salarii-site-31.03.2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "fil-arad",
-      "institutie": "Filarmonica Arad",
-      "tip": "cultura",
-      "judet": "AR",
-      "pagina": "https://www.filarmonicaarad.ro/informatii-publice/",
-      "fisier": "https://www.filarmonicaarad.ro/wp-content/uploads/2025/10/SALARIILE-la-data-de-30.09.2025-.pdf",
-      "perioada": "2025-09",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "fil-transilvania",
-      "institutie": "Filarmonica de Stat Transilvania Cluj",
-      "tip": "cultura",
-      "judet": "CJ",
-      "pagina": "https://filarmonicatransilvania.ro/"
-    },
-    {
-      "id": "tn-sibiu",
-      "institutie": "Teatrul Național Radu Stanca Sibiu",
-      "tip": "cultura",
-      "judet": "SB",
-      "pagina": "https://www.tnrs.ro/ro/situatia-drepturilor-salariale",
-      "fisier": "https://tnrs.ro/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBK2w3RVE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--5fd579c8849f3727c344e8de206c4144e604da62/Situatie%20drepturi%20salariale%20martie%202026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "t-comedie",
-      "institutie": "Teatrul de Comedie București",
-      "tip": "cultura",
-      "judet": "B",
-      "pagina": "https://comedie.ro/catinfopub/transparenta-venituri-salariale/"
-    },
-    {
-      "id": "tn-iasi",
-      "institutie": "Teatrul Național Vasile Alecsandri Iași",
-      "tip": "cultura",
-      "judet": "IS",
-      "pagina": "https://teatrulnationaliasi.ro/",
-      "fisier": "https://teatrulnationaliasi.ro/wp-content/uploads/2026/03/Transparen%C8%9Ba-veniturilor-salariale-TNIa%C8%99i-31-martie-2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "tn-bucuresti",
-      "institutie": "Teatrul Național București",
-      "tip": "cultura",
-      "judet": "B",
-      "pagina": "https://www.tnb.ro/"
-    },
-    {
-      "id": "t-tineretului-pn",
-      "institutie": "Teatrul Tineretului Piatra-Neamț",
-      "tip": "cultura",
-      "judet": "NT",
-      "pagina": "https://www.teatrultineretului.ro/?page_id=12672"
-    },
-    {
-      "id": "tn-targu-mures",
-      "institutie": "Teatrul Național Târgu-Mureș",
-      "tip": "cultura",
-      "judet": "MS",
-      "pagina": "https://teatrunational.ro/public_information/the-situation-of-salary-rights/",
-      "fisier": "https://teatrunational.ro/wp-content/uploads/2026/03/Situatia-drepturilor-salariale_martie-2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "tn-craiova",
-      "institutie": "Teatrul Național Marin Sorescu Craiova",
-      "tip": "cultura",
-      "judet": "DJ",
-      "pagina": "https://tncms.ro/",
-      "fisier": "https://tncms.ro/zip/achizitii/situatiasalariilor.pdf",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "opera-timisoara",
-      "institutie": "Opera Națională Română Timișoara",
-      "tip": "cultura",
-      "judet": "TM",
-      "pagina": "https://www.ort.ro/informatii/ro/212/Drepturi-salariale.html"
-    },
-    {
-      "id": "tn-cluj",
-      "institutie": "Teatrul Național Lucian Blaga Cluj-Napoca",
-      "tip": "cultura",
-      "judet": "CJ",
-      "pagina": "https://www.teatrulnationalcluj.ro/pagina-69/situatia-drepturilor-salariale/"
-    },
-    {
-      "id": "fil-brasov",
-      "institutie": "Filarmonica Brașov",
-      "tip": "cultura",
-      "judet": "BV",
-      "pagina": "https://filarmonicabrasov.ro/"
-    },
-    {
-      "id": "fil-oltenia",
-      "institutie": "Filarmonica Oltenia Craiova",
-      "tip": "cultura",
-      "judet": "DJ",
-      "pagina": "https://filarmonicaoltenia.ro/"
-    },
-    {
-      "id": "fil-sibiu",
-      "institutie": "Filarmonica de Stat Sibiu",
-      "tip": "cultura",
-      "judet": "SB",
-      "pagina": "https://filarmonicasibiu.ro/"
-    },
-    {
-      "id": "fil-ploiesti",
-      "institutie": "Filarmonica Paul Constantinescu Ploiești",
-      "tip": "cultura",
-      "judet": "PH",
-      "pagina": "https://filarmonicaploiesti.ro/",
-      "fisier": "https://filarmonicaploiesti.ro/wp-content/uploads/2026/09/Lista-functii-Filarmonica-Ploiesti-septembrie-2026.pdf",
-      "perioada": "2026-09",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "fil-bacau",
-      "institutie": "Filarmonica Mihail Jora Bacău",
-      "tip": "cultura",
-      "judet": "BC",
-      "pagina": "https://filarmonicabacau.ro/",
-      "fisier": "https://filarmonicabacau.ro/wp-content/uploads/2026/03/Salarii-de-baza-afisate-martie-2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "fil-oradea",
-      "institutie": "Filarmonica Oradea",
-      "tip": "cultura",
-      "judet": "BH",
-      "pagina": "https://filarmonicaoradea.ro/",
-      "fisier": "https://filarmonicaoradea.ro/wp-content/uploads/2026/03/Salarii-de-baza-conform-art.-33-din-legea-1532017-la-31.03.2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "fil-pitesti",
-      "institutie": "Filarmonica Pitești",
-      "tip": "cultura",
-      "judet": "AG",
-      "pagina": "https://filarmonicapitesti.ro/"
-    },
-    {
-      "id": "fil-botosani",
-      "institutie": "Filarmonica George Enescu Botoșani",
-      "tip": "cultura",
-      "judet": "BT",
-      "pagina": "https://filarmonicabotosani.ro/informatii-publice",
-      "fisier": "https://filarmonicabotosani.ro/wp-content/uploads/2026/04/TRANSPARENTA-SALARIALA-31-MARTIE-2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "opera-bucuresti",
-      "institutie": "Opera Națională București",
-      "tip": "cultura",
-      "judet": "B",
-      "pagina": "https://www.operanb.ro/"
-    },
-    {
-      "id": "opera-iasi",
-      "institutie": "Opera Națională Română Iași",
-      "tip": "cultura",
-      "judet": "IS",
-      "pagina": "https://www.operaiasi.ro/",
-      "fisier": "https://www.operaiasi.ro/wp-content/uploads/2026/04/Lista-functii-la-31.03.2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "t-bulandra",
-      "institutie": "Teatrul Bulandra",
-      "tip": "cultura",
-      "judet": "B",
-      "pagina": "https://www.bulandra.ro/",
-      "fisier": "https://www.bulandra.ro/wp-content/uploads/2025/10/Salarii-la-30-septembrie-2025.pdf",
-      "perioada": "2025-09",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "t-odeon",
-      "institutie": "Teatrul Odeon",
-      "tip": "cultura",
-      "judet": "B",
-      "pagina": "https://www.teatrul-odeon.ro/"
-    },
-    {
-      "id": "t-mic",
-      "institutie": "Teatrul Mic",
-      "tip": "cultura",
-      "judet": "B",
-      "pagina": "https://www.teatrulmic.ro/",
-      "fisier": "https://www.teatrulmic.ro/wp-content/uploads/2026/04/Transparenta-salariala-31.03.2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "t-nottara",
-      "institutie": "Teatrul Nottara",
-      "tip": "cultura",
-      "judet": "B",
-      "pagina": "https://www.nottara.ro/"
-    },
-    {
-      "id": "pm-oradea",
-      "institutie": "Primăria Municipiului Oradea",
-      "tip": "primarie",
-      "judet": "BH",
-      "pagina": "https://oradea.ro/en/oradea-city-hall/transparency/wage-income-transparency/",
-      "fisier": "https://oradea.ro/wp-content/uploads/2026/03/transparenta-veniturilor-salariale-martie-2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "cj-bistrita",
-      "institutie": "Consiliul Județean Bistrița-Năsăud",
-      "tip": "consiliu-judetean",
-      "judet": "BN",
-      "pagina": "https://www.portalbn.ro/",
-      "fisier": "https://www.portalbn.ro/portal/bistrita-nasaud/portal.nsf/0D1ADB2E1F98641BC2258DCC00136AF4/$FILE/TRANSPARENTA%20VENITURILOR%20SALARIALE%20-31%20martie%202026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "pm-arad",
-      "institutie": "Primăria Municipiului Arad",
-      "tip": "primarie",
-      "judet": "AR",
-      "pagina": "https://www.primariaarad.ro/dm_arad/portal.nsf/AllByUNID/transparenta-veniturilor-salariale-000107b2",
-      "fisier": "https://www.primariaarad.ro/dm_arad/portal.nsf/91BD66C839D3E39CC2258DCB005B9DDF/$FILE/lista%20venituri%20salariale%20martie%202026.pdf?Open",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "pm-medias",
-      "institutie": "Primăria Municipiului Mediaș",
-      "tip": "primarie",
-      "judet": "SB",
-      "pagina": "https://primariamedias.ro/portal/medias/portal.nsf/AllByUNID/Transparenta-0000C9A6?OpenDocument=",
-      "fisier": "https://primariamedias.ro/portal/medias/portal.nsf/CC203AD0CB845ACDC2258DCC0020D18A/%24FILE/Transparenta%20veniturilor%20salariale%20la%2031.03.2026.pdf%20sgn.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "pm-brasov",
-      "institutie": "Primăria Municipiului Brașov",
-      "tip": "primarie",
-      "judet": "BV",
-      "pagina": "https://www.brasovcity.ro/"
-    },
-    {
-      "id": "bj-valcea2",
-      "institutie": "Biblioteca Județeană Antim Ivireanul Vâlcea",
-      "tip": "biblioteca",
-      "judet": "VL",
-      "pagina": "https://www.bjai.ro/informatii-publice-bjai/",
-      "fisier": "https://www.bjai.ro/informatii-publice/informatii-publice/Transparenta%20Veniturilor%20Salariale%20la%2010%20Martie%202026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "ca-bacau",
-      "institutie": "Curtea de Apel Bacău",
-      "tip": "instanta",
-      "judet": "BC",
-      "pagina": "https://portal.just.ro/32/SitePages/informatii.aspx",
-      "fisier": "https://portal.just.ro/32/Documents/Financiar/2026/Transparen%C8%9Ba%20veniturilor%20salariale%20la%2031.03.2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "ca-oradea",
-      "institutie": "Curtea de Apel Oradea",
-      "tip": "instanta",
-      "judet": "BH",
-      "pagina": "https://portal.just.ro/35/SitePages/informatii.aspx",
-      "fisier": "https://portal.just.ro/35/Documents/situatia%20drepturilor%20salariale/2026/CA%20Oradea%20transparen%C8%9Ba%20veniturilor%20salariale%20la%2031.03.2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "ca-suceava",
-      "institutie": "Curtea de Apel Suceava",
-      "tip": "instanta",
-      "judet": "SV",
-      "pagina": "https://portal.just.ro/39/SitePages/informatii.aspx",
-      "fisier": "https://portal.just.ro/39/Documents/DEFA/2026/Transparen%C8%9Ba%20salarial%C4%83%20la%20data%20de%2031%20martie%202026.PDF",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "tb-botosani",
-      "institutie": "Tribunalul Botoşani",
-      "tip": "instanta",
-      "judet": "BT",
-      "pagina": "https://portal.just.ro/40/SitePages/informatii.aspx",
-      "fisier": "https://portal.just.ro/40/Documents/Transparenta%20venituri%20salariale%2031.03.2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "ca-ploiesti",
-      "institutie": "Curtea de Apel Ploieşti",
-      "tip": "instanta",
-      "judet": "PH",
-      "pagina": "https://portal.just.ro/42/SitePages/informatii.aspx",
-      "fisier": "https://portal.just.ro/42/Documents/Curtea%20de%20Apel%20Ploiesti-%20Transparenta%20veniturilor%20salariale%20la%2031.03.2026.PDF",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "ca-targu-mures",
-      "institutie": "Curtea de Apel Târgu Mureş",
-      "tip": "instanta",
-      "judet": "MS",
-      "pagina": "https://portal.just.ro/43/SitePages/informatii.aspx",
-      "fisier": "https://portal.just.ro/43/Documents/Cheltuieli/2026/Venituri-Salariale-2026-03-31.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "ca-galati",
-      "institutie": "Curtea de Apel Galaţi",
-      "tip": "instanta",
-      "judet": "GL",
-      "pagina": "https://portal.just.ro/44/SitePages/informatii.aspx",
-      "fisier": "https://portal.just.ro/44/SiteAssets/SitePages/informatii/Transparen%C5%A3a%20veniturilor%20salariale%20-%2031.03.2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "ca-pitesti",
-      "institutie": "Curtea de Apel Piteşti",
-      "tip": "instanta",
-      "judet": "AG",
-      "pagina": "https://portal.just.ro/46/SitePages/informatii.aspx",
-      "fisier": "https://portal.just.ro/46/Documents/Transparen%C8%9Ba%20veniturilor%2031.03.2026-%20Curtea%20de%20Apel%20Pite%C8%99ti.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "ca-alba-iulia",
-      "institutie": "Curtea de Apel Alba Iulia",
-      "tip": "instanta",
-      "judet": "AB",
-      "pagina": "https://portal.just.ro/57/SitePages/informatii.aspx",
-      "fisier": "https://portal.just.ro/57/SiteAssets/SitePages/informatii/Transparen%C8%9Ba%20veniturilor%20salariale%20la%2031.03.2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "tb-salaj",
-      "institutie": "Tribunalul Sălaj",
-      "tip": "instanta",
-      "judet": "SJ",
-      "pagina": "https://portal.just.ro/84/SitePages/informatii.aspx",
-      "fisier": "https://portal.just.ro/84/SiteAssets/SitePages/informatii/Transparenta%20veniturilor%20salariale%20L%20153%20-%2031.03.2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "tb-tulcea",
-      "institutie": "Tribunalul Tulcea",
-      "tip": "instanta",
-      "judet": "TL",
-      "pagina": "https://portal.just.ro/88/SitePages/informatii.aspx",
-      "fisier": "https://portal.just.ro/88/Documents/05_Informatii%20de%20interes%20public/08%20Venituri%20Salarii/2026/Situatia%20veniturilor%20salariale%20privind%20T.%20Tulcea,%20J.%20Babadag%20si%20J.%20Macin%20-%2031.03.2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "tb-vaslui",
-      "institutie": "Tribunalul Vaslui",
-      "tip": "instanta",
-      "judet": "VS",
-      "pagina": "https://portal.just.ro/89/SitePages/informatii.aspx",
-      "fisier": "https://portal.just.ro/89/SiteAssets/SitePages/informatii/Transparenta%20veniturilor%20salariale%2031.03.2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "tb-vrancea",
-      "institutie": "Tribunalul Vrancea",
-      "tip": "instanta",
-      "judet": "VN",
-      "pagina": "https://portal.just.ro/91/SitePages/informatii.aspx",
-      "fisier": "https://portal.just.ro/91/SiteAssets/SitePages/informatii/Tranparen%C5%A3a%20veniturilor%20salariale%20conform%20art.%2033%20din%20Legea%20153%20la%2031.03.2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "tb-ilfov",
-      "institutie": "Tribunalul Ilfov",
-      "tip": "instanta",
-      "judet": "IF",
-      "pagina": "https://portal.just.ro/93/SitePages/informatii.aspx",
-      "fisier": "https://portal.just.ro/93/SiteAssets/SitePages/informatii/Salarizare%20Tribunalul%20Ilfov%20martie%202026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "tb-harghita",
-      "institutie": "Tribunalul Harghita",
-      "tip": "instanta",
-      "judet": "HR",
-      "pagina": "https://portal.just.ro/96/SitePages/informatii.aspx",
-      "fisier": "https://portal.just.ro/96/Documents/Acte%202026/Transparenta%20veniturilor%20salariale%20la%20data%20de%2031%20martie%202026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "tb-maramures",
-      "institutie": "Tribunalul Maramureş",
-      "tip": "instanta",
-      "judet": "MM",
-      "pagina": "https://portal.just.ro/100/SitePages/informatii.aspx",
-      "fisier": "https://portal.just.ro/100/Documents/Transp.venit.salar.PUBLICAT_la_31.03.2026_art.33_Legea_157_2017_TRIB_MM.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "tb-mehedinti",
-      "institutie": "Tribunalul Mehedinţi",
-      "tip": "instanta",
-      "judet": "MH",
-      "pagina": "https://portal.just.ro/101/SitePages/informatii.aspx",
-      "fisier": "https://portal.just.ro/101/Documents/Memorandum%20situatii%20de%20la%20DEFA%20MH/Situa%C5%A3ii%20drepturi%20salariale/venit_jud_31032026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "tb-mures",
-      "institutie": "Tribunalul Mureş",
-      "tip": "instanta",
-      "judet": "MS",
-      "pagina": "https://portal.just.ro/102/SitePages/informatii.aspx",
-      "fisier": "https://portal.just.ro/102/SiteAssets/SitePages/informatii/Situatia%20drepturilor%20saraliare%2031.03.2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "tb-neamt",
-      "institutie": "Tribunalul Neamţ",
-      "tip": "instanta",
-      "judet": "NT",
-      "pagina": "https://portal.just.ro/103/SitePages/informatii.aspx",
-      "fisier": "https://portal.just.ro/103/SiteAssets/SitePages/informatii/Transparen%C5%A3%C4%83%20venituri%20salariale%20martie%202026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "tb-olt",
-      "institutie": "Tribunalul Olt",
-      "tip": "instanta",
-      "judet": "OT",
-      "pagina": "https://portal.just.ro/104/SitePages/informatii.aspx",
-      "fisier": "https://portal.just.ro/104/Documents/2026/sit%20dr%20salariale/sit%20dr%20salariale%20la%2031.03.2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "tb-alba",
-      "institutie": "Tribunalul Alba",
-      "tip": "instanta",
-      "judet": "AB",
-      "pagina": "https://portal.just.ro/107/SitePages/informatii.aspx",
-      "fisier": "https://portal.just.ro/107/SiteAssets/SitePages/informatii/Transparenta%20salariala%20la%2031.03.2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "tb-arad",
-      "institutie": "Tribunalul Arad",
-      "tip": "instanta",
-      "judet": "AR",
-      "pagina": "https://portal.just.ro/108/SitePages/informatii.aspx",
-      "fisier": "https://portal.just.ro/108/SiteAssets/SitePages/informatii/CASV-30.09.2026%20Transparenta%20venituri%20salariale.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "tb-arges",
-      "institutie": "Tribunalul Argeş",
-      "tip": "instanta",
-      "judet": "AG",
-      "pagina": "https://portal.just.ro/109/SitePages/informatii.aspx",
-      "fisier": "https://portal.just.ro/109/SiteAssets/SitePages/informatii/2026-03%20drepturi%20salariale.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "tb-braila",
-      "institutie": "Tribunalul Brăila",
-      "tip": "instanta",
-      "judet": "BR",
-      "pagina": "https://portal.just.ro/113/SitePages/informatii.aspx",
-      "fisier": "https://portal.just.ro/113/Documents/Transparen%C8%9Ba%20veniturilor%20%20salariale%20%20art.%2033%20din%20Legea%20153%20-2017%20%20%20la%20data%20de%2031.03.2026%20Trib%20Br%C4%83ila.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "tb-caras-severin",
-      "institutie": "Tribunalul Caraş Severin",
-      "tip": "instanta",
-      "judet": "CS",
-      "pagina": "https://portal.just.ro/115/SitePages/informatii.aspx",
-      "fisier": "https://portal.just.ro/115/Documents/Transparenta%20veniturilor%20salariale%20la%2031%20martie%202026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "tb-calarasi",
-      "institutie": "Tribunalul Călăraşi",
-      "tip": "instanta",
-      "judet": "CL",
-      "pagina": "https://portal.just.ro/116/SitePages/informatii.aspx",
-      "fisier": "https://portal.just.ro/116/Documents/Drepturi%20salariale%2031.03.2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "tb-cluj",
-      "institutie": "Tribunalul Cluj",
-      "tip": "instanta",
-      "judet": "CJ",
-      "pagina": "https://portal.just.ro/117/SitePages/informatii.aspx",
-      "fisier": "https://portal.just.ro/117/SiteAssets/SitePages/informatii/Tranparenta%20veniturilor%20salariale%20la%2031.03.2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "tb-constanta",
-      "institutie": "Tribunalul Constanţa",
-      "tip": "instanta",
-      "judet": "CT",
-      "pagina": "https://portal.just.ro/118/SitePages/informatii.aspx",
-      "fisier": "https://portal.just.ro/118/SiteAssets/SitePages/informatii/transparen%C8%9Ba%20veniturilor%20salariale%20la%20data%20de%2031%20martie%202026-Tribunalul%20Constan%C5%A3.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "tb-giurgiu",
-      "institutie": "Tribunalul Giurgiu",
-      "tip": "instanta",
-      "judet": "GR",
-      "pagina": "https://portal.just.ro/122/SitePages/informatii.aspx",
-      "fisier": "https://portal.just.ro/122/Documents/Informatii%20publice/Functii.venituri.31032026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "jud-constanta",
-      "institutie": "Judecătoria Constanţa",
-      "tip": "instanta",
-      "judet": "CT",
-      "pagina": "https://portal.just.ro/212/SitePages/informatii.aspx",
-      "fisier": "https://portal.just.ro/212/SiteAssets/SitePages/informatii/transparen%C8%9Ba%20veniturilor%20salariale%20la%20data%20de%2031%20martie%202026-Judec%C4%83toria%20Constan%C5%A3a.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "jud-galati",
-      "institutie": "Judecătoria Galaţi",
-      "tip": "instanta",
-      "judet": "GL",
-      "pagina": "https://portal.just.ro/233/SitePages/informatii.aspx",
-      "fisier": "https://portal.just.ro/233/SiteAssets/SitePages/informatii/Transparen%C5%A3a%20veniturilor%20salariale%20conform%20art.%2033%20din%20Legea%20nr.%20153-2017%20la%2031.03.2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "jud-mangalia",
-      "institutie": "Judecătoria Mangalia",
-      "tip": "instanta",
-      "judet": "CT",
-      "pagina": "https://portal.just.ro/254/SitePages/informatii.aspx",
-      "fisier": "https://portal.just.ro/254/SiteAssets/SitePages/informatii/transparen%C8%9Ba%20veniturilor%20salariale%20la%20data%20de%2031%20martie%202026-Judec%C4%83toria%20Mangalia.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "jud-medgidia",
-      "institutie": "Judecătoria Medgidia",
-      "tip": "instanta",
-      "judet": "CT",
-      "pagina": "https://portal.just.ro/256/SitePages/informatii.aspx",
-      "fisier": "https://portal.just.ro/256/SiteAssets/SitePages/informatii/transparen%C8%9Ba%20veniturilor%20salariale%20la%20data%20de%2031%20martie%202026-Judec%C4%83toria%20Medgidia.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "jud-tulcea",
-      "institutie": "Judecătoria Tulcea",
-      "tip": "instanta",
-      "judet": "TL",
-      "pagina": "https://portal.just.ro/327/SitePages/informatii.aspx",
-      "fisier": "https://portal.just.ro/327/Documents/Situa%C5%A3ia%20veniturilor%20salariale%20privind%20Judec%C4%83toria%20Tulcea%20%E2%80%93%2031.03.2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "bj-cluj",
-      "institutie": "Biblioteca Județeană „Octavian Goga” Cluj",
-      "tip": "biblioteca",
-      "judet": "CJ",
-      "pagina": "https://new.bjc.ro/"
-    },
-    {
-      "id": "bj-iasi",
-      "institutie": "Biblioteca Județeană „Gh. Asachi” Iași",
-      "tip": "biblioteca",
-      "judet": "IS",
-      "pagina": "https://bjiasi.ro/",
-      "fisier": "https://bjiasi.ro/wp-content/uploads/2026/03/SALARII-LA-31.03.2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "bj-brasov",
-      "institutie": "Biblioteca Județeană „George Barițiu” Brașov",
-      "tip": "biblioteca",
-      "judet": "BV",
-      "pagina": "https://www.bjbv.ro/"
-    },
-    {
-      "id": "bj-timis",
-      "institutie": "Biblioteca Județeană Timiș",
-      "tip": "biblioteca",
-      "judet": "TM",
-      "pagina": "https://www.bjt.ro/",
-      "nota": "Pe pagină doar lista din martie 2018 (verificat 27 septembrie 2026)."
-    },
-    {
-      "id": "bj-sibiu",
-      "institutie": "Biblioteca Județeană ASTRA Sibiu",
-      "tip": "biblioteca",
-      "judet": "SB",
-      "pagina": "https://bjastrasibiu.ro/"
-    },
-    {
-      "id": "bj-mures",
-      "institutie": "Biblioteca Județeană Mureș",
-      "tip": "biblioteca",
-      "judet": "MS",
-      "pagina": "https://bjmures.ro/"
-    },
-    {
-      "id": "bj-bacau",
-      "institutie": "Biblioteca Județeană „Costache Sturdza” Bacău",
-      "tip": "biblioteca",
-      "judet": "BC",
-      "pagina": "https://www.bjbacau.ro/salarizare/",
-      "fisier": "https://www.bjbacau.ro/wp-content/uploads/2026/03/Salarizare-30.03.2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "ps1",
-      "institutie": "Primăria Sectorului 1",
-      "tip": "primarie",
-      "judet": "B",
-      "pagina": "https://primariasector1.ro/",
-      "fisier": "https://primariasector1.ro/wp-content/uploads/2026/03/Transparenta-31.03.2026-fara-coeficient.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "ps2",
-      "institutie": "Primăria Sectorului 2",
-      "tip": "primarie",
-      "judet": "B",
-      "pagina": "https://www.ps2.ro/"
-    },
-    {
-      "id": "ps3",
-      "institutie": "Primăria Sectorului 3",
-      "tip": "primarie",
-      "judet": "B",
-      "pagina": "https://www.primarie3.ro/"
-    },
-    {
-      "id": "ps5",
-      "institutie": "Primăria Sectorului 5",
-      "tip": "primarie",
-      "judet": "B",
-      "pagina": "https://www.sector5.ro/"
-    },
-    {
-      "id": "pmb",
-      "institutie": "Primăria Municipiului București",
-      "tip": "primarie",
-      "judet": "B",
-      "pagina": "https://www.pmb.ro/"
-    },
-    {
-      "id": "pm-cluj",
-      "institutie": "Primăria Municipiului Cluj-Napoca",
-      "tip": "primarie",
-      "judet": "CJ",
-      "pagina": "https://primariaclujnapoca.ro/"
-    },
-    {
-      "id": "pm-iasi",
-      "institutie": "Primăria Municipiului Iași",
-      "tip": "primarie",
-      "judet": "IS",
-      "pagina": "https://www.primaria-iasi.ro/"
-    },
-    {
-      "id": "pm-constanta",
-      "institutie": "Primăria Municipiului Constanța",
-      "tip": "primarie",
-      "judet": "CT",
-      "pagina": "https://www.primaria-constanta.ro/"
-    },
-    {
-      "id": "pm-craiova",
-      "institutie": "Primăria Municipiului Craiova",
-      "tip": "primarie",
-      "judet": "DJ",
-      "pagina": "https://www.primariacraiova.ro/"
-    },
-    {
-      "id": "pm-galati",
-      "institutie": "Primăria Municipiului Galați",
-      "tip": "primarie",
-      "judet": "GL",
-      "pagina": "https://www.primariagalati.ro/",
-      "fisier": "https://www.primariagalati.ro/portal/galati/portal.nsf/721BE504BEC5CB4CC2258DCB001F2572/%24FILE/SALARII%20UAT%20MUNICIPIUL%20GALATI%2031.03.2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "pm-ploiesti",
-      "institutie": "Primăria Municipiului Ploiești",
-      "tip": "primarie",
-      "judet": "PH",
-      "pagina": "https://www.ploiesti.ro/"
-    },
-    {
-      "id": "pm-pitesti",
-      "institutie": "Primăria Municipiului Pitești",
-      "tip": "primarie",
-      "judet": "AG",
-      "pagina": "https://www.primariapitesti.ro/"
-    },
-    {
-      "id": "pm-bacau",
-      "institutie": "Primăria Municipiului Bacău",
-      "tip": "primarie",
-      "judet": "BC",
-      "pagina": "https://www.primariabacau.ro/"
-    },
-    {
-      "id": "pm-sibiu",
-      "institutie": "Primăria Municipiului Sibiu",
-      "tip": "primarie",
-      "judet": "SB",
-      "pagina": "https://www.sibiu.ro/"
-    },
-    {
-      "id": "cj-cluj",
-      "institutie": "Consiliul Județean Cluj",
-      "tip": "consiliu-judetean",
-      "judet": "CJ",
-      "pagina": "https://cjcluj.ro/"
-    },
-    {
-      "id": "cj-timis",
-      "institutie": "Consiliul Județean Timiș",
-      "tip": "consiliu-judetean",
-      "judet": "TM",
-      "pagina": "https://www.cjtimis.ro/"
-    },
-    {
-      "id": "cj-iasi",
-      "institutie": "Consiliul Județean Iași",
-      "tip": "consiliu-judetean",
-      "judet": "IS",
-      "pagina": "https://www.icc.ro/"
-    },
-    {
-      "id": "cj-brasov",
-      "institutie": "Consiliul Județean Brașov",
-      "tip": "consiliu-judetean",
-      "judet": "BV",
-      "pagina": "https://www.judbrasov.ro/"
-    },
-    {
-      "id": "cj-constanta",
-      "institutie": "Consiliul Județean Constanța",
-      "tip": "consiliu-judetean",
-      "judet": "CT",
-      "pagina": "https://www.cjc.ro/"
-    },
-    {
-      "id": "cj-prahova",
-      "institutie": "Consiliul Județean Prahova",
-      "tip": "consiliu-judetean",
-      "judet": "PH",
-      "pagina": "https://www.cjph.ro/"
-    },
-    {
-      "id": "cj-arges",
-      "institutie": "Consiliul Județean Argeș",
-      "tip": "consiliu-judetean",
-      "judet": "AG",
-      "pagina": "https://www.cjarges.ro/"
-    },
-    {
-      "id": "cj-bihor",
-      "institutie": "Consiliul Județean Bihor",
-      "tip": "consiliu-judetean",
-      "judet": "BH",
-      "pagina": "https://www.cjbihor.ro/"
-    },
-    {
-      "id": "cj-mures",
-      "institutie": "Consiliul Județean Mureș",
-      "tip": "consiliu-judetean",
-      "judet": "MS",
-      "pagina": "https://www.cjmures.ro/"
-    },
-    {
-      "id": "cj-sibiu",
-      "institutie": "Consiliul Județean Sibiu",
-      "tip": "consiliu-judetean",
-      "judet": "SB",
-      "pagina": "https://www.cjsibiu.ro/",
-      "fisier": "https://www.cjsibiu.ro/wp-content/uploads/2026/03/Lista-tuturor-functiilor-dia-cadrul-aparatului-de-specialitate-al-Consiliului-Judetean-Sibiu-precum-si-a-veniturilor-salariale-la-31.03.2026-3.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "cj-dolj",
-      "institutie": "Consiliul Județean Dolj",
-      "tip": "consiliu-judetean",
-      "judet": "DJ",
-      "pagina": "https://www.cjdolj.ro/"
-    },
-    {
-      "id": "cj-alba",
-      "institutie": "Consiliul Județean Alba",
-      "tip": "consiliu-judetean",
-      "judet": "AB",
-      "pagina": "https://www.cjalba.ro/"
-    },
-    {
-      "id": "cj-suceava",
-      "institutie": "Consiliul Județean Suceava",
-      "tip": "consiliu-judetean",
-      "judet": "SV",
-      "pagina": "https://www.cjsuceava.ro/"
-    },
-    {
-      "id": "t-bacovia",
-      "institutie": "Teatrul Municipal „George Bacovia” Bacău",
-      "tip": "cultura",
-      "judet": "BC",
-      "pagina": "https://teatrulbacovia.ro/",
-      "fisier": "https://teatrulbacovia.ro/wp-content/uploads/2024/09/salarizare-31.03.2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "opera-comica",
-      "institutie": "Opera Comică pentru Copii București",
-      "tip": "cultura",
-      "judet": "B",
-      "pagina": "https://operacomica.ro/transparenta/",
-      "fisier": "https://operacomica.ro/wp-content/uploads/2026/08/Transparenta-venituri-31-martie-2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "csm-oradea",
-      "institutie": "Clubul Sportiv Municipal Oradea",
-      "tip": "club-sportiv",
-      "judet": "BH",
-      "pagina": "https://csmoradea.ro/",
-      "fisier": "https://csmoradea.ro/wp-content/uploads/2025/09/TransparentaVenituriSalariale.pdf",
-      "perioada": "2025-09",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "csm-sibiu",
-      "institutie": "Clubul Sportiv Municipal Sibiu",
-      "tip": "club-sportiv",
-      "judet": "SB",
-      "pagina": "https://csmsibiu.ro/",
-      "fisier": "https://csmsibiu.ro/wp-content/uploads/2026/03/Salarii-si-functii-luna-martie-2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "csm-constanta",
-      "institutie": "Clubul Sportiv Municipal Constanța",
-      "tip": "club-sportiv",
-      "judet": "CT",
-      "pagina": "https://www.csmconstanta.ro/",
-      "fisier": "https://www.csmconstanta.ro/wp-content/uploads/2026/03/00.DREPTURI-SALARIALE.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "csm-bistrita",
-      "institutie": "Clubul Sportiv Municipal Bistrița",
-      "tip": "club-sportiv",
-      "judet": "BN",
-      "pagina": "https://www.csmbistrita.ro/",
-      "fisier": "https://www.csmbistrita.ro/wp-content/uploads/2026/09/TRANSPARENTA-VENITURILOR-SEPTEMBRIE-2026.pdf",
-      "perioada": "2026-09",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "csm-targoviste",
-      "institutie": "Clubul Sportiv Municipal Târgoviște",
-      "tip": "club-sportiv",
-      "judet": "DB",
-      "pagina": "https://www.csmtargoviste.ro/",
-      "fisier": "https://www.csmtargoviste.ro/wp-content/uploads/2025/10/transparenta-veniturilor-salariale-30.09.2025-CSM-TARGOVISTE.pdf",
-      "perioada": "2025-09",
-      "gasitLa": "2026-09-27"
-    },
-    {
-      "id": "saj-timis",
-      "institutie": "Serviciul de Ambulanță Județean Timiș",
-      "tip": "ambulanta",
-      "judet": "TM",
-      "pagina": "https://ambulantatimis.ro/",
-      "fisier": "https://ambulantatimis.ro/wp-content/uploads/2026/09/Salarii-Martie-2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-28"
-    },
-    {
-      "id": "saj-iasi",
-      "institutie": "Serviciul de Ambulanță Județean Iași",
-      "tip": "ambulanta",
-      "judet": "IS",
-      "pagina": "https://ambulantaiasi.ro/",
-      "fisier": "https://ambulantaiasi.ro/wp-content/uploads/2026/03/LISTA-FUNCTII-PERSONAL-SAJ-IASI.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-28"
-    },
-    {
-      "id": "saj-gorj",
-      "institutie": "Serviciul de Ambulanță Județean Gorj",
-      "tip": "ambulanta",
-      "judet": "GJ",
-      "pagina": "https://ambulantagorj.ro/",
-      "fisier": "https://ambulantagorj.ro/wp-content/uploads/2026/04/Lista-functii-personal-cu-salarii-si-sporuri.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-28"
-    },
-    {
-      "id": "saj-covasna",
-      "institutie": "Serviciul de Ambulanță Județean Covasna",
-      "tip": "ambulanta",
-      "judet": "CV",
-      "pagina": "https://ambulantacovasna.ro/",
-      "fisier": "https://ambulantacovasna.ro/wp-content/uploads/2026/04/transparenta-martie-2026.pdf",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-28"
-    },
-    {
-      "id": "saj-dambovita",
-      "institutie": "Serviciul de Ambulanță Județean Dâmbovița",
-      "tip": "ambulanta",
-      "judet": "DB",
-      "pagina": "https://www.ambulantadambovita.ro/",
-      "fisier": "https://www.ambulantadambovita.ro/wp-content/uploads/2026/09/Lista-functiilor-si-veniturilor-salariale-la-data-14.09.2026-TRANSPARENTA_Redacted_compressed.pdf",
-      "perioada": "2026-09",
-      "gasitLa": "2026-09-28"
-    },
-    {
-      "id": "saj-harghita",
-      "institutie": "Serviciul Județean de Ambulanță Harghita",
-      "tip": "ambulanta",
-      "judet": "HR",
-      "pagina": "https://sajhr.ro/transparentaveniturilorsalariale/",
-      "fisier": "https://sajhr.ro/wp-content/uploads/SALAR-martie-2026.xlsx",
-      "perioada": "2026-03",
-      "gasitLa": "2026-09-28"
-    },
-    {
-      "id": "saj-neamt",
-      "institutie": "Serviciul de Ambulanță Județean Neamț",
-      "tip": "ambulanta",
-      "judet": "NT",
-      "pagina": "https://ambulantaneamt.ro/buget-dintoate-sursele-de-venituri/venituri-salariale/",
-      "fisier": "https://ambulantaneamt.ro/wp-content/uploads/2026/09/TRANSPARENTA-SEPTEMBRIE-2026.pdf",
-      "perioada": "2026-09",
-      "gasitLa": "2026-09-28"
-    }
-  ]
+ "descriere": "Registrul viu al surselor art. 33 din Legea 153/2017. Colectorul: scripts/colectare/art33/colecteaza.mjs. Perioada = luna ale cărei sume sunt publicate.",
+ "verificatLa": "2026-09-26",
+ "surse": [
+  {
+   "id": "sju-alba",
+   "institutie": "Spitalul Județean de Urgență Alba Iulia",
+   "tip": "spital",
+   "judet": "AB",
+   "pagina": "https://spitalalba.ro/",
+   "fisier": "https://spitalalba.ro/docs/fin/2026/Transparen%c8%9ba%20veniturilor%20salariale%20la%2030.09.2026.pdf",
+   "perioada": "2026-09",
+   "format": "pdf cu text; un rând pe post; perechi procent–sumă",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "scju-cluj",
+   "institutie": "Spitalul Clinic Județean de Urgență Cluj-Napoca",
+   "tip": "spital",
+   "judet": "CJ",
+   "pagina": "https://scjucluj.ro/index.php/management/informatii-de-interes-public/transparenta-veniturilor-salariale",
+   "fisier": "https://scjucluj.ro/pdf/venituri/Venituri%20salariale%20martie%202026%20.pdf",
+   "perioada": "2026-03",
+   "format": "pdf cu text; funcție, bază, procent și sumă spor condiții"
+  },
+  {
+   "id": "sju-bacau",
+   "institutie": "Spitalul Județean de Urgență Bacău",
+   "tip": "spital",
+   "judet": "BC",
+   "pagina": "https://www.spitaluljudeteanbacau.ro/transparenta-venituri-salariale/",
+   "fisier": "https://www.spitaluljudeteanbacau.ro/storage/2025/11/Salarii-Septembrie-2025.pdf",
+   "perioada": "2025-09",
+   "format": "pdf cu text; multe coloane de sporuri",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "sju-gorj",
+   "institutie": "Spitalul Județean de Urgență Târgu Jiu",
+   "tip": "spital",
+   "judet": "GJ",
+   "pagina": "https://www.spitalgorj.ro/venituri-salariale/",
+   "fisier": "https://www.spitalgorj.ro/wp-content/uploads/2026/03/SALARII-FEBRUARIE-2026-31.03.2026-TRANSPARENTA.pdf",
+   "perioada": "2026-02",
+   "format": "pdf cu text; un rând pe post"
+  },
+  {
+   "id": "sju-mciuc",
+   "institutie": "Spitalul Județean de Urgență Miercurea Ciuc",
+   "tip": "spital",
+   "judet": "HR",
+   "pagina": "https://spitalmciuc.ro/",
+   "fisier": "https://spitalmciuc.ro/wp-content/uploads/2026/04/Transparenta-veniturilor-salariale-martie-2026.pdf",
+   "perioada": "2026-03",
+   "format": "pdf cu text; funcție, studii, gradație, sume"
+  },
+  {
+   "id": "scju-ilfov",
+   "institutie": "Spitalul Clinic Județean de Urgență Ilfov",
+   "tip": "spital",
+   "judet": "IF",
+   "pagina": "https://scjuilfov-asec.ro/despre/transparenta-salariala/",
+   "fisier": "https://scjuilfov-asec.ro/media/76783/transparenta-salariala-martie-2023_rotated.pdf",
+   "perioada": "2023-03",
+   "format": "pdf scanat, fără text — nu se folosește",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "scju-constanta",
+   "institutie": "Spitalul Clinic Județean de Urgență Constanța",
+   "tip": "spital",
+   "judet": "CT",
+   "pagina": "https://www.spitalulconstanta.ro/informatii-de-interes-public/transparenta-veniturilor-salariale/",
+   "fisier": "https://www.spitalulconstanta.ro/wp-content/uploads/2026/09/Transparenta-venituri-salariale-septembrie-2026.xlsx",
+   "perioada": "2026-09",
+   "format": "xlsx; importat parțial în src/data/transparenta-constanta.json",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "scju-sibiu",
+   "institutie": "Spitalul Clinic Județean de Urgență Sibiu",
+   "tip": "spital",
+   "judet": "SB",
+   "pagina": "https://scjus.ro/transparenta-veniturilor-salariale/",
+   "fisier": "https://scjus.ro/storage/2026/03/Venituri-Martie-2026.xlsx",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-25"
+  },
+  {
+   "id": "sju-baia-mare",
+   "institutie": "Spitalul Județean de Urgență Baia Mare",
+   "tip": "spital",
+   "judet": "MM",
+   "pagina": "https://www.spitaljbm.ro/index.php/despre-noi/documente-sjubm/buget/transparenta-veniturilor-salariale",
+   "nota": "pagină găsită; fișierul din 2026 de identificat"
+  },
+  {
+   "id": "scju-bistrita",
+   "institutie": "Spitalul Clinic Județean de Urgență Bistrița",
+   "tip": "spital",
+   "judet": "BN",
+   "pagina": "https://sjub.ro/",
+   "nota": "pagină găsită; fișierul din 2026 de identificat"
+  },
+  {
+   "id": "dgaspc-s1",
+   "institutie": "DGASPC Sector 1",
+   "tip": "dgaspc",
+   "judet": "B",
+   "pagina": "https://www.dgaspc-sectorul1.ro/transparenta-decizionala/transparenta-veniturilor-salariale/",
+   "fisier": "https://www.dgaspc-sectorul1.ro/wp-content/uploads/2026/06/Transparenta-venituri-salariale_-MARTIE-2026.pdf",
+   "perioada": "2026-06",
+   "gasitLa": "2026-09-25"
+  },
+  {
+   "id": "dgaspc-s2",
+   "institutie": "DGASPC Sector 2",
+   "tip": "dgaspc",
+   "judet": "B",
+   "pagina": "https://social2.ro/transparenta-veniturilor-salariale/",
+   "fisier": "https://social2.ro/wp-content/uploads/2026/09/Transparenta-veniturilor-salariale-30.09.2026.pdf",
+   "perioada": "2026-09",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "dgaspc-if",
+   "institutie": "DGASPC Ilfov",
+   "tip": "dgaspc",
+   "judet": "IF",
+   "pagina": "https://protectiacopilului.ro/transparenta-veniturilor-salariale/",
+   "fisier": "https://protectiacopilului.ro/wp-content/uploads/2016/01/TABEL-SALARII-DE-BAZA-LA-31.03.2026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-25"
+  },
+  {
+   "id": "dgaspc-sv",
+   "institutie": "DGASPC Suceava",
+   "tip": "dgaspc",
+   "judet": "SV",
+   "pagina": "https://dgaspcsv.ro/transparenta-veniturilor-salariale/",
+   "fisier": "https://dgaspcsv.ro/wp-content/uploads/2026/03/Transparenta-veniturilor_30.03.2026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-25"
+  },
+  {
+   "id": "dgaspc-gj",
+   "institutie": "DGASPC Gorj",
+   "tip": "dgaspc",
+   "judet": "GJ",
+   "pagina": "https://www.dgaspcgorj.ro/informatii-publice/transparenta/",
+   "fisier": "https://www.dgaspcgorj.ro/wp-content/uploads/2026/09/transparenta-veniturilor-salariale-DGASPC-Gorj-septembrie-2026.pdf",
+   "perioada": "2026-09",
+   "gasitLa": "2026-09-25"
+  },
+  {
+   "id": "dgaspc-vs",
+   "institutie": "DGASPC Vaslui",
+   "tip": "dgaspc",
+   "judet": "VS",
+   "pagina": "https://www.dgaspc-vs.ro/transparenta/transparenta-veniturilor-salariale/",
+   "nota": "pagină găsită; fișierul din 2026 de identificat"
+  },
+  {
+   "id": "dgaspc-bt",
+   "institutie": "DGASPC Botoșani",
+   "tip": "dgaspc",
+   "judet": "BT",
+   "pagina": "https://dgaspcbt.ro/transparenta-veniturilor-salariale/",
+   "fisier": "https://dgaspcbt.ro/wp-content/uploads/2026/09/TRANSPAREN%C8%9AA-VENITURILOR-SALARIALE-SEPT-2026.pdf",
+   "perioada": "2026-09",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "dgaspc-cl",
+   "institutie": "DGASPC Călărași",
+   "tip": "dgaspc",
+   "judet": "CL",
+   "pagina": "https://dgaspc-cl.ro/despre/transparenta",
+   "fisier": "https://dgaspc-cl.ro/images/Despre%20noi/2026/Transparenta%20veniturilor%2030%20septembrie%202026.pdf",
+   "perioada": "2026-09",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "dgaspc-sm",
+   "institutie": "DGASPC Satu Mare",
+   "tip": "dgaspc",
+   "judet": "SM",
+   "pagina": "https://www.dgaspcsm.ro/transparenta-veniturilor-salariale",
+   "fisier": "https://www.dgaspcsm.ro/storage/resurse-umane/transparenta-septembrie-2026.pdf",
+   "perioada": "2026-09",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "bj-alba",
+   "institutie": "Biblioteca Județeană Lucian Blaga Alba",
+   "tip": "biblioteca",
+   "judet": "AB",
+   "pagina": "https://www.bjalba.ro/despre-noi/transparenta-veniturilor-salariale/",
+   "fisier": "https://www.bjalba.ro/wp-content/uploads/2026/09/Transparenta-veniturilor-salariale.pdf",
+   "perioada": "2026-09",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "bj-valcea",
+   "institutie": "Biblioteca Județeană Antim Ivireanul Vâlcea",
+   "tip": "biblioteca",
+   "judet": "VL",
+   "pagina": "https://www.bjai.ro/informatii-publice-bjai/",
+   "fisier": "https://www.bjai.ro/informatii-publice/informatii-publice/Transparenta%20Veniturilor%20Salariale%20la%2030%20Septembrie%202026.pdf",
+   "perioada": "2026-09",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "bj-vrancea",
+   "institutie": "Biblioteca Județeană Vrancea",
+   "tip": "biblioteca",
+   "judet": "VN",
+   "pagina": "https://bjvrancea.ro/informatii-publice/",
+   "fisier": "https://bjvrancea.ro/wp-content/uploads/2026/03/Scan2026-03-25_090522.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-25"
+  },
+  {
+   "id": "bj-calarasi",
+   "institutie": "Biblioteca Județeană Alexandru Odobescu Călărași",
+   "tip": "biblioteca",
+   "judet": "CL",
+   "pagina": "https://www.bjcalarasi.ro/?page_id=2850",
+   "fisier": "https://www.bjcalarasi.ro/wp-content/uploads/2019/04/Salarii-BJC-la-31.03.2019.pdf",
+   "perioada": "2019-03",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "bcu-bucuresti",
+   "institutie": "Biblioteca Centrală Universitară București",
+   "tip": "biblioteca",
+   "judet": "B",
+   "pagina": "https://www.bcub.ro/transparenta-veniturilor-salariale/",
+   "fisier": "https://www.bcub.ro/wp-content/uploads/2022/03/Transparenta-Veniturilor-Salariale.pdf",
+   "perioada": "2022-03",
+   "gasitLa": "2026-09-26"
+  },
+  {
+   "id": "pm-timisoara",
+   "institutie": "Primăria Timișoara",
+   "tip": "primarie",
+   "judet": "TM",
+   "pagina": "https://www.primariatm.ro/transparenta/finante-publice/transparenta-veniturilor-salariale",
+   "fisier": "https://assets.primariatm.ro/0b82431c-323b-42e1-856e-f930c032893d/31.03.2026%20R.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-25"
+  },
+  {
+   "id": "pm-sinaia",
+   "institutie": "Primăria Sinaia",
+   "tip": "primarie",
+   "judet": "PH",
+   "pagina": "https://www.primaria-sinaia.ro/",
+   "fisier": "https://www.primaria-sinaia.ro/wp-content/uploads/2022/10/Memorandum-privind-instituirea-RUTI.pdf",
+   "perioada": "2022-10",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "pm-suceava",
+   "institutie": "Primăria Suceava",
+   "tip": "primarie",
+   "judet": "SV",
+   "pagina": "https://www.primariasv.ro/dm_suceava/site.nsf/pagini/transparenta+veniturilor+salariale-0000A342",
+   "fisier": "https://www.primariasv.ro/dm_suceava/site.nsf/atasament/61EFD407ACB83199C2258E8300213FC8/$FILE/Transparenta%20veniturilor%2030%20septembrie%202026.pdf?Open",
+   "perioada": "2026-09",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "ps4",
+   "institutie": "Primăria Sectorului 4",
+   "tip": "primarie",
+   "judet": "B",
+   "pagina": "https://ps4.ro/transparenta-veniturilor-salariale/",
+   "fisier": "https://ps4.ro/wp-content/uploads/2026/04/Transparenta-veniturilor-salariale-Martie-2026.pdf",
+   "perioada": "2026-04",
+   "gasitLa": "2026-09-25"
+  },
+  {
+   "id": "ps6",
+   "institutie": "Primăria Sectorului 6",
+   "tip": "primarie",
+   "judet": "B",
+   "pagina": "https://www.primarie6.ro/primarie_sector6/informatii-interes-public/transparenta-venituri",
+   "fisier": "https://www.primarie6.ro/primarie_sector6/sites/default/files/2026-09/venituri%20salariale%20fc.pdf",
+   "perioada": "2026-09",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "cj-olt",
+   "institutie": "Consiliul Județean Olt",
+   "tip": "consiliu-judetean",
+   "judet": "OT",
+   "pagina": "https://cjolt.ro/informatii-de-interes-public/transparenta-veniturilor-salariale/",
+   "nota": "pagină găsită; fișierul din 2026 de identificat"
+  },
+  {
+   "id": "cj-salaj",
+   "institutie": "Consiliul Județean Sălaj",
+   "tip": "consiliu-judetean",
+   "judet": "SJ",
+   "pagina": "https://www.cjsj.ro/index.php/informatii-publice/transparenta-veniturilor-salariale",
+   "fisier": "https://www.cjsj.ro/date/pdfuri/Transparenta%20venituri%20salariale/Lista24.09.2026.pdf",
+   "perioada": "2026-09",
+   "gasitLa": "2026-09-25"
+  },
+  {
+   "id": "dnp",
+   "institutie": "Direcția Națională de Probațiune",
+   "tip": "institutie-centrala",
+   "judet": "B",
+   "pagina": "https://probatiune.just.ro/",
+   "fisier": "https://probatiune.just.ro/wp-content/uploads/2026/04/DNP_31.03.2026_transparenta_veniturilor-salariale.pdf"
+  },
+  {
+   "id": "sju-buzau",
+   "institutie": "Spitalul Județean de Urgență Buzău",
+   "tip": "spital",
+   "judet": "BZ",
+   "pagina": "https://www.spitalulbuzau.ro/venituri-salariale",
+   "fisier": "https://www.spitalulbuzau.ro/docs/economic/venituri/2026/transparenta%20februarie%202026.xlsx",
+   "perioada": "2026-02",
+   "gasitLa": "2026-09-25"
+  },
+  {
+   "id": "scju-mures",
+   "institutie": "Spitalul Clinic Județean de Urgență Târgu Mureș",
+   "tip": "spital",
+   "judet": "MS",
+   "pagina": "https://www.spitalmures.ro/en/resurse-umane/transparenta-veniturilor-salariale/",
+   "fisier": "https://www.spitalmures.ro/wp-content/uploads/2026/04/transparenta-veniturilor-salariale-la-31.03.2026.pdf",
+   "perioada": "2026-04",
+   "gasitLa": "2026-09-25"
+  },
+  {
+   "id": "scju-galati",
+   "institutie": "Spitalul Clinic Județean de Urgență Galați",
+   "tip": "spital",
+   "judet": "GL",
+   "pagina": "https://www.spitalulurgentagalati.ro/despre_transparenta.html",
+   "fisier": "https://www.spitalulurgentagalati.ro/despre_noi/Transparenta_Venituri_Salariale-Lista_Functiilor_martie2019.xls",
+   "perioada": "2019-03",
+   "gasitLa": "2026-09-26"
+  },
+  {
+   "id": "sbi-iasi",
+   "institutie": "Spitalul Clinic de Boli Infecțioase Iași",
+   "tip": "spital",
+   "judet": "IS",
+   "pagina": "https://www.infectioase.ro/transparenta-veniturilor-salariale-martie-2026/",
+   "fisier": "https://www.infectioase.ro/wp-content/uploads/2026/03/Transparenta-veniturilor-salariale-MARTIE-2026-.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-25"
+  },
+  {
+   "id": "sju-giurgiu",
+   "institutie": "Spitalul Județean de Urgență Giurgiu",
+   "tip": "spital",
+   "judet": "GR",
+   "pagina": "https://spitalgiurgiu.ro/index.php/informatii-de-interes-public/transparenta-veniturilor-si-cheltuielilor",
+   "fisier": "https://spitalgiurgiu.ro/documents/jdownloads/825-transparenta-veniturilor-salariale-septembrie-2022.pdf",
+   "perioada": "2022-09",
+   "gasitLa": "2026-09-26"
+  },
+  {
+   "id": "scju-timisoara",
+   "institutie": "Spitalul Clinic Județean de Urgență Pius Brînzeu Timișoara",
+   "tip": "spital",
+   "judet": "TM",
+   "pagina": "https://www.hosptm.ro/venituri-nete-salariale/",
+   "fisier": "https://www.hosptm.ro/files/venituri/2026/Transparenta-venituri-MARTIE-2026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-25"
+  },
+  {
+   "id": "sju-neamt",
+   "institutie": "Spitalul Județean de Urgență Piatra Neamț",
+   "tip": "spital",
+   "judet": "NT",
+   "pagina": "https://www.sjuneamt.ro/venituri-nete-realizate"
+  },
+  {
+   "id": "sbi-constanta",
+   "institutie": "Spitalul Clinic de Boli Infecțioase Constanța",
+   "tip": "spital",
+   "judet": "CT",
+   "pagina": "https://infectioaseconstanta.ro/transparenta-veniturilor-salariale/",
+   "fisier": "https://infectioaseconstanta.ro/wp-content/uploads/2026/08/TRANSPARENTA-SALARIILOR-CONF.-LEGII153-30.09.2025.pdf",
+   "perioada": "2025-09",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "sm-calafat",
+   "institutie": "Spitalul Municipal Calafat",
+   "tip": "spital",
+   "judet": "DJ",
+   "pagina": "https://spitalcalafat.ro/transparenta-veniturilor-salariale/",
+   "fisier": "https://spitalcalafat.ro/wp-content/uploads/2024/04/Lista-functii-site-SMC-martie-2024-.pdf",
+   "perioada": "2024-04",
+   "gasitLa": "2026-09-25"
+  },
+  {
+   "id": "sm-turda",
+   "institutie": "Spitalul Municipal Turda",
+   "tip": "spital",
+   "judet": "CJ",
+   "pagina": "https://spitalturda.ro/index.php/transparenta-veniturilor-salariale/",
+   "fisier": "https://spitalturda.ro/wp-content/uploads/2026/03/transparenta-veniturilor-salariale-2026_03.xlsx",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-25"
+  },
+  {
+   "id": "sp-titan",
+   "institutie": "Spitalul de Psihiatrie Titan Dr. Constantin Gorgos",
+   "tip": "spital",
+   "judet": "B",
+   "pagina": "https://spitalulgorgos.ro/transparenta-veniturilor-salariale/",
+   "fisier": "https://spitalulgorgos.ro/wp-content/uploads/2026/03/Transparenta-veniturilor-salariale-30.09.2026_Redacted.pdf",
+   "perioada": "2026-09",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "dsp-vaslui",
+   "institutie": "Direcția de Sănătate Publică Vaslui",
+   "tip": "dsp",
+   "judet": "VS",
+   "pagina": "https://dspvs.ro/transparenta-veniturilor-salariale-septembrie-2026/",
+   "fisier": "https://dspvs.ro/wp-content/uploads/2026/09/TRANSPARENTA-VENITURILOR-SALARIALE-SEPTEMBRIE-2026.pdf",
+   "perioada": "2026-09",
+   "gasitLa": "2026-09-25"
+  },
+  {
+   "id": "assmb",
+   "institutie": "Administrația Spitalelor și Serviciilor Medicale București",
+   "tip": "spital",
+   "judet": "B",
+   "pagina": "https://assmb.ro/",
+   "fisier": "https://assmb.ro/storage/transparenta/2026/salarii/martie.pdf",
+   "perioada": "2026-03"
+  },
+  {
+   "id": "sco-filantropia",
+   "institutie": "Spitalul Clinic de Obstetrică și Ginecologie Filantropia",
+   "tip": "spital",
+   "judet": "B",
+   "pagina": "https://spitalulfilantropia.ro/transparenta-venituri-salariale/",
+   "fisier": "https://spitalulfilantropia.ro/wp-content/uploads/2026/03/transparenta-salariala-la-luna-martie-2026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-26"
+  },
+  {
+   "id": "scju-bihor",
+   "institutie": "Spitalul Clinic Județean de Urgență Bihor",
+   "tip": "spital",
+   "judet": "BH",
+   "pagina": "https://spitaljudetean-oradea.ro/situatia-drepturilor-salariale/",
+   "fisier": "https://spitaljudetean-oradea.ro/wp-content/uploads/2026/04/tansparenta-salariala-martie-2026-2.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-26"
+  },
+  {
+   "id": "scpn-brasov",
+   "institutie": "Spitalul Clinic de Psihiatrie și Neurologie Brașov",
+   "tip": "spital",
+   "judet": "BV",
+   "pagina": "https://www.scpnbv.ro/transparenta-decizionala/",
+   "fisier": "https://www.scpnbv.ro/wp-content/uploads/2026/04/Transparenta-veniturilor-salariale-martie-2026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-26"
+  },
+  {
+   "id": "scju-braila",
+   "institutie": "Spitalul Clinic Județean de Urgență Brăila",
+   "tip": "spital",
+   "judet": "BR",
+   "pagina": "https://www.spitalbraila.ro/",
+   "fisier": "https://www.spitalbraila.ro/assets/docs/Venituri/Transparenta%20Martie%202026.pdf",
+   "perioada": "2026-03"
+  },
+  {
+   "id": "sm-blaj",
+   "institutie": "Spitalul Municipal Blaj",
+   "tip": "spital",
+   "judet": "AB",
+   "pagina": "https://spitalblaj.ro/informatii-de-interes-public/transparenta-veniturilor-salariale/",
+   "fisier": "https://spitalblaj.ro/wp-content/uploads/2026/09/TRANSPARENTA-SALARIALA-SEPTEMBRIE-2026.pdf",
+   "perioada": "2026-09",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "scm-cluj",
+   "institutie": "Spitalul Clinic Municipal Cluj-Napoca",
+   "tip": "spital",
+   "judet": "CJ",
+   "pagina": "https://spitalclujana.ro/informatii-publice/venituri-salariale-nete/",
+   "fisier": "https://spitalclujana.ro/wp-content/uploads/2025/05/salarii-Martie_2025.pdf",
+   "perioada": "2025-03",
+   "gasitLa": "2026-09-26"
+  },
+  {
+   "id": "so-negresti",
+   "institutie": "Spitalul Orășenesc Negrești-Oaș",
+   "tip": "spital",
+   "judet": "SM",
+   "pagina": "https://www.spitalnegrestioas.ro/index.php/ro/informatii-publice/informatii-financiare/venituri-nete",
+   "fisier": "https://www.spitalnegrestioas.ro/fileSite/venituri/transparenta%20veniturilor%20SAL_August%202026.pdf",
+   "perioada": "2026-08",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "dgaspc-ag",
+   "institutie": "DGASPC Argeș",
+   "tip": "dgaspc",
+   "judet": "AG",
+   "pagina": "https://www.cjarges.ro/en/web/dgaspc-arges/transparenta-veniturilor-salariale"
+  },
+  {
+   "id": "dgaspc-s3",
+   "institutie": "DGASPC Sector 3",
+   "tip": "dgaspc",
+   "judet": "B",
+   "pagina": "https://dgaspc3.ro/utile/activitate-organizare/lista-functiilor-si-a-salariului-de-baza-din-cadrul-dgaspc-sector-3/",
+   "fisier": "https://dgaspc3.ro/wp-content/uploads/TRANSPARENTA-VENITURI-30.09.2026.pdf",
+   "perioada": "2026-09",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "dgaspc-bn",
+   "institutie": "DGASPC Bistrița-Năsăud",
+   "tip": "dgaspc",
+   "judet": "BN",
+   "pagina": "https://www.dgaspcbn.ro/site/documente?id=39",
+   "fisier": "https://www.dgaspcbn.ro/site/doc-load?id=1939&doc=Transparen%C8%9B%C4%83+Salarii-30.09.2026.pdf",
+   "perioada": "2026-09",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "das-brasov",
+   "institutie": "Direcția de Asistență Socială Brașov",
+   "tip": "dgaspc",
+   "judet": "BV",
+   "pagina": "http://www.dasbv.ro/transparenta-veniturilor-salariale/",
+   "fisier": "http://www.dasbv.ro/wp-content/uploads/2018/01/Transparenta-salariala-30.09.2026.pdf",
+   "perioada": "2026-09",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "dsp-sibiu",
+   "institutie": "Direcția de Sănătate Publică Sibiu",
+   "tip": "dsp",
+   "judet": "SB",
+   "pagina": "https://www.dspsibiu.ro/venituri-salariale/"
+  },
+  {
+   "id": "dsp-bucuresti",
+   "institutie": "Direcția de Sănătate Publică București",
+   "tip": "dsp",
+   "judet": "B",
+   "pagina": "https://dspb.ro/transparenta/drepturi-salariale.php",
+   "fisier": "https://dspb.ro/pdf/salarii/2026/VENITURI-SALARIALE-MARTIE-2026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-26"
+  },
+  {
+   "id": "dsp-hunedoara",
+   "institutie": "Direcția de Sănătate Publică Hunedoara",
+   "tip": "dsp",
+   "judet": "HD",
+   "pagina": "https://asphd.ro/transparenta-veniturilor-salariale-la-data-de-31-03-2026-conf-art-33-din-legea-153-2017/",
+   "fisier": "https://asphd.ro/wp-content/uploads/2026/04/TRANSPARENTA-VENITURILOR-SALARIALE-LA-DATA-DE-31.03.2026-CONF.ART_.33-DIN-LEGEA-2017.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "dsp-prahova",
+   "institutie": "Direcția de Sănătate Publică Prahova",
+   "tip": "dsp",
+   "judet": "PH",
+   "pagina": "https://www.dspph.ro/transparenta-veniturilor-salariale-2026/",
+   "fisier": "https://www.dspph.ro/wp-content/uploads/2026/04/VENITURI-SALARIALE-31.03.2026-1.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-26"
+  },
+  {
+   "id": "dsp-braila",
+   "institutie": "Direcția de Sănătate Publică Brăila",
+   "tip": "dsp",
+   "judet": "BR",
+   "pagina": "https://dspbr.ro/venituri-salariale/",
+   "fisier": "https://dspbr.ro/wp-content/uploads/2020/07/DSP-Brila-3046_Transparena-veniturilor-salariale-la-data-de-31032026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-26"
+  },
+  {
+   "id": "ugal",
+   "institutie": "Universitatea Dunărea de Jos Galați",
+   "tip": "universitate",
+   "judet": "GL",
+   "pagina": "https://www.ugal.ro/informatii/informatii-publice/transparenta-veniturilor-salariale",
+   "fisier": "https://www.ugal.ro/files/resurese_umane/2026/Transparenta_veniturilor_salariale_art_33_L._153_31.03.2026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "umfst",
+   "institutie": "Universitatea de Medicină, Farmacie, Științe și Tehnologie Târgu Mureș",
+   "tip": "universitate",
+   "judet": "MS",
+   "pagina": "https://www.umfst.ro/",
+   "fisier": "https://www.umfst.ro/fileadmin/directia_adm/personal/2026/Transparenta_veniturilor_salariale_31_martie_2026.pdf",
+   "perioada": "2026-03"
+  },
+  {
+   "id": "ovidius",
+   "institutie": "Universitatea Ovidius Constanța",
+   "tip": "universitate",
+   "judet": "CT",
+   "pagina": "https://www.univ-ovidius.ro/",
+   "fisier": "https://www.univ-ovidius.ro/wp-content/uploads/2026/03/Venituri-salariale-martie-2026.pdf",
+   "perioada": "2026-03"
+  },
+  {
+   "id": "ub-bacau",
+   "institutie": "Universitatea Vasile Alecsandri Bacău",
+   "tip": "universitate",
+   "judet": "BC",
+   "pagina": "https://www.ub.ro/",
+   "fisier": "https://www.ub.ro/storage/1774866100transparenta_martie_2026.pdf",
+   "perioada": "2026-03"
+  },
+  {
+   "id": "umfcd",
+   "institutie": "Universitatea de Medicină și Farmacie Carol Davila București",
+   "tip": "universitate",
+   "judet": "B",
+   "pagina": "https://umfcd.ro/despre-umfcd/resurse-umane/transparenta-veniturilor-salariale/",
+   "fisier": "https://umfcd.ro/wp-content/uploads/2026/RUNOS/TRANSPARENTA_VENITURILOR_SALARIALE/Transparenta%20veniturilor%20salariale%20UMFCD%20martie%202026.xls",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-26"
+  },
+  {
+   "id": "unarte",
+   "institutie": "Universitatea Națională de Arte București",
+   "tip": "universitate",
+   "judet": "B",
+   "pagina": "https://unarte.org/",
+   "fisier": "https://unarte.org/wp-content/uploads/2026/03/transparenta-veniturilor-din-UNAB-martie-2026-.pdf",
+   "perioada": "2026-03"
+  },
+  {
+   "id": "uauim",
+   "institutie": "Universitatea de Arhitectură și Urbanism Ion Mincu",
+   "tip": "universitate",
+   "judet": "B",
+   "pagina": "https://www.uauim.ro/informatii-interes-public/",
+   "fisier": "https://www.uauim.ro/universitatea/personal/2025-2026/Transparenta%20veniturilor%20salariale%20cf.%20L153-2017%20septembrie%202026.xlsx",
+   "perioada": "2026-09",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "sju-ploiesti",
+   "institutie": "Spitalul Județean de Urgență Ploiești",
+   "tip": "spital",
+   "judet": "PH",
+   "pagina": "https://sjup.ro/transparenta-drepturilor-salariale/",
+   "fisier": "https://sjup.ro/wp-content/uploads/2026/01/AUGUST-2025_transparenta-venituri-1.xls",
+   "perioada": "2025-08",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "scju-suceava",
+   "institutie": "Spitalul Clinic Județean de Urgență „Sf. Ioan cel Nou” Suceava",
+   "tip": "spital",
+   "judet": "SV",
+   "pagina": "https://spitaluljudeteansuceava.ro/venituri/",
+   "nota": "pagina /venituri/ nu listează fișierele în HTML; fișierul găsit după tiparul adreselor din 2023–2024",
+   "fisier": "https://spitaluljudeteansuceava.ro/documente/Uz%20intern/Venituri/Transparenta%20salariala%20(Legea%20153-art.33)/2025/TRANSPARENTA%20SALARIALA%20-%2031%20MARTIE%202025.pdf",
+   "perioada": "2025-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "scju-arad",
+   "institutie": "Spitalul Clinic Județean de Urgență Arad",
+   "tip": "spital",
+   "judet": "AR",
+   "pagina": "https://www.scjarad.ro/administrativ/serviciul-resurse-umane/"
+  },
+  {
+   "id": "sju-pitesti",
+   "institutie": "Spitalul Județean de Urgență Pitești",
+   "tip": "spital",
+   "judet": "AG",
+   "pagina": "https://www.sjupitesti.ro/"
+  },
+  {
+   "id": "sju-botosani",
+   "institutie": "Spitalul Județean de Urgență „Mavromati” Botoșani",
+   "tip": "spital",
+   "judet": "BT",
+   "pagina": "https://www.spitalulmavromati.ro/situatia-drepturilor-salariale"
+  },
+  {
+   "id": "sju-valcea",
+   "institutie": "Spitalul Județean de Urgență Vâlcea",
+   "tip": "spital",
+   "judet": "VL",
+   "pagina": "https://www.sjv.ro/"
+  },
+  {
+   "id": "scju-brasov",
+   "institutie": "Spitalul Clinic Județean de Urgență Brașov",
+   "tip": "spital",
+   "judet": "BV",
+   "pagina": "https://www.hospbv.ro/Home/ResurseUmane/Transparentaveniturisalariale/tabid/211/language/ro-RO/Default.aspx"
+  },
+  {
+   "id": "cj-hunedoara",
+   "institutie": "Consiliul Județean Hunedoara",
+   "tip": "consiliu-judetean",
+   "judet": "HD",
+   "pagina": "https://www.cjhunedoara.ro/index.php/9-uncategorised/373-drepturi-salariale",
+   "fisier": "https://www.cjhunedoara.ro/documente/2026/Personal/Transparenta%20veniturilor%20salariale%2030%20septembrie%202026.pdf",
+   "perioada": "2026-09",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "unitbv",
+   "institutie": "Universitatea Transilvania din Brașov",
+   "tip": "universitate",
+   "judet": "BV",
+   "pagina": "https://www.unitbv.ro/despre-unitbv/informatii-de-interes-public/transparenta-institutionala/buget-bilanturi-contabile/aplicarea-art-33.html",
+   "fisier": "https://www.unitbv.ro/Salarii_site_30.09.2026_SITE.pdf",
+   "perioada": "2026-09",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "umf-iasi",
+   "institutie": "Universitatea de Medicină și Farmacie „Grigore T. Popa” Iași",
+   "tip": "universitate",
+   "judet": "IS",
+   "pagina": "https://www.umfiasi.ro/ro/universitate/informatii-de-interes-public/Pagini/Transparenta-salariilor.aspx"
+  },
+  {
+   "id": "pm-sighisoara",
+   "institutie": "Primăria Municipiului Sighișoara",
+   "tip": "primarie",
+   "judet": "MS",
+   "pagina": "https://primariasighisoara.ro/portal/mures/sighisoara/portal.nsf/pagini/transparenta+veniturilor+salariale+conform+art+33+din+legea+1532017-00019B42",
+   "fisier": "https://primariasighisoara.ro/portal/mures/sighisoara/portal.nsf/atasament/08A8587F4C14B7B9C2258E82001B73C2/$FILE/Transparenta%20venituri%20salariale%20septembrie%202026%20B.pdf",
+   "perioada": "2026-09",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "fil-banatul",
+   "institutie": "Filarmonica Banatul Timișoara",
+   "tip": "cultura",
+   "judet": "TM",
+   "pagina": "https://filarmonicabanatul.ro/transparenta-bugetara/",
+   "fisier": "https://filarmonicabanatul.ro/wp-content/uploads/2026/09/Transparenta-30.09.2026.pdf",
+   "perioada": "2026-09",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "fil-iasi",
+   "institutie": "Filarmonica Moldova Iași",
+   "tip": "cultura",
+   "judet": "IS",
+   "pagina": "https://www.filarmonicais.ro/index.php/ro/despre-noi/informatii-de-interes-public/transparenta-veniturilor-salariale",
+   "fisier": "https://www.filarmonicais.ro/images/pdf/Salarii-site-30.09.2026.pdf",
+   "perioada": "2026-09",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "fil-arad",
+   "institutie": "Filarmonica Arad",
+   "tip": "cultura",
+   "judet": "AR",
+   "pagina": "https://www.filarmonicaarad.ro/informatii-publice/",
+   "fisier": "https://www.filarmonicaarad.ro/wp-content/uploads/2025/10/SALARIILE-la-data-de-30.09.2025-.pdf",
+   "perioada": "2025-09",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "fil-transilvania",
+   "institutie": "Filarmonica de Stat Transilvania Cluj",
+   "tip": "cultura",
+   "judet": "CJ",
+   "pagina": "https://filarmonicatransilvania.ro/"
+  },
+  {
+   "id": "tn-sibiu",
+   "institutie": "Teatrul Național Radu Stanca Sibiu",
+   "tip": "cultura",
+   "judet": "SB",
+   "pagina": "https://www.tnrs.ro/ro/situatia-drepturilor-salariale",
+   "fisier": "https://tnrs.ro/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBK2w3RVE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--5fd579c8849f3727c344e8de206c4144e604da62/Situatie%20drepturi%20salariale%20martie%202026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "t-comedie",
+   "institutie": "Teatrul de Comedie București",
+   "tip": "cultura",
+   "judet": "B",
+   "pagina": "https://comedie.ro/catinfopub/transparenta-venituri-salariale/"
+  },
+  {
+   "id": "tn-iasi",
+   "institutie": "Teatrul Național Vasile Alecsandri Iași",
+   "tip": "cultura",
+   "judet": "IS",
+   "pagina": "https://teatrulnationaliasi.ro/",
+   "fisier": "https://teatrulnationaliasi.ro/wp-content/uploads/2026/03/Transparen%C8%9Ba-veniturilor-salariale-TNIa%C8%99i-31-martie-2026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "tn-bucuresti",
+   "institutie": "Teatrul Național București",
+   "tip": "cultura",
+   "judet": "B",
+   "pagina": "https://www.tnb.ro/"
+  },
+  {
+   "id": "t-tineretului-pn",
+   "institutie": "Teatrul Tineretului Piatra-Neamț",
+   "tip": "cultura",
+   "judet": "NT",
+   "pagina": "https://www.teatrultineretului.ro/?page_id=12672"
+  },
+  {
+   "id": "tn-targu-mures",
+   "institutie": "Teatrul Național Târgu-Mureș",
+   "tip": "cultura",
+   "judet": "MS",
+   "pagina": "https://teatrunational.ro/public_information/the-situation-of-salary-rights/",
+   "fisier": "https://teatrunational.ro/wp-content/uploads/2021/03/Situatia-drepturilor-salariale-2019.pdf",
+   "perioada": "2021-03",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "tn-craiova",
+   "institutie": "Teatrul Național Marin Sorescu Craiova",
+   "tip": "cultura",
+   "judet": "DJ",
+   "pagina": "https://tncms.ro/",
+   "fisier": "https://tncms.ro/zip/achizitii/situatiasalariilor.pdf",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "opera-timisoara",
+   "institutie": "Opera Națională Română Timișoara",
+   "tip": "cultura",
+   "judet": "TM",
+   "pagina": "https://www.ort.ro/informatii/ro/212/Drepturi-salariale.html"
+  },
+  {
+   "id": "tn-cluj",
+   "institutie": "Teatrul Național Lucian Blaga Cluj-Napoca",
+   "tip": "cultura",
+   "judet": "CJ",
+   "pagina": "https://www.teatrulnationalcluj.ro/pagina-69/situatia-drepturilor-salariale/"
+  },
+  {
+   "id": "fil-brasov",
+   "institutie": "Filarmonica Brașov",
+   "tip": "cultura",
+   "judet": "BV",
+   "pagina": "https://filarmonicabrasov.ro/"
+  },
+  {
+   "id": "fil-oltenia",
+   "institutie": "Filarmonica Oltenia Craiova",
+   "tip": "cultura",
+   "judet": "DJ",
+   "pagina": "https://filarmonicaoltenia.ro/"
+  },
+  {
+   "id": "fil-sibiu",
+   "institutie": "Filarmonica de Stat Sibiu",
+   "tip": "cultura",
+   "judet": "SB",
+   "pagina": "https://filarmonicasibiu.ro/"
+  },
+  {
+   "id": "fil-ploiesti",
+   "institutie": "Filarmonica Paul Constantinescu Ploiești",
+   "tip": "cultura",
+   "judet": "PH",
+   "pagina": "https://filarmonicaploiesti.ro/",
+   "fisier": "https://filarmonicaploiesti.ro/wp-content/uploads/2026/09/Lista-functii-Filarmonica-Ploiesti-septembrie-2026.pdf",
+   "perioada": "2026-09",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "fil-bacau",
+   "institutie": "Filarmonica Mihail Jora Bacău",
+   "tip": "cultura",
+   "judet": "BC",
+   "pagina": "https://filarmonicabacau.ro/",
+   "fisier": "https://filarmonicabacau.ro/storage/2026/03/Salarii-de-baza-afisate-martie-2026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "fil-oradea",
+   "institutie": "Filarmonica Oradea",
+   "tip": "cultura",
+   "judet": "BH",
+   "pagina": "https://filarmonicaoradea.ro/",
+   "fisier": "https://filarmonicaoradea.ro/wp-content/uploads/2026/03/Salarii-de-baza-conform-art.-33-din-legea-1532017-la-31.03.2026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "fil-pitesti",
+   "institutie": "Filarmonica Pitești",
+   "tip": "cultura",
+   "judet": "AG",
+   "pagina": "https://filarmonicapitesti.ro/"
+  },
+  {
+   "id": "fil-botosani",
+   "institutie": "Filarmonica George Enescu Botoșani",
+   "tip": "cultura",
+   "judet": "BT",
+   "pagina": "https://filarmonicabotosani.ro/informatii-publice",
+   "fisier": "https://filarmonicabotosani.ro/wp-content/uploads/2026/04/TRANSPARENTA-SALARIALA-31-MARTIE-2026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "opera-bucuresti",
+   "institutie": "Opera Națională București",
+   "tip": "cultura",
+   "judet": "B",
+   "pagina": "https://www.operanb.ro/"
+  },
+  {
+   "id": "opera-iasi",
+   "institutie": "Opera Națională Română Iași",
+   "tip": "cultura",
+   "judet": "IS",
+   "pagina": "https://www.operaiasi.ro/",
+   "fisier": "https://www.operaiasi.ro/wp-content/uploads/2026/04/Lista-functii-la-31.03.2026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "t-bulandra",
+   "institutie": "Teatrul Bulandra",
+   "tip": "cultura",
+   "judet": "B",
+   "pagina": "https://www.bulandra.ro/",
+   "fisier": "https://www.bulandra.ro/wp-content/uploads/2025/10/Salarii-la-30-septembrie-2025.pdf",
+   "perioada": "2025-09",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "t-odeon",
+   "institutie": "Teatrul Odeon",
+   "tip": "cultura",
+   "judet": "B",
+   "pagina": "https://www.teatrul-odeon.ro/"
+  },
+  {
+   "id": "t-mic",
+   "institutie": "Teatrul Mic",
+   "tip": "cultura",
+   "judet": "B",
+   "pagina": "https://www.teatrulmic.ro/",
+   "fisier": "https://www.teatrulmic.ro/wp-content/uploads/2026/04/Transparenta-salariala-31.03.2026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "t-nottara",
+   "institutie": "Teatrul Nottara",
+   "tip": "cultura",
+   "judet": "B",
+   "pagina": "https://www.nottara.ro/"
+  },
+  {
+   "id": "pm-oradea",
+   "institutie": "Primăria Municipiului Oradea",
+   "tip": "primarie",
+   "judet": "BH",
+   "pagina": "https://oradea.ro/en/oradea-city-hall/transparency/wage-income-transparency/",
+   "fisier": "https://oradea.ro/wp-content/uploads/2026/09/transparenta-veniturilor-salariale-septembrie-2026.pdf",
+   "perioada": "2026-09",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "cj-bistrita",
+   "institutie": "Consiliul Județean Bistrița-Năsăud",
+   "tip": "consiliu-judetean",
+   "judet": "BN",
+   "pagina": "https://www.portalbn.ro/",
+   "fisier": "https://www.portalbn.ro/portal/bistrita-nasaud/portal.nsf/0D1ADB2E1F98641BC2258DCC00136AF4/$FILE/TRANSPARENTA%20VENITURILOR%20SALARIALE%20-31%20martie%202026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "pm-arad",
+   "institutie": "Primăria Municipiului Arad",
+   "tip": "primarie",
+   "judet": "AR",
+   "pagina": "https://www.primariaarad.ro/dm_arad/portal.nsf/AllByUNID/transparenta-veniturilor-salariale-000107b2",
+   "fisier": "https://www.primariaarad.ro/dm_arad/portal.nsf/5C085E8642C0B4C6C2258E82004641B7/$FILE/lista%20venituri%20salariale%20septembrie%202026.pdf?Open",
+   "perioada": "2026-09",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "pm-medias",
+   "institutie": "Primăria Municipiului Mediaș",
+   "tip": "primarie",
+   "judet": "SB",
+   "pagina": "https://primariamedias.ro/portal/medias/portal.nsf/AllByUNID/Transparenta-0000C9A6?OpenDocument=",
+   "fisier": "https://primariamedias.ro/portal/medias/portal.nsf/CC203AD0CB845ACDC2258DCC0020D18A/%24FILE/Transparenta%20veniturilor%20salariale%20la%2031.03.2026.pdf%20sgn.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "pm-brasov",
+   "institutie": "Primăria Municipiului Brașov",
+   "tip": "primarie",
+   "judet": "BV",
+   "pagina": "https://www.brasovcity.ro/"
+  },
+  {
+   "id": "bj-valcea2",
+   "institutie": "Biblioteca Județeană Antim Ivireanul Vâlcea",
+   "tip": "biblioteca",
+   "judet": "VL",
+   "pagina": "https://www.bjai.ro/informatii-publice-bjai/",
+   "fisier": "https://www.bjai.ro/informatii-publice/informatii-publice/Transparenta%20Veniturilor%20Salariale%20la%2030%20Septembrie%202026.pdf",
+   "perioada": "2026-09",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "ca-bacau",
+   "institutie": "Curtea de Apel Bacău",
+   "tip": "instanta",
+   "judet": "BC",
+   "pagina": "https://portal.just.ro/32/SitePages/informatii.aspx",
+   "fisier": "https://portal.just.ro/32/Documents/Financiar/2026/Transparen%C8%9Ba%20veniturilor%20salariale%20la%2031.03.2026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "ca-oradea",
+   "institutie": "Curtea de Apel Oradea",
+   "tip": "instanta",
+   "judet": "BH",
+   "pagina": "https://portal.just.ro/35/SitePages/informatii.aspx",
+   "fisier": "https://portal.just.ro/35/Documents/situatia%20drepturilor%20salariale/2026/CA%20Oradea%20transparen%C8%9Ba%20veniturilor%20salariale%20la%2031.03.2026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "ca-suceava",
+   "institutie": "Curtea de Apel Suceava",
+   "tip": "instanta",
+   "judet": "SV",
+   "pagina": "https://portal.just.ro/39/SitePages/informatii.aspx",
+   "fisier": "https://portal.just.ro/39/Documents/DEFA/2026/Transparen%C8%9Ba%20salarial%C4%83%20la%20data%20de%2031%20martie%202026.PDF",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "tb-botosani",
+   "institutie": "Tribunalul Botoşani",
+   "tip": "instanta",
+   "judet": "BT",
+   "pagina": "https://portal.just.ro/40/SitePages/informatii.aspx",
+   "fisier": "https://portal.just.ro/40/Documents/Transparenta%20venituri%20salariale%2031.03.2026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "ca-ploiesti",
+   "institutie": "Curtea de Apel Ploieşti",
+   "tip": "instanta",
+   "judet": "PH",
+   "pagina": "https://portal.just.ro/42/SitePages/informatii.aspx",
+   "fisier": "https://portal.just.ro/42/Documents/Curtea%20de%20Apel%20Ploiesti-%20Transparenta%20veniturilor%20salariale%20la%2031.03.2026.PDF",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "ca-targu-mures",
+   "institutie": "Curtea de Apel Târgu Mureş",
+   "tip": "instanta",
+   "judet": "MS",
+   "pagina": "https://portal.just.ro/43/SitePages/informatii.aspx",
+   "fisier": "https://portal.just.ro/43/Documents/Cheltuieli/2026/Venituri-Salariale-2026-03-31.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "ca-galati",
+   "institutie": "Curtea de Apel Galaţi",
+   "tip": "instanta",
+   "judet": "GL",
+   "pagina": "https://portal.just.ro/44/SitePages/informatii.aspx",
+   "fisier": "https://portal.just.ro/44/SiteAssets/SitePages/informatii/Transparen%C5%A3a%20veniturilor%20salariale%20-%2031.03.2026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "ca-pitesti",
+   "institutie": "Curtea de Apel Piteşti",
+   "tip": "instanta",
+   "judet": "AG",
+   "pagina": "https://portal.just.ro/46/SitePages/informatii.aspx",
+   "fisier": "https://portal.just.ro/46/Documents/Transparen%C8%9Ba%20veniturilor%2031.03.2026-%20Curtea%20de%20Apel%20Pite%C8%99ti.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "ca-alba-iulia",
+   "institutie": "Curtea de Apel Alba Iulia",
+   "tip": "instanta",
+   "judet": "AB",
+   "pagina": "https://portal.just.ro/57/SitePages/informatii.aspx",
+   "fisier": "https://portal.just.ro/57/SiteAssets/SitePages/informatii/Transparen%C8%9Ba%20veniturilor%20salariale%20la%2031.03.2026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "tb-salaj",
+   "institutie": "Tribunalul Sălaj",
+   "tip": "instanta",
+   "judet": "SJ",
+   "pagina": "https://portal.just.ro/84/SitePages/informatii.aspx",
+   "fisier": "https://portal.just.ro/84/SiteAssets/SitePages/informatii/Transparenta%20veniturilor%20salariale%20L%20153%20-%2031.03.2026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "tb-tulcea",
+   "institutie": "Tribunalul Tulcea",
+   "tip": "instanta",
+   "judet": "TL",
+   "pagina": "https://portal.just.ro/88/SitePages/informatii.aspx",
+   "fisier": "https://portal.just.ro/88/Documents/05_Informatii%20de%20interes%20public/08%20Venituri%20Salarii/2026/Situatia%20veniturilor%20salariale%20privind%20T.%20Tulcea,%20J.%20Babadag%20si%20J.%20Macin%20-%2031.03.2026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "tb-vaslui",
+   "institutie": "Tribunalul Vaslui",
+   "tip": "instanta",
+   "judet": "VS",
+   "pagina": "https://portal.just.ro/89/SitePages/informatii.aspx",
+   "fisier": "https://portal.just.ro/89/SiteAssets/SitePages/informatii/Transparenta%20veniturilor%20salariale%2031.03.2026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "tb-vrancea",
+   "institutie": "Tribunalul Vrancea",
+   "tip": "instanta",
+   "judet": "VN",
+   "pagina": "https://portal.just.ro/91/SitePages/informatii.aspx",
+   "fisier": "https://portal.just.ro/91/SiteAssets/SitePages/informatii/Tranparen%C5%A3a%20veniturilor%20salariale%20conform%20art.%2033%20din%20Legea%20153%20la%2031.03.2026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "tb-ilfov",
+   "institutie": "Tribunalul Ilfov",
+   "tip": "instanta",
+   "judet": "IF",
+   "pagina": "https://portal.just.ro/93/SitePages/informatii.aspx",
+   "fisier": "https://portal.just.ro/93/SiteAssets/SitePages/informatii/Salarizare%20Tribunalul%20Ilfov%20martie%202026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "tb-harghita",
+   "institutie": "Tribunalul Harghita",
+   "tip": "instanta",
+   "judet": "HR",
+   "pagina": "https://portal.just.ro/96/SitePages/informatii.aspx",
+   "fisier": "https://portal.just.ro/96/Documents/Acte%202026/Transparenta%20veniturilor%20salariale%20la%20data%20de%2031%20martie%202026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "tb-maramures",
+   "institutie": "Tribunalul Maramureş",
+   "tip": "instanta",
+   "judet": "MM",
+   "pagina": "https://portal.just.ro/100/SitePages/informatii.aspx",
+   "fisier": "https://portal.just.ro/100/Documents/Transp.venit.salar.PUBLICAT_la_31.03.2026_art.33_Legea_157_2017_TRIB_MM.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "tb-mehedinti",
+   "institutie": "Tribunalul Mehedinţi",
+   "tip": "instanta",
+   "judet": "MH",
+   "pagina": "https://portal.just.ro/101/SitePages/informatii.aspx",
+   "fisier": "https://portal.just.ro/101/Documents/Memorandum%20situatii%20de%20la%20DEFA%20MH/Situa%C5%A3ii%20drepturi%20salariale/venit_jud_31032026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "tb-mures",
+   "institutie": "Tribunalul Mureş",
+   "tip": "instanta",
+   "judet": "MS",
+   "pagina": "https://portal.just.ro/102/SitePages/informatii.aspx",
+   "fisier": "https://portal.just.ro/102/SiteAssets/SitePages/informatii/Situatia%20drepturilor%20saraliare%2031.03.2026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "tb-neamt",
+   "institutie": "Tribunalul Neamţ",
+   "tip": "instanta",
+   "judet": "NT",
+   "pagina": "https://portal.just.ro/103/SitePages/informatii.aspx",
+   "fisier": "https://portal.just.ro/103/SiteAssets/SitePages/informatii/Transparen%C5%A3%C4%83%20venituri%20salariale%20martie%202026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "tb-olt",
+   "institutie": "Tribunalul Olt",
+   "tip": "instanta",
+   "judet": "OT",
+   "pagina": "https://portal.just.ro/104/SitePages/informatii.aspx",
+   "fisier": "https://portal.just.ro/104/Documents/2026/sit%20dr%20salariale/sit%20dr%20salariale%20la%2031.03.2026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "tb-alba",
+   "institutie": "Tribunalul Alba",
+   "tip": "instanta",
+   "judet": "AB",
+   "pagina": "https://portal.just.ro/107/SitePages/informatii.aspx",
+   "fisier": "https://portal.just.ro/107/SiteAssets/SitePages/informatii/Transparenta%20salariala%20la%2031.03.2026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "tb-arad",
+   "institutie": "Tribunalul Arad",
+   "tip": "instanta",
+   "judet": "AR",
+   "pagina": "https://portal.just.ro/108/SitePages/informatii.aspx",
+   "fisier": "https://portal.just.ro/108/SiteAssets/SitePages/informatii/CASV-30.09.2026%20Transparenta%20venituri%20salariale.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "tb-arges",
+   "institutie": "Tribunalul Argeş",
+   "tip": "instanta",
+   "judet": "AG",
+   "pagina": "https://portal.just.ro/109/SitePages/informatii.aspx",
+   "fisier": "https://portal.just.ro/109/SiteAssets/SitePages/informatii/2026-03%20drepturi%20salariale.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "tb-braila",
+   "institutie": "Tribunalul Brăila",
+   "tip": "instanta",
+   "judet": "BR",
+   "pagina": "https://portal.just.ro/113/SitePages/informatii.aspx",
+   "fisier": "https://portal.just.ro/113/Documents/Transparen%C8%9Ba%20veniturilor%20%20salariale%20%20art.%2033%20din%20Legea%20153%20-2017%20%20%20la%20data%20de%2031.03.2026%20Trib%20Br%C4%83ila.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "tb-caras-severin",
+   "institutie": "Tribunalul Caraş Severin",
+   "tip": "instanta",
+   "judet": "CS",
+   "pagina": "https://portal.just.ro/115/SitePages/informatii.aspx",
+   "fisier": "https://portal.just.ro/115/Documents/Transparenta%20veniturilor%20salariale%20la%2031%20martie%202026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "tb-calarasi",
+   "institutie": "Tribunalul Călăraşi",
+   "tip": "instanta",
+   "judet": "CL",
+   "pagina": "https://portal.just.ro/116/SitePages/informatii.aspx",
+   "fisier": "https://portal.just.ro/116/Documents/Drepturi%20salariale%2031.03.2026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "tb-cluj",
+   "institutie": "Tribunalul Cluj",
+   "tip": "instanta",
+   "judet": "CJ",
+   "pagina": "https://portal.just.ro/117/SitePages/informatii.aspx",
+   "fisier": "https://portal.just.ro/117/SiteAssets/SitePages/informatii/Tranparenta%20veniturilor%20salariale%20la%2031.03.2026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "tb-constanta",
+   "institutie": "Tribunalul Constanţa",
+   "tip": "instanta",
+   "judet": "CT",
+   "pagina": "https://portal.just.ro/118/SitePages/informatii.aspx",
+   "fisier": "https://portal.just.ro/118/SiteAssets/SitePages/informatii/transparen%C8%9Ba%20veniturilor%20salariale%20la%20data%20de%2031%20martie%202026-Tribunalul%20Constan%C5%A3.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "tb-giurgiu",
+   "institutie": "Tribunalul Giurgiu",
+   "tip": "instanta",
+   "judet": "GR",
+   "pagina": "https://portal.just.ro/122/SitePages/informatii.aspx",
+   "fisier": "https://portal.just.ro/122/Documents/Informatii%20publice/Functii.venituri.31032026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "jud-constanta",
+   "institutie": "Judecătoria Constanţa",
+   "tip": "instanta",
+   "judet": "CT",
+   "pagina": "https://portal.just.ro/212/SitePages/informatii.aspx",
+   "fisier": "https://portal.just.ro/212/SiteAssets/SitePages/informatii/transparen%C8%9Ba%20veniturilor%20salariale%20la%20data%20de%2031%20martie%202026-Judec%C4%83toria%20Constan%C5%A3a.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "jud-galati",
+   "institutie": "Judecătoria Galaţi",
+   "tip": "instanta",
+   "judet": "GL",
+   "pagina": "https://portal.just.ro/233/SitePages/informatii.aspx",
+   "fisier": "https://portal.just.ro/233/SiteAssets/SitePages/informatii/Transparen%C5%A3a%20veniturilor%20salariale%20conform%20art.%2033%20din%20Legea%20nr.%20153-2017%20la%2031.03.2026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "jud-mangalia",
+   "institutie": "Judecătoria Mangalia",
+   "tip": "instanta",
+   "judet": "CT",
+   "pagina": "https://portal.just.ro/254/SitePages/informatii.aspx",
+   "fisier": "https://portal.just.ro/254/SiteAssets/SitePages/informatii/transparen%C8%9Ba%20veniturilor%20salariale%20la%20data%20de%2031%20martie%202026-Judec%C4%83toria%20Mangalia.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "jud-medgidia",
+   "institutie": "Judecătoria Medgidia",
+   "tip": "instanta",
+   "judet": "CT",
+   "pagina": "https://portal.just.ro/256/SitePages/informatii.aspx",
+   "fisier": "https://portal.just.ro/256/SiteAssets/SitePages/informatii/transparen%C8%9Ba%20veniturilor%20salariale%20la%20data%20de%2031%20martie%202026-Judec%C4%83toria%20Medgidia.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "jud-tulcea",
+   "institutie": "Judecătoria Tulcea",
+   "tip": "instanta",
+   "judet": "TL",
+   "pagina": "https://portal.just.ro/327/SitePages/informatii.aspx",
+   "fisier": "https://portal.just.ro/327/Documents/Situa%C5%A3ia%20veniturilor%20salariale%20privind%20Judec%C4%83toria%20Tulcea%20%E2%80%93%2031.03.2026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "bj-cluj",
+   "institutie": "Biblioteca Județeană „Octavian Goga” Cluj",
+   "tip": "biblioteca",
+   "judet": "CJ",
+   "pagina": "https://new.bjc.ro/"
+  },
+  {
+   "id": "bj-iasi",
+   "institutie": "Biblioteca Județeană „Gh. Asachi” Iași",
+   "tip": "biblioteca",
+   "judet": "IS",
+   "pagina": "https://bjiasi.ro/",
+   "fisier": "https://bjiasi.ro/wp-content/uploads/2026/03/SALARII-LA-31.03.2026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "bj-brasov",
+   "institutie": "Biblioteca Județeană „George Barițiu” Brașov",
+   "tip": "biblioteca",
+   "judet": "BV",
+   "pagina": "https://www.bjbv.ro/"
+  },
+  {
+   "id": "bj-timis",
+   "institutie": "Biblioteca Județeană Timiș",
+   "tip": "biblioteca",
+   "judet": "TM",
+   "pagina": "https://www.bjt.ro/",
+   "fisier": "https://www.bjt.ro/transparenta_institutionala/Lista%20functiilor%20din%20Biblioteca%20Judeteana%20Timis%20Sorin%20Titel%20aferente%20lunii%20martie%202018.pdf",
+   "perioada": "2018-03",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "bj-sibiu",
+   "institutie": "Biblioteca Județeană ASTRA Sibiu",
+   "tip": "biblioteca",
+   "judet": "SB",
+   "pagina": "https://bjastrasibiu.ro/"
+  },
+  {
+   "id": "bj-mures",
+   "institutie": "Biblioteca Județeană Mureș",
+   "tip": "biblioteca",
+   "judet": "MS",
+   "pagina": "https://bjmures.ro/"
+  },
+  {
+   "id": "bj-bacau",
+   "institutie": "Biblioteca Județeană „Costache Sturdza” Bacău",
+   "tip": "biblioteca",
+   "judet": "BC",
+   "pagina": "https://www.bjbacau.ro/salarizare/",
+   "fisier": "https://www.bjbacau.ro/wp-content/uploads/2026/09/Salarizare-la-30.09.2026-.pdf",
+   "perioada": "2026-09",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "ps1",
+   "institutie": "Primăria Sectorului 1",
+   "tip": "primarie",
+   "judet": "B",
+   "pagina": "https://primariasector1.ro/",
+   "fisier": "https://primariasector1.ro/wp-content/uploads/2026/03/Transparenta-31.03.2026-fara-coeficient.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "ps2",
+   "institutie": "Primăria Sectorului 2",
+   "tip": "primarie",
+   "judet": "B",
+   "pagina": "https://www.ps2.ro/"
+  },
+  {
+   "id": "ps3",
+   "institutie": "Primăria Sectorului 3",
+   "tip": "primarie",
+   "judet": "B",
+   "pagina": "https://www.primarie3.ro/",
+   "fisier": "https://www.primarie3.ro/images/uploads/formulare/H.C_.L_.S_.3_nr_.71_din_15_.04.2026_salarizare_.pdf",
+   "perioada": "2026-04",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "ps5",
+   "institutie": "Primăria Sectorului 5",
+   "tip": "primarie",
+   "judet": "B",
+   "pagina": "https://www.sector5.ro/",
+   "fisier": "https://sector5.ro/media/2024/03/Grila-salarizare-reorganizare-februarie-2024.pdf",
+   "perioada": "2024-03",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "pmb",
+   "institutie": "Primăria Municipiului București",
+   "tip": "primarie",
+   "judet": "B",
+   "pagina": "https://www.pmb.ro/"
+  },
+  {
+   "id": "pm-cluj",
+   "institutie": "Primăria Municipiului Cluj-Napoca",
+   "tip": "primarie",
+   "judet": "CJ",
+   "pagina": "https://primariaclujnapoca.ro/"
+  },
+  {
+   "id": "pm-iasi",
+   "institutie": "Primăria Municipiului Iași",
+   "tip": "primarie",
+   "judet": "IS",
+   "pagina": "https://www.primaria-iasi.ro/"
+  },
+  {
+   "id": "pm-constanta",
+   "institutie": "Primăria Municipiului Constanța",
+   "tip": "primarie",
+   "judet": "CT",
+   "pagina": "https://www.primaria-constanta.ro/",
+   "fisier": "http://www2.primaria-constanta.ro/docs/default-source/documente-pwpmc/de-interes-public---legea-52-2003/transparen%C8%9B%C4%83-decizional%C4%83-ii/minuta-dezbatere-publica-16-11-2023-ref-proiect-hcl-modificare-si-completare-hcl-339_2023-impozite-si-taxe-2024.pdf?sfvrsn=2",
+   "perioada": "2023-11",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "pm-craiova",
+   "institutie": "Primăria Municipiului Craiova",
+   "tip": "primarie",
+   "judet": "DJ",
+   "pagina": "https://www.primariacraiova.ro/"
+  },
+  {
+   "id": "pm-galati",
+   "institutie": "Primăria Municipiului Galați",
+   "tip": "primarie",
+   "judet": "GL",
+   "pagina": "https://www.primariagalati.ro/",
+   "fisier": "https://www.primariagalati.ro/portal/galati/portal.nsf/721BE504BEC5CB4CC2258DCB001F2572/%24FILE/SALARII%20UAT%20MUNICIPIUL%20GALATI%2031.03.2026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "pm-ploiesti",
+   "institutie": "Primăria Municipiului Ploiești",
+   "tip": "primarie",
+   "judet": "PH",
+   "pagina": "https://www.ploiesti.ro/"
+  },
+  {
+   "id": "pm-pitesti",
+   "institutie": "Primăria Municipiului Pitești",
+   "tip": "primarie",
+   "judet": "AG",
+   "pagina": "https://www.primariapitesti.ro/"
+  },
+  {
+   "id": "pm-bacau",
+   "institutie": "Primăria Municipiului Bacău",
+   "tip": "primarie",
+   "judet": "BC",
+   "pagina": "https://www.primariabacau.ro/"
+  },
+  {
+   "id": "pm-sibiu",
+   "institutie": "Primăria Municipiului Sibiu",
+   "tip": "primarie",
+   "judet": "SB",
+   "pagina": "https://www.sibiu.ro/"
+  },
+  {
+   "id": "cj-cluj",
+   "institutie": "Consiliul Județean Cluj",
+   "tip": "consiliu-judetean",
+   "judet": "CJ",
+   "pagina": "https://cjcluj.ro/",
+   "fisier": "https://storage.googleapis.com/stateless-cjcluj-ro/2022/01/Conturi-Venituri.pdf",
+   "perioada": "2022-01",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "cj-timis",
+   "institutie": "Consiliul Județean Timiș",
+   "tip": "consiliu-judetean",
+   "judet": "TM",
+   "pagina": "https://www.cjtimis.ro/"
+  },
+  {
+   "id": "cj-iasi",
+   "institutie": "Consiliul Județean Iași",
+   "tip": "consiliu-judetean",
+   "judet": "IS",
+   "pagina": "https://www.icc.ro/"
+  },
+  {
+   "id": "cj-brasov",
+   "institutie": "Consiliul Județean Brașov",
+   "tip": "consiliu-judetean",
+   "judet": "BV",
+   "pagina": "https://www.judbrasov.ro/"
+  },
+  {
+   "id": "cj-constanta",
+   "institutie": "Consiliul Județean Constanța",
+   "tip": "consiliu-judetean",
+   "judet": "CT",
+   "pagina": "https://www.cjc.ro/",
+   "fisier": "https://www.cjc.ro/dyn_doc/anunturi/Transparenta_decizionala/2026/01_Anunt.pdf",
+   "perioada": "2026-01",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "cj-prahova",
+   "institutie": "Consiliul Județean Prahova",
+   "tip": "consiliu-judetean",
+   "judet": "PH",
+   "pagina": "https://www.cjph.ro/"
+  },
+  {
+   "id": "cj-arges",
+   "institutie": "Consiliul Județean Argeș",
+   "tip": "consiliu-judetean",
+   "judet": "AG",
+   "pagina": "https://www.cjarges.ro/"
+  },
+  {
+   "id": "cj-bihor",
+   "institutie": "Consiliul Județean Bihor",
+   "tip": "consiliu-judetean",
+   "judet": "BH",
+   "pagina": "https://www.cjbihor.ro/"
+  },
+  {
+   "id": "cj-mures",
+   "institutie": "Consiliul Județean Mureș",
+   "tip": "consiliu-judetean",
+   "judet": "MS",
+   "pagina": "https://www.cjmures.ro/"
+  },
+  {
+   "id": "cj-sibiu",
+   "institutie": "Consiliul Județean Sibiu",
+   "tip": "consiliu-judetean",
+   "judet": "SB",
+   "pagina": "https://www.cjsibiu.ro/",
+   "fisier": "https://www.cjsibiu.ro/wp-content/uploads/2026/09/Lista-tuturor-functiilor-din-cadrul-aparatului-de-specialitate-al-Consiliului-Judetean-Sibiu-si-veniturile-salariale-la-30.09.26.pdf",
+   "perioada": "2026-09",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "cj-dolj",
+   "institutie": "Consiliul Județean Dolj",
+   "tip": "consiliu-judetean",
+   "judet": "DJ",
+   "pagina": "https://www.cjdolj.ro/"
+  },
+  {
+   "id": "cj-alba",
+   "institutie": "Consiliul Județean Alba",
+   "tip": "consiliu-judetean",
+   "judet": "AB",
+   "pagina": "https://www.cjalba.ro/"
+  },
+  {
+   "id": "cj-suceava",
+   "institutie": "Consiliul Județean Suceava",
+   "tip": "consiliu-judetean",
+   "judet": "SV",
+   "pagina": "https://www.cjsuceava.ro/"
+  },
+  {
+   "id": "t-bacovia",
+   "institutie": "Teatrul Municipal „George Bacovia” Bacău",
+   "tip": "cultura",
+   "judet": "BC",
+   "pagina": "https://teatrulbacovia.ro/",
+   "fisier": "https://teatrulbacovia.ro/wp-content/uploads/2024/09/salarizare-31.03.2026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "opera-comica",
+   "institutie": "Opera Comică pentru Copii București",
+   "tip": "cultura",
+   "judet": "B",
+   "pagina": "https://operacomica.ro/transparenta/",
+   "fisier": "https://operacomica.ro/wp-content/uploads/2026/08/Transparenta-venituri-31-martie-2026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "csm-oradea",
+   "institutie": "Clubul Sportiv Municipal Oradea",
+   "tip": "club-sportiv",
+   "judet": "BH",
+   "pagina": "https://csmoradea.ro/",
+   "fisier": "https://csmoradea.ro/wp-content/uploads/2025/09/TransparentaVenituriSalariale.pdf",
+   "perioada": "2025-09",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "csm-sibiu",
+   "institutie": "Clubul Sportiv Municipal Sibiu",
+   "tip": "club-sportiv",
+   "judet": "SB",
+   "pagina": "https://csmsibiu.ro/",
+   "fisier": "https://csmsibiu.ro/wp-content/uploads/2021/05/Lista-functiilor-contractuale-privind-salarizarea-personalului-la-01.04.2021pdf.pdf",
+   "perioada": "2021-04",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "csm-constanta",
+   "institutie": "Clubul Sportiv Municipal Constanța",
+   "tip": "club-sportiv",
+   "judet": "CT",
+   "pagina": "https://www.csmconstanta.ro/",
+   "fisier": "https://www.csmconstanta.ro/wp-content/uploads/2026/03/00.DREPTURI-SALARIALE.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "csm-bistrita",
+   "institutie": "Clubul Sportiv Municipal Bistrița",
+   "tip": "club-sportiv",
+   "judet": "BN",
+   "pagina": "https://www.csmbistrita.ro/",
+   "fisier": "https://www.csmbistrita.ro/wp-content/uploads/2026/09/TRANSPARENTA-VENITURILOR-SEPTEMBRIE-2026.pdf",
+   "perioada": "2026-09",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "csm-targoviste",
+   "institutie": "Clubul Sportiv Municipal Târgoviște",
+   "tip": "club-sportiv",
+   "judet": "DB",
+   "pagina": "https://www.csmtargoviste.ro/",
+   "fisier": "https://www.csmtargoviste.ro/wp-content/uploads/2025/10/transparenta-veniturilor-salariale-30.09.2025-CSM-TARGOVISTE.pdf",
+   "perioada": "2025-09",
+   "gasitLa": "2026-09-27"
+  },
+  {
+   "id": "saj-timis",
+   "institutie": "Serviciul de Ambulanță Județean Timiș",
+   "tip": "ambulanta",
+   "judet": "TM",
+   "pagina": "https://ambulantatimis.ro/",
+   "fisier": "https://ambulantatimis.ro/wp-content/uploads/2026/09/Salarii-Martie-2026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-28"
+  },
+  {
+   "id": "saj-iasi",
+   "institutie": "Serviciul de Ambulanță Județean Iași",
+   "tip": "ambulanta",
+   "judet": "IS",
+   "pagina": "https://ambulantaiasi.ro/",
+   "fisier": "https://ambulantaiasi.ro/wp-content/uploads/2022/03/Lista-functiilor-cu-salariile-si-sporurile-aferente-30.03.2022.pdf",
+   "perioada": "2022-03",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "saj-gorj",
+   "institutie": "Serviciul de Ambulanță Județean Gorj",
+   "tip": "ambulanta",
+   "judet": "GJ",
+   "pagina": "https://ambulantagorj.ro/",
+   "fisier": "https://ambulantagorj.ro/wp-content/uploads/2026/09/Transparenta-salariala-la-30.09.2026.pdf",
+   "perioada": "2026-09",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "saj-covasna",
+   "institutie": "Serviciul de Ambulanță Județean Covasna",
+   "tip": "ambulanta",
+   "judet": "CV",
+   "pagina": "https://ambulantacovasna.ro/",
+   "fisier": "https://ambulantacovasna.ro/wp-content/uploads/2026/04/transparenta-martie-2026.pdf",
+   "perioada": "2026-03",
+   "gasitLa": "2026-09-28"
+  },
+  {
+   "id": "saj-dambovita",
+   "institutie": "Serviciul de Ambulanță Județean Dâmbovița",
+   "tip": "ambulanta",
+   "judet": "DB",
+   "pagina": "https://www.ambulantadambovita.ro/",
+   "fisier": "https://www.ambulantadambovita.ro/wp-content/uploads/2026/09/Lista-functiilor-si-veniturilor-salariale-la-data-14.09.2026-TRANSPARENTA_Redacted_compressed.pdf",
+   "perioada": "2026-09",
+   "gasitLa": "2026-09-28"
+  },
+  {
+   "id": "saj-harghita",
+   "institutie": "Serviciul Județean de Ambulanță Harghita",
+   "tip": "ambulanta",
+   "judet": "HR",
+   "pagina": "https://sajhr.ro/transparentaveniturilorsalariale/",
+   "fisier": "https://sajhr.ro/wp-content/uploads/SALAR-septembrie-2026.xlsx",
+   "perioada": "2026-09",
+   "gasitLa": "2026-10-02"
+  },
+  {
+   "id": "saj-neamt",
+   "institutie": "Serviciul de Ambulanță Județean Neamț",
+   "tip": "ambulanta",
+   "judet": "NT",
+   "pagina": "https://ambulantaneamt.ro/buget-dintoate-sursele-de-venituri/venituri-salariale/",
+   "fisier": "https://ambulantaneamt.ro/wp-content/uploads/2026/09/TRANSPARENTA-SEPTEMBRIE-2026.pdf",
+   "perioada": "2026-09",
+   "gasitLa": "2026-09-28"
+  }
+ ]
 }

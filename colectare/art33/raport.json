@@ -1,32 +1,34 @@
 {
  "sju-alba": {
   "stare": "acceptat",
-  "fisier": "https://spitalalba.ro/docs/NUSTERGE/Transparen%C8%9Ba%20veniturilor%20salariale%20la%20data%20de%2031.03.2026.pdf",
-  "perioada": "2026-03",
-  "sha256": "1c3be885efa94851ec2d14ab96640084349905b6316f8bc5439711d157c47646",
-  "bytes": 4670141,
-  "cititLa": "2026-09-28",
-  "randuri": 1107,
-  "valide": 1107,
+  "fisier": "https://spitalalba.ro/docs/fin/2026/Transparen%c8%9ba%20veniturilor%20salariale%20la%2030.09.2026.pdf",
+  "perioada": "2026-09",
+  "sha256": "68d8e120badf24cec3f3a2705fa45eb6e53786a33e2bdb10e8ba224b24781d95",
+  "bytes": 5088791,
+  "cititLa": "2026-10-02",
+  "randuri": 1167,
+  "valide": 1167,
   "peMeserie": {
-   "asistent-medical": 531,
-   "medic": 280,
-   "infirmier": 199,
+   "asistent-medical": 541,
+   "medic": 336,
+   "infirmier": 193,
    "registrator-medical": 45,
    "asistent-social": 10,
-   "psiholog": 6,
+   "psiholog": 5,
    "kinetoterapeut": 5,
    "fizioterapeut": 4,
    "magaziner": 1,
    "consilier-juridic": 2,
-   "medic-rezident": 24
+   "medic-rezident": 25
   },
   "coloaneNecunoscute": [
-   "Nr.crt",
+   "Nr. crt",
    "Transparenţa veniturilor salariale pentru funcțiile din cadrul Spitalului Județean de Urgență Alba I",
    "Transparenţa veniturilor salariale pentru funcțiile din cadrul Spitalului Județean de Urgență Alba I",
    "Transparenţa veniturilor salariale pentru funcțiile din cadrul Spitalului Județean de Urgență Alba I",
-   "Sumă proiect ****** *****"
+   "Sume comp ensat orii ***** ****",
+   "Sumă proiect ****** *****",
+   "Ind comisie ******* ******"
   ]
  },
  "scju-cluj": {
@@ -59,27 +61,27 @@
  },
  "sju-bacau": {
   "stare": "acceptat",
-  "fisier": "https://www.spitaluljudeteanbacau.ro/storage/2026/03/SJUBC-salarii-februarie-2026.pdf",
-  "perioada": "2026-02",
-  "sha256": "3767edaa4f5dbb8b080e03738b6121bb1fc7646fce29e25f0302faff6b9c5ff2",
-  "bytes": 2647234,
-  "cititLa": "2026-09-28",
-  "randuri": 1729,
-  "valide": 1686,
+  "fisier": "https://www.spitaluljudeteanbacau.ro/storage/2025/11/Salarii-Septembrie-2025.pdf",
+  "perioada": "2025-09",
+  "sha256": "959db56e25829d5a4e6774c97ed709466fb456ea80d6f0cd4dcc3e4059ec44c3",
+  "bytes": 2735273,
+  "cititLa": "2026-10-02",
+  "randuri": 1750,
+  "valide": 1718,
   "peMeserie": {
-   "asistent-medical": 904,
-   "infirmier": 296,
-   "medic": 377,
-   "kinetoterapeut": 20,
-   "psiholog": 11,
-   "farmacist": 4,
-   "medic-rezident": 61,
-   "asistent-social": 5,
-   "magaziner": 6,
+   "asistent-medical": 922,
+   "infirmier": 297,
+   "medic": 394,
+   "psiholog": 12,
+   "kinetoterapeut": 22,
+   "farmacist": 3,
+   "medic-rezident": 40,
+   "asistent-social": 7,
+   "magaziner": 5,
    "economist": 32,
-   "consilier-juridic": 3,
-   "programator": 3,
-   "registrator-medical": 7
+   "consilier-juridic": 2,
+   "programator": 4,
+   "registrator-medical": 10
   },
   "coloaneNecunoscute": []
  },
@@ -138,44 +140,43 @@
   ]
  },
  "scju-ilfov": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "f43bb6f748753987b6a29c451c50aa982eef7966ff885f1c83dcf819bb5caed6"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "5772bbc5c76c5cef800a6147b1e315c3ad1f7726b0960db3d715e3a81dd1464e"
  },
  "scju-constanta": {
   "stare": "acceptat",
-  "fisier": "https://www.spitalulconstanta.ro/wp-content/uploads/2026/03/Venituri_salariale-Martie_2026.xlsx",
-  "perioada": "2026-03",
-  "sha256": "0e759ae7a04a4499c33b6a22588c2905e9e066a7f9cc06624d8dddcec0ee9927",
-  "bytes": 433692,
-  "cititLa": "2026-09-28",
-  "randuri": 3536,
-  "valide": 3524,
+  "fisier": "https://www.spitalulconstanta.ro/wp-content/uploads/2026/09/Transparenta-venituri-salariale-septembrie-2026.xlsx",
+  "perioada": "2026-09",
+  "sha256": "8630ff37ac1697fce98b43926fced31002f56ea7154a9cf9b2b340d74d83148f",
+  "bytes": 463683,
+  "cititLa": "2026-10-02",
+  "randuri": 3503,
+  "valide": 3497,
   "peMeserie": {
-   "asistent-farmacie": 19,
-   "asistent-medical": 1093,
+   "asistent-farmacie": 18,
+   "asistent-medical": 1077,
    "asistent-social": 13,
    "consilier-juridic": 2,
    "economist": 29,
    "farmacist": 6,
    "fizioterapeut": 5,
-   "infirmier": 421,
-   "kinetoterapeut": 5,
+   "infirmier": 407,
+   "kinetoterapeut": 3,
    "magaziner": 3,
-   "medic": 760,
-   "medic-rezident": 1069,
+   "medic": 764,
+   "medic-rezident": 1068,
    "psiholog": 13,
-   "registrator-medical": 94,
+   "registrator-medical": 91,
    "sofer-ambulanta": 4
   },
   "coloaneNecunoscute": []
  },
  "pm-sinaia": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "92e5d0f0fea327968acf9470b6b1bb33650e9cd519a195614452385eb60de5d1"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "d01a37be32e4a16908c1be665607f7ac4083fbe4b6707b0816908e9a8e8d41f4"
  },
  "dnp": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "6ca5b38486c37ad43494c5929b341649f1822dc0b51aa8018df4aac7a6418e74"
+  "stare": "eroare: fetch failed"
  },
  "scju-sibiu": {
   "stare": "acceptat",
@@ -229,58 +230,57 @@
   "coloaneNecunoscute": []
  },
  "dgaspc-s2": {
-  "stare": "de verificat: numai 12% rânduri valide",
-  "fisier": "https://social2.ro/wp-content/uploads/2026/03/Transparenta-veniturilor-salariale-31.03.2026.pdf",
-  "perioada": "2026-03",
-  "sha256": "4c0065b2881cba61f413dca22aacaf94da1e06ece412edfb3f8dba0739b0f75c",
-  "bytes": 1091363,
-  "cititLa": "2026-09-28",
-  "randuri": 107,
-  "valide": 13,
+  "stare": "de verificat: numai 8% rânduri valide",
+  "fisier": "https://social2.ro/wp-content/uploads/2026/09/Transparenta-veniturilor-salariale-30.09.2026.pdf",
+  "perioada": "2026-09",
+  "sha256": "09f0dbf293ae4be32dbdbf1ee77eab6f52ec748ed636526ea8a33a340e8f50ab",
+  "bytes": 816395,
+  "cititLa": "2026-10-02",
+  "randuri": 113,
+  "valide": 9,
   "peMeserie": {
-   "consilier-juridic": 5,
+   "asistent-social": 18,
+   "consilier-juridic": 3,
    "magaziner": 1,
-   "ingrijitor-batrani": 22,
-   "kinetoterapeut": 7,
+   "ingrijitor-batrani": 25,
+   "kinetoterapeut": 8,
    "fizioterapeut": 1,
-   "asistent-social": 11,
    "psiholog": 17,
-   "asistent-medical": 27,
-   "infirmier": 16
+   "asistent-medical": 25,
+   "infirmier": 15
   },
   "coloaneNecunoscute": [
-   "Familia ocupațională „Administrație” - funcții publice",
    "Familia ocupațională „Administrație” - funcții publice",
    "Familia ocupațională „Administrație” - funcții publice Funcția publică Nr. crt.",
    "Familia ocupațională „Administrație” - funcții publice",
    "Familia ocupațională „Administrație” - funcții publice Clasa Grad profesional",
    "Gradatia Grad profesional",
-   "TRANSPARENȚA VENITURILOR SALARIALE"
+   "Gradatia Grad profesional"
   ]
  },
  "dgaspc-if": {
-  "stare": "fără rânduri verificabile după OCR",
+  "stare": "fără rânduri (scanat sau alt format)",
   "sha256": "4161f7fd06fc937ac97fd8607d797631dcc4b8de36fbd6af1ea6032d888853bb"
  },
  "dgaspc-sv": {
-  "stare": "fără rânduri verificabile după OCR",
+  "stare": "fără rânduri (scanat sau alt format)",
   "sha256": "40064b2de27e28ab377df1943316b90e470c32f467a614e74e8de70feebf1e16"
  },
  "dgaspc-gj": {
-  "stare": "fără rânduri verificabile după OCR",
+  "stare": "fără rânduri (scanat sau alt format)",
   "sha256": "073be15ced5496e3320ab94b4b173732420d725af689ac0f5094c10fca7273d6"
  },
  "dgaspc-bt": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "6eeec8e214dc4f4cc74c6704d1110d63b0d1ae6c7e828ea5b7fc066531f0e857"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "adc82b27277b57cb3a134e5fe5491e6cd548e8ab64d942fe98e87be91624a068"
  },
  "dgaspc-cl": {
   "stare": "acceptat",
-  "fisier": "https://dgaspc-cl.ro/images/2026/Transparenta%20veniturilor%2031%20martie%202026.pdf",
-  "perioada": "2026-03",
-  "sha256": "94a66757fc49c30c387d22ea437ba1aaa8ce146a6e26fe9e7c509febc12abeea",
-  "bytes": 587729,
-  "cititLa": "2026-09-28",
+  "fisier": "https://dgaspc-cl.ro/images/Despre%20noi/2026/Transparenta%20veniturilor%2030%20septembrie%202026.pdf",
+  "perioada": "2026-09",
+  "sha256": "70eeabc127657c45c3770c6a8087879c98b1b066e59eb2129436a09ace5ed31b",
+  "bytes": 588166,
+  "cititLa": "2026-10-02",
   "randuri": 132,
   "valide": 132,
   "peMeserie": {
@@ -303,74 +303,55 @@
   ]
  },
  "dgaspc-sm": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "1c12377ba9b749d90ec174ca820e1593e9d1d86d4238007c0dcce6329742114a"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "fb59d5aab49dd15cae44f69a6b21f3097bf0d4b066bc19edd7821487ef7aaa1a"
  },
  "bj-alba": {
   "stare": "acceptat",
-  "fisier": "https://www.bjalba.ro/wp-content/uploads/2026/03/Transparenta-veniturilor-salariale.pdf",
-  "perioada": "2026-03",
-  "sha256": "89e71c0baeeefe25cef7d209c42080e8f31860799c8a2f03a60e7041a920fb19",
-  "bytes": 1061028,
-  "cititLa": "2026-09-28",
-  "randuri": 16,
-  "valide": 16,
+  "fisier": "https://www.bjalba.ro/wp-content/uploads/2026/09/Transparenta-veniturilor-salariale.pdf",
+  "perioada": "2026-09",
+  "sha256": "f3ca0b057e1e1fc8cf011726e4d61c4154a5204c263fb3098371087d3b56abe5",
+  "bytes": 1089638,
+  "cititLa": "2026-10-02",
+  "randuri": 15,
+  "valide": 15,
   "peMeserie": {
    "contabil": 1,
-   "bibliotecar": 15
+   "bibliotecar": 14
   },
   "coloaneNecunoscute": [
-   "Nr. crt.",
+   "o Alba",
    "BIBLIOTECA Trandafirilor, 0258 811 bjalba@gmail.com pentru conform art.",
    "JUDEȚEANĂ „LUCIAN Alba Iulia, jud. Alba, 0258 817 204 • managerbiblioteca@yahoo.com veniturilor exis"
   ]
  },
  "bj-valcea": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "15f7355644cbdbcaf5ac740ea241509a4c03db467a6df6839986da76097f0dab"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "0b8023d80a24106a4a803886938b504ca4ebd6823aa251f1bb1341c47f3bb2dd"
  },
  "bj-vrancea": {
-  "stare": "fără rânduri verificabile după OCR",
+  "stare": "fără rânduri (scanat sau alt format)",
   "sha256": "723efb270cf41f458164270ca4c8c72f023d781eaa038b3758fa91c49df1cb69"
  },
  "bj-calarasi": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "4cebdbca5ad1dc7bddb128d6ae8480da1eb4e8904ea2d8f035f874df6344966e"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "b7aac0121a0d93d043dadb044b6617e4869fe0a190e0e1ffac2a62d764b4df2e"
  },
  "pm-timisoara": {
-  "stare": "fără rânduri verificabile după OCR",
+  "stare": "fără rânduri (scanat sau alt format)",
   "sha256": "586b10970a66433cf4a976b106a69d3584940ea807c0cb5dfe7b7d6f58aaa5c6"
  },
  "pm-suceava": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "99668d8e5dcfc655772adcbf290eb40461aeda79cd7eaebd1a9bacebe31e258b"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "cf7b16f57761d72babd27d8d8e9cad1df59fd5ae2a44511708dfaca12a2de141"
  },
  "ps4": {
-  "stare": "fără rânduri verificabile după OCR",
+  "stare": "fără rânduri (scanat sau alt format)",
   "sha256": "777321bd6ce5b58f0bee22460e6c224d535c94c4f67971a4d70fe109f77e5c18"
  },
  "ps6": {
-  "stare": "de verificat: baza ghicită la peste 30% din rânduri",
-  "fisier": "https://www.primarie6.ro/primarie_sector6/sites/default/files/2026-03/Transparen%C8%9Ba%20veniturilor%20salariale%20-%20execu%C8%9Bie%20-%2031%20martie%202026.pdf",
-  "perioada": "2026-03",
-  "sha256": "4442f05b09b82161b7acc3166a58f06a360769df2f81e70fb6a4d9a2e844ec27",
-  "bytes": 255687,
-  "cititLa": "2026-09-28",
-  "randuri": 15,
-  "valide": 15,
-  "peMeserie": {
-   "functionar-public": 15
-  },
-  "doarBaza": true,
-  "coloaneNecunoscute": [
-   "Număr intrare: 49578/31.03.2026 Coeficient gradaţie 0 3",
-   "Număr intrare: 49578/31.03.2026 ÎN PLATĂ Gradaţia 0 4=3*3700 lei",
-   "Gradaţia 1 5=4+(4*7,5%)",
-   "Gradaţia 2 6=5+(5*5%)",
-   "Gradaţia 3 7=5+(5*5%)",
-   "Gradaţia 4 8=7+(7*2,5%)",
-   "Gradaţia 5 9=8+(8*2,5%)"
-  ]
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "4cfc3e3b2abe35d5637bfbb783742661247b14564a582537bb865473043662c4"
  },
  "cj-salaj": {
   "stare": "acceptat",
@@ -423,8 +404,7 @@
   ]
  },
  "scju-mures": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "ea5e30aaa75a16660b5185164a56e06ccae09df7427cf951285c9efe98fe2ea0"
+  "stare": "eroare: HTTP 403"
  },
  "sbi-iasi": {
   "stare": "acceptat",
@@ -490,8 +470,34 @@
   ]
  },
  "sbi-constanta": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "5bff8a47839e23c9e01b3131a0a4de7337e4c2da45486b6085c172d896ea5ee5"
+  "stare": "de verificat: baza ghicită la peste 30% din rânduri",
+  "fisier": "https://infectioaseconstanta.ro/wp-content/uploads/2026/08/TRANSPARENTA-SALARIILOR-CONF.-LEGII153-30.09.2025.pdf",
+  "perioada": "2025-08",
+  "sha256": "ce0824535d174b6019da73871c4fc9f21599934dbd263f98c7cf4de44a087d5c",
+  "bytes": 120838,
+  "cititLa": "2026-10-02",
+  "randuri": 221,
+  "valide": 221,
+  "peMeserie": {
+   "medic": 46,
+   "asistent-medical": 115,
+   "infirmier": 39,
+   "psiholog": 2,
+   "farmacist": 1,
+   "asistent-farmacie": 2,
+   "consilier-juridic": 1,
+   "economist": 9,
+   "magaziner": 1,
+   "sofer-ambulanta": 2,
+   "instalator": 1,
+   "electrician": 2
+  },
+  "coloaneNecunoscute": [
+   "NR. CRT",
+   "SPITALUL CLINIC DE BOLI INFECTIOASE CONSTANTA NR. CRT FUNCTIA GRADATIA 2 3 4",
+   "ANEXA 1 ALIN.1, ALIN.6 SI ALIN.8 PROCENT",
+   "ANEXA II CAP.II ART.3 (3) SAPTAMANA"
+  ]
  },
  "sm-calafat": {
   "stare": "acceptat",
@@ -558,31 +564,8 @@
   ]
  },
  "sp-titan": {
-  "stare": "acceptat",
-  "fisier": "https://spitalulgorgos.ro/wp-content/uploads/2025/09/Transparenta-veniturilor-salariale-31.03.2026_Redacted.pdf",
-  "perioada": "2026-03",
-  "sha256": "32cadcc03440517feb41c7195c5f12b330350412cfcaefc8de74274530e464f9",
-  "bytes": 1199566,
-  "cititLa": "2026-09-28",
-  "randuri": 14,
-  "valide": 13,
-  "peMeserie": {
-   "contabil": 1,
-   "medic": 1,
-   "kinetoterapeut": 1,
-   "farmacist": 1,
-   "registrator-medical": 1,
-   "psiholog": 3,
-   "asistent-social": 1,
-   "educator": 1,
-   "economist": 3,
-   "magaziner": 1
-  },
-  "coloaneNecunoscute": [
-   "NR. ('RT",
-   "SPITALUL DE PSIHIATRIE TITAN \"DR. CONSTANTIN TRANSPARENTA VENITURILOR SALARIALE CONF ART.33 FUNCTIE ",
-   "GORGOS DIN LEGEA CADRU GRAD- SAL TREAPTA ATIE DE"
-  ]
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "709cd289b8f667558ed984ac39cef35f2396aa0b5d11704e8800f80139df9925"
  },
  "dsp-vaslui": {
   "stare": "acceptat",
@@ -608,7 +591,7 @@
   ]
  },
  "bcu-bucuresti": {
-  "stare": "fără rânduri verificabile după OCR",
+  "stare": "fără rânduri (scanat sau alt format)",
   "sha256": "9d1284235fd28ffd7a893c96657c14c91efaf79705e9693d41369f8ab1183f61"
  },
  "scju-galati": {
@@ -793,8 +776,31 @@
   ]
  },
  "sm-blaj": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "d6ac3b73c3066567308cbd951d2884f81035967679d5a136c123f918eb6e2ac4"
+  "stare": "de verificat: baze sub salariul minim la 28% din rânduri",
+  "fisier": "https://spitalblaj.ro/wp-content/uploads/2026/09/TRANSPARENTA-SALARIALA-SEPTEMBRIE-2026.pdf",
+  "perioada": "2026-09",
+  "sha256": "5284ecc7050ba95b8b1e015919beddffd844ddc095d7d7436729348235d693d0",
+  "bytes": 492214,
+  "cititLa": "2026-10-02",
+  "randuri": 315,
+  "valide": 309,
+  "peMeserie": {
+   "asistent-medical": 181,
+   "medic-rezident": 8,
+   "medic": 71,
+   "sofer-ambulanta": 3,
+   "infirmier": 38,
+   "registrator-medical": 3,
+   "economist": 7,
+   "kinetoterapeut": 1,
+   "consilier-juridic": 1,
+   "asistent-social": 1,
+   "bucatar": 1
+  },
+  "coloaneNecunoscute": [
+   "SumaCO",
+   "SumaCoEvD"
+  ]
  },
  "scm-cluj": {
   "stare": "acceptat",
@@ -826,29 +832,52 @@
   ]
  },
  "dgaspc-s3": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "58bb9db0b70b7bb0e88cbae9a0f14d7402ca540601b7cacf2562dd835c9040a5"
+  "stare": "de verificat: numai 18% rânduri valide",
+  "fisier": "https://dgaspc3.ro/wp-content/uploads/TRANSPARENTA-VENITURI-30.09.2026.pdf",
+  "perioada": "2026-09",
+  "sha256": "40dd2b1ba767b777fa5e78ab1fd8cde5a71c14ef27600b2ddef735275c2ae602",
+  "bytes": 183645,
+  "cititLa": "2026-10-02",
+  "randuri": 11,
+  "valide": 2,
+  "peMeserie": {
+   "asistent-social": 3,
+   "ingrijitor-batrani": 1,
+   "magaziner": 1,
+   "bucatar": 1,
+   "medic": 2,
+   "kinetoterapeut": 1,
+   "asistent-medical": 1,
+   "infirmier": 1
+  },
+  "doarBaza": true,
+  "coloaneNecunoscute": [
+   "TRANSPARENȚA VENITURILOR SALARIALE la data de 30.09.2026 D.G.A.S.P.C. SECTOR 3 Grad/ Treapta 4",
+   "TRANSPARENȚA VENITURILOR SALARIALE la data de 30.09.2026 D.G.A.S.P.C. SECTOR 3 Gradație",
+   "TRANSPARENȚA VENITURILOR SALARIALE la data de 30.09.2026 D.G.A.S.P.C. SECTOR 3 Gradație 5",
+   "TRANSPARENȚA VENITURILOR SALARIALE la data de 30.09.2026 D.G.A.S.P.C. SECTOR 3 Legea 153/2017 Gradaț",
+   "D.G.A.S.P.C. SECTOR 3 Legea 153/2017 Nivel studii 6"
+  ]
  },
  "dgaspc-bn": {
   "stare": "format neacceptat încă (PDF și XLSX)"
  },
  "das-brasov": {
   "stare": "acceptat",
-  "fisier": "http://www.dasbv.ro/wp-content/uploads/2018/01/Transparenta-salariala-31.03.2026.pdf",
-  "perioada": "2026-03",
-  "sha256": "79c4105f83c552d061d33a2df804888e5e2766caa7801904aa70d7a7de54af9f",
-  "bytes": 51430,
-  "cititLa": "2026-09-28",
-  "randuri": 30,
-  "valide": 30,
+  "fisier": "http://www.dasbv.ro/wp-content/uploads/2018/01/Transparenta-salariala-30.09.2026.pdf",
+  "perioada": "2026-09",
+  "sha256": "7aa2fe4bd24dde04f366042dddb174afc554abf68416c2284c3b0a45893cdd5d",
+  "bytes": 65512,
+  "cititLa": "2026-10-02",
+  "randuri": 27,
+  "valide": 27,
   "peMeserie": {
    "consilier-juridic": 1,
    "asistent-social": 6,
-   "psiholog": 4,
+   "psiholog": 3,
    "bucatar": 1,
-   "medic": 5,
+   "medic": 4,
    "fizioterapeut": 1,
-   "educator": 1,
    "kinetoterapeut": 1,
    "asistent-medical": 7,
    "ingrijitor-batrani": 2,
@@ -856,8 +885,8 @@
   },
   "coloaneNecunoscute": [
    "Nr. crt.",
-   "DIRECŢIA DE ASISTENŢĂ SOCIALĂ BRAŞOV SERVICIUL RESURSE UMANE Funcţia nivel minim Funcţii publice/adm",
-   "Anexă la Referatul nr. 52/31815(RI34)2890 din 30.03.2026 nivel minim"
+   "DIRECŢIA DE ASISTENŢĂ SOCIALĂ BRAŞOV SERVICIUL RESURSE UMANE Nr.52/97036(RI34)9384/A1 din 29.09.2026",
+   "Anexă la Referatul nr. 52/97036(RI34)9384/29.09.2026 nivel minim"
   ]
  },
  "dsp-bucuresti": {
@@ -878,11 +907,11 @@
   ]
  },
  "dsp-prahova": {
-  "stare": "fără rânduri verificabile după OCR",
+  "stare": "fără rânduri (scanat sau alt format)",
   "sha256": "e0cc749955ddfbf8cd0b17f830fe212911784d1a54770bfd81b700d43a507bda"
  },
  "dsp-braila": {
-  "stare": "fără rânduri verificabile după OCR",
+  "stare": "fără rânduri (scanat sau alt format)",
   "sha256": "12257429434a137751184ae59252ff3b1142c1986585df9353a80490153e8d71"
  },
  "umfst": {
@@ -962,30 +991,30 @@
  },
  "uauim": {
   "stare": "acceptat",
-  "fisier": "https://www.uauim.ro/universitatea/personal/2025-2026/Transparenta%20veniturilor%20salariale%20cf.%20L153-2017%20martie%202026.xlsx",
-  "perioada": "2026-03",
-  "sha256": "2b21b28e96a794af68c61034e2c6b4af3c11d00f8fc3221a6536621bef841810",
-  "bytes": 22185,
-  "cititLa": "2026-09-28",
-  "randuri": 20,
-  "valide": 20,
+  "fisier": "https://www.uauim.ro/universitatea/personal/2025-2026/Transparenta%20veniturilor%20salariale%20cf.%20L153-2017%20septembrie%202026.xlsx",
+  "perioada": "2026-09",
+  "sha256": "1db7a4ae0f44be63e5aadf7318da16fe92d77bc9f819ec5e85e83e2dc44f64cd",
+  "bytes": 22307,
+  "cititLa": "2026-10-02",
+  "randuri": 21,
+  "valide": 21,
   "peMeserie": {
-   "profesor-universitar": 8,
+   "profesor-universitar": 9,
    "consilier-juridic": 2,
-   "bibliotecar": 8,
+   "bibliotecar": 7,
    "magaziner": 1,
-   "programator": 1
+   "programator": 2
   },
   "doarBaza": true,
   "coloaneNecunoscute": [
-   "Transparenta veniturilor salariale cf. L153/2017 - MARTIE 2026 TIP Procent"
+   "Transparenta veniturilor salariale cf. L153/2017 - SEPTEMBRIE 2026 TIP Procent"
   ]
  },
  "sju-ploiesti": {
   "stare": "format neacceptat încă (PDF și XLSX)"
  },
  "cj-hunedoara": {
-  "stare": "fără rânduri verificabile după OCR",
+  "stare": "fără rânduri (scanat sau alt format)",
   "sha256": "e81650967901fc3f5f82e32d6cd76b7e5ce1a0915d5ad0a9fea236b2f8772c88"
  },
  "scju-suceava": {
@@ -1031,11 +1060,11 @@
  },
  "unitbv": {
   "stare": "acceptat",
-  "fisier": "https://www.unitbv.ro/documente/despre-unitbv/info-interes-public/transparenta-insitutionala/buget-bilanturi-conta/Salarii_site_31.03.2026.pdf",
-  "perioada": "2026-03",
-  "sha256": "2775335748a9b453354c597220dd90ea2c467b6bd5922fc272af8ed76d2d4250",
-  "bytes": 1194295,
-  "cititLa": "2026-09-28",
+  "fisier": "https://www.unitbv.ro/Salarii_site_30.09.2026_SITE.pdf",
+  "perioada": "2026-09",
+  "sha256": "0b296dcb58b2692d53352620dc9066b0f0d055c1d18d13024d84d31f6943a2a8",
+  "bytes": 1202742,
+  "cititLa": "2026-10-02",
   "randuri": 28,
   "valide": 28,
   "peMeserie": {
@@ -1050,31 +1079,16 @@
   ]
  },
  "pm-sighisoara": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "936c454a49253ea2251ef954e23d5c76c2ed7aaa3e2b7c3aa8490c3bbf28aca1"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "9e8291caddc1db7d2dd62c046a027b1e7d27cd9041e57719a2f39cd9c3f25656"
  },
  "fil-banatul": {
-  "stare": "acceptat",
-  "fisier": "https://filarmonicabanatul.ro/wp-content/uploads/2026/03/Transparenta-veniturilor-31.03.2026.pdf",
-  "perioada": "2026-03",
-  "sha256": "6a43aa0d359f94ac407f66e494c14620c1fd31ab71127224b2b513271146efc4",
-  "bytes": 352892,
-  "cititLa": "2026-09-28",
-  "randuri": 54,
-  "valide": 54,
-  "peMeserie": {
-   "muzician": 50,
-   "economist": 2,
-   "consilier-juridic": 2
-  },
-  "coloaneNecunoscute": [
-   "Nr. crt.",
-   "PENTRU PERSONALUL DIN CADRUL FILARMONICII ÎN CONFORMITATE CU ART.33 DIN LEGEA CADRU nr.153/2017 Grad"
-  ]
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "eb9477acb0132997631b60d3b769232c27a0255954ee0ca3c80f6fd2cf9d73b3"
  },
  "fil-iasi": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "21da6eb5cf986626d0e523880409a27252b5d1aea1a06768d79da1fd8a7e6e78"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "80728aa2c2d1199f3a6ad5ba34ec61443d6204dc71f739e9bc219ebaeeb32aba"
  },
  "fil-arad": {
   "stare": "acceptat",
@@ -1113,8 +1127,24 @@
   ]
  },
  "tn-targu-mures": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "22b333219a3012694549644993e41e6ac42a02f6a59ccea1d45470302ec1760c"
+  "stare": "de verificat: prea puține rânduri",
+  "fisier": "https://teatrunational.ro/wp-content/uploads/2021/03/Situatia-drepturilor-salariale-2019.pdf",
+  "perioada": "2019-03",
+  "sha256": "0afb506b28ac347fe4868d0cb5d5899c8910fb0fdca8d3af582eb9588a6363be",
+  "bytes": 5341044,
+  "cititLa": "2026-10-02",
+  "randuri": 3,
+  "valide": 1,
+  "peMeserie": {
+   "economist": 2,
+   "magaziner": 1
+  },
+  "coloaneNecunoscute": [
+   "TEATRUL Nr. crt. 0 Functi 1 2",
+   "NATIONAL TG. MURE$ Salar minim-brut Denumirea functiei conform Legii- cadru nr.15312017 nr A de cond",
+   "de minim-brut maxim Temei legal 15312017 1 1 4038 12017",
+   "SITUATIE VALABIL bazd brut minim - Legea"
+  ]
  },
  "tn-craiova": {
   "stare": "de verificat: prea puține rânduri",
@@ -1154,7 +1184,7 @@
   ]
  },
  "fil-bacau": {
-  "stare": "fără rânduri verificabile după OCR",
+  "stare": "fără rânduri (scanat sau alt format)",
   "sha256": "8d2d40ae626d03d87c1683a4277b7a9b889c2862c72265ce8a3bd68fb20bfcd8"
  },
  "fil-oradea": {
@@ -1177,11 +1207,11 @@
  },
  "pm-oradea": {
   "stare": "de verificat: baza ghicită la peste 30% din rânduri",
-  "fisier": "https://oradea.ro/wp-content/uploads/2026/03/transparenta-veniturilor-salariale-martie-2026.pdf",
-  "perioada": "2026-03",
-  "sha256": "d77f5d89557008090a32f3edcc7bd4c9e12bd2ec95c8b2460ce56894097c9763",
-  "bytes": 294301,
-  "cititLa": "2026-09-28",
+  "fisier": "https://oradea.ro/wp-content/uploads/2026/09/transparenta-veniturilor-salariale-septembrie-2026.pdf",
+  "perioada": "2026-09",
+  "sha256": "734abbba4331783642d1b2bfe33f0d740ce54868fdd3e0fe1e9b617ac011f23d",
+  "bytes": 294780,
+  "cititLa": "2026-10-02",
   "randuri": 10,
   "valide": 10,
   "peMeserie": {
@@ -1212,11 +1242,11 @@
  },
  "pm-arad": {
   "stare": "de verificat: prea puține rânduri",
-  "fisier": "https://www.primariaarad.ro/dm_arad/portal.nsf/91BD66C839D3E39CC2258DCB005B9DDF/$FILE/lista%20venituri%20salariale%20martie%202026.pdf?Open",
-  "perioada": "2026-03",
-  "sha256": "4c0c49730b28a0f9623b528ffbefdd6913dd1229650650c3816ff0ba6f5127cb",
-  "bytes": 491306,
-  "cititLa": "2026-09-28",
+  "fisier": "https://www.primariaarad.ro/dm_arad/portal.nsf/5C085E8642C0B4C6C2258E82004641B7/$FILE/lista%20venituri%20salariale%20septembrie%202026.pdf?Open",
+  "perioada": "2026-09",
+  "sha256": "8408524496812ed35cd7a05ae130d574392994d2ade80b69c9325acc251aad7a",
+  "bytes": 493682,
+  "cititLa": "2026-10-02",
   "randuri": 3,
   "valide": 3,
   "peMeserie": {
@@ -1232,12 +1262,12 @@
   ]
  },
  "pm-medias": {
-  "stare": "fără rânduri verificabile după OCR",
+  "stare": "fără rânduri (scanat sau alt format)",
   "sha256": "6cdb0d91e2ea53cdcf08775206b9f1aef4c6a84e351f1e5270ba031c488f6da5"
  },
  "bj-valcea2": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "15f7355644cbdbcaf5ac740ea241509a4c03db467a6df6839986da76097f0dab"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "0b8023d80a24106a4a803886938b504ca4ebd6823aa251f1bb1341c47f3bb2dd"
  },
  "ca-bacau": {
   "stare": "acceptat",
@@ -1331,12 +1361,10 @@
   ]
  },
  "ca-oradea": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "58bc8e8560b416d6dbddad625eddf3bf7ecf69ea38d2d7e9fbd97a89e715a171"
+  "stare": "eroare: fetch failed"
  },
  "ca-suceava": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "df0857083bae4f27ee465bea761cf5ea1dc1e786268be54979b0f9d87f4714d3"
+  "stare": "eroare: fetch failed"
  },
  "tb-botosani": {
   "stare": "acceptat",
@@ -1361,20 +1389,16 @@
   ]
  },
  "ca-ploiesti": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "0e5692f7180af8d524882b4590213a10185e089f310afa1fa7f9106643944377"
+  "stare": "eroare: fetch failed"
  },
  "ca-galati": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "90c2fcd4e6ad9c5019c528e41d1778e4281ba1afe6e449f391781c019cd6a7f0"
+  "stare": "eroare: fetch failed"
  },
  "ca-pitesti": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "dd88d0d440807a826edf444b2016e8153bbe30cff0d1bc6363756907c7103581"
+  "stare": "eroare: fetch failed"
  },
  "ca-alba-iulia": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "8890e18e32996040920fbf15762182be056685232a4557e79ef0e3c547995a54"
+  "stare": "eroare: fetch failed"
  },
  "tb-salaj": {
   "stare": "acceptat",
@@ -1398,8 +1422,7 @@
   ]
  },
  "tb-tulcea": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "d35b1dcfd863b7062cfdec2a4aadd27d49d236299fbe3b8a5cfb6fddcf7912a1"
+  "stare": "eroare: fetch failed"
  },
  "tb-vaslui": {
   "stare": "acceptat",
@@ -1424,12 +1447,10 @@
   ]
  },
  "tb-vrancea": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "db96c5bc3b1856d957a77c09bc748b6ba5ea8f7070d9f1f7acfd9aa8863adca2"
+  "stare": "eroare: fetch failed"
  },
  "tb-ilfov": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "42f1b810ad56158acc8b1ee85fb665dfc266df7620e5472cbb05aa14e21e8195"
+  "stare": "eroare: fetch failed"
  },
  "tb-harghita": {
   "stare": "acceptat",
@@ -1481,8 +1502,7 @@
   ]
  },
  "tb-neamt": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "258c8435a50140b3d39b69a1778bfbf0b6acb9b3dceb422cd04b2766bafb2404"
+  "stare": "eroare: fetch failed"
  },
  "tb-olt": {
   "stare": "de verificat: prea puține rânduri",
@@ -1510,83 +1530,85 @@
   ]
  },
  "tb-alba": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "4dc6e8f9f10eef5a90040faf0d65732d7c91fee9a71121ab57506401fddc8f9b"
+  "stare": "eroare: fetch failed"
  },
  "tb-arad": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "f9c41c03547137b341b25527047380931f6eee54261ca134ff9e520a63f591a0"
+  "stare": "eroare: fetch failed"
  },
  "tb-braila": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "599d615f6f19ef2d1a6ffee61e718298ec5fe397d5342f452557ea9fea750c42"
+  "stare": "eroare: fetch failed"
  },
  "tb-caras-severin": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "b219e40a4b419100c2165cc0dd09c1779cdb62f606aef9aa946512ddd66d98b5"
+  "stare": "eroare: fetch failed"
  },
  "tb-calarasi": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "072e0acd41e1d02e17eea9aac6e4effa688159f79eb3dbd88524856c05115336"
+  "stare": "eroare: fetch failed"
  },
  "tb-cluj": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "acec512e016ac0f4e1fcd4acafec0d74cfcd273c3c4642c945385db0e8d37031"
+  "stare": "eroare: fetch failed"
  },
  "tb-constanta": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "8480a0c75e9c9d6da909a10833824194fd99327755f620450113a55f767602ae"
+  "stare": "eroare: fetch failed"
  },
  "tb-giurgiu": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "2890e5cc54f7223127dbae8a4be5c639890c2dd57f851db4df5f3ebb2e47bd71"
+  "stare": "eroare: fetch failed"
  },
  "jud-constanta": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "e009e0b44bf4cedf0ac6211915c323707dbbd9f803cf158ef2ff87536ac3a083"
+  "stare": "eroare: fetch failed"
  },
  "jud-galati": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "59ff219f9f9dc55f75729f08fade4db97790f7ad98fe658ddb58d9e6b048c0cd"
+  "stare": "eroare: fetch failed"
  },
  "jud-mangalia": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "d42e7b3104fa5f0d14235890d75a345a82fe158b0fd982ccc0bbbe4be8cf7a7b"
+  "stare": "eroare: fetch failed"
  },
  "jud-medgidia": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "edb7cce23002870cb787fa6cbbfdfb10aa14b2fdb070489bc606487c656fca85"
+  "stare": "eroare: fetch failed"
  },
  "jud-tulcea": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "58612912f25c8e41480cd2b286cb6e4a64c5d2a036e2ce4e1687a3707c399632"
+  "stare": "eroare: fetch failed"
  },
  "tn-iasi": {
   "stare": "eroare: HTTP 404"
  },
  "fil-botosani": {
-  "stare": "fără rânduri verificabile după OCR",
+  "stare": "fără rânduri (scanat sau alt format)",
   "sha256": "675b61949d0bbcdd635c25154678141c375ecb9d0d848798d0ec0d3a1e3d6fbc"
  },
  "opera-iasi": {
-  "stare": "fără rânduri verificabile după OCR",
+  "stare": "fără rânduri (scanat sau alt format)",
   "sha256": "75d274fcdf49b90b59d3a4e44d2d19e59e0d913788ebb7002b2759bc3b61d245"
  },
  "t-bulandra": {
-  "stare": "fără rânduri verificabile după OCR",
+  "stare": "fără rânduri (scanat sau alt format)",
   "sha256": "2520adc9c6f65a3a2d7d989b7554a87ce9bf9bdf349e8469322ac563d0ac5ed3"
  },
  "t-mic": {
-  "stare": "fără rânduri verificabile după OCR",
+  "stare": "fără rânduri (scanat sau alt format)",
   "sha256": "c4fcc2da913004eea96a6d9a9e1a5388e7904b17a9807b383abeec4edc306cd7"
  },
  "bj-iasi": {
-  "stare": "fără rânduri verificabile după OCR",
+  "stare": "fără rânduri (scanat sau alt format)",
   "sha256": "468c3ae5b2e55a2748bed73bc344814f131f98c9cbb063819064e9671d197158"
  },
  "bj-bacau": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "601b367dc6a6bcc348992e8a69bc00f3b64d64187f186ac0499a44134b12ad00"
+  "stare": "de verificat: numai 17% rânduri valide",
+  "fisier": "https://www.bjbacau.ro/wp-content/uploads/2026/09/Salarizare-la-30.09.2026-.pdf",
+  "perioada": "2026-09",
+  "sha256": "6dfb6ccd0a0226536c787355fa058ed101cd47a54a0398811a4652bce67f39a9",
+  "bytes": 2684842,
+  "cititLa": "2026-10-02",
+  "randuri": 6,
+  "valide": 1,
+  "peMeserie": {
+   "bibliotecar": 5,
+   "economist": 1
+  },
+  "coloaneNecunoscute": [
+   "Nr crt *)",
+   "Judeteanä Parcului, www-bjbacau-ro C. Sturdza\" completärile contractual garantat \" Culturä",
+   "Judeteanä Telefon: SALARIZAREA FUNCTIILOR CONTRACTUALE Bacäu, ulterioare, din in platä la data \" Cul"
+  ]
  },
  "ps1": {
   "stare": "de verificat: mediana bazelor neplauzibilă (2868)",
@@ -1610,16 +1632,16 @@
   ]
  },
  "pm-galati": {
-  "stare": "fără rânduri verificabile după OCR",
+  "stare": "fără rânduri (scanat sau alt format)",
   "sha256": "5b5cb1dc51d84ce4f6f2d019f7310e272ef40cf0ce95b07061e9584d7c8da591"
  },
  "cj-sibiu": {
   "stare": "de verificat: numai 0% rânduri valide",
-  "fisier": "https://www.cjsibiu.ro/wp-content/uploads/2026/03/Lista-tuturor-functiilor-dia-cadrul-aparatului-de-specialitate-al-Consiliului-Judetean-Sibiu-precum-si-a-veniturilor-salariale-la-31.03.2026-3.pdf",
-  "perioada": "2026-03",
-  "sha256": "b1353244d945d5a5abb1d2be7af82e257d30864ff77c03131e8a9cf82f9cd3bf",
-  "bytes": 300318,
-  "cititLa": "2026-09-28",
+  "fisier": "https://www.cjsibiu.ro/wp-content/uploads/2026/09/Lista-tuturor-functiilor-din-cadrul-aparatului-de-specialitate-al-Consiliului-Judetean-Sibiu-si-veniturile-salariale-la-30.09.26.pdf",
+  "perioada": "2026-09",
+  "sha256": "f3d34b2076c33b6338b0d147f47466a860242afb1f162652aa334fa8f0ca6386",
+  "bytes": 309454,
+  "cititLa": "2026-10-02",
   "randuri": 6,
   "valide": 0,
   "peMeserie": {
@@ -1632,31 +1654,31 @@
   ]
  },
  "t-bacovia": {
-  "stare": "fără rânduri verificabile după OCR",
+  "stare": "fără rânduri (scanat sau alt format)",
   "sha256": "84c289421d3e81d988a6c3dcd23da795820fd24aa0dd26c4f5274cea4bdf89da"
  },
  "opera-comica": {
-  "stare": "fără rânduri verificabile după OCR",
+  "stare": "fără rânduri (scanat sau alt format)",
   "sha256": "ee4dc641072ef224c0c95f306ba0f664a9a244a8bf2a90b932d9b8d3d0a35f13"
  },
  "csm-oradea": {
-  "stare": "fără rânduri verificabile după OCR",
+  "stare": "fără rânduri (scanat sau alt format)",
   "sha256": "dbbc1a1ee073cbddd7a5661f53a6a15ac3e66be9fa7e8a04e24009e1360b3fc6"
  },
  "csm-sibiu": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "df677f550016221c1825bc2d95298c99400f0397286d4c9ab73aa15c8c457e61"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "3df39c996c1816a0759876f28b9da51cd4937f9729c3df4a9fb5c15751b0fabe"
  },
  "csm-constanta": {
-  "stare": "fără rânduri verificabile după OCR",
+  "stare": "fără rânduri (scanat sau alt format)",
   "sha256": "080b54f8c803168e87de4f432433fe4eeb2cab80685ee200e16a5f447e7667bd"
  },
  "csm-bistrita": {
-  "stare": "fără rânduri verificabile după OCR",
+  "stare": "fără rânduri (scanat sau alt format)",
   "sha256": "7554ed444bc87a9d434414e26ba11fdac52820e38f0e6eb5c3ea8fa87a9e2d5d"
  },
  "csm-targoviste": {
-  "stare": "fără rânduri verificabile după OCR",
+  "stare": "fără rânduri (scanat sau alt format)",
   "sha256": "ba5a7e4205cc7604082d0b21a88d3b8cceb7b9eb318127f4c2e1590a8eb074c9"
  },
  "saj-timis": {
@@ -1682,36 +1704,36 @@
   ]
  },
  "saj-iasi": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "a4e8f7ca83d0c8f5d314974cc78dcacadb085e2b42f73e212ab11b2a04e30fe3"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "ece5301954e8561c57e6d2adb5b8c4b5bfbfc4cb2e4755a7e8ce123be0028410"
  },
  "saj-gorj": {
-  "stare": "fără rânduri verificabile după OCR",
-  "sha256": "1497bd8d52064d78eaf0403e0b791d111a897e0e3b726b71f12391677d16c440"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "d350ca8f2a1e0dd6a8b0a782ab689b7be868cdc74e66c995af5200edd6be4f0e"
  },
  "saj-covasna": {
-  "stare": "fără rânduri verificabile după OCR",
+  "stare": "fără rânduri (scanat sau alt format)",
   "sha256": "72240f7bb8fe4025429feb8a9befbc65d669de75a9c9df16a6394cd83a16f39c"
  },
  "saj-dambovita": {
-  "stare": "fără rânduri verificabile după OCR",
+  "stare": "fără rânduri (scanat sau alt format)",
   "sha256": "9a0fe091d1016fff0c8ed61112648231347c865c7fad18dc7278a9bcc034ea4e"
  },
  "saj-harghita": {
   "stare": "acceptat",
-  "fisier": "https://sajhr.ro/wp-content/uploads/SALAR-martie-2026.xlsx",
-  "perioada": "2026-03",
-  "sha256": "59bd1108ba69d5c585f181f637e0d1d0be63989c78cb6d8b85b6d2b62faa0a44",
-  "bytes": 46998,
-  "cititLa": "2026-09-28",
-  "randuri": 288,
-  "valide": 288,
+  "fisier": "https://sajhr.ro/wp-content/uploads/SALAR-septembrie-2026.xlsx",
+  "perioada": "2026-09",
+  "sha256": "5652208c9c8f3863103f0590c097caee0c0357aeb243df9a0eb7ada13ee6c068",
+  "bytes": 46556,
+  "cititLa": "2026-10-02",
+  "randuri": 281,
+  "valide": 281,
   "peMeserie": {
-   "sofer-ambulanta": 133,
-   "medic-rezident": 6,
+   "sofer-ambulanta": 131,
+   "medic-rezident": 4,
    "farmacist": 1,
    "consilier-juridic": 1,
-   "asistent-medical": 135,
+   "asistent-medical": 132,
    "economist": 7,
    "medic": 3,
    "electrician": 1,
@@ -1743,5 +1765,71 @@
    "conform art. 33 din Legea-Cadru nr. 153 din 28 iunie 2017, cu modificările și completările ulterioar",
    "Cuantum suma conform OUG 114/2018 11 0"
   ]
+ },
+ "so-negresti": {
+  "stare": "acceptat",
+  "fisier": "https://www.spitalnegrestioas.ro/fileSite/venituri/transparenta%20veniturilor%20SAL_August%202026.pdf",
+  "perioada": "2026-08",
+  "sha256": "17beb84ae2b0a7d0925d7d22edbfffe20aebe8c64165af3b35cb0bfd538621d7",
+  "bytes": 862629,
+  "cititLa": "2026-10-02",
+  "randuri": 345,
+  "valide": 338,
+  "peMeserie": {
+   "programator": 1,
+   "asistent-medical": 172,
+   "asistent-social": 1,
+   "economist": 12,
+   "fizioterapeut": 1,
+   "infirmier": 76,
+   "kinetoterapeut": 1,
+   "magaziner": 1,
+   "medic": 60,
+   "medic-rezident": 14,
+   "registrator-medical": 6
+  },
+  "coloaneNecunoscute": [
+   "Luna Anul",
+   "ORASENESC NEGRESTI OAS Jud. Satu Mare – Localitatea Negresti Oas, str.Victoriei nr.90 Telefon: 02618"
+  ]
+ },
+ "dsp-hunedoara": {
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "e583c8c47874e0efce67f32b4532eff042c8936d211a0879563965572644623e"
+ },
+ "bj-timis": {
+  "stare": "eroare: HTTP 404"
+ },
+ "ps3": {
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "b4bc9dd5a777893cccdeac08bd3067fd4c1306cfdef8180c68b66e1be5511fc2"
+ },
+ "ps5": {
+  "stare": "de verificat: numai 0% rânduri valide",
+  "fisier": "https://sector5.ro/media/2024/03/Grila-salarizare-reorganizare-februarie-2024.pdf",
+  "perioada": "2023-01",
+  "sha256": "4caab7de0c15d6918f1a5786dcd5e127617c1d65fb8fef739dd412fe2d2e0046",
+  "bytes": 175334,
+  "cititLa": "2026-10-02",
+  "randuri": 7,
+  "valide": 0,
+  "peMeserie": {
+   "functionar-public": 5,
+   "consilier-juridic": 1,
+   "programator": 1
+  },
+  "doarBaza": true,
+  "coloaneNecunoscute": []
+ },
+ "pm-constanta": {
+  "stare": "eroare: The operation was aborted due to timeout"
+ },
+ "cj-cluj": {
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "420ae14245cc467297c6e3f8eb826998fa64a737ce4eee9f3b6d7a4864ccaf79"
+ },
+ "cj-constanta": {
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "1d85ac6a28ea839028731d4ad56a9dcb4ade30c7fe3e5703ecf66a20352372d4"
  }
 }
