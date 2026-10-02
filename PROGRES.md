@@ -4842,3 +4842,16 @@ cookie-ului `_ga` și stările `navbar`/`baraAscunsa` din `Header.tsx`, `variant
 nou `hairline-b relative w-full bg-canvas`, ca înainte de 24 septembrie; `test-ui-contracts.mts`
 pică dacă reapare `sticky` sau `data-navbar`. Verificat local: `position: relative`, bara pleacă
 cu pagina la derulare chiar cu un cookie `_ga` pus.
+
+## 2 octombrie 2026 — bara de sus: „Locuri de muncă”, „Adaugă anunț”, „Noutăți” în „Ghiduri”
+
+Cerut de proprietar, după ce a văzut clickurile din GA4 pe 18–28 septembrie (`click_link_intern`,
+după textul linkului): Meserii 124, Calculator salariu 70, „Instrumente” la un loc 57, Noutăți 39,
+„Ghiduri” la un loc 32.
+
+- „Noutăți” e ultimul în „Ghiduri”.
+- În locul lui, în dreapta barei, butonul „Adaugă anunț”, cu forma din `78a0b01` (contur, vizibil
+  și pe telefon lângă meniu, cu locul barei de derulare păstrat la deschiderea sertarului).
+- „Locuri de muncă” între „Calculator salariu” și „Instrumente”; activ și pe `/anunt-angajare-*`.
+- Verificat local, desktop 1280 și telefon 375: ordinea, butonul între logo și meniu, fără
+  derulare pe orizontală, sertarul cu aceleași intrări.
