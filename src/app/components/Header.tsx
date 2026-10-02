@@ -57,7 +57,7 @@ const NAV: Item[] = [
   },
 ];
 
-/** Butonul de publicare, în dreapta barei: vizibil și pe telefon, lângă meniu. */
+/** Publicarea unui anunț: buton în dreapta barei pe desktop, ultima intrare din meniu pe telefon. */
 const ANUNT: Leaf = { href: "/adauga-anunt-angajare", label: "Adaugă anunț" };
 
 const isGroup = (i: Item): i is Group => "children" in i;
@@ -286,9 +286,10 @@ export default function Header() {
         <Link
           href={ANUNT.href}
           aria-current={isActive(ANUNT.href) ? "page" : undefined}
-          // Cu contur, nu negru (proprietar, 29 septembrie 2026): pe telefon, pagina calculatorului are
-          // deja trei butoane negre, iar al patrulea, sus, fura privirea de la „Calculează”.
-          className="ml-2 inline-flex min-h-10 items-center whitespace-nowrap rounded-md border border-stone-400 px-3 text-sm font-semibold text-stone-900 hover:border-stone-900 hover:bg-stone-100 md:ml-6"
+          // Numai pe desktop (proprietar, 2 octombrie 2026): pe telefon, un buton în bară, lângă
+          // calculator, ar trage angajații spre „Adaugă anunț”; acolo stă în meniu, ultimul.
+          // Cu contur, nu negru (29 septembrie 2026), ca să nu concureze cu „Calculează”.
+          className="ml-6 hidden min-h-10 items-center whitespace-nowrap rounded-md border border-stone-400 px-3 text-sm font-semibold text-stone-900 hover:border-stone-900 hover:bg-stone-100 md:inline-flex"
         >
           {ANUNT.label}
         </Link>
@@ -296,7 +297,7 @@ export default function Header() {
         {/* Mobile hamburger */}
         <button
           ref={hamburgerRef}
-          className="flex h-11 w-11 cursor-pointer flex-col items-center justify-center gap-[5px] rounded p-0 hover:bg-stone-200/60 md:hidden"
+          className="ml-auto flex h-11 w-11 cursor-pointer flex-col items-center justify-center gap-[5px] rounded p-0 hover:bg-stone-200/60 md:hidden"
           aria-label={open ? "Închide meniul" : "Deschide meniul"}
           aria-expanded={open}
           aria-controls="meniu-mobil"
@@ -370,6 +371,13 @@ export default function Header() {
               </Link>
             )
           )}
+          <Link
+            href={ANUNT.href}
+            aria-current={isActive(ANUNT.href) ? "page" : undefined}
+            className={`${mobileLink(isActive(ANUNT.href))} border-b border-stone-200`}
+          >
+            {ANUNT.label}
+          </Link>
         </nav>
       </div>
     </>
