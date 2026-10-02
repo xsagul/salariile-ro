@@ -45,13 +45,11 @@ assert.match(header, /useState<string \| null>\(\s*\(\) => NAV\.filter\(isGroup\
 assert.doesNotMatch(header, /groupsOpen/, "Nu reveni la o stare pe grup: se deschideau mai multe odată");
 assert.match(header, /aria-controls="meniu-mobil"/, "Butonul de meniu trebuie legat de sertar");
 assert.match(header, /event\.key === "Escape"/);
-// Testul A/B/C al barei de sus (24 septembrie – 8 octombrie 2026): varianta vine
-// doar din cookie-ul `_ga`, care există numai după acord. Nimic nou pe dispozitiv.
-assert.match(header, /variantaNavbarDinCookie\(document\.cookie\)/, "Varianta barei se citește din cookie-ul GA4");
-assert.doesNotMatch(header, /localStorage|sessionStorage|document\.cookie\s*=/, "Testul barei nu scrie nimic pe dispozitiv");
-assert.match(header, /useState<VariantaNavbar>\("a"\)/, "Fără acord și la randarea statică, bara rămâne ca până acum");
-assert.match(header, /if \(navbar !== "b"\) return;\s*const radacina = document\.documentElement;\s*radacina\.style\.scrollPaddingTop/, "Cu bara lipită, derularea la rezultat se oprește sub bară");
-assert.match(header, /if \(previzualizare\) \{\s*setNavbar\(previzualizare\);[^\n]*\n\s*return;/, "Previzualizarea `?navbar=` nu se raportează la GA4");
+// Testul A/B/C al barei de sus s-a încheiat pe 2 octombrie 2026 cu varianta a: bara stă sus
+// în pagină, nu lipită și nu ascunsă la derulare. Nu reintroduce variantele fără un test nou.
+assert.match(header, /<header ref=\{headerRef\} className="hairline-b relative w-full bg-canvas">/, "Bara de sus rămâne în pagină (varianta a)");
+assert.doesNotMatch(header, /data-navbar|VariantaNavbar|sticky/, "Codul testului A/B/C nu mai are ce căuta în bară");
+assert.doesNotMatch(header, /localStorage|sessionStorage|document\.cookie/, "Bara nu citește și nu scrie nimic pe dispozitiv");
 assert.doesNotMatch(embedLayout, /stats\.js|umami/i, "Layout-ul embed nu trebuie să activeze analytics");
 assert.doesNotMatch(embedLayout, /adsbygoogle|googlesyndication|googletagmanager|google-analytics/i, "Layout-ul embed nu trebuie să activeze AdSense sau GA4");
 assert.match(siteLayout, /ca-pub-5894290637571256[\s\S]*google-adsense-account/, "Verificarea AdSense trebuie să rămână în meta tag");
@@ -82,14 +80,6 @@ assert.equal(adresaFaraSume(""), "");
 assert.equal(clasaViewport(393), "360-399");
 assert.equal(clasaViewport(768), "768-1023");
 assert.equal(clasaViewport(1920), ">=1536");
-{
-  const { variantaNavbarDinCookie } = (await import(analyticsPath)) as typeof import("../src/lib/analytics");
-  assert.equal(variantaNavbarDinCookie("alt=1"), null, "Fără cookie GA4 nu există test");
-  assert.equal(adresaFaraSume("https://salariile.ro/?navbar=c"), "https://salariile.ro/", "Previzualizarea variantei nu ajunge în GA4");
-  const numar = { a: 0, b: 0, c: 0 };
-  for (let i = 0; i < 3000; i++) numar[variantaNavbarDinCookie(`_ga=GA1.1.${1000000 + i * 7919}.${1790000000 + i}`)!]++;
-  for (const n of Object.values(numar)) assert.ok(n > 900 && n < 1100, `Variantele barei trebuie împărțite egal: ${JSON.stringify(numar)}`);
-}
 
 const [masurare, analytics] = await Promise.all([read("src/app/components/Masurare.tsx"), read("src/lib/analytics.ts")]);
 assert.match(masurare, /const adresa = adresaFaraSume\(window\.location\.href\)/, "Adresa trimisă la GA4 trebuie curățată de sume");
