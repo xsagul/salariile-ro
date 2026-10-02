@@ -4835,3 +4835,10 @@ a 833 de sesiuni, ~51,9% cu calcul; b 870, ~52,9%; c 906, ~53,4%; timp activ ~1m
 Pe telefon nicio diferență. Pe desktop c are timp mai lung și mai puține calcule decât a
 (6,3 pp, z ≈ 1,9 — la limită). Din 29 septembrie bara s-a schimbat de mai multe ori, dar la fel
 pentru toate cele trei variante. Clickurile `zona=header` pe variante, necitite.
+
+**Testul oprit pe 2 octombrie 2026, cu varianta a** (decizia proprietarului). Scoase: citirea
+cookie-ului `_ga` și stările `navbar`/`baraAscunsa` din `Header.tsx`, `variantaNavbarDin*`,
+`raporteazaVariantaNavbar` și previzualizarea `?navbar=` din `src/lib/analytics.ts`. Bara e din
+nou `hairline-b relative w-full bg-canvas`, ca înainte de 24 septembrie; `test-ui-contracts.mts`
+pică dacă reapare `sticky` sau `data-navbar`. Verificat local: `position: relative`, bara pleacă
+cu pagina la derulare chiar cu un cookie `_ga` pus.

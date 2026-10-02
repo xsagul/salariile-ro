@@ -56,7 +56,6 @@ export function adresaFaraSume(adresa: string): string {
   try {
     const url = new URL(adresa);
     for (const parametru of PARAMETRI_CU_SUMA) url.searchParams.delete(parametru);
-    for (const parametru of PARAMETRI_DE_PREVIZUALIZARE) url.searchParams.delete(parametru);
     url.hash = "";
     return url.toString();
   } catch {
@@ -99,38 +98,6 @@ export function trimiteEveniment(nume: string, parametri: Record<string, Valoare
     if (valoare !== undefined && valoare !== "") curati[cheie] = valoare;
   }
   gtag("event", nume, curati);
-}
-
-// ─── Test A/B/C: bara de sus (24 septembrie – 8 octombrie 2026) ─────────────
-// a = ca până acum, rămâne sus în pagină; b = lipită sus la derulare;
-// c = dispare la derulare în jos și reapare la derulare în sus.
-// Varianta vine din identificatorul GA4 (cookie-ul `_ga`), care există doar după
-// acordul pentru măsurare. Fără acord nu există test: vizitatorul vede varianta a.
-// Testul nu scrie nimic nou pe dispozitiv și rămâne același pe orice pagină.
-export type VariantaNavbar = "a" | "b" | "c";
-
-// `?navbar=a|b|c` forțează o variantă doar pe ecran, ca să poată fi verificate
-// toate trei în taburi alăturate (cookie-ul e comun tuturor taburilor). Nu se
-// raportează la GA4 și iese din adresa trimisă.
-export const PARAMETRI_DE_PREVIZUALIZARE = ["navbar"] as const;
-
-export function variantaNavbarDinAdresa(cautare: string): VariantaNavbar | null {
-  const valoare = new URLSearchParams(cautare).get("navbar");
-  return valoare === "a" || valoare === "b" || valoare === "c" ? valoare : null;
-}
-
-export function variantaNavbarDinCookie(cookie: string): VariantaNavbar | null {
-  const potrivire = cookie.match(/(?:^|;\s*)_ga=GA\d+\.\d+\.(\d+\.\d+)/);
-  if (!potrivire) return null;
-  let h = 0;
-  for (const caracter of potrivire[1]) h = (h * 31 + caracter.charCodeAt(0)) >>> 0;
-  return (["a", "b", "c"] as const)[h % 3];
-}
-
-/** Lipește varianta pe fiecare eveniment și o ține ca proprietate de utilizator. */
-export function raporteazaVariantaNavbar(varianta: VariantaNavbar): void {
-  seteazaParametriComuni({ navbar_varianta: varianta });
-  gtag("set", "user_properties", { navbar_varianta: varianta });
 }
 
 export type Instrument =
