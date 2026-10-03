@@ -35,7 +35,8 @@
     "EMAIL_EXPEDITOR": "anunturi@salariile.ro",
     "EMAIL_PROPRIETAR": "contact@salariile.ro"
   },
-  // Secrete (wrangler secret put): SARE. Emailul: binding-ul send_email se
+  // Secrete (wrangler secret put): SARE; GOOGLE_INDEXARE (cheia JSON pentru Indexing API, opțională:
+  // fără ea anunțurile nu se trimit direct la Google, worker/google.ts). Emailul: binding-ul send_email se
   // adaugă după activarea Email Sending pe domeniu; până atunci linkurile se scriu în log.
   // Zilnic la 03:17 UTC: expirările și ștergerea datelor vechi (worker/date.ts → curatenie).
   "triggers": { "crons": ["17 3 * * *"] },
