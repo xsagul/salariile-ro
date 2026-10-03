@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-03T00:37:46.158Z",
+ "generatedAt": "2026-10-03T23:57:14.545Z",
  "run": "colectare-continua",
  "policy": {
   "version": 5,
@@ -171,9 +171,9 @@
   "method": "public_source_inventories_accumulated"
  },
  "stats": {
-  "observatii": 1758,
-  "valabile": 1758,
-  "accepted": 1744,
+  "observatii": 1806,
+  "valabile": 1806,
+  "accepted": 1792,
   "surseCuTrecereCompleta": [
    "anuntul",
    "ejobs"
@@ -183,8 +183,8 @@
  "coverage": {
   "programator": {
    "name": "Programator",
-   "read": 133,
-   "withoutSalary": 132,
+   "read": 134,
+   "withoutSalary": 133,
    "n": 2,
    "ads": 2,
    "basisNearAmount": 0,
@@ -531,8 +531,8 @@
   },
   "medic": {
    "name": "Medic",
-   "read": 68,
-   "withoutSalary": 59,
+   "read": 71,
+   "withoutSalary": 62,
    "n": 1,
    "ads": 1,
    "basisNearAmount": 0,
@@ -567,47 +567,47 @@
     "max": 10553
    },
    "undeclaredBasis": {
-    "n": 10,
+    "n": 15,
     "sourceCounts": {
-     "ejobs": 4,
-     "bestjobs": 6
+     "bestjobs": 11,
+     "ejobs": 4
     },
     "observedRange": {
      "min": 1688,
      "max": 52765
     },
-    "midpointEstimate": 13625
+    "midpointEstimate": 7488
    },
    "examples": [
     {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/medic-de-familie-bucuresti-sector-bucurestii-noi/1988276",
-     "source": "ejobs",
-     "min": 8500,
-     "max": 16000
+     "url": "https://www.bestjobs.eu/loc-de-munca/medic-dermatolog-45",
+     "source": "bestjobs",
+     "min": 7488,
+     "max": 7488
     },
     {
-     "url": "https://www.bestjobs.eu/loc-de-munca/medic-medicina-de-laborator-29",
+     "url": "https://www.bestjobs.eu/loc-de-munca/medic-specialist-alergolog",
      "source": "bestjobs",
-     "min": 1688,
-     "max": 1688
+     "min": 7488,
+     "max": 7488
     },
     {
-     "url": "https://www.bestjobs.eu/loc-de-munca/medic-dermatolog-pentru-consultatii-proceduri-1",
+     "url": "https://www.bestjobs.eu/loc-de-munca/medic-specialist-endocrinolog-6",
      "source": "bestjobs",
-     "min": 9498,
-     "max": 13191
+     "min": 7488,
+     "max": 7488
     },
     {
-     "url": "https://www.bestjobs.eu/loc-de-munca/medic-specialist-diabetolog-4",
+     "url": "https://www.bestjobs.eu/loc-de-munca/medic-specialist-ginecolog",
      "source": "bestjobs",
-     "min": 16885,
-     "max": 26383
+     "min": 7488,
+     "max": 7488
     },
     {
-     "url": "https://www.bestjobs.eu/loc-de-munca/medic-specialist-oncolog",
+     "url": "https://www.bestjobs.eu/loc-de-munca/medic-specialist-reumatolog",
      "source": "bestjobs",
-     "min": 21106,
-     "max": 23744
+     "min": 7488,
+     "max": 7488
     }
    ]
   },
@@ -651,8 +651,8 @@
   },
   "asistent-medical": {
    "name": "Asistent medical",
-   "read": 187,
-   "withoutSalary": 180,
+   "read": 197,
+   "withoutSalary": 190,
    "n": 3,
    "ads": 3,
    "basisNearAmount": 3,
@@ -786,8 +786,8 @@
   },
   "stomatolog": {
    "name": "Stomatolog",
-   "read": 33,
-   "withoutSalary": 30,
+   "read": 34,
+   "withoutSalary": 31,
    "n": 1,
    "ads": 1,
    "basisNearAmount": 0,
@@ -894,8 +894,8 @@
   },
   "farmacist": {
    "name": "Farmacist",
-   "read": 88,
-   "withoutSalary": 87,
+   "read": 89,
+   "withoutSalary": 88,
    "n": 2,
    "ads": 2,
    "basisNearAmount": 2,
@@ -1190,36 +1190,33 @@
   },
   "infirmier": {
    "name": "Infirmier",
-   "read": 61,
-   "withoutSalary": 60,
-   "n": 4,
-   "ads": 4,
-   "basisNearAmount": 4,
+   "read": 68,
+   "withoutSalary": 67,
+   "n": 5,
+   "ads": 5,
+   "basisNearAmount": 5,
    "basisFromDocument": 0,
    "basisFromPlatform": 0,
-   "employers": 4,
-   "counties": 4,
+   "employers": 5,
+   "counties": 5,
    "sourceCounts": {
-    "publi24": 4
+    "publi24": 5
    },
-   "employerShare": 0.25,
+   "employerShare": 0.2,
    "sourceShare": 1,
    "gaps": [
     "too_few_ads",
     "too_few_known_employers",
-    "too_few_known_counties",
     "single_source",
-    "employer_concentration",
     "source_concentration",
-    "too_few_explicit_monthly",
-    "pay_period_sensitivity"
+    "too_few_explicit_monthly"
    ],
-   "explicitMonthly": 2,
+   "explicitMonthly": 3,
    "assumedMonthly": 2,
-   "periodSensitivity": 0.43866374589266155,
+   "periodSensitivity": 0.06666666666666667,
    "sourceSensitivity": null,
    "midpointEstimate": null,
-   "centralEstimate": 4100,
+   "centralEstimate": 4000,
    "status": "insufficient",
    "medianBounds": null,
    "observedRange": {
@@ -1239,6 +1236,12 @@
     "midpointEstimate": 4000.25
    },
    "examples": [
+    {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/menaj-ingrijire-persoane/ingrijitori-batrani/anunt/angajam-infirmiera/912377gd932f72gh1g3365eh41970g1h.html",
+     "source": "publi24",
+     "min": 3750,
+     "max": 3750
+    },
     {
      "url": "https://www.publi24.ro/anunturi/locuri-de-munca/menaj-ingrijire-persoane/ingrijitori-batrani/anunt/infirmiera-pentru-centru-de-recuperare/i8274h361ffg7feee26e0752f70e42dg.html",
      "source": "publi24",
@@ -1262,12 +1265,6 @@
      "source": "publi24",
      "min": 3000,
      "max": 4500
-    },
-    {
-     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/menaj-ingrijire-persoane/ingrijitori-batrani/anunt/angajam-infirmiera-camin-de-batrani-in-otopeni/3494f7e50g4e75g62724856gg427feed.html",
-     "source": "publi24",
-     "min": 3800,
-     "max": 4800
     }
    ]
   },
@@ -1356,8 +1353,8 @@
   },
   "profesor": {
    "name": "Profesor",
-   "read": 24,
-   "withoutSalary": 23,
+   "read": 26,
+   "withoutSalary": 24,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -1480,8 +1477,8 @@
   },
   "educator": {
    "name": "Educator",
-   "read": 7,
-   "withoutSalary": 7,
+   "read": 8,
+   "withoutSalary": 8,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -1680,8 +1677,8 @@
   },
   "contabil": {
    "name": "Contabil",
-   "read": 155,
-   "withoutSalary": 141,
+   "read": 161,
+   "withoutSalary": 144,
    "n": 27,
    "ads": 27,
    "basisNearAmount": 3,
@@ -1762,8 +1759,8 @@
   },
   "auditor": {
    "name": "Auditor financiar",
-   "read": 25,
-   "withoutSalary": 23,
+   "read": 27,
+   "withoutSalary": 25,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -1857,8 +1854,8 @@
   },
   "economist": {
    "name": "Economist",
-   "read": 53,
-   "withoutSalary": 49,
+   "read": 54,
+   "withoutSalary": 50,
    "n": 6,
    "ads": 6,
    "basisNearAmount": 0,
@@ -2031,8 +2028,8 @@
   },
   "broker": {
    "name": "Broker",
-   "read": 74,
-   "withoutSalary": 69,
+   "read": 76,
+   "withoutSalary": 71,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -2081,8 +2078,8 @@
   },
   "consultant-financiar": {
    "name": "Consultant financiar",
-   "read": 42,
-   "withoutSalary": 35,
+   "read": 45,
+   "withoutSalary": 38,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -2251,8 +2248,8 @@
   },
   "consilier-juridic": {
    "name": "Consilier juridic",
-   "read": 20,
-   "withoutSalary": 20,
+   "read": 21,
+   "withoutSalary": 21,
    "n": 1,
    "ads": 1,
    "basisNearAmount": 0,
@@ -2459,8 +2456,8 @@
   },
   "inginer": {
    "name": "Inginer",
-   "read": 415,
-   "withoutSalary": 387,
+   "read": 428,
+   "withoutSalary": 396,
    "n": 17,
    "ads": 17,
    "basisNearAmount": 3,
@@ -2494,20 +2491,26 @@
     "max": 15830
    },
    "undeclaredBasis": {
-    "n": 126,
+    "n": 127,
     "sourceCounts": {
+     "anuntul": 3,
      "bestjobs": 90,
      "ejobs": 33,
-     "publi24": 1,
-     "anuntul": 2
+     "publi24": 1
     },
     "observedRange": {
      "min": 2638,
      "max": 20000
     },
-    "midpointEstimate": 6995.5
+    "midpointEstimate": 6991
    },
    "examples": [
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-inginer-vanzari-ofertare-Z0Q80E",
+     "source": "anuntul",
+     "min": 4000,
+     "max": 7000
+    },
     {
      "url": "https://www.bestjobs.eu/loc-de-munca/inginer-operatiuni-licitatii",
      "source": "bestjobs",
@@ -2531,19 +2534,13 @@
      "source": "bestjobs",
      "min": 4012,
      "max": 4546
-    },
-    {
-     "url": "https://www.bestjobs.eu/loc-de-munca/inginer-constructor-executie-sef-santier-acelasi-1",
-     "source": "bestjobs",
-     "min": 10566,
-     "max": 10566
     }
    ]
   },
   "arhitect": {
    "name": "Arhitect",
-   "read": 62,
-   "withoutSalary": 60,
+   "read": 63,
+   "withoutSalary": 61,
    "n": 1,
    "ads": 1,
    "basisNearAmount": 1,
@@ -2731,8 +2728,8 @@
   },
   "inginer-energetician": {
    "name": "Inginer energetician",
-   "read": 18,
-   "withoutSalary": 18,
+   "read": 19,
+   "withoutSalary": 19,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -2872,32 +2869,31 @@
    "name": "Muncitor în construcții",
    "read": null,
    "withoutSalary": null,
-   "n": 14,
-   "ads": 14,
-   "basisNearAmount": 12,
+   "n": 16,
+   "ads": 16,
+   "basisNearAmount": 14,
    "basisFromDocument": 2,
    "basisFromPlatform": 0,
-   "employers": 12,
-   "counties": 8,
+   "employers": 14,
+   "counties": 9,
    "sourceCounts": {
-    "publi24": 12,
+    "publi24": 14,
     "hipo": 2
    },
-   "employerShare": 0.14285714285714285,
-   "sourceShare": 0.8571428571428571,
+   "employerShare": 0.125,
+   "sourceShare": 0.875,
    "gaps": [
     "too_few_ads",
     "source_concentration",
-    "too_few_explicit_monthly",
     "pay_period_sensitivity",
     "source_sensitivity"
    ],
-   "explicitMonthly": 3,
+   "explicitMonthly": 5,
    "assumedMonthly": 11,
-   "periodSensitivity": 0.24166666666666667,
-   "sourceSensitivity": 0.34615384615384615,
+   "periodSensitivity": 0.192,
+   "sourceSensitivity": 0.21287128712871287,
    "midpointEstimate": null,
-   "centralEstimate": 4550,
+   "centralEstimate": 5050,
    "status": "insufficient",
    "medianBounds": null,
    "observedRange": {
@@ -2920,6 +2916,18 @@
    },
    "examples": [
     {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/ingineri/anunt/sef-santier-constructii/eegd698edh3974gd2g71d28e383i2f6i.html",
+     "source": "publi24",
+     "min": 8000,
+     "max": 8000
+    },
+    {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/ingineri/anunt/manager-proiect-constructii-proiecte-fit-out/982fg074di6g7e9i21f1f42356053h44.html",
+     "source": "publi24",
+     "min": 8000,
+     "max": 8000
+    },
+    {
      "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/muncitori-constructii/anunt/constructii-montaj-schela/4208d1h61ifh74761ff9g646ehehi345.html",
      "source": "publi24",
      "min": 8000,
@@ -2936,25 +2944,13 @@
      "source": "bestjobs",
      "min": 6335,
      "max": 12141
-    },
-    {
-     "url": "https://www.bestjobs.eu/loc-de-munca/tehnician-constructii-laborator-teren",
-     "source": "bestjobs",
-     "min": 3695,
-     "max": 5279
-    },
-    {
-     "url": "https://www.bestjobs.eu/loc-de-munca/specialist-achizitii-materiale-de-constructii",
-     "source": "bestjobs",
-     "min": 5279,
-     "max": 7918
     }
    ]
   },
   "zidar": {
    "name": "Zidar",
-   "read": 89,
-   "withoutSalary": 81,
+   "read": 93,
+   "withoutSalary": 85,
    "n": 1,
    "ads": 1,
    "basisNearAmount": 1,
@@ -3029,8 +3025,8 @@
   },
   "dulgher": {
    "name": "Dulgher",
-   "read": 134,
-   "withoutSalary": 125,
+   "read": 140,
+   "withoutSalary": 131,
    "n": 3,
    "ads": 3,
    "basisNearAmount": 3,
@@ -3111,27 +3107,27 @@
   },
   "electrician": {
    "name": "Electrician",
-   "read": 587,
-   "withoutSalary": 534,
-   "n": 39,
-   "ads": 39,
-   "basisNearAmount": 30,
+   "read": 608,
+   "withoutSalary": 553,
+   "n": 41,
+   "ads": 41,
+   "basisNearAmount": 32,
    "basisFromDocument": 9,
    "basisFromPlatform": 0,
-   "employers": 30,
-   "counties": 12,
+   "employers": 31,
+   "counties": 13,
    "sourceCounts": {
-    "bestjobs": 9,
-    "publi24": 27,
-    "anuntul": 3
+    "publi24": 28,
+    "anuntul": 4,
+    "bestjobs": 9
    },
-   "employerShare": 0.07692307692307693,
-   "sourceShare": 0.6923076923076923,
+   "employerShare": 0.07317073170731707,
+   "sourceShare": 0.6829268292682927,
    "gaps": [
     "pay_period_sensitivity"
    ],
    "explicitMonthly": 11,
-   "assumedMonthly": 28,
+   "assumedMonthly": 30,
    "periodSensitivity": 0.15738003183989083,
    "sourceSensitivity": 0.0398110661268556,
    "midpointEstimate": null,
@@ -3139,7 +3135,7 @@
    "status": "insufficient",
    "medianBounds": null,
    "observedRange": {
-    "min": 3500,
+    "min": 3000,
     "max": 10430
    },
    "undeclaredBasis": {
@@ -3158,6 +3154,18 @@
    },
    "examples": [
     {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/muncitori-productie-depozit-logistica/operatori-utilaje/anunt/recrutam-operator-montaj-cositorire-aparatura-electrica-barbat/1f266664ee387hi329g348473he746g1.html",
+     "source": "publi24",
+     "min": 3000,
+     "max": 3300
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-electrician-electricieni-N0EVNw",
+     "source": "anuntul",
+     "min": 5000,
+     "max": 7000
+    },
+    {
      "url": "https://www.anuntul.ro/anunt-angajare-electrician-joasa-tensiune-Z0Vo0N",
      "source": "anuntul",
      "min": 5000,
@@ -3174,61 +3182,50 @@
      "source": "bestjobs",
      "min": 3600,
      "max": 6400
-    },
-    {
-     "url": "https://www.anuntul.ro/anunt-angajare-electrician-cu-experienta-lOPy0m",
-     "source": "anuntul",
-     "min": 6000,
-     "max": 12000
-    },
-    {
-     "url": "https://www.anuntul.ro/anunt-angajare-electricieni-PkaD3M",
-     "source": "anuntul",
-     "min": 250,
-     "max": 300
     }
    ]
   },
   "instalator": {
    "name": "Instalator",
-   "read": 328,
-   "withoutSalary": 297,
-   "n": 29,
-   "ads": 29,
-   "basisNearAmount": 19,
+   "read": 335,
+   "withoutSalary": 302,
+   "n": 30,
+   "ads": 30,
+   "basisNearAmount": 20,
    "basisFromDocument": 10,
    "basisFromPlatform": 0,
-   "employers": 26,
+   "employers": 27,
    "counties": 10,
    "sourceCounts": {
+    "publi24": 20,
     "bestjobs": 8,
-    "publi24": 19,
     "anuntul": 1,
     "hipo": 1
    },
-   "employerShare": 0.10344827586206896,
-   "sourceShare": 0.6551724137931034,
-   "gaps": [
-    "pay_period_sensitivity"
-   ],
-   "explicitMonthly": 10,
+   "employerShare": 0.1,
+   "sourceShare": 0.6666666666666666,
+   "gaps": [],
+   "explicitMonthly": 11,
    "assumedMonthly": 19,
-   "periodSensitivity": 0.15765829004632878,
+   "periodSensitivity": 0.14285714285714285,
    "sourceSensitivity": 0.049625,
-   "midpointEstimate": null,
+   "midpointEstimate": 6000,
    "centralEstimate": 6000,
-   "status": "insufficient",
-   "medianBounds": null,
+   "status": "advertised_interval",
+   "medianBounds": {
+    "min": 5388.5,
+    "max": 6500
+   },
    "observedRange": {
     "min": 2426,
     "max": 26383
    },
    "undeclaredBasis": {
-    "n": 47,
+    "n": 48,
     "sourceCounts": {
+     "publi24": 9,
      "ejobs": 12,
      "bestjobs": 9,
-     "publi24": 8,
      "anuntul": 18
     },
     "observedRange": {
@@ -3238,6 +3235,18 @@
     "midpointEstimate": 6000
    },
    "examples": [
+    {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/instalatori/anunt/instalator-instalatii-sanitare-si-gaze-montaj-centrale-termice/i0e44975d48g726g236d3553gd1106hf.html",
+     "source": "publi24",
+     "min": 7000,
+     "max": 7000
+    },
+    {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/instalatori/anunt/angajam-instalator-termice-si-sanitare/50714hd274557g12egi1f01ig7f9e978.html",
+     "source": "publi24",
+     "min": 3500,
+     "max": 5000
+    },
     {
      "url": "https://www.bestjobs.eu/loc-de-munca/sef-birou-tehnic-ofertare-instalatii-electrice-1",
      "source": "bestjobs",
@@ -3255,25 +3264,13 @@
      "source": "bestjobs",
      "min": 5807,
      "max": 6862
-    },
-    {
-     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/instalatori/anunt/angajam-instalator-sanitare-si-termice-tehnician-instalatii-alexandria-teleorman/84467i352f4973gh13105336306207dd.html",
-     "source": "publi24",
-     "min": 2700,
-     "max": 2700
-    },
-    {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/maistru-instalatii/1990092",
-     "source": "ejobs",
-     "min": 7000,
-     "max": 8500
     }
    ]
   },
   "zugrav": {
    "name": "Zugrav",
-   "read": 51,
-   "withoutSalary": 47,
+   "read": 55,
+   "withoutSalary": 51,
    "n": 1,
    "ads": 1,
    "basisNearAmount": 1,
@@ -3353,8 +3350,8 @@
   },
   "faiantar": {
    "name": "Faianțar",
-   "read": 39,
-   "withoutSalary": 36,
+   "read": 40,
+   "withoutSalary": 37,
    "n": 1,
    "ads": 1,
    "basisNearAmount": 1,
@@ -3416,8 +3413,8 @@
   },
   "sudor": {
    "name": "Sudor",
-   "read": 236,
-   "withoutSalary": 219,
+   "read": 242,
+   "withoutSalary": 225,
    "n": 10,
    "ads": 10,
    "basisNearAmount": 10,
@@ -3498,33 +3495,32 @@
   },
   "tamplar": {
    "name": "Tâmplar",
-   "read": 150,
-   "withoutSalary": 141,
-   "n": 10,
-   "ads": 10,
-   "basisNearAmount": 9,
+   "read": 159,
+   "withoutSalary": 150,
+   "n": 11,
+   "ads": 11,
+   "basisNearAmount": 10,
    "basisFromDocument": 1,
    "basisFromPlatform": 0,
-   "employers": 9,
+   "employers": 10,
    "counties": 5,
    "sourceCounts": {
-    "publi24": 9,
+    "publi24": 10,
     "anuntul": 1
    },
-   "employerShare": 0.1,
-   "sourceShare": 0.9,
+   "employerShare": 0.09090909090909091,
+   "sourceShare": 0.9090909090909091,
    "gaps": [
     "too_few_ads",
-    "too_few_known_employers",
     "source_concentration",
     "too_few_explicit_monthly"
    ],
    "explicitMonthly": 1,
-   "assumedMonthly": 9,
-   "periodSensitivity": 0.07727272727272727,
-   "sourceSensitivity": 0.029535864978902954,
+   "assumedMonthly": 10,
+   "periodSensitivity": 0.09090909090909091,
+   "sourceSensitivity": 0.041666666666666664,
    "midpointEstimate": null,
-   "centralEstimate": 5925,
+   "centralEstimate": 6000,
    "status": "insufficient",
    "medianBounds": null,
    "observedRange": {
@@ -3546,6 +3542,12 @@
     "midpointEstimate": 5750
    },
    "examples": [
+    {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/tamplari-montatori-mobilier/anunt/atelier-tamplarie-lemn-masiv-ferestre-usi-angajeaza-tamplar-cu-experianta-si-incepator-plus-vopsit/11g0g533dd8i7i8026e6e120e7f378gg.html",
+     "source": "publi24",
+     "min": 6500,
+     "max": 6500
+    },
     {
      "url": "https://www.ejobs.ro/user/locuri-de-munca/montator-tamplarie-aluminiu-si-fatade/1990449",
      "source": "ejobs",
@@ -3569,43 +3571,37 @@
      "source": "publi24",
      "min": 5500,
      "max": 6200
-    },
-    {
-     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/anunt/angajam-confectioneri-tamplarie-pvc-si-aluminiu/7b0066707c6e6355.html",
-     "source": "publi24",
-     "min": 5500,
-     "max": 6500
     }
    ]
   },
   "operator-productie": {
    "name": "Operator producție",
-   "read": 130,
-   "withoutSalary": 105,
-   "n": 58,
-   "ads": 58,
-   "basisNearAmount": 54,
+   "read": 133,
+   "withoutSalary": 108,
+   "n": 62,
+   "ads": 62,
+   "basisNearAmount": 58,
    "basisFromDocument": 4,
    "basisFromPlatform": 0,
-   "employers": 24,
+   "employers": 26,
    "counties": 10,
    "sourceCounts": {
+    "publi24": 58,
     "bestjobs": 3,
-    "publi24": 54,
     "anuntul": 1
    },
-   "employerShare": 0.3275862068965517,
-   "sourceShare": 0.9310344827586207,
+   "employerShare": 0.3225806451612903,
+   "sourceShare": 0.9354838709677419,
    "gaps": [
     "employer_concentration",
     "source_concentration"
    ],
-   "explicitMonthly": 5,
-   "assumedMonthly": 53,
-   "periodSensitivity": 0.053377265238879736,
-   "sourceSensitivity": 0.06343543334493561,
+   "explicitMonthly": 6,
+   "assumedMonthly": 56,
+   "periodSensitivity": 0.05482366418460028,
+   "sourceSensitivity": 0.05800363604882694,
    "midpointEstimate": null,
-   "centralEstimate": 2873,
+   "centralEstimate": 2887.75,
    "status": "insufficient",
    "medianBounds": null,
    "observedRange": {
@@ -3627,41 +3623,41 @@
    },
    "examples": [
     {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/muncitori-productie-depozit-logistica/operatori-productie/anunt/manpower-recruteaza-operatori-productie-la-2-schimburi-timisoara-platforma-incontro/hffdd3h841777fd123f599191eg4ifhd.html",
+     "source": "publi24",
+     "min": 3000,
+     "max": 4000
+    },
+    {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/muncitori-productie-depozit-logistica/operatori-productie/anunt/operator-productie-3-500-4-000-lei-net-800-lei-bonuri-sector-1/e9066fd8h0i27g76e524dgiifh61hhe4.html",
+     "source": "publi24",
+     "min": 4000,
+     "max": 4000
+    },
+    {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/muncitori-productie-depozit-logistica/operatori-productie/anunt/operator-productie-in-zona-industriala-arad-4409-brut-tichet-de-masa-35-ron/21ee99gf8id17411d08e50dd116d4he5.html",
+     "source": "publi24",
+     "min": 2662,
+     "max": 2662
+    },
+    {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/muncitori-productie-depozit-logistica/operatori-productie/anunt/operator-productie-in-zona-afumati/760g3264e3i477d32e5d945265127d8f.html",
+     "source": "publi24",
+     "min": 4000,
+     "max": 4000
+    },
+    {
      "url": "https://www.bestjobs.eu/loc-de-munca/operator-productie-din-hunedoara-1",
      "source": "bestjobs",
      "min": 2942,
      "max": 3209
-    },
-    {
-     "url": "https://www.bestjobs.eu/loc-de-munca/operator-productie-din-hunedoara",
-     "source": "bestjobs",
-     "min": 2903,
-     "max": 3167
-    },
-    {
-     "url": "https://www.bestjobs.eu/loc-de-munca/operator-productie-1338",
-     "source": "bestjobs",
-     "min": 4223,
-     "max": 5279
-    },
-    {
-     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/muncitori-productie-depozit-logistica/operatori-productie/anunt/angajam-urgent-operatori-productie-fabrica-din-zona-ceptura-prahova/ifee3ii7f2f77h742739151fd346g540.html",
-     "source": "publi24",
-     "min": 2800,
-     "max": 2800
-    },
-    {
-     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/muncitori-productie-depozit-logistica/operatori-productie/anunt/operatori-productie-electronica-salariu-net-3300-lei-3600-lei-tichete-de-masa/i74i3h0hh46679didff7896i2gi6d905.html",
-     "source": "publi24",
-     "min": 3300,
-     "max": 3300
     }
    ]
   },
   "mecanic-auto": {
    "name": "Mecanic auto",
-   "read": 164,
-   "withoutSalary": 154,
+   "read": 169,
+   "withoutSalary": 159,
    "n": 8,
    "ads": 8,
    "basisNearAmount": 6,
@@ -3697,10 +3693,10 @@
     "max": 13191
    },
    "undeclaredBasis": {
-    "n": 15,
+    "n": 17,
     "sourceCounts": {
+     "publi24": 9,
      "ejobs": 3,
-     "publi24": 7,
      "bestjobs": 3,
      "anuntul": 2
     },
@@ -3711,6 +3707,18 @@
     "midpointEstimate": 5870.5
    },
    "examples": [
+    {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/service-spalatorie-auto/service-auto/anunt/mecanic-auto-cu-minim-3-ani-experienta/f6d2i80f1129749gefhih4809ghfg700.html",
+     "source": "publi24",
+     "min": 4500,
+     "max": 4500
+    },
+    {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/service-spalatorie-auto/service-auto/anunt/angajez-mecanic-auto-cu-experienta/944h971031e67644e2h88h8237f6232i.html",
+     "source": "publi24",
+     "min": 7000,
+     "max": 7000
+    },
     {
      "url": "https://www.publi24.ro/anunturi/locuri-de-munca/service-spalatorie-auto/service-auto/anunt/angajam-mecanic-auto-pentru-service-rapid/482f3edh47317e1117f4581617f7g138.html",
      "source": "publi24",
@@ -3728,18 +3736,6 @@
      "source": "publi24",
      "min": 5500,
      "max": 5500
-    },
-    {
-     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/service-spalatorie-auto/service-auto/anunt/angajam-mecanic-auto-reprezentanta-pipera/h10181d3gfi07912eggde530g4f83566.html",
-     "source": "publi24",
-     "min": 500,
-     "max": 500
-    },
-    {
-     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/service-spalatorie-auto/service-auto/anunt/angajez-mecanic-auto-in-bucuresti-sectorul-3-salariu-4000-6000-ron/f0f0911f6i477140280ihe1688ig89h3.html",
-     "source": "publi24",
-     "min": 4000,
-     "max": 6000
     }
    ]
   },
@@ -3747,32 +3743,31 @@
    "name": "Tehnician mentenanță",
    "read": 56,
    "withoutSalary": 52,
-   "n": 4,
-   "ads": 4,
-   "basisNearAmount": 3,
+   "n": 5,
+   "ads": 5,
+   "basisNearAmount": 4,
    "basisFromDocument": 1,
    "basisFromPlatform": 0,
-   "employers": 4,
+   "employers": 5,
    "counties": 2,
    "sourceCounts": {
-    "publi24": 2,
+    "publi24": 3,
     "bestjobs": 2
    },
-   "employerShare": 0.25,
-   "sourceShare": 0.5,
+   "employerShare": 0.2,
+   "sourceShare": 0.6,
    "gaps": [
     "too_few_ads",
     "too_few_known_employers",
     "too_few_known_counties",
-    "employer_concentration",
     "too_few_explicit_monthly"
    ],
    "explicitMonthly": 1,
-   "assumedMonthly": 3,
-   "periodSensitivity": 0.061157612128869235,
-   "sourceSensitivity": 0.08053324361831868,
+   "assumedMonthly": 4,
+   "periodSensitivity": 0.05243209096651927,
+   "sourceSensitivity": 0.089,
    "midpointEstimate": null,
-   "centralEstimate": 5944.75,
+   "centralEstimate": 6000,
    "status": "insufficient",
    "medianBounds": null,
    "observedRange": {
@@ -3793,6 +3788,12 @@
     "midpointEstimate": 6000
    },
    "examples": [
+    {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/electricieni/anunt/angajam-tehnician-mentenanta/h407f91hff317e372d72gf7d59e96d84.html",
+     "source": "publi24",
+     "min": 6000,
+     "max": 6000
+    },
     {
      "url": "https://www.ejobs.ro/user/locuri-de-munca/tehnician-mentenanta-automate-vending-bucuresti/1990485",
      "source": "ejobs",
@@ -3816,19 +3817,13 @@
      "source": "publi24",
      "min": 7000,
      "max": 7000
-    },
-    {
-     "url": "https://www.bestjobs.eu/loc-de-munca/sef-atelier-electric-electrician-automatist",
-     "source": "bestjobs",
-     "min": 5593,
-     "max": 6490
     }
    ]
   },
   "metalurgist": {
    "name": "Metalurgist",
-   "read": 2,
-   "withoutSalary": 2,
+   "read": 3,
+   "withoutSalary": 3,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -3915,8 +3910,8 @@
   },
   "croitor": {
    "name": "Croitor",
-   "read": 39,
-   "withoutSalary": 32,
+   "read": 41,
+   "withoutSalary": 34,
    "n": 6,
    "ads": 6,
    "basisNearAmount": 3,
@@ -4038,8 +4033,8 @@
   },
   "cofetar": {
    "name": "Cofetar",
-   "read": 31,
-   "withoutSalary": 30,
+   "read": 32,
+   "withoutSalary": 31,
    "n": 7,
    "ads": 7,
    "basisNearAmount": 5,
@@ -4120,8 +4115,8 @@
   },
   "sofer-tir": {
    "name": "Șofer TIR",
-   "read": 605,
-   "withoutSalary": 544,
+   "read": 638,
+   "withoutSalary": 575,
    "n": 8,
    "ads": 8,
    "basisNearAmount": 7,
@@ -4157,9 +4152,9 @@
     "max": 15830
    },
    "undeclaredBasis": {
-    "n": 32,
+    "n": 33,
     "sourceCounts": {
-     "publi24": 22,
+     "publi24": 23,
      "bestjobs": 3,
      "anuntul": 3,
      "ejobs": 4
@@ -4168,9 +4163,15 @@
      "min": 528,
      "max": 17940
     },
-    "midpointEstimate": 7957.5
+    "midpointEstimate": 7915
    },
    "examples": [
+    {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/soferi-transporturi/transport-marfa-intern/anunt/angajez-sofer-profesionist/28244hhdfddd798h1h5385443ii31if7.html",
+     "source": "publi24",
+     "min": 6000,
+     "max": 6000
+    },
     {
      "url": "https://www.publi24.ro/anunturi/locuri-de-munca/soferi-transporturi/transport-marfa-intern/anunt/angajez-sofer-camion-40t-necesar-ce/70884hd152de7i281hh91g38415gh6fe.html",
      "source": "publi24",
@@ -4194,19 +4195,13 @@
      "source": "publi24",
      "min": 7000,
      "max": 7000
-    },
-    {
-     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/soferi-transporturi/transport-marfa-intern/anunt/sofer-camion/hd2g140d739f71i52h32dh5118g88hg9.html",
-     "source": "publi24",
-     "min": 5000,
-     "max": 7000
     }
    ]
   },
   "sofer-autobuz": {
    "name": "Șofer de autobuz",
-   "read": 5,
-   "withoutSalary": 4,
+   "read": 7,
+   "withoutSalary": 6,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -4243,8 +4238,8 @@
   },
   "taximetrist": {
    "name": "Taximetrist",
-   "read": 64,
-   "withoutSalary": 64,
+   "read": 70,
+   "withoutSalary": 70,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -4331,8 +4326,8 @@
   },
   "curier": {
    "name": "Curier",
-   "read": 241,
-   "withoutSalary": 220,
+   "read": 253,
+   "withoutSalary": 231,
    "n": 7,
    "ads": 7,
    "basisNearAmount": 1,
@@ -4367,9 +4362,9 @@
     "max": 15000
    },
    "undeclaredBasis": {
-    "n": 13,
+    "n": 14,
     "sourceCounts": {
-     "publi24": 9,
+     "publi24": 10,
      "bestjobs": 1,
      "anuntul": 1,
      "hipo": 2
@@ -4378,9 +4373,15 @@
      "min": 3000,
      "max": 13000
     },
-    "midpointEstimate": 4300
+    "midpointEstimate": 4150
    },
    "examples": [
+    {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/soferi-transporturi/curierat-livrari/anunt/angajez-curier-aria-suceava/g2i262if468f7d99d6f956g999i9d572.html",
+     "source": "publi24",
+     "min": 3300,
+     "max": 3300
+    },
     {
      "url": "https://www.publi24.ro/anunturi/locuri-de-munca/agenti-consultanti-vanzari/agent-vanzari/anunt/dezvolta-ti-cariera-in-vanzari-b2b/24f11464hh8e7999d73439f8edfifg7h.html",
      "source": "publi24",
@@ -4404,19 +4405,13 @@
      "source": "publi24",
      "min": 9000,
      "max": 10000
-    },
-    {
-     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/soferi-transporturi/curierat-livrari/anunt/curier-sector-1/2h8g7f2e4d977619e9i1idif7i3472de.html",
-     "source": "publi24",
-     "min": 3500,
-     "max": 3500
     }
    ]
   },
   "sofer-ridesharing": {
    "name": "Șofer ridesharing",
-   "read": 35,
-   "withoutSalary": 35,
+   "read": 37,
+   "withoutSalary": 37,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -4698,33 +4693,32 @@
   },
   "magaziner": {
    "name": "Magaziner",
-   "read": 121,
-   "withoutSalary": 103,
-   "n": 16,
-   "ads": 16,
-   "basisNearAmount": 13,
+   "read": 140,
+   "withoutSalary": 121,
+   "n": 20,
+   "ads": 20,
+   "basisNearAmount": 17,
    "basisFromDocument": 3,
    "basisFromPlatform": 0,
-   "employers": 13,
-   "counties": 8,
+   "employers": 15,
+   "counties": 10,
    "sourceCounts": {
-    "publi24": 12,
+    "publi24": 16,
     "anuntul": 1,
     "bestjobs": 3
    },
-   "employerShare": 0.125,
-   "sourceShare": 0.75,
+   "employerShare": 0.1,
+   "sourceShare": 0.8,
    "gaps": [
-    "too_few_ads",
     "pay_period_sensitivity",
     "source_sensitivity"
    ],
-   "explicitMonthly": 6,
-   "assumedMonthly": 10,
-   "periodSensitivity": 0.20203481123136002,
-   "sourceSensitivity": 0.2531875,
+   "explicitMonthly": 9,
+   "assumedMonthly": 11,
+   "periodSensitivity": 0.22296977162892068,
+   "sourceSensitivity": 0.2226219512195122,
    "midpointEstimate": null,
-   "centralEstimate": 4000,
+   "centralEstimate": 4100,
    "status": "insufficient",
    "medianBounds": null,
    "observedRange": {
@@ -4747,67 +4741,67 @@
    },
    "examples": [
     {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/muncitori-productie-depozit-logistica/manipulanti-marfa/anunt/operator-depozit-lucrator-logistic-5-000-5-700-lei-net-luna/g2edfih328177381183684e2642465e8.html",
+     "source": "publi24",
+     "min": 5700,
+     "max": 5700
+    },
+    {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/muncitori-productie-depozit-logistica/manipulanti-marfa/anunt/lucrator-depozit-si-comenzi-online/fi87317520g577g6e9d0i1hd47244ef4.html",
+     "source": "publi24",
+     "min": 3500,
+     "max": 3500
+    },
+    {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/muncitori-productie-depozit-logistica/manipulanti-marfa/anunt/operator-depozit-lucrator-logistic-5-000-5-700-lei-net-luna/25d3460463907134dif0f150eed97i2f.html",
+     "source": "publi24",
+     "min": 5700,
+     "max": 5700
+    },
+    {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/muncitori-productie-depozit-logistica/gestionari-depozit/anunt/magazioner-giarmata-timis/56039725856h7igge3f0g6gi585f91if.html",
+     "source": "publi24",
+     "min": 4300,
+     "max": 4300
+    },
+    {
      "url": "https://www.publi24.ro/anunturi/locuri-de-munca/muncitori-productie-depozit-logistica/gestionari-depozit/anunt/angajam-gestionar-depozit-magaziner/3i81hg6f14h7765511946g4ged023869.html",
      "source": "publi24",
      "min": 4000,
      "max": 4000
-    },
-    {
-     "url": "https://www.bestjobs.eu/loc-de-munca/lucrator-depozit-770",
-     "source": "bestjobs",
-     "min": 3959,
-     "max": 4223
-    },
-    {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/manager-zonal-magazine-vitamix/1990333",
-     "source": "ejobs",
-     "min": 7000,
-     "max": 10000
-    },
-    {
-     "url": "https://www.bestjobs.eu/loc-de-munca/operator-depozit-buftea-3",
-     "source": "bestjobs",
-     "min": 4223,
-     "max": 4751
-    },
-    {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/magazioner/1990023",
-     "source": "ejobs",
-     "min": 3000,
-     "max": 3200
     }
    ]
   },
   "stivuitorist": {
    "name": "Stivuitorist",
-   "read": 110,
-   "withoutSalary": 102,
-   "n": 21,
-   "ads": 21,
-   "basisNearAmount": 21,
+   "read": 113,
+   "withoutSalary": 105,
+   "n": 23,
+   "ads": 23,
+   "basisNearAmount": 23,
    "basisFromDocument": 0,
    "basisFromPlatform": 0,
-   "employers": 13,
+   "employers": 14,
    "counties": 8,
    "sourceCounts": {
-    "publi24": 18,
+    "publi24": 20,
     "anuntul": 2,
     "bestjobs": 1
    },
-   "employerShare": 0.19047619047619047,
-   "sourceShare": 0.8571428571428571,
+   "employerShare": 0.21739130434782608,
+   "sourceShare": 0.8695652173913043,
    "gaps": [
+    "employer_concentration",
     "source_concentration",
     "too_few_explicit_monthly",
-    "pay_period_sensitivity",
-    "source_sensitivity"
+    "pay_period_sensitivity"
    ],
    "explicitMonthly": 4,
-   "assumedMonthly": 17,
-   "periodSensitivity": 0.2585565676709966,
-   "sourceSensitivity": 0.1631288165164292,
+   "assumedMonthly": 19,
+   "periodSensitivity": 0.2238452002371584,
+   "sourceSensitivity": 0.1111111111111111,
    "midpointEstimate": null,
-   "centralEstimate": 3439,
+   "centralEstimate": 3600,
    "status": "insufficient",
    "medianBounds": null,
    "observedRange": {
@@ -4830,6 +4824,18 @@
    },
    "examples": [
     {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/muncitori-productie-depozit-logistica/operatori-utilaje/anunt/stivuitorist-depozit-fructe-legume/fhgi49e145i17703dd2ef542g5f1090i.html",
+     "source": "publi24",
+     "min": 5000,
+     "max": 5000
+    },
+    {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/muncitori-productie-depozit-logistica/operatori-utilaje/anunt/hpa-recruteaza-stivuitorist-pentru-clientul-sau-un-depozit-din-dudestii-noi-jud-timis/7i34953fg5097g87dh1hih456id1160g.html",
+     "source": "publi24",
+     "min": 3631,
+     "max": 3631
+    },
+    {
      "url": "https://www.publi24.ro/anunturi/locuri-de-munca/muncitori-productie-depozit-logistica/manipulanti-marfa/anunt/stivuitorist-reach-truck-otopeni/5g9i898i63f372ghd2h635fi366i7f9d.html",
      "source": "publi24",
      "min": 4000,
@@ -4846,45 +4852,34 @@
      "source": "ejobs",
      "min": 3399,
      "max": 3700
-    },
-    {
-     "url": "https://www.anuntul.ro/anunt-angajare-stivuitorist-VnNWxX",
-     "source": "anuntul",
-     "min": 5850,
-     "max": 5850
-    },
-    {
-     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/muncitori-productie-depozit-logistica/gestionari-depozit/anunt/stivuitorist-sch-1-3-sibiu/id413d6g4ehg7f831fh1d22f6i13g3eh.html",
-     "source": "publi24",
-     "min": 3412,
-     "max": 3412
     }
    ]
   },
   "manipulant-marfa": {
    "name": "Manipulant mărfuri",
-   "read": 134,
-   "withoutSalary": 116,
-   "n": 20,
-   "ads": 20,
-   "basisNearAmount": 17,
+   "read": 140,
+   "withoutSalary": 121,
+   "n": 21,
+   "ads": 21,
+   "basisNearAmount": 18,
    "basisFromDocument": 3,
    "basisFromPlatform": 0,
-   "employers": 15,
-   "counties": 11,
+   "employers": 16,
+   "counties": 12,
    "sourceCounts": {
+    "publi24": 17,
     "anuntul": 2,
-    "undelucram": 2,
-    "publi24": 16
+    "undelucram": 2
    },
-   "employerShare": 0.1,
-   "sourceShare": 0.8,
+   "employerShare": 0.09523809523809523,
+   "sourceShare": 0.8095238095238095,
    "gaps": [
+    "source_concentration",
     "too_few_explicit_monthly",
     "pay_period_sensitivity"
    ],
    "explicitMonthly": 2,
-   "assumedMonthly": 18,
+   "assumedMonthly": 19,
    "periodSensitivity": 0.6550308008213552,
    "sourceSensitivity": 0.050595238095238096,
    "midpointEstimate": null,
@@ -4911,6 +4906,12 @@
    },
    "examples": [
     {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/muncitori-productie-depozit-logistica/manipulanti-marfa/anunt/lugera-recruteaza-manipulant-marfa-in-oradea/946ge315gdh27ifd1ehge98g70h8idfh.html",
+     "source": "publi24",
+     "min": 3000,
+     "max": 3000
+    },
+    {
      "url": "https://www.anuntul.ro/anunt-angajare-manipulant-marfuri-generale-4Rl3J1",
      "source": "anuntul",
      "min": 3600,
@@ -4933,19 +4934,13 @@
      "source": "anuntul",
      "min": 3600,
      "max": 3600
-    },
-    {
-     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/muncitori-productie-depozit-logistica/manipulanti-marfa/anunt/angajam-manipulant-marfa-depozit-fasonare-otel-beton/h62fe5ff1134732923idf2h6e247hig1.html",
-     "source": "publi24",
-     "min": 4500,
-     "max": 5000
     }
    ]
   },
   "sofer-distributie": {
    "name": "Șofer distribuție",
-   "read": 164,
-   "withoutSalary": 154,
+   "read": 179,
+   "withoutSalary": 169,
    "n": 8,
    "ads": 8,
    "basisNearAmount": 7,
@@ -5026,31 +5021,31 @@
   },
   "vanzator": {
    "name": "Vânzător",
-   "read": 573,
-   "withoutSalary": 529,
-   "n": 74,
-   "ads": 74,
-   "basisNearAmount": 63,
+   "read": 615,
+   "withoutSalary": 569,
+   "n": 79,
+   "ads": 79,
+   "basisNearAmount": 68,
    "basisFromDocument": 11,
    "basisFromPlatform": 0,
-   "employers": 36,
+   "employers": 38,
    "counties": 16,
    "sourceCounts": {
+    "publi24": 56,
     "undelucram": 7,
     "bestjobs": 6,
     "hipo": 1,
-    "anuntul": 9,
-    "publi24": 51
+    "anuntul": 9
    },
-   "employerShare": 0.20270270270270271,
-   "sourceShare": 0.6891891891891891,
+   "employerShare": 0.20253164556962025,
+   "sourceShare": 0.7088607594936709,
    "gaps": [
     "employer_concentration"
    ],
    "explicitMonthly": 8,
-   "assumedMonthly": 66,
+   "assumedMonthly": 71,
    "periodSensitivity": 0.07085714285714285,
-   "sourceSensitivity": 0,
+   "sourceSensitivity": 0.007380073800738007,
    "midpointEstimate": null,
    "centralEstimate": 3252,
    "status": "insufficient",
@@ -5060,10 +5055,10 @@
     "max": 5800
    },
    "undeclaredBasis": {
-    "n": 113,
+    "n": 116,
     "sourceCounts": {
+     "publi24": 29,
      "bestjobs": 16,
-     "publi24": 26,
      "anuntul": 61,
      "ejobs": 9,
      "hipo": 1
@@ -5076,41 +5071,41 @@
    },
    "examples": [
     {
-     "url": "https://www.bestjobs.eu/loc-de-munca/vanzatoare-in-brasov-1",
-     "source": "bestjobs",
-     "min": 3477,
-     "max": 3477
-    },
-    {
-     "url": "https://www.undelucram.ro/ro/locuri-de-munca/lucrator-comercial-legume-fructe-bistrita-independentei-sud-fm/99744",
-     "source": "undelucram",
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/casieri-lucratori-comerciali/anunt/lucrator-comercial-codlea-f-m/i6idh0gi1g427f512i50f7854d720i55.html",
+     "source": "publi24",
      "min": 3035,
      "max": 3035
     },
     {
-     "url": "https://www.undelucram.ro/ro/locuri-de-munca/lucrator-comercial-bucuresti-theodor-pallady-fm/100798",
-     "source": "undelucram",
-     "min": 3252,
-     "max": 3252
-    },
-    {
-     "url": "https://www.bestjobs.eu/loc-de-munca/lucrator-comercial-2512",
-     "source": "bestjobs",
-     "min": 3297,
-     "max": 3614
-    },
-    {
-     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/casieri-lucratori-comerciali/anunt/angajez-vanzatoare/51403gf9g6hg7327d1hd9115d6d35185.html",
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/casieri-lucratori-comerciali/anunt/angajam-vanzatoare-magazin-alimentar/g3e036010eie7f64ede3dg0g80809i6i.html",
      "source": "publi24",
-     "min": 3000,
-     "max": 3500
+     "min": 3600,
+     "max": 3600
+    },
+    {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/casieri-lucratori-comerciali/anunt/angajam-vanzatoare-in-pravalia-sergiana/d74hh69f4e947820d7hehf923723e6g4.html",
+     "source": "publi24",
+     "min": 2699,
+     "max": 2699
+    },
+    {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/casieri-lucratori-comerciali/anunt/vanzatoare-cofetarie-patiserie/1hge386017d17di61d66i3ie7h8i0145.html",
+     "source": "publi24",
+     "min": 4200,
+     "max": 4200
+    },
+    {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/casieri-lucratori-comerciali/anunt/angajam-vanzatoare-magazin-second-hand/13e01e311i367868d9f71441e0g9gi5i.html",
+     "source": "publi24",
+     "min": 3200,
+     "max": 3200
     }
    ]
   },
   "casier": {
    "name": "Casier",
-   "read": 183,
-   "withoutSalary": 171,
+   "read": 190,
+   "withoutSalary": 177,
    "n": 22,
    "ads": 22,
    "basisNearAmount": 21,
@@ -5142,20 +5137,26 @@
     "max": 15000
    },
    "undeclaredBasis": {
-    "n": 26,
+    "n": 27,
     "sourceCounts": {
+     "publi24": 3,
      "anuntul": 14,
      "ejobs": 4,
-     "publi24": 2,
      "bestjobs": 6
     },
     "observedRange": {
      "min": 2500,
      "max": 6000
     },
-    "midpointEstimate": 3550
+    "midpointEstimate": 3600
    },
    "examples": [
+    {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/casieri-lucratori-comerciali/anunt/angajam-casier-in-piata-obor/284897869e06744i2e59d833d8f8d18f.html",
+     "source": "publi24",
+     "min": 4500,
+     "max": 4500
+    },
     {
      "url": "https://www.publi24.ro/anunturi/locuri-de-munca/agenti-consultanti-vanzari/agent-vanzari/anunt/dezvolta-ti-cariera-in-vanzari-b2b/24f11464hh8e7999d73439f8edfifg7h.html",
      "source": "publi24",
@@ -5179,19 +5180,13 @@
      "source": "anuntul",
      "min": 5000,
      "max": 6000
-    },
-    {
-     "url": "https://www.ejobs.ro/user/locuri-de-munca/casier-lucrator-comercial/1988171",
-     "source": "ejobs",
-     "min": 3200,
-     "max": 3200
     }
    ]
   },
   "manager-magazin": {
    "name": "Manager de magazin",
-   "read": 63,
-   "withoutSalary": 63,
+   "read": 66,
+   "withoutSalary": 66,
    "n": 2,
    "ads": 2,
    "basisNearAmount": 0,
@@ -5272,8 +5267,8 @@
   },
   "agent-vanzari": {
    "name": "Agent de vânzări",
-   "read": 372,
-   "withoutSalary": 326,
+   "read": 392,
+   "withoutSalary": 341,
    "n": 22,
    "ads": 22,
    "basisNearAmount": 7,
@@ -5354,35 +5349,35 @@
   },
   "bucatar": {
    "name": "Bucătar",
-   "read": 169,
-   "withoutSalary": 158,
-   "n": 10,
-   "ads": 10,
-   "basisNearAmount": 7,
+   "read": 182,
+   "withoutSalary": 170,
+   "n": 11,
+   "ads": 11,
+   "basisNearAmount": 8,
    "basisFromDocument": 3,
    "basisFromPlatform": 0,
-   "employers": 6,
-   "counties": 4,
+   "employers": 7,
+   "counties": 5,
    "sourceCounts": {
+    "publi24": 5,
     "anuntul": 4,
-    "publi24": 4,
     "bestjobs": 2
    },
-   "employerShare": 0.1,
-   "sourceShare": 0.4,
+   "employerShare": 0.09090909090909091,
+   "sourceShare": 0.45454545454545453,
    "gaps": [
     "too_few_ads",
     "too_few_known_employers",
-    "too_few_known_counties",
     "too_few_explicit_monthly",
-    "pay_period_sensitivity"
+    "pay_period_sensitivity",
+    "source_sensitivity"
    ],
    "explicitMonthly": 3,
-   "assumedMonthly": 7,
-   "periodSensitivity": 0.2053834808259587,
-   "sourceSensitivity": 0.14153132250580047,
+   "assumedMonthly": 8,
+   "periodSensitivity": 0.1851032448377581,
+   "sourceSensitivity": 0.19384615384615383,
    "midpointEstimate": null,
-   "centralEstimate": 5387.5,
+   "centralEstimate": 5525,
    "status": "insufficient",
    "medianBounds": null,
    "observedRange": {
@@ -5404,6 +5399,12 @@
     "midpointEstimate": 5500
    },
    "examples": [
+    {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/horeca/bucatar-ajutor-bucatar/anunt/bucatar-chef-6-500-7-500-lei-net-sau-parteneriat-restaurant-vama54/g59223674hf27hd91i2415e22f1120e1.html",
+     "source": "publi24",
+     "min": 7500,
+     "max": 7500
+    },
     {
      "url": "https://www.anuntul.ro/anunt-angajare-bucatar-BqRD4M",
      "source": "anuntul",
@@ -5427,19 +5428,13 @@
      "source": "anuntul",
      "min": 8000,
      "max": 10000
-    },
-    {
-     "url": "https://www.anuntul.ro/anunt-angajare-bucatar-trattoria-italiana-kMWbx1",
-     "source": "anuntul",
-     "min": 4000,
-     "max": 5000
     }
    ]
   },
   "chelner": {
    "name": "Chelner",
-   "read": 133,
-   "withoutSalary": 123,
+   "read": 136,
+   "withoutSalary": 126,
    "n": 9,
    "ads": 9,
    "basisNearAmount": 8,
@@ -5522,8 +5517,8 @@
   },
   "barman": {
    "name": "Barman",
-   "read": 48,
-   "withoutSalary": 48,
+   "read": 51,
+   "withoutSalary": 51,
    "n": 5,
    "ads": 5,
    "basisNearAmount": 4,
@@ -5605,17 +5600,17 @@
    "name": "Recepționer hotel",
    "read": 8,
    "withoutSalary": 8,
-   "n": 1,
-   "ads": 1,
-   "basisNearAmount": 1,
+   "n": 2,
+   "ads": 2,
+   "basisNearAmount": 2,
    "basisFromDocument": 0,
    "basisFromPlatform": 0,
-   "employers": 1,
-   "counties": 1,
+   "employers": 2,
+   "counties": 2,
    "sourceCounts": {
-    "publi24": 1
+    "publi24": 2
    },
-   "employerShare": 1,
+   "employerShare": 0.5,
    "sourceShare": 1,
    "gaps": [
     "too_few_ads",
@@ -5627,15 +5622,15 @@
     "too_few_explicit_monthly"
    ],
    "explicitMonthly": 0,
-   "assumedMonthly": 1,
+   "assumedMonthly": 2,
    "periodSensitivity": null,
    "sourceSensitivity": null,
    "midpointEstimate": null,
-   "centralEstimate": 3700,
+   "centralEstimate": 3600,
    "status": "insufficient",
    "medianBounds": null,
    "observedRange": {
-    "min": 3700,
+    "min": 3500,
     "max": 3700
    },
    "undeclaredBasis": {
@@ -5650,6 +5645,12 @@
     "midpointEstimate": 3772.5
    },
    "examples": [
+    {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/horeca/personal-receptie-administratie/anunt/angajam-receptioner-hotel-salariul-3500-lei/14ff886737e87710e3311e014g1h8104.html",
+     "source": "publi24",
+     "min": 3500,
+     "max": 3500
+    },
     {
      "url": "https://www.publi24.ro/anunturi/locuri-de-munca/horeca/personal-receptie-administratie/anunt/angajam-receptioner-hotel-casa-timis-wellness-spa-resort/fiiff80217hi7838d1752h7fh57h496g.html",
      "source": "publi24",
@@ -5916,17 +5917,24 @@
    "medianBounds": null,
    "observedRange": null,
    "undeclaredBasis": {
-    "n": 1,
+    "n": 2,
     "sourceCounts": {
+     "publi24": 1,
      "anuntul": 1
     },
     "observedRange": {
-     "min": 5000,
+     "min": 4500,
      "max": 5000
     },
-    "midpointEstimate": 5000
+    "midpointEstimate": 4750
    },
    "examples": [
+    {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/menaj-ingrijire-persoane/ingrijitori-batrani/anunt/ingrijire-batrana-imobilizata-8h-militari/ff691edi8i9d71h0d9ei2e780g1i2egg.html",
+     "source": "publi24",
+     "min": 4500,
+     "max": 4500
+    },
     {
      "url": "https://www.anuntul.ro/anunt-angajare-magazioner-pentru-santierul-BJb6O3",
      "source": "anuntul",
@@ -6094,8 +6102,8 @@
   },
   "regizor": {
    "name": "Regizor",
-   "read": 1,
-   "withoutSalary": 1,
+   "read": 2,
+   "withoutSalary": 2,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -6132,8 +6140,8 @@
   },
   "designer-grafic": {
    "name": "Designer grafic",
-   "read": 6,
-   "withoutSalary": 6,
+   "read": 7,
+   "withoutSalary": 7,
    "n": 1,
    "ads": 1,
    "basisNearAmount": 1,
@@ -6594,31 +6602,30 @@
   },
   "agent-paza": {
    "name": "Agent de pază",
-   "read": 235,
-   "withoutSalary": 228,
-   "n": 20,
-   "ads": 20,
-   "basisNearAmount": 13,
+   "read": 247,
+   "withoutSalary": 240,
+   "n": 22,
+   "ads": 22,
+   "basisNearAmount": 15,
    "basisFromDocument": 7,
    "basisFromPlatform": 0,
    "employers": 3,
    "counties": 4,
    "sourceCounts": {
-    "anuntul": 10,
-    "publi24": 10
+    "publi24": 12,
+    "anuntul": 10
    },
-   "employerShare": 0.3,
-   "sourceShare": 0.5,
+   "employerShare": 0.3181818181818182,
+   "sourceShare": 0.5454545454545454,
    "gaps": [
     "too_few_known_employers",
     "too_few_known_counties",
     "employer_concentration",
-    "too_few_explicit_monthly",
-    "pay_period_sensitivity"
+    "too_few_explicit_monthly"
    ],
-   "explicitMonthly": 1,
-   "assumedMonthly": 19,
-   "periodSensitivity": 0.2222222222222222,
+   "explicitMonthly": 2,
+   "assumedMonthly": 20,
+   "periodSensitivity": 0.027642728156688428,
    "sourceSensitivity": 0.09142857142857143,
    "midpointEstimate": null,
    "centralEstimate": 3500,
@@ -6643,6 +6650,18 @@
    },
    "examples": [
     {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/agent-securitate/anunt/angajam-agenti-securitate-cu-cazare/eh67e5diih757ieg1fhi72e6f1h08094.html",
+     "source": "publi24",
+     "min": 3500,
+     "max": 3500
+    },
+    {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/agent-securitate/anunt/civitas-angajeaza-agent-de-securitate-pentru-petrom-aviation-otopeni/dh37h1fd738075dg1691ef29430e209e.html",
+     "source": "publi24",
+     "min": 2699,
+     "max": 2699
+    },
+    {
      "url": "https://www.anuntul.ro/anunt-angajare-agent-paza-pentru-fabrica-9wRm1O",
      "source": "anuntul",
      "min": 3000,
@@ -6659,25 +6678,13 @@
      "source": "ejobs",
      "min": 4000,
      "max": 4000
-    },
-    {
-     "url": "https://www.anuntul.ro/anunt-angajare-agent-securitate-fashion-eeEmx1",
-     "source": "anuntul",
-     "min": 3240,
-     "max": 4320
-    },
-    {
-     "url": "https://www.anuntul.ro/anunt-angajare-agenti-securitate-barbati-cu-m3L4dG",
-     "source": "anuntul",
-     "min": 3000,
-     "max": 3400
     }
    ]
   },
   "agent-curatenie": {
    "name": "Agent de curățenie",
-   "read": 211,
-   "withoutSalary": 193,
+   "read": 229,
+   "withoutSalary": 211,
    "n": 24,
    "ads": 24,
    "basisNearAmount": 22,
@@ -6758,7 +6765,7 @@
   },
   "operator-call-center": {
    "name": "Operator call center",
-   "read": 69,
+   "read": 70,
    "withoutSalary": 59,
    "n": 3,
    "ads": 3,
@@ -6842,35 +6849,34 @@
   },
   "secretar": {
    "name": "Secretar",
-   "read": 90,
-   "withoutSalary": 82,
-   "n": 4,
-   "ads": 4,
-   "basisNearAmount": 2,
-   "basisFromDocument": 2,
+   "read": 100,
+   "withoutSalary": 89,
+   "n": 6,
+   "ads": 6,
+   "basisNearAmount": 3,
+   "basisFromDocument": 3,
    "basisFromPlatform": 0,
-   "employers": 2,
+   "employers": 3,
    "counties": 2,
    "sourceCounts": {
-    "anuntul": 2,
-    "publi24": 2
+    "publi24": 3,
+    "anuntul": 3
    },
-   "employerShare": 0.25,
+   "employerShare": 0.16666666666666666,
    "sourceShare": 0.5,
    "gaps": [
     "too_few_ads",
     "too_few_known_employers",
     "too_few_known_counties",
-    "employer_concentration",
     "too_few_explicit_monthly",
     "source_sensitivity"
    ],
    "explicitMonthly": 0,
-   "assumedMonthly": 4,
+   "assumedMonthly": 6,
    "periodSensitivity": null,
-   "sourceSensitivity": 0.8823529411764706,
+   "sourceSensitivity": 1.4210526315789473,
    "midpointEstimate": null,
-   "centralEstimate": 4250,
+   "centralEstimate": 4750,
    "status": "insufficient",
    "medianBounds": null,
    "observedRange": {
@@ -6878,12 +6884,12 @@
     "max": 15000
    },
    "undeclaredBasis": {
-    "n": 34,
+    "n": 35,
     "sourceCounts": {
+     "publi24": 2,
      "anuntul": 5,
      "bestjobs": 21,
-     "ejobs": 7,
-     "publi24": 1
+     "ejobs": 7
     },
     "observedRange": {
      "min": 2638,
@@ -6892,6 +6898,24 @@
     "midpointEstimate": 4485
    },
    "examples": [
+    {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/administratie/secretariat/anunt/secretara-manager/f57e0657624f781d2393gf79g604d02e.html",
+     "source": "publi24",
+     "min": 5000,
+     "max": 5000
+    },
+    {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/administratie/secretariat/anunt/asistent-manager-secretariat/deghg42d4i317g1gd18g62i6g29027ed.html",
+     "source": "publi24",
+     "min": 4600,
+     "max": 6000
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-secretara-ca-asociata--e0XNxr",
+     "source": "anuntul",
+     "min": 8000,
+     "max": 15000
+    },
     {
      "url": "https://www.anuntul.ro/anunt-angajare-asistent-manager--eeLaGe",
      "source": "anuntul",
@@ -6903,31 +6927,13 @@
      "source": "bestjobs",
      "min": 4226,
      "max": 5283
-    },
-    {
-     "url": "https://www.bestjobs.eu/loc-de-munca/asistent-manager-4723",
-     "source": "bestjobs",
-     "min": 5807,
-     "max": 7918
-    },
-    {
-     "url": "https://www.bestjobs.eu/loc-de-munca/secretara-birou-notarial-56",
-     "source": "bestjobs",
-     "min": 4223,
-     "max": 5807
-    },
-    {
-     "url": "https://www.bestjobs.eu/loc-de-munca/recrutam-asistent-manager-2",
-     "source": "bestjobs",
-     "min": 5279,
-     "max": 8446
     }
    ]
   },
   "specialist-resurse-umane": {
    "name": "Specialist resurse umane",
-   "read": 33,
-   "withoutSalary": 30,
+   "read": 35,
+   "withoutSalary": 32,
    "n": 3,
    "ads": 3,
    "basisNearAmount": 1,
@@ -7122,8 +7128,8 @@
   },
   "frizer": {
    "name": "Frizer",
-   "read": 83,
-   "withoutSalary": 82,
+   "read": 85,
+   "withoutSalary": 84,
    "n": 1,
    "ads": 1,
    "basisNearAmount": 1,
@@ -7198,37 +7204,37 @@
    "name": "Cosmetician",
    "read": 25,
    "withoutSalary": 25,
-   "n": 1,
-   "ads": 1,
-   "basisNearAmount": 1,
+   "n": 2,
+   "ads": 2,
+   "basisNearAmount": 2,
    "basisFromDocument": 0,
    "basisFromPlatform": 0,
-   "employers": 1,
-   "counties": 1,
+   "employers": 2,
+   "counties": 2,
    "sourceCounts": {
+    "publi24": 1,
     "ejobs": 1
    },
-   "employerShare": 1,
-   "sourceShare": 1,
+   "employerShare": 0.5,
+   "sourceShare": 0.5,
    "gaps": [
     "too_few_ads",
     "too_few_known_employers",
     "too_few_known_counties",
-    "single_source",
     "employer_concentration",
-    "source_concentration",
-    "too_few_explicit_monthly"
+    "too_few_explicit_monthly",
+    "source_sensitivity"
    ],
    "explicitMonthly": 0,
-   "assumedMonthly": 1,
+   "assumedMonthly": 2,
    "periodSensitivity": null,
-   "sourceSensitivity": null,
+   "sourceSensitivity": 0.16707616707616707,
    "midpointEstimate": null,
-   "centralEstimate": 4750,
+   "centralEstimate": 4070,
    "status": "insufficient",
    "medianBounds": null,
    "observedRange": {
-    "min": 3500,
+    "min": 3390,
     "max": 6000
    },
    "undeclaredBasis": {
@@ -7243,6 +7249,12 @@
     "midpointEstimate": 4749
    },
    "examples": [
+    {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/casieri-lucratori-comerciali/anunt/merchandiseri-detergeti-cosmetica-bucuresti-sector-2-si-3/gd1g9457hf487ih026dh1376eee40f3h.html",
+     "source": "publi24",
+     "min": 3390,
+     "max": 3390
+    },
     {
      "url": "https://www.bestjobs.eu/loc-de-munca/cosmeticiana-terapeut-corporal-1",
      "source": "bestjobs",
@@ -7474,8 +7486,8 @@
   },
   "operator-cnc": {
    "name": "Operator CNC",
-   "read": 71,
-   "withoutSalary": 67,
+   "read": 72,
+   "withoutSalary": 68,
    "n": 2,
    "ads": 2,
    "basisNearAmount": 2,
@@ -7557,8 +7569,8 @@
   },
   "electromecanic": {
    "name": "Electromecanic",
-   "read": 60,
-   "withoutSalary": 52,
+   "read": 62,
+   "withoutSalary": 54,
    "n": 5,
    "ads": 5,
    "basisNearAmount": 4,
@@ -8046,8 +8058,8 @@
   },
   "tipograf": {
    "name": "Tipograf",
-   "read": 13,
-   "withoutSalary": 11,
+   "read": 16,
+   "withoutSalary": 14,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
