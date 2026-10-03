@@ -4875,3 +4875,16 @@ altfel calea `/locuri-de-munca` devine `C:/Program Files/Git/...` și inspecția
   și 12 liste; restul listelor se ajung numai prin căutarea cu sugestii, pe care Google n-o urmează.
 - Trimise acum: `/locuri-de-munca/sitemap.xml` (913 adrese) și `/locuri-de-munca/sitemap-expirate.xml`.
   De recitit peste 3–5 zile: `gsc.mjs sitemaps` și inspecția acelorași adrese.
+
+## 3 octombrie 2026 — „Couldn't fetch” la sitemap-ul hubului
+
+- În interfața Search Console, `/locuri-de-munca/sitemap.xml` (trimis pe 2 octombrie) apare „Couldn't
+  fetch”. API-ul spune altceva: `isPending: true`, 0 erori, nedescărcat încă. Interfața afișează așa
+  sitemap-urile încă neprocesate. `sitemap-expirate.xml`, trimis în aceeași secundă, a fost citit imediat.
+- Verificat din exterior: 200, `application/xml`, 102.870 B, XML valid, 913 adrese unice (251 de liste,
+  662 de anunțuri), lastmod corect, ~0,1 s și fără cache. Robots.txt permite și declară sitemap-ul.
+- Retrimis prin API (`gsc.mjs submit`) la 02:07 UTC. Tot în așteptare. Inspecția: `/locuri-de-munca`
+  e indexată (crawl 1 octombrie), `/bucuresti` și `/cluj-napoca` sunt încă „Google nu cunoaște adresa URL”.
+- Așteptările (SE Ranking, RO): „locuri de munca bucuresti” 47.500/lună, dificultate 94; „locuri de
+  munca” 40.500, KD 96; „joburi” 6.600, KD 87. „job bucuresti” 740, KD 28, și „locuri de munca fara
+  experienta” 480, KD 8, sunt singurele accesibile pe termen scurt.
