@@ -19,6 +19,7 @@ export type Env = {
   SITE: string;               // https://salariile.ro
   EMAIL_EXPEDITOR: string;    // anunturi@salariile.ro
   EMAIL_PROPRIETAR: string;   // unde ajung raportările
+  GOOGLE_INDEXARE?: string;   // cheia JSON a contului de serviciu pentru Indexing API (google.ts)
 };
 
 const SECURITATE: Record<string, string> = {

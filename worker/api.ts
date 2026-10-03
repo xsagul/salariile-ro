@@ -5,6 +5,7 @@ import { URL_ADAUGA, urlAnunt, valideaza } from "../src/lib/anunturi/reguli";
 import { MESERII_ANUNTURI } from "../src/lib/anunturi/meserii";
 import { adauga, dupaId, dupaToken, inLimita, listaPentruApropiere, modifica, prelungeste, raporteaza, sterge, tokenNou, type Anunt } from "./date";
 import { localizeaza } from "./geocod";
+import { anuntaGoogle } from "./google";
 import { cardLista, citesteExtra } from "./pagini";
 
 const MESERII = new Set(MESERII_ANUNTURI.map((m) => m.slug));
@@ -56,6 +57,8 @@ export async function api(req: Request, env: Env, ctx: ExecutionContext, cale: s
     if (!(await inLimita(env, v.anunt.email, ip))) return json({ erori: [{ camp: "general", mesaj: "Ai publicat multe anunțuri azi. Mai încearcă mâine." }] }, 429);
     const token = tokenNou();
     const a = await adauga(env, v.anunt, await localizeaza(v.anunt.adresa, v.anunt.oras, v.anunt.judet), token);
+    // Cu firma, anunțul are JobPosting și îl anunțăm direct la Google (google.ts).
+    if (v.anunt.angajator) ctx.waitUntil(anuntaGoogle(env, [urlAnunt(a)], "URL_UPDATED"));
     const trimis = Boolean(v.anunt.email && env.EMAIL);
     if (trimis) ctx.waitUntil(trimite(env, v.anunt.email, `Anunțul „${v.anunt.titlu}” e publicat`,
       `Bună ziua,\n\nAnunțul „${v.anunt.titlu}” e publicat pe salariile.ro:\n${env.SITE}${urlAnunt(a)}\n\n` +
@@ -72,7 +75,10 @@ export async function api(req: Request, env: Env, ctx: ExecutionContext, cale: s
     switch (corp.actiune) {
       case "citeste": return json({ anunt: public_(a) });
       case "prelungeste": await prelungeste(env, a.id); break;
-      case "sterge": await sterge(env, a.id); return json({ ok: true, sters: true });
+      case "sterge":
+        await sterge(env, a.id);
+        if (a.angajator) ctx.waitUntil(anuntaGoogle(env, [urlAnunt(a)], "URL_DELETED"));
+        return json({ ok: true, sters: true });
       case "modifica": {
         const v = valideaza({ ...(corp.date as Record<string, unknown>), email: a.email ?? "sters@salariile.ro", acordPublicare: true }, MESERII);
         if ("erori" in v) return json({ erori: v.erori }, 400);
@@ -84,7 +90,9 @@ export async function api(req: Request, env: Env, ctx: ExecutionContext, cale: s
       }
       default: return json({ eroare: "Acțiune necunoscută" }, 400);
     }
-    return json({ ok: true, anunt: public_((await dupaId(env, a.id))!) });
+    const dupa = (await dupaId(env, a.id))!;
+    if (dupa.angajator && dupa.stare === "activ") ctx.waitUntil(anuntaGoogle(env, [urlAnunt(dupa)], "URL_UPDATED"));
+    return json({ ok: true, anunt: public_(dupa) });
   }
 
   if (cale === "/api/anunturi/raporteaza") {

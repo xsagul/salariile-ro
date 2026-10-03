@@ -4888,3 +4888,23 @@ altfel calea `/locuri-de-munca` devine `C:/Program Files/Git/...` și inspecția
 - Așteptările (SE Ranking, RO): „locuri de munca bucuresti” 47.500/lună, dificultate 94; „locuri de
   munca” 40.500, KD 96; „joburi” 6.600, KD 87. „job bucuresti” 740, KD 28, și „locuri de munca fara
   experienta” 480, KD 8, sunt singurele accesibile pe termen scurt.
+
+## 3 octombrie 2026 — anunțurile noi, trimise direct la Google (Indexing API)
+
+Proprietarul: e grav ca un anunț postat să nu apară în Google. Sitemap-ul nu ajunge: Google îl citește
+când vrea, iar la autoritatea noastră durează zile sau săptămâni. Google are un canal oficial pentru
+anunțuri, Indexing API, permis numai pentru pagini cu JobPosting (deci numai anunțurile cu firmă).
+
+- `worker/google.ts`: JWT semnat cu WebCrypto, token ținut o oră în memorie. `URL_UPDATED` la publicare,
+  modificare și prelungire (`api.ts`); `URL_DELETED` la ștergere și, din cron, la expirare (`curatenie`,
+  cel mult 45 pe rulare: limita de 50 de cereri externe a planului gratuit). Nu aruncă; la 429 se
+  oprește. Fără migrare de bază: nu ține minte nimic.
+- `scripts/anunturi/indexare-google.mjs`: anunțurile deja publicate și importurile ANOFM, cel mult
+  150 pe rulare (cota Google e 200 pe zi), cu evidența în `.gsc/indexare-google.json`. Proba: 662 de
+  anunțuri active, primele 5 verificate toate cu JobPosting.
+- Testat cu cheia contului de serviciu `salariile-seo`: tokenul se obține (și cu semnarea din Worker),
+  apoi 403 `SERVICE_DISABLED`. **Blocat pe proprietar:** (1) activarea „Web Search Indexing API” în
+  proiectul Google Cloud `salariile-seo`; (2) contul de serviciu trebuie să fie **Owner** în Search
+  Console; (3) `npx wrangler secret put GOOGLE_INDEXARE < gsc-key.json` din terminalul lui (contul
+  Cloudflare al agentului e altul). Până atunci codul publicat nu trimite nimic.
+- Anunțurile fără firmă n-au JobPosting, deci nu pot fi trimise așa; ele rămân pe sitemap.

@@ -1,7 +1,8 @@
 // Accesul la baza D1 a anunțurilor. Schema: migrations/0001_anunturi.sql.
 import type { Env } from "./index";
 import type { Loc } from "./geocod";
-import { LIMITA_PE_ZI, ZILE_PASTRARE_EMAIL, ZILE_VALABILITATE, faraDiacritice, netLunar, orasSlug, slugAnunt, type AnuntNou, type Contract, type LocMunca, type Norma } from "../src/lib/anunturi/reguli";
+import { anuntaGoogle } from "./google";
+import { LIMITA_PE_ZI, ZILE_PASTRARE_EMAIL, ZILE_VALABILITATE, faraDiacritice, netLunar, orasSlug, slugAnunt, urlAnunt, type AnuntNou, type Contract, type LocMunca, type Norma } from "../src/lib/anunturi/reguli";
 import { MESERII_ANUNTURI, formaTitlu, ghicesteMeserie, grupMeserie, meseriileDomeniului, pentruPotrivire, slugurileGrupului, variante } from "../src/lib/anunturi/meserii";
 
 export type Anunt = {
@@ -288,12 +289,17 @@ export async function raporteaza(env: Env, id: number, motiv: string, detalii: s
 /** Rulează zilnic: expirările, emailurile păstrate peste termen, limitele și neconfirmatele vechi. */
 export async function curatenie(env: Env): Promise<void> {
   const t = acum(), dupa = (zile: number) => new Date(Date.now() - zile * 86400000).toISOString();
+  // Cele care expiră acum și au JobPosting: Google le scoate din Google Jobs în aceeași zi. Cel mult 45:
+  // planul gratuit dă 50 de cereri externe pe rulare. Restul le găsește Google în sitemap-expirate.xml.
+  const expira = (await env.DB.prepare("SELECT id, slug FROM anunturi WHERE stare = 'activ' AND expira_la < ? AND angajator IS NOT NULL AND angajator <> '' LIMIT 45")
+    .bind(t).all<{ id: number; slug: string }>()).results;
   await env.DB.batch([
     env.DB.prepare("UPDATE anunturi SET stare = 'expirat' WHERE stare = 'activ' AND expira_la < ?").bind(t),
     env.DB.prepare("UPDATE anunturi SET email = NULL WHERE email IS NOT NULL AND ((stare = 'expirat' AND expira_la < ?) OR (stare = 'sters' AND sters_la < ?))").bind(dupa(ZILE_PASTRARE_EMAIL), dupa(ZILE_PASTRARE_EMAIL)),
     env.DB.prepare("DELETE FROM anunturi WHERE stare = 'neconfirmat' AND creat_la < ?").bind(dupa(2)),
     env.DB.prepare("DELETE FROM limite WHERE la < ?").bind(dupa(2)),
   ]);
+  await anuntaGoogle(env, expira.map(urlAnunt), "URL_DELETED");
   // Anunțurile rămase fără meserie o primesc din titlu, când titlul o spune (proprietar, 29 septembrie
   // 2026: „Ajutor barman restaurant Beraria H” nu apărea la niciun filtru). Publicarea o face deja.
   const fara = (await env.DB.prepare("SELECT id, titlu FROM anunturi WHERE meserie IS NULL AND stare = 'activ'").all<{ id: number; titlu: string }>()).results;
