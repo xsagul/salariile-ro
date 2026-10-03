@@ -12,104 +12,104 @@
   "withoutSalary": 69
  },
  "electrician": {
-  "read": 576,
-  "withoutSalary": 525
+  "read": 587,
+  "withoutSalary": 534
  },
  "sudor": {
-  "read": 233,
-  "withoutSalary": 216
+  "read": 236,
+  "withoutSalary": 219
  },
  "tamplar": {
   "read": 150,
   "withoutSalary": 141
  },
  "asistent-medical": {
-  "read": 185,
-  "withoutSalary": 178
+  "read": 187,
+  "withoutSalary": 180
  },
  "dulgher": {
-  "read": 130,
-  "withoutSalary": 121
+  "read": 134,
+  "withoutSalary": 125
  },
  "mecanic-auto": {
-  "read": 161,
-  "withoutSalary": 151
+  "read": 164,
+  "withoutSalary": 154
  },
  "zidar": {
-  "read": 88,
-  "withoutSalary": 80
+  "read": 89,
+  "withoutSalary": 81
  },
  "instalator": {
-  "read": 324,
-  "withoutSalary": 296
+  "read": 328,
+  "withoutSalary": 297
  },
  "medic-veterinar": {
   "read": 19,
   "withoutSalary": 16
  },
  "agent-vanzari": {
-  "read": 368,
-  "withoutSalary": 323
+  "read": 372,
+  "withoutSalary": 326
  },
  "programator": {
-  "read": 124,
-  "withoutSalary": 123
+  "read": 133,
+  "withoutSalary": 132
  },
  "devops-engineer": {
   "read": 49,
   "withoutSalary": 49
  },
  "inginer": {
-  "read": 405,
-  "withoutSalary": 379
+  "read": 415,
+  "withoutSalary": 387
  },
  "electromecanic": {
   "read": 60,
   "withoutSalary": 52
  },
  "analist-date": {
-  "read": 14,
-  "withoutSalary": 14
+  "read": 15,
+  "withoutSalary": 15
  },
  "operator-cnc": {
-  "read": 69,
-  "withoutSalary": 66
+  "read": 71,
+  "withoutSalary": 67
  },
  "medic": {
-  "read": 67,
-  "withoutSalary": 58
+  "read": 68,
+  "withoutSalary": 59
  },
  "stomatolog": {
-  "read": 32,
-  "withoutSalary": 29
+  "read": 33,
+  "withoutSalary": 30
  },
  "sofer-tir": {
-  "read": 602,
-  "withoutSalary": 541
+  "read": 605,
+  "withoutSalary": 544
  },
  "curier": {
   "read": 241,
   "withoutSalary": 220
  },
  "vanzator": {
-  "read": 561,
-  "withoutSalary": 518
+  "read": 573,
+  "withoutSalary": 529
  },
  "administrator-sistem": {
   "read": 2,
   "withoutSalary": 2
  },
  "web-developer": {
-  "read": 3,
-  "withoutSalary": 3
+  "read": 4,
+  "withoutSalary": 4
  },
  "consultant-financiar": {
   "read": 42,
   "withoutSalary": 35
  },
  "magaziner": {
-  "read": 117,
-  "withoutSalary": 99
+  "read": 121,
+  "withoutSalary": 103
  },
  "agent-imobiliar": {
   "read": 27,
@@ -120,44 +120,44 @@
   "withoutSalary": 27
  },
  "contabil": {
-  "read": 152,
-  "withoutSalary": 138
+  "read": 155,
+  "withoutSalary": 141
  },
  "economist": {
   "read": 53,
   "withoutSalary": 49
  },
  "agent-curatenie": {
-  "read": 207,
-  "withoutSalary": 189
+  "read": 211,
+  "withoutSalary": 193
  },
  "logistician": {
-  "read": 26,
-  "withoutSalary": 24
+  "read": 28,
+  "withoutSalary": 26
  },
  "infirmier": {
-  "read": 59,
-  "withoutSalary": 58
+  "read": 61,
+  "withoutSalary": 60
  },
  "ingrijitor-batrani": {
   "read": 20,
   "withoutSalary": 17
  },
  "frizer": {
-  "read": 82,
-  "withoutSalary": 81
+  "read": 83,
+  "withoutSalary": 82
  },
  "sofer-distributie": {
-  "read": 159,
-  "withoutSalary": 149
+  "read": 164,
+  "withoutSalary": 154
  },
  "arhitect": {
-  "read": 61,
-  "withoutSalary": 59
+  "read": 62,
+  "withoutSalary": 60
  },
  "secretar": {
-  "read": 88,
-  "withoutSalary": 80
+  "read": 90,
+  "withoutSalary": 82
  },
  "auditor": {
   "read": 25,
@@ -168,28 +168,28 @@
   "withoutSalary": 11
  },
  "operator-call-center": {
-  "read": 66,
-  "withoutSalary": 56
+  "read": 69,
+  "withoutSalary": 59
  },
  "casier": {
-  "read": 181,
-  "withoutSalary": 169
+  "read": 183,
+  "withoutSalary": 171
  },
  "asistent-social": {
   "read": 3,
   "withoutSalary": 3
  },
  "zugrav": {
-  "read": 47,
-  "withoutSalary": 44
+  "read": 51,
+  "withoutSalary": 47
  },
  "bucatar": {
-  "read": 167,
-  "withoutSalary": 156
+  "read": 169,
+  "withoutSalary": 158
  },
  "chelner": {
-  "read": 131,
-  "withoutSalary": 121
+  "read": 133,
+  "withoutSalary": 123
  },
  "barman": {
   "read": 48,
@@ -204,28 +204,28 @@
   "withoutSalary": 87
  },
  "asistent-farmacie": {
-  "read": 12,
-  "withoutSalary": 12
+  "read": 13,
+  "withoutSalary": 13
  },
  "stivuitorist": {
-  "read": 106,
-  "withoutSalary": 98
+  "read": 110,
+  "withoutSalary": 102
  },
  "faiantar": {
-  "read": 37,
-  "withoutSalary": 34
+  "read": 39,
+  "withoutSalary": 36
  },
  "operator-productie": {
-  "read": 125,
-  "withoutSalary": 102
+  "read": 130,
+  "withoutSalary": 105
  },
  "cameraman": {
   "read": 2,
   "withoutSalary": 2
  },
  "agent-paza": {
-  "read": 231,
-  "withoutSalary": 225
+  "read": 235,
+  "withoutSalary": 228
  },
  "administrator-bloc": {
   "read": 5,
@@ -236,8 +236,8 @@
   "withoutSalary": 11
  },
  "manipulant-marfa": {
-  "read": 129,
-  "withoutSalary": 112
+  "read": 134,
+  "withoutSalary": 116
  },
  "tehnician-mentenanta": {
   "read": 56,
@@ -248,16 +248,16 @@
   "withoutSalary": 25
  },
  "cofetar": {
-  "read": 30,
-  "withoutSalary": 29
+  "read": 31,
+  "withoutSalary": 30
  },
  "pompier": {
   "read": 10,
   "withoutSalary": 10
  },
  "manager-magazin": {
-  "read": 61,
-  "withoutSalary": 61
+  "read": 63,
+  "withoutSalary": 63
  },
  "bijutier": {
   "read": 3,
@@ -272,8 +272,8 @@
   "withoutSalary": 32
  },
  "consilier-juridic": {
-  "read": 18,
-  "withoutSalary": 18
+  "read": 20,
+  "withoutSalary": 20
  },
  "inginer-energetician": {
   "read": 18,
@@ -284,8 +284,8 @@
   "withoutSalary": 5
  },
  "specialist-resurse-umane": {
-  "read": 30,
-  "withoutSalary": 27
+  "read": 33,
+  "withoutSalary": 30
  },
  "editor": {
   "read": 1,
@@ -300,12 +300,12 @@
   "withoutSalary": 7
  },
  "registrator-medical": {
-  "read": 4,
-  "withoutSalary": 4
+  "read": 5,
+  "withoutSalary": 5
  },
  "constructor-drumuri": {
-  "read": 2,
-  "withoutSalary": 2
+  "read": 3,
+  "withoutSalary": 3
  },
  "instructor-auto": {
   "read": 8,
@@ -328,8 +328,8 @@
   "withoutSalary": 4
  },
  "sofer-ridesharing": {
-  "read": 34,
-  "withoutSalary": 34
+  "read": 35,
+  "withoutSalary": 35
  },
  "invatator": {
   "read": 3,
@@ -372,8 +372,8 @@
   "withoutSalary": 2
  },
  "taximetrist": {
-  "read": 63,
-  "withoutSalary": 63
+  "read": 64,
+  "withoutSalary": 64
  },
  "avocat": {
   "read": 3,
@@ -392,8 +392,8 @@
   "withoutSalary": 1
  },
  "receptioner-hotel": {
-  "read": 7,
-  "withoutSalary": 7
+  "read": 8,
+  "withoutSalary": 8
  },
  "traducator": {
   "read": 3,

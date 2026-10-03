@@ -2,6 +2,9 @@
  "surse": {
   "anuntul": {
    "trecereCompletaLa": "2026-09-27T10:35:53.545Z"
+  },
+  "ejobs": {
+   "trecereCompletaLa": "2026-10-03T00:37:46.108Z"
   }
  },
  "rulari": [
@@ -114,6 +117,22 @@
     "accepted": 53,
     "duplicates": 8,
     "rejected": 192,
+    "errors": 3
+   }
+  },
+  {
+   "run": "continuu-2026-10-03",
+   "la": "2026-10-03T00:37:46.108Z",
+   "citite": 179,
+   "acceptate": 36,
+   "stats": {
+    "inventoried": 19361,
+    "read": 179,
+    "acceptedAds": 34,
+    "acceptedBeforeDedup": 37,
+    "accepted": 36,
+    "duplicates": 1,
+    "rejected": 145,
     "errors": 3
    }
   }
