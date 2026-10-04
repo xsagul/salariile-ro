@@ -350,8 +350,7 @@
   "sha256": "777321bd6ce5b58f0bee22460e6c224d535c94c4f67971a4d70fe109f77e5c18"
  },
  "ps6": {
-  "stare": "fără rânduri (scanat sau alt format)",
-  "sha256": "4cfc3e3b2abe35d5637bfbb783742661247b14564a582537bb865473043662c4"
+  "stare": "eroare: fetch failed"
  },
  "cj-salaj": {
   "stare": "acceptat",
@@ -1798,7 +1797,7 @@
   "sha256": "e583c8c47874e0efce67f32b4532eff042c8936d211a0879563965572644623e"
  },
  "bj-timis": {
-  "stare": "eroare: HTTP 404"
+  "stare": "eroare: Invalid PDF structure."
  },
  "ps3": {
   "stare": "fără rânduri (scanat sau alt format)",
@@ -1829,7 +1828,6 @@
   "sha256": "420ae14245cc467297c6e3f8eb826998fa64a737ce4eee9f3b6d7a4864ccaf79"
  },
  "cj-constanta": {
-  "stare": "fără rânduri (scanat sau alt format)",
-  "sha256": "1d85ac6a28ea839028731d4ad56a9dcb4ade30c7fe3e5703ecf66a20352372d4"
+  "stare": "eroare: fetch failed"
  }
 }
