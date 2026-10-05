@@ -1,34 +1,31 @@
 {
  "sju-alba": {
   "stare": "acceptat",
-  "fisier": "https://spitalalba.ro/docs/fin/2026/Transparen%c8%9ba%20veniturilor%20salariale%20la%2030.09.2026.pdf",
-  "perioada": "2026-09",
-  "sha256": "68d8e120badf24cec3f3a2705fa45eb6e53786a33e2bdb10e8ba224b24781d95",
-  "bytes": 5088791,
-  "cititLa": "2026-10-02",
-  "randuri": 1167,
-  "valide": 1167,
+  "fisier": "https://spitalalba.ro/docs/2025/venit/Transparen%c8%9ba%20veniturilor%20salariale%2031.03.2025.pdf",
+  "perioada": "2025-03",
+  "sha256": "732c77fa5c5c7996fbf69e6b01824e567c5ede4ba15070d38daa5fb27bccf628",
+  "bytes": 4841059,
+  "cititLa": "2026-10-05",
+  "randuri": 1086,
+  "valide": 1080,
   "peMeserie": {
-   "asistent-medical": 541,
-   "medic": 336,
-   "infirmier": 193,
-   "registrator-medical": 45,
+   "medic": 292,
+   "asistent-medical": 507,
+   "infirmier": 183,
+   "registrator-medical": 40,
+   "medic-rezident": 40,
    "asistent-social": 10,
-   "psiholog": 5,
-   "kinetoterapeut": 5,
-   "fizioterapeut": 4,
+   "psiholog": 6,
+   "kinetoterapeut": 4,
+   "fizioterapeut": 1,
    "magaziner": 1,
-   "consilier-juridic": 2,
-   "medic-rezident": 25
+   "consilier-juridic": 2
   },
   "coloaneNecunoscute": [
-   "Nr. crt",
+   "Nr.crt",
    "Transparenţa veniturilor salariale pentru funcțiile din cadrul Spitalului Județean de Urgență Alba I",
-   "Transparenţa veniturilor salariale pentru funcțiile din cadrul Spitalului Județean de Urgență Alba I",
-   "Transparenţa veniturilor salariale pentru funcțiile din cadrul Spitalului Județean de Urgență Alba I",
-   "Sume comp ensat orii ***** ****",
-   "Sumă proiect ****** *****",
-   "Ind comisie ******* ******"
+   "Sumă proiect* ******* **",
+   "Ind comisie concurs ******* *****"
   ]
  },
  "scju-cluj": {
@@ -350,7 +347,8 @@
   "sha256": "777321bd6ce5b58f0bee22460e6c224d535c94c4f67971a4d70fe109f77e5c18"
  },
  "ps6": {
-  "stare": "eroare: fetch failed"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "4cfc3e3b2abe35d5637bfbb783742661247b14564a582537bb865473043662c4"
  },
  "cj-salaj": {
   "stare": "acceptat",
@@ -683,35 +681,37 @@
  },
  "scju-bihor": {
   "stare": "acceptat",
-  "fisier": "https://spitaljudetean-oradea.ro/wp-content/uploads/2026/04/tansparenta-salariala-martie-2026-2.pdf",
-  "perioada": "2026-03",
-  "sha256": "971fa67e4704e67a00f532bea6e0103115d5f38d839a59a6740b1d9f6334ecf3",
-  "bytes": 366289,
-  "cititLa": "2026-09-28",
-  "randuri": 3557,
-  "valide": 3429,
+  "fisier": "https://spitaljudetean-oradea.ro/wp-content/uploads/2026/10/TRANSPARENTA-SALARIALA-SEPT.2026.pdf",
+  "perioada": "2026-09",
+  "sha256": "e04cabda7ca0edc55fa398a28e4831b6789066ee5845c254a324f58689a8f46d",
+  "bytes": 338420,
+  "cititLa": "2026-10-05",
+  "randuri": 3618,
+  "valide": 3618,
   "peMeserie": {
-   "medic": 720,
-   "asistent-medical": 1252,
-   "psiholog": 15,
-   "infirmier": 423,
-   "asistent-social": 13,
-   "bucatar": 16,
-   "kinetoterapeut": 8,
-   "economist": 49,
-   "consilier-juridic": 4,
-   "fizioterapeut": 16,
-   "asistent-farmacie": 8,
-   "medic-rezident": 895,
-   "registrator-medical": 105,
-   "magaziner": 1,
+   "medic": 787,
+   "asistent-medical": 1289,
+   "psiholog": 16,
+   "registrator-medical": 103,
+   "asistent-social": 15,
+   "sofer-ambulanta": 4,
+   "bucatar": 15,
+   "infirmier": 445,
+   "kinetoterapeut": 13,
+   "fizioterapeut": 19,
+   "economist": 39,
+   "consilier-juridic": 3,
+   "asistent-farmacie": 5,
+   "medic-rezident": 833,
    "contabil": 1,
    "programator": 2,
-   "electrician": 13,
-   "instalator": 14,
-   "sofer-ambulanta": 2
+   "electrician": 15,
+   "instalator": 14
   },
-  "coloaneNecunoscute": []
+  "coloaneNecunoscute": [
+   "VENIT BRUT LUNAR",
+   "SALAR NET LUNAR"
+  ]
  },
  "scpn-brasov": {
   "stare": "acceptat",
@@ -1632,7 +1632,7 @@
  },
  "pm-galati": {
   "stare": "fără rânduri (scanat sau alt format)",
-  "sha256": "5b5cb1dc51d84ce4f6f2d019f7310e272ef40cf0ce95b07061e9584d7c8da591"
+  "sha256": "8265ddaab9970bf58844003bf1af00d8ff12df31519f88e1b69e4b835f37c6f4"
  },
  "cj-sibiu": {
   "stare": "de verificat: numai 0% rânduri valide",
@@ -1828,6 +1828,7 @@
   "sha256": "420ae14245cc467297c6e3f8eb826998fa64a737ce4eee9f3b6d7a4864ccaf79"
  },
  "cj-constanta": {
-  "stare": "eroare: fetch failed"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "1d85ac6a28ea839028731d4ad56a9dcb4ade30c7fe3e5703ecf66a20352372d4"
  }
 }

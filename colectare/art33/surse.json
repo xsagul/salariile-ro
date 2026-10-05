@@ -8,10 +8,10 @@
    "tip": "spital",
    "judet": "AB",
    "pagina": "https://spitalalba.ro/",
-   "fisier": "https://spitalalba.ro/docs/fin/2026/Transparen%c8%9ba%20veniturilor%20salariale%20la%2030.09.2026.pdf",
-   "perioada": "2026-09",
+   "fisier": "https://spitalalba.ro/docs/2025/venit/Transparen%c8%9ba%20veniturilor%20salariale%2031.03.2025.pdf",
+   "perioada": "2025-03",
    "format": "pdf cu text; un rând pe post; perechi procent–sumă",
-   "gasitLa": "2026-10-02"
+   "gasitLa": "2026-10-05"
   },
   {
    "id": "scju-cluj",
@@ -458,9 +458,9 @@
    "tip": "spital",
    "judet": "BH",
    "pagina": "https://spitaljudetean-oradea.ro/situatia-drepturilor-salariale/",
-   "fisier": "https://spitaljudetean-oradea.ro/wp-content/uploads/2026/04/tansparenta-salariala-martie-2026-2.pdf",
-   "perioada": "2026-03",
-   "gasitLa": "2026-09-26"
+   "fisier": "https://spitaljudetean-oradea.ro/wp-content/uploads/2026/10/TRANSPARENTA-SALARIALA-SEPT.2026.pdf",
+   "perioada": "2026-09",
+   "gasitLa": "2026-10-05"
   },
   {
    "id": "scpn-brasov",
@@ -1520,9 +1520,9 @@
    "tip": "primarie",
    "judet": "GL",
    "pagina": "https://www.primariagalati.ro/",
-   "fisier": "https://www.primariagalati.ro/portal/galati/portal.nsf/721BE504BEC5CB4CC2258DCB001F2572/%24FILE/SALARII%20UAT%20MUNICIPIUL%20GALATI%2031.03.2026.pdf",
-   "perioada": "2026-03",
-   "gasitLa": "2026-09-27"
+   "fisier": "https://www.primariagalati.ro/portal/galati/portal.nsf/9268D33589D210E2C2258E8700218C51/%24FILE/sal_uat300926.pdf",
+   "perioada": "2026-09",
+   "gasitLa": "2026-10-05"
   },
   {
    "id": "pm-ploiesti",
