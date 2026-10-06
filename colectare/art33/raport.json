@@ -1,31 +1,34 @@
 {
  "sju-alba": {
   "stare": "acceptat",
-  "fisier": "https://spitalalba.ro/docs/2025/venit/Transparen%c8%9ba%20veniturilor%20salariale%2031.03.2025.pdf",
-  "perioada": "2025-03",
-  "sha256": "732c77fa5c5c7996fbf69e6b01824e567c5ede4ba15070d38daa5fb27bccf628",
-  "bytes": 4841059,
-  "cititLa": "2026-10-05",
-  "randuri": 1086,
-  "valide": 1080,
+  "fisier": "https://spitalalba.ro/docs/fin/2026/Transparen%c8%9ba%20veniturilor%20salariale%20la%2030.09.2026.pdf",
+  "perioada": "2026-09",
+  "sha256": "68d8e120badf24cec3f3a2705fa45eb6e53786a33e2bdb10e8ba224b24781d95",
+  "bytes": 5088791,
+  "cititLa": "2026-10-06",
+  "randuri": 1167,
+  "valide": 1167,
   "peMeserie": {
-   "medic": 292,
-   "asistent-medical": 507,
-   "infirmier": 183,
-   "registrator-medical": 40,
-   "medic-rezident": 40,
+   "asistent-medical": 541,
+   "medic": 336,
+   "infirmier": 193,
+   "registrator-medical": 45,
    "asistent-social": 10,
-   "psiholog": 6,
-   "kinetoterapeut": 4,
-   "fizioterapeut": 1,
+   "psiholog": 5,
+   "kinetoterapeut": 5,
+   "fizioterapeut": 4,
    "magaziner": 1,
-   "consilier-juridic": 2
+   "consilier-juridic": 2,
+   "medic-rezident": 25
   },
   "coloaneNecunoscute": [
-   "Nr.crt",
+   "Nr. crt",
    "Transparenţa veniturilor salariale pentru funcțiile din cadrul Spitalului Județean de Urgență Alba I",
-   "Sumă proiect* ******* **",
-   "Ind comisie concurs ******* *****"
+   "Transparenţa veniturilor salariale pentru funcțiile din cadrul Spitalului Județean de Urgență Alba I",
+   "Transparenţa veniturilor salariale pentru funcțiile din cadrul Spitalului Județean de Urgență Alba I",
+   "Sume comp ensat orii ***** ****",
+   "Sumă proiect ****** *****",
+   "Ind comisie ******* ******"
   ]
  },
  "scju-cluj": {
@@ -204,11 +207,11 @@
  },
  "dgaspc-s1": {
   "stare": "acceptat",
-  "fisier": "https://www.dgaspc-sectorul1.ro/wp-content/uploads/2026/06/Transparenta-venituri-salariale_-MARTIE-2026.pdf",
-  "perioada": "2026-03",
-  "sha256": "f0a6bef86c381ed02d3a2635100a0f0790dfe45ddd4e4945205f005eb89600b6",
-  "bytes": 660917,
-  "cititLa": "2026-09-28",
+  "fisier": "https://www.dgaspc-sectorul1.ro/wp-content/uploads/2026/10/Transparenta-venituri-salariale_-septembrie_2026_pt-SITE.pdf",
+  "perioada": "2026-09",
+  "sha256": "3312206ca4a68d66f04d8a3984ac22b9611ed9921aab59a1ab5c4232adb4bfbd",
+  "bytes": 764091,
+  "cititLa": "2026-10-06",
   "randuri": 33,
   "valide": 33,
   "peMeserie": {

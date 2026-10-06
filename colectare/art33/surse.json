@@ -8,10 +8,10 @@
    "tip": "spital",
    "judet": "AB",
    "pagina": "https://spitalalba.ro/",
-   "fisier": "https://spitalalba.ro/docs/2025/venit/Transparen%c8%9ba%20veniturilor%20salariale%2031.03.2025.pdf",
-   "perioada": "2025-03",
+   "fisier": "https://spitalalba.ro/docs/fin/2026/Transparen%c8%9ba%20veniturilor%20salariale%20la%2030.09.2026.pdf",
+   "perioada": "2026-09",
    "format": "pdf cu text; un rând pe post; perechi procent–sumă",
-   "gasitLa": "2026-10-05"
+   "gasitLa": "2026-10-06"
   },
   {
    "id": "scju-cluj",
@@ -108,9 +108,9 @@
    "tip": "dgaspc",
    "judet": "B",
    "pagina": "https://www.dgaspc-sectorul1.ro/transparenta-decizionala/transparenta-veniturilor-salariale/",
-   "fisier": "https://www.dgaspc-sectorul1.ro/wp-content/uploads/2026/06/Transparenta-venituri-salariale_-MARTIE-2026.pdf",
-   "perioada": "2026-06",
-   "gasitLa": "2026-09-25"
+   "fisier": "https://www.dgaspc-sectorul1.ro/wp-content/uploads/2026/10/Transparenta-venituri-salariale_-septembrie_2026_pt-SITE.pdf",
+   "perioada": "2026-09",
+   "gasitLa": "2026-10-06"
   },
   {
    "id": "dgaspc-s2",
