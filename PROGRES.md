@@ -4860,3 +4860,98 @@ după textul linkului): Meserii 124, Calculator salariu 70, „Instrumente” la
   cu contur rămâne numai pe desktop (`hidden md:inline-flex`).
 - Proprietarul s-a răzgândit tot pe 2 octombrie: butonul „Adaugă anunț” rămâne în bară și pe
   telefon, între logo și meniu, ca pe 29 septembrie (`Header.tsx` readus la `0c7edbd`).
+
+## 2 octombrie 2026 — ce știe Google despre hubul de locuri de muncă (ziua a 4-a)
+
+Search Console, prin `scripts/gsc.mjs` (în Git Bash cu `MSYS_NO_PATHCONV=1` și adrese complete;
+altfel calea `/locuri-de-munca` devine `C:/Program Files/Git/...` și inspecția minte):
+
+- `/locuri-de-munca`: „Trimisă și indexată”, crawl 1 octombrie. `/adauga-anunt-angajare`: indexată,
+  crawl 29 septembrie.
+- `/locuri-de-munca/bucuresti`, `/barman`, `/bucuresti/barman`, `/cluj-napoca` și două anunțuri:
+  „Google nu cunoaște adresa URL”. Zero afișări în căutare pe tot hubul (25 septembrie – 2 octombrie).
+- Cauza găsită: sitemap-ul hubului nu fusese trimis în Search Console, era doar în robots.txt, iar
+  `sitemap.xml` nu conține nicio adresă din hub. Pagina principală a hubului leagă 20 de anunțuri
+  și 12 liste; restul listelor se ajung numai prin căutarea cu sugestii, pe care Google n-o urmează.
+- Trimise acum: `/locuri-de-munca/sitemap.xml` (913 adrese) și `/locuri-de-munca/sitemap-expirate.xml`.
+  De recitit peste 3–5 zile: `gsc.mjs sitemaps` și inspecția acelorași adrese.
+
+## 3 octombrie 2026 — „Couldn't fetch” la sitemap-ul hubului
+
+- În interfața Search Console, `/locuri-de-munca/sitemap.xml` (trimis pe 2 octombrie) apare „Couldn't
+  fetch”. API-ul spune altceva: `isPending: true`, 0 erori, nedescărcat încă. Interfața afișează așa
+  sitemap-urile încă neprocesate. `sitemap-expirate.xml`, trimis în aceeași secundă, a fost citit imediat.
+- Verificat din exterior: 200, `application/xml`, 102.870 B, XML valid, 913 adrese unice (251 de liste,
+  662 de anunțuri), lastmod corect, ~0,1 s și fără cache. Robots.txt permite și declară sitemap-ul.
+- Retrimis prin API (`gsc.mjs submit`) la 02:07 UTC. Tot în așteptare. Inspecția: `/locuri-de-munca`
+  e indexată (crawl 1 octombrie), `/bucuresti` și `/cluj-napoca` sunt încă „Google nu cunoaște adresa URL”.
+- Așteptările (SE Ranking, RO): „locuri de munca bucuresti” 47.500/lună, dificultate 94; „locuri de
+  munca” 40.500, KD 96; „joburi” 6.600, KD 87. „job bucuresti” 740, KD 28, și „locuri de munca fara
+  experienta” 480, KD 8, sunt singurele accesibile pe termen scurt.
+
+## 3 octombrie 2026 — anunțurile noi, trimise direct la Google (Indexing API)
+
+Proprietarul: e grav ca un anunț postat să nu apară în Google. Sitemap-ul nu ajunge: Google îl citește
+când vrea, iar la autoritatea noastră durează zile sau săptămâni. Google are un canal oficial pentru
+anunțuri, Indexing API, permis numai pentru pagini cu JobPosting (deci numai anunțurile cu firmă).
+
+- `worker/google.ts`: JWT semnat cu WebCrypto, token ținut o oră în memorie. `URL_UPDATED` la publicare,
+  modificare și prelungire (`api.ts`); `URL_DELETED` la ștergere și, din cron, la expirare (`curatenie`,
+  cel mult 45 pe rulare: limita de 50 de cereri externe a planului gratuit). Nu aruncă; la 429 se
+  oprește. Fără migrare de bază: nu ține minte nimic.
+- `scripts/anunturi/indexare-google.mjs`: anunțurile deja publicate și importurile ANOFM, cel mult
+  150 pe rulare (cota Google e 200 pe zi), cu evidența în `.gsc/indexare-google.json`. Proba: 662 de
+  anunțuri active, primele 5 verificate toate cu JobPosting.
+- Testat cu cheia contului de serviciu `salariile-seo`: tokenul se obține (și cu semnarea din Worker),
+  apoi 403 `SERVICE_DISABLED`. **Blocat pe proprietar:** (1) activarea „Web Search Indexing API” în
+  proiectul Google Cloud `salariile-seo`; (2) contul de serviciu trebuie să fie **Owner** în Search
+  Console; (3) `npx wrangler secret put GOOGLE_INDEXARE < gsc-key.json` din terminalul lui (contul
+  Cloudflare al agentului e altul). Până atunci codul publicat nu trimite nimic.
+- Anunțurile fără firmă n-au JobPosting, deci nu pot fi trimise așa; ele rămân pe sitemap.
+
+## 7 octombrie 2026 — verificare: linkurile spre zile libere și hubul față de eJobs și OLX
+
+Numai măsurători, nimic schimbat în cod.
+
+- `/zile-libere-2026` e legată din bară, din sertarul de telefon și din subsol pe fiecare pagină
+  live (3 linkuri; 4 pe `/salariu-minim` și `/zile-lucratoare-2026`), inclusiv pe paginile hubului.
+  Search Console, pe zile: 12–46 de afișări înainte de 26 septembrie, 42–88 pe 27 septembrie –
+  1 octombrie, 17–23 pe 2–4 octombrie. „zile libere 2026” poziția 14,2; 3 clicuri în 25 de zile.
+- Hubul, Search Console (date până pe 4 octombrie): anunțurile 76 de afișări pe 3 octombrie, 257 și
+  13 clicuri pe 4 octombrie, poziția 6,6; listele 53 de afișări și 3 clicuri pe 4 octombrie.
+  `JOB_LISTING` (Google Jobs): o singură afișare. Indexate: `/locuri-de-munca`, `/bucuresti`,
+  `/cluj-napoca`, `/bucuresti/barman`, anunțurile 3 și 790. `/locuri-de-munca/barman`: tot
+  „Google nu cunoaște adresa URL”. Sitemap-ul hubului, citit de Google pe 5 octombrie (875 de adrese).
+- Indexing API: tot 403 `SERVICE_DISABLED` pe proiectul `salariile-seo`. Cei trei pași ai
+  proprietarului din 3 octombrie rămân nefăcuți.
+- Față de eJobs și OLX, aceeași pagină (lista București, un anunț): titlu, descriere, canonical,
+  index la fel; JobPosting-ul nostru are `baseSalary` cu `unitText`, `validThrough` și `directApply`
+  (eJobs n-are salariul, OLX n-are `validThrough` și pune `maxValue: 0`); HTML 89 KB în 0,07 s față
+  de 483 KB / 0,18 s la eJobs și 2,1 MB / 0,88 s la OLX.
+- Unde suntem sub ei: (1) anunțul fără firmă n-are JobPosting deloc (anunțul 3, Chi Lin-Bao Bar);
+  OLX pune în același caz `hiringOrganization.name: "confidential"`; (2) lista București leagă 11
+  alte liste din 251 aflate în sitemap, OLX are 208 linkuri interne pe aceeași pagină; (3) listele
+  n-au `ItemList` (eJobs: 42 de elemente); (4) autoritatea, SE Ranking: 9 domenii care trimit spre
+  noi, față de 6.259 la eJobs și 29.793 la OLX; rangul domeniului 14 față de 75 și 76.
+
+## 7 octombrie 2026 — JobPosting pe toate anunțurile și linkuri între liste
+
+Aprobat de proprietar după verificarea de mai sus (punctele 1 și 2).
+
+- **JobPosting și fără firmă.** `paginaAnunt` punea JobPosting numai când anunțul avea numele
+  firmei. Documentația Google (job-posting, `hiringOrganization`): la angajare anonimă,
+  `hiringOrganization.name` e `confidential`; așa face și OLX. Acum orice anunț are JobPosting, cu
+  firma lui sau cu `confidential`. Indexing API anunță deci toate anunțurile, nu doar pe cele cu
+  firmă (`api.ts`, `curatenie` din `date.ts`); rămâne blocat pe cei trei pași ai proprietarului.
+- **Listele se leagă între ele.** Sub anunțuri, pe orice listă fără filtre în interogare, două
+  blocuri: „Locuri de muncă [meserie] pe orașe” și „Locuri de muncă [în oraș,] pe meserii”. Intră
+  numai listele de la `PRAG_INDEX` în sus, din numerele deja calculate pentru filtre (fără citiri
+  noi din D1); primele 18 după numărul de anunțuri, restul sub „Toate localitățile” / „Toate
+  meseriile” (`<details>`, în HTML de la început). Fără numărul de anunțuri lângă nume.
+- Verificat local (`wrangler dev`, copia cu 787 de anunțuri): `/locuri-de-munca` leagă 162 de liste
+  (înainte 12), `/bucuresti` 116, `/barman` 68, `/bucuresti/barman` 26; o listă cu `?norma=` nu
+  primește blocurile. Un anunț cu firma scoasă în copia locală: `"name":"confidential"`, pagina
+  vizibilă neschimbată. Telefon 375 px: două coloane, linkuri de 36 px, fără derulare pe orizontală;
+  PC: patru coloane. `tsc` pe Worker, `test-anunturi`, `test-ui-contracts`, eslint: trec.
+- De recitit peste 3–5 zile: inspecția `/locuri-de-munca/barman` și `JOB_LISTING` în
+  `gsc.mjs appearance`.
