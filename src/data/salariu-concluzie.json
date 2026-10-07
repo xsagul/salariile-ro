@@ -1,18 +1,18 @@
 {
- "generatLa": "2026-10-07T00:50:57.610Z",
+ "generatLa": "2026-10-07T12:14:06.045Z",
  "oferteAnofm": 9078,
  "meserii": {
   "medic": {
    "sursa": "platit",
    "net": 10086,
    "interval": [
-    7564,
-    12264
+    7513,
+    12113
    ],
    "platit": {
     "net": 10086,
-    "randuri": 3305,
-    "institutii": 20,
+    "randuri": 3307,
+    "institutii": 21,
     "judete": 17,
     "perioade": [
      "2025-08",
@@ -24,6 +24,7 @@
     ],
     "surse": [
      "Direcția de Asistență Socială Brașov",
+     "Direcția de Sănătate Publică Brăila",
      "Direcția de Sănătate Publică București",
      "Direcția de Sănătate Publică Vaslui",
      "Serviciul de Ambulanță Județean Neamț",
@@ -55,8 +56,8 @@
     "peVechime": [
      {
       "gradatie": 2,
-      "randuri": 355,
-      "net": 8612
+      "randuri": 356,
+      "net": 8368
      },
      {
       "gradatie": 3,
@@ -70,8 +71,8 @@
      },
      {
       "gradatie": 5,
-      "randuri": 1354,
-      "net": 10929
+      "randuri": 1355,
+      "net": 10695
      }
     ],
     "peJudet": [
@@ -106,12 +107,6 @@
       "net": 10661
      },
      {
-      "judet": "Brăila",
-      "randuri": 254,
-      "institutii": 1,
-      "net": 10657
-     },
-     {
       "judet": "Sibiu",
       "randuri": 365,
       "institutii": 1,
@@ -122,6 +117,12 @@
       "randuri": 211,
       "institutii": 1,
       "net": 10451
+     },
+     {
+      "judet": "Brăila",
+      "randuri": 256,
+      "institutii": 2,
+      "net": 10297
      },
      {
       "judet": "București",
@@ -167,15 +168,15 @@
   },
   "medic-rezident": {
    "sursa": "platit",
-   "net": 5899,
+   "net": 5808,
    "interval": [
-    4889,
-    7137
+    4899,
+    7087
    ],
    "platit": {
-    "net": 5899,
-    "randuri": 3938,
-    "institutii": 14,
+    "net": 5808,
+    "randuri": 3940,
+    "institutii": 15,
     "judete": 13,
     "perioade": [
      "2025-09",
@@ -185,6 +186,7 @@
      "2026-09"
     ],
     "surse": [
+     "Direcția de Sănătate Publică Brăila",
      "Direcția de Sănătate Publică Vaslui",
      "Spitalul Clinic Județean de Urgență Bihor",
      "Spitalul Clinic Județean de Urgență Brăila",
@@ -216,7 +218,7 @@
      },
      {
       "gradatie": 1,
-      "randuri": 716,
+      "randuri": 717,
       "net": 6088
      },
      {
@@ -226,8 +228,8 @@
      },
      {
       "gradatie": 3,
-      "randuri": 130,
-      "net": 6326
+      "randuri": 131,
+      "net": 5808
      },
      {
       "gradatie": 4,
@@ -241,12 +243,6 @@
      }
     ],
     "peJudet": [
-     {
-      "judet": "Brăila",
-      "randuri": 85,
-      "institutii": 1,
-      "net": 7805
-     },
      {
       "judet": "Brașov",
       "randuri": 38,
@@ -278,6 +274,12 @@
       "net": 5899
      },
      {
+      "judet": "Brăila",
+      "randuri": 87,
+      "institutii": 2,
+      "net": 5808
+     },
+     {
       "judet": "Timiș",
       "randuri": 1368,
       "institutii": 1,
@@ -305,14 +307,14 @@
    "sursa": "platit",
    "net": 4677,
    "interval": [
-    4195,
-    5585
+    4188,
+    5514
    ],
    "platit": {
     "net": 4677,
-    "randuri": 7586,
-    "institutii": 16,
-    "judete": 15,
+    "randuri": 7596,
+    "institutii": 17,
+    "judete": 16,
     "perioade": [
      "2025-09",
      "2026-02",
@@ -322,6 +324,7 @@
     ],
     "surse": [
      "Direcția de Asistență Socială Brașov",
+     "Direcția de Sănătate Publică Brăila",
      "Direcția de Sănătate Publică Vaslui",
      "Serviciul de Ambulanță Județean Neamț",
      "Spitalul Clinic Județean de Urgență Bihor",
@@ -346,7 +349,7 @@
     "studii": {
      "S": 4810,
      "SSD": 4397,
-     "PL": 4676,
+     "PL": 4600,
      "M": 5537
     },
     "peVechime": [
@@ -357,8 +360,8 @@
      },
      {
       "gradatie": 1,
-      "randuri": 101,
-      "net": 4213
+      "randuri": 102,
+      "net": 4081
      },
      {
       "gradatie": 2,
@@ -367,18 +370,18 @@
      },
      {
       "gradatie": 3,
-      "randuri": 636,
-      "net": 4574
+      "randuri": 637,
+      "net": 4477
      },
      {
       "gradatie": 4,
-      "randuri": 587,
-      "net": 5095
+      "randuri": 590,
+      "net": 5039
      },
      {
       "gradatie": 5,
-      "randuri": 3366,
-      "net": 4984
+      "randuri": 3371,
+      "net": 4797
      }
     ],
     "peJudet": [
@@ -466,15 +469,15 @@
   },
   "registrator-medical": {
    "sursa": "platit",
-   "net": 3652,
+   "net": 3671,
    "interval": [
-    3446,
-    4304
+    3462,
+    4237
    ],
    "platit": {
-    "net": 3652,
-    "randuri": 543,
-    "institutii": 14,
+    "net": 3671,
+    "randuri": 544,
+    "institutii": 15,
     "judete": 13,
     "perioade": [
      "2025-09",
@@ -484,6 +487,7 @@
      "2026-09"
     ],
     "surse": [
+     "Direcția de Sănătate Publică Brăila",
      "Spitalul Clinic Județean de Urgență Bihor",
      "Spitalul Clinic Județean de Urgență Brăila",
      "Spitalul Clinic Județean de Urgență Cluj-Napoca",
@@ -505,7 +509,7 @@
      "cota": 0.2
     },
     "studii": {
-     "M": 3688
+     "M": 3671
     },
     "peVechime": [
      {
@@ -525,8 +529,8 @@
      },
      {
       "gradatie": 5,
-      "randuri": 225,
-      "net": 3742
+      "randuri": 226,
+      "net": 3671
      }
     ],
     "peJudet": [
@@ -667,15 +671,15 @@
   },
   "psiholog": {
    "sursa": "platit",
-   "net": 6331,
+   "net": 6314,
    "interval": [
-    5116,
-    7065
+    5022,
+    6934
    ],
    "platit": {
-    "net": 6331,
-    "randuri": 108,
-    "institutii": 17,
+    "net": 6314,
+    "randuri": 109,
+    "institutii": 18,
     "judete": 14,
     "perioade": [
      "2025-09",
@@ -686,6 +690,7 @@
     "surse": [
      "Curtea de Apel Târgu Mureş",
      "Direcția de Asistență Socială Brașov",
+     "Direcția de Sănătate Publică Brăila",
      "Direcția de Sănătate Publică Vaslui",
      "Spitalul Clinic Județean de Urgență Bihor",
      "Spitalul Clinic Județean de Urgență Brăila",
@@ -710,8 +715,8 @@
     "peVechime": [
      {
       "gradatie": 5,
-      "randuri": 43,
-      "net": 6746
+      "randuri": 44,
+      "net": 6426
      }
     ],
     "peJudet": []

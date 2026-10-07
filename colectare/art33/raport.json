@@ -913,8 +913,24 @@
   "sha256": "e0cc749955ddfbf8cd0b17f830fe212911784d1a54770bfd81b700d43a507bda"
  },
  "dsp-braila": {
-  "stare": "fără rânduri (scanat sau alt format)",
-  "sha256": "12257429434a137751184ae59252ff3b1142c1986585df9353a80490153e8d71"
+  "stare": "acceptat",
+  "fisier": "https://dspbr.ro/wp-content/uploads/2020/07/DSP-Brila-9307-_Transparena-veniturilor-salariale-la-data-de-30092026.pdf",
+  "perioada": "2026-09",
+  "sha256": "0e3ee7af188bf157a0fcd376a9656483f937d2c67d735b94152092fd199bc96b",
+  "bytes": 405117,
+  "cititLa": "2026-10-07",
+  "randuri": 16,
+  "valide": 16,
+  "peMeserie": {
+   "medic": 2,
+   "medic-rezident": 2,
+   "psiholog": 1,
+   "asistent-medical": 10,
+   "registrator-medical": 1
+  },
+  "coloaneNecunoscute": [
+   "Nr. crt. 0"
+  ]
  },
  "umfst": {
   "stare": "acceptat",
@@ -1363,10 +1379,11 @@
   ]
  },
  "ca-oradea": {
-  "stare": "eroare: fetch failed"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "58bc8e8560b416d6dbddad625eddf3bf7ecf69ea38d2d7e9fbd97a89e715a171"
  },
  "ca-suceava": {
-  "stare": "eroare: fetch failed"
+  "stare": "eroare: HTTP 403"
  },
  "tb-botosani": {
   "stare": "acceptat",
@@ -1391,16 +1408,19 @@
   ]
  },
  "ca-ploiesti": {
-  "stare": "eroare: fetch failed"
+  "stare": "eroare: HTTP 403"
  },
  "ca-galati": {
-  "stare": "eroare: fetch failed"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "90c2fcd4e6ad9c5019c528e41d1778e4281ba1afe6e449f391781c019cd6a7f0"
  },
  "ca-pitesti": {
-  "stare": "eroare: fetch failed"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "dd88d0d440807a826edf444b2016e8153bbe30cff0d1bc6363756907c7103581"
  },
  "ca-alba-iulia": {
-  "stare": "eroare: fetch failed"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "8890e18e32996040920fbf15762182be056685232a4557e79ef0e3c547995a54"
  },
  "tb-salaj": {
   "stare": "acceptat",
@@ -1424,7 +1444,8 @@
   ]
  },
  "tb-tulcea": {
-  "stare": "eroare: fetch failed"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "d35b1dcfd863b7062cfdec2a4aadd27d49d236299fbe3b8a5cfb6fddcf7912a1"
  },
  "tb-vaslui": {
   "stare": "acceptat",
@@ -1449,10 +1470,12 @@
   ]
  },
  "tb-vrancea": {
-  "stare": "eroare: fetch failed"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "db96c5bc3b1856d957a77c09bc748b6ba5ea8f7070d9f1f7acfd9aa8863adca2"
  },
  "tb-ilfov": {
-  "stare": "eroare: fetch failed"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "afbdc3b379e9609f0656fb2cd019231b1275f2c97f6a76a4f4858c49894b2f95"
  },
  "tb-harghita": {
   "stare": "acceptat",
@@ -1504,7 +1527,8 @@
   ]
  },
  "tb-neamt": {
-  "stare": "eroare: fetch failed"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "258c8435a50140b3d39b69a1778bfbf0b6acb9b3dceb422cd04b2766bafb2404"
  },
  "tb-olt": {
   "stare": "de verificat: prea puține rânduri",
@@ -1532,43 +1556,56 @@
   ]
  },
  "tb-alba": {
-  "stare": "eroare: fetch failed"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "4dc6e8f9f10eef5a90040faf0d65732d7c91fee9a71121ab57506401fddc8f9b"
  },
  "tb-arad": {
-  "stare": "eroare: fetch failed"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "f9c41c03547137b341b25527047380931f6eee54261ca134ff9e520a63f591a0"
  },
  "tb-braila": {
-  "stare": "eroare: fetch failed"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "599d615f6f19ef2d1a6ffee61e718298ec5fe397d5342f452557ea9fea750c42"
  },
  "tb-caras-severin": {
-  "stare": "eroare: fetch failed"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "b219e40a4b419100c2165cc0dd09c1779cdb62f606aef9aa946512ddd66d98b5"
  },
  "tb-calarasi": {
-  "stare": "eroare: fetch failed"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "072e0acd41e1d02e17eea9aac6e4effa688159f79eb3dbd88524856c05115336"
  },
  "tb-cluj": {
-  "stare": "eroare: fetch failed"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "acec512e016ac0f4e1fcd4acafec0d74cfcd273c3c4642c945385db0e8d37031"
  },
  "tb-constanta": {
-  "stare": "eroare: fetch failed"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "8480a0c75e9c9d6da909a10833824194fd99327755f620450113a55f767602ae"
  },
  "tb-giurgiu": {
-  "stare": "eroare: fetch failed"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "2890e5cc54f7223127dbae8a4be5c639890c2dd57f851db4df5f3ebb2e47bd71"
  },
  "jud-constanta": {
-  "stare": "eroare: fetch failed"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "e009e0b44bf4cedf0ac6211915c323707dbbd9f803cf158ef2ff87536ac3a083"
  },
  "jud-galati": {
-  "stare": "eroare: fetch failed"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "59ff219f9f9dc55f75729f08fade4db97790f7ad98fe658ddb58d9e6b048c0cd"
  },
  "jud-mangalia": {
-  "stare": "eroare: fetch failed"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "d42e7b3104fa5f0d14235890d75a345a82fe158b0fd982ccc0bbbe4be8cf7a7b"
  },
  "jud-medgidia": {
-  "stare": "eroare: fetch failed"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "edb7cce23002870cb787fa6cbbfdfb10aa14b2fdb070489bc606487c656fca85"
  },
  "jud-tulcea": {
-  "stare": "eroare: fetch failed"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "58612912f25c8e41480cd2b286cb6e4a64c5d2a036e2ce4e1687a3707c399632"
  },
  "tn-iasi": {
   "stare": "eroare: HTTP 404"
