@@ -4992,3 +4992,17 @@ dashboard, `httpRequestsAdaptiveGroups`, POST pe `/api/anunturi`, 27 septembrie 
   (pornit 15:59, scos 17:16 UTC): niciun 400 din browser în intervalul acela.
 - Pagina formularului: ~80 de cereri GET în 9 zile, cu roboți cu tot; Web Analytics e eșantionat
   (zeci, nu unități) și arată vizite de pe telefon numai pe 29–30 septembrie și 3 octombrie.
+
+## 7 octombrie 2026 — anunț: contactul lipit jos pe telefon
+
+Cerut de proprietar, cu anuntul.ro ca model: pe telefon trebuia derulat până la numărul de telefon.
+Acum, sub `lg`, pagina anunțului are jos o bară fixă cu două butoane: numărul (sună) și WhatsApp
+(numai la mobil; la fix, un singur buton cât bara). Aceleași linkuri și același `data-contact`, deci
+`contact_anunt` din GA4 le numără împreună cu butoanele din pagină, care au rămas. De la `lg` bara
+dispare: cardul de contact e deja sus, în coloana din dreapta. `z-30`, sub sertarul meniului;
+`body` primește 76 px jos, ca subsolul să nu fie acoperit. Fără promovare pe carduri: în liste
+rămâne „Vezi anunțul”.
+
+Verificat local (`wrangler dev`): 375 px — bara la baza ecranului din prima clipă, butoane de 48 px,
+200 și 143 px lățime; 320 px — nimic tăiat, fără derulare pe orizontală, ultimul rând din subsol
+deasupra barei; 1024 px — `display: none`, fără spațiu în plus. `tsc` pe Worker trece.
