@@ -4974,3 +4974,21 @@ Aprobat de proprietar după verificarea de mai sus (punctele 1 și 2).
   după un `publish` reușit (răspunsul lui n-are `latestUpdate`), deci nu e o dovadă de înregistrare:
   de recitit a doua zi, împreună cu `JOB_LISTING` din `gsc.mjs appearance`. Calea din Worker
   (anunț nou din formular) nu s-a putut proba fără un anunț real.
+
+## 7 octombrie 2026 — a fost cineva blocat la postare?
+
+Întrebarea proprietarului. Citit din D1 și din analitica HTTP a zonei în Cloudflare (GraphQL din
+dashboard, `httpRequestsAdaptiveGroups`, POST pe `/api/anunturi`, 27 septembrie – 7 octombrie):
+
+- 8 cereri de postare în total. 4 cu 200, toate din browsere: iPhone (17:26 UTC), Windows (17:45,
+  17:49) pe 29 septembrie și Samsung/Android pe 3 octombrie, 08:53 UTC. 4 cu 400, toate cu `curl`
+  (probele din terminal de pe 29 septembrie). Niciun 429, 403 sau 5xx pe postare.
+- Deci anunțurile puse de oameni sunt 4, nu 3: 1–3 și **791** („Angajam Farmacist / Asistent de
+  Farmacie”, Căianu), care nu e din ANOFM. După el, cineva a deschis de două ori linkul de gestionare.
+- `limite` e goală: în ultimele 2 zile nimeni n-a ajuns la limita pe zi și nimeni n-a postat.
+- **Ce nu se vede nicăieri:** `FormularAnunt.tsx` validează în browser înainte de a trimite
+  (`valideaza`), fără niciun eveniment GA4. Cine e oprit de o regulă (telefon, salariu, conținut
+  interzis) nu ajunge la server și nu lasă urmă. La fel cei opriți de Turnstile pe 29 septembrie
+  (pornit 15:59, scos 17:16 UTC): niciun 400 din browser în intervalul acela.
+- Pagina formularului: ~80 de cereri GET în 9 zile, cu roboți cu tot; Web Analytics e eșantionat
+  (zeci, nu unități) și arată vizite de pe telefon numai pe 29–30 septembrie și 3 octombrie.
