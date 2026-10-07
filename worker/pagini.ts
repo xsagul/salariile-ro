@@ -544,6 +544,29 @@ export async function paginaLista(req: Request, env: Env, orasSlug: string | nul
   const gol = `<div class="mt-3 ${CARD}"><p class="text-base text-stone-800">${cuFiltre ? "Niciun anunț nu se potrivește căutării." : unde ? "Nu sunt încă anunțuri pentru căutarea asta." : "Nu sunt încă anunțuri publicate."}</p>
       ${cuFiltre ? `<p class="mt-2 text-sm"><a class="font-semibold underline underline-offset-2" href="${cale}">Arată toate anunțurile${unde ? ` ${esc(unde)}` : ""}</a></p>` : `<p class="mt-2 text-sm text-stone-600">Angajezi? Anunțul tău apare aici în câteva minute, gratuit și fără cont.</p>`}</div>`;
 
+  // Celelalte liste, legate de sub anunțuri (7 octombrie 2026): până atunci o listă trimitea numai
+  // spre primele 6 meserii și localități din coloană, iar restul se ajungeau doar prin căutarea cu
+  // sugestii, pe care Google n-o urmează („Google nu cunoaște adresa URL” la /locuri-de-munca/barman).
+  // Numai listele care intră în Google (PRAG_INDEX), cu numerele deja calculate pentru filtre: pe
+  // lista unei meserii, localitățile sunt cele cu meseria aceea; pe lista unui oraș, meseriile lui.
+  const legaturi = (titluBloc: string, toate: string, v: { href: string; n: string; c: number }[]) => {
+    if (!v.length) return "";
+    const a = (o: { href: string; n: string }) => `<li><a class="flex min-h-9 items-center text-sm text-stone-700 underline-offset-2 hover:text-stone-900 hover:underline" href="${o.href}">${esc(o.n)}</a></li>`;
+    const GRILA = "grid grid-cols-2 gap-x-4 sm:grid-cols-3 lg:grid-cols-4";
+    const dupaNumar = [...v].sort((x, y) => y.c - x.c || x.n.localeCompare(y.n, "ro"));
+    const restul = dupaNumar.slice(18).sort((x, y) => x.n.localeCompare(y.n, "ro"));
+    return `<section class="mt-6"><h2 class="text-base font-bold text-stone-900">${esc(titluBloc)}</h2>
+        <ul class="mt-2 ${GRILA}">${dupaNumar.slice(0, 18).map(a).join("")}</ul>
+        ${restul.length ? `<details class="mt-1"><summary class="flex min-h-9 cursor-pointer items-center gap-1.5 text-sm font-semibold text-stone-900">${toate}${SVG("size-4 shrink-0", D_JOS)}</summary><ul class="mt-1 ${GRILA}">${restul.map(a).join("")}</ul></details>` : ""}
+      </section>`;
+  };
+  const alteListe = cuFiltre ? "" : [
+    legaturi(`Locuri de muncă ${numeM ? `${numeM} ` : ""}pe orașe`, "Toate localitățile",
+      orase.filter((o) => o.c >= PRAG_INDEX && o.s !== orasSlug).map((o) => ({ href: urlLista(o.s, meserie), n: o.n, c: o.c }))),
+    legaturi(`Locuri de muncă ${numeLoc ? `în ${numeLoc}, ` : ""}pe meserii`, "Toate meseriile",
+      meserii.filter((m) => m.p && m.c >= PRAG_INDEX && m.s !== (meserie ? grupMeserie(meserie) : null)).map((m) => ({ href: urlLista(orasSlug, m.s), n: m.n, c: m.c }))),
+  ].join("");
+
   const breadcrumb = (orasSlug || meserie) ? `<nav class="mb-4 flex flex-wrap gap-2 text-xs text-stone-600" aria-label="Breadcrumb"><a class="underline underline-offset-2" href="/locuri-de-munca">Locuri de muncă</a>${orasSlug && meserie ? `<span>/</span><a class="underline underline-offset-2" href="${urlLista(orasSlug, null)}">${esc(numeLoc!)}</a>` : ""}</nav>` : "";
   // Schița B: pe telefon, câmpul comun, apoi „Filtre” și ordinea, una lângă alta, apoi filtrele alese;
   // pe PC, coloana din stânga și, deasupra listei, filtrele alese (sau „Toate meseriile, toată țara”) și ordinea.
@@ -572,6 +595,7 @@ export async function paginaLista(req: Request, env: Env, orasSlug: string | nul
         ${pagini > 1 ? `<nav aria-label="Pagini" class="mt-6 flex gap-4 text-sm">${pagina > 1 ? `<a class="underline underline-offset-2" href="${q(pagina - 1)}">Pagina anterioară</a>` : ""}<span class="text-stone-600">Pagina ${pagina} din ${pagini}</span>${pagina < pagini ? `<a class="underline underline-offset-2" href="${q(pagina + 1)}">Pagina următoare</a>` : ""}</nav>` : ""}
       </div>
     </div>
+    ${alteListe ? `<div class="mt-10 border-t border-stone-200 pt-2">${alteListe}</div>` : ""}
     ${script}
     ${SCRIPT_ORDINE}`;
 
@@ -687,19 +711,21 @@ export async function paginaAnunt(req: Request, env: Env, id: number, slug: stri
     </div>`;
 
   // JobPosting pentru Google Jobs: numai câmpurile pe care anunțul le are de fapt. Google cere
-  // firma (hiringOrganization); fără numele ei, care e opțional, anunțul rămâne doar în căutarea obișnuită.
-  const jsonLd = a.angajator ? {
+  // firma (hiringOrganization); pentru anunțul fără numele ei, care e opțional, documentația Google
+  // cere valoarea „confidential” (angajare anonimă), cum face și OLX. Până pe 7 octombrie 2026
+  // anunțurile fără firmă n-aveau JobPosting deloc, deci nu intrau în Google Jobs.
+  const jsonLd = {
     "@context": "https://schema.org", "@type": "JobPosting",
     title: a.titlu, description: descriereHtml(a.descriere), datePosted: a.confirmat_la, validThrough: a.expira_la,
     employmentType: a.contract === "determinata" || a.contract === "sezonier" ? [a.norma === "partiala" ? "PART_TIME" : "FULL_TIME", "TEMPORARY"] : a.norma === "partiala" ? "PART_TIME" : "FULL_TIME",
     // Google: „no requirements” când nu se cere experiență; munca de acasă cere și țara candidaților.
     ...(a.fara_experienta ? { experienceRequirements: "no requirements" } : {}),
     ...(a.loc_munca === "acasa" ? { jobLocationType: "TELECOMMUTE", applicantLocationRequirements: { "@type": "Country", name: "RO" } } : {}),
-    hiringOrganization: { "@type": "Organization", name: a.angajator },
+    hiringOrganization: { "@type": "Organization", name: a.angajator || "confidential" },
     jobLocation: { "@type": "Place", address: { "@type": "PostalAddress", ...(a.adresa ? { streetAddress: a.adresa } : {}), addressLocality: oras(a), addressRegion: JUDETE[a.judet], addressCountry: "RO" } },
     baseSalary: { "@type": "MonetaryAmount", currency: "RON", value: { "@type": "QuantitativeValue", unitText: "MONTH", ...(a.salariu_max ? { minValue: a.salariu_min, maxValue: a.salariu_max } : { value: a.salariu_min }) } },
     directApply: false,
-  } : undefined;
+  };
   // Titlul începe cu „Anunț angajare”, ca paginile din top 3 la „anunt de angajare”.
   const titlu = `Anunț angajare ${a.titlu}, ${oras(a)} — ${suma(a)}`;
   const desc = `Anunț angajare ${a.titlu}, ${oras(a)}: ${suma(a)} pe lună, ${norma(a).toLowerCase()}.${a.angajator ? ` ${a.angajator}.` : ""} Aplici direct la angajator.`;
@@ -707,7 +733,7 @@ export async function paginaAnunt(req: Request, env: Env, id: number, slug: stri
     ["Locuri de muncă", "/locuri-de-munca"], [oras(a), urlLista(a.oras_slug, null)],
     ...(a.meserie ? [[meserie!, listaMeserie] as [string, string]] : []), [a.titlu, null],
   ]);
-  return inSablon(req, env, { titlu, descriere: desc.slice(0, 158), canonic, indexabil: true, continut, jsonLd: jsonLd ? [jsonLd, fir] : [fir] });
+  return inSablon(req, env, { titlu, descriere: desc.slice(0, 158), canonic, indexabil: true, continut, jsonLd: [jsonLd, fir] });
 }
 
 export async function sitemap(env: Env): Promise<Response> {

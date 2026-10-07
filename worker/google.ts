@@ -1,7 +1,7 @@
 // Google Indexing API (3 octombrie 2026): anunțul nou ajunge la Google în minute, nu după ce Google
 // citește sitemap-ul, care la un site cu autoritate mică durează zile sau săptămâni. Google permite
-// API-ul numai pentru pagini cu JobPosting, deci numai pentru anunțurile cu firma completată
-// (`pagini.ts`, `paginaAnunt`); restul se descoperă din /locuri-de-munca/sitemap.xml.
+// API-ul numai pentru pagini cu JobPosting; din 7 octombrie 2026 îl au toate anunțurile
+// (`pagini.ts`, `paginaAnunt`), și cele fără firmă. Listele se descoperă din /locuri-de-munca/sitemap.xml.
 // Cota: 200 de notificări pe zi pe proiect. Fără secretul GOOGLE_INDEXARE nu se trimite nimic.
 import type { Env } from "./index";
 
