@@ -289,9 +289,9 @@ export async function raporteaza(env: Env, id: number, motiv: string, detalii: s
 /** Rulează zilnic: expirările, emailurile păstrate peste termen, limitele și neconfirmatele vechi. */
 export async function curatenie(env: Env): Promise<void> {
   const t = acum(), dupa = (zile: number) => new Date(Date.now() - zile * 86400000).toISOString();
-  // Cele care expiră acum și au JobPosting: Google le scoate din Google Jobs în aceeași zi. Cel mult 45:
+  // Cele care expiră acum: Google le scoate din Google Jobs în aceeași zi. Cel mult 45:
   // planul gratuit dă 50 de cereri externe pe rulare. Restul le găsește Google în sitemap-expirate.xml.
-  const expira = (await env.DB.prepare("SELECT id, slug FROM anunturi WHERE stare = 'activ' AND expira_la < ? AND angajator IS NOT NULL AND angajator <> '' LIMIT 45")
+  const expira = (await env.DB.prepare("SELECT id, slug FROM anunturi WHERE stare = 'activ' AND expira_la < ? LIMIT 45")
     .bind(t).all<{ id: number; slug: string }>()).results;
   await env.DB.batch([
     env.DB.prepare("UPDATE anunturi SET stare = 'expirat' WHERE stare = 'activ' AND expira_la < ?").bind(t),

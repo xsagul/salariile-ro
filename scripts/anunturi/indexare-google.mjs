@@ -53,4 +53,4 @@ for (const url of anunturi) {
   n++;
 }
 if (!proba) salveaza();
-console.log(`${proba ? "De trimis" : "Trimise"}: ${n}. Fără JobPosting (fără firmă), sărite: ${faraFirma}.`);
+console.log(`${proba ? "De trimis" : "Trimise"}: ${n}. Fără JobPosting, sărite: ${faraFirma}.`);

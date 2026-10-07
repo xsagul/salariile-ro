@@ -57,8 +57,8 @@ export async function api(req: Request, env: Env, ctx: ExecutionContext, cale: s
     if (!(await inLimita(env, v.anunt.email, ip))) return json({ erori: [{ camp: "general", mesaj: "Ai publicat multe anunțuri azi. Mai încearcă mâine." }] }, 429);
     const token = tokenNou();
     const a = await adauga(env, v.anunt, await localizeaza(v.anunt.adresa, v.anunt.oras, v.anunt.judet), token);
-    // Cu firma, anunțul are JobPosting și îl anunțăm direct la Google (google.ts).
-    if (v.anunt.angajator) ctx.waitUntil(anuntaGoogle(env, [urlAnunt(a)], "URL_UPDATED"));
+    // Orice anunț are JobPosting și îl anunțăm direct la Google (google.ts).
+    ctx.waitUntil(anuntaGoogle(env, [urlAnunt(a)], "URL_UPDATED"));
     const trimis = Boolean(v.anunt.email && env.EMAIL);
     if (trimis) ctx.waitUntil(trimite(env, v.anunt.email, `Anunțul „${v.anunt.titlu}” e publicat`,
       `Bună ziua,\n\nAnunțul „${v.anunt.titlu}” e publicat pe salariile.ro:\n${env.SITE}${urlAnunt(a)}\n\n` +
@@ -77,7 +77,7 @@ export async function api(req: Request, env: Env, ctx: ExecutionContext, cale: s
       case "prelungeste": await prelungeste(env, a.id); break;
       case "sterge":
         await sterge(env, a.id);
-        if (a.angajator) ctx.waitUntil(anuntaGoogle(env, [urlAnunt(a)], "URL_DELETED"));
+        ctx.waitUntil(anuntaGoogle(env, [urlAnunt(a)], "URL_DELETED"));
         return json({ ok: true, sters: true });
       case "modifica": {
         const v = valideaza({ ...(corp.date as Record<string, unknown>), email: a.email ?? "sters@salariile.ro", acordPublicare: true }, MESERII);
@@ -91,7 +91,7 @@ export async function api(req: Request, env: Env, ctx: ExecutionContext, cale: s
       default: return json({ eroare: "Acțiune necunoscută" }, 400);
     }
     const dupa = (await dupaId(env, a.id))!;
-    if (dupa.angajator && dupa.stare === "activ") ctx.waitUntil(anuntaGoogle(env, [urlAnunt(dupa)], "URL_UPDATED"));
+    if (dupa.stare === "activ") ctx.waitUntil(anuntaGoogle(env, [urlAnunt(dupa)], "URL_UPDATED"));
     return json({ ok: true, anunt: public_(dupa) });
   }
 

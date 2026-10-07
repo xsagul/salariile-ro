@@ -43,7 +43,7 @@ export const LIMITE = { titlu: [8, 90], angajator: [0, 120], oras: [2, 60], adre
 export type AnuntNou = {
   titlu: string;
   meserie: string;          // slug din src/lib/anunturi/meserii.ts sau "" (necompletat)
-  angajator: string;        // opțional; fără el anunțul nu intră în Google Jobs (JobPosting cere firma)
+  angajator: string;        // opțional; fără el JobPosting spune „confidential”, forma cerută de Google
   judet: string;            // cod din JUDETE
   oras: string;
   adresa?: string;          // strada și numărul: harta și sortarea după apropiere (opțională)
