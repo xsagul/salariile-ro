@@ -4966,3 +4966,11 @@ Aprobat de proprietar după verificarea de mai sus (punctele 1 și 2).
   Settings → Users and permissions, `gsc-reader@salariile-seo.iam.gserviceaccount.com` trebuie
   trecut de la „Full” la „Owner”. Agentul nu acordă permisiuni. După aceea:
   `node scripts/anunturi/indexare-google.mjs`, zilnic, până spune „nimic de trimis”.
+- **Făcut de proprietar tot pe 7 octombrie: contul de serviciu e Owner.** Răspunsul Google a trecut
+  la 404 „Requested entity was not found” (autorizat, fără notificări încă). Prima rulare a
+  `indexare-google.mjs`: 150 trimise, toate 200 (anunțurile 632–791), plus anunțurile 1–3, puse de
+  angajatori, trimise separat fiindcă sunt ultimele în sitemap. 153 în `.gsc/indexare-google.json`;
+  rămân 436, adică încă trei rulări zilnice. `urlNotifications/metadata` răspunde tot 404 imediat
+  după un `publish` reușit (răspunsul lui n-are `latestUpdate`), deci nu e o dovadă de înregistrare:
+  de recitit a doua zi, împreună cu `JOB_LISTING` din `gsc.mjs appearance`. Calea din Worker
+  (anunț nou din formular) nu s-a putut proba fără un anunț real.
