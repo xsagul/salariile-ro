@@ -4955,3 +4955,14 @@ Aprobat de proprietar după verificarea de mai sus (punctele 1 și 2).
   PC: patru coloane. `tsc` pe Worker, `test-anunturi`, `test-ui-contracts`, eslint: trec.
 - De recitit peste 3–5 zile: inspecția `/locuri-de-munca/barman` și `JOB_LISTING` în
   `gsc.mjs appearance`.
+- Publicat pe `main` (`2d2bece`), live în ~2 minute. Verificat pe salariile.ro: `/locuri-de-munca`
+  leagă 135 de liste, `/bucuresti` 94, `/barman` 59, `/bucuresti/barman` 20; anunțul 3 (Chi Lin-Bao
+  Bar, fără firmă) are JobPosting cu `confidential`; 15 liste legate, luate pe eșantion: toate 200
+  și `index, follow`.
+- Indexing API, tot pe 7 octombrie seara: „Web Search Indexing API” e activat în `salariile-seo`
+  (răspunsul a trecut de la `SERVICE_DISABLED` la „Failed to verify the URL ownership”). Secretul
+  `GOOGLE_INDEXARE` e pus pe Worker (`wrangler secret put`, din terminalul acesta: wrangler e
+  autentificat în contul site-ului). **Rămâne un singur pas, al proprietarului:** în Search Console,
+  Settings → Users and permissions, `gsc-reader@salariile-seo.iam.gserviceaccount.com` trebuie
+  trecut de la „Full” la „Owner”. Agentul nu acordă permisiuni. După aceea:
+  `node scripts/anunturi/indexare-google.mjs`, zilnic, până spune „nimic de trimis”.
