@@ -5006,3 +5006,21 @@ rămâne „Vezi anunțul”.
 Verificat local (`wrangler dev`): 375 px — bara la baza ecranului din prima clipă, butoane de 48 px,
 200 și 143 px lățime; 320 px — nimic tăiat, fără derulare pe orizontală, ultimul rând din subsol
 deasupra barei; 1024 px — `display: none`, fără spațiu în plus. `tsc` pe Worker trece.
+Publicat (`cc6735c` pe `main`) și verificat pe salariile.ro la 375 px, pe anunțul 3.
+
+## 7 octombrie 2026 — a apăsat cineva pe „Sună” sau pe WhatsApp?
+
+GA4, raportul Events, 29 septembrie – 7 octombrie (seara), evenimentul `contact_anunt`, înainte ca
+bara lipită jos să fi contat (publicată în aceeași seară):
+
+- 10 apăsări de la 6 utilizatori, **toate `whatsapp`, niciuna `apel`**, toate de pe telefon, România.
+- Pe zile: 4 octombrie 2, 5 octombrie 1, 6 octombrie 1, 7 octombrie 6. Încep odată cu primele
+  afișări ale anunțurilor în Google (3–4 octombrie).
+- Pe anunțuri: 581 asistent de cercetare Cluj-Napoca 3 (un utilizator), 3 Chi Lin-Bao Bar 3 (doi
+  utilizatori), 1 Michael's Bagels 1, 7 femeie de serviciu Slimnic 1, 790 îngrijitor de copii
+  Cluj-Napoca 1, 483 muncitor necalificat Sebeș 1.
+- Zero la `apel` nu e o eroare de măsurare: cu `gtag` înlocuit de un martor pe pagina live, clicul pe
+  fiecare dintre cele patru butoane (pagină și bară) cere `contact_anunt` cu `element` corect. Nu s-a
+  trimis nimic la GA4 din probă.
+- Limite: apăsările proprietarului de pe telefon nu se pot deosebi de ale candidaților; o apăsare nu
+  e un mesaj trimis. Tot în interval: `copiaza_link` 4, `search` 27 (11 utilizatori).
