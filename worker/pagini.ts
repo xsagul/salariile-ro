@@ -163,6 +163,8 @@ const D_LUPA = '<circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/>';
 const D_FILTRE = '<path d="M4 6h16M7 12h10M10 18h4"/>';
 const D_ORDINE = '<path d="M7 4v16M4 17l3 3 3-3M17 20V4M14 7l3-3 3 3"/>';
 const D_JOS = '<path d="M6 9l6 6 6-6"/>';
+const D_TELEFON = '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/>';
+const D_MESAJ = '<path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5z"/>';
 
 /**
  * Ordinea listei, ca în schița B: un singur buton „Cele mai noi ▾”. Primele două opțiuni sunt
@@ -640,6 +642,19 @@ export async function paginaAnunt(req: Request, env: Env, id: number, slug: stri
   const contact = tel ? `
     <a href="${linkApel(tel)}" class="flex min-h-12 items-center justify-center gap-2 rounded-md bg-stone-900 px-4 text-lg font-semibold text-white hover:bg-stone-700" data-contact="apel">Sună: ${telefonAfisat(tel)}</a>
     ${esteMobil(tel) ? `<a href="${esc(linkWhatsApp(tel, a.titlu))}" rel="noopener" target="_blank" class="mt-3 flex min-h-12 items-center justify-center gap-2 rounded-md border border-stone-300 bg-surface px-4 text-lg font-semibold text-stone-900 hover:border-stone-500" data-contact="whatsapp">Scrie pe WhatsApp</a>` : ""}` : "";
+  // Pe telefon, contactul stă lipit jos din prima clipă (proprietar, 7 octombrie 2026, ca pe
+  // anuntul.ro): până atunci numărul era sub descriere, la câteva ecrane de derulat. Aceleași linkuri
+  // și același `data-contact` ca butoanele din pagină, deci clicurile intră în același eveniment GA4.
+  // De la `lg` cardul de contact e sus, în coloana din dreapta, și bara dispare. Stă sub sertarul
+  // meniului (z-40/z-50); `body` primește loc jos cât bara, ca subsolul să nu rămână acoperit.
+  const baraContact = tel ? `
+    <style>@media (max-width: 1023.98px) { body { padding-bottom: 4.75rem; } }</style>
+    <div class="fixed inset-x-0 bottom-0 z-30 border-t border-stone-200 bg-canvas px-3 pt-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] lg:hidden" data-bara-contact>
+      <div class="mx-auto grid max-w-xl gap-2 ${esteMobil(tel) ? "grid-cols-[1.4fr_1fr]" : ""}">
+        <a href="${linkApel(tel)}" class="flex min-h-12 items-center justify-center gap-2 whitespace-nowrap rounded-md bg-stone-900 px-2 text-base font-semibold text-white" data-contact="apel" aria-label="Sună: ${telefonAfisat(tel)}">${SVG("size-5 shrink-0", D_TELEFON)}${telefonAfisat(tel)}</a>
+        ${esteMobil(tel) ? `<a href="${esc(linkWhatsApp(tel, a.titlu))}" rel="noopener" target="_blank" class="flex min-h-12 items-center justify-center gap-2 whitespace-nowrap rounded-md border border-stone-300 bg-surface px-2 text-base font-semibold text-stone-900" data-contact="whatsapp">${SVG("size-5 shrink-0", D_MESAJ)}WhatsApp</a>` : ""}
+      </div>
+    </div>` : "";
   // Locul: adresa, harta OpenStreetMap (fără cookies Google pe pagină) și linkuri spre Google Maps.
   const adresaText = [a.adresa, loc(a)].filter(Boolean).join(", ");
   const dest = a.adresa ? `${a.adresa}, ${oras(a)}` : oras(a);
@@ -708,7 +723,7 @@ export async function paginaAnunt(req: Request, env: Env, id: number, slug: stri
           <p class="text-sm text-stone-700">Țeapă, discriminare, salariu fals? <a class="font-semibold underline underline-offset-2" href="/locuri-de-munca/raporteaza#${a.id}">Raportează anunțul</a>. Verificăm fiecare raportare în cel mult 3 zile.</p>
         </div>
       </div>
-    </div>`;
+    </div>${baraContact}`;
 
   // JobPosting pentru Google Jobs: numai câmpurile pe care anunțul le are de fapt. Google cere
   // firma (hiringOrganization); pentru anunțul fără numele ei, care e opțional, documentația Google
