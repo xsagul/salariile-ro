@@ -14,6 +14,8 @@ Site-ul ofera calculatoare si ghiduri actualizate pentru salariu net/brut, salar
 - [Calculator taxe PFA](https://salariile.ro/calculator-pfa)
 - [Generator fluturas salariu](https://salariile.ro/fluturas-salariu)
 - [Zile libere si lucratoare 2026](https://salariile.ro/zile-libere-2026)
+- [Locuri de munca in Romania – anunturi cu salariul afisat](https://salariile.ro/locuri-de-munca)
+- [Publica gratuit un anunt de angajare – fara cont](https://salariile.ro/adauga-anunt-angajare)
 
 ## Ce contine proiectul
 
