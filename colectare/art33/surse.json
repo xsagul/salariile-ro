@@ -29,10 +29,10 @@
    "tip": "spital",
    "judet": "BC",
    "pagina": "https://www.spitaluljudeteanbacau.ro/transparenta-venituri-salariale/",
-   "fisier": "https://www.spitaluljudeteanbacau.ro/storage/2025/11/Salarii-Septembrie-2025.pdf",
+   "fisier": "https://www.spitaluljudeteanbacau.ro/wp-content/uploads/2025/11/Salarii-Septembrie-2025.pdf",
    "perioada": "2025-09",
    "format": "pdf cu text; multe coloane de sporuri",
-   "gasitLa": "2026-10-02"
+   "gasitLa": "2026-10-08"
   },
   {
    "id": "sju-gorj",
@@ -409,9 +409,9 @@
    "tip": "spital",
    "judet": "CJ",
    "pagina": "https://spitalturda.ro/index.php/transparenta-veniturilor-salariale/",
-   "fisier": "https://spitalturda.ro/wp-content/uploads/2026/03/transparenta-veniturilor-salariale-2026_03.xlsx",
-   "perioada": "2026-03",
-   "gasitLa": "2026-09-25"
+   "fisier": "https://spitalturda.ro/wp-content/uploads/2026/10/transparenta-veniturilor-salariale-2026_09.xlsx",
+   "perioada": "2026-10",
+   "gasitLa": "2026-10-08"
   },
   {
    "id": "sp-titan",
@@ -581,9 +581,9 @@
    "tip": "dsp",
    "judet": "PH",
    "pagina": "https://www.dspph.ro/transparenta-veniturilor-salariale-2026/",
-   "fisier": "https://www.dspph.ro/wp-content/uploads/2026/04/VENITURI-SALARIALE-31.03.2026-1.pdf",
-   "perioada": "2026-03",
-   "gasitLa": "2026-09-26"
+   "fisier": "https://www.dspph.ro/wp-content/uploads/2026/04/VENITURI-SALARIALE-30.09.2026.pdf",
+   "perioada": "2026-09",
+   "gasitLa": "2026-10-08"
   },
   {
    "id": "dsp-braila",

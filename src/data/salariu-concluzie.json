@@ -1,17 +1,17 @@
 {
- "generatLa": "2026-10-08T01:07:44.922Z",
+ "generatLa": "2026-10-08T12:53:15.925Z",
  "oferteAnofm": 9078,
  "meserii": {
   "medic": {
    "sursa": "platit",
-   "net": 10086,
+   "net": 10084,
    "interval": [
     7513,
     12113
    ],
    "platit": {
-    "net": 10086,
-    "randuri": 3307,
+    "net": 10084,
+    "randuri": 3308,
     "institutii": 21,
     "judete": 17,
     "perioade": [
@@ -20,7 +20,8 @@
      "2026-02",
      "2026-03",
      "2026-08",
-     "2026-09"
+     "2026-09",
+     "2026-10"
     ],
     "surse": [
      "Direcția de Asistență Socială Brașov",
@@ -47,7 +48,7 @@
     ],
     "debutant": null,
     "cuVariabil": {
-     "net": 10392,
+     "net": 10323,
      "cota": 0.31
     },
     "studii": {
@@ -56,23 +57,23 @@
     "peVechime": [
      {
       "gradatie": 2,
-      "randuri": 356,
+      "randuri": 358,
       "net": 8368
      },
      {
       "gradatie": 3,
-      "randuri": 396,
+      "randuri": 395,
       "net": 10451
      },
      {
       "gradatie": 4,
-      "randuri": 328,
+      "randuri": 329,
       "net": 11340
      },
      {
       "gradatie": 5,
-      "randuri": 1355,
-      "net": 10695
+      "randuri": 1353,
+      "net": 10676
      }
     ],
     "peJudet": [
@@ -156,9 +157,9 @@
      },
      {
       "judet": "Cluj",
-      "randuri": 139,
+      "randuri": 140,
       "institutii": 2,
-      "net": 8891
+      "net": 8923
      }
     ]
    },
@@ -170,12 +171,12 @@
    "sursa": "platit",
    "net": 5808,
    "interval": [
-    4899,
+    4881,
     7087
    ],
    "platit": {
     "net": 5808,
-    "randuri": 3940,
+    "randuri": 3939,
     "institutii": 15,
     "judete": 13,
     "perioade": [
@@ -183,7 +184,8 @@
      "2026-02",
      "2026-03",
      "2026-08",
-     "2026-09"
+     "2026-09",
+     "2026-10"
     ],
     "surse": [
      "Direcția de Sănătate Publică Brăila",
@@ -204,7 +206,7 @@
     ],
     "debutant": null,
     "cuVariabil": {
-     "net": 8052,
+     "net": 8372,
      "cota": 0.06
     },
     "studii": {
@@ -218,7 +220,7 @@
      },
      {
       "gradatie": 1,
-      "randuri": 717,
+      "randuri": 716,
       "net": 6088
      },
      {
@@ -286,16 +288,16 @@
       "net": 5806
      },
      {
-      "judet": "Cluj",
-      "randuri": 68,
-      "institutii": 2,
-      "net": 5738
-     },
-     {
       "judet": "Sibiu",
       "randuri": 595,
       "institutii": 1,
       "net": 5035
+     },
+     {
+      "judet": "Cluj",
+      "randuri": 67,
+      "institutii": 2,
+      "net": 4214
      }
     ]
    },
@@ -305,14 +307,14 @@
   },
   "asistent-medical": {
    "sursa": "platit",
-   "net": 4677,
+   "net": 4676,
    "interval": [
-    4188,
+    4179,
     5514
    ],
    "platit": {
-    "net": 4677,
-    "randuri": 7596,
+    "net": 4676,
+    "randuri": 7598,
     "institutii": 17,
     "judete": 16,
     "perioade": [
@@ -320,7 +322,8 @@
      "2026-02",
      "2026-03",
      "2026-08",
-     "2026-09"
+     "2026-09",
+     "2026-10"
     ],
     "surse": [
      "Direcția de Asistență Socială Brașov",
@@ -348,15 +351,15 @@
     },
     "studii": {
      "S": 4810,
-     "SSD": 4397,
+     "SSD": 4495,
      "PL": 4600,
      "M": 5537
     },
     "peVechime": [
      {
       "gradatie": 0,
-      "randuri": 100,
-      "net": 3793
+      "randuri": 101,
+      "net": 3893
      },
      {
       "gradatie": 1,
@@ -365,8 +368,8 @@
      },
      {
       "gradatie": 2,
-      "randuri": 555,
-      "net": 4378
+      "randuri": 556,
+      "net": 4482
      },
      {
       "gradatie": 3,
@@ -375,12 +378,12 @@
      },
      {
       "gradatie": 4,
-      "randuri": 590,
-      "net": 5039
+      "randuri": 588,
+      "net": 4936
      },
      {
       "gradatie": 5,
-      "randuri": 3371,
+      "randuri": 3373,
       "net": 4797
      }
     ],
@@ -435,7 +438,7 @@
      },
      {
       "judet": "Cluj",
-      "randuri": 268,
+      "randuri": 270,
       "institutii": 2,
       "net": 4677
      },
@@ -484,7 +487,8 @@
      "2026-02",
      "2026-03",
      "2026-08",
-     "2026-09"
+     "2026-09",
+     "2026-10"
     ],
     "surse": [
      "Direcția de Sănătate Publică Brăila",
@@ -520,17 +524,17 @@
      {
       "gradatie": 3,
       "randuri": 56,
-      "net": 3551
+      "net": 3562
      },
      {
       "gradatie": 4,
-      "randuri": 68,
-      "net": 3635
+      "randuri": 67,
+      "net": 3603
      },
      {
       "gradatie": 5,
-      "randuri": 226,
-      "net": 3671
+      "randuri": 227,
+      "net": 3688
      }
     ],
     "peJudet": [
@@ -568,7 +572,7 @@
       "judet": "Cluj",
       "randuri": 35,
       "institutii": 2,
-      "net": 3551
+      "net": 3562
      },
      {
       "judet": "Harghita",
@@ -591,14 +595,15 @@
    ],
    "platit": {
     "net": 6155,
-    "randuri": 49,
+    "randuri": 50,
     "institutii": 9,
     "judete": 8,
     "perioade": [
      "2025-09",
      "2026-02",
      "2026-03",
-     "2026-09"
+     "2026-09",
+     "2026-10"
     ],
     "surse": [
      "Spitalul Clinic Județean de Urgență Cluj-Napoca",
@@ -614,7 +619,7 @@
     "debutant": null,
     "cuVariabil": {
      "net": 6552,
-     "cota": 0.43
+     "cota": 0.42
     },
     "studii": {},
     "peVechime": [],
@@ -639,7 +644,8 @@
     "perioade": [
      "2026-02",
      "2026-03",
-     "2026-09"
+     "2026-09",
+     "2026-10"
     ],
     "surse": [
      "Spitalul Clinic Județean de Urgență Bihor",
@@ -671,21 +677,22 @@
   },
   "psiholog": {
    "sursa": "platit",
-   "net": 6314,
+   "net": 6232,
    "interval": [
-    5022,
-    6934
+    4530,
+    6824
    ],
    "platit": {
-    "net": 6314,
-    "randuri": 109,
-    "institutii": 18,
+    "net": 6232,
+    "randuri": 110,
+    "institutii": 19,
     "judete": 14,
     "perioade": [
      "2025-09",
      "2026-02",
      "2026-03",
-     "2026-09"
+     "2026-09",
+     "2026-10"
     ],
     "surse": [
      "Curtea de Apel Târgu Mureş",
@@ -704,6 +711,7 @@
      "Spitalul Județean de Urgență Bacău",
      "Spitalul Județean de Urgență Buzău",
      "Spitalul Județean de Urgență Miercurea Ciuc",
+     "Spitalul Municipal Turda",
      "Universitatea Transilvania din Brașov",
      "Universitatea de Medicină, Farmacie, Științe și Tehnologie Târgu Mureș"
     ],
@@ -741,7 +749,8 @@
      "2026-02",
      "2026-03",
      "2026-08",
-     "2026-09"
+     "2026-09",
+     "2026-10"
     ],
     "surse": [
      "Spitalul Clinic Județean de Urgență Bihor",
@@ -785,7 +794,8 @@
      "2026-02",
      "2026-03",
      "2026-08",
-     "2026-09"
+     "2026-09",
+     "2026-10"
     ],
     "surse": [
      "Direcția de Asistență Socială Brașov",
@@ -838,7 +848,7 @@
    ],
    "platit": {
     "net": 3676,
-    "randuri": 2942,
+    "randuri": 2941,
     "institutii": 17,
     "judete": 15,
     "perioade": [
@@ -846,7 +856,8 @@
      "2026-02",
      "2026-03",
      "2026-08",
-     "2026-09"
+     "2026-09",
+     "2026-10"
     ],
     "surse": [
      "Direcția de Asistență Socială Brașov",
@@ -869,7 +880,7 @@
     ],
     "debutant": 3459,
     "cuVariabil": {
-     "net": 4150,
+     "net": 4152,
      "cota": 0.91
     },
     "studii": {
@@ -883,17 +894,17 @@
      },
      {
       "gradatie": 3,
-      "randuri": 237,
+      "randuri": 236,
       "net": 3618
      },
      {
       "gradatie": 4,
-      "randuri": 290,
+      "randuri": 293,
       "net": 3650
      },
      {
       "gradatie": 5,
-      "randuri": 1485,
+      "randuri": 1482,
       "net": 3808
      }
     ],
@@ -972,9 +983,9 @@
      },
      {
       "judet": "Cluj",
-      "randuri": 155,
+      "randuri": 154,
       "institutii": 2,
-      "net": 3536
+      "net": 3547
      },
      {
       "judet": "Brașov",
@@ -1009,7 +1020,7 @@
    ],
    "platit": {
     "net": 5233,
-    "randuri": 274,
+    "randuri": 277,
     "institutii": 15,
     "judete": 14,
     "perioade": [
@@ -1017,7 +1028,8 @@
      "2026-02",
      "2026-03",
      "2026-08",
-     "2026-09"
+     "2026-09",
+     "2026-10"
     ],
     "surse": [
      "Serviciul de Ambulanță Județean Neamț",
@@ -1049,7 +1061,7 @@
      },
      {
       "gradatie": 5,
-      "randuri": 151,
+      "randuri": 152,
       "net": 5404
      }
     ],
@@ -1089,6 +1101,12 @@
       "randuri": 29,
       "institutii": 1,
       "net": 4934
+     },
+     {
+      "judet": "Cluj",
+      "randuri": 22,
+      "institutii": 2,
+      "net": 4758
      },
      {
       "judet": "Brăila",
@@ -1326,7 +1344,8 @@
     "judete": 5,
     "perioade": [
      "2026-03",
-     "2026-09"
+     "2026-09",
+     "2026-10"
     ],
     "surse": [
      "Spitalul Clinic Județean de Urgență Bihor",
@@ -1338,7 +1357,7 @@
     "debutant": null,
     "cuVariabil": {
      "net": 4061,
-     "cota": 0.91
+     "cota": 0.85
     },
     "studii": {},
     "peVechime": [
@@ -1367,12 +1386,13 @@
    "interval": null,
    "platit": {
     "net": 3551,
-    "randuri": 36,
+    "randuri": 35,
     "institutii": 6,
     "judete": 6,
     "perioade": [
      "2026-03",
-     "2026-09"
+     "2026-09",
+     "2026-10"
     ],
     "surse": [
      "Spitalul Clinic Județean de Urgență Bihor",
@@ -1385,7 +1405,7 @@
     "debutant": null,
     "cuVariabil": {
      "net": 3992,
-     "cota": 0.81
+     "cota": 0.8
     },
     "studii": {},
     "peVechime": [
@@ -1461,8 +1481,8 @@
    "interval": null,
    "platit": {
     "net": 3981,
-    "randuri": 36,
-    "institutii": 13,
+    "randuri": 35,
+    "institutii": 12,
     "judete": 12,
     "perioade": [
      "2025-09",
@@ -1482,7 +1502,6 @@
      "Spitalul Județean de Urgență Alba Iulia",
      "Spitalul Județean de Urgență Bacău",
      "Spitalul Județean de Urgență Buzău",
-     "Spitalul Municipal Turda",
      "Spitalul Orășenesc Negrești-Oaș",
      "Universitatea Națională de Arte București"
     ],
@@ -1584,7 +1603,8 @@
     "judete": 5,
     "perioade": [
      "2026-03",
-     "2026-09"
+     "2026-09",
+     "2026-10"
     ],
     "surse": [
      "Spitalul Clinic Județean de Urgență Bihor",
@@ -1719,7 +1739,8 @@
      "2026-02",
      "2026-03",
      "2026-08",
-     "2026-09"
+     "2026-09",
+     "2026-10"
     ],
     "surse": [
      "Direcția de Asistență Socială Brașov",

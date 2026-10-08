@@ -61,11 +61,11 @@
  },
  "sju-bacau": {
   "stare": "acceptat",
-  "fisier": "https://www.spitaluljudeteanbacau.ro/storage/2025/11/Salarii-Septembrie-2025.pdf",
+  "fisier": "https://www.spitaluljudeteanbacau.ro/wp-content/uploads/2025/11/Salarii-Septembrie-2025.pdf",
   "perioada": "2025-09",
   "sha256": "959db56e25829d5a4e6774c97ed709466fb456ea80d6f0cd4dcc3e4059ec44c3",
   "bytes": 2735273,
-  "cititLa": "2026-10-02",
+  "cititLa": "2026-10-08",
   "randuri": 1750,
   "valide": 1718,
   "peMeserie": {
@@ -531,29 +531,29 @@
  },
  "sm-turda": {
   "stare": "acceptat",
-  "fisier": "https://spitalturda.ro/wp-content/uploads/2026/03/transparenta-veniturilor-salariale-2026_03.xlsx",
-  "perioada": "2026-03",
-  "sha256": "8d4dda56697a3a6dce13f80b16fe45362944c935d76e547e08f2373b505d6bcf",
-  "bytes": 55699,
-  "cititLa": "2026-09-28",
-  "randuri": 265,
-  "valide": 265,
+  "fisier": "https://spitalturda.ro/wp-content/uploads/2026/10/transparenta-veniturilor-salariale-2026_09.xlsx",
+  "perioada": "2026-10",
+  "sha256": "34665c40cf3f4057b21cfe3716cc984a08c455b0974aae40169efafd959d9cc3",
+  "bytes": 56486,
+  "cititLa": "2026-10-08",
+  "randuri": 275,
+  "valide": 275,
   "peMeserie": {
-   "medic": 96,
-   "asistent-medical": 35,
-   "infirmier": 82,
-   "medic-rezident": 18,
+   "medic": 107,
+   "asistent-medical": 37,
+   "infirmier": 81,
+   "medic-rezident": 13,
+   "psiholog": 1,
    "asistent-social": 2,
    "registrator-medical": 4,
-   "bucatar": 1,
-   "farmacist": 1,
+   "farmacist": 2,
    "asistent-farmacie": 3,
    "kinetoterapeut": 1,
    "fizioterapeut": 2,
-   "economist": 12,
+   "economist": 15,
    "electrician": 3,
-   "instalator": 4,
-   "magaziner": 1
+   "instalator": 3,
+   "bucatar": 1
   },
   "coloaneNecunoscute": [
    "Anexa 1",
@@ -910,7 +910,7 @@
  },
  "dsp-prahova": {
   "stare": "fără rânduri (scanat sau alt format)",
-  "sha256": "e0cc749955ddfbf8cd0b17f830fe212911784d1a54770bfd81b700d43a507bda"
+  "sha256": "644aeab332da51a01f8747b0f9fdef0ace0a631eab28179dec5187bfcae1f5a7"
  },
  "dsp-braila": {
   "stare": "acceptat",
@@ -1411,8 +1411,7 @@
   "stare": "eroare: HTTP 403"
  },
  "ca-galati": {
-  "stare": "fără rânduri (scanat sau alt format)",
-  "sha256": "90c2fcd4e6ad9c5019c528e41d1778e4281ba1afe6e449f391781c019cd6a7f0"
+  "stare": "eroare: The operation was aborted due to timeout"
  },
  "ca-pitesti": {
   "stare": "fără rânduri (scanat sau alt format)",
@@ -1470,8 +1469,7 @@
   ]
  },
  "tb-vrancea": {
-  "stare": "fără rânduri (scanat sau alt format)",
-  "sha256": "db96c5bc3b1856d957a77c09bc748b6ba5ea8f7070d9f1f7acfd9aa8863adca2"
+  "stare": "eroare: The operation was aborted due to timeout"
  },
  "tb-ilfov": {
   "stare": "fără rânduri (scanat sau alt format)",
@@ -1560,8 +1558,7 @@
   "sha256": "4dc6e8f9f10eef5a90040faf0d65732d7c91fee9a71121ab57506401fddc8f9b"
  },
  "tb-arad": {
-  "stare": "fără rânduri (scanat sau alt format)",
-  "sha256": "f9c41c03547137b341b25527047380931f6eee54261ca134ff9e520a63f591a0"
+  "stare": "eroare: The operation was aborted due to timeout"
  },
  "tb-braila": {
   "stare": "fără rânduri (scanat sau alt format)",
@@ -1572,24 +1569,21 @@
   "sha256": "b219e40a4b419100c2165cc0dd09c1779cdb62f606aef9aa946512ddd66d98b5"
  },
  "tb-calarasi": {
-  "stare": "fără rânduri (scanat sau alt format)",
-  "sha256": "072e0acd41e1d02e17eea9aac6e4effa688159f79eb3dbd88524856c05115336"
+  "stare": "eroare: The operation was aborted due to timeout"
  },
  "tb-cluj": {
   "stare": "fără rânduri (scanat sau alt format)",
   "sha256": "acec512e016ac0f4e1fcd4acafec0d74cfcd273c3c4642c945385db0e8d37031"
  },
  "tb-constanta": {
-  "stare": "fără rânduri (scanat sau alt format)",
-  "sha256": "8480a0c75e9c9d6da909a10833824194fd99327755f620450113a55f767602ae"
+  "stare": "eroare: The operation was aborted due to timeout"
  },
  "tb-giurgiu": {
   "stare": "fără rânduri (scanat sau alt format)",
   "sha256": "2890e5cc54f7223127dbae8a4be5c639890c2dd57f851db4df5f3ebb2e47bd71"
  },
  "jud-constanta": {
-  "stare": "fără rânduri (scanat sau alt format)",
-  "sha256": "e009e0b44bf4cedf0ac6211915c323707dbbd9f803cf158ef2ff87536ac3a083"
+  "stare": "eroare: The operation was aborted due to timeout"
  },
  "jud-galati": {
   "stare": "fără rânduri (scanat sau alt format)",
@@ -1600,12 +1594,10 @@
   "sha256": "d42e7b3104fa5f0d14235890d75a345a82fe158b0fd982ccc0bbbe4be8cf7a7b"
  },
  "jud-medgidia": {
-  "stare": "fără rânduri (scanat sau alt format)",
-  "sha256": "edb7cce23002870cb787fa6cbbfdfb10aa14b2fdb070489bc606487c656fca85"
+  "stare": "eroare: The operation was aborted due to timeout"
  },
  "jud-tulcea": {
-  "stare": "fără rânduri (scanat sau alt format)",
-  "sha256": "58612912f25c8e41480cd2b286cb6e4a64c5d2a036e2ce4e1687a3707c399632"
+  "stare": "eroare: The operation was aborted due to timeout"
  },
  "tn-iasi": {
   "stare": "eroare: HTTP 404"
