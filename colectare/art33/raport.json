@@ -718,32 +718,29 @@
  },
  "scpn-brasov": {
   "stare": "acceptat",
-  "fisier": "https://www.scpnbv.ro/wp-content/uploads/2026/04/Transparenta-veniturilor-salariale-martie-2026.pdf",
-  "perioada": "2026-03",
-  "sha256": "5a022301777275d9df8f88a5d4c7ca25af5d85be264464f820742ec676cc5bf7",
-  "bytes": 8741913,
-  "cititLa": "2026-09-28",
-  "randuri": 135,
-  "valide": 132,
+  "fisier": "https://www.scpnbv.ro/wp-content/uploads/2026/10/Transparenta-veniturilor-salariale-septembrie-2026.pdf",
+  "perioada": "2026-09",
+  "sha256": "709037fefd7584664deb5f23e26ed8e656a0994b714e4944f922656434d697b3",
+  "bytes": 971116,
+  "cititLa": "2026-10-09",
+  "randuri": 240,
+  "valide": 240,
   "peMeserie": {
    "bucatar": 5,
-   "economist": 6,
-   "farmacist": 1,
+   "economist": 12,
+   "farmacist": 5,
    "fizioterapeut": 6,
-   "infirmier": 27,
+   "infirmier": 100,
    "instalator": 2,
    "kinetoterapeut": 1,
-   "magaziner": 3,
-   "medic": 32,
-   "medic-rezident": 39,
-   "psiholog": 13
+   "magaziner": 2,
+   "medic": 46,
+   "medic-rezident": 47,
+   "psiholog": 13,
+   "sofer-ambulanta": 1
   },
   "coloaneNecunoscute": [
-   "Tel. e-mail: Crt",
-   "JUDETEAN BRASOV DE PSIHIATRIE 7-9, 500123 0724224015; Fax. relatiicupublicul@spnbrasov.ro Gradatia",
-   "NEUROLOGIE 0268/410205;",
-   "VENITURILOR SALARIALE 153/2017 de din de pt.",
-   "Stimulent financiare HCJ / 31.07.202"
+   "Nr. Crt"
   ]
  },
  "scju-braila": {
@@ -892,20 +889,26 @@
   ]
  },
  "dsp-bucuresti": {
-  "stare": "acceptat",
-  "fisier": "https://dspb.ro/pdf/salarii/2026/VENITURI-SALARIALE-MARTIE-2026.pdf",
-  "perioada": "2025-08",
-  "sha256": "422cf1f347a72e61cc542a8d7863907fc91077e9c96689e3e453374a43b91cb6",
-  "bytes": 810923,
-  "cititLa": "2026-09-28",
-  "randuri": 17,
-  "valide": 17,
+  "stare": "de verificat: baza ghicită la peste 30% din rânduri",
+  "fisier": "https://dspb.ro/pdf/09.10.2026/VENITURI%20SALARIALE%20SEPTEMBRIE%202026.PDF",
+  "perioada": "2026-09",
+  "sha256": "8b03ca842dfea60cb83ab3c79ee6d5678984bac5cc568d49883ba1958eee2ab9",
+  "bytes": 759311,
+  "cititLa": "2026-10-09",
+  "randuri": 27,
+  "valide": 27,
   "peMeserie": {
-   "medic": 17
+   "asistent-medical": 2,
+   "farmacist": 1,
+   "infirmier": 2,
+   "medic": 20,
+   "registrator-medical": 2
   },
   "coloaneNecunoscute": [
-   "Nr. Crt. ,J. 2",
-   "Grad Functie Gradatia DIRECTOR EXECUTIV r/s MEDIC SEF t/s"
+   "Nr. Crt. 1 2 3",
+   "Grad Functie Gradatia )IRECTOR EXECUTIV t/s VIEDIC SEF /s ;EF COMPARTIMENT /s",
+   "Jatat lut ut udz, conform Legii / cadru nr.l53/2017 luna august L4721 L8467 L8467",
+   "conform ipor ha ndica conform h Hotararii 7su20t8 0 0 0"
   ]
  },
  "dsp-prahova": {
@@ -1411,7 +1414,8 @@
   "stare": "eroare: HTTP 403"
  },
  "ca-galati": {
-  "stare": "eroare: The operation was aborted due to timeout"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "90c2fcd4e6ad9c5019c528e41d1778e4281ba1afe6e449f391781c019cd6a7f0"
  },
  "ca-pitesti": {
   "stare": "fără rânduri (scanat sau alt format)",
@@ -1469,7 +1473,8 @@
   ]
  },
  "tb-vrancea": {
-  "stare": "eroare: The operation was aborted due to timeout"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "db96c5bc3b1856d957a77c09bc748b6ba5ea8f7070d9f1f7acfd9aa8863adca2"
  },
  "tb-ilfov": {
   "stare": "fără rânduri (scanat sau alt format)",
@@ -1558,7 +1563,8 @@
   "sha256": "4dc6e8f9f10eef5a90040faf0d65732d7c91fee9a71121ab57506401fddc8f9b"
  },
  "tb-arad": {
-  "stare": "eroare: The operation was aborted due to timeout"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "f9c41c03547137b341b25527047380931f6eee54261ca134ff9e520a63f591a0"
  },
  "tb-braila": {
   "stare": "fără rânduri (scanat sau alt format)",
@@ -1569,21 +1575,24 @@
   "sha256": "b219e40a4b419100c2165cc0dd09c1779cdb62f606aef9aa946512ddd66d98b5"
  },
  "tb-calarasi": {
-  "stare": "eroare: The operation was aborted due to timeout"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "072e0acd41e1d02e17eea9aac6e4effa688159f79eb3dbd88524856c05115336"
  },
  "tb-cluj": {
   "stare": "fără rânduri (scanat sau alt format)",
   "sha256": "acec512e016ac0f4e1fcd4acafec0d74cfcd273c3c4642c945385db0e8d37031"
  },
  "tb-constanta": {
-  "stare": "eroare: The operation was aborted due to timeout"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "8480a0c75e9c9d6da909a10833824194fd99327755f620450113a55f767602ae"
  },
  "tb-giurgiu": {
   "stare": "fără rânduri (scanat sau alt format)",
   "sha256": "2890e5cc54f7223127dbae8a4be5c639890c2dd57f851db4df5f3ebb2e47bd71"
  },
  "jud-constanta": {
-  "stare": "eroare: The operation was aborted due to timeout"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "e009e0b44bf4cedf0ac6211915c323707dbbd9f803cf158ef2ff87536ac3a083"
  },
  "jud-galati": {
   "stare": "fără rânduri (scanat sau alt format)",
@@ -1594,10 +1603,12 @@
   "sha256": "d42e7b3104fa5f0d14235890d75a345a82fe158b0fd982ccc0bbbe4be8cf7a7b"
  },
  "jud-medgidia": {
-  "stare": "eroare: The operation was aborted due to timeout"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "edb7cce23002870cb787fa6cbbfdfb10aa14b2fdb070489bc606487c656fca85"
  },
  "jud-tulcea": {
-  "stare": "eroare: The operation was aborted due to timeout"
+  "stare": "fără rânduri (scanat sau alt format)",
+  "sha256": "58612912f25c8e41480cd2b286cb6e4a64c5d2a036e2ce4e1687a3707c399632"
  },
  "tn-iasi": {
   "stare": "eroare: HTTP 404"
@@ -1860,7 +1871,6 @@
   "sha256": "420ae14245cc467297c6e3f8eb826998fa64a737ce4eee9f3b6d7a4864ccaf79"
  },
  "cj-constanta": {
-  "stare": "fără rânduri (scanat sau alt format)",
-  "sha256": "1d85ac6a28ea839028731d4ad56a9dcb4ade30c7fe3e5703ecf66a20352372d4"
+  "stare": "eroare: fetch failed"
  }
 }

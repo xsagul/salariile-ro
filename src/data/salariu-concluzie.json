@@ -1,21 +1,20 @@
 {
- "generatLa": "2026-10-09T01:19:59.348Z",
+ "generatLa": "2026-10-09T12:20:14.464Z",
  "oferteAnofm": 9078,
  "meserii": {
   "medic": {
    "sursa": "platit",
-   "net": 10084,
+   "net": 10086,
    "interval": [
-    7513,
-    12113
+    7528,
+    12305
    ],
    "platit": {
-    "net": 10084,
-    "randuri": 3308,
-    "institutii": 21,
+    "net": 10086,
+    "randuri": 3303,
+    "institutii": 20,
     "judete": 17,
     "perioade": [
-     "2025-08",
      "2025-09",
      "2026-02",
      "2026-03",
@@ -26,7 +25,6 @@
     "surse": [
      "Direcția de Asistență Socială Brașov",
      "Direcția de Sănătate Publică Brăila",
-     "Direcția de Sănătate Publică București",
      "Direcția de Sănătate Publică Vaslui",
      "Serviciul de Ambulanță Județean Neamț",
      "Spitalul Clinic Județean de Urgență Bihor",
@@ -48,8 +46,8 @@
     ],
     "debutant": null,
     "cuVariabil": {
-     "net": 10323,
-     "cota": 0.31
+     "net": 11592,
+     "cota": 0.32
     },
     "studii": {
      "S": 10244
@@ -57,23 +55,23 @@
     "peVechime": [
      {
       "gradatie": 2,
-      "randuri": 358,
-      "net": 8368
+      "randuri": 352,
+      "net": 8694
      },
      {
       "gradatie": 3,
-      "randuri": 395,
-      "net": 10451
+      "randuri": 399,
+      "net": 10812
      },
      {
       "gradatie": 4,
-      "randuri": 329,
-      "net": 11340
+      "randuri": 327,
+      "net": 11371
      },
      {
       "gradatie": 5,
-      "randuri": 1353,
-      "net": 10676
+      "randuri": 1352,
+      "net": 10948
      }
     ],
     "peJudet": [
@@ -82,6 +80,12 @@
       "randuri": 496,
       "institutii": 1,
       "net": 12736
+     },
+     {
+      "judet": "București",
+      "randuri": 42,
+      "institutii": 1,
+      "net": 11837
      },
      {
       "judet": "Bacău",
@@ -126,14 +130,8 @@
       "net": 10297
      },
      {
-      "judet": "București",
-      "randuri": 59,
-      "institutii": 2,
-      "net": 10289
-     },
-     {
       "judet": "Brașov",
-      "randuri": 32,
+      "randuri": 44,
       "institutii": 2,
       "net": 10086
      },
@@ -172,11 +170,11 @@
    "net": 5808,
    "interval": [
     4881,
-    7087
+    7098
    ],
    "platit": {
     "net": 5808,
-    "randuri": 3939,
+    "randuri": 3947,
     "institutii": 15,
     "judete": 13,
     "perioade": [
@@ -206,7 +204,7 @@
     ],
     "debutant": null,
     "cuVariabil": {
-     "net": 8372,
+     "net": 8627,
      "cota": 0.06
     },
     "studii": {
@@ -215,17 +213,17 @@
     "peVechime": [
      {
       "gradatie": 0,
-      "randuri": 1289,
-      "net": 5191
+      "randuri": 1297,
+      "net": 5335
      },
      {
       "gradatie": 1,
-      "randuri": 716,
+      "randuri": 724,
       "net": 6088
      },
      {
       "gradatie": 2,
-      "randuri": 706,
+      "randuri": 714,
       "net": 6748
      },
      {
@@ -235,7 +233,7 @@
      },
      {
       "gradatie": 4,
-      "randuri": 31,
+      "randuri": 32,
       "net": 6777
      },
      {
@@ -245,12 +243,6 @@
      }
     ],
     "peJudet": [
-     {
-      "judet": "Brașov",
-      "randuri": 38,
-      "institutii": 1,
-      "net": 6449
-     },
      {
       "judet": "Constanța",
       "randuri": 915,
@@ -274,6 +266,12 @@
       "randuri": 758,
       "institutii": 1,
       "net": 5899
+     },
+     {
+      "judet": "Brașov",
+      "randuri": 46,
+      "institutii": 1,
+      "net": 5835
      },
      {
       "judet": "Brăila",
@@ -588,14 +586,14 @@
   },
   "farmacist": {
    "sursa": "platit",
-   "net": 6155,
+   "net": 6170,
    "interval": [
     5161,
-    6737
+    6829
    ],
    "platit": {
-    "net": 6155,
-    "randuri": 50,
+    "net": 6170,
+    "randuri": 54,
     "institutii": 9,
     "judete": 8,
     "perioade": [
@@ -619,7 +617,7 @@
     "debutant": null,
     "cuVariabil": {
      "net": 6552,
-     "cota": 0.42
+     "cota": 0.39
     },
     "studii": {},
     "peVechime": [],
@@ -684,7 +682,7 @@
    ],
    "platit": {
     "net": 6232,
-    "randuri": 110,
+    "randuri": 112,
     "institutii": 19,
     "judete": 14,
     "perioade": [
@@ -723,7 +721,7 @@
     "peVechime": [
      {
       "gradatie": 5,
-      "randuri": 44,
+      "randuri": 46,
       "net": 6426
      }
     ],
@@ -735,13 +733,13 @@
   },
   "fizioterapeut": {
    "sursa": "platit",
-   "net": 4968,
+   "net": 4886,
    "interval": [
     4250,
     5781
    ],
    "platit": {
-    "net": 4968,
+    "net": 4886,
     "randuri": 50,
     "institutii": 11,
     "judete": 10,
@@ -782,7 +780,7 @@
    "net": 5428,
    "interval": [
     5043,
-    5870
+    5948
    ],
    "platit": {
     "net": 5428,
@@ -843,12 +841,12 @@
    "sursa": "platit",
    "net": 3676,
    "interval": [
-    3518,
-    4080
+    3523,
+    4009
    ],
    "platit": {
     "net": 3676,
-    "randuri": 2941,
+    "randuri": 3015,
     "institutii": 17,
     "judete": 15,
     "perioade": [
@@ -880,7 +878,7 @@
     ],
     "debutant": 3459,
     "cuVariabil": {
-     "net": 4152,
+     "net": 4172,
      "cota": 0.91
     },
     "studii": {
@@ -889,23 +887,23 @@
     "peVechime": [
      {
       "gradatie": 2,
-      "randuri": 128,
-      "net": 3513
+      "randuri": 136,
+      "net": 3473
      },
      {
       "gradatie": 3,
-      "randuri": 236,
+      "randuri": 243,
       "net": 3618
      },
      {
       "gradatie": 4,
-      "randuri": 293,
-      "net": 3650
+      "randuri": 305,
+      "net": 3708
      },
      {
       "gradatie": 5,
-      "randuri": 1482,
-      "net": 3808
+      "randuri": 1529,
+      "net": 3803
      }
     ],
     "peJudet": [
@@ -989,7 +987,7 @@
      },
      {
       "judet": "Brașov",
-      "randuri": 27,
+      "randuri": 101,
       "institutii": 2,
       "net": 3253
      }
@@ -1015,12 +1013,12 @@
    "sursa": "platit",
    "net": 5233,
    "interval": [
-    4704,
+    4733,
     5630
    ],
    "platit": {
     "net": 5233,
-    "randuri": 277,
+    "randuri": 283,
     "institutii": 15,
     "judete": 14,
     "perioade": [
@@ -1061,7 +1059,7 @@
      },
      {
       "gradatie": 5,
-      "randuri": 152,
+      "randuri": 158,
       "net": 5404
      }
     ],
@@ -1385,7 +1383,7 @@
    "net": 5558,
    "interval": null,
    "platit": {
-    "net": 3551,
+    "net": 3562,
     "randuri": 35,
     "institutii": 6,
     "judete": 6,
@@ -1442,16 +1440,16 @@
   },
   "sofer-ambulanta": {
    "sursa": "platit",
-   "net": 3779,
+   "net": 3873,
    "interval": [
     3649,
-    4069
+    4085
    ],
    "platit": {
-    "net": 3779,
-    "randuri": 26,
-    "institutii": 6,
-    "judete": 6,
+    "net": 3873,
+    "randuri": 27,
+    "institutii": 7,
+    "judete": 7,
     "perioade": [
      "2026-02",
      "2026-03",
@@ -1463,6 +1461,7 @@
      "Spitalul Clinic Județean de Urgență Cluj-Napoca",
      "Spitalul Clinic Județean de Urgență Constanța",
      "Spitalul Clinic de Boli Infecțioase Iași",
+     "Spitalul Clinic de Psihiatrie și Neurologie Brașov",
      "Spitalul Județean de Urgență Buzău"
     ],
     "debutant": null,
@@ -1481,7 +1480,7 @@
    "interval": null,
    "platit": {
     "net": 3981,
-    "randuri": 35,
+    "randuri": 34,
     "institutii": 12,
     "judete": 12,
     "perioade": [
@@ -1614,7 +1613,10 @@
      "Universitatea de Medicină, Farmacie, Științe și Tehnologie Târgu Mureș"
     ],
     "debutant": null,
-    "cuVariabil": null,
+    "cuVariabil": {
+     "net": 4026,
+     "cota": 0.8
+    },
     "studii": {},
     "peVechime": [],
     "peJudet": []
