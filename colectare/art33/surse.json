@@ -40,9 +40,10 @@
    "tip": "spital",
    "judet": "GJ",
    "pagina": "https://www.spitalgorj.ro/venituri-salariale/",
-   "fisier": "https://www.spitalgorj.ro/wp-content/uploads/2026/03/SALARII-FEBRUARIE-2026-31.03.2026-TRANSPARENTA.pdf",
-   "perioada": "2026-02",
-   "format": "pdf cu text; un rând pe post"
+   "fisier": "https://www.spitalgorj.ro/wp-content/uploads/2026/10/TRANSPARENTA-SALARIALA-septembrie-2026.pdf",
+   "perioada": "2026-09",
+   "format": "pdf cu text; un rând pe post",
+   "gasitLa": "2026-10-12"
   },
   {
    "id": "sju-mciuc",
@@ -581,9 +582,9 @@
    "tip": "dsp",
    "judet": "PH",
    "pagina": "https://www.dspph.ro/transparenta-veniturilor-salariale-2026/",
-   "fisier": "https://www.dspph.ro/wp-content/uploads/2026/04/VENITURI-SALARIALE-30.09.2026.pdf",
+   "fisier": "https://www.dspph.ro/wp-content/uploads/2026/04/VENITURI-SALARIALE-30.09.2026-1.pdf",
    "perioada": "2026-09",
-   "gasitLa": "2026-10-08"
+   "gasitLa": "2026-10-12"
   },
   {
    "id": "dsp-braila",
