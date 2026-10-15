@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
 import CalculatorSalariu from "@/app/components/CalculatorSalariu";
+import Reclama from "@/app/components/Reclama";
 import { Formula, TITLU_SECTIUNE, SPATIU_SECTIUNE, SPATIU_PARAGRAF, SUB_TITLU_SECTIUNE, LISTA_FAQ, LISTA_CARD, SPATIU_TEXT_CARD } from "@/app/components/ui";
 import { personSchema } from "@/lib/person";
 import { calculatorSlugBrut, PAGE_LAST_MODIFIED } from "@/lib/seo";
@@ -165,6 +166,10 @@ export default function Page() {
         <section className={`rule-t ${SPATIU_SECTIUNE}`}>
           <div className="mx-auto max-w-6xl space-y-8 px-4 sm:space-y-9 sm:px-6">
 
+            {/* Reclama de sub calculator: după rezultat și detalii, dincolo de linia
+                secțiunii, niciodată în calculator (src/lib/reclame.ts). */}
+            <Reclama plasare="calculator" />
+
             {/* Rândul 1 – explicația și formula */}
             <div className="md:grid md:grid-cols-5 md:gap-6">
               <div className="md:col-span-3 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-600 [&_strong]:font-semibold [&_strong]:text-stone-900">
@@ -218,6 +223,8 @@ export default function Page() {
               </aside>
 
             </div>
+
+            <Reclama plasare="continut" />
 
             {/* Rândul 2 – FAQ + surse oficiale și linkuri */}
             <div className="md:grid md:grid-cols-5 md:gap-6">

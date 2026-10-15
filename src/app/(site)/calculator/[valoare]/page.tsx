@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 import Link from "@/app/components/Link";
 import { notFound } from "next/navigation";
 import CalculatorSalariu from "@/app/components/CalculatorSalariu";
+import { ReclamaSubCalculator } from "@/app/components/Reclama";
 import { Formula, Section, CardCompanion } from "@/app/components/ui";
 import {
   brutDinNetStandardCuRegim,
@@ -384,6 +385,7 @@ export default async function CalculatorDinamic({ params }: Props) {
           regimFiscal={regimFiscal}
         />
       </div>
+      <ReclamaSubCalculator />
 
       {rez ? (
         <Section companion={sumeApropiate}>

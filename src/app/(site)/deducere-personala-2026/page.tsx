@@ -5,6 +5,7 @@ import { calculeazaDeducerePersonala, SALARIU_MINIM } from "@/lib/fiscal";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 import { Hero, Section, Breadcrumb, H1, Lead, Formula, PaginiConexe, CardCompanion, SUB_TITLU, LISTA_CARD } from "@/app/components/ui";
 import TabelArticol from "@/app/components/TabelArticol";
+import { ReclamaIntreSectiuni } from "@/app/components/Reclama";
 
 // Titlul vechi („tabel și calcul pentru salariu") depășea 60 de caractere cu brandul și
 // nu conținea niciun număr. Descrierea veche era o listă de cuvinte-cheie despre ce
@@ -130,6 +131,8 @@ export default function DeducerePersonalaPage() {
           Valabil din 1 iulie 2026. Dacă ai sub 26 de ani sau copii la școală, deducerea e mai mare, ca mai jos.
         </p>
       </Section>
+
+      <ReclamaIntreSectiuni />
 
       <Section
         companion={

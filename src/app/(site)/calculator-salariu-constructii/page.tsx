@@ -11,6 +11,7 @@
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
 import CalculatorSalariu from "@/app/components/CalculatorSalariu";
+import { ReclamaSubCalculator } from "@/app/components/Reclama";
 import { CardCompanion, Faq, Formula, PaginiConexe, Section } from "@/app/components/ui";
 import TabelArticol from "@/app/components/TabelArticol";
 import {
@@ -128,6 +129,7 @@ export default function CalculatorSalariuConstructiiPage() {
           }
         />
       </div>
+      <ReclamaSubCalculator />
 
       <Section
         wide

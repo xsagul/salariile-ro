@@ -8,6 +8,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "@/app/components/Link";
+import Reclama from "@/app/components/Reclama";
 import { Formula, TITLU_CARD, TITLU_PAGINA, TITLU_SECTIUNE, SPATIU_JOS, SPATIU_SUS, SUB_TITLU, LISTA_FAQ } from "@/app/components/ui";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
@@ -527,6 +528,10 @@ export default function SalariuMinimPage() {
                 <CardPentruCe />
               </aside>
             </div>
+
+            {/* După calculul netului, răspunsul paginii: src/lib/reclame.ts. Un `aside`, deci
+                nu primește linia secțiunilor (`[&>div]`); secțiunea următoare o are pe a ei. */}
+            <Reclama plasare="continut" className="mt-[38px] sm:mt-[42px]" />
 
             {/* Creșterea din iulie */}
             <div className={row}>

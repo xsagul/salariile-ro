@@ -22,12 +22,18 @@ export const CLOUDFLARE_INSIGHTS = "https://static.cloudflareinsights.com";
 export const GOOGLE_TAG_MANAGER = "https://www.googletagmanager.com";
 const GOOGLE_ANALYTICS_CONNECT =
   "https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com";
+// Reclamele AdSense (15 octombrie 2026, src/lib/reclame.ts): pe lângă CMP, reclama vine într-un
+// iframe de pe *.doubleclick.net sau dintr-un SafeFrame de pe *.safeframe.googlesyndication.com,
+// iar verificarea antifraudă („sodar”) încarcă script și iframe de pe *.adtrafficquality.google.
+// Google nu publică o listă fixă și avertizează că domeniile se schimbă, deci aici sunt familiile
+// de domenii, nu gazdele una câte una. Un domeniu lipsă nu dă nicio eroare în contul AdSense:
+// reclama pur și simplu nu apare (lecția din 13 august 2026). Se verifică în consola browserului.
 const ADSENSE_SCRIPT =
-  "https://pagead2.googlesyndication.com https://partner.googleadservices.com https://tpc.googlesyndication.com https://www.googletagservices.com https://fundingchoicesmessages.google.com";
+  "https://*.googlesyndication.com https://partner.googleadservices.com https://www.googletagservices.com https://adservice.google.com https://*.adtrafficquality.google https://fundingchoicesmessages.google.com";
 const ADSENSE_FRAME =
-  "https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com https://fundingchoicesmessages.google.com";
+  "https://*.doubleclick.net https://*.googlesyndication.com https://*.adtrafficquality.google https://www.google.com https://fundingchoicesmessages.google.com";
 const ADSENSE_CONNECT =
-  "https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://csi.gstatic.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://fundingchoicesmessages.google.com";
+  "https://*.googlesyndication.com https://*.doubleclick.net https://adservice.google.com https://csi.gstatic.com https://*.adtrafficquality.google https://fundingchoicesmessages.google.com";
 const GOOGLE_FONTS_STYLE = "https://fonts.googleapis.com";
 const GOOGLE_FONTS_ASSET = "https://fonts.gstatic.com";
 

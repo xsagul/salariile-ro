@@ -25,6 +25,7 @@ import { Breadcrumb, CardCompanion, Faq, Formula, H1, Hero, Lead, PaginiConexe, 
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
 import CalculatorSanatate from "@/app/components/CalculatorSanatate";
+import { ReclamaSubCalculator } from "@/app/components/Reclama";
 import { MESERII_SANATATE } from "@/lib/sanatate";
 import { SURSA_GRILE } from "@/lib/grile-publice";
 import { INDEMNIZATIE_HRANA, PLAFON_HRANA_NET } from "@/lib/lege153";
@@ -129,6 +130,7 @@ export default function Page() {
       </Hero>
 
       <CalculatorSanatate meserii={MESERII_SANATATE} />
+      <ReclamaSubCalculator />
 
       <Section
         companion={

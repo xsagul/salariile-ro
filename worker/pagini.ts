@@ -3,6 +3,7 @@
 import type { Env } from "./index";
 import { CONTRACTE, JUDETE, LOCURI_MUNCA, NORME, URL_ADAUGA, esteMobil, linkApel, linkDistribuieFacebook, linkDistribuieWhatsApp, linkWhatsApp, telefonAfisat, urlAnunt, urlLista, type Contract, type LocMunca, type Norma } from "../src/lib/anunturi/reguli";
 import { completeazaSablon } from "../src/lib/anunturi/sablon";
+import { htmlReclama } from "../src/lib/reclame";
 import { DOMENII, MESERII_ANUNTURI, esteDomeniu, grupMeserie, numeDomeniu, slugurileGrupului, variante, cuvantAfisat } from "../src/lib/anunturi/meserii";
 import { PE_PAGINA, cuvinteCautate, dupaId, fatete, lista, listeIndexabile, numeOras, scoaseRecent, toateActive, type Anunt, type Filtru } from "./date";
 
@@ -227,6 +228,16 @@ const SCRIPT_ORDINE = `<script>
     }
   })();
   </script>`;
+
+/**
+ * O reclamă în listă, după al cincilea anunț (src/lib/reclame.ts): după ce omul a văzut primele
+ * oferte, nu înaintea lor. O listă de cel mult cinci anunțuri n-o primește. „Sortează după
+ * apropiere” rescrie lista numai cu anunțuri, deci reclama dispare atunci, fără să încurce ordinea.
+ */
+function cuReclamaInLista(carduri: string[]): string {
+  if (carduri.length <= 5) return carduri.join("");
+  return [...carduri.slice(0, 5), htmlReclama("anunturi", "py-1", "li"), ...carduri.slice(5)].join("");
+}
 
 /** `p`: numele principal al grupului; câmpul gol arată numai principalele, ca „Chelner” să nu dubleze „Ospătar”. */
 type OptiuneFiltru = { s: string; n: string; c: number; p?: boolean };
@@ -593,7 +604,7 @@ export async function paginaLista(req: Request, env: Env, orasSlug: string | nul
         <div class="mt-3 hidden flex-wrap gap-2 lg:flex">${etichete || `<p class="text-sm text-stone-600">Toate meseriile, toată țara</p>`}</div>
         ${corectii.length ? `<p class="mt-2 text-sm text-stone-600">Am căutat și: ${corectii.map((c) => `„${esc(cuvantAfisat(c))}”`).join(", ")}</p>` : ""}
         <p data-apropiere-stare class="mt-2 text-sm text-stone-600 empty:hidden"></p>
-        ${anunturi.length ? `<ul class="mt-3 grid grid-cols-1 gap-3" data-lista-anunturi>${anunturi.map(cardLista).join("")}</ul>` : gol}
+        ${anunturi.length ? `<ul class="mt-3 grid grid-cols-1 gap-3" data-lista-anunturi>${cuReclamaInLista(anunturi.map(cardLista))}</ul>` : gol}
         ${pagini > 1 ? `<nav aria-label="Pagini" class="mt-6 flex gap-4 text-sm">${pagina > 1 ? `<a class="underline underline-offset-2" href="${q(pagina - 1)}">Pagina anterioară</a>` : ""}<span class="text-stone-600">Pagina ${pagina} din ${pagini}</span>${pagina < pagini ? `<a class="underline underline-offset-2" href="${q(pagina + 1)}">Pagina următoare</a>` : ""}</nav>` : ""}
       </div>
     </div>
@@ -681,12 +692,15 @@ export async function paginaAnunt(req: Request, env: Env, id: number, slug: stri
     <h1 class="mt-1 text-[28px] font-bold leading-tight tracking-[-0.02em] text-stone-900 sm:text-[34px]">${esc(a.titlu)}</h1>
     <p class="mt-2 text-base text-stone-600">${a.angajator ? `${esc(a.angajator)} · ` : ""}${esc(loc(a))}</p>
     <div class="mt-5 grid items-start gap-4 lg:grid-cols-[1fr_320px]">
+      <div class="flex flex-col gap-4">
       <div class="${CARD}">
         <p class="text-xs font-medium text-stone-700">Salariul oferit</p>
         <p class="mt-2 text-3xl font-bold tracking-tight text-stone-900">${suma(a)}</p>
         <p class="mt-1 text-sm text-stone-600">Pe lună · ${[norma(a), ...detalii(a)].join(" · ")}</p>
         <div class="mt-5 text-base text-stone-800">${descriereHtml(a.descriere)}</div>
         <p class="mt-4 text-xs text-stone-600">Publicat pe ${data(a.confirmat_la!)} · valabil până pe ${data(a.expira_la!)}</p>
+      </div>
+      ${htmlReclama("anunturi", "py-2")}
       </div>
       <div class="flex flex-col gap-4">
         <div class="${CARD}">

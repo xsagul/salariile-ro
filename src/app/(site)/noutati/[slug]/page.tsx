@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 import Link from "@/app/components/Link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import Reclama from "@/app/components/Reclama";
 import { getArticle, getAllSlugs, getAllArticles, formatDateRo } from "@/lib/noutati";
 import { personSchema } from "@/lib/person";
 import { NUME_SITE, OG_IMAGE } from "@/lib/seo";
@@ -76,6 +77,14 @@ function articoleConexePentru(slug: string) {
   return [...gasite, ...restul].slice(0, 3);
 }
 
+// Reclama din corpul articolului stă înaintea celui de-al doilea subtitlu: după ce cititorul a
+// primit răspunsul de sus, nu înaintea lui. Un articol cu un singur subtitlu nu o primește.
+function imparteLaAlDoileaSubtitlu(html: string): [string, string] {
+  const primul = html.indexOf("<h2");
+  const alDoilea = primul === -1 ? -1 : html.indexOf("<h2", primul + 3);
+  return alDoilea === -1 ? [html, ""] : [html.slice(0, alDoilea), html.slice(alDoilea)];
+}
+
 export default async function ArticolPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const a = getArticle(slug);
@@ -83,6 +92,7 @@ export default async function ArticolPage({ params }: { params: Promise<{ slug: 
 
   // Articole conexe tematice: conectare editorială relevantă pe clustere, nu doar data publicării.
   const related = articoleConexePentru(a.slug);
+  const [inceputArticol, restArticol] = imparteLaAlDoileaSubtitlu(a.html);
 
   const url = `https://salariile.ro/noutati/${a.slug}`;
   const jsonLd = {
@@ -155,8 +165,12 @@ export default async function ArticolPage({ params }: { params: Promise<{ slug: 
 
           {/* Corp articol */}
           <Prose className="mt-8">
-            <div dangerouslySetInnerHTML={{ __html: a.html }} />
+            <div dangerouslySetInnerHTML={{ __html: inceputArticol }} />
+            {restArticol && <Reclama plasare="continut" className="my-8" />}
+            {restArticol && <div dangerouslySetInnerHTML={{ __html: restArticol }} />}
           </Prose>
+
+          <Reclama plasare="continut" className="mt-10" />
 
           {/* Articole conexe — funnel intern, ține cititorul în cluster */}
           {related.length > 0 && (

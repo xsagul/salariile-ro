@@ -62,7 +62,7 @@ export default function TermeniPage() {
         <Lead>
           Prin accesarea și utilizarea salariile.ro accepți termenii de mai jos. Te rugăm să citești această pagină înainte de a folosi calculatorul sau informațiile publicate.
         </Lead>
-        <Eyebrow>ÎN VIGOARE: 29 SEPTEMBRIE 2026</Eyebrow>
+        <Eyebrow>ÎN VIGOARE: 15 OCTOMBRIE 2026</Eyebrow>
       </Hero>
 
       <div>
@@ -141,7 +141,7 @@ export default function TermeniPage() {
         <Section>
             <h2>7. Date personale</h2>
             <p>
-              Prelucrarea datelor personale este descrisă separat în <Link href="/politica-confidentialitate">politica de confidențialitate</Link>. Pe scurt: site-ul nu afișează reclame; Google Analytics respectă alegerea din bannerul Google prin Consent Mode, iar refuzul nu limitează nicio funcție.
+              Prelucrarea datelor personale este descrisă separat în <Link href="/politica-confidentialitate">politica de confidențialitate</Link>. Pe scurt: pe unele pagini apar reclame Google AdSense, marcate cu „Publicitate”; Google Analytics și reclamele respectă alegerea din bannerul Google prin Consent Mode, iar refuzul nu limitează nicio funcție.
             </p>
         </Section>
 

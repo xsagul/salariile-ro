@@ -9,6 +9,7 @@ import type { Metadata } from "next";
 import { Formula, PaginiConexe, TITLU_CARD, TITLU_PAGINA, TITLU_SECTIUNE, SPATIU_JOS, SPATIU_SUS, SUB_TITLU, LISTA_FAQ } from "@/app/components/ui";
 import Image from "next/image";
 import Link from "@/app/components/Link";
+import { ReclamaIntreSectiuni } from "@/app/components/Reclama";
 import { LATEST_INS_EARNINGS } from "@/lib/date-salarii";
 import { LUNA_REFERINTA, TOTAL_ECONOMIE } from "@/lib/ins-date";
 import { personSchema } from "@/lib/person";
@@ -526,6 +527,7 @@ export default function SalariuMediuPage() {
         </div>
       </div>
     </div>
+      <ReclamaIntreSectiuni />
       <PaginiConexe
         linkuri={[
           { href: "/salarii", label: "Salarii pe meserii", descriere: "Media pe economie ascunde diferențe mari între meserii." },
