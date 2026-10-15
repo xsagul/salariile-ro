@@ -168,7 +168,7 @@ export default function Page() {
 
             {/* Reclama de sub calculator: după rezultat și detalii, dincolo de linia
                 secțiunii, niciodată în calculator (src/lib/reclame.ts). */}
-            <Reclama plasare="calculator" />
+            <Reclama plasare="calculator" pereche />
 
             {/* Rândul 1 – explicația și formula */}
             <div className="md:grid md:grid-cols-5 md:gap-6">
@@ -224,7 +224,7 @@ export default function Page() {
 
             </div>
 
-            <Reclama plasare="continut" />
+            <Reclama plasare="continut" pereche />
 
             {/* Rândul 2 – FAQ + surse oficiale și linkuri */}
             <div className="md:grid md:grid-cols-5 md:gap-6">

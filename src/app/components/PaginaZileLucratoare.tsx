@@ -245,7 +245,7 @@ export default function PaginaZileLucratoare({ an }: { an: AnZileLucratoare }) {
           {/* Calculatorul pe interval a ieșit pe 27 sept. 2026: proprietarul nu i-a văzut rostul,
               iar pe 18–26 sept. l-au folosit 10 din 88 de vizitatori măsurați. */}
 
-          <Reclama plasare="continut" className={INAINTE_DE_SECTIUNE} />
+          <Reclama plasare="continut" pereche className={INAINTE_DE_SECTIUNE} />
 
           {/* CE FACI CU NUMĂRUL */}
           <div className={`${SEPARATOR_SECTIUNE} md:grid md:grid-cols-5 md:gap-6`}>

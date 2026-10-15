@@ -531,7 +531,7 @@ export default function SalariuMinimPage() {
 
             {/* După calculul netului, răspunsul paginii: src/lib/reclame.ts. Un `aside`, deci
                 nu primește linia secțiunilor (`[&>div]`); secțiunea următoare o are pe a ei. */}
-            <Reclama plasare="continut" className="mt-[38px] sm:mt-[42px]" />
+            <Reclama plasare="continut" pereche className="mt-[38px] sm:mt-[42px]" />
 
             {/* Creșterea din iulie */}
             <div className={row}>

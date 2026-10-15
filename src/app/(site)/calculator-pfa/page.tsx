@@ -196,7 +196,7 @@ export default function CalculatorPfaPage() {
           <div className="mx-auto max-w-6xl space-y-8 px-4 sm:space-y-9 sm:px-6">
 
             {/* Ca pe homepage: dincolo de linia secțiunii, nu în calculator (src/lib/reclame.ts). */}
-            <Reclama plasare="calculator" />
+            <Reclama plasare="calculator" pereche />
 
             {/* Rândul 1 — Cum se calculează + card Plafoane */}
             <div className="md:grid md:grid-cols-5 md:gap-6">
