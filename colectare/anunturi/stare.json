@@ -327,6 +327,22 @@
     "rejected": 187,
     "errors": 4
    }
+  },
+  {
+   "run": "continuu-2026-10-15",
+   "la": "2026-10-15T23:47:05.901Z",
+   "citite": 234,
+   "acceptate": 38,
+   "stats": {
+    "inventoried": 19090,
+    "read": 234,
+    "acceptedAds": 37,
+    "acceptedBeforeDedup": 39,
+    "accepted": 38,
+    "duplicates": 1,
+    "rejected": 197,
+    "errors": 3
+   }
   }
  ]
 }
