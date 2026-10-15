@@ -45,7 +45,7 @@ const jsonLd = {
       "@type": "WebPage",
       name: "Politica de confidențialitate salariile.ro",
       description:
-        "Politica GDPR a salariile.ro: logs Cloudflare, analytics cookieless și Google Analytics 4 cu Consent Mode, baze legale și drepturile vizitatorilor.",
+        "Politica GDPR a salariile.ro: logs Cloudflare, analytics cookieless, Google Analytics 4 și reclamele Google AdSense cu Consent Mode, baze legale și drepturile vizitatorilor.",
       url: "https://salariile.ro/politica-confidentialitate",
       inLanguage: "ro-RO",
       dateModified: PAGE_LAST_MODIFIED["/politica-confidentialitate"].toISOString().slice(0, 10),
@@ -69,7 +69,7 @@ export default function PoliticaConfidentialitatePage() {
         <Lead>
           Salariile.ro respectă Regulamentul UE 2016/679 privind protecția datelor cu caracter personal (GDPR) și Legea 190/2018. Această politică explică ce date prelucrăm, în ce scop și ce drepturi ai ca vizitator.
         </Lead>
-        <Eyebrow>ÎN VIGOARE: 29 SEPTEMBRIE 2026 · CONSENT MODE · FĂRĂ RECLAME</Eyebrow>
+        <Eyebrow>ÎN VIGOARE: 15 OCTOMBRIE 2026 · CONSENT MODE · RECLAME GOOGLE ADSENSE</Eyebrow>
       </Hero>
 
       <div>
@@ -82,7 +82,7 @@ export default function PoliticaConfidentialitatePage() {
                 mult 30 de zile.
               </p>
               <p className="mt-3 text-sm text-stone-600">
-                Acordul pentru Google Analytics îl retragi direct de aici, fără niciun mesaj.
+                Acordul pentru Google Analytics și pentru reclame îl retragi direct de aici, fără niciun mesaj.
               </p>
               <ButonPreferinteGoogle className="mt-4 inline-flex min-h-11 items-center self-start rounded border border-stone-900 bg-stone-900 px-5 text-sm font-medium text-white transition-colors hover:bg-stone-700">Schimbă setările cookies</ButonPreferinteGoogle>
             </CardCompanion>
@@ -114,12 +114,19 @@ export default function PoliticaConfidentialitatePage() {
                 <strong>Google Analytics 4 cu Consent Mode</strong>: tagul folosește identificatorul <code>G-2L1J64H5H9</code>. Înainte de acord, stocarea este refuzată și pot fi trimise pinguri fără cookies; după acord, GA4 poate folosi cookies <code>_ga</code>. Se înregistrează paginile vizitate și pagina anterioară, sursa vizitei, tipul dispozitivului, rezoluția ecranului și dimensiunea ferestrei browserului, regiunea aproximativă; cât derulezi, ce secțiuni ajung în ecran, cât timp rămâne pagina vizibilă, ce întrebări deschizi și ce linkuri interne apeși; ce calculator folosești și tipul calculului (de exemplu brut în net), <strong>fără sumele introduse</strong>; termenul scris în căutarea de meserii; descărcările și linkurile copiate; timpii de încărcare și de răspuns ai paginii și erorile tehnice ale site-ului. Google Signals și personalizarea reclamelor sunt dezactivate.
               </li>
             </ul>
-            <h3>Publicitate: niciuna</h3>
+            <h3 id="reclame">Reclamele Google AdSense</h3>
             <p>
-              Site-ul nu afișează reclame. Scriptul Google AdSense este încărcat pentru a publica mesajul standard de consimțământ Google; Auto ads este oprit în cont și nu există unități de anunț. Testul din 13–14 august 2026 și efectele tehnice ale scriptului sunt documentate pe pagina <Link href="/cookies">cookies</Link>.
+              Din 15 octombrie 2026, pe unele pagini se afișează reclame prin Google AdSense, marcate cu „Publicitate”. Nu apar în calculatoare, în formulare, în widgeturile pentru alte site-uri și pe paginile legale. Ce scrii în calculatoare nu ajunge la Google și nu influențează reclamele: sumele rămân în browser-ul tău.
             </p>
             <p>
-              Dacă afișarea reclamelor va fi activată, această pagină și pagina de cookies vor fi actualizate <strong>înainte</strong>, iar prelucrarea se va face conform alegerii din CMP.
+              Ca să afișeze și să măsoare reclamele, Google primește de la browserul tău adresa IP, tipul browserului și al dispozitivului, adresa paginii și alte date tehnice. Ce face Google cu ele depinde de alegerea din mesajul de consimțământ:
+            </p>
+            <ul>
+              <li><strong>Dacă accepți</strong>, Google poate folosi cookies și identificatori pentru reclame personalizate, pentru limitarea repetării aceleiași reclame și pentru măsurarea lor.</li>
+              <li><strong>Dacă refuzi</strong>, reclamele pot apărea în continuare, dar fără cookies publicitare și fără personalizare (Google le numește „reclame limitate”). Site-ul funcționează la fel.</li>
+            </ul>
+            <p>
+              Pentru reclame, Google acționează ca operator separat, după <a href="https://business.safety.google/adscontrollerterms/" target="_blank" rel="noopener">termenii lui pentru operatori</a>. Cum folosește datele de pe site-urile partenere: <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">politica Google</a>. Poți schimba sau retrage oricând alegerea din „Setări cookies”, în subsolul fiecărei pagini.
             </p>
             <h3 id="anunturi">Anunțurile de angajare</h3>
             <p>
@@ -141,7 +148,7 @@ export default function PoliticaConfidentialitatePage() {
             <ul>
               <li>Nu există conturi de utilizator sau newsletter. Singurele formulare sunt cele ale anunțurilor de angajare, descrise mai sus.</li>
               <li>Sumele pe care le introduci în calculatoare se procesează exclusiv în browser-ul tău. Nu sunt transmise sau stocate pe server și nu ajung nici în Google Analytics: adresa paginii se trimite fără parametrii <code>brut</code> și <code>net</code>, iar evenimentele de calcul spun doar ce calculator ai folosit.</li>
-              <li>Nu folosim Facebook Pixel, remarketing, programe de afiliere sau profilare publicitară. GA4 respectă alegerea transmisă de CMP prin Consent Mode.</li>
+              <li>Nu folosim Facebook Pixel, remarketing sau programe de afiliere și nu construim profiluri ale vizitatorilor. Personalizarea reclamelor o face numai Google, numai cu acordul tău, ca mai sus. GA4 respectă alegerea transmisă de CMP prin Consent Mode.</li>
               <li>Nu vindem și nu transferăm date către terți în scopuri comerciale.</li>
             </ul>
         </Section>
@@ -157,6 +164,9 @@ export default function PoliticaConfidentialitatePage() {
             <p>
               Datele Google Analytics 4 se prelucrează exclusiv în baza <strong>consimțământului</strong> (Art. 6 alin. 1 lit. a GDPR și regulile ePrivacy). Refuzul nu limitează nicio funcție, iar acordul poate fi retras oricând din „Setări cookies”.
             </p>
+            <p>
+              Pentru reclame, cookies și personalizarea se folosesc numai cu <strong>consimțământul</strong> dat în mesajul Google (lit. a). Afișarea reclamelor limitate, fără cookies, se face în temeiul <strong>interesului legitim</strong> (lit. f) de a acoperi din reclame costurile site-ului, care rămâne gratuit și fără cont.
+            </p>
         </Section>
 
         <Section>
@@ -166,7 +176,7 @@ export default function PoliticaConfidentialitatePage() {
             </p>
             <ul>
               <li>
-                <strong>Google Ireland Limited</strong> (Irlanda, cu posibile transferuri către Google LLC în SUA): furnizor pentru CMP-ul AdSense și Google Analytics 4 cu Consent Mode. Google LLC este certificat în cadrul UE–SUA Data Privacy Framework. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Politica Google</a>.
+                <strong>Google Ireland Limited</strong> (Irlanda, cu posibile transferuri către Google LLC în SUA): furnizor pentru CMP-ul AdSense, pentru Google Analytics 4 cu Consent Mode și, ca operator separat, pentru reclamele AdSense. Google LLC este certificat în cadrul UE–SUA Data Privacy Framework. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Politica Google</a>.
               </li>
               <li>
                 <strong>Cloudflare, Inc.</strong> (SUA): furnizor de hosting și CDN, al statisticilor anonime Web Analytics și, pentru anunțurile de angajare, al bazei de date (D1) și al trimiterii emailurilor. Procesează automat, ca procesator, fiecare cerere către site. Cloudflare este certificat conform mecanismului UE-SUA Data Privacy Framework. <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Politica Cloudflare</a>.
@@ -194,7 +204,7 @@ export default function PoliticaConfidentialitatePage() {
         <Section>
             <h2>6. Cookies</h2>
             <p>
-Salariile.ro nu afișează reclame. Cookies de analiză GA4 apar numai după acord, iar pagina dedicată <Link href="/cookies">cookies</Link> explică alegerea, retragerea și verificarea în browser.
+Cookies de analiză GA4 și cookies publicitare Google apar numai după acord, iar pagina dedicată <Link href="/cookies">cookies</Link> explică alegerea, retragerea și verificarea în browser.
             </p>
         </Section>
 

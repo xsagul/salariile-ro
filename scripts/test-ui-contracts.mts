@@ -52,9 +52,9 @@ assert.doesNotMatch(header, /data-navbar|VariantaNavbar|sticky/, "Codul testului
 assert.doesNotMatch(header, /localStorage|sessionStorage|document\.cookie/, "Bara nu citește și nu scrie nimic pe dispozitiv");
 assert.doesNotMatch(embedLayout, /stats\.js|umami/i, "Layout-ul embed nu trebuie să activeze analytics");
 assert.doesNotMatch(embedLayout, /adsbygoogle|googlesyndication|googletagmanager|google-analytics/i, "Layout-ul embed nu trebuie să activeze AdSense sau GA4");
-assert.match(siteLayout, /ca-pub-5894290637571256[\s\S]*google-adsense-account/, "Verificarea AdSense trebuie să rămână în meta tag");
+assert.match(siteLayout, /import \{ ADSENSE_CLIENT \} from "@\/lib\/reclame"[\s\S]*"google-adsense-account": ADSENSE_CLIENT/, "Verificarea AdSense trebuie să rămână în meta tag, cu contul din src/lib/reclame.ts");
 assert.match(siteLayout, /pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle\.js/, "Scriptul AdSense trebuie să publice CMP-ul Google");
-assert.doesNotMatch(siteLayout + rootLayout, /<ins[^>]+adsbygoogle|adsbygoogle\.push/, "Codul nu trebuie să conțină unități de reclamă");
+assert.doesNotMatch(siteLayout + rootLayout, /<ins[^>]+adsbygoogle|adsbygoogle\.push/, "Layout-urile nu conțin unități de reclamă: sloturile stau în pagini, prin componenta Reclama");
 assert.match(rootLayout, /google-consent-default[\s\S]*strategy="beforeInteractive"[\s\S]*analytics_storage':'denied'/, "Consent Mode trebuie inițializat pe denied înaintea tagurilor");
 assert.match(rootLayout, /googlefc\.callbackQueue=window\.googlefc\.callbackQueue\|\|\[\]/, "Coada API a CMP-ului trebuie inițializată înaintea scriptului AdSense");
 assert.match(siteLayout, /googletagmanager\.com\/gtag\/js/, "Layout-ul public trebuie să încarce Google tag");
@@ -116,6 +116,32 @@ for (const nume of [...calculatoare, "FiltruMeserii", "EmbedCode", "Masurare"]) 
 assert.match(googlePreferences, /CONSENT_API_READY[\s\S]*showRevocationMessage/, "Setările cookies trebuie să redeschidă mesajul Google");
 assert.match(csp, /ADSENSE_SCRIPT[\s\S]*ADSENSE_FRAME[\s\S]*ADSENSE_CONNECT/, "CSP-ul public trebuie să permită CMP-ul AdSense");
 assert.equal((await read("public/ads.txt")).trim(), "google.com, pub-5894290637571256, DIRECT, f08c47fec0942fa0", "ads.txt trebuie să autorizeze numai contul AdSense al site-ului");
+
+// Reclamele (mandatul de venituri, 15 octombrie 2026). Regulile de plasare din
+// src/lib/reclame.ts, verificate aici ca să nu se piardă la următoarea pagină nouă.
+const reclame = await read("src/lib/reclame.ts");
+assert.match(reclame, /export const ADSENSE_CLIENT = "ca-pub-5894290637571256";/, "Contul AdSense are un singur proprietar: src/lib/reclame.ts");
+const unitati = reclame.match(/export const UNITATI = \{([\s\S]*?)\} as const;/);
+assert.ok(unitati, "UNITATI trebuie să rămână un obiect literal în src/lib/reclame.ts");
+for (const [, plasare, id] of unitati[1].matchAll(/^\s*(\w+): "([^"]*)",/gm)) {
+  assert.match(id, /^(\d{6,})?$/, `Unitatea „${plasare}” trebuie să fie data-ad-slot din AdSense (numai cifre) sau goală`);
+}
+// Pagina nu sare când vine reclama: dimensiune fixă pe lățime, rezervată din HTML.
+assert.match(reclame, /CLASA_INS_RECLAMA = "adsbygoogle inline-block h-\[250px\] w-\[300px\] min-\[368px\]:h-\[280px\] min-\[368px\]:w-\[336px\]"/, "Slotul de reclamă trebuie să aibă dimensiunea rezervată pe fiecare lățime");
+// Niciun slot în calculatoare, formulare, widgeturi sau pe paginile legale și de contact.
+const faraReclame = [
+  "src/app/(embed)/layout.tsx",
+  ...(await readdir(new URL("../src/app/components/", import.meta.url))).filter((f) => /^(Calculator|Widget|Embed)\w*\.tsx$/.test(f)).map((f) => `src/app/components/${f}`),
+  ...(await readdir(new URL("../src/app/components/anunturi/", import.meta.url))).filter((f) => f.endsWith(".tsx")).map((f) => `src/app/components/anunturi/${f}`),
+  ...["adauga-anunt-angajare", "locuri-de-munca/raporteaza", "termeni", "politica-confidentialitate", "cookies", "contact", "despre", "metodologie", "widget"].map((r) => `src/app/(site)/${r}/page.tsx`),
+];
+for (const f of faraReclame) {
+  assert.doesNotMatch(await read(f), /components\/Reclama"|htmlReclama|adsbygoogle/, `${f}: aici nu intră reclame (src/lib/reclame.ts)`);
+}
+assert.doesNotMatch(await read("src/app/components/Reclama.tsx"), /data-ad-format/, "Reclama folosește dimensiunea fixă, nu formatul automat care schimbă înălțimea");
+// Paginile legale descriu reclamele care rulează, nu starea dinainte de 15 octombrie 2026.
+assert.match(await read("src/app/(site)/politica-confidentialitate/page.tsx"), /id="reclame"[\s\S]*reclame limitate/, "Politica de confidențialitate trebuie să descrie reclamele și alegerea din CMP");
+assert.doesNotMatch(await read("src/app/(site)/cookies/page.tsx"), /nu afișează reclame|reclamele sunt oprite/, "Pagina de cookies nu mai poate spune că reclamele sunt oprite");
 assert.match(home, /Calculator salariu net 2026 - Brut în net și invers/);
 
 // Widgeturile sunt acum cod HTML copiat explicit de publisher, fără vechiul

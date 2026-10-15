@@ -8,6 +8,7 @@ import Link from "@/app/components/Link";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 import CalculatorPFA from "@/app/components/CalculatorPFA";
+import Reclama from "@/app/components/Reclama";
 import TabelArticol from "@/app/components/TabelArticol";
 import {
   calculeazaPFA,
@@ -193,6 +194,9 @@ export default function CalculatorPfaPage() {
         {/* ZONĂ ARTICOL — 3+2, ca pe homepage */}
         <section className={`rule-t ${SPATIU_SECTIUNE}`}>
           <div className="mx-auto max-w-6xl space-y-8 px-4 sm:space-y-9 sm:px-6">
+
+            {/* Ca pe homepage: dincolo de linia secțiunii, nu în calculator (src/lib/reclame.ts). */}
+            <Reclama plasare="calculator" />
 
             {/* Rândul 1 — Cum se calculează + card Plafoane */}
             <div className="md:grid md:grid-cols-5 md:gap-6">

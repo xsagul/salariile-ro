@@ -11,6 +11,7 @@ import type { Metadata } from "next";
 import Link from "@/app/components/Link";
 import { Faq, H1, Lead, TITLU_SECTIUNE, SPATIU_JOS, SPATIU_SUS, INAINTE_DE_SECTIUNE } from "@/app/components/ui";
 import FiltruMeserii from "@/app/components/FiltruMeserii";
+import { ReclamaIntreSectiuni } from "@/app/components/Reclama";
 import { CATEGORII, MESERII, dateMeserie, meseriiDinCategorie } from "@/lib/meserii";
 import { concluzieMeserie } from "@/app/components/SalariuConcluzie";
 import { netDeStart } from "@/app/components/SalariuGrila";
@@ -164,6 +165,7 @@ export default function SalariiPage() {
         </div>
       </div>
 
+      <ReclamaIntreSectiuni />
       <Faq items={FAQ} />
     </>
   );

@@ -21,8 +21,7 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import Masurare from "@/app/components/Masurare";
 import { GA_MEASUREMENT_ID } from "@/lib/analytics";
-
-const ADSENSE_CLIENT = "ca-pub-5894290637571256";
+import { ADSENSE_CLIENT } from "@/lib/reclame";
 
 // Meta tag-ul rămâne ca metodă suplimentară de verificare a contului.
 export const metadata: Metadata = {
@@ -43,8 +42,10 @@ export default function SiteLayout({
         <main className="flex-1">{children}</main>
         <Footer />
       </div>
-      {/* Scriptul AdSense publică CMP-ul Google. Auto ads este OFF în cont și
-          nu există unități publicitare în pagini, deci nu apar reclame. */}
+      {/* Scriptul AdSense publică CMP-ul Google și servește reclamele: sloturile
+          din cod (src/lib/reclame.ts, componenta Reclama) și ce formate Auto ads
+          sunt pornite în cont. Layout-ul embed nu-l încarcă: widgeturile rămân
+          fără reclame. */}
       <Script
         id="adsense-cmp"
         src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`}

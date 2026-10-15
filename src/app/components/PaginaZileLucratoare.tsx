@@ -12,7 +12,8 @@ import { ANI_CALENDAR, sarbatoriAn, zileLucratoareLuna } from "@/lib/sarbatori";
 import TabelArticol from "@/app/components/TabelArticol";
 import CalendarAn, { type CelulaZi, type LunaCalendar } from "@/app/components/CalendarAn";
 import DescarcaZileLucratoare from "@/app/components/DescarcaZileLucratoare";
-import { CARD_TITLU, Formula, LISTA_CARD, SEPARATOR_SECTIUNE, SPATIU_JOS, SPATIU_SUS, SUB_TITLU, TITLU_PAGINA, TITLU_SECTIUNE } from "@/app/components/ui";
+import Reclama from "@/app/components/Reclama";
+import { CARD_TITLU, Formula, INAINTE_DE_SECTIUNE, LISTA_CARD, SEPARATOR_SECTIUNE, SPATIU_JOS, SPATIU_SUS, SUB_TITLU, TITLU_PAGINA, TITLU_SECTIUNE } from "@/app/components/ui";
 
 export type AnZileLucratoare = (typeof ANI_CALENDAR)[number];
 type CaleAn = `/zile-lucratoare-${AnZileLucratoare}`;
@@ -212,6 +213,8 @@ export default function PaginaZileLucratoare({ an }: { an: AnZileLucratoare }) {
               <p className="mt-3 text-sm text-stone-600 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2">
                 Temei: <a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/128646" target="_blank" rel="noopener">Codul Muncii</a>, art. 139 și 142.
               </p>
+              {/* După răspuns (tabelul și descărcarea), înaintea calendarului: src/lib/reclame.ts. */}
+              <Reclama plasare="continut" className="mt-8" />
             </div>
 
             {/* CALENDAR — 12 luni, același ca la zile libere (proprietar, 27 sept. 2026). */}
@@ -241,6 +244,8 @@ export default function PaginaZileLucratoare({ an }: { an: AnZileLucratoare }) {
 
           {/* Calculatorul pe interval a ieșit pe 27 sept. 2026: proprietarul nu i-a văzut rostul,
               iar pe 18–26 sept. l-au folosit 10 din 88 de vizitatori măsurați. */}
+
+          <Reclama plasare="continut" className={INAINTE_DE_SECTIUNE} />
 
           {/* CE FACI CU NUMĂRUL */}
           <div className={`${SEPARATOR_SECTIUNE} md:grid md:grid-cols-5 md:gap-6`}>

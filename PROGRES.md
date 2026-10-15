@@ -5024,3 +5024,79 @@ bara lipită jos să fi contat (publicată în aceeași seară):
   trimis nimic la GA4 din probă.
 - Limite: apăsările proprietarului de pe telefon nu se pot deosebi de ale candidaților; o apăsare nu
   e un mesaj trimis. Tot în interval: `copiaza_link` 4, `search` 27 (11 utilizatori).
+
+## 15 octombrie 2026 — mandatul de venituri: reclamele, pregătite în cod
+
+**Decizia proprietarului:** site-ul e predat agentului ca afacere, cu obiectivul de a maximiza
+veniturile; din ce produce se plătesc, de luna următoare, uneltele cu care e întreținut. Înlocuiește
+„Nu propune monetizare acum” (24 august). Înregistrată în `CLAUDE.md`, la începutul strategiei.
+
+**Ce s-a construit (branch `claude/compassionate-ptolemy-3emz14`):**
+
+- `src/lib/reclame.ts`, proprietarul unic: contul AdSense, întrerupătorul `RECLAME_PORNITE`, cele
+  trei unități (`calculator`, `continut`, `anunturi`, câte una pe plasare, ca raportul pe unitate să
+  arate unde se câștigă) și dimensiunea slotului. **Unitățile sunt goale**: un slot fără `data-ad-slot`
+  nu randează nimic, deci până la completarea lor paginile arată exact ca înainte.
+- `src/app/components/Reclama.tsx`: 300×250 sub 368 px, 336×280 de la 368 px, dimensiune fixă
+  rezervată din HTML (fără `data-ad-format`), eticheta „Publicitate”, cerere către AdSense abia la
+  600 px de ecran, o singură dată pe unitate.
+- Plasări: homepage (sub calculator, dincolo de linia secțiunii, și înaintea întrebărilor frecvente),
+  sub celelalte 8 calculatoare și sub `/calculator/[valoare]`, în articole (înaintea celui de-al doilea
+  subtitlu și la final), zile libere și lucrătoare (sub tabel și înaintea întrebărilor), salariul minim,
+  salariul mediu, deducerea, `/salarii` și fiecare meserie. Hubul (`worker/pagini.ts`): în listă după
+  al cincilea anunț și sub descrierea anunțului. Fără reclame: calculatoarele însele, formularele,
+  widgeturile, paginile legale, contact, despre, metodologie — verificat de `test-ui-contracts.mts`.
+- CSP (`src/lib/csp.ts`): familiile de domenii ale reclamei (`*.doubleclick.net`,
+  `*.googlesyndication.com` pentru SafeFrame, `*.adtrafficquality.google` pentru antifraudă), nu doar
+  ce cerea CMP-ul. Neverificat pe o reclamă reală: rețeaua mediului de lucru blochează domeniile Google.
+  **După prima zi cu reclame, de verificat în consola browserului pe producție că nu apare „Refused to
+  frame/load”.**
+- Textele legale, rescrise odată cu reclamele (politica de confidențialitate, cookies, termeni,
+  `llms.txt`): ce primește Google, ce se schimbă cu acordul și fără el („reclame limitate”), Google ca
+  operator separat. „Fără cont și fără reclame” de lângă oferta de widget rămâne adevărat: widgeturile
+  nu încarcă AdSense.
+
+**Verificat:** `npm test` exit 0 (contractele UI noi și testul de drift trec); `npm run lint` 0 erori;
+`npm run build` trece; `npm run test:rendered` 335 de rute, 333 de JSON-LD valide; `tsc -p worker`
+trece. Build de probă cu ID-uri fictive, în Chromium (375 și 1280 px, 9 pagini, derulare completă,
+fără rețea externă): CLS 0,0000 peste tot, fără derulare pe orizontală, fiecare slot 336×280 și cerut
+o singură dată. ID-urile fictive au fost scoase înainte de commit.
+
+**Ce poate produce, din cifre măsurate, nu estimate:** ziua de test din 21 septembrie (marți, toate
+formatele Auto ads) a adus 6,27 lei din 1.736 de impresii (3,61 lei la 1.000). Raportat la clicurile
+GSC pe zile (marți 653 din 3.459 pe săptămână): **~33 lei pe săptămână, ~144 lei pe lună (~27 €)**, la
+densitate maximă și la traficul din septembrie. Pragul de plată AdSense e 70 €, deci prima plată vine
+după ~2,5 luni de reclame (realist, ianuarie 2027; decembrie numai dacă sezonul de zile libere 2027
+dublează traficul). Contul încă nu poate încasa (lipsesc datele fiscale, identitatea, metoda de plată,
+iar PIN-ul vine prin poștă la 10 €).
+
+**Pașii proprietarului, în ordine** (agentul nu are acces la AdSense):
+
+1. Plățile din AdSense: identitatea, datele fiscale, adresa, IBAN-ul. Fără ele venitul se strânge, dar
+   nu se plătește.
+2. Abia după ce PR-ul e pe `main` (textele legale trebuie să fie live întâi): Auto ads pornit cu
+   formatele suprapuse (ancoră, laterale, vinietă), formatele din pagină oprite (locul lor îl țin
+   sloturile din cod) și „ad intents” oprite, ca pe 21 septembrie. Excluse: `/adauga-anunt-angajare`,
+   `/locuri-de-munca/raporteaza` (formulare) și, cel puțin pentru ancoră, `/anunt-angajare-` (bara de
+   contact lipită jos pe telefon ar fi acoperită).
+3. Trei unități de anunț grafic, dimensiune adaptabilă: `salariile-calculator`, `salariile-continut`,
+   `salariile-anunturi`. Numărul din `data-ad-slot` al fiecăreia intră în `UNITATI`.
+4. De verificat: reclamele personalizate permise pentru cine își dă acordul (95% acceptă), și, opțional,
+   blocarea reclamelor concurenților (ejobs.ro, bestjobs.eu, undelucram.ro, paylab.ro).
+5. Fiscal: venitul AdSense se declară la ANAF (Declarația unică); încadrarea, de confirmat cu un contabil.
+   Vânzarea către firme (anunțuri promovate) cere PFA sau SRL, ca să existe factură; politica de
+   confidențialitate spune că acum nu există niciuna.
+
+**Ce mută cifra, după reclame:** traficul, nu densitatea. Nucleul „calculator salariu net” e pe ~3,3:
+la poziția 2, cu CTR-ul nostru măsurat, ar fi ~+6.000 de clicuri pe lună (+40%). Valul „zile libere
+2027” vine din noiembrie (74.000 de căutări pe lună la 2026). Familiile noi din 26 septembrie (concediu
+medical 18.100, creșterea copilului 8.000, cerere de demisie 5.700, pensie 4.400 + 3.200, vechime 2.900)
+aduc trafic nou cu reclame mai scumpe (asigurări, finanțe). Hubul de anunțuri poate vinde anunțuri
+promovate abia după PFA/SRL și un procesator de plăți, ambele ale proprietarului.
+
+**Nefăcut, cu motiv:** `AGENTS.md` și `scripts/test-context-drift.mts` încă descriu „monetizare prin
+AdSense” ca strategie respinsă (doar comentarii; testul trece). Editarea lor a fost blocată de
+clasificatorul de siguranță al sesiunii (fișiere de instrucțiuni pentru agenți); rămân de ajustat de
+proprietar sau într-o sesiune care le poate edita. Datele live n-au putut fi citite: trialul Supermetrics
+(GA4) a expirat pe 10 octombrie, SE Ranking răspunde 403, iar rețeaua mediului blochează
+salariile.ro și domeniile Google.

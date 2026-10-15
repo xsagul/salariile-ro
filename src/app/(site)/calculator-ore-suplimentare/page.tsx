@@ -19,6 +19,7 @@ import { Breadcrumb, CardCompanion, Faq, Formula, H1, Hero, Lead, PaginiConexe, 
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
 import CalculatorOreSuplimentare from "@/app/components/CalculatorOreSuplimentare";
+import { ReclamaSubCalculator } from "@/app/components/Reclama";
 import {
   COTA_MINIMA_NOAPTE,
   COTA_MINIMA_SARBATOARE,
@@ -130,6 +131,7 @@ export default function Page() {
       </Hero>
 
       <CalculatorOreSuplimentare />
+      <ReclamaSubCalculator />
 
       <Section
         companion={

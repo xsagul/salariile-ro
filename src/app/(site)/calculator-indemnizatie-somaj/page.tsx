@@ -22,6 +22,7 @@ import { Breadcrumb, CardCompanion, Faq, Formula, H1, Hero, Lead, PaginiConexe, 
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
 import CalculatorSomaj from "@/app/components/CalculatorSomaj";
+import { ReclamaSubCalculator } from "@/app/components/Reclama";
 import { ISR, SURSA_ISR, URL_LEGE, calculeazaSomaj } from "@/lib/somaj";
 
 const TITLU = "Calculator Ajutor Șomaj 2026 - Cât primești și cât timp";
@@ -124,6 +125,7 @@ export default function Page() {
       </Hero>
 
       <CalculatorSomaj />
+      <ReclamaSubCalculator />
 
       <Section
         companion={

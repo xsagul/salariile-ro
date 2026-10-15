@@ -29,6 +29,7 @@ import { calculStandard } from '@/lib/fiscal';
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, MESERII_LAST_MODIFIED } from "@/lib/seo";
 import { TABEL_IN_CARD } from "@/app/components/TabelArticol";
+import { ReclamaIntreSectiuni } from "@/app/components/Reclama";
 
 interface Props {
   params: Promise<{ meserie: string }>;
@@ -372,6 +373,7 @@ export default async function MeseriePage({ params }: Props) {
         </div>
       </div>
 
+      <ReclamaIntreSectiuni />
       <Faq items={faq} />
     </>
   );

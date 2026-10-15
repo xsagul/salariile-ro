@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import CalculatorPartTime from "@/app/components/CalculatorPartTime";
+import { ReclamaSubCalculator } from "@/app/components/Reclama";
 import { Breadcrumb, CardCompanion, Faq, Formula, H1, Hero, Lead, PaginiConexe, Repere, Section, LISTA_CARD } from "@/app/components/ui";
 import TabelArticol from "@/app/components/TabelArticol";
 import {
@@ -112,6 +113,7 @@ export default function Page() {
       </Hero>
 
       <CalculatorPartTime />
+      <ReclamaSubCalculator />
 
       <Section
         companion={

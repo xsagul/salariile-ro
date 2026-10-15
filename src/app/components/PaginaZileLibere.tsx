@@ -13,7 +13,8 @@ import { interval, puntiAn, sarbatoriIntre, weekenduriPrelungite, zile, ZI_MS, t
 import TabelArticol from "@/app/components/TabelArticol";
 import UrmatoareaZiLibera from "@/app/components/UrmatoareaZiLibera";
 import CalendarAn, { type CelulaZi, type LunaCalendar } from "@/app/components/CalendarAn";
-import { CARD_TITLU, LISTA_CARD, TITLU_CARD, TITLU_PAGINA, TITLU_SECTIUNE, SEPARATOR_SECTIUNE, SPATIU_JOS, SPATIU_SUS, SUB_TITLU, LISTA_FAQ } from "@/app/components/ui";
+import Reclama from "@/app/components/Reclama";
+import { CARD_TITLU, LISTA_CARD, TITLU_CARD, TITLU_PAGINA, TITLU_SECTIUNE, SEPARATOR_SECTIUNE, SPATIU_JOS, SPATIU_SUS, SUB_TITLU, LISTA_FAQ, INAINTE_DE_SECTIUNE } from "@/app/components/ui";
 
 export type AnZileLibere = (typeof ANI_CALENDAR)[number];
 type CaleAn = `/zile-libere-${AnZileLibere}`;
@@ -267,6 +268,8 @@ export default function PaginaZileLibere({ an }: { an: AnZileLibere }) {
               Potrivit Codului Muncii, angajații care lucrează într-o zi de sărbătoare legală primesc o zi liberă în
               următoarele 30 de zile sau, dacă aceasta nu poate fi acordată, ziua lucrată plătită cel puțin dublu.
             </p>
+            {/* După răspuns (tabelul), înaintea calendarului: src/lib/reclame.ts. */}
+            <Reclama plasare="continut" className="mt-8" />
           </div>
 
           {/* CALENDAR — 12 luni */}
@@ -331,6 +334,8 @@ export default function PaginaZileLibere({ an }: { an: AnZileLibere }) {
               ))}
             </div>
           </div>
+
+          <Reclama plasare="continut" className={INAINTE_DE_SECTIUNE} />
 
           {/* FAQ + SURSE */}
           <div className={`${SEPARATOR_SECTIUNE} md:grid md:grid-cols-5 md:gap-8 lg:gap-10`}>

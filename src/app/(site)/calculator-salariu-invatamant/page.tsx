@@ -11,6 +11,7 @@ import { Breadcrumb, CardCompanion, Faq, Formula, H1, Hero, Lead, PaginiConexe, 
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
 import CalculatorInvatamant from "@/app/components/CalculatorInvatamant";
+import { ReclamaSubCalculator } from "@/app/components/Reclama";
 import GrilaInvatamant from "@/app/components/GrilaInvatamant";
 import { GRADATII, calculeazaInvatamantComplet, MAJORARI } from "@/lib/invatamant";
 import { TABEL_STANDARD } from "@/app/components/TabelArticol";
@@ -134,6 +135,7 @@ export default function Page() {
       </Hero>
 
       <CalculatorInvatamant />
+      <ReclamaSubCalculator />
 
       {/* Cine a venit pentru grilă (cam 10% din căutări) o găsește dintr-un click;
           restul citește întâi cum se calculează. */}

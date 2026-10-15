@@ -6,6 +6,7 @@
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
 import CalculatorSalariu from "@/app/components/CalculatorSalariu";
+import { ReclamaSubCalculator } from "@/app/components/Reclama";
 import { CardCompanion, Faq, Formula, PaginiConexe, Section } from "@/app/components/ui";
 import { DEDUCERE_MINIM, PLAFON_FACILITATE, SALARIU_MINIM } from "@/lib/fiscal";
 import { personSchema } from "@/lib/person";
@@ -103,6 +104,7 @@ export default function FluturasSalariuPage() {
           }
         />
       </div>
+      <ReclamaSubCalculator />
 
       <Section
         companion={
