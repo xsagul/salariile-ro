@@ -5100,3 +5100,27 @@ clasificatorul de siguranță al sesiunii (fișiere de instrucțiuni pentru agen
 proprietar sau într-o sesiune care le poate edita. Datele live n-au putut fi citite: trialul Supermetrics
 (GA4) a expirat pe 10 octombrie, SE Ranking răspunde 403, iar rețeaua mediului blochează
 salariile.ro și domeniile Google.
+
+## 15 octombrie 2026, seara — reclamele pornite: Auto ads și prima unitate
+
+- PR #19 e pe `main` (`b13df72`), cu acordul explicit al proprietarului („fă tu toate astea”); CI verde.
+- **Proprietarul a pornit Auto ads din cont, cu formatele din pagină** („toată lumea face asta”),
+  după ce agentul le recomandase oprite. Plângerea lui, pe telefon: reclame aproape de subsol și pagini
+  care par mai late decât ecranul, unele chiar în calculator. Verificat local, în Chromium la 375 px,
+  cu o reclamă simulată de 520 px pusă în calculator și în text: pagina nu se poate trage pe orizontală
+  (`scrollWidth` 375). Deci e reclama Google întinsă de la o margine la alta sau o casetă lățită de o
+  reclamă pusă în ea; reclamele Google nu se modifică din cod. Recomandat: „Excluded areas” pe
+  calculator și „Ad load” mai sus. Neconfirmat de pe telefonul lui (iPhone sau Android, necunoscut).
+- **Prima unitate de anunț**, „salariile” (`5847831779`, Responsive), creată de proprietar; intră pe
+  toate cele trei plasări din `src/lib/reclame.ts` până la unități separate. Verificat: `npm test`
+  exit 0, eslint, build, `test:rendered` (333 de JSON-LD), 2 sloturi pe homepage, zile libere și
+  articol, 1 pe calculatoare și salariul minim, 0 pe cookies, widget și formular; Chromium, 9 pagini,
+  telefon și PC: CLS 0, fără derulare pe orizontală, slot 336×280.
+- Plăți: datele fiscale pentru România erau deja acceptate (2022); W-8BEN pentru SUA, început de
+  proprietar. „Add tax info” dădea „Couldn't re-authenticate you”: Brave blocase fereastra în care
+  Google cere parola. Rezolvat permițând ferestrele pop-up pentru adsense.google.com.
+- Proprietarul a cerut ca prima plată să nu-l oblige la o formă de activitate. Răspunsul dat: W-8BEN
+  nu creează obligații la ANAF; prima plată vine realist în ianuarie 2027, iar venitul din 2027 se
+  declară până la 25 mai 2028, deci decizia (persoană fizică sau PFA) are timp, cu un contabil.
+- Următorul pas propus, cu cel mai mare câștig posibil: sponsorizarea calculatorului de o firmă de
+  salarizare sau contabilitate (agentul pregătește lista și emailul, proprietarul îl trimite). Neaprobat încă.
