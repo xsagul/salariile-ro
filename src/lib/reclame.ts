@@ -24,18 +24,20 @@ export const ADSENSE_CLIENT = "ca-pub-5894290637571256";
 export const RECLAME_PORNITE = true;
 
 /**
- * Unitățile de anunț din contul AdSense (Anunțuri → După unitatea de anunț → Anunțuri grafice,
- * dimensiune „Adaptabilă”), câte una pe tip de plasare, ca raportul pe unitate să arate unde se
- * câștigă. Valoarea e `data-ad-slot`, numai cifre. Un slot fără unitate nu randează nimic, deci
- * până la completare paginile arată exact ca înainte.
+ * Unitățile de anunț din contul AdSense (Ads → By ad unit → Display ads, dimensiune
+ * „Responsive”). Valoarea e `data-ad-slot`, numai cifre; un slot fără unitate nu randează nimic.
+ *
+ * 15 octombrie 2026: proprietarul a creat o singură unitate, „salariile” (5847831779), folosită
+ * deocamdată pe toate plasările. O unitate separată pe plasare ar arăta în raportul AdSense unde se
+ * câștigă; se înlocuiește aici, fără altă schimbare de cod.
  */
 export const UNITATI = {
   /** Sub calculatoare: după rezultat și după tabelul cu detalii, niciodată între ele. */
-  calculator: "",
+  calculator: "5847831779",
   /** În articole și în paginile informative (zile libere, salariul minim, meserii). */
-  continut: "",
+  continut: "5847831779",
   /** Hubul de locuri de muncă: în lista de anunțuri și sub descrierea unui anunț. */
-  anunturi: "",
+  anunturi: "5847831779",
 } as const;
 
 export type PlasareReclama = keyof typeof UNITATI;
