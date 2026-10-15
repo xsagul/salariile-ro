@@ -5124,3 +5124,11 @@ salariile.ro și domeniile Google.
   declară până la 25 mai 2028, deci decizia (persoană fizică sau PFA) are timp, cu un contabil.
 - Următorul pas propus, cu cel mai mare câștig posibil: sponsorizarea calculatorului de o firmă de
   salarizare sau contabilitate (agentul pregătește lista și emailul, proprietarul îl trimite). Neaprobat încă.
+- **Pe PC, două casete una lângă alta** (cerut de proprietar după ce a văzut o singură casetă de 336 px
+  în mijlocul rândului): `pereche` în `Reclama.tsx`, pe locurile de pe toată lățimea (sub calculatoare,
+  între secțiuni, salariul minim, a doua de pe zile libere și lucrătoare); în coloane și în articole
+  rămâne una. Locul celei de-a doua e rezervat din CSS numai de la `md`, iar caseta se pune în pagină
+  abia după `matchMedia`: AdSense umple casetele în ordinea din pagină, iar una ascunsă ar opri cererile
+  pentru cele de după ea (`test-ui-contracts.mts` pică la o casetă ascunsă în HTML). Aceeași unitate pe
+  ambele: fiecare casetă e o cerere separată. Verificat în Chromium: PC 1280 px, 2 casete de 336×280 la
+  292 și 652 px, 4 cereri pe homepage; telefon 375 px, una pe loc, 0 casete ascunse; CLS 0 peste tot.

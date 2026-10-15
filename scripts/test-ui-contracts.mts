@@ -138,7 +138,12 @@ const faraReclame = [
 for (const f of faraReclame) {
   assert.doesNotMatch(await read(f), /components\/Reclama"|htmlReclama|adsbygoogle/, `${f}: aici nu intră reclame (src/lib/reclame.ts)`);
 }
-assert.doesNotMatch(await read("src/app/components/Reclama.tsx"), /data-ad-format/, "Reclama folosește dimensiunea fixă, nu formatul automat care schimbă înălțimea");
+const componentaReclama = await read("src/app/components/Reclama.tsx");
+assert.doesNotMatch(componentaReclama, /data-ad-format/, "Reclama folosește dimensiunea fixă, nu formatul automat care schimbă înălțimea");
+// AdSense umple casetele în ordinea din pagină: una ascunsă, fără lățime, ar opri cererile pentru
+// toate casetele de după ea. A doua casetă din pereche apare numai pe PC, după verificarea lățimii.
+assert.doesNotMatch(componentaReclama, /<ins[^>]*hidden/, "Nicio casetă de reclamă ascunsă în HTML");
+assert.match(componentaReclama, /matchMedia\(PE_PC\)\.matches[\s\S]*createElement\("ins"\)/, "A doua casetă din pereche se pune în pagină numai pe PC");
 // Paginile legale descriu reclamele care rulează, nu starea dinainte de 15 octombrie 2026.
 assert.match(await read("src/app/(site)/politica-confidentialitate/page.tsx"), /id="reclame"[\s\S]*reclame limitate/, "Politica de confidențialitate trebuie să descrie reclamele și alegerea din CMP");
 assert.doesNotMatch(await read("src/app/(site)/cookies/page.tsx"), /nu afișează reclame|reclamele sunt oprite/, "Pagina de cookies nu mai poate spune că reclamele sunt oprite");

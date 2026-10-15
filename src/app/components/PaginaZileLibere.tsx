@@ -335,7 +335,7 @@ export default function PaginaZileLibere({ an }: { an: AnZileLibere }) {
             </div>
           </div>
 
-          <Reclama plasare="continut" className={INAINTE_DE_SECTIUNE} />
+          <Reclama plasare="continut" pereche className={INAINTE_DE_SECTIUNE} />
 
           {/* FAQ + SURSE */}
           <div className={`${SEPARATOR_SECTIUNE} md:grid md:grid-cols-5 md:gap-8 lg:gap-10`}>
