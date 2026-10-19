@@ -36,6 +36,7 @@ const IMPLEMENTED_PAGES = new Set<string>([
   "/despre",
   "/metodologie",
   "/contact",
+  "/site-uri",
   "/politica-confidentialitate",
   "/cookies",
   "/termeni",
@@ -52,6 +53,7 @@ type FooterLink = { href: string; label: string; external?: boolean };
 // /compara, /date-salarii, /metodologie, /cookies, /termeni,
 // /calculator-ore-suplimentare și /en/salary-calculator (legată de pe homepage).
 // /zile-libere-2026 a revenit pe 26 septembrie 2026, la cererea proprietarului.
+// /site-uri (oferta de site-uri, noindex) a intrat pe 19 octombrie 2026, la cererea proprietarului.
 const FOOTER_GROUPS: Array<{ title: string; links: FooterLink[] }> = [
   {
     title: "Instrumente",
@@ -86,6 +88,7 @@ const FOOTER_GROUPS: Array<{ title: string; links: FooterLink[] }> = [
     links: [
       { href: "/despre", label: "Despre proiect" },
       { href: "/contact", label: "Contact" },
+      { href: "/site-uri", label: "Îți fac site-ul" },
       { href: "/politica-confidentialitate", label: "Politica de confidențialitate" },
     ],
   },
