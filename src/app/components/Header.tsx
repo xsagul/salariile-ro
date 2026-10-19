@@ -57,7 +57,7 @@ const NAV: Item[] = [
   },
 ];
 
-/** Butonul de publicare, în dreapta barei: vizibil și pe telefon, lângă meniu. */
+/** Publicarea unui anunț: buton în dreapta barei pe desktop, ultima intrare din meniu pe telefon. */
 const ANUNT: Leaf = { href: "/adauga-anunt-angajare", label: "Adaugă anunț" };
 
 const isGroup = (i: Item): i is Group => "children" in i;
@@ -286,9 +286,10 @@ export default function Header() {
         <Link
           href={ANUNT.href}
           aria-current={isActive(ANUNT.href) ? "page" : undefined}
-          // Cu contur, nu negru (proprietar, 29 septembrie 2026): pe telefon, pagina calculatorului are
-          // deja trei butoane negre, iar al patrulea, sus, fura privirea de la „Calculează”.
-          className="ml-2 inline-flex min-h-10 items-center whitespace-nowrap rounded-md border border-stone-400 px-3 text-sm font-semibold text-stone-900 hover:border-stone-900 hover:bg-stone-100 md:ml-6"
+          // Numai pe desktop (proprietar, 19 octombrie 2026): pe telefon stă în meniu, ultimul, ca
+          // bara să nu tragă vizitatorii calculatorului spre publicare.
+          // Cu contur, nu negru (29 septembrie 2026), ca să nu concureze cu „Calculează”.
+          className="ml-6 hidden min-h-10 items-center whitespace-nowrap rounded-md border border-stone-400 px-3 text-sm font-semibold text-stone-900 hover:border-stone-900 hover:bg-stone-100 md:inline-flex"
         >
           {ANUNT.label}
         </Link>
@@ -370,6 +371,13 @@ export default function Header() {
               </Link>
             )
           )}
+          <Link
+            href={ANUNT.href}
+            aria-current={isActive(ANUNT.href) ? "page" : undefined}
+            className={`${mobileLink(isActive(ANUNT.href))} border-b border-stone-200`}
+          >
+            {ANUNT.label}
+          </Link>
         </nav>
       </div>
     </>
