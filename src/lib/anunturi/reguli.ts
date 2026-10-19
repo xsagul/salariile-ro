@@ -195,6 +195,17 @@ export const urlAnunt = (a: { id: number; slug: string }) => `/anunt-angajare-${
 export const urlLista = (oras?: string | null, meserie?: string | null) => `/locuri-de-munca${oras ? `/${oras}` : ""}${meserie ? `/${meserie}` : ""}`;
 export const URL_ADAUGA = "/adauga-anunt-angajare";
 
+/**
+ * Importul ANOFM din 30 septembrie 2026 a primit ID-urile 4–790 (1–3 sunt ale prietenilor
+ * proprietarului, peste 790 le pun angajatorii). Din 19 octombrie 2026, la decizia proprietarului,
+ * aceste anunțuri rămân pe site și în liste, dar sunt noindex și ies din sitemap: din 10 octombrie,
+ * la două zile după actualizarea anti-spam din septembrie, Google le-a retrogradat (pe cele 348
+ * încă active, afișările au scăzut cu 71%, iar poziția a trecut de la 7 la 20). Textul lor e copiat
+ * de pe mediere.anofm.ro, deci e duplicat. Un import nou trebuie să-și adauge intervalul aici.
+ */
+const IMPORTURI_ANOFM: readonly [number, number][] = [[4, 790]];
+export const dinImportAnofm = (id: number) => IMPORTURI_ANOFM.some(([de, pana]) => id >= de && id <= pana);
+
 /** Partea din URL a anunțului: „sofer-distributie-cluj-napoca” (fără „anunt angajare” repetat). */
 export function slugAnunt(titlu: string, oras: string): string {
   const t = slug(titlu).replace(/^(anunt-)?(de-)?angaj(are|am|ez|eaza)-/, "");

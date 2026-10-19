@@ -6,7 +6,7 @@ import { cauta, cheieUat, numarDinText, type Localitate } from "../src/lib/anunt
 import { MARCAJE, completeazaSablon } from "../src/lib/anunturi/sablon";
 import { EMAIL_ACTIV } from "../src/lib/anunturi/config";
 import { MESERII_ANUNTURI, distanta, esteDomeniu, ghicesteMeserie, grupMeserie, numeMeserieAnunt, radacina, slugMeserie, slugurileGrupului, variante } from "../src/lib/anunturi/meserii";
-import { esteMobil, linkApel, linkWhatsApp, orasSlug, slugAnunt, telefonAfisat, telefonCurat, urlAnunt, urlLista, valideaza, type Eroare } from "../src/lib/anunturi/reguli";
+import { dinImportAnofm, esteMobil, linkApel, linkWhatsApp, orasSlug, slugAnunt, telefonAfisat, telefonCurat, urlAnunt, urlLista, valideaza, type Eroare } from "../src/lib/anunturi/reguli";
 
 const MESERII = new Set(["barman", "sofer-distributie"]);
 const bun = {
@@ -111,6 +111,13 @@ assert.equal(slugAnunt("Șofer distribuție Cluj-Napoca", "Cluj-Napoca"), "sofer
 assert.equal(urlAnunt({ id: 123, slug: "barman-bar-centru-bucuresti" }), "/anunt-angajare-barman-bar-centru-bucuresti-123");
 assert.equal(urlLista("bucuresti", "barman"), "/locuri-de-munca/bucuresti/barman");
 assert.equal(urlLista(null, "barman"), "/locuri-de-munca/barman");
+
+// Importul ANOFM (ID 4–790) e noindex și lipsește din sitemap; cele puse de oameni rămân în Google.
+for (const id of [4, 358, 790]) assert.ok(dinImportAnofm(id), `ID ${id} e din importul ANOFM`);
+for (const id of [1, 2, 3, 791, 792, 5000]) assert.ok(!dinImportAnofm(id), `ID ${id} nu e din importul ANOFM`);
+const pagini = fs.readFileSync("worker/pagini.ts", "utf8");
+assert.match(pagini, /indexabil: !dinImportAnofm\(a\.id\)/, "pagina anunțului ANOFM e noindex");
+assert.match(pagini, /anunturi\.filter\(\(a\) => !dinImportAnofm\(a\.id\)\)/, "sitemap-ul sare peste importul ANOFM");
 assert.equal(urlLista(null, null), "/locuri-de-munca");
 
 // Șablonul: marcajele se înlocuiesc și în <head>, și în datele React din <script>, cu escaparea locului.

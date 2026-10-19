@@ -1,7 +1,7 @@
 // Paginile de anunțuri, puse în șablonul static /locuri-de-munca/sablon (header, footer, CSS).
 // Adresele (verificate în Google România, 28 septembrie 2026) sunt deținute de src/lib/anunturi/reguli.ts.
 import type { Env } from "./index";
-import { CONTRACTE, JUDETE, LOCURI_MUNCA, NORME, URL_ADAUGA, esteMobil, linkApel, linkDistribuieFacebook, linkDistribuieWhatsApp, linkWhatsApp, telefonAfisat, urlAnunt, urlLista, type Contract, type LocMunca, type Norma } from "../src/lib/anunturi/reguli";
+import { CONTRACTE, JUDETE, LOCURI_MUNCA, NORME, URL_ADAUGA, dinImportAnofm, esteMobil, linkApel, linkDistribuieFacebook, linkDistribuieWhatsApp, linkWhatsApp, telefonAfisat, urlAnunt, urlLista, type Contract, type LocMunca, type Norma } from "../src/lib/anunturi/reguli";
 import { completeazaSablon } from "../src/lib/anunturi/sablon";
 import { htmlReclama } from "../src/lib/reclame";
 import { DOMENII, MESERII_ANUNTURI, esteDomeniu, grupMeserie, numeDomeniu, slugurileGrupului, variante, cuvantAfisat } from "../src/lib/anunturi/meserii";
@@ -762,7 +762,8 @@ export async function paginaAnunt(req: Request, env: Env, id: number, slug: stri
     ["Locuri de muncă", "/locuri-de-munca"], [oras(a), urlLista(a.oras_slug, null)],
     ...(a.meserie ? [[meserie!, listaMeserie] as [string, string]] : []), [a.titlu, null],
   ]);
-  return inSablon(req, env, { titlu, descriere: desc.slice(0, 158), canonic, indexabil: true, continut, jsonLd: [jsonLd, fir] });
+  // Importul ANOFM rămâne pe site, dar nu în Google (reguli.ts, `dinImportAnofm`).
+  return inSablon(req, env, { titlu, descriere: desc.slice(0, 158), canonic, indexabil: !dinImportAnofm(a.id), continut, jsonLd: [jsonLd, fir] });
 }
 
 export async function sitemap(env: Env): Promise<Response> {
@@ -770,7 +771,7 @@ export async function sitemap(env: Env): Promise<Response> {
   const urls = [
     `<url><loc>${SITE}/locuri-de-munca</loc></url>`,
     ...liste.map((l) => `<url><loc>${SITE}${urlLista(l.oras, l.meserie)}</loc></url>`),
-    ...anunturi.map((a) => `<url><loc>${SITE}${urlAnunt(a)}</loc><lastmod>${a.confirmat_la!.slice(0, 10)}</lastmod></url>`),
+    ...anunturi.filter((a) => !dinImportAnofm(a.id)).map((a) => `<url><loc>${SITE}${urlAnunt(a)}</loc><lastmod>${a.confirmat_la!.slice(0, 10)}</lastmod></url>`),
   ];
   return new Response(`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls.join("")}</urlset>`,
     { headers: { "content-type": "application/xml; charset=utf-8", "cache-control": "public, max-age=3600" } });

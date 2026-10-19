@@ -52,6 +52,11 @@ Ce nu s-a schimbat, fiindcă protejează chiar venitul (traficul organic și con
    obișnuite, fără nicio diferență vizibilă, cu telefonul din ofertă și data publicării de la ANOFM;
    expiră la data declarată acolo. Riscul (numere de telefon publicate fără acordul persoanei) i-a
    fost prezentat și l-a asumat. Scriptul: `scripts/anunturi/importa-anofm.mts`.
+   **Din 19 octombrie 2026, la decizia proprietarului, importul ANOFM (ID 4–790) e noindex și lipsește
+   din sitemap**; rămâne pe site și în liste. Google îl retrogradase din 10 octombrie, imediat după
+   actualizarea anti-spam din septembrie (textul e copiat de la ANOFM). Anunțurile puse de oameni și
+   listele rămân indexate. Regula, cu intervalele de ID: `dinImportAnofm` din `reguli.ts`; cifrele, în
+   `PROGRES.md`. Un import nou nu intră în Google fără o decizie nouă.
 3. **Monetizarea:** pe 24 august 2026, „abia după acoperirea nișei” — vânzarea produsului, vânzarea traficului, AdSense, abonament de tip SmartBill sau altceva. **Din 15 octombrie 2026 pornește acum, în paralel cu 1 și 2** (mandatul de mai sus).
 
 Până pe 15 octombrie 2026 monetizarea a fost respinsă explicit („activul se construiește întâi”); mandatul de mai sus a ridicat interdicția. Versiuni anterioare ale acestui fișier spuneau că obiectivul e „tranziție profesională către front-end" — era greșit și a dus o sesiune întreagă pe direcția greșită.

@@ -5132,3 +5132,60 @@ salariile.ro și domeniile Google.
   pentru cele de după ea (`test-ui-contracts.mts` pică la o casetă ascunsă în HTML). Aceeași unitate pe
   ambele: fiecare casetă e o cerere separată. Verificat în Chromium: PC 1280 px, 2 casete de 336×280 la
   292 și 652 px, 4 cereri pe homepage; telefon 375 px, una pe loc, 0 casete ascunse; CLS 0 peste tot.
+
+## 19 octombrie 2026 — unde s-au pierdut vizitatorii; importul ANOFM scos din Google
+
+**Cererea proprietarului:** întâi „maximizează venitul din AdSense și estimează cât pe zi”, apoi
+„nu umplem de reclame, vedem unde i-am pierdut și de ce”, apoi „hubul ne-a dat downgrade?”.
+
+**AdSense, citit în cont (Chrome).** Auto ads e OFF la 19 octombrie; merge doar unitatea „salariile”
+din cod. Zilele cu Auto ads (14–15 oct., toate formatele din pagină): ~1 € pe zi, 1,15 € la 1.000 de
+afișări de pagină. Doar unitatea din cod (17–18 oct.): ~0,38 € la 1.000, adică ~0,25 € într-o zi
+lucrătoare și ~0,10 € în weekend. Pe formate, 13–18 oct.: în pagină (Auto) 43,5% din venit, vinietă
+33,2% (1,39 € la 1.000 de impresii, 94% vizibilitate), unitatea din cod 18,1%, ancoră și laterale 5,2%.
+Estimare pe zi, la traficul de acum: ~1,2 lei doar cu unitatea din cod, ~2,2 lei cu vinietă și ancoră,
+~4 lei cu toate formatele. Proprietarul a ales să nu pornească nimic în plus; contul n-a fost atins.
+
+**Traficul (GSC).** Săptămânal, clicurile au stat la ~3.900–4.300 de la mijlocul lui septembrie; 12–17
+oct. a fost cu 12% sub aceleași zile din săptămâna dinainte. Weekendul face constant o treime dintr-o zi
+lucrătoare, din iulie: nu e o pierdere. Pe 5–10 oct. vs 12–17 oct., pierderea e aproape toată pe nucleu:
+„calculator salariu net” 425 → 180 de clicuri și „calcul salariu net” 215 → 91, la aceleași afișări
+(poziția 2,9 → 3,6 și 2,7 → 3,3). Google ne rotește de săptămâni între locul 2 (~100 de clicuri pe zi
+pe „calculator salariu net”) și locul 3–4 (~30). Pe 19 oct., pe „calculator salariu net”, „calcul
+salariu net” și „calculator salariu”, ordinea e aceeași: calculator-salarii.ro, impozitsalariu.ro,
+salaria.ro (calculator vechi, 86 de cuvinte), noi. Cauza diferenței e **rezumatul AI**, pus între
+rezultatul 2 și 3: pe desktop, la locul 4, rezultatul nostru începe la 1.145 px, sub primul ecran.
+Rezumatul ne citează („Calculator Salariu Net Salariile.ro”). Rotația a început pe 12 oct., înainte de
+reclame (15 oct. seara), deci reclamele n-au pornit-o. Sezonier: `/zile-lucratoare-2026` −171 de
+clicuri, compensat parțial de 2027 (+71). Un coș fix de 81 de interogări (fără anunțuri) are poziția
+medie 3,90 / 3,98 în 7–19 sept., 3,56 / 3,47 în săptămânile lansării hubului, 3,62 și 3,82 în
+octombrie: restul site-ului a dat înapoi câștigul de la sfârșitul lui septembrie, dar nu stă mai rău
+decât înainte de hub. Fără acțiuni manuale în GSC; crawl-ul e sănătos (153 ms, 96% răspunsuri 200).
+
+**Hubul, ANOFM vs postate direct.** Sursa se citește din ID: 4–790 importul ANOFM, 1–3 și peste 790
+puse de oameni (D1 nu s-a putut citi: wrangler n-are acces la cont din acest terminal). Anunțurile
+au ajuns la ~30 de clicuri pe zi pe 5–9 oct. și au căzut de pe 10 oct., la două zile după ce s-a
+încheiat actualizarea anti-spam din septembrie (24 sept. – 8 oct., conform Search Engine Watch).
+Pe aceleași 348 de anunțuri ANOFM încă active, 3–9 vs 11–17 oct.: afișări 1.587 → 467 (−71%),
+clicuri 111 → 29, poziție 7,2 → 20,0; 195 dintre ele n-au mai avut nicio afișare. Postate direct sunt
+5, prea puține pentru o concluzie: cel cu date (`chi-lin-bao`, ID 3) a ținut locul ~2 până pe 13 oct.,
+apoi a coborât la 4–6. Listele `/locuri-de-munca*` nu au căzut: afișări 621 → 719.
+
+**Decizia proprietarului (19 octombrie):** importul ANOFM devine noindex și iese din sitemap; rămâne pe
+site și în liste. Cele postate direct și listele rămân indexate. Cod: `dinImportAnofm` în
+`src/lib/anunturi/reguli.ts` (intervalele de ID, un singur proprietar), `paginaAnunt` și `sitemap` în
+`worker/pagini.ts`; `indexare-google.mjs` le sare automat, fiindcă citește sitemap-ul. Test în
+`test-anunturi.mts`. **De urmărit:** dacă nucleul și restul site-ului își revin în 2–4 săptămâni după
+ce Google recrawlează anunțurile (`node scripts/gsc.mjs inspect` pe un ID din 4–790 arată noindex).
+
+**Verificat:** `npm test` exit 0 (cu testul nou din `test-anunturi.mts`), `npm run lint` 0 erori,
+`npm run build` trece, `tsc -p worker` trece. Worker-ul local (`wrangler dev --local`) pe o copie D1 cu
+un anunț pe ID 10 și unul pe ID 800: ID 10 răspunde 200 cu `noindex, follow` și apare în
+`/locuri-de-munca` și `/locuri-de-munca/bucuresti`; ID 800 are `index, follow`; listele au `index,
+follow`; sitemap-ul are listele și ID 800, nu și ID 10.
+- Pe Windows, un worktree nou primește `src/data/meserii-catalog.json` cu CRLF, iar
+  `genereaza-catalog-meserii.mts --check` pică pe diferența de terminații de rând, nu pe conținut.
+  Pe CI (Linux) nu apare.
+- Butonul de donații, întrebat tot pe 19 octombrie: estimat la 10–150 de lei pe lună (1–10 donații),
+  cam cât unitatea AdSense; contul de încasare și încadrarea fiscală (cu un contabil, înainte de
+  pornire) sunt ale proprietarului. Nimic construit.

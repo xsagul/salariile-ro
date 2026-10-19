@@ -1,12 +1,13 @@
 // Anunță la Google (Indexing API) anunțurile publicate care n-au trecut prin formular: cele de dinainte
-// de 3 octombrie 2026 și importurile ANOFM. Cele noi din formular le anunță Worker-ul (worker/google.ts).
+// de 3 octombrie 2026. Cele noi din formular le anunță Worker-ul (worker/google.ts). Importurile ANOFM
+// nu mai intră: din 19 octombrie 2026 sunt noindex și lipsesc din sitemap (`dinImportAnofm`, reguli.ts).
 //
 //   node scripts/anunturi/indexare-google.mjs            # cel mult 150 pe rulare
 //   node scripts/anunturi/indexare-google.mjs --max 50
 //   node scripts/anunturi/indexare-google.mjs --proba    # arată ce ar trimite, fără să trimită
 //
 // Cota Google: 200 de notificări pe zi pe proiect; 150 lasă loc formularului. Se rulează zilnic până
-// spune „nimic de trimis” și după fiecare import ANOFM. Numai paginile cu JobPosting (Google nu
+// spune „nimic de trimis”. Numai paginile cu JobPosting (Google nu
 // permite API-ul pentru altele). Ce s-a trimis stă în .gsc/indexare-google.json (nu e în Git).
 import fs from "node:fs";
 import crypto from "node:crypto";
