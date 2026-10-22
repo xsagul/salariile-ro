@@ -110,6 +110,7 @@ await Promise.all(Array.from({ length: PARALEL }, async () => {
 
 // Analiza.
 const intrari = new Map(); // țintă → { total, continut, surse: Set }
+const ancore = new Map();  // țintă → Map(text → număr), numai din conținut: cu ce cuvinte e legată pagina
 const rezultat = { moarte: [], redirectionari: [], spreNoindex: new Map(), nofollow: [], textGol: [], textGeneric: [], gazdaGresita: [], acelasiTextAdreseDiferite: [] };
 const textSpreTinte = new Map();
 for (const [sursa, p] of pagini) {
@@ -117,6 +118,7 @@ for (const [sursa, p] of pagini) {
     if (l.tinta === sursa) continue;
     const i = intrari.get(l.tinta) ?? { total: 0, continut: 0, surse: new Set() };
     i.total++; if (l.zona === "continut") i.continut++; i.surse.add(sursa);
+    if (l.zona === "continut" && l.text) { const m = ancore.get(l.tinta) ?? new Map(); m.set(l.text, (m.get(l.text) ?? 0) + 1); ancore.set(l.tinta, m); }
     intrari.set(l.tinta, i);
     const t = tinte.get(l.tinta) ?? pagini.get(l.tinta);
     if (t && (t.status >= 400 || t.status === 0)) rezultat.moarte.push({ sursa, tinta: l.tinta, status: t.status, text: l.text });
@@ -151,7 +153,8 @@ const raport = {
   spreNoindex: Object.fromEntries([...rezultat.spreNoindex].sort((a, b) => b[1] - a[1]).slice(0, 50)),
   nofollow: rezultat.nofollow, textGol: rezultat.textGol, textGeneric: rezultat.textGeneric, gazdaGresita: rezultat.gazdaGresita,
   acelasiTextAdreseDiferite: rezultat.acelasiTextAdreseDiferite, canonicAltaAdresa, sitemapNeindexabil,
-  intrari: Object.fromEntries([...cheiSitemap].map((c) => [c, { total: intrari.get(c)?.total ?? 0, continut: intrari.get(c)?.continut ?? 0, surse: intrari.get(c)?.surse.size ?? 0, adancime: pagini.get(c)?.adancime ?? null }])),
+  intrari: Object.fromEntries([...cheiSitemap].map((c) => [c, { total: intrari.get(c)?.total ?? 0, continut: intrari.get(c)?.continut ?? 0, surse: intrari.get(c)?.surse.size ?? 0, adancime: pagini.get(c)?.adancime ?? null,
+    ancore: [...(ancore.get(c) ?? [])].sort((a, b) => b[1] - a[1]).slice(0, 8) }])),
 };
 fs.mkdirSync("research/audit-linkuri", { recursive: true });
 const fisier = `research/audit-linkuri/${raport.data.slice(0, 10)}.json`;

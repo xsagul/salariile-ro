@@ -5263,3 +5263,24 @@ anunțurilor cu nume de firme mari, butonul „e numărul meu”, numerele din i
 - **De unde a venit anunțul Froo (796):** Android/Chrome, intrat direct pe prima pagină la 16:47 (ora
   României), „Adaugă anunț” la 16:54, publicat la 16:57; înainte de postarea pe Reddit. Pentru 795
   (12 octombrie) Cloudflare RUM are doar eșantion ~1/10 la date mai vechi: vizita nu e în el.
+
+## 22–23 octombrie 2026 — auditul linkurilor interne (bucla SEO, tura 1–2)
+
+`node scripts/audit-linkuri.mjs` parcurge site-ul live (homepage + ambele sitemap-uri, ~1.500 de pagini,
+~3 minute) și scrie `research/audit-linkuri/<data>.json`: linkuri moarte, redirecționări, orfane,
+adâncimea în clicuri, spre noindex, nofollow, texte goale/generice și textele de link primite de
+fiecare pagină din sitemap. Reperul: ghidul Google „Link best practices”.
+
+- **Tura 1:** 0 moarte, 0 redirecționări, 0 nofollow, 0 texte goale. Probleme: 42 de liste de joburi
+  din sitemap neatinse din homepage (variantele de meserie, legate doar din anunțurile de pe paginile
+  2+, blocate de robots.txt), `/date-salarii` orfană, „zile libere 2027” cu 7 linkuri interne
+  (12.900 de afișări în 28 de zile, locul 8,1, CTR 0,4%).
+- **Reparat** (`f5aa0ce`): numele din „Cuprinde și anunțurile de…” sunt linkuri spre listele
+  variantelor; `/date-salarii` legată din „Pagini conexe” pe `/salariu-mediu`; „Zile libere 2027” în
+  subsol; „Avem și cifră proprie” → „Cifra noastră din anunțuri”.
+- **Tura 2:** neatinse 42 → 0, orfane 1 → 0; 20 de variante la 4 clicuri (acceptat). Două 500 pe
+  pagini statice erau de moment, în timpul publicării: 40 de cereri ulterioare, toate 200, 0,05–0,15 s.
+  Linkurile spre homepage: „Calculează netul” ×142, „calculatorul de salariu net” ×12,
+  „Calculator salariu net” ×8.
+- Lăsat intenționat: calculatorul de șomaj are link doar din subsol (nicio pagină nu vorbește despre
+  șomaj; un link în text ar fi forțat); butoanele „Descarcă CSV” (fișiere noindex).
