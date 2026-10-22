@@ -504,8 +504,6 @@ export async function paginaLista(req: Request, env: Env, orasSlug: string | nul
   }
   const pagini = Math.max(1, Math.ceil(total / PE_PAGINA));
   const numeM = meserie ? NUME_MESERIE.get(meserie)!.toLowerCase() : "";
-  // Sinonimele cumulate în listă, spuse pe față: altfel un anunț de „chelner” la „ospătar” ar părea o greșeală.
-  const alteNume = meserie ? slugurileGrupului(meserie).filter((x) => x !== meserie).map((x) => NUME_MESERIE.get(x)!.toLowerCase()).join(", ") : "";
   // Domeniul intră în titlu, după meserie. Textul căutat nu (proprietar, 29 septembrie 2026): pe telefon
   // rupea titlul pe trei rânduri, cu greșeala de tastare în el („parman”); stă în câmp și în etichetă.
   const ce = numeM || (extra.domeniu ? numeDomeniu(extra.domeniu) : "");
@@ -531,6 +529,13 @@ export async function paginaLista(req: Request, env: Env, orasSlug: string | nul
   // Cuvintele corectate din catalog, spuse pe față: „barmn” caută și „barman”. Rădăcinile nu se arată.
   const corectii = extra.q ? [...new Set(cuvinteCautate(extra.q).flatMap((w) => variante(w).filter((x) => !w.startsWith(x) && !x.startsWith(w))))] : [];
   const cuFiltre = Boolean(extra.norma || extra.domeniu || extra.q || extra.contract || extra.loc || extra.experienta);
+  // Sinonimele cumulate în listă, spuse pe față: altfel un anunț de „chelner” la „ospătar” ar părea o greșeală.
+  // Fiecare nume e și link spre lista lui, când lista intră în Google (22 octombrie 2026): până atunci
+  // listele „manipulant marfă” sau „barmaniță” erau în sitemap, dar fără niciun link de pe site.
+  const alteNumeHtml = meserie ? slugurileGrupului(meserie).filter((x) => x !== meserie).map((x) => {
+    const n = esc(NUME_MESERIE.get(x)!.toLowerCase());
+    return total >= PRAG_INDEX && !cuFiltre ? `<a class="underline underline-offset-2 hover:text-stone-900" href="${urlLista(orasSlug, x)}">${n}</a>` : n;
+  }).join(", ") : "";
 
   // Filtrele alese, ca etichete deasupra listei: un clic pe una o scoate.
   const eticheta = (href: string, text: string) => `<a href="${href}" class="inline-flex min-h-9 items-center gap-1.5 rounded-full bg-stone-900 px-3 text-sm font-medium text-white hover:bg-stone-700">${esc(text)}<span aria-hidden="true" class="text-stone-300">✕</span><span class="sr-only"> (scoate filtrul)</span></a>`;
@@ -586,7 +591,7 @@ export async function paginaLista(req: Request, env: Env, orasSlug: string | nul
   // pe PC, coloana din stânga și, deasupra listei, filtrele alese (sau „Toate meseriile, toată țara”) și ordinea.
   const continut = `${breadcrumb}
     <h1 class="text-[28px] font-bold leading-tight tracking-[-0.02em] text-stone-900 sm:text-[34px]">${esc(titlu.charAt(0).toUpperCase() + titlu.slice(1))}</h1>
-    <p class="mt-3 max-w-prose text-base text-stone-600">Fiecare anunț are salariul lunar, cu brutul sau netul spus clar. Aplici direct la angajator, fără cont.${alteNume ? ` Cuprinde și anunțurile de ${esc(alteNume)}.` : ""}</p>
+    <p class="mt-3 max-w-prose text-base text-stone-600">Fiecare anunț are salariul lunar, cu brutul sau netul spus clar. Aplici direct la angajator, fără cont.${alteNumeHtml ? ` Cuprinde și anunțurile de ${alteNumeHtml}.` : ""}</p>
     <div class="mt-5 grid gap-2 lg:hidden" data-doar-cu-script hidden>
       ${cautare}
       <div class="grid grid-cols-2 gap-2">

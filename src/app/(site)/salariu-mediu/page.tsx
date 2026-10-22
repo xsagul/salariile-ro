@@ -498,6 +498,7 @@ export default function SalariuMediuPage() {
                 <ul className={`flex flex-col gap-2 text-sm ${links}`}>
                   <li><Link href="/salariu-minim">Salariul minim 2026</Link></li>
                   <li><Link href="/salarii/locuri-vacante">Locuri de muncă vacante în economie</Link></li>
+                  <li><Link href="/date-salarii">Datele salariale descărcabile, în CSV și JSON</Link></li>
                   <li><Link href="/">Calculator salariu net</Link></li>
                   <li><Link href="/zile-libere-2026">Zile libere 2026</Link></li>
                 </ul>

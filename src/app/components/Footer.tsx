@@ -30,6 +30,7 @@ const IMPLEMENTED_PAGES = new Set<string>([
   "/compara",
   "/deducere-personala-2026",
   "/zile-libere-2026",
+  "/zile-libere-2027",
   "/zile-lucratoare-2026",
   "/date-salarii",
   "/noutati",
@@ -74,6 +75,9 @@ const FOOTER_GROUPS: Array<{ title: string; links: FooterLink[] }> = [
       { href: "/salariu-mediu", label: "Salariu mediu 2026" },
       { href: "/deducere-personala-2026", label: "Deducere personală 2026" },
       { href: "/zile-libere-2026", label: "Zile libere 2026" },
+      // 22 octombrie 2026: „zile libere 2027” avea 12.900 de afișări în 28 de zile, pe locul 8,1, cu
+      // doar 7 linkuri interne; valul de căutări pentru anul următor vine în noiembrie–ianuarie.
+      { href: "/zile-libere-2027", label: "Zile libere 2027" },
       { href: "/zile-lucratoare-2026", label: "Zile lucrătoare 2026" },
       { href: "/salarii", label: "Salarii pe meserii" },
       { href: "/locuri-de-munca", label: "Locuri de muncă" },

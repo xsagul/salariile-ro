@@ -120,7 +120,7 @@ export default function Clasament() {
                     <td className="p-3 text-stone-600">
                       {x.a?.medianBounds ? (
                         <Link className="font-medium text-stone-800 underline" href={`/salarii/${x.m.slug}`}>
-                          Avem și cifră proprie
+                          Cifra noastră din anunțuri
                         </Link>
                       ) : (
                         <span className="font-medium text-stone-800">Medie declarată</span>
