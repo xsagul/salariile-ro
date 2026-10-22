@@ -1,7 +1,7 @@
 // Paginile de anunțuri, puse în șablonul static /locuri-de-munca/sablon (header, footer, CSS).
 // Adresele (verificate în Google România, 28 septembrie 2026) sunt deținute de src/lib/anunturi/reguli.ts.
 import type { Env } from "./index";
-import { CONTRACTE, JUDETE, LOCURI_MUNCA, NORME, URL_ADAUGA, dinImportAnofm, esteMobil, linkApel, linkDistribuieFacebook, linkDistribuieWhatsApp, linkWhatsApp, telefonAfisat, urlAnunt, urlLista, type Contract, type LocMunca, type Norma } from "../src/lib/anunturi/reguli";
+import { CONTRACTE, JUDETE, LOCURI_MUNCA, NORME, URL_ADAUGA, dinImportAnofm, esteMobil, linkDistribuieFacebook, linkDistribuieWhatsApp, urlAnunt, urlLista, type Contract, type LocMunca, type Norma } from "../src/lib/anunturi/reguli";
 import { completeazaSablon } from "../src/lib/anunturi/sablon";
 import { htmlReclama } from "../src/lib/reclame";
 import { DOMENII, MESERII_ANUNTURI, esteDomeniu, grupMeserie, numeDomeniu, slugurileGrupului, variante, cuvantAfisat } from "../src/lib/anunturi/meserii";
@@ -647,12 +647,14 @@ export async function paginaAnunt(req: Request, env: Env, id: number, slug: stri
         <p class="mt-2 text-sm"><a class="underline underline-offset-2" href="${listaMeserie}">Vezi anunțurile ${meserie ? `pentru ${esc(meserie.toLowerCase())} ` : ""}din ${esc(oras(a))}</a></p></div>` });
   }
 
-  // Contactul: un buton care sună, cu numărul scris pe el, și unul de WhatsApp la mobil (proprietar,
-  // 28 septembrie 2026). Fără CV prin site, fără chat, fără email.
+  // Contactul: un buton care sună și unul de WhatsApp la mobil (proprietar, 28 septembrie 2026). Fără
+  // CV prin site, fără chat, fără email. Numărul nu stă în pagină (22 octombrie 2026, ca „Arată
+  // numărul” pe OLX): vine din /api/anunturi/telefon la prima apăsare. Un număr pus de altcineva
+  // într-un anunț fals nu ajunge astfel în Google; pe telefon, aceeași apăsare și sună.
   const tel = a.telefon ?? "";
   const contact = tel ? `
-    <a href="${linkApel(tel)}" class="flex min-h-12 items-center justify-center gap-2 rounded-md bg-stone-900 px-4 text-lg font-semibold text-white hover:bg-stone-700" data-contact="apel">Sună: ${telefonAfisat(tel)}</a>
-    ${esteMobil(tel) ? `<a href="${esc(linkWhatsApp(tel, a.titlu))}" rel="noopener" target="_blank" class="mt-3 flex min-h-12 items-center justify-center gap-2 rounded-md border border-stone-300 bg-surface px-4 text-lg font-semibold text-stone-900 hover:border-stone-500" data-contact="whatsapp">Scrie pe WhatsApp</a>` : ""}` : "";
+    <a href="#" class="flex min-h-12 items-center justify-center gap-2 rounded-md bg-stone-900 px-4 text-lg font-semibold text-white hover:bg-stone-700" data-contact="apel" data-telefon="apel">Arată numărul de telefon</a>
+    ${esteMobil(tel) ? `<a href="#" class="mt-3 flex min-h-12 items-center justify-center gap-2 rounded-md border border-stone-300 bg-surface px-4 text-lg font-semibold text-stone-900 hover:border-stone-500" data-contact="whatsapp" data-telefon="whatsapp">Scrie pe WhatsApp</a>` : ""}` : "";
   // Pe telefon, contactul stă lipit jos din prima clipă (proprietar, 7 octombrie 2026, ca pe
   // anuntul.ro): până atunci numărul era sub descriere, la câteva ecrane de derulat. Aceleași linkuri
   // și același `data-contact` ca butoanele din pagină, deci clicurile intră în același eveniment GA4.
@@ -662,8 +664,8 @@ export async function paginaAnunt(req: Request, env: Env, id: number, slug: stri
     <style>@media (max-width: 1023.98px) { body { padding-bottom: 4.75rem; } }</style>
     <div class="fixed inset-x-0 bottom-0 z-30 border-t border-stone-200 bg-canvas px-3 pt-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] lg:hidden" data-bara-contact>
       <div class="mx-auto grid max-w-xl gap-2 ${esteMobil(tel) ? "grid-cols-[1.4fr_1fr]" : ""}">
-        <a href="${linkApel(tel)}" class="flex min-h-12 items-center justify-center gap-2 whitespace-nowrap rounded-md bg-stone-900 px-2 text-base font-semibold text-white" data-contact="apel" aria-label="Sună: ${telefonAfisat(tel)}">${SVG("size-5 shrink-0", D_TELEFON)}${telefonAfisat(tel)}</a>
-        ${esteMobil(tel) ? `<a href="${esc(linkWhatsApp(tel, a.titlu))}" rel="noopener" target="_blank" class="flex min-h-12 items-center justify-center gap-2 whitespace-nowrap rounded-md border border-stone-300 bg-surface px-2 text-base font-semibold text-stone-900" data-contact="whatsapp">${SVG("size-5 shrink-0", D_MESAJ)}WhatsApp</a>` : ""}
+        <a href="#" class="flex min-h-12 items-center justify-center gap-2 whitespace-nowrap rounded-md bg-stone-900 px-2 text-base font-semibold text-white" data-contact="apel" data-telefon="apel">${SVG("size-5 shrink-0", D_TELEFON)}<span>Sună</span></a>
+        ${esteMobil(tel) ? `<a href="#" class="flex min-h-12 items-center justify-center gap-2 whitespace-nowrap rounded-md border border-stone-300 bg-surface px-2 text-base font-semibold text-stone-900" data-contact="whatsapp" data-telefon="whatsapp">${SVG("size-5 shrink-0", D_MESAJ)}WhatsApp</a>` : ""}
       </div>
     </div>` : "";
   // Locul: adresa, harta OpenStreetMap (fără cookies Google pe pagină) și linkuri spre Google Maps.
@@ -725,6 +727,38 @@ export async function paginaAnunt(req: Request, env: Env, id: number, slug: stri
             var c = e.target.closest && e.target.closest("[data-contact]");
             if (!c || !window.gtag) return;
             try { window.gtag("event", "contact_anunt", { element: c.getAttribute("data-contact"), link_url: location.pathname, zona: "anunturi", transport_type: "beacon" }); } catch (x) {}
+          });
+          // Numărul vine la prima apăsare și se scrie pe toate butoanele „apel”. Pe telefon, apăsarea
+          // sună direct; pe calculator doar arată numărul. WhatsApp: fereastra se deschide sincron, ca
+          // browserul să n-o blocheze, și primește adresa după răspuns.
+          var numar = null;
+          function cereNumar() {
+            if (!numar) numar = fetch("/api/anunturi/telefon?id=${a.id}", { credentials: "same-origin" }).then(function (r) { if (!r.ok) throw r; return r.json(); });
+            return numar;
+          }
+          function scrieNumar(t) {
+            document.querySelectorAll('[data-telefon="apel"]').forEach(function (b) {
+              b.href = t.apel;
+              var s = b.querySelector("span");
+              if (s) s.textContent = t.afisat; else b.textContent = "Sună: " + t.afisat;
+            });
+            document.querySelectorAll('[data-telefon="whatsapp"]').forEach(function (b) { if (t.whatsapp) { b.href = t.whatsapp; b.target = "_blank"; b.rel = "noopener"; } });
+          }
+          document.addEventListener("click", function (e) {
+            var b = e.target.closest && e.target.closest("[data-telefon]");
+            if (!b || b.getAttribute("href") !== "#") return;
+            e.preventDefault();
+            var wa = b.getAttribute("data-telefon") === "whatsapp", fereastra = wa ? window.open("", "_blank") : null;
+            var atingere = window.matchMedia("(pointer: coarse)").matches;
+            cereNumar().then(function (t) {
+              scrieNumar(t);
+              if (wa && t.whatsapp) { if (fereastra) fereastra.location.href = t.whatsapp; else location.href = t.whatsapp; }
+              else if (!wa && atingere) location.href = t.apel;
+            }).catch(function () {
+              if (fereastra) fereastra.close();
+              numar = null;
+              b.textContent = "Anunțul nu mai e publicat";
+            });
           });
           document.addEventListener("click", function (e) {
             var b = e.target.closest && e.target.closest("[data-copiaza]");

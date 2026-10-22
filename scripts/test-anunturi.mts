@@ -126,6 +126,14 @@ const dateWorker = fs.readFileSync("worker/date.ts", "utf8");
 assert.match(dateWorker, /scosDeProprietar\(a\.id\) \? \{ \.\.\.a, stare: "sters" \}/, "pagina anunțului scos dă 410");
 assert.match(dateWorker, /r\.results\.filter\(\(a\) => !scosDeProprietar\(a\.id\)\)/, "listele nu arată anunțurile scoase");
 assert.match(dateWorker, /\.filter\(\(a\) => !scosDeProprietar\(a\.id\)\);/, "sitemap-ul nu arată anunțurile scoase");
+
+// Numărul de telefon nu stă în pagina anunțului (22 octombrie 2026): vine din API la apăsare.
+assert.doesNotMatch(pagini, /linkApel\(|linkWhatsApp\(|telefonAfisat\(/, "pagina anunțului nu scrie numărul în HTML");
+assert.match(pagini, /data-telefon="apel"/, "butonul de apel cere numărul la apăsare");
+assert.match(pagini, /\/api\/anunturi\/telefon\?id=/, "pagina cere numărul din API");
+const apiWorker = fs.readFileSync("worker/api.ts", "utf8");
+assert.match(apiWorker, /cale === "\/api\/anunturi\/telefon"/, "API-ul dă numărul");
+assert.match(apiWorker, /a\.stare !== "activ"/, "numai pentru anunțurile publicate");
 assert.equal(urlLista(null, null), "/locuri-de-munca");
 
 // Șablonul: marcajele se înlocuiesc și în <head>, și în datele React din <script>, cu escaparea locului.
