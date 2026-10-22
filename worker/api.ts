@@ -3,7 +3,8 @@
 import type { Env } from "./index";
 import { URL_ADAUGA, esteMobil, linkApel, linkWhatsApp, telefonAfisat, urlAnunt, valideaza } from "../src/lib/anunturi/reguli";
 import { MESERII_ANUNTURI } from "../src/lib/anunturi/meserii";
-import { adauga, dupaId, dupaToken, inLimita, listaPentruApropiere, modifica, prelungeste, raporteaza, sterge, tokenNou, type Anunt } from "./date";
+import { EMAIL_ACTIV } from "../src/lib/anunturi/config";
+import { adauga, confirma, dupaId, dupaToken, inLimita, listaPentruApropiere, modifica, prelungeste, raporteaza, sterge, tokenNou, type Anunt } from "./date";
 import { localizeaza } from "./geocod";
 import { anuntaGoogle } from "./google";
 import { cardLista, citesteExtra } from "./pagini";
@@ -17,9 +18,20 @@ function linkGestionare(env: Env, token: string) {
   return `${env.SITE}${URL_ADAUGA}/gestioneaza#${token}`;
 }
 
-async function trimite(env: Env, to: string, subject: string, text: string): Promise<void> {
-  if (!env.EMAIL) { console.log(`[email local] către ${to}: ${subject}\n${text}`); return; }
-  await env.EMAIL.send({ to, from: { email: env.EMAIL_EXPEDITOR, name: "salariile.ro" }, subject, text });
+/**
+ * Emailurile pleacă prin Resend (proprietar, 22 octombrie 2026): planul gratuit, 100 pe zi, fără card.
+ * Trimiterea prin Cloudflare către adrese oarecare cere Workers Paid. Fără cheie, emailul se scrie în
+ * log (dezvoltare locală). `true` numai dacă Resend l-a primit.
+ */
+async function trimite(env: Env, to: string, subject: string, text: string): Promise<boolean> {
+  if (!env.RESEND_KEY) { console.log(`[email local] către ${to}: ${subject}\n${text}`); return false; }
+  const r = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: { authorization: `Bearer ${env.RESEND_KEY}`, "content-type": "application/json" },
+    body: JSON.stringify({ from: `salariile.ro <${env.EMAIL_EXPEDITOR}>`, to: [to], subject, text }),
+  });
+  if (!r.ok) console.log(`[email] Resend a refuzat (${r.status}): ${await r.text()}`);
+  return r.ok;
 }
 
 /** Ce vede cel care gestionează: tot anunțul, fără emailul lui și fără hash-uri. */
@@ -68,9 +80,19 @@ export async function api(req: Request, env: Env, ctx: ExecutionContext, cale: s
     if (!(await inLimita(env, v.anunt.email, ip))) return json({ erori: [{ camp: "general", mesaj: "Ai publicat multe anunțuri azi. Mai încearcă mâine." }] }, 429);
     const token = tokenNou();
     const a = await adauga(env, v.anunt, await localizeaza(v.anunt.adresa, v.anunt.oras, v.anunt.judet), token);
+    // Cu EMAIL_ACTIV, anunțul apare abia după linkul din email (22 octombrie 2026). Linkul nu se dă pe
+    // ecran: altfel confirmarea s-ar putea sări. Neconfirmatele se șterg după două zile (curatenie).
+    if (EMAIL_ACTIV) {
+      const trimisConfirmare = await trimite(env, v.anunt.email, `Confirmă anunțul „${v.anunt.titlu}”`,
+        `Bună ziua,\n\nMai ai un pas: deschide linkul de mai jos și anunțul „${v.anunt.titlu}” apare pe salariile.ro.\n\n${linkGestionare(env, token)}\n\n` +
+        `Păstrează emailul: din același link modifici, prelungești sau ștergi anunțul oricând. Anunțul rămâne publicat 30 de zile de la confirmare.\n\n` +
+        `Dacă nu tu ai trimis anunțul, nu face nimic: fără confirmare nu apare nicăieri și se șterge singur în două zile.\n\nsalariile.ro`);
+      if (!trimisConfirmare) return json({ erori: [{ camp: "email", mesaj: "Nu am putut trimite emailul de confirmare. Verifică adresa sau încearcă din nou peste câteva minute." }] }, 502);
+      return json({ ok: true, deConfirmat: true, emailTrimis: true });
+    }
     // Orice anunț are JobPosting și îl anunțăm direct la Google (google.ts).
     ctx.waitUntil(anuntaGoogle(env, [urlAnunt(a)], "URL_UPDATED"));
-    const trimis = Boolean(v.anunt.email && env.EMAIL);
+    const trimis = Boolean(v.anunt.email && env.RESEND_KEY);
     if (trimis) ctx.waitUntil(trimite(env, v.anunt.email, `Anunțul „${v.anunt.titlu}” e publicat`,
       `Bună ziua,\n\nAnunțul „${v.anunt.titlu}” e publicat pe salariile.ro:\n${env.SITE}${urlAnunt(a)}\n\n` +
       `Pune linkul anunțului și în grupurile de Facebook cu locuri de muncă din orașul tău: candidații ajung direct la el, cu salariul și telefonul.\n\n` +
@@ -84,7 +106,14 @@ export async function api(req: Request, env: Env, ctx: ExecutionContext, cale: s
     const a = await dupaToken(env, String(corp.token ?? ""));
     if (!a) return json({ eroare: "Linkul nu mai e valid: anunțul a fost șters sau linkul e incomplet." }, 404);
     switch (corp.actiune) {
-      case "citeste": return json({ anunt: public_(a) });
+      case "citeste": {
+        // Deschiderea linkului din email e confirmarea: anunțul apare de acum și îl anunțăm la Google.
+        if (a.stare === "neconfirmat" && (await confirma(env, a.id))) {
+          ctx.waitUntil(anuntaGoogle(env, [urlAnunt(a)], "URL_UPDATED"));
+          return json({ anunt: public_((await dupaId(env, a.id))!), confirmatAcum: true });
+        }
+        return json({ anunt: public_(a) });
+      }
       case "prelungeste": await prelungeste(env, a.id); break;
       case "sterge":
         await sterge(env, a.id);

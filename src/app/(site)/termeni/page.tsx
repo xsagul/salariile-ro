@@ -4,6 +4,7 @@
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
+import { EMAIL_ACTIV } from "@/lib/anunturi/config";
 import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow } from "@/app/components/ui";
 
 export const metadata: Metadata = {
@@ -148,7 +149,9 @@ export default function TermeniPage() {
         <Section>
             <h2 id="anunturi">8. Anunțurile de angajare</h2>
             <p>
-              Oricine angajează poate adăuga gratuit, fără cont, un anunț de angajare pe <Link href="/adauga-anunt-angajare">salariile.ro</Link>. Anunțul se publică imediat și rămâne 30 de zile; din linkul de gestionare, primit la publicare, se modifică, se prelungește sau se șterge oricând.
+              Oricine angajează poate adăuga gratuit, fără cont, un anunț de angajare pe <Link href="/adauga-anunt-angajare">salariile.ro</Link>. {EMAIL_ACTIV
+                ? "Anunțul se publică după ce e confirmat din linkul primit pe email și rămâne 30 de zile; din același link se modifică, se prelungește sau se șterge oricând."
+                : "Anunțul se publică imediat și rămâne 30 de zile; din linkul de gestionare, primit la publicare, se modifică, se prelungește sau se șterge oricând."}
             </p>
             <p>Un anunț se publică numai dacă:</p>
             <ul>

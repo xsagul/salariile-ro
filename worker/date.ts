@@ -4,6 +4,7 @@ import type { Loc } from "./geocod";
 import { anuntaGoogle } from "./google";
 import { LIMITA_PE_ZI, ZILE_PASTRARE_EMAIL, ZILE_VALABILITATE, faraDiacritice, netLunar, orasSlug, scosDeProprietar, slugAnunt, urlAnunt, type AnuntNou, type Contract, type LocMunca, type Norma } from "../src/lib/anunturi/reguli";
 import { MESERII_ANUNTURI, formaTitlu, ghicesteMeserie, grupMeserie, meseriileDomeniului, pentruPotrivire, slugurileGrupului, variante } from "../src/lib/anunturi/meserii";
+import { EMAIL_ACTIV } from "../src/lib/anunturi/config";
 
 export type Anunt = {
   id: number; stare: "neconfirmat" | "activ" | "expirat" | "sters" | "suspendat";
@@ -43,23 +44,32 @@ export async function inLimita(env: Env, email: string, ip: string): Promise<boo
 }
 
 /**
- * Anunțul se publică pe loc, fără confirmarea din email (proprietar, 29 septembrie 2026: la pornire,
- * orice pas în plus scade numărul de anunțuri). Emailul rămâne obligatoriu pentru linkul de
- * gestionare; frâna rămâne limita pe zi, regulile de conținut și raportările (Turnstile scos pe
- * 29 septembrie 2026: oamenii nu reușeau să posteze).
+ * Cu EMAIL_ACTIV, anunțul așteaptă confirmarea din email (proprietar, 22 octombrie 2026, după un
+ * anunț fals de pe Reddit cu numărul unui necunoscut): se publică abia când linkul primit e deschis
+ * (`confirma`). Fără EMAIL_ACTIV se publică pe loc, ca din 29 septembrie 2026. Frâna rămâne și
+ * limita pe zi, regulile de conținut și raportările.
  */
 export async function adauga(env: Env, a: AnuntNou, loc: Loc | null, token: string): Promise<{ id: number; slug: string }> {
   const t = acum();
+  const confirmat = !EMAIL_ACTIV;
   const r = await env.DB.prepare(
     `INSERT INTO anunturi (stare, titlu, slug, meserie, angajator, judet, oras, oras_slug, adresa, lat, lon, loc_precizie, norma, ore_pe_zi,
       fara_experienta, contract, loc_munca, salariu_min, salariu_max, baza, net_min, descriere, telefon, email, token_hash, creat_la, confirmat_la, expira_la)
-     VALUES ('activ', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id, slug`,
-  ).bind(a.titlu, slugAnunt(a.titlu, a.oras), a.meserie || ghicesteMeserie(a.titlu), a.angajator, a.judet, a.oras, orasSlug(a.oras),
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id, slug`,
+  ).bind(confirmat ? "activ" : "neconfirmat", a.titlu, slugAnunt(a.titlu, a.oras), a.meserie || ghicesteMeserie(a.titlu), a.angajator, a.judet, a.oras, orasSlug(a.oras),
     a.adresa ?? null, loc?.lat ?? null, loc?.lon ?? null, loc?.precizie ?? null, a.norma, a.orePeZi ?? null,
     a.faraExperienta ? 1 : 0, a.contract ?? null, a.locMunca ?? null,
     a.salariuMin, a.salariuMax ?? null, a.baza, netLunar(a.salariuMin, a.baza), a.descriere, a.telefon, a.email || null, await sha256(token),
-    t, t, peste(ZILE_VALABILITATE)).first<{ id: number; slug: string }>();
+    t, confirmat ? t : null, confirmat ? peste(ZILE_VALABILITATE) : null).first<{ id: number; slug: string }>();
   return r!;
+}
+
+/** Linkul din email a fost deschis: anunțul se publică de acum, pentru 30 de zile. `true` dacă abia acum. */
+export async function confirma(env: Env, id: number): Promise<boolean> {
+  const t = acum();
+  const r = await env.DB.prepare("UPDATE anunturi SET stare = 'activ', confirmat_la = ?, expira_la = ? WHERE id = ? AND stare = 'neconfirmat'")
+    .bind(t, peste(ZILE_VALABILITATE), id).run();
+  return r.meta.changes > 0;
 }
 
 export async function dupaToken(env: Env, token: string): Promise<Anunt | null> {

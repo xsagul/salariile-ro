@@ -134,6 +134,15 @@ assert.match(pagini, /\/api\/anunturi\/telefon\?id=/, "pagina cere numărul din 
 const apiWorker = fs.readFileSync("worker/api.ts", "utf8");
 assert.match(apiWorker, /cale === "\/api\/anunturi\/telefon"/, "API-ul dă numărul");
 assert.match(apiWorker, /a\.stare !== "activ"/, "numai pentru anunțurile publicate");
+
+// Confirmarea pe email (22 octombrie 2026), sub EMAIL_ACTIV: anunțul nou e „neconfirmat”, linkul de
+// gestionare nu se dă pe ecran, iar prima deschidere a linkului îl publică. Emailurile pleacă prin Resend.
+assert.match(dateWorker, /confirmat \? "activ" : "neconfirmat"/, "cu EMAIL_ACTIV, anunțul nou așteaptă confirmarea");
+assert.match(dateWorker, /WHERE id = \? AND stare = 'neconfirmat'/, "confirmarea publică numai un anunț neconfirmat");
+assert.match(apiWorker, /return json\(\{ ok: true, deConfirmat: true, emailTrimis: true \}\)/, "linkul de gestionare nu apare pe ecran înainte de confirmare");
+assert.match(apiWorker, /a\.stare === "neconfirmat" && \(await confirma\(env, a\.id\)\)/, "deschiderea linkului confirmă anunțul");
+assert.match(apiWorker, /https:\/\/api\.resend\.com\/emails/, "emailurile pleacă prin Resend");
+assert.match(pagini, /a\.stare === "neconfirmat"\) return inSablon\(req, env, \{ titlu: "Anunț negăsit"/, "anunțul neconfirmat nu are pagină");
 assert.equal(urlLista(null, null), "/locuri-de-munca");
 
 // Șablonul: marcajele se înlocuiesc și în <head>, și în datele React din <script>, cu escaparea locului.

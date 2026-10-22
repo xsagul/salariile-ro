@@ -36,8 +36,8 @@
     "EMAIL_PROPRIETAR": "contact@salariile.ro"
   },
   // Secrete (wrangler secret put): SARE; GOOGLE_INDEXARE (cheia JSON pentru Indexing API, opțională:
-  // fără ea anunțurile nu se trimit direct la Google, worker/google.ts). Emailul: binding-ul send_email se
-  // adaugă după activarea Email Sending pe domeniu; până atunci linkurile se scriu în log.
+  // fără ea anunțurile nu se trimit direct la Google, worker/google.ts); RESEND_KEY (emailurile, prin
+  // Resend, planul gratuit: 100 pe zi; fără ea linkurile se scriu în log).
   // Zilnic la 03:17 UTC: expirările și ștergerea datelor vechi (worker/date.ts → curatenie).
   "triggers": { "crons": ["17 3 * * *"] },
   // csp.ts citește NODE_ENV; în Worker e mereu producție.

@@ -1,6 +1,7 @@
-// Emailurile către cei care postează. Trimiterea către adrese oarecare cere Workers Paid (5 $/lună),
-// pe care proprietarul nu-l plătește acum (29 septembrie 2026). Cât e `false`, formularul nu cere
-// emailul (nu strângem o dată pe care n-o folosim), iar linkul de gestionare apare numai pe ecran,
-// după publicare. Pornit: câmpul revine, obligatoriu, și linkul pleacă și pe email (binding-ul
-// `send_email` din wrangler.jsonc trebuie adăugat odată cu el).
+// Confirmarea anunțurilor pe email (proprietar, 22 octombrie 2026, după un anunț fals de pe Reddit cu
+// numărul unui necunoscut). Pornit: formularul cere emailul, anunțul se salvează „neconfirmat” și apare
+// abia după ce linkul primit e deschis; din același link se gestionează. Emailurile pleacă prin Resend
+// (planul gratuit, 100 pe zi), cu secretul RESEND_KEY pe Worker și domeniul verificat la Resend.
+// Oprit: anunțul apare pe loc, fără email, ca din 29 septembrie 2026. Nu-l porni înainte ca
+// RESEND_KEY să existe: fără el, orice postare ar primi „Nu am putut trimite emailul de confirmare”.
 export const EMAIL_ACTIV = false;

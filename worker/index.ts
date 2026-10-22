@@ -14,7 +14,7 @@ import { curatenie } from "./date";
 export type Env = {
   ASSETS: Fetcher;
   DB: D1Database;
-  EMAIL?: { send: (m: { to: string; from: string | { email: string; name?: string }; subject: string; text: string; html?: string }) => Promise<unknown> };
+  RESEND_KEY?: string;        // cheia API Resend: emailurile de confirmare, gestionare și raportare (api.ts)
   SARE: string;               // sarea pentru hash-urile de IP și email din limite
   SITE: string;               // https://salariile.ro
   EMAIL_EXPEDITOR: string;    // anunturi@salariile.ro

@@ -2,7 +2,8 @@
 
 // Gestionarea unui anunț din linkul primit la publicare (și pe email, cu EMAIL_ACTIV): /adauga-anunt-angajare/gestioneaza#<token>.
 // Tokenul stă după „#”, deci nu ajunge niciodată la server în URL și nici în logurile Cloudflare;
-// nici scanerele de linkuri din email nu schimbă nimic: orice acțiune cere apăsarea unui buton.
+// prima deschidere confirmă un anunț nou (EMAIL_ACTIV), restul acțiunilor cer apăsarea unui buton. Un
+// scaner de linkuri din email nu vede tokenul (fragmentul nu pleacă la server), deci nu poate confirma.
 import { useEffect, useState } from "react";
 import { useHash } from "@/app/components/anunturi/useHash";
 import FormularAnunt, { type Valori } from "@/app/components/anunturi/FormularAnunt";
@@ -34,7 +35,12 @@ export default function GestioneazaAnunt() {
   const [modifica, setModifica] = useState(false);
 
   useEffect(() => {
-    if (token) cere(token, "citeste").then(({ ok, j }) => (ok ? setA(j.anunt) : setMesaj(j.eroare)));
+    // Prima deschidere a linkului din email confirmă anunțul (worker/api.ts).
+    if (token) cere(token, "citeste").then(({ ok, j }) => {
+      if (!ok) { setMesaj(j.eroare); return; }
+      setA(j.anunt);
+      if (j.confirmatAcum) setMesaj("Anunțul e confirmat și publicat. Candidații îl văd de acum și te sună direct. Păstrează emailul: din același link îl modifici sau îl ștergi.");
+    });
   }, [token]);
 
   async function actiune(nume: string) {

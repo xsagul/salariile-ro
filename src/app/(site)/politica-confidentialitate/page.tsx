@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import Link from "@/app/components/Link";
 import ButonPreferinteGoogle from "@/app/components/ButonPreferinteGoogle";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
+import { EMAIL_ACTIV } from "@/lib/anunturi/config";
 import { Hero, Section, Breadcrumb, H1, Lead, Eyebrow, CardCompanion } from "@/app/components/ui";
 
 export const metadata: Metadata = {
@@ -133,7 +134,7 @@ export default function PoliticaConfidentialitatePage() {
               Singurul formular de pe site e cel de <Link href="/adauga-anunt-angajare">adăugare a unui anunț de angajare</Link>, fără cont, și cel de raportare a unui anunț. Prelucrăm:
             </p>
             <ul>
-              <li><strong>Emailul celui care adaugă anunțul</strong>, numai când formularul îl cere: ca să-i trimitem linkul cu care modifică sau șterge anunțul și, la nevoie, motivul scoaterii lui. Nu apare în anunț și nu se folosește pentru nimic altceva. Se șterge la 30 de zile după ce anunțul expiră sau e șters.</li>
+              <li><strong>Emailul celui care adaugă anunțul</strong>, numai când formularul îl cere: ca să confirme anunțul (apare pe site abia după ce deschide linkul primit), să-i trimitem linkul cu care modifică sau șterge anunțul și, la nevoie, motivul scoaterii lui. Nu apare în anunț și nu se folosește pentru nimic altceva. Se șterge la 30 de zile după ce anunțul expiră sau e șters.</li>
               <li><strong>Telefonul angajatorului, adresa locului de muncă</strong> și restul anunțului: se publică, cu acordul celui care îl adaugă, cât timp anunțul e activ. La ștergere, telefonul și adresa se șterg imediat. Ca anunțul să apară pe hartă, adresa (a locului de muncă, nu a unei persoane) se transformă o singură dată în coordonate prin serviciul Nominatim al OpenStreetMap.</li>
               <li><strong>Adresa IP (și emailul, când e cerut), ca amprentă criptată</strong> (SHA-256 cu sare), numai ca să limităm la cinci anunțurile noi pe zi de la aceeași persoană. Se șterg după două zile.</li>
               <li><strong>Raportările</strong>: motivul, detaliile scrise și, opțional, emailul celui care raportează, ca să-i putem răspunde.</li>
@@ -179,8 +180,13 @@ export default function PoliticaConfidentialitatePage() {
                 <strong>Google Ireland Limited</strong> (Irlanda, cu posibile transferuri către Google LLC în SUA): furnizor pentru CMP-ul AdSense, pentru Google Analytics 4 cu Consent Mode și, ca operator separat, pentru reclamele AdSense. Google LLC este certificat în cadrul UE–SUA Data Privacy Framework. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Politica Google</a>.
               </li>
               <li>
-                <strong>Cloudflare, Inc.</strong> (SUA): furnizor de hosting și CDN, al statisticilor anonime Web Analytics și, pentru anunțurile de angajare, al bazei de date (D1) și al trimiterii emailurilor. Procesează automat, ca procesator, fiecare cerere către site. Cloudflare este certificat conform mecanismului UE-SUA Data Privacy Framework. <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Politica Cloudflare</a>.
+                <strong>Cloudflare, Inc.</strong> (SUA): furnizor de hosting și CDN, al statisticilor anonime Web Analytics și, pentru anunțurile de angajare, al bazei de date (D1). Procesează automat, ca procesator, fiecare cerere către site. Cloudflare este certificat conform mecanismului UE-SUA Data Privacy Framework. <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Politica Cloudflare</a>.
               </li>
+              {EMAIL_ACTIV && (
+                <li>
+                  <strong>Resend</strong> (Plus Five Five, Inc., SUA): trimite emailurile despre anunțurile de angajare (confirmarea și linkul de gestionare) și raportările către administrator. Primește, ca procesator, adresa de email și textul mesajului. Resend este certificat în cadrul UE–SUA Data Privacy Framework. <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener">Politica Resend</a>.
+                </li>
+              )}
               <li>
                 <strong>Google LLC</strong> (SUA) — <strong>Search Console</strong>: pentru verificarea proprietății domeniului și monitorizarea performanței în rezultatele căutării. Nu colectează date despre vizitatorii individuali, doar statistici agregate despre cum apare site-ul în rezultatele Google.
               </li>
@@ -248,7 +254,7 @@ Cookies de analiză GA4 și cookies publicitare Google apar numai după acord, i
             <p>
               Această politică poate fi actualizată periodic, în special dacă se modifică stack-ul tehnic al site-ului sau apar cerințe legale noi. Versiunea curentă este menționată în antetul paginii cu data intrării în vigoare. Modificările semnificative vor fi anunțate vizibil pe homepage înainte de a intra în vigoare.
             </p>
-            <p className="source-note">Ultima actualizare: 29 septembrie 2026 — datele din anunțurile de angajare (emailul și telefonul celui care publică, amprenta pentru limita pe zi, raportările); GA4, CMP-ul Google și Consent Mode rămân neschimbate.</p>
+            <p className="source-note">Ultima actualizare: {EMAIL_ACTIV ? "22 octombrie 2026 — confirmarea anunțurilor de angajare pe email, trimis prin Resend; " : ""}29 septembrie 2026 — datele din anunțurile de angajare (emailul și telefonul celui care publică, amprenta pentru limita pe zi, raportările); GA4, CMP-ul Google și Consent Mode rămân neschimbate.</p>
         </Section>
       </div>
     </>

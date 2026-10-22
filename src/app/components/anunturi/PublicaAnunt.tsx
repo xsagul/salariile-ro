@@ -12,8 +12,19 @@ const BUTON = "inline-flex min-h-11 items-center rounded-md border border-stone-
  */
 export default function PublicaAnunt() {
   const [gata, setGata] = useState<{ email: string; emailTrimis: boolean; url: string; gestionare: string; titlu: string; suma: string } | null>(null);
+  const [deConfirmat, setDeConfirmat] = useState<string | null>(null);
   const [copiat, setCopiat] = useState(false);
   const [copiatGestionare, setCopiatGestionare] = useState(false);
+  // Cu EMAIL_ACTIV, anunțul apare abia după linkul din email (22 octombrie 2026).
+  if (deConfirmat) {
+    return (
+      <div data-anunt-trimis="" ref={(el) => el?.scrollIntoView({ block: "center" })}>
+        <p className="text-lg font-semibold text-stone-900">Mai ai un pas: confirmă din email</p>
+        <p className="mt-2 text-base text-stone-700">Ți-am trimis un link la <strong>{deConfirmat}</strong>. Deschide-l și anunțul apare imediat pe site.</p>
+        <p className="mt-3 text-sm text-stone-600">Nu găsești emailul în câteva minute? Uită-te și în Spam sau Promoții. Fără confirmare, anunțul nu apare și se șterge singur în două zile.</p>
+      </div>
+    );
+  }
   if (gata) {
     const link = `${window.location.origin}${gata.url}`;
     return (
@@ -61,6 +72,7 @@ export default function PublicaAnunt() {
         const r = await fetch("/api/anunturi", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(v) });
         const j = await r.json();
         if (!r.ok) return { erori: j.erori ?? [{ camp: "general", mesaj: j.eroare ?? "Nu s-a putut trimite." }] };
+        if (j.deConfirmat) { setDeConfirmat(String(v.email)); return; }
         const suma = `${[v.salariuMin, v.salariuMax].filter(Boolean).map((x) => Number(x).toLocaleString("ro-RO")).join("–")} lei ${v.baza}`;
         setGata({ email: String(v.email), emailTrimis: j.emailTrimis === true, url: j.url, gestionare: j.gestionare, titlu: String(v.titlu), suma });
       }}
