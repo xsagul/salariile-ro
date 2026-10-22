@@ -165,6 +165,52 @@ function inputKey(inp: InputState, m: "brut" | "net") {
   ]);
 }
 
+// Linkul unui calcul poartă tot ce schimbă netul, nu doar suma. Presa citează
+// calcule exacte („cum arată salariul cu deducerea pentru copii”), iar un link cu
+// brutul singur s-ar fi redeschis ca alt calcul. Luna intră și ea: un link citat
+// în octombrie trebuie să arate aceeași cifră și după ce se schimbă regulile.
+// Doar ce diferă de implicit, ca linkul obișnuit să rămână scurt.
+type OptiuniLink = { nrTichete: string; valoareTichet: string; luna?: string };
+
+function parametriCalcul(m: "brut" | "net", lei: number, inp: InputState, o: OptiuniLink) {
+  const p = new URLSearchParams({ [m]: String(lei) });
+  if (inp.persoanePretretinere > 0) p.set("intretinere", String(inp.persoanePretretinere));
+  if (inp.copiiScolarizati > 0) p.set("copii", String(inp.copiiScolarizati));
+  if (inp.varstaSub26) p.set("sub26", "da");
+  if (!inp.functieDeBAza) p.set("functie-secundara", "da");
+  if (inp.scutitImpozit) p.set("scutit", "da");
+  const nr = parseInt(o.nrTichete) || 0;
+  const valoare = parseInt(o.valoareTichet) || 0;
+  if (nr > 0 && valoare > 0) {
+    p.set("tichete", String(nr));
+    p.set("valoare-tichet", String(valoare));
+  }
+  if (o.luna) p.set("luna", o.luna);
+  return p;
+}
+
+/** Opțiunile dintr-un link de calcul, cu valorile absurde tăiate. */
+function optiuniDinLink(p: URLSearchParams) {
+  const intreg = (cheie: string, max: number) => {
+    const n = Math.round(Number(p.get(cheie)));
+    return Number.isFinite(n) && n > 0 ? Math.min(n, max) : 0;
+  };
+  const intretinere = intreg("intretinere", 5);
+  const nrTichete = intreg("tichete", 31);
+  const valoareTichet = intreg("valoare-tichet", 1000);
+  const luna = p.get("luna") ?? "";
+  return {
+    persoanePretretinere: intretinere,
+    copiiScolarizati: Math.min(intreg("copii", 5), intretinere),
+    varstaSub26: p.get("sub26") === "da",
+    functieDeBAza: p.get("functie-secundara") !== "da",
+    scutitImpozit: p.get("scutit") === "da",
+    nrTichete: nrTichete && valoareTichet ? String(nrTichete) : "",
+    valoareTichet: nrTichete && valoareTichet ? String(valoareTichet) : "",
+    luna: LUNI_CALCULATOR.includes(luna) ? luna : null,
+  };
+}
+
 // Exemplele din câmpul de salariu: salariul minim al lunii alese și netul lui, în cazul
 // standard, derivate din fiscal.ts (NU hardcodate). Urmează luna: pentru mai 2026 scrie
 // 4.050, nu 4.325 (observat de proprietar, 26 septembrie 2026).
@@ -804,7 +850,11 @@ export default function CalculatorSalariu({
       // link făcut în euro s-ar redeschide ca lei și ar arăta alt salariu.
       const valoare = Math.round(parseFloat(inputInLei(input).brut) || 0);
       if (valoare > 0) {
-        const parametri = new URLSearchParams({ [mod]: String(valoare) });
+        const parametri = parametriCalcul(mod, valoare, input, {
+          nrTichete,
+          valoareTichet: inLeiDacaTrebuie(valoareTichet),
+          luna: cuPerioada ? perioada : undefined,
+        });
         window.history.replaceState(null, "", `?${parametri}`);
         setLinkCopiat(false);
       }
@@ -813,7 +863,7 @@ export default function CalculatorSalariu({
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
     const targetId = isMobile ? "rezultat-calcul" : "calc-layout";
     document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth", block: "start" });
-  }, [input, mod, regimActiv, cuPerioada, fluturas, sporOre, sporuri, normaOre, oreLucrate, oreNormaCurenta, embedded, brutInitial, avansat, moneda]);
+  }, [input, mod, regimActiv, cuPerioada, perioada, fluturas, sporOre, sporuri, normaOre, oreLucrate, oreNormaCurenta, embedded, brutInitial, avansat, moneda, nrTichete, valoareTichet]);
 
   // Deschiderea unui link partajat: „?brut=5000" trebuie sa arate calculul, nu
   // un formular gol.
@@ -849,26 +899,44 @@ export default function CalculatorSalariu({
 
     paramCitit.current = true;
     const modDinLink = dinNet && !dinBrut ? "net" : "brut";
+    const optiuni = optiuniDinLink(parametri);
     // Linkul poartă lei. Dacă interfața e în euro, câmpul trebuie să arate euro,
     // altfel omul vede „4.325" lângă eticheta EUR. Se convertește o singură dată,
     // iar rezultatul și cheia se calculează din valoarea convertită înapoi — nu
     // din cea originală — ca rotunjirea dus-întors să nu lase rezultatul
     // permanent „învechit" pentru un leu diferență.
+    const inMonedaAfisata = (lei: number) => (moneda === "EUR" ? inEuro(lei) : lei);
+    const valoareTichetAfisata = optiuni.valoareTichet ? String(inMonedaAfisata(Number(optiuni.valoareTichet))) : "";
+    const totalTichete = (parseInt(optiuni.nrTichete) || 0) * (parseInt(valoareTichetAfisata) || 0);
     const inputNou: InputState = {
-      brut: String(moneda === "EUR" ? inEuro(valoare) : valoare),
-      tichete: "",
-      functieDeBAza: true,
-      persoanePretretinere: 0,
-      varstaSub26: false,
-      copiiScolarizati: 0,
-      scutitImpozit: false,
+      brut: String(inMonedaAfisata(valoare)),
+      tichete: totalTichete ? String(totalTichete) : "",
+      functieDeBAza: optiuni.functieDeBAza,
+      persoanePretretinere: optiuni.persoanePretretinere,
+      varstaSub26: optiuni.varstaSub26,
+      copiiScolarizati: optiuni.copiiScolarizati,
+      scutitImpozit: optiuni.scutitImpozit,
     };
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- citire unica din URL dupa hidratare; vezi comentariul de mai sus
+    // Luna din link are întâietate față de luna de azi venită de la server.
+    const regimLink = cuPerioada && optiuni.luna ? regimLunii(optiuni.luna) : regimActiv;
+    if (cuPerioada && optiuni.luna) {
+      perioadaAleasa.current = true;
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- citire unica din URL dupa hidratare; vezi comentariul de mai sus
+      setPerioada(optiuni.luna);
+    }
+    const cuOptiuni =
+      inputNou.tichete !== "" || !inputNou.functieDeBAza || inputNou.persoanePretretinere > 0 ||
+      inputNou.varstaSub26 || inputNou.scutitImpozit;
+    if (cuOptiuni) {
+      setAvansat(true);
+      setNrTichete(optiuni.nrTichete);
+      setValoareTichet(valoareTichetAfisata);
+    }
     setMod(modDinLink);
     setInput(inputNou);
-    setRezAfisat(buildResult(pregatesteInput(inputNou), modDinLink, regimActiv));
+    setRezAfisat(buildResult(pregatesteInput(inputNou), modDinLink, regimLink));
     setRezKey(inputKey(pregatesteInput(inputNou), modDinLink));
-    setRezRegim(regimActiv);
+    setRezRegim(regimLink);
 
     // Dupa un submit nativ, URL-ul contine numele campului din formular. Il
     // rescriem in forma partajabila, ca sa nu circule linkuri cu `salariu-input`.
@@ -876,7 +944,7 @@ export default function CalculatorSalariu({
       window.history.replaceState(null, "", `?${new URLSearchParams({ brut: String(valoare) })}`);
     }
     // Fara scroll: cine deschide linkul vede pagina de la inceput, ca oricare alta.
-  }, [embedded, brutInitial, regimActiv]);
+  }, [embedded, brutInitial, regimActiv, cuPerioada]);
 
   const handleCopiazaLink = async () => {
     try {

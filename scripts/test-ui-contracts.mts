@@ -76,6 +76,12 @@ assert.equal(
   "https://salariile.ro/?utm_source=reddit&utm_medium=social",
   "Parametrii de campanie trebuie să rămână",
 );
+// Linkul complet al unui calcul poartă și opțiunile; cele fără sumă pot ajunge la
+// GA4, valoarea tichetului nu.
+assert.equal(
+  adresaFaraSume("https://salariile.ro/?brut=6000&copii=2&tichete=20&valoare-tichet=40&luna=2026-10"),
+  "https://salariile.ro/?copii=2&tichete=20&luna=2026-10",
+);
 assert.equal(adresaFaraSume(""), "");
 assert.equal(clasaViewport(393), "360-399");
 assert.equal(clasaViewport(768), "768-1023");

@@ -41,7 +41,7 @@ export const GA_MEASUREMENT_ID = "G-2L1J64H5H9";
 export const DOMENII_MASURATE: ReadonlySet<string> = new Set(["salariile.ro", "www.salariile.ro"]);
 
 /** Parametrii de adresă care poartă suma introdusă de vizitator. */
-export const PARAMETRI_CU_SUMA = ["brut", "net", "salariu-input"] as const;
+export const PARAMETRI_CU_SUMA = ["brut", "net", "salariu-input", "valoare-tichet"] as const;
 
 declare global {
   interface Window {
