@@ -5224,3 +5224,28 @@ articolul lui.
 
 **Reddit e blocat** în ambele browsere ale agentului (Claude in Chrome și panoul integrat): postările le face
 proprietarul. Textul pentru anunțurile gratuite e în conversație; r/RoMunca e canalul deja folosit.
+
+## 22 octombrie 2026, seara — anunțurile după Reddit: număr ascuns și confirmare pe email
+
+Postarea din r/RoMunca (6 voturi pozitive, 22 negative) a adus un anunț satiric (797, „Politician care
+chiar face treabă”, 1–180.000 lei net) cu numărul unui necunoscut și critici întemeiate: numărul
+altcuiva, impersonarea firmelor, DSA, GDPR. Răspunsul, în ordine:
+
+- **797 scos:** întâi din cod (`scosDeProprietar` în `reguli.ts`, `de26d54`), apoi și din D1 (șters,
+  telefonul NULL), după ce `wrangler login` a fost refăcut pe contul site-ului (5c02…).
+- **Numărul la apăsare** (`3129820`), ca „Arată numărul” pe OLX: nu mai e în HTML; vine din
+  `GET /api/anunturi/telefon?id=` numai pentru anunțuri active și numai `sec-fetch-site: same-origin`.
+  Verificat pe producție (796): 0 linkuri `tel:` în pagină, API-ul dă numărul.
+- **Confirmarea pe email** (`f268008`, pornită în `bb03c59`), aleasă de proprietar după ce WhatsApp
+  și SMS-ul au fost respinse (SMS: Firebase cere card): anunțul nou e „neconfirmat”, Resend trimite
+  linkul de gestionare, prima deschidere îl publică și îl trimite la Google. Linkul nu mai apare pe ecran.
+  Resend: plan gratuit (100/zi), regiunea eu-west-1, `salariile.ro` Verified (TXT `resend._domainkey`,
+  CNAME `send` și `rsend`, DNS only; MX ImprovMX neatinse), secretul `RESEND_KEY` pe Worker.
+  Textele din termeni, confidențialitate (Resend, DPF) și pagina de adăugare urmează `EMAIL_ACTIV`.
+- **Test cap-coadă pe producție:** anunțul 798 trimis cu emailul proprietarului → neconfirmat, absent
+  din listă; proprietarul a primit emailul și a confirmat („totul merge”); apoi șters (410).
+- Raportările de anunțuri ajung de acum pe email la `contact@salariile.ro` (până azi nu plecau).
+- Cheia Resend a fost lipită în conversație; proprietarul a ales să n-o schimbe.
+
+Rămase deschise: limita minimă de bun-simț pentru salariu (1 leu e acceptat), verificarea manuală a
+anunțurilor cu nume de firme mari, butonul „e numărul meu”, numerele din importul ANOFM.
