@@ -1,11 +1,11 @@
 // Paginile de anunțuri, puse în șablonul static /locuri-de-munca/sablon (header, footer, CSS).
 // Adresele (verificate în Google România, 28 septembrie 2026) sunt deținute de src/lib/anunturi/reguli.ts.
 import type { Env } from "./index";
-import { CONTRACTE, JUDETE, LOCURI_MUNCA, NORME, URL_ADAUGA, dinImportAnofm, esteMobil, linkDistribuieFacebook, linkDistribuieWhatsApp, urlAnunt, urlLista, type Contract, type LocMunca, type Norma } from "../src/lib/anunturi/reguli";
+import { CONTRACTE, JUDETE, LOCURI_MUNCA, NORME, URL_ADAUGA, dinImportAnofm, linkDistribuieFacebook, linkDistribuieWhatsApp, urlAnunt, urlLista, type Contract, type LocMunca, type Norma } from "../src/lib/anunturi/reguli";
 import { completeazaSablon } from "../src/lib/anunturi/sablon";
 import { htmlReclama } from "../src/lib/reclame";
 import { DOMENII, MESERII_ANUNTURI, esteDomeniu, grupMeserie, numeDomeniu, slugurileGrupului, variante, cuvantAfisat } from "../src/lib/anunturi/meserii";
-import { PE_PAGINA, cuvinteCautate, dupaId, fatete, lista, listeIndexabile, numeOras, scoaseRecent, toateActive, type Anunt, type Filtru } from "./date";
+import { PE_PAGINA, contactAnunt, cuvinteCautate, dupaId, fatete, lista, listeIndexabile, numeOras, scoaseRecent, toateActive, type Anunt, type Filtru } from "./date";
 
 // Meseriile hubului, cu sinonimele lor (src/lib/anunturi/meserii.ts), nu catalogul paginilor de salarii.
 const NUME_MESERIE = new Map(MESERII_ANUNTURI.map((m) => [m.slug, m.nume]));
@@ -165,6 +165,7 @@ const D_FILTRE = '<path d="M4 6h16M7 12h10M10 18h4"/>';
 const D_ORDINE = '<path d="M7 4v16M4 17l3 3 3-3M17 20V4M14 7l3-3 3 3"/>';
 const D_JOS = '<path d="M6 9l6 6 6-6"/>';
 const D_TELEFON = '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/>';
+const D_PLIC = '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>';
 const D_MESAJ = '<path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5z"/>';
 
 /**
@@ -647,25 +648,37 @@ export async function paginaAnunt(req: Request, env: Env, id: number, slug: stri
         <p class="mt-2 text-sm"><a class="underline underline-offset-2" href="${listaMeserie}">Vezi anunțurile ${meserie ? `pentru ${esc(meserie.toLowerCase())} ` : ""}din ${esc(oras(a))}</a></p></div>` });
   }
 
-  // Contactul: un buton care sună și unul de WhatsApp la mobil (proprietar, 28 septembrie 2026). Fără
-  // CV prin site, fără chat, fără email. Numărul nu stă în pagină (22 octombrie 2026, ca „Arată
-  // numărul” pe OLX): vine din /api/anunturi/telefon la prima apăsare. Un număr pus de altcineva
-  // într-un anunț fals nu ajunge astfel în Google; pe telefon, aceeași apăsare și sună.
-  const tel = a.telefon ?? "";
-  const contact = tel ? `
-    <a href="#" class="flex min-h-12 items-center justify-center gap-2 rounded-md bg-stone-900 px-4 text-lg font-semibold text-white hover:bg-stone-700" data-contact="apel" data-telefon="apel">Arată numărul de telefon</a>
-    ${esteMobil(tel) ? `<a href="#" class="mt-3 flex min-h-12 items-center justify-center gap-2 rounded-md border border-stone-300 bg-surface px-4 text-lg font-semibold text-stone-900 hover:border-stone-500" data-contact="whatsapp" data-telefon="whatsapp">Scrie pe WhatsApp</a>` : ""}` : "";
+  // Contactul: butoanele bifate de angajator, în ordinea apel, WhatsApp, CV pe email (proprietar,
+  // 28 septembrie și 22 octombrie 2026). Fără CV prin site și fără chat: candidatul scrie direct
+  // angajatorului. Numărul și emailul nu stau în pagină (ca „Arată numărul” pe OLX): vin din
+  // /api/anunturi/contact la prima apăsare, ca să nu ajungă în Google și la roboții de spam.
+  const c = contactAnunt(a);
+  const optiuni = (c ? (["apel", "whatsapp", "email"] as const).filter((o) => c[o]) : []);
+  const panouEmail = `
+      <div class="flex items-start justify-between gap-2"><p>Trimite CV-ul la <strong class="break-all" data-email-text></strong></p>
+        <button type="button" class="shrink-0 px-1 text-lg leading-none text-stone-500" data-inchide-email aria-label="Închide">×</button></div>
+      <button type="button" class="${BUTON_MIC} mt-2" data-copiaza-email>Copiază adresa</button>
+      <p class="mt-2 text-xs text-stone-600">Nu trimite copie după buletin sau date bancare înainte de semnarea contractului.</p>`;
+  const textCard = { apel: "Arată numărul de telefon", whatsapp: "Scrie pe WhatsApp", email: "Trimite CV pe email" };
+  const contact = optiuni.map((o, i) => `
+    <a href="#" class="${i ? "mt-3 border border-stone-300 bg-surface text-stone-900 hover:border-stone-500" : "bg-stone-900 text-white hover:bg-stone-700"} flex min-h-12 items-center justify-center gap-2 rounded-md px-4 text-lg font-semibold" data-contact="${o}" data-telefon="${o}">${o === "apel" ? `<span data-numar>${textCard.apel}</span>` : textCard[o]}</a>`).join("")
+    + (c?.email ? `<div class="mt-3 hidden rounded-md border border-stone-200 bg-stone-50 p-3 text-sm text-stone-800" data-panou-email>${panouEmail}</div>` : "");
   // Pe telefon, contactul stă lipit jos din prima clipă (proprietar, 7 octombrie 2026, ca pe
-  // anuntul.ro): până atunci numărul era sub descriere, la câteva ecrane de derulat. Aceleași linkuri
-  // și același `data-contact` ca butoanele din pagină, deci clicurile intră în același eveniment GA4.
-  // De la `lg` cardul de contact e sus, în coloana din dreapta, și bara dispare. Stă sub sertarul
-  // meniului (z-40/z-50); `body` primește loc jos cât bara, ca subsolul să nu rămână acoperit.
-  const baraContact = tel ? `
+  // anuntul.ro). Aceleași `data-contact` ca butoanele din pagină, deci clicurile intră în același
+  // eveniment GA4. Cu trei feluri de contact, trei butoane egale pe un rând, cu iconiță și etichetă
+  // scurtă, ca bara să nu crească; primul e plin, celelalte au contur. Panoul cu adresa de email
+  // apare deasupra barei numai după „Trimite CV”, pentru cine n-are aplicația de email. De la `lg`
+  // cardul de contact e sus, în coloana din dreapta, și bara dispare. Stă sub sertarul meniului
+  // (z-40/z-50); `body` primește loc jos cât bara, ca subsolul să nu rămână acoperit.
+  const trei = optiuni.length === 3;
+  const iconite = { apel: D_TELEFON, whatsapp: D_MESAJ, email: D_PLIC };
+  const textBara = { apel: "Sună", whatsapp: "WhatsApp", email: "Trimite CV" };
+  const baraContact = optiuni.length ? `
     <style>@media (max-width: 1023.98px) { body { padding-bottom: 4.75rem; } }</style>
     <div class="fixed inset-x-0 bottom-0 z-30 border-t border-stone-200 bg-canvas px-3 pt-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] lg:hidden" data-bara-contact>
-      <div class="mx-auto grid max-w-xl gap-2 ${esteMobil(tel) ? "grid-cols-[1.4fr_1fr]" : ""}">
-        <a href="#" class="flex min-h-12 items-center justify-center gap-2 whitespace-nowrap rounded-md bg-stone-900 px-2 text-base font-semibold text-white" data-contact="apel" data-telefon="apel">${SVG("size-5 shrink-0", D_TELEFON)}<span>Sună</span></a>
-        ${esteMobil(tel) ? `<a href="#" class="flex min-h-12 items-center justify-center gap-2 whitespace-nowrap rounded-md border border-stone-300 bg-surface px-2 text-base font-semibold text-stone-900" data-contact="whatsapp" data-telefon="whatsapp">${SVG("size-5 shrink-0", D_MESAJ)}WhatsApp</a>` : ""}
+      ${c?.email ? `<div class="mx-auto mb-2 hidden max-w-xl rounded-md border border-stone-200 bg-surface p-3 text-sm text-stone-800 shadow-sm" data-panou-email>${panouEmail}</div>` : ""}
+      <div class="mx-auto grid max-w-xl gap-2 ${trei ? "grid-cols-3" : optiuni.length === 2 ? "grid-cols-[1.4fr_1fr]" : ""}">
+        ${optiuni.map((o, i) => `<a href="#" class="${i ? "border border-stone-300 bg-surface text-stone-900" : "bg-stone-900 text-white"} flex min-h-12 items-center justify-center whitespace-nowrap rounded-md font-semibold ${trei ? "gap-1.5 px-1.5 text-sm" : "gap-2 px-2 text-base"}" data-contact="${o}" data-telefon="${o}">${SVG(trei ? "size-4 shrink-0" : "size-5 shrink-0", iconite[o])}<span${o === "apel" && !trei ? " data-numar" : ""}>${textBara[o]}</span></a>`).join("\n        ")}
       </div>
     </div>` : "";
   // Locul: adresa, harta OpenStreetMap (fără cookies Google pe pagină) și linkuri spre Google Maps.
@@ -705,7 +718,7 @@ export async function paginaAnunt(req: Request, env: Env, id: number, slug: stri
       ${htmlReclama("anunturi", "py-2")}
       </div>
       <div class="flex flex-col gap-4">
-        <div class="${CARD}">
+        <div class="${CARD}" data-card-contact>
           <h2 class="text-base font-bold text-stone-900">Aplică direct la angajator</h2>
           <div class="mt-3">${contact}</div>
           <p class="mt-3 text-xs text-stone-600">Nu plăti niciodată ca să fii angajat. Legea interzice taxele cerute candidaților.</p>
@@ -728,37 +741,55 @@ export async function paginaAnunt(req: Request, env: Env, id: number, slug: stri
             if (!c || !window.gtag) return;
             try { window.gtag("event", "contact_anunt", { element: c.getAttribute("data-contact"), link_url: location.pathname, zona: "anunturi", transport_type: "beacon" }); } catch (x) {}
           });
-          // Numărul vine la prima apăsare și se scrie pe toate butoanele „apel”. Pe telefon, apăsarea
-          // sună direct; pe calculator doar arată numărul. WhatsApp: fereastra se deschide sincron, ca
-          // browserul să n-o blocheze, și primește adresa după răspuns.
-          var numar = null;
-          function cereNumar() {
-            if (!numar) numar = fetch("/api/anunturi/telefon?id=${a.id}", { credentials: "same-origin" }).then(function (r) { if (!r.ok) throw r; return r.json(); });
-            return numar;
+          // Contactul vine la prima apăsare și se scrie pe toate butoanele. Pe telefon, „Sună” sună direct;
+          // pe calculator doar arată numărul. WhatsApp: fereastra se deschide sincron, ca browserul să n-o
+          // blocheze, și primește adresa după răspuns. „Trimite CV” deschide aplicația de email și arată
+          // adresa, pentru cine n-are aplicația configurată.
+          var contact = null;
+          function cereContact() {
+            if (!contact) contact = fetch("/api/anunturi/contact?id=${a.id}", { credentials: "same-origin" }).then(function (r) { if (!r.ok) throw r; return r.json(); });
+            return contact;
           }
-          function scrieNumar(t) {
+          function scrieContact(t) {
             document.querySelectorAll('[data-telefon="apel"]').forEach(function (b) {
+              if (!t.apel) return;
               b.href = t.apel;
-              var s = b.querySelector("span");
-              if (s) s.textContent = t.afisat; else b.textContent = "Sună: " + t.afisat;
+              var s = b.querySelector("[data-numar]");
+              if (s) s.textContent = t.afisat;
             });
             document.querySelectorAll('[data-telefon="whatsapp"]').forEach(function (b) { if (t.whatsapp) { b.href = t.whatsapp; b.target = "_blank"; b.rel = "noopener"; } });
+            document.querySelectorAll('[data-telefon="email"]').forEach(function (b) { if (t.mailto) b.href = t.mailto; });
+            document.querySelectorAll("[data-email-text]").forEach(function (s) { s.textContent = t.email || ""; });
+          }
+          function arataPanou(b) {
+            var p = (b.closest("[data-bara-contact]") || b.closest("[data-card-contact]") || document).querySelector("[data-panou-email]");
+            if (p) p.classList.remove("hidden");
           }
           document.addEventListener("click", function (e) {
             var b = e.target.closest && e.target.closest("[data-telefon]");
-            if (!b || b.getAttribute("href") !== "#") return;
+            if (!b) return;
+            var tip = b.getAttribute("data-telefon");
+            if (b.getAttribute("href") !== "#") { if (tip === "email") arataPanou(b); return; }
             e.preventDefault();
-            var wa = b.getAttribute("data-telefon") === "whatsapp", fereastra = wa ? window.open("", "_blank") : null;
+            var wa = tip === "whatsapp", fereastra = wa ? window.open("", "_blank") : null;
             var atingere = window.matchMedia("(pointer: coarse)").matches;
-            cereNumar().then(function (t) {
-              scrieNumar(t);
+            cereContact().then(function (t) {
+              scrieContact(t);
               if (wa && t.whatsapp) { if (fereastra) fereastra.location.href = t.whatsapp; else location.href = t.whatsapp; }
-              else if (!wa && atingere) location.href = t.apel;
+              else if (tip === "email" && t.mailto) { arataPanou(b); location.href = t.mailto; }
+              else if (tip === "apel" && atingere && t.apel) location.href = t.apel;
             }).catch(function () {
               if (fereastra) fereastra.close();
-              numar = null;
+              contact = null;
               b.textContent = "Anunțul nu mai e publicat";
             });
+          });
+          document.addEventListener("click", function (e) {
+            var x = e.target.closest && e.target.closest("[data-inchide-email]");
+            if (x) { x.closest("[data-panou-email]").classList.add("hidden"); return; }
+            var k = e.target.closest && e.target.closest("[data-copiaza-email]");
+            if (!k || !navigator.clipboard) return;
+            cereContact().then(function (t) { return navigator.clipboard.writeText(t.email); }).then(function () { k.textContent = "Adresa e copiată"; });
           });
           document.addEventListener("click", function (e) {
             var b = e.target.closest && e.target.closest("[data-copiaza]");

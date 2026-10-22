@@ -18,7 +18,8 @@ const numeMeserie = (slug: unknown) => MESERII.find((m) => m.slug === slug)?.num
 
 export type Valori = Record<string, string | boolean>;
 const GOL: Valori = { titlu: "", meserie: "", angajator: "", judet: "", oras: "", adresa: "", norma: "intreaga", orePeZi: "4", salariuMin: "", salariuMax: "",
-  faraExperienta: false, contract: "", locMunca: "", baza: "", descriere: "", telefon: "", email: "", acordPublicare: false };
+  faraExperienta: false, contract: "", locMunca: "", baza: "", descriere: "", telefon: "",
+  contactApel: true, contactWhatsapp: true, whatsapp: "", contactEmail: false, email: "", acordPublicare: false };
 
 const CAMP = "mt-1 block w-full rounded-md border border-stone-300 bg-surface px-3 py-2 text-base text-stone-900 focus:border-stone-600 focus:outline-none";
 const ETICHETA = "block text-sm font-medium text-stone-800";
@@ -32,6 +33,7 @@ export default function FormularAnunt({ initial, modificare = false, trimite }: 
   const [v, setV] = useState<Valori>({ ...GOL, ...initial });
   const [erori, setErori] = useState<Eroare[]>([]);
   const [trimis, setTrimis] = useState(false);
+  const [altWhatsapp, setAltWhatsapp] = useState(false);
   const set = (k: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
     setV((x) => ({ ...x, [k]: e.target.type === "checkbox" ? (e.target as HTMLInputElement).checked : e.target.value }));
   const eroare = (camp: string) => erori.find((e) => e.camp === camp)?.mesaj;
@@ -176,7 +178,33 @@ export default function FormularAnunt({ initial, modificare = false, trimite }: 
       <fieldset className="grid gap-4">
         <legend className="text-base font-bold text-stone-900">Angajatorul și contactul</legend>
         {Camp({ k: "angajator", eticheta: "Numele firmei (opțional)", placeholder: "Firma SRL" })}
-        {Camp({ k: "telefon", eticheta: "Telefonul la care te sună candidații", type: "tel", inputMode: "tel", placeholder: "0722 123 456", nota: "În anunț apare un buton care sună direct și, la un număr de mobil, unul de WhatsApp." })}
+        {Camp({ k: "telefon", eticheta: v.contactApel || (v.contactWhatsapp && !v.whatsapp) ? "Telefonul" : "Telefonul (opțional)", type: "tel", inputMode: "tel", placeholder: "0722 123 456" })}
+        {/* Cum îl contactează candidații (proprietar, 22 octombrie 2026): cel puțin unul. În anunț apar
+            numai butoanele bifate; numărul și emailul se arată la apăsare, nu stau în pagină. */}
+        <div className="grid gap-3" role="group" aria-labelledby="contact-candidati">
+          <p id="contact-candidati" className={ETICHETA}>Cum te contactează candidații</p>
+          <label className="flex items-start gap-2 text-base text-stone-800">
+            <input type="checkbox" checked={v.contactApel === true} onChange={set("contactApel")} className="mt-1.5" />
+            <span>Te sună<span className={NOTA}>În anunț apare butonul „Sună”.</span></span>
+          </label>
+          <label className="flex items-start gap-2 text-base text-stone-800">
+            <input type="checkbox" checked={v.contactWhatsapp === true} onChange={set("contactWhatsapp")} className="mt-1.5" />
+            <span>Îți scriu pe WhatsApp<span className={NOTA}>Pe telefonul de mai sus, dacă e de mobil.</span></span>
+          </label>
+          {/* Câmpul pentru alt număr stă ascuns: cei mai mulți au WhatsApp pe același telefon. */}
+          {v.contactWhatsapp === true && (altWhatsapp || v.whatsapp
+            ? <div className="pl-6">{Camp({ k: "whatsapp", eticheta: "Numărul de WhatsApp", type: "tel", inputMode: "tel", placeholder: "0733 123 456", nota: "Lasă gol dacă WhatsApp e pe telefonul de mai sus." })}</div>
+            : <button type="button" onClick={() => setAltWhatsapp(true)} className="ml-6 justify-self-start text-sm text-stone-700 underline underline-offset-2">WhatsApp e pe alt număr?</button>)}
+          {EMAIL_ACTIV && (
+            <label className="flex items-start gap-2 text-base text-stone-800">
+              <input type="checkbox" checked={v.contactEmail === true} onChange={set("contactEmail")} className="mt-1.5" />
+              <span>Îți trimit CV-ul pe email<span className={NOTA}>{modificare
+                ? "Pe emailul cu care ai confirmat anunțul. Adresa apare numai când candidatul apasă „Trimite CV”."
+                : "Pe emailul tău de mai jos, cel pe care îl confirmi. Adresa apare numai când candidatul apasă „Trimite CV”."}</span></span>
+            </label>
+          )}
+          {eroare("contactApel") && <span className="text-sm text-red-700">{eroare("contactApel")}</span>}
+        </div>
       </fieldset>
 
       {!modificare && (

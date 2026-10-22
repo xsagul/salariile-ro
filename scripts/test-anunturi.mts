@@ -33,6 +33,22 @@ assert.deepEqual(camp({ salariuMin: "4000000" }), ["salariuMin"], "cifre în plu
 assert.deepEqual(camp({ salariuMax: "3000" }), ["salariuMax"], "maxim sub minim");
 assert.deepEqual(camp({ salariuMax: "20000" }), [], "interval larg: se publică");
 
+// Contactul (proprietar, 22 octombrie 2026): apel, WhatsApp (pe telefon sau pe alt număr) și CV pe email,
+// cel puțin unul; fără bife, ca înainte: apel și WhatsApp.
+{
+  const implicit = valideaza(bun, MESERII);
+  if ("anunt" in implicit) { assert.equal(implicit.anunt.contactApel, true); assert.equal(implicit.anunt.contactWhatsapp, true); assert.equal(implicit.anunt.contactEmail, false); }
+  assert.deepEqual(camp({ contactApel: false, contactWhatsapp: false, contactEmail: false }), ["contactApel"], "cel puțin un contact");
+  assert.deepEqual(camp({ contactApel: false, contactWhatsapp: false, contactEmail: true, telefon: "" }), [], "numai CV pe email: telefonul nu mai e obligatoriu");
+  assert.deepEqual(camp({ contactApel: false, contactWhatsapp: true, telefon: "0212345678" }), ["telefon"], "WhatsApp cere un număr de mobil");
+  const alt = valideaza({ ...bun, telefon: "0212345678", whatsapp: "0733 111 222" }, MESERII);
+  assert.ok("anunt" in alt, "fix pentru apel, mobil pentru WhatsApp");
+  if ("anunt" in alt) assert.equal(alt.anunt.whatsapp, "0733111222");
+  assert.deepEqual(camp({ whatsapp: "123" }), ["whatsapp"]);
+  const fara = valideaza({ ...bun, contactWhatsapp: false, whatsapp: "0733111222" }, MESERII);
+  if ("anunt" in fara) assert.equal(fara.anunt.whatsapp, undefined, "fără WhatsApp bifat, numărul lui nu se păstrează");
+}
+
 // Filtrele de pe OLX și eJobs (proprietar, 29 septembrie 2026): opționale; o valoare necunoscută e „nespecificat”.
 {
   const x = valideaza({ ...bun, faraExperienta: "on", contract: "sezonier", locMunca: "acasa" }, MESERII);
@@ -130,9 +146,11 @@ assert.match(dateWorker, /\.filter\(\(a\) => !scosDeProprietar\(a\.id\)\);/, "si
 // Numărul de telefon nu stă în pagina anunțului (22 octombrie 2026): vine din API la apăsare.
 assert.doesNotMatch(pagini, /linkApel\(|linkWhatsApp\(|telefonAfisat\(/, "pagina anunțului nu scrie numărul în HTML");
 assert.match(pagini, /data-telefon="apel"/, "butonul de apel cere numărul la apăsare");
-assert.match(pagini, /\/api\/anunturi\/telefon\?id=/, "pagina cere numărul din API");
+assert.match(pagini, /\/api\/anunturi\/contact\?id=/, "pagina cere contactul din API");
+assert.match(pagini, /data-panou-email/, "CV pe email: adresa apare într-un panou, pentru cine n-are aplicația de email");
+assert.match(pagini, /trei \? "grid-cols-3"/, "trei feluri de contact: trei butoane pe un rând în bara de jos");
 const apiWorker = fs.readFileSync("worker/api.ts", "utf8");
-assert.match(apiWorker, /cale === "\/api\/anunturi\/telefon"/, "API-ul dă numărul");
+assert.match(apiWorker, /cale === "\/api\/anunturi\/contact" \|\| cale === "\/api\/anunturi\/telefon"/, "API-ul dă contactul; /telefon rămâne pentru paginile din cache");
 assert.match(apiWorker, /a\.stare !== "activ"/, "numai pentru anunțurile publicate");
 
 // Confirmarea pe email (22 octombrie 2026), sub EMAIL_ACTIV: anunțul nou e „neconfirmat”, linkul de

@@ -2,7 +2,7 @@
 import type { Env } from "./index";
 import type { Loc } from "./geocod";
 import { anuntaGoogle } from "./google";
-import { LIMITA_PE_ZI, ZILE_PASTRARE_EMAIL, ZILE_VALABILITATE, faraDiacritice, netLunar, orasSlug, scosDeProprietar, slugAnunt, urlAnunt, type AnuntNou, type Contract, type LocMunca, type Norma } from "../src/lib/anunturi/reguli";
+import { LIMITA_PE_ZI, ZILE_PASTRARE_EMAIL, ZILE_VALABILITATE, esteMobil, faraDiacritice, netLunar, orasSlug, scosDeProprietar, slugAnunt, urlAnunt, type AnuntNou, type Contract, type LocMunca, type Norma } from "../src/lib/anunturi/reguli";
 import { MESERII_ANUNTURI, formaTitlu, ghicesteMeserie, grupMeserie, meseriileDomeniului, pentruPotrivire, slugurileGrupului, variante } from "../src/lib/anunturi/meserii";
 import { EMAIL_ACTIV } from "../src/lib/anunturi/config";
 
@@ -13,6 +13,7 @@ export type Anunt = {
   fara_experienta: number; contract: Contract | null; loc_munca: LocMunca | null;
   salariu_min: number; salariu_max: number | null; baza: "brut" | "net"; net_min: number;
   descriere: string; telefon: string | null;
+  contact_apel: number; contact_whatsapp: number; whatsapp: string | null; contact_email: number;
   email: string | null; creat_la: string; confirmat_la: string | null; expira_la: string | null;
 };
 
@@ -54,14 +55,28 @@ export async function adauga(env: Env, a: AnuntNou, loc: Loc | null, token: stri
   const confirmat = !EMAIL_ACTIV;
   const r = await env.DB.prepare(
     `INSERT INTO anunturi (stare, titlu, slug, meserie, angajator, judet, oras, oras_slug, adresa, lat, lon, loc_precizie, norma, ore_pe_zi,
-      fara_experienta, contract, loc_munca, salariu_min, salariu_max, baza, net_min, descriere, telefon, email, token_hash, creat_la, confirmat_la, expira_la)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id, slug`,
+      fara_experienta, contract, loc_munca, salariu_min, salariu_max, baza, net_min, descriere, telefon, email, token_hash, creat_la, confirmat_la, expira_la,
+      contact_apel, contact_whatsapp, whatsapp, contact_email)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id, slug`,
   ).bind(confirmat ? "activ" : "neconfirmat", a.titlu, slugAnunt(a.titlu, a.oras), a.meserie || ghicesteMeserie(a.titlu), a.angajator, a.judet, a.oras, orasSlug(a.oras),
     a.adresa ?? null, loc?.lat ?? null, loc?.lon ?? null, loc?.precizie ?? null, a.norma, a.orePeZi ?? null,
     a.faraExperienta ? 1 : 0, a.contract ?? null, a.locMunca ?? null,
-    a.salariuMin, a.salariuMax ?? null, a.baza, netLunar(a.salariuMin, a.baza), a.descriere, a.telefon, a.email || null, await sha256(token),
-    t, confirmat ? t : null, confirmat ? peste(ZILE_VALABILITATE) : null).first<{ id: number; slug: string }>();
+    a.salariuMin, a.salariuMax ?? null, a.baza, netLunar(a.salariuMin, a.baza), a.descriere, a.telefon || null, a.email || null, await sha256(token),
+    t, confirmat ? t : null, confirmat ? peste(ZILE_VALABILITATE) : null,
+    a.contactApel ? 1 : 0, a.contactWhatsapp ? 1 : 0, a.whatsapp ?? null, a.contactEmail ? 1 : 0).first<{ id: number; slug: string }>();
   return r!;
+}
+
+/**
+ * Ce vede candidatul: apelul, WhatsApp-ul (pe numărul lui sau pe telefon, numai la mobil) și emailul
+ * pentru CV, cât le-a bifat angajatorul. `null` când nu rămâne niciun contact.
+ */
+export function contactAnunt(a: Anunt): { apel: string | null; whatsapp: string | null; email: string | null } | null {
+  const apel = a.contact_apel && a.telefon ? a.telefon : null;
+  const nrWhatsapp = a.whatsapp || a.telefon;
+  const whatsapp = a.contact_whatsapp && nrWhatsapp && esteMobil(nrWhatsapp) ? nrWhatsapp : null;
+  const email = EMAIL_ACTIV && a.contact_email && a.email ? a.email : null;
+  return apel || whatsapp || email ? { apel, whatsapp, email } : null;
 }
 
 /** Linkul din email a fost deschis: anunțul se publică de acum, pentru 30 de zile. `true` dacă abia acum. */
@@ -90,16 +105,18 @@ export async function prelungeste(env: Env, id: number): Promise<void> {
 export async function modifica(env: Env, id: number, a: AnuntNou, loc: Loc | null): Promise<void> {
   await env.DB.prepare(
     `UPDATE anunturi SET titlu = ?, slug = ?, meserie = ?, angajator = ?, judet = ?, oras = ?, oras_slug = ?, adresa = ?, lat = ?, lon = ?, loc_precizie = ?,
-      norma = ?, ore_pe_zi = ?, fara_experienta = ?, contract = ?, loc_munca = ?, salariu_min = ?, salariu_max = ?, baza = ?, net_min = ?, descriere = ?, telefon = ? WHERE id = ? AND stare IN ('neconfirmat', 'activ', 'expirat')`,
+      norma = ?, ore_pe_zi = ?, fara_experienta = ?, contract = ?, loc_munca = ?, salariu_min = ?, salariu_max = ?, baza = ?, net_min = ?, descriere = ?, telefon = ?,
+      contact_apel = ?, contact_whatsapp = ?, whatsapp = ?, contact_email = ? WHERE id = ? AND stare IN ('neconfirmat', 'activ', 'expirat')`,
   ).bind(a.titlu, slugAnunt(a.titlu, a.oras), a.meserie || ghicesteMeserie(a.titlu), a.angajator, a.judet, a.oras, orasSlug(a.oras),
     a.adresa ?? null, loc?.lat ?? null, loc?.lon ?? null, loc?.precizie ?? null, a.norma, a.orePeZi ?? null,
     a.faraExperienta ? 1 : 0, a.contract ?? null, a.locMunca ?? null, a.salariuMin,
-    a.salariuMax ?? null, a.baza, netLunar(a.salariuMin, a.baza), a.descriere, a.telefon, id).run();
+    a.salariuMax ?? null, a.baza, netLunar(a.salariuMin, a.baza), a.descriere, a.telefon || null,
+    a.contactApel ? 1 : 0, a.contactWhatsapp ? 1 : 0, a.whatsapp ?? null, a.contactEmail ? 1 : 0, id).run();
 }
 
 /** Ștergerea cerută de cel care a postat: anunțul dispare imediat, datele de contact la fel. */
 export async function sterge(env: Env, id: number): Promise<void> {
-  await env.DB.prepare("UPDATE anunturi SET stare = 'sters', sters_la = ?, telefon = NULL, adresa = NULL WHERE id = ?").bind(acum(), id).run();
+  await env.DB.prepare("UPDATE anunturi SET stare = 'sters', sters_la = ?, telefon = NULL, whatsapp = NULL, adresa = NULL WHERE id = ?").bind(acum(), id).run();
 }
 
 export const PE_PAGINA = 20;

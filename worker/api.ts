@@ -1,10 +1,10 @@
 // API-ul anunțurilor: postare, gestionare din linkul primit pe email, raportare.
 // Toate cererile sunt JSON prin POST; răspunsurile nu conțin niciodată emailul celui care postează.
 import type { Env } from "./index";
-import { URL_ADAUGA, esteMobil, linkApel, linkWhatsApp, telefonAfisat, urlAnunt, valideaza } from "../src/lib/anunturi/reguli";
+import { URL_ADAUGA, linkApel, linkWhatsApp, telefonAfisat, urlAnunt, valideaza } from "../src/lib/anunturi/reguli";
 import { MESERII_ANUNTURI } from "../src/lib/anunturi/meserii";
 import { EMAIL_ACTIV } from "../src/lib/anunturi/config";
-import { adauga, confirma, dupaId, dupaToken, inLimita, listaPentruApropiere, modifica, prelungeste, raporteaza, sterge, tokenNou, type Anunt } from "./date";
+import { adauga, confirma, contactAnunt, dupaId, dupaToken, inLimita, listaPentruApropiere, modifica, prelungeste, raporteaza, sterge, tokenNou, type Anunt } from "./date";
 import { localizeaza } from "./geocod";
 import { anuntaGoogle } from "./google";
 import { cardLista, citesteExtra } from "./pagini";
@@ -55,12 +55,22 @@ export async function api(req: Request, env: Env, ctx: ExecutionContext, cale: s
   }
   // Numărul de telefon, la apăsare, ca „Arată numărul” de pe OLX (proprietar, 22 octombrie 2026). Nu stă
   // în HTML: un număr pus de altcineva într-un anunț fals nu ajunge în Google și nu e cules de roboți.
-  if (cale === "/api/anunturi/telefon" && req.method === "GET") {
+  // `/telefon` rămâne pentru paginile din cache de dinainte de CV pe email (22 octombrie 2026).
+  if ((cale === "/api/anunturi/contact" || cale === "/api/anunturi/telefon") && req.method === "GET") {
     if (req.headers.get("sec-fetch-site") && req.headers.get("sec-fetch-site") !== "same-origin") return json({ eroare: "Origine nepermisă" }, 403);
     const id = Number(new URL(req.url).searchParams.get("id"));
     const a = Number.isInteger(id) && id > 0 ? await dupaId(env, id) : null;
-    if (!a || a.stare !== "activ" || !a.telefon) return json({ eroare: "Anunțul nu mai e publicat." }, 404);
-    const r = json({ afisat: telefonAfisat(a.telefon), apel: linkApel(a.telefon), whatsapp: esteMobil(a.telefon) ? linkWhatsApp(a.telefon, a.titlu) : null });
+    const c = a && a.stare === "activ" ? contactAnunt(a) : null;
+    if (!a || !c) return json({ eroare: "Anunțul nu mai e publicat." }, 404);
+    const cv = `CV pentru anunțul „${a.titlu}” (salariile.ro)`;
+    const corpCv = `Bună ziua,\n\nVă trimit CV-ul pentru anunțul „${a.titlu}” de pe salariile.ro:\n${env.SITE}${urlAnunt(a)}\n\n`;
+    const r = json({
+      afisat: c.apel ? telefonAfisat(c.apel) : null,
+      apel: c.apel ? linkApel(c.apel) : null,
+      whatsapp: c.whatsapp ? linkWhatsApp(c.whatsapp, a.titlu) : null,
+      email: c.email,
+      mailto: c.email ? `mailto:${c.email}?subject=${encodeURIComponent(cv)}&body=${encodeURIComponent(corpCv)}` : null,
+    });
     r.headers.set("x-robots-tag", "noindex, nofollow");
     return r;
   }

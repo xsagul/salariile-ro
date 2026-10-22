@@ -56,14 +56,21 @@ export type AnuntNou = {
   salariuMax?: number | null;
   baza: Baza;
   descriere: string;
-  telefon: string;          // contactul: butonul de apel și, la mobil, cel de WhatsApp
-  email: string;            // al celui care postează, numai cu EMAIL_ACTIV: primește linkul de gestionare; nu se publică
+  telefon: string;          // contactul: butonul de apel și, la mobil, cel de WhatsApp; gol doar cu CV pe email singur
+  // Cum îl contactează candidații (proprietar, 22 octombrie 2026); cel puțin unul.
+  contactApel: boolean;
+  contactWhatsapp: boolean;
+  whatsapp?: string;        // alt număr pentru WhatsApp; fără el, WhatsApp merge pe `telefon`
+  contactEmail: boolean;    // CV-urile vin pe `email`, cel confirmat; adresa apare la apăsare
+  email: string;            // al celui care postează, numai cu EMAIL_ACTIV: primește linkul de gestionare; în anunț numai cu `contactEmail`
   acordPublicare: boolean;  // datele de contact ale angajatorului se publică în anunț
 };
 
 export type Eroare = { camp: keyof AnuntNou | "general"; mesaj: string };
 
 const text = (v: unknown) => (typeof v === "string" ? v.replace(/\s+/g, " ").trim() : "");
+/** O bifă din formular sau din JSON; lipsa ei dă valoarea implicită. */
+const bifat = (v: unknown, implicit: boolean) => (v === undefined || v === null || v === "" ? implicit : v === true || v === "true" || v === "on");
 const textLung = (v: unknown) => (typeof v === "string" ? v.replace(/\r\n?/g, "\n").replace(/[ \t]+/g, " ").replace(/\n{3,}/g, "\n\n").trim() : "");
 // \p{M} (semnele diacritice), nu intervalul lor scris cu caracterele combinate: în Worker,
 // intervalul nu prindea nimic și „București” devenea „bucure-ti” (proba locală, 28 septembrie 2026).
@@ -138,6 +145,11 @@ export function valideaza(brut: Record<string, unknown>, meseriiValide: Set<stri
     baza: brut.baza === "net" ? "net" : brut.baza === "brut" ? "brut" : ("" as Baza),
     descriere: textLung(brut.descriere),
     telefon: telefonCurat(text(brut.telefon)) ?? text(brut.telefon),
+    // Lipsa bifelor (clienți vechi, importul ANOFM) înseamnă comportamentul de dinainte: apel și WhatsApp.
+    contactApel: bifat(brut.contactApel, true),
+    contactWhatsapp: bifat(brut.contactWhatsapp, true),
+    whatsapp: telefonCurat(text(brut.whatsapp)) ?? (text(brut.whatsapp) || undefined),
+    contactEmail: EMAIL_ACTIV && bifat(brut.contactEmail, false),
     email: EMAIL_ACTIV ? text(brut.email).toLowerCase() : "",
     acordPublicare: brut.acordPublicare === true || brut.acordPublicare === "true" || brut.acordPublicare === "on",
   };
@@ -166,11 +178,19 @@ export function valideaza(brut: Record<string, unknown>, meseriiValide: Set<stri
     else if (a.salariuMax === a.salariuMin) a.salariuMax = null;
   }
 
-  // Contactul angajatorului: telefonul, publicat cu acordul celui care postează. Fără link de
-  // aplicare, email pentru CV-uri sau CV prin site: pe OLX și anuntul.ro angajatorii dau un
-  // telefon, iar candidatul sună sau scrie pe WhatsApp (proprietar, 28 septembrie 2026).
-  if (!a.telefon) e.push({ camp: "telefon", mesaj: "Scrie telefonul la care te sună candidații." });
-  else if (!telefonCurat(a.telefon)) e.push({ camp: "telefon", mesaj: "Telefonul nu pare un număr românesc valid." });
+  // Contactul angajatorului, publicat cu acordul celui care postează: apel, WhatsApp (pe același număr
+  // sau pe altul) și CV pe email, cel puțin unul (proprietar, 22 octombrie 2026; până atunci doar
+  // telefonul, ca pe OLX și anuntul.ro). Site-ul nu primește CV-uri: candidatul scrie direct angajatorului.
+  const waPeTelefon = a.contactWhatsapp && !a.whatsapp;
+  if (!a.contactApel && !a.contactWhatsapp && !a.contactEmail) e.push({ camp: "contactApel", mesaj: "Alege cel puțin un fel în care te contactează candidații." });
+  if (a.contactApel || waPeTelefon) {
+    if (!a.telefon) e.push({ camp: "telefon", mesaj: "Scrie telefonul la care te sună candidații." });
+    else if (!telefonCurat(a.telefon)) e.push({ camp: "telefon", mesaj: "Telefonul nu pare un număr românesc valid." });
+  } else if (a.telefon && !telefonCurat(a.telefon)) e.push({ camp: "telefon", mesaj: "Telefonul nu pare un număr românesc valid." });
+  if (a.contactWhatsapp && a.whatsapp && !telefonCurat(a.whatsapp)) e.push({ camp: "whatsapp", mesaj: "Numărul de WhatsApp nu pare un număr românesc valid." });
+  else if (a.contactWhatsapp && telefonCurat(a.whatsapp || a.telefon) && !esteMobil(telefonCurat(a.whatsapp || a.telefon)!))
+    e.push({ camp: a.whatsapp ? "whatsapp" : "telefon", mesaj: "WhatsApp merge doar pe un număr de mobil (07…). Scrie alt număr pentru WhatsApp sau debifează WhatsApp." });
+  if (!a.contactWhatsapp || a.whatsapp === a.telefon) a.whatsapp = undefined;
   if (EMAIL_ACTIV && !emailValid(a.email)) e.push({ camp: "email", mesaj: "Scrie emailul tău: acolo primești linkul cu care modifici sau ștergi anunțul." });
   if (!a.acordPublicare) e.push({ camp: "acordPublicare", mesaj: "Bifează acordul: datele de contact ale angajatorului apar în anunț." });
 
