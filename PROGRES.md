@@ -5249,3 +5249,17 @@ altcuiva, impersonarea firmelor, DSA, GDPR. Răspunsul, în ordine:
 
 Rămase deschise: limita minimă de bun-simț pentru salariu (1 leu e acceptat), verificarea manuală a
 anunțurilor cu nume de firme mari, butonul „e numărul meu”, numerele din importul ANOFM.
+
+## 22 octombrie 2026, noaptea — contactul ales de angajator; emailurile către jurnaliști trimise
+
+- **Contactul** (`3ee0a87`, migrația 0004 aplicată pe D1): apel, WhatsApp (și pe alt număr) și CV pe
+  email, cel puțin unul; CV-urile vin numai pe emailul confirmat, site-ul nu le primește. Numerele și
+  emailul vin din `/api/anunturi/contact` la apăsare. Bara de jos: cu trei opțiuni, trei butoane egale
+  pe un rând (verificat la 375 și 360 px); „Trimite CV” deschide aplicația de email și un panou cu
+  adresa și „Copiază adresa”. Cele 503 anunțuri active au rămas cu apel + WhatsApp.
+- **Outreach:** cele 9 emailuri către jurnaliști (lista din secțiunea de la prânz) trimise de pe
+  `stiuriucsorin@gmail.com`, la cererea explicită a proprietarului. De urmărit: răspunsurile și
+  linkurile noi (SE Ranking, `getBacklinksSummary` pe salariile.ro; azi 9 domenii, DR 14).
+- **De unde a venit anunțul Froo (796):** Android/Chrome, intrat direct pe prima pagină la 16:47 (ora
+  României), „Adaugă anunț” la 16:54, publicat la 16:57; înainte de postarea pe Reddit. Pentru 795
+  (12 octombrie) Cloudflare RUM are doar eșantion ~1/10 la date mai vechi: vizita nu e în el.
