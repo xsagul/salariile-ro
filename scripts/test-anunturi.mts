@@ -6,7 +6,7 @@ import { cauta, cheieUat, numarDinText, type Localitate } from "../src/lib/anunt
 import { MARCAJE, completeazaSablon } from "../src/lib/anunturi/sablon";
 import { EMAIL_ACTIV } from "../src/lib/anunturi/config";
 import { MESERII_ANUNTURI, distanta, esteDomeniu, ghicesteMeserie, grupMeserie, numeMeserieAnunt, radacina, slugMeserie, slugurileGrupului, variante } from "../src/lib/anunturi/meserii";
-import { dinImportAnofm, esteMobil, linkApel, linkWhatsApp, orasSlug, slugAnunt, telefonAfisat, telefonCurat, urlAnunt, urlLista, valideaza, type Eroare } from "../src/lib/anunturi/reguli";
+import { dinImportAnofm, esteMobil, scosDeProprietar, linkApel, linkWhatsApp, orasSlug, slugAnunt, telefonAfisat, telefonCurat, urlAnunt, urlLista, valideaza, type Eroare } from "../src/lib/anunturi/reguli";
 
 const MESERII = new Set(["barman", "sofer-distributie"]);
 const bun = {
@@ -118,6 +118,14 @@ for (const id of [1, 2, 3, 791, 792, 5000]) assert.ok(!dinImportAnofm(id), `ID $
 const pagini = fs.readFileSync("worker/pagini.ts", "utf8");
 assert.match(pagini, /indexabil: !dinImportAnofm\(a\.id\)/, "pagina anunțului ANOFM e noindex");
 assert.match(pagini, /anunturi\.filter\(\(a\) => !dinImportAnofm\(a\.id\)\)/, "sitemap-ul sare peste importul ANOFM");
+
+// Anunțurile false scoase din cod (22 octombrie 2026): pagina le vede șterse, listele și sitemap-ul deloc.
+assert.ok(scosDeProprietar(797), "anunțul satiric 797 e scos");
+assert.ok(!scosDeProprietar(3) && !scosDeProprietar(796), "celelalte anunțuri rămân");
+const dateWorker = fs.readFileSync("worker/date.ts", "utf8");
+assert.match(dateWorker, /scosDeProprietar\(a\.id\) \? \{ \.\.\.a, stare: "sters" \}/, "pagina anunțului scos dă 410");
+assert.match(dateWorker, /r\.results\.filter\(\(a\) => !scosDeProprietar\(a\.id\)\)/, "listele nu arată anunțurile scoase");
+assert.match(dateWorker, /\.filter\(\(a\) => !scosDeProprietar\(a\.id\)\);/, "sitemap-ul nu arată anunțurile scoase");
 assert.equal(urlLista(null, null), "/locuri-de-munca");
 
 // Șablonul: marcajele se înlocuiesc și în <head>, și în datele React din <script>, cu escaparea locului.

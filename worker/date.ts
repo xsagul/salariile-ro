@@ -2,7 +2,7 @@
 import type { Env } from "./index";
 import type { Loc } from "./geocod";
 import { anuntaGoogle } from "./google";
-import { LIMITA_PE_ZI, ZILE_PASTRARE_EMAIL, ZILE_VALABILITATE, faraDiacritice, netLunar, orasSlug, slugAnunt, urlAnunt, type AnuntNou, type Contract, type LocMunca, type Norma } from "../src/lib/anunturi/reguli";
+import { LIMITA_PE_ZI, ZILE_PASTRARE_EMAIL, ZILE_VALABILITATE, faraDiacritice, netLunar, orasSlug, scosDeProprietar, slugAnunt, urlAnunt, type AnuntNou, type Contract, type LocMunca, type Norma } from "../src/lib/anunturi/reguli";
 import { MESERII_ANUNTURI, formaTitlu, ghicesteMeserie, grupMeserie, meseriileDomeniului, pentruPotrivire, slugurileGrupului, variante } from "../src/lib/anunturi/meserii";
 
 export type Anunt = {
@@ -64,11 +64,13 @@ export async function adauga(env: Env, a: AnuntNou, loc: Loc | null, token: stri
 
 export async function dupaToken(env: Env, token: string): Promise<Anunt | null> {
   if (!/^[A-Za-z0-9_-]{40,50}$/.test(token)) return null;
-  return env.DB.prepare("SELECT * FROM anunturi WHERE token_hash = ? AND stare != 'sters'").bind(await sha256(token)).first<Anunt>();
+  const a = await env.DB.prepare("SELECT * FROM anunturi WHERE token_hash = ? AND stare != 'sters'").bind(await sha256(token)).first<Anunt>();
+  return a && scosDeProprietar(a.id) ? null : a;
 }
 
 export async function dupaId(env: Env, id: number): Promise<Anunt | null> {
-  return env.DB.prepare("SELECT * FROM anunturi WHERE id = ?").bind(id).first<Anunt>();
+  const a = await env.DB.prepare("SELECT * FROM anunturi WHERE id = ?").bind(id).first<Anunt>();
+  return a && scosDeProprietar(a.id) ? { ...a, stare: "sters" } : a;
 }
 
 export async function prelungeste(env: Env, id: number): Promise<void> {
@@ -112,7 +114,7 @@ let memorie: { la: number; anunturi: Promise<AnuntActiv[]> } | null = null;
 function active(env: Env): Promise<AnuntActiv[]> {
   if (memorie && Date.now() - memorie.la < MEMORIE_MS) return memorie.anunturi;
   const anunturi = env.DB.prepare("SELECT * FROM anunturi WHERE stare = 'activ' ORDER BY confirmat_la DESC").all<Anunt>().then((r) =>
-    r.results.map((a) => ({
+    r.results.filter((a) => !scosDeProprietar(a.id)).map((a) => ({
       ...a,
       // Titlul cu spații la capete, fără diacritice și semne, ca „Barista/barman” să aibă cuvântul „barman”.
       titluPotrivire: ` ${formaTitlu(a.titlu)} `,
@@ -260,7 +262,8 @@ export async function listeIndexabile(env: Env, prag: number): Promise<{ oras: s
 }
 
 export async function toateActive(env: Env): Promise<Pick<Anunt, "id" | "slug" | "confirmat_la">[]> {
-  return (await env.DB.prepare("SELECT id, slug, confirmat_la FROM anunturi WHERE stare = 'activ' ORDER BY id DESC LIMIT 45000").all<Pick<Anunt, "id" | "slug" | "confirmat_la">>()).results;
+  return (await env.DB.prepare("SELECT id, slug, confirmat_la FROM anunturi WHERE stare = 'activ' ORDER BY id DESC LIMIT 45000").all<Pick<Anunt, "id" | "slug" | "confirmat_la">>()).results
+    .filter((a) => !scosDeProprietar(a.id));
 }
 
 /**

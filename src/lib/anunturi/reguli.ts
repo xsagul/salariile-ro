@@ -206,6 +206,15 @@ export const URL_ADAUGA = "/adauga-anunt-angajare";
 const IMPORTURI_ANOFM: readonly [number, number][] = [[4, 790]];
 export const dinImportAnofm = (id: number) => IMPORTURI_ANOFM.some(([de, pana]) => id >= de && id <= pana);
 
+/**
+ * Anunțuri false scoase de proprietar, fără acces la D1 din terminal. Worker-ul le tratează ca
+ * șterse: pagina dă 410, iar listele, sitemap-ul și linkul de gestionare nu le mai văd. Un anunț
+ * scos de aici poate fi șters și în D1 când e cineva logat (`UPDATE anunturi SET stare = 'sters'`).
+ * - 797, 22 octombrie 2026: „Politician care chiar face treabă”, satiră, 1–180.000 lei net.
+ */
+const SCOASE_DE_PROPRIETAR: ReadonlySet<number> = new Set([797]);
+export const scosDeProprietar = (id: number) => SCOASE_DE_PROPRIETAR.has(id);
+
 /** Partea din URL a anunțului: „sofer-distributie-cluj-napoca” (fără „anunt angajare” repetat). */
 export function slugAnunt(titlu: string, oras: string): string {
   const t = slug(titlu).replace(/^(anunt-)?(de-)?angaj(are|am|ez|eaza)-/, "");
