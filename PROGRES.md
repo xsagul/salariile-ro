@@ -5189,3 +5189,38 @@ follow`; sitemap-ul are listele și ID 800, nu și ID 10.
 - Butonul de donații, întrebat tot pe 19 octombrie: estimat la 10–150 de lei pe lună (1–10 donații),
   cam cât unitatea AdSense; contul de încasare și încadrarea fiscală (cu un contabil, înainte de
   pornire) sunt ale proprietarului. Nimic construit.
+
+## 22 octombrie 2026 — scăderea pe nucleu, linkul complet al calculului și primul outreach
+
+**Traficul (GSC, până pe 20 oct.).** Clicuri săptămânale: 4.320 (28 sept.–4 oct.), 4.150, 3.651; luni–marți
+19–20 oct. 801 față de 1.326 cu o săptămână înainte. Afișările au scăzut doar ~10%: pierderea e de poziție.
+Pe „calculator salariu net”: 2,4 pe 8 oct., 3,5 pe 12–15 oct., 4,4 în fiecare zi din 17 oct. (~11 clicuri pe
+zi față de 100+). Homepage-ul e indexat, crawl-uit pe 21 oct., fără noindex. SERP 22 oct. (SE Ranking,
+„calcul salariu net”): rezumat AI, calculator-salarii.ro, impozitsalariu.ro, salaria.ro, noi.
+
+**Reclamele nu explică scăderea (GA4, homepage, 6–11 vs 16–21 oct.).** Utilizatori 1.394 → 744, dar calcule
+pe utilizator 1,62 → 2,09, timp activ 1 min 12 s → 1 min 28 s, pagini pe utilizator 1,33 → 1,42.
+
+**Autoritatea.** Domenii care trimit linkuri: noi 9 (DR 14), calculator-salarii.ro 891 (DR 46), impozitsalariu.ro
+378 (DR 46), salaria.ro 71 (DR 6). Linkurile din presă ale lui calculator-salarii.ro nu vin din campanii sau
+pagini de date: jurnaliștii trec un salariu prin calculator și pun linkul spre calculul exact ca dovadă
+(evz → `/37188-brut-…` „21.755 lei net”, hotnews → calculul cu deducerea de 100 lei, edupedu, scoala9,
+gandul, startupcafe, newsweek). Proprietarul a respins paginile de date ca idee („niciun concurent nu a
+făcut asta”); datele îi dau dreptate.
+
+**Publicat (`7c6ce83`).** Linkul calculului păstrează opțiunile și luna: `intretinere`, `copii`, `sub26`,
+`functie-secundara`, `scutit`, `tichete`, `valoare-tichet`, `luna` (doar ce diferă de implicit; luna mereu,
+pe homepage, ca o cifră citată să nu se schimbe după o lege nouă). `valoare-tichet` e sumă, deci intră în
+`PARAMETRI_CU_SUMA` (test în `test-ui-contracts.mts`). Verificat local (scriere și redeschidere: 6.000 brut,
+2 persoane, 20 × 40 lei tichete → 3.358 net, identic) și pe producție (`?brut=4000&intretinere=1&copii=1&luna=2026-10`
+→ deducere 1.181, net 2.458). `npm test` exit 0, lint fără avertismente noi, `tsc` curat.
+
+**Outreach, ciorne în Gmail (netrimise, așteaptă acordul proprietarului):** 9 mesaje către autorii care au pus
+linkuri spre calculatoare în articole despre salarii — Florin Bărbuță (redactie@hotnews.ro), Claudiu Zamfir
+(claudiu.zamfir@hotnews.ro), Alex Ichim (coordonare@evzgroup.ro), Lucreția Soare (online@gandul.ro), Vlad
+Alexandru (redactia@newsweek.ro), Octavian Lazăr (contact@financiarul.ro), Mihai Peticilă
+(mihai.peticila@edupedu.ro), redactie@scoala9.ro, office@monitorulcj.ro. Fiecare cu un link de calcul legat de
+articolul lui.
+
+**Reddit e blocat** în ambele browsere ale agentului (Claude in Chrome și panoul integrat): postările le face
+proprietarul. Textul pentru anunțurile gratuite e în conversație; r/RoMunca e canalul deja folosit.
