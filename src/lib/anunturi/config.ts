@@ -4,4 +4,4 @@
 // (planul gratuit, 100 pe zi), cu secretul RESEND_KEY pe Worker și domeniul verificat la Resend.
 // Oprit: anunțul apare pe loc, fără email, ca din 29 septembrie 2026. Nu-l porni înainte ca
 // RESEND_KEY să existe: fără el, orice postare ar primi „Nu am putut trimite emailul de confirmare”.
-export const EMAIL_ACTIV = false;
+export const EMAIL_ACTIV = true;

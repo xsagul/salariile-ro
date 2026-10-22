@@ -30,9 +30,12 @@ Ce nu s-a schimbat, fiindcă protejează chiar venitul (traficul organic și con
 
 1. **Acum:** salariile.ro devine cel mai mare hub salarial din România, acoperind ce fac paylab.ro și undelucram.ro.
 2. **Apoi:** postare de joburi, în zona ejobs / olx / anuntul.ro. **Pornit de proprietar pe 28
-   septembrie 2026, lansat public pe 29 septembrie 2026** (D1 `salariile-anunturi`, jurisdicție UE; emailurile
-   oprite, `EMAIL_ACTIV` în `src/lib/anunturi/config.ts`, fiindcă cer Workers Paid), cu deciziile lui: fără cont (link de gestionare pe email), publicare imediată, fără confirmare
-   pe email (29 septembrie: la pornire, orice pas în plus scade numărul de anunțuri), salariul
+   septembrie 2026, lansat public pe 29 septembrie 2026** (D1 `salariile-anunturi`, jurisdicție UE), cu
+   deciziile lui: fără cont (link de gestionare pe email). **Din 22 octombrie 2026, confirmare pe email**
+   (`EMAIL_ACTIV` în `src/lib/anunturi/config.ts`): anunțul apare abia după ce linkul primit e deschis,
+   după ce un anunț fals de pe Reddit a publicat numărul unui necunoscut; emailurile pleacă prin Resend
+   (gratuit, 100 pe zi, secretul `RESEND_KEY`, domeniul verificat în Resend). Tot de atunci, numărul de
+   telefon nu stă în pagina anunțului: vine din `/api/anunturi/telefon` la apăsare, ca pe OLX. Salariul
    obligatoriu cu baza lui, orice sumă (pragul minim scos tot pe 28 septembrie, ca respingerile să
    nu încetinească pornirea), numele firmei opțional și fără CUI, candidatul contactează direct angajatorul
    (site-ul nu primește CV-uri), moderare automată + raportare (DSA). Fără Turnstile (29 septembrie:
