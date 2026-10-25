@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-24T23:23:29.620Z",
+ "generatedAt": "2026-10-25T23:23:42.328Z",
  "run": "colectare-continua",
  "policy": {
   "version": 5,
@@ -171,9 +171,9 @@
   "method": "public_source_inventories_accumulated"
  },
  "stats": {
-  "observatii": 2526,
-  "valabile": 2526,
-  "accepted": 2465,
+  "observatii": 2532,
+  "valabile": 2532,
+  "accepted": 2471,
   "surseCuTrecereCompleta": [
    "anuntul",
    "ejobs"
@@ -549,8 +549,8 @@
   },
   "medic": {
    "name": "Medic",
-   "read": 93,
-   "withoutSalary": 83,
+   "read": 94,
+   "withoutSalary": 84,
    "n": 2,
    "ads": 2,
    "basisNearAmount": 0,
@@ -669,8 +669,8 @@
   },
   "asistent-medical": {
    "name": "Asistent medical",
-   "read": 265,
-   "withoutSalary": 257,
+   "read": 266,
+   "withoutSalary": 258,
    "n": 6,
    "ads": 6,
    "basisNearAmount": 5,
@@ -1145,7 +1145,7 @@
   },
   "kinetoterapeut": {
    "name": "Kinetoterapeut",
-   "read": 33,
+   "read": 34,
    "withoutSalary": 27,
    "n": 1,
    "ads": 1,
@@ -1514,8 +1514,8 @@
   },
   "educator": {
    "name": "Educator",
-   "read": 8,
-   "withoutSalary": 8,
+   "read": 9,
+   "withoutSalary": 9,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -1714,8 +1714,8 @@
   },
   "contabil": {
    "name": "Contabil",
-   "read": 219,
-   "withoutSalary": 199,
+   "read": 220,
+   "withoutSalary": 200,
    "n": 40,
    "ads": 40,
    "basisNearAmount": 4,
@@ -1911,8 +1911,8 @@
   },
   "economist": {
    "name": "Economist",
-   "read": 76,
-   "withoutSalary": 69,
+   "read": 77,
+   "withoutSalary": 70,
    "n": 11,
    "ads": 11,
    "basisNearAmount": 0,
@@ -2524,8 +2524,8 @@
   },
   "inginer": {
    "name": "Inginer",
-   "read": 588,
-   "withoutSalary": 546,
+   "read": 589,
+   "withoutSalary": 547,
    "n": 21,
    "ads": 21,
    "basisNearAmount": 3,
@@ -2940,8 +2940,8 @@
   },
   "constructor": {
    "name": "Muncitor în construcții",
-   "read": null,
-   "withoutSalary": null,
+   "read": 0,
+   "withoutSalary": 0,
    "n": 23,
    "ads": 23,
    "basisNearAmount": 20,
@@ -3022,8 +3022,8 @@
   },
   "zidar": {
    "name": "Zidar",
-   "read": 124,
-   "withoutSalary": 114,
+   "read": 126,
+   "withoutSalary": 116,
    "n": 1,
    "ads": 1,
    "basisNearAmount": 1,
@@ -3186,8 +3186,8 @@
   },
   "electrician": {
    "name": "Electrician",
-   "read": 803,
-   "withoutSalary": 715,
+   "read": 805,
+   "withoutSalary": 717,
    "n": 57,
    "ads": 57,
    "basisNearAmount": 41,
@@ -3269,8 +3269,8 @@
   },
   "instalator": {
    "name": "Instalator",
-   "read": 424,
-   "withoutSalary": 372,
+   "read": 426,
+   "withoutSalary": 374,
    "n": 38,
    "ads": 38,
    "basisNearAmount": 22,
@@ -3350,8 +3350,8 @@
   },
   "zugrav": {
    "name": "Zugrav",
-   "read": 81,
-   "withoutSalary": 75,
+   "read": 82,
+   "withoutSalary": 76,
    "n": 2,
    "ads": 2,
    "basisNearAmount": 1,
@@ -3385,9 +3385,9 @@
     "max": 7000
    },
    "undeclaredBasis": {
-    "n": 11,
+    "n": 12,
     "sourceCounts": {
-     "anuntul": 10,
+     "anuntul": 11,
      "bestjobs": 1
     },
     "observedRange": {
@@ -3397,6 +3397,12 @@
     "midpointEstimate": 6500
    },
    "examples": [
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-zugrav-BJdnvx",
+     "source": "anuntul",
+     "min": 5000,
+     "max": 8000
+    },
     {
      "url": "https://www.anuntul.ro/anunt-angajare-zugravi-si-muncitor-mEGwXG",
      "source": "anuntul",
@@ -3417,12 +3423,6 @@
     },
     {
      "url": "https://www.anuntul.ro/anunt-angajare-zugrav-necalificat-rm3880",
-     "source": "anuntul",
-     "min": 150,
-     "max": 250
-    },
-    {
-     "url": "https://www.anuntul.ro/anunt-angajare-zugrav-necalificat-150-250-rm3880",
      "source": "anuntul",
      "min": 150,
      "max": 250
@@ -3992,8 +3992,8 @@
   },
   "croitor": {
    "name": "Croitor",
-   "read": 54,
-   "withoutSalary": 47,
+   "read": 55,
+   "withoutSalary": 48,
    "n": 10,
    "ads": 10,
    "basisNearAmount": 5,
@@ -4198,8 +4198,8 @@
   },
   "sofer-tir": {
    "name": "Șofer TIR",
-   "read": 773,
-   "withoutSalary": 695,
+   "read": 776,
+   "withoutSalary": 696,
    "n": 10,
    "ads": 10,
    "basisNearAmount": 8,
@@ -4317,8 +4317,8 @@
   },
   "taximetrist": {
    "name": "Taximetrist",
-   "read": 95,
-   "withoutSalary": 95,
+   "read": 96,
+   "withoutSalary": 96,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -4772,8 +4772,8 @@
   },
   "magaziner": {
    "name": "Magaziner",
-   "read": 240,
-   "withoutSalary": 213,
+   "read": 243,
+   "withoutSalary": 214,
    "n": 48,
    "ads": 48,
    "basisNearAmount": 44,
@@ -5013,7 +5013,7 @@
   },
   "sofer-distributie": {
    "name": "Șofer distribuție",
-   "read": 242,
+   "read": 245,
    "withoutSalary": 231,
    "n": 10,
    "ads": 10,
@@ -5047,10 +5047,10 @@
     "max": 6000
    },
    "undeclaredBasis": {
-    "n": 33,
+    "n": 34,
     "sourceCounts": {
+     "publi24": 14,
      "anuntul": 9,
-     "publi24": 13,
      "bestjobs": 9,
      "ejobs": 2
     },
@@ -5058,9 +5058,15 @@
      "min": 200,
      "max": 13191
     },
-    "midpointEstimate": 4353.5
+    "midpointEstimate": 4426.75
    },
    "examples": [
+    {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/soferi-transporturi/transport-marfa-intern/anunt/caut-sofer-categoria-b-cu-masina-personala/3244h2eghh7e78d9d654ig4i03g5f573.html",
+     "source": "publi24",
+     "min": 6000,
+     "max": 6000
+    },
     {
      "url": "https://www.anuntul.ro/anunt-angajare-sofer-cat-b-pe-prelata-2-zile-VeNbQK",
      "source": "anuntul",
@@ -5084,19 +5090,13 @@
      "source": "publi24",
      "min": 4000,
      "max": 4000
-    },
-    {
-     "url": "https://www.anuntul.ro/anunt-angajare-sofer-distributie-horeca-VelY7Z",
-     "source": "anuntul",
-     "min": 4700,
-     "max": 4700
     }
    ]
   },
   "vanzator": {
    "name": "Vânzător",
-   "read": 896,
-   "withoutSalary": 822,
+   "read": 908,
+   "withoutSalary": 834,
    "n": 101,
    "ads": 101,
    "basisNearAmount": 88,
@@ -5130,11 +5130,11 @@
     "max": 5800
    },
    "undeclaredBasis": {
-    "n": 148,
+    "n": 151,
     "sourceCounts": {
-     "publi24": 38,
+     "publi24": 39,
+     "anuntul": 79,
      "bestjobs": 23,
-     "anuntul": 77,
      "ejobs": 9,
      "hipo": 1
     },
@@ -5146,6 +5146,24 @@
    },
    "examples": [
     {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/casieri-lucratori-comerciali/anunt/lucrator-comercial-cu-experienta-magazin-mixt-slatina/i2i7i5if7945717919f87g8f057f669d.html",
+     "source": "publi24",
+     "min": 3100,
+     "max": 3100
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-vanzatoare-m3eZaG",
+     "source": "anuntul",
+     "min": 3800,
+     "max": 3800
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-vanzatoare-vanzator-cofetarie-jxbL1z",
+     "source": "anuntul",
+     "min": 3500,
+     "max": 4500
+    },
+    {
      "url": "https://www.publi24.ro/anunturi/locuri-de-munca/casieri-lucratori-comerciali/anunt/vanzatoare-casier-bucuresti-sector-1-2-3-4-5-6-salariu-4500-5000-lei/e3gi317d65ih75931f73f0ii9ifi0309.html",
      "source": "publi24",
      "min": 4500,
@@ -5156,31 +5174,13 @@
      "source": "publi24",
      "min": 4500,
      "max": 5000
-    },
-    {
-     "url": "https://www.undelucram.ro/ro/locuri-de-munca/lucrator-comercial-oradea-nufarul-fm/101679",
-     "source": "undelucram",
-     "min": 3252,
-     "max": 3252
-    },
-    {
-     "url": "https://www.undelucram.ro/ro/locuri-de-munca/lucrator-comercial-sibiu-selimbar-fm/101678",
-     "source": "undelucram",
-     "min": 3035,
-     "max": 3035
-    },
-    {
-     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/casieri-lucratori-comerciali/anunt/vanzator-magazin-scule-si-unelte/d5ihh202ffgh7638d69e081384482g18.html",
-     "source": "publi24",
-     "min": 3500,
-     "max": 3500
     }
    ]
   },
   "casier": {
    "name": "Casier",
-   "read": 261,
-   "withoutSalary": 241,
+   "read": 262,
+   "withoutSalary": 242,
    "n": 31,
    "ads": 31,
    "basisNearAmount": 30,
@@ -5422,8 +5422,8 @@
   },
   "bucatar": {
    "name": "Bucătar",
-   "read": 253,
-   "withoutSalary": 240,
+   "read": 257,
+   "withoutSalary": 244,
    "n": 14,
    "ads": 14,
    "basisNearAmount": 9,
@@ -6709,8 +6709,8 @@
   },
   "agent-paza": {
    "name": "Agent de pază",
-   "read": 336,
-   "withoutSalary": 321,
+   "read": 337,
+   "withoutSalary": 322,
    "n": 32,
    "ads": 32,
    "basisNearAmount": 23,
@@ -6790,34 +6790,34 @@
   },
   "agent-curatenie": {
    "name": "Agent de curățenie",
-   "read": 319,
-   "withoutSalary": 284,
-   "n": 37,
-   "ads": 37,
-   "basisNearAmount": 31,
+   "read": 320,
+   "withoutSalary": 285,
+   "n": 38,
+   "ads": 38,
+   "basisNearAmount": 32,
    "basisFromDocument": 6,
    "basisFromPlatform": 0,
    "employers": 21,
    "counties": 6,
    "sourceCounts": {
-    "publi24": 24,
+    "publi24": 25,
     "anuntul": 11,
     "undelucram": 1,
     "bestjobs": 1
    },
-   "employerShare": 0.08108108108108109,
-   "sourceShare": 0.6486486486486487,
+   "employerShare": 0.07894736842105263,
+   "sourceShare": 0.6578947368421053,
    "gaps": [],
    "explicitMonthly": 8,
-   "assumedMonthly": 29,
-   "periodSensitivity": 0.03225806451612903,
-   "sourceSensitivity": 0.09375,
-   "midpointEstimate": 3200,
-   "centralEstimate": 3200,
+   "assumedMonthly": 30,
+   "periodSensitivity": 0.016129032258064516,
+   "sourceSensitivity": 0.1111111111111111,
+   "midpointEstimate": 3150,
+   "centralEstimate": 3150,
    "status": "advertised_interval",
    "medianBounds": {
-    "min": 3100,
-    "max": 3200
+    "min": 3050,
+    "max": 3150
    },
    "observedRange": {
     "min": 2699,
@@ -6838,6 +6838,12 @@
     "midpointEstimate": 3500
    },
    "examples": [
+    {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/salubrizare-curatenie-dezinsectie/anunt/operatori-curatenie/hfg1i099856i7e8h10049824d1id1e70.html",
+     "source": "publi24",
+     "min": 3000,
+     "max": 3000
+    },
     {
      "url": "https://www.publi24.ro/anunturi/locuri-de-munca/menaj-ingrijire-persoane/ingrijitori-batrani/anunt/angajare-menajera-program-full-time-6000-lei-dorobanti/03e001gd9213745dd559ghd48i5f3d50.html",
      "source": "publi24",
@@ -6861,12 +6867,6 @@
      "source": "publi24",
      "min": 7000,
      "max": 7000
-    },
-    {
-     "url": "https://www.anuntul.ro/anunt-angajare-personal-curatenie-16eZb0",
-     "source": "anuntul",
-     "min": 3500,
-     "max": 4000
     }
    ]
   },
@@ -7244,8 +7244,8 @@
   },
   "frizer": {
    "name": "Frizer",
-   "read": 109,
-   "withoutSalary": 108,
+   "read": 110,
+   "withoutSalary": 109,
    "n": 1,
    "ads": 1,
    "basisNearAmount": 1,
@@ -7609,8 +7609,8 @@
   },
   "operator-cnc": {
    "name": "Operator CNC",
-   "read": 109,
-   "withoutSalary": 98,
+   "read": 110,
+   "withoutSalary": 99,
    "n": 4,
    "ads": 4,
    "basisNearAmount": 3,
@@ -8141,8 +8141,8 @@
   },
   "tapiter": {
    "name": "Tapițer",
-   "read": 10,
-   "withoutSalary": 9,
+   "read": 11,
+   "withoutSalary": 10,
    "n": 3,
    "ads": 3,
    "basisNearAmount": 3,
