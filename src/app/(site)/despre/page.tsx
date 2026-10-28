@@ -83,7 +83,8 @@ export default function DesprePage() {
         <h2>Cine întreține site-ul</h2>
         <p>
           Mă numesc Știuriuc Sorin-Marian și sunt dezvoltator full-stack. Construiesc și mențin singur salariile.ro ca
-          proiect personal, fără echipă, agenție sau firmă în spate.
+          proiect personal, fără echipă, agenție sau firmă în spate. Separat de salariile.ro, fac site-uri pentru
+          firme, la <a href="https://site-uri.ro" className="LINK">site-uri.ro</a>.
         </p>
         <p>
           Nu sunt contabil sau consultant fiscal. Sunt programator care a citit Codul Fiscal și a implementat formulele
