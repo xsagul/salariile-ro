@@ -1,5 +1,5 @@
 {
- "generatLa": "2026-10-28T00:38:16.980Z",
+ "generatLa": "2026-10-29T01:06:32.340Z",
  "oferteAnofm": 9078,
  "meserii": {
   "medic": {
@@ -1543,21 +1543,7 @@
     "oferte": 62,
     "laMinim": 0.79
    },
-   "angajatori": [
-    {
-     "firma": "Lidl",
-     "post": "Vânzător",
-     "anunturi": 85,
-     "orase": 62,
-     "min": 5300,
-     "max": 5550,
-     "baza": null,
-     "venitMediuBrut": {
-      "min": 7300,
-      "max": 7600
-     }
-    }
-   ]
+   "angajatori": null
   },
   "casier": {
    "sursa": "oferit",
@@ -1646,31 +1632,7 @@
     "oferte": 88,
     "laMinim": 0.76
    },
-   "angajatori": [
-    {
-     "firma": "Kaufland",
-     "post": "Personal Curățenie",
-     "anunturi": 7,
-     "orase": 7,
-     "min": 4700,
-     "max": 4700,
-     "baza": "brut",
-     "venitMediuBrut": null
-    },
-    {
-     "firma": "Lidl",
-     "post": "Personal de Serviciu",
-     "anunturi": 4,
-     "orase": 4,
-     "min": 5300,
-     "max": 5550,
-     "baza": null,
-     "venitMediuBrut": {
-      "min": 7300,
-      "max": 7600
-     }
-    }
-   ]
+   "angajatori": null
   },
   "secretar": {
    "sursa": "oferit",
