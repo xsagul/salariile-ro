@@ -1,7 +1,7 @@
 // src/lib/person.ts
 // Schema.org Person partajat — folosit pe homepage, /despre, /metodologie etc.
 // sameAs leagă identitatea autorului de profile externe verificabile
-// (LinkedIn, GitHub, dev.to). Asta ajută Google să construiască knowledge graph
+// (LinkedIn, GitHub, dev.to, pagina lui de pe site-uri.ro). Asta ajută Google să construiască knowledge graph
 // în jurul autorului, semnal E-E-A-T important pentru topic YMYL (fiscal).
 
 export const PERSON_ID = "https://salariile.ro/#person";
@@ -18,5 +18,6 @@ export const personSchema = {
     "https://www.linkedin.com/in/sorin-stiuriuc/",
     "https://github.com/xsagul",
     "https://dev.to/sorin_stiuriuc",
+    "https://site-uri.ro/despre",
   ],
 } as const;
