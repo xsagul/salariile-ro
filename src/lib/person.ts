@@ -15,7 +15,7 @@ export const personSchema = {
   description:
     "Întreține salariile.ro ca proiect personal independent de transparență fiscală pentru România.",
   sameAs: [
-    "https://www.linkedin.com/in/%C8%99tiuriuc-sorin-marian/",
+    "https://www.linkedin.com/in/sorin-stiuriuc/",
     "https://github.com/xsagul",
     "https://dev.to/sorin_stiuriuc",
   ],

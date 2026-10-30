@@ -162,7 +162,7 @@ export default function Footer() {
               utilizatorului – doar iconițele minimale. */}
           <div className="inline-flex items-center gap-2" role="group" aria-label="Profiluri publice autor">
             <a
-              href="https://www.linkedin.com/in/%C8%99tiuriuc-sorin-marian/"
+              href="https://www.linkedin.com/in/sorin-stiuriuc/"
               target="_blank"
               rel="noopener noreferrer me"
               aria-label="Profil LinkedIn Știuriuc Sorin-Marian"
