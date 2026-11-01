@@ -153,7 +153,12 @@ export default function Footer() {
         <div className="flex flex-col flex-wrap items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
           <p className="m-0 text-xs text-stone-600">
             © {new Date().getFullYear()} Salariile – Actualizat conform
-            legislației fiscale în vigoare
+            legislației fiscale în vigoare · Site realizat de{" "}
+            {/* Ca în subsolul site-urilor făcute de agenții („Realizat de …”): numele firmei ca text al
+                linkului, nu un cuvânt-cheie. Mutat aici de pe /despre la cererea proprietarului, 1 noiembrie 2026. */}
+            <a href="https://site-uri.ro" className="underline underline-offset-2 hover:text-stone-900">
+              site-uri.ro
+            </a>
           </p>
           <ButonPreferinteGoogle />
           {/* Profiluri publice ale autorului – semnal E-E-A-T vizibil pentru
