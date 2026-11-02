@@ -87,6 +87,7 @@ const REGULI_CONTINUT: { re: RegExp; motiv: string }[] = [
   { re: /\b(crypto|criptomonede|bitcoin|forex|trading|investitie\s+initiala|castig\s+garantat|munca\s+de\s+acasa\s+\d+\s*(lei|euro)\s+pe\s+zi)\b/, motiv: "Anunțul arată ca o schemă de câștig, nu ca un loc de muncă." },
   { re: /\b(in\s+strainatate|germania|anglia|marea\s+britanie|olanda|belgia|franta|italia|spania|danemarca|norvegia|austria)\b.*\b(munca|lucru|job|post)\b|\b(munca|lucru|job|post)\b.*\b(in\s+strainatate)\b/, motiv: "Deocamdată publicăm numai locuri de muncă în România." },
   { re: /\b(videochat|video\s*chat|webcam|escort|masaj\s+erotic|dame\s+de\s+companie)\b/, motiv: "Nu publicăm acest tip de anunț." },
+  { re: /\b(ssd\s+(chemical|automatic|universal|solution)|(blackened|tainted|defaced)\s+bank\s*notes|vectrol\s+paste|tebi[\s-]*matonic|castro\s+x\s+oxide)\b/, motiv: "Nu publicăm acest tip de anunț." },
 ];
 
 export function verificaContinut(titlu: string, descriere: string): string | null {
@@ -231,8 +232,9 @@ export const dinImportAnofm = (id: number) => IMPORTURI_ANOFM.some(([de, pana]) 
  * șterse: pagina dă 410, iar listele, sitemap-ul și linkul de gestionare nu le mai văd. Un anunț
  * scos de aici poate fi șters și în D1 când e cineva logat (`UPDATE anunturi SET stare = 'sters'`).
  * - 797, 22 octombrie 2026: „Politician care chiar face treabă”, satiră, 1–180.000 lei net.
+ * - 804, 3 noiembrie 2026: „ssd chemical solution”, scam în engleză („blackened/defaced bank notes”, +234).
  */
-const SCOASE_DE_PROPRIETAR: ReadonlySet<number> = new Set([797]);
+const SCOASE_DE_PROPRIETAR: ReadonlySet<number> = new Set([797, 804]);
 export const scosDeProprietar = (id: number) => SCOASE_DE_PROPRIETAR.has(id);
 
 /** Partea din URL a anunțului: „sofer-distributie-cluj-napoca” (fără „anunt angajare” repetat). */

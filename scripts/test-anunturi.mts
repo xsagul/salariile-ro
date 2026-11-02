@@ -113,6 +113,7 @@ assert.match(motiv("Vârsta maximă 35 de ani."), /vârstă/);
 assert.match(motiv("Candidații plătesc o taxă de înscriere de 200 lei."), /bani/);
 assert.match(motiv("Muncă în Germania, lucru în fabrică."), /România/);
 assert.match(motiv("Câștig garantat din trading."), /schemă/);
+assert.match(motiv("We sell SSD Chemical Solution used to clean defaced bank notes."), /Nu publicăm/);
 assert.equal(motiv("Experiența de minim 2 ani constituie avantaj."), "", "experiența nu e vârstă");
 assert.match(erori({ titlu: "ANGAJAM BARMAN URGENT ACUM" }).map((e) => e.mesaj).join(), /majuscule/);
 
@@ -136,7 +137,7 @@ assert.match(pagini, /indexabil: !dinImportAnofm\(a\.id\)/, "pagina anunțului A
 assert.match(pagini, /anunturi\.filter\(\(a\) => !dinImportAnofm\(a\.id\)\)/, "sitemap-ul sare peste importul ANOFM");
 
 // Anunțurile false scoase din cod (22 octombrie 2026): pagina le vede șterse, listele și sitemap-ul deloc.
-assert.ok(scosDeProprietar(797), "anunțul satiric 797 e scos");
+assert.ok(scosDeProprietar(797) && scosDeProprietar(804), "anunțurile false 797 și 804 sunt scoase");
 assert.ok(!scosDeProprietar(3) && !scosDeProprietar(796), "celelalte anunțuri rămân");
 const dateWorker = fs.readFileSync("worker/date.ts", "utf8");
 assert.match(dateWorker, /scosDeProprietar\(a\.id\) \? \{ \.\.\.a, stare: "sters" \}/, "pagina anunțului scos dă 410");

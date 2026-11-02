@@ -5284,3 +5284,10 @@ fiecare pagină din sitemap. Reperul: ghidul Google „Link best practices”.
   „Calculator salariu net” ×8.
 - Lăsat intenționat: calculatorul de șomaj are link doar din subsol (nicio pagină nu vorbește despre
   șomaj; un link în text ar fi forțat); butoanele „Descarcă CSV” (fișiere noindex).
+
+
+## 3 noiembrie 2026 — anunțul fals 804 scos (410, din liste și sitemap) + filtru anti-scam
+
+- **804 scos:** „ssd chemical solution” (Cluj-Napoca, scam în engleză cu „blackened/defaced bank notes”, WhatsApp `+234`, email `exxonssd@gmail.com`) adăugat în `SCOASE_DE_PROPRIETAR` (`src/lib/anunturi/reguli.ts`). Worker-ul răspunde cu 410 la pagina anunțului, ascunde datele de contact în `/api/anunturi/contact`, îl exclude din liste, din `/locuri-de-munca/sitemap.xml` și din linkul de gestionare. Notificare `URL_DELETED` trimisă către Google Indexing API.
+- **Filtru preventiv:** adăugată regulă în `REGULI_CONTINUT` (`src/lib/anunturi/reguli.ts`) care respinge la postare șabloanele de tip „SSD chemical/automatic/universal solution”, „blackened/tainted/defaced bank notes”, „vectrol paste”, „tebi-matonic”, „castro x oxide”. Acoperit în `scripts/test-anunturi.mts`.
+- De rulat în D1 când sesiunea `wrangler` e pe contul `5c02…` (sau din consola D1): `UPDATE anunturi SET stare = 'sters', sters_la = strftime('%Y-%m-%dT%H:%M:%SZ','now'), telefon = NULL, whatsapp = NULL, email = NULL, adresa = NULL WHERE id = 804;`.
