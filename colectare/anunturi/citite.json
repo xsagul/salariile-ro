@@ -12,12 +12,12 @@
   "withoutSalary": 84
  },
  "electrician": {
-  "read": 845,
-  "withoutSalary": 750
+  "read": 847,
+  "withoutSalary": 752
  },
  "sudor": {
-  "read": 333,
-  "withoutSalary": 307
+  "read": 334,
+  "withoutSalary": 308
  },
  "tamplar": {
   "read": 207,
@@ -48,7 +48,7 @@
   "withoutSalary": 23
  },
  "agent-vanzari": {
-  "read": 595,
+  "read": 596,
   "withoutSalary": 518
  },
  "programator": {
@@ -84,16 +84,16 @@
   "withoutSalary": 41
  },
  "sofer-tir": {
-  "read": 804,
-  "withoutSalary": 720
+  "read": 806,
+  "withoutSalary": 721
  },
  "curier": {
-  "read": 340,
-  "withoutSalary": 309
+  "read": 341,
+  "withoutSalary": 310
  },
  "vanzator": {
-  "read": 969,
-  "withoutSalary": 882
+  "read": 972,
+  "withoutSalary": 885
  },
  "administrator-sistem": {
   "read": 5,
@@ -108,7 +108,7 @@
   "withoutSalary": 52
  },
  "magaziner": {
-  "read": 255,
+  "read": 256,
   "withoutSalary": 223
  },
  "agent-imobiliar": {
@@ -128,11 +128,11 @@
   "withoutSalary": 73
  },
  "agent-curatenie": {
-  "read": 341,
-  "withoutSalary": 304
+  "read": 344,
+  "withoutSalary": 306
  },
  "logistician": {
-  "read": 41,
+  "read": 42,
   "withoutSalary": 38
  },
  "infirmier": {
@@ -148,8 +148,8 @@
   "withoutSalary": 111
  },
  "sofer-distributie": {
-  "read": 264,
-  "withoutSalary": 245
+  "read": 266,
+  "withoutSalary": 247
  },
  "arhitect": {
   "read": 87,
@@ -172,8 +172,8 @@
   "withoutSalary": 98
  },
  "casier": {
-  "read": 280,
-  "withoutSalary": 259
+  "read": 282,
+  "withoutSalary": 261
  },
  "asistent-social": {
   "read": 3,
@@ -184,8 +184,8 @@
   "withoutSalary": 85
  },
  "bucatar": {
-  "read": 273,
-  "withoutSalary": 257
+  "read": 274,
+  "withoutSalary": 258
  },
  "chelner": {
   "read": 190,
@@ -224,8 +224,8 @@
   "withoutSalary": 2
  },
  "agent-paza": {
-  "read": 374,
-  "withoutSalary": 358
+  "read": 375,
+  "withoutSalary": 359
  },
  "administrator-bloc": {
   "read": 5,
@@ -280,7 +280,7 @@
   "withoutSalary": 22
  },
  "specialist-marketing": {
-  "read": 14,
+  "read": 15,
   "withoutSalary": 8
  },
  "specialist-resurse-umane": {
@@ -392,8 +392,8 @@
   "withoutSalary": 1
  },
  "receptioner-hotel": {
-  "read": 13,
-  "withoutSalary": 13
+  "read": 14,
+  "withoutSalary": 14
  },
  "traducator": {
   "read": 4,
