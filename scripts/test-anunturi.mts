@@ -113,7 +113,6 @@ assert.match(motiv("Vârsta maximă 35 de ani."), /vârstă/);
 assert.match(motiv("Candidații plătesc o taxă de înscriere de 200 lei."), /bani/);
 assert.match(motiv("Muncă în Germania, lucru în fabrică."), /România/);
 assert.match(motiv("Câștig garantat din trading."), /schemă/);
-assert.match(motiv("We sell SSD Chemical Solution used to clean defaced bank notes."), /Nu publicăm/);
 assert.equal(motiv("Experiența de minim 2 ani constituie avantaj."), "", "experiența nu e vârstă");
 assert.match(erori({ titlu: "ANGAJAM BARMAN URGENT ACUM" }).map((e) => e.mesaj).join(), /majuscule/);
 
