@@ -87,15 +87,21 @@ export async function confirma(env: Env, id: number): Promise<boolean> {
   return r.meta.changes > 0;
 }
 
+// Blocare temporară de moderare: anunțul 802 are raportări de posibil fals/duplicat (5 nov. 2026).
+// Nu modificăm D1: îl tratăm ca suspendat în toate căile publice până la verificare.
+const ANUNTURI_BLOCATE = new Set([802]);
+
 export async function dupaToken(env: Env, token: string): Promise<Anunt | null> {
   if (!/^[A-Za-z0-9_-]{40,50}$/.test(token)) return null;
   const a = await env.DB.prepare("SELECT * FROM anunturi WHERE token_hash = ? AND stare != 'sters'").bind(await sha256(token)).first<Anunt>();
-  return a && scosDeProprietar(a.id) ? null : a;
+  if (!a || scosDeProprietar(a.id)) return null;
+  return ANUNTURI_BLOCATE.has(a.id) ? { ...a, stare: "suspendat" } : a;
 }
 
 export async function dupaId(env: Env, id: number): Promise<Anunt | null> {
   const a = await env.DB.prepare("SELECT * FROM anunturi WHERE id = ?").bind(id).first<Anunt>();
-  return a && scosDeProprietar(a.id) ? { ...a, stare: "sters" } : a;
+  if (!a || scosDeProprietar(a.id)) return a ? { ...a, stare: "sters" } : null;
+  return ANUNTURI_BLOCATE.has(a.id) ? { ...a, stare: "suspendat" } : a;
 }
 
 export async function prelungeste(env: Env, id: number): Promise<void> {
@@ -141,7 +147,7 @@ let memorie: { la: number; anunturi: Promise<AnuntActiv[]> } | null = null;
 function active(env: Env): Promise<AnuntActiv[]> {
   if (memorie && Date.now() - memorie.la < MEMORIE_MS) return memorie.anunturi;
   const anunturi = env.DB.prepare("SELECT * FROM anunturi WHERE stare = 'activ' ORDER BY confirmat_la DESC").all<Anunt>().then((r) =>
-    r.results.filter((a) => !scosDeProprietar(a.id)).map((a) => ({
+    r.results.filter((a) => !scosDeProprietar(a.id) && !ANUNTURI_BLOCATE.has(a.id)).map((a) => ({
       ...a,
       // Titlul cu spații la capete, fără diacritice și semne, ca „Barista/barman” să aibă cuvântul „barman”.
       titluPotrivire: ` ${formaTitlu(a.titlu)} `,
