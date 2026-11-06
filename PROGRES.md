@@ -5558,3 +5558,16 @@ Numărul de răspunsuri AI care trimit la domeniu (link_presence), pe motor:
   în engleză folosesc `/en/salary-calculator`.
 - Concurenți noi, apăruți odată cu AI-ul: folositor.ro și ghidsalariu.ro apar des ca surse.
 - Se măsoară lunar cu `DATA_getAiSearchLeaderboard` (source `ro`, aceleași 6 domenii).
+
+## 6 noiembrie 2026 — Bing Webmaster Tools: citările în Copilot și IndexNow
+
+- Contul există și e verificat. Bing pe 3 luni (aug.–nov.): 2.200 de clicuri și 89.600 de afișări.
+- **AI Performance (Copilot și parteneri): 44.100 de citări în 3 luni**, de la ~300 pe zi în august la ~1.000 pe zi în
+  octombrie–noiembrie. Bing arată cotă de citare (citation share) pe fiecare căutare. Unde suntem tari: „salariu brut to net”
+  39,6%, „salariul minim net pe economie 2026” 44,1%, „fluturasi salarii” 28,5%, „calculator salarii 2026” 17,1% (10.400
+  de citări). Unde suntem slabi: „zile lucratoare 2026” 3,6%, „zile libere 2026” 4,6%, „salariu minim 2026” 3,4%, „salariu
+  brut net” 5,7%. Raportul se citește lunar, alături de SE Ranking.
+- Sitemap-urile: 3, fără erori, 616 URL-uri descoperite, citite pe 1 noiembrie.
+- **IndexNow nu mai fusese rulat din 15 septembrie** (Workers Builds publică, dar nu anunță nimic). Am trimis azi tot
+  sitemap-ul (`node scripts/indexnow.mjs`, HTTP 200). De făcut: anunțarea automată a paginilor schimbate după
+  fiecare publicare, ca Bing (și prin el ChatGPT) să vadă cifrele noi din prima zi.
