@@ -5517,3 +5517,6 @@ fiecare pagină din sitemap. Reperul: ghidul Google „Link best practices”.
   `list_drafts`: 10 ciorne fără niciun `google.com/url` (maszol, stiri-finante, medijobs, psnews, lumeapresei,
   desteptarea, blogdeit, revistacariere, mrfinance, weradio). Țintele sunt pagini care trimit deja la un
   calculator de salariu vechi (ca la calculator-salarii.ro). **Nu se trimit fără acordul proprietarului.**
+- **Imagini noi cu același nume = imagine veche la vizitatori.** Asseturile au `max-age=3600` în browser și
+  `s-maxage=86400` cu `stale-while-revalidate` pe CDN. Proprietarul a văzut pe telefon tot imaginea veche.
+  Fișierele au primit sufixul `-v2`. **O imagine hero schimbată primește întotdeauna un nume nou.**

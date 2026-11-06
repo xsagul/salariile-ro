@@ -3,7 +3,7 @@ title: "Salariu part-time 4 ore în 2026: cât primești și cât plătește fir
 description: "La 4 ore pe zi primești cam jumătate din salariul minim, dar firma plătește mult mai mult. Cât iei în mână și cine scapă de regula suprataxării."
 date: "2026-11-06"
 updated: "2026-11-06"
-hero: "/noutati/salariu-part-time-4-ore-2026.webp"
+hero: "/noutati/salariu-part-time-4-ore-2026-v2.webp"
 heroAlt: "Ilustrație editorială: un ceas de perete servit pe farfurie ca o prăjitură, cu o felie tăiată, și o paletă de tort lângă el."
 ---
 

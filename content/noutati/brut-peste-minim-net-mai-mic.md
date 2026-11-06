@@ -3,7 +3,7 @@ title: "De ce un leu peste salariul minim îți scade netul cu 85 de lei"
 description: "O mărire de un leu peste salariul minim te poate lăsa cu mai puțini bani în mână. De ce se întâmplă, cine e afectat și ce să ceri ca să nu pierzi."
 date: "2026-11-06"
 updated: "2026-11-06"
-hero: "/noutati/brut-peste-minim-net-mai-mic.webp"
+hero: "/noutati/brut-peste-minim-net-mai-mic-v2.webp"
 heroAlt: "Ilustrație editorială: o capcană de șoareci din lemn, cu o monedă de aur pusă drept momeală, și un plic de salariu albastru lângă ea."
 ---
 

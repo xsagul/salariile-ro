@@ -3,7 +3,7 @@ title: "Are România cele mai mari taxe pe muncă din UE? Ce arată Eurostat"
 description: "Nu cele mai mari, dar printre ele: pentru salariile mici, România e pe locul 4 în UE. De ce pare că statul ia atât de mult și ce nu spune clasamentul."
 date: "2026-11-06"
 updated: "2026-11-06"
-hero: "/noutati/taxarea-muncii-ue.webp"
+hero: "/noutati/taxarea-muncii-ue-v2.webp"
 heroAlt: "Ilustrație editorială: un plic de salariu albastru cu cercul de stele al Uniunii Europene, din care lipsește o bucată mare, mușcată."
 ---
 

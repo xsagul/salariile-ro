@@ -3,7 +3,7 @@ title: "Munca fără contract: ce riști și ce faci dacă ai început deja"
 description: "Munca la negru costă firma 40.000 de lei pe om, iar pe tine pensia, asigurarea și concediul medical. Ce îți trebuie înainte de prima zi și ce faci acum."
 date: "2026-11-06"
 updated: "2026-11-06"
-hero: "/noutati/munca-fara-contract.webp"
+hero: "/noutati/munca-fara-contract-v2.webp"
 heroAlt: "Ilustrație editorială: o cască de protecție pe un contract nesemnat, un stilou lângă el și, în spate, conturul punctat al unui muncitor care nu apare în acte."
 ---
 
