@@ -1,6 +1,6 @@
 ---
 title: "Munca fără contract: ce riști și ce faci dacă ai început deja"
-description: "Munca la negru costă firma o amendă uriașă, iar pe tine o amendă mai mică și toate drepturile: pensie, asigurare, concediu medical. Ce trebuie să ai înainte de prima zi și ce faci dacă lucrezi deja fără contract."
+description: "Munca la negru costă firma 40.000 de lei pe om, iar pe tine pensia, asigurarea și concediul medical. Ce îți trebuie înainte de prima zi și ce faci acum."
 date: "2026-11-06"
 updated: "2026-11-06"
 hero: "/noutati/munca-fara-contract.webp"

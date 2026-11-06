@@ -1,6 +1,6 @@
 ---
 title: "Salariul de 1.000 de euro net nu mai e mare: acum e sub media pe țară"
-description: "Acum câțiva ani, 1.000 de euro în mână însemna un salariu bun. Azi e sub salariul mediu din România. Ce s-a schimbat, de ce nu înseamnă că trăim mai bine și ce să ceri la negociere."
+description: "Acum câțiva ani, 1.000 de euro în mână era un salariu bun. Azi e sub salariul mediu din România. Ce s-a schimbat și ce înseamnă pentru negociere."
 date: "2026-11-06"
 updated: "2026-11-06"
 hero: "/noutati/salariu-1000-euro-net.webp"

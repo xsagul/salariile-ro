@@ -1,6 +1,6 @@
 ---
 title: "Se elimină suprataxarea part-time? Ce se aplică acum"
-description: "Nu, suprataxarea contractelor part-time se aplică și acum: nicio lege nu a eliminat-o. Ce înseamnă regula, de ce a apărut, cine scapă de ea și ce trebuie să se întâmple ca să dispară."
+description: "Nu, suprataxarea part-time se aplică și acum: nicio lege nu a eliminat-o. Ce înseamnă, de ce a apărut, cine scapă de ea și ce ar trebui să se schimbe."
 date: "2026-11-06"
 updated: "2026-11-06"
 hero: "/noutati/suprataxare-part-time.webp"

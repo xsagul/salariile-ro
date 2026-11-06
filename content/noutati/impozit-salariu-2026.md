@@ -1,6 +1,6 @@
 ---
 title: "Impozit pe salariu 2026: toate taxele și cât ia statul"
-description: "Impozitul pe salariu e de 10%, dar din brut mai pleacă pensia și sănătatea, iar firma mai plătește o taxă mică. Ce înseamnă fiecare, de ce netul e mult sub brut și cine plătește mai puțin."
+description: "Impozitul pe salariu e de 10%, dar din brut mai pleacă pensia și sănătatea. Ce înseamnă fiecare taxă, de ce netul e mult sub brut și cine plătește mai puțin."
 date: "2026-11-06"
 updated: "2026-11-06"
 hero: "/noutati/impozit-salariu-2026.webp"

@@ -1,6 +1,6 @@
 ---
 title: "Ți s-a oferit un interval salarial brut? Cât înseamnă în net"
-description: "O ofertă de tipul „între 6.000 și 8.000 de lei brut” înseamnă în mână mult mai puțin și o diferență mai mică între capete. Cum o citești, ce întrebi și cum compari două oferte."
+description: "O ofertă de 6.000–8.000 de lei brut înseamnă în mână mult mai puțin. Cum citești un interval salarial, ce întrebi și cum compari corect două oferte."
 date: "2026-11-06"
 updated: "2026-11-06"
 hero: "/noutati/interval-salarial-brut-net.webp"
