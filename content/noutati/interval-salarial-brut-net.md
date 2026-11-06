@@ -1,64 +1,72 @@
 ---
 title: "Ți s-a oferit un interval salarial brut? Cât înseamnă în net"
-description: "6.000–8.000 lei brut înseamnă 3.523–4.680 lei în mână. Cum transformi intervalul dintr-o ofertă în net și ce să întrebi înainte să compari."
+description: "O ofertă de tipul „între 6.000 și 8.000 de lei brut” înseamnă în mână mult mai puțin și o diferență mai mică între capete. Cum o citești, ce întrebi și cum compari două oferte."
 date: "2026-11-06"
 updated: "2026-11-06"
 hero: "/noutati/interval-salarial-brut-net.webp"
 heroAlt: "Ilustrație editorială: o scrisoare cu oferta de muncă, o bară de interval cu două cursoare și două teancuri de monede, unul mai înalt decât celălalt."
 ---
 
-**O ofertă de 6.000–8.000 de lei brut înseamnă 3.523–4.680 de lei în mână.** Cei 2.000 de lei diferență dintre capete devin, la net, doar 1.157. Înainte să compari oferte, transformă fiecare interval în net și întreabă ce intră în el.
+**Când o firmă îți spune că salariul e „între 6.000 și 8.000 de lei brut”, în mână vei primi între 3.500 și 4.700 de lei.** Iar diferența de 2.000 de lei dintre capete se strânge, la net, la aproape jumătate. Intervalele brute arată mereu mai generos decât sunt. Înainte să te bucuri de o ofertă sau să o compari cu alta, merită să o traduci în banii care îți intră efectiv pe card.
 
-## Brut sau net: ce înseamnă
+## De ce firmele vorbesc în brut
 
-- **Net** e suma care îți intră în cont, după taxe.
-- **Brut** e suma din contract, înainte de taxe. Din ea pleacă la stat cam 41%.
+Pentru firmă, brutul e suma din contract și punctul de plecare pentru buget. Pentru tine, contează netul, adică ce rămâne după taxe. Cele două pot fi confundate ușor, mai ales în discuțiile de la interviu, unde „6.000” se spune repede și nu întotdeauna se precizează ce fel de 6.000.
 
-O regulă simplă: **brutul e cam de 1,7 ori netul.** La salariile mici, raportul e puțin mai mic, din cauza deducerii personale.
+Din brut pleacă la stat cam 41%: pentru pensie, pentru sănătate și impozitul pe venit. O regulă ușor de ținut minte: **în mână primești cam 58–60% din brut**. Sau, invers, **brutul e cam de 1,7 ori netul**.
 
-## Cum transformi un interval
+Cum se ajunge de la unul la celălalt, taxă cu taxă, explicăm în articolul despre [impozitul pe salariu](/noutati/impozit-salariu-2026).
 
-Calculul se face pe fiecare capăt al intervalului.
+## Cum citești un interval
 
-| Oferta | În mână (net) |
+Fiecare capăt se transformă separat. Câteva repere, rotunjite:
+
+| Oferta (brut) | În mână (net) |
 | :--- | :--- |
-| 5.000–5.500 lei brut | 2.981–3.252 lei |
-| 6.000–7.000 lei brut | 3.523–4.095 lei |
-| 6.000–8.000 lei brut | 3.523–4.680 lei |
-| 8.000–10.000 lei brut | 4.680–5.850 lei |
+| 5.000–5.500 lei | aproximativ 3.000–3.250 lei |
+| 6.000–7.000 lei | aproximativ 3.500–4.100 lei |
+| 6.000–8.000 lei | aproximativ 3.500–4.700 lei |
+| 8.000–10.000 lei | aproximativ 4.700–5.850 lei |
 
-Un interval în brut pare mereu mai generos. „6.000–7.000 brut” și „3.500–4.100 net” sunt, de fapt, aceeași ofertă.
+Pentru orice altă sumă, [calculatorul de salariu](/) face transformarea în ambele sensuri.
 
-## Și invers: ai în minte un net
+## Ce să întrebi înainte să compari
 
-Dacă știi cât vrei în mână, pornește de la net și cere brutul corespunzător.
+Un interval spune puțin fără context. Iată întrebările care fac diferența:
 
-| Vrei în mână | Brutul de cerut |
-| :--- | :--- |
-| 4.000 lei | 6.837 lei |
-| 4.500 lei | 7.692 lei |
-| 5.000 lei | 8.548 lei |
-| 6.000 lei | 10.257 lei |
+**„Suma e brută sau netă?”** E prima întrebare și nu e deloc nepoliticoasă. Dacă anunțul sau recruiterul nu precizează, întreabă. Altfel riști să compari un brut cu un net.
 
-## Ce să clarifici înainte să compari
+**„Ce mă duce spre capătul de sus?”** Experiența, rezultatele de la interviu, uneori o certificare sau disponibilitatea de a lucra în ture. Dacă nu primești un răspuns clar, cel mai probabil vei porni de la capătul de jos.
 
-- **Brut sau net?** Dacă oferta nu spune, întreabă. E o întrebare normală.
-- **Ce te duce spre capătul de sus?** Experiența, rezultatele de la interviu, uneori orașul.
-- **Tichetele de masă sunt incluse?** De obicei vin separat, pe card, și au propriile taxe.
-- **Bonusul e garantat?** Un bonus „variabil” nu e salariu. Compară întâi partea fixă.
-- **Normă întreagă?** Un salariu pentru 4 ore nu se compară cu unul pentru 8. Vezi [salariul part-time la 4 ore](/noutati/salariu-part-time-4-ore-2026).
+**„Sunt incluse tichetele de masă sau bonusurile?”** Tichetele vin de obicei separat, pe un card, și au și ele mici taxe. Un bonus „variabil” sau „de performanță” nu e garantat și nu trebuie socotit ca salariu.
 
-## Netul și costul firmei sunt lucruri diferite
+**„E normă întreagă?”** Un salariu pentru 4 ore pe zi nu se compară cu unul pentru 8. Vezi articolul despre [salariul part-time](/noutati/salariu-part-time-4-ore-2026).
 
-Pentru tine contează netul. Pentru firmă contează costul total, care e brutul plus 2,25% contribuție pentru muncă. La 8.000 de lei brut, firma cheltuiește 8.180 de lei, iar tu primești 4.680. Dacă negociezi cu argumentul „vă costă prea mult”, vorbiți despre sume diferite.
+**„Când e prima mărire?”** Un salariu de pornire puțin mai mic, cu o mărire sigură după perioada de probă, poate fi mai bun decât unul mai mare, înghețat ani de zile.
 
-## Ce faci cu cifra
+## Cum compari două oferte
 
-1. Transformă intervalul în net, ca să știi cât intră în cont.
-2. Compară-l cu netul de acum, nu cu brutul.
-3. Pentru orice altă sumă, folosește [calculatorul de salariu](/), care merge în ambele sensuri.
+Să zicem că ai două oferte: una de „6.000–7.000 de lei brut” și una de „3.800 de lei net”. La prima vedere, prima pare mult mai mare.
 
-Pe [locurile de muncă de pe salariile.ro](/locuri-de-munca), fiecare anunț are salariul obligatoriu și spune dacă e brut sau net.
+Tradusă în net, prima înseamnă între 3.500 și 4.100 de lei în mână. A doua îți dă sigur 3.800. Dacă nu ai motive să crezi că vei porni de la capătul de sus, cele două oferte sunt, de fapt, foarte apropiate. Diferența o fac apoi restul lucrurilor: tichetele, programul, distanța până la serviciu, siguranța postului.
+
+Regula: **compară net cu net, parte fixă cu parte fixă.**
+
+## Netul tău și costul firmei nu sunt același lucru
+
+Când negociezi, ține minte că tu și angajatorul vă uitați la sume diferite. Tu te uiți la net. El se uită la cât îl costi în total: brutul, plus o mică taxă pe care o plătește peste salariu.
+
+Asta explică de ce o cerere de „încă 500 de lei în mână” sună mult pentru un patron: pentru el înseamnă aproape 900 de lei în plus pe lună. Când ceri o mărire, e util să știi amândouă cifrele.
+
+## Când anunțul nu scrie nici brut, nici net
+
+Multe anunțuri dau doar o sumă. Uneori angajatorul se gândește la net, pentru că asta înțelege toată lumea. Alteori se gândește la brut, pentru că asta va scrie în contract. Nu ghici. Întreabă.
+
+Pe [locurile de muncă de pe salariile.ro](/locuri-de-munca), fiecare anunț are salariul obligatoriu și spune clar dacă suma e brută sau netă. Ca să vezi dacă oferta e bună pentru meseria ta, uită-te și la reperele de pe [salariile pe meserii](/salarii).
+
+## Pe scurt
+
+Un interval brut arată mereu mai bine decât e. Transformă-l în net, întreabă ce te duce spre capătul de sus și ce e inclus, apoi compară ofertele net cu net. Dacă știi exact câți bani vrei în mână, pornește de la net și cere brutul care ți-i aduce.
 
 ## Surse
 

@@ -1,60 +1,67 @@
 ---
 title: "De ce un leu peste salariul minim îți scade netul cu 85 de lei"
-description: "Cu salariul de bază de 4.326 lei primești în mână 85 lei mai puțin decât cu 4.325. De ce se întâmplă, unde e pragul și cât brut îți trebuie ca să nu pierzi."
+description: "O mărire mică de salariu, chiar și de un leu, te poate lăsa cu mai puțini bani în mână decât la minim. De ce se întâmplă, cine e afectat și ce să ceri ca să nu pierzi."
 date: "2026-11-06"
 updated: "2026-11-06"
 hero: "/noutati/brut-peste-minim-net-mai-mic.webp"
 heroAlt: "Ilustrație editorială: o balanță cu o monedă adăugată pe un taler, în timp ce de pe teancul de pe celălalt taler cad monede, una terracotta."
 ---
 
-**Un salariu de bază de 4.326 de lei îți aduce în mână 2.614 lei, cu 85 mai puțin decât minimul de 4.325.** Un leu în plus la brut te costă 85 la net. Motivul e o scutire de taxe care se aplică doar celor plătiți exact la minim. Ca să primești la fel ca la minim fără scutire, brutul trebuie să urce la 4.480 de lei.
+**Dacă salariul tău de bază urcă cu un singur leu peste minimul pe economie, primești în mână cu 85 de lei mai puțin.** Nu e o greșeală a contabilei și nici un truc al firmei. E efectul unei scutiri de taxe care se aplică doar celor plătiți fix la minim. O mărire mică de salariu poate fi, în realitate, o tăiere.
 
-## De unde vine diferența
+## Cum se poate întâmpla așa ceva
 
-La salariul minim, 200 de lei din brut nu se taxează: nu se plătesc pentru ei nici pensie, nici sănătate, nici impozit. Scutirea se aplică până la 31 decembrie 2026, dar numai dacă:
+La salariul minim, statul lasă o mică parte din salariu, 200 de lei, complet netaxată: fără pensie, fără sănătate, fără impozit. Măsura există ca să-i ajute pe cei mai prost plătiți și se aplică până la 31 decembrie 2026.
 
-- salariul de bază din contract e **exact** salariul minim, 4.325 de lei;
-- lucrezi cu **normă întreagă**, la funcția de bază;
-- brutul lunii, cu sporuri cu tot, e de **cel mult 4.600 de lei**.
+Scutirea vine însă cu o condiție strictă: salariul de bază din contract trebuie să fie **exact** salariul minim, nici un leu în plus. În clipa în care trece de minim, scutirea dispare în întregime, nu doar pentru leul în plus. Toți cei 200 de lei încep să fie taxați.
 
-Dacă oricare condiție cade, scutirea dispare toată, nu doar partea în plus.
+Rezultatul e paradoxal. Firma îți dă mai mult, statul îți ia mult mai mult, iar tu rămâi cu mai puțin decât înainte de „mărire”.
 
-## Capcana 1: salariul de bază cu puțin peste minim
+## Cât trebuie să crească salariul ca să nu pierzi
 
-| Salariul de bază | Net (în mână) | Față de minim |
-| ---: | ---: | ---: |
-| 4.325 lei (minim) | **2.699 lei** | — |
-| 4.326 lei | 2.614 lei | −85 lei |
-| 4.400 lei | 2.656 lei | −43 lei |
-| 4.480 lei | 2.699 lei | la fel |
+Pierderea scade pe măsură ce salariul urcă, dar dispare abia destul de sus. Ca să primești în mână din nou cât primeai la minim, salariul de bază trebuie să ajungă la aproximativ **4.480 de lei**, adică cu circa 155 de lei peste minim.
 
-Între 4.326 și 4.479 de lei, orice mărire a salariului de bază îți scade netul față de minim. De-abia de la 4.480 de lei ieși pe plus.
+Orice mărire a salariului de bază între minim și acest prag te lasă, de fapt, cu mai puțini bani decât dacă ai fi rămas la minim. O mărire de 25 sau 50 de lei, oferită cu cele mai bune intenții, te costă.
 
-## Capcana 2: sporul care trece de 4.600 de lei
+## A doua capcană: sporurile și orele suplimentare
 
-Aici salariul de bază rămâne la minim, dar sporurile, bonusurile sau orele suplimentare urcă brutul.
+Scutirea mai are o condiție: brutul lunii, cu tot cu sporuri, bonusuri și ore suplimentare, să nu treacă de **4.600 de lei**.
 
-| Brutul lunii | Net (în mână) |
-| ---: | ---: |
-| 4.600 lei | **2.847 lei** |
-| 4.601 lei | **2.765 lei** |
+Să zicem că lucrezi pe salariul minim într-un depozit și faci, într-o lună aglomerată, câteva ore suplimentare. Cât timp brutul lunii rămâne sub 4.600 de lei, păstrezi scutirea și primești în plus toți banii pe ore. Dacă depășești pragul chiar și cu un leu, scutirea dispare pentru toată luna, iar orele suplimentare îți aduc mai puțin decât te așteptai, uneori cu peste 80 de lei mai puțin.
 
-Un leu de spor peste 4.600 îți ia 82 de lei din net. Tichetele de masă nu intră în acest plafon, deci nu strică scutirea, deși se taxează separat.
+Tichetele de masă nu se socotesc la acest prag, deci nu strică scutirea.
+
+## Cine e afectat
+
+Foarte mulți oameni. În România, câteva sute de mii de salariați sunt plătiți fix la minim, iar alții primesc foarte puțin peste el. Capcana îi lovește mai ales pe:
+
+- cei cărora firma le dă o mărire mică „din principiu”, ca să nu mai fie la minim;
+- cei cu sporuri de noapte, de weekend sau de vechime, care urcă brutul lunii;
+- cei care fac ore suplimentare în lunile aglomerate.
+
+Contează și persoanele din întreținere. Cu un copil sau un soț în întreținere, netul e puțin mai mare, dar capcana funcționează la fel.
 
 ## Cine câștigă de fapt
 
-Diferența nu ajunge la firmă: la 4.326 de lei, firma plătește chiar mai mult decât la minim, 4.423 de lei față de 4.418. Banii pleacă la stat, ca pensie, sănătate și impozit pentru cei 200 de lei care nu mai sunt scutiți.
+Nu firma. Ea plătește chiar puțin mai mult când îți crește salariul. Diferența ajunge la stat, ca pensie, sănătate și impozit pentru cei 200 de lei care nu mai sunt scutiți.
 
-## De ce alt calculator îți poate arăta altă sumă
+Măcar o parte din bani nu se pierde pentru tine: contribuția mai mare la pensie se adună la viitoarea ta pensie. Doar că, în prezent, în buzunar ai mai puțin.
 
-Multe calculatoare primesc doar brutul și presupun că salariul de bază e egal cu el. Dacă ai bază la minim și sporuri, rezultatul corect depinde de ambele sume. În [calculatorul de salariu](/) le poți introduce separat, iar [fluturașul](/fluturas-salariu) îți arată rândul cu suma netaxată, dacă îl ai.
+## De ce alte calculatoare îți arată altă sumă
+
+Multe calculatoare de salariu primesc doar brutul și presupun că salariul de bază e egal cu el. Dacă ai salariul de bază la minim și primești sporuri, rezultatul corect depinde de amândouă. În [calculatorul de salariu](/) le poți introduce separat, iar pe [fluturaș](/fluturas-salariu) vezi dacă scutirea apare sau nu în luna respectivă.
 
 ## Ce poți face
 
-- **Dacă ți se propune o mărire mică** a salariului de bază, cere-o de la 4.480 de lei în sus. Sub acest prag, pierzi bani.
-- **Dacă primești sporuri** și ești aproape de 4.600 de lei brut, verifică pe fluturaș dacă scutirea a dispărut în lunile cu ore suplimentare.
+**Dacă ți se propune o mărire mică**, explică-i angajatorului situația și cere ca salariul de bază să urce peste pragul de la care chiar câștigi, în jur de 4.480 de lei. Mulți patroni nu știu de capcană și preferă să afle înainte.
 
-Scutirea e scrisă doar până la 31 decembrie 2026. Ce se întâmplă cu ea de la 1 ianuarie explică articolul despre [salariul minim în 2027](/noutati/salariul-minim-2027).
+**Dacă primești sporuri sau faci ore suplimentare**, uită-te pe fluturaș în lunile în care brutul trece de 4.600 de lei. Dacă rândul cu scutirea dispare, acolo e explicația.
+
+**Dacă nu primești nicio mărire**, rămâi cel puțin cu scutirea, până la sfârșitul anului.
+
+## Ce se întâmplă de la 1 ianuarie
+
+Scutirea e scrisă în lege doar până la 31 decembrie 2026. Dacă nu o prelungește nimeni, dispare pentru toată lumea, iar odată cu ea dispare și capcana: toți cei plătiți la minim vor primi puțin mai puțin în mână. Detalii în articolul despre [salariul minim în 2027](/noutati/salariul-minim-2027).
 
 ## Surse
 
