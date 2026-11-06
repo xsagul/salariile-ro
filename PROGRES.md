@@ -5383,3 +5383,21 @@ fiecare pagină din sitemap. Reperul: ghidul Google „Link best practices”.
 - Rămân 8 descrieri cu o adresă de email scrisă în text (probabil ale firmelor). Rândurile sunt
   șterse și nu se afișează nicăieri. Nu le-am atins: cererea a fost pentru telefoane.
 - Dacă ar fi nevoie, D1 Time Travel poate readuce baza la un moment dinainte, timp de 30 de zile.
+
+## 6 noiembrie 2026 — descărcări pe paginile de zile libere, ca pe zile lucrătoare
+
+- **De ce:** în Search Console, zile lucrătoare au urcat după 27 septembrie, când au primit
+  calendarul și descărcările. `/zile-lucratoare-2027` a trecut de la poziția 4,4 cu 122 de clicuri și CTR 5,1%
+  (1–27 sept.) la 3,7 cu 572 de clicuri și 7,2% (9 oct. – 5 nov.). `/zile-lucratoare-2026` a trecut de la 4,8 la 4,4, cu
+  491 → 798 de clicuri. În aceeași perioadă `/zile-libere-2027` a coborât de la 6,9 la 8,3, cu 61 → 38 de clicuri
+  la ~10.000 de afișări (CTR 0,4%). E o corelație, nu o dovadă. Interogările paginii cer calendarul:
+  „calendar 2027 zile libere”, „calendar cu sărbători legale 2027”, „zile libere 2027 calendar”.
+- **Ce s-a adăugat:** „Descarcă lista (PDF)” sub tabelul sărbătorilor (Data, Ziua, Sărbătoarea; cele
+  din weekend gri, ca pe pagină), iar sub calendar „Descarcă calendarul (PDF)” și „(imagine)”, cu zilele
+  libere în colțul lunii. Componenta e `DescarcaZileLibere.tsx`. Desenul vine din `pdf-zile-lucratoare.ts`:
+  `deseneazaCalendar` și `deseneazaPdfCalendar` au primit `numara`, ca `CalendarAn`, iar
+  `deseneazaPdfSarbatori` e nou. `pngCalendar` și `documentNou` sunt refolosite din
+  `DescarcaZileLucratoare.tsx`. GA4: `file_download` cu `instrument` = `zile_libere`.
+- **Verificat:** PDF-urile din 2027 generate în Node cu același desen și cu datele reale: 17 sărbători,
+  diacritice corecte, iar zilele libere pe luni sunt 13 8 8 9 11 10 9 9 8 10 9 9. `tsc`, eslint, `test-ui-contracts`,
+  `test-calendar` și `test-context-drift` trec. Efectul se citește în GSC după 2–4 săptămâni.

@@ -13,6 +13,7 @@ import { interval, puntiAn, sarbatoriIntre, weekenduriPrelungite, zile, ZI_MS, t
 import TabelArticol from "@/app/components/TabelArticol";
 import UrmatoareaZiLibera from "@/app/components/UrmatoareaZiLibera";
 import CalendarAn, { type CelulaZi, type LunaCalendar } from "@/app/components/CalendarAn";
+import DescarcaZileLibere from "@/app/components/DescarcaZileLibere";
 import Reclama from "@/app/components/Reclama";
 import { CARD_TITLU, LISTA_CARD, TITLU_CARD, TITLU_PAGINA, TITLU_SECTIUNE, SEPARATOR_SECTIUNE, SPATIU_JOS, SPATIU_SUS, SUB_TITLU, LISTA_FAQ, INAINTE_DE_SECTIUNE } from "@/app/components/ui";
 
@@ -168,6 +169,12 @@ function AniZileLibere({ an }: { an: AnZileLibere }) {
 
 export default function PaginaZileLibere({ an }: { an: AnZileLibere }) {
   const { luni, lista, inSaptamana, minivacante, faq } = dateAn(an);
+  // Descărcările, cu rândurile tabelului de mai jos (DescarcaZileLibere.tsx).
+  const descarcari = {
+    an,
+    luni,
+    lista: lista.map((h) => ({ data: `${h.d} ${LUNI_NUME[h.m - 1].toLowerCase()}`, zi: h.zi, nume: h.nume, weekend: h.weekend })),
+  };
   const url = `https://salariile.ro${cale(an)}`;
   const jsonLd = {
     "@context": "https://schema.org",
@@ -260,6 +267,8 @@ export default function PaginaZileLibere({ an }: { an: AnZileLibere }) {
                 })}
               </tbody>
             </TabelArticol>
+            {/* Ca pe zile lucrătoare: lista în PDF (proprietar, 6 noiembrie 2026). */}
+            <DescarcaZileLibere {...descarcari} ce="tabel" />
 
             {/* Sub tabel, ce primești dacă lucrezi de sărbătoare, ca la primul rezultat din
                 Google. Formulat după Codul Muncii, art. 142: întâi zi liberă în 30 de zile,
@@ -276,6 +285,7 @@ export default function PaginaZileLibere({ an }: { an: AnZileLibere }) {
           <div className={`${SEPARATOR_SECTIUNE} md:col-span-5`}>
             <h2 className={TITLU_SECTIUNE}>Calendarul anului {an}</h2>
             <CalendarAn an={an} luni={luni} dataBuild={new Date().toISOString()} numara="libere" />
+            <DescarcaZileLibere {...descarcari} ce="calendar" />
           </div>
           <aside className="mt-8 md:col-span-2 md:col-start-4 md:row-start-1 md:mt-6 md:self-start">
             <UrmatoareaZiLibera an={an} dataBuild={new Date().toISOString()} />

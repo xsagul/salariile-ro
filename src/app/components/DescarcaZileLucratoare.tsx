@@ -7,7 +7,8 @@
 
 import { useState } from "react";
 import { trimiteEveniment } from "@/lib/analytics";
-import { CULORI as C, MACHETA, deseneazaCalendar, deseneazaPdfCalendar, deseneazaPdfTabel, inaltimeCalendar, type DateZileLucratoare, type Pictor } from "@/lib/pdf-zile-lucratoare";
+import type { LunaCalendar } from "@/app/components/CalendarAn";
+import { CULORI as C, MACHETA, deseneazaCalendar, deseneazaPdfCalendar, deseneazaPdfTabel, inaltimeCalendar, type DateZileLucratoare, type Numara, type Pictor } from "@/lib/pdf-zile-lucratoare";
 
 type Props = DateZileLucratoare;
 
@@ -20,7 +21,8 @@ async function base64(url: string) {
   return btoa(s);
 }
 
-async function documentNou(orientare: "portrait" | "landscape") {
+/** Folosit și de DescarcaZileLibere.tsx. */
+export async function documentNou(orientare: "portrait" | "landscape") {
   const [{ jsPDF }, normal, bold] = await Promise.all([
     import("jspdf"),
     base64("/fonts/LiberationSans-Regular.ttf"),
@@ -51,7 +53,8 @@ async function pdfCalendar(d: Props) {
 // Calendarul de pe pagină, la aceleași proporții (MACHETA): 48 px margine, titlu, legendă,
 // 12 carduri pe 3 coloane. Lățimea e 1080 px, standardul imaginilor verticale de telefon
 // (proprietar, 27 sept. 2026: 2400 px era prea mare). Pentru tipar există PDF-ul.
-async function pngCalendar({ an, luni }: Props) {
+/** Folosit și de DescarcaZileLibere.tsx: colțul lunii și numele fișierului diferă. */
+export async function pngCalendar({ an, luni }: { an: number; luni: LunaCalendar[] }, numara: Numara = "lucratoare", fisier = `calendar-zile-lucratoare-${an}.png`) {
   const margine = 48;
   const W = MACHETA.latime + 2 * margine, H = inaltimeCalendar(luni.length) + 2 * margine + 24;
   const c = document.createElement("canvas");
@@ -78,7 +81,7 @@ async function pngCalendar({ an, luni }: Props) {
     },
     latime(t, px, gros) { g.font = font(px, gros); return g.measureText(t).width; },
   };
-  deseneazaCalendar(pictor, an, luni);
+  deseneazaCalendar(pictor, an, luni, numara);
   g.restore();
   g.font = font(12); g.fillStyle = C.gri; g.textAlign = "right"; g.textBaseline = "alphabetic";
   g.fillText("salariile.ro", W - margine, H - margine / 2);
@@ -86,14 +89,14 @@ async function pngCalendar({ an, luni }: Props) {
   const blob: Blob = await new Promise((r, e) => c.toBlob((b) => (b ? r(b) : e(new Error("png"))), "image/png"));
   const a = document.createElement("a");
   a.href = URL.createObjectURL(blob);
-  a.download = `calendar-zile-lucratoare-${an}.png`;
+  a.download = fisier;
   a.click();
   setTimeout(() => URL.revokeObjectURL(a.href), 1000);
 }
 
 // ─── Butoanele ───────────────────────────────────────────────────────────────
 
-const BUTON =
+export const BUTON =
   "inline-flex min-h-11 items-center rounded border border-stone-300 bg-surface px-4 text-sm font-medium text-stone-900 shadow-soft transition-colors hover:bg-stone-100 disabled:opacity-60";
 
 export default function DescarcaZileLucratoare(props: Props & { ce: "tabel" | "calendar" }) {

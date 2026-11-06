@@ -1,6 +1,7 @@
-// Desenul PDF-urilor de pe paginile de zile lucrătoare, separat de butoane ca să poată fi
-// generat și verificat și în afara browserului. Documentul vine gata făcut, cu fontul
-// „Liberation” înregistrat (normal și bold), de la DescarcaZileLucratoare.tsx.
+// Desenul PDF-urilor de pe paginile de zile lucrătoare și de zile libere, separat de butoane
+// ca să poată fi generat și verificat și în afara browserului. Documentul vine gata făcut, cu
+// fontul „Liberation” înregistrat (normal și bold), de la DescarcaZileLucratoare.tsx.
+// Zile libere au primit aceleași descărcări pe 6 noiembrie 2026 (DescarcaZileLibere.tsx).
 //
 // Aspectul copiază pagina (proprietar, 27 sept. 2026): fundalul crem, lunile în carduri,
 // titlul simplu al secțiunii și legenda de sub el. Fără fraze adăugate doar în PDF.
@@ -23,6 +24,9 @@ export type DateZileLucratoare = {
 export const ZILE = ["LU", "MA", "MI", "JO", "VI", "SÂ", "DU"];
 // „20 zile lucrătoare”, fără „de”, ca în calendarul de pe pagină (proprietar, 27 sept. 2026).
 export const zileLucratoareText = (n: number) => `${n} zile lucrătoare`;
+/** Ce scrie în colțul fiecărei luni, ca `numara` din CalendarAn. */
+export type Numara = "lucratoare" | "libere";
+const coltLuna = (l: LunaCalendar, numara: Numara) => (numara === "libere" ? `${l.libere} zile libere` : zileLucratoareText(l.lucr));
 
 // Paleta site-ului (globals.css și clasele din CalendarAn).
 export const CULORI = {
@@ -92,6 +96,35 @@ export function deseneazaPdfTabel(doc: jsPDF, { an, rows, sarbatori, total, ore,
   semnatura(doc, x0 + lat, 289);
 }
 
+/** O sărbătoare din tabelul de pe /zile-libere-{an}: „1 ianuarie”, „Joi”, „Anul Nou”. */
+export type RandSarbatoare = { data: string; zi: string; nume: string; weekend: boolean };
+
+/** A4 vertical: tabelul sărbătorilor de pe /zile-libere-{an}, cu aceleași coloane și același ton. */
+export function deseneazaPdfSarbatori(doc: jsPDF, { an, lista }: { an: number; lista: RandSarbatoare[] }) {
+  fundal(doc);
+  const x0 = 18, lat = 174;
+  doc.setFont("Liberation", "bold").setFontSize(20).setTextColor(C.cerneala).text(`Zile libere ${an}`, x0, 24);
+  const col = [x0 + 5, x0 + 46, x0 + 76];
+  const rh = 9, y0 = 34;
+  card(doc, x0, y0, lat, rh * (lista.length + 1));
+  doc.setFillColor(C.antet).rect(x0 + 0.2, y0 + 0.2, lat - 0.4, rh - 0.2, "F");
+  let y = y0;
+  doc.setFont("Liberation", "bold").setFontSize(8).setTextColor(C.gri);
+  ["Data", "Ziua", "Sărbătoarea"].forEach((c, i) => doc.text(c.toUpperCase(), col[i], y + 5.7));
+  y += rh;
+  doc.setFontSize(10.5);
+  for (const s of lista) {
+    doc.setDrawColor(C.linie).setLineWidth(0.2).line(x0, y, x0 + lat, y);
+    // Pe pagină, sărbătorile din weekend sunt gri și subțiri, cele din săptămână negre și îngroșate.
+    doc.setFont("Liberation", s.weekend ? "normal" : "bold").setTextColor(s.weekend ? C.gri : C.cerneala);
+    doc.text(s.data, col[0], y + 5.9);
+    doc.text(s.zi, col[1], y + 5.9);
+    doc.text(doc.splitTextToSize(s.nume, x0 + lat - 5 - col[2])[0], col[2], y + 5.9);
+    y += rh;
+  }
+  semnatura(doc, x0 + lat, 289);
+}
+
 // ─── Calendarul, la mărimile de pe site ──────────────────────────────────────
 // Măsurat pe /zile-lucratoare-2025 la 1280 px (27 sept. 2026): conținut de 1104 px,
 // 3 carduri pe rând de 357×294, 16 px între ele, padding 24, colțuri de 6; căsuțele
@@ -111,7 +144,7 @@ const SUS_GRILA = 86; // titlul (30) + 16 + legenda (16) + 24
 /** Înălțimea desenului, în px de site. */
 export const inaltimeCalendar = (luni: number) => SUS_GRILA + Math.ceil(luni / M.coloane) * (M.cardH + M.spatiu) - M.spatiu;
 
-export function deseneazaCalendar(p: Pictor, an: number, luni: LunaCalendar[]) {
+export function deseneazaCalendar(p: Pictor, an: number, luni: LunaCalendar[], numara: Numara = "lucratoare") {
   // Titlul secțiunii: TITLU_SECTIUNE, 24 px bold.
   p.text(`Calendarul anului ${an}`, 0, 15, { px: 24, gros: true, culoare: C.cerneala });
   // Legenda: pătrățele de 12 px, 8 px până la text, 20 px între elemente.
@@ -129,7 +162,7 @@ export function deseneazaCalendar(p: Pictor, an: number, luni: LunaCalendar[]) {
     p.dreptunghi(cx, cy, w, M.cardH, 6, C.surface, C.bordura);
     const x0 = cx + M.pad + 1;
     p.text(l.nume, x0, cy + 37, { px: 16, gros: true, culoare: C.cerneala });
-    p.text(zileLucratoareText(l.lucr), cx + w - M.pad, cy + 38, { px: 12, culoare: C.gri, aliniere: "right" });
+    p.text(coltLuna(l, numara), cx + w - M.pad, cy + 38, { px: 12, culoare: C.gri, aliniere: "right" });
     ZILE.forEach((z, j) => p.text(z, x0 + j * (cw + M.spatiuCelula) + cw / 2, cy + 69, { px: 12, gros: true, culoare: C.gri, aliniere: "center" }));
     l.cells.forEach((c, k) => {
       if (!c) return;
@@ -141,7 +174,7 @@ export function deseneazaCalendar(p: Pictor, an: number, luni: LunaCalendar[]) {
 }
 
 /** A4 vertical, aceeași machetă ca pe site, scalată pe lățimea paginii. */
-export function deseneazaPdfCalendar(doc: jsPDF, { an, luni }: DateZileLucratoare) {
+export function deseneazaPdfCalendar(doc: jsPDF, { an, luni }: Pick<DateZileLucratoare, "an" | "luni">, numara: Numara = "lucratoare") {
   fundal(doc);
   const margine = 12, k = (210 - 2 * margine) / M.latime; // mm pe px
   const X = (px: number) => margine + px * k, Y = (px: number) => 14 + px * k;
@@ -161,6 +194,6 @@ export function deseneazaPdfCalendar(doc: jsPDF, { an, luni }: DateZileLucratoar
       return doc.getTextWidth(t) / k;
     },
   };
-  deseneazaCalendar(pictor, an, luni);
+  deseneazaCalendar(pictor, an, luni, numara);
   semnatura(doc, 210 - margine, Y(inaltimeCalendar(luni.length)) + 6);
 }
