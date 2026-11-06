@@ -1,58 +1,78 @@
 ---
 title: "Salariul de 1.000 de euro net nu mai e mare: acum e sub media pe țară"
-description: "În 2020, 1.000 de euro net era cu 50% peste salariul mediu din România. Azi e sub el. Cifrele INS an de an și cât brut înseamnă acum 1.000 de euro în mână."
+description: "Acum câțiva ani, 1.000 de euro în mână însemna un salariu bun. Azi e sub salariul mediu din România. Ce s-a schimbat, de ce nu înseamnă că trăim mai bine și ce să ceri la negociere."
 date: "2026-11-06"
 updated: "2026-11-06"
 hero: "/noutati/salariu-1000-euro-net.webp"
 heroAlt: "Ilustrație editorială: un grafic în care o linie care urcă trece peste un prag punctat terracotta, lângă un teanc înalt de monede."
 ---
 
-**În 2020, cine primea 1.000 de euro în mână câștiga cu jumătate mai mult decât salariatul mediu din România. Azi, aceeași sumă e sub salariul mediu net.** 1.000 de euro au rămas 1.000 de euro, doar că salariile în lei au crescut mult mai repede decât cursul. Pragul care suna a „salariu bun” a devenit, în șase ani, un salariu obișnuit.
+**Ani la rând, „un salariu de 1.000 de euro” a fost în România reperul pentru o slujbă bună. Azi, aceeași sumă în mână e sub salariul mediu net pe țară.** Euro n-a scăzut. Salariile în lei au crescut, în doar câțiva ani, mult mai repede decât cursul, iar pragul care suna a reușită a devenit un salariu obișnuit.
 
-## Cum s-a mișcat pragul, an de an
+## Ce însemna „1.000 de euro” acum câțiva ani
 
-| Anul | 1.000 € în lei, la cursul mediu | Salariul mediu net (INS) | 1.000 € față de medie |
-| :--- | ---: | ---: | ---: |
-| 2020 | 4.838 lei | 3.217 lei | **150%** |
-| 2021 | 4.921 lei | 3.416 lei | 144% |
-| 2022 | 4.931 lei | 3.801 lei | 130% |
-| 2023 | 4.947 lei | 4.412 lei | 112% |
-| 2024 | 4.975 lei | 4.959 lei | 100% |
-| Acum | 5.339 lei | 5.734 lei | **93%** |
+În 2020, cine primea în mână echivalentul a 1.000 de euro câștiga cu aproape jumătate mai mult decât salariatul mediu din România. Era o sumă pe care o aveau mai ales cei din București, Cluj sau Timișoara, din IT, finanțe sau din conducerea firmelor. Pentru cei mai mulți, era un obiectiv.
 
-În 2024, cele două sume aproape s-au atins. Acum, 1.000 de euro net înseamnă cu circa 400 de lei mai puțin decât salariul mediu net din iunie 2026, ultima lună publicată de INS.
+De aici și expresia, folosită și azi: „măcar 1.000 de euro”. A rămas în vorbirea de zi cu zi, chiar dacă realitatea din spatele ei s-a schimbat.
 
-## De ce s-a întâmplat
+## Ce s-a întâmplat între timp
 
-Două lucruri s-au mișcat cu viteze foarte diferite:
+Salariul mediu net a crescut aproape în fiecare an, iar diferența față de cei 1.000 de euro s-a micșorat treptat:
 
-- **Salariul mediu net a crescut cu 78%**, de la 3.217 lei în 2020 la 5.734 de lei acum.
-- **Euro s-a scumpit cu doar 10%**, de la 4,84 la 5,34 lei.
+| Anul | 1.000 € în mână, față de salariul mediu net |
+| :--- | :--- |
+| 2020 | cu jumătate peste medie |
+| 2022 | cu o treime peste medie |
+| 2024 | cam cât media |
+| Acum | puțin sub medie |
 
-Așa că 1.000 de euro „valorează” azi mult mai puțin, raportat la cât câștigă oamenii.
+Două lucruri s-au mișcat cu viteze foarte diferite. Salariul mediu net a urcat cu aproape 80% în acești ani. Euro s-a scumpit cu doar 10%. Așa că 1.000 de euro au rămas aproape aceeași sumă în lei, în timp ce salariile au fugit înainte.
 
-## Asta nu înseamnă că trăim cu 78% mai bine
+## Asta nu înseamnă că trăim mai bine cu 80%
 
-Salariile au crescut în lei, dar au crescut și prețurile. O parte mare din creșterea salariului mediu a fost mâncată de scumpiri. Comparația de mai sus spune doar unde se află 1.000 de euro față de ceilalți salariați, nu cât poți cumpăra cu ei.
+E ușor să citești creșterea salariilor ca pe o îmbogățire. Nu e chiar așa.
 
-Salariul mediu e și el o medie, trasă în sus de salariile foarte mari. Majoritatea salariaților câștigă sub medie, așa că 1.000 de euro net rămân, pentru mulți, peste ce primesc.
+În aceiași ani au crescut mult și prețurile: mâncarea, chiria, energia, transportul. O bună parte din salariile mai mari a fost mâncată de scumpiri. În unele perioade, deși salariile creșteau pe hârtie, oamenii puteau cumpăra cu ele mai puțin decât cu un an înainte.
 
-## Cât brut înseamnă azi 1.000 de euro în mână
+Comparația cu 1.000 de euro spune altceva: **unde se află această sumă față de ceilalți salariați**. Nu spune cât de bine trăiești cu ea.
 
-La cursul de 5,3385 lei, 1.000 de euro înseamnă 5.339 de lei net. Pentru ei îți trebuie un salariu brut de **9.127 de lei**, iar firma plătește în total 9.332 de lei.
+## De ce „salariul mediu” poate înșela
 
-| Net dorit | Brut necesar |
-| ---: | ---: |
-| 1.000 € (5.339 lei) | 9.127 lei |
-| 1.500 € (8.008 lei) | 13.689 lei |
-| 2.000 € (10.677 lei) | 18.251 lei |
+Salariul mediu e o medie. E tras în sus de câteva salarii foarte mari: directori, programatori, specialiști din energie sau bănci. Majoritatea salariaților câștigă sub medie.
 
-Regula de reținut: **brutul e cam de 1,7 ori netul.** Pentru orice altă sumă, [calculatorul de salariu](/) face și calculul invers, din net în brut. Ce taxe se scad din brut explică articolul despre [impozitul pe salariu](/noutati/impozit-salariu-2026).
+Așa că, deși 1.000 de euro în mână e azi sub medie, pentru foarte mulți oameni rămâne o sumă pe care nu o au. În multe județe, în comerț, în hoteluri și restaurante sau în industria ușoară, salariile tipice sunt încă departe de ea.
+
+## Unde e, de fapt, pragul de „salariu bun”
+
+Dacă reperul s-a mutat, unde e acum? Nu există un răspuns oficial, dar pe scurt:
+
+- **Salariul minim** aduce în mână cam jumătate din cei 1.000 de euro.
+- **Salariul mediu net** e acum puțin peste 1.000 de euro.
+- **Peste 1.500 de euro în mână** câștigă, în continuare, relativ puțini salariați, concentrați în marile orașe și în câteva domenii.
+
+Pentru cei mai mulți, „un salariu bun” azi înseamnă mai degrabă 1.500 de euro decât 1.000.
+
+## Cât trebuie să scrie în contract
+
+Contractele din România se fac în lei, iar suma din contract e brută. Ca să primești în mână echivalentul a 1.000 de euro, ai nevoie de un brut de aproximativ 9.100 de lei. Pentru 1.500 de euro în mână, de un brut de aproape 13.700 de lei.
+
+O regulă ușor de ținut minte: **brutul e cam de 1,7 ori netul.** Cum se ajunge de la unul la celălalt explicăm în articolul despre [impozitul pe salariu](/noutati/impozit-salariu-2026). Pentru orice altă sumă, [calculatorul de salariu](/) face și calculul invers, din net în brut.
+
+## Ce înseamnă pentru negociere
+
+**Gândește în lei, nu în euro.** Cursul se mișcă, salariul tău nu. Dacă negociezi „1.000 de euro”, cere ca suma să fie scrisă în contract în lei, ca brut, și verifică ce net îți aduce.
+
+**Compară cu piața de acum, nu cu cea de acum cinci ani.** Ce suna a ofertă bună în 2020 poate fi azi sub ce se plătește pentru postul tău.
+
+**Uită-te la ce primesc alții în meseria ta.** Pe paginile de [salarii pe meserii](/salarii) găsești reperele pentru fiecare ocupație, iar pe [locurile de muncă de pe salariile.ro](/locuri-de-munca) vezi ce oferă acum angajatorii, cu salariul scris în anunț.
+
+## Pe scurt
+
+„1.000 de euro în mână” nu mai e de mult un salariu mare. E aproximativ cât câștigă salariatul mediu, iar pentru cei mai mulți e încă o sumă de atins, nu de depășit. Reperul s-a mutat, iar cine negociază azi un salariu face bine să se raporteze la piața de acum, în lei.
 
 ## Surse
 
-- [INS, TEMPO-Online, matricea FOM106E – câștigul salarial mediu net anual, 2020–2024](http://statistici.insse.ro:8077/tempo-online/#/pages/tables/insse-table)
-- Câștigul salarial mediu net pentru iunie 2026: INS, comunicatul lunar, ultima lună publicată
+- [INS, TEMPO-Online, matricea FOM106E – câștigul salarial mediu net anual](http://statistici.insse.ro:8077/tempo-online/#/pages/tables/insse-table), 2020–2024, și comunicatul lunar INS pentru iunie 2026, ultima lună publicată
 - [Banca Centrală Europeană – cursul mediu anual EUR/RON](https://data.ecb.europa.eu/data/datasets/EXR/EXR.A.RON.EUR.SP00.A), 2020–2024, și cursul de referință de 5,3385 lei din 5 noiembrie 2026
 
 Brutul necesar e calculat cu [calculatorul salariile.ro](/), pentru un salariat cu normă întreagă, la funcția de bază, fără tichete.

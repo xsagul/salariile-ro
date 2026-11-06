@@ -1,75 +1,91 @@
 ---
 title: "Impozit pe salariu 2026: toate taxele și cât ia statul"
-description: "Impozitul pe salariu e 10%, plus 25% pensie și 10% sănătate din brut, iar firma mai plătește 2,25%. Calculul pas cu pas și taxele la salariul minim."
+description: "Impozitul pe salariu e de 10%, dar din brut mai pleacă pensia și sănătatea, iar firma mai plătește o taxă mică. Ce înseamnă fiecare, de ce netul e mult sub brut și cine plătește mai puțin."
 date: "2026-11-06"
 updated: "2026-11-06"
 hero: "/noutati/impozit-salariu-2026.webp"
 heroAlt: "Ilustrație editorială: un fluturaș de salariu, un teanc mare de monede din care curg monede spre patru teancuri mici, în fața unei clădiri cu coloane."
 ---
 
-**Impozitul pe salariu e de 10%, dar din brut mai pleacă 25% la pensie și 10% la sănătate, iar firma adaugă 2,25%.** La un brut de 6.000 de lei, în mână rămân 3.523 de lei. Firma cheltuiește în total 6.135 de lei, iar la stat ajung 2.612, adică aproape 43 de lei din fiecare 100.
+**Impozitul pe salariu e de doar 10%, dar din salariul brut pleacă, în total, cam 41%.** Restul până acolo nu e impozit, ci contribuții: pentru pensie și pentru sănătate. De aceea, cine se uită prima dată pe un contract de muncă are de obicei aceeași surpriză: suma scrisă acolo e mult mai mare decât cea care ajunge pe card.
 
-## Cele patru taxe
+Mai jos găsești, pe rând, ce se ia din salariu, de ce, cine plătește mai puțin și ce poți verifica pe fluturaș.
 
-| Taxa | Cine o plătește | Cât | Din ce se calculează |
-| :--- | :--- | ---: | :--- |
-| CAS (pensie) | angajatul | 25% | brut |
-| CASS (sănătate) | angajatul | 10% | brut |
-| Impozit pe venit | angajatul | 10% | brut minus CAS, CASS și deducere |
-| CAM (asigurare pentru muncă) | firma | 2,25% | brut |
+## Ce înseamnă brut și net
 
-Primele trei se scad din brutul tău. Firma le reține și le virează în locul tău, de aceea pe fluturaș apar ca „rețineri”. CAM-ul nu îl vezi pe fluturaș: e peste brut și îl plătește doar firma.
+**Brutul** e salariul trecut în contract. E suma pe care o negociezi și pe care o vezi în anunțuri.
 
-## De la brut la net, pas cu pas
+**Netul** e ce îți intră efectiv în cont, după ce firma a oprit toate taxele.
 
-Pe un brut de 6.000 de lei, fără persoane în întreținere:
+Taxele nu le plătești tu la ghișeu. Firma le reține din salariul tău și le trimite la stat în locul tău, în fiecare lună. Pe fluturaș apar ca „rețineri”.
 
-```
-CAS          = 6.000 × 25%                          = 1.500 lei
-CASS         = 6.000 × 10%                          =   600 lei
-Baza impozit = 6.000 − 1.500 − 600 − 130 (deducere) = 3.770 lei
-Impozit      = 3.770 × 10%                          =   377 lei
-Net          = 6.000 − 1.500 − 600 − 377            = 3.523 lei
-```
+## Cele trei taxe plătite din salariul tău
 
-Impozitul nu se aplică pe tot brutul, ci pe ce rămâne după contribuții. De aceea, deși cotele adunate fac 45%, din brut pleacă în realitate cam 41%.
+**Pensia (CAS) – un sfert din brut.** E cea mai mare taxă. Banii merg în sistemul de pensii, iar lunile în care o plătești se adună la vechimea ta. Cu cât brutul trecut în contract e mai mare, cu atât îți crește și pensia de mai târziu.
 
-## Deducerea personală scade impozitul
+**Sănătatea (CASS) – o zecime din brut.** Îți dă dreptul la asigurare medicală: consultații, internări, concedii medicale plătite. Cât timp ai contract și se plătește, ești asigurat.
 
-Deducerea e o sumă din salariu pe care nu se plătește impozit. O primesc cei cu brutul de cel mult 6.325 de lei. Cu cât brutul e mai mic și cu cât ai mai multe persoane în întreținere, cu atât deducerea e mai mare.
+**Impozitul pe venit – 10%.** Spre deosebire de celelalte două, nu se calculează din tot brutul. Se calculează din ce rămâne după pensie și sănătate, și după o reducere numită deducere personală, despre care vorbim mai jos. De aceea, deși cotele adunate par să facă 45%, în realitate din brut pleacă în jur de 41%.
 
-La salariul minim, fără persoane în întreținere, deducerea e de 865 de lei. La 6.000 de lei brut, scade la 130. Peste 6.325 de lei nu mai există. Tabelul complet e pe pagina despre [deducerea personală](/deducere-personala-2026).
+## Taxa pe care o plătește doar firma
 
-## Cât ajunge la stat, pe salarii
+Peste salariul brut, firma mai plătește o contribuție mică, de 2,25%, numită CAM (contribuția asiguratorie pentru muncă). Din ea se plătesc, de exemplu, ajutoarele pentru salariații firmelor care intră în insolvență.
 
-| Brut | Net (în mână) | Cost total firmă | La stat | Din costul total |
-| ---: | ---: | ---: | ---: | ---: |
-| 4.325 lei (minim) | 2.699 lei | 4.418 lei | 1.719 lei | 38,9% |
-| 5.000 lei | 2.981 lei | 5.113 lei | 2.132 lei | 41,7% |
-| 6.000 lei | 3.523 lei | 6.135 lei | 2.612 lei | 42,6% |
-| 8.000 lei | 4.680 lei | 8.180 lei | 3.500 lei | 42,8% |
-| 10.000 lei | 5.850 lei | 10.225 lei | 4.375 lei | 42,8% |
+Pe fluturașul tău n-o vezi, pentru că nu se scade din salariul tău. Contează însă când vorbești cu angajatorul: pentru el, un salariat costă brutul plus această taxă. Când un patron spune „mă costi mai mult decât crezi”, la asta se referă.
 
-„La stat” adună cele patru taxe: CAS, CASS, impozit și CAM. Peste 6.325 de lei brut, procentul nu mai crește. Toată lumea plătește aceleași cote, iar deducerea nu mai există.
+## Cât rămâne, pe scurt
 
-## Taxele la salariul minim
+Ca reper, la un brut de 6.000 de lei îți intră în mână cam 3.500. La salariul minim de 4.325 de lei brut, primești 2.699. Peste un anumit nivel, cam 6.300 de lei brut, raportul nu se mai schimbă: din fiecare 100 de lei din contract, îți rămân în mână 58–59.
 
-La salariul minim, 200 de lei din brut nu se taxează deloc până la 31 decembrie 2026. De aici procentul mai mic din tabel, 38,9%. La 4.325 de lei brut se rețin 1.031 de lei pensie, 413 lei sănătate și 182 de lei impozit.
+Pentru suma ta exactă, cu toate detaliile tale, folosește [calculatorul de salariu](/).
 
-Regula e strictă: salariul de bază trebuie să fie exact minimul, la normă întreagă, iar brutul lunii, cu sporuri, de cel mult 4.600 de lei. Altfel scutirea dispare toată. De aceea, la 4.326 de lei brut primești în mână cu 85 de lei mai puțin decât la minim. Calculul e explicat în articolul despre [cei 4.326 de lei cu net mai mic](/noutati/brut-peste-minim-net-mai-mic), iar ce se întâmplă cu scutirea de la 1 ianuarie, în cel despre [salariul minim în 2027](/noutati/salariul-minim-2027).
+## Deducerea personală: de ce salariile mici plătesc mai puțin impozit
 
-## Câteva reguli care schimbă calculul
+Deducerea personală e o parte din salariu pe care nu se plătește impozit. Statul o acordă ca să-i ușureze pe cei cu venituri mici și pe cei care întrețin alte persoane.
 
-- **Sub 26 de ani** sau cu **copii la școală**, deducerea crește.
-- **Persoanele cu handicap grav sau accentuat** nu plătesc impozit pe salariu. Contribuțiile se plătesc.
-- **Tichetele de masă** au și ele CASS și impozit. Vezi [tichetele de masă](/noutati/tichete-de-masa-2026).
-- **Facilitățile pentru IT și construcții** nu mai există. Toată lumea plătește aceleași cote.
+O primesc doar cei cu brutul de cel mult 6.325 de lei. Funcționează simplu: cu cât salariul e mai mic, cu atât deducerea e mai mare, deci impozitul mai mic. Pe măsură ce salariul crește, deducerea se micșorează treptat, iar peste acest prag dispare.
 
-Pentru brutul tău exact, cu deducere și tichete, folosește [calculatorul de salariu](/).
+Contează și câte persoane ai în întreținere, de exemplu un copil sau un soț fără venit. Pentru fiecare, deducerea crește. Diferența la net e mică, câteva zeci de lei pe lună, dar se vede. Ca să o primești, trebuie să-i spui angajatorului și să-i dai actele.
+
+Toate pragurile sunt explicate pe pagina despre [deducerea personală](/deducere-personala-2026).
+
+## Cine plătește mai puțin
+
+**Tinerii sub 26 de ani** cu salarii mai mici primesc o deducere în plus, deci un impozit mai mic.
+
+**Părinții cu copii la școală** au, de asemenea, o deducere suplimentară pentru fiecare copil.
+
+**Persoanele cu handicap grav sau accentuat** nu plătesc deloc impozit pe salariu. Pensia și sănătatea se plătesc totuși, ca la toată lumea.
+
+**Cei plătiți la salariul minim**, cu normă întreagă, au până la 31 decembrie 2026 o parte din salariu, 200 de lei, scutită de orice taxă. Regula are o capcană: dacă salariul de bază e chiar și cu un leu peste minim, scutirea se pierde și netul scade. Am explicat-o în articolul despre [leul peste salariul minim](/noutati/brut-peste-minim-net-mai-mic). Ce se întâmplă cu scutirea de la 1 ianuarie găsești în articolul despre [salariul minim în 2027](/noutati/salariul-minim-2027).
+
+## Ce s-a schimbat față de anii trecuți
+
+Până la începutul lui 2025, cei care lucrau în IT și în construcții aveau facilități: nu plăteau impozit sau plăteau mai puțin. Facilitățile acestea nu mai există. Acum toată lumea plătește aceleași taxe, indiferent de domeniu.
+
+România are și o particularitate: aproape toate contribuțiile se plătesc din salariul angajatului, iar firma adaugă puțin. În multe țări e invers. De aceea, la noi, diferența dintre brut și net pare foarte mare. Cum stăm față de restul Uniunii Europene explică articolul despre [taxele pe muncă în UE](/noutati/taxarea-muncii-ue).
+
+## Tichetele de masă și bonusurile
+
+**Tichetele de masă** nu se adaugă la brut, dar nu sunt complet netaxate: din valoarea lor se plătesc sănătatea și impozitul. Diferența o vezi pe fluturaș, ca reținere în plus din salariu. Detalii în articolul despre [tichetele de masă](/noutati/tichete-de-masa-2026).
+
+**Bonusurile, primele și orele suplimentare** se taxează exact ca salariul. Un bonus de 1.000 de lei brut înseamnă, în mână, cam 585.
+
+## Cum verifici pe fluturaș
+
+Dacă ți se pare că primești prea puțin, ia fluturașul și uită-te, pe rând, la:
+
+- **brutul**: e cel din contract, plus sporurile lunii?
+- **pensia (CAS)**: e un sfert din brut?
+- **sănătatea (CASS)**: e o zecime din brut?
+- **deducerea personală**: apare? Ai declarat persoanele din întreținere?
+- **tichetele**: dacă le primești, apar rețineri pentru ele?
+
+Ghidul despre [cum citești fluturașul](/noutati/cum-citesti-fluturasul-de-salariu) explică fiecare rând.
 
 ## Surse
 
 - [Codul fiscal – Legea nr. 227/2015, forma actualizată: art. 76–78 (impozit și deducere), art. 138, 156 și 220^3 (CAS, CASS, CAM)](https://legislatie.just.ro/Public/DetaliiDocument/171282)
 - [OUG nr. 89/2025 – suma de 200 lei netaxată la salariul minim, iulie–decembrie 2026](https://legislatie.just.ro/Public/DetaliiDocumentAfis/305817)
 
-Sumele sunt calculate cu [calculatorul salariile.ro](/), pentru un salariat cu normă întreagă, la funcția de bază, fără persoane în întreținere și fără tichete.
+Exemplele sunt calculate cu [calculatorul salariile.ro](/), pentru un salariat cu normă întreagă, la funcția de bază, fără persoane în întreținere și fără tichete.

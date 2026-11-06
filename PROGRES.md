@@ -5457,3 +5457,11 @@ fiecare pagină din sitemap. Reperul: ghidul Google „Link best practices”.
   `public/noutati/`. Gemini dă imagini de 1024×572, mărite ușor. Nu au semn vizibil Gemini.
 - **Titluri:** proprietarul nu vrea titluri care încep cu o cifră. Au fost reformulate „De ce un leu peste
   salariul minim îți scade netul cu 85 de lei” și „Salariul de 1.000 de euro net nu mai e mare…”.
+- **Rescriere în stil de știre** (cerută de proprietar: „thin content”, „datele sunt explicație, nu content”;
+  reperul e concediu-medical-2026, ~1.275 de cuvinte, 840 de clicuri în 90 de zile). Rescrise, cu puține cifre
+  și situații povestite: `impozit-salariu-2026`, `taxarea-muncii-ue`, `salariu-1000-euro-net`,
+  `munca-fara-contract`. **RĂMÂN de rescris în același stil:** `brut-peste-minim-net-mai-mic`,
+  `interval-salarial-brut-net`, `salariu-part-time-4-ore-2026`, `suprataxare-part-time`. Fapte pentru ele,
+  deja verificate: din ianuarie 2027, fără prelungire, baza minimă part-time revine la 4.325 lei (+70 lei pe
+  lună pentru firmă la orice normă); netul la minim cu o persoană în întreținere e 2.721 lei, iar la 4.326 lei
+  bază e 2.636 lei.
