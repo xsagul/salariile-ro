@@ -4,7 +4,7 @@ description: "La 4 ore pe zi primești cam jumătate din salariul minim, dar fir
 date: "2026-11-06"
 updated: "2026-11-06"
 hero: "/noutati/salariu-part-time-4-ore-2026.webp"
-heroAlt: "Ilustrație editorială: un ceas cu jumătate de cadran colorată, lângă un teanc de monede pe jumătate cât unul conturat punctat în spate."
+heroAlt: "Ilustrație editorială: un ceas de perete servit pe farfurie ca o prăjitură, cu o felie tăiată, și o paletă de tort lângă el."
 ---
 
 **La 4 ore pe zi, pe salariul minim, primești în mână cam 1.350 de lei pe lună.** Pare logic: jumătate de program, cam jumătate de salariu. Pentru firmă însă, socoteala nu e pe jumătate. Un angajat part-time o costă aproape două treimi din cât o costă unul cu normă întreagă, din cauza unei reguli care o obligă să plătească pensia și sănătatea ca pentru un salariu aproape întreg.

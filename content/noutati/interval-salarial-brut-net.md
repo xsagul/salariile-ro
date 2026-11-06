@@ -4,7 +4,7 @@ description: "O ofertă de 6.000–8.000 de lei brut înseamnă în mână mult 
 date: "2026-11-06"
 updated: "2026-11-06"
 hero: "/noutati/interval-salarial-brut-net.webp"
-heroAlt: "Ilustrație editorială: o scrisoare cu oferta de muncă, o bară de interval cu două cursoare și două teancuri de monede, unul mai înalt decât celălalt."
+heroAlt: "Ilustrație editorială: o lupă care face o ofertă de muncă să pară mare, lângă același plic, mic, în mărimea lui reală."
 ---
 
 **Când o firmă îți spune că salariul e „între 6.000 și 8.000 de lei brut”, în mână vei primi între 3.500 și 4.700 de lei.** Iar diferența de 2.000 de lei dintre capete se strânge, la net, la aproape jumătate. Intervalele brute arată mereu mai generos decât sunt. Înainte să te bucuri de o ofertă sau să o compari cu alta, merită să o traduci în banii care îți intră efectiv pe card.

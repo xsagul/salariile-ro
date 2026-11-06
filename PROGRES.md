@@ -5503,3 +5503,17 @@ fiecare pagină din sitemap. Reperul: ghidul Google „Link best practices”.
   126 din 16.02.2026, citit din PDF-ul oficial), în `src/lib/vacante-scolare.ts`, pe paginile 2026 și 2027. Zilele
   de concediu propuse sunt marcate punctat în calendar, cu legenda „Concediu propus” (din `puntiAn`, doar
   anul paginii). Întrebare nouă: o sărbătoare care pică în concediul de odihnă nu consumă o zi.
+
+## 6 noiembrie 2026 — cele 6 imagini hero, făcute în Gemini; ciornele de backlinkuri
+
+- **Imagini:** cele 6 idei de mai sus, generate în Gemini (model Pro), într-un singur chat, cu pușculița, clădirea
+  și calendarul ca model de stil. 1024×572 de la Gemini, salvate ca webp 1200×675, 17–30 KB. `heroAlt` descrie ce
+  se vede. Brave cere confirmare la fiecare descărcare („gemini.google.com wants to save”): fereastra se confirmă
+  cu `WM_COMMAND IDOK`, iar fișierul ajunge pe Desktop cu „ (1)” în nume, dacă există deja unul.
+  Un Enter în textul cererii o trimite pe jumătate: cererile către Gemini se scriu pe un singur rând.
+- **Backlinkuri, ciorne în Gmail:** `create_draft` din conectorul Gmail **rescrie orice link în
+  `google.com/url?q=…`**, și în HTML, și în text (proprietarul: „arată a scheme”). Reparat în Gmail web: în
+  editorul ciornei, fiecare `href` primește valoarea din `q`, apoi „Salvează și închide”. Verificat cu
+  `list_drafts`: 10 ciorne fără niciun `google.com/url` (maszol, stiri-finante, medijobs, psnews, lumeapresei,
+  desteptarea, blogdeit, revistacariere, mrfinance, weradio). Țintele sunt pagini care trimit deja la un
+  calculator de salariu vechi (ca la calculator-salarii.ro). **Nu se trimit fără acordul proprietarului.**

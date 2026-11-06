@@ -4,7 +4,7 @@ description: "Nu, suprataxarea part-time se aplică și acum: nicio lege nu a el
 date: "2026-11-06"
 updated: "2026-11-06"
 hero: "/noutati/suprataxare-part-time.webp"
-heroAlt: "Ilustrație editorială: o balanță înclinată, cu un ceas pe jumătate colorat pe talerul ușor și un teanc înalt de monede pe talerul greu."
+heroAlt: "Ilustrație editorială: o servietă mică, cu un ceas pe jumătate colorat, legată cu un lanț de o bilă grea de fier."
 ---
 
 **Nu, suprataxarea contractelor part-time nu s-a eliminat: regula se aplică și în noiembrie 2026.** De câțiva ani apar periodic titluri care anunță că „se elimină”, iar în Parlament stau mai multe proiecte în acest sens. Niciunul nu a fost însă votat definitiv. Până când o lege nouă apare în Monitorul Oficial, firmele plătesc în continuare pentru un angajat part-time contribuții aproape ca pentru unul cu normă întreagă.

@@ -4,7 +4,7 @@ description: "Munca la negru costă firma 40.000 de lei pe om, iar pe tine pensi
 date: "2026-11-06"
 updated: "2026-11-06"
 hero: "/noutati/munca-fara-contract.webp"
-heroAlt: "Ilustrație editorială: un clipboard cu un contract nesemnat, un pix nefolosit, mănuși de lucru, o cască de protecție și un triunghi de avertizare."
+heroAlt: "Ilustrație editorială: o cască de protecție pe un contract nesemnat, un stilou lângă el și, în spate, conturul punctat al unui muncitor care nu apare în acte."
 ---
 
 **Dacă lucrezi fără contract, riști o amendă și pierzi tot ce vine cu un contract: pensie, asigurare de sănătate, concediu medical, șomaj.** Pentru firmă e mult mai grav. Din decembrie 2025, amenda pentru fiecare om găsit la muncă fără contract e de 40.000 de lei. O promisiune de tipul „îți fac contract de luna viitoare” nu ține loc de contract, oricât de sincer ar suna.

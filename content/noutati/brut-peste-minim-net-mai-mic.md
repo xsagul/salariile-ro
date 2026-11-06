@@ -4,7 +4,7 @@ description: "O mărire de un leu peste salariul minim te poate lăsa cu mai pu�
 date: "2026-11-06"
 updated: "2026-11-06"
 hero: "/noutati/brut-peste-minim-net-mai-mic.webp"
-heroAlt: "Ilustrație editorială: o balanță cu o monedă adăugată pe un taler, în timp ce de pe teancul de pe celălalt taler cad monede, una terracotta."
+heroAlt: "Ilustrație editorială: o capcană de șoareci din lemn, cu o monedă de aur pusă drept momeală, și un plic de salariu albastru lângă ea."
 ---
 
 **Dacă salariul tău de bază urcă cu un singur leu peste minimul pe economie, primești în mână cu 85 de lei mai puțin.** Nu e o greșeală a contabilei și nici un truc al firmei. E efectul unei scutiri de taxe care se aplică doar celor plătiți fix la minim. O mărire mică de salariu poate fi, în realitate, o tăiere.

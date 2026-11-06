@@ -4,7 +4,7 @@ description: "Nu cele mai mari, dar printre ele: pentru salariile mici, România
 date: "2026-11-06"
 updated: "2026-11-06"
 hero: "/noutati/taxarea-muncii-ue.webp"
-heroAlt: "Ilustrație editorială: harta Europei cu teancuri de monede de înălțimi diferite pe țări, cel mai înalt, terracotta, în sud-estul continentului."
+heroAlt: "Ilustrație editorială: un plic de salariu albastru cu cercul de stele al Uniunii Europene, din care lipsește o bucată mare, mușcată."
 ---
 
 **Nu, România nu are cele mai mari taxe pe muncă din Uniunea Europeană, dar e foarte aproape de vârf.** Pentru un salariat cu un salariu mai mic decât media țării, România e pe locul 4 din 27, după Germania, Slovenia și Slovacia. Statul ia acolo cam 43 de lei din fiecare 100 pe care firma îi cheltuiește pe acel om. Media europeană e cam 40.
