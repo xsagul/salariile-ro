@@ -4,7 +4,7 @@ description: "Acum câțiva ani, 1.000 de euro în mână însemna un salariu bu
 date: "2026-11-06"
 updated: "2026-11-06"
 hero: "/noutati/salariu-1000-euro-net.webp"
-heroAlt: "Ilustrație editorială: un grafic în care o linie care urcă trece peste un prag punctat terracotta, lângă un teanc înalt de monede."
+heroAlt: "Ilustrație editorială: o pușculiță albastră cu stelele Uniunii Europene, crăpată, din care ies bancnote de 100 de euro, cu cioburi pe jos."
 ---
 
 **Ani la rând, „un salariu de 1.000 de euro” a fost în România reperul pentru o slujbă bună. Azi, aceeași sumă în mână e sub salariul mediu net pe țară.** Euro n-a scăzut. Salariile în lei au crescut, în doar câțiva ani, mult mai repede decât cursul, iar pragul care suna a reușită a devenit un salariu obișnuit.

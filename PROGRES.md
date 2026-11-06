@@ -5466,3 +5466,21 @@ fiecare pagină din sitemap. Reperul: ghidul Google „Link best practices”.
   deja verificate: din ianuarie 2027, fără prelungire, baza minimă part-time revine la 4.325 lei (+70 lei pe
   lună pentru firmă la orice normă); netul la minim cu o persoană în întreținere e 2.721 lei, iar la 4.326 lei
   bază e 2.636 lei.
+
+## 6 noiembrie 2026 — imaginile hero refăcute: fiecare cu idee proprie
+
+- **Proprietarul:** imaginile din Gemini și ChatGPT „nu sunt aceeași calitate și diversitate” ca ale lui:
+  toate sunt monede și arată la fel. Îi place doar cea cu clădirea (impozit). Modelul dorit e pușculița
+  albastră cu stelele UE, crăpată, cu bancnote de 100 €, dată de el: un obiect central cu o idee jucăușă,
+  detaliu desenat de mână, textură de hârtie, contur gros, fundal crem.
+- **Făcut:** pușculița lui e hero la `salariu-1000-euro-net` (1200×675, 37 KB).
+- **De făcut când se deblochează Gemini** (limită atinsă, „Resets at 12:50”; ChatGPT din 7 nov., 7:36). Se dau ca
+  model pușculița, clădirea și calendarul (ultimele două în `public/noutati/`), cu câte o idee pe articol, fără
+  teancuri de monede:
+  - `brut-peste-minim-net-mai-mic`: o capcană de șoareci din lemn, cu o monedă strălucitoare în loc de brânză;
+  - `taxarea-muncii-ue`: un plic de salariu cu cercul de stele UE, din care s-a mușcat o bucată mare;
+  - `munca-fara-contract`: o cască de protecție pe un contract nesemnat, cu pixul încă închis, și umbra punctată a
+    unui muncitor „invizibil”;
+  - `interval-salarial-brut-net`: o lupă care face un plic cu oferta să pară uriaș, lângă plicul adevărat, mic;
+  - `salariu-part-time-4-ore-2026`: un ceas de perete servit pe farfurie ca un tort, cu jumătate tăiată;
+  - `suprataxare-part-time`: o servietă mică legată cu lanț de o bilă grea, pe care e pictat un cadran pe jumătate.
