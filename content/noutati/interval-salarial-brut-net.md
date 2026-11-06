@@ -3,6 +3,8 @@ title: "Ți s-a oferit un interval salarial brut? Cât înseamnă în net"
 description: "6.000–8.000 lei brut înseamnă 3.523–4.680 lei în mână. Cum transformi intervalul dintr-o ofertă în net și ce să întrebi înainte să compari."
 date: "2026-11-06"
 updated: "2026-11-06"
+hero: "/noutati/interval-salarial-brut-net.webp"
+heroAlt: "Ilustrație editorială: o scrisoare cu oferta de muncă, o bară de interval cu două cursoare și două teancuri de monede, unul mai înalt decât celălalt."
 ---
 
 **O ofertă de 6.000–8.000 de lei brut înseamnă 3.523–4.680 de lei în mână.** Cei 2.000 de lei diferență dintre capete devin, la net, doar 1.157. Înainte să compari oferte, transformă fiecare interval în net și întreabă ce intră în el.

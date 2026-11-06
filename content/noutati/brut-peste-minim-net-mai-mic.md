@@ -1,8 +1,10 @@
 ---
-title: "4.326 lei brut, net mai mic decât la minim: de ce se întâmplă"
+title: "De ce un leu peste salariul minim îți scade netul cu 85 de lei"
 description: "Cu salariul de bază de 4.326 lei primești în mână 85 lei mai puțin decât cu 4.325. De ce se întâmplă, unde e pragul și cât brut îți trebuie ca să nu pierzi."
 date: "2026-11-06"
 updated: "2026-11-06"
+hero: "/noutati/brut-peste-minim-net-mai-mic.webp"
+heroAlt: "Ilustrație editorială: o balanță cu o monedă adăugată pe un taler, în timp ce de pe teancul de pe celălalt taler cad monede, una terracotta."
 ---
 
 **Un salariu de bază de 4.326 de lei îți aduce în mână 2.614 lei, cu 85 mai puțin decât minimul de 4.325.** Un leu în plus la brut te costă 85 la net. Motivul e o scutire de taxe care se aplică doar celor plătiți exact la minim. Ca să primești la fel ca la minim fără scutire, brutul trebuie să urce la 4.480 de lei.

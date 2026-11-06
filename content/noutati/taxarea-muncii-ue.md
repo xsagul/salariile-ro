@@ -3,6 +3,8 @@ title: "Are România cele mai mari taxe pe muncă din UE? Ce arată Eurostat"
 description: "Nu cele mai mari, dar printre ele: la un salariu mai mic decât media, statul ia 42,8% din costul muncii, locul 4 în UE. Clasamentul complet și ce înseamnă pentru salariul tău."
 date: "2026-11-06"
 updated: "2026-11-06"
+hero: "/noutati/taxarea-muncii-ue.webp"
+heroAlt: "Ilustrație editorială: harta Europei cu teancuri de monede de înălțimi diferite pe țări, cel mai înalt, terracotta, în sud-estul continentului."
 ---
 
 **Nu, România nu are cele mai mari taxe pe muncă din UE, dar e foarte aproape de vârf.** Pentru un salariat singur, fără copii, cu un salariu de două treimi din media țării, statul ia 42,8% din cât costă munca lui. E locul 4 din 27, după Germania, Slovenia și Slovacia. Media UE e 39,5%.

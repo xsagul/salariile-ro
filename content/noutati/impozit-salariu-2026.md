@@ -3,6 +3,8 @@ title: "Impozit pe salariu 2026: toate taxele și cât ia statul"
 description: "Impozitul pe salariu e 10%, plus 25% pensie și 10% sănătate din brut, iar firma mai plătește 2,25%. Calculul pas cu pas și taxele la salariul minim."
 date: "2026-11-06"
 updated: "2026-11-06"
+hero: "/noutati/impozit-salariu-2026.webp"
+heroAlt: "Ilustrație editorială: un fluturaș de salariu, un teanc mare de monede din care curg monede spre patru teancuri mici, în fața unei clădiri cu coloane."
 ---
 
 **Impozitul pe salariu e de 10%, dar din brut mai pleacă 25% la pensie și 10% la sănătate, iar firma adaugă 2,25%.** La un brut de 6.000 de lei, în mână rămân 3.523 de lei. Firma cheltuiește în total 6.135 de lei, iar la stat ajung 2.612, adică aproape 43 de lei din fiecare 100.

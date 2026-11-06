@@ -3,6 +3,8 @@ title: "Salariu part-time 4 ore în 2026: cât primești și cât plătește fir
 description: "La 4 ore pe zi, salariul minim e 2.163 lei brut și 1.352 lei net. Firma plătește în total 2.899 lei, din cauza contribuțiilor la nivelul minimului."
 date: "2026-11-06"
 updated: "2026-11-06"
+hero: "/noutati/salariu-part-time-4-ore-2026.webp"
+heroAlt: "Ilustrație editorială: un ceas cu jumătate de cadran colorată, lângă un teanc de monede pe jumătate cât unul conturat punctat în spate."
 ---
 
 **La 4 ore pe zi, salariul minim e 2.163 de lei brut, iar în mână primești 1.352 de lei.** Firma plătește însă mult mai mult decât jumătate din costul unui salariat cu normă întreagă: 2.899 de lei pe lună. Motivul e o regulă care o obligă să plătească pensia și sănătatea ca pentru un salariu aproape întreg.

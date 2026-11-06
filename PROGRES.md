@@ -5451,3 +5451,9 @@ fiecare pagină din sitemap. Reperul: ghidul Google „Link best practices”.
   afișări GSC, part-time ~1.500, restul aproape zero. Familia mare găsită pe drum: „reges” 40.500/lună,
   „revisal” 14.800, „d112” 5.700. Nu e luată încă.
 - **Fără hero:** articolele noi n-au încă imagine. Se fac în ChatGPT, ca la `salariul-minim-2027`.
+- **Imagini hero pentru cele 8 articole** (tot pe 6 noiembrie): primele două, impozitul și UE, din ChatGPT, până
+  la limita planului gratuit. Celelalte șase din Gemini, cu trei imagini hero existente date ca exemple de
+  stil; fără exemple, Gemini scotea o ilustrație mult prea goală. Toate sunt 1200×675, WebP, 22–51 KB, în
+  `public/noutati/`. Gemini dă imagini de 1024×572, mărite ușor. Nu au semn vizibil Gemini.
+- **Titluri:** proprietarul nu vrea titluri care încep cu o cifră. Au fost reformulate „De ce un leu peste
+  salariul minim îți scade netul cu 85 de lei” și „Salariul de 1.000 de euro net nu mai e mare…”.

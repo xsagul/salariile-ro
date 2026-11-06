@@ -3,6 +3,8 @@ title: "Munca fără contract: ce riști și ce faci dacă ai început deja"
 description: "Munca la negru costă firma 40.000 lei pentru fiecare om, iar pe tine până la 1.000 lei și toate drepturile. Ce trebuie să ai înainte de prima zi și ce faci dacă lucrezi deja fără contract."
 date: "2026-11-06"
 updated: "2026-11-06"
+hero: "/noutati/munca-fara-contract.webp"
+heroAlt: "Ilustrație editorială: un clipboard cu un contract nesemnat, un pix nefolosit, mănuși de lucru, o cască de protecție și un triunghi de avertizare."
 ---
 
 **Dacă lucrezi fără contract, riști o amendă de 500–1.000 de lei și pierzi tot ce vine cu un contract: pensie, asigurare de sănătate, concediu medical, șomaj.** Pentru firmă e mult mai grav: de la 18 decembrie 2025, amenda e de 40.000 de lei pentru fiecare om găsit la muncă fără contract. O promisiune de tipul „îți fac contract de luna viitoare” nu ține loc de contract.

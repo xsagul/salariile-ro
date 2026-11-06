@@ -3,6 +3,8 @@ title: "Se elimină suprataxarea part-time? Ce se aplică acum"
 description: "Nu, suprataxarea contractelor part-time se aplică și acum: nicio lege nu a eliminat-o. Ce plătește firma la 2, 4 și 6 ore și ce ar trebui să se întâmple ca regula să dispară."
 date: "2026-11-06"
 updated: "2026-11-06"
+hero: "/noutati/suprataxare-part-time.webp"
+heroAlt: "Ilustrație editorială: o balanță înclinată, cu un ceas pe jumătate colorat pe talerul ușor și un teanc înalt de monede pe talerul greu."
 ---
 
 **Nu, suprataxarea contractelor part-time nu s-a eliminat: regula se aplică și în noiembrie 2026.** Proiectele care ar elimina-o stau în Parlament, unele din 2023, dar niciunul nu a fost votat definitiv. Până apare o lege nouă în Monitorul Oficial, firma plătește în continuare pensia și sănătatea ca pentru un salariu de cel puțin 4.125 de lei.

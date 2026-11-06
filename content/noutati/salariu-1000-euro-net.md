@@ -1,8 +1,10 @@
 ---
-title: "1.000 de euro net nu mai e un salariu mare: acum e sub media pe țară"
+title: "Salariul de 1.000 de euro net nu mai e mare: acum e sub media pe țară"
 description: "În 2020, 1.000 de euro net era cu 50% peste salariul mediu din România. Azi e sub el. Cifrele INS an de an și cât brut înseamnă acum 1.000 de euro în mână."
 date: "2026-11-06"
 updated: "2026-11-06"
+hero: "/noutati/salariu-1000-euro-net.webp"
+heroAlt: "Ilustrație editorială: un grafic în care o linie care urcă trece peste un prag punctat terracotta, lângă un teanc înalt de monede."
 ---
 
 **În 2020, cine primea 1.000 de euro în mână câștiga cu jumătate mai mult decât salariatul mediu din România. Azi, aceeași sumă e sub salariul mediu net.** 1.000 de euro au rămas 1.000 de euro, doar că salariile în lei au crescut mult mai repede decât cursul. Pragul care suna a „salariu bun” a devenit, în șase ani, un salariu obișnuit.
