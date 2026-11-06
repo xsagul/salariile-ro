@@ -18,6 +18,18 @@ export function caleVarianta(src: string, width: number): string {
   return `/_img${baza}-${width}.webp`;
 }
 
+// Imaginea de share a articolelor (og:image), în JPG: Facebook, LinkedIn și WhatsApp
+// nu afișează sigur WebP-ul în previzualizarea linkului. Verificat pe 6 noiembrie
+// 2026: postarea pe Facebook cu linkul spre un articol a ieșit fără imagine.
+export const SHARE_LATIME = 1200;
+export const SHARE_INALTIME = 675;
+
+export function caleShare(src: string): string {
+  const punct = src.lastIndexOf(".");
+  const baza = punct > src.lastIndexOf("/") ? src.slice(0, punct) : src;
+  return `/_img${baza}-share.jpg`;
+}
+
 export default function imageLoader({ src, width }: { src: string; width: number }): string {
   return src.startsWith("/") ? caleVarianta(src, width) : src;
 }

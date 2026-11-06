@@ -5577,3 +5577,14 @@ Numărul de răspunsuri AI care trimit la domeniu (link_presence), pe motor:
   textului din `<main>` cu rularea trecută și trimite lui Bing doar paginile schimbate. Rulează și zilnic, la 05:40 UTC,
   pentru commiturile colectărilor, care nu pornesc workflow-uri. Testat local pe 344 de pagini: două rulări la rând dau 0
   schimbări, iar o amprentă modificată dă exact o pagină, o singură dată. Prima rulare doar salvează starea.
+
+## 6 noiembrie 2026 — prima postare pe pagina de Facebook după 17 iulie; og:image în JPG
+
+- Cu acordul proprietarului, pe pagina „Salariile.ro – Calculator salariu net și brut” (1 urmăritor), publicată ca
+  pagina: salariul minim rămâne 4.325 lei brut din 2027, iar netul poate scădea cu 83 de lei, cu link spre articol și imaginea hero atașată.
+  Prima încercare n-a ajuns: după „Postează” apare o fereastră „Discută direct cu utilizatorii” (buton „Sună acum”);
+  până nu apeși „Nu acum”, postarea nu pleacă, iar o reîncărcare a paginii o pierde. Verificat: o singură postare publicată.
+  Facebook a rămas pe profilul personal al proprietarului.
+- Previzualizarea linkului de articol pe Facebook nu avea imagine: og:image era WebP, fără dimensiuni. Acum build-ul face
+  `/_img/noutati/<hero>-share.jpg` (1200×675) și articolul declară og:image ca JPG, cu lățime, înălțime și alt.
+  Rulate: build, test:rendered, lint, npm test.

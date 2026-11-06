@@ -7,7 +7,7 @@
 import sharp from "sharp";
 import { existsSync, mkdirSync, readdirSync, statSync } from "node:fs";
 import path from "node:path";
-import { LATIMI_IMAGINI, caleVarianta } from "../src/lib/image-loader";
+import { LATIMI_IMAGINI, SHARE_INALTIME, SHARE_LATIME, caleShare, caleVarianta } from "../src/lib/image-loader";
 
 const PUBLIC = path.join(process.cwd(), "public");
 const RASTER = [".png", ".jpg", ".jpeg", ".webp"];
@@ -33,6 +33,21 @@ for (const src of surse) {
     mkdirSync(path.dirname(tinta), { recursive: true });
     await sharp(sursa).resize({ width: latime, withoutEnlargement: true }).webp({ quality: 75 }).toFile(tinta);
     generate += 1;
+  }
+  // Varianta JPG pentru og:image, doar la articole (vezi caleShare).
+  if (src.startsWith("/noutati/")) {
+    const tinta = path.join(PUBLIC, caleShare(src));
+    if (existsSync(tinta) && statSync(tinta).mtimeMs >= statSync(sursa).mtimeMs) {
+      laZi += 1;
+    } else {
+      mkdirSync(path.dirname(tinta), { recursive: true });
+      await sharp(sursa)
+        .resize(SHARE_LATIME, SHARE_INALTIME, { fit: "cover" })
+        .flatten({ background: "#ffffff" })
+        .jpeg({ quality: 82, mozjpeg: true })
+        .toFile(tinta);
+      generate += 1;
+    }
   }
 }
 

@@ -10,6 +10,7 @@ import Reclama from "@/app/components/Reclama";
 import { getArticle, getAllSlugs, getAllArticles, formatDateRo } from "@/lib/noutati";
 import { personSchema } from "@/lib/person";
 import { NUME_SITE, OG_IMAGE } from "@/lib/seo";
+import { SHARE_INALTIME, SHARE_LATIME, caleShare } from "@/lib/image-loader";
 import { Prose, TITLU_CARD, TITLU_PAGINA, SPATIU_JOS, SPATIU_SUS, SUB_BREADCRUMB, SUB_TITLU, SEPARATOR_SECTIUNE, SUB_TITLU_SECTIUNE_CUTIE } from "@/app/components/ui";
 
 export function generateStaticParams() {
@@ -22,7 +23,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!a) return {};
   const url = `https://salariile.ro/noutati/${a.slug}`;
   // Imaginea de share: hero-ul articolului dacă există, altfel imaginea de brand.
-  const image = a.hero ?? OG_IMAGE.url;
+  // Hero-ul pleacă în JPG, cu dimensiuni: Facebook nu arăta WebP-ul în previzualizare.
+  const image = a.hero
+    ? { url: caleShare(a.hero), width: SHARE_LATIME, height: SHARE_INALTIME, type: "image/jpeg", alt: a.heroAlt ?? a.title }
+    : OG_IMAGE.url;
   return {
     title: a.title,
     description: a.description,
