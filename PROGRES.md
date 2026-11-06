@@ -5335,3 +5335,14 @@ fiecare pagină din sitemap. Reperul: ghidul Google „Link best practices”.
   pe zi) și 403 nu lasă ID. Se văd numai în analitica HTTP Cloudflare (POST `/api/anunturi`, pe status)
   și, parțial, în GA4 (afișări și `parasire_pagina` pe `/adauga-anunt-angajare`). Formularul nu trimite
   niciun eveniment GA4 pentru pași.
+- **Citit din D1 și din Cloudflare, după reconectarea lui `wrangler` pe contul `5c02…`:**
+  `sqlite_sequence` = 807, 0 neconfirmate. Confirmările au durat sub un minut, cu două excepții: 800
+  (8,5 ore, pe 23–24 octombrie) și 804 (18 minute). Toate cele 40 de POST-uri pe `/api/anunturi*` din
+  22 octombrie – 6 noiembrie au primit 200: niciun 400, 429 sau 502. Deci nimeni nu a fost respins de
+  server, oprit de limită sau lăsat fără email de confirmare.
+- **Cine a deschis formularul și n-a trimis (RO, fără roboți, pe oră și dispozitiv):** circa 25 de
+  vizite fără postare în aceeași oră. Pe 22 octombrie (ziua de pe Reddit): ~12. Pe 28 octombrie: 4. Pe
+  29 octombrie: 4, toate Windows/Chrome, la 09, 10, 11 și 20 UTC, adică probabil o singură persoană
+  care a revenit de patru ori. Câte una pe 24 și 30 octombrie și pe 2, 3, 4 și 5 noiembrie. Nu se
+  poate ști dacă au vrut să posteze, nici dacă i-a oprit validarea din browser. Formularul nu
+  măsoară pașii.
