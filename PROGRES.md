@@ -5316,3 +5316,22 @@ fiecare pagină din sitemap. Reperul: ghidul Google „Link best practices”.
 - **Verificare:** `tsx scripts/test-anunturi.mts` OK; `tsc -p worker` și `eslint` curate; restul
   testelor din `npm test` OK, mai puțin `genereaza-catalog-meserii --check`, care pică în copia de
   lucru din cauza capetelor de linie (catalogul nu a fost atins).
+- **Publicat și verificat pe producție (6 noiembrie):** anunțul ANOFM 10 dă 410; `/locuri-de-munca` are o
+  singură pagină, cu 12 anunțuri (792–807), iar în sitemap nu e niciun ID ANOFM. Rămâne o problemă mai
+  veche: sitemap-ul conține 802 (suspendat), fiindcă `toateActive` nu filtrează `ANUNTURI_BLOCATE`.
+
+## 6 noiembrie 2026 — s-a oprit cineva la postare? (ce se vede fără D1)
+
+- `wrangler` e logat acum pe `sorin.stiuriuc@gmail.com` (contul „site-uri”), nu pe contul salariile.ro
+  `5c02…`. Rezultă 7403 la D1 și la GraphQL. Trialul Supermetrics (GA4) a expirat pe 10 octombrie.
+- **Ce s-a sondat public:** ID-urile 791–830. `AUTOINCREMENT` nu refolosește ID-uri, iar orice postare
+  care ajunge la server primește unul. Asta e valabil și pentru una al cărei email de confirmare n-a
+  plecat (502), fiindcă `adauga` rulează înaintea lui `trimite`. 791–807 există toate: 410 numai la 791
+  (expirat), 797 și 804 (false, scoase), 798 (testul de confirmare) și 802 (suspendat). Restul sunt
+  active. 808+ dau 404. Concluzia: după pornirea confirmării pe email (22 octombrie), **nicio postare
+  ajunsă la server nu a rămas neconfirmată**, iar după 807 (4 noiembrie, 09:32 UTC) nu a mai ajuns
+  nimeni la server, fiindcă o neconfirmată mai nouă de 2 zile ar da 410.
+- **Ce nu se vede:** blocajele dinaintea serverului. Validarea din browser, 400 de la server, 429 (limita
+  pe zi) și 403 nu lasă ID. Se văd numai în analitica HTTP Cloudflare (POST `/api/anunturi`, pe status)
+  și, parțial, în GA4 (afișări și `parasire_pagina` pe `/adauga-anunt-angajare`). Formularul nu trimite
+  niciun eveniment GA4 pentru pași.
