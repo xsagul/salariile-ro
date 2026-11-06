@@ -5363,3 +5363,11 @@ fiecare pagină din sitemap. Reperul: ghidul Google „Link best practices”.
   „Ți-am trimis un link”.
 - **Cum se citește:** GA4 → Explorări, evenimentul `postare_anunt`, rânduri `motiv` și `element`.
   Vizitatorii fără acord la cookies apar și ei, ca pinguri fără sursă de trafic.
+
+## 6 noiembrie 2026 — anunțul suspendat 802 scos din sitemap
+
+- `toateActive` (sitemap-ul anunțurilor) filtra numai anunțurile scoase, nu și pe cele din
+  `ANUNTURI_BLOCATE`. De aceea 802, suspendat din 5 noiembrie, apărea în sitemap, deși pagina lui nu e
+  publicată. Acum listele și sitemap-ul trec prin aceeași regulă, `publicat` (nici scos, nici suspendat).
+  `listeIndexabile` nu mai numără nici ea anunțurile suspendate, deci o listă de oraș nu intră în Google
+  datorită unui anunț suspendat.

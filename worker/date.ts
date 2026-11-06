@@ -92,6 +92,9 @@ export async function confirma(env: Env, id: number): Promise<boolean> {
 const ANUNTURI_BLOCATE = new Set([802]);
 /** Scoase de tot: anunțurile false și importul ANOFM (reguli.ts). Pentru Worker sunt șterse. */
 const scos = (id: number) => scosDeProprietar(id) || dinImportAnofm(id);
+/** Ce apare în liste și în sitemap: nici scos, nici suspendat. */
+const publicat = (id: number) => !scos(id) && !ANUNTURI_BLOCATE.has(id);
+const SQL_FARA_BLOCATE = ANUNTURI_BLOCATE.size ? ` AND id NOT IN (${[...ANUNTURI_BLOCATE].join(", ")})` : "";
 
 export async function dupaToken(env: Env, token: string): Promise<Anunt | null> {
   if (!/^[A-Za-z0-9_-]{40,50}$/.test(token)) return null;
@@ -149,7 +152,7 @@ let memorie: { la: number; anunturi: Promise<AnuntActiv[]> } | null = null;
 function active(env: Env): Promise<AnuntActiv[]> {
   if (memorie && Date.now() - memorie.la < MEMORIE_MS) return memorie.anunturi;
   const anunturi = env.DB.prepare("SELECT * FROM anunturi WHERE stare = 'activ' ORDER BY confirmat_la DESC").all<Anunt>().then((r) =>
-    r.results.filter((a) => !scos(a.id) && !ANUNTURI_BLOCATE.has(a.id)).map((a) => ({
+    r.results.filter((a) => publicat(a.id)).map((a) => ({
       ...a,
       // Titlul cu spații la capete, fără diacritice și semne, ca „Barista/barman” să aibă cuvântul „barman”.
       titluPotrivire: ` ${formaTitlu(a.titlu)} `,
@@ -278,8 +281,8 @@ export async function numeOras(env: Env, slug: string): Promise<string | null> {
  */
 export async function listeIndexabile(env: Env, prag: number): Promise<{ oras: string | null; meserie: string | null }[]> {
   const [o, om] = await env.DB.batch([
-    env.DB.prepare(`SELECT oras_slug FROM anunturi WHERE stare = 'activ' AND NOT ${SQL_DIN_IMPORT_ANOFM} GROUP BY oras_slug HAVING COUNT(*) >= ?`).bind(prag),
-    env.DB.prepare(`SELECT oras_slug, meserie, COUNT(*) AS n FROM anunturi WHERE stare = 'activ' AND NOT ${SQL_DIN_IMPORT_ANOFM} AND meserie IS NOT NULL GROUP BY oras_slug, meserie`),
+    env.DB.prepare(`SELECT oras_slug FROM anunturi WHERE stare = 'activ' AND NOT ${SQL_DIN_IMPORT_ANOFM}${SQL_FARA_BLOCATE} GROUP BY oras_slug HAVING COUNT(*) >= ?`).bind(prag),
+    env.DB.prepare(`SELECT oras_slug, meserie, COUNT(*) AS n FROM anunturi WHERE stare = 'activ' AND NOT ${SQL_DIN_IMPORT_ANOFM}${SQL_FARA_BLOCATE} AND meserie IS NOT NULL GROUP BY oras_slug, meserie`),
   ]);
   const peGrup = new Map<string, number>();
   const aduna = (k: string, n: number) => peGrup.set(k, (peGrup.get(k) ?? 0) + n);
@@ -298,7 +301,7 @@ export async function listeIndexabile(env: Env, prag: number): Promise<{ oras: s
 
 export async function toateActive(env: Env): Promise<Pick<Anunt, "id" | "slug" | "confirmat_la">[]> {
   return (await env.DB.prepare("SELECT id, slug, confirmat_la FROM anunturi WHERE stare = 'activ' ORDER BY id DESC LIMIT 45000").all<Pick<Anunt, "id" | "slug" | "confirmat_la">>()).results
-    .filter((a) => !scos(a.id));
+    .filter((a) => publicat(a.id));
 }
 
 /**

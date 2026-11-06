@@ -142,8 +142,10 @@ assert.match(date, /SET stare = 'sters', sters_la = \? WHERE stare != 'sters' AN
 assert.ok(scosDeProprietar(797) && scosDeProprietar(804), "anunțurile false 797 și 804 sunt scoase");
 assert.ok(!scosDeProprietar(3) && !scosDeProprietar(796), "celelalte anunțuri rămân");
 assert.match(date, /if \(!a \|\| scos\(a\.id\)\) return a \? \{ \.\.\.a, stare: "sters" \}/, "pagina anunțului scos dă 410");
-assert.match(date, /r\.results\.filter\(\(a\) => !scos\(a\.id\)/, "listele nu arată anunțurile scoase");
-assert.match(date, /\.filter\(\(a\) => !scos\(a\.id\)\);/, "sitemap-ul nu arată anunțurile scoase");
+assert.match(date, /const publicat = \(id: number\) => !scos\(id\) && !ANUNTURI_BLOCATE\.has\(id\)/, "publicat = nici scos, nici suspendat");
+assert.match(date, /r\.results\.filter\(\(a\) => publicat\(a\.id\)\)/, "listele nu arată anunțurile scoase sau suspendate");
+assert.match(date, /\.filter\(\(a\) => publicat\(a\.id\)\);/, "sitemap-ul nu arată anunțurile scoase sau suspendate (802, 6 noiembrie 2026)");
+assert.equal((date.match(/\$\{SQL_FARA_BLOCATE\}/g) ?? []).length, 2, "listele indexabile nu numără anunțurile suspendate");
 
 // Numărul de telefon nu stă în pagina anunțului (22 octombrie 2026): vine din API la apăsare.
 assert.doesNotMatch(pagini, /linkApel\(|linkWhatsApp\(|telefonAfisat\(/, "pagina anunțului nu scrie numărul în HTML");
