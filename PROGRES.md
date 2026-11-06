@@ -5423,3 +5423,31 @@ fiecare pagină din sitemap. Reperul: ghidul Google „Link best practices”.
   `regimPentruLuna(2027, 1)` întoarce `null`. Dacă suma netaxată nu se prelungește, din 1 ianuarie 2027
   calculatoarele arată netul la minim cu 83 lei mai mare decât cel real. Trebuie decis în ultimele zile ale
   lui decembrie, după ce se știe dacă apare o ordonanță de prelungire.
+
+## 6 noiembrie 2026 — articolele impozitsalariu.ro din 2026, reinterpretate
+
+- **Cererea proprietarului:** fiecare articol al lor din 2026, pe același subiect și unghi, scris de la zero
+  (nu cuvânt cu cuvânt, ca să nu fie conținut duplicat). Prima variantă a mea a greșit de două ori: a
+  inventat un unghi propriu la „1.000 de euro” (al lor e o știre cu date, nu un calcul) și a șters articole
+  pe criteriul volumului. Ambele au fost corectate.
+- **Publicate (8):** `impozit-salariu-2026` (taxarea salariului), `taxarea-muncii-ue`, `salariu-1000-euro-net`,
+  `munca-fara-contract`, `brut-peste-minim-net-mai-mic`, `interval-salarial-brut-net`,
+  `salariu-part-time-4-ore-2026`, `suprataxare-part-time`. Toate au 400–700 de cuvinte, cu răspunsul în prima frază.
+  Cifrele fiscale vin din `fiscal.ts` (2026-S2) și sunt identice la leu cu ale lor, deci verificare reciprocă.
+- **Neluate, cu motiv:** liber legal 15 august, termen REGES 28 iulie și D112 iulie (date trecute), programul
+  FIV (în afara subiectului), proiectul de salarizare bugetară (proiect, deci exclus de regula „numai
+  legislație în vigoare”).
+- **Verificări:** amenzile pentru muncă fără contract sunt citite în Codul Muncii consolidat la 27.04.2026,
+  art. 260 alin. (1). Lit. e): 40.000 lei de persoană, plafon 1.000.000 lei (Legea 239/2025, art. XXXIV, MO 1160 din
+  15.12.2025, aplicabil de la 18.12.2025). Lit. f), pentru salariat: 500–1.000 lei. Eurostat `earn_nt_taxwedge`, 2025
+  (salarii mici, 67% din medie): RO 42,8%, locul 4/27, media UE 39,5%. Salariul mediu net anual, din INS TEMPO
+  FOM106E: 2020: 3.217, 2021: 3.416, 2022: 3.801, 2023: 4.412, 2024: 4.959. Cursul mediu anual BCE: 2020: 4,8383 … 2024:
+  4,9746. Cifra „1,5 milioane de salariați peste 1.000 €” NU a fost folosită: singura sursă găsită e un articol
+  Antena 3 marcat „conținut plătit”, care citează o analiză ZF negăsită. Suprataxarea part-time: pe cdep.ro
+  niciun proiect nu are vot final (PL-x 241/2023 are raport de respingere, PL-x 236/2023 și PL-x 119/2026 sunt în
+  comisii), iar ordinea de zi din 9 și 11 noiembrie nu conține niciunul. Fișa PL-x 119/2026 descrie
+  microîntreprinderile, nu abrogarea pe care o anunță presa, deci articolul nu descrie proiectele.
+- **Volum de căutare (SE Ranking, GSC 28 zile):** subiectele lor sunt mici. Impozit/taxe salariu ~2.800 de
+  afișări GSC, part-time ~1.500, restul aproape zero. Familia mare găsită pe drum: „reges” 40.500/lună,
+  „revisal” 14.800, „d112” 5.700. Nu e luată încă.
+- **Fără hero:** articolele noi n-au încă imagine. Se fac în ChatGPT, ca la `salariul-minim-2027`.
