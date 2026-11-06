@@ -6,7 +6,7 @@ import { cauta, cheieUat, numarDinText, type Localitate } from "../src/lib/anunt
 import { MARCAJE, completeazaSablon } from "../src/lib/anunturi/sablon";
 import { EMAIL_ACTIV } from "../src/lib/anunturi/config";
 import { MESERII_ANUNTURI, distanta, esteDomeniu, ghicesteMeserie, grupMeserie, numeMeserieAnunt, radacina, slugMeserie, slugurileGrupului, variante } from "../src/lib/anunturi/meserii";
-import { dinImportAnofm, esteMobil, scosDeProprietar, linkApel, linkWhatsApp, orasSlug, slugAnunt, telefonAfisat, telefonCurat, urlAnunt, urlLista, valideaza, type Eroare } from "../src/lib/anunturi/reguli";
+import { SQL_DIN_IMPORT_ANOFM, dinImportAnofm, esteMobil, scosDeProprietar, linkApel, linkWhatsApp, orasSlug, slugAnunt, telefonAfisat, telefonCurat, urlAnunt, urlLista, valideaza, type Eroare } from "../src/lib/anunturi/reguli";
 
 const MESERII = new Set(["barman", "sofer-distributie"]);
 const bun = {
@@ -128,20 +128,22 @@ assert.equal(urlAnunt({ id: 123, slug: "barman-bar-centru-bucuresti" }), "/anunt
 assert.equal(urlLista("bucuresti", "barman"), "/locuri-de-munca/bucuresti/barman");
 assert.equal(urlLista(null, "barman"), "/locuri-de-munca/barman");
 
-// Importul ANOFM (ID 4–790) e noindex și lipsește din sitemap; cele puse de oameni rămân în Google.
+// Importul ANOFM (ID 4–790) e scos de tot din 6 noiembrie 2026; cele puse de oameni rămân.
 for (const id of [4, 358, 790]) assert.ok(dinImportAnofm(id), `ID ${id} e din importul ANOFM`);
 for (const id of [1, 2, 3, 791, 792, 5000]) assert.ok(!dinImportAnofm(id), `ID ${id} nu e din importul ANOFM`);
-const pagini = fs.readFileSync("worker/pagini.ts", "utf8");
-assert.match(pagini, /indexabil: !dinImportAnofm\(a\.id\)/, "pagina anunțului ANOFM e noindex");
-assert.match(pagini, /anunturi\.filter\(\(a\) => !dinImportAnofm\(a\.id\)\)/, "sitemap-ul sare peste importul ANOFM");
+assert.equal(SQL_DIN_IMPORT_ANOFM, "(id BETWEEN 4 AND 790)");
+const date = fs.readFileSync("worker/date.ts", "utf8"), pagini = fs.readFileSync("worker/pagini.ts", "utf8");
+assert.match(date, /const scos = \(id: number\) => scosDeProprietar\(id\) \|\| dinImportAnofm\(id\)/, "importul ANOFM e tratat ca șters");
+assert.equal((date.match(/scosDeProprietar\(/g) ?? []).length, 1, "pagina, listele, sitemap-ul și gestionarea trec prin `scos`");
+assert.equal((date.match(/NOT \$\{SQL_DIN_IMPORT_ANOFM\}/g) ?? []).length, 3, "listele indexabile și expirările nu numără importul ANOFM");
+assert.match(date, /SET stare = 'sters', sters_la = \? WHERE stare != 'sters' AND \$\{SQL_DIN_IMPORT_ANOFM\}/, "rularea de noapte îl șterge în D1");
 
 // Anunțurile false scoase din cod (22 octombrie 2026): pagina le vede șterse, listele și sitemap-ul deloc.
 assert.ok(scosDeProprietar(797) && scosDeProprietar(804), "anunțurile false 797 și 804 sunt scoase");
 assert.ok(!scosDeProprietar(3) && !scosDeProprietar(796), "celelalte anunțuri rămân");
-const dateWorker = fs.readFileSync("worker/date.ts", "utf8");
-assert.match(dateWorker, /scosDeProprietar\(a\.id\) \? \{ \.\.\.a, stare: "sters" \}/, "pagina anunțului scos dă 410");
-assert.match(dateWorker, /r\.results\.filter\(\(a\) => !scosDeProprietar\(a\.id\)\)/, "listele nu arată anunțurile scoase");
-assert.match(dateWorker, /\.filter\(\(a\) => !scosDeProprietar\(a\.id\)\);/, "sitemap-ul nu arată anunțurile scoase");
+assert.match(date, /if \(!a \|\| scos\(a\.id\)\) return a \? \{ \.\.\.a, stare: "sters" \}/, "pagina anunțului scos dă 410");
+assert.match(date, /r\.results\.filter\(\(a\) => !scos\(a\.id\)/, "listele nu arată anunțurile scoase");
+assert.match(date, /\.filter\(\(a\) => !scos\(a\.id\)\);/, "sitemap-ul nu arată anunțurile scoase");
 
 // Numărul de telefon nu stă în pagina anunțului (22 octombrie 2026): vine din API la apăsare.
 assert.doesNotMatch(pagini, /linkApel\(|linkWhatsApp\(|telefonAfisat\(/, "pagina anunțului nu scrie numărul în HTML");
@@ -155,8 +157,8 @@ assert.match(apiWorker, /a\.stare !== "activ"/, "numai pentru anunțurile public
 
 // Confirmarea pe email (22 octombrie 2026), sub EMAIL_ACTIV: anunțul nou e „neconfirmat”, linkul de
 // gestionare nu se dă pe ecran, iar prima deschidere a linkului îl publică. Emailurile pleacă prin Resend.
-assert.match(dateWorker, /confirmat \? "activ" : "neconfirmat"/, "cu EMAIL_ACTIV, anunțul nou așteaptă confirmarea");
-assert.match(dateWorker, /WHERE id = \? AND stare = 'neconfirmat'/, "confirmarea publică numai un anunț neconfirmat");
+assert.match(date, /confirmat \? "activ" : "neconfirmat"/, "cu EMAIL_ACTIV, anunțul nou așteaptă confirmarea");
+assert.match(date, /WHERE id = \? AND stare = 'neconfirmat'/, "confirmarea publică numai un anunț neconfirmat");
 assert.match(apiWorker, /return json\(\{ ok: true, deConfirmat: true, emailTrimis: true \}\)/, "linkul de gestionare nu apare pe ecran înainte de confirmare");
 assert.match(apiWorker, /a\.stare === "neconfirmat" && \(await confirma\(env, a\.id\)\)/, "deschiderea linkului confirmă anunțul");
 assert.match(apiWorker, /https:\/\/api\.resend\.com\/emails/, "emailurile pleacă prin Resend");

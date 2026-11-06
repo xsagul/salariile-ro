@@ -2,7 +2,7 @@
 import type { Env } from "./index";
 import type { Loc } from "./geocod";
 import { anuntaGoogle } from "./google";
-import { LIMITA_PE_ZI, ZILE_PASTRARE_EMAIL, ZILE_VALABILITATE, esteMobil, faraDiacritice, netLunar, orasSlug, scosDeProprietar, slugAnunt, urlAnunt, type AnuntNou, type Contract, type LocMunca, type Norma } from "../src/lib/anunturi/reguli";
+import { LIMITA_PE_ZI, SQL_DIN_IMPORT_ANOFM, ZILE_PASTRARE_EMAIL, dinImportAnofm, ZILE_VALABILITATE, esteMobil, faraDiacritice, netLunar, orasSlug, scosDeProprietar, slugAnunt, urlAnunt, type AnuntNou, type Contract, type LocMunca, type Norma } from "../src/lib/anunturi/reguli";
 import { MESERII_ANUNTURI, formaTitlu, ghicesteMeserie, grupMeserie, meseriileDomeniului, pentruPotrivire, slugurileGrupului, variante } from "../src/lib/anunturi/meserii";
 import { EMAIL_ACTIV } from "../src/lib/anunturi/config";
 
@@ -90,17 +90,19 @@ export async function confirma(env: Env, id: number): Promise<boolean> {
 // Blocare temporară de moderare: anunțul 802 are raportări de posibil fals/duplicat (5 nov. 2026).
 // Nu modificăm D1: îl tratăm ca suspendat în toate căile publice până la verificare.
 const ANUNTURI_BLOCATE = new Set([802]);
+/** Scoase de tot: anunțurile false și importul ANOFM (reguli.ts). Pentru Worker sunt șterse. */
+const scos = (id: number) => scosDeProprietar(id) || dinImportAnofm(id);
 
 export async function dupaToken(env: Env, token: string): Promise<Anunt | null> {
   if (!/^[A-Za-z0-9_-]{40,50}$/.test(token)) return null;
   const a = await env.DB.prepare("SELECT * FROM anunturi WHERE token_hash = ? AND stare != 'sters'").bind(await sha256(token)).first<Anunt>();
-  if (!a || scosDeProprietar(a.id)) return null;
+  if (!a || scos(a.id)) return null;
   return ANUNTURI_BLOCATE.has(a.id) ? { ...a, stare: "suspendat" } : a;
 }
 
 export async function dupaId(env: Env, id: number): Promise<Anunt | null> {
   const a = await env.DB.prepare("SELECT * FROM anunturi WHERE id = ?").bind(id).first<Anunt>();
-  if (!a || scosDeProprietar(a.id)) return a ? { ...a, stare: "sters" } : null;
+  if (!a || scos(a.id)) return a ? { ...a, stare: "sters" } : null;
   return ANUNTURI_BLOCATE.has(a.id) ? { ...a, stare: "suspendat" } : a;
 }
 
@@ -147,7 +149,7 @@ let memorie: { la: number; anunturi: Promise<AnuntActiv[]> } | null = null;
 function active(env: Env): Promise<AnuntActiv[]> {
   if (memorie && Date.now() - memorie.la < MEMORIE_MS) return memorie.anunturi;
   const anunturi = env.DB.prepare("SELECT * FROM anunturi WHERE stare = 'activ' ORDER BY confirmat_la DESC").all<Anunt>().then((r) =>
-    r.results.filter((a) => !scosDeProprietar(a.id) && !ANUNTURI_BLOCATE.has(a.id)).map((a) => ({
+    r.results.filter((a) => !scos(a.id) && !ANUNTURI_BLOCATE.has(a.id)).map((a) => ({
       ...a,
       // Titlul cu spații la capete, fără diacritice și semne, ca „Barista/barman” să aibă cuvântul „barman”.
       titluPotrivire: ` ${formaTitlu(a.titlu)} `,
@@ -276,8 +278,8 @@ export async function numeOras(env: Env, slug: string): Promise<string | null> {
  */
 export async function listeIndexabile(env: Env, prag: number): Promise<{ oras: string | null; meserie: string | null }[]> {
   const [o, om] = await env.DB.batch([
-    env.DB.prepare("SELECT oras_slug FROM anunturi WHERE stare = 'activ' GROUP BY oras_slug HAVING COUNT(*) >= ?").bind(prag),
-    env.DB.prepare("SELECT oras_slug, meserie, COUNT(*) AS n FROM anunturi WHERE stare = 'activ' AND meserie IS NOT NULL GROUP BY oras_slug, meserie"),
+    env.DB.prepare(`SELECT oras_slug FROM anunturi WHERE stare = 'activ' AND NOT ${SQL_DIN_IMPORT_ANOFM} GROUP BY oras_slug HAVING COUNT(*) >= ?`).bind(prag),
+    env.DB.prepare(`SELECT oras_slug, meserie, COUNT(*) AS n FROM anunturi WHERE stare = 'activ' AND NOT ${SQL_DIN_IMPORT_ANOFM} AND meserie IS NOT NULL GROUP BY oras_slug, meserie`),
   ]);
   const peGrup = new Map<string, number>();
   const aduna = (k: string, n: number) => peGrup.set(k, (peGrup.get(k) ?? 0) + n);
@@ -296,7 +298,7 @@ export async function listeIndexabile(env: Env, prag: number): Promise<{ oras: s
 
 export async function toateActive(env: Env): Promise<Pick<Anunt, "id" | "slug" | "confirmat_la">[]> {
   return (await env.DB.prepare("SELECT id, slug, confirmat_la FROM anunturi WHERE stare = 'activ' ORDER BY id DESC LIMIT 45000").all<Pick<Anunt, "id" | "slug" | "confirmat_la">>()).results
-    .filter((a) => !scosDeProprietar(a.id));
+    .filter((a) => !scos(a.id));
 }
 
 /**
@@ -327,9 +329,12 @@ export async function curatenie(env: Env): Promise<void> {
   const t = acum(), dupa = (zile: number) => new Date(Date.now() - zile * 86400000).toISOString();
   // Cele care expiră acum: Google le scoate din Google Jobs în aceeași zi. Cel mult 45:
   // planul gratuit dă 50 de cereri externe pe rulare. Restul le găsește Google în sitemap-expirate.xml.
-  const expira = (await env.DB.prepare("SELECT id, slug FROM anunturi WHERE stare = 'activ' AND expira_la < ? LIMIT 45")
+  const expira = (await env.DB.prepare(`SELECT id, slug FROM anunturi WHERE stare = 'activ' AND expira_la < ? AND NOT ${SQL_DIN_IMPORT_ANOFM} LIMIT 45`)
     .bind(t).all<{ id: number; slug: string }>()).results;
   await env.DB.batch([
+    // Importul ANOFM, scos pe 6 noiembrie 2026 (reguli.ts): devine șters și în bază, cu data de azi,
+    // ca sitemap-expirate.xml să-l arate o săptămână. Nu e trimis la Google: era deja noindex.
+    env.DB.prepare(`UPDATE anunturi SET stare = 'sters', sters_la = ? WHERE stare != 'sters' AND ${SQL_DIN_IMPORT_ANOFM}`).bind(t),
     env.DB.prepare("UPDATE anunturi SET stare = 'expirat' WHERE stare = 'activ' AND expira_la < ?").bind(t),
     env.DB.prepare("UPDATE anunturi SET email = NULL WHERE email IS NOT NULL AND ((stare = 'expirat' AND expira_la < ?) OR (stare = 'sters' AND sters_la < ?))").bind(dupa(ZILE_PASTRARE_EMAIL), dupa(ZILE_PASTRARE_EMAIL)),
     env.DB.prepare("DELETE FROM anunturi WHERE stare = 'neconfirmat' AND creat_la < ?").bind(dupa(2)),

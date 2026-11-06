@@ -5292,3 +5292,27 @@ fiecare pagină din sitemap. Reperul: ghidul Google „Link best practices”.
 - **Filtru preventiv:** adăugată regulă în `REGULI_CONTINUT` (`src/lib/anunturi/reguli.ts`) care respinge la postare șabloanele de tip „SSD chemical/automatic/universal solution”, „blackened/tainted/defaced bank notes”, „vectrol paste”, „tebi-matonic”, „castro x oxide”. Acoperit în `scripts/test-anunturi.mts`.
 - De rulat în D1 când sesiunea `wrangler` e pe contul `5c02…` (sau din consola D1): `UPDATE anunturi SET stare = 'sters', sters_la = strftime('%Y-%m-%dT%H:%M:%SZ','now'), telefon = NULL, whatsapp = NULL, email = NULL, adresa = NULL WHERE id = 804;`.
 - **Decizie proprietar (3 noiembrie 2026):** regula suplimentară din `REGULI_CONTINUT` a fost scoasă ca validarea la postare să rămână exact cum era înainte; anunțul `804` rămâne scos prin `SCOASE_DE_PROPRIETAR`, iar anunțurile false se șterg punctual după verificarea proprietarului.
+
+## 6 noiembrie 2026 — renunțat la ANOFM: importul (ID 4–790) scos de tot
+
+- **De ce:** pe ultima pagină din `/locuri-de-munca` stăteau anunțuri ANOFM publicate pe 13 ianuarie,
+  23 ianuarie și 3 martie, toate „valabil până pe 31 decembrie”. Importul păstra data de expirare
+  declarată la ANOFM, iar mulți angajatori pun acolo sfârșitul anului. Proprietarul a ales întâi
+  regula de 30 de zile și pentru ANOFM, apoi a renunțat de tot: „renunțăm la ANOFM, vom ridica
+  propriul site pentru postat anunțuri”, și a cerut ca anunțurile să fie scoase acum, nu lăsate să expire.
+- **Ce s-a schimbat:** `dinImportAnofm` (ID 4–790, `reguli.ts`) e tratat de Worker ca șters, la fel
+  ca anunțurile false din `SCOASE_DE_PROPRIETAR`: pagina dă 410, iar anunțul nu mai apare în liste,
+  în sitemap sau la linkul de gestionare. `listeIndexabile` nu le mai numără, deci o listă de oraș
+  intră în Google numai cu anunțuri puse pe site. Rularea de noapte (03:17 UTC) le trece `sters` în D1,
+  cu `sters_la` din acea noapte, ca `sitemap-expirate.xml` să le arate o săptămână. Nu se trimit la
+  Indexing API, fiindcă erau deja noindex din 19 octombrie. Scriptul `scripts/anunturi/importa-anofm.mts`
+  a fost șters. Codul de noindex pentru import, devenit mort, a fost scos din `pagini.ts`.
+- **Semnul verificat pe producție:** ANOFM are `validThrough` cu ora `T20:59:59.000Z` (23:59:59 ora
+  României) la ID-urile 8, 27, 171, 188, 421, 482, 621, 624 și 772, iar formularul are ore oarecare la
+  792, 793, 800, 806 și 807. Intervalul de ID din cod, 4–790, e cel corect.
+- **Telefoanele** din ofertele ANOFM rămân în rândurile șterse din D1. Nu le-am șters, fiindcă
+  `wrangler` nu are acces la cont (eroarea 7403). Ștergerea lor e un pas separat, de decis.
+- **Neschimbat:** colectarea ANOFM pentru cifrele de salariu (`scripts/colectare/anofm.mjs`).
+- **Verificare:** `tsx scripts/test-anunturi.mts` OK; `tsc -p worker` și `eslint` curate; restul
+  testelor din `npm test` OK, mai puțin `genereaza-catalog-meserii --check`, care pică în copia de
+  lucru din cauza capetelor de linie (catalogul nu a fost atins).

@@ -221,10 +221,15 @@ export const URL_ADAUGA = "/adauga-anunt-angajare";
  * aceste anunțuri rămân pe site și în liste, dar sunt noindex și ies din sitemap: din 10 octombrie,
  * la două zile după actualizarea anti-spam din septembrie, Google le-a retrogradat (pe cele 348
  * încă active, afișările au scăzut cu 71%, iar poziția a trecut de la 7 la 20). Textul lor e copiat
- * de pe mediere.anofm.ro, deci e duplicat. Un import nou trebuie să-și adauge intervalul aici.
+ * de pe mediere.anofm.ro, deci e duplicat.
+ * Din 6 noiembrie 2026 proprietarul renunță la ANOFM („vom ridica propriul site pentru postat
+ * anunțuri”): importul e scos de tot, ca anunțurile false de mai jos (pagina 410, nicio listă, niciun
+ * sitemap), iar rularea de noapte le trece `sters` în D1. Nu se mai importă nimic din ANOFM.
  */
 const IMPORTURI_ANOFM: readonly [number, number][] = [[4, 790]];
 export const dinImportAnofm = (id: number) => IMPORTURI_ANOFM.some(([de, pana]) => id >= de && id <= pana);
+/** Aceleași intervale, ca o condiție SQL pe coloana `id`. */
+export const SQL_DIN_IMPORT_ANOFM = `(${IMPORTURI_ANOFM.map(([de, pana]) => `id BETWEEN ${de} AND ${pana}`).join(" OR ")})`;
 
 /**
  * Anunțuri false scoase de proprietar, fără acces la D1 din terminal. Worker-ul le tratează ca
