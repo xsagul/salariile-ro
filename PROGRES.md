@@ -5401,3 +5401,25 @@ fiecare pagină din sitemap. Reperul: ghidul Google „Link best practices”.
 - **Verificat:** PDF-urile din 2027 generate în Node cu același desen și cu datele reale: 17 sărbători,
   diacritice corecte, iar zilele libere pe luni sunt 13 8 8 9 11 10 9 9 8 10 9 9. `tsc`, eslint, `test-ui-contracts`,
   `test-calendar` și `test-context-drift` trec. Efectul se citește în GSC după 2–4 săptămâni.
+
+## 6 noiembrie 2026 — articolul „Salariul minim 2027: ce e sigur și ce se discută”
+
+- **Cererea proprietarului:** un articol despre ce e sigur și ce se dezbate, scris simplu, în stilul Digi24
+  și al articolului despre concediul medical. Regula din CLAUDE.md, „numai legislație în vigoare”, oprește
+  cifrele din proiecte. Proprietarul a cerut explicit și partea „ce se discută”, așa că propunerile apar
+  numai ca poziții atribuite (ministerul, după un raport tehnic citat de presă; BNS; IMM România), sub
+  „Niciuna nu e lege”. Nu au calcul de net și nu intră în calculatoare.
+- **Ce e sigur (lege în vigoare):** 4.325 lei brut rămân la 1 ianuarie 2027 (HG 146/2026, fără dată
+  de expirare; confirmat de ministrul Manole la sfârșitul lui octombrie). Suma de 200 lei netaxată din
+  OUG 89/2025 e scrisă numai pentru 1 iulie – 31 decembrie 2026. Fără prelungire, netul la minim scade
+  de la 2.699 la **2.616 lei** (−83 lei: CAS +50, CASS +20, impozit +13), iar costul firmei crește de la 4.418 la
+  4.422 lei. Calculat cu `calculeazaCuRegim`, regimul 2026-S2, fără facilitate.
+- **Hero:** generat în ChatGPT (prin Claude in Chrome), în stilul imaginilor din `/noutati`, redus în
+  browser la 1200×675, WebP, 38 KB: `public/noutati/salariul-minim-2027.webp`. Articolul e adăugat
+  și în `llms.txt` (`test-ui-contracts` cere asta).
+- **De făcut când apare hotărârea în Monitorul Oficial:** actualizat articolul, `fiscal.ts` și calculatoarele
+  în aceeași zi.
+- **Problemă găsită, nereparată:** `REGIM_FISCAL_CURENT` rămâne `2026-S2` (cu cei 200 lei netaxați), iar
+  `regimPentruLuna(2027, 1)` întoarce `null`. Dacă suma netaxată nu se prelungește, din 1 ianuarie 2027
+  calculatoarele arată netul la minim cu 83 lei mai mare decât cel real. Trebuie decis în ultimele zile ale
+  lui decembrie, după ce se știe dacă apare o ordonanță de prelungire.
