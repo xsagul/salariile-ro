@@ -14,6 +14,7 @@
 // `--previzualizare` adaugă X-Robots-Tag noindex pe tot. Google cere noindex pe
 // hostname-ul temporar (workers.dev) cât timp se testează înainte de mutare.
 
+import { execSync } from "node:child_process";
 import { existsSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { CSP_PAGINI_PUBLICE, CSP_WIDGET, LINK_HEADER } from "../src/lib/csp";
@@ -89,6 +90,19 @@ writeFileSync(path.join(OUT, "_headers"), `${headere.join("\n")}\n`);
 // /salariu-minim/ → 301 → /salariu-minim, iar / rămâne 200, fără buclă.
 const redirecturi = [...REDIRECTURI.map(({ de, la }) => `${de} ${la} 301`), "/*/ /:splat 301"];
 writeFileSync(path.join(OUT, "_redirects"), `${redirecturi.join("\n")}\n`);
+
+// Commitul publicat, ca workflow-ul IndexNow să știe când a ajuns pe site build-ul
+// lui și abia apoi să anunțe Bing (altfel Bing ar citi pagina veche).
+// Workers Builds dă WORKERS_CI_COMMIT_SHA; local, din git.
+let commit = process.env.WORKERS_CI_COMMIT_SHA ?? "";
+if (!commit) {
+  try {
+    commit = execSync("git rev-parse HEAD", { encoding: "utf8" }).trim();
+  } catch {
+    commit = "necunoscut";
+  }
+}
+writeFileSync(path.join(OUT, "versiune.txt"), `${commit}\n`);
 
 console.log(
   `Cloudflare: _headers ${headere.length} reguli · _redirects ${redirecturi.length}` +
