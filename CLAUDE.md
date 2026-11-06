@@ -103,6 +103,10 @@ Tensiunea care a oprit-o, și care rămâne reală: `/despre` promitea „nu exi
   de Cloudflare. `.github/workflows/ci.yml` verifică testele, lint-ul, build-ul și
   HTML-ul randat, dar nu mai publică separat. Fallback-ul manual rămâne
   `npm run deploy` din rădăcină, într-un terminal autentificat în Cloudflare.
+  După fiecare publicare, `.github/workflows/indexnow.yml` așteaptă ca `/versiune.txt` să arate
+  commitul, apoi anunță Bing (IndexNow) paginile al căror text s-a schimbat
+  (`scripts/indexnow-schimbari.mjs`); rulează și zilnic, pentru datele publicate de colectări.
+  Bing alimentează căutarea din ChatGPT și Copilot. Din 15 septembrie până pe 6 noiembrie 2026 nu s-a anunțat nimic.
 - Rutare: `src/app/(site)/` = paginile publice (Header/Footer/analytics), `src/app/(embed)/` = rutele de widget care rulează în iframe pe site-uri terțe. Grupurile nu apar în URL. Root layout-ul e minimal și trebuie să rămână static — nu adăuga `headers()` sau `cookies()` acolo, scoate tot site-ul din cache.
 - Nicio cale de trafic viu nu trece prin Vercel. Planul, comutarea, măsurătorile și abaterile de la plan: `docs/arhiva/MIGRARE-CLOUDFLARE-2026-09-12.md` și `PROGRES.md` la 12 septembrie 2026.
 - **Rollback:** se șterge ruta `salariile.ro/*` din Workers Routes și traficul revine la Vercel de la prima cerere. Înregistrările A conțin intenționat IP-uri Vercel ca origine de rezervă; ele nu sunt folosite cât timp ruta există, fiindcă Worker-ul interceptează înaintea originii. `wrangler deploy` fără `--route` NU șterge o rută existentă.

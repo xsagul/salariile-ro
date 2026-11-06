@@ -5571,3 +5571,9 @@ Numărul de răspunsuri AI care trimit la domeniu (link_presence), pe motor:
 - **IndexNow nu mai fusese rulat din 15 septembrie** (Workers Builds publică, dar nu anunță nimic). Am trimis azi tot
   sitemap-ul (`node scripts/indexnow.mjs`, HTTP 200). De făcut: anunțarea automată a paginilor schimbate după
   fiecare publicare, ca Bing (și prin el ChatGPT) să vadă cifrele noi din prima zi.
+- **Anunțarea e automată din 6 noiembrie 2026.** Build-ul scrie `out/versiune.txt` cu commitul publicat
+  (`WORKERS_CI_COMMIT_SHA` în Workers Builds). `.github/workflows/indexnow.yml` pornește la fiecare push pe `main`,
+  așteaptă ca site-ul să arate commitul (cel mult 20 de minute), citește paginile din sitemap, compară amprenta
+  textului din `<main>` cu rularea trecută și trimite lui Bing doar paginile schimbate. Rulează și zilnic, la 05:40 UTC,
+  pentru commiturile colectărilor, care nu pornesc workflow-uri. Testat local pe 344 de pagini: două rulări la rând dau 0
+  schimbări, iar o amprentă modificată dă exact o pagină, o singură dată. Prima rulare doar salvează starea.
