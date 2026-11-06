@@ -5371,3 +5371,15 @@ fiecare pagină din sitemap. Reperul: ghidul Google „Link best practices”.
   publicată. Acum listele și sitemap-ul trec prin aceeași regulă, `publicat` (nici scos, nici suspendat).
   `listeIndexabile` nu mai numără nici ea anunțurile suspendate, deci o listă de oraș nu intră în Google
   datorită unui anunț suspendat.
+
+## 6 noiembrie 2026 — telefoanele din importul ANOFM șterse din D1
+
+- La cererea proprietarului: `UPDATE anunturi SET telefon = NULL, whatsapp = NULL WHERE id BETWEEN 4 AND 790`
+  a modificat 787 de rânduri (toate aveau telefon, niciunul WhatsApp separat sau email). După ștergere:
+  0 telefoane în interval. Cele 18 anunțuri postate pe site și-au păstrat contactul.
+- Numerele scrise în descrieri: 11 numere în 9 descrieri (ID 92, 197, 199, 200, 201, 207, 266, 357, 725),
+  găsite cu un tipar de 10 cifre care încep cu 02, 03 sau 07, cu sau fără +40, și înlocuite cu
+  „[telefon șters]”. O a doua trecere a găsit 0.
+- Rămân 8 descrieri cu o adresă de email scrisă în text (probabil ale firmelor). Rândurile sunt
+  șterse și nu se afișează nicăieri. Nu le-am atins: cererea a fost pentru telefoane.
+- Dacă ar fi nevoie, D1 Time Travel poate readuce baza la un moment dinainte, timp de 30 de zile.
