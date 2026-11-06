@@ -5520,3 +5520,8 @@ fiecare pagină din sitemap. Reperul: ghidul Google „Link best practices”.
 - **Imagini noi cu același nume = imagine veche la vizitatori.** Asseturile au `max-age=3600` în browser și
   `s-maxage=86400` cu `stale-while-revalidate` pe CDN. Proprietarul a văzut pe telefon tot imaginea veche.
   Fișierele au primit sufixul `-v2`. **O imagine hero schimbată primește întotdeauna un nume nou.**
+- **Trimise pe 6 noiembrie 2026, 13:06–13:10, cu acordul proprietarului**, câte unul pe destinatar, din Gmail
+  web: maszol, stiri-finante, medijobs, psnews, lumeapresei, desteptarea, blogdeit (radhoovlogs@gmail.com),
+  revistacariere, mrfinance, weradio. Toate 10 sunt în Trimise, iar căutarea `"google.com/url"` în Trimise nu
+  găsește nimic. Nu se mai recontactează. Răspunsurile și emailurile întoarse se verifică în câteva zile.
+  Ciornele deschise prin `#drafts?compose=…` nu mai pornesc după primul mesaj trimis: se deschid din listă, după subiect.
