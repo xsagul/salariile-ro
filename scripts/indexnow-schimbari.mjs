@@ -16,6 +16,7 @@
 //
 //   node scripts/indexnow-schimbari.mjs --stare indexnow-stare.json [--asteapta <sha>] [--fara-trimitere]
 
+import { execSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import fs from "node:fs";
 
@@ -49,12 +50,25 @@ async function text(url) {
   throw new Error(`Nu pot citi ${url}`);
 }
 
+// Pe site poate ajunge direct un commit mai nou (de ex. unul doar cu documentație,
+// care nu pornește workflow-ul): și atunci build-ul nostru e inclus.
+function contine(live, sha) {
+  if (!/^[0-9a-f]{40}$/.test(live)) return false;
+  try {
+    execSync(`git fetch -q --depth=200 origin ${live}`, { stdio: "ignore" });
+    execSync(`git merge-base --is-ancestor ${sha} ${live}`, { stdio: "ignore" });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 if (asteapta) {
   const limita = Date.now() + 20 * 60 * 1000;
   for (;;) {
     const live = ((await text(`${ORIGIN}/versiune.txt`)) ?? "").trim();
-    if (live === asteapta) {
-      console.log(`Pe site e commitul ${asteapta.slice(0, 7)}.`);
+    if (live === asteapta || contine(live, asteapta)) {
+      console.log(`Pe site e commitul ${live.slice(0, 7)}, care îl include pe ${asteapta.slice(0, 7)}.`);
       break;
     }
     if (Date.now() > limita) {
