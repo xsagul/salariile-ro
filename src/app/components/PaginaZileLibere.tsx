@@ -14,6 +14,7 @@ import TabelArticol from "@/app/components/TabelArticol";
 import UrmatoareaZiLibera from "@/app/components/UrmatoareaZiLibera";
 import CalendarAn, { type CelulaZi, type LunaCalendar } from "@/app/components/CalendarAn";
 import DescarcaZileLibere from "@/app/components/DescarcaZileLibere";
+import { aniScolariPentru } from "@/lib/vacante-scolare";
 import Reclama from "@/app/components/Reclama";
 import { CARD_TITLU, LISTA_CARD, TITLU_CARD, TITLU_PAGINA, TITLU_SECTIUNE, SEPARATOR_SECTIUNE, SPATIU_JOS, SPATIU_SUS, SUB_TITLU, LISTA_FAQ, INAINTE_DE_SECTIUNE } from "@/app/components/ui";
 
@@ -99,6 +100,11 @@ function dateAn(an: AnZileLibere) {
   }
   const minivacante = carduri.sort((a, b) => a.s - b.s).map((c) => ({ ...c, titlu: numeMinivacanta(c.s, c.e) }));
 
+  // Zilele de concediu propuse, marcate și în calendar (6 noiembrie 2026: primele două
+  // rezultate la „zile libere 2027” le arată direct în grilă, nu doar în carduri).
+  const concediu = new Set(minivacante.flatMap((c) => c.cu?.concediu ?? []).filter((t) => new Date(t).getUTCFullYear() === an).map((t) => `${new Date(t).getUTCMonth() + 1}-${new Date(t).getUTCDate()}`));
+  for (const l of luni) for (const c of l.cells) if (c && concediu.has(`${l.luna}-${c.day}`)) c.concediu = true;
+
   const paste = pasteOrtodox(an);
   const numeLa = (t: number) => sarbatori[`${new Date(t).getUTCMonth() + 1}-${new Date(t).getUTCDate()}`];
   const luniRusalii = paste + 50 * ZI_MS;
@@ -123,6 +129,10 @@ function dateAn(an: AnZileLibere) {
     {
       q: "Cum se plătește lucrul în zilele de sărbătoare?",
       a: "Primești o zi liberă plătită în următoarele 30 de zile. Dacă angajatorul nu ți-o poate da, îți plătește orele lucrate cu un spor de cel puțin 100%.",
+    },
+    {
+      q: "Dacă o sărbătoare pică în concediul meu de odihnă, pierd ziua?",
+      a: "Nu. Sărbătorile legale în care nu se lucrează nu se socotesc în zilele de concediu de odihnă. Dacă îți iei o săptămână de concediu care cuprinde o sărbătoare, consumi o zi de concediu mai puțin. Pe asta se bazează și zilele de concediu propuse în calendar.",
     },
     {
       q: "Sunt incluse zilele libere date de Guvern bugetarilor?",
@@ -344,6 +354,31 @@ export default function PaginaZileLibere({ an }: { an: AnZileLibere }) {
               ))}
             </div>
           </div>
+
+          {/* VACANȚE ȘCOLARE — din ordinul publicat în Monitorul Oficial (src/lib/vacante-scolare.ts) */}
+          {aniScolariPentru(an).map((s) => (
+            <div key={s.eticheta} className={`${SEPARATOR_SECTIUNE} max-w-3xl`}>
+              <h2 className={TITLU_SECTIUNE}>Vacanțele școlare {s.eticheta}</h2>
+              <p className="mt-3 max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600">
+                Dacă ai copii la școală, minivacanțele se leagă cel mai ușor de vacanțele lor. Paștele, de exemplu, cade
+                în vacanța de primăvară, iar zilele dintre Crăciun și Bobotează sunt toate în vacanța de iarnă.
+              </p>
+              <ul className="mt-5 divide-y divide-stone-200 rounded-md border border-stone-200 bg-surface">
+                {s.vacante.map((v) => (
+                  <li key={v.nume} className="flex flex-col gap-1 px-4 py-3 sm:flex-row sm:justify-between sm:gap-6">
+                    <span className="font-semibold text-stone-900">{v.nume}</span>
+                    <span className="text-stone-700 sm:text-right">{v.perioada}</span>
+                  </li>
+                ))}
+              </ul>
+              <ul className="mt-4 list-disc space-y-1 pl-5 text-sm text-stone-600">
+                {s.exceptii.map((e) => <li key={e}>{e}</li>)}
+              </ul>
+              <p className="mt-3 text-sm text-stone-600 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2">
+                Sursa: <a href={s.sursa.url} target="_blank" rel="noopener">{s.sursa.text}</a>.
+              </p>
+            </div>
+          ))}
 
           <Reclama plasare="continut" pereche className={INAINTE_DE_SECTIUNE} />
 

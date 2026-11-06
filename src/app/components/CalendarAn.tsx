@@ -14,7 +14,8 @@
 import { useEffect, useState } from "react";
 import { oraServer, ziRo } from "@/lib/azi-ro";
 
-export type CelulaZi = { day: number; weekend: boolean; name?: string } | null;
+/** `concediu`: zi de concediu propusă pentru o minivacanță (doar pe Zile libere). */
+export type CelulaZi = { day: number; weekend: boolean; name?: string; concediu?: boolean } | null;
 export type LunaCalendar = { luna: number; nume: string; cells: CelulaZi[]; lucr: number; libere: number };
 
 const ZILE_SCURT = ["Lu", "Ma", "Mi", "Jo", "Vi", "Sâ", "Du"];
@@ -24,6 +25,7 @@ const PATRAT = "inline-block h-3 w-3 rounded-sm";
 // Weekendul are fundal propriu, ca legenda să arate ce se vede în grilă.
 function ton(c: NonNullable<CelulaZi>) {
   if (c.name) return "bg-stone-900 font-semibold text-white";
+  if (c.concediu) return "border border-dashed border-stone-700 font-semibold text-stone-900";
   if (c.weekend) return "bg-stone-100 text-stone-600";
   return "text-stone-700";
 }
@@ -61,6 +63,7 @@ export default function CalendarAn({ an, luni, dataBuild, numara }: { an: number
   const d = azi === null ? null : new Date(azi);
   const anAzi = d?.getUTCFullYear();
   const ziAzi = d !== null && anAzi === an ? `${d.getUTCMonth() + 1}-${d.getUTCDate()}` : null;
+  const areConcediu = luni.some((l) => l.cells.some((c) => c?.concediu));
 
   return (
     <>
@@ -69,6 +72,7 @@ export default function CalendarAn({ an, luni, dataBuild, numara }: { an: number
         <span className="flex items-center gap-2"><span className={`${PATRAT} bg-surface ring-1 ring-inset ring-stone-300`} aria-hidden="true" />Zi lucrătoare</span>
         <span className="flex items-center gap-2"><span className={`${PATRAT} bg-stone-100 ring-1 ring-inset ring-stone-300`} aria-hidden="true" />Weekend</span>
         <span className="flex items-center gap-2"><span className={`${PATRAT} bg-stone-900`} aria-hidden="true" />Sărbătoare legală</span>
+        {areConcediu ? <span className="flex items-center gap-2"><span className={`${PATRAT} border border-dashed border-stone-700`} aria-hidden="true" />Concediu propus</span> : null}
         {ziAzi ? <span className="flex items-center gap-2"><span className={`${PATRAT} ring-2 ring-inset ring-stone-900`} aria-hidden="true" />Azi</span> : null}
       </div>
 
@@ -87,7 +91,8 @@ export default function CalendarAn({ an, luni, dataBuild, numara }: { an: number
                 if (c === null) return <div key={i} />;
                 const cheie = `${mo.luna}-${c.day}`;
                 const eAzi = cheie === ziAzi;
-                const eticheta = eAzi ? (c.name ? `Azi · ${c.name}` : "Azi") : c.name;
+                const nume = c.name ?? (c.concediu ? "Concediu propus pentru minivacanță" : undefined);
+                const eticheta = eAzi ? (nume ? `Azi · ${nume}` : "Azi") : nume;
                 // Inelul de „azi” iese în afara pătratului negru al unei sărbători, ca să se vadă.
                 const inel = eAzi ? (c.name ? "ring-2 ring-stone-900 ring-offset-2 ring-offset-surface" : "ring-2 ring-inset ring-stone-900") : "";
                 const clase = `flex h-7 items-center justify-center rounded text-xs tabular-nums ${ton(c)} ${inel}`;

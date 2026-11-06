@@ -5484,3 +5484,22 @@ fiecare pagină din sitemap. Reperul: ghidul Google „Link best practices”.
   - `interval-salarial-brut-net`: o lupă care face un plic cu oferta să pară uriaș, lângă plicul adevărat, mic;
   - `salariu-part-time-4-ore-2026`: un ceas de perete servit pe farfurie ca un tort, cu jumătate tăiată;
   - `suprataxare-part-time`: o servietă mică legată cu lanț de o bilă grea, pe care e pictat un cadran pe jumătate.
+
+## 6 noiembrie 2026 — preluarea site-ului: audit pe trafic și zilele libere
+
+- **Proprietarul predă site-ul** („te corectez doar dacă nu-mi place”). Obiectivul: ~2.000 de utilizatori pe zi.
+  Acum: ~426 de clicuri pe zi din Google (GSC, 28 de zile). Ordinea priorităților, după potențial:
+  1. **Zile libere/lucrătoare 2027, vârf în decembrie–ianuarie.** Zile lucrătoare e pe poziția 3,7–4,4, dar
+     zile libere 2027 e pe 8,3 (38 de clicuri la 10.000 de afișări), iar zile libere 2026 pe 22,6. SERP-ul pentru „zile libere
+     2027” (SE Ranking, 6 nov.): 1 zilelibere.com, 2 zileliberelegale.ro, 3 salariucalculator.ro, … 8 salariile.ro.
+  2. **Salariul minim:** /salariu-minim (39.600 de afișări, poziția 6,9) și homepage-ul (33.100 de afișări, poziția 7,2) se
+     canibalizează pe „salariu minim pe economie”. Pagina e bună (1.477 de cuvinte), iar mare parte din căutări
+     sunt fără clic (Google dă suma). Hotărârea pentru 2027 e așteptată la sfârșitul lui noiembrie: trebuie publicată
+     prima.
+  3. **Homepage, poziția 3,7 pe expresiile mari:** se urcă prin autoritate (backlinkuri, linkable assets), nu prin text.
+  - Salarii pe meserii: 202 pagini, 90 fără niciun clic în 28 de zile. Nu se șterg (schimbare de arhitectură, câștig
+    mic). Se lucrează pe cele care sunt deja pe pozițiile 4–10.
+- **Făcut pe zile libere** (după comparația cu primele 3): vacanțele școlare 2026–2027 din OMEC 3.194/2026 (MO
+  126 din 16.02.2026, citit din PDF-ul oficial), în `src/lib/vacante-scolare.ts`, pe paginile 2026 și 2027. Zilele
+  de concediu propuse sunt marcate punctat în calendar, cu legenda „Concediu propus” (din `puntiAn`, doar
+  anul paginii). Întrebare nouă: o sărbătoare care pică în concediul de odihnă nu consumă o zi.
