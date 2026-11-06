@@ -288,8 +288,8 @@ async function auditRenderedSite() {
     ["/calculator-salariu-part-time", "Instrucțiunile D112", "sursa D112 pentru part-time"],
     ["/calculator-salariu-constructii", "2.754", "netul la minimul din construcții, randat pentru indexare"],
     ["/calculator-salariu-constructii", "OUG 156/2024", "temeiul eliminării facilităților din construcții"],
-    ["/salariu-mediu", "9.564", "brutul INS din iunie"],
-    ["/salariu-mediu", "5.734", "netul INS din iunie"],
+    ["/salariu-mediu", "9.497", "brutul INS din august"],
+    ["/salariu-mediu", "5.688", "netul INS din august"],
     ["/metodologie", "D112", "validarea D112"],
     ["/noutati/cosul-minim-de-consum", "11.370", "cosul pentru doi adulti si doi copii"],
     // Clusterul de meserii. Verificam eticheta, nu cifra: cifrele se schimba la

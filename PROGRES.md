@@ -5525,3 +5525,12 @@ fiecare pagină din sitemap. Reperul: ghidul Google „Link best practices”.
   revistacariere, mrfinance, weradio. Toate 10 sunt în Trimise, iar căutarea `"google.com/url"` în Trimise nu
   găsește nimic. Nu se mai recontactează. Răspunsurile și emailurile întoarse se verifică în câteva zile.
   Ciornele deschise prin `#drafts?compose=…` nu mai pornesc după primul mesaj trimis: se deschid din listă, după subiect.
+
+## 6 noiembrie 2026 — salariul mediu INS adus la august 2026
+
+- Pe site era încă iunie (9.564 / 5.734). INS a publicat iulie (9.709 / 5.820) și august (**9.497 lei brut,
+  5.688 lei net**, comunicatul nr. 262 din 13 octombrie 2026, cs08r26.pdf). `npm run ins:tempo`, apoi
+  `LATEST_INS_EARNINGS`, JSON/CSV `/date-salarii`, CLAUDE.md și `test-rendered.mts` (care avea cifrele fixe).
+  Rulate: `npm run test`, `build`, `test:rendered`, `lint`, toate cu ieșire 0.
+- Am verificat și legislația: după OUG 89/2025 nu a mai apărut niciun act care să schimbe calculul salariului în 2026.
+  Septembrie vine de la INS în jur de 11–12 noiembrie: se actualizează la sesiunea următoare.

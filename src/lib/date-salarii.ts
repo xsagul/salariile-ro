@@ -1,8 +1,8 @@
 // Setul de date publicat la /date-salarii. Valorile sunt intenționat puține și
 // strict documentate: nu amestecăm praguri legale, estimări și statistici INS.
 
-export const SALARY_DATASET_VERSION = "2026-08-25";
-export const SALARY_DATASET_REFERENCE_DATE = "2026-08-25";
+export const SALARY_DATASET_VERSION = "2026-11-06";
+export const SALARY_DATASET_REFERENCE_DATE = "2026-11-06";
 
 /**
  * Sursa unică pentru cea mai recentă valoare lunară INS folosită în paginile
@@ -11,20 +11,20 @@ export const SALARY_DATASET_REFERENCE_DATE = "2026-08-25";
  * TEMPO să nu poată lăsa aceste valori în urmă în tăcere.
  */
 export const LATEST_INS_EARNINGS = {
-  sourceId: "ins_iunie_2026",
-  recordId: "ins_average_earnings_june_2026",
-  periodLabel: "iunie 2026",
-  monthName: "iunie",
-  periodStart: "2026-06-01",
-  periodEnd: "2026-06-30",
-  grossLei: 9564,
-  netLei: 5734,
-  previousPeriodLabel: "mai 2026",
-  previousNetLei: 5684,
-  monthlyNetChangePercent: 0.9,
-  publicationDate: "2026-08-12",
-  publicationDateLabel: "12 august 2026",
-  officialUrl: "https://insse.ro/cms/sites/default/files/com_presa/com_pdf/cs06r26.pdf",
+  sourceId: "ins_august_2026",
+  recordId: "ins_average_earnings_august_2026",
+  periodLabel: "august 2026",
+  monthName: "august",
+  periodStart: "2026-08-01",
+  periodEnd: "2026-08-31",
+  grossLei: 9497,
+  netLei: 5688,
+  previousPeriodLabel: "iulie 2026",
+  previousNetLei: 5820,
+  monthlyNetChangePercent: -2.3,
+  publicationDate: "2026-10-13",
+  publicationDateLabel: "13 octombrie 2026",
+  officialUrl: "https://insse.ro/cms/sites/default/files/com_presa/com_pdf/cs08r26.pdf",
 } as const;
 
 export const SALARY_DATASET_SOURCES = {
@@ -48,8 +48,8 @@ export const SALARY_DATASET_SOURCES = {
     institution: "Parlamentul României",
     official_url: "https://legislatie.just.ro/Public/DetaliiDocument/308863",
   },
-  ins_iunie_2026: {
-    name: "INS, câștigul salarial mediu — iunie 2026",
+  ins_august_2026: {
+    name: "INS, câștigul salarial mediu — august 2026",
     institution: "Institutul Național de Statistică",
     official_url: LATEST_INS_EARNINGS.officialUrl,
     publication_date: LATEST_INS_EARNINGS.publicationDate,
