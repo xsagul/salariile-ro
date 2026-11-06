@@ -5534,3 +5534,27 @@ fiecare pagină din sitemap. Reperul: ghidul Google „Link best practices”.
   Rulate: `npm run test`, `build`, `test:rendered`, `lint`, toate cu ieșire 0.
 - Am verificat și legislația: după OUG 89/2025 nu a mai apărut niciun act care să schimbe calculul salariului în 2026.
   Septembrie vine de la INS în jur de 11–12 noiembrie: se actualizează la sesiunea următoare.
+
+## 6 noiembrie 2026 — vizibilitatea în AI: punctul de plecare (SE Ranking, România, luna noiembrie)
+
+Proprietarul vrea ca AI-urile (ChatGPT, Gemini, Claude, Google AI) să ne citeze pe noi, nu concurența.
+Numărul de răspunsuri AI care trimit la domeniu (link_presence), pe motor:
+
+| Domeniu | ChatGPT | Gemini | Perplexity | AI Overview | AI Mode | Total |
+|---|---:|---:|---:|---:|---:|---:|
+| undelucram.ro | 41 | 144 | 25 | 1.350 | 586 | 2.146 |
+| paylab.ro | 67 | 23 | 343 | 621 | 241 | 1.295 |
+| calculator-salarii.ro | 68 | 39 | 2 | 668 | 150 | 927 |
+| **salariile.ro** | **103** | **42** | 3 | 194 | 94 | **436** |
+| salariucalculator.ro | 45 | 9 | 1 | 162 | 51 | 268 |
+| impozitsalariu.ro | 18 | 20 | 8 | 78 | 36 | 160 |
+
+- Între calculatoare suntem **primii în ChatGPT și Gemini**, dar în AI Overview și AI Mode suntem în urma calculator-salarii.ro
+  (cu 668 față de 194 la AI Overview). Acolo răspunsul AI urmează clasamentul Google, deci pârghia e aceeași cu cea din SEO: autoritatea.
+- ChatGPT preia **datele noastre proprii** de pe paginile de meserie (asistent medical: „16 instituții publice … 4.677 lei
+  net”, infirmier, registrator medical, medic, contabil, militar, agent vânzări). Paginile `/salarii/*` aduc puține clicuri
+  din Google, dar sunt sursă pentru AI: un motiv în plus să nu se șteargă.
+- ChatGPT a citat și o pagină cu regulile vechi (4.050 → 2.574 net), deci actualitatea datelor contează. Răspunsurile
+  în engleză folosesc `/en/salary-calculator`.
+- Concurenți noi, apăruți odată cu AI-ul: folositor.ro și ghidsalariu.ro apar des ca surse.
+- Se măsoară lunar cu `DATA_getAiSearchLeaderboard` (source `ro`, aceleași 6 domenii).
