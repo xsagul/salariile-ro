@@ -11,7 +11,7 @@ heroAlt: "Ilustrație editorială: o balanță cu o monedă adăugată pe un tal
 
 ## Cum se poate întâmpla așa ceva
 
-La salariul minim, statul lasă o mică parte din salariu, 200 de lei, complet netaxată: fără pensie, fără sănătate, fără impozit. Măsura există ca să-i ajute pe cei mai prost plătiți și se aplică până la 31 decembrie 2026.
+La [salariul minim pe economie](/salariu-minim), statul lasă o mică parte din salariu, 200 de lei, complet netaxată: fără pensie, fără sănătate, fără impozit. Măsura există ca să-i ajute pe cei mai prost plătiți și se aplică până la 31 decembrie 2026.
 
 Scutirea vine însă cu o condiție strictă: salariul de bază din contract trebuie să fie **exact** salariul minim, nici un leu în plus. În clipa în care trece de minim, scutirea dispare în întregime, nu doar pentru leul în plus. Toți cei 200 de lei încep să fie taxați.
 

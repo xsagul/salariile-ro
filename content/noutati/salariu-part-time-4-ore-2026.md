@@ -13,7 +13,7 @@ De aici vin multe dintre lucrurile pe care le auzi la interviuri: „nu facem pa
 
 ## Cât primești
 
-Salariul minim pentru part-time e proporțional cu orele din contract. La 4 ore pe zi, adică jumătate de normă, brutul minim e jumătate din salariul minim, iar în mână rămân cam 1.350 de lei. La 2 ore pe zi primești cam 700 de lei, iar la 6 ore, cam 2.000.
+Salariul minim pentru part-time e proporțional cu orele din contract. La 4 ore pe zi, adică jumătate de normă, brutul minim e jumătate din [salariul minim pe economie](/salariu-minim), iar în mână rămân cam 1.350 de lei. La 2 ore pe zi primești cam 700 de lei, iar la 6 ore, cam 2.000.
 
 Netul tău se calculează normal, din brutul tău, exact ca la orice salariu. Regula despre care vorbim mai jos nu te afectează direct: o plătește firma.
 

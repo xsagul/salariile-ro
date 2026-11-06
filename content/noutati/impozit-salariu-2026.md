@@ -35,7 +35,7 @@ Pe fluturașul tău n-o vezi, pentru că nu se scade din salariul tău. Conteaz�
 
 ## Cât rămâne, pe scurt
 
-Ca reper, la un brut de 6.000 de lei îți intră în mână cam 3.500. La salariul minim de 4.325 de lei brut, primești 2.699. Peste un anumit nivel, cam 6.300 de lei brut, raportul nu se mai schimbă: din fiecare 100 de lei din contract, îți rămân în mână 58–59.
+Ca reper, la un brut de 6.000 de lei îți intră în mână cam 3.500. La [salariul minim pe economie](/salariu-minim), de 4.325 de lei brut, primești 2.699. Peste un anumit nivel, cam 6.300 de lei brut, raportul nu se mai schimbă: din fiecare 100 de lei din contract, îți rămân în mână 58–59.
 
 Pentru suma ta exactă, cu toate detaliile tale, folosește [calculatorul de salariu](/).
 

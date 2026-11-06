@@ -11,7 +11,7 @@ heroAlt: "Ilustrație editorială: o balanță înclinată, cu un ceas pe jumăt
 
 ## Ce înseamnă „suprataxarea”
 
-Pentru un contract part-time, pensia și sănătatea nu se plătesc doar din salariul real al angajatului, ci **cel puțin ca pentru salariul minim**. Până la 31 decembrie 2026, pragul e ceva mai mic decât salariul minim, de 4.125 de lei.
+Pentru un contract part-time, pensia și sănătatea nu se plătesc doar din salariul real al angajatului, ci **cel puțin ca pentru [salariul minim pe economie](/salariu-minim)**. Până la 31 decembrie 2026, pragul e ceva mai mic decât salariul minim, de 4.125 de lei.
 
 Angajatul plătește contribuțiile din salariul lui, ca oricine. Diferența până la prag o pune firma. Cu cât programul e mai scurt, cu atât diferența e mai mare. La un contract de 2 ore pe zi, firma plătește în contribuții suplimentare aproape cât îi dă omului ca salariu brut.
 

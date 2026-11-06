@@ -7,7 +7,7 @@ hero: "/noutati/salariu-minim-ue.jpg"
 heroAlt: "Ilustrație conceptuală flat: un șir de coloane de înălțimi diferite, ca un clasament, în tonuri mate de salvie-gri și nisip pe fundal ovăz. Una dintre cele mai scunde coloane, în față, e colorată în terracotta, sugerând poziția joasă a României în clasamentul salariilor minime din UE. Deasupra, un arc subtil de stele."
 ---
 
-**Creșterea salariului minim de la 1 iulie 2026 nu a mutat România nicio poziție mai sus în Uniunea Europeană.** Cu 4.325 de lei brut, adică vreo 825 de euro, rămânem pe locul trei de la coadă, după Bulgaria și Letonia. Vinovat e cursul: din cei 275 de lei în plus, în euro au rămas doar vreo 30, pentru că leul s-a depreciat.
+**Creșterea salariului minim de la 1 iulie 2026 nu a mutat România nicio poziție mai sus în Uniunea Europeană.** Toate cifrele pentru România sunt pe pagina despre [salariul minim pe economie](/salariu-minim). Cu 4.325 de lei brut, adică vreo 825 de euro, rămânem pe locul trei de la coadă, după Bulgaria și Letonia. Vinovat e cursul: din cei 275 de lei în plus, în euro au rămas doar vreo 30, pentru că leul s-a depreciat.
 
 Ungaria, imediat deasupra noastră, are 838 de euro. În vârful clasamentului, Luxemburgul plătește un minim de 2.704 de euro, de peste trei ori mai mult.
 
