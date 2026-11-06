@@ -24,6 +24,9 @@
 //   search             search_term, rezultate (filtrul de meserii); în bara anunțurilor (worker/pagini.ts)
 //                      și zona = anunturi, element = ce a ales („nimic” = a scris și a plecat)
 //   contact_anunt      element = apel/whatsapp, link_url = adresa anunțului (worker/pagini.ts); fără număr
+//   postare_anunt      motiv = etapa formularului de anunț (inceput, oprit_reguli, trimis, respins_server,
+//                      eroare_retea, acceptat, confirmat), element = câmpurile cu eroare („telefon,salariuMin”),
+//                      zona = publicare/modificare. Numai numele câmpurilor, niciodată ce a scris omul.
 //   copiaza_link       instrument
 //   copiaza_embed      varianta
 //   click_link_intern  link_url, link_text, zona
@@ -122,6 +125,20 @@ export function masoaraCalcul(
     moneda: detalii.moneda,
     // Regimul fiscal al lunii alese pe homepage: „curenta” sau „2025”, „2024-S1”…
     perioada: detalii.perioada,
+  });
+}
+
+export type EtapaPostare = "inceput" | "oprit_reguli" | "trimis" | "respins_server" | "eroare_retea" | "acceptat" | "confirmat";
+
+/**
+ * Unde ajunge cine postează un anunț de angajare (proprietar, 6 noiembrie 2026: din D1 se vede numai cine
+ * a trimis; cine e oprit de regulile din browser nu lasă nicio urmă). Fără valori: doar numele câmpurilor.
+ */
+export function masoaraPostare(etapa: EtapaPostare, zona: "publicare" | "modificare", campuri: readonly { camp: string }[] = []): void {
+  trimiteEveniment("postare_anunt", {
+    motiv: etapa,
+    zona,
+    element: textScurt([...new Set(campuri.map((e) => e.camp))].join(",")),
   });
 }
 

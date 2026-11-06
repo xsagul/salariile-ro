@@ -108,7 +108,14 @@ for (const nume of calculatoare) {
   const sursa = await read(`src/app/components/${nume}.tsx`);
   assert.match(sursa, /masoaraCalcul\(/, `${nume} trebuie să trimită evenimentul calcul`);
 }
-for (const nume of [...calculatoare, "FiltruMeserii", "EmbedCode", "Masurare"]) {
+// Formularul de anunț măsoară pașii (postare_anunt) numai cu numele câmpurilor, fără ce a scris omul.
+const formularAnunt = await read("src/app/components/anunturi/FormularAnunt.tsx");
+for (const etapa of ["inceput", "oprit_reguli", "trimis", "respins_server", "eroare_retea", "acceptat"])
+  assert.match(formularAnunt, new RegExp(`masoaraPostare\\("${etapa}"`), `Formularul de anunț trebuie să măsoare etapa ${etapa}`);
+assert.match(await read("src/app/components/anunturi/GestioneazaAnunt.tsx"), /masoaraPostare\("confirmat"/, "Confirmarea din email trebuie măsurată");
+for (const apel of formularAnunt.matchAll(/masoaraPostare\(([\s\S]*?)\);/g))
+  assert.doesNotMatch(apel[1], /\bv\b|\bv\.|mesaj|email|telefon/, `FormularAnunt: postare_anunt pare să poarte ce a scris omul: ${apel[0]}`);
+for (const nume of [...calculatoare, "FiltruMeserii", "EmbedCode", "Masurare", "anunturi/FormularAnunt", "anunturi/GestioneazaAnunt"]) {
   const sursa = await read(`src/app/components/${nume}.tsx`);
   for (const apel of sursa.matchAll(/(?:masoaraCalcul|trimiteEveniment)\(([\s\S]*?)\);/g)) {
     assert.doesNotMatch(

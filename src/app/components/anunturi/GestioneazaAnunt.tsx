@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { useHash } from "@/app/components/anunturi/useHash";
 import FormularAnunt, { type Valori } from "@/app/components/anunturi/FormularAnunt";
 import { urlAnunt } from "@/lib/anunturi/reguli";
+import { masoaraPostare } from "@/lib/analytics";
 
 type Anunt = {
   id: number; stare: string; titlu: string; slug: string; meserie: string | null; angajator: string; judet: string; oras: string;
@@ -40,6 +41,7 @@ export default function GestioneazaAnunt() {
     if (token) cere(token, "citeste").then(({ ok, j }) => {
       if (!ok) { setMesaj(j.eroare); return; }
       setA(j.anunt);
+      if (j.confirmatAcum) masoaraPostare("confirmat", "publicare");
       if (j.confirmatAcum) setMesaj("Anunțul e confirmat și publicat. Candidații îl văd de acum și te sună direct. Păstrează emailul: din același link îl modifici sau îl ștergi.");
     });
   }, [token]);

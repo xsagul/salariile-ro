@@ -4,7 +4,8 @@
 // Aceleași reguli ca Worker-ul (src/lib/anunturi/reguli.ts), deci erorile apar înainte de trimitere.
 // Meseria, localitatea și strada se caută scriind (proprietar, 28 septembrie 2026): localitățile din
 // SIRUTA (INS), străzile din OpenStreetMap, ambele încărcate de pe site; căutarea rămâne în browser.
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { masoaraPostare } from "@/lib/analytics";
 import { MESERII_ANUNTURI } from "@/lib/anunturi/meserii";
 import { EMAIL_ACTIV } from "@/lib/anunturi/config";
 import { CONTRACTE, LOCURI_MUNCA, faraDiacritice, netLunar, valideaza, type Eroare } from "@/lib/anunturi/reguli";
@@ -37,6 +38,10 @@ export default function FormularAnunt({ initial, modificare = false, trimite }: 
   const set = (k: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
     setV((x) => ({ ...x, [k]: e.target.type === "checkbox" ? (e.target as HTMLInputElement).checked : e.target.value }));
   const eroare = (camp: string) => erori.find((e) => e.camp === camp)?.mesaj;
+  // Măsurarea pașilor (src/lib/analytics.ts, `postare_anunt`): prima atingere a unui câmp, o singură dată.
+  const zona = modificare ? "modificare" : "publicare";
+  const inceput = useRef(false);
+  const laPrimaAtingere = () => { if (!inceput.current) { inceput.current = true; masoaraPostare("inceput", zona); } };
 
   // Meseria: se alege din listă; un nume scris întocmai se recunoaște și fără clic.
   const [meserieText, setMeserieText] = useState(numeMeserie(initial?.meserie));
@@ -86,11 +91,19 @@ export default function FormularAnunt({ initial, modificare = false, trimite }: 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     const r = valideaza({ ...v, email: modificare ? "modificare@salariile.ro" : v.email, acordPublicare: modificare || v.acordPublicare }, SLUGURI);
-    if ("erori" in r) { setErori(r.erori); return; }
+    if ("erori" in r) { setErori(r.erori); masoaraPostare("oprit_reguli", zona, r.erori); return; }
     setTrimis(true);
-    const rez = await trimite(v).catch(() => ({ erori: [{ camp: "general", mesaj: "Nu s-a putut trimite. Verifică internetul și încearcă din nou." }] as Eroare[] }));
+    masoaraPostare("trimis", zona);
+    let retea = false;
+    const rez = await trimite(v).catch(() => {
+      retea = true;
+      return { erori: [{ camp: "general", mesaj: "Nu s-a putut trimite. Verifică internetul și încearcă din nou." }] as Eroare[] };
+    });
     setTrimis(false);
     setErori(rez?.erori ?? []);
+    if (retea) masoaraPostare("eroare_retea", zona);
+    else if (rez?.erori?.length) masoaraPostare("respins_server", zona, rez.erori);
+    else masoaraPostare("acceptat", zona);
   }
 
   const Camp = ({ k, eticheta, nota, ...rest }: { k: string; eticheta: string; nota?: string } & React.InputHTMLAttributes<HTMLInputElement>) => (
@@ -102,7 +115,7 @@ export default function FormularAnunt({ initial, modificare = false, trimite }: 
   );
 
   return (
-    <form onSubmit={onSubmit} noValidate className="grid gap-5">
+    <form onSubmit={onSubmit} onInput={laPrimaAtingere} noValidate className="grid gap-5">
       {eroare("general") && <p className="rounded-md border border-red-300 bg-red-50 p-3 text-sm text-red-800">{eroare("general")}</p>}
       <fieldset className="grid gap-4">
         <legend className="text-base font-bold text-stone-900">Postul</legend>

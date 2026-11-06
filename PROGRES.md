@@ -5346,3 +5346,20 @@ fiecare pagină din sitemap. Reperul: ghidul Google „Link best practices”.
   care a revenit de patru ori. Câte una pe 24 și 30 octombrie și pe 2, 3, 4 și 5 noiembrie. Nu se
   poate ști dacă au vrut să posteze, nici dacă i-a oprit validarea din browser. Formularul nu
   măsoară pașii.
+
+## 6 noiembrie 2026 — evenimentul GA4 `postare_anunt`: unde se opresc cei care postează
+
+- **De ce:** din D1 și din Cloudflare se vede numai cine a trimis formularul. În 22 octombrie –
+  6 noiembrie au fost ~25 de vizite pe formular fără trimitere, iar validarea din browser nu lasă nicio urmă.
+- **Ce măsoară** (`masoaraPostare` în `src/lib/analytics.ts`): `motiv` = etapa (`inceput` la prima
+  atingere a unui câmp, `oprit_reguli`, `trimis`, `respins_server`, `eroare_retea`, `acceptat`, iar
+  `confirmat` la deschiderea linkului din email), `element` = câmpurile cu eroare (de ex.
+  `oras,descriere,telefon`), `zona` = publicare/modificare. Se trimit numai numele câmpurilor, niciodată
+  ce a scris omul; `test-ui-contracts.mts` pică dacă un apel poartă valori din formular. Dimensiunile
+  `motiv`, `element` și `zona` existau deja în GA4, deci nu e nimic de configurat în Admin.
+- **Verificat local** (`next dev --webpack`, cu `gtag` și `fetch` înlocuite de martori, nimic trimis la GA4
+  sau la API): formular gol → `inceput`, apoi `oprit_reguli:oras,descriere,baza,salariuMin,telefon,email,acordPublicare`;
+  completat → `trimis`, `respins_server:general` (429 simulat), apoi `trimis`, `acceptat` și ecranul
+  „Ți-am trimis un link”.
+- **Cum se citește:** GA4 → Explorări, evenimentul `postare_anunt`, rânduri `motiv` și `element`.
+  Vizitatorii fără acord la cookies apar și ei, ca pinguri fără sursă de trafic.
