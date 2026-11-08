@@ -5588,3 +5588,40 @@ Numărul de răspunsuri AI care trimit la domeniu (link_presence), pe motor:
 - Previzualizarea linkului de articol pe Facebook nu avea imagine: og:image era WebP, fără dimensiuni. Acum build-ul face
   `/_img/noutati/<hero>-share.jpg` (1200×675) și articolul declară og:image ca JPG, cu lățime, înălțime și alt.
   Rulate: build, test:rendered, lint, npm test.
+
+## 8 noiembrie 2026 — scăderea clicurilor: o treaptă pe 16–19 oct., nu o alunecare continuă
+
+Întrebarea proprietarului: „eram la aproape 1.000 de clicuri pe zi, acum 300 într-o vineri și nu știm de ce”.
+
+**GSC, clicuri pe săptămână (luni–duminică):** 21–27 sept. 3.923 · 28 sept.–4 oct. 4.320 · 5–11 oct. 4.150 ·
+12–18 oct. 3.651 · **19–25 oct. 2.488** · 26 oct.–1 nov. 2.737 · 2–6 nov. (5 zile) 2.216. Vârful de 953 (28
+sept.) a fost o zi de final de lună, cu LinkedIn; o zi lucrătoare obișnuită în sept.–început de oct. era
+650–780. De pe 19 oct. stă la 380–580. Afișările au scăzut doar ~5% (397.159 → 377.455, 5–16 oct. vs 26
+oct.–6 nov.); clicurile 7.387 → 4.953. Pierderea e de poziție și CTR, nu de indexare.
+
+**Unde s-au dus cele ~2.430 de clicuri (5–16 oct. vs 26 oct.–6 nov.):**
+- Homepage −1.290: „calculator salariu net” 611 → 206 la aceleași afișări (29.176 → 29.556), poziția 3,2 →
+  4,0; „calcul salariu net” 311 → 65 (2,9 → 4,0); „calculator salariu” 229 → 99; „brut in net” 112 → 47.
+  Rotația 2 ↔ 4 din octombrie s-a fixat pe 4: zilnic 4,1–4,4 din 30 oct., ~10–30 de clicuri pe zi față de
+  ~100 pe locul 2. Ordinea (22 oct.): rezumat AI, calculator-salarii.ro, impozitsalariu.ro, salaria.ro, noi.
+- `/calculator-salariu-invatamant` −836: un vârf de știri pe 12–15 oct. (271 de clicuri pe 14 oct., 4.215
+  afișări), apoi ~650–800 de afișări pe zi, sub septembrie (~1.400). Cerere, nu poziție (3,7 → 4,4).
+- Restul: sezon (`/zile-lucratoare-2026`), știri trecute, `/salariu-minim`, `/calculator-pfa`.
+
+**Ce nu e:** niciun update de algoritm confirmat de Google după cel de spam din sept. (încheiat pe 8 oct.);
+ultimul core update, mai 2026. Reclamele (15 oct. seara) se suprapun în timp cu fixarea pe locul 4, dar
+rotația pornise pe 12 oct., iar GA4 pe homepage arăta implicare mai bună după ele (nota din 22 oct.).
+4–6 nov. vs 28–30 oct.: −16%, din care homepage −143 (poziția 4,5 → 4,7) și zile lucrătoare 2026 −43
+(sfârșitul anului); comparația e cu zile de final de lună, care sunt mereu mai mari.
+
+Sâmbăta de 7 nov. nu e încă în GSC; Cloudflare nu s-a putut citi (wrangler e pe contul site-uri.ro).
+
+**Decizia proprietarului (8 noiembrie):** „nu mă interesează, îmi vreau locul înapoi” — bara de sus revine
+exact la forma din 26 septembrie: Calculator salariu · Meserii · Instrumente · Ghiduri · Noutăți, fără
+„Locuri de muncă” și fără butonul „Adaugă anunț” (pe telefon, doar logoul și meniul). Hubul rămâne legat
+din subsol și din propriile pagini. Recomandarea agentului fusese că bara probabil nu e cauza (pe 6–9 oct.,
+cu bara nouă, eram pe 2,4–2,9); costul asumat e vizibilitatea hubului. **De citit:** poziția zilnică pe
+„calculator salariu net” (`node scripts/gsc.mjs dates --query="calculator salariu net" --query-exact
+--limit=100`), 2–3 săptămâni, fără altă schimbare pe homepage în acest timp.
+Verificat: `npm test` exit 0, eslint pe Header fără erori, `npm run build` exit 0, `npm run test:rendered`
+exit 0; în build, `<header>` nu conține `/locuri-de-munca` nici `/adauga-anunt-angajare`; Chromium 1280 și 375 px.

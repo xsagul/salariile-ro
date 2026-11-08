@@ -22,14 +22,13 @@ type Item = Leaf | Group;
 // calendarului. Nu adăuga o pagină aici fără cerere: fiecare intrare nouă scade
 // partea tuturor celorlalte.
 //
-// 30 septembrie 2026, proprietarul: „Meserii” stă în „Ghiduri”, ca „Salarii pe meserii”
-// (cum fusese mutat pe 29 septembrie).
-// 2 octombrie 2026, proprietarul: „Noutăți” coboară în „Ghiduri” (39 de clickuri în 11 zile,
-// sub „Instrumente” luat la un loc); în locul lui revine butonul „Adaugă anunț”, cu forma din
-// 29 septembrie, iar „Locuri de muncă” intră între „Calculator salariu” și „Instrumente”.
+// 8 noiembrie 2026, proprietarul: bara revine exact la forma din 26 septembrie, dinaintea
+// hubului de anunțuri, ca să ne luăm înapoi locul 2 pe „calculator salariu net” (de pe 17
+// octombrie stăm pe 4). Fără „Locuri de muncă” și fără butonul „Adaugă anunț”; „Meserii” și
+// „Noutăți” înapoi în bară. Hubul rămâne legat din subsol și din paginile lui. Cifrele: PROGRES.md.
 const NAV: Item[] = [
   { href: "/", label: "Calculator salariu" },
-  { href: "/locuri-de-munca", label: "Locuri de muncă" },
+  { href: "/salarii", label: "Meserii" },
   {
     label: "Instrumente",
     children: [
@@ -51,24 +50,15 @@ const NAV: Item[] = [
       { href: "/deducere-personala-2026", label: "Deducere personală" },
       { href: "/zile-libere-2026", label: "Zile libere 2026" },
       { href: "/zile-lucratoare-2026", label: "Zile lucrătoare 2026" },
-      { href: "/salarii", label: "Salarii pe meserii" },
-      { href: "/noutati", label: "Noutăți" },
     ],
   },
+  { href: "/noutati", label: "Noutăți" },
 ];
-
-/** Butonul de publicare, în dreapta barei: vizibil și pe telefon, lângă meniu. */
-const ANUNT: Leaf = { href: "/adauga-anunt-angajare", label: "Adaugă anunț" };
 
 const isGroup = (i: Item): i is Group => "children" in i;
 
-/** „/” e numai homepage-ul; celelalte adrese cuprind și subpaginile lor. Anunțurile
- *  (/anunt-angajare-*) țin de „Locuri de muncă”: Worker-ul le pune în același șablon static
- *  (/locuri-de-munca/sablon), randat cu intrarea activă. */
-const peRuta = (pathname: string, href: string) =>
-  href === "/" ? pathname === "/"
-  : href === "/locuri-de-munca" ? pathname.startsWith(href) || pathname.startsWith("/anunt-angajare-")
-  : pathname.startsWith(href);
+/** „/” e numai homepage-ul; celelalte adrese cuprind și subpaginile lor. */
+const peRuta = (pathname: string, href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
 
 /** Identificator stabil pentru `id`/`aria-controls`, derivat din etichetă.
  *  Diacriticele devin cratime — nu contează cum arată, contează să fie unic și
@@ -283,20 +273,10 @@ export default function Header() {
           )}
         </nav>
 
-        <Link
-          href={ANUNT.href}
-          aria-current={isActive(ANUNT.href) ? "page" : undefined}
-          // Cu contur, nu negru (proprietar, 29 septembrie 2026): pe telefon, pagina calculatorului are
-          // deja trei butoane negre, iar al patrulea, sus, fura privirea de la „Calculează”.
-          className="ml-2 inline-flex min-h-10 items-center whitespace-nowrap rounded-md border border-stone-400 px-3 text-sm font-semibold text-stone-900 hover:border-stone-900 hover:bg-stone-100 md:ml-6"
-        >
-          {ANUNT.label}
-        </Link>
-
         {/* Mobile hamburger */}
         <button
           ref={hamburgerRef}
-          className="flex h-11 w-11 cursor-pointer flex-col items-center justify-center gap-[5px] rounded p-0 hover:bg-stone-200/60 md:hidden"
+          className="ml-auto flex h-11 w-11 cursor-pointer flex-col items-center justify-center gap-[5px] rounded p-0 hover:bg-stone-200/60 md:hidden"
           aria-label={open ? "Închide meniul" : "Deschide meniul"}
           aria-expanded={open}
           aria-controls="meniu-mobil"
