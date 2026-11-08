@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-07T01:03:21.141Z",
+ "generatedAt": "2026-11-08T00:47:13.944Z",
  "run": "colectare-continua",
  "policy": {
   "version": 5,
@@ -171,9 +171,9 @@
   "method": "public_source_inventories_accumulated"
  },
  "stats": {
-  "observatii": 2779,
-  "valabile": 2779,
-  "accepted": 2686,
+  "observatii": 2789,
+  "valabile": 2789,
+  "accepted": 2695,
   "surseCuTrecereCompleta": [
    "anuntul",
    "ejobs"
@@ -183,8 +183,8 @@
  "coverage": {
   "programator": {
    "name": "Programator",
-   "read": 186,
-   "withoutSalary": 184,
+   "read": 188,
+   "withoutSalary": 186,
    "n": 2,
    "ads": 2,
    "basisNearAmount": 0,
@@ -561,8 +561,8 @@
   },
   "medic": {
    "name": "Medic",
-   "read": 108,
-   "withoutSalary": 97,
+   "read": 109,
+   "withoutSalary": 98,
    "n": 2,
    "ads": 2,
    "basisNearAmount": 0,
@@ -681,8 +681,8 @@
   },
   "asistent-medical": {
    "name": "Asistent medical",
-   "read": 302,
-   "withoutSalary": 290,
+   "read": 304,
+   "withoutSalary": 292,
    "n": 6,
    "ads": 6,
    "basisNearAmount": 5,
@@ -765,8 +765,8 @@
   },
   "registrator-medical": {
    "name": "Registrator medical",
-   "read": 9,
-   "withoutSalary": 9,
+   "read": 10,
+   "withoutSalary": 10,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -929,8 +929,8 @@
   },
   "farmacist": {
    "name": "Farmacist",
-   "read": 157,
-   "withoutSalary": 156,
+   "read": 158,
+   "withoutSalary": 157,
    "n": 4,
    "ads": 4,
    "basisNearAmount": 3,
@@ -1732,8 +1732,8 @@
   },
   "contabil": {
    "name": "Contabil",
-   "read": 259,
-   "withoutSalary": 230,
+   "read": 260,
+   "withoutSalary": 231,
    "n": 43,
    "ads": 43,
    "basisNearAmount": 5,
@@ -2109,8 +2109,8 @@
   },
   "broker": {
    "name": "Broker",
-   "read": 96,
-   "withoutSalary": 91,
+   "read": 97,
+   "withoutSalary": 92,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -2159,8 +2159,8 @@
   },
   "consultant-financiar": {
    "name": "Consultant financiar",
-   "read": 62,
-   "withoutSalary": 52,
+   "read": 63,
+   "withoutSalary": 53,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -2542,32 +2542,32 @@
   },
   "inginer": {
    "name": "Inginer",
-   "read": 704,
-   "withoutSalary": 627,
-   "n": 23,
-   "ads": 23,
-   "basisNearAmount": 4,
+   "read": 707,
+   "withoutSalary": 630,
+   "n": 25,
+   "ads": 25,
+   "basisNearAmount": 6,
    "basisFromDocument": 19,
    "basisFromPlatform": 0,
-   "employers": 17,
-   "counties": 4,
+   "employers": 19,
+   "counties": 5,
    "sourceCounts": {
+    "publi24": 4,
     "hipo": 4,
-    "publi24": 2,
     "bestjobs": 16,
     "anuntul": 1
    },
-   "employerShare": 0.17391304347826086,
-   "sourceShare": 0.6956521739130435,
+   "employerShare": 0.16,
+   "sourceShare": 0.64,
    "gaps": [
-    "too_few_known_counties"
+    "source_sensitivity"
    ],
-   "explicitMonthly": 20,
-   "assumedMonthly": 3,
-   "periodSensitivity": 0.01606111645813282,
-   "sourceSensitivity": 0.032646573332518185,
+   "explicitMonthly": 21,
+   "assumedMonthly": 4,
+   "periodSensitivity": 0.021825518126795868,
+   "sourceSensitivity": 0.25,
    "midpointEstimate": null,
-   "centralEstimate": 8178.5,
+   "centralEstimate": 8000,
    "status": "insufficient",
    "medianBounds": null,
    "observedRange": {
@@ -2590,6 +2590,18 @@
    },
    "examples": [
     {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/ingineri/anunt/avioane-craiova-s-a-angajeaza-inginer-aviatie-cor-214406/h4933d75dgd67448ei7egf71i05gdhf1.html",
+     "source": "publi24",
+     "min": 5167,
+     "max": 5167
+    },
+    {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/constructii-arhitectura-design/ingineri/anunt/inginer-instalatii-termice-sanitare-si-climatizare/367gdh60g77377h12e7gif7ii212g55h.html",
+     "source": "publi24",
+     "min": 5000,
+     "max": 5000
+    },
+    {
      "url": "https://www.bestjobs.eu/loc-de-munca/inginer-electric-138",
      "source": "bestjobs",
      "min": 5340,
@@ -2606,18 +2618,6 @@
      "source": "hipo",
      "min": 8500,
      "max": 9000
-    },
-    {
-     "url": "https://www.hipo.ro/locuri-de-munca/locuri_de_munca/273688/ABC-Human-Capital/Inginer-/-devizist-ofertare-in-constructii-(Cluj-Napoca)",
-     "source": "hipo",
-     "min": 8000,
-     "max": 10000
-    },
-    {
-     "url": "https://www.bestjobs.eu/loc-de-munca/inginer-ofertare-630",
-     "source": "bestjobs",
-     "min": 4272,
-     "max": 6142
     }
    ]
   },
@@ -3041,8 +3041,8 @@
   },
   "zidar": {
    "name": "Zidar",
-   "read": 136,
-   "withoutSalary": 124,
+   "read": 137,
+   "withoutSalary": 125,
    "n": 1,
    "ads": 1,
    "basisNearAmount": 1,
@@ -3123,8 +3123,8 @@
   },
   "dulgher": {
    "name": "Dulgher",
-   "read": 189,
-   "withoutSalary": 174,
+   "read": 191,
+   "withoutSalary": 176,
    "n": 7,
    "ads": 7,
    "basisNearAmount": 6,
@@ -3206,8 +3206,8 @@
   },
   "electrician": {
    "name": "Electrician",
-   "read": 889,
-   "withoutSalary": 777,
+   "read": 892,
+   "withoutSalary": 780,
    "n": 66,
    "ads": 66,
    "basisNearAmount": 46,
@@ -3289,8 +3289,8 @@
   },
   "instalator": {
    "name": "Instalator",
-   "read": 468,
-   "withoutSalary": 406,
+   "read": 473,
+   "withoutSalary": 411,
    "n": 41,
    "ads": 41,
    "basisNearAmount": 22,
@@ -3451,8 +3451,8 @@
   },
   "faiantar": {
    "name": "Faianțar",
-   "read": 54,
-   "withoutSalary": 47,
+   "read": 55,
+   "withoutSalary": 48,
    "n": 2,
    "ads": 2,
    "basisNearAmount": 2,
@@ -3520,8 +3520,8 @@
   },
   "sudor": {
    "name": "Sudor",
-   "read": 349,
-   "withoutSalary": 320,
+   "read": 351,
+   "withoutSalary": 322,
    "n": 13,
    "ads": 13,
    "basisNearAmount": 13,
@@ -3683,8 +3683,8 @@
   },
   "operator-productie": {
    "name": "Operator producție",
-   "read": 200,
-   "withoutSalary": 157,
+   "read": 201,
+   "withoutSalary": 158,
    "n": 84,
    "ads": 84,
    "basisNearAmount": 76,
@@ -3764,8 +3764,8 @@
   },
   "mecanic-auto": {
    "name": "Mecanic auto",
-   "read": 225,
-   "withoutSalary": 200,
+   "read": 228,
+   "withoutSalary": 203,
    "n": 11,
    "ads": 11,
    "basisNearAmount": 9,
@@ -3847,8 +3847,8 @@
   },
   "tehnician-mentenanta": {
    "name": "Tehnician mentenanță",
-   "read": 90,
-   "withoutSalary": 83,
+   "read": 91,
+   "withoutSalary": 84,
    "n": 10,
    "ads": 10,
    "basisNearAmount": 7,
@@ -4225,8 +4225,8 @@
   },
   "sofer-tir": {
    "name": "Șofer TIR",
-   "read": 833,
-   "withoutSalary": 746,
+   "read": 835,
+   "withoutSalary": 748,
    "n": 10,
    "ads": 10,
    "basisNearAmount": 8,
@@ -4258,9 +4258,9 @@
     "max": 15830
    },
    "undeclaredBasis": {
-    "n": 40,
+    "n": 41,
     "sourceCounts": {
-     "publi24": 30,
+     "publi24": 31,
      "bestjobs": 3,
      "anuntul": 3,
      "ejobs": 4
@@ -4272,6 +4272,12 @@
     "midpointEstimate": 7750
    },
    "examples": [
+    {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/soferi-transporturi/transport-marfa-intern/anunt/angajez-sofer-camion-24t-necesar-ce/70884hd152de7i281hh91g38415gh6fe.html",
+     "source": "publi24",
+     "min": 8000,
+     "max": 8000
+    },
     {
      "url": "https://www.publi24.ro/anunturi/locuri-de-munca/soferi-transporturi/transport-marfa-intern/anunt/angajam-sofer-profesionist-categ-c-autoutilitara-7-5-t/96f8g57911467f911ig1h0f20178hh51.html",
      "source": "publi24",
@@ -4295,12 +4301,6 @@
      "source": "publi24",
      "min": 8000,
      "max": 10000
-    },
-    {
-     "url": "https://www.bestjobs.eu/loc-de-munca/sofer-profesionist-c-e-58",
-     "source": "bestjobs",
-     "min": 6397,
-     "max": 7463
     }
    ]
   },
@@ -4432,8 +4432,8 @@
   },
   "curier": {
    "name": "Curier",
-   "read": 353,
-   "withoutSalary": 318,
+   "read": 354,
+   "withoutSalary": 319,
    "n": 12,
    "ads": 12,
    "basisNearAmount": 1,
@@ -4516,8 +4516,8 @@
   },
   "sofer-ridesharing": {
    "name": "Șofer ridesharing",
-   "read": 44,
-   "withoutSalary": 44,
+   "read": 45,
+   "withoutSalary": 45,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
@@ -4545,17 +4545,24 @@
    "medianBounds": null,
    "observedRange": null,
    "undeclaredBasis": {
-    "n": 1,
+    "n": 2,
     "sourceCounts": {
+     "publi24": 1,
      "anuntul": 1
     },
     "observedRange": {
-     "min": 7000,
+     "min": 2800,
      "max": 12000
     },
-    "midpointEstimate": 9500
+    "midpointEstimate": 6200
    },
    "examples": [
+    {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/soferi-transporturi/taximetrie/anunt/sofer-uber-bolt-judetul-galati/ehg0566ifdii7g3fd4d49372653gi26i.html",
+     "source": "publi24",
+     "min": 2800,
+     "max": 3000
+    },
     {
      "url": "https://www.anuntul.ro/anunt-angajare-sofer-uber-sau-bolt-cu-sau-zMvRod",
      "source": "anuntul",
@@ -4720,33 +4727,31 @@
    "name": "Logistician",
    "read": 51,
    "withoutSalary": 45,
-   "n": 4,
-   "ads": 4,
-   "basisNearAmount": 4,
+   "n": 5,
+   "ads": 5,
+   "basisNearAmount": 5,
    "basisFromDocument": 0,
    "basisFromPlatform": 0,
-   "employers": 4,
-   "counties": 4,
+   "employers": 5,
+   "counties": 5,
    "sourceCounts": {
-    "publi24": 4
+    "publi24": 5
    },
-   "employerShare": 0.25,
+   "employerShare": 0.2,
    "sourceShare": 1,
    "gaps": [
     "too_few_ads",
     "too_few_known_employers",
-    "too_few_known_counties",
     "single_source",
-    "employer_concentration",
     "source_concentration",
     "too_few_explicit_monthly"
    ],
-   "explicitMonthly": 2,
+   "explicitMonthly": 3,
    "assumedMonthly": 2,
-   "periodSensitivity": 0.14912280701754385,
+   "periodSensitivity": 0,
    "sourceSensitivity": null,
    "midpointEstimate": null,
-   "centralEstimate": 4850,
+   "centralEstimate": 5700,
    "status": "insufficient",
    "medianBounds": null,
    "observedRange": {
@@ -4765,6 +4770,12 @@
     "midpointEstimate": 4546
    },
    "examples": [
+    {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/muncitori-productie-depozit-logistica/manipulanti-marfa/anunt/operator-logistica-si-evidenta-produse-salariu-5-000-5-700-lei-net-luna/fg73255fi5e875691gi16de5df60f516.html",
+     "source": "publi24",
+     "min": 5700,
+     "max": 5700
+    },
     {
      "url": "https://www.publi24.ro/anunturi/locuri-de-munca/muncitori-productie-depozit-logistica/manipulanti-marfa/anunt/lucrator-logistica-si-receptie-marfa-salariu-5-000-5-700-lei-net-luna/f5d483h6di697i851g89166771d6hd40.html",
      "source": "publi24",
@@ -4788,19 +4799,13 @@
      "source": "bestjobs",
      "min": 4008,
      "max": 5344
-    },
-    {
-     "url": "https://www.bestjobs.eu/loc-de-munca/specialist-in-logistica-si-transport",
-     "source": "bestjobs",
-     "min": 4282,
-     "max": 4550
     }
    ]
   },
   "magaziner": {
    "name": "Magaziner",
-   "read": 270,
-   "withoutSalary": 234,
+   "read": 274,
+   "withoutSalary": 235,
    "n": 51,
    "ads": 51,
    "basisNearAmount": 47,
@@ -4881,23 +4886,23 @@
    "name": "Stivuitorist",
    "read": 193,
    "withoutSalary": 168,
-   "n": 30,
-   "ads": 30,
-   "basisNearAmount": 26,
+   "n": 31,
+   "ads": 31,
+   "basisNearAmount": 27,
    "basisFromDocument": 4,
    "basisFromPlatform": 0,
-   "employers": 19,
-   "counties": 11,
+   "employers": 20,
+   "counties": 12,
    "sourceCounts": {
+    "publi24": 24,
     "bestjobs": 4,
-    "publi24": 23,
     "anuntul": 3
    },
-   "employerShare": 0.16666666666666666,
-   "sourceShare": 0.7666666666666667,
+   "employerShare": 0.16129032258064516,
+   "sourceShare": 0.7741935483870968,
    "gaps": [],
    "explicitMonthly": 8,
-   "assumedMonthly": 22,
+   "assumedMonthly": 23,
    "periodSensitivity": 0.12506024096385543,
    "sourceSensitivity": 0.10162489672266593,
    "midpointEstimate": 3631,
@@ -4927,6 +4932,12 @@
    },
    "examples": [
     {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/muncitori-productie-depozit-logistica/operatori-utilaje/anunt/angajam-stivuitorist-reach-truck/0ehf027i9086775213d3h0f5564f843g.html",
+     "source": "publi24",
+     "min": 3200,
+     "max": 3200
+    },
+    {
      "url": "https://www.anuntul.ro/anunt-angajare-stivuitorist-eeDQNe",
      "source": "anuntul",
      "min": 4000,
@@ -4949,19 +4960,13 @@
      "source": "bestjobs",
      "min": 3741,
      "max": 4009
-    },
-    {
-     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/muncitori-productie-depozit-logistica/manipulanti-marfa/anunt/fabrica-de-panificatie-angajeaza-stivuitorist/1e173792ig877i37117372gif9f4gd90.html",
-     "source": "publi24",
-     "min": 4200,
-     "max": 4200
     }
    ]
   },
   "manipulant-marfa": {
    "name": "Manipulant mărfuri",
-   "read": 247,
-   "withoutSalary": 205,
+   "read": 248,
+   "withoutSalary": 206,
    "n": 44,
    "ads": 44,
    "basisNearAmount": 35,
@@ -5122,8 +5127,8 @@
   },
   "vanzator": {
    "name": "Vânzător",
-   "read": 1034,
-   "withoutSalary": 928,
+   "read": 1037,
+   "withoutSalary": 931,
    "n": 117,
    "ads": 117,
    "basisNearAmount": 102,
@@ -5156,9 +5161,9 @@
     "max": 5800
    },
    "undeclaredBasis": {
-    "n": 165,
+    "n": 166,
     "sourceCounts": {
-     "anuntul": 86,
+     "anuntul": 87,
      "publi24": 45,
      "bestjobs": 24,
      "ejobs": 9,
@@ -5172,16 +5177,22 @@
    },
    "examples": [
     {
+     "url": "https://www.undelucram.ro/ro/locuri-de-munca/lucrator-comercial-legume-fructe-husi-fm/102115",
+     "source": "undelucram",
+     "min": 3035,
+     "max": 3035
+    },
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-lucratori-comercial-16eOP9",
+     "source": "anuntul",
+     "min": 3800,
+     "max": 4200
+    },
+    {
      "url": "https://www.undelucram.ro/ro/locuri-de-munca/lucrator-comercial-oradea-velenta-fm/102064",
      "source": "undelucram",
      "min": 3252,
      "max": 3252
-    },
-    {
-     "url": "https://www.undelucram.ro/ro/locuri-de-munca/lucrator-comercial-ramnicu-sarat-fm/102099",
-     "source": "undelucram",
-     "min": 3035,
-     "max": 3035
     },
     {
      "url": "https://www.publi24.ro/anunturi/locuri-de-munca/casieri-lucratori-comerciali/anunt/lucrator-comercial-grill-iasi-tudor-vladimirescu-f-m/df948i981e967746e15f15e772656f44.html",
@@ -5194,19 +5205,13 @@
      "source": "publi24",
      "min": 3252,
      "max": 3252
-    },
-    {
-     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/casieri-lucratori-comerciali/anunt/lucrator-comercial-bacau-cornisa-f-m/5egh6f409gd377i0144d1hid44087077.html",
-     "source": "publi24",
-     "min": 3035,
-     "max": 3035
     }
    ]
   },
   "casier": {
    "name": "Casier",
-   "read": 297,
-   "withoutSalary": 272,
+   "read": 298,
+   "withoutSalary": 273,
    "n": 38,
    "ads": 38,
    "basisNearAmount": 37,
@@ -5368,8 +5373,8 @@
   },
   "agent-vanzari": {
    "name": "Agent de vânzări",
-   "read": 652,
-   "withoutSalary": 563,
+   "read": 657,
+   "withoutSalary": 568,
    "n": 36,
    "ads": 36,
    "basisNearAmount": 14,
@@ -5450,8 +5455,8 @@
   },
   "bucatar": {
    "name": "Bucătar",
-   "read": 296,
-   "withoutSalary": 277,
+   "read": 300,
+   "withoutSalary": 281,
    "n": 17,
    "ads": 17,
    "basisNearAmount": 11,
@@ -6754,8 +6759,8 @@
   },
   "agent-paza": {
    "name": "Agent de pază",
-   "read": 392,
-   "withoutSalary": 376,
+   "read": 393,
+   "withoutSalary": 377,
    "n": 40,
    "ads": 40,
    "basisNearAmount": 29,
@@ -6834,8 +6839,8 @@
   },
   "agent-curatenie": {
    "name": "Agent de curățenie",
-   "read": 370,
-   "withoutSalary": 326,
+   "read": 373,
+   "withoutSalary": 329,
    "n": 47,
    "ads": 47,
    "basisNearAmount": 39,
@@ -6868,9 +6873,9 @@
     "max": 7500
    },
    "undeclaredBasis": {
-    "n": 55,
+    "n": 56,
     "sourceCounts": {
-     "publi24": 16,
+     "publi24": 17,
      "anuntul": 32,
      "bestjobs": 6,
      "ejobs": 1
@@ -6882,6 +6887,12 @@
     "midpointEstimate": 3500
    },
    "examples": [
+    {
+     "url": "https://www.publi24.ro/anunturi/locuri-de-munca/menaj-ingrijire-persoane/menajere/anunt/angajez-menajera-ingrijitoare-casa-cu-norma-intreaga-ploiesti-zona-malu-rosu-5-000-lei/7h98255h06hf78ig257iheeddd4ih212.html",
+     "source": "publi24",
+     "min": 5000,
+     "max": 5000
+    },
     {
      "url": "https://www.undelucram.ro/ro/locuri-de-munca/personal-curatenie-bucuresti-ngrigorescu-f/102088",
      "source": "undelucram",
@@ -6905,12 +6916,6 @@
      "source": "publi24",
      "min": 2500,
      "max": 2500
-    },
-    {
-     "url": "https://www.anuntul.ro/anunt-angajare-personal-curatenie-femei-de-eedmRy",
-     "source": "anuntul",
-     "min": 4000,
-     "max": 4000
     }
    ]
   },
@@ -7000,8 +7005,8 @@
   },
   "secretar": {
    "name": "Secretar",
-   "read": 170,
-   "withoutSalary": 151,
+   "read": 171,
+   "withoutSalary": 152,
    "n": 12,
    "ads": 12,
    "basisNearAmount": 8,
@@ -7036,9 +7041,9 @@
     "max": 15000
    },
    "undeclaredBasis": {
-    "n": 46,
+    "n": 47,
     "sourceCounts": {
-     "anuntul": 9,
+     "anuntul": 10,
      "bestjobs": 28,
      "publi24": 2,
      "ejobs": 7
@@ -7047,9 +7052,15 @@
      "min": 2638,
      "max": 10000
     },
-    "midpointEstimate": 4749.75
+    "midpointEstimate": 4749
    },
    "examples": [
+    {
+     "url": "https://www.anuntul.ro/anunt-angajare-secretara-J03VB8",
+     "source": "anuntul",
+     "min": 4000,
+     "max": 4000
+    },
     {
      "url": "https://www.anuntul.ro/anunt-angajare-secretara-B9BzWX",
      "source": "anuntul",
@@ -7073,19 +7084,13 @@
      "source": "publi24",
      "min": 3500,
      "max": 4000
-    },
-    {
-     "url": "https://www.bestjobs.eu/loc-de-munca/operator-facturare-si-etichetare-asistent-manager",
-     "source": "bestjobs",
-     "min": 5331,
-     "max": 5331
     }
    ]
   },
   "specialist-resurse-umane": {
    "name": "Specialist resurse umane",
-   "read": 56,
-   "withoutSalary": 50,
+   "read": 58,
+   "withoutSalary": 52,
    "n": 3,
    "ads": 3,
    "basisNearAmount": 1,
@@ -7736,8 +7741,8 @@
   },
   "electromecanic": {
    "name": "Electromecanic",
-   "read": 94,
-   "withoutSalary": 81,
+   "read": 96,
+   "withoutSalary": 83,
    "n": 6,
    "ads": 6,
    "basisNearAmount": 5,
@@ -8148,8 +8153,8 @@
   },
   "cizmar": {
    "name": "Cizmar",
-   "read": 1,
-   "withoutSalary": 1,
+   "read": 2,
+   "withoutSalary": 2,
    "n": 0,
    "ads": 0,
    "basisNearAmount": 0,
