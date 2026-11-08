@@ -5,6 +5,12 @@
 //   node scripts/anunturi/indexare-google.mjs            # cel mult 150 pe rulare
 //   node scripts/anunturi/indexare-google.mjs --max 50
 //   node scripts/anunturi/indexare-google.mjs --proba    # arată ce ar trimite, fără să trimită
+//   node scripts/anunturi/indexare-google.mjs --sterse   # anunță ștergerea celor din sitemap-expirate.xml
+//
+// Cu `--sterse` trimite URL_DELETED pentru anunțurile scoase (pagina dă 410), ca Google să le scoată
+// în zile, nu când ajunge să le recitească singur. Adăugat pe 8 noiembrie 2026 pentru cele 787 de
+// anunțuri ANOFM (ID 4–790), șterse pe 6–7 noiembrie: din 10 octombrie tot site-ul coboară în Google
+// (PROGRES.md). Trimite numai ce dă într-adevăr 410.
 //
 // Cota Google: 200 de notificări pe zi pe proiect; 150 lasă loc formularului. Se rulează zilnic până
 // spune „nimic de trimis”. Numai paginile cu JobPosting (Google nu
@@ -17,6 +23,9 @@ const STARE = ".gsc/indexare-google.json";
 const argv = process.argv.slice(2);
 const max = Number(argv[argv.indexOf("--max") + 1]) || 150;
 const proba = argv.includes("--proba");
+const sterse = argv.includes("--sterse");
+// Ștergerile au cheie proprie: un anunț anunțat cândva ca publicat trebuie anunțat și ca șters.
+const cheie = (url) => (sterse ? `sters:${url}` : url);
 
 const trimise = fs.existsSync(STARE) ? JSON.parse(fs.readFileSync(STARE, "utf8")) : {};
 const salveaza = () => { fs.mkdirSync(".gsc", { recursive: true }); fs.writeFileSync(STARE, JSON.stringify(trimise, null, 1)); };
@@ -32,26 +41,28 @@ async function tokenAcces() {
   return (await r.json()).access_token;
 }
 
-const harta = await (await fetch(`${SITE}/locuri-de-munca/sitemap.xml`)).text();
-const anunturi = [...harta.matchAll(/<loc>([^<]*\/anunt-angajare-[^<]*)<\/loc>/g)].map((m) => m[1]).filter((u) => !trimise[u]);
-console.log(`${anunturi.length} anunțuri active netrimise încă; caut JobPosting, trimit cel mult ${max}.`);
+const harta = await (await fetch(`${SITE}/locuri-de-munca/${sterse ? "sitemap-expirate.xml" : "sitemap.xml"}`)).text();
+const anunturi = [...harta.matchAll(/<loc>([^<]*\/anunt-angajare-[^<]*)<\/loc>/g)].map((m) => m[1]).filter((u) => !trimise[cheie(u)]);
+console.log(sterse
+  ? `${anunturi.length} anunțuri scoase, neanunțate încă; verific 410, trimit cel mult ${max}.`
+  : `${anunturi.length} anunțuri active netrimise încă; caut JobPosting, trimit cel mult ${max}.`);
 
 const acces = proba ? null : await tokenAcces();
 let n = 0, faraFirma = 0;
 for (const url of anunturi) {
   if (n >= max) break;
-  const html = await (await fetch(url)).text();
-  if (!html.includes('"@type":"JobPosting"')) { faraFirma++; continue; }
+  const pagina = await fetch(url);
+  if (sterse ? pagina.status !== 410 : !(await pagina.text()).includes('"@type":"JobPosting"')) { faraFirma++; continue; }
   if (proba) { console.log("  ", url); n++; continue; }
   const r = await fetch("https://indexing.googleapis.com/v3/urlNotifications:publish", {
-    method: "POST", headers: { authorization: `Bearer ${acces}`, "content-type": "application/json" }, body: JSON.stringify({ url, type: "URL_UPDATED" }),
+    method: "POST", headers: { authorization: `Bearer ${acces}`, "content-type": "application/json" }, body: JSON.stringify({ url, type: sterse ? "URL_DELETED" : "URL_UPDATED" }),
   });
   if (!r.ok) {
     console.error(`Oprit la ${url}: ${r.status} ${(await r.text()).slice(0, 400)}`);
     break;
   }
-  trimise[url] = new Date().toISOString();
+  trimise[cheie(url)] = new Date().toISOString();
   n++;
 }
 if (!proba) salveaza();
-console.log(`${proba ? "De trimis" : "Trimise"}: ${n}. Fără JobPosting, sărite: ${faraFirma}.`);
+console.log(`${proba ? "De trimis" : "Trimise"}: ${n}. ${sterse ? "Fără 410" : "Fără JobPosting"}, sărite: ${faraFirma}.`);

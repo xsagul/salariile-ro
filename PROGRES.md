@@ -5625,3 +5625,22 @@ cu bara nouă, eram pe 2,4–2,9); costul asumat e vizibilitatea hubului. **De c
 --limit=100`), 2–3 săptămâni, fără altă schimbare pe homepage în acest timp.
 Verificat: `npm test` exit 0, eslint pe Header fără erori, `npm run build` exit 0, `npm run test:rendered`
 exit 0; în build, `<header>` nu conține `/locuri-de-munca` nici `/adauga-anunt-angajare`; Chromium 1280 și 375 px.
+
+**Mai târziu, aceeași zi — de ce scade tot site-ul.** Proprietarul: „eram pe locul 2 cu mai puține linkuri
+decât acum”, deci linkurile nu explică scăderea. Un coș fix de interogări (query × pagină cu afișări în ≥70%
+din zilele 1 sept.–5 oct. și 20 oct.–6 nov., 27 pe homepage, 27 pe restul) arată că **tot site-ul coboară,
+nu doar homepage-ul**: restul paginilor −0,3…−0,5 locuri în 18 sept.–2 oct., pe plus din 10 oct. (+0,2), +0,4…+0,6
+în 18–27 oct., +0,6…+0,9 în 2–6 nov. Pe 9–10 oct., la o zi după încheierea actualizării anti-spam (8 oct.):
+anunțurile ANOFM 7 → 20, `/calculator-pfa` 8 → 15–32, gaura de pe `/salariu-minim`, începutul alunecării
+restului. Hubul ajunsese la ~475 de anunțuri și ~127 de liste cu afișări pe săptămână, față de ~300 de pagini
+ale restului site-ului; anunțurile erau text copiat de pe mediere.anofm.ro. Ipoteza: reevaluare a domeniului
+din cauza conținutului preluat. Nedovedit (Google nu spune), dar singura care se potrivește cu toate datele.
+
+**Curățenia era deja făcută pe 6 nov. (`2a424de`), verificată în producție pe 8 nov.:** 3 anunțuri ANOFM
+luate la întâmplare dau 410; `/locuri-de-munca/sitemap.xml` are 11 anunțuri (niciunul ANOFM) și 2 liste;
+`sitemap-expirate.xml` are 790 de adrese, 787 ANOFM, lastmod 7 nov.; din 132 de liste cu afișări în 26 oct.–6
+nov., 2 sunt `index` (`/locuri-de-munca`, `/bucuresti`), 70 noindex, 60 404.
+**Adăugat:** `indexare-google.mjs --sterse` trimite URL_DELETED pentru tot ce e în sitemap-expirate.xml și
+dă 410 (cheie `sters:<url>` în `.gsc/indexare-google.json`). Trimise pe 8 nov.: 150, 0 erori. Rămân 640:
+`node scripts/anunturi/indexare-google.mjs --sterse` zilnic până spune 0 (cota: 200 pe zi, 150 lasă loc
+formularului). De urmărit: coșul fix de interogări pe restul site-ului, în 2–4 săptămâni.
