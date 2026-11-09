@@ -5,6 +5,9 @@
   },
   "ejobs": {
    "trecereCompletaLa": "2026-10-03T00:37:46.108Z"
+  },
+  "hipo": {
+   "trecereCompletaLa": "2026-11-09T01:02:43.730Z"
   }
  },
  "rulari": [
@@ -693,6 +696,22 @@
     "accepted": 10,
     "duplicates": 0,
     "rejected": 68,
+    "errors": 3
+   }
+  },
+  {
+   "run": "continuu-2026-11-09",
+   "la": "2026-11-09T01:02:43.730Z",
+   "citite": 34,
+   "acceptate": 6,
+   "stats": {
+    "inventoried": 15290,
+    "read": 34,
+    "acceptedAds": 5,
+    "acceptedBeforeDedup": 6,
+    "accepted": 6,
+    "duplicates": 0,
+    "rejected": 29,
     "errors": 3
    }
   }
