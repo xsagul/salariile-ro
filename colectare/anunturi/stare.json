@@ -7,7 +7,7 @@
    "trecereCompletaLa": "2026-10-03T00:37:46.108Z"
   },
   "hipo": {
-   "trecereCompletaLa": "2026-11-09T01:02:43.730Z"
+   "trecereCompletaLa": "2026-11-10T03:42:37.242Z"
   }
  },
  "rulari": [
@@ -712,6 +712,22 @@
     "accepted": 6,
     "duplicates": 0,
     "rejected": 29,
+    "errors": 3
+   }
+  },
+  {
+   "run": "continuu-2026-11-10",
+   "la": "2026-11-10T03:42:37.242Z",
+   "citite": 114,
+   "acceptate": 16,
+   "stats": {
+    "inventoried": 15292,
+    "read": 114,
+    "acceptedAds": 19,
+    "acceptedBeforeDedup": 19,
+    "accepted": 16,
+    "duplicates": 3,
+    "rejected": 95,
     "errors": 3
    }
   }
