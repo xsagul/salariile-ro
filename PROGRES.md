@@ -5754,3 +5754,16 @@ rămâne pe pagina a doua, cauza e la nivel de site, nu de pagină, și nu se ma
 **Rămas pentru sfârșitul lui decembrie:** taxepfa.ro (locul 2) are deja „2027” în titlu, iar „calculator pfa
 2027” a început să apară în Search Console (24 de afișări în patru săptămâni). Pagina noastră trece pe 2027
 abia după ce se știe salariul minim de la 1 ianuarie 2027, fiindcă pragurile PFA se calculează din el.
+
+**Pe producție, după publicare (`183e292`):** `/calculator-pfa` 200, titlul nou și în `og:title`; CI și IndexNow
+verzi pe commit.
+
+**Găsit în treacăt, nereparat: „Colectare zilnică” pică în fiecare zi din 29 septembrie.** Din 48 de rulări
+ale `colectare.yml`, 3 au reușit (26–28 sept.) și 45 la rând au picat, toate la pasul „Salariul-concluzie”
+(`agregare.mjs` → `publica.mjs` → `npm test`); pașii `anofm.mjs` și `angajatori.mjs` trec. Fiindcă pasul de
+salvare e sărit, `colectare/anofm` și `colectare/angajatori` au rămas la 28 septembrie: ofertele ANOFM și
+cele de pe site-urile angajatorilor nu s-au mai adunat de șase săptămâni. Cifrele de pe meserii s-au
+actualizat doar din anunțuri și art. 33, prin celelalte două fluxuri. Local, pe datele din repo, agregarea,
+publicarea și testele trec (29 de meserii cu concluzie), deci pică pe datele proaspete; jurnalul rulării nu se
+poate citi fără autentificare la GitHub. De reprodus: `node scripts/colectare/anofm.mjs && node
+scripts/colectare/angajatori.mjs`, apoi cei trei pași.
