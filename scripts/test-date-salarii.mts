@@ -10,6 +10,7 @@ const {
   SALARY_DATASET_SOURCES,
   SALARY_DATASET_USAGE_TERMS,
   SALARY_DATASET_VERSION,
+  verificaInsFataDeTempo,
 } = await import(datasetModulePath) as typeof import("../src/lib/date-salarii");
 
 const projectRoot = process.cwd();
@@ -25,15 +26,17 @@ const ultimaLunaNet = insTempo.net.luni.at(-1);
 const totalBrut = insTempo.brut.activitati.find((row: { caen: string }) => row.caen.startsWith("TOTAL"));
 const totalNet = insTempo.net.activitati.find((row: { caen: string }) => row.caen.startsWith("TOTAL"));
 
-assert.equal(
-  ultimaLunaBrut,
-  `Luna ${LATEST_INS_EARNINGS.periodLabel}`,
-  "Datasetul public a rămas în urma ultimei luni brute din TEMPO",
-);
 assert.equal(ultimaLunaNet, ultimaLunaBrut, "Seriile brute și nete INS nu au aceeași lună de referință");
 assert.ok(totalBrut && totalNet, "Rândul TOTAL ECONOMIE lipsește din datele TEMPO");
-assert.equal(totalBrut.valori.at(-1), LATEST_INS_EARNINGS.grossLei, "Brutul INS public nu corespunde TOTAL ECONOMIE");
-assert.equal(totalNet.valori.at(-1), LATEST_INS_EARNINGS.netLei, "Netul INS public nu corespunde TOTAL ECONOMIE");
+// Comunicatul INS apare înaintea seriei TEMPO, deci datasetul poate fi cu o lună înaintea ei, nu în
+// urmă și nu cu altă cifră: regula e în `verificaInsFataDeTempo` și aruncă la orice nepotrivire.
+const legatura = verificaInsFataDeTempo({ luna: ultimaLunaBrut, brut: totalBrut.valori.at(-1), net: totalNet.valori.at(-1) });
+assert.ok(["aceeasi-luna", "tempo-cu-o-luna-in-urma"].includes(legatura));
+assert.equal(
+  Number(((LATEST_INS_EARNINGS.netLei / LATEST_INS_EARNINGS.previousNetLei - 1) * 100).toFixed(1)),
+  LATEST_INS_EARNINGS.monthlyNetChangePercent,
+  "Variația lunară a netului nu rezultă din netul curent și cel precedent",
+);
 
 assert.equal(publicJson.version, SALARY_DATASET_VERSION, "Versiunea JSON nu corespunde modulului TypeScript");
 assert.equal(

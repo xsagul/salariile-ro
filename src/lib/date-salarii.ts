@@ -1,8 +1,8 @@
 // Setul de date publicat la /date-salarii. Valorile sunt intenționat puține și
 // strict documentate: nu amestecăm praguri legale, estimări și statistici INS.
 
-export const SALARY_DATASET_VERSION = "2026-11-06";
-export const SALARY_DATASET_REFERENCE_DATE = "2026-11-06";
+export const SALARY_DATASET_VERSION = "2026-11-12";
+export const SALARY_DATASET_REFERENCE_DATE = "2026-11-12";
 
 /**
  * Sursa unică pentru cea mai recentă valoare lunară INS folosită în paginile
@@ -11,21 +11,48 @@ export const SALARY_DATASET_REFERENCE_DATE = "2026-11-06";
  * TEMPO să nu poată lăsa aceste valori în urmă în tăcere.
  */
 export const LATEST_INS_EARNINGS = {
-  sourceId: "ins_august_2026",
-  recordId: "ins_average_earnings_august_2026",
-  periodLabel: "august 2026",
-  monthName: "august",
-  periodStart: "2026-08-01",
-  periodEnd: "2026-08-31",
-  grossLei: 9497,
-  netLei: 5688,
-  previousPeriodLabel: "iulie 2026",
-  previousNetLei: 5820,
-  monthlyNetChangePercent: -2.3,
-  publicationDate: "2026-10-13",
-  publicationDateLabel: "13 octombrie 2026",
-  officialUrl: "https://insse.ro/cms/sites/default/files/com_presa/com_pdf/cs08r26.pdf",
+  sourceId: "ins_septembrie_2026",
+  recordId: "ins_average_earnings_september_2026",
+  periodLabel: "septembrie 2026",
+  monthName: "septembrie",
+  periodStart: "2026-09-01",
+  periodEnd: "2026-09-30",
+  grossLei: 9532,
+  netLei: 5717,
+  previousPeriodLabel: "august 2026",
+  previousGrossLei: 9497,
+  previousNetLei: 5688,
+  monthlyNetChangePercent: 0.5,
+  publicationDate: "2026-11-12",
+  publicationDateLabel: "12 noiembrie 2026",
+  officialUrl: "https://insse.ro/cms/sites/default/files/com_presa/com_pdf/cs09r26.pdf",
 } as const;
+
+/**
+ * Leagă cifra din comunicat de seria TEMPO. Comunicatul INS apare primul: pe 12 noiembrie 2026 avea
+ * septembrie, iar TEMPO încă august. Cifra de sus se ia deci din comunicat, în ziua publicării, iar
+ * seria TEMPO are voie să fie cu o singură lună în urmă, cu condiția ca ultima ei lună să fie exact
+ * „luna precedentă” din comunicat, cu aceleași valori. Orice altă nepotrivire oprește build-ul și
+ * testul datasetului: fie comunicatul a fost transcris greșit, fie TEMPO a trecut înainte și
+ * valorile de mai sus au rămas în urmă.
+ */
+export function verificaInsFataDeTempo(tempo: { luna: string; brut: number; net: number | null }): "aceeasi-luna" | "tempo-cu-o-luna-in-urma" {
+  const luna = tempo.luna.replace(/^Luna\s+/, "");
+  const u = LATEST_INS_EARNINGS;
+  if (luna === u.periodLabel) {
+    if (tempo.brut !== u.grossLei || tempo.net !== u.netLei) {
+      throw new Error(`INS ${u.periodLabel}: comunicatul (${u.grossLei} / ${u.netLei}) nu corespunde rândului TOTAL din TEMPO (${tempo.brut} / ${tempo.net}).`);
+    }
+    return "aceeasi-luna";
+  }
+  if (luna === u.previousPeriodLabel) {
+    if (tempo.brut !== u.previousGrossLei || tempo.net !== u.previousNetLei) {
+      throw new Error(`INS ${u.previousPeriodLabel}: luna precedentă din comunicat (${u.previousGrossLei} / ${u.previousNetLei}) nu corespunde rândului TOTAL din TEMPO (${tempo.brut} / ${tempo.net}).`);
+    }
+    return "tempo-cu-o-luna-in-urma";
+  }
+  throw new Error(`Ultima lună din TEMPO (${luna}) nu e nici ${u.periodLabel}, nici ${u.previousPeriodLabel}: actualizează LATEST_INS_EARNINGS sau rulează npm run ins:tempo.`);
+}
 
 export const SALARY_DATASET_SOURCES = {
   hg_1506_2024: {
@@ -48,8 +75,8 @@ export const SALARY_DATASET_SOURCES = {
     institution: "Parlamentul României",
     official_url: "https://legislatie.just.ro/Public/DetaliiDocument/308863",
   },
-  ins_august_2026: {
-    name: "INS, câștigul salarial mediu — august 2026",
+  ins_septembrie_2026: {
+    name: "INS, câștigul salarial mediu — septembrie 2026",
     institution: "Institutul Național de Statistică",
     official_url: LATEST_INS_EARNINGS.officialUrl,
     publication_date: LATEST_INS_EARNINGS.publicationDate,

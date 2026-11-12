@@ -4,9 +4,12 @@ name: Colectare zilnică
 # CLAUDE.md). Zilnic: ofertele noi ANOFM, apoi salariul-concluzie recalculat și publicat numai
 # dacă trec testele. Commit-ul are [skip ci] când s-au schimbat doar datele brute; când se
 # schimbă cifrele publicate, rulează CI-ul, iar Cloudflare publică site-ul.
+#
+# OPRIT pe 12 noiembrie 2026: proprietarul a spus „nu mai colectăm”. Rularea zilnică picase oricum la
+# pasul „Salariul-concluzie” în fiecare zi din 29 septembrie (45 de rulări la rând), deci din 28
+# septembrie nu s-a mai salvat nimic din ANOFM și de pe site-urile angajatorilor. Programarea e
+# scoasă; fluxul rămâne pornibil de mână, dar nu-l reporni și nu-l repara fără o decizie nouă.
 on:
-  schedule:
-    - cron: "41 4 * * *" # 07:41 ora României (vara)
   workflow_dispatch:
 
 permissions:

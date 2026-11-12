@@ -62,7 +62,7 @@ Ce nu s-a schimbat, fiindcă protejează chiar venitul (traficul organic și con
    sitemap; `dinImportAnofm` din `reguli.ts`), iar scriptul de import a fost șters. Hubul trăiește
    numai din anunțurile postate pe site. Nu reimporta oferte ANOFM și nu propune alt import fără o
    decizie nouă a proprietarului. Colectarea ANOFM pentru cifrele de salariu (`scripts/colectare/`)
-   e altceva și rămâne.
+   a fost oprită pe 12 noiembrie 2026 („nu mai colectăm”); vezi mai jos, la salariul-concluzie.
 3. **Monetizarea:** pe 24 august 2026, „abia după acoperirea nișei” — vânzarea produsului, vânzarea traficului, AdSense, abonament de tip SmartBill sau altceva. **Din 15 octombrie 2026 pornește acum, în paralel cu 1 și 2** (mandatul de mai sus).
 
 Până pe 15 octombrie 2026 monetizarea a fost respinsă explicit („activul se construiește întâi”); mandatul de mai sus a ridicat interdicția. Versiuni anterioare ale acestui fișier spuneau că obiectivul e „tranziție profesională către front-end" — era greșit și a dus o sesiune întreagă pe direcția greșită.
@@ -128,7 +128,7 @@ site-uri terțe.
 - Salariu minim brut: **4.325 lei din 1 iulie 2026** (HG 146/2026); 4.050 lei în prima jumătate a anului
 - Salariu minim net: 2.699 lei (facilitate fiscală 200 lei, OUG 89/2025)
 - Indicatorul BASS 2026: 9.192 lei brut; net standard estimat: 5.377 lei. Nu se etichetează drept ultimul salariu mediu INS.
-- Ultimul câștig salarial mediu publicat de INS (august 2026): 9.497 lei brut; 5.688 lei net. Se actualizează lunar.
+- Ultimul câștig salarial mediu publicat de INS (septembrie 2026): 9.532 lei brut; 5.717 lei net. Se actualizează lunar.
 - CAS (pensie) 25%, CASS (sănătate) 10%, impozit venit 10%, CAM (angajator) 2,25%
 - Plafon deducere personală: 6.325 lei
 - Facilitățile IT/construcții ELIMINATE din 1 ian 2025 (OUG 156/2024)
@@ -189,8 +189,12 @@ pragurile lor. Regula „pilonii nu se topesc într-o cifră” rămâne: conclu
 cu ceilalți alături. Fluxul: `scripts/colectare/` (anofm, angajatori, art33/{descopera,
 colecteaza,citeste,functii}) → `agregare.mjs` (deține `PRAGURI`) → `publica.mjs` →
 `src/data/salariu-concluzie.json`. Teste: `test-art33.mjs` (etichete reale citite cândva
-greșit), `test-concluzie.mjs` (pragurile publicării). Rulare automată: `.github/workflows/
-colectare.yml` (zilnic) și `colectare-art33.yml` (2–12 aprilie și octombrie). Salariul fix =
+greșit), `test-concluzie.mjs` (pragurile publicării). Rulare automată: `colectare-art33.yml`
+(2–12 aprilie și octombrie). **`colectare.yml` (ANOFM și site-urile angajatorilor, zilnic) e oprit
+din 12 noiembrie 2026:** la semnalarea că pica în fiecare zi din 29 septembrie, proprietarul a
+răspuns „nu mai colectăm”. Programarea e scoasă; datele ANOFM din repo sunt cele din 28 septembrie.
+Nu-l repara și nu-l reporni fără o decizie nouă. Colectarea de anunțuri (`colectare-anunturi.yml`)
+rula încă la acea dată; dacă intră și ea sub „nu mai colectăm” a rămas de lămurit. Salariul fix =
 baza + sporurile permanente; turele și gărzile separat; contractele de gardă și normele
 parțiale (baza sub treapta minimă din grilă) nu sunt posturi. Netul se calculează pe rând, cu
 regulile fiscale ale lunii rândului; fiecare instituție cântărește egal.

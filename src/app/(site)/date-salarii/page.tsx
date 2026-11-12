@@ -17,6 +17,14 @@ import TabelArticol from "@/app/components/TabelArticol";
 const PAGE_PATH = "/date-salarii";
 const CSV_PATH = "/date-salarii-romania-2026.csv";
 const JSON_PATH = "/date-salarii-romania-2026.json";
+// Data afișată iese din versiunea setului, nu se scrie de mână: până pe 12 noiembrie 2026 pagina
+// spunea „25 august” deși setul fusese adus la zi pe 6 noiembrie.
+const DATA_REFERINTA = new Date(`${SALARY_DATASET_REFERENCE_DATE}T00:00:00.000Z`).toLocaleDateString("ro-RO", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+  timeZone: "UTC",
+});
 
 const title = "Date salariale România 2026: CSV și JSON";
 const description =
@@ -148,14 +156,14 @@ export default function DateSalariiPage() {
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Date salariale 2026" }]} />
         <H1>Date salariale România 2026</H1>
         <p className={`${SUB_TITLU} text-sm text-stone-600 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2`}>
-          Compilat și verificat de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Publicat 29 iulie 2026 · Actualizat 25 august 2026
+          Compilat și verificat de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Publicat 29 iulie 2026 · Actualizat {DATA_REFERINTA}
         </p>
         <Lead>
           Un set mic, verificabil și pregătit pentru reutilizare: salariul minim din ambele semestre,
           indicatorul BASS și ultimul câștig salarial mediu disponibil de la INS. Fiecare valoare păstrează
           perioada, natura și sursa ei.
         </Lead>
-        <Eyebrow>DATA DE REFERINȚĂ 25 AUGUST 2026 · 4 ÎNREGISTRĂRI · RON/LUNĂ</Eyebrow>
+        <Eyebrow>DATA DE REFERINȚĂ {DATA_REFERINTA.toUpperCase()} · {SALARY_DATA_2026.length} ÎNREGISTRĂRI · RON/LUNĂ</Eyebrow>
 
         <div className="mt-6 flex flex-wrap gap-3">
           <a

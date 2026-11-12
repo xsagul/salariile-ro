@@ -10,31 +10,21 @@ import { Formula, PaginiConexe, TITLU_CARD, TITLU_PAGINA, TITLU_SECTIUNE, SPATIU
 import Image from "next/image";
 import Link from "@/app/components/Link";
 import { ReclamaIntreSectiuni } from "@/app/components/Reclama";
-import { LATEST_INS_EARNINGS } from "@/lib/date-salarii";
+import { LATEST_INS_EARNINGS, verificaInsFataDeTempo } from "@/lib/date-salarii";
 import { LUNA_REFERINTA, TOTAL_ECONOMIE } from "@/lib/ins-date";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 import { calculStandard, SALARIU_MINIM } from "@/lib/fiscal";
 import { TABEL_STANDARD } from "@/app/components/TabelArticol";
 
-const INS_PERIOD_LABEL = LUNA_REFERINTA.replace(/^Luna\s+/, "");
-const INS_MONTH_NAME = INS_PERIOD_LABEL.split(" ")[0];
-const INS_BRUT_VALUE = TOTAL_ECONOMIE.brutCurent;
-const insNetValue = TOTAL_ECONOMIE.netCurent;
+// Cifra de sus vine din comunicatul INS, care apare înaintea seriei TEMPO; build-ul se oprește dacă
+// cele două nu se leagă (aceeași lună cu aceleași valori, sau TEMPO cu exact o lună în urmă).
+verificaInsFataDeTempo({ luna: LUNA_REFERINTA, brut: TOTAL_ECONOMIE.brutCurent, net: TOTAL_ECONOMIE.netCurent });
 
-if (insNetValue === null) {
-  throw new Error("Câștigul mediu net lipsește din ultima serie TEMPO.");
-}
-
-const INS_NET_VALUE = insNetValue;
-
-if (
-  INS_PERIOD_LABEL !== LATEST_INS_EARNINGS.periodLabel ||
-  INS_BRUT_VALUE !== LATEST_INS_EARNINGS.grossLei ||
-  INS_NET_VALUE !== LATEST_INS_EARNINGS.netLei
-) {
-  throw new Error("Datele editoriale despre câștigul mediu INS nu corespund ultimei serii TEMPO.");
-}
+const INS_PERIOD_LABEL = LATEST_INS_EARNINGS.periodLabel;
+const INS_MONTH_NAME = LATEST_INS_EARNINGS.monthName;
+const INS_BRUT_VALUE = LATEST_INS_EARNINGS.grossLei;
+const INS_NET_VALUE = LATEST_INS_EARNINGS.netLei;
 
 const INS_BRUT_LABEL = INS_BRUT_VALUE.toLocaleString("ro-RO");
 const INS_NET_LABEL = INS_NET_VALUE.toLocaleString("ro-RO");

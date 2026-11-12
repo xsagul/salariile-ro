@@ -5767,3 +5767,43 @@ actualizat doar din anunțuri și art. 33, prin celelalte două fluxuri. Local, 
 publicarea și testele trec (29 de meserii cu concluzie), deci pică pe datele proaspete; jurnalul rulării nu se
 poate citi fără autentificare la GitHub. De reprodus: `node scripts/colectare/anofm.mjs && node
 scripts/colectare/angajatori.mjs`, apoi cei trei pași.
+
+### Tot 12 noiembrie — salariul mediu INS pe septembrie, în ziua comunicatului; colectarea zilnică oprită
+
+**Cifra.** INS a publicat azi septembrie 2026: **9.532 lei brut, 5.717 lei net** (comunicatul nr. 288 din 12
+noiembrie 2026, cs09r26.pdf): +35 lei brut (+0,4%) și +29 lei net (+0,5%) față de august. Citit direct din
+PDF.
+
+**Piedica.** Site-ul era construit să ia cifra de sus din TEMPO: `/salariu-mediu` oprea build-ul, iar
+`test-date-salarii.mts` pica, dacă ultima lună din TEMPO diferea de `LATEST_INS_EARNINGS`. TEMPO avea azi
+tot august (`npm run ins:tempo`: „ultima: Luna august 2026”; singura diferență, data generării, n-a fost
+păstrată). Așa, pagina ar fi rămas pe august până încarcă INS seria, exact în zilele în care se caută cifra
+nouă: după comunicatul din 13 octombrie, `/salariu-mediu` a făcut 8–20 de clicuri pe zi timp de șase zile,
+față de 1–5 de obicei.
+
+**Ce am schimbat.** Cifra de sus vine din comunicat, iar legătura cu TEMPO are o singură regulă, în
+`verificaInsFataDeTempo` (`src/lib/date-salarii.ts`): TEMPO e fie pe aceeași lună, cu aceleași valori, fie cu
+exact o lună în urmă, iar atunci ultima lui lună trebuie să fie „luna precedentă” din comunicat (9.497 /
+5.688). Orice altceva oprește build-ul și testul. `LATEST_INS_EARNINGS` a primit `previousGrossLei`.
+- `/salariu-mediu`: 5.717 / 9.532, septembrie, peste tot (titlul din pagină, descrierea, întrebările, sursele);
+  data paginii 12 noiembrie (`PAGE_LAST_MODIFIED`, deci și în sitemap).
+- `/date-salarii`: setul public (JSON, CSV, versiunea 2026-11-12) pe septembrie. „Buletin salarial” rămâne
+  pe seria TEMPO (august) și spune, cât timp TEMPO e în urmă, că INS a anunțat deja septembrie.
+- Găsit și reparat: `/date-salarii` afișa „Actualizat 25 august 2026” și „DATA DE REFERINȚĂ 25 AUGUST 2026”,
+  scrise de mână, deși setul fusese adus la zi pe 6 noiembrie. Acum ies din `SALARY_DATASET_REFERENCE_DATE`.
+- CLAUDE.md și `test-rendered.mts` pe cifrele noi.
+
+**La următoarea rulare `npm run ins:tempo` după ce TEMPO încarcă septembrie:** nu mai e nimic de schimbat
+de mână; regula trece pe „aceeași lună” și nota din buletin dispare. Dacă TEMPO vine cu alte valori decât
+comunicatul, build-ul se oprește și spune care.
+
+**Colectarea zilnică: oprită, nu reparată.** La semnalarea de mai sus, proprietarul a răspuns „nu mai
+colectăm”. Programarea din `colectare.yml` (ANOFM și site-urile angajatorilor) e scoasă; fluxul se mai poate
+porni doar de mână. Datele ANOFM din repo rămân cele din 28 septembrie. **Nelămurit:** `colectare-anunturi.yml`
+rulează încă în fiecare noapte și schimbă cifrele de pe meserii (ultimul commit, azi), iar
+`colectare-art33.yml` e programat pentru aprilie. Nu le-am atins până nu spune proprietarul dacă „nu mai
+colectăm” le cuprinde și pe ele.
+
+Verificat local: `test-date-salarii`, `test-context-drift`, `test-ui-contracts`, restul lanțului `npm test`
+(25 din 26; al 26-lea e verificarea catalogului, care pică doar pe Windows și trece în CI), eslint, `tsc`,
+build, `test:rendered`.
