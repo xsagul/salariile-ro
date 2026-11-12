@@ -5644,3 +5644,61 @@ nov., 2 sunt `index` (`/locuri-de-munca`, `/bucuresti`), 70 noindex, 60 404.
 dă 410 (cheie `sters:<url>` în `.gsc/indexare-google.json`). Trimise pe 8 nov.: 150, 0 erori. Rămân 640:
 `node scripts/anunturi/indexare-google.mjs --sterse` zilnic până spune 0 (cota: 200 pe zi, 150 lasă loc
 formularului). De urmărit: coșul fix de interogări pe restul site-ului, în 2–4 săptămâni.
+
+## 12 noiembrie 2026 — lista de locuri de muncă era goală de două zile; sezonul „zile libere 2027”
+
+**Mandatul proprietarului (12 noiembrie):** „deblochează pagina locuri de muncă; îți predau site-ul, scopul
+tău e să aduci cât mai mulți vizitatori zilnici; nu presupune că o decizie e corectă doar pentru că a fost
+luată; toate deciziile le iei tu”.
+
+**Ce era blocat.** `/locuri-de-munca` răspundea 200 cu 18.646 de octeți: bara de sus și atât, fără niciun
+anunț, deși sitemap-ul avea 10. Listele pe orașe mergeau. Cauza: anunțul 809 (salon, Voluntari, postat pe
+10 noiembrie, 11:41 UTC) are emoji în descriere, iar cardul din listă o scurta cu `.slice(0, 240)`, care
+taie pe unități UTF-16. Tăietura a căzut prin mijlocul unui emoji; jumătatea rămasă nu e text valid și
+HTMLRewriter se oprește la ea, după ce statusul 200 a plecat. Răspunsul tăiat intra și în cache. Dovada:
+`/api/anunturi/lista` întorcea cardul 809 cu `\ud83d` singur la coadă; local, în workerd, cu un anunț cu
+emoji la caracterul 240: cod vechi 18.648 de octeți (ca în producție), cod nou 178.845, cu ambele anunțuri.
+
+- **Reparat (`7848b69`):** `scurteaza()` și `textIntreg()` în `src/lib/anunturi/sablon.ts`. Prima taie pe
+  caractere întregi; a doua scoate jumătățile de emoji din tot ce intră în pagină (`inSablon`), ca plasă
+  de siguranță. Orice text din formular se scurtează cu `scurteaza`, nu cu `.slice`.
+- **Verificare automată:** `scripts/anunturi/sanatate.mjs` citește paginile publicate (fiecare listă și
+  anunț din sitemap: 200, `</html>`, listele chiar arată anunțuri). Rulează de patru ori pe zi din
+  `.github/workflows/sanatate-anunturi.yml`; dacă pică, GitHub trimite email. Pe producția stricată a dat
+  „pagina e tăiată (18590 caractere, fără </html>)”; după publicare, „2 liste și 10 anunțuri verificate”.
+- **Pe producție, după publicare:** `/locuri-de-munca` 200, 199.957 de octeți.
+- `npm test` pică local numai la `genereaza-catalog-meserii --check` (capetele de linie din copia de lucru
+  pe Windows, vezi 19 octombrie); restul testelor, `tsc -p worker`, eslint, build și `test:rendered` trec.
+
+**Traficul, citit azi (GSC).** Zile lucrătoare: 400–580 de clicuri; weekend ~200. Prima pagină face 44% din
+clicuri (5.191 din 11.795 în 28 de zile). „calculator salariu net” stă pe 4,0–4,3 și după scoaterea
+hubului din bară (9 nov. 4,0; 10 nov. 4,2): în primele două zile lucrătoare, nicio mișcare. Hubul aduce
+zeci de clicuri pe lună din Google, cu 10 anunțuri active.
+
+**Unde e miza pe termen scurt: „zile libere 2027”.** Pe interogarea exactă, afișările sunt de două feluri:
+zile cu 660–910 (13, 16–19 oct., când Google ne ține pe prima pagină, poziția 7–8) și zile cu 10–50 (restul).
+Deci cererea e deja de 700–900 de căutări pe zi, iar noi luăm 0–3 clicuri. În 1–10 nov.: 80 de afișări în
+zece zile, poziția 12,4. Pentru comparație, „zile lucrătoare 2027” stă pe 3,2 și ia 9,4% din căutări (237 de
+clicuri la 2.508 afișări). Pagina noastră are 1.593 de cuvinte, calendar și minivacanțe; primele două
+rezultate (zilelibere.com, zileliberelegale.ro) au 1.395 și 213, pe domenii cu numele căutării. Deci nu
+textul lipsește. Ce lipsea: linkuri din conținut. În build, pagina era legată din `<main>` de pe două pagini
+(zile lucrătoare 2027 și zile libere 2026); `/zile-lucratoare-2026`, cu 96.588 de afișări în 28 de zile, nu
+trimitea deloc spre ea.
+
+- **Meniul „Ghiduri”:** „Zile libere 2027” în locul lui „Zile libere 2026” (poziția 22, sezon încheiat;
+  rămâne în subsol și în selectorul de ani) și „Zile lucrătoare 2027” adăugat lângă 2026.
+- **Zile lucrătoare {an}:** cardul sărbătorilor trimite și spre „zile libere {an + 1}”.
+- **Decizie asumată:** nota din 8 noiembrie cerea „nicio altă schimbare pe homepage” 2–3 săptămâni, ca să
+  se citească efectul barei fără hub. Meniul e pe homepage, deci citirea aceea nu mai e curată. Am ales
+  sezonul: fereastra decembrie–ianuarie nu se repetă, iar o singură serie de poziții care se rotea deja
+  între 2 și 4 nu putea dovedi efectul a două linkuri din 87.
+- **Hubul rămâne în subsol,** nu revine în bară: cu 10 anunțuri nu are ce arăta și linkul nu aduce
+  vizitatori noi. Pragul de revenire: 30 de anunțuri active.
+
+**De citit:** poziția zilnică pe „zile libere 2027” (`node scripts/gsc.mjs dates --query="zile libere 2027"
+--query-exact`) și numărul de zile cu peste 500 de afișări, în 2–3 săptămâni. Pe Windows, în Git Bash,
+`--page=/ceva` devine cale de fișier: se rulează cu `MSYS_NO_PATHCONV=1`.
+
+**Rămase:** salariul mediu INS pe septembrie (apare în jur de 11–12 noiembrie); hotărârea pentru salariul
+minim 2027 (sfârșit de noiembrie, se publică în ziua apariției în Monitorul Oficial); `/calculator-pfa`
+căzut de pe 8 pe 29 din 9 octombrie, nediagnosticat.

@@ -48,7 +48,13 @@ const NAV: Item[] = [
       { href: "/salariu-minim-constructii-2026", label: "Minim construcții" },
       { href: "/salariu-mediu", label: "Salariu mediu" },
       { href: "/deducere-personala-2026", label: "Deducere personală" },
-      { href: "/zile-libere-2026", label: "Zile libere 2026" },
+      // 12 noiembrie 2026: anul următor intră în meniu înainte de vârful din decembrie–ianuarie.
+      // „zile libere 2027” are deja 700–900 de căutări pe zi și stăm la marginea primei pagini
+      // (poziția 8–12, 0–3 clicuri pe zi); „zile lucrătoare 2027”, pe locul 3, ia 9% din căutări.
+      // /zile-libere-2026 (poziția 22, sezon încheiat) iese din meniu și rămâne în subsol și în
+      // selectorul de ani. La începutul lui 2027 iese și „Zile lucrătoare 2026”.
+      { href: "/zile-libere-2027", label: "Zile libere 2027" },
+      { href: "/zile-lucratoare-2027", label: "Zile lucrătoare 2027" },
       { href: "/zile-lucratoare-2026", label: "Zile lucrătoare 2026" },
     ],
   },

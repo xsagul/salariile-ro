@@ -237,6 +237,15 @@ export default function PaginaZileLucratoare({ an }: { an: AnZileLucratoare }) {
                 <p className="mt-3 text-sm text-stone-600">
                   Cele care pică sâmbăta sau duminica nu se recuperează în altă zi. Calendarul complet, cu minivacanțele, e la{" "}
                   <Link href={`/zile-libere-${an}`} className={linkCard}>zile libere {an}</Link>.
+                  {/* Cine numără zilele de lucru ale anului își plănuiește și concediul din anul următor.
+                      Din 12 noiembrie 2026: pagina cu cele mai multe afișări din calendar (zile lucrătoare
+                      2026) nu trimitea deloc spre zile libere 2027, aflată la marginea primei pagini din Google. */}
+                  {(ANI_CALENDAR as readonly number[]).includes(an + 1) ? (
+                    <>
+                      {" "}Pentru anul următor:{" "}
+                      <Link href={`/zile-libere-${an + 1}`} className={linkCard}>zile libere {an + 1}</Link>.
+                    </>
+                  ) : null}
                 </p>
               </div>
             </aside>
