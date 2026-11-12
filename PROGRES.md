@@ -5701,4 +5701,56 @@ trimitea deloc spre ea.
 
 **Rămase:** salariul mediu INS pe septembrie (apare în jur de 11–12 noiembrie); hotărârea pentru salariul
 minim 2027 (sfârșit de noiembrie, se publică în ziua apariției în Monitorul Oficial); `/calculator-pfa`
-căzut de pe 8 pe 29 din 9 octombrie, nediagnosticat.
+căzut de pe 8 pe 29 din 9 octombrie: diagnosticat mai jos, în aceeași zi.
+
+### Mai târziu, 12 noiembrie — `/calculator-pfa`: titlul era al concurentului de pe locul 1
+
+**Ce arată datele.** Căderea e o treaptă, nu o alunecare: „calculator pfa” a stat pe 7,4–8,7 până pe 8
+octombrie (10–49 de afișări pe zi), 9,5 pe 9 octombrie, apoi între 4 și 25, cu 0–10 afișări pe zi (de
+regulă 1–4); „calculator taxe pfa” 7–11 → 16–26. Pe pagină: 160 de clicuri și 25.246 de afișări în 10 sept.–8 oct., 37 și 7.926 în 13
+oct.–10 nov. Codul paginii nu s-a schimbat între 25 septembrie și 15 octombrie.
+
+**Ce nu e.** Inspecția din Search Console: indexată, canonical propriu, ultimul crawl 10 noiembrie, fetch
+reușit. Textul e al nostru: din 1.461 de secvențe de cinci cuvinte, 2 se regăsesc la solo.ro, 0–4 la
+startco, bono, regnet și taxepfa.
+
+**Ce am găsit.** Titlul pus pe 17 septembrie (`bc59d9a`), „Calculator taxe PFA 2026 - Compară PFA, SRL și
+Micro”, e titlul solo.ro cuvânt cu cuvânt; solo.ro e pe locul 1 și îl are cel puțin din 16 mai 2026
+(capturile din arhiva web din 16 mai și 7 august). Commitul a schimbat 11 titluri; cele mai multe au primit
+doar liniuță în loc de două puncte. Pe celelalte zece nu le-am comparat cu rezultatele din Google.
+
+**Starea de azi (SE Ranking, Google România, desktop, primele 100 de rezultate):** pagina lipsește de tot la
+„calculator pfa”, „calculator taxe pfa” și „calculator pfa 2027”. Lipsește și la „calculator taxe pfa
+salariile.ro”, unde Google arată `/compara` (17) și `/en/salary-calculator` (76). Controlul: la „calculator
+salariu net”, aceeași unealtă ne găsește pe locul 2. Deci pagina e indexată, dar ținută în afara
+rezultatelor pe exact căutările ei.
+
+**Ce nu pot dovedi.** Că titlul e cauza. Între schimbarea lui (17 sept.) și cădere (9–10 oct.) sunt trei
+săptămâni, iar în aceleași zile au căzut anunțurile ANOFM și a apărut gaura de pe `/salariu-minim` (560 →
+166 de afișări pe 9–12 oct., revenită pe 13), deci a fost și un eveniment pe tot site-ul, la o zi după
+actualizarea anti-spam. `/salariu-minim` și-a revenit; PFA, singura pagină cu titlul altcuiva, nu.
+
+**Ce am schimbat.** Titlul revine la formularea cu care pagina urcase de pe locul 30 pe 4–7 între 2 și 16
+septembrie: „Calculator taxe PFA 2026 - Compară cu SRL micro și profit”. Descrierea, H1-ul și conținutul
+rămân. `test-ui-contracts.mts` pică dacă titlul solo.ro revine. Data paginii nu s-a atins: Google o
+citește oricum la câteva zile.
+
+**Decizie asumată.** Pe 6 noiembrie proprietarul a spus că titlurile sunt bune și că nu acolo se caută
+creșterea. Regula rămâne pentru rescrieri de dragul CTR-ului; aici e altceva: un titlu copiat de la
+concurent. Nu am auditat celelalte titluri și nu propun rescrierea lor.
+
+**Cât valorează.** Puțin, cinstit: „taxe pfa” 760 de căutări pe lună, „calculator taxe pfa” 610, „pfa taxe”
+480, „calculator pfa” 360 (SE Ranking). Pe locul 8 pagina aducea ~6 clicuri pe zi, din 400–580 pe tot
+site-ul. Sezonul ei e ianuarie–mai (declarația unică, 25 mai).
+
+**De citit, în 2–3 săptămâni:** `MSYS_NO_PATHCONV=1 node scripts/gsc.mjs dates --query="calculator pfa"
+--query-exact --limit=60`. Semnul de revenire: din nou peste 20 de afișări pe zi, sub poziția 10. Dacă
+rămâne pe pagina a doua, cauza e la nivel de site, nu de pagină, și nu se mai umblă la ea.
+
+**Văzut în treacăt:** în aceeași măsurătoare, prima pagină era pe locul 2 la „calculator salariu net”
+(după calculator-salarii.ro, înaintea salaria.ro și paylab.ro). O singură citire, pe desktop; GSC arăta
+4,0–4,2 pe 9–10 noiembrie.
+
+**Rămas pentru sfârșitul lui decembrie:** taxepfa.ro (locul 2) are deja „2027” în titlu, iar „calculator pfa
+2027” a început să apară în Search Console (24 de afișări în patru săptămâni). Pagina noastră trece pe 2027
+abia după ce se știe salariul minim de la 1 ianuarie 2027, fiindcă pragurile PFA se calculează din el.

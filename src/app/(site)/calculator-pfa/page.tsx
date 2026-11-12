@@ -25,7 +25,13 @@ import { PLAFON_MICRO_LEI } from "@/lib/forme-juridice";
 // Titlul și descrierea urmează intenția reală din SERP, nu doar cuvântul-cheie.
 // Descrierea veche se termina cu „salariul minim de 4.050 lei" și arăta depășită
 // în rezultate, deși e corectă: plafoanele PFA folosesc minimul de la 1 ianuarie.
-const PFA_TITLU = "Calculator taxe PFA 2026 - Compară PFA, SRL și Micro";
+//
+// Titlul e al nostru, nu al unui concurent. Între 17 septembrie și 12 noiembrie 2026 a fost
+// „… - Compară PFA, SRL și Micro”, adică titlul solo.ro (locul 1, îl are din mai 2026), cuvânt cu
+// cuvânt. Din 9–10 octombrie pagina a căzut de pe locul 8 pe pagina a doua, iar pe 12 noiembrie
+// lipsea din primele 100 de rezultate chiar și la „calculator taxe pfa salariile.ro”. Formularea
+// de mai jos e cea cu care pagina urcase de pe locul 30 pe 4–7 (2–16 septembrie).
+const PFA_TITLU = "Calculator taxe PFA 2026 - Compară cu SRL micro și profit";
 const PFA_DESC =
   "Vezi ce plătește un PFA în 2026 și cât ar rămâne, la aceleași cifre, cu un SRL micro sau SRL pe impozit pe profit.";
 

@@ -26,6 +26,10 @@ for (const sursa of [salary, pfa, home, widgetCalculator]) {
 }
 assert.match(salary, /if \(rezTemp\) set\("brut", String\(rezTemp\.netBani\)\)/, "Comutarea brut→net trebuie să folosească netul cash, fără tichetele de pe card");
 assert.match(salary, /normaContract[\s\S]*fractieLuna/, "Generatorul trebuie să transmită explicit norma contractuală și fracția de lună");
+assert.ok(
+  !(await read("src/app/(site)/calculator-pfa/page.tsx")).includes('"Calculator taxe PFA 2026 - Compară PFA, SRL și Micro"'),
+  "Titlul paginii PFA nu poate fi titlul solo.ro (locul 1 pe „calculator pfa”), cuvânt cu cuvânt",
+);
 assert.match(pfa, /<button[\s\S]*role="switch"[\s\S]*aria-checked=/, "Switch-ul PFA trebuie să fie un singur buton semantic");
 assert.doesNotMatch(pfa, /<label[^>]*>[\s\S]{0,500}<button[^>]*role="switch"/, "Switch-ul nu poate fi imbricat într-un label");
 // Bara de sus are mai multe dropdownuri („Instrumente", „Ghiduri"). Starea trebuie
