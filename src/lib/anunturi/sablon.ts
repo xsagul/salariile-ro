@@ -8,6 +8,24 @@ export const MARCAJE = {
   robots: "ANUNTURI_MARCAJ_ROBOTS",
 } as const;
 
+/**
+ * Scoate jumătățile de emoji. Un emoji e scris pe două unități (o pereche de surogate), iar una
+ * singură nu e text valid: HTMLRewriter se oprește când o primește și pagina pleacă tăiată, cu
+ * status 200. Pe 12 noiembrie 2026 lista națională era goală de câteva zile din cauza unui singur
+ * anunț cu emoji în descriere, tăiat de `.slice(0, 240)` exact prin mijlocul unuia.
+ */
+export const textIntreg = (s: string) => s.replace(/[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?<![\uD800-\uDBFF])[\uDC00-\uDFFF]/g, "");
+
+/**
+ * Primele `n` caractere ale unui text scris de oameni, fără să rupă un emoji: numără caractere
+ * întregi, nu unități UTF-16, și nu lasă la coadă lipiciul dintre emoji (ZWJ, selector de variație).
+ * Orice text venit din formular se scurtează cu ea, nu cu `.slice`.
+ */
+export function scurteaza(s: string, n: number): string {
+  const caractere = Array.from(s);
+  return textIntreg(caractere.length <= n ? s : caractere.slice(0, n).join("").replace(/[‍️]+$/, ""));
+}
+
 const escHtml = (s: string) => s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
 // În <script>, valoarea e un șir JSON (RSC) într-un șir JavaScript (self.__next_f.push): se escapează
 // de două ori, iar „<” nu rămâne literal, ca să nu închidă scriptul.

@@ -3,7 +3,7 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import { cauta, cheieUat, numarDinText, type Localitate } from "../src/lib/anunturi/localitati";
-import { MARCAJE, completeazaSablon } from "../src/lib/anunturi/sablon";
+import { MARCAJE, completeazaSablon, scurteaza, textIntreg } from "../src/lib/anunturi/sablon";
 import { EMAIL_ACTIV } from "../src/lib/anunturi/config";
 import { MESERII_ANUNTURI, distanta, esteDomeniu, ghicesteMeserie, grupMeserie, numeMeserieAnunt, radacina, slugMeserie, slugurileGrupului, variante } from "../src/lib/anunturi/meserii";
 import { SQL_DIN_IMPORT_ANOFM, dinImportAnofm, esteMobil, scosDeProprietar, linkApel, linkWhatsApp, orasSlug, slugAnunt, telefonAfisat, telefonCurat, urlAnunt, urlLista, valideaza, type Eroare } from "../src/lib/anunturi/reguli";
@@ -127,6 +127,24 @@ assert.equal(slugAnunt("Șofer distribuție Cluj-Napoca", "Cluj-Napoca"), "sofer
 assert.equal(urlAnunt({ id: 123, slug: "barman-bar-centru-bucuresti" }), "/anunt-angajare-barman-bar-centru-bucuresti-123");
 assert.equal(urlLista("bucuresti", "barman"), "/locuri-de-munca/bucuresti/barman");
 assert.equal(urlLista(null, "barman"), "/locuri-de-munca/barman");
+
+// Emoji în anunț (12 noiembrie 2026): descrierea anunțului 809 avea un emoji exact la caracterul 240,
+// `.slice(0, 240)` l-a tăiat în două, iar HTMLRewriter s-a oprit la jumătatea rămasă. Lista națională
+// a răspuns 200 cu pagina goală până a observat proprietarul. Textul scurtat rămâne întreg.
+const intreg = (s: string) => !/[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?<![\uD800-\uDBFF])[\uDC00-\uDFFF]/.test(s);
+const cuEmoji = `${"a".repeat(239)}💈 Frizer 💄 Make-up`;
+assert.ok(!intreg(cuEmoji.slice(0, 240)), "cazul din producție: slice lasă o jumătate de emoji");
+assert.equal(scurteaza(cuEmoji, 240), `${"a".repeat(239)}💈`, "emoji-ul de la margine rămâne întreg");
+assert.ok(intreg(scurteaza(cuEmoji, 240)));
+assert.equal(scurteaza("scurt 💈", 240), "scurt 💈", "textul scurt nu se schimbă");
+assert.equal(scurteaza(`${"a".repeat(9)}👩‍🔧 x`, 11), `${"a".repeat(9)}👩`, "nu rămâne lipiciul dintre emoji (ZWJ) la coadă");
+assert.equal(textIntreg(`ok \ud83d`), "ok ", "jumătatea de emoji se scoate");
+assert.equal(textIntreg("ok 💈 ă"), "ok 💈 ă", "emoji-urile întregi și diacriticele rămân");
+// Worker-ul nu se importă aici (ar intra în verificarea de tipuri a lui Next): se citește sursa.
+const sursaPagini = fs.readFileSync("worker/pagini.ts", "utf8");
+assert.match(sursaPagini, /esc\(scurteaza\(a\.descriere/, "cardul din listă scurtează descrierea fără să rupă emoji");
+assert.ok(!sursaPagini.includes(".trim().slice(0, 240)"), "fără .slice pe descrierea anunțului");
+assert.match(sursaPagini, /const continut = textIntreg\(p\.continut\)/, "inSablon trece conținutul prin textIntreg înainte de HTMLRewriter");
 
 // Importul ANOFM (ID 4–790) e scos de tot din 6 noiembrie 2026; cele puse de oameni rămân.
 for (const id of [4, 358, 790]) assert.ok(dinImportAnofm(id), `ID ${id} e din importul ANOFM`);

@@ -2,7 +2,7 @@
 // Adresele (verificate în Google România, 28 septembrie 2026) sunt deținute de src/lib/anunturi/reguli.ts.
 import type { Env } from "./index";
 import { CONTRACTE, JUDETE, LOCURI_MUNCA, NORME, URL_ADAUGA, linkDistribuieFacebook, linkDistribuieWhatsApp, urlAnunt, urlLista, type Contract, type LocMunca, type Norma } from "../src/lib/anunturi/reguli";
-import { completeazaSablon } from "../src/lib/anunturi/sablon";
+import { completeazaSablon, scurteaza, textIntreg } from "../src/lib/anunturi/sablon";
 import { htmlReclama } from "../src/lib/reclame";
 import { DOMENII, MESERII_ANUNTURI, esteDomeniu, grupMeserie, numeDomeniu, slugurileGrupului, variante, cuvantAfisat } from "../src/lib/anunturi/meserii";
 import { PE_PAGINA, contactAnunt, cuvinteCautate, dupaId, fatete, lista, listeIndexabile, numeOras, scoaseRecent, toateActive, type Anunt, type Filtru } from "./date";
@@ -42,13 +42,16 @@ function firImplicit(trepte: [string, string | null][]): object {
 async function inSablon(req: Request, env: Env, p: Pagina): Promise<Response> {
   const sablon = await env.ASSETS.fetch(new Request(new URL("/locuri-de-munca/sablon", req.url)));
   const html = completeazaSablon(await sablon.text(), {
-    titlu: `${p.titlu} | Salariile`, titluScurt: p.titlu, descriere: p.descriere, canonic: p.canonic,
+    titlu: textIntreg(`${p.titlu} | Salariile`), titluScurt: textIntreg(p.titlu), descriere: textIntreg(p.descriere), canonic: p.canonic,
     robots: p.indexabil ? "index, follow" : "noindex, follow",
   });
+  // `textIntreg` e plasa de siguranță: o jumătate de emoji ajunsă aici pe orice cale ar opri
+  // HTMLRewriter la mijlocul paginii, cu status 200 (src/lib/anunturi/sablon.ts).
+  const continut = textIntreg(p.continut);
   let r = new HTMLRewriter()
-    .on("[data-anunturi-continut]", { element(e) { e.setInnerContent(p.continut, { html: true }); } });
+    .on("[data-anunturi-continut]", { element(e) { e.setInnerContent(continut, { html: true }); } });
   if (p.jsonLd?.length) {
-    const scripturi = p.jsonLd.map((o) => `<script type="application/ld+json">${JSON.stringify(o).replace(/</g, "\\u003c")}</script>`).join("");
+    const scripturi = textIntreg(p.jsonLd.map((o) => `<script type="application/ld+json">${JSON.stringify(o).replace(/</g, "\\u003c")}</script>`).join(""));
     r = r.on("head", { element(e) { e.append(scripturi, { html: true }); } });
   }
   // Fără headerele șablonului: content-length și etag erau ale lui, nu ale paginii.
@@ -78,7 +81,7 @@ export function citesteExtra(u: URL): Extra {
   const norma = u.searchParams.get("norma"), domeniu = u.searchParams.get("domeniu") ?? "";
   const contract = u.searchParams.get("contract") ?? "", loc = u.searchParams.get("loc") ?? "";
   // Căutarea: cel mult 60 de caractere, cu spațiile strânse; fără niciun cuvânt de căutat nu contează.
-  const q = (u.searchParams.get("q") ?? "").replace(/\s+/g, " ").trim().slice(0, 60);
+  const q = scurteaza((u.searchParams.get("q") ?? "").replace(/\s+/g, " ").trim(), 60);
   return {
     domeniu: esteDomeniu(domeniu) ? domeniu : undefined,
     q: q && cuvinteCautate(q).length ? q : undefined,
@@ -142,7 +145,7 @@ export function cardLista(a: Anunt): string {
       <span class="rounded-md bg-marcaj/25 px-2 py-1 text-sm font-bold tabular-nums text-stone-900">${suma(a)}</span>${net}
       <span class="${PASTILA}">${norma(a)}</span>${detalii(a).map((d) => `<span class="${PASTILA}">${d}</span>`).join("")}${meserie ? `<span class="${PASTILA}">${esc(meserie)}</span>` : ""}
     </span>
-    <span class="mt-2.5 block truncate text-sm text-stone-700">${esc(a.descriere.replace(/\s+/g, " ").trim().slice(0, 240))}</span>
+    <span class="mt-2.5 block truncate text-sm text-stone-700">${esc(scurteaza(a.descriere.replace(/\s+/g, " ").trim(), 240))}</span>
     <span class="mt-3 flex items-center gap-3">
       <span class="text-xs text-stone-600">${publicat(a.confirmat_la!)}<span data-distanta class="font-semibold text-stone-900"></span></span>
       <span class="ml-auto inline-flex min-h-9 items-center rounded-md border border-stone-300 bg-surface px-3 text-sm font-semibold text-stone-900">Vezi anunțul</span>
@@ -619,7 +622,7 @@ export async function paginaLista(req: Request, env: Env, orasSlug: string | nul
     ${SCRIPT_ORDINE}`;
 
   return inSablon(req, env, {
-    titlu, descriere: `${titlu}. Anunțuri de angajare din România, fiecare cu salariul lunar și baza lui, brut sau net. Aplici direct la angajator.`.slice(0, 158),
+    titlu, descriere: scurteaza(`${titlu}. Anunțuri de angajare din România, fiecare cu salariul lunar și baza lui, brut sau net. Aplici direct la angajator.`, 158),
     canonic: `${SITE}${cale}${interogare({}, pagina)}`,
     // Filtrele din interogare nu fac pagini noi pentru Google: sunt variații ale aceleiași liste.
     indexabil: total >= PRAG_INDEX && pagina === 1 && !cuFiltre && !extra.ordine,
@@ -832,7 +835,7 @@ export async function paginaAnunt(req: Request, env: Env, id: number, slug: stri
     ["Locuri de muncă", "/locuri-de-munca"], [oras(a), urlLista(a.oras_slug, null)],
     ...(a.meserie ? [[meserie!, listaMeserie] as [string, string]] : []), [a.titlu, null],
   ]);
-  return inSablon(req, env, { titlu, descriere: desc.slice(0, 158), canonic, indexabil: true, continut, jsonLd: [jsonLd, fir] });
+  return inSablon(req, env, { titlu, descriere: scurteaza(desc, 158), canonic, indexabil: true, continut, jsonLd: [jsonLd, fir] });
 }
 
 export async function sitemap(env: Env): Promise<Response> {

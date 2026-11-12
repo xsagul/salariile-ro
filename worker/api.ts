@@ -4,6 +4,7 @@ import type { Env } from "./index";
 import { URL_ADAUGA, linkApel, linkWhatsApp, telefonAfisat, urlAnunt, valideaza } from "../src/lib/anunturi/reguli";
 import { MESERII_ANUNTURI } from "../src/lib/anunturi/meserii";
 import { EMAIL_ACTIV } from "../src/lib/anunturi/config";
+import { scurteaza } from "../src/lib/anunturi/sablon";
 import { adauga, confirma, contactAnunt, dupaId, dupaToken, inLimita, listaPentruApropiere, modifica, prelungeste, raporteaza, sterge, tokenNou, type Anunt } from "./date";
 import { localizeaza } from "./geocod";
 import { anuntaGoogle } from "./google";
@@ -150,7 +151,7 @@ export async function api(req: Request, env: Env, ctx: ExecutionContext, cale: s
     const a = Number.isInteger(id) ? await dupaId(env, id) : null;
     if (!a || a.stare !== "activ") return json({ eroare: "Anunțul nu mai e publicat." }, 404);
     if (!MOTIVE_RAPORTARE.includes(motiv)) return json({ eroare: "Alege un motiv." }, 400);
-    const detalii = String(corp.detalii ?? "").slice(0, 1000);
+    const detalii = scurteaza(String(corp.detalii ?? ""), 1000);
     const email = typeof corp.email === "string" && /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(corp.email) ? corp.email : null;
     const n = await raporteaza(env, id, motiv, detalii, email);
     ctx.waitUntil(trimite(env, env.EMAIL_PROPRIETAR, `Raportare anunț ${id}: ${motiv}`,
