@@ -5807,3 +5807,20 @@ colectăm” le cuprinde și pe ele.
 Verificat local: `test-date-salarii`, `test-context-drift`, `test-ui-contracts`, restul lanțului `npm test`
 (25 din 26; al 26-lea e verificarea catalogului, care pică doar pe Windows și trece în CI), eslint, `tsc`,
 build, `test:rendered`.
+
+## 13 noiembrie 2026 — homepage-ul a urcat pe locul 2–3 la „calculator salariu net”
+
+Proprietarul a văzut creșterea în Cloudflare înainte de Search Console. Tokenul wrangler vede acum doar
+contul „site-uri”, deci am citit din GSC cu `dataState: "all"` (date proaspete, neconsolidate) și pe ore.
+
+- **Pe zile (clicuri):** marți 10 nov. 500, miercuri 11 nov. 416, joi 12 nov. 481 cu 18 ore din 24
+  (ora Pacificului; ziua încă nu e închisă). Pe aceeași fereastră 00–12 PT: 397 / 321 / **463**.
+- **Toată diferența e homepage-ul:** 206 clicuri joi 5 nov. → 288 joi 12 nov.; celelalte pagini, ±5.
+- **Cauza e o urcare în poziție, nu mai multe căutări:** „calculator salariu net” p4,1 → **p2,5** (17 → 52 de
+  clicuri), „calcul salariu net” p4,2 → 2,6 (6 → 26), „calculator salariu brut” p4,1 → 2,3 (0 → 11),
+  „calculator salariu brut net” p4,1 → 3,4. Poziția medie pe tot site-ul, 4,6 pe 12 nov., cea mai bună din
+  ultima lună. Nu am schimbat nimic pe homepage în zilele astea; urcarea vine din partea Google.
+- **De urmărit:** dacă poziția ~2,5 ține o săptămână (`node <script> hp` echivalent:
+  `MSYS_NO_PATHCONV=1 node scripts/gsc.mjs dates --page=/ --exact --query="calculator salariu net"
+  --query-exact`). CTR-ul la p2,5 e doar 2,6% (52 / 2.024 afișări), deci primul ecran al rezultatului
+  rămâne plafonul; o săptămână întreagă pe locul 2 ar însemna ~+80 de clicuri pe zi doar pe homepage.
