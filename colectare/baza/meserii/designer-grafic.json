@@ -4,170 +4,338 @@
  "cor": "216601",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
-  "cuSalariu": 9,
-  "cuBazaDeclarata": 4,
-  "faraBazaDeclarata": 5,
+  "cuSalariu": 12,
+  "cuBazaDeclarata": 5,
+  "faraBazaDeclarata": 7,
   "surse": {
    "ejobs": {
-    "n": 3,
-    "procent": 33.3
-   },
-   "olx": {
-    "n": 3,
+    "n": 4,
     "procent": 33.3
    },
    "bestjobs": {
-    "n": 2,
-    "procent": 22.2
+    "n": 3,
+    "procent": 25
+   },
+   "olx": {
+    "n": 3,
+    "procent": 25
    },
    "hipo": {
     "n": 1,
-    "procent": 11.1
+    "procent": 8.3
+   },
+   "publi24": {
+    "n": 1,
+    "procent": 8.3
    }
   },
   "colectari": {
+   "continuă": {
+    "n": 6,
+    "procent": 50
+   },
    "8 septembrie 2026": {
     "n": 6,
-    "procent": 66.7
-   },
-   "continuă": {
-    "n": 3,
-    "procent": 33.3
+    "procent": 50
    }
   },
   "net": {
-   "n": 4
-  },
-  "netMinimOferit": {
-   "n": 4
-  },
-  "netMaximOferit": {
-   "n": 4
-  },
-  "faraBazaDeclarata_valori": {
    "n": 5
   },
-  "peOras": {},
-  "peJudet": {},
+  "netMinimOferit": {
+   "n": 5
+  },
+  "netMaximOferit": {
+   "n": 5
+  },
+  "faraBazaDeclarata_valori": {
+   "n": 7
+  },
+  "peOras": {
+   "Constanta": {
+    "n": 1
+   }
+  },
+  "peJudet": {
+   "Constanta": {
+    "n": 1
+   }
+  },
   "peLuna": {
    "2026-09": {
-    "n": 6,
+    "n": 8,
     "procent": 66.7
+   },
+   "2026-10": {
+    "n": 1,
+    "procent": 8.3
    },
    "2026-08": {
     "n": 1,
-    "procent": 11.1
+    "procent": 8.3
    },
    "2026-03": {
     "n": 1,
-    "procent": 11.1
+    "procent": 8.3
    },
    "2026-01": {
     "n": 1,
-    "procent": 11.1
+    "procent": 8.3
    }
   }
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 4,
-  "cuSalariu": 0,
+  "anunturiCitite": 14,
+  "cuSalariu": 2,
   "nivel": {},
   "experienta": {
    "da": {
+    "n": 4,
+    "procent": 28.6
+   },
+   "avantaj": {
     "n": 1,
-    "procent": 25
+    "procent": 7.1
    }
   },
   "experientaPortal": {
    "1–5 ani": {
     "n": 1,
-    "procent": 25
+    "procent": 7.1
    }
   },
   "studii": {
    "medii": {
     "n": 1,
-    "procent": 25
+    "procent": 7.1
+   },
+   "superioare": {
+    "n": 1,
+    "procent": 7.1
    }
   },
-  "limbi": {},
+  "limbi": {
+   "engleza": {
+    "n": 1,
+    "procent": 7.1
+   }
+  },
   "permis": {},
   "atestate": {},
-  "program": {},
-  "mod": {},
-  "norma": {},
+  "program": {
+   "luni–vineri": {
+    "n": 2,
+    "procent": 14.3
+   }
+  },
+  "mod": {
+   "remote": {
+    "n": 1,
+    "procent": 7.1
+   },
+   "hibrid": {
+    "n": 1,
+    "procent": 7.1
+   }
+  },
+  "norma": {
+   "full-time": {
+    "n": 1,
+    "procent": 7.1
+   }
+  },
   "durata": {},
-  "beneficii": {},
-  "tehnologii": {},
+  "beneficii": {
+   "bonus": {
+    "n": 3,
+    "procent": 21.4
+   },
+   "cursuri / training": {
+    "n": 1,
+    "procent": 7.1
+   },
+   "transport": {
+    "n": 1,
+    "procent": 7.1
+   }
+  },
+  "tehnologii": {
+   "AutoCAD": {
+    "n": 2,
+    "procent": 14.3
+   }
+  },
   "negociabil": {},
   "strainatate": {},
   "limbaAnuntului": {
    "ro": {
-    "n": 4,
+    "n": 14,
     "procent": 100
    }
   },
   "surse": {
+   "publi24": {
+    "n": 8,
+    "procent": 57.1
+   },
    "bestjobs": {
-    "n": 2,
-    "procent": 50
+    "n": 4,
+    "procent": 28.6
    },
    "hipo": {
     "n": 1,
-    "procent": 25
+    "procent": 7.1
    },
    "ejobs": {
     "n": 1,
-    "procent": 25
+    "procent": 7.1
    }
   },
   "peJudet": {
+   "Constanta": {
+    "n": 4,
+    "procent": 28.6
+   },
+   "Bucuresti": {
+    "n": 2,
+    "procent": 14.3
+   },
    "RO": {
     "n": 1,
-    "procent": 25
+    "procent": 7.1
+   },
+   "Timis": {
+    "n": 1,
+    "procent": 7.1
+   },
+   "Prahova": {
+    "n": 1,
+    "procent": 7.1
    }
   },
   "motiveFaraSalariu": {
    "salary_evidence_incomplete": {
+    "n": 8,
+    "procent": 100
+   },
+   "full_time_unconfirmed": {
+    "n": 3,
+    "procent": 37.5
+   },
+   "contract_or_variable_income": {
+    "n": 1,
+    "procent": 12.5
+   }
+  },
+  "salariuPeFactor": {
+   "program": {
+    "luni–vineri": {
+     "n": 2
+    }
+   },
+   "beneficii": {
+    "bonus": {
+     "n": 2
+    }
+   },
+   "tehnologii": {
+    "AutoCAD": {
+     "n": 2
+    }
+   }
+  },
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 1,
+  "posturi": 1,
+  "ofertePeGrupaCor": 7,
+  "tipSalariu": {
+   "net": {
     "n": 1,
     "procent": 100
    }
   },
-  "salariuPeFactor": {}
- },
- "anofm": {
-  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
-  "oferte": 0,
-  "posturi": 0,
-  "ofertePeGrupaCor": 4,
-  "tipSalariu": {},
   "netMinimDeclarat": {
-   "n": 0
+   "n": 1
   },
   "brutMinimDeclarat": {
    "n": 0
   },
   "laSalariulMinim": 0,
-  "studii": {},
-  "experienta": {},
-  "contract": {},
-  "norma": {},
-  "regim": {},
-  "judete": {},
-  "domenii": {},
+  "studii": {
+   "Liceal - LICEU DE SPECIALITATE": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "experienta": {
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "contract": {
+   "Cu durată determinată": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "judete": {
+   "Dolj": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "domenii": {
+   "Altele": {
+    "n": 1,
+    "procent": 100
+   }
+  },
   "coduriCorInGrupa": {
    "216612 - GRAFICIAN CALCULATOR (STUDII MEDII)": {
+    "n": 3,
+    "procent": 42.9
+   },
+   "216611 - DESIGNER GRAFICA (STUDII SUPERIOARE)": {
     "n": 2,
-    "procent": 50
+    "procent": 28.6
    },
    "216613 - DESIGNER PAGINI WEB (STUDII MEDII)": {
     "n": 1,
-    "procent": 25
+    "procent": 14.3
    },
-   "216611 - DESIGNER GRAFICA (STUDII SUPERIOARE)": {
+   "216601 - DESIGNER GRAFICA (STUDII MEDII)": {
     "n": 1,
-    "procent": 25
+    "procent": 14.3
    }
   }
  },

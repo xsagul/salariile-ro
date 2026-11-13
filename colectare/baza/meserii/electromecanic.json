@@ -4,510 +4,790 @@
  "cor": "742214",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
-  "cuSalariu": 23,
-  "cuBazaDeclarata": 8,
-  "faraBazaDeclarata": 15,
+  "cuSalariu": 30,
+  "cuBazaDeclarata": 10,
+  "faraBazaDeclarata": 20,
   "surse": {
+   "bestjobs": {
+    "n": 9,
+    "procent": 30
+   },
    "olx": {
     "n": 9,
-    "procent": 39.1
+    "procent": 30
    },
    "ejobs": {
-    "n": 6,
-    "procent": 26.1
-   },
-   "bestjobs": {
-    "n": 5,
-    "procent": 21.7
+    "n": 7,
+    "procent": 23.3
    },
    "publi24": {
-    "n": 2,
-    "procent": 8.7
+    "n": 3,
+    "procent": 10
    },
    "hipo": {
     "n": 1,
-    "procent": 4.3
+    "procent": 3.3
+   },
+   "undelucram": {
+    "n": 1,
+    "procent": 3.3
    }
   },
   "colectari": {
    "8 septembrie 2026": {
-    "n": 17,
-    "procent": 73.9
+    "n": 16,
+    "procent": 53.3
    },
    "continuă": {
-    "n": 6,
-    "procent": 26.1
+    "n": 14,
+    "procent": 46.7
    }
   },
   "net": {
-   "n": 8
+   "n": 10,
+   "p10": 4639,
+   "p25": 4850,
+   "median": 5508,
+   "p75": 6000,
+   "p90": 6641,
+   "min": 4270,
+   "max": 7915
   },
   "netMinimOferit": {
-   "n": 8
+   "n": 10,
+   "p10": 4243,
+   "p25": 4460,
+   "median": 4900,
+   "p75": 5000,
+   "p90": 5299,
+   "min": 4000,
+   "max": 5500
   },
   "netMaximOferit": {
-   "n": 8
+   "n": 10,
+   "p10": 4747,
+   "p25": 4979,
+   "median": 5925,
+   "p75": 7750,
+   "p90": 8255,
+   "min": 4270,
+   "max": 10553
   },
   "faraBazaDeclarata_valori": {
-   "n": 15,
-   "p10": 4315,
-   "p25": 4750,
+   "n": 20,
+   "p10": 4128,
+   "p25": 4434,
    "median": 5500,
-   "p75": 6750,
-   "p90": 7750,
+   "p75": 6500,
+   "p90": 7125,
    "min": 3166,
    "max": 10504
   },
   "peOras": {
+   "Ploiesti": {
+    "n": 2
+   },
    "București": {
+    "n": 1
+   },
+   "Craiova": {
     "n": 1
    }
   },
-  "peJudet": {},
+  "peJudet": {
+   "Dolj": {
+    "n": 1
+   },
+   "Prahova": {
+    "n": 1
+   }
+  },
   "peLuna": {
    "2026-09": {
-    "n": 11,
-    "procent": 47.8
+    "n": 13,
+    "procent": 43.3
    },
    "2026-08": {
-    "n": 9,
-    "procent": 39.1
+    "n": 8,
+    "procent": 26.7
+   },
+   "2026-10": {
+    "n": 5,
+    "procent": 16.7
    },
    "2025-05": {
     "n": 2,
-    "procent": 8.7
+    "procent": 6.7
+   },
+   "2026-11": {
+    "n": 1,
+    "procent": 3.3
    },
    "2025-08": {
     "n": 1,
-    "procent": 4.3
+    "procent": 3.3
    }
   }
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 34,
-  "cuSalariu": 1,
+  "anunturiCitite": 116,
+  "cuSalariu": 4,
   "nivel": {},
   "experienta": {
    "da": {
-    "n": 10,
-    "procent": 29.4
+    "n": 37,
+    "procent": 31.9
    },
    "3+ ani": {
-    "n": 6,
-    "procent": 17.6
+    "n": 14,
+    "procent": 12.1
    },
    "2+ ani": {
-    "n": 3,
-    "procent": 8.8
+    "n": 13,
+    "procent": 11.2
+   },
+   "avantaj": {
+    "n": 9,
+    "procent": 7.8
+   },
+   "1+ ani": {
+    "n": 4,
+    "procent": 3.4
    },
    "fara": {
     "n": 1,
-    "procent": 2.9
-   },
-   "1+ ani": {
-    "n": 1,
-    "procent": 2.9
+    "procent": 0.9
    }
   },
   "experientaPortal": {
    "1–5 ani": {
-    "n": 3,
-    "procent": 8.8
+    "n": 5,
+    "procent": 4.3
+   },
+   "peste 5 ani": {
+    "n": 1,
+    "procent": 0.9
+   },
+   "0–1 an": {
+    "n": 1,
+    "procent": 0.9
    }
   },
   "studii": {
    "medii": {
-    "n": 5,
-    "procent": 14.7
+    "n": 30,
+    "procent": 25.9
    },
    "superioare": {
-    "n": 1,
-    "procent": 2.9
+    "n": 6,
+    "procent": 5.2
    },
    "profesionale": {
     "n": 1,
-    "procent": 2.9
+    "procent": 0.9
    }
   },
   "limbi": {
    "engleza": {
-    "n": 7,
-    "procent": 20.6
+    "n": 22,
+    "procent": 19
    },
    "germana": {
-    "n": 1,
-    "procent": 2.9
+    "n": 3,
+    "procent": 2.6
    }
   },
   "permis": {
    "B": {
-    "n": 10,
-    "procent": 29.4
+    "n": 33,
+    "procent": 28.4
    }
   },
   "atestate": {
    "ANRE": {
     "n": 1,
-    "procent": 2.9
+    "procent": 0.9
+   },
+   "autorizare stivuitorist": {
+    "n": 1,
+    "procent": 0.9
+   },
+   "ISCIR": {
+    "n": 1,
+    "procent": 0.9
    }
   },
   "program": {
-   "luni–vineri": {
-    "n": 7,
-    "procent": 20.6
-   },
    "ture": {
-    "n": 4,
-    "procent": 11.8
+    "n": 17,
+    "procent": 14.7
+   },
+   "luni–vineri": {
+    "n": 13,
+    "procent": 11.2
    },
    "flexibil": {
-    "n": 1,
-    "procent": 2.9
+    "n": 3,
+    "procent": 2.6
    },
    "12/24": {
     "n": 1,
-    "procent": 2.9
+    "procent": 0.9
+   },
+   "weekend": {
+    "n": 1,
+    "procent": 0.9
    }
   },
   "mod": {},
   "norma": {
    "full-time": {
-    "n": 3,
-    "procent": 8.8
+    "n": 5,
+    "procent": 4.3
+   },
+   "part-time": {
+    "n": 1,
+    "procent": 0.9
    }
   },
   "durata": {
    "nedeterminată": {
-    "n": 1,
-    "procent": 2.9
+    "n": 9,
+    "procent": 7.8
    }
   },
   "beneficii": {
    "tichete de masă": {
-    "n": 15,
-    "procent": 44.1
-   },
-   "bonus": {
-    "n": 10,
-    "procent": 29.4
+    "n": 59,
+    "procent": 50.9
    },
    "asigurare medicală": {
-    "n": 8,
-    "procent": 23.5
+    "n": 23,
+    "procent": 19.8
    },
    "transport": {
-    "n": 5,
-    "procent": 14.7
+    "n": 23,
+    "procent": 19.8
    },
-   "telefon / laptop": {
-    "n": 3,
-    "procent": 8.8
-   },
-   "cursuri / training": {
-    "n": 3,
-    "procent": 8.8
+   "bonus": {
+    "n": 21,
+    "procent": 18.1
    },
    "prime": {
-    "n": 1,
-    "procent": 2.9
+    "n": 14,
+    "procent": 12.1
    },
    "spor": {
-    "n": 1,
-    "procent": 2.9
+    "n": 10,
+    "procent": 8.6
+   },
+   "ore suplimentare plătite": {
+    "n": 10,
+    "procent": 8.6
+   },
+   "cursuri / training": {
+    "n": 9,
+    "procent": 7.8
+   },
+   "telefon / laptop": {
+    "n": 8,
+    "procent": 6.9
+   },
+   "masă": {
+    "n": 6,
+    "procent": 5.2
+   },
+   "cazare": {
+    "n": 2,
+    "procent": 1.7
+   },
+   "vouchere de vacanță": {
+    "n": 2,
+    "procent": 1.7
    },
    "echipament de lucru": {
     "n": 1,
-    "procent": 2.9
+    "procent": 0.9
    }
   },
   "tehnologii": {
-   "CNC": {
-    "n": 2,
-    "procent": 5.9
-   },
    "PLC": {
-    "n": 1,
-    "procent": 2.9
+    "n": 5,
+    "procent": 4.3
+   },
+   "CNC": {
+    "n": 4,
+    "procent": 3.4
    },
    "Excel": {
-    "n": 1,
-    "procent": 2.9
+    "n": 3,
+    "procent": 2.6
    }
   },
   "negociabil": {
    "salariu negociabil": {
-    "n": 1,
-    "procent": 2.9
+    "n": 4,
+    "procent": 3.4
    }
   },
   "strainatate": {},
   "limbaAnuntului": {
    "ro": {
-    "n": 34,
+    "n": 116,
     "procent": 100
    }
   },
   "surse": {
-   "bestjobs": {
-    "n": 18,
-    "procent": 52.9
-   },
    "publi24": {
-    "n": 5,
-    "procent": 14.7
+    "n": 52,
+    "procent": 44.8
+   },
+   "bestjobs": {
+    "n": 45,
+    "procent": 38.8
+   },
+   "hipo": {
+    "n": 7,
+    "procent": 6
    },
    "ejobs": {
     "n": 5,
-    "procent": 14.7
+    "procent": 4.3
+   },
+   "undelucram": {
+    "n": 4,
+    "procent": 3.4
    },
    "anuntul": {
     "n": 3,
-    "procent": 8.8
-   },
-   "hipo": {
-    "n": 3,
-    "procent": 8.8
+    "procent": 2.6
    }
   },
   "peJudet": {
    "RO": {
+    "n": 7,
+    "procent": 6
+   },
+   "Brasov": {
+    "n": 6,
+    "procent": 5.2
+   },
+   "Bucuresti": {
+    "n": 5,
+    "procent": 4.3
+   },
+   "Dolj": {
+    "n": 5,
+    "procent": 4.3
+   },
+   "Ilfov": {
+    "n": 5,
+    "procent": 4.3
+   },
+   "Timis": {
+    "n": 5,
+    "procent": 4.3
+   },
+   "Galati": {
+    "n": 4,
+    "procent": 3.4
+   },
+   "Constanta": {
     "n": 3,
-    "procent": 8.8
+    "procent": 2.6
+   },
+   "Sibiu": {
+    "n": 3,
+    "procent": 2.6
    },
    "bucuresti": {
     "n": 2,
-    "procent": 5.9
+    "procent": 1.7
+   },
+   "Arges": {
+    "n": 2,
+    "procent": 1.7
+   },
+   "Maramures": {
+    "n": 2,
+    "procent": 1.7
    },
    "Caras-Severin": {
     "n": 1,
-    "procent": 2.9
-   },
-   "Bucuresti": {
-    "n": 1,
-    "procent": 2.9
-   },
-   "Constanta": {
-    "n": 1,
-    "procent": 2.9
+    "procent": 0.9
    },
    "Hunedoara": {
     "n": 1,
-    "procent": 2.9
+    "procent": 0.9
    },
    "Botosani": {
     "n": 1,
-    "procent": 2.9
+    "procent": 0.9
    },
    "ilfov": {
     "n": 1,
-    "procent": 2.9
+    "procent": 0.9
+   },
+   "Tulcea": {
+    "n": 1,
+    "procent": 0.9
+   },
+   "Mures": {
+    "n": 1,
+    "procent": 0.9
+   },
+   "Buzau": {
+    "n": 1,
+    "procent": 0.9
+   },
+   "Calarasi": {
+    "n": 1,
+    "procent": 0.9
+   },
+   "Arad": {
+    "n": 1,
+    "procent": 0.9
+   },
+   "Giurgiu": {
+    "n": 1,
+    "procent": 0.9
+   },
+   "Cluj": {
+    "n": 1,
+    "procent": 0.9
+   },
+   "Vrancea": {
+    "n": 1,
+    "procent": 0.9
+   },
+   "Prahova": {
+    "n": 1,
+    "procent": 0.9
    }
   },
   "motiveFaraSalariu": {
    "salary_evidence_incomplete": {
-    "n": 19,
-    "procent": 73.1
-   },
-   "multiple_unresolved_amounts": {
-    "n": 4,
-    "procent": 15.4
+    "n": 88,
+    "procent": 87.1
    },
    "foreign_or_noncomparable_work": {
-    "n": 3,
-    "procent": 11.5
+    "n": 12,
+    "procent": 11.9
+   },
+   "full_time_unconfirmed": {
+    "n": 11,
+    "procent": 10.9
+   },
+   "multiple_unresolved_amounts": {
+    "n": 6,
+    "procent": 5.9
    },
    "country_unconfirmed": {
     "n": 2,
-    "procent": 7.7
-   },
-   "full_time_unconfirmed": {
-    "n": 1,
-    "procent": 3.8
+    "procent": 2
    },
    "expired": {
     "n": 1,
-    "procent": 3.8
+    "procent": 1
+   },
+   "contract_or_variable_income": {
+    "n": 1,
+    "procent": 1
+   },
+   "monthly_unconfirmed": {
+    "n": 1,
+    "procent": 1
    }
   },
-  "salariuPeFactor": {}
+  "salariuPeFactor": {
+   "experienta": {
+    "3+ ani": {
+     "n": 1
+    },
+    "2+ ani": {
+     "n": 1
+    },
+    "avantaj": {
+     "n": 1
+    }
+   },
+   "studii": {
+    "medii": {
+     "n": 1
+    }
+   },
+   "limbi": {
+    "engleza": {
+     "n": 2
+    }
+   },
+   "program": {
+    "luni–vineri": {
+     "n": 2
+    },
+    "weekend": {
+     "n": 1
+    },
+    "ture": {
+     "n": 1
+    }
+   },
+   "beneficii": {
+    "tichete de masă": {
+     "n": 2
+    },
+    "transport": {
+     "n": 1
+    },
+    "ore suplimentare plătite": {
+     "n": 1
+    },
+    "asigurare medicală": {
+     "n": 1
+    }
+   },
+   "permis": {
+    "B": {
+     "n": 1
+    }
+   },
+   "atestate": {
+    "ISCIR": {
+     "n": 1
+    }
+   }
+  },
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
-  "oferte": 15,
-  "posturi": 36,
-  "ofertePeGrupaCor": 21,
+  "oferte": 22,
+  "posturi": 45,
+  "ofertePeGrupaCor": 34,
   "tipSalariu": {
+   "gross": {
+    "n": 10,
+    "procent": 45.5
+   },
    "none": {
     "n": 8,
-    "procent": 53.3
-   },
-   "gross": {
-    "n": 4,
-    "procent": 26.7
+    "procent": 36.4
    },
    "net": {
-    "n": 3,
-    "procent": 20
+    "n": 4,
+    "procent": 18.2
    }
   },
   "netMinimDeclarat": {
-   "n": 3
-  },
-  "brutMinimDeclarat": {
    "n": 4
   },
-  "laSalariulMinim": 2,
+  "brutMinimDeclarat": {
+   "n": 10,
+   "p10": 3600,
+   "p25": 4325,
+   "median": 4325,
+   "p75": 4608,
+   "p90": 6206,
+   "min": 1,
+   "max": 6263
+  },
+  "laSalariulMinim": 6,
   "studii": {
    "Profesional - ȘCOALĂ PROFESIONALĂ": {
-    "n": 8,
-    "procent": 53.3
+    "n": 13,
+    "procent": 59.1
+   },
+   "Liceal - LICEU DE SPECIALITATE": {
+    "n": 5,
+    "procent": 22.7
    },
    "Gimnazial - ȘCOALĂ GENERALĂ": {
     "n": 3,
-    "procent": 20
-   },
-   "Liceal - LICEU DE SPECIALITATE": {
-    "n": 3,
-    "procent": 20
+    "procent": 13.6
    },
    "Universitar - ÎNVĂȚĂMÂNT SUPERIOR": {
     "n": 1,
-    "procent": 6.7
+    "procent": 4.5
    }
   },
   "experienta": {
-   "Experiență medie - între 3 și 5 ani": {
-    "n": 7,
-    "procent": 46.7
-   },
    "Experiență puțină - mai puțin de 3 ani": {
-    "n": 6,
-    "procent": 40
+    "n": 10,
+    "procent": 45.5
+   },
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 10,
+    "procent": 45.5
    },
    "Fără experiență - 0 ani": {
     "n": 2,
-    "procent": 13.3
+    "procent": 9.1
    }
   },
   "contract": {
    "Cu durată nedeterminată": {
-    "n": 14,
-    "procent": 93.3
+    "n": 21,
+    "procent": 95.5
    },
    "Cu durată determinată": {
     "n": 1,
-    "procent": 6.7
+    "procent": 4.5
    }
   },
   "norma": {
    "Cu normă întreagă": {
-    "n": 15,
+    "n": 22,
     "procent": 100
    }
   },
   "regim": {
    "Sediu": {
-    "n": 15,
+    "n": 22,
     "procent": 100
    }
   },
   "judete": {
    "Bihor": {
-    "n": 2,
-    "procent": 13.3
+    "n": 3,
+    "procent": 13.6
    },
    "Maramureș": {
-    "n": 1,
-    "procent": 6.7
+    "n": 2,
+    "procent": 9.1
+   },
+   "Galați": {
+    "n": 2,
+    "procent": 9.1
+   },
+   "Bistrița-Năsăud": {
+    "n": 2,
+    "procent": 9.1
+   },
+   "Municipiul București": {
+    "n": 2,
+    "procent": 9.1
    },
    "Caraș-Severin": {
     "n": 1,
-    "procent": 6.7
-   },
-   "Galați": {
-    "n": 1,
-    "procent": 6.7
+    "procent": 4.5
    },
    "Sibiu": {
     "n": 1,
-    "procent": 6.7
-   },
-   "Bistrița-Năsăud": {
-    "n": 1,
-    "procent": 6.7
+    "procent": 4.5
    },
    "Ilfov": {
     "n": 1,
-    "procent": 6.7
+    "procent": 4.5
    },
    "Sălaj": {
     "n": 1,
-    "procent": 6.7
+    "procent": 4.5
    },
    "Timiș": {
     "n": 1,
-    "procent": 6.7
+    "procent": 4.5
    },
    "Hunedoara": {
     "n": 1,
-    "procent": 6.7
+    "procent": 4.5
    },
    "Călărași": {
     "n": 1,
-    "procent": 6.7
-   },
-   "Municipiul București": {
-    "n": 1,
-    "procent": 6.7
+    "procent": 4.5
    },
    "Tulcea": {
     "n": 1,
-    "procent": 6.7
+    "procent": 4.5
    },
    "Bacău": {
     "n": 1,
-    "procent": 6.7
+    "procent": 4.5
+   },
+   "Neamț": {
+    "n": 1,
+    "procent": 4.5
+   },
+   "Constanța": {
+    "n": 1,
+    "procent": 4.5
    }
   },
   "domenii": {
    "Producție / Logistică": {
-    "n": 5,
-    "procent": 33.3
+    "n": 7,
+    "procent": 31.8
    },
    "Altele": {
-    "n": 5,
-    "procent": 33.3
+    "n": 7,
+    "procent": 31.8
    },
    "Construcții / Instalații": {
     "n": 4,
-    "procent": 26.7
+    "procent": 18.2
    },
    "Inginerie": {
     "n": 1,
-    "procent": 6.7
+    "procent": 4.5
+   },
+   "STAT": {
+    "n": 1,
+    "procent": 4.5
+   },
+   "PRODUCTIE MOBILA": {
+    "n": 1,
+    "procent": 4.5
+   },
+   "Agricultură / Zootehnie": {
+    "n": 1,
+    "procent": 4.5
    }
   },
   "coduriCorInGrupa": {
    "742214 - ELECTROMECANIC": {
-    "n": 15,
-    "procent": 71.4
+    "n": 22,
+    "procent": 64.7
    },
    "742201 - AUTOMATIST": {
+    "n": 4,
+    "procent": 11.8
+   },
+   "742215 - JONCTOR FIBRA OPTICA": {
     "n": 3,
-    "procent": 14.3
+    "procent": 8.8
    },
    "742202 - ELECTROMECANIC SCB (SEMNALIZARE, CENTRALIZARE, BLOCARE)": {
     "n": 1,
-    "procent": 4.8
+    "procent": 2.9
    },
    "742208 - JONCTOR": {
     "n": 1,
-    "procent": 4.8
+    "procent": 2.9
    },
-   "742215 - JONCTOR FIBRA OPTICA": {
+   "742212 - MUNCITOR RADIOELECTRONIST": {
     "n": 1,
-    "procent": 4.8
+    "procent": 2.9
+   },
+   "742207 - ELECTRONIST TELECOMUNICATII": {
+    "n": 1,
+    "procent": 2.9
+   },
+   "742213 - ELECTROMECANIC AUTOMATIZARI SI TELECOMUNICATII": {
+    "n": 1,
+    "procent": 2.9
    }
   }
  },

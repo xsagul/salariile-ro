@@ -27,14 +27,38 @@
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 0,
+  "anunturiCitite": 4,
   "cuSalariu": 0,
   "nivel": {},
-  "experienta": {},
-  "experientaPortal": {},
-  "studii": {},
+  "experienta": {
+   "da": {
+    "n": 3,
+    "procent": 75
+   },
+   "avantaj": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "experientaPortal": {
+   "1–5 ani": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "studii": {
+   "medii": {
+    "n": 3,
+    "procent": 75
+   }
+  },
   "limbi": {},
-  "permis": {},
+  "permis": {
+   "B": {
+    "n": 2,
+    "procent": 50
+   }
+  },
   "atestate": {},
   "program": {},
   "mod": {},
@@ -44,17 +68,71 @@
   "tehnologii": {},
   "negociabil": {},
   "strainatate": {},
-  "limbaAnuntului": {},
-  "surse": {},
-  "peJudet": {},
-  "motiveFaraSalariu": {},
-  "salariuPeFactor": {}
+  "limbaAnuntului": {
+   "ro": {
+    "n": 4,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "publi24": {
+    "n": 3,
+    "procent": 75
+   },
+   "hipo": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "peJudet": {
+   "RO": {
+    "n": 1,
+    "procent": 25
+   },
+   "Bihor": {
+    "n": 1,
+    "procent": 25
+   },
+   "Buzau": {
+    "n": 1,
+    "procent": 25
+   },
+   "Brasov": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "motiveFaraSalariu": {
+   "salary_evidence_incomplete": {
+    "n": 4,
+    "procent": 100
+   },
+   "foreign_or_noncomparable_work": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
   "oferte": 0,
   "posturi": 0,
-  "ofertePeGrupaCor": 0,
+  "ofertePeGrupaCor": 3,
   "tipSalariu": {},
   "netMinimDeclarat": {
    "n": 0
@@ -70,25 +148,67 @@
   "regim": {},
   "judete": {},
   "domenii": {},
-  "coduriCorInGrupa": {}
+  "coduriCorInGrupa": {
+   "265401 - CONSULTANT ARTISTIC": {
+    "n": 1,
+    "procent": 33.3
+   },
+   "265430 - PRODUCATOR AUDIOVIDEO": {
+    "n": 1,
+    "procent": 33.3
+   },
+   "265437 - PRODUCATOR DELEGAT PENTRU TEATRU": {
+    "n": 1,
+    "procent": 33.3
+   }
+  }
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
-  "posturi": 0,
-  "institutii": 0,
-  "posturiDinSurseDeVerificat": 0,
-  "judete": {},
-  "tipInstitutie": {},
-  "perioade": {},
+  "posturi": 3,
+  "institutii": 1,
+  "posturiDinSurseDeVerificat": 1,
+  "judete": {
+   "SB": {
+    "n": 3,
+    "procent": 100
+   }
+  },
+  "tipInstitutie": {
+   "cultura": {
+    "n": 3,
+    "procent": 100
+   }
+  },
+  "perioade": {
+   "2026-03": {
+    "n": 3,
+    "procent": 100
+   }
+  },
   "studii": {},
   "bazaBruta": {
-   "n": 0
+   "n": 3
   },
   "bazaCuSporuriFixe": {
-   "n": 0
+   "n": 3
   },
-  "peGradatie": {},
-  "peFunctie": {}
+  "peGradatie": {
+   "gradația 5": {
+    "n": 2
+   },
+   "gradația 3": {
+    "n": 1
+   }
+  },
+  "peFunctie": {
+   "REGIZOR ARTISTIC I": {
+    "n": 2
+   },
+   "REGIZOR ARTISTIC IA": {
+    "n": 1
+   }
+  }
  },
  "angajatori": {
   "descriere": "Salariul publicat de angajator pe site-ul lui de cariere, pe post și oraș (lei pe lună; baza cum o scrie angajatorul).",

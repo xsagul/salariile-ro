@@ -4,112 +4,149 @@
  "cor": "814209",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
-  "cuSalariu": 7,
-  "cuBazaDeclarata": 4,
-  "faraBazaDeclarata": 3,
+  "cuSalariu": 11,
+  "cuBazaDeclarata": 7,
+  "faraBazaDeclarata": 4,
   "surse": {
    "publi24": {
-    "n": 3,
-    "procent": 42.9
+    "n": 6,
+    "procent": 54.5
    },
    "bestjobs": {
-    "n": 2,
-    "procent": 28.6
+    "n": 3,
+    "procent": 27.3
    },
    "olx": {
     "n": 2,
-    "procent": 28.6
+    "procent": 18.2
    }
   },
   "colectari": {
-   "8 septembrie 2026": {
-    "n": 5,
-    "procent": 71.4
-   },
    "continuă": {
-    "n": 2,
-    "procent": 28.6
+    "n": 7,
+    "procent": 63.6
+   },
+   "8 septembrie 2026": {
+    "n": 4,
+    "procent": 36.4
    }
   },
   "net": {
-   "n": 4
+   "n": 7
   },
   "netMinimOferit": {
-   "n": 4
+   "n": 7
   },
   "netMaximOferit": {
-   "n": 4
+   "n": 7
   },
   "faraBazaDeclarata_valori": {
-   "n": 3
+   "n": 4
   },
-  "peOras": {},
-  "peJudet": {},
+  "peOras": {
+   "Timisoara": {
+    "n": 4
+   }
+  },
+  "peJudet": {
+   "Timis": {
+    "n": 4
+   }
+  },
   "peLuna": {
    "2026-09": {
+    "n": 4,
+    "procent": 36.4
+   },
+   "2026-10": {
     "n": 3,
-    "procent": 42.9
+    "procent": 27.3
    },
    "2026-08": {
     "n": 2,
-    "procent": 28.6
+    "procent": 18.2
    },
    "2025-03": {
     "n": 1,
-    "procent": 14.3
+    "procent": 9.1
    },
    "2026-04": {
     "n": 1,
-    "procent": 14.3
+    "procent": 9.1
    }
   }
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 2,
-  "cuSalariu": 0,
+  "anunturiCitite": 10,
+  "cuSalariu": 4,
   "nivel": {},
   "experienta": {
    "avantaj": {
-    "n": 1,
-    "procent": 50
+    "n": 3,
+    "procent": 30
    },
    "da": {
-    "n": 1,
-    "procent": 50
+    "n": 3,
+    "procent": 30
    }
   },
   "experientaPortal": {},
-  "studii": {},
+  "studii": {
+   "medii": {
+    "n": 3,
+    "procent": 30
+   }
+  },
   "limbi": {},
   "permis": {},
   "atestate": {},
   "program": {
    "ture": {
-    "n": 1,
-    "procent": 50
+    "n": 6,
+    "procent": 60
    }
   },
   "mod": {},
   "norma": {},
   "durata": {
    "nedeterminată": {
+    "n": 3,
+    "procent": 30
+   },
+   "determinată": {
     "n": 1,
-    "procent": 50
+    "procent": 10
    }
   },
   "beneficii": {
    "tichete de masă": {
-    "n": 1,
-    "procent": 50
+    "n": 6,
+    "procent": 60
    },
    "transport": {
-    "n": 1,
-    "procent": 50
+    "n": 4,
+    "procent": 40
    },
    "bonus": {
+    "n": 4,
+    "procent": 40
+   },
+   "prime": {
+    "n": 4,
+    "procent": 40
+   },
+   "spor": {
+    "n": 4,
+    "procent": 40
+   },
+   "asigurare medicală": {
+    "n": 3,
+    "procent": 30
+   },
+   "ore suplimentare plătite": {
     "n": 1,
-    "procent": 50
+    "procent": 10
    }
   },
   "tehnologii": {},
@@ -117,160 +154,262 @@
   "strainatate": {},
   "limbaAnuntului": {
    "ro": {
-    "n": 2,
+    "n": 10,
     "procent": 100
    }
   },
   "surse": {
+   "publi24": {
+    "n": 7,
+    "procent": 70
+   },
    "bestjobs": {
-    "n": 2,
+    "n": 3,
+    "procent": 30
+   }
+  },
+  "peJudet": {
+   "Timis": {
+    "n": 4,
+    "procent": 40
+   },
+   "Mures": {
+    "n": 1,
+    "procent": 10
+   },
+   "Neamt": {
+    "n": 1,
+    "procent": 10
+   },
+   "Buzau": {
+    "n": 1,
+    "procent": 10
+   }
+  },
+  "motiveFaraSalariu": {
+   "salary_evidence_incomplete": {
+    "n": 3,
     "procent": 100
    }
   },
-  "peJudet": {},
-  "motiveFaraSalariu": {},
-  "salariuPeFactor": {}
+  "salariuPeFactor": {
+   "experienta": {
+    "da": {
+     "n": 2
+    }
+   },
+   "studii": {
+    "medii": {
+     "n": 2
+    }
+   },
+   "program": {
+    "ture": {
+     "n": 3
+    }
+   },
+   "beneficii": {
+    "tichete de masă": {
+     "n": 4
+    },
+    "prime": {
+     "n": 4
+    },
+    "spor": {
+     "n": 4
+    },
+    "transport": {
+     "n": 3
+    },
+    "bonus": {
+     "n": 3
+    },
+    "asigurare medicală": {
+     "n": 3
+    },
+    "ore suplimentare plătite": {
+     "n": 1
+    }
+   }
+  },
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
-  "oferte": 13,
-  "posturi": 44,
-  "ofertePeGrupaCor": 28,
+  "oferte": 18,
+  "posturi": 49,
+  "ofertePeGrupaCor": 40,
   "tipSalariu": {
    "gross": {
-    "n": 8,
-    "procent": 61.5
+    "n": 13,
+    "procent": 72.2
    },
    "none": {
     "n": 4,
-    "procent": 30.8
+    "procent": 22.2
    },
    "net": {
     "n": 1,
-    "procent": 7.7
+    "procent": 5.6
    }
   },
   "netMinimDeclarat": {
    "n": 1
   },
   "brutMinimDeclarat": {
-   "n": 8
+   "n": 13,
+   "p10": 4325,
+   "p25": 4325,
+   "median": 4325,
+   "p75": 4325,
+   "p90": 4325,
+   "min": 1,
+   "max": 4500
   },
-  "laSalariulMinim": 8,
+  "laSalariulMinim": 12,
   "studii": {
    "Profesional - ȘCOALĂ PROFESIONALĂ": {
     "n": 7,
-    "procent": 53.8
+    "procent": 38.9
    },
    "Gimnazial - ȘCOALĂ GENERALĂ": {
-    "n": 4,
-    "procent": 30.8
+    "n": 6,
+    "procent": 33.3
    },
    "Liceal - LICEU DE SPECIALITATE": {
-    "n": 2,
-    "procent": 15.4
+    "n": 3,
+    "procent": 16.7
+   },
+   "Liceal - LICEU TEORETIC": {
+    "n": 1,
+    "procent": 5.6
+   },
+   "Primar - FĂRĂ STUDII": {
+    "n": 1,
+    "procent": 5.6
    }
   },
   "experienta": {
    "Experiență puțină - mai puțin de 3 ani": {
-    "n": 8,
-    "procent": 61.5
+    "n": 10,
+    "procent": 55.6
    },
    "Fără experiență - 0 ani": {
-    "n": 3,
-    "procent": 23.1
+    "n": 5,
+    "procent": 27.8
+   },
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 2,
+    "procent": 11.1
    },
    "Avansat - între 5 și 7 ani": {
     "n": 1,
-    "procent": 7.7
-   },
-   "Experiență medie - între 3 și 5 ani": {
-    "n": 1,
-    "procent": 7.7
+    "procent": 5.6
    }
   },
   "contract": {
    "Cu durată nedeterminată": {
-    "n": 13,
+    "n": 18,
     "procent": 100
    }
   },
   "norma": {
    "Cu normă întreagă": {
-    "n": 13,
+    "n": 18,
     "procent": 100
    }
   },
   "regim": {
    "Sediu": {
-    "n": 13,
+    "n": 18,
     "procent": 100
    }
   },
   "judete": {
    "Bistrița-Năsăud": {
-    "n": 3,
-    "procent": 23.1
+    "n": 4,
+    "procent": 22.2
    },
    "Arad": {
+    "n": 3,
+    "procent": 16.7
+   },
+   "Cluj": {
     "n": 2,
-    "procent": 15.4
+    "procent": 11.1
    },
    "Maramureș": {
     "n": 1,
-    "procent": 7.7
-   },
-   "Cluj": {
-    "n": 1,
-    "procent": 7.7
+    "procent": 5.6
    },
    "Mureș": {
     "n": 1,
-    "procent": 7.7
+    "procent": 5.6
    },
    "Buzău": {
     "n": 1,
-    "procent": 7.7
+    "procent": 5.6
    },
    "Bihor": {
     "n": 1,
-    "procent": 7.7
+    "procent": 5.6
    },
    "Vrancea": {
     "n": 1,
-    "procent": 7.7
+    "procent": 5.6
    },
    "Brăila": {
     "n": 1,
-    "procent": 7.7
+    "procent": 5.6
    },
    "Ilfov": {
     "n": 1,
-    "procent": 7.7
+    "procent": 5.6
+   },
+   "Teleorman": {
+    "n": 1,
+    "procent": 5.6
+   },
+   "Prahova": {
+    "n": 1,
+    "procent": 5.6
    }
   },
   "domenii": {
    "Producție / Logistică": {
-    "n": 13,
+    "n": 18,
     "procent": 100
    }
   },
   "coduriCorInGrupa": {
-   "814209 - OPERATOR MASE PLASTICE": {
-    "n": 13,
-    "procent": 46.4
-   },
    "814203 - OPERATOR LA PRELUCRAREA MASELOR PLASTICE": {
-    "n": 12,
-    "procent": 42.9
+    "n": 19,
+    "procent": 47.5
+   },
+   "814209 - OPERATOR MASE PLASTICE": {
+    "n": 18,
+    "procent": 45
    },
    "814210 - OPERATOR MASINI DE TERMOFORMATARE": {
     "n": 2,
-    "procent": 7.1
+    "procent": 5
    },
    "814201 - PREPARATOR MASE PLASTICE": {
     "n": 1,
-    "procent": 3.6
+    "procent": 2.5
    }
   }
  },

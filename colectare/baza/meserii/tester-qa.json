@@ -4,19 +4,23 @@
  "cor": "351108",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
-  "cuSalariu": 1,
+  "cuSalariu": 2,
   "cuBazaDeclarata": 0,
-  "faraBazaDeclarata": 1,
+  "faraBazaDeclarata": 2,
   "surse": {
    "bestjobs": {
-    "n": 1,
+    "n": 2,
     "procent": 100
    }
   },
   "colectari": {
+   "continuă": {
+    "n": 1,
+    "procent": 50
+   },
    "8 septembrie 2026": {
     "n": 1,
-    "procent": 100
+    "procent": 50
    }
   },
   "net": {
@@ -29,69 +33,89 @@
    "n": 0
   },
   "faraBazaDeclarata_valori": {
-   "n": 1
+   "n": 2
   },
   "peOras": {},
   "peJudet": {},
   "peLuna": {
+   "2026-11": {
+    "n": 1,
+    "procent": 50
+   },
    "2026-09": {
     "n": 1,
-    "procent": 100
+    "procent": 50
    }
   }
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 13,
+  "anunturiCitite": 37,
   "cuSalariu": 0,
   "nivel": {
    "senior": {
-    "n": 3,
-    "procent": 23.1
+    "n": 7,
+    "procent": 18.9
    },
    "stagiar": {
     "n": 1,
-    "procent": 7.7
+    "procent": 2.7
+   },
+   "junior": {
+    "n": 1,
+    "procent": 2.7
    }
   },
   "experienta": {
    "3+ ani": {
+    "n": 4,
+    "procent": 10.8
+   },
+   "5+ ani": {
+    "n": 3,
+    "procent": 8.1
+   },
+   "6+ ani": {
     "n": 2,
-    "procent": 15.4
+    "procent": 5.4
    },
    "1+ ani": {
     "n": 1,
-    "procent": 7.7
-   },
-   "6+ ani": {
-    "n": 1,
-    "procent": 7.7
-   },
-   "5+ ani": {
-    "n": 1,
-    "procent": 7.7
+    "procent": 2.7
    },
    "fara": {
     "n": 1,
-    "procent": 7.7
+    "procent": 2.7
+   },
+   "2+ ani": {
+    "n": 1,
+    "procent": 2.7
+   },
+   "10+ ani": {
+    "n": 1,
+    "procent": 2.7
    }
   },
   "experientaPortal": {
    "1–5 ani": {
-    "n": 8,
-    "procent": 61.5
+    "n": 10,
+    "procent": 27
    }
   },
   "studii": {
    "superioare": {
-    "n": 5,
-    "procent": 38.5
+    "n": 12,
+    "procent": 32.4
    }
   },
   "limbi": {
    "engleza": {
-    "n": 4,
-    "procent": 30.8
+    "n": 7,
+    "procent": 18.9
+   },
+   "germana": {
+    "n": 1,
+    "procent": 2.7
    }
   },
   "permis": {},
@@ -99,158 +123,184 @@
   "program": {},
   "mod": {
    "remote": {
-    "n": 5,
-    "procent": 38.5
+    "n": 8,
+    "procent": 21.6
    },
    "hibrid": {
-    "n": 4,
-    "procent": 30.8
+    "n": 6,
+    "procent": 16.2
    }
   },
   "norma": {
    "full-time": {
-    "n": 1,
-    "procent": 7.7
+    "n": 2,
+    "procent": 5.4
    }
   },
   "durata": {},
   "beneficii": {
    "cursuri / training": {
-    "n": 4,
-    "procent": 30.8
-   },
-   "bonus": {
-    "n": 3,
-    "procent": 23.1
+    "n": 6,
+    "procent": 16.2
    },
    "asigurare medicală": {
-    "n": 3,
-    "procent": 23.1
+    "n": 6,
+    "procent": 16.2
+   },
+   "bonus": {
+    "n": 5,
+    "procent": 13.5
    },
    "tichete de masă": {
-    "n": 1,
-    "procent": 7.7
+    "n": 2,
+    "procent": 5.4
    },
    "prime": {
     "n": 1,
-    "procent": 7.7
+    "procent": 2.7
    },
    "vouchere de vacanță": {
     "n": 1,
-    "procent": 7.7
+    "procent": 2.7
    }
   },
   "tehnologii": {
    "Jira": {
-    "n": 7,
-    "procent": 53.8
+    "n": 12,
+    "procent": 32.4
    },
-   "Java": {
-    "n": 2,
-    "procent": 15.4
+   "Selenium": {
+    "n": 5,
+    "procent": 13.5
    },
    "SQL": {
-    "n": 2,
-    "procent": 15.4
+    "n": 4,
+    "procent": 10.8
    },
    "Docker": {
-    "n": 2,
-    "procent": 15.4
+    "n": 4,
+    "procent": 10.8
    },
    "Kubernetes": {
-    "n": 2,
-    "procent": 15.4
+    "n": 4,
+    "procent": 10.8
    },
    "Linux": {
+    "n": 4,
+    "procent": 10.8
+   },
+   "Java": {
+    "n": 3,
+    "procent": 8.1
+   },
+   "Python": {
+    "n": 3,
+    "procent": 8.1
+   },
+   "AWS": {
+    "n": 3,
+    "procent": 8.1
+   },
+   "Azure": {
+    "n": 3,
+    "procent": 8.1
+   },
+   "Git": {
+    "n": 3,
+    "procent": 8.1
+   },
+   "Angular": {
     "n": 2,
-    "procent": 15.4
+    "procent": 5.4
+   },
+   "Excel": {
+    "n": 2,
+    "procent": 5.4
    },
    "TypeScript": {
     "n": 2,
-    "procent": 15.4
-   },
-   "Python": {
-    "n": 2,
-    "procent": 15.4
-   },
-   "AWS": {
-    "n": 2,
-    "procent": 15.4
-   },
-   "Selenium": {
-    "n": 2,
-    "procent": 15.4
-   },
-   "Angular": {
-    "n": 1,
-    "procent": 7.7
-   },
-   "Excel": {
-    "n": 1,
-    "procent": 7.7
+    "procent": 5.4
    },
    "Ruby": {
     "n": 1,
-    "procent": 7.7
+    "procent": 2.7
    },
    "JavaScript": {
     "n": 1,
-    "procent": 7.7
+    "procent": 2.7
    },
-   "Azure": {
+   "AutoCAD": {
     "n": 1,
-    "procent": 7.7
+    "procent": 2.7
    }
   },
   "negociabil": {},
   "strainatate": {},
   "limbaAnuntului": {
    "en": {
-    "n": 11,
-    "procent": 84.6
+    "n": 32,
+    "procent": 86.5
    },
    "ro": {
-    "n": 2,
-    "procent": 15.4
+    "n": 5,
+    "procent": 13.5
    }
   },
   "surse": {
-   "hipo": {
-    "n": 9,
-    "procent": 69.2
-   },
    "undelucram": {
-    "n": 3,
-    "procent": 23.1
+    "n": 22,
+    "procent": 59.5
+   },
+   "hipo": {
+    "n": 11,
+    "procent": 29.7
    },
    "bestjobs": {
-    "n": 1,
-    "procent": 7.7
+    "n": 4,
+    "procent": 10.8
    }
   },
   "peJudet": {
    "RO": {
-    "n": 8,
-    "procent": 61.5
+    "n": 10,
+    "procent": 27
    }
   },
   "motiveFaraSalariu": {
    "salary_evidence_incomplete": {
-    "n": 13,
-    "procent": 100
+    "n": 35,
+    "procent": 97.2
    },
    "country_unconfirmed": {
-    "n": 2,
-    "procent": 15.4
+    "n": 4,
+    "procent": 11.1
+   },
+   "multiple_unresolved_amounts": {
+    "n": 1,
+    "procent": 2.8
    }
   },
-  "salariuPeFactor": {}
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
   "oferte": 0,
   "posturi": 0,
-  "ofertePeGrupaCor": 17,
+  "ofertePeGrupaCor": 26,
   "tipSalariu": {},
   "netMinimDeclarat": {
    "n": 0
@@ -268,24 +318,24 @@
   "domenii": {},
   "coduriCorInGrupa": {
    "351101 - OPERATOR CALCULATOR ELECTRONIC SI RETELE": {
-    "n": 6,
-    "procent": 35.3
+    "n": 10,
+    "procent": 38.5
    },
    "351107 - OPERATOR SUPORT TEHNIC PENTRU SERVICII DE COMUNICATII ELECTRONICE": {
-    "n": 4,
-    "procent": 23.5
+    "n": 6,
+    "procent": 23.1
    },
    "351103 - TEHNICIAN ECHIPAMENTE DE CALCUL SI RETELE": {
-    "n": 4,
-    "procent": 23.5
+    "n": 6,
+    "procent": 23.1
    },
    "351105 - ADMINISTRATOR SISTEM DOCUMENTAR": {
-    "n": 2,
-    "procent": 11.8
+    "n": 3,
+    "procent": 11.5
    },
    "351106 - OPERATOR PROMPTER": {
     "n": 1,
-    "procent": 5.9
+    "procent": 3.8
    }
   }
  },

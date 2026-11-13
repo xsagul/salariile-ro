@@ -1,9 +1,9 @@
 {
- "luna": "septembrie 2026",
+ "luna": "noiembrie 2026",
  "meserii": {
   "programator": {
    "sursa": "anunturi",
-   "n": 102,
+   "n": 206,
    "randuri": [
     {
      "eticheta": "Experiență",
@@ -11,10 +11,194 @@
       {
        "v": "5+ ani",
        "p": 14
+      }
+     ]
+    },
+    {
+     "eticheta": "Studii",
+     "valori": [
+      {
+       "v": "superioare",
+       "p": 35
+      }
+     ]
+    },
+    {
+     "eticheta": "Limbi străine",
+     "valori": [
+      {
+       "v": "engleză",
+       "p": 17
+      }
+     ]
+    },
+    {
+     "eticheta": "Mod de lucru",
+     "valori": [
+      {
+       "v": "hibrid",
+       "p": 40
+      },
+      {
+       "v": "remote",
+       "p": 34
+      }
+     ]
+    },
+    {
+     "eticheta": "Tehnologii",
+     "valori": [
+      {
+       "v": "Java",
+       "p": 52
+      },
+      {
+       "v": "SQL",
+       "p": 52
+      },
+      {
+       "v": "Git",
+       "p": 49
+      },
+      {
+       "v": "Docker",
+       "p": 37
+      },
+      {
+       "v": "Python",
+       "p": 36
+      },
+      {
+       "v": "Azure",
+       "p": 34
+      }
+     ]
+    },
+    {
+     "eticheta": "Beneficii",
+     "valori": [
+      {
+       "v": "cursuri / training",
+       "p": 22
+      },
+      {
+       "v": "bonus",
+       "p": 21
+      },
+      {
+       "v": "asigurare medicală",
+       "p": 18
+      }
+     ]
+    }
+   ]
+  },
+  "tester-qa": {
+   "sursa": "anunturi",
+   "n": 37,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "3+ ani",
+       "p": 11
+      }
+     ]
+    },
+    {
+     "eticheta": "Studii",
+     "valori": [
+      {
+       "v": "superioare",
+       "p": 32
+      }
+     ]
+    },
+    {
+     "eticheta": "Limbi străine",
+     "valori": [
+      {
+       "v": "engleză",
+       "p": 19
+      }
+     ]
+    },
+    {
+     "eticheta": "Mod de lucru",
+     "valori": [
+      {
+       "v": "remote",
+       "p": 22
+      },
+      {
+       "v": "hibrid",
+       "p": 16
+      }
+     ]
+    },
+    {
+     "eticheta": "Tehnologii",
+     "valori": [
+      {
+       "v": "Jira",
+       "p": 32
+      },
+      {
+       "v": "Selenium",
+       "p": 14
+      },
+      {
+       "v": "SQL",
+       "p": 11
+      },
+      {
+       "v": "Docker",
+       "p": 11
+      },
+      {
+       "v": "Kubernetes",
+       "p": 11
+      },
+      {
+       "v": "Linux",
+       "p": 11
+      }
+     ]
+    },
+    {
+     "eticheta": "Beneficii",
+     "valori": [
+      {
+       "v": "cursuri / training",
+       "p": 16
+      },
+      {
+       "v": "asigurare medicală",
+       "p": 16
+      },
+      {
+       "v": "bonus",
+       "p": 14
+      }
+     ]
+    }
+   ]
+  },
+  "devops-engineer": {
+   "sursa": "anunturi",
+   "n": 90,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "5+ ani",
+       "p": 36
       },
       {
        "v": "3+ ani",
-       "p": 12
+       "p": 14
       }
      ]
     },
@@ -28,24 +212,15 @@
      ]
     },
     {
-     "eticheta": "Limbi străine",
-     "valori": [
-      {
-       "v": "engleză",
-       "p": 15
-      }
-     ]
-    },
-    {
      "eticheta": "Mod de lucru",
      "valori": [
       {
        "v": "hibrid",
-       "p": 55
+       "p": 33
       },
       {
        "v": "remote",
-       "p": 32
+       "p": 23
       }
      ]
     },
@@ -53,28 +228,28 @@
      "eticheta": "Tehnologii",
      "valori": [
       {
-       "v": "Java",
-       "p": 59
-      },
-      {
-       "v": "SQL",
-       "p": 57
+       "v": "Azure",
+       "p": 64
       },
       {
        "v": "Git",
-       "p": 52
+       "p": 63
       },
       {
        "v": "Kubernetes",
-       "p": 44
+       "p": 60
       },
       {
-       "v": "Spring",
-       "p": 42
+       "v": "Python",
+       "p": 54
       },
       {
-       "v": "Azure",
-       "p": 41
+       "v": "Linux",
+       "p": 52
+      },
+      {
+       "v": "Docker",
+       "p": 51
       }
      ]
     },
@@ -82,35 +257,35 @@
      "eticheta": "Beneficii",
      "valori": [
       {
+       "v": "asigurare medicală",
+       "p": 36
+      },
+      {
        "v": "cursuri / training",
-       "p": 23
+       "p": 31
       },
       {
        "v": "bonus",
-       "p": 14
-      },
-      {
-       "v": "asigurare medicală",
-       "p": 12
+       "p": 27
       }
      ]
     }
    ]
   },
-  "devops-engineer": {
+  "analist-date": {
    "sursa": "anunturi",
-   "n": 48,
+   "n": 26,
    "randuri": [
     {
      "eticheta": "Experiență",
      "valori": [
       {
-       "v": "5+ ani",
-       "p": 40
+       "v": "3+ ani",
+       "p": 15
       },
       {
-       "v": "3+ ani",
-       "p": 13
+       "v": "4+ ani",
+       "p": 12
       }
      ]
     },
@@ -119,7 +294,16 @@
      "valori": [
       {
        "v": "superioare",
-       "p": 31
+       "p": 50
+      }
+     ]
+    },
+    {
+     "eticheta": "Limbi străine",
+     "valori": [
+      {
+       "v": "engleză",
+       "p": 19
       }
      ]
     },
@@ -128,11 +312,11 @@
      "valori": [
       {
        "v": "hibrid",
-       "p": 38
+       "p": 50
       },
       {
        "v": "remote",
-       "p": 25
+       "p": 42
       }
      ]
     },
@@ -140,28 +324,24 @@
      "eticheta": "Tehnologii",
      "valori": [
       {
-       "v": "Azure",
-       "p": 67
+       "v": "Power BI",
+       "p": 81
+      },
+      {
+       "v": "SQL",
+       "p": 65
+      },
+      {
+       "v": "Excel",
+       "p": 54
       },
       {
        "v": "Python",
-       "p": 58
+       "p": 50
       },
       {
-       "v": "Docker",
-       "p": 58
-      },
-      {
-       "v": "Kubernetes",
-       "p": 58
-      },
-      {
-       "v": "Git",
-       "p": 48
-      },
-      {
-       "v": "Linux",
-       "p": 44
+       "v": "SAP",
+       "p": 23
       }
      ]
     },
@@ -170,15 +350,15 @@
      "valori": [
       {
        "v": "cursuri / training",
-       "p": 29
-      },
-      {
-       "v": "asigurare medicală",
-       "p": 27
+       "p": 42
       },
       {
        "v": "bonus",
-       "p": 21
+       "p": 31
+      },
+      {
+       "v": "asigurare medicală",
+       "p": 23
       }
      ]
     }
@@ -186,14 +366,14 @@
   },
   "medic": {
    "sursa": "anunturi",
-   "n": 40,
+   "n": 132,
    "randuri": [
     {
      "eticheta": "Experiență",
      "valori": [
       {
        "v": "experiență cerută",
-       "p": 28
+       "p": 21
       }
      ]
     },
@@ -202,28 +382,6 @@
      "valori": [
       {
        "v": "superioare",
-       "p": 23
-      }
-     ]
-    },
-    {
-     "eticheta": "Limbi străine",
-     "valori": [
-      {
-       "v": "engleză",
-       "p": 18
-      }
-     ]
-    },
-    {
-     "eticheta": "Beneficii",
-     "valori": [
-      {
-       "v": "cursuri / training",
-       "p": 20
-      },
-      {
-       "v": "tichete de masă",
        "p": 18
       }
      ]
@@ -232,18 +390,18 @@
   },
   "asistent-medical": {
    "sursa": "anunturi",
-   "n": 65,
+   "n": 367,
    "randuri": [
     {
      "eticheta": "Experiență",
      "valori": [
       {
        "v": "experiență cerută",
-       "p": 34
+       "p": 26
       },
       {
-       "v": "1+ ani",
-       "p": 15
+       "v": "experiența e un avantaj",
+       "p": 10
       }
      ]
     },
@@ -252,20 +410,7 @@
      "valori": [
       {
        "v": "medii",
-       "p": 28
-      },
-      {
-       "v": "postliceale",
-       "p": 15
-      }
-     ]
-    },
-    {
-     "eticheta": "Limbi străine",
-     "valori": [
-      {
-       "v": "engleză",
-       "p": 14
+       "p": 13
       }
      ]
     },
@@ -274,7 +419,68 @@
      "valori": [
       {
        "v": "ture",
-       "p": 31
+       "p": 23
+      }
+     ]
+    },
+    {
+     "eticheta": "Beneficii",
+     "valori": [
+      {
+       "v": "cursuri / training",
+       "p": 22
+      },
+      {
+       "v": "tichete de masă",
+       "p": 17
+      }
+     ]
+    }
+   ]
+  },
+  "stomatolog": {
+   "sursa": "anunturi",
+   "n": 51,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "experiență cerută",
+       "p": 24
+      }
+     ]
+    }
+   ]
+  },
+  "farmacist": {
+   "sursa": "anunturi",
+   "n": 182,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "experiența e un avantaj",
+       "p": 14
+      }
+     ]
+    },
+    {
+     "eticheta": "Studii",
+     "valori": [
+      {
+       "v": "superioare",
+       "p": 30
+      }
+     ]
+    },
+    {
+     "eticheta": "Program",
+     "valori": [
+      {
+       "v": "ture",
+       "p": 20
       }
      ]
     },
@@ -283,26 +489,124 @@
      "valori": [
       {
        "v": "tichete de masă",
-       "p": 35
+       "p": 79
+      },
+      {
+       "v": "bonus",
+       "p": 51
       },
       {
        "v": "cursuri / training",
+       "p": 48
+      },
+      {
+       "v": "asigurare medicală",
+       "p": 28
+      }
+     ]
+    }
+   ]
+  },
+  "asistent-farmacie": {
+   "sursa": "anunturi",
+   "n": 32,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "experiența e un avantaj",
+       "p": 31
+      },
+      {
+       "v": "fără experiență",
+       "p": 13
+      }
+     ]
+    },
+    {
+     "eticheta": "Studii",
+     "valori": [
+      {
+       "v": "postliceale",
+       "p": 53
+      },
+      {
+       "v": "superioare",
+       "p": 22
+      }
+     ]
+    },
+    {
+     "eticheta": "Program",
+     "valori": [
+      {
+       "v": "ture",
+       "p": 25
+      }
+     ]
+    },
+    {
+     "eticheta": "Beneficii",
+     "valori": [
+      {
+       "v": "tichete de masă",
+       "p": 72
+      },
+      {
+       "v": "cursuri / training",
+       "p": 41
+      },
+      {
+       "v": "bonus",
+       "p": 34
+      },
+      {
+       "v": "asigurare medicală",
        "p": 34
       }
      ]
     }
    ]
   },
-  "farmacist": {
+  "kinetoterapeut": {
    "sursa": "anunturi",
-   "n": 81,
+   "n": 44,
    "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "experiență cerută",
+       "p": 23
+      }
+     ]
+    },
     {
      "eticheta": "Studii",
      "valori": [
       {
        "v": "superioare",
-       "p": 28
+       "p": 32
+      }
+     ]
+    }
+   ]
+  },
+  "infirmier": {
+   "sursa": "anunturi",
+   "n": 118,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "experiență cerută",
+       "p": 22
+      },
+      {
+       "v": "fără experiență",
+       "p": 11
       }
      ]
     },
@@ -314,44 +618,77 @@
        "p": 26
       }
      ]
+    }
+   ]
+  },
+  "medic-veterinar": {
+   "sursa": "anunturi",
+   "n": 39,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "experiență cerută",
+       "p": 15
+      },
+      {
+       "v": "experiența e un avantaj",
+       "p": 13
+      }
+     ]
+    },
+    {
+     "eticheta": "Studii",
+     "valori": [
+      {
+       "v": "superioare",
+       "p": 13
+      }
+     ]
+    },
+    {
+     "eticheta": "Permis de conducere",
+     "valori": [
+      {
+       "v": "B",
+       "p": 13
+      }
+     ]
     },
     {
      "eticheta": "Beneficii",
      "valori": [
       {
-       "v": "tichete de masă",
-       "p": 82
+       "v": "cursuri / training",
+       "p": 21
       },
       {
        "v": "bonus",
-       "p": 62
+       "p": 18
       },
       {
-       "v": "cursuri / training",
-       "p": 59
+       "v": "tichete de masă",
+       "p": 15
       },
       {
-       "v": "spor",
-       "p": 35
+       "v": "asigurare medicală",
+       "p": 13
       }
      ]
     }
    ]
   },
-  "infirmier": {
-   "sursa": "anofm",
-   "n": 32,
+  "profesor": {
+   "sursa": "anunturi",
+   "n": 39,
    "randuri": [
     {
      "eticheta": "Experiență",
      "valori": [
       {
-       "v": "mai puțin de 3 ani",
-       "p": 53
-      },
-      {
-       "v": "fără experiență",
-       "p": 44
+       "v": "experiență cerută",
+       "p": 23
       }
      ]
     },
@@ -359,116 +696,12 @@
      "eticheta": "Studii",
      "valori": [
       {
-       "v": "gimnaziu",
-       "p": 34
-      },
-      {
-       "v": "școală profesională",
+       "v": "medii",
        "p": 31
       },
       {
-       "v": "liceu",
-       "p": 25
-      }
-     ]
-    },
-    {
-     "eticheta": "Contract",
-     "valori": [
-      {
-       "v": "cu durată nedeterminată",
-       "p": 100
-      }
-     ]
-    },
-    {
-     "eticheta": "Normă",
-     "valori": [
-      {
-       "v": "cu normă întreagă",
-       "p": 100
-      }
-     ]
-    }
-   ]
-  },
-  "medic-veterinar": {
-   "sursa": "anofm",
-   "n": 18,
-   "randuri": [
-    {
-     "eticheta": "Experiență",
-     "valori": [
-      {
-       "v": "mai puțin de 3 ani",
-       "p": 50
-      },
-      {
-       "v": "fără experiență",
-       "p": 28
-      },
-      {
-       "v": "între 3 și 5 ani",
-       "p": 17
-      }
-     ]
-    },
-    {
-     "eticheta": "Studii",
-     "valori": [
-      {
        "v": "superioare",
-       "p": 100
-      }
-     ]
-    },
-    {
-     "eticheta": "Contract",
-     "valori": [
-      {
-       "v": "cu durată nedeterminată",
-       "p": 100
-      }
-     ]
-    },
-    {
-     "eticheta": "Normă",
-     "valori": [
-      {
-       "v": "cu normă întreagă",
-       "p": 100
-      }
-     ]
-    }
-   ]
-  },
-  "contabil": {
-   "sursa": "anunturi",
-   "n": 132,
-   "randuri": [
-    {
-     "eticheta": "Experiență",
-     "valori": [
-      {
-       "v": "5+ ani",
-       "p": 17
-      },
-      {
-       "v": "experiență cerută",
-       "p": 14
-      },
-      {
-       "v": "3+ ani",
-       "p": 14
-      }
-     ]
-    },
-    {
-     "eticheta": "Studii",
-     "valori": [
-      {
-       "v": "superioare",
-       "p": 55
+       "p": 26
       }
      ]
     },
@@ -477,7 +710,57 @@
      "valori": [
       {
        "v": "engleză",
-       "p": 22
+       "p": 23
+      },
+      {
+       "v": "germană",
+       "p": 10
+      }
+     ]
+    },
+    {
+     "eticheta": "Mod de lucru",
+     "valori": [
+      {
+       "v": "remote",
+       "p": 26
+      }
+     ]
+    }
+   ]
+  },
+  "contabil": {
+   "sursa": "anunturi",
+   "n": 383,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "experiență cerută",
+       "p": 19
+      },
+      {
+       "v": "5+ ani",
+       "p": 17
+      }
+     ]
+    },
+    {
+     "eticheta": "Studii",
+     "valori": [
+      {
+       "v": "superioare",
+       "p": 51
+      }
+     ]
+    },
+    {
+     "eticheta": "Limbi străine",
+     "valori": [
+      {
+       "v": "engleză",
+       "p": 18
       }
      ]
     },
@@ -486,11 +769,11 @@
      "valori": [
       {
        "v": "Excel",
-       "p": 46
+       "p": 44
       },
       {
        "v": "SAP",
-       "p": 19
+       "p": 14
       }
      ]
     },
@@ -499,19 +782,15 @@
      "valori": [
       {
        "v": "tichete de masă",
-       "p": 21
-      },
-      {
-       "v": "bonus",
-       "p": 14
+       "p": 15
       },
       {
        "v": "cursuri / training",
-       "p": 12
+       "p": 10
       },
       {
-       "v": "asigurare medicală",
-       "p": 12
+       "v": "bonus",
+       "p": 10
       }
      ]
     }
@@ -519,18 +798,18 @@
   },
   "auditor": {
    "sursa": "anunturi",
-   "n": 23,
+   "n": 46,
    "randuri": [
     {
      "eticheta": "Experiență",
      "valori": [
       {
-       "v": "fără experiență",
-       "p": 26
+       "v": "5+ ani",
+       "p": 20
       },
       {
-       "v": "5+ ani",
-       "p": 17
+       "v": "fără experiență",
+       "p": 15
       }
      ]
     },
@@ -548,11 +827,7 @@
      "valori": [
       {
        "v": "engleză",
-       "p": 17
-      },
-      {
-       "v": "germană",
-       "p": 13
+       "p": 39
       }
      ]
     },
@@ -561,11 +836,11 @@
      "valori": [
       {
        "v": "hibrid",
-       "p": 61
+       "p": 46
       },
       {
        "v": "remote",
-       "p": 17
+       "p": 26
       }
      ]
     },
@@ -574,7 +849,11 @@
      "valori": [
       {
        "v": "Excel",
-       "p": 44
+       "p": 48
+      },
+      {
+       "v": "SAP",
+       "p": 11
       }
      ]
     },
@@ -583,11 +862,15 @@
      "valori": [
       {
        "v": "cursuri / training",
-       "p": 52
+       "p": 44
       },
       {
        "v": "asigurare medicală",
-       "p": 39
+       "p": 35
+      },
+      {
+       "v": "tichete de masă",
+       "p": 13
       },
       {
        "v": "bonus",
@@ -599,22 +882,22 @@
   },
   "economist": {
    "sursa": "anunturi",
-   "n": 49,
+   "n": 129,
    "randuri": [
     {
      "eticheta": "Experiență",
      "valori": [
       {
+       "v": "experiență cerută",
+       "p": 20
+      },
+      {
        "v": "3+ ani",
-       "p": 25
+       "p": 18
       },
       {
        "v": "5+ ani",
-       "p": 14
-      },
-      {
-       "v": "experiența e un avantaj",
-       "p": 10
+       "p": 16
       }
      ]
     },
@@ -623,7 +906,7 @@
      "valori": [
       {
        "v": "superioare",
-       "p": 71
+       "p": 74
       }
      ]
     },
@@ -632,7 +915,7 @@
      "valori": [
       {
        "v": "engleză",
-       "p": 20
+       "p": 23
       }
      ]
     },
@@ -650,80 +933,38 @@
      "valori": [
       {
        "v": "tichete de masă",
-       "p": 25
+       "p": 23
+      },
+      {
+       "v": "bonus",
+       "p": 14
       },
       {
        "v": "cursuri / training",
+       "p": 11
+      },
+      {
+       "v": "asigurare medicală",
        "p": 10
       }
      ]
     }
    ]
   },
-  "consilier-juridic": {
-   "sursa": "anofm",
-   "n": 21,
-   "randuri": [
-    {
-     "eticheta": "Experiență",
-     "valori": [
-      {
-       "v": "între 3 și 5 ani",
-       "p": 24
-      },
-      {
-       "v": "între 5 și 7 ani",
-       "p": 19
-      },
-      {
-       "v": "mai mult de 7 ani",
-       "p": 19
-      }
-     ]
-    },
-    {
-     "eticheta": "Studii",
-     "valori": [
-      {
-       "v": "superioare",
-       "p": 100
-      }
-     ]
-    },
-    {
-     "eticheta": "Contract",
-     "valori": [
-      {
-       "v": "cu durată nedeterminată",
-       "p": 100
-      }
-     ]
-    },
-    {
-     "eticheta": "Normă",
-     "valori": [
-      {
-       "v": "cu normă întreagă",
-       "p": 100
-      }
-     ]
-    }
-   ]
-  },
-  "inginer": {
+  "broker": {
    "sursa": "anunturi",
-   "n": 302,
+   "n": 100,
    "randuri": [
     {
      "eticheta": "Experiență",
      "valori": [
+      {
+       "v": "fără experiență",
+       "p": 20
+      },
       {
        "v": "experiență cerută",
-       "p": 27
-      },
-      {
-       "v": "5+ ani",
-       "p": 11
+       "p": 13
       }
      ]
     },
@@ -731,84 +972,17 @@
      "eticheta": "Studii",
      "valori": [
       {
-       "v": "superioare",
-       "p": 65
+       "v": "medii",
+       "p": 37
       }
      ]
     },
     {
-     "eticheta": "Limbi străine",
+     "eticheta": "Program",
      "valori": [
       {
-       "v": "engleză",
-       "p": 26
-      }
-     ]
-    },
-    {
-     "eticheta": "Permis de conducere",
-     "valori": [
-      {
-       "v": "B",
-       "p": 27
-      }
-     ]
-    },
-    {
-     "eticheta": "Tehnologii",
-     "valori": [
-      {
-       "v": "AutoCAD",
-       "p": 21
-      },
-      {
-       "v": "Excel",
-       "p": 16
-      }
-     ]
-    },
-    {
-     "eticheta": "Beneficii",
-     "valori": [
-      {
-       "v": "tichete de masă",
-       "p": 28
-      },
-      {
-       "v": "bonus",
-       "p": 17
-      },
-      {
-       "v": "asigurare medicală",
-       "p": 15
-      },
-      {
-       "v": "cursuri / training",
-       "p": 12
-      }
-     ]
-    }
-   ]
-  },
-  "arhitect": {
-   "sursa": "anunturi",
-   "n": 57,
-   "randuri": [
-    {
-     "eticheta": "Experiență",
-     "valori": [
-      {
-       "v": "5+ ani",
-       "p": 23
-      }
-     ]
-    },
-    {
-     "eticheta": "Studii",
-     "valori": [
-      {
-       "v": "superioare",
-       "p": 28
+       "v": "flexibil",
+       "p": 30
       }
      ]
     },
@@ -817,40 +991,7 @@
      "valori": [
       {
        "v": "remote",
-       "p": 33
-      },
-      {
-       "v": "hibrid",
-       "p": 21
-      }
-     ]
-    },
-    {
-     "eticheta": "Tehnologii",
-     "valori": [
-      {
-       "v": "Azure",
-       "p": 28
-      },
-      {
-       "v": "AWS",
-       "p": 25
-      },
-      {
-       "v": "GCP",
-       "p": 18
-      },
-      {
-       "v": "SQL",
-       "p": 18
-      },
-      {
-       "v": "Python",
-       "p": 14
-      },
-      {
-       "v": "Kubernetes",
-       "p": 14
+       "p": 17
       }
      ]
     },
@@ -859,19 +1000,19 @@
      "valori": [
       {
        "v": "cursuri / training",
-       "p": 33
+       "p": 42
       },
       {
-       "v": "asigurare medicală",
+       "v": "bonus",
        "p": 12
       }
      ]
     }
    ]
   },
-  "constructor": {
+  "consultant-financiar": {
    "sursa": "anunturi",
-   "n": 79,
+   "n": 67,
    "randuri": [
     {
      "eticheta": "Experiență",
@@ -881,7 +1022,7 @@
        "p": 24
       },
       {
-       "v": "5+ ani",
+       "v": "fără experiență",
        "p": 10
       }
      ]
@@ -890,8 +1031,71 @@
      "eticheta": "Studii",
      "valori": [
       {
+       "v": "medii",
+       "p": 25
+      },
+      {
        "v": "superioare",
-       "p": 34
+       "p": 12
+      }
+     ]
+    },
+    {
+     "eticheta": "Program",
+     "valori": [
+      {
+       "v": "flexibil",
+       "p": 39
+      }
+     ]
+    },
+    {
+     "eticheta": "Mod de lucru",
+     "valori": [
+      {
+       "v": "remote",
+       "p": 16
+      }
+     ]
+    },
+    {
+     "eticheta": "Beneficii",
+     "valori": [
+      {
+       "v": "cursuri / training",
+       "p": 52
+      },
+      {
+       "v": "bonus",
+       "p": 22
+      }
+     ]
+    }
+   ]
+  },
+  "consilier-juridic": {
+   "sursa": "anunturi",
+   "n": 51,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "experiență cerută",
+       "p": 29
+      },
+      {
+       "v": "5+ ani",
+       "p": 12
+      }
+     ]
+    },
+    {
+     "eticheta": "Studii",
+     "valori": [
+      {
+       "v": "superioare",
+       "p": 65
       }
      ]
     },
@@ -900,7 +1104,7 @@
      "valori": [
       {
        "v": "engleză",
-       "p": 20
+       "p": 18
       }
      ]
     },
@@ -909,7 +1113,79 @@
      "valori": [
       {
        "v": "B",
-       "p": 20
+       "p": 16
+      }
+     ]
+    },
+    {
+     "eticheta": "Tehnologii",
+     "valori": [
+      {
+       "v": "Excel",
+       "p": 12
+      }
+     ]
+    },
+    {
+     "eticheta": "Beneficii",
+     "valori": [
+      {
+       "v": "tichete de masă",
+       "p": 18
+      },
+      {
+       "v": "asigurare medicală",
+       "p": 14
+      },
+      {
+       "v": "bonus",
+       "p": 12
+      }
+     ]
+    }
+   ]
+  },
+  "inginer": {
+   "sursa": "anunturi",
+   "n": 940,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "experiență cerută",
+       "p": 32
+      },
+      {
+       "v": "3+ ani",
+       "p": 12
+      }
+     ]
+    },
+    {
+     "eticheta": "Studii",
+     "valori": [
+      {
+       "v": "superioare",
+       "p": 63
+      }
+     ]
+    },
+    {
+     "eticheta": "Limbi străine",
+     "valori": [
+      {
+       "v": "engleză",
+       "p": 25
+      }
+     ]
+    },
+    {
+     "eticheta": "Permis de conducere",
+     "valori": [
+      {
+       "v": "B",
+       "p": 25
       }
      ]
     },
@@ -918,11 +1194,11 @@
      "valori": [
       {
        "v": "AutoCAD",
-       "p": 18
+       "p": 21
       },
       {
        "v": "Excel",
-       "p": 10
+       "p": 18
       }
      ]
     },
@@ -931,86 +1207,34 @@
      "valori": [
       {
        "v": "tichete de masă",
-       "p": 10
+       "p": 28
       },
       {
        "v": "bonus",
-       "p": 10
-      }
-     ]
-    }
-   ]
-  },
-  "zidar": {
-   "sursa": "anunturi",
-   "n": 33,
-   "randuri": [
-    {
-     "eticheta": "Experiență",
-     "valori": [
-      {
-       "v": "experiență cerută",
-       "p": 24
-      }
-     ]
-    },
-    {
-     "eticheta": "Beneficii",
-     "valori": [
-      {
-       "v": "cazare",
-       "p": 21
+       "p": 18
       },
       {
-       "v": "transport",
-       "p": 12
-      }
-     ]
-    }
-   ]
-  },
-  "dulgher": {
-   "sursa": "anunturi",
-   "n": 29,
-   "randuri": [
-    {
-     "eticheta": "Experiență",
-     "valori": [
-      {
-       "v": "experiență cerută",
-       "p": 35
-      }
-     ]
-    },
-    {
-     "eticheta": "Beneficii",
-     "valori": [
-      {
-       "v": "cazare",
-       "p": 24
+       "v": "asigurare medicală",
+       "p": 13
       },
       {
-       "v": "transport",
-       "p": 17
-      }
-     ]
-    }
-   ]
-  },
-  "electrician": {
-   "sursa": "anunturi",
-   "n": 305,
-   "randuri": [
-    {
-     "eticheta": "Experiență",
-     "valori": [
-      {
-       "v": "experiență cerută",
-       "p": 21
-      },
-      {
-       "v": "2+ ani",
+       "v": "telefon / laptop",
        "p": 11
+      }
+     ]
+    }
+   ]
+  },
+  "arhitect": {
+   "sursa": "anunturi",
+   "n": 101,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "5+ ani",
+       "p": 21
       }
      ]
     },
@@ -1018,21 +1242,104 @@
      "eticheta": "Studii",
      "valori": [
       {
-       "v": "medii",
-       "p": 33
+       "v": "superioare",
+       "p": 30
+      }
+     ]
+    },
+    {
+     "eticheta": "Mod de lucru",
+     "valori": [
+      {
+       "v": "remote",
+       "p": 34
       },
       {
-       "v": "superioare",
+       "v": "hibrid",
+       "p": 26
+      }
+     ]
+    },
+    {
+     "eticheta": "Tehnologii",
+     "valori": [
+      {
+       "v": "Azure",
+       "p": 24
+      },
+      {
+       "v": "AWS",
+       "p": 21
+      },
+      {
+       "v": "AutoCAD",
+       "p": 18
+      },
+      {
+       "v": "GCP",
+       "p": 17
+      },
+      {
+       "v": "Kubernetes",
+       "p": 16
+      },
+      {
+       "v": "SQL",
        "p": 14
       }
      ]
     },
     {
-     "eticheta": "Permis de conducere",
+     "eticheta": "Beneficii",
      "valori": [
       {
-       "v": "B",
-       "p": 30
+       "v": "cursuri / training",
+       "p": 40
+      },
+      {
+       "v": "asigurare medicală",
+       "p": 11
+      }
+     ]
+    }
+   ]
+  },
+  "inginer-energetician": {
+   "sursa": "anunturi",
+   "n": 22,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "2+ ani",
+       "p": 27
+      },
+      {
+       "v": "1+ ani",
+       "p": 27
+      },
+      {
+       "v": "3+ ani",
+       "p": 14
+      }
+     ]
+    },
+    {
+     "eticheta": "Studii",
+     "valori": [
+      {
+       "v": "superioare",
+       "p": 100
+      }
+     ]
+    },
+    {
+     "eticheta": "Limbi străine",
+     "valori": [
+      {
+       "v": "engleză",
+       "p": 23
       }
      ]
     },
@@ -1041,7 +1348,7 @@
      "valori": [
       {
        "v": "ANRE",
-       "p": 25
+       "p": 23
       }
      ]
     },
@@ -1050,11 +1357,29 @@
      "valori": [
       {
        "v": "ture",
-       "p": 14
+       "p": 36
+      }
+     ]
+    },
+    {
+     "eticheta": "Mod de lucru",
+     "valori": [
+      {
+       "v": "hibrid",
+       "p": 41
+      }
+     ]
+    },
+    {
+     "eticheta": "Tehnologii",
+     "valori": [
+      {
+       "v": "Excel",
+       "p": 36
       },
       {
-       "v": "luni–vineri",
-       "p": 12
+       "v": "SAP",
+       "p": 23
       }
      ]
     },
@@ -1063,226 +1388,62 @@
      "valori": [
       {
        "v": "tichete de masă",
-       "p": 45
+       "p": 100
       },
       {
        "v": "bonus",
-       "p": 35
+       "p": 96
       },
       {
        "v": "asigurare medicală",
-       "p": 31
-      },
+       "p": 96
+      }
+     ]
+    }
+   ]
+  },
+  "constructor": {
+   "sursa": "anunturi",
+   "n": 1051,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
       {
-       "v": "cursuri / training",
+       "v": "experiență cerută",
+       "p": 19
+      }
+     ]
+    }
+   ]
+  },
+  "zidar": {
+   "sursa": "anunturi",
+   "n": 144,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "experiență cerută",
+       "p": 24
+      }
+     ]
+    },
+    {
+     "eticheta": "Beneficii",
+     "valori": [
+      {
+       "v": "cazare",
        "p": 21
       }
      ]
     }
    ]
   },
-  "instalator": {
+  "dulgher": {
    "sursa": "anunturi",
-   "n": 112,
-   "randuri": [
-    {
-     "eticheta": "Experiență",
-     "valori": [
-      {
-       "v": "experiență cerută",
-       "p": 29
-      }
-     ]
-    },
-    {
-     "eticheta": "Permis de conducere",
-     "valori": [
-      {
-       "v": "B",
-       "p": 24
-      }
-     ]
-    },
-    {
-     "eticheta": "Program",
-     "valori": [
-      {
-       "v": "luni–vineri",
-       "p": 17
-      }
-     ]
-    },
-    {
-     "eticheta": "Beneficii",
-     "valori": [
-      {
-       "v": "tichete de masă",
-       "p": 16
-      },
-      {
-       "v": "bonus",
-       "p": 13
-      }
-     ]
-    }
-   ]
-  },
-  "zugrav": {
-   "sursa": "anofm",
-   "n": 31,
-   "randuri": [
-    {
-     "eticheta": "Experiență",
-     "valori": [
-      {
-       "v": "mai puțin de 3 ani",
-       "p": 45
-      },
-      {
-       "v": "între 3 și 5 ani",
-       "p": 26
-      },
-      {
-       "v": "fără experiență",
-       "p": 23
-      }
-     ]
-    },
-    {
-     "eticheta": "Studii",
-     "valori": [
-      {
-       "v": "școală profesională",
-       "p": 48
-      },
-      {
-       "v": "gimnaziu",
-       "p": 29
-      },
-      {
-       "v": "primar sau fără studii",
-       "p": 13
-      }
-     ]
-    },
-    {
-     "eticheta": "Contract",
-     "valori": [
-      {
-       "v": "cu durată nedeterminată",
-       "p": 97
-      }
-     ]
-    },
-    {
-     "eticheta": "Normă",
-     "valori": [
-      {
-       "v": "cu normă întreagă",
-       "p": 100
-      }
-     ]
-    }
-   ]
-  },
-  "faiantar": {
-   "sursa": "anofm",
-   "n": 15,
-   "randuri": [
-    {
-     "eticheta": "Experiență",
-     "valori": [
-      {
-       "v": "mai puțin de 3 ani",
-       "p": 33
-      },
-      {
-       "v": "fără experiență",
-       "p": 27
-      },
-      {
-       "v": "între 3 și 5 ani",
-       "p": 20
-      }
-     ]
-    },
-    {
-     "eticheta": "Studii",
-     "valori": [
-      {
-       "v": "școală profesională",
-       "p": 67
-      },
-      {
-       "v": "gimnaziu",
-       "p": 27
-      }
-     ]
-    },
-    {
-     "eticheta": "Contract",
-     "valori": [
-      {
-       "v": "cu durată nedeterminată",
-       "p": 100
-      }
-     ]
-    },
-    {
-     "eticheta": "Normă",
-     "valori": [
-      {
-       "v": "cu normă întreagă",
-       "p": 100
-      }
-     ]
-    }
-   ]
-  },
-  "sudor": {
-   "sursa": "anunturi",
-   "n": 62,
-   "randuri": [
-    {
-     "eticheta": "Experiență",
-     "valori": [
-      {
-       "v": "experiență cerută",
-       "p": 24
-      }
-     ]
-    },
-    {
-     "eticheta": "Studii",
-     "valori": [
-      {
-       "v": "medii",
-       "p": 18
-      }
-     ]
-    },
-    {
-     "eticheta": "Beneficii",
-     "valori": [
-      {
-       "v": "tichete de masă",
-       "p": 24
-      },
-      {
-       "v": "transport",
-       "p": 19
-      },
-      {
-       "v": "cazare",
-       "p": 13
-      }
-     ]
-    }
-   ]
-  },
-  "tamplar": {
-   "sursa": "anunturi",
-   "n": 30,
+   "n": 209,
    "randuri": [
     {
      "eticheta": "Experiență",
@@ -1294,52 +1455,26 @@
      ]
     },
     {
-     "eticheta": "Permis de conducere",
-     "valori": [
-      {
-       "v": "B",
-       "p": 13
-      }
-     ]
-    },
-    {
-     "eticheta": "Program",
-     "valori": [
-      {
-       "v": "luni–vineri",
-       "p": 17
-      }
-     ]
-    },
-    {
      "eticheta": "Beneficii",
      "valori": [
       {
-       "v": "tichete de masă",
-       "p": 10
-      },
-      {
-       "v": "bonus",
-       "p": 10
+       "v": "cazare",
+       "p": 20
       }
      ]
     }
    ]
   },
-  "operator-productie": {
+  "electrician": {
    "sursa": "anunturi",
-   "n": 39,
+   "n": 1111,
    "randuri": [
     {
      "eticheta": "Experiență",
      "valori": [
       {
        "v": "experiență cerută",
-       "p": 36
-      },
-      {
-       "v": "experiența e un avantaj",
-       "p": 21
+       "p": 24
       }
      ]
     },
@@ -1347,256 +1482,17 @@
      "eticheta": "Studii",
      "valori": [
       {
-       "v": "generale",
-       "p": 39
-      },
-      {
        "v": "medii",
-       "p": 21
+       "p": 23
       }
      ]
     },
     {
-     "eticheta": "Program",
+     "eticheta": "Permis de conducere",
      "valori": [
       {
-       "v": "ture",
-       "p": 69
-      },
-      {
-       "v": "luni–vineri",
-       "p": 21
-      }
-     ]
-    },
-    {
-     "eticheta": "Beneficii",
-     "valori": [
-      {
-       "v": "tichete de masă",
-       "p": 69
-      },
-      {
-       "v": "transport",
-       "p": 46
-      },
-      {
-       "v": "prime",
-       "p": 36
-      },
-      {
-       "v": "bonus",
-       "p": 36
-      }
-     ]
-    }
-   ]
-  },
-  "mecanic-auto": {
-   "sursa": "anofm",
-   "n": 109,
-   "randuri": [
-    {
-     "eticheta": "Experiență",
-     "valori": [
-      {
-       "v": "mai puțin de 3 ani",
-       "p": 36
-      },
-      {
-       "v": "între 3 și 5 ani",
-       "p": 28
-      },
-      {
-       "v": "fără experiență",
+       "v": "B",
        "p": 25
-      }
-     ]
-    },
-    {
-     "eticheta": "Studii",
-     "valori": [
-      {
-       "v": "școală profesională",
-       "p": 63
-      },
-      {
-       "v": "liceu",
-       "p": 16
-      },
-      {
-       "v": "gimnaziu",
-       "p": 10
-      }
-     ]
-    },
-    {
-     "eticheta": "Contract",
-     "valori": [
-      {
-       "v": "cu durată nedeterminată",
-       "p": 95
-      }
-     ]
-    },
-    {
-     "eticheta": "Normă",
-     "valori": [
-      {
-       "v": "cu normă întreagă",
-       "p": 96
-      }
-     ]
-    }
-   ]
-  },
-  "tehnician-mentenanta": {
-   "sursa": "anunturi",
-   "n": 31,
-   "randuri": [
-    {
-     "eticheta": "Experiență",
-     "valori": [
-      {
-       "v": "experiență cerută",
-       "p": 32
-      },
-      {
-       "v": "2+ ani",
-       "p": 16
-      }
-     ]
-    },
-    {
-     "eticheta": "Studii",
-     "valori": [
-      {
-       "v": "medii",
-       "p": 39
-      }
-     ]
-    },
-    {
-     "eticheta": "Program",
-     "valori": [
-      {
-       "v": "ture",
-       "p": 23
-      },
-      {
-       "v": "luni–vineri",
-       "p": 13
-      }
-     ]
-    },
-    {
-     "eticheta": "Beneficii",
-     "valori": [
-      {
-       "v": "tichete de masă",
-       "p": 39
-      },
-      {
-       "v": "bonus",
-       "p": 29
-      },
-      {
-       "v": "cursuri / training",
-       "p": 26
-      },
-      {
-       "v": "transport",
-       "p": 23
-      }
-     ]
-    }
-   ]
-  },
-  "cofetar": {
-   "sursa": "anofm",
-   "n": 18,
-   "randuri": [
-    {
-     "eticheta": "Experiență",
-     "valori": [
-      {
-       "v": "mai puțin de 3 ani",
-       "p": 56
-      },
-      {
-       "v": "fără experiență",
-       "p": 22
-      },
-      {
-       "v": "între 3 și 5 ani",
-       "p": 17
-      }
-     ]
-    },
-    {
-     "eticheta": "Studii",
-     "valori": [
-      {
-       "v": "școală profesională",
-       "p": 39
-      },
-      {
-       "v": "gimnaziu",
-       "p": 22
-      },
-      {
-       "v": "liceu",
-       "p": 22
-      }
-     ]
-    },
-    {
-     "eticheta": "Contract",
-     "valori": [
-      {
-       "v": "cu durată nedeterminată",
-       "p": 100
-      }
-     ]
-    },
-    {
-     "eticheta": "Normă",
-     "valori": [
-      {
-       "v": "cu normă întreagă",
-       "p": 100
-      }
-     ]
-    }
-   ]
-  },
-  "sofer-tir": {
-   "sursa": "anunturi",
-   "n": 33,
-   "randuri": [
-    {
-     "eticheta": "Experiență",
-     "valori": [
-      {
-       "v": "experiență cerută",
-       "p": 27
-      },
-      {
-       "v": "experiența e un avantaj",
-       "p": 12
-      }
-     ]
-    },
-    {
-     "eticheta": "Permis de conducere",
-     "valori": [
-      {
-       "v": "CE",
-       "p": 39
-      },
-      {
-       "v": "permis, fără categorie",
-       "p": 15
       }
      ]
     },
@@ -1604,12 +1500,21 @@
      "eticheta": "Atestate",
      "valori": [
       {
-       "v": "atestat transport (CPC)",
-       "p": 39
+       "v": "ANRE",
+       "p": 16
+      }
+     ]
+    },
+    {
+     "eticheta": "Program",
+     "valori": [
+      {
+       "v": "luni–vineri",
+       "p": 13
       },
       {
-       "v": "card tahograf",
-       "p": 30
+       "v": "ture",
+       "p": 13
       }
      ]
     },
@@ -1617,146 +1522,186 @@
      "eticheta": "Beneficii",
      "valori": [
       {
+       "v": "tichete de masă",
+       "p": 36
+      },
+      {
        "v": "bonus",
-       "p": 21
+       "p": 24
+      },
+      {
+       "v": "asigurare medicală",
+       "p": 19
+      },
+      {
+       "v": "prime",
+       "p": 14
       }
      ]
     }
    ]
   },
-  "sofer-autobuz": {
-   "sursa": "anofm",
-   "n": 38,
-   "randuri": [
-    {
-     "eticheta": "Experiență",
-     "valori": [
-      {
-       "v": "între 3 și 5 ani",
-       "p": 37
-      },
-      {
-       "v": "mai puțin de 3 ani",
-       "p": 32
-      },
-      {
-       "v": "fără experiență",
-       "p": 24
-      }
-     ]
-    },
-    {
-     "eticheta": "Studii",
-     "valori": [
-      {
-       "v": "școală profesională",
-       "p": 53
-      },
-      {
-       "v": "liceu",
-       "p": 24
-      },
-      {
-       "v": "gimnaziu",
-       "p": 18
-      }
-     ]
-    },
-    {
-     "eticheta": "Contract",
-     "valori": [
-      {
-       "v": "cu durată nedeterminată",
-       "p": 97
-      }
-     ]
-    },
-    {
-     "eticheta": "Normă",
-     "valori": [
-      {
-       "v": "cu normă întreagă",
-       "p": 92
-      }
-     ]
-    }
-   ]
-  },
-  "taximetrist": {
-   "sursa": "anofm",
-   "n": 164,
-   "randuri": [
-    {
-     "eticheta": "Experiență",
-     "valori": [
-      {
-       "v": "mai puțin de 3 ani",
-       "p": 47
-      },
-      {
-       "v": "între 3 și 5 ani",
-       "p": 25
-      },
-      {
-       "v": "fără experiență",
-       "p": 24
-      }
-     ]
-    },
-    {
-     "eticheta": "Studii",
-     "valori": [
-      {
-       "v": "gimnaziu",
-       "p": 33
-      },
-      {
-       "v": "școală profesională",
-       "p": 28
-      },
-      {
-       "v": "liceu",
-       "p": 27
-      }
-     ]
-    },
-    {
-     "eticheta": "Contract",
-     "valori": [
-      {
-       "v": "cu durată nedeterminată",
-       "p": 95
-      }
-     ]
-    },
-    {
-     "eticheta": "Normă",
-     "valori": [
-      {
-       "v": "cu normă întreagă",
-       "p": 99
-      }
-     ]
-    }
-   ]
-  },
-  "curier": {
+  "instalator": {
    "sursa": "anunturi",
-   "n": 35,
+   "n": 590,
    "randuri": [
     {
      "eticheta": "Experiență",
      "valori": [
       {
        "v": "experiență cerută",
+       "p": 32
+      }
+     ]
+    },
+    {
+     "eticheta": "Permis de conducere",
+     "valori": [
+      {
+       "v": "B",
        "p": 26
+      }
+     ]
+    },
+    {
+     "eticheta": "Program",
+     "valori": [
+      {
+       "v": "luni–vineri",
+       "p": 17
+      }
+     ]
+    },
+    {
+     "eticheta": "Beneficii",
+     "valori": [
+      {
+       "v": "tichete de masă",
+       "p": 13
+      },
+      {
+       "v": "bonus",
+       "p": 12
+      }
+     ]
+    }
+   ]
+  },
+  "zugrav": {
+   "sursa": "anunturi",
+   "n": 107,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "experiență cerută",
+       "p": 20
+      }
+     ]
+    },
+    {
+     "eticheta": "Program",
+     "valori": [
+      {
+       "v": "luni–vineri",
+       "p": 15
+      }
+     ]
+    }
+   ]
+  },
+  "faiantar": {
+   "sursa": "anunturi",
+   "n": 59,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "experiență cerută",
+       "p": 39
+      }
+     ]
+    },
+    {
+     "eticheta": "Program",
+     "valori": [
+      {
+       "v": "luni–vineri",
+       "p": 24
+      }
+     ]
+    },
+    {
+     "eticheta": "Beneficii",
+     "valori": [
+      {
+       "v": "cazare",
+       "p": 14
+      }
+     ]
+    }
+   ]
+  },
+  "sudor": {
+   "sursa": "anunturi",
+   "n": 406,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "experiență cerută",
+       "p": 32
+      }
+     ]
+    },
+    {
+     "eticheta": "Program",
+     "valori": [
+      {
+       "v": "luni–vineri",
+       "p": 12
+      }
+     ]
+    },
+    {
+     "eticheta": "Beneficii",
+     "valori": [
+      {
+       "v": "tichete de masă",
+       "p": 21
+      },
+      {
+       "v": "transport",
+       "p": 16
+      },
+      {
+       "v": "bonus",
+       "p": 12
+      },
+      {
+       "v": "cazare",
+       "p": 10
+      }
+     ]
+    }
+   ]
+  },
+  "tamplar": {
+   "sursa": "anunturi",
+   "n": 243,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "experiență cerută",
+       "p": 37
       },
       {
        "v": "fără experiență",
-       "p": 14
-      },
-      {
-       "v": "1+ ani",
        "p": 11
       }
      ]
@@ -1766,16 +1711,16 @@
      "valori": [
       {
        "v": "B",
-       "p": 26
+       "p": 17
       }
      ]
     },
     {
-     "eticheta": "Tehnologii",
+     "eticheta": "Program",
      "valori": [
       {
-       "v": "Excel",
-       "p": 14
+       "v": "luni–vineri",
+       "p": 20
       }
      ]
     },
@@ -1783,93 +1728,35 @@
      "eticheta": "Beneficii",
      "valori": [
       {
-       "v": "cursuri / training",
-       "p": 29
+       "v": "tichete de masă",
+       "p": 13
       },
       {
        "v": "bonus",
-       "p": 23
-      },
-      {
-       "v": "tichete de masă",
-       "p": 20
+       "p": 13
       }
      ]
     }
    ]
   },
-  "sofer-ridesharing": {
-   "sursa": "anofm",
-   "n": 164,
-   "randuri": [
-    {
-     "eticheta": "Experiență",
-     "valori": [
-      {
-       "v": "mai puțin de 3 ani",
-       "p": 47
-      },
-      {
-       "v": "între 3 și 5 ani",
-       "p": 25
-      },
-      {
-       "v": "fără experiență",
-       "p": 24
-      }
-     ]
-    },
-    {
-     "eticheta": "Studii",
-     "valori": [
-      {
-       "v": "gimnaziu",
-       "p": 33
-      },
-      {
-       "v": "școală profesională",
-       "p": 28
-      },
-      {
-       "v": "liceu",
-       "p": 27
-      }
-     ]
-    },
-    {
-     "eticheta": "Contract",
-     "valori": [
-      {
-       "v": "cu durată nedeterminată",
-       "p": 95
-      }
-     ]
-    },
-    {
-     "eticheta": "Normă",
-     "valori": [
-      {
-       "v": "cu normă întreagă",
-       "p": 99
-      }
-     ]
-    }
-   ]
-  },
-  "logistician": {
+  "operator-productie": {
    "sursa": "anunturi",
-   "n": 21,
+   "n": 313,
    "randuri": [
     {
      "eticheta": "Experiență",
      "valori": [
       {
        "v": "experiență cerută",
-       "p": 33
+       "p": 25
       },
       {
-       "v": "5+ ani",
-       "p": 14
+       "v": "fără experiență",
+       "p": 16
+      },
+      {
+       "v": "experiența e un avantaj",
+       "p": 13
       }
      ]
     },
@@ -1877,30 +1764,12 @@
      "eticheta": "Studii",
      "valori": [
       {
-       "v": "medii",
-       "p": 19
+       "v": "generale",
+       "p": 26
       },
       {
-       "v": "superioare",
-       "p": 14
-      }
-     ]
-    },
-    {
-     "eticheta": "Limbi străine",
-     "valori": [
-      {
-       "v": "engleză",
-       "p": 29
-      }
-     ]
-    },
-    {
-     "eticheta": "Permis de conducere",
-     "valori": [
-      {
-       "v": "B",
-       "p": 33
+       "v": "medii",
+       "p": 19
       }
      ]
     },
@@ -1909,16 +1778,11 @@
      "valori": [
       {
        "v": "ture",
-       "p": 19
-      }
-     ]
-    },
-    {
-     "eticheta": "Tehnologii",
-     "valori": [
+       "p": 67
+      },
       {
-       "v": "Excel",
-       "p": 19
+       "v": "luni–vineri",
+       "p": 13
       }
      ]
     },
@@ -1926,18 +1790,176 @@
      "eticheta": "Beneficii",
      "valori": [
       {
-       "v": "bonus",
-       "p": 33
+       "v": "tichete de masă",
+       "p": 74
       },
       {
-       "v": "tichete de masă",
-       "p": 29
+       "v": "transport",
+       "p": 46
+      },
+      {
+       "v": "bonus",
+       "p": 46
+      },
+      {
+       "v": "prime",
+       "p": 39
       }
      ]
     }
    ]
   },
-  "magaziner": {
+  "mecanic-auto": {
+   "sursa": "anunturi",
+   "n": 270,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "experiență cerută",
+       "p": 27
+      }
+     ]
+    },
+    {
+     "eticheta": "Permis de conducere",
+     "valori": [
+      {
+       "v": "B",
+       "p": 12
+      }
+     ]
+    },
+    {
+     "eticheta": "Program",
+     "valori": [
+      {
+       "v": "luni–vineri",
+       "p": 21
+      }
+     ]
+    }
+   ]
+  },
+  "tehnician-mentenanta": {
+   "sursa": "anunturi",
+   "n": 117,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "experiență cerută",
+       "p": 40
+      },
+      {
+       "v": "2+ ani",
+       "p": 13
+      }
+     ]
+    },
+    {
+     "eticheta": "Studii",
+     "valori": [
+      {
+       "v": "medii",
+       "p": 34
+      }
+     ]
+    },
+    {
+     "eticheta": "Permis de conducere",
+     "valori": [
+      {
+       "v": "B",
+       "p": 24
+      }
+     ]
+    },
+    {
+     "eticheta": "Program",
+     "valori": [
+      {
+       "v": "ture",
+       "p": 29
+      },
+      {
+       "v": "luni–vineri",
+       "p": 13
+      }
+     ]
+    },
+    {
+     "eticheta": "Tehnologii",
+     "valori": [
+      {
+       "v": "PLC",
+       "p": 13
+      }
+     ]
+    },
+    {
+     "eticheta": "Beneficii",
+     "valori": [
+      {
+       "v": "tichete de masă",
+       "p": 46
+      },
+      {
+       "v": "bonus",
+       "p": 26
+      },
+      {
+       "v": "transport",
+       "p": 24
+      },
+      {
+       "v": "prime",
+       "p": 22
+      }
+     ]
+    }
+   ]
+  },
+  "croitor": {
+   "sursa": "anunturi",
+   "n": 90,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "experiență cerută",
+       "p": 41
+      }
+     ]
+    },
+    {
+     "eticheta": "Program",
+     "valori": [
+      {
+       "v": "luni–vineri",
+       "p": 42
+      }
+     ]
+    },
+    {
+     "eticheta": "Beneficii",
+     "valori": [
+      {
+       "v": "tichete de masă",
+       "p": 23
+      },
+      {
+       "v": "bonus",
+       "p": 10
+      }
+     ]
+    }
+   ]
+  },
+  "cofetar": {
    "sursa": "anunturi",
    "n": 74,
    "randuri": [
@@ -1946,125 +1968,7 @@
      "valori": [
       {
        "v": "experiență cerută",
-       "p": 34
-      },
-      {
-       "v": "experiența e un avantaj",
-       "p": 14
-      }
-     ]
-    },
-    {
-     "eticheta": "Studii",
-     "valori": [
-      {
-       "v": "medii",
-       "p": 15
-      },
-      {
-       "v": "generale",
-       "p": 15
-      }
-     ]
-    },
-    {
-     "eticheta": "Permis de conducere",
-     "valori": [
-      {
-       "v": "B",
-       "p": 11
-      }
-     ]
-    },
-    {
-     "eticheta": "Atestate",
-     "valori": [
-      {
-       "v": "autorizare stivuitorist (avantaj)",
-       "p": 15
-      }
-     ]
-    },
-    {
-     "eticheta": "Program",
-     "valori": [
-      {
-       "v": "luni–vineri",
-       "p": 22
-      },
-      {
-       "v": "weekend",
-       "p": 12
-      }
-     ]
-    },
-    {
-     "eticheta": "Beneficii",
-     "valori": [
-      {
-       "v": "tichete de masă",
-       "p": 43
-      },
-      {
-       "v": "bonus",
-       "p": 24
-      },
-      {
-       "v": "asigurare medicală",
-       "p": 20
-      },
-      {
-       "v": "transport",
-       "p": 14
-      }
-     ]
-    }
-   ]
-  },
-  "stivuitorist": {
-   "sursa": "anunturi",
-   "n": 45,
-   "randuri": [
-    {
-     "eticheta": "Experiență",
-     "valori": [
-      {
-       "v": "experiență cerută",
-       "p": 33
-      },
-      {
-       "v": "experiența e un avantaj",
-       "p": 18
-      },
-      {
-       "v": "1+ ani",
-       "p": 11
-      }
-     ]
-    },
-    {
-     "eticheta": "Studii",
-     "valori": [
-      {
-       "v": "medii",
        "p": 31
-      }
-     ]
-    },
-    {
-     "eticheta": "Atestate",
-     "valori": [
-      {
-       "v": "autorizare stivuitorist",
-       "p": 60
-      },
-      {
-       "v": "ISCIR",
-       "p": 53
-      },
-      {
-       "v": "autorizare sudor",
-       "p": 38
       }
      ]
     },
@@ -2073,11 +1977,288 @@
      "valori": [
       {
        "v": "ture",
-       "p": 36
+       "p": 14
       },
       {
        "v": "luni–vineri",
+       "p": 12
+      }
+     ]
+    },
+    {
+     "eticheta": "Beneficii",
+     "valori": [
+      {
+       "v": "bonus",
+       "p": 11
+      }
+     ]
+    }
+   ]
+  },
+  "sofer-tir": {
+   "sursa": "anunturi",
+   "n": 907,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "experiență cerută",
+       "p": 20
+      }
+     ]
+    },
+    {
+     "eticheta": "Permis de conducere",
+     "valori": [
+      {
+       "v": "CE",
+       "p": 20
+      }
+     ]
+    },
+    {
+     "eticheta": "Atestate",
+     "valori": [
+      {
+       "v": "card tahograf",
+       "p": 27
+      },
+      {
+       "v": "atestat transport (CPC)",
+       "p": 22
+      }
+     ]
+    },
+    {
+     "eticheta": "Beneficii",
+     "valori": [
+      {
+       "v": "bonus",
+       "p": 17
+      }
+     ]
+    }
+   ]
+  },
+  "sofer-autobuz": {
+   "sursa": "anofm",
+   "n": 47,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "între 3 și 5 ani",
+       "p": 34
+      },
+      {
+       "v": "mai puțin de 3 ani",
+       "p": 34
+      },
+      {
+       "v": "fără experiență",
+       "p": 26
+      }
+     ]
+    },
+    {
+     "eticheta": "Studii",
+     "valori": [
+      {
+       "v": "școală profesională",
+       "p": 49
+      },
+      {
+       "v": "liceu",
+       "p": 23
+      },
+      {
+       "v": "gimnaziu",
+       "p": 19
+      }
+     ]
+    },
+    {
+     "eticheta": "Contract",
+     "valori": [
+      {
+       "v": "cu durată nedeterminată",
+       "p": 98
+      }
+     ]
+    },
+    {
+     "eticheta": "Normă",
+     "valori": [
+      {
+       "v": "cu normă întreagă",
+       "p": 94
+      }
+     ]
+    }
+   ]
+  },
+  "taximetrist": {
+   "sursa": "anunturi",
+   "n": 104,
+   "randuri": []
+  },
+  "curier": {
+   "sursa": "anunturi",
+   "n": 394,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "experiența e un avantaj",
        "p": 13
+      },
+      {
+       "v": "experiență cerută",
+       "p": 11
+      }
+     ]
+    },
+    {
+     "eticheta": "Permis de conducere",
+     "valori": [
+      {
+       "v": "B",
+       "p": 28
+      }
+     ]
+    },
+    {
+     "eticheta": "Program",
+     "valori": [
+      {
+       "v": "flexibil",
+       "p": 31
+      }
+     ]
+    },
+    {
+     "eticheta": "Beneficii",
+     "valori": [
+      {
+       "v": "bonus",
+       "p": 33
+      },
+      {
+       "v": "cursuri / training",
+       "p": 11
+      }
+     ]
+    }
+   ]
+  },
+  "sofer-ridesharing": {
+   "sursa": "anunturi",
+   "n": 47,
+   "randuri": [
+    {
+     "eticheta": "Permis de conducere",
+     "valori": [
+      {
+       "v": "B",
+       "p": 23
+      }
+     ]
+    },
+    {
+     "eticheta": "Atestate",
+     "valori": [
+      {
+       "v": "atestat transport (CPC)",
+       "p": 23
+      }
+     ]
+    },
+    {
+     "eticheta": "Program",
+     "valori": [
+      {
+       "v": "flexibil",
+       "p": 26
+      }
+     ]
+    },
+    {
+     "eticheta": "Beneficii",
+     "valori": [
+      {
+       "v": "bonus",
+       "p": 11
+      }
+     ]
+    }
+   ]
+  },
+  "logistician": {
+   "sursa": "anunturi",
+   "n": 69,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "experiență cerută",
+       "p": 35
+      },
+      {
+       "v": "2+ ani",
+       "p": 10
+      },
+      {
+       "v": "experiența e un avantaj",
+       "p": 10
+      }
+     ]
+    },
+    {
+     "eticheta": "Studii",
+     "valori": [
+      {
+       "v": "superioare",
+       "p": 15
+      },
+      {
+       "v": "medii",
+       "p": 15
+      }
+     ]
+    },
+    {
+     "eticheta": "Limbi străine",
+     "valori": [
+      {
+       "v": "engleză",
+       "p": 29
+      }
+     ]
+    },
+    {
+     "eticheta": "Permis de conducere",
+     "valori": [
+      {
+       "v": "B",
+       "p": 19
+      }
+     ]
+    },
+    {
+     "eticheta": "Program",
+     "valori": [
+      {
+       "v": "ture",
+       "p": 16
+      },
+      {
+       "v": "luni–vineri",
+       "p": 15
       }
      ]
     },
@@ -2085,245 +2266,12 @@
      "eticheta": "Tehnologii",
      "valori": [
       {
+       "v": "Excel",
+       "p": 23
+      },
+      {
        "v": "SAP",
-       "p": 11
-      }
-     ]
-    },
-    {
-     "eticheta": "Beneficii",
-     "valori": [
-      {
-       "v": "tichete de masă",
-       "p": 42
-      },
-      {
-       "v": "bonus",
-       "p": 18
-      },
-      {
-       "v": "asigurare medicală",
-       "p": 18
-      },
-      {
-       "v": "transport",
-       "p": 16
-      }
-     ]
-    }
-   ]
-  },
-  "manipulant-marfa": {
-   "sursa": "anunturi",
-   "n": 36,
-   "randuri": [
-    {
-     "eticheta": "Experiență",
-     "valori": [
-      {
-       "v": "experiență cerută",
-       "p": 31
-      }
-     ]
-    },
-    {
-     "eticheta": "Studii",
-     "valori": [
-      {
-       "v": "generale",
-       "p": 17
-      },
-      {
-       "v": "medii",
-       "p": 11
-      }
-     ]
-    },
-    {
-     "eticheta": "Permis de conducere",
-     "valori": [
-      {
-       "v": "B",
-       "p": 14
-      }
-     ]
-    },
-    {
-     "eticheta": "Program",
-     "valori": [
-      {
-       "v": "luni–vineri",
-       "p": 22
-      },
-      {
-       "v": "ture",
-       "p": 22
-      }
-     ]
-    },
-    {
-     "eticheta": "Beneficii",
-     "valori": [
-      {
-       "v": "tichete de masă",
-       "p": 47
-      },
-      {
-       "v": "transport",
-       "p": 22
-      },
-      {
-       "v": "bonus",
-       "p": 22
-      },
-      {
-       "v": "prime",
-       "p": 14
-      }
-     ]
-    }
-   ]
-  },
-  "sofer-distributie": {
-   "sursa": "anunturi",
-   "n": 25,
-   "randuri": [
-    {
-     "eticheta": "Experiență",
-     "valori": [
-      {
-       "v": "experiență cerută",
-       "p": 12
-      }
-     ]
-    },
-    {
-     "eticheta": "Studii",
-     "valori": [
-      {
-       "v": "medii",
-       "p": 12
-      }
-     ]
-    },
-    {
-     "eticheta": "Permis de conducere",
-     "valori": [
-      {
-       "v": "B",
-       "p": 48
-      }
-     ]
-    },
-    {
-     "eticheta": "Program",
-     "valori": [
-      {
-       "v": "luni–vineri",
-       "p": 12
-      }
-     ]
-    },
-    {
-     "eticheta": "Beneficii",
-     "valori": [
-      {
-       "v": "tichete de masă",
-       "p": 20
-      },
-      {
-       "v": "bonus",
-       "p": 16
-      },
-      {
-       "v": "cursuri / training",
-       "p": 12
-      }
-     ]
-    }
-   ]
-  },
-  "vanzator": {
-   "sursa": "anunturi",
-   "n": 328,
-   "randuri": [
-    {
-     "eticheta": "Experiență",
-     "valori": [
-      {
-       "v": "experiența e un avantaj",
-       "p": 61
-      }
-     ]
-    },
-    {
-     "eticheta": "Studii",
-     "valori": [
-      {
-       "v": "generale",
-       "p": 35
-      },
-      {
-       "v": "medii",
-       "p": 26
-      }
-     ]
-    },
-    {
-     "eticheta": "Program",
-     "valori": [
-      {
-       "v": "ture",
-       "p": 64
-      },
-      {
-       "v": "weekend",
-       "p": 55
-      }
-     ]
-    },
-    {
-     "eticheta": "Beneficii",
-     "valori": [
-      {
-       "v": "tichete de masă",
-       "p": 65
-      },
-      {
-       "v": "asigurare medicală",
-       "p": 56
-      },
-      {
-       "v": "bonus",
-       "p": 46
-      },
-      {
-       "v": "spor",
-       "p": 36
-      }
-     ]
-    }
-   ]
-  },
-  "casier": {
-   "sursa": "anunturi",
-   "n": 56,
-   "randuri": [
-    {
-     "eticheta": "Experiență",
-     "valori": [
-      {
-       "v": "experiență cerută",
-       "p": 34
-      }
-     ]
-    },
-    {
-     "eticheta": "Program",
-     "valori": [
-      {
-       "v": "ture",
-       "p": 21
+       "p": 10
       }
      ]
     },
@@ -2335,35 +2283,39 @@
        "p": 32
       },
       {
-       "v": "cursuri / training",
-       "p": 16
+       "v": "tichete de masă",
+       "p": 25
       },
       {
-       "v": "tichete de masă",
-       "p": 11
+       "v": "transport",
+       "p": 17
+      },
+      {
+       "v": "prime",
+       "p": 10
       }
      ]
     }
    ]
   },
-  "manager-magazin": {
+  "magaziner": {
    "sursa": "anunturi",
-   "n": 54,
+   "n": 380,
    "randuri": [
     {
      "eticheta": "Experiență",
      "valori": [
       {
        "v": "experiență cerută",
-       "p": 20
+       "p": 27
       },
       {
-       "v": "2+ ani",
-       "p": 19
+       "v": "experiența e un avantaj",
+       "p": 23
       },
       {
-       "v": "3+ ani",
-       "p": 17
+       "v": "fără experiență",
+       "p": 11
       }
      ]
     },
@@ -2371,20 +2323,301 @@
      "eticheta": "Studii",
      "valori": [
       {
-       "v": "superioare",
-       "p": 33
+       "v": "medii",
+       "p": 16
+      }
+     ]
+    },
+    {
+     "eticheta": "Program",
+     "valori": [
+      {
+       "v": "luni–vineri",
+       "p": 47
       },
       {
+       "v": "ture",
+       "p": 22
+      }
+     ]
+    },
+    {
+     "eticheta": "Beneficii",
+     "valori": [
+      {
+       "v": "bonus",
+       "p": 48
+      },
+      {
+       "v": "transport",
+       "p": 40
+      },
+      {
+       "v": "tichete de masă",
+       "p": 34
+      },
+      {
+       "v": "ore suplimentare plătite",
+       "p": 32
+      }
+     ]
+    }
+   ]
+  },
+  "stivuitorist": {
+   "sursa": "anunturi",
+   "n": 245,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "experiență cerută",
+       "p": 34
+      },
+      {
+       "v": "experiența e un avantaj",
+       "p": 11
+      }
+     ]
+    },
+    {
+     "eticheta": "Studii",
+     "valori": [
+      {
        "v": "medii",
+       "p": 22
+      }
+     ]
+    },
+    {
+     "eticheta": "Atestate",
+     "valori": [
+      {
+       "v": "autorizare stivuitorist",
+       "p": 67
+      },
+      {
+       "v": "ISCIR",
+       "p": 64
+      },
+      {
+       "v": "autorizare sudor",
+       "p": 42
+      }
+     ]
+    },
+    {
+     "eticheta": "Program",
+     "valori": [
+      {
+       "v": "ture",
+       "p": 35
+      },
+      {
+       "v": "luni–vineri",
+       "p": 19
+      }
+     ]
+    },
+    {
+     "eticheta": "Beneficii",
+     "valori": [
+      {
+       "v": "tichete de masă",
+       "p": 53
+      },
+      {
+       "v": "bonus",
+       "p": 31
+      },
+      {
+       "v": "transport",
+       "p": 27
+      },
+      {
+       "v": "prime",
+       "p": 21
+      }
+     ]
+    }
+   ]
+  },
+  "manipulant-marfa": {
+   "sursa": "anunturi",
+   "n": 333,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "experiență cerută",
+       "p": 24
+      }
+     ]
+    },
+    {
+     "eticheta": "Studii",
+     "valori": [
+      {
+       "v": "generale",
+       "p": 14
+      }
+     ]
+    },
+    {
+     "eticheta": "Program",
+     "valori": [
+      {
+       "v": "luni–vineri",
+       "p": 25
+      },
+      {
+       "v": "ture",
+       "p": 23
+      }
+     ]
+    },
+    {
+     "eticheta": "Beneficii",
+     "valori": [
+      {
+       "v": "tichete de masă",
+       "p": 44
+      },
+      {
+       "v": "bonus",
+       "p": 27
+      },
+      {
+       "v": "transport",
+       "p": 26
+      }
+     ]
+    }
+   ]
+  },
+  "sofer-distributie": {
+   "sursa": "anunturi",
+   "n": 348,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "experiență cerută",
+       "p": 24
+      }
+     ]
+    },
+    {
+     "eticheta": "Permis de conducere",
+     "valori": [
+      {
+       "v": "B",
+       "p": 35
+      }
+     ]
+    },
+    {
+     "eticheta": "Program",
+     "valori": [
+      {
+       "v": "luni–vineri",
+       "p": 13
+      }
+     ]
+    },
+    {
+     "eticheta": "Beneficii",
+     "valori": [
+      {
+       "v": "tichete de masă",
+       "p": 12
+      }
+     ]
+    }
+   ]
+  },
+  "vanzator": {
+   "sursa": "anunturi",
+   "n": 1552,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "experiența e un avantaj",
+       "p": 45
+      },
+      {
+       "v": "experiență cerută",
        "p": 15
       }
      ]
     },
     {
-     "eticheta": "Limbi străine",
+     "eticheta": "Studii",
      "valori": [
       {
-       "v": "engleză",
+       "v": "medii",
+       "p": 22
+      },
+      {
+       "v": "generale",
+       "p": 20
+      }
+     ]
+    },
+    {
+     "eticheta": "Program",
+     "valori": [
+      {
+       "v": "ture",
+       "p": 52
+      },
+      {
+       "v": "weekend",
+       "p": 39
+      }
+     ]
+    },
+    {
+     "eticheta": "Beneficii",
+     "valori": [
+      {
+       "v": "tichete de masă",
+       "p": 48
+      },
+      {
+       "v": "asigurare medicală",
+       "p": 39
+      },
+      {
+       "v": "bonus",
+       "p": 32
+      },
+      {
+       "v": "spor",
+       "p": 22
+      }
+     ]
+    }
+   ]
+  },
+  "casier": {
+   "sursa": "anunturi",
+   "n": 364,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "experiență cerută",
+       "p": 22
+      },
+      {
+       "v": "experiența e un avantaj",
        "p": 11
       }
      ]
@@ -2394,11 +2627,7 @@
      "valori": [
       {
        "v": "ture",
-       "p": 59
-      },
-      {
-       "v": "weekend",
-       "p": 35
+       "p": 33
       }
      ]
     },
@@ -2406,39 +2635,39 @@
      "eticheta": "Beneficii",
      "valori": [
       {
-       "v": "asigurare medicală",
-       "p": 65
-      },
-      {
        "v": "bonus",
-       "p": 48
-      },
-      {
-       "v": "cursuri / training",
-       "p": 48
+       "p": 26
       },
       {
        "v": "tichete de masă",
-       "p": 44
+       "p": 25
+      },
+      {
+       "v": "cursuri / training",
+       "p": 14
       }
      ]
     }
    ]
   },
-  "agent-vanzari": {
+  "manager-magazin": {
    "sursa": "anunturi",
-   "n": 279,
+   "n": 135,
    "randuri": [
     {
      "eticheta": "Experiență",
      "valori": [
       {
-       "v": "experiență cerută",
-       "p": 31
+       "v": "2+ ani",
+       "p": 27
       },
       {
-       "v": "experiența e un avantaj",
-       "p": 12
+       "v": "experiență cerută",
+       "p": 27
+      },
+      {
+       "v": "3+ ani",
+       "p": 10
       }
      ]
     },
@@ -2446,12 +2675,12 @@
      "eticheta": "Studii",
      "valori": [
       {
-       "v": "medii",
-       "p": 17
+       "v": "superioare",
+       "p": 26
       },
       {
-       "v": "superioare",
-       "p": 15
+       "v": "medii",
+       "p": 11
       }
      ]
     },
@@ -2460,7 +2689,82 @@
      "valori": [
       {
        "v": "engleză",
-       "p": 26
+       "p": 23
+      }
+     ]
+    },
+    {
+     "eticheta": "Program",
+     "valori": [
+      {
+       "v": "ture",
+       "p": 48
+      },
+      {
+       "v": "weekend",
+       "p": 27
+      }
+     ]
+    },
+    {
+     "eticheta": "Beneficii",
+     "valori": [
+      {
+       "v": "asigurare medicală",
+       "p": 67
+      },
+      {
+       "v": "bonus",
+       "p": 59
+      },
+      {
+       "v": "tichete de masă",
+       "p": 54
+      },
+      {
+       "v": "cursuri / training",
+       "p": 41
+      }
+     ]
+    }
+   ]
+  },
+  "agent-vanzari": {
+   "sursa": "anunturi",
+   "n": 896,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "experiență cerută",
+       "p": 33
+      },
+      {
+       "v": "experiența e un avantaj",
+       "p": 13
+      }
+     ]
+    },
+    {
+     "eticheta": "Studii",
+     "valori": [
+      {
+       "v": "medii",
+       "p": 15
+      },
+      {
+       "v": "superioare",
+       "p": 13
+      }
+     ]
+    },
+    {
+     "eticheta": "Limbi străine",
+     "valori": [
+      {
+       "v": "engleză",
+       "p": 19
       }
      ]
     },
@@ -2487,19 +2791,19 @@
      "valori": [
       {
        "v": "bonus",
-       "p": 41
-      },
-      {
-       "v": "tichete de masă",
-       "p": 33
+       "p": 42
       },
       {
        "v": "cursuri / training",
-       "p": 31
+       "p": 33
+      },
+      {
+       "v": "tichete de masă",
+       "p": 28
       },
       {
        "v": "telefon / laptop",
-       "p": 23
+       "p": 25
       }
      ]
     }
@@ -2507,14 +2811,14 @@
   },
   "bucatar": {
    "sursa": "anunturi",
-   "n": 62,
+   "n": 410,
    "randuri": [
     {
      "eticheta": "Experiență",
      "valori": [
       {
        "v": "experiență cerută",
-       "p": 37
+       "p": 33
       }
      ]
     },
@@ -2522,9 +2826,65 @@
      "eticheta": "Program",
      "valori": [
       {
-       "v": "luni–vineri",
-       "p": 15
+       "v": "ture",
+       "p": 11
       },
+      {
+       "v": "luni–vineri",
+       "p": 10
+      }
+     ]
+    },
+    {
+     "eticheta": "Beneficii",
+     "valori": [
+      {
+       "v": "masă",
+       "p": 12
+      }
+     ]
+    }
+   ]
+  },
+  "chelner": {
+   "sursa": "anunturi",
+   "n": 230,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "experiență cerută",
+       "p": 21
+      },
+      {
+       "v": "experiența e un avantaj",
+       "p": 12
+      }
+     ]
+    }
+   ]
+  },
+  "barman": {
+   "sursa": "anunturi",
+   "n": 88,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "experiență cerută",
+       "p": 30
+      },
+      {
+       "v": "experiența e un avantaj",
+       "p": 11
+      }
+     ]
+    },
+    {
+     "eticheta": "Program",
+     "valori": [
       {
        "v": "ture",
        "p": 11
@@ -2535,24 +2895,16 @@
      "eticheta": "Beneficii",
      "valori": [
       {
-       "v": "tichete de masă",
-       "p": 26
-      },
-      {
        "v": "masă",
-       "p": 15
-      },
-      {
-       "v": "transport",
-       "p": 15
+       "p": 10
       }
      ]
     }
    ]
   },
-  "chelner": {
+  "receptioner-hotel": {
    "sursa": "anunturi",
-   "n": 29,
+   "n": 25,
    "randuri": [
     {
      "eticheta": "Experiență",
@@ -2563,7 +2915,20 @@
       },
       {
        "v": "experiența e un avantaj",
-       "p": 14
+       "p": 28
+      },
+      {
+       "v": "fără experiență",
+       "p": 12
+      }
+     ]
+    },
+    {
+     "eticheta": "Studii",
+     "valori": [
+      {
+       "v": "medii",
+       "p": 16
       }
      ]
     },
@@ -2572,7 +2937,7 @@
      "valori": [
       {
        "v": "engleză",
-       "p": 10
+       "p": 76
       }
      ]
     },
@@ -2581,7 +2946,11 @@
      "valori": [
       {
        "v": "ture",
-       "p": 10
+       "p": 52
+      },
+      {
+       "v": "noapte",
+       "p": 16
       }
      ]
     },
@@ -2590,15 +2959,87 @@
      "valori": [
       {
        "v": "tichete de masă",
-       "p": 17
+       "p": 28
       },
       {
+       "v": "cursuri / training",
+       "p": 16
+      },
+      {
+       "v": "transport",
+       "p": 12
+      }
+     ]
+    }
+   ]
+  },
+  "specialist-marketing": {
+   "sursa": "anunturi",
+   "n": 22,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "experiență cerută",
+       "p": 46
+      },
+      {
+       "v": "2+ ani",
+       "p": 27
+      }
+     ]
+    },
+    {
+     "eticheta": "Studii",
+     "valori": [
+      {
+       "v": "superioare",
+       "p": 32
+      }
+     ]
+    },
+    {
+     "eticheta": "Limbi străine",
+     "valori": [
+      {
+       "v": "engleză",
+       "p": 23
+      }
+     ]
+    },
+    {
+     "eticheta": "Program",
+     "valori": [
+      {
+       "v": "luni–vineri",
+       "p": 14
+      }
+     ]
+    },
+    {
+     "eticheta": "Mod de lucru",
+     "valori": [
+      {
+       "v": "remote",
+       "p": 14
+      }
+     ]
+    },
+    {
+     "eticheta": "Beneficii",
+     "valori": [
+      {
        "v": "bonus",
+       "p": 18
+      },
+      {
+       "v": "tichete de masă",
        "p": 14
       },
       {
-       "v": "masă",
-       "p": 10
+       "v": "cursuri / training",
+       "p": 14
       }
      ]
     }
@@ -2606,18 +3047,18 @@
   },
   "electrician-centrala": {
    "sursa": "anofm",
-   "n": 26,
+   "n": 35,
    "randuri": [
     {
      "eticheta": "Experiență",
      "valori": [
       {
        "v": "fără experiență",
-       "p": 65
+       "p": 54
       },
       {
        "v": "mai puțin de 3 ani",
-       "p": 31
+       "p": 40
       }
      ]
     },
@@ -2626,11 +3067,11 @@
      "valori": [
       {
        "v": "școală profesională",
-       "p": 81
+       "p": 74
       },
       {
        "v": "liceu",
-       "p": 19
+       "p": 26
       }
      ]
     },
@@ -2639,7 +3080,7 @@
      "valori": [
       {
        "v": "cu durată nedeterminată",
-       "p": 96
+       "p": 91
       }
      ]
     },
@@ -2656,14 +3097,14 @@
   },
   "agent-paza": {
    "sursa": "anunturi",
-   "n": 60,
+   "n": 488,
    "randuri": [
     {
      "eticheta": "Experiență",
      "valori": [
       {
        "v": "experiență cerută",
-       "p": 22
+       "p": 13
       }
      ]
     },
@@ -2672,16 +3113,7 @@
      "valori": [
       {
        "v": "generale",
-       "p": 35
-      }
-     ]
-    },
-    {
-     "eticheta": "Atestate",
-     "valori": [
-      {
-       "v": "atestat transport (CPC)",
-       "p": 20
+       "p": 11
       }
      ]
     },
@@ -2690,11 +3122,7 @@
      "valori": [
       {
        "v": "ture",
-       "p": 20
-      },
-      {
-       "v": "luni–vineri",
-       "p": 12
+       "p": 26
       }
      ]
     },
@@ -2703,19 +3131,7 @@
      "valori": [
       {
        "v": "tichete de masă",
-       "p": 28
-      },
-      {
-       "v": "prime",
-       "p": 20
-      },
-      {
-       "v": "asigurare medicală",
-       "p": 20
-      },
-      {
-       "v": "cursuri / training",
-       "p": 10
+       "p": 15
       }
      ]
     }
@@ -2723,27 +3139,18 @@
   },
   "agent-curatenie": {
    "sursa": "anunturi",
-   "n": 61,
+   "n": 520,
    "randuri": [
     {
      "eticheta": "Experiență",
      "valori": [
       {
        "v": "experiența e un avantaj",
-       "p": 15
+       "p": 17
       },
       {
        "v": "experiență cerută",
-       "p": 12
-      }
-     ]
-    },
-    {
-     "eticheta": "Studii",
-     "valori": [
-      {
-       "v": "medii",
-       "p": 15
+       "p": 16
       }
      ]
     },
@@ -2752,15 +3159,11 @@
      "valori": [
       {
        "v": "luni–vineri",
-       "p": 31
+       "p": 25
       },
       {
        "v": "ture",
-       "p": 26
-      },
-      {
-       "v": "weekend",
-       "p": 13
+       "p": 15
       }
      ]
     },
@@ -2769,11 +3172,11 @@
      "valori": [
       {
        "v": "tichete de masă",
-       "p": 31
+       "p": 22
       },
       {
        "v": "asigurare medicală",
-       "p": 18
+       "p": 10
       }
      ]
     }
@@ -2781,14 +3184,14 @@
   },
   "operator-call-center": {
    "sursa": "anunturi",
-   "n": 51,
+   "n": 173,
    "randuri": [
     {
      "eticheta": "Experiență",
      "valori": [
       {
        "v": "experiență cerută",
-       "p": 20
+       "p": 24
       }
      ]
     },
@@ -2797,7 +3200,7 @@
      "valori": [
       {
        "v": "superioare",
-       "p": 14
+       "p": 10
       }
      ]
     },
@@ -2806,7 +3209,7 @@
      "valori": [
       {
        "v": "engleză",
-       "p": 18
+       "p": 17
       }
      ]
     },
@@ -2815,6 +3218,10 @@
      "valori": [
       {
        "v": "ture",
+       "p": 15
+      },
+      {
+       "v": "luni–vineri",
        "p": 12
       }
      ]
@@ -2823,138 +3230,11 @@
      "eticheta": "Mod de lucru",
      "valori": [
       {
-       "v": "hibrid",
-       "p": 22
-      },
-      {
        "v": "remote",
-       "p": 14
-      }
-     ]
-    },
-    {
-     "eticheta": "Tehnologii",
-     "valori": [
-      {
-       "v": "Excel",
-       "p": 14
-      }
-     ]
-    },
-    {
-     "eticheta": "Beneficii",
-     "valori": [
-      {
-       "v": "cursuri / training",
-       "p": 39
+       "p": 19
       },
       {
-       "v": "asigurare medicală",
-       "p": 31
-      },
-      {
-       "v": "bonus",
-       "p": 24
-      },
-      {
-       "v": "tichete de masă",
-       "p": 18
-      }
-     ]
-    }
-   ]
-  },
-  "secretar": {
-   "sursa": "anunturi",
-   "n": 53,
-   "randuri": [
-    {
-     "eticheta": "Experiență",
-     "valori": [
-      {
-       "v": "experiență cerută",
-       "p": 45
-      }
-     ]
-    },
-    {
-     "eticheta": "Studii",
-     "valori": [
-      {
-       "v": "superioare",
-       "p": 11
-      },
-      {
-       "v": "medii",
-       "p": 11
-      }
-     ]
-    },
-    {
-     "eticheta": "Limbi străine",
-     "valori": [
-      {
-       "v": "engleză",
-       "p": 40
-      }
-     ]
-    },
-    {
-     "eticheta": "Tehnologii",
-     "valori": [
-      {
-       "v": "Excel",
-       "p": 32
-      }
-     ]
-    },
-    {
-     "eticheta": "Beneficii",
-     "valori": [
-      {
-       "v": "bonus",
-       "p": 11
-      }
-     ]
-    }
-   ]
-  },
-  "specialist-resurse-umane": {
-   "sursa": "anunturi",
-   "n": 33,
-   "randuri": [
-    {
-     "eticheta": "Experiență",
-     "valori": [
-      {
-       "v": "experiență cerută",
-       "p": 18
-      }
-     ]
-    },
-    {
-     "eticheta": "Studii",
-     "valori": [
-      {
-       "v": "superioare",
-       "p": 27
-      }
-     ]
-    },
-    {
-     "eticheta": "Limbi străine",
-     "valori": [
-      {
-       "v": "engleză",
-       "p": 30
-      }
-     ]
-    },
-    {
-     "eticheta": "Program",
-     "valori": [
-      {
-       "v": "luni–vineri",
+       "v": "hibrid",
        "p": 12
       }
      ]
@@ -2964,7 +3244,7 @@
      "valori": [
       {
        "v": "Excel",
-       "p": 30
+       "p": 13
       }
      ]
     },
@@ -2972,35 +3252,86 @@
      "eticheta": "Beneficii",
      "valori": [
       {
-       "v": "tichete de masă",
-       "p": 30
+       "v": "cursuri / training",
+       "p": 42
       },
       {
        "v": "bonus",
-       "p": 18
+       "p": 29
       },
       {
-       "v": "cursuri / training",
-       "p": 18
+       "v": "asigurare medicală",
+       "p": 27
+      },
+      {
+       "v": "tichete de masă",
+       "p": 20
       }
      ]
     }
    ]
   },
-  "operator-cnc": {
+  "secretar": {
    "sursa": "anunturi",
-   "n": 36,
+   "n": 246,
    "randuri": [
     {
      "eticheta": "Experiență",
      "valori": [
       {
        "v": "experiență cerută",
-       "p": 33
-      },
+       "p": 30
+      }
+     ]
+    },
+    {
+     "eticheta": "Studii",
+     "valori": [
       {
-       "v": "1+ ani",
+       "v": "superioare",
+       "p": 13
+      }
+     ]
+    },
+    {
+     "eticheta": "Limbi străine",
+     "valori": [
+      {
+       "v": "engleză",
+       "p": 23
+      }
+     ]
+    },
+    {
+     "eticheta": "Program",
+     "valori": [
+      {
+       "v": "luni–vineri",
+       "p": 13
+      }
+     ]
+    },
+    {
+     "eticheta": "Tehnologii",
+     "valori": [
+      {
+       "v": "Excel",
        "p": 31
+      }
+     ]
+    }
+   ]
+  },
+  "specialist-resurse-umane": {
+   "sursa": "anunturi",
+   "n": 83,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "experiență cerută",
+       "p": 18
       },
       {
        "v": "2+ ani",
@@ -3012,8 +3343,263 @@
      "eticheta": "Studii",
      "valori": [
       {
-       "v": "medii",
+       "v": "superioare",
+       "p": 31
+      }
+     ]
+    },
+    {
+     "eticheta": "Limbi străine",
+     "valori": [
+      {
+       "v": "engleză",
+       "p": 34
+      }
+     ]
+    },
+    {
+     "eticheta": "Mod de lucru",
+     "valori": [
+      {
+       "v": "remote",
+       "p": 11
+      }
+     ]
+    },
+    {
+     "eticheta": "Tehnologii",
+     "valori": [
+      {
+       "v": "Excel",
+       "p": 23
+      }
+     ]
+    },
+    {
+     "eticheta": "Beneficii",
+     "valori": [
+      {
+       "v": "tichete de masă",
+       "p": 23
+      },
+      {
+       "v": "cursuri / training",
+       "p": 21
+      },
+      {
+       "v": "bonus",
+       "p": 17
+      },
+      {
+       "v": "asigurare medicală",
+       "p": 11
+      }
+     ]
+    }
+   ]
+  },
+  "agent-imobiliar": {
+   "sursa": "anunturi",
+   "n": 58,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "fără experiență",
+       "p": 33
+      },
+      {
+       "v": "experiență cerută",
+       "p": 24
+      },
+      {
+       "v": "experiența e un avantaj",
+       "p": 16
+      }
+     ]
+    },
+    {
+     "eticheta": "Permis de conducere",
+     "valori": [
+      {
+       "v": "B",
+       "p": 29
+      },
+      {
+       "v": "permis, fără categorie",
+       "p": 16
+      }
+     ]
+    },
+    {
+     "eticheta": "Program",
+     "valori": [
+      {
+       "v": "flexibil",
+       "p": 21
+      }
+     ]
+    },
+    {
+     "eticheta": "Beneficii",
+     "valori": [
+      {
+       "v": "cursuri / training",
        "p": 53
+      }
+     ]
+    }
+   ]
+  },
+  "frizer": {
+   "sursa": "anunturi",
+   "n": 131,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "experiență cerută",
+       "p": 15
+      }
+     ]
+    }
+   ]
+  },
+  "cosmetician": {
+   "sursa": "anunturi",
+   "n": 36,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "experiență cerută",
+       "p": 14
+      }
+     ]
+    }
+   ]
+  },
+  "ingrijitor-batrani": {
+   "sursa": "anunturi",
+   "n": 32,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "experiență cerută",
+       "p": 31
+      }
+     ]
+    },
+    {
+     "eticheta": "Limbi străine",
+     "valori": [
+      {
+       "v": "germană",
+       "p": 13
+      }
+     ]
+    },
+    {
+     "eticheta": "Program",
+     "valori": [
+      {
+       "v": "luni–vineri",
+       "p": 16
+      }
+     ]
+    }
+   ]
+  },
+  "asistent-social": {
+   "sursa": "anofm",
+   "n": 22,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "mai puțin de 3 ani",
+       "p": 55
+      },
+      {
+       "v": "fără experiență",
+       "p": 23
+      },
+      {
+       "v": "între 3 și 5 ani",
+       "p": 18
+      }
+     ]
+    },
+    {
+     "eticheta": "Studii",
+     "valori": [
+      {
+       "v": "superioare",
+       "p": 95
+      }
+     ]
+    },
+    {
+     "eticheta": "Contract",
+     "valori": [
+      {
+       "v": "cu durată nedeterminată",
+       "p": 86
+      },
+      {
+       "v": "cu durată determinată",
+       "p": 14
+      }
+     ]
+    },
+    {
+     "eticheta": "Normă",
+     "valori": [
+      {
+       "v": "cu normă întreagă",
+       "p": 86
+      },
+      {
+       "v": "cu timp parțial",
+       "p": 14
+      }
+     ]
+    }
+   ]
+  },
+  "operator-cnc": {
+   "sursa": "anunturi",
+   "n": 157,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "experiență cerută",
+       "p": 29
+      },
+      {
+       "v": "experiența e un avantaj",
+       "p": 12
+      },
+      {
+       "v": "1+ ani",
+       "p": 11
+      }
+     ]
+    },
+    {
+     "eticheta": "Studii",
+     "valori": [
+      {
+       "v": "medii",
+       "p": 28
       }
      ]
     },
@@ -3022,7 +3608,11 @@
      "valori": [
       {
        "v": "ture",
-       "p": 25
+       "p": 31
+      },
+      {
+       "v": "luni–vineri",
+       "p": 10
       }
      ]
     },
@@ -3044,15 +3634,15 @@
       },
       {
        "v": "bonus",
-       "p": 39
+       "p": 22
       },
       {
        "v": "asigurare medicală",
-       "p": 36
+       "p": 22
       },
       {
-       "v": "cursuri / training",
-       "p": 36
+       "v": "prime",
+       "p": 20
       }
      ]
     }
@@ -3060,7 +3650,145 @@
   },
   "electromecanic": {
    "sursa": "anunturi",
-   "n": 34,
+   "n": 116,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "experiență cerută",
+       "p": 32
+      },
+      {
+       "v": "3+ ani",
+       "p": 12
+      },
+      {
+       "v": "2+ ani",
+       "p": 11
+      }
+     ]
+    },
+    {
+     "eticheta": "Studii",
+     "valori": [
+      {
+       "v": "medii",
+       "p": 26
+      }
+     ]
+    },
+    {
+     "eticheta": "Limbi străine",
+     "valori": [
+      {
+       "v": "engleză",
+       "p": 19
+      }
+     ]
+    },
+    {
+     "eticheta": "Permis de conducere",
+     "valori": [
+      {
+       "v": "B",
+       "p": 28
+      }
+     ]
+    },
+    {
+     "eticheta": "Program",
+     "valori": [
+      {
+       "v": "ture",
+       "p": 15
+      },
+      {
+       "v": "luni–vineri",
+       "p": 11
+      }
+     ]
+    },
+    {
+     "eticheta": "Beneficii",
+     "valori": [
+      {
+       "v": "tichete de masă",
+       "p": 51
+      },
+      {
+       "v": "asigurare medicală",
+       "p": 20
+      },
+      {
+       "v": "transport",
+       "p": 20
+      },
+      {
+       "v": "bonus",
+       "p": 18
+      }
+     ]
+    }
+   ]
+  },
+  "operator-mase-plastice": {
+   "sursa": "anofm",
+   "n": 18,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "mai puțin de 3 ani",
+       "p": 56
+      },
+      {
+       "v": "fără experiență",
+       "p": 28
+      }
+     ]
+    },
+    {
+     "eticheta": "Studii",
+     "valori": [
+      {
+       "v": "școală profesională",
+       "p": 39
+      },
+      {
+       "v": "gimnaziu",
+       "p": 33
+      },
+      {
+       "v": "liceu",
+       "p": 22
+      }
+     ]
+    },
+    {
+     "eticheta": "Contract",
+     "valori": [
+      {
+       "v": "cu durată nedeterminată",
+       "p": 100
+      }
+     ]
+    },
+    {
+     "eticheta": "Normă",
+     "valori": [
+      {
+       "v": "cu normă întreagă",
+       "p": 100
+      }
+     ]
+    }
+   ]
+  },
+  "sticlar": {
+   "sursa": "anunturi",
+   "n": 21,
    "randuri": [
     {
      "eticheta": "Experiență",
@@ -3070,8 +3798,12 @@
        "p": 29
       },
       {
-       "v": "3+ ani",
-       "p": 18
+       "v": "experiența e un avantaj",
+       "p": 29
+      },
+      {
+       "v": "fără experiență",
+       "p": 19
       }
      ]
     },
@@ -3080,16 +3812,7 @@
      "valori": [
       {
        "v": "medii",
-       "p": 15
-      }
-     ]
-    },
-    {
-     "eticheta": "Limbi străine",
-     "valori": [
-      {
-       "v": "engleză",
-       "p": 21
+       "p": 14
       }
      ]
     },
@@ -3103,15 +3826,73 @@
      ]
     },
     {
+     "eticheta": "Beneficii",
+     "valori": [
+      {
+       "v": "prime",
+       "p": 24
+      },
+      {
+       "v": "bonus",
+       "p": 19
+      },
+      {
+       "v": "tichete de masă",
+       "p": 14
+      }
+     ]
+    }
+   ]
+  },
+  "tipograf": {
+   "sursa": "anunturi",
+   "n": 36,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "experiență cerută",
+       "p": 33
+      },
+      {
+       "v": "2+ ani",
+       "p": 25
+      }
+     ]
+    },
+    {
+     "eticheta": "Studii",
+     "valori": [
+      {
+       "v": "medii",
+       "p": 33
+      }
+     ]
+    },
+    {
      "eticheta": "Program",
      "valori": [
       {
-       "v": "luni–vineri",
-       "p": 21
+       "v": "ture",
+       "p": 25
       },
       {
-       "v": "ture",
-       "p": 12
+       "v": "luni–vineri",
+       "p": 25
+      }
+     ]
+    },
+    {
+     "eticheta": "Tehnologii",
+     "valori": [
+      {
+       "v": "CNC",
+       "p": 11
+      },
+      {
+       "v": "AutoCAD",
+       "p": 11
       }
      ]
     },
@@ -3119,20 +3900,20 @@
      "eticheta": "Beneficii",
      "valori": [
       {
-       "v": "tichete de masă",
-       "p": 44
-      },
-      {
        "v": "bonus",
-       "p": 29
+       "p": 28
       },
       {
-       "v": "asigurare medicală",
-       "p": 24
+       "v": "tichete de masă",
+       "p": 19
+      },
+      {
+       "v": "prime",
+       "p": 19
       },
       {
        "v": "transport",
-       "p": 15
+       "p": 11
       }
      ]
     }

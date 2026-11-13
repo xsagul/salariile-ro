@@ -27,161 +27,175 @@
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 18,
+  "anunturiCitite": 22,
   "cuSalariu": 0,
   "nivel": {},
   "experienta": {
    "2+ ani": {
-    "n": 5,
-    "procent": 27.8
+    "n": 6,
+    "procent": 27.3
    },
    "1+ ani": {
-    "n": 4,
-    "procent": 22.2
+    "n": 6,
+    "procent": 27.3
    },
    "3+ ani": {
     "n": 3,
-    "procent": 16.7
+    "procent": 13.6
    },
    "da": {
     "n": 1,
-    "procent": 5.6
+    "procent": 4.5
    }
   },
   "experientaPortal": {
    "0–1 an": {
     "n": 5,
-    "procent": 27.8
+    "procent": 22.7
    },
    "1–5 ani": {
-    "n": 3,
-    "procent": 16.7
+    "n": 4,
+    "procent": 18.2
    }
   },
   "studii": {
    "superioare": {
-    "n": 18,
+    "n": 22,
     "procent": 100
    }
   },
   "limbi": {
    "engleza": {
     "n": 5,
-    "procent": 27.8
+    "procent": 22.7
    }
   },
   "permis": {
    "B": {
     "n": 2,
-    "procent": 11.1
+    "procent": 9.1
    }
   },
   "atestate": {
    "ANRE": {
     "n": 5,
-    "procent": 27.8
+    "procent": 22.7
    }
   },
   "program": {
    "ture": {
-    "n": 6,
-    "procent": 33.3
+    "n": 8,
+    "procent": 36.4
    }
   },
   "mod": {
    "hibrid": {
     "n": 9,
-    "procent": 50
+    "procent": 40.9
    }
   },
   "norma": {},
   "durata": {
    "nedeterminată": {
-    "n": 18,
+    "n": 22,
     "procent": 100
    }
   },
   "beneficii": {
    "tichete de masă": {
-    "n": 18,
+    "n": 22,
     "procent": 100
    },
    "bonus": {
-    "n": 17,
-    "procent": 94.4
+    "n": 21,
+    "procent": 95.5
    },
    "asigurare medicală": {
-    "n": 17,
-    "procent": 94.4
+    "n": 21,
+    "procent": 95.5
    },
    "echipament de lucru": {
     "n": 1,
-    "procent": 5.6
+    "procent": 4.5
    },
    "telefon / laptop": {
     "n": 1,
-    "procent": 5.6
+    "procent": 4.5
    }
   },
   "tehnologii": {
    "Excel": {
-    "n": 6,
-    "procent": 33.3
+    "n": 8,
+    "procent": 36.4
    },
    "SAP": {
     "n": 5,
-    "procent": 27.8
+    "procent": 22.7
    },
    "Salesforce": {
     "n": 2,
-    "procent": 11.1
+    "procent": 9.1
    },
    "SCADA": {
     "n": 1,
-    "procent": 5.6
+    "procent": 4.5
    }
   },
   "negociabil": {},
   "strainatate": {},
   "limbaAnuntului": {
    "ro": {
-    "n": 18,
+    "n": 22,
     "procent": 100
    }
   },
   "surse": {
    "hipo": {
-    "n": 8,
-    "procent": 44.4
+    "n": 9,
+    "procent": 40.9
    },
    "undelucram": {
-    "n": 7,
-    "procent": 38.9
+    "n": 8,
+    "procent": 36.4
    },
    "bestjobs": {
-    "n": 3,
-    "procent": 16.7
+    "n": 5,
+    "procent": 22.7
    }
   },
   "peJudet": {
    "RO": {
-    "n": 8,
-    "procent": 44.4
+    "n": 9,
+    "procent": 40.9
    }
   },
   "motiveFaraSalariu": {
    "salary_evidence_incomplete": {
-    "n": 18,
+    "n": 22,
     "procent": 100
    }
   },
-  "salariuPeFactor": {}
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
   "oferte": 4,
   "posturi": 7,
-  "ofertePeGrupaCor": 72,
+  "ofertePeGrupaCor": 139,
   "tipSalariu": {
    "none": {
     "n": 3,
@@ -258,49 +272,61 @@
    }
   },
   "coduriCorInGrupa": {
+   "215105 - INGINER ELECTROENERGETICA": {
+    "n": 49,
+    "procent": 35.3
+   },
    "215149 - INGINER ELECTRICIAN": {
-    "n": 22,
-    "procent": 30.6
+    "n": 33,
+    "procent": 23.7
    },
    "215111 - PROIECTANT INGINER ENERGETICIAN": {
-    "n": 18,
-    "procent": 25
-   },
-   "215105 - INGINER ELECTROENERGETICA": {
-    "n": 12,
-    "procent": 16.7
+    "n": 21,
+    "procent": 15.1
    },
    "215112 - INGINER RETELE ELECTRICE": {
-    "n": 4,
-    "procent": 5.6
+    "n": 12,
+    "procent": 8.6
    },
    "215120 - SEF TURA DISPECER ENERGETIC": {
-    "n": 4,
-    "procent": 5.6
+    "n": 7,
+    "procent": 5
    },
    "215108 - INGINER ENERGETICA INDUSTRIALA": {
     "n": 4,
-    "procent": 5.6
+    "procent": 2.9
    },
    "215110 - PROIECTANT INGINER ELECTROTEHNIC": {
     "n": 3,
-    "procent": 4.2
-   },
-   "215109 - INGINER TERMOENERGETICA": {
-    "n": 2,
-    "procent": 2.8
+    "procent": 2.2
    },
    "215103 - DISPECER RETEA DISTRIBUTIE": {
-    "n": 1,
+    "n": 2,
     "procent": 1.4
    },
    "215157 - INGINER ECHIPAMENTE SI SISTEME HIDROENERGETICE": {
-    "n": 1,
+    "n": 2,
+    "procent": 1.4
+   },
+   "215109 - INGINER TERMOENERGETICA": {
+    "n": 2,
     "procent": 1.4
    },
    "215163 - INGINER RETELE SI SISTEME HIDRAULICE": {
     "n": 1,
-    "procent": 1.4
+    "procent": 0.7
+   },
+   "215119 - PROIECTANT SISTEME DE SECURITATE": {
+    "n": 1,
+    "procent": 0.7
+   },
+   "215117 - INGINER EXPLOATARE INSTALATII NUCLEARE": {
+    "n": 1,
+    "procent": 0.7
+   },
+   "215115 - INGINER CENTRALE NUCLEAROELECTRICE": {
+    "n": 1,
+    "procent": 0.7
    }
   }
  },

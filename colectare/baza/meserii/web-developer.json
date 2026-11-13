@@ -27,120 +27,189 @@
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 3,
+  "anunturiCitite": 6,
   "cuSalariu": 0,
   "nivel": {
    "senior": {
-    "n": 1,
+    "n": 2,
     "procent": 33.3
    }
   },
   "experienta": {
-   "4+ ani": {
-    "n": 1,
+   "6+ ani": {
+    "n": 2,
     "procent": 33.3
    },
-   "6+ ani": {
-    "n": 1,
+   "5+ ani": {
+    "n": 2,
     "procent": 33.3
+   },
+   "4+ ani": {
+    "n": 1,
+    "procent": 16.7
    }
   },
   "experientaPortal": {
    "1–5 ani": {
-    "n": 3,
-    "procent": 100
+    "n": 4,
+    "procent": 66.7
    }
   },
   "studii": {
    "superioare": {
-    "n": 3,
-    "procent": 100
+    "n": 5,
+    "procent": 83.3
    }
   },
-  "limbi": {},
+  "limbi": {
+   "germana": {
+    "n": 1,
+    "procent": 16.7
+   }
+  },
   "permis": {},
   "atestate": {},
-  "program": {},
-  "mod": {},
+  "program": {
+   "flexibil": {
+    "n": 1,
+    "procent": 16.7
+   }
+  },
+  "mod": {
+   "remote": {
+    "n": 2,
+    "procent": 33.3
+   },
+   "hibrid": {
+    "n": 1,
+    "procent": 16.7
+   }
+  },
   "norma": {},
   "durata": {},
   "beneficii": {
    "asigurare medicală": {
-    "n": 1,
-    "procent": 33.3
+    "n": 3,
+    "procent": 50
    }
   },
   "tehnologii": {
    "JavaScript": {
-    "n": 3,
+    "n": 6,
     "procent": 100
    },
    "React": {
-    "n": 3,
+    "n": 6,
     "procent": 100
+   },
+   "Azure": {
+    "n": 3,
+    "procent": 50
+   },
+   "Git": {
+    "n": 3,
+    "procent": 50
    },
    "Angular": {
     "n": 2,
-    "procent": 66.7
+    "procent": 33.3
    },
    "Vue": {
     "n": 2,
-    "procent": 66.7
-   },
-   "Azure": {
-    "n": 2,
-    "procent": 66.7
-   },
-   "Git": {
-    "n": 2,
-    "procent": 66.7
+    "procent": 33.3
    },
    "TypeScript": {
-    "n": 1,
+    "n": 2,
     "procent": 33.3
    },
    "Swift": {
-    "n": 1,
+    "n": 2,
     "procent": 33.3
    },
    "Flutter": {
-    "n": 1,
+    "n": 2,
     "procent": 33.3
+   },
+   "Excel": {
+    "n": 1,
+    "procent": 16.7
+   },
+   "Python": {
+    "n": 1,
+    "procent": 16.7
+   },
+   "C#": {
+    "n": 1,
+    "procent": 16.7
+   },
+   ".NET": {
+    "n": 1,
+    "procent": 16.7
+   },
+   "C++": {
+    "n": 1,
+    "procent": 16.7
+   },
+   "Jira": {
+    "n": 1,
+    "procent": 16.7
    }
   },
   "negociabil": {},
   "strainatate": {},
   "limbaAnuntului": {
    "en": {
-    "n": 3,
+    "n": 6,
     "procent": 100
    }
   },
   "surse": {
    "hipo": {
-    "n": 3,
-    "procent": 100
+    "n": 4,
+    "procent": 66.7
+   },
+   "undelucram": {
+    "n": 2,
+    "procent": 33.3
    }
   },
   "peJudet": {
    "RO": {
-    "n": 3,
-    "procent": 100
+    "n": 4,
+    "procent": 66.7
    }
   },
   "motiveFaraSalariu": {
    "salary_evidence_incomplete": {
-    "n": 3,
+    "n": 6,
     "procent": 100
+   },
+   "country_unconfirmed": {
+    "n": 1,
+    "procent": 16.7
    }
   },
-  "salariuPeFactor": {}
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
   "oferte": 2,
   "posturi": 4,
-  "ofertePeGrupaCor": 65,
+  "ofertePeGrupaCor": 115,
   "tipSalariu": {
    "gross": {
     "n": 1,
@@ -210,36 +279,40 @@
   },
   "coduriCorInGrupa": {
    "251202 - PROGRAMATOR": {
-    "n": 29,
-    "procent": 44.6
-   },
-   "251204 - PROGRAMATOR DE SISTEM INFORMATIC": {
-    "n": 10,
-    "procent": 15.4
+    "n": 38,
+    "procent": 33
    },
    "251203 - INGINER DE SISTEM ÎN INFORMATICA": {
-    "n": 10,
-    "procent": 15.4
+    "n": 28,
+    "procent": 24.3
+   },
+   "251204 - PROGRAMATOR DE SISTEM INFORMATIC": {
+    "n": 14,
+    "procent": 12.2
    },
    "251201 - ANALIST": {
-    "n": 8,
-    "procent": 12.3
+    "n": 14,
+    "procent": 12.2
+   },
+   "251206 - MANAGER PROIECT INFORMATIC": {
+    "n": 12,
+    "procent": 10.4
    },
    "251205 - INGINER DE SISTEM SOFTWARE": {
-    "n": 3,
-    "procent": 4.6
+    "n": 5,
+    "procent": 4.3
    },
    "251208 - inginer în realizarea, întreținerea și dezvoltarea aplicațiilor web": {
     "n": 2,
-    "procent": 3.1
-   },
-   "251206 - MANAGER PROIECT INFORMATIC": {
-    "n": 2,
-    "procent": 3.1
+    "procent": 1.7
    },
    "251207 - Inginer de dezvoltare a produselor software": {
     "n": 1,
-    "procent": 1.5
+    "procent": 0.9
+   },
+   "251212 - Inginer de date complexe (big data)": {
+    "n": 1,
+    "procent": 0.9
    }
   }
  },

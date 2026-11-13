@@ -63,7 +63,21 @@
   "surse": {},
   "peJudet": {},
   "motiveFaraSalariu": {},
-  "salariuPeFactor": {}
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",

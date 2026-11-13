@@ -4,92 +4,183 @@
  "cor": "333401",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
-  "cuSalariu": 9,
-  "cuBazaDeclarata": 1,
-  "faraBazaDeclarata": 8,
+  "cuSalariu": 16,
+  "cuBazaDeclarata": 2,
+  "faraBazaDeclarata": 14,
   "surse": {
+   "bestjobs": {
+    "n": 9,
+    "procent": 56.3
+   },
    "ejobs": {
     "n": 5,
-    "procent": 55.6
+    "procent": 31.3
    },
-   "bestjobs": {
-    "n": 4,
-    "procent": 44.4
+   "anuntul": {
+    "n": 1,
+    "procent": 6.3
+   },
+   "publi24": {
+    "n": 1,
+    "procent": 6.3
    }
   },
   "colectari": {
    "continuă": {
-    "n": 5,
-    "procent": 55.6
+    "n": 12,
+    "procent": 75
    },
    "8 septembrie 2026": {
     "n": 4,
-    "procent": 44.4
+    "procent": 25
    }
   },
   "net": {
-   "n": 1
+   "n": 2
   },
   "netMinimOferit": {
-   "n": 1
+   "n": 2
   },
   "netMaximOferit": {
-   "n": 1
+   "n": 2
   },
   "faraBazaDeclarata_valori": {
-   "n": 8
+   "n": 14,
+   "p10": 5083,
+   "p25": 5811,
+   "median": 7708,
+   "p75": 11543,
+   "p90": 21077,
+   "min": 4270,
+   "max": 40116
   },
-  "peOras": {},
+  "peOras": {
+   "Târgu Mureș": {
+    "n": 1
+   }
+  },
   "peJudet": {},
   "peLuna": {
    "2026-09": {
     "n": 7,
-    "procent": 77.8
+    "procent": 43.8
+   },
+   "2026-10": {
+    "n": 7,
+    "procent": 43.8
    },
    "2026-08": {
     "n": 2,
-    "procent": 22.2
+    "procent": 12.5
    }
   }
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 12,
-  "cuSalariu": 0,
+  "anunturiCitite": 58,
+  "cuSalariu": 1,
   "nivel": {},
   "experienta": {
    "fara": {
-    "n": 4,
-    "procent": 33.3
+    "n": 19,
+    "procent": 32.8
    },
    "da": {
-    "n": 3,
-    "procent": 25
+    "n": 14,
+    "procent": 24.1
+   },
+   "avantaj": {
+    "n": 9,
+    "procent": 15.5
+   },
+   "1+ ani": {
+    "n": 2,
+    "procent": 3.4
+   },
+   "16+ ani": {
+    "n": 1,
+    "procent": 1.7
+   },
+   "2+ ani": {
+    "n": 1,
+    "procent": 1.7
+   },
+   "15+ ani": {
+    "n": 1,
+    "procent": 1.7
    }
   },
   "experientaPortal": {},
-  "studii": {},
-  "limbi": {},
+  "studii": {
+   "medii": {
+    "n": 2,
+    "procent": 3.4
+   },
+   "superioare": {
+    "n": 1,
+    "procent": 1.7
+   }
+  },
+  "limbi": {
+   "engleza": {
+    "n": 1,
+    "procent": 1.7
+   }
+  },
   "permis": {
    "B": {
-    "n": 3,
-    "procent": 25
+    "n": 17,
+    "procent": 29.3
+   },
+   "da": {
+    "n": 9,
+    "procent": 15.5
    }
   },
   "atestate": {},
   "program": {
    "flexibil": {
-    "n": 2,
-    "procent": 16.7
+    "n": 12,
+    "procent": 20.7
    }
   },
-  "mod": {},
-  "norma": {},
+  "mod": {
+   "remote": {
+    "n": 1,
+    "procent": 1.7
+   },
+   "hibrid": {
+    "n": 1,
+    "procent": 1.7
+   }
+  },
+  "norma": {
+   "full-time": {
+    "n": 6,
+    "procent": 10.3
+   },
+   "part-time": {
+    "n": 3,
+    "procent": 5.2
+   }
+  },
   "durata": {},
   "beneficii": {
    "cursuri / training": {
-    "n": 6,
-    "procent": 50
+    "n": 31,
+    "procent": 53.4
+   },
+   "bonus": {
+    "n": 5,
+    "procent": 8.6
+   },
+   "telefon / laptop": {
+    "n": 5,
+    "procent": 8.6
+   },
+   "tichete de masă": {
+    "n": 1,
+    "procent": 1.7
    }
   },
   "tehnologii": {},
@@ -97,57 +188,151 @@
   "strainatate": {},
   "limbaAnuntului": {
    "ro": {
-    "n": 12,
+    "n": 58,
     "procent": 100
    }
   },
   "surse": {
-   "ejobs": {
-    "n": 6,
-    "procent": 50
+   "publi24": {
+    "n": 28,
+    "procent": 48.3
    },
    "bestjobs": {
-    "n": 5,
-    "procent": 41.7
+    "n": 20,
+    "procent": 34.5
+   },
+   "ejobs": {
+    "n": 6,
+    "procent": 10.3
    },
    "anuntul": {
-    "n": 1,
-    "procent": 8.3
+    "n": 4,
+    "procent": 6.9
    }
   },
   "peJudet": {
    "10": {
     "n": 3,
-    "procent": 25
+    "procent": 5.2
    },
    "48": {
     "n": 1,
-    "procent": 8.3
+    "procent": 1.7
+   },
+   "Bucuresti": {
+    "n": 10,
+    "procent": 17.2
    },
    "bucuresti": {
+    "n": 4,
+    "procent": 6.9
+   },
+   "Dolj": {
+    "n": 3,
+    "procent": 5.2
+   },
+   "Iasi": {
+    "n": 2,
+    "procent": 3.4
+   },
+   "Prahova": {
+    "n": 2,
+    "procent": 3.4
+   },
+   "Timis": {
+    "n": 2,
+    "procent": 3.4
+   },
+   "Bihor": {
+    "n": 2,
+    "procent": 3.4
+   },
+   "Valcea": {
+    "n": 2,
+    "procent": 3.4
+   },
+   "Alba": {
     "n": 1,
-    "procent": 8.3
+    "procent": 1.7
+   },
+   "Constanta": {
+    "n": 1,
+    "procent": 1.7
+   },
+   "Sibiu": {
+    "n": 1,
+    "procent": 1.7
+   },
+   "Olt": {
+    "n": 1,
+    "procent": 1.7
+   },
+   "Brasov": {
+    "n": 1,
+    "procent": 1.7
    }
   },
   "motiveFaraSalariu": {
-   "wide_range_review": {
-    "n": 4,
-    "procent": 57.1
-   },
    "salary_evidence_incomplete": {
-    "n": 2,
-    "procent": 28.6
-   },
-   "contract_or_variable_income": {
-    "n": 1,
-    "procent": 14.3
+    "n": 32,
+    "procent": 69.6
    },
    "full_time_unconfirmed": {
+    "n": 12,
+    "procent": 26.1
+   },
+   "contract_or_variable_income": {
+    "n": 9,
+    "procent": 19.6
+   },
+   "wide_range_review": {
+    "n": 7,
+    "procent": 15.2
+   },
+   "multiple_unresolved_amounts": {
     "n": 1,
-    "procent": 14.3
+    "procent": 2.2
    }
   },
-  "salariuPeFactor": {}
+  "salariuPeFactor": {
+   "experienta": {
+    "da": {
+     "n": 1
+    }
+   },
+   "program": {
+    "flexibil": {
+     "n": 1
+    }
+   },
+   "beneficii": {
+    "cursuri / training": {
+     "n": 1
+    },
+    "telefon / laptop": {
+     "n": 1
+    }
+   },
+   "permis": {
+    "da": {
+     "n": 1
+    }
+   }
+  },
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",

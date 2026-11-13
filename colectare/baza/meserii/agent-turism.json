@@ -4,27 +4,27 @@
  "cor": "422101",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
-  "cuSalariu": 6,
+  "cuSalariu": 8,
   "cuBazaDeclarata": 1,
-  "faraBazaDeclarata": 5,
+  "faraBazaDeclarata": 7,
   "surse": {
+   "bestjobs": {
+    "n": 4,
+    "procent": 50
+   },
    "ejobs": {
     "n": 4,
-    "procent": 66.7
-   },
-   "bestjobs": {
-    "n": 2,
-    "procent": 33.3
+    "procent": 50
    }
   },
   "colectari": {
    "8 septembrie 2026": {
     "n": 5,
-    "procent": 83.3
+    "procent": 62.5
    },
    "continuă": {
-    "n": 1,
-    "procent": 16.7
+    "n": 3,
+    "procent": 37.5
    }
   },
   "net": {
@@ -37,55 +37,136 @@
    "n": 1
   },
   "faraBazaDeclarata_valori": {
-   "n": 5
+   "n": 7
   },
   "peOras": {},
   "peJudet": {},
   "peLuna": {
    "2026-09": {
     "n": 4,
-    "procent": 66.7
+    "procent": 50
    },
    "2026-08": {
     "n": 2,
-    "procent": 33.3
+    "procent": 25
+   },
+   "2026-10": {
+    "n": 1,
+    "procent": 12.5
+   },
+   "2026-11": {
+    "n": 1,
+    "procent": 12.5
    }
   }
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 1,
+  "anunturiCitite": 9,
   "cuSalariu": 0,
   "nivel": {
    "junior": {
     "n": 1,
-    "procent": 100
+    "procent": 11.1
    }
   },
   "experienta": {
+   "avantaj": {
+    "n": 3,
+    "procent": 33.3
+   },
    "da": {
+    "n": 2,
+    "procent": 22.2
+   },
+   "1+ ani": {
     "n": 1,
-    "procent": 100
+    "procent": 11.1
+   },
+   "5+ ani": {
+    "n": 1,
+    "procent": 11.1
+   },
+   "3+ ani": {
+    "n": 1,
+    "procent": 11.1
    }
   },
-  "experientaPortal": {},
-  "studii": {},
+  "experientaPortal": {
+   "1–5 ani": {
+    "n": 3,
+    "procent": 33.3
+   }
+  },
+  "studii": {
+   "superioare": {
+    "n": 4,
+    "procent": 44.4
+   },
+   "medii": {
+    "n": 1,
+    "procent": 11.1
+   }
+  },
   "limbi": {
    "engleza": {
+    "n": 6,
+    "procent": 66.7
+   },
+   "germana": {
     "n": 1,
-    "procent": 100
+    "procent": 11.1
    }
   },
   "permis": {},
   "atestate": {},
-  "program": {},
-  "mod": {},
-  "norma": {},
+  "program": {
+   "flexibil": {
+    "n": 1,
+    "procent": 11.1
+   },
+   "weekend": {
+    "n": 1,
+    "procent": 11.1
+   },
+   "luni–vineri": {
+    "n": 1,
+    "procent": 11.1
+   }
+  },
+  "mod": {
+   "remote": {
+    "n": 1,
+    "procent": 11.1
+   }
+  },
+  "norma": {
+   "full-time": {
+    "n": 2,
+    "procent": 22.2
+   }
+  },
   "durata": {},
   "beneficii": {
    "bonus": {
+    "n": 5,
+    "procent": 55.6
+   },
+   "asigurare medicală": {
+    "n": 3,
+    "procent": 33.3
+   },
+   "cursuri / training": {
     "n": 1,
-    "procent": 100
+    "procent": 11.1
+   },
+   "tichete de masă": {
+    "n": 1,
+    "procent": 11.1
+   },
+   "masă": {
+    "n": 1,
+    "procent": 11.1
    }
   },
   "tehnologii": {},
@@ -93,19 +174,63 @@
   "strainatate": {},
   "limbaAnuntului": {
    "ro": {
-    "n": 1,
+    "n": 9,
     "procent": 100
    }
   },
   "surse": {
    "bestjobs": {
-    "n": 1,
-    "procent": 100
+    "n": 4,
+    "procent": 44.4
+   },
+   "hipo": {
+    "n": 3,
+    "procent": 33.3
+   },
+   "publi24": {
+    "n": 2,
+    "procent": 22.2
    }
   },
-  "peJudet": {},
-  "motiveFaraSalariu": {},
-  "salariuPeFactor": {}
+  "peJudet": {
+   "RO": {
+    "n": 3,
+    "procent": 33.3
+   },
+   "Suceava": {
+    "n": 1,
+    "procent": 11.1
+   },
+   "Galati": {
+    "n": 1,
+    "procent": 11.1
+   }
+  },
+  "motiveFaraSalariu": {
+   "salary_evidence_incomplete": {
+    "n": 6,
+    "procent": 100
+   },
+   "full_time_unconfirmed": {
+    "n": 1,
+    "procent": 16.7
+   }
+  },
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",

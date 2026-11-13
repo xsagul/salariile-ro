@@ -58,79 +58,285 @@
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 6,
+  "anunturiCitite": 100,
   "cuSalariu": 0,
   "nivel": {},
   "experienta": {
+   "fara": {
+    "n": 20,
+    "procent": 20
+   },
    "da": {
-    "n": 2,
-    "procent": 33.3
+    "n": 13,
+    "procent": 13
+   },
+   "avantaj": {
+    "n": 7,
+    "procent": 7
    },
    "1+ ani": {
     "n": 1,
-    "procent": 16.7
+    "procent": 1
    }
   },
   "experientaPortal": {},
   "studii": {
+   "medii": {
+    "n": 37,
+    "procent": 37
+   },
    "superioare": {
-    "n": 2,
-    "procent": 33.3
+    "n": 3,
+    "procent": 3
    }
   },
   "limbi": {},
   "permis": {},
   "atestate": {},
-  "program": {},
-  "mod": {},
-  "norma": {},
+  "program": {
+   "flexibil": {
+    "n": 30,
+    "procent": 30
+   },
+   "luni–vineri": {
+    "n": 1,
+    "procent": 1
+   }
+  },
+  "mod": {
+   "remote": {
+    "n": 17,
+    "procent": 17
+   }
+  },
+  "norma": {
+   "part-time": {
+    "n": 44,
+    "procent": 44
+   },
+   "full-time": {
+    "n": 1,
+    "procent": 1
+   }
+  },
   "durata": {},
   "beneficii": {
    "cursuri / training": {
-    "n": 2,
-    "procent": 33.3
+    "n": 42,
+    "procent": 42
+   },
+   "bonus": {
+    "n": 12,
+    "procent": 12
+   },
+   "telefon / laptop": {
+    "n": 7,
+    "procent": 7
    }
   },
-  "tehnologii": {},
+  "tehnologii": {
+   "Excel": {
+    "n": 1,
+    "procent": 1
+   }
+  },
   "negociabil": {},
   "strainatate": {},
   "limbaAnuntului": {
    "ro": {
-    "n": 6,
+    "n": 100,
     "procent": 100
    }
   },
   "surse": {
+   "publi24": {
+    "n": 89,
+    "procent": 89
+   },
    "bestjobs": {
-    "n": 3,
-    "procent": 50
+    "n": 8,
+    "procent": 8
    },
    "ejobs": {
     "n": 2,
-    "procent": 33.3
+    "procent": 2
    },
    "anuntul": {
     "n": 1,
-    "procent": 16.7
+    "procent": 1
    }
   },
   "peJudet": {
+   "Iasi": {
+    "n": 11,
+    "procent": 11
+   },
+   "Bucuresti": {
+    "n": 11,
+    "procent": 11
+   },
+   "Brasov": {
+    "n": 7,
+    "procent": 7
+   },
+   "Dolj": {
+    "n": 6,
+    "procent": 6
+   },
+   "Arges": {
+    "n": 5,
+    "procent": 5
+   },
+   "Gorj": {
+    "n": 4,
+    "procent": 4
+   },
+   "Dambovita": {
+    "n": 4,
+    "procent": 4
+   },
+   "Bacau": {
+    "n": 4,
+    "procent": 4
+   },
+   "Timis": {
+    "n": 3,
+    "procent": 3
+   },
+   "Caras-Severin": {
+    "n": 3,
+    "procent": 3
+   },
+   "Cluj": {
+    "n": 3,
+    "procent": 3
+   },
+   "Prahova": {
+    "n": 2,
+    "procent": 2
+   },
+   "Bistrita-Nasaud": {
+    "n": 2,
+    "procent": 2
+   },
+   "Braila": {
+    "n": 2,
+    "procent": 2
+   },
+   "Alba": {
+    "n": 2,
+    "procent": 2
+   },
+   "Hunedoara": {
+    "n": 2,
+    "procent": 2
+   },
+   "Sibiu": {
+    "n": 2,
+    "procent": 2
+   },
+   "Buzau": {
+    "n": 2,
+    "procent": 2
+   },
    "bucuresti": {
     "n": 1,
-    "procent": 16.7
+    "procent": 1
+   },
+   "Galati": {
+    "n": 1,
+    "procent": 1
+   },
+   "Calarasi": {
+    "n": 1,
+    "procent": 1
+   },
+   "Mehedinti": {
+    "n": 1,
+    "procent": 1
+   },
+   "Bihor": {
+    "n": 1,
+    "procent": 1
+   },
+   "Maramures": {
+    "n": 1,
+    "procent": 1
+   },
+   "Botosani": {
+    "n": 1,
+    "procent": 1
+   },
+   "Giurgiu": {
+    "n": 1,
+    "procent": 1
+   },
+   "Olt": {
+    "n": 1,
+    "procent": 1
+   },
+   "Teleorman": {
+    "n": 1,
+    "procent": 1
+   },
+   "Valcea": {
+    "n": 1,
+    "procent": 1
+   },
+   "Constanta": {
+    "n": 1,
+    "procent": 1
+   },
+   "Arad": {
+    "n": 1,
+    "procent": 1
+   },
+   "Vaslui": {
+    "n": 1,
+    "procent": 1
+   },
+   "Neamt": {
+    "n": 1,
+    "procent": 1
    }
   },
   "motiveFaraSalariu": {
+   "salary_evidence_incomplete": {
+    "n": 95,
+    "procent": 96
+   },
+   "full_time_unconfirmed": {
+    "n": 87,
+    "procent": 87.9
+   },
+   "contract_or_variable_income": {
+    "n": 58,
+    "procent": 58.6
+   },
+   "foreign_or_noncomparable_work": {
+    "n": 6,
+    "procent": 6.1
+   },
    "wide_range_review": {
     "n": 3,
-    "procent": 60
-   },
-   "salary_evidence_incomplete": {
-    "n": 2,
-    "procent": 40
+    "procent": 3
    }
   },
-  "salariuPeFactor": {}
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",

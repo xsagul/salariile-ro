@@ -20,7 +20,7 @@ import {
 import { SURSA_GRILE, grilaPublica } from "@/lib/grile-publice";
 import SalariuConcluzie, { concluzieMeserie } from '@/app/components/SalariuConcluzie';
 import SalariuGrila, { netDeStart, trepteGrila } from '@/app/components/SalariuGrila';
-import SalariuOficial, { netOficialDeStart, venitOficial } from '@/app/components/SalariuOficial';
+import SalariuOficial, { frazaTabel, netOficialDeStart, venitOficial } from "@/app/components/SalariuOficial";
 import CeCerAngajatorii, { cerinteMeserie } from '@/app/components/CeCerAngajatorii';
 import SalariuDeclarat, { areSalariuDeclarat, frazaDeclarat, netDeclarat } from '@/app/components/SalariuDeclarat';
 import { descriereReper, grilaEducatie } from '@/lib/repere-meserii';
@@ -147,7 +147,7 @@ function faqPentru(date: DateMeserie) {
     ? `La angajare se oferă unui ${de} în jur de ${lei(c.net)}, mijlocul salariilor din ${c.oferit.anunturi} anunțuri verificate.`
     : venitOficial(date.meserie.slug)
     ? (() => { const v = venitOficial(date.meserie.slug)!; const s = v.categorii.find(x => x.categorie === v.start) ?? v.categorii[0];
-        return `${s.categorie} iau în mână între ${nr(s.min)} și ${nr(s.max)} lei net pe lună${v.brut ? '' : ', la program normal'}, după tabelul publicat de ${v.angajator} pentru ${v.luna}. Cu grad și funcție, venitul net ajunge până la ${nr(Math.max(...v.categorii.map(x => x.max)))} lei ${v.varf}.`; })()
+        return `${s.categorie} iau în mână între ${nr(s.min)} și ${nr(s.max)} lei net pe lună${v.brut ? '' : ', la program normal'}, ${frazaTabel(v)}. Cu grad și funcție, venitul net ajunge până la ${nr(Math.max(...v.categorii.map(x => x.max)))} lei ${v.varf}.`; })()
     : frazaDeclarat(date.meserie.slug, de)
     ? frazaDeclarat(date.meserie.slug, de)!
     : candidata?.veche
@@ -178,7 +178,7 @@ function faqPentru(date: DateMeserie) {
   intrebari.push(
     {
       q: `Cum compar o ofertă de angajare cu salariul unui ${de}?`,
-      a: "Verifică salariul de bază brut, norma și orele, tichetele de masă, sporurile garantate și bonusurile variabile. Folosește calculatorul nostru de salariu ca să afli suma netă exactă a ofertei tale și compar-o cu salariul de mai sus.",
+      a: "Verifică salariul de bază brut, norma și orele, tichetele de masă, sporurile garantate și bonusurile variabile. Folosește calculatorul nostru de salariu ca să afli suma netă exactă a ofertei tale și compar-o cu cifrele de pe această pagină.",
     },
   );
   return intrebari;

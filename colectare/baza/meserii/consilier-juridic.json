@@ -4,608 +4,770 @@
  "cor": "261103",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
-  "cuSalariu": 19,
-  "cuBazaDeclarata": 8,
-  "faraBazaDeclarata": 11,
+  "cuSalariu": 27,
+  "cuBazaDeclarata": 10,
+  "faraBazaDeclarata": 17,
   "surse": {
    "bestjobs": {
-    "n": 8,
-    "procent": 42.1
+    "n": 15,
+    "procent": 55.6
    },
    "ejobs": {
     "n": 7,
-    "procent": 36.8
+    "procent": 25.9
    },
    "hipo": {
-    "n": 2,
-    "procent": 10.5
+    "n": 3,
+    "procent": 11.1
    },
    "olx": {
     "n": 2,
-    "procent": 10.5
+    "procent": 7.4
    }
   },
   "colectari": {
+   "continuă": {
+    "n": 16,
+    "procent": 59.3
+   },
    "8 septembrie 2026": {
     "n": 11,
-    "procent": 57.9
-   },
-   "continuă": {
-    "n": 8,
-    "procent": 42.1
+    "procent": 40.7
    }
   },
   "net": {
-   "n": 8
+   "n": 10,
+   "p10": 4350,
+   "p25": 5085,
+   "median": 6875,
+   "p75": 7000,
+   "p90": 7915,
+   "min": 3000,
+   "max": 8250
   },
   "netMinimOferit": {
-   "n": 8
+   "n": 10,
+   "p10": 3900,
+   "p25": 5063,
+   "median": 5921,
+   "p75": 7000,
+   "p90": 7050,
+   "min": 3000,
+   "max": 7500
   },
   "netMaximOferit": {
-   "n": 8
+   "n": 10,
+   "p10": 4800,
+   "p25": 5085,
+   "median": 7000,
+   "p75": 7000,
+   "p90": 9150,
+   "min": 3000,
+   "max": 10504
   },
   "faraBazaDeclarata_valori": {
-   "n": 11,
-   "p10": 3150,
-   "p25": 4004,
-   "median": 4485,
-   "p75": 5290,
-   "p90": 7387,
+   "n": 17,
+   "p10": 3635,
+   "p25": 4221,
+   "median": 5277,
+   "p75": 6145,
+   "p90": 8218,
    "min": 2900,
    "max": 9453.5
   },
   "peOras": {
    "BUCURESTI": {
+    "n": 2
+   },
+   "Cluj-Napoca": {
     "n": 1
    }
   },
   "peJudet": {
    "RO": {
-    "n": 1
+    "n": 2
    }
   },
   "peLuna": {
    "2026-09": {
-    "n": 13,
-    "procent": 68.4
+    "n": 14,
+    "procent": 51.9
+   },
+   "2026-10": {
+    "n": 7,
+    "procent": 25.9
    },
    "2026-08": {
     "n": 5,
-    "procent": 26.3
+    "procent": 18.5
    },
    "2026-06": {
     "n": 1,
-    "procent": 5.3
+    "procent": 3.7
    }
   }
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 18,
-  "cuSalariu": 1,
-  "nivel": {},
+  "anunturiCitite": 51,
+  "cuSalariu": 3,
+  "nivel": {
+   "junior": {
+    "n": 1,
+    "procent": 2
+   }
+  },
   "experienta": {
    "da": {
-    "n": 5,
-    "procent": 27.8
-   },
-   "3+ ani": {
-    "n": 2,
-    "procent": 11.1
+    "n": 15,
+    "procent": 29.4
    },
    "5+ ani": {
-    "n": 2,
-    "procent": 11.1
+    "n": 6,
+    "procent": 11.8
    },
    "1+ ani": {
-    "n": 2,
-    "procent": 11.1
+    "n": 5,
+    "procent": 9.8
+   },
+   "3+ ani": {
+    "n": 4,
+    "procent": 7.8
+   },
+   "2+ ani": {
+    "n": 4,
+    "procent": 7.8
    },
    "avantaj": {
-    "n": 1,
-    "procent": 5.6
+    "n": 2,
+    "procent": 3.9
    }
   },
   "experientaPortal": {
-   "peste 5 ani": {
-    "n": 1,
-    "procent": 5.6
-   },
    "1–5 ani": {
+    "n": 4,
+    "procent": 7.8
+   },
+   "peste 5 ani": {
+    "n": 2,
+    "procent": 3.9
+   },
+   "0–1 an": {
     "n": 1,
-    "procent": 5.6
+    "procent": 2
    }
   },
   "studii": {
    "superioare": {
-    "n": 12,
-    "procent": 66.7
+    "n": 33,
+    "procent": 64.7
    }
   },
   "limbi": {
    "engleza": {
-    "n": 3,
-    "procent": 16.7
+    "n": 9,
+    "procent": 17.6
    },
    "franceza": {
     "n": 1,
-    "procent": 5.6
+    "procent": 2
    }
   },
   "permis": {
    "B": {
-    "n": 2,
-    "procent": 11.1
+    "n": 8,
+    "procent": 15.7
    }
   },
   "atestate": {
    "ANRE": {
     "n": 2,
-    "procent": 11.1
+    "procent": 3.9
    }
   },
-  "program": {},
+  "program": {
+   "luni–vineri": {
+    "n": 2,
+    "procent": 3.9
+   }
+  },
   "mod": {
    "hibrid": {
     "n": 3,
-    "procent": 16.7
+    "procent": 5.9
+   },
+   "remote": {
+    "n": 1,
+    "procent": 2
    }
   },
   "norma": {
    "full-time": {
-    "n": 1,
-    "procent": 5.6
+    "n": 8,
+    "procent": 15.7
    }
   },
-  "durata": {},
+  "durata": {
+   "determinată": {
+    "n": 2,
+    "procent": 3.9
+   },
+   "nedeterminată": {
+    "n": 1,
+    "procent": 2
+   }
+  },
   "beneficii": {
    "tichete de masă": {
-    "n": 4,
-    "procent": 22.2
+    "n": 9,
+    "procent": 17.6
    },
    "asigurare medicală": {
-    "n": 4,
-    "procent": 22.2
+    "n": 7,
+    "procent": 13.7
    },
    "bonus": {
-    "n": 3,
-    "procent": 16.7
+    "n": 6,
+    "procent": 11.8
    },
    "prime": {
-    "n": 1,
-    "procent": 5.6
+    "n": 5,
+    "procent": 9.8
    },
-   "cursuri / training": {
-    "n": 1,
-    "procent": 5.6
+   "transport": {
+    "n": 4,
+    "procent": 7.8
    },
    "telefon / laptop": {
-    "n": 1,
-    "procent": 5.6
+    "n": 3,
+    "procent": 5.9
+   },
+   "cursuri / training": {
+    "n": 2,
+    "procent": 3.9
    }
   },
   "tehnologii": {
    "Excel": {
-    "n": 1,
-    "procent": 5.6
+    "n": 6,
+    "procent": 11.8
    }
   },
-  "negociabil": {},
+  "negociabil": {
+   "salariu negociabil": {
+    "n": 1,
+    "procent": 2
+   }
+  },
   "strainatate": {},
   "limbaAnuntului": {
    "ro": {
-    "n": 17,
-    "procent": 94.4
+    "n": 50,
+    "procent": 98
    },
    "en": {
     "n": 1,
-    "procent": 5.6
+    "procent": 2
    }
   },
   "surse": {
    "bestjobs": {
-    "n": 13,
-    "procent": 72.2
+    "n": 32,
+    "procent": 62.7
+   },
+   "publi24": {
+    "n": 9,
+    "procent": 17.6
    },
    "hipo": {
-    "n": 2,
-    "procent": 11.1
+    "n": 7,
+    "procent": 13.7
    },
    "undelucram": {
     "n": 2,
-    "procent": 11.1
+    "procent": 3.9
    },
    "ejobs": {
     "n": 1,
-    "procent": 5.6
+    "procent": 2
    }
   },
   "peJudet": {
    "10": {
     "n": 1,
-    "procent": 5.6
+    "procent": 2
    },
    "RO": {
+    "n": 7,
+    "procent": 13.7
+   },
+   "Bucuresti": {
+    "n": 5,
+    "procent": 9.8
+   },
+   "Cluj": {
     "n": 2,
-    "procent": 11.1
+    "procent": 3.9
+   },
+   "Iasi": {
+    "n": 1,
+    "procent": 2
+   },
+   "Dolj": {
+    "n": 1,
+    "procent": 2
    }
   },
   "motiveFaraSalariu": {
    "salary_evidence_incomplete": {
-    "n": 10,
-    "procent": 100
+    "n": 32,
+    "procent": 91.4
+   },
+   "full_time_unconfirmed": {
+    "n": 7,
+    "procent": 20
+   },
+   "multiple_unresolved_amounts": {
+    "n": 2,
+    "procent": 5.7
    }
   },
   "salariuPeFactor": {
    "experienta": {
     "5+ ani": {
-     "n": 1
+     "n": 2
     }
    },
    "experientaPortal": {
     "1–5 ani": {
-     "n": 1
+     "n": 2
     }
    },
    "studii": {
     "superioare": {
-     "n": 1
+     "n": 3
     }
    }
+  },
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
   }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
-  "oferte": 21,
-  "posturi": 24,
-  "ofertePeGrupaCor": 21,
+  "oferte": 32,
+  "posturi": 36,
+  "ofertePeGrupaCor": 32,
   "tipSalariu": {
    "gross": {
-    "n": 10,
-    "procent": 47.6
+    "n": 18,
+    "procent": 56.3
    },
    "none": {
     "n": 8,
-    "procent": 38.1
+    "procent": 25
    },
    "net": {
-    "n": 3,
-    "procent": 14.3
+    "n": 6,
+    "procent": 18.8
    }
   },
   "netMinimDeclarat": {
-   "n": 3
+   "n": 6
   },
   "brutMinimDeclarat": {
-   "n": 10,
+   "n": 18,
    "p10": 4325,
-   "p25": 5359,
-   "median": 6018,
-   "p75": 7746,
-   "p90": 9305,
+   "p25": 4525,
+   "median": 5579,
+   "p75": 6712,
+   "p90": 8453,
    "min": 4325,
    "max": 10321
   },
-  "laSalariulMinim": 2,
+  "laSalariulMinim": 4,
   "studii": {
    "Universitar - ÎNVĂȚĂMÂNT SUPERIOR": {
-    "n": 18,
-    "procent": 85.7
+    "n": 27,
+    "procent": 84.4
    },
    "Universitar - MASTER": {
-    "n": 3,
-    "procent": 14.3
+    "n": 5,
+    "procent": 15.6
    }
   },
   "experienta": {
    "Experiență medie - între 3 și 5 ani": {
-    "n": 5,
-    "procent": 23.8
-   },
-   "Avansat - între 5 și 7 ani": {
-    "n": 4,
-    "procent": 19
-   },
-   "Experimentat - mai mult de 7 ani": {
-    "n": 4,
-    "procent": 19
+    "n": 8,
+    "procent": 25
    },
    "Fără experiență - 0 ani": {
-    "n": 4,
-    "procent": 19
+    "n": 8,
+    "procent": 25
    },
    "Experiență puțină - mai puțin de 3 ani": {
-    "n": 4,
-    "procent": 19
+    "n": 6,
+    "procent": 18.8
+   },
+   "Avansat - între 5 și 7 ani": {
+    "n": 5,
+    "procent": 15.6
+   },
+   "Experimentat - mai mult de 7 ani": {
+    "n": 5,
+    "procent": 15.6
    }
   },
   "contract": {
    "Cu durată nedeterminată": {
-    "n": 21,
+    "n": 32,
     "procent": 100
    }
   },
   "norma": {
    "Cu normă întreagă": {
-    "n": 21,
-    "procent": 100
+    "n": 31,
+    "procent": 96.9
+   },
+   "Cu timp parțial": {
+    "n": 1,
+    "procent": 3.1
    }
   },
   "regim": {
    "Sediu": {
-    "n": 21,
-    "procent": 100
+    "n": 30,
+    "procent": 93.8
+   },
+   "Hibrid - sediu + telemuncă": {
+    "n": 2,
+    "procent": 6.3
    }
   },
   "judete": {
    "Municipiul București": {
-    "n": 11,
-    "procent": 52.4
+    "n": 16,
+    "procent": 50
    },
    "Brașov": {
-    "n": 2,
-    "procent": 9.5
+    "n": 3,
+    "procent": 9.4
    },
    "Argeș": {
-    "n": 1,
-    "procent": 4.8
+    "n": 2,
+    "procent": 6.3
    },
    "Timiș": {
     "n": 1,
-    "procent": 4.8
+    "procent": 3.1
    },
    "Iași": {
     "n": 1,
-    "procent": 4.8
+    "procent": 3.1
    },
    "Bihor": {
     "n": 1,
-    "procent": 4.8
+    "procent": 3.1
    },
    "Vâlcea": {
     "n": 1,
-    "procent": 4.8
+    "procent": 3.1
    },
    "Botoșani": {
     "n": 1,
-    "procent": 4.8
+    "procent": 3.1
    },
    "Mureș": {
     "n": 1,
-    "procent": 4.8
+    "procent": 3.1
    },
    "Galați": {
     "n": 1,
-    "procent": 4.8
+    "procent": 3.1
+   },
+   "Suceava": {
+    "n": 1,
+    "procent": 3.1
+   },
+   "Sibiu": {
+    "n": 1,
+    "procent": 3.1
+   },
+   "Ilfov": {
+    "n": 1,
+    "procent": 3.1
+   },
+   "Constanța": {
+    "n": 1,
+    "procent": 3.1
    }
   },
   "domenii": {
    "Legislativ / Juridic / Funcții Publice": {
-    "n": 7,
-    "procent": 33.3
+    "n": 13,
+    "procent": 40.6
    },
    "Altele": {
-    "n": 6,
-    "procent": 28.6
+    "n": 9,
+    "procent": 28.1
    },
    "Construcții / Instalații": {
-    "n": 3,
-    "procent": 14.3
+    "n": 4,
+    "procent": 12.5
    },
    "Medicină / Sănătate /Psihoterapie": {
     "n": 1,
-    "procent": 4.8
+    "procent": 3.1
    },
    "Educație / Training / Coaching": {
     "n": 1,
-    "procent": 4.8
+    "procent": 3.1
    },
    "Administrativ / Secretariat": {
     "n": 1,
-    "procent": 4.8
+    "procent": 3.1
    },
    "Producție / Logistică": {
     "n": 1,
-    "procent": 4.8
+    "procent": 3.1
    },
    "IT / Telecomunicații": {
     "n": 1,
-    "procent": 4.8
+    "procent": 3.1
+   },
+   "COMERT": {
+    "n": 1,
+    "procent": 3.1
    }
   },
   "coduriCorInGrupa": {
    "261103 - CONSILIER JURIDIC": {
-    "n": 21,
+    "n": 32,
     "procent": 100
    }
   }
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
-  "posturi": 74,
-  "institutii": 23,
-  "posturiDinSurseDeVerificat": 9,
+  "posturi": 87,
+  "institutii": 30,
+  "posturiDinSurseDeVerificat": 7,
   "judete": {
    "CL": {
     "n": 13,
-    "procent": 17.6
+    "procent": 14.9
    },
    "HR": {
-    "n": 10,
-    "procent": 13.5
+    "n": 11,
+    "procent": 12.6
+   },
+   "BN": {
+    "n": 8,
+    "procent": 9.2
    },
    "SB": {
-    "n": 6,
-    "procent": 8.1
+    "n": 8,
+    "procent": 9.2
    },
    "BR": {
     "n": 5,
-    "procent": 6.8
+    "procent": 5.7
    },
    "SJ": {
     "n": 4,
-    "procent": 5.4
-   },
-   "BH": {
-    "n": 4,
-    "procent": 5.4
+    "procent": 4.6
    },
    "CJ": {
     "n": 4,
-    "procent": 5.4
+    "procent": 4.6
    },
    "SV": {
     "n": 4,
-    "procent": 5.4
-   },
-   "BV": {
-    "n": 3,
-    "procent": 4.1
-   },
-   "B": {
-    "n": 3,
-    "procent": 4.1
+    "procent": 4.6
    },
    "BC": {
     "n": 3,
-    "procent": 4.1
+    "procent": 3.4
+   },
+   "MS": {
+    "n": 3,
+    "procent": 3.4
+   },
+   "BV": {
+    "n": 3,
+    "procent": 3.4
+   },
+   "TM": {
+    "n": 3,
+    "procent": 3.4
+   },
+   "BH": {
+    "n": 3,
+    "procent": 3.4
+   },
+   "B": {
+    "n": 3,
+    "procent": 3.4
    },
    "IS": {
     "n": 2,
-    "procent": 2.7
+    "procent": 2.3
    },
    "CT": {
     "n": 2,
-    "procent": 2.7
-   },
-   "TM": {
-    "n": 2,
-    "procent": 2.7
+    "procent": 2.3
    },
    "AB": {
     "n": 2,
-    "procent": 2.7
+    "procent": 2.3
    },
    "BZ": {
     "n": 2,
-    "procent": 2.7
-   },
-   "MS": {
-    "n": 2,
-    "procent": 2.7
+    "procent": 2.3
    },
    "VS": {
     "n": 1,
-    "procent": 1.4
+    "procent": 1.1
+   },
+   "PH": {
+    "n": 1,
+    "procent": 1.1
    },
    "GR": {
     "n": 1,
-    "procent": 1.4
+    "procent": 1.1
    },
    "DJ": {
     "n": 1,
-    "procent": 1.4
+    "procent": 1.1
    }
   },
   "tipInstitutie": {
    "spital": {
-    "n": 49,
-    "procent": 66.2
+    "n": 47,
+    "procent": 54
    },
    "dgaspc": {
     "n": 14,
-    "procent": 18.9
+    "procent": 16.1
+   },
+   "consiliu-judetean": {
+    "n": 12,
+    "procent": 13.8
    },
    "universitate": {
     "n": 6,
-    "procent": 8.1
+    "procent": 6.9
    },
-   "consiliu-judetean": {
-    "n": 4,
-    "procent": 5.4
+   "cultura": {
+    "n": 3,
+    "procent": 3.4
+   },
+   "instanta": {
+    "n": 2,
+    "procent": 2.3
+   },
+   "ambulanta": {
+    "n": 2,
+    "procent": 2.3
    },
    "dsp": {
     "n": 1,
-    "procent": 1.4
+    "procent": 1.1
    }
   },
   "perioade": {
    "2026-03": {
-    "n": 57,
-    "procent": 77
+    "n": 44,
+    "procent": 50.6
    },
    "2026-09": {
-    "n": 5,
-    "procent": 6.8
+    "n": 32,
+    "procent": 36.8
    },
    "2025-03": {
     "n": 5,
-    "procent": 6.8
+    "procent": 5.7
+   },
+   "2025-09": {
+    "n": 2,
+    "procent": 2.3
    },
    "2026-02": {
-    "n": 5,
-    "procent": 6.8
+    "n": 2,
+    "procent": 2.3
    },
    "2022-09": {
     "n": 1,
-    "procent": 1.4
+    "procent": 1.1
    },
    "2024-03": {
     "n": 1,
-    "procent": 1.4
+    "procent": 1.1
    }
   },
   "studii": {
    "S": {
-    "n": 33,
-    "procent": 44.6
+    "n": 42,
+    "procent": 48.3
    }
   },
   "bazaBruta": {
-   "n": 74,
-   "p10": 7045,
-   "p25": 7999,
-   "median": 8537,
-   "p75": 9331,
-   "p90": 10859,
+   "n": 87,
+   "p10": 6755,
+   "p25": 7940,
+   "median": 8512,
+   "p75": 9502,
+   "p90": 11091,
    "min": 2386,
-   "max": 12081
+   "max": 18540
   },
   "bazaCuSporuriFixe": {
-   "n": 74,
-   "p10": 7397,
-   "p25": 8042,
+   "n": 87,
+   "p10": 6877,
+   "p25": 7965,
    "median": 8795,
-   "p75": 9631,
-   "p90": 10949,
+   "p75": 9847,
+   "p90": 11091,
    "min": 2386,
-   "max": 12381
+   "max": 18840
   },
   "peGradatie": {
    "gradația 5": {
-    "n": 26,
+    "n": 28,
     "p10": 8042,
-    "p25": 8430,
-    "median": 9176,
-    "p75": 9631,
-    "p90": 11375,
-    "min": 8042,
-    "max": 12381
-   },
-   "gradația 2": {
-    "n": 6
+    "p25": 8341,
+    "median": 8999,
+    "p75": 10108,
+    "p90": 11774,
+    "min": 7671,
+    "max": 18840
    },
    "gradația 4": {
-    "n": 4
+    "n": 6
+   },
+   "gradația 2": {
+    "n": 5
+   },
+   "gradația 1": {
+    "n": 2
    },
    "gradația 3": {
     "n": 2
    },
    "gradația 0": {
     "n": 2
-   },
-   "gradația 1": {
-    "n": 1
    }
   },
   "peFunctie": {
@@ -634,11 +796,14 @@
    "CONSILIER JURIDIC GRADUL IA SUPERIOARE Gradatia": {
     "n": 4
    },
-   "COMPARTIMENT JURIDIC Consilier juridic gradul IA Gradatia 5 ": {
+   "CONSILIER JURIDIC IA": {
     "n": 3
    },
    "consilier juridic gradul IA SUPERIOARE Legea nr.153 art.33 G": {
     "n": 3
+   },
+   "COMPARTIMENT JURIDIC Consilier juridic gradul IA Gradatia 5 ": {
+    "n": 2
    },
    "Consilier juridic gradul IA SUPERIOARE ( S )": {
     "n": 2
@@ -652,10 +817,46 @@
    "CONSILIER JURIDIC 1A Compartiment juridic": {
     "n": 2
    },
+   "consilier juridic functionar public superior peste 7 ani": {
+    "n": 1
+   },
+   "Consilier juridic S superior": {
+    "n": 1
+   },
+   "Consilier/Consilier juridic/consilier achiziții publice I,S ": {
+    "n": 1
+   },
+   "Consilier/Consilier juridic/Consilier achiziții publice I,S ": {
+    "n": 1
+   },
+   "Consilier/Consilier juridic (vacant) I,S principal,2": {
+    "n": 1
+   },
+   "Consilier juridic (vacant) I,S asistent,5": {
+    "n": 1
+   },
+   "Consilier juridic I,S asistent,2": {
+    "n": 1
+   },
+   "Consilier/consilier juridic I,S asistent,1": {
+    "n": 1
+   },
+   "Consilier juridic I,S asistent,0": {
+    "n": 1
+   },
+   "Consilier/Consilier juridic I,S debutant,0": {
+    "n": 1
+   },
    "consilier juridic superior": {
     "n": 1
    },
    "Consilier juridic superior": {
+    "n": 1
+   },
+   "consilier juridic": {
+    "n": 1
+   },
+   "CONSILIER JURIDIC IA Salariul baza Fix L. 153 / 2017 Salariu": {
     "n": 1
    },
    "539 Consilier juridic grad II Gradatia 4 Contractual": {
@@ -664,7 +865,7 @@
    "540 Consilier juridic IA Gradatia 5 Contractual": {
     "n": 1
    },
-   "COMPARTIMENT JURIDIC Consilier juridic gradul IA Gradatia 2 ": {
+   "COMPARTIMENT JURIDIC Consilier juridic gradul IA Gradatia 4 ": {
     "n": 1
    },
    "COMPARTIMENT JURIDIC CONSILIER JURIDIC III SUPERIOARE BAZA": {
@@ -700,16 +901,13 @@
    "CONSILIER JURIDIC II COMPARTIMENT JURIDIC": {
     "n": 1
    },
-   "CONSILIER JURIDIC I SERVICIU LICITATII SI ATRIBUIRE CONTRACT": {
-    "n": 1
-   },
-   "CONSILIER JURIDIC IA": {
-    "n": 1
-   },
    "CONSILIER JURIDIC GRADUL II SUPERIOARE Gradatia": {
     "n": 1
    },
    "consilier juridic 1A": {
+    "n": 1
+   },
+   "CONSILIER JURIDIC I": {
     "n": 1
    },
    "Consilier juridic gr.I Indemnizatie doctorat Sal.minim 12.20": {

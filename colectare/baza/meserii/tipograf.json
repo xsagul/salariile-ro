@@ -4,35 +4,35 @@
  "cor": "732207",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
-  "cuSalariu": 6,
+  "cuSalariu": 7,
   "cuBazaDeclarata": 1,
-  "faraBazaDeclarata": 5,
+  "faraBazaDeclarata": 6,
   "surse": {
    "bestjobs": {
-    "n": 2,
-    "procent": 33.3
+    "n": 3,
+    "procent": 42.9
    },
    "olx": {
     "n": 2,
-    "procent": 33.3
-   },
-   "anuntul": {
-    "n": 1,
-    "procent": 16.7
+    "procent": 28.6
    },
    "publi24": {
     "n": 1,
-    "procent": 16.7
+    "procent": 14.3
+   },
+   "anuntul": {
+    "n": 1,
+    "procent": 14.3
    }
   },
   "colectari": {
    "8 septembrie 2026": {
-    "n": 5,
-    "procent": 83.3
+    "n": 4,
+    "procent": 57.1
    },
    "continuă": {
-    "n": 1,
-    "procent": 16.7
+    "n": 3,
+    "procent": 42.9
    }
   },
   "net": {
@@ -45,57 +45,74 @@
    "n": 1
   },
   "faraBazaDeclarata_valori": {
-   "n": 5
+   "n": 6
   },
   "peOras": {},
   "peJudet": {},
   "peLuna": {
    "2026-09": {
     "n": 3,
-    "procent": 50
+    "procent": 42.9
    },
    "2026-08": {
     "n": 2,
-    "procent": 33.3
+    "procent": 28.6
+   },
+   "2026-10": {
+    "n": 1,
+    "procent": 14.3
    },
    "2026-04": {
     "n": 1,
-    "procent": 16.7
+    "procent": 14.3
    }
   }
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 6,
+  "anunturiCitite": 36,
   "cuSalariu": 0,
   "nivel": {},
   "experienta": {
    "da": {
-    "n": 2,
+    "n": 12,
     "procent": 33.3
    },
+   "2+ ani": {
+    "n": 9,
+    "procent": 25
+   },
    "fara": {
-    "n": 1,
-    "procent": 16.7
+    "n": 3,
+    "procent": 8.3
+   },
+   "avantaj": {
+    "n": 2,
+    "procent": 5.6
+   },
+   "10+ ani": {
+    "n": 2,
+    "procent": 5.6
    },
    "1+ ani": {
     "n": 1,
-    "procent": 16.7
+    "procent": 2.8
    },
-   "avantaj": {
+   "20+ ani": {
     "n": 1,
-    "procent": 16.7
-   },
-   "2+ ani": {
-    "n": 1,
-    "procent": 16.7
+    "procent": 2.8
    }
   },
-  "experientaPortal": {},
+  "experientaPortal": {
+   "1–5 ani": {
+    "n": 4,
+    "procent": 11.1
+   }
+  },
   "studii": {
    "medii": {
-    "n": 1,
-    "procent": 16.7
+    "n": 12,
+    "procent": 33.3
    }
   },
   "limbi": {},
@@ -103,120 +120,194 @@
   "atestate": {},
   "program": {
    "ture": {
-    "n": 2,
-    "procent": 33.3
+    "n": 9,
+    "procent": 25
    },
    "luni–vineri": {
-    "n": 2,
-    "procent": 33.3
+    "n": 9,
+    "procent": 25
    }
   },
   "mod": {},
   "norma": {
    "full-time": {
-    "n": 1,
-    "procent": 16.7
+    "n": 2,
+    "procent": 5.6
    }
   },
   "durata": {
    "nedeterminată": {
-    "n": 1,
-    "procent": 16.7
+    "n": 5,
+    "procent": 13.9
    }
   },
   "beneficii": {
    "bonus": {
-    "n": 2,
-    "procent": 33.3
-   },
-   "prime": {
-    "n": 2,
-    "procent": 33.3
+    "n": 10,
+    "procent": 27.8
    },
    "tichete de masă": {
-    "n": 1,
-    "procent": 16.7
+    "n": 7,
+    "procent": 19.4
+   },
+   "prime": {
+    "n": 7,
+    "procent": 19.4
+   },
+   "transport": {
+    "n": 4,
+    "procent": 11.1
    },
    "telefon / laptop": {
+    "n": 2,
+    "procent": 5.6
+   },
+   "ore suplimentare plătite": {
     "n": 1,
-    "procent": 16.7
+    "procent": 2.8
+   },
+   "cursuri / training": {
+    "n": 1,
+    "procent": 2.8
    }
   },
   "tehnologii": {
    "CNC": {
-    "n": 2,
-    "procent": 33.3
-   },
-   "Excel": {
-    "n": 1,
-    "procent": 16.7
+    "n": 4,
+    "procent": 11.1
    },
    "AutoCAD": {
-    "n": 1,
-    "procent": 16.7
+    "n": 4,
+    "procent": 11.1
+   },
+   "Excel": {
+    "n": 2,
+    "procent": 5.6
    }
   },
   "negociabil": {},
   "strainatate": {},
   "limbaAnuntului": {
    "ro": {
-    "n": 5,
-    "procent": 83.3
+    "n": 34,
+    "procent": 94.4
    },
    "en": {
-    "n": 1,
-    "procent": 16.7
+    "n": 2,
+    "procent": 5.6
    }
   },
   "surse": {
+   "publi24": {
+    "n": 17,
+    "procent": 47.2
+   },
    "bestjobs": {
+    "n": 12,
+    "procent": 33.3
+   },
+   "hipo": {
     "n": 4,
-    "procent": 66.7
+    "procent": 11.1
    },
    "anuntul": {
-    "n": 2,
-    "procent": 33.3
+    "n": 3,
+    "procent": 8.3
    }
   },
   "peJudet": {
+   "Bucuresti": {
+    "n": 5,
+    "procent": 13.9
+   },
+   "Prahova": {
+    "n": 4,
+    "procent": 11.1
+   },
+   "RO": {
+    "n": 4,
+    "procent": 11.1
+   },
+   "Ilfov": {
+    "n": 3,
+    "procent": 8.3
+   },
    "ilfov": {
-    "n": 1,
-    "procent": 16.7
+    "n": 2,
+    "procent": 5.6
+   },
+   "Iasi": {
+    "n": 2,
+    "procent": 5.6
    },
    "bucuresti": {
     "n": 1,
-    "procent": 16.7
+    "procent": 2.8
+   },
+   "Sibiu": {
+    "n": 1,
+    "procent": 2.8
+   },
+   "Arges": {
+    "n": 1,
+    "procent": 2.8
+   },
+   "Bistrita-Nasaud": {
+    "n": 1,
+    "procent": 2.8
    }
   },
   "motiveFaraSalariu": {
    "salary_evidence_incomplete": {
+    "n": 27,
+    "procent": 81.8
+   },
+   "foreign_or_noncomparable_work": {
+    "n": 8,
+    "procent": 24.2
+   },
+   "full_time_unconfirmed": {
+    "n": 5,
+    "procent": 15.2
+   },
+   "multiple_unresolved_amounts": {
+    "n": 1,
+    "procent": 3
+   }
+  },
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 5,
+  "posturi": 6,
+  "ofertePeGrupaCor": 18,
+  "tipSalariu": {
+   "none": {
     "n": 3,
     "procent": 60
    },
-   "foreign_or_noncomparable_work": {
+   "net": {
     "n": 2,
     "procent": 40
    }
   },
-  "salariuPeFactor": {}
- },
- "anofm": {
-  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
-  "oferte": 4,
-  "posturi": 5,
-  "ofertePeGrupaCor": 13,
-  "tipSalariu": {
-   "none": {
-    "n": 3,
-    "procent": 75
-   },
-   "net": {
-    "n": 1,
-    "procent": 25
-   }
-  },
   "netMinimDeclarat": {
-   "n": 1
+   "n": 2
   },
   "brutMinimDeclarat": {
    "n": 0
@@ -225,101 +316,109 @@
   "studii": {
    "Liceal - LICEU DE SPECIALITATE": {
     "n": 2,
-    "procent": 50
+    "procent": 40
    },
    "Profesional - ȘCOALĂ PROFESIONALĂ": {
     "n": 1,
-    "procent": 25
+    "procent": 20
    },
    "Gimnazial - ȘCOALĂ GENERALĂ": {
     "n": 1,
-    "procent": 25
+    "procent": 20
+   },
+   "Liceal - ȘCOALĂ SPECIALĂ": {
+    "n": 1,
+    "procent": 20
    }
   },
   "experienta": {
    "Experiență medie - între 3 și 5 ani": {
     "n": 2,
-    "procent": 50
+    "procent": 40
    },
    "Experiență puțină - mai puțin de 3 ani": {
     "n": 1,
-    "procent": 25
+    "procent": 20
    },
    "Fără experiență - 0 ani": {
     "n": 1,
-    "procent": 25
+    "procent": 20
+   },
+   "Experimentat - mai mult de 7 ani": {
+    "n": 1,
+    "procent": 20
    }
   },
   "contract": {
+   "Cu durată nedeterminată": {
+    "n": 3,
+    "procent": 60
+   },
    "Cu durată determinată": {
     "n": 2,
-    "procent": 50
-   },
-   "Cu durată nedeterminată": {
-    "n": 2,
-    "procent": 50
+    "procent": 40
    }
   },
   "norma": {
    "Cu normă întreagă": {
-    "n": 4,
+    "n": 5,
     "procent": 100
    }
   },
   "regim": {
    "Sediu": {
-    "n": 4,
+    "n": 5,
     "procent": 100
    }
   },
   "judete": {
+   "Olt": {
+    "n": 2,
+    "procent": 40
+   },
    "Iași": {
     "n": 1,
-    "procent": 25
+    "procent": 20
    },
    "Cluj": {
     "n": 1,
-    "procent": 25
+    "procent": 20
    },
    "Bihor": {
     "n": 1,
-    "procent": 25
-   },
-   "Olt": {
-    "n": 1,
-    "procent": 25
+    "procent": 20
    }
   },
   "domenii": {
    "Producție / Logistică": {
-    "n": 4,
+    "n": 5,
     "procent": 100
    }
   },
   "coduriCorInGrupa": {
-   "732207 - TIPOGRAF-TIPARITOR": {
-    "n": 4,
-    "procent": 30.8
-   },
    "732206 - OPERATOR PRESA DE TRANSFER TERMIC": {
+    "n": 5,
+    "procent": 27.8
+   },
+   "732207 - TIPOGRAF-TIPARITOR": {
+    "n": 5,
+    "procent": 27.8
+   },
+   "732203 - IMPRIMATOR SERIGRAF": {
     "n": 3,
-    "procent": 23.1
+    "procent": 16.7
    },
    "732213 - OPERATOR XEROX": {
     "n": 2,
-    "procent": 15.4
+    "procent": 11.1
    },
-   "732203 - IMPRIMATOR SERIGRAF": {
+   "732215 - TIPOGRAF PRINT DIGITAL SI OFFSET": {
     "n": 2,
-    "procent": 15.4
+    "procent": 11.1
    },
    "732218 - TIPOGRAF FLEXOGRAF": {
     "n": 1,
-    "procent": 7.7
-   },
-   "732215 - TIPOGRAF PRINT DIGITAL SI OFFSET": {
-    "n": 1,
-    "procent": 7.7
+    "procent": 5.6
    }
   }
  },

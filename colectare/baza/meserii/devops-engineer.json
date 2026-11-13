@@ -27,252 +27,296 @@
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 48,
+  "anunturiCitite": 90,
   "cuSalariu": 0,
   "nivel": {
    "senior": {
-    "n": 12,
-    "procent": 25
+    "n": 25,
+    "procent": 27.8
    },
    "lead": {
-    "n": 2,
-    "procent": 4.2
+    "n": 4,
+    "procent": 4.4
    },
    "stagiar": {
-    "n": 1,
-    "procent": 2.1
+    "n": 2,
+    "procent": 2.2
    },
    "mid": {
-    "n": 1,
-    "procent": 2.1
+    "n": 2,
+    "procent": 2.2
    },
    "junior": {
     "n": 1,
-    "procent": 2.1
+    "procent": 1.1
    }
   },
   "experienta": {
    "5+ ani": {
-    "n": 19,
-    "procent": 39.6
+    "n": 32,
+    "procent": 35.6
    },
    "3+ ani": {
-    "n": 6,
-    "procent": 12.5
+    "n": 13,
+    "procent": 14.4
    },
    "fara": {
     "n": 2,
-    "procent": 4.2
+    "procent": 2.2
    },
    "2+ ani": {
     "n": 2,
-    "procent": 4.2
+    "procent": 2.2
+   },
+   "4+ ani": {
+    "n": 2,
+    "procent": 2.2
+   },
+   "7+ ani": {
+    "n": 2,
+    "procent": 2.2
    },
    "8+ ani": {
     "n": 1,
-    "procent": 2.1
+    "procent": 1.1
    },
-   "4+ ani": {
+   "12+ ani": {
     "n": 1,
-    "procent": 2.1
+    "procent": 1.1
    }
   },
   "experientaPortal": {
    "1–5 ani": {
-    "n": 21,
-    "procent": 43.8
+    "n": 32,
+    "procent": 35.6
+   },
+   "peste 5 ani": {
+    "n": 2,
+    "procent": 2.2
    }
   },
   "studii": {
    "superioare": {
-    "n": 15,
-    "procent": 31.3
+    "n": 30,
+    "procent": 33.3
    }
   },
   "limbi": {
    "engleza": {
-    "n": 4,
-    "procent": 8.3
+    "n": 6,
+    "procent": 6.7
    },
    "germana": {
-    "n": 1,
-    "procent": 2.1
+    "n": 2,
+    "procent": 2.2
    }
   },
   "permis": {},
   "atestate": {},
-  "program": {},
-  "mod": {
-   "hibrid": {
-    "n": 18,
-    "procent": 37.5
-   },
-   "remote": {
-    "n": 12,
-    "procent": 25
+  "program": {
+   "flexibil": {
+    "n": 1,
+    "procent": 1.1
    }
   },
-  "norma": {},
+  "mod": {
+   "hibrid": {
+    "n": 30,
+    "procent": 33.3
+   },
+   "remote": {
+    "n": 21,
+    "procent": 23.3
+   }
+  },
+  "norma": {
+   "full-time": {
+    "n": 1,
+    "procent": 1.1
+   }
+  },
   "durata": {},
   "beneficii": {
-   "cursuri / training": {
-    "n": 14,
-    "procent": 29.2
-   },
    "asigurare medicală": {
-    "n": 13,
-    "procent": 27.1
+    "n": 32,
+    "procent": 35.6
+   },
+   "cursuri / training": {
+    "n": 28,
+    "procent": 31.1
    },
    "bonus": {
-    "n": 10,
-    "procent": 20.8
+    "n": 24,
+    "procent": 26.7
    },
    "tichete de masă": {
     "n": 2,
-    "procent": 4.2
+    "procent": 2.2
    }
   },
   "tehnologii": {
    "Azure": {
-    "n": 32,
-    "procent": 66.7
-   },
-   "Python": {
-    "n": 28,
-    "procent": 58.3
-   },
-   "Docker": {
-    "n": 28,
-    "procent": 58.3
-   },
-   "Kubernetes": {
-    "n": 28,
-    "procent": 58.3
+    "n": 58,
+    "procent": 64.4
    },
    "Git": {
-    "n": 23,
-    "procent": 47.9
+    "n": 57,
+    "procent": 63.3
+   },
+   "Kubernetes": {
+    "n": 54,
+    "procent": 60
+   },
+   "Python": {
+    "n": 49,
+    "procent": 54.4
    },
    "Linux": {
-    "n": 21,
-    "procent": 43.8
+    "n": 47,
+    "procent": 52.2
    },
-   "SQL": {
-    "n": 15,
-    "procent": 31.3
+   "Docker": {
+    "n": 46,
+    "procent": 51.1
    },
    "AWS": {
-    "n": 12,
-    "procent": 25
+    "n": 27,
+    "procent": 30
    },
    "GCP": {
-    "n": 9,
-    "procent": 18.8
+    "n": 20,
+    "procent": 22.2
+   },
+   "SQL": {
+    "n": 17,
+    "procent": 18.9
+   },
+   "Java": {
+    "n": 16,
+    "procent": 17.8
+   },
+   "PLC": {
+    "n": 10,
+    "procent": 11.1
    },
    "Power BI": {
     "n": 8,
-    "procent": 16.7
+    "procent": 8.9
    },
-   "Java": {
-    "n": 6,
-    "procent": 12.5
+   "SCADA": {
+    "n": 7,
+    "procent": 7.8
+   },
+   "Jira": {
+    "n": 4,
+    "procent": 4.4
+   },
+   "JavaScript": {
+    "n": 3,
+    "procent": 3.3
    },
    "NoSQL": {
     "n": 3,
-    "procent": 6.3
+    "procent": 3.3
    },
    "Excel": {
     "n": 3,
-    "procent": 6.3
+    "procent": 3.3
    },
-   "PLC": {
-    "n": 3,
-    "procent": 6.3
+   "C#": {
+    "n": 2,
+    "procent": 2.2
    },
-   "Jira": {
-    "n": 3,
-    "procent": 6.3
+   "PHP": {
+    "n": 2,
+    "procent": 2.2
    },
    "Spring": {
     "n": 2,
-    "procent": 4.2
+    "procent": 2.2
    },
    "React": {
     "n": 2,
-    "procent": 4.2
-   },
-   "JavaScript": {
-    "n": 1,
-    "procent": 2.1
+    "procent": 2.2
    },
    "TypeScript": {
     "n": 1,
-    "procent": 2.1
-   },
-   "C#": {
-    "n": 1,
-    "procent": 2.1
+    "procent": 1.1
    },
    "Angular": {
     "n": 1,
-    "procent": 2.1
+    "procent": 1.1
    },
    "Node.js": {
     "n": 1,
-    "procent": 2.1
-   },
-   "PHP": {
-    "n": 1,
-    "procent": 2.1
+    "procent": 1.1
    },
    "Go": {
     "n": 1,
-    "procent": 2.1
+    "procent": 1.1
+   },
+   "Ruby": {
+    "n": 1,
+    "procent": 1.1
    }
   },
   "negociabil": {},
   "strainatate": {},
   "limbaAnuntului": {
    "en": {
-    "n": 46,
-    "procent": 95.8
+    "n": 82,
+    "procent": 91.1
    },
    "ro": {
-    "n": 2,
-    "procent": 4.2
+    "n": 8,
+    "procent": 8.9
    }
   },
   "surse": {
    "undelucram": {
-    "n": 25,
-    "procent": 52.1
+    "n": 50,
+    "procent": 55.6
    },
    "hipo": {
-    "n": 22,
-    "procent": 45.8
+    "n": 35,
+    "procent": 38.9
    },
    "bestjobs": {
-    "n": 1,
-    "procent": 2.1
+    "n": 5,
+    "procent": 5.6
    }
   },
   "peJudet": {
    "RO": {
-    "n": 22,
-    "procent": 45.8
+    "n": 35,
+    "procent": 38.9
    }
   },
   "motiveFaraSalariu": {
    "salary_evidence_incomplete": {
-    "n": 48,
+    "n": 90,
     "procent": 100
    },
    "country_unconfirmed": {
-    "n": 3,
-    "procent": 6.3
+    "n": 6,
+    "procent": 6.7
    }
   },
-  "salariuPeFactor": {}
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",

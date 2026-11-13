@@ -42,16 +42,35 @@
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 0,
+  "anunturiCitite": 14,
   "cuSalariu": 0,
   "nivel": {},
-  "experienta": {},
+  "experienta": {
+   "da": {
+    "n": 6,
+    "procent": 42.9
+   },
+   "fara": {
+    "n": 1,
+    "procent": 7.1
+   }
+  },
   "experientaPortal": {},
-  "studii": {},
+  "studii": {
+   "medii": {
+    "n": 1,
+    "procent": 7.1
+   }
+  },
   "limbi": {},
   "permis": {},
   "atestate": {},
-  "program": {},
+  "program": {
+   "luni–vineri": {
+    "n": 2,
+    "procent": 14.3
+   }
+  },
   "mod": {},
   "norma": {},
   "durata": {},
@@ -59,112 +78,186 @@
   "tehnologii": {},
   "negociabil": {},
   "strainatate": {},
-  "limbaAnuntului": {},
-  "surse": {},
-  "peJudet": {},
-  "motiveFaraSalariu": {},
-  "salariuPeFactor": {}
+  "limbaAnuntului": {
+   "ro": {
+    "n": 14,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "publi24": {
+    "n": 14,
+    "procent": 100
+   }
+  },
+  "peJudet": {
+   "Bucuresti": {
+    "n": 12,
+    "procent": 85.7
+   },
+   "Hunedoara": {
+    "n": 1,
+    "procent": 7.1
+   },
+   "Brasov": {
+    "n": 1,
+    "procent": 7.1
+   }
+  },
+  "motiveFaraSalariu": {
+   "salary_evidence_incomplete": {
+    "n": 14,
+    "procent": 100
+   },
+   "foreign_or_noncomparable_work": {
+    "n": 1,
+    "procent": 7.1
+   },
+   "full_time_unconfirmed": {
+    "n": 1,
+    "procent": 7.1
+   }
+  },
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
-  "oferte": 4,
-  "posturi": 5,
-  "ofertePeGrupaCor": 5,
+  "oferte": 9,
+  "posturi": 11,
+  "ofertePeGrupaCor": 11,
   "tipSalariu": {
    "gross": {
-    "n": 2,
-    "procent": 50
+    "n": 7,
+    "procent": 77.8
    },
    "net": {
     "n": 1,
-    "procent": 25
+    "procent": 11.1
    },
    "none": {
     "n": 1,
-    "procent": 25
+    "procent": 11.1
    }
   },
   "netMinimDeclarat": {
    "n": 1
   },
   "brutMinimDeclarat": {
-   "n": 2
+   "n": 7
   },
-  "laSalariulMinim": 2,
+  "laSalariulMinim": 7,
   "studii": {
    "Universitar - ÎNVĂȚĂMÂNT SUPERIOR": {
-    "n": 4,
-    "procent": 100
+    "n": 8,
+    "procent": 88.9
+   },
+   "Universitar - ÎNV. SUPERIOR FĂRĂ LICENȚĂ": {
+    "n": 1,
+    "procent": 11.1
    }
   },
   "experienta": {
    "Fără experiență - 0 ani": {
+    "n": 6,
+    "procent": 66.7
+   },
+   "Experiență puțină - mai puțin de 3 ani": {
     "n": 2,
-    "procent": 50
+    "procent": 22.2
    },
    "Experiență medie - între 3 și 5 ani": {
     "n": 1,
-    "procent": 25
-   },
-   "Experiență puțină - mai puțin de 3 ani": {
-    "n": 1,
-    "procent": 25
+    "procent": 11.1
    }
   },
   "contract": {
    "Cu durată nedeterminată": {
-    "n": 4,
+    "n": 9,
     "procent": 100
    }
   },
   "norma": {
    "Cu normă întreagă": {
-    "n": 4,
+    "n": 9,
     "procent": 100
    }
   },
   "regim": {
    "Sediu": {
-    "n": 4,
+    "n": 9,
     "procent": 100
    }
   },
   "judete": {
    "Iași": {
     "n": 1,
-    "procent": 25
+    "procent": 11.1
    },
    "Neamț": {
     "n": 1,
-    "procent": 25
+    "procent": 11.1
    },
    "Mureș": {
     "n": 1,
-    "procent": 25
+    "procent": 11.1
    },
    "Vaslui": {
     "n": 1,
-    "procent": 25
+    "procent": 11.1
+   },
+   "Bacău": {
+    "n": 1,
+    "procent": 11.1
+   },
+   "Cluj": {
+    "n": 1,
+    "procent": 11.1
+   },
+   "Municipiul București": {
+    "n": 1,
+    "procent": 11.1
+   },
+   "Sălaj": {
+    "n": 1,
+    "procent": 11.1
+   },
+   "Constanța": {
+    "n": 1,
+    "procent": 11.1
    }
   },
   "domenii": {
    "Medicină / Sănătate /Psihoterapie": {
-    "n": 3,
-    "procent": 75
+    "n": 8,
+    "procent": 88.9
    },
    "Altele": {
     "n": 1,
-    "procent": 25
+    "procent": 11.1
    }
   },
   "coduriCorInGrupa": {
    "325101 - TEHNICIAN DENTAR": {
-    "n": 4,
-    "procent": 80
+    "n": 9,
+    "procent": 81.8
    },
    "325103 - ASISTENT DE MEDICINĂ DENTARĂ": {
-    "n": 1,
-    "procent": 20
+    "n": 2,
+    "procent": 18.2
    }
   }
  },

@@ -48,7 +48,21 @@
   "surse": {},
   "peJudet": {},
   "motiveFaraSalariu": {},
-  "salariuPeFactor": {}
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
@@ -74,25 +88,25 @@
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
-  "posturi": 60,
+  "posturi": 58,
   "institutii": 6,
-  "posturiDinSurseDeVerificat": 4,
+  "posturiDinSurseDeVerificat": 5,
   "judete": {
    "MS": {
     "n": 23,
-    "procent": 38.3
+    "procent": 39.7
    },
    "AB": {
-    "n": 15,
-    "procent": 25
+    "n": 14,
+    "procent": 24.1
    },
    "B": {
-    "n": 11,
-    "procent": 18.3
+    "n": 10,
+    "procent": 17.2
    },
    "BV": {
     "n": 10,
-    "procent": 16.7
+    "procent": 17.2
    },
    "HR": {
     "n": 1,
@@ -101,12 +115,12 @@
   },
   "tipInstitutie": {
    "universitate": {
-    "n": 44,
-    "procent": 73.3
+    "n": 43,
+    "procent": 74.1
    },
    "biblioteca": {
-    "n": 15,
-    "procent": 25
+    "n": 14,
+    "procent": 24.1
    },
    "spital": {
     "n": 1,
@@ -114,51 +128,58 @@
    }
   },
   "perioade": {
+   "2026-09": {
+    "n": 31,
+    "procent": 53.4
+   },
    "2026-03": {
-    "n": 60,
-    "procent": 100
+    "n": 27,
+    "procent": 46.6
    }
   },
   "studii": {
    "S": {
-    "n": 15,
-    "procent": 25
-   },
-   "SSD": {
-    "n": 4,
-    "procent": 6.7
+    "n": 9,
+    "procent": 15.5
    },
    "M": {
     "n": 4,
-    "procent": 6.7
+    "procent": 6.9
+   },
+   "SSD": {
+    "n": 3,
+    "procent": 5.2
    }
   },
   "bazaBruta": {
-   "n": 60,
-   "p10": 5295,
-   "p25": 6278,
+   "n": 58,
+   "p10": 5354,
+   "p25": 6296,
    "median": 7286,
-   "p75": 7931,
+   "p75": 8075,
    "p90": 8351,
    "min": 3643,
    "max": 8351
   },
   "bazaCuSporuriFixe": {
-   "n": 60,
-   "p10": 5295,
+   "n": 58,
+   "p10": 5354,
    "p25": 6296,
    "median": 7384,
    "p75": 8274,
-   "p90": 8400,
+   "p90": 8417,
    "min": 3643,
    "max": 8492
   },
   "peGradatie": {
-   "gradația 5": {
-    "n": 8
-   },
    "gradația 0": {
     "n": 7
+   },
+   "gradația 5": {
+    "n": 5
+   },
+   "gradația 2": {
+    "n": 1
    }
   },
   "peFunctie": {
@@ -172,26 +193,20 @@
     "min": 8274,
     "max": 8492
    },
-   "Bibliotecar gr.II Indemnizatie hrana 2*Sal.minim/12 Cap.II S": {
-    "n": 6
-   },
    "Bibliotecar I": {
     "n": 6
    },
-   "Bibliotecar gradul IA, gradația 5 S ocupat": {
-    "n": 3
+   "Bibliotecar gradul IA, gradația ocupat": {
+    "n": 5
    },
-   "Bibliotecar gradul IA, gradația S ocupat": {
-    "n": 3
+   "Bibliotecar gr.II Indemnizatie hrana 2*Sal.minim/12 Cap.II S": {
+    "n": 5
    },
-   "Bibliotecar gradul l, gradația S ocupat": {
+   "Bibliotecar gradul l, gradația": {
     "n": 3
    },
    "Bibliotecar IS": {
     "n": 3
-   },
-   "Bibliotecar gradul II, gradația ocupat": {
-    "n": 2
    },
    "BIBLIOTECAR I S pana la 800 pana la 4164": {
     "n": 2
@@ -199,16 +214,22 @@
    "BIBLIOTECAR III SSD pana la 800 pana la 4164": {
     "n": 2
    },
-   "Bibliotecar gradul l, gradația SSD ocupat": {
+   "Bibliotecar gradul IA, gradația S ocupat": {
     "n": 1
    },
-   "Bibliotecar treapta l, gradația": {
+   "Bibliotecar gradul II, gradația 2 S": {
     "n": 1
    },
-   "Bibliotecar treapta IA, gradația 5 M ocupat": {
+   "Bibliotecar gradul l, gradația S": {
     "n": 1
    },
-   "Bibliotecar gradul II, gradația O": {
+   "Bibliotecar gradul II, gradația": {
+    "n": 1
+   },
+   "Bibliotecar treapta l, gradația ocupat": {
+    "n": 1
+   },
+   "Bibliotecar treapta IA, gradatia 5 M ocupat": {
     "n": 1
    },
    "BIBLIOTECAR IA. MEDII Gradatia": {

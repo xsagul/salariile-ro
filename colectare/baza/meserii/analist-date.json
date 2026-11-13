@@ -4,19 +4,23 @@
  "cor": null,
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
-  "cuSalariu": 2,
+  "cuSalariu": 3,
   "cuBazaDeclarata": 1,
-  "faraBazaDeclarata": 1,
+  "faraBazaDeclarata": 2,
   "surse": {
    "ejobs": {
-    "n": 2,
+    "n": 3,
     "procent": 100
    }
   },
   "colectari": {
    "8 septembrie 2026": {
     "n": 2,
-    "procent": 100
+    "procent": 66.7
+   },
+   "continuă": {
+    "n": 1,
+    "procent": 33.3
    }
   },
   "net": {
@@ -29,61 +33,69 @@
    "n": 1
   },
   "faraBazaDeclarata_valori": {
-   "n": 1
+   "n": 2
   },
   "peOras": {},
   "peJudet": {},
   "peLuna": {
    "2026-08": {
     "n": 2,
-    "procent": 100
+    "procent": 66.7
+   },
+   "2026-09": {
+    "n": 1,
+    "procent": 33.3
    }
   }
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 11,
+  "anunturiCitite": 26,
   "cuSalariu": 0,
   "nivel": {
    "senior": {
-    "n": 6,
-    "procent": 54.5
+    "n": 9,
+    "procent": 34.6
+   },
+   "junior": {
+    "n": 2,
+    "procent": 7.7
    }
   },
   "experienta": {
    "3+ ani": {
-    "n": 2,
-    "procent": 18.2
+    "n": 4,
+    "procent": 15.4
    },
    "4+ ani": {
-    "n": 2,
-    "procent": 18.2
+    "n": 3,
+    "procent": 11.5
    },
    "2+ ani": {
     "n": 1,
-    "procent": 9.1
+    "procent": 3.8
    }
   },
   "experientaPortal": {
    "1–5 ani": {
-    "n": 5,
-    "procent": 45.5
+    "n": 17,
+    "procent": 65.4
    },
    "peste 5 ani": {
     "n": 2,
-    "procent": 18.2
+    "procent": 7.7
    }
   },
   "studii": {
    "superioare": {
-    "n": 8,
-    "procent": 72.7
+    "n": 13,
+    "procent": 50
    }
   },
   "limbi": {
    "engleza": {
-    "n": 3,
-    "procent": 27.3
+    "n": 5,
+    "procent": 19.2
    }
   },
   "permis": {},
@@ -91,113 +103,139 @@
   "program": {},
   "mod": {
    "hibrid": {
-    "n": 9,
-    "procent": 81.8
+    "n": 13,
+    "procent": 50
    },
    "remote": {
-    "n": 2,
-    "procent": 18.2
+    "n": 11,
+    "procent": 42.3
    }
   },
   "norma": {
    "full-time": {
-    "n": 2,
-    "procent": 18.2
+    "n": 3,
+    "procent": 11.5
    }
   },
   "durata": {
    "nedeterminată": {
     "n": 1,
-    "procent": 9.1
+    "procent": 3.8
    }
   },
   "beneficii": {
-   "bonus": {
-    "n": 7,
-    "procent": 63.6
-   },
    "cursuri / training": {
-    "n": 5,
-    "procent": 45.5
+    "n": 11,
+    "procent": 42.3
+   },
+   "bonus": {
+    "n": 8,
+    "procent": 30.8
    },
    "asigurare medicală": {
-    "n": 4,
-    "procent": 36.4
+    "n": 6,
+    "procent": 23.1
    },
    "tichete de masă": {
     "n": 2,
-    "procent": 18.2
+    "procent": 7.7
+   },
+   "prime": {
+    "n": 1,
+    "procent": 3.8
    }
   },
   "tehnologii": {
    "Power BI": {
-    "n": 9,
-    "procent": 81.8
+    "n": 21,
+    "procent": 80.8
    },
    "SQL": {
-    "n": 8,
-    "procent": 72.7
-   },
-   "Python": {
-    "n": 5,
-    "procent": 45.5
+    "n": 17,
+    "procent": 65.4
    },
    "Excel": {
-    "n": 4,
-    "procent": 36.4
+    "n": 14,
+    "procent": 53.8
+   },
+   "Python": {
+    "n": 13,
+    "procent": 50
    },
    "SAP": {
-    "n": 2,
-    "procent": 18.2
+    "n": 6,
+    "procent": 23.1
    },
    "AWS": {
     "n": 2,
-    "procent": 18.2
+    "procent": 7.7
    },
    "Java": {
     "n": 1,
-    "procent": 9.1
+    "procent": 3.8
+   },
+   "Azure": {
+    "n": 1,
+    "procent": 3.8
    }
   },
   "negociabil": {},
   "strainatate": {},
   "limbaAnuntului": {
    "en": {
-    "n": 9,
-    "procent": 81.8
+    "n": 22,
+    "procent": 84.6
    },
    "ro": {
-    "n": 2,
-    "procent": 18.2
+    "n": 4,
+    "procent": 15.4
    }
   },
   "surse": {
    "hipo": {
-    "n": 7,
-    "procent": 63.6
-   },
-   "bestjobs": {
-    "n": 2,
-    "procent": 18.2
+    "n": 19,
+    "procent": 73.1
    },
    "undelucram": {
-    "n": 2,
-    "procent": 18.2
+    "n": 4,
+    "procent": 15.4
+   },
+   "bestjobs": {
+    "n": 3,
+    "procent": 11.5
    }
   },
   "peJudet": {
    "RO": {
-    "n": 7,
-    "procent": 63.6
+    "n": 19,
+    "procent": 73.1
    }
   },
   "motiveFaraSalariu": {
    "salary_evidence_incomplete": {
-    "n": 11,
+    "n": 26,
     "procent": 100
+   },
+   "country_unconfirmed": {
+    "n": 1,
+    "procent": 3.8
    }
   },
-  "salariuPeFactor": {}
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",

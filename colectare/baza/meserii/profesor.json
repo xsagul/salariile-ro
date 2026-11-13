@@ -4,31 +4,31 @@
  "cor": "233002",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
-  "cuSalariu": 6,
+  "cuSalariu": 8,
   "cuBazaDeclarata": 1,
-  "faraBazaDeclarata": 5,
+  "faraBazaDeclarata": 7,
   "surse": {
    "bestjobs": {
-    "n": 4,
-    "procent": 66.7
+    "n": 6,
+    "procent": 75
    },
    "ejobs": {
     "n": 1,
-    "procent": 16.7
+    "procent": 12.5
    },
    "olx": {
     "n": 1,
-    "procent": 16.7
+    "procent": 12.5
    }
   },
   "colectari": {
+   "continuă": {
+    "n": 4,
+    "procent": 50
+   },
    "8 septembrie 2026": {
     "n": 4,
-    "procent": 66.7
-   },
-   "continuă": {
-    "n": 2,
-    "procent": 33.3
+    "procent": 50
    }
   },
   "net": {
@@ -41,136 +41,249 @@
    "n": 1
   },
   "faraBazaDeclarata_valori": {
-   "n": 5
+   "n": 7
   },
   "peOras": {},
   "peJudet": {},
   "peLuna": {
    "2026-09": {
-    "n": 4,
-    "procent": 66.7
+    "n": 5,
+    "procent": 62.5
+   },
+   "2026-10": {
+    "n": 1,
+    "procent": 12.5
    },
    "2026-08": {
     "n": 1,
-    "procent": 16.7
+    "procent": 12.5
    },
    "2025-06": {
     "n": 1,
-    "procent": 16.7
+    "procent": 12.5
    }
   }
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 15,
+  "anunturiCitite": 39,
   "cuSalariu": 0,
   "nivel": {
    "junior": {
     "n": 2,
-    "procent": 13.3
+    "procent": 5.1
    }
   },
   "experienta": {
    "da": {
-    "n": 2,
-    "procent": 13.3
+    "n": 9,
+    "procent": 23.1
+   },
+   "3+ ani": {
+    "n": 3,
+    "procent": 7.7
    },
    "avantaj": {
+    "n": 2,
+    "procent": 5.1
+   },
+   "11+ ani": {
     "n": 1,
-    "procent": 6.7
+    "procent": 2.6
+   },
+   "9+ ani": {
+    "n": 1,
+    "procent": 2.6
+   },
+   "fara": {
+    "n": 1,
+    "procent": 2.6
+   },
+   "4+ ani": {
+    "n": 1,
+    "procent": 2.6
    }
   },
   "experientaPortal": {},
   "studii": {
    "medii": {
-    "n": 10,
-    "procent": 66.7
+    "n": 12,
+    "procent": 30.8
    },
    "superioare": {
-    "n": 3,
-    "procent": 20
+    "n": 10,
+    "procent": 25.6
    }
   },
   "limbi": {
    "engleza": {
+    "n": 9,
+    "procent": 23.1
+   },
+   "germana": {
+    "n": 4,
+    "procent": 10.3
+   },
+   "franceza": {
     "n": 2,
-    "procent": 13.3
+    "procent": 5.1
+   },
+   "spaniola": {
+    "n": 2,
+    "procent": 5.1
    }
   },
   "permis": {},
   "atestate": {},
-  "program": {},
+  "program": {
+   "flexibil": {
+    "n": 1,
+    "procent": 2.6
+   }
+  },
   "mod": {
    "remote": {
     "n": 10,
-    "procent": 66.7
+    "procent": 25.6
    }
   },
   "norma": {
    "part-time": {
-    "n": 2,
-    "procent": 13.3
+    "n": 6,
+    "procent": 15.4
    },
    "full-time": {
-    "n": 1,
-    "procent": 6.7
+    "n": 5,
+    "procent": 12.8
    }
   },
   "durata": {},
-  "beneficii": {},
-  "tehnologii": {},
+  "beneficii": {
+   "masă": {
+    "n": 3,
+    "procent": 7.7
+   },
+   "cursuri / training": {
+    "n": 2,
+    "procent": 5.1
+   },
+   "asigurare medicală": {
+    "n": 2,
+    "procent": 5.1
+   },
+   "transport": {
+    "n": 1,
+    "procent": 2.6
+   }
+  },
+  "tehnologii": {
+   "Excel": {
+    "n": 1,
+    "procent": 2.6
+   }
+  },
   "negociabil": {},
   "strainatate": {},
   "limbaAnuntului": {
    "ro": {
-    "n": 14,
-    "procent": 93.3
+    "n": 38,
+    "procent": 97.4
    },
    "en": {
     "n": 1,
-    "procent": 6.7
+    "procent": 2.6
    }
   },
   "surse": {
-   "hipo": {
-    "n": 10,
-    "procent": 66.7
+   "publi24": {
+    "n": 18,
+    "procent": 46.2
    },
    "bestjobs": {
-    "n": 5,
-    "procent": 33.3
+    "n": 11,
+    "procent": 28.2
+   },
+   "hipo": {
+    "n": 10,
+    "procent": 25.6
    }
   },
   "peJudet": {
+   "Bucuresti": {
+    "n": 11,
+    "procent": 28.2
+   },
    "RO": {
     "n": 10,
-    "procent": 66.7
+    "procent": 25.6
+   },
+   "Prahova": {
+    "n": 2,
+    "procent": 5.1
+   },
+   "Botosani": {
+    "n": 1,
+    "procent": 2.6
+   },
+   "Timis": {
+    "n": 1,
+    "procent": 2.6
+   },
+   "Mures": {
+    "n": 1,
+    "procent": 2.6
+   },
+   "Hunedoara": {
+    "n": 1,
+    "procent": 2.6
+   },
+   "Suceava": {
+    "n": 1,
+    "procent": 2.6
    }
   },
   "motiveFaraSalariu": {
    "salary_evidence_incomplete": {
-    "n": 12,
-    "procent": 92.3
+    "n": 33,
+    "procent": 94.3
    },
    "full_time_unconfirmed": {
-    "n": 10,
-    "procent": 76.9
+    "n": 23,
+    "procent": 65.7
    },
    "contract_or_variable_income": {
-    "n": 2,
-    "procent": 15.4
+    "n": 6,
+    "procent": 17.1
+   },
+   "foreign_or_noncomparable_work": {
+    "n": 1,
+    "procent": 2.9
    }
   },
-  "salariuPeFactor": {}
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
-  "oferte": 1,
-  "posturi": 5,
-  "ofertePeGrupaCor": 3,
+  "oferte": 2,
+  "posturi": 10,
+  "ofertePeGrupaCor": 5,
   "tipSalariu": {
    "gross": {
-    "n": 1,
+    "n": 2,
     "procent": 100
    }
   },
@@ -178,59 +291,71 @@
    "n": 0
   },
   "brutMinimDeclarat": {
-   "n": 1
+   "n": 2
   },
   "laSalariulMinim": 0,
   "studii": {
    "Universitar - ÎNVĂȚĂMÂNT SUPERIOR": {
-    "n": 1,
+    "n": 2,
     "procent": 100
    }
   },
   "experienta": {
    "Experiență puțină - mai puțin de 3 ani": {
     "n": 1,
-    "procent": 100
+    "procent": 50
+   },
+   "Fără experiență - 0 ani": {
+    "n": 1,
+    "procent": 50
    }
   },
   "contract": {
    "Cu durată nedeterminată": {
-    "n": 1,
+    "n": 2,
     "procent": 100
    }
   },
   "norma": {
    "Cu normă întreagă": {
-    "n": 1,
+    "n": 2,
     "procent": 100
    }
   },
   "regim": {
    "Sediu": {
-    "n": 1,
+    "n": 2,
     "procent": 100
    }
   },
   "judete": {
    "Municipiul București": {
     "n": 1,
-    "procent": 100
+    "procent": 50
+   },
+   "Ilfov": {
+    "n": 1,
+    "procent": 50
    }
   },
   "domenii": {
    "Educație / Training / Coaching": {
     "n": 1,
-    "procent": 100
+    "procent": 50
+   },
+   "Altele": {
+    "n": 1,
+    "procent": 50
    }
   },
   "coduriCorInGrupa": {
    "233001 - PROFESOR ÎN ÎNVATAMÂNTUL LICEAL, POSTLICEAL": {
-    "n": 2,
-    "procent": 66.7
+    "n": 3,
+    "procent": 60
    },
    "233002 - PROFESOR ÎN ÎNVATAMÂNTUL GIMNAZIAL": {
-    "n": 1,
-    "procent": 33.3
+    "n": 2,
+    "procent": 40
    }
   }
  },

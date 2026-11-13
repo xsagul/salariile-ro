@@ -4,11 +4,21 @@
  "cor": null,
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
-  "cuSalariu": 0,
+  "cuSalariu": 1,
   "cuBazaDeclarata": 0,
-  "faraBazaDeclarata": 0,
-  "surse": {},
-  "colectari": {},
+  "faraBazaDeclarata": 1,
+  "surse": {
+   "bestjobs": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "colectari": {
+   "continuă": {
+    "n": 1,
+    "procent": 100
+   }
+  },
   "net": {
    "n": 0
   },
@@ -19,20 +29,35 @@
    "n": 0
   },
   "faraBazaDeclarata_valori": {
-   "n": 0
+   "n": 1
   },
   "peOras": {},
   "peJudet": {},
-  "peLuna": {}
+  "peLuna": {
+   "2026-10": {
+    "n": 1,
+    "procent": 100
+   }
+  }
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 0,
+  "anunturiCitite": 1,
   "cuSalariu": 0,
   "nivel": {},
-  "experienta": {},
+  "experienta": {
+   "avantaj": {
+    "n": 1,
+    "procent": 100
+   }
+  },
   "experientaPortal": {},
-  "studii": {},
+  "studii": {
+   "medii": {
+    "n": 1,
+    "procent": 100
+   }
+  },
   "limbi": {},
   "permis": {},
   "atestate": {},
@@ -40,15 +65,48 @@
   "mod": {},
   "norma": {},
   "durata": {},
-  "beneficii": {},
+  "beneficii": {
+   "tichete de masă": {
+    "n": 1,
+    "procent": 100
+   },
+   "asigurare medicală": {
+    "n": 1,
+    "procent": 100
+   }
+  },
   "tehnologii": {},
   "negociabil": {},
   "strainatate": {},
-  "limbaAnuntului": {},
-  "surse": {},
+  "limbaAnuntului": {
+   "ro": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "bestjobs": {
+    "n": 1,
+    "procent": 100
+   }
+  },
   "peJudet": {},
   "motiveFaraSalariu": {},
-  "salariuPeFactor": {}
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",

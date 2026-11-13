@@ -48,7 +48,21 @@
   "surse": {},
   "peJudet": {},
   "motiveFaraSalariu": {},
-  "salariuPeFactor": {}
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
@@ -74,21 +88,112 @@
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
-  "posturi": 0,
-  "institutii": 0,
-  "posturiDinSurseDeVerificat": 0,
-  "judete": {},
-  "tipInstitutie": {},
-  "perioade": {},
+  "posturi": 51,
+  "institutii": 2,
+  "posturiDinSurseDeVerificat": 3,
+  "judete": {
+   "PH": {
+    "n": 40,
+    "procent": 78.4
+   },
+   "AR": {
+    "n": 11,
+    "procent": 21.6
+   }
+  },
+  "tipInstitutie": {
+   "cultura": {
+    "n": 51,
+    "procent": 100
+   }
+  },
+  "perioade": {
+   "2026-09": {
+    "n": 40,
+    "procent": 78.4
+   },
+   "2025-09": {
+    "n": 11,
+    "procent": 21.6
+   }
+  },
   "studii": {},
   "bazaBruta": {
-   "n": 0
+   "n": 51,
+   "p10": 6190,
+   "p25": 6729,
+   "median": 8461,
+   "p75": 10683,
+   "p90": 14141,
+   "min": 4543,
+   "max": 14830
   },
   "bazaCuSporuriFixe": {
-   "n": 0
+   "n": 51,
+   "p10": 6253,
+   "p25": 6864,
+   "median": 9014,
+   "p75": 10832,
+   "p90": 14282,
+   "min": 5224,
+   "max": 14978
   },
-  "peGradatie": {},
-  "peFunctie": {}
+  "peGradatie": {
+   "gradația 3": {
+    "n": 3
+   },
+   "gradația 2": {
+    "n": 3
+   },
+   "gradația 4": {
+    "n": 2
+   },
+   "gradația 5": {
+    "n": 1
+   },
+   "gradația 1": {
+    "n": 1
+   },
+   "gradația 0": {
+    "n": 1
+   }
+  },
+  "peFunctie": {
+   "artist instrumentist": {
+    "n": 19,
+    "p10": 7949,
+    "p25": 8780,
+    "median": 10493,
+    "p75": 10790,
+    "p90": 11076,
+    "min": 6253,
+    "max": 12174
+   },
+   "corist": {
+    "n": 7
+   },
+   "Artist liric GP IA Legea": {
+    "n": 5
+   },
+   "solist instrumentist": {
+    "n": 5
+   },
+   "solist vocal": {
+    "n": 5
+   },
+   "instrumentist": {
+    "n": 4
+   },
+   "Artist liric GP II Legea": {
+    "n": 3
+   },
+   "Artist liric GP I Legea": {
+    "n": 2
+   },
+   "Artist liric Debutant Legea": {
+    "n": 1
+   }
+  }
  },
  "angajatori": {
   "descriere": "Salariul publicat de angajator pe site-ul lui de cariere, pe post și oraș (lei pe lună; baza cum o scrie angajatorul).",

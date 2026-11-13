@@ -50,65 +50,81 @@
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 4,
+  "anunturiCitite": 11,
   "cuSalariu": 0,
   "nivel": {},
   "experienta": {
    "da": {
+    "n": 2,
+    "procent": 18.2
+   },
+   "4+ ani": {
     "n": 1,
-    "procent": 25
+    "procent": 9.1
+   },
+   "2+ ani": {
+    "n": 1,
+    "procent": 9.1
    }
   },
   "experientaPortal": {},
   "studii": {
+   "superioare": {
+    "n": 2,
+    "procent": 18.2
+   },
    "medii": {
     "n": 1,
-    "procent": 25
+    "procent": 9.1
    }
   },
   "limbi": {
    "engleza": {
     "n": 2,
-    "procent": 50
+    "procent": 18.2
    }
   },
   "permis": {
    "B": {
     "n": 1,
-    "procent": 25
+    "procent": 9.1
    }
   },
   "atestate": {},
   "program": {
    "luni–vineri": {
-    "n": 1,
-    "procent": 25
+    "n": 3,
+    "procent": 27.3
    }
   },
   "mod": {},
   "norma": {
    "full-time": {
     "n": 1,
-    "procent": 25
+    "procent": 9.1
+   },
+   "part-time": {
+    "n": 1,
+    "procent": 9.1
    }
   },
   "durata": {},
   "beneficii": {
    "bonus": {
     "n": 1,
-    "procent": 25
+    "procent": 9.1
    },
    "cursuri / training": {
     "n": 1,
-    "procent": 25
+    "procent": 9.1
    },
    "masă": {
     "n": 1,
-    "procent": 25
+    "procent": 9.1
    },
    "asigurare medicală": {
     "n": 1,
-    "procent": 25
+    "procent": 9.1
    }
   },
   "tehnologii": {},
@@ -116,33 +132,75 @@
   "strainatate": {},
   "limbaAnuntului": {
    "ro": {
-    "n": 4,
+    "n": 11,
     "procent": 100
    }
   },
   "surse": {
+   "publi24": {
+    "n": 6,
+    "procent": 54.5
+   },
    "bestjobs": {
-    "n": 3,
-    "procent": 75
+    "n": 4,
+    "procent": 36.4
    },
    "anuntul": {
     "n": 1,
-    "procent": 25
+    "procent": 9.1
    }
   },
   "peJudet": {
+   "Bucuresti": {
+    "n": 4,
+    "procent": 36.4
+   },
    "bucuresti": {
     "n": 1,
-    "procent": 25
+    "procent": 9.1
+   },
+   "Ilfov": {
+    "n": 1,
+    "procent": 9.1
+   },
+   "Suceava": {
+    "n": 1,
+    "procent": 9.1
    }
   },
   "motiveFaraSalariu": {
    "salary_evidence_incomplete": {
-    "n": 2,
-    "procent": 100
+    "n": 7,
+    "procent": 77.8
+   },
+   "full_time_unconfirmed": {
+    "n": 4,
+    "procent": 44.4
+   },
+   "contract_or_variable_income": {
+    "n": 1,
+    "procent": 11.1
+   },
+   "monthly_unconfirmed": {
+    "n": 1,
+    "procent": 11.1
    }
   },
-  "salariuPeFactor": {}
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",

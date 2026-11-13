@@ -42,217 +42,297 @@
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 4,
+  "anunturiCitite": 10,
   "cuSalariu": 0,
   "nivel": {
    "senior": {
-    "n": 1,
-    "procent": 25
+    "n": 3,
+    "procent": 30
    }
   },
   "experienta": {
    "avantaj": {
-    "n": 2,
-    "procent": 50
+    "n": 4,
+    "procent": 40
    },
    "2+ ani": {
-    "n": 1,
-    "procent": 25
+    "n": 2,
+    "procent": 20
+   },
+   "3+ ani": {
+    "n": 2,
+    "procent": 20
    }
   },
   "experientaPortal": {
    "1–5 ani": {
     "n": 1,
-    "procent": 25
+    "procent": 10
+   },
+   "peste 5 ani": {
+    "n": 1,
+    "procent": 10
    }
   },
   "studii": {
    "superioare": {
-    "n": 2,
-    "procent": 50
+    "n": 8,
+    "procent": 80
    }
   },
-  "limbi": {},
-  "permis": {},
+  "limbi": {
+   "engleza": {
+    "n": 3,
+    "procent": 30
+   }
+  },
+  "permis": {
+   "B": {
+    "n": 1,
+    "procent": 10
+   }
+  },
   "atestate": {},
   "program": {},
   "mod": {
    "hibrid": {
     "n": 1,
-    "procent": 25
+    "procent": 10
+   },
+   "remote": {
+    "n": 1,
+    "procent": 10
    }
   },
   "norma": {},
   "durata": {
    "nedeterminată": {
+    "n": 2,
+    "procent": 20
+   },
+   "determinată": {
     "n": 1,
-    "procent": 25
+    "procent": 10
    }
   },
   "beneficii": {
    "asigurare medicală": {
+    "n": 2,
+    "procent": 20
+   },
+   "bonus": {
     "n": 1,
-    "procent": 25
+    "procent": 10
    }
   },
   "tehnologii": {
    "Excel": {
-    "n": 3,
-    "procent": 75
+    "n": 9,
+    "procent": 90
+   },
+   "Power BI": {
+    "n": 2,
+    "procent": 20
+   },
+   "SQL": {
+    "n": 1,
+    "procent": 10
+   },
+   "SAP": {
+    "n": 1,
+    "procent": 10
    }
   },
   "negociabil": {},
   "strainatate": {},
   "limbaAnuntului": {
    "ro": {
-    "n": 3,
-    "procent": 75
+    "n": 7,
+    "procent": 70
    },
    "en": {
-    "n": 1,
-    "procent": 25
+    "n": 3,
+    "procent": 30
    }
   },
   "surse": {
    "bestjobs": {
-    "n": 2,
-    "procent": 50
+    "n": 6,
+    "procent": 60
    },
    "undelucram": {
-    "n": 1,
-    "procent": 25
+    "n": 2,
+    "procent": 20
    },
    "hipo": {
-    "n": 1,
-    "procent": 25
+    "n": 2,
+    "procent": 20
    }
   },
   "peJudet": {
    "RO": {
-    "n": 1,
-    "procent": 25
+    "n": 2,
+    "procent": 20
    }
   },
   "motiveFaraSalariu": {
    "salary_evidence_incomplete": {
-    "n": 4,
-    "procent": 100
+    "n": 9,
+    "procent": 90
+   },
+   "full_time_unconfirmed": {
+    "n": 1,
+    "procent": 10
+   },
+   "multiple_unresolved_amounts": {
+    "n": 1,
+    "procent": 10
    }
   },
-  "salariuPeFactor": {}
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
-  "oferte": 9,
-  "posturi": 9,
-  "ofertePeGrupaCor": 11,
+  "oferte": 11,
+  "posturi": 13,
+  "ofertePeGrupaCor": 17,
   "tipSalariu": {
    "none": {
     "n": 7,
-    "procent": 77.8
+    "procent": 63.6
    },
    "gross": {
-    "n": 2,
-    "procent": 22.2
+    "n": 4,
+    "procent": 36.4
    }
   },
   "netMinimDeclarat": {
    "n": 0
   },
   "brutMinimDeclarat": {
-   "n": 2
+   "n": 4
   },
-  "laSalariulMinim": 1,
+  "laSalariulMinim": 2,
   "studii": {
    "Universitar - ÎNVĂȚĂMÂNT SUPERIOR": {
-    "n": 9,
+    "n": 11,
     "procent": 100
    }
   },
   "experienta": {
    "Experiență medie - între 3 și 5 ani": {
-    "n": 6,
-    "procent": 66.7
+    "n": 7,
+    "procent": 63.6
    },
    "Experimentat - mai mult de 7 ani": {
     "n": 2,
-    "procent": 22.2
+    "procent": 18.2
    },
    "Avansat - între 5 și 7 ani": {
     "n": 1,
-    "procent": 11.1
+    "procent": 9.1
+   },
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 1,
+    "procent": 9.1
    }
   },
   "contract": {
    "Cu durată nedeterminată": {
-    "n": 9,
+    "n": 11,
     "procent": 100
    }
   },
   "norma": {
    "Cu normă întreagă": {
-    "n": 8,
-    "procent": 88.9
+    "n": 10,
+    "procent": 90.9
    },
    "Cu timp parțial": {
     "n": 1,
-    "procent": 11.1
+    "procent": 9.1
    }
   },
   "regim": {
    "Sediu": {
-    "n": 5,
-    "procent": 55.6
+    "n": 6,
+    "procent": 54.5
    },
    "Hibrid - sediu + telemuncă": {
     "n": 4,
-    "procent": 44.4
+    "procent": 36.4
+   },
+   "Hibrid - sediu + la domiciliu": {
+    "n": 1,
+    "procent": 9.1
    }
   },
   "judete": {
    "Municipiul București": {
     "n": 5,
-    "procent": 55.6
+    "procent": 45.5
+   },
+   "Bihor": {
+    "n": 2,
+    "procent": 18.2
    },
    "Teleorman": {
     "n": 1,
-    "procent": 11.1
+    "procent": 9.1
    },
    "Cluj": {
     "n": 1,
-    "procent": 11.1
+    "procent": 9.1
    },
    "Brașov": {
     "n": 1,
-    "procent": 11.1
+    "procent": 9.1
    },
-   "Bihor": {
+   "Ilfov": {
     "n": 1,
-    "procent": 11.1
+    "procent": 9.1
    }
   },
   "domenii": {
    "Contabilitate / Financiar": {
-    "n": 5,
-    "procent": 55.6
+    "n": 7,
+    "procent": 63.6
    },
    "Altele": {
     "n": 2,
-    "procent": 22.2
+    "procent": 18.2
    },
    "Management": {
     "n": 2,
-    "procent": 22.2
+    "procent": 18.2
    }
   },
   "coduriCorInGrupa": {
    "241305 - ANALIST FINANCIAR": {
-    "n": 9,
-    "procent": 81.8
+    "n": 11,
+    "procent": 64.7
    },
    "241306 - AUDITOR INTERN ÎN SECTORUL PUBLIC": {
-    "n": 2,
-    "procent": 18.2
+    "n": 5,
+    "procent": 29.4
+   },
+   "241311 - SPECIALIST/ANALIST ORGANIZARE": {
+    "n": 1,
+    "procent": 5.9
    }
   }
  },

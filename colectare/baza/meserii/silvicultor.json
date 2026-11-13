@@ -27,81 +27,179 @@
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 0,
+  "anunturiCitite": 1,
   "cuSalariu": 0,
   "nivel": {},
-  "experienta": {},
+  "experienta": {
+   "da": {
+    "n": 1,
+    "procent": 100
+   }
+  },
   "experientaPortal": {},
   "studii": {},
   "limbi": {},
-  "permis": {},
+  "permis": {
+   "B": {
+    "n": 1,
+    "procent": 100
+   }
+  },
   "atestate": {},
   "program": {},
   "mod": {},
   "norma": {},
-  "durata": {},
-  "beneficii": {},
+  "durata": {
+   "nedeterminată": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "beneficii": {
+   "bonus": {
+    "n": 1,
+    "procent": 100
+   }
+  },
   "tehnologii": {},
   "negociabil": {},
   "strainatate": {},
-  "limbaAnuntului": {},
-  "surse": {},
-  "peJudet": {},
-  "motiveFaraSalariu": {},
-  "salariuPeFactor": {}
+  "limbaAnuntului": {
+   "ro": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "publi24": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "peJudet": {
+   "Dambovita": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "motiveFaraSalariu": {
+   "salary_evidence_incomplete": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
-  "oferte": 0,
-  "posturi": 0,
-  "ofertePeGrupaCor": 17,
-  "tipSalariu": {},
+  "oferte": 1,
+  "posturi": 1,
+  "ofertePeGrupaCor": 28,
+  "tipSalariu": {
+   "gross": {
+    "n": 1,
+    "procent": 100
+   }
+  },
   "netMinimDeclarat": {
    "n": 0
   },
   "brutMinimDeclarat": {
-   "n": 0
+   "n": 1
   },
-  "laSalariulMinim": 0,
-  "studii": {},
-  "experienta": {},
-  "contract": {},
-  "norma": {},
-  "regim": {},
-  "judete": {},
-  "domenii": {},
+  "laSalariulMinim": 1,
+  "studii": {
+   "Liceal - LICEU TEORETIC": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "experienta": {
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "judete": {
+   "Brașov": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "domenii": {
+   "Altele": {
+    "n": 1,
+    "procent": 100
+   }
+  },
   "coduriCorInGrupa": {
    "213225 - INGINER AGRONOM": {
-    "n": 6,
-    "procent": 35.3
+    "n": 9,
+    "procent": 32.1
    },
    "213241 - ASISTENT DE CERCETARE ÎN AGRICULTURA": {
-    "n": 3,
-    "procent": 17.6
+    "n": 5,
+    "procent": 17.9
    },
    "213226 - INGINER ZOOTEHNIST": {
-    "n": 2,
-    "procent": 11.8
+    "n": 5,
+    "procent": 17.9
+   },
+   "213224 - INGINER/SUBINGINER SILVIC": {
+    "n": 3,
+    "procent": 10.7
    },
    "213230 - inginer horticultor": {
     "n": 2,
-    "procent": 11.8
+    "procent": 7.1
    },
    "213257 - ASISTENT DE CERCETARE ÎN BIOTEHNOLOGIE PENTRU AGRICULTURA": {
     "n": 1,
-    "procent": 5.9
-   },
-   "213224 - INGINER/SUBINGINER SILVIC": {
-    "n": 1,
-    "procent": 5.9
+    "procent": 3.6
    },
    "213232 - TEHNICIAN AGRONOM – EXPLOATARE": {
     "n": 1,
-    "procent": 5.9
+    "procent": 3.6
    },
    "213223 - INGINER ÎMBUNATATIRI FUNCIARE": {
     "n": 1,
-    "procent": 5.9
+    "procent": 3.6
+   },
+   "213234 - TEHNICIAN SILVIC – EXPLOATARE": {
+    "n": 1,
+    "procent": 3.6
    }
   }
  },

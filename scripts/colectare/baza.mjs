@@ -164,9 +164,10 @@ for (const m of MESERII) {
   };
   fs.writeFileSync(`${MES}/${m.slug}.json`, JSON.stringify(fisa, null, 1) + "\n");
 
-  // Pentru site: salariul declarat la ANOFM (brut), unde sunt cel puțin 10 oferte cu brut declarat.
+  // Pentru site: salariul declarat la ANOFM (brut), de la 3 oferte cu brut declarat. Pragul de 10 al
+  // cifrei principale stă în SalariuDeclarat.tsx; sub el, oferta e doar rezerva meseriilor fără altă cifră.
   const bruteAnofm = of.filter((o) => ["brut", "gross"].includes(o.salary_type) && Number(o.minimum_salary) >= 1000).map((o) => Number(o.minimum_salary)).sort((a, b) => a - b);
-  if (bruteAnofm.length >= 10) {
+  if (bruteAnofm.length >= 3) {
     anofmSite[m.slug] = {
       oferte: bruteAnofm.length,
       angajatori: new Set(of.filter((o) => ["brut", "gross"].includes(o.salary_type) && Number(o.minimum_salary) >= 1000).map((o) => (o.employer_individual ? `pf-${o.id}` : o.employer_tax_code))).size,

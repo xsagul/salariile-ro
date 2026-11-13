@@ -48,116 +48,146 @@
   "surse": {},
   "peJudet": {},
   "motiveFaraSalariu": {},
-  "salariuPeFactor": {}
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
-  "oferte": 3,
-  "posturi": 9,
-  "ofertePeGrupaCor": 7,
+  "oferte": 6,
+  "posturi": 41,
+  "ofertePeGrupaCor": 19,
   "tipSalariu": {
    "gross": {
-    "n": 2,
-    "procent": 66.7
+    "n": 5,
+    "procent": 83.3
    },
    "none": {
     "n": 1,
-    "procent": 33.3
+    "procent": 16.7
    }
   },
   "netMinimDeclarat": {
    "n": 0
   },
   "brutMinimDeclarat": {
-   "n": 2
+   "n": 5
   },
-  "laSalariulMinim": 1,
+  "laSalariulMinim": 3,
   "studii": {
    "Gimnazial - ȘCOALĂ GENERALĂ": {
     "n": 2,
-    "procent": 66.7
+    "procent": 33.3
    },
    "Primar - FĂRĂ STUDII": {
-    "n": 1,
+    "n": 2,
     "procent": 33.3
+   },
+   "Primar - ȘCOALĂ GENERALĂ INCOMPLETĂ": {
+    "n": 1,
+    "procent": 16.7
+   },
+   "Profesional - ȘCOALĂ PROFESIONALĂ": {
+    "n": 1,
+    "procent": 16.7
    }
   },
   "experienta": {
    "Fără experiență - 0 ani": {
-    "n": 2,
+    "n": 4,
     "procent": 66.7
    },
    "Experiență puțină - mai puțin de 3 ani": {
-    "n": 1,
+    "n": 2,
     "procent": 33.3
    }
   },
   "contract": {
    "Cu durată nedeterminată": {
-    "n": 2,
-    "procent": 66.7
+    "n": 5,
+    "procent": 83.3
    },
    "Cu durată determinată": {
     "n": 1,
-    "procent": 33.3
+    "procent": 16.7
    }
   },
   "norma": {
    "Cu normă întreagă": {
-    "n": 3,
+    "n": 6,
     "procent": 100
    }
   },
   "regim": {
    "Sediu": {
-    "n": 3,
+    "n": 6,
     "procent": 100
    }
   },
   "judete": {
+   "Argeș": {
+    "n": 2,
+    "procent": 33.3
+   },
    "Covasna": {
     "n": 1,
-    "procent": 33.3
+    "procent": 16.7
    },
    "Hunedoara": {
     "n": 1,
-    "procent": 33.3
+    "procent": 16.7
    },
    "Municipiul București": {
     "n": 1,
-    "procent": 33.3
+    "procent": 16.7
+   },
+   "Brașov": {
+    "n": 1,
+    "procent": 16.7
    }
   },
   "domenii": {
+   "Altele": {
+    "n": 4,
+    "procent": 66.7
+   },
    "Armată / Pază/ Protecție": {
     "n": 1,
-    "procent": 33.3
-   },
-   "Altele": {
-    "n": 1,
-    "procent": 33.3
+    "procent": 16.7
    },
    "Au pair / Babysitter / Curățenie": {
     "n": 1,
-    "procent": 33.3
+    "procent": 16.7
    }
   },
   "coduriCorInGrupa": {
+   "961303 - LUCRATOR PENTRU SALUBRIZARE": {
+    "n": 7,
+    "procent": 36.8
+   },
    "961301 - LUCRATOR PENTRU SALUBRIZARE CAI PUBLICE": {
-    "n": 3,
-    "procent": 42.9
+    "n": 6,
+    "procent": 31.6
    },
    "961304 - LUCRATOR UTILAJE SPECIALIZATE PENTRU SALUBRIZARE": {
-    "n": 2,
-    "procent": 28.6
-   },
-   "961303 - LUCRATOR PENTRU SALUBRIZARE": {
-    "n": 1,
-    "procent": 14.3
+    "n": 4,
+    "procent": 21.1
    },
    "961302 - LUCRATOR PENTRU SALUBRIZARE SPATII VERZI": {
-    "n": 1,
-    "procent": 14.3
+    "n": 2,
+    "procent": 10.5
    }
   }
  },

@@ -48,164 +48,194 @@
   "surse": {},
   "peJudet": {},
   "motiveFaraSalariu": {},
-  "salariuPeFactor": {}
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
-  "oferte": 7,
-  "posturi": 8,
-  "ofertePeGrupaCor": 54,
+  "oferte": 9,
+  "posturi": 10,
+  "ofertePeGrupaCor": 90,
   "tipSalariu": {
+   "gross": {
+    "n": 5,
+    "procent": 55.6
+   },
    "none": {
     "n": 4,
-    "procent": 57.1
-   },
-   "gross": {
-    "n": 3,
-    "procent": 42.9
+    "procent": 44.4
    }
   },
   "netMinimDeclarat": {
    "n": 0
   },
   "brutMinimDeclarat": {
-   "n": 3
+   "n": 5
   },
-  "laSalariulMinim": 0,
+  "laSalariulMinim": 1,
   "studii": {
    "Universitar - ÎNVĂȚĂMÂNT SUPERIOR": {
-    "n": 6,
-    "procent": 85.7
+    "n": 8,
+    "procent": 88.9
    },
    "Postliceal - COLEGIU": {
     "n": 1,
-    "procent": 14.3
+    "procent": 11.1
    }
   },
   "experienta": {
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 4,
+    "procent": 44.4
+   },
    "Fără experiență - 0 ani": {
     "n": 3,
-    "procent": 42.9
-   },
-   "Experiență medie - între 3 și 5 ani": {
-    "n": 2,
-    "procent": 28.6
+    "procent": 33.3
    },
    "Avansat - între 5 și 7 ani": {
     "n": 2,
-    "procent": 28.6
+    "procent": 22.2
    }
   },
   "contract": {
    "Cu durată nedeterminată": {
     "n": 5,
-    "procent": 71.4
+    "procent": 55.6
    },
    "Cu durată determinată": {
-    "n": 2,
-    "procent": 28.6
+    "n": 4,
+    "procent": 44.4
    }
   },
   "norma": {
    "Cu normă întreagă": {
-    "n": 7,
+    "n": 9,
     "procent": 100
    }
   },
   "regim": {
    "Sediu": {
-    "n": 5,
-    "procent": 71.4
+    "n": 7,
+    "procent": 77.8
    },
    "Hibrid - sediu + la domiciliu": {
     "n": 1,
-    "procent": 14.3
+    "procent": 11.1
    },
    "Hibrid - sediu + telemuncă": {
     "n": 1,
-    "procent": 14.3
+    "procent": 11.1
    }
   },
   "judete": {
    "Municipiul București": {
-    "n": 5,
-    "procent": 71.4
+    "n": 6,
+    "procent": 66.7
    },
    "Timiș": {
     "n": 1,
-    "procent": 14.3
+    "procent": 11.1
    },
    "Brașov": {
     "n": 1,
-    "procent": 14.3
+    "procent": 11.1
+   },
+   "Sibiu": {
+    "n": 1,
+    "procent": 11.1
    }
   },
   "domenii": {
+   "Altele": {
+    "n": 3,
+    "procent": 33.3
+   },
    "Inginerie": {
     "n": 3,
-    "procent": 42.9
-   },
-   "Altele": {
-    "n": 2,
-    "procent": 28.6
+    "procent": 33.3
    },
    "IT / Telecomunicații": {
     "n": 1,
-    "procent": 14.3
+    "procent": 11.1
    },
    "Specialiști / Tehnicieni": {
     "n": 1,
-    "procent": 14.3
+    "procent": 11.1
+   },
+   "Producție / Logistică": {
+    "n": 1,
+    "procent": 11.1
    }
   },
   "coduriCorInGrupa": {
    "215205 - INGINER PRODUCTIE": {
-    "n": 16,
-    "procent": 29.6
+    "n": 31,
+    "procent": 34.4
    },
    "215202 - INGINER AUTOMATIST": {
-    "n": 14,
-    "procent": 25.9
+    "n": 22,
+    "procent": 24.4
    },
    "215204 - INGINER ELECTRONIST TRANSPORTURI, TELECOMUNICATII": {
-    "n": 7,
-    "procent": 13
+    "n": 9,
+    "procent": 10
    },
    "215216 - INGINER ELECTROMECANIC": {
-    "n": 4,
-    "procent": 7.4
+    "n": 7,
+    "procent": 7.8
    },
    "215215 - PROIECTANT INGINER ELECTROMECANIC": {
-    "n": 3,
+    "n": 5,
     "procent": 5.6
    },
    "215222 - INGINER SISTEME DE SECURITATE": {
+    "n": 4,
+    "procent": 4.4
+   },
+   "215213 - PROIECTANT INGINER ELECTRONIST": {
+    "n": 3,
+    "procent": 3.3
+   },
+   "215236 - INGINER DE CERCETARE ÎN CALCULATOARE": {
     "n": 2,
-    "procent": 3.7
+    "procent": 2.2
    },
    "215201 - INGINER ELECTROMECANIC SCB": {
     "n": 2,
-    "procent": 3.7
-   },
-   "215213 - PROIECTANT INGINER ELECTRONIST": {
-    "n": 2,
-    "procent": 3.7
+    "procent": 2.2
    },
    "215224 - INGINER DE CERCETARE ÎN ELECTRONICA APLICATA": {
     "n": 1,
-    "procent": 1.9
+    "procent": 1.1
    },
    "215225 - ASISTENT DE CERCETARE ÎN ELECTRONICA APLICATA": {
     "n": 1,
-    "procent": 1.9
-   },
-   "215236 - INGINER DE CERCETARE ÎN CALCULATOARE": {
-    "n": 1,
-    "procent": 1.9
+    "procent": 1.1
    },
    "215220 - SPECIALIST MENTENANTA ELECTROMECANICA-AUTOMATICA ECHIPAMENTE INDUSTRIALE": {
     "n": 1,
-    "procent": 1.9
+    "procent": 1.1
+   },
+   "215237 - ASISTENT DE CERCETARE ÎN CALCULATOARE": {
+    "n": 1,
+    "procent": 1.1
+   },
+   "215230 - INGINER DE CERCETARE ÎN MICROELECTRONICA": {
+    "n": 1,
+    "procent": 1.1
    }
   }
  },

@@ -27,19 +27,19 @@
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 1,
+  "anunturiCitite": 2,
   "cuSalariu": 0,
   "nivel": {},
   "experienta": {
    "1+ ani": {
     "n": 1,
-    "procent": 100
+    "procent": 50
    }
   },
   "experientaPortal": {
    "0–1 an": {
     "n": 1,
-    "procent": 100
+    "procent": 50
    }
   },
   "studii": {},
@@ -56,35 +56,61 @@
   "strainatate": {},
   "limbaAnuntului": {
    "ro": {
-    "n": 1,
+    "n": 2,
     "procent": 100
    }
   },
   "surse": {
    "hipo": {
     "n": 1,
-    "procent": 100
+    "procent": 50
+   },
+   "publi24": {
+    "n": 1,
+    "procent": 50
    }
   },
   "peJudet": {
    "RO": {
     "n": 1,
-    "procent": 100
+    "procent": 50
+   },
+   "Sibiu": {
+    "n": 1,
+    "procent": 50
    }
   },
   "motiveFaraSalariu": {
    "salary_evidence_incomplete": {
-    "n": 1,
+    "n": 2,
     "procent": 100
+   },
+   "full_time_unconfirmed": {
+    "n": 1,
+    "procent": 50
    }
   },
-  "salariuPeFactor": {}
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
   "oferte": 0,
   "posturi": 0,
-  "ofertePeGrupaCor": 19,
+  "ofertePeGrupaCor": 37,
   "tipSalariu": {},
   "netMinimDeclarat": {
    "n": 0
@@ -102,24 +128,28 @@
   "domenii": {},
   "coduriCorInGrupa": {
    "352130 - TEHNICIAN PENTRU SISTEME DE DETECTIE, SUPRAVEGHERE VIDEO, CONTROL ACCES": {
-    "n": 14,
-    "procent": 73.7
+    "n": 27,
+    "procent": 73
    },
    "352129 - OPERATOR DISPECER SISTEME DE MONITORIZARE SI APARATURA DE CONTROL": {
-    "n": 2,
-    "procent": 10.5
+    "n": 4,
+    "procent": 10.8
    },
    "352124 - OPERATOR IMAGINE": {
-    "n": 1,
-    "procent": 5.3
+    "n": 2,
+    "procent": 5.4
+   },
+   "352123 - MONTOR EMISIE": {
+    "n": 2,
+    "procent": 5.4
    },
    "352119 - EDITOR IMAGINE": {
     "n": 1,
-    "procent": 5.3
+    "procent": 2.7
    },
    "352113 - OPERATOR PRODUCTIE RTV": {
     "n": 1,
-    "procent": 5.3
+    "procent": 2.7
    }
   }
  },

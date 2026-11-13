@@ -4,41 +4,45 @@
  "cor": "514201",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
-  "cuSalariu": 13,
-  "cuBazaDeclarata": 8,
+  "cuSalariu": 14,
+  "cuBazaDeclarata": 9,
   "faraBazaDeclarata": 5,
   "surse": {
    "olx": {
     "n": 7,
-    "procent": 53.8
+    "procent": 50
    },
    "ejobs": {
     "n": 5,
-    "procent": 38.5
+    "procent": 35.7
    },
    "bestjobs": {
     "n": 1,
-    "procent": 7.7
+    "procent": 7.1
+   },
+   "publi24": {
+    "n": 1,
+    "procent": 7.1
    }
   },
   "colectari": {
    "8 septembrie 2026": {
     "n": 11,
-    "procent": 84.6
+    "procent": 78.6
    },
    "continuă": {
-    "n": 2,
-    "procent": 15.4
+    "n": 3,
+    "procent": 21.4
    }
   },
   "net": {
-   "n": 8
+   "n": 9
   },
   "netMinimOferit": {
-   "n": 8
+   "n": 9
   },
   "netMaximOferit": {
-   "n": 8
+   "n": 9
   },
   "faraBazaDeclarata_valori": {
    "n": 5
@@ -46,54 +50,77 @@
   "peOras": {
    "Cluj-Napoca": {
     "n": 1
+   },
+   "Sector 3": {
+    "n": 1
    }
   },
   "peJudet": {
    "21": {
     "n": 1
+   },
+   "Bucuresti": {
+    "n": 1
    }
   },
   "peLuna": {
    "2026-09": {
-    "n": 3,
-    "procent": 23.1
+    "n": 4,
+    "procent": 28.6
    },
    "2026-08": {
     "n": 3,
-    "procent": 23.1
+    "procent": 21.4
    },
    "2026-06": {
     "n": 2,
-    "procent": 15.4
+    "procent": 14.3
    },
    "2026-03": {
     "n": 1,
-    "procent": 7.7
+    "procent": 7.1
    },
    "2025-03": {
     "n": 1,
-    "procent": 7.7
+    "procent": 7.1
    },
    "2026-07": {
     "n": 1,
-    "procent": 7.7
+    "procent": 7.1
    },
    "2025-09": {
     "n": 1,
-    "procent": 7.7
+    "procent": 7.1
    },
    "2025-11": {
     "n": 1,
-    "procent": 7.7
+    "procent": 7.1
    }
   }
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 5,
-  "cuSalariu": 1,
+  "anunturiCitite": 36,
+  "cuSalariu": 2,
   "nivel": {},
-  "experienta": {},
+  "experienta": {
+   "da": {
+    "n": 5,
+    "procent": 13.9
+   },
+   "1+ ani": {
+    "n": 1,
+    "procent": 2.8
+   },
+   "avantaj": {
+    "n": 1,
+    "procent": 2.8
+   },
+   "2+ ani": {
+    "n": 1,
+    "procent": 2.8
+   }
+  },
   "experientaPortal": {},
   "studii": {},
   "limbi": {},
@@ -101,30 +128,51 @@
   "atestate": {},
   "program": {
    "weekend": {
+    "n": 3,
+    "procent": 8.3
+   },
+   "flexibil": {
     "n": 2,
-    "procent": 40
+    "procent": 5.6
+   },
+   "luni–vineri": {
+    "n": 1,
+    "procent": 2.8
+   },
+   "ture": {
+    "n": 1,
+    "procent": 2.8
    }
   },
   "mod": {},
   "norma": {
    "part-time": {
+    "n": 3,
+    "procent": 8.3
+   },
+   "full-time": {
     "n": 1,
-    "procent": 20
+    "procent": 2.8
    }
   },
-  "durata": {},
+  "durata": {
+   "nedeterminată": {
+    "n": 1,
+    "procent": 2.8
+   }
+  },
   "beneficii": {
+   "cursuri / training": {
+    "n": 3,
+    "procent": 8.3
+   },
    "bonus": {
     "n": 2,
-    "procent": 40
-   },
-   "cursuri / training": {
-    "n": 2,
-    "procent": 40
+    "procent": 5.6
    },
    "tichete de masă": {
     "n": 1,
-    "procent": 20
+    "procent": 2.8
    }
   },
   "tehnologii": {},
@@ -132,166 +180,263 @@
   "strainatate": {},
   "limbaAnuntului": {
    "ro": {
-    "n": 5,
+    "n": 36,
     "procent": 100
    }
   },
   "surse": {
-   "bestjobs": {
-    "n": 2,
-    "procent": 40
-   },
    "publi24": {
-    "n": 1,
-    "procent": 20
+    "n": 30,
+    "procent": 83.3
+   },
+   "bestjobs": {
+    "n": 3,
+    "procent": 8.3
    },
    "anuntul": {
-    "n": 1,
-    "procent": 20
+    "n": 2,
+    "procent": 5.6
    },
    "ejobs": {
     "n": 1,
-    "procent": 20
+    "procent": 2.8
    }
   },
   "peJudet": {
    "21": {
     "n": 1,
-    "procent": 20
+    "procent": 2.8
    },
    "Bucuresti": {
-    "n": 1,
-    "procent": 20
+    "n": 11,
+    "procent": 30.6
+   },
+   "Dolj": {
+    "n": 5,
+    "procent": 13.9
    },
    "bucuresti": {
+    "n": 2,
+    "procent": 5.6
+   },
+   "Maramures": {
+    "n": 2,
+    "procent": 5.6
+   },
+   "Constanta": {
+    "n": 2,
+    "procent": 5.6
+   },
+   "Cluj": {
+    "n": 2,
+    "procent": 5.6
+   },
+   "Timis": {
     "n": 1,
-    "procent": 20
+    "procent": 2.8
+   },
+   "Giurgiu": {
+    "n": 1,
+    "procent": 2.8
+   },
+   "Iasi": {
+    "n": 1,
+    "procent": 2.8
+   },
+   "Brasov": {
+    "n": 1,
+    "procent": 2.8
+   },
+   "Bihor": {
+    "n": 1,
+    "procent": 2.8
+   },
+   "Arges": {
+    "n": 1,
+    "procent": 2.8
+   },
+   "Vrancea": {
+    "n": 1,
+    "procent": 2.8
+   },
+   "Bacau": {
+    "n": 1,
+    "procent": 2.8
    }
   },
   "motiveFaraSalariu": {
    "salary_evidence_incomplete": {
-    "n": 3,
-    "procent": 100
+    "n": 32,
+    "procent": 97
+   },
+   "full_time_unconfirmed": {
+    "n": 11,
+    "procent": 33.3
    },
    "contract_or_variable_income": {
-    "n": 1,
-    "procent": 33.3
+    "n": 4,
+    "procent": 12.1
    }
   },
-  "salariuPeFactor": {}
+  "salariuPeFactor": {
+   "experienta": {
+    "avantaj": {
+     "n": 1
+    }
+   },
+   "program": {
+    "luni–vineri": {
+     "n": 1
+    }
+   }
+  },
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
-  "oferte": 3,
-  "posturi": 4,
-  "ofertePeGrupaCor": 21,
+  "oferte": 5,
+  "posturi": 8,
+  "ofertePeGrupaCor": 32,
   "tipSalariu": {
    "gross": {
-    "n": 2,
-    "procent": 66.7
+    "n": 4,
+    "procent": 80
    },
    "none": {
     "n": 1,
-    "procent": 33.3
+    "procent": 20
    }
   },
   "netMinimDeclarat": {
    "n": 0
   },
   "brutMinimDeclarat": {
-   "n": 2
+   "n": 4
   },
-  "laSalariulMinim": 2,
+  "laSalariulMinim": 4,
   "studii": {
+   "Gimnazial - ȘCOALĂ GENERALĂ": {
+    "n": 2,
+    "procent": 40
+   },
    "Primar - FĂRĂ STUDII": {
     "n": 1,
-    "procent": 33.3
+    "procent": 20
    },
    "Profesional - ȘCOALĂ PROFESIONALĂ": {
     "n": 1,
-    "procent": 33.3
+    "procent": 20
    },
-   "Gimnazial - ȘCOALĂ GENERALĂ": {
+   "Liceal - LICEU TEORETIC": {
     "n": 1,
-    "procent": 33.3
+    "procent": 20
    }
   },
   "experienta": {
    "Experiență puțină - mai puțin de 3 ani": {
-    "n": 2,
-    "procent": 66.7
+    "n": 4,
+    "procent": 80
    },
    "Fără experiență - 0 ani": {
     "n": 1,
-    "procent": 33.3
+    "procent": 20
    }
   },
   "contract": {
    "Cu durată nedeterminată": {
-    "n": 3,
+    "n": 5,
     "procent": 100
    }
   },
   "norma": {
    "Cu normă întreagă": {
-    "n": 2,
-    "procent": 66.7
+    "n": 4,
+    "procent": 80
    },
    "Cu timp parțial": {
     "n": 1,
-    "procent": 33.3
+    "procent": 20
    }
   },
   "regim": {
    "Sediu": {
-    "n": 3,
+    "n": 5,
     "procent": 100
    }
   },
   "judete": {
    "Mureș": {
     "n": 1,
-    "procent": 33.3
+    "procent": 20
    },
    "Dolj": {
     "n": 1,
-    "procent": 33.3
+    "procent": 20
    },
    "Constanța": {
     "n": 1,
-    "procent": 33.3
+    "procent": 20
+   },
+   "Ialomița": {
+    "n": 1,
+    "procent": 20
+   },
+   "Iași": {
+    "n": 1,
+    "procent": 20
    }
   },
   "domenii": {
    "Servicii înfrumusețare": {
-    "n": 3,
-    "procent": 100
+    "n": 4,
+    "procent": 80
+   },
+   "Altele": {
+    "n": 1,
+    "procent": 20
    }
   },
   "coduriCorInGrupa": {
    "514204 - MASEUR DE ÎNTRETINERE SI RELAXARE": {
-    "n": 6,
-    "procent": 28.6
+    "n": 12,
+    "procent": 37.5
    },
    "514202 - MANICHIURIST": {
-    "n": 6,
-    "procent": 28.6
-   },
-   "514208 - STILIST PROTEZIST DE UNGHII": {
-    "n": 3,
-    "procent": 14.3
+    "n": 7,
+    "procent": 21.9
    },
    "514201 - COSMETICIAN": {
-    "n": 3,
-    "procent": 14.3
+    "n": 5,
+    "procent": 15.6
+   },
+   "514208 - STILIST PROTEZIST DE UNGHII": {
+    "n": 4,
+    "procent": 12.5
    },
    "514209 - OPERATOR INTRETINERE CORPORALA": {
     "n": 2,
-    "procent": 9.5
+    "procent": 6.3
    },
    "514203 - PEDICHIURIST": {
     "n": 1,
-    "procent": 4.8
+    "procent": 3.1
+   },
+   "514205 - MACHIOR": {
+    "n": 1,
+    "procent": 3.1
    }
   }
  },

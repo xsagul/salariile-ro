@@ -1,79 +1,623 @@
 {
-  "descriere": "Venitul salarial lunar publicat de angajatorul public pentru fiecare categorie de personal: net plătit (MApN) sau brut pe funcție (Ministerul Public), din care netul se calculează cu regulile obișnuite. Nu cuprinde drepturile nepermanente.",
-  "militar": {
-    "angajator": "Ministerul Apărării Naționale",
+ "descriere": "Venitul salarial lunar publicat de angajatorul public pentru fiecare categorie de personal: net plătit (MApN) sau brut pe funcție (Ministerul Public), din care netul se calculează cu regulile obișnuite. Nu cuprinde drepturile nepermanente. Unde angajatorul e împărțit în unități (ISU, IPJ, IJJ), fiecare publică lunar minimul și maximul pe categorii; cifra e mediana unităților, iar minimele sub salariul minim net (luni lucrate parțial) nu intră.",
+ "militar": {
+  "angajator": "Ministerul Apărării Naționale",
+  "luna": "august 2026",
+  "platitIn": "septembrie 2026",
+  "url": "https://www.mapn.ro/buget/documente/2026/venit_09_2026.doc",
+  "pagina": "https://www.mapn.ro/buget/",
+  "start": "Soldați și gradați profesioniști",
+  "categorii": [
+   {
+    "categorie": "Soldați și gradați profesioniști",
+    "min": 4348,
+    "max": 5970
+   },
+   {
+    "categorie": "Subofițeri",
+    "min": 4597,
+    "max": 6942
+   },
+   {
+    "categorie": "Maiștri militari",
+    "min": 4612,
+    "max": 7061
+   },
+   {
+    "categorie": "Ofițeri, funcții de execuție",
+    "min": 5527,
+    "max": 12486
+   },
+   {
+    "categorie": "Ofițeri, funcții de comandă",
+    "min": 5679,
+    "max": 28426
+   }
+  ],
+  "varf": "la ofițerii cu funcții de comandă",
+  "ierarhie": "de la soldat la ofițer"
+ },
+ "procuror": {
+  "angajator": "Ministerul Public (Parchetul de pe lângă Înalta Curte de Casație și Justiție)",
+  "luna": "martie 2026",
+  "platitIn": "martie 2026",
+  "url": "https://old.mpublic.ro/sites/default/files/PDF/i._procurori_31.03.2026_mp.pdf",
+  "pagina": "https://old.mpublic.ro/ro/content/functii-si-venituri",
+  "start": "Procurori stagiari",
+  "varf": "la procurorii Parchetului de pe lângă Înalta Curte",
+  "ierarhie": "de la stagiar la Parchetul de pe lângă Înalta Curte",
+  "brut": true,
+  "nota": "indemnizația de încadrare, sporul de risc și suprasolicitare neuropsihică, sporul de confidențialitate și sporul pentru condiții de muncă, pe funcțiile de execuție, cu gradația 0–5.",
+  "categorii": [
+   {
+    "categorie": "Procurori stagiari",
+    "brutMin": 11949,
+    "brutMax": 14162
+   },
+   {
+    "categorie": "Procurori la parchetele de pe lângă judecătorii",
+    "brutMin": 17925,
+    "brutMax": 27619
+   },
+   {
+    "categorie": "Procurori la parchetele de pe lângă tribunale",
+    "brutMin": 24599,
+    "brutMax": 30681
+   },
+   {
+    "categorie": "Procurori la parchetele de pe lângă curțile de apel",
+    "brutMin": 27879,
+    "brutMax": 34779
+   },
+   {
+    "categorie": "Procurori la Parchetul de pe lângă Înalta Curte",
+    "brutMin": 31158,
+    "brutMax": 38868
+   }
+  ]
+ },
+ "pompier": {
+  "angajator": "inspectoratele pentru situații de urgență",
+  "luna": "februarie–octombrie 2026",
+  "pagina": "https://igsu.ro/cheltuieli-salariale",
+  "start": "Soldați și gradați profesioniști",
+  "varf": "la ofițerii cu funcții de comandă",
+  "ierarhie": "de la soldat gradat profesionist la ofițer",
+  "categoriiDin": [
+   [
+    "Soldați și gradați profesioniști",
+    "Sg. gradati prof.",
+    "fara"
+   ],
+   [
+    "Subofițeri",
+    "Subofiteri",
+    "fara"
+   ],
+   [
+    "Maiștri militari",
+    "Maistri militari",
+    "fara"
+   ],
+   [
+    "Ofițeri, funcții de execuție",
+    "Ofiteri",
+    "fara"
+   ],
+   [
+    "Ofițeri, funcții de comandă",
+    "Ofiteri",
+    "cu"
+   ]
+  ],
+  "unitati": [
+   {
+    "nume": "ISU Brăila",
+    "luna": "februarie 2026",
+    "url": "https://isubr.igsu.ro/resources/3c7d0f6c-88c1-429c-afd9-89ec80546f5e.pdf",
+    "pagina": "https://isubr.igsu.ro/cheltuieli-salariale",
+    "randuri": {
+     "Personal contractual": [
+      0,
+      0,
+      4196,
+      4579
+     ],
+     "Ofiteri": [
+      6804,
+      14181,
+      5305,
+      10967
+     ],
+     "Maistri militari": [
+      0,
+      0,
+      3940,
+      4549
+     ],
+     "Subofiteri": [
+      0,
+      0,
+      2472,
+      8393
+     ],
+     "Sg. gradati prof.": [
+      0,
+      0,
+      3220,
+      4793
+     ]
+    }
+   },
+   {
+    "nume": "ISU Giurgiu",
+    "luna": "februarie 2026",
+    "url": "https://isugr.igsu.ro/resources/84b466a9-d8d4-4636-bec1-27aaac992ec2.PDF",
+    "pagina": "https://isugr.igsu.ro/cheltuieli-salariale",
+    "randuri": {
+     "Personal contractual": [
+      0,
+      0,
+      3309,
+      4210
+     ],
+     "Ofiteri": [
+      5846,
+      13025,
+      5535,
+      10568
+     ],
+     "Maistri militari": [
+      0,
+      0,
+      4412,
+      6461
+     ],
+     "Subofiteri": [
+      0,
+      0,
+      4295,
+      8338
+     ],
+     "Sg. gradati prof.": [
+      0,
+      0,
+      4011,
+      4792
+     ]
+    }
+   },
+   {
+    "nume": "ISU Hunedoara",
+    "luna": "octombrie 2026",
+    "url": "https://isuhd.igsu.ro/resources/f358286e-56c0-48a5-ae88-305136d9718c.pdf",
+    "pagina": "https://isuhd.igsu.ro/cheltuieli-salariale",
+    "randuri": {
+     "Personal contractual": [
+      0,
+      0,
+      3060,
+      3859
+     ],
+     "Ofiteri": [
+      5647,
+      14490,
+      5575,
+      10034
+     ],
+     "Maistri militari": [
+      0,
+      0,
+      4219,
+      4872
+     ],
+     "Subofiteri": [
+      0,
+      0,
+      2736,
+      8835
+     ],
+     "Sg. gradati prof.": [
+      0,
+      0,
+      2273,
+      5235
+     ]
+    }
+   },
+   {
+    "nume": "ISU Maramureș",
+    "luna": "octombrie 2026",
+    "url": "https://isumm.igsu.ro/resources/e72a6b37-2c6b-45bd-b5e9-3bf1e918ac0f.pdf",
+    "pagina": "https://isumm.igsu.ro/cheltuieli-salariale",
+    "randuri": {
+     "Personal contractual": [
+      0,
+      0,
+      3231,
+      4008
+     ],
+     "Ofiteri": [
+      6308,
+      15778,
+      5288,
+      10051
+     ],
+     "Maistri militari": [
+      0,
+      0,
+      4889,
+      6091
+     ],
+     "Subofiteri": [
+      0,
+      0,
+      1767,
+      8702
+     ],
+     "Sg. gradati prof.": [
+      0,
+      0,
+      3734,
+      5149
+     ]
+    }
+   },
+   {
+    "nume": "ISU Neamț",
+    "luna": "octombrie 2026",
+    "url": "https://isunt.igsu.ro/resources/5a3e5c1b-1bca-4a59-85ae-d528fbf8b6c3.pdf",
+    "pagina": "https://isunt.igsu.ro/cheltuieli-salariale",
+    "randuri": {
+     "Personal contractual": [
+      0,
+      0,
+      2629,
+      4563
+     ],
+     "Ofiteri": [
+      6137,
+      15265,
+      5520,
+      9132
+     ],
+     "Maistri militari": [
+      0,
+      0,
+      3937,
+      6106
+     ],
+     "Subofiteri": [
+      0,
+      0,
+      2229,
+      8734
+     ],
+     "Sg. gradati prof.": [
+      0,
+      0,
+      2287,
+      4715
+     ]
+    }
+   },
+   {
+    "nume": "ISU Prahova",
+    "luna": "februarie 2026",
+    "url": "https://isuph.igsu.ro/resources/4b35a9d3-5594-4024-a54f-9ba6e531e3c3.PDF",
+    "pagina": "https://isuph.igsu.ro/cheltuieli-salariale",
+    "randuri": {
+     "Personal contractual": [
+      0,
+      0,
+      3283,
+      4601
+     ],
+     "Ofiteri": [
+      7720,
+      14350,
+      5719,
+      12082
+     ],
+     "Maistri militari": [
+      0,
+      0,
+      4553,
+      6585
+     ],
+     "Subofiteri": [
+      0,
+      0,
+      4414,
+      9907
+     ],
+     "Sg. gradati prof.": [
+      0,
+      0,
+      3799,
+      5359
+     ]
+    }
+   },
+   {
+    "nume": "ISU Sălaj",
+    "luna": "octombrie 2026",
+    "url": "https://isusj.igsu.ro/resources/612e345f-eeb2-4f30-875e-b346413f7d64.PDF",
+    "pagina": "https://isusj.igsu.ro/cheltuieli-salariale",
+    "randuri": {
+     "Personal contractual": [
+      0,
+      0,
+      3321,
+      4108
+     ],
+     "Ofiteri": [
+      5313,
+      13719,
+      6092,
+      9449
+     ],
+     "Maistri militari": [
+      0,
+      0,
+      4694,
+      6220
+     ],
+     "Subofiteri": [
+      0,
+      0,
+      3049,
+      8044
+     ],
+     "Sg. gradati prof.": [
+      0,
+      0,
+      3779,
+      4793
+     ]
+    }
+   },
+   {
+    "nume": "ISU Teleorman",
     "luna": "august 2026",
-    "platitIn": "septembrie 2026",
-    "url": "https://www.mapn.ro/buget/documente/2026/venit_09_2026.doc",
-    "pagina": "https://www.mapn.ro/buget/",
-    "start": "Soldați și gradați profesioniști",
-    "categorii": [
-      {
-        "categorie": "Soldați și gradați profesioniști",
-        "min": 4348,
-        "max": 5970
-      },
-      {
-        "categorie": "Subofițeri",
-        "min": 4597,
-        "max": 6942
-      },
-      {
-        "categorie": "Maiștri militari",
-        "min": 4612,
-        "max": 7061
-      },
-      {
-        "categorie": "Ofițeri, funcții de execuție",
-        "min": 5527,
-        "max": 12486
-      },
-      {
-        "categorie": "Ofițeri, funcții de comandă",
-        "min": 5679,
-        "max": 28426
-      }
-    ],
-    "varf": "la ofițerii cu funcții de comandă",
-    "ierarhie": "de la soldat la ofițer"
-  },
-  "procuror": {
-    "angajator": "Ministerul Public (Parchetul de pe lângă Înalta Curte de Casație și Justiție)",
-    "luna": "martie 2026",
-    "platitIn": "martie 2026",
-    "url": "https://old.mpublic.ro/sites/default/files/PDF/i._procurori_31.03.2026_mp.pdf",
-    "pagina": "https://old.mpublic.ro/ro/content/functii-si-venituri",
-    "start": "Procurori stagiari",
-    "varf": "la procurorii Parchetului de pe lângă Înalta Curte",
-    "ierarhie": "de la stagiar la Parchetul de pe lângă Înalta Curte",
-    "brut": true,
-    "nota": "indemnizația de încadrare, sporul de risc și suprasolicitare neuropsihică, sporul de confidențialitate și sporul pentru condiții de muncă, pe funcțiile de execuție, cu gradația 0–5.",
-    "categorii": [
-      {
-        "categorie": "Procurori stagiari",
-        "brutMin": 11949,
-        "brutMax": 14162
-      },
-      {
-        "categorie": "Procurori la parchetele de pe lângă judecătorii",
-        "brutMin": 17925,
-        "brutMax": 27619
-      },
-      {
-        "categorie": "Procurori la parchetele de pe lângă tribunale",
-        "brutMin": 24599,
-        "brutMax": 30681
-      },
-      {
-        "categorie": "Procurori la parchetele de pe lângă curțile de apel",
-        "brutMin": 27879,
-        "brutMax": 34779
-      },
-      {
-        "categorie": "Procurori la Parchetul de pe lângă Înalta Curte",
-        "brutMin": 31158,
-        "brutMax": 38868
-      }
-    ]
-  }
+    "url": "https://isutr.igsu.ro/resources/54bb053c-2b36-4b11-a85b-81cdf9e29917.PDF",
+    "pagina": "https://isutr.igsu.ro/cheltuieli-salariale",
+    "randuri": {
+     "Personal contractual": [
+      0,
+      0,
+      2434,
+      4424
+     ],
+     "Ofiteri": [
+      6240,
+      14050,
+      6051,
+      10530
+     ],
+     "Maistri militari": [
+      0,
+      0,
+      2749,
+      6157
+     ],
+     "Subofiteri": [
+      0,
+      0,
+      3649,
+      8747
+     ],
+     "Sg. gradati prof.": [
+      0,
+      0,
+      2352,
+      4900
+     ]
+    }
+   },
+   {
+    "nume": "ISU Timiș",
+    "luna": "februarie 2026",
+    "url": "https://isutm.igsu.ro/resources/d3e4f437-77ee-4388-992c-5e31088d914b.PDF",
+    "pagina": "https://isutm.igsu.ro/cheltuieli-salariale",
+    "randuri": {
+     "Personal contractual": [
+      0,
+      0,
+      2876,
+      4747
+     ],
+     "Ofiteri": [
+      4376,
+      14961,
+      5450,
+      11340
+     ],
+     "Maistri militari": [
+      0,
+      0,
+      3608,
+      5666
+     ],
+     "Subofiteri": [
+      0,
+      0,
+      2460,
+      7632
+     ],
+     "Sg. gradati prof.": [
+      0,
+      0,
+      2483,
+      4751
+     ]
+    }
+   },
+   {
+    "nume": "ISU Vâlcea",
+    "luna": "februarie 2026",
+    "url": "https://isuvl.igsu.ro/resources/93ee2bec-f996-4af9-bfdf-0c675b70b240.PDF",
+    "pagina": "https://isuvl.igsu.ro/cheltuieli-salariale",
+    "randuri": {
+     "Personal contractual": [
+      0,
+      0,
+      4109,
+      4599
+     ],
+     "Ofiteri": [
+      6162,
+      16168,
+      5409,
+      11780
+     ],
+     "Maistri militari": [
+      0,
+      0,
+      4555,
+      6136
+     ],
+     "Subofiteri": [
+      0,
+      0,
+      4414,
+      8549
+     ],
+     "Sg. gradati prof.": [
+      0,
+      0,
+      3925,
+      5323
+     ]
+    }
+   }
+  ]
+ },
+ "politist": {
+  "angajator": "Inspectoratul de Poliție Județean Olt",
+  "luna": "august 2026",
+  "platitIn": "septembrie 2026",
+  "url": "https://ot.politiaromana.ro/files/pages_files/SAL_august_2026.pdf",
+  "pagina": "https://ot.politiaromana.ro/ro/informatii-publice/transparenta-institutionala/venituri-salariale-nete-pe-categorii-de-functii/venituri-2026",
+  "start": "Agenți de poliție",
+  "varf": "la ofițerii cu funcții de conducere",
+  "ierarhie": "de la agent la ofițer",
+  "categoriiDin": [
+   [
+    "Agenți de poliție",
+    "Agenti de politie",
+    "fara"
+   ],
+   [
+    "Agenți de poliție, funcții de conducere",
+    "Agenti de politie",
+    "cu"
+   ],
+   [
+    "Ofițeri de poliție, funcții de execuție",
+    "Ofiteri de politie",
+    "fara"
+   ],
+   [
+    "Ofițeri de poliție, funcții de conducere",
+    "Ofiteri de politie",
+    "cu"
+   ]
+  ],
+  "unitati": [
+   {
+    "nume": "IPJ Olt",
+    "luna": "august 2026",
+    "url": "https://ot.politiaromana.ro/files/pages_files/SAL_august_2026.pdf",
+    "pagina": "https://ot.politiaromana.ro/ro/informatii-publice/transparenta-institutionala/venituri-salariale-nete-pe-categorii-de-functii/venituri-2026",
+    "randuri": {
+     "Ofiteri de politie": [
+      8145,
+      15413,
+      4833,
+      11647
+     ],
+     "Agenti de politie": [
+      5244,
+      9296,
+      4203,
+      8967
+     ]
+    }
+   }
+  ]
+ },
+ "jandarm": {
+  "angajator": "unitățile de jandarmi",
+  "luna": "mai–iulie 2026",
+  "pagina": "https://www.jandarmeriaiasi.ro/",
+  "start": "Subofițeri",
+  "varf": "la ofițerii cu funcții de comandă",
+  "ierarhie": "de la subofițer la ofițer",
+  "categoriiDin": [
+   [
+    "Subofițeri",
+    "Subofiteri",
+    "fara"
+   ],
+   [
+    "Ofițeri, funcții de execuție",
+    "Ofiteri",
+    "fara"
+   ],
+   [
+    "Ofițeri, funcții de comandă",
+    "Ofiteri",
+    "cu"
+   ]
+  ],
+  "unitati": [
+   {
+    "nume": "IJJ Iași",
+    "luna": "mai 2026",
+    "url": "https://www.jandarmeriaiasi.ro/wp-content/uploads/2026/09/Venituri-salariale-IJJ-Iasi-Mai-2026.pdf",
+    "pagina": "https://www.jandarmeriaiasi.ro/",
+    "randuri": {
+     "Ofiteri": [
+      5135,
+      14986,
+      6284,
+      10032
+     ],
+     "Maistri militari": [
+      0,
+      0,
+      5539,
+      5539
+     ],
+     "Subofiteri": [
+      0,
+      0,
+      1468,
+      8400
+     ]
+    }
+   },
+   {
+    "nume": "Gruparea de Jandarmi Mobilă Brașov",
+    "luna": "iulie 2026",
+    "url": "http://www.jandarmeriamobilabrasov.ro/gjmbv/wp-content/uploads/2026/05/07-25.pdf",
+    "pagina": "http://www.jandarmeriamobilabrasov.ro/gjmbv/",
+    "randuri": {
+     "Ofiteri": [
+      4693,
+      14893,
+      6564,
+      10670
+     ],
+     "Subofiteri": [
+      0,
+      0,
+      3604,
+      7820
+     ]
+    }
+   }
+  ]
+ }
 }

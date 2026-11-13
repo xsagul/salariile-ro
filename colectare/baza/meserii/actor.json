@@ -48,7 +48,21 @@
   "surse": {},
   "peJudet": {},
   "motiveFaraSalariu": {},
-  "salariuPeFactor": {}
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
@@ -127,21 +141,97 @@
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
-  "posturi": 0,
-  "institutii": 0,
+  "posturi": 45,
+  "institutii": 1,
   "posturiDinSurseDeVerificat": 0,
-  "judete": {},
-  "tipInstitutie": {},
-  "perioade": {},
+  "judete": {
+   "SB": {
+    "n": 45,
+    "procent": 100
+   }
+  },
+  "tipInstitutie": {
+   "cultura": {
+    "n": 45,
+    "procent": 100
+   }
+  },
+  "perioade": {
+   "2026-03": {
+    "n": 45,
+    "procent": 100
+   }
+  },
   "studii": {},
   "bazaBruta": {
-   "n": 0
+   "n": 45,
+   "p10": 6358,
+   "p25": 10025,
+   "median": 11060,
+   "p75": 15105,
+   "p90": 15578,
+   "min": 4543,
+   "max": 15578
   },
   "bazaCuSporuriFixe": {
-   "n": 0
+   "n": 45,
+   "p10": 6358,
+   "p25": 10025,
+   "median": 11560,
+   "p75": 15105,
+   "p90": 15578,
+   "min": 4543,
+   "max": 16078
   },
-  "peGradatie": {},
-  "peFunctie": {}
+  "peGradatie": {
+   "gradația 5": {
+    "n": 22,
+    "p10": 11110,
+    "p25": 15094,
+    "median": 15105,
+    "p75": 15460,
+    "p90": 15578,
+    "min": 10985,
+    "max": 16078
+   },
+   "gradația 0": {
+    "n": 8
+   },
+   "gradația 2": {
+    "n": 7
+   },
+   "gradația 4": {
+    "n": 4
+   },
+   "gradația 3": {
+    "n": 4
+   }
+  },
+  "peFunctie": {
+   "ACTOR IA": {
+    "n": 21,
+    "p10": 14739,
+    "p25": 15103,
+    "median": 15105,
+    "p75": 15578,
+    "p90": 15578,
+    "min": 12512,
+    "max": 16078
+   },
+   "ACTOR I": {
+    "n": 17,
+    "p10": 9890,
+    "p25": 10025,
+    "median": 10454,
+    "p75": 11060,
+    "p90": 11354,
+    "min": 5359,
+    "max": 11560
+   },
+   "ACTOR II": {
+    "n": 7
+   }
+  }
  },
  "angajatori": {
   "descriere": "Salariul publicat de angajator pe site-ul lui de cariere, pe post și oraș (lei pe lună; baza cum o scrie angajatorul).",

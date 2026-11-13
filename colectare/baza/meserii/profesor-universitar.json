@@ -48,13 +48,27 @@
   "surse": {},
   "peJudet": {},
   "motiveFaraSalariu": {},
-  "salariuPeFactor": {}
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
   "oferte": 0,
   "posturi": 0,
-  "ofertePeGrupaCor": 0,
+  "ofertePeGrupaCor": 1,
   "tipSalariu": {},
   "netMinimDeclarat": {
    "n": 0
@@ -70,48 +84,57 @@
   "regim": {},
   "judete": {},
   "domenii": {},
-  "coduriCorInGrupa": {}
+  "coduriCorInGrupa": {
+   "231003 - LECTOR UNIVERSITAR": {
+    "n": 1,
+    "procent": 100
+   }
+  }
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
-  "posturi": 99,
+  "posturi": 100,
   "institutii": 4,
   "posturiDinSurseDeVerificat": 0,
   "judete": {
    "MS": {
     "n": 75,
-    "procent": 75.8
+    "procent": 75
    },
    "BV": {
     "n": 15,
-    "procent": 15.2
+    "procent": 15
    },
    "B": {
-    "n": 9,
-    "procent": 9.1
+    "n": 10,
+    "procent": 10
    }
   },
   "tipInstitutie": {
    "universitate": {
-    "n": 99,
+    "n": 100,
     "procent": 100
    }
   },
   "perioade": {
    "2026-03": {
-    "n": 99,
-    "procent": 100
+    "n": 76,
+    "procent": 76
+   },
+   "2026-09": {
+    "n": 24,
+    "procent": 24
    }
   },
   "studii": {
    "S": {
     "n": 15,
-    "procent": 15.2
+    "procent": 15
    }
   },
   "bazaBruta": {
-   "n": 99,
-   "p10": 13664,
+   "n": 100,
+   "p10": 13788,
    "p25": 17482,
    "median": 17482,
    "p75": 17482,
@@ -120,8 +143,8 @@
    "max": 17482
   },
   "bazaCuSporuriFixe": {
-   "n": 99,
-   "p10": 13971,
+   "n": 100,
+   "p10": 13979,
    "p25": 17482,
    "median": 18890,
    "p75": 19337,
@@ -157,11 +180,11 @@
    "PROFESOR UNIVERSITAR S peste 25 ani": {
     "n": 9
    },
-   "Profesor Indemnizatie doctorat Sal.minim 12.2018 * procent %": {
-    "n": 6
+   "Profesor Indemnizatie doctorat OUG 7/2016, Art.LIV(1)": {
+    "n": 5
    },
    "Profesor Gradatie merit Sal.baza * procent % Anexa nr.I, Cap": {
-    "n": 3
+    "n": 4
    },
    "PROFESOR UNIVERSITAR S 15-20 ani": {
     "n": 3
@@ -176,6 +199,9 @@
     "n": 1
    },
    "Profesor inv.liceal": {
+    "n": 1
+   },
+   "Profesor Indemnizatie doctorat Sal.minim 12.2018 * procent %": {
     "n": 1
    },
    "PROFESOR UNIVERSITAR S 10-15 ani": {

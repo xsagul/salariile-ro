@@ -46,17 +46,22 @@
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 2,
+  "anunturiCitite": 5,
   "cuSalariu": 0,
   "nivel": {},
   "experienta": {
    "da": {
-    "n": 1,
-    "procent": 50
+    "n": 3,
+    "procent": 60
    }
   },
   "experientaPortal": {},
-  "studii": {},
+  "studii": {
+   "superioare": {
+    "n": 2,
+    "procent": 40
+   }
+  },
   "limbi": {},
   "permis": {},
   "atestate": {},
@@ -70,42 +75,81 @@
   "strainatate": {},
   "limbaAnuntului": {
    "ro": {
-    "n": 2,
+    "n": 5,
     "procent": 100
    }
   },
   "surse": {
    "bestjobs": {
-    "n": 1,
-    "procent": 50
+    "n": 2,
+    "procent": 40
+   },
+   "publi24": {
+    "n": 2,
+    "procent": 40
    },
    "ejobs": {
     "n": 1,
-    "procent": 50
+    "procent": 20
    }
   },
-  "peJudet": {},
+  "peJudet": {
+   "Bistrita-Nasaud": {
+    "n": 1,
+    "procent": 20
+   },
+   "Timis": {
+    "n": 1,
+    "procent": 20
+   }
+  },
   "motiveFaraSalariu": {
    "salary_evidence_incomplete": {
-    "n": 1,
-    "procent": 50
+    "n": 3,
+    "procent": 60
    },
    "country_unconfirmed": {
     "n": 1,
-    "procent": 50
+    "procent": 20
    },
    "foreign_or_noncomparable_work": {
     "n": 1,
-    "procent": 50
+    "procent": 20
+   },
+   "multiple_unresolved_amounts": {
+    "n": 1,
+    "procent": 20
+   },
+   "full_time_unconfirmed": {
+    "n": 1,
+    "procent": 20
+   },
+   "contract_or_variable_income": {
+    "n": 1,
+    "procent": 20
    }
   },
-  "salariuPeFactor": {}
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
   "oferte": 2,
   "posturi": 4,
-  "ofertePeGrupaCor": 23,
+  "ofertePeGrupaCor": 40,
   "tipSalariu": {
    "none": {
     "n": 2,
@@ -167,157 +211,176 @@
   },
   "coduriCorInGrupa": {
    "226405 - KINETOTERAPEUT": {
-    "n": 13,
-    "procent": 56.5
+    "n": 21,
+    "procent": 52.5
    },
    "226401 - FIZIOKINETOTERAPEUT": {
-    "n": 8,
-    "procent": 34.8
+    "n": 17,
+    "procent": 42.5
    },
    "226402 - FIZIOTERAPEUT": {
     "n": 2,
-    "procent": 8.7
+    "procent": 5
    }
   }
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
-  "posturi": 51,
-  "institutii": 13,
+  "posturi": 55,
+  "institutii": 14,
   "posturiDinSurseDeVerificat": 1,
   "judete": {
    "BH": {
-    "n": 16,
-    "procent": 31.4
+    "n": 19,
+    "procent": 34.5
    },
    "BV": {
     "n": 7,
-    "procent": 13.7
+    "procent": 12.7
    },
    "TM": {
     "n": 7,
-    "procent": 13.7
+    "procent": 12.7
    },
    "CJ": {
     "n": 5,
-    "procent": 9.8
+    "procent": 9.1
    },
    "CT": {
     "n": 5,
-    "procent": 9.8
+    "procent": 9.1
    },
    "AB": {
     "n": 4,
-    "procent": 7.8
+    "procent": 7.3
    },
    "SV": {
     "n": 3,
-    "procent": 5.9
+    "procent": 5.5
    },
    "BR": {
     "n": 2,
-    "procent": 3.9
+    "procent": 3.6
    },
    "BZ": {
     "n": 1,
-    "procent": 2
+    "procent": 1.8
+   },
+   "SM": {
+    "n": 1,
+    "procent": 1.8
    },
    "MS": {
     "n": 1,
-    "procent": 2
+    "procent": 1.8
    }
   },
   "tipInstitutie": {
    "spital": {
-    "n": 49,
-    "procent": 96.1
+    "n": 53,
+    "procent": 96.4
    },
    "dgaspc": {
     "n": 1,
-    "procent": 2
+    "procent": 1.8
    },
    "universitate": {
     "n": 1,
-    "procent": 2
+    "procent": 1.8
    }
   },
   "perioade": {
+   "2026-09": {
+    "n": 35,
+    "procent": 63.6
+   },
    "2026-03": {
-    "n": 46,
-    "procent": 90.2
+    "n": 12,
+    "procent": 21.8
    },
    "2025-03": {
     "n": 4,
-    "procent": 7.8
+    "procent": 7.3
+   },
+   "2026-10": {
+    "n": 2,
+    "procent": 3.6
    },
    "2026-02": {
     "n": 1,
-    "procent": 2
+    "procent": 1.8
+   },
+   "2026-08": {
+    "n": 1,
+    "procent": 1.8
    }
   },
   "studii": {
    "S": {
-    "n": 26,
-    "procent": 51
+    "n": 30,
+    "procent": 54.5
    },
    "G": {
     "n": 2,
-    "procent": 3.9
+    "procent": 3.6
    }
   },
   "bazaBruta": {
-   "n": 51,
-   "p10": 5679,
+   "n": 55,
+   "p10": 6130,
    "p25": 6920,
-   "median": 8145,
-   "p75": 9075,
+   "median": 7971,
+   "p75": 9302,
    "p90": 9302,
    "min": 5272,
    "max": 9769
   },
   "bazaCuSporuriFixe": {
-   "n": 51,
-   "p10": 6508,
-   "p25": 7828,
-   "median": 9089,
+   "n": 55,
+   "p10": 6844,
+   "p25": 7732,
+   "median": 8842,
    "p75": 9881,
-   "p90": 10723,
+   "p90": 10645,
    "min": 5272,
-   "max": 11428
+   "max": 11619
   },
   "peGradatie": {
    "gradația 5": {
-    "n": 14,
-    "p10": 8827,
-    "p25": 9752,
+    "n": 20,
+    "p10": 9335,
+    "p25": 9881,
     "median": 9881,
-    "p75": 9991,
-    "p90": 10703,
+    "p75": 9918,
+    "p90": 10904,
     "min": 8492,
-    "max": 11040
-   },
-   "gradația 4": {
-    "n": 9
+    "max": 11619
    },
    "gradația 2": {
-    "n": 8
+    "n": 9
    },
    "gradația 3": {
+    "n": 5
+   },
+   "gradația 4": {
     "n": 4
+   },
+   "gradația 1": {
+    "n": 1
    }
   },
   "peFunctie": {
-   "Laborator recup,medicina fizica si balne‐L.Pasteur Fiziokine": {
+   "Laborator recup,medicina fizica si balne-L.Pasteur Fiziokine": {
     "n": 5
    },
-   "Fiziokinetoterapeut Gradatia": {
-    "n": 5
-   },
-   "Laborator recup,medicina fizica si balne‐C.Coposu Fiziokinet": {
+   "Laborator recup,medicina fizica si balne-C.Coposu Fiziokinet": {
     "n": 4
    },
    "FIZIOKINETOTERAPEUT PRINCIPAL Legea nr. 153 art. 33": {
     "n": 4
+   },
+   "Fiziokinetoterapeut Gradatia 2": {
+    "n": 3
    },
    "fiziokinetoterapeut principal": {
     "n": 2
@@ -337,7 +400,7 @@
    "fiziokinetoterapeut": {
     "n": 1
    },
-   "Compartiment Terapie acuta pneumologie Fiziokinetoterapeut p": {
+   "Compartiment ARSI Fiziokinetoterapeut BAZA SUPERIOARE Person": {
     "n": 1
    },
    "Compartiment UAVCA Fiziokinetoterapeut principal Gradatia 4 ": {
@@ -349,13 +412,22 @@
    "Sectia Clinica NEUROCHIRURGIE Fiziokinetoterapeut principal ": {
     "n": 1
    },
-   "Sectia Clinica NEUROCHIRURGIE Fiziokinetoterapeut debutant B": {
+   "Sectia Clinica NEUROCHIRURGIE Fiziokinetoterapeut BAZA SUPER": {
     "n": 1
    },
-   "Sectia Clinica ORTOPEDIE‐TRAUMATOLOGIE I Fiziokinetoterapeut": {
+   "Sectia Clinica ORTOPEDIE-TRAUMATOLOGIE I Fiziokinetoterapeut": {
     "n": 1
    },
-   "Sectia Clinica ORTOPEDIE‐TRAUMATOLOGIE II Fiziokinetoterapeu": {
+   "Sectia Clinica ORTOPEDIE-TRAUMATOLOGIE II Fiziokinetoterapeu": {
+    "n": 1
+   },
+   "Sectia Clinica PNEUMOLOGIE I Fiziokinetoterapeut principal G": {
+    "n": 1
+   },
+   "SECTIA CLINICA REUPERARE MED., FIZICA SI BALNEO. Fiziokineto": {
+    "n": 1
+   },
+   "SECTIA INGRIJIRI PALEATIVE Fiziokinetoterapeut Gradatia 2 SU": {
     "n": 1
    },
    "RECUPERARE, MEDICINA FIZICA, BALNEOLOGIE FIZIOKINETOTERAPEUT": {
@@ -376,7 +448,13 @@
    "FIZIOKINETOTERAPEUT BAZA": {
     "n": 1
    },
-   "30s Fiziokinetoterapeut Gradatia": {
+   "Fiziokinetoterapeut Gradatia 5": {
+    "n": 1
+   },
+   "Fiziokinetoterapeut spec Gradatia 2": {
+    "n": 1
+   },
+   "Fiziokinetoterapeut spec Gradatia 4": {
     "n": 1
    },
    "SECTIA NEUROLOGIE FIZIOKINETOTERAPEUT PRINCIPAL Gradatia 5": {
@@ -388,7 +466,7 @@
    "COMP.RECUPERARE NEUROLOGICA FIZIOKINETOTERAPEUT DEBUTANT BAZ": {
     "n": 1
    },
-   "CAB.RECUPERARE,MED.FIZICA SI BALNE FIZIOKINETOTERAPEUT DEBUT": {
+   "CAB.RECUPERARE,MED.FIZICA SI BALNE FIZIOKINETOTERAPEUT BAZA": {
     "n": 1
    },
    "FIZIOKINETOTERAPEUT Sectia Pneumologie": {
@@ -398,6 +476,9 @@
     "n": 1
    },
    "FIZIOKINETOTERAPEUT SPECIALIST Gradatia 2 Sporurile din anex": {
+    "n": 1
+   },
+   "august Fiziokinetoterapeut, S Gradatia 3": {
     "n": 1
    },
    "Fiziokinetoterapeut": {

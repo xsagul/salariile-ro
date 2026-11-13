@@ -27,242 +27,331 @@
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 1,
+  "anunturiCitite": 4,
   "cuSalariu": 0,
   "nivel": {},
   "experienta": {
    "da": {
+    "n": 2,
+    "procent": 50
+   },
+   "avantaj": {
     "n": 1,
-    "procent": 100
+    "procent": 25
    }
   },
   "experientaPortal": {},
-  "studii": {},
-  "limbi": {},
+  "studii": {
+   "superioare": {
+    "n": 3,
+    "procent": 75
+   }
+  },
+  "limbi": {
+   "engleza": {
+    "n": 1,
+    "procent": 25
+   }
+  },
   "permis": {},
   "atestate": {},
   "program": {},
   "mod": {},
-  "norma": {},
+  "norma": {
+   "full-time": {
+    "n": 1,
+    "procent": 25
+   }
+  },
   "durata": {},
-  "beneficii": {},
+  "beneficii": {
+   "tichete de masă": {
+    "n": 1,
+    "procent": 25
+   }
+  },
   "tehnologii": {},
   "negociabil": {},
   "strainatate": {},
   "limbaAnuntului": {
    "ro": {
-    "n": 1,
+    "n": 4,
     "procent": 100
    }
   },
   "surse": {
    "publi24": {
-    "n": 1,
+    "n": 4,
     "procent": 100
    }
   },
   "peJudet": {
    "Buzau": {
     "n": 1,
-    "procent": 100
+    "procent": 25
+   },
+   "Timis": {
+    "n": 1,
+    "procent": 25
+   },
+   "Cluj": {
+    "n": 1,
+    "procent": 25
+   },
+   "Ilfov": {
+    "n": 1,
+    "procent": 25
    }
   },
   "motiveFaraSalariu": {
    "salary_evidence_incomplete": {
-    "n": 1,
+    "n": 4,
     "procent": 100
+   },
+   "full_time_unconfirmed": {
+    "n": 1,
+    "procent": 25
+   },
+   "foreign_or_noncomparable_work": {
+    "n": 1,
+    "procent": 25
    }
   },
-  "salariuPeFactor": {}
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
-  "oferte": 11,
-  "posturi": 11,
-  "ofertePeGrupaCor": 14,
+  "oferte": 22,
+  "posturi": 23,
+  "ofertePeGrupaCor": 25,
   "tipSalariu": {
    "gross": {
-    "n": 5,
-    "procent": 45.5
+    "n": 16,
+    "procent": 72.7
    },
    "net": {
     "n": 3,
-    "procent": 27.3
+    "procent": 13.6
    },
    "none": {
     "n": 3,
-    "procent": 27.3
+    "procent": 13.6
    }
   },
   "netMinimDeclarat": {
    "n": 3
   },
   "brutMinimDeclarat": {
-   "n": 4
+   "n": 15,
+   "p10": 3904,
+   "p25": 4533,
+   "median": 5008,
+   "p75": 5096,
+   "p90": 5789,
+   "min": 2555,
+   "max": 9764
   },
-  "laSalariulMinim": 3,
+  "laSalariulMinim": 5,
   "studii": {
    "Universitar - ÎNVĂȚĂMÂNT SUPERIOR": {
-    "n": 7,
-    "procent": 63.6
+    "n": 18,
+    "procent": 81.8
    },
    "Universitar - MASTER": {
     "n": 3,
-    "procent": 27.3
+    "procent": 13.6
    },
    "Liceal - LICEU TEORETIC": {
     "n": 1,
-    "procent": 9.1
+    "procent": 4.5
    }
   },
   "experienta": {
    "Experiență puțină - mai puțin de 3 ani": {
-    "n": 4,
-    "procent": 36.4
+    "n": 12,
+    "procent": 54.5
+   },
+   "Fără experiență - 0 ani": {
+    "n": 5,
+    "procent": 22.7
    },
    "Experiență medie - între 3 și 5 ani": {
     "n": 4,
-    "procent": 36.4
-   },
-   "Fără experiență - 0 ani": {
-    "n": 2,
     "procent": 18.2
    },
    "Experimentat - mai mult de 7 ani": {
     "n": 1,
-    "procent": 9.1
+    "procent": 4.5
    }
   },
   "contract": {
    "Cu durată nedeterminată": {
-    "n": 9,
-    "procent": 81.8
+    "n": 19,
+    "procent": 86.4
    },
    "Cu durată determinată": {
-    "n": 2,
-    "procent": 18.2
+    "n": 3,
+    "procent": 13.6
    }
   },
   "norma": {
    "Cu normă întreagă": {
-    "n": 9,
-    "procent": 81.8
+    "n": 19,
+    "procent": 86.4
    },
    "Cu timp parțial": {
-    "n": 2,
-    "procent": 18.2
+    "n": 3,
+    "procent": 13.6
    }
   },
   "regim": {
    "Sediu": {
-    "n": 11,
-    "procent": 100
+    "n": 21,
+    "procent": 95.5
+   },
+   "Hibrid - sediu + la domiciliu": {
+    "n": 1,
+    "procent": 4.5
    }
   },
   "judete": {
    "Alba": {
-    "n": 2,
-    "procent": 18.2
+    "n": 3,
+    "procent": 13.6
+   },
+   "Prahova": {
+    "n": 3,
+    "procent": 13.6
+   },
+   "Hunedoara": {
+    "n": 3,
+    "procent": 13.6
+   },
+   "Cluj": {
+    "n": 3,
+    "procent": 13.6
+   },
+   "Mureș": {
+    "n": 3,
+    "procent": 13.6
    },
    "Timiș": {
     "n": 2,
-    "procent": 18.2
-   },
-   "Prahova": {
-    "n": 2,
-    "procent": 18.2
-   },
-   "Cluj": {
-    "n": 2,
-    "procent": 18.2
+    "procent": 9.1
    },
    "Botoșani": {
     "n": 1,
-    "procent": 9.1
-   },
-   "Hunedoara": {
-    "n": 1,
-    "procent": 9.1
+    "procent": 4.5
    },
    "Suceava": {
     "n": 1,
-    "procent": 9.1
+    "procent": 4.5
+   },
+   "Sibiu": {
+    "n": 1,
+    "procent": 4.5
+   },
+   "Vrancea": {
+    "n": 1,
+    "procent": 4.5
+   },
+   "Municipiul București": {
+    "n": 1,
+    "procent": 4.5
    }
   },
   "domenii": {
    "ASISTENTA SOCIALA": {
-    "n": 8,
-    "procent": 72.7
+    "n": 17,
+    "procent": 77.3
    },
    "Altele": {
-    "n": 3,
-    "procent": 27.3
+    "n": 4,
+    "procent": 18.2
+   },
+   "STAT": {
+    "n": 1,
+    "procent": 4.5
    }
   },
   "coduriCorInGrupa": {
    "263501 - ASISTENT SOCIAL NIVEL SUPERIOR": {
-    "n": 11,
-    "procent": 78.6
+    "n": 22,
+    "procent": 88
    },
    "263508 - INSTRUCTOR-EDUCATOR PENTRU ACTIVITATI DE RESOCIALIZARE": {
     "n": 3,
-    "procent": 21.4
+    "procent": 12
    }
   }
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
-  "posturi": 128,
+  "posturi": 132,
   "institutii": 19,
-  "posturiDinSurseDeVerificat": 0,
+  "posturiDinSurseDeVerificat": 9,
   "judete": {
    "CL": {
     "n": 24,
-    "procent": 18.8
+    "procent": 18.2
+   },
+   "BH": {
+    "n": 15,
+    "procent": 11.4
    },
    "CJ": {
     "n": 14,
-    "procent": 10.9
-   },
-   "BH": {
-    "n": 13,
-    "procent": 10.2
+    "procent": 10.6
    },
    "CT": {
     "n": 13,
-    "procent": 10.2
+    "procent": 9.8
    },
    "TM": {
     "n": 11,
-    "procent": 8.6
+    "procent": 8.3
    },
    "AB": {
     "n": 10,
-    "procent": 7.8
+    "procent": 7.6
    },
    "HR": {
     "n": 9,
-    "procent": 7
+    "procent": 6.8
+   },
+   "BC": {
+    "n": 7,
+    "procent": 5.3
    },
    "BV": {
     "n": 6,
-    "procent": 4.7
+    "procent": 4.5
    },
    "BR": {
     "n": 6,
-    "procent": 4.7
+    "procent": 4.5
    },
    "B": {
-    "n": 5,
-    "procent": 3.9
-   },
-   "BC": {
-    "n": 5,
-    "procent": 3.9
+    "n": 4,
+    "procent": 3
    },
    "SV": {
     "n": 4,
-    "procent": 3.1
+    "procent": 3
    },
    "GR": {
     "n": 3,
@@ -270,49 +359,69 @@
    },
    "SB": {
     "n": 2,
-    "procent": 1.6
+    "procent": 1.5
    },
    "BZ": {
     "n": 2,
-    "procent": 1.6
+    "procent": 1.5
    },
    "IS": {
+    "n": 1,
+    "procent": 0.8
+   },
+   "SM": {
     "n": 1,
     "procent": 0.8
    }
   },
   "tipInstitutie": {
    "spital": {
-    "n": 94,
-    "procent": 73.4
+    "n": 98,
+    "procent": 74.2
    },
    "dgaspc": {
     "n": 34,
-    "procent": 26.6
+    "procent": 25.8
    }
   },
   "perioade": {
-   "2026-03": {
-    "n": 113,
-    "procent": 88.3
+   "2026-09": {
+    "n": 72,
+    "procent": 54.5
    },
-   "2026-02": {
+   "2026-03": {
+    "n": 40,
+    "procent": 30.3
+   },
+   "2025-09": {
     "n": 7,
-    "procent": 5.5
+    "procent": 5.3
    },
    "2025-03": {
     "n": 5,
-    "procent": 3.9
+    "procent": 3.8
    },
    "2022-09": {
     "n": 3,
     "procent": 2.3
+   },
+   "2026-02": {
+    "n": 2,
+    "procent": 1.5
+   },
+   "2026-10": {
+    "n": 2,
+    "procent": 1.5
+   },
+   "2026-08": {
+    "n": 1,
+    "procent": 0.8
    }
   },
   "studii": {
    "S": {
-    "n": 52,
-    "procent": 40.6
+    "n": 54,
+    "procent": 40.9
    },
    "PL": {
     "n": 3,
@@ -320,42 +429,42 @@
    }
   },
   "bazaBruta": {
-   "n": 128,
-   "p10": 5446,
-   "p25": 6229,
-   "median": 8351,
+   "n": 132,
+   "p10": 5473,
+   "p25": 6331,
+   "median": 8695,
    "p75": 9138,
-   "p90": 9582,
+   "p90": 9747,
    "min": 4569,
    "max": 9749
   },
   "bazaCuSporuriFixe": {
-   "n": 128,
-   "p10": 5473,
-   "p25": 6345,
+   "n": 132,
+   "p10": 5475,
+   "p25": 6408,
    "median": 9870,
-   "p75": 11422,
-   "p90": 12993,
+   "p75": 11314,
+   "p90": 13053,
    "min": 4740,
    "max": 15440
   },
   "peGradatie": {
    "gradația 5": {
-    "n": 30,
+    "n": 36,
     "p10": 9352,
-    "p25": 10158,
-    "median": 11282,
-    "p75": 12888,
-    "p90": 13247,
-    "min": 8518,
+    "p25": 9954,
+    "median": 11259,
+    "p75": 12959,
+    "p90": 13325,
+    "min": 7761,
     "max": 15440
    },
    "gradația 4": {
-    "n": 17,
-    "p10": 8680,
-    "p25": 9985,
-    "median": 11658,
-    "p75": 13314,
+    "n": 14,
+    "p10": 9065,
+    "p25": 9666,
+    "median": 11619,
+    "p75": 13600,
     "p90": 13695,
     "min": 7712,
     "max": 13778
@@ -393,7 +502,7 @@
    "ASISTENT SOCIAL PRINCIPAL(UPU) SUPERIOARE Gradatia": {
     "n": 6
    },
-   "UPU‐SMURD‐str.Gh.Doja nr.65 Asistent social principal ** Gra": {
+   "UPU-SMURD-str.Gh.Doja nr.65 Asistent social principal ** Gra": {
     "n": 4
    },
    "Asistent social SUPERIOARE ( S )": {
@@ -401,6 +510,9 @@
    },
    "UNITATE PRIMIRE URGENTE ASISTENT SOCIAL PRINCIPAL UPU Gradat": {
     "n": 4
+   },
+   "Centrul de San.Mintala si prev.adict. adulti(CSM) Asistent s": {
+    "n": 3
    },
    "ASISTENT SOCIAL Legea nr. 153 art. 33": {
     "n": 3
@@ -414,6 +526,9 @@
    "asistent social practicant": {
     "n": 2
    },
+   "COMPARTIMENT ASISTENTA SOCIALA Asistent social principal Gra": {
+    "n": 2
+   },
    "U.P.U. ASISTENT SOCIAL PR SS U.P.U. SUPERIOARE Gradatia 5": {
     "n": 2
    },
@@ -424,6 +539,9 @@
     "n": 2
    },
    "ASISTENT SOCIAL PR. Sectia BOLI INFECTIOASE ADULTI": {
+    "n": 2
+   },
+   "ASISTENT SOCIAL PR. UNITATE DE PRIMIRE URGENTE - SMURD": {
     "n": 2
    },
    "ASISTENT SOCIAL Asistenti sociali": {
@@ -522,31 +640,22 @@
    "218 Asistent social pr Gradatia 3 Contractual": {
     "n": 1
    },
-   "BIROU INTERNARI ‐ EXTERNARI, STR.GH.DOJA Asistent social pri": {
+   "BIROU INTERNARI - EXTERNARI, STR.GH.DOJA Asistent social pri": {
     "n": 1
    },
    "Camera de garda Psihiatrie Asistent social principal Gradati": {
     "n": 1
    },
-   "Centrul de Sanatate Mintala Adulti (CSM) Asistent social pri": {
-    "n": 1
-   },
-   "Centrul de Sanatate Mintala Copii (CSM) Asistent social prin": {
-    "n": 1
-   },
-   "COMPARTIMENT ASISTENTA SOCIALA Asistent social principal Gra": {
+   "Centrul de San.Mintala si prev.adict. copii (CSM) Asistent s": {
     "n": 1
    },
    "SECTIA CLINICA NEONATOLOGIE Asistent social principal Gradat": {
     "n": 1
    },
-   "SECTIA CLINICA OBSTETRICA GINECOLOGIE I Asistent social Grad": {
+   "SECTIA CLINICA OBSTETRICA GINECOLOGIE II Asistent social pri": {
     "n": 1
    },
-   "UPU‐SMURD‐str.Gh.Doja nr.65 Asistent social ** Gradatia 4 SU": {
-    "n": 1
-   },
-   "UPU‐SMURD‐str.Gh.Doja nr.65 Asistent social ** Gradatia 2 SU": {
+   "UPU-SMURD-str.Gh.Doja nr.65 Asistent social ** Gradatia 5 SU": {
     "n": 1
    },
    "ONCOLOGIE MEDICALA ASISTENT SOCIAL SS DEBUTANT POSTLICEALE G": {
@@ -570,13 +679,13 @@
    "ASISTENT SOCIAL PR S Gradatia 5": {
     "n": 1
    },
-   "SECTIA ONCOLOGIE MEDICALA-COMP.INGRIJIRI PALIATIVE ASISTENT ": {
+   "COMP.INGRIJIRI PALIATIVE ASISTENT SOCIAL PRINCIPAL Gradatia ": {
     "n": 1
    },
    "COMP.ASISTENTA SOCIALA SI RELIGIOASA ASISTENT SOCIAL PRINCIP": {
     "n": 1
    },
-   "UNITATE PRIMIRE URGENTE ASISTENT SOCIAL DEBUTANT UPU Gradati": {
+   "UNITATE PRIMIRE URGENTE ASISTENT SOCIAL UPU Gradatia 2": {
     "n": 1
    },
    "CSM ADULTI CU STATIONAR DE ZI ASISTENT SOCIAL Gradatia 3": {
@@ -594,13 +703,13 @@
    "ASISTENT SOCIAL PR. Sectia OBSTETRICA-GINECOLOGIE II": {
     "n": 1
    },
-   "ASISTENT SOCIAL PR. UNITATE DE PRIMIRE URGENTE - SMURD": {
+   "ASISTENT SOCIAL UNITATE DE PRIMIRE URGENTE - SMURD": {
     "n": 1
    },
    "ASISTENT SOCIAL PRACTICANT": {
     "n": 1
    },
-   "ASISTENT SOCIAL s I I": {
+   "august Asistent social ,S Gradatia 5": {
     "n": 1
    }
   }

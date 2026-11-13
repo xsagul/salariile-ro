@@ -46,251 +46,375 @@
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 3,
+  "anunturiCitite": 11,
   "cuSalariu": 0,
   "nivel": {},
   "experienta": {
    "avantaj": {
-    "n": 2,
-    "procent": 66.7
+    "n": 3,
+    "procent": 27.3
    },
    "da": {
+    "n": 3,
+    "procent": 27.3
+   },
+   "10+ ani": {
     "n": 1,
-    "procent": 33.3
+    "procent": 9.1
    }
   },
   "experientaPortal": {
    "1–5 ani": {
     "n": 2,
-    "procent": 66.7
+    "procent": 18.2
    }
   },
   "studii": {
    "superioare": {
-    "n": 2,
-    "procent": 66.7
+    "n": 4,
+    "procent": 36.4
+   },
+   "medii": {
+    "n": 1,
+    "procent": 9.1
    }
   },
   "limbi": {
    "engleza": {
     "n": 2,
-    "procent": 66.7
+    "procent": 18.2
    }
   },
   "permis": {},
   "atestate": {},
-  "program": {},
+  "program": {
+   "flexibil": {
+    "n": 2,
+    "procent": 18.2
+   },
+   "luni–vineri": {
+    "n": 1,
+    "procent": 9.1
+   }
+  },
   "mod": {},
-  "norma": {},
+  "norma": {
+   "part-time": {
+    "n": 1,
+    "procent": 9.1
+   }
+  },
   "durata": {},
-  "beneficii": {},
+  "beneficii": {
+   "cursuri / training": {
+    "n": 1,
+    "procent": 9.1
+   }
+  },
   "tehnologii": {},
   "negociabil": {},
   "strainatate": {},
   "limbaAnuntului": {
    "ro": {
-    "n": 3,
+    "n": 11,
     "procent": 100
    }
   },
   "surse": {
+   "publi24": {
+    "n": 7,
+    "procent": 63.6
+   },
    "hipo": {
     "n": 2,
-    "procent": 66.7
+    "procent": 18.2
    },
    "bestjobs": {
-    "n": 1,
-    "procent": 33.3
+    "n": 2,
+    "procent": 18.2
    }
   },
   "peJudet": {
    "RO": {
     "n": 2,
-    "procent": 66.7
+    "procent": 18.2
+   },
+   "Bucuresti": {
+    "n": 2,
+    "procent": 18.2
+   },
+   "Bihor": {
+    "n": 1,
+    "procent": 9.1
+   },
+   "Maramures": {
+    "n": 1,
+    "procent": 9.1
+   },
+   "Arges": {
+    "n": 1,
+    "procent": 9.1
+   },
+   "Galati": {
+    "n": 1,
+    "procent": 9.1
+   },
+   "Prahova": {
+    "n": 1,
+    "procent": 9.1
    }
   },
   "motiveFaraSalariu": {
    "salary_evidence_incomplete": {
-    "n": 3,
-    "procent": 100
+    "n": 10,
+    "procent": 90.9
+   },
+   "full_time_unconfirmed": {
+    "n": 8,
+    "procent": 72.7
+   },
+   "contract_or_variable_income": {
+    "n": 1,
+    "procent": 9.1
    }
   },
-  "salariuPeFactor": {}
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
-  "oferte": 6,
-  "posturi": 6,
-  "ofertePeGrupaCor": 21,
+  "oferte": 14,
+  "posturi": 14,
+  "ofertePeGrupaCor": 35,
   "tipSalariu": {
    "gross": {
-    "n": 5,
-    "procent": 83.3
+    "n": 13,
+    "procent": 92.9
    },
    "none": {
     "n": 1,
-    "procent": 16.7
+    "procent": 7.1
    }
   },
   "netMinimDeclarat": {
    "n": 0
   },
   "brutMinimDeclarat": {
-   "n": 5
+   "n": 13,
+   "p10": 4408,
+   "p25": 4740,
+   "median": 5509,
+   "p75": 5653,
+   "p90": 6122,
+   "min": 4325,
+   "max": 7714
   },
-  "laSalariulMinim": 0,
+  "laSalariulMinim": 2,
   "studii": {
    "Universitar - ÎNVĂȚĂMÂNT SUPERIOR": {
-    "n": 4,
-    "procent": 66.7
+    "n": 12,
+    "procent": 85.7
    },
    "Liceal - LICEU TEORETIC": {
     "n": 1,
-    "procent": 16.7
+    "procent": 7.1
    },
    "Universitar - MASTER": {
     "n": 1,
-    "procent": 16.7
+    "procent": 7.1
    }
   },
   "experienta": {
    "Fără experiență - 0 ani": {
-    "n": 3,
-    "procent": 50
+    "n": 6,
+    "procent": 42.9
    },
    "Experiență puțină - mai puțin de 3 ani": {
-    "n": 2,
-    "procent": 33.3
+    "n": 5,
+    "procent": 35.7
    },
    "Experiență medie - între 3 și 5 ani": {
+    "n": 2,
+    "procent": 14.3
+   },
+   "Experimentat - mai mult de 7 ani": {
     "n": 1,
-    "procent": 16.7
+    "procent": 7.1
    }
   },
   "contract": {
    "Cu durată nedeterminată": {
-    "n": 6,
-    "procent": 100
+    "n": 11,
+    "procent": 78.6
+   },
+   "Cu durată determinată": {
+    "n": 3,
+    "procent": 21.4
    }
   },
   "norma": {
    "Cu normă întreagă": {
-    "n": 6,
-    "procent": 100
+    "n": 13,
+    "procent": 92.9
+   },
+   "Cu timp parțial": {
+    "n": 1,
+    "procent": 7.1
    }
   },
   "regim": {
    "Sediu": {
-    "n": 6,
-    "procent": 100
+    "n": 13,
+    "procent": 92.9
+   },
+   "Hibrid - sediu + la domiciliu": {
+    "n": 1,
+    "procent": 7.1
    }
   },
   "judete": {
    "Hunedoara": {
-    "n": 4,
-    "procent": 66.7
+    "n": 5,
+    "procent": 35.7
+   },
+   "Mureș": {
+    "n": 3,
+    "procent": 21.4
+   },
+   "Municipiul București": {
+    "n": 2,
+    "procent": 14.3
    },
    "Dolj": {
     "n": 1,
-    "procent": 16.7
+    "procent": 7.1
    },
-   "Municipiul București": {
+   "Alba": {
     "n": 1,
-    "procent": 16.7
+    "procent": 7.1
+   },
+   "Bacău": {
+    "n": 1,
+    "procent": 7.1
+   },
+   "Prahova": {
+    "n": 1,
+    "procent": 7.1
    }
   },
   "domenii": {
    "ASISTENTA SOCIALA": {
-    "n": 4,
-    "procent": 66.7
+    "n": 9,
+    "procent": 64.3
    },
    "Medicină / Sănătate /Psihoterapie": {
-    "n": 2,
-    "procent": 33.3
+    "n": 4,
+    "procent": 28.6
+   },
+   "Altele": {
+    "n": 1,
+    "procent": 7.1
    }
   },
   "coduriCorInGrupa": {
    "263401 - PSIHOLOG ÎN SPECIALITATEA PSIHOLOGIE CLINICA": {
-    "n": 6,
-    "procent": 28.6
+    "n": 14,
+    "procent": 40
    },
    "263411 - PSIHOLOG": {
-    "n": 4,
-    "procent": 19
+    "n": 7,
+    "procent": 20
    },
    "263419 - TERAPEUT OCUPATIONAL": {
-    "n": 4,
-    "procent": 19
+    "n": 5,
+    "procent": 14.3
    },
    "263408 - PSIHOLOG ÎN SPECIALITATEA PSIHOPEDAGOGIE SPECIALA": {
     "n": 3,
-    "procent": 14.3
+    "procent": 8.6
    },
    "263412 - PSIHOPEDAGOG": {
-    "n": 1,
-    "procent": 4.8
+    "n": 2,
+    "procent": 5.7
+   },
+   "263403 - PSIHOLOG ÎN SPECIALITATEA PSIHOTERAPIE": {
+    "n": 2,
+    "procent": 5.7
    },
    "263407 - PSIHOLOG ÎN SPECIALITATEA PSIHOLOGIE EDUCATIONALA, CONSILIERE SCOLARA SI VOCATIONALA": {
     "n": 1,
-    "procent": 4.8
-   },
-   "263403 - PSIHOLOG ÎN SPECIALITATEA PSIHOTERAPIE": {
-    "n": 1,
-    "procent": 4.8
+    "procent": 2.9
    },
    "263402 - PSIHOLOG ÎN SPECIALITATEA CONSILIERE PSIHOLOGICA": {
     "n": 1,
-    "procent": 4.8
+    "procent": 2.9
    }
   }
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
-  "posturi": 139,
-  "institutii": 22,
-  "posturiDinSurseDeVerificat": 4,
+  "posturi": 140,
+  "institutii": 24,
+  "posturiDinSurseDeVerificat": 6,
   "judete": {
    "BV": {
     "n": 17,
-    "procent": 12.2
+    "procent": 12.1
    },
    "BH": {
-    "n": 15,
-    "procent": 10.8
+    "n": 16,
+    "procent": 11.4
    },
    "CJ": {
-    "n": 14,
-    "procent": 10.1
+    "n": 15,
+    "procent": 10.7
    },
    "CT": {
     "n": 13,
-    "procent": 9.4
+    "procent": 9.3
    },
    "BC": {
-    "n": 11,
-    "procent": 7.9
+    "n": 12,
+    "procent": 8.6
    },
    "HR": {
     "n": 11,
     "procent": 7.9
    },
-   "B": {
-    "n": 10,
-    "procent": 7.2
-   },
    "TM": {
     "n": 10,
-    "procent": 7.2
+    "procent": 7.1
    },
    "SV": {
     "n": 9,
-    "procent": 6.5
+    "procent": 6.4
    },
-   "AB": {
-    "n": 6,
-    "procent": 4.3
+   "B": {
+    "n": 7,
+    "procent": 5
+   },
+   "BR": {
+    "n": 5,
+    "procent": 3.6
    },
    "SB": {
+    "n": 5,
+    "procent": 3.6
+   },
+   "AB": {
     "n": 5,
     "procent": 3.6
    },
@@ -298,13 +422,9 @@
     "n": 5,
     "procent": 3.6
    },
-   "BR": {
+   "MS": {
     "n": 4,
     "procent": 2.9
-   },
-   "MS": {
-    "n": 3,
-    "procent": 2.2
    },
    "IS": {
     "n": 2,
@@ -326,59 +446,75 @@
   "tipInstitutie": {
    "spital": {
     "n": 123,
-    "procent": 88.5
+    "procent": 87.9
    },
    "dgaspc": {
-    "n": 11,
-    "procent": 7.9
+    "n": 10,
+    "procent": 7.1
    },
    "universitate": {
     "n": 4,
     "procent": 2.9
    },
    "dsp": {
+    "n": 2,
+    "procent": 1.4
+   },
+   "instanta": {
     "n": 1,
     "procent": 0.7
    }
   },
   "perioade": {
+   "2026-09": {
+    "n": 60,
+    "procent": 42.9
+   },
    "2026-03": {
-    "n": 105,
-    "procent": 75.5
+    "n": 45,
+    "procent": 32.1
    },
    "2025-03": {
     "n": 14,
-    "procent": 10.1
+    "procent": 10
    },
-   "2026-02": {
-    "n": 13,
-    "procent": 9.4
+   "2025-09": {
+    "n": 12,
+    "procent": 8.6
    },
    "2022-09": {
     "n": 5,
     "procent": 3.6
    },
-   "2026-09": {
+   "2026-02": {
+    "n": 2,
+    "procent": 1.4
+   },
+   "2024-03": {
     "n": 1,
     "procent": 0.7
    },
-   "2024-03": {
+   "2026-10": {
     "n": 1,
     "procent": 0.7
    }
   },
   "studii": {
    "S": {
-    "n": 67,
-    "procent": 48.2
+    "n": 66,
+    "procent": 47.1
    },
    "M": {
+    "n": 1,
+    "procent": 0.7
+   },
+   "G": {
     "n": 1,
     "procent": 0.7
    }
   },
   "bazaBruta": {
-   "n": 139,
+   "n": 140,
    "p10": 6667,
    "p25": 7715,
    "median": 9169,
@@ -388,48 +524,48 @@
    "max": 11116
   },
   "bazaCuSporuriFixe": {
-   "n": 139,
-   "p10": 7151,
-   "p25": 8831,
-   "median": 10793,
-   "p75": 12383,
-   "p90": 12876,
+   "n": 140,
+   "p10": 7200,
+   "p25": 8779,
+   "median": 10778,
+   "p75": 12084,
+   "p90": 12799,
    "min": 3712,
    "max": 15947
   },
   "peGradatie": {
    "gradația 5": {
-    "n": 48,
-    "p10": 9306,
-    "p25": 10577,
-    "median": 11839,
-    "p75": 12849,
-    "p90": 13175,
-    "min": 5436,
+    "n": 51,
+    "p10": 9472,
+    "p25": 10343,
+    "median": 12015,
+    "p75": 12798,
+    "p90": 13239,
+    "min": 7726,
     "max": 15947
    },
    "gradația 4": {
-    "n": 14,
-    "p10": 8410,
-    "p25": 9961,
-    "median": 11806,
-    "p75": 12434,
-    "p90": 12869,
-    "min": 7914,
-    "max": 13434
+    "n": 13,
+    "p10": 7998,
+    "p25": 8586,
+    "median": 11137,
+    "p75": 12077,
+    "p90": 12673,
+    "min": 7743,
+    "max": 12933
    },
    "gradația 3": {
-    "n": 10,
-    "p10": 7892,
-    "p25": 8414,
-    "median": 8865,
-    "p75": 9740,
-    "p90": 10662,
+    "n": 11,
+    "p10": 7920,
+    "p25": 8483,
+    "median": 8790,
+    "p75": 9498,
+    "p90": 10654,
     "min": 7637,
     "max": 10735
    },
    "gradația 2": {
-    "n": 8
+    "n": 7
    },
    "gradația 1": {
     "n": 2
@@ -449,17 +585,14 @@
     "min": 10161,
     "max": 13987
    },
-   "psiholog principal": {
-    "n": 7
+   "Psiholog principal Gradatia 5": {
+    "n": 8
    },
-   "Psiholog principal Gradatia": {
+   "psiholog principal": {
     "n": 7
    },
    "PSIHOLOG PRACTICANT SUPERIOARE Gradatia": {
     "n": 5
-   },
-   "psiholog specialist": {
-    "n": 4
    },
    "psiholog practicant SUPERIOARE Legea nr.153 art.33 Gradatia ": {
     "n": 4
@@ -470,13 +603,13 @@
    "PSIHOLOG PR. CENTRU DE SANATATE MINTALA (CSM)": {
     "n": 4
    },
+   "psiholog specialist": {
+    "n": 3
+   },
    "Psiholog specialist SUPERIOARE ( S )": {
     "n": 3
    },
    "PSIHOLOG PRACTICANT Legea nr. 153 art. 33": {
-    "n": 3
-   },
-   "Psiholog specialist Gradatia": {
     "n": 3
    },
    "psiholog practicant": {
@@ -485,10 +618,10 @@
    "Psiholog practicant": {
     "n": 2
    },
-   "Centrul de Sanatate Mintala Adulti (CSM) Psiholog principal ": {
+   "Centrul de San.Mintala si prev.adict. adulti(CSM) Psiholog p": {
     "n": 2
    },
-   "Centrul de Sanatate Mintala Copii (CSM) Psiholog principal G": {
+   "Centrul de San.Mintala si prev.adict. copii (CSM) Psiholog p": {
     "n": 2
    },
    "psiholog principal SUPERIOARE Legea nr.153 art.33 Gradatia 5": {
@@ -498,6 +631,9 @@
     "n": 2
    },
    "PSIHOLOG SPECIALIST Gradatia 5": {
+    "n": 2
+   },
+   "Psiholog specialist Gradatia 5": {
     "n": 2
    },
    "SECTIA PSIHIATRIE ACUTI PSIHOLOG SPECIALIST Gradatia 5": {
@@ -514,6 +650,9 @@
    },
    "PSIHOLOG SPECIALIST SUPERIOARE Gradatia": {
     "n": 2
+   },
+   "Psiholog – consilier S gradul IA": {
+    "n": 1
    },
    "PSIHOLOG principal S": {
     "n": 1
@@ -536,22 +675,25 @@
    "PSIHOLOG stagiar/debutant S": {
     "n": 1
    },
+   "Psiholog practicant, gradația 5": {
+    "n": 1
+   },
    "231 Psiholog Principal Gradatia 5 Contractual": {
     "n": 1
    },
    "233 Psiholog Gradatia 4 Contractual": {
     "n": 1
    },
-   "AMBULATORIUL INTEGRAT‐str.C.Coposu nr.12 Psiholog principal ": {
+   "AMBULATORIUL INTEGRAT-str.Republicii nr.37 Psiholog practica": {
     "n": 1
    },
-   "BIROU INTERNARI ‐ EXTERNARI, STR.GH.DOJA Psiholog practicant": {
+   "Compartiment ARSI Psiholog practicant Gradatia 2 SUPERIOARE ": {
     "n": 1
    },
-   "Compartiment UAVCA Psiholog specialist Gradatia 2 SUPERIOARE": {
+   "Compartiment UAVCA Psiholog stagiar Gradatia 3 SUPERIOARE Pe": {
     "n": 1
    },
-   "SECTIA CLINICA ATI I Psiholog practicant Gradatia 2 SUPERIOA": {
+   "SECTIA CLINICA ATI I Psiholog specialist Gradatia 2 SUPERIOA": {
     "n": 1
    },
    "SECTIA CLINICA NEONATOLOGIE Psiholog specialist Gradatia 5 S": {
@@ -563,13 +705,16 @@
    "SECTIA CLINICA PEDIATRIE II Psiholog principal Gradatia 5 SU": {
     "n": 1
    },
-   "SECTIA CLINICA PSIHIATRIE I Psiholog principal Gradatia 5 SU": {
+   "SECTIA CLINICA PSIHIATRIE I Psiholog stagiar BAZA SUPERIOARE": {
     "n": 1
    },
    "SECTIA CLINICA PSIHIATRIE II Psiholog principal Gradatia 5 S": {
     "n": 1
    },
-   "SECTIA CLINICA PSIHIATRIE III Psiholog principal Gradatia 4 ": {
+   "SECTIA CLINICA PSIHIATRIE III Psiholog principal Gradatia 5 ": {
+    "n": 1
+   },
+   "SECTIA INGRIJIRI PALEATIVE Psiholog practicant Gradatia 2 SU": {
     "n": 1
    },
    "SECTIE RECUPERARE NEUROLOGICA Psiholog principal Gradatia 4 ": {
@@ -626,22 +771,28 @@
    "PSIHOLOG SPECIALIST Gradatia 3": {
     "n": 1
    },
-   "Psiholog practicant Gradatia": {
+   "Psiholog practicant Gradatia 5": {
     "n": 1
    },
-   "Psiholog principal (Gradatia": {
+   "Psiholog principal Gradatia 4": {
     "n": 1
    },
-   "SECTIA ONCOLOGIE MEDICALA-COMP.INGRIJIRI PALIATIVE PSIHOLOG ": {
+   "Psiholog specialist Gradatia 4": {
     "n": 1
    },
-   "CABINET MEDICINA MUNCII PSIHOLOG PRACTICANT Gradatia 2": {
+   "COMP.INGRIJIRI PALIATIVE PSIHOLOG PRINCIPAL Gradatia 5": {
     "n": 1
    },
    "CSM COPII PSIHOLOG PRINCIPAL Gradatia 5": {
     "n": 1
    },
    "CSM COPII PSIHOLOG SPECIALIST Gradatia 5": {
+    "n": 1
+   },
+   "PSIHOLOG PR. Cabinet PSIHOLOGIE - copii": {
+    "n": 1
+   },
+   "PSIHOLOG PRACTICANT CENTRU DE SANATATE MINTALA (CSM)": {
     "n": 1
    },
    "PSIHOLOG PR. CENTRUL DE HEMODIALIZA": {
@@ -651,9 +802,6 @@
     "n": 1
    },
    "PSIHOLOG PR. Sectia BOLI INFECTIOASE ADULTI": {
-    "n": 1
-   },
-   "PSIHOLOG STAGIAR SECTIA INGRIJIRI PALIATIVE": {
     "n": 1
    },
    "PSIHOLOG PR. Sectia ONCOLOGIE MEDICALA": {
@@ -680,13 +828,7 @@
    "PSIHOLOG PRACTICANT MEDII Gradatia": {
     "n": 1
    },
-   "89 PSIHOLOG SPECIALIST s I SPECIALISl": {
-    "n": 1
-   },
-   "PSIHOLOG PRINCIPAL s I PRINCIPAL": {
-    "n": 1
-   },
-   "PSIHOLOG SPECIALIST s I SPECIALIS'I": {
+   "PSIHOLOG SPECIALIST Gradatia 4 Sporurile din anexele 1, 2,3,": {
     "n": 1
    },
    "Psiholog practicant-0,5 n": {

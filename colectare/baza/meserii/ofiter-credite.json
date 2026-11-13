@@ -4,23 +4,23 @@
  "cor": "241230",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
-  "cuSalariu": 2,
+  "cuSalariu": 4,
   "cuBazaDeclarata": 0,
-  "faraBazaDeclarata": 2,
+  "faraBazaDeclarata": 4,
   "surse": {
    "bestjobs": {
-    "n": 2,
+    "n": 4,
     "procent": 100
    }
   },
   "colectari": {
    "continuă": {
-    "n": 1,
-    "procent": 50
+    "n": 3,
+    "procent": 75
    },
    "8 septembrie 2026": {
     "n": 1,
-    "procent": 50
+    "procent": 25
    }
   },
   "net": {
@@ -33,34 +33,43 @@
    "n": 0
   },
   "faraBazaDeclarata_valori": {
-   "n": 2
+   "n": 4
   },
   "peOras": {},
   "peJudet": {},
   "peLuna": {
    "2026-09": {
     "n": 2,
-    "procent": 100
+    "procent": 50
+   },
+   "2026-10": {
+    "n": 2,
+    "procent": 50
    }
   }
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 1,
+  "anunturiCitite": 7,
   "cuSalariu": 0,
   "nivel": {},
-  "experienta": {},
+  "experienta": {
+   "da": {
+    "n": 4,
+    "procent": 57.1
+   }
+  },
   "experientaPortal": {},
   "studii": {
    "superioare": {
-    "n": 1,
-    "procent": 100
+    "n": 5,
+    "procent": 71.4
    }
   },
   "limbi": {},
   "permis": {
    "B": {
-    "n": 1,
+    "n": 7,
     "procent": 100
    }
   },
@@ -69,31 +78,75 @@
   "mod": {},
   "norma": {},
   "durata": {},
-  "beneficii": {},
+  "beneficii": {
+   "tichete de masă": {
+    "n": 4,
+    "procent": 57.1
+   },
+   "asigurare medicală": {
+    "n": 4,
+    "procent": 57.1
+   },
+   "cursuri / training": {
+    "n": 2,
+    "procent": 28.6
+   },
+   "telefon / laptop": {
+    "n": 2,
+    "procent": 28.6
+   },
+   "bonus": {
+    "n": 2,
+    "procent": 28.6
+   }
+  },
   "tehnologii": {},
   "negociabil": {},
   "strainatate": {},
   "limbaAnuntului": {
    "ro": {
-    "n": 1,
+    "n": 7,
     "procent": 100
    }
   },
   "surse": {
    "bestjobs": {
-    "n": 1,
+    "n": 7,
     "procent": 100
    }
   },
   "peJudet": {},
-  "motiveFaraSalariu": {},
-  "salariuPeFactor": {}
+  "motiveFaraSalariu": {
+   "full_time_unconfirmed": {
+    "n": 3,
+    "procent": 75
+   },
+   "salary_evidence_incomplete": {
+    "n": 2,
+    "procent": 50
+   }
+  },
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
   "oferte": 1,
   "posturi": 2,
-  "ofertePeGrupaCor": 32,
+  "ofertePeGrupaCor": 40,
   "tipSalariu": {
    "none": {
     "n": 1,
@@ -151,48 +204,60 @@
   },
   "coduriCorInGrupa": {
    "241206 - INSPECTOR ASIGURARI": {
-    "n": 10,
-    "procent": 31.3
+    "n": 11,
+    "procent": 27.5
    },
    "241245 - CONSILIER VÂNZARI ASIGURARI": {
     "n": 9,
-    "procent": 28.1
+    "procent": 22.5
    },
    "241246 - INSPECTOR COORDONATOR ASIGURARI": {
     "n": 4,
-    "procent": 12.5
+    "procent": 10
    },
    "241226 - MANAGER DE OPERATIUNI/PRODUS": {
+    "n": 3,
+    "procent": 7.5
+   },
+   "241255 - PLANIFICATOR/SPECIALIST PLAN SINTEZE": {
+    "n": 3,
+    "procent": 7.5
+   },
+   "241241 - ANALIST CREDITE": {
     "n": 2,
-    "procent": 6.3
+    "procent": 5
    },
    "241257 - EXPERT CONTRACTARE ACTIVITATI INVESTITIONALE": {
     "n": 1,
-    "procent": 3.1
+    "procent": 2.5
    },
    "241231 - ADMINISTRATOR BANCAR/PRODUS LEASING": {
     "n": 1,
-    "procent": 3.1
+    "procent": 2.5
    },
    "241209 - DEALER": {
     "n": 1,
-    "procent": 3.1
+    "procent": 2.5
    },
    "241211 - ANALIST INVESTITII": {
     "n": 1,
-    "procent": 3.1
+    "procent": 2.5
    },
    "241230 - OFITER BANCAR (CREDITE, MARKETING, PRODUSE SI SERVICII BANCARE)": {
     "n": 1,
-    "procent": 3.1
-   },
-   "241255 - PLANIFICATOR/SPECIALIST PLAN SINTEZE": {
-    "n": 1,
-    "procent": 3.1
+    "procent": 2.5
    },
    "241239 - OFITER SECURITATEA INFORMATIEI (SECURITY OFFICER – SO)": {
     "n": 1,
-    "procent": 3.1
+    "procent": 2.5
+   },
+   "241228 - TREZORIER (STUDII SUPERIOARE)": {
+    "n": 1,
+    "procent": 2.5
+   },
+   "241224 - ECONOMIST BANCA": {
+    "n": 1,
+    "procent": 2.5
    }
   }
  },

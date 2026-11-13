@@ -27,28 +27,46 @@
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 1,
+  "anunturiCitite": 3,
   "cuSalariu": 0,
-  "nivel": {},
+  "nivel": {
+   "senior": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
   "experienta": {
    "5+ ani": {
     "n": 1,
-    "procent": 100
+    "procent": 33.3
+   },
+   "10+ ani": {
+    "n": 1,
+    "procent": 33.3
+   },
+   "da": {
+    "n": 1,
+    "procent": 33.3
    }
   },
   "experientaPortal": {},
-  "studii": {},
+  "studii": {
+   "superioare": {
+    "n": 2,
+    "procent": 66.7
+   }
+  },
   "limbi": {
    "engleza": {
-    "n": 1,
-    "procent": 100
+    "n": 2,
+    "procent": 66.7
    }
   },
   "permis": {},
   "atestate": {
    "ANRE": {
     "n": 1,
-    "procent": 100
+    "procent": 33.3
    }
   },
   "program": {},
@@ -59,144 +77,207 @@
   "tehnologii": {
    "SAP": {
     "n": 1,
-    "procent": 100
+    "procent": 33.3
+   },
+   "Excel": {
+    "n": 1,
+    "procent": 33.3
    }
   },
   "negociabil": {},
   "strainatate": {},
   "limbaAnuntului": {
    "ro": {
-    "n": 1,
+    "n": 3,
     "procent": 100
    }
   },
   "surse": {
    "bestjobs": {
-    "n": 1,
-    "procent": 100
-   }
-  },
-  "peJudet": {},
-  "motiveFaraSalariu": {
-   "salary_evidence_incomplete": {
-    "n": 1,
-    "procent": 100
-   }
-  },
-  "salariuPeFactor": {}
- },
- "anofm": {
-  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
-  "oferte": 3,
-  "posturi": 6,
-  "ofertePeGrupaCor": 67,
-  "tipSalariu": {
-   "gross": {
     "n": 2,
     "procent": 66.7
    },
-   "net": {
+   "hipo": {
     "n": 1,
     "procent": 33.3
+   }
+  },
+  "peJudet": {
+   "RO": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
+  "motiveFaraSalariu": {
+   "salary_evidence_incomplete": {
+    "n": 3,
+    "procent": 100
+   },
+   "full_time_unconfirmed": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
+ },
+ "anofm": {
+  "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
+  "oferte": 5,
+  "posturi": 9,
+  "ofertePeGrupaCor": 123,
+  "tipSalariu": {
+   "gross": {
+    "n": 4,
+    "procent": 80
+   },
+   "net": {
+    "n": 1,
+    "procent": 20
    }
   },
   "netMinimDeclarat": {
    "n": 1
   },
   "brutMinimDeclarat": {
-   "n": 2
+   "n": 4
   },
-  "laSalariulMinim": 0,
+  "laSalariulMinim": 1,
   "studii": {
-   "Liceal - LICEU TEORETIC": {
-    "n": 1,
-    "procent": 33.3
-   },
    "Universitar - MASTER": {
-    "n": 1,
-    "procent": 33.3
+    "n": 2,
+    "procent": 40
    },
    "Universitar - ÎNVĂȚĂMÂNT SUPERIOR": {
+    "n": 2,
+    "procent": 40
+   },
+   "Liceal - LICEU TEORETIC": {
     "n": 1,
-    "procent": 33.3
+    "procent": 20
    }
   },
   "experienta": {
+   "Fără experiență - 0 ani": {
+    "n": 2,
+    "procent": 40
+   },
    "Experiență medie - între 3 și 5 ani": {
     "n": 2,
-    "procent": 66.7
+    "procent": 40
    },
-   "Fără experiență - 0 ani": {
+   "Avansat - între 5 și 7 ani": {
     "n": 1,
-    "procent": 33.3
+    "procent": 20
    }
   },
   "contract": {
    "Cu durată nedeterminată": {
-    "n": 3,
+    "n": 5,
     "procent": 100
    }
   },
   "norma": {
    "Cu normă întreagă": {
-    "n": 3,
+    "n": 5,
     "procent": 100
    }
   },
   "regim": {
    "Sediu": {
-    "n": 3,
-    "procent": 100
+    "n": 4,
+    "procent": 80
+   },
+   "Hibrid - sediu + telemuncă": {
+    "n": 1,
+    "procent": 20
    }
   },
   "judete": {
    "Municipiul București": {
-    "n": 2,
-    "procent": 66.7
+    "n": 3,
+    "procent": 60
    },
    "Hunedoara": {
     "n": 1,
-    "procent": 33.3
+    "procent": 20
+   },
+   "Mureș": {
+    "n": 1,
+    "procent": 20
    }
   },
   "domenii": {
+   "Management": {
+    "n": 2,
+    "procent": 40
+   },
    "Altele": {
     "n": 1,
-    "procent": 33.3
+    "procent": 20
    },
    "COMERT": {
     "n": 1,
-    "procent": 33.3
+    "procent": 20
    },
    "Construcții / Instalații": {
     "n": 1,
-    "procent": 33.3
+    "procent": 20
    }
   },
   "coduriCorInGrupa": {
    "263102 - CONSILIER/EXPERT/INSPECTOR/REFERENT/ECONOMIST ÎN ECONOMIE GENERALA": {
-    "n": 42,
-    "procent": 62.7
+    "n": 78,
+    "procent": 63.4
    },
    "263106 - CONSILIER/EXPERT/INSPECTOR/REFERENT/ECONOMIST ÎN GESTIUNEA ECONOMICA": {
-    "n": 13,
-    "procent": 19.4
+    "n": 25,
+    "procent": 20.3
    },
    "263101 - CONSILIER/EXPERT/INSPECTOR/REFERENT/ECONOMIST ÎN MANAGEMENT": {
-    "n": 6,
-    "procent": 9
+    "n": 8,
+    "procent": 6.5
    },
    "263107 - CONSULTANT ÎN MANAGEMENT": {
-    "n": 3,
-    "procent": 4.5
+    "n": 5,
+    "procent": 4.1
    },
    "263104 - CONSILIER/EXPERT/INSPECTOR/REFERENT/ECONOMIST ÎN COMERT SI MARKETING": {
     "n": 2,
-    "procent": 3
+    "procent": 1.6
    },
    "263120 - CERCETATOR ECONOMIST ÎN MARKETING": {
     "n": 1,
-    "procent": 1.5
+    "procent": 0.8
+   },
+   "263109 - INGINER ECONOMIST": {
+    "n": 1,
+    "procent": 0.8
+   },
+   "263108 - TEHNICIAN ECONOMIST": {
+    "n": 1,
+    "procent": 0.8
+   },
+   "263111 - ADMINISTRATOR FINANCIAR (PATRIMONIU) (STUDII SUPERIOARE)": {
+    "n": 1,
+    "procent": 0.8
+   },
+   "263105 - CONSILIER/EXPERT/INSPECTOR/REFERENT/ECONOMIST ÎN RELATII ECONOMICE INTERNATIONALE": {
+    "n": 1,
+    "procent": 0.8
    }
   }
  },

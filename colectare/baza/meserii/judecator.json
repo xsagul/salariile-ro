@@ -48,7 +48,21 @@
   "surse": {},
   "peJudet": {},
   "motiveFaraSalariu": {},
-  "salariuPeFactor": {}
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
@@ -74,21 +88,349 @@
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
-  "posturi": 0,
-  "institutii": 0,
+  "posturi": 119,
+  "institutii": 9,
   "posturiDinSurseDeVerificat": 0,
-  "judete": {},
-  "tipInstitutie": {},
-  "perioade": {},
-  "studii": {},
+  "judete": {
+   "MM": {
+    "n": 34,
+    "procent": 28.6
+   },
+   "MS": {
+    "n": 30,
+    "procent": 25.2
+   },
+   "AG": {
+    "n": 20,
+    "procent": 16.8
+   },
+   "SJ": {
+    "n": 10,
+    "procent": 8.4
+   },
+   "VS": {
+    "n": 8,
+    "procent": 6.7
+   },
+   "BC": {
+    "n": 6,
+    "procent": 5
+   },
+   "HR": {
+    "n": 6,
+    "procent": 5
+   },
+   "BT": {
+    "n": 5,
+    "procent": 4.2
+   }
+  },
+  "tipInstitutie": {
+   "instanta": {
+    "n": 119,
+    "procent": 100
+   }
+  },
+  "perioade": {
+   "2026-03": {
+    "n": 119,
+    "procent": 100
+   }
+  },
+  "studii": {
+   "S": {
+    "n": 79,
+    "procent": 66.4
+   }
+  },
   "bazaBruta": {
-   "n": 0
+   "n": 119,
+   "p10": 14810,
+   "p25": 16061,
+   "median": 18923,
+   "p75": 23601,
+   "p90": 25721,
+   "min": 9191,
+   "max": 26753
   },
   "bazaCuSporuriFixe": {
-   "n": 0
+   "n": 119,
+   "p10": 19254,
+   "p25": 20763,
+   "median": 24599,
+   "p75": 30729,
+   "p90": 33437,
+   "min": 11949,
+   "max": 38581
   },
-  "peGradatie": {},
-  "peFunctie": {}
+  "peGradatie": {
+   "gradația 5": {
+    "n": 33,
+    "p10": 21245,
+    "p25": 26557,
+    "median": 29505,
+    "p75": 33437,
+    "p90": 33437,
+    "min": 21245,
+    "max": 38581
+   },
+   "gradația 4": {
+    "n": 21,
+    "p10": 20581,
+    "p25": 20581,
+    "median": 27440,
+    "p75": 31097,
+    "p90": 32394,
+    "min": 13719,
+    "max": 34779
+   },
+   "gradația 3": {
+    "n": 14,
+    "p10": 19917,
+    "p25": 19917,
+    "median": 23404,
+    "p75": 26479,
+    "p90": 27293,
+    "min": 13277,
+    "max": 30096
+   },
+   "gradația 2": {
+    "n": 7
+   },
+   "gradația 1": {
+    "n": 3
+   },
+   "gradația 0": {
+    "n": 1
+   }
+  },
+  "peFunctie": {
+   "JUDECĂTOR JUDECĂTORIE 0-3": {
+    "n": 9
+   },
+   "Judecätor func ie": {
+    "n": 5
+   },
+   "Judecator magistrat S tribunal 5-10 ani": {
+    "n": 4
+   },
+   "Judecător S grad Tribunal 10-15 ani": {
+    "n": 4
+   },
+   "judecător judecator curte de apel între 10-15 ani": {
+    "n": 3
+   },
+   "JUDECĂTOR CURTE DE APEL 15-20": {
+    "n": 3
+   },
+   "JUDECĂTOR TRIBUNAL 10-15": {
+    "n": 3
+   },
+   "Judecator magistrat S tribunal 10-15 ani": {
+    "n": 3
+   },
+   "Judecator magistrat S judecatorie 3-5 ani": {
+    "n": 3
+   },
+   "Judecător S grad Judecătorie 5-10 ani": {
+    "n": 3
+   },
+   "Judecător S grad Judecătorie 3-5 ani": {
+    "n": 3
+   },
+   "Judecător S grad Judecătorie 0-3 ani": {
+    "n": 3
+   },
+   "judecător judecator curte de apel între 15-20 ani": {
+    "n": 2
+   },
+   "Judecător S grad curte de apel - 20 ani": {
+    "n": 2
+   },
+   "Judecător S grad curte de apel - 15 ani": {
+    "n": 2
+   },
+   "JUDECĂTOR TRIBUNAL 5-10": {
+    "n": 2
+   },
+   "JUDECĂTOR JUDECĂTORIE 5-10": {
+    "n": 2
+   },
+   "Judecätor s grad tribunal 10-15 ani": {
+    "n": 2
+   },
+   "Judecator magistrat S curte de apel": {
+    "n": 2
+   },
+   "Judecator magistrat S": {
+    "n": 2
+   },
+   "Judecător S grad Curte 15-20 ani": {
+    "n": 2
+   },
+   "Judecător S stagiar 0-3 ani": {
+    "n": 2
+   },
+   "judecător judecator curte de apel peste 20 ani": {
+    "n": 1
+   },
+   "Judecător S grad curte de apel peste 20 ani": {
+    "n": 1
+   },
+   "JUDECĂTOR TRIBUNAL 15-20": {
+    "n": 1
+   },
+   "Judecätor s grad curte apel 15-20 ani": {
+    "n": 1
+   },
+   "Judecätor Judecätor S grad tribunal peste": {
+    "n": 1
+   },
+   "Judecätor s grad tribunat 10-15 ani": {
+    "n": 1
+   },
+   "Judecätor s grad tribunal 5-10 ani": {
+    "n": 1
+   },
+   "Judecätor in fun ie tribunal 15-20 ani vechime": {
+    "n": 1
+   },
+   "Judecåtor vechime in judecåtorie func ie 0-3 ani incadrare a": {
+    "n": 1
+   },
+   "Judecåtor Judecåtor vcchime in judecåtorie fun ie 0-3 ani a ": {
+    "n": 1
+   },
+   "Judecåtor vechime in judecåtorie fun ie 0-3 ani": {
+    "n": 1
+   },
+   "Judecåtor fun ie stagiar 0-3 ani vechime in": {
+    "n": 1
+   },
+   "Judecåtor functie stagiar ani vechime in": {
+    "n": 1
+   },
+   "Judecator magistrat S curte de apel peste 15-20 ani ani": {
+    "n": 1
+   },
+   "Judecator magistrat S curte de apel 15-20 ani": {
+    "n": 1
+   },
+   "Judecator magistrat S tribunal 15-20 5-10 ani ani": {
+    "n": 1
+   },
+   "Judecator magistrat S tribunal peste ani": {
+    "n": 1
+   },
+   "Judecator Judecator magistrat S judecatorie 0-3 ani": {
+    "n": 1
+   },
+   "Judecator Judecator magistrat S judecatorie 15-20 ani": {
+    "n": 1
+   },
+   "Judecator magistrat S judecatorie judecatorie 0-3 0-3 ani an": {
+    "n": 1
+   },
+   "Judecator magistrat S judecatorie 0-3 ani": {
+    "n": 1
+   },
+   "Judecator magistrat S judecatorie judecatorie 5-10 5-10 ani ": {
+    "n": 1
+   },
+   "Judecator magistrat S judecatorie": {
+    "n": 1
+   },
+   "Judecator magistrat S judecatorie 0-3 3-5 ani ani": {
+    "n": 1
+   },
+   "Judecator Judecator magistrat S judecatorie 5-10 ani": {
+    "n": 1
+   },
+   "Judecator Asistent magistrat S stagiar 0-3 ani": {
+    "n": 1
+   },
+   "Judecator magistrat S curte de apel 15-20 5-10 ani": {
+    "n": 1
+   },
+   "Judecator magistrat S curte de apel ani": {
+    "n": 1
+   },
+   "Judecator magistrat S 15-20 ani": {
+    "n": 1
+   },
+   "Judecator magistrat S judecatorie judecatorie 5-10 ani": {
+    "n": 1
+   },
+   "Judecator magistrat S judecatorie 5-10 0-3 ani ani": {
+    "n": 1
+   },
+   "Judecator magistrat S stagiar": {
+    "n": 1
+   },
+   "Judecator magistrat S judecatorie 0-3 0-3 ani ani": {
+    "n": 1
+   },
+   "Judecător S grad Curte peste 20 ani": {
+    "n": 1
+   },
+   "Judecător S grad Curte 10-15 ani": {
+    "n": 1
+   },
+   "Judecător S grad Tribunal peste 20 ani": {
+    "n": 1
+   },
+   "Judecător S grad Tribunal 15-20 ani": {
+    "n": 1
+   },
+   "Judecător S grad Tribunal 5-10 ani": {
+    "n": 1
+   },
+   "Judecător S grad Judecătorie peste 20 ani": {
+    "n": 1
+   },
+   "Judecător S grad Judecătorie 15-20 ani": {
+    "n": 1
+   },
+   "Judecător S grad Judecătorie 10-15 ani": {
+    "n": 1
+   },
+   "Judecätor s grad curte de apel 10-15 ani": {
+    "n": 1
+   },
+   "Judecätor s rad tribunal 10-15 ani": {
+    "n": 1
+   },
+   "Judecätor s rad tribunal 5-10 ani": {
+    "n": 1
+   },
+   "Judecätor s grad •udecätorie 5-10 ani": {
+    "n": 1
+   },
+   "Judecätor s grad 'udecätorie 5-10 ani": {
+    "n": 1
+   },
+   "Judecätor s grad •udecätorie 0-3 ani": {
+    "n": 1
+   },
+   "Judecätor s sta iar 0-3 ani": {
+    "n": 1
+   },
+   "Judecätor S sta jar 0-3 ani": {
+    "n": 1
+   },
+   "Judecätor s stagiar 0-3 ani": {
+    "n": 1
+   },
+   "Judecätor in fun ie": {
+    "n": 1
+   },
+   "*Judecätor func ie": {
+    "n": 1
+   },
+   "Judecätor fun ie": {
+    "n": 1
+   }
+  }
  },
  "angajatori": {
   "descriere": "Salariul publicat de angajator pe site-ul lui de cariere, pe post și oraș (lei pe lună; baza cum o scrie angajatorul).",

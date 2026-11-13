@@ -27,10 +27,15 @@
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 0,
+  "anunturiCitite": 4,
   "cuSalariu": 0,
   "nivel": {},
-  "experienta": {},
+  "experienta": {
+   "17+ ani": {
+    "n": 1,
+    "procent": 25
+   }
+  },
   "experientaPortal": {},
   "studii": {},
   "limbi": {},
@@ -44,11 +49,69 @@
   "tehnologii": {},
   "negociabil": {},
   "strainatate": {},
-  "limbaAnuntului": {},
-  "surse": {},
-  "peJudet": {},
-  "motiveFaraSalariu": {},
-  "salariuPeFactor": {}
+  "limbaAnuntului": {
+   "ro": {
+    "n": 4,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "publi24": {
+    "n": 4,
+    "procent": 100
+   }
+  },
+  "peJudet": {
+   "Cluj": {
+    "n": 1,
+    "procent": 25
+   },
+   "Brasov": {
+    "n": 1,
+    "procent": 25
+   },
+   "Bihor": {
+    "n": 1,
+    "procent": 25
+   },
+   "Bucuresti": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "motiveFaraSalariu": {
+   "full_time_unconfirmed": {
+    "n": 4,
+    "procent": 100
+   },
+   "salary_evidence_incomplete": {
+    "n": 4,
+    "procent": 100
+   },
+   "foreign_or_noncomparable_work": {
+    "n": 1,
+    "procent": 25
+   },
+   "contract_or_variable_income": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",

@@ -4,18 +4,22 @@
  "cor": "421201",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
-  "cuSalariu": 1,
+  "cuSalariu": 2,
   "cuBazaDeclarata": 0,
-  "faraBazaDeclarata": 1,
+  "faraBazaDeclarata": 2,
   "surse": {
    "hipo": {
     "n": 1,
-    "procent": 100
+    "procent": 50
+   },
+   "anuntul": {
+    "n": 1,
+    "procent": 50
    }
   },
   "colectari": {
    "continuă": {
-    "n": 1,
+    "n": 2,
     "procent": 100
    }
   },
@@ -29,113 +33,205 @@
    "n": 0
   },
   "faraBazaDeclarata_valori": {
-   "n": 1
+   "n": 2
   },
   "peOras": {},
   "peJudet": {},
   "peLuna": {
    "2026-09": {
     "n": 1,
-    "procent": 100
+    "procent": 50
+   },
+   "2026-10": {
+    "n": 1,
+    "procent": 50
    }
   }
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 5,
+  "anunturiCitite": 8,
   "cuSalariu": 0,
   "nivel": {},
   "experienta": {
    "fara": {
-    "n": 2,
-    "procent": 40
+    "n": 4,
+    "procent": 50
    }
   },
   "experientaPortal": {
    "0–1 an": {
     "n": 5,
-    "procent": 100
+    "procent": 62.5
    }
   },
   "studii": {
    "superioare": {
     "n": 1,
-    "procent": 20
+    "procent": 12.5
    }
   },
   "limbi": {
    "engleza": {
-    "n": 4,
-    "procent": 80
+    "n": 7,
+    "procent": 87.5
+   },
+   "spaniola": {
+    "n": 1,
+    "procent": 12.5
    }
   },
   "permis": {},
   "atestate": {},
   "program": {
    "ture": {
-    "n": 3,
-    "procent": 60
+    "n": 4,
+    "procent": 50
    }
   },
   "mod": {},
   "norma": {
    "full-time": {
     "n": 1,
-    "procent": 20
+    "procent": 12.5
    }
   },
   "durata": {},
-  "beneficii": {},
+  "beneficii": {
+   "cursuri / training": {
+    "n": 2,
+    "procent": 25
+   }
+  },
   "tehnologii": {},
   "negociabil": {},
   "strainatate": {},
   "limbaAnuntului": {
    "ro": {
-    "n": 5,
+    "n": 8,
     "procent": 100
    }
   },
   "surse": {
    "hipo": {
     "n": 5,
-    "procent": 100
+    "procent": 62.5
+   },
+   "publi24": {
+    "n": 2,
+    "procent": 25
+   },
+   "anuntul": {
+    "n": 1,
+    "procent": 12.5
    }
   },
   "peJudet": {
    "RO": {
     "n": 5,
-    "procent": 100
+    "procent": 62.5
+   },
+   "Bucuresti": {
+    "n": 2,
+    "procent": 25
+   },
+   "bucuresti": {
+    "n": 1,
+    "procent": 12.5
    }
   },
   "motiveFaraSalariu": {
    "salary_evidence_incomplete": {
-    "n": 2,
+    "n": 4,
     "procent": 100
    }
   },
-  "salariuPeFactor": {}
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
-  "oferte": 0,
-  "posturi": 0,
-  "ofertePeGrupaCor": 0,
-  "tipSalariu": {},
+  "oferte": 1,
+  "posturi": 2,
+  "ofertePeGrupaCor": 2,
+  "tipSalariu": {
+   "net": {
+    "n": 1,
+    "procent": 100
+   }
+  },
   "netMinimDeclarat": {
-   "n": 0
+   "n": 1
   },
   "brutMinimDeclarat": {
    "n": 0
   },
   "laSalariulMinim": 0,
-  "studii": {},
-  "experienta": {},
-  "contract": {},
-  "norma": {},
-  "regim": {},
-  "judete": {},
-  "domenii": {},
-  "coduriCorInGrupa": {}
+  "studii": {
+   "Liceal - LICEU TEORETIC": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "experienta": {
+   "Fără experiență - 0 ani": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "judete": {
+   "Municipiul București": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "domenii": {
+   "Sport / Artă / Divertisment": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "coduriCorInGrupa": {
+   "421202 - SCHIMBATOR FISE – CHANGEUR (CAZINO)": {
+    "n": 1,
+    "procent": 50
+   },
+   "421201 - CRUPIER": {
+    "n": 1,
+    "procent": 50
+   }
+  }
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",

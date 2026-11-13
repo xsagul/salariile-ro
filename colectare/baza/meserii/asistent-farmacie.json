@@ -42,32 +42,36 @@
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 10,
+  "anunturiCitite": 32,
   "cuSalariu": 0,
   "nivel": {},
   "experienta": {
    "avantaj": {
+    "n": 10,
+    "procent": 31.3
+   },
+   "fara": {
+    "n": 4,
+    "procent": 12.5
+   },
+   "1+ ani": {
     "n": 3,
-    "procent": 30
+    "procent": 9.4
    },
    "da": {
     "n": 1,
-    "procent": 10
-   },
-   "fara": {
-    "n": 1,
-    "procent": 10
+    "procent": 3.1
    }
   },
   "experientaPortal": {},
   "studii": {
    "postliceale": {
-    "n": 7,
-    "procent": 70
+    "n": 17,
+    "procent": 53.1
    },
    "superioare": {
-    "n": 3,
-    "procent": 30
+    "n": 7,
+    "procent": 21.9
    }
   },
   "limbi": {},
@@ -75,29 +79,67 @@
   "atestate": {},
   "program": {
    "ture": {
-    "n": 3,
-    "procent": 30
+    "n": 8,
+    "procent": 25
+   },
+   "luni–vineri": {
+    "n": 1,
+    "procent": 3.1
+   },
+   "12/24": {
+    "n": 1,
+    "procent": 3.1
    }
   },
   "mod": {},
-  "norma": {},
-  "durata": {},
+  "norma": {
+   "full-time": {
+    "n": 1,
+    "procent": 3.1
+   }
+  },
+  "durata": {
+   "nedeterminată": {
+    "n": 2,
+    "procent": 6.3
+   }
+  },
   "beneficii": {
    "tichete de masă": {
-    "n": 9,
-    "procent": 90
-   },
-   "asigurare medicală": {
-    "n": 5,
-    "procent": 50
-   },
-   "bonus": {
-    "n": 4,
-    "procent": 40
+    "n": 23,
+    "procent": 71.9
    },
    "cursuri / training": {
-    "n": 4,
-    "procent": 40
+    "n": 13,
+    "procent": 40.6
+   },
+   "bonus": {
+    "n": 11,
+    "procent": 34.4
+   },
+   "asigurare medicală": {
+    "n": 11,
+    "procent": 34.4
+   },
+   "prime": {
+    "n": 1,
+    "procent": 3.1
+   },
+   "transport": {
+    "n": 1,
+    "procent": 3.1
+   },
+   "masă": {
+    "n": 1,
+    "procent": 3.1
+   },
+   "spor": {
+    "n": 1,
+    "procent": 3.1
+   },
+   "telefon / laptop": {
+    "n": 1,
+    "procent": 3.1
    }
   },
   "tehnologii": {},
@@ -105,230 +147,294 @@
   "strainatate": {},
   "limbaAnuntului": {
    "ro": {
-    "n": 10,
+    "n": 32,
     "procent": 100
    }
   },
   "surse": {
    "bestjobs": {
-    "n": 5,
+    "n": 16,
     "procent": 50
    },
    "undelucram": {
+    "n": 11,
+    "procent": 34.4
+   },
+   "publi24": {
     "n": 5,
-    "procent": 50
+    "procent": 15.6
    }
   },
-  "peJudet": {},
+  "peJudet": {
+   "Bucuresti": {
+    "n": 1,
+    "procent": 3.1
+   },
+   "Arges": {
+    "n": 1,
+    "procent": 3.1
+   },
+   "Calarasi": {
+    "n": 1,
+    "procent": 3.1
+   },
+   "Cluj": {
+    "n": 1,
+    "procent": 3.1
+   },
+   "Valcea": {
+    "n": 1,
+    "procent": 3.1
+   }
+  },
   "motiveFaraSalariu": {
    "salary_evidence_incomplete": {
-    "n": 10,
-    "procent": 100
+    "n": 31,
+    "procent": 96.9
+   },
+   "full_time_unconfirmed": {
+    "n": 3,
+    "procent": 9.4
+   },
+   "multiple_unresolved_amounts": {
+    "n": 1,
+    "procent": 3.1
    }
   },
-  "salariuPeFactor": {}
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
-  "oferte": 2,
-  "posturi": 2,
-  "ofertePeGrupaCor": 3,
+  "oferte": 3,
+  "posturi": 4,
+  "ofertePeGrupaCor": 5,
   "tipSalariu": {
    "gross": {
-    "n": 1,
-    "procent": 50
+    "n": 2,
+    "procent": 66.7
    },
    "net": {
     "n": 1,
-    "procent": 50
+    "procent": 33.3
    }
   },
   "netMinimDeclarat": {
    "n": 1
   },
   "brutMinimDeclarat": {
-   "n": 1
+   "n": 2
   },
-  "laSalariulMinim": 1,
+  "laSalariulMinim": 2,
   "studii": {
    "Postliceal - ȘCOALĂ POSTLICEALĂ": {
-    "n": 1,
-    "procent": 50
+    "n": 2,
+    "procent": 66.7
    },
    "Liceal - LICEU DE SPECIALITATE": {
     "n": 1,
-    "procent": 50
+    "procent": 33.3
    }
   },
   "experienta": {
    "Experiență puțină - mai puțin de 3 ani": {
     "n": 1,
-    "procent": 50
+    "procent": 33.3
    },
    "Experimentat - mai mult de 7 ani": {
     "n": 1,
-    "procent": 50
+    "procent": 33.3
+   },
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 1,
+    "procent": 33.3
    }
   },
   "contract": {
    "Cu durată nedeterminată": {
-    "n": 2,
+    "n": 3,
     "procent": 100
    }
   },
   "norma": {
    "Cu normă întreagă": {
-    "n": 2,
+    "n": 3,
     "procent": 100
    }
   },
   "regim": {
    "Sediu": {
-    "n": 2,
+    "n": 3,
     "procent": 100
    }
   },
   "judete": {
    "Maramureș": {
     "n": 1,
-    "procent": 50
+    "procent": 33.3
    },
    "Brașov": {
     "n": 1,
-    "procent": 50
+    "procent": 33.3
+   },
+   "Dâmbovița": {
+    "n": 1,
+    "procent": 33.3
    }
   },
   "domenii": {
    "COMERT": {
     "n": 1,
-    "procent": 50
+    "procent": 33.3
    },
    "Medicină / Sănătate /Psihoterapie": {
     "n": 1,
-    "procent": 50
+    "procent": 33.3
+   },
+   "Altele": {
+    "n": 1,
+    "procent": 33.3
    }
   },
   "coduriCorInGrupa": {
    "321301 - ASISTENT FARMACIST": {
-    "n": 2,
-    "procent": 66.7
+    "n": 3,
+    "procent": 60
    },
    "321303 - ASISTENT MEDICAL DE FARMACIE": {
-    "n": 1,
-    "procent": 33.3
+    "n": 2,
+    "procent": 40
    }
   }
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
-  "posturi": 55,
+  "posturi": 51,
   "institutii": 5,
-  "posturiDinSurseDeVerificat": 0,
+  "posturiDinSurseDeVerificat": 2,
   "judete": {
    "CT": {
-    "n": 19,
-    "procent": 34.5
+    "n": 18,
+    "procent": 35.3
    },
    "BZ": {
     "n": 13,
-    "procent": 23.6
+    "procent": 25.5
    },
    "TM": {
     "n": 12,
-    "procent": 21.8
+    "procent": 23.5
    },
    "BH": {
-    "n": 8,
-    "procent": 14.5
+    "n": 5,
+    "procent": 9.8
    },
    "CJ": {
     "n": 3,
-    "procent": 5.5
+    "procent": 5.9
    }
   },
   "tipInstitutie": {
    "spital": {
-    "n": 55,
+    "n": 51,
     "procent": 100
    }
   },
   "perioade": {
-   "2026-03": {
-    "n": 42,
-    "procent": 76.4
+   "2026-09": {
+    "n": 23,
+    "procent": 45.1
    },
    "2026-02": {
     "n": 13,
-    "procent": 23.6
+    "procent": 25.5
+   },
+   "2026-03": {
+    "n": 12,
+    "procent": 23.5
+   },
+   "2026-10": {
+    "n": 3,
+    "procent": 5.9
    }
   },
   "studii": {
    "PL": {
-    "n": 37,
-    "procent": 67.3
+    "n": 33,
+    "procent": 64.7
    },
    "S": {
     "n": 17,
-    "procent": 30.9
+    "procent": 33.3
    },
    "M": {
     "n": 1,
-    "procent": 1.8
+    "procent": 2
    }
   },
   "bazaBruta": {
-   "n": 55,
-   "p10": 6553,
+   "n": 51,
+   "p10": 6725,
    "p25": 6816,
    "median": 7158,
-   "p75": 7666,
+   "p75": 7760,
    "p90": 7954,
-   "min": 6099,
+   "min": 6405,
    "max": 7954
   },
   "bazaCuSporuriFixe": {
-   "n": 55,
-   "p10": 7282,
-   "p25": 7613,
-   "median": 8010,
-   "p75": 8445,
-   "p90": 8978,
-   "min": 6535,
+   "n": 51,
+   "p10": 7301,
+   "p25": 7640,
+   "median": 8169,
+   "p75": 8457,
+   "p90": 9022,
+   "min": 6863,
    "max": 9322
   },
   "peGradatie": {
    "gradația 5": {
-    "n": 21,
-    "p10": 7570,
-    "p25": 7640,
-    "median": 7779,
+    "n": 20,
+    "p10": 7633,
+    "p25": 7690,
+    "median": 7785,
     "p75": 8393,
     "p90": 8470,
     "min": 7483,
     "max": 8522
    },
-   "gradația 4": {
-    "n": 6
-   },
    "gradația 3": {
+    "n": 7
+   },
+   "gradația 4": {
     "n": 5
    },
    "gradația 2": {
-    "n": 3
-   },
-   "gradația 1": {
     "n": 1
    }
   },
   "peFunctie": {
    "Asistent farmacie principal POST LICEALE ( PL )": {
-    "n": 11,
+    "n": 10,
     "p10": 8169,
     "p25": 8169,
-    "median": 8169,
-    "p75": 8457,
+    "median": 8226,
+    "p75": 8463,
     "p90": 8469,
-    "min": 7982,
+    "min": 8169,
     "max": 8469
    },
    "ASISTENT MEDICAL FARMACIE PRINCIPAL (S) Legea nr. 153 art. 3": {
@@ -340,14 +446,14 @@
    "Asistent de farmacie licentiat principal SUPERIOARE ( S )": {
     "n": 6
    },
-   "FARMACIE‐str.C.Coposu nr.12 Asistent medical‐farmacie Gradat": {
-    "n": 4
-   },
-   "FARMACIE‐str.Gh.Doja nr.65 Asistent medical‐farmacie Gradati": {
+   "FARMACIE-str.C.Coposu nr.12 Asistent medical-farmacie Gradat": {
     "n": 3
    },
    "ASISTENT MEDICAL DE FARMACIE PR PL Gradatia 5 Sporurile din ": {
     "n": 3
+   },
+   "FARMACIE-str.Gh.Doja nr.65 Asistent medical-farmacie Gradati": {
+    "n": 2
    },
    "ASISTENT MEDICAL FARMACIE PRINCIPAL (PL) Legea nr. 153 art. ": {
     "n": 2
@@ -357,9 +463,6 @@
    },
    "ASISTENT FARMACIE PRINCIPAL PL Farmacie Oncologie": {
     "n": 2
-   },
-   "FARMACIE‐str.Clujului nr.50 Asistent medical‐farmacie Gradat": {
-    "n": 1
    },
    "Asistent farmacie principal MEDII ( M )": {
     "n": 1

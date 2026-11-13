@@ -27,28 +27,82 @@
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 0,
+  "anunturiCitite": 1,
   "cuSalariu": 0,
   "nivel": {},
-  "experienta": {},
+  "experienta": {
+   "7+ ani": {
+    "n": 1,
+    "procent": 100
+   }
+  },
   "experientaPortal": {},
-  "studii": {},
-  "limbi": {},
+  "studii": {
+   "superioare": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "limbi": {
+   "engleza": {
+    "n": 1,
+    "procent": 100
+   }
+  },
   "permis": {},
   "atestate": {},
   "program": {},
   "mod": {},
   "norma": {},
   "durata": {},
-  "beneficii": {},
-  "tehnologii": {},
+  "beneficii": {
+   "cursuri / training": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "tehnologii": {
+   "React": {
+    "n": 1,
+    "procent": 100
+   }
+  },
   "negociabil": {},
   "strainatate": {},
-  "limbaAnuntului": {},
-  "surse": {},
+  "limbaAnuntului": {
+   "en": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "undelucram": {
+    "n": 1,
+    "procent": 100
+   }
+  },
   "peJudet": {},
-  "motiveFaraSalariu": {},
-  "salariuPeFactor": {}
+  "motiveFaraSalariu": {
+   "salary_evidence_incomplete": {
+    "n": 1,
+    "procent": 100
+   }
+  },
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",

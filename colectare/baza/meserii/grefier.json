@@ -48,7 +48,21 @@
   "surse": {},
   "peJudet": {},
   "motiveFaraSalariu": {},
-  "salariuPeFactor": {}
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
@@ -79,21 +93,597 @@
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
-  "posturi": 0,
-  "institutii": 0,
-  "posturiDinSurseDeVerificat": 0,
-  "judete": {},
-  "tipInstitutie": {},
-  "perioade": {},
-  "studii": {},
+  "posturi": 278,
+  "institutii": 9,
+  "posturiDinSurseDeVerificat": 1,
+  "judete": {
+   "MM": {
+    "n": 83,
+    "procent": 29.9
+   },
+   "MS": {
+    "n": 73,
+    "procent": 26.3
+   },
+   "AG": {
+    "n": 65,
+    "procent": 23.4
+   },
+   "BC": {
+    "n": 22,
+    "procent": 7.9
+   },
+   "HR": {
+    "n": 15,
+    "procent": 5.4
+   },
+   "BT": {
+    "n": 13,
+    "procent": 4.7
+   },
+   "VS": {
+    "n": 5,
+    "procent": 1.8
+   },
+   "SJ": {
+    "n": 2,
+    "procent": 0.7
+   }
+  },
+  "tipInstitutie": {
+   "instanta": {
+    "n": 278,
+    "procent": 100
+   }
+  },
+  "perioade": {
+   "2026-03": {
+    "n": 278,
+    "procent": 100
+   }
+  },
+  "studii": {
+   "S": {
+    "n": 144,
+    "procent": 51.8
+   },
+   "M": {
+    "n": 27,
+    "procent": 9.7
+   }
+  },
   "bazaBruta": {
-   "n": 0
+   "n": 278,
+   "p10": 7148,
+   "p25": 7927,
+   "median": 9250,
+   "p75": 10204,
+   "p90": 10717,
+   "min": 4050,
+   "max": 18794
   },
   "bazaCuSporuriFixe": {
-   "n": 0
+   "n": 278,
+   "p10": 9292,
+   "p25": 10384,
+   "median": 12035,
+   "p75": 13266,
+   "p90": 13934,
+   "min": 5265,
+   "max": 24432
   },
-  "peGradatie": {},
-  "peFunctie": {}
+  "peGradatie": {
+   "gradația 5": {
+    "n": 66,
+    "p10": 11738,
+    "p25": 12243,
+    "median": 13266,
+    "p75": 13905,
+    "p90": 14647,
+    "min": 8643,
+    "max": 17334
+   },
+   "gradația 4": {
+    "n": 35,
+    "p10": 10440,
+    "p25": 11329,
+    "median": 12462,
+    "p75": 12942,
+    "p90": 13389,
+    "min": 6855,
+    "max": 15272
+   },
+   "gradația 2": {
+    "n": 31,
+    "p10": 9292,
+    "p25": 9757,
+    "median": 10190,
+    "p75": 10684,
+    "p90": 11108,
+    "min": 5265,
+    "max": 13832
+   },
+   "gradația 3": {
+    "n": 24,
+    "p10": 10435,
+    "p25": 10904,
+    "median": 11748,
+    "p75": 12079,
+    "p90": 12483,
+    "min": 9675,
+    "max": 14188
+   },
+   "gradația 1": {
+    "n": 12,
+    "p10": 8893,
+    "p25": 9386,
+    "median": 9444,
+    "p75": 9666,
+    "p90": 10156,
+    "min": 8803,
+    "max": 10245
+   },
+   "gradația 0": {
+    "n": 11,
+    "p10": 5600,
+    "p25": 5600,
+    "median": 8232,
+    "p75": 8643,
+    "p90": 8809,
+    "min": 5265,
+    "max": 8943
+   }
+  },
+  "peFunctie": {
+   "Grefier personal auxiliar de specialitate S gradul gradul I ": {
+    "n": 11,
+    "p10": 12205,
+    "p25": 12452,
+    "median": 12635,
+    "p75": 13332,
+    "p90": 13934,
+    "min": 10598,
+    "max": 13934
+   },
+   "Grefier personal auxiliar de specialitate S gradul I peste a": {
+    "n": 9
+   },
+   "Grefier S gradul II 0-5 ani": {
+    "n": 9
+   },
+   "Grefier personal auxiliar de specialitate S gradul I": {
+    "n": 7
+   },
+   "GREFIER SS GR II 6 luni-5 ani": {
+    "n": 6
+   },
+   "Grefier S gradul I 5-10 ani": {
+    "n": 6
+   },
+   "GREFIER SS GR I PESTE 20": {
+    "n": 5
+   },
+   "GREFIER SS GR I 6 luni-5 ani": {
+    "n": 5
+   },
+   "Grefier S gradul I 10-15 ani": {
+    "n": 5
+   },
+   "GREFIER SM TR I PESTE 20": {
+    "n": 4
+   },
+   "GREFIER SS GR I 5-10": {
+    "n": 4
+   },
+   "Grefier personal auxiliar de specialitate S I peste ani": {
+    "n": 4
+   },
+   "Grefier personal auxiliar de specialitate S gradul II luni-5": {
+    "n": 4
+   },
+   "Grefier S gradul I 15-20 ani": {
+    "n": 4
+   },
+   "Grefier S gradul I 0-5 ani": {
+    "n": 4
+   },
+   "Grefier arhivar S gradul II 0-5 ani": {
+    "n": 4
+   },
+   "Grefier arhivar M treapta II 0-5 ani": {
+    "n": 4
+   },
+   "grefier auxiliar gradul II între 0-5 ani": {
+    "n": 3
+   },
+   "GREFIER SS GR I 10-15": {
+    "n": 3
+   },
+   "JUDECĂTORIA PITEŞTI GREFIER SS GR I 5-10": {
+    "n": 3
+   },
+   "JUDECĂTORIA PITEŞTI GREFIER SS GR II 6 luni-5 ani": {
+    "n": 3
+   },
+   "Grefier personal auxiliar de specialitate S gradul I 10-15 a": {
+    "n": 3
+   },
+   "Grefier personal auxiliar de specialitate S gradul I 5-10 an": {
+    "n": 3
+   },
+   "Grefier personal auxiliar de specialitate S gradul I peste 1": {
+    "n": 3
+   },
+   "Grefier personal auxiliar de specialitate M I peste ani": {
+    "n": 3
+   },
+   "Grefier arhivar personal auxiliar de specialitate S gradul I": {
+    "n": 3
+   },
+   "Grefier S gradul I peste 20 ani": {
+    "n": 3
+   },
+   "Grefier S debutant 0-6 luni": {
+    "n": 3
+   },
+   "Grefier arhivar S gradul I peste 20 ani": {
+    "n": 3
+   },
+   "grefier auxiliar gradul I între 15-20 ani": {
+    "n": 2
+   },
+   "grefier auxiliar gradul I între 10-15 ani": {
+    "n": 2
+   },
+   "grefier auxiliar gradul I între 5-10 ani": {
+    "n": 2
+   },
+   "grefier arhivar auxiliar gradul I între 5-10 ani": {
+    "n": 2
+   },
+   "grefier arhivar auxiliar treapta I debutant": {
+    "n": 2
+   },
+   "Grefier S Gradul I - 20 ani": {
+    "n": 2
+   },
+   "Grefier S Gradul I - 15 ani": {
+    "n": 2
+   },
+   "Grefier arhivar S Gradul I - 15 ani": {
+    "n": 2
+   },
+   "TRIBUNALUL ARGEŞ GREFIER SS GR I PESTE 20": {
+    "n": 2
+   },
+   "TRIBUNALUL ARGEŞ GREFIER SS GR I 15-20": {
+    "n": 2
+   },
+   "TRIBUNALUL ARGEŞ GREFIER SS GR I 10-15": {
+    "n": 2
+   },
+   "TRIBUNALUL ARGEŞ GREFIER SS GR I 5-10": {
+    "n": 2
+   },
+   "TRIBUNALUL ARGEŞ GREFIER SS GR II 6 luni-5 ani": {
+    "n": 2
+   },
+   "TRIBUNALUL ARGEŞ GREFIER SS DEB 6 luni-5 ani": {
+    "n": 2
+   },
+   "GREFIER SS GR I 15-20": {
+    "n": 2
+   },
+   "JUDECĂTORIA PITEŞTI GREFIER SS GR I 6 luni-5 ani": {
+    "n": 2
+   },
+   "JUDECĂTORIA COSTEŞTI GREFIER SS GR I 5-10": {
+    "n": 2
+   },
+   "Grefier färä spor instantä s Gradul I 5-10 ani": {
+    "n": 2
+   },
+   "Grefier personal auxiliar de specialitate S gradul I I 10-15": {
+    "n": 2
+   },
+   "Grefier personal auxiliar de specialitate S peste ani": {
+    "n": 2
+   },
+   "Grefier personal auxiliar de specialitate S I": {
+    "n": 2
+   },
+   "Grefier Grefier personal auxiliar de specialitate S gradul I": {
+    "n": 2
+   },
+   "Grefier personal auxiliar de specialitate S gradul gradul II": {
+    "n": 2
+   },
+   "Grefier personal auxiliar de specialitate M treapta treapta ": {
+    "n": 2
+   },
+   "Grefier Grefier arhivar personal auxiliar de specialitate S ": {
+    "n": 2
+   },
+   "Grefier arhivar personal auxiliar de specialitate M treapta ": {
+    "n": 2
+   },
+   "Grefier M treapta I peste 20 ani": {
+    "n": 2
+   },
+   "Grefier arhivar S gradul I 10-15 ani": {
+    "n": 2
+   },
+   "Grefier, •ude": {
+    "n": 2
+   },
+   "prim grefier auxiliar gradul I peste 20 ani": {
+    "n": 1
+   },
+   "grefier auxiliar gradul I peste 20 ani": {
+    "n": 1
+   },
+   "grefier auxiliar gradul I între 0-5 ani": {
+    "n": 1
+   },
+   "grefier auxiliar treapta I peste 20 ani": {
+    "n": 1
+   },
+   "grefier documentarist auxiliar gradul I peste 20 ani": {
+    "n": 1
+   },
+   "grefier statistician auxiliar gradul I între 15-20 ani": {
+    "n": 1
+   },
+   "grefier arhivar auxiliar gradul I între 0-5 ani": {
+    "n": 1
+   },
+   "grefier arhivar auxiliar treapta I peste 20 ani": {
+    "n": 1
+   },
+   "grefier registrator auxiliar gradul II între 0-5 ani": {
+    "n": 1
+   },
+   "Prim grefier S Gradul I peste 20 ani": {
+    "n": 1
+   },
+   "Grefier S Gradul I peste 20 ani": {
+    "n": 1
+   },
+   "Grefier S Gradul I - 10 ani": {
+    "n": 1
+   },
+   "Grefier S Gradul l - 10 ani": {
+    "n": 1
+   },
+   "Grefier S Gradul II - 10 ani": {
+    "n": 1
+   },
+   "Grefier M Treapta I peste 20 ani": {
+    "n": 1
+   },
+   "Grefier arhivar S Gradul I Peste 20 ani": {
+    "n": 1
+   },
+   "Grefier arhivar S Gradul I - 20 ani": {
+    "n": 1
+   },
+   "Grefier arhivar M Treapta I - 20 ani": {
+    "n": 1
+   },
+   "Grefier arhivar M Treapta I - 15 ani": {
+    "n": 1
+   },
+   "TRIBUNALUL ARGEŞ PRIM GREFIER GR I 15-20": {
+    "n": 1
+   },
+   "TRIBUNALUL ARGEŞ GREFIER SM TR I PESTE 20": {
+    "n": 1
+   },
+   "PRIM GREFIER GR I 10-15": {
+    "n": 1
+   },
+   "JUDECĂTORIA PITEŞTI GREFIER SS GR I PESTE 20": {
+    "n": 1
+   },
+   "JUDECĂTORIA PITEŞTI GREFIER SS GR I 15-20": {
+    "n": 1
+   },
+   "JUDECĂTORIA PITEŞTI GREFIER SS GR I 10-15": {
+    "n": 1
+   },
+   "JUDECĂTORIA PITEŞTI GREFIER SS GR II 5-10": {
+    "n": 1
+   },
+   "JUDECĂTORIA PITEŞTI GREFIER SS DEB 0-6 luni": {
+    "n": 1
+   },
+   "JUDECĂTORIA PITEŞTI GREFIER SM TR I PESTE 20": {
+    "n": 1
+   },
+   "JUDECĂTORIA COSTEŞTI GREFIER SS GR I PESTE 20": {
+    "n": 1
+   },
+   "JUDECĂTORIA COSTEŞTI GREFIER SS GR I 15-20": {
+    "n": 1
+   },
+   "JUDECĂTORIA COSTEŞTI GREFIER SS GR I 10-15": {
+    "n": 1
+   },
+   "JUDECĂTORIA COSTEŞTI GREFIER SS GR I 6 luni-5 ani": {
+    "n": 1
+   },
+   "JUDECĂTORIA COSTEŞTI GREFIER SM TR I PESTE 20": {
+    "n": 1
+   },
+   "Grefier s or instan sectie ä färä s Gradul I 10-15 peste ani": {
+    "n": 1
+   },
+   "Grefier s or Grefier instan sectie ä färä s Gradul I 5-10 an": {
+    "n": 1
+   },
+   "Grefier Grefier färä spor instantä s Gradul I 15-20 ani": {
+    "n": 1
+   },
+   "Grefier färä spor instantä s Gradul I 15-20 ani": {
+    "n": 1
+   },
+   "Grefier Grefier arhivar s Gradul I peste": {
+    "n": 1
+   },
+   "Grefier arhivar s Gradul I este": {
+    "n": 1
+   },
+   "Grefier arhivar s Gradul II 15-20 ani": {
+    "n": 1
+   },
+   "Grefier arhivar s Gradul luni-5 ani": {
+    "n": 1
+   },
+   "Grefier arhivar M Treapta I peste": {
+    "n": 1
+   },
+   "Grefier Grefier arhivar M Treapta 10-15 ani": {
+    "n": 1
+   },
+   "Grefier arhivar M treapta II luni-5 ani": {
+    "n": 1
+   },
+   "Grefier, fun ie gradul I • 5•10 ani vechime in o o o o Pentr": {
+    "n": 1
+   },
+   "Grefier, fun ie gradul II 0-5 ani vechime in O o": {
+    "n": 1
+   },
+   "vechime Grefier arhivar, in func gradul ie I • 5-10 ani o o": {
+    "n": 1
+   },
+   "Grefier vechime arhivar. in func gradul ie II : 0-5 ani": {
+    "n": 1
+   },
+   "vechime Grefier registrator. in func ie gradul II: 0-5 ani o": {
+    "n": 1
+   },
+   "Grefier, Prim•grefier, sectie, grefier.": {
+    "n": 1
+   },
+   "fun Grefier, ie gradul I : 5-10 ani vechime in cap. + anexa ": {
+    "n": 1
+   },
+   "Grefier. fun ie gradul I : 5-10 ani vechime in art.25 alin.l": {
+    "n": 1
+   },
+   "Grefier. Grefier, func ie gradul I : 5-10 ani vechime in": {
+    "n": 1
+   },
+   "Grefier, functie gradul II : 0-5 ani vechime in": {
+    "n": 1
+   },
+   "Grefier. fun ie gradul II : 0-5 ani vechime in": {
+    "n": 1
+   },
+   "vechime Grefier arhivar, in fun gradul ie I : IS-20 ani": {
+    "n": 1
+   },
+   "vechime Grefier arhivar. in fun gradul ie I : 10-15 ani Pent": {
+    "n": 1
+   },
+   "vechime Grefier arhivar, in fun treapta I : 10-15 ani cap. 1": {
+    "n": 1
+   },
+   "Grefier vechime arhivar, in func treapta ie II : 0-5 ani 153": {
+    "n": 1
+   },
+   "Prim grefier personal auxiliar de specialitate S gradul I an": {
+    "n": 1
+   },
+   "G Grefier refier personal auxiliar de specialitate S gradul ": {
+    "n": 1
+   },
+   "Grefier personal auxiliar de specialitate S gradul I 10-15 5": {
+    "n": 1
+   },
+   "Grefier personal auxiliar de specialitate S gradul I luni-5 ": {
+    "n": 1
+   },
+   "Grefier personal auxiliar de specialitate S gradul I peste l": {
+    "n": 1
+   },
+   "Grefier personal auxiliar de specialitate S I luni-5 ani zoo": {
+    "n": 1
+   },
+   "Grefier personal auxiliar de specialitate S luni-5 ani": {
+    "n": 1
+   },
+   "Grefier personal auxiliar de specialitate S gradul debutant ": {
+    "n": 1
+   },
+   "Grefier personal auxiliar de specialitate M treapta I 5-10 a": {
+    "n": 1
+   },
+   "Grefier personal auxiliar de specialitate M treapta I luni-5": {
+    "n": 1
+   },
+   "Grefier personal auxiliar de specialitate M treapta debutant": {
+    "n": 1
+   },
+   "Grefier personal auxiliar de specialitate M treapta I 15-20 ": {
+    "n": 1
+   },
+   "Grefier registrator personal auxiliar de specialitate S grad": {
+    "n": 1
+   },
+   "Grefier personal auxiliar de specialitate S I 5-10 ani": {
+    "n": 1
+   },
+   "Grefier personal auxiliar de specialitate S gradul II 15-20 ": {
+    "n": 1
+   },
+   "Grefier personal auxiliar de specialitate S II luni-5 ani": {
+    "n": 1
+   },
+   "Grefier registrator personal auxiliar de specialitate M trea": {
+    "n": 1
+   },
+   "Prim Grefier S gradul I peste 20 ani": {
+    "n": 1
+   },
+   "Grefier S gradul II 15-20 ani": {
+    "n": 1
+   },
+   "Grefier Statistician S gradul II peste 20 ani": {
+    "n": 1
+   },
+   "Grefier M treapta I 10-15 ani": {
+    "n": 1
+   },
+   "Grefier arhivar S gradul I 15-20 ani": {
+    "n": 1
+   },
+   "Grefier arhivar S gradul I 5-10 ani": {
+    "n": 1
+   },
+   "Grefier arhivar M treapta I peste 20 ani": {
+    "n": 1
+   },
+   "Grefier arhivar M treapta II 10-15 ani": {
+    "n": 1
+   },
+   "Grefier s Gradul I peste ani": {
+    "n": 1
+   },
+   "Grefier s Gradul II luni-5 ani": {
+    "n": 1
+   },
+   "vechime Grefier, in functie": {
+    "n": 1
+   },
+   "Grefier arhivar, gradul I - peste ani o": {
+    "n": 1
+   },
+   "Grefier arhivar, gradul I - PBte ani": {
+    "n": 1
+   }
+  }
  },
  "angajatori": {
   "descriere": "Salariul publicat de angajator pe site-ul lui de cariere, pe post și oraș (lei pe lună; baza cum o scrie angajatorul).",

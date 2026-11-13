@@ -27,12 +27,17 @@
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 0,
+  "anunturiCitite": 2,
   "cuSalariu": 0,
   "nivel": {},
   "experienta": {},
   "experientaPortal": {},
-  "studii": {},
+  "studii": {
+   "medii": {
+    "n": 2,
+    "procent": 100
+   }
+  },
   "limbi": {},
   "permis": {},
   "atestate": {},
@@ -44,132 +49,174 @@
   "tehnologii": {},
   "negociabil": {},
   "strainatate": {},
-  "limbaAnuntului": {},
-  "surse": {},
-  "peJudet": {},
-  "motiveFaraSalariu": {},
-  "salariuPeFactor": {}
+  "limbaAnuntului": {
+   "ro": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "publi24": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "peJudet": {
+   "Teleorman": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "motiveFaraSalariu": {
+   "salary_evidence_incomplete": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
-  "oferte": 4,
-  "posturi": 24,
-  "ofertePeGrupaCor": 17,
+  "oferte": 6,
+  "posturi": 26,
+  "ofertePeGrupaCor": 26,
   "tipSalariu": {
    "gross": {
-    "n": 2,
+    "n": 3,
     "procent": 50
    },
    "net": {
-    "n": 1,
-    "procent": 25
+    "n": 2,
+    "procent": 33.3
    },
    "none": {
     "n": 1,
-    "procent": 25
+    "procent": 16.7
    }
   },
   "netMinimDeclarat": {
-   "n": 1
+   "n": 2
   },
   "brutMinimDeclarat": {
-   "n": 1
+   "n": 2
   },
   "laSalariulMinim": 1,
   "studii": {
    "Universitar - ÎNVĂȚĂMÂNT SUPERIOR": {
-    "n": 2,
+    "n": 3,
     "procent": 50
+   },
+   "Liceal - LICEU DE SPECIALITATE": {
+    "n": 2,
+    "procent": 33.3
    },
    "Universitar - ÎNV. SUPERIOR FĂRĂ LICENȚĂ": {
     "n": 1,
-    "procent": 25
-   },
-   "Liceal - LICEU DE SPECIALITATE": {
-    "n": 1,
-    "procent": 25
+    "procent": 16.7
    }
   },
   "experienta": {
-   "Experiență puțină - mai puțin de 3 ani": {
-    "n": 2,
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 3,
     "procent": 50
    },
-   "Experiență medie - între 3 și 5 ani": {
+   "Experiență puțină - mai puțin de 3 ani": {
     "n": 2,
-    "procent": 50
+    "procent": 33.3
+   },
+   "Avansat - între 5 și 7 ani": {
+    "n": 1,
+    "procent": 16.7
    }
   },
   "contract": {
    "Cu durată nedeterminată": {
-    "n": 4,
+    "n": 6,
     "procent": 100
    }
   },
   "norma": {
    "Cu normă întreagă": {
-    "n": 4,
+    "n": 6,
     "procent": 100
    }
   },
   "regim": {
    "Sediu": {
-    "n": 3,
-    "procent": 75
+    "n": 5,
+    "procent": 83.3
    },
    "Hibrid - sediu + telemuncă": {
     "n": 1,
-    "procent": 25
+    "procent": 16.7
    }
   },
   "judete": {
    "Argeș": {
     "n": 2,
-    "procent": 50
+    "procent": 33.3
+   },
+   "Municipiul București": {
+    "n": 2,
+    "procent": 33.3
    },
    "Timiș": {
     "n": 1,
-    "procent": 25
+    "procent": 16.7
    },
-   "Municipiul București": {
+   "Constanța": {
     "n": 1,
-    "procent": 25
+    "procent": 16.7
    }
   },
   "domenii": {
    "IT / Telecomunicații": {
-    "n": 2,
-    "procent": 50
+    "n": 4,
+    "procent": 66.7
    },
    "Call center / Suport clienți": {
     "n": 1,
-    "procent": 25
+    "procent": 16.7
    },
    "Producție / Logistică": {
     "n": 1,
-    "procent": 25
+    "procent": 16.7
    }
   },
   "coduriCorInGrupa": {
    "351101 - OPERATOR CALCULATOR ELECTRONIC SI RETELE": {
-    "n": 6,
-    "procent": 35.3
+    "n": 10,
+    "procent": 38.5
    },
    "351107 - OPERATOR SUPORT TEHNIC PENTRU SERVICII DE COMUNICATII ELECTRONICE": {
-    "n": 4,
-    "procent": 23.5
+    "n": 6,
+    "procent": 23.1
    },
    "351103 - TEHNICIAN ECHIPAMENTE DE CALCUL SI RETELE": {
-    "n": 4,
-    "procent": 23.5
+    "n": 6,
+    "procent": 23.1
    },
    "351105 - ADMINISTRATOR SISTEM DOCUMENTAR": {
-    "n": 2,
-    "procent": 11.8
+    "n": 3,
+    "procent": 11.5
    },
    "351106 - OPERATOR PROMPTER": {
     "n": 1,
-    "procent": 5.9
+    "procent": 3.8
    }
   }
  },

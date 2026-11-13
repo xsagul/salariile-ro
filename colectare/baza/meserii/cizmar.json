@@ -27,7 +27,7 @@
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 0,
+  "anunturiCitite": 2,
   "cuSalariu": 0,
   "nivel": {},
   "experienta": {},
@@ -44,17 +44,59 @@
   "tehnologii": {},
   "negociabil": {},
   "strainatate": {},
-  "limbaAnuntului": {},
-  "surse": {},
-  "peJudet": {},
-  "motiveFaraSalariu": {},
-  "salariuPeFactor": {}
+  "limbaAnuntului": {
+   "ro": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "surse": {
+   "publi24": {
+    "n": 1,
+    "procent": 50
+   },
+   "anuntul": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "peJudet": {
+   "Bucuresti": {
+    "n": 1,
+    "procent": 50
+   },
+   "bucuresti": {
+    "n": 1,
+    "procent": 50
+   }
+  },
+  "motiveFaraSalariu": {
+   "salary_evidence_incomplete": {
+    "n": 2,
+    "procent": 100
+   }
+  },
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
   "oferte": 1,
   "posturi": 1,
-  "ofertePeGrupaCor": 22,
+  "ofertePeGrupaCor": 44,
   "tipSalariu": {
    "gross": {
     "n": 1,
@@ -112,20 +154,20 @@
   },
   "coduriCorInGrupa": {
    "753602 - CONFECTIONER ARTICOLE DIN PIELE SI ÎNLOCUITORI": {
-    "n": 13,
-    "procent": 59.1
+    "n": 34,
+    "procent": 77.3
    },
    "753605 - MAROCHINER-CONFECTIONER MAROCHINARIE, DUPA COMANDA": {
     "n": 7,
-    "procent": 31.8
+    "procent": 15.9
+   },
+   "753607 - TALPUITOR (CONFECTIONER-REPARATII ÎNCALTAMINTE)": {
+    "n": 2,
+    "procent": 4.5
    },
    "753601 - CIZMAR-CONFECTIONER ÎNCALTAMINTE, DUPA COMANDA": {
     "n": 1,
-    "procent": 4.5
-   },
-   "753607 - TALPUITOR (CONFECTIONER-REPARATII ÎNCALTAMINTE)": {
-    "n": 1,
-    "procent": 4.5
+    "procent": 2.3
    }
   }
  },

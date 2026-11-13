@@ -4,19 +4,31 @@
  "cor": "215213",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
-  "cuSalariu": 1,
+  "cuSalariu": 4,
   "cuBazaDeclarata": 1,
-  "faraBazaDeclarata": 0,
+  "faraBazaDeclarata": 3,
   "surse": {
    "ejobs": {
+    "n": 2,
+    "procent": 50
+   },
+   "anuntul": {
     "n": 1,
-    "procent": 100
+    "procent": 25
+   },
+   "bestjobs": {
+    "n": 1,
+    "procent": 25
    }
   },
   "colectari": {
+   "continuă": {
+    "n": 3,
+    "procent": 75
+   },
    "8 septembrie 2026": {
     "n": 1,
-    "procent": 100
+    "procent": 25
    }
   },
   "net": {
@@ -29,132 +41,188 @@
    "n": 1
   },
   "faraBazaDeclarata_valori": {
-   "n": 0
+   "n": 3
   },
   "peOras": {},
   "peJudet": {},
   "peLuna": {
+   "2026-09": {
+    "n": 2,
+    "procent": 50
+   },
+   "2026-10": {
+    "n": 1,
+    "procent": 25
+   },
    "2026-08": {
     "n": 1,
-    "procent": 100
+    "procent": 25
    }
   }
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 2,
+  "anunturiCitite": 7,
   "cuSalariu": 0,
   "nivel": {},
   "experienta": {
    "da": {
     "n": 2,
-    "procent": 100
+    "procent": 28.6
    }
   },
   "experientaPortal": {},
   "studii": {
    "superioare": {
+    "n": 4,
+    "procent": 57.1
+   },
+   "medii": {
     "n": 2,
-    "procent": 100
+    "procent": 28.6
    }
   },
   "limbi": {
    "engleza": {
-    "n": 2,
-    "procent": 100
+    "n": 6,
+    "procent": 85.7
    }
   },
   "permis": {
    "B": {
-    "n": 1,
-    "procent": 50
+    "n": 3,
+    "procent": 42.9
    }
   },
   "atestate": {},
-  "program": {},
+  "program": {
+   "ture": {
+    "n": 1,
+    "procent": 14.3
+   }
+  },
   "mod": {},
   "norma": {},
   "durata": {},
   "beneficii": {
    "tichete de masă": {
-    "n": 1,
-    "procent": 50
+    "n": 4,
+    "procent": 57.1
    },
    "transport": {
-    "n": 1,
-    "procent": 50
+    "n": 2,
+    "procent": 28.6
    },
    "bonus": {
-    "n": 1,
-    "procent": 50
+    "n": 2,
+    "procent": 28.6
+   },
+   "spor": {
+    "n": 2,
+    "procent": 28.6
    },
    "prime": {
     "n": 1,
-    "procent": 50
+    "procent": 14.3
    },
    "asigurare medicală": {
     "n": 1,
-    "procent": 50
+    "procent": 14.3
    }
   },
   "tehnologii": {
    "PLC": {
-    "n": 1,
-    "procent": 50
+    "n": 2,
+    "procent": 28.6
    },
    "SCADA": {
     "n": 1,
-    "procent": 50
+    "procent": 14.3
+   },
+   "Excel": {
+    "n": 1,
+    "procent": 14.3
    }
   },
   "negociabil": {},
   "strainatate": {},
   "limbaAnuntului": {
    "ro": {
-    "n": 2,
+    "n": 7,
     "procent": 100
    }
   },
   "surse": {
+   "bestjobs": {
+    "n": 5,
+    "procent": 71.4
+   },
    "undelucram": {
     "n": 1,
-    "procent": 50
+    "procent": 14.3
    },
-   "bestjobs": {
+   "anuntul": {
     "n": 1,
-    "procent": 50
+    "procent": 14.3
    }
   },
-  "peJudet": {},
+  "peJudet": {
+   "ilfov": {
+    "n": 1,
+    "procent": 14.3
+   }
+  },
   "motiveFaraSalariu": {
    "salary_evidence_incomplete": {
-    "n": 1,
-    "procent": 50
+    "n": 4,
+    "procent": 80
+   },
+   "full_time_unconfirmed": {
+    "n": 2,
+    "procent": 40
    },
    "foreign_or_noncomparable_work": {
     "n": 1,
-    "procent": 50
+    "procent": 20
    },
    "multiple_unresolved_amounts": {
     "n": 1,
-    "procent": 50
+    "procent": 20
    }
   },
-  "salariuPeFactor": {}
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
-  "oferte": 2,
-  "posturi": 2,
-  "ofertePeGrupaCor": 54,
+  "oferte": 3,
+  "posturi": 3,
+  "ofertePeGrupaCor": 90,
   "tipSalariu": {
    "none": {
     "n": 2,
-    "procent": 100
+    "procent": 66.7
+   },
+   "net": {
+    "n": 1,
+    "procent": 33.3
    }
   },
   "netMinimDeclarat": {
-   "n": 0
+   "n": 1
   },
   "brutMinimDeclarat": {
    "n": 0
@@ -162,102 +230,110 @@
   "laSalariulMinim": 0,
   "studii": {
    "Universitar - ÎNVĂȚĂMÂNT SUPERIOR": {
-    "n": 2,
+    "n": 3,
     "procent": 100
    }
   },
   "experienta": {
    "Avansat - între 5 și 7 ani": {
-    "n": 1,
-    "procent": 50
+    "n": 2,
+    "procent": 66.7
    },
    "Experiență puțină - mai puțin de 3 ani": {
     "n": 1,
-    "procent": 50
+    "procent": 33.3
    }
   },
   "contract": {
    "Cu durată nedeterminată": {
-    "n": 2,
+    "n": 3,
     "procent": 100
    }
   },
   "norma": {
    "Cu normă întreagă": {
-    "n": 2,
+    "n": 3,
     "procent": 100
    }
   },
   "regim": {
    "Sediu": {
-    "n": 2,
+    "n": 3,
     "procent": 100
    }
   },
   "judete": {
    "Bihor": {
-    "n": 1,
-    "procent": 50
+    "n": 2,
+    "procent": 66.7
    },
    "Alba": {
     "n": 1,
-    "procent": 50
+    "procent": 33.3
    }
   },
   "domenii": {
    "Producție / Logistică": {
-    "n": 2,
+    "n": 3,
     "procent": 100
    }
   },
   "coduriCorInGrupa": {
    "215205 - INGINER PRODUCTIE": {
-    "n": 16,
-    "procent": 29.6
+    "n": 31,
+    "procent": 34.4
    },
    "215202 - INGINER AUTOMATIST": {
-    "n": 14,
-    "procent": 25.9
+    "n": 22,
+    "procent": 24.4
    },
    "215204 - INGINER ELECTRONIST TRANSPORTURI, TELECOMUNICATII": {
-    "n": 7,
-    "procent": 13
+    "n": 9,
+    "procent": 10
    },
    "215216 - INGINER ELECTROMECANIC": {
-    "n": 4,
-    "procent": 7.4
+    "n": 7,
+    "procent": 7.8
    },
    "215215 - PROIECTANT INGINER ELECTROMECANIC": {
-    "n": 3,
+    "n": 5,
     "procent": 5.6
    },
    "215222 - INGINER SISTEME DE SECURITATE": {
+    "n": 4,
+    "procent": 4.4
+   },
+   "215213 - PROIECTANT INGINER ELECTRONIST": {
+    "n": 3,
+    "procent": 3.3
+   },
+   "215236 - INGINER DE CERCETARE ÎN CALCULATOARE": {
     "n": 2,
-    "procent": 3.7
+    "procent": 2.2
    },
    "215201 - INGINER ELECTROMECANIC SCB": {
     "n": 2,
-    "procent": 3.7
-   },
-   "215213 - PROIECTANT INGINER ELECTRONIST": {
-    "n": 2,
-    "procent": 3.7
+    "procent": 2.2
    },
    "215224 - INGINER DE CERCETARE ÎN ELECTRONICA APLICATA": {
     "n": 1,
-    "procent": 1.9
+    "procent": 1.1
    },
    "215225 - ASISTENT DE CERCETARE ÎN ELECTRONICA APLICATA": {
     "n": 1,
-    "procent": 1.9
-   },
-   "215236 - INGINER DE CERCETARE ÎN CALCULATOARE": {
-    "n": 1,
-    "procent": 1.9
+    "procent": 1.1
    },
    "215220 - SPECIALIST MENTENANTA ELECTROMECANICA-AUTOMATICA ECHIPAMENTE INDUSTRIALE": {
     "n": 1,
-    "procent": 1.9
+    "procent": 1.1
+   },
+   "215237 - ASISTENT DE CERCETARE ÎN CALCULATOARE": {
+    "n": 1,
+    "procent": 1.1
+   },
+   "215230 - INGINER DE CERCETARE ÎN MICROELECTRONICA": {
+    "n": 1,
+    "procent": 1.1
    }
   }
  },

@@ -48,191 +48,217 @@
   "surse": {},
   "peJudet": {},
   "motiveFaraSalariu": {},
-  "salariuPeFactor": {}
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
-  "oferte": 26,
-  "posturi": 36,
-  "ofertePeGrupaCor": 110,
+  "oferte": 35,
+  "posturi": 55,
+  "ofertePeGrupaCor": 212,
   "tipSalariu": {
    "gross": {
-    "n": 23,
-    "procent": 88.5
+    "n": 32,
+    "procent": 91.4
    },
    "none": {
     "n": 2,
-    "procent": 7.7
+    "procent": 5.7
    },
    "net": {
     "n": 1,
-    "procent": 3.8
+    "procent": 2.9
    }
   },
   "netMinimDeclarat": {
    "n": 1
   },
   "brutMinimDeclarat": {
-   "n": 23,
+   "n": 32,
    "p10": 4325,
    "p25": 4325,
    "median": 4677,
-   "p75": 4690,
-   "p90": 5488,
+   "p75": 5626,
+   "p90": 5626,
    "min": 4325,
-   "max": 5626
+   "max": 6000
   },
   "laSalariulMinim": 9,
   "studii": {
    "Profesional - ȘCOALĂ PROFESIONALĂ": {
-    "n": 21,
-    "procent": 80.8
+    "n": 26,
+    "procent": 74.3
    },
    "Liceal - LICEU DE SPECIALITATE": {
-    "n": 5,
-    "procent": 19.2
+    "n": 9,
+    "procent": 25.7
    }
   },
   "experienta": {
    "Fără experiență - 0 ani": {
-    "n": 17,
-    "procent": 65.4
+    "n": 19,
+    "procent": 54.3
    },
    "Experiență puțină - mai puțin de 3 ani": {
-    "n": 8,
-    "procent": 30.8
+    "n": 14,
+    "procent": 40
    },
    "Experiență medie - între 3 și 5 ani": {
-    "n": 1,
-    "procent": 3.8
+    "n": 2,
+    "procent": 5.7
    }
   },
   "contract": {
    "Cu durată nedeterminată": {
-    "n": 25,
-    "procent": 96.2
+    "n": 32,
+    "procent": 91.4
    },
    "Cu durată determinată": {
-    "n": 1,
-    "procent": 3.8
+    "n": 3,
+    "procent": 8.6
    }
   },
   "norma": {
    "Cu normă întreagă": {
-    "n": 26,
+    "n": 35,
     "procent": 100
    }
   },
   "regim": {
    "Sediu": {
-    "n": 25,
-    "procent": 96.2
+    "n": 34,
+    "procent": 97.1
    },
    "Telemuncă": {
     "n": 1,
-    "procent": 3.8
+    "procent": 2.9
    }
   },
   "judete": {
    "Argeș": {
     "n": 6,
-    "procent": 23.1
+    "procent": 17.1
    },
    "Neamț": {
     "n": 5,
-    "procent": 19.2
+    "procent": 14.3
    },
    "Bihor": {
+    "n": 4,
+    "procent": 11.4
+   },
+   "Brăila": {
     "n": 3,
-    "procent": 11.5
+    "procent": 8.6
+   },
+   "Harghita": {
+    "n": 2,
+    "procent": 5.7
    },
    "Hunedoara": {
     "n": 2,
-    "procent": 7.7
+    "procent": 5.7
    },
    "Buzău": {
     "n": 2,
-    "procent": 7.7
+    "procent": 5.7
    },
    "Vâlcea": {
     "n": 2,
-    "procent": 7.7
+    "procent": 5.7
    },
-   "Harghita": {
-    "n": 1,
-    "procent": 3.8
+   "Bacău": {
+    "n": 2,
+    "procent": 5.7
+   },
+   "Brașov": {
+    "n": 2,
+    "procent": 5.7
    },
    "Cluj": {
     "n": 1,
-    "procent": 3.8
+    "procent": 2.9
    },
    "Sibiu": {
     "n": 1,
-    "procent": 3.8
-   },
-   "Bacău": {
-    "n": 1,
-    "procent": 3.8
+    "procent": 2.9
    },
    "Bistrița-Năsăud": {
     "n": 1,
-    "procent": 3.8
+    "procent": 2.9
    },
-   "Brăila": {
+   "Dâmbovița": {
     "n": 1,
-    "procent": 3.8
+    "procent": 2.9
+   },
+   "Prahova": {
+    "n": 1,
+    "procent": 2.9
    }
   },
   "domenii": {
    "Altele": {
-    "n": 13,
-    "procent": 50
+    "n": 19,
+    "procent": 54.3
    },
    "Producție / Logistică": {
-    "n": 9,
-    "procent": 34.6
+    "n": 10,
+    "procent": 28.6
+   },
+   "Construcții / Instalații": {
+    "n": 4,
+    "procent": 11.4
    },
    "Specialiști / Tehnicieni": {
     "n": 2,
-    "procent": 7.7
-   },
-   "Construcții / Instalații": {
-    "n": 2,
-    "procent": 7.7
+    "procent": 5.7
    }
   },
   "coduriCorInGrupa": {
    "741307 - ELECTRICIAN DE ÎNTRETINERE SI REPARATII": {
-    "n": 67,
-    "procent": 60.9
+    "n": 139,
+    "procent": 65.6
    },
    "741301 - ELECTRICIAN EXPLOATARE CENTRALE SI STATII ELECTRICE": {
-    "n": 26,
-    "procent": 23.6
-   },
-   "741304 - ELECTRICIAN MONTARE SI REPARATII LINII ELECTRICE AERIENE": {
-    "n": 5,
-    "procent": 4.5
+    "n": 35,
+    "procent": 16.5
    },
    "741302 - ELECTRICIAN EXPLOATARE RETELE ELECTRICE": {
+    "n": 13,
+    "procent": 6.1
+   },
+   "741304 - ELECTRICIAN MONTARE SI REPARATII LINII ELECTRICE AERIENE": {
+    "n": 10,
+    "procent": 4.7
+   },
+   "741308 - ELECTRICIAN MONTATOR DE INSTALATII AUTOMATIZATE": {
+    "n": 5,
+    "procent": 2.4
+   },
+   "741313 - ELECTRICIAN PENTRU UTILIZAREA ENERGIEI ELECTRICE": {
     "n": 4,
-    "procent": 3.6
+    "procent": 1.9
    },
    "741306 - ELECTRICIAN PROTECTIE RELEE, AUTOMATIZARI SI MASURATORI ELECTRICE": {
     "n": 3,
-    "procent": 2.7
-   },
-   "741308 - ELECTRICIAN MONTATOR DE INSTALATII AUTOMATIZATE": {
-    "n": 2,
-    "procent": 1.8
+    "procent": 1.4
    },
    "741309 - ELECTRICIAN MONTATOR DE INSTALATII ELECTRICE LA MIJLOACE DE TRANSPORT": {
-    "n": 2,
-    "procent": 1.8
-   },
-   "741313 - ELECTRICIAN PENTRU UTILIZAREA ENERGIEI ELECTRICE": {
-    "n": 1,
-    "procent": 0.9
+    "n": 3,
+    "procent": 1.4
    }
   }
  },

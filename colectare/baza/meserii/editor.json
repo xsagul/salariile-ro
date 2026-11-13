@@ -4,35 +4,35 @@
  "cor": "264211",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
-  "cuSalariu": 6,
+  "cuSalariu": 9,
   "cuBazaDeclarata": 1,
-  "faraBazaDeclarata": 5,
+  "faraBazaDeclarata": 8,
   "surse": {
    "bestjobs": {
-    "n": 3,
-    "procent": 50
+    "n": 6,
+    "procent": 66.7
    },
    "olx": {
     "n": 1,
-    "procent": 16.7
+    "procent": 11.1
    },
    "hipo": {
     "n": 1,
-    "procent": 16.7
+    "procent": 11.1
    },
    "ejobs": {
     "n": 1,
-    "procent": 16.7
+    "procent": 11.1
    }
   },
   "colectari": {
+   "continuă": {
+    "n": 5,
+    "procent": 55.6
+   },
    "8 septembrie 2026": {
     "n": 4,
-    "procent": 66.7
-   },
-   "continuă": {
-    "n": 2,
-    "procent": 33.3
+    "procent": 44.4
    }
   },
   "net": {
@@ -45,87 +45,108 @@
    "n": 1
   },
   "faraBazaDeclarata_valori": {
-   "n": 5
+   "n": 8
   },
   "peOras": {},
   "peJudet": {},
   "peLuna": {
    "2026-09": {
-    "n": 4,
-    "procent": 66.7
+    "n": 5,
+    "procent": 55.6
+   },
+   "2026-10": {
+    "n": 2,
+    "procent": 22.2
    },
    "2026-06": {
     "n": 1,
-    "procent": 16.7
+    "procent": 11.1
    },
    "2026-08": {
     "n": 1,
-    "procent": 16.7
+    "procent": 11.1
    }
   }
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 6,
+  "anunturiCitite": 10,
   "cuSalariu": 0,
   "nivel": {
    "junior": {
     "n": 1,
-    "procent": 16.7
+    "procent": 10
    }
   },
   "experienta": {
    "da": {
-    "n": 3,
+    "n": 5,
     "procent": 50
    },
    "1+ ani": {
     "n": 1,
-    "procent": 16.7
+    "procent": 10
    }
   },
   "experientaPortal": {
    "0–1 an": {
     "n": 3,
-    "procent": 50
+    "procent": 30
    },
    "1–5 ani": {
     "n": 1,
-    "procent": 16.7
+    "procent": 10
    }
   },
   "studii": {
    "superioare": {
     "n": 2,
-    "procent": 33.3
+    "procent": 20
    }
   },
   "limbi": {
    "engleza": {
-    "n": 2,
-    "procent": 33.3
+    "n": 3,
+    "procent": 30
    }
   },
   "permis": {},
   "atestate": {},
   "program": {
    "ture": {
+    "n": 2,
+    "procent": 20
+   },
+   "noapte": {
     "n": 1,
-    "procent": 16.7
+    "procent": 10
    }
   },
   "mod": {
    "hibrid": {
     "n": 1,
-    "procent": 16.7
+    "procent": 10
+   },
+   "remote": {
+    "n": 1,
+    "procent": 10
    }
   },
-  "norma": {},
+  "norma": {
+   "full-time": {
+    "n": 1,
+    "procent": 10
+   }
+  },
   "durata": {},
   "beneficii": {
+   "bonus": {
+    "n": 3,
+    "procent": 30
+   },
    "asigurare medicală": {
     "n": 1,
-    "procent": 16.7
+    "procent": 10
    }
   },
   "tehnologii": {},
@@ -133,43 +154,61 @@
   "strainatate": {},
   "limbaAnuntului": {
    "ro": {
-    "n": 5,
-    "procent": 83.3
+    "n": 7,
+    "procent": 70
    },
    "en": {
-    "n": 1,
-    "procent": 16.7
+    "n": 3,
+    "procent": 30
    }
   },
   "surse": {
+   "bestjobs": {
+    "n": 6,
+    "procent": 60
+   },
    "hipo": {
     "n": 4,
-    "procent": 66.7
-   },
-   "bestjobs": {
-    "n": 2,
-    "procent": 33.3
+    "procent": 40
    }
   },
   "peJudet": {
    "RO": {
     "n": 4,
-    "procent": 66.7
+    "procent": 40
    }
   },
   "motiveFaraSalariu": {
    "salary_evidence_incomplete": {
     "n": 1,
-    "procent": 100
+    "procent": 50
+   },
+   "full_time_unconfirmed": {
+    "n": 1,
+    "procent": 50
    }
   },
-  "salariuPeFactor": {}
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
   "oferte": 0,
   "posturi": 0,
-  "ofertePeGrupaCor": 0,
+  "ofertePeGrupaCor": 1,
   "tipSalariu": {},
   "netMinimDeclarat": {
    "n": 0
@@ -185,7 +224,12 @@
   "regim": {},
   "judete": {},
   "domenii": {},
-  "coduriCorInGrupa": {}
+  "coduriCorInGrupa": {
+   "264207 - EDITORIALIST": {
+    "n": 1,
+    "procent": 100
+   }
+  }
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",

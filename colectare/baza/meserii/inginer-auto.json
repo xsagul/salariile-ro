@@ -54,33 +54,60 @@
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 1,
+  "anunturiCitite": 4,
   "cuSalariu": 0,
   "nivel": {},
   "experienta": {
+   "da": {
+    "n": 3,
+    "procent": 75
+   },
    "2+ ani": {
     "n": 1,
-    "procent": 100
+    "procent": 25
    }
   },
   "experientaPortal": {},
   "studii": {
    "superioare": {
-    "n": 1,
-    "procent": 100
+    "n": 3,
+    "procent": 75
    }
   },
   "limbi": {},
-  "permis": {},
+  "permis": {
+   "B": {
+    "n": 2,
+    "procent": 50
+   }
+  },
   "atestate": {},
   "program": {},
   "mod": {},
-  "norma": {},
-  "durata": {},
+  "norma": {
+   "full-time": {
+    "n": 2,
+    "procent": 50
+   }
+  },
+  "durata": {
+   "nedeterminată": {
+    "n": 1,
+    "procent": 25
+   }
+  },
   "beneficii": {
    "bonus": {
+    "n": 2,
+    "procent": 50
+   },
+   "cursuri / training": {
     "n": 1,
-    "procent": 100
+    "procent": 25
+   },
+   "masă": {
+    "n": 1,
+    "procent": 25
    }
   },
   "tehnologii": {},
@@ -88,172 +115,236 @@
   "strainatate": {},
   "limbaAnuntului": {
    "ro": {
-    "n": 1,
+    "n": 4,
     "procent": 100
    }
   },
   "surse": {
+   "publi24": {
+    "n": 3,
+    "procent": 75
+   },
    "bestjobs": {
     "n": 1,
+    "procent": 25
+   }
+  },
+  "peJudet": {
+   "Vrancea": {
+    "n": 2,
+    "procent": 50
+   },
+   "Arad": {
+    "n": 1,
+    "procent": 25
+   }
+  },
+  "motiveFaraSalariu": {
+   "salary_evidence_incomplete": {
+    "n": 3,
     "procent": 100
    }
   },
-  "peJudet": {},
-  "motiveFaraSalariu": {},
-  "salariuPeFactor": {}
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
-  "oferte": 5,
-  "posturi": 7,
-  "ofertePeGrupaCor": 91,
+  "oferte": 8,
+  "posturi": 10,
+  "ofertePeGrupaCor": 133,
   "tipSalariu": {
    "none": {
     "n": 4,
-    "procent": 80
+    "procent": 50
    },
    "gross": {
+    "n": 3,
+    "procent": 37.5
+   },
+   "net": {
     "n": 1,
-    "procent": 20
+    "procent": 12.5
    }
   },
   "netMinimDeclarat": {
-   "n": 0
-  },
-  "brutMinimDeclarat": {
    "n": 1
   },
-  "laSalariulMinim": 0,
+  "brutMinimDeclarat": {
+   "n": 3
+  },
+  "laSalariulMinim": 1,
   "studii": {
    "Universitar - ÎNVĂȚĂMÂNT SUPERIOR": {
-    "n": 5,
+    "n": 8,
     "procent": 100
    }
   },
   "experienta": {
    "Experiență puțină - mai puțin de 3 ani": {
-    "n": 3,
-    "procent": 60
+    "n": 4,
+    "procent": 50
    },
    "Fără experiență - 0 ani": {
-    "n": 1,
-    "procent": 20
+    "n": 2,
+    "procent": 25
    },
    "Experiență medie - între 3 și 5 ani": {
     "n": 1,
-    "procent": 20
+    "procent": 12.5
+   },
+   "Avansat - între 5 și 7 ani": {
+    "n": 1,
+    "procent": 12.5
    }
   },
   "contract": {
    "Cu durată nedeterminată": {
-    "n": 5,
+    "n": 8,
     "procent": 100
    }
   },
   "norma": {
    "Cu normă întreagă": {
-    "n": 5,
+    "n": 8,
     "procent": 100
    }
   },
   "regim": {
    "Sediu": {
-    "n": 4,
-    "procent": 80
+    "n": 7,
+    "procent": 87.5
    },
    "Hibrid - sediu + telemuncă": {
     "n": 1,
-    "procent": 20
+    "procent": 12.5
    }
   },
   "judete": {
    "Vâlcea": {
     "n": 1,
-    "procent": 20
+    "procent": 12.5
    },
    "Dolj": {
     "n": 1,
-    "procent": 20
+    "procent": 12.5
    },
    "Harghita": {
     "n": 1,
-    "procent": 20
+    "procent": 12.5
    },
    "Covasna": {
     "n": 1,
-    "procent": 20
+    "procent": 12.5
    },
    "Municipiul București": {
     "n": 1,
-    "procent": 20
+    "procent": 12.5
+   },
+   "Neamț": {
+    "n": 1,
+    "procent": 12.5
+   },
+   "Prahova": {
+    "n": 1,
+    "procent": 12.5
+   },
+   "Bihor": {
+    "n": 1,
+    "procent": 12.5
    }
   },
   "domenii": {
+   "Altele": {
+    "n": 3,
+    "procent": 37.5
+   },
    "Inginerie": {
     "n": 3,
-    "procent": 60
+    "procent": 37.5
    },
-   "Altele": {
-    "n": 2,
-    "procent": 40
+   "Construcții / Instalații": {
+    "n": 1,
+    "procent": 12.5
+   },
+   "Servicii transport / curierat": {
+    "n": 1,
+    "procent": 12.5
    }
   },
   "coduriCorInGrupa": {
    "214401 - INGINER MECANIC": {
-    "n": 51,
-    "procent": 56
+    "n": 75,
+    "procent": 56.4
    },
    "214438 - PROIECTANT INGINER MECANIC": {
-    "n": 11,
-    "procent": 12.1
-   },
-   "214496 - inginer sudor": {
-    "n": 6,
-    "procent": 6.6
+    "n": 15,
+    "procent": 11.3
    },
    "214412 - INGINER AUTOVEHICULE RUTIERE": {
-    "n": 5,
-    "procent": 5.5
+    "n": 8,
+    "procent": 6
+   },
+   "214496 - inginer sudor": {
+    "n": 8,
+    "procent": 6
    },
    "214408 - INGINER MASINI-UNELTE": {
-    "n": 4,
-    "procent": 4.4
+    "n": 6,
+    "procent": 4.5
+   },
+   "214444 - INGINER/SUBINGINER TEHNOLOG PRELUCRARI MECANICE": {
+    "n": 6,
+    "procent": 4.5
+   },
+   "214461 - INGINER DE CERCETARE ÎN ECHIPAMENTE DE PROCES": {
+    "n": 3,
+    "procent": 2.3
    },
    "214467 - INGINER DE CERCETARE ÎN TEHNOLOGIA CONSTRUCTIILOR DE MASINI": {
     "n": 2,
-    "procent": 2.2
+    "procent": 1.5
+   },
+   "214407 - INGINER NAVE": {
+    "n": 2,
+    "procent": 1.5
    },
    "214443 - SPECIALIST MENTENANTA MECANICA ECHIPAMENTE INDUSTRIALE": {
     "n": 2,
-    "procent": 2.2
-   },
-   "214461 - INGINER DE CERCETARE ÎN ECHIPAMENTE DE PROCES": {
-    "n": 2,
-    "procent": 2.2
-   },
-   "214444 - INGINER/SUBINGINER TEHNOLOG PRELUCRARI MECANICE": {
-    "n": 2,
-    "procent": 2.2
+    "procent": 1.5
    },
    "214406 - INGINER AVIATIE": {
     "n": 2,
-    "procent": 2.2
-   },
-   "214407 - INGINER NAVE": {
-    "n": 1,
-    "procent": 1.1
+    "procent": 1.5
    },
    "214405 - INGINER MECANICA AGRICOLA": {
     "n": 1,
-    "procent": 1.1
+    "procent": 0.8
    },
    "214410 - INGINER MASINI TERMICE": {
     "n": 1,
-    "procent": 1.1
+    "procent": 0.8
    },
    "214491 - Inginer mecatronist": {
     "n": 1,
-    "procent": 1.1
+    "procent": 0.8
+   },
+   "214433 - CONSILIER INGINER MECANIC": {
+    "n": 1,
+    "procent": 0.8
    }
   }
  },

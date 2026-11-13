@@ -48,13 +48,27 @@
   "surse": {},
   "peJudet": {},
   "motiveFaraSalariu": {},
-  "salariuPeFactor": {}
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
   "oferte": 3,
   "posturi": 18,
-  "ofertePeGrupaCor": 6,
+  "ofertePeGrupaCor": 9,
   "tipSalariu": {
    "none": {
     "n": 2,
@@ -137,19 +151,27 @@
   "coduriCorInGrupa": {
    "214616 - INGINER PETROLIST": {
     "n": 3,
-    "procent": 50
+    "procent": 33.3
    },
    "214602 - INGINER MINIER": {
-    "n": 1,
-    "procent": 16.7
+    "n": 2,
+    "procent": 22.2
    },
    "214623 - PROIECTANT INGINER METALURG": {
     "n": 1,
-    "procent": 16.7
+    "procent": 11.1
    },
    "214614 - INGINER PRELUCRARI METALURGICE": {
     "n": 1,
-    "procent": 16.7
+    "procent": 11.1
+   },
+   "214650 - CERCETATOR ÎN STIINTA MATERIALELOR": {
+    "n": 1,
+    "procent": 11.1
+   },
+   "214652 - ASISTENT DE CERCETARE ÎN STIINTA MATERIALELOR": {
+    "n": 1,
+    "procent": 11.1
    }
   }
  },

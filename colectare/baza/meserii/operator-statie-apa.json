@@ -48,13 +48,27 @@
   "surse": {},
   "peJudet": {},
   "motiveFaraSalariu": {},
-  "salariuPeFactor": {}
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
   "oferte": 0,
   "posturi": 0,
-  "ofertePeGrupaCor": 1,
+  "ofertePeGrupaCor": 2,
   "tipSalariu": {},
   "netMinimDeclarat": {
    "n": 0
@@ -73,7 +87,11 @@
   "coduriCorInGrupa": {
    "313201 - OPERATOR LA INSTALATII DE INCINERARE": {
     "n": 1,
-    "procent": 100
+    "procent": 50
+   },
+   "313203 - OPERATOR CIRCUITE RETEA APA": {
+    "n": 1,
+    "procent": 50
    }
   }
  },

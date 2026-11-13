@@ -4,118 +4,182 @@
  "cor": "226401",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
-  "cuSalariu": 7,
-  "cuBazaDeclarata": 1,
-  "faraBazaDeclarata": 6,
+  "cuSalariu": 10,
+  "cuBazaDeclarata": 2,
+  "faraBazaDeclarata": 8,
   "surse": {
+   "bestjobs": {
+    "n": 6,
+    "procent": 60
+   },
    "ejobs": {
     "n": 3,
-    "procent": 42.9
-   },
-   "bestjobs": {
-    "n": 3,
-    "procent": 42.9
+    "procent": 30
    },
    "anuntul": {
     "n": 1,
-    "procent": 14.3
+    "procent": 10
    }
   },
   "colectari": {
+   "continuă": {
+    "n": 5,
+    "procent": 50
+   },
    "8 septembrie 2026": {
     "n": 5,
-    "procent": 71.4
-   },
-   "continuă": {
-    "n": 2,
-    "procent": 28.6
+    "procent": 50
    }
   },
   "net": {
-   "n": 1
+   "n": 2
   },
   "netMinimOferit": {
-   "n": 1
+   "n": 2
   },
   "netMaximOferit": {
-   "n": 1
+   "n": 2
   },
   "faraBazaDeclarata_valori": {
-   "n": 6
+   "n": 8
   },
-  "peOras": {},
+  "peOras": {
+   "Calea Turzii": {
+    "n": 1
+   }
+  },
   "peJudet": {},
   "peLuna": {
    "2026-09": {
-    "n": 5,
-    "procent": 71.4
+    "n": 6,
+    "procent": 60
+   },
+   "2026-10": {
+    "n": 2,
+    "procent": 20
    },
    "2026-08": {
     "n": 2,
-    "procent": 28.6
+    "procent": 20
    }
   }
  },
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
-  "anunturiCitite": 12,
-  "cuSalariu": 0,
-  "nivel": {},
+  "anunturiCitite": 44,
+  "cuSalariu": 1,
+  "nivel": {
+   "junior": {
+    "n": 1,
+    "procent": 2.3
+   }
+  },
   "experienta": {
    "da": {
-    "n": 3,
-    "procent": 25
-   },
-   "1+ ani": {
-    "n": 2,
-    "procent": 16.7
+    "n": 10,
+    "procent": 22.7
    },
    "fara": {
+    "n": 4,
+    "procent": 9.1
+   },
+   "1+ ani": {
+    "n": 3,
+    "procent": 6.8
+   },
+   "avantaj": {
     "n": 1,
-    "procent": 8.3
+    "procent": 2.3
    }
   },
   "experientaPortal": {
    "0–1 an": {
     "n": 1,
-    "procent": 8.3
+    "procent": 2.3
    },
    "1–5 ani": {
     "n": 1,
-    "procent": 8.3
+    "procent": 2.3
    }
   },
   "studii": {
    "superioare": {
-    "n": 3,
-    "procent": 25
+    "n": 14,
+    "procent": 31.8
    },
    "medii": {
-    "n": 1,
-    "procent": 8.3
+    "n": 2,
+    "procent": 4.5
    }
   },
   "limbi": {
    "engleza": {
-    "n": 2,
-    "procent": 16.7
+    "n": 3,
+    "procent": 6.8
    }
   },
-  "permis": {},
+  "permis": {
+   "B": {
+    "n": 2,
+    "procent": 4.5
+   },
+   "da": {
+    "n": 1,
+    "procent": 2.3
+   }
+  },
   "atestate": {},
-  "program": {},
+  "program": {
+   "ture": {
+    "n": 3,
+    "procent": 6.8
+   },
+   "luni–vineri": {
+    "n": 2,
+    "procent": 4.5
+   },
+   "flexibil": {
+    "n": 2,
+    "procent": 4.5
+   }
+  },
   "mod": {},
   "norma": {
    "full-time": {
+    "n": 4,
+    "procent": 9.1
+   },
+   "part-time": {
     "n": 1,
-    "procent": 8.3
+    "procent": 2.3
    }
   },
-  "durata": {},
+  "durata": {
+   "nedeterminată": {
+    "n": 1,
+    "procent": 2.3
+   }
+  },
   "beneficii": {
    "cursuri / training": {
+    "n": 3,
+    "procent": 6.8
+   },
+   "transport": {
+    "n": 2,
+    "procent": 4.5
+   },
+   "bonus": {
+    "n": 2,
+    "procent": 4.5
+   },
+   "tichete de masă": {
     "n": 1,
-    "procent": 8.3
+    "procent": 2.3
+   },
+   "telefon / laptop": {
+    "n": 1,
+    "procent": 2.3
    }
   },
   "tehnologii": {},
@@ -123,238 +187,358 @@
   "strainatate": {},
   "limbaAnuntului": {
    "ro": {
-    "n": 12,
+    "n": 44,
     "procent": 100
    }
   },
   "surse": {
+   "publi24": {
+    "n": 24,
+    "procent": 54.5
+   },
    "bestjobs": {
-    "n": 6,
-    "procent": 50
+    "n": 14,
+    "procent": 31.8
    },
    "ejobs": {
     "n": 4,
-    "procent": 33.3
+    "procent": 9.1
    },
    "hipo": {
     "n": 2,
-    "procent": 16.7
+    "procent": 4.5
    }
   },
   "peJudet": {
    "10": {
     "n": 2,
-    "procent": 16.7
+    "procent": 4.5
    },
    "21": {
     "n": 1,
-    "procent": 8.3
+    "procent": 2.3
+   },
+   "Bucuresti": {
+    "n": 9,
+    "procent": 20.5
+   },
+   "Cluj": {
+    "n": 6,
+    "procent": 13.6
    },
    "RO": {
     "n": 2,
-    "procent": 16.7
+    "procent": 4.5
+   },
+   "Constanta": {
+    "n": 2,
+    "procent": 4.5
+   },
+   "Prahova": {
+    "n": 2,
+    "procent": 4.5
+   },
+   "Bistrita-Nasaud": {
+    "n": 1,
+    "procent": 2.3
+   },
+   "Iasi": {
+    "n": 1,
+    "procent": 2.3
+   },
+   "Ilfov": {
+    "n": 1,
+    "procent": 2.3
+   },
+   "Galati": {
+    "n": 1,
+    "procent": 2.3
+   },
+   "Maramures": {
+    "n": 1,
+    "procent": 2.3
    }
   },
   "motiveFaraSalariu": {
    "salary_evidence_incomplete": {
-    "n": 5,
-    "procent": 50
+    "n": 32,
+    "procent": 82.1
+   },
+   "full_time_unconfirmed": {
+    "n": 10,
+    "procent": 25.6
    },
    "contract_or_variable_income": {
-    "n": 3,
-    "procent": 30
+    "n": 5,
+    "procent": 12.8
    },
    "foreign_or_noncomparable_work": {
+    "n": 3,
+    "procent": 7.7
+   },
+   "multiple_unresolved_amounts": {
     "n": 2,
-    "procent": 20
+    "procent": 5.1
    },
    "country_unconfirmed": {
     "n": 1,
-    "procent": 10
-   },
-   "full_time_unconfirmed": {
-    "n": 1,
-    "procent": 10
+    "procent": 2.6
    }
   },
-  "salariuPeFactor": {}
+  "salariuPeFactor": {
+   "studii": {
+    "superioare": {
+     "n": 1
+    }
+   },
+   "beneficii": {
+    "bonus": {
+     "n": 1
+    }
+   }
+  },
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
-  "oferte": 8,
-  "posturi": 15,
-  "ofertePeGrupaCor": 23,
+  "oferte": 17,
+  "posturi": 26,
+  "ofertePeGrupaCor": 40,
   "tipSalariu": {
    "gross": {
-    "n": 4,
-    "procent": 50
+    "n": 12,
+    "procent": 70.6
    },
    "net": {
-    "n": 2,
-    "procent": 25
+    "n": 3,
+    "procent": 17.6
    },
    "none": {
     "n": 2,
-    "procent": 25
+    "procent": 11.8
    }
   },
   "netMinimDeclarat": {
-   "n": 2
+   "n": 3
   },
   "brutMinimDeclarat": {
-   "n": 4
+   "n": 12,
+   "p10": 4325,
+   "p25": 4325,
+   "median": 4702,
+   "p75": 5125,
+   "p90": 5631,
+   "min": 2700,
+   "max": 5771
   },
-  "laSalariulMinim": 1,
+  "laSalariulMinim": 4,
   "studii": {
    "Universitar - ÎNVĂȚĂMÂNT SUPERIOR": {
-    "n": 5,
-    "procent": 62.5
+    "n": 14,
+    "procent": 82.4
    },
    "Liceal - LICEU TEORETIC": {
     "n": 3,
-    "procent": 37.5
+    "procent": 17.6
    }
   },
   "experienta": {
-   "Experiență puțină - mai puțin de 3 ani": {
-    "n": 5,
-    "procent": 62.5
-   },
    "Fără experiență - 0 ani": {
-    "n": 3,
-    "procent": 37.5
+    "n": 8,
+    "procent": 47.1
+   },
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 8,
+    "procent": 47.1
+   },
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 1,
+    "procent": 5.9
    }
   },
   "contract": {
    "Cu durată nedeterminată": {
-    "n": 8,
-    "procent": 100
+    "n": 16,
+    "procent": 94.1
+   },
+   "Cu durată determinată": {
+    "n": 1,
+    "procent": 5.9
    }
   },
   "norma": {
    "Cu normă întreagă": {
-    "n": 8,
+    "n": 17,
     "procent": 100
    }
   },
   "regim": {
    "Sediu": {
-    "n": 7,
-    "procent": 87.5
+    "n": 16,
+    "procent": 94.1
    },
    "Hibrid - sediu + la domiciliu": {
     "n": 1,
-    "procent": 12.5
+    "procent": 5.9
    }
   },
   "judete": {
    "Municipiul București": {
     "n": 3,
-    "procent": 37.5
+    "procent": 17.6
    },
    "Alba": {
     "n": 2,
-    "procent": 25
+    "procent": 11.8
+   },
+   "Botoșani": {
+    "n": 2,
+    "procent": 11.8
    },
    "Hunedoara": {
     "n": 1,
-    "procent": 12.5
+    "procent": 5.9
    },
    "Brașov": {
     "n": 1,
-    "procent": 12.5
+    "procent": 5.9
    },
    "Vrancea": {
     "n": 1,
-    "procent": 12.5
+    "procent": 5.9
+   },
+   "Cluj": {
+    "n": 1,
+    "procent": 5.9
+   },
+   "Vaslui": {
+    "n": 1,
+    "procent": 5.9
+   },
+   "Constanța": {
+    "n": 1,
+    "procent": 5.9
+   },
+   "Timiș": {
+    "n": 1,
+    "procent": 5.9
+   },
+   "Argeș": {
+    "n": 1,
+    "procent": 5.9
+   },
+   "Ialomița": {
+    "n": 1,
+    "procent": 5.9
+   },
+   "Bihor": {
+    "n": 1,
+    "procent": 5.9
    }
   },
   "domenii": {
    "Medicină / Sănătate /Psihoterapie": {
-    "n": 8,
-    "procent": 100
+    "n": 16,
+    "procent": 94.1
+   },
+   "ASISTENTA SOCIALA": {
+    "n": 1,
+    "procent": 5.9
    }
   },
   "coduriCorInGrupa": {
    "226405 - KINETOTERAPEUT": {
-    "n": 13,
-    "procent": 56.5
+    "n": 21,
+    "procent": 52.5
    },
    "226401 - FIZIOKINETOTERAPEUT": {
-    "n": 8,
-    "procent": 34.8
+    "n": 17,
+    "procent": 42.5
    },
    "226402 - FIZIOTERAPEUT": {
     "n": 2,
-    "procent": 8.7
+    "procent": 5
    }
   }
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
-  "posturi": 135,
+  "posturi": 140,
   "institutii": 21,
-  "posturiDinSurseDeVerificat": 6,
+  "posturiDinSurseDeVerificat": 8,
   "judete": {
+   "BC": {
+    "n": 22,
+    "procent": 15.7
+   },
    "CJ": {
     "n": 20,
-    "procent": 14.8
-   },
-   "BC": {
-    "n": 20,
-    "procent": 14.8
+    "procent": 14.3
    },
    "CL": {
     "n": 18,
-    "procent": 13.3
+    "procent": 12.9
+   },
+   "BH": {
+    "n": 13,
+    "procent": 9.3
    },
    "SB": {
     "n": 13,
-    "procent": 9.6
+    "procent": 9.3
    },
    "TM": {
     "n": 13,
-    "procent": 9.6
+    "procent": 9.3
    },
    "HR": {
     "n": 11,
-    "procent": 8.1
-   },
-   "BH": {
-    "n": 8,
-    "procent": 5.9
-   },
-   "CT": {
-    "n": 5,
-    "procent": 3.7
+    "procent": 7.9
    },
    "SV": {
     "n": 5,
-    "procent": 3.7
+    "procent": 3.6
    },
    "AB": {
     "n": 5,
-    "procent": 3.7
+    "procent": 3.6
    },
    "BR": {
     "n": 4,
-    "procent": 3
+    "procent": 2.9
    },
    "BZ": {
     "n": 4,
-    "procent": 3
+    "procent": 2.9
+   },
+   "CT": {
+    "n": 3,
+    "procent": 2.1
    },
    "GR": {
     "n": 3,
-    "procent": 2.2
+    "procent": 2.1
    },
    "BV": {
     "n": 2,
-    "procent": 1.5
+    "procent": 1.4
    },
    "B": {
-    "n": 2,
-    "procent": 1.5
+    "n": 1,
+    "procent": 0.7
    },
    "IS": {
     "n": 1,
@@ -363,44 +547,64 @@
    "DJ": {
     "n": 1,
     "procent": 0.7
+   },
+   "SM": {
+    "n": 1,
+    "procent": 0.7
    }
   },
   "tipInstitutie": {
    "spital": {
-    "n": 115,
-    "procent": 85.2
+    "n": 120,
+    "procent": 85.7
    },
    "dgaspc": {
     "n": 20,
-    "procent": 14.8
+    "procent": 14.3
    }
   },
   "perioade": {
    "2026-03": {
-    "n": 94,
-    "procent": 69.6
+    "n": 53,
+    "procent": 37.9
    },
-   "2026-02": {
-    "n": 24,
-    "procent": 17.8
+   "2026-09": {
+    "n": 42,
+    "procent": 30
+   },
+   "2025-09": {
+    "n": 22,
+    "procent": 15.7
    },
    "2025-03": {
     "n": 13,
-    "procent": 9.6
+    "procent": 9.3
+   },
+   "2026-02": {
+    "n": 4,
+    "procent": 2.9
    },
    "2022-09": {
     "n": 3,
-    "procent": 2.2
+    "procent": 2.1
    },
    "2024-03": {
+    "n": 1,
+    "procent": 0.7
+   },
+   "2026-10": {
+    "n": 1,
+    "procent": 0.7
+   },
+   "2026-08": {
     "n": 1,
     "procent": 0.7
    }
   },
   "studii": {
    "S": {
-    "n": 50,
-    "procent": 37
+    "n": 53,
+    "procent": 37.9
    },
    "G": {
     "n": 1,
@@ -408,64 +612,64 @@
    }
   },
   "bazaBruta": {
-   "n": 135,
-   "p10": 5556,
-   "p25": 6734,
-   "median": 8282,
+   "n": 140,
+   "p10": 5673,
+   "p25": 6967,
+   "median": 8285,
    "p75": 9135,
    "p90": 9138,
    "min": 3666,
    "max": 10434
   },
   "bazaCuSporuriFixe": {
-   "n": 135,
-   "p10": 5632,
-   "p25": 7436,
+   "n": 140,
+   "p10": 5808,
+   "p25": 7646,
    "median": 9315,
-   "p75": 10112,
-   "p90": 11831,
+   "p75": 10173,
+   "p90": 11808,
    "min": 4017.96,
    "max": 14366.4
   },
   "peGradatie": {
    "gradația 5": {
-    "n": 23,
-    "p10": 9059,
+    "n": 27,
+    "p10": 9060,
     "p25": 9646,
-    "median": 10035,
-    "p75": 11300,
-    "p90": 12182,
+    "median": 9788,
+    "p75": 10650,
+    "p90": 11691,
     "min": 8357,
     "max": 13190
    },
    "gradația 2": {
-    "n": 17,
-    "p10": 7507,
-    "p25": 7678,
-    "median": 8678,
+    "n": 18,
+    "p10": 7537,
+    "p25": 7687,
+    "median": 8481,
     "p75": 9727,
-    "p90": 9727,
+    "p90": 9741,
     "min": 4017.96,
     "max": 11956
    },
    "gradația 4": {
-    "n": 14,
-    "p10": 8332,
-    "p25": 9451,
-    "median": 10411,
-    "p75": 12132,
-    "p90": 13158,
+    "n": 15,
+    "p10": 8373,
+    "p25": 9394,
+    "median": 10168,
+    "p75": 12102,
+    "p90": 13042,
     "min": 7893,
     "max": 14366.4
    },
    "gradația 3": {
     "n": 13,
-    "p10": 9315,
-    "p25": 9402,
-    "median": 9981,
-    "p75": 10831,
-    "p90": 12524,
-    "min": 9253,
+    "p10": 9208,
+    "p25": 9315,
+    "median": 9589,
+    "p75": 10587,
+    "p90": 12085,
+    "min": 8909,
     "max": 13254
    },
    "gradația 1": {
@@ -520,11 +724,17 @@
    "kinetoterapeut principal": {
     "n": 3
    },
-   "KINETOTERAPEUT SUPERIOARE ( S )": {
-    "n": 3
-   },
    "Sectia Clinica Recuperare, Medicina fizica si Balneo.II KINE": {
     "n": 3
+   },
+   "Centrul de San.Mintala si prev.adict. copii (CSM) Kinetotera": {
+    "n": 2
+   },
+   "Laborator recup,medicina fizica si balne-C.Coposu Kinetotera": {
+    "n": 2
+   },
+   "SECTIA CLINICA REUPERARE MED., FIZICA SI BALNEO. Kinetoterap": {
+    "n": 2
    },
    "SECTIE RECUPERARE NEUROLOGICA Kinetoterapeut principal Grada": {
     "n": 2
@@ -559,19 +769,16 @@
    "229 Kinetoterapeut pr. Gradatia 4 Contractual": {
     "n": 1
    },
-   "Centrul de Sanatate Mintala Copii (CSM) Kinetoterapeut princ": {
-    "n": 1
-   },
-   "Laborator recup,medicina fizica si balne‐C.Coposu Kinetotera": {
-    "n": 1
-   },
-   "Laborator recup,medicina fizica si balne‐L.Pasteur Kinetoter": {
+   "Laborator recup,medicina fizica si balne-L.Pasteur Kinetoter": {
     "n": 1
    },
    "SECTIA CLINICA ATI I Kinetoterapeut principal Gradatia 5 SUP": {
     "n": 1
    },
    "SECTIA CLINICA ATI II Kinetoterapeut principal Gradatia 4 SU": {
+    "n": 1
+   },
+   "SECTIA CLINICA ATI II Kinetoterapeut Gradatia 2 SUPERIOARE P": {
     "n": 1
    },
    "Sectia Clinica NEUROLOGIE I Kinetoterapeut principal Gradati": {
@@ -592,6 +799,9 @@
    "kinetoterapeut debutant": {
     "n": 1
    },
+   "KINETOTERAPEUT SUPERIOARE ( S )": {
+    "n": 1
+   },
    "Sectia Clinica A.T.I. KINETOTERAPEUT S": {
     "n": 1
    },
@@ -604,7 +814,7 @@
    "KINETOTERAPEUT Gradatia 5": {
     "n": 1
    },
-   "Kinetoterapeut Gradatia": {
+   "Kinetoterapeut Gradatia 4": {
     "n": 1
    },
    "SECTIA ORTOPEDIE SI TRAUMATOLOGIE KINETOTERAPEUT PRINCIPAL G": {
@@ -628,6 +838,9 @@
    "KINETOTERAPEUT PR. COMPARTIMENT RECUPERARE, MED.FIZICA SI BA": {
     "n": 1
    },
+   "KINETOTERAPEUT PR. Sectia ANESTEZIE-TERAPIE INTENSIVA": {
+    "n": 1
+   },
    "KINETOTERAPEUT PR. Sectia CARDIOLOGIE": {
     "n": 1
    },
@@ -638,6 +851,9 @@
     "n": 1
    },
    "KINETOTERAPEUT PR. SECTIA INGRIJIRI PALIATIVE": {
+    "n": 1
+   },
+   "KINETOTERAPEUT Sectia MEDICINA INTERNA": {
     "n": 1
    },
    "KINETOTERAPEUT Sectia ONCOLOGIE MEDICALA": {
@@ -670,7 +886,7 @@
    "KINETOTERAPEUT PR. Gradatia 5 Sporurile din anexele 1, 2,3,5": {
     "n": 1
    },
-   "KINETOTERAPEUT s l": {
+   "august Kinetoterapeut principal,S Gradatia 5": {
     "n": 1
    }
   }

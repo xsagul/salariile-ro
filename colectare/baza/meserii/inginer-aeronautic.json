@@ -48,13 +48,27 @@
   "surse": {},
   "peJudet": {},
   "motiveFaraSalariu": {},
-  "salariuPeFactor": {}
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
   "oferte": 0,
   "posturi": 0,
-  "ofertePeGrupaCor": 91,
+  "ofertePeGrupaCor": 133,
   "tipSalariu": {},
   "netMinimDeclarat": {
    "n": 0
@@ -72,60 +86,64 @@
   "domenii": {},
   "coduriCorInGrupa": {
    "214401 - INGINER MECANIC": {
-    "n": 51,
-    "procent": 56
+    "n": 75,
+    "procent": 56.4
    },
    "214438 - PROIECTANT INGINER MECANIC": {
-    "n": 11,
-    "procent": 12.1
-   },
-   "214496 - inginer sudor": {
-    "n": 6,
-    "procent": 6.6
+    "n": 15,
+    "procent": 11.3
    },
    "214412 - INGINER AUTOVEHICULE RUTIERE": {
-    "n": 5,
-    "procent": 5.5
+    "n": 8,
+    "procent": 6
+   },
+   "214496 - inginer sudor": {
+    "n": 8,
+    "procent": 6
    },
    "214408 - INGINER MASINI-UNELTE": {
-    "n": 4,
-    "procent": 4.4
+    "n": 6,
+    "procent": 4.5
+   },
+   "214444 - INGINER/SUBINGINER TEHNOLOG PRELUCRARI MECANICE": {
+    "n": 6,
+    "procent": 4.5
+   },
+   "214461 - INGINER DE CERCETARE ÎN ECHIPAMENTE DE PROCES": {
+    "n": 3,
+    "procent": 2.3
    },
    "214467 - INGINER DE CERCETARE ÎN TEHNOLOGIA CONSTRUCTIILOR DE MASINI": {
     "n": 2,
-    "procent": 2.2
+    "procent": 1.5
+   },
+   "214407 - INGINER NAVE": {
+    "n": 2,
+    "procent": 1.5
    },
    "214443 - SPECIALIST MENTENANTA MECANICA ECHIPAMENTE INDUSTRIALE": {
     "n": 2,
-    "procent": 2.2
-   },
-   "214461 - INGINER DE CERCETARE ÎN ECHIPAMENTE DE PROCES": {
-    "n": 2,
-    "procent": 2.2
-   },
-   "214444 - INGINER/SUBINGINER TEHNOLOG PRELUCRARI MECANICE": {
-    "n": 2,
-    "procent": 2.2
+    "procent": 1.5
    },
    "214406 - INGINER AVIATIE": {
     "n": 2,
-    "procent": 2.2
-   },
-   "214407 - INGINER NAVE": {
-    "n": 1,
-    "procent": 1.1
+    "procent": 1.5
    },
    "214405 - INGINER MECANICA AGRICOLA": {
     "n": 1,
-    "procent": 1.1
+    "procent": 0.8
    },
    "214410 - INGINER MASINI TERMICE": {
     "n": 1,
-    "procent": 1.1
+    "procent": 0.8
    },
    "214491 - Inginer mecatronist": {
     "n": 1,
-    "procent": 1.1
+    "procent": 0.8
+   },
+   "214433 - CONSILIER INGINER MECANIC": {
+    "n": 1,
+    "procent": 0.8
    }
   }
  },

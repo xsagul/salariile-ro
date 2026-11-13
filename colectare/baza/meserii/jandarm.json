@@ -48,13 +48,27 @@
   "surse": {},
   "peJudet": {},
   "motiveFaraSalariu": {},
-  "salariuPeFactor": {}
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
   "oferte": 1,
   "posturi": 1,
-  "ofertePeGrupaCor": 16,
+  "ofertePeGrupaCor": 27,
   "tipSalariu": {
    "none": {
     "n": 1,
@@ -112,16 +126,24 @@
   },
   "coduriCorInGrupa": {
    "541104 - SERVANT POMPIER": {
-    "n": 11,
-    "procent": 68.8
+    "n": 19,
+    "procent": 70.4
    },
    "541106 - SEF ECHIPA SPECIALIZATA": {
-    "n": 4,
-    "procent": 25
+    "n": 5,
+    "procent": 18.5
    },
    "541101 - SEF COMPARTIMENT PENTRU PREVENIRE": {
     "n": 1,
-    "procent": 6.3
+    "procent": 3.7
+   },
+   "541105 - SEF GRUPA INTERVENTIE": {
+    "n": 1,
+    "procent": 3.7
+   },
+   "541102 - SEF FORMATIE INTERVENTIE, SALVARE SI PRIM AJUTOR": {
+    "n": 1,
+    "procent": 3.7
    }
   }
  },

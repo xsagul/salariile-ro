@@ -48,7 +48,21 @@
   "surse": {},
   "peJudet": {},
   "motiveFaraSalariu": {},
-  "salariuPeFactor": {}
+  "salariuPeFactor": {},
+  "pragDeJos": {
+   "anunturi": 0,
+   "baza": {},
+   "brut": {
+    "n": 0
+   },
+   "net": {
+    "n": 0
+   },
+   "faraBaza": {
+    "n": 0
+   },
+   "valori": []
+  }
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
@@ -74,47 +88,60 @@
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",
-  "posturi": 19,
-  "institutii": 1,
-  "posturiDinSurseDeVerificat": 15,
+  "posturi": 30,
+  "institutii": 2,
+  "posturiDinSurseDeVerificat": 23,
   "judete": {
    "SJ": {
     "n": 19,
-    "procent": 100
+    "procent": 63.3
+   },
+   "BN": {
+    "n": 11,
+    "procent": 36.7
    }
   },
   "tipInstitutie": {
    "consiliu-judetean": {
-    "n": 19,
+    "n": 30,
     "procent": 100
    }
   },
   "perioade": {
    "2026-09": {
     "n": 19,
-    "procent": 100
+    "procent": 63.3
+   },
+   "2026-03": {
+    "n": 11,
+    "procent": 36.7
    }
   },
-  "studii": {},
+  "studii": {
+   "S": {
+    "n": 11,
+    "procent": 36.7
+   }
+  },
   "bazaBruta": {
-   "n": 19,
-   "p10": 5936,
-   "p25": 6580,
-   "median": 8939,
+   "n": 30,
+   "p10": 5950,
+   "p25": 6932,
+   "median": 9321,
    "p75": 10144,
-   "p90": 10144,
-   "min": 5769,
-   "max": 10211
+   "p90": 10228,
+   "min": 5701,
+   "max": 10867
   },
   "bazaCuSporuriFixe": {
-   "n": 19,
-   "p10": 5936,
-   "p25": 6580,
-   "median": 8939,
+   "n": 30,
+   "p10": 5950,
+   "p25": 6932,
+   "median": 9321,
    "p75": 10144,
-   "p90": 10333,
-   "min": 5769,
-   "max": 10838
+   "p90": 10823,
+   "min": 5701,
+   "max": 11709
   },
   "peGradatie": {
    "gradația 2": {
@@ -139,6 +166,39 @@
    },
    "Consilier achiziții, grad profesional": {
     "n": 2
+   },
+   "Auditor (vacant) I,S superior,5": {
+    "n": 1
+   },
+   "Consilier/Inspector I,S superior,5": {
+    "n": 1
+   },
+   "Consilier/Inspector/Consilier achiziții publice I,S superior": {
+    "n": 1
+   },
+   "Consilier/Inspector (vacant) I,S principal,5": {
+    "n": 1
+   },
+   "Consilier I,S principal,4": {
+    "n": 1
+   },
+   "Consilier I,S asistent,4": {
+    "n": 1
+   },
+   "Consilier (vacant) I,S debutant,5": {
+    "n": 1
+   },
+   "Consilier I,S debutant,1": {
+    "n": 1
+   },
+   "Consilier (vacant) S I,5": {
+    "n": 1
+   },
+   "Consilier S I,4": {
+    "n": 1
+   },
+   "Consilier (vacant) S II,5": {
+    "n": 1
    },
    "Auditor grad profesional superior,": {
     "n": 1
