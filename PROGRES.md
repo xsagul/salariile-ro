@@ -5824,3 +5824,8 @@ contul „site-uri”, deci am citit din GSC cu `dataState: "all"` (date proaspe
   `MSYS_NO_PATHCONV=1 node scripts/gsc.mjs dates --page=/ --exact --query="calculator salariu net"
   --query-exact`). CTR-ul la p2,5 e doar 2,6% (52 / 2.024 afișări), deci primul ecran al rezultatului
   rămâne plafonul; o săptămână întreagă pe locul 2 ar însemna ~+80 de clicuri pe zi doar pe homepage.
+
+**PFA, la o zi după titlul nou:** Googlebot a recitit `/calculator-pfa` pe 12 nov., 23:20 UTC, deci după
+publicare (URL Inspection: indexată, canonical propriu). Cifrele încă nu arată efectul: 1 clic pe zi,
+poziția medie 15–46 între 1 și 11 nov., 9,9 pe 12 nov. dar pe doar 66 de afișări (zi parțială). Înainte
+de cădere (21 sept. – 7 oct.): „calculator pfa” p7,4, „calculator taxe pfa” p8,6, 5–10 clicuri pe zi.
