@@ -5976,3 +5976,13 @@ Citit în interfață (Chrome): 549 de pagini indexate, 821 neindexate, toate di
 
 „Validează remedierea” n-are sens aici: cere Google să verifice că starea s-a schimbat, iar paginile
 sunt 404 / noindex intenționat, deci validarea ar pica. Nu e o pârghie de creștere.
+
+### Tot 13 noiembrie — cardul de salariu al meseriilor, simplificat
+
+Proprietarul, pe telefon: cardurile noi arătau „ca un raft unde s-au trântit informații la întâmplare”.
+Toate sursele folosesc acum `CardSalariu.tsx`, după modelul cardului salariilor plătite (registrator
+medical): etichetă, cifră, brut, o propoziție, cel mult trei repere, sursa într-un rând. Tabelul pe
+categorii și lista unităților MAI stau într-o secțiune separată („Pe categorii” / „De unde e cifra”).
+La „date puține”, fiecare sursă e o căsuță. „Meserii apropiate” arată încasările la ridesharing.
+Verificat pe telefon (375 px): pompier, manipulant, mecanic de locomotivă, muzician, ridesharing, fermier;
+pe desktop: pompier, notar. Publicat în `305d496` și `f95274c`.
