@@ -5858,3 +5858,27 @@ plecări fără niciun gest (`parasire_pagina`, `interactiune` = nu; scrollul nu
 - Copierea linkului: 9 oameni pe homepage, 0 pe celelalte. PDF-ul fluturașului: 31 din 111.
 - Zile lucrătoare: calendarul anului îl văd 25% (2026) și 37% (2027); .ics descărcat de 16 și 56.
 - Instrumentele cu cea mai slabă rată de calcul sunt cele cu formular lung: part-time și fluturaș, ~1 din 2.
+
+### Tot 13 noiembrie — paginile de meserie, pe sursa cifrei (16 oct. – 12 nov. 2026)
+
+Sursa cifrei din primul ecran, citită de pe `/salarii/acoperire` (producție): art. 33 — 17 meserii, salarii
+declarate (Salario/ANOFM) — 65, anunțuri — 12, grilă — 4, tabel oficial — 2, **fără cifră — 42**.
+GA4 (utilizatori, respingere = 1 − sesiuni implicate / sesiuni, timp de implicare pe om, plecări fără gest)
+și GSC (clicuri, afișări, poziție):
+
+| Sursa cifrei | Pagini vizitate | Utilizatori | Respingere | Timp / om | Fără gest | Clicuri GSC | Afișări | Poziție |
+|---|---|---|---|---|---|---|---|---|
+| Art. 33 (plătit) | 17 | 471 | 5% | 60 s | 8% | 451 | 19.525 | 5,7 |
+| Declarate | 51 | 171 | 8% | 30 s | 13% | 126 | 8.676 | 7,4 |
+| Anunțuri | 12 | 50 | 13% | 24 s | 20% | 44 | 2.757 | 6,2 |
+| Grilă | 4 | 32 | 8% | 34 s | 9% | 2 | 181 | 6,2 |
+| Tabel oficial | 2 | 48 | 2% | 44 s | 11% | 26 | 2.193 | 6,2 |
+| **Fără cifră** | 24 | 65 | **24%** | **13 s** | 16% | 36 | 2.399 | 7,6 |
+
+- Toate paginile `/salarii/*` împreună: 929 de utilizatori din 8.477 pe site (11%). Art. 33 face jumătate
+  din ele, pe trei pagini: registrator medical 144, infirmier 108, asistent medical 52.
+- Fără cifră: pompier (926 de afișări, 9 clicuri), notar 221, poștaș 197, mecanic de locomotivă 125, polițist
+  120, jandarm 86. Pagina spune „nu afișăm încă o cifră: tabelele din lege sunt la nivelul din 2022”.
+- **Greșeală găsită:** întrebarea „Cum compar o ofertă…” încheie cu „compar-o cu salariul de mai sus” și pe
+  paginile fără cifră, unde nu e niciun salariu sus. Nereparată.
+- Explorarea GA4 „Free-form” de azi (11:12) a rămas salvată în cont; ștergerea e definitivă și n-am făcut-o.
