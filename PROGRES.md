@@ -5959,3 +5959,20 @@ bară) față de 9–12 nov. (bara din 26 sept.). Doar 4 zile după; pe 12 nov. 
 - **Hubul a pierdut mult:** liste 49 / 62 / 22 de utilizatori, anunțuri 46 / 56 / 15, formularul de
   postare 5 / 10 / 1, apăsări pe telefon/WhatsApp 9 / 8 / 0. Nu e doar bara: din 6 nov. anunțurile ANOFM
   dau 410, iar pe 10–12 nov. lista națională a fost goală (bug-ul cu emoji, reparat pe 12).
+
+### Tot 13 noiembrie — Search Console: nicio problemă reală de reparat
+
+Citit în interfață (Chrome): 549 de pagini indexate, 821 neindexate, toate din motive intenționate.
+- **noindex 392:** 309 anunțuri ANOFM (scoase, acum 410), ~80 de liste din hub cu sub 2 anunțuri, cele 3 widgeturi.
+- **404 350:** 324 de anunțuri ANOFM șterse, liste de orașe rămase fără anunțuri, 4 adrese `/calculator/…`
+  cu sume din afara listei permise (8.597, 15.000, 9.195 brut; 2.363 net) și `/calculator-concediu` (iulie).
+  Niciuna nu e legată din site (căutat în build); Google le are din sitemap-uri vechi sau din afară.
+- **Descoperite, neindexate 48** și **accesate, neindexate 16:** anunțuri ANOFM, favicon, fonturi, CSV/JSON.
+- **robots.txt 11:** filtre din hub și `/api/anunturi/contact`. **Canonical 3:** adrese cu parametri
+  (`?utm_source=chatgpt.com`, `?brut=4500`, `?ref=blog.billyou.ro`). **Redirecționare 1:** `/calculator`.
+- Breadcrumbs 97 valide, 0 invalide; seturi de date 1; anunțuri de muncă 1 valid, 0 invalide; HTTPS 100%;
+  Core Web Vitals fără date (trafic prea mic pe grup de adrese); acțiuni manuale și securitate: nimic.
+- Sitemap-uri citite fără erori, inclusiv `sitemap-expirate.xml` (791 de adrese, ca Google să scoată anunțurile).
+
+„Validează remedierea” n-are sens aici: cere Google să verifice că starea s-a schimbat, iar paginile
+sunt 404 / noindex intenționat, deci validarea ar pica. Nu e o pârghie de creștere.
