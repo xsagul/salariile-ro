@@ -34,8 +34,8 @@ const SALARIO_MIN_REZERVA = 5;
 const SALARIO_ALT_ROL = new Set<string>();
 /** Ce trebuie spus lângă cifră când meseria nu se plătește de obicei cu salariu. */
 const NOTA_MESERIE: Record<string, string> = {
-  fermier: "Fermierul care își lucrează propria fermă nu are salariu: câștigă din ce vinde și din subvenții. Ofertele de mai jos sunt pentru agricultorii și crescătorii de animale angajați.",
-  notar: "Notarul public nu e salariat: câștigă din onorariile biroului, iar venitul acesta nu-l publică nimeni. Suma de mai jos e a celor care s-au declarat notari pe Salario.",
+  fermier: "Fermierul pe cont propriu nu are salariu: câștigă din ce vinde și din subvenții. Cifra e a agricultorilor și crescătorilor angajați.",
+  notar: "Notarul public nu e salariat: câștigă din onorariile biroului, pe care nu le publică nimeni. Cifra e a celor care s-au declarat notari pe Salario.",
 };
 const GR: Record<string, Ghid> = Object.fromEntries((salario.records as Ghid[])
   .filter((r) => (r.n ?? 0) >= SALARIO_MIN_REZERVA && !SALARIO_ALT_ROL.has(r.slug)).map((r) => [r.slug, { ...r, pagina: true }]));
@@ -232,7 +232,7 @@ export default function SalariuDeclarat({ slug, de }: { slug: string; de: string
       explicatie={`Mijlocul a ${cate(a!.oferte, "oferte")} depuse la ANOFM${a!.grupa ? ", pentru ocupațiile apropiate" : ""}.`}
       repere={a!.laMinim >= 25 ? [{ eticheta: "Oferte la salariul minim", valoare: `${a!.laMinim}%` }] : []}
       nota={nota ?? (a!.laMinim >= 25 ? "Angajatorii declară adesea minimul la ANOFM; sporurile și bonusurile vin peste." : null)}
-      sursa={<>Ofertele ANOFM din {A.luna}{a!.grupa ? `, ${a!.grupa}` : ""} · {surse}</>}
+      sursa={<>Ofertele ANOFM din {A.luna} · {surse}</>}
     />
   );
 }
