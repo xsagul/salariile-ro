@@ -5829,3 +5829,32 @@ contul „site-uri”, deci am citit din GSC cu `dataState: "all"` (date proaspe
 publicare (URL Inspection: indexată, canonical propriu). Cifrele încă nu arată efectul: 1 clic pe zi,
 poziția medie 15–46 între 1 și 11 nov., 9,9 pe 12 nov. dar pe doar 66 de afișări (zi parțială). Înainte
 de cădere (21 sept. – 7 oct.): „calculator pfa” p7,4, „calculator taxe pfa” p8,6, 5–10 clicuri pe zi.
+
+### Tot 13 noiembrie — cum se folosesc instrumentele (GA4, 16 oct. – 12 nov. 2026)
+
+Citit din GA4 prin Chrome (cererile exploratorului, fără API); fiecare pagină: utilizatori activi, cei cu
+evenimentul `calcul`, respingere = 1 − sesiuni implicate / sesiuni (doar vizitatorii cu acord au sesiuni),
+plecări fără niciun gest (`parasire_pagina`, `interactiune` = nu; scrollul nu se numără).
+
+| Pagina | Utilizatori | Calculează | Calcule / om | Respingere | Pleacă fără niciun gest |
+|---|---|---|---|---|---|
+| `/` | 3.941 | 78% (mobil 78, desktop 81) | 2,3 | 20% | 16% |
+| `/calculator-salariu-invatamant` | 682 | 82% (mobil 85, desktop 72) | 2,6 | 14% | 11% |
+| `/calculator-salariu-sanatate` | 267 | 76% | 2,1 | 10% | 11% |
+| `/calculator-salariu-part-time` | 149 | **54%** | 2,1 | 16% | 9% |
+| `/fluturas-salariu` | 111 | **50%** | 2,9 | 22% | 7% |
+| `/calculator-salariu-constructii` | 76 | 67% | 1,8 | 17% | 7% |
+| `/calculator-pfa` | 45 | 60% (mobil 50, desktop 76) | 2,8 | 22% | 14% |
+| `/calculator-ore-suplimentare` | 36 | 64% | 2,8 | 40% | 20% |
+| `/calculator-indemnizatie-somaj` | 25 | 88% | 1,6 | 4% | 15% |
+| `/zile-lucratoare-2026` | 704 | — | — | 34% | 17% |
+| `/zile-lucratoare-2027` | 526 | — | — | 30% | 14% |
+
+**Ce nu se folosește:**
+- Sub calculator se citește puțin: pe homepage „Cum se calculează salariul net” 32%, întrebările 14%,
+  „Calcule salariale populare” 6%. Pe sănătate se citește cel mai mult (explicația 72%, întrebările 52%).
+- Opțiunile avansate: salariu 15% din cei care calculează (495 / 3.354), PFA 21%, part-time 23%;
+  învățământ 36%, fluturaș 41%. Net → brut: 24% din calculele de salariu. Euro: 10 oameni în 4 săptămâni.
+- Copierea linkului: 9 oameni pe homepage, 0 pe celelalte. PDF-ul fluturașului: 31 din 111.
+- Zile lucrătoare: calendarul anului îl văd 25% (2026) și 37% (2027); .ics descărcat de 16 și 56.
+- Instrumentele cu cea mai slabă rată de calcul sunt cele cu formular lung: part-time și fluturaș, ~1 din 2.
