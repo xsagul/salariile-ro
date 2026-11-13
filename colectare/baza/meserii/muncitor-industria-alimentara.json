@@ -66,24 +66,255 @@
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
-  "oferte": 0,
-  "posturi": 0,
+  "oferte": 66,
+  "posturi": 350,
   "ofertePeGrupaCor": 0,
-  "tipSalariu": {},
+  "tipSalariu": {
+   "gross": {
+    "n": 47,
+    "procent": 71.2
+   },
+   "none": {
+    "n": 13,
+    "procent": 19.7
+   },
+   "net": {
+    "n": 6,
+    "procent": 9.1
+   }
+  },
   "netMinimDeclarat": {
-   "n": 0
+   "n": 5
   },
   "brutMinimDeclarat": {
-   "n": 0
+   "n": 45,
+   "p10": 4325,
+   "p25": 4325,
+   "median": 4325,
+   "p75": 4325,
+   "p90": 4350,
+   "min": 1,
+   "max": 5600
   },
-  "laSalariulMinim": 0,
-  "studii": {},
-  "experienta": {},
-  "contract": {},
-  "norma": {},
-  "regim": {},
-  "judete": {},
-  "domenii": {},
+  "laSalariulMinim": 37,
+  "studii": {
+   "Gimnazial - ȘCOALĂ GENERALĂ": {
+    "n": 28,
+    "procent": 42.4
+   },
+   "Profesional - ȘCOALĂ PROFESIONALĂ": {
+    "n": 15,
+    "procent": 22.7
+   },
+   "Liceal - LICEU TEORETIC": {
+    "n": 10,
+    "procent": 15.2
+   },
+   "Primar - FĂRĂ STUDII": {
+    "n": 9,
+    "procent": 13.6
+   },
+   "Postliceal - COLEGIU": {
+    "n": 2,
+    "procent": 3
+   },
+   "PROFESIONAL- ÎNVĂȚĂMÂNT SPECIAL": {
+    "n": 1,
+    "procent": 1.5
+   },
+   "Liceal - LICEU DE SPECIALITATE": {
+    "n": 1,
+    "procent": 1.5
+   }
+  },
+  "experienta": {
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 30,
+    "procent": 45.5
+   },
+   "Fără experiență - 0 ani": {
+    "n": 30,
+    "procent": 45.5
+   },
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 4,
+    "procent": 6.1
+   },
+   "Avansat - între 5 și 7 ani": {
+    "n": 1,
+    "procent": 1.5
+   },
+   "Experimentat - mai mult de 7 ani": {
+    "n": 1,
+    "procent": 1.5
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 61,
+    "procent": 92.4
+   },
+   "Cu durată determinată": {
+    "n": 5,
+    "procent": 7.6
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 66,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 66,
+    "procent": 100
+   }
+  },
+  "judete": {
+   "Municipiul București": {
+    "n": 12,
+    "procent": 18.2
+   },
+   "Ilfov": {
+    "n": 7,
+    "procent": 10.6
+   },
+   "Iași": {
+    "n": 5,
+    "procent": 7.6
+   },
+   "Timiș": {
+    "n": 4,
+    "procent": 6.1
+   },
+   "Hunedoara": {
+    "n": 3,
+    "procent": 4.5
+   },
+   "Bistrița-Năsăud": {
+    "n": 3,
+    "procent": 4.5
+   },
+   "Ialomița": {
+    "n": 3,
+    "procent": 4.5
+   },
+   "Prahova": {
+    "n": 3,
+    "procent": 4.5
+   },
+   "Galați": {
+    "n": 3,
+    "procent": 4.5
+   },
+   "Harghita": {
+    "n": 2,
+    "procent": 3
+   },
+   "Botoșani": {
+    "n": 2,
+    "procent": 3
+   },
+   "Sibiu": {
+    "n": 2,
+    "procent": 3
+   },
+   "Vaslui": {
+    "n": 2,
+    "procent": 3
+   },
+   "Teleorman": {
+    "n": 2,
+    "procent": 3
+   },
+   "Mehedinți": {
+    "n": 1,
+    "procent": 1.5
+   },
+   "Cluj": {
+    "n": 1,
+    "procent": 1.5
+   },
+   "Bacău": {
+    "n": 1,
+    "procent": 1.5
+   },
+   "Vâlcea": {
+    "n": 1,
+    "procent": 1.5
+   },
+   "Argeș": {
+    "n": 1,
+    "procent": 1.5
+   },
+   "Bihor": {
+    "n": 1,
+    "procent": 1.5
+   },
+   "Neamț": {
+    "n": 1,
+    "procent": 1.5
+   },
+   "Mureș": {
+    "n": 1,
+    "procent": 1.5
+   },
+   "Gorj": {
+    "n": 1,
+    "procent": 1.5
+   },
+   "Buzău": {
+    "n": 1,
+    "procent": 1.5
+   },
+   "Arad": {
+    "n": 1,
+    "procent": 1.5
+   },
+   "Dolj": {
+    "n": 1,
+    "procent": 1.5
+   },
+   "Vrancea": {
+    "n": 1,
+    "procent": 1.5
+   }
+  },
+  "domenii": {
+   "Producție / Logistică": {
+    "n": 30,
+    "procent": 45.5
+   },
+   "Altele": {
+    "n": 12,
+    "procent": 18.2
+   },
+   "Turism / Alimentație": {
+    "n": 7,
+    "procent": 10.6
+   },
+   "Agricultură / Zootehnie": {
+    "n": 5,
+    "procent": 7.6
+   },
+   "PRODUCTIA SI CONSERVAREA CARNII": {
+    "n": 5,
+    "procent": 7.6
+   },
+   "COMERT": {
+    "n": 4,
+    "procent": 6.1
+   },
+   "RESTAURANTE": {
+    "n": 2,
+    "procent": 3
+   },
+   "Vânzări": {
+    "n": 1,
+    "procent": 1.5
+   }
+  },
   "coduriCorInGrupa": {}
  },
  "institutiiPublice": {

@@ -1,9 +1,9 @@
 {
- "generatLa": "2026-11-13T10:00:31.821Z",
+ "generatLa": "2026-11-13T10:26:22.474Z",
  "total": {
   "anunturi": 5684,
   "citite": 16961,
-  "anofm": 5221,
+  "anofm": 5332,
   "publice": 25400
  },
  "meserii": [
@@ -470,6 +470,17 @@
    "angajatori": 0
   },
   {
+   "slug": "muncitor-industria-alimentara",
+   "nume": "Muncitor în industria alimentară",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 66,
+   "anofmGrupa": 0,
+   "posturiPublice": 0,
+   "angajatori": 0
+  },
+  {
    "slug": "programator",
    "nume": "Programator",
    "anunturiCuSalariu": 19,
@@ -668,6 +679,17 @@
    "angajatori": 0
   },
   {
+   "slug": "fermier",
+   "nume": "Fermier",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 27,
+   "anofmGrupa": 2,
+   "posturiPublice": 0,
+   "angajatori": 0
+  },
+  {
    "slug": "constructor-drumuri",
    "nume": "Constructor de drumuri",
    "anunturiCuSalariu": 4,
@@ -796,6 +818,17 @@
    "anunturiCitite": 13,
    "anofm": 14,
    "anofmGrupa": 14,
+   "posturiPublice": 0,
+   "angajatori": 0
+  },
+  {
+   "slug": "metalurgist",
+   "nume": "Metalurgist",
+   "anunturiCuSalariu": 2,
+   "cuBazaDeclarata": 1,
+   "anunturiCitite": 7,
+   "anofm": 14,
+   "anofmGrupa": 0,
    "posturiPublice": 0,
    "angajatori": 0
   },
@@ -943,6 +976,28 @@
    "angajatori": 0
   },
   {
+   "slug": "sticlar",
+   "nume": "Sticlar",
+   "anunturiCuSalariu": 6,
+   "cuBazaDeclarata": 2,
+   "anunturiCitite": 21,
+   "anofm": 3,
+   "anofmGrupa": 0,
+   "posturiPublice": 0,
+   "angajatori": 0
+  },
+  {
+   "slug": "tesator",
+   "nume": "Țesător",
+   "anunturiCuSalariu": 0,
+   "cuBazaDeclarata": 0,
+   "anunturiCitite": 0,
+   "anofm": 5,
+   "anofmGrupa": 8,
+   "posturiPublice": 0,
+   "angajatori": 0
+  },
+  {
    "slug": "consultant-management",
    "nume": "Consultant în management",
    "anunturiCuSalariu": 0,
@@ -1005,17 +1060,6 @@
    "anunturiCitite": 58,
    "anofm": 2,
    "anofmGrupa": 2,
-   "posturiPublice": 0,
-   "angajatori": 0
-  },
-  {
-   "slug": "tesator",
-   "nume": "Țesător",
-   "anunturiCuSalariu": 0,
-   "cuBazaDeclarata": 0,
-   "anunturiCitite": 0,
-   "anofm": 4,
-   "anofmGrupa": 10,
    "posturiPublice": 0,
    "angajatori": 0
   },
@@ -1174,17 +1218,6 @@
    "angajatori": 0
   },
   {
-   "slug": "sticlar",
-   "nume": "Sticlar",
-   "anunturiCuSalariu": 6,
-   "cuBazaDeclarata": 2,
-   "anunturiCitite": 21,
-   "anofm": 0,
-   "anofmGrupa": 0,
-   "posturiPublice": 0,
-   "angajatori": 0
-  },
-  {
    "slug": "marinar",
    "nume": "Marinar",
    "anunturiCuSalariu": 1,
@@ -1225,17 +1258,6 @@
    "anunturiCitite": 15,
    "anofm": 0,
    "anofmGrupa": 28,
-   "posturiPublice": 0,
-   "angajatori": 0
-  },
-  {
-   "slug": "metalurgist",
-   "nume": "Metalurgist",
-   "anunturiCuSalariu": 2,
-   "cuBazaDeclarata": 1,
-   "anunturiCitite": 7,
-   "anofm": 0,
-   "anofmGrupa": 0,
    "posturiPublice": 0,
    "angajatori": 0
   },
@@ -1416,17 +1438,6 @@
    "angajatori": 0
   },
   {
-   "slug": "muncitor-industria-alimentara",
-   "nume": "Muncitor în industria alimentară",
-   "anunturiCuSalariu": 0,
-   "cuBazaDeclarata": 0,
-   "anunturiCitite": 0,
-   "anofm": 0,
-   "anofmGrupa": 0,
-   "posturiPublice": 0,
-   "angajatori": 0
-  },
-  {
    "slug": "pilot",
    "nume": "Pilot",
    "anunturiCuSalariu": 0,
@@ -1478,17 +1489,6 @@
    "anunturiCitite": 2,
    "anofm": 0,
    "anofmGrupa": 37,
-   "posturiPublice": 0,
-   "angajatori": 0
-  },
-  {
-   "slug": "fermier",
-   "nume": "Fermier",
-   "anunturiCuSalariu": 0,
-   "cuBazaDeclarata": 0,
-   "anunturiCitite": 0,
-   "anofm": 0,
-   "anofmGrupa": 2,
    "posturiPublice": 0,
    "angajatori": 0
   },

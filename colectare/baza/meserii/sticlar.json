@@ -287,24 +287,96 @@
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
-  "oferte": 0,
-  "posturi": 0,
+  "oferte": 3,
+  "posturi": 4,
   "ofertePeGrupaCor": 0,
-  "tipSalariu": {},
+  "tipSalariu": {
+   "gross": {
+    "n": 2,
+    "procent": 66.7
+   },
+   "none": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
   "netMinimDeclarat": {
    "n": 0
   },
   "brutMinimDeclarat": {
-   "n": 0
+   "n": 2
   },
-  "laSalariulMinim": 0,
-  "studii": {},
-  "experienta": {},
-  "contract": {},
-  "norma": {},
-  "regim": {},
-  "judete": {},
-  "domenii": {},
+  "laSalariulMinim": 1,
+  "studii": {
+   "Primar - FĂRĂ STUDII": {
+    "n": 1,
+    "procent": 33.3
+   },
+   "Liceal - LICEU TEORETIC": {
+    "n": 1,
+    "procent": 33.3
+   },
+   "Gimnazial - ȘCOALĂ GENERALĂ": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
+  "experienta": {
+   "Fără experiență - 0 ani": {
+    "n": 2,
+    "procent": 66.7
+   },
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 2,
+    "procent": 66.7
+   },
+   "Cu durată determinată": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 3,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 3,
+    "procent": 100
+   }
+  },
+  "judete": {
+   "Cluj": {
+    "n": 1,
+    "procent": 33.3
+   },
+   "Teleorman": {
+    "n": 1,
+    "procent": 33.3
+   },
+   "Vaslui": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
+  "domenii": {
+   "Producție / Logistică": {
+    "n": 2,
+    "procent": 66.7
+   },
+   "Construcții / Instalații": {
+    "n": 1,
+    "procent": 33.3
+   }
+  },
   "coduriCorInGrupa": {}
  },
  "institutiiPublice": {

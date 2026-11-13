@@ -1959,6 +1959,60 @@
     }
    ]
   },
+  "muncitor-industria-alimentara": {
+   "sursa": "anofm",
+   "n": 66,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "mai puțin de 3 ani",
+       "p": 46
+      },
+      {
+       "v": "fără experiență",
+       "p": 46
+      }
+     ]
+    },
+    {
+     "eticheta": "Studii",
+     "valori": [
+      {
+       "v": "gimnaziu",
+       "p": 42
+      },
+      {
+       "v": "școală profesională",
+       "p": 24
+      },
+      {
+       "v": "liceu",
+       "p": 17
+      }
+     ]
+    },
+    {
+     "eticheta": "Contract",
+     "valori": [
+      {
+       "v": "cu durată nedeterminată",
+       "p": 92
+      }
+     ]
+    },
+    {
+     "eticheta": "Normă",
+     "valori": [
+      {
+       "v": "cu normă întreagă",
+       "p": 100
+      }
+     ]
+    }
+   ]
+  },
   "cofetar": {
    "sursa": "anunturi",
    "n": 74,
@@ -3040,6 +3094,64 @@
       {
        "v": "cursuri / training",
        "p": 14
+      }
+     ]
+    }
+   ]
+  },
+  "fermier": {
+   "sursa": "anofm",
+   "n": 27,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "fără experiență",
+       "p": 44
+      },
+      {
+       "v": "mai puțin de 3 ani",
+       "p": 33
+      }
+     ]
+    },
+    {
+     "eticheta": "Studii",
+     "valori": [
+      {
+       "v": "gimnaziu",
+       "p": 37
+      },
+      {
+       "v": "primar sau fără studii",
+       "p": 26
+      },
+      {
+       "v": "școală profesională",
+       "p": 22
+      }
+     ]
+    },
+    {
+     "eticheta": "Contract",
+     "valori": [
+      {
+       "v": "cu durată nedeterminată",
+       "p": 82
+      },
+      {
+       "v": "cu durată determinată",
+       "p": 19
+      }
+     ]
+    },
+    {
+     "eticheta": "Normă",
+     "valori": [
+      {
+       "v": "cu normă întreagă",
+       "p": 100
       }
      ]
     }

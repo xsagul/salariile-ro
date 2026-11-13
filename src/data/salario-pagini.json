@@ -4,6 +4,14 @@
  "metoda": "Salariul mediu net introdus de angajați pe Salario; perioada raportărilor nu e publicată.",
  "records": [
   {
+   "slug": "administrator-bloc",
+   "role": "Administrator imobile",
+   "net": 5900,
+   "n": 15,
+   "url": "https://www.ejobs.ro/salario/salarii-administrator-imobile",
+   "verificatLa": "2026-11-13"
+  },
+  {
    "slug": "analist-date",
    "role": "Analist date",
    "net": 5500,
@@ -149,9 +157,10 @@
   {
    "slug": "notar",
    "role": "Notar",
-   "net": 3800,
-   "n": 5,
-   "url": "https://www.ejobs.ro/salario/salarii-notar"
+   "net": 4900,
+   "n": 2,
+   "url": "https://www.ejobs.ro/salario/salarii-notar",
+   "verificatLa": "2026-11-13"
   },
   {
    "slug": "operator-chimist",
@@ -162,6 +171,14 @@
    "verificatLa": "2026-09-27"
   },
   {
+   "slug": "operator-epurare",
+   "role": "Operator stație de epurare",
+   "net": 4680,
+   "n": 1,
+   "url": "https://www.ejobs.ro/salario/salarii-operator-statie-de-epurare",
+   "verificatLa": "2026-11-13"
+  },
+  {
    "slug": "operator-mase-plastice",
    "role": "Operator mase plastice",
    "net": 3800,
@@ -170,17 +187,27 @@
   },
   {
    "slug": "pescar",
-   "role": "pescar",
+   "role": "Pescar",
    "net": 9000,
    "n": 1,
-   "url": "https://www.ejobs.ro/salario/salarii-pescar"
+   "url": "https://www.ejobs.ro/salario/salarii-pescar",
+   "verificatLa": "2026-11-13"
   },
   {
    "slug": "pilot",
    "role": "Pilot",
-   "net": 6500,
-   "n": 5,
-   "url": "https://www.ejobs.ro/salario/salarii-pilot"
+   "net": 9000,
+   "n": 4,
+   "url": "https://www.ejobs.ro/salario/salarii-pilot",
+   "verificatLa": "2026-11-13"
+  },
+  {
+   "slug": "preot",
+   "role": "Preot",
+   "net": 7000,
+   "n": 4,
+   "url": "https://www.ejobs.ro/salario/salarii-preot",
+   "verificatLa": "2026-11-13"
   },
   {
    "slug": "receptioner-hotel",

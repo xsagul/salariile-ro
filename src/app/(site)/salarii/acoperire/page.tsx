@@ -10,7 +10,7 @@ import { TITLU_SECTIUNE } from "@/app/components/ui";
 import { concluzieMeserie } from "@/app/components/SalariuConcluzie";
 import { netDeStart } from "@/app/components/SalariuGrila";
 import { venitOficial } from "@/app/components/SalariuOficial";
-import { netDeclarat } from "@/app/components/SalariuDeclarat";
+import { netDeclarat, venitPublic } from "@/app/components/SalariuDeclarat";
 
 // Sursa cifrei din primul ecran al paginii meseriei, în aceeași ordine ca acolo.
 function sursaCifrei(slug: string): string {
@@ -21,6 +21,8 @@ function sursaCifrei(slug: string): string {
   if (netDeStart(slug)) return "Grila legii în plată";
   const v = venitOficial(slug);
   if (v) return `Tabelul oficial, ${v.angajator.replace(/ \(.*\)$/, "")}`;
+  const p = venitPublic(slug);
+  if (p) return `Declarat public: ${p.sursa}`;
   if (netDeclarat(slug)) return "Salarii declarate (Salario, ANOFM)";
   return "Încă fără cifră";
 }

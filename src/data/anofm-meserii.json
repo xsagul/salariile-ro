@@ -217,6 +217,15 @@
    "brutP75": 4422,
    "laMinim": 63
   },
+  "metalurgist": {
+   "oferte": 5,
+   "angajatori": 5,
+   "brutMedian": 4500,
+   "brutP25": 4500,
+   "brutP75": 5300,
+   "grupa": "grupa COR 8121, operatorii de la instalațiile de prelucrare a metalelor (laminare, trefilare, tratament termic)",
+   "laMinim": 20
+  },
   "croitor": {
    "oferte": 16,
    "angajatori": 16,
@@ -224,6 +233,15 @@
    "brutP25": 4325,
    "brutP75": 4326,
    "laMinim": 75
+  },
+  "muncitor-industria-alimentara": {
+   "oferte": 43,
+   "angajatori": 36,
+   "brutMedian": 4325,
+   "brutP25": 4325,
+   "brutP75": 4325,
+   "grupa": "grupa COR 8160, operatorii mașinilor din industria alimentară (panificație, lactate, carne, conserve)",
+   "laMinim": 86
   },
   "cofetar": {
    "oferte": 20,
@@ -385,6 +403,15 @@
    "brutP75": 4550,
    "laMinim": 67
   },
+  "fermier": {
+   "oferte": 20,
+   "angajatori": 16,
+   "brutMedian": 4338,
+   "brutP25": 4325,
+   "brutP75": 4488,
+   "grupa": "agricultorii și crescătorii de animale angajați (grupele COR 611–613)",
+   "laMinim": 55
+  },
   "electrician-centrala": {
    "oferte": 32,
    "angajatori": 9,
@@ -489,6 +516,14 @@
    "brutP75": 4325,
    "laMinim": 100
   },
+  "tesator": {
+   "oferte": 3,
+   "angajatori": 3,
+   "brutMedian": 4760,
+   "brutP25": 4555,
+   "brutP75": 4968,
+   "laMinim": 0
+  },
   "tapiter": {
    "oferte": 9,
    "angajatori": 8,
@@ -520,7 +555,8 @@
     "baza": "brut",
     "min": 9192,
     "max": 9192,
-    "luna": "2026-09"
+    "luna": "2026-09",
+    "ocupatie": null
    }
   ],
   "asistent-farmacie": [
@@ -528,19 +564,22 @@
     "baza": "brut",
     "min": 4325,
     "max": 4324,
-    "luna": "2026-09"
+    "luna": "2026-09",
+    "ocupatie": null
    },
    {
     "baza": "net",
     "min": 3000,
     "max": 3500,
-    "luna": "2026-09"
+    "luna": "2026-09",
+    "ocupatie": null
    },
    {
     "baza": "brut",
     "min": 4325,
     "max": 4330,
-    "luna": "2026-09"
+    "luna": "2026-09",
+    "ocupatie": null
    }
   ],
   "profesor": [
@@ -548,13 +587,15 @@
     "baza": "brut",
     "min": 18379,
     "max": null,
-    "luna": "2026-08"
+    "luna": "2026-08",
+    "ocupatie": null
    },
    {
     "baza": "brut",
     "min": 10000,
     "max": 10000,
-    "luna": "2026-11"
+    "luna": "2026-11",
+    "ocupatie": null
    }
   ],
   "invatator": [
@@ -562,13 +603,15 @@
     "baza": "brut",
     "min": 3090,
     "max": 3616,
-    "luna": "2026-09"
+    "luna": "2026-09",
+    "ocupatie": null
    },
    {
     "baza": "brut",
     "min": 18384,
     "max": null,
-    "luna": "2026-08"
+    "luna": "2026-08",
+    "ocupatie": null
    }
   ],
   "analist-financiar": [
@@ -576,13 +619,15 @@
     "baza": "brut",
     "min": 5000,
     "max": 6000,
-    "luna": "2026-09"
+    "luna": "2026-09",
+    "ocupatie": null
    },
    {
     "baza": "brut",
     "min": 7681,
     "max": 12293,
-    "luna": "2026-10"
+    "luna": "2026-10",
+    "ocupatie": null
    }
   ],
   "agent-asigurari": [
@@ -590,7 +635,8 @@
     "baza": "brut",
     "min": 4325,
     "max": 4325,
-    "luna": "2026-09"
+    "luna": "2026-09",
+    "ocupatie": null
    }
   ],
   "inginer-electronist": [
@@ -598,7 +644,8 @@
     "baza": null,
     "min": 4500,
     "max": null,
-    "luna": "2026-04"
+    "luna": "2026-04",
+    "ocupatie": null
    }
   ],
   "inginer-energetician": [
@@ -606,7 +653,8 @@
     "baza": "brut",
     "min": 6497,
     "max": 9995,
-    "luna": "2026-09"
+    "luna": "2026-09",
+    "ocupatie": null
    }
   ],
   "inginer-petrol": [
@@ -614,7 +662,8 @@
     "baza": "brut",
     "min": 9192,
     "max": 28333,
-    "luna": "2026-08"
+    "luna": "2026-08",
+    "ocupatie": null
    }
   ],
   "mecanic-locomotiva": [
@@ -622,13 +671,15 @@
     "baza": "brut",
     "min": 7875,
     "max": 7873,
-    "luna": "2026-10"
+    "luna": "2026-10",
+    "ocupatie": null
    },
    {
     "baza": "brut",
     "min": 7875,
     "max": 7875,
-    "luna": "2026-10"
+    "luna": "2026-10",
+    "ocupatie": null
    }
   ],
   "sofer-ambulanta": [
@@ -636,7 +687,8 @@
     "baza": "brut",
     "min": 4325,
     "max": 4325,
-    "luna": "2026-09"
+    "luna": "2026-09",
+    "ocupatie": null
    }
   ],
   "designer-grafic": [
@@ -644,7 +696,8 @@
     "baza": "net",
     "min": 3200,
     "max": 3500,
-    "luna": "2026-10"
+    "luna": "2026-10",
+    "ocupatie": null
    }
   ],
   "traducator": [
@@ -652,7 +705,8 @@
     "baza": "brut",
     "min": 4325,
     "max": 4500,
-    "luna": "2026-09"
+    "luna": "2026-09",
+    "ocupatie": null
    }
   ],
   "silvicultor": [
@@ -660,7 +714,8 @@
     "baza": "brut",
     "min": 4325,
     "max": 4325,
-    "luna": "2026-09"
+    "luna": "2026-09",
+    "ocupatie": null
    }
   ],
   "agent-imobiliar": [
@@ -668,13 +723,15 @@
     "baza": "brut",
     "min": 4325,
     "max": 4400,
-    "luna": "2026-09"
+    "luna": "2026-09",
+    "ocupatie": null
    },
    {
     "baza": "brut",
     "min": 4325,
     "max": 4325,
-    "luna": "2026-09"
+    "luna": "2026-09",
+    "ocupatie": null
    }
   ],
   "sondor": [
@@ -682,15 +739,24 @@
     "baza": "net",
     "min": 4000,
     "max": null,
-    "luna": "2026-05"
+    "luna": "2026-05",
+    "ocupatie": null
    }
   ],
-  "tesator": [
+  "sticlar": [
    {
-    "baza": null,
-    "min": 4050,
-    "max": null,
-    "luna": "2026-02"
+    "baza": "brut",
+    "min": 4900,
+    "max": 5239,
+    "luna": "2026-09",
+    "ocupatie": "sablator produse din sticla"
+   },
+   {
+    "baza": "brut",
+    "min": 4325,
+    "max": 5000,
+    "luna": "2026-11",
+    "ocupatie": "prelucrator fire si tesaturi din fire de sticla"
    }
   ],
   "cizmar": [
@@ -698,7 +764,8 @@
     "baza": "brut",
     "min": 4330,
     "max": 5500,
-    "luna": "2026-09"
+    "luna": "2026-09",
+    "ocupatie": null
    }
   ],
   "tipograf": [
@@ -706,13 +773,15 @@
     "baza": "net",
     "min": 3000,
     "max": 3500,
-    "luna": "2026-08"
+    "luna": "2026-08",
+    "ocupatie": null
    },
    {
     "baza": "net",
     "min": 3000,
     "max": 5000,
-    "luna": "2026-11"
+    "luna": "2026-11",
+    "ocupatie": null
    }
   ],
   "crupier": [
@@ -720,7 +789,8 @@
     "baza": "net",
     "min": 4000,
     "max": 4000,
-    "luna": "2026-10"
+    "luna": "2026-10",
+    "ocupatie": null
    }
   ],
   "tehnician-calculatoare": [
@@ -728,25 +798,29 @@
     "baza": "net",
     "min": 3000,
     "max": 8000,
-    "luna": "2026-09"
+    "luna": "2026-09",
+    "ocupatie": null
    },
    {
     "baza": "brut",
     "min": 6496,
     "max": 7351,
-    "luna": "2026-09"
+    "luna": "2026-09",
+    "ocupatie": null
    },
    {
     "baza": "brut",
     "min": 7000,
     "max": 8000,
-    "luna": "2026-11"
+    "luna": "2026-11",
+    "ocupatie": null
    },
    {
     "baza": "net",
     "min": 10000,
     "max": 13000,
-    "luna": "2026-11"
+    "luna": "2026-11",
+    "ocupatie": null
    }
   ]
  }

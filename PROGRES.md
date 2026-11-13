@@ -5920,3 +5920,25 @@ un anunț din procesarea cărnii, „metalurgist” un vopsitor de pe Bd. Metalu
 Verificat: `tsc`, testele (fără verificarea catalogului, care pică doar pe Windows), build, paginile
 randate (pompier, polițist, jandarm, manipulant, poștaș, tipograf, mecanic de locomotivă, muzician,
 regizor, constructor de drumuri, cizmar).
+
+### Tot 13 noiembrie — ultimele 15: toate cele 142 de meserii au acum o cifră
+
+`/salarii/acoperire` (build local): „Încă fără cifră” la 0 din 142. Sursele noi, fiecare scrisă pe card:
+- **Salario, citit azi din Chrome** (eJobs blochează cererile din terminal): administrator de bloc =
+  „Administrator imobile” (COR 515102) 5.900 lei net din 15 salarii; preot 7.000 (4); pilot 9.000 (4);
+  notar 4.900 (2, cu nota că notarul public nu e salariat); pescar 9.000 și operator de epurare 4.680
+  (câte un salariu, scris ca atare). „Date puține” primește acum Salario de la 1 salariu.
+- **Grupe COR** pentru ofertele ANOFM (numai pentru cifră, numite pe card): metalurgist = 8121,
+  muncitor în industria alimentară = 8160, sticlar = codurile de prelucrare a sticlei, fermier =
+  agricultorii și crescătorii angajați 611–613 (cu nota că fermierul pe cont propriu nu are salariu).
+  Țesător: COR 815202 („deservirea războaielor de țesut”, chiar fișa meseriei) în loc de 731816.
+- **Declarat public** (`venituri-declarate-public.json`): operator stație apă = câștigul mediu pe
+  salariat la Compania de Apă Arad, 8.546 lei brut în 2025 (BVC, HCJ Arad 122/2026); operator rafinărie
+  = Rompetrol, venit mediu net peste 10.900 lei pe Petromidia (30 ian. 2026); șofer ridesharing = Bolt,
+  încasări brute 10.000–12.000 lei în București, comision 25% (nu e venit net: pe liste nu apare o sumă);
+  farmacist în industrie = oferta ANOFM STADA M&D, 4.000–6.000 lei net (oct. 2026).
+- Descrierea pompierului scurtată (175 → sub 158 de caractere).
+
+Slabe, de înlocuit când apare ceva mai bun: tot ce are 1–4 salarii pe Salario, pescarul, notarul,
+farmacistul din industrie (o ofertă) și mediile de companie (apă, rafinărie). Verificat: testele
+meseriilor, observațiilor, grilelor, contractele UI, `test:rendered`, eslint, build.

@@ -392,7 +392,7 @@ export const MESERII: Meserie[] = [
   { slug: "sticlar", nume: "Sticlar", de: "sticlar", categorie: "industrie", caen3: "23", caen2: "23", isco: "muncitori",
     ceFace: "Prelucrează sticla la cald sau la rece, în producție de serie sau la comandă.",
 },
-  { slug: "tesator", nume: "Țesător", de: "țesător", categorie: "industrie", caen3: "13", caen2: "13", isco: "muncitori", cor: "731816",
+  { slug: "tesator", nume: "Țesător", de: "țesător", categorie: "industrie", caen3: "13", caen2: "13", isco: "muncitori", cor: "815202",
     ceFace: "Deservește războaie de țesut și mașini de filat și verifică defectele de material." },
   { slug: "cizmar", nume: "Cizmar", de: "cizmar", categorie: "industrie", caen3: "15", caen2: "15", isco: "muncitori", cor: "753601",
     ceFace: "Confecționează și repară încălțăminte și articole din piele, în atelier propriu sau în producție." },

@@ -192,24 +192,112 @@
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
-  "oferte": 0,
-  "posturi": 0,
+  "oferte": 14,
+  "posturi": 37,
   "ofertePeGrupaCor": 0,
-  "tipSalariu": {},
+  "tipSalariu": {
+   "none": {
+    "n": 9,
+    "procent": 64.3
+   },
+   "gross": {
+    "n": 5,
+    "procent": 35.7
+   }
+  },
   "netMinimDeclarat": {
    "n": 0
   },
   "brutMinimDeclarat": {
-   "n": 0
+   "n": 5
   },
-  "laSalariulMinim": 0,
-  "studii": {},
-  "experienta": {},
-  "contract": {},
-  "norma": {},
-  "regim": {},
-  "judete": {},
-  "domenii": {},
+  "laSalariulMinim": 1,
+  "studii": {
+   "Profesional - ȘCOALĂ PROFESIONALĂ": {
+    "n": 11,
+    "procent": 78.6
+   },
+   "Gimnazial - ȘCOALĂ GENERALĂ": {
+    "n": 3,
+    "procent": 21.4
+   }
+  },
+  "experienta": {
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 9,
+    "procent": 64.3
+   },
+   "Fără experiență - 0 ani": {
+    "n": 3,
+    "procent": 21.4
+   },
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 2,
+    "procent": 14.3
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 9,
+    "procent": 64.3
+   },
+   "Cu durată determinată": {
+    "n": 5,
+    "procent": 35.7
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 14,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 14,
+    "procent": 100
+   }
+  },
+  "judete": {
+   "Brașov": {
+    "n": 5,
+    "procent": 35.7
+   },
+   "Sibiu": {
+    "n": 2,
+    "procent": 14.3
+   },
+   "Bistrița-Năsăud": {
+    "n": 2,
+    "procent": 14.3
+   },
+   "Prahova": {
+    "n": 2,
+    "procent": 14.3
+   },
+   "Sălaj": {
+    "n": 1,
+    "procent": 7.1
+   },
+   "Cluj": {
+    "n": 1,
+    "procent": 7.1
+   },
+   "Caraș-Severin": {
+    "n": 1,
+    "procent": 7.1
+   }
+  },
+  "domenii": {
+   "Producție / Logistică": {
+    "n": 12,
+    "procent": 85.7
+   },
+   "Altele": {
+    "n": 2,
+    "procent": 14.3
+   }
+  },
   "coduriCorInGrupa": {}
  },
  "institutiiPublice": {

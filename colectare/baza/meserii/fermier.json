@@ -66,24 +66,195 @@
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
-  "oferte": 0,
-  "posturi": 0,
+  "oferte": 27,
+  "posturi": 52,
   "ofertePeGrupaCor": 2,
-  "tipSalariu": {},
+  "tipSalariu": {
+   "gross": {
+    "n": 21,
+    "procent": 77.8
+   },
+   "none": {
+    "n": 6,
+    "procent": 22.2
+   }
+  },
   "netMinimDeclarat": {
    "n": 0
   },
   "brutMinimDeclarat": {
-   "n": 0
+   "n": 21,
+   "p10": 4300,
+   "p25": 4325,
+   "median": 4325,
+   "p75": 4429,
+   "p90": 5439,
+   "min": 1,
+   "max": 6153
   },
-  "laSalariulMinim": 0,
-  "studii": {},
-  "experienta": {},
-  "contract": {},
-  "norma": {},
-  "regim": {},
-  "judete": {},
-  "domenii": {},
+  "laSalariulMinim": 11,
+  "studii": {
+   "Gimnazial - ȘCOALĂ GENERALĂ": {
+    "n": 10,
+    "procent": 37
+   },
+   "Profesional - ȘCOALĂ PROFESIONALĂ": {
+    "n": 6,
+    "procent": 22.2
+   },
+   "Primar - FĂRĂ STUDII": {
+    "n": 5,
+    "procent": 18.5
+   },
+   "Primar - ȘCOALĂ GENERALĂ INCOMPLETĂ": {
+    "n": 2,
+    "procent": 7.4
+   },
+   "Liceal - LICEU DE SPECIALITATE": {
+    "n": 2,
+    "procent": 7.4
+   },
+   "Liceal - LICEU TEORETIC": {
+    "n": 2,
+    "procent": 7.4
+   }
+  },
+  "experienta": {
+   "Fără experiență - 0 ani": {
+    "n": 12,
+    "procent": 44.4
+   },
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 9,
+    "procent": 33.3
+   },
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 2,
+    "procent": 7.4
+   },
+   "Experimentat - mai mult de 7 ani": {
+    "n": 2,
+    "procent": 7.4
+   },
+   "Avansat - între 5 și 7 ani": {
+    "n": 2,
+    "procent": 7.4
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 22,
+    "procent": 81.5
+   },
+   "Cu durată determinată": {
+    "n": 5,
+    "procent": 18.5
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 27,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 26,
+    "procent": 96.3
+   },
+   "La domiciliu": {
+    "n": 1,
+    "procent": 3.7
+   }
+  },
+  "judete": {
+   "Argeș": {
+    "n": 4,
+    "procent": 14.8
+   },
+   "Municipiul București": {
+    "n": 3,
+    "procent": 11.1
+   },
+   "Prahova": {
+    "n": 3,
+    "procent": 11.1
+   },
+   "Bistrița-Năsăud": {
+    "n": 2,
+    "procent": 7.4
+   },
+   "Dâmbovița": {
+    "n": 2,
+    "procent": 7.4
+   },
+   "Giurgiu": {
+    "n": 2,
+    "procent": 7.4
+   },
+   "Ialomița": {
+    "n": 2,
+    "procent": 7.4
+   },
+   "Dolj": {
+    "n": 1,
+    "procent": 3.7
+   },
+   "Brașov": {
+    "n": 1,
+    "procent": 3.7
+   },
+   "Călărași": {
+    "n": 1,
+    "procent": 3.7
+   },
+   "Alba": {
+    "n": 1,
+    "procent": 3.7
+   },
+   "Mureș": {
+    "n": 1,
+    "procent": 3.7
+   },
+   "Botoșani": {
+    "n": 1,
+    "procent": 3.7
+   },
+   "Neamț": {
+    "n": 1,
+    "procent": 3.7
+   },
+   "Olt": {
+    "n": 1,
+    "procent": 3.7
+   },
+   "Ilfov": {
+    "n": 1,
+    "procent": 3.7
+   }
+  },
+  "domenii": {
+   "Agricultură / Zootehnie": {
+    "n": 12,
+    "procent": 44.4
+   },
+   "Altele": {
+    "n": 10,
+    "procent": 37
+   },
+   "Turism / Alimentație": {
+    "n": 2,
+    "procent": 7.4
+   },
+   "COMERT": {
+    "n": 2,
+    "procent": 7.4
+   },
+   "STAT": {
+    "n": 1,
+    "procent": 3.7
+   }
+  },
   "coduriCorInGrupa": {
    "613003 - AGRICULTOR ÎN CULTURI VEGETALE SI CRESCATOR DE ANIMALE": {
     "n": 2,

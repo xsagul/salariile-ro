@@ -75,6 +75,13 @@ const MINIM = (luna) => (luna >= "2026-07" ? 4325 : luna >= "2025-01" ? 4050 : 3
 // ─── Fișa unei meserii ──────────────────────────────────────────────────────
 const rezumat = [];
 const cerinte = {};
+const GRUPE_COR = {
+  metalurgist: { coduri: ["8121"], eticheta: "grupa COR 8121, operatorii de la instalațiile de prelucrare a metalelor (laminare, trefilare, tratament termic)" },
+  "muncitor-industria-alimentara": { coduri: ["8160"], eticheta: "grupa COR 8160, operatorii mașinilor din industria alimentară (panificație, lactate, carne, conserve)" },
+  // Codul fermierului (613001) nu are nicio ofertă: fermierul lucrează pe cont propriu. Angajații fermelor.
+  fermier: { coduri: ["6111", "6112", "6113", "6114", "6121", "6122", "6129", "6130"], inlocuiesteCor: true, eticheta: "agricultorii și crescătorii de animale angajați (grupele COR 611–613)" },
+  sticlar: { coduri: ["818110", "818116", "818120"], eticheta: "ocupațiile COR de prelucrare a sticlei (sablator produse din sticlă, prelucrător fire de sticlă, tăietor geam)" },
+};
 const anofmSite = {};
 const anofmPutine = {};
 for (const m of MESERII) {
@@ -82,7 +89,11 @@ for (const m of MESERII) {
   const declarate = a.filter((o) => o.basisDeclared);
   const pr = profil.filter((p) => p.meserii.includes(m.slug));
   const prSal = pr.filter((p) => p.salariu?.bazaDeclarata);
-  const of = m.cor ? anofm.filter((o) => String(o.cor_name ?? "").startsWith(m.cor)) : [];
+  // Meseriile fără un cod COR de 6 cifre care să fie chiar meseria: ofertele grupei care o descrie
+  // (13 noiembrie 2026), numite pe pagină ca grupă. Numai pentru cifra de pe site, nu și pentru cerințe.
+  const grupa = Object.hasOwn(GRUPE_COR, m.slug) && (!m.cor || GRUPE_COR[m.slug].inlocuiesteCor) ? GRUPE_COR[m.slug] : null;
+  const of = grupa ? anofm.filter((o) => grupa.coduri.some((c) => String(o.cor_name ?? "").startsWith(c)))
+    : m.cor ? anofm.filter((o) => String(o.cor_name ?? "").startsWith(m.cor)) : [];
   const ofGrupa = m.cor ? anofm.filter((o) => String(o.cor_name ?? "").startsWith(m.cor.slice(0, 4))) : [];
   const st = art33.filter((r) => r.meserie === m.slug);
   const ang = angajatori.filter((o) => o.meserii.includes(m.slug));
@@ -175,6 +186,7 @@ for (const m of MESERII) {
       angajatori: new Set(of.filter((o) => ["brut", "gross"].includes(o.salary_type) && Number(o.minimum_salary) >= 1000).map((o) => (o.employer_individual ? `pf-${o.id}` : o.employer_tax_code))).size,
       brutMedian: percentile(bruteAnofm, 0.5), brutP25: percentile(bruteAnofm, 0.25), brutP75: percentile(bruteAnofm, 0.75),
       // În construcții minimul legal e mai mare (4.582 lei, art. 60 pct. 5 Cod fiscal): o ofertă la el e tot „la minim”.
+      ...(grupa ? { grupa: grupa.eticheta } : {}),
       laMinim: Math.round((100 * of.filter((o) => ["brut", "gross"].includes(o.salary_type) && Number(o.minimum_salary) <= (m.categorie === "constructii" ? Math.max(MINIM(String(o.created_at).slice(0, 7)), 4582) : MINIM(String(o.created_at).slice(0, 7)))).length) / bruteAnofm.length),
     };
   }
@@ -187,6 +199,7 @@ for (const m of MESERII) {
       min: Number(o.minimum_salary) >= 1000 ? Number(o.minimum_salary) : null,
       max: Number(o.maximum_salary) >= 1000 ? Number(o.maximum_salary) : null,
       luna: String(o.created_at ?? "").slice(0, 7) || null,
+      ocupatie: grupa ? String(o.cor_name ?? "").replace(/^\d+\s*-\s*/, "").toLocaleLowerCase("ro-RO") : null,
     }));
   }
   // Pentru site: ce cer angajatorii, din anunțurile citite (≥ 20) sau, altfel, din ofertele ANOFM

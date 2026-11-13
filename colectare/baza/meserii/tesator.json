@@ -1,7 +1,7 @@
 {
  "slug": "tesator",
  "nume": "Țesător",
- "cor": "731816",
+ "cor": "815202",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
   "cuSalariu": 0,
@@ -66,96 +66,112 @@
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
-  "oferte": 4,
-  "posturi": 5,
-  "ofertePeGrupaCor": 10,
+  "oferte": 5,
+  "posturi": 9,
+  "ofertePeGrupaCor": 8,
   "tipSalariu": {
+   "gross": {
+    "n": 3,
+    "procent": 60
+   },
    "none": {
-    "n": 4,
-    "procent": 100
+    "n": 2,
+    "procent": 40
    }
   },
   "netMinimDeclarat": {
    "n": 0
   },
   "brutMinimDeclarat": {
-   "n": 0
+   "n": 3
   },
   "laSalariulMinim": 0,
   "studii": {
-   "Gimnazial - ȘCOALĂ GENERALĂ": {
-    "n": 3,
-    "procent": 75
-   },
    "Profesional - ȘCOALĂ PROFESIONALĂ": {
+    "n": 4,
+    "procent": 80
+   },
+   "Gimnazial - ȘCOALĂ GENERALĂ": {
     "n": 1,
-    "procent": 25
+    "procent": 20
    }
   },
   "experienta": {
    "Fără experiență - 0 ani": {
-    "n": 4,
-    "procent": 100
+    "n": 3,
+    "procent": 60
+   },
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 1,
+    "procent": 20
+   },
+   "Experiență medie - între 3 și 5 ani": {
+    "n": 1,
+    "procent": 20
    }
   },
   "contract": {
    "Cu durată nedeterminată": {
-    "n": 4,
+    "n": 5,
     "procent": 100
    }
   },
   "norma": {
    "Cu normă întreagă": {
-    "n": 4,
+    "n": 5,
     "procent": 100
    }
   },
   "regim": {
    "Sediu": {
-    "n": 4,
+    "n": 5,
     "procent": 100
    }
   },
   "judete": {
-   "Mureș": {
-    "n": 2,
-    "procent": 50
-   },
    "Timiș": {
-    "n": 1,
-    "procent": 25
+    "n": 2,
+    "procent": 40
    },
-   "Sibiu": {
+   "Bacău": {
     "n": 1,
-    "procent": 25
+    "procent": 20
+   },
+   "Arad": {
+    "n": 1,
+    "procent": 20
+   },
+   "Mureș": {
+    "n": 1,
+    "procent": 20
    }
   },
   "domenii": {
+   "Producție / Logistică": {
+    "n": 2,
+    "procent": 40
+   },
    "Altele": {
-    "n": 4,
-    "procent": 100
+    "n": 2,
+    "procent": 40
+   },
+   "FABRICAREA ARTICOLELOR DE IMBRACAMINTE": {
+    "n": 1,
+    "procent": 20
    }
   },
   "coduriCorInGrupa": {
-   "731816 - TESATOR": {
-    "n": 4,
-    "procent": 40
+   "815202 - OPERATOR LA DESERVIREA RAZBOAIELOR DE TESUT": {
+    "n": 5,
+    "procent": 62.5
    },
-   "731824 - CONFECTIONER TRICOTAJE DUPA COMANDA": {
-    "n": 3,
-    "procent": 30
+   "815204 - OPERATOR LA MASINI DE TRICOTAT CIRCULAR": {
+    "n": 2,
+    "procent": 25
    },
-   "731835 - PREGATITOR ARTICOLE MAROCHINARIE": {
+   "815201 - OPERATOR LA MASINI DE TRICOTAT RECTILINIU": {
     "n": 1,
-    "procent": 10
-   },
-   "731825 - FINISOR TEXTILE (VOPSITOR, IMPRIMEUR)": {
-    "n": 1,
-    "procent": 10
-   },
-   "731827 - ABURITOR TEXTILE": {
-    "n": 1,
-    "procent": 10
+    "procent": 12.5
    }
   }
  },

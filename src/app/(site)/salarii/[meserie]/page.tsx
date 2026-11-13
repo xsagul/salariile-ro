@@ -91,7 +91,7 @@ function descrierePagina(date: DateMeserie) {
     return `${inceput}: de la ${lei(start)} lei net la început, după grila legii în plată, până la ${lei(Math.max(...trepte))} lei. Treptele, pe funcții și vechime.`;
   }
   const d = frazaDeclarat(date.meserie.slug, de);
-  if (d) { const n = netDeclarat(date.meserie.slug)!; return `${inceput}: ${lei(n)} lei net pe lună, declarat de angajați și de angajatori (ghidul eJobs 2026, ANOFM). Plus ce cer angajatorii.`.slice(0, 158); }
+  if (d) { const n = netDeclarat(date.meserie.slug); return n === null ? `${inceput}: ${d}`.slice(0, 158) : `${inceput}: ${lei(n)} lei net pe lună, declarat de angajați și de angajatori (ghidul eJobs 2026, ANOFM). Plus ce cer angajatorii.`.slice(0, 158); }
   // Fără o cifră a meseriei, descrierea spune ce e pe pagină, nu media INS.
   const cer = cerinteMeserie(date.meserie.slug);
   if (cer?.sursa === "anunturi") return `${inceput}: ce cer angajatorii, din ${cer.n} anunțuri citite: experiență, studii, program și beneficii. Plus meseriile apropiate.`;
