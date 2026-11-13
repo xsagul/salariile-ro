@@ -15,7 +15,7 @@ type Brut = { categorie: string; min?: number; max?: number; brutMin?: number; b
 export type Unitate = { nume: string; luna: string; url: string; pagina: string; randuri: Record<string, number[]> };
 type Venit = {
   angajator: string; luna: string; platitIn?: string; url?: string; pagina: string; start: string;
-  varf: string; ierarhie: string; brut?: boolean; nota?: string; categorii: Categorie[]; unitati?: Unitate[];
+  varf: string; ierarhie: string; brut?: boolean; nota?: string; eticheta?: string; categorii: Categorie[]; unitati?: Unitate[];
 };
 type Sursa = Omit<Venit, "categorii"> & { categorii?: Brut[]; categoriiDin?: [string, string, "cu" | "fara"][] };
 
@@ -69,7 +69,7 @@ export default function SalariuOficial({ slug, de }: { slug: string; de: string 
   const varf = Math.max(...v.categorii.map((c) => c.max));
   return (
     <section className={`mt-6 ${CARD}`} data-salary-kind="venit-oficial-platit" data-salary-primary={start.min}>
-      <p className="text-xs font-medium text-stone-700">Cât ia în mână un {de} la început</p>
+      <p className="text-xs font-medium text-stone-700">{v.eticheta ?? `Cât ia în mână un ${de} la început`}</p>
       <p className="mt-3 text-3xl font-bold tracking-tight text-stone-900 sm:text-4xl">de la {lei(start.min)} lei net</p>
       <p className="mt-1 text-sm text-stone-600">
         {v.brut
@@ -109,7 +109,7 @@ export default function SalariuOficial({ slug, de }: { slug: string; de: string 
       ) : (
         <p className="mt-4 text-xs text-stone-600">
           {v.brut
-            ? <>Drepturile brute publicate de {v.angajator} la 31 {v.luna}: {v.nota} Fără hrană și drepturile nepermanente ·{" "}</>
+            ? <>Drepturile brute publicate de {v.angajator} pentru {v.luna}: {v.nota} Fără hrană și drepturile nepermanente ·{" "}</>
             : <>Venitul net plătit de {v.angajator} pentru {v.luna}, fără drepturile nepermanente ·{" "}</>}
           <a href={v.pagina} className="underline underline-offset-2" rel="noopener">tabelul oficial</a> ·{" "}
           <Link href={`/salarii/acoperire#${slug}`} className="underline underline-offset-2">sursele</Link>

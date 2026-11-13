@@ -35,7 +35,8 @@ const SALARIO_MIN_REZERVA = 5;
 const SALARIO_ALT_ROL = new Set(["notar", "pilot"]);
 const GR: Record<string, Ghid> = Object.fromEntries((salario.records as Ghid[])
   .filter((r) => (r.n ?? 0) >= SALARIO_MIN_REZERVA && !SALARIO_ALT_ROL.has(r.slug)).map((r) => [r.slug, { ...r, pagina: true }]));
-const A = (anofm as unknown as { luna: string; meserii: Record<string, Anofm> });
+type OfertaPutina = { baza: "brut" | "net" | null; min: number | null; max: number | null; luna: string | null };
+const A = (anofm as unknown as { luna: string; meserii: Record<string, Anofm>; putine?: Record<string, OfertaPutina[]> });
 // Cifra principală din ANOFM cere 10 oferte; între 3 și 9 oferte, numai ca rezervă.
 const ANOFM_MIN = 10;
 const ghidMeserie = (slug: string): Ghid | null => (Object.hasOwn(G, slug) ? G[slug] : null);
@@ -64,6 +65,34 @@ export const anunturiRezerva = (slug: string): Acoperire | null => {
   const a = AC[slug];
   return !a.medianBounds && a.n >= 10 && a.employers >= 5 && a.centralEstimate ? a : null;
 };
+/**
+ * Ultima treaptă, „date puține” (13 noiembrie 2026): sub toate pragurile, dar măsurat chiar pe meserie
+ * (oferte ANOFM cu codul COR exact, Salario cu rolul exact, de la 2 salarii). Nu se face o medie:
+ * pagina arată fiecare dovadă și intervalul lor, cu numărul spus. Anunțurile sub 10 nu intră: la
+ * meseriile rare, potrivirea titlului greșește („marinar” prinsese un anunț din procesarea cărnii).
+ */
+export type Dovada = { text: string; netMin: number; netMax: number };
+const netDinBaza = (suma: number, baza: "brut" | "net" | null) => (baza === "net" ? suma : baza === "brut" ? netDin(suma) : null);
+export function datePutine(slug: string): Dovada[] | null {
+  if (ghidSau(slug) || anunturiRezerva(slug) || anofmToate(slug)) return null;
+  const d: Dovada[] = [];
+  const sal = (salario.records as Ghid[]).find((r) => r.slug === slug);
+  if (sal && (sal.n ?? 0) >= 2 && !SALARIO_ALT_ROL.has(slug)) d.push({ text: `Salario (eJobs): ${lei(sal.net)} lei net, media a ${cate(sal.n!, "salarii introduse")} de cei care lucrează ca „${sal.role}”`, netMin: sal.net, netMax: sal.net });
+  for (const o of (A.putine && Object.hasOwn(A.putine, slug) && !corComun(slug) ? A.putine[slug] : [])) {
+    const a = o.min ?? o.max!, b = o.max && o.max >= a ? o.max : a;
+    const na = netDinBaza(a, o.baza), nb = netDinBaza(b, o.baza);
+    if (!na || !nb) continue; // fără bază declarată nu se poate spune cât e în mână
+    d.push({ text: `Ofertă ANOFM${o.luna ? ` (${LUNA_RO(o.luna)})` : ""}: ${a === b ? lei(a) : `${lei(a)}–${lei(b)}`} lei ${o.baza}${o.baza === "brut" ? `, adică ${na === nb ? lei(na) : `${lei(na)}–${lei(nb)}`} lei net` : ""}`, netMin: na, netMax: nb });
+  }
+  // Aceeași ofertă depusă de două ori (același angajator, aceeași sumă) se arată o dată, cu numărul.
+  const grupate = new Map<string, { d: Dovada; n: number }>();
+  for (const x of d) { const g = grupate.get(x.text); if (g) g.n++; else grupate.set(x.text, { d: x, n: 1 }); }
+  const r = [...grupate.values()].map(({ d: x, n }) => (n > 1 ? { ...x, text: x.text.replace(/^Ofertă ANOFM/, `${n} oferte ANOFM`) } : x));
+  return r.length ? r : null;
+}
+const LUNI = ["ianuarie", "februarie", "martie", "aprilie", "mai", "iunie", "iulie", "august", "septembrie", "octombrie", "noiembrie", "decembrie"];
+const LUNA_RO = (l: string) => `${LUNI[Number(l.slice(5, 7)) - 1]} ${l.slice(0, 4)}`;
+const intervalPutine = (d: Dovada[]) => [Math.min(...d.map((x) => x.netMin)), Math.max(...d.map((x) => x.netMax))] as const;
 const anofmPrincipal = (slug: string): Anofm | null =>
   anofmPrincipalStrict(slug) ?? (!ghidMeserie(slug) && !rezervaSalario(slug) && !anunturiRezerva(slug) ? anofmToate(slug) : null);
 /** Salario (ghidul sau pagina cu ≥ 20 de salarii), altfel rezerva de la 5. */
@@ -79,7 +108,11 @@ export function netDeclarat(slug: string): number | null {
   const r = anunturiRezerva(slug);
   if (r) return Math.round(r.centralEstimate! / 10) * 10;
   const a = anofmPrincipal(slug);
-  return a ? netDin(a.brutMedian) : null;
+  if (a) return netDin(a.brutMedian);
+  const d = datePutine(slug);
+  if (!d) return null;
+  const [x, y] = intervalPutine(d);
+  return Math.round((x + y) / 20) * 10;
 }
 export const areSalariuDeclarat = (slug: string) => netDeclarat(slug) !== null;
 
@@ -90,6 +123,8 @@ export function frazaDeclarat(slug: string, de: string): string | null {
   if (g) return `Cei care lucrează ca ${de} declară în medie ${f(g.net)} lei net pe lună, după ${g.pagina ? `${g.n ? cate(g.n, "salarii") + " introduse" : "salariile introduse"} pe Salario (eJobs)` : "Ghidul salarial eJobs 2026"}.${a ? ` În ofertele depuse la ANOFM, angajatorii declară ${f(a.brutMedian)} lei brut (mediana din ${cate(a.oferte, "oferte")}).` : ""}`;
   const r = anunturiRezerva(slug);
   if (r) return `În anunțurile de angajare citite de noi, unui ${de} i se oferă în jur de ${f(Math.round(r.centralEstimate! / 10) * 10)} lei net pe lună, mijlocul a ${cate(r.n, "anunțuri")} de la ${cate(r.employers, "angajatori")} din ${cate(r.counties, "județe")}.${a ? ` La ANOFM, angajatorii declară ${f(a.brutMedian)} lei brut (mediana din ${cate(a.oferte, "oferte")}${a.laMinim >= 25 ? `, ${a.laMinim}% la salariul minim` : ""}).` : ""}`;
+  const dp = !a ? datePutine(slug) : null;
+  if (dp) { const [x, y] = intervalPutine(dp); return `Avem foarte puține date pentru ${de}: ${dp.map((v) => v.text).join("; ")}. ${x === y ? `Adică ${f(x)} lei net pe lună` : `Adică între ${f(x)} și ${f(y)} lei net pe lună`}, o cifră orientativă.`; }
   if (a) return `În ofertele depuse la ANOFM, angajatorii declară pentru un ${de} ${f(a.brutMedian)} lei brut, adică ${f(netDin(a.brutMedian)!)} lei net (mediana din ${cate(a.oferte, "oferte")}${a.laMinim >= 25 ? `; ${a.laMinim}% sunt la salariul minim` : ""}).`;
   return null;
 }
@@ -119,6 +154,24 @@ export default function SalariuDeclarat({ slug, de }: { slug: string; de: string
         )}
         <p className="mt-4 text-xs text-stone-600">
           Anunțurile active citite pe OLX, eJobs, BestJobs, Publi24 și alte platforme ·{ao ? ` ofertele ANOFM active în ${A.luna} · ` : " "}
+          <Link href={`/salarii/acoperire#${slug}`} className="underline underline-offset-2">sursele</Link>
+        </p>
+      </section>
+    );
+  }
+  const dp = !g && !a ? datePutine(slug) : null;
+  if (dp) {
+    const [x, y] = intervalPutine(dp);
+    return (
+      <section className={`mt-6 ${CARD}`} data-salary-kind="date-putine" data-salary-primary={Math.round((x + y) / 20) * 10}>
+        <p className="text-xs font-medium text-stone-700">Cât câștigă un {de}, din puținele date publicate</p>
+        <p className="mt-3 text-3xl font-bold tracking-tight text-stone-900 sm:text-4xl">{x === y ? `${lei(x)} lei net` : `${lei(x)}–${lei(y)} lei net`}</p>
+        <p className="mt-1 text-sm text-stone-600">Orientativ: sunt prea puține date pentru o medie, așa că arătăm fiecare sumă găsită.</p>
+        <ul className="mt-3 space-y-1.5 text-base text-stone-700">
+          {dp.map((v) => <li key={v.text}>{v.text}</li>)}
+        </ul>
+        <p className="mt-4 text-xs text-stone-600">
+          Ofertele ANOFM cu codul COR al meseriei · Salario (eJobs), salariile introduse de angajați ·{" "}
           <Link href={`/salarii/acoperire#${slug}`} className="underline underline-offset-2">sursele</Link>
         </p>
       </section>

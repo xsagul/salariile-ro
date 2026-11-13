@@ -402,7 +402,7 @@ export const MESERII: Meserie[] = [
     ceFace: "Execută și repară bijuterii din metale prețioase, de la modelare și lipire până la montarea pietrelor." },
   { slug: "tipograf", nume: "Tipograf", de: "tipograf", categorie: "media", caen3: "18", caen2: "18", isco: "muncitori", cor: "732207",
     ceFace: "Pregătește fișierele pentru tipar, reglează mașina de tipărit și urmărește calitatea culorii pe tiraj." },
-  { slug: "constructor-drumuri", nume: "Constructor de drumuri", de: "constructor de drumuri", categorie: "constructii", caen3: "42", caen2: "F", isco: "muncitori",
+  { slug: "constructor-drumuri", nume: "Constructor de drumuri", de: "constructor de drumuri", categorie: "constructii", caen3: "42", caen2: "F", isco: "muncitori", cor: "711904",
     ceFace: "Execută lucrări de terasamente, fundații și asfaltare pe șantiere de drumuri, poduri și rețele edilitare." },
   { slug: "marinar", nume: "Marinar", de: "marinar", categorie: "transport", caen3: "50", caen2: "50", isco: "operatori", cor: "835001",
     ceFace: "Face parte din echipajul unei nave de transport fluvial sau maritim și răspunde de manevre, punte și încărcătură." },

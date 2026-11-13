@@ -619,5 +619,45 @@
     }
    }
   ]
+ },
+ "muzician": {
+  "angajator": "Filarmonica de Stat Târgu Mureș",
+  "luna": "martie 2026",
+  "platitIn": "martie 2026",
+  "url": "https://www.filarmonicams.ro/upload/Stat%20de%20functii/Informare%20cu%20privire%20la%20asigurarea%20transparentei%20veniturilor%2031.03.2026.pdf",
+  "pagina": "https://www.filarmonicams.ro/",
+  "start": "Artiști instrumentiști",
+  "varf": "la artiștii instrumentiști de gradul IA, cu vechime mare",
+  "ierarhie": "de la gradul II la gradul IA",
+  "brut": true,
+  "nota": "salariul de bază și sporul pentru condiții de muncă, pe posturile de artist instrumentist (gradul II, gradația 0, până la gradul IA, gradația 5). Se aplică muzicienilor angajați la filarmonici și opere de stat; cei care cântă pe cont propriu sau la evenimente nu au o grilă.",
+  "categorii": [
+   {
+    "categorie": "Artiști instrumentiști",
+    "brutMin": 5224,
+    "brutMax": 13869
+   }
+  ],
+  "eticheta": "Cât ia în mână un muzician angajat la o filarmonică de stat"
+ },
+ "regizor": {
+  "angajator": "Opera Națională Română Cluj-Napoca",
+  "luna": "septembrie 2024",
+  "platitIn": "septembrie 2024",
+  "url": "https://images.operacluj.ro/2024/11/Lista-functiilor-si-salariilor_-ONRC_30.09.2024.pdf",
+  "pagina": "https://www.operacluj.ro/",
+  "start": "Regizor artistic și funcțiile din aceeași grupă, gradul IA",
+  "varf": "la gradația 5",
+  "ierarhie": "pe gradațiile de vechime",
+  "brut": true,
+  "nota": "salariul de bază și sporul pentru condiții de muncă ale funcțiilor pe care legea le pune în aceeași grupă cu regizorul artistic (dirijor, scenograf, solist), la gradul IA, normă întreagă, gradațiile 1–5. E lista cea mai recentă publicată de operă. Cei mai mulți regizori lucrează pe contract, pe spectacol, nu cu salariu.",
+  "categorii": [
+   {
+    "categorie": "Regizor artistic și funcțiile din aceeași grupă, gradul IA",
+    "brutMin": 14807,
+    "brutMax": 17617
+   }
+  ],
+  "eticheta": "Cât ia în mână un regizor artistic angajat la o operă de stat"
  }
 }

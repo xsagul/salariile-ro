@@ -1,7 +1,7 @@
 {
  "slug": "constructor-drumuri",
  "nume": "Constructor de drumuri",
- "cor": null,
+ "cor": "711904",
  "anunturi": {
   "descriere": "Oferte din anunțuri publice, lei net pe lună (brutul declarat e convertit), mijlocul intervalului publicat.",
   "cuSalariu": 4,
@@ -164,25 +164,161 @@
  },
  "anofm": {
   "descriere": "Oferte înregistrate la ANOFM cu codul COR exact al meseriei; la ANOFM angajatorii declară adesea salariul minim ca formalitate.",
-  "oferte": 0,
-  "posturi": 0,
-  "ofertePeGrupaCor": 0,
-  "tipSalariu": {},
+  "oferte": 25,
+  "posturi": 29,
+  "ofertePeGrupaCor": 67,
+  "tipSalariu": {
+   "gross": {
+    "n": 21,
+    "procent": 84
+   },
+   "none": {
+    "n": 3,
+    "procent": 12
+   },
+   "net": {
+    "n": 1,
+    "procent": 4
+   }
+  },
   "netMinimDeclarat": {
-   "n": 0
+   "n": 1
   },
   "brutMinimDeclarat": {
-   "n": 0
+   "n": 21,
+   "p10": 4422,
+   "p25": 4422,
+   "median": 4422,
+   "p75": 4582,
+   "p90": 5064,
+   "min": 4422,
+   "max": 6500
   },
   "laSalariulMinim": 0,
-  "studii": {},
-  "experienta": {},
-  "contract": {},
-  "norma": {},
-  "regim": {},
-  "judete": {},
-  "domenii": {},
-  "coduriCorInGrupa": {}
+  "studii": {
+   "Gimnazial - ȘCOALĂ GENERALĂ": {
+    "n": 20,
+    "procent": 80
+   },
+   "Profesional - ȘCOALĂ PROFESIONALĂ": {
+    "n": 3,
+    "procent": 12
+   },
+   "Primar - FĂRĂ STUDII": {
+    "n": 2,
+    "procent": 8
+   }
+  },
+  "experienta": {
+   "Fără experiență - 0 ani": {
+    "n": 20,
+    "procent": 80
+   },
+   "Experiență puțină - mai puțin de 3 ani": {
+    "n": 5,
+    "procent": 20
+   }
+  },
+  "contract": {
+   "Cu durată nedeterminată": {
+    "n": 22,
+    "procent": 88
+   },
+   "Cu durată determinată": {
+    "n": 3,
+    "procent": 12
+   }
+  },
+  "norma": {
+   "Cu normă întreagă": {
+    "n": 25,
+    "procent": 100
+   }
+  },
+  "regim": {
+   "Sediu": {
+    "n": 25,
+    "procent": 100
+   }
+  },
+  "judete": {
+   "Iași": {
+    "n": 6,
+    "procent": 24
+   },
+   "Municipiul București": {
+    "n": 5,
+    "procent": 20
+   },
+   "Constanța": {
+    "n": 4,
+    "procent": 16
+   },
+   "Timiș": {
+    "n": 3,
+    "procent": 12
+   },
+   "Dolj": {
+    "n": 3,
+    "procent": 12
+   },
+   "Brașov": {
+    "n": 2,
+    "procent": 8
+   },
+   "Bihor": {
+    "n": 1,
+    "procent": 4
+   },
+   "Vâlcea": {
+    "n": 1,
+    "procent": 4
+   }
+  },
+  "domenii": {
+   "Construcții / Instalații": {
+    "n": 19,
+    "procent": 76
+   },
+   "Altele": {
+    "n": 6,
+    "procent": 24
+   }
+  },
+  "coduriCorInGrupa": {
+   "711904 - ASFALTATOR": {
+    "n": 25,
+    "procent": 37.3
+   },
+   "711901 - MUNCITOR HIDROMETRU": {
+    "n": 11,
+    "procent": 16.4
+   },
+   "711915 - AGENT HIDROTEHNIC": {
+    "n": 11,
+    "procent": 16.4
+   },
+   "711902 - PAVATOR": {
+    "n": 8,
+    "procent": 11.9
+   },
+   "711920 - ALPINIST UTILITAR": {
+    "n": 7,
+    "procent": 10.4
+   },
+   "711924 - LUCRATOR PENTRU DRUMURI SI CAI FERATE": {
+    "n": 2,
+    "procent": 3
+   },
+   "711911 - FINISOR TERASAMENTE": {
+    "n": 2,
+    "procent": 3
+   },
+   "711909 - DRENOR CANALIST": {
+    "n": 1,
+    "procent": 1.5
+   }
+  }
  },
  "institutiiPublice": {
   "descriere": "Salariile publicate de instituțiile publice (art. 33 din Legea 153/2017), un rând pe post; baza brută lunară.",

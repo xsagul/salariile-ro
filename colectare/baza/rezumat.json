@@ -1,9 +1,9 @@
 {
- "generatLa": "2026-11-13T09:45:15.458Z",
+ "generatLa": "2026-11-13T10:00:31.821Z",
  "total": {
   "anunturi": 5684,
   "citite": 16961,
-  "anofm": 5196,
+  "anofm": 5221,
   "publice": 25400
  },
  "meserii": [
@@ -668,6 +668,17 @@
    "angajatori": 0
   },
   {
+   "slug": "constructor-drumuri",
+   "nume": "Constructor de drumuri",
+   "anunturiCuSalariu": 4,
+   "cuBazaDeclarata": 1,
+   "anunturiCitite": 4,
+   "anofm": 25,
+   "anofmGrupa": 67,
+   "posturiPublice": 0,
+   "angajatori": 0
+  },
+  {
    "slug": "frizer",
    "nume": "Frizer",
    "anunturiCuSalariu": 21,
@@ -1309,17 +1320,6 @@
    "slug": "bijutier",
    "nume": "Bijutier",
    "anunturiCuSalariu": 2,
-   "cuBazaDeclarata": 1,
-   "anunturiCitite": 4,
-   "anofm": 0,
-   "anofmGrupa": 0,
-   "posturiPublice": 0,
-   "angajatori": 0
-  },
-  {
-   "slug": "constructor-drumuri",
-   "nume": "Constructor de drumuri",
-   "anunturiCuSalariu": 4,
    "cuBazaDeclarata": 1,
    "anunturiCitite": 4,
    "anofm": 0,

@@ -151,7 +151,7 @@
    "brutMedian": 4582,
    "brutP25": 4582,
    "brutP75": 4638,
-   "laMinim": 13
+   "laMinim": 61
   },
   "dulgher": {
    "oferte": 51,
@@ -159,7 +159,7 @@
    "brutMedian": 4582,
    "brutP25": 4582,
    "brutP75": 4625,
-   "laMinim": 10
+   "laMinim": 76
   },
   "electrician": {
    "oferte": 53,
@@ -167,7 +167,7 @@
    "brutMedian": 4582,
    "brutP25": 4582,
    "brutP75": 4600,
-   "laMinim": 21
+   "laMinim": 66
   },
   "instalator": {
    "oferte": 30,
@@ -175,7 +175,7 @@
    "brutMedian": 4582,
    "brutP25": 4558,
    "brutP75": 4600,
-   "laMinim": 10
+   "laMinim": 70
   },
   "zugrav": {
    "oferte": 30,
@@ -183,7 +183,7 @@
    "brutMedian": 4582,
    "brutP25": 4582,
    "brutP75": 4600,
-   "laMinim": 3
+   "laMinim": 63
   },
   "faiantar": {
    "oferte": 17,
@@ -191,7 +191,7 @@
    "brutMedian": 4582,
    "brutP25": 4582,
    "brutP75": 4600,
-   "laMinim": 0
+   "laMinim": 71
   },
   "sudor": {
    "oferte": 82,
@@ -199,7 +199,7 @@
    "brutMedian": 4582,
    "brutP25": 4325,
    "brutP75": 4600,
-   "laMinim": 35
+   "laMinim": 72
   },
   "tamplar": {
    "oferte": 46,
@@ -207,7 +207,7 @@
    "brutMedian": 4375,
    "brutP25": 4325,
    "brutP75": 4582,
-   "laMinim": 41
+   "laMinim": 83
   },
   "mecanic-auto": {
    "oferte": 100,
@@ -497,6 +497,14 @@
    "brutP75": 4330,
    "laMinim": 67
   },
+  "constructor-drumuri": {
+   "oferte": 21,
+   "angajatori": 3,
+   "brutMedian": 4422,
+   "brutP25": 4422,
+   "brutP75": 4582,
+   "laMinim": 81
+  },
   "consultant-management": {
    "oferte": 4,
    "angajatori": 4,
@@ -505,5 +513,241 @@
    "brutP75": 12250,
    "laMinim": 25
   }
+ },
+ "putine": {
+  "web-developer": [
+   {
+    "baza": "brut",
+    "min": 9192,
+    "max": 9192,
+    "luna": "2026-09"
+   }
+  ],
+  "asistent-farmacie": [
+   {
+    "baza": "brut",
+    "min": 4325,
+    "max": 4324,
+    "luna": "2026-09"
+   },
+   {
+    "baza": "net",
+    "min": 3000,
+    "max": 3500,
+    "luna": "2026-09"
+   },
+   {
+    "baza": "brut",
+    "min": 4325,
+    "max": 4330,
+    "luna": "2026-09"
+   }
+  ],
+  "profesor": [
+   {
+    "baza": "brut",
+    "min": 18379,
+    "max": null,
+    "luna": "2026-08"
+   },
+   {
+    "baza": "brut",
+    "min": 10000,
+    "max": 10000,
+    "luna": "2026-11"
+   }
+  ],
+  "invatator": [
+   {
+    "baza": "brut",
+    "min": 3090,
+    "max": 3616,
+    "luna": "2026-09"
+   },
+   {
+    "baza": "brut",
+    "min": 18384,
+    "max": null,
+    "luna": "2026-08"
+   }
+  ],
+  "analist-financiar": [
+   {
+    "baza": "brut",
+    "min": 5000,
+    "max": 6000,
+    "luna": "2026-09"
+   },
+   {
+    "baza": "brut",
+    "min": 7681,
+    "max": 12293,
+    "luna": "2026-10"
+   }
+  ],
+  "agent-asigurari": [
+   {
+    "baza": "brut",
+    "min": 4325,
+    "max": 4325,
+    "luna": "2026-09"
+   }
+  ],
+  "inginer-electronist": [
+   {
+    "baza": null,
+    "min": 4500,
+    "max": null,
+    "luna": "2026-04"
+   }
+  ],
+  "inginer-energetician": [
+   {
+    "baza": "brut",
+    "min": 6497,
+    "max": 9995,
+    "luna": "2026-09"
+   }
+  ],
+  "inginer-petrol": [
+   {
+    "baza": "brut",
+    "min": 9192,
+    "max": 28333,
+    "luna": "2026-08"
+   }
+  ],
+  "mecanic-locomotiva": [
+   {
+    "baza": "brut",
+    "min": 7875,
+    "max": 7873,
+    "luna": "2026-10"
+   },
+   {
+    "baza": "brut",
+    "min": 7875,
+    "max": 7875,
+    "luna": "2026-10"
+   }
+  ],
+  "sofer-ambulanta": [
+   {
+    "baza": "brut",
+    "min": 4325,
+    "max": 4325,
+    "luna": "2026-09"
+   }
+  ],
+  "designer-grafic": [
+   {
+    "baza": "net",
+    "min": 3200,
+    "max": 3500,
+    "luna": "2026-10"
+   }
+  ],
+  "traducator": [
+   {
+    "baza": "brut",
+    "min": 4325,
+    "max": 4500,
+    "luna": "2026-09"
+   }
+  ],
+  "silvicultor": [
+   {
+    "baza": "brut",
+    "min": 4325,
+    "max": 4325,
+    "luna": "2026-09"
+   }
+  ],
+  "agent-imobiliar": [
+   {
+    "baza": "brut",
+    "min": 4325,
+    "max": 4400,
+    "luna": "2026-09"
+   },
+   {
+    "baza": "brut",
+    "min": 4325,
+    "max": 4325,
+    "luna": "2026-09"
+   }
+  ],
+  "sondor": [
+   {
+    "baza": "net",
+    "min": 4000,
+    "max": null,
+    "luna": "2026-05"
+   }
+  ],
+  "tesator": [
+   {
+    "baza": null,
+    "min": 4050,
+    "max": null,
+    "luna": "2026-02"
+   }
+  ],
+  "cizmar": [
+   {
+    "baza": "brut",
+    "min": 4330,
+    "max": 5500,
+    "luna": "2026-09"
+   }
+  ],
+  "tipograf": [
+   {
+    "baza": "net",
+    "min": 3000,
+    "max": 3500,
+    "luna": "2026-08"
+   },
+   {
+    "baza": "net",
+    "min": 3000,
+    "max": 5000,
+    "luna": "2026-11"
+   }
+  ],
+  "crupier": [
+   {
+    "baza": "net",
+    "min": 4000,
+    "max": 4000,
+    "luna": "2026-10"
+   }
+  ],
+  "tehnician-calculatoare": [
+   {
+    "baza": "net",
+    "min": 3000,
+    "max": 8000,
+    "luna": "2026-09"
+   },
+   {
+    "baza": "brut",
+    "min": 6496,
+    "max": 7351,
+    "luna": "2026-09"
+   },
+   {
+    "baza": "brut",
+    "min": 7000,
+    "max": 8000,
+    "luna": "2026-11"
+   },
+   {
+    "baza": "net",
+    "min": 10000,
+    "max": 13000,
+    "luna": "2026-11"
+   }
+  ]
  }
 }

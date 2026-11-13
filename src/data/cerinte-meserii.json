@@ -3918,6 +3918,60 @@
      ]
     }
    ]
+  },
+  "constructor-drumuri": {
+   "sursa": "anofm",
+   "n": 25,
+   "randuri": [
+    {
+     "eticheta": "Experiență",
+     "valori": [
+      {
+       "v": "fără experiență",
+       "p": 80
+      },
+      {
+       "v": "mai puțin de 3 ani",
+       "p": 20
+      }
+     ]
+    },
+    {
+     "eticheta": "Studii",
+     "valori": [
+      {
+       "v": "gimnaziu",
+       "p": 80
+      },
+      {
+       "v": "școală profesională",
+       "p": 12
+      }
+     ]
+    },
+    {
+     "eticheta": "Contract",
+     "valori": [
+      {
+       "v": "cu durată nedeterminată",
+       "p": 88
+      },
+      {
+       "v": "cu durată determinată",
+       "p": 12
+      }
+     ]
+    },
+    {
+     "eticheta": "Normă",
+     "valori": [
+      {
+       "v": "cu normă întreagă",
+       "p": 100
+      }
+     ]
+    }
+   ]
   }
  }
 }
