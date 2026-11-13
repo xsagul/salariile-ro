@@ -5882,3 +5882,41 @@ GA4 (utilizatori, respingere = 1 − sesiuni implicate / sesiuni, timp de implic
 - **Greșeală găsită:** întrebarea „Cum compar o ofertă…” încheie cu „compar-o cu salariul de mai sus” și pe
   paginile fără cifră, unde nu e niciun salariu sus. Nereparată.
 - Explorarea GA4 „Free-form” de azi (11:12) a rămas salvată în cont; ștergerea e definitivă și n-am făcut-o.
+
+## 13 noiembrie 2026 — meseriile fără cifră: 42 → 15
+
+Cerut de proprietar: „nu mai vreau meserii fără salariu”; metode aprobate: o citire unică ANOFM, Salario
+și „ce mai știi”. Planul și concurența: `research/meserii-fara-cifra-2026-11-13/plan.md`. Publicat în
+`99d0a17` și `0282500`.
+
+**Surse noi, în ordinea în care se aleg pe pagină (după art. 33, anunțuri ≥ 30, grilă în plată):**
+- **Tabelele lunare MAI** (min–max net plătit pe categorii, art. 33): pompier = mediana a 10 ISU
+  (feb.–oct. 2026), polițist = IPJ Olt (aug. 2026), jandarm = IJJ Iași + GJM Brașov. Minimele sub
+  salariul minim net nu intră (luni lucrate parțial: ISU Maramureș 1.767 lei la subofițeri). Date în
+  `venituri-oficiale.json` (`unitati`, `categoriiDin`), calculul în `categoriiDinUnitati`.
+  Celelalte IPJ-uri nu au 2026 publicat sau au PDF scanat (Prahova); de adăugat când apar.
+- **Listele de salarii de la stat, pe instituție:** muzician = Filarmonica de Stat Târgu Mureș
+  (31 martie 2026), regizor = Opera Națională Română Cluj (30 sept. 2024, grupa legală a regizorului
+  artistic, gradul IA; teatrele mari au doar „regizor scenă” pe stat).
+- **Rezerve, numai unde nu există altă cifră** (`SalariuDeclarat.tsx`): anunțurile citite ≥ 10 de la
+  ≥ 5 angajatori (manipulant 35, șofer distribuție 27); Salario de la 5 salarii (fără notar și pilot:
+  rolul de pe Salario nu e meseria); ANOFM de la 3 oferte, cu cota la minim afișată; apoi „date puține”:
+  ofertele ANOFM cu COR exact și Salario de la 2 salarii, arătate una câte una, fără medie.
+- **Citirea unică ANOFM** (13 nov.): 8.074 oferte active, 5.340 noi. `colectare.yml` rămâne oprit.
+  `anofm-meserii.json` are acum oferte de la 3 (pragul cifrei principale, 10, e în componentă) și
+  `putine` (1–2 oferte).
+- **Construcții:** cota „la minim” din ANOFM se socotește la 4.582 lei. Efect în afara celor 42:
+  dulgher 2.754 → 6.250 lei net și zugrav 2.754 → 5.500 (din anunțuri, nu din minimul declarat la ANOFM).
+- **Constructor de drumuri:** COR 711904 (asfaltator), 21 de oferte ANOFM.
+
+**Rămase fără cifră (15):** administrator bloc, farmacist în industrie, fermier, metalurgist, muncitor în
+industria alimentară, notar, operator epurare, operator rafinărie, operator stație apă, pescar, pilot,
+preot, șofer ridesharing, sticlar, țesător. Căutat fără rezultat: TAROM, Antibiotice, Romgaz, Salrom,
+CFR Călători, Romsilva (HG 1269/2021 cere „drepturile salariale pe funcții”, dar nu le găsesc publicate
+cu sume; Poșta Română dă doar clase). FADN (fermieri) nu are cifra României în rezultatele găsite.
+Anunțurile sub 10 nu se folosesc: potrivirea titlului greșește la meseriile rare („marinar” prinsese
+un anunț din procesarea cărnii, „metalurgist” un vopsitor de pe Bd. Metalurgiei).
+
+Verificat: `tsc`, testele (fără verificarea catalogului, care pică doar pe Windows), build, paginile
+randate (pompier, polițist, jandarm, manipulant, poștaș, tipograf, mecanic de locomotivă, muzician,
+regizor, constructor de drumuri, cizmar).
