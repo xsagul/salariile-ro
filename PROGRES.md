@@ -5986,3 +5986,19 @@ categorii și lista unităților MAI stau într-o secțiune separată („Pe cat
 La „date puține”, fiecare sursă e o căsuță. „Meserii apropiate” arată încasările la ridesharing.
 Verificat pe telefon (375 px): pompier, manipulant, mecanic de locomotivă, muzician, ridesharing, fermier;
 pe desktop: pompier, notar. Publicat în `305d496` și `f95274c`.
+
+### Tot 13 noiembrie — „Ce face un …” sub cifră, din ESCO
+
+Proprietarul: paginile cu un singur card par goale dedesubt; să ne uităm la ce pune Paylab sub sumă.
+Paylab pune „Ce muncă desfășoară de obicei” (o listă de sarcini), calea de carieră și întrebări.
+Textul lor nu se poate prelua, așa că sursa e ESCO (clasificarea europeană a ocupațiilor, Comisia
+Europeană, în română, reutilizare liberă cu sursa): descrierea ocupației, până la 6 aptitudini esențiale
+(„Ce face în mod obișnuit”) și până la 5 cunoștințe („Ce trebuie să știe”), cu link la ocupația ESCO.
+- `scripts/date/genereaza-esco.mjs` → `src/data/esco-meserii.json`; potrivirea verifică grupa ISCO față
+  de COR, iar alegerile de mână stau în `scripts/date/esco-fortat.json` (URI sau „-”).
+- 128 din 142 de meserii au secțiunea. Fără, fiindcă ESCO n-are ocupația sau potrivirea ar fi falsă:
+  inginer (generic), cercetător, analist de date, militar, jandarm, curier, operator de producție,
+  tehnician de mentenanță, metalurgist, muncitor în industria alimentară, operator call center,
+  operator stație apă, electrician centrală, șofer ridesharing.
+- Secțiunea stă imediat sub cardul de salariu (sub „Pe categorii” la MAI, înainte de „Ce cer
+  angajatorii” la salariile declarate). Componenta: `CeFaceMeseria.tsx`.

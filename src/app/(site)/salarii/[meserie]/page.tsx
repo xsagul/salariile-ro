@@ -20,6 +20,7 @@ import {
 import { SURSA_GRILE, grilaPublica } from "@/lib/grile-publice";
 import SalariuConcluzie, { concluzieMeserie } from '@/app/components/SalariuConcluzie';
 import SalariuGrila, { netDeStart, trepteGrila } from '@/app/components/SalariuGrila';
+import CeFaceMeseria from "@/app/components/CeFaceMeseria";
 import SalariuOficial, { frazaTabel, netOficialDeStart, venitOficial } from "@/app/components/SalariuOficial";
 import CeCerAngajatorii, { cerinteMeserie } from '@/app/components/CeCerAngajatorii';
 import SalariuDeclarat, { areSalariuDeclarat, frazaDeclarat, netDeclarat, venitPublic } from '@/app/components/SalariuDeclarat';
@@ -277,6 +278,7 @@ export default async function MeseriePage({ params }: Props) {
                 // fiecare numit; dedesubt, ce cer angajatorii.
                 <>
                   <SalariuDeclarat slug={slug} de={meserie.de} />
+                  <CeFaceMeseria slug={slug} de={meserie.de} />
                   <CeCerAngajatorii slug={slug} de={meserie.de} />
                 </>
               ) : grilaPublica(slug)?.veche ? (
@@ -296,6 +298,12 @@ export default async function MeseriePage({ params }: Props) {
                 <p className="mt-6 text-sm text-stone-600" data-salary-kind="fara-cifra-verificata">
                   <Link href={`/salarii/acoperire#${slug}`} className="underline underline-offset-2">Sursele pe care le urmărim pentru {numeMic}</Link>
                 </p>
+              )}
+
+              {/* „Ce face un …” sub cifră, ca la Paylab (ESCO). În ramura salariilor declarate stă
+                  deja între card și „Ce cer angajatorii”. */}
+              {!(!concluzieMeserie(slug) && !trepteGrila(slug) && !venitOficial(slug) && areSalariuDeclarat(slug)) && (
+                <CeFaceMeseria slug={slug} de={meserie.de} />
               )}
 
               {meserie.nota && (
