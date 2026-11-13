@@ -1,4 +1,5 @@
 import Link from "@/app/components/Link";
+import CardSalariu, { SectiuneDetaliu, type Reper } from "@/app/components/CardSalariu";
 import date from "@/data/venituri-oficiale.json";
 import { calculStandard, SALARIU_MINIM } from "@/lib/fiscal";
 
@@ -60,61 +61,70 @@ export const netOficialDeStart = (slug: string) => {
 };
 
 const lei = (n: number) => n.toLocaleString("ro-RO");
-const CARD = "rounded-md border border-stone-200 bg-surface p-5 shadow-soft sm:p-6";
 
 export default function SalariuOficial({ slug, de }: { slug: string; de: string }) {
   const v = venitOficial(slug);
   if (!v) return null;
   const start = v.categorii.find((c) => c.categorie === v.start) ?? v.categorii[0];
-  const varf = Math.max(...v.categorii.map((c) => c.max));
+  const sus = v.categorii.reduce((a, c) => (c.max > a.max ? c : a), start);
+  const multe = !!v.unitati && v.unitati.length > 1;
+  const repere: Reper[] = [];
+  if (start.max > start.min) repere.push({ eticheta: "Cu vechime", valoare: `${lei(start.max)} lei` });
+  if (sus !== start) repere.push({ eticheta: sus.categorie, valoare: `${lei(sus.max)} lei` });
   return (
-    <section className={`mt-6 ${CARD}`} data-salary-kind="venit-oficial-platit" data-salary-primary={start.min}>
-      <p className="text-xs font-medium text-stone-700">{v.eticheta ?? `Cât ia în mână un ${de} la început`}</p>
-      <p className="mt-3 text-3xl font-bold tracking-tight text-stone-900 sm:text-4xl">de la {lei(start.min)} lei net</p>
-      <p className="mt-1 text-sm text-stone-600">
-        {v.brut
-          ? `${start.categorie} au între ${lei(start.brutMin!)} și ${lei(start.brutMax!)} lei brut pe lună, adică între ${lei(start.min)} și ${lei(start.max)} lei net.`
-          : `${start.categorie} iau în mână, la program normal, între ${lei(start.min)} și ${lei(start.max)} lei net pe lună. Brutul nu se calculează ca la un salariu obișnuit, de aceea arătăm netul plătit.`}
-      </p>
-      <p className="mt-3 text-base text-stone-700">
-        Ajunge până la <strong className="font-semibold text-stone-900">{lei(varf)} lei net</strong> {v.varf}.
-      </p>
-      <table className="mt-4 w-full text-sm">
-        <caption className="sr-only">{v.brut ? "Venitul net, pe categorii" : "Venitul net plătit, pe categorii"}</caption>
-        <thead>
-          <tr className="text-left text-xs text-stone-600">
-            <th scope="col" className="py-2 font-medium">Categoria</th>
-            <th scope="col" className="py-2 text-right font-medium">Minim</th>
-            <th scope="col" className="py-2 text-right font-medium">Maxim</th>
-          </tr>
-        </thead>
-        <tbody>
-          {v.categorii.map((c) => (
-            <tr key={c.categorie} className="border-t border-stone-100">
-              <th scope="row" className="py-2 pr-2 text-left font-normal text-stone-800">{c.categorie}</th>
-              <td className="whitespace-nowrap py-2 pl-3 text-right text-stone-900">{lei(c.min)} lei</td>
-              <td className="whitespace-nowrap py-2 pl-3 text-right text-stone-900">{lei(c.max)} lei</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      {v.unitati && v.unitati.length > 1 ? (
-        <p className="mt-4 text-xs text-stone-600">
-          Mijlocul tabelelor de venit net plătit publicate de {v.unitati.length} unități, fără drepturile nepermanente; minimele sub salariul minim net, luni lucrate parțial, nu intră:{" "}
-          {v.unitati.map((u, i) => (
-            <span key={u.nume}>{i ? ", " : ""}<a href={u.url} className="underline underline-offset-2" rel="noopener">{u.nume}</a> ({u.luna})</span>
-          ))} ·{" "}
-          <Link href={`/salarii/acoperire#${slug}`} className="underline underline-offset-2">sursele</Link>
-        </p>
-      ) : (
-        <p className="mt-4 text-xs text-stone-600">
-          {v.brut
-            ? <>Drepturile brute publicate de {v.angajator} pentru {v.luna}: {v.nota} Fără hrană și drepturile nepermanente ·{" "}</>
-            : <>Venitul net plătit de {v.angajator} pentru {v.luna}, fără drepturile nepermanente ·{" "}</>}
-          <a href={v.pagina} className="underline underline-offset-2" rel="noopener">tabelul oficial</a> ·{" "}
-          <Link href={`/salarii/acoperire#${slug}`} className="underline underline-offset-2">sursele</Link>
-        </p>
-      )}
-    </section>
+    <>
+      <CardSalariu
+        tip="venit-oficial-platit"
+        primar={start.min}
+        eticheta={v.eticheta ?? `Cât ia în mână un ${de} la început`}
+        cifra={`${lei(start.min)} lei net`}
+        brut={v.brut && start.brutMin ? `≈ ${lei(start.brutMin)} lei brut pe lună` : null}
+        explicatie={v.brut ? `Salariul de bază și sporurile permanente, la ${v.angajator}.` : `${start.categorie}, venitul net plătit la program normal.`}
+        repere={repere}
+        sursa={<>
+          {multe ? `Din tabelele publicate de ${v.unitati!.length} unități, ${v.luna}` : `Din tabelul publicat de ${v.angajator}, ${v.luna}`} ·{" "}
+          <a href="#pe-categorii" className="underline underline-offset-2">{v.categorii.length > 1 ? "Pe categorii" : "De unde e cifra"}</a>
+        </>}
+      />
+      <div id="pe-categorii" className="scroll-mt-24">
+        <SectiuneDetaliu
+          titlu={v.categorii.length > 1 ? "Pe categorii" : "De unde e cifra"}
+          subtitlu={v.brut ? "Brutul publicat, cu netul calculat pentru o persoană fără persoane în întreținere." : "Venitul net plătit într-o lună, de la cel mai mic la cel mai mare din fiecare categorie."}
+        >
+          <table className="mt-3 w-full text-sm">
+            <caption className="sr-only">Venitul net, pe categorii</caption>
+            <thead>
+              <tr className="text-left text-xs text-stone-600">
+                <th scope="col" className="py-2 font-medium">Categoria</th>
+                <th scope="col" className="py-2 text-right font-medium">De la</th>
+                <th scope="col" className="py-2 text-right font-medium">Până la</th>
+              </tr>
+            </thead>
+            <tbody>
+              {v.categorii.map((c) => (
+                <tr key={c.categorie} className="border-t border-stone-100">
+                  <th scope="row" className="py-2 pr-2 text-left font-normal text-stone-800">{c.categorie}</th>
+                  <td className="whitespace-nowrap py-2 pl-3 text-right text-stone-900">{lei(c.min)} lei</td>
+                  <td className="whitespace-nowrap py-2 pl-3 text-right text-stone-900">{lei(c.max)} lei</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <p className="mt-4 text-xs text-stone-600">
+            {multe ? (
+              <>Mijlocul tabelelor publicate de {v.unitati!.length} unități, fără drepturile nepermanente. Minimele sub salariul minim net sunt luni lucrate parțial și nu intră. Tabelele:{" "}
+                {v.unitati!.map((u, i) => (
+                  <span key={u.nume}>{i ? ", " : ""}<a href={u.url} className="underline underline-offset-2" rel="noopener">{u.nume}</a> ({u.luna})</span>
+                ))}.</>
+            ) : v.brut ? (
+              <>Drepturile brute publicate de {v.angajator} pentru {v.luna}: {v.nota} <a href={v.pagina} className="underline underline-offset-2" rel="noopener">Tabelul oficial</a>.</>
+            ) : (
+              <>Venitul net plătit de {v.angajator} pentru {v.luna}, fără drepturile nepermanente. <a href={v.pagina} className="underline underline-offset-2" rel="noopener">Tabelul oficial</a>.</>
+            )}{" "}
+            <Link href={`/salarii/acoperire#${slug}`} className="underline underline-offset-2">Toate sursele</Link>
+          </p>
+        </SectiuneDetaliu>
+      </div>
+    </>
   );
 }

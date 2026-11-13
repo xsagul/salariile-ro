@@ -22,7 +22,7 @@ import SalariuConcluzie, { concluzieMeserie } from '@/app/components/SalariuConc
 import SalariuGrila, { netDeStart, trepteGrila } from '@/app/components/SalariuGrila';
 import SalariuOficial, { frazaTabel, netOficialDeStart, venitOficial } from "@/app/components/SalariuOficial";
 import CeCerAngajatorii, { cerinteMeserie } from '@/app/components/CeCerAngajatorii';
-import SalariuDeclarat, { areSalariuDeclarat, frazaDeclarat, netDeclarat } from '@/app/components/SalariuDeclarat';
+import SalariuDeclarat, { areSalariuDeclarat, frazaDeclarat, netDeclarat, venitPublic } from '@/app/components/SalariuDeclarat';
 import { descriereReper, grilaEducatie } from '@/lib/repere-meserii';
 import corCatalogue from '@/data/cor-meserii.json';
 import { calculStandard } from '@/lib/fiscal';
@@ -241,7 +241,8 @@ export default async function MeseriePage({ params }: Props) {
     const declarat = c || start ? null : netDeclarat(alta.slug);
     // Numai cifre verificate ale meseriei: concluzia, grila în plată sau venitul oficial. Salario și
     // media INS a sectorului au ieșit și de aici (27 septembrie 2026).
-    return { alta, cifra: c ? `${lei(c.net)} lei net` : start ? `de la ${lei(start)} lei net` : declarat ? `${lei(declarat)} lei net` : undefined };
+    const inc = !c && !start && !declarat ? venitPublic(alta.slug) : null;
+    return { alta, cifra: c ? `${lei(c.net)} lei net` : start ? `de la ${lei(start)} lei net` : declarat ? `${lei(declarat)} lei net` : inc?.incasariMin ? `${lei(inc.incasariMin)}–${lei(inc.incasariMax!)} lei încasări` : undefined };
   });
   const cor = meserie.cor ? corCatalogue.occupations[meserie.slug as keyof typeof corCatalogue.occupations] : undefined;
 

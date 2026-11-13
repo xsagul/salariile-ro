@@ -1,4 +1,5 @@
 import Link from "@/app/components/Link";
+import CardSalariu, { type Reper } from "@/app/components/CardSalariu";
 import ghid from "@/data/repere-piata-verificate.json";
 import anofm from "@/data/anofm-meserii.json";
 import salario from "@/data/salario-pagini.json";
@@ -74,23 +75,23 @@ export const anunturiRezerva = (slug: string): Acoperire | null => {
  * pagina arată fiecare dovadă și intervalul lor, cu numărul spus. Anunțurile sub 10 nu intră: la
  * meseriile rare, potrivirea titlului greșește („marinar” prinsese un anunț din procesarea cărnii).
  */
-export type Dovada = { text: string; netMin: number; netMax: number };
+export type Dovada = { text: string; netMin: number; netMax: number; eticheta: string };
 const netDinBaza = (suma: number, baza: "brut" | "net" | null) => (baza === "net" ? suma : baza === "brut" ? netDin(suma) : null);
 export function datePutine(slug: string): Dovada[] | null {
   if (ghidSau(slug) || anunturiRezerva(slug) || anofmToate(slug)) return null;
   const d: Dovada[] = [];
   const sal = (salario.records as Ghid[]).find((r) => r.slug === slug);
-  if (sal && (sal.n ?? 0) >= 1 && !SALARIO_ALT_ROL.has(slug)) d.push({ text: sal.n === 1 ? `Salario (eJobs): ${lei(sal.net)} lei net, un singur salariu introdus, de cineva care lucrează ca „${sal.role}”` : `Salario (eJobs): ${lei(sal.net)} lei net, media a ${cate(sal.n!, "salarii introduse")} de cei care lucrează ca „${sal.role}”`, netMin: sal.net, netMax: sal.net });
+  if (sal && (sal.n ?? 0) >= 1 && !SALARIO_ALT_ROL.has(slug)) d.push({ eticheta: `Salario, ${sal.n === 1 ? "un salariu" : cate(sal.n!, "salarii")}`, text: sal.n === 1 ? `Salario (eJobs): ${lei(sal.net)} lei net, un singur salariu introdus, de cineva care lucrează ca „${sal.role}”` : `Salario (eJobs): ${lei(sal.net)} lei net, media a ${cate(sal.n!, "salarii introduse")} de cei care lucrează ca „${sal.role}”`, netMin: sal.net, netMax: sal.net });
   for (const o of (A.putine && Object.hasOwn(A.putine, slug) && !corComun(slug) ? A.putine[slug] : [])) {
     const a = o.min ?? o.max!, b = o.max && o.max >= a ? o.max : a;
     const na = netDinBaza(a, o.baza), nb = netDinBaza(b, o.baza);
     if (!na || !nb) continue; // fără bază declarată nu se poate spune cât e în mână
-    d.push({ text: `Ofertă ANOFM${o.ocupatie || o.luna ? ` (${[o.ocupatie, o.luna && LUNA_RO(o.luna)].filter(Boolean).join(", ")})` : ""}: ${a === b ? lei(a) : `${lei(a)}–${lei(b)}`} lei ${o.baza}${o.baza === "brut" ? `, adică ${na === nb ? lei(na) : `${lei(na)}–${lei(nb)}`} lei net` : ""}`, netMin: na, netMax: nb });
+    d.push({ eticheta: "ANOFM, o ofertă", text: `Ofertă ANOFM${o.ocupatie || o.luna ? ` (${[o.ocupatie, o.luna && LUNA_RO(o.luna)].filter(Boolean).join(", ")})` : ""}: ${a === b ? lei(a) : `${lei(a)}–${lei(b)}`} lei ${o.baza}${o.baza === "brut" ? `, adică ${na === nb ? lei(na) : `${lei(na)}–${lei(nb)}`} lei net` : ""}`, netMin: na, netMax: nb });
   }
   // Aceeași ofertă depusă de două ori (același angajator, aceeași sumă) se arată o dată, cu numărul.
   const grupate = new Map<string, { d: Dovada; n: number }>();
   for (const x of d) { const g = grupate.get(x.text); if (g) g.n++; else grupate.set(x.text, { d: x, n: 1 }); }
-  const r = [...grupate.values()].map(({ d: x, n }) => (n > 1 ? { ...x, text: x.text.replace(/^Ofertă ANOFM/, `${n} oferte ANOFM`) } : x));
+  const r = [...grupate.values()].map(({ d: x, n }) => (n > 1 ? { ...x, eticheta: x.eticheta.replace(/^ANOFM, o ofertă/, `ANOFM, ${n} oferte`), text: x.text.replace(/^Ofertă ANOFM/, `${n} oferte ANOFM`) } : x));
   return r.length ? r : null;
 }
 const LUNI = ["ianuarie", "februarie", "martie", "aprilie", "mai", "iunie", "iulie", "august", "septembrie", "octombrie", "noiembrie", "decembrie"];
@@ -100,7 +101,7 @@ const intervalPutine = (d: Dovada[]) => [Math.min(...d.map((x) => x.netMin)), Ma
  * După toate: suma declarată public de angajator sau de platformă (venituri-declarate-public.json),
  * cu sursa, data și ce cuprinde. Pentru meseriile fără salarii publicate pe funcție (13 noiembrie 2026).
  */
-type VenitPublic = { eticheta: string; text: string; sursa: string; url: string; nota?: string; net?: number; peste?: boolean; brut?: number; netMin?: number; netMax?: number; incasariMin?: number; incasariMax?: number };
+type VenitPublic = { eticheta: string; scurt: string; text: string; sursa: string; sursaScurta?: string; url: string; nota?: string; net?: number; peste?: boolean; brut?: number; netMin?: number; netMax?: number; incasariMin?: number; incasariMax?: number };
 const VP = publice as unknown as Record<string, VenitPublic | string>;
 export function venitPublic(slug: string): VenitPublic | null {
   if (!Object.hasOwn(VP, slug) || typeof VP[slug] !== "object") return null;
@@ -148,103 +149,90 @@ export function frazaDeclarat(slug: string, de: string): string | null {
 }
 
 const lei = (n: number) => n.toLocaleString("ro-RO");
-const CARD = "rounded-md border border-stone-200 bg-surface p-5 shadow-soft sm:p-6";
 
 export default function SalariuDeclarat({ slug, de }: { slug: string; de: string }) {
   const g = ghidSau(slug), a = g ? anofmMeserie(slug) : anofmPrincipal(slug);
-  const r = g ? null : anunturiRezerva(slug);
-  if (r) {
-    const net = Math.round(r.centralEstimate! / 10) * 10, ao = anofmMeserie(slug);
-    return (
-      <section className={`mt-6 ${CARD}`} data-salary-kind="oferit-anunturi-rezerva" data-salary-primary={net}>
-        <p className="text-xs font-medium text-stone-700">Cât oferă angajatorii unui {de} în anunțuri</p>
-        <p className="mt-3 text-3xl font-bold tracking-tight text-stone-900 sm:text-4xl">{lei(net)} lei net</p>
-        <p className="mt-1 text-base text-stone-700">≈ {lei(Math.round(brutDinNetStandard(net) / 10) * 10)} lei brut pe lună</p>
-        <p className="mt-1 text-sm text-stone-600">
-          Mijlocul salariilor din {cate(r.n, "anunțuri")} cu suma și baza (net sau brut) scrise, de la {cate(r.employers, "angajatori")} din {cate(r.counties, "județe")}
-. Sunt încă prea puține pentru intervalul complet, pe care îl publicăm de la 30 de anunțuri.
-        </p>
-        {ao && (
-          <p className="mt-3 text-base text-stone-700">
-            În ofertele depuse la ANOFM, angajatorii declară <strong className="font-semibold text-stone-900">{lei(ao.brutMedian)} lei brut</strong>, mediana din {cate(ao.oferte, "oferte")}
-            {ao.laMinim >= 25 ? `; ${ao.laMinim}% sunt la salariul minim` : ""}.
-          </p>
-        )}
-        <p className="mt-4 text-xs text-stone-600">
-          Anunțurile active citite pe OLX, eJobs, BestJobs, Publi24 și alte platforme ·{ao ? ` ofertele ANOFM active în ${A.luna} · ` : " "}
-          <Link href={`/salarii/acoperire#${slug}`} className="underline underline-offset-2">sursele</Link>
-        </p>
-      </section>
-    );
-  }
+  const nota = Object.hasOwn(NOTA_MESERIE, slug) ? NOTA_MESERIE[slug] : null;
+  const surse = <Link href={`/salarii/acoperire#${slug}`} className="underline underline-offset-2">Sursele</Link>;
+  const brutDe = (net: number) => `≈ ${lei(Math.round(brutDinNetStandard(net) / 10) * 10)} lei brut pe lună`;
+  // Ce declară angajatorii la ANOFM, ca reper, când cifra mare vine din altă parte.
+  const repereAnofm = (x: Anofm | null): Reper[] => !x ? [] : [
+    { eticheta: "Declarat la ANOFM", valoare: `${lei(x.brutMedian)} lei brut` },
+    ...(x.laMinim >= 25 ? [{ eticheta: "Oferte la salariul minim", valoare: `${x.laMinim}%` }] : []),
+  ];
+
   const vp = !g && !a ? venitPublic(slug) : null;
   if (vp) {
     const net = netPublic(vp);
-    const mare = vp.incasariMin ? `${lei(vp.incasariMin)}–${lei(vp.incasariMax!)} lei` : vp.netMin ? `${lei(vp.netMin)}–${lei(vp.netMax!)} lei net` : `${vp.peste ? "peste " : ""}${lei(net!)} lei net`;
     return (
-      <section className={`mt-6 ${CARD}`} data-salary-kind="declarat-public" data-salary-primary={net ?? vp.incasariMin}>
-        <p className="text-xs font-medium text-stone-700">{vp.eticheta}</p>
-        <p className="mt-3 text-3xl font-bold tracking-tight text-stone-900 sm:text-4xl">{mare}</p>
-        {vp.brut ? <p className="mt-1 text-base text-stone-700">{lei(vp.brut)} lei brut pe lună</p> : vp.incasariMin ? <p className="mt-1 text-base text-stone-700">încasări brute pe lună, înainte de costuri</p> : null}
-        <p className="mt-3 text-base text-stone-700">{vp.text}</p>
-        {vp.nota && <p className="mt-2 text-sm text-stone-600">{vp.nota}</p>}
-        <p className="mt-4 text-xs text-stone-600">
-          <a href={vp.url} className="underline underline-offset-2" rel="noopener">{vp.sursa}</a> ·{" "}
-          <Link href={`/salarii/acoperire#${slug}`} className="underline underline-offset-2">sursele</Link>
-        </p>
-      </section>
+      <CardSalariu
+        tip="declarat-public" primar={net ?? vp.incasariMin}
+        eticheta={vp.eticheta}
+        cifra={vp.incasariMin ? `${lei(vp.incasariMin)}–${lei(vp.incasariMax!)} lei` : vp.netMin ? `${lei(vp.netMin)}–${lei(vp.netMax!)} lei net` : `${vp.peste ? "peste " : ""}${lei(net!)} lei net`}
+        brut={vp.brut ? `${lei(vp.brut)} lei brut pe lună` : vp.incasariMin ? "încasări brute pe lună, înainte de costuri" : null}
+        explicatie={vp.scurt}
+        nota={vp.nota}
+        sursa={<><a href={vp.url} title={vp.sursa} className="underline underline-offset-2" rel="noopener">{vp.sursaScurta ?? vp.sursa}</a> · {surse}</>}
+      />
     );
   }
   const dp = !g && !a ? datePutine(slug) : null;
   if (dp) {
     const [x, y] = intervalPutine(dp);
     return (
-      <section className={`mt-6 ${CARD}`} data-salary-kind="date-putine" data-salary-primary={Math.round((x + y) / 20) * 10}>
-        <p className="text-xs font-medium text-stone-700">Cât câștigă un {de}, din puținele date publicate</p>
-        <p className="mt-3 text-3xl font-bold tracking-tight text-stone-900 sm:text-4xl">{x === y ? `${lei(x)} lei net` : `${lei(x)}–${lei(y)} lei net`}</p>
-        <p className="mt-1 text-sm text-stone-600">Orientativ: sunt prea puține date pentru o medie, așa că arătăm fiecare sumă găsită.</p>
-        {Object.hasOwn(NOTA_MESERIE, slug) && <p className="mt-2 text-sm text-stone-700">{NOTA_MESERIE[slug]}</p>}
-        <ul className="mt-3 space-y-1.5 text-base text-stone-700">
-          {dp.map((v) => <li key={v.text}>{v.text}</li>)}
-        </ul>
-        <p className="mt-4 text-xs text-stone-600">
-          Ofertele ANOFM cu codul COR al meseriei · Salario (eJobs), salariile introduse de angajați ·{" "}
-          <Link href={`/salarii/acoperire#${slug}`} className="underline underline-offset-2">sursele</Link>
-        </p>
-      </section>
+      <CardSalariu
+        tip="date-putine" primar={Math.round((x + y) / 20) * 10}
+        eticheta={`Cât câștigă un ${de}`}
+        cifra={x === y ? `${lei(x)} lei net` : `${lei(x)}–${lei(y)} lei net`}
+        explicatie="Orientativ: am găsit foarte puține salarii publicate."
+        repere={dp.map((v) => ({ eticheta: v.eticheta, valoare: v.netMin === v.netMax ? `${lei(v.netMin)} lei` : `${lei(v.netMin)}–${lei(v.netMax)} lei` }))}
+        nota={nota}
+        sursa={<>Salario (eJobs) și ofertele ANOFM · {surse}</>}
+      />
+    );
+  }
+  const r = g ? null : anunturiRezerva(slug);
+  if (r) {
+    const net = Math.round(r.centralEstimate! / 10) * 10;
+    return (
+      <CardSalariu
+        tip="oferit-anunturi-rezerva" primar={net}
+        eticheta={`Cât oferă angajatorii unui ${de}`}
+        cifra={`${lei(net)} lei net`}
+        brut={brutDe(net)}
+        explicatie={`Mijlocul salariilor din ${cate(r.n, "anunțuri")} de angajare.`}
+        repere={repereAnofm(anofmMeserie(slug))}
+        nota={nota}
+        sursa={<>Din {cate(r.n, "anunțuri")} de la {cate(r.employers, "angajatori")}, {cate(r.counties, "județe")} · {surse}</>}
+      />
     );
   }
   if (!g && !a) return null;
-  const principal = g ? g.net : netDin(a!.brutMedian)!;
+  if (g) {
+    return (
+      <CardSalariu
+        tip="declarat-angajati" primar={g.net}
+        eticheta={`Cât iau în mână cei care lucrează ca ${de}`}
+        cifra={`${lei(g.net)} lei net`}
+        brut={brutDe(g.net)}
+        explicatie={g.n ? `Media salariilor declarate de ${cate(g.n, "angajați")}.` : "Media salariilor declarate de angajați."}
+        repere={repereAnofm(a)}
+        nota={nota}
+        sursa={<>{g.pagina ? "Salario (eJobs)" : "Ghidul salarial eJobs 2026"}{a ? `, ofertele ANOFM din ${A.luna}` : ""} · {surse}</>}
+      />
+    );
+  }
+  const net = netDin(a!.brutMedian)!;
   return (
-    <section className={`mt-6 ${CARD}`} data-salary-kind={g ? "declarat-angajati" : "declarat-anofm"} data-salary-primary={principal}>
-      <p className="text-xs font-medium text-stone-700">
-        {g ? `Cât declară că iau în mână cei care lucrează ca ${de}` : `Cât oferă angajatorii unui ${de}, declarat la ANOFM`}
-      </p>
-      <p className="mt-3 text-3xl font-bold tracking-tight text-stone-900 sm:text-4xl">{lei(principal)} lei net</p>
-      <p className="mt-1 text-base text-stone-700">≈ {lei(g ? Math.round(brutDinNetStandard(principal) / 10) * 10 : a!.brutMedian)} lei brut pe lună</p>
-      <p className="mt-1 text-sm text-stone-600">
-        {g
-          ? `Media salariilor declarate de angajați pentru „${g.role}”${g.n ? `, din ${cate(g.n, "salarii introduse")}` : ""}, din toată țara și toate nivelurile de experiență.`
-          : `Mediana din ${cate(a!.oferte, "oferte")} cu salariul brut declarat de ${cate(a!.angajatori, a!.angajatori === 1 ? "angajator" : "angajatori")}${a!.grupa ? `, pentru ${a!.grupa}` : ""}.`}
-      </p>
-      {g && a && (
-        <p className="mt-3 text-base text-stone-700">
-          În ofertele depuse la ANOFM, angajatorii declară <strong className="font-semibold text-stone-900">{lei(a.brutMedian)} lei brut</strong>{" "}
-          (≈ {lei(netDin(a.brutMedian)!)} lei net), mediana din {cate(a.oferte, "oferte")}.
-        </p>
-      )}
-      {a && a.laMinim >= 25 && (
-        <p className="mt-2 text-sm text-stone-600">
-          {a.laMinim}% din ofertele ANOFM sunt la salariul minim: angajatorii declară adesea minimul, iar restul vine din sporuri și bonusuri.
-        </p>
-      )}
-      {Object.hasOwn(NOTA_MESERIE, slug) && <p className="mt-2 text-sm text-stone-700">{NOTA_MESERIE[slug]}</p>}
-      <p className="mt-4 text-xs text-stone-600">
-        {g && (g.pagina ? <>Salario (eJobs), salariile introduse de angajați · </> : <>Ghidul salarial eJobs 2026, salarii raportate pe Salario · </>)}
-        {a && <>Ofertele ANOFM active în {A.luna} · </>}
-        <Link href={`/salarii/acoperire#${slug}`} className="underline underline-offset-2">sursele</Link>
-      </p>
-    </section>
+    <CardSalariu
+      tip="declarat-anofm" primar={net}
+      eticheta={`Cât oferă angajatorii unui ${de}`}
+      cifra={`${lei(net)} lei net`}
+      brut={`≈ ${lei(a!.brutMedian)} lei brut pe lună`}
+      explicatie={`Mijlocul a ${cate(a!.oferte, "oferte")} depuse la ANOFM${a!.grupa ? ", pentru ocupațiile apropiate" : ""}.`}
+      repere={a!.laMinim >= 25 ? [{ eticheta: "Oferte la salariul minim", valoare: `${a!.laMinim}%` }] : []}
+      nota={nota ?? (a!.laMinim >= 25 ? "Angajatorii declară adesea minimul la ANOFM; sporurile și bonusurile vin peste." : null)}
+      sursa={<>Ofertele ANOFM din {A.luna}{a!.grupa ? `, ${a!.grupa}` : ""} · {surse}</>}
+    />
   );
 }

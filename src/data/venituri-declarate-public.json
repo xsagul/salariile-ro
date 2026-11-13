@@ -6,7 +6,9 @@
   "text": "Câștigul mediu lunar pe salariat la Compania de Apă Arad în 2025: 8.546 lei brut, calculat din toate cheltuielile salariale, pentru toate funcțiile (757 de salariați). Bugetul pe 2026 prevede 9.175 lei.",
   "sursa": "Bugetul de venituri și cheltuieli 2026 al Companiei de Apă Arad, anexa 2 la Hotărârea Consiliului Județean Arad nr. 122/30.04.2026",
   "url": "https://www.cjarad.ro/wp-content/uploads/2026/04/Anexa-2-17.pdf",
-  "nota": "E media întregii companii, de la operatori la conducere, nu salariul operatorului de stație."
+  "nota": "E media întregii companii, nu salariul operatorului de stație.",
+  "scurt": "Câștigul mediu al angajaților Companiei de Apă Arad, în 2025.",
+  "sursaScurta": "Bugetul Companiei de Apă Arad, HCJ Arad 122/2026"
  },
  "operator-rafinarie": {
   "eticheta": "Cât câștigă un angajat al unei rafinării",
@@ -15,7 +17,9 @@
   "text": "Rompetrol: venitul mediu lunar net pe platforma Petromidia depășește 10.900 lei, cu munca în schimburi, sporurile și orele suplimentare (declarație a companiei, 30 ianuarie 2026).",
   "sursa": "Digi24, „Ce spune Rompetrol despre protestul de la rafinăria Petromidia”, 30 ianuarie 2026",
   "url": "https://www.digi24.ro/digieconomic/companii/ce-spune-rompetrol-despre-protestul-de-la-rafinaria-petromidia-nu-va-mari-salariile-angajatilor-85327",
-  "nota": "E media tuturor angajaților de pe platformă, declarată de angajator în timpul unei negocieri salariale."
+  "nota": "Media tuturor angajaților de pe platformă, cu ture și ore suplimentare.",
+  "scurt": "Venitul mediu net declarat de Rompetrol pentru rafinăria Petromidia.",
+  "sursaScurta": "Rompetrol, pentru Digi24, 30 ianuarie 2026"
  },
  "sofer-ridesharing": {
   "eticheta": "Cât încasează un șofer de ridesharing",
@@ -24,7 +28,9 @@
   "text": "Bolt: în București, încasările brute ale unui șofer sunt între 10.000 și 12.000 de lei pe lună, iar în celelalte orașe în jur de 7.000–8.000 de lei. Din ele, Bolt reține un comision de 25%.",
   "sursa": "Bolt, citat de Wall-Street.ro („Câți bani pot face șoferii Bolt în România”), și răspunsul Bolt pentru Digi24 din 2 martie 2026",
   "url": "https://www.wall-street.ro/articol/Auto/291967/cati-bani-pot-face-soferii-bolt-in-romania.html",
-  "nota": "Nu e salariu: șoferul lucrează prin propria firmă sau prin un operator de transport. Din încasări se scad comisionul platformei, combustibilul, mașina, asigurările și taxele."
+  "nota": "Nu e salariu: din încasări se scad comisionul de 25%, combustibilul, mașina și taxele.",
+  "scurt": "Încasările unui șofer în București, după Bolt; în alte orașe, 7.000–8.000 lei.",
+  "sursaScurta": "Bolt, pentru Wall-Street.ro și Digi24"
  },
  "farmacist-industrie": {
   "eticheta": "Cât oferă un producător de medicamente unui farmacist",
@@ -33,6 +39,8 @@
   "text": "Ofertă ANOFM a STADA M&D (producător de medicamente) pentru un post de farmacist în București, octombrie 2026: 4.000–6.000 lei net.",
   "sursa": "Ofertele de muncă publice ANOFM (mediere.anofm.ro), citite pe 13 noiembrie 2026",
   "url": "https://mediere.anofm.ro/",
-  "nota": "O singură ofertă: orientativ."
+  "nota": null,
+  "scurt": "O ofertă a unui producător de medicamente, la ANOFM, octombrie 2026.",
+  "sursaScurta": "Ofertele ANOFM, citite pe 13 noiembrie 2026"
  }
 }
