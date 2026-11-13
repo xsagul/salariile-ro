@@ -164,11 +164,11 @@
     "n": 15,
     "procent": 12.8
    },
-   "3+ ani": {
+   "avantaj": {
     "n": 8,
     "procent": 6.8
    },
-   "avantaj": {
+   "3+ ani": {
     "n": 8,
     "procent": 6.8
    },
@@ -431,11 +431,11 @@
     "n": 16,
     "procent": 13.7
    },
-   "Timis": {
+   "Arges": {
     "n": 5,
     "procent": 4.3
    },
-   "Arges": {
+   "Timis": {
     "n": 5,
     "procent": 4.3
    },
@@ -446,10 +446,6 @@
    "Ilfov": {
     "n": 4,
     "procent": 3.4
-   },
-   "RO": {
-    "n": 3,
-    "procent": 2.6
    },
    "Arad": {
     "n": 3,
@@ -463,6 +459,10 @@
     "n": 3,
     "procent": 2.6
    },
+   "RO": {
+    "n": 3,
+    "procent": 2.6
+   },
    "Brasov": {
     "n": 2,
     "procent": 1.7
@@ -470,10 +470,6 @@
    "Suceava": {
     "n": 2,
     "procent": 1.7
-   },
-   "bucuresti": {
-    "n": 1,
-    "procent": 0.9
    },
    "Cluj": {
     "n": 1,
@@ -488,6 +484,10 @@
     "procent": 0.9
    },
    "Constanta": {
+    "n": 1,
+    "procent": 0.9
+   },
+   "bucuresti": {
     "n": 1,
     "procent": 0.9
    },
@@ -559,6 +559,9 @@
     "bonus": {
      "n": 5
     },
+    "telefon / laptop": {
+     "n": 3
+    },
     "transport": {
      "n": 3
     },
@@ -566,9 +569,6 @@
      "n": 3
     },
     "asigurare medicală": {
-     "n": 3
-    },
-    "telefon / laptop": {
      "n": 3
     },
     "echipament de lucru": {

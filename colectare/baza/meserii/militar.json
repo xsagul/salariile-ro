@@ -201,15 +201,15 @@
    }
   },
   "peJudet": {
-   "bucuresti": {
-    "n": 3,
-    "procent": 18.8
-   },
    "Ilfov": {
     "n": 3,
     "procent": 18.8
    },
    "Bucuresti": {
+    "n": 3,
+    "procent": 18.8
+   },
+   "bucuresti": {
     "n": 3,
     "procent": 18.8
    },

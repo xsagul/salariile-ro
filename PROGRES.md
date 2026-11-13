@@ -6002,3 +6002,18 @@ Europeană, în română, reutilizare liberă cu sursa): descrierea ocupației, 
   operator stație apă, electrician centrală, șofer ridesharing.
 - Secțiunea stă imediat sub cardul de salariu (sub „Pe categorii” la MAI, înainte de „Ce cer
   angajatorii” la salariile declarate). Componenta: `CeFaceMeseria.tsx`.
+
+### Tot 13 noiembrie — bacșiș, mărturia barmanului, auditul celor 142 de pagini
+
+- **Bacșiș în extractorul de anunțuri** (`scripts/crawler/atribute.mjs`, „bacșiș”: bacsis, tips; 2 teste noi).
+  Profilurile din septembrie re-extrase local (`reextrage-profil.mjs`, 3.090 de anunțuri; clasificatorul
+  curent a corectat meseria la 984). Bacșișul apare rar în anunțuri: ospătar 8 din 230, barman 4 din 88,
+  sub pragul de 10% al „Ce cer angajatorii”. Rulările de noapte îl numără de acum.
+- **Mărturii din meserie** (`src/data/marturii-meserii.json`, `MarturieMeserie.tsx`), sub cardul de
+  salariu, numite „mărturie, nu medie”. Prima, de la proprietar, care a lucrat ca barman: în jur de 100 de
+  lei bacșiș pe zi lucrată, într-un local mediu. La ospătar a spus „poate puțin mai mult”, deci nu am
+  publicat o cifră. Se adaugă numai de la oameni care au lucrat în meserie.
+- **Auditul automat al celor 142 de pagini** (build, citit din HTML): toate au card cu cifră. Corectat:
+  cardul grilei legale (profesor, învățător, educator, stomatolog) repeta treapta de sus într-un paragraf și
+  avea etichete de 3–4 rânduri; acum căsuțele spun doar treapta („Gradul I”). Descrierile ESCO de peste
+  380 de caractere se opresc la ultima frază întreagă care încape.

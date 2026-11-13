@@ -312,11 +312,11 @@
     "n": 12,
     "procent": 2.5
    },
-   "franceza": {
+   "maghiara": {
     "n": 1,
     "procent": 0.2
    },
-   "maghiara": {
+   "franceza": {
     "n": 1,
     "procent": 0.2
    }
@@ -413,11 +413,11 @@
     "n": 15,
     "procent": 3.1
    },
-   "prime": {
+   "spor": {
     "n": 15,
     "procent": 3.1
    },
-   "spor": {
+   "prime": {
     "n": 15,
     "procent": 3.1
    },
@@ -535,10 +535,6 @@
     "n": 6,
     "procent": 1.2
    },
-   "ilfov": {
-    "n": 5,
-    "procent": 1
-   },
    "Alba": {
     "n": 5,
     "procent": 1
@@ -548,6 +544,10 @@
     "procent": 1
    },
    "Iasi": {
+    "n": 5,
+    "procent": 1
+   },
+   "ilfov": {
     "n": 5,
     "procent": 1
    },
@@ -575,25 +575,17 @@
     "n": 3,
     "procent": 0.6
    },
-   "RO": {
+   "Caras-Severin": {
     "n": 2,
     "procent": 0.4
    },
-   "Caras-Severin": {
+   "RO": {
     "n": 2,
     "procent": 0.4
    },
    "Calarasi": {
     "n": 2,
     "procent": 0.4
-   },
-   "prahova": {
-    "n": 1,
-    "procent": 0.2
-   },
-   "cluj": {
-    "n": 1,
-    "procent": 0.2
    },
    "Mehedinti": {
     "n": 1,
@@ -616,6 +608,14 @@
     "procent": 0.2
    },
    "Covasna": {
+    "n": 1,
+    "procent": 0.2
+   },
+   "prahova": {
+    "n": 1,
+    "procent": 0.2
+   },
+   "cluj": {
     "n": 1,
     "procent": 0.2
    },

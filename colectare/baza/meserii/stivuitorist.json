@@ -564,11 +564,11 @@
     "n": 10,
     "procent": 4.1
    },
-   "ilfov": {
+   "Brasov": {
     "n": 9,
     "procent": 3.7
    },
-   "Brasov": {
+   "ilfov": {
     "n": 9,
     "procent": 3.7
    },
@@ -604,14 +604,6 @@
     "n": 2,
     "procent": 0.8
    },
-   "prahova": {
-    "n": 1,
-    "procent": 0.4
-   },
-   "constanta": {
-    "n": 1,
-    "procent": 0.4
-   },
    "Valcea": {
     "n": 1,
     "procent": 0.4
@@ -633,6 +625,14 @@
     "procent": 0.4
    },
    "Alba": {
+    "n": 1,
+    "procent": 0.4
+   },
+   "prahova": {
+    "n": 1,
+    "procent": 0.4
+   },
+   "constanta": {
     "n": 1,
     "procent": 0.4
    },

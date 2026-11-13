@@ -785,11 +785,11 @@
        "p": 15
       },
       {
-       "v": "cursuri / training",
+       "v": "bonus",
        "p": 10
       },
       {
-       "v": "bonus",
+       "v": "cursuri / training",
        "p": 10
       }
      ]
@@ -1794,11 +1794,11 @@
        "p": 74
       },
       {
-       "v": "transport",
+       "v": "bonus",
        "p": 46
       },
       {
-       "v": "bonus",
+       "v": "transport",
        "p": 46
       },
       {
@@ -2263,11 +2263,11 @@
        "p": 35
       },
       {
-       "v": "2+ ani",
+       "v": "experiența e un avantaj",
        "p": 10
       },
       {
-       "v": "experiența e un avantaj",
+       "v": "2+ ani",
        "p": 10
       }
      ]
@@ -2276,11 +2276,11 @@
      "eticheta": "Studii",
      "valori": [
       {
-       "v": "superioare",
+       "v": "medii",
        "p": 15
       },
       {
-       "v": "medii",
+       "v": "superioare",
        "p": 15
       }
      ]
@@ -2964,11 +2964,11 @@
      "eticheta": "Experiență",
      "valori": [
       {
-       "v": "experiență cerută",
+       "v": "experiența e un avantaj",
        "p": 28
       },
       {
-       "v": "experiența e un avantaj",
+       "v": "experiență cerută",
        "p": 28
       },
       {
@@ -3745,11 +3745,11 @@
        "p": 61
       },
       {
-       "v": "bonus",
+       "v": "asigurare medicală",
        "p": 22
       },
       {
-       "v": "asigurare medicală",
+       "v": "bonus",
        "p": 22
       },
       {
@@ -3829,11 +3829,11 @@
        "p": 51
       },
       {
-       "v": "asigurare medicală",
+       "v": "transport",
        "p": 20
       },
       {
-       "v": "transport",
+       "v": "asigurare medicală",
        "p": 20
       },
       {

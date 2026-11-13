@@ -302,11 +302,11 @@
     "n": 81,
     "procent": 15.6
    },
-   "1+ ani": {
+   "fara": {
     "n": 6,
     "procent": 1.2
    },
-   "fara": {
+   "1+ ani": {
     "n": 6,
     "procent": 1.2
    },
@@ -318,15 +318,15 @@
     "n": 2,
     "procent": 0.4
    },
-   "3+ ani": {
-    "n": 1,
-    "procent": 0.2
-   },
    "12+ ani": {
     "n": 1,
     "procent": 0.2
    },
    "4+ ani": {
+    "n": 1,
+    "procent": 0.2
+   },
+   "3+ ani": {
     "n": 1,
     "procent": 0.2
    },
@@ -619,10 +619,6 @@
     "n": 3,
     "procent": 0.6
    },
-   "giurgiu": {
-    "n": 2,
-    "procent": 0.4
-   },
    "Neamt": {
     "n": 2,
     "procent": 0.4
@@ -651,13 +647,13 @@
     "n": 2,
     "procent": 0.4
    },
-   "Satu Mare": {
+   "giurgiu": {
     "n": 2,
     "procent": 0.4
    },
-   "RO": {
-    "n": 1,
-    "procent": 0.2
+   "Satu Mare": {
+    "n": 2,
+    "procent": 0.4
    },
    "Ialomita": {
     "n": 1,
@@ -680,6 +676,10 @@
     "procent": 0.2
    },
    "neamt": {
+    "n": 1,
+    "procent": 0.2
+   },
+   "RO": {
     "n": 1,
     "procent": 0.2
    },
@@ -711,7 +711,7 @@
   "motiveFaraSalariu": {
    "salary_evidence_incomplete": {
     "n": 341,
-    "procent": 87.4
+    "procent": 87.7
    },
    "full_time_unconfirmed": {
     "n": 141,
@@ -726,8 +726,8 @@
     "procent": 4.6
    },
    "multiple_unresolved_amounts": {
-    "n": 16,
-    "procent": 4.1
+    "n": 15,
+    "procent": 3.9
    },
    "foreign_or_noncomparable_work": {
     "n": 14,
@@ -772,13 +772,13 @@
      "min": 2700,
      "max": 7250
     },
-    "3+ ani": {
-     "n": 1
-    },
     "4+ ani": {
      "n": 1
     },
     "1+ ani": {
+     "n": 1
+    },
+    "3+ ani": {
      "n": 1
     }
    },
@@ -813,16 +813,6 @@
      "min": 2683,
      "max": 3200
     },
-    "weekend": {
-     "n": 24,
-     "p10": 2819,
-     "p25": 2819,
-     "median": 2819,
-     "p75": 2819,
-     "p90": 2819,
-     "min": 2683,
-     "max": 2819
-    },
     "luni–vineri": {
      "n": 24,
      "p10": 2699,
@@ -832,6 +822,16 @@
      "p90": 4675,
      "min": 2699,
      "max": 6500
+    },
+    "weekend": {
+     "n": 24,
+     "p10": 2819,
+     "p25": 2819,
+     "median": 2819,
+     "p75": 2819,
+     "p90": 2819,
+     "min": 2683,
+     "max": 2819
     },
     "flexibil": {
      "n": 1

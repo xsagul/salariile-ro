@@ -380,6 +380,10 @@
     "n": 6,
     "procent": 1.5
    },
+   "bacșiș": {
+    "n": 4,
+    "procent": 1
+   },
    "spor": {
     "n": 2,
     "procent": 0.5
@@ -515,15 +519,15 @@
     "n": 4,
     "procent": 1
    },
-   "Valcea": {
-    "n": 3,
-    "procent": 0.7
-   },
    "Braila": {
     "n": 3,
     "procent": 0.7
    },
    "Mures": {
+    "n": 3,
+    "procent": 0.7
+   },
+   "Valcea": {
     "n": 3,
     "procent": 0.7
    },
@@ -539,14 +543,6 @@
     "n": 3,
     "procent": 0.7
    },
-   "Satu Mare": {
-    "n": 2,
-    "procent": 0.5
-   },
-   "prahova": {
-    "n": 2,
-    "procent": 0.5
-   },
    "Bistrita-Nasaud": {
     "n": 2,
     "procent": 0.5
@@ -555,13 +551,17 @@
     "n": 2,
     "procent": 0.5
    },
-   "Hunedoara": {
+   "Satu Mare": {
     "n": 2,
     "procent": 0.5
    },
-   "dolj": {
-    "n": 1,
-    "procent": 0.2
+   "prahova": {
+    "n": 2,
+    "procent": 0.5
+   },
+   "Hunedoara": {
+    "n": 2,
+    "procent": 0.5
    },
    "Tulcea": {
     "n": 1,
@@ -584,6 +584,10 @@
     "procent": 0.2
    },
    "Suceava": {
+    "n": 1,
+    "procent": 0.2
+   },
+   "dolj": {
     "n": 1,
     "procent": 0.2
    },
@@ -695,10 +699,10 @@
     }
    },
    "permis": {
-    "B": {
+    "da": {
      "n": 1
     },
-    "da": {
+    "B": {
      "n": 1
     }
    }

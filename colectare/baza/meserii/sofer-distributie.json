@@ -248,11 +248,11 @@
     "n": 3,
     "procent": 0.9
    },
-   "5+ ani": {
+   "11+ ani": {
     "n": 2,
     "procent": 0.6
    },
-   "11+ ani": {
+   "5+ ani": {
     "n": 2,
     "procent": 0.6
    },
@@ -422,23 +422,23 @@
     "n": 8,
     "procent": 2.3
    },
-   "cazare": {
-    "n": 6,
-    "procent": 1.7
-   },
    "asigurare medicală": {
     "n": 6,
     "procent": 1.7
    },
-   "ore suplimentare plătite": {
-    "n": 3,
-    "procent": 0.9
+   "cazare": {
+    "n": 6,
+    "procent": 1.7
    },
    "prime": {
     "n": 3,
     "procent": 0.9
    },
    "spor": {
+    "n": 3,
+    "procent": 0.9
+   },
+   "ore suplimentare plătite": {
     "n": 3,
     "procent": 0.9
    },
@@ -506,10 +506,6 @@
     "n": 19,
     "procent": 5.5
    },
-   "bucuresti": {
-    "n": 16,
-    "procent": 4.6
-   },
    "Ilfov": {
     "n": 16,
     "procent": 4.6
@@ -518,11 +514,15 @@
     "n": 16,
     "procent": 4.6
    },
-   "ilfov": {
+   "bucuresti": {
+    "n": 16,
+    "procent": 4.6
+   },
+   "Cluj": {
     "n": 14,
     "procent": 4
    },
-   "Cluj": {
+   "ilfov": {
     "n": 14,
     "procent": 4
    },

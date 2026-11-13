@@ -137,6 +137,8 @@ const BENEFICII = [
   ["transport", /transport (gratuit|asigurat|decontat|inclus|platit|la si de la)|decontare(a)? (transport|navet)|microbuz|asiguram transport|transport asigurat/],
   ["cazare", /cazare (gratuita|asigurata|oferita|inclusa|platita|decontata)|asiguram cazare|oferim cazare|cazare in regim|cazarea (este )?(asigurata|gratuita|oferita)/],
   ["masă", /masa (gratuita|asigurata|calda|de pranz)|pranz(ul)? (gratuit|asigurat)|o masa pe zi|masa oferita/],
+  // Bacșișul (13 noiembrie 2026): în HoReCa e o parte mare din venit, iar anunțurile îl pomenesc des.
+  ["bacșiș", /\bbacsis(uri|ul|urile)?\b|\btips\b/],
   ["bonus", /bonus(uri)?\b/],
   ["prime", /\bprime (de|la|anuale|de sarbatori)|prima de (paste|craciun|vacanta)|al 13-lea salariu|salariul 13/],
   ["asigurare medicală", /abonament medical|asigurare (medicala|de sanatate|privata de sanatate)|servicii medicale private|medical (insurance|subscription)/],

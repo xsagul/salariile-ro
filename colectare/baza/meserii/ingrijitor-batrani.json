@@ -168,14 +168,6 @@
     "n": 2,
     "procent": 6.3
    },
-   "Prahova": {
-    "n": 1,
-    "procent": 3.1
-   },
-   "bucuresti": {
-    "n": 1,
-    "procent": 3.1
-   },
    "Braila": {
     "n": 1,
     "procent": 3.1
@@ -193,6 +185,14 @@
     "procent": 3.1
    },
    "Dolj": {
+    "n": 1,
+    "procent": 3.1
+   },
+   "Prahova": {
+    "n": 1,
+    "procent": 3.1
+   },
+   "bucuresti": {
     "n": 1,
     "procent": 3.1
    },

@@ -270,11 +270,11 @@
     "n": 22,
     "procent": 9.6
    },
-   "weekend": {
+   "flexibil": {
     "n": 6,
     "procent": 2.6
    },
-   "flexibil": {
+   "weekend": {
     "n": 6,
     "procent": 2.6
    },
@@ -321,19 +321,23 @@
     "n": 10,
     "procent": 4.3
    },
+   "bacșiș": {
+    "n": 8,
+    "procent": 3.5
+   },
    "transport": {
     "n": 3,
     "procent": 1.3
-   },
-   "prime": {
-    "n": 1,
-    "procent": 0.4
    },
    "spor": {
     "n": 1,
     "procent": 0.4
    },
    "asigurare medicală": {
+    "n": 1,
+    "procent": 0.4
+   },
+   "prime": {
     "n": 1,
     "procent": 0.4
    }
@@ -420,15 +424,15 @@
     "n": 5,
     "procent": 2.2
    },
-   "ilfov": {
-    "n": 4,
-    "procent": 1.7
-   },
    "Arad": {
     "n": 4,
     "procent": 1.7
    },
    "Sibiu": {
+    "n": 4,
+    "procent": 1.7
+   },
+   "ilfov": {
     "n": 4,
     "procent": 1.7
    },
@@ -496,6 +500,14 @@
     "n": 2,
     "procent": 0.9
    },
+   "Suceava": {
+    "n": 1,
+    "procent": 0.4
+   },
+   "Caras-Severin": {
+    "n": 1,
+    "procent": 0.4
+   },
    "Satu Mare": {
     "n": 1,
     "procent": 0.4
@@ -505,14 +517,6 @@
     "procent": 0.4
    },
    "RO": {
-    "n": 1,
-    "procent": 0.4
-   },
-   "Suceava": {
-    "n": 1,
-    "procent": 0.4
-   },
-   "Caras-Severin": {
     "n": 1,
     "procent": 0.4
    },
@@ -565,10 +569,10 @@
   },
   "salariuPeFactor": {
    "experienta": {
-    "da": {
+    "avantaj": {
      "n": 2
     },
-    "avantaj": {
+    "da": {
      "n": 2
     },
     "1+ ani": {
@@ -593,6 +597,9 @@
    },
    "beneficii": {
     "tichete de masă": {
+     "n": 1
+    },
+    "bacșiș": {
      "n": 1
     }
    }

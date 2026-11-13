@@ -467,11 +467,11 @@
     "n": 2,
     "procent": 1.9
    },
-   "expired": {
+   "multiple_unresolved_amounts": {
     "n": 2,
     "procent": 1.9
    },
-   "multiple_unresolved_amounts": {
+   "expired": {
     "n": 2,
     "procent": 1.9
    }

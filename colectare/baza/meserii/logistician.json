@@ -155,11 +155,11 @@
     "n": 24,
     "procent": 34.8
    },
-   "2+ ani": {
+   "avantaj": {
     "n": 7,
     "procent": 10.1
    },
-   "avantaj": {
+   "2+ ani": {
     "n": 7,
     "procent": 10.1
    },
@@ -199,11 +199,11 @@
    }
   },
   "studii": {
-   "superioare": {
+   "medii": {
     "n": 10,
     "procent": 14.5
    },
-   "medii": {
+   "superioare": {
     "n": 10,
     "procent": 14.5
    },
@@ -397,14 +397,6 @@
     "n": 2,
     "procent": 2.9
    },
-   "bucuresti": {
-    "n": 1,
-    "procent": 1.4
-   },
-   "ilfov": {
-    "n": 1,
-    "procent": 1.4
-   },
    "Dambovita": {
     "n": 1,
     "procent": 1.4
@@ -422,6 +414,14 @@
     "procent": 1.4
    },
    "Vrancea": {
+    "n": 1,
+    "procent": 1.4
+   },
+   "bucuresti": {
+    "n": 1,
+    "procent": 1.4
+   },
+   "ilfov": {
     "n": 1,
     "procent": 1.4
    },

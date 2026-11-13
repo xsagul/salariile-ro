@@ -247,11 +247,11 @@
     "n": 35,
     "procent": 9.6
    },
-   "15+ ani": {
+   "1+ ani": {
     "n": 3,
     "procent": 0.8
    },
-   "1+ ani": {
+   "15+ ani": {
     "n": 3,
     "procent": 0.8
    },
@@ -327,19 +327,19 @@
     "n": 22,
     "procent": 6
    },
-   "luni–vineri": {
-    "n": 14,
-    "procent": 3.8
-   },
    "weekend": {
     "n": 14,
     "procent": 3.8
    },
-   "noapte": {
+   "luni–vineri": {
+    "n": 14,
+    "procent": 3.8
+   },
+   "12/24": {
     "n": 2,
     "procent": 0.5
    },
-   "12/24": {
+   "noapte": {
     "n": 2,
     "procent": 0.5
    }
@@ -404,6 +404,10 @@
     "procent": 2.5
    },
    "ore suplimentare plătite": {
+    "n": 3,
+    "procent": 0.8
+   },
+   "bacșiș": {
     "n": 3,
     "procent": 0.8
    },
@@ -497,11 +501,11 @@
     "n": 14,
     "procent": 3.8
    },
-   "Prahova": {
+   "Cluj": {
     "n": 13,
     "procent": 3.6
    },
-   "Cluj": {
+   "Prahova": {
     "n": 13,
     "procent": 3.6
    },
@@ -509,15 +513,15 @@
     "n": 10,
     "procent": 2.7
    },
-   "ilfov": {
-    "n": 7,
-    "procent": 1.9
-   },
    "Brasov": {
     "n": 7,
     "procent": 1.9
    },
    "Galati": {
+    "n": 7,
+    "procent": 1.9
+   },
+   "ilfov": {
     "n": 7,
     "procent": 1.9
    },
@@ -708,6 +712,9 @@
      "n": 4
     },
     "prime": {
+     "n": 2
+    },
+    "bacșiș": {
      "n": 2
     },
     "masă": {

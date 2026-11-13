@@ -269,11 +269,11 @@
     "n": 9,
     "procent": 10.8
    },
-   "telefon / laptop": {
+   "transport": {
     "n": 2,
     "procent": 2.4
    },
-   "transport": {
+   "telefon / laptop": {
     "n": 2,
     "procent": 2.4
    },
@@ -282,6 +282,10 @@
     "procent": 2.4
    },
    "spor": {
+    "n": 1,
+    "procent": 1.2
+   },
+   "bacșiș": {
     "n": 1,
     "procent": 1.2
    }
@@ -390,11 +394,11 @@
     "n": 21,
     "procent": 33.9
    },
-   "foreign_or_noncomparable_work": {
+   "contract_or_variable_income": {
     "n": 7,
     "procent": 11.3
    },
-   "contract_or_variable_income": {
+   "foreign_or_noncomparable_work": {
     "n": 7,
     "procent": 11.3
    },
@@ -413,10 +417,10 @@
   },
   "salariuPeFactor": {
    "experienta": {
-    "3+ ani": {
+    "da": {
      "n": 1
     },
-    "da": {
+    "3+ ani": {
      "n": 1
     }
    },
@@ -434,13 +438,13 @@
     "tichete de masă": {
      "n": 3
     },
-    "bonus": {
-     "n": 1
-    },
     "spor": {
      "n": 1
     },
     "transport": {
+     "n": 1
+    },
+    "bonus": {
      "n": 1
     }
    },

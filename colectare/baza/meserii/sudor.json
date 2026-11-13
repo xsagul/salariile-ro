@@ -203,7 +203,7 @@
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
   "anunturiCitite": 406,
-  "cuSalariu": 12,
+  "cuSalariu": 13,
   "nivel": {
    "lead": {
     "n": 1,
@@ -239,11 +239,11 @@
     "n": 3,
     "procent": 0.7
    },
-   "5+ ani": {
+   "20+ ani": {
     "n": 2,
     "procent": 0.5
    },
-   "20+ ani": {
+   "5+ ani": {
     "n": 2,
     "procent": 0.5
    }
@@ -329,15 +329,15 @@
     "n": 3,
     "procent": 0.7
    },
-   "ANRE": {
-    "n": 2,
-    "procent": 0.5
-   },
    "ISCIR (avantaj)": {
     "n": 2,
     "procent": 0.5
    },
    "autorizare stivuitorist (avantaj)": {
+    "n": 2,
+    "procent": 0.5
+   },
+   "ANRE": {
     "n": 2,
     "procent": 0.5
    },
@@ -426,11 +426,11 @@
     "n": 9,
     "procent": 2.2
    },
-   "spor": {
+   "cursuri / training": {
     "n": 6,
     "procent": 1.5
    },
-   "cursuri / training": {
+   "spor": {
     "n": 6,
     "procent": 1.5
    }
@@ -530,11 +530,11 @@
     "n": 18,
     "procent": 4.4
    },
-   "Cluj": {
+   "Arges": {
     "n": 15,
     "procent": 3.7
    },
-   "Arges": {
+   "Cluj": {
     "n": 15,
     "procent": 3.7
    },
@@ -574,11 +574,11 @@
     "n": 7,
     "procent": 1.7
    },
-   "ilfov": {
+   "Iasi": {
     "n": 7,
     "procent": 1.7
    },
-   "Iasi": {
+   "ilfov": {
     "n": 7,
     "procent": 1.7
    },
@@ -586,11 +586,7 @@
     "n": 6,
     "procent": 1.5
    },
-   "Olt": {
-    "n": 5,
-    "procent": 1.2
-   },
-   "Vaslui": {
+   "Mures": {
     "n": 5,
     "procent": 1.2
    },
@@ -598,7 +594,11 @@
     "n": 5,
     "procent": 1.2
    },
-   "Mures": {
+   "Vaslui": {
+    "n": 5,
+    "procent": 1.2
+   },
+   "Olt": {
     "n": 5,
     "procent": 1.2
    },
@@ -622,11 +622,11 @@
     "n": 3,
     "procent": 0.7
    },
-   "Mehedinti": {
+   "Dambovita": {
     "n": 3,
     "procent": 0.7
    },
-   "Dambovita": {
+   "Mehedinti": {
     "n": 3,
     "procent": 0.7
    },
@@ -634,11 +634,11 @@
     "n": 3,
     "procent": 0.7
    },
-   "Caras-Severin": {
+   "Teleorman": {
     "n": 2,
     "procent": 0.5
    },
-   "Teleorman": {
+   "Caras-Severin": {
     "n": 2,
     "procent": 0.5
    },
@@ -681,16 +681,16 @@
   },
   "motiveFaraSalariu": {
    "salary_evidence_incomplete": {
-    "n": 331,
+    "n": 330,
     "procent": 91.2
    },
    "foreign_or_noncomparable_work": {
     "n": 92,
-    "procent": 25.3
+    "procent": 25.4
    },
    "full_time_unconfirmed": {
     "n": 44,
-    "procent": 12.1
+    "procent": 12.2
    },
    "multiple_unresolved_amounts": {
     "n": 9,
@@ -700,11 +700,11 @@
     "n": 3,
     "procent": 0.8
    },
-   "wide_range_review": {
+   "monthly_unconfirmed": {
     "n": 2,
     "procent": 0.6
    },
-   "monthly_unconfirmed": {
+   "wide_range_review": {
     "n": 2,
     "procent": 0.6
    },
@@ -723,7 +723,7 @@
      "n": 3
     },
     "avantaj": {
-     "n": 1
+     "n": 2
     }
    },
    "program": {
@@ -735,10 +735,13 @@
     "cazare": {
      "n": 4
     },
+    "tichete de masă": {
+     "n": 3
+    },
     "transport": {
      "n": 3
     },
-    "tichete de masă": {
+    "ore suplimentare plătite": {
      "n": 2
     },
     "prime": {
@@ -747,10 +750,10 @@
     "asigurare medicală": {
      "n": 1
     },
-    "ore suplimentare plătite": {
+    "echipament de lucru": {
      "n": 1
     },
-    "echipament de lucru": {
+    "spor": {
      "n": 1
     }
    },

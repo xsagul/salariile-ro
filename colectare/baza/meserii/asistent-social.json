@@ -86,15 +86,15 @@
    }
   },
   "peJudet": {
-   "Buzau": {
-    "n": 1,
-    "procent": 25
-   },
    "Timis": {
     "n": 1,
     "procent": 25
    },
    "Cluj": {
+    "n": 1,
+    "procent": 25
+   },
+   "Buzau": {
     "n": 1,
     "procent": 25
    },

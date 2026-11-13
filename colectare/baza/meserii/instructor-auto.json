@@ -58,15 +58,15 @@
   "cuSalariu": 0,
   "nivel": {},
   "experienta": {
-   "3+ ani": {
-    "n": 1,
-    "procent": 10
-   },
    "da": {
     "n": 1,
     "procent": 10
    },
    "fara": {
+    "n": 1,
+    "procent": 10
+   },
+   "3+ ani": {
     "n": 1,
     "procent": 10
    }
@@ -150,10 +150,6 @@
     "n": 2,
     "procent": 20
    },
-   "bucuresti": {
-    "n": 1,
-    "procent": 10
-   },
    "Iasi": {
     "n": 1,
     "procent": 10
@@ -163,6 +159,10 @@
     "procent": 10
    },
    "Neamt": {
+    "n": 1,
+    "procent": 10
+   },
+   "bucuresti": {
     "n": 1,
     "procent": 10
    }

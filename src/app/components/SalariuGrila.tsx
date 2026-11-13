@@ -68,7 +68,8 @@ export default function SalariuGrila({ slug, de }: { slug: string; de: string })
       <p className="mt-1 text-sm text-stone-600">
         {suma.charAt(0).toUpperCase() + suma.slice(1)} din grila legii, la treapta „{start.eticheta}”. {cuVechime ? "Sporurile vin peste." : "Vechimea și sporurile vin peste."}
       </p>
-      {varf.net > start.net && (
+      {/* Treapta cea mai înaltă e deja a treia căsuță; paragraful o repeta (13 noiembrie 2026). */}
+      {varf.net > start.net && repere.length < 2 && (
         <p className="mt-3 text-base text-stone-700">
           Ajunge la <strong className="font-semibold text-stone-900">{lei(varf.net)} lei net</strong> la treapta cea mai înaltă:{" "}
           {varf.eticheta}.
@@ -78,7 +79,8 @@ export default function SalariuGrila({ slug, de }: { slug: string; de: string })
         <dl className={`mt-4 grid gap-2 sm:gap-3 ${repere.length === 3 ? "grid-cols-3" : "grid-cols-2"}`}>
           {repere.map((t) => (
             <div key={t.eticheta} className="rounded-md border border-stone-200 p-2.5 sm:p-3">
-              <dt className="text-xs text-stone-600">{t.eticheta}</dt>
+              {/* Pe căsuță doar treapta („Gradul I”); studiile și vechimea sunt în tabelul de mai jos. */}
+              <dt className="text-xs text-stone-600" title={t.eticheta}>{t.eticheta.split(", ")[0]}</dt>
               <dd className="mt-1 text-base font-semibold text-stone-900">{lei(t.net)} lei</dd>
             </div>
           ))}

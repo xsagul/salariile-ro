@@ -348,11 +348,11 @@
     "n": 19,
     "procent": 9.1
    },
-   "Iasi": {
+   "Prahova": {
     "n": 12,
     "procent": 5.7
    },
-   "Prahova": {
+   "Iasi": {
     "n": 12,
     "procent": 5.7
    },
@@ -372,11 +372,11 @@
     "n": 9,
     "procent": 4.3
    },
-   "Brasov": {
+   "Bihor": {
     "n": 7,
     "procent": 3.3
    },
-   "Bihor": {
+   "Brasov": {
     "n": 7,
     "procent": 3.3
    },
@@ -392,10 +392,6 @@
     "n": 4,
     "procent": 1.9
    },
-   "strainatate": {
-    "n": 3,
-    "procent": 1.4
-   },
    "Sibiu": {
     "n": 3,
     "procent": 1.4
@@ -405,6 +401,10 @@
     "procent": 1.4
    },
    "Maramures": {
+    "n": 3,
+    "procent": 1.4
+   },
+   "strainatate": {
     "n": 3,
     "procent": 1.4
    },

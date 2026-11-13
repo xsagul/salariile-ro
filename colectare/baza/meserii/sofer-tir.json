@@ -409,11 +409,11 @@
     "n": 53,
     "procent": 5.8
    },
-   "transport": {
+   "asigurare medicală": {
     "n": 46,
     "procent": 5.1
    },
-   "asigurare medicală": {
+   "transport": {
     "n": 46,
     "procent": 5.1
    },
@@ -657,15 +657,15 @@
     "n": 9,
     "procent": 1
    },
-   "ilfov": {
-    "n": 7,
-    "procent": 0.8
-   },
    "Vaslui": {
     "n": 7,
     "procent": 0.8
    },
    "Calarasi": {
+    "n": 7,
+    "procent": 0.8
+   },
+   "ilfov": {
     "n": 7,
     "procent": 0.8
    },
@@ -680,10 +680,6 @@
    "Salaj": {
     "n": 5,
     "procent": 0.6
-   },
-   "bucuresti": {
-    "n": 4,
-    "procent": 0.4
    },
    "Botosani": {
     "n": 4,
@@ -701,19 +697,23 @@
     "n": 4,
     "procent": 0.4
    },
+   "bucuresti": {
+    "n": 4,
+    "procent": 0.4
+   },
    "strainatate": {
     "n": 3,
     "procent": 0.3
+   },
+   "Neamt": {
+    "n": 1,
+    "procent": 0.1
    },
    "RO": {
     "n": 1,
     "procent": 0.1
    },
    "buzau": {
-    "n": 1,
-    "procent": 0.1
-   },
-   "Neamt": {
     "n": 1,
     "procent": 0.1
    }
@@ -739,11 +739,11 @@
     "n": 5,
     "procent": 0.6
    },
-   "expired": {
+   "contract_or_variable_income": {
     "n": 1,
     "procent": 0.1
    },
-   "contract_or_variable_income": {
+   "expired": {
     "n": 1,
     "procent": 0.1
    }

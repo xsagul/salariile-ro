@@ -101,11 +101,11 @@
    }
   },
   "surse": {
-   "bestjobs": {
+   "publi24": {
     "n": 1,
     "procent": 50
    },
-   "publi24": {
+   "bestjobs": {
     "n": 1,
     "procent": 50
    }
@@ -117,11 +117,11 @@
    }
   },
   "motiveFaraSalariu": {
-   "multiple_unresolved_amounts": {
+   "salary_evidence_incomplete": {
     "n": 1,
     "procent": 50
    },
-   "salary_evidence_incomplete": {
+   "multiple_unresolved_amounts": {
     "n": 1,
     "procent": 50
    }

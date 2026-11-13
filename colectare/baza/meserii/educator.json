@@ -100,15 +100,15 @@
   },
   "atestate": {},
   "program": {
-   "luni–vineri": {
-    "n": 1,
-    "procent": 5.3
-   },
    "ture": {
     "n": 1,
     "procent": 5.3
    },
    "flexibil": {
+    "n": 1,
+    "procent": 5.3
+   },
+   "luni–vineri": {
     "n": 1,
     "procent": 5.3
    }
@@ -131,10 +131,6 @@
     "n": 5,
     "procent": 26.3
    },
-   "bonus": {
-    "n": 1,
-    "procent": 5.3
-   },
    "tichete de masă": {
     "n": 1,
     "procent": 5.3
@@ -144,6 +140,10 @@
     "procent": 5.3
    },
    "masă": {
+    "n": 1,
+    "procent": 5.3
+   },
+   "bonus": {
     "n": 1,
     "procent": 5.3
    }
@@ -158,11 +158,11 @@
    }
   },
   "surse": {
-   "bestjobs": {
+   "publi24": {
     "n": 9,
     "procent": 47.4
    },
-   "publi24": {
+   "bestjobs": {
     "n": 9,
     "procent": 47.4
    },
@@ -175,10 +175,6 @@
    "Bucuresti": {
     "n": 4,
     "procent": 21.1
-   },
-   "bucuresti": {
-    "n": 1,
-    "procent": 5.3
    },
    "Dambovita": {
     "n": 1,
@@ -193,6 +189,10 @@
     "procent": 5.3
    },
    "Brasov": {
+    "n": 1,
+    "procent": 5.3
+   },
+   "bucuresti": {
     "n": 1,
     "procent": 5.3
    },

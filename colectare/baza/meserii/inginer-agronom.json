@@ -118,15 +118,15 @@
     "n": 2,
     "procent": 13.3
    },
-   "bonus": {
-    "n": 1,
-    "procent": 6.7
-   },
    "tichete de masă": {
     "n": 1,
     "procent": 6.7
    },
    "ore suplimentare plătite": {
+    "n": 1,
+    "procent": 6.7
+   },
+   "bonus": {
     "n": 1,
     "procent": 6.7
    }

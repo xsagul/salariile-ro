@@ -17,11 +17,16 @@ export default function CeFaceMeseria({ slug, de }: { slug: string; de: string }
   if (!areCeFace(slug)) return null;
   const e = E[slug];
   const face = e.face.slice(0, 6);
+  // Unele descrieri ESCO au 700–860 de caractere; pe telefon, primele fraze până pe la 380.
+  const fraze = e.descriere.match(/[^.!?]+[.!?]+/g) ?? [e.descriere];
+  let descriere = "";
+  for (const f of fraze) { if (descriere.length >= 200 && (descriere + f).length > 380) break; descriere += f; }
+  descriere = descriere.trim() || e.descriere;
   const stie = e.stie.slice(0, 5);
   return (
     <section className={`mt-6 ${CARD}`} data-section="ce-face">
       <h2 className="text-base font-semibold text-stone-900">Ce face un {de}</h2>
-      <p className="mt-2 text-base leading-relaxed text-stone-700">{e.descriere}</p>
+      <p className="mt-2 text-base leading-relaxed text-stone-700">{descriere}</p>
       {face.length > 0 && (
         <>
           <h3 className="mt-4 text-sm font-semibold text-stone-900">Ce face în mod obișnuit</h3>

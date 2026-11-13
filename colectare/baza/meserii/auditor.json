@@ -69,11 +69,11 @@
   "anunturiCitite": 46,
   "cuSalariu": 1,
   "nivel": {
-   "senior": {
+   "junior": {
     "n": 13,
     "procent": 28.3
    },
-   "junior": {
+   "senior": {
     "n": 13,
     "procent": 28.3
    },

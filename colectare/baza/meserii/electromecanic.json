@@ -231,11 +231,11 @@
     "n": 3,
     "procent": 2.6
    },
-   "12/24": {
+   "weekend": {
     "n": 1,
     "procent": 0.9
    },
-   "weekend": {
+   "12/24": {
     "n": 1,
     "procent": 0.9
    }
@@ -262,11 +262,11 @@
     "n": 59,
     "procent": 50.9
    },
-   "asigurare medicală": {
+   "transport": {
     "n": 23,
     "procent": 19.8
    },
-   "transport": {
+   "asigurare medicală": {
     "n": 23,
     "procent": 19.8
    },
@@ -278,11 +278,11 @@
     "n": 14,
     "procent": 12.1
    },
-   "spor": {
+   "ore suplimentare plătite": {
     "n": 10,
     "procent": 8.6
    },
-   "ore suplimentare plătite": {
+   "spor": {
     "n": 10,
     "procent": 8.6
    },
@@ -373,10 +373,6 @@
     "n": 6,
     "procent": 5.2
    },
-   "Bucuresti": {
-    "n": 5,
-    "procent": 4.3
-   },
    "Dolj": {
     "n": 5,
     "procent": 4.3
@@ -389,45 +385,33 @@
     "n": 5,
     "procent": 4.3
    },
+   "Bucuresti": {
+    "n": 5,
+    "procent": 4.3
+   },
    "Galati": {
     "n": 4,
     "procent": 3.4
-   },
-   "Constanta": {
-    "n": 3,
-    "procent": 2.6
    },
    "Sibiu": {
     "n": 3,
     "procent": 2.6
    },
-   "bucuresti": {
+   "Constanta": {
+    "n": 3,
+    "procent": 2.6
+   },
+   "Arges": {
     "n": 2,
     "procent": 1.7
    },
-   "Arges": {
+   "bucuresti": {
     "n": 2,
     "procent": 1.7
    },
    "Maramures": {
     "n": 2,
     "procent": 1.7
-   },
-   "Caras-Severin": {
-    "n": 1,
-    "procent": 0.9
-   },
-   "Hunedoara": {
-    "n": 1,
-    "procent": 0.9
-   },
-   "Botosani": {
-    "n": 1,
-    "procent": 0.9
-   },
-   "ilfov": {
-    "n": 1,
-    "procent": 0.9
    },
    "Tulcea": {
     "n": 1,
@@ -454,6 +438,22 @@
     "procent": 0.9
    },
    "Cluj": {
+    "n": 1,
+    "procent": 0.9
+   },
+   "Caras-Severin": {
+    "n": 1,
+    "procent": 0.9
+   },
+   "Hunedoara": {
+    "n": 1,
+    "procent": 0.9
+   },
+   "Botosani": {
+    "n": 1,
+    "procent": 0.9
+   },
+   "ilfov": {
     "n": 1,
     "procent": 0.9
    },
@@ -487,15 +487,15 @@
     "n": 2,
     "procent": 2
    },
-   "expired": {
-    "n": 1,
-    "procent": 1
-   },
    "contract_or_variable_income": {
     "n": 1,
     "procent": 1
    },
    "monthly_unconfirmed": {
+    "n": 1,
+    "procent": 1
+   },
+   "expired": {
     "n": 1,
     "procent": 1
    }

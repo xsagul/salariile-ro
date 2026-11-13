@@ -103,11 +103,11 @@
     "n": 2,
     "procent": 14.3
    },
-   "2+ ani": {
+   "avantaj": {
     "n": 1,
     "procent": 7.1
    },
-   "avantaj": {
+   "2+ ani": {
     "n": 1,
     "procent": 7.1
    }
@@ -119,11 +119,11 @@
    }
   },
   "studii": {
-   "profesionale": {
+   "medii": {
     "n": 1,
     "procent": 7.1
    },
-   "medii": {
+   "profesionale": {
     "n": 1,
     "procent": 7.1
    },
@@ -226,11 +226,11 @@
     "n": 4,
     "procent": 28.6
    },
-   "RO": {
+   "Dolj": {
     "n": 2,
     "procent": 14.3
    },
-   "Dolj": {
+   "RO": {
     "n": 2,
     "procent": 14.3
    },

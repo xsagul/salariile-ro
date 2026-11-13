@@ -225,10 +225,6 @@
     "n": 2,
     "procent": 3
    },
-   "RO": {
-    "n": 1,
-    "procent": 1.5
-   },
    "Iasi": {
     "n": 1,
     "procent": 1.5
@@ -254,6 +250,10 @@
     "procent": 1.5
    },
    "Vaslui": {
+    "n": 1,
+    "procent": 1.5
+   },
+   "RO": {
     "n": 1,
     "procent": 1.5
    },

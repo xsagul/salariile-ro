@@ -489,11 +489,11 @@
    }
   },
   "tehnologii": {
-   "Excel": {
+   "SAP": {
     "n": 2,
     "procent": 0.6
    },
-   "SAP": {
+   "Excel": {
     "n": 2,
     "procent": 0.6
    }
@@ -546,11 +546,11 @@
     "n": 24,
     "procent": 7.2
    },
-   "ilfov": {
+   "Bihor": {
     "n": 19,
     "procent": 5.7
    },
-   "Bihor": {
+   "ilfov": {
     "n": 19,
     "procent": 5.7
    },
@@ -638,10 +638,6 @@
     "n": 2,
     "procent": 0.6
    },
-   "galati": {
-    "n": 1,
-    "procent": 0.3
-   },
    "Hunedoara": {
     "n": 1,
     "procent": 0.3
@@ -666,6 +662,10 @@
     "n": 1,
     "procent": 0.3
    },
+   "galati": {
+    "n": 1,
+    "procent": 0.3
+   },
    "Caras-Severin": {
     "n": 1,
     "procent": 0.3
@@ -682,11 +682,11 @@
   "motiveFaraSalariu": {
    "salary_evidence_incomplete": {
     "n": 213,
-    "procent": 82.6
+    "procent": 82.9
    },
    "multiple_unresolved_amounts": {
-    "n": 40,
-    "procent": 15.5
+    "n": 39,
+    "procent": 15.2
    },
    "full_time_unconfirmed": {
     "n": 17,
@@ -700,11 +700,11 @@
     "n": 2,
     "procent": 0.8
    },
-   "expired": {
+   "contract_or_variable_income": {
     "n": 1,
     "procent": 0.4
    },
-   "contract_or_variable_income": {
+   "expired": {
     "n": 1,
     "procent": 0.4
    }
@@ -819,10 +819,10 @@
     "ore suplimentare plătite": {
      "n": 8
     },
-    "asigurare medicală": {
+    "spor": {
      "n": 6
     },
-    "spor": {
+    "asigurare medicală": {
      "n": 6
     },
     "prime": {

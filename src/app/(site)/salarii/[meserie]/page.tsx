@@ -21,6 +21,7 @@ import { SURSA_GRILE, grilaPublica } from "@/lib/grile-publice";
 import SalariuConcluzie, { concluzieMeserie } from '@/app/components/SalariuConcluzie';
 import SalariuGrila, { netDeStart, trepteGrila } from '@/app/components/SalariuGrila';
 import CeFaceMeseria from "@/app/components/CeFaceMeseria";
+import MarturieMeserie from "@/app/components/MarturieMeserie";
 import SalariuOficial, { frazaTabel, netOficialDeStart, venitOficial } from "@/app/components/SalariuOficial";
 import CeCerAngajatorii, { cerinteMeserie } from '@/app/components/CeCerAngajatorii';
 import SalariuDeclarat, { areSalariuDeclarat, frazaDeclarat, netDeclarat, venitPublic } from '@/app/components/SalariuDeclarat';
@@ -278,6 +279,7 @@ export default async function MeseriePage({ params }: Props) {
                 // fiecare numit; dedesubt, ce cer angajatorii.
                 <>
                   <SalariuDeclarat slug={slug} de={meserie.de} />
+                  <MarturieMeserie slug={slug} />
                   <CeFaceMeseria slug={slug} de={meserie.de} />
                   <CeCerAngajatorii slug={slug} de={meserie.de} />
                 </>
@@ -303,7 +305,10 @@ export default async function MeseriePage({ params }: Props) {
               {/* „Ce face un …” sub cifră, ca la Paylab (ESCO). În ramura salariilor declarate stă
                   deja între card și „Ce cer angajatorii”. */}
               {!(!concluzieMeserie(slug) && !trepteGrila(slug) && !venitOficial(slug) && areSalariuDeclarat(slug)) && (
-                <CeFaceMeseria slug={slug} de={meserie.de} />
+                <>
+                  <MarturieMeserie slug={slug} />
+                  <CeFaceMeseria slug={slug} de={meserie.de} />
+                </>
               )}
 
               {meserie.nota && (

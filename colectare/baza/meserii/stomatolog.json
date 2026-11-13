@@ -70,11 +70,11 @@
     "n": 5,
     "procent": 9.8
    },
-   "2+ ani": {
+   "1+ ani": {
     "n": 1,
     "procent": 2
    },
-   "1+ ani": {
+   "2+ ani": {
     "n": 1,
     "procent": 2
    },
@@ -145,15 +145,15 @@
     "n": 4,
     "procent": 7.8
    },
+   "prime": {
+    "n": 1,
+    "procent": 2
+   },
    "tichete de masă": {
     "n": 1,
     "procent": 2
    },
    "transport": {
-    "n": 1,
-    "procent": 2
-   },
-   "prime": {
     "n": 1,
     "procent": 2
    },
@@ -214,10 +214,6 @@
     "n": 3,
     "procent": 5.9
    },
-   "bucuresti": {
-    "n": 2,
-    "procent": 3.9
-   },
    "Dolj": {
     "n": 2,
     "procent": 3.9
@@ -234,23 +230,27 @@
     "n": 2,
     "procent": 3.9
    },
-   "Bacau": {
+   "bucuresti": {
     "n": 2,
     "procent": 3.9
    },
-   "Brasov": {
-    "n": 1,
-    "procent": 2
-   },
-   "Calarasi": {
-    "n": 1,
-    "procent": 2
+   "Bacau": {
+    "n": 2,
+    "procent": 3.9
    },
    "Prahova": {
     "n": 1,
     "procent": 2
    },
    "Maramures": {
+    "n": 1,
+    "procent": 2
+   },
+   "Brasov": {
+    "n": 1,
+    "procent": 2
+   },
+   "Calarasi": {
     "n": 1,
     "procent": 2
    },
@@ -284,15 +284,15 @@
     "n": 2,
     "procent": 4.2
    },
+   "multiple_unresolved_amounts": {
+    "n": 1,
+    "procent": 2.1
+   },
    "expired": {
     "n": 1,
     "procent": 2.1
    },
    "wide_range_review": {
-    "n": 1,
-    "procent": 2.1
-   },
-   "multiple_unresolved_amounts": {
     "n": 1,
     "procent": 2.1
    }

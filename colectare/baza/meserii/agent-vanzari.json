@@ -305,11 +305,11 @@
     "n": 8,
     "procent": 0.9
    },
-   "7+ ani": {
+   "15+ ani": {
     "n": 1,
     "procent": 0.1
    },
-   "15+ ani": {
+   "7+ ani": {
     "n": 1,
     "procent": 0.1
    },
@@ -341,11 +341,11 @@
     "n": 112,
     "procent": 12.5
    },
-   "postliceale": {
+   "generale": {
     "n": 1,
     "procent": 0.1
    },
-   "generale": {
+   "postliceale": {
     "n": 1,
     "procent": 0.1
    }
@@ -468,11 +468,11 @@
     "n": 7,
     "procent": 0.8
    },
-   "vouchere de vacanță": {
+   "echipament de lucru": {
     "n": 5,
     "procent": 0.6
    },
-   "echipament de lucru": {
+   "vouchere de vacanță": {
     "n": 5,
     "procent": 0.6
    },
@@ -660,10 +660,6 @@
     "n": 8,
     "procent": 0.9
    },
-   "bucuresti": {
-    "n": 7,
-    "procent": 0.8
-   },
    "Vaslui": {
     "n": 7,
     "procent": 0.8
@@ -696,11 +692,15 @@
     "n": 7,
     "procent": 0.8
    },
-   "ilfov": {
+   "bucuresti": {
+    "n": 7,
+    "procent": 0.8
+   },
+   "Dolj": {
     "n": 6,
     "procent": 0.7
    },
-   "Dolj": {
+   "ilfov": {
     "n": 6,
     "procent": 0.7
    },
@@ -740,10 +740,6 @@
     "n": 3,
     "procent": 0.3
    },
-   "timis": {
-    "n": 2,
-    "procent": 0.2
-   },
    "Mehedinti": {
     "n": 2,
     "procent": 0.2
@@ -760,15 +756,19 @@
     "n": 2,
     "procent": 0.2
    },
-   "mures": {
-    "n": 1,
-    "procent": 0.1
+   "timis": {
+    "n": 2,
+    "procent": 0.2
    },
    "Botosani": {
     "n": 1,
     "procent": 0.1
    },
    "Calarasi": {
+    "n": 1,
+    "procent": 0.1
+   },
+   "mures": {
     "n": 1,
     "procent": 0.1
    },
@@ -881,10 +881,10 @@
     }
    },
    "program": {
-    "luni–vineri": {
+    "ture": {
      "n": 6
     },
-    "ture": {
+    "luni–vineri": {
      "n": 6
     },
     "weekend": {

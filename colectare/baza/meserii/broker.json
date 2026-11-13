@@ -239,10 +239,6 @@
     "n": 2,
     "procent": 2
    },
-   "bucuresti": {
-    "n": 1,
-    "procent": 1
-   },
    "Galati": {
     "n": 1,
     "procent": 1
@@ -292,6 +288,10 @@
     "procent": 1
    },
    "Vaslui": {
+    "n": 1,
+    "procent": 1
+   },
+   "bucuresti": {
     "n": 1,
     "procent": 1
    },

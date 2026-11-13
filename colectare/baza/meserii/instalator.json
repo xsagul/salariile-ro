@@ -262,11 +262,11 @@
     "n": 19,
     "procent": 3.2
    },
-   "2+ ani": {
+   "1+ ani": {
     "n": 18,
     "procent": 3.1
    },
-   "1+ ani": {
+   "2+ ani": {
     "n": 18,
     "procent": 3.1
    },
@@ -434,11 +434,11 @@
     "n": 28,
     "procent": 4.7
    },
-   "asigurare medicală": {
+   "cazare": {
     "n": 23,
     "procent": 3.9
    },
-   "cazare": {
+   "asigurare medicală": {
     "n": 23,
     "procent": 3.9
    },
@@ -472,11 +472,11 @@
     "n": 9,
     "procent": 1.5
    },
-   "CNC": {
+   "SAP": {
     "n": 2,
     "procent": 0.3
    },
-   "SAP": {
+   "CNC": {
     "n": 2,
     "procent": 0.3
    },
@@ -598,10 +598,6 @@
     "n": 10,
     "procent": 1.7
    },
-   "RO": {
-    "n": 9,
-    "procent": 1.5
-   },
    "Buzau": {
     "n": 9,
     "procent": 1.5
@@ -615,6 +611,10 @@
     "procent": 1.5
    },
    "Iasi": {
+    "n": 9,
+    "procent": 1.5
+   },
+   "RO": {
     "n": 9,
     "procent": 1.5
    },
@@ -638,10 +638,6 @@
     "n": 5,
     "procent": 0.8
    },
-   "Suceava": {
-    "n": 4,
-    "procent": 0.7
-   },
    "Braila": {
     "n": 4,
     "procent": 0.7
@@ -650,11 +646,11 @@
     "n": 4,
     "procent": 0.7
    },
-   "ilfov": {
+   "Hunedoara": {
     "n": 4,
     "procent": 0.7
    },
-   "Hunedoara": {
+   "Suceava": {
     "n": 4,
     "procent": 0.7
    },
@@ -663,6 +659,10 @@
     "procent": 0.7
    },
    "Satu Mare": {
+    "n": 4,
+    "procent": 0.7
+   },
+   "ilfov": {
     "n": 4,
     "procent": 0.7
    },
@@ -770,13 +770,13 @@
     "1+ ani": {
      "n": 2
     },
-    "5+ ani": {
-     "n": 1
-    },
     "2+ ani": {
      "n": 1
     },
     "avantaj": {
+     "n": 1
+    },
+    "5+ ani": {
      "n": 1
     }
    },
@@ -820,10 +820,10 @@
     "bonus": {
      "n": 9
     },
-    "transport": {
+    "telefon / laptop": {
      "n": 4
     },
-    "telefon / laptop": {
+    "transport": {
      "n": 4
     },
     "prime": {
@@ -859,10 +859,10 @@
     "ANRE": {
      "n": 3
     },
-    "ANRE (avantaj)": {
+    "autorizare sudor": {
      "n": 1
     },
-    "autorizare sudor": {
+    "ANRE (avantaj)": {
      "n": 1
     }
    }

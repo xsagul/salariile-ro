@@ -1,0 +1,10 @@
+{
+ "descriere": "Ce spun oamenii din meserie despre partea din venit pe care n-o publică nimeni (bacșiș, ture). E o mărturie, nu o statistică, și pe pagină scrie așa. Se adaugă numai de la cineva care a lucrat în meserie.",
+ "meserii": {
+  "barman": {
+   "titlu": "Bacșișul, din experiența unui barman",
+   "text": "În jur de 100 de lei pe zi lucrată, într-un local mediu. Diferă mult de la un local la altul și de la un oraș la altul.",
+   "data": "noiembrie 2026"
+  }
+ }
+}

@@ -328,15 +328,15 @@
     "n": 8,
     "procent": 3.3
    },
+   "cursuri / training": {
+    "n": 6,
+    "procent": 2.5
+   },
    "cazare": {
     "n": 6,
     "procent": 2.5
    },
    "telefon / laptop": {
-    "n": 6,
-    "procent": 2.5
-   },
-   "cursuri / training": {
     "n": 6,
     "procent": 2.5
    },
@@ -348,11 +348,11 @@
     "n": 2,
     "procent": 0.8
    },
-   "masă": {
+   "spor": {
     "n": 1,
     "procent": 0.4
    },
-   "spor": {
+   "masă": {
     "n": 1,
     "procent": 0.4
    }
@@ -416,15 +416,15 @@
     "n": 15,
     "procent": 6.2
    },
-   "Valcea": {
-    "n": 10,
-    "procent": 4.1
-   },
    "Cluj": {
     "n": 10,
     "procent": 4.1
    },
    "Bihor": {
+    "n": 10,
+    "procent": 4.1
+   },
+   "Valcea": {
     "n": 10,
     "procent": 4.1
    },
@@ -452,10 +452,6 @@
     "n": 6,
     "procent": 2.5
    },
-   "ilfov": {
-    "n": 5,
-    "procent": 2.1
-   },
    "Bacau": {
     "n": 5,
     "procent": 2.1
@@ -465,6 +461,10 @@
     "procent": 2.1
    },
    "Prahova": {
+    "n": 5,
+    "procent": 2.1
+   },
+   "ilfov": {
     "n": 5,
     "procent": 2.1
    },
@@ -520,14 +520,6 @@
     "n": 2,
     "procent": 0.8
    },
-   "Vaslui": {
-    "n": 1,
-    "procent": 0.4
-   },
-   "dambovita": {
-    "n": 1,
-    "procent": 0.4
-   },
    "Tulcea": {
     "n": 1,
     "procent": 0.4
@@ -545,6 +537,14 @@
     "procent": 0.4
    },
    "Mehedinti": {
+    "n": 1,
+    "procent": 0.4
+   },
+   "Vaslui": {
+    "n": 1,
+    "procent": 0.4
+   },
+   "dambovita": {
     "n": 1,
     "procent": 0.4
    },

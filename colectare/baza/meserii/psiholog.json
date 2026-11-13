@@ -50,11 +50,11 @@
   "cuSalariu": 0,
   "nivel": {},
   "experienta": {
-   "avantaj": {
+   "da": {
     "n": 3,
     "procent": 27.3
    },
-   "da": {
+   "avantaj": {
     "n": 3,
     "procent": 27.3
    },
@@ -135,11 +135,11 @@
    }
   },
   "peJudet": {
-   "RO": {
+   "Bucuresti": {
     "n": 2,
     "procent": 18.2
    },
-   "Bucuresti": {
+   "RO": {
     "n": 2,
     "procent": 18.2
    },

@@ -272,10 +272,6 @@
     "n": 2,
     "procent": 1.5
    },
-   "Calarasi": {
-    "n": 1,
-    "procent": 0.8
-   },
    "Maramures": {
     "n": 1,
     "procent": 0.8
@@ -289,6 +285,10 @@
     "procent": 0.8
    },
    "Bihor": {
+    "n": 1,
+    "procent": 0.8
+   },
+   "Calarasi": {
     "n": 1,
     "procent": 0.8
    },

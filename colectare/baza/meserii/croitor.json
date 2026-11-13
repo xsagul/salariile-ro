@@ -133,7 +133,7 @@
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
   "anunturiCitite": 90,
-  "cuSalariu": 13,
+  "cuSalariu": 14,
   "nivel": {},
   "experienta": {
    "da": {
@@ -152,11 +152,11 @@
     "n": 2,
     "procent": 2.2
    },
-   "2+ ani": {
+   "fara": {
     "n": 1,
     "procent": 1.1
    },
-   "fara": {
+   "2+ ani": {
     "n": 1,
     "procent": 1.1
    },
@@ -270,11 +270,11 @@
    }
   },
   "peJudet": {
-   "bucuresti": {
+   "Bucuresti": {
     "n": 24,
     "procent": 26.7
    },
-   "Bucuresti": {
+   "bucuresti": {
     "n": 24,
     "procent": 26.7
    },
@@ -294,11 +294,11 @@
     "n": 3,
     "procent": 3.3
    },
-   "ilfov": {
+   "Prahova": {
     "n": 2,
     "procent": 2.2
    },
-   "Prahova": {
+   "ilfov": {
     "n": 2,
     "procent": 2.2
    },
@@ -342,19 +342,19 @@
   "motiveFaraSalariu": {
    "salary_evidence_incomplete": {
     "n": 54,
-    "procent": 87.1
+    "procent": 88.5
    },
    "full_time_unconfirmed": {
     "n": 10,
-    "procent": 16.1
-   },
-   "multiple_unresolved_amounts": {
-    "n": 7,
-    "procent": 11.3
+    "procent": 16.4
    },
    "contract_or_variable_income": {
     "n": 6,
-    "procent": 9.7
+    "procent": 9.8
+   },
+   "multiple_unresolved_amounts": {
+    "n": 6,
+    "procent": 9.8
    }
   },
   "salariuPeFactor": {
@@ -365,29 +365,37 @@
     "da": {
      "n": 4
     },
+    "2+ ani": {
+     "n": 1
+    },
     "3+ ani": {
+     "n": 1
+    }
+   },
+   "studii": {
+    "generale": {
      "n": 1
     }
    },
    "program": {
     "luni–vineri": {
-     "n": 11,
+     "n": 12,
      "p10": 2935,
-     "p25": 2940,
-     "median": 4000,
-     "p75": 4125,
-     "p90": 5250,
+     "p25": 2941,
+     "median": 3900,
+     "p75": 4063,
+     "p90": 5150,
      "min": 2904.5,
      "max": 5250
     }
    },
    "beneficii": {
     "tichete de masă": {
-     "n": 10,
-     "p10": 2884,
-     "p25": 2935,
-     "median": 2944,
-     "p75": 4188,
+     "n": 11,
+     "p10": 2905,
+     "p25": 2936,
+     "median": 2945,
+     "p75": 4125,
      "p90": 5250,
      "min": 2700,
      "max": 5250

@@ -343,11 +343,11 @@
     "n": 21,
     "procent": 5.3
    },
-   "asigurare medicală": {
+   "prime": {
     "n": 10,
     "procent": 2.5
    },
-   "prime": {
+   "asigurare medicală": {
     "n": 10,
     "procent": 2.5
    },
@@ -371,11 +371,11 @@
     "n": 2,
     "procent": 0.5
    },
-   "vouchere de vacanță": {
+   "masă": {
     "n": 1,
     "procent": 0.3
    },
-   "masă": {
+   "vouchere de vacanță": {
     "n": 1,
     "procent": 0.3
    }
@@ -471,11 +471,11 @@
     "n": 13,
     "procent": 3.3
    },
-   "Arad": {
+   "Mures": {
     "n": 12,
     "procent": 3
    },
-   "Mures": {
+   "Arad": {
     "n": 12,
     "procent": 3
    },
@@ -519,10 +519,6 @@
     "n": 7,
     "procent": 1.8
    },
-   "bucuresti": {
-    "n": 6,
-    "procent": 1.5
-   },
    "Alba": {
     "n": 6,
     "procent": 1.5
@@ -536,6 +532,10 @@
     "procent": 1.5
    },
    "Bistrita-Nasaud": {
+    "n": 6,
+    "procent": 1.5
+   },
+   "bucuresti": {
     "n": 6,
     "procent": 1.5
    },
@@ -563,10 +563,6 @@
     "n": 3,
     "procent": 0.8
    },
-   "ilfov": {
-    "n": 2,
-    "procent": 0.5
-   },
    "Caras-Severin": {
     "n": 2,
     "procent": 0.5
@@ -583,15 +579,19 @@
     "n": 2,
     "procent": 0.5
    },
-   "brasov": {
-    "n": 1,
-    "procent": 0.3
+   "ilfov": {
+    "n": 2,
+    "procent": 0.5
    },
    "Teleorman": {
     "n": 1,
     "procent": 0.3
    },
    "Tulcea": {
+    "n": 1,
+    "procent": 0.3
+   },
+   "brasov": {
     "n": 1,
     "procent": 0.3
    },
@@ -625,11 +625,11 @@
     "n": 3,
     "procent": 0.8
    },
-   "country_unconfirmed": {
+   "invalid_amount": {
     "n": 2,
     "procent": 0.6
    },
-   "invalid_amount": {
+   "country_unconfirmed": {
     "n": 2,
     "procent": 0.6
    },

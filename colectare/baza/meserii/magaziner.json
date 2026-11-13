@@ -310,7 +310,7 @@
  "factori": {
   "descriere": "Ce cer și ce oferă anunțurile citite pentru meserie, cu sau fără salariu. Procentul e din anunțurile citite.",
   "anunturiCitite": 380,
-  "cuSalariu": 53,
+  "cuSalariu": 54,
   "nivel": {
    "lead": {
     "n": 1,
@@ -504,11 +504,11 @@
     "n": 6,
     "procent": 1.6
    },
-   "vouchere de vacanță": {
+   "masă": {
     "n": 3,
     "procent": 0.8
    },
-   "masă": {
+   "vouchere de vacanță": {
     "n": 3,
     "procent": 0.8
    },
@@ -584,11 +584,11 @@
     "n": 24,
     "procent": 6.3
    },
-   "bucuresti": {
+   "Timis": {
     "n": 18,
     "procent": 4.7
    },
-   "Timis": {
+   "bucuresti": {
     "n": 18,
     "procent": 4.7
    },
@@ -624,10 +624,6 @@
     "n": 7,
     "procent": 1.8
    },
-   "ilfov": {
-    "n": 6,
-    "procent": 1.6
-   },
    "Bacau": {
     "n": 6,
     "procent": 1.6
@@ -641,6 +637,10 @@
     "procent": 1.6
    },
    "Maramures": {
+    "n": 6,
+    "procent": 1.6
+   },
+   "ilfov": {
     "n": 6,
     "procent": 1.6
    },
@@ -712,10 +712,6 @@
     "n": 2,
     "procent": 0.5
    },
-   "sibiu": {
-    "n": 1,
-    "procent": 0.3
-   },
    "Salaj": {
     "n": 1,
     "procent": 0.3
@@ -729,6 +725,10 @@
     "procent": 0.3
    },
    "Hunedoara": {
+    "n": 1,
+    "procent": 0.3
+   },
+   "sibiu": {
     "n": 1,
     "procent": 0.3
    },
@@ -748,15 +748,15 @@
   "motiveFaraSalariu": {
    "salary_evidence_incomplete": {
     "n": 241,
-    "procent": 85.8
+    "procent": 86.4
    },
    "multiple_unresolved_amounts": {
-    "n": 32,
-    "procent": 11.4
+    "n": 30,
+    "procent": 10.8
    },
    "full_time_unconfirmed": {
     "n": 15,
-    "procent": 5.3
+    "procent": 5.4
    },
    "foreign_or_noncomparable_work": {
     "n": 5,
@@ -788,10 +788,10 @@
      "max": 5700
     },
     "avantaj": {
-     "n": 11,
+     "n": 12,
      "p10": 3500,
-     "p25": 3723,
-     "median": 5277,
+     "p25": 3800,
+     "median": 4788,
      "p75": 5700,
      "p90": 5700,
      "min": 3200,
@@ -819,7 +819,7 @@
      "n": 5
     },
     "generale": {
-     "n": 2
+     "n": 3
     },
     "superioare": {
      "n": 1
@@ -860,10 +860,20 @@
    },
    "beneficii": {
     "transport": {
-     "n": 35,
-     "p10": 4200,
+     "n": 36,
+     "p10": 4050,
      "p25": 5350,
      "median": 5350,
+     "p75": 5700,
+     "p90": 5700,
+     "min": 3700,
+     "max": 5700
+    },
+    "bonus": {
+     "n": 32,
+     "p10": 4086,
+     "p25": 5350,
+     "median": 5700,
      "p75": 5700,
      "p90": 5700,
      "min": 3700,
@@ -879,33 +889,23 @@
      "min": 3068,
      "max": 5700
     },
-    "bonus": {
-     "n": 31,
-     "p10": 5350,
-     "p25": 5350,
-     "median": 5700,
-     "p75": 5700,
-     "p90": 5700,
-     "min": 3700,
-     "max": 5700
-    },
     "tichete de masă": {
-     "n": 17,
-     "p10": 3147,
+     "n": 18,
+     "p10": 3160,
      "p25": 3500,
      "median": 3900,
-     "p75": 4300,
-     "p90": 4515,
+     "p75": 4275,
+     "p90": 4476,
      "min": 3068,
      "max": 6000
     },
     "spor": {
-     "n": 6
-    },
-    "asigurare medicală": {
-     "n": 4
+     "n": 7
     },
     "prime": {
+     "n": 4
+    },
+    "asigurare medicală": {
      "n": 4
     },
     "cursuri / training": {

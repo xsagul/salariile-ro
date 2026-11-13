@@ -215,10 +215,6 @@
     "n": 5,
     "procent": 13.9
    },
-   "bucuresti": {
-    "n": 2,
-    "procent": 5.6
-   },
    "Maramures": {
     "n": 2,
     "procent": 5.6
@@ -228,6 +224,10 @@
     "procent": 5.6
    },
    "Cluj": {
+    "n": 2,
+    "procent": 5.6
+   },
+   "bucuresti": {
     "n": 2,
     "procent": 5.6
    },

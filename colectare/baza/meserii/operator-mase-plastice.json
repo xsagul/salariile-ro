@@ -82,11 +82,11 @@
   "cuSalariu": 4,
   "nivel": {},
   "experienta": {
-   "avantaj": {
+   "da": {
     "n": 3,
     "procent": 30
    },
-   "da": {
+   "avantaj": {
     "n": 3,
     "procent": 30
    }
@@ -124,19 +124,19 @@
     "n": 6,
     "procent": 60
    },
-   "transport": {
-    "n": 4,
-    "procent": 40
-   },
-   "bonus": {
-    "n": 4,
-    "procent": 40
-   },
    "prime": {
     "n": 4,
     "procent": 40
    },
    "spor": {
+    "n": 4,
+    "procent": 40
+   },
+   "transport": {
+    "n": 4,
+    "procent": 40
+   },
+   "bonus": {
     "n": 4,
     "procent": 40
    },

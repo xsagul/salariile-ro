@@ -282,10 +282,6 @@
     "n": 4,
     "procent": 3.1
    },
-   "bucuresti": {
-    "n": 3,
-    "procent": 2.3
-   },
    "Arges": {
     "n": 3,
     "procent": 2.3
@@ -295,6 +291,10 @@
     "procent": 2.3
    },
    "Mures": {
+    "n": 3,
+    "procent": 2.3
+   },
+   "bucuresti": {
     "n": 3,
     "procent": 2.3
    },

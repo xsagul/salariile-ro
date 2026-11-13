@@ -651,11 +651,11 @@
     "n": 18,
     "procent": 1.9
    },
-   "Brasov": {
+   "Constanta": {
     "n": 17,
     "procent": 1.8
    },
-   "Constanta": {
+   "Brasov": {
     "n": 17,
     "procent": 1.8
    },
@@ -691,10 +691,6 @@
     "n": 8,
     "procent": 0.9
    },
-   "Sibiu": {
-    "n": 7,
-    "procent": 0.7
-   },
    "Valcea": {
     "n": 7,
     "procent": 0.7
@@ -703,15 +699,19 @@
     "n": 7,
     "procent": 0.7
    },
-   "bucuresti": {
-    "n": 6,
-    "procent": 0.6
+   "Sibiu": {
+    "n": 7,
+    "procent": 0.7
    },
    "Arad": {
     "n": 6,
     "procent": 0.6
    },
    "Neamt": {
+    "n": 6,
+    "procent": 0.6
+   },
+   "bucuresti": {
     "n": 6,
     "procent": 0.6
    },
@@ -723,6 +723,10 @@
     "n": 5,
     "procent": 0.5
    },
+   "Arges": {
+    "n": 4,
+    "procent": 0.4
+   },
    "Suceava": {
     "n": 4,
     "procent": 0.4
@@ -731,19 +735,15 @@
     "n": 4,
     "procent": 0.4
    },
-   "Arges": {
-    "n": 4,
-    "procent": 0.4
-   },
-   "Gorj": {
-    "n": 3,
-    "procent": 0.3
-   },
    "Hunedoara": {
     "n": 3,
     "procent": 0.3
    },
    "Bistrita-Nasaud": {
+    "n": 3,
+    "procent": 0.3
+   },
+   "Gorj": {
     "n": 3,
     "procent": 0.3
    },
@@ -759,18 +759,6 @@
     "n": 2,
     "procent": 0.2
    },
-   "Caras-Severin": {
-    "n": 1,
-    "procent": 0.1
-   },
-   "dolj": {
-    "n": 1,
-    "procent": 0.1
-   },
-   "arges": {
-    "n": 1,
-    "procent": 0.1
-   },
    "Dambovita": {
     "n": 1,
     "procent": 0.1
@@ -780,6 +768,18 @@
     "procent": 0.1
    },
    "Salaj": {
+    "n": 1,
+    "procent": 0.1
+   },
+   "Caras-Severin": {
+    "n": 1,
+    "procent": 0.1
+   },
+   "dolj": {
+    "n": 1,
+    "procent": 0.1
+   },
+   "arges": {
     "n": 1,
     "procent": 0.1
    },

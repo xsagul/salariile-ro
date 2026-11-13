@@ -56,6 +56,8 @@ const b = a("Oferim: tichete de masă, transport gratuit, cazare asigurată, bon
 for (const x of ["tichete de masă", "transport", "cazare", "bonus", "asigurare medicală"]) ok(b.includes(x), `beneficiu ${x}`);
 ok(!a("Transportul mărfii în țară").beneficii.includes("transport"), "transportul mărfii nu e beneficiu");
 ok(!a("Cazarea turiștilor la recepție").beneficii.includes("cazare"), "cazarea turiștilor nu e beneficiu");
+ok(a("Angajăm barman, salariu fix plus bacșiș zilnic.").beneficii.includes("bacșiș"), "bacșișul e beneficiu");
+ok(a("Ospătar, salariu + tips").beneficii.includes("bacșiș"), "tips e bacșiș");
 // Tehnologii
 const tech = a("Stack: Java 17, Spring Boot, React, PostgreSQL, Docker, Kubernetes pe AWS.", "Senior Java Developer").tehnologii;
 for (const x of ["Java", "Spring", "React", "SQL", "Docker", "Kubernetes", "AWS"]) ok(tech.includes(x), `tehnologie ${x}`);

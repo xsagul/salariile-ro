@@ -467,11 +467,11 @@
     "n": 230,
     "procent": 73.5
    },
-   "transport": {
+   "bonus": {
     "n": 145,
     "procent": 46.3
    },
-   "bonus": {
+   "transport": {
     "n": 145,
     "procent": 46.3
    },
@@ -590,15 +590,15 @@
     "n": 11,
     "procent": 3.5
    },
-   "RO": {
-    "n": 9,
-    "procent": 2.9
-   },
    "Bucuresti": {
     "n": 9,
     "procent": 2.9
    },
    "Cluj": {
+    "n": 9,
+    "procent": 2.9
+   },
+   "RO": {
     "n": 9,
     "procent": 2.9
    },
@@ -650,11 +650,11 @@
     "n": 2,
     "procent": 0.6
    },
-   "ilfov": {
+   "Teleorman": {
     "n": 1,
     "procent": 0.3
    },
-   "Teleorman": {
+   "ilfov": {
     "n": 1,
     "procent": 0.3
    },
@@ -700,15 +700,15 @@
     "n": 6,
     "procent": 3
    },
-   "expired": {
-    "n": 1,
-    "procent": 0.5
-   },
    "contract_or_variable_income": {
     "n": 1,
     "procent": 0.5
    },
    "monthly_unconfirmed": {
+    "n": 1,
+    "procent": 0.5
+   },
+   "expired": {
     "n": 1,
     "procent": 0.5
    }
@@ -750,16 +750,6 @@
     }
    },
    "studii": {
-    "generale": {
-     "n": 18,
-     "p10": 2737,
-     "p25": 2750,
-     "median": 2888,
-     "p75": 3619,
-     "p90": 3930,
-     "min": 2650,
-     "max": 4400
-    },
     "medii": {
      "n": 18,
      "p10": 2743,
@@ -769,6 +759,16 @@
      "p90": 3302,
      "min": 2629,
      "max": 3500
+    },
+    "generale": {
+     "n": 18,
+     "p10": 2737,
+     "p25": 2750,
+     "median": 2888,
+     "p75": 3619,
+     "p90": 3930,
+     "min": 2650,
+     "max": 4400
     }
    },
    "limbi": {

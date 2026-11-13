@@ -282,11 +282,11 @@
     "n": 12,
     "procent": 8.3
    },
-   "Cluj": {
+   "Prahova": {
     "n": 8,
     "procent": 5.6
    },
-   "Prahova": {
+   "Cluj": {
     "n": 8,
     "procent": 5.6
    },
@@ -298,15 +298,15 @@
     "n": 6,
     "procent": 4.2
    },
+   "Sibiu": {
+    "n": 5,
+    "procent": 3.5
+   },
    "Iasi": {
     "n": 5,
     "procent": 3.5
    },
    "Brasov": {
-    "n": 5,
-    "procent": 3.5
-   },
-   "Sibiu": {
     "n": 5,
     "procent": 3.5
    },
@@ -322,14 +322,6 @@
     "n": 4,
     "procent": 2.8
    },
-   "Constanta": {
-    "n": 3,
-    "procent": 2.1
-   },
-   "Valcea": {
-    "n": 3,
-    "procent": 2.1
-   },
    "Braila": {
     "n": 3,
     "procent": 2.1
@@ -343,6 +335,14 @@
     "procent": 2.1
    },
    "Bistrita-Nasaud": {
+    "n": 3,
+    "procent": 2.1
+   },
+   "Constanta": {
+    "n": 3,
+    "procent": 2.1
+   },
+   "Valcea": {
     "n": 3,
     "procent": 2.1
    },
@@ -370,6 +370,14 @@
     "n": 2,
     "procent": 1.4
    },
+   "Alba": {
+    "n": 1,
+    "procent": 0.7
+   },
+   "Harghita": {
+    "n": 1,
+    "procent": 0.7
+   },
    "brasov": {
     "n": 1,
     "procent": 0.7
@@ -379,14 +387,6 @@
     "procent": 0.7
    },
    "iasi": {
-    "n": 1,
-    "procent": 0.7
-   },
-   "Alba": {
-    "n": 1,
-    "procent": 0.7
-   },
-   "Harghita": {
     "n": 1,
     "procent": 0.7
    },
@@ -420,11 +420,11 @@
     "n": 9,
     "procent": 6.5
    },
-   "country_unconfirmed": {
+   "multiple_unresolved_amounts": {
     "n": 3,
     "procent": 2.2
    },
-   "multiple_unresolved_amounts": {
+   "country_unconfirmed": {
     "n": 3,
     "procent": 2.2
    },

@@ -193,11 +193,11 @@
     "n": 9,
     "procent": 10.2
    },
-   "bonus": {
+   "cursuri / training": {
     "n": 6,
     "procent": 6.8
    },
-   "cursuri / training": {
+   "bonus": {
     "n": 6,
     "procent": 6.8
    },
@@ -205,15 +205,19 @@
     "n": 4,
     "procent": 4.5
    },
-   "prime": {
-    "n": 1,
-    "procent": 1.1
+   "bacșiș": {
+    "n": 4,
+    "procent": 4.5
    },
    "cazare": {
     "n": 1,
     "procent": 1.1
    },
    "transport": {
+    "n": 1,
+    "procent": 1.1
+   },
+   "prime": {
     "n": 1,
     "procent": 1.1
    }
@@ -259,23 +263,23 @@
     "n": 10,
     "procent": 11.4
    },
-   "Maramures": {
-    "n": 4,
-    "procent": 4.5
-   },
    "Bihor": {
     "n": 4,
     "procent": 4.5
    },
-   "Valcea": {
-    "n": 3,
-    "procent": 3.4
+   "Maramures": {
+    "n": 4,
+    "procent": 4.5
    },
    "Hunedoara": {
     "n": 3,
     "procent": 3.4
    },
    "Botosani": {
+    "n": 3,
+    "procent": 3.4
+   },
+   "Valcea": {
     "n": 3,
     "procent": 3.4
    },
@@ -319,10 +323,6 @@
     "n": 2,
     "procent": 2.3
    },
-   "Teleorman": {
-    "n": 1,
-    "procent": 1.1
-   },
    "Olt": {
     "n": 1,
     "procent": 1.1
@@ -332,6 +332,10 @@
     "procent": 1.1
    },
    "Caras-Severin": {
+    "n": 1,
+    "procent": 1.1
+   },
+   "Teleorman": {
     "n": 1,
     "procent": 1.1
    },

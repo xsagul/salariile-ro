@@ -331,11 +331,11 @@
     "n": 12,
     "procent": 3.3
    },
-   "asigurare medicală": {
+   "cazare": {
     "n": 5,
     "procent": 1.4
    },
-   "cazare": {
+   "asigurare medicală": {
     "n": 5,
     "procent": 1.4
    },
@@ -455,11 +455,11 @@
     "n": 10,
     "procent": 2.7
    },
-   "bucuresti": {
+   "Bacau": {
     "n": 8,
     "procent": 2.2
    },
-   "Bacau": {
+   "bucuresti": {
     "n": 8,
     "procent": 2.2
    },
@@ -483,10 +483,6 @@
     "n": 5,
     "procent": 1.4
    },
-   "ilfov": {
-    "n": 4,
-    "procent": 1.1
-   },
    "Suceava": {
     "n": 4,
     "procent": 1.1
@@ -499,15 +495,19 @@
     "n": 4,
     "procent": 1.1
    },
-   "Buzau": {
-    "n": 3,
-    "procent": 0.8
+   "ilfov": {
+    "n": 4,
+    "procent": 1.1
    },
    "Neamt": {
     "n": 3,
     "procent": 0.8
    },
    "Arges": {
+    "n": 3,
+    "procent": 0.8
+   },
+   "Buzau": {
     "n": 3,
     "procent": 0.8
    },
@@ -539,10 +539,6 @@
     "n": 2,
     "procent": 0.5
    },
-   "dambovita": {
-    "n": 1,
-    "procent": 0.3
-   },
    "Giurgiu": {
     "n": 1,
     "procent": 0.3
@@ -552,6 +548,10 @@
     "procent": 0.3
    },
    "Calarasi": {
+    "n": 1,
+    "procent": 0.3
+   },
+   "dambovita": {
     "n": 1,
     "procent": 0.3
    },
@@ -626,10 +626,10 @@
     }
    },
    "beneficii": {
-    "tichete de masă": {
+    "cazare": {
      "n": 1
     },
-    "cazare": {
+    "tichete de masă": {
      "n": 1
     },
     "masă": {
