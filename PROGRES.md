@@ -5820,7 +5820,7 @@ contul „site-uri”, deci am citit din GSC cu `dataState: "all"` (date proaspe
   clicuri), „calcul salariu net” p4,2 → 2,6 (6 → 26), „calculator salariu brut” p4,1 → 2,3 (0 → 11),
   „calculator salariu brut net” p4,1 → 3,4. Poziția medie pe tot site-ul, 4,6 pe 12 nov., cea mai bună din
   ultima lună. Nu am schimbat nimic pe homepage în zilele astea; urcarea vine din partea Google.
-- **De urmărit:** dacă poziția ~2,5 ține o săptămână (`node <script> hp` echivalent:
+- **De urmărit:** dacă poziția ~2,5 ține o săptămână (
   `MSYS_NO_PATHCONV=1 node scripts/gsc.mjs dates --page=/ --exact --query="calculator salariu net"
   --query-exact`). CTR-ul la p2,5 e doar 2,6% (52 / 2.024 afișări), deci primul ecran al rezultatului
   rămâne plafonul; o săptămână întreagă pe locul 2 ar însemna ~+80 de clicuri pe zi doar pe homepage.
