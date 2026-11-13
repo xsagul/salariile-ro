@@ -5942,3 +5942,20 @@ regizor, constructor de drumuri, cizmar).
 Slabe, de înlocuit când apare ceva mai bun: tot ce are 1–4 salarii pe Salario, pescarul, notarul,
 farmacistul din industrie (o ofertă) și mediile de companie (apă, rafinărie). Verificat: testele
 meseriilor, observațiilor, grilelor, contractele UI, `test:rendered`, eslint, build.
+
+### Tot 13 noiembrie — bara de sus fără hub (din 8 nov.): ce s-a schimbat în GA4
+
+Luni–joi, ca zilele să fie comparabile: 26–29 oct. și 2–5 nov. (cu „Locuri de muncă” și „Adaugă anunț” în
+bară) față de 9–12 nov. (bara din 26 sept.). Doar 4 zile după; pe 12 nov. homepage-ul a urcat și în Google.
+
+- **Telefon: nicio diferență.** Respingere 19 / 18 / 19%, timp pe om 71 / 67 / 72 s, pagini pe om 1,58 /
+  1,65 / 1,54, calculează 52 / 54 / 54%. Pe telefon linkurile spre hub stăteau oricum în meniu.
+- **Homepage, pe ambele: nicio diferență.** Desktop: respingere 18 / 20 / 18%, calculează 79 / 80 / 81%;
+  telefon: 21 / 18 / 20%, 76 / 80 / 80%. Timpul pe om pe desktop sare mult de la o săptămână la alta
+  (133 / 179 / 108 s), deci nu e un semnal.
+- **Desktop, tot site-ul: puțin mai slab** (respingere 21 / 19 / 25%, pagini pe om 1,48 / 1,64 / 1,35).
+  Vine din două locuri, nu din homepage: paginile de zile lucrătoare (136 / 159 / 106 utilizatori, cu
+  clicurile interne de pe ele) și hubul. Clicurile din bara de sus pe desktop: 40 / 39 / 22.
+- **Hubul a pierdut mult:** liste 49 / 62 / 22 de utilizatori, anunțuri 46 / 56 / 15, formularul de
+  postare 5 / 10 / 1, apăsări pe telefon/WhatsApp 9 / 8 / 0. Nu e doar bara: din 6 nov. anunțurile ANOFM
+  dau 410, iar pe 10–12 nov. lista națională a fost goală (bug-ul cu emoji, reparat pe 12).
