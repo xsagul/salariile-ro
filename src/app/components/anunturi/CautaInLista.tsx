@@ -46,7 +46,7 @@ export default function CautaInLista({ eticheta, valoare, onText, optiuni, onAle
         onFocus={() => { onFocus?.(); setDeschis(true); }}
         onBlur={() => setDeschis(false)}
         onKeyDown={taste}
-        className="mt-1 block w-full rounded-md border border-stone-300 bg-surface px-3 py-2 text-base text-stone-900 focus:border-stone-600 focus:outline-none"
+        className="mt-1 block w-full rounded-md border border-stone-300 bg-surface px-3 py-2 text-base text-stone-900 focus:border-stone-600 focus:outline-none aria-invalid:border-red-600 aria-invalid:ring-1 aria-invalid:ring-red-600 aria-invalid:focus:border-red-700"
       />
       {arata && (
         <ul id={`${id}-l`} role="listbox" className="absolute left-0 right-0 z-20 mt-1 max-h-80 overflow-auto rounded-md border border-stone-300 bg-surface py-1 shadow-lg">

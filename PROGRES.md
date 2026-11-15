@@ -6042,3 +6042,15 @@ pe zi, minimul legal brut e ~540 lei, deci un asemenea anunț corect e respins a
 Teste: `test-anunturi.mts` (1 leu respins, 999 respins chiar cu maxim 5.000, 1.000 trece, mesajul
 fără cifre); falsificat cu pragul pus la 0 → pică pe „1 leu: respins”. Regulile de conținut
 (`REGULI_CONTINUT`) nu s-au schimbat, la cererea proprietarului.
+
+## 15 noiembrie 2026 — formularul de anunț: chenar roșu pe câmpul greșit
+
+Cerut de proprietar: pe lângă mesajul de sub câmp, câmpul greșit are acum chenar roșu (border + inel
+de 1 px, `aria-invalid:` din Tailwind), în `FormularAnunt.tsx` și `CautaInLista.tsx` (meseria,
+localitatea, strada). Se aprinde din `aria-invalid`, pus deja pe fiecare câmp cu eroare. Câmpul atins
+își pierde eroarea pe loc (chenar și mesaj), nu abia la următoarea trimitere. Probat local, 375 px:
+cu 50 lei net, salariul, titlul, localitatea și descrierea au chenar roșu, „Până la” rămâne gri;
+după 5000 la salariu, eroarea lui dispare, iar descrierea rămâne roșie.
+Capcană de test: `next dev` pornit din alt folder decât worktree-ul scanează clasele Tailwind din
+folderul de pornire (aici: checkout-ul principal), deci clasele noi lipsesc din CSS; Turbopack refuză
+și `node_modules` legat prin junction (`--webpack` merge).

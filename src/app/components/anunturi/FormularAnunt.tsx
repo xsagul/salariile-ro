@@ -22,7 +22,9 @@ const GOL: Valori = { titlu: "", meserie: "", angajator: "", judet: "", oras: ""
   faraExperienta: false, contract: "", locMunca: "", baza: "", descriere: "", telefon: "",
   contactApel: true, contactWhatsapp: true, whatsapp: "", contactEmail: false, email: "", acordPublicare: false };
 
-const CAMP = "mt-1 block w-full rounded-md border border-stone-300 bg-surface px-3 py-2 text-base text-stone-900 focus:border-stone-600 focus:outline-none";
+// Câmpul greșit are chenar roșu (proprietar, 15 noiembrie 2026), nu doar mesajul de sub el: pe telefon,
+// mesajul se pierde ușor printre note. Se aprinde din `aria-invalid`, pus deja pe fiecare câmp cu eroare.
+const CAMP = "mt-1 block w-full rounded-md border border-stone-300 bg-surface px-3 py-2 text-base text-stone-900 focus:border-stone-600 focus:outline-none aria-invalid:border-red-600 aria-invalid:ring-1 aria-invalid:ring-red-600 aria-invalid:focus:border-red-700";
 const ETICHETA = "block text-sm font-medium text-stone-800";
 const NOTA = "mt-1 block text-xs text-stone-600";
 const cheieLoc = (l: Localitate) => `${l[0]}|${l[1]}|${l[2]}`;
@@ -35,8 +37,12 @@ export default function FormularAnunt({ initial, modificare = false, trimite }: 
   const [erori, setErori] = useState<Eroare[]>([]);
   const [trimis, setTrimis] = useState(false);
   const [altWhatsapp, setAltWhatsapp] = useState(false);
-  const set = (k: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
+  // Câmpul atins își pierde eroarea (chenarul roșu și mesajul) până la următoarea trimitere.
+  const curata = (k: string) => setErori((es) => (es.some((e) => e.camp === k) ? es.filter((e) => e.camp !== k) : es));
+  const set = (k: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    curata(k);
     setV((x) => ({ ...x, [k]: e.target.type === "checkbox" ? (e.target as HTMLInputElement).checked : e.target.value }));
+  };
   const eroare = (camp: string) => erori.find((e) => e.camp === camp)?.mesaj;
   // Măsurarea pașilor (src/lib/analytics.ts, `postare_anunt`): prima atingere a unui câmp, o singură dată.
   const zona = modificare ? "modificare" : "publicare";
@@ -47,6 +53,7 @@ export default function FormularAnunt({ initial, modificare = false, trimite }: 
   const [meserieText, setMeserieText] = useState(numeMeserie(initial?.meserie));
   const optMeserii = useMemo(() => cauta(MESERII, meserieText, (m) => m.nume).map((m) => ({ cheie: m.slug, text: m.nume })), [meserieText]);
   const scrieMeserie = (s: string) => {
+    curata("meserie");
     setMeserieText(s);
     const exact = MESERII.find((m) => faraDiacritice(m.nume) === faraDiacritice(s.trim()));
     setV((x) => ({ ...x, meserie: exact?.slug ?? "" }));
@@ -60,6 +67,7 @@ export default function FormularAnunt({ initial, modificare = false, trimite }: 
   const gasite = useMemo(() => (localitati ? cauta(localitati, locText, (l) => l[0], (l) => l[3]) : []), [localitati, locText]);
   const alegeLoc = (l: Localitate) => { setLoc(l); setLocText(l[0]); setV((x) => ({ ...x, oras: l[0], judet: l[1] })); };
   const scrieLoc = (s: string) => {
+    curata("oras");
     setLocText(s);
     // Un nume scris întocmai și purtat de o singură localitate se alege singur.
     const exacte = (localitati ?? []).filter((l) => faraDiacritice(l[0]) === faraDiacritice(s.trim()));
@@ -130,7 +138,7 @@ export default function FormularAnunt({ initial, modificare = false, trimite }: 
           placeholder="Scrie: București, Cluj-Napoca, un sat…" eroare={eroare("oras")}
           gol={localitati ? "Nicio localitate cu acest nume. Verifică scrierea." : "Se încarcă lista localităților…"} />
         <CautaInLista eticheta="Strada și numărul (opțional)" valoare={String(v.adresa)} maxLength={120}
-          onText={(s) => setV((x) => ({ ...x, adresa: s }))} optiuni={optStrazi}
+          onText={(s) => { curata("adresa"); setV((x) => ({ ...x, adresa: s })); }} optiuni={optStrazi}
           onAlege={(o) => setV((x) => { const nr = numarDinText(String(x.adresa)); return { ...x, adresa: nr ? `${o.text} ${nr}` : `${o.text} ` }; })}
           placeholder="Strada Lipscani 69" eroare={eroare("adresa")}
           nota={<>Cu adresa, anunțul apare pe hartă și primul pentru cei care caută aproape de ei. Străzile: © <a href="https://www.openstreetmap.org/copyright" className="underline underline-offset-2">OpenStreetMap</a>.</>} />
