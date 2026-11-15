@@ -2,7 +2,7 @@
 title: "Munca fără contract: ce riști și ce faci dacă ai început deja"
 description: "Munca la negru costă firma 40.000 de lei pe om, iar pe tine pensia, asigurarea și concediul medical. Ce îți trebuie înainte de prima zi și ce faci acum."
 date: "2026-11-06"
-updated: "2026-11-06"
+updated: "2026-11-15"
 hero: "/noutati/munca-fara-contract-v2.webp"
 heroAlt: "Ilustrație editorială: o cască de protecție pe un contract nesemnat, un stilou lângă el și, în spate, conturul punctat al unui muncitor care nu apare în acte."
 ---
@@ -68,6 +68,8 @@ Pe lângă amendă, inspectorii pot opri activitatea locului de muncă. Firma se
 ## Cum verifici dacă ești înregistrat
 
 Cere firmei dovada înregistrării în REGES-ONLINE. Un extras din registru arată data de început, funcția și salariul. Un angajator corect ți-l dă fără probleme. Dacă amână sau evită subiectul, e un semn rău.
+
+Poți verifica și singur, fără să întrebi pe nimeni: din contul tău de salariat vezi toate firmele care te-au înregistrat. Pașii sunt în ghidul [REGES Online](/noutati/reges-online).
 
 ## Ce faci dacă lucrezi deja fără contract
 
