@@ -6111,3 +6111,55 @@ Deci dublarea nu vine dintr-o pagină nouă, ci din cele trei împreună, și nu
 **Neverificat:** că volumul de 60.500–110.000 pe „zile libere 2025” din prima jumătate a lui 2026 e al
 anului în curs (SE Ranking pare să adune variantele apropiate; „zile libere 2026” n-are istoric înainte de
 septembrie). Abonamentul SE Ranking expiră pe 18 noiembrie.
+
+## 15 noiembrie 2026 — pagină nouă: `/calculator-tva`
+
+Proprietarul, după nota de mai sus: „Da, construiește”. Publicat în `756306a`.
+
+**Ce face.** Adaugă TVA la un preț sau o scoate dintr-un preț care o conține, la 21%, la 11% sau la o cotă
+scrisă de mână (facturi mai vechi). Arată prețul fără TVA, taxa și prețul cu TVA, cu calculul scris pe suma
+omului sub rândul de TVA („1.210,00 lei × 21 ÷ 121”). Dedesubt: formula în card, ce intră la 11%, cine pune
+TVA pe factură, patru întrebări.
+
+**Cotele, citite din Codul fiscal consolidat** (legislatie.just.ro, forma care cuprinde Legea 199 din 15
+octombrie 2026; pagina are 7,6 MB și uneltele de citit pagini se opreau înaintea Titlului VII, așa că a fost
+descărcată întreagă): art. 291 alin. (1), cota standard 21%; alin. (2), „cota redusă de 11%” pentru lit.
+a)–o); alin. (3), abrogat de la 1 august 2025; art. 310 alin. (1), plafonul de scutire 395.000 lei. Cota de
+9% la o singură locuință s-a aplicat până la 30 septembrie 2026 inclusiv (Legea 161/2026), deci nu apare
+ca opțiune. Proprietarul cotelor: `src/lib/tva.ts`.
+
+**Două capcane din lege, puse în text și în test:** la alimente, lit. b) scoate băuturile alcoolice,
+răcoritoarele (codul NC 2202), alimentele cu zahăr adăugat de la 10 g la 100 g și suplimentele alimentare;
+la restaurant, lit. n) scoate numai alcoolul și răcoritoarele. Rezumatul de pe pagină nu spune „băuturi”.
+
+**Alegeri de construcție:**
+- Calculul e în bani întregi, cu cota în sutimi de procent: în virgulă mobilă, 0,21 nu există exact și
+  jumătatea de ban poate cădea greșit. La „scoate”, TVA = total × 21 ÷ 121, iar prețul fără TVA e diferența,
+  ca cele două să se adune mereu la suma scrisă.
+- Câmpul sumei e text, nu număr: „1.234,56”, „1234,56” și „1234.56” dau aceeași sumă. O singură virgulă e
+  zecimală (7,459 lei pe litru); un singur punct urmat de exact trei cifre desparte miile.
+- Butonul „Calculează” rămâne, deși calculul e instantaneu: pe telefon rezultatul stă sub formular, iar
+  butonul îl aduce în ecran. După primul calcul, orice schimbare se vede pe loc. Evenimentul `calcul`
+  (`instrument: tva`, `varianta: adauga` sau `scoate`) pleacă numai la apăsare, deci numără cererile, nu
+  fiecare schimbare.
+- Fără reclamă pe pagină deocamdată și **fără link în bara de sus**: bara e sub observație pentru locul 2 la
+  „calculator salariu net”. Pagina e legată din subsol (deci de pe toate paginile), de pe prima pagină și de
+  pe `/calculator-pfa`. În bară intră când are afișări în Search Console, cum cere regula din `Header.tsx`.
+- Titlul nu e al niciunui concurent din primele 14 rezultate (lecția de la PFA din 12 noiembrie).
+
+**Verificat:** `npm test` exit 0, cu 21 de verificări noi (`scripts/test-tva.mts`: sume calculate de mână,
+dus-întors pe 50.000 de sume la ambele cote, sume scrise în toate felurile); `tsc`, eslint, `npm run build`,
+`npm run test:rendered` exit 0 (345 de rute, pagina intră la regula „niciun an vechi sus”). În browser, pe
+build: 1.000 → 210 și 1.210; 1.250,50 → 262,61 (jumătatea de ban urcă); din 49,99 la 21% ies 8,68 și
+41,31. La 375 px formularul încape pe primul ecran; la 360 px notele stau pe un rând și pagina nu are
+derulare pe orizontală; după „Calculează”, rezultatul e adus la marginea de sus a ecranului.
+**Pe producție:** `/calculator-tva` 200, 124.875 de octeți, canonical propriu, fără `noindex`, 4 întrebări în
+JSON-LD, în `sitemap.xml`; legată din `/` și din `/calculator-pfa`. CI și IndexNow, verzi pe commit.
+
+**Găsit și reparat pe drum:** mesajul „Scrie cota” apărea de cum alegeai „Altă cotă”, înainte să apuci să
+scrii. Acum mesajele apar numai la apăsarea pe „Calculează” și dispar la prima tastă.
+
+**Ce nu știu încă:** dacă pagina urcă. SE Ranking dă dificultate 46, iar domeniul n-are nicio pagină pe TVA.
+**De citit, de la 1 decembrie:** `MSYS_NO_PATHCONV=1 node scripts/gsc.mjs queries --page=/calculator-tva`.
+Semnul bun: afișări la „calculator tva” sub poziția 20 în primele trei săptămâni. Dacă în ianuarie pagina
+nu are afișări, cauza e la nivel de domeniu (nicio autoritate pe TVA), nu de pagină.
