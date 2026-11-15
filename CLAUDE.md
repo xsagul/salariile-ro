@@ -36,8 +36,9 @@ Ce nu s-a schimbat, fiindcă protejează chiar venitul (traficul organic și con
    după ce un anunț fals de pe Reddit a publicat numărul unui necunoscut; emailurile pleacă prin Resend
    (gratuit, 100 pe zi, secretul `RESEND_KEY`, domeniul verificat în Resend). Tot de atunci, numărul de
    telefon nu stă în pagina anunțului: vine din `/api/anunturi/telefon` la apăsare, ca pe OLX. Salariul
-   obligatoriu cu baza lui, orice sumă (pragul minim scos tot pe 28 septembrie, ca respingerile să
-   nu încetinească pornirea), numele firmei opțional și fără CUI, candidatul contactează direct angajatorul
+   obligatoriu cu baza lui, de la 1.000 lei în sus (prag ascuns, pus pe 15 noiembrie 2026 după
+   anunțuri false cu 1–3 lei: mesajul spune doar „sub salariul minim”, fără cifră;
+   `SALARIU_MINIM_ANUNT` în `reguli.ts`), numele firmei opțional și fără CUI, candidatul contactează direct angajatorul
    (site-ul nu primește CV-uri), moderare automată + raportare (DSA). Fără Turnstile (29 septembrie:
    oamenii nu reușeau să posteze) și fără suspendare automată la raportări: proprietarul le verifică
    în cel mult 3 zile (`npm run anunturi:raportari`). Regulile: `src/lib/anunturi/

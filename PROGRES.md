@@ -6017,3 +6017,27 @@ Europeană, în română, reutilizare liberă cu sursa): descrierea ocupației, 
   cardul grilei legale (profesor, învățător, educator, stomatolog) repeta treapta de sus într-un paragraf și
   avea etichete de 3–4 rânduri; acum căsuțele spun doar treapta („Gradul I”). Descrierile ESCO de peste
   380 de caractere se opresc la ultima frază întreagă care încape.
+
+## 15 noiembrie 2026 — anunțurile false 809 și 811 scoase; prag ascuns de 1.000 lei la salariu
+
+Raportate de proprietar:
+- **811** „Ai nevoie de un împrumut rapid?” (Brașov, 14 noiembrie): „instituție financiară” care oferă
+  credite cu 3% dobândă, contact pe email, salariu 3 lei net, telefon 0744444444.
+- **809** „angajăm personal pentru salon de înfrumusețare” (Voluntari, 10 noiembrie): 1 leu net, fără
+  firmă, șase posturi diferite într-un singur anunț.
+
+Scoase în D1 din consola dashboard-ului (Chrome, contul site-ului; wrangler din terminal e pe contul
+site-uri.ro și primește 7403): `stare = 'suspendat'`, cu motivul în `motiv_suspendare`. Probat: ambele
+pagini dau 410 cu `noindex, follow`; Google anunțat prin Indexing API cu `URL_DELETED` (200 la
+ambele). Adăugate și în `SCOASE_DE_PROPRIETAR` (`reguli.ts`), lângă 797 și 804, ca să rămână 410
+„șters” indiferent de starea din D1. 804 era încă `activ` în D1, dar scos din cod din 3 noiembrie (410).
+
+Decizia proprietarului, tot azi: salariul minim acceptat la postare e **1.000 lei** (brut sau net),
+`SALARIU_MINIM_ANUNT`. Sub el, mesajul e doar „Salariul e sub salariul minim.”, fără cifră, ca să nu
+afle pragul cine postează. Se aplică la postare și la modificarea din linkul de gestionare (aceeași
+`valideaza()`). Rămâne activ un singur anunț sub prag, 800 (recepționer hotel, 1 leu net): neatins,
+dar orice modificare a lui va cere o sumă de la 1.000 lei. Observație: la normă parțială de 1 oră
+pe zi, minimul legal brut e ~540 lei, deci un asemenea anunț corect e respins acum.
+Teste: `test-anunturi.mts` (1 leu respins, 999 respins chiar cu maxim 5.000, 1.000 trece, mesajul
+fără cifre); falsificat cu pragul pus la 0 → pică pe „1 leu: respins”. Regulile de conținut
+(`REGULI_CONTINUT`) nu s-au schimbat, la cererea proprietarului.

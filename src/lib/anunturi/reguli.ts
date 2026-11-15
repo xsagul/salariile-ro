@@ -3,8 +3,8 @@
 // anunțul folosesc exact aceleași verificări. Deciziile proprietarului:
 //   - fără cont: anunțul se publică pe loc (fără confirmare pe email, decis pe 29 septembrie 2026)
 //     și se gestionează dintr-un link dat la publicare (și pe email, când EMAIL_ACTIV);
-//   - salariul e obligatoriu, cu baza (brut sau net) — diferența față de OLX și eJobs; orice sumă,
-//     fără prag minim (decis pe 28 septembrie 2026: respingerile ar încetini pornirea);
+//   - salariul e obligatoriu, cu baza (brut sau net) — diferența față de OLX și eJobs; de la
+//     SALARIU_MINIM_ANUNT în sus (15 noiembrie 2026, după anunțuri false cu 1–3 lei);
 //   - numele firmei e opțional, CUI-ul nu se cere deloc (tot 28 septembrie);
 //   - candidatul contactează direct angajatorul; site-ul nu primește CV-uri;
 //   - moderare automată (regulile de mai jos) și buton de raportare, cu scoatere rapidă (DSA).
@@ -35,6 +35,11 @@ export type LocMunca = keyof typeof LOCURI_MUNCA;
 export const ZILE_VALABILITATE = 30;
 /** Cât păstrăm emailul celui care a postat după ce anunțul a expirat sau a fost șters. */
 export const ZILE_PASTRARE_EMAIL = 30;
+/**
+ * Pragul sub care salariul nu se acceptă (proprietar, 15 noiembrie 2026: anunțurile false veneau cu
+ * 1–3 lei). Mesajul spune doar „sub salariul minim”, fără cifră: cine postează nu află pragul.
+ */
+export const SALARIU_MINIM_ANUNT = 1000;
 /** Anunțuri noi pe zi de la același email sau de la aceeași adresă IP. */
 export const LIMITA_PE_ZI = 5;
 
@@ -167,10 +172,11 @@ export function valideaza(brut: Record<string, unknown>, meseriiValide: Set<stri
   if (a.meserie && !meseriiValide.has(a.meserie)) e.push({ camp: "meserie", mesaj: "Alege meseria din listă sau lasă câmpul gol." });
   if (a.norma === "partiala" && !(a.orePeZi! >= 1 && a.orePeZi! <= 7)) e.push({ camp: "orePeZi", mesaj: "La normă parțială, scrie câte ore pe zi (1–7)." });
 
-  // Salariul: obligatoriu, cu baza; orice sumă (fără prag minim, proprietar, 28 septembrie 2026).
-  // Rămân numai greșelile evidente: zero, un maxim sub minim, o sumă cu cifre în plus.
+  // Salariul: obligatoriu, cu baza și de la SALARIU_MINIM_ANUNT în sus (15 noiembrie 2026); în rest,
+  // numai greșelile evidente: un maxim sub minim, o sumă cu cifre în plus.
   if (a.baza !== "brut" && a.baza !== "net") e.push({ camp: "baza", mesaj: "Spune dacă suma e brută sau netă." });
   if (!Number.isFinite(a.salariuMin) || a.salariuMin <= 0) e.push({ camp: "salariuMin", mesaj: "Scrie salariul lunar oferit, în lei." });
+  else if (a.salariuMin < SALARIU_MINIM_ANUNT) e.push({ camp: "salariuMin", mesaj: "Salariul e sub salariul minim." });
   else if (a.salariuMin > 200000) e.push({ camp: "salariuMin", mesaj: "Suma pare greșită; scrie salariul lunar, în lei." });
   if (a.salariuMax != null) {
     if (!Number.isFinite(a.salariuMax) || a.salariuMax < a.salariuMin) e.push({ camp: "salariuMax", mesaj: "Maximul trebuie să fie cel puțin cât minimul." });
@@ -237,8 +243,11 @@ export const SQL_DIN_IMPORT_ANOFM = `(${IMPORTURI_ANOFM.map(([de, pana]) => `id 
  * scos de aici poate fi șters și în D1 când e cineva logat (`UPDATE anunturi SET stare = 'sters'`).
  * - 797, 22 octombrie 2026: „Politician care chiar face treabă”, satiră, 1–180.000 lei net.
  * - 804, 3 noiembrie 2026: „ssd chemical solution”, scam în engleză („blackened/defaced bank notes”, +234).
+ * - 809, 15 noiembrie 2026: „angajăm personal pentru salon de înfrumusețare”, 1 leu, fără firmă, șase posturi.
+ * - 811, 15 noiembrie 2026: „Ai nevoie de un împrumut rapid?”, credite cu 3% dobândă, 3 lei.
+ * 809 și 811 sunt și `suspendat` în D1 (consola din dashboard, 15 noiembrie).
  */
-const SCOASE_DE_PROPRIETAR: ReadonlySet<number> = new Set([797, 804]);
+const SCOASE_DE_PROPRIETAR: ReadonlySet<number> = new Set([797, 804, 809, 811]);
 export const scosDeProprietar = (id: number) => SCOASE_DE_PROPRIETAR.has(id);
 
 /** Partea din URL a anunțului: „sofer-distributie-cluj-napoca” (fără „anunt angajare” repetat). */

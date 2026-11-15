@@ -26,8 +26,13 @@ if ("anunt" in r) { assert.equal(r.anunt.salariuMin, 4000); assert.equal(r.anunt
 // Salariul e obligatoriu, cu bază, și nu sub minimul legal (proporțional la normă parțială).
 assert.deepEqual(camp({ salariuMin: "" }), ["salariuMin"]);
 assert.deepEqual(camp({ baza: "" }), ["baza"]);
-// Orice sumă (proprietar, 28 septembrie 2026): fără prag minim; numai greșelile evidente se opresc.
-assert.deepEqual(camp({ salariuMin: "1500" }), [], "sub minimul pe economie se publică");
+// Pragul ascuns de 1.000 lei (proprietar, 15 noiembrie 2026): sub el, mesajul nu spune cifra.
+assert.deepEqual(camp({ salariuMin: "1500" }), [], "sub minimul pe economie, dar peste prag: se publică");
+assert.deepEqual(camp({ salariuMin: "1000" }), [], "exact pragul: se publică");
+assert.deepEqual(camp({ salariuMin: "1" }), ["salariuMin"], "1 leu: respins");
+assert.deepEqual(camp({ salariuMin: "999", salariuMax: "5000" }), ["salariuMin"], "minimul decide, nu maximul");
+{ const m = erori({ salariuMin: "3" }).map((x) => x.mesaj).join(" ");
+  assert.match(m, /sub salariul minim/); assert.doesNotMatch(m, /\d/, "mesajul nu dezvăluie pragul"); }
 assert.deepEqual(camp({ salariuMin: "0" }), ["salariuMin"]);
 assert.deepEqual(camp({ salariuMin: "4000000" }), ["salariuMin"], "cifre în plus");
 assert.deepEqual(camp({ salariuMax: "3000" }), ["salariuMax"], "maxim sub minim");
@@ -157,7 +162,7 @@ assert.equal((date.match(/NOT \$\{SQL_DIN_IMPORT_ANOFM\}/g) ?? []).length, 3, "l
 assert.match(date, /SET stare = 'sters', sters_la = \? WHERE stare != 'sters' AND \$\{SQL_DIN_IMPORT_ANOFM\}/, "rularea de noapte îl șterge în D1");
 
 // Anunțurile false scoase din cod (22 octombrie 2026): pagina le vede șterse, listele și sitemap-ul deloc.
-assert.ok(scosDeProprietar(797) && scosDeProprietar(804), "anunțurile false 797 și 804 sunt scoase");
+assert.ok([797, 804, 809, 811].every(scosDeProprietar), "anunțurile false 797, 804, 809 și 811 sunt scoase");
 assert.ok(!scosDeProprietar(3) && !scosDeProprietar(796), "celelalte anunțuri rămân");
 assert.match(date, /if \(!a \|\| scos\(a\.id\)\) return a \? \{ \.\.\.a, stare: "sters" \}/, "pagina anunțului scos dă 410");
 assert.match(date, /const publicat = \(id: number\) => !scos\(id\) && !ANUNTURI_BLOCATE\.has\(id\)/, "publicat = nici scos, nici suspendat");
