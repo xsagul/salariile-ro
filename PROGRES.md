@@ -6169,3 +6169,32 @@ nu are afișări, cauza e la nivel de domeniu (nicio autoritate pe TVA), nu de p
 (12:35); fetch reușit, indexare permisă, canonicalul ales de Google e adresa inspectată. La „Sitemaps” scrie
 „Temporary processing error”, iar la „Referring page”, „None detected”. Proprietarul aprobase cererea de
 indexare; nu a mai fost trimisă, fiindcă pagina era deja indexată în forma ei finală.
+
+## 15 noiembrie 2026 — „curs valutar” și „reges online”: volum mare, dar nu pentru noi
+
+Proprietarul, văzând cele două rânduri din tabelul de căutări: „astea sunt căutări foarte mari, putem crea
+pagini pentru ele, cred că ar rupe”. Măsurat în SE Ranking (România) și în GSC.
+
+**Curs valutar: o familie de ~1,7 milioane de căutări pe lună, ținută de site-uri făcute numai pentru ea.**
+„curs bnr” 550.000, „euro in lei” 246.000, „curs valutar” 246.000, „convertor valutar” 110.000, „schimb
+valutar” 110.000, „curs euro” 74.000, „curs bnr azi” 74.000, „curs valutar euro” 60.500, „curs valutar bnr”
+49.500; dificultate 71–98. Cine e sus: cursbnr.ro (358.225 de vizite estimate pe lună, 13.032 de cuvinte,
+9.084 în primele cinci poziții; locul 1 la „curs valutar bnr” și „curs euro”, 2 la „euro in lei”), bnr.ro
+(locul 1–2 la „curs bnr”, 2 la „curs valutar”), cursvalutar.ro (locul 1 la „lei in euro” și „curs bnr euro”).
+Noi: o singură afișare în 28 de zile pe orice căutare cu „curs”, și aceea la „curs montator instalații
+solare”. **Decizie: nu se construiește.** O pagină pe un site de salarii nu intră pe prima pagină la
+dificultate 83–98, iar ca să concurezi îți trebuie câte o pagină pentru fiecare monedă și fiecare zi, adică
+paginile pe variante pe care proprietarul le-a respins (19 octombrie). Rezultatele Google pe „curs valutar”
+nu s-au putut citi: unealta SERP a căzut de trei ori; pozițiile de mai sus sunt din baza SE Ranking.
+
+**REGES Online: oamenii vor portalul.** „reges online” 135.000 (22.400 în decembrie 2025), „reges” 40.500,
+„itm online” 12.100, „revisal online” 9.900. Inspecția Muncii ține locurile 1–6 și 9 la „reges online”, cu
+~41.000 de vizite estimate pe șase adrese. Cele mai bune pagini private: startco.ro/blog/reges-online (~1.370
+de vizite estimate pe lună) și papervee.com/ro/reges-online (~1.350), pe pozițiile 8–18 la „reges online” și
+4–6 la „revisal online”. Estimarea SE Ranking pentru pagina a doua e generoasă: la noi, poziția 9 pe „zile
+libere 2027” ia 0,6% din afișări.
+Ce e informațional, pentru salariați: „verificare contract de muncă” și „… online” 390 + 390, „verificare
+vechime în muncă” și „… online” 320 + 390, „extras reges online” 90 (de la 10 acum un an); dificultate 6–25.
+Site-ul nu are nimic despre REGES (două mențiuni în articole) și zero afișări pe „reges” sau „revisal”.
+**Ce ar aduce un ghid:** 10–40 de clicuri pe zi, nu sute. E în tema site-ului și ieftin, dar nu schimbă
+cifra zilnică. Nescris; așteaptă decizia proprietarului.
