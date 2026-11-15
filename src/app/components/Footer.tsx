@@ -20,6 +20,7 @@ const IMPLEMENTED_PAGES = new Set<string>([
   "/calculator-salariu-sanatate",
   "/calculator-ore-suplimentare",
   "/calculator-indemnizatie-somaj",
+  "/calculator-tva",
   "/en/salary-calculator",
   "/fluturas-salariu",
   "/widget",
@@ -65,6 +66,10 @@ const FOOTER_GROUPS: Array<{ title: string; links: FooterLink[] }> = [
       { href: "/calculator-salariu-invatamant", label: "Calculator salariu învățământ" },
       { href: "/calculator-salariu-sanatate", label: "Calculator salariu sănătate" },
       { href: "/calculator-indemnizatie-somaj", label: "Calculator indemnizație șomaj" },
+      // 15 noiembrie 2026: pagină nouă. „calculator tva” are 18.100 de căutări pe lună (SE Ranking), mai
+      // mult decât orice alt instrument de aici în afara calculatorului de salariu. În bara de sus intră
+      // abia când are afișări în Search Console.
+      { href: "/calculator-tva", label: "Calculator TVA" },
     ],
   },
   {

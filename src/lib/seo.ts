@@ -72,6 +72,7 @@ export const PAGE_LAST_MODIFIED: Record<string, Date> = {
   "/calculator-salariu-sanatate": new Date("2026-09-24T00:00:00.000Z"),
   "/calculator-ore-suplimentare": new Date("2026-09-24T00:00:00.000Z"),
   "/calculator-indemnizatie-somaj": new Date("2026-09-24T00:00:00.000Z"),
+  "/calculator-tva": new Date("2026-11-15T00:00:00.000Z"),
   "/en/salary-calculator": new Date("2026-09-24T00:00:00.000Z"),
   "/salariu-mediu": new Date("2026-11-12T00:00:00.000Z"),
   "/smartbill": new Date("2026-09-22T00:00:00.000Z"),

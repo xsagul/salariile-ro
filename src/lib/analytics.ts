@@ -111,7 +111,8 @@ export type Instrument =
   | "sanatate"
   | "somaj"
   | "ore_suplimentare"
-  | "part_time";
+  | "part_time"
+  | "tva";
 
 /** Un calcul cerut de vizitator. Fără sumă: doar ce instrument și ce variantă. */
 export function masoaraCalcul(

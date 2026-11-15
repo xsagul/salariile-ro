@@ -523,6 +523,7 @@ export default function CalculatorPfaPage() {
           { href: "/noutati/pfa-sau-srl-2026", label: "PFA sau SRL în 2026?", descriere: "Comparație detaliată la 60.000, 100.000 și 200.000 lei încasări." },
           { href: "/salarii", label: "Salarii pe meserii", descriere: "Cât ai câștiga ca angajat în meseria ta." },
           { href: "/", label: "Calculator salariu net", descriere: "Compară cu un contract de muncă." },
+          { href: "/calculator-tva", label: "Calculator TVA", descriere: "Adaugă sau scoate TVA dintr-un preț." },
           { href: "/salariu-minim", label: "Salariul minim 2026", descriere: "Unitatea de măsură a pragurilor PFA." },
           { href: "/smartbill", label: "SmartBill Conta", descriere: "Prețuri, salarizare, D112 și planurile SmartBill Conta." },
           { href: "/saga", label: "SAGA C și SAGA WEB", descriere: "Contabilitate, salarii, D112 și licențiere." },

@@ -272,6 +272,7 @@ export default function Page() {
                       ["Calculator salariu part-time", "/calculator-salariu-part-time"],
                       ["Calculator salariu construcții", "/calculator-salariu-constructii"],
                       ["Calculator taxe PFA și SRL", "/calculator-pfa"],
+                      ["Calculator TVA", "/calculator-tva"],
                       ["Calculator salarii învățământ", "/calculator-salariu-invatamant"],
                       ["Calculator salarii sănătate", "/calculator-salariu-sanatate"],
                       ["Calculator ore suplimentare și spor de noapte", "/calculator-ore-suplimentare"],
