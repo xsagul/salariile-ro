@@ -6163,3 +6163,9 @@ scrii. Acum mesajele apar numai la apăsarea pe „Calculează” și dispar la 
 **De citit, de la 1 decembrie:** `MSYS_NO_PATHCONV=1 node scripts/gsc.mjs queries --page=/calculator-tva`.
 Semnul bun: afișări la „calculator tva” sub poziția 20 în primele trei săptămâni. Dacă în ianuarie pagina
 nu are afișări, cauza e la nivel de domeniu (nicio autoritate pe TVA), nu de pagină.
+
+**Indexarea, verificată în Search Console în aceeași zi (inspecția adresei, din Chrome):** „URL is on Google”,
+„Page is indexed”. Googlebot smartphone a citit pagina pe 15 noiembrie la 12:53, la 18 minute după publicare
+(12:35); fetch reușit, indexare permisă, canonicalul ales de Google e adresa inspectată. La „Sitemaps” scrie
+„Temporary processing error”, iar la „Referring page”, „None detected”. Proprietarul aprobase cererea de
+indexare; nu a mai fost trimisă, fiindcă pagina era deja indexată în forma ei finală.
