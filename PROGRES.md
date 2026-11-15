@@ -6054,3 +6054,60 @@ după 5000 la salariu, eroarea lui dispare, iar descrierea rămâne roșie.
 Capcană de test: `next dev` pornit din alt folder decât worktree-ul scanează clasele Tailwind din
 folderul de pornire (aici: checkout-ul principal), deci clasele noi lipsesc din CSS; Turbopack refuză
 și `node_modules` legat prin junction (`--webpack` merge).
+
+## 15 noiembrie 2026 — o pagină nouă cât calculatorul de salariu? Nu există; cea mai mare o avem deja, pe locul 8
+
+Întrebarea proprietarului: se poate face o pagină care să aducă cât „calculator salariu net”, ca vizitele
+zilnice să se dubleze?
+
+**Etalonul (GSC, 18 oct. – 15 nov.):** 9.769 de clicuri pe tot site-ul (~350 pe zi), din care prima pagină
+5.529 (~197 pe zi). Dublarea înseamnă încă ~350 de clicuri pe zi.
+
+**Ce am măsurat (SE Ranking, România, 15 nov.):** ~200 de căutări-cap din salarii, muncă și fiscalitate, toate
+căutările „calculator …” de peste 1.500 pe lună și paginile de top ale concurenților. Volumele SE Ranking
+sunt cam de 1,6 ori peste afișările noastre din GSC acolo unde suntem pe prima pagină („calculator salariu
+net” 90.500 față de 58.846 de afișări în 28 de zile; „calculator salariu” 49.500 față de 30.304), deci
+estimările de mai jos sunt înmulțite cu 0,6.
+
+| Căutarea | Volum SE Ranking / lună | Unde suntem | De ce (nu) e o pagină nouă |
+|---|---|---|---|
+| familia „calculator salariu (net)” | 90.500 + 49.500 + 47.500 + 33.100 | locul 2–4 | o avem; pe locul 1, calculator-salarii.ro are de ~3 ori traficul nostru |
+| „reges online” | 135.000 | — | navigațională: primele 6 rezultate sunt ale Inspecției Muncii, primul site privat e pe 7–8 |
+| „zile libere {an}” | 60.500–110.000, vârf în martie–aprilie | locul 8 (2027), 22 (2026) | pagina există |
+| „salariu minim pe economie” | 27.800 | 6,7 | pagina există; 48.568 de afișări, 169 de clicuri: suma o dă Google |
+| „calculator tva” + „calcul tva” | 18.100 + 5.700 | absent | **singurul instrument mare pe care nu-l avem** |
+| „concediu medical” | 18.100 | 6,3 (articol, 269 de clicuri) | există |
+| „curs valutar”, „cv europass” | 246.000, 40.500 | — | în afara temei; dificultate 83–100 |
+
+Sub 6.000 pe lună: calculator pensie 5.400, cerere demisie 5.700, indemnizație creștere copil 5.700, cod
+COR 5.400, calculator zile 4.400, calculator vechime 2.400.
+
+**Două lucruri care păreau oportunități și nu sunt:**
+- Part-time: `/calculator-salariu-part-time` de la impozitsalariu.ro apare cu 4.168 de vizite estimate, dar
+  le ia fiindcă Google o afișează la „calculator salariu net” (locul 7), nu fiindcă „part-time” ar fi căutat.
+  Pe pagina noastră, cea mai mare interogare proprie are 218 afișări în 28 de zile.
+- REGES: volumul e al celor care vor să intre în portal.
+
+**Concluzia.** În tema site-ului nu există o a doua căutare de mărimea calculatorului de salariu pe care
+să n-o avem. Cea mai mare e „zile libere {an}”, unde pagina noastră stă pe locul 8: 1 zilelibere.com,
+2 zileliberelegale.ro, 3 liberelegale.ro, 4 salariucalculator.ro (concurent de salarii, deci locul 4 se
+poate), 5 growee.ai, 6 oferimdemunca.ro, 7 digi24.ro, 8 noi. Din 30 octombrie avem 5–17 afișări pe zi pe
+„zile libere 2027” (în 18–19 octombrie, pe prima pagină, 661–672), deci linkurile din 12 noiembrie încă
+nu se văd.
+
+**Pagina nouă care merită: calculatorul de TVA.** Rezultatele de azi la „calculator tva”: 1 nexuserp.ro,
+2 cartiagricole.ro, 3 Google Play, 4 contzilla.ro, 5 nexuserp.ro, 6 Google Play, 7 App Store,
+8 calculariva.app, 9 tooluri.ro, 10 eawb.ro, 11 un exemplu de curs de la UMFST, 12 xil.ro,
+13 smartfactura.ro. Niciun site de calculatoare fiscale cu autoritate. Se leagă și de serviciile de
+facturare pe care proprietarul le vrea în meniul „Servicii”.
+
+**Cât poate aduce fiecare (estimare, nu promisiune):**
+- zile libere 2027 în primele 3: 60–220 de clicuri pe zi, din decembrie până în mai (CTR 5–10%, ca „zile
+  lucrătoare 2027”, care ia 8,7% pe poziția 3,2);
+- calculator TVA: 10–25 pe zi pe locurile 3–5, 50–150 pe locurile 1–2, după 2–3 luni;
+- prima pagină ținută pe locul 2: ~+80 pe zi (nota din 13 noiembrie).
+Deci dublarea nu vine dintr-o pagină nouă, ci din cele trei împreună, și numai dacă zilele libere urcă.
+
+**Neverificat:** că volumul de 60.500–110.000 pe „zile libere 2025” din prima jumătate a lui 2026 e al
+anului în curs (SE Ranking pare să adune variantele apropiate; „zile libere 2026” n-are istoric înainte de
+septembrie). Abonamentul SE Ranking expiră pe 18 noiembrie.
