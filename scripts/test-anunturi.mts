@@ -162,7 +162,7 @@ assert.equal((date.match(/NOT \$\{SQL_DIN_IMPORT_ANOFM\}/g) ?? []).length, 3, "l
 assert.match(date, /SET stare = 'sters', sters_la = \? WHERE stare != 'sters' AND \$\{SQL_DIN_IMPORT_ANOFM\}/, "rularea de noapte îl șterge în D1");
 
 // Anunțurile false scoase din cod (22 octombrie 2026): pagina le vede șterse, listele și sitemap-ul deloc.
-assert.ok([797, 804, 809, 811].every(scosDeProprietar), "anunțurile false 797, 804, 809 și 811 sunt scoase");
+assert.ok([797, 800, 804, 809, 811].every(scosDeProprietar), "anunțurile scoase de proprietar: 797, 800, 804, 809, 811");
 assert.ok(!scosDeProprietar(3) && !scosDeProprietar(796), "celelalte anunțuri rămân");
 assert.match(date, /if \(!a \|\| scos\(a\.id\)\) return a \? \{ \.\.\.a, stare: "sters" \}/, "pagina anunțului scos dă 410");
 assert.match(date, /const publicat = \(id: number\) => !scos\(id\) && !ANUNTURI_BLOCATE\.has\(id\)/, "publicat = nici scos, nici suspendat");

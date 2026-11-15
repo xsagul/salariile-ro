@@ -6035,8 +6035,9 @@ ambele). Adăugate și în `SCOASE_DE_PROPRIETAR` (`reguli.ts`), lângă 797 și
 Decizia proprietarului, tot azi: salariul minim acceptat la postare e **1.000 lei** (brut sau net),
 `SALARIU_MINIM_ANUNT`. Sub el, mesajul e doar „Salariul e sub salariul minim.”, fără cifră, ca să nu
 afle pragul cine postează. Se aplică la postare și la modificarea din linkul de gestionare (aceeași
-`valideaza()`). Rămâne activ un singur anunț sub prag, 800 (recepționer hotel, 1 leu net): neatins,
-dar orice modificare a lui va cere o sumă de la 1.000 lei. Observație: la normă parțială de 1 oră
+`valideaza()`). Singurul anunț activ rămas sub prag, **800** (recepționer hotel, Constanța, 1 leu net), l-a scos
+proprietarul tot azi, la fel ca pe 809 și 811 (D1 `suspendat`, `SCOASE_DE_PROPRIETAR`, `URL_DELETED`).
+După el, niciun anunț activ sub 1.000 lei (interogare în D1). Observație: la normă parțială de 1 oră
 pe zi, minimul legal brut e ~540 lei, deci un asemenea anunț corect e respins acum.
 Teste: `test-anunturi.mts` (1 leu respins, 999 respins chiar cu maxim 5.000, 1.000 trece, mesajul
 fără cifre); falsificat cu pragul pus la 0 → pică pe „1 leu: respins”. Regulile de conținut

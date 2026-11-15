@@ -245,9 +245,10 @@ export const SQL_DIN_IMPORT_ANOFM = `(${IMPORTURI_ANOFM.map(([de, pana]) => `id 
  * - 804, 3 noiembrie 2026: „ssd chemical solution”, scam în engleză („blackened/defaced bank notes”, +234).
  * - 809, 15 noiembrie 2026: „angajăm personal pentru salon de înfrumusețare”, 1 leu, fără firmă, șase posturi.
  * - 811, 15 noiembrie 2026: „Ai nevoie de un împrumut rapid?”, credite cu 3% dobândă, 3 lei.
- * 809 și 811 sunt și `suspendat` în D1 (consola din dashboard, 15 noiembrie).
+ * - 800, 15 noiembrie 2026: „Angajam RECEPTIONER/A hotel”, Constanța, 1 leu net, sub pragul SALARIU_MINIM_ANUNT.
+ * 800, 809 și 811 sunt și `suspendat` în D1 (consola din dashboard, 15 noiembrie).
  */
-const SCOASE_DE_PROPRIETAR: ReadonlySet<number> = new Set([797, 804, 809, 811]);
+const SCOASE_DE_PROPRIETAR: ReadonlySet<number> = new Set([797, 800, 804, 809, 811]);
 export const scosDeProprietar = (id: number) => SCOASE_DE_PROPRIETAR.has(id);
 
 /** Partea din URL a anunțului: „sofer-distributie-cluj-napoca” (fără „anunt angajare” repetat). */
