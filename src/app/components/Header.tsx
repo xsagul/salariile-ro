@@ -39,6 +39,9 @@ const NAV: Item[] = [
       { href: "/calculator-salariu-sanatate", label: "Salariu sănătate" },
       { href: "/calculator-indemnizatie-somaj", label: "Indemnizație șomaj" },
       { href: "/fluturas-salariu", label: "Generator fluturaș" },
+      // 17 noiembrie 2026, proprietarul: calculatorul mutat de pe calculatorulinflatiei.ro (~22 de
+      // clicuri pe zi din Google acolo) intră în „Instrumente”, iar rata inflației în „Ghiduri”.
+      { href: "/calculator-inflatie", label: "Calculator inflație" },
     ],
   },
   {
@@ -48,6 +51,7 @@ const NAV: Item[] = [
       { href: "/salariu-minim-constructii-2026", label: "Minim construcții" },
       { href: "/salariu-mediu", label: "Salariu mediu" },
       { href: "/deducere-personala-2026", label: "Deducere personală" },
+      { href: "/rata-inflatiei", label: "Rata inflației" },
       // 12 noiembrie 2026: anul următor intră în meniu înainte de vârful din decembrie–ianuarie.
       // „zile libere 2027” are deja 700–900 de căutări pe zi și stăm la marginea primei pagini
       // (poziția 8–12, 0–3 clicuri pe zi); „zile lucrătoare 2027”, pe locul 3, ia 9% din căutări.
