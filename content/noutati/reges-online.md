@@ -2,8 +2,8 @@
 title: "REGES Online: cum intri și îți vezi contractul"
 description: "REGES Online e registrul în care firmele trec contractele de muncă. Cum intri ca salariat sau angajator, ce vezi în cont și cum scoți un extras oficial."
 date: "2026-11-15"
-hero: "/noutati/reges-online.webp"
-heroAlt: "Ilustrație editorială: un registru gros, cu o gaură de cheie în copertă prin care se vede un contract bifat, și alături o cheie al cărei cap e o carte de identitate."
+hero: "/noutati/reges-online-v2.webp"
+heroAlt: "Un registru verde, un contract de muncă bifat și o cheie cu o carte de identitate drept mâner."
 ---
 
 **REGES Online este registrul electronic în care angajatorul îți trece contractul de muncă, iar tu îl poți vedea gratuit, din contul tău.** Platforma e a Inspecției Muncii și a luat locul vechiului Revisal. Intră în ea două feluri de oameni: salariații, ca să vadă ce au declarat firmele despre ei, și angajatorii, ca să trimită contractele și schimbările lor.

@@ -6248,3 +6248,15 @@ salt; adresele necunoscute ajung la `/calculator-inflatie`. Toate cele 140 de de
 răspund cu 200. `/api/v1/calc` răspunde în continuare cu JSON dintr-un Worker separat, legat
 de domeniu; a rămas neatins, fiindcă nu cere întreținere. IndexNow trimis pentru
 `/calculator-inflatie`, `/rata-inflatiei` și `/`.
+
+## 17 noiembrie 2026 — coperta ghidului REGES Online
+
+Regenerată în ChatGPT Image, cu planșe de referință care reunesc toate cele 23 de
+coperte publicate și grafica de identitate a site-ului. Registrul verde, contractul
+bifat și cheia cu act de identitate sunt desenate în culori stinse pe fundal crem.
+Varianta optimizată este `public/noutati/reges-online-v2.webp` (1200 × 675, 19 KB).
+Articolul o referă prin `hero` și are text alternativ actualizat.
+
+Verificate local pe `codex/coperta-reges-online`: `npm test`, `npm run build` și
+`npm run test:rendered` au trecut. Exportul include coperta în articol și în
+lista Noutăți, plus varianta JPG pentru previzualizarea linkului distribuit.
