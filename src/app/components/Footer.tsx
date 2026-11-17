@@ -21,6 +21,8 @@ const IMPLEMENTED_PAGES = new Set<string>([
   "/calculator-ore-suplimentare",
   "/calculator-indemnizatie-somaj",
   "/calculator-tva",
+  "/calculator-inflatie",
+  "/rata-inflatiei",
   "/en/salary-calculator",
   "/fluturas-salariu",
   "/widget",
@@ -70,6 +72,9 @@ const FOOTER_GROUPS: Array<{ title: string; links: FooterLink[] }> = [
       // mult decât orice alt instrument de aici în afara calculatorului de salariu. În bara de sus intră
       // abia când are afișări în Search Console.
       { href: "/calculator-tva", label: "Calculator TVA" },
+      // 17 noiembrie 2026: mutat de pe calculatorulinflatiei.ro (~22 de clicuri pe zi din Google acolo).
+      // Linkul din subsol duce autoritatea întregului site spre pagina care preia adresele vechi.
+      { href: "/calculator-inflatie", label: "Calculator inflație" },
     ],
   },
   {
@@ -78,6 +83,7 @@ const FOOTER_GROUPS: Array<{ title: string; links: FooterLink[] }> = [
       { href: "/salariu-minim", label: "Salariu minim 2026" },
       { href: "/salariu-minim-constructii-2026", label: "Salariu minim construcții" },
       { href: "/salariu-mediu", label: "Salariu mediu 2026" },
+      { href: "/rata-inflatiei", label: "Rata inflației" },
       { href: "/deducere-personala-2026", label: "Deducere personală 2026" },
       { href: "/zile-libere-2026", label: "Zile libere 2026" },
       // 22 octombrie 2026: „zile libere 2027” avea 12.900 de afișări în 28 de zile, pe locul 8,1, cu

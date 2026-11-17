@@ -6198,3 +6198,45 @@ vechime în muncă” și „… online” 320 + 390, „extras reges online” 
 Site-ul nu are nimic despre REGES (două mențiuni în articole) și zero afișări pe „reges” sau „revisal”.
 **Ce ar aduce un ghid:** 10–40 de clicuri pe zi, nu sute. E în tema site-ului și ieftin, dar nu schimbă
 cifra zilnică. Nescris; așteaptă decizia proprietarului.
+
+## 17 noiembrie 2026 — calculatorulinflatiei.ro mutat pe salariile.ro, cu 301
+
+Decizia proprietarului: nu mai întreține site-ul separat. Tot ce avea se comasează aici,
+cu 301 de la fiecare adresă veche la echivalentul ei, ca să ajungă pe salariile.ro și
+vizitele, și autoritatea.
+
+**Ce aducea.** Search Console, 16 august – 15 noiembrie 2026: 2.170 de clicuri și 67.500 de
+afișări, poziția medie 5,9. Pagina principală avea 1.979 de clicuri, pe „calculator
+inflatie” (356), „calculator inflatie romania” (115) și „calculator rata inflatiei” (33).
+Urma „actualizare cu rata inflației”, cu 73 de clicuri. Celelalte 227 de pagini aveau sub 10
+clicuri fiecare.
+
+**Ce s-a construit aici.**
+- `/calculator-inflatie`: calculatorul, cu coeficientul de actualizare și calculul desfășurat
+  în tabelul de rezultat. Pagina „actualizare cu rata inflației” e comasată aici, nu mutată
+  separat: calculul e același.
+- `/rata-inflatiei`: toți anii din 1992 (decembrie față de decembrie și media anuală) și
+  ultimele 24 de luni. Înlocuiește 36 de pagini pe ani și 48 pe luni. Rândul fiecărui an are
+  ancoră (`#an-2024`), iar paginile vechi trimit la ea.
+- `/date/ipc-lunar.csv` și `.json`: seria descărcabilă, la adresa nouă.
+- Seria și calculul: `src/data/ipc-lunar.json`, `src/data/ipc-completare.json`,
+  `src/lib/inflatie.ts`, test `scripts/test-inflatie.mts` (în `npm test`).
+  Reîmprospătarea din TEMPO: `npm run ins:ipc`.
+
+**Datele erau vechi.** Site-ul vechi arăta inflația până în iulie 2026. Acum seria vine din
+TEMPO până în septembrie, iar octombrie din comunicatul INS din 12 noiembrie (indice 100,82;
+testul reconstruiește din lanț exact 6,94% anual și 6,27% de la începutul anului).
+**Lunar, după comunicatul din jurul datei de 12:** se adaugă luna în
+`src/data/ipc-completare.json` cu cele două cifre de verificare, apoi `npm run ins:ipc` când
+apare în TEMPO.
+
+**Redirecționările.** În `calculatorulinflatiei-nou/` (depozitul vechi),
+`scripts/genereaza-redirectari.mjs` scrie `redirectionare/_redirects` din adresele
+publicate: 469 de reguli fixe plus 6 plase de siguranță. Sumele de salariu indexate aici
+(`CALCULATOR_BRUT_VALUES`) merg la `/calculator/calcul-salariu-net-N-brut`, restul la
+`/?brut=N`; TVA la `/calculator-tva`; API-ul, widgetul și „încorporează” la `/widget`, cum a
+cerut proprietarul. Se publică pe proiectul Cloudflare Pages `calculatorulinflatiei`, din
+contul salariile.ro.
+
+**Ce se pierde.** API-ul `/api/v1/calc` nu mai răspunde cu JSON, iar widgetul pus în iframe
+pe alte site-uri nu mai afișează calculatorul. Proprietarul a ales să nu le mai întrețină.

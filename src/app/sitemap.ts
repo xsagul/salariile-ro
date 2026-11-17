@@ -42,6 +42,8 @@ const STATIC_ENTRIES: {
   { path: "/calculator-ore-suplimentare", priority: 0.9, changeFrequency: "monthly" },
   { path: "/calculator-indemnizatie-somaj", priority: 0.9, changeFrequency: "monthly" },
   { path: "/calculator-tva", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/calculator-inflatie", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/rata-inflatiei", priority: 0.8, changeFrequency: "monthly" },
   { path: "/en/salary-calculator", priority: 0.8, changeFrequency: "monthly" },
   { path: "/salariu-mediu", priority: 0.9, changeFrequency: "monthly" },
   { path: "/smartbill", priority: 0.8, changeFrequency: "monthly" },

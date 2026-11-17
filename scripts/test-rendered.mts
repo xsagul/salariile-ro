@@ -420,7 +420,7 @@ async function auditRenderedSite() {
   const PAGINI_INSTRUMENT = [
     "/", "/calculator-pfa", "/calculator-salariu-part-time", "/calculator-salariu-constructii",
     "/calculator-salariu-invatamant", "/calculator-salariu-sanatate", "/calculator-ore-suplimentare",
-    "/calculator-indemnizatie-somaj", "/calculator-tva", "/fluturas-salariu", "/en/salary-calculator",
+    "/calculator-indemnizatie-somaj", "/calculator-tva", "/calculator-inflatie", "/fluturas-salariu", "/en/salary-calculator",
   ];
   for (const pathname of PAGINI_INSTRUMENT) {
     const html = rendered.get(pathname) ?? "";
