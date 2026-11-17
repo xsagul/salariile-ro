@@ -997,6 +997,26 @@ export default function CalculatorSalariu({
       setPdfStatus("error");
     }
   };
+  const pdfSus = fluturas && !embedded;
+  const pdfDisponibil = rezAfisat !== null && rezRegim === REGIM_FISCAL_CURENT;
+  const pdfDezactivat = stale || pdfStatus === "generating";
+  const butonPdf = pdfDisponibil && (
+    <button
+      type="button"
+      disabled={pdfDezactivat}
+      aria-disabled={pdfDezactivat}
+      className={`${pdfSus ? "w-full justify-center sm:w-auto" : "mt-5"} inline-flex min-h-12 items-center gap-2 rounded border border-stone-300 px-4 py-3 text-xs font-medium text-stone-700 transition-colors ${pdfDezactivat ? "cursor-not-allowed opacity-50" : "hover:border-stone-900 hover:bg-stone-900 hover:text-white"}`}
+      onClick={handleDescarcaPdf}
+    >
+      {pdfStatus === "generating" ? t.seGenereaza : t.descarcaPdf}
+    </button>
+  );
+  const starePdf = (
+    <>
+      {pdfStatus === "success" && <p className="mt-3 text-xs text-stone-600" role="status">{t.pdfDescarcat}</p>}
+      {pdfStatus === "error" && <p className="mt-3 text-xs font-medium text-stone-900" role="alert">{t.pdfEroare}</p>}
+    </>
+  );
   // Firma și luna NU apar în tabelul de pe ecran (ar aglomera UI-ul) — doar pe
   // PDF, unde antetul documentului le are ca pe fluturașul real.
 
@@ -1299,6 +1319,13 @@ export default function CalculatorSalariu({
               {t.staleInainte}
               <strong className="font-medium text-stone-900">{t.calculeaza}</strong>{t.staleDupa}
             </p>
+          )}
+
+          {pdfSus && pdfDisponibil && (
+            <div className="mb-4">
+              {butonPdf}
+              {starePdf}
+            </div>
           )}
 
           {rezAfisat && fluturas ? (
@@ -1683,17 +1710,7 @@ export default function CalculatorSalariu({
             </>
           )}
 
-          {rezAfisat && rezRegim === REGIM_FISCAL_CURENT && (
-            <button
-              type="button"
-              disabled={stale || pdfStatus === "generating"}
-              aria-disabled={stale || pdfStatus === "generating"}
-              className={`mt-5 inline-flex min-h-12 items-center gap-2 rounded border border-stone-300 px-4 py-3 text-xs font-medium text-stone-700 transition-colors ${stale || pdfStatus === "generating" ? "cursor-not-allowed opacity-50" : "hover:border-stone-900 hover:bg-stone-900 hover:text-white"}`}
-              onClick={handleDescarcaPdf}
-            >
-              {pdfStatus === "generating" ? t.seGenereaza : t.descarcaPdf}
-            </button>
-          )}
+          {!pdfSus && butonPdf}
 
           {rezAfisat && !embedded && !brutInitial && (
             <button
@@ -1707,10 +1724,9 @@ export default function CalculatorSalariu({
             </button>
           )}
 
-          {rezAfisat && rezRegim === REGIM_FISCAL_CURENT && (
+          {pdfDisponibil && (
             <>
-              {pdfStatus === "success" && <p className="mt-3 text-xs text-stone-600" role="status">{t.pdfDescarcat}</p>}
-              {pdfStatus === "error" && <p className="mt-3 text-xs font-medium text-stone-900" role="alert">{t.pdfEroare}</p>}
+              {!pdfSus && starePdf}
               <FeedbackContextual context={pdfStatus === "error" ? "pdf" : "calcul"} limba={limba} />
             </>
           )}

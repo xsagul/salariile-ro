@@ -160,6 +160,7 @@ function RandRezultat({ eticheta, suportatDe, valoare, bold, ultim }: {
 export default function CalculatorPartTime() {
   const [orePeZi, setOrePeZi] = useState(dateInitiale.orePeZi);
   const [brut, setBrut] = useState(dateInitiale.brut);
+  const [brutEditat, setBrutEditat] = useState(false);
   const [exceptie, setExceptie] = useState(dateInitiale.exceptie);
   const [functieDeBaza, setFunctieDeBaza] = useState(dateInitiale.functieDeBaza);
   const [persoane, setPersoane] = useState(dateInitiale.persoane);
@@ -185,6 +186,7 @@ export default function CalculatorPartTime() {
 
   const schimbaOrele = (ore: number) => {
     setOrePeZi(ore);
+    if (brutEditat) return;
     setBrut(String(salariuMinimPartTime(ore)));
     setEmptyWarn(false);
   };
@@ -266,6 +268,7 @@ export default function CalculatorPartTime() {
                 aria-invalid={emptyWarn || subMinimulLegal}
                 aria-describedby="part-time-brut-ajutor"
                 onChange={(event) => {
+                  setBrutEditat(true);
                   setBrut(event.target.value.replace(/\D/g, ""));
                   if (emptyWarn) setEmptyWarn(false);
                 }}
@@ -364,12 +367,18 @@ export default function CalculatorPartTime() {
           )}
 
           <div className={stale ? "opacity-50 transition-opacity" : "transition-opacity"}>
-            {/* Tabel fiscal cu rândul de total inversat (rezultatul final:
-                pe un calculator de salariu, este netul angajatului, nu costul firmei).
+            <dl className="mb-4 overflow-hidden rounded border border-stone-300 text-sm tabular-nums">
+              <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 bg-stone-900 px-3 py-3 font-bold text-white">
+                <dt>Salariu net</dt>
+                <dd><span className="marcaj">{fmt(rezultat.netBani)} lei</span></dd>
+              </div>
+              <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 bg-canvas px-3 py-3 font-bold text-stone-900">
+                <dt>Cost total firmă</dt>
+                <dd>{fmt(rezultat.costTotalCuDiferente)} lei</dd>
+              </div>
+            </dl>
 
-                Coloana "Suportată de" rămâne: e diferența dintre pagina
-                asta și un calculator obișnuit de net. La part-time, cine plătește
-                diferența de CAS/CASS e întrebarea. */}
+            {/* Coloana „Suportată de” arată cine plătește diferența de CAS/CASS. */}
             <div className="overflow-hidden rounded border border-stone-300">
               <table className="w-full table-fixed border-collapse text-sm tabular-nums text-stone-700">
                 <colgroup>
@@ -390,16 +399,9 @@ export default function CalculatorPartTime() {
                   <RandRezultat eticheta="CASS (sănătate – 10%)" suportatDe="angajat" valoare={rezultat.cass} />
                   <RandRezultat eticheta="Impozit pe venit (10%)" suportatDe="angajat" valoare={rezultat.impozit} />
 
-                  <tr className="bg-stone-900">
-                    <th scope="row" className="border-r border-stone-600 px-3 py-3 text-left font-bold text-white">Salariu net</th>
-                    <td className="hidden border-r border-stone-600 px-3 py-3 text-right text-white/80 sm:table-cell">în mână</td>
-                    <td className="px-3 py-3 text-right font-bold whitespace-nowrap text-white"><span className="marcaj">{fmt(rezultat.netBani)} lei</span></td>
-                  </tr>
-
                   <RandRezultat eticheta="CAM (contribuția firmei – 2,25%)" suportatDe="firmă" valoare={rezultat.cam} />
                   <RandRezultat eticheta="Diferență CAS până la baza minimă" suportatDe="firmă" valoare={rezultat.diferentaCasAngajator} />
-                  <RandRezultat eticheta="Diferență CASS până la baza minimă" suportatDe="firmă" valoare={rezultat.diferentaCassAngajator} />
-                  <RandRezultat eticheta="Cost total firmă" suportatDe="brut + taxe" valoare={rezultat.costTotalCuDiferente} bold ultim />
+                  <RandRezultat eticheta="Diferență CASS până la baza minimă" suportatDe="firmă" valoare={rezultat.diferentaCassAngajator} ultim />
                 </tbody>
               </table>
             </div>

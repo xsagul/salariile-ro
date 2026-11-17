@@ -40,9 +40,11 @@ export default function TabelArticol({
   /** Aliniază la dreapta celulele de date și le dă cifre tabulare. Pentru
    *  tabele de sume; lasă-l pe false la tabelele comparative cu text. */
   numeric = false,
+  tableClassName = "",
 }: {
   children: ReactNode;
   numeric?: boolean;
+  tableClassName?: string;
 }) {
   const aliniere = numeric
     ? "[&_thead_th:not(:first-child)]:text-right [&_tbody_td]:text-right [&_tbody_td]:whitespace-nowrap [&_tbody_th]:whitespace-nowrap"
@@ -50,7 +52,7 @@ export default function TabelArticol({
 
   return (
     <div className="table-wrap my-6 overflow-x-auto">
-      <table className={`${TABEL_STANDARD} ${aliniere}`}>{children}</table>
+      <table className={`${TABEL_STANDARD} ${aliniere} ${tableClassName}`}>{children}</table>
     </div>
   );
 }

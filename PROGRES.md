@@ -6264,3 +6264,101 @@ lista Noutăți, plus varianta JPG pentru previzualizarea linkului distribuit.
 Commitul eb85799 a ajuns pe main și CI a trecut. Cloudflare încă servea
 versiunea precedentă după șapte minute, iar GitHub nu afișa un check Workers Builds.
 Această intrare declanșează o nouă încercare de publicare.
+
+## 17 noiembrie 2026 — auditul ieșirilor și al sarcinilor
+
+[Explorare privată GA4, salariile.ro](https://analytics.google.com/analytics/web/#/analysis/a403152672p548143709/edit/zMRIQGMDSw60ORCOqF4SHw).
+Perioada completă 18 octombrie – 14 noiembrie, aceeași în GA4 și GSC
+(`scripts/gsc.mjs`). Raportul GA4 indică 100% din datele disponibile. Ratele descriu
+sesiunile măsurate. REGES și calculatorul de inflație intră într-o fereastră
+ulterioară. GSC Wizard a refuzat citirea pentru că trialul a expirat. Datele vin
+din interfața GA4 și API-ul Search Console din proiect.
+
+GA4 a raportat 11.269 sesiuni, 9.014 implicate, 20,0% respingere și 1m 11s
+de implicare pe sesiune. Organic Search a adus 10.285 de sesiuni (91,3%).
+Din 2.255 de sesiuni neimplicate, 570 au pagina de intrare `(not set)`.
+Restul înseamnă 1.685 din 10.604 sesiuni cu intrare cunoscută (15,9%).
+`Exits` înseamnă ultimul eveniment pe pagină. `parasire_pagina` cu
+`motiv=ascunsa` poate fi și schimbarea tabului, iar `interactiune=nu`
+exclude scrollul. Evenimentele pe utilizatori activi și ratele pe sesiuni
+au populații diferite.
+
+| Pagină | Sesiuni de intrare | Neimplicate | Ultima pagină în sesiune | Respingere organică mobil / desktop |
+|---|---:|---:|---:|---:|
+| Homepage | 5.086 | 783 | 4.995 | 18,2% / 7,6% |
+| Zile lucrătoare 2026 | 791 | 231 | 781 | 35,4% / 19,2% |
+| Calculator învățământ | 759 | 81 | 758 | 10,6% / 13,1% |
+| Zile lucrătoare 2027 | 583 | 132 | 557 | 28,9% / 15,7% |
+| Concediu medical | 322 | 25 | 320 | 16,2% / 4,8% |
+| Calculator sănătate | 277 | 29 | 291 | 11,2% / 3,3% |
+| Calculator part-time | 155 | 15 | 162 | 12,6% / 2,2% |
+| Generator fluturaș | 118 | 20 | 120 | 22,2% / 9,8% |
+
+- **Calendare.** Împreună au 363 de intrări neimplicate (21,5% din cele cu
+  pagină cunoscută) și 1.499 de clicuri GSC. Pentru 2026 se caută luna și
+  numărul de ore, pentru 2027 se caută și calendarul. Titlul calendarului
+  a intrat în ecran la 171 din 700 de utilizatori activi cu afișare pe 2026
+  și la 197 din 546 pe 2027. La 360 × 800, tabelul din 2026 cere 95 px de
+  derulare laterală, noiembrie începe la y=786, calendarul la y=1.185.
+  Test propus: sumar al lunii, acces direct la luna dorită și la calendar,
+  tabel mobil cu zilele și orele la vedere. Măsurăm timpul până la răspuns
+  și utilizarea navigării pe luni. O plecare după consultarea cifrei e firească.
+- **Part-time.** 87 din 159 de utilizatori activi cu afișare au trimis
+  `calcul` (55%). Un eveniment-cheie în 46,6% din sesiunile organice mobile
+  (103 sesiuni) și în 62,2% pe desktop (45). Formularul oferă un exemplu
+  implicit. În GSC apar atât căutări despre net, cât și despre costul firmei.
+  Reprodus la 360 px: schimbarea normei suprascrie brutul exact introdus,
+  rezultatul rămâne vechi până la Calculează. Netul din exemplu începe la
+  y=1.083. Test propus: păstrăm suma editată, punem netul și costul firmei sus
+  în rezultat, cu defalcarea disponibilă sub ele.
+- **Fluturaș.** 56 din 111 utilizatori activi cu afișare au calculat și 30 au
+  descărcat PDF. Un eveniment-cheie în 44,4% din 72 de sesiuni organice mobile
+  și 63,4% din 41 pe desktop. La 360 × 740, după scrollul automat la rezultat,
+  butonul PDF începe la y=776, sub ecran. Test propus: acțiunea PDF lângă
+  titlul rezultatului și text scurt care explică ce model generează.
+- **Homepage.** Aproape jumătate din ieșirile GA4 sunt aici. 3.219 din 4.063
+  utilizatori activi cu afișare au calculat (79%). CTA-ul principal încape
+  la 360 × 740. Pe mobil organic, 65,9% dintre intrări au eveniment-cheie
+  față de 81,5% pe desktop. În PSI/CrUX mobil, LCP p75 este 2,61 s și INP
+  p75 203 ms. Sunt motive de măsurat prima interacțiune și performanța,
+  înainte de a atribui diferența designului. LCP p75 pe calendare 2026,
+  part-time și fluturaș este 2,18 s, 2,90 s și respectiv 2,44 s. JS:
+  3 utilizatori cu eroare captată pe homepage și 1 pe part-time.
+- **Concediu medical.** 320 de ieșiri, 7,8% respingere și 2m 17s implicare
+  pe sesiune. La 221 de utilizatori a intrat în ecran „Cum se calculează suma”
+  și la 173 sursele oficiale, din 297 de utilizatori activi cu afișare.
+  Căutarea vizibilă cu cele mai multe clicuri este „calculator concediu
+  medical 2026” (9 clicuri GSC). Un salt către exemplul de calcul ar servi
+  această intenție. Lectura îndelungată sugerează că numărul de ieșiri în
+  sine nu justifică rescrierea articolului.
+- **De urmărit.** Calculatorul de ore suplimentare are 19 sesiuni neimplicate
+  din 56 de intrări. Pe desktop organic sunt 14 din 28. Eșantionul cere
+  confirmare. Pentru postarea de anunțuri, `postare_anunt` apare în numai
+  patru evenimente de la un utilizator activ pe formular, deci nu putem
+  localiza o pierdere repetabilă din aceste date.
+
+Pentru calculatoare, măsurătoarea utilă este sesiunea cu intrare în formular,
+calcul valid și rezultat văzut. Pentru fluturaș, adăugăm PDF-ul descărcat.
+Măsurăm separat mobilul organic, fără a atașa sume sau alte date din formular.
+Pentru paginile informative măsurăm dacă răspunsul a devenit ușor de găsit,
+inclusiv când satisfacerea intenției scurtează vizita. Verificările responsive
+au rulat pe exportul local, fără a reproduce CMP sau reclamele din producție.
+
+## 17 noiembrie 2026 — răspunsurile și acțiunile principale pe mobil
+
+- Zile lucrătoare 2026 și 2027. Rezumat lunar, alegerea lunii și salt direct
+  la calendar. Tabelul păstrează cele patru coloane și încape la 320 și
+  360 px, fără derulare laterală. Pe pagina unui an viitor, rezumatul începe
+  cu ianuarie. Ajustările se aplică șablonului comun al paginilor anuale.
+- Part-time. Brutul precompletat urmează minimul proporțional când se
+  schimbă norma. După editare, formularul păstrează brutul introdus. Netul
+  și costul total al firmei stau înaintea defalcării.
+- Fluturaș. Butonul PDF și mesajul descărcării apar imediat sub titlul
+  rezultatului. Dacă utilizatorul editează datele, butonul se reactivează
+  după recalculare.
+
+Verificate în browser pe exportul local: salturile la lună și la calendar,
+brutul automat și editat, validarea câmpului gol, rezultatul part-time
+comparat cu funcția fiscală, poziția PDF la 360 × 740 și descărcarea unui
+PDF de probă. `npm test`, `npm run lint` (fără erori), `npm run build` și
+`npm run test:rendered` au trecut.
