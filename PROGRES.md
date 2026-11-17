@@ -6240,3 +6240,11 @@ contul salariile.ro.
 
 **Ce se pierde.** API-ul `/api/v1/calc` nu mai răspunde cu JSON, iar widgetul pus în iframe
 pe alte site-uri nu mai afișează calculatorul. Proprietarul a ales să nu le mai întrețină.
+
+**Publicat pe 17 noiembrie 2026.** Paginile noi au intrat pe salariile.ro (commit 6ecfa2c),
+apoi `_redirects` pe Cloudflare Pages (`c64a83d7.calculatorulinflatiei.pages.dev`). Verificat
+pe domeniul live: 469 din 469 de reguli răspund cu 301 spre destinația exactă, dintr-un singur
+salt; adresele necunoscute ajung la `/calculator-inflatie`. Toate cele 140 de destinații
+răspund cu 200. `/api/v1/calc` răspunde în continuare cu JSON dintr-un Worker separat, legat
+de domeniu; a rămas neatins, fiindcă nu cere întreținere. IndexNow trimis pentru
+`/calculator-inflatie`, `/rata-inflatiei` și `/`.
