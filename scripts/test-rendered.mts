@@ -281,10 +281,10 @@ async function auditRenderedSite() {
     ["/calculator/calcul-salariu-brut-2574-net", "facilitate de 300 lei", "regimul istoric S1 pentru 2.574 net"],
     ["/calculator/calcul-salariu-net-4582-brut", "2.754", "netul curent pentru 4.582 brut"],
     ["/calculator-pfa", "24.300", "pragul salarial PFA"],
-    ["/calculator-salariu-part-time", "Diferență CAS", "diferența CAS suportată de firmă"],
+    ["/calculator-salariu-part-time", "Diferența o pune firma", "explicația contribuțiilor suportate de firmă"],
     ["/calculator-salariu-part-time", "Calculează", "butonul explicit de calcul part-time"],
     ["/calculator-salariu-part-time", "Calculator avansat", "opțiunile avansate part-time"],
-    ["/calculator-salariu-part-time", "1.352 lei net", "rezultatul inițial randat pentru indexare"],
+    ["/calculator-salariu-part-time", "1.352 lei net", "exemplul pentru minimul la 4 ore"],
     ["/calculator-salariu-part-time", "Instrucțiunile D112", "sursa D112 pentru part-time"],
     ["/calculator-salariu-constructii", "2.754", "netul la minimul din construcții, randat pentru indexare"],
     ["/calculator-salariu-constructii", "OUG 156/2024", "temeiul eliminării facilităților din construcții"],
@@ -336,6 +336,16 @@ async function auditRenderedSite() {
     if (!html.includes(expected) && !visibleTextFrom(html).includes(expected)) {
       failures.push(`${pathname}: lipseste ${label}`);
     }
+  }
+
+  const partTime = rendered.get("/calculator-salariu-part-time") ?? "";
+  const brutPartTime = partTime.match(/<input\b(?=[^>]*\bid="part-time-brut")[^>]*>/)?.[0] ?? "";
+  if (!/\bvalue=""/.test(brutPartTime) || !/\bplaceholder="ex: /.test(brutPartTime)) {
+    failures.push("/calculator-salariu-part-time: brutul trebuie să pornească gol, cu exemplu în placeholder");
+  }
+  const rezultatPartTime = partTime.split('id="rezultat-part-time"')[1]?.split("</section>")[0] ?? "";
+  if (!rezultatPartTime || /\d[\d.,]*\s+lei\b/.test(visibleTextFrom(rezultatPartTime))) {
+    failures.push("/calculator-salariu-part-time: formularul afișează o sumă înainte de calcul sau panoul lipsește");
   }
 
   // Indicatorul BASS nu e câștigul salarial mediu INS. Homepage-ul nu îl mai

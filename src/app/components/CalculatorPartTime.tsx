@@ -14,11 +14,15 @@ import { SPATIU_JOS } from "@/app/components/ui";
 const fmt = (n: number) => new Intl.NumberFormat("ro-RO").format(Math.round(n));
 const fmtOre = (n: number) =>
   new Intl.NumberFormat("ro-RO", { maximumFractionDigits: 2 }).format(n);
+const suma = (n: number | undefined, semn = "") => n === undefined ? "—" : `${semn}${fmt(n)} lei`;
 
 const fieldLabel = "mb-2 block text-xs font-medium text-stone-600";
 const colHeader = "mb-4 border-b border-stone-200 pb-2 text-lg font-medium text-stone-900";
 const controlBox =
   "w-full min-w-0 rounded border border-stone-300 bg-surface px-3 py-2 text-base text-stone-900 outline-none transition focus:border-stone-400 focus:shadow-[0_0_6px_rgba(28,25,23,0.12)] sm:text-sm";
+const tabelRezultat = "w-full table-fixed border-collapse text-sm tabular-nums text-stone-700";
+const celulaIndicator = "border-b border-r border-stone-300 px-3 py-3 text-left";
+const celulaSuma = "border-b border-stone-300 px-3 py-3 text-right whitespace-nowrap";
 
 const EXCEPTII = [
   { value: "", label: "Nu se aplică nicio excepție" },
@@ -47,7 +51,7 @@ type RezultatAfisat = {
 
 const dateInitiale: DateCalcul = {
   orePeZi: 4,
-  brut: String(salariuMinimPartTime(4)),
+  brut: "",
   exceptie: "",
   functieDeBaza: true,
   persoane: 0,
@@ -92,15 +96,6 @@ function executaCalculul(date: DateCalcul): RezultatAfisat | null {
   };
 }
 
-// Garda de mai jos e in IIFE pentru ca ingustarea de tip de la `throw` nu
-// traverseaza granita de functie: un `if` la nivel de modul nu ingusteaza
-// variabila si inauntrul componentei.
-const rezultatInitial: RezultatAfisat = (() => {
-  const r = executaCalculul(dateInitiale);
-  if (!r) throw new Error("Scenariul inițial part-time nu poate fi calculat.");
-  return r;
-})();
-
 function Chevron() {
   return (
     <svg
@@ -133,26 +128,15 @@ function Toggle({ label, checked, onChange }: {
   );
 }
 
-function RandRezultat({ eticheta, suportatDe, valoare, bold, ultim }: {
+function RandRezultat({ eticheta, valoare, retinere = false }: {
   eticheta: string;
-  suportatDe: string;
-  valoare: number | null;
-  bold?: boolean;
-  ultim?: boolean;
+  valoare: number | undefined;
+  retinere?: boolean;
 }) {
-  const b = ultim ? "" : "border-b ";
   return (
     <tr>
-      <th scope="row" className={`${b}border-r border-stone-300 px-3 py-3 text-left ${bold ? "font-bold text-stone-900" : "font-normal text-stone-700"}`}>
-        {eticheta}
-        <span className="mt-0.5 block text-xs text-stone-600 sm:hidden">{suportatDe}</span>
-      </th>
-      <td className={`hidden ${b}border-r border-stone-300 px-3 py-3 text-right text-stone-600 sm:table-cell`}>
-        {suportatDe}
-      </td>
-      <td className={`${b}border-stone-300 px-3 py-3 text-right whitespace-nowrap ${bold ? "font-bold text-stone-900" : "font-medium text-stone-900"}`}>
-        {valoare === null ? "—" : `${fmt(valoare)} lei`}
-      </td>
+      <th scope="row" className={`${celulaIndicator} font-normal`}>{eticheta}</th>
+      <td className={celulaSuma}>{suma(valoare, retinere ? "− " : "")}</td>
     </tr>
   );
 }
@@ -160,14 +144,13 @@ function RandRezultat({ eticheta, suportatDe, valoare, bold, ultim }: {
 export default function CalculatorPartTime() {
   const [orePeZi, setOrePeZi] = useState(dateInitiale.orePeZi);
   const [brut, setBrut] = useState(dateInitiale.brut);
-  const [brutEditat, setBrutEditat] = useState(false);
   const [exceptie, setExceptie] = useState(dateInitiale.exceptie);
   const [functieDeBaza, setFunctieDeBaza] = useState(dateInitiale.functieDeBaza);
   const [persoane, setPersoane] = useState(dateInitiale.persoane);
   const [sub26, setSub26] = useState(dateInitiale.sub26);
   const [avansat, setAvansat] = useState(false);
   const [emptyWarn, setEmptyWarn] = useState(false);
-  const [rezAfisat, setRezAfisat] = useState<RezultatAfisat>(rezultatInitial);
+  const [rezAfisat, setRezAfisat] = useState<RezultatAfisat | null>(null);
 
   const dateCurente: DateCalcul = {
     orePeZi,
@@ -177,19 +160,12 @@ export default function CalculatorPartTime() {
     persoane,
     sub26,
   };
-  const stale = rezAfisat.key !== cheieCalcul(dateCurente);
-  const rezultat = rezAfisat.rezultat;
+  const stale = rezAfisat !== null && rezAfisat.key !== cheieCalcul(dateCurente);
+  const rezultat = rezAfisat?.rezultat;
   const minimProportional = salariuMinimPartTime(orePeZi);
   const brutNumeric = Number(brut);
   const subMinimulLegal = brutNumeric > 0 && brutNumeric < minimProportional;
-  const diferenteAngajator = rezultat.diferentaCasAngajator + rezultat.diferentaCassAngajator;
-
-  const schimbaOrele = (ore: number) => {
-    setOrePeZi(ore);
-    if (brutEditat) return;
-    setBrut(String(salariuMinimPartTime(ore)));
-    setEmptyWarn(false);
-  };
+  const diferenteAngajator = rezultat ? rezultat.diferentaCasAngajator + rezultat.diferentaCassAngajator : 0;
 
   const calculeaza = () => {
     if (!Number.isFinite(brutNumeric) || brutNumeric <= 0) {
@@ -241,7 +217,7 @@ export default function CalculatorPartTime() {
                   key={ore}
                   type="button"
                   aria-pressed={orePeZi === ore}
-                  onClick={() => schimbaOrele(ore)}
+                  onClick={() => setOrePeZi(ore)}
                   className={`min-h-11 min-w-0 rounded border px-2 text-sm font-medium transition-colors ${
                     orePeZi === ore
                       ? "border-stone-900 bg-stone-900 text-white"
@@ -264,11 +240,10 @@ export default function CalculatorPartTime() {
                 name="salariu-brut-part-time"
                 inputMode="numeric"
                 value={brut ? fmt(Number(brut)) : ""}
-                placeholder={`ex: ${fmt(salariuMinimPartTime(4))}`}
+                placeholder={`ex: ${fmt(minimProportional)}`}
                 aria-invalid={emptyWarn || subMinimulLegal}
-                aria-describedby="part-time-brut-ajutor"
+                aria-describedby={emptyWarn || subMinimulLegal ? "part-time-brut-ajutor" : undefined}
                 onChange={(event) => {
-                  setBrutEditat(true);
                   setBrut(event.target.value.replace(/\D/g, ""));
                   if (emptyWarn) setEmptyWarn(false);
                 }}
@@ -276,17 +251,13 @@ export default function CalculatorPartTime() {
               />
               <span className="flex shrink-0 items-center whitespace-nowrap border-l border-stone-200 px-3 text-xs font-medium text-stone-600">lei / lună</span>
             </div>
-            <p
-              id="part-time-brut-ajutor"
-              role={emptyWarn ? "alert" : undefined}
-              className={`mt-2 text-xs ${emptyWarn || subMinimulLegal ? "font-medium text-stone-900" : "text-stone-600"}`}
-            >
-              {emptyWarn
-                ? "Introdu un salariu brut mai întâi."
-                : subMinimulLegal
-                  ? `Sub minimul proporțional de ${fmt(minimProportional)} lei brut pentru ${orePeZi} ore/zi.`
-                  : `Minimul proporțional pentru ${orePeZi} ore/zi este ${fmt(minimProportional)} lei brut.`}
-            </p>
+            {(emptyWarn || subMinimulLegal) && (
+              <p id="part-time-brut-ajutor" role={emptyWarn ? "alert" : undefined} className="mt-2 text-xs font-medium text-stone-900">
+                {emptyWarn
+                  ? "Introdu un salariu brut mai întâi."
+                  : `Sub minimul proporțional de ${fmt(minimProportional)} lei brut pentru ${orePeZi} ore/zi.`}
+              </p>
+            )}
           </div>
 
           <button
@@ -366,59 +337,73 @@ export default function CalculatorPartTime() {
             </p>
           )}
 
-          <div className={stale ? "opacity-50 transition-opacity" : "transition-opacity"}>
-            <dl className="mb-4 overflow-hidden rounded border border-stone-300 text-sm tabular-nums">
-              <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 bg-stone-900 px-3 py-3 font-bold text-white">
-                <dt>Salariu net</dt>
-                <dd><span className="marcaj">{fmt(rezultat.netBani)} lei</span></dd>
-              </div>
-              <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 bg-canvas px-3 py-3 font-bold text-stone-900">
-                <dt>Cost total firmă</dt>
-                <dd>{fmt(rezultat.costTotalCuDiferente)} lei</dd>
-              </div>
-            </dl>
+          {!rezultat && (
+            <p className="mb-4 text-sm text-stone-600">
+              Introdu brutul lunar și apasă Calculează.{" "}
+              <a href="#scenarii-part-time" className="font-medium text-stone-900 underline underline-offset-2">
+                Vezi exemplele la salariul minim
+              </a>
+            </p>
+          )}
 
-            {/* Coloana „Suportată de” arată cine plătește diferența de CAS/CASS. */}
+          <div aria-hidden={!rezultat} className={stale ? "opacity-50 transition-opacity" : "transition-opacity"}>
             <div className="overflow-hidden rounded border border-stone-300">
-              <table className="w-full table-fixed border-collapse text-sm tabular-nums text-stone-700">
-                <colgroup>
-                  <col />
-                  <col className="hidden w-28 sm:table-column" />
-                  <col className="w-24 sm:w-28" />
-                </colgroup>
+              <table aria-label="Salariul angajatului" className={tabelRezultat}>
+                <colgroup><col /><col className="w-24 sm:w-36" /></colgroup>
                 <thead>
                   <tr className="bg-canvas">
-                    <th scope="col" className="border-b border-r border-stone-300 px-3 py-3 text-left font-medium">Componentă</th>
-                    <th scope="col" className="hidden border-b border-r border-stone-300 px-3 py-3 text-right font-medium sm:table-cell">Suportată de</th>
-                    <th scope="col" className="border-b border-stone-300 px-3 py-3 text-right font-medium">Sumă</th>
+                    <th scope="col" className={`${celulaIndicator} font-medium`}>Indicator fiscal</th>
+                    <th scope="col" className={`${celulaSuma} font-medium`}>Sumă</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <RandRezultat eticheta="Salariu brut" suportatDe={`${rezultat.orePeZi} ore/zi`} valoare={rezAfisat.brut} bold />
-                  <RandRezultat eticheta="CAS (pensie – 25%)" suportatDe="angajat" valoare={rezultat.cas} />
-                  <RandRezultat eticheta="CASS (sănătate – 10%)" suportatDe="angajat" valoare={rezultat.cass} />
-                  <RandRezultat eticheta="Impozit pe venit (10%)" suportatDe="angajat" valoare={rezultat.impozit} />
-
-                  <RandRezultat eticheta="CAM (contribuția firmei – 2,25%)" suportatDe="firmă" valoare={rezultat.cam} />
-                  <RandRezultat eticheta="Diferență CAS până la baza minimă" suportatDe="firmă" valoare={rezultat.diferentaCasAngajator} />
-                  <RandRezultat eticheta="Diferență CASS până la baza minimă" suportatDe="firmă" valoare={rezultat.diferentaCassAngajator} ultim />
+                  <RandRezultat eticheta="Salariu brut" valoare={rezAfisat?.brut} />
+                  <RandRezultat eticheta="CAS (pensie)" valoare={rezultat?.cas} retinere />
+                  <RandRezultat eticheta="CASS (sănătate)" valoare={rezultat?.cass} retinere />
+                  <RandRezultat eticheta="Impozit pe venit" valoare={rezultat?.impozit} retinere />
+                  <tr className="bg-stone-900 font-bold text-white">
+                    <th scope="row" className="border-r border-stone-600 px-3 py-3 text-left">Salariu net</th>
+                    <td className="px-3 py-3 text-right whitespace-nowrap">
+                      {rezultat ? <span className="marcaj">{suma(rezultat.netBani)}</span> : "—"}
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </div>
 
-            <p className="mt-3 text-xs text-stone-600">
-              Aproximativ {fmtOre(rezultat.oreLunareEstimate)} ore pe lună · net pe oră{" "}
-              {fmt(rezultat.netBani / rezultat.oreLunareEstimate)} lei · cost firmă pe oră{" "}
-              {fmt(rezultat.costTotalCuDiferente / rezultat.oreLunareEstimate)} lei
-            </p>
+            <div className="mt-3 overflow-hidden rounded border border-stone-300">
+              <table aria-label="Costuri pentru firmă" className={tabelRezultat}>
+                <colgroup><col /><col className="w-24 sm:w-36" /></colgroup>
+                <tbody>
+                  <RandRezultat eticheta="CAM (contribuția firmei)" valoare={rezultat?.cam} />
+                  {diferenteAngajator > 0 && (
+                    <RandRezultat eticheta="Diferență CAS și CASS plătită de firmă" valoare={diferenteAngajator} />
+                  )}
+                  <tr className="bg-canvas font-bold text-stone-900">
+                    <th scope="row" className="border-r border-stone-300 px-3 py-3 text-left">Cost total firmă</th>
+                    <td className="px-3 py-3 text-right whitespace-nowrap">{suma(rezultat?.costTotalCuDiferente)}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
-            <p className="mt-4 text-sm text-stone-600">
-              {diferenteAngajator > 0
-                ? `Firma completează cu ${fmt(diferenteAngajator)} lei CAS și CASS până la baza minimă de ${fmt(rezultat.bazaMinimaContributii)} lei. Diferența nu se scade din netul tău.`
-                : rezAfisat.exceptat
-                  ? "Excepția elimină diferența CAS/CASS suportată de firmă. Netul angajatului se calculează din brutul realizat."
-                  : "Brutul a ajuns la baza minimă a contribuțiilor, deci firma nu mai completează CAS/CASS."}
-            </p>
+            {rezultat && (
+              <details className="mt-3 text-sm text-stone-600">
+                <summary className="min-h-11 cursor-pointer py-3 font-medium text-stone-900">Detalii de calcul</summary>
+                {diferenteAngajator > 0 && (
+                  <p className="mb-2">
+                    Firma completează CAS cu {suma(rezultat.diferentaCasAngajator)} și CASS cu {suma(rezultat.diferentaCassAngajator)},
+                    până la baza minimă de {suma(rezultat.bazaMinimaContributii)}.
+                  </p>
+                )}
+                {rezAfisat?.exceptat && <p className="mb-2">Calculul aplică excepția selectată de la baza minimă.</p>}
+                <p>
+                  Aproximativ {fmtOre(rezultat.oreLunareEstimate)} ore pe lună · net pe oră{" "}
+                  {suma(rezultat.netBani / rezultat.oreLunareEstimate)} · cost firmă pe oră{" "}
+                  {suma(rezultat.costTotalCuDiferente / rezultat.oreLunareEstimate)}
+                </p>
+              </details>
+            )}
           </div>
         </div>
       </div>

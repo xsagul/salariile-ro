@@ -6362,3 +6362,21 @@ brutul automat și editat, validarea câmpului gol, rezultatul part-time
 comparat cu funcția fiscală, poziția PDF la 360 × 740 și descărcarea unui
 PDF de probă. `npm test`, `npm run lint` (fără erori), `npm run build` și
 `npm run test:rendered` au trecut.
+
+## 18 noiembrie 2026 — part-time ca la calculatorul principal
+
+Brutul pornește gol. Exemplul din câmp urmează minimul proporțional pentru
+2, 4 sau 6 ore. Schimbarea normei păstrează brutul tastat. Sumele apar după
+un calcul valid. Tabelul static cu exemple rămâne accesibil din formular.
+
+Rezultatul are două tabele de câte două coloane. Primul arată brutul,
+reținerile și netul, iar al doilea arată contribuția firmei, diferența
+CAS/CASS într-un rând când se aplică și costul total. Defalcarea suplimentară
+și valorile pe oră sunt în „Detalii de calcul”.
+
+Verificat la 320 px în browser: fiecare exemplu, câmpul gol și validarea,
+păstrarea brutului la schimbarea normei, recalcularea cu excepție și
+tabelele fără derulare laterală. Calculele de test coincid cu funcția
+fiscală. Au trecut `npm test`, lint pe fișierele schimbate, build-ul și
+`npm run test:rendered`. Testul randat verifică explicit câmpul gol și
+absența sumelor în panou înainte de calcul.
