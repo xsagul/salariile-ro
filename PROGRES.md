@@ -6260,3 +6260,7 @@ Articolul o referă prin `hero` și are text alternativ actualizat.
 Verificate local pe `codex/coperta-reges-online`: `npm test`, `npm run build` și
 `npm run test:rendered` au trecut. Exportul include coperta în articol și în
 lista Noutăți, plus varianta JPG pentru previzualizarea linkului distribuit.
+
+Commitul eb85799 a ajuns pe main și CI a trecut. Cloudflare încă servea
+versiunea precedentă după șapte minute, iar GitHub nu afișa un check Workers Builds.
+Această intrare declanșează o nouă încercare de publicare.
