@@ -12,6 +12,12 @@
 // coloana de valori de 112 px pe telefon și rândul final negru, cu cifra marcată.
 // Rezultatul apare la „Calculează”; de atunci urmează formularul, ca la TVA.
 //
+// Etichetele țin pe un rând și pe un telefon de 360 px: acolo, coloana din stânga
+// are 158 px de text. Măsurat cu Inter la 14 px pe 17 noiembrie 2026: „Putere de
+// cumpărare rămasă” avea 192 px, „Valorează în septembrie 2026” 205 px, „Coeficient
+// de actualizare” 165 px. Primul și ultimul rând sunt pereche: „În ianuarie 2020”
+// sus, „În octombrie 2026” pe rândul negru, adică atunci și acum.
+//
 // Ambele capete se aleg. „Cât valorau 1.000 de lei din 2010 în 2015” e o
 // întrebare la fel de legitimă ca „cât valorează azi”, iar actualizarea unei
 // sume dintr-un contract sau dintr-o hotărâre cere luni anume, nu „azi”.
@@ -211,11 +217,11 @@ export default function CalculatorInflatie() {
               </thead>
               <tbody>
                 <tr>
-                  <td className={cellL}>Suma din {etichetaLuna(de)}</td>
+                  <td className={cellL}>În {etichetaLuna(de)}</td>
                   <td className={cellR}>{r ? `${nr(r.suma)} ${unitate(de)}` : gol}</td>
                 </tr>
                 <tr>
-                  <td className={cellL}>Coeficient de actualizare</td>
+                  <td className={cellL}>Coeficient</td>
                   <td className={cellR}>{r ? nr(r.factorPreturi, 4) : gol}</td>
                 </tr>
                 <tr>
@@ -223,7 +229,7 @@ export default function CalculatorInflatie() {
                   <td className={cellR}>{r ? `${nr(r.inflatieCumulata, 1)}%` : gol}</td>
                 </tr>
                 <tr>
-                  <td className={cellL}>Putere de cumpărare rămasă</td>
+                  <td className={cellL}>Putere de cumpărare</td>
                   <td className={cellR}>{r ? `${nr(r.putereRamasa, 1)}%` : gol}</td>
                 </tr>
                 <tr>
@@ -243,7 +249,7 @@ export default function CalculatorInflatie() {
               <tbody>
                 <tr className="bg-stone-900">
                   <td className="border-r border-r-stone-600 px-3 py-3 text-left text-sm font-bold text-white">
-                    Valorează în {etichetaLuna(la)}
+                    În {etichetaLuna(la)}
                   </td>
                   <td className="px-3 py-3 text-right text-sm font-bold tabular-nums whitespace-nowrap text-white">
                     {r ? <span className="marcaj">{nr(r.echivalent)} {unitate(la)}</span> : gol}
