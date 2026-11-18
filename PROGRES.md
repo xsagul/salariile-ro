@@ -6498,3 +6498,16 @@ main pentru publicare.
 
 Textul devalorizării spune explicit „Dacă ... ai tot ...”. Comparația
 puterii de cumpărare se aplică situației în care suma a fost păstrată.
+
+### 18 noiembrie 2026 — posturile vacante raportate de ANOFM
+
+Articolul `/noutati/locuri-de-munca-anofm-18-noiembrie-2026` pornește din
+comunicatul ANOFM din aceeași zi. Include ponderea ofertelor după studii,
+comparația cu săptămâna anterioară și pași pentru verificarea unei oferte.
+Datele sunt citate ca situație la 18 noiembrie. Coperta a fost generată cu
+ImageGen pe baza a patru ilustrații editoriale ale site-ului și convertită
+în WebP înainte de generarea variantelor responsive.
+
+#### Promptul ImageGen pentru articolul ANOFM
+
+> Use case: illustration-story. Generate one new landscape editorial cover for Salariile.ro, for an article about actual Romanian job openings in transport, warehouses and delivery. The four reference images define one house style, not content to copy: soft hand-drawn editorial still life, restrained outlines, pencil and fine paper grain, creamy beige canvas with faint texture, quiet light and one soft ground shadow, 2–3 restrained sage, rust/terracotta and muted ochre accents. The single scene: a folded off-white employment bulletin with a few simple abstract horizontal strokes and one muted rust checkmark, tucked slightly behind a small closed kraft shipping carton, with a sage-green handled magnifying glass resting across the foreground. The carton symbolizes the common warehouse and courier jobs; the magnifying glass symbolizes looking for work. Make all objects tactile and recognizable. Center the compact arrangement and keep broad clean oatmeal negative space on all sides; it must read as a small thumbnail and tolerate a wide 16:9 center crop. Landscape framing. No legible text, no letters, no numbers, no institution marks, no logos, no people, no layout, no gradients or bright digital gloss, no decorative badges or icons. Create an original drawing that sits alongside the references at the same visual weight.
