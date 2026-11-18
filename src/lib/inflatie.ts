@@ -110,10 +110,14 @@ export type Rezultat = {
   monedaLa: 'ROL' | 'RON';
   /** Suma echivalenta, in moneda de la data-tinta. */
   echivalent: number;
+  /** Suma de la plecare, schimbata doar ca unitate monetara. */
+  sumaNominalaLa: number;
   /** De cate ori au crescut preturile. */
   factorPreturi: number;
   /** Cat la suta din puterea de cumparare initiala a mai ramas. */
   putereRamasa: number;
+  /** Puterea de cumparare a sumei nominale finale, in banii lunii de plecare. */
+  putereRamasaInLei: number;
   /** Inflatia cumulata, in procente. */
   inflatieCumulata: number;
   /** Rata medie anuala echivalenta, in procente. */
@@ -155,8 +159,10 @@ export function converteste(suma: number, de: Luna, la: Luna): Rezultat {
     monedaDe,
     monedaLa,
     echivalent: suma * factor * schimbareUnitate,
+    sumaNominalaLa: suma * schimbareUnitate,
     factorPreturi: factor,
     putereRamasa: 100 / factor,
+    putereRamasaInLei: suma / factor,
     inflatieCumulata: (factor - 1) * 100,
     rataMedieAnuala: ani >= 1 ? (Math.pow(factor, 1 / ani) - 1) * 100 : null,
     denominareAplicata: schimbareUnitate !== 1,

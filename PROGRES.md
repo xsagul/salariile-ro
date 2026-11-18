@@ -6406,3 +6406,29 @@ formatul compact din `fb4d4f9` pentru cele patru coloane. Cardul lunii,
 selectorul și saltul la calendar rămân scoase.
 Verificat în browser pentru 2026 și 2027, la 320, 360 și 1280 px. Au trecut
 testul de calendare, lint, build-ul și `npm run test:rendered`.
+
+### Tot 18 noiembrie — comparație cu calculatorinflatie.ro
+
+Comparare în browser pentru 2.000 lei, octombrie 2023–septembrie 2026.
+Ambele pagini au afișat 2.437,30 lei actualizați. Competitorul a afișat
+și puterea de cumpărare rămasă în lei, cu două grafice legate de calcul.
+La salariile.ro puterea rămasă apare procentual, iar sub rezultat urmează
+metodologia. În ziua verificării, calculatorul propriu includea octombrie
+2026, iar competitorul se oprea în septembrie.
+
+Propunere pentru o etapă ulterioară: suma actualizată în primul plan,
+puterea rămasă exprimată și în lei, apoi un grafic interactiv cu două
+moduri și lunile exacte de la capete. Tabelele de inflație istorică există
+deja pe pagina dedicată. Analiza este de produs, fără concluzie despre
+cauza clasării în Google.
+
+### Rezultat simplificat pentru calculatorul de inflație
+
+Suma actualizată este prima și spune ce cumpărături păstrează. Puterea de
+cumpărare a aceleiași sume apare în lei, cu luna de referință. Inflația
+cumulată rămâne ca reper. Coeficientul și rata medie anuală ies din panou.
+Conversia nominală de la denominare se aplică și comparației în lei.
+
+Verificat în browser la 320, 390 și 1280 px, inclusiv pentru aceeași lună
+și trecerea în ambele sensuri între lei vechi și lei noi. Au trecut
+`npm test`, lint pe fișierele schimbate, build-ul și `npm run test:rendered`.

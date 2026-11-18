@@ -40,6 +40,9 @@ assert.ok(vechi.echivalent > 10 && vechi.echivalent < 200,
 // Fara denominare ar iesi exact de zece mii de ori mai mult. Asta publica azi
 // site-ul vechi, si asta nu are voie sa reapara.
 assert.ok(vechi.echivalent * FACTOR_DENOMINARE > 100_000);
+assert.equal(vechi.sumaNominalaLa, 0.01, '100 lei vechi ramasi in numerar devin un ban');
+assert.ok(Math.abs(vechi.putereRamasaInLei - converteste(0.01, ULTIMA_LUNA, vechi.de).echivalent) < 1e-12,
+  'puterea ramasa se exprima in lei vechi, prin conversia inversa a sumei nominale');
 
 const recent = converteste(100, { an: 2010, luna: 1 }, ULTIMA_LUNA);
 assert.equal(recent.denominareAplicata, false, 'dupa 2005 nu se mai taie nimic');
@@ -56,6 +59,8 @@ assert.equal(inapoi.monedaLa, 'ROL');
 assert.ok(inapoi.denominareAplicata, 'si drumul invers trece granita');
 assert.ok(inapoi.echivalent > 100_000 && inapoi.echivalent < 500_000,
   `asteptam sute de mii de lei vechi, am primit ${inapoi.echivalent}`);
+assert.equal(inapoi.sumaNominalaLa, 10_000_000, '1.000 lei noi inseamna 10 milioane lei vechi');
+assert.ok(Math.abs(inapoi.putereRamasaInLei - converteste(inapoi.sumaNominalaLa, inapoi.la, inapoi.de).echivalent) < 1e-9);
 // Dus-intors readuce exact suma initiala.
 const dus = converteste(1000, { an: 2020, luna: 1 }, { an: 1995, luna: 1 });
 const intors = converteste(dus.echivalent, { an: 1995, luna: 1 }, { an: 2020, luna: 1 });
@@ -65,6 +70,9 @@ assert.ok(Math.abs(intors.echivalent - 1000) < 1e-6, 'dus-intors pierde suma');
 const r = converteste(1000, { an: 2015, luna: 6 }, ULTIMA_LUNA);
 assert.ok(Math.abs(r.echivalent / 1000 - r.factorPreturi) < 1e-9, 'echivalentul urmeaza factorul');
 assert.ok(Math.abs(r.putereRamasa - 100 / r.factorPreturi) < 1e-9);
+assert.equal(r.sumaNominalaLa, 1000, 'fara denominare, suma nominala ramane aceeasi');
+assert.ok(Math.abs(r.putereRamasaInLei * r.factorPreturi - 1000) < 1e-9);
+assert.equal(converteste(1000, ULTIMA_LUNA, ULTIMA_LUNA).putereRamasaInLei, 1000);
 assert.ok(Math.abs(r.inflatieCumulata - (r.factorPreturi - 1) * 100) < 1e-9);
 assert.ok(r.rataMedieAnuala !== null && r.rataMedieAnuala > 0 && r.rataMedieAnuala < 20,
   'rata medie anuala pe un deceniu recent e de o cifra');
