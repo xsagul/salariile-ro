@@ -8,8 +8,8 @@
 // Piesele sunt cele ale calculatorului de salariu de pe homepage, la cererea
 // proprietarului (17 noiembrie 2026, după prima versiune, cu selectoare de sistem
 // și un tabel lat pe telefon): câmpul gol cu „ex:” și unitatea în chenar,
-// selectoarele cu săgeată desenată (anul îngust, luna lată), tabelul compact cu
-// coloana de valori de 112 px pe telefon și rândul final negru, cu cifra marcată.
+// selectoarele cu săgeată desenată (anul îngust, luna lată) și tabelul compact
+// cu marcajul galben pe suma necesară în luna finală.
 // Rezultatul apare la „Calculează”; de atunci urmează formularul, ca la TVA.
 //
 // Ambele capete se aleg. „Cât valorau 1.000 de lei din 2010 în 2015” e o
@@ -195,6 +195,7 @@ export default function CalculatorInflatie() {
   const valoare = citesteSuma(suma);
   const inafara = [de, la].find((l) => !inSerie(l));
   const r = cerut && valoare !== null && !inafara ? converteste(valoare, de, la) : null;
+  const scenariuBaniPastrati = r && rang(de) < rang(la) && !r.denominareAplicata;
 
   const eroareSuma = lipsaSuma ? "Scrie o sumă, de exemplu 1.000." : null;
   const eroarePerioada = inafara
@@ -275,58 +276,53 @@ export default function CalculatorInflatie() {
               <colgroup><col /><col className="w-[43%] sm:w-36" /></colgroup>
               <thead>
                 <tr>
-                  <th scope="col" className={`${cellL} bg-canvas font-medium`}>Indicator</th>
-                  <th scope="col" className={`${cellR} bg-canvas font-medium`}>Valoare</th>
+                  <th colSpan={2} scope="colgroup" className="border-b border-stone-300 bg-canvas px-2.5 py-3 text-left font-medium sm:px-3">
+                    Pentru aceeași putere de cumpărare
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <th scope="row" className={`${cellL} font-normal`}>În {etichetaLuna(de)}</th>
+                  <th scope="row" className={`${cellL} font-medium`}>
+                    Suma de plecare
+                    <span className="mt-0.5 block text-xs font-normal text-stone-600">{etichetaLuna(de)}</span>
+                  </th>
                   <td className={cellR}>{r ? sumaAfisata(r.suma, de) : gol}</td>
                 </tr>
-                <tr>
-                  <th scope="row" className={`${cellL} font-normal text-stone-900`}>
-                    <strong className="font-semibold">Putere de cumpărare</strong>
-                    {r ? (
-                      <span className="mt-1 block text-xs text-stone-600">
-                        Ce poți cumpăra cu {sumaAfisata(r.sumaNominalaLa, la)} în {etichetaLuna(la)}
-                      </span>
-                    ) : null}
+                <tr className="bg-canvas/60 text-stone-900">
+                  <th scope="row" className={`${cellL} border-b-0 font-semibold`}>
+                    Suma necesară
+                    <span className="mt-0.5 block text-xs font-normal text-stone-600">{etichetaLuna(la)}</span>
                   </th>
-                  <td className={`${cellR} text-stone-900`}>
-                    {r ? (
-                      <>
-                        <strong className="font-semibold">{sumaAfisata(r.putereRamasaInLei, de)}</strong>
-                        <span className="mt-1 block text-xs text-stone-600">în banii din {etichetaLuna(de)}</span>
-                      </>
-                    ) : gol}
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row" className={`${cellL} border-b-0 font-normal`}>Inflație cumulată</th>
-                  <td className={`${cellR} border-b-0`}>{r ? `${nr(r.inflatieCumulata, 1)}%` : gol}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          {/* Răspunsul, separat și inversat, ca „Salariu net” pe homepage. */}
-          <div className="mt-3 overflow-hidden rounded border border-stone-300">
-            <table className={tabelRezultat}>
-              <colgroup><col /><col className="w-[43%] sm:w-36" /></colgroup>
-              <tbody>
-                <tr className="bg-stone-900 text-white">
-                  <th scope="row" className="border-r border-stone-600 px-2.5 py-3 text-left font-bold sm:px-3">
-                    În {etichetaLuna(la)}
-                    {r ? <span className="mt-1 block text-xs font-normal text-stone-200">Pentru aceleași cumpărături</span> : null}
-                  </th>
-                  <td className="px-2.5 py-3 text-right font-bold tabular-nums sm:px-3">
+                  <td className={`${cellR} border-b-0 font-bold`}>
                     {r ? <span className="marcaj box-decoration-clone">{sumaAfisata(r.echivalent, la)}</span> : gol}
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
+
+          {r ? (
+            <dl className="mt-2 flex items-baseline justify-between gap-3 px-2.5 text-sm sm:px-3">
+              <dt className="text-stone-700">Inflație cumulată</dt>
+              <dd className="font-semibold tabular-nums text-stone-900">{nr(r.inflatieCumulata, 1)}%</dd>
+            </dl>
+          ) : null}
+
+          {r && rang(de) !== rang(la) ? (
+            <div className="mt-4 rounded border border-stone-200 bg-canvas px-3 py-3 [overflow-wrap:anywhere]">
+              <h3 className="text-sm font-semibold text-stone-900">
+                {r.inflatieCumulata > 0 ? "Devalorizare" : "Putere de cumpărare"}
+              </h3>
+              <p className="mt-1 text-sm text-stone-700">
+                {scenariuBaniPastrati
+                  ? `În ${etichetaLuna(la)} ai tot ${sumaAfisata(r.sumaNominalaLa, la)}. Cu ei cumperi cât cumpărai cu `
+                  : `Cu ${sumaAfisata(r.sumaNominalaLa, la)} în ${etichetaLuna(la)} cumperi cât cu `}
+                <strong className="font-semibold tabular-nums text-stone-900">{sumaAfisata(r.putereRamasaInLei, de)}</strong>
+                {` în ${etichetaLuna(de)}.`}
+              </p>
+            </div>
+          ) : null}
         </div>
 
         {r?.denominareAplicata ? (

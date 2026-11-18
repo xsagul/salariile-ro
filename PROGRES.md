@@ -6472,3 +6472,26 @@ Verificat în browser la 320 și 390 px, pe exemplul din 2010, pentru trecerea
 în ambele sensuri peste denominare și pentru o perioadă de o singură lună.
 Au trecut lint pe fișierele schimbate, testele de inflație, build-ul și
 verificarea HTML-ului randat.
+
+### Previzualizare cu două întrebări distincte în rezultat
+
+În varianta 2 intercalarea puterii de cumpărare în lei făcea să pară că
+aceasta este un pas între suma de plecare și suma actualizată. În varianta
+pregătită local, tabelul compară doar costul acelorași cumpărături în cele
+două luni. Scenariul în care suma a fost păstrată are o explicație separată,
+înaintea graficului. Previzualizarea a fost verificată în browser la 390 px
+pe exemplul cu ianuarie 2010 și septembrie 2026 și prezentată proprietarului.
+
+În previzualizare, proprietarul a cerut titlurile „Pentru aceeași putere de
+cumpărare” și „Devalorizare”. A doua etichetă apare când prețurile cresc în
+sensul selectat. Pentru restul intervalelor apare „Putere de cumpărare”.
+Verificat în browser la 320 px, inclusiv cu perioada în ordine inversă.
+
+În previzualizare, suma necesară a trecut din caseta neagră în același
+tabel deschis cu suma de plecare. Cele două rânduri spun ce reprezintă
+valorile și au luna pe al doilea rând. Marcajul galben rămâne pe suma
+necesară. Verificat după calcul la 320 px.
+
+Tabelul pe fundal deschis a trecut lint, testele de inflație, build-ul și
+verificarea HTML-ului randat. La cererea proprietarului, a fost trimis pe
+main pentru publicare.
