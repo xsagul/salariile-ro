@@ -6443,3 +6443,15 @@ Suma introdusă și lunile apar o singură dată, deasupra tabelului.
 Verificat vizual după calcul la 390 px și verificat la 320 și 1280 px, inclusiv
 cu lei vechi la 320 px. Au trecut lint pe componentă, testele de inflație,
 build-ul și verificarea HTML-ului randat.
+
+### Revenire la primul tabel al calculatorului de inflație
+
+La cererea proprietarului, componenta a revenit exact la versiunea din
+`96ca184`. Lint, testele calculatorului, build-ul și verificarea HTML-ului
+randat au trecut.
+
+Au fost comparate primele trei rezultate organice văzute în Google România
+pentru „calculator inflatie”: calculatorinflatie.ro (cele două sume și
+evoluția lor), calculatorjuridic.com (total și descompunere în lei) și
+calculator-rambursare.ro (suma echivalentă înaintea indicatorilor). Cele
+șase variante de prezentare au fost pregătite pentru comparație vizuală.
