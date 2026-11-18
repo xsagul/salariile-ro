@@ -172,13 +172,17 @@ export default function PaginaZileLucratoare({ an }: { an: AnZileLucratoare }) {
           {/* Grila începe la tabel, iar cardul din dreapta pornește de la nivelul lui, ca la zile libere. */}
           <div className="md:grid md:grid-cols-5 md:gap-6">
             <div className="md:col-span-3">
-              <TabelArticol>
+              <TabelArticol tableClassName="max-sm:table-fixed max-sm:text-xs max-sm:[&>thead>tr>th]:px-1.5 max-sm:[&>thead>tr>th]:tracking-normal max-sm:[&>tbody>tr>td]:px-1.5 max-sm:[&>tbody>tr>th]:px-1.5">
                 <thead>
                   <tr>
-                    <th>Luna</th>
-                    <th className="text-right">Zile lucrătoare</th>
-                    <th className="text-right">Ore lucrătoare</th>
-                    <th className="text-right">Zile libere</th>
+                    <th scope="col" className="max-sm:w-[37%]">Luna</th>
+                    <th scope="col" className="text-right">
+                      Zile<span className="sm:hidden"> de lucru</span><span className="hidden sm:inline"> lucrătoare</span>
+                    </th>
+                    <th scope="col" className="text-right">
+                      Ore<span className="sm:hidden"> de lucru</span><span className="hidden sm:inline"> lucrătoare</span>
+                    </th>
+                    <th scope="col" className="text-right">Zile libere</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -189,19 +193,19 @@ export default function PaginaZileLucratoare({ an }: { an: AnZileLucratoare }) {
                       aria-current={i === lunaCurenta ? "date" : undefined}
                       className={`scroll-mt-24 ${i === lunaCurenta ? "bg-antet font-semibold text-stone-900" : ""}`}
                     >
-                      <td className="font-medium text-stone-900">
+                      <th scope="row">
                         <a href={`#${row.name.toLowerCase()}`} className="hover:underline">
                           {row.name}
                         </a>
-                        {i === lunaCurenta ? <span className="ml-2 text-xs font-normal text-stone-600">luna curentă</span> : null}
-                      </td>
+                        {i === lunaCurenta ? <span className="ml-2 text-xs font-normal text-stone-600 max-sm:ml-0 max-sm:block">luna curentă</span> : null}
+                      </th>
                       <td className="text-right tabular-nums">{row.lucratoare}</td>
                       <td className="text-right tabular-nums">{row.ore}</td>
                       <td className="text-right tabular-nums">{row.libere}</td>
                     </tr>
                   ))}
                   <tr>
-                    <td className="font-bold text-stone-900">Total {an}</td>
+                    <th scope="row" className="font-bold text-stone-900">Total {an}</th>
                     <td className="text-right font-bold tabular-nums text-stone-900">{total}</td>
                     <td className="text-right font-bold tabular-nums text-stone-900">{ore.toLocaleString("ro-RO")}</td>
                     <td className="text-right font-bold tabular-nums text-stone-900">{libere}</td>

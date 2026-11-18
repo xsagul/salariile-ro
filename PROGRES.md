@@ -6398,3 +6398,11 @@ saltul la calendar și stilurile tabelului mobil adăugate în `fb4d4f9`.
 Componentele de calendar și tabel au revenit la versiunea de dinaintea
 acelui commit. Au trecut testul de calendare, lint, build-ul și verificarea
 HTML-ului randat. În exportul 2026 și 2027 apar tabelul și calendarul anterior.
+
+### Tot 18 noiembrie — tabelul compact de zile lucrătoare
+
+Proprietarul a vrut să păstreze lățimea tabelului pe mobil. A revenit
+formatul compact din `fb4d4f9` pentru cele patru coloane. Cardul lunii,
+selectorul și saltul la calendar rămân scoase.
+Verificat în browser pentru 2026 și 2027, la 320, 360 și 1280 px. Au trecut
+testul de calendare, lint, build-ul și `npm run test:rendered`.
