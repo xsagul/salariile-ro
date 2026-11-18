@@ -316,7 +316,7 @@ export default function CalculatorInflatie() {
               </h3>
               <p className="mt-1 text-sm text-stone-700">
                 {scenariuBaniPastrati
-                  ? `În ${etichetaLuna(la)} ai tot ${sumaAfisata(r.sumaNominalaLa, la)}. Cu ei cumperi cât cumpărai cu `
+                  ? `Dacă în ${etichetaLuna(la)} ai tot ${sumaAfisata(r.sumaNominalaLa, la)}, poți cumpăra cât cumpărai cu `
                   : `Cu ${sumaAfisata(r.sumaNominalaLa, la)} în ${etichetaLuna(la)} cumperi cât cu `}
                 <strong className="font-semibold tabular-nums text-stone-900">{sumaAfisata(r.putereRamasaInLei, de)}</strong>
                 {` în ${etichetaLuna(de)}.`}

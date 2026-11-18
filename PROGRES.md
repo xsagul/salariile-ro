@@ -6495,3 +6495,6 @@ necesară. Verificat după calcul la 320 px.
 Tabelul pe fundal deschis a trecut lint, testele de inflație, build-ul și
 verificarea HTML-ului randat. La cererea proprietarului, a fost trimis pe
 main pentru publicare.
+
+Textul devalorizării spune explicit „Dacă ... ai tot ...”. Comparația
+puterii de cumpărare se aplică situației în care suma a fost păstrată.
