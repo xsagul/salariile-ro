@@ -2,7 +2,7 @@
 // aici nu e un bug de interfata, e produsul stricat.
 import assert from 'node:assert/strict';
 import {
-  converteste, factorPreturi, moneda, inflatieAnuala, etichetaLuna,
+  converteste, factorPreturi, moneda, inflatieAnuala, etichetaLuna, serieSumaActualizata,
   PRIMA_LUNA, ULTIMA_LUNA, FACTOR_DENOMINARE, aniDisponibili,
 } from '../src/lib/inflatie';
 
@@ -79,6 +79,23 @@ assert.ok(r.rataMedieAnuala !== null && r.rataMedieAnuala > 0 && r.rataMedieAnua
 
 // Sub un an nu se raporteaza o rata anualizata: ar fi o extrapolare.
 assert.equal(converteste(100, { an: 2026, luna: 1 }, { an: 2026, luna: 6 }).rataMedieAnuala, null);
+
+// Graficul include lunile de la capete și ține moneda constantă chiar peste denominare.
+const iun2005 = { an: 2005, luna: 6 };
+const iul2005 = { an: 2005, luna: 7 };
+const aug2005 = { an: 2005, luna: 8 };
+const inLeiNoi = converteste(10_000_000, iun2005, aug2005);
+const lunar = serieSumaActualizata(inLeiNoi);
+assert.deepEqual(lunar, [
+  { ...iun2005, suma: 1000 },
+  { ...iul2005, suma: converteste(10_000_000, iun2005, iul2005).echivalent },
+  { ...aug2005, suma: inLeiNoi.echivalent },
+]);
+const inLeiVechi = converteste(1000, aug2005, iun2005);
+const lunarInvers = serieSumaActualizata(inLeiVechi);
+assert.deepEqual(lunarInvers[0], { ...aug2005, suma: 10_000_000 });
+assert.deepEqual(lunarInvers.at(-1), { ...iun2005, suma: inLeiVechi.echivalent });
+assert.deepEqual(serieSumaActualizata(converteste(1000, iun2005, iun2005)), [{ ...iun2005, suma: 1000 }]);
 
 // ─── Refuzul de a inventa ───────────────────────────────────────────────────
 assert.throws(() => converteste(100, { an: 1970, luna: 1 }, ULTIMA_LUNA), /1991/,

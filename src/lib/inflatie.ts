@@ -169,6 +169,24 @@ export function converteste(suma: number, de: Luna, la: Luna): Rezultat {
   };
 }
 
+/** Istoricul sumei actualizate, exprimat peste tot în moneda lunii finale. */
+export function serieSumaActualizata(rezultat: Rezultat): (Luna & { suma: number })[] {
+  const inceput = rang(rezultat.de);
+  const final = rang(rezultat.la);
+  const prima = Math.min(inceput, final);
+  const ultima = Math.max(inceput, final);
+  const luni = SERIE.filter((luna) => rang(luna) >= prima && rang(luna) <= ultima);
+  if (final < inceput) luni.reverse();
+
+  return luni.map(({ an, luna }, index) => ({
+    an,
+    luna,
+    suma: index === luni.length - 1
+      ? rezultat.echivalent
+      : rezultat.sumaNominalaLa * factorPreturi(rezultat.de, { an, luna }),
+  }));
+}
+
 /** Inflatia dintre doua luni consecutive de acelasi nume, an peste an. */
 export function inflatieAnuala(an: number, luna: number = ULTIMA_LUNA.luna): number | null {
   const la = { an, luna };

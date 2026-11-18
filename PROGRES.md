@@ -6455,3 +6455,20 @@ pentru „calculator inflatie”: calculatorinflatie.ro (cele două sume și
 evoluția lor), calculatorjuridic.com (total și descompunere în lei) și
 calculator-rambursare.ro (suma echivalentă înaintea indicatorilor). Cele
 șase variante de prezentare au fost pregătite pentru comparație vizuală.
+
+### Calculator inflație cu tabelul ales și grafic lunar
+
+Proprietarul a ales varianta 2 și graficul din varianta 6. Tabelul păstrează
+antetul, suma de plecare și rândul negru separat la final. Puterea de
+cumpărare apare în lei. Rândul numește atât luna în care se cheltuie suma
+păstrată, cât și luna ai cărei bani sunt folosiți drept reper.
+
+Sub tabel, graficul arată suma lunară necesară pentru aceleași cumpărături.
+Punctele provin din seria folosită de calculator. La denominare, toate
+punctele sunt exprimate în moneda lunii finale. Graficul permite alegerea
+lunii prin apăsare sau tastatură.
+
+Verificat în browser la 320 și 390 px, pe exemplul din 2010, pentru trecerea
+în ambele sensuri peste denominare și pentru o perioadă de o singură lună.
+Au trecut lint pe fișierele schimbate, testele de inflație, build-ul și
+verificarea HTML-ului randat.
