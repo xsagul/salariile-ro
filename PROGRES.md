@@ -6532,3 +6532,12 @@ generată de ImageGen în stilul flat 2D al ilustrațiilor Salariile.ro.
 #### Promptul ImageGen pentru coperta flat 2D
 
 > Use case: editorial illustration. Create an original 16:9 landscape cover for Salariile.ro, about people searching for jobs in Romania online. Use the supplied Salariile.ro covers as references for the house palette, sparse composition, restrained outlines and warm paper background. Render in crisp, genuinely flat 2D with solid shapes and minimal soft paper grain, closer to an editorial drawing than to a rendered product or a photo. Scene: a single candidate at a warm ivory desk, seen from above at a slight angle, with exactly two simplified hands, one on a sage-green laptop's trackpad and the other holding a plain printed résumé with a few abstract lines. The laptop screen shows three simple stacked job-listing cards drawn as shapes, one lightly highlighted; small muted navy, warm ochre and muted terracotta index tabs suggest Romania without turning the backdrop into a flag. Center the compact, easily legible composition and leave generous pale cream margins safe for thumbnail crops. Flat ochre grounding shadow. No actual words, digits, logos, watermarks, gradients, photo texture, glossy 3D, giant flag backdrop or multiple phones. Everything should feel precise, candid and calm.
+
+### 18 noiembrie 2026 — sloturi AdSense pe calculatoarele rămase
+
+HTML-ul public avea scriptul AdSense pe calculatorul de inflație, calculatorul
+TVA și calculatorul salarial în engleză. Cele trei pagini aveau nevoie și de
+componenta de reclamă folosită după rezultatele celorlalte calculatoare.
+Am adăugat acea componentă la fiecare, cu etichetă în engleză pe pagina în
+engleză. În pagina „Rata inflației”, reclama stă după tabele și datele
+exportabile, înainte de întrebările frecvente.

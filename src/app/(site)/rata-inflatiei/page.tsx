@@ -10,6 +10,7 @@
 
 import type { Metadata } from "next";
 import TabelArticol from "@/app/components/TabelArticol";
+import { ReclamaIntreSectiuni } from "@/app/components/Reclama";
 import { Breadcrumb, CardCompanion, Faq, H1, Hero, Lead, PaginiConexe, Repere, Section } from "@/app/components/ui";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
@@ -207,6 +208,7 @@ export default function Page() {
         </p>
       </Section>
 
+      <ReclamaIntreSectiuni />
       <Faq items={FAQ} />
 
       <PaginiConexe

@@ -36,11 +36,13 @@ export default function Reclama({
   plasare,
   className = "",
   pereche = false,
+  eticheta = ETICHETA_RECLAMA,
 }: {
   plasare: PlasareReclama;
   className?: string;
   /** Pe PC, a doua casetă lângă prima. Numai pe lățimea întreagă a paginii, nu într-o coloană. */
   pereche?: boolean;
+  eticheta?: string;
 }) {
   const id = unitate(plasare);
   const slot = useRef<HTMLElement>(null);
@@ -92,8 +94,8 @@ export default function Reclama({
 
   if (!id) return null;
   return (
-    <aside ref={slot} aria-label={ETICHETA_RECLAMA} className={`${CLASA_SLOT_RECLAMA} ${className}`} data-reclama={plasare}>
-      <span className={CLASA_ETICHETA_RECLAMA}>{ETICHETA_RECLAMA}</span>
+    <aside ref={slot} aria-label={eticheta} className={`${CLASA_SLOT_RECLAMA} ${className}`} data-reclama={plasare}>
+      <span className={CLASA_ETICHETA_RECLAMA}>{eticheta}</span>
       <div className="flex justify-center gap-6">
         <ins
           className={CLASA_INS_RECLAMA}
@@ -109,18 +111,18 @@ export default function Reclama({
 
 // Un slot pe lățimea paginii, între un bloc care se termină cu SPATIU_JOS și o secțiune care
 // începe cu linia ei. Fără unitate nu lasă nici spațiul gol în urmă.
-function PeLatimePaginii({ plasare }: { plasare: PlasareReclama }) {
+function PeLatimePaginii({ plasare, eticheta }: { plasare: PlasareReclama; eticheta?: string }) {
   if (!unitate(plasare)) return null;
   return (
     <div className="mx-auto max-w-6xl px-4 pb-[38px] sm:px-6 sm:pb-[42px]">
-      <Reclama plasare={plasare} pereche />
+      <Reclama plasare={plasare} pereche eticheta={eticheta} />
     </div>
   );
 }
 
 /** Sub un calculator, înaintea primei secțiuni de text. */
-export function ReclamaSubCalculator() {
-  return <PeLatimePaginii plasare="calculator" />;
+export function ReclamaSubCalculator({ eticheta }: { eticheta?: string }) {
+  return <PeLatimePaginii plasare="calculator" eticheta={eticheta} />;
 }
 
 /** Între două secțiuni ale unei pagini de conținut (de exemplu, înaintea întrebărilor frecvente). */

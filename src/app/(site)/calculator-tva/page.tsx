@@ -16,6 +16,7 @@
 import type { Metadata } from "next";
 import { Breadcrumb, CardCompanion, Faq, Formula, H1, Hero, Lead, PaginiConexe, Repere, Section } from "@/app/components/ui";
 import CalculatorTva from "@/app/components/CalculatorTva";
+import { ReclamaSubCalculator } from "@/app/components/Reclama";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
 import {
@@ -132,6 +133,7 @@ export default function Page() {
       </Hero>
 
       <CalculatorTva />
+      <ReclamaSubCalculator />
 
       <Section
         companion={

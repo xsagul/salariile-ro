@@ -26,6 +26,7 @@
 import type { Metadata } from "next";
 import Link from "@/app/components/Link";
 import CalculatorSalariu from "@/app/components/CalculatorSalariu";
+import { ReclamaSubCalculator } from "@/app/components/Reclama";
 import { Formula, PaginiConexe, Section } from "@/app/components/ui";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
@@ -142,6 +143,7 @@ export default function Page() {
           </>
         }
       />
+      <ReclamaSubCalculator eticheta="Advertisement" />
 
       <Section>
         <h2>Euro or lei</h2>

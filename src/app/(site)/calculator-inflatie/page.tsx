@@ -18,6 +18,7 @@ import Link from "@/app/components/Link";
 import TabelArticol from "@/app/components/TabelArticol";
 import { Breadcrumb, CardCompanion, Faq, Formula, H1, Hero, Lead, PaginiConexe, Repere, Section } from "@/app/components/ui";
 import CalculatorInflatie from "@/app/components/CalculatorInflatie";
+import { ReclamaSubCalculator } from "@/app/components/Reclama";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
 import {
@@ -145,6 +146,7 @@ export default function Page() {
       </Hero>
 
       <CalculatorInflatie />
+      <ReclamaSubCalculator />
 
       <Section
         companion={
