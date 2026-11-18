@@ -6517,3 +6517,18 @@ Pentru articolul ANOFM a fost comparată deschiderea din Digi Economic din
 pasul de aplicare, subtitlul precizează cui sunt adresate cele mai multe
 posturi, iar primul paragraf spune ce s-a schimbat într-o săptămână.
 Comparația pe două ocupații este calculată din comunicatele ANOFM.
+
+### 18 noiembrie 2026 — știrea ANOFM și coperta flat 2D
+
+Textul se deschide cu totalul raportat pe 18 noiembrie și meseriile cu
+cele mai multe oferte. Comparația dintre săptămâni a fost eliminată. Secțiunea
+EURES arată în ce țări erau cele mai multe posturi și ce fel de muncă se căuta.
+Ordinea informațiilor urmează știrea Digi Economic din 11 noiembrie. Cifrele
+vin din comunicatul ANOFM din 18 noiembrie.
+
+Noua copertă ilustrează căutarea unui loc de muncă pe laptop. Scena a fost
+generată de ImageGen în stilul flat 2D al ilustrațiilor Salariile.ro.
+
+#### Promptul ImageGen pentru coperta flat 2D
+
+> Use case: editorial illustration. Create an original 16:9 landscape cover for Salariile.ro, about people searching for jobs in Romania online. Use the supplied Salariile.ro covers as references for the house palette, sparse composition, restrained outlines and warm paper background. Render in crisp, genuinely flat 2D with solid shapes and minimal soft paper grain, closer to an editorial drawing than to a rendered product or a photo. Scene: a single candidate at a warm ivory desk, seen from above at a slight angle, with exactly two simplified hands, one on a sage-green laptop's trackpad and the other holding a plain printed résumé with a few abstract lines. The laptop screen shows three simple stacked job-listing cards drawn as shapes, one lightly highlighted; small muted navy, warm ochre and muted terracotta index tabs suggest Romania without turning the backdrop into a flag. Center the compact, easily legible composition and leave generous pale cream margins safe for thumbnail crops. Flat ochre grounding shadow. No actual words, digits, logos, watermarks, gradients, photo texture, glossy 3D, giant flag backdrop or multiple phones. Everything should feel precise, candid and calm.
