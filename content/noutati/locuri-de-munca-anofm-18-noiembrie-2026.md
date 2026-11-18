@@ -1,14 +1,14 @@
 ---
-title: "31.312 locuri de muncă la ANOFM pe 18 noiembrie"
-description: "ANOFM raportează 31.312 posturi vacante pe 18 noiembrie 2026. Vezi meseriile cu cele mai multe posturi, studiile cerute și unde poți aplica."
+title: "31.312 locuri de muncă la ANOFM. Unde aplici"
+description: "Peste jumătate din posturi sunt pentru persoane fără studii sau cu școală primară ori gimnazială. Șoferii de transport rutier au cele mai multe oferte."
 date: "2026-11-18"
 hero: "/noutati/locuri-de-munca-anofm-18-noiembrie-2026.webp"
 heroAlt: "Ilustrație cu o lupă verde, un colet de carton și o fișă de angajare pe fundal crem."
 ---
 
-**ANOFM avea în evidență 31.312 locuri de muncă vacante în România pe 18 noiembrie 2026.** Mai mult de jumătate erau pentru persoane fără studii sau cu studii primare ori gimnaziale. Cele mai multe posturi pentru o singură ocupație erau în transportul rutier. [Comunicatul ANOFM din 18 noiembrie](https://www.anofm.ro/wp-content/uploads/2026/11/Comunicat-de-presa-LMV_18.11.2026.pdf)
+Miercuri, 18 noiembrie 2026, Agenția Națională pentru Ocuparea Forței de Muncă (ANOFM) avea în evidență **cu 253 de posturi vacante mai multe** decât cu o săptămână înainte (+0,8%). [Comunicatul ANOFM din 18 noiembrie](https://www.anofm.ro/wp-content/uploads/2026/11/Comunicat-de-presa-LMV_18.11.2026.pdf) · [Comunicatul din 11 noiembrie](https://www.anofm.ro/locuri-de-munca-vacante-la-nivel-national-si-in-reteaua-eures-11-noiembrie-2026/)
 
-Dacă vrei să aplici, poți intra direct în [lista oficială de oferte active](https://mediere.anofm.ro/app/module/mediere/jobs) și căuta după județ sau ocupație.
+Dacă vrei să aplici, caută după județ sau ocupație în [lista oficială de oferte active](https://mediere.anofm.ro/app/module/mediere/jobs). Lista se actualizează când apar oferte noi sau când posturile se ocupă ori expiră.
 
 ## Meseriile cu cele mai multe posturi
 
@@ -22,7 +22,7 @@ Primele trei ocupații din tabel însumau **6.709 posturi**, adică puțin peste
 | Muncitor necalificat la lucrări de demolare și finisaje | 1.283 |
 | Muncitor necalificat la asamblarea și montarea pieselor | 1.199 |
 
-În evidența agenției erau cu **253 de posturi mai multe** decât pe 11 noiembrie, o diferență de 0,8%. E o comparație între două rapoarte săptămânale. Numărul ofertelor se schimbă pe măsură ce firmele adaugă posturi, acestea se ocupă sau expiră. [Raportul ANOFM din 11 noiembrie](https://www.anofm.ro/locuri-de-munca-vacante-la-nivel-national-si-in-reteaua-eures-11-noiembrie-2026/)
+Șoferii de transport rutier au rămas pe primul loc, cu **743 de posturi mai puține** decât la raportarea anterioară. Pentru manipulanții de mărfuri, agenția avea în evidență **360 de locuri în plus**. [Defalcarea pe ocupații din 11 noiembrie](https://www.anofm.ro/wp-content/uploads/2026/11/Comunicat-de-presa-LMV_11.11.2026.pdf)
 
 ## Posturile după nivelul de studii
 
