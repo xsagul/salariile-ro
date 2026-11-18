@@ -8,8 +8,8 @@
 // Piesele sunt cele ale calculatorului de salariu de pe homepage, la cererea
 // proprietarului (17 noiembrie 2026, după prima versiune, cu selectoare de sistem
 // și un tabel lat pe telefon): câmpul gol cu „ex:” și unitatea în chenar,
-// selectoarele cu săgeată desenată (anul îngust, luna lată) și cifra principală
-// marcată pe fundal negru.
+// selectoarele cu săgeată desenată (anul îngust, luna lată) și tabelul de
+// rezultat cu cifra principală marcată pe rândul negru.
 // Rezultatul apare la „Calculează”; de atunci urmează formularul, ca la TVA.
 //
 // Ambele capete se aleg. „Cât valorau 1.000 de lei din 2010 în 2015” e o
@@ -38,6 +38,7 @@ const colHeader = "mb-4 border-b border-stone-200 pb-2 text-lg font-medium text-
 const controlBox =
   "w-full rounded border border-stone-300 bg-surface px-3 py-2 text-base sm:text-sm text-stone-900 outline-none transition focus:border-stone-400 focus:shadow-[0_0_6px_rgba(28,25,23,0.12)]";
 const etichetaRand = "mb-2 block text-sm text-stone-700";
+const celulaRezultat = "px-2.5 py-2.5 sm:px-3";
 
 const ANI = aniDisponibili();
 const LUNI = Array.from({ length: 12 }, (_, i) => i + 1);
@@ -204,29 +205,46 @@ export default function CalculatorInflatie() {
         <div aria-live="polite">
           {r ? (
             <>
-              <div className="rounded bg-stone-900 p-4 text-white [overflow-wrap:anywhere]">
-                <h3 className="text-sm font-medium">Suma actualizată</h3>
-                <p className="mt-2 text-2xl font-bold leading-snug tabular-nums">
-                  <span className="marcaj">{sumaAfisata(r.echivalent, la)}</span>
-                </p>
-                <p className="mt-2 text-sm text-stone-200">
-                  Pentru a cumpăra în {etichetaLuna(la)} ce cumpărai cu {sumaAfisata(r.suma, de)} în {etichetaLuna(de)}.
-                </p>
-              </div>
+              <p className="mb-3 flex flex-wrap items-baseline gap-x-3 gap-y-0.5 text-sm text-stone-600 [overflow-wrap:anywhere]">
+                <strong className="min-w-0 font-semibold text-stone-900">{sumaAfisata(r.suma, de)}</strong>
+                <span>
+                  {etichetaLuna(de)} <span aria-hidden="true">→</span><span className="sr-only">către</span> {etichetaLuna(la)}
+                </span>
+              </p>
 
-              <div className="mt-3 divide-y divide-stone-200 rounded border border-stone-200 [overflow-wrap:anywhere]">
-                <div className="px-4 py-3">
-                  <h3 className="text-sm font-medium text-stone-900">Puterea de cumpărare</h3>
-                  <p className="mt-1 text-sm text-stone-700">
-                    În {etichetaLuna(la)}, cu {sumaAfisata(r.sumaNominalaLa, la)} cumperi cât cumpărai cu{" "}
-                    <strong className="font-semibold tabular-nums text-stone-900">{sumaAfisata(r.putereRamasaInLei, de)}</strong>{" "}
-                    în {etichetaLuna(de)}.
-                  </p>
-                </div>
-                <dl className="flex items-baseline justify-between gap-3 px-4 py-3 text-sm">
-                  <dt className="text-stone-700">Inflație cumulată</dt>
-                  <dd className="font-semibold tabular-nums text-stone-900">{nr(r.inflatieCumulata, 1)}%</dd>
-                </dl>
+              <div className="overflow-hidden rounded border border-stone-300">
+                <table className="w-full table-fixed border-collapse text-sm leading-snug text-stone-900 [overflow-wrap:anywhere]">
+                  <caption className="sr-only">Rezultatul actualizării cu inflația</caption>
+                  <colgroup><col /><col className="w-[43%] sm:w-40" /></colgroup>
+                  <tbody>
+                    <tr className="bg-stone-900 text-white">
+                      <th scope="row" className={`${celulaRezultat} border-r border-stone-600 text-left font-bold`}>
+                        Suma actualizată
+                        <span className="mt-0.5 block text-xs font-normal text-stone-200">Pentru aceleași cumpărături la final</span>
+                      </th>
+                      <td className={`${celulaRezultat} text-right font-bold tabular-nums`}>
+                        <span className="marcaj box-decoration-clone">{sumaAfisata(r.echivalent, la)}</span>
+                      </td>
+                    </tr>
+                    <tr className="border-b border-stone-300">
+                      <th scope="row" className={`${celulaRezultat} border-r border-stone-300 text-left font-medium`}>
+                        Putere de cumpărare
+                        <span className="mt-0.5 block text-xs font-normal text-stone-600">
+                          {r.denominareAplicata ? sumaAfisata(r.sumaNominalaLa, la) : "Aceeași sumă"} la final, în banii de la început
+                        </span>
+                      </th>
+                      <td className={`${celulaRezultat} text-right font-semibold tabular-nums`}>
+                        {sumaAfisata(r.putereRamasaInLei, de)}
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row" className={`${celulaRezultat} border-r border-stone-300 text-left font-normal text-stone-700`}>
+                        Inflație cumulată
+                      </th>
+                      <td className={`${celulaRezultat} text-right font-semibold tabular-nums`}>{nr(r.inflatieCumulata, 1)}%</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </>
           ) : (
@@ -242,11 +260,7 @@ export default function CalculatorInflatie() {
           </p>
         ) : null}
 
-        {r ? (
-          <div className="mt-4">
-            <FeedbackContextual context="calcul" />
-          </div>
-        ) : null}
+        {r ? <FeedbackContextual context="calcul" /> : null}
       </div>
     </div>
   );

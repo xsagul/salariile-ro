@@ -6432,3 +6432,14 @@ Conversia nominală de la denominare se aplică și comparației în lei.
 Verificat în browser la 320, 390 și 1280 px, inclusiv pentru aceeași lună
 și trecerea în ambele sensuri între lei vechi și lei noi. Au trecut
 `npm test`, lint pe fișierele schimbate, build-ul și `npm run test:rendered`.
+
+### Tabelul calculatorului de inflație, în stilul homepage-ului
+
+Proprietarul a cerut stilul tabelelor din celelalte calculatoare. Rezultatul
+are un singur tabel de trei rânduri. Suma actualizată este pe rândul negru cu
+marcajul galben, urmată de puterea de cumpărare în lei și inflația cumulată.
+Suma introdusă și lunile apar o singură dată, deasupra tabelului.
+
+Verificat vizual după calcul la 390 px și verificat la 320 și 1280 px, inclusiv
+cu lei vechi la 320 px. Au trecut lint pe componentă, testele de inflație,
+build-ul și verificarea HTML-ului randat.
