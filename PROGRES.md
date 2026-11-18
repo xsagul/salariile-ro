@@ -6390,3 +6390,11 @@ exemple. Secțiunea de exemple are în continuare ancora proprie.
 
 Verificate exportul HTML, `npm test`, lint pe fișierele schimbate,
 `npm run build` și `npm run test:rendered`.
+
+### Tot 18 noiembrie — revenire la aspectul anterior pentru „Zile lucrătoare”
+
+La cererea proprietarului, au fost retrase rezumatul lunii, alegerea lunii,
+saltul la calendar și stilurile tabelului mobil adăugate în `fb4d4f9`.
+Componentele de calendar și tabel au revenit la versiunea de dinaintea
+acelui commit. Au trecut testul de calendare, lint, build-ul și verificarea
+HTML-ului randat. În exportul 2026 și 2027 apar tabelul și calendarul anterior.

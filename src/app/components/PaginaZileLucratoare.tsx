@@ -120,7 +120,6 @@ export default function PaginaZileLucratoare({ an }: { an: AnZileLucratoare }) {
   };
   const acum = acumRo();
   const lunaCurenta = acum.an === an ? acum.luna : null;
-  const lunaRezumat = rows[lunaCurenta ?? 0];
   const trecut = an < acum.an;
   const url = `https://salariile.ro${cale(an)}`;
   const { description } = metadataZileLucratoare(an) as { description: string };
@@ -170,50 +169,16 @@ export default function PaginaZileLucratoare({ an }: { an: AnZileLucratoare }) {
           </p>
           <AniZileLucratoare an={an} />
 
-          <div className="mt-4 rounded-md border border-stone-200 bg-surface px-3 pt-3 shadow-soft sm:hidden">
-            <p className="text-sm font-semibold text-stone-900">
-              {lunaRezumat.name} {an}
-              {lunaCurenta !== null && <span className="ml-2 text-xs font-normal text-stone-600">luna curentă</span>}
-            </p>
-            <p className="mt-1 text-sm text-stone-700">
-              <strong className="font-semibold text-stone-900">{lunaRezumat.lucratoare}</strong> zile lucrătoare
-              {" · "}
-              <strong className="font-semibold text-stone-900">{lunaRezumat.ore}</strong> ore de lucru
-            </p>
-            <a href="#calendar-anual" className={`inline-flex min-h-11 items-center text-sm ${linkCard}`}>
-              Vezi calendarul anului
-            </a>
-            <details className="border-t border-stone-200">
-              <summary className="min-h-11 cursor-pointer py-3 text-sm font-medium text-stone-900">Alege luna</summary>
-              <nav aria-label="Lunile anului" className="grid grid-cols-3 gap-1 pb-3">
-                {rows.map((row, i) => (
-                  <a
-                    key={row.name}
-                    href={`#${row.name.toLowerCase()}`}
-                    aria-current={i === lunaCurenta ? "date" : undefined}
-                    className="flex min-h-11 items-center justify-center rounded border border-stone-200 px-1 text-center text-xs font-medium text-stone-700 hover:bg-canvas"
-                  >
-                    {row.name}
-                  </a>
-                ))}
-              </nav>
-            </details>
-          </div>
-
           {/* Grila începe la tabel, iar cardul din dreapta pornește de la nivelul lui, ca la zile libere. */}
           <div className="md:grid md:grid-cols-5 md:gap-6">
             <div className="md:col-span-3">
-              <TabelArticol tableClassName="max-sm:table-fixed max-sm:text-xs max-sm:[&>thead>tr>th]:px-1.5 max-sm:[&>thead>tr>th]:tracking-normal max-sm:[&>tbody>tr>td]:px-1.5 max-sm:[&>tbody>tr>th]:px-1.5">
+              <TabelArticol>
                 <thead>
                   <tr>
-                    <th scope="col" className="max-sm:w-[37%]">Luna</th>
-                    <th scope="col" className="text-right">
-                      Zile<span className="sm:hidden"> de lucru</span><span className="hidden sm:inline"> lucrătoare</span>
-                    </th>
-                    <th scope="col" className="text-right">
-                      Ore<span className="sm:hidden"> de lucru</span><span className="hidden sm:inline"> lucrătoare</span>
-                    </th>
-                    <th scope="col" className="text-right">Zile libere</th>
+                    <th>Luna</th>
+                    <th className="text-right">Zile lucrătoare</th>
+                    <th className="text-right">Ore lucrătoare</th>
+                    <th className="text-right">Zile libere</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -224,19 +189,19 @@ export default function PaginaZileLucratoare({ an }: { an: AnZileLucratoare }) {
                       aria-current={i === lunaCurenta ? "date" : undefined}
                       className={`scroll-mt-24 ${i === lunaCurenta ? "bg-antet font-semibold text-stone-900" : ""}`}
                     >
-                      <th scope="row">
+                      <td className="font-medium text-stone-900">
                         <a href={`#${row.name.toLowerCase()}`} className="hover:underline">
                           {row.name}
                         </a>
-                        {i === lunaCurenta ? <span className="ml-2 text-xs font-normal text-stone-600 max-sm:ml-0 max-sm:block">luna curentă</span> : null}
-                      </th>
+                        {i === lunaCurenta ? <span className="ml-2 text-xs font-normal text-stone-600">luna curentă</span> : null}
+                      </td>
                       <td className="text-right tabular-nums">{row.lucratoare}</td>
                       <td className="text-right tabular-nums">{row.ore}</td>
                       <td className="text-right tabular-nums">{row.libere}</td>
                     </tr>
                   ))}
                   <tr>
-                    <th scope="row" className="font-bold text-stone-900">Total {an}</th>
+                    <td className="font-bold text-stone-900">Total {an}</td>
                     <td className="text-right font-bold tabular-nums text-stone-900">{total}</td>
                     <td className="text-right font-bold tabular-nums text-stone-900">{ore.toLocaleString("ro-RO")}</td>
                     <td className="text-right font-bold tabular-nums text-stone-900">{libere}</td>
@@ -254,7 +219,7 @@ export default function PaginaZileLucratoare({ an }: { an: AnZileLucratoare }) {
 
             {/* CALENDAR — 12 luni, același ca la zile libere (proprietar, 27 sept. 2026). */}
             <div className={`${SEPARATOR_SECTIUNE} md:col-span-5`}>
-              <h2 id="calendar-anual" className={`${TITLU_SECTIUNE} scroll-mt-24`}>Calendarul anului {an}</h2>
+              <h2 className={TITLU_SECTIUNE}>Calendarul anului {an}</h2>
               <CalendarAn an={an} luni={luni} dataBuild={new Date().toISOString()} numara="lucratoare" />
               <DescarcaZileLucratoare {...descarcari} ce="calendar" />
             </div>
