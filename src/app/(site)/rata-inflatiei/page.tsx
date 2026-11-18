@@ -10,7 +10,7 @@
 
 import type { Metadata } from "next";
 import TabelArticol from "@/app/components/TabelArticol";
-import { ReclamaIntreSectiuni } from "@/app/components/Reclama";
+import Reclama, { ReclamaIntreSectiuni } from "@/app/components/Reclama";
 import { Breadcrumb, CardCompanion, Faq, H1, Hero, Lead, PaginiConexe, Repere, Section } from "@/app/components/ui";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
@@ -125,6 +125,8 @@ export default function Page() {
           înainte. Mai jos, inflația în fiecare an și ultimele luni, din datele INS.
         </Lead>
       </Hero>
+
+      <Reclama plasare="continut" className="pt-6 sm:pt-8" />
 
       <Section
         noTopBorder

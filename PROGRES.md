@@ -6541,3 +6541,6 @@ componenta de reclamă folosită după rezultatele celorlalte calculatoare.
 Am adăugat acea componentă la fiecare, cu etichetă în engleză pe pagina în
 engleză. În pagina „Rata inflației”, reclama stă după tabele și datele
 exportabile, înainte de întrebările frecvente.
+
+La cererea proprietarului, „Rata inflației” are și o casetă publicitară
+după introducerea cu rata curentă, înainte de tabelul pe ani.
