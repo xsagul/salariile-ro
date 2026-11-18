@@ -282,6 +282,7 @@ async function auditRenderedSite() {
     ["/calculator/calcul-salariu-net-4582-brut", "2.754", "netul curent pentru 4.582 brut"],
     ["/calculator-pfa", "24.300", "pragul salarial PFA"],
     ["/calculator-salariu-part-time", "Diferența o pune firma", "explicația contribuțiilor suportate de firmă"],
+    ["/calculator-salariu-part-time", "Minimul proporțional pentru 4 ore/zi", "indicația de sub câmpul de salariu brut"],
     ["/calculator-salariu-part-time", "Calculează", "butonul explicit de calcul part-time"],
     ["/calculator-salariu-part-time", "Calculator avansat", "opțiunile avansate part-time"],
     ["/calculator-salariu-part-time", "1.352 lei net", "exemplul pentru minimul la 4 ore"],

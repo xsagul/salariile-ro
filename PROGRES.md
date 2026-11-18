@@ -6380,3 +6380,13 @@ tabelele fără derulare laterală. Calculele de test coincid cu funcția
 fiscală. Au trecut `npm test`, lint pe fișierele schimbate, build-ul și
 `npm run test:rendered`. Testul randat verifică explicit câmpul gol și
 absența sumelor în panou înainte de calcul.
+
+### Tot 18 noiembrie — indicația de sub brut la part-time
+
+La cererea proprietarului, nota cu minimul proporțional revine sub câmpul
+gol și urmează norma selectată. Panoul rezultatului începe direct cu
+tabelele, după eliminarea instrucțiunii și a linkului redundant spre
+exemple. Secțiunea de exemple are în continuare ancora proprie.
+
+Verificate exportul HTML, `npm test`, lint pe fișierele schimbate,
+`npm run build` și `npm run test:rendered`.

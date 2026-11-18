@@ -242,7 +242,7 @@ export default function CalculatorPartTime() {
                 value={brut ? fmt(Number(brut)) : ""}
                 placeholder={`ex: ${fmt(minimProportional)}`}
                 aria-invalid={emptyWarn || subMinimulLegal}
-                aria-describedby={emptyWarn || subMinimulLegal ? "part-time-brut-ajutor" : undefined}
+                aria-describedby="part-time-brut-ajutor"
                 onChange={(event) => {
                   setBrut(event.target.value.replace(/\D/g, ""));
                   if (emptyWarn) setEmptyWarn(false);
@@ -251,13 +251,17 @@ export default function CalculatorPartTime() {
               />
               <span className="flex shrink-0 items-center whitespace-nowrap border-l border-stone-200 px-3 text-xs font-medium text-stone-600">lei / lună</span>
             </div>
-            {(emptyWarn || subMinimulLegal) && (
-              <p id="part-time-brut-ajutor" role={emptyWarn ? "alert" : undefined} className="mt-2 text-xs font-medium text-stone-900">
-                {emptyWarn
-                  ? "Introdu un salariu brut mai întâi."
-                  : `Sub minimul proporțional de ${fmt(minimProportional)} lei brut pentru ${orePeZi} ore/zi.`}
-              </p>
-            )}
+            <p
+              id="part-time-brut-ajutor"
+              role={emptyWarn ? "alert" : undefined}
+              className={`mt-2 text-xs ${emptyWarn || subMinimulLegal ? "font-medium text-stone-900" : "text-stone-600"}`}
+            >
+              {emptyWarn
+                ? "Introdu un salariu brut mai întâi."
+                : subMinimulLegal
+                  ? `Sub minimul proporțional de ${fmt(minimProportional)} lei brut pentru ${orePeZi} ore/zi.`
+                  : `Minimul proporțional pentru ${orePeZi} ore/zi este ${fmt(minimProportional)} lei brut.`}
+            </p>
           </div>
 
           <button
@@ -334,15 +338,6 @@ export default function CalculatorPartTime() {
           {stale && (
             <p className="mb-4 rounded border border-stone-300 bg-canvas px-3 py-2 text-xs text-stone-600" role="status">
               Ai modificat datele – apasă <strong className="font-medium text-stone-900">Calculează</strong> pentru a actualiza rezultatul.
-            </p>
-          )}
-
-          {!rezultat && (
-            <p className="mb-4 text-sm text-stone-600">
-              Introdu brutul lunar și apasă Calculează.{" "}
-              <a href="#scenarii-part-time" className="font-medium text-stone-900 underline underline-offset-2">
-                Vezi exemplele la salariul minim
-              </a>
             </p>
           )}
 
