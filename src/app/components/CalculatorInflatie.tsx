@@ -16,7 +16,7 @@
 // întrebare la fel de legitimă ca „cât valorează azi”, iar actualizarea unei
 // sume dintr-un contract sau dintr-o hotărâre cere luni anume, nu „azi”.
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import FeedbackContextual from "@/app/components/FeedbackContextual";
 import IconCalculeaza from "@/app/components/IconCalculeaza";
 import { SPATIU_JOS } from "@/app/components/ui";
@@ -126,6 +126,7 @@ function AlegeLuna({ id, eticheta, valoare, onChange }: {
 function GraficInflatie({ rezultat }: { rezultat: Rezultat }) {
   const serie = useMemo(() => serieSumaActualizata(rezultat), [rezultat]);
   const [ales, setAles] = useState<number | null>(null);
+  const zonaRef = useRef<HTMLDivElement>(null);
   if (serie.length < 2 || serie.some((punct) => !Number.isFinite(punct.suma))) return null;
 
   const valori = serie.map((punct) => punct.suma);
@@ -134,52 +135,124 @@ function GraficInflatie({ rezultat }: { rezultat: Rezultat }) {
   const ultimul = serie.length - 1;
   const index = ales ?? ultimul;
   const punct = serie[index];
-  const x = (i: number) => 6 + i * 308 / ultimul;
-  const y = (suma: number) => maxim === minim ? 56 : 100 - 90 * ((suma - minim) / (maxim - minim));
+
+  const x = (i: number) => (i / ultimul) * 320;
+  const y = (val: number) => (maxim === minim ? 62 : 110 - 94 * ((val - minim) / (maxim - minim)));
   const linie = serie.map((luna, i) => `${x(i).toFixed(1)},${y(luna.suma).toFixed(1)}`).join(" ");
   const suma = sumaAfisata(punct.suma, rezultat.la);
 
+  const pctX = (index / ultimul) * 100;
+  const pctY = (y(punct.suma) / 120) * 100;
+  const pctStartY = (y(serie[0].suma) / 120) * 100;
+  const pctEndY = (y(serie[ultimul].suma) / 120) * 100;
+
+  const actualizeazaDinX = (clientX: number) => {
+    const rect = zonaRef.current?.getBoundingClientRect();
+    if (!rect || rect.width <= 0) return;
+    const raport = Math.min(1, Math.max(0, (clientX - rect.left) / rect.width));
+    setAles(Math.round(raport * ultimul));
+  };
+
+  const stilTooltip =
+    pctX < 22
+      ? { left: "0%" }
+      : pctX > 78
+        ? { right: "0%" }
+        : { left: `${pctX}%`, transform: "translateX(-50%)" };
+
   return (
     <figure className="mt-5 border-t border-stone-200 pt-4">
-      <figcaption className="text-sm font-semibold text-stone-900">
-        Suma necesară pentru aceleași cumpărături
-      </figcaption>
+      <div className="flex items-baseline justify-between gap-2">
+        <figcaption className="text-sm font-semibold text-stone-900">
+          Evoluția sumei echivalente
+        </figcaption>
+        {ales === null ? (
+          <span className="text-xs text-stone-600">Treci cu cursorul sau atinge graficul</span>
+        ) : null}
+      </div>
       {rezultat.denominareAplicata ? (
         <p className="mt-1 text-xs text-stone-600">Toate valorile din grafic sunt în {unitate(rezultat.la)}.</p>
       ) : null}
-      <div className="relative mt-2 rounded focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-stone-500">
-        <svg viewBox="0 0 320 108" className="block h-28 w-full" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M6 10H314 M6 55H314 M6 100H314" className="fill-none stroke-stone-200" vectorEffect="non-scaling-stroke" />
-          <polygon points={`6,100 ${linie} 314,100`} className="fill-stone-100" />
-          <polyline points={linie} className="fill-none stroke-stone-900" strokeWidth="2" strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
-          <circle cx={x(0)} cy={y(serie[0].suma)} r="2.8" className="fill-stone-900" />
-          <circle cx={x(ultimul)} cy={y(serie[ultimul].suma)} r="2.8" className="fill-stone-900" />
+
+      <div
+        ref={zonaRef}
+        role="slider"
+        tabIndex={0}
+        aria-label="Alege o lună pe grafic"
+        aria-valuemin={0}
+        aria-valuemax={ultimul}
+        aria-valuenow={index}
+        aria-valuetext={`${etichetaLuna(punct)}, ${suma}`}
+        onPointerMove={(e) => {
+          if (e.pointerType === "mouse" || e.buttons > 0) actualizeazaDinX(e.clientX);
+        }}
+        onPointerDown={(e) => {
+          actualizeazaDinX(e.clientX);
+          if (e.pointerType !== "mouse") {
+            try { e.currentTarget.setPointerCapture(e.pointerId); } catch {}
+          }
+        }}
+        onPointerLeave={(e) => {
+          if (e.pointerType === "mouse") setAles(null);
+        }}
+        onKeyDown={(e) => {
+          if (e.key === "ArrowLeft") { e.preventDefault(); setAles((c) => Math.max(0, (c ?? ultimul) - 1)); }
+          else if (e.key === "ArrowRight") { e.preventDefault(); setAles((c) => Math.min(ultimul, (c ?? 0) + 1)); }
+          else if (e.key === "Home") { e.preventDefault(); setAles(0); }
+          else if (e.key === "End") { e.preventDefault(); setAles(ultimul); }
+        }}
+        className="relative mt-3 cursor-crosshair select-none touch-pan-y rounded pt-8 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-400"
+      >
+        {ales !== null ? (
+          <div
+            style={stilTooltip}
+            className="pointer-events-none absolute top-0 z-10 whitespace-nowrap rounded border border-stone-300 bg-surface px-2.5 py-1 text-xs shadow-soft"
+          >
+            <span className="text-stone-600">{etichetaLuna(punct)}</span>{" "}
+            <strong className="font-semibold tabular-nums text-stone-900">{suma}</strong>
+          </div>
+        ) : null}
+
+        <div className="relative h-36 w-full sm:h-40">
+          <svg viewBox="0 0 320 120" className="block h-full w-full overflow-visible" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0 16H320 M0 63H320 M0 110H320" className="fill-none stroke-stone-200" strokeDasharray="3 3" vectorEffect="non-scaling-stroke" />
+            <polygon points={`0,110 ${linie} 320,110`} className="fill-canvas" />
+            <polyline points={linie} className="fill-none stroke-stone-900" strokeWidth="2" strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
+          </svg>
+
+          {/* Capete reale (cercuri perfecte, fără deformare din viewBox) */}
+          <span
+            aria-hidden="true"
+            style={{ left: "0%", top: `${pctStartY}%` }}
+            className="pointer-events-none absolute h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-stone-900"
+          />
+          <span
+            aria-hidden="true"
+            style={{ left: "100%", top: `${pctEndY}%` }}
+            className="pointer-events-none absolute h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-stone-900"
+          />
+
           {ales !== null ? (
             <>
-              <line x1={x(index)} x2={x(index)} y1="10" y2="100" className="stroke-stone-400" strokeDasharray="3 3" vectorEffect="non-scaling-stroke" />
-              <circle cx={x(index)} cy={y(punct.suma)} r="4" className="fill-stone-900 stroke-surface" strokeWidth="2" vectorEffect="non-scaling-stroke" />
+              <span
+                aria-hidden="true"
+                style={{ left: `${pctX}%` }}
+                className="pointer-events-none absolute bottom-2 top-3 w-px border-l border-dashed border-stone-400"
+              />
+              <span
+                aria-hidden="true"
+                style={{ left: `${pctX}%`, top: `${pctY}%` }}
+                className="pointer-events-none absolute h-3.5 w-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-stone-900 bg-marcaj shadow-soft"
+              />
             </>
           ) : null}
-        </svg>
-        <input
-          type="range"
-          min={0}
-          max={ultimul}
-          value={index}
-          aria-label="Luna pe grafic"
-          aria-valuetext={`${etichetaLuna(punct)}, ${suma}`}
-          onChange={(e) => setAles(Number(e.currentTarget.value))}
-          onPointerUp={(e) => setAles(Number(e.currentTarget.value))}
-          className="absolute inset-0 m-0 h-full w-full cursor-ew-resize appearance-none opacity-0"
-        />
+        </div>
       </div>
-      <div className="grid grid-cols-2 gap-2 text-xs text-stone-600 [overflow-wrap:anywhere]">
+
+      <div className="mt-3 grid grid-cols-2 gap-2 border-t border-stone-200 pt-2.5 text-xs text-stone-600 [overflow-wrap:anywhere]">
         <p>{etichetaLuna(serie[0])}<strong className="block font-medium text-stone-900">{sumaAfisata(serie[0].suma, rezultat.la)}</strong></p>
         <p className="text-right">{etichetaLuna(serie[ultimul])}<strong className="block font-medium text-stone-900">{sumaAfisata(serie[ultimul].suma, rezultat.la)}</strong></p>
       </div>
-      <p className="mt-2 border-t border-stone-200 pt-2 text-xs text-stone-600 [overflow-wrap:anywhere]">
-        {ales === null ? "Alege o lună direct pe grafic." : <>{etichetaLuna(punct)} · <strong className="font-semibold text-stone-900">{suma}</strong></>}
-      </p>
     </figure>
   );
 }
