@@ -124,10 +124,11 @@ export default function CalculatorSanatate({ meserii }: { meserii: MeserieSanata
   const sporGradatie = r ? r.salariuDeBaza - r.salariuGrila : null;
 
   return (
-    <div id="calc-sanatate" className={`mx-auto grid max-w-6xl gap-6 px-4 pt-5 sm:px-6 sm:pt-6 ${SPATIU_JOS} md:grid-cols-5`}>
-      {/* ─── Opțiuni ─────────────────────────────────────────────────── */}
-      <div className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-2">
-        <h2 className={colHeader}>Încadrarea</h2>
+    <section className="border-b border-stone-200 bg-canvas" aria-labelledby="calculator-sanatate-titlu">
+      <div id="calc-sanatate" className={`mx-auto grid max-w-6xl items-start gap-6 px-4 pt-5 sm:px-6 sm:pt-6 ${SPATIU_JOS} md:grid-cols-5`}>
+        {/* ─── Opțiuni ─────────────────────────────────────────────────── */}
+        <div className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-2">
+          <h2 id="calculator-sanatate-titlu" className={colHeader}>Încadrarea</h2>
 
         <div className="flex flex-col gap-5">
           <SelectorPastile
@@ -234,7 +235,12 @@ export default function CalculatorSanatate({ meserii }: { meserii: MeserieSanata
               <Row label="CAS 25%" value={r ? fmt(r.fiscal.cas) : null} sub neg />
               <Row label="CASS 10%" value={r ? fmt(r.fiscal.cass) : null} sub neg />
               <Row label="Impozit pe venit 10%" value={r ? fmt(r.fiscal.impozit) : null} sub neg />
-              <Row label="Salariu net" value={r ? fmt(r.fiscal.netBani) : null} bold ultim />
+              <tr className="bg-stone-900 font-bold text-white">
+                <th scope="row" className="border-r border-stone-600 px-3 py-3 text-left">Salariu net</th>
+                <td className="px-3 py-3 text-right tabular-nums whitespace-nowrap">
+                  {r ? <span className="marcaj">{fmt(r.fiscal.netBani)} lei</span> : "—"}
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -254,13 +260,13 @@ export default function CalculatorSanatate({ meserii }: { meserii: MeserieSanata
           </p>
         ) : null}
 
-
         {r ? (
           <div className="mt-4">
             <FeedbackContextual context="calcul" />
           </div>
         ) : null}
       </div>
-    </div>
+      </div>
+    </section>
   );
 }

@@ -44,10 +44,9 @@ function Camp({ eticheta, ajutor, valoare, onChange, sufix, min = 0, pas = 1 }: 
   sufix: string; min?: number; pas?: number;
 }) {
   return (
-    <label className="block">
-      <span className="block text-sm font-medium text-stone-900">{eticheta}</span>
-      {ajutor ? <span className="mt-0.5 block text-xs text-stone-600">{ajutor}</span> : null}
-      <span className="mt-2 flex items-center gap-2">
+    <label className="block min-w-0">
+      <span className="mb-1.5 block text-xs font-medium text-stone-600">{eticheta}</span>
+      <span className="flex min-w-0 overflow-hidden rounded border border-stone-300 bg-surface transition focus-within:border-stone-400 focus-within:shadow-[0_0_6px_rgba(28,25,23,0.12)]">
         <input
           type="number"
           inputMode="decimal"
@@ -55,10 +54,13 @@ function Camp({ eticheta, ajutor, valoare, onChange, sufix, min = 0, pas = 1 }: 
           step={pas}
           value={valoare}
           onChange={(e) => onChange(e.target.value)}
-          className="min-h-11 w-full rounded border border-stone-300 px-3 py-2 text-base tabular-nums text-stone-900 sm:text-sm focus:border-stone-500 focus:outline-none focus:ring-1 focus:ring-stone-300"
+          className="min-h-11 min-w-0 flex-1 bg-transparent px-3 py-2 text-base tabular-nums text-stone-900 outline-none"
         />
-        <span className="shrink-0 text-sm text-stone-600">{sufix}</span>
+        <span className="flex shrink-0 items-center whitespace-nowrap border-l border-stone-200 px-3 text-xs font-medium text-stone-600">
+          {sufix}
+        </span>
       </span>
+      {ajutor ? <span className="mt-1.5 block text-xs text-stone-600">{ajutor}</span> : null}
     </label>
   );
 }
@@ -120,10 +122,17 @@ export default function CalculatorOreSuplimentare() {
   const reset = () => setRez(null);
 
   return (
-    <div id="calc-ore" className={`mx-auto grid max-w-6xl gap-6 px-4 pt-5 sm:px-6 sm:pt-6 ${SPATIU_JOS} md:grid-cols-5`}>
-      {/* ─── Intrări ─────────────────────────────────────────────────── */}
-      <div className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-2">
-        <h2 className={colHeader}>Orele tale</h2>
+    <section className="border-b border-stone-200 bg-canvas" aria-labelledby="calculator-ore-titlu">
+      <div id="calc-ore" className={`mx-auto grid max-w-6xl items-start gap-6 px-4 pt-5 sm:px-6 sm:pt-6 ${SPATIU_JOS} md:grid-cols-5`}>
+        {/* ─── Intrări ─────────────────────────────────────────────────── */}
+        <form
+          className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-2"
+          onSubmit={(e) => {
+            e.preventDefault();
+            calculeaza();
+          }}
+        >
+          <h2 id="calculator-ore-titlu" className={colHeader}>Orele tale</h2>
 
         <div className="flex flex-col gap-5">
           <Camp
@@ -195,15 +204,14 @@ export default function CalculatorOreSuplimentare() {
           </div>
 
           <button
-            type="button"
-            onClick={calculeaza}
-            className="flex min-h-11 w-full items-center justify-center gap-2 rounded bg-stone-900 px-4 py-3 text-sm font-medium text-white transition hover:bg-stone-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-stone-400 focus-visible:ring-offset-2"
+            type="submit"
+            className="flex min-h-12 w-full items-center justify-center gap-2 rounded bg-stone-900 px-4 py-3 text-sm font-medium text-white shadow-soft transition-colors hover:bg-stone-800 active:translate-y-px"
           >
             <IconCalculeaza />
             Calculează
           </button>
         </div>
-      </div>
+        </form>
 
       {/* ─── Rezultat ────────────────────────────────────────────────── */}
       <div id="rezultat-ore" className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-3">
@@ -250,7 +258,14 @@ export default function CalculatorOreSuplimentare() {
               <Row label="CAS 25%" value={r ? `− ${fmt(r.fiscal.cas)} lei` : null} sub />
               <Row label="CASS 10%" value={r ? `− ${fmt(r.fiscal.cass)} lei` : null} sub />
               <Row label="Impozit 10%" value={r ? `− ${fmt(r.fiscal.impozit)} lei` : null} sub />
-              <Row label="Salariu net" value={r ? `${fmt(r.fiscal.netBani)} lei` : null} bold />
+              <tr className="bg-stone-900 font-bold text-white">
+                <th scope="row" className="border-b border-r border-b-stone-700 border-r-stone-600 px-3 py-3 text-left">
+                  Salariu net
+                </th>
+                <td className="border-b border-b-stone-700 px-3 py-3 text-right tabular-nums whitespace-nowrap">
+                  {r ? <span className="marcaj">{fmt(r.fiscal.netBani)} lei</span> : "—"}
+                </td>
+              </tr>
               <Row
                 label="Din care, net din ore în plus"
                 value={castig === null ? null : `${fmt(castig)} lei`}
@@ -264,7 +279,7 @@ export default function CalculatorOreSuplimentare() {
 
         {r?.avertismentNoapte ? (
           <p className="mt-4 rounded border border-stone-300 bg-canvas p-3 text-sm text-stone-700">
-            <strong className="text-stone-900">Atenție la pragul de {PRAG_ORE_NOAPTE_ZI} ore.</strong>{" "}
+            <strong className="text-stone-900">Pragul de {PRAG_ORE_NOAPTE_ZI} ore.</strong>{" "}
             Sporul de noapte se cuvine salariatului care lucrează cel puțin {PRAG_ORE_NOAPTE_ZI} ore
             de noapte din ziua de lucru, sau cel puțin 30% din timpul lunar ({TEMEI.noapteDefinitie}).
             Sub prag, sporul poate veni doar din contractul colectiv, nu din lege.
@@ -277,13 +292,13 @@ export default function CalculatorOreSuplimentare() {
           </p>
         ) : null}
 
-
         {r ? (
           <div className="mt-4">
             <FeedbackContextual context="calcul" />
           </div>
         ) : null}
       </div>
-    </div>
+      </div>
+    </section>
   );
 }
