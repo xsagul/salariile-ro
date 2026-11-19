@@ -113,7 +113,11 @@ export type Instrument =
   | "ore_suplimentare"
   | "part_time"
   | "tva"
-  | "inflatie";
+  | "inflatie"
+  | "concediu_medical"
+  | "crestere_copil"
+  | "concediu_odihna"
+  | "vechime_munca";
 
 /** Un calcul cerut de vizitator. Fără sumă: doar ce instrument și ce variantă. */
 export function masoaraCalcul(

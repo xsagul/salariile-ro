@@ -2,22 +2,18 @@
 title: "Indexarea salariului cu inflația în 2026"
 description: "Ai primit o mărire, dar banii par mai puțini? Vezi cum se calculează indexarea salariului cu inflația și când angajatorul este obligat să o acorde."
 date: "2026-09-11"
-updated: "2026-09-24"
+updated: "2026-11-19"
 hero: "/noutati/indexarea-salariului-inflatie-2026.webp"
 heroAlt: "Plic de salariu și monede lângă un coș cu alimente, legate de un bon de cumpărături, într-o ilustrație în tonuri calde."
 ---
 
 **Indexarea salariului cu inflația înseamnă ajustarea lui pentru a ține pasul cu scumpirile.** O mărire care doar acoperă inflația îți păstrează puterea de cumpărare. Ca să simți un câștig, netul trebuie să crească mai repede decât prețurile.
 
-Altfel, poți avea mai mulți bani în cont și mai puține lucruri în coș.
+Pentru calcul direct cu indicii lunari oficiali INS, folosește [calculatorul de inflație](/calculator-inflatie) sau consultă evoluția lunară în [rata inflației în România](/rata-inflatiei).
 
-## De ce vorbim despre asta acum
+## Cum funcționează în practică
 
-Pe 10 septembrie 2026, angajații Oil Terminal au făcut grevă de avertisment. Cereau indexarea salariilor, iar oamenii intervievați descriau cererea ca pe o recuperare a pierderilor provocate de inflație. [Reportajul TVR](https://tvrinfo.ro/greva-la-un-punct-strategic-al-portului-constanta-angajatii-oil-terminal-cer-salarii-mai-mari/) arată foarte concret ce se ascunde în spatele cuvântului „indexare”.
-
-Cu o zi înainte, Ana Călugăru de la eJobs spunea la [Economedia, în emisiunea din 9 septembrie](https://economedia.ro/live-harta-de-impact-cum-arata-piata-muncii-la-inceput-de-toamna-despre-job-uri-in-recesiune-cu-ana-calugaru-ejobs-romania.html), că observă creșteri salariale în multe domenii, dar adesea sub inflație. Este observația reprezentantei platformei, nu o măsurătoare a fiecărui salariu din România.
-
-Pentru tine, întrebarea rămâne aceeași: mărirea primită îți permite să cumperi mai mult decât înainte?
+În septembrie 2026, angajații Oil Terminal au declanșat grevă de avertisment cerând indexarea salariilor cu inflația ([reportaj TVR](https://tvrinfo.ro/greva-la-un-punct-strategic-al-portului-constanta-angajatii-oil-terminal-cer-salarii-mai-mari/)), iar datele din piața muncii arătau creșteri salariale care în multe domenii rămâneau sub ritmul scumpirilor. Pentru orice angajat, întrebarea practică rămâne aceeași: mărirea primită îți permite să cumperi mai mult decât înainte?
 
 ## O mărire de 250 de lei poate lăsa un gol de 150
 
@@ -47,7 +43,7 @@ Contează perioada. Dacă ultima mărire a fost acum doi ani, inflația din ulti
 
 Pentru bugetul tău, compară net cu net. Pentru aplicarea unei clauze din contract, urmează baza scrisă acolo, de exemplu salariul de bază brut. O creștere procentuală a brutului nu produce întotdeauna aceeași creștere procentuală a netului.
 
-Poți verifica cele două salarii în [calculatorul brut-net](/), cu perioada fiscală potrivită fiecăruia.
+Poți calcula automat puterea de cumpărare între două date din 1991 până în prezent cu [calculatorul de inflație](/calculator-inflatie), iar diferența brut-net în [calculatorul de salariu net](/).
 
 ## Este angajatorul obligat să indexeze salariul?
 

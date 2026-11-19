@@ -1,8 +1,8 @@
 ---
-title: "Ți s-a oferit un interval salarial brut? Cât înseamnă în net"
+title: "Interval salarial brut: cât înseamnă net"
 description: "O ofertă de 6.000–8.000 de lei brut înseamnă în mână mult mai puțin. Cum citești un interval salarial, ce întrebi și cum compari corect două oferte."
 date: "2026-11-06"
-updated: "2026-11-06"
+updated: "2026-11-19"
 hero: "/noutati/interval-salarial-brut-net-v2.webp"
 heroAlt: "Ilustrație editorială: o lupă care face o ofertă de muncă să pară mare, lângă același plic, mic, în mărimea lui reală."
 ---
@@ -32,7 +32,7 @@ Pentru orice altă sumă, [calculatorul de salariu](/) face transformarea în am
 
 ## Ce să întrebi înainte să compari
 
-Un interval spune puțin fără context. Iată întrebările care fac diferența:
+Un interval spune puțin fără context. Întrebările care clarifică oferta:
 
 **„Suma e brută sau netă?”** E prima întrebare și nu e deloc nepoliticoasă. Dacă anunțul sau recruiterul nu precizează, întreabă. Altfel riști să compari un brut cu un net.
 
@@ -48,7 +48,7 @@ Un interval spune puțin fără context. Iată întrebările care fac diferența
 
 Să zicem că ai două oferte: una de „6.000–7.000 de lei brut” și una de „3.800 de lei net”. La prima vedere, prima pare mult mai mare.
 
-Tradusă în net, prima înseamnă între 3.500 și 4.100 de lei în mână. A doua îți dă sigur 3.800. Dacă nu ai motive să crezi că vei porni de la capătul de sus, cele două oferte sunt, de fapt, foarte apropiate. Diferența o fac apoi restul lucrurilor: tichetele, programul, distanța până la serviciu, siguranța postului.
+Tradusă în net, prima înseamnă între 3.500 și 4.100 de lei în mână. A doua îți dă sigur 3.800. Dacă nu ai motive să crezi că vei porni de la capătul de sus, cele două oferte sunt foarte apropiate. Diferența o fac apoi restul lucrurilor: tichetele, programul, distanța până la serviciu, siguranța postului.
 
 Regula: **compară net cu net, parte fixă cu parte fixă.**
 
@@ -63,10 +63,6 @@ Asta explică de ce o cerere de „încă 500 de lei în mână” sună mult pe
 Multe anunțuri dau doar o sumă. Uneori angajatorul se gândește la net, pentru că asta înțelege toată lumea. Alteori se gândește la brut, pentru că asta va scrie în contract. Nu ghici. Întreabă.
 
 Pe [locurile de muncă de pe salariile.ro](/locuri-de-munca), fiecare anunț are salariul obligatoriu și spune clar dacă suma e brută sau netă. Ca să vezi dacă oferta e bună pentru meseria ta, uită-te și la reperele de pe [salariile pe meserii](/salarii).
-
-## Pe scurt
-
-Un interval brut arată mereu mai bine decât e. Transformă-l în net, întreabă ce te duce spre capătul de sus și ce e inclus, apoi compară ofertele net cu net. Dacă știi exact câți bani vrei în mână, pornește de la net și cere brutul care ți-i aduce.
 
 ## Surse
 

@@ -12,7 +12,7 @@ import {
 } from "@/lib/seo";
 import { getAllArticles } from "@/lib/noutati";
 import { CATEGORII, COMPARATII, MESERII } from "@/lib/meserii";
-import { INS_GENERAT_LA, JUDETE } from "@/lib/ins-date";
+import { JUDETE } from "@/lib/ins-date";
 
 export const dynamic = "force-static";
 
@@ -41,6 +41,10 @@ const STATIC_ENTRIES: {
   { path: "/calculator-salariu-sanatate", priority: 0.9, changeFrequency: "monthly" },
   { path: "/calculator-ore-suplimentare", priority: 0.9, changeFrequency: "monthly" },
   { path: "/calculator-indemnizatie-somaj", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/calculator-concediu-medical", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/calculator-indemnizatie-crestere-copil", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/calculator-concediu-odihna", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/calculator-vechime-munca", priority: 0.9, changeFrequency: "monthly" },
   { path: "/calculator-tva", priority: 0.9, changeFrequency: "monthly" },
   { path: "/calculator-inflatie", priority: 0.9, changeFrequency: "monthly" },
   { path: "/rata-inflatiei", priority: 0.8, changeFrequency: "monthly" },
@@ -50,7 +54,6 @@ const STATIC_ENTRIES: {
   { path: "/saga", priority: 0.8, changeFrequency: "monthly" },
   { path: "/salarii", priority: 0.8, changeFrequency: "monthly" },
   { path: "/compara", priority: 0.7, changeFrequency: "monthly" },
-  { path: "/salarii/acoperire", priority: 0.6, changeFrequency: "weekly" },
   { path: "/salarii/clasament", priority: 0.7, changeFrequency: "monthly" },
   { path: "/salarii/judete", priority: 0.7, changeFrequency: "monthly" },
   { path: "/salarii/femei-barbati", priority: 0.7, changeFrequency: "yearly" },
@@ -74,11 +77,16 @@ const STATIC_ENTRIES: {
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_URL;
+  const articles = getAllArticles();
+  const latestArticleDate = articles.reduce<Date>((max, a) => {
+    const d = a.updated ? new Date(a.updated) : a.date ? new Date(a.date) : LAST_FISCAL_CONTENT_UPDATE;
+    return d.getTime() > max.getTime() ? d : max;
+  }, PAGE_LAST_MODIFIED["/noutati"]);
 
   return [
     ...STATIC_ENTRIES.map(({ path, priority, changeFrequency }) => ({
       url: path === "/" ? baseUrl : `${baseUrl}${path}`,
-      lastModified: PAGE_LAST_MODIFIED[path],
+      lastModified: path === "/noutati" ? latestArticleDate : PAGE_LAST_MODIFIED[path],
       changeFrequency,
       priority,
     })),
@@ -108,7 +116,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     ...CATEGORII.map((categorie) => ({
       url: `${baseUrl}/salarii/domeniu/${categorie.slug}`,
-      lastModified: new Date(INS_GENERAT_LA),
+      lastModified: MESERII_LAST_MODIFIED,
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),
@@ -127,7 +135,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.5,
     })),
 
-    ...getAllArticles().map((a) => ({
+    ...articles.map((a) => ({
       url: `${baseUrl}/noutati/${a.slug}`,
       lastModified: a.updated ? new Date(a.updated) : a.date ? new Date(a.date) : LAST_FISCAL_CONTENT_UPDATE,
       changeFrequency: "monthly" as const,

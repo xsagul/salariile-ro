@@ -61,7 +61,7 @@ export default function DesprePage() {
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Despre" }]} />
         <H1>Despre acest proiect</H1>
         <Lead>
-          Salariile.ro e un proiect independent de transparență fiscală pentru România, întreținut individual. Aici găsești cine îl menține și pe ce surse se bazează fiecare calcul.
+          Salariile.ro este un proiect independent despre salarii și fiscalitate în România. Aici găsești cine îl întreține și pe ce surse se bazează fiecare calcul.
         </Lead>
         <Eyebrow>PROIECT INDEPENDENT · LANSAT ÎN APRILIE 2026</Eyebrow>
       </Hero>
@@ -82,20 +82,20 @@ export default function DesprePage() {
       >
         <h2>Cine întreține site-ul</h2>
         <p>
-          Mă numesc Știuriuc Sorin-Marian și sunt dezvoltator full-stack. Construiesc și mențin singur salariile.ro ca
-          proiect personal, fără echipă, agenție sau firmă în spate.
+          Mă numesc Știuriuc Sorin-Marian și sunt dezvoltator full-stack. Construiesc și întrețin salariile.ro ca
+          proiect independent, fără agenție sau firmă în spate.
         </p>
         <p>
           Nu sunt contabil sau consultant fiscal. Sunt programator care a citit Codul Fiscal și a implementat formulele
           publice de calcul al salariului net. Calculele sunt corecte pentru cazul standard, dar la sporuri specifice,
           beneficii nesalariale sau contracte cu clauze speciale, un contabil rămâne referința. Ce acoperă
-          calculatorul și ce nu, e scris în <Link href="/metodologie">metodologie</Link>.
+          calculatorul și ce nu, este scris în <Link href="/metodologie">metodologie</Link>.
         </p>
         <p>
-          Costurile sunt mici, domeniul și găzduirea pe planul gratuit Cloudflare, și le acopăr personal. Site-ul nu
-          folosește programe de afiliere și nu vinde date despre utilizatori. Nu există conturi de utilizator sau
-          newsletter; singurul formular e cel pentru <Link href="/adauga-anunt-angajare">anunțurile de angajare</Link>,
-          fără cont. Ce date tehnice se folosesc pentru statisticile de trafic, și doar cu acordul tău, e scris în{" "}
+          Site-ul este finanțat prin reclame afișate prin Google AdSense, fără abonamente, programe de afiliere sau
+          vânzare de date despre utilizatori. Nu există conturi de utilizator sau newsletter; singurul formular este cel
+          pentru <Link href="/adauga-anunt-angajare">anunțurile de angajare</Link>, fără cont. Ce date tehnice se
+          folosesc pentru statistici și reclame, cu acordul tău, este explicat în{" "}
           <Link href="/politica-confidentialitate">politica de confidențialitate</Link>.
         </p>
       </Section>
@@ -105,22 +105,25 @@ export default function DesprePage() {
           <CardCompanion titlu="Jurnal de corecții și actualizări">
                 <ul className={`${LISTA_CARD} text-stone-600 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_strong]:font-semibold [&_strong]:text-stone-900`}>
                   <li>
-                    <strong>24 septembrie 2026</strong> — Textele site-ului rescrise pe înțelesul tuturor: sub fiecare calculator stă acum formula, iar cifrele apar doar unde răspund la o întrebare.
+                    <strong>19 noiembrie 2026</strong>: Calculatoare noi (concediu medical, creștere copil, concediu de odihnă, vechime în muncă), tichete de masă actualizate și clasament extins pentru toate meseriile.
                   </li>
                   <li>
-                    <strong>7 septembrie 2026</strong> — <Link href="/metodologie#corectii">Corecțiile datelor pe meserii</Link>.
+                    <strong>24 septembrie 2026</strong>: Textele site-ului rescrise pe înțelesul tuturor, cu formula sub fiecare calculator.
                   </li>
                   <li>
-                    <strong>5 septembrie 2026</strong> — Etichete verificate pe toate calculatoarele și o distincție mai clară între mediile INS pe domenii și salariile individuale.
+                    <strong>7 septembrie 2026</strong>: <Link href="/metodologie#corectii">Corecțiile datelor pe meserii</Link>.
                   </li>
                   <li>
-                    <strong>28 august 2026</strong> — Actualizare a metadatelor și corelare a formulelor fiscale pentru semestrul II 2026; revizie a calculatoarelor specializate (învățământ, part-time, PFA).
+                    <strong>5 septembrie 2026</strong>: Etichete verificate pe toate calculatoarele și distincție mai clară între mediile INS pe domenii și salariile individuale.
                   </li>
                   <li>
-                    <strong>4 august 2026</strong> — Aliniere la OUG nr. 89/2025 și publicarea analizei dedicate facilității de 300 lei / 200 lei pentru salariul minim brut garantat în plată de 4.325 lei.
+                    <strong>28 august 2026</strong>: Actualizare a metadatelor și corelare a formulelor fiscale pentru semestrul II 2026; revizie a calculatoarelor specializate (învățământ, part-time, PFA).
                   </li>
                   <li>
-                    <strong>1 iulie 2026</strong> — Intrarea în vigoare a salariului minim brut garantat în plată de 4.325 lei (HG nr. 146/2026 și OUG nr. 89/2025) și ajustarea automată a grilelor de deduceri personale.
+                    <strong>4 august 2026</strong>: Aliniere la OUG nr. 89/2025 și publicarea analizei dedicate facilității de 300 lei / 200 lei pentru salariul minim brut garantat în plată de 4.325 lei.
+                  </li>
+                  <li>
+                    <strong>1 iulie 2026</strong>: Intrarea în vigoare a salariului minim brut garantat în plată de 4.325 lei (HG nr. 146/2026 și OUG nr. 89/2025) și ajustarea automată a grilelor de deduceri personale.
                   </li>
                 </ul>
           </CardCompanion>

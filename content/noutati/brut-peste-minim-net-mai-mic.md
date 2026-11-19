@@ -1,13 +1,13 @@
 ---
-title: "De ce un leu peste salariul minim îți scade netul cu 85 de lei"
+title: "Un leu peste minim scade netul cu 85 lei"
 description: "O mărire de un leu peste salariul minim te poate lăsa cu mai puțini bani în mână. De ce se întâmplă, cine e afectat și ce să ceri ca să nu pierzi."
 date: "2026-11-06"
-updated: "2026-11-06"
+updated: "2026-11-19"
 hero: "/noutati/brut-peste-minim-net-mai-mic-v2.webp"
 heroAlt: "Ilustrație editorială: o capcană de șoareci din lemn, cu o monedă de aur pusă drept momeală, și un plic de salariu albastru lângă ea."
 ---
 
-**Dacă salariul tău de bază urcă cu un singur leu peste minimul pe economie, primești în mână cu 85 de lei mai puțin.** Nu e o greșeală a contabilei și nici un truc al firmei. E efectul unei scutiri de taxe care se aplică doar celor plătiți fix la minim. O mărire mică de salariu poate fi, în realitate, o tăiere.
+**Dacă salariul tău de bază urcă cu un singur leu peste minimul pe economie, primești în mână cu 85 de lei mai puțin.** Explicația ține de scutirea de 200 de lei fără taxe, care se aplică exclusiv contractelor cu salariul de bază egal cu salariul minim. O mărire mică de brut duce astfel la un net mai mic.
 
 ## Cum se poate întâmpla așa ceva
 
@@ -21,7 +21,7 @@ Rezultatul e paradoxal. Firma îți dă mai mult, statul îți ia mult mai mult,
 
 Pierderea scade pe măsură ce salariul urcă, dar dispare abia destul de sus. Ca să primești în mână din nou cât primeai la minim, salariul de bază trebuie să ajungă la aproximativ **4.480 de lei**, adică cu circa 155 de lei peste minim.
 
-Orice mărire a salariului de bază între minim și acest prag te lasă, de fapt, cu mai puțini bani decât dacă ai fi rămas la minim. O mărire de 25 sau 50 de lei, oferită cu cele mai bune intenții, te costă.
+Orice mărire a salariului de bază între minim și acest prag te lasă cu mai puțini bani în mână decât dacă ai fi rămas la minim. O creștere de 25 sau 50 de lei brut scade venitul net.
 
 ## A doua capcană: sporurile și orele suplimentare
 
@@ -41,9 +41,9 @@ Foarte mulți oameni. În România, câteva sute de mii de salariați sunt plăt
 
 Contează și persoanele din întreținere. Cu un copil sau un soț în întreținere, netul e puțin mai mare, dar capcana funcționează la fel.
 
-## Cine câștigă de fapt
+## Unde ajunge diferența
 
-Nu firma. Ea plătește chiar puțin mai mult când îți crește salariul. Diferența ajunge la stat, ca pensie, sănătate și impozit pentru cei 200 de lei care nu mai sunt scutiți.
+Firma plătește puțin mai mult când crește brutul. Diferența ajunge la stat, ca pensie, sănătate și impozit pentru cei 200 de lei care intră la taxare.
 
 Măcar o parte din bani nu se pierde pentru tine: contribuția mai mare la pensie se adună la viitoarea ta pensie. Doar că, în prezent, în buzunar ai mai puțin.
 

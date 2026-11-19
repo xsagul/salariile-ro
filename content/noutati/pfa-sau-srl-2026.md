@@ -2,13 +2,12 @@
 title: "PFA sau SRL? Răspunsul se schimbă de 4 ori"
 description: "Am calculat, la aceleași încasări. La 60.000 lei câștigă PFA. La 100.000, SRL micro. La 200.000 diferența e de 34 de lei pe an. Nu există un prag simplu."
 date: "2026-09-02"
+updated: "2026-11-19"
 hero: "/noutati/pfa-sau-srl-2026.webp"
 heroAlt: "Ilustrație editorială: o balanță în echilibru perfect, cu un dosar „PFA” pe un taler și unul „SRL” pe celălalt, între teancuri de monede, un calculator și un grafic."
 ---
 
-Toată lumea caută pragul. „Peste cât venit merită SRL?" E întrebarea greșită, pentru că nu există un prag.
-
-Am rulat cifrele prin același motor de calcul pe care îl folosește [calculatorul de taxe PFA](/calculator-pfa), la aceleași încasări și fără cheltuieli deductibile, ca să fie comparabile. Răspunsul se inversează de patru ori.
+**Nu există un prag unic de la care SRL devine automat mai avantajos decât PFA.** Am comparat cele trei regimuri fiscale în 2026 folosind [calculatorul de taxe PFA](/calculator-pfa), la aceleași încasări și fără cheltuieli deductibile. Forma mai avantajoasă fiscal se schimbă de patru ori între 60.000 și 500.000 de lei pe an.
 
 ## Ce iese, la aceleași încasări
 

@@ -20,6 +20,10 @@ const IMPLEMENTED_PAGES = new Set<string>([
   "/calculator-salariu-sanatate",
   "/calculator-ore-suplimentare",
   "/calculator-indemnizatie-somaj",
+  "/calculator-concediu-medical",
+  "/calculator-indemnizatie-crestere-copil",
+  "/calculator-concediu-odihna",
+  "/calculator-vechime-munca",
   "/calculator-tva",
   "/calculator-inflatie",
   "/rata-inflatiei",
@@ -35,6 +39,7 @@ const IMPLEMENTED_PAGES = new Set<string>([
   "/zile-libere-2026",
   "/zile-libere-2027",
   "/zile-lucratoare-2026",
+  "/zile-lucratoare-2027",
   "/date-salarii",
   "/noutati",
   "/despre",
@@ -68,6 +73,10 @@ const FOOTER_GROUPS: Array<{ title: string; links: FooterLink[] }> = [
       { href: "/calculator-salariu-invatamant", label: "Calculator salariu învățământ" },
       { href: "/calculator-salariu-sanatate", label: "Calculator salariu sănătate" },
       { href: "/calculator-indemnizatie-somaj", label: "Calculator indemnizație șomaj" },
+      { href: "/calculator-concediu-medical", label: "Calculator concediu medical" },
+      { href: "/calculator-indemnizatie-crestere-copil", label: "Calculator creștere copil" },
+      { href: "/calculator-concediu-odihna", label: "Calculator concediu de odihnă" },
+      { href: "/calculator-vechime-munca", label: "Calculator vechime în muncă" },
       // 15 noiembrie 2026: pagină nouă. „calculator tva” are 18.100 de căutări pe lună (SE Ranking), mai
       // mult decât orice alt instrument de aici în afara calculatorului de salariu. În bara de sus intră
       // abia când are afișări în Search Console.
@@ -89,6 +98,7 @@ const FOOTER_GROUPS: Array<{ title: string; links: FooterLink[] }> = [
       // 22 octombrie 2026: „zile libere 2027” avea 12.900 de afișări în 28 de zile, pe locul 8,1, cu
       // doar 7 linkuri interne; valul de căutări pentru anul următor vine în noiembrie–ianuarie.
       { href: "/zile-libere-2027", label: "Zile libere 2027" },
+      { href: "/zile-lucratoare-2027", label: "Zile lucrătoare 2027" },
       { href: "/zile-lucratoare-2026", label: "Zile lucrătoare 2026" },
       { href: "/salarii", label: "Salarii pe meserii" },
       { href: "/locuri-de-munca", label: "Locuri de muncă" },

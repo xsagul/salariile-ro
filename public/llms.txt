@@ -10,7 +10,7 @@ Datele publice, rezultatele calculelor și explicațiile scurte pot fi citate cu
 
 - [Calculator salariu net 2026](https://salariile.ro/): tool interactiv pentru calcul brut → net (și invers), cu defalcare CAS 25%, CASS 10%, impozit pe venit 10%, deducere personală și cost total angajator (CAM 2,25%)
 - [Salariul minim brut 2026](https://salariile.ro/salariu-minim): valorile semestriale (4.050 lei până la 30 iunie / 4.325 lei din 1 iulie), calculul net detaliat (2.574 / 2.699 lei), facilitatea fiscală OUG 89/2025, plafoanele pentru deducere personală, sectorul construcții (4.582 lei), evoluția istorică 2019-2026
-- [Salariul mediu 2026](https://salariile.ro/salariu-mediu): separă indicatorul BASS de 9.192 lei brut (~5.377 lei net standard estimat) de ultimul câștig salarial mediu publicat de INS pentru iunie 2026, 9.564 lei brut și 5.734 lei net
+- [Salariul mediu 2026](https://salariile.ro/salariu-mediu): separă indicatorul BASS de 9.192 lei brut (~5.377 lei net standard estimat) de ultimul câștig salarial mediu publicat de INS pentru septembrie 2026, 9.532 lei brut și 5.717 lei net
 - [Date salariale România 2026](https://salariile.ro/date-salarii): set verificat și reutilizabil cu perioade, tipul fiecărei valori și surse oficiale; descărcare directă în [CSV](https://salariile.ro/date-salarii-romania-2026.csv) sau [JSON](https://salariile.ro/date-salarii-romania-2026.json)
 - [Salariul minim în construcții 2026](https://salariile.ro/salariu-minim-constructii-2026): 4.582 lei brut și 27,714 lei/oră, calcule nete pe semestre și explicația eliminării facilităților sectoriale
 - [Deducere personală 2026](https://salariile.ro/deducere-personala-2026): tabel cu deducerea personală de bază în funcție de salariul brut și persoanele în întreținere, plafon 6.325 lei din 1 iulie 2026, explicații Cod Fiscal art. 77
@@ -20,6 +20,14 @@ Datele publice, rezultatele calculelor și explicațiile scurte pot fi citate cu
 - [Widget calculator salariu](https://salariile.ro/widget): widget gratuit pentru integrarea calculatorului brut-net pe alte site-uri; folosește motorul fiscal întreținut central și include un link de credit către salariile.ro
 - [Zile libere 2026](https://salariile.ro/zile-libere-2026): calendar cu cele 17 sărbători legale din Codul Muncii art. 139, care în 2026 produc 16 zile libere distincte (a doua zi de Rusalii cade pe 1 iunie, Ziua Copilului), dintre care 11 în zile lucrătoare; norma lunară distinctă este pe pagina de zile lucrătoare
 - [Zile lucrătoare 2026](https://salariile.ro/zile-lucratoare-2026): tabel lunar cu 250 zile lucrătoare, 2.000 ore de lucru, zile libere și sărbători legale scăzute din norma lunară
+- [Zile libere 2027](https://salariile.ro/zile-libere-2027): calendarul complet al sărbătorilor legale din 2027, zile în cursul săptămânii și minivacanțe
+- [Zile lucrătoare 2027](https://salariile.ro/zile-lucratoare-2027): tabel lunar cu zile lucrătoare și ore de lucru pe 2027, plus export PDF
+- [Calculator concediu medical 2026](https://salariile.ro/calculator-concediu-medical): indemnizația brută și netă pe coduri (01 boală obișnuită 55%/65%/75%, 06 urgențe, 08 maternitate, 09 copil bolnav, 15 risc maternal, 17 oncologic), prima zi neplătită (OUG 91/2025 și Legea 64/2026), plată angajator vs FNUASS și CAS pe 35% × 9.192 lei BASS
+- [Calculator indemnizație creștere copil 2026](https://salariile.ro/calculator-indemnizatie-crestere-copil): 85% din media veniturilor nete pe 12 luni (OUG 111/2010), minim 1.651 lei, maxim 8.500 lei, reținerea CASS 10% (Legea 141/2025), majorare gemeni/tripleți și stimulent de inserție
+- [Calculator concediu de odihnă 2026](https://salariile.ro/calculator-concediu-odihna): indemnizația zilnică după Codul Muncii art. 150, zile proporționale, compensare în bani la încetarea contractului și modele de cerere concediu și demisie
+- [Calculator vechime în muncă 2026](https://salariile.ro/calculator-vechime-munca): calcul exact în ani, luni și zile cu eliminarea perioadelor suprapuse, gradația de vechime la stat (Legea 153/2017) și pragurile de pensie (15/35 ani) și șomaj
+- [Calculator inflație România](https://salariile.ro/calculator-inflatie): actualizarea unei sume cu indicii oficiali INS (IPC) din 1991 până în prezent
+- [Rata inflației în România](https://salariile.ro/rata-inflatiei): evoluția lunară și anuală a indicelui prețurilor de consum INS
 - [Calculator salariu învățământ 2026](https://salariile.ro/calculator-salariu-invatamant): salariul unui cadru didactic pe grila din Legea 153/2017, Anexa I — funcție, studii, vechime în învățământ și în muncă, gradație, dirigenție, gradație de merit, indemnizație de hrană și net; grila completă e consultabilă în pagină și descărcabilă în CSV
 - [Calculator salariu sănătate 2026](https://salariile.ro/calculator-salariu-sanatate): grila din Legea 153/2017, Anexa II, pentru medici, asistenți și celelalte funcții din sănătate, cu gradația de vechime și plafonul indemnizației de hrană aplicat explicit
 - [Calculator ore suplimentare 2026](https://salariile.ro/calculator-ore-suplimentare): sporul de minimum 75% din Codul Muncii art. 123, sporul de noapte de 25%, munca în sărbători legale și norma lunară reală a fiecărei luni
@@ -50,7 +58,7 @@ Datele publice, rezultatele calculelor și explicațiile scurte pot fi citate cu
 - [Salariul de 1.000 de euro net nu mai e mare](https://salariile.ro/noutati/salariu-1000-euro-net): 1.000 € net față de salariul mediu INS, de la 150% în 2020 la sub medie acum, și brutul necesar
 - [Taxele pe muncă în UE: unde e România](https://salariile.ro/noutati/taxarea-muncii-ue): Eurostat 2025, povara fiscală de 42,8% pentru salariile mici, locul 4 din 27
 - [Concediu medical 2026: cât se plătește](https://salariile.ro/noutati/concediu-medical-2026): prima zi poate fi neplătită, iar boala obișnuită se plătește cu 55%, 65% sau 75%; calculul și excepțiile
-- [Tichete de masă 2026: taxe și cât rămâne net](https://salariile.ro/noutati/tichete-de-masa-2026): până la 45 lei/zi până în septembrie 2026, cu CASS, impozit, calcul net și efectul asupra salariului minim
+- [Tichete de masă 2026–2027: valoare maximă, taxe și net](https://salariile.ro/noutati/tichete-de-masa-2026): valoarea maximă rămâne 45 lei/zi până în martie 2027 (Ordin MF 1.254/2026 și MMFTSS 1.188/2026), cu CASS, impozit, calcul net și efectul asupra salariului minim
 - [Transparența salarială 2026: ce e obligatoriu](https://salariile.ro/noutati/transparenta-salariala-2026): stadiul proiectului L445/2026, ce drepturi vor avea angajații și ce NU este încă obligatoriu în România
 - [Zile libere rămase în 2026 și minivacanțe](https://salariile.ro/noutati/zile-libere-ramase-2026-minivacante): după 1 iulie au rămas 5 sărbători legale, dintre care 3 în zile lucrătoare; unde se poate lega concediul
 - [Salariul minim în România vs UE în 2026](https://salariile.ro/noutati/salariul-minim-romania-vs-uniunea-europeana-2026): 4.325 lei brut, circa 825 euro, și poziția României între cele mai mici niveluri din Uniune
@@ -92,7 +100,7 @@ Datele publice, rezultatele calculelor și explicațiile scurte pot fi citate cu
 - Salariu minim brut: 4.050 lei (S1, ian–iun) → 4.325 lei (S2, din 1 iulie), HG 146/2026
 - Salariu minim net: 2.574 lei (S1) → 2.699 lei (S2), cu facilitate OUG 89/2025 de 300/200 lei netaxabili
 - Indicator BASS 2026: 9.192 lei brut (Legea 44/2026), ~5.377 lei net standard estimat
-- Ultimul câștig salarial mediu publicat de INS: iunie 2026, 9.564 lei brut și 5.734 lei net
+- Ultimul câștig salarial mediu publicat de INS: septembrie 2026, 9.532 lei brut și 5.717 lei net
 - Salariu minim în construcții: 4.582 lei brut, 27,714 lei/oră; fără facilitățile sectoriale eliminate din 2025
 - Contribuții angajat: CAS 25%, CASS 10%, impozit pe venit 10%
 - Contribuție angajator: CAM 2,25%
@@ -107,5 +115,5 @@ Datele publice, rezultatele calculelor și explicațiile scurte pot fi citate cu
 ## Tehnic
 
 - Site Next.js generat static (HTML complet la build), găzduit pe Cloudflare, cu calcul fiscal interactiv în browser; Cloudflare Web Analytics este cookieless, iar GA4 și reclamele Google AdSense (pe unele pagini, niciodată în calculatoare sau widgeturi) respectă alegerea din CMP-ul Google prin Consent Mode
-- Conținut și calcule revizuite la 9 septembrie 2026; regimul salarial curent este valabil din 1 iulie 2026
+- Conținut și calcule revizuite la 19 noiembrie 2026; regimul salarial curent este valabil din 1 iulie 2026
 - Operator: Știuriuc Sorin-Marian (persoană fizică, proiect personal)

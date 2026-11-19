@@ -25,9 +25,25 @@ import {
 } from "@/lib/meserii";
 import ReperSalariu from '@/app/components/ReperSalariu';
 import { reperMeserie, textReper } from '@/lib/repere-meserii';
+import { concluzieMeserie } from '@/app/components/SalariuConcluzie';
+import { netDeStart } from '@/app/components/SalariuGrila';
+import { netOficialDeStart } from '@/app/components/SalariuOficial';
+import { netDeclarat } from '@/app/components/SalariuDeclarat';
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, MESERII_LAST_MODIFIED } from "@/lib/seo";
 import { TABEL_STANDARD } from "@/app/components/TabelArticol";
+
+function cifraVerificata(slug: string): { text: string; sursa: string } | null {
+  const c = concluzieMeserie(slug);
+  if (c) return { text: `${lei(c.net)} lei net`, sursa: c.sursa === "platit" ? "salarii plătite la stat" : "anunțuri verificate" };
+  const g = netDeStart(slug);
+  if (g) return { text: `de la ${lei(g)} lei net`, sursa: "grila legală" };
+  const o = netOficialDeStart(slug);
+  if (o) return { text: `de la ${lei(o)} lei net`, sursa: "tabel oficial" };
+  const d = netDeclarat(slug);
+  if (d) return { text: `${lei(d)} lei net`, sursa: "reper declarat" };
+  return null;
+}
 
 interface Props {
   params: Promise<{ pereche: string }>;
@@ -63,7 +79,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const a = dateMeserieSauEroare(comparatie.a);
   const b = dateMeserieSauEroare(comparatie.b);
   const descriere = descrierePagina(a, b);
-  const titluSocial = `${comparatie.a.nume} vs ${comparatie.b.nume} — salarii nete 2026`;
+  const titluSocial = `${comparatie.a.nume} vs ${comparatie.b.nume}: salarii nete 2026`;
 
   return {
     title: { absolute: titluPagina(comparatie) },
@@ -87,11 +103,24 @@ export default async function ComparatiePage({ params }: Props) {
   const b = dateMeserieSauEroare(comparatie.b);
   const inrudite = comparatiiInrudite(comparatie);
   const aceeasiGrupa = a.meserie.isco === b.meserie.isco;
+  const ra = reperMeserie(a);
+  const rb = reperMeserie(b);
+  const ca = cifraVerificata(a.meserie.slug);
+  const cb = cifraVerificata(b.meserie.slug);
 
   const faq = [
-    {q: 'Care dintre cele două meserii se plătește mai bine?', a: 'Reperele afișate au populația și perioada precizate separat. Mediile de sector, salariile declarate și grilele publice nu stabilesc un clasament al ocupațiilor. Pentru o decizie, compară oferte cu aceeași normă, experiență și localitate.'},
-    {q: 'Ce se poate compara corect în tabel?', a: 'Mediile INS de sector din aceeași lună se compară între activități economice. Grilele arată funcții și trepte din sistemul public. Valorile din surse diferite nu sunt un minim și un maxim al salariului unei meserii.'},
-    {q: 'Cum compar salariul brut cu netul?', a: 'Folosește calculatorul pentru brutul din ofertă și situația ta fiscală. Netul calculat din media brută a unui sector nu este același indicator cu media netă măsurată de INS.'},
+    {
+      q: `Care dintre cele două meserii se plătește mai bine: ${a.meserie.nume.toLocaleLowerCase("ro-RO")} sau ${b.meserie.nume.toLocaleLowerCase("ro-RO")}?`,
+      a: `${ca ? `Pentru ${a.meserie.nume.toLocaleLowerCase("ro-RO")}, reperul net este ${ca.text} (${ca.sursa})` : `Pentru ${a.meserie.nume.toLocaleLowerCase("ro-RO")}, reperul afișat este ${textReper(ra)} ${ra.unit} (${ra.label})`}, iar ${cb ? `pentru ${b.meserie.nume.toLocaleLowerCase("ro-RO")} este ${cb.text} (${cb.sursa})` : `pentru ${b.meserie.nume.toLocaleLowerCase("ro-RO")} este ${textReper(rb)} ${rb.unit} (${rb.label})`}. Pentru o decizie personală, contează experiența, orașul, sporurile și dimensiunea angajatorului.`,
+    },
+    {
+      q: "Ce se poate compara corect în tabel?",
+      a: "Mediile INS de sector din aceeași lună se compară între activități economice. Grilele arată funcții și trepte din sistemul public. Valorile din surse diferite nu sunt un minim și un maxim al salariului unei meserii.",
+    },
+    {
+      q: "Cum compar salariul brut cu netul?",
+      a: "Folosește calculatorul pentru brutul din ofertă și situația ta fiscală. Netul calculat din media brută a unui sector nu este același indicator cu media netă măsurată de INS.",
+    },
   ];
 
   const jsonLd = {
@@ -112,7 +141,7 @@ export default async function ComparatiePage({ params }: Props) {
       },
       {
         "@type": "Article",
-        headline: `${comparatie.a.nume} vs ${comparatie.b.nume} — salarii nete 2026`,
+        headline: `${comparatie.a.nume} vs ${comparatie.b.nume}: salarii nete 2026`,
         description: descrierePagina(a, b),
         author: personSchema,
         publisher: {
@@ -134,20 +163,19 @@ export default async function ComparatiePage({ params }: Props) {
     ],
   };
 
-  const ra=reperMeserie(a), rb=reperMeserie(b);
   const randuriTabel = [
-    {eticheta:'Reper salarial documentat',a:textReper(ra)+' '+ra.unit,b:textReper(rb)+' '+rb.unit},
-    {eticheta:'Ce măsoară',a:ra.label,b:rb.label},
-    {eticheta:'Perioada reperului',a:ra.period,b:rb.period},
-    {eticheta:'Populația acoperită',a:ra.population,b:rb.population},
-    {eticheta:'Mediană / P25 / P75 ale furnizorului',a:ra.median===null?'Nepublicate în acest reper':`${lei(ra.median)} / ${lei(ra.p25!)} / ${lei(ra.p75!)} lei net · oferte`,b:rb.median===null?'Nepublicate în acest reper':`${lei(rb.median)} / ${lei(rb.p25!)} / ${lei(rb.p75!)} lei net · oferte`},
-    {eticheta:'Număr de observații individuale',a:'Nepublicat pentru meserie',b:'Nepublicat pentru meserie'},
-    {eticheta:'Responsabilități',a:a.meserie.ceFace,b:b.meserie.ceFace},
-    {eticheta:`Context: net mediu sector, ${LUNA}`,a:a.netObservat===null?'—':lei(a.netObservat)+' lei',b:b.netObservat===null?'—':lei(b.netObservat)+' lei'},
-
-    {eticheta:'Activitate CAEN',a:a.sector.cheie+' — '+a.sector.denumire,b:b.sector.cheie+' — '+b.sector.denumire},
-    {eticheta:'Grupă majoră ISCO',a:a.isco?.nume??'—',b:b.isco?.nume??'—'},
-    {eticheta:'Net calculat al grupei ISCO, indexat',a:reperIsco(a,'net'),b:reperIsco(b,'net')},
+    ...(ca || cb
+      ? [{ eticheta: "Salariu net pe pagina meseriei", a: ca ? `${ca.text} (${ca.sursa})` : "—", b: cb ? `${cb.text} (${cb.sursa})` : "—" }]
+      : []),
+    { eticheta: "Reper salarial documentat", a: `${textReper(ra)} ${ra.unit}`, b: `${textReper(rb)} ${rb.unit}` },
+    { eticheta: "Ce măsoară", a: ra.label, b: rb.label },
+    { eticheta: "Perioada reperului", a: ra.period, b: rb.period },
+    { eticheta: "Populația acoperită", a: ra.population, b: rb.population },
+    { eticheta: "Responsabilități", a: a.meserie.ceFace, b: b.meserie.ceFace },
+    { eticheta: `Context: net mediu sector, ${LUNA}`, a: a.netObservat === null ? "—" : `${lei(a.netObservat)} lei`, b: b.netObservat === null ? "—" : `${lei(b.netObservat)} lei` },
+    { eticheta: "Activitate CAEN", a: `${a.sector.cheie}: ${a.sector.denumire}`, b: `${b.sector.cheie}: ${b.sector.denumire}` },
+    { eticheta: "Grupă majoră ISCO", a: a.isco?.nume ?? "—", b: b.isco?.nume ?? "—" },
+    { eticheta: "Net calculat al grupei ISCO, indexat", a: reperIsco(a, "net"), b: reperIsco(b, "net") },
   ];
 
   return (
@@ -259,10 +287,10 @@ export default async function ComparatiePage({ params }: Props) {
           )}
 
           <NotaSursa>
-            Sursa: Institutul Național de Statistică, TEMPO-Online — matricele {MATRICE_BRUT} și {MATRICE_NET}{" "}
+            Sursa: Institutul Național de Statistică, TEMPO-Online, matricele {MATRICE_BRUT} și {MATRICE_NET}{" "}
             (câștig salarial mediu brut și net pe activități CAEN Rev.3, luna {LUNA}) și {MATRICE_OCUPATII} (ancheta
-            din octombrie pe grupe majore de ocupații, {AN_ANCHETA}). Neturile standard sunt calculate de Salariile.ro — vezi <Link href="/metodologie">metodologia</Link>.
-            Metodologia explică separat populația fiecărui reper.
+            din octombrie pe grupe majore de ocupații, {AN_ANCHETA}). Neturile standard sunt calculate de Salariile.ro,
+            vezi <Link href="/metodologie">metodologia</Link> pentru populația fiecărui reper.
           </NotaSursa>
         </div>
       </div>

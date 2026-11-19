@@ -37,19 +37,19 @@ export const metadata: Metadata = {
 const FAQ = [
   {
     q: "De unde vin salariile de pe fiecare meserie?",
-    a: "Din patru surse, fiecare scrisă pe pagina meseriei: salariile plătite pe fiecare post, publicate de spitale, primării și alte instituții publice; ofertele din anunțurile de angajare verificate; grila legii salarizării, acolo unde e în plată; tabelele de venituri publicate de angajatorii publici, cum e Ministerul Apărării. Nu facem medii între surse.",
+    a: "Din cinci surse, fiecare scrisă clar pe pagina meseriei: salariile plătite pe fiecare post, publicate de spitale, primării și alte instituții publice; ofertele din anunțurile de angajare verificate; grila legii salarizării, acolo unde este în plată; tabelele de venituri publicate de angajatorii publici (MApN, MAI, Ministerul Public); și reperele declarate de angajați sau angajatori la ANOFM. Nu facem medii între surse.",
   },
   {
     q: "Sumele sunt nete sau brute?",
     a: "Nete, adică ce ajunge în mână, pe lună. Unde salariul se impozitează ca unul obișnuit, pagina meseriei arată și brutul echivalent, ca să îl poți compara cu o ofertă.",
   },
   {
-    q: "De ce unele meserii au o cifră și altele nu?",
-    a: "Punem o cifră doar când o sursă măsoară chiar meseria aceea, pe destule posturi sau anunțuri. Unde nu e încă așa, pagina meseriei arată ce cer angajatorii: experiența, studiile, programul și beneficiile din anunțuri.",
+    q: "De ce poate diferi salariul tău de cifra afișată?",
+    a: "Cifra de pe pagină este un reper central pe țară sau treapta de pornire din grilă. Salariul efectiv depinde de experiență, oraș, mărimea angajatorului, sporuri, ture de noapte sau bonusuri.",
   },
   {
     q: "Cât de des se actualizează?",
-    a: "Anunțurile și ofertele depuse la ANOFM se adună în fiecare zi. Listele de salarii ale instituțiilor publice apar de două ori pe an, pe 31 martie și 30 septembrie, iar tabelele angajatorilor publici, lunar.",
+    a: "Anunțurile și ofertele depuse la ANOFM se actualizează periodic. Listele de salarii ale instituțiilor publice apar de două ori pe an, pe 31 martie și 30 septembrie, iar tabelele angajatorilor publici, lunar.",
   },
 ];
 
@@ -155,7 +155,7 @@ export default function SalariiPage() {
             <h2 className={TITLU_SECTIUNE}>Alte pagini despre salarii</h2>
             <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm">
               <li><Link href="/compara" className="underline underline-offset-2">Compară două meserii</Link></li>
-              <li><Link href="/salarii/clasament" className="underline underline-offset-2">Clasamentul pe domenii</Link></li>
+              <li><Link href="/salarii/clasament" className="underline underline-offset-2">Clasamentul meseriilor</Link></li>
               <li><Link href="/salarii/judete" className="underline underline-offset-2">Salarii pe județe</Link></li>
               <li><Link href="/salarii/femei-barbati" className="underline underline-offset-2">Femei și bărbați</Link></li>
               <li><Link href="/salarii/locuri-vacante" className="underline underline-offset-2">Locuri vacante</Link></li>

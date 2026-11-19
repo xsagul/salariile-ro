@@ -1,15 +1,15 @@
 ---
-title: "Salariu part-time 4 ore în 2026: cât primești și cât plătește firma"
-description: "La 4 ore pe zi primești cam jumătate din salariul minim, dar firma plătește mult mai mult. Cât iei în mână și cine scapă de regula suprataxării."
+title: "Salariu part-time 4 ore 2026: net și fluturaș"
+description: "Cât iei în mână la 2, 4 sau 6 ore pe zi în 2026, cum verifici reținerile pe fluturaș și de ce contractul part-time costă mai mult angajatorul."
 date: "2026-11-06"
-updated: "2026-11-06"
+updated: "2026-11-19"
 hero: "/noutati/salariu-part-time-4-ore-2026-v2.webp"
 heroAlt: "Ilustrație editorială: un ceas de perete servit pe farfurie ca o prăjitură, cu o felie tăiată, și o paletă de tort lângă el."
 ---
 
-**La 4 ore pe zi, pe salariul minim, primești în mână cam 1.350 de lei pe lună.** Pare logic: jumătate de program, cam jumătate de salariu. Pentru firmă însă, socoteala nu e pe jumătate. Un angajat part-time o costă aproape două treimi din cât o costă unul cu normă întreagă, din cauza unei reguli care o obligă să plătească pensia și sănătatea ca pentru un salariu aproape întreg.
+**La 4 ore pe zi, pe salariul minim, primești în mână 1.352 de lei pe lună.** Jumătate de program înseamnă jumătate de salariu brut și aproximativ jumătate de net. Pentru angajator însă, costul trece de două treimi din cel al unei norme întregi, din cauza bazei minime de contribuții.
 
-De aici vin multe dintre lucrurile pe care le auzi la interviuri: „nu facem part-time”, „te angajăm pe 8 ore, dar lucrezi 4” sau „lucrezi fără carte de muncă”. Mai jos explicăm cum stau, de fapt, lucrurile.
+De aici vin multe refuzuri la angajare sau propuneri ilegale la interviu. Mai jos găsești cifrele pentru 2, 4 și 6 ore, categoriile exceptate și ce trebuie să verifici pe fluturaș.
 
 ## Cât primești
 
@@ -25,7 +25,7 @@ Din 2023 se aplică o regulă care face contractele part-time scumpe pentru anga
 
 Tu plătești contribuțiile din salariul tău, ca toată lumea. Diferența până la prag o pune firma din buzunarul ei. La 4 ore pe zi, asta înseamnă pentru angajator aproape 700 de lei în plus în fiecare lună, peste salariul tău.
 
-Regula a fost introdusă ca să combată un obicei vechi: oameni angajați cu acte pe 2 ore, care lucrau de fapt 8, iar restul banilor îl primeau „la plic”. Efectul secundar e că și contractele part-time cinstite au devenit scumpe.
+Regula a fost introdusă ca să combată un obicei vechi: oameni angajați cu acte pe 2 ore, care lucrau 8, iar restul banilor îl primeau „la plic”. Efectul secundar este că și contractele part-time reale au devenit scumpe.
 
 ## Cine scapă de regulă
 

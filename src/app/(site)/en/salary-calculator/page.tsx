@@ -33,7 +33,7 @@ import { ogPage, twPage } from "@/lib/seo";
 import { CAM_PROCENT, CASS_PROCENT, CAS_PROCENT, IMPOZIT_PROCENT, SALARIU_MINIM, calculStandard } from "@/lib/fiscal";
 import { CURS_DATA, EUR_RON } from "@/lib/curs";
 
-const TITLE = "Romanian Salary Calculator 2026: gross to net and employer cost";
+const TITLE = "Romanian Salary Calculator 2026: gross to net & tax";
 const DESCRIPTION =
   "Net pay from a gross salary in Romania for 2026: pension and health contributions, the 10% flat income tax, the personal deduction and total employer cost.";
 const PATH = "/en/salary-calculator";
@@ -41,8 +41,15 @@ const PATH = "/en/salary-calculator";
 export const metadata: Metadata = {
   title: { absolute: TITLE },
   description: DESCRIPTION,
-  alternates: { canonical: `https://salariile.ro${PATH}` },
-  openGraph: ogPage({ title: TITLE, description: DESCRIPTION, path: PATH }),
+  alternates: {
+    canonical: `https://salariile.ro${PATH}`,
+    languages: {
+      ro: "https://salariile.ro",
+      en: `https://salariile.ro${PATH}`,
+      "x-default": "https://salariile.ro",
+    },
+  },
+  openGraph: ogPage({ title: TITLE, description: DESCRIPTION, path: PATH, locale: "en_US" }),
   twitter: twPage({ title: TITLE, description: DESCRIPTION }),
 };
 
@@ -60,7 +67,7 @@ const FAQ = [
   {
     q: "What does a gross salary of 10,000 RON leave you?",
     a: EX
-      ? `About ${money(EX.netBani)} RON net per month in the standard case — full-time contract, main employer, no dependants. The employer's total cost is ${money(EX.costTotal)} RON, so roughly ${EX.brutNet}% of the gross reaches the employee.`
+      ? `About ${money(EX.netBani)} RON net per month in the standard case (full-time contract, main employer, no dependants). The employer's total cost is ${money(EX.costTotal)} RON, so roughly ${EX.brutNet}% of the gross reaches the employee.`
       : "",
   },
   {
@@ -71,7 +78,7 @@ const FAQ = [
   },
   {
     q: "Is the income tax progressive in Romania?",
-    a: "No. Romania applies a flat 10% income tax on salaries, regardless of the amount. What changes with income is the personal deduction, which shrinks as the gross salary rises and disappears above a threshold — so the effective rate rises slightly, but the statutory rate never does.",
+    a: "No. Romania applies a flat 10% income tax on salaries, regardless of the amount. What changes with income is the personal deduction, which shrinks as the gross salary rises and disappears above a threshold, so the effective rate rises slightly while the statutory rate stays 10%.",
   },
   {
     q: "What is the difference between gross salary and total employer cost?",
@@ -79,7 +86,7 @@ const FAQ = [
   },
   {
     q: "Are salaries in Romania quoted gross or net?",
-    a: "Job offers and employment contracts are quoted in gross. Employees, on the other hand, usually think in net — which is why this calculator works in both directions. Switch to net-to-gross if you know what you want in your account and need the gross figure to put in an offer.",
+    a: "Job offers and employment contracts are quoted in gross. Employees usually think in net, which is why this calculator works in both directions. Switch to net-to-gross if you know what you want in your account and need the gross figure to put in an offer.",
   },
 ];
 
@@ -100,7 +107,7 @@ const jsonLd = {
       applicationCategory: "FinanceApplication",
       operatingSystem: "Web",
       inLanguage: "en",
-      offers: { "@type": "Offer", price: "0", priceCurrency: "RON" },
+      isAccessibleForFree: true,
       description: DESCRIPTION,
     },
     {
@@ -137,7 +144,7 @@ export default function Page() {
           <>
             Enter a gross salary and see what reaches the employee&rsquo;s account, with the pension
             and health contributions, the flat 10% income tax and the employer&rsquo;s total cost.
-            Amounts are shown in euro by default — switch to lei at any time. It works from net to
+            Amounts are shown in euro by default, and you can switch to lei at any time. It works from net to
             gross as well. Same engine as the{" "}
             <Link href="/">Romanian version of this calculator</Link>, same 2026 rules.
           </>
@@ -149,14 +156,14 @@ export default function Page() {
         <h2>Euro or lei</h2>
         <p>
           The calculator opens in euro, because that is how most people arriving in Romania think
-          about pay. Everything is converted at the European Central Bank reference rate — currently{" "}
-          <strong>1 EUR = {EUR_RON} RON</strong>, from {CURS_DATA} — and you can switch to lei at any
+          about pay. Everything is converted at the European Central Bank reference rate (currently{" "}
+          <strong>1 EUR = {EUR_RON} RON</strong>, from {CURS_DATA}), and you can switch to lei at any
           time. The switch converts the amount you typed as well, so the real figure stays the same.
         </p>
         <p>
           One thing worth being clear about: <strong>the calculation itself is always done in lei.</strong>{" "}
-          Romanian law writes every threshold in lei — the minimum wage, the personal deduction, the
-          tax-free allowance — so converting first would move those thresholds and change the answer.
+          Romanian law writes every threshold in lei (the minimum wage, the personal deduction and the
+          tax-free allowance), so converting first would move those thresholds and change the answer.
           The euro figures are an indicative conversion of a result computed in lei. Your contract,
           your contributions and your real payslip are in lei too.
         </p>
@@ -219,7 +226,7 @@ export default function Page() {
           {EX ? (
             <>
               At {money(10000)} RON gross, the net is roughly {money(EX.netBani)}{" "}RON and the
-              employer&rsquo;s total cost {money(EX.costTotal)} RON — about {EX.brutNet}% of the
+              employer&rsquo;s total cost {money(EX.costTotal)} RON, so about {EX.brutNet}% of the
               gross reaches the employee.
             </>
           ) : null}
@@ -228,7 +235,7 @@ export default function Page() {
         <h2>Negotiating a Romanian salary</h2>
         <p>
           Offers are made in gross. If you are moving here, or hiring here, the two figures worth
-          having in the same conversation are the gross and the total employer cost — the first is
+          having in the same conversation are the gross and the total employer cost: the first is
           what the contract says, the second is what the company actually spends. The net follows
           from the gross mechanically, which is what this page is for.
         </p>
@@ -257,7 +264,7 @@ export default function Page() {
           { href: "/calculator-pfa", label: "Calculator taxe PFA", descriere: "Taxes for self-employed work in Romania." },
           { href: "/fluturas-salariu", label: "Generator de fluturaș", descriere: "Generate a payslip PDF from a gross salary." },
           { href: "/salariu-mediu", label: "Salariul mediu pe economie", descriere: "Average earnings, from the statistics institute." },
-          { href: "/zile-libere-2026", label: "Zile libere 2026", descriere: "Public holidays and working days in Romania." },
+          { href: "/zile-libere-2027", label: "Zile libere 2027", descriere: "Public holidays and working days in Romania." },
         ]}
       />
     </div>

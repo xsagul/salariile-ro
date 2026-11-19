@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   // în SERP exact peste cifre.
   title: { absolute: "Salariul minim pe economie 2026 - Brut, net și taxe" },
   description:
-    "Salariul minim e 4.325 lei brut și 2.699 lei net din 1 iulie 2026, o creștere de la 4.050 lei. Vezi cum s-a calculat și costul total pentru angajator.",
+    "Salariul minim 2026 (din 1 iulie): calculul netului cu scutirea de 200 lei, când o pierzi, part-time, costul firmei, drepturi ITM și ce urmează în 2027.",
   alternates: { canonical: "https://salariile.ro/salariu-minim" },
   openGraph: ogPage({
     title: "Salariul minim pe economie 2026: cât rămâne net la tine",
@@ -340,16 +340,14 @@ function BaraAngajatStat() {
 function CardPentruCe() {
   return (
     <div className={`${card} ${strong}`}>
-      <h3 className={titluCard}>Pe ce se duc banii reținuți</h3>
+      <h3 className={titluCard}>Ce primești pentru contribuțiile plătite</h3>
       <p className={textCard}>
         <strong>Pensia.</strong> Un an cu normă întreagă contează întreg la stagiul de cotizare, chiar la
-        salariul minim. Pensia în sine crește însă cu salariul.
+        salariul minim. Valoarea pensiei crește însă odată cu salariul brut.
       </p>
       <p className={textCard}>
-        <strong>Sănătatea.</strong> Ești asigurat cu drepturi depline, la fel ca oricine câștigă mai mult.
-      </p>
-      <p className={textCard}>
-        <strong>Impozitul</strong> merge la bugetul din care se plătesc școlile, spitalele și drumurile.
+        <strong>Sănătatea.</strong> Ești asigurat cu drepturi depline și concediu medical plătit, la fel ca
+        oricine câștigă mai mult.
       </p>
     </div>
   );
@@ -369,12 +367,14 @@ function CardCatiOameni() {
 
 function CardUrmatoareaCrestere() {
   return (
-    <div className={`${card} ${strong}`}>
-      <h3 className={titluCard}>Când crește data viitoare</h3>
+    <div className={`${card} ${strong} ${links}`}>
+      <h3 className={titluCard}>Ce se știe despre 2027</h3>
       <p className={textCard}>
-        Minimul îl stabilește Guvernul prin hotărâre, de obicei o dată pe an, după discuții cu sindicatele și
-        patronatele. Pentru 2027, discuțiile încep de regulă toamna. Actualizăm pagina în ziua în care apare
-        hotărârea în Monitorul Oficial.
+        Nicio hotărâre nouă nu a schimbat brutul de la 1 ianuarie 2027, iar scutirea de 200 de lei expiră pe
+        31 decembrie 2026 dacă nu e prelungită. Actualizăm pagina în ziua publicării în Monitorul Oficial.
+      </p>
+      <p className="mt-auto pt-4 text-xs text-stone-600">
+        <Link href="/noutati/salariul-minim-2027">Salariul minim 2027: ce e sigur și ce se discută</Link>
       </p>
     </div>
   );
@@ -431,14 +431,15 @@ function CardConexe() {
     <div className={card}>
       <h3 className="mb-2 text-base font-bold tracking-[-0.01em] text-stone-900">Pagini conexe</h3>
       <ul className={`flex flex-col gap-2 text-sm ${links}`}>
-        <li><Link href="/noutati/salariul-minim-1-iulie-2026">Ce s-a schimbat de la 1 iulie 2026</Link></li>
-        <li><Link href="/noutati/salariu-peste-minim-1-iulie-2026">Salariile puțin peste minim</Link></li>
+        <li><Link href="/noutati/salariul-minim-2027">Salariul minim 2027: ce e sigur și ce se discută</Link></li>
+        <li><Link href="/noutati/brut-peste-minim-net-mai-mic">De ce un leu peste minim îți scade netul</Link></li>
+        <li><Link href="/noutati/salariu-peste-minim-1-iulie-2026">Tasarea salariilor aflate puțin peste minim</Link></li>
         <li><Link href="/noutati/salariul-minim-romania-vs-uniunea-europeana-2026">Salariul minim din România față de restul Uniunii</Link></li>
         <li><Link href="/noutati/cosul-minim-de-consum">Salariul minim față de coșul minim de trai</Link></li>
         <li><Link href="/noutati/tichete-de-masa-2026">Cum se taxează tichetele de masă</Link></li>
         <li><Link href="/salariu-mediu">Salariul mediu pe economie</Link></li>
         <li><Link href="/calculator-salariu-part-time">Calculator salariu part-time</Link></li>
-        <li><Link href="/zile-libere-2026">Zile libere 2026</Link></li>
+        <li><Link href="/zile-libere-2027">Zile libere 2027</Link></li>
       </ul>
     </div>
   );

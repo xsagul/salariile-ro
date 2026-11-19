@@ -9,6 +9,7 @@ import Link from "@/app/components/Link";
 import { Breadcrumb, Faq, H1, Lead, TITLU_SECTIUNE, SPATIU_JOS, SPATIU_SUS } from "@/app/components/ui";
 import { CardCifra, NotaSursa, lei, procent } from "@/app/components/Salarii";
 import { AN_JUDETE, JUDETE, MATRICE_JUDETE, NATIONAL_JUDETE, INS_SURSA } from "@/lib/ins-date";
+import { calculStandard } from "@/lib/fiscal";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 import { TABEL_STANDARD } from "@/app/components/TabelArticol";
@@ -25,8 +26,8 @@ const URL_HG_598_2024 = "https://legislatie.just.ro/Public/DetaliiDocumentAfis/2
 const MEDIA_TARA = NATIONAL_JUDETE;
 const PESTE_MEDIE = MEDIA_TARA === null ? 0 : JUDETE.filter((j) => j.brut > MEDIA_TARA).length;
 
-const TITLU = `Câștig salarial mediu brut pe județe ${AN}`;
-const DESCRIERE = `Câștig salarial mediu brut lunar pe județe, media întregului an ${AN} (INS FOM107E). Valorile nu sunt nete și nu reprezintă salariul minim din 2026.`;
+const TITLU = "Salariu mediu pe județe în România";
+const DESCRIERE = `Salariul mediu brut și net orientativ în toate cele ${JUDETE.length} de județe, pe baza datelor INS (media ${AN}): clasament complet de la ${PRIMUL.nume} la ${ULTIMUL.nume}.`;
 
 export const metadata: Metadata = {
   title: { absolute: `${TITLU} | Salariile` },
@@ -45,7 +46,7 @@ const FAQ = [
     q: "În ce județ se câștigă cel mai bine în România?",
     a: `Ca medie a întregului an ${AN}, cel mai mare câștig salarial mediu brut lunar a fost în ${PRIMUL.nume}: ${lei(PRIMUL.brut)} lei. Urmează ${JUDETE.slice(1, 4)
       .map((j) => `${j.nume} (${lei(j.brut)} lei)`)
-      .join(", ")}. La celălalt capăt este ${ULTIMUL.nume}, cu ${lei(ULTIMUL.brut)} lei — un raport de ${RAPORT.toLocaleString("ro-RO", { minimumFractionDigits: 1, maximumFractionDigits: 1 })} la 1 între primul și ultimul.`,
+      .join(", ")}. La celălalt capăt este ${ULTIMUL.nume}, cu ${lei(ULTIMUL.brut)} lei, un raport de ${RAPORT.toLocaleString("ro-RO", { minimumFractionDigits: 1, maximumFractionDigits: 1 })} la 1 între primul și ultimul.`,
   },
   {
     q: "Câte județe sunt peste media națională?",
@@ -59,11 +60,11 @@ const FAQ = [
   },
   {
     q: "Cifrele sunt pe județ sau pe oraș?",
-    a: "Pe județ. INS nu publică la nivel de localitate în această serie. Într-un județ cu un singur angajator mare, media poate să nu se regăsească în restul localităților — de aceea nu traducem județul în oraș, cum fac unele site-uri.",
+    a: "Pe județ. INS nu publică la nivel de localitate în această serie. Într-un județ cu un singur angajator mare, media poate să nu se regăsească în restul localităților, de aceea păstrăm nivelul de județ raportat de INS.",
   },
   {
-    q: "Sumele sunt nete sau reprezintă salariul minim?",
-    a: `Nu. Sunt câștiguri salariale medii brute lunare, calculate ca medie pentru întregul an ${AN}. Seria nu publică netul. Nici nu reprezintă salariul minim: în 2024, minimul legal a fost 3.300 lei până la 30 iunie (HG 900/2023) și 3.700 lei din 1 iulie (HG 598/2024); salariul minim din 2026 este un reper legal separat.`,
+    q: "Sumele din seria INS sunt brute sau nete?",
+    a: `INS publică în FOM107E câștigul salarial mediu brut lunar, ca medie pentru întregul an ${AN}. Coloana „Net orientativ” aplică impozitarea standard pe acel brut, fără persoane în întreținere, ca reper de comparare.`,
   },
 ];
 
@@ -130,11 +131,11 @@ export default function JudetePage() {
               { label: "Județe" },
             ]}
           />
-          <H1>Câștigul salarial mediu brut lunar pe județe — media {AN}</H1>
+          <H1>Salariu mediu pe județe în România</H1>
           <Lead>
-            Valorile INS de mai jos sunt <strong>câștiguri salariale medii brute lunare</strong>, calculate ca medie
-            pentru întregul an <strong>{AN}</strong>. Nu sunt salarii nete și nu reprezintă salariul minim din 2026.
-            Defalcarea este pe județ, nu pe oraș.
+            Valorile oficiale INS sunt <strong>câștiguri salariale medii brute lunare</strong>, ca media întregului an{" "}
+            <strong>{AN}</strong>, completate în tabel cu netul orientativ la impozitarea standard. Defalcarea este pe
+            județ, nu pe oraș.
           </Lead>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -180,6 +181,9 @@ export default function JudetePage() {
                     Brut lunar · media {AN}
                   </th>
                   <th className="border-b border-stone-200 bg-antet px-3 py-3 text-right text-xs font-medium uppercase tracking-wide text-stone-600">
+                    Net orientativ
+                  </th>
+                  <th className="border-b border-stone-200 bg-antet px-3 py-3 text-right text-xs font-medium uppercase tracking-wide text-stone-600">
                     Față de media brută pe țară
                   </th>
                 </tr>
@@ -187,6 +191,7 @@ export default function JudetePage() {
               <tbody>
                 {JUDETE.map((judet, index) => {
                   const abatere = NATIONAL_JUDETE ? (judet.brut - NATIONAL_JUDETE) / NATIONAL_JUDETE : null;
+                  const netEst = calculStandard(judet.brut)?.net ?? null;
                   return (
                     <tr key={judet.slug}>
                       <td className="border-b border-stone-100 px-3 py-2 text-left text-stone-600">{index + 1}</td>
@@ -206,8 +211,11 @@ export default function JudetePage() {
                           {judet.nume}
                         </Link>
                       </th>
-                      <td className="border-b border-stone-100 px-3 py-2 text-right font-semibold text-stone-900">
+                      <td className="border-b border-stone-100 px-3 py-2 text-right font-semibold tabular-nums text-stone-900">
                         {lei(judet.brut)} lei
+                      </td>
+                      <td className="border-b border-stone-100 px-3 py-2 text-right tabular-nums text-stone-700">
+                        {netEst ? `≈ ${lei(netEst)} lei` : "—"}
                       </td>
                       <td className="border-b border-stone-100 px-3 py-2 text-right text-stone-600">
                         {abatere === null ? (
@@ -244,13 +252,12 @@ export default function JudetePage() {
             </p>
             <NotaSursa>
               Sursa: Institutul Național de Statistică, TEMPO-Online, matricea{" "}
-              <a href={URL_FOM107E} target="_blank" rel="noopener noreferrer">{MATRICE_JUDETE}</a> — câștig salarial
-              nominal mediu brut lunar pe activități CAEN Rev.2 și județe, media întregului an {AN}. Nu este net și
-              nu este salariul minim; în 2024, pragurile legale au fost stabilite prin{" "}
+              <a href={URL_FOM107E} target="_blank" rel="noopener noreferrer">{MATRICE_JUDETE}</a>: câștig salarial
+              nominal mediu brut lunar pe activități CAEN Rev.2 și județe, media întregului an {AN}. Netul orientativ
+              este calculat standard din brut; în 2024, pragurile legale de salariu minim au fost stabilite prin{" "}
               <a href={URL_HG_900_2023} target="_blank" rel="noopener noreferrer">HG 900/2023</a> și{" "}
-              <a href={URL_HG_598_2024} target="_blank" rel="noopener noreferrer">HG 598/2024</a>. Reutilizare conform
-              licenței pentru o guvernare deschisă. Vezi <Link href="/metodologie">metodologia</Link>,{" "}
-              <Link href="/salarii">toate meseriile</Link> și{" "}
+              <a href={URL_HG_598_2024} target="_blank" rel="noopener noreferrer">HG 598/2024</a>. Vezi{" "}
+              <Link href="/metodologie">metodologia</Link>, <Link href="/salarii">toate meseriile</Link> și{" "}
               <Link href="/salarii/clasament">clasamentul meseriilor</Link>.
             </NotaSursa>
           </section>

@@ -1,15 +1,13 @@
 ---
-title: "Are România cele mai mari taxe pe muncă din UE? Ce arată Eurostat"
+title: "Taxele pe muncă în UE: unde este România"
 description: "Nu cele mai mari, dar printre ele: pentru salariile mici, România e pe locul 4 în UE. De ce pare că statul ia atât de mult și ce nu spune clasamentul."
 date: "2026-11-06"
-updated: "2026-11-06"
+updated: "2026-11-19"
 hero: "/noutati/taxarea-muncii-ue-v2.webp"
 heroAlt: "Ilustrație editorială: un plic de salariu albastru cu cercul de stele al Uniunii Europene, din care lipsește o bucată mare, mușcată."
 ---
 
-**Nu, România nu are cele mai mari taxe pe muncă din Uniunea Europeană, dar e foarte aproape de vârf.** Pentru un salariat cu un salariu mai mic decât media țării, România e pe locul 4 din 27, după Germania, Slovenia și Slovacia. Statul ia acolo cam 43 de lei din fiecare 100 pe care firma îi cheltuiește pe acel om. Media europeană e cam 40.
-
-Pe rețelele sociale circulă des hărți care pun România pe primul loc. Nu e adevărat, dar nici departe de adevăr. Mai jos explicăm de ce, cum se compară corect țările și ce înseamnă asta pentru tine.
+**Nu, România nu are cele mai mari taxe pe muncă din Uniunea Europeană, dar se află foarte aproape de vârf.** Pentru un salariat cu un venit sub media țării, România este pe locul 4 din 27, după Germania, Slovenia și Slovacia: statul reține 42,8% din costul total al muncii, față de media UE de 39,5%.
 
 ## De ce pare că România ia cel mai mult
 
@@ -23,7 +21,7 @@ De aceea, compararea fluturașelor între țări duce la concluzii greșite. Un 
 
 ## Cum se compară corect
 
-Eurostat, institutul de statistică al Uniunii Europene, nu compară brutul, ci **cât costă de fapt un salariat** pentru firmă: salariul plus toate taxele, ale lui și ale angajatorului. Apoi se uită cât din acest cost ajunge la stat și cât ajunge la om.
+Eurostat, institutul de statistică al Uniunii Europene, nu compară brutul, ci **costul total al unui salariat** pentru firmă: salariul plus toate contribuțiile angajatului și angajatorului. Apoi măsoară ponderea care ajunge la stat.
 
 Indicatorul se numește „povara fiscală pe muncă” și e singurul care pune toate țările pe același cântar. Comparația se face pentru aceeași persoană: un salariat singur, fără copii, cu un salariu mai mic decât media țării lui.
 
@@ -69,10 +67,6 @@ Cum se ajunge de la brut la net, taxă cu taxă, explicăm în articolul despre 
 **Situația familiilor.** Cifrele sunt pentru o persoană singură. Cu copii, în multe țări povara scade mult, prin alocații și reduceri de impozit. În România, deducerea pentru copii ajută, dar mai puțin.
 
 **Munca la negru și salariile „la plic”.** Clasamentul presupune că toată lumea plătește taxele pe tot salariul. În realitate, taxele mari sunt unul dintre motivele pentru care unii aleg să lucreze fără contract, cu riscuri mari pentru ei. Am scris despre asta în articolul despre [munca fără contract](/noutati/munca-fara-contract).
-
-## Pe scurt
-
-România nu e campioana Europei la taxarea muncii, dar e în primele cinci, mai ales pentru cei cu salarii mici. Impresia că statul ia aproape tot vine din faptul că la noi aproape toate taxele se văd pe fluturașul angajatului. Comparația corectă, pe costul total al muncii, ne pune pe locul 4.
 
 ## Surse
 

@@ -5,12 +5,11 @@ import { calculStandardCuRegim, SALARIU_MINIM, SALARIU_MINIM_CONSTRUCTII } from 
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 
-// Titlul depășea 60 de caractere cu sufixul de brand, iar descrierea folosea jargon
-// („S1", „S2") plus meta-limbaj despre pagină („cu taxe și surse"), nu răspunsul la
-// întrebarea utilizatorului — motiv pentru care Google prefera meniul de navigație.
-const TITLE = "Salariu minim construcții 2026 - 4.582 lei brut, 2.754 net";
+// Titlul fără cifre de net în SERP (19 noiembrie 2026): vechiul titlu cu
+// „4.582 lei brut, 2.754 net” închidea întrebarea în rezultate (0,57% CTR).
+const TITLE = "Salariu minim construcții 2026: brut, net și taxe";
 const DESCRIPTION =
-  "Salariul minim în construcții este 4.582 lei brut pe lună în 2026, adică 27,714 lei pe oră și 2.754 lei net din iulie. Cost total angajator: 4.685 lei.";
+  "Salariul minim în construcții rămâne 4.582 lei brut în 2026: calculul netului după iulie, tariful orar, costul firmei și diferența față de minimul general.";
 const PATH = "/salariu-minim-constructii-2026";
 const MINIM_CONSTRUCTII = SALARIU_MINIM_CONSTRUCTII;
 const TARIF_ORAR = "27,714";

@@ -10,7 +10,7 @@ const continut = JSON.stringify(
   null, 2) + '\n';
 
 if (process.argv.includes('--check')) {
-  const actual = fs.existsSync(cale) ? fs.readFileSync(cale, 'utf8') : '';
+  const actual = fs.existsSync(cale) ? fs.readFileSync(cale, 'utf8').replaceAll('\r\n', '\n') : '';
   if (actual !== continut) {
     throw new Error(`${cale} a ramas in urma fata de MESERII. Ruleaza: npx tsx scripts/genereaza-catalog-meserii.mts`);
   }

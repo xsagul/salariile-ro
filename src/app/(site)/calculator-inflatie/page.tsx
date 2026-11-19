@@ -109,7 +109,7 @@ const jsonLd = {
       url: `https://salariile.ro${CALE}`,
       applicationCategory: "FinanceApplication",
       operatingSystem: "Web",
-      offers: { "@type": "Offer", price: "0", priceCurrency: "RON" },
+      isAccessibleForFree: true,
       description: DESC,
     },
     {

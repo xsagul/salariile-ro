@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "@/app/components/Link";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
-import { Section, Breadcrumb, CardCompanion, Repere, PaginiConexe, Faq, TITLU_PAGINA, SPATIU_JOS, SPATIU_SUS, LISTA_CARD } from "@/app/components/ui";
+import { Section, Breadcrumb, CardCompanion, Repere, PaginiConexe, Faq, TITLU_PAGINA, SPATIU_JOS, SPATIU_SUS } from "@/app/components/ui";
 
 const PATH = "/saga";
 const ACTUALIZAT = PAGE_LAST_MODIFIED[PATH].toLocaleDateString("ro-RO", {
@@ -16,41 +16,37 @@ const ACTUALIZAT = PAGE_LAST_MODIFIED[PATH].toLocaleDateString("ro-RO", {
 export const metadata: Metadata = {
   title: { absolute: "SAGA Web și SAGA C: salarii, contabilitate | Salariile" },
   description:
-    "SAGA C și SAGA WEB în 2026: contabilitate, salarizare, D112, licență freeware și diferențele față de SmartBill. Surse oficiale SAGA.",
+    "SAGA C și SAGA WEB în 2026: contabilitate, salarizare, D112, diferența între licența Freeware și cea plătită și comparație cu SmartBill.",
   alternates: { canonical: "https://salariile.ro/saga" },
   openGraph: ogPage({
     title: "SAGA Web și SAGA C: salarii și contabilitate",
     description:
-      "Ce sunt SAGA C și SAGA WEB, cum funcționează salarizarea și D112 și cum diferă de SmartBill.",
+      "Ce oferă SAGA C, SAGA P.S. și SAGA WEB pentru contabilitate, salarizare și D112.",
     path: PATH,
   }),
   twitter: twPage({
     title: "SAGA Web și SAGA C: salarii și contabilitate",
     description:
-      "Ce sunt SAGA C și SAGA WEB, cum funcționează salarizarea și D112 și cum diferă de SmartBill.",
+      "Ce oferă SAGA C, SAGA P.S. și SAGA WEB pentru contabilitate, salarizare și D112.",
   }),
 };
 
 const FAQ = [
   {
-    q: "Ce este SAGA C?",
-    a: "SAGA C este programul SAGA pentru evidență contabilă, salarială și de stocuri în partidă dublă. Aplicația desktop are atât licență freeware, cât și licență plătită.",
+    q: "Care este diferența dintre SAGA C, SAGA P.S. și SAGA WEB?",
+    a: "SAGA C este aplicația desktop Windows pentru contabilitate în partidă dublă, stocuri și salarii. SAGA P.S. acoperă evidența în partidă simplă (PFA, profesii liberale). SAGA WEB este versiunea online, accesată direct din browser.",
   },
   {
-    q: "Ce este SAGA WEB?",
-    a: "SAGA WEB este versiunea online a programelor SAGA C și SAGA P.S. și permite accesarea funcționalităților similare prin browser.",
-  },
-  {
-    q: "SAGA poate calcula salarii și genera D112?",
-    a: "Da. Manualul SAGA are module pentru configurarea salariilor, salariați, state de salarii și Declarația 112. Actualizările din 2026 includ modificări de salarizare și actualizări D112.",
+    q: "SAGA poate calcula salarii și genera Declarația 112?",
+    a: "Da. Programul include configurarea parametrilor salariali, evidența salariaților, concediile medicale, statele de salarii, fluturașii și generarea D112.",
   },
   {
     q: "SAGA C este gratuit?",
-    a: "SAGA oferă o licență Freeware pentru SAGA C și SAGA P.S. pe termen nedeterminat cât timp furnizorul continuă această variantă. Freeware nu include actualizări, asistență, suport tehnic și mentenanță; acestea intră în licența plătită.",
+    a: "Există o licență Freeware pentru SAGA C și SAGA P.S., utilizabilă pe termen nedeterminat, dar fără actualizări de versiune, suport tehnic și mentenanță. Pentru actualizările legislative (salariu minim, D112, REGES) este necesară licența plătită.",
   },
   {
-    q: "SAGA sau SmartBill pentru salarii?",
-    a: "Ambele acoperă salarii și D112. SAGA C este aplicație desktop, SAGA WEB funcționează în browser, iar SmartBill Conta este un serviciu cloud pe planuri. Comparația utilă ține de fluxul de lucru, licențiere, numărul de firme și nevoia de acces online.",
+    q: "SAGA sau SmartBill Conta pentru salarii?",
+    a: "Ambele gestionează salarii și D112. SAGA C lucrează local pe Windows, SAGA WEB în browser, iar SmartBill Conta este un serviciu cloud pe abonament per CIF.",
   },
 ];
 
@@ -98,14 +94,13 @@ export default function SagaPage() {
           <div className="md:grid md:grid-cols-5 md:items-center md:gap-8 lg:gap-10">
             <div className="md:col-span-3">
               <h1 className={`max-w-xl ${TITLU_PAGINA}`}>
-                SAGA: desktop sau web pentru contabilitate?
+                SAGA C și SAGA WEB: salarii, contabilitate și licențe
               </h1>
               <p className="mt-4 text-xs text-stone-600 [&_a]:font-medium [&_a]:text-stone-700 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-900">
                 Scris de <Link href="/despre">Știuriuc Sorin-Marian</Link> · Actualizat {ACTUALIZAT}
               </p>
               <p className="mt-5 max-w-prose text-base leading-normal tracking-[-0.01em] text-stone-600 [&_strong]:font-semibold [&_strong]:text-stone-900">
-                <strong>Alege SAGA C dacă lucrezi local pe PC și ai nevoie de contabilitate, salarii și stocuri într-un singur program.</strong>{" "}
-                Dacă accesul din browser este prioritar, varianta relevantă este SAGA WEB.
+                <strong>SAGA C</strong> este aplicația desktop pe Windows pentru contabilitate în partidă dublă, gestiune și salarii. Pentru evidență în partidă simplă există <strong>SAGA P.S.</strong>, iar pentru lucru direct din browser există <strong>SAGA WEB</strong>.
               </p>
             </div>
             <div className="mt-7 md:col-span-2 md:mt-0">
@@ -125,148 +120,60 @@ export default function SagaPage() {
 
       <Section
         companion={
-          <CardCompanion titlu="Verdict rapid">
-            <ul className={`${LISTA_CARD} text-stone-600 [&_strong]:font-semibold [&_strong]:text-stone-900`}>
-              <li><strong>SAGA C:</strong> pentru contabilitate în partidă dublă și lucru local pe PC.</li>
-              <li><strong>SAGA WEB:</strong> dacă vrei să intri în program direct din browser.</li>
-              <li><strong>Pentru salarii:</strong> ambele variante includ fluxuri de salarizare și D112.</li>
-            </ul>
-          </CardCompanion>
-        }
-      >
-        <h2>Ce variantă SAGA ți se potrivește?</h2>
-        <p>
-          SAGA C este alegerea firească pentru contabili și firme care lucrează pe Windows, gestionează mai
-          multe tipuri de evidențe și vor să păstreze fluxul principal pe calculatorul propriu.
-        </p>
-        <p>
-          SAGA WEB răspunde altei nevoi: accesul online. Nu alegi între ele după numărul de funcții afișate,
-          ci după locul din care lucrezi și felul în care vrei să accesezi datele firmei.
-        </p>
-        <p className="source-note">
-          Informațiile despre produse și licențiere au fost verificate la {ACTUALIZAT} în sursele oficiale SAGA Software.
-        </p>
-      </Section>
-
-      <Section>
-        <h2>SAGA C, SAGA WEB și SAGA P.S.</h2>
-        <p>
-          <strong>SAGA C</strong> este aplicația desktop pentru evidență contabilă, salarială și de
-          stocuri în partidă dublă. Pentru partidă simplă există SAGA P.S. <strong>SAGA WEB</strong>{" "}
-          este versiunea online a produselor și oferă acces prin browser.
-        </p>
-        <p>
-          Diferența este importantă pentru că expresii precum „SAGA”, „SAGA C” și „SAGA WEB” nu descriu
-          exact același lucru. Dacă ai nevoie de lucru local pe PC, SAGA C este produsul relevant.
-          Dacă ai nevoie de acces din browser, te interesează SAGA WEB.
-        </p>
-        <p className="source-note">
-          Surse:{" "}
-          <a href="https://www.sagasoft.ro/formular-licente.php?tip=juridica">
-            SAGA Software — formular licențe și descriere produse
-          </a>
-          {" · "}
-          <a href="https://www.sagasoft.ro/conditii-licenta.php">
-            condiții de licență
-          </a>.
-        </p>
-      </Section>
-
-      <Section
-        companion={
           <CardCompanion titlu="Salarizare în SAGA">
-            <ul className={`${LISTA_CARD} text-stone-600`}>
-              <li>configurare salarii</li>
-              <li>evidență salariați</li>
-              <li>state de salarii</li>
-              <li>concedii și diurne</li>
-              <li>Declarația 112</li>
-            </ul>
-          </CardCompanion>
-        }
-      >
-        <h2>SAGA pentru salarii și D112</h2>
-        <p>
-          Manualul SAGA are o zonă separată de <strong>configurare salarii</strong>. Acolo sunt setate
-          valorile și regulile folosite la calcul, iar în evidența salariaților se completează tipul
-          salariului, salariul brut, contractele și datele necesare raportării.
-        </p>
-        <p>
-          Statele de salarii sunt legate de Declarația 112. Manualul descrie separat angajații standard,
-          contractele cu scutiri sau concedii medicale și celelalte categorii raportate în D112.
-        </p>
-        <p>
-          SAGA a continuat să actualizeze aceste funcții în 2026. Jurnalul oficial consemnează modificări
-          pentru salarizarea aplicabilă din iulie și actualizări D112, iar pagina SAGA C afișează în prezent
-          versiunea 3.0.605, datată 9 septembrie 2026.
-        </p>
-        <p>
-          Pentru verificarea rapidă a unui salariu individual poți folosi
-          <Link href="/"> calculatorul brut-net</Link>. SAGA este relevant când trebuie să gestionezi
-          mai mulți angajați, state și declarații.
-        </p>
-        <p className="source-note">
-          Surse:{" "}
-          <a href="https://manual.sagasoft.ro/sagac/glosar-14-kw-48-letter-C.html">
-            Manual SAGA C — Configurare salarii
-          </a>
-          {" · "}
-          <a href="https://manual.sagasoft.ro/sagac/topic-25-salariati.html">
-            Salariați
-          </a>
-          {" · "}
-          <a href="https://www.sagasoft.ro/actualizari.php?program=SAGA+C">
-            actualizări SAGA C
-          </a>.
-        </p>
-      </Section>
-
-      <Section>
-        <h2>SAGA gratuit vs licență plătită</h2>
-        <p>
-          SAGA Software definește explicit o <strong>licență Freeware</strong> pentru SAGA C și SAGA P.S.
-          Pagina SAGA C descrie programul drept gratuit și fără limitări; condițiile de licențiere precizează
-          că varianta Freeware poate fi folosită pe termen nedeterminat cât timp furnizorul continuă să o ofere.
-        </p>
-        <p>
-          Limita importantă este alta: licența Freeware <strong>nu include actualizările programului,
-          asistență, suport tehnic și mentenanță</strong>. Licența plătită le include. Pentru un program de
-          salarizare, actualizările contează deoarece formularele și regulile fiscale se schimbă.
-        </p>
-        <p>
-          Prețul curent este calculat în formularul oficial de achiziție în funcție de pachet și numărul
-          de accesări/CIF-uri incluse. Nu dăm aici o sumă luată de pe un forum sau de pe o factură veche,
-          pentru că probabil n-ar fi oferta pe care o primește firma ta azi.
-        </p>
-        <p className="source-note">
-          Surse:{" "}
-          <a href="https://www.sagasoft.ro/conditii-licenta.php">SAGA — condiții licență</a>
-          {" · "}
-          <a href="https://www.sagasoft.ro/formular-licente.php?tip=juridica">
-            formular oficial de achiziție
-          </a>.
-        </p>
-      </Section>
-
-      <Section
-        companion={
-          <CardCompanion titlu="Diferența de model">
             <Repere
               randuri={[
-                ["SAGA C", "desktop"],
-                ["SAGA WEB", "browser"],
-                ["SmartBill Conta", "cloud / browser"],
-                ["D112", "ambele"],
+                ["SAGA C", "Desktop Windows"],
+                ["SAGA WEB", "Acces din browser"],
+                ["Declarații", "D112, REGES, state"],
+                ["Freeware", "Fără actualizări și suport"],
               ]}
             />
           </CardCompanion>
         }
       >
-        <h2>SAGA vs SmartBill pentru salarizare</h2>
+        <h2>Salarizare, D112 și actualizări legislative</h2>
         <p>
-          Nu există o diferență de tipul „unul calculează salarii, celălalt nu”. <strong>Ambele</strong>{" "}
-          au fluxuri de salarizare și D112. Diferența este în modul în care lucrezi cu ele.
+          SAGA include module dedicate pentru configurarea parametrilor salariali, evidența salariaților, concedii medicale, diurne, state de salarii și generarea Declarației 112. Manualul tratează separat angajații standard, contractele part-time și categoriile cu scutiri.
         </p>
+        <p>
+          În 2026, jurnalul oficial SAGA C consemnează actualizări pentru salariul minim din 1 iulie, concediile medicale, REGES și structura D112. Pentru un calcul punctual brut-net fără program contabil poți folosi direct{" "}
+          <Link href="/">calculatorul de salariu net</Link>.
+        </p>
+        <p className="source-note">
+          Surse:{" "}
+          <a href="https://manual.sagasoft.ro/sagac/glosar-14-kw-48-letter-C.html" rel="noopener noreferrer">
+            Manual SAGA C: Configurare salarii
+          </a>
+          {" · "}
+          <a href="https://manual.sagasoft.ro/sagac/topic-25-salariati.html" rel="noopener noreferrer">
+            Salariați
+          </a>
+          {" · "}
+          <a href="https://www.sagasoft.ro/actualizari.php?program=SAGA+C" rel="noopener noreferrer">
+            Actualizări SAGA C
+          </a>.
+        </p>
+      </Section>
+
+      <Section>
+        <h2>Licența Freeware vs licența plătită</h2>
+        <p>
+          SAGA Software oferă o <strong>licență Freeware</strong> pentru SAGA C și SAGA P.S., fără limitare de timp cât timp furnizorul menține această variantă. Limita practică este că varianta Freeware <strong>nu include actualizările programului, suportul tehnic și mentenanța</strong>. Cum regulile fiscale și formularele D112 se modifică frecvent, pentru salarizare curentă este necesară licența plătită.
+        </p>
+        <p>
+          Prețul licenței se calculează direct în formularul oficial SAGA în funcție de pachet și de numărul de firme sau accesări.
+        </p>
+        <p className="source-note">
+          Surse:{" "}
+          <a href="https://www.sagasoft.ro/conditii-licenta.php" rel="noopener noreferrer">Condiții de licență SAGA</a>
+          {" · "}
+          <a href="https://www.sagasoft.ro/formular-licente.php?tip=juridica" rel="noopener noreferrer">Formular oficial de achiziție</a>.
+        </p>
+      </Section>
+
+      <Section>
+        <h2>SAGA vs SmartBill Conta</h2>
         <div className="table-wrap">
           <table>
             <thead>
@@ -278,91 +185,38 @@ export default function SagaPage() {
             </thead>
             <tbody>
               <tr>
-                <th>Acces</th>
+                <th>Mod de lucru</th>
                 <td>SAGA C desktop; SAGA WEB în browser</td>
-                <td>cloud / browser</td>
+                <td>Cloud / browser</td>
               </tr>
               <tr>
-                <th>Salarizare</th>
-                <td>Da</td>
-                <td>Da</td>
-              </tr>
-              <tr>
-                <th>D112</th>
+                <th>Salarizare și D112</th>
                 <td>Da</td>
                 <td>Da</td>
               </tr>
               <tr>
                 <th>Variantă gratuită</th>
-                <td>Freeware desktop, fără actualizări/support</td>
+                <td>Freeware desktop, fără actualizări și suport</td>
                 <td>Plan Free în Conta</td>
               </tr>
               <tr>
-                <th>Preț public</th>
-                <td>calculat în formularul de licențiere</td>
-                <td>planuri publicate per CIF/lună</td>
+                <th>Structură de preț</th>
+                <td>Calculat în formularul de licențiere</td>
+                <td>Planuri publicate per CIF/lună</td>
               </tr>
             </tbody>
           </table>
         </div>
         <p>
-          Pentru prețurile și limitele SmartBill am separat analiza într-o pagină proprie:
-          <Link href="/smartbill"> SmartBill 2026 — preț, salarizare și Conta</Link>.
-        </p>
-      </Section>
-
-      <Section>
-        <h2>Actualizări SAGA în 2026</h2>
-        <p>
-          Pentru software-ul de salarizare, o listă de funcții nu este suficientă. Contează și cât de repede
-          este actualizat când se schimbă declarațiile sau regulile fiscale.
-        </p>
-        <p>
-          Jurnalul oficial SAGA C arată în 2026 actualizări pentru D112, REGES, concedii medicale și regulile
-          de salarizare aplicabile din iulie. Asta nu garantează că orice caz particular este automat
-          configurat corect, dar arată că produsul este întreținut pentru schimbările curente.
+          Pentru detalii despre planurile și modulele SmartBill, vezi pagina separată{" "}
+          <Link href="/smartbill">SmartBill 2026: prețuri și Conta</Link>.
         </p>
         <p className="source-note">
-          Sursă: <a href="https://www.sagasoft.ro/actualizari.php?program=SAGA+C">SAGA C — lista actualizărilor</a>.
+          Salariile.ro este un site independent și nu este afiliat cu SAGA Software sau SmartBill.
         </p>
       </Section>
 
       <Faq items={FAQ} />
-
-      <Section>
-        <h2>Surse verificate</h2>
-        <ul>
-          <li>
-            <a href="https://www.sagasoft.ro/saga-c.php">
-              SAGA Software — SAGA C
-            </a>
-          </li>
-          <li>
-            <a href="https://www.sagasoft.ro/conditii-licenta.php">
-              SAGA Software — licență și condiții de utilizare
-            </a>
-          </li>
-          <li>
-            <a href="https://www.sagasoft.ro/formular-licente.php?tip=juridica">
-              SAGA Software — formular de achiziție și produse
-            </a>
-          </li>
-          <li>
-            <a href="https://manual.sagasoft.ro/sagac/glosar-14-kw-48-letter-C.html">
-              Manual SAGA C — Configurare salarii
-            </a>
-          </li>
-          <li>
-            <a href="https://www.sagasoft.ro/actualizari.php?program=SAGA+C">
-              SAGA C — actualizări
-            </a>
-          </li>
-        </ul>
-        <p>
-          Salariile.ro nu este afiliat cu SAGA Software sau SmartBill. Numele produselor apar pentru
-          identificarea și compararea serviciilor descrise.
-        </p>
-      </Section>
 
       <PaginiConexe
         linkuri={[

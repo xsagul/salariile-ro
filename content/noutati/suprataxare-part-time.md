@@ -1,8 +1,8 @@
 ---
-title: "Se elimină suprataxarea part-time? Ce se aplică acum"
+title: "Suprataxarea part-time 2026: ce se aplică"
 description: "Nu, suprataxarea part-time se aplică și acum: nicio lege nu a eliminat-o. Ce înseamnă, de ce a apărut, cine scapă de ea și ce ar trebui să se schimbe."
 date: "2026-11-06"
-updated: "2026-11-06"
+updated: "2026-11-19"
 hero: "/noutati/suprataxare-part-time-v2.webp"
 heroAlt: "Ilustrație editorială: o servietă mică, cu un ceas pe jumătate colorat, legată cu un lanț de o bilă grea de fier."
 ---
@@ -19,7 +19,7 @@ Pentru angajat, netul nu se schimbă. Pentru firmă, un part-time costă mult ma
 
 ## De ce a apărut regula
 
-Regula, în forma de acum, se aplică din 2023. Scopul declarat a fost combaterea unei practici foarte răspândite: oameni angajați pe hârtie pentru 2 sau 4 ore, care lucrau de fapt program întreg, cu restul banilor primiți „la plic”. Firmele economiseau taxe, iar oamenii pierdeau la pensie și la concediul medical.
+Regula, în forma de acum, se aplică din 2023. Scopul declarat a fost combaterea contractelor fictive: angajați cu acte pe 2 sau 4 ore, dar cu program întreg și diferența plătită „la plic”. Firmele economiseau taxe, iar oamenii pierdeau la pensie și la concediul medical.
 
 Regula a făcut această schemă mai puțin avantajoasă. Efectul secundar a fost că a lovit și contractele part-time cinstite: mame care vor să lucreze doar dimineața, oameni cu două slujbe mici, mici afaceri care au nevoie de cineva câteva ore pe zi.
 
@@ -39,7 +39,7 @@ Pentru ei, part-time-ul costă firma cât e normal. Excepția trebuie dovedită 
 
 Ideea eliminării regulii revine aproape în fiecare an. Proiectele depuse în Parlament merg, în linii mari, în aceeași direcție: contribuțiile pentru part-time să se plătească doar din salariul real, proporțional cu orele lucrate.
 
-Până acum, niciunul n-a ajuns la capăt. În septembrie 2026, un vot programat în Camera Deputaților a fost amânat în ultimul moment. Pe ordinea de zi a plenului pentru 9 și 11 noiembrie nu figurează niciun astfel de proiect.
+Până la jumătatea lui noiembrie 2026, niciun proiect nu a trecut de votul final. În septembrie 2026, un vot programat în Camera Deputaților a fost amânat înainte de plen.
 
 Argumentele se repetă de fiecare dată. Susținătorii spun că regula descurajează munca legală cu program redus și îi împinge pe oameni spre munca la negru. Cei care se opun spun că, fără ea, s-ar întoarce contractele fictive de 2 ore și că bugetul ar pierde bani.
 

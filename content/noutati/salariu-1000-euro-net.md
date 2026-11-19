@@ -1,8 +1,8 @@
 ---
-title: "Salariul de 1.000 de euro net nu mai e mare: acum e sub media pe țară"
+title: "Salariul de 1.000 € net: sub media pe țară"
 description: "Acum câțiva ani, 1.000 de euro în mână era un salariu bun. Azi e sub salariul mediu din România. Ce s-a schimbat și ce înseamnă pentru negociere."
 date: "2026-11-06"
-updated: "2026-11-06"
+updated: "2026-11-19"
 hero: "/noutati/salariu-1000-euro-net.webp"
 heroAlt: "Ilustrație editorială: o pușculiță albastră cu stelele Uniunii Europene, crăpată, din care ies bancnote de 100 de euro, cu cioburi pe jos."
 ---
@@ -42,7 +42,7 @@ Salariul mediu e o medie. E tras în sus de câteva salarii foarte mari: directo
 
 Așa că, deși 1.000 de euro în mână e azi sub medie, pentru foarte mulți oameni rămâne o sumă pe care nu o au. În multe județe, în comerț, în hoteluri și restaurante sau în industria ușoară, salariile tipice sunt încă departe de ea.
 
-## Unde e, de fapt, pragul de „salariu bun”
+## Unde este astăzi reperul de „salariu bun”
 
 Dacă reperul s-a mutat, unde e acum? Nu există un răspuns oficial, dar pe scurt:
 
@@ -65,10 +65,6 @@ O regulă ușor de ținut minte: **brutul e cam de 1,7 ori netul.** Cum se ajung
 **Compară cu piața de acum, nu cu cea de acum cinci ani.** Ce suna a ofertă bună în 2020 poate fi azi sub ce se plătește pentru postul tău.
 
 **Uită-te la ce primesc alții în meseria ta.** Pe paginile de [salarii pe meserii](/salarii) găsești reperele pentru fiecare ocupație, iar pe [locurile de muncă de pe salariile.ro](/locuri-de-munca) vezi ce oferă acum angajatorii, cu salariul scris în anunț.
-
-## Pe scurt
-
-„1.000 de euro în mână” nu mai e de mult un salariu mare. E aproximativ cât câștigă salariatul mediu, iar pentru cei mai mulți e încă o sumă de atins, nu de depășit. Reperul s-a mutat, iar cine negociază azi un salariu face bine să se raporteze la piața de acum, în lei.
 
 ## Surse
 

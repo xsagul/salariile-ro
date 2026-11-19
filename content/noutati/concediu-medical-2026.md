@@ -2,12 +2,12 @@
 title: "Concediu medical 2026: calcul, coduri și plată"
 description: "Cum se calculează concediul medical în 2026: procente pe cod de indemnizație, brut sau net, prima zi neplătită, durata și actele pentru plată."
 date: "2026-08-05"
-updated: "2026-09-24"
+updated: "2026-11-19"
 hero: "/noutati/concediu-medical-2026.webp"
 heroAlt: "Calendar, certificat medical, termometru și monede, ilustrație pentru concediul medical 2026"
 ---
 
-**Concediul medical obișnuit se plătește cu 55%, 65% sau 75% din venitul tău mediu, după cât durează boala.** Din februarie 2026 mai e o regulă: prima zi lucrătoare a concediului nu se plătește. Suma exactă depinde de trei lucruri, pe care merită să le verifici separat: codul de pe certificat, venitul din ultimele luni și câte zile lucrătoare intră în concediu.
+**Concediul medical obișnuit se plătește cu 55%, 65% sau 75% din venitul tău mediu, după cât durează boala.** Din februarie 2026 se aplică și regula primei zile lucrătoare neplătite. Pentru a vedea imediat suma brută, reținerile și netul estimat pe situația ta, folosește [calculatorul de concediu medical 2026](/calculator-concediu-medical).
 
 ## Codul de pe certificat spune cât se plătește
 
@@ -25,7 +25,7 @@ Acestea sunt codurile cele mai des întâlnite, nu toate. Chiar și la 100%, nu 
 
 Codul 06 nu acoperă orice concediu de după o operație. Încadrarea o face medicul, iar o urgență fără internare se dă pe acest cod cel mult 5 zile. Dacă boala continuă, prelungirea nu mai e pe codul de urgență.
 
-Nu confunda codul 08, maternitatea, cu codul 15, riscul maternal. La fel, concediul pentru copilul bolnav (codul 09) nu e același lucru cu concediul de creștere a copilului.
+Nu confunda codul 08, maternitatea, cu codul 15, riscul maternal. La fel, concediul pentru copilul bolnav (codul 09) este diferit de [concediul și indemnizația de creștere a copilului](/calculator-indemnizatie-crestere-copil).
 
 ## Se calculează din brut, nu din netul din cont
 

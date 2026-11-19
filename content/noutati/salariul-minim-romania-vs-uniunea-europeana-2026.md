@@ -2,7 +2,7 @@
 title: "Salariul minim în România vs UE în 2026"
 description: "După 1 iulie, salariul minim brut este 4.325 lei, circa 825 euro. Vezi unde se află România în UE și de ce rămâne între cele mai mici niveluri."
 date: "2026-06-24"
-updated: "2026-09-24"
+updated: "2026-11-19"
 hero: "/noutati/salariu-minim-ue.jpg"
 heroAlt: "Ilustrație conceptuală flat: un șir de coloane de înălțimi diferite, ca un clasament, în tonuri mate de salvie-gri și nisip pe fundal ovăz. Una dintre cele mai scunde coloane, în față, e colorată în terracotta, sugerând poziția joasă a României în clasamentul salariilor minime din UE. Deasupra, un arc subtil de stele."
 ---
@@ -54,7 +54,7 @@ Pentru euro am folosit cursul BNR din 1 iulie 2026, de 5,2409 lei. Cursul se mi�
 
 ## Cele cinci țări fără salariu minim legal
 
-Danemarca, Italia, Austria, Finlanda și Suedia nu au un salariu minim stabilit prin lege. Acolo, minimele se negociază pe fiecare domeniu, între sindicate și patronate. Nu înseamnă salarii mici, ci doar alt mod de a le stabili.
+Danemarca, Italia, Austria, Finlanda și Suedia nu au un salariu minim unic stabilit prin lege. În aceste țări, pragurile minime se negociază sectorial, prin contracte colective între sindicate și patronate.
 
 ## Surse
 

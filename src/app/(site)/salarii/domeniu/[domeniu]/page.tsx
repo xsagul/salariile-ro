@@ -19,6 +19,10 @@ import { CardCifra, LinkCard, NotaSursa, lei, lunaLunga, procent } from "@/app/c
 import { denumireScurtaCaen } from "@/lib/caen-denumiri";
 import { AN_JUDETE, LUNA_REFERINTA, MATRICE_BRUT, MATRICE_JUDETE, MATRICE_NET, TOTAL_ECONOMIE } from "@/lib/ins-date";
 import { CATEGORII, COMPARATII, dateMeserie, getCategorie, meseriiDinCategorie, type DateMeserie } from "@/lib/meserii";
+import { concluzieMeserie } from "@/app/components/SalariuConcluzie";
+import { netDeStart } from "@/app/components/SalariuGrila";
+import { netOficialDeStart } from "@/app/components/SalariuOficial";
+import { netDeclarat } from "@/app/components/SalariuDeclarat";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage } from "@/lib/seo";
 import { TABEL_STANDARD } from "@/app/components/TabelArticol";
@@ -36,6 +40,20 @@ export function generateStaticParams() {
 const LUNA = lunaLunga(LUNA_REFERINTA);
 const AN_JUDETE_SCURT = AN_JUDETE.replace("Anul ", "");
 
+type CifraDomeniu = { net: number; text: string; sursa: string };
+
+function cifraDomeniu(slug: string): CifraDomeniu | null {
+  const c = concluzieMeserie(slug);
+  if (c) return { net: c.net, text: `${lei(c.net)} lei`, sursa: c.sursa === "platit" ? "plătit la stat" : "anunțuri verificate" };
+  const g = netDeStart(slug);
+  if (g) return { net: g, text: `de la ${lei(g)} lei`, sursa: "grila legii" };
+  const o = netOficialDeStart(slug);
+  if (o) return { net: o, text: `de la ${lei(o)} lei`, sursa: "tabel oficial" };
+  const d = netDeclarat(slug);
+  if (d) return { net: d, text: `${lei(d)} lei`, sursa: "reper declarat" };
+  return null;
+}
+
 /**
  * Numele domeniului asa cum se scrie in mijlocul unei fraze.
  *
@@ -51,12 +69,17 @@ function numeInFraza(nume: string): string {
   return nume.charAt(0).toLocaleLowerCase("ro-RO") + nume.slice(1);
 }
 
-/** Meseriile domeniului, cu date, ordonate descrescator dupa brutul sectorului. */
-function meseriileDomeniului(slug: string): DateMeserie[] {
+type IntrareDomeniu = DateMeserie & { cifra: CifraDomeniu | null };
+
+/** Meseriile domeniului, cu date, ordonate descrescator dupa reperul net verificat (apoi brutul sectorului). */
+function meseriileDomeniului(slug: string): IntrareDomeniu[] {
   return meseriiDinCategorie(slug)
-    .map((meserie) => dateMeserie(meserie))
-    .filter((date): date is DateMeserie => date !== null)
-    .sort((a, b) => b.sector.brutCurent - a.sector.brutCurent);
+    .map((meserie) => {
+      const d = dateMeserie(meserie);
+      return d ? { ...d, cifra: cifraDomeniu(meserie.slug) } : null;
+    })
+    .filter((date): date is IntrareDomeniu => date !== null)
+    .sort((a, b) => (b.cifra?.net ?? 0) - (a.cifra?.net ?? 0) || b.sector.brutCurent - a.sector.brutCurent);
 }
 
 /** Activitatile CAEN distincte atinse de domeniu, cu cate meserii cad in fiecare. */
@@ -79,7 +102,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const date = meseriileDomeniului(slug);
   if (date.length === 0) return {};
 
-  const descriere = `Salariile din ${numeInFraza(categorie.nume)}: ${date.length} meserii, cu datele INS din ${LUNA}. Brut, net calculat și activitatea CAEN a fiecăreia.`;
+  const descriere = `Salarii nete în ${numeInFraza(categorie.nume)}: ${date.length} meserii din România, cu repere verificate, evoluție pe județe și context INS (${LUNA}).`;
   // Titlul nu poarta anul: cu el, domeniile cu nume lung trec de 60 de caractere.
   const titlu = `Salarii în ${numeInFraza(categorie.nume)}`;
 
@@ -101,8 +124,11 @@ export default async function DomeniuPage({ params }: Props) {
 
   const numeMic = numeInFraza(categorie.nume);
   const activitati = activitatiDomeniu(date);
-  const ceaMaiBine = date[0];
-  const ceaMaiProst = date[date.length - 1];
+  const dupaSector = [...date].sort((a, b) => b.sector.brutCurent - a.sector.brutCurent);
+  const ceaMaiBine = dupaSector[0];
+  const ceaMaiProst = dupaSector[dupaSector.length - 1];
+  const cuCifra = date.filter((d) => d.cifra !== null);
+  const topMeserii = cuCifra.slice(0, 3);
   const mediaDomeniu = Math.round(activitati.reduce((suma, d) => suma + d.brut, 0) / activitati.length);
   const fataDeEconomie = (mediaDomeniu - TOTAL_ECONOMIE.brutCurent) / TOTAL_ECONOMIE.brutCurent;
   const slugurile = new Set(date.map((d) => d.meserie.slug));
@@ -112,15 +138,17 @@ export default async function DomeniuPage({ params }: Props) {
   const intrebari = [
     {
       q: `Cât se câștigă în ${numeMic} în România?`,
-      a: `Cele ${date.length} meserii urmărite aici se împart pe ${activitati.length} ${activitati.length === 1 ? "activitate economică" : "activități economice"} din clasificarea CAEN. În ${LUNA}, câștigul salarial mediu brut al acestor activități a mers de la ${lei(ceaMaiProst.sector.brutCurent)} lei (${ceaMaiProst.sector.denumire.toLocaleLowerCase("ro-RO")}) până la ${lei(ceaMaiBine.sector.brutCurent)} lei (${ceaMaiBine.sector.denumire.toLocaleLowerCase("ro-RO")}). Media lor simplă e ${lei(mediaDomeniu)} lei brut, ${fataDeEconomie >= 0 ? "peste" : "sub"} media pe economie cu ${procent(Math.abs(fataDeEconomie), 0)}%.`,
+      a: `Cele ${date.length} meserii din ${numeMic} acoperă ${activitati.length} ${activitati.length === 1 ? "activitate economică" : "activități economice"} INS. În ${LUNA}, câștigul salarial mediu brut al acestor activități a mers de la ${lei(ceaMaiProst.sector.brutCurent)} lei (${ceaMaiProst.sector.denumire.toLocaleLowerCase("ro-RO")}) până la ${lei(ceaMaiBine.sector.brutCurent)} lei (${ceaMaiBine.sector.denumire.toLocaleLowerCase("ro-RO")}). Media lor simplă este ${lei(mediaDomeniu)} lei brut, ${fataDeEconomie >= 0 ? "peste" : "sub"} media pe economie cu ${procent(Math.abs(fataDeEconomie), 0)}%.`,
     },
     {
-      q: `Care este cea mai bine plătită meserie din ${numeMic}?`,
-      a: `Datele INS nu spun asta, pentru că se publică pe activități economice, nu pe meserii. Pe pagina fiecărei meserii găsești sursele ei proprii, acolo unde există.`,
+      q: `Care sunt cele mai bine plătite meserii din ${numeMic}?`,
+      a: topMeserii.length > 0
+        ? `După reperele nete verificate din catalog, în vârful domeniului sunt ${topMeserii.map((m) => `${m.meserie.nume} (${m.cifra!.text} net, ${m.cifra!.sursa})`).join(", ")}. Fiecare sursă măsoară o populație diferită, iar pe pagina meseriei vezi exact detalii despre vechime, sporuri și oraș.`
+        : `Mediile INS pe sector urcă până la ${lei(ceaMaiBine.sector.brutCurent)} lei brut în ${ceaMaiBine.sector.denumire.toLocaleLowerCase("ro-RO")}.`,
     },
     {
-      q: `De ce mai multe meserii din ${numeMic} au aceeași cifră?`,
-      a: `Pentru că INS nu publică o medie lunară pe ocupație, ci pe activitatea economică a angajatorului. Meseriile care lucrează în aceeași activitate CAEN au același reper de sector. Pe pagina fiecărei meserii vezi separat și reperul grupei majore ISCO-08 din ancheta INS din octombrie. Acesta descrie o familie largă de ocupații din toate sectoarele; nu este o estimare care diferențiază automat meseriile.`,
+      q: `De ce au meseriile același brut de sector, dar nete diferite?`,
+      a: `INS publică media lunară pe activitatea economică a angajatorului (CAEN), deci meseriile din același sector împart același context statistic. Reperul net al fiecărei meserii vine însă separat, din salarii plătite la stat, grile legale, anunțuri verificate sau repere declarate pe ocupația exactă.`,
     },
   ];
 
@@ -198,12 +226,12 @@ export default async function DomeniuPage({ params }: Props) {
             <CardCifra
               eticheta="Cel mai bine plătit sector"
               valoare={lei(ceaMaiBine.sector.brutCurent)}
-              nota={`CAEN ${ceaMaiBine.sector.cheie} — ${denumireScurtaCaen(ceaMaiBine.sector.cheie, ceaMaiBine.sector.denumire)}.`}
+              nota={`CAEN ${ceaMaiBine.sector.cheie}: ${denumireScurtaCaen(ceaMaiBine.sector.cheie, ceaMaiBine.sector.denumire)}.`}
             />
             <CardCifra
               eticheta="Cel mai prost plătit sector"
               valoare={lei(ceaMaiProst.sector.brutCurent)}
-              nota={`CAEN ${ceaMaiProst.sector.cheie} — ${denumireScurtaCaen(ceaMaiProst.sector.cheie, ceaMaiProst.sector.denumire)}.`}
+              nota={`CAEN ${ceaMaiProst.sector.cheie}: ${denumireScurtaCaen(ceaMaiProst.sector.cheie, ceaMaiProst.sector.denumire)}.`}
             />
             <CardCifra
               eticheta="Meserii urmărite"
@@ -218,13 +246,12 @@ export default async function DomeniuPage({ params }: Props) {
               Toate meseriile din {numeMic}
             </h2>
             <p className="mt-4 max-w-3xl text-base leading-normal text-stone-600">
-              De la cea mai bine plătită activitate în jos. Intervalul arată media din județul cel mai prost și din
-              cel mai bine plătit, în {AN_JUDETE_SCURT}.
+              Ordonate după reperul net lunar verificat de pe pagina fiecărei meserii. Coloana de sector arată media brută INS din {LUNA}, iar intervalul arată minimul și maximul brut pe județe din {AN_JUDETE_SCURT}.
             </p>
             <div className="my-6 overflow-x-auto">
-              <table className={`${TABEL_STANDARD} min-w-[46rem]`}>
+              <table className={`${TABEL_STANDARD} min-w-[48rem]`}>
                 <caption className="sr-only">
-                  Meseriile din {numeMic}, cu activitatea CAEN, câștigul mediu brut și intervalul pe județe
+                  Meseriile din {numeMic}, cu reperul net lunar, brutul sectorului CAEN și intervalul pe județe
                 </caption>
                 <thead>
                   <tr>
@@ -233,6 +260,9 @@ export default async function DomeniuPage({ params }: Props) {
                     </th>
                     <th className="border-b border-stone-200 bg-antet px-3 py-3 text-left text-xs font-medium uppercase tracking-wide text-stone-600">
                       Ce face
+                    </th>
+                    <th className="border-b border-stone-200 bg-antet px-3 py-3 text-right text-xs font-medium uppercase tracking-wide text-stone-600">
+                      Reper net
                     </th>
                     <th className="border-b border-stone-200 bg-antet px-3 py-3 text-right text-xs font-medium uppercase tracking-wide text-stone-600">
                       Brut sector
@@ -260,12 +290,22 @@ export default async function DomeniuPage({ params }: Props) {
                       <td className="border-b border-stone-100 px-3 py-3 align-top text-stone-600">
                         {intrare.meserie.ceFace}
                       </td>
-                      <td className="border-b border-stone-100 px-3 py-3 text-right align-top font-semibold tabular-nums text-stone-900">
+                      <td className="border-b border-stone-100 px-3 py-3 text-right align-top tabular-nums">
+                        {intrare.cifra ? (
+                          <>
+                            <span className="block whitespace-nowrap font-semibold text-stone-900">{intrare.cifra.text}</span>
+                            <span className="block text-xs text-stone-500">{intrare.cifra.sursa}</span>
+                          </>
+                        ) : (
+                          "—"
+                        )}
+                      </td>
+                      <td className="border-b border-stone-100 px-3 py-3 text-right align-top whitespace-nowrap tabular-nums text-stone-700">
                         {lei(intrare.sector.brutCurent)} lei
                       </td>
-                      <td className="border-b border-stone-100 px-3 py-3 text-right align-top tabular-nums text-stone-600">
+                      <td className="border-b border-stone-100 px-3 py-3 text-right align-top whitespace-nowrap tabular-nums text-stone-600">
                         {intrare.interval
-                          ? `${lei(intrare.interval.minim.brut)} – ${lei(intrare.interval.maxim.brut)}`
+                          ? `${lei(intrare.interval.minim.brut)}–${lei(intrare.interval.maxim.brut)}`
                           : "—"}
                       </td>
                     </tr>
@@ -281,12 +321,12 @@ export default async function DomeniuPage({ params }: Props) {
             </h2>
             <p className="mt-4 text-base leading-normal text-stone-600">
               Domeniile sunt grupările noastre, ca să găsești ușor meseriile. INS publică însă salariile pe activități
-              economice, așa că meseriile din aceeași activitate au aceeași medie.
+              economice, așa că meseriile din aceeași activitate împart același brut de sector.
             </p>
             <ul className="mt-4 list-disc pl-5 text-base leading-normal text-stone-600 [&_li]:mb-2">
               {activitati.map((activitate) => (
                 <li key={activitate.cheie}>
-                  <strong className="font-semibold text-stone-900">CAEN {activitate.cheie}</strong> —{" "}
+                  <strong className="font-semibold text-stone-900">CAEN {activitate.cheie}</strong>,{" "}
                   {activitate.denumire.toLocaleLowerCase("ro-RO")}: {lei(activitate.brut)} lei brut în {LUNA}
                   {activitate.meserii.length > 1
                     ? `, comun pentru ${activitate.meserii.length} meserii (${activitate.meserii.join(", ")})`
@@ -296,11 +336,10 @@ export default async function DomeniuPage({ params }: Props) {
               ))}
             </ul>
             <NotaSursa>
-              Sursa: Institutul Național de Statistică, TEMPO-Online — matricele {MATRICE_BRUT} și {MATRICE_NET}{" "}
+              Sursa: Institutul Național de Statistică, TEMPO-Online, matricele {MATRICE_BRUT} și {MATRICE_NET}{" "}
               (serie lunară pe activități CAEN Rev.3, ultima lună {LUNA}) și {MATRICE_JUDETE} (defalcarea pe județe,
-              CAEN Rev.2, {AN_JUDETE_SCURT}).  Gruparea pe
-              domenii aparține Salariile.ro, nu INS. Vezi <Link href="/metodologie">metodologia</Link> și{" "}
-              <Link href="/salarii">toate meseriile</Link>.
+              CAEN Rev.2, {AN_JUDETE_SCURT}). Gruparea pe domenii aparține Salariile.ro, nu INS. Vezi{" "}
+              <Link href="/metodologie">metodologia</Link> și <Link href="/salarii">toate meseriile</Link>.
             </NotaSursa>
           </section>
 

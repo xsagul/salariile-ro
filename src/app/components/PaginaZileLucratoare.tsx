@@ -69,7 +69,7 @@ function dateAn(an: AnZileLucratoare) {
 // iar 2027 a avut „tabel lunar și calcul pe interval” (7,1% CTR, poziția 3,6).
 export function metadataZileLucratoare(an: AnZileLucratoare): Metadata {
   const title = `Zile lucrătoare ${an}: tabel pe luni și ore de lucru`;
-  const description = `Zile lucrătoare ${an} în România: numărul de zile și de ore de lucru pentru fiecare lună, cu sărbătorile legale scăzute din normă și totalul anului.`;
+  const description = `Zile lucrătoare ${an} în România: tabel pe fiecare lună cu zile și ore de lucru, sărbătorile legale scăzute din normă, calendar complet și descărcare PDF.`;
   return {
     title: { absolute: title },
     description,

@@ -79,17 +79,18 @@ function calculPagina(mod: ValidCalculatorMode, cifra: string) {
 type CalculPagina = ReturnType<typeof calculPagina>;
 
 /**
- * Titlu de tip răspuns: „5.000 lei brut în net = 2.981 lei (2026)".
- * Cifra rezultat este în titlu, iar sintagma „brut în net" / „net în brut"
- * acoperă tiparul real de căutare. Brandul rămâne acolo unde titlul complet
- * încape sub 60 de caractere; altfel titlul devine absolut, fără sufix.
+ * Titlu orientat pe clic (19 noiembrie 2026): vechiul format „6.000 lei brut în
+ * net = 3.510 lei (2026)” închidea complet întrebarea în SERP și dădea 0,17% CTR
+ * (59 clicuri din 35.113 impresii). Cifra rezultat rămâne în H1 și în primul
+ * paragraf al paginii; titlul și descrierea promit calculul complet și opțiunile.
  */
 function titluSeo(date: CalculPagina) {
-  const { cifraNum, isNetDinBrut, brutEfectiv, rez, esteCalculIstoricS1 } = date;
-  const rezultat = isNetDinBrut ? (rez?.net ?? 0) : brutEfectiv;
+  const { cifraNum, isNetDinBrut, esteCalculIstoricS1 } = date;
   const directie = isNetDinBrut ? "lei brut în net" : "lei net în brut";
-  const perioada = esteCalculIstoricS1 ? "(ian.–iun. 2026)" : "(2026)";
-  return `${fmt(cifraNum)} ${directie} = ${fmt(rezultat)} lei ${perioada}`;
+  if (esteCalculIstoricS1) {
+    return `${fmt(cifraNum)} ${directie} (ian.–iun. 2026): taxe`;
+  }
+  return `${fmt(cifraNum)} ${directie} 2026: taxe și cost firmă`;
 }
 
 /** Titlul gata de pus în Metadata: cu brand prin template sau absolut dacă nu încape. */
@@ -100,28 +101,19 @@ function metadataTitle(titlu: string): Metadata["title"] {
 }
 
 /**
- * Descriere care începe cu cifra rezultat, nu cu un verb la imperativ, și care
- * conține defalcarea. Un call-to-action nu răspunde intenției query-ului, deci
- * Google îl înlocuiește cu altceva din pagină (în trecut, meniul de navigație).
+ * Descriere care nu începe cu verb la imperativ și nu livrează toată defalcarea
+ * ca să oprească clicul: spune clar ce conține pagina pentru suma căutată.
  */
 function descriereSeo(date: CalculPagina) {
-  const { cifraNum, isNetDinBrut, brutEfectiv, rez, esteCalculIstoricS1 } = date;
-  if (!rez) {
-    return `Calcul salariu ${isNetDinBrut ? "net din brut" : "brut din net"} pentru ${fmt(cifraNum)} lei, cu CAS, CASS și impozit pe venit, conform regimului fiscal 2026.`;
-  }
-
-  const taxe = `CAS ${fmt(rez.cas)} lei, CASS ${fmt(rez.cass)} lei și impozit ${fmt(rez.impozit)} lei`;
+  const { cifraNum, isNetDinBrut, esteCalculIstoricS1 } = date;
 
   if (esteCalculIstoricS1) {
-    const perioada = "în ianuarie–iunie 2026";
-    return isNetDinBrut
-      ? `${fmt(rez.net)} lei net rezultau din ${fmt(brutEfectiv)} lei brut ${perioada}: ${taxe}. Cost total angajator: ${fmt(rez.costTotal)} lei.`
-      : `${fmt(brutEfectiv)} lei brut corespundeau unui net de ${fmt(cifraNum)} lei ${perioada}: ${taxe}. Cost total angajator: ${fmt(rez.costTotal)} lei.`;
+    return `Calculul istoric pentru ${fmt(cifraNum)} lei ${isNetDinBrut ? "brut" : "net"} din ianuarie–iunie 2026 (cu 300 lei netaxați la minim): CAS, CASS, impozit și cost firmă.`;
   }
 
   return isNetDinBrut
-    ? `${fmt(rez.net)} lei net rămân din ${fmt(cifraNum)} lei brut în 2026, după ${taxe}. Cost total angajator: ${fmt(rez.costTotal)} lei pe lună.`
-    : `${fmt(brutEfectiv)} lei brut sunt necesari pentru ${fmt(cifraNum)} lei net în 2026, cu ${taxe}. Cost total angajator: ${fmt(rez.costTotal)} lei pe lună.`;
+    ? `Calcul complet pentru un salariu de ${fmt(cifraNum)} lei brut în 2026: netul în mână, CAS, CASS, impozit, deducere personală, tichete și costul firmei.`
+    : `Calcul complet pentru ${fmt(cifraNum)} lei net în 2026: brutul necesar în contract, CAS, CASS, impozit, persoane în întreținere și costul total al firmei.`;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

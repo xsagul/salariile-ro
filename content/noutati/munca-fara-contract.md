@@ -1,8 +1,8 @@
 ---
-title: "Munca fără contract: ce riști și ce faci dacă ai început deja"
+title: "Munca fără contract: riscuri și ce să faci"
 description: "Munca la negru costă firma 40.000 de lei pe om, iar pe tine pensia, asigurarea și concediul medical. Ce îți trebuie înainte de prima zi și ce faci acum."
 date: "2026-11-06"
-updated: "2026-11-15"
+updated: "2026-11-19"
 hero: "/noutati/munca-fara-contract-v2.webp"
 heroAlt: "Ilustrație editorială: o cască de protecție pe un contract nesemnat, un stilou lângă el și, în spate, conturul punctat al unui muncitor care nu apare în acte."
 ---
@@ -53,7 +53,7 @@ Cu alte cuvinte, angajatorul nu pierde nimic dacă îți face contract de la pri
 
 O variantă foarte răspândită e contractul pe salariul minim, cu restul banilor dați „în mână”. Pare o înțelegere bună: primești la fel de mult, iar firma plătește taxe mai mici.
 
-Pentru tine, costul vine mai târziu. Tot ce ține de salariu se calculează doar din suma de pe hârtie: pensia, concediul medical, indemnizația de maternitate, ajutorul de șomaj, chiar și creditul de la bancă. Dacă intri în concediu medical sau rămâi fără slujbă, primești bani ca pentru salariul minim, nu ca pentru cât câștigai de fapt.
+Pentru tine, costul vine mai târziu. Tot ce ține de salariu se calculează doar din suma din contract: pensia, concediul medical, indemnizația de maternitate, ajutorul de șomaj și eligibilitatea pentru un credit. Dacă intri în concediu medical sau rămâi fără slujbă, primești indemnizația calculată la salariul minim, nu la banii primiți în mână.
 
 ## Ce riscă firma
 

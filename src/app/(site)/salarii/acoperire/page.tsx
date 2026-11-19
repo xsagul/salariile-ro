@@ -31,6 +31,7 @@ export const metadata: Metadata = {
   title: 'Acoperirea datelor salariale pe meserii',
   description: 'Câte anunțuri salariale eligibile avem pentru fiecare meserie, din ce surse provin și când datele sunt insuficiente.',
   alternates: { canonical: 'https://salariile.ro/salarii/acoperire' },
+  robots: { index: false, follow: true },
 };
 export default function Acoperire() {
   const rows = MESERII.map(m => ({ m, a: ACOPERIRE_ANUNTURI[m.slug] })).sort((x,y) => (y.a?.n ?? 0)-(x.a?.n ?? 0) || x.m.nume.localeCompare(y.m.nume,'ro'));

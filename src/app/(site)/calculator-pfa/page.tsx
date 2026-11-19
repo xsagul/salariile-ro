@@ -4,7 +4,6 @@
 
 import type { Metadata } from "next";
 import { Formula, PaginiConexe, TITLU_PAGINA, TITLU_SECTIUNE, SPATIU_SECTIUNE, SPATIU_SUS, SUB_TITLU, SPATIU_PARAGRAF, SUB_TITLU_SECTIUNE, LISTA_FAQ, LISTA_CARD, CARD_TITLU } from "@/app/components/ui";
-import Link from "@/app/components/Link";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
 import CalculatorPFA from "@/app/components/CalculatorPFA";
@@ -45,14 +44,6 @@ export const metadata: Metadata = {
 };
 
 const FAQ = [
-  {
-    q: "De la ce venit plătesc pensie (CAS) ca PFA?",
-    a: "De la 48.600 de lei venit net pe an, adică 12 salarii minime. Sub prag, CAS e opțional. Peste el, îl plătești pe o bază fixă: 12 salarii minime până la 97.200 de lei, apoi 24. Poți alege și o bază mai mare, dacă vrei o pensie mai mare. Pensionarii nu plătesc CAS.",
-  },
-  {
-    q: "Cât e CASS și are un maxim?",
-    a: "10% din venitul net, dar cel mult 29.160 de lei pe an. Dacă venitul e sub 24.300 de lei, plătești de regulă un minim de 2.430 de lei, cu excepții: de exemplu, dacă ai și salariu de cel puțin atât sau ești pensionar.",
-  },
   {
     q: "Sunt și salariat. Mai plătesc CAS și CASS la PFA?",
     a: "Da, pe venitul din PFA. Salariul te scutește doar de minimul CASS, dacă ai câștigat din salarii cel puțin 24.300 de lei în an. CAS rămâne obligatoriu de la pragul de 48.600 de lei.",
@@ -315,7 +306,7 @@ export default function CalculatorPfaPage() {
                 </p>
                 <ul className="mb-4 list-disc pl-5 text-base leading-normal tracking-[-0.01em] text-stone-600 [&_li]:mb-2">
                   <li>
-                    <strong>Sistem real:</strong> plătești taxe pe ce ai câștigat de fapt, după cheltuieli. Ții evidența
+                    <strong>Sistem real:</strong> plătești taxe pe venitul rămas după cheltuieli. Ții evidența
                     încasărilor și plăților.
                   </li>
                   <li>
@@ -362,7 +353,7 @@ export default function CalculatorPfaPage() {
             <div className="md:grid md:grid-cols-5 md:gap-6">
               <div className={`md:col-span-3 ${proseLinks}`}>
                 <h2 className={`${SUB_TITLU_SECTIUNE} ${TITLU_SECTIUNE}`}>
-                  PFA sau SRL: ce diferă, dincolo de taxe
+                  PFA sau SRL: diferențe practice
                 </h2>
                 <p className={p}>
                   Taxele sunt doar o parte. Pe termen lung contează la fel de mult cât răspunzi cu banii tăi și cât de
@@ -500,13 +491,6 @@ export default function CalculatorPfaPage() {
                   <ul className={`${LISTA_CARD} text-stone-600 [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-600`}>
                     <li><a href="https://legislatie.just.ro/Public/DetaliiDocument/257144" target="_blank" rel="noopener">Codul Fiscal (Legea 227/2015)</a> – contribuții și impozit pentru activități independente</li>
                     <li><a href="https://static.anaf.ro/static/10/Cluj/cj_DU_activ_indep_22apr2026.pdf" target="_blank" rel="noopener">ANAF – ghid Declarația Unică 2026</a> – plafoane, excepții CAS/CASS și cazuri practice</li>
-                  </ul>
-                  <h3 className="mt-6 mb-2 text-base font-bold tracking-[-0.01em] text-stone-900">Pagini conexe</h3>
-                  <ul className={`${LISTA_CARD} [&_a]:font-medium [&_a]:text-stone-900 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-stone-600`}>
-                    <li><Link href="/noutati/pfa-sau-srl-2026">Ghid comparativ: PFA sau SRL în 2026</Link></li>
-                    <li><Link href="/">Calculator salariu net</Link></li>
-                    <li><Link href="/salariu-minim">Salariul minim 2026</Link></li>
-                    <li><Link href="/salariu-mediu">Salariul mediu pe economie</Link></li>
                   </ul>
                   <p className="mt-auto pt-6 text-xs text-stone-600">
                     Pentru situații speciale, confirmă cu un contabil. Actualizat {ACTUALIZAT}.

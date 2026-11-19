@@ -1,38 +1,35 @@
 ---
-title: "Legea salarizării 2026 a picat. Ce urmează"
-description: "Negocierile au eșuat pe 26 august și România pierde 770 mil. euro. Salariul tău din septembrie se calculează la fel. Cifrele reale, pe grila în vigoare."
+title: "Legea salarizării 2026: ce se aplică acum"
+description: "Negocierile din 26 august au eșuat și România a pierdut 770 mil. euro din PNRR. Ce lege rămâne în vigoare pentru bugetari și cifrele pe grila actuală."
 date: "2026-08-28"
+updated: "2026-11-19"
 hero: "/noutati/legea-salarizarii-2026.webp"
 heroAlt: "Ilustrație editorială: un dosar intitulat „Legea salarizării” alături de o balanță a justiției, un fluturaș de salariu, teancuri de monede și un grafic cu bare."
 ---
 
-Pe 26 august, negocierile pentru noua lege a salarizării au eșuat. Nu s-a depus niciun proiect în Parlament și nu s-a votat nimic. România pierde 770 de milioane de euro din PNRR.
+Pe 26 august 2026, negocierile pentru noua lege a salarizării au eșuat. Nu s-a depus un proiect în Parlament și termenul PNRR din 31 august a fost ratat, cu pierderea a 770 de milioane de euro.
 
-Dacă ești plătit din bani publici, pentru tine asta înseamnă un singur lucru: **salariul din septembrie se calculează exact ca cel din august.** Legea-cadru 153/2017 rămâne în vigoare, cu aceeași grilă și aceleași gradații.
+Dacă ești plătit din bani publici, situația este neschimbată: **Legea-cadru 153/2017 rămâne în vigoare**, cu aceeași grilă și aceleași gradații de vechime.
 
-## Ce s-a întâmplat, pe scurt
+## Ce s-a întâmplat la negocieri
 
-Negocierile se purtau la Cotroceni din mai, între PSD, PNL, USR și UDMR. Pe 26 august, președintele Nicușor Dan a anunțat că cele patru partide nu au ajuns la un consens.
+Negocierile s-au purtat la Cotroceni din mai între PSD, PNL, USR și UDMR. Pe 26 august, președintele Nicușor Dan a anunțat că cele patru partide nu au ajuns la un consens.
 
-Partidele și-au respectat înțelegerea de a nu depune separat câte un proiect în Parlament. Potrivit comunicatului prezidențial, „și-au asumat împreună pierderea celor 770 de milioane de euro”.
+Partidele și-au respectat înțelegerea de a nu depune separat proiecte în Parlament și, potrivit comunicatului prezidențial, și-au asumat împreună pierderea celor 770 de milioane de euro aferente jalonului PNRR din 31 august 2026.
 
-Termenul era 31 august 2026. Era un jalon din PNRR: reforma salarizării bugetarilor trebuia adoptată până atunci, altfel banii se pierd. S-au pierdut.
+Coaliția și-a stabilit ca obiectiv adoptarea legii până la finalul anului, în limita de cheltuieli convenită cu Comisia Europeană: cel mult 12,1 miliarde de lei în plus în 2027 față de 2026.
 
-Partidele s-au angajat să adopte legea până la sfârșitul acestui an, în limita de cheltuieli convenită cu Comisia Europeană: cel mult 12,1 miliarde de lei în plus în 2027 față de 2026.
+## Grila care a circulat în presă nu este în vigoare
 
-## Grila pe care ai văzut-o nu e salariul tău
+Din mai încoace au circulat mai multe variante de grilă: ale Guvernului și ale sindicatelor din educație și sănătate. Toate au rămas la stadiul de propuneri.
 
-Din mai încoace au circulat mai multe variante de grilă: ale Guvernului, apoi ale sindicatelor din educație și sănătate, care au cerut în scris partidelor fie propriile grile, fie respingerea proiectului.
+Arhitectura discutată de Guvern prevedea o valoare de referință unică, 12 grade de salarizare, un raport de 1 la 8 între cel mai mic și cel mai mare salariu de bază, sporuri plafonate la nivel de instituție și o clauză care să împiedice scăderea salariilor aflate în plată.
 
-Toate au fost proiecte. Niciunul nu a ajuns la vot.
+Sumele pe funcții din acele proiecte nu le publicăm: până la publicarea unei legi în Monitorul Oficial, calculele făcute pe grile neadoptate induc în eroare.
 
-Ce se știe despre arhitectura variantei discutate de Guvern: o valoare de referință unică, 12 grade de salarizare, un raport de 1 la 8 între cel mai mic și cel mai mare salariu de bază, sporuri plafonate la nivel de instituție și o clauză care ar fi împiedicat scăderea salariilor aflate în plată. Ar fi înlocuit Legea 153/2017.
+## Cât se plătește în prezent în învățământ
 
-Sumele pe funcții din proiect nu le publicăm. Proiectul s-a schimbat de mai multe ori în trei luni și acum nu mai e nici măcar pe masă. Un an de calcule făcute pe o grilă care nu s-a votat e mai rău decât niciun calcul.
-
-## Cât iei de fapt în septembrie
-
-Pentru profesori, cifrele în vigoare arată așa. Salariul de bază include gradația de vechime, iar netul e suma care ajunge în cont, cu indemnizația de hrană inclusă.
+Pentru profesori, cifrele aflate în plată pe grila în vigoare arată așa. Salariul de bază include gradația de vechime, iar netul este suma care ajunge în cont, cu indemnizația de hrană inclusă.
 
 | Funcția | Vechime | Salariu de bază | Net în mână |
 |---|---|---:|---:|
@@ -43,34 +40,26 @@ Pentru profesori, cifrele în vigoare arată așa. Salariul de bază include gra
 
 Cifrele presupun vechime în muncă egală cu cea în învățământ și normă întreagă, fără sporuri de condiții și fără gradație de merit.
 
-Aproape 3.800 de lei pe lună separă salariul de bază al unui debutant de cel al unui profesor cu gradul I. Diferența se strânge pas cu pas, din gradul didactic, din anii la catedră și din gradațiile de vechime, care se înmulțesc una peste alta.
+Aproape 3.800 de lei pe lună separă salariul de bază al unui debutant de cel al unui profesor cu gradul I. Diferența rezultă din gradul didactic, anii la catedră și gradațiile de vechime.
 
-Pentru cifra ta exactă, cu funcția, gradul și vechimea tale, folosește [calculatorul de salarii pentru învățământ](/calculator-salariu-invatamant). Fiecare rând vine cu articolul de lege din care rezultă.
+Pentru cifra exactă, cu funcția, gradul și vechimea ta, folosește [calculatorul de salarii pentru învățământ](/calculator-salariu-invatamant) sau [calculatorul de salarii în sănătate](/calculator-salariu-sanatate).
 
-## Ce urmează din 1 septembrie
+## Poziția sindicatelor și ce urmează
 
-Legea nu s-a făcut, dar consecințele ei politice încep oricum odată cu anul școlar.
+Federațiile din educație (FSLI, FSE „Spiru Haret” și FNS „Alma Mater”) au cerut partidelor parlamentare adoptarea grilelor propuse de sindicate, invocând alocarea de 3% din PIB pentru educație și deficitul de personal calificat. Sindicate din justiție, administrație și sănătate au anunțat, la rândul lor, proteste pentru toamna lui 2026.
 
-Federațiile din educație, adică FSLI, FSE „Spiru Haret” și FNS „Alma Mater”, au cerut partidelor parlamentare, printr-o scrisoare deschisă, să ia în calcul grilele propuse de profesori, altfel să respingă proiectul. Argumentul lor: România alocă educației 3% din PIB, cel mai puțin din Uniunea Europeană, iar în învățământul preuniversitar predau acum circa 6.300 de cadre fără calificarea specifică disciplinei.
+Până la publicarea unei legi noi, salariile bugetarilor rămân calculate exclusiv pe Legea 153/2017.
 
-Grefierii au anunțat că blochează instanțele și parchetele din 1 septembrie dacă legea rămâne în forma discutată. Sindicate din administrație și sănătate au anunțat proteste, cu greva generală pusă pe masă.
+## Când intră efectiv în vigoare o lege nouă
 
-Ministrul interimar al Muncii, Dragoș Pîslaru, a acuzat public sindicatele din educație și sănătate că negociază peste Guvern, direct cu partidele.
-
-Nimic din toate astea nu îți schimbă fluturașul din septembrie.
-
-## Cum îți dai seama când devine real
-
-Un proiect de lege devine salariul tău după un lanț fix, care nu se scurtează:
+Un proiect de lege schimbă salariile abia după patru pași obligatorii:
 
 1. se depune în Parlament și primește un număr;
-2. trece de ambele camere, iar camera decizională votează ultima;
+2. trece de ambele camere (camera decizională votează ultima);
 3. se promulgă;
-4. **se publică în Monitorul Oficial**, cu o dată de intrare în vigoare.
+4. **se publică în Monitorul Oficial**, cu o dată clară de intrare în vigoare.
 
-Până la pasul 4, orice grilă e o propunere, oricine ar publica-o și oricât de detaliată ar părea.
-
-Partidele au promis adoptarea până la finalul lui 2026. Dacă se întâmplă, actualizăm calculatorul în ziua publicării în Monitorul Oficial și scriem aici ce se schimbă concret, funcție cu funcție. Până atunci, cifra din calculator e cea care ți se plătește.
+Până la pasul 4, orice grilă rămâne o propunere. Când apare actul în Monitorul Oficial, actualizăm imediat calculatoarele din site.
 
 ## Surse
 

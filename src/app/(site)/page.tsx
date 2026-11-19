@@ -6,14 +6,13 @@ import Reclama from "@/app/components/Reclama";
 import { Formula, TITLU_SECTIUNE, SPATIU_SECTIUNE, SPATIU_PARAGRAF, SUB_TITLU_SECTIUNE, LISTA_FAQ, LISTA_CARD, SPATIU_TEXT_CARD } from "@/app/components/ui";
 import { personSchema } from "@/lib/person";
 import { calculatorSlugBrut, PAGE_LAST_MODIFIED } from "@/lib/seo";
-import { calculStandard, SALARIU_MINIM } from "@/lib/fiscal";
+import { SALARIU_MINIM } from "@/lib/fiscal";
 
 const lei = (n: number) => new Intl.NumberFormat("ro-RO").format(n);
 
-// Cifrele din text și din FAQ se calculează din motorul fiscal,
+// Cifrele din text se calculează din motorul fiscal,
 // ca să nu rămână în urmă la următoarea schimbare de reguli.
 const PLAFON_DEDUCERE = SALARIU_MINIM + 2000;
-const MINIM = calculStandard(SALARIU_MINIM)!;
 
 // Metadata proprie homepage-ului (suprascrie default-ul global din layout, fără
 // să atingă celelalte pagini). Țintește termenul cu cel mai mare volum din nișă,
@@ -28,12 +27,21 @@ export const metadata: Metadata = {
   // au acum data-nosnippet, descrierea rămâne.
   description:
     "Calculează salariul net din brut sau brutul din net pentru 2026. Vezi taxele plătite de angajat și angajator în România.",
-  alternates: { canonical: "https://salariile.ro" },
+  alternates: {
+    canonical: "https://salariile.ro",
+    languages: {
+      ro: "https://salariile.ro",
+      en: "https://salariile.ro/en/salary-calculator",
+      "x-default": "https://salariile.ro",
+    },
+  },
 };
 
 // Întrebările la care corpul paginii nu răspunde deja. Aceleași texte intră și
 // în schema FAQPage, deci fiecare răspuns trebuie să se înțeleagă singur.
-// Rescrise pe 24 septembrie 2026: un răspuns, o idee, cel mult o cifră.
+// Întrebarea despre salariul minim a fost scoasă (19 nov. 2026): canibaliza
+// /salariu-minim în GSC (6.900+ impresii pe poziția 8,6), iar deducerea personală
+// era deja explicată în cardul lateral de deasupra.
 const faqData = [
   {
     q: "În contract se trece salariul brut sau net?",
@@ -46,14 +54,6 @@ const faqData = [
   {
     q: "Ce înseamnă avans și lichidare?",
     a: "Sunt două tranșe ale aceluiași salariu. Avansul se plătește la jumătatea lunii, lichidarea e restul, după ce se scad avansul și reținerile. Adunate, dau netul lunii.",
-  },
-  {
-    q: "Cât e salariul minim net în 2026?",
-    a: `${lei(MINIM.netBani)} lei în mână, din ${lei(SALARIU_MINIM)} lei brut, de la 1 iulie 2026. La salariul minim cu normă întreagă, 200 de lei din brut nu se taxează deloc, de aceea netul iese ceva mai mare decât la alte salarii.`,
-  },
-  {
-    q: "Ce este deducerea personală?",
-    a: `O parte din venit pe care nu plătești impozit. O primesc doar salariații cu brut de până la ${lei(PLAFON_DEDUCERE)} lei, la locul de muncă de bază. E cea mai mare la salariul minim, scade pe măsură ce brutul crește și urcă pentru fiecare persoană pe care o ai în întreținere.`,
   },
   {
     q: "Cum se taxează tichetele de masă?",
@@ -202,7 +202,7 @@ export default function Page() {
                   </p>
                   <p className={paragraf}>
                     Firma mai plătește, peste brut, 2,25% pentru asigurarea de muncă (CAM). Nu se scade din banii
-                    tăi, dar arată cât costă de fapt postul.
+                    tăi, dar arată costul complet al postului.
                   </p>
                 </div>
               </div>
@@ -272,6 +272,10 @@ export default function Page() {
                       ["Calculator salariu part-time", "/calculator-salariu-part-time"],
                       ["Calculator salariu construcții", "/calculator-salariu-constructii"],
                       ["Calculator taxe PFA și SRL", "/calculator-pfa"],
+                      ["Calculator concediu medical", "/calculator-concediu-medical"],
+                      ["Calculator creștere copil", "/calculator-indemnizatie-crestere-copil"],
+                      ["Calculator concediu de odihnă", "/calculator-concediu-odihna"],
+                      ["Calculator vechime în muncă", "/calculator-vechime-munca"],
                       ["Calculator TVA", "/calculator-tva"],
                       ["Calculator inflație", "/calculator-inflatie"],
                       ["Rata inflației", "/rata-inflatiei"],
@@ -279,6 +283,8 @@ export default function Page() {
                       ["Calculator salarii sănătate", "/calculator-salariu-sanatate"],
                       ["Calculator ore suplimentare și spor de noapte", "/calculator-ore-suplimentare"],
                       ["Generator fluturaș de salariu", "/fluturas-salariu"],
+                      ["Zile libere 2027", "/zile-libere-2027"],
+                      ["Zile lucrătoare 2027", "/zile-lucratoare-2027"],
                       ["Zile lucrătoare 2026", "/zile-lucratoare-2026"],
                       ["Widget pentru site-ul tău", "/widget"],
                       // Singurul link intern spre pagina engleză: în subsol primea

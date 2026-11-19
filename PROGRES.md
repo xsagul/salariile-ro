@@ -6544,3 +6544,36 @@ exportabile, înainte de întrebările frecvente.
 
 La cererea proprietarului, „Rata inflației” are și o casetă publicitară
 după introducerea cu rata curentă, înainte de tabelul pe ani.
+
+
+### 19 noiembrie 2026 — audit complet SEO, curățenie editorială și 4 calculatoare noi
+
+Lucrat pe ramura `seo-curatenie` (worktree izolat din `origin/main` `cdececb`).
+
+1. **SEO tehnic, sitemap, hreflang și schema WebApplication:**
+   - Adăugat `hreflang` reciproc (`ro`, `en`, `x-default`) și `og:locale: en_US` între `/` și `/en/salary-calculator`.
+   - Înlocuit `offers: { "@type": "Offer", price: "0" }` cu `isAccessibleForFree: true` în JSON-LD pe toate calculatoarele.
+   - `/salarii/acoperire` trecut pe `noindex, follow` și scos din sitemap; `lastModified` dinamic pentru `/noutati` (derivat din cel mai nou articol) și adăugat `/adauga-anunt-angajare` în `PAGE_LAST_MODIFIED`.
+   - Adăugat `/zile-lucratoare-2027` în footer și `/calculator-tva` + cele 4 calculatoare noi în header, footer, homepage și sitemap.
+
+2. **CTR, anti-canibalizare și metadate:**
+   - Rescris titlurile și descrierile pe cele 40 de pagini `/calculator/[valoare]` ca să nu mai dea răspunsul zero-click direct în `<title>`, păstrând paragraful-răspuns complet sub `<h1>`.
+   - Eliminată întrebarea despre salariul minim din FAQ-ul homepage-ului (canibalizare cu `/salariu-minim`) și întrebările redundante din `/calculator-pfa`.
+   - Rescrise meta descrierile de pe `/salariu-minim`, `/salariu-minim-constructii-2026` și `/zile-lucratoare-*`; scurtate toate cele 12 titluri care depășeau 60 de caractere (0 avertismente pe tot site-ul).
+
+3. **Pagini programatice (`/salarii/*`, `/compara/*`) și prospețime:**
+   - `/salarii/clasament` extins de la subsetul Salario la toate meseriile cu reper net verificat, cu eticheta sursei.
+   - `/salarii/domeniu/[domeniu]` afișează reperul net verificat al fiecărei meserii și numește cele mai bine plătite meserii în FAQ.
+   - `/salarii/judete` și `/salarii/judet/[judet]`: eliminat `2024` din `<title>`/`<h1>`, adăugat netul orientativ standard lângă brutul INS și eliminată referința la „unele site-uri”.
+   - `/compara/[pereche]`: scoase rândurile goale („Nepublicate în acest reper” / „Nepublicat pentru meserie”), adăugat reperul net de pe pagina meseriei și răspuns direct în FAQ.
+   - Actualizat `content/noutati/tichete-de-masa-2026.md` la Ordinul comun MF nr. 1.254/2026 și MMFTSS nr. 1.188/2026 (45 lei menținut până în martie 2027), actualizat `public/llms.txt` (INS septembrie 2026: 9.532 brut / 5.717 net) și `/despre` (AdSense în loc de găzduire personală gratuită).
+
+4. **Curățenie editorială (redundanțe, meta-speak, AI-ese):**
+   - Rescrise concis `/smartbill` și `/saga` (eliminate cardurile duplicate, secțiunea de login fals, meta-speak-ul SEO și șabloanele artificiale).
+   - Curățate articolele din `content/noutati/*.md` (0 apariții rămase de „de fapt”, „Iată”, secțiuni redundante „Pe scurt” / „De reținut”, timpuri verbale învechite din septembrie; adăugate linkuri către `/calculator-inflatie`, `/rata-inflatiei` și `/calculator-concediu-medical`).
+
+5. **4 calculatoare noi cu cerere mare (legislație în vigoare în noiembrie 2026):**
+   - `/calculator-concediu-medical` (`src/lib/concediu-medical.ts`, OUG 158/2005, Legea 141/2025, OUG 91/2025, Legea 64/2026, Cod Fiscal art. 62/143/154–155).
+   - `/calculator-indemnizatie-crestere-copil` (`src/lib/crestere-copil.ts`, OUG 111/2010 + CASS 10% Legea 141/2025).
+   - `/calculator-concediu-odihna` (`src/lib/concediu-odihna.ts`, Codul Muncii art. 145–150 + modele scurte de cerere concediu și demisie).
+   - `/calculator-vechime-munca` (`src/lib/vechime-munca.ts`, unificare suprapuneri, gradații Legea 153/2017, stagii pensie Legea 360/2023 și șomaj).

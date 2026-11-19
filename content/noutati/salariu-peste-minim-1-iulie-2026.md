@@ -2,12 +2,12 @@
 title: "Salariu peste minim după 1 iulie 2026"
 description: "Dacă ai salariul puțin peste minim, majorarea de la 1 iulie te poate prinde din urmă. Cine primește mărire și ce înseamnă tasarea salarială."
 date: "2026-06-17"
-updated: "2026-09-24"
+updated: "2026-11-19"
 hero: "/noutati/salariu-peste-minim.jpg"
 heroAlt: "Ilustrație editorială minimalistă: două siluete pe trepte, treapta de jos împinsă în sus de o săgeată, ridicând silueta scundă aproape la nivelul celei de lângă ea, sugerând restrângerea diferenței dintre salarii."
 ---
 
-**Dacă salariul tău era puțin peste minim, creșterea de la 1 iulie 2026 te-a afectat, chiar dacă nu ai primit nicio mărire.** Diferența dintre tine și colegii plătiți la minim s-a micșorat, uneori aproape de zero. Iată cine a primit obligatoriu mărire și ce poți face dacă nu ai fost printre ei.
+**Dacă salariul tău era puțin peste minim, creșterea de la 1 iulie 2026 te-a afectat chiar dacă brutul tău a rămas neschimbat.** Diferența dintre tine și colegii plătiți la minim s-a micșorat, uneori aproape de zero. Mai jos găsești pe cine obligă legea la majorare și ce poți face când te prinde tasarea salarială.
 
 ## Regula de bază: pe cine obligă legea la mărire
 
@@ -26,13 +26,9 @@ De la 1 iulie, primul coleg a urcat obligatoriu la 4.325 lei. Al doilea a rămas
 
 Asta se numește tasarea grilei de salarizare: când minimul urcă, salariile aflate puțin peste el sunt prinse din urmă. Nu e ilegal, dar e frustrant, iar singura cale de a o corecta e o discuție cu angajatorul.
 
-## Ce se schimbă concret la net
+## Ce se schimbă la net
 
-Aici e o surpriză pentru cei aflați puțin peste minim. La salariul minim, 200 de lei din brut nu se taxează deloc, așa că netul iese **2.699 lei**. Scutirea e însă doar pentru cine are salariul de bază exact 4.325 de lei.
-
-Colegul de pe 4.350 de lei nu o primește, așa că plătește taxe pe tot salariul. În mână, el ia mai puțin decât colegul de la minim: 2.629 de lei, față de 2.699. Cu 25 de lei mai mult la brut, ajunge să primească mai puțin.
-
-Scutirea rămâne și dacă ai sporuri sau bonusuri, cât timp salariul de bază e minimul și brutul lunii nu trece de 4.600 de lei. Înainte de orice negociere, verifică netul exact, ca să știi despre ce sume vorbești în mână.
+La salariul minim exact (4.325 lei brut, normă întreagă), scutirea de 200 de lei ridică netul la **2.699 lei**. Dacă salariul de bază trece chiar și cu puțin peste 4.325 de lei (de exemplu 4.350 lei), scutirea dispare și netul scade la 2.629 lei. Am detaliat calculul complet și pragul de la care netul urcă din nou în articolul despre [brutul peste minim care scade netul](/noutati/brut-peste-minim-net-mai-mic).
 
 ## Și la normă parțială?
 

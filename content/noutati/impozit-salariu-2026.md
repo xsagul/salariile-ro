@@ -1,15 +1,13 @@
 ---
-title: "Impozit pe salariu 2026: toate taxele și cât ia statul"
+title: "Impozit pe salariu 2026: taxe și calcul"
 description: "Impozitul pe salariu e de 10%, dar din brut mai pleacă pensia și sănătatea. Ce înseamnă fiecare taxă, de ce netul e mult sub brut și cine plătește mai puțin."
 date: "2026-11-06"
-updated: "2026-11-06"
+updated: "2026-11-19"
 hero: "/noutati/impozit-salariu-2026.webp"
 heroAlt: "Ilustrație editorială: un fluturaș de salariu, un teanc mare de monede din care curg monede spre patru teancuri mici, în fața unei clădiri cu coloane."
 ---
 
-**Impozitul pe salariu e de doar 10%, dar din salariul brut pleacă, în total, cam 41%.** Restul până acolo nu e impozit, ci contribuții: pentru pensie și pentru sănătate. De aceea, cine se uită prima dată pe un contract de muncă are de obicei aceeași surpriză: suma scrisă acolo e mult mai mare decât cea care ajunge pe card.
-
-Mai jos găsești, pe rând, ce se ia din salariu, de ce, cine plătește mai puțin și ce poți verifica pe fluturaș.
+**Impozitul pe salariu este 10%, dar reținerile totale din salariul brut ajung la aproximativ 41%.** Diferența o reprezintă contribuțiile sociale obligatorii pentru pensie (CAS 25%) și sănătate (CASS 10%), motiv pentru care suma din contract diferă semnificativ de cea care ajunge pe card.
 
 ## Ce înseamnă brut și net
 

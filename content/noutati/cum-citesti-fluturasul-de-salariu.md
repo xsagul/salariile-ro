@@ -2,7 +2,7 @@
 title: "Cum citești fluturașul de salariu"
 description: "Explicăm fiecare rând din fluturașul de salariu: brut, CAS, CASS, impozit, deducere, tichete și cum se ajunge la suma din cont."
 date: "2026-06-15"
-updated: "2026-09-24"
+updated: "2026-11-19"
 hero: "/noutati/fluturas-salariu.jpg"
 heroAlt: "Un fluturaș de salariu pe o masă cu față de in, lângă câteva monede, un pix și o cană de cafea, în lumină naturală."
 ---
@@ -57,12 +57,8 @@ Jos de tot ajungi la venitul net, adică banii care îți rămân după toate re
 
 ## Ce NU iese din banii tăi: contribuția firmei
 
-Mulți cred că firma plătește taxe mari „pe lângă” salariu. De fapt, CAS, CASS și impozitul se rețin din brutul tău. Firma pune peste brut doar 2,25%, contribuția pentru muncă (CAM). Uneori apare și ea pe fluturaș, dar nu îți schimbă netul.
+CAS, CASS și impozitul se rețin din brutul tău. Peste brut, firma plătește separat doar 2,25%, contribuția asiguratorie pentru muncă (CAM). Uneori apare și ea pe fluturaș, dar nu modifică netul.
 
 ## Cum verifici că totul e corect
 
 Pune brutul tău în [calculatorul de salariu net](/), cu sporurile, tichetele și persoanele în întreținere pe care le ai. Dacă sumele se potrivesc, aritmetica e corectă. Calculatorul nu poate verifica însă datele de pornire, cum ar fi orele lucrate, concediile sau sporurile: pe acestea le confirmi cu departamentul de salarizare. Poți și [genera un fluturaș PDF](/fluturas-salariu), ca să compari rând cu rând.
-
-## De reținut
-
-Fluturașul e drumul de la brut la net, scris pas cu pas: brut, minus pensie, minus sănătate, minus impozit, egal net. Odată ce vezi logica, înțelegi și de ce o mărire de brut nu se simte întreagă în cont: cam 40% din ea pleacă la stat.

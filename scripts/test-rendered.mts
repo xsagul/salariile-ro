@@ -221,7 +221,7 @@ async function auditRenderedSite() {
           // Din 27 sept. 2026 pagina unei meserii nu mai poartă contextul INS pe sector și grupă
           // (cerut de proprietar): acolo cifra e a meseriei, cu proveniența ei, nu TEMPO/CAEN.
           const eMeserie = /^\/salarii\/[^/]+$/.test(pathname) && !["/salarii/acoperire", "/salarii/clasament", "/salarii/judete", "/salarii/femei-barbati", "/salarii/locuri-vacante"].includes(pathname);
-          const sursaCeruta = pathname === '/salarii/acoperire' ? 'registrul observațiilor' : pathname === '/salarii/clasament' ? 'Salario' : 'TEMPO-Online';
+          const sursaCeruta = pathname === '/salarii/acoperire' ? 'registrul observațiilor' : pathname === '/salarii/clasament' ? 'Metodologia Salariile.ro' : 'TEMPO-Online';
           if (!eMeserie && !html.includes(sursaCeruta)) {
             failures.push(`${location}: nu citeaza sursa ${sursaCeruta}`);
           }
@@ -230,7 +230,7 @@ async function auditRenderedSite() {
           // — diferenta pe sexe si locurile vacante — se sprijina pe grupele
           // majore ISCO-08. Le cerem ISCO, nu le exceptam de la regula.
           const PAGINI_ISCO = ["/salarii/femei-barbati", "/salarii/locuri-vacante"];
-          const clasificareCeruta = pathname === '/salarii/acoperire' ? /ocupație identificabilă/ : pathname === '/salarii/clasament' ? /Rolul din sursă/ : PAGINI_ISCO.includes(pathname) ? /ISCO/ : /CAEN\s/;
+          const clasificareCeruta = pathname === '/salarii/acoperire' ? /ocupație identificabilă/ : pathname === '/salarii/clasament' ? /Sursa reperului/ : PAGINI_ISCO.includes(pathname) ? /ISCO/ : /CAEN\s/;
           if (!eMeserie && !clasificareCeruta.test(html)) {
             failures.push(`${location}: nu declara clasificarea din spatele cifrei`);
           }
@@ -431,7 +431,9 @@ async function auditRenderedSite() {
   const PAGINI_INSTRUMENT = [
     "/", "/calculator-pfa", "/calculator-salariu-part-time", "/calculator-salariu-constructii",
     "/calculator-salariu-invatamant", "/calculator-salariu-sanatate", "/calculator-ore-suplimentare",
-    "/calculator-indemnizatie-somaj", "/calculator-tva", "/calculator-inflatie", "/fluturas-salariu", "/en/salary-calculator",
+    "/calculator-indemnizatie-somaj", "/calculator-concediu-medical", "/calculator-indemnizatie-crestere-copil",
+    "/calculator-concediu-odihna", "/calculator-vechime-munca",
+    "/calculator-tva", "/calculator-inflatie", "/fluturas-salariu", "/en/salary-calculator",
   ];
   for (const pathname of PAGINI_INSTRUMENT) {
     const html = rendered.get(pathname) ?? "";
@@ -485,27 +487,22 @@ async function auditRenderedSite() {
 
     if (!pathname.startsWith("/calculator/")) continue;
 
-    // Formatul de titlu-raspuns: "5.000 lei brut în net = 2.981 lei (2026)".
+    // Formatul de titlu orientat spre CTR (fără zero-click în SERP):
+    // "5.000 lei brut în net 2026: taxe și cost firmă" sau "(ian.–iun. 2026): taxe".
     const titleMatch = title.match(
-      /^([\d.]+) lei (brut în net|net în brut) = ([\d.]+) lei \((?:2026|ian\.–iun\. 2026)\)/,
+      /^([\d.]+) lei (brut în net|net în brut) (?:\(ian\.–iun\. 2026\)|2026): taxe/,
     );
     if (!titleMatch) {
-      failures.push(`${pathname}: titlul nu contine raspunsul ("${title}")`);
+      failures.push(`${pathname}: titlul nu respecta formatul asteptat ("${title}")`);
       continue;
     }
 
-    const [, intrare, , rezultat] = titleMatch;
+    const [, intrare] = titleMatch;
     const slugValue = pathname.match(/-(\d+)-(?:brut|net)$/)?.[1] ?? "";
     if (intrare.replaceAll(".", "") !== slugValue) {
       failures.push(`${pathname}: titlul foloseste alta valoare de intrare (${intrare})`);
     }
-    if (!html.includes(rezultat)) {
-      failures.push(`${pathname}: cifra rezultat ${rezultat} din titlu lipseste din pagina`);
-    }
-    if (!description.startsWith(rezultat)) {
-      failures.push(`${pathname}: descrierea nu incepe cu cifra rezultat ("${description}")`);
-    }
-    if (!/CAS .*CASS .*impozit/.test(description)) {
+    if (!/CAS.*CASS.*impozit/.test(description)) {
       failures.push(`${pathname}: descrierea nu contine defalcarea CAS/CASS/impozit`);
     }
     if (/^(Calculează|Află|Vezi|Descoperă)/i.test(description)) {
@@ -522,7 +519,7 @@ async function auditRenderedSite() {
     // defalcarea, ca sa fie extractabil de LLM-uri si de featured snippets.
     const leadStart = html.indexOf("</h1>");
     const lead = leadStart >= 0 ? html.slice(leadStart, leadStart + 2500) : "";
-    for (const necesar of [rezultat, "CAS", "CASS", "impozit", "costul total al angajatorului"]) {
+    for (const necesar of ["CAS", "CASS", "impozit", "costul total al angajatorului"]) {
       if (!lead.includes(necesar)) {
         failures.push(`${pathname}: paragraful-raspuns nu contine "${necesar}"`);
       }
@@ -531,7 +528,7 @@ async function auditRenderedSite() {
 
   // Descrierile rescrise dupa ce Google le-a inlocuit cu meniul de navigatie.
   const descriptionAnswers = [
-    ["/salariu-minim-constructii-2026", "4.582 lei brut", "2.754 lei net"],
+    ["/salariu-minim-constructii-2026", "4.582 lei brut", "net"],
     ["/deducere-personala-2026", "865 lei", "1.946 lei"],
   ] as const;
   for (const [pathname, ...asteptate] of descriptionAnswers) {
@@ -603,6 +600,27 @@ async function auditRenderedSite() {
   );
   if (frameSitemapEntries.length > 0) {
     failures.push(`/widget/frame: iframe-ul nu trebuie sa apara in sitemap (${frameSitemapEntries.join(", ")})`);
+  }
+
+  // /salarii/acoperire este un registru intern de transparență (noindex, exclus din sitemap).
+  if (rendered.has("/salarii/acoperire")) {
+    failures.push("/salarii/acoperire: pagina noindex nu trebuie sa apara in sitemap");
+  }
+  const acoperireResp = await fetch(`${BASE_URL}/salarii/acoperire`);
+  const acoperireHtml = await acoperireResp.text();
+  if (acoperireResp.status !== 200 || !hasNoindex(acoperireHtml)) {
+    failures.push("/salarii/acoperire: trebuie sa raspunda 200 cu meta robots noindex");
+  }
+
+  // hreflang reciproc între / și /en/salary-calculator
+  for (const ruta of ["/", "/en/salary-calculator"]) {
+    const html = rendered.get(ruta) ?? "";
+    if (!html.includes('hrefLang="ro"') && !html.includes('hreflang="ro"')) {
+      failures.push(`${ruta}: lipseste hreflang ro`);
+    }
+    if (!html.includes('hrefLang="en"') && !html.includes('hreflang="en"')) {
+      failures.push(`${ruta}: lipseste hreflang en`);
+    }
   }
 
   const widgetFrames = [

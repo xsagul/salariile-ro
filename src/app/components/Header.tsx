@@ -38,6 +38,11 @@ const NAV: Item[] = [
       { href: "/calculator-salariu-invatamant", label: "Salariu învățământ" },
       { href: "/calculator-salariu-sanatate", label: "Salariu sănătate" },
       { href: "/calculator-indemnizatie-somaj", label: "Indemnizație șomaj" },
+      { href: "/calculator-concediu-medical", label: "Concediu medical" },
+      { href: "/calculator-indemnizatie-crestere-copil", label: "Creștere copil" },
+      { href: "/calculator-concediu-odihna", label: "Concediu de odihnă" },
+      { href: "/calculator-vechime-munca", label: "Vechime în muncă" },
+      { href: "/calculator-tva", label: "Calculator TVA" },
       { href: "/fluturas-salariu", label: "Generator fluturaș" },
       // 17 noiembrie 2026, proprietarul: calculatorul mutat de pe calculatorulinflatiei.ro (~22 de
       // clicuri pe zi din Google acolo) intră în „Instrumente”, iar rata inflației în „Ghiduri”.

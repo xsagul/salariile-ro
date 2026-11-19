@@ -29,10 +29,11 @@ export function ogPage(opts: {
   description: string;
   path: string;
   image?: OgImage;
+  locale?: string;
 }): NonNullable<Metadata["openGraph"]> {
   return {
     type: "website",
-    locale: "ro_RO",
+    locale: opts.locale ?? "ro_RO",
     siteName: NUME_SITE,
     url: `${SITE_URL}${opts.path}`,
     title: opts.title,
@@ -56,46 +57,50 @@ export function twPage(opts: {
 }
 
 /** Ultima modificare de conținut fiscal / editorial (nu la fiecare deploy). */
-export const LAST_FISCAL_CONTENT_UPDATE = new Date("2026-07-26T00:00:00.000Z");
+export const LAST_FISCAL_CONTENT_UPDATE = new Date("2026-11-19T00:00:00.000Z");
 
 /** Pagini statice cu date de publicare cunoscute. */
 export const PAGE_LAST_MODIFIED: Record<string, Date> = {
   // Date editoriale reale, schimbate numai când conținutul paginii este revizuit.
   // Data intrării în vigoare a unui regim fiscal rămâne descrisă separat în pagină.
-  "/": new Date("2026-09-24T00:00:00.000Z"),
-  "/salariu-minim": new Date("2026-09-24T00:00:00.000Z"),
-  "/salariu-minim-constructii-2026": new Date("2026-09-24T00:00:00.000Z"),
-  "/calculator-pfa": new Date("2026-09-24T00:00:00.000Z"),
-  "/calculator-salariu-part-time": new Date("2026-09-24T00:00:00.000Z"),
+  "/": new Date("2026-11-19T00:00:00.000Z"),
+  "/salariu-minim": new Date("2026-11-19T00:00:00.000Z"),
+  "/salariu-minim-constructii-2026": new Date("2026-11-19T00:00:00.000Z"),
+  "/calculator-pfa": new Date("2026-11-19T00:00:00.000Z"),
+  "/calculator-salariu-part-time": new Date("2026-11-18T00:00:00.000Z"),
   "/calculator-salariu-constructii": new Date("2026-09-24T00:00:00.000Z"),
-  "/calculator-salariu-invatamant": new Date("2026-09-24T00:00:00.000Z"),
-  "/calculator-salariu-sanatate": new Date("2026-09-24T00:00:00.000Z"),
-  "/calculator-ore-suplimentare": new Date("2026-09-24T00:00:00.000Z"),
-  "/calculator-indemnizatie-somaj": new Date("2026-09-24T00:00:00.000Z"),
-  "/calculator-tva": new Date("2026-11-15T00:00:00.000Z"),
-  "/calculator-inflatie": new Date("2026-11-17T00:00:00.000Z"),
-  "/rata-inflatiei": new Date("2026-11-17T00:00:00.000Z"),
-  "/en/salary-calculator": new Date("2026-09-24T00:00:00.000Z"),
+  "/calculator-salariu-invatamant": new Date("2026-11-19T00:00:00.000Z"),
+  "/calculator-salariu-sanatate": new Date("2026-11-19T00:00:00.000Z"),
+  "/calculator-ore-suplimentare": new Date("2026-11-19T00:00:00.000Z"),
+  "/calculator-indemnizatie-somaj": new Date("2026-11-19T00:00:00.000Z"),
+  "/calculator-concediu-medical": new Date("2026-11-19T00:00:00.000Z"),
+  "/calculator-indemnizatie-crestere-copil": new Date("2026-11-19T00:00:00.000Z"),
+  "/calculator-concediu-odihna": new Date("2026-11-19T00:00:00.000Z"),
+  "/calculator-vechime-munca": new Date("2026-11-19T00:00:00.000Z"),
+  "/calculator-tva": new Date("2026-11-19T00:00:00.000Z"),
+  "/calculator-inflatie": new Date("2026-11-19T00:00:00.000Z"),
+  "/rata-inflatiei": new Date("2026-11-18T00:00:00.000Z"),
+  "/en/salary-calculator": new Date("2026-11-19T00:00:00.000Z"),
   "/salariu-mediu": new Date("2026-11-12T00:00:00.000Z"),
-  "/smartbill": new Date("2026-09-22T00:00:00.000Z"),
-  "/saga": new Date("2026-09-22T00:00:00.000Z"),
-  "/salarii": new Date("2026-09-24T00:00:00.000Z"),
-  "/salarii/acoperire": new Date("2026-09-07"),
-  "/salarii/clasament": new Date("2026-09-07T00:00:00.000Z"),
-  "/salarii/judete": new Date("2026-08-25T00:00:00.000Z"),
+  "/smartbill": new Date("2026-11-19T00:00:00.000Z"),
+  "/saga": new Date("2026-11-19T00:00:00.000Z"),
+  "/salarii": new Date("2026-11-19T00:00:00.000Z"),
+  "/salarii/clasament": new Date("2026-11-19T00:00:00.000Z"),
+  "/salarii/judete": new Date("2026-11-19T00:00:00.000Z"),
   "/salarii/femei-barbati": new Date("2026-08-25T00:00:00.000Z"),
   "/salarii/locuri-vacante": new Date("2026-08-25T00:00:00.000Z"),
-  "/compara": new Date("2026-08-25T00:00:00.000Z"),
+  "/compara": new Date("2026-11-19T00:00:00.000Z"),
+  "/adauga-anunt-angajare": new Date("2026-11-15T00:00:00.000Z"),
   "/metodologie": new Date("2026-09-24T00:00:00.000Z"),
   "/deducere-personala-2026": new Date("2026-09-24T00:00:00.000Z"),
   "/zile-libere-2025": new Date("2026-09-25T00:00:00.000Z"),
-  "/zile-libere-2026": new Date("2026-09-25T00:00:00.000Z"),
-  "/zile-lucratoare-2026": new Date("2026-09-27T00:00:00.000Z"),
-  "/zile-libere-2027": new Date("2026-09-25T00:00:00.000Z"),
+  "/zile-libere-2026": new Date("2026-11-06T00:00:00.000Z"),
+  "/zile-lucratoare-2026": new Date("2026-11-19T00:00:00.000Z"),
+  "/zile-libere-2027": new Date("2026-11-06T00:00:00.000Z"),
   "/zile-libere-2028": new Date("2026-09-25T00:00:00.000Z"),
   "/zile-libere-2029": new Date("2026-09-25T00:00:00.000Z"),
   "/zile-libere-2030": new Date("2026-09-25T00:00:00.000Z"),
-  "/zile-lucratoare-2027": new Date("2026-09-27T00:00:00.000Z"),
+  "/zile-lucratoare-2027": new Date("2026-11-19T00:00:00.000Z"),
   "/zile-lucratoare-2025": new Date("2026-09-27T00:00:00.000Z"),
   "/zile-lucratoare-2028": new Date("2026-09-27T00:00:00.000Z"),
   "/zile-lucratoare-2029": new Date("2026-09-27T00:00:00.000Z"),
@@ -103,8 +108,8 @@ export const PAGE_LAST_MODIFIED: Record<string, Date> = {
   "/fluturas-salariu": new Date("2026-09-24T00:00:00.000Z"),
   "/widget": new Date("2026-08-25T00:00:00.000Z"),
   "/date-salarii": new Date("2026-11-12T00:00:00.000Z"),
-  "/noutati": new Date("2026-07-26T00:00:00.000Z"),
-  "/despre": new Date("2026-09-24T00:00:00.000Z"),
+  "/noutati": new Date("2026-11-19T00:00:00.000Z"),
+  "/despre": new Date("2026-11-19T00:00:00.000Z"),
   "/contact": new Date("2026-04-01T00:00:00.000Z"),
   "/politica-confidentialitate": new Date("2026-10-15T00:00:00.000Z"),
   "/cookies": new Date("2026-10-15T00:00:00.000Z"),
@@ -113,12 +118,12 @@ export const PAGE_LAST_MODIFIED: Record<string, Date> = {
 
 import { INS_GENERAT_LA } from "@/lib/ins-date";
 
-export const MESERII_EDITORIAL_UPDATE = new Date("2026-09-24T00:00:00.000Z");
+export const MESERII_EDITORIAL_UPDATE = new Date("2026-11-19T00:00:00.000Z");
 export const MESERII_LAST_MODIFIED = new Date(
   Math.max(new Date(INS_GENERAT_LA).getTime(), MESERII_EDITORIAL_UPDATE.getTime()),
 );
 
-export const JUDETE_EDITORIAL_UPDATE = new Date("2026-09-24T00:00:00.000Z");
+export const JUDETE_EDITORIAL_UPDATE = new Date("2026-11-19T00:00:00.000Z");
 export const JUDETE_LAST_MODIFIED = new Date(
   Math.max(new Date(INS_GENERAT_LA).getTime(), JUDETE_EDITORIAL_UPDATE.getTime()),
 );
