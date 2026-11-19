@@ -212,13 +212,12 @@ export default function CalculatorInflatie() {
     deruleazaLaRezultat("rezultat-inflatie", "calc-inflatie");
   }
 
-  const gol = "–";
-
   return (
-    <div id="calc-inflatie" className={`mx-auto grid max-w-6xl gap-6 px-4 pt-5 sm:px-6 sm:pt-6 ${SPATIU_JOS} md:grid-cols-5`}>
-      {/* ─── Intrări ─────────────────────────────────────────────────── */}
-      <div className="min-w-0 self-start rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-2">
-        <h2 className={colHeader}>Suma și perioada</h2>
+    <section className="border-b border-stone-200 bg-canvas" aria-labelledby="calculator-inflatie-titlu">
+      <div id="calc-inflatie" className={`mx-auto grid max-w-6xl items-start gap-6 px-4 pt-5 sm:px-6 sm:pt-6 ${SPATIU_JOS} md:grid-cols-5`}>
+        {/* ─── Intrări ─────────────────────────────────────────────────── */}
+        <div className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-2">
+          <h2 id="calculator-inflatie-titlu" className={colHeader}>Suma și perioada</h2>
 
         <div className="mb-5">
           <label htmlFor="suma-inflatie" className={etichetaRand}>Suma</label>
@@ -266,83 +265,86 @@ export default function CalculatorInflatie() {
         </button>
       </div>
 
-      {/* ─── Rezultat ────────────────────────────────────────────────── */}
-      <div id="rezultat-inflatie" className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-3">
-        <h2 className={colHeader}>Rezultatul</h2>
+        {/* ─── Rezultat ────────────────────────────────────────────────── */}
+        <div id="rezultat-inflatie" className="min-w-0 rounded-md border border-stone-200 bg-surface p-4 shadow-soft sm:p-6 md:col-span-3">
+          <h2 className={colHeader}>Rezultat calcul</h2>
 
-        <div aria-live="polite">
-          <div className="overflow-hidden rounded border border-stone-300">
-            <table className={`${tabelRezultat} text-stone-700`}>
-              <colgroup><col /><col className="w-[43%] sm:w-36" /></colgroup>
-              <thead>
-                <tr>
-                  <th colSpan={2} scope="colgroup" className="border-b border-stone-300 bg-canvas px-2.5 py-3 text-left font-medium sm:px-3">
-                    Pentru aceeași putere de cumpărare
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row" className={`${cellL} font-medium`}>
-                    Suma de plecare
-                    <span className="mt-0.5 block text-xs font-normal text-stone-600">{etichetaLuna(de)}</span>
-                  </th>
-                  <td className={cellR}>{r ? sumaAfisata(r.suma, de) : gol}</td>
-                </tr>
-                <tr className="bg-canvas/60 text-stone-900">
-                  <th scope="row" className={`${cellL} border-b-0 font-semibold`}>
-                    Suma necesară
-                    <span className="mt-0.5 block text-xs font-normal text-stone-600">{etichetaLuna(la)}</span>
-                  </th>
-                  <td className={`${cellR} border-b-0 font-bold`}>
-                    {r ? <span className="marcaj box-decoration-clone">{sumaAfisata(r.echivalent, la)}</span> : gol}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <div aria-live="polite">
+            <div className="overflow-hidden rounded border border-stone-300">
+              <table className={`${tabelRezultat} text-stone-700`} aria-label="Rezultat calcul inflație">
+                <colgroup><col /><col className="w-[43%] sm:w-44" /></colgroup>
+                <thead>
+                  <tr className="bg-canvas">
+                    <th scope="col" className={`${cellL} font-medium`}>Indicator</th>
+                    <th scope="col" className={`${cellR} font-medium`}>Valoare</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row" className={`${cellL} font-normal`}>
+                      Suma de plecare
+                      <span className="mt-0.5 block text-xs text-stone-600">{etichetaLuna(de)}</span>
+                    </th>
+                    <td className={cellR}>{r ? sumaAfisata(r.suma, de) : "—"}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" className={`${cellL} font-normal`}>
+                      Inflație cumulată
+                    </th>
+                    <td className={cellR}>
+                      {r ? `${r.inflatieCumulata > 0 ? "+" : ""}${nr(r.inflatieCumulata, 1)}%` : "—"}
+                    </td>
+                  </tr>
+                  <tr className="bg-stone-900 font-bold text-white">
+                    <th scope="row" className="border-r border-stone-600 px-2.5 py-3 text-left sm:px-3">
+                      Echivalent în {etichetaLuna(la)}
+                      <span className="mt-0.5 block text-xs font-normal text-stone-300">
+                        pentru aceeași putere de cumpărare
+                      </span>
+                    </th>
+                    <td className="px-2.5 py-3 text-right tabular-nums sm:px-3">
+                      {r ? <span className="marcaj box-decoration-clone">{sumaAfisata(r.echivalent, la)}</span> : "—"}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            {r && rang(de) !== rang(la) ? (
+              <div className="mt-4 rounded border border-stone-200 bg-canvas px-3 py-3 [overflow-wrap:anywhere]">
+                <h3 className="text-sm font-semibold text-stone-900">
+                  {r.inflatieCumulata > 0 ? "Devalorizare" : "Putere de cumpărare"}
+                </h3>
+                <p className="mt-1 text-sm text-stone-700">
+                  {scenariuBaniPastrati
+                    ? `Dacă în ${etichetaLuna(la)} ai tot ${sumaAfisata(r.sumaNominalaLa, la)}, poți cumpăra cât cumpărai cu `
+                    : `Cu ${sumaAfisata(r.sumaNominalaLa, la)} în ${etichetaLuna(la)} cumperi cât cu `}
+                  <strong className="font-semibold tabular-nums text-stone-900">{sumaAfisata(r.putereRamasaInLei, de)}</strong>
+                  {` în ${etichetaLuna(de)}.`}
+                </p>
+              </div>
+            ) : null}
           </div>
 
-          {r ? (
-            <dl className="mt-2 flex items-baseline justify-between gap-3 px-2.5 text-sm sm:px-3">
-              <dt className="text-stone-700">Inflație cumulată</dt>
-              <dd className="font-semibold tabular-nums text-stone-900">{nr(r.inflatieCumulata, 1)}%</dd>
-            </dl>
+          {r?.denominareAplicata ? (
+            <p className="mt-4 text-sm text-stone-600">
+              Intervalul trece peste 1 iulie 2005, când 10.000 de lei vechi au devenit 1 leu nou. Calculul aplică denominarea.
+            </p>
           ) : null}
 
-          {r && rang(de) !== rang(la) ? (
-            <div className="mt-4 rounded border border-stone-200 bg-canvas px-3 py-3 [overflow-wrap:anywhere]">
-              <h3 className="text-sm font-semibold text-stone-900">
-                {r.inflatieCumulata > 0 ? "Devalorizare" : "Putere de cumpărare"}
-              </h3>
-              <p className="mt-1 text-sm text-stone-700">
-                {scenariuBaniPastrati
-                  ? `Dacă în ${etichetaLuna(la)} ai tot ${sumaAfisata(r.sumaNominalaLa, la)}, poți cumpăra cât cumpărai cu `
-                  : `Cu ${sumaAfisata(r.sumaNominalaLa, la)} în ${etichetaLuna(la)} cumperi cât cu `}
-                <strong className="font-semibold tabular-nums text-stone-900">{sumaAfisata(r.putereRamasaInLei, de)}</strong>
-                {` în ${etichetaLuna(de)}.`}
-              </p>
-            </div>
-          ) : null}
+          {!r ? (
+            <p className="mt-4 text-xs text-stone-600">
+              Scrie suma, alege lunile și apasă <strong className="font-medium text-stone-900">Calculează</strong>. Indicele INS
+              e publicat până în {etichetaLuna(ULTIMA_LUNA)}.
+            </p>
+          ) : (
+            <>
+              <GraficInflatie key={`${rang(de)}-${rang(la)}`} rezultat={r} />
+              <FeedbackContextual context="calcul" />
+            </>
+          )}
         </div>
-
-        {r?.denominareAplicata ? (
-          <p className="mt-4 text-sm text-stone-600">
-            Intervalul trece peste 1 iulie 2005, când 10.000 de lei vechi au devenit 1 leu nou. Calculul aplică denominarea.
-          </p>
-        ) : null}
-
-        {!r ? (
-          <p className="mt-4 text-xs text-stone-600">
-            Scrie suma, alege lunile și apasă <strong className="font-medium text-stone-900">Calculează</strong>. Indicele INS
-            e publicat până în {etichetaLuna(ULTIMA_LUNA)}.
-          </p>
-        ) : (
-          <>
-            <GraficInflatie key={`${rang(de)}-${rang(la)}`} rezultat={r} />
-            <FeedbackContextual context="calcul" />
-          </>
-        )}
       </div>
-    </div>
+    </section>
   );
 }
