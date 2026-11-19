@@ -88,7 +88,7 @@ export default function CalculatorConcediuMedical() {
               Salariu brut lunar mediu (ultimele 6 luni)
             </span>
             <span className="mt-0.5 block text-xs text-stone-600">
-              Media veniturilor brute pe baza cărora s-a plătit contribuția, plafonată la 12 salarii minime.
+              Media brutului tău din ultimele 6 luni, plafonată la 12 salarii minime.
             </span>
             <span className="mt-2 flex items-center gap-2">
               <input

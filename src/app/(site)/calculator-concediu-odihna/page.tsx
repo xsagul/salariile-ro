@@ -8,7 +8,7 @@ import { ogPage, twPage } from "@/lib/seo";
 
 const TITLU = "Calculator Concediu de Odihnă 2026: indemnizație și zile";
 const DESC =
-  "Calculează indemnizația de concediu de odihnă, zilele proporționale și compensarea la plecare, plus modele scurte de cerere concediu și demisie.";
+  "Calculează indemnizația de concediu de odihnă, zilele proporționale și banii la plecare, plus modele scurte de cerere concediu și demisie.";
 
 export const metadata: Metadata = {
   title: { absolute: TITLU },
@@ -29,24 +29,24 @@ const EX_BONUS = calculeazaIndemnizatieCO({
 
 const FAQ = [
   {
-    q: "Câte zile de concediu de odihnă am dreptul pe an?",
-    a: `Minimul legal din Codul Muncii este de ${MINIM_ZILE_CONCEDIU_AN} de zile lucrătoare pe an pentru normă întreagă sau part-time. Contractul individual sau colectiv de muncă poate acorda mai multe zile (de regulă 21–25). Sărbătorile legale și zilele de concediu medical nu intră în aceste zile.`,
+    q: "Câte zile de concediu de odihnă am pe an?",
+    a: `Cel puțin ${MINIM_ZILE_CONCEDIU_AN} de zile lucrătoare pe an, indiferent dacă lucrezi 8 ore sau part-time. Contractul de muncă poate da mai multe (de obicei 21–25). Sărbătorile legale și zilele de concediu medical nu se scad din concediul de odihnă.`,
   },
   {
-    q: "De ce uneori iei mai mulți bani în luna în care ești în concediu de odihnă?",
-    a: `Indemnizația zilnică se compară între salariul curent și media zilnică din ultimele 3 luni, alegându-se valoarea mai mare. Dacă ai avut bonusuri sau ore suplimentare în ultimele 3 luni, indemnizația de concediu crește (de exemplu, la 6.300 lei brut cu o medie de 7.500 lei pe 3 luni, 10 zile de concediu aduc +${fmt(EX_BONUS.diferentaNetFataDeNormal)} lei net în acea lună).`,
+    q: "De ce uneori intră mai mulți bani în luna în care ai concediu?",
+    a: `Indemnizația pe zi nu poate fi mai mică decât salariul curent, dar dacă media ultimelor 3 luni e mai mare (de exemplu, din bonusuri sau ore suplimentare), se plătește media mai mare. La 6.300 lei brut cu o medie de 7.500 lei pe ultimele 3 luni, 10 zile de concediu aduc cu ${fmt(EX_BONUS.diferentaNetFataDeNormal)} lei net mai mult în acea lună.`,
   },
   {
-    q: "Se primesc tichete de masă pe zilele de concediu de odihnă?",
-    a: "Nu. Tichetele de masă se acordă doar pentru zilele lucrate efectiv, deci în luna cu concediu de odihnă vei primi mai puține tichete pe card.",
+    q: "Primesc tichete de masă în zilele de concediu?",
+    a: "Nu. Tichetele se dau doar pentru zilele lucrate efectiv, așa că în luna cu concediu primești mai puține tichete pe card.",
   },
   {
-    q: "Pot cere bani în locul zilelor de concediu neefectuate?",
-    a: "Nu în timpul contractului. Potrivit Codului Muncii, compensarea în bani a concediului neefectuat este permisă exclusiv la încetarea contractului individual de muncă (demisie, acordul părților sau concediere).",
+    q: "Pot primi bani pe zilele de concediu neluate dacă rămân la firmă?",
+    a: "Nu. Zilele rămase se pot plăti în bani doar când se încheie contractul de muncă (la demisie, acordul părților sau concediere). Altfel, se reportează și pot fi luate în următoarele 18 luni.",
   },
   {
-    q: "Când trebuie plătită indemnizația de concediu de odihnă?",
-    a: "Codul Muncii prevede că indemnizația se plătește cu cel puțin 5 zile lucrătoare înainte de plecarea în concediu, deși în practică multe firme o virează odată cu salariul lunar dacă salariatul nu cere plata în avans.",
+    q: "Când se plătește indemnizația de concediu?",
+    a: "Codul Muncii cere plata cu cel puțin 5 zile lucrătoare înainte să pleci în concediu. În practică, multe firme virează suma odată cu salariul lunar, dacă nu ceri plata în avans.",
   },
 ];
 
@@ -97,7 +97,7 @@ export default function Page() {
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Calculator concediu de odihnă" }]} />
         <H1>Calculator concediu de odihnă 2026</H1>
         <Lead>
-          Calculează indemnizația de concediu, zilele proporționale cuvenite pe anul în curs și compensarea în bani la încetarea contractului.
+          Vezi cât iei în luna cu concediu, câte zile ți se cuvin dacă nu ai lucrat tot anul și câți bani primești pe zilele rămase la plecare.
         </Lead>
       </Hero>
 
@@ -106,60 +106,60 @@ export default function Page() {
 
       <Section
         companion={
-          <CardCompanion titlu="Reguli din Codul Muncii">
+          <CardCompanion titlu="Regulile de bază">
             <Repere
               randuri={[
-                ["Minim legal anual", `${MINIM_ZILE_CONCEDIU_AN} zile lucrătoare`],
-                ["Taxare indemnizație", "Identică salariului"],
-                ["Reportare zile rămase", "18 luni (anul următor)"],
-                ["Compensare în bani", "Doar la încetarea CIM"],
-                ["Tichete de masă în CO", "Nu se acordă"],
+                ["Minim pe an", `${MINIM_ZILE_CONCEDIU_AN} zile lucrătoare`],
+                ["Taxe pe concediu", "La fel ca pe salariu"],
+                ["Reportare zile", "18 luni în anul următor"],
+                ["Plată în bani", "Doar la plecare"],
+                ["Tichete de masă", "Nu se dau în concediu"],
               ]}
             />
           </CardCompanion>
         }
       >
         <Prose>
-          <h2>Cum se calculează indemnizația și zilele proporționale</h2>
+          <h2>Cum se calculează concediul de odihnă</h2>
           <p>
-            Indemnizația de concediu de odihnă nu poate fi mai mică decât salariul de bază, indemnizațiile și sporurile cu caracter permanent prevăzute în contract. Dacă media zilnică a veniturilor din ultimele 3 luni este mai mare, se aplică acea medie.
+            Pentru fiecare zi de concediu iei cel puțin cât ai fi câștigat într-o zi normală pe salariul din contract (cu sporurile permanente). Dacă în ultimele 3 luni ai avut bonusuri sau ore suplimentare și media zilnică iese mai mare, primești acea medie.
           </p>
           <Formula
             eticheta="Formule concediu de odihnă"
             randuri={[
-              "Tarif zilnic CO    = max(brut contract ÷ zile lună, media 3 luni ÷ zile lună)",
-              "Indemnizație brută = tarif zilnic CO × zile concediu (taxată ca salariul)",
-              "Zile proporționale = zile anuale × luni lucrate ÷ 12",
-              "Compensare plecare = (salariu brut ÷ 21) × zile rămase neefectuate",
+              "Tarif pe zi        = max(brut contract ÷ zile lună, media 3 luni ÷ zile lună)",
+              "Brut concediu      = tarif pe zi × zile concediu (taxat ca salariul)",
+              "Zile proporționale = zile pe an × luni lucrate ÷ 12",
+              "Bani la plecare    = (salariu brut ÷ 21) × zile rămase neluate",
             ]}
           />
           <p>
-            Concediul medical, concediul de maternitate și concediul pentru îngrijirea copilului bolnav nu reduc numărul de zile de concediu de odihnă cuvenite. În schimb, concediul fără plată și concediul de creștere a copilului suspendă acumularea de zile noi.
+            Zilele de concediu medical, maternitate sau îngrijire copil bolnav nu îți taie din concediul de odihnă. În schimb, concediul fără plată și concediul de creștere a copilului pun pe pauză acumularea de zile noi.
           </p>
 
           <h2>Model cerere concediu de odihnă</h2>
           <pre className="overflow-x-auto rounded-md border border-stone-200 bg-canvas p-4 text-sm text-stone-800 whitespace-pre-wrap">{`Către conducerea [Nume firmă],
 
-Subsemnatul(a) [Nume și Prenume], angajat(ă) pe funcția de [Funcție], vă rog să îmi aprobați efectuarea concediului de odihnă în perioada [zz.ll.aaaa] – [zz.ll.aaaa] ([N] zile lucrătoare), aferent anului [An].
+Subsemnatul(a) [Nume și Prenume], angajat(ă) pe postul de [Funcție], vă rog să îmi aprobați concediul de odihnă între [zz.ll.aaaa] și [zz.ll.aaaa] ([N] zile lucrătoare), pentru anul [An].
 
-Pe durata concediului, atribuțiile curente vor fi preluate de [Nume coleg, dacă este cazul].
+Pe durata absenței, activitățile curente pot fi preluate de [Nume coleg, dacă e cazul].
 
 Data: [zz.ll.aaaa]                    Semnătura: _______________`}</pre>
 
-          <h2>Model notificare de demisie (cu sau fără preaviz)</h2>
+          <h2>Model cerere de demisie (cu sau fără preaviz)</h2>
           <pre className="overflow-x-auto rounded-md border border-stone-200 bg-canvas p-4 text-sm text-stone-800 whitespace-pre-wrap">{`Către conducerea [Nume firmă],
 
-Subsemnatul(a) [Nume și Prenume], angajat(ă) pe funcția de [Funcție] în baza contractului individual de muncă nr. [Nr./Dată], vă notific încetarea contractului prin demisie, în temeiul art. 81 din Codul Muncii.
+Subsemnatul(a) [Nume și Prenume], angajat(ă) pe postul de [Funcție] cu contractul nr. [Nr./Dată], vă anunț încetarea contractului de muncă prin demisie (Codul Muncii, art. 81).
 
-Termenul de preaviz este de [20 zile lucrătoare execuție / 45 zile lucrătoare conducere], ultima zi de activitate fiind [zz.ll.aaaa] (sau: solicit renunțarea totală/parțială la termenul de preaviz cu acordul angajatorului).
+Preavizul este de [20 zile lucrătoare execuție / 45 zile lucrătoare conducere], iar ultima zi lucrată va fi [zz.ll.aaaa] (sau: solicit renunțarea la preaviz cu acordul dumneavoastră).
 
-Rog compensarea în bani, la lichidare, a zilelor de concediu de odihnă neefectuate.
+Vă rog ca la lichidare să fie plătite și zilele de concediu de odihnă neefectuate.
 
 Data: [zz.ll.aaaa]                    Semnătura: _______________`}</pre>
 
           <p className="source-note">
             Sursa:{" "}
-            <a href={URL_CODUL_MUNCII} target="_blank" rel="noopener">Codul Muncii (Legea nr. 53/2003)</a>, art. 81 (demisie) și art. 145–150 (concediul de odihnă).
+            <a href={URL_CODUL_MUNCII} target="_blank" rel="noopener">Codul Muncii (Legea 53/2003)</a>, art. 81 (demisia) și art. 145–150 (concediul de odihnă).
           </p>
         </Prose>
       </Section>
@@ -168,11 +168,11 @@ Data: [zz.ll.aaaa]                    Semnătura: _______________`}</pre>
 
       <PaginiConexe
         linkuri={[
-          { href: "/zile-libere-2027", label: "Zile libere legale 2027", descriere: "Sărbătorile care nu se scad din concediul de odihnă." },
-          { href: "/zile-lucratoare-2026", label: "Zile lucrătoare 2026", descriere: "Numărul exact de zile lucrătoare din fiecare lună." },
-          { href: "/calculator-concediu-medical", label: "Calculator concediu medical", descriere: "Procente, prima zi neplătită și net estimat." },
-          { href: "/", label: "Calculator salariu net", descriere: "Transformă brutul în net și vezi contribuțiile." },
-          { href: "/noutati/tichete-de-masa-2026", label: "Tichete de masă 2026–2027", descriere: "De ce nu primești tichete în zilele de concediu." },
+          { href: "/zile-libere-2027", label: "Zile libere legale 2027", descriere: "Sărbătorile care nu se scad din concediu." },
+          { href: "/zile-lucratoare-2026", label: "Zile lucrătoare 2026", descriere: "Câte zile lucrătoare are fiecare lună." },
+          { href: "/calculator-concediu-medical", label: "Calculator concediu medical", descriere: "Procente, prima zi neplătită și netul estimat." },
+          { href: "/", label: "Calculator salariu net", descriere: "Transformă brutul în net și vezi taxele." },
+          { href: "/noutati/tichete-de-masa-2026", label: "Tichete de masă 2026–2027", descriere: "De ce nu primești tichete în concediu." },
         ]}
       />
     </>

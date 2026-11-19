@@ -213,7 +213,7 @@ export default function CalculatorVechimeMunca() {
                 <strong className="text-stone-900">Suprapunere detectată:</strong> am eliminat {fmt(r.zileSuprapuseEliminate)} zile suprapuse între contracte simultane, deoarece două contracte din aceeași zi nu dublează vechimea calendaristică.{" "}
               </>
             ) : null}
-            Pentru verificarea oficială a stagiului de cotizare la pensie poți solicita extrasul din contul CNPP sau adeverința din REGES-ONLINE.
+            Pentru actele oficiale poți scoate extrasul din contul CNPP (stagiul de pensie) sau din REGES-ONLINE (contractele de muncă).
           </p>
         ) : (
           <p className="mt-4 text-sm text-stone-600">

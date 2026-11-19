@@ -16,7 +16,7 @@ import { ogPage, twPage } from "@/lib/seo";
 
 const TITLU = "Calculator Indemnizație Creștere Copil 2026 | Salariile";
 const DESC =
-  "Calculează indemnizația de creștere a copilului în 2026: 85% din media netă pe 12 luni, minim 1.651 lei, maxim 8.500 lei, CASS 10%, gemeni și stimulent.";
+  "Calculează indemnizația de creștere copil în 2026: 85% din netul pe 12 luni, minim 1.651 lei, maxim 8.500 lei, reținerea CASS 10%, gemeni și stimulent.";
 
 export const metadata: Metadata = {
   title: { absolute: TITLU },
@@ -34,24 +34,24 @@ const EX_MAX = calculeazaCrestereCopil({ mediaNeta12Luni: 12000 })!;
 
 const FAQ = [
   {
-    q: "Cum se calculează indemnizația de creștere a copilului în 2026?",
-    a: `Indemnizația brută este 85% din media veniturilor nete realizate în ultimele 12 luni eligibile din ultimii 2 ani anteriori nașterii, dar nu mai puțin de ${fmt(MINIM_ICC_BRUT)} lei și nu mai mult de ${fmt(MAXIM_ICC_BRUT)} lei. Din suma rezultată se reține 10% CASS la sursă.`,
+    q: "Cât este indemnizația de creștere a copilului în 2026?",
+    a: `Primești 85% din media veniturilor tale nete din ultimele 12 luni lucrate în ultimii 2 ani înainte de naștere, dar nu sub ${fmt(MINIM_ICC_BRUT)} lei și nu peste ${fmt(MAXIM_ICC_BRUT)} lei brut. Din suma rezultată se reține 10% pentru sănătate (CASS).`,
   },
   {
-    q: "Se reține CASS din indemnizația de creștere a copilului?",
-    a: `Da. Din suma brută stabilită se reține automat 10% contribuție de sănătate (CASS), fără impozit pe venit și fără CAS. Astfel, minimul net încasat este ${fmt(EX_MIN.netLunar)} lei/lună, iar maximul net este ${fmt(EX_MAX.netLunar)} lei/lună.`,
+    q: "Se oprește CASS din indemnizația de creștere copil?",
+    a: `Da, 10% se oprește automat înainte să intre banii pe card. Nu plătești impozit pe venit și nici pensie. Practic, minimul care intră în cont este ${fmt(EX_MIN.netLunar)} lei, iar maximul este ${fmt(EX_MAX.netLunar)} lei pe lună.`,
   },
   {
-    q: "Cât primești pentru gemeni sau tripleți?",
-    a: `Pentru fiecare copil născut dintr-o sarcină multiplă, începând cu al doilea, indemnizația brută se majorează cu 50% din cuantumul cuvenit, dar nu mai puțin decât valoarea minimă de ${fmt(MINIM_ICC_BRUT)} lei.`,
+    q: "Cât primești în plus pentru gemeni sau tripleți?",
+    a: `De la al doilea copil în sus, suma brută crește cu 50% din indemnizația calculată pentru fiecare copil în plus, dar cel puțin cu ${fmt(MINIM_ICC_BRUT)} lei brut pentru fiecare copil.`,
   },
   {
-    q: "Câte luni sunt rezervate celuilalt părinte (luna tatălui)?",
-    a: `Cel puțin ${LUNI_CELALALT_PARINTE} luni din durata totală a concediului sunt rezervate netransferabil celuilalt părinte, dacă acesta îndeplinește condițiile de stagiu. Dacă nu le solicită, concediul total se scurtează cu ${LUNI_CELALALT_PARINTE} luni.`,
+    q: "Ce se întâmplă dacă celălalt părinte nu își ia lunile lui?",
+    a: `Cel puțin ${LUNI_CELALALT_PARINTE} luni din concediu îi revin celuilalt părinte, dacă are stagiul necesar. Dacă nu le cere, concediul nu se prelungește pentru primul părinte: se oprește cu ${LUNI_CELALALT_PARINTE} luni mai devreme.`,
   },
   {
-    q: "Cât este stimulentul de inserție dacă revii mai devreme la serviciu?",
-    a: `Primești ${fmt(STIMULENT_SUB_6_LUNI)} lei pe lună dacă revii la activitate înainte ca copilul să împlinească 6 luni (1 an pentru copil cu handicap), sau ${fmt(STIMULENT_DUPA_6_LUNI)} lei pe lună dacă revii după această vârstă.`,
+    q: "Cât este stimulentul de inserție dacă te întorci mai repede la muncă?",
+    a: `Primești ${fmt(STIMULENT_SUB_6_LUNI)} lei pe lună dacă revii la serviciu înainte ca cel mic să împlinească 6 luni (sau 1 an pentru copil cu handicap), și ${fmt(STIMULENT_DUPA_6_LUNI)} lei pe lună dacă revii după 6 luni.`,
   },
 ];
 
@@ -102,7 +102,7 @@ export default function Page() {
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Calculator indemnizație creștere copil" }]} />
         <H1>Calculator indemnizație creștere copil 2026</H1>
         <Lead>
-          Introdu media veniturilor nete din ultimele 12 luni și vezi cuantumul brut, reținerea CASS de 10% și suma lunară care intră pe card.
+          Scrie media salariului tău net din ultimele 12 luni și vezi cât intră pe card în fiecare lună, după reținerea de sănătate.
         </Lead>
       </Hero>
 
@@ -111,13 +111,13 @@ export default function Page() {
 
       <Section
         companion={
-          <CardCompanion titlu="Praguri și repere în 2026">
+          <CardCompanion titlu="Praguri în 2026">
             <Repere
               randuri={[
                 ["Procent din media netă", "85%"],
-                ["Minim brut / net", `${fmt(MINIM_ICC_BRUT)} / ${fmt(EX_MIN.netLunar)} lei`],
-                ["Maxim brut / net", `${fmt(MAXIM_ICC_BRUT)} / ${fmt(EX_MAX.netLunar)} lei`],
-                ["CASS reținut la sursă", "10%"],
+                ["Minim brut / pe card", `${fmt(MINIM_ICC_BRUT)} / ${fmt(EX_MIN.netLunar)} lei`],
+                ["Maxim brut / pe card", `${fmt(MAXIM_ICC_BRUT)} / ${fmt(EX_MAX.netLunar)} lei`],
+                ["CASS reținut", "10%"],
                 ["Stimulent sub 6 luni", `${fmt(STIMULENT_SUB_6_LUNI)} lei/lună`],
                 ["Stimulent după 6 luni", `${fmt(STIMULENT_DUPA_6_LUNI)} lei/lună`],
               ]}
@@ -126,29 +126,29 @@ export default function Page() {
         }
       >
         <Prose>
-          <h2>Cum se calculează indemnizația de creștere a copilului</h2>
+          <h2>Cum se calculează indemnizația de creștere copil</h2>
           <p>
-            Pentru a primi indemnizația, trebuie să fi realizat venituri impozabile (salarii, activități independente, profesii liberale sau perioade asimilate, cum ar fi concediul medical sau studiile universitare la zi) timp de cel puțin 12 luni în ultimii 2 ani anteriori datei nașterii copilului.
+            Ca să o primești, ai nevoie de cel puțin 12 luni cu venituri impozabile în ultimii 2 ani dinaintea nașterii. Intră salariile, veniturile din PFA sau profesii liberale, dar și perioade asimilate, cum ar fi concediul medical, șomajul sau facultatea la zi.
           </p>
           <Formula
             eticheta="Formula indemnizației de creștere copil"
             randuri={[
-              "Indemnizație brută = 85% × media veniturilor nete pe 12 luni",
-              `Încadrare legală   = minim ${fmt(MINIM_ICC_BRUT)} lei, maxim ${fmt(MAXIM_ICC_BRUT)} lei`,
-              "Reținere CASS      = 10% × indemnizația brută",
-              "Net lunar pe card  = indemnizația brută − CASS (impozit 0%)",
+              "Brut lunar = 85% × media veniturilor nete pe 12 luni",
+              `Limitele   = minim ${fmt(MINIM_ICC_BRUT)} lei, maxim ${fmt(MAXIM_ICC_BRUT)} lei`,
+              "Sănătate   = 10% reținut din brut",
+              "Pe card    = brut lunar − 10% (fără impozit)",
             ]}
           />
           <p>
-            De exemplu, la o medie a veniturilor nete de 6.000 lei pe lună, 85% înseamnă {fmt(EX_MED.brutBaza)} lei brut, iar după reținerea CASS de {fmt(EX_MED.cass)} lei, suma încasată lunar este {fmt(EX_MED.netLunar)} lei. De la o medie netă de 10.000 lei în sus se atinge plafonul maxim de {fmt(MAXIM_ICC_BRUT)} lei brut ({fmt(EX_MAX.netLunar)} lei net).
+            La o medie netă de 6.000 lei pe lună, 85% înseamnă {fmt(EX_MED.brutBaza)} lei brut. După ce se opresc {fmt(EX_MED.cass)} lei pentru sănătate, rămân {fmt(EX_MED.netLunar)} lei în cont. De la 10.000 lei net în sus se atinge plafonul maxim: {fmt(MAXIM_ICC_BRUT)} lei brut, adică {fmt(EX_MAX.netLunar)} lei pe card.
           </p>
           <p>
-            Tichetele de masă și alte venituri impozabile incluse în baza de impozit intră în calculul mediei veniturilor nete din adeverința eliberată de angajator. Pentru sarcinile multiple cu venituri peste plafon, decizia finală de calcul a majorării de 50% se confirmă de AJPIS.
+            În media netă de pe adeverința de la firmă intră și tichetele de masă sau bonusurile pe care s-a plătit impozit. La gemeni sau tripleți cu venituri peste plafon, suma exactă a majorării de 50% se confirmă în decizia de la AJPIS.
           </p>
           <p className="source-note">
             Surse:{" "}
-            <a href={URL_OUG_111} target="_blank" rel="noopener">OUG nr. 111/2010</a> (art. 2, 5, 7 și 11),
-            Legea nr. 141/2025 (CASS 10% reținut la sursă) și{" "}
+            <a href={URL_OUG_111} target="_blank" rel="noopener">OUG 111/2010</a> (art. 2, 5, 7 și 11),
+            Legea 141/2025 (CASS 10%) și{" "}
             <a href="https://legislatie.just.ro/Public/DetaliiDocument/171282" target="_blank" rel="noopener">Codul Fiscal, art. 62</a>.
           </p>
         </Prose>
@@ -158,10 +158,10 @@ export default function Page() {
 
       <PaginiConexe
         linkuri={[
-          { href: "/calculator-concediu-medical", label: "Calculator concediu medical", descriere: "Calculează indemnizația de maternitate (cod 08, 126 zile)." },
-          { href: "/", label: "Calculator salariu net", descriere: "Verifică netul lunar pentru calculul mediei pe 12 luni." },
-          { href: "/calculator-concediu-odihna", label: "Calculator concediu de odihnă", descriere: "Zile proporționale înainte sau după concediul parental." },
-          { href: "/calculator-pfa", label: "Calculator taxe PFA", descriere: "Venituri independente luate în calcul la dosarul AJPIS." },
+          { href: "/calculator-concediu-medical", label: "Calculator concediu medical", descriere: "Calculează concediul de maternitate (cod 08, 126 zile)." },
+          { href: "/", label: "Calculator salariu net", descriere: "Verifică netul lunar care intră în media pe 12 luni." },
+          { href: "/calculator-concediu-odihna", label: "Calculator concediu de odihnă", descriere: "Zilele rămase înainte sau după concediul parental." },
+          { href: "/calculator-pfa", label: "Calculator taxe PFA", descriere: "Venituri din activități independente pentru dosar." },
         ]}
       />
     </>

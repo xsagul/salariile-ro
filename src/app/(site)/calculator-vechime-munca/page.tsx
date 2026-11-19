@@ -9,7 +9,7 @@ import { ogPage, twPage } from "@/lib/seo";
 
 const TITLU = "Calculator Vechime în Muncă 2026: ani, luni și zile";
 const DESC =
-  "Calculează exact vechimea în muncă din perioadele lucrate, cu eliminarea suprapunerilor, gradația de vechime la stat și pragurile de pensie și șomaj.";
+  "Calculează exact vechimea în muncă din perioadele lucrate, fără zile dublate, gradația de vechime la stat și cât mai ai până la pensie.";
 
 export const metadata: Metadata = {
   title: { absolute: TITLU },
@@ -21,24 +21,24 @@ export const metadata: Metadata = {
 
 const FAQ = [
   {
-    q: "Dacă am două contracte de muncă în paralel, se dublează vechimea?",
-    a: "Nu. Vechimea în muncă și stagiul calendaristic de cotizare nu se dublează pentru zilele în care ai două contracte simultane. În schimb, veniturile brute cumulate cresc punctajul de pensie. Calculatorul elimină automat suprapunerile dintre perioade.",
+    q: "Dacă am două joburi în același timp, se dublează vechimea?",
+    a: "Nu. O zi în care ai două contracte se numără o singură dată la vechime. Veniturile de pe ambele contracte se adună însă la punctajul de pensie. Calculatorul scoate automat zilele suprapuse.",
   },
   {
-    q: "Contractul part-time se pune la vechimea în muncă?",
-    a: "Da. Potrivit Codului Muncii, contractele cu timp parțial se iau în calcul integral ca vechime în muncă (ani, luni, zile), la fel ca norma întreagă, iar la pensie stagiul de cotizare se acordă integral dacă se plătesc contribuțiile legale.",
+    q: "Contractul part-time se pune întreg la vechime?",
+    a: "Da. O lună lucrată pe 2, 4 sau 6 ore se pune la fel ca o lună pe 8 ore la vechimea în muncă. Și la pensie contează ca stagiu întreg dacă s-au plătit contribuțiile legale.",
   },
   {
-    q: "Care este diferența dintre vechimea în muncă și stagiul de cotizare la pensie?",
-    a: `Vechimea în muncă reprezintă perioadele lucrate cu contract individual de muncă (dovedite prin cartea de muncă, adeverințe sau REGES-ONLINE). Stagiul de cotizare la pensie include toate lunile în care s-a plătit CAS (inclusiv PFA, contracte de asigurare cu CNPP sau perioade asimilate precum facultatea la zi, armata și șomajul indemnizat). Stagiul minim pentru pensia de limită de vârstă este ${STAGIU_MINIM_PENSIE_ANI} ani, iar cel complet este ${STAGIU_COMPLET_PENSIE_ANI} ani.`,
+    q: "Care e diferența dintre vechimea în muncă și stagiul de pensie?",
+    a: `Vechimea în muncă adună perioadele lucrate cu contract de muncă (din cartea de muncă, adeverințe sau REGES-ONLINE). Stagiul de pensie e mai larg: include toate lunile în care ai plătit CAS (și pe PFA sau contract cu casa de pensii) plus facultatea la zi, armata sau șomajul. Pentru pensie îți trebuie cel puțin ${STAGIU_MINIM_PENSIE_ANI} ani stagiu minim; stagiul complet este de ${STAGIU_COMPLET_PENSIE_ANI} de ani.`,
   },
   {
-    q: "Cum verific oficial ce vechime am înregistrată?",
-    a: "Poți verifica contractele de muncă din contul tău de salariat în REGES-ONLINE și poți solicita online stagiul complet de cotizare din contul personal pe portalul Casei Naționale de Pensii Publice (cnpp.ro).",
+    q: "Unde verific oficial câți ani am înregistrați?",
+    a: "Pentru contractele de muncă intri în contul tău de salariat din REGES-ONLINE. Pentru tot stagiul de cotizare la pensie scoți extrasul online din contul de pe cnpp.ro.",
   },
   {
-    q: "Concediul de creștere a copilului se consideră vechime în muncă?",
-    a: "Da. Potrivit OUG nr. 111/2010, perioada concediului de creștere a copilului constituie vechime în muncă, în serviciu și în specialitate, și este perioadă asimilată la stagiul de cotizare pentru pensie.",
+    q: "Concediul de creștere a copilului se pune la vechime?",
+    a: "Da. Perioada în care stai în concediu de creștere copil se pune la vechimea în muncă, în specialitate și la stagiul de pensie.",
   },
 ];
 
@@ -89,7 +89,7 @@ export default function Page() {
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Calculator vechime în muncă" }]} />
         <H1>Calculator vechime în muncă 2026</H1>
         <Lead>
-          Adaugă perioadele lucrate și află totalul în ani, luni și zile, gradația de vechime la stat și cât mai ai până la pragurile de pensie.
+          Pune perioadele lucrate și vezi totalul în ani, luni și zile, gradația de vechime la stat și cât mai ai până la pragurile de pensie.
         </Lead>
       </Hero>
 
@@ -113,26 +113,26 @@ export default function Page() {
         }
       >
         <Prose>
-          <h2>Cum se calculează vechimea în muncă</h2>
+          <h2>Cum se adună perioadele de vechime</h2>
           <p>
-            Fiecare interval lucrat se măsoară inclusiv de la data de început până la data de încetare a contractului. Dacă ai avut două contracte suprapuse, calculatorul le unifică mai întâi pe calendar, apoi adună perioadele distincte (30 de zile = 1 lună, 12 luni = 1 an).
+            Fiecare contract se numără de la prima până la ultima zi lucrată. Dacă două contracte se suprapun în timp, calculatorul păstrează o singură dată zilele comune, apoi transformă restul după regula clasică de evidență a muncii (30 de zile fac o lună, 12 luni fac un an).
           </p>
           <Formula
-            eticheta="Praguri legale legate de vechime"
+            eticheta="Praguri care depind de vechime"
             randuri={[
-              "Gradații bugetari = 3, 5, 10, 15 și 20 ani (Legea 153/2017, art. 10)",
-              `Pensie limită     = ${STAGIU_MINIM_PENSIE_ANI} ani stagiu minim / ${STAGIU_COMPLET_PENSIE_ANI} ani stagiu complet (Legea 360/2023)`,
-              "Ajutor șomaj      = cote 3% (3 ani), 5% (5), 7% (10), 10% (20 ani)",
+              "Gradații la stat = 3, 5, 10, 15 și 20 de ani (Legea 153/2017)",
+              `Pensie           = ${STAGIU_MINIM_PENSIE_ANI} ani stagiu minim / ${STAGIU_COMPLET_PENSIE_ANI} ani complet (Legea 360/2023)`,
+              "Ajutor șomaj     = 3% (3 ani) | 5% (5) | 7% (10) | 10% (20 ani)",
             ]}
           />
           <p>
-            În sectorul privat, sporul de vechime nu este obligatoriu prin lege, ci doar dacă apare în contractul individual sau colectiv de muncă. În sectorul bugetar, gradațiile se aplică în cascadă peste salariul de bază de la gradația 0. Poți vedea cum verifici contractele înregistrate în ghidul{" "}
+            La privat, sporul de vechime se plătește doar dacă este trecut în contractul tău sau în contractul colectiv al firmei. La stat, gradațiile cresc automat salariul de bază în trepte. Istoricul contractelor înregistrate îl găsești urmând pașii din ghidul{" "}
             <Link href="/noutati/reges-online">REGES-ONLINE</Link>.
           </p>
           <p className="source-note">
             Surse:{" "}
-            <a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/128646" target="_blank" rel="noopener">Codul Muncii (Legea nr. 53/2003)</a>,
-            Legea-cadru nr. 153/2017 (art. 10), Legea nr. 360/2023 privind sistemul public de pensii și Legea nr. 76/2002.
+            <a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/128646" target="_blank" rel="noopener">Codul Muncii (Legea 53/2003)</a>,
+            Legea 153/2017 (art. 10), Legea 360/2023 privind pensiile și Legea 76/2002.
           </p>
         </Prose>
       </Section>
@@ -141,10 +141,10 @@ export default function Page() {
 
       <PaginiConexe
         linkuri={[
-          { href: "/calculator-indemnizatie-somaj", label: "Calculator indemnizație șomaj", descriere: "Calculează șomajul în funcție de vechimea ta." },
-          { href: "/calculator-salariu-invatamant", label: "Calculator salarii învățământ", descriere: "Aplică gradația de vechime pe grila din educație." },
-          { href: "/calculator-salariu-sanatate", label: "Calculator salarii sănătate", descriere: "Grila medicală cu gradații și sporuri." },
-          { href: "/noutati/reges-online", label: "Cum verifici contractele în REGES", descriere: "Extrage istoricul contractelor tale de muncă." },
+          { href: "/calculator-indemnizatie-somaj", label: "Calculator indemnizație șomaj", descriere: "Vezi cât primești la șomaj pentru vechimea ta." },
+          { href: "/calculator-salariu-invatamant", label: "Calculator salarii învățământ", descriere: "Grila din educație cu gradația ta de vechime." },
+          { href: "/calculator-salariu-sanatate", label: "Calculator salarii sănătate", descriere: "Grila din spitale cu gradații și sporuri." },
+          { href: "/noutati/reges-online", label: "Verifică contractele în REGES", descriere: "Cum scoți istoricul oficial al contractelor." },
           { href: "/", label: "Calculator salariu net", descriere: "Brut în net și invers pentru orice salariu." },
         ]}
       />

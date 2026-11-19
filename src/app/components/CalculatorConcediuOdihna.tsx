@@ -361,7 +361,7 @@ export default function CalculatorConcediuOdihna() {
 
         {areRezultat ? (
           <p className="mt-4 rounded border border-stone-300 bg-canvas p-3 text-sm text-stone-700">
-            Pe zilele de concediu de odihnă nu se acordă tichete de masă. Compensarea în bani a zilelor neefectuate este permisă legal doar la încetarea contractului individual de muncă.
+            Pe zilele de concediu de odihnă nu se dau tichete de masă. Zilele rămase neluate pot fi plătite în bani doar când pleci de la firmă.
           </p>
         ) : (
           <p className="mt-4 text-sm text-stone-600">

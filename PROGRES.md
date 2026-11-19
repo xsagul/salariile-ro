@@ -6577,3 +6577,9 @@ Lucrat pe ramura `seo-curatenie` (worktree izolat din `origin/main` `cdececb`).
    - `/calculator-indemnizatie-crestere-copil` (`src/lib/crestere-copil.ts`, OUG 111/2010 + CASS 10% Legea 141/2025).
    - `/calculator-concediu-odihna` (`src/lib/concediu-odihna.ts`, Codul Muncii art. 145–150 + modele scurte de cerere concediu și demisie).
    - `/calculator-vechime-munca` (`src/lib/vechime-munca.ts`, unificare suprapuneri, gradații Legea 153/2017, stagii pensie Legea 360/2023 și șomaj).
+
+
+### 19 noiembrie 2026 (runda 2) — ton natural pe calculatoarele noi și curățare `/compara/[pereche]`
+
+- Rescris tonul pe `/calculator-concediu-medical`, `/calculator-indemnizatie-crestere-copil`, `/calculator-concediu-odihna` și `/calculator-vechime-munca` (pagini + notele din componente), eliminând formulările de tip Monitorul Oficial și aliniind vocea cu `/` și `/calculator-indemnizatie-somaj`.
+- Curățat `/compara/[pereche]`: eliminat rândul duplicat/vechi din `<details>` (un singur reper salarial net + brut echivalent + cost angajator, consistent cu cardurile de sus) și înlocuit blocul generic „Cum se citește comparația” + FAQ Q3 cu text specific perechii (atribuții, cost angajator, sectoare CAEN și grupe ISCO).

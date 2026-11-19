@@ -13,7 +13,7 @@ import { ogPage, twPage } from "@/lib/seo";
 
 const TITLU = "Calculator Concediu Medical 2026: brut, net și taxe";
 const DESC =
-  "Calculează indemnizația de concediu medical în 2026: procente 55%/65%/75%, prima zi neplătită, plată angajator vs FNUASS, CAS, CASS și net estimat.";
+  "Calculează cât primești în concediu medical în 2026: 55%/65%/75%, prima zi neplătită, cât plătește firma vs statul, CAS, CASS și suma netă.";
 
 export const metadata: Metadata = {
   title: { absolute: TITLU },
@@ -42,24 +42,24 @@ const EX_MAT = calculeazaConcediuMedical({
 
 const FAQ = [
   {
-    q: "Cum se calculează concediul medical pentru boală obișnuită (cod 01) în 2026?",
-    a: `Procentul depinde de durata întregului episod de boală: 55% până la 7 zile calendaristice, 65% între 8 și 14 zile, și 75% de la 15 zile în sus. De exemplu, la un salariu brut mediu de 6.000 lei și 5 zile lucrătoare de concediu (prima zi neplătită), rezultă ${fmt(EX_5Z.indemnizatieBruta)} lei brut și aproximativ ${fmt(EX_5Z.indemnizatieNeta)} lei net.`,
+    q: "Cu cât se plătește concediul medical pentru boală obișnuită (cod 01) în 2026?",
+    a: `Procentul crește cu durata bolii: 55% până la 7 zile calendaristice, 65% între 8 și 14 zile și 75% de la 15 zile în sus. De exemplu, la un brut mediu de 6.000 lei și 5 zile lucrătoare de concediu (prima zi neplătită), ies ${fmt(EX_5Z.indemnizatieBruta)} lei brut și cam ${fmt(EX_5Z.indemnizatieNeta)} lei în mână.`,
   },
   {
-    q: "Se mai plătește prima zi de concediu medical în 2026?",
-    a: "Nu, pentru majoritatea certificatelor emise între 1 februarie 2026 și 31 decembrie 2027, prima zi lucrătoare a episodului de boală este neplătită (o singură dată pe episod). Sunt exceptate concediile de maternitate, risc maternal, îngrijire pacient oncologic, programele naționale de sănătate și episoadele cu internare în spital.",
+    q: "Se mai plătește prima zi de concediu medical?",
+    a: "Pentru majoritatea certificatelor emise până la finalul lui 2027, nu: prima zi lucrătoare a episodului de boală rămâne neplătită, o singură dată pe episod. Fac excepție maternitatea, riscul maternal, îngrijirea unui pacient oncologic, programele naționale de sănătate și internarea în spital.",
   },
   {
-    q: "Cine plătește concediul medical: firma sau statul?",
-    a: "Pentru boală obișnuită, angajatorul suportă zilele lucrătoare 2–6 (când prima zi este neplătită), iar de la ziua 7 plătește FNUASS (Casa de Sănătate). Pentru maternitate, copil bolnav, risc maternal și îngrijire pacient oncologic, FNUASS suportă integral de la prima zi plătită.",
+    q: "Cine plătește concediul medical: angajatorul sau Casa de Sănătate?",
+    a: "La boală obișnuită, firma plătește zilele lucrătoare 2–6 (când prima zi e neplătită), iar statul (FNUASS) preia plata din ziua a 7-a. La maternitate, copil bolnav, risc maternal și oncologic, FNUASS acoperă toate zilele plătite, chiar dacă banii îți intră tot prin firmă.",
   },
   {
-    q: "Ce taxe se rețin din concediul medical?",
-    a: `CAS (25%) se calculează la o bază plafonată egală cu 35% din câștigul salarial mediu brut BASS (${fmt(CASTIG_MEDIU_BASS)} lei), proporțional cu zilele de concediu. CASS (10%) se reține la boală obișnuită (cod 01), dar nu la maternitate, copil bolnav, urgențe sau oncologic. Impozitul de 10% nu se aplică la maternitate, copil bolnav, risc maternal și oncologic.`,
+    q: "Ce taxe se opresc din concediul medical?",
+    a: `Pensia (CAS 25%) se calculează pe o bază fixată de lege, 35% din câștigul salarial mediu brut BASS (${fmt(CASTIG_MEDIU_BASS)} lei), proporțional cu zilele plătite. Sănătatea (CASS 10%) se oprește la boală obișnuită (cod 01), nu și la urgențe, maternitate, copil bolnav sau oncologic. Impozitul de 10% nu se oprește la maternitate, copil bolnav, risc maternal și oncologic.`,
   },
   {
-    q: "Cât primești în concediul de maternitate (cod 08)?",
-    a: `Indemnizația de maternitate este 85% din baza de calcul, fără prima zi neplătită, scutită de CASS și impozit pe venit (se reține doar CAS pe baza plafonată). La un brut mediu de 6.000 lei pe o lună întreagă (21 zile lucrătoare), netul este în jur de ${fmt(EX_MAT.indemnizatieNeta)} lei.`,
+    q: "Cât iei în mână în concediul de maternitate (cod 08)?",
+    a: `Indemnizația de maternitate este 85% din brutul mediu, fără prima zi neplătită, fără CASS și fără impozit (rămâne doar CAS-ul plafonat). La un brut de 6.000 lei pe o lună întreagă, primești în mână cam ${fmt(EX_MAT.indemnizatieNeta)} lei.`,
   },
 ];
 
@@ -110,7 +110,7 @@ export default function Page() {
         <Breadcrumb items={[{ href: "/", label: "Acasă" }, { label: "Calculator concediu medical" }]} />
         <H1>Calculator concediu medical 2026</H1>
         <Lead>
-          Calculează indemnizația brută și netă pentru boală obișnuită, urgențe, maternitate sau copil bolnav, cu regulile în vigoare în 2026.
+          Pune salariul brut din ultimele luni, alege codul de pe certificat și vezi cât iei în mână și cât suportă firma.
         </Lead>
       </Hero>
 
@@ -135,32 +135,32 @@ export default function Page() {
         }
       >
         <Prose>
-          <h2>Cum se calculează indemnizația de concediu medical</h2>
+          <h2>Cum se calculează concediul medical</h2>
           <p>
-            Baza de calcul este media zilnică a veniturilor brute din ultimele 6 luni de stagiu, plafonată la 12 salarii minime brute pe lună ({fmt(PLAFON_BAZA_LUNARA)} lei). Indemnizația se plătește doar pentru zilele lucrătoare din certificat.
+            Calculul pornește din media salariului tău brut pe ultimele 6 luni lucrate, plafonată la 12 salarii minime pe lună ({fmt(PLAFON_BAZA_LUNARA)} lei). Se plătesc doar zilele lucrătoare din certificat, nu și weekendurile.
           </p>
           <Formula
             eticheta="Formula concediului medical"
             randuri={[
-              "Bază zilnică      = venituri brute 6 luni ÷ zile lucrătoare 6 luni",
-              "Indemnizație brut = bază zilnică × procent cod × zile lucrătoare plătite",
-              `Bază CAS (art.143)= 35% × ${fmt(CASTIG_MEDIU_BASS)} lei (BASS) × (zile plătite ÷ zile lună)`,
-              "Net estimat       = brut − CAS 25% − CASS 10% (cod 01) − impozit 10%",
+              "Bază pe zi       = brut ultimele 6 luni ÷ zile lucrătoare 6 luni",
+              "Indemnizație brut= bază pe zi × procent cod × zile lucrătoare plătite",
+              `Bază CAS         = 35% × ${fmt(CASTIG_MEDIU_BASS)} lei (BASS) × (zile plătite ÷ zile lună)`,
+              "Net în mână      = brut − CAS 25% − CASS 10% (cod 01) − impozit 10%",
             ]}
           />
           <p>
-            Pentru boala obișnuită (cod 01), cota de 55%, 65% sau 75% depinde de durata întregului episod de boală, nu de durata fiecărui certificat separat. Prima zi lucrătoare nu se plătește între februarie 2026 și decembrie 2027, cu excepția cazurilor de maternitate, risc maternal, îngrijire pacient oncologic, programe naționale de sănătate și internare în spital.
+            La boala obișnuită (cod 01), procentul de 55%, 65% sau 75% se alege după cât durează tot episodul de boală, chiar dacă medicul îți dă două certificate legate. În plus, prima zi lucrătoare nu se plătește, cu excepția maternității, riscului maternal, îngrijirii unui pacient oncologic, programelor naționale de sănătate și internării în spital.
           </p>
           <p>
-            Toate detaliile legislative despre stagiul minim de 6 luni în ultimele 12 luni și excepțiile din 2026 sunt explicate pe larg în ghidul nostru despre{" "}
+            Dacă vrei toate detaliile despre stagiul minim de 6 luni și excepții, le-am pus separat în articolul despre{" "}
             <Link href="/noutati/concediu-medical-2026">concediul medical în 2026</Link>.
           </p>
           <p className="source-note">
             Surse:{" "}
-            <a href="https://legislatie.just.ro/Public/DetaliiDocument/66611" target="_blank" rel="noopener">OUG nr. 158/2005</a>,
-            Legea nr. 141/2025, OUG nr. 91/2025, Legea nr. 64/2026 și{" "}
+            <a href="https://legislatie.just.ro/Public/DetaliiDocument/66611" target="_blank" rel="noopener">OUG 158/2005</a>,
+            Legea 141/2025, OUG 91/2025, Legea 64/2026 și{" "}
             <a href="https://legislatie.just.ro/Public/DetaliiDocument/171282" target="_blank" rel="noopener">Codul Fiscal (art. 62, 143, 154–155)</a>.
-            Indicatorul bugetului asigurărilor sociale de stat (BASS) pentru 2026 este {fmt(CASTIG_MEDIU_BASS)} lei (Legea nr. 44/2026).
+            Indicatorul bugetului asigurărilor sociale (BASS) pentru 2026 este {fmt(CASTIG_MEDIU_BASS)} lei (Legea 44/2026).
           </p>
         </Prose>
       </Section>
@@ -169,11 +169,11 @@ export default function Page() {
 
       <PaginiConexe
         linkuri={[
-          { href: "/noutati/concediu-medical-2026", label: "Ghid concediu medical 2026", descriere: "Regulile noi pentru prima zi neplătită, excepții și stagiu minim." },
-          { href: "/calculator-indemnizatie-crestere-copil", label: "Calculator creștere copil", descriere: "Indemnizația de 85% din net, plafoane și CASS 10%." },
-          { href: "/calculator-concediu-odihna", label: "Calculator concediu de odihnă", descriere: "Indemnizația de concediu și zilele proporționale." },
-          { href: "/", label: "Calculator salariu net", descriere: "Transformă brutul în net și vezi contribuțiile." },
-          { href: "/zile-lucratoare-2026", label: "Zile lucrătoare 2026", descriere: "Numărul exact de zile lucrătoare pentru fiecare lună." },
+          { href: "/noutati/concediu-medical-2026", label: "Ghid concediu medical 2026", descriere: "Prima zi neplătită, excepțiile și stagiul minim." },
+          { href: "/calculator-indemnizatie-crestere-copil", label: "Calculator creștere copil", descriere: "85% din net, plafoane și reținerea de 10%." },
+          { href: "/calculator-concediu-odihna", label: "Calculator concediu de odihnă", descriere: "Indemnizația de concediu și zilele rămase." },
+          { href: "/", label: "Calculator salariu net", descriere: "Transformă brutul în net și vezi taxele." },
+          { href: "/zile-lucratoare-2026", label: "Zile lucrătoare 2026", descriere: "Câte zile lucrătoare are fiecare lună." },
         ]}
       />
     </>

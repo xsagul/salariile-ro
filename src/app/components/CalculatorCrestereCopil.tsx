@@ -91,7 +91,7 @@ export default function CalculatorCrestereCopil() {
               Venit net lunar mediu (ultimele 12 luni)
             </span>
             <span className="mt-0.5 block text-xs text-stone-600">
-              Media veniturilor nete impozabile realizate în 12 luni din ultimii 2 ani anteriori nașterii.
+              Media veniturilor nete din 12 luni lucrate în ultimii 2 ani înainte de naștere.
             </span>
             <span className="mt-2 flex items-center gap-2">
               <input
@@ -183,12 +183,12 @@ export default function CalculatorCrestereCopil() {
                 />
               ) : null}
               <Row
-                label="Cuantum brut lunar stabilit"
+                label="Indemnizația brută pe lună"
                 value={r ? `${fmt(r.brutTotal)} lei` : null}
                 bold
               />
               <Row
-                label="CASS 10%, reținut la sursă"
+                label="CASS 10%, reținut"
                 value={r ? `− ${fmt(r.cass)} lei` : null}
                 sub
                 temei={TEMEI_ICC.cass}
