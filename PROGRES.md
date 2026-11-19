@@ -6583,3 +6583,9 @@ Lucrat pe ramura `seo-curatenie` (worktree izolat din `origin/main` `cdececb`).
 
 - Rescris tonul pe `/calculator-concediu-medical`, `/calculator-indemnizatie-crestere-copil`, `/calculator-concediu-odihna` și `/calculator-vechime-munca` (pagini + notele din componente), eliminând formulările de tip Monitorul Oficial și aliniind vocea cu `/` și `/calculator-indemnizatie-somaj`.
 - Curățat `/compara/[pereche]`: eliminat rândul duplicat/vechi din `<details>` (un singur reper salarial net + brut echivalent + cost angajator, consistent cu cardurile de sus) și înlocuit blocul generic „Cum se citește comparația” + FAQ Q3 cu text specific perechii (atribuții, cost angajator, sectoare CAEN și grupe ISCO).
+
+
+### 19 noiembrie 2026 (runda 3) — redesenare cele 4 calculatoare noi pe structura `CalculatorPartTime` / `BRAND.md`
+
+- Reconstruite `CalculatorConcediuMedical`, `CalculatorCrestereCopil`, `CalculatorConcediuOdihna` și `CalculatorVechimeMunca` pe exact structura vizuală a calculatoarelor principale (`/` și `/calculator-salariu-part-time`): câmpuri goale cu `placeholder="ex: ..."`, unități în interiorul chenarului, opțiuni secundare strânse în butonul punctat `▼ Opțiuni avansate`, comutator orizontal pe un rând, tabel de rezultat curat (fără citații legislative în celule), rând inversat `bg-stone-900` + `.marcaj` galben pe suma finală, `<details>Detalii de calcul</details>` și stare `stale` la modificare.
+- Adăugat `ModelCerere.tsx` cu buton „Copiază modelul” pentru cererile de concediu și demisie; caseta „Surse diferite” de pe `/compara/[pereche]` trecută pe monocrom `stone` conform `BRAND.md` §5.

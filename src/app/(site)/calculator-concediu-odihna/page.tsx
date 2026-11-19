@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Breadcrumb, CardCompanion, Faq, Formula, H1, Hero, Lead, PaginiConexe, Prose, Repere, Section } from "@/app/components/ui";
 import CalculatorConcediuOdihna from "@/app/components/CalculatorConcediuOdihna";
+import ModelCerere from "@/app/components/ModelCerere";
 import { ReclamaSubCalculator } from "@/app/components/Reclama";
 import { MINIM_ZILE_CONCEDIU_AN, URL_CODUL_MUNCII, calculeazaIndemnizatieCO } from "@/lib/concediu-odihna";
 import { personSchema } from "@/lib/person";
@@ -138,16 +139,21 @@ export default function Page() {
           </p>
 
           <h2>Model cerere concediu de odihnă</h2>
-          <pre className="overflow-x-auto rounded-md border border-stone-200 bg-canvas p-4 text-sm text-stone-800 whitespace-pre-wrap">{`Către conducerea [Nume firmă],
+          <ModelCerere
+            titlu="Cerere concediu de odihnă"
+            text={`Către conducerea [Nume firmă],
 
 Subsemnatul(a) [Nume și Prenume], angajat(ă) pe postul de [Funcție], vă rog să îmi aprobați concediul de odihnă între [zz.ll.aaaa] și [zz.ll.aaaa] ([N] zile lucrătoare), pentru anul [An].
 
 Pe durata absenței, activitățile curente pot fi preluate de [Nume coleg, dacă e cazul].
 
-Data: [zz.ll.aaaa]                    Semnătura: _______________`}</pre>
+Data: [zz.ll.aaaa]                    Semnătura: _______________`}
+          />
 
           <h2>Model cerere de demisie (cu sau fără preaviz)</h2>
-          <pre className="overflow-x-auto rounded-md border border-stone-200 bg-canvas p-4 text-sm text-stone-800 whitespace-pre-wrap">{`Către conducerea [Nume firmă],
+          <ModelCerere
+            titlu="Cerere de demisie"
+            text={`Către conducerea [Nume firmă],
 
 Subsemnatul(a) [Nume și Prenume], angajat(ă) pe postul de [Funcție] cu contractul nr. [Nr./Dată], vă anunț încetarea contractului de muncă prin demisie (Codul Muncii, art. 81).
 
@@ -155,7 +161,8 @@ Preavizul este de [20 zile lucrătoare execuție / 45 zile lucrătoare conducere
 
 Vă rog ca la lichidare să fie plătite și zilele de concediu de odihnă neefectuate.
 
-Data: [zz.ll.aaaa]                    Semnătura: _______________`}</pre>
+Data: [zz.ll.aaaa]                    Semnătura: _______________`}
+          />
 
           <p className="source-note">
             Sursa:{" "}

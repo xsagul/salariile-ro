@@ -337,8 +337,8 @@ export default async function ComparatiePage({ params }: Props) {
           </div>
 
           {(ca?.sursa ?? ra.label) !== (cb?.sursa ?? rb.label) ? (
-            <div className="mt-6 rounded-md border border-amber-200 bg-amber-50 p-4 text-xs text-amber-950">
-              <strong>Surse diferite:</strong> pentru {numeA} cifra vine din {ca?.sursa ?? ra.label}, iar pentru {numeB} din {cb?.sursa ?? rb.label}. Le punem alături ca puncte de orientare, nu ca o comparație între două contracte identice.
+            <div className="mt-6 rounded-md border border-stone-300 bg-surface p-4 text-xs text-stone-700">
+              <strong className="text-stone-900">Surse diferite:</strong> pentru {numeA} cifra vine din {ca?.sursa ?? ra.label}, iar pentru {numeB} din {cb?.sursa ?? rb.label}. Le punem alături ca puncte de orientare, nu ca o comparație între două contracte identice.
             </div>
           ) : (
             <p className="mt-4 text-xs text-stone-600">
