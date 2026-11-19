@@ -3,6 +3,7 @@
 // (hero pe grilă + calculator + zonă-articol 3+2 cu carduri-companion).
 
 import type { Metadata } from "next";
+import Link from "@/app/components/Link";
 import { Formula, PaginiConexe, TITLU_PAGINA, TITLU_SECTIUNE, SPATIU_SECTIUNE, SPATIU_SUS, SUB_TITLU, SPATIU_PARAGRAF, SUB_TITLU_SECTIUNE, LISTA_FAQ, LISTA_CARD, CARD_TITLU } from "@/app/components/ui";
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, PAGE_LAST_MODIFIED } from "@/lib/seo";
@@ -217,7 +218,8 @@ export default function CalculatorPfaPage() {
                   />
                   <p className={p}>
                     Pragurile se socotesc în salarii minime, dar cu minimul de la 1 ianuarie: pentru tot anul 2026 se
-                    folosesc {lei(SALARIU_MINIM_PFA_2026)} de lei, chiar dacă minimul a crescut în iulie.
+                    folosesc {lei(SALARIU_MINIM_PFA_2026)} de lei, chiar dacă minimul a crescut în iulie. Pentru facturarea cu TVA sau verificarea cotelor de 21% și 11%, vezi{" "}
+                    <Link href="/calculator-tva">calculatorul de TVA</Link>.
                   </p>
                 </div>
               </div>

@@ -29,19 +29,60 @@ import { concluzieMeserie } from '@/app/components/SalariuConcluzie';
 import { netDeStart } from '@/app/components/SalariuGrila';
 import { netOficialDeStart } from '@/app/components/SalariuOficial';
 import { netDeclarat } from '@/app/components/SalariuDeclarat';
+import { brutDinNetStandard } from '@/lib/fiscal';
 import { personSchema } from "@/lib/person";
 import { ogPage, twPage, MESERII_LAST_MODIFIED } from "@/lib/seo";
 import { TABEL_STANDARD } from "@/app/components/TabelArticol";
 
-function cifraVerificata(slug: string): { text: string; sursa: string } | null {
+type CifraVerificata = {
+  net: number;
+  text: string;
+  sursa: string;
+  tip: string;
+  nota: string;
+};
+
+function cifraVerificata(slug: string): CifraVerificata | null {
   const c = concluzieMeserie(slug);
-  if (c) return { text: `${lei(c.net)} lei net`, sursa: c.sursa === "platit" ? "salarii plătite la stat" : "anunțuri verificate" };
+  if (c) {
+    return {
+      net: c.net,
+      text: `${lei(c.net)} lei net`,
+      sursa: c.sursa === "platit" ? "salarii plătite la stat" : "anunțuri verificate",
+      tip: `concluzie-${c.sursa}`,
+      nota: c.sursa === "platit" ? "Salariu fix net din statele publicate de instituții publice." : "Mijlocul salariilor oferite în anunțurile de angajare verificate.",
+    };
+  }
   const g = netDeStart(slug);
-  if (g) return { text: `de la ${lei(g)} lei net`, sursa: "grila legală" };
+  if (g) {
+    return {
+      net: g,
+      text: `de la ${lei(g)} lei net`,
+      sursa: "grila legală",
+      tip: "grila-legala",
+      nota: "Treapta de pornire din grila legii salarizării, înainte de sporuri.",
+    };
+  }
   const o = netOficialDeStart(slug);
-  if (o) return { text: `de la ${lei(o)} lei net`, sursa: "tabel oficial" };
+  if (o) {
+    return {
+      net: o,
+      text: `de la ${lei(o)} lei net`,
+      sursa: "tabel oficial",
+      tip: "venit-oficial-platit",
+      nota: "Venitul net de pornire din tabelul publicat de angajatorul public.",
+    };
+  }
   const d = netDeclarat(slug);
-  if (d) return { text: `${lei(d)} lei net`, sursa: "reper declarat" };
+  if (d) {
+    return {
+      net: d,
+      text: `${lei(d)} lei net`,
+      sursa: "reper declarat",
+      tip: "declarat",
+      nota: "Reper net declarat de angajați sau angajatori pentru această ocupație.",
+    };
+  }
   return null;
 }
 
@@ -196,16 +237,44 @@ export default async function ComparatiePage({ params }: Props) {
           </H1>
           <Lead>Salariile nete, unul lângă altul. Deschide detaliile pentru surse și informații despre cele două meserii.</Lead>
           <div className="mt-6 grid gap-6 sm:grid-cols-2">
-            {[a,b].map(d=><div key={d.meserie.slug}><h2 className={TITLU_CARD}>{d.meserie.nume}</h2><ReperSalariu date={d}/></div>)}
+            {[
+              { d: a, c: ca },
+              { d: b, c: cb },
+            ].map(({ d, c }) => (
+              <div key={d.meserie.slug}>
+                <h2 className={TITLU_CARD}>{d.meserie.nume}</h2>
+                {c ? (
+                  <section
+                    className="mt-4 rounded-md border border-stone-300 bg-surface p-5 sm:p-6"
+                    data-salary-kind={c.tip}
+                    data-salary-primary={c.net}
+                  >
+                    <p className="text-xs font-medium text-stone-700">Reper net lunar ({c.sursa})</p>
+                    <p className="mt-3 text-3xl font-bold tracking-tight text-stone-900 sm:text-4xl">{c.text}</p>
+                    <p className="mt-1 text-sm text-stone-700">
+                      ≈ {lei(Math.round(brutDinNetStandard(c.net) / 10) * 10)} lei brut pe lună
+                    </p>
+                    <p className="mt-2 text-sm text-stone-600">{c.nota}</p>
+                    <p className="mt-3 text-xs text-stone-600">
+                      <Link className="underline underline-offset-2" href={`/salarii/${d.meserie.slug}`}>
+                        Vezi toate detaliile și sursele
+                      </Link>
+                    </p>
+                  </section>
+                ) : (
+                  <ReperSalariu date={d} />
+                )}
+              </div>
+            ))}
           </div>
 
-          {ra.label !== rb.label || ra.period !== rb.period ? (
+          {(ca?.sursa ?? ra.label) !== (cb?.sursa ?? rb.label) ? (
             <div className="mt-6 rounded-md border border-amber-200 bg-amber-50 p-4 text-xs text-amber-950">
-              <strong>Avertisment metodologic:</strong> Cele două meserii folosesc repere diferite ({ra.label} din {ra.period} pentru {a.meserie.nume} față de {rb.label} din {rb.period} pentru {b.meserie.nume}). Cifrele descriu cadre statistice distincte și nu reprezintă un raport salarial direct între două persoane.
+              <strong>Notă metodologică:</strong> Cele două meserii au surse diferite ({ca?.sursa ?? ra.label} pentru {a.meserie.nume} față de {cb?.sursa ?? rb.label} pentru {b.meserie.nume}). Cifrele servesc drept repere orientative, nu un raport direct între două posturi individuale.
             </div>
           ) : (
             <p className="mt-4 text-xs text-stone-600">
-              Ambele ocupații folosesc același tip de reper ({ra.label}, {ra.period}). Cifrele reflectă agregate de piață, nu salarii negociate individual.
+              Ambele ocupații folosesc același tip de sursă ({ca?.sursa ?? ra.label}). Cifrele reflectă repere agregate, nu salarii negociate individual.
             </p>
           )}
 

@@ -88,7 +88,7 @@ const FAQ = TOTAL
       },
       {
         q: "Cât de proaspete sunt cifrele?",
-        a: `Seria este trimestrială și este cea mai recentă sursă de pe site — ultimul trimestru disponibil este ${PERIOADA}. Prin comparație, datele despre salariul pe grupe de ocupații vin din ancheta anuală din octombrie ${AN_ANCHETA}. De aceea cele două coloane din tabel au perioade diferite, declarate în antet.`,
+        a: `Seria este trimestrială și este cea mai recentă sursă de pe site: ultimul trimestru disponibil este ${PERIOADA}. Prin comparație, datele despre salariul pe grupe de ocupații vin din ancheta anuală din octombrie ${AN_ANCHETA}. De aceea cele două coloane din tabel au perioade diferite, declarate în antet.`,
       },
     ]
   : [];
@@ -293,7 +293,7 @@ export default function LocuriVacantePage() {
               Cerere și plată, pe aceleași grupe
             </h2>
             <p className="mt-4 max-w-3xl text-base leading-normal text-stone-600">
-              Coloanele vin din două anchete diferite ale INS, cu perioade diferite — vacantele sunt trimestriale și
+              Coloanele vin din două anchete diferite ale INS, cu perioade diferite: vacantele sunt trimestriale și
               recente, salariul vine din ancheta anuală din octombrie {AN_ANCHETA}, adus la zi cu evoluția câștigului
               mediu pe economie. Nu sunt măsurate în același moment și nu trebuie citite ca o corelație; sunt două
               lucruri adevărate despre aceeași grupă, puse unul lângă altul.

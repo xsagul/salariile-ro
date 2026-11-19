@@ -612,7 +612,7 @@ async function auditRenderedSite() {
     failures.push("/salarii/acoperire: trebuie sa raspunda 200 cu meta robots noindex");
   }
 
-  // hreflang reciproc între / și /en/salary-calculator
+  // hreflang reciproc și atributul <html lang> între / și /en/salary-calculator
   for (const ruta of ["/", "/en/salary-calculator"]) {
     const html = rendered.get(ruta) ?? "";
     if (!html.includes('hrefLang="ro"') && !html.includes('hreflang="ro"')) {
@@ -620,6 +620,10 @@ async function auditRenderedSite() {
     }
     if (!html.includes('hrefLang="en"') && !html.includes('hreflang="en"')) {
       failures.push(`${ruta}: lipseste hreflang en`);
+    }
+    const expectedLang = ruta === "/en/salary-calculator" ? "en" : "ro";
+    if (!new RegExp(`<html\\b[^>]*\\blang="${expectedLang}"`, "i").test(html)) {
+      failures.push(`${ruta}: <html lang> nu este "${expectedLang}"`);
     }
   }
 

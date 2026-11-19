@@ -53,4 +53,4 @@ Schimbă oricare dintre ele și cifrele se mișcă. De aceea, o comparație făc
 
 ## Fă-o pe cifrele tale
 
-[Calculatorul de taxe PFA](/calculator-pfa) compară cele trei forme la încasările și cheltuielile tale și îți spune care iese cel mai bine, și cu cât. Micro apare doar dacă ești sub plafon, pentru că altfel nu e o opțiune reală.
+[Calculatorul de taxe PFA](/calculator-pfa) compară cele trei forme la încasările și cheltuielile tale și îți spune care iese cel mai bine, și cu cât. Micro apare doar dacă ești sub plafon, pentru că altfel nu e o opțiune reală. Dacă emiți facturi cu TVA sau te apropii de plafonul de scutire de 395.000 lei, verifică rapid sumele cu [calculatorul de TVA](/calculator-tva).

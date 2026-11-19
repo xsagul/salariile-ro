@@ -98,7 +98,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ro" className={inter.variable}>
+    <html lang="ro" suppressHydrationWarning className={inter.variable}>
       <body className="min-h-screen overflow-x-hidden bg-canvas font-sans text-stone-700 antialiased">
         {/* Doar inițializează starea Consent Mode; nu încarcă și nu trimite
             nimic singur. Stă în root fiindcă Next execută beforeInteractive

@@ -15,7 +15,7 @@
 // hostname-ul temporar (workers.dev) cât timp se testează înainte de mutare.
 
 import { execSync } from "node:child_process";
-import { existsSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { CSP_PAGINI_PUBLICE, CSP_WIDGET, LINK_HEADER } from "../src/lib/csp";
 import { REDIRECTURI } from "../src/lib/redirecturi";
@@ -103,6 +103,19 @@ if (!commit) {
   }
 }
 writeFileSync(path.join(OUT, "versiune.txt"), `${commit}\n`);
+
+// Pagina în engleză împarte root layout-ul static cu restul site-ului (lang="ro").
+// Setăm lang="en" direct în HTML-ul static servit la edge și de Googlebot.
+for (const candidat of [
+  path.join(OUT, "en", "salary-calculator.html"),
+  path.join(OUT, "en", "salary-calculator", "index.html"),
+]) {
+  if (existsSync(candidat)) {
+    const html = readFileSync(candidat, "utf8");
+    const actualizat = html.replace(/<html\s+lang="ro"/i, '<html lang="en"');
+    if (actualizat !== html) writeFileSync(candidat, actualizat);
+  }
+}
 
 console.log(
   `Cloudflare: _headers ${headere.length} reguli · _redirects ${redirecturi.length}` +

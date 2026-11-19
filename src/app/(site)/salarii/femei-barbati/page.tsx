@@ -212,7 +212,7 @@ export default function FemeiBarbatiPage() {
           <H1>Diferența de salariu între femei și bărbați</H1>
           <Lead>
             În octombrie {AN}, bărbații au avut un venit brut realizat de <strong>{lei(TOTAL.brutMasculin)} lei</strong>{" "}
-            în medie, iar femeile <strong>{lei(TOTAL.brutFeminin)} lei</strong> — o diferență de{" "}
+            în medie, iar femeile <strong>{lei(TOTAL.brutFeminin)} lei</strong>, o diferență de{" "}
             <strong>{marime(TOTAL.diferenta)}%</strong>. Cifra de ansamblu ascunde însă diferențe mult mai mari
             înăuntrul ocupațiilor: în grupa „{celMaiMare.nume.toLocaleLowerCase("ro-RO")}” ajunge la{" "}
             <strong>{marime(celMaiMare.diferenta)}%</strong>.
@@ -262,7 +262,7 @@ export default function FemeiBarbatiPage() {
             {marime(TOTAL.diferenta)}% mai puțin <em>pentru aceeași muncă</em>. Compară câștigul mediu al tuturor
             femeilor cu al tuturor bărbaților. Grupele de ocupații sunt largi, iar în interiorul lor cele două grupuri
             nu ocupă aceleași funcții și nu au aceeași vechime. Este o diferență de câștig mediu, nu o măsură a
-            discriminării la post egal — pentru asta ar trebui date pe post individual, pe care INS nu le publică.
+            discriminării la post egal; pentru asta ar trebui date pe post individual, pe care INS nu le publică.
           </p>
 
           <section className="mt-12">
@@ -272,7 +272,7 @@ export default function FemeiBarbatiPage() {
             <p className="mt-4 max-w-3xl text-base leading-normal text-stone-600">
               Aici se vede de ce media pe economie induce în eroare. Diferența de {marime(TOTAL.diferenta)}% pe total
               este mai mică decât diferența din majoritatea grupelor luate separat, pentru că femeile sunt
-              concentrate în grupe mai bine plătite — mai ales printre specialiști, unde sunt majoritare.
+              concentrate în grupe mai bine plătite, mai ales printre specialiști, unde sunt majoritare.
             </p>
             <div className="my-6 overflow-x-auto">
               <table className={`${TABEL_STANDARD} min-w-[42rem]`}>
@@ -338,7 +338,7 @@ export default function FemeiBarbatiPage() {
             </p>
             <p className="mt-4 max-w-3xl text-base leading-normal text-stone-600">
               Datele nu spun <em>de ce</em>. Intervalul în care diferența se lărgește coincide cu anii în care apar
-              copiii, iar concediul de creștere și întreruperile de carieră sunt explicația uzuală în literatură — dar
+              copiii, iar concediul de creștere și întreruperile de carieră sunt explicația uzuală în literatură, dar
               asta este o interpretare, nu ceva măsurat aici. La fel, inversarea de după 60 de ani se explică probabil
               prin cine rămâne în activitate la vârsta aceea, nu printr-un avantaj real.
             </p>
@@ -395,7 +395,7 @@ export default function FemeiBarbatiPage() {
             <p className="mt-4 text-base leading-normal text-stone-600">
               Directiva europeană privind transparența salarială cere angajatorilor să publice intervale de salariu și
               să raporteze diferența de câștig între femei și bărbați din propria organizație. Când intră în vigoare,
-              diferența nu va mai fi vizibilă doar la nivel de economie, ca aici, ci la nivel de angajator — acolo unde
+              diferența nu va mai fi vizibilă doar la nivel de economie, ca aici, ci la nivel de angajator, acolo unde
               comparația chiar poate fi între posturi similare.{" "}
               <Link
                 href="/noutati/transparenta-salariala-2026"
@@ -406,7 +406,7 @@ export default function FemeiBarbatiPage() {
               .
             </p>
             <NotaSursa>
-              Sursa datelor: Institutul Național de Statistică, TEMPO-Online, matricea {MATRICE_OCUPATII} — numărul
+              Sursa datelor: Institutul Național de Statistică, TEMPO-Online, matricea {MATRICE_OCUPATII}: numărul
               salariaților cu program complet plătiți întreaga lună, salariul brut de bază și venitul brut realizat în
               octombrie, pe grupe de vârstă, pe grupe majore de ocupații (ISCO-08) și pe sexe. Ultimul an disponibil:{" "}
               {AN}. Vezi{" "}

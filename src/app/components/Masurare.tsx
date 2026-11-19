@@ -118,6 +118,7 @@ export default function Masurare() {
   // Afișarea paginii. Rulează la încărcare și la fiecare schimbare de cale;
   // `?brut=` scris de calculator nu schimbă calea, deci nu mai e o afișare.
   useEffect(() => {
+    document.documentElement.lang = pathname.startsWith("/en/") ? "en" : "ro";
     const adresa = adresaFaraSume(window.location.href);
 
     if (!configurat) {

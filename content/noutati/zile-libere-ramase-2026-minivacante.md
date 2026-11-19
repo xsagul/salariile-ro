@@ -38,4 +38,4 @@ Crăciunul 2026 cade vineri, iar a doua zi sâmbătă:
 
 Ajunul, 24 decembrie, și 31 decembrie nu sunt zile libere legale. Dacă firma ta dă liber atunci, e alegerea ei, nu o obligație.
 
-Calendarul complet, cu toate sărbătorile și punțile, e pe pagina [zile libere 2026](/zile-libere-2026). Pentru anul viitor, vezi [zilele libere din 2027](/zile-libere-2027).
+Calendarul complet, cu toate sărbătorile și punțile, e pe pagina [zile libere 2026](/zile-libere-2026). Pentru anul viitor, vezi [zilele libere din 2027](/zile-libere-2027), iar pentru zilele de concediu cuvenite și indemnizație, folosește [calculatorul de concediu de odihnă](/calculator-concediu-odihna).
