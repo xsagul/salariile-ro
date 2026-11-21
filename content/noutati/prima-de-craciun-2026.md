@@ -2,8 +2,8 @@
 title: "Prima de Crăciun și tichetele cadou: cât primești"
 description: "Prima de Crăciun în bani se taxează ca salariul, cadoul sau tichetele cadou de până la 300 lei nu. Cât primești, ce e cu copiii și ce se întâmplă la stat."
 date: "2026-11-21"
-hero: "/noutati/prima-de-craciun-2026.webp"
-heroAlt: "O cutie de cadou verde cu fundă galbenă, lângă un plic de salariu din care lipsește o parte și un card cadou."
+hero: "/noutati/prima-de-craciun-2026-v2.webp"
+heroAlt: "Un plic cu bani din care o parte pleacă spre o clădire cu coloane, lângă o cutie de cadou întreagă, cu fundă, și un card cadou."
 ---
 
 **Prima de Crăciun dată în bani se taxează exact ca salariul, așa că din ea îți rămân în mână cam 58 de lei din fiecare 100. Un cadou sau tichete cadou de până la 300 de lei nu se taxează deloc.** Plafonul de 300 de lei e separat pentru tine și pentru fiecare copil minor, deci la o familie cu doi copii firma poate da până la 900 de lei fără niciun impozit. Mai jos găsești ce înseamnă asta pe fluturaș, când e obligatorie prima și de ce anul acesta, la stat, nu se dă nimic.

@@ -6590,3 +6590,22 @@ Lucrat pe ramura `seo-curatenie` (worktree izolat din `origin/main` `cdececb`).
 - Reconstruite `CalculatorConcediuMedical`, `CalculatorCrestereCopil`, `CalculatorConcediuOdihna` și `CalculatorVechimeMunca` pe exact structura vizuală a calculatoarelor principale (`/` și `/calculator-salariu-part-time`): câmpuri goale cu `placeholder="ex: ..."`, unități în interiorul chenarului, opțiuni secundare strânse în butonul punctat `▼ Opțiuni avansate`, comutator orizontal pe un rând, tabel de rezultat curat (fără citații legislative în celule), rând inversat `bg-stone-900` + `.marcaj` galben pe suma finală, `<details>Detalii de calcul</details>` și stare `stale` la modificare.
 - Adăugat `ModelCerere.tsx` cu buton „Copiază modelul” pentru cererile de concediu și demisie; caseta „Surse diferite” de pe `/compara/[pereche]` trecută pe monocrom `stone` conform `BRAND.md` §5.
 - Aliniate și cele 4 calculatoare mai vechi cu abateri (`CalculatorTva`, `CalculatorSomaj`, `CalculatorOreSuplimentare`, `CalculatorSanatate`): unitățile (`lei`, `%`, `ore`) aduse în interiorul chenarului, eliminat roșul din erorile TVA conform `BRAND.md` §5, adăugat rândul inversat `bg-stone-900` + `.marcaj` galben pe rezultatul principal și aliniere `items-start` pe toate cele 13 calculatoare ale site-ului.
+
+## 21 noiembrie 2026 — articol nou: prima de Crăciun și tichetele cadou
+
+Publicat `/noutati/prima-de-craciun-2026`: subiect de sezon, cu legislație în vigoare, neacoperit de
+celelalte 24 de articole. SE Ranking a răspuns 403 în ziua aceea, deci volumele nu sunt măsurate;
+alegerea e pe sezon (căutările încep la sfârșitul lui noiembrie).
+
+- Regulile, citite pe textul Codului fiscal (copia ANAF, la zi cu Legea 204/2026): art. 76 alin. (4)
+  lit. a) și art. 142 lit. b) — cadourile în bani, în natură și tichetele cadou de până la 300 lei pe
+  persoană și ocazie, pentru angajat și pentru fiecare copil minor, nu au impozit și nici CAS;
+  art. 157 alin. (2) — nici CASS: excepția de la scutire e numai pentru tichetele de masă și
+  voucherele de vacanță. La stat, în 2026: Legea 141/2025 art. XIX (fără bilete de valoare în afară
+  de tichetele de creșă, fără premii și bonusuri).
+- Prima în bani: din 1.000 lei brut rămân cam 585; se adună la brutul lunii și poate scoate salariul
+  minim de sub plafonul de 4.600 lei al scutirii.
+- Coperta: generată în ChatGPT Image, cu 6 coperți existente ca exemplu de stil
+  (`prima-de-craciun-2026-v2.webp`). Prima variantă, desenată de mine în SVG, a fost respinsă de
+  proprietar: copertele se fac în ChatGPT Image.
+- `npm run test:ci` trece; `test:rendered` dă doar avertismentul de titlu de 61 de caractere cu sufix.
