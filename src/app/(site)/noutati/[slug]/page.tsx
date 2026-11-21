@@ -54,7 +54,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 const ARTICOLE_CONEXE: Record<string, string[]> = {
   "indexarea-salariului-inflatie-2026": ["cosul-minim-de-consum", "salariu-peste-minim-1-iulie-2026", "cum-citesti-fluturasul-de-salariu"],
-  "tichete-de-masa-2026": ["cum-citesti-fluturasul-de-salariu", "concediu-medical-2026", "salariu-peste-minim-1-iulie-2026"],
+  "tichete-de-masa-2026": ["prima-de-craciun-2026", "cum-citesti-fluturasul-de-salariu", "concediu-medical-2026"],
   "concediu-medical-2026": ["cum-citesti-fluturasul-de-salariu", "tichete-de-masa-2026", "salariu-peste-minim-1-iulie-2026"],
   "cum-citesti-fluturasul-de-salariu": ["tichete-de-masa-2026", "concediu-medical-2026", "salariu-peste-minim-1-iulie-2026"],
   "salariul-minim-1-iulie-2026": ["salariu-peste-minim-1-iulie-2026", "salariul-minim-romania-vs-uniunea-europeana-2026", "cosul-minim-de-consum"],
@@ -66,6 +66,7 @@ const ARTICOLE_CONEXE: Record<string, string[]> = {
   "tineri-neet-romania-2026": ["transparenta-salariala-2026", "cosul-minim-de-consum", "legea-salarizarii-2026"],
   "zile-libere-ramase-2026-minivacante": ["salariul-minim-1-iulie-2026", "cum-citesti-fluturasul-de-salariu", "tichete-de-masa-2026"],
   "pfa-sau-srl-2026": ["salariu-peste-minim-1-iulie-2026", "cum-citesti-fluturasul-de-salariu", "transparenta-salariala-2026"],
+  "prima-de-craciun-2026": ["tichete-de-masa-2026", "brut-peste-minim-net-mai-mic", "cum-citesti-fluturasul-de-salariu"],
   "reges-online": ["munca-fara-contract", "cum-citesti-fluturasul-de-salariu", "concediu-medical-2026"],
   "munca-fara-contract": ["reges-online", "salariu-part-time-4-ore-2026", "cum-citesti-fluturasul-de-salariu"],
 };
